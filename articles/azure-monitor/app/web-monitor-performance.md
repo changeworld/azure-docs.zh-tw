@@ -4,12 +4,12 @@ description: 開始使用 Application Insights。 分析內部部署或 Microsof
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.reviewer: sdash
-ms.openlocfilehash: d624286d214a86364fe85192bf5ede885d4b6a78
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: f84e1065f93fc2cca950f12d5df537b931faac8d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323446"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987145"
 ---
 # <a name="monitor-performance-in-web-applications"></a>監視 Web 應用程式的效能
 
@@ -61,15 +61,15 @@ HTTP 要求包括分頁、資料及映像的所有 GET 或 POST 要求。
 
 按一下圖格可取得特定 URL 的時間。
 
-![[應用程式健全狀況] 窗格的螢幕擷取畫面，其中會顯示一段時間的移動要求和回應時間平均值的線條圖形。](./media/web-monitor-performance/appinsights-42reqs.png)
+![[應用程式健康情況] 窗格的螢幕擷取畫面，其中顯示移動要求和回應時間的平均時間的折線圖。](./media/web-monitor-performance/appinsights-42reqs.png)
 
 ### <a name="slowest-requests"></a>最慢的要求
-![最慢的要求清單和其回應時間的螢幕擷取畫面。](./media/web-monitor-performance/appinsights-44slowest.png)
+![最慢要求清單及其回應時間的螢幕擷取畫面。](./media/web-monitor-performance/appinsights-44slowest.png)
 
 顯示可能需要進行效能調整的要求。
 
 ### <a name="failed-requests"></a>失敗的要求
-![一段時間內失敗的要求數之折線圖的螢幕擷取畫面;也就是擲回未攔截例外狀況的要求。](./media/web-monitor-performance/appinsights-46failed.png)
+![在失敗的要求數一段時間內的折線圖螢幕擷取畫面;也就是說，擲回無法攔截之例外狀況的要求。](./media/web-monitor-performance/appinsights-46failed.png)
 
 丟出無法攔截之例外狀況的要求計數。
 
@@ -87,7 +87,7 @@ HTTP 要求包括分頁、資料及映像的所有 GET 或 POST 要求。
 ## <a name="set-alerts"></a>設定警示
 若要在任何度量有不尋常的值時收到電子郵件通知，請加入警示。 您可以選擇將電子郵件傳送給帳戶管理員，或傳送給特定的電子郵件地址。
 
-![[新增警示規則] 對話方塊的螢幕擷取畫面，其中包含以箭號連接的螢幕擷取畫面，顯示如何從計量瀏覽器連線至對話方塊。](./media/web-monitor-performance/appinsights-413setMetricAlert.png)
+![[新增警示規則] 對話方塊的螢幕擷取畫面，以及透過箭號連接的螢幕擷取畫面，顯示如何從計量瀏覽器連接該對話方塊。](./media/web-monitor-performance/appinsights-413setMetricAlert.png)
 
 設定其他屬性之前的資源。 如果您想要設定效能或使用度量的相關警示，請勿選擇 webtest 資源。
 
@@ -102,7 +102,7 @@ HTTP 要求包括分頁、資料及映像的所有 GET 或 POST 要求。
 * 比較要求計數與其他度量，了解失敗或回應過慢的情況是否與負載有關。
 * 在程式碼中[插入及搜尋追蹤陳述式][diagnostic]有助於找出問題所在。
 * 使用[即時計量資料流][livestream]監視作業中的 Web 應用程式。
-* 使用[快照偵錯工具][snapshot]來捕獲 .net 應用程式的狀態。
+* 使用 [快照偵錯工具][snapshot]來捕捉您的 .net 應用程式的狀態。
 
 ## <a name="find-and-fix-performance-bottlenecks-with-performance-investigation-experience"></a>使用效能調查體驗尋找及修正效能瓶頸
 
@@ -112,11 +112,11 @@ HTTP 要求包括分頁、資料及映像的所有 GET 或 POST 要求。
 
 若要獲得此作業使用者體驗的較佳意義，我們可以選取較大的時間範圍。 然後我們也可以將時間縮小在作業緩慢的特定時段。 在下列範例中，我們已從預設的 24 小時時間範圍切換至 7 天的時間範圍，然後放大到 12 日星期二與 13 日星期三之間的 9:47 至 12:47 時段。 右邊的分佈持續時間和範例與分析工具的追蹤數已更新。
 
-![取得客戶/詳細資料，7 天範圍的時段中三個持續時間高峰](./media/web-monitor-performance/PerformanceTriageView7DaysZoomedTrend.png)
+![螢幕擷取畫面顯示效能 (預覽) 三天內有三個持續時間尖峰（含時間範圍）](./media/web-monitor-performance/PerformanceTriageView7DaysZoomedTrend.png)
 
 若要縮小到緩慢的體驗，我們接下來放大到落在第 95 個及第 99 個百分位數之間的持續時間。 這些代表 4% 的緩慢使用者互動。
 
-![取得客戶/詳細資料，7 天範圍的時段中三個持續時間高峰](./media/web-monitor-performance/PerformanceTriageView7DaysZoomedTrendZoomed95th99th.png)
+![螢幕擷取畫面顯示 [取得客戶]/[詳細資料] 的三個持續時間尖峰（以時間範圍為單位）。](./media/web-monitor-performance/PerformanceTriageView7DaysZoomedTrendZoomed95th99th.png)
 
 我們現在可以按一下 [範例] 按鈕來查看代表性的範例，或按一下 [分析工具追蹤] 按鈕來查看代表性的分析工具追蹤。 在此範例中，已針對感興趣的時段和範圍持續時間，對「取得客戶/詳細資料」收集了四項追蹤。
 
@@ -126,7 +126,7 @@ HTTP 要求包括分頁、資料及映像的所有 GET 或 POST 要求。
 
 效能調查體驗會顯示您決定要特別注意的範例組，以及相關的深入分析資訊。 查看所有可用的深入解析的最佳方式是切換到 30 天的時間範圍，然後選取 [整體] 來查看過去一個月所有作業的深入解析。
 
-![取得客戶/詳細資料，7 天範圍的時段中三個持續時間高峰](./media/web-monitor-performance/Performance30DayOveralllnsights.png)
+![螢幕擷取畫面顯示效能 (預覽) 開啟整體視窗並選取見解。](./media/web-monitor-performance/Performance30DayOveralllnsights.png)
 
 
 ## <a name="next-steps"></a><a name="next"></a>後續步驟

@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge GPU 計算管理 |Microsoft Docs
-description: 說明如何管理 Edge 計算設定，例如觸發程式、模組、查看計算設定、透過 Azure Stack Edge GPU 上的 Azure 入口網站移除設定。
+title: Azure Stack Edge Pro GPU 計算管理 |Microsoft Docs
+description: 說明如何管理 Edge 計算設定，例如觸發程式、模組、查看計算設定、透過 Azure Stack Edge Pro GPU 上的 Azure 入口網站移除設定。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,18 +8,18 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 1ea52c393ec9897d43714d69ff448038b65ee555
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 58e199cc3c09e6b4ff333fb53c047598b1ec9b5f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268786"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90890601"
 ---
-# <a name="manage-compute-on-your-azure-stack-edge-gpu"></a>管理 Azure Stack Edge GPU 上的計算
+# <a name="manage-compute-on-your-azure-stack-edge-pro-gpu"></a>管理您 Azure Stack Edge Pro GPU 上的計算
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-本文說明如何管理 Azure Stack Edge 上的計算。 您可以透過 Azure 入口網站或本機 Web UI 來管理計算。 使用 Azure 入口網站來管理模組、觸發程序及計算設定，以及使用本機 Web UI 來管理計算設定。
+本文說明如何管理 Azure Stack Edge Pro 上的計算。 您可以透過 Azure 入口網站或本機 Web UI 來管理計算。 使用 Azure 入口網站來管理模組、觸發程序及計算設定，以及使用本機 Web UI 來管理計算設定。
 
 在本文中，您將學會如何：
 
@@ -30,7 +30,7 @@ ms.locfileid: "89268786"
 
 ## <a name="manage-triggers"></a>管理觸發程序
 
-事件就是在雲端環境內所發生，或您想在裝置上對其採取動作之事。 例如，在共用中建立檔案時，即為事件。 觸發程序會引發事件。 針對您的 Azure Stack Edge，觸發程式可以回應檔案事件或排程。
+事件就是在雲端環境內所發生，或您想在裝置上對其採取動作之事。 例如，在共用中建立檔案時，即為事件。 觸發程序會引發事件。 針對您的 Azure Stack Edge Pro，觸發程式可以回應檔案事件或排程。
 
 - **File**：這些觸發程式是為了回應檔案事件，例如檔案的建立、修改檔案。
 - 已**排程**：這些觸發程式會回應您可以使用開始日期、開始時間和重複間隔定義的排程。
@@ -84,7 +84,7 @@ ms.locfileid: "89268786"
 
 ## <a name="manage-compute-configuration"></a>管理計算設定
 
-使用 Azure 入口網站來查看計算設定、移除現有的計算設定，或重新整理計算設定，以同步處理 IoT 裝置的存取金鑰和 Azure Stack Edge 的 IoT Edge 裝置。
+使用 Azure 入口網站來查看計算設定、移除現有的計算設定，或重新整理計算設定，以同步處理 IoT 裝置的存取金鑰和 Azure Stack Edge Pro 的 IoT Edge 裝置。
 
 ### <a name="view-compute-configuration"></a>檢視計算設定
 
@@ -113,11 +113,11 @@ ms.locfileid: "89268786"
 
 ### <a name="sync-up-iot-device-and-iot-edge-device-access-keys"></a>同步 IoT 裝置和 IoT Edge 裝置的存取金鑰
 
-當您在 Azure Stack Edge 上設定計算時，會建立 IoT 裝置和 IoT Edge 裝置。 對稱存取金鑰會自動指派給這些裝置。 基於安全性最佳做法的考量，這些金鑰會透過 IoT 中樞服務定期輪替。
+當您在 Azure Stack Edge Pro 上設定計算時，會建立 IoT 裝置和 IoT Edge 裝置。 對稱存取金鑰會自動指派給這些裝置。 基於安全性最佳做法的考量，這些金鑰會透過 IoT 中樞服務定期輪替。
 
 若要輪替這些金鑰，您可以移至所建立的 IoT 中樞服務，然後選取 IoT 裝置或 IoT Edge 裝置。 每個裝置都有主要存取金鑰和次要存取金鑰。 請將主要存取金鑰指派給次要存取金鑰，然後重新產生主要存取金鑰。
 
-如果您的 IoT 裝置和 IoT Edge 裝置金鑰已輪替，您需要重新整理 Azure Stack Edge 上的設定，以取得最新的存取金鑰。 同步處理可協助裝置取得 IoT 裝置和 IoT Edge 裝置的最新金鑰。 Azure Stack Edge 只會使用主要存取金鑰。
+如果您的 IoT 裝置和 IoT Edge 裝置金鑰已輪替，您需要重新整理 Azure Stack Edge Pro 上的設定，以取得最新的存取金鑰。 同步處理可協助裝置取得 IoT 裝置和 IoT Edge 裝置的最新金鑰。 Azure Stack Edge Pro 只會使用主要存取金鑰。
 
 請在 Azure 入口網站中執行下列步驟，以同步您裝置的存取金鑰。
 
@@ -131,6 +131,6 @@ ms.locfileid: "89268786"
 
 3. 在同步完成後結束對話方塊。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
-- 瞭解如何針對 [您的 Azure Stack Edge 進行疑難排解](azure-stack-edge-gpu-troubleshoot.md)。
+- 瞭解如何針對 [您的 Azure Stack Edge Pro 進行疑難排解](azure-stack-edge-gpu-troubleshoot.md)。

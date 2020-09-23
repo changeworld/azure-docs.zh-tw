@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 6/15/2020
-ms.openlocfilehash: 16ce5b42e35ff3d650ba18aa95ab80b83fdbfdad
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 0d723e1613e96f0aea243eace8ece3f0473e3742
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547676"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90884451"
 ---
 # <a name="high-availability-in-azure-database-for-postgresql--single-server"></a>適用於 PostgreSQL 的 Azure 資料庫中的高可用性–單一伺服器
 適用於 PostgreSQL 的 Azure 資料庫–單一伺服器服務可透過 [99.99%](https://azure.microsoft.com/support/legal/sla/postgresql) 執行時間的 SLA) ，提供保證的高可用性服務等級協定 (SLA。 適用於 PostgreSQL 的 Azure 資料庫在規劃的事件（例如，使用者初始化規模計算作業）期間提供高可用性，而且也會在發生非計畫的事件（例如基礎硬體、軟體或網路失敗）時提供高可用性。 適用於 PostgreSQL 的 Azure 資料庫可以從最重要的情況快速復原，以確保在使用此服務時幾乎不會有任何應用程式停機時間。
@@ -29,7 +29,7 @@ ms.locfileid: "88547676"
 ## <a name="planned-downtime-mitigation"></a>規劃的停機時間緩和
 適用於 PostgreSQL 的 Azure 資料庫的架構可在規劃的停機作業期間提供高可用性。 
 
-![Azure 于 postgresql 中的彈性調整](./media/concepts-high-availability/azure-postgresql-elastic-scaling.png)
+:::image type="content" source="./media/concepts-high-availability/azure-postgresql-elastic-scaling.png" alt-text="Azure 于 postgresql 中的彈性調整":::
 
 1. 在幾秒內擴大和縮小於 postgresql 資料庫伺服器
 2. 作為 proxy 來路由傳送用戶端的閘道會連線到適當的資料庫伺服器
@@ -49,7 +49,7 @@ ms.locfileid: "88547676"
 非預期的停機時間可能會因為未預期的失敗而發生，包括基礎硬體錯誤、網路問題和軟體錯誤。 如果資料庫伺服器意外關閉，則會自動布建新的資料庫伺服器（以秒為單位）。 遠端存放會自動附加至新的資料庫伺服器。 于 postgresql 引擎會使用 WAL 和資料庫檔案來執行復原作業，並開啟資料庫伺服器，以允許用戶端連接。 未認可的交易會遺失，而且必須由應用程式重試。 雖然無法避免非計畫的停機時間，適用於 PostgreSQL 的 Azure 資料庫可在資料庫伺服器和儲存層自動執行復原作業，而不需要人為介入，藉此減少停機時間。 
 
 
-![Azure 于 postgresql 中的高可用性查看](./media/concepts-high-availability/azure-postgresql-built-in-high-availability.png)
+:::image type="content" source="./media/concepts-high-availability/azure-postgresql-built-in-high-availability.png" alt-text="Azure 于 postgresql 中的高可用性查看":::
 
 1. 具有快速調整功能的 Azure 于 postgresql 伺服器。
 2. 作為 proxy 的閘道，可將用戶端連線路由至適當的資料庫伺服器
@@ -77,7 +77,7 @@ ms.locfileid: "88547676"
 
 適用於 PostgreSQL 的 Azure 資料庫可提供資料庫伺服器的快速重新開機功能、重複的儲存空間，以及從閘道有效率的路由。 針對額外的資料保護，您可以將備份設定為異地複寫，也可以在其他區域中部署一或多個讀取複本。 利用固有的高可用性功能，適用於 PostgreSQL 的 Azure 資料庫保護您的資料庫不受最常見的中斷影響，並提供領先業界的財務支援 [99.99% 的執行時間 SLA](https://azure.microsoft.com/support/legal/sla/postgresql)。 所有的可用性和可靠性功能都能讓 Azure 成為執行任務關鍵性應用程式的理想平臺。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 - 深入瞭解 [Azure 區域](../availability-zones/az-overview.md)
 - 了解如何[處理暫時性連線錯誤](concepts-connectivity.md)
 - 了解如何[使用讀取複本來複寫資料](howto-read-replicas-portal.md)

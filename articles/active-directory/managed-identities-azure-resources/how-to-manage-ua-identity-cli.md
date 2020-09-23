@@ -16,12 +16,12 @@ ms.date: 04/17/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 5c3af6c46dd8ad69915e8f870d739f33375dba5e
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 29a1a991ab79c38dad1a89533091d80406615d35
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89266403"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90969465"
 ---
 # <a name="create-list-or-delete-a-user-assigned-managed-identity-using-the-azure-cli"></a>使用 Azure CLI 建立、列出和刪除使用者指派的受控識別
 
@@ -34,18 +34,12 @@ ms.locfileid: "89266403"
 
 - 如果您不熟悉 Azure 資源的受控識別，請參閱[概觀一節](overview.md)。 **請務必檢閱[系統指派和使用者指派受控識別之間的差異](overview.md#managed-identity-types)**。
 - 如果您還沒有 Azure 帳戶，請先[註冊免費帳戶](https://azure.microsoft.com/free/)，再繼續進行。
-- 若要執行 CLI 指令碼範例，您有三個選項：
-    - 從 Azure 入口網站使用 [Azure Cloud Shell](../../cloud-shell/overview.md) (請參閱下一節)。
-    - 透過位於每個程式碼區塊右上角的 [試試看] 按鈕，使用內嵌的 Azure Cloud Shell。
-    - 如果您偏好使用本機 CLI 主控台，請[安裝最新版的 Azure CLI](/cli/azure/install-azure-cli) (2.0.13 或更新版本)。 使用 `az login` 登入 Azure，使用與 Azure 訂用帳戶相關聯的帳戶，而您要以此帳戶部署使用者指派受控識別。
-
+- 若要執行範例腳本，您有兩個選項：
+    - 使用您可以使用程式碼區塊右上角的 [**試試看**] 按鈕開啟的[Azure Cloud Shell](../../cloud-shell/overview.md)。
+    - 安裝最新版本的 [Azure CLI](/cli/azure/install-azure-cli)，然後使用 [az Login 登](/cli/azure/reference-index#az-login)入 Azure，以在本機執行腳本。 使用與您想要在其中建立資源的 Azure 訂用帳戶相關聯的帳戶。   
 
 > [!NOTE]
-> 若要在使用 CLI 來使用應用程式 servivce 主體時修改使用者權限，您必須在 Azure AD 圖形 API 中提供服務主體額外的許可權，因為 CLI 的部分會對圖形 API 執行 GET 要求。 否則，您最後可能會收到「許可權不足，無法完成作業」訊息。 若要這樣做，您必須移至 Azure Active Directory 中的應用程式註冊、選取您的應用程式、按一下 [API 許可權]、向下滾動，然後選取 [Azure Active Directory 圖形]。 從該處選取 [應用程式許可權]，然後新增適當的許可權。 
-
-
-
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+> 若要在使用 app service 主體時修改使用者權限，您必須在 Azure AD 圖形 API 中提供服務主體額外的許可權，因為 CLI 的部分會對圖形 API 執行 GET 要求。 否則，您最後可能會收到「許可權不足，無法完成作業」訊息。 若要這樣做，您必須移至 Azure Active Directory 中的應用程式註冊、選取您的應用程式、按一下 [API 許可權]、向下滾動，然後選取 [Azure Active Directory 圖形]。 從該處選取 [應用程式許可權]，然後新增適當的許可權。 
 
 ## <a name="create-a-user-assigned-managed-identity"></a>建立使用者指派的受控識別 
 
@@ -55,7 +49,7 @@ ms.locfileid: "89266403"
 
 [!INCLUDE [ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 
- ```azurecli-interactive
+```azurecli-interactive
 az identity create -g <RESOURCE GROUP> -n <USER ASSIGNED IDENTITY NAME>
 ```
 ## <a name="list-user-assigned-managed-identities"></a>列出使用者指派的受控識別
@@ -67,6 +61,7 @@ az identity create -g <RESOURCE GROUP> -n <USER ASSIGNED IDENTITY NAME>
 ```azurecli-interactive
 az identity list -g <RESOURCE GROUP>
 ```
+
 在 json 回應中，使用者指派的受控識別具備`"Microsoft.ManagedIdentity/userAssignedIdentities"`為索引鍵傳回的值`type`。
 
 `"type": "Microsoft.ManagedIdentity/userAssignedIdentities"`
@@ -77,16 +72,14 @@ az identity list -g <RESOURCE GROUP>
 
 若要刪除使用者指派的受控識別，請使用 [az identity delete](/cli/azure/identity#az-identity-delete) 命令。  -n 參數會指定其名稱，而 -g 參數會指定建立使用者指派之受控識別所在的資源群組。 將 `<USER ASSIGNED IDENTITY NAME>` 和 `<RESOURCE GROUP>` 參數取代為您自己的值：
 
- ```azurecli-interactive
+```azurecli-interactive
 az identity delete -n <USER ASSIGNED IDENTITY NAME> -g <RESOURCE GROUP>
 ```
 > [!NOTE]
 > 將使用者指派的受控識別從受指派的任何資源中刪除，並不會移除參考。 請使用 `az vm/vmss identity remove` 命令將其從 VM/VMSS 中移除
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 如需 Azure CLI 身分識別命令的完整清單，請參閱 [az identity](/cli/azure/identity)。
 
 如需如何將使用者指派之受控識別指派至 Azure VM 的相關資訊，請參閱[使用 Azure CLI 對 Azure VM 設定 Azure 資源的受控識別](qs-configure-cli-windows-vm.md#user-assigned-managed-identity)
-
-

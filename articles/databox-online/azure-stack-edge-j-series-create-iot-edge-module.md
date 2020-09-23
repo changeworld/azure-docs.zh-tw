@@ -1,6 +1,6 @@
 ---
-title: '使用 GPU 進行 Azure Stack Edge 的 c # IoT Edge 模組 |Microsoft Docs'
-description: '瞭解如何開發可在 Azure Stack Edge GPU 裝置上部署的 c # IoT Edge 模組。'
+title: '使用 GPU Azure Stack Edge Pro 的 c # IoT Edge 模組 |Microsoft Docs'
+description: '瞭解如何開發可在 Azure Stack Edge Pro GPU 裝置上部署的 c # IoT Edge 模組。'
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,49 +8,49 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: c981208438529ec7c23ab3c3089f4d57d77c2714
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 628dec7f1ba44d81243aeff2657e2311119c566a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268956"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90891195"
 ---
-# <a name="develop-a-c-iot-edge-module-to-move-files-on-azure-stack-edge"></a>開發 c # IoT Edge 模組，以將檔案移至 Azure Stack Edge
+# <a name="develop-a-c-iot-edge-module-to-move-files-on-azure-stack-edge-pro"></a>開發 c # IoT Edge 模組，以將檔案移至 Azure Stack Edge Pro
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-本文將逐步引導您建立 IoT Edge 模組，以使用您的 Azure Stack Edge 裝置進行部署。 Azure Stack Edge 是一種儲存體解決方案，可讓您處理資料，並透過網路傳送至 Azure。
+本文將逐步引導您建立 IoT Edge 模組，以使用您的 Azure Stack Edge Pro 裝置進行部署。 Azure Stack Edge Pro 是一種儲存體解決方案，可讓您處理資料，並透過網路傳送至 Azure。
 
-您可以使用 Azure IoT Edge 模組搭配您的 Azure Stack Edge，以在資料移至 Azure 時進行轉換。 本文中使用的模組會執行邏輯，以將檔案從本機共用複製到 Azure Stack Edge 裝置上的雲端共用。
+您可以搭配 Azure Stack Edge Pro 使用 Azure IoT Edge 模組，以在資料移至 Azure 時進行轉換。 本文中使用的模組會執行邏輯，以將檔案從本機共用複製到 Azure Stack Edge Pro 裝置上的雲端共用。
 
 在本文中，您將學會如何：
 
 > [!div class="checklist"]
 > * 建立容器登錄來儲存和管理模組 (Docker 映像)。
-> * 建立 IoT Edge 模組，以在您的 Azure Stack Edge 裝置上部署。
+> * 建立 IoT Edge 模組，以在您的 Azure Stack Edge Pro 裝置上部署。
 
 
 ## <a name="about-the-iot-edge-module"></a>關於 IoT Edge 模組
 
-您的 Azure Stack Edge 裝置可以部署和執行 IoT Edge 模組。 Edge 模組本質上是可執行特定工作的 Docker 容器，例如，從裝置內嵌訊息、轉換訊息或將訊息傳送到 IoT 中樞。 在本文中，您將建立模組，以將檔案從本機共用複製到 Azure Stack Edge 裝置上的雲端共用。
+您 Azure Stack Edge Pro 裝置可以部署和執行 IoT Edge 模組。 Edge 模組本質上是可執行特定工作的 Docker 容器，例如，從裝置內嵌訊息、轉換訊息或將訊息傳送到 IoT 中樞。 在本文中，您將建立模組，以將檔案從本機共用複製到 Azure Stack Edge Pro 裝置上的雲端共用。
 
-1. 檔案會寫入 Azure Stack Edge 裝置上的本機共用。
+1. 檔案會寫入 Azure Stack Edge Pro 裝置上的本機共用。
 2. 檔案事件產生器會針對寫入到本機共用的每個檔案建立檔案事件。 當檔案遭到修改時，也會產生檔案事件。 接著將檔案事件傳送到 IoT Edge 中樞 (位於 IoT Edge 執行階段)。
 3. IoT Edge 自訂模組會處理檔案事件以建立檔案事件物件，此物件也包含該檔案的相對路徑。 此模組會使用相對的檔案路徑來產生絕對路徑，並將檔案從本機共用複製到雲端共用。 模組接著會從本機共用中刪除該檔案。
 
-![Azure IoT Edge 模組在 Azure Stack Edge 上的運作方式](./media/azure-stack-edge-j-series-create-iot-edge-module/how-module-works-1.png)
+![Azure IoT Edge 模組在 Azure Stack Edge Pro 上的運作方式](./media/azure-stack-edge-j-series-create-iot-edge-module/how-module-works-1.png)
 
 一旦檔案位於雲端共用之後，它就會自動上傳至您的 Azure 儲存體帳戶。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 開始之前，請確定您擁有：
 
-- 正在執行 Azure Stack Edge 裝置。
+- 正在執行 Azure Stack Edge Pro 裝置。
 
     - 裝置也會有相關聯的 IoT 中樞資源。
     - 裝置已設定 Edge 計算角色。
-    如需詳細資訊，請移至為您的 Azure Stack Edge [設定計算](azure-stack-edge-j-series-deploy-configure-compute.md#configure-compute) 。
+    如需詳細資訊，請移至 Azure Stack Edge Pro 的 [ [設定計算](azure-stack-edge-j-series-deploy-configure-compute.md#configure-compute) ]。
 
 - 下列開發資源：
 
@@ -65,7 +65,7 @@ ms.locfileid: "89268956"
 Azure Container Registry 是 Azure 中的私人 Docker 登錄，您可以在其中儲存並管理私人 Docker 容器映像。 雲端中所提供的兩個熱門 Docker 登錄服務為 Azure Container Registry 和 Docker Hub。 本文使用 Container Registry。
 
 1. 登入 Azure 入口網站：[https://portal.azure.com](https://portal.azure.com)。
-2. 選取 [建立資源] > [容器] > [Container Registry]****。 按一下 [建立]  。
+2. 選取 [建立資源] > [容器] > [Container Registry]****。 按一下 [建立]。
 3. 提供：
 
    1. Azure 內唯一的**登錄名稱**，其中包含 5 到 50 個英數字元。
@@ -77,7 +77,7 @@ Azure Container Registry 是 Azure 中的私人 Docker 登錄，您可以在其�
 
       ![建立容器登錄](./media/azure-stack-edge-j-series-create-iot-edge-module/create-container-registry-1.png)
  
-4. 選取 [建立]  。
+4. 選取 [建立]。
 5. 建立容器登錄之後，請加以瀏覽，並選取 [存取金鑰]****。
 
     ![取得存取金鑰](./media/azure-stack-edge-j-series-create-iot-edge-module/get-access-keys-1.png)
@@ -276,6 +276,6 @@ Azure Container Registry 是 Azure 中的私人 Docker 登錄，您可以在其�
 
 4. 您可以在 VS Code 整合式終端機中檢視完整容器映像位址。 系統會根據 module.json 檔案中的資訊，使用 `<repository>:<version>-<platform>` 格式來建置映像位址。 在本文中，它應該看起來像 `mycontreg2.azurecr.io/filecopymodule:0.0.1-amd64`。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
-若要在 Azure Stack Edge 上部署和執行此模組，請參閱 [新增模組](azure-stack-edge-j-series-deploy-configure-compute.md#add-a-module)中的步驟。
+若要在 Azure Stack Edge Pro 上部署和執行此模組，請參閱 [新增模組](azure-stack-edge-j-series-deploy-configure-compute.md#add-a-module)中的步驟。

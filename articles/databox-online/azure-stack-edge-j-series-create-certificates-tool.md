@@ -1,29 +1,29 @@
 ---
 title: 使用 Microsoft Azure Stack Hub 準備檢查工具建立憑證 |Microsoft Docs
-description: 說明如何建立憑證要求，然後使用 Azure Stack Hub 的「準備就緒檢查工具」工具，在 Azure Stack Edge GPU 裝置上取得並安裝憑證。
-services: Azure Stack Edge
+description: 說明如何建立憑證要求，然後使用 Azure Stack Hub 的「準備就緒檢查工具」工具，在 Azure Stack Edge Pro GPU 裝置上取得並安裝憑證。
+services: Azure Stack Edge Pro
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 7a6cf265f0be177aab436d544e694c5d59cfffd5
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 544625fe9fd2dbd87ad7330d7277494cbfbe6eb9
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267372"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90891093"
 ---
-# <a name="create-certificates-for-your-azure-stack-edge-using-azure-stack-hub-readiness-checker-tool"></a>使用 Azure Stack Hub 的就緒檢查程式工具建立 Azure Stack Edge 的憑證 
+# <a name="create-certificates-for-your-azure-stack-edge-pro-using-azure-stack-hub-readiness-checker-tool"></a>使用 Azure Stack Hub 的就緒檢查程式工具建立 Azure Stack Edge Pro 的憑證 
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-本文說明如何使用 Azure Stack Hub 的「準備就緒檢查工具」來建立 Azure Stack Edge 的憑證。 
+本文說明如何使用 Azure Stack Hub 的「準備就緒檢查工具」，為您的 Azure Stack Edge Pro 建立憑證。 
 
 ## <a name="using-azure-stack-hub-readiness-checker-tool"></a>使用 Azure Stack Hub 的準備檢查工具
 
-使用 Azure Stack Hub 的「準備就緒檢查工具」來建立憑證簽署要求， (Csr) 進行 Azure Stack Edge 裝置部署。 您可以在放置 Azure Stack Edge 裝置的訂單並等待裝置抵達之後，建立這些要求。 
+使用 Azure Stack Hub 的「準備就緒檢查工具」來建立憑證簽署要求， (Csr) 進行 Azure Stack Edge Pro 裝置部署。 您可以在下一 Azure Stack Edge Pro 裝置的訂單並等待裝置抵達之前，建立這些要求。 
 
 > [!NOTE]
 > 此工具僅適用于測試或開發用途，不適用於生產裝置。 
@@ -37,12 +37,12 @@ ms.locfileid: "89267372"
 - VPN 憑證
 
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
-若要為 Azure Stack Edge 裝置部署建立 Csr，請確定： 
+若要為 Azure Stack Edge Pro 裝置部署建立 Csr，請確定： 
 
 - 您有執行 Windows 10 或 Windows Server 2016 或更新版本的用戶端。 
-- 您已從這個系統上 [的 PowerShell 資源庫](https://aka.ms/AzsReadinessChecker) 下載 Microsoft Azure Stack Hub 1.2002.1133.85 檢查工具。 您可能需要搜尋此套件。 只有此版本的工具可以建立 Azure Stack Edge 裝置的憑證。
+- 您已從這個系統上 [的 PowerShell 資源庫](https://aka.ms/AzsReadinessChecker) 下載 Microsoft Azure Stack Hub 1.2002.1133.85 檢查工具。 您可能需要搜尋此套件。 只有此版本的工具可以建立 Azure Stack Edge Pro 裝置的憑證。
 - 您有下列憑證資訊：
   - 裝置名稱
   - 節點序號
@@ -50,7 +50,7 @@ ms.locfileid: "89267372"
 
 ## <a name="generate-certificate-signing-requests"></a>產生憑證簽署要求
 
-使用下列步驟來準備 Azure Stack Edge 的裝置憑證：
+使用下列步驟來準備 Azure Stack Edge Pro 裝置憑證：
 
 1. 以系統管理員身分執行 PowerShell (5.1 或更新版本的) 。
 2. 安裝 Azure Stack Hub 的就緒檢查工具。 在 PowerShell 提示字元中，輸入： 
@@ -121,15 +121,15 @@ ms.locfileid: "89267372"
     您也會看到 INF 資料夾。 這包含一項管理。 <邊緣-devicename> 資訊檔，以純文字說明憑證詳細資料。  
 
 
-6. 將這些檔案提交給您的憑證授權單位單位， (內部或公用) 。 請確定您的 CA 會使用您產生的要求來產生憑證，以符合 [節點憑證](azure-stack-edge-j-series-manage-certificates.md#node-certificates)、 [端點憑證](azure-stack-edge-j-series-manage-certificates.md#endpoint-certificates)和 [本機 UI 憑證](azure-stack-edge-j-series-manage-certificates.md#local-ui-certificates)的 Azure Stack Edge 憑證需求。
+6. 將這些檔案提交給您的憑證授權單位單位， (內部或公用) 。 請確定您的 CA 會使用您產生的要求來產生憑證，以符合 [節點憑證](azure-stack-edge-j-series-manage-certificates.md#node-certificates)、 [端點憑證](azure-stack-edge-j-series-manage-certificates.md#endpoint-certificates)和 [本機 UI 憑證](azure-stack-edge-j-series-manage-certificates.md#local-ui-certificates)的 Azure Stack Edge Pro 憑證需求。
 
 ## <a name="prepare-certificates-for-deployment"></a>準備憑證以進行部署
 
-您從憑證授權單位單位取得的憑證檔案 (CA) 必須使用符合 Azure Stack Edge 裝置憑證需求的屬性來匯入和匯出。 在您產生憑證簽署要求的相同系統上，完成下列步驟。
+您從憑證授權單位單位取得的憑證檔案 (CA) 必須使用符合 Azure Stack Edge Pro 裝置的憑證需求的屬性來匯入和匯出。 在您產生憑證簽署要求的相同系統上，完成下列步驟。
 
-- 若要匯入憑證，請依照 [存取 Azure Stack Edge 裝置的用戶端上的匯入憑證](azure-stack-edge-j-series-manage-certificates.md#import-certificates-on-the-client-accessing-the-device)中的步驟執行。
+- 若要匯入憑證，請依照 [存取 Azure Stack Edge Pro 裝置的用戶端上的匯入憑證](azure-stack-edge-j-series-manage-certificates.md#import-certificates-on-the-client-accessing-the-device)中的步驟執行。
 
-- 若要匯出憑證，請遵循 [從存取 Azure Stack Edge 裝置的用戶端匯出憑證](azure-stack-edge-j-series-manage-certificates.md#import-certificates-on-the-client-accessing-the-device)中的步驟。
+- 若要匯出憑證，請遵循 [從存取 Azure Stack Edge Pro 裝置的用戶端匯出憑證](azure-stack-edge-j-series-manage-certificates.md#import-certificates-on-the-client-accessing-the-device)中的步驟。
 
 
 ## <a name="validate-certificates"></a>驗證憑證
@@ -150,6 +150,6 @@ ms.locfileid: "89267372"
 
     `Invoke-AzsCertificateValidation -CertificateType AzureStackEdge -DeviceName mytea1 -NodeSerialNumber VM1500-00025 -externalFQDN azurestackedge.contoso.com -CertificatePath $ENV:USERPROFILE\Documents\AzureStackCSR\AzureStackEdge -pfxPassword $pfxPassword`
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
-[部署 Azure Stack Edge 裝置](azure-stack-edge-gpu-deploy-prep.md)
+[部署 Azure Stack Edge Pro 裝置](azure-stack-edge-gpu-deploy-prep.md)

@@ -1,6 +1,6 @@
 ---
-title: 透過 Azure PowerShell 將 Vm 部署到您的 Azure Stack Edge GPU 裝置
-description: 說明如何使用 Azure PowerShell，在 Azure Stack Edge 裝置上建立及管理虛擬機器 (Vm) 。
+title: 透過 Azure PowerShell 將 Vm 部署到您的 Azure Stack Edge Pro GPU 裝置
+description: 說明如何使用 Azure PowerShell，在 Azure Stack Edge Pro 裝置上建立和管理 (Vm) 的虛擬機器。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,53 +8,53 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: ab303dd42d9064a9fa1392e27adc361d5b761cf0
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 5ed6de28f1e1b0545ebd675c30249e2f2b4747e9
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89256118"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90890652"
 ---
-# <a name="deploy-vms-on-your-azure-stack-edge-gpu-device-via-azure-powershell-script"></a>透過 Azure PowerShell 腳本在您的 Azure Stack Edge GPU 裝置上部署 Vm
+# <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-azure-powershell-script"></a>透過 Azure PowerShell 腳本在您的 Azure Stack Edge Pro GPU 裝置上部署 Vm
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-本教學課程說明如何使用 Azure PowerShell 腳本，在您的 Azure Stack Edge 裝置上建立和管理 VM。
+本教學課程說明如何使用 Azure PowerShell 腳本，在您的 Azure Stack Edge Pro 裝置上建立和管理 VM。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
-在您開始使用此腳本在 Azure Stack Edge 裝置上建立和管理 VM 之前，您必須確定已完成下列步驟中所列的必要條件：
+在您開始使用此腳本在 Azure Stack Edge Pro 裝置上建立和管理 VM 之前，您必須確定已完成下列步驟中所列的必要條件：
 
-### <a name="for-azure-stack-edge-device-via-the-local-web-ui"></a>透過本機 web UI 進行 Azure Stack Edge 裝置
+### <a name="for-azure-stack-edge-pro-device-via-the-local-web-ui"></a>透過本機 web UI 進行 Azure Stack Edge Pro 裝置
 
-1. 您已完成 Azure Stack Edge 裝置上的網路設定，如 [步驟1：設定 Azure Stack Edge 裝置](azure-stack-edge-j-series-connect-resource-manager.md#step-1-configure-azure-stack-edge-device)中所述。
+1. 您已完成 Azure Stack Edge Pro 裝置上的網路設定，如 [步驟1：設定 Azure Stack Edge Pro 裝置](azure-stack-edge-j-series-connect-resource-manager.md#step-1-configure-azure-stack-edge-pro-device)中所述。
 
-2. 已啟用用於計算的網路介面。 此網路介面 IP 可用來建立 VM 部署的虛擬交換器。 下列步驟將逐步引導您完成此程式：
+2. 已啟用網路介面進行計算。 此網路介面 IP 用來建立 VM 部署的虛擬交換器。 下列步驟會逐步引導您進行程序：
 
     1. 移至 [ **計算] 設定**。 選取您將用來建立虛擬交換器的網路介面。
 
         > [!IMPORTANT] 
-        > 您只能針對計算設定一個埠。
+        > 您只能設定一個連接埠進行計算。
 
-    2. 啟用網路介面上的計算。 Azure Stack Edge 建立和管理對應于該網路介面的虛擬交換器。
+    2. 在網路介面上啟用計算。 Azure Stack Edge Pro 會建立和管理對應于該網路介面的虛擬交換器。
 
-3. 您已在 Azure Stack Edge 裝置和用戶端的受根信任存放區中建立並安裝所有憑證。 遵循 [步驟2：建立和安裝憑證](azure-stack-edge-j-series-connect-resource-manager.md#step-2-create-and-install-certificates)中所述的程式。
+3. 您已在 Azure Stack Edge Pro 裝置和用戶端的受根信任存放區中建立並安裝所有憑證。 請遵循[步驟 2：建立和安裝用戶端憑證](azure-stack-edge-j-series-connect-resource-manager.md#step-2-create-and-install-certificates)中所述的程序。
 
 ### <a name="for-your-windows-client"></a>適用于您的 Windows 用戶端
 
 1. 您已在裝置的本機 web UI 中，于 [ **網路** ] 頁面上定義了 [Azure 一致服務虛擬網際網路通訊協定] (VIP) 。 您必須將此 VIP 新增至：
 
-    - 用戶端上的主機檔案，或
-    - DNS 伺服器設定
+    - 用戶端上的 hosts 檔案，或
+    - DNS 伺服器組態
     
     > [!IMPORTANT]
-    > 建議您針對端點名稱解析修改 DNS 伺服器設定。
+    > 建議您修改 DNS 伺服器設定以進行端點名稱解析。
 
-    1. 以系統管理員身分啟動「 **記事本** 」 (系統管理員許可權，才能將檔案儲存) ，然後開啟位於的 **主機** 檔案 `C:\Windows\System32\Drivers\etc` 。
+    1. 以系統管理員身分啟動 [記事本] (需有系統管理員權限才能儲存檔案)，然後開啟位於 `C:\Windows\System32\Drivers\etc` 的 **hosts** 檔案。
     
-        ![Windows 檔案總管主機檔案](media/azure-stack-edge-j-series-connect-resource-manager/hosts-file.png)
+        ![Windows 檔案總管 hosts 檔案](media/azure-stack-edge-j-series-connect-resource-manager/hosts-file.png)
     
-    2. 在 **主機** 檔案中新增下列專案，並以適當的值取代您的裝置：
+    2. 將下列項目新增至 **hosts** 檔案，並以您裝置的適當值加以取代：
     
         ```
         <Azure consistent services VIP> login.<appliance name>.<DNS domain>
@@ -65,7 +65,7 @@ ms.locfileid: "89256118"
 
     3. 使用下圖進行參考。 儲存 **hosts** 檔案。
 
-        ![記事本中的主檔案](media/azure-stack-edge-j-series-deploy-virtual-machine-cli-python/hosts-screenshot-boxed.png)
+        ![記事本中的 hosts 檔案](media/azure-stack-edge-j-series-deploy-virtual-machine-cli-python/hosts-screenshot-boxed.png)
 
 2. 下載此程式中使用[的 PowerShell 腳本](https://aka.ms/ase-vm-powershell)。
 
@@ -116,6 +116,6 @@ ms.locfileid: "89256118"
     ```
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 [使用 Azure PowerShell Cmdlet 部署 Vm](azure-stack-edge-j-series-deploy-virtual-machine-powershell.md)

@@ -9,19 +9,19 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 03/26/2020
-ms.openlocfilehash: 4028d6732220dba4848c88306a501ce22af7487a
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 07edfa2bca25a9f3e8d985cfe36987ff04ca950f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89144017"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906653"
 ---
 # <a name="tutorial-train-and-deploy-a-model-from-the-cli"></a>教學課程：透過 CLI 訓練和部署模型
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 在本教學課程中，您會使用 Azure CLI 的機器學習延伸模組來訓練、註冊和部署模型。
 
-本教學課程中的 Python 訓練指令碼使用 [scikit-learn](https://scikit-learn.org/) 來訓練基本模型。 本教學課程的重點並非指令碼或模型，而是透過 CLI 使用 Azure Machine Learning 的流程。
+本教學課程中的 Python 訓練指令碼使用 [scikit-learn](https://scikit-learn.org/) 來訓練簡易模型。 本教學課程的重點並非指令碼或模型，而是透過 CLI 使用 Azure Machine Learning 的流程。
 
 了解如何執行下列動作：
 
@@ -75,7 +75,7 @@ git clone https://github.com/microsoft/MLOps.git
 
 ## <a name="connect-to-your-azure-subscription"></a>連接到 Azure 訂用帳戶
 
-您可藉由數種方式透過 CLI 向您的 Azure 訂用帳戶進行驗證。 最基本的方式是使用瀏覽器，以互動方式進行驗證。 若要以互動方式進行驗證，請開啟命令列或終端機，並使用下列命令：
+您可藉由數種方式透過 CLI 向您的 Azure 訂用帳戶進行驗證。 最簡單的方式是使用瀏覽器，以互動方式進行驗證。 若要以互動方式進行驗證，請開啟命令列或終端機，並使用下列命令：
 
 ```azurecli-interactive
 az login
@@ -101,7 +101,7 @@ az extension update -n azure-cli-ml
 
 ## <a name="create-a-resource-group"></a>建立資源群組
 
-資源群組是 Azure 平台上資源的基本容器。 使用 Azure Machine Learning 時，資源群組會包含您的 Azure Machine Learning 工作區， 以及該工作區使用的其他 Azure 服務。 舉例來說，若您使用雲端式計算資源來訓練模型，該資源就會建立在資源群組中。
+資源群組是 Azure 平台上資源的容器。 使用 Azure Machine Learning 時，資源群組會包含您的 Azure Machine Learning 工作區， 以及該工作區使用的其他 Azure 服務。 舉例來說，若您使用雲端式計算資源來訓練模型，該資源就會建立在資源群組中。
 
 若要「建立新的資源群組」，請使用下列命令。 將 `<resource-group-name>` 取代成要用於此資源群組的名稱。 將 `<location>` 取代成要用於此資源群組的 Azure 區域：
 

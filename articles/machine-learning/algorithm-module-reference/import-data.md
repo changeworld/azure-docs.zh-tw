@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: 68bf47f370a57fe277d4ab9679af0b920a0d81ec
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 85a54ce7c8b3beea102fad7c3adb58f92c8574dd
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89658115"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907936"
 ---
 # <a name="import-data-module"></a>匯入資料模組
 
-本文說明 Azure Machine Learning 設計工具 (預覽) 中的模組。
+本文描述 Azure Machine Learning 設計工具中的模組。
 
 使用此模組，從現有的雲端資料服務將資料載入機器學習管線。 
 

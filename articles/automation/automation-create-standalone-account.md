@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/15/2019
 ms.topic: conceptual
-ms.openlocfilehash: ea0970a672ac8fb15c2e7c6bbb65edf33bd25f04
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 40654926b2998b3ba1c4ce1a5607a768f2c32340
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186583"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987272"
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>建立獨立的 Azure 自動化帳戶
 
@@ -31,7 +31,7 @@ ms.locfileid: "86186583"
 若要建立或更新自動化帳戶，以及完成本文中所述的工作，您必須具有下列權限：
 
 * 若要建立自動化帳戶，必須將您的 Azure AD 使用者帳戶加入至角色具有的權限相當於 `Microsoft.Automation` 資源的擁有者角色。 如需詳細資訊，請參閱 [Azure 自動化中的角色型存取控制](automation-role-based-access-control.md)。
-* 在 Azure 入口網站的 [Azure Active Directory] > [管理] > [使用者設定] 下方，如果將 [應用程式註冊] 設為 [是]，則 Azure AD 租用戶中的非管理使用者就能[註冊 Active Directory 應用程式](../active-directory/develop/howto-create-service-principal-portal.md#check-azure-subscription-permissions)。 如果**應用程式註冊**設定為 [**否**]，則執行此動作的使用者在 Azure AD 中必須至少有一個應用程式開發人員角色。
+* 在 Azure 入口網站的 [Azure Active Directory] > [管理] > [使用者設定] 下方，如果將 [應用程式註冊] 設為 [是]，則 Azure AD 租用戶中的非管理使用者就能[註冊 Active Directory 應用程式](../active-directory/develop/howto-create-service-principal-portal.md#check-azure-subscription-permissions)。 如果 **應用程式註冊** 設定為 [ **否**]，則執行此動作的使用者在 Azure AD 中必須至少要有應用程式開發人員角色。
 
 若您在加入至訂用帳戶的全域管理員/共同管理員角色之前，並非訂用帳戶 Active Directory 執行個體的成員，系統會將您以來賓身分加入至 Active Directory。 在此案例中，您會在新增自動化帳戶頁面中看到此訊息：`You do not have permissions to create.`
 
@@ -59,7 +59,7 @@ ms.locfileid: "86186583"
    > [!NOTE]
    > 如果您在加入自動化帳戶窗格中看見下列訊息，您的帳戶就不是訂用帳戶管理員角色的成員和訂用帳戶的共同管理員。
    >
-   > ![加入自動化帳戶警告](media/automation-create-standalone-account/create-account-without-perms.png)
+   > :::image type="content" source="media/automation-create-standalone-account/create-account-without-perms.png" alt-text="提示「您沒有許可權可在 Azure Active directory 中建立執行帳戶」的螢幕擷取畫面。":::
 
 1. 在 [加入自動化帳戶] 窗格的 [名稱] 欄位中，輸入新自動化帳戶的名稱。 選擇此名稱後即無法變更。 
 
@@ -74,7 +74,7 @@ ms.locfileid: "86186583"
    > [!NOTE]
    > 如果您選取 [否]，以選擇不要 [建立執行身分帳戶] ，則加入自動化帳戶窗格中會顯示一則訊息。 雖然此帳戶建立於 Azure 入口網站中，但此帳戶在傳統部署模型訂用帳戶或 Azure Resource Manager 訂用帳戶目錄服務內不會有對應的驗證身分識別。 因此，自動化帳戶無法存取您訂用帳戶中的資源。 這會導致所有參考此帳戶的 Runbook 均無法進行驗證，也無法對那些部署模型中的資源執行工作。
    >
-   > ![加入自動化帳戶警告](media/automation-create-standalone-account/create-account-decline-create-runas-msg.png)
+   > :::image type="content" source="media/automation-create-standalone-account/create-account-decline-create-runas-msg.png" alt-text="提示顯示 [您已選擇不要建立執行帳戶] 訊息的螢幕擷取畫面。":::
    >
    > 若未建立服務主體，則不會指派參與者角色。
    >
@@ -105,4 +105,4 @@ ms.locfileid: "86186583"
 * 若要開始使用圖形化 PowerShell Runbook，請參閱[教學課程：建立 PowerShell Runbook](learn/automation-tutorial-runbook-textual-powershell.md)。
 * 若要開始使用 PowerShell 工作流程 Runbook，請參閱[教學課程：建立 PowerShell 工作流程 Runbook](learn/automation-tutorial-runbook-textual.md)。
 * 若要開始使用 Python 2 Runbook，請參閱[教學課程：建立 Python 2 Runbook](learn/automation-tutorial-runbook-textual-python2.md)。
-* 如需 PowerShell Cmdlet 參考，請參閱 [Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation)。
+* 如需 PowerShell Cmdlet 參考，請參閱 [Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0&preserve-view=true#automation)。

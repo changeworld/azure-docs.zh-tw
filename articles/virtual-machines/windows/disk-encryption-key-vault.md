@@ -1,6 +1,6 @@
 ---
 title: 建立及設定適用於 Azure 磁碟加密的金鑰保存庫
-description: 本文提供建立及設定金鑰保存庫，以與 Azure 磁碟加密搭配使用的步驟
+description: 本文提供建立和設定金鑰保存庫的步驟，以與 Windows VM 上的 Azure 磁碟加密搭配使用。
 ms.service: virtual-machines
 ms.subservice: security
 ms.topic: how-to
@@ -8,12 +8,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0779cad02f266d49be055ea485e87c9c8075b7b3
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 9d9d3d8456e0623ea3f1ef17c5f9f7acb28d0ecd
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284518"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90977912"
 ---
 # <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption"></a>建立及設定適用於 Azure 磁碟加密的金鑰保存庫
 
@@ -25,7 +25,7 @@ Azure 磁碟加密會使用 Azure Key Vault，來控制及管理磁碟加密金�
 建立及設定與 Azure 磁碟加密搭配使用的金鑰保存庫，包含下列步驟：
 
 > [!Note]
-> 您必須選取 [Azure Key Vault 存取原則設定] 中的選項，才能存取磁片區加密的 Azure 磁碟加密。 如果您已在金鑰保存庫上啟用防火牆，您必須移至金鑰保存庫上的 [網路功能] 索引標籤，並啟用 Microsoft 信任服務的存取權。 
+> 您必須選取 [Azure Key Vault 存取原則] 設定中的選項，才能存取 Azure 磁碟加密的磁片區加密。 如果您已在金鑰保存庫上啟用防火牆，則必須移至金鑰保存庫上的 [網路] 索引標籤，並啟用對 Microsoft 受信任服務的存取。 
 
 1. 建立資源群組 (如有需要)。
 2. 建立金鑰保存庫。 
@@ -49,7 +49,7 @@ Azure 磁碟加密會使用 Azure Key Vault，來控制及管理磁碟加密金�
 
 ### <a name="connect-to-your-azure-account"></a>連線至您的 Azure 帳戶
 
-在使用 Azure CLI 或 Azure PowerShell 之前，必須先連線到您的 Azure 訂閱。 若要這麼做，請[使用 Azure CLI 登入](/cli/azure/authenticate-azure-cli?view=azure-cli-latest)、[使用 Azure PowerShell 登入](/powershell/azure/authenticate-azureps?view=azps-2.5.0)，或在出現提示時將您的登入資訊提供給 Azure 入口網站。
+在使用 Azure CLI 或 Azure PowerShell 之前，必須先連線到您的 Azure 訂用帳戶。 若要這麼做，請[使用 Azure CLI 登入](/cli/azure/authenticate-azure-cli?view=azure-cli-latest)、[使用 Azure PowerShell 登入](/powershell/azure/authenticate-azureps?view=azps-2.5.0)，或在出現提示時將您的登入資訊提供給 Azure 入口網站。
 
 ```azurecli-interactive
 az login

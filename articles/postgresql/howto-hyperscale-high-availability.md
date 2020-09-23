@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 07/27/2020
-ms.openlocfilehash: f08fb01cf26ddf73d31b575242b27d7d8b4017d9
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 46b842994cbcf7efe66d5992c79246d77626e268
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90033265"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907393"
 ---
 # <a name="configure-hyperscale-citus-high-availability"></a>設定超大規模 (Citus) 高可用性
 
@@ -23,14 +23,14 @@ ms.locfileid: "90033265"
 
 在伺服器群組建立期間，或之後在 Azure 入口網站的伺服器群組的 [ **計算 + 儲存體** ] 索引標籤中啟用 HA 是可行的。 在上述任一情況下，使用者介面看起來都很類似。 將 [ **高可用性** ] 的滑杆從 [否] 拖曳至 [是]：
 
-![ha 滑杆](./media/howto-hyperscale-high-availability/01-ha-slider.png)
+:::image type="content" source="./media/howto-hyperscale-high-availability/01-ha-slider.png" alt-text="ha 滑杆":::
 
 按一下 [ **儲存** ] 按鈕以套用您的選取專案。 啟用 HA 可能需要一些時間，因為伺服器群組會布建待命，並將資料串流至這些資料。
 
 伺服器群組的 [ **總覽** ] 索引標籤會列出所有節點及其待命，以及一個 [ **高可用性** ] 資料行，指出是否已成功為每個節點啟用 HA。
 
-![伺服器群組中的 ha 資料行總覽](./media/howto-hyperscale-high-availability/02-ha-column.png)
+:::image type="content" source="./media/howto-hyperscale-high-availability/02-ha-column.png" alt-text="伺服器群組中的 ha 資料行總覽":::
 
-### <a name="next-steps"></a>接下來的步驟
+### <a name="next-steps"></a>下一步
 
 深入瞭解 [高可用性](concepts-hyperscale-high-availability.md)。

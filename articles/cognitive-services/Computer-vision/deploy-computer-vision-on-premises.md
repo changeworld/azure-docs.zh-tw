@@ -1,7 +1,7 @@
 ---
 title: 搭配 Kubernetes 和 Helm 使用電腦視覺容器
 titleSuffix: Azure Cognitive Services
-description: 將電腦視覺容器部署至 Azure 容器實例，並在網頁瀏覽器中進行測試。
+description: 瞭解如何使用 Kubernetes 和 Helm 部署電腦視覺容器。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: e2a017371ccb3cf70812aed5606c386746024884
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 9a8e0dde8b24c39180a584c26af725ab82ea0176
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89443155"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907113"
 ---
 # <a name="use-computer-vision-container-with-kubernetes-and-helm"></a>搭配 Kubernetes 和 Helm 使用電腦視覺容器
 
@@ -25,9 +25,9 @@ ms.locfileid: "89443155"
 
 使用內部部署電腦視覺容器之前的必要條件如下：
 
-| 必要 | 目的 |
+| 必要 | 用途 |
 |----------|---------|
-| Azure 帳戶 | 如果您沒有 Azure 訂用帳戶，請在開始前先建立[免費帳戶][free-azure-account]。 |
+| Azure 帳戶 | 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶][free-azure-account]。 |
 | Kubernetes CLI | 需要 [KUBERNETES CLI][kubernetes-cli] 才能管理容器登錄中的共用認證。 Helm 之前也需要 Kubernetes，也就是 Kubernetes 套件管理員。 |
 | Helm CLI | 安裝 [HELM CLI][helm-install]，這是用來安裝 Helm 圖表 (容器套件定義) 。 |
 | 電腦視覺資源 |若要使用此容器，您必須具備：<br><br>Azure **電腦視覺** 資源和相關聯的 API 金鑰（端點 URI）。 這兩個值都可在資源的 [總覽] 和 [金鑰] 頁面上取得，而且必須要有這些值才能啟動容器。<br><br>**{API_KEY}**： [ **金鑰** ] 頁面上兩個可用資源金鑰的其中一個<br><br>**{ENDPOINT_URI}**： **總覽** 頁面上提供的端點|
@@ -44,7 +44,7 @@ ms.locfileid: "89443155"
 
 ## <a name="connect-to-the-kubernetes-cluster"></a>連接到 Kubernetes 叢集
 
-主機電腦預期會有可用的 Kubernetes 叢集。 請參閱本教學課程以瞭解如何部署 [Kubernetes](../../aks/tutorial-kubernetes-deploy-cluster.md) 叢集，以瞭解如何將 Kubernetes 叢集部署到主機電腦。
+主機電腦預期會有可用的 Kubernetes 叢集。 請參閱本教學課程以瞭解如何部署 [Kubernetes](../../aks/tutorial-kubernetes-deploy-cluster.md) 叢集，以瞭解如何將 Kubernetes 叢集部署到主機電腦。 您可以在 [Kubernetes 檔](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)中找到有關部署的詳細資訊。
 
 ### <a name="sharing-docker-credentials-with-the-kubernetes-cluster"></a>使用 Kubernetes 叢集共用 Docker 認證
 
@@ -290,7 +290,7 @@ replicaset.apps/read-57cb76bcf7   1         1         1       17s
 
 [!INCLUDE [Container's API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 如需在 Azure Kubernetes Service (AKS) 中使用 Helm 安裝應用程式的詳細資訊，請 [造訪這裡][installing-helm-apps-in-aks]。
 
