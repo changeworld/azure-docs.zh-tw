@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: 1ec4dbb1ce55919fda6c73d198100db34f5f57ea
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 61c085cb721f9e1a8d9c44146a9d96cd5a08562c
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121250"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90085309"
 ---
 # <a name="tutorial-create-a-store-locator-by-using-azure-maps"></a>教學課程：使用 Azure 地圖服務建立商店定位器
 
@@ -385,7 +385,7 @@ ms.locfileid: "88121250"
     var map, popup, datasource, iconLayer, centerMarker, searchURL;
     ```
 
-1. 將程式碼新增至 *index.js*。 下列程式碼會初始化地圖。 我們已新增[事件接聽程式](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)，以等待頁面載入完成。 然後，我們會連結事件以監視地圖的載入，並將功能提供給搜尋按鈕和「我的位置」按鈕。
+1. 將程式碼新增至 *index.js*。 下列程式碼會初始化地圖。 我們已新增[事件接聽程式](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map#events)，以等待頁面載入完成。 然後，我們會連結事件以監視地圖的載入，並將功能提供給搜尋按鈕和「我的位置」按鈕。
 
    當使用者選取搜尋按鈕，或是在搜尋方塊中輸入位置然後按下 Enter 鍵時，就會起始使用者查詢的模糊搜尋。 將國家/區域 ISO 2 值的陣列傳入 `countrySet` 選項，可將搜尋結果限制在這些國家/地區。 限制要搜尋的國家/地區，有助於提高傳回結果的精確度。 
   
@@ -935,7 +935,7 @@ ms.locfileid: "88121250"
 > * 新增[設定篩選](https://azuremapscodesamples.azurewebsites.net/?sample=Filter%20Symbols%20by%20Property)的功能。 
 > * 新增使用查詢字串指定初始搜尋值的支援。 當您在商店定位器中納入此選項時，使用者可以將搜尋加入書籤和共用搜尋。 此外也可讓您輕鬆地將其他頁面上的搜尋傳至此頁面。  
 > * 將商店定位器部署為 [Azure App Service Web 應用程式](https://docs.microsoft.com/azure/app-service/quickstart-html)。 
-> * 將資料儲存在資料庫中和搜尋附近的位置。 若要深入了解，請參閱 [SQL Server 空間資料類型概觀](https://docs.microsoft.com/sql/relational-databases/spatial/spatial-data-types-overview?view=sql-server-2017)和[查詢最接近像素的空間資料](https://docs.microsoft.com/sql/relational-databases/spatial/query-spatial-data-for-nearest-neighbor?view=sql-server-2017)。
+> * 將資料儲存在資料庫中和搜尋附近的位置。 若要深入了解，請參閱 [SQL Server 空間資料類型概觀](https://docs.microsoft.com/sql/relational-databases/spatial/spatial-data-types-overview)和[查詢最接近像素的空間資料](https://docs.microsoft.com/sql/relational-databases/spatial/query-spatial-data-for-nearest-neighbor)。
 
 > [!div class="nextstepaction"]
 > [檢視完整的原始程式碼](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator)

@@ -3,14 +3,14 @@ title: Azure 自動化更新管理概觀
 description: 此文章提供可對 Windows 和 Linux 機器實作更新的更新管理功能概觀。
 services: automation
 ms.subservice: update-management
-ms.date: 09/11/2020
+ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: ab2c584b1e62ac8296c4e9489a72489cd815fc3c
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 4a753cd139db9dec23c82346704382979aeaa0de
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90089848"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90976982"
 ---
 # <a name="update-management-overview"></a>更新管理概觀
 
@@ -30,6 +30,8 @@ ms.locfileid: "90089848"
 
 > [!NOTE]
 > 您無法使用以更新管理設定的機器，從 Azure 自動化中執行自訂指令碼。 這部機器只能執行 Microsoft 簽署的更新指令碼。
+
+若要在 Azure VM 上自動下載並安裝可用的 *重大* 和 *安全性* 修補程式，請參閱 WINDOWS vm 的 [自動 VM 來賓修補](../../virtual-machines/windows/automatic-vm-guest-patching.md) 。
 
 ## <a name="about-update-management"></a>關於更新管理
 
@@ -82,7 +84,7 @@ ms.locfileid: "90089848"
 |Windows Server 2008 R2 (RTM 和 SP1 Standard)| 更新管理支援此作業系統的評量和修補。 Windows Server 2008 R2 支援 [混合式 Runbook 背景工作角色](../automation-windows-hrw-install.md) 。 |
 |CentOS 6 (x86/x64) 和 7 (x64)      | Linux 代理程式需要存取更新存放庫。 分類型修補需要 `yum`，才能傳回 CentOS 在其 RTM 版本中沒有的安全性資料。 如需 CentOS 上分類型修補的詳細資訊，請參閱 [Linux 上的更新分類](update-mgmt-view-update-assessments.md#linux)。          |
 |Red Hat Enterprise 6 (x86/x64) 和 7 (x64)     | Linux 代理程式需要存取更新存放庫。        |
-|SUSE Linux Enterprise Server 11 (x86/x64) 和 12 (x64)     | Linux 代理程式需要存取更新存放庫。        |
+|SUSE Linux Enterprise Server 12 (x64)     | Linux 代理程式需要存取更新存放庫。        |
 |Ubuntu 14.04 LTS、16.04 LTS 和 18.04 (x86/x64)      |Linux 代理程式需要存取更新存放庫。         |
 
 > [!NOTE]
@@ -234,7 +236,7 @@ Windows 代理程式必須設定為可與 WSUS 伺服器通訊，或需要存取
 sudo yum -q --security check-update
 ```
 
-目前沒有支援的方法可以在 CentOS 上啟用原生分類資料可用性。 目前，只會為可能已自行啟用此功能的客戶提供最佳技術支援。
+目前沒有支援的方法可以在 CentOS 上啟用原生分類資料可用性。 目前，有限的支援會提供給可能已自行啟用此功能的客戶。
 
 若要將 Red Hat Enterprise 版本 6 上的更新分類，您必須安裝 yum-security 外掛程式。 在 Red Hat Enterprise Linux 7 上，此外掛程式已經是 yum 本身的一部分，因此不需要安裝任何項目。 如需詳細資訊，請參閱下列 Red Hat [知識文章](https://access.redhat.com/solutions/10021) \(英文\)。
 
@@ -257,7 +259,7 @@ Azure [Resource Manager 範本](update-mgmt-enable-template.md)可用來協助�
 * [從 Azure 自動化帳戶](update-mgmt-enable-automation-account.md)
 * 針對已啟用 Arc 的伺服器 (預覽版) 或非 Azure 機器，請安裝 [Log Analytics 代理程式](../../azure-monitor/platform/log-analytics-agent.md) ，然後 [讓工作區中的電腦](update-mgmt-enable-automation-account.md#enable-machines-in-the-workspace) 更新管理。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * 如需使用更新管理的詳細資訊，請參閱 [管理 vm 的更新](update-mgmt-manage-updates-for-vm.md)。
 

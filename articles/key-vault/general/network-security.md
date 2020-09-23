@@ -7,15 +7,15 @@ manager: ravijan
 ms.service: key-vault
 ms.subservice: general
 ms.topic: tutorial
-ms.date: 04/22/2020
+ms.date: 09/14/2020
 ms.author: sudbalas
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 8617b0b71e58d22ccd2cf753e4ddc862932f68da
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: bc25a2ada3052689bc9dc4585c238fe19cb2a341
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89536050"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90087386"
 ---
 # <a name="configure-azure-key-vault-firewalls-and-virtual-networks"></a>設定 Azure Key Vault 防火牆和虛擬網路
 
@@ -27,7 +27,6 @@ ms.locfileid: "89536050"
 > [!NOTE]
 > 請留意下列組態限制：
 > * 最多允許 127 條虛擬網路規則和 127 條 IPv4 規則。 
-> * 不支援使用 "/31" 或 "/32" 前置詞大小的小型位址範圍。 而是，使用個別 IP 位址規則設定這些範圍。
 > * 只有公用 IP 位址允許使用 IP 網路規則。 IP 規則中不允許保留私人網路的 IP 位址範圍 (如 RFC 1918 中所定義)。 私人網路包括以 **10.** 、**172.16-31** 和 **192.168.** 開頭的位址。 
 > * 目前僅支援 IPv4 位址。
 
@@ -42,7 +41,7 @@ ms.locfileid: "89536050"
 5. 在開啟的新刀鋒視窗中，選取您要允許存取此金鑰保存庫的訂用帳戶、虛擬網路和子網路。 如果您選取的虛擬網路和子網路並未啟用服務端點，請確認您要啟用服務端點，然後選取 [啟用]****。 可能需要 15 分鐘的時間才會生效。
 6. 在 [IP 網路]**** 下方，輸入採用 [CIDR (無類別網域間路由選擇) 表示法](https://tools.ietf.org/html/rfc4632)的 IPv4 位址範圍或個別的 IP 位址，以新增 IPv4 位址範圍。
 7. 如果您要允許 Microsoft 信任的服務略過 Key Vault 防火牆，請選取 [是]。 如需目前 Key Vault 信任服務的完整清單，請參閱下列連結。 [Azure Key Vault 信任的服務](https://docs.microsoft.com/azure/key-vault/general/overview-vnet-service-endpoints#trusted-services)
-7. 選取 [儲存]****。
+7. 選取 [儲存]。
 
 您可以也新增虛擬網路和子網路，然後選取 [+ 新增虛擬網路]****，為新建立的虛擬網路和子網路啟用服務端點。 然後遵循提示。
 

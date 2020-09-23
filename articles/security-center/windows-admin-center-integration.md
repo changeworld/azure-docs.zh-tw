@@ -8,20 +8,20 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: memildin
-ms.openlocfilehash: 90c1132091f543b84fc764522dfa95672f2e2aef
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 36f519ce41ccfbfb48ca696ed2a61c6131a75998
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89277488"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906348"
 ---
 # <a name="protect-windows-admin-center-resources-with-security-center"></a>使用安全中心保護 Windows Admin Center 資源
 
 Windows Admin Center 是適用于 Windows 伺服器的管理工具。 它是系統管理員用來存取大部分最常使用之管理工具的單一位置。 您可以從 Windows Admin Center 中，直接將您的內部內部部署伺服器上線到 Azure 資訊安全中心。 然後，您可以直接在 Windows Admin Center 體驗中查看安全性建議和警示的摘要。
 
 > [!NOTE]
-> 您的 Azure 訂用帳戶和相關聯的 Log Analytics 工作區都必須啟用安全中心的標準層，才能啟用 Windows Admin Center 整合。
-> 如果您先前未在訂用帳戶和工作區上使用標準層，則前30天免費。 如需詳細資訊，請參閱 [定價資訊頁面](security-center-pricing.md)。
+> 您的 Azure 訂用帳戶和相關聯的 Log Analytics 工作區都必須啟用 Azure Defender，才能啟用 Windows Admin Center 整合。
+> 如果您先前未在訂用帳戶和工作區上使用 Azure Defender，則前30天免費。 如需詳細資訊，請參閱 [定價資訊頁面](security-center-pricing.md)。
 >
 
 當您成功將伺服器從 Windows Admin Center 上線到 Azure 資訊安全中心時，您可以：
@@ -46,8 +46,8 @@ Windows Admin Center 是適用于 Windows 伺服器的管理工具。 它是系�
 1. 請依照指示將您的伺服器連線到「安全中心」。 當您輸入必要的詳細資料並確認之後，資訊安全中心會進行必要的設定變更，以確保下列各項都成立：
     * Azure 閘道已註冊。
     * 伺服器具有要報告的工作區，以及相關聯的訂閱。
-    * 在工作區上，已啟用資訊安全中心的標準層記錄分析解決方案。 此解決方案會針對向此工作區報告的 *所有* 伺服器和虛擬機器，提供安全性中心的標準層功能。
-    * 訂用帳戶上已啟用資訊安全中心的虛擬機器標準層定價。
+    * 在工作區上啟用資訊安全中心的 Log Analytics 解決方案。 此解決方案會針對向此工作區報告的 *所有* 伺服器和虛擬機器，提供 Azure Defender 的功能。
+    * 訂用帳戶上已啟用適用于伺服器的 Azure Defender。
     * Log Analytics 代理程式會安裝在伺服器上，並設定為向選取的工作區報告。 如果伺服器已經向另一個工作區報告，則也會將它設定為向新選取的工作區報告。
 
     > [!NOTE]
@@ -63,12 +63,8 @@ Windows Admin Center 是適用于 Windows 伺服器的管理工具。 它是系�
 ## <a name="view-security-recommendations-and-alerts-for-windows-admin-center-managed-servers-in-security-center"></a>查看安全中心內 Windows Admin Center 受管理伺服器的安全性建議和警示
 從 Azure 資訊安全中心：
 
-* 若要查看所有 Windows Admin Center 伺服器的安全性建議，請開啟 [ **計算 & 應用程式** ]，然後按一下 [ **vm 和電腦** ] 索引標籤。依資源「伺服器」篩選清單，如下所示：
-
-    [![查看 Windows Admin Center 受管理伺服器的安全性建議](media/windows-admin-center-integration/viewing-recommendations-wac.png)](media/windows-admin-center-integration/viewing-recommendations-wac.png#lightbox)
+* 若要查看所有 Windows Admin Center 伺服器的安全性建議，請開啟 [ [資產清查](asset-inventory.md) ]，然後篩選至您要調查的電腦類型。 選取 [ **vm 和電腦** ] 索引標籤。
 
 * 若要查看所有 Windows Admin Center 伺服器的安全性警示，請開啟 [ **安全性警示**]。 按一下 [ **篩選** ]，並確定 **只** 選取 [非 Azure]：
 
-    ![篩選 Windows Admin Center 受管理伺服器的安全性警示](./media/windows-admin-center-integration/filtering-alerts-to-non-azure.png)
-
-    [![查看 Windows Admin Center 受管理伺服器的安全性警示](media/windows-admin-center-integration/viewing-alerts-wac.png)](media/windows-admin-center-integration/viewing-alerts-wac.png#lightbox)
+    :::image type="content" source="./media/windows-admin-center-integration/filtering-alerts-by-environment.png" alt-text="篩選 Windows Admin Center 受管理伺服器的安全性警示" lightbox="./media/windows-admin-center-integration/filtering-alerts-by-environment.png":::

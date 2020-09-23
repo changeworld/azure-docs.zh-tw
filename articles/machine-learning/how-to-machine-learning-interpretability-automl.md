@@ -10,16 +10,16 @@ ms.custom: how-to
 ms.author: mithigpe
 author: minthigpen
 ms.date: 07/09/2020
-ms.openlocfilehash: 921132947fbf52fbd187941b96d8b75197763387
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 7cb40df6a4619e11694e65020bfcb560cf695795
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89419107"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897446"
 ---
 # <a name="interpretability-model-explanations-in-automated-machine-learning-preview"></a>可解譯性：自動化機器學習中的模型說明 (預覽) 
 
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 在本文中，您將瞭解如何在 Azure Machine Learning 中取得自動化機器學習 (ML) 的說明。 自動化 ML 可協助您瞭解設計的功能重要性。 
 
@@ -221,6 +221,6 @@ if service.state == 'Healthy':
 
 [![Machine Learning 可解譯性架構](./media/how-to-machine-learning-interpretability-automl/automl-explainability.png)](./media/how-to-machine-learning-interpretability-automl/automl-explainability.png#lightbox)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 如需如何在自動化機器學習以外的 Azure Machine Learning SDK 區域中啟用模型說明和功能重要性的詳細資訊，請參閱 [可解譯性上的概念文章](how-to-machine-learning-interpretability.md)。

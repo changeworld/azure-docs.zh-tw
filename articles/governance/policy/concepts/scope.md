@@ -3,12 +3,12 @@ title: 瞭解 Azure 原則中的範圍
 description: 描述 Azure Resource Manager 中的範圍概念，以及如何將它套用至 Azure 原則來控制 Azure 原則評估的資源。
 ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: dee5d2bdbcb5aa86e293652af3bc5008f56b7877
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 83eda330a35b007abfa37046a202b14728726849
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934694"
+ms.locfileid: "90984425"
 ---
 # <a name="understand-scope-in-azure-policy"></a>瞭解 Azure 原則中的範圍
 
@@ -34,6 +34,8 @@ Azure 原則使用的第一個實例範圍是在建立原則定義時。 定義�
 - 包含：資源階層或個別資源應該依照定義來評估是否符合規範。 `properties.scope`指派物件上的屬性會決定要包含和評估合規性的內容。 如需詳細資訊，請參閱 [指派定義](./assignment-structure.md)。
 
 - 排除-資源階層或個別資源不應依照定義進行合規性評估。 `properties.notScopes`指派物件上的_array_屬性會決定要排除的內容。 這些範圍中的資源不會評估或納入合規性計數中。 如需詳細資訊，請參閱 [指派定義-排除的範圍](./assignment-structure.md#excluded-scopes)。
+
+除了原則指派上的屬性之外，也是 [原則豁免](./exemption-structure.md) 物件。 豁免會提供方法來識別要不評估之指派的一部分，藉此增強範圍案例。
 
 - 豁免 (**預覽功能中的免費**) -資源階層或個別資源應依照定義進行評估，但不會評估是否有因應措施，例如有棄權或透過另一種方法降低的原因。 處於此狀態的資源會顯示為已 **豁免** 的合規性報告，以便進行追蹤。 豁免物件會建立在資源階層或個別資源上，以做為子物件，以決定豁免的範圍。 資源階層或個別資源可以豁免至多個指派。 您可以使用屬性將豁免設定為依排程到期 `expiresOn` 。 如需詳細資訊，請參閱 [豁免定義](./exemption-structure.md)。
 

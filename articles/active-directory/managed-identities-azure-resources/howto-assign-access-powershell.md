@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/06/2018
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ae2da130f61d31db4904ed2dd5ac18444929950
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: b66567275bf2c7454a2d4bb87dcd4c14bb1fb9b4
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89177494"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90969279"
 ---
 # <a name="assign-a-managed-identity-access-to-a-resource-using-powershell"></a>使用 PowerShell 為受控識別指派對資源的存取權
 
@@ -34,25 +34,22 @@ ms.locfileid: "89177494"
 
 - 如果您不熟悉 Azure 資源的受控識別，請參閱[概觀一節](overview.md)。 **請務必檢閱[系統指派和使用者指派受控識別之間的差異](overview.md#managed-identity-types)**。
 - 如果您還沒有 Azure 帳戶，請先[註冊免費帳戶](https://azure.microsoft.com/free/)，再繼續進行。
-- 如果您尚未安裝[最新版的 Azure PowerShell](/powershell/azure/install-az-ps)，請先安裝。
+- 若要執行範例腳本，您有兩個選項：
+    - 使用您可以使用程式碼區塊右上角的 [**試試看**] 按鈕開啟的[Azure Cloud Shell](../../cloud-shell/overview.md)。
+    - 安裝最新版本的 [Azure PowerShell](/powershell/azure/install-az-ps)，然後使用登入 Azure，以在本機執行腳本 `Connect-AzAccount` 。 
 
 ## <a name="use-azure-rbac-to-assign-a-managed-identity-access-to-another-resource"></a>使用 Azure RBAC 將受控識別存取權指派給另一個資源
 
-您在 Azure 資源 ([例如 Azure VM](qs-configure-powershell-windows-vm.md)) 上啟用受控識別之後：
+1. 在 Azure 資源（ [例如 AZURE VM](qs-configure-powershell-windows-vm.md)）上啟用受控識別。
 
-1. 請使用 `Connect-AzAccount` Cmdlet 登入 Azure。 使用與已設定受控識別的 Azure 訂用帳戶相關聯的帳戶：
+1. 在此範例中，我們會將 Azure VM 存取權給予儲存體帳戶。 首先我們使用 [Get-AzVM](/powershell/module/az.compute/get-azvm) 取得 VM `myVM` 的服務主體，這是我們在啟用受控識別時所建立的。 然後，請使用 [New-AzRoleAssignment](/powershell/module/Az.Resources/New-AzRoleAssignment) 提供對儲存體帳戶 `myStorageAcct` 的 VM **讀者**存取權：
 
-   ```powershell
-   Connect-AzAccount
-   ```
-2. 在此範例中，我們會將 Azure VM 存取權給予儲存體帳戶。 首先我們使用 [Get-AzVM](/powershell/module/az.compute/get-azvm) 取得 VM `myVM` 的服務主體，這是我們在啟用受控識別時所建立的。 然後，請使用 [New-AzRoleAssignment](/powershell/module/Az.Resources/New-AzRoleAssignment) 提供對儲存體帳戶 `myStorageAcct` 的 VM **讀者**存取權：
-
-    ```powershell
+    ```azurepowershell-interactive
     $spID = (Get-AzVM -ResourceGroupName myRG -Name myVM).identity.principalid
     New-AzRoleAssignment -ObjectId $spID -RoleDefinitionName "Reader" -Scope "/subscriptions/<mySubscriptionID>/resourceGroups/<myResourceGroup>/providers/Microsoft.Storage/storageAccounts/<myStorageAcct>"
     ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - [適用於 Azure 資源的受控識別概觀](overview.md)
 - 若要在 Azure VM 上啟用受控識別，請參閱[使用 PowerShell 在 Azure VM 上設定 Azure 資源的受控識別](qs-configure-powershell-windows-vm.md)。

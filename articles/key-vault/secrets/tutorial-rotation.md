@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 01/26/2020
 ms.author: mbaldwin
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5adc2a91df5d394fbed3ff10b0ebc5cb543a3ba3
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: c2d1a46a35ef38791b6a3b47c300aa1b47f70324
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378010"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90086850"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-that-use-one-set-of-authentication-credentials"></a>針對使用一組驗證認證的資源，將秘密的輪替自動化
 
@@ -24,7 +24,7 @@ ms.locfileid: "89378010"
 
 本教學課程示範如何針對使用一組驗證認證的資料庫和服務自動執行定期的秘密輪替。 具體而言，此教學課程會使用 Azure 事件方格通知所觸發的函式，來輪替儲存在 Azure Key Vault 中的 SQL Server 密碼：
 
-![輪替解決方案圖表](../media/rotate1.png)
+![輪替解決方案圖表](../media/rotate-1.png)
 
 1. 在祕密到期日的 30 天前，Key Vault 會將「即將到期」事件發佈至事件方格。
 1. 事件方格會檢查事件訂閱，並使用 HTTP POST 呼叫訂閱此事件的函式應用程式端點。
@@ -49,7 +49,7 @@ ms.locfileid: "89378010"
 1. 選取 [檢閱 + 建立]。
 1. 選取 [建立]
 
-    ![建立資源群組](../media/rotate2.png)
+    ![建立資源群組](../media/rotate-2.png)
 
 您現在會有 Key Vault 和 SQL Server 執行個體。 您可以執行下列命令，在 Azure CLI 中驗證這項設定：
 
@@ -91,7 +91,7 @@ akvrotation-sql/master  akvrotation      eastus      Microsoft.Sql/servers/datab
 1. 選取 [檢閱 + 建立]。
 1. 選取 [建立]。
 
-   ![選取 [檢閱 + 建立]](../media/rotate3.png)
+   ![選取 [檢閱 + 建立]](../media/rotate-3.png)
 
 完成上述步驟之後，您將會有儲存體帳戶、伺服器陣列和函式應用程式。 您可以執行下列命令，在 Azure CLI 中驗證這項設定：
 
@@ -207,11 +207,11 @@ az keyvault secret set --name sqlPassword --vault-name akvrotation-kv --value "S
 
 若要確認密碼是否已輪替，請移至 **Key Vault** > **秘密**：
 
-![移至秘密](../media/rotate8.png)
+![移至秘密](../media/rotate-8.png)
 
 開啟 **sqlPassword** 秘密，並檢視原始和已輪替的版本：
 
-![開啟 sqluser 秘密](../media/rotate9.png)
+![開啟 sqluser 秘密](../media/rotate-9.png)
 
 ### <a name="create-a-web-app"></a>建立 Web 應用程式
 
@@ -245,6 +245,6 @@ https://akvrotation-app.azurewebsites.net/
 ## <a name="learn-more"></a>深入了解
 
 - 教學課程：[具有兩組認證的資源輪替](tutorial-rotation-dual.md)
-- 概觀：[使用 Azure 事件方格監視 Key Vault (預覽)](../general/event-grid-overview.md)
+- 概觀：[使用 Azure 事件方格監視 Key Vault](../general/event-grid-overview.md)
 - 如何：[在金鑰保存庫祕密變更時收到電子郵件](../general/event-grid-logicapps.md)
-- [Azure Key Vault 的 Azure 事件方格事件結構描述 (預覽)](../../event-grid/event-schema-key-vault.md)
+- [Azure Key Vault 的 Azure 事件方格事件結構描述](../../event-grid/event-schema-key-vault.md)
