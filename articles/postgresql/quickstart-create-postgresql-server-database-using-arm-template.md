@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: mblythe
 ms.date: 05/14/2020
-ms.openlocfilehash: 0661e743fb2493b9eab4b90dcb65297e99c2cc64
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: b73bf82b7fba4c7c618dbae81873efabec61051d
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661209"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906437"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-postgresql---single-server"></a>快速入門：使用 ARM 範本建立適用於 PostgreSQL 的 Azure 資料庫 - 單一伺服器
 
@@ -22,7 +22,7 @@ Azure Database for PostgreSQL 是一種受控服務，您用來在雲端執行�
 
 如果您的環境符合必要條件，而且您很熟悉 ARM 範本，請選取 [部署至 Azure] 按鈕。 範本會在 Azure 入口網站中開啟。
 
-[![部署至 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-managed-postgresql-with-vnet%2fazuredeploy.json)
+[:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="部署至 Azure":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-managed-postgresql-with-vnet%2fazuredeploy.json)
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -66,7 +66,7 @@ Azure Database for PostgreSQL 是一種受控服務，您用來在雲端執行�
 
 選取下列連結，以在 Azure 入口網站中部署「適用於 PostgreSQL 的 Azure 資料庫」伺服器範本：
 
-[![部署至 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-managed-postgresql-with-vnet%2fazuredeploy.json)
+[:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="部署至 Azure":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-managed-postgresql-with-vnet%2fazuredeploy.json)
 
 在**使用 VNet 部署適用於 PostgreSQL 的 Azure 資料庫**頁面：
 
@@ -76,7 +76,7 @@ Azure Database for PostgreSQL 是一種受控服務，您用來在雲端執行�
 
 3. 輸入**伺服器名稱**、**管理員登入**，以及**管理員登入密碼**。
 
-    ![使用 VNet 視窗、Azure 快速入門範本和 Azure 入口網站部署適用於 PostgreSQL 的 Azure 資料庫](./media/quickstart-create-postgresql-server-database-using-arm-template/deploy-azure-database-for-postgresql-with-vnet.png)
+    :::image type="content" source="./media/quickstart-create-postgresql-server-database-using-arm-template/deploy-azure-database-for-postgresql-with-vnet.png" alt-text="使用 VNet 視窗、Azure 快速入門範本和 Azure 入口網站部署適用於 PostgreSQL 的 Azure 資料庫":::
 
 4. 如有需要，請變更其他預設設定：
 

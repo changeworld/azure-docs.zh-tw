@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 07/27/2020
-ms.openlocfilehash: 08f1d1e0ca1936b30db968dde5d7f6f2e6104cf8
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 3e1832d656ea2bad772a686e52a357c1daf0ded5
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651197"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90883207"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Azure Machine Learning 中的計算目標是什麼？ 
 
@@ -49,7 +49,7 @@ Azure Machine Learning 在不同的計算資源之間有不同的支援。  您�
 受控計算資源是由 Azure Machine Learning 所建立和管理。 此計算已針對機器學習工作負載進行優化。 Azure Machine Learning 計算叢集和 [計算實例](concept-compute-instance.md) 是唯一的受控計算。 
 
 您可以從下列來源建立 Azure Machine Learning 計算實例或計算叢集：
-* [Azure Machine Learning studio](how-to-create-attach-compute-studio.md)
+* [Azure Machine Learning Studio](how-to-create-attach-compute-studio.md)
 * Azure 入口網站
 * Python SDK [ComputeInstance](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computeinstance(class)?view=azure-ml-py&preserve-view=true) 和 [AmlCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute(class)?view=azure-ml-py&preserve-view=true) 類別
 * [R SDK](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-compute-targets) (預覽) 
@@ -68,7 +68,7 @@ Azure Machine Learning 在不同的計算資源之間有不同的支援。  您�
 
 
 > [!NOTE]
-> 當計算叢集閒置時，它會自動調整至0個節點，所以您不需支付未使用的費用。  不過，計算 *實例*一律為開啟，且不會自動調整。  當您未使用 [計算實例](tutorial-1st-experiment-sdk-train.md#stop-the-compute-instance) 時，應該將其停止，以避免產生額外的成本。 
+> 當計算叢集閒置時，它會自動調整至0個節點，所以您不需支付未使用的費用。  不過，計算 *實例*一律為開啟，且不會自動調整。  當您未使用 [計算實例](concept-compute-instance.md#managing-a-compute-instance) 時，應該將其停止，以避免產生額外的成本。 
 
 ### <a name="supported-vm-series-and-sizes"></a>支援的 VM 系列和大小
 
@@ -82,19 +82,19 @@ Azure Machine Learning 在不同的計算資源之間有不同的支援。  您�
 
 | **支援的 VM 系列**  | **限制** |
 |------------|------------|
-| D | None |
-| Dv2 | None |  
-| DSv2 | None |  
-| FSv2 | None | 
+| D | 無 |
+| Dv2 | 無 |  
+| DSv2 | 無 |  
+| FSv2 | 無 | 
 | HBv2 | 需要核准 |  
 | HCS | 需要核准 |  
 | M | 需要核准 |
-| NC | None |    
+| NC | 無 |    
 | NCsv2 | 需要核准 |
 | NCsv3 | 需要核准 |  
 | NDs | 需要核准 |
 | NDv2 | 需要核准 |
-| NV | None |
+| NV | 無 |
 | NVv3 | 需要核准 | 
 
 

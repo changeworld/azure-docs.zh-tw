@@ -10,15 +10,15 @@ ms.author: maxluk
 ms.date: 02/27/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 362b44cbed07359635f542e4eb18fc33803f0390
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: da5c128b9e0befd69e1ded6b47644a3c64b8f657
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89649318"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905055"
 ---
 # <a name="visualize-experiment-runs-and-metrics-with-tensorboard-and-azure-machine-learning"></a>使用 TensorBoard 和 Azure Machine Learning 將實驗執行與計量視覺化
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 在本文中，您會了解如何使用主要 Azure Machine Learning SDK 中的 [`tensorboard` 套件](https://docs.microsoft.com/python/api/azureml-tensorboard/?view=azure-ml-py&preserve-view=true)，在 TensorBoard 中檢視您的實驗執行和計量。 檢查過實驗執行之後，您就可以更進一步地微調機器學習模型並加以重新定型。
 

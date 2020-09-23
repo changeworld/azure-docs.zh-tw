@@ -1,5 +1,5 @@
 ---
-title: '使用設計工具 (預覽版來建立 ML 模型) '
+title: 使用設計工具建立 ML 模型
 titleSuffix: Azure Machine Learning
 description: 了解構成 Azure Machine Learning 設計工具的術語、概念和工作流程。
 services: machine-learning
@@ -10,15 +10,15 @@ ms.author: peterlu
 author: peterclu
 ms.date: 06/28/2020
 ms.custom: designer
-ms.openlocfilehash: 788eebaf28a768acbdb5b1eb778f196fe05dc3e3
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: c92351131a60b571a102b85f7d11b79ab29d939e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651224"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90883125"
 ---
-# <a name="what-is-azure-machine-learning-designer-preview"></a>什麼是 Azure Machine Learning 設計工具 (預覽)？ 
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
+# <a name="what-is-azure-machine-learning-designer"></a>什麼是 Azure Machine Learning 設計工具？ 
+
 
 Azure Machine Learning 設計工具可讓您以視覺化方式連結[資料集](#datasets) 和互動式畫布上的[模組](#module)，進而建立機器學習模型。 若要了解如何開始使用設計工具，請參閱[教學課程：使用設計工具預測汽車價格](tutorial-designer-automobile-price-train-score.md)來試用設計工具
 
@@ -118,5 +118,5 @@ Azure Machine Learning 設計工具可讓您以視覺化方式連結[資料集](
 
 ## <a name="next-steps"></a>後續步驟
 
-* 透過以下教學課程，了解預測性分析和機器學習的基本概念：[教學課程：使用設計工具預測汽車價格](tutorial-designer-automobile-price-train-score.md)來試用設計工具
+* 透過以下教學課程，了解預測性分析和機器學習的基礎概念：[教學課程：使用設計工具預測汽車價格](tutorial-designer-automobile-price-train-score.md)來試用設計工具
 * 了解如何修改現有的[設計工具範例](samples-designer.md)，以符合您的需求。

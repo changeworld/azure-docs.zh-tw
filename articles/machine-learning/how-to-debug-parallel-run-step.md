@@ -11,15 +11,15 @@ ms.reviewer: jmartens, larryfr, vaidyas, laobri, tracych
 ms.author: trmccorm
 author: tmccrmck
 ms.date: 07/16/2020
-ms.openlocfilehash: 8d357cea7ce809c2df6b35e08ac7da7e9d3795e9
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 010843f4249909e23ffac3b41fb3acaf9c91eb17
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89650418"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90889995"
 ---
 # <a name="debug-and-troubleshoot-parallelrunstep"></a>ParallelRunStep 的偵錯和疑難排解
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 在本文中，您將了解如何在 [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) 中對 [ParallelRunStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallel_run_step.parallelrunstep?view=azure-ml-py&preserve-view=true) 類別進行偵錯和疑難排解。
 
@@ -29,7 +29,7 @@ ms.locfileid: "89650418"
 
 ## <a name="debugging-scripts-from-remote-context"></a>從遠端內容偵錯指令碼
 
-從在本機對評分指令碼進行偵錯轉換到在實際管線中對評分指令碼進行偵錯，可能是困難的一大步驟。 如需在入口網站中尋找記錄的詳細資訊，請[參閱機器學習管線一節，以了解如何從遠端內容偵錯指令碼](how-to-debug-pipelines.md#finding-and-reading-pipeline-log-files)。 該結中的資訊也適用於 ParallelRunStep。
+從在本機對評分指令碼進行偵錯轉換到在實際管線中對評分指令碼進行偵錯，可能是困難的一大步驟。 如需在入口網站中尋找記錄的詳細資訊，請[參閱機器學習管線一節，以了解如何從遠端內容偵錯指令碼](how-to-debug-pipelines.md)。 該結中的資訊也適用於 ParallelRunStep。
 
 例如，記錄檔 `70_driver_log.txt` 包含啟動 ParallelRunStep 程式碼的控制器所產生的資訊。
 

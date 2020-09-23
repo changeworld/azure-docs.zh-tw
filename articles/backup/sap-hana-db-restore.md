@@ -1,14 +1,14 @@
 ---
 title: 在 Azure Vm 上還原 SAP Hana 資料庫
-description: 在本文中，您將探索如何還原在 Azure 虛擬機器上執行的 SAP Hana 資料庫。
+description: 在本文中，您將探索如何還原在 Azure 虛擬機器上執行的 SAP Hana 資料庫。 您也可以使用跨區域還原，將資料庫還原到次要區域。
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: 68858db6f89221e1a3a8f0955d5e009d56e2d365
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: c502b7741acd343baefe5e2bf8b95cfc02e46688
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89375307"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986116"
 ---
 # <a name="restore-sap-hana-databases-on-azure-vms"></a>在 Azure Vm 上還原 SAP Hana 資料庫
 
@@ -250,6 +250,51 @@ Azure 備份可以還原在 Azure VM 上執行的 SAP HANA 資料庫，如下所
     > [!NOTE]
     > 在多個資料庫容器 (MDC) 在系統資料庫還原至目標實例之後進行還原，而必須再次執行預先註冊腳本。 只有這麼做之後，後續的租用戶 DB 才能還原成功。 若要深入瞭解，請參閱 [疑難排解-MDC 還原](backup-azure-sap-hana-database-troubleshoot.md#multiple-container-database-mdc-restore)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="cross-region-restore"></a>跨區域還原
+
+作為其中一個還原選項，跨區域還原 (CRR) 可讓您在次要區域（也就是 Azure 配對的區域）中，還原裝載于 Azure Vm 上的 SAP Hana 資料庫。
+
+若要在預覽期間登入功能，請閱讀 [ [開始之前] 區段](./backup-create-rs-vault.md#set-cross-region-restore)。
+
+若要查看是否已啟用 CRR，請依照[設定跨區域還原](backup-create-rs-vault.md#configure-cross-region-restore)中的指示進行。
+
+### <a name="view-backup-items-in-secondary-region"></a>查看次要區域中的備份專案
+
+如果已啟用 CRR，您可以在次要區域中查看備份專案。
+
+1. 從入口網站移至 [復原**服務保存庫**  >  **備份專案**]。
+1. 選取 **次要區域** 以查看次要區域中的專案。
+
+>[!NOTE]
+>清單中只會顯示支援 CRR 功能的備份管理類型。 目前，僅支援將次要區域資料還原至次要區域。
+
+![次要區域中的備份專案](./media/sap-hana-db-restore/backup-items-secondary-region.png)
+
+![次要區域中的資料庫](./media/sap-hana-db-restore/databases-secondary-region.png)
+
+### <a name="restore-in-secondary-region"></a>在次要區域中還原
+
+次要區域還原使用者體驗將類似于主要區域還原使用者體驗。 在 [還原設定] 窗格中設定詳細資料來設定您的還原時，系統會提示您只提供次要區域參數。
+
+![還原的位置和方式](./media/sap-hana-db-restore/restore-secondary-region.png)
+
+>[!NOTE]
+>次要區域中的虛擬網路必須是唯一指派的，且不能用於該資源群組中的任何其他 Vm。
+
+![觸發還原進行中的通知](./media/backup-azure-arm-restore-vms/restorenotifications.png)
+
+>[!NOTE]
+>
+>* 在觸發還原並且在資料傳輸階段中，無法取消還原作業。
+>* 在次要區域中還原所需的 Azure 角色與主要區域中的角色相同。
+
+### <a name="monitoring-secondary-region-restore-jobs"></a>監視次要區域還原作業
+
+1. 從入口網站移至復原**服務保存庫**  >  **備份作業**
+1. 選取 **次要區域** 以查看次要區域中的專案。
+
+    ![已篩選的備份作業](./media/sap-hana-db-restore/backup-jobs-secondary-region.png)
+
+## <a name="next-steps"></a>下一步
 
 * [瞭解如何](sap-hana-db-manage.md) 使用 Azure 備份來管理 SAP Hana 資料庫備份

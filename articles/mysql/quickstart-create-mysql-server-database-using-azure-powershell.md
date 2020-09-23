@@ -8,12 +8,12 @@ ms.devlang: azurepowershell
 ms.topic: quickstart
 ms.date: 04/28/2020
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: f32f6c4366aac1a39dbc1bc4af3b945e259b3280
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 4444f86f094d46419d7ff4b2f80609da007c4594
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543532"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906128"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-server-using-powershell"></a>快速入門：使用 PowerShell 建立適用於 MySQL 的 Azure 資料庫伺服器
 
@@ -201,7 +201,7 @@ mydemoserver.mysql.database.azure.com       myadmin
 
 1. 在 [設定新連線]  對話方塊的 [參數]  索引標籤上，輸入下列資訊︰
 
-   ![設定新連線](./media/quickstart-create-mysql-server-database-using-azure-powershell/setup-new-connection.png)
+   :::image type="content" source="./media/quickstart-create-mysql-server-database-using-azure-powershell/setup-new-connection.png" alt-text="設定新連線":::
 
     |    **設定**    |           **建議的值**           |                      **說明**                       |
     | ----------------- | --------------------------------------- | ---------------------------------------------------------- |
@@ -237,4 +237,4 @@ Remove-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [使用 PowerShell 產生連接字串 - 適用於 MySQL 的 Azure 資料庫](connect-powershell.md)
+> [使用 PowerShell 來設計適用於 MySQL 的 Azure 資料庫](tutorial-design-database-using-powershell.md)

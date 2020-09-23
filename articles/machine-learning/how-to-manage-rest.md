@@ -10,16 +10,16 @@ ms.subservice: core
 ms.date: 01/31/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 8c97ee9782f728e39175ed2517b64020ca4169f4
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 39000a34d1d19026ce406eeb996f89d1acc7ea04
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89649399"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897356"
 ---
 # <a name="create-run-and-delete-azure-ml-resources-using-rest"></a>使用 REST 建立、執行及刪除 Azure ML 資源
 
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 有數種方式可管理您的 Azure ML 資源。 您可以使用 [入口網站](https://portal.azure.com/)、 [命令列介面](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)或 [Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)。 或者，您可以選擇 REST API。 REST API 會以標準方式使用 HTTP 動詞命令來建立、取出、更新和刪除資源。 REST API 適用于任何可發出 HTTP 要求的語言或工具。 REST 的簡單結構通常會讓它成為腳本環境及 MLOps 自動化的理想選擇。 
 
@@ -202,7 +202,7 @@ providers/Microsoft.MachineLearningServices/workspaces/{your-workspace-name}/mod
 
 請注意，若要列出實驗，路徑的開頭為 `history/v1.0` 列出模型，路徑的開頭為 `modelmanagement/v1.0` 。 REST API 分成數個作業群組，每個都有不同的路徑。 
 
-|區域|Path|
+|區域|路徑|
 |-|-|
 |Artifacts|/rest/api/azureml|
 |資料存放區|/azure/machine-learning/how-to-access-data|
@@ -423,5 +423,5 @@ Azure Machine Learning 工作區會使用 Azure Container Registry (ACR) 進行�
 ## <a name="next-steps"></a>後續步驟
 
 - 探索完整的 [AzureML REST API 參考](https://docs.microsoft.com/rest/api/azureml/)。
-- 瞭解如何使用 Studio & 設計工具，透過 [設計工具 (preview) 來預測汽車價格 ](https://docs.microsoft.com/azure/machine-learning/tutorial-designer-automobile-price-train-score)。
+- 瞭解如何使用設計工具，透過 [設計工具預測汽車價格](https://docs.microsoft.com/azure/machine-learning/tutorial-designer-automobile-price-train-score)。
 - 探索 [Jupyter 筆記本的 Azure Machine Learning](https://docs.microsoft.com/azure//machine-learning/samples-notebooks)。

@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 10/16/2019
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: 7c5164a032e77d85c995384473935b134ff528e5
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 5db25f993fa006fa635ac12c1be5ff1c3eb92f68
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009302"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90883464"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-32-version-supported-features-and-syntax"></a>適用於 MongoDB (3.2 版) 的 Azure Cosmos DB API：支援的功能和語法
 
@@ -25,7 +25,9 @@ Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您�
 
 ## <a name="protocol-support"></a>通訊協定支援
 
-新帳戶只要能使用 Azure Cosmos DB 的 MongoDB 版 API，就能夠與 MongoDB 伺服器 **3.6** 版相容。 本文以 MongoDB 3.2 版為主。 以下列出支援的運算子及任何限制或例外狀況。 任何能解析這些通訊協定的用戶端驅動程式，都應該能夠連線到 Azure Cosmos DB 適用於 MongoDB 的 API。
+新帳戶只要能使用 Azure Cosmos DB 的 MongoDB 版 API，就能夠與 MongoDB 伺服器 **3.6** 版相容。 本文以 MongoDB 3.2 版為主。 以下列出支援的運算子及任何限制或例外狀況。 任何能解析這些通訊協定的用戶端驅動程式，都應該能夠連線到 Azure Cosmos DB 適用於 MongoDB 的 API。 
+
+適用於 MongoDB 的 Azure Cosmos DB API 也提供合格帳戶的順暢申級體驗。 若要深入了解，請參閱 [MongoDB 版本升級指南](mongodb-version-upgrade.md)。
 
 ## <a name="query-language-support"></a>查詢語言支援
 

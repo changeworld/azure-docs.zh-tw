@@ -11,15 +11,15 @@ author: blackmist
 ms.date: 09/15/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: f497bf5374dd6f621a6b48bae245e5efb1505a19
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: a36f69c9956dd05c5fbd85d7e37b90c0b1e4c21e
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90603062"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90897657"
 ---
 # <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>從 ML Web 服務端點監視及收集資料
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 在本文中，您將瞭解如何從部署至 Azure Kubernetes Service (AKS) 中的 web 服務端點的模型，或 (ACI) 的 Azure 容器實例中收集資料。 使用 [Azure 應用程式見解](../azure-monitor/app/app-insights-overview.md) 從端點收集下列資料：
 * 輸出資料
@@ -32,7 +32,7 @@ ms.locfileid: "90603062"
  
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-clone-for-examples.md)]
  
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶-試用 [免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)。
 
@@ -210,7 +210,7 @@ Azure 應用程式 Insights 會將您的服務記錄儲存在與 Azure Machine L
 
 :::image type="content" source="media/how-to-enable-app-insights/continuous-export-setup.png" alt-text="連續匯出":::
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 在本文中，您已瞭解如何啟用 web 服務端點的記錄和查看記錄。 請嘗試下列文章以取得後續步驟：
 

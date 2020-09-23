@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 03/01/2019
 ms.author: kenchen
-ms.openlocfilehash: 71bcb72b645c574eedd24ff868751f366738e73d
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: b1cb48d1ae858dbcd0df80780b4c3cee3deac75b
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935682"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90976502"
 ---
 # <a name="resiliency-and-disaster-recovery-in-azure-signalr-service"></a>Azure SignalR Service 中的復原和災害復原
 
@@ -42,7 +42,7 @@ ms.locfileid: "88935682"
 
 以下是說明這類拓撲的圖示：
 
-![拓撲](media/signalr-concept-disaster-recovery/topology.png)
+![下圖顯示兩個區域的每個區域都有應用程式伺服器和 SignalR 服務，其中每一部伺服器都與其區域中的 SignalR 服務相關聯，並與另一個區域中的服務做為次要。](media/signalr-concept-disaster-recovery/topology.png)
 
 ## <a name="configure-app-servers-with-multiple-signalr-service-instances"></a>設定具有多個 SignalR 服務執行個體的應用程式伺服器
 
@@ -132,7 +132,7 @@ SignalR 服務可支援這兩種模式，主要差異在於您如何實作應用
 也因為 SignalR 連線的本質 (很長的連線)，用戶端會在發生災害和容錯移轉時遇到連線中斷。
 您必須在用戶端處理這類情況，讓終端客戶了解此情況。 例如，在連線關閉後重新連線。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 在本文中，您已經了解如何設定您的應用程式以恢復 SignalR 服務的功能。 若要深入了解 SignalR 服務中的伺服器/用戶端連線及連線路由，您可以閱讀[這篇文章](signalr-concept-internals.md)，以了解 SignalR 服務的內部運作。
 

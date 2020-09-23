@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure Stack Edge 傳輸要共用之資料的教學課程 | Microsoft Docs
-description: 在本教學課程中，了解如何新增和連線至 Azure Stack Edge 裝置上的共用，讓 Azure Stack Edge 可以將資料傳輸至 Azure。
+title: 使用 Azure Stack Edge Pro 傳輸要共用之資料的教學課程 | Microsoft Docs
+description: 在本教學課程中，了解如何新增和連線至 Azure Stack Edge Pro 裝置上的共用，讓 Azure Stack Edge Pro 可以將資料傳輸至 Azure。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,17 +8,17 @@ ms.subservice: edge
 ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: alkohli
-Customer intent: As an IT admin, I need to understand how to add and connect to shares on Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: fc47497eeceff20e8357195226c2d44cea64fa88
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+Customer intent: As an IT admin, I need to understand how to add and connect to shares on Azure Stack Edge Pro so I can use it to transfer data to Azure.
+ms.openlocfilehash: aeb5bceca11f595c1582596aeea401fe5f9b239f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926105"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90883471"
 ---
-# <a name="tutorial-transfer-data-with-azure-stack-edge"></a>教學課程：使用 Azure Stack Edge 傳輸資料
+# <a name="tutorial-transfer-data-with-azure-stack-edge-pro"></a>教學課程：使用 Azure Stack Edge Pro 傳輸資料
 
-本教學課程說明如何新增及連線到 Azure Stack Edge 裝置上的共用。 在新增共用之後，Azure Stack Edge 即可將資料傳輸至 Azure。
+本教學課程說明如何新增及連線到 Azure Stack Edge Pro 裝置上的共用。 在新增共用之後，Azure Stack Edge Pro 即可將資料傳輸至 Azure。
 
 此程序可能需要大約 10 分鐘才能完成。
 
@@ -31,11 +31,11 @@ ms.locfileid: "87926105"
  
 ## <a name="prerequisites"></a>Prerequisites
 
-將共用新增至 Azure Stack Edge 之前，請確定：
+將共用新增至 Azure Stack Edge Pro 之前，請確定：
 
-- 您已依照[安裝 Azure Stack Edge](azure-stack-edge-deploy-install.md) 中的說明安裝實體裝置。
+- 您已依照[安裝 Azure Stack Edge Pro](azure-stack-edge-deploy-install.md) 中的說明安裝實體裝置。
 
-- 您已依照[連線、設定及啟用 Azure Stack Edge](azure-stack-edge-deploy-connect-setup-activate.md) 中的說明啟動實體裝置。
+- 您已依照[連線、設定及啟用 Azure Stack Edge Pro](azure-stack-edge-deploy-connect-setup-activate.md) 中的說明啟動實體裝置。
 
 
 ## <a name="add-a-share"></a>新增共用
@@ -62,7 +62,7 @@ ms.locfileid: "87926105"
     c. 提供共用所在的儲存體帳戶。 
 
     > [!IMPORTANT]
-    > 如果您將 Azure 儲存體帳戶與 Azure Stack Edge 或資料箱閘道裝置搭配使用，請確定您所使用的 Azure 儲存體帳戶並未設定了不變性原則。 如需詳細資訊，請參閱[設定和管理 Blob 儲存體的不變性原則](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage)。
+    > 如果您將 Azure 儲存體帳戶與 Azure Stack Edge Pro 或資料箱閘道裝置搭配使用，請確定您所使用的 Azure 儲存體帳戶並未設定了不變性原則。 如需詳細資訊，請參閱[設定和管理 Blob 儲存體的不變性原則](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage)。
     
     d. 在 [儲存體服務]  下拉式清單中，選取 [區塊 Blob]  、[分頁 Blob]  或 [檔案]  。  
     您選取的服務類型，取決於您想要讓資料在 Azure 中使用的格式。 在此範例中，我們想要將資料以區塊 Blob 的形式儲存在 Azure 中，因此我們選取 [區塊 Blob]  。 如果您選取 [分頁 Blob]  ，請確定您的資料是 512 位元組規格。 例如，VHDX 一律是 512 位元組規格。
@@ -92,7 +92,7 @@ ms.locfileid: "87926105"
 
 ### <a name="connect-to-an-smb-share"></a>連線至 SMB 共用
 
-在連線到 Azure Stack Edge 裝置的 Windows Server 用戶端上，輸入下列命令以連線到 SMB 共用：
+在連線到 Azure Stack Edge Pro 裝置的 Windows Server 用戶端上，輸入下列命令以連線到 SMB 共用：
 
 
 1. 在命令視窗中，輸入：
@@ -125,7 +125,7 @@ ms.locfileid: "87926105"
 
 ### <a name="connect-to-an-nfs-share"></a>連線到 NFS 共用
 
-在連線到 Azure Stack Edge 裝置的 Linux 用戶端上，執行下列程序：
+在連線到 Azure Stack Edge Pro 裝置的 Linux 用戶端上，執行下列程序：
 
 1. 確定用戶端已安裝 NFSv4 用戶端。 若要安裝 NFS 用戶端，請使用下列命令：
 
@@ -133,7 +133,7 @@ ms.locfileid: "87926105"
 
     如需詳細資訊，請移至[安裝 NFSv4 用戶端](https://help.ubuntu.com/community/SettingUpNFSHowTo#NFSv4_client)。
 
-2. 安裝 NFS 用戶端之後，請使用下列命令掛接您在 Azure Stack Edge 裝置上建立的 NFS 共用：
+2. 安裝 NFS 用戶端之後，請使用下列命令掛接您在 Azure Stack Edge Pro 裝置上建立的 NFS 共用：
 
    `sudo mount -t nfs -o sec=sys,resvport <device IP>:/<NFS shares on device> /home/username/<Folder on local Linux computer>`
 
@@ -141,7 +141,7 @@ ms.locfileid: "87926105"
     > 在裝載共用時使用 `sync` 選項，可以改善大型檔案的傳輸速率。
     > 掛接共用之前，請確定已建立要在本機電腦上作為掛接點的目錄。 這些目錄不應包含任何檔案或子資料夾。
 
-    下列範例說明如何透過 NFS 連線到 Azure Stack Edge 裝置上的共用。 裝置 IP 為 `10.10.10.60`。 共用 `mylinuxshare2` 會掛接在 ubuntuVM 上。 共用掛接點為 `/home/databoxubuntuhost/edge`。
+    下列範例說明如何透過 NFS 連線到 Azure Stack Edge Pro 裝置上的共用。 裝置 IP 為 `10.10.10.60`。 共用 `mylinuxshare2` 會掛接在 ubuntuVM 上。 共用掛接點為 `/home/databoxubuntuhost/edge`。
 
     `sudo mount -t nfs -o sec=sys,resvport 10.10.10.60:/mylinuxshare2 /home/databoxubuntuhost/Edge`
 
@@ -152,15 +152,15 @@ ms.locfileid: "87926105"
 
 ## <a name="next-steps"></a>後續步驟
 
-在本教學課程中，您已了解下列 Azure Stack Edge 主題：
+在本教學課程中，您已了解下列 Azure Stack Edge Pro 主題：
 
 > [!div class="checklist"]
 > * 新增共用
 > * 連線到共用
 
-若要了解如何使用 Azure Stack Edge 來傳輸資料，請繼續進行下一個教學課程：
+若要了解如何使用 Azure Stack Edge Pro 來傳輸資料，請繼續進行下一個教學課程：
 
 > [!div class="nextstepaction"]
-> [使用 Azure Stack Edge 轉換資料](./azure-stack-edge-deploy-configure-compute.md)
+> [使用 Azure Stack Edge Pro 轉換資料](./azure-stack-edge-deploy-configure-compute.md)
 
 

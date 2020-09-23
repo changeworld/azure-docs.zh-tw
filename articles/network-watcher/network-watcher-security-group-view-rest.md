@@ -1,7 +1,7 @@
 ---
 title: 分析網路安全性-安全性群組視圖-Azure REST API
 titleSuffix: Azure Network Watcher
-description: 本文會說明如何使用 PowerShell，利用安全性群組檢視分析虛擬機器的安全性。
+description: 本文將說明 Azure REST API 如何使用安全性群組視圖來分析虛擬機器的安全性。
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 466879daae65b8c7fa896b0ead417c8d5eb51e28
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 156da7504a1a5e2a704e52a783fcd3e437a59867
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084325"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986262"
 ---
 # <a name="analyze-your-virtual-machine-security-with-security-group-view-using-rest-api"></a>使用 REST API，利用安全性群組檢視分析虛擬機器的安全性
 
@@ -27,7 +27,7 @@ ms.locfileid: "87084325"
 > - [REST API](network-watcher-security-group-view-rest.md)
 
 > [!NOTE]
-> 安全性群組視圖 API 已不再維護，即將淘汰。 請使用可提供相同功能的「[有效安全性規則」功能](https://docs.microsoft.com/azure/network-watcher/network-watcher-security-group-view-overview)。 
+> 安全性群組 View API 已不再維護，即將淘汰。 請使用可提供相同功能的 [有效安全性規則功能](https://docs.microsoft.com/azure/network-watcher/network-watcher-security-group-view-overview) 。 
 
 安全性群組檢視會傳回套用至虛擬機器之已設定且有效的網路安全性規則。 這項功能可用來稽核及診斷 VM 所設定的網路安全性群組和規則，以確保會正確允許或拒絕流量。 在本文中，我們會說明如何使用 REST API 來擷取有效且已套用至虛擬機器的安全性規則
 
@@ -36,11 +36,11 @@ ms.locfileid: "87084325"
 
 ## <a name="before-you-begin"></a>開始之前
 
-在此案例中，您可以呼叫網路監看員 REST API 來取得的虛擬機器安全性群組檢視。 使用 ARMclient 透過 PowerShell 呼叫 REST API。 ARMClient 可在 chocolatey 的[ARMClient 上找到 chocolatey](https://chocolatey.org/packages/ARMClient)
+在此案例中，您可以呼叫網路監看員 REST API 來取得的虛擬機器安全性群組檢視。 使用 ARMclient 透過 PowerShell 呼叫 REST API。 ARMClient 可在 chocolatey 的 [ARMClient 上找到 chocolatey](https://chocolatey.org/packages/ARMClient)
 
 此案例假設您已依照[建立網路監看員](network-watcher-create.md)中的步驟建立網路監看員。 此案例也假設已有具有有效虛擬機器的資源群組可供使用。
 
-## <a name="scenario"></a>案例
+## <a name="scenario"></a>狀況
 
 本文涵蓋的案例會擷取有效且已套用指定虛擬機器的安全性規則。
 
@@ -54,7 +54,7 @@ armclient login
 
 執行下列程式碼以傳回虛擬機器。下列程式碼需要變數︰
 
-- **subscriptionId** -訂用帳戶識別碼也可以使用 get-azsubscription Cmdlet 來**取得**。
+- **subscriptionId** -訂用帳戶識別碼也可以使用 >select-azsubscription Cmdlet 來 **取得** 。
 - **resourceGroupName** - 包含虛擬機器的資源群組名稱。
 
 ```powershell
@@ -183,7 +183,7 @@ armclient post "https://management.azure.com/subscriptions/${subscriptionId}/Res
 }
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 請瀏覽[使用網路監看員稽核網路安全性群組 (NSG)](network-watcher-security-group-view-powershell.md) 以了解如何自動驗證網路安全性群組。
 
