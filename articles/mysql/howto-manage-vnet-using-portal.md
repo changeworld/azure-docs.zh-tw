@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: 843bb32a4b5b5e29c4ab7c1dc9ff254a8424ae86
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 61b08514f8d2989736ff2505f0446937757ddb99
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118676"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90884679"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-vnet-service-endpoints-and-vnet-rules-by-using-the-azure-portal"></a>使用 Azure 入口網站建立及管理適用於 MySQL 的 Azure 資料庫的 VNet 服務端點和 VNet 規則
 虛擬網路 (VNet) 服務端點和規則會將虛擬網路的私人位址空間延伸到您適用於 MySQL 的 Azure 資料庫伺服器。 如需適用於 MySQL 的 Azure 資料庫的 VNet 服務端點概觀 (包含限制)，請參閱[適用於 MySQL 的 Azure 資料庫伺服器的 VNet 服務端點](concepts-data-access-and-security-vnet.md)。 VNet 服務端點在「適用於 MySQL 的 Azure 資料庫」的所有支援區域皆可使用。
@@ -25,18 +25,18 @@ ms.locfileid: "86118676"
 
 1. 在 [MySQL 伺服器] 頁面的 [設定] 標題下，按一下 [連線安全性]****，以開啟適用於 MySQL 的 Azure 資料庫的 [連線安全性] 窗格。 
 
-2. 確定 [允許存取 Azure 服務] 控制項已設定為 [**關閉**]。
+2. 確定 [允許存取 Azure 服務] 控制項設定為 [ **關閉**]。
 
 > [!Important]
-> 如果您將此控制項保持設定為 [開啟]，您的 Azure MySQL 資料庫伺服器會接受來自任何子網的通訊。 就安全性觀點而言，讓此控制項保持 [開啟] 可能使存取過多。 Microsoft Azure 虛擬網路服務端點功能（與適用於 MySQL 的 Azure 資料庫的虛擬網路規則功能協調）結合在一起，可以減少您的安全性介面區。
+> 如果您將此控制項保持設定為開啟，則您的 Azure MySQL 資料庫伺服器會接受來自任何子網的通訊。 就安全性觀點而言，讓此控制項保持 [開啟] 可能使存取過多。 與適用於 MySQL 的 Azure 資料庫的虛擬網路規則功能協調 Microsoft Azure 虛擬網路服務端點功能，可將您的安全性介面區降到一。
 
 3. 接下來，按一下 [+ 新增現有的虛擬網路]****。 如果您沒有現有的 VNet，就可以按一下 [+ 建立新的虛擬網路]**** 來建立新的 VNet。 請參閱[快速入門：使用 Azure 入口網站建立虛擬網路](../virtual-network/quick-create-portal.md)
 
-   ![Azure 入口網站 - 按一下 [連線安全性]](./media/howto-manage-vnet-using-portal/1-connection-security.png)
+   :::image type="content" source="./media/howto-manage-vnet-using-portal/1-connection-security.png" alt-text="Azure 入口網站按一下 [連接安全性]":::
 
 4. 輸入 VNet 規則名稱，選取訂用帳戶、虛擬網路和子網路名稱，然後按一下 [啟用]****。 這會使用 **Microsoft.SQL** 服務標籤自動啟用子網路上的 VNet 服務端點。
 
-   ![Azure 入口網站 - 設定 VNet](./media/howto-manage-vnet-using-portal/2-configure-vnet.png)
+   :::image type="content" source="./media/howto-manage-vnet-using-portal/2-configure-vnet.png" alt-text="Azure 入口網站 - 設定 VNet":::
 
    該帳戶必須擁有必要的權限，才能建立虛擬網路和服務端點。
 
@@ -54,9 +54,9 @@ ms.locfileid: "86118676"
 
 5. 啟用之後，按一下 [確定]****，您將會看到 VNet 服務端點和 VNet 規則一起啟用。
 
-   ![VNet 服務端點已啟用且 VNet 規則已建立](./media/howto-manage-vnet-using-portal/3-vnet-service-endpoints-enabled-vnet-rule-created.png)
+   :::image type="content" source="./media/howto-manage-vnet-using-portal/3-vnet-service-endpoints-enabled-vnet-rule-created.png" alt-text="VNet 服務端點已啟用且 VNet 規則已建立":::
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 - 同樣地，您可以編寫指令碼，以[使用 Azure CLI 啟用 VNet 服務端點及建立適用於 MySQL 的 Azure 資料庫的 VNET 規則](howto-manage-vnet-using-cli.md)。
 - 如需連線至「適用於 MySQL 的 Azure 資料庫」伺服器的說明，請參閱[「適用於 MySQL 的 Azure 資料庫」的連線庫](./concepts-connection-libraries.md)
 

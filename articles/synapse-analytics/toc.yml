@@ -464,13 +464,15 @@
               href: ../cosmos-db/configure-synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: 連線到適用於 Cosmos DB 的 Azure Synapse Link
               href: ./synapse-link/how-to-connect-synapse-link-cosmos-db.md
-            - name: 使用適用於 Azure Synapse Analytics 的 Apache Spark 查詢 Azure Cosmos DB 分析存放區
+            - name: 使用 Apache Spark 查詢 Azure Cosmos DB 分析存放區
               href: ./synapse-link/how-to-query-analytical-store-spark.md
             - name: 使用 Apache Spark 將資料從 Synapse Link 複製到 SQL 集區
               href: ./synapse-link/how-to-copy-to-sql-pool.md
+            - name: 使用隨選 SQL 查詢 Azure Cosmos DB 分析存放區
+              href: sql/query-cosmos-db-analytical-store.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: Synapse SQL
           items:
-            - name: 查詢儲存體中的資料
+            - name: 查詢外部資料
               items:
                 - name: 概觀
                   href: sql/query-data-storage.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
@@ -478,13 +480,15 @@
                   href: sql/query-single-csv-file.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
                 - name: 查詢 Parquet 檔案
                   href: sql/query-parquet-files.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-                - name: 查詢 Parquet 巢狀型別
-                  href: sql/query-parquet-nested-types.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
                 - name: 查詢 JSON 檔案
                   href: sql/query-json-files.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                - name: 查詢 Azure Cosmos DB
+                  href: sql/query-cosmos-db-analytical-store.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                - name: 查詢巢狀型別
+                  href: sql/query-parquet-nested-types.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
                 - name: 查詢資料夾和多個檔案
                   href: sql/query-folders-multiple-csv-files.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-                - name: 使用檔案中繼資料
+                - name: 使用檔案中繼資料來查詢分割的檔案
                   href: sql/query-specific-files.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
                 - name: 建立和使用檢視
                   href: sql/create-use-views.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json

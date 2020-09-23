@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 08/31/2020
+ms.date: 09/11/2020
 ms.author: pafarley
 ms.custom:
 - seodec18
 - cog-serv-seo-aug-2020
 keywords: 電腦視覺, 電腦視覺應用程式, 電腦視覺服務
-ms.openlocfilehash: f613080ec24fdfc4c739d4d0494aa2f3c36705cd
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: fa00265f3c591578f9970b77770fbf7290d87510
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89323069"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907064"
 ---
 # <a name="what-is-computer-vision"></a>什麼是電腦視覺？
 
@@ -92,7 +92,11 @@ Azure 的電腦視覺服務可讓您存取進階演算法，以根據您感興�
 
 ## <a name="use-containers"></a>使用容器
 
-[使用電腦視覺容器](computer-vision-how-to-install-containers.md)，藉由在更接近資料的位置安裝標準化的 Docker 容器，於本機辨識列印和手寫的文字。
+使用電腦視覺 Docker 容器來使用服務內部部署。 目前有兩個可用的容器：
+
+* [電腦視覺讀取容器](computer-vision-how-to-install-containers.md)可讓您辨識影像中的列印和手寫文字。
+
+* [電腦視覺的空間分析容器](spatial-analysis-container.md)可讓您分析即時串流影片，透過實體環境了解人員之間的空間關聯性，以及移動情況。
 
 ## <a name="image-requirements"></a>影像需求
 

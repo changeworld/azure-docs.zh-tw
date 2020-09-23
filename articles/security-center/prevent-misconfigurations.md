@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 09/08/2020
 ms.author: memildin
-ms.openlocfilehash: ceafbe1fd1682fc5e92ab3048ed09866fb9ebbdf
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 19e9a33350b6a1a67986dc35a372f737e45ab39a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89570431"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906386"
 ---
 # <a name="prevent-misconfigurations-with-enforcedeny-recommendations"></a>使用強制/拒絕建議防止錯誤配置
 
@@ -24,10 +24,9 @@ ms.locfileid: "89570431"
 根據特定的建議來強制執行安全設定，會以兩種模式提供：
 
 - 使用 Azure 原則的 **拒絕** 效果，您可以停止建立狀況不良的資源
-
 - 使用 [ **強制** ] 選項，您可以利用 Azure 原則的 **DeployIfNotExist** 效果，並在建立時自動補救不符合規範的資源
- 
-這適用于選取的安全性建議，並可在資源詳細資料頁面頂端找到。
+
+這可以在 [資源詳細資料] 頁面頂端找到所選的安全性建議 (查看 [ [拒絕/強制執行選項](#recommendations-with-denyenforce-options) ]) 的建議。
 
 ## <a name="prevent-resource-creation"></a>防止建立資源
 

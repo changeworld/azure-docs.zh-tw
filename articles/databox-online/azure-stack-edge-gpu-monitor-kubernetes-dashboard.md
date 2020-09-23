@@ -1,6 +1,6 @@
 ---
-title: 透過 Kubernetes 儀表板監視您的 Azure Stack Edge 裝置 |Microsoft Docs
-description: 說明如何存取和使用 Kubernetes 儀表板來監視您的 Azure Stack Edge 裝置。
+title: 透過 Kubernetes 儀表板監視您的 Azure Stack Edge Pro 裝置 |Microsoft Docs
+description: 說明如何存取和使用 Kubernetes 儀表板來監視您的 Azure Stack Edge Pro 裝置。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/29/2020
 ms.author: alkohli
-ms.openlocfilehash: 12fe605fef444b4e0d7439350e350316157f53a5
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 1a4f22e7ae3cc60d0a16b24a1f0e5f93d3a86d8c
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89297812"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90899208"
 ---
-# <a name="use-kubernetes-dashboard-to-monitor-your-azure-stack-edge-gpu-device"></a>使用 Kubernetes 儀表板來監視您的 Azure Stack Edge GPU 裝置
+# <a name="use-kubernetes-dashboard-to-monitor-your-azure-stack-edge-pro-gpu-device"></a>使用 Kubernetes 儀表板來監視您的 Azure Stack Edge Pro GPU 裝置
 
-本文說明如何存取和使用 Kubernetes 儀表板來監視您的 Azure Stack Edge GPU 裝置。 若要監視您的裝置，您可以使用 Azure 入口網站中的圖表、觀看 Kubernetes 儀表板，或透過 `kubectl` 裝置的 PowerShell 介面執行命令。 
+本文說明如何存取和使用 Kubernetes 儀表板來監視您的 Azure Stack Edge Pro GPU 裝置。 若要監視您的裝置，您可以使用 Azure 入口網站中的圖表、觀看 Kubernetes 儀表板，或透過 `kubectl` 裝置的 PowerShell 介面執行命令。 
 
 本文僅著重于可在 Kubernetes 儀表板上執行的監視工作。
 
@@ -35,7 +35,7 @@ ms.locfileid: "89297812"
 
 Kubernetes 儀表板是一個 web 型使用者介面，可讓您用來針對容器化應用程式進行疑難排解。 Kubernetes 儀表板是 Kubernetes 命令列以 UI 為基礎的替代方案 `kubectl` 。 如需詳細資訊，請參閱 [Kubernetes 儀表板](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/)。 
 
-在您的 Azure Stack Edge 裝置上，您可以在 *唯讀* 模式中使用 Kubernetes 儀表板，以深入瞭解在 Azure Stack Edge 裝置上執行的應用程式、查看 Kubernetes 叢集資源的狀態，以及查看裝置上發生的任何錯誤。
+在您的 Azure Stack Edge Pro 裝置上，您可以在 *唯讀* 模式中使用 Kubernetes 儀表板，以深入瞭解在 Azure Stack Edge Pro 裝置上執行的應用程式、查看 Kubernetes 叢集資源的狀態，以及查看裝置上發生的任何錯誤。
 
 ## <a name="access-dashboard"></a>存取儀表板
 
@@ -54,19 +54,19 @@ Kubernetes 儀表板是 *唯讀* 的，會在埠31000的 Kubernetes 主要節點
     1. 選取省略號 **...**。流覽並指向您稍 `kubeconfig` 早在本機系統上下載的。 選取 [登入]。
         ![流覽至 kubeconfig 檔案](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/kubernetes-dashboard-sign-in-2.png)    
 
-6. 您現在可以在唯讀模式中，針對 Azure Stack Edge 裝置來查看 Kubernetes 儀表板。
+6. 您現在可以在唯讀模式中，查看 Azure Stack Edge Pro 裝置的 Kubernetes 儀表板。
 
     ![Kubernetes 儀表板主頁面](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/kubernetes-dashboard-main-page-1.png)
 
 ## <a name="view-module-status"></a>查看模組狀態
 
-計算模組是已實行商務邏輯的容器。 您可以使用儀表板來確認計算模組是否已成功部署到您的 Azure Stack Edge 裝置上。
+計算模組是已實行商務邏輯的容器。 您可以使用儀表板來確認是否已成功在您的 Azure Stack Edge Pro 裝置上部署計算模組。
 
 若要查看模組狀態，請在儀表板上執行下列步驟：
 
 1. 在 [儀表板] 的左窗格中，移至 [ **命名空間**]。 依命名空間篩選 IoT Edge 模組的顯示位置，在此案例中為 **iotedge**。
 1. 在左窗格中，移至 [ **工作負載 > 部署**]。
-1. 在右窗格中，您會看到部署在裝置上的所有模組。 在此情況下，GettingStartedWithGPU 模組會部署在 Azure Stack Edge 上。 您可以看到模組已部署。
+1. 在右窗格中，您會看到部署在裝置上的所有模組。 在此情況下，GettingStartedWithGPU 模組會部署在 Azure Stack Edge Pro 上。 您可以看到模組已部署。
 
     ![查看模組部署](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/kubernetes-view-module-deployment-1.png)
 
@@ -81,7 +81,7 @@ Kubernetes 儀表板是 *唯讀* 的，會在埠31000的 Kubernetes 主要節點
 
 1. 在 [儀表板] 的左窗格中，移至 [ **命名空間**]。 依部署外部服務的命名空間篩選，在此案例中為 **iotedge**。
 1. 在左窗格中，移至 [ **探索和負載平衡 > 服務**]。
-1. 在右窗格中，您會看到在 `iotedge` Azure Stack Edge 裝置上的命名空間中執行的所有服務。
+1. 在右窗格中，您會看到在 `iotedge` Azure Stack Edge Pro 裝置上的命名空間中執行的所有服務。
 
     ![取得外部服務的 IP](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/kubernetes-get-ip-external-service-1.png)
 
@@ -104,7 +104,7 @@ Kubernetes 儀表板是 *唯讀* 的，會在埠31000的 Kubernetes 主要節點
 
 ## <a name="view-cpu-memory-usage"></a>查看 CPU、記憶體使用量
 
-Azure Stack Edge 裝置的 Kubernetes 儀表板也有 [計量伺服器附加](https://kubernetes.io/docs/tasks/debug-application-cluster/resource-metrics-pipeline/) 元件，可匯總 Kubernetes 資源之間的 CPU 和記憶體使用量。
+Azure Stack Edge Pro 裝置的 Kubernetes 儀表板也有 [計量伺服器附加](https://kubernetes.io/docs/tasks/debug-application-cluster/resource-metrics-pipeline/) 元件，可匯總 Kubernetes 資源之間的 CPU 和記憶體使用量。
  
 例如，您可以在所有命名空間中，查看整個部署所耗用的 CPU 和記憶體。 
 
@@ -117,6 +117,6 @@ Azure Stack Edge 裝置的 Kubernetes 儀表板也有 [計量伺服器附加](ht
 Kubernetes 計量伺服器提供自動調整管線，類似于 [水準 Pod 自動調整程式](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/)。
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 瞭解如何針對 Kubernetes 問題進行疑難排解 <!--insert link-->.

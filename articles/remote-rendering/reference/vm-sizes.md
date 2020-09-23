@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 05/28/2020
 ms.topic: reference
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8843f24f27f8973ad99989f743d1b3fae568679e
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: b37aabb39e19fa5ec53d2b006a7cbc1793adad72
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88997144"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90988037"
 ---
 # <a name="server-sizes"></a>伺服器大小
 
@@ -23,7 +23,7 @@ Azure 遠端轉譯可在兩個伺服器設定中使用： `Standard` 和 `Premiu
 
 當「標準」伺服器大小上的轉譯器達到這項限制時，它會將轉譯切換至棋盤背景：
 
-![棋盤式](media/checkerboard.png)
+![螢幕擷取畫面顯示使用 [工具] 功能表的黑色和白色方塊方格。](media/checkerboard.png)
 
 ## <a name="specify-the-server-size"></a>指定伺服器大小
 
@@ -83,7 +83,7 @@ void CreateRenderingSession(ApiHandle<AzureFrontend> frontend)
 
 如需每種設定類型定價的詳細明細，請參閱 [遠端轉譯定價](https://azure.microsoft.com/pricing/details/remote-rendering) 頁面。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 * [PowerShell 指令碼範例](../samples/powershell-example-scripts.md)
 * [模型轉換](../how-tos/conversion/model-conversion.md)
 

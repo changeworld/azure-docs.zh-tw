@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: a3f3daa56c782d84cf6ba07223f8cfea15daa8a4
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: deb99ea4f674c901974ca219a0e1bf831f5b4e51
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86101619"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905851"
 ---
 # <a name="connect-an-existing-azure-app-service-to-azure-database-for-mysql-server"></a>將現有的 Azure App Service 連線到適用於 MySQL 伺服器的 Azure 資料庫
 本主題說明如何將現有的 Azure App Service 連線到適用於 MySQL 伺服器的 Azure 資料庫。
@@ -26,21 +26,21 @@ ms.locfileid: "86101619"
 
 1. 在 [MySQL 伺服器] 刀鋒視窗的 [設定] 標題下，按一下 [連線安全性]****，開啟「適用於 MySQL 的 Azure 資料庫」的 [連線安全性] 刀鋒視窗。
 
-   ![Azure 入口網站 - 按一下 [連線安全性]](./media/howto-connect-webapp/1-connection-security.png)
+   :::image type="content" source="./media/howto-connect-webapp/1-connection-security.png" alt-text="Azure 入口網站 - 按一下 [連線安全性]":::
 
 2. 選取 [允許存取 Azure 服務]**** 中的 [開啟]****，然後選取 [儲存]****。
-   ![Azure 入口網站 - 允許 Azure 存取](./media/howto-connect-webapp/allow-azure.png)
+   :::image type="content" source="./media/howto-connect-webapp/allow-azure.png" alt-text="Azure 入口網站 - 允許 Azure 存取":::
 
 ## <a name="solution-2---create-a-firewall-rule-to-explicitly-allow-outbound-ips"></a>解決方案 2 - 建立防火牆規則以明確允許輸出 IP
 您可以明確新增 Azure App Service 的所有輸出 IP。
 
 1. 在 App Service 的 [屬性] 刀鋒視窗上，檢視您的 [輸出 IP 位址]****。
 
-   ![Azure 入口網站 - 檢視輸出 IP](./media/howto-connect-webapp/2_1-outbound-ip-address.png)
+   :::image type="content" source="./media/howto-connect-webapp/2_1-outbound-ip-address.png" alt-text="Azure 入口網站 - 檢視輸出 IP":::
 
 2. 在 MySQL 的 [連線安全性] 刀鋒視窗上，逐一新增輸出 IP。
 
-   ![Azure 入口網站 - 新增明確的 IP](./media/howto-connect-webapp/2_2-add-explicit-ips.png)
+   :::image type="content" source="./media/howto-connect-webapp/2_2-add-explicit-ips.png" alt-text="Azure 入口網站 - 新增明確的 IP":::
 
 3. 記得**儲存**您的防火牆規則。
 
@@ -49,7 +49,7 @@ ms.locfileid: "86101619"
 ## <a name="ssl-configuration"></a>SSL 設定
 適用於 MySQL 的 Azure 資料庫預設會啟用 SSL。 如果您的應用程式未使用 SSL 連線到資料庫，則必須在 MySQL 伺服器上停用 SSL。 如需如何設定 SSL 的詳細資訊，請參閱[使用 SSL 與適用於 MySQL 的 Azure 資料庫](howto-configure-ssl.md)。
 
-### <a name="django-pymysql"></a>Django （PyMySQL）
+### <a name="django-pymysql"></a>Django (PyMySQL) 
 ```python
 DATABASES = {
     'default': {
@@ -66,5 +66,5 @@ DATABASES = {
 }
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 如需連接字串的詳細資訊，請參閱[連接字串](howto-connection-string.md)。

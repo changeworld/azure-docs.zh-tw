@@ -1,18 +1,18 @@
 ---
 title: 適用於 Azure 自動化的 Azure 原則法規合規性控制措施
 description: 列出適用於 Azure 自動化的 Azure 原則法規合規性控制措施。 這些內建原則定義提供管理 Azure 資源合規性的常見方法。
-ms.date: 09/04/2020
+ms.date: 09/16/2020
 ms.topic: sample
 author: mgoedtel
 ms.author: magoedte
 ms.service: automation
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 6a7e12b9d3ccc938547b8cae3f6f6ba75b70d3f7
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: e26b30b7f0547c3824f1cb5735fa1a400bf0d144
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89481684"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987521"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-automation"></a>適用於 Azure 自動化的 Azure 原則法規合規性控制措施
 

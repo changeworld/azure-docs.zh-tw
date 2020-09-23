@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 07/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 9c8238e6e0b52a625c76f79fa0dd5a91dd640fb8
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: dabe914ffd4e84e8ded5c0e3b519036479fe33ec
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87447850"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987591"
 ---
 # <a name="migrate-azure-monitor-logs-update-deployments-to-azure-portal"></a>將 Azure 監視器記錄更新部署遷移至 Azure 入口網站
 
@@ -33,7 +33,7 @@ Operations Management Suite (OMS) 入口網站已被[取代](../azure-monitor/pl
 
 3. 在自動化帳戶中，按一下 [更新管理]。
 
-    ![更新管理](media/migrate-oms-update-deployments/azure-automation.png)
+    :::image type="content" source="media/migrate-oms-update-deployments/azure-automation.png" alt-text="[更新管理] 頁面的螢幕擷取畫面。":::
 
 4. 在 Azure 入口網站中，選取 [所有服務] 下的 [自動化帳戶]。 
 
@@ -43,7 +43,7 @@ Operations Management Suite (OMS) 入口網站已被[取代](../azure-monitor/pl
 
 在 OMS 入口網站中建立的所有更新部署都有一個[已儲存的搜尋](../azure-monitor/platform/computer-groups.md) (也稱為電腦群組)，且名稱與現有的更新部署相同。 已儲存的搜尋包含已在更新部署中排程的電腦清單。
 
-![更新管理](media/migrate-oms-update-deployments/oms-deployment.png)
+:::image type="content" source="media/migrate-oms-update-deployments/oms-deployment.png" alt-text="已反白顯示 [名稱] 和 [伺服器] 欄位的 [更新部署] 頁面螢幕擷取畫面。":::
 
 若要使用這個現有的已儲存搜尋，請遵循下列步驟：
 

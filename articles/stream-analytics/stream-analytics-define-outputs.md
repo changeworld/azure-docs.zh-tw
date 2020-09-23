@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: ade5972226a735ce5d093890091536baf02f5eff
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 6576ac53f43a8e176b3d166d5218b0ba9934b856
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89068978"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90907160"
 ---
 # <a name="outputs-from-azure-stream-analytics"></a>Azure 串流分析的輸出
 
@@ -24,17 +24,17 @@ Azure 串流分析作業是由輸入、查詢及輸出所組成。 有數種輸�
 
 | 輸出類型 | 資料分割 | 安全性 | 
 |-------------|--------------|----------|
-|[Azure Data Lake Storage Gen 1](azure-data-lake-storage-gen1-output.md)|是|Azure Active Directory 使用者 </br> MSI|
+|[Azure Data Lake Storage Gen 1](azure-data-lake-storage-gen1-output.md)|Yes|Azure Active Directory 使用者 </br> MSI|
 |[Azure SQL Database](sql-database-output.md)|是，必須啟用。|SQL 使用者驗證 </br> MSI (預覽) |
-|[Azure Synapse Analytics (預覽)](azure-synapse-analytics-output.md)|否|SQL 使用者驗證|
-|[Blob 儲存體和 Azure Data Lake Gen 2](blob-storage-azure-data-lake-gen2-output.md)|是|MSI </br> 存取金鑰|
-|[Azure 事件中樞](event-hubs-output.md)|是|存取金鑰|
-|[Power BI](power-bi-output.md)|否|Azure Active Directory 使用者 </br> MSI|
-|[Azure 資料表儲存體](table-storage-output.md)|是|帳戶金鑰|
-|[Azure 服務匯流排佇列](service-bus-queues-output.md)|是|存取金鑰|
-|[Azure 服務匯流排主題](service-bus-topics-output.md)|是|存取金鑰|
-|[Azure Cosmos DB](azure-cosmos-db-output.md)|是|存取金鑰|
-|[Azure Functions](azure-functions-output.md)|是|存取金鑰|
+|[Azure Synapse Analytics](azure-synapse-analytics-output.md)|No|SQL 使用者驗證|
+|[Blob 儲存體和 Azure Data Lake Gen 2](blob-storage-azure-data-lake-gen2-output.md)|Yes|MSI </br> 存取金鑰|
+|[Azure 事件中樞](event-hubs-output.md)|Yes|存取金鑰|
+|[Power BI](power-bi-output.md)|No|Azure Active Directory 使用者 </br> MSI|
+|[Azure 資料表儲存體](table-storage-output.md)|Yes|帳戶金鑰|
+|[Azure 服務匯流排佇列](service-bus-queues-output.md)|Yes|存取金鑰|
+|[Azure 服務匯流排主題](service-bus-topics-output.md)|Yes|存取金鑰|
+|[Azure Cosmos DB](azure-cosmos-db-output.md)|Yes|存取金鑰|
+|[Azure Functions](azure-functions-output.md)|Yes|存取金鑰|
 
 ## <a name="partitioning"></a>資料分割
 

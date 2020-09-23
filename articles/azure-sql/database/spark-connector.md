@@ -11,12 +11,12 @@ author: denzilribeiro
 ms.author: denzilr
 ms.reviewer: carlrab
 ms.date: 09/02/2020
-ms.openlocfilehash: 22a9bec09652b6cbce02fe5a54a319694aaa6911
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 46fa489c5a72c3de923f5281cc9be205925dd42d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89421300"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90988095"
 ---
 # <a name="accelerate-real-time-big-data-analytics-using-the-spark-connector"></a>使用 Spark 連接器加速即時的大型資料分析
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -51,7 +51,7 @@ Spark 連接器利用適用于 SQL Server 的 Microsoft JDBC Driver 來移動 Sp
 
 下圖說明此資料流程。
 
-   ![架構](./media/spark-connector/architecture.png)
+   ![圖表會顯示描述的流程，其中的主要節點會直接連接到資料庫，並連接到連接至資料庫的三個背景工作節點。](./media/spark-connector/architecture.png)
 
 ### <a name="build-the-spark-connector"></a>建立 Spark 連接器
 
@@ -231,7 +231,7 @@ df.bulkCopyToSqlDB(bulkCopyConfig, bulkCopyMetadata)
 //df.bulkCopyToSqlDB(bulkCopyConfig) if no metadata is specified.
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 如果您還沒有這麼做，請從 [azure sqldb-Spark GitHub 存放庫](https://github.com/Azure/azure-sqldb-spark) 下載 spark 連接器，並探索存放庫中的其他資源：
 

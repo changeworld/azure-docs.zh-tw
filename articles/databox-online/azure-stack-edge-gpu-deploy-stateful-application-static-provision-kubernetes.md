@@ -1,6 +1,6 @@
 ---
-title: 在 Azure Stack Edge 裝置上使用 kubectl 透過靜態布建的共用來部署 Kubernetes 具狀態應用程式 |Microsoft Docs
-description: 說明如何使用 Azure Stack Edge GPU 裝置上的 kubectl，透過靜態布建的共用來建立和管理 Kubernetes 具狀態應用程式部署。
+title: 在 Azure Stack Edge Pro 裝置上，使用 kubectl 透過靜態布建的共用來部署 Kubernetes 具狀態應用程式 |Microsoft Docs
+description: 說明如何使用 Azure Stack Edge Pro GPU 裝置上的 kubectl，透過靜態布建的共用來建立和管理 Kubernetes 具狀態應用程式部署。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,18 +8,18 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/18/2020
 ms.author: alkohli
-ms.openlocfilehash: d9200b66d51292271f546eb111f3355649318b91
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 8366c5b7a05b35891bcf87e446229357a5511359
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89462711"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90899542"
 ---
-# <a name="use-kubectl-to-run-a-kubernetes-stateful-application-with-a-persistentvolume-on-your-azure-stack-edge-device"></a>使用 kubectl 搭配 Azure Stack Edge 裝置上的 PersistentVolume 來執行 Kubernetes 具狀態應用程式
+# <a name="use-kubectl-to-run-a-kubernetes-stateful-application-with-a-persistentvolume-on-your-azure-stack-edge-pro-device"></a>使用 kubectl 搭配 Azure Stack Edge Pro 裝置上的 PersistentVolume 來執行 Kubernetes 具狀態應用程式
 
 本文說明如何使用 PersistentVolume (PV) 和部署，在 Kubernetes 中部署單一實例的可設定狀態應用程式。 部署會 `kubectl` 在現有的 Kubernetes 叢集上使用命令，並部署 MySQL 應用程式。 
 
-此程式適用于已 [在 Azure Stack Edge 裝置上審核 Kubernetes 儲存體](azure-stack-edge-gpu-kubernetes-storage.md) ，並熟悉 [Kubernetes 儲存體](https://kubernetes.io/docs/concepts/storage/)概念的人。
+此程式適用于已 [在 Azure Stack Edge Pro 裝置上審核 Kubernetes 儲存體](azure-stack-edge-gpu-kubernetes-storage.md) 並熟悉 [Kubernetes 儲存體](https://kubernetes.io/docs/concepts/storage/)概念的人。
 
 
 ## <a name="prerequisites"></a>必要條件
@@ -28,30 +28,30 @@ ms.locfileid: "89462711"
 
 ### <a name="for-device"></a>針對裝置
 
-- 您有1個節點 Azure Stack Edge 裝置的登入認證。
+- 您有1個節點 Azure Stack Edge Pro 裝置的登入認證。
     - 裝置已啟用。 請參閱 [啟用裝置](azure-stack-edge-gpu-deploy-activate.md)。
     - 裝置具有透過 Azure 入口網站設定的計算角色，且具有 Kubernetes 叢集。 請參閱 [設定計算](azure-stack-edge-gpu-deploy-configure-compute.md)。
 
 ### <a name="for-client-accessing-the-device"></a>適用于存取裝置的用戶端
 
-- 您有將用來存取 Azure Stack Edge 裝置的 Windows 用戶端系統。
+- 您有將用來存取 Azure Stack Edge Pro 裝置的 Windows 用戶端系統。
     - 用戶端正在執行 Windows PowerShell 5.0 或更新版本。 若要下載 Windows PowerShell 的最新版本，請移至 [ [安裝 Windows PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-7)。
     
     - 您也可以讓任何其他用戶端使用 [支援的作業系統](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device) 。 本文說明使用 Windows 用戶端的程式。 
     
-    - 您已完成在 [Azure Stack Edge 裝置上存取 Kubernetes](azure-stack-edge-gpu-create-kubernetes-cluster.md)叢集所述的程式。 您已經：
+    - 您已完成在 [Azure Stack Edge Pro 裝置上存取 Kubernetes](azure-stack-edge-gpu-create-kubernetes-cluster.md)叢集所述的程式。 您已經：
       - 透過 `userns1` 命令建立命名空間 `New-HcsKubernetesNamespace` 。 
       - 透過命令建立使用者 `user1` `New-HcsKubernetesUser` 。 
       - 已透過 `user1` 命令授與存取權 `userns1` `Grant-HcsKubernetesNamespaceAccess` 。       
       - 安裝 `kubectl` 在用戶端上，並將具有使用者設定的檔案儲存 `kubeconfig` 至 C： \\ Users \\ &lt; username &gt; \\ . kube。 
     
-    - 請確定 `kubectl` 用戶端版本的 Azure Stack Edge 裝置上執行的 Kubernetes 主要版本不會有多個版本的扭曲。 
+    - 請確定 `kubectl` 用戶端版本的 Azure Stack Edge Pro 裝置上執行的 Kubernetes 主要版本，不會有多個版本的扭曲。 
         - 用 `kubectl version` 來檢查用戶端上執行的 kubectl 版本。 請記下完整版。
-        - 在 Azure Stack Edge 裝置的本機 UI 中，移至 **[總覽** ] 並記下 Kubernetes 軟體號碼。 
+        - 在 Azure Stack Edge Pro 裝置的本機 UI 中，移至 **[總覽** ] 並記下 Kubernetes 軟體號碼。 
         - 確認這兩個版本是否相容于支援的 Kubernetes 版本中提供的對應 <!-- insert link-->. 
 
 
-您已經準備好在 Azure Stack Edge 裝置上部署可設定狀態的應用程式。 
+您已經準備好在 Azure Stack Edge Pro 裝置上部署可設定狀態的應用程式。 
 
 ## <a name="provision-a-static-pv"></a>布建靜態 PV
 
@@ -102,7 +102,7 @@ ms.locfileid: "89462711"
 
     當您在先前的步驟中建立共用時，靜態布建的任何現有 PV 都會滿足此宣告。 在您的裝置上，系統會為每個共用建立大型的 PV 32 TB。 PV 符合 PVC 所設定的需求，且 PVC 應系結至此 PV。
 
-    將下列檔案複製並儲存 `mysql-deployment.yml` 到 Windows 用戶端上您用來存取 Azure Stack Edge 裝置的資料夾中。
+    將下列檔案複製並儲存 `mysql-deployment.yml` 到 Windows 用戶端上您用來存取 Azure Stack Edge Pro 裝置的資料夾中。
     
     ```yml
     apiVersion: v1
@@ -341,7 +341,7 @@ persistentvolumeclaim "mysql-pv-claim" deleted
 C:\Users\user>
 ```                                                                                         
 
-當 PVC 被刪除時，PV 不再系結至 PVC。 當建立共用時布建了 PV，您將需要刪除該共用。 遵循這些步驟：
+當 PVC 被刪除時，PV 不再系結至 PVC。 當建立共用時布建了 PV，您將需要刪除該共用。 請遵循下列步驟：
 
 1. 卸載共用。 在 Azure 入口網站中，移至您的 **Azure Stack Edge 資源 > 共用** ，然後選取並按一下您要卸載的共用。 選取 [ **卸載** ] 並確認操作。 等候共用卸載。 取消掛接會釋放共用 (，因此會從 Kubernetes 叢集) 相關聯的 PersistentVolume。 
 
@@ -352,6 +352,6 @@ C:\Users\user>
     ![刪除本機共用以取得 PV](./media/azure-stack-edge-gpu-deploy-stateful-application-static-provision-kubernetes/delete-edge-local-share-1.png)
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
-若要瞭解如何以動態方式布建存放裝置，請參閱 [在 Azure Stack Edge 裝置上透過動態布建部署具狀態應用程式](azure-stack-edge-gpu-deploy-stateful-application-dynamic-provision-kubernetes.md)
+若要瞭解如何動態布建儲存體，請參閱 [在 Azure Stack Edge Pro 裝置上透過動態布建來部署具狀態應用程式](azure-stack-edge-gpu-deploy-stateful-application-dynamic-provision-kubernetes.md)
