@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 05/20/2019
 ms.author: jeedes
-ms.openlocfilehash: e3dd0a31e23418c5871ac3db80b2ba1543576fac
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: f1ad698ccacc2fee94c797a20a43744d4cafba76
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555756"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91305632"
 ---
 # <a name="tutorial-configure-dropbox-for-business-for-automatic-user-provisioning"></a>教學課程︰設定 Dropbox for Business 來自動佈建使用者
 
@@ -91,11 +91,11 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
 3. 選取 [佈建] 索引標籤。
 
-    ![佈建索引標籤](common/provisioning.png)
+    ![已呼叫 [布建] 選項的 [管理選項] 螢幕擷取畫面。](common/provisioning.png)
 
 4. 將 [佈建模式] 設定為 [自動]。
 
-    ![佈建索引標籤](common/provisioning-automatic.png)
+    ![[布建模式] 下拉式清單的螢幕擷取畫面，其中已呼叫 [自動] 選項。](common/provisioning-automatic.png)
 
 5. 在 [系統管理員認證]**** 區段下，按一下 [授權]****。 會在新的瀏覽器視窗中開啟 Dropbox for Business 對話方塊。
 
@@ -113,7 +113,7 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
     ![通知電子郵件](common/provisioning-notification-email.png)
 
-9. 按一下 [檔案] 。
+9. 按一下 [檔案]  。
 
 10. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 使用者至 Dropbox**]。
 

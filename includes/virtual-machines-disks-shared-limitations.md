@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 08/26/2020
+ms.date: 09/22/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: edb5836ace6f7a1a0cff703b9921f6e6999de578
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 11901e0b68fed9a6a83287d50896bf2afc51fa37
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88944508"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91279550"
 ---
 啟用共用磁片只適用于磁片類型的子集。 目前只有 ultra 磁片和 premium Ssd 可以啟用共用磁片。 啟用共用磁片的每個受控磁片受限於下列限制，並依磁片類型組織：
 
@@ -59,7 +59,7 @@ Ultra 磁片有各自不同的限制清單，與共享磁片無關。 如需 ult
 - 加拿大東部
 - 日本東部
 - 日本西部
+- 東南亞
+- 東亞
 - US Gov 維吉尼亞州
 - US Gov 亞利桑那州
-
-如果您想要嘗試共用 premium Ssd，請 [註冊以取得存取權](https://aka.ms/AzureSharedDiskGASignUp)。

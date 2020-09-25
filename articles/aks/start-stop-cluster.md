@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 09/18/2020
 author: palma21
-ms.openlocfilehash: a743a6c30d5ce8bcaf275bf1a658f8343de4d4fb
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 44c33aa018971cc2b2f5eb215597a63e8b55c853
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90933995"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91278561"
 ---
 # <a name="stop-and-start-an-azure-kubernetes-service-aks-cluster-preview"></a>停止並啟動 Azure Kubernetes Service (AKS) 叢集 (預覽) 
 
@@ -69,7 +69,7 @@ az provider register --namespace Microsoft.ContainerService
 az aks stop --name myAKSCluster --resource-group myResourceGroup
 ```
 
-您可以使用 [az aks show] [az-aks-show] 命令來確認何時停止叢集，並確認 `powerState` 顯示如下 `Stopped` 輸出：
+您可以使用 [az aks show][az-aks-show] 命令確認叢集停止的時間，並確認 `powerState` 顯示如下 `Stopped` 輸出：
 
 ```json
 {
@@ -100,7 +100,7 @@ az aks stop --name myAKSCluster --resource-group myResourceGroup
 az aks start --name myAKSCluster --resource-group myResourceGroup
 ```
 
-您可以使用 [az aks show] [az-aks-show] 命令來確認您的叢集是否已啟動，並確認 `powerState` 顯示 `Running` 如下輸出：
+您可以使用 [az aks show][az-aks-show] 命令確認是否已啟動叢集，並確認 `powerState` 顯示 `Running` 如下輸出：
 
 ```json
 {
@@ -119,7 +119,7 @@ az aks start --name myAKSCluster --resource-group myResourceGroup
 如果 `provisioningState` 顯示 `Starting` ，表示您的叢集尚未完全啟動。
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 若要瞭解如何將集區調整 `User` 為0，請參閱將集區 [調整 `User` 為 0](scale-cluster.md#scale-user-node-pools-to-0)。
 - 若要瞭解如何使用「找不到」實例來節省成本，請參閱 [將點節點集區新增至 AKS](spot-node-pool.md)。
@@ -136,3 +136,4 @@ az aks start --name myAKSCluster --resource-group myResourceGroup
 [az-feature-register]: /cli/azure/feature?view=azure-cli-latest#az-feature-register&preserve-view=true
 [az-feature-list]: /cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true
 [az-provider-register]: /cli/azure/provider?view=azure-cli-latest#az-provider-register&preserve-view=true
+[az-aks-show]: /cli/azure/aks?view=azure-cli-latest#az_aks_show
