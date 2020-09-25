@@ -11,16 +11,16 @@ ms.topic: reference
 ms.date: 04/21/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8e575cf9bba02a59179cc70870fb680a27648963
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 466e590ba22efe1c2fbb457c15bc7f979f8a172e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85201170"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91259630"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>關於 Azure Active Directory B2C 自訂原則中的宣告解析程式
 
-Azure Active Directory B2C （Azure AD B2C）[自訂原則](custom-policy-overview.md)中的宣告解析程式會提供有關授權要求的內容資訊，例如原則名稱、要求相互關聯識別碼、使用者介面語言等等。
+Azure Active Directory B2C (Azure AD B2C 中的宣告解析程式) [自訂原則](custom-policy-overview.md) 會提供有關授權要求的內容資訊，例如原則名稱、要求相互關聯識別碼、使用者介面語言等等。
 
 若要在輸入或輸出宣告中使用宣告解析程式，您必須在 [ClaimsSchema](claimsschema.md) 元素下方定義字串 **ClaimType**，然後在輸入或輸出宣告元素中設定宣告解析程式的 **DefaultValue**。 Azure AD B2C 會讀取宣告解析程式的值，並在技術設定檔中使用該值。
 
@@ -88,13 +88,13 @@ Azure Active Directory B2C （Azure AD B2C）[自訂原則](custom-policy-overvi
 | {Context:DateTimeInUtc} |日期時間 (UTC)。  | 10/10/2018 12:00:00 PM |
 | {Context:DeploymentMode} |原則部署模式。  | 生產 |
 | {Context:IPAddress} | 使用者 IP 位址。 | 11.111.111.11 |
-| {CoNtext： KMSI} | 指出是否已選取 [[讓我保持登入](custom-policy-keep-me-signed-in.md)] 核取方塊。 |  true |
+| {CoNtext： KMSI} | 指出是否已選取 [ [讓我保持登入](custom-policy-keep-me-signed-in.md) ] 核取方塊。 |  true |
 
-### <a name="claims"></a>Claims 
+### <a name="claims"></a>宣告 
 
 | 宣告 | 說明 | 範例 |
 | ----- | ----------- | --------|
-| {Claim：宣告類型} | 已在原則檔或父原則檔的 ClaimsSchema 區段中定義的宣告類型識別碼。  例如： `{Claim:displayName}` 、或 `{Claim:objectId}` 。 | 宣告類型值。|
+| {索取：宣告類型} | 已在原則檔或父原則檔之 ClaimsSchema 區段中定義的宣告類型識別碼。  例如： `{Claim:displayName}` 、或 `{Claim:objectId}` 。 | 宣告類型值。|
 
 
 ### <a name="oauth2-key-value-parameters"></a>OAuth2 索引鍵/值參數
@@ -113,37 +113,38 @@ OIDC 或 OAuth2 要求中所包含的任何參數名稱均可對應至使用者�
 | 宣告 | 說明 | 範例 |
 | ----- | ----------------------- | --------|
 | {oauth2:access_token} | 存取權杖。 | N/A |
+| {oauth2： refresh_token} | 重新整理權杖。 | N/A |
 
 
 ### <a name="saml"></a>SAML
 
 | 宣告 | 說明 | 範例 |
 | ----- | ----------- | --------|
-| {SAML： AuthnCoNtextClassReferences} | `AuthnContextClassRef`來自 SAML 要求的元素值。 | urn： oasis： names： tc： SAML：2.0： ac：類別： PasswordProtectedTransport |
-| {SAML： NameIdPolicyFormat} | `Format`來自 `NameIDPolicy` SAML 要求之元素的屬性。 | urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress |
+| {SAML： AuthnCoNtextClassReferences} | `AuthnContextClassRef`SAML 要求中的元素值。 | urn： oasis： names： tc： SAML：2.0： ac：類別： PasswordProtectedTransport |
+| {SAML： NameIdPolicyFormat} | `Format`從 SAML 要求的元素中的屬性 `NameIDPolicy` 。 | urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress |
 | {SAML： Issuer} |  `Issuer`Saml 要求的 saml 元素值。| `https://contoso.com` |
-| {SAML： AllowCreate} | `AllowCreate`來自 SAML 要求之元素的屬性值 `NameIDPolicy` 。 | True |
-| {SAML： ForceAuthn} | `ForceAuthN`來自 SAML 要求之元素的屬性值 `AuthnRequest` 。 | True |
-| {SAML： ProviderName} | `ProviderName`來自 SAML 要求之元素的屬性值 `AuthnRequest` 。| Contoso.com |
+| {SAML： AllowCreate} | `AllowCreate`從 SAML 要求的元素中的屬性值 `NameIDPolicy` 。 | True |
+| {SAML： ForceAuthn} | `ForceAuthN`從 SAML 要求的元素中的屬性值 `AuthnRequest` 。 | True |
+| {SAML： ProviderName} | `ProviderName`從 SAML 要求的元素中的屬性值 `AuthnRequest` 。| Contoso.com |
 | {SAML： RelayState} | `RelayState` 查詢字串參數。| 
 
 ## <a name="using-claim-resolvers"></a>使用宣告解析程式
 
 您可以使用宣告解析程式搭配下列元素：
 
-| 項目 | 元素 | 設定 |
+| 項目 | 項目 | 設定 |
 | ----- | ----------------------- | --------|
 |Application Insights 技術設定檔 |`InputClaim` | |
-|[Azure Active Directory](active-directory-technical-profile.md)技術設定檔| `InputClaim`, `OutputClaim`| 1, 2|
-|[OAuth2](oauth2-technical-profile.md)技術設定檔| `InputClaim`, `OutputClaim`| 1, 2|
-|[OpenID connect](openid-connect-technical-profile.md)技術設定檔| `InputClaim`, `OutputClaim`| 1, 2|
-|[宣告轉換](claims-transformation-technical-profile.md)技術設定檔| `InputClaim`, `OutputClaim`| 1, 2|
-|[RESTful 提供者](restful-technical-profile.md)技術設定檔| `InputClaim`| 1, 2|
-|[SAML 識別提供者](saml-identity-provider-technical-profile.md)技術設定檔| `OutputClaim`| 1, 2|
-|[自我](self-asserted-technical-profile.md)判斷技術設定檔| `InputClaim`, `OutputClaim`| 1, 2|
+|[Azure Active Directory](active-directory-technical-profile.md) 技術設定檔| `InputClaim`, `OutputClaim`| 1, 2|
+|[OAuth2](oauth2-technical-profile.md) 技術設定檔| `InputClaim`, `OutputClaim`| 1, 2|
+|[OpenID Connect](openid-connect-technical-profile.md) 技術設定檔| `InputClaim`, `OutputClaim`| 1, 2|
+|[宣告轉換](claims-transformation-technical-profile.md) 技術設定檔| `InputClaim`, `OutputClaim`| 1, 2|
+|[RESTful 提供者](restful-technical-profile.md) 技術設定檔| `InputClaim`| 1, 2|
+|[SAML 識別提供者](saml-identity-provider-technical-profile.md)  技術設定檔| `OutputClaim`| 1, 2|
+|[自我](self-asserted-technical-profile.md) 判斷技術設定檔| `InputClaim`, `OutputClaim`| 1, 2|
 |[ContentDefinition](contentdefinitions.md)| `LoadUri`| |
 |[ContentDefinitionParameters](relyingparty.md#contentdefinitionparameters)| `Parameter` | |
-|[RelyingParty](relyingparty.md#technicalprofile)技術設定檔| `OutputClaim`| 2 |
+|[RelyingParty](relyingparty.md#technicalprofile) 技術設定檔| `OutputClaim`| 2 |
 
 設定：
 1. `IncludeClaimResolvingInClaimsHandling`中繼資料必須設定為 `true` 。
@@ -183,9 +184,9 @@ OIDC 或 OAuth2 要求中所包含的任何參數名稱均可對應至使用者�
 
 ### <a name="dynamic-ui-customization"></a>動態 UI 自訂
 
-Azure AD B2C 可讓您將查詢字串參數傳遞至您的 HTML 內容定義端點，以動態呈現頁面內容。 例如，這項功能允許根據您從 web 或行動應用程式傳遞的自訂參數，修改 Azure AD B2C 註冊或登入頁面上的背景影像。 如需詳細資訊，請參閱[使用 Azure Active Directory B2C 中的自訂原則動態設定 UI](custom-policy-ui-customization.md#configure-dynamic-custom-page-content-uri)。 您也可以根據語言參數將 HTML 網頁當地語系化，也可以根據用戶端識別碼來變更內容。
+Azure AD B2C 可讓您將查詢字串參數傳遞至 HTML 內容定義端點，以動態轉譯頁面內容。 例如，這項功能可讓您根據您從 web 或行動應用程式傳遞的自訂參數，修改 Azure AD B2C 註冊或登入頁面上的背景影像。 如需詳細資訊，請參閱[使用 Azure Active Directory B2C 中的自訂原則動態設定 UI](custom-policy-ui-customization.md#configure-dynamic-custom-page-content-uri)。 您也可以根據語言參數將 HTML 網頁當地語系化，也可以根據用戶端識別碼來變更內容。
 
-下列範例會傳入名為**campaignId**的查詢字串參數，其值為 `Hawaii` 、**語言**代碼為 `en-US` ，而**應用程式**代表用戶端識別碼：
+下列範例會傳入名為 **campaignId** 的查詢字串參數，其值為 `Hawaii` 、的 **語言** 代碼 `en-US` ，以及代表用戶端識別碼的 **應用程式** ：
 
 ```xml
 <UserJourneyBehaviors>
@@ -197,7 +198,7 @@ Azure AD B2C 可讓您將查詢字串參數傳遞至您的 HTML 內容定義端�
 </UserJourneyBehaviors>
 ```
 
-因此，Azure AD B2C 會將上述參數傳送至 HTML 內容頁面：
+因此，Azure AD B2C 將上述參數傳送至 HTML 內容頁面：
 
 ```
 /selfAsserted.aspx?campaignId=hawaii&language=en-US&app=0239a9cc-309c-4d41-87f1-31288feb2e82
@@ -205,7 +206,7 @@ Azure AD B2C 可讓您將查詢字串參數傳遞至您的 HTML 內容定義端�
 
 ### <a name="content-definition"></a>內容定義
 
-在[ContentDefinition](contentdefinitions.md)中 `LoadUri` ，您可以根據所使用的參數，傳送宣告解析程式以從不同的位置提取內容。
+在 [ContentDefinition](contentdefinitions.md)中 `LoadUri` ，您可以根據所使用的參數，將宣告解析程式傳送至不同位置的提取內容。
 
 ```xml
 <ContentDefinition Id="api.signuporsignin">
@@ -234,7 +235,7 @@ Azure AD B2C 可讓您將查詢字串參數傳遞至您的 HTML 內容定義端�
 
 ### <a name="relying-party-policy"></a>信賴憑證者原則
 
-在[信賴](relyingparty.md)憑證者原則的技術設定檔中，您可能會想要將租使用者識別碼或相互關聯識別碼傳送至 JWT 內的信賴憑證者應用程式。
+在 [信賴](relyingparty.md) 憑證者原則技術設定檔中，您可能會想要將租使用者識別碼或相互關聯識別碼傳送給 JWT 內的信賴憑證者應用程式。
 
 ```xml
 <RelyingParty>

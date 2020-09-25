@@ -8,12 +8,12 @@ ms.author: memildin
 ms.date: 09/22/2020
 ms.service: security-center
 ms.topic: how-to
-ms.openlocfilehash: e62973c83db90df2857186fe6a556278a3c41a7d
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 68ddbe73bcf4c0e934a5a8be0246214086a7618c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90977456"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91302038"
 ---
 # <a name="explore-and-manage-your-resources-with-asset-inventory-and-management-tools"></a>使用資產清查和管理工具探索及管理您的資源
 
@@ -43,7 +43,7 @@ Azure 資訊安全中心的 [資產清查] 頁面提供單一頁面，可供您�
 |釋放狀態：|正式上市 (GA)|
 |定價：|免費|
 |必要的角色和許可權：|所有使用者|
-|雲端：|![Yes](./media/icons/yes-icon.png) 商業雲端<br>![No](./media/icons/no-icon.png) 全國/主權 (US Gov、中國 Gov、其他 Gov) |
+|雲端：|![是](./media/icons/yes-icon.png) 商業雲端<br>![否](./media/icons/no-icon.png) 全國/主權 (US Gov、中國 Gov、其他 Gov) |
 |||
 
 
@@ -54,7 +54,7 @@ Azure 資訊安全中心的 [資產清查] 頁面提供單一頁面，可供您�
 - **摘要** -在您定義任何篩選器之前，清查視圖頂端有一個明顯的值帶，顯示：
 
     - **總資源**數：連線至「安全性中心」的資源總數。
-    - **狀況不良的資源**：具有有效安全性建議的資源。 [深入瞭解安全性建議](https://docs.microsoft.com/azure/security-center/security-center-recommendations)。
+    - **狀況不良的資源**：具有有效安全性建議的資源。 [深入瞭解安全性建議](security-center-recommendations.md)。
     - 未受**監視的資源**：有代理程式監視問題的資源-已部署 Log Analytics 代理程式，但代理程式未傳送資料或有其他健康情況問題。
 
 - **篩選** -頁面頂端的多個篩選器可讓您根據您嘗試回答的問題，快速地調整資源清單。 例如，如果您想要回答 *具有「生產」標籤之電腦的問題，Log Analytics 代理程式會遺失嗎？* 您可以將 **代理程式監視** 篩選器與 **標記** 篩選器結合，如下列剪輯所示：
@@ -150,7 +150,7 @@ ARG 是設計用來提供有效率的資源探索，並能夠大規模查詢。
 
 :::image type="content" source="./media/asset-inventory/agent-pricing-blanks.png" alt-text="某些資源會在代理程式監視或 Azure Defender 資料行中顯示空白資訊":::
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 本文描述 Azure 資訊安全中心的 [資產清查] 頁面。
 

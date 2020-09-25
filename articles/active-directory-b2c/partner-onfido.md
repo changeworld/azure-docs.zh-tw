@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 08/03/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 5ff2fe74a0dd5064232fcef3178aec2967ef6812
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 5d0835114844069d4ebdc992b872f9be1f0b3ca6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683856"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91259215"
 ---
 # <a name="tutorial-for-configuring-onfido-with-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 設定 Onfido 的教學課程
 
@@ -24,7 +24,7 @@ ms.locfileid: "88683856"
 
 在此範例中，我們會在註冊或登入流程中連接 Onfido 的服務，以進行身分識別驗證。 使用者可以存取的產品和服務的明智決策是根據 Onfido 的結果進行。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要開始使用，您需要：
 
@@ -50,7 +50,7 @@ Onfido 整合包含下列元件：
 
 ![onfido 的螢幕擷取畫面-架構-圖表](media/partner-onfido/onfido-architecture-diagram.png)
 
-|步驟 | 描述 |
+|步驟 | 說明 |
 |:-----| :-----------|
 | 1. | 使用者抵達登入頁面。 使用者註冊以建立新的帳戶，並在頁面中輸入資訊。 Azure AD B2C 會收集使用者屬性。 Onfido Azure AD B2C 中裝載的用戶端應用程式會進行使用者資訊的初步檢查。
 | 2. | Azure AD B2C 會呼叫中介層 API，並傳遞使用者屬性。
@@ -94,7 +94,7 @@ Onfido 整合包含下列元件：
 
 1. [在您的儲存體帳戶中設定 blob 儲存體容器](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal#create-a-container)
 
-2. 將 ui 檔案從 UI 資料夾儲存至 blob 容器。
+2. 將 ui 檔案從 [ui 資料夾](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/OnFido-Combined/UI) 儲存至 blob 容器。
 
 3. 依照下列指示，允許 CORS 存取您所建立的儲存體容器：
 
@@ -114,7 +114,7 @@ Onfido 整合包含下列元件：
 
 4. 尋找並以中繼 API app service 的 URL 取代 {您的中繼 api-url}。
 
-#### <a name="upload-your-files"></a>上傳您的檔案
+#### <a name="upload-your-files"></a>上傳檔案
 
 1. 將 ui 檔案從 UI 資料夾儲存至 blob 容器。
 
@@ -124,7 +124,7 @@ Onfido 整合包含下列元件：
 
 #### <a name="replace-the-configuration-values"></a>取代設定值
 
-在提供的自訂原則中，找出下列預留位置，並取代為您實例中的對應值。
+在提供的 [自訂原則](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/OnFido-Combined/Policies)中，找出下列預留位置，並取代為您實例中的對應值。
 
 | 預留位置 | 取代值 | 範例  |
 |:---------------|:----------------|:-------------------|
@@ -138,7 +138,7 @@ Onfido 整合包含下列元件：
 |{your_ui_file_base_url}| UI **ocean_blue**、 **dist**和 **資產** 資料夾所在位置的 URL | https://yourstorage.blob.core.windows.net/UI/|
 | {your_app_service_URL}                                 | 您已設定之 app service 的 URL                                             | `https://yourapp.azurewebsites.net`          |
 
-* App insights 可以位於不同的租使用者中。 此為選用步驟。 如果不需要，請移除對應的 TechnicalProfiles 和 >orchestrationsteps。
+* App insights 可以位於不同的租使用者中。 這是選擇性步驟。 如果不需要，請移除對應的 TechnicalProfiles 和 >orchestrationsteps。
 
 ### <a name="part-4---configure-the-azure-ad-b2c-policy"></a>第4部分-設定 Azure AD B2C 原則
 

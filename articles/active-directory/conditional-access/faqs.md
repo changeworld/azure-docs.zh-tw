@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: ed6beec63114f1f157bb24354d77e50ecdaa8255
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 9694dd06b67219e0f02c3fe1c7c53d1fc103a0c2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90601632"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258620"
 ---
 # <a name="azure-active-directory-conditional-access-faqs"></a>Azure Active Directory 條件式存取常見問題
 
@@ -31,11 +31,11 @@ ms.locfileid: "90601632"
 
 ## <a name="does-a-sharepoint-online-policy-also-apply-to-onedrive-for-business"></a>SharePoint Online 原則也適用於商務用 OneDrive 嗎？
 
-可以。 SharePoint Online 原則也會套用至商務用 OneDrive。 如需詳細資訊，請參閱檔的 [條件式存取服務](service-dependencies.md) 相依性，並考慮將原則的目標設為 [Office 365 應用程式](concept-conditional-access-cloud-apps.md#office-365-preview) 。
+可以。 SharePoint Online 原則也會套用至商務用 OneDrive。 如需詳細資訊，請參閱檔的 [條件式存取服務](service-dependencies.md) 相依性，並考慮將原則的目標設為 [Office 365 應用程式](concept-conditional-access-cloud-apps.md#office-365) 。
 
 ## <a name="why-cant-i-set-a-policy-directly-on-client-apps-like-word-or-outlook"></a>為什麼我無法直接在用戶端應用程式（例如 Word 或 Outlook）上設定原則？
 
-條件式存取原則會設定存取服務的需求。 在向該服務進行驗證時會強制執行。 原則並不直接在用戶端應用程式上設定， 而是在用戶端呼叫服務時套用。 例如，在 SharePoint 上設定的原則會套用至呼叫 SharePoint 的用戶端。 在 Exchange 上設定的原則會套用至 Outlook。 如需詳細資訊，請參閱檔的 [條件式存取服務](service-dependencies.md) 相依性，並考慮將原則的目標設為 [Office 365 應用程式](concept-conditional-access-cloud-apps.md#office-365-preview) 。
+條件式存取原則會設定存取服務的需求。 在向該服務進行驗證時會強制執行。 原則並不直接在用戶端應用程式上設定， 而是在用戶端呼叫服務時套用。 例如，在 SharePoint 上設定的原則會套用至呼叫 SharePoint 的用戶端。 在 Exchange 上設定的原則會套用至 Outlook。 如需詳細資訊，請參閱檔的 [條件式存取服務](service-dependencies.md) 相依性，並考慮將原則的目標設為 [Office 365 應用程式](concept-conditional-access-cloud-apps.md#office-365) 。
 
 ## <a name="does-a-conditional-access-policy-apply-to-service-accounts"></a>條件式存取原則是否適用于服務帳戶？
 
@@ -53,7 +53,7 @@ Microsoft Teams 在核心產能情節中非常依賴 Exchange Online 和 SharePo
 
 適用於 Windows 和 Mac 的 Microsoft Teams 桌面用戶端支援新式驗證。 新式驗證以 Azure Active Directory 驗證程式庫 (ADAL) 為基礎，支援 Microsoft Office 用戶端應用程式跨平台登入。
 
-如需詳細資訊，請參閱檔的 [條件式存取服務](service-dependencies.md) 相依性，並考慮將原則的目標設為 [Office 365 應用程式](concept-conditional-access-cloud-apps.md#office-365-preview) 。
+如需詳細資訊，請參閱檔的 [條件式存取服務](service-dependencies.md) 相依性，並考慮將原則的目標設為 [Office 365 應用程式](concept-conditional-access-cloud-apps.md#office-365) 。
 
 ## <a name="why-are-some-tabs-not-working-in-microsoft-teams-after-enabling-conditional-access-policies"></a>為何在啟用條件式存取原則之後，Microsoft 小組的某些索引標籤無法運作？
 

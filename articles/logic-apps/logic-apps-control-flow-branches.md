@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/10/2018
-ms.openlocfilehash: 9dafb702117a7e171ff88b3c77d7b8b79503636f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3514ce966e1de9af1741de6b966964aca2599610
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87066463"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91269228"
 ---
 # <a name="create-or-join-parallel-branches-for-workflow-actions-in-azure-logic-apps"></a>在 Azure Logic Apps 中建立或加入工作流程動作的平行分支
 
@@ -47,7 +47,7 @@ ms.locfileid: "87066463"
 
 1. 在搜尋方塊中，尋找並選取您想要的動作。
 
-   ![尋找並選取您想要的動作](media/logic-apps-control-flow-branches/find-select-parallel-action.png)
+   ![顯示邏輯應用程式設計工具中 [選擇動作] 視窗的螢幕擷取畫面。](media/logic-apps-control-flow-branches/find-select-parallel-action.png)
 
    您選取的動作現在會出現在平行分支中，例如：
 
@@ -59,7 +59,7 @@ ms.locfileid: "87066463"
 
 1. 在搜尋方塊中，尋找並選取您想要的動作。
 
-   ![尋找並選取循序動作](media/logic-apps-control-flow-branches/find-select-sequential-action.png)
+   ![顯示邏輯應用程式設計工具中 [選擇動作] 視窗和搜尋方塊的螢幕擷取畫面。](media/logic-apps-control-flow-branches/find-select-sequential-action.png)
 
    您選取的動作現在會出現目前的分支中，例如：
 

@@ -3,16 +3,16 @@ title: 豁免 Azure 資訊安全中心安全性建議和安全分數的資源
 description: 瞭解如何從安全性建議和安全分數豁免資源
 author: memildin
 ms.author: memildin
-ms.date: 9/12/2020
+ms.date: 9/22/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: b4d043812800bec1070624382755aeb355ea595a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: f3ac2f82882dfd7eb1e15e9a5287cf1d6f5b32d2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934731"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91301528"
 ---
 # <a name="exempt-a-resource-from-recommendations-and-secure-score"></a>豁免建議和安全分數的資源
 
@@ -33,7 +33,7 @@ ms.locfileid: "90934731"
 |釋放狀態：|預覽|
 |定價：|這是免費提供給 Azure Defender 客戶的 Azure 原則功能，不需額外費用。 對於其他使用者，未來可能會收取費用。|
 |必要的角色和許可權：|建立豁免的訂用帳戶**擁有**者或**原則參與者**<br>若要建立規則，您需要在 Azure 原則中編輯原則的許可權。<br>在 Azure 原則中深入瞭解 [RBAC 許可權](../governance/policy/overview.md#rbac-permissions-in-azure-policy)。|
-|雲端：|![Yes](./media/icons/yes-icon.png) 商業雲端<br>![No](./media/icons/no-icon.png) 全國/主權 (US Gov、中國 Gov、其他 Gov) |
+|雲端：|![是](./media/icons/yes-icon.png) 商業雲端<br>![否](./media/icons/no-icon.png) 全國/主權 (US Gov、中國 Gov、其他 Gov) |
 |||
 
 
@@ -62,7 +62,7 @@ ms.locfileid: "90934731"
 
     :::image type="content" source="./media/exempt-resource/modifying-exemption.png" alt-text="修改豁免":::
 
-    表格中包含每個豁免的原因。 
+    每項豁免的原因都包含在資料表 (1) 。
 
     若要修改或刪除豁免，請選取省略號功能表 ( "..." ) 如 (2) 所示。
 
@@ -77,7 +77,7 @@ ms.locfileid: "90934731"
 
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 在本文中，您已瞭解如何豁免建議的資源，使其不會影響您的安全分數。 如需安全分數的詳細資訊，請參閱：
 

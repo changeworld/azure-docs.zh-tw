@@ -3,12 +3,12 @@ title: 使用 Webhook 以回應登錄動作
 description: 了解當登錄存放庫發生推送或提取動作時，如何使用 Webhook 來觸發事件。
 ms.topic: article
 ms.date: 05/24/2019
-ms.openlocfilehash: 3d0a12b6e742b0209cbb746a70686423f2fb5627
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 1db1098da81e6cf9ecb262c99f705b77af2efd26
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83685027"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91253389"
 ---
 # <a name="using-azure-container-registry-webhooks"></a>使用 Azure Container Registry Webhook
 
@@ -41,7 +41,7 @@ Azure Container Registry 會儲存和管理私人 Docker 容器映像，其方�
 
 範例 Webhook 表單：
 
-![在 Azure 入口網站中建立 ACR Webhook](./media/container-registry-webhook/webhook.png)
+![顯示 Azure 入口網站中建立 ACR webhook 的螢幕擷取畫面。](./media/container-registry-webhook/webhook.png)
 
 ## <a name="create-webhook---azure-cli"></a>建立 Webhook - Azure CLI
 

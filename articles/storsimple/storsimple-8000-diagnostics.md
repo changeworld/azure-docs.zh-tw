@@ -1,6 +1,6 @@
 ---
 title: 針對 StorSimple 8000 裝置進行疑難排解的診斷工具 | Microsoft Docs
-description: 描述 StorSimple 裝置模式並說明如何使用 Windows PowerShell for StorSimple 來變更裝置的模式。
+description: 本文提供診斷工具的概觀，並說明如何使用此工具來診斷 StorSimple 裝置。
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: d3e9aff1a38bbabc4f878a4d2e2fb96dafe59c92
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ca674f38b5c327123bc1d13dd284f84f614881b4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85504452"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91300440"
 ---
 # <a name="use-the-storsimple-diagnostics-tool-to-troubleshoot-8000-series-device-issues"></a>使用 StorSimple 診斷工具針對 8000 系列裝置問題進行疑難排解
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 StorSimple 診斷工具可診斷 StorSimple 裝置的系統、效能、網路和硬體元件健全狀況的相關問題。 診斷工具可用在各種情況。 這些情況包括工作負載規劃、部署 StorSimple 裝置、評估網路環境，以及判斷作業裝置的效能。 本文提供診斷工具的概觀，並說明如何使用此工具來診斷 StorSimple 裝置。
 
@@ -323,7 +323,7 @@ hcs_startup                                   Stopped hcs_startup
 
 ### <a name="network-test"></a>網路測試
 
-這項測試會驗證網路介面、埠、DNS 和 NTP 伺服器連線的狀態、TLS/SSL 憑證、儲存體帳號憑證、與補救伺服器的連接，以及 Web Proxy StorSimple 裝置上的連接。
+這項測試會驗證網路介面的狀態、埠、DNS 和 NTP 伺服器連線能力、TLS/SSL 憑證、儲存體帳號憑證、與補救伺服器的連線，以及 StorSimple 裝置上的 web proxy 連線能力。
 
 #### <a name="sample-output-of-network-test-when-only-data0-is-enabled"></a>僅啟用 DATA0 時的網路測試輸出範例
 
@@ -333,7 +333,7 @@ hcs_startup                                   Stopped hcs_startup
 * DNS 伺服器組態無效，裝置可以透過 DNS 伺服器來連線。
 * NTP 伺服器連線能力也正常。
 * 連接埠 80 和 443 已開啟。 但已封鎖連接埠 9354。 根據[系統網路需求](storsimple-system-requirements.md)，您必須開啟此連接埠，服務匯流排通訊才能進行。
-* TLS/SSL 認證有效。
+* TLS/SSL 憑證有效。
 * 裝置可以連線至儲存體帳戶︰_myss8000storageacct_。
 * 更新伺服器的連線能力有效。
 * 此裝置上未設定 Web Proxy。
@@ -414,10 +414,10 @@ Controller0>
 
 下表描述系統資訊中各種 Windows PowerShell 參數對應的意義。 
 
-| PowerShell 參數    | Description  |
+| PowerShell 參數    | 說明  |
 |-------------------------|------------------|
-| 執行個體識別碼             | 每個控制器都有相關聯的唯一識別碼或 GUID。|
-| Name                    | 在裝置部署期間，透過 Azure 入口網站設定的裝置易記名稱。 預設的易記名稱是裝置序號。 |
+| Instance ID             | 每個控制器都有相關聯的唯一識別碼或 GUID。|
+| 名稱                    | 在裝置部署期間，透過 Azure 入口網站設定的裝置易記名稱。 預設的易記名稱是裝置序號。 |
 | 型號                   | StorSimple 8000 系列裝置的機型。 機型可以是 8100 或 8600。|
 | SerialNumber            | 裝置序號是在工廠裡指派，長度為 15 個字元。 例如，8600-SHX0991003G44HT 表示：<br> 8600 – 裝置機型。<br>SHX – 製造場所。<br> 0991003 – 特定產品。 <br> G44HT– 最後 5 位數會遞增以產生唯一序號。 這可能不是連續的組合。|
 | TimeZone                | 裝置時區是在裝置部署期間於 Azure 入口網站中設定。|

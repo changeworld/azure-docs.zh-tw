@@ -4,12 +4,12 @@ description: 說明 Azure 服務匯流排中的無效信件佇列。 服務匯�
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: fasttrack-edit, devx-track-csharp
-ms.openlocfilehash: 5f7fb65a2a1a6d6529177cd20a85a6d845c119d4
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 4dbd1216d3ff81e785f16ebed6ceabfa5d5897db
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021675"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91301018"
 ---
 # <a name="overview-of-service-bus-dead-letter-queues"></a>服務匯流排寄不出的信件佇列的概觀
 
@@ -62,7 +62,7 @@ DLQ 沒有自動清除。 訊息會保留在 DLQ 中，直到您明確地從 DLQ
 
 ## <a name="errors-while-processing-subscription-rules"></a>在處理訂用帳戶規則時發生錯誤
 
-為訂用帳戶啟用 [SubscriptionDescription.EnableDeadLetteringOnFilterEvaluationExceptions](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription) 屬性時，可以在 DLQ 中擷取到執行訂用帳戶的 SQL 篩選器規則時發生的任何錯誤，還有騷擾訊息。
+為訂用帳戶啟用 [SubscriptionDescription.EnableDeadLetteringOnFilterEvaluationExceptions](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription) 屬性時，可以在 DLQ 中擷取到執行訂用帳戶的 SQL 篩選器規則時發生的任何錯誤，還有騷擾訊息。 請勿在不是所有訊息類型都有訂閱者的生產環境中使用此選項。
 
 ## <a name="application-level-dead-lettering"></a>應用程式層級無效信件處理
 

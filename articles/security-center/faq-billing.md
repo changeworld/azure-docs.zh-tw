@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 82462af3f1fc939cb30730360f75303cb1be9432
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: cf90065ad40ca46068700473ad71b598619764ec
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90901164"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91301460"
 ---
 # <a name="billing-questions"></a>計費問題
 
@@ -27,7 +27,7 @@ ms.locfileid: "90901164"
 
 - 如果**沒有 Azure Defender**，「安全性中心」可讓您瞭解 azure 資源的安全性狀態、基本安全性原則、安全性建議，以及與合作夥伴的安全性產品和服務整合。
 
-- **Azure Defender** 新增了威脅防護功能，包括安全性警示、威脅情報、行為分析、異常偵測和威脅歸屬報告。 您可以從 Azure Defender 的30天免費試用版開始。 若要升級，請選取安全性原則中的[定價層](https://docs.microsoft.com/azure/security-center/security-center-pricing)。 若要深入了解，請參閱[價格頁面](https://azure.microsoft.com/pricing/details/security-center/)。
+- **Azure Defender** 新增了威脅防護功能，包括安全性警示、威脅情報、行為分析、異常偵測和威脅歸屬報告。 您可以從 Azure Defender 的30天免費試用版開始。 [深入瞭解如何升級](security-center-pricing.md)。
 
 ## <a name="how-can-i-track-who-in-my-organization-enabled-azure-defender-changes-in-azure-security-center"></a>如何追蹤我的組織中已啟用 Azure Defender Azure 資訊安全中心的變更
 Azure 訂用帳戶可能會有多個系統管理員具有變更定價設定的許可權。 若要找出哪些使用者執行了變更，請使用 Azure 活動記錄。 

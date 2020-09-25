@@ -13,18 +13,18 @@ ms.date: 05/22/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 741e7a13513d571fbaabd17016b2282a860271cd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 71e930898f1f86622357f9e02da69be7bf2f8088
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84263273"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91256580"
 ---
 # <a name="microsoft-identity-platform-and-openid-connect-protocol"></a>Microsoft 身分識別平台和 OpenID Connect 通訊協定
 
-OpenID Connect （OIDC）是以 OAuth 2.0 為基礎的驗證通訊協定，可讓您用來將使用者安全地登入應用程式。 當您使用 Microsoft 身分識別平臺端點的 OpenID Connect 執行時，您可以將登入和 API 存取新增至您的應用程式。 本文說明如何與語言無關，並說明如何在不使用任何[Microsoft 開放原始](reference-v2-libraries.md)碼程式庫的情況下，傳送和接收 HTTP 訊息。
+OpenID Connect (OIDC) 是建置於 OAuth 2.0 的驗證通訊協定，可用來安全地將使用者登入應用程式。 當您使用 Microsoft 身分識別平臺端點的 OpenID Connect 執行時，可以將登入及 API 存取新增至您的應用程式。 本文說明如何與語言無關，並描述如何在不使用任何 [Microsoft 開放原始](reference-v2-libraries.md)碼程式庫的情況下傳送和接收 HTTP 訊息。
 
-[OpenID connect](https://openid.net/specs/openid-connect-core-1_0.html)擴充 OAuth 2.0*授權*通訊協定以作為*驗證*通訊協定，讓您可以使用 OAuth 執行單一登入。 OpenID Connect 引進了「識別碼權杖」的概念，這是一種安全性權杖，可讓用戶端確認使用者的身分識別。 識別碼權杖也會取得使用者的相關基本設定檔資訊。 它也引進了「使用者資訊[端點](userinfo.md)」，這是一種 API，可傳回使用者的相關資訊。 
+[OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) 擴充 oauth 2.0 *授權* 通訊協定以作為 *驗證* 通訊協定使用，以便您可以使用 OAuth 進行單一登入。 OpenID Connect 引進了「識別碼權杖」的概念，這是一種安全性權杖，可讓用戶端確認使用者的身分識別。 識別碼權杖也會取得使用者的相關基本設定檔資訊。 它也引進了「使用者類型」 [端點](userinfo.md)，這個 API 會傳回使用者的相關資訊。 
 
 
 ## <a name="protocol-diagram-sign-in"></a>通訊協定圖表：登入
@@ -35,11 +35,11 @@ OpenID Connect （OIDC）是以 OAuth 2.0 為基礎的驗證通訊協定，可�
 
 ## <a name="fetch-the-openid-connect-metadata-document"></a>擷取 OpenID Connect 中繼資料文件
 
-OpenID Connect 會描述元資料檔案[（RFC）](https://openid.net/specs/openid-connect-discovery-1_0.html) ，其中包含應用程式執行登入所需的大部分資訊。 這包括要使用的 URL、服務的公開簽署金鑰位置等資訊。 您可以藉由將探索檔路徑附加至授權單位 URL 來找到此檔：
+OpenID Connect 描述 [ (RFC) ](https://openid.net/specs/openid-connect-discovery-1_0.html) 的元資料檔案，其中包含應用程式登入所需的大部分資訊。 這包括要使用的 URL、服務的公開簽署金鑰位置等資訊。 您可以藉由將探索檔路徑附加至授權單位 URL，來尋找這份檔：
 
-探索檔路徑：`/.well-known/openid-configuration`
+探索檔路徑： `/.well-known/openid-configuration`
 
-頒發`https://login.microsoftonline.com/{tenant}/v2.0`
+權威： `https://login.microsoftonline.com/{tenant}/v2.0`
 
 `{tenant}` 可以接受下列四個值的其中一個：
 
@@ -50,14 +50,14 @@ OpenID Connect 會描述元資料檔案[（RFC）](https://openid.net/specs/open
 | `consumers` |只有具有個人 Microsoft 帳戶的使用者可以登入應用程式。 |
 | `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` 或 `contoso.onmicrosoft.com` | 只有來自特定 Azure AD 租用戶的使用者 (無論他們具有公司或學校帳戶的目錄成員，還是具有個人 Microsoft 帳戶的目錄來賓) 才可以登入應用程式。 可以使用 Azure AD 租用戶的易記網域名稱，或是租用戶的 GUID 識別碼。 您也可以使用取用者租用戶 `9188040d-6c67-4c5b-b112-36a304b66dad`，來取代 `consumers` 租用戶。  |
 
-授權單位與國家雲端不同，例如 `https://login.microsoftonline.de` 適用于 Azure AD 德國實例。 如果您未使用公用雲端，請檢查[國家雲端端點](authentication-national-cloud.md#azure-ad-authentication-endpoints)，以尋找適合您的帳戶。 請確定租使用者和 `/v2.0/` 出現在您的要求中，以便您可以使用該端點的 v2.0 版本。
+授權單位會因國家雲端而異，例如 `https://login.microsoftonline.de` Azure AD 德國實例。 如果您未使用公用雲端，請檢查全國雲端端點，以找出適合您的 [國家/地區](authentication-national-cloud.md#azure-ad-authentication-endpoints) 。 確定租 `/v2.0/` 使用者和出現在您的要求中，以便您可以使用端點的 v2.0 版本。
 
 > [!TIP]
 > 試試看！ 按一下 [https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration](https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration) 以查看設定 `common` 。
 
 ### <a name="sample-request"></a>範例要求
 
-若要在公用雲端上呼叫一般授權單位的使用者資訊端點，請使用下列各項：
+若要呼叫公用雲端上一般授權單位的使用者資訊端點，請使用下列程式：
 
 ```http
 GET /common/v2.0/.well-known/openid-configuration
@@ -66,7 +66,7 @@ Host: login.microsoftonline.com
 
 ### <a name="sample-response"></a>範例回應
 
-中繼資料是簡單的「JavaScript 物件標記法」(JSON) 文件。 如需範例，請參閱下列程式碼片段。 [OpenID connect 規格](https://openid.net/specs/openid-connect-discovery-1_0.html#rfc.section.4.2)中有完整的說明內容。
+中繼資料是簡單的「JavaScript 物件標記法」(JSON) 文件。 如需範例，請參閱下列程式碼片段。 [OpenID Connect 規格](https://openid.net/specs/openid-connect-discovery-1_0.html#rfc.section.4.2)中會完整說明內容。
 
 ```json
 {
@@ -184,9 +184,9 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 
 ## <a name="validate-the-id-token"></a>驗證識別碼權杖
 
-只接收 id_token 並不一定足以驗證使用者;您可能也需要驗證 id_token 的簽章，並根據您的應用程式需求來驗證權杖中的宣告。 就像所有 OIDC 平臺一樣，Microsoft 身分識別平臺端點會使用[JSON Web 權杖（jwt）](https://tools.ietf.org/html/rfc7519)和公開金鑰加密來簽署識別碼權杖，並確認它們是有效的。
+只接收 id_token 不一定足以驗證使用者;您也可能需要驗證 id_token 的簽章，並根據您應用程式的需求來確認權杖中的宣告。 就像所有的 OIDC 平臺一樣，Microsoft 身分識別平臺端點會使用 [JSON Web 權杖 (jwt) ](https://tools.ietf.org/html/rfc7519) 和公開金鑰加密來簽署識別碼權杖，並確認它們是有效的。
 
-並非所有應用程式都受益于驗證識別碼權杖-原生應用程式和單一頁面應用程式，例如，驗證識別碼權杖很少受益。  實際存取裝置（或瀏覽器）的人可以透過許多方式略過驗證，從編輯裝置的網路流量，到提供假的權杖和金鑰，只是用來對應用程式進行偵測以略過驗證邏輯。  另一方面，使用識別碼權杖進行授權的 web 應用程式和 Api 必須謹慎驗證識別碼權杖，因為它們會管制資料的存取權。
+並非所有應用程式都能受益于驗證識別碼權杖-原生應用程式和單一頁面應用程式，而不是驗證識別碼權杖很有説明。  具有裝置 (或流覽) 器之實體存取權的人，可以略過驗證，方法是將網路流量編輯至裝置，以提供假的權杖和金鑰，只是要將應用程式進行偵錯工具以略過驗證邏輯。  另一方面，使用識別碼權杖進行授權的 web 應用程式和 Api 必須謹慎地驗證識別碼權杖，因為它們會控制資料的存取權。
 
 在您驗證 id_token 的簽章之後，會有數個宣告需要驗證。 如需詳細資訊，請參閱 [`id_token`參考](id-tokens.md)，其中包括[驗證權杖](id-tokens.md#validating-an-id_token)和[有關簽署金鑰變換的重要資訊](active-directory-signing-key-rollover.md)。 我們建議利用程式庫來剖析和驗證權杖 - 對於大部分語言和平台至少有一個可用。
 
@@ -223,10 +223,10 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e        // Your registered Applica
 &nonce=678910                                         // Any value, provided by your app
 ```
 
-您也可以使用[授權碼流程](v2-oauth2-auth-code-flow.md)、裝置程式[代碼流程](v2-oauth2-device-code.md)，或用來取代的重新整理[權杖](v2-oauth2-auth-code-flow.md#refresh-the-access-token) `response_type=token` 來取得應用程式的權杖。
+您也可以使用 [授權碼流程](v2-oauth2-auth-code-flow.md)、裝置程式 [代碼流程](v2-oauth2-device-code.md)或重新整理 [權杖](v2-oauth2-auth-code-flow.md#refresh-the-access-token) 取代 `response_type=token` 來取得應用程式的權杖。
 
 > [!TIP]
-> 請按一下以下連結來執行此要求。 登入之後，您的瀏覽器會被重新導向至 `https://localhost/myapp/` ，並在網址列中使用識別碼權杖和權杖。 請注意，此要求 `response_mode=fragment` 僅供示範之用-針對 webapp，建議您 `form_post` 盡可能使用來取得額外的安全性。 
+> 請按一下以下連結來執行此要求。 登入之後，您的瀏覽器會重新導向至 `https://localhost/myapp/` ，並在網址列中使用識別碼權杖和權杖。 請注意，此要求 `response_mode=fragment` 僅供示範之用-針對 webapp，我們建議您 `form_post` 盡可能使用，以提供額外的安全性。 
 > <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=id_token%20token&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&response_mode=fragment&scope=openid+profile+email&state=12345&nonce=678910" target="_blank">https://login.microsoftonline.com/common/oauth2/v2.0/authorize...</a>
 
 ### <a name="successful-token-response"></a>成功的權杖回應
@@ -245,16 +245,16 @@ Content-Type: application/x-www-form-urlencoded
  &state=12345
 ```
 
-回應參數的意義相同，不論用來取得它們的流程為何。
+無論用來取得它們的流程為何，回應參數都代表相同的內容。
 
 | 參數 | 說明 |
 | --- | --- |
-| `token` | 將用來呼叫使用者資訊端點的權杖。|
-| `token_type` | 一律為「持有人」 |
-| `expires_in`| 存取權杖到期的時間長度（以秒為單位）。 |
-| `scope` | 授與存取權杖的許可權。  請注意，由於使用者資訊端點裝載于 MS Graph 上，如果先前已授與應用程式，則可能會在這裡列出其他圖表範圍（例如使用者. 讀取）。  這是因為指定資源的權杖一律會包含目前授與用戶端的每個許可權。  |
+| `access_token` | 將用來呼叫使用者資訊端點的權杖。|
+| `token_type` | 一律「持有人」 |
+| `expires_in`| 存取權杖到期之前的時間長度（以秒為單位）。 |
+| `scope` | 授與存取權杖的許可權。  請注意，由於使用者資訊端點裝載于 MS Graph 上，此處可能會有其他的圖形範圍 (例如，如果先前已授與應用程式，請參閱) 。  這是因為指定資源的權杖一律包含目前授與用戶端的每個許可權。  |
 | `id_token` | 應用程式所要求的識別碼權杖。 您可以使用識別碼權杖來確認使用者的身分識別，然後開始與使用者的工作階段。 如需有關識別碼權杖及其內容的更多詳細資料，請參閱 [`id_tokens` 參考](id-tokens.md)。 |
-| `state` | 如果要求中包含狀態參數，回應中就應該出現相同的值。 應用程式應該確認要求和回應中的狀態值完全相同。 |
+| `state` | 如果要求中包含 state 參數，則回應中應該會出現相同的值。 應用程式應該確認要求和回應中的狀態值完全相同。 |
 
 ### <a name="error-response"></a>錯誤回應
 
@@ -279,7 +279,7 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 
 ### <a name="calling-the-userinfo-endpoint"></a>呼叫使用者資訊端點
 
-請參閱[使用者資訊檔](userinfo.md#calling-the-api)，以查看如何使用此權杖來呼叫使用者資訊端點。
+請參閱 [使用者資訊檔](userinfo.md#calling-the-api) ，以查看如何使用此權杖呼叫使用者資訊端點。
 
 ## <a name="send-a-sign-out-request"></a>傳送登出要求
 
@@ -302,6 +302,6 @@ post_logout_redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 
 ## <a name="next-steps"></a>後續步驟
 
-* 查看[使用者資訊檔](userinfo.md)
-* 瞭解如何使用內部部署系統中的資料[自訂權杖中的值](active-directory-claims-mapping.md)。 
-* 瞭解如何[在權杖中包含其他標準宣告](active-directory-optional-claims.md)。  
+* 查看 [使用者資訊檔](userinfo.md)
+* 瞭解如何使用內部部署系統中的資料 [自訂權杖中的值](active-directory-claims-mapping.md) 。 
+* 瞭解如何將 [其他標準宣告包含在權杖中](active-directory-optional-claims.md)。  

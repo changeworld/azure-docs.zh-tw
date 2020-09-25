@@ -1,6 +1,6 @@
 ---
 title: Android 中的代理驗證 |蔚藍
-titlesuffix: Microsoft identity platform
+titleSuffix: Microsoft identity platform
 description: Microsoft 身分識別平臺中適用于 Android 的代理驗證 & 授權總覽
 services: active-directory
 author: shoatman
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 08/25/2020
+ms.date: 09/17/2020
 ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman, hahamil, brianmel
-ms.openlocfilehash: 9042318d29b9a7fc8c2064bdf845d6f0d5a4f3e8
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 2bb48971e86c2b61742735020469865fa969bee3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88853861"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258401"
 ---
 # <a name="brokered-authentication-in-android"></a>Android 中的代理驗證
 
@@ -33,14 +33,11 @@ ms.locfileid: "88853861"
   -  透過 Android AccountManager & 帳戶設定
   - 「工作帳戶」-自訂帳戶類型
 
-在 Android 上，Microsoft 驗證訊息代理程式是包含在[Microsoft Authenticator 應用程式](https://play.google.com/store/apps/details?id=com.azure.authenticator)和[Intune 公司入口網站](https://play.google.com/store/apps/details?id=com.microsoft.windowsintune.companyportal)中的元件
-
-> [!TIP]
-> 一次只會有一個主控 broker 的應用程式做為訊息代理程式。 當訊息代理程式是由裝置上的安裝順序所決定時，哪個應用程式會處於作用中狀態。 第一個要安裝的裝置，或最後一次出現在裝置上的會成為作用中的訊息代理程式。
+在 Android 上，Microsoft 驗證訊息代理程式是包含在 [Microsoft Authenticator 應用程式](https://play.google.com/store/apps/details?id=com.azure.authenticator) 和 [Intune 公司入口網站](https://play.google.com/store/apps/details?id=com.microsoft.windowsintune.companyportal)中的元件。
 
 下圖說明您的應用程式、Microsoft 驗證程式庫 (MSAL) 和 Microsoft 驗證代理程式之間的關聯性。
 
-![Broker 部署圖表](./media/brokered-auth/brokered-deployment-diagram.png)
+![此圖顯示應用程式與 MSAL、訊息代理程式應用程式和 Android 帳戶管理員之間的關聯。](./media/brokered-auth/brokered-deployment-diagram.png)
 
 ## <a name="installing-apps-that-host-a-broker"></a>安裝裝載 broker 的應用程式
 
@@ -58,11 +55,15 @@ ms.locfileid: "88853861"
 
 當訊息代理程式安裝在裝置上時， (呼叫) 的所有後續互動式權杖要求 `acquireToken()` 都會由訊息代理程式處理，而不是在本機 MSAL。 任何先前可供 MSAL 使用的 SSO 狀態都無法供訊息代理程式使用。 如此一來，使用者將需要再次驗證，或從裝置已知的現有帳戶清單中選取帳戶。
 
-安裝訊息代理程式不需要使用者再次登入。 只有當使用者需要解析時 `MsalUiRequiredException` ，下一個要求才會移至訊息代理程式。 `MsalUiRequiredException` 因為許多原因而擲回，所以需要以互動方式解決。 以下是一些常見的原因：
+安裝訊息代理程式不需要使用者再次登入。 只有當使用者需要解析時 `MsalUiRequiredException` ，下一個要求才會移至訊息代理程式。 `MsalUiRequiredException` 可能會因為許多原因而擲回，且需要以互動方式解決。 例如：
 
 - 使用者變更了與其帳戶相關聯的密碼。
 - 使用者的帳戶不再符合條件式存取原則。
 - 使用者已撤銷其同意，讓應用程式與他們的帳戶相關聯。
+
+#### <a name="multiple-brokers"></a>多個訊息代理程式
+
+如果有多個訊息代理程式安裝在裝置上，則第一個安裝的訊息代理程式一律為使用中的訊息代理程式。 只有單一訊息代理程式可以在裝置上啟用。
 
 ### <a name="when-a-broker-is-uninstalled"></a>當代理程式卸載時
 
@@ -74,40 +75,46 @@ ms.locfileid: "88853861"
 
 ### <a name="generating-a-redirect-uri-for-a-broker"></a>產生 broker 的重新導向 URI
 
-您必須註冊與 broker 相容的重新導向 URI。 訊息代理程式的重新導向 URI 必須包含應用程式的套件名稱，以及應用程式簽章的 base64 編碼標記法。
+您必須註冊與 broker 相容的重新導向 URI。 訊息代理程式的重新導向 URI 應該包含應用程式的套件名稱，以及應用程式簽章的 Base64 編碼標記法。
 
 重新導向 URI 的格式為： `msauth://<yourpackagename>/<base64urlencodedsignature>`
 
-使用您應用程式的簽署金鑰來產生您的 Base64 url 編碼簽章。 以下是使用您的 debug 簽署金鑰的一些範例命令：
+您可以使用 [keytool](https://manpages.debian.org/buster/openjdk-11-jre-headless/keytool.1.en.html) ，利用應用程式的簽署金鑰來產生 Base64 編碼的簽章雜湊，然後使用 Azure 入口網站產生使用該雜湊的重新導向 URI。
 
-#### <a name="macos"></a>macOS
+Linux 和 macOS：
 
 ```bash
 keytool -exportcert -alias androiddebugkey -keystore ~/.android/debug.keystore | openssl sha1 -binary | openssl base64
 ```
 
-#### <a name="windows"></a>Windows
+Windows：
 
 ```powershell
 keytool -exportcert -alias androiddebugkey -keystore %HOMEPATH%\.android\debug.keystore | openssl sha1 -binary | openssl base64
 ```
 
-如需簽署應用程式的相關資訊，請參閱 [簽署您的應用程式](https://developer.android.com/studio/publish/app-signing) 。
+當您使用 *keytool*產生簽章雜湊之後，請使用 Azure 入口網站來產生重新導向 URI：
+
+1. 登入 [Azure 入口網站](https://protal.azure.com) ，並在 **應用程式註冊**中選取您的 Android 應用程式。
+1. 選取 [**驗證**]  >  **新增平臺**  >  **Android**。
+1. 在 [ **設定您的 Android 應用程式** ] 窗格中，輸入您稍早產生的簽章 **雜湊** 和 **套件名稱**。
+1. 選取 [ **設定** ] 按鈕。
+
+Azure 入口網站會為您產生重新導向 URI，並將其顯示在 [ **Android** 設定] 窗格的 [重新 **導向 uri** ] 欄位中。
+
+如需有關簽署應用程式的詳細資訊，請參閱 Android Studio 使用者指南中的 [簽署應用程式](https://developer.android.com/studio/publish/app-signing) 。
 
 > [!IMPORTANT]
 > 針對應用程式的實際執行版本使用您的生產簽署金鑰。
 
 ### <a name="configure-msal-to-use-a-broker"></a>將 MSAL 設定為使用 broker
 
-若要在您的應用程式中使用訊息代理程式，您必須證明您已設定 broker 重新導向。 例如，包含已啟用 broker 的重新導向 URI，並指出您已註冊它，方法是在您的 MSAL 設定檔中包含下列內容：
+若要在您的應用程式中使用訊息代理程式，您必須證明您已設定 broker 重新導向。 例如，包含已啟用 broker 的重新導向 URI，並指出您已註冊它，方法是在您的 MSAL 設定檔中包含下列設定：
 
-```javascript
+```json
 "redirect_uri" : "<yourbrokerredirecturi>",
 "broker_redirect_uri_registered": true
 ```
-
-> [!TIP]
-> 新的 Azure 入口網站應用程式註冊 UI 可協助您產生 broker 重新導向 URI。 如果您使用較舊的體驗註冊您的應用程式，或使用 Microsoft 應用程式註冊入口網站進行註冊，您可能需要產生重新導向 URI，並以手動方式更新入口網站中的重新導向 Uri 清單。
 
 ### <a name="broker-related-exceptions"></a>Broker 相關的例外狀況
 
@@ -131,3 +138,7 @@ MSAL 會先使用 broker 系結服務，因為呼叫此服務不需要任何 And
 1. 在 Android 裝置的設定中，尋找與您用來驗證的帳戶相對應的新建立帳戶。 帳戶應該是 *工作帳戶*類型。
 
 如果您想要重複此測試，您可以從設定中移除帳戶。
+
+## <a name="next-steps"></a>後續步驟
+
+[適用于 android 裝置的共用裝置模式](msal-android-shared-devices.md) ，可讓您設定 android 裝置，讓多個員工輕鬆共用該裝置。

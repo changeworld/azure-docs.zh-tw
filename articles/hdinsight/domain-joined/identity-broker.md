@@ -7,32 +7,43 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 12/12/2019
-ms.openlocfilehash: 3b2807ccd6d83511dd0c9a32a177ea9fe2c4b642
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 12d98406b21ed9a3ea27f9aa4abc0db6f536468d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662089"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91251910"
 ---
-# <a name="use-id-broker-preview-for-credential-management"></a>使用識別碼代理 (預覽版) 進行認證管理
+# <a name="azure-hdinsight-id-broker-preview"></a>Azure HDInsight ID Broker (preview) 
 
-本文說明如何在 Azure HDInsight 中設定和使用識別碼訊息代理程式功能。 您可以使用這項功能透過 Azure Multi-Factor Authentication 登入 Apache Ambari，並取得所需的 Kerberos 票證，而不需要 Azure Active Directory Domain Services (Azure AD DS) 中的密碼雜湊。
+本文說明如何在 Azure HDInsight 中設定和使用 HDInsight 識別碼代理程式 (HIB) 功能。 您可以使用這項功能來取得 Apache Ambari 的新式 OAuth 驗證，同時讓 Multi-Factor Authentication (MFA) 強制，而不需要 Azure Active Directory Domain Services (的) 中的舊版密碼雜湊。
 
 ## <a name="overview"></a>概觀
 
-在下列案例中，識別碼 Broker 可簡化複雜的驗證：
+HIB 可簡化下列案例中的複雜驗證：
 
-* 您的組織會依賴同盟來驗證使用者，以存取雲端資源。 在過去，若要使用 HDInsight 企業安全性套件 (ESP) 叢集，您必須啟用從內部部署環境到 Azure Active Directory 的密碼雜湊同步處理。 對於某些組織而言，這項需求可能很困難或不適當。
+* 您的組織會依賴同盟來驗證使用者，以存取雲端資源。 在過去，若要使用 HDInsight 企業安全性套件 (ESP) 叢集，您必須從內部部署環境啟用密碼雜湊同步處理，以 Azure Active Directory (Azure AD) 。 對於某些組織而言，這項需求可能很困難或不適當。
 
-* 您正在建立使用依賴不同驗證機制之技術的解決方案。 例如，Apache Hadoop 和 Apache Ranger 依賴 Kerberos，而 Azure Data Lake Storage 依賴 OAuth。
+* 您的組織想要針對以 web/HTTP 為基礎的 Apache Ambari 和其他叢集資源存取強制執行 MFA。
 
-識別碼代理程式提供統一的驗證基礎結構，並移除將密碼雜湊同步處理至 Azure AD DS 的需求。 識別碼代理程式是由在 Windows Server VM 上執行的元件所組成， (識別碼 Broker 節點) ，以及叢集閘道節點。 
+HIB 提供的驗證基礎結構可讓您從 OAuth (新式) 至 Kerberos (舊版的) ，而不需要將密碼雜湊同步至 AAD DS。 此基礎結構包含在 Windows Server VM 上執行的元件， (識別碼代理程式節點) ，以及叢集閘道節點。
 
-下圖顯示啟用識別碼訊息代理程式之後，所有使用者的驗證流程（包括同盟使用者）：
+下圖顯示啟用識別碼訊息代理程式之後，所有使用者的新式 OAuth 型驗證流程，包括同盟使用者：
 
 ![具有識別碼 Broker 的驗證流程](./media/identity-broker/identity-broker-architecture.png)
 
-識別碼訊息代理程式可讓您使用 Multi-Factor Authentication 登入 ESP 叢集，而不需提供任何密碼。 如果您已經登入其他 Azure 服務（例如 Azure 入口網站），您可以使用單一登入 (SSO) 體驗登入 HDInsight 叢集。
+在此圖中，用戶端 (也就是瀏覽器或應用程式) 必須先取得 OAuth 權杖，然後在 HTTP 要求中向閘道出示權杖。 如果您已經登入其他 Azure 服務（例如 Azure 入口網站），您可以使用單一登入 (SSO) 體驗登入 HDInsight 叢集。
+
+還是有許多繼承應用程式只支援基本驗證 (也就是使用者名稱/密碼) 。 在這些情況下，您仍然可以使用 HTTP 基本驗證來連接到叢集閘道。 在此設定中，您必須確保從閘道節點到同盟端點 (ADFS 端點) 的網路連線，以確保可直接從閘道節點看見。
+
+根據您的組織需求，使用下表來決定最佳的驗證選項：
+
+|驗證選項 |HDInsight 設定 | 要考慮的因素 |
+|---|---|---|
+| 完全 OAuth | ESP + HIB | 1. 支援 MFA (的最安全選項) 2。    不需要傳遞雜湊同步處理。 3.  在 AAD DS 中沒有密碼雜湊的內部內部部署帳戶沒有 ssh/kinit/keytab 存取權。 4.   僅限雲端的帳戶仍可以 ssh/kinit/keytab。 5. 透過 Oauth 6 對 Ambari 進行 Web 存取。  需要更新 (JDBC/ODBC 等 ) 的繼承應用程式，才能支援 OAuth。|
+| OAuth + 基本驗證 | ESP + HIB | 1. 透過 Oauth 2 存取 Ambari 的 Web 型存取。 繼承應用程式會繼續使用基本驗證。3。 必須停用 MFA，才能進行基本驗證存取。 4. 不需要傳遞雜湊同步處理。 5. 在 AAD DS 中沒有密碼雜湊的內部內部部署帳戶沒有 ssh/kinit/keytab 存取權。 6. 僅限雲端的帳戶仍可以 ssh/kinit。 |
+| 完整的基本驗證 | ESP | 1. 最類似于內部內部部署的設置。 2. 需要密碼雜湊同步處理至 AAD-DS。 3. 內部部署帳戶可以使用 ssh/kinit 或使用 keytab。 4. 如果支援儲存體 ADLS Gen2，則必須停用 MFA |
+
 
 ## <a name="enable-hdinsight-id-broker"></a>啟用 HDInsight 識別碼代理程式
 
@@ -88,33 +99,37 @@ ms.locfileid: "89662089"
 
 ## <a name="tool-integration"></a>工具整合
 
-已更新 HDInsight [IntelliJ 外掛程式](https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-intellij-tool-plugin#integrate-with-hdinsight-identity-broker-hib) 以支援 OAuth。 您可以使用此外掛程式連接到叢集並提交作業。
-
-您也可以使用 [Spark & Hive Tools for VS Code](https://docs.microsoft.com/azure/hdinsight/hdinsight-for-vscode) 來利用筆記本和提交作業。
+HDIsngith 工具會進行更新，以原生方式支援 OAuth。 我們強烈建議使用這些工具來進行叢集的新式 OAuth 型存取。 HDInsight [IntelliJ 外掛程式](https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-intellij-tool-plugin#integrate-with-hdinsight-identity-broker-hib) 可用於以 JAVA 為基礎的應用程式，例如 Scala。 [適用于 VS Code 的 Spark & Hive 工具](https://docs.microsoft.com/azure/hdinsight/hdinsight-for-vscode) 可用於 PySpark 和 hive 工作。 它們支援批次和互動式作業。
 
 ## <a name="ssh-access-without-a-password-hash-in-azure-ad-ds"></a>Azure AD DS 中沒有密碼雜湊的 SSH 存取
 
-啟用 ID Broker 之後，您仍然需要使用網域帳戶在 SSH 案例的 Azure AD DS 中儲存密碼雜湊。 若要透過 SSH 連線到已加入網域的 VM，或要執行 `kinit` 命令，您必須提供密碼。 
+|SSH 選項 |要考慮的因素 |
+|---|---|
+| 本機 VM 帳戶 (例如 sshuser)  | 1. 您是在建立叢集時提供此帳戶。 2.  此帳戶沒有 kerberos authication |
+| 僅限雲端帳戶 (例如 alice@contoso.onmicrosoft.com)  | 1. AAD DS 2 中提供密碼雜湊。 透過 SSH kerberos 可以進行 kerberos 驗證 |
+| 內部部署帳戶 (例如 alice@contoso.com)  | 1. 只有在 AAD DS 中可以使用密碼雜湊時，才可能使用 SSH Kerberos 驗證，否則此使用者無法透過 SSH 連線到叢集 |
 
-SSH 驗證需要 Azure AD DS 提供雜湊。 如果您只想要針對系統管理案例使用 SSH，您可以建立一個僅限雲端的帳戶，並使用該帳戶透過 SSH 連線到叢集。 其他使用者仍然可以使用 Ambari 或 HDInsight 工具 (例如 IntelliJ 外掛程式) ，而不需要在 Azure AD DS 中使用密碼雜湊。
+若要透過 SSH 連線到已加入網域的 VM，或要執行 `kinit` 命令，您必須提供密碼。 SSH Kerberos 驗證需要雜湊才能在 AAD DS 中使用。 如果您只想要針對系統管理案例使用 SSH，您可以建立一個僅限雲端的帳戶，並使用該帳戶透過 SSH 連線到叢集。 其他內部內部部署使用者仍可使用 Ambari 或 HDInsight 工具或 HTTP 基本驗證，而不需要在 AAD DS 中使用密碼雜湊。
+
+如果您的組織不會將密碼雜湊同步處理至 AAD，最佳作法是在 Azure AD 中建立一個僅限雲端的使用者，並在建立叢集時將其指派為叢集系統管理員，並使用該使用者進行系統管理，包括透過 SSH 取得 Vm 的根目錄存取權。
 
 若要對驗證問題進行疑難排解，請參閱本 [指南](https://docs.microsoft.com/azure/hdinsight/domain-joined/domain-joined-authentication-issues)。
 
-## <a name="clients-using-oauth-to-connect-to-hdinsight-gateway-with-id-broker-setup"></a>使用 OAuth 連線到具有 ID Broker 設定之 HDInsight 閘道的用戶端
+## <a name="clients-using-oauth-to-connect-to-hdinsight-gateway-with-hib"></a>使用 OAuth 連線至 HDInsight 閘道與 HIB 的用戶端
 
-在識別碼代理程式安裝程式中，您可以更新連接到閘道的自訂應用程式和用戶端，以先取得必要的 OAuth 權杖。 您可以依照這 [份檔](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-app) 中的步驟取得權杖，並提供下列資訊：
+在 HIB 設定中，您可以更新連接到閘道的自訂應用程式和用戶端，以先取得必要的 OAuth 權杖。 您可以依照這 [份檔](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-app) 中的步驟取得權杖，並提供下列資訊：
 
 *   OAuth 資源 uri： `https://hib.azurehdinsight.net` 
-* AppId：7865c1d2-f040-46cc-875f-831a1ef6a28a
+*   AppId：7865c1d2-f040-46cc-875f-831a1ef6a28a
 *   許可權： (名稱： Cluster. ReadWrite，id： 8f89faa0-ffef-4007-974d-4989b39ad77d) 
 
-獲取 OAuth 權杖之後，您可以在對叢集閘道的 HTTP 要求的授權標頭中使用該權杖， (例如 <clustername> -int.azurehdinsight.net) 。 例如，livy API 的範例捲曲命令可能看起來像這樣：
+取得 OAuth 權杖之後，您可以在 (叢集閘道的 HTTP 要求的授權標頭中使用該權杖，例如 HTTPs:// <clustername> -int.azurehdinsight.net) 。 例如，Apache Livy API 的範例捲曲命令看起來可能像這樣：
     
 ```bash
 curl -k -v -H "Authorization: Bearer Access_TOKEN" -H "Content-Type: application/json" -X POST -d '{ "file":"wasbs://mycontainer@mystorageaccount.blob.core.windows.net/data/SparkSimpleTest.jar", "className":"com.microsoft.spark.test.SimpleFile" }' "https://<clustername>-int.azurehdinsight.net/livy/batches" -H "X-Requested-By:<username@domain.com>"
 ``` 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [使用 Azure Active Directory Domain Services 設定具有企業安全性套件的 HDInsight 叢集](apache-domain-joined-configure-using-azure-adds.md)
 * [將 Azure Active Directory 使用者同步至 HDInsight 叢集](../hdinsight-sync-aad-users-to-cluster.md)

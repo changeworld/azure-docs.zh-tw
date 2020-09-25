@@ -1,14 +1,14 @@
 ---
 title: Connected Machine Windows 代理程式概觀
 description: 本文提供 Azure Arc 啟用的伺服器代理程式的詳細總覽，可支援監視混合式環境中裝載的虛擬機器。
-ms.date: 09/02/2020
+ms.date: 09/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 990b5999a8483c6417049ac5ab965843c2b13659
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 01f1b291fee57d94b95bdeeef5f9f24b011e9fca
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90908183"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91255038"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>Azure Arc 已啟用伺服器代理程式的總覽
 
@@ -48,8 +48,8 @@ Azure Connected Machine 代理程式可正式支援下列 Windows 和 Linux 作�
 
 - Windows Server 2012 R2 和更新版本 (包括 Windows Server Core)
 - Ubuntu 16.04 和 18.04 LTS (x64) 
-- CentOS Linux 7 (x64) 
-- SUSE Linux Enterprise Server (SLES) 15 (x64) 
+- CentOS Linux 7 (x64)
+- SUSE Linux Enterprise Server (SLES) 15 (x64)
 - Red Hat Enterprise Linux (RHEL) 7 (x64) 
 - Amazon Linux 2 (x64) 
 
@@ -130,6 +130,9 @@ az provider register --namespace 'Microsoft.GuestConfiguration'
 ## <a name="installation-and-configuration"></a>安裝和組態
 
 您可以視需求使用不同的方法，將您混合式環境中的機器直接與 Azure 連線。 下表說明每個方法，您可以判斷哪個方法最適合您的組織。
+
+> [!IMPORTANT]
+> 連線的機器代理程式無法安裝在 Azure Windows 虛擬機器上。 如果您嘗試這麼做，則安裝會偵測到此情況，並回復。
 
 | 方法 | 描述 |
 |--------|-------------|
@@ -228,7 +231,7 @@ az provider register --namespace 'Microsoft.GuestConfiguration'
     |/opt/logs/dsc.log |記錄 DSC 服務活動的詳細資料，<br> 特別是 himds 服務和 Azure 原則之間的連線能。|
     |/opt/logs/dsc.telemetry.txt |記錄有關 DSC 服務遙測和詳細資訊記錄的詳細資料。|
     |/var/lib/GuestConfig/ext_mgr_logs |記錄有關延伸模組代理程式元件的詳細資料。|
-    |/var/log/GuestConfig/extension_logs|記錄已安裝之延伸模組的詳細資料。|
+    |/var/lib/GuestConfig/extension_logs|記錄已安裝之延伸模組的詳細資料。|
 
 * 下列環境變數是在代理程式安裝期間所建立。 這些變數是在 `/lib/systemd/system.conf.d/azcmagent.conf` 中進行設定。
 
@@ -242,6 +245,8 @@ az provider register --namespace 'Microsoft.GuestConfiguration'
     * /var/opt/azcmagent
     * /opt/logs
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
-若要開始評估已啟用 Azure Arc 的伺服器，請遵循 [從 Azure 入口網站將混合式機器連線到 Azure](onboard-portal.md)的文章。
+* 若要開始評估已啟用 Azure Arc 的伺服器，請遵循 [從 Azure 入口網站將混合式機器連線到 Azure](onboard-portal.md)的文章。
+
+* 疑難排解資訊可在「連線的 [機器代理程式疑難排解指南](troubleshoot-agent-onboard.md)」中找到。

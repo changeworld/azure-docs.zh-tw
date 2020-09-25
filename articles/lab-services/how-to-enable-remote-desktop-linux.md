@@ -3,12 +3,12 @@ title: 在 Azure Lab Services 中啟用適用於 Linux 的圖形化遠端桌面 
 description: 了解如何在 Azure Lab Services 中為實驗室中的 Linux 虛擬機器啟用遠端桌面。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 4f50510adf978aeb63b2b5337d21e6f9dec76196
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b8db01ca57d90739a57cd9bbb3caf63ada5f26fe
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445758"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91251604"
 ---
 # <a name="enable-graphical-remote-desktop-for-linux-virtual-machines-in-azure-lab-services"></a>在 Azure Lab Services 中為 Linux 虛擬機器啟用圖形化遠端桌面
 本文示範如何執行下列工作：
@@ -46,7 +46,7 @@ X2Go 會使用對 SSH 啟用的同個連接埠。  因此，要在 VM 上對 X2G
 
 1.  在實驗室建立期間，講師可以選擇 [啟用遠端桌面連線]。  講師必須**啟用**此選項，才能在 RDP 遠端桌面工作階段所需的 Linux VM 上開啟連接埠。  否則，如果將此選項保持**停用**，則只會為 SSH 開啟連接埠。
   
-    ![啟用 Linux 映像的遠端桌面連線](./media/how-to-enable-remote-desktop-linux/enable-rdp-option.png)
+    ![顯示 [新增實驗室] 視窗和 [啟用遠端桌面連線] 選項的螢幕擷取畫面。](./media/how-to-enable-remote-desktop-linux/enable-rdp-option.png)
 
 2. 在 [啟用遠端桌面連線] 訊息方塊中，選取 [繼續使用遠端桌面]。 
 

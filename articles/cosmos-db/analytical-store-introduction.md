@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: rosouz
-ms.openlocfilehash: 17dce45e73a5620db2201534126900d8e571ec45
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 75ad602eb6b9a0ce52b2b4c4115f351668327c43
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90900269"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91253185"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store-preview"></a>什麼是 Azure Cosmos DB 分析存放區 (預覽)？
 
@@ -60,7 +60,7 @@ Azure Cosmos DB 分析存放區可解決傳統 ETL 管線所發生的複雜性�
 
 ### <a name="auto-sync"></a>自動同步
 
-自動同步是指 Azure Cosmos DB 的完全受控功能，會在 5 分鐘內近乎即時地將操作資料的插入、更新、刪除作業從交易存放區自動同步到分析存放區。
+自動同步處理是指 Azure Cosmos DB 的完全受控功能，其中作業資料的插入、更新、刪除作業會以近乎即時的方式自動從交易式存放區同步處理至分析存放區。 自動同步處理延遲通常是在2分鐘內。 如果有大量容器的共用輸送量資料庫，則個別容器的自動同步延遲可能會較高，且最多需要5分鐘的時間。 我們想要深入瞭解此延遲如何符合您的案例。 若要這樣做，請與 [Azure Cosmos DB 團隊](mailto:cosmosdbsynapselink@microsoft.com)聯繫。
 
 自動同步功能和分析存放區提供下列主要優點：
 
@@ -138,7 +138,7 @@ salary: 1000000
 }
 ```
 
-`streetName`嵌套物件內的分葉屬性 `address` 將以資料行表示在分析存放區架構中 `address.object.streetName.int32` 。 資料類型會以後綴的形式加入資料行。 如此一來，如果另一份檔加入至交易式存放區，其中分葉屬性的值 `streetNo` 是 "123" (請注意，這是一個字串) ，分析存放區的架構會自動演進，而不會改變之前寫入資料行的類型。 新增至分析存放區的新資料行，其 `address.object.streetName.string` 值為 "123" 的儲存位置。
+`streetNo`嵌套物件內的分葉屬性 `address` 將以資料行表示在分析存放區架構中 `address.object.streetNo.int32` 。 資料類型會以後綴的形式加入資料行。 如此一來，如果另一份檔加入至交易式存放區，其中分葉屬性的值 `streetNo` 是 "123" (請注意，這是一個字串) ，分析存放區的架構會自動演進，而不會改變之前寫入資料行的類型。 新增至分析存放區的新資料行，其 `address.object.streetNo.string` 值為 "123" 的儲存位置。
 
 **以後綴對應的資料類型**
 
@@ -149,7 +149,7 @@ salary: 1000000
 | Double |  "float64" |    24.99|
 | Array | ". array" |    ["a"，"b"]|
 |Binary | "binary" |0|
-|布林值    | "bool"   |True|
+|Boolean    | "bool"   |True|
 |Int32  | "int32"  |123|
 |Int64  | "int64"  |255486129307|
 |Null   | ". null"   | null|

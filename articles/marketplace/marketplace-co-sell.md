@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: vamahtan
 ms.author: vamahtan
-ms.date: 09/15/2020
-ms.openlocfilehash: 41dd683bb0ff5be4a48cd05f24663dd51c66a15b
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.date: 09/23/2020
+ms.openlocfilehash: f0996ba6cd914043ad31500934141ad8770a1c50
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90984624"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268718"
 ---
 # <a name="co-sell-partner-engagement"></a>共同銷售合作夥伴參與
 
@@ -36,13 +36,13 @@ ms.locfileid: "90984624"
 * Marketplace 服務費用從20% 減少為10%。 此折扣適用于透過商業市場銷售的 IaaS 或 SaaS 供應專案。 如需更多詳細資料，請參閱 [降低服務費用](marketplace-commercial-transaction-capabilities-and-considerations.md#reduced-service-fee) 。
 * 雲端解決方案提供者 (CSP) 合作夥伴可享有10% 的獎勵來銷售您的 IaaS 或 SaaS 供應專案。 若要深入瞭解 CSP 方案，請參閱 [雲端解決方案提供者計畫](cloud-solution-providers.md)。
 * 透過商業 marketplace 的供應專案銷售，將會對客戶的 Azure 耗用量承諾有所貢獻。 合格客戶會在 Azure 入口網站中看到標示為「 **Azure 權益符合資格** 」的供應專案。 如需詳細資訊，請參閱 [Azure 使用量承諾用量權益](azure-consumption-commitment-benefit.md) 。
-* 您的供應專案將會在店面中收到「 **偏好的解決方案** 」徽章。 徽章可在特定產業的垂直或解決方案領域中，提升供應專案品質、效能以及滿足客戶需求的能力。 若要深入瞭解，請參閱 [Microsoft AppSource 和 Azure Marketplace 的慣用解決方案](preferred-solutions.md)。
+* 提供 **AZURE IP 共同銷售受到激勵** 或 **Business Applications 共同銷售受到激勵** 狀態的供應專案，將會在店面中收到「 **偏好的解決方案** 」徽章。 徽章可提升供應專案品質、效能，以及滿足特定產業垂直或解決方案領域中客戶需求的能力。 若要深入瞭解，請參閱 [Microsoft AppSource 和 Azure Marketplace 的慣用解決方案](preferred-solutions.md)。
 
 ## <a name="co-sell-publishing-steps-and-requirements"></a>共同銷售發佈步驟和需求
 
 下表列出讓 marketplace 供應專案共同銷售準備就緒或共同銷售受到激勵的步驟和需求。 並非所有的商業 marketplace 供應專案類型都可在合作夥伴中心中進行共同銷售。 您可以參考 [合作夥伴中心中的共同銷售選項](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-co-sell) ，取得最新資訊。 
 
-|步驟    |供應項目類型    |規格需求    |共同銷售狀態    |
+|步驟    |供應項目類型    |需求    |共同銷售狀態    |
 |----    |-------------    |------------    |---------------   |
 |<ol start=1><li> 在合作夥伴中心中建立帳戶，並在商業 marketplace 中發佈您的供應專案。</li>|全部|<li>供應專案符合商業 marketplace 發佈需求。</li><li>您在合作夥伴中心中有完整的商務設定檔。</li>|未就緒|
 |<ol start=2><li>提交所需的共同銷售教材。</li>|合作夥伴中心中*具有*[共同銷售選項](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-co-sell)的 IP 供應專案|[在合作夥伴中心上傳所需的材質](#how-to-submit-co-sell-materials-in-partner-center)： <ul><li>每個合格國家/地區的銷售連絡人。</li><li>教材：客戶單一頁面、客戶簡報組 (選擇性的) 、解決方案登陸頁面 URL、社交媒體頻道 URL 或其他 (例如案例研究) 。|共同銷售準備就緒|

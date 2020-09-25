@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: af75c80c4380754ef1b0020108d3b6ad953f242f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 98eae8b63b9eaaa8cff800bade091f4b5d36d005
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88541964"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91255684"
 ---
 # <a name="tutorial-configure-templafy-for-automatic-user-provisioning"></a>教學課程：設定 Templafy 來自動布建使用者
 
@@ -58,11 +58,11 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
 2. 按一下 [ **驗證方法**]。
 
-    ![Templafy 新增 SCIM](media/templafy-provisioning-tutorial/image01.png)
+    ![已呼叫 [驗證方法] 選項的 [Templafy 管理] 區段螢幕擷取畫面。](media/templafy-provisioning-tutorial/image01.png)
 
 3. 複製 **SCIM Api 金鑰** 值。 在 Azure 入口網站的 Templafy 應用程式的 [布建] 索引標籤中，將會在 [ **秘密權杖** ] 欄位中輸入此值。
 
-    ![Templafy 新增 SCIM](media/templafy-provisioning-tutorial/image02.png)
+    ![S C I M A P I 按鍵的螢幕擷取畫面。](media/templafy-provisioning-tutorial/image02.png)
 
 ## <a name="add-templafy-from-the-gallery"></a>從資源庫新增 Templafy
 
@@ -105,11 +105,11 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
 3. 選取 [佈建] 索引標籤。
 
-    ![佈建索引標籤](common/provisioning.png)
+    ![已呼叫 [布建] 選項的 [管理選項] 螢幕擷取畫面。](common/provisioning.png)
 
 4. 將 [佈建模式] 設定為 [自動]。
 
-    ![佈建索引標籤](common/provisioning-automatic.png)
+    ![[布建模式] 下拉式清單的螢幕擷取畫面，其中已呼叫 [自動] 選項。](common/provisioning-automatic.png)
 
 5. 在 [ **管理員認證** ] 區段下的 [ `https://scim.templafy.com/scim` **租使用者 URL**] 中輸入。 輸入稍早在**秘密權杖**中取出的**SCIM API 金鑰**值。 按一下 [ **測試連接** ] 以確保 Azure AD 可以連線至 Templafy。 如果連接失敗，請確定您的 Templafy 帳戶具有系統管理員許可權，然後再試一次。
 
@@ -119,7 +119,7 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
     ![通知電子郵件](common/provisioning-notification-email.png)
 
-7. 按一下 [檔案] 。
+7. 按一下 [檔案]  。
 
 8. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 使用者至 Templafy**]。
 

@@ -9,12 +9,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 05/14/2020
-ms.openlocfilehash: 1293534849c98cee51349bbefd3073cc8b94f876
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 9ffc134c2bded747346f3639119dde4a6f14231b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89647205"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91250703"
 ---
 # <a name="create-and-explore-azure-machine-learning-dataset-with-labels"></a>建立和探索具有標籤的 Azure Machine Learning 資料集
 
@@ -52,7 +52,7 @@ ms.locfileid: "89647205"
 
 ### <a name="pandas-dataframe"></a>Pandas 資料框架
 
-您可以使用 [`to_pandas_dataframe()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#&preserve-view=trueto-pandas-dataframe-on-error--null---out-of-range-datetime--null--) 方法，將已標記的資料集從 `azureml-contrib-dataset` 類別載入 Pandas 資料框架。 使用下列殼層命令來安裝類別： 
+您可以使用 [`to_pandas_dataframe()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true#&preserve-view=trueto-pandas-dataframe-on-error--null---out-of-range-datetime--null--) 方法，將已標記的資料集從 `azureml-contrib-dataset` 類別載入 Pandas 資料框架。 使用下列殼層命令來安裝類別： 
 
 ```shell
 pip install azureml-contrib-dataset
@@ -80,7 +80,7 @@ imgplot = plt.imshow(img)
 
 ### <a name="torchvision-datasets"></a>Torchvision 資料集
 
-您可以使用 [to_torchvision()](https://docs.microsoft.com/python/api/azureml-contrib-dataset/azureml.contrib.dataset.tabulardataset?view=azure-ml-py#&preserve-view=trueto-torchvision--) 方法，同樣將已標記的資料集從 `azureml-contrib-dataset` 類別載入 Torchvision 資料集。 若要使用此方法，您必須安裝 [PyTorch](https://pytorch.org/)。 
+您可以使用 [to_torchvision()](https://docs.microsoft.com/python/api/azureml-contrib-dataset/azureml.contrib.dataset.tabulardataset?view=azure-ml-py&preserve-view=true#&preserve-view=trueto-torchvision--) 方法，同樣將已標記的資料集從 `azureml-contrib-dataset` 類別載入 Torchvision 資料集。 若要使用此方法，您必須安裝 [PyTorch](https://pytorch.org/)。 
 
 ```python
 from torchvision.transforms import functional as F

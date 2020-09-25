@@ -3,59 +3,18 @@ title: Azure VM 中的 SQL server 虛刪除，以及 Azure VM 工作負載中的
 description: 瞭解 Azure VM 中的 SQL server 虛刪除，以及 Azure VM 工作負載中的 SAP Hana 如何讓備份更安全。
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 26525ec758b3a27d6e0e1b9754b11041bd1fa0d2
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 2a442997d426ff0bf4c74b0b45f7657cc0593b82
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89022287"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91254290"
 ---
 # <a name="soft-delete-for-sql-server-in-azure-vm-and-sap-hana-in-azure-vm-workloads"></a>Azure VM 中的 SQL server 虛刪除，以及 Azure VM 工作負載中的 SAP Hana
 
 Azure 備份現在會在 azure VM 中提供 SQL server 的虛刪除功能，並在 Azure VM 工作負載中 SAP Hana。 這是已支援的 [Azure 虛擬機器虛刪除案例](soft-delete-virtual-machines.md)的補充。
 
 虛[刪除](backup-azure-security-feature-cloud.md)是一項安全性功能，可協助保護備份資料（即使在刪除後）。 使用虛刪除時，即使惡意執行者刪除了資料庫的備份 (或不小心刪除了備份資料) ，備份資料仍會保留14天。 這可讓您復原該備份專案，而不會遺失任何資料。 在「虛刪除」狀態下，額外保留14天的備份資料，不會對客戶產生任何成本。
-
->[!NOTE]
->針對訂用帳戶啟用預覽後，您就無法只針對 SQL server 或 SAP Hana Db 停用虛刪除，同時讓相同保存庫中的虛擬機器保持啟用狀態。 您可以建立不同的保存庫以進行細微的控制。
-
-## <a name="steps-to-enroll-in-preview"></a>預覽版的註冊步驟
-
-1. 登入您的 Azure 帳戶。
-
-   ```powershell
-   Login-AzureRmAccount
-   ```
-
-2. 選取您要在預覽版中註冊的訂用帳戶：
-
-   ```powershell
-   Get-AzureRmSubscription –SubscriptionName "Subscription Name" | Select-AzureRmSubscription
-   ```
-
-3. 將此訂用帳戶註冊至預覽版方案：
-
-   ```powershell
-   Register-AzureRMProviderFeature -FeatureName WorkloadBackupSoftDelete -ProviderNamespace Microsoft.RecoveryServices
-   ```
-
-4. 等候30分鐘，將訂用帳戶註冊至預覽版。
-
-5. 若要檢查狀態，請執行下列 Cmdlet：
-
-   ```powershell
-   Get-AzureRmProviderFeature -FeatureName WorkloadBackupSoftDelete -ProviderNamespace Microsoft.RecoveryServices
-   ```
-
-6. 一旦訂用帳戶顯示為已註冊，請執行下列命令：
-
-   ```powershell
-   Register-AzureRmResourceProvider -ProviderNamespace Microsoft.RecoveryServices
-   ```
-
->[!NOTE]
->每當在啟用虛刪除功能的訂用帳戶下建立新的保存庫/保存庫時，必須重新執行下列命令，以啟用新建立保存庫的功能。<BR>
-> `Register-AzureRmResourceProvider -ProviderNamespace Microsoft.RecoveryServices`
 
 ## <a name="soft-delete-for-sql-server-in-azure-vm-using-azure-portal"></a>使用 Azure 入口網站的 Azure VM 中的 SQL server 虛刪除
 

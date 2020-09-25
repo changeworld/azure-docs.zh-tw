@@ -11,12 +11,12 @@ ms.author: shipatel
 author: shivp950
 ms.reviewer: larryfr
 ms.date: 05/11/2020
-ms.openlocfilehash: 464d945708fba83877fe6cef9ec1b64ec444bd95
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 7b1030c816bff5b50c0c47a16fa5f1812bb16b15
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88650412"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91250822"
 ---
 # <a name="trigger-applications-processes-or-cicd-workflows-based-on-azure-machine-learning-events-preview"></a>根據 Azure Machine Learning 事件來觸發應用程式、進程或 CI/CD 工作流程 (preview) 
 
@@ -62,7 +62,7 @@ Azure Machine Learning 在機器學習服務生命週期的各個點中提供事
 
 設定事件時，您可以只將篩選條件套用至特定事件資料的觸發程序。 在下列範例中，針對執行狀態已變更的事件，您可以依執行類型進行篩選。 只有條件符合時，才會觸發事件。 請參閱 [Azure Machine Learning 事件方格架構](/azure/event-grid/event-schema-machine-learning)，以瞭解您可以篩選的事件資料。 
 
-Azure Machine Learning 事件的訂閱受到角色型存取控制 (RBAC) 的保護。 只有工作區的[參與者和擁有者](how-to-assign-roles.md#default-roles)可以建立、更新、刪除事件訂閱。  可以在事件訂閱的[建立](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest)期間或之後，將篩選套用至事件訂閱。 
+Azure Machine Learning 事件的訂閱受到角色型存取控制 (RBAC) 的保護。 只有工作區的[參與者和擁有者](how-to-assign-roles.md#default-roles)可以建立、更新、刪除事件訂閱。  可以在事件訂閱的[建立](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest&preserve-view=true)期間或之後，將篩選套用至事件訂閱。 
 
 
 1. 移至 Azure 入口網站，選取新的訂閱或現有的訂閱。 
@@ -126,14 +126,14 @@ Azure 事件方格可讓客戶建立可由 Azure Machine Learning 事件觸發�
 
 1. 選取要發佈事件至什麼端點。 在下列螢幕擷取畫面中，選取的端點是 [事件中樞] ：
 
-    ![select-event-handler](./media/how-to-use-event-grid/select-event-handler.png)
+    ![事件處理常式](./media/how-to-use-event-grid/select-event-handler.png)
 
 確認您的選擇之後，按一下 [建立]。 設定之後，這些事件將會推送至您的端點。
 
 
 ### <a name="set-up-with-the-cli"></a>使用 CLI 進行設定
 
-您可以安裝最新的 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)，或使用 Azure 訂用帳戶中所提供的 Azure Cloud Shell。
+您可以安裝最新的 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)，或使用 Azure 訂用帳戶中所提供的 Azure Cloud Shell。
 
 若要安裝事件方格擴充功能，從 CLI 使用下列命令：
 
@@ -164,15 +164,15 @@ az eventgrid event-subscription create --name {eventGridFilterName} \
 
 1. 在 Azure 入口網站中，移至您的 Azure Machine Learning 工作區，從左側欄中選取 [事件] 索引標籤。 從這裡選取 [邏輯應用程式]。 
 
-    ![select-logic-ap](./media/how-to-use-event-grid/select-logic-ap.png)
+    ![select-邏輯應用程式](./media/how-to-use-event-grid/select-logic-ap.png)
 
 1. 登入邏輯應用程式使用者介面，選取 Machine Learning 服務做為主題類型。 
 
-    ![select-topic-type](./media/how-to-use-event-grid/select-topic-type.png)
+    ![主題-類型](./media/how-to-use-event-grid/select-topic-type.png)
 
 1. 選取要通知的事件。 例如，下列螢幕擷取畫面中的 [RunCompleted]。
 
-    ![select-event-runcomplete](./media/how-to-use-event-grid/select-event-runcomplete.png)
+    ![select-事件-執行-完成](./media/how-to-use-event-grid/select-event-runcomplete.png)
 
 1. 您可以使用上一節的篩選方法，或新增篩選器，只針對事件類型的子集觸發邏輯應用程式。 在下列螢幕擷取畫面，使用的 [前置詞篩選] 是 __/datadriftID/runs/__ 。
 
@@ -180,15 +180,15 @@ az eventgrid event-subscription create --name {eventGridFilterName} \
 
 1. 接下來，新增使用此事件的步驟，並搜尋電子郵件。 有數個不同的郵件帳戶可供您用來接收事件。 您也可以設定何時傳送電子郵件警示的條件。
 
-    ![select-email-action](./media/how-to-use-event-grid/select-email-action.png)
+    ![電子郵件-動作](./media/how-to-use-event-grid/select-email-action.png)
 
 1. 選取 [傳送電子郵件] 並填入參數。 您可以在主旨中包含 [事件種類] 和 [主題] 以協助篩選事件。 您也可以在訊息本文中包含執行之工作區頁面的連結。 
 
-    ![configure-email-body](./media/how-to-use-event-grid/configure-email-body.png)
+    ![設定-電子郵件](./media/how-to-use-event-grid/configure-email-body.png)
 
 1. 若要儲存此動作，選取頁面左側的 [另存新檔]。 在出現的右側欄中，確認建立此動作。
 
-    ![confirm-logic-app-create](./media/how-to-use-event-grid/confirm-logic-app-create.png)
+    ![確認-邏輯-應用程式建立](./media/how-to-use-event-grid/confirm-logic-app-create.png)
 
 
 ### <a name="example-data-drift-triggers-retraining"></a>範例：資料漂移觸發重新定型
@@ -204,7 +204,7 @@ az eventgrid event-subscription create --name {eventGridFilterName} \
 
 在此範例中，會使用簡單的 Data Factory 管線將檔案複製到 blob 存放區，並執行已發佈的 Machine Learning 管線。 如需此案例的詳細資訊，請參閱如何[在 Azure Data Factory 中設定 Machine Learning 步驟](https://docs.microsoft.com/azure/data-factory/transform-data-machine-learning-service)。
 
-![adf-mlpipeline-stage](./media/how-to-use-event-grid/adf-mlpipeline-stage.png)
+![adf-mlpipeline](./media/how-to-use-event-grid/adf-mlpipeline-stage.png)
 
 1. 從建立邏輯應用程式開始。 移至 [Azure 入口網站](https://portal.azure.com)，搜尋 [邏輯應用程式]，然後選取 [建立]。
 
@@ -212,31 +212,31 @@ az eventgrid event-subscription create --name {eventGridFilterName} \
 
 1. 填寫所需的資訊。 為了簡化體驗，請使用與您的 Azure Data Factory 管線和 Azure Machine Learning 工作區相同的訂用帳戶和資源群組。
 
-    ![set-up-logic-app-for-adf](./media/how-to-use-event-grid/set-up-logic-app-for-adf.png)
+    ![設定-邏輯應用程式-adf](./media/how-to-use-event-grid/set-up-logic-app-for-adf.png)
 
 1. 建立邏輯應用程式之後，選取 [事件方格資源事件發生時]。 
 
-    ![select-event-grid-trigger](./media/how-to-use-event-grid/select-event-grid-trigger.png)
+    ![select-eventgrid-trigger](./media/how-to-use-event-grid/select-event-grid-trigger.png)
 
 1. 登入並填入事件的詳細資料。 將 [資源名稱] 設定為工作區名稱。 將 [事件種類] 設定為 [DatasetDriftDetected]。
 
-    ![login-and-add-event](./media/how-to-use-event-grid/login-and-add-event.png)
+    ![登入-新增-事件](./media/how-to-use-event-grid/login-and-add-event.png)
 
 1. 新增新的步驟，然後搜尋 [Azure Data Factory]。 選取 [建立管線執行]。 
 
-    ![create-adfpipeline-run](./media/how-to-use-event-grid/create-adfpipeline-run.png)
+    ![建立-adf-管線-執行](./media/how-to-use-event-grid/create-adfpipeline-run.png)
 
 1. 登入並指定要執行的已發佈 Azure Data Factory 管線。
 
-    ![specify-adf-pipeline](./media/how-to-use-event-grid/specify-adf-pipeline.png)
+    ![指定-adfpipeline](./media/how-to-use-event-grid/specify-adf-pipeline.png)
 
 1. 使用頁面左上角的 [儲存] 按鈕，儲存並建立邏輯應用程式。 若要檢視您的應用程式，移至 [Azure 入口網站](https://portal.azure.com) 中您的工作區，然後按一下 [事件]。
 
-    ![show-logic-app-webhook](./media/how-to-use-event-grid/show-logic-app-webhook.png)
+    ![顯示-logicapp-webhook](./media/how-to-use-event-grid/show-logic-app-webhook.png)
 
 現在，發生漂移時，會觸發 Data Factory 管線。 在[新的工作區入口網站](https://ml.azure.com)上，檢視資料漂移執行和機器學習管線的詳細資訊。 
 
-![view-in-workspace](./media/how-to-use-event-grid/view-in-workspace.png)
+![視圖-工作區](./media/how-to-use-event-grid/view-in-workspace.png)
 
 ### <a name="example-deploy-a-model-based-on-tags"></a>範例：根據標記部署模型
 

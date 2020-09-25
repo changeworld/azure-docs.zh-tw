@@ -3,16 +3,16 @@ title: 如何使用適用于容器登錄的 Azure Defender
 description: 瞭解如何使用適用于容器登錄的 Azure Defender 來掃描登錄中的映射
 author: memildin
 ms.author: memildin
-ms.date: 9/12/2020
+ms.date: 9/22/2020
 ms.topic: conceptual
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 18fa1b14bb20bbb2805eee2ec663d1316f787950
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 04a7b7f40e1591a919668e940a883dde9a6f4689
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936573"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91302004"
 ---
 # <a name="use-azure-defender-for-container-registries-to-scan-your-images-for-vulnerabilities"></a>使用適用于容器登錄的 Azure Defender 來掃描映射是否有弱點
 
@@ -30,7 +30,7 @@ ms.locfileid: "90936573"
 |定價：|**適用于 container registry 的 Azure Defender**會依[定價頁面上的](security-center-pricing.md)顯示方式計費|
 |支援的登錄和映射：|![是 ](./media/icons/yes-icon.png) 可從公用網際網路存取並提供 shell 存取的 Linux 託管 ACR 登錄。<br>![沒有任何 ](./media/icons/no-icon.png) Windows 主控的 ACR 登錄。<br>![無「私人」登錄 ](./media/icons/no-icon.png) -「安全性中心」需要您的登錄才能從公用網際網路存取。 「安全性中心」目前無法連接或掃描登錄，其存取權受限於防火牆、服務端點或私人端點（例如 Azure Private Link）。<br>![沒有任何 ](./media/icons/no-icon.png) 超級極簡映射（例如 [Docker 臨時](https://hub.docker.com/_/scratch/) 影像）或 "Distroless" 映射（只包含應用程式和其執行時間相依性，沒有套件管理員、shell 或 OS）。|
 |必要的角色和許可權：|**安全性讀取者** 和 [Azure Container Registry 讀者角色](https://docs.microsoft.com/azure/container-registry/container-registry-roles)|
-|雲端：|![Yes](./media/icons/yes-icon.png) 商業雲端<br>![No](./media/icons/no-icon.png) 全國/主權 (US Gov、中國 Gov、其他 Gov) |
+|雲端：|![是](./media/icons/yes-icon.png) 商業雲端<br>![否](./media/icons/no-icon.png) 全國/主權 (US Gov、中國 Gov、其他 Gov) |
 |||
 
 
@@ -154,7 +154,7 @@ ms.locfileid: "90936573"
     1. 若要查看或刪除規則，請選取省略號功能表 ( ) ]。
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
 > [深入瞭解 Azure Defender](azure-defender.md)

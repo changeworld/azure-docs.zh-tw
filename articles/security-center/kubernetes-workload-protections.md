@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/12/2020
 ms.author: memildin
-ms.openlocfilehash: 332c33ce46298e5338587cd4d001466d30c1a9e6
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 138b3b35633b432193a1972421f05d0a8e52b90a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90933882"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91301349"
 ---
 # <a name="protect-your-kubernetes-workloads"></a>保護 Kubernetes 工作負載
 
@@ -39,7 +39,7 @@ ms.locfileid: "90933882"
 |定價：|免費|
 |必要的角色和許可權：|用來編輯指派的**擁有**者或**安全性系統管理員**<br>查看建議的**讀者**|
 |支援的叢集|需要 Kubernetes v 1.14 (或更高的) <br>叢集上沒有任何 PodSecurityPolicy 資源 (舊的 PSP 模型) <br>不支援 Windows 節點|
-|雲端：|![Yes](./media/icons/yes-icon.png) 商業雲端<br>![No](./media/icons/no-icon.png) 全國/主權 (US Gov、中國 Gov、其他 Gov) |
+|雲端：|![是](./media/icons/yes-icon.png) 商業雲端<br>![否](./media/icons/no-icon.png) 全國/主權 (US Gov、中國 Gov、其他 Gov) |
 |||
 
 
@@ -69,12 +69,12 @@ Azure 資訊安全中心包含安裝 **適用于 Kubernetes 的 Azure 原則附�
 
     | 建議名稱                                                                   | 安全性控制                         | 需要設定 |
     |---------------------------------------------------------------------------------------|------------------------------------------|------------------------|
-    | 應 (預覽版來強制執行容器 CPU 和記憶體限制)                           | 保護應用程式免于遭受 DDoS 攻擊 | No                     |
-    | 應避免 (預覽的特殊許可權容器)                                      | 管理存取權和許可權            | No                     |
-    | 不可變的 (唯讀) 根目錄檔案系統應針對容器強制執行 (預覽)      | 管理存取權和許可權            | No                     |
-    | 應避免 (預覽版的容器具有許可權擴大)                        | 管理存取權和許可權            | No                     |
-    | 以根使用者的形式執行容器應避免 (預覽)                            | 管理存取權和許可權            | No                     |
-    | 共用機密主機命名空間的容器應避免 (預覽)               | 管理存取權和權限            | No                     |
+    | 應 (預覽版來強制執行容器 CPU 和記憶體限制)                           | 保護應用程式免于遭受 DDoS 攻擊 | 否                     |
+    | 應避免 (預覽的特殊許可權容器)                                      | 管理存取權和許可權            | 否                     |
+    | 不可變的 (唯讀) 根目錄檔案系統應針對容器強制執行 (預覽)      | 管理存取權和許可權            | 否                     |
+    | 應避免 (預覽版的容器具有許可權擴大)                        | 管理存取權和許可權            | 否                     |
+    | 以根使用者的形式執行容器應避免 (預覽)                            | 管理存取權和許可權            | 否                     |
+    | 共用機密主機命名空間的容器應避免 (預覽)               | 管理存取權和權限            | 否                     |
     |  (預覽的容器應強制執行最低許可權 Linux 功能)        | 管理存取權和許可權            | **是**                |
     | Pod HostPath 磁片區掛接的使用應限制為已知清單 (預覽)     | 管理存取權和權限            | **是**                |
     | 容器應該只在允許的埠上接聽 (預覽)                               | 限制未經授權的網路存取     | **是**                |
@@ -95,11 +95,15 @@ Azure 資訊安全中心包含安裝 **適用于 Kubernetes 的 Azure 原則附�
     1. 選取 [儲存]。
 
 
-1. 若要強制執行任何建議，請在 [安全中心的安全性原則**參數**] 索引標籤中設定 [**拒絕**]：
+1. 若要強制執行任何建議， 
 
-    :::image type="content" source="./media/defender-for-kubernetes-usage/enforce-workload-protection-example.png" alt-text="Azure 原則參數的 Deny 選項":::
+    1. 開啟 [建議詳細資料] 頁面，然後選取 [ **拒絕**：
 
-    這會拒絕對 AKS 叢集的任何不符合規範要求
+        :::image type="content" source="./media/defender-for-kubernetes-usage/enforce-workload-protection-example.png" alt-text="Azure 原則參數的 Deny 選項":::
+
+        這會開啟您設定範圍的窗格。 
+
+    1. 設定領域之後，請選取 [ **變更為拒絕**]。
 
 1. 若要查看哪些建議適用于您的叢集：
 
@@ -231,7 +235,7 @@ spec:
 
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 在本文中，您已瞭解如何設定 Kubernetes 工作負載保護。 
 

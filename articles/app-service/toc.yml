@@ -146,7 +146,7 @@
           href: configure-language-java.md
         - name: 設定 Ruby
           href: configure-language-ruby.md
-        - name: 設定自訂 Linux 容器
+        - name: 設定自訂容器
           href: configure-custom-container.md
         - name: 連線到內部部署資源
           href: web-sites-integrate-with-vnet.md

@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: duau
-ms.openlocfilehash: fc83e5e8d14250ed163a56830311533144bbe344
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 6f502b8ad8ac268cc937150f4effdf9edf8eef15
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89395429"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91252624"
 ---
 # <a name="expressroute-monitoring-metrics-and-alerts"></a>ExpressRoute 監視、計量和警示
 
@@ -36,8 +36,8 @@ ms.locfileid: "89395429"
 |Bgp 可用性|可用性|<ui><li> 對等 (主要/次要 ExpressRoute 路由器) </ui></li><ui><li> 對等互連類型</ui></li>|ExpressRoute|
 |BitsInPerSecond|交通流量|<ui><li> ExpressRoute)  (對等互連類型 </ui></li><ui><li> (ExpressRoute Direct) 連結 </ui></li>|<li>ExpressRoute</li><li>ExpressRoute Direct|
 |BitsOutPerSecond|交通流量| <ui><li>ExpressRoute)  (對等互連類型 </ui></li><ui><li>  (ExpressRoute Direct) 連結 |<ui><li>ExpressRoute<ui><li>ExpressRoute Direct</ui></li> |
-|CPU 使用率|效能| <ui><li>執行個體</ui></li>|ExpressRoute 虛擬網路閘道|
-|每秒封包數|效能| <ui><li>執行個體</ui></li>|ExpressRoute 虛擬網路閘道|
+|CPU 使用率|效能| <ui><li>實例</ui></li>|ExpressRoute 虛擬網路閘道|
+|每秒封包數|效能| <ui><li>實例</ui></li>|ExpressRoute 虛擬網路閘道|
 |GlobalReachBitsInPerSecond|交通流量|<ui><li>對等互連線路 Skey (服務金鑰) </ui></li>|Global Reach|
 |GlobalReachBitsOutPerSecond|交通流量|<ui><li>對等互連線路 Skey (服務金鑰) </ui></li>|Global Reach|
 |AdminState|實體連線能力|連結|ExpressRoute Direct|
@@ -154,8 +154,21 @@ ms.locfileid: "89395429"
 在 [警示準則]**** 中，您可以選取 [活動記錄]**** 作為訊號類型，並選取訊號。
 
 :::image type="content" source="./media/expressroute-monitoring-metrics-alerts/alertshowto6activitylog.jpg" alt-text="活動記錄":::
+
+## <a name="additional-metrics-in-log-analytics"></a>Log Analytics 中的其他計量
+
+您也可以流覽至 ExpressRoute 線路資源，然後選取 [ *記錄* ] 索引標籤，以查看 expressroute 計量。針對您所查詢的任何計量，輸出會包含下列資料行。
+
+|**資料行**|**型別**|**說明**|
+| --- | --- | --- |
+|TimeGrain|字串|每分鐘都會推送 PT1M (度量值) |
+|計數|real|通常等於 2 (每個 MSEE 會每分鐘推送一個度量值) |
+|最小值|real|這兩個 Msee 推播的兩個度量值的最小值|
+|最大值|real|這兩個 Msee 所推送的兩個度量值上限|
+|Average|real|等於 (最小值 + 最大值) /2|
+|總計|real|這兩個 Msee 中兩個計量值的總和 (主要值，以專注于所查詢的度量) |
   
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 設定 ExpressRoute 連線。
   

@@ -10,16 +10,40 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 08/26/2020
 ms.author: aahi
-ms.openlocfilehash: f017960e304df04148c318b5098f384e6140de9a
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 436d64583184ca2cd59b4ddf33056922c746fb34
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88930905"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91271166"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>文字分析 API 有哪些新功能？
 
 文字分析 API 會持續更新。 為了隨時掌握最新的開發，本文提供新版本和功能的相關資訊。
+
+## <a name="september-2020"></a>2020 年 9 月
+
+### <a name="general-api-updates"></a>一般 API 更新
+
+* 發行文字分析3.1 公開預覽的新 URL，以支援下列命名實體辨識 v3 端點的更新： 
+    * `/pii` 端點現在 `redactedText` 會在回應 JSON 中包含新的屬性，其中在輸入文字中偵測到的 PII 實體會由 `*` 這些實體的每個字元取代。
+    * `/linking` 端點現在會 `bingID` 在已連結實體的回應 JSON 中包含屬性。
+* 下列文字分析預覽版 API 端點已于2020年9月4日淘汰：
+    * 2.1 版-預覽
+    * v3.0-preview
+    * v3.0-preview。1
+    
+> [!div class="nextstepaction"]
+> [深入瞭解文字分析 API 3.1-Preview。2](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-2/operations/Languages)
+
+### <a name="text-analytics-for-health-container-updates"></a>健全狀況容器更新的文字分析
+
+下列更新僅適用于九月版文字分析 for health 容器的特定版本。
+* 新的容器映射具有具有 `1.1.013530001-amd64-preview` 新模型版本的標記，已 `2020-09-03` 發行至 containerpreview 存放庫。 
+* 此模型版本提供實體辨識、縮寫偵測和延遲增強功能的改進。
+
+> [!div class="nextstepaction"]
+> [深入瞭解文字分析的健全狀況](how-tos/text-analytics-for-health.md)
 
 ## <a name="august-2020"></a>2020 年 8 月
 
@@ -31,7 +55,7 @@ ms.locfileid: "88930905"
 * 針對超過已發佈 [資料限制](concepts/data-limits.md)的 v3 API 要求，現在會傳回 HTTP 400 錯誤。 
 * 傳回位移的端點現在支援選擇性 `stringIndexType` 參數，會將傳回的 `offset` 和值調整 `length` 為符合支援的 [字串索引配置](concepts/text-offsets.md)。
 
-### <a name="text-analytics-for-health-container-august-updates"></a>適用于 health 容器的8月更新文字分析
+### <a name="text-analytics-for-health-container-updates"></a>健全狀況容器更新的文字分析
 
 下列更新僅適用于2004年8月發行的健康情況容器文字分析。
 
@@ -141,13 +165,13 @@ JSON 回應中的下列屬性名稱已變更，適用于：
 
 * 下列一般實體類型的辨識僅 (英文) ：
     * PersonType
-    * 產品
+    * Products
     * 事件
     * 地緣政治 Entity (GPE) 作為位置下的子類型
     * 技能
 
 * 僅) 下列個人資訊實體類型的識別 (英文：
-    * 個人
+    * 人
     * 組織
     * 作為 [數量] 下的子類型的年齡
     * 日期為 DateTime 下的子類型

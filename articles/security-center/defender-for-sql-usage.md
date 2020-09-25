@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/12/2020
+ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 76015602cbf949b166c4067ad72bace5d355d70b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: ea0df1fb68697ceee55614510cc0295c73fec00e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934067"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91301647"
 ---
 # <a name="azure-defender-for-sql-servers-on-machines"></a>電腦上適用于 SQL server 的 Azure Defender 
 
@@ -33,7 +33,7 @@ ms.locfileid: "90934067"
 |釋放狀態：|預覽|
 |定價：|**電腦上適用于 SQL server 的 Azure Defender**會依[定價頁面](security-center-pricing.md)上的顯示方式計費|
 |受保護的 SQL 版本：|Azure SQL Server (Microsoft 支援服務所涵蓋的所有版本) |
-|雲端：|![Yes](./media/icons/yes-icon.png) 商業雲端<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) 中國 Gov，其他 Gov|
+|雲端：|![是](./media/icons/yes-icon.png) 商業雲端<br>![是](./media/icons/yes-icon.png) US Gov<br>![否](./media/icons/no-icon.png) 中國 Gov，其他 Gov|
 |||
 
 ## <a name="set-up-azure-defender-for-sql-servers-on-machines"></a>為電腦上的 SQL server 設定 Azure Defender
@@ -79,7 +79,7 @@ ms.locfileid: "90934067"
 
 
 1. （選擇性）設定安全性警示的電子郵件通知。 
-    您可以設定要在產生安全性中心警示時收到電子郵件通知的收件者清單。 電子郵件包含 Azure 資訊安全中心中警示的直接連結，其中包含所有相關的詳細資料。 如需詳細資訊，請參閱 [設定安全性警示的電子郵件通知](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details)。
+    您可以設定要在產生安全性中心警示時收到電子郵件通知的收件者清單。 電子郵件包含 Azure 資訊安全中心中警示的直接連結，其中包含所有相關的詳細資料。 如需詳細資訊，請參閱 [設定安全性警示的電子郵件通知](security-center-provide-security-contact-details.md)。
 
 
 
@@ -121,10 +121,10 @@ ms.locfileid: "90934067"
     * 啟用 SQL Server 的審核功能，以進行進一步的調查。 如果您是 Azure Sentinel 使用者，您可以將來自 Windows 安全性記錄檔事件的 SQL 審核記錄上傳至 Sentinel，並享受豐富的調查體驗。 [深入瞭解 SQL Server 的審核](https://docs.microsoft.com/sql/relational-databases/security/auditing/create-a-server-audit-and-server-audit-specification?view=sql-server-ver15)。
     * 若要改善您的安全性狀態，請針對每個警示中指出的主機電腦使用安全中心的建議。 這會降低未來攻擊的風險。 
 
-    [深入瞭解如何管理及回應警示](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts)。
+    [深入瞭解如何管理及回應警示](security-center-managing-and-responding-alerts.md)。
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 如需相關材質，請參閱下列文章：
 

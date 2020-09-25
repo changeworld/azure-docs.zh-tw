@@ -3,16 +3,16 @@ title: 適用于伺服器的 Azure Defender-優點和功能
 description: 瞭解適用于伺服器的 Azure Defender 的優點和功能。
 author: memildin
 ms.author: memildin
-ms.date: 9/12/2020
+ms.date: 9/23/2020
 ms.topic: conceptual
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 29f15aa7d1cbcd260ce44f6083138681ceb9fd79
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: d0e75ab8a2e4d853fa2edc66174502dd3a7930e9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936561"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91301664"
 ---
 # <a name="introduction-to-azure-defender-for-servers"></a>適用于伺服器的 Azure Defender 簡介
 
@@ -81,14 +81,14 @@ ms.locfileid: "90936561"
 
 您可以下載下列其中一個操作手冊來模擬警示：
 
-- 若為 Windows： [Azure 資訊安全中心腳本：安全性警示](https://gallery.technet.microsoft.com/Azure-Security-Center-f621a046)
+- 若為 Windows： [Azure 資訊安全中心腳本：安全性警示](https://github.com/Azure/Azure-Security-Center/blob/master/Simulations/Azure%20Security%20Center%20Security%20Alerts%20Playbook_v2.pdf)
 
-- 針對 Linux： [Azure 資訊安全中心腳本： linux](https://gallery.technet.microsoft.com/Azure-Security-Center-0ac8a5ef)偵測。
-
-
+- 針對 Linux： [Azure 資訊安全中心腳本： linux](https://github.com/Azure/Azure-Security-Center/blob/master/Simulations/Azure%20Security%20Center%20Linux%20Detections_v2.pdf)偵測。
 
 
-## <a name="next-steps"></a>下一步
+
+
+## <a name="next-steps"></a>後續步驟
 
 在本文中，您已瞭解適用于伺服器的 Azure Defender。 
 

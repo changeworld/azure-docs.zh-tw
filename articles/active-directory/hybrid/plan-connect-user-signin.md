@@ -16,12 +16,12 @@ ms.date: 05/31/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd198a132f64c26f775a8212c22b77201d579260
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 3365a58a0c667ca55b74a5120cdd7a78ad0abc79
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89657157"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91299905"
 ---
 # <a name="azure-ad-connect-user-sign-in-options"></a>Azure AD Connect 使用者登入選項
 Azure Active Directory (Azure AD) Connect 可讓您的使用者使用相同的密碼來登入雲端和內部部署資源。 本文說明每個身分識別模型的主要概念，以協助您選擇要用於登入 Azure AD 的身分識別。
@@ -179,7 +179,7 @@ Azure AD 登入頁面會列出為內部部署 Active Directory 定義的 UPN 尾
 
 在下一個頁面上，系統會要求您提供 Azure AD 的認證。
 
-![連接至 Azure AD](./media/plan-connect-user-signin/changeusersignin2.png)
+![螢幕擷取畫面，顯示您應該在哪裡輸入 Azure AD 的認證。](./media/plan-connect-user-signin/changeusersignin2.png)
 
 在 [使用者登入]**** 頁面上，選取所需的使用者登入。
 
@@ -190,6 +190,6 @@ Azure AD 登入頁面會列出為內部部署 Active Directory 定義的 UPN 尾
 >
 >
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 - 深入瞭解如何 [整合您](whatis-hybrid-identity.md)的內部部署身分識別與 Azure Active Directory。
 - 深入瞭解 [Azure AD Connect 的設計概念](plan-connect-design-concepts.md)。

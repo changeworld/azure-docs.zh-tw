@@ -3,17 +3,17 @@ title: 適用于 Key Vault 的 Azure Defender-優點和功能
 description: 瞭解適用于 Key Vault 的 Azure Defender 的優點和功能。
 author: memildin
 ms.author: memildin
-ms.date: 9/12/2020
+ms.date: 9/22/2020
 ms.topic: conceptual
 ms.service: security-center
 ms.custom: references_regions
 manager: rkarlin
-ms.openlocfilehash: 06818e443568918e2ee87bbfbec81836ea85648b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 78a522922f8580003e2d2ff588cbf10dbf5fff9d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934603"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91301766"
 ---
 # <a name="introduction-to-azure-defender-for-key-vault"></a>適用于 Key Vault 的 Azure Defender 簡介
 
@@ -27,7 +27,7 @@ Azure Key Vault 是用來保護加密金鑰和祕密 (例如憑證、連接字�
 |----|:----|
 |釋放狀態：|正式上市 (GA)|
 |定價：|**適用于 Key Vault 的 Azure Defender**會依[定價頁面上的](security-center-pricing.md)顯示方式計費|
-|雲端：|![Yes](./media/icons/yes-icon.png) 商業雲端<br>![No](./media/icons/no-icon.png) 全國/主權 (US Gov、中國 Gov、其他 Gov) |
+|雲端：|![是](./media/icons/yes-icon.png) 商業雲端<br>![否](./media/icons/no-icon.png) 全國/主權 (US Gov、中國 Gov、其他 Gov) |
 |||
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-key-vault"></a>Azure Defender 的 Key Vault 有哪些優點？
@@ -43,7 +43,12 @@ Azure Defender 會偵測到不尋常且可能有害的嘗試存取或惡意探�
 
 :::image type="content" source="./media/defender-for-key-vault-intro/key-vault-security-page.png" alt-text="Azure Key Vault 的安全性頁面":::
 
-## <a name="next-steps"></a>下一步
+
+> [!TIP]
+> 您可以遵循在 [Azure 資訊安全中心中驗證 Azure Key Vault 威脅偵測](https://techcommunity.microsoft.com/t5/azure-security-center/validating-azure-key-vault-threat-detection-in-azure-security/ba-p/1220336)的指示，來模擬 Azure Defender 以 Key Vault 警示。
+
+
+## <a name="next-steps"></a>後續步驟
 
 在本文中，您已瞭解 Azure Defender 的 Key Vault。
 

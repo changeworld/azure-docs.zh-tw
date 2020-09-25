@@ -6,13 +6,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: tisande
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 17cde20d69fbf7d135fe48c9e285ccf348b4b58c
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: bc7bc677fb44600721b580ac9efc42feea4d98da
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420153"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91252947"
 ---
 # <a name="how-to-write-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>如何在 Azure Cosmos DB 中撰寫預存程序、觸發程序和使用者定義函式
 
@@ -23,7 +23,7 @@ Azure Cosmos DB 所提供的語言整合式、交易式 JavaScript 執行，可�
 > [!NOTE]
 > 對分割容器執行預存程序時，必須在要求選項中提供分割區索引鍵值。 預存程序的範圍一律為分割區索引鍵。 具有不同分割區索引鍵值的項目，將不會對預存程序顯示。 這也適用於觸發程序。
 > [!Tip]
-> Cosmos 支援使用預存程式、觸發程式和使用者定義函數來部署容器。 如需詳細資訊，請參閱[使用伺服器端功能建立 Azure Cosmos DB 容器。](manage-sql-with-resource-manager.md#create-sproc)
+> Cosmos 支援使用預存程式、觸發程式和使用者定義函數來部署容器。 如需詳細資訊，請參閱 [使用伺服器端功能建立 Azure Cosmos DB 的容器。](manage-sql-with-resource-manager.md#create-sproc)
 
 ## <a name="how-to-write-stored-procedures"></a><a id="stored-procedures"></a>如何撰寫預存程序
 
@@ -49,11 +49,11 @@ var helloWorldStoredProc = {
 
 ### <a name="create-an-item-using-stored-procedure"></a><a id="create-an-item"></a>使用預存程序建立項目
 
-當您使用預存程式建立專案時，會將專案插入 Azure Cosmos 容器中，並傳回新建立之專案的識別碼。 建立項目是非同步作業，並依存於 JavaScript 回呼函式。 此回呼函式有兩個參數 - 一個用於作業失敗時的錯誤物件，一個用於傳回值 (在此案例中為已建立的物件)。 在回呼內，您可以處理例外狀況或擲回錯誤。 如果未提供回呼，而且發生錯誤，則 Azure Cosmos DB 執行階段會擲回錯誤。
+當您使用預存程式建立專案時，該專案會插入 Azure Cosmos 容器中，並傳回新建立之專案的識別碼。 建立項目是非同步作業，並依存於 JavaScript 回呼函式。 此回呼函式有兩個參數 - 一個用於作業失敗時的錯誤物件，一個用於傳回值 (在此案例中為已建立的物件)。 在回呼內，您可以處理例外狀況或擲回錯誤。 如果未提供回呼，而且發生錯誤，則 Azure Cosmos DB 執行階段會擲回錯誤。
 
 預存程序也包含用來設定描述的參數，此為布林值。 當此參數設定為 true 時，若沒有描述，則預存程序將會擲回例外狀況。 否則，預存程序的其餘部分會繼續執行。
 
-下列範例預存程式會採用新的 Azure Cosmos 專案陣列做為輸入，將其插入 Azure Cosmos 容器中，並傳回所插入專案的計數。 在此範例中，我們使用[快速入門 .NET SQL API](create-sql-api-dotnet.md) 中提供的 ToDoList 範例
+下列範例預存程式會採用新的 Azure Cosmos 專案陣列作為輸入，並將其插入 Azure Cosmos 容器中，並傳回插入的專案計數。 在此範例中，我們使用[快速入門 .NET SQL API](create-sql-api-dotnet.md) 中提供的 ToDoList 範例
 
 ```javascript
 function createToDoItems(items) {
@@ -230,9 +230,9 @@ function bulkImport(items) {
 }
 ```
 
-### <a name="async-await-with-stored-procedures"></a><a id="async-promises"></a>具有預存程式的非同步 await
+### <a name="async-await-with-stored-procedures"></a><a id="async-promises"></a>具有預存程式的 Async await
 
-以下是使用非同步-await 搭配使用 helper 函數之承諾的預存程式範例。 預存程式會查詢專案並加以取代。
+以下是使用 async await 搭配使用 helper 函式之承諾的預存程式範例。 預存程式會查詢專案並加以取代。
 
 ```javascript
 function async_sample() {
@@ -313,7 +313,7 @@ function validateToDoItemTimestamp() {
 
 如需如何註冊及呼叫預先觸發程序的範例，請參閱[預先觸發程序](how-to-use-stored-procedures-triggers-udfs.md#pre-triggers)和[後續觸發程序](how-to-use-stored-procedures-triggers-udfs.md#post-triggers)文章。 
 
-### <a name="post-triggers"></a><a id="post-triggers"></a>後置觸發程式
+### <a name="post-triggers"></a><a id="post-triggers"></a>後續觸發程式
 
 下列範例說明後續觸發程序。 此觸發程序會查詢中繼資料項目，並使用新建項目的詳細資料加以更新。
 
@@ -388,7 +388,7 @@ function tax(income) {
 
 ## <a name="logging"></a>記錄 
 
-使用預存程式、觸發程式或使用者定義函數時，您可以使用命令來記錄這些步驟 `console.log()` 。 當設定為 true 時，此命令會將字串集中在進行偵錯工具， `EnableScriptLogging` 如下列範例所示：
+使用預存程式、觸發程式或使用者定義函數時，您可以使用命令來記錄步驟 `console.log()` 。 當設為 true 時，此命令會專注于要進行調試的字串， `EnableScriptLogging` 如下列範例所示：
 
 ```javascript
 var response = await client.ExecuteStoredProcedureAsync(

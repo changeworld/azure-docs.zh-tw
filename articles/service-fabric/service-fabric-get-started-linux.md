@@ -1,15 +1,15 @@
 ---
-title: 在 Linux 上設定開發環境
+title: 在 Linux 上設定您的開發環境
 description: 在 Linux 上安裝執行階段和 SDK，並建立本機開發叢集。 完成此設定之後，您就可以開始建置應用程式。
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 420284a512147d729db23f3b71cbe8e9f6f050d9
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.custom: devx-track-js
+ms.openlocfilehash: 211c2c80d0f701176dfcff02872d9f1e30635d94
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87429050"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91249989"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>在 Linux 上準備您的開發環境
 > [!div class="op_single_selector"]
@@ -26,11 +26,11 @@ ms.locfileid: "87429050"
 不支援在適用於 Linux 的 Windows 子系統上安裝 Service Fabric 執行階段。 您可以使用支援的 Azure Service Fabric 命令列介面 (CLI)，管理裝載於雲端或內部部署中其他地方的 Service Fabric 實體。 如需如何安裝 CLI 的資訊，請參閱[設定 Service Fabric CLI](./service-fabric-cli.md)。
 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 以下為支援開發的作業系統版本。
 
-* Ubuntu 16.04 （ `Xenial Xerus` ）、18.04 （ `Bionic Beaver` ）
+* Ubuntu 16.04 (`Xenial Xerus`) 、18.04 (`Bionic Beaver`) 
 
     請確定已安裝 `apt-transport-https` 安裝套件。
          
@@ -62,14 +62,14 @@ sudo curl -s https://raw.githubusercontent.com/Azure/service-fabric-scripts-and-
 
 1. 開啟終端機。
 
-2. 將存放庫新增 `dotnet` 至您的散發套件對應的 [來源] 清單。
+2. 將存放庫新增 `dotnet` 至對應至散發套件的來源清單。
 
     ```bash
     wget -q https://packages.microsoft.com/config/ubuntu/$(lsb_release -rs)/packages-microsoft-prod.deb
     sudo dpkg -i packages-microsoft-prod.deb
     ```
 
-3. 將新的 MS Open Tech Gnu 隱私權防護（GnuPG 或 GPG）金鑰新增至您的 APT keyring。
+3. 將新的 MS Open Tech Gnu 隱私權防護 (GnuPG 或 GPG) 金鑰新增至您的 APT keyring。
 
     ```bash
     sudo curl -fsSL https://packages.microsoft.com/keys/msopentech.asc | sudo apt-key add -
@@ -174,7 +174,7 @@ SDK 安裝程式隨附的 Service Fabric 執行階段包含下表中的套件。
     sudo /opt/microsoft/sdk/servicefabric/common/clustersetup/devclustersetup.sh
     ```
 
-2. 開啟網頁瀏覽器並移至**Service Fabric Explorer** （ `http://localhost:19080/Explorer` ）。 叢集啟動時，您會看見 Service Fabric Explorer 儀表板。 叢集可能需要數分鐘的時間才能完成設定。 如果您的瀏覽器無法開啟 URL，或 Service Fabric Explorer 未顯示系統已就緒，請稍候幾分鐘，然後再試一次。
+2. 開啟網頁瀏覽器並移至 **Service Fabric Explorer** (`http://localhost:19080/Explorer`) 。 叢集啟動時，您會看見 Service Fabric Explorer 儀表板。 叢集可能需要數分鐘的時間才能完成設定。 如果您的瀏覽器無法開啟 URL，或 Service Fabric Explorer 未顯示系統已就緒，請稍候幾分鐘，然後再試一次。
 
     ![Linux 上的 Service Fabric Explorer][sfx-linux]
 
@@ -256,11 +256,11 @@ Service Fabric 提供的 Scaffolding 工具可協助您從終端機使用 Yeoman
 > 
 > 在 Ubuntu 上，建議您直接從 Eclipse 網站安裝，而不要使用套件安裝程式 (`apt` 或 `apt-get`)。 這麼做可確保您會取得最新版的 Eclipse。 您可以安裝適用於 Java 開發人員或 Java EE 開發人員的 Eclipse IDE。
 
-1. 在 Eclipse 中，確定您已安裝 Eclipse Neon 或更新版本以及 Buildship 2.2.1 版或更新版本。 **選取 [** 說明] [  >  **關於 Eclipse**] [  >  **安裝詳細資料**]，檢查已安裝的元件版本。 您可以使用 [Eclipse Buildship：適用於 Gradle 的 Eclipse 外掛程式][buildship-update]的指示來更新 Buildship。
+1. 在 Eclipse 中，確定您已安裝 Eclipse Neon 或更新版本以及 Buildship 2.2.1 版或更新版本。 **選取**  >  **Eclipse**  >  **安裝詳細資料**的 [說明]，檢查已安裝的元件版本。 您可以使用 [Eclipse Buildship：適用於 Gradle 的 Eclipse 外掛程式][buildship-update]的指示來更新 Buildship。
 
-2. 若要安裝 Service Fabric 外掛程式，**請選取 [** 說明] [  >  **安裝新軟體**]。
+2. 若**要安裝 Service Fabric**外掛程式，請選取 [說明  >  **安裝新軟體**]。
 
-3. **在 [使用**] 方塊中，輸入**HTTPs： \/ /dl.microsoft.com/eclipse**。
+3. 在 [ **工作** ] 方塊中，輸入 **HTTPs： \/ /dl.microsoft.com/eclipse**。
 
 4. 選取 [新增]。
 
@@ -270,7 +270,7 @@ Service Fabric 提供的 Scaffolding 工具可協助您從終端機使用 Yeoman
 
 6. 執行安裝步驟。 然後接受使用者授權合約。
 
-如果您已安裝 Service Fabric Eclipse 外掛程式，請確定您擁有的是最新版本。 **選取 [** 說明] [  >  **關於 Eclipse**] [  >  **安裝詳細資料**] 以進行檢查。 然後在已安裝的外掛程式清單中搜尋 Service Fabric。如果有較新的版本可用，請選取 [**更新**]。
+如果您已安裝 Service Fabric Eclipse 外掛程式，請確定您擁有的是最新版本。 **選取 [**  >  **關於 Eclipse**  >  **安裝詳細資料的說明**] 以進行檢查。 然後，在已安裝的外掛程式清單中搜尋 Service Fabric。如果有可用的較新版本，請選取 [ **更新** ]。
 
 如需詳細資訊，請參閱[適用於 Eclipse Java 應用程式開發的 Service Fabric 外掛程式](service-fabric-get-started-eclipse.md)。
 

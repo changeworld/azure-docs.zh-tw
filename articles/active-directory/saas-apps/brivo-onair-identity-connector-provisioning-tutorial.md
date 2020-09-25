@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: Zhchia
-ms.openlocfilehash: 305a369733ce0435b5f892efd0d447b0940143fc
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: dd5a0e05b303d6fc7a5cfa012f49fab99828e8a2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547744"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91300063"
 ---
 # <a name="tutorial-configure-brivo-onair-identity-connector-for-automatic-user-provisioning"></a>教學課程：設定 Brivo Onair Identity Connector 來自動布建使用者
 
@@ -54,7 +54,7 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
    ![Brivo Onair Identity Connector 管理主控台](media/brivo-onair-identity-connector-provisioning-tutorial/admin.png)
 
-2. 按一下 [ **Azure AD** ] 索引標籤。在 [ **Azure AD** 詳細資料] 頁面上，重新輸入資深系統管理員帳戶的密碼。 按一下 [ **提交**]。
+2. 按一下 [ **Azure AD** ] 索引標籤。在 [ **Azure AD** 詳細資料] 頁面上，重新輸入資深系統管理員帳戶的密碼。 按一下 [提交]。
 
    ![Brivo Onair Identity Connector azure](media/brivo-onair-identity-connector-provisioning-tutorial/azuread.png)
 
@@ -100,11 +100,11 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
 3. 選取 [佈建] 索引標籤。
 
-    ![佈建索引標籤](common/provisioning.png)
+    ![已呼叫 [布建] 選項的 [管理選項] 螢幕擷取畫面。](common/provisioning.png)
 
 4. 將 [佈建模式] 設定為 [自動]。
 
-    ![佈建索引標籤](common/provisioning-automatic.png)
+    ![[布建模式] 下拉式清單的螢幕擷取畫面，其中已呼叫 [自動] 選項。](common/provisioning-automatic.png)
 
 5. 在 [ **管理員認證** ] 區段下的 [ `https://scim.brivo.com/ActiveDirectory/v2/` **租使用者 URL**] 中輸入。 輸入稍早在**秘密權杖**中取出的**SCIM Authentication 權杖**值。 按一下 [ **測試連接** ] 以確保 Azure AD 可以連線至 Brivo Onair Identity Connector。 如果連接失敗，請確定您的 Brivo Onair Identity Connector 帳戶具有系統管理員許可權，然後再試一次。
 
@@ -114,7 +114,7 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
     ![通知電子郵件](common/provisioning-notification-email.png)
 
-7. 按一下 [檔案] 。
+7. 按一下 [檔案]  。
 
 8. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 使用者] 以 Brivo Onair Identity Connector**。
 

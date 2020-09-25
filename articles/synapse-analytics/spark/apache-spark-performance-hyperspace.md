@@ -10,31 +10,33 @@ ms.date: 08/12/2020
 ms.author: euang
 ms.reviewer: euang
 zone_pivot_groups: programming-languages-spark-all-minus-sql
-ms.openlocfilehash: 3d65a7771ff2bd8807a5f02278b0455ee103dbd6
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: f25aae64e117452cd689b68c5478e7431d1a21bf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526335"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91249360"
 ---
-# <a name="hyperspace---an-indexing-subsystem-for-apache-spark"></a>超空間-Apache Spark 的索引子系統
+# <a name="hyperspace-an-indexing-subsystem-for-apache-spark"></a>超空間： Apache Spark 的索引子系統
 
-超空間引進了 Apache Spark 使用者在資料集上建立索引的功能， (例如 CSV、JSON、Parquet 等，) 並利用這些資料來進行潛在的查詢和工作負載加速。
+超空間引進了 Apache Spark 使用者在其資料集（例如 CSV、JSON 和 Parquet）上建立索引的能力，並將其用於潛在的查詢和工作負載加速。
 
 在本文中，我們將重點說明超空間的基本概念、強調其簡易性，並示範如何讓所有人都能使用它。
 
-免責聲明：超空間可協助您在兩種情況下加速工作負載/查詢：
+免責聲明：超空間可協助您在兩種情況下加速工作負載或查詢：
 
-* 查詢包含具有高選擇性 (述詞上的篩選準則，例如，您想要從一百萬個候選資料列選取100相符的資料列) 
-* 查詢包含需要大量洗牌 (的聯結，例如，您想要聯結 100 GB 資料集與 10 GB 的資料集) 
+* 查詢包含具有高選擇性的述詞篩選準則。 例如，您可能想要從一百萬個候選資料列選取100相符的資料列。
+* 查詢包含需要大量洗牌的聯結。 例如，您可能會想要將 100 GB 資料集加入 10 GB 的資料集。
 
-您可能會想要仔細監視您的工作負載，並判斷索引是否能以個別案例為基礎來協助您。
+您可能會想要仔細監視您的工作負載，並判斷索引是否要以個別案例為基礎來協助您。
 
-這份檔也可在適用于[Python](https://github.com/microsoft/hyperspace/blob/master/notebooks/python/Hitchhikers%20Guide%20to%20Hyperspace.ipynb)、適用于[c #](https://github.com/microsoft/hyperspace/blob/master/notebooks/csharp/Hitchhikers%20Guide%20to%20Hyperspace.ipynb)和[Scala](https://github.com/microsoft/hyperspace/blob/master/notebooks/scala/Hitchhikers%20Guide%20to%20Hyperspace.ipynb)的筆記本表單中取得
+這份檔也可在筆記本表單中取得，適用于 [Python](https://github.com/microsoft/hyperspace/blob/master/notebooks/python/Hitchhikers%20Guide%20to%20Hyperspace.ipynb)、 [c #](https://github.com/microsoft/hyperspace/blob/master/notebooks/csharp/Hitchhikers%20Guide%20to%20Hyperspace.ipynb)和 [Scala](https://github.com/microsoft/hyperspace/blob/master/notebooks/scala/Hitchhikers%20Guide%20to%20Hyperspace.ipynb)
 
 ## <a name="setup"></a>安裝程式
 
-若要開始使用，請啟動新的 Spark 會話。 因為本檔只是說明超空間可提供的內容，所以您會進行設定變更，讓我們醒目提示哪些超空間在小型資料集上執行。 根據預設，當聯結的某一端的資料大小很小 (（我們在本教學課程中使用的範例資料) ）時，Spark 會使用廣播聯結來優化聯結查詢。 因此，我們會停用廣播聯結，以便稍後當我們執行聯結查詢時，Spark 會使用排序合併聯結。 這主要是用來顯示如何大規模使用超空間索引來加速聯結查詢。
+若要開始使用，請啟動新的 Spark 會話。 因為本檔只是說明超空間可提供的內容，所以您會進行設定變更，讓我們醒目提示哪些超空間在小型資料集上執行。 
+
+根據預設，當聯結的某一端的資料大小很小 (（我們在本教學課程中使用的範例資料) ）時，Spark 會使用廣播聯結來優化聯結查詢。 因此，我們會停用廣播聯結，以便稍後當我們執行聯結查詢時，Spark 會使用排序合併聯結。 這主要是用來顯示如何大規模使用超空間索引來加速聯結查詢。
 
 執行下列資料格的輸出會顯示已成功建立之 Spark 會話的參考，並將 '-1 ' 列印為已修改之聯結設定的值，這表示已成功停用廣播聯結。
 
@@ -44,7 +46,7 @@ ms.locfileid: "90526335"
 // Start your Spark session
 spark
 
-// Disable BroadcastHashJoin, so Spark will use standard SortMergeJoin. Currently hyperspace indexes utilize SortMergeJoin to speed up query.
+// Disable BroadcastHashJoin, so Spark will use standard SortMergeJoin. Currently, Hyperspace indexes utilize SortMergeJoin to speed up query.
 spark.conf.set("spark.sql.autoBroadcastJoinThreshold", -1)
 
 // Verify that BroadcastHashJoin is set correctly
@@ -57,10 +59,10 @@ println(spark.conf.get("spark.sql.autoBroadcastJoinThreshold"))
 :::zone pivot = "programming-language-python"
 
 ```python
-# Start your Spark session
+# Start your Spark session.
 spark
 
-# Disable BroadcastHashJoin, so Spark will use standard SortMergeJoin. Currently Hyperspace indexes utilize SortMergeJoin to speed up query.
+# Disable BroadcastHashJoin, so Spark will use standard SortMergeJoin. Currently, Hyperspace indexes utilize SortMergeJoin to speed up query.
 spark.conf.set("spark.sql.autoBroadcastJoinThreshold", -1)
 
 # Verify that BroadcastHashJoin is set correctly 
@@ -72,10 +74,10 @@ print(spark.conf.get("spark.sql.autoBroadcastJoinThreshold"))
 :::zone pivot = "programming-language-csharp"
 
 ```csharp
-// Disable BroadcastHashJoin, so Spark™ will use standard SortMergeJoin. Currently hyperspace indexes utilize SortMergeJoin to speed up query.
+// Disable BroadcastHashJoin, so Spark will use standard SortMergeJoin. Currently, Hyperspace indexes utilize SortMergeJoin to speed up query.
 spark.Conf().Set("spark.sql.autoBroadcastJoinThreshold", -1);
 
-// Verify that BroadcastHashJoin is set correctly 
+// Verify that BroadcastHashJoin is set correctly.
 Console.WriteLine(spark.Conf().Get("spark.sql.autoBroadcastJoinThreshold"));
 ```
 
@@ -90,11 +92,11 @@ res3: org.apache.spark.sql.SparkSession = org.apache.spark.sql.SparkSession@297e
 
 ## <a name="data-preparation"></a>資料準備
 
-若要準備您的環境，您將建立範例資料記錄，並將其儲存為 parquet 資料檔案。 雖然 Parquet 是用來進行說明，但您可以使用其他格式，例如 CSV。 在後續的儲存格中，您將會看到如何在此範例資料集上建立多個超空間索引，以及如何讓 Spark 在執行查詢時使用這些索引。
+若要準備您的環境，您將建立範例資料記錄，並將其儲存為 Parquet 資料檔案。 Parquet 可用於說明，但您也可以使用其他格式，例如 CSV。 在後續的儲存格中，您將會看到如何在此範例資料集上建立數個超空間索引，並讓 Spark 在執行查詢時使用這些索引。
 
 範例記錄對應至兩個資料集：部門和員工。 您應該設定 "empLocation" 和 "deptLocation" 路徑，以便在儲存體帳戶上指向您想要的位置，以儲存產生的資料檔案。
 
-下列資料格執行的輸出會將資料集的內容顯示為 triplet 清單，後面接著資料框架所建立的參考，以將每個資料集的內容儲存在我們慣用的位置。
+執行下列資料格的輸出會將資料集的內容顯示為 triplet 清單，後面接著參考所建立的資料框架，以將每個資料集的內容儲存在我們慣用的位置。
 
 :::zone pivot = "programming-language-scala"
 
@@ -240,9 +242,9 @@ empLocation: String = /your-path/employees.parquet
 deptLocation: String = /your-path/departments.parquet  
 ```
 
-讓我們來確認上面建立的 parquet 檔案內容，以確定其包含正確格式的預期記錄。 我們稍後會使用這些資料檔案來建立超空間索引，並執行範例查詢。
+讓我們來驗證所建立之 Parquet 檔案的內容，以確保其包含正確格式的預期記錄。 稍後，我們將使用這些資料檔案來建立超空間索引，並執行範例查詢。
 
-執行下列資料格時，輸出會以表格形式顯示 [員工] 和 [部門] 資料框架中的資料列。 應該有14個員工和4個部門，每個都與您在上一個儲存格中建立的其中一個 triplet 相符。
+執行下列資料格會產生和輸出，以表格形式顯示員工和部門資料框架中的資料列。 應該有14個員工和4個部門，每個都與您在上一個儲存格中建立的其中一個 triplet 相符。
 
 :::zone pivot = "programming-language-scala"
 
@@ -262,7 +264,7 @@ deptDF.show()
 
 ```python
 
-# emp_Location and dept_Location are the user defined locations above to save parquet files
+# emp_Location and dept_Location are the user-defined locations above to save parquet files
 emp_DF = spark.read.parquet(emp_Location)
 dept_DF = spark.read.parquet(dept_Location)
 
@@ -278,7 +280,7 @@ dept_DF.show()
 
 ```csharp
 
-// empLocation and deptLocation are the user defined locations above to save parquet files
+// empLocation and deptLocation are the user-defined locations above to save parquet files
 DataFrame empDF = spark.Read().Parquet(empLocation);
 DataFrame deptDF = spark.Read().Parquet(deptLocation);
 
@@ -329,16 +331,20 @@ deptDF: org.apache.spark.sql.DataFrame = [deptId: int, deptName: string ... 1 mo
 
 ## <a name="indexes"></a>索引
 
-超空間可讓您針對從保存資料檔案掃描的記錄建立索引。 成功建立之後，會將對應至索引的專案新增到超空間的中繼資料中。 Apache Spark 的優化工具 (稍後使用此中繼資料，並在查詢處理期間) 擴充功能，以尋找並使用適當的索引。
+超空間可讓您針對從保存資料檔案掃描的記錄建立索引。 成功建立之後，就會將對應至索引的專案新增到超空間的中繼資料中。 Apache Spark 的優化工具 (稍後使用此中繼資料，並在查詢處理期間) 擴充功能，以尋找並使用適當的索引。
 
 建立索引之後，您可以執行幾個動作：
 
+* **當基礎資料變更時重新整理。** 您可以重新整理現有的索引來捕捉變更。
+* **如果不需要索引，請刪除。** 您可以執行虛刪除，也就是不會實際刪除索引，但會標示為「已刪除」，使其不再用於您的工作負載。
+* **如果不再需要索引，則會進行清理。** 您可以清理索引，以強制實體刪除索引內容，並從超空間的中繼資料完全刪除相關聯的中繼資料。
+
 重新整理基礎資料變更時，您可以重新整理現有的索引以進行捕捉。
 刪除如果不需要索引，您可以執行虛刪除，也就是不會實際刪除索引，而是標示為「已刪除」，因此不會再用於您的工作負載。
-如果不再需要索引，您可以將它清空，以強制實體刪除索引內容，並從超空間的中繼資料完全刪除相關聯的中繼資料。
-以下各節會示範如何在超空間中完成這類索引管理作業。
 
-首先，您需要匯入必要的程式庫，並建立超空間的實例。 您稍後將使用此實例來叫用不同的超空間 Api，以在您的範例資料上建立索引，並修改這些索引。
+下列各節會示範如何在超空間中完成這類索引管理作業。
+
+首先，您需要匯入必要的程式庫，並建立超空間的實例。 稍後，您將使用此實例來叫用不同的超空間 Api，以在您的範例資料上建立索引，並修改這些索引。
 
 執行下列資料格的輸出會顯示已建立超空間實例的參考。
 
@@ -388,9 +394,10 @@ hyperspace: com.microsoft.hyperspace.Hyperspace = com.microsoft.hyperspace.Hyper
 
 若要建立超空間索引，您需要提供兩項資訊：
 
-參考要編制索引之資料的 Spark 資料框架。
-索引設定物件： IndexConfig，指定索引的索引名稱、索引和內含資料行。
-首先，在我們的範例資料上建立三個超空間索引：在部門資料集上建立兩個名為 "deptIndex1" 和 "deptIndex2" 的索引，以及一個名為 ' empIndex ' 的員工資料集的索引。 針對每個索引，您需要一個對應的 IndexConfig 來捕捉名稱，以及索引和內含資料行的資料行清單。 執行下列資料格會建立這些 indexConfigs 及其輸出清單。
+* 參考要編制索引之資料的 Spark 資料框架。
+* 索引設定物件 IndexConfig，指定索引的索引名稱和索引和包含的資料行。
+
+首先，在我們的範例資料上建立三個超空間索引：在部門資料集上建立兩個名為 "deptIndex1" 和 "deptIndex2" 的索引，以及一個名為 "empIndex" 的員工資料集的索引。 針對每個索引，您需要一個對應的 IndexConfig 來捕捉名稱，以及索引和內含資料行的資料行清單。 執行下列資料格會建立這些 IndexConfigs，而其輸出會列出它們。
 
 > [!Note]
 > 索引資料行是出現在篩選或聯結條件中的資料行。 包含的資料行是出現在您的 select/專案中的資料行。
@@ -454,7 +461,6 @@ empIndexConfig: com.microsoft.hyperspace.index.IndexConfig = [indexName: empInde
 deptIndexConfig1: com.microsoft.hyperspace.index.IndexConfig = [indexName: deptIndex1; indexedColumns: deptid; includedColumns: deptname]  
 deptIndexConfig2: com.microsoft.hyperspace.index.IndexConfig = [indexName: deptIndex2; indexedColumns: location; includedColumns: deptname]  
 ```
-
 現在，您可以使用索引設定來建立三個索引。 基於這個目的，您可以在超空間實例上叫用 "createIndex" 命令。 此命令需要索引設定和包含要編制索引之資料列的資料框架。 執行下列資料格會建立三個索引。
 
 :::zone pivot = "programming-language-scala"
@@ -505,14 +511,17 @@ import com.microsoft.hyperspace.index.Index
 
 ## <a name="list-indexes"></a>列出索引
 
-下列程式碼會示範如何列出超空間實例中所有可用的索引。 它會使用「索引」 API，將現有索引的相關資訊傳回為 Spark 資料框架，以便您可以執行其他作業。 例如，您可以在此資料框架上叫用有效的作業，以檢查其內容或進一步分析 (例如篩選特定索引，或根據所需的屬性) 進行分組。
+接下來的程式碼會顯示如何列出超空間實例中所有可用的索引。 它會使用「索引」 API，將現有索引的相關資訊傳回為 Spark 資料框架，以便您可以執行其他作業。 
 
-下方儲存格使用資料框架的 [show] 動作來完整列印資料列，並以表格形式顯示索引的詳細資料。 針對每個索引，您可以在中繼資料中看到超空間已儲存的所有資訊。 您會立即注意到下列各項：
+例如，您可以在此資料框架上叫用有效的作業，以檢查其內容或進一步分析 (例如篩選特定索引，或根據所需的屬性) 進行分組。
 
-* "indexName"、"indexedColumns"、"includedColumns" 和 "status" 是使用者通常所參考的欄位。
-* 「dfSignature」會由超空間自動產生，並對每個索引都是唯一的。 超空間會在內部使用此簽章來維護索引，並在查詢時加以利用。
+下列資料格使用資料框架的 [show] 動作來完整列印資料列，並以表格形式顯示索引的詳細資料。 針對每個索引，您可以在中繼資料中看到超空間已儲存的所有資訊。 您會立即注意到下列各項：
 
-在下列輸出中，這三個索引都應該有「作用中」狀態，而且其名稱、索引資料行和內含資料行應該與上述索引設定中定義的資料行相符。
+* indexName、indexedColumns、includedColumns 和 status。 status 是使用者通常所參考的欄位。
+* dfSignature 會自動由超空間產生，而且每個索引都是唯一的。 超空間會在內部使用此簽章來維護索引，並在查詢時加以利用。
+
+
+在下列輸出中，這三個索引的狀態都應該是「作用中」，且其名稱、索引資料行和包含的資料行應該與上述索引設定中定義的資料行相符。
 
 :::zone pivot = "programming-language-scala"
 
@@ -554,7 +563,9 @@ hyperspace.Indexes().Show();
 
 ## <a name="delete-indexes"></a>刪除索引
 
-您可以使用 "deleteIndex" API 來卸載現有的索引，並提供索引名稱。 索引刪除會執行虛刪除：它主要會將超空間中繼資料中的索引狀態從「作用中」更新為「已刪除」。 這會從任何未來的查詢優化中排除卸載的索引，而超空間不會再為任何查詢挑選該索引。 不過，已刪除索引的索引檔案仍會保持可用 (因為它是虛刪除) ，所以如果使用者要求的話，就可以還原索引。
+您可以使用 "deleteIndex" API 來卸載現有的索引，並提供索引名稱。 索引刪除會執行虛刪除：它主要會將超空間中繼資料中的索引狀態從「作用中」更新為「已刪除」。 這會從任何未來的查詢優化中排除卸載的索引，而超空間不會再為任何查詢挑選該索引。 
+
+不過，已刪除索引的索引檔案仍會保持可用 (因為它是虛刪除) ，所以如果使用者要求的話，就可以還原索引。
 
 下列資料格會刪除名稱為 "deptIndex2" 的索引，並列出之後的超空間中繼資料。 除了 "deptIndex2" （現在應該將其狀態變更為「已刪除」）之外，輸出應該類似于「清單索引」的上方資料格（"" 除外）。
 
@@ -666,7 +677,7 @@ hyperspace.Indexes().Show();
 
 ## <a name="vacuum-indexes"></a>真空索引
 
-您可以使用 "vacuumIndex" 命令，執行永久刪除，也就是完整移除已刪除索引的檔案和中繼資料專案。 完成之後，這項動作將會無法復原，因為它會實際刪除所有的索引檔案 (這就是很難刪除的) 。
+您可以使用 **vacuumIndex** 命令，執行實刪除，也就是將已刪除索引的檔案和中繼資料專案全部移除。 這項動作無法復原。 它會實際刪除所有的索引檔，這就是為什麼要進行實刪除的原因。
 
 下列資料格會清潔房間 "deptIndex2" 索引，並在清除後顯示超空間中繼資料。 您應該會看到兩個 "deptIndex1" 和 "empIndex" 兩個索引的中繼資料專案都有「作用中」狀態，而「deptIndex2」沒有任何專案。
 
@@ -711,13 +722,14 @@ hyperspace.Indexes().Show();
 |        empIndex|             [deptId]|             [empName]|`deptId` INT,`emp...|com.microsoft.cha...|30768c6c9b2533004...|Relation[empId#32...|       200|abfss://datasets@...|      ACTIVE|              0|
 ```
 
-## <a name="enabledisable-hyperspace"></a>啟用/停用超空間
+## <a name="enable-or-disable-hyperspace"></a>啟用或停用超空間
 
 超空間提供的 Api 可讓您啟用或停用 Spark 的索引使用方式。
 
-使用 "enableHyperspace" 命令，Spark 優化器就可以看到超空間優化規則，而且會利用現有的超空間索引來優化使用者查詢。
-使用 "disableHyperspace ' 命令時，超空間規則在查詢優化期間不再適用。 您應該注意，停用超空間不會影響已建立的索引，因為它們保持不變。
-下方儲存格會顯示如何使用這些命令來啟用或停用超空間。 輸出只會顯示其設定已更新之現有 Spark 會話的參考。
+* 藉由使用 **enableHyperspace** 命令，Spark 優化器就可以看到超空間優化規則，並利用現有的超空間索引來優化使用者查詢。
+* 使用 **disableHyperspace** 命令時，超空間規則在查詢優化期間不再適用。 停用超空間不會影響已建立的索引，因為它們保持不變。
+
+下列儲存格會顯示如何使用這些命令來啟用或停用超空間。 輸出會顯示其設定已更新之現有 Spark 會話的參考。
 
 :::zone pivot = "programming-language-scala"
 
@@ -768,9 +780,9 @@ res51: org.apache.spark.sql.Spark™Session = org.apache.spark.sql.SparkSession@
 
 ## <a name="index-usage"></a>索引使用方式
 
-為了讓 Spark 在查詢處理期間使用超空間索引，您必須確定已啟用超空間。
+若要讓 Spark 在查詢處理期間使用超空間索引，您必須確定已啟用超空間。
 
-下列儲存格可啟用超空間，並建立兩個數據框架，其中包含您用來執行範例查詢的範例資料記錄。 針對每個資料框架，會列印一些範例資料列。
+下列資料格會啟用超空間，並建立兩個數據框架，其中包含您用來執行範例查詢的範例資料記錄。 針對每個資料框架，會列印一些範例資料列。
 
 :::zone pivot = "programming-language-scala"
 
@@ -857,11 +869,11 @@ deptDFrame: org.apache.spark.sql.DataFrame = [deptId: int, deptName: string ... 
 目前，超空間具有可利用兩個查詢群組之索引的規則：
 
 * 具有查閱或範圍選取篩選述詞的選取查詢。
-* 聯結具有相等聯結述詞的查詢 (也就是對等聯結的) 。
+* 聯結具有相等聯結述詞的查詢 (也就是對等聯接) 。
 
 ## <a name="indexes-for-accelerating-filters"></a>加速篩選的索引
 
-第一個範例查詢會針對部門記錄進行查閱 (請參閱下方儲存格) 。 在 SQL 中，此查詢如下所示：
+第一個範例查詢會針對部門記錄進行查閱，如下列資料格所示。 在 SQL 中，此查詢看起來如下列範例所示：
 
 ```sql
 SELECT deptName
@@ -869,12 +881,12 @@ FROM departments
 WHERE deptId = 20
 ```
 
-執行下列資料格的輸出顯示：
+執行下列資料格的輸出會顯示：
 
 * 查詢結果，也就是單一部門名稱。
 * Spark 用來執行查詢的查詢計劃。
 
-在查詢計劃中，計畫底部的 "FileScan" 運算子會顯示從中讀取記錄的資料來源。 這個檔案的位置表示 "deptIndex1" 索引最新版本的路徑。 這會顯示根據查詢和使用超空間優化規則，Spark 決定在執行時間利用適當的索引。
+在查詢計劃中，計畫底部的 **FileScan** 運算子會顯示從中讀取記錄的資料來源。 這個檔案的位置表示 "deptIndex1" 索引最新版本的路徑。 此資訊顯示根據查詢和使用超空間優化規則，Spark 決定在執行時間利用適當的索引。
 
 :::zone pivot = "programming-language-scala"
 
@@ -954,7 +966,7 @@ Project [deptName#534]
    +- *(1) FileScan parquet [deptId#533,deptName#534] Batched: true, Format: Parquet, Location: InMemoryFileIndex[abfss://datasets@hyperspacebenchmark.dfs.core.windows.net/hyperspaceon..., PartitionFilters: [], PushedFilters: [IsNotNull(deptId), EqualTo(deptId,20)], ReadSchema: struct<deptId:int,deptName:string>
 ```
 
-第二個範例是針對部門記錄的範圍選取查詢。 在 SQL 中，此查詢如下所示：
+第二個範例是針對部門記錄的範圍選取查詢。 在 SQL 中，此查詢看起來如下列範例所示：
 
 ```sql
 SELECT deptName
@@ -962,7 +974,7 @@ FROM departments
 WHERE deptId > 20
 ```
 
-類似于第一個範例，下列資料格的輸出顯示 (兩個部門的名稱) 和查詢計劃的查詢結果。 FileScan 運算子中的資料檔案位置會顯示「deptIndex1」是用來執行查詢。
+類似于第一個範例，下列資料格的輸出會顯示兩個部門的 (名稱) 和查詢計劃的查詢結果。 **FileScan**運算子中資料檔案的位置會顯示 "deptIndex1" 是用來執行查詢。
 
 :::zone pivot = "programming-language-scala"
 
@@ -1041,7 +1053,6 @@ Project [deptName#534]
 +- *(1) Filter (isnotnull(deptId#533) && (deptId#533 > 20))
    +- *(1) FileScan parquet [deptId#533,deptName#534] Batched: true, Format: Parquet, Location: InMemoryFileIndex[abfss://datasets@hyperspacebenchmark.dfs.core.windows.net/hyperspaceon..., PartitionFilters: [], PushedFilters: [IsNotNull(deptId), GreaterThan(deptId,20)], ReadSchema: struct<deptId:int,deptName:string>
 ```
-
 第三個範例是在部門識別碼上聯結部門和員工記錄的查詢。 對等的 SQL 語句如下所示：
 
 ```sql
@@ -1049,8 +1060,7 @@ SELECT employees.deptId, empName, departments.deptId, deptName
 FROM   employees, departments
 WHERE  employees.deptId = departments.deptId
 ```
-
-執行下列資料格的輸出會顯示查詢結果，也就是14個員工的名稱和每個員工工作的部門名稱。 查詢計劃也包含在輸出中。 請注意兩個 FileScan 運算子的檔案位置如何顯示 Spark 使用 "empIndex" 和 "deptIndex1" 索引來執行查詢。
+執行下列資料格的輸出會顯示查詢結果，也就是14個員工的名稱和每個員工工作的部門名稱。 查詢計劃也包含在輸出中。 請注意兩個 **FileScan** 運算子的檔案位置如何顯示 Spark 使用 "empIndex" 和 "deptIndex1" 索引來執行查詢。
 
 :::zone pivot = "programming-language-scala"
 
@@ -1165,7 +1175,7 @@ Project [empName#528, deptName#534]
 
 ## <a name="support-for-sql-semantics"></a>支援 SQL 語義
 
-無論您是使用資料框架 API 或 Spark SQL，索引使用方式都是透明的。 下列範例顯示與之前相同的聯結範例（在 sql form 中），顯示使用索引（如果適用）。
+無論您是使用資料框架 API 或 Spark SQL，索引使用方式都是透明的。 下列範例顯示與之前相同的聯結範例（在 SQL form 中），顯示使用索引（如果適用）。
 
 :::zone pivot = "programming-language-scala"
 
@@ -1286,7 +1296,7 @@ Project [empName#528, deptName#534]
 
 ## <a name="explain-api"></a>說明 API
 
-索引很棒，但您要如何知道它們是否正在使用？ 超空間可讓使用者在執行查詢之前，比較其原始方案與更新索引相依方案。 您可以選擇 html/純文字/主控台模式來顯示命令輸出。
+索引很棒，但您要如何知道它們是否正在使用？ 超空間可讓使用者在執行查詢之前，比較其原始計畫與更新的索引相依方案。 您可以選擇 HTML、純文字或主控台模式來顯示命令輸出。
 
 下列儲存格顯示具有 HTML 的範例。 醒目提示的區段代表原始和更新計畫之間的差異，以及使用的索引。
 
@@ -1367,12 +1377,12 @@ empIndex:abfss://datasets@hyperspacebenchmark.dfs.core.windows.net/<container>/i
 
 ## <a name="refresh-indexes"></a>重新整理索引
 
-如果建立索引的原始資料有變更，索引就不會再捕獲最新的資料狀態。 您可以使用 "refreshIndex" 命令重新整理這類過時的索引。 這會導致索引完全重建，並根據最新的資料記錄進行更新 (別擔心，我們會示範如何在) 的其他筆記本中以累加方式重新整理您的索引。
+如果建立索引的原始資料有變更，索引就不會再捕獲最新的資料狀態。 您可以使用 **refreshIndex** 命令來重新整理過時的索引。 此命令會讓索引完整重建，並根據最新的資料記錄進行更新。 我們將示範如何在其他筆記本中以累加方式重新整理您的索引。
 
 下列兩個數據格會顯示此案例的範例：
 
-* 第一個資料格會將其他兩個部門新增至原始部門資料。 它會讀取和列印部門清單，以確認是否已正確新增部門。 輸出中總共顯示六個部門：四個舊的部門，以及兩個新的。 叫用 "refreshIndex" 更新 "deptIndex1"，讓索引能捕捉新的部門。
-* 第二個數據格會執行範圍選取查詢範例。 結果現在應該包含四個部門：兩個部門，在我們執行上述查詢之前會看到兩個部門，而兩個是剛新增的部門。
+* 第一個資料格會將其他兩個部門新增至原始部門資料。 它會讀取並列印部門清單，以確認是否已正確新增部門。 輸出中總共顯示六個部門：四個舊的部門，以及兩個新的。 叫用 **refreshIndex** 更新 "deptIndex1"，讓索引得以捕捉新的部門。
+* 第二個數據格會執行範圍選取查詢範例。 結果現在應該包含四個部門：兩個是在我們執行上述查詢之前看到的，而兩個是新增的部門。
 
 ### <a name="specific-index-refresh"></a>特定索引重新整理
 

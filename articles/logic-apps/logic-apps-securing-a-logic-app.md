@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
-ms.date: 09/08/2020
-ms.openlocfilehash: 75c434b5c1927251940a691a16069425b4cc88a3
-ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
+ms.date: 09/19/2020
+ms.openlocfilehash: 8023f3d7730a617ec502c8f181bad1fc27627694
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/06/2020
-ms.locfileid: "89500397"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91269160"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>在 Azure Logic Apps 中保護存取和資料
 
@@ -75,6 +75,8 @@ Azure Logic Apps 依賴 [Azure 儲存體](../storage/index.yml) 來儲存和自�
 | `sig` | 指定簽章以用於驗證對觸發程序的存取。 在所有 URL 路徑和屬性上，系統會使用 SHA256 演算法，搭配祕密存取金鑰，以產生此簽章。 此金鑰永不公開或發佈，且保持加密，並與邏輯應用程式一起儲存。 您的邏輯應用程式只會針對包含使用祕密金鑰建立之有效簽章的觸發程序進行授權。 |
 |||
 
+要求端點的輸入呼叫只能使用一個授權配置，也就是 SAS 或 [Azure Active Directory 開啟驗證](#enable-oauth)。 雖然使用一個配置並不會停用其他配置，但同時使用兩種配置會導致錯誤，因為服務不知道要選擇哪一個配置。
+
 如需使用 SAS 保護存取安全性的詳細資訊，請參閱本主題中下列各節：
 
 * [重新產生存取金鑰](#access-keys)
@@ -121,62 +123,62 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
 ### <a name="enable-azure-active-directory-open-authentication-azure-ad-oauth"></a>啟用 Azure Active Directory 開放式驗證 (Azure AD OAuth)
 
-如果邏輯應用程式是以 [要求觸發](../connectors/connectors-native-reqres.md)程式開始，您可以藉由定義或新增要求觸發程式之輸入呼叫的授權原則，來啟用 [Azure Active Directory Open Authentication (Azure AD OAuth) ](../active-directory/develop/index.yml) 。
+針對以要求為基礎的觸發程式所建立之端點的輸入呼叫，您可以藉由定義或新增邏輯應用程式的授權原則，啟用 [Azure Active Directory Open Authentication (Azure AD OAuth) ](../active-directory/develop/index.yml) 。 如此一來，輸入呼叫就會使用 OAuth [存取權杖](../active-directory/develop/access-tokens.md) 來進行授權。
 
-啟用此驗證之前，請檢閱下列考量：
+當您的邏輯應用程式收到包含 OAuth 存取權杖的輸入要求時，Azure Logic Apps 服務會將權杖的宣告與每個授權原則所指定的宣告進行比較。 如果權杖的宣告與至少一個原則中的所有宣告相符，則會成功授權輸入要求。 權杖的宣告可以比授權原則指定的數目更多。
 
-* 要求觸發程式的輸入呼叫只能使用一個授權配置，Azure AD OAuth 使用驗證權杖（僅支援要求觸發程式），或使用 [共用存取簽章 (SAS) URL](#sas) 無法使用這兩種架構。
+在您啟用 Azure AD OAuth 之前，請先參閱下列考慮：
 
-  雖然使用一個配置並不會停用其他配置，但同時使用兩者都會導致錯誤，因為服務不知道要選擇哪一個配置。 此外，只有要求觸發程式才支援 OAuth 驗證權杖的 [持有人類型](../active-directory/develop/active-directory-v2-protocols.md#tokens) 授權配置。 驗證權杖必須 `Bearer-type` 在授權標頭中指定。
+* 要求端點的輸入呼叫只能使用一個授權配置，Azure AD OAuth 或共用存取簽章 [ (SAS) ](#sas)。 雖然使用一個配置並不會停用其他配置，但同時使用兩種配置會導致錯誤，因為 Logic Apps 服務並不知道要選擇哪一個配置。
+
+* Azure AD OAuth 存取權杖僅支援 [持有人類型](../active-directory/develop/active-directory-v2-protocols.md#tokens) 授權配置，這表示 `Authorization` 存取權杖的標頭必須指定 `Bearer` 類型。
 
 * 邏輯應用程式受限於授權原則數目上限。 每個授權原則也有[宣告](../active-directory/develop/developer-glossary.md#claim)數目上限。 如需詳細資訊，請參閱 [Azure Logic Apps 的限制和設定](../logic-apps/logic-apps-limits-and-config.md#authentication-limits)。
 
-* 授權原則必須至少包含 **簽發者** 宣告，此宣告的值開頭為 `https://sts.windows.net/` 或 `https://login.microsoftonline.com/` (OAuth V2) 作為 Azure AD 簽發者識別碼。 如需存取權杖的詳細資訊，請參閱 [Microsoft 身分識別平臺存取權杖](../active-directory/develop/access-tokens.md)。
+* 授權原則至少必須包含 **簽發者** 宣告，此宣告的值開頭為 `https://sts.windows.net/` 或 `https://login.microsoftonline.com/` (OAuth V2) 作為 Azure AD 簽發者識別碼。
 
-當您的邏輯應用程式收到包含 OAuth 驗證權杖的輸入要求時，Azure Logic Apps 會將權杖的宣告與每個授權原則中的宣告進行比較。 如果權杖的宣告與至少一個原則中的所有宣告相符，則會成功授權輸入要求。 權杖的宣告可以比授權原則指定的數目更多。
+  例如，假設您的邏輯應用程式有一個授權原則，需要兩個宣告類型： **物件** 和 **簽發者**。 針對已解碼存取權杖的這個範例承載 [區段](../active-directory/develop/access-tokens.md#payload-claims) 包含宣告類型，其中 `aud` 是 **物件** 的值，而 `iss` 是 **簽發者** 值：
 
-例如，假設您的邏輯應用程式具有需要兩個宣告類型、 **簽發者** 和 **物件**的授權原則。 此範例解碼的[存取權杖](../active-directory/develop/access-tokens.md)同時包含這兩種宣告類型：
-
-```json
-{
-   "aud": "https://management.core.windows.net/",
-   "iss": "https://sts.windows.net/<Azure-AD-issuer-ID>/",
-   "iat": 1582056988,
-   "nbf": 1582056988,
-   "exp": 1582060888,
-   "_claim_names": {
-      "groups": "src1"
-   },
-   "_claim_sources": {
-      "src1": {
-         "endpoint": "https://graph.windows.net/7200000-86f1-41af-91ab-2d7cd011db47/users/00000-f433-403e-b3aa-7d8406464625d7/getMemberObjects"
-    }
-   },
-   "acr": "1",
-   "aio": "AVQAq/8OAAAA7k1O1C2fRfeG604U9e6EzYcy52wb65Cx2OkaHIqDOkuyyr0IBa/YuaImaydaf/twVaeW/etbzzlKFNI4Q=",
-   "amr": [
-      "rsa",
-      "mfa"
-   ],
-   "appid": "c44b4083-3bb0-00001-b47d-97400853cbdf3c",
-   "appidacr": "2",
-   "deviceid": "bfk817a1-3d981-4dddf82-8ade-2bddd2f5f8172ab",
-   "family_name": "Sophia Owen",
-   "given_name": "Sophia Owen (Fabrikam)",
-   "ipaddr": "167.220.2.46",
-   "name": "sophiaowen",
-   "oid": "3d5053d9-f433-00000e-b3aa-7d84041625d7",
-   "onprem_sid": "S-1-5-21-2497521184-1604012920-1887927527-21913475",
-   "puid": "1003000000098FE48CE",
-   "scp": "user_impersonation",
-   "sub": "KGlhIodTx3XCVIWjJarRfJbsLX9JcdYYWDPkufGVij7_7k",
-   "tid": "72f988bf-86f1-41af-91ab-2d7cd011db47",
-   "unique_name": "SophiaOwen@fabrikam.com",
-   "upn": "SophiaOwen@fabrikam.com",
-   "uti": "TPJ7nNNMMZkOSx6_uVczUAA",
-   "ver": "1.0"
-}
-```
+  ```json
+  {
+      "aud": "https://management.core.windows.net/",
+      "iss": "https://sts.windows.net/<Azure-AD-issuer-ID>/",
+      "iat": 1582056988,
+      "nbf": 1582056988,
+      "exp": 1582060888,
+      "_claim_names": {
+         "groups": "src1"
+      },
+      "_claim_sources": {
+         "src1": {
+            "endpoint": "https://graph.windows.net/7200000-86f1-41af-91ab-2d7cd011db47/users/00000-f433-403e-b3aa-7d8406464625d7/getMemberObjects"
+         }
+      },
+      "acr": "1",
+      "aio": "AVQAq/8OAAAA7k1O1C2fRfeG604U9e6EzYcy52wb65Cx2OkaHIqDOkuyyr0IBa/YuaImaydaf/twVaeW/etbzzlKFNI4Q=",
+      "amr": [
+         "rsa",
+         "mfa"
+      ],
+      "appid": "c44b4083-3bb0-00001-b47d-97400853cbdf3c",
+      "appidacr": "2",
+      "deviceid": "bfk817a1-3d981-4dddf82-8ade-2bddd2f5f8172ab",
+      "family_name": "Sophia Owen",
+      "given_name": "Sophia Owen (Fabrikam)",
+      "ipaddr": "167.220.2.46",
+      "name": "sophiaowen",
+      "oid": "3d5053d9-f433-00000e-b3aa-7d84041625d7",
+      "onprem_sid": "S-1-5-21-2497521184-1604012920-1887927527-21913475",
+      "puid": "1003000000098FE48CE",
+      "scp": "user_impersonation",
+      "sub": "KGlhIodTx3XCVIWjJarRfJbsLX9JcdYYWDPkufGVij7_7k",
+      "tid": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+      "unique_name": "SophiaOwen@fabrikam.com",
+      "upn": "SophiaOwen@fabrikam.com",
+      "uti": "TPJ7nNNMMZkOSx6_uVczUAA",
+      "ver": "1.0"
+   }
+   ```
 
 <a name="define-authorization-policy-portal"></a>
 
@@ -190,14 +192,14 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
    ![選取 [授權] > [新增原則]](./media/logic-apps-securing-a-logic-app/add-azure-active-directory-authorization-policies.png)
 
-1. 提供授權原則的相關資訊，請指定[宣告類型](../active-directory/develop/developer-glossary.md#claim)和值 (在每次輸入呼叫要求觸發程序時所出示的驗證權杖中，符合邏輯應用程式所預期)：
+1. 藉由在要求觸發程式的每個輸入呼叫所呈現的存取權杖中指定您的邏輯應用程式預期的宣告 [類型](../active-directory/develop/developer-glossary.md#claim) 和值，以提供授權原則的相關資訊：
 
    ![提供授權原則的資訊](./media/logic-apps-securing-a-logic-app/set-up-authorization-policy.png)
 
    | 屬性 | 必要 | 描述 |
    |----------|----------|-------------|
    | **原則名稱** | 是 | 您想要用於授權原則的名稱 |
-   | **宣告** | 是 | 邏輯應用程式所接受來自輸入呼叫的宣告類型和值。 以下是可用的宣告類型： <p><p>- **簽發者** <br>- **對象** <br>- **主旨** <br>- **JWT 識別碼** (JSON Web 權杖識別碼) <p><p>**宣告**清單最少必須包含**簽發者**宣告，此宣告的值開頭為 `https://sts.windows.net/` 或 `https://login.microsoftonline.com/` Azure AD 簽發者識別碼。 如需這些宣告類型的詳細資訊，請參閱 [Azure AD 安全性權杖中的宣告](../active-directory/azuread-dev/v1-authentication-scenarios.md#claims-in-azure-ad-security-tokens)。 您也可以指定自己的宣告類型和值。 |
+   | **宣告** | 是 | 邏輯應用程式所接受來自輸入呼叫的宣告類型和值。 以下是可用的宣告類型： <p><p>- **簽發者** <br>- **對象** <br>- **主旨** <br>- **JWT 識別碼** (JSON Web 權杖識別碼) <p><p>**宣告**清單至少必須包含**簽發者**宣告，此宣告的值開頭為 `https://sts.windows.net/` 或 `https://login.microsoftonline.com/` Azure AD 簽發者識別碼。 如需這些宣告類型的詳細資訊，請參閱 [Azure AD 安全性權杖中的宣告](../active-directory/azuread-dev/v1-authentication-scenarios.md#claims-in-azure-ad-security-tokens)。 您也可以指定自己的宣告類型和值。 |
    |||
 
 1. 若要新增另一個宣告，請從下列選項中選取：
@@ -210,14 +212,27 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
 1. 完成時，選取 [儲存]。
 
+1. 若要 `Authorization` 在以要求為基礎的觸發程式輸出中包含存取權杖的標頭，請參閱 [在要求觸發程式輸出中包含 ' Authorization ' 標頭](#include-auth-header)。
+
 <a name="define-authorization-policy-template"></a>
 
 #### <a name="define-authorization-policy-in-azure-resource-manager-template"></a>在 Azure Resource Manager 範本中定義授權原則
 
-若要在 ARM 範本中啟用 Azure AD OAuth 來部署邏輯應用程式，請在 `properties` [邏輯應用程式資源定義](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#logic-app-resource-definition)的區段中，新增 `accessControl` 包含物件的物件（如果沒有的話） `triggers` 。 在 `triggers` 物件中， `openAuthenticationPolicies` 使用下列語法來新增您定義一或多個授權原則的物件：
+若要在 ARM 範本中啟用 Azure AD OAuth 來部署邏輯應用程式，請遵循下列步驟和下列語法：
 
-> [!NOTE]
-> 陣列的最小 `claims` 值必須包含宣告，此宣告的 `iss` 開頭為 `https://sts.windows.net/` 或 `https://login.microsoftonline.com/` Azure AD 簽發者識別碼。 如需這些宣告類型的詳細資訊，請參閱 [Azure AD 安全性權杖中的宣告](../active-directory/azuread-dev/v1-authentication-scenarios.md#claims-in-azure-ad-security-tokens)。 您也可以指定自己的宣告類型和值。
+1. 在 `properties` [邏輯應用程式資源定義](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#logic-app-resource-definition)的區段中，新增 `accessControl` 包含物件的物件（如果沒有的話） `triggers` 。
+
+   如需物件的詳細資訊 `accessControl` ，請參閱 [限制 Azure Resource Manager 範本中的輸入 IP 範圍](#restrict-inbound-ip-template) 和 [Microsoft. 邏輯工作流程範本參考](/azure/templates/microsoft.logic/2019-05-01/workflows)。
+
+1. 在 `triggers` 物件中，加入 `openAuthenticationPolicies` 包含 `policies` 您定義一或多個授權原則之物件的物件。
+
+1. 提供授權原則的名稱、將原則類型設定為 `AAD` ，並包含 `claims` 您指定一或多個宣告類型的陣列。
+
+   `claims`陣列至少必須包含您將宣告的屬性設定為的簽發者宣告類型 `name` `iss` ，並將設定 `value` 為開頭為 `https://sts.windows.net/` 或 `https://login.microsoftonline.com/` Azure AD 簽發者識別碼。 如需這些宣告類型的詳細資訊，請參閱 [Azure AD 安全性權杖中的宣告](../active-directory/azuread-dev/v1-authentication-scenarios.md#claims-in-azure-ad-security-tokens)。 您也可以指定自己的宣告類型和值。
+
+1. 若要 `Authorization` 在以要求為基礎的觸發程式輸出中包含存取權杖的標頭，請參閱 [在要求觸發程式輸出中包含 ' Authorization ' 標頭](#include-auth-header)。
+
+以下是要遵循的語法：
 
 ```json
 "resources": [
@@ -256,7 +271,30 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 ],
 ```
 
-如需有關章節的詳細資訊 `accessControl` ，請參閱 [限制 Azure Resource Manager 範本中的輸入 IP 範圍](#restrict-inbound-ip-template) 和 [Microsoft. 邏輯工作流程範本參考](/azure/templates/microsoft.logic/2019-05-01/workflows)。
+<a name="include-auth-header"></a>
+
+#### <a name="include-authorization-header-in-request-trigger-outputs"></a>在要求觸發程式輸出中包含 ' Authorization ' 標頭
+
+針對 [啟用 Azure Active Directory Open Authentication 的邏輯應用程式 (Azure AD oauth) ](#enable-oauth) 以存取以要求為基礎的觸發程式的輸入呼叫，您可以啟用要求觸發程式或 HTTP Webhook 觸發程式輸出，以包含 `Authorization` 來自 OAuth 存取權杖的標頭。 在觸發程式的基礎 JSON 定義中，將屬性加入並設定 `operationOptions` 為 `IncludeAuthorizationHeadersInOutputs` 。 以下是要求觸發程式的範例：
+
+```json
+"triggers": {
+   "manual": {
+      "inputs": {
+         "schema": {}
+      },
+      "kind": "Http",
+      "type": "Request",
+      "operationOptions": "IncludeAuthorizationHeadersInOutputs"
+   }
+}
+```
+
+如需詳細資訊，請參閱下列主題：
+
+* [觸發程式和動作類型的架構參考-要求觸發程式](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger)
+* [觸發程式和動作類型的架構參考-HTTP Webhook 觸發程式](../logic-apps/logic-apps-workflow-actions-triggers.md#http-webhook-trigger)
+* [觸發程式和動作類型的架構參考-作業選項](../logic-apps/logic-apps-workflow-actions-triggers.md#operation-options)
 
 <a name="azure-api-management"></a>
 
@@ -896,7 +934,7 @@ HTTP 和 HTTPS 端點支援各種類型的驗證。 在您用來將輸出呼叫�
 | 屬性 (設計工具) | 屬性 (JSON) | 必要 | 值 | 描述 |
 |---------------------|-----------------|----------|-------|-------------|
 | **驗證** | `type` | 是 | **Active Directory OAuth** <br>或 <br>`ActiveDirectoryOAuth` | 要使用的驗證類型。 Logic Apps 目前遵循 [OAuth 2.0 通訊協定](../active-directory/develop/v2-overview.md)。 |
-| **授權單位** | `authority` | 否 | <*URL-for-authority-token-issuer*> | 提供驗證權杖的授權單位 URL。 根據預設，此值為 `https://login.windows.net`。 |
+| **授權單位** | `authority` | 否 | <*URL-for-authority-token-issuer*> | 提供存取權杖的授權單位 URL。 根據預設，此值為 `https://login.windows.net`。 |
 | **租用戶** | `tenant` | 是 | <*tenant-ID*> | Azure AD 租用戶的租用戶識別碼 |
 | **目標對象** | `audience` | 是 | <*resource-to-authorize*> | 您希望用於授權的資源，例如，`https://management.core.windows.net/` |
 | **用戶端識別碼** | `clientId` | 是 | <*client-ID*> | 要求授權的應用程式用戶端識別碼 |
@@ -1042,7 +1080,7 @@ Authorization: OAuth realm="Photos",
 * [Azure 公用雲端中的隔離](../security/fundamentals/isolation-choices.md)
 * [Azure 中高度機密的 IaaS 應用程式安全性](/azure/architecture/reference-architectures/n-tier/high-security-iaas)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [適用于 Azure Logic Apps 的 Azure 安全性基準](../logic-apps/security-baseline.md)
 * [Azure Logic Apps 的自動化部署](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)

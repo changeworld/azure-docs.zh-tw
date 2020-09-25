@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 03/09/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: e984c0c43dcc47c3e11a36f3d5c32bf2ddb9973a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 89934470dc3bf86bb2843137a2129bff13323ca0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90902325"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91302072"
 ---
 # <a name="use-authentication-credential-secrets-in-azure-machine-learning-training-runs"></a>在 Azure Machine Learning 定型執行中使用驗證認證秘密
 
@@ -33,7 +33,7 @@ ms.locfileid: "90902325"
 
 ## <a name="set-secrets"></a>設定秘密
 
-在 Azure Machine Learning 中， [Keyvault](https://docs.microsoft.com/python/api/azureml-core/azureml.core.keyvault.keyvault?view=azure-ml-py&preserve-view=true) 類別包含用來設定秘密的方法。 在您的本機 Python 會話中，請先取得您工作區 Key Vault 的參考，然後使用 [`set_secret()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.keyvault.keyvault?view=azure-ml-py#&preserve-view=trueset-secret-name--value-) 方法，依名稱和值設定秘密。 如果名稱已存在， __set_secret__ 方法會更新密碼值。
+在 Azure Machine Learning 中， [Keyvault](https://docs.microsoft.com/python/api/azureml-core/azureml.core.keyvault.keyvault?view=azure-ml-py&preserve-view=true) 類別包含用來設定秘密的方法。 在您的本機 Python 會話中，請先取得您工作區 Key Vault 的參考，然後使用 [`set_secret()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.keyvault.keyvault?view=azure-ml-py&preserve-view=true#&preserve-view=trueset-secret-name--value-) 方法，依名稱和值設定秘密。 如果名稱已存在， __set_secret__ 方法會更新密碼值。
 
 ```python
 from azureml.core import Workspace
@@ -49,13 +49,13 @@ keyvault.set_secret(name="mysecret", value = my_secret)
 
 請勿將秘密值放在您的 Python 程式碼中，因為不安全地將它以純文字形式儲存在檔案中。 相反地，請從環境變數取得秘密值，例如 Azure DevOps 組建密碼，或從互動式使用者輸入。
 
-您可以使用方法列出秘密名稱，也可以使用 [`list_secrets()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.keyvault.keyvault?view=azure-ml-py#&preserve-view=truelist-secrets--) 批次版本[set_secrets ( # B1 ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.keyvault.keyvault?view=azure-ml-py#&preserve-view=trueset-secrets-secrets-batch-) ，讓您一次設定多個密碼。
+您可以使用方法列出秘密名稱，也可以使用 [`list_secrets()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.keyvault.keyvault?view=azure-ml-py&preserve-view=true#&preserve-view=truelist-secrets--) 批次版本[set_secrets ( # B1 ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.keyvault.keyvault?view=azure-ml-py&preserve-view=true#&preserve-view=trueset-secrets-secrets-batch-) ，讓您一次設定多個密碼。
 
 ## <a name="get-secrets"></a>取得密碼
 
-在您的本機程式碼中，您可以使用 [`get_secret()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.keyvault.keyvault?view=azure-ml-py#&preserve-view=trueget-secret-name-) 方法，依名稱取得秘密值。
+在您的本機程式碼中，您可以使用 [`get_secret()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.keyvault.keyvault?view=azure-ml-py&preserve-view=true#&preserve-view=trueget-secret-name-) 方法，依名稱取得秘密值。
 
-針對提交的執行 [`Experiment.submit`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py#&preserve-view=truesubmit-config--tags-none----kwargs-)  ，請使用 [`get_secret()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#&preserve-view=trueget-secret-name-) 方法搭配 [`Run`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py&preserve-view=true) 類別。 因為已提交的執行會感知其工作區，所以此方法會將工作區具現化並直接傳回秘密值。
+針對提交的執行 [`Experiment.submit`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py&preserve-view=true#&preserve-view=truesubmit-config--tags-none----kwargs-)  ，請使用 [`get_secret()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py&preserve-view=true#&preserve-view=trueget-secret-name-) 方法搭配 [`Run`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py&preserve-view=true) 類別。 因為已提交的執行會感知其工作區，所以此方法會將工作區具現化並直接傳回秘密值。
 
 ```python
 # Code in submitted run
@@ -67,9 +67,9 @@ secret_value = run.get_secret(name="mysecret")
 
 請注意不要藉由撰寫或列印秘密值來公開秘密值。
 
-另外還有一個批次版本， [get_secrets ( # B1 ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#&preserve-view=trueget-secrets-secrets-) 可同時存取多個秘密。
+另外還有一個批次版本， [get_secrets ( # B1 ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py&preserve-view=true#&preserve-view=trueget-secrets-secrets-) 可同時存取多個秘密。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
  * [查看範例筆記本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/manage-azureml-service/authentication-in-azureml/authentication-in-azureml.ipynb)
  * [瞭解 Azure Machine Learning 的企業安全性](concept-enterprise-security.md)

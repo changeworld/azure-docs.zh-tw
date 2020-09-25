@@ -1,14 +1,14 @@
 ---
 title: 在 Azure 實驗室服務的範本 VM 上啟用巢狀虛擬化 | Microsoft Docs
-description: 了解如何建立內有多個 VM 的範本 VM。  換句話說，就是在 Azure 實驗室服務的範本 VM 上啟用巢狀虛擬化。
+description: 在本文中，您將瞭解如何在 Azure 實驗室服務中設定範本電腦的嵌套虛擬化。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: a2f045cbf7c107e7f5dbeff0d78bf5e8d9d8fba6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 319695088e967dc3156ecab5c1b9458e77fcc186
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445231"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91251469"
 ---
 # <a name="enable-nested-virtualization-on-a-template-virtual-machine-in-azure-lab-services"></a>在 Azure 實驗室服務的範本虛擬機器上啟用巢狀虛擬化
 

@@ -10,12 +10,12 @@ author: jpe316
 ms.date: 07/24/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 7b63ef36d7df43168ed132a740bab026e6e00f3f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: e2f1eb50f6d878eecb4b5c448e683a3024e8c396
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90897225"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91250839"
 ---
 # <a name="build-scikit-learn-models-at-scale-with-azure-machine-learning"></a>組建 scikit-learn-利用 Azure Machine Learning 瞭解大規模模型
 
@@ -26,7 +26,7 @@ ms.locfileid: "90897225"
 
 無論您是從頭開始訓練 machine learning scikit-learn-學習模型，或是將現有的模型帶入雲端，您都可以使用 Azure Machine Learning，利用彈性的雲端計算資源來擴充開放原始碼訓練作業。 您可以使用 Azure Machine Learning 來建立、部署、版本和監視生產等級的模型。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 在下列任一環境中執行此程式碼：
  - Azure Machine Learning 計算執行個體 - 不需要下載或安裝
@@ -166,7 +166,7 @@ model = run.register_model(model_name='sklearn-iris',
 
 ### <a name="preview-no-code-model-deployment"></a> (Preview) 無程式碼模型部署
 
-除了傳統的部署路由之外，您也可以使用無程式碼部署功能 (preview) 進行 scikit-learn-學習。 所有內建 scikit-learn 學習模型類型都支援無程式碼模型部署。 藉由使用、和參數來註冊您的模型（如上所示 `model_framework` `model_framework_version` `resource_configuration` ），您可以直接使用靜態函式 [`deploy()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) 來部署模型。
+除了傳統的部署路由之外，您也可以使用無程式碼部署功能 (preview) 進行 scikit-learn-學習。 所有內建 scikit-learn 學習模型類型都支援無程式碼模型部署。 藉由使用、和參數來註冊您的模型（如上所示 `model_framework` `model_framework_version` `resource_configuration` ），您可以直接使用靜態函式 [`deploy()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) 來部署模型。
 
 ```python
 web_service = Model.deploy(ws, "scikit-learn-service", [model])
@@ -184,7 +184,7 @@ web_service = Model.deploy(ws, "scikit-learn-service", [model])
 [完整的作法涵蓋了 Azure Machine Learning](how-to-deploy-and-where.md)更深入的部署。
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 在本文中，您已訓練並註冊 scikit-learn 學習模型，並瞭解部署選項。 若要深入瞭解 Azure Machine Learning，請參閱這些其他文章。
 

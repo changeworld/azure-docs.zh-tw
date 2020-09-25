@@ -3,17 +3,17 @@ title: 適用于 SQL 的 Azure Defender-優點和功能
 description: 瞭解 Azure Defender for SQL 的優點和功能。
 author: memildin
 ms.author: memildin
-ms.date: 9/12/2020
+ms.date: 9/22/2020
 ms.topic: conceptual
 ms.service: security-center
 ms.custom: references_regions
 manager: rkarlin
-ms.openlocfilehash: e76fd33ccca73394c4ee48b3737db8b93a990659
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: dcdbc3efba53f78890816721b6659aa69553d6ea
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936556"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91301596"
 ---
 # <a name="introduction-to-azure-defender-for-sql"></a>Azure Defender for SQL 簡介
 
@@ -26,7 +26,7 @@ ms.locfileid: "90936556"
 |釋放狀態：|**適用于 AZURE SQL database 伺服器的 Azure Defender** -正式推出 (GA) <br>**電腦上適用于 SQL server 的 Azure Defender** -預覽|
 |定價：|形成**Azure Defender FOR SQL**的兩個計畫會依[定價頁面](security-center-pricing.md)上的顯示方式計費|
 |受保護的 SQL 版本：|Azure SQL Database <br>Azure SQL 受控執行個體<br>Azure Synapse Analytics (先前為 SQL DW)<br>SQL Server (所有支援的版本) |
-|雲端：|![Yes](./media/icons/yes-icon.png) 商業雲端<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) 中國 Gov，其他 Gov|
+|雲端：|![是](./media/icons/yes-icon.png) 商業雲端<br>![是](./media/icons/yes-icon.png) US Gov<br>![否](./media/icons/no-icon.png) 中國 Gov，其他 Gov|
 |||
 
 ## <a name="what-does-azure-defender-for-sql-protect"></a>Azure Defender for SQL 如何保護？
@@ -62,7 +62,7 @@ ms.locfileid: "90936556"
 
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 在本文中，您已瞭解 Azure Defender for SQL。
 

@@ -6,13 +6,13 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.custom: devx-track-python, devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: 1d24f06631bd3fd52061637892423c94e12127af
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.custom: devx-track-python, devx-track-js, devx-track-csharp
+ms.openlocfilehash: 73c91343057c12d7534cd79de346182f32964f72
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021352"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268754"
 ---
 # <a name="how-to-connect-applications-to-azure-database-for-mariadb"></a>如何將應用程式連線至適用於 MariaDB 的 Azure 資料庫
 此主題列出適用於 MariaDB 的 Azure 資料庫所支援的連接字串類型，以及範本和範例。 您可以在連接字串中使用不同的參數和設定。

@@ -3,28 +3,30 @@ title: Azure Kubernetes Service (AKS) 的叢集設定
 description: 了解如何在 Azure Kubernetes Service (AKS) 中設定叢集
 services: container-service
 ms.topic: conceptual
-ms.date: 08/06/2020
+ms.date: 09/21/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 5b26054ae8dfb73dea8d064292beb73220be5e09
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 6446e138df1fe744d70be085d0aecac58e2c1c45
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89433444"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91255293"
 ---
 # <a name="configure-an-aks-cluster"></a>設定 AKS 叢集
 
 建立 AKS 叢集的過程中，可能需要自訂叢集設定來配合您的需求。 本文會介紹幾種可用來自訂 AKS 叢集的選項。
 
-## <a name="os-configuration-preview"></a>作業系統設定 (預覽)
+## <a name="os-configuration"></a>作業系統設定
 
-AKS 現可支援 Ubuntu 18.04 做為預覽的節點作業系統 (OS)。 在預覽期間，Ubuntu 16.04 和 Ubuntu 18.04 皆可供使用。
+AKS 現在支援 Ubuntu 18.04 作為節點作業系統 (OS) 在高於1.18.8 的 kubernetes 版本中的叢集正式運作。 針對小於 1.18. x 的版本，AKS Ubuntu 16.04 仍是預設的基底映射。 從 kubernetes v 1.18. x 和之後，預設基底為 AKS Ubuntu 18.04。
 
 > [!IMPORTANT]
-> 在 Kubernetes v 1.18 或更高版本上建立的節點集區預設為必要的 `AKS Ubuntu 18.04` 節點映射。 小於1.18 的支援 Kubernetes 版本上的節點集區會 `AKS Ubuntu 16.04` 以節點映射的形式接收，但 `AKS Ubuntu 18.04` 一旦節點集區 Kubernetes 版本更新為1.18 或更高版本，則會更新為。
+> 在 Kubernetes v 1.18 或更高版本上建立的節點集區預設為 `AKS Ubuntu 18.04` 節點映射。 小於1.18 的支援 Kubernetes 版本上的節點集區會 `AKS Ubuntu 16.04` 以節點映射的形式接收，但 `AKS Ubuntu 18.04` 一旦節點集區 Kubernetes 版本更新為1.18 或更高版本，則會更新為。
 > 
 > 強烈建議您先在 AKS Ubuntu 18.04 節點集區上測試您的工作負載，再于1.18 或更高版本上使用叢集。 瞭解如何 [測試 Ubuntu 18.04 節點](#use-aks-ubuntu-1804-existing-clusters-preview)集區。
+
+下一節將說明如何在尚未使用 kubernetes 版本 1.18. x 或更高版本的叢集上使用案例，並測試 AKS Ubuntu 18.04，或使用 OS 設定預覽版在此功能正式推出之前建立。
 
 您必須先安裝下列資源：
 
@@ -44,13 +46,13 @@ az extension list
 az feature register --name UseCustomizedUbuntuPreview --namespace Microsoft.ContainerService
 ```
 
-可能需要幾分鐘的時間，狀態才會顯示為 [已註冊]。 您可以使用 [az feature list](/cli/azure/feature?view=azure-cli-latest#az-feature-list) 命令檢查註冊狀態：
+可能需要幾分鐘的時間，狀態才會顯示為 [已註冊]。 您可以使用 [az feature list](/cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true) 命令檢查註冊狀態：
 
 ```azurecli
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/UseCustomizedUbuntuPreview')].{Name:name,State:properties.state}"
 ```
 
-當狀態顯示為已註冊時，請使用 [az provider register](/cli/azure/provider?view=azure-cli-latest#az-provider-register) 命令重新整理 `Microsoft.ContainerService` 資源提供者的註冊：
+當狀態顯示為已註冊時，請使用 [az provider register](/cli/azure/provider?view=azure-cli-latest#az-provider-register&preserve-view=true) 命令重新整理 `Microsoft.ContainerService` 資源提供者的註冊：
 
 ```azurecli
 az provider register --namespace Microsoft.ContainerService
@@ -122,14 +124,14 @@ az feature register --name UseCustomizedUbuntuPreview --namespace Microsoft.Cont
 
 ```
 
-可能需要幾分鐘的時間，狀態才會顯示為 [已註冊]。 您可以使用 [az feature list](/cli/azure/feature?view=azure-cli-latest#az-feature-list) 命令檢查註冊狀態：
+可能需要幾分鐘的時間，狀態才會顯示為 [已註冊]。 您可以使用 [az feature list](/cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true) 命令檢查註冊狀態：
 
 ```azurecli
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/UseCustomizedContainerRuntime')].{Name:name,State:properties.state}"
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/UseCustomizedUbuntuPreview')].{Name:name,State:properties.state}"
 ```
 
-當狀態顯示為已註冊時，請使用 [az provider register](/cli/azure/provider?view=azure-cli-latest#az-provider-register) 命令重新整理 `Microsoft.ContainerService` 資源提供者的註冊：
+當狀態顯示為已註冊時，請使用 [az provider register](/cli/azure/provider?view=azure-cli-latest#az-provider-register&preserve-view=true) 命令重新整理 `Microsoft.ContainerService` 資源提供者的註冊：
 
 ```azurecli
 az provider register --namespace Microsoft.ContainerService
@@ -179,7 +181,7 @@ Azure 支援 [ (Gen2) 虛擬機器 (vm) 的第2代虛擬機器 ](../virtual-mach
 第 2 代 VM 捨棄第 1 代 VM 所使用的 BIOS 架構，改用新式的 UEFI 開機架構。
 只有特定的 Sku 和大小支援 Gen2 Vm。 檢查 [支援的大小清單](../virtual-machines/windows/generation-2.md#generation-2-vm-sizes)，以查看您的 SKU 是否支援或需要 Gen2。
 
-此外，並非所有的 VM 映射都支援 Gen2，在 AKS Gen2 Vm 上，將會使用新的 [AKS Ubuntu 18.04 映射](#os-configuration-preview)。 此映射支援所有 Gen2 Sku 和大小。
+此外，並非所有的 VM 映射都支援 Gen2，在 AKS Gen2 Vm 上，將會使用新的 [AKS Ubuntu 18.04 映射](#os-configuration)。 此映射支援所有 Gen2 Sku 和大小。
 
 若要在預覽期間使用 Gen2 Vm，您需要：
 - `aks-preview`已安裝 CLI 擴充功能。
@@ -191,13 +193,13 @@ Azure 支援 [ (Gen2) 虛擬機器 (vm) 的第2代虛擬機器 ](../virtual-mach
 az feature register --name Gen2VMPreview --namespace Microsoft.ContainerService
 ```
 
-可能需要幾分鐘的時間，狀態才會顯示為 [已註冊]。 您可以使用 [az feature list](/cli/azure/feature?view=azure-cli-latest#az-feature-list) 命令檢查註冊狀態：
+可能需要幾分鐘的時間，狀態才會顯示為 [已註冊]。 您可以使用 [az feature list](/cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true) 命令檢查註冊狀態：
 
 ```azurecli
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/Gen2VMPreview')].{Name:name,State:properties.state}"
 ```
 
-當狀態顯示為已註冊時，請使用 [az provider register](/cli/azure/provider?view=azure-cli-latest#az-provider-register) 命令重新整理 `Microsoft.ContainerService` 資源提供者的註冊：
+當狀態顯示為已註冊時，請使用 [az provider register](/cli/azure/provider?view=azure-cli-latest#az-provider-register&preserve-view=true) 命令重新整理 `Microsoft.ContainerService` 資源提供者的註冊：
 
 ```azurecli
 az provider register --namespace Microsoft.ContainerService
@@ -248,17 +250,19 @@ az aks nodepool add --name gen2 --cluster-name myAKSCluster --resource-group myR
 az feature register --name EnableEphemeralOSDiskPreview --namespace Microsoft.ContainerService
 ```
 
-可能需要幾分鐘的時間，狀態才會顯示為 [已註冊]。 您可以使用 [az feature list](/cli/azure/feature?view=azure-cli-latest#az-feature-list) 命令檢查註冊狀態：
+可能需要幾分鐘的時間，狀態才會顯示為 [已註冊]。 您可以使用 [az feature list](/cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true) 命令檢查註冊狀態：
 
 ```azurecli
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnableEphemeralOSDiskPreview')].{Name:name,State:properties.state}"
 ```
 
-當狀態顯示為已註冊時，請使用 [az provider register](/cli/azure/provider?view=azure-cli-latest#az-provider-register) 命令重新整理 `Microsoft.ContainerService` 資源提供者的註冊：
+當狀態顯示為已註冊時，請使用 [az provider register](/cli/azure/provider?view=azure-cli-latest#az-provider-register&preserve-view=true) 命令重新整理 `Microsoft.ContainerService` 資源提供者的註冊：
 
 ```azurecli
 az provider register --namespace Microsoft.ContainerService
 ```
+
+暫時 OS 至少需要 aks-preview CLI 擴充功能的版本0.4.63。
 
 若要安裝 aks-preview CLI 擴充功能，請使用下列 Azure CLI 命令：
 
@@ -274,25 +278,25 @@ az extension update --name aks-preview
 
 ### <a name="use-ephemeral-os-on-new-clusters-preview"></a>在新的叢集上使用暫時 OS (Preview) 
 
-將叢集設定為在建立叢集時使用暫時作業系統磁片。 使用旗標將 `--aks-custom-headers` 暫時 OS 設定為新叢集的 os 磁片類型。
+將叢集設定為在建立叢集時使用暫時作業系統磁片。 使用旗標將 `--node-osdisk-type` 暫時 OS 設定為新叢集的 os 磁片類型。
 
 ```azurecli
-az aks create --name myAKSCluster --resource-group myResourceGroup -s Standard_DS3_v2 --aks-custom-headers EnableEphemeralOSDisk=true
+az aks create --name myAKSCluster --resource-group myResourceGroup -s Standard_DS3_v2 --node-osdisk-type Ephemeral
 ```
 
-如果您想要使用網路連接的 OS 磁片來建立一般叢集，您可以省略自訂標籤來進行 `--aks-custom-headers` 。 您也可以選擇新增更多暫時 OS 節點集區，如下所示。
+如果您想要使用網路連接的 OS 磁片來建立一般叢集，您可以省略自訂標籤 `--node-osdisk-type` 或指定來建立 `--node-osdisk-type=Managed` 。 您也可以選擇新增更多暫時 OS 節點集區，如下所示。
 
 ### <a name="use-ephemeral-os-on-existing-clusters-preview"></a>在現有的叢集上使用暫時作業系統 (預覽) 
-將新的節點集區設定為使用暫時 OS 磁片。 使用 `--aks-custom-headers` 旗標，將 os 磁片類型設定為該節點集區的 os 磁片類型。
+將新的節點集區設定為使用暫時 OS 磁片。 使用 `--node-osdisk-type` 旗標，將 os 磁片類型設定為該節點集區的 os 磁片類型。
 
 ```azurecli
-az aks nodepool add --name ephemeral --cluster-name myAKSCluster --resource-group myResourceGroup -s Standard_DS3_v2 --aks-custom-headers EnableEphemeralOSDisk=true
+az aks nodepool add --name ephemeral --cluster-name myAKSCluster --resource-group myResourceGroup -s Standard_DS3_v2 --node-osdisk-type Ephemeral
 ```
 
 > [!IMPORTANT]
 > 使用暫時性作業系統時，您可以將 VM 和實例映射部署到 VM 快取的大小。 在 AKS 案例中，預設節點 OS 磁片設定會使用100GiB，這表示您需要的 VM 大小必須大於 100 GiB 的快取。 預設 Standard_DS2_v2 的快取大小為 86 GiB，但不夠大。 Standard_DS3_v2 的快取大小為 172 GiB，夠大。 您也可以使用來減少 OS 磁片的預設大小 `--node-osdisk-size` 。 AKS 影像的大小下限為30GiB。 
 
-如果您想要使用網路連接的 OS 磁片來建立節點集區，您可以省略自訂標籤來建立節點集區 `--aks-custom-headers` 。
+如果您想要使用網路連接的 OS 磁片來建立節點集區，您可以省略自訂標籤來建立節點集區 `--node-osdisk-type` 。
 
 ## <a name="custom-resource-group-name"></a>自訂資源群組名稱
 

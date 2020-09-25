@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 1/3/2020
+ms.date: 09/23/2020
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur
 ms.custom: aaddev, fasttrack-edit
-ms.openlocfilehash: f1c35fc80a4ab5b293a974b8f2901716e65f32b1
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 5d1aa4ff87b272911e4e39076f337ea249b962d9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90705685"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91256597"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Microsoft 身分識別平台端點中的權限和同意
 
@@ -48,15 +48,15 @@ Microsoft 身分識別平台會實作 [OAuth 2.0](active-directory-v2-protocols.
 * 使用 `Calendars.ReadWrite` 來寫入使用者的行事曆
 * 使用 `Mail.Send` 來以使用者身分傳送郵件
 
-應用程式最常要求這些許可權的方法，是在 Microsoft 身分識別平臺授權端點的要求中指定範圍。 不過，某些高許可權許可權只能透過系統管理員同意授與，並使用 [系統管理員同意端點](v2-permissions-and-consent.md#admin-restricted-permissions)來要求/授與。 繼續閱讀以深入了解。
+應用程式最常要求這些許可權的方法，是在 Microsoft 身分識別平臺授權端點的要求中指定範圍。 不過，某些高許可權許可權只能透過系統管理員同意授與，並使用 [系統管理員同意端點](#admin-restricted-permissions)來要求/授與。 繼續閱讀以深入了解。
 
 ## <a name="permission-types"></a>權限類型
 
 Microsoft 身分識別平台支援兩種類型的權限：**委派權限**和**應用程式權限**。
 
-* **委派權限**供已有登入使用者的應用程式使用。 針對這些應用程式，使用者或系統管理員會同意應用程式所要求的許可權，而應用程式會委派許可權，以在呼叫目標資源時作為已登入的使用者。 有些委派權限可由非系統管理使用者同意，但有些較高的特定權限則需要[系統管理員的同意](v2-permissions-and-consent.md#admin-restricted-permissions)。 若要了解哪些系統管理員角色可同意委派權限，請參閱 [Azure AD 中的系統管理員角色權限](../users-groups-roles/directory-assign-admin-roles.md)。
+* **委派權限**供已有登入使用者的應用程式使用。 針對這些應用程式，使用者或系統管理員會同意應用程式所要求的許可權，而應用程式會委派許可權，以在呼叫目標資源時作為已登入的使用者。 有些委派權限可由非系統管理使用者同意，但有些較高的特定權限則需要[系統管理員的同意](#admin-restricted-permissions)。 若要了解哪些系統管理員角色可同意委派權限，請參閱 [Azure AD 中的系統管理員角色權限](../users-groups-roles/directory-assign-admin-roles.md)。
 
-* **應用程式權限**供沒有登入使用者的應用程式在執行時使用；例如，當作背景服務或精靈來執行的應用程式。  應用程式權限只能[由系統管理員同意](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant)。
+* **應用程式權限**供沒有登入使用者的應用程式在執行時使用；例如，當作背景服務或精靈來執行的應用程式。  應用程式權限只能[由系統管理員同意](#requesting-consent-for-an-entire-tenant)。
 
 _有效權限_ 是應用程式向目標資源提出要求時所將具備的權限。 請務必瞭解您的應用程式被授與的委派和應用程式許可權之間的差異，以及對目標資源進行呼叫時的有效許可權。
 
@@ -193,7 +193,7 @@ https://graph.microsoft.com/mail.send
 ```
 
 
-| 參數        | 條件        | 描述                                                                                |
+| 參數        | 條件        | 說明                                                                                |
 |:--------------|:--------------|:-----------------------------------------------------------------------------------------|
 | `tenant` | 必要 | 您想要要求權限的目錄租用戶。 可以用 GUID 或易記名稱格式提供，或是與組織一般參考，如範例中所示。 請勿使用「一般」，因為個人帳戶無法在租使用者的內容中提供系統管理員同意。 若要確保與管理租使用者的個人帳戶具有最佳相容性，請盡可能使用租使用者識別碼。 |
 | `client_id` | 必要 | [Azure 入口網站 - 應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)體驗指派給您應用程式的**應用程式 (用戶端) 識別碼**。 |
@@ -212,7 +212,7 @@ https://graph.microsoft.com/mail.send
 GET http://localhost/myapp/permissions?tenant=a8990e1f-ff32-408a-9f8e-78d3b9139b95&state=state=12345&admin_consent=True
 ```
 
-| 參數 | 描述 |
+| 參數 | 說明 |
 | --- | --- |
 | `tenant` | 將應用程式所要求的權限授與應用程式的目錄租用戶 (採用 GUID 格式)。 |
 | `state` | 一個包含在要求中而將一併在權杖回應中傳回的值。 它可以是您想要的任何內容的字串。 此狀態用於在驗證要求出現之前，於應用程式中編碼使用者的狀態資訊，例如之前所在的網頁或檢視。 |
@@ -302,6 +302,16 @@ response_type=token            //code or a hybrid flow is also possible here
 
 這會對所有已註冊的權限產生同意畫面 (根據上述的同意和 `/.default` 描述，如果適用的話)，然後傳回 id_token，而不是存取權杖。  此行為適用于從 ADAL 移至 MSAL 的某些舊版用戶端，而且 **不應該** 由目標為 Microsoft 身分識別平臺端點的新用戶端使用。
 
+### <a name="client-credentials-grant-flow-and-default"></a>用戶端認證授與流程和/.default
+
+另一種用法 `./default` 是在要求應用程式許可權 (或在非互動式應用程式中) *角色* ，例如使用 [用戶端認證](v2-oauth2-client-creds-grant-flow.md) 授與流程來呼叫 web API 的 daemon 應用程式。
+
+若要建立 web API)  (角色的應用程式許可權，請參閱 [如何：在應用程式中新增](howto-add-app-roles-in-azure-ad-apps.md)應用程式角色。
+
+用戶端應用程式中的用戶端認證要求 **必須** 包含 `scope={resource}/.default` ，其中 `{resource}` 是您的應用程式要呼叫的 web API。 **不**支援使用個別應用程式許可權來發出用戶端認證要求 (角色) 。 已授與該 web API 的所有應用程式許可權 (角色) 將會包含在傳回的存取權杖中。
+
+若要授與您所定義之應用程式許可權的存取權，包括授與應用程式的系統管理員同意，請參閱 [快速入門：設定用戶端應用程式以存取 WEB API](quickstart-configure-app-access-web-apis.md)。
+
 ### <a name="trailing-slash-and-default"></a>尾端斜線和/.default
 
 某些資源 Uri 的尾端斜線 (`https://contoso.com/` 相對於 `https://contoso.com`) ，這可能會導致權杖驗證發生問題。  這可能會發生在要求 Azure 資源管理的權杖時 (`https://management.azure.com/`) ，其資源 URI 上的尾端斜線為，而且要求權杖時必須要有該權杖。  因此，在要求和使用的權杖時， `https://management.azure.com/` `/.default` 您必須要求 `https://management.azure.com//.default` -記下雙斜線！
@@ -311,3 +321,8 @@ response_type=token            //code or a hybrid flow is also possible here
 ## <a name="troubleshooting-permissions-and-consent"></a>針對權限和同意進行疑難排解
 
 如果您或應用程式的使用者在同意程式中看到未預期的錯誤，請參閱這篇文章以取得疑難排解步驟：對 [應用程式執行同意時出現非預期的錯誤](../manage-apps/application-sign-in-unexpected-user-consent-error.md)。
+
+## <a name="next-steps"></a>後續步驟
+
+* [識別碼權杖 |Microsoft 身分識別平臺](id-tokens.md)
+* [存取權杖 |Microsoft 身分識別平臺](access-tokens.md)

@@ -6,14 +6,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: conceptual
-ms.date: 03/13/2020
+ms.date: 09/13/2020
 ms.author: memildin
-ms.openlocfilehash: cf8fdd8d91c035d374277c4752fb761c0c4e72c7
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 416968229e37fe6474da38df5402b0cebf02d54c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905626"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91301970"
 ---
 # <a name="export-security-alerts-and-recommendations"></a>匯出安全性警訊和建議
 
@@ -36,7 +36,7 @@ Azure 資訊安全中心會產生詳細的安全性警示和建議。 您可以�
 |釋放狀態：|正式上市 (GA)|
 |定價：|免費|
 |必要的角色和許可權：|資源群組 (或**擁有**者) 的**安全性系統管理員角色**<br>也必須具有目標資源的寫入權限|
-|雲端：|![Yes](./media/icons/yes-icon.png) 商業雲端<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![Yes](./media/icons/yes-icon.png) 中國 Gov (事件中樞) ，其他 Gov|
+|雲端：|![是](./media/icons/yes-icon.png) 商業雲端<br>![是](./media/icons/yes-icon.png) US Gov<br>![是](./media/icons/yes-icon.png) 中國 Gov (事件中樞) ，其他 Gov|
 |||
 
 
@@ -180,13 +180,13 @@ Azure 監視器針對各種不同的 Azure 警示（包括診斷記錄、計量�
 深入瞭解 [Azure 事件中樞定價](https://azure.microsoft.com/pricing/details/event-hubs/)。
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 在本文中，您已瞭解如何設定建議和警示的連續匯出。 您也已瞭解如何以 CSV 檔案的形式下載您的警示資料。 
 
 如需相關材質，請參閱下列檔： 
 
 - [Azure 事件中樞文件](https://docs.microsoft.com/azure/event-hubs/)
-- [Azure Sentinel 檔](https://docs.microsoft.com/azure/sentinel/)
+- [Azure Sentinel 文件](https://docs.microsoft.com/azure/sentinel/)
 - [Azure 監視器文件](https://docs.microsoft.com/azure/azure-monitor/)
 - [工作流程自動化和連續匯出資料類型架構](https://aka.ms/ASCAutomationSchemas)

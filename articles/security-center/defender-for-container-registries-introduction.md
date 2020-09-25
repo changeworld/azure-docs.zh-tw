@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: conceptual
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 742d230d6ed1535bada9c35219d2ddf68fd64ae1
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 6254b78ad19e7034f78f7891d57a3474fee0c602
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90977162"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91301914"
 ---
 # <a name="introduction-to-azure-defender-for-container-registries"></a>適用于容器登錄的 Azure Defender 簡介
 
@@ -64,19 +64,16 @@ Azure Container Registry (ACR) 是受控的私人 Docker 登錄服務，可在�
 
 安全性中心會篩選並分類掃描器的結果。 當映射狀況良好時，「安全性中心」會將它標示為如此。 安全性中心只會針對有問題要解決的映射產生安全性建議。 藉由只在發生問題時通知，資訊安全中心會降低不必要資訊警示的可能性。
 
-### <a name="how-often-does-security-center-scan-my-images"></a>資訊安全中心掃描我的映射的頻率為何？
-映射掃描會在每次推送或匯入時觸發，以及在過去30天內提取映射。 
-
 ### <a name="can-i-get-the-scan-results-via-rest-api"></a>我可以透過 REST API 取得掃描結果嗎？
 可以。 結果會在 [子評量 REST API](/rest/api/securitycenter/subassessments/list/)下進行。 此外，您也可以使用 Azure Resource Graph (ARG) （適用于所有資源的 Kusto） API：查詢可以提取特定的掃描。
  
 ### <a name="what-registry-types-are-scanned-what-types-are-billed"></a>掃描的登錄類型為何？ 哪些類型會計費？
-[可用性] 區段會列出 Azure Defender 針對容器登錄所支援的容器登錄類型。 
+如需 Azure Defender 針對容器登錄所支援的容器登錄類型清單，請參閱 [可用性](defender-for-container-registries-usage.md#availability)。
 
 如果您將不支援的登錄連接到您的 Azure 訂用帳戶，則不會進行掃描，而且不會向您收取費用。
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 若要深入瞭解資訊安全中心的容器安全性功能，請參閱：
 

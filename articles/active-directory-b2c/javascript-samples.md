@@ -5,44 +5,44 @@ description: 了解在 Azure Active Directory B2C 中使用 JavaScript。
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
-ms.custom: devx-track-javascript
+ms.custom: devx-track-js
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
 ms.date: 02/10/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 947111edf7741f78a40b7d3e77a1dfae22383500
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: a9faca55f8440a28a845e892ee38df2de3489f97
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87169566"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91259487"
 ---
 # <a name="javascript-samples-for-use-in-azure-active-directory-b2c"></a>適用於 Azure Active Directory B2C 中的 JavaScript 範例
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-您可以將自己的 JavaScript 用戶端程式代碼新增至您的 Azure Active Directory B2C （Azure AD B2C）應用程式。
+您可以將自己的 JavaScript 用戶端程式代碼新增至 Azure Active Directory B2C (Azure AD B2C) 應用程式。
 
 若要為您的應用程式啟用 JavaScript：
 
-* 將元素新增至您的[自訂原則](custom-policy-overview.md)
-* 選取[頁面配置](page-layout.md)
+* 將元素新增至您的 [自訂原則](custom-policy-overview.md)
+* 選取 [頁面配置](page-layout.md)
 * 在您的要求中使用[b2clogin.com](b2clogin.md)
 
 本文說明如何變更自訂原則以啟用指令碼執行。
 
 > [!NOTE]
-> 如果您想要為使用者流程啟用 JavaScript，請參閱[Azure Active Directory B2C 中的 javascript 和頁面配置版本](user-flow-javascript-overview.md)。
+> 如果您想要為使用者流程啟用 JavaScript，請參閱 [Azure Active Directory B2C 中的 javascript 和頁面配置版本](user-flow-javascript-overview.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 ### <a name="select-a-page-layout"></a>選取頁面配置
 
-* 為應用程式的使用者介面元素選取[頁面配置](contentdefinitions.md#select-a-page-layout)。
+* 選取應用程式使用者介面元素的 [頁面配置](contentdefinitions.md#select-a-page-layout) 。
 
-    如果您想要使用 JavaScript，您必須[define a page layout version](contentdefinitions.md#migrating-to-page-layout) `contract` 針對自訂原則中的*所有*內容定義，使用頁面版本定義頁面配置版本。
+    如果您想要使用 JavaScript，您必須[define a page layout version](contentdefinitions.md#migrating-to-page-layout) `contract` 針對自訂原則中的*所有*內容定義，定義頁面配置版本與頁面版本。
 
 ## <a name="add-the-scriptexecution-element"></a>新增 ScriptExecution 元素
 
@@ -139,7 +139,7 @@ function addTermsOfUseLink() {
 }
 ```
 
-在程式碼中，請將 `termsOfUseUrl` 取代為您使用規定合約的連結。 針對您的目錄，建立名為**termsOfUse**的新使用者屬性，然後將**termsOfUse**納入為使用者屬性。
+在程式碼中，請將 `termsOfUseUrl` 取代為您使用規定合約的連結。 針對您的目錄，建立名為 **>termsofuse** 的新使用者屬性，然後將 **>termsofuse** 包含為使用者屬性。
 
 ## <a name="next-steps"></a>後續步驟
 

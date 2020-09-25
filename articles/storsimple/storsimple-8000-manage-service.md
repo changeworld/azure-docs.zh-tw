@@ -1,6 +1,6 @@
 ---
 title: 於 Azure 部署 StorSimple 裝置管理員服務 | Microsoft Docs
-description: 說明如何在 Azure 入口網站中建立和刪除 StorSimple 裝置管理員服務，並說明如何管理服務註冊金鑰。
+description: 瞭解建立、刪除、遷移服務和管理服務註冊金鑰所需的步驟。
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 1e75acc03209fdd7e613801c9152f24aaecfa6de
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 73373f788a4a87a36a800d69ffcdc646f4cd2084
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85847107"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91249547"
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-8000-series-devices"></a>為 StorSimple 8000 系列裝置部署 StorSimple 裝置管理員服務
 
@@ -189,23 +189,23 @@ StorSimple 裝置管理員服務在 Microsoft Azure 中執行，並連接至多�
 ## <a name="supported-operations-on-devices-running-versions-prior-to-update-50"></a>執行 Update 5.0 之前版本的裝置上支援的作業
 Azure 入口網站僅支援執行 Update 5.0 和更新版本的 StorSimple 裝置。 對執行舊版本的裝置的支援有限。 移轉至 Azure 入口網站之後，請使用下表了解執行 Update 5.0 之前版本的裝置可支援哪些作業。
 
-| 操作                                                                                                                       | 支援      |
+| 作業                                                                                                                       | 支援      |
 |---------------------------------------------------------------------------------------------------------------------------------|----------------|
 | 註冊裝置                                                                                                               | 是            |
 | 設定裝置設定，例如一般設定、網路設定和安全性設定                                                                | 是            |
 | 掃描、下載，及安裝更新                                                                                             | 是            |
 | 停用裝置                                                                                                               | 是            |
 | 刪除裝置                                                                                                                   | 是            |
-| 建立、修改及刪除磁碟區容器                                                                                   | No             |
-| 建立、修改及刪除磁碟區                                                                                             | No             |
-| 建立、修改及刪除備份原則                                                                                      | No             |
-| 進行手動備份                                                                                                            | No             |
+| 建立、修改及刪除磁碟區容器                                                                                   | 否             |
+| 建立、修改及刪除磁碟區                                                                                             | 否             |
+| 建立、修改及刪除備份原則                                                                                      | 否             |
+| 進行手動備份                                                                                                            | 否             |
 | 進行排程備份                                                                                                         | 不適用 |
-| 從備份組還原                                                                                                        | No             |
+| 從備份組還原                                                                                                        | 否             |
 | 複製至執行 Update 3.0 和更新版本的裝置 <br> 來源裝置執行的是 Update 3.0 之前的版本。                                | 是            |
-| 複製到執行 Update 3.0 之前版本的裝置                                                                          | No             |
+| 複製到執行 Update 3.0 之前版本的裝置                                                                          | 否             |
 | 作為容錯移轉的來源裝置 <br> (從執行 Update 3.0 之前版本的裝置到執行 Update 3.0 和更新版本的裝置)                                                               | 是            |
-| 作為容錯移轉的目標裝置 <br> (到執行 Update 3.0 之前軟體版本的裝置)                                                                                   | No             |
+| 作為容錯移轉的目標裝置 <br> (到執行 Update 3.0 之前軟體版本的裝置)                                                                                   | 否             |
 | 清除警示                                                                                                                  | 是            |
 | 檢視備份原則、備份類別目錄、磁碟區、磁碟區容器、監視圖表、作業，以及傳統入口網站中建立的警示 | 是            |
 | 開啟和關閉裝置控制器                                                                                              | 是            |

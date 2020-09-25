@@ -4,14 +4,14 @@ description: 了解如何在 Azure Cosmos DB 中查詢和存取巢狀 JSON 屬�
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 09/19/2020
 ms.author: tisande
-ms.openlocfilehash: a569b0122f9122b141b64ded21dbd9be1d766a41
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 355f73d46215aa9e05f4ea6d91bb173c77509b63
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83699133"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91270845"
 ---
 # <a name="working-with-json-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中使用 JSON
 
@@ -138,6 +138,34 @@ WHERE EXISTS(
     WHERE n.checkingAccount < 0
 )
 ```
+
+## <a name="difference-between-null-and-undefined"></a>Null 和未定義之間的差異
+
+如果某個屬性未在專案中定義，則其值為 `undefined` 。 具有值的屬性 `null` 必須明確定義並指派 `null` 值。
+
+例如，請考慮下列範例專案：
+
+```json
+{
+  "id": "AndersenFamily",
+  "lastName": "Andersen",
+  "address": {
+      "state": "WA",
+      "county": "King",
+      "city": "Seattle"
+      },
+  "creationDate": null
+}
+```
+
+在此範例中，屬性的 `isRegistered` 值為， `undefined` 因為它會從專案中省略。 屬性 `creationDate` 具有 `null` 值。
+
+Azure Cosmos DB 針對和屬性支援兩種實用的型別檢查系統函數 `null` `undefined` ：
+
+* [IS_Null](sql-query-is-null.md) -檢查屬性值是否為 `null`
+* [IS_DEFINED](sql-query-is-defined.md) -檢查是否已定義屬性值
+
+您可以瞭解 [支援的運算子](sql-query-operators.md) 及其 `null` 和值的行為 `undefined` 。
 
 ## <a name="reserved-keywords-and-special-characters-in-json"></a>JSON 中的保留關鍵字和特殊字元
 

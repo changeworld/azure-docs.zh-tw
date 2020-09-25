@@ -1,14 +1,14 @@
 ---
 title: 補救不相容的資源
 description: 本指南會逐步引導您補救不符合「Azure 原則」中原則規範的資源。
-ms.date: 08/27/2020
+ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 52d8ef6dd66c52edd574b2ccfa51da16623a1afb
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 3b2d145322be8b70e096e49be892018952519cf0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651354"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91269840"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>補救不符合 Azure 原則規範的資源
 
@@ -17,12 +17,16 @@ ms.locfileid: "89651354"
 ## <a name="how-remediation-security-works"></a>補救安全性的運作方式
 
 當「Azure 原則」執行 **deployIfNotExists** 原則定義中的範本時，會使用[受控識別](../../../active-directory/managed-identities-azure-resources/overview.md)來執行。
-「Azure 原則」會為每個指派項目建立受控識別，但您必須提供有關要將哪些角色授與受控識別的詳細資料。 如果受控識別缺少角色，在指派原則或方案時，就會顯示此錯誤。 使用入口網站時，在開始指派之後，「Azure 原則」會自動將所列出的角色授與受控識別。 受控識別的 _位置_ 不會影響其對 Azure 原則的操作。
+「Azure 原則」會為每個指派項目建立受控識別，但您必須提供有關要將哪些角色授與受控識別的詳細資料。 如果受控識別缺少角色，在指派原則或方案時，就會顯示此錯誤。 使用入口網站時，在開始指派之後，「Azure 原則」會自動將所列出的角色授與受控識別。 使用 SDK 時，必須手動將角色授與受控識別。 受控識別的 _位置_ 不會影響其對 Azure 原則的操作。
 
 :::image type="content" source="../media/remediate-resources/missing-role.png" alt-text="DeployIfNotExists 原則的螢幕擷取畫面，其中缺少受控識別上已定義的許可權。" border="false":::
 
 > [!IMPORTANT]
-> 如果 **deployIfNotExists** 或 **modify** 所修改的資源在原則指派的範圍外，或範本會存取在原則指派範圍外資源的屬性，您就必須對該指派項目的受控識別[手動授與存取權](#manually-configure-the-managed-identity)，否則補救部署將會失敗。
+> 在下列案例中，指派的受控識別必須以 [手動方式授與存取權](#manually-configure-the-managed-identity) ，否則補救部署將會失敗：
+>
+> - 如果指派是透過 SDK 建立的
+> - 如果 **deployIfNotExists** 或 **modify** 修改的資源超出原則指派的範圍
+> - 如果範本存取原則指派範圍外的資源屬性
 
 ## <a name="configure-policy-definition"></a>設定原則定義
 

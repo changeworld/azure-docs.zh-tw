@@ -17,13 +17,13 @@ ms.date: 04/29/2020
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.custom: devx-track-javascript
-ms.openlocfilehash: d9b914c631c829c2e3dc71940a171cdb3dc81960
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.custom: devx-track-js
+ms.openlocfilehash: 34962686ae36764a6dc16b164e91004be9ef038d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88077487"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91250414"
 ---
 # <a name="sending-push-notifications-with-azure-notification-hubs-and-nodejs"></a>使用 Azure 通知中樞和 Node.js 傳送推播通知
 
@@ -83,7 +83,7 @@ var notificationHubService = azure.createNotificationHubService('hubname','conne
 藉由執行下列步驟，從 [Azure 入口網站]取得連線 `connectionstring` 值：
 
 1. 在左導覽窗格中，按一下 [瀏覽] ****。
-2. 選取 [通知中樞] ****，然後尋找您要用於範例的中樞。 如果您需要建立新通知中樞的協助，您可以參閱[Windows Store 消費者入門教學](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)課程。
+2. 選取 [通知中樞] ****，然後尋找您要用於範例的中樞。 如果您需要建立新的通知中樞的協助，您可以參考 [Windows Store 消費者入門教學](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) 課程。
 3. 選取 [設定]  。
 4. 按一下 [存取原則] ****。 您會看到兩個共用和完整存取連接字串。
 
@@ -109,7 +109,7 @@ var notificationHubService = azure.createNotificationHubService('hubname','conne
 - **Payload** - 訊息的 JSON 或原始字串承載。
 - **Callback** - 回呼函數。
 
-如需裝載格式的詳細資訊，請參閱裝載[檔](https://distriqt.github.io/ANE-PushNotifications/m.FCM-GCM%20Payload)。
+如需裝載格式的詳細資訊，請參閱裝載 [檔](https://distriqt.github.io/ANE-PushNotifications/m.FCM-GCM%20Payload)。
 
 下列程式碼使用 `NotificationHubService` 所公開的 `GcmService` 執行個體，傳送推播通知至所有已註冊的用戶端。
 
@@ -155,7 +155,7 @@ notificationHubService.apns.send(null, payload, function(error){
 
 - **Tags** - 標籤識別碼。 若未提供標籤，通知會傳送至所有用戶端。
 - **Payload** - 訊息的 XML 承載。
-- **TargetName**  -  TargetName `toast`用於快顯通知。 `token` 代表磚通知。
+- **TargetName**  -  TargetName `toast`快顯通知。 `token` 代表磚通知。
 - **NotificationClass** - 通知的優先順序。 如需有效值，請參閱[來自伺服器的推播通知](/previous-versions/windows/xna/bb200104(v=xnagamestudio.41))文件的＜HTTP 標頭元素＞**** 一節。
 - **Options** - 選用的要求標頭。
 - **Callback** - 回呼函數。

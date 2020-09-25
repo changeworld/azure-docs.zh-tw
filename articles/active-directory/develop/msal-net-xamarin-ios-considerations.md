@@ -13,12 +13,12 @@ ms.date: 09/09/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: f550cb4e9069055da6569492b35fc7fe75d70980
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: 70ab4a151fe73b59663fd8fa16170b2e507c2511
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89594045"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258054"
 ---
 # <a name="considerations-for-using-xamarin-ios-with-msalnet"></a>搭配使用 Xamarin iOS 與 MSAL.NET 的考慮
 
@@ -81,7 +81,7 @@ var builder = PublicClientApplicationBuilder
 
 ### <a name="enable-token-cache-sharing-across-ios-applications"></a>在 iOS 應用程式之間啟用權杖快取共用
 
-從 MSAL 2.x 開始，您可以指定 keychain 存取群組，以在多個應用程式之間保存權杖快取。 這項設定可讓您在多個具有相同 keychain 存取群組的應用程式之間共用權杖快取。 您可以在 [ADAL.NET](https://aka.ms/adal-net) 應用程式、MSAL.NET Xamarin ios 應用程式，以及在 [ADAL. objc](https://github.com/AzureAD/azure-activedirectory-library-for-objc) 或 [MSAL. objc](https://github.com/AzureAD/microsoft-authentication-library-for-objc)中開發的原生 iOS 應用程式之間分享權杖現金。
+從 MSAL 2.x 開始，您可以指定 keychain 存取群組，以在多個應用程式之間保存權杖快取。 這項設定可讓您在多個具有相同 keychain 存取群組的應用程式之間共用權杖快取。 您可以在 [ADAL.NET](https://aka.ms/adal-net) 應用程式、MSAL.NET Xamarin ios 應用程式，以及在 [ADAL. objc](https://github.com/AzureAD/azure-activedirectory-library-for-objc) 或 [MSAL. objc](https://github.com/AzureAD/microsoft-authentication-library-for-objc)中開發的原生 iOS 應用程式之間共用權杖快取。
 
 藉由共用權杖快取，您可以在所有使用相同 keychain 存取群組的應用程式中，允許單一登入 (SSO) 。
 
@@ -147,11 +147,11 @@ Apple 的 [UIApplicationOpenURLOptionsSourceApplicationKey](https://developer.ap
 
 如果您有任何問題，或想要報告您在 MSAL.NET 中發現的問題，請在 GitHub 上的 [AzureAD/microsoft 驗證程式庫 dotnet](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues) 存放庫中開啟問題。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如需 Xamarin iOS 屬性的相關資訊，請參閱下列範例 README.md 檔的 [iOS 特定考慮](https://github.com/Azure-Samples/active-directory-xamarin-native-v2/tree/master/1-Basic#ios-specific-considerations) 段落：
 
-範例 | 平台 | 描述
+範例 | 平台 | 說明
 ------ | -------- | -----------
 [https://github.com/Azure-Samples/active-directory-xamarin-native-v2](https://github.com/azure-samples/active-directory-xamarin-native-v2) | Xamarin iOS、Android、通用 Windows 平臺 (UWP)  | 簡單的 Xamarin Forms 應用程式，示範如何使用 MSAL 透過 Azure AD 2.0 端點驗證 Microsoft 個人帳戶和 Azure AD。 應用程式也會顯示如何使用產生的權杖來存取 Microsoft Graph。
 

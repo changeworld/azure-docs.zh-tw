@@ -3,16 +3,16 @@ title: 將您的 AWS 帳戶連接到 Azure 資訊安全中心
 description: 從 Azure 資訊安全中心監視您的 AWS 資源
 author: memildin
 ms.author: memildin
-ms.date: 9/12/2020
+ms.date: 9/22/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: ee1b8fe6ed97f3b71cda418cce9e432f7c045447
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 33ff6748eba9d0349df244e70f07ad178f258373
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934726"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91250279"
 ---
 #  <a name="connect-your-aws-accounts-to-azure-security-center"></a>將您的 AWS 帳戶連接到 Azure 資訊安全中心
 
@@ -42,7 +42,7 @@ Azure 資訊安全中心保護 Azure 中的工作負載、Amazon Web Services (A
 |釋放狀態：|預覽|
 |定價：|需要 [適用于伺服器的 Azure Defender](defender-for-servers-introduction.md)|
 |必要的角色和許可權：|相關 Azure 訂用帳戶的**擁有**者或**參與者**|
-|雲端：|![Yes](./media/icons/yes-icon.png) 商業雲端<br>![No](./media/icons/no-icon.png) 全國/主權 (US Gov、中國 Gov、其他 Gov) |
+|雲端：|![是](./media/icons/yes-icon.png) 商業雲端<br>![否](./media/icons/no-icon.png) 全國/主權 (US Gov、中國 Gov、其他 Gov) |
 |||
 
 
@@ -191,7 +191,7 @@ Azure 資訊安全中心保護 Azure 中的工作負載、Amazon Web Services (A
 - Red Hat Enterprise Linux (RHEL) 7 (x64) -SSM 應手動安裝或分別上線
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 連接您的 AWS 帳戶是 Azure 資訊安全中心中提供的多雲端體驗的一部分。 如需相關資訊，請參閱下列頁面：
 

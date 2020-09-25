@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 298ca69a659bec2d5262b344c274fac7371390f1
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: f908e37c7785744c2f26b6a9cd542ccde228eb38
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88534344"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91255723"
 ---
 # <a name="tutorial-configure-reward-gateway-for-automatic-user-provisioning"></a>教學課程：設定自動使用者布建的獎勵閘道
 
@@ -53,15 +53,15 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
 1. 登入您的 [獎勵閘道管理主控台](https://rewardgateway.photoshelter.com/login/)。 按一下 [整合] ****。
 
-    ![獎勵閘道管理主控台](media/reward-gateway-provisioning-tutorial/image00.png)
+    ![[獎勵閘道] 管理主控台的螢幕擷取畫面，其中已呼叫 [整合] 選項。](media/reward-gateway-provisioning-tutorial/image00.png)
 
 2.  選取 [ **我的整合**]。
 
-    ![獎勵閘道管理主控台](media/reward-gateway-provisioning-tutorial/image001.png)
+    ![稱為 [我的整合] 選項的兩個整合選項螢幕擷取畫面。](media/reward-gateway-provisioning-tutorial/image001.png)
 
 3.  將 SCIM URL 的值複製 ** (v2) ** 和 **OAuth 持有人權杖**。 這些值會在 Azure 入口網站中您獎勵閘道應用程式之 [布建] 索引標籤的 [租使用者 URL] 和 [秘密權杖] 欄位中輸入。
 
-    ![獎勵閘道管理主控台](media/reward-gateway-provisioning-tutorial/image03.png)
+    ![[我的整合] 面板的螢幕擷取畫面，其中已被稱為 [OAuth 持有人權杖] 文字方塊。](media/reward-gateway-provisioning-tutorial/image03.png)
 
 ## <a name="add-reward-gateway-from-the-gallery"></a>從資源庫新增 Reward Gateway
 
@@ -104,11 +104,11 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
 3. 選取 [佈建] 索引標籤。
 
-    ![佈建索引標籤](common/provisioning.png)
+    ![已呼叫 [布建] 選項的 [管理選項] 螢幕擷取畫面。](common/provisioning.png)
 
 4. 將 [佈建模式] 設定為 [自動]。
 
-    ![佈建索引標籤](common/provisioning-automatic.png)
+    ![[布建模式] 下拉式清單的螢幕擷取畫面，其中已呼叫 [自動] 選項。](common/provisioning-automatic.png)
 
 5. 在 [系統**管理員認證**] 區段底下，分別輸入**SCIM url (v2) **和先前在租使用者**URL**和**秘密權杖**中抓取的**OAuth 持有人權杖**值。 按一下 [ **測試連接** ]，以確保 Azure AD 可以連接至獎勵閘道。 如果連接失敗，請確定您的獎勵閘道帳戶具有系統管理員許可權，然後再試一次。
 
@@ -118,15 +118,15 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
     ![通知電子郵件](common/provisioning-notification-email.png)
 
-7. 按一下 [檔案] 。
+7. 按一下 [檔案]  。
 
 8. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 使用者至獎勵閘道**]。
 
-    ![獎勵閘道管理主控台](media/reward-gateway-provisioning-tutorial/user-mappings.png)
+    ![[對應] 區段的螢幕擷取畫面，其中包含 [同步處理 Azure Active Directory 使用者與獎勵閘道] 選項。](media/reward-gateway-provisioning-tutorial/user-mappings.png)
 
 9. 在 [ **屬性對應** ] 區段中，檢查從 Azure AD 同步至獎勵閘道的使用者屬性。 選取為 [比對] 屬性 **的屬性會** 用來比對獎勵閘道中的使用者帳戶，以進行更新作業。 選取 [儲存] 按鈕以認可所有變更。
 
-    ![獎勵閘道管理主控台](media/reward-gateway-provisioning-tutorial/user-attributes.png)
+    ![顯示六個對應的 [屬性對應] 區段螢幕擷取畫面。](media/reward-gateway-provisioning-tutorial/user-attributes.png)
 
 10. 若要設定範圍篩選，請參閱[範圍篩選教學課程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中提供的下列指示。
 

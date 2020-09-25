@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 06/10/2020
 ms.author: aahi
-ms.openlocfilehash: 440f901f06e431c371b7445f4a04499c475c9aa1
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 5ffa5398143bff4e24d81a28a541e16c44700c99
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936699"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91254018"
 ---
 # <a name="how-to-deploy-a-people-counting-web-application"></a>How to：部署人員計數 web 應用程式
 
@@ -28,7 +28,7 @@ ms.locfileid: "90936699"
 * 在 Web 應用程式中設定 IoT 中樞連接
 * 部署和測試 Web 應用程式
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/cognitive-services/)
 * Azure IoT Edge 部署設定和[Azure IoT 中樞](https://docs.microsoft.com/azure/iot-hub/)的基本瞭解
@@ -181,8 +181,8 @@ docker push [desired local image name]
 
 等待安裝程式完成，然後流覽至您在 Azure 入口網站中的資源。 移至 [設定 **] 區段，** 並新增下列兩個 **應用程式設定**。
 
-* `EventHubConsumerGroup` – Azure IoT 中樞取用者群組的字串名稱，您可以在 IoT 中樞內建立新的取用者群組，或使用預設群組。 
-* `IotHubConnectionString`– Azure IoT 中樞的連接字串，可從 Azure IoT 中樞資源設定參數的 [金鑰] 區段中取出。 ![](./media/spatial-analysis/solution-app-config-page.png)
+* `EventHubConsumerGroup` –您的 Azure IoT 中樞取用者群組的字串名稱，您可以在 IoT 中樞內建立新的取用者群組，或使用預設群組。 
+* `IotHubConnectionString`–您 Azure IoT 中樞的連接字串，可從 Azure IoT 中樞資源設定參數的 [金鑰] 區段中取出。 ![](./media/spatial-analysis/solution-app-config-page.png)
 
 加入這兩個設定之後，請按一下 [ **儲存**]。 然後按一下左側導覽功能表中的 [ **驗證/授權** ]，並使用所需的驗證層級加以更新。 我們建議使用 Azure Active Director (Azure AD) express。 
 
@@ -192,7 +192,7 @@ docker push [desired local image name]
 
 ![測試部署](./media/spatial-analysis/solution-app-output.png)
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [設定空間分析作業](./spatial-analysis-operations.md)
 * [記錄和疑難排解](spatial-analysis-logging.md)

@@ -3,16 +3,16 @@ title: 如何回應 Azure Defender 的 Key Vault 警示
 description: 瞭解從 Azure Defender 針對 Key Vault 回應警示所需的步驟。
 author: memildin
 ms.author: memildin
-ms.date: 9/12/2020
+ms.date: 9/22/2020
 ms.topic: conceptual
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: a3f47f00b171601e73ea4668286adf944f48459f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: dd153eb1b0e96165bccc807a72bc3614ded49428
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936754"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91301681"
 ---
 # <a name="respond-to-azure-defender-for-key-vault-alerts"></a>回應適用於 Key Vault 的 Azure Defender 警示
 當您從 Azure Defender 針對 Key Vault 收到警示時，建議您調查並回應警示，如下所述。 適用于 Key Vault 的 Azure Defender 可保護應用程式和認證，因此即使您熟悉觸發警示的應用程式或使用者，也請務必確認每個警示周圍的狀況。  
@@ -66,7 +66,7 @@ Azure Defender for Key Vault 的每個警示都包含下列元素：
     1. 如果使用了遭盜用的認證，應用程式擁有者應該識別已存取的資訊並減輕影響。
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 此頁面說明從 Azure Defender 針對 Key Vault 回應警示的流程。 如需相關資訊，請參閱下列頁面：
 

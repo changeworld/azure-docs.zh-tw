@@ -3,12 +3,12 @@ title: 管理 Azure 實驗室服務中的實驗室帳戶 | Microsoft Docs
 description: 了解如何在 Azure 訂用帳戶中建立實驗室帳戶、檢視所有實驗室帳戶，或刪除實驗室帳戶。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 13b477504833b8d72845735304563eef334c49ac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 33e5e42f65fdd34bb37b12947b5173700ad7970c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445486"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91251655"
 ---
 # <a name="create-and-manage-lab-accounts"></a>建立及管理實驗室帳戶
 在 Azure Lab Services 中，實驗室帳戶是受控實驗室類型 (例如教室實驗室) 的容器。 系統管理員會使用 Azure 實驗室服務來設定實驗室帳戶，並向可以在帳戶中建立實驗室的實驗室擁有者提供存取權。 本文說明如何建立實驗室帳戶、檢視所有實驗室帳戶，或刪除實驗室帳戶。
@@ -43,7 +43,7 @@ ms.locfileid: "85445486"
         ![建立實驗室帳戶 -> 進階](./media/how-to-manage-lab-accounts/create-lab-account-advanced.png)  
 6. 選取頁面底部的 [下一步:標籤]，切換至 [標籤] 索引標籤。新增您想要與實驗室帳戶產生關聯的任何標籤。 標籤為成對的名稱和值，可讓您將相同的標籤套用至多個資源與資源群組，以便為資源分類及檢視合併的帳單。 如需詳細資訊，請參閱 [使用標記組織您的 Azure 資源](../azure-resource-manager/management/tag-resources.md)。
 
-    ![建立實驗室帳戶 -> 標籤](./media/how-to-manage-lab-accounts/create-lab-account-tags.png)
+    ![顯示 [建立實驗室帳戶] 頁面的螢幕擷取畫面，其中反白顯示 [標記] 索引標籤。](./media/how-to-manage-lab-accounts/create-lab-account-tags.png)
 7. 選取此頁面底部的 [檢閱 + 建立]，切換至 [檢閱 + 建立] 索引標籤。 
 4. 請參閱此頁面上的摘要資訊，然後選取 [建立]。 
 

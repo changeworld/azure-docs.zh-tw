@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 08/03/2020
 ms.author: matjazl
-ms.openlocfilehash: 36945d998bf00d7b229b5ae3cce1958953ade601
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 35b59fb0583911b5b9faee96276d1bb09a8d6679
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90978617"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91269704"
 ---
 # <a name="frequently-asked-questions-about-the-azure-api-for-fhir"></a>Azure API for FHIR 的常見問題
 
@@ -65,6 +65,23 @@ Azure API for FHIR 是適用于 Azure 的開放原始碼 Microsoft FHIR Server �
 
 針對群組匯出，我們只會匯出群組中包含的參考，而不是 [群組資源](https://www.hl7.org/fhir/group.html)的所有特性。
 
+### <a name="can-i-post-a-bundle-to-the-azure-api-for-fhir"></a>我可以將配套發佈到 Azure API for FHIR 嗎？
+
+我們目前支援張貼 [批次](https://www.hl7.org/fhir/valueset-bundle-type.html) 套件組合，但不支援在 Azure API for FHIR 中張貼交易配套。 您可以使用 SQL 支援的開放原始碼 FHIR 伺服器來張貼交易配套。
+
+### <a name="how-can-i-get-all-resources-for-a-single-patient-in-the-azure-api-for-fhir"></a>如何在 Azure API for FHIR 中取得單一患者的所有資源？
+
+我們支援 Azure API for FHIR 中的區間 [搜尋](https://www.hl7.org/fhir/compartmentdefinition.html) 。 這可讓您取得與特定患者相關的所有資源。 請注意，現在的區間會包含與患者相關的所有資源，而不是患者本身，因此，如果您的結果中需要患者資源，您也必須搜尋以取得患者。
+
+以下是一些範例：
+
+* 取得患者/<id>/*
+* 取得患者/ <id> /Observation
+* 取得患者/ <id> /Observation？ code = 8302-2
+
+### <a name="where-can-i-see-some-examples-of-using-the-azure-api-for-fhir-within-a-workflow"></a>哪裡可以查看在工作流程中使用 Azure API for FHIR 的一些範例？
+
+我們在 [健康情況架構 GitHub 頁面](https://github.com/microsoft/health-architectures)上有一組可用的參考架構。
 
 ## <a name="azure-iot-connector-for-fhir-preview"></a>Azure IoT Connector for FHIR (預覽)
 
@@ -98,7 +115,7 @@ Azure IoT Connector for FHIR 目前不支援 Private Link 功能。 因此，如
 
 從開發的觀點來看，每項功能都是先部署到開放原始碼 IoMT FHIR Connector for Azure。 在開放原始碼中驗證之後，它就會發行至 Azure API for FHIR 服務的 PaaS Azure IoT Connector for FHIR 功能。 開放原始碼和 PaaS 中的發行之間的時間，取決於功能的複雜度和其他的藍圖優先順序。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 在本文中，您已閱讀 Azure API for FHIR 的一些常見問題。 閱讀 FHIR Server for Azure 中支援的功能：
  

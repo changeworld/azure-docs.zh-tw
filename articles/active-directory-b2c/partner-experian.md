@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 07/22/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 5c2fb330149d3e6530e7cb0fc3350d5db3fa24cf
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: a88894bb7462e9ac3afd16d69ae820dd98543a5f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683873"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91259368"
 ---
 # <a name="tutorial-for-configuring-experian-with-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 設定 Experian 的教學課程
 
@@ -36,7 +36,7 @@ ms.locfileid: "88683873"
 - 國家/地區
 - 電話號碼
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要開始使用，您需要：
 
@@ -58,7 +58,7 @@ Experian 整合包含下列元件：
 
 ![experian 的螢幕擷取畫面-架構-圖表](media/partner-experian/experian-architecture-diagram.png)
 
-|步驟 | 描述 |
+|步驟 | 說明 |
 |:-----| :-----------|
 | 1. | 使用者抵達登入頁面。 使用者選取註冊以建立新的帳戶，並在頁面中輸入資訊。 Azure AD B2C 會收集使用者屬性。
 | 2. | Azure AD B2C 會呼叫中介層 API，並傳遞使用者屬性。
@@ -77,7 +77,7 @@ Experian 整合包含下列元件：
 
 ### <a name="part-1---deploy-the-api"></a>第1部分-部署 API
 
-將提供的 API 程式碼部署至 Azure 服務。 您可以依照下列 [指示](https://docs.microsoft.com/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019)，從 Visual Studio 發佈程式碼。
+將提供的 [API 程式碼](https://github.com/azure-ad-b2c/partner-integrations/blob/master/samples/Experian/CrossCoreIntegrationApi/CrossCoreIntegrationApi.sln) 部署至 Azure 服務。 您可以依照下列 [指示](https://docs.microsoft.com/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019)，從 Visual Studio 發佈程式碼。
 
 >[!NOTE]
 >您將需要已部署之服務的 URL，以使用必要的設定來設定 Azure AD。
@@ -117,7 +117,7 @@ Experian API 呼叫受用戶端憑證保護。 Experian 會提供此用戶端憑
 
 ### <a name="part-5---replace-the-configuration-values"></a>第5部分-取代設定值
 
-在提供的自訂原則中，找出下列預留位置，並取代為您實例中的對應值
+在提供的 [自訂原則](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Experian/policy)中，找出下列預留位置，並取代為您實例中的對應值
 
 |                      預留位置                       |                                   取代值                                 |                   範例                    |
 | ------------------------------------------------------ | -------------------------------------------------------------------------------- | -------------------------------------------- |

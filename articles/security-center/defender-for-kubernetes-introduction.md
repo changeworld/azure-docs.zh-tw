@@ -7,12 +7,12 @@ ms.date: 9/12/2020
 ms.topic: conceptual
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: e72875135243733a6acf03bb3aa6fb9405392d9d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: a7fb97f1036515f82fa3e61c18f95eadf0af704d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936567"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91301698"
 ---
 # <a name="introduction-to-azure-defender-for-kubernetes"></a>Azure Defender for Kubernetes 簡介
 
@@ -31,7 +31,7 @@ Azure 資訊安全中心和 AKS 形成最佳的雲端原生 Kubernetes 安全性
 |釋放狀態：|正式上市 (GA)|
 |定價：|**適用于 Kubernetes 的 Azure Defender**會依[定價頁面上的](security-center-pricing.md)顯示計費|
 |必要的角色和許可權：|**安全性系統管理員** 可以關閉警示。<br>**安全性讀取者**可以查看結果。|
-|雲端：|![Yes](./media/icons/yes-icon.png) 商業雲端<br>![No](./media/icons/no-icon.png) 全國/主權 (US Gov、中國 Gov、其他 Gov) |
+|雲端：|![是](./media/icons/yes-icon.png) 商業雲端<br>![否](./media/icons/no-icon.png) 全國/主權 (US Gov、中國 Gov、其他 Gov) |
 |||
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-kubernetes"></a>適用于 Kubernetes 的 Azure Defender 有哪些優點？
@@ -44,14 +44,14 @@ Azure 資訊安全中心和 AKS 形成最佳的雲端原生 Kubernetes 安全性
 
 - **適用于伺服器的 Azure defender 所提供的主機層級 () ** -使用資訊安全中心在其他 vm 上使用的相同 Log Analytics 代理程式，Azure Defender 會監視您的 Linux AKS 節點是否有可疑的活動，例如 web shell 偵測和與已知可疑 IP 位址的連接。 代理程式也會監視容器特定的分析，例如特殊許可權的容器建立、對 API 伺服器的可疑存取，以及在 Docker 容器內執行 (SSH) 伺服器的安全殼層。
 
-    如需 AKS 主機層級警示的清單，請參閱 [警示的參考表](https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-containerhost)。
+    如需 AKS 主機層級警示的清單，請參閱 [警示的參考表](alerts-reference.md#alerts-containerhost)。
 
     >[!IMPORTANT]
     > 如果您選擇不在主機上安裝此代理程式，則只會收到部分的威脅防護權益和安全性警示。 您仍會收到與網路分析以及與惡意伺服器通訊有關的警示。
 
 - **Azure Defender For Kubernetes) 所提供的 AKS 叢集層級 (** -在叢集層級，威脅防護是以分析 Kubernetes 的 audit 記錄為基礎。 若要啟用此 **無代理** 程式監視，請啟用 Azure Defender。 為了在此層級產生警示，資訊安全中心會使用 AKS 所擷取的記錄來監視受 AKS 管理的服務。 此層級的事件範例包括公開 Kubernetes 儀表板、建立高特殊權限的角色，以及建立敏感性裝載。
 
-    如需 AKS 叢集層級警示的清單，請參閱[警示的參考資料表](https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-akscluster)。
+    如需 AKS 叢集層級警示的清單，請參閱[警示的參考資料表](alerts-reference.md#alerts-akscluster)。
 
     >[!NOTE]
     > 資訊安全中心會針對在訂用帳戶設定上啟用 Kubernetes 選項後所發生的 Azure Kubernetes Service 動作和部署產生安全性警示。 
@@ -90,7 +90,7 @@ Azure 資訊安全中心和 AKS 形成最佳的雲端原生 Kubernetes 安全性
 如果您選擇不在主機上安裝代理程式，則只會收到威脅防護權益和安全性警示的子集。 您仍會收到與網路分析以及與惡意伺服器通訊有關的警示。
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 在本文中，您已瞭解資訊安全中心的 Kubernetes 保護，包括適用于 Kubernetes 的 Azure Defender。 
 

@@ -1,14 +1,14 @@
 ---
 title: 使用 Azure 實驗室服務設定以深度學習為主的實驗室 | Microsoft Docs
-description: 了解如何設定實驗室來教授 Linux 上的殼層指令碼。
+description: 瞭解如何使用 Azure 實驗室服務，設定以自然語言處理 (NLP) 的深度學習為焦點的實驗室。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: c5ac93109d24c0d5936c8f271276c02e4e6f6c19
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 01199e76b7b9cb1a6360b5aba010d0cfd8936c23
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85443939"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91251451"
 ---
 # <a name="set-up-a-lab-focused-on-deep-learning-in-natural-language-processing-using-azure-lab-services"></a>使用 Azure 實驗室服務，設定以深度學習自然語言處理為主的實驗室
 本文將說明如何使用 Azure 實驗室服務，設定以深度學習自然語言處理 (NLP) 為主的實驗室。 自然語言處理 (NLP) 是一種人工智慧 (AI) 形式，可讓電腦具有翻譯、語音辨識和其他語言理解功能。  
@@ -28,7 +28,7 @@ ms.locfileid: "85443939"
 
 | 實驗室設定 | 值/指示 | 
 | ------------ | ------------------ |
-| 虛擬機器 (VM) 大小 | **小型 GPU （計算）**。 此大小最適用於計算密集型及網路密集型應用程式，例如人工智慧及深度學習。 |
+| 虛擬機器 (VM) 大小 | **小型 GPU (計算) **。 此大小最適用於計算密集型及網路密集型應用程式，例如人工智慧及深度學習。 |
 | VM 映像 | [適用於 Linux (Ubuntu) 的資料科學虛擬機器](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804)。 此映像提供機器學習服務和資料科學的深度學習架構和工具。 若要查看此映像上已安裝工具的完整清單，請參閱下列文章：[DSVM 包含哪些內容？](../machine-learning/data-science-virtual-machine/overview.md#whats-included-on-the-dsvm) |
 | 啟用遠端桌面連線 | <p>資料科學映像已設為使用 X2Go，讓教師和學生皆可使用 GUI 遠端桌面進行連線。  X2Go *不*需要啟用 [啟用遠端桌面連線] 設定。  只有在您選擇改用 RDP 時，才需要啟用此設定。
 

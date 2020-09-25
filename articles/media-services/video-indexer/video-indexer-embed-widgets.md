@@ -10,13 +10,13 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 08/10/2020
 ms.author: juliako
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 5f418384d4ec1272600df2488dc71d2102d6a24d
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.custom: devx-track-js
+ms.openlocfilehash: 1bc751ae293abbb7aa330a99a4b66a917d150906
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89011798"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268616"
 ---
 # <a name="embed-video-indexer-widgets-in-your-apps"></a>在您的應用程式中內嵌影片索引子小工具
 
@@ -30,11 +30,11 @@ ms.locfileid: "89011798"
 
 認知深入解析小工具包含從您的影片索引編製程序中擷取的所有視覺化深入解析。 認知深入解析小工具支援下列選擇性 URL 參數：
 
-|名稱|定義|描述|
+|名稱|定義|說明|
 |---|---|---|
 |`widgets` | 以逗號分隔的字串 | 可讓您控制您想要呈現的見解。<br/>範例： `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,keywords` 只呈現人員和關鍵字 UI 見解。<br/>可用的選項：人員、animatedCharacters、關鍵字、標籤、情緒、表情、主題、主要畫面格、文字記錄、ocr、喇叭、場景和 namedEntities。|
 |`controls`|以逗號分隔的字串|可讓您控制要轉譯的控制項。<br/>範例： `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?controls=search,download` 只呈現搜尋選項和下載按鈕。<br/>可用的選項：搜尋、下載、預設語言。|
-|`language`|簡短的語言代碼 (語言名稱) |控制見解語言。<br/>範例：`https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?language=es-es` <br/>或 `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?language=spanish`|
+|`language`|簡短的語言代碼 (語言名稱) |控制見解語言。<br/>範例： `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?language=es-es` <br/>或 `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?language=spanish`|
 |`locale` | 簡短的語言代碼 | 控制 UI 的語言。 預設值是 `en`。 <br/>範例： `locale=de`.|
 |`tab` | 預設的選取索引標籤 | 控制預設呈現的 [ **見解** ] 索引標籤。 <br/>範例： `tab=timeline` 呈現已選取 [ **時程表** ] 索引標籤的見解。|
 |`location` ||`location`參數必須包含在內嵌連結中，請參閱[如何取得您的區功能變數名稱稱](regions.md)。 如果您的帳戶處於預覽狀態，則應該將其 `trial` 用於位置值。 `trial` 這是參數的預設值 `location` 。| 
@@ -43,7 +43,7 @@ ms.locfileid: "89011798"
 
 您可以使用播放程式 widget，利用彈性位元速率來串流影片。 播放機小工具支援下列選擇性 URL 參數。
 
-|名稱|定義|描述|
+|名稱|定義|說明|
 |---|---|---|
 |`t` | 開始的秒數 | 讓播放玩家從指定的時間點開始播放。<br/> 範例： `t=60`. |
 |`captions` | 語言代碼 | 在 widget 載入時，以指定的語言提取標題，以便在 **標題** 功能表上使用。<br/> 範例： `captions=en-US`. |
@@ -70,7 +70,7 @@ ms.locfileid: "89011798"
 
 本節討論如何將公開和私用內容內嵌至應用程式。
 
-`location`參數必須包含在內嵌連結中，請參閱[如何取得您的區功能變數名稱稱](regions.md)。 如果您的帳戶處於預覽狀態，則應該將其 `trial` 用於位置值。 `trial` 這是參數的預設值 `location` 。 例如： `https://www.videoindexer.ai/accounts/00000000-0000-0000-0000-000000000000/videos/b2b2c74b8e/?location=trial` 。
+`location`參數必須包含在內嵌連結中，請參閱[如何取得您的區功能變數名稱稱](regions.md)。 如果您的帳戶處於預覽狀態，則應該將其 `trial` 用於位置值。 `trial` 這是參數的預設值 `location` 。 例如：`https://www.videoindexer.ai/accounts/00000000-0000-0000-0000-000000000000/videos/b2b2c74b8e/?location=trial`。
 
 > [!IMPORTANT]
 > 共用 **播放機** 或 **見解** widget 的連結將會包含存取權杖，並將唯讀許可權授與您的帳戶。
@@ -291,7 +291,7 @@ iframe 視窗的標題也可透過將 `&title=<YourTitle>` 提供給 iframe URL 
 
 請參閱包含影片索引子 API 和小工具範例的程式 [代碼範例](https://github.com/Azure-Samples/media-services-video-indexer/tree/master/Embedding%20widgets) 存放庫：
 
-| 檔案/資料夾                       | 描述                                |
+| 檔案/資料夾                       | 說明                                |
 |-----------------------------------|--------------------------------------------|
 | `azure-media-player`              | 在自訂 Azure 媒體播放機中載入影片索引子影片。                        |
 | `azure-media-player-vi-insights`  | 使用自訂 Azure 媒體播放機內嵌 VI 見解。                             |

@@ -1,8 +1,8 @@
 ---
 title: 使用 Azure 通知中樞將推播通知傳送給特定使用者 |Microsoft Docs
-description: 了解如何使用 Azure 通知中樞將推播通知傳送至特定的使用者。
+description: 瞭解如何使用 Azure 通知中樞將推播通知傳送給特定 iOS 使用者。
 documentationcenter: ios
-author: sethm
+author: sethmanheim
 manager: femila
 services: notification-hubs
 ms.service: notification-hubs
@@ -14,12 +14,12 @@ ms.date: 08/07/2020
 ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 0d53709a9fd7cb3f40f540e1bb96c2be12b75f2c
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 167c666c536ee33531fd069dbd1edb530331a9f3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88004175"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91302184"
 ---
 # <a name="tutorial-send-push-notifications-to-specific-users-using-azure-notification-hubs"></a>教學課程：使用 Azure 通知中樞將推播通知傳送給特定使用者
 
@@ -40,17 +40,17 @@ ms.locfileid: "88004175"
 
 ## <a name="prerequisites"></a>必要條件
 
-本教學課程假設您已建立並設定通知中樞，如[使用 Azure 通知中樞將推播通知傳送至 iOS 應用程式](ios-sdk-get-started.md)中所述。 本教學課程還是 [安全推播 (iOS)](notification-hubs-aspnet-backend-ios-push-apple-apns-secure-notification.md) 教學課程的必要條件。
+本教學課程假設您已建立並設定通知中樞，如 [使用 Azure 通知中樞將推播通知傳送至 iOS 應用程式](ios-sdk-get-started.md)中所述。 本教學課程還是 [安全推播 (iOS)](notification-hubs-aspnet-backend-ios-push-apple-apns-secure-notification.md) 教學課程的必要條件。
 如果您想要使用 Mobile Apps 作為您的後端服務，請參閱 [開始使用 Mobile Apps 推播](/previous-versions/azure/app-service-mobile/app-service-mobile-ios-get-started-push)。
 
 [!INCLUDE [notification-hubs-aspnet-backend-notifyusers](../../includes/notification-hubs-aspnet-backend-notifyusers.md)]
 
 ## <a name="modify-your-ios-app"></a>修改您的 iOS 應用程式
 
-1. 開啟您在[使用通知中樞 Azure 將推播通知傳送至 iOS 應用程式](ios-sdk-get-started.md)教學課程中所建立的單一網頁檢視應用程式。
+1. 開啟您在「 [使用 Azure 通知中樞將推播通知傳送至 iOS 應用程式](ios-sdk-get-started.md) 」教學課程中建立的單一網頁檢視應用程式。
 
    > [!NOTE]
-   > 本節假設您已使用空白組織名稱來設定您的專案。 如果不是，請在所有類別名稱前面加上您的組織名稱。
+   > 本節假設您已使用空白組織名稱來設定您的專案。 如果沒有，請在所有類別名稱前面加上您的組織名稱。
 
 2. 在 `Main.storyboard` 檔案中，從物件程式庫新增螢幕擷取畫面中顯示的元件。
 
@@ -64,9 +64,9 @@ ms.locfileid: "88004175"
    * **APNS**：啟用傳送通知給 Apple 平台通知服務之功能的標籤與開關。
    * **收件者使用者名稱：** 含有預留位置文字 (*收件者使用者名稱標記*) 的 UITextField，位於 GCM 標籤正下方，且受到左右邊界與 GCM 正下方的限制。
 
-     某些元件已新增[至使用 Azure 通知中樞將推播通知傳送至 iOS 應用程式](ios-sdk-get-started.md)教學課程。
+     在 [使用 Azure 通知中樞將推播通知傳送至 iOS 應用程式](ios-sdk-get-started.md) 教學課程中，已新增一些元件。
 
-3. **Ctrl**從 view 中的元件拖曳至 `ViewController.h` ，並新增這些新的輸出：
+3. **Ctrl** 從 view 中的元件拖曳至 `ViewController.h` ，並新增這些新的輸出：
 
     ```objc
     @property (weak, nonatomic) IBOutlet UITextField *UsernameField;
@@ -92,7 +92,7 @@ ms.locfileid: "88004175"
     #define BACKEND_ENDPOINT @"<Your backend endpoint>"
     ```
 
-5. 在您的專案中，建立一個名為 `RegisterClient` 的新 Cocoa Touch 類別，作為與您所建立 ASP.NET 後端互動的介面。 建立繼承自 `NSObject`的類別。 然後在中新增下列程式碼 `RegisterClient.h` ：
+5. 在您的專案中，建立一個名為 `RegisterClient` 的新 Cocoa Touch 類別，作為與您所建立 ASP.NET 後端互動的介面。 建立繼承自 `NSObject`的類別。 然後，在中新增下列程式碼 `RegisterClient.h` ：
 
     ```objc
     @interface RegisterClient : NSObject
@@ -341,9 +341,9 @@ ms.locfileid: "88004175"
     }
     ```
 
-    請注意，設定裝置權杖會啟用 [**登入**] 按鈕。 這是因為作為登入動作的一部分，檢視控制器會向應用程式後端註冊推播通知。 您不想要讓**登入**動作能夠存取，直到裝置權杖已正確設定為止。 只要登入是在推播註冊之前發生，您就可以將前者與後者分開。
+    請注意設定裝置權杖如何啟用 [ **登入** ] 按鈕。 這是因為作為登入動作的一部分，檢視控制器會向應用程式後端註冊推播通知。 在裝置權杖已正確設定之前，您不希望 **登入** 動作可以存取。 只要登入是在推播註冊之前發生，您就可以將前者與後者分開。
 
-11. 在 ViewController 中，使用下列程式碼片段來執行 [**登入**] 按鈕的動作方法，以及使用 ASP.NET 後端傳送通知訊息的方法。
+11. 在 ViewController 中，使用下列程式碼片段來執行 [ **登入** ] 按鈕的動作方法，以及使用 ASP.NET 後端傳送通知訊息的方法。
 
     ```objc
     - (IBAction)LogInAction:(id)sender {
@@ -479,11 +479,11 @@ ms.locfileid: "88004175"
 ## <a name="test-the-application"></a>測試應用程式
 
 1. 在 XCode 中，在實體 iOS 裝置上執行應用程式 (推播通知無法在模擬器中運作)。
-2. 在 iOS 應用程式 UI 中，為使用者名稱和密碼輸入相同的值。 然後按一下 [**登入**]。
+2. 在 iOS 應用程式 UI 中，為使用者名稱和密碼輸入相同的值。 然後按一下 [ **登入**]。
 
     ![iOS 測試應用程式][2]
 
-3. 您應該會看到註冊成功的快顯通知。 按一下 [確定]  。
+3. 您應該會看到註冊成功的快顯通知。 按一下 [確定]。
 
     ![顯示的 iOS 測試通知][3]
 

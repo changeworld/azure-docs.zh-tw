@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: cbea99b08ed0cbcc1125d15c78119a509b6dcc48
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 3edd7ddf79f8400462b52f964b7677840a7e86df
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90977257"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91301953"
 ---
 # <a name="container-security-in-security-center"></a>安全性中心的容器安全性
 
@@ -58,7 +58,7 @@ Azure 資訊安全中心是 Azure 原生解決方案，用來保護您的容器�
 
 Azure 資訊安全中心識別裝載于 IaaS Linux Vm 上的非受控容器，或執行 Docker 容器的其他 Linux 機器。 安全性中心會持續評估這些容器的設定。 然後，它會將它們與 [網際網路安全性 (CIS) Docker 基準測試的中心](https://www.cisecurity.org/benchmark/docker/)進行比較。
 
-如果您的容器無法滿足任何控制項，則 [安全性中心] 會包含 CIS Docker 基準測試的完整規則集，併發出警示。 當它找到錯誤配置時，安全性中心會產生安全性建議。 您可以使用 [ **建議] 頁面** 來查看建議和補救問題。 您也會在 [ **容器** ] 索引標籤上看到建議，顯示使用 Docker 部署的所有虛擬機器。 CIS 基準測試檢查不會在 AKS 管理的實例或 Databricks 管理的 Vm 上執行。
+如果您的容器無法滿足任何控制項，則 [安全性中心] 會包含 CIS Docker 基準測試的完整規則集，併發出警示。 當它找到錯誤配置時，安全性中心會產生安全性建議。 使用 [資訊中心的 **建議] 頁面** 來查看建議和補救問題。 CIS 基準測試檢查不會在 AKS 管理的實例或 Databricks 管理的 Vm 上執行。
 
 如需此功能可能出現之相關資訊安全中心建議的詳細資訊，請參閱建議參考表的 [容器一節](recommendations-reference.md#recs-containers) 。
 
@@ -95,7 +95,7 @@ AKS 可提供安全性控制和您叢集安全性狀態的可見度。 [安全�
 
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 在此總覽中，您已瞭解 Azure 資訊安全中心中容器安全性的核心元素。 如需相關內容，請參閱：
 

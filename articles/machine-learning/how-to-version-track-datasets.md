@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 03/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 21969f52223a4e0c7de6ee26c0a6f9e2f96366b1
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 27cf60f09a8c0f149aec16dd81da0e7ce0707a15
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90902337"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91302089"
 ---
 # <a name="version-and-track-datasets-in-experiments"></a>實驗中的版本和追蹤資料集
 
@@ -28,7 +28,7 @@ ms.locfileid: "90902337"
 * 當新資料可供重新訓練時
 * 當您要套用不同的資料準備或特徵工程方法時
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 在本教學課程中，您需要：
 
@@ -63,7 +63,7 @@ titanic_ds = titanic_ds.register(workspace = workspace,
 
 ### <a name="retrieve-a-dataset-by-name"></a>依名稱取得資料集
 
-根據預設，類別上的 [get_by_name ( # B1 ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#&preserve-view=trueget-by-name-workspace--name--version--latest--) 方法會傳回 `Dataset` 已向工作區註冊之資料集的最新版本。 
+根據預設，類別上的 [get_by_name ( # B1 ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py&preserve-view=true#&preserve-view=trueget-by-name-workspace--name--version--latest--) 方法會傳回 `Dataset` 已向工作區註冊之資料集的最新版本。 
 
 下列程式碼會取得資料集的第1版 `titanic_ds` 。
 
@@ -158,7 +158,7 @@ prep_step = PythonScriptStep(script_name="prepare.py",
 
 針對每個 Machine Learning 實驗，您可以輕鬆地透過實驗物件來追蹤作為輸入的資料集 `Run` 。
 
-下列程式碼會使用 [`get_details()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#&preserve-view=trueget-details--) 方法來追蹤哪些輸入資料集與實驗執行搭配使用：
+下列程式碼會使用 [`get_details()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py&preserve-view=true#&preserve-view=trueget-details--) 方法來追蹤哪些輸入資料集與實驗執行搭配使用：
 
 ```Python
 # get input datasets
@@ -189,7 +189,7 @@ model = run.register_model(model_name='keras-mlp-mnist',
 
 ![輸入資料集模型](./media/how-to-version-track-datasets/dataset-models.png)
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [使用資料集定型](how-to-train-with-datasets.md)
 * [更多範例資料集筆記本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/work-with-data/)

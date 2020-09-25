@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 5959ccd2699ef1162779a4a1d90ab6bb8af1bbbf
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 0a72ea413e7298c8e6cb622cb985e6516435b451
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544840"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91255772"
 ---
 # <a name="tutorial-configure-theorgwiki-for-automatic-user-provisioning"></a>教學課程：設定 TheOrgWiki 來自動布建使用者
 
@@ -55,23 +55,23 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
 1. 登入您的 [TheOrgWiki 管理主控台](https://www.theorgwiki.com/login/)。 按一下 [ **管理主控台**]。
 
-    ![TheOrgWiki 新增 SCIM](media/theorgwiki-provisioning-tutorial/login.png)
+    ![已呼叫使用者頭像和管理主控台的組織 Wiki 螢幕擷取畫面。](media/theorgwiki-provisioning-tutorial/login.png)
 
 2. 在 [管理主控台] 中，按一下 [ **設定]** 索引標籤。 
 
-    ![TheOrgWiki 新增 SCIM](media/theorgwiki-provisioning-tutorial/settings.png)
+    ![組織 Wiki 管理主控台的螢幕擷取畫面，其中已呼叫 [設定] 索引標籤。](media/theorgwiki-provisioning-tutorial/settings.png)
     
 3. 流覽至 [ **服務帳戶**]。
 
-    ![TheOrgWiki 新增 SCIM](media/theorgwiki-provisioning-tutorial/serviceaccount.png)
+    ![組織 Wiki 管理主控台中 [服務帳戶] 頁面的螢幕擷取畫面。](media/theorgwiki-provisioning-tutorial/serviceaccount.png)
 
-4. 按一下 [ **+ 服務帳戶**]。 在 [ **服務帳戶類型**] 下，選取 [ **權杖依據**]。 按一下 [檔案] 。
+4. 按一下 [ **+ 服務帳戶**]。 在 [ **服務帳戶類型**] 下，選取 [ **權杖依據**]。 按一下 [檔案]  。
 
-    ![TheOrgWiki 新增 SCIM](media/theorgwiki-provisioning-tutorial/auth.png)
+    ![[新增服務帳戶] 對話方塊的螢幕擷取畫面，其中包含服務帳戶類型、以權杖為基礎的儲存選項，以及已呼叫的儲存選項。](media/theorgwiki-provisioning-tutorial/auth.png)
 
 5.  複製使用中的 **權杖**。 在 Azure 入口網站的 TheOrgWiki 應用程式的 [布建] 索引標籤中，將會在 [秘密權杖] 欄位中輸入此值。
      
-    ![TheOrgWiki 新增 SCIM](media/theorgwiki-provisioning-tutorial/token.png)
+    ![[管理 C I M 布建的權杖] 對話方塊的螢幕擷取畫面。](media/theorgwiki-provisioning-tutorial/token.png)
 
 ## <a name="add-theorgwiki-from-the-gallery"></a>從資源庫新增 TheOrgWiki
 
@@ -95,15 +95,15 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
 5. 選取 [ **註冊 TheOrgWiki** ] 按鈕，這會將您重新導向至 TheOrgWiki 的登入頁面。 
 
-    ![TheOrgWiki 新增 SCIM](media/theorgwiki-provisioning-tutorial/image00.png)
+    ![[組織 Wiki 登入] 頁面的螢幕擷取畫面，其中 URL 稱為 out](media/theorgwiki-provisioning-tutorial/image00.png)
 
 6.  選取右上角的 **[登**入]。
 
-    ![TheOrgWiki 新增 SCIM](media/theorgwiki-provisioning-tutorial/image02.png)
+    ![登入頁面右上角的螢幕擷取畫面，其中已呼叫 [登入] 選項。](media/theorgwiki-provisioning-tutorial/image02.png)
 
 7. 由於 TheOrgWiki 是 OpenIDConnect 應用程式，請選擇使用您的 Microsoft 公司帳戶登入 OrgWiki。
 
-    ![TheOrgWiki 新增 SCIM](media/theorgwiki-provisioning-tutorial/image03.png)
+    ![[組織 Wiki 登入] 頁面的螢幕擷取畫面，其中已呼叫使用 Microsoft 帳戶登入選項。](media/theorgwiki-provisioning-tutorial/image03.png)
     
 8. 成功驗證之後，應用程式會自動新增至您的租使用者，而系統會將您重新導向至您的 TheOrgWiki 帳戶。
 
@@ -126,11 +126,11 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
 3. 選取 [佈建] 索引標籤。
 
-    ![佈建索引標籤](common/provisioning.png)
+    ![已呼叫 [布建] 選項的 [管理選項] 螢幕擷取畫面。](common/provisioning.png)
 
 4. 將 [佈建模式] 設定為 [自動]。
 
-    ![佈建索引標籤](common/provisioning-automatic.png)
+    ![[布建模式] 下拉式清單的螢幕擷取畫面，其中已呼叫 [自動] 選項。](common/provisioning-automatic.png)
 
 5. 在 [ **管理員認證** ] 區段下的 [ `https://<TheOrgWiki Subdomain        value>.theorgwiki.com/api/v2/scim/v2/` **租使用者 URL**] 中輸入。 
 
@@ -147,7 +147,7 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
     ![通知電子郵件](common/provisioning-notification-email.png)
 
-8. 按一下 [檔案] 。
+8. 按一下 [檔案]  。
 
 9. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 使用者至 TheOrgWiki**]。
 

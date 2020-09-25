@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 07/20/2018
-ms.openlocfilehash: ae0abe288edda2ce01311d8533b1f104409efce0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3a71c78dcbaa5fb02927e9a2cfdea40cd5b26130
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75666868"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91269092"
 ---
 # <a name="handle-content-types-in-azure-logic-apps"></a>在 Azure 邏輯應用程式中處理內容類型
 
@@ -61,7 +61,7 @@ Logic Apps 可讓您產生方便使用的權杖來表示 JSON 內容中的屬性
   
   2. 在 [輸入或貼上範例 JSON 承載]**** 之下，提供範例承載，然後選擇 [完成]****。 例如： 
 
-     ![提供範例 JSON 承載](./media/logic-apps-content-type/request-trigger.png)
+     ![顯示具有範例 JSON 承載的 [收到 HTTP 要求時] 視窗的螢幕擷取畫面。](./media/logic-apps-content-type/request-trigger.png)
 
      產生的結構描述現在會出現在觸發程序中。
 
@@ -141,8 +141,8 @@ Logic Apps 一律會在收到的 HTTP 要求或回應中保留 `Content-Type`。
 * `binary()`：將資料轉換為 `application/octet-stream`
 * `string()`：將資料轉換為 `text/plain`
 * `base64()`：將內容轉換為 base64 編碼的字串
-* `base64toString()`：將 base64 編碼的字串轉換為`text/plain`
-* `base64toBinary()`：將 base64 編碼的字串轉換為`application/octet-stream`
+* `base64toString()`：將 base64 編碼的字串轉換為 `text/plain`
+* `base64toBinary()`：將 base64 編碼的字串轉換為 `application/octet-stream`
 * `dataUri()`：將字串轉換為數據 URI
 * `dataUriToBinary()`：將資料 URI 轉換為二進位字串
 * `dataUriToString()`：將資料 URI 轉換為字串
@@ -175,10 +175,10 @@ Logic Apps 可處理和支援其他內容類型，但可能會要求您將 `$con
 
 Logic Apps 會提供可供處理表單資料的原生函式，例如： 
 
-* [triggerFormDataValue()](../logic-apps/workflow-definition-language-functions-reference.md#triggerFormDataValue)
-* [triggerFormDataMultiValues()](../logic-apps/workflow-definition-language-functions-reference.md#triggerFormDataMultiValues)
-* [formDataValue()](../logic-apps/workflow-definition-language-functions-reference.md#formDataValue) 
-* [formDataMultiValues()](../logic-apps/workflow-definition-language-functions-reference.md#formDataMultiValues)
+* [triggerFormDataValue ( # B1 ](../logic-apps/workflow-definition-language-functions-reference.md#triggerFormDataValue)
+* [triggerFormDataMultiValues ( # B1 ](../logic-apps/workflow-definition-language-functions-reference.md#triggerFormDataMultiValues)
+* [formDataValue ( # B1 ](../logic-apps/workflow-definition-language-functions-reference.md#formDataValue) 
+* [formDataMultiValues ( # B1 ](../logic-apps/workflow-definition-language-functions-reference.md#formDataMultiValues)
 
 或者，您可以使用如以下範例所示的運算式，手動存取資料：
 

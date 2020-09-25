@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev, fasttrack-edit
-ms.openlocfilehash: f8906c5fb934546ac8b1a95f817874f91f6c3b95
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: c468ecb390a3ad321f9fe0619204994dfbf3fbb4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90015801"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91256751"
 ---
 # <a name="application-types-for-microsoft-identity-platform"></a>Microsoft 身分識別平台的應用程式類型
 
@@ -117,6 +117,9 @@ Web API 可以從所有類型的應用程式接收存取權杖，包括 Web 伺�
 在此流程中，應用程式會在使用者登入時，從 Microsoft 身分識別平台端點接收授權碼。 授權碼代表應用程式具備權限，可代表登入的使用者呼叫後端服務。 應用程式可以在背景中以授權碼交換 OAuth 2.0 存取權杖和重新整理權杖。 應用程式可以使用存取權杖在 HTTP 要求中向 Web API 進行驗證，以及在舊存取權杖到期時，使用重新整理權杖來取得新的存取權杖。
 
 ![顯示原生應用程式驗證流程](./media/v2-app-types/convergence-scenarios-native.svg)
+
+> [!NOTE]
+> 如果應用程式使用預設的系統網頁程式碼，請參閱 [Azure AD authentication 和授權錯誤碼](reference-aadsts-error-codes.md)中的「確認我的登入」功能和錯誤碼 AADSTS50199 的相關資訊。
 
 ## <a name="daemons-and-server-side-apps"></a>精靈和伺服器端應用程式
 

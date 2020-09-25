@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: deli, jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 93c796fd16dde8c238265d16a96b9cfa4a254ea9
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 1826b17a971b49fdfe8d5df02d71eb682b15db6f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90994458"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91269721"
 ---
 # <a name="manage-azure-resources-and-monitor-costs-by-creating-automation-tasks-preview"></a>藉由建立自動化工作 (預覽版來管理 Azure 資源和監視成本) 
 
@@ -30,6 +30,7 @@ ms.locfileid: "90994458"
 | 所有 Azure 資源 | **傳送資源的每月費用** |
 | Azure 虛擬機器 | 此外： <p>- **關閉虛擬機器的電源** <br>- **啟動虛擬機器** |
 | Azure 儲存體帳戶 | 此外： <p>- **刪除舊的 blob** |
+| Azure Cosmos DB | 此外： <p>- **透過電子郵件傳送查詢結果** |
 |||
 
 本文說明如何完成下列工作：
@@ -40,11 +41,13 @@ ms.locfileid: "90994458"
 
 * [編輯工作](#edit-task) ，讓您可以更新工作，或在邏輯應用程式設計工具中自訂工作的基礎工作流程。
 
+<a name="differences"></a>
+
 ## <a name="how-do-automation-tasks-differ-from-azure-automation"></a>自動化工作與 Azure 自動化有何不同？
 
-目前，您只能在資源層級建立自動化工作、查看工作的執行歷程記錄，以及編輯工作的基礎邏輯應用程式工作流程（由 [Azure Logic Apps](../logic-apps/logic-apps-overview.md) 服務提供支援）。
+目前，您只能在資源層級建立自動化工作、查看工作的執行歷程記錄，以及編輯工作的基礎邏輯應用程式工作流程（由 [Azure Logic Apps](../logic-apps/logic-apps-overview.md) 服務提供支援）。 自動化工作比 [Azure 自動化](../automation/automation-intro.md)更基本且輕量。
 
-[Azure 自動化](../automation/automation-intro.md) 是以雲端為基礎的自動化和設定服務，可在您的 azure 和非 Azure 環境中支援一致的管理。 此服務包含程式自動化，可使用[runbook](../automation/automation-runbook-execution.md)、設定管理、[變更追蹤和清查](../automation/change-tracking.md)、更新管理、共用功能和異類功能[來協調處理](../automation/automation-intro.md#process-automation)程式。 自動化會在部署、作業和解除委任工作負載與資源期間，提供完整的控制權。
+相較之下，Azure 自動化是以雲端為基礎的自動化和設定服務，可在您的 Azure 和非 Azure 環境中支援一致的管理。 此服務包含程式自動化，可使用[runbook](../automation/automation-runbook-execution.md)、設定管理、[變更追蹤和清查](../automation/change-tracking.md)、更新管理、共用功能和異類功能[來協調處理](../automation/automation-intro.md#process-automation)程式。 自動化會在部署、作業和解除委任工作負載與資源期間，提供完整的控制權。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -264,6 +267,6 @@ ms.locfileid: "90994458"
 
 我們想要聽取您的意見！ 若要報告錯誤、提供意見反應，或詢問有關此預覽功能的問題，請 [洽詢 Azure Logic Apps 團隊](mailto:logicapps@microsoft.com)。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [管理 Azure 入口網站中的邏輯應用程式](../logic-apps/manage-logic-apps-with-azure-portal.md)

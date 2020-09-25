@@ -3,16 +3,16 @@ title: 適用於 IoT 的 Azure Defender
 description: 瞭解適用于 IoT 的 Azure Defender
 author: memildin
 ms.author: memildin
-ms.date: 9/12/2020
+ms.date: 9/22/2020
 ms.topic: conceptual
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 67bb01092cb6171ae56b8ab8b308e0c2ea3bece0
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 307916680d9a05a5083aea057b2ef4b855a4ff57
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934606"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91301800"
 ---
 # <a name="introduction-to-azure-defender-for-iot"></a>適用于 IoT 的 Azure Defender 簡介
 
@@ -32,7 +32,7 @@ ms.locfileid: "90934606"
 |釋放狀態：|正式上市 (GA)|
 |定價：|需要 [Azure Defender](security-center-pricing.md)|
 |必要的角色和許可權：|電腦 Nsg 上的寫入權限|
-|雲端：|![Yes](./media/icons/yes-icon.png) 商業雲端<br>![Yes](./media/icons/yes-icon.png) 全國/主權 (US Gov、中國 Gov、其他 Gov) |
+|雲端：|![是](./media/icons/yes-icon.png) 商業雲端<br>![是](./media/icons/yes-icon.png) 全國/主權 (US Gov、中國 Gov、其他 Gov) |
 |||
 
 ## <a name="what-devices-can-azure-defender-for-iot-secure"></a>適用于 IoT 的 Azure Defender 可以保護哪些裝置？
@@ -56,7 +56,7 @@ SecOps 團隊可以：
 - 整合適用于 IoT 的 Azure Defender 與現有的 SOC 工作流程，以及協力廠商的安全性工具，例如 Splunk、IBM QRadar 和 ServiceNow
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 在本文中，您已瞭解 Azure 資訊安全中心中適用于 IoT 的 Azure Defender。 如需詳細資訊，請參閱
 

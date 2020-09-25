@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 隨選串流匯入 Postman 集合作業
-description: 本文提供適用於 Azure 媒體服務 REST 呼叫之 Postman 集合的定義。
+description: 瞭解 Postman 集合，其中包含呼叫 Azure 媒體服務 REST Api 的分組 HTTP 要求。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: f5f7a40cb72e1ae58f7962c4c8b80195a82ebdc5
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 3927133b9cbd59a5d085e7406d9dceb177a47637
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89259263"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268633"
 ---
 # <a name="import-a-postman-collection-with-on-demand-streaming-operations"></a>使用隨選串流匯入 Postman 集合作業
 
