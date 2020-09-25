@@ -1,7 +1,7 @@
 ---
 title: 已知問題：線上遷移至 SQL Database
 titleSuffix: Azure Database Migration Service
-description: 深入瞭解使用 Azure 資料庫移轉服務 Azure SQL Database 線上遷移的已知問題/遷移限制。
+description: 瞭解使用 Azure 資料庫移轉服務來 Azure SQL Database 線上遷移至的已知問題/遷移限制。
 services: database-migration
 author: pochiraju
 ms.author: rajpo
@@ -10,21 +10,21 @@ ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: da0c00f0b4a8f2c49996fbcb9b34ee4a1ab65273
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 6648a20e03facad4b791cacba8513f9f1aa7d2f0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85856639"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91291906"
 ---
-# <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-sql-database"></a>線上遷移到 Azure SQL Database 的已知問題/遷移限制
+# <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-sql-database"></a>線上遷移至 Azure SQL Database 的已知問題/遷移限制
 
 從 SQL Server 線上移轉到 Azure SQL Database 的相關聯已知問題和限制，如下所述。
 
 > [!IMPORTANT]
-> SQL Server Azure SQL Database 的線上遷移，則不支援 SQL_variant 資料類型的遷移。
+> 將 SQL Server 的線上遷移至 Azure SQL Database 時，不支援 SQL_variant 資料類型的遷移。
 
 ### <a name="migration-of-temporal-tables-not-supported"></a>不支援移轉時態表
 
@@ -40,7 +40,7 @@ ms.locfileid: "85856639"
 
 **因應措施**
 
-請使用下列步驟。
+使用下列步驟。
 
 1. 請使用以下的查詢，在您的來源結構描述中尋找時態表。
 
@@ -66,7 +66,7 @@ ms.locfileid: "85856639"
 
 **因應措施**
 
-請使用下列步驟。
+使用下列步驟。
 
 1. 請使用以下查詢，尋找使用者資料表，該資料表包含具有 hierarchyid 資料類型的資料行。
 
@@ -82,7 +82,7 @@ ms.locfileid: "85856639"
 
 **因應措施**
 
-請使用下列步驟。
+使用下列步驟。
 
 1. 請使用以下查詢，尋找來源資料庫中目前使用中的觸發程序：
 
@@ -106,7 +106,7 @@ SELECT max(DATALENGTH(ColumnName)) as LEN from TableName
 
 **因應措施**
 
-如果您有大於 32 KB 的 LOB 資料行，請聯絡工程小組，[詢問 Azure 資料庫移轉](mailto:AskAzureDatabaseMigrations@service.microsoft.com)。
+如果您有大於 32 KB 的 LOB 資料行，請洽詢工程團隊， [詢問 Azure 資料庫的遷移](mailto:AskAzureDatabaseMigrations@service.microsoft.com)。
 
 ### <a name="issues-with-timestamp-columns"></a>時間戳記資料行的問題
 
@@ -116,13 +116,13 @@ Azure 資料庫移轉服務不會遷移來源時間戳記值;相反地，Azure �
 
 **因應措施**
 
-如果您需要 Azure 資料庫移轉服務來遷移儲存在來源資料表中的確切時間戳記值，請洽詢工程小組，[詢問 Azure 資料庫移轉](mailto:AskAzureDatabaseMigrations@service.microsoft.com)。
+如果您需要 Azure 資料庫移轉服務來遷移儲存在來源資料表中的確切時間戳記值，請洽詢工程團隊， [要求 Azure 資料庫移轉](mailto:AskAzureDatabaseMigrations@service.microsoft.com)。
 
-### <a name="data-migration-errors-dont-provide-additional-details-on-the-database-detailed-status-blade"></a>資料移轉錯誤不會在 [資料庫詳細狀態] 分頁上提供其他詳細資料
+### <a name="data-migration-errors-dont-provide-additional-details-on-the-database-detailed-status-blade"></a>資料移轉錯誤未提供資料庫詳細狀態分頁的其他詳細資料
 
 **徵兆**
 
-當您在 [資料庫詳細資料] 狀態視圖中遇到跨遷移失敗時，選取頂端功能區上的 [**資料移轉錯誤**] 連結，可能不會提供有關遷移失敗的其他詳細資訊。
+當您在 [資料庫詳細資料] 狀態視圖中遇到不同的遷移失敗時，選取頂端功能區上的 [ **資料移轉錯誤** ] 連結可能無法提供有關遷移失敗的其他詳細資料。
 
 ![資料移轉錯誤沒有詳細資料範例](media/known-issues-azure-sql-online/dms-data-migration-errors-no-details.png)
 
@@ -136,7 +136,7 @@ Azure 資料庫移轉服務不會遷移來源時間戳記值;相反地，Azure �
 
 2. 選取 [查看錯誤詳細資料]****，以檢視特定錯誤訊息，協助您針對移轉錯誤進行疑難排解。
 
-### <a name="geography-datatype-not-supported-in-sqldb-online-migration"></a>SQLDB online 遷移中不支援 Geography 資料類型
+### <a name="geography-datatype-not-supported-in-sqldb-online-migration"></a>SQLDB online 遷移不支援 Geography 資料類型
 
 **徵兆**
 
@@ -148,7 +148,7 @@ Azure 資料庫移轉服務不會遷移來源時間戳記值;相反地，Azure �
 
 **因應措施**
 
-雖然 Azure 資料庫移轉服務支援 [Geography] 資料類型以進行離線遷移至 Azure SQL Database，但對於線上遷移而言，不支援 Geography 資料類型。 嘗試使用替代方法，將來源的資料類型變更為支援的類型，然後再嘗試使用 Azure 資料庫移轉服務來進行此資料庫的線上遷移。
+雖然 Azure 資料庫移轉服務支援將地理位置資料類型用於離線遷移至 Azure SQL Database，但若要進行線上遷移，則不支援地理資料類型。 嘗試使用 Azure 資料庫移轉服務來線上遷移此資料庫之前，請先嘗試使用替代方法，將來源的資料類型變更為支援的類型。
 
 ### <a name="supported-editions"></a>支援的版本
 
@@ -162,4 +162,4 @@ Migration settings validation error: The edition of the server [Business Intelli
 
 **因應措施**
 
-支援使用 Azure 資料庫移轉服務對 Azure SQL Database 進行線上遷移，只會延伸至 Enterprise、Standard 和 Developer 版本。 開始進行遷移程式之前，請確定您使用的是支援的版本。
+使用 Azure 資料庫移轉服務來 Azure SQL Database 的線上遷移支援僅延伸至 Enterprise、Standard 和 Developer 版本。 開始進行遷移程式之前，請確定您使用的是支援的版本。

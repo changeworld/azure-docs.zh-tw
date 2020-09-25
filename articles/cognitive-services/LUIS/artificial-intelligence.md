@@ -2,14 +2,16 @@
 title: 人工智慧 (AI)
 description: LUIS 使用人工智慧 (AI) 根據您定義的架構，為您的資料提供語言理解。
 ms.topic: conceptual
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.date: 08/07/2020
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: bdcede01ec6bab5f8b43d89ff40d588a011d5dfb
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 2586bf2d31ef28c662ad88bde3718541bb21a31c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88751357"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327199"
 ---
 # <a name="artificial-intelligence-in-language-understanding-luis"></a>Language Understanding (LUIS 中的人工智慧) 
 
@@ -39,7 +41,7 @@ LUIS 使用人工智慧 (AI) 根據您所定義的架構，為您的資料提供
 * 由其他 [認知服務](../Welcome.md) 提供的查詢語句前置或後置處理，例如：
     * [翻譯](../translator/translator-info-overview.md)
 
-## <a name="natural-language-understanding-nlu"></a>自然語言理解 (NLU) 
+## <a name="natural-language-understanding-nlu"></a>自然語言理解 (NLU)
 
 NLU 是將語言語句 _轉換_ 成標記法的能力，讓您可以自然地瞭解您的使用者。 自然語言理解仍是極具挑戰性的問題，而且定義為 _AI_ 難題。
 

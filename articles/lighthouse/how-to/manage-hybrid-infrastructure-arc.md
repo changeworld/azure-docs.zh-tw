@@ -1,14 +1,14 @@
 ---
 title: 使用 Azure Arc 大規模管理混合式基礎結構
 description: 瞭解如何有效地管理客戶的電腦和 Azure 外部的 Kubernetes 叢集。
-ms.date: 09/15/2020
+ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 2ffbe9019398896c594b7cb0e0424d2b5f4dc37a
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 66a798265683045d7ff9f3d8d811141800d08f9b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90605321"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336610"
 ---
 # <a name="manage-hybrid-infrastructure-at-scale-with-azure-arc"></a>使用 Azure Arc 大規模管理混合式基礎結構
 
@@ -16,19 +16,16 @@ ms.locfileid: "90605321"
 
 [Azure Arc](../../azure-arc/overview.md) 有助於簡化跨內部部署、邊緣和多重雲端的複雜和分散式環境，讓您可以在任何位置部署 azure 服務並將 azure 管理延伸到任何基礎結構。
 
-在 [Azure Arc 啟用的伺服器 (preview) ](../../azure-arc/servers/overview.md)中，客戶可以使用管理原生 Azure 虛擬機器的相同方式，在其公司網路上管理裝載于 Azure 外部的任何 Windows 和 Linux 機器。 透過將混合式機器連結至 Azure，其會變成已連線，而且系統會將其視為 Azure 中的資源。 服務提供者可以接著管理這些非 Azure 機器，以及其客戶的 Azure 資源。
+在 [啟用 Azure Arc 的伺服器](../../azure-arc/servers/overview.md)上，客戶可以使用管理原生 Azure 虛擬機器的相同方式，在其公司網路上管理裝載于 Azure 外部的任何 Windows 和 Linux 機器。 透過將混合式機器連結至 Azure，其會變成已連線，而且系統會將其視為 Azure 中的資源。 服務提供者可以接著管理這些非 Azure 機器，以及其客戶的 Azure 資源。
 
 [Azure Arc Enabled Kubernetes (preview) ](../../azure-arc/kubernetes/overview.md) 可讓客戶在 Azure 內部或外部附加和設定 Kubernetes 叢集。 將 Kubernetes 叢集附加至 Azure Arc 時，它會出現在 Azure 入口網站中，並具有 Azure Resource Manager 識別碼和受控識別。 叢集會附加至標準 Azure 訂用帳戶 (位於資源群組中)，且可以如同任何其他 Azure 資源接收標籤。
 
-本主題概要說明服務提供者如何使用 Azure Arc 啟用的伺服器 (preview) 以及 Azure Arc 啟用的 Kubernetes (preview) ，以可調整的方式來管理客戶的混合式環境，並在所有受管理的客戶租使用者之間查看。
+本主題概要說明服務提供者如何使用 Azure Arc 啟用的伺服器和 Azure Arc 啟用的 Kubernetes (預覽) ，以可調整的方式來管理客戶的混合式環境，並在所有受控客戶租使用者之間查看。
 
 > [!TIP]
 > 雖然我們指的是本主題中的服務提供者和客戶，但本指南也適用于 [使用 Azure Lighthouse 來管理多個](../concepts/enterprise.md)租使用者的企業。
 
-## <a name="manage-hybrid-servers-at-scale-with-azure-arc-enabled-servers-preview"></a>使用 Azure Arc 啟用的伺服器 (預覽版，大規模管理混合式伺服器) 
-
-> [!NOTE]
-> Azure Arc 啟用的伺服器目前為預覽狀態。 目前不建議用於生產工作負載。
+## <a name="manage-hybrid-servers-at-scale-with-azure-arc-enabled-servers"></a>使用已啟用 Azure Arc 的伺服器大規模管理混合式伺服器
 
 如果您是服務提供者，您可以在 Azure 外部管理內部部署 Windows Server 或 Linux 機器，而您的客戶已使用 [Azure Connected Machine 代理程式](../../azure-arc/servers/agent-overview.md)連接到其訂用帳戶。
 

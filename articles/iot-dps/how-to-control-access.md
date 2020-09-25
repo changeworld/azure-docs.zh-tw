@@ -8,13 +8,13 @@ services: iot-dps
 ms.topic: conceptual
 ms.date: 04/09/2019
 ms.author: wesmc
-ms.custom: devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: 5190ff2575f80a7c1c8c4fc9b386441497de23fb
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.custom: devx-track-js, devx-track-csharp
+ms.openlocfilehash: 3a374dae89ddf22d33bc44cafd9db3b4b6a9e6fb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020315"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336815"
 ---
 # <a name="control-access-to-azure-iot-hub-device-provisioning-service"></a>控制 Azure IoT 中樞裝置佈建服務的存取權
 

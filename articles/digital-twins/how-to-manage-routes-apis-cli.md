@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 6/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 27b745353521a44733c46170a5f5952c194c2343
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 2cde352738c1aa545c77cbcf5d974030cd75b1e8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89293501"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326519"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>管理 Azure 數位 Twins 中的端點和路由 (Api 和 CLI) 
 
@@ -24,10 +24,10 @@ ms.locfileid: "89293501"
 
 您也可以透過 [Azure 入口網站](https://portal.azure.com)來管理它們。 如需使用入口網站的文章版本，請參閱 [*如何： (入口網站) 管理端點和路由 *](how-to-manage-routes-portal.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 您將需要 **Azure 帳戶** (您可以在 [這裡](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 免費設定一個帳戶) 
-* 您將需要 azure 訂用帳戶中的 **Azure 數位 Twins 實例** 。 如果您還沒有實例，可以使用 how [*to：設定實例和驗證*](how-to-set-up-instance-scripted.md)中的步驟來建立一個實例。 設定中的下列值可方便用於本文稍後：
+* 您將需要 azure 訂用帳戶中的 **Azure 數位 Twins 實例** 。 如果您還沒有實例，可以使用 how [*to：設定實例和驗證*](how-to-set-up-instance-portal.md)中的步驟來建立一個實例。 設定中的下列值可方便用於本文稍後：
     - 執行個體名稱
     - 資源群組
     
@@ -44,7 +44,7 @@ ms.locfileid: "89293501"
 
 ### <a name="create-an-event-grid-endpoint"></a>建立事件方格端點
 
-下列範例示範如何使用 Azure CLI 建立事件方格型別端點。 您可以使用 [Azure Cloud Shell](https://shell.azure.com)，或 [在本機安裝 CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
+下列範例示範如何使用 Azure CLI 建立事件方格型別端點。 您可以使用 [Azure Cloud Shell](https://shell.azure.com)，或 [在本機安裝 CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)。
 
 首先，建立事件方格主題。 您可以使用下列命令，或是造訪事件方格*自訂事件*快速入門的[[*建立自訂主題*] 區段](../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic)，更詳細地查看步驟。
 
@@ -184,7 +184,7 @@ catch (RequestFailedException e)
 
 [!INCLUDE [digital-twins-route-metrics](../../includes/digital-twins-route-metrics.md)]
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 瞭解您可以接收的不同事件訊息類型：
 * [*How to：解讀事件資料*](how-to-interpret-event-data.md)
