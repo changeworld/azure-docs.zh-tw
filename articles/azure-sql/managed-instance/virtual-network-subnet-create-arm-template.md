@@ -10,21 +10,21 @@ ms.devlang: ''
 ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
-ms.reviewer: sstein, bonova, carlrab
+ms.reviewer: sstein, bonova
 ms.date: 09/12/2019
-ms.openlocfilehash: 9ec6b7747ad22df96fd8ab5f9b5b5bc1e27b0993
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 2688d6a3c339153c155a6ced8a555242a069769f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543736"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323136"
 ---
 # <a name="create-a-virtual-network-for-azure-sql-managed-instance"></a>建立 Azure SQL 受控執行個體的虛擬網路
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-本文說明如何建立有效的虛擬網路和子網，您可以在其中部署 Azure SQL 受控執行個體。
+本文說明如何建立可在其中部署 Azure SQL 受控執行個體的有效虛擬網路和子網。
 
-Azure SQL 受控執行個體必須部署在 Azure[虛擬網路](../../virtual-network/virtual-networks-overview.md)內。 此部署適用於下列案例：
+Azure SQL 受控執行個體必須部署在 Azure [虛擬網路](../../virtual-network/virtual-networks-overview.md)內。 此部署適用於下列案例：
 
 - 安全的私人 IP 位址
 - 直接從內部部署網路連接到 SQL 受控執行個體
@@ -32,11 +32,11 @@ Azure SQL 受控執行個體必須部署在 Azure[虛擬網路](../../virtual-ne
 - 將 SQL 受控執行個體連接至 Azure 資源  
 
 > [!NOTE]
-> 您應該先[判斷 SQL 受控執行個體的子網大小](vnet-subnet-determine-size.md)，再部署第一個實例。 在其中放入資源後，就無法再調整子網路的大小。
+> 您應該先 [決定 SQL 受控執行個體的子網大小](vnet-subnet-determine-size.md) ，然後再部署第一個實例。 在其中放入資源後，就無法再調整子網路的大小。
 >
-> 如果您打算使用現有的虛擬網路，則必須修改該網路設定以配合 SQL 受控執行個體。 如需詳細資訊，請參閱[針對 SQL 受控執行個體修改現有的虛擬網路](vnet-existing-add-subnet.md)。
+> 如果您打算使用現有的虛擬網路，您必須修改該網路設定以容納 SQL 受控執行個體。 如需詳細資訊，請參閱 [修改現有的虛擬網路以進行 SQL 受控執行個體](vnet-existing-add-subnet.md)。
 >
-> 建立受控實例之後，不支援將受控實例或虛擬網路移至另一個資源群組或訂用帳戶。  也不支援將受控實例移至另一個子網。
+> 建立受控實例之後，不支援將受控實例或虛擬網路移至另一個資源群組或訂用帳戶。  此外，也不支援將受控實例移至另一個子網。
 >
 
 ## <a name="create-a-virtual-network"></a>建立虛擬網路
@@ -47,12 +47,12 @@ Azure SQL 受控執行個體必須部署在 Azure[虛擬網路](../../virtual-ne
 
 2. 選取 [部署至 Azure]**** 按鈕：
 
-   [![顯示標示為「部署至 Azure」之按鈕的影像。](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-sql-managed-instance-azure-environment%2Fazuredeploy.json)
+   [![顯示標示為「部署至 Azure」的按鈕影像。](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-sql-managed-instance-azure-environment%2Fazuredeploy.json)
 
-   此按鈕會開啟一個表單，您可以用來設定可在其中部署 SQL 受控執行個體的網路環境。
+   此按鈕會開啟一個表單，讓您用來設定可在其中部署 SQL 受控執行個體的網路環境。
 
    > [!Note]
-   > 此 Azure Resource Manager 範本將會部署具有兩個子網路的虛擬網路。 一個稱為**ManagedInstances**的子網保留給 SQL 受控執行個體，而且具有預先設定的路由表。 另一個名為**Default**的子網用於其他應存取 SQL 受控執行個體的資源（例如 Azure 虛擬機器）。
+   > 此 Azure Resource Manager 範本將會部署具有兩個子網路的虛擬網路。 一個子網（稱為 **ManagedInstances**）會保留給 SQL 受控執行個體，並具有預先設定的路由表。 另一個子網（稱為 **預設值**）會用於其他應存取 SQL 受控執行個體的資源 (例如，Azure 虛擬機器) 。
 
 3. 設定網路環境。 在下一張表單上，您可以設定網路環境的參數：
 
@@ -62,8 +62,8 @@ Azure SQL 受控執行個體必須部署在 Azure[虛擬網路](../../virtual-ne
 
 ## <a name="next-steps"></a>後續步驟
 
-- 如需總覽，請參閱[什麼是 SQL 受控執行個體？](sql-managed-instance-paas-overview.md)。
-- 深入瞭解[SQL 受控執行個體中的連接架構](connectivity-architecture-overview.md)。
-- 瞭解如何[修改 SQL 受控執行個體的現有虛擬網路](vnet-existing-add-subnet.md)。
-- 如需示範如何建立虛擬網路、建立受控實例，以及從資料庫備份還原資料庫的教學課程，請參閱[建立受控實例](instance-create-quickstart.md)。
-- 如需 DNS 問題，請參閱[設定自訂 DNS](custom-dns-configure.md)。
+- 如需總覽，請參閱 [何謂 SQL 受控執行個體？](sql-managed-instance-paas-overview.md)。
+- 深入瞭解 [SQL 受控執行個體的連接架構](connectivity-architecture-overview.md)。
+- 瞭解如何 [針對 SQL 受控執行個體修改現有的虛擬網路](vnet-existing-add-subnet.md)。
+- 如需說明如何建立虛擬網路、建立受控實例，以及從資料庫備份還原資料庫的教學課程，請參閱 [建立受控實例](instance-create-quickstart.md)。
+- 針對 DNS 問題，請參閱 [設定自訂 DNS](custom-dns-configure.md)。

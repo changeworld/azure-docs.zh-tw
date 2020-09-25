@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 08/31/2020
+ms.date: 09/22/2020
 ms.author: alkohli
-ms.openlocfilehash: 1f194424a4030a2b829af6c8f5b97a3c200bd2e6
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 0880ae64520997fc6b41ba4a7e8508d927235a8a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90899282"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320807"
 ---
 # <a name="kubernetes-role-based-access-control-on-your-azure-stack-edge-pro-gpu-device"></a>在 Azure Stack Edge Pro GPU 裝置上 Kubernetes 以角色為基礎的存取控制
 
@@ -42,7 +42,7 @@ Kubernetes 資源（例如 pod 和部署）會以邏輯方式分組到命名空�
     - kube-系統
     - metallb-系統
     - dbe-命名空間
-    - default
+    - 預設
     - kubernetes-儀表板
     - kube-節點-租用
     - kube-public
@@ -91,25 +91,7 @@ Azure Stack Edge Pro 裝置具有多個系統命名空間，而且您可以使�
 
 在此圖中，Alice、Bob 和 Chuck 只能存取指派的使用者命名空間，在此案例中為 `ns1` 、 `ns2` 和 `ns3` 分別為。 在這些命名空間中，它們具有系統管理員存取權。 另一方面，叢集系統管理員可以存取系統命名空間和整個叢集的資源。
 
-您可以使用 `kubectl` 命令來建立命名空間和使用者、將使用者指派給命名空間，或下載 `kubeconfig` 檔。 以下是高層級的工作流程：
-
-1. 建立命名空間和使用者。  
-
-    `New-HcsKubernetesNamespace -Namespace`  
-
-2. 建立使用者。  
-
-    `New-HcsKubernetesUser -UserName`  
-
-3. 將命名空間與您建立的使用者產生關聯。  
-
-    `Grant-HcsKubernetesNamespaceAccess -Namespace -UserName`  
-
-4. 將使用者設定儲存至 `C:\Users\<username>\.kube` 。  
-
-5. 安裝 `kubectl` 並開始將應用程式部署至 `kubectl` 。 
-
-如需詳細的逐步指示，請移至 [Azure Stack Edge Pro 上的透過 Kuebctl 存取 Kubernetes](azure-stack-edge-gpu-create-kubernetes-cluster.md)叢集。
+如果您是使用者，您可以建立命名空間和使用者、將使用者指派給命名空間，或下載 `kubeconfig` 檔。 如需詳細的逐步指示，請移至 [Azure Stack Edge Pro 上的透過 Kuebctl 存取 Kubernetes](azure-stack-edge-gpu-create-kubernetes-cluster.md)叢集。
 
 
 使用 Azure Stack Edge Pro 裝置上的命名空間和使用者時，適用下列注意事項：
@@ -121,7 +103,7 @@ Azure Stack Edge Pro 裝置具有多個系統命名空間，而且您可以使�
 - 您不能建立已保留名稱的使用者。 例如， `aseuser` 是保留的使用者，無法使用。
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 若要瞭解如何建立使用者、建立命名空間，以及授與使用者命名空間的存取權，請參閱透過 [Kubectl 存取 Kubernetes](azure-stack-edge-gpu-create-kubernetes-cluster.md)叢集。
 

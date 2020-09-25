@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/12/2019
 ms.author: zhchia
-ms.openlocfilehash: f0f0d61788d7ac9b242dbc176a125b45753d2578
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d88b8f2a6cc66e239706677bd1ebfe01bccd49af
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555116"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322024"
 ---
 # <a name="tutorial-configure-figma-for-automatic-user-provisioning"></a>教學課程：設定 Figma 來自動布建使用者
 
@@ -110,11 +110,11 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
 3. 選取 [佈建] 索引標籤。
 
-    ![佈建索引標籤](common/provisioning.png)
+    ![已呼叫 [布建] 選項的 [管理選項] 螢幕擷取畫面。](common/provisioning.png)
 
 4. 將 [佈建模式] 設定為 [自動]。
 
-    ![佈建索引標籤](common/provisioning-automatic.png)
+    ![[布建模式] 下拉式清單的螢幕擷取畫面，其中已呼叫 [自動] 選項。](common/provisioning-automatic.png)
 
 5. 在 [系統 **管理員認證** ] 區段的 [ `https://www.figma.com/scim/v2/<TenantID>` **租使用者 URL** ] 中輸入，其中 **TenantID** 是您稍早從 Figma 中取出的值。 輸入**秘密權杖**中的**API 權杖**值。 按一下 [ **測試連接** ] 以確保 Azure AD 可以連線至 Figma。 如果連接失敗，請確定您的 Figma 帳戶具有系統管理員許可權，然後再試一次。
 
@@ -124,7 +124,7 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
     ![通知電子郵件](common/provisioning-notification-email.png)
 
-9. 按一下 [檔案] 。
+9. 按一下 [檔案]  。
 
 10. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 使用者至 Figma**]。
 

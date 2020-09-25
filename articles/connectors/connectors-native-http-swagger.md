@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 11/01/2019
 tags: connectors
-ms.openlocfilehash: cf32938b534272a13af5891d6a31e64b8136a528
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 7717c02fb460c41543ae810820ba01efb13a1ca7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281458"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91271183"
 ---
 # <a name="call-rest-endpoints-by-using-azure-logic-apps"></a>使用 Azure Logic Apps 呼叫 REST 端點
 
@@ -54,17 +54,17 @@ ms.locfileid: "87281458"
 
    `https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/export?DocumentFormat=Swagger&ApiName=Face%20API%20-%20V1.0`
 
-   ![輸入 Swagger 端點的 URL](./media/connectors-native-http-swagger/http-swagger-trigger-parameters.png)
+   ![顯示邏輯應用程式設計工具的螢幕擷取畫面，其中包含 "H T T P + Swagger" 觸發程式和 "Swagger Endpoint U R L" 屬性設定為 U R L L 值。](./media/connectors-native-http-swagger/http-swagger-trigger-parameters.png)
 
 1. 當設計工具顯示 Swagger 檔案所描述的作業時，選取您要使用的作業。
 
-   ![Swagger 檔案中的作業](./media/connectors-native-http-swagger/http-swagger-trigger-operations.png)
+   ![顯示邏輯應用程式設計工具的螢幕擷取畫面，其中包含 "H T T P + Swagger" 觸發程式和一個顯示 Swagger 作業的清單。](./media/connectors-native-http-swagger/http-swagger-trigger-operations.png)
 
 1. 提供觸發程序參數的值，其會根據您想要包含在端點呼叫中的所選作業而不同。 設定您想要觸發程序呼叫端點的頻率週期。
 
    這個範例會將觸發程序重新命名為 "HTTP + Swagger trigger:Face - Detect"，因而可讓步驟的名稱更具描述性。
 
-   ![作業詳細資料](./media/connectors-native-http-swagger/http-swagger-trigger-operation-details.png)
+   ![顯示邏輯應用程式設計工具的螢幕擷取畫面，其中顯示「H T T P + Swagger」觸發程式，以顯示「臉部偵測」作業。](./media/connectors-native-http-swagger/http-swagger-trigger-operation-details.png)
 
 1. 若要新增其他可用參數，開啟 [新增參數] 清單，然後選取您所需的參數。
 

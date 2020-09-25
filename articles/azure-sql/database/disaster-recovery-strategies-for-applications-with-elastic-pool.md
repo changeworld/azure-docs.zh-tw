@@ -9,23 +9,23 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: carlrab
+ms.reviewer: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: 8ba9edc129cc169ccc146c7bc314d8f5ffe573b9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6887371e50f5b7e8706cac0a0700873c42bdac06
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84038769"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321640"
 ---
 # <a name="disaster-recovery-strategies-for-applications-using-azure-sql-database-elastic-pools"></a>使用 Azure SQL Database 彈性集區之應用程式的嚴重損壞修復策略
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-Azure SQL Database 提供幾項功能，可在發生嚴重事件時提供應用程式的商務持續性。 [彈性集區](elastic-pool-overview.md)和單一資料庫支援相同類型的災害復原 (DR) 功能。 本文說明多個彈性集區的 DR 策略，其利用這些 Azure SQL Database 商務持續性功能。
+Azure SQL Database 提供數個功能，可在發生災難性事件時提供應用程式的商務持續性。 [彈性集區](elastic-pool-overview.md)和單一資料庫支援相同類型的災害復原 (DR) 功能。 本文說明利用這些 Azure SQL Database 商務持續性功能的彈性集區的數種 DR 策略。
 
 本文使用下列標準的 SaaS ISV 應用程式模式︰
 
-新式雲端式 web 應用程式會為每位使用者布建一個資料庫。 ISV 有許多客戶，因此會使用多個資料庫 (稱為租用戶資料庫)。 因為租用戶資料庫通常會有無法預測的活動模式，所以 ISV 會使用彈性集區，在一段時間之後，讓資料庫成本預測性變高。 彈性集區也可在使用者活動尖峰時簡化效能管理。 除了租使用者資料庫之外，應用程式也會使用數個資料庫來管理使用者設定檔、安全性、收集使用模式等等。個別租使用者的可用性並不會影響應用程式的整體可用性。 不過，管理資料庫的可用性和效能對應用程式函數而言十分重要，而且，如果管理資料庫離線，整個應用程式也會離線。
+新式雲端式 web 應用程式會為每位使用者布建一個資料庫。 ISV 有許多客戶，因此會使用多個資料庫 (稱為租用戶資料庫)。 因為租用戶資料庫通常會有無法預測的活動模式，所以 ISV 會使用彈性集區，在一段時間之後，讓資料庫成本預測性變高。 彈性集區也可在使用者活動尖峰時簡化效能管理。 除了租使用者資料庫之外，應用程式也會使用數個資料庫來管理使用者設定檔、安全性、收集使用模式等等。個別租使用者的可用性不會影響整個應用程式的可用性。 不過，管理資料庫的可用性和效能對應用程式函數而言十分重要，而且，如果管理資料庫離線，整個應用程式也會離線。
 
 本文會討論涵蓋各種案例 (從成本導向創業應用程式以至具有嚴格可用性需求的應用程式) 的 DR 策略。
 
@@ -66,7 +66,7 @@ Azure SQL Database 提供幾項功能，可在發生嚴重事件時提供應用�
 
 ### <a name="benefit"></a>優點
 
-這項策略的重要 優點 是資料層備援的持續成本很低。 Azure SQL Database 不需額外費用，就能自動備份資料庫，而不需重寫應用程式。 只有在還原彈性資料庫時，才會產生成本。 
+這項策略的重要 優點 是資料層備援的持續成本很低。 Azure SQL Database 會自動備份資料庫，且不需額外費用即可重寫應用程式。 只有在還原彈性資料庫時，才會產生成本。 
 
 ### <a name="trade-off"></a>取捨
 
@@ -181,12 +181,12 @@ Azure SQL Database 提供幾項功能，可在發生嚴重事件時提供應用�
 
 ## <a name="summary"></a>摘要
 
-本文著重於SaaS ISV 多租用戶應用程式所使用之資料庫層的災害復原策略。 您選擇的策略取決於應用程式的需求，例如商務模型、您想要提供給客戶的 SLA、預算限制等。每個所述的策略都會概述優點和取捨，讓您可以做出明智的決定。 此外，特定應用程式可能包含其他 Azure 元件。 所以您必須檢閱其商務持續性指引，並安排使用元件來復原資料庫層。 若要深入了解如何管理 Azure 中資料庫應用程式的復原，請參閱[設計災害復原的雲端解決方案](designing-cloud-solutions-for-disaster-recovery.md)。  
+本文著重於SaaS ISV 多租用戶應用程式所使用之資料庫層的災害復原策略。 您選擇的策略是根據應用程式的需求，例如商務模型、您想要提供給客戶的 SLA、預算限制等等。每個所述的策略都有其優點和取捨，讓您可以做出明智的決策。 此外，特定應用程式可能包含其他 Azure 元件。 所以您必須檢閱其商務持續性指引，並安排使用元件來復原資料庫層。 若要深入了解如何管理 Azure 中資料庫應用程式的復原，請參閱[設計災害復原的雲端解決方案](designing-cloud-solutions-for-disaster-recovery.md)。  
 
 ## <a name="next-steps"></a>後續步驟
 
-* 若要瞭解 Azure SQL Database 自動備份，請參閱[Azure SQL Database 自動備份](automated-backups-overview.md)。
-* 如需商務持續性的總覽和案例，請參閱[商務持續性總覽](business-continuity-high-availability-disaster-recover-hadr-overview.md)。
-* 若要瞭解如何使用自動備份進行復原，請參閱[從服務起始的備份還原資料庫](recovery-using-backups.md)。
+* 若要瞭解 Azure SQL Database 自動備份的相關資訊，請參閱 [Azure SQL Database 自動備份](automated-backups-overview.md)。
+* 如需商務持續性的總覽和案例，請參閱 [商務持續性總覽](business-continuity-high-availability-disaster-recover-hadr-overview.md)。
+* 若要瞭解如何使用自動備份進行復原，請參閱 [從服務起始的備份還原資料庫](recovery-using-backups.md)。
 * 若要了解更快速的復原選項，請參閱[主動式異地複寫](active-geo-replication-overview.md)和[自動容錯移轉群組](auto-failover-group-overview.md)。
-* 若要瞭解如何使用自動備份進行封存，請參閱[資料庫複製](database-copy.md)。
+* 若要瞭解如何使用自動備份進行封存，請參閱 [資料庫複製](database-copy.md)。

@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/15/2020
+ms.date: 09/23/2020
 ms.author: jingwang
-ms.openlocfilehash: 12e6ae9dd14ebafb1da6bfbcfef64e2d65e876d8
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: e0fadf4ac8cea1c8804b17f5549a99bc360e2950
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90531707"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334288"
 ---
 # <a name="xml-format-in-azure-data-factory"></a>Azure Data Factory 中的 XML 格式
 
@@ -28,7 +28,7 @@ ms.locfileid: "90531707"
 
 如需可用來定義資料集的區段和屬性完整清單，請參閱[資料集](concepts-datasets-linked-services.md)一文。 本節提供 XML 資料集所支援的屬性清單。
 
-| 屬性         | 描述                                                  | 必要 |
+| 屬性         | 說明                                                  | 必要 |
 | ---------------- | ------------------------------------------------------------ | -------- |
 | type             | 資料集的 type 屬性必須設定為 **Xml**。 | 是      |
 | location         | 檔案 (s) 的位置設定。 每個以檔案為基礎的連接器都有自己的位置類型和支援的屬性 `location` 。 **請參閱連接器文章中的詳細資料-> 資料集屬性一節**。 | 是      |
@@ -73,7 +73,7 @@ ms.locfileid: "90531707"
 
 [複製活動*** \* 來源 \* *** ] 區段支援下列屬性。 深入瞭解 [XML 連接器行為](#xml-connector-behavior)。
 
-| 屬性      | 描述                                                  | 必要 |
+| 屬性      | 說明                                                  | 必要 |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | 複製活動來源的 type 屬性必須設為 **XmlSource**。 | 是      |
 | formatSettings | 屬性的群組。 請參閱下方的 **XML 讀取設定** 表格。 | 否       |
@@ -81,11 +81,13 @@ ms.locfileid: "90531707"
 
 支援的 **XML 讀取設定** `formatSettings` ：
 
-| 屬性      | 描述                                                  | 必要 |
+| 屬性      | 說明                                                  | 必要 |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | FormatSettings 的類型必須設定為 **XmlReadSettings**。 | 是      |
 | validationMode | 指定是否要驗證 XML 架構。<br>允許的值為 **none** (預設值、無驗證) 、 **XSD** (使用 xsd) 進行驗證、 **dtd** (使用 dtd) 進行驗證。 | 否 |
+| 命名空間 | 剖析 XML 檔案時是否啟用命名空間。 允許的值為：**true** (預設值)、**false**。 | 否 |
 | namespacePrefixes | 命名空間 URI 與前置詞的對應，用來在剖析 xml 檔案時為欄位命名。<br/>如果 XML 檔案已啟用命名空間和命名空間，則根據預設，功能變數名稱會與 XML 檔中的名稱相同。<br>如果此對應中有定義命名空間 URI 的專案，則功能變數名稱為 `prefix:fieldName` 。 | 否 |
+| detectDataType | 是否要偵測整數、雙精度浮點數和布林資料類型。 允許的值為：**true** (預設值)、**false**。| 否 |
 | compressionProperties | 一組屬性，說明如何將指定壓縮編解碼器的資料解壓縮。 | 否       |
 | preserveZipFileNameAsFolder<br> (*下 `compressionProperties` -> `type` 的 `ZipDeflateReadSettings` *)   | 適用于設定 **ZipDeflate** 壓縮的輸入資料集時。 指出複製期間是否要將來源 ZIP 檔案名保留為資料夾結構。<br>-當設定為 **true (預設) **時，Data Factory 會將解壓縮的檔案寫入 `<path specified in dataset>/<folder named as source zip file>/` 。<br>-當設定為 **false**時，Data Factory 會將解壓縮的檔案直接寫入至 `<path specified in dataset>` 。 請確定您在不同的來源 zip 檔案中沒有重複的檔案名，以避免發生賽車或非預期的行為。  | 否 |
 | preserveCompressionFileNameAsFolder<br> (*下 `compressionProperties` -> `type` 的 `TarGZipReadSettings` *)  | 適用于設定 **TarGzip** 壓縮的輸入資料集時。 指出複製期間是否要將來源壓縮檔案名稱保留為資料夾結構。<br>-當設定為 **true (預設) **時，Data Factory 會將解壓縮檔案寫入至 `<path specified in dataset>/<folder named as source compressed file>/` 。 <br>-當設定為 **false**時，Data Factory 會將解壓縮的檔案直接寫入至 `<path specified in dataset>` 。 請確定您在不同的來源檔案中沒有重複的檔案名，以避免發生賽車或非預期的行為。 | 否 |
@@ -98,7 +100,7 @@ ms.locfileid: "90531707"
 
 下表列出 XML 來源所支援的屬性。 您可以在 [ **來源選項** ] 索引標籤中編輯這些屬性。深入瞭解 [XML 連接器行為](#xml-connector-behavior)。 使用內嵌資料集時，您將會看到其他檔案設定，這與 [ [資料集屬性](#dataset-properties) ] 區段中所述的屬性相同。 
 
-| 名稱 | 描述 | 必要 | 允許的值 | 資料流程腳本屬性 |
+| 名稱 | 說明 | 必要 | 允許的值 | 資料流程腳本屬性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | 萬用字元路徑 | 將會處理所有符合萬用字元路徑的檔案。 覆寫資料集中設定的資料夾和檔案路徑。 | 否 | String[] | wildcardPaths |
 | 分割區根路徑 | 針對已分割的檔案資料，您可以輸入磁碟分割根路徑，以便將分割的資料夾讀取為數據行 | 否 | String | partitionRootPath |
@@ -109,6 +111,7 @@ ms.locfileid: "90531707"
 | 驗證模式 | 指定是否要驗證 XML 架構。 | 否 | `None` (預設，沒有驗證) <br>`xsd` (使用 XSD 進行驗證) <br>`dtd` (使用 DTD) 進行驗證。 | validationMode |
 | 命名空間 | 剖析 XML 檔案時是否啟用命名空間。 | 否 | `true` (預設) 或 `false` | 命名空間 |
 | 命名空間前置詞配對 | 命名空間 URI 與前置詞的對應，用來在剖析 xml 檔案時為欄位命名。<br/>如果 XML 檔案已啟用命名空間和命名空間，則根據預設，功能變數名稱會與 XML 檔中的名稱相同。<br>如果此對應中有定義命名空間 URI 的專案，則功能變數名稱為 `prefix:fieldName` 。 | 否 | 具有模式的陣列`['URI1'->'prefix1','URI2'->'prefix2']` | namespacePrefixes |
+| 不允許找到任何檔案 | 若為 true，如果找不到任何檔案，就不會擲回錯誤 | 否 | `true` 或 `false` | ignoreNoFilesFound |
 
 ### <a name="xml-source-script-example"></a>XML 來源腳本範例
 

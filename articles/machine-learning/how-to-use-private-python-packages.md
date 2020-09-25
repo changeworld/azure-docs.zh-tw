@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/10/2020
-ms.openlocfilehash: 0f6f5d0ca757b10a16b31864124f1bcf1190674a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 1afa9173c2ca3704bf4408c271e3cf950ef79077
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90896925"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91302211"
 ---
 # <a name="use-private-python-packages-with-azure-machine-learning"></a>搭配 Azure Machine Learning 使用私人 Python 套件
 
@@ -29,14 +29,14 @@ ms.locfileid: "90896925"
 
 私用套件會透過 [環境](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment) 類別使用。 在環境中，您會宣告要使用的 Python 套件，包括私用套件。 若要深入瞭解 Azure Machine Learning 中的環境，請參閱 [如何使用環境](how-to-use-environments.md)。 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
  * [適用于 Python 的 AZURE MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)
  * [Azure Machine Learning 工作區](how-to-manage-workspace.md)
 
 ## <a name="use-small-number-of-packages-for-development-and-testing"></a>使用少數套件進行開發和測試
 
-針對單一工作區的少數私用封裝，請使用靜態 [`Environment.add_private_pip_wheel()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#&preserve-view=trueadd-private-pip-wheel-workspace--file-path--exist-ok-false-) 方法。 這種方法可讓您快速將私人套件新增至工作區，而且非常適合用於開發和測試用途。
+針對單一工作區的少數私用封裝，請使用靜態 [`Environment.add_private_pip_wheel()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true#&preserve-view=trueadd-private-pip-wheel-workspace--file-path--exist-ok-false-) 方法。 這種方法可讓您快速將私人套件新增至工作區，而且非常適合用於開發和測試用途。
 
 將檔案路徑引數指向本機滾輪檔案，然後執行 ```add_private_pip_wheel``` 命令。 此命令會傳回用來追蹤您工作區中套件位置的 URL。 捕捉儲存體 URL，並將方法傳遞給它 `add_pip_package()` 。
 
@@ -52,13 +52,13 @@ Azure Machine Learning 服務會在內部將 URL 取代為安全的 SAS URL，�
 
 ## <a name="use-a-repository-of-packages-from-azure-devops-feed"></a>從 Azure DevOps 摘要使用套件的儲存機制
 
-如果您正在積極開發機器學習應用程式的 Python 套件，您可以將它們裝載在 Azure DevOps 存放庫中作為成品，並將其發佈為摘要。 這種方法可讓您整合 DevOps 工作流程，以建立套件與您的 Azure Machine Learning 工作區。 若要瞭解如何使用 Azure DevOps 設定 Python 摘要，請參閱 [Azure Artifacts 中的 Python 套件開始](https://docs.microsoft.com/azure/devops/artifacts/quickstarts/python-packages?view=azure-devops)
+如果您正在積極開發機器學習應用程式的 Python 套件，您可以將它們裝載在 Azure DevOps 存放庫中作為成品，並將其發佈為摘要。 這種方法可讓您整合 DevOps 工作流程，以建立套件與您的 Azure Machine Learning 工作區。 若要瞭解如何使用 Azure DevOps 設定 Python 摘要，請參閱 [Azure Artifacts 中的 Python 套件開始](https://docs.microsoft.com/azure/devops/artifacts/quickstarts/python-packages?view=azure-devops&preserve-view=true)
 
 這種方法會使用個人存取權杖來針對存放庫進行驗證。 相同的方法適用于具有權杖型驗證的其他存放庫，例如私人 GitHub 存放庫。 
 
- 1. 為您的 Azure DevOps 實例[建立 (PAT) 的個人存取權杖](https://docs.microsoft.com/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=azure-devops&tabs=preview-page#create-a-pat)。 設定要 __封裝 > 讀取__的權杖範圍。 
+ 1. 為您的 Azure DevOps 實例[建立 (PAT) 的個人存取權杖](https://docs.microsoft.com/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=azure-devops&preserve-view=true&tabs=preview-page#create-a-pat)。 設定要 __封裝 > 讀取__的權杖範圍。 
 
- 2. 使用 [Workspace.set_connection](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#&preserve-view=trueset-connection-name--category--target--authtype--value-) 方法，新增 Azure DevOps URL 和 PAT 作為工作區屬性。
+ 2. 使用 [Workspace.set_connection](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py&preserve-view=true#&preserve-view=trueset-connection-name--category--target--authtype--value-) 方法，新增 Azure DevOps URL 和 PAT 作為工作區屬性。
 
      ```python
     from azureml.core import Workspace
@@ -98,6 +98,6 @@ Azure Machine Learning 服務會在內部將 URL 取代為安全的 SAS URL，�
 
 完成這些設定之後，您可以透過 Azure blob 儲存體中的完整 URL，參考 Azure Machine Learning 環境定義中的套件。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
  * 深入瞭解 [Azure Machine Learning 中的企業安全性](concept-enterprise-security.md)

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb,
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 68ab302e5c24835174d03b3579c9ec587bfd9006
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: e57da384253912a875bacbc5f43aa9f9b99b45b2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90601583"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91265981"
 ---
 # <a name="conditional-access-block-access"></a>條件式存取：封鎖存取
 
@@ -38,7 +38,7 @@ ms.locfileid: "90601583"
 
 ## <a name="create-a-conditional-access-policy"></a>建立條件式存取原則
 
-下列步驟將協助建立條件式存取原則，以封鎖除了 [Office 365](concept-conditional-access-cloud-apps.md#office-365-preview) 以外的所有應用程式的存取權（如果使用者不在信任的網路上）。 這些原則會放入 [僅限報表模式](howto-conditional-access-insights-reporting.md) ，讓系統管理員可以判斷他們對現有使用者的影響。 當系統管理員想要套用原則時，可以將它們切換為 **開啟**。
+下列步驟將協助建立條件式存取原則，以封鎖除了 [Office 365](concept-conditional-access-cloud-apps.md#office-365) 以外的所有應用程式的存取權（如果使用者不在信任的網路上）。 這些原則會放入 [僅限報表模式](howto-conditional-access-insights-reporting.md) ，讓系統管理員可以判斷他們對現有使用者的影響。 當系統管理員想要套用原則時，可以將它們切換為 **開啟**。
 
 第一個原則會封鎖除了 Microsoft 365 應用程式以外的所有應用程式存取權（如果不在信任的位置）。
 
@@ -52,7 +52,7 @@ ms.locfileid: "90601583"
    1. 選取 [完成] 。
 1. 在 [ **雲端應用程式] 或 [動作**] 下，選取下列選項：
    1. 在 [ **包含**] 底下，選取 [ **所有雲端應用程式**]。
-   1. 在 [ **排除**] 下，選取 [ **Office 365 (preview]) **，選取 [ **選取**]，然後選取 [ **完成**]。
+   1. 在 [ **排除**] 底下選取 [ **Office 365**]，選取 [ **選取**]，然後選取 [ **完成**]。
 1. 在 [條件] 底下：
    1. 在 [條件] > [位置] 底下。
       1. 將 [設定] 設定為 [是]
@@ -72,7 +72,7 @@ ms.locfileid: "90601583"
    1. 在 [包含] 下，選取 [所有使用者]。
    1. 在 [排除] 底下選取 [使用者和群組]，然後選擇組織的緊急存取或急用帳戶。 
    1. 選取 [完成] 。
-1. 在 [**雲端應用程式] 或 [動作**] 下  >  ** **，選取 [**選取應用程式**]，選擇 [ **Office 365 (preview) **，**然後**選取 [**選取**]，然後選取
+1. 在 [**雲端應用程式或動作**] 下  >  ** **，選取 [**選取應用程式**]，選擇 [ **Office 365**]，**然後**選取 [**選取**]，然後選取 [
 1. 在 [**存取控制**  >  **授**與] 底下，選取 **[授與存取權**]。
    1. 選取 [ **需要多重要素驗證** ，且 **需要裝置標示為符合規範** ] 選取 [ **選取**]。
    1. 確定已選取 **[需要所有選取的控制項** ]。

@@ -9,23 +9,23 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: mathoma, carlrab
+ms.reviewer: mathoma, sstein
 ms.date: 06/21/2019
-ms.openlocfilehash: c6f766dcf69b398aea0978f42f5094809a3e2f6c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e88c1b976ce1de0ce0be4b6a5f85af6790802323
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84038779"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321623"
 ---
-# <a name="restore-your-azure-sql-database-or-failover-to-a-secondary"></a>將您的 Azure SQL Database 或容錯移轉還原至次要資料庫
+# <a name="restore-your-azure-sql-database-or-failover-to-a-secondary"></a>還原 Azure SQL Database 或容錯移轉至次要資料庫
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Azure SQL Database 提供下列功能，以從中斷復原：
 
-- [使用中的地理複寫](active-geo-replication-overview.md)
+- [作用中異地複寫](active-geo-replication-overview.md)
 - [自動容錯移轉群組](auto-failover-group-overview.md)
-- [異地還原](recovery-using-backups.md#point-in-time-restore)
+- [異地復原](recovery-using-backups.md#point-in-time-restore)
 - [區域備援資料庫](high-availability-sla.md)
 
 若要了解商務持續性案例，以及支援這些案例的功能，請參閱 [商務持續性](business-continuity-high-availability-disaster-recover-hadr-overview.md)。
@@ -33,22 +33,22 @@ Azure SQL Database 提供下列功能，以從中斷復原：
 > [!NOTE]
 > 如果您使用區域備援進階或業務關鍵資料庫或集區，系統就會自動執行復原程序，但這份資料的其餘部分不適用。
 >
-> 主要和次要資料庫必須有相同的服務層級。 此外，強烈建議使用與主要複本相同的計算大小（Dtu 或虛擬核心）來建立次要資料庫。 如需詳細資訊，請參閱[升級或降級為主資料庫](active-geo-replication-overview.md#upgrading-or-downgrading-primary-database)。
+> 主要和次要資料庫必須有相同的服務層級。 此外，強烈建議您建立的次要資料庫具有與主資料庫相同的計算大小 (Dtu 或虛擬核心) 。 如需詳細資訊，請參閱 [升級或降級為主資料庫](active-geo-replication-overview.md#upgrading-or-downgrading-primary-database)。
 >
 > 使用一或多個容錯移轉群組來管理多個資料庫的容錯移轉。
-> 如果您在容錯移轉群組中新增現有的異地複寫關聯性，請確定異地次要資料庫所設定的服務層級與計算大小和主要資料庫相同。 如需詳細資訊，請參閱[使用自動容錯移轉群組來啟用多個資料庫的透明和協調容錯移轉](auto-failover-group-overview.md)。
+> 如果您在容錯移轉群組中新增現有的異地複寫關聯性，請確定異地次要資料庫所設定的服務層級與計算大小和主要資料庫相同。 如需詳細資訊，請參閱 [使用自動容錯移轉群組來啟用多個資料庫的透明和協調容錯移轉](auto-failover-group-overview.md)。
 
 ## <a name="prepare-for-the-event-of-an-outage"></a>準備中斷事件
 
 如果要使用容錯移轉群組或異地備援備份成功復原到另一個資料區域，您必須準備一台伺服器，以便在另一個資料中心中斷時成為新的主要伺服器，以及將定義好的步驟寫成文件並經過測試，以確保順利復原。 這些準備步驟包括︰
 
-- 識別另一個區域中要成為新主伺服器的伺服器。 就異地還原而言，這通常是在您資料庫所在區域之[配對區域](../../best-practices-availability-paired-regions.md)中的伺服器。 這可避免在異地還原作業期間發生額外的流量成本。
+- 識別在另一個區域中要成為新主伺服器的伺服器。 就異地還原而言，這通常是在您資料庫所在區域之[配對區域](../../best-practices-availability-paired-regions.md)中的伺服器。 這可避免在異地還原作業期間發生額外的流量成本。
 - 識別並選擇性地定義所需的伺服器層級 IP 防火牆規則，讓使用者可以存取新的主要資料庫。
 - 決定要如何重新導向使用者至新的主要伺服器，例如變更連接字串或變更 DNS 項目。
 - 識別並選擇性地建立登入，新主要伺服器的 master 資料庫中必須有這些登入，並確保這些登入在 master 資料庫中有適當的權限 (如果有的話)。 如需詳細資訊，請參閱 [災害復原後的 SQL Database 安全性](active-geo-replication-security-configure.md)
 - 識別需要更新成對應至新主要資料庫的警示規則。
 - 將目前主要資料庫上的稽核設定整理成文件
-- 執行嚴重損壞[修復演練](disaster-recovery-drills.md)。 若要模擬異地還原中斷，您可以刪除或重新命名來源資料庫，讓應用程式連線失敗。 若要使用容錯移轉群組模擬中斷，您可以停用 Web 應用程式或連線到資料庫的的虛擬機器，或是容錯移轉資料庫，讓應用程式連線失敗。
+- 執行嚴重損壞 [修復演練](disaster-recovery-drills.md)。 若要模擬異地還原中斷，您可以刪除或重新命名來源資料庫，讓應用程式連線失敗。 若要使用容錯移轉群組模擬中斷，您可以停用 Web 應用程式或連線到資料庫的的虛擬機器，或是容錯移轉資料庫，讓應用程式連線失敗。
 
 ## <a name="when-to-initiate-recovery"></a>何時起始復原
 
@@ -78,11 +78,11 @@ Azure 團隊會努力儘快還原服務可用性，但需視根本原因而言�
 
 - [使用 Azure 入口網站容錯移轉至異地複寫的次要伺服器](active-geo-replication-configure-portal.md)
 - [使用 PowerShell 容錯移轉至次要資料庫](scripts/setup-geodr-and-failover-database-powershell.md)
-- [使用 Transact-sql （T-sql）故障切換至次要伺服器](/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#e-failover-to-a-geo-replication-secondary)
+- [使用 Transact-sql (T-sql) 容錯移轉至次要伺服器 ](/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#e-failover-to-a-geo-replication-secondary)
 
 ## <a name="recover-using-geo-restore"></a>使用異地還原進行復原
 
-如果您的應用程式停機不會導致業務責任，您可以使用[異地還原](recovery-using-backups.md)做為復原應用程式資料庫的方法。 它會從其最新的異地備援備份建立資料庫的複本。
+如果您應用程式的停機不會導致商務責任，您可以使用「 [異地還原](recovery-using-backups.md) 」作為復原應用程式資料庫的方法， () 。 它會從其最新的異地備援備份建立資料庫的複本。
 
 ## <a name="configure-your-database-after-recovery"></a>在復原之後設定資料庫
 
@@ -100,7 +100,7 @@ Azure 團隊會努力儘快還原服務可用性，但需視根本原因而言�
 
 ### <a name="configure-logins-and-database-users"></a>設定登入和資料庫使用者
 
-您需要確定應用程式使用的所有登入，都存在於主控已復原資料庫的伺服器上。 如需詳細資訊，請參閱[異地複寫的安全性](active-geo-replication-security-configure.md)設定。
+您需要確定應用程式使用的所有登入，都存在於主控已復原資料庫的伺服器上。 如需詳細資訊，請參閱 [異地複寫的安全性](active-geo-replication-security-configure.md)設定。
 
 > [!NOTE]
 > 您應該在災害復原演練期間設定和測試伺服器防火牆規則與登入 (及其權限)。 這些伺服器層級物件及其設定可能無法在中斷期間使用。

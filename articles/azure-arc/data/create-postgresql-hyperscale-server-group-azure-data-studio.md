@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: af0cdb814433b739b15d79bec9cb399cf0a2fef7
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 1b1cf90efa14345fa8395f5f62fd80934b922352
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934619"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273002"
 ---
 # <a name="create-azure-arc-enabled-postgresql-hyperscale-using-azure-data-studio"></a>使用 Azure Data Studio 建立 Azure Arc 啟用的于 postgresql 超大規模
 
@@ -43,6 +43,19 @@ Namespace: arc
 Logged in successfully to `https://10.0.0.4:30080` in namespace `arc`. Setting active context to `arc`
 ```
 
+## <a name="preliminary-and-temporary-step-for-openshift-users-only"></a>僅 OpenShift 使用者的初步和暫存步驟
+
+請先執行此步驟，再移至下一個步驟。 若要將于 postgresql 超大規模伺服器群組部署到非預設專案中的 Red Hat OpenShift，您需要對叢集執行下列命令，以更新安全性條件約束。 此命令會將所需的許可權授與將執行您的于 postgresql 超大規模伺服器群組的服務帳戶。 安全性內容條件約束 (SCC) **_arc-資料 scc_** 是您在部署 Azure Arc 資料控制器時所加入的條件約束。
+
+```console
+oc adm policy add-scc-to-user arc-data-scc -z <server-group-name> -n <namespace name>
+```
+
+_**伺服器組名** 是您將在下一個步驟中部署的伺服器組名。_
+   
+如需 OpenShift 中 SCCs 的詳細資訊，請參閱 [OpenShift 檔](https://docs.openshift.com/container-platform/4.2/authentication/managing-security-context-constraints.html)。
+您現在可以執行下一個步驟。
+
 ## <a name="create-an-azure-arc-enabled-postgresql-hyperscale-server-group"></a>建立已啟用 Azure Arc 的于 postgresql 超大規模伺服器群組
 
 1. 啟動 Azure Data Studio
@@ -64,7 +77,7 @@ Logged in successfully to `https://10.0.0.4:30080` in namespace `arc`. Setting a
 
 幾分鐘後，您的建立應該就能順利完成。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 - [使用 Azure Data Studio 管理您的伺服器群組](manage-postgresql-hyperscale-server-group-with-azure-data-studio.md)
 - [監視您的伺服器群組](monitor-grafana-kibana.md)
 - 閱讀適用於 PostgreSQL 的 Azure 資料庫超大規模的概念和操作指南，以將您的資料分散到多個于 postgresql 超大規模節點，並從 Azure Database for Postgres 超大規模的所有功能獲益。 :
@@ -80,6 +93,5 @@ Logged in successfully to `https://10.0.0.4:30080` in namespace `arc`. Setting a
 
 - [向外擴充您的適用於 PostgreSQL 的 Azure 資料庫超大規模伺服器群組](scale-out-postgresql-hyperscale-server-group.md)
 - [儲存體設定和 Kubernetes 儲存體概念](storage-configuration.md)
-- [擴充永久性磁片區宣告](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#expanding-persistent-volumes-claims)
 - [Kubernetes 資源模型](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/scheduling/resources.md#resource-quantities)
 

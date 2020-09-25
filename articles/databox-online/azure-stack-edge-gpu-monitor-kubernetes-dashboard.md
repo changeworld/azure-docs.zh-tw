@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/29/2020
+ms.date: 09/22/2020
 ms.author: alkohli
-ms.openlocfilehash: 1a4f22e7ae3cc60d0a16b24a1f0e5f93d3a86d8c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 137cff47d49be1405f60bc47cd16f7f027ab63a9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90899208"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320824"
 ---
 # <a name="use-kubernetes-dashboard-to-monitor-your-azure-stack-edge-pro-gpu-device"></a>使用 Kubernetes 儀表板來監視您的 Azure Stack Edge Pro GPU 裝置
 
@@ -114,9 +114,9 @@ Azure Stack Edge Pro 裝置的 Kubernetes 儀表板也有 [計量伺服器附加
 
 ![查看 Azure Arc 部署的 CPU 和記憶體使用量](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/view-cpu-memory-azure-arc-1.png)
 
-Kubernetes 計量伺服器提供自動調整管線，類似于 [水準 Pod 自動調整程式](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/)。
+Kubernetes 計量伺服器提供自動調整管線，例如 [水準 Pod 自動調整程式](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/)。
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
-瞭解如何針對 Kubernetes 問題進行疑難排解 <!--insert link-->.
+瞭解如何針對 [裝置問題進行疑難排解](azure-stack-edge-gpu-troubleshoot.md)。

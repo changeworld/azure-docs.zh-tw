@@ -16,12 +16,12 @@ ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0be99a673fe3d062e114f375891f3c821c118d76
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 76e94e3c1571f865b41acd488ee1e868043427b2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499495"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321941"
 ---
 # <a name="unexpected-error-when-performing-consent-to-an-application"></a>對應用程式執行同意時出現非預期的錯誤
 
@@ -37,9 +37,9 @@ ms.locfileid: "87499495"
 
 當非公司系統管理員的使用者嘗試使用的應用程式正在要求只有系統管理員能夠授與的權限時，會發生此錯誤。 可代表其組織授與應用程式存取權的系統管理員能夠解決此錯誤。
 
-當使用者因為 Microsoft 偵測到許可權要求有風險而無法同意應用程式時，也可能會發生此錯誤。 在此情況下，也會記錄「ApplicationManagement」類別、「同意應用程式的活動」和「偵測到具風險的應用程式」的狀態原因的「audit 事件」。
+當使用者因為偵測到許可權要求有風險而無法同意應用程式時，也會發生此錯誤。 在此情況下，也會記錄一個 audit 事件，其類別為「ApplicationManagement」、「同意應用程式」的活動類型，以及「偵測到具風險的應用程式」的狀態原因。
 
-另一個可能發生此錯誤的案例是，應用程式需要使用者指派，但未提供系統管理員同意。 在此情況下，系統管理員必須先提供系統管理員同意。   
+可能發生此錯誤的另一個情況是，應用程式需要使用者指派，但未提供系統管理員同意。 在此情況下，系統管理員必須先提供系統管理員同意。   
 
 ## <a name="policy-prevents-granting-permissions-error"></a>原則禁止授與權限錯誤
 * **AADSTS90093：**&lt;tenantDisplayName&gt; 的系統管理員設定了原則，讓您無法將 &lt;應用程式名稱&gt; 正在要求的權限授與該應用程式。 請連絡 &lt;tenantDisplayName&gt; 的系統管理員，其可代表您將權限授與此應用程式。
@@ -77,6 +77,14 @@ ms.locfileid: "87499495"
     -   透過 Azure 入口網站授與應用程式權限
 
     -   從 Azure AD 應用程式資源庫新增應用程式
+
+## <a name="risky-app-error-and-warning"></a>有風險的應用程式錯誤和警告
+* 此應用程式可能會有風險。 如果您信任此應用程式，請要求您的系統管理員授與您存取權。
+* 此應用程式可能會有風險。 只有在您信任此應用程式時才繼續。
+
+當 Microsoft 判斷同意要求可能有風險時，就會顯示這兩個訊息。 在許多其他因素中，如果已 [驗證的發行者](../develop/publisher-verification-overview.md) 尚未新增至應用程式註冊，就可能發生這種情況。 當系統 [管理員同意工作流程](configure-admin-consent-workflow.md) 停用時，系統會向使用者顯示第一則訊息。 當系統管理員同意工作流程已啟用和系統管理員時，系統會向使用者顯示第二個訊息。 
+
+終端使用者將無法授與同意給已偵測為有風險的應用程式。 系統管理員可以，但應該評估應用程式的 carefuly，然後謹慎進行。 如果在進一步評論時應用程式看似可疑，可從同意畫面向 Microsoft 回報。 
 
 ## <a name="next-steps"></a>後續步驟 
 

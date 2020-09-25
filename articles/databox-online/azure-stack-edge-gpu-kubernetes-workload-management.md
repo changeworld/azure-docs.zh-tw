@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 09/09/2020
+ms.date: 09/22/2020
 ms.author: alkohli
-ms.openlocfilehash: f64f9b612ff47fb5c0b6e6202ad87f7660959100
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: d9e0da9e24a0bd32047d029879c4f0e110dc0c16
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90899163"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320790"
 ---
 # <a name="kubernetes-workload-management-on-your-azure-stack-edge-pro-device"></a>Kubernetes Azure Stack Edge Pro 裝置上的工作負載管理
 
@@ -29,7 +29,7 @@ ms.locfileid: "90899163"
 
     您可以建立 Kubernetes 部署，以在叢集上部署無狀態應用程式。 
 
-- 具**狀態應用程式**需要儲存其狀態。 具狀態應用程式會使用持續性的儲存體（例如持續性磁片區）來儲存資料，供伺服器或其他使用者使用。 具狀態應用程式的範例包括 MongoDB 等資料庫。
+- 具**狀態應用程式**需要儲存其狀態。 具狀態應用程式會使用持續性的儲存體（例如持續性磁片區）來儲存資料，供伺服器或其他使用者使用。 具狀態應用程式的範例包括 [AZURE SQL Edge](../azure-sql-edge/overview.md) 和 MongoDB 等資料庫。
 
     您可以建立 Kubernetes 部署來部署具狀態應用程式。 
 
@@ -66,7 +66,7 @@ ms.locfileid: "90899163"
 - **IoT 與 Azure Arc**：選擇部署也取決於您產品案例的目的。 如果您要部署的應用程式或容器與 IoT 或 IoT 生態系統有更深入的整合，請選取 IoT Edge 以部署應用程式。 如果您有現有的 Kubernetes 部署，Azure Arc 會是偏好的選擇。
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 若要透過 kubectl 在本機部署應用程式，請參閱：
 

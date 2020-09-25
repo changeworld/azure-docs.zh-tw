@@ -1,5 +1,5 @@
 ---
-title: 如何在虛擬網路中使用應用程式閘道的 API 管理
+title: 如何搭配使用虛擬網路中的 API 管理與應用程式閘道
 titleSuffix: Azure API Management
 description: 了解如何以應用程式閘道 (WAF) 做為前端在內部虛擬網路中安裝和設定 Azure API 管理
 services: api-management
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: sasolank
-ms.openlocfilehash: eb2ce196687b2ca6a762a879570e4f8ebac788df
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 778c65b9ec42c27ea0ae1530c1ba7fa9739fbc3c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87025110"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321878"
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>整合內部 VNET 中的 API 管理與應用程式閘道
 
@@ -35,7 +35,7 @@ API 管理服務可以內部模式設定於虛擬網路中，因此只能從虛�
 
 [!INCLUDE [premium-dev.md](../../includes/api-management-availability-premium-dev.md)]
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -49,22 +49,22 @@ API 管理服務可以內部模式設定於虛擬網路中，因此只能從虛�
 
 ## <a name="scenario"></a><a name="scenario"> </a>案例
 
-本文說明如何針對內部和外部取用者使用單一 API 管理服務，並將其作為內部部署和雲端 Api 的單一前端。 您也會看到如何使用應用程式閘道中提供的路由功能，只公開您 API 的一部分 (在範例中以綠色醒目提示) 供外部取用。
+本文涵蓋如何針對內部和外部取用者使用單一 API 管理服務，並使其成為內部部署和雲端 Api 的單一前端。 您也會看到如何使用應用程式閘道中提供的路由功能，只公開您 API 的一部分 (在範例中以綠色醒目提示) 供外部取用。
 
-在第一個設定範例中，您所有的 API 只能從虛擬網路內部進行管理。 內部取用者 (以橘色醒目提示) 則可存取所有的內部和外部 API。 流量永遠不會送到網際網路。 透過 Express Route 線路傳遞高效能的連線能力。
+在第一個設定範例中，您所有的 API 只能從虛擬網路內部進行管理。 內部取用者 (以橘色醒目提示) 則可存取所有的內部和外部 API。 流量永遠不會傳送到網際網路。 高效能連線是透過 Express Route 線路傳遞。
 
 ![URL 路由](./media/api-management-howto-integrate-internal-vnet-appgateway/api-management-howto-integrate-internal-vnet-appgateway.png)
 
 ## <a name="before-you-begin"></a><a name="before-you-begin"> </a>開始之前
 
-* 確定您使用最新版本的 Azure PowerShell。 請參閱[安裝 Azure PowerShell](/powershell/azure/install-az-ps)上的安裝指示。 
+* 確定您使用最新版本的 Azure PowerShell。 請參閱 [安裝 Azure PowerShell](/powershell/azure/install-az-ps)的安裝指示。 
 
 ## <a name="what-is-required-to-create-an-integration-between-api-management-and-application-gateway"></a>在 API 管理和應用程式閘道之間建立整合的所需條件為何？
 
 * **後端伺服器集區︰** 這是 API 管理服務的內部虛擬 IP 位址。
 * **後端伺服器集區設定：** 每個集區都有設定，例如埠、通訊協定和以 cookie 為基礎的親和性。 這些設定會套用至集區內所有伺服器。
 * **前端連接埠：** 這是在應用程式閘道上開啟的公用連接埠。 到達的流量會重新導向至其中一個後端伺服器。
-* 接聽程式 **：** 接聽程式具有前端埠、通訊協定（Http 或 Https，這些值都區分大小寫）和 TLS/SSL 憑證名稱（如果設定 TLS 卸載）。
+* 接聽程式 **：** 接聽程式具有前端埠、通訊協定 (Http 或 Https，這些值會區分大小寫) ，如果設定 TLS 卸載) ，則會 (TLS/SSL 憑證名稱。
 * **規則︰** 規則會繫結接聽程式至後端伺服器集區。
 * **自訂健全狀況探查︰** 應用程式閘道預設會使用 IP 位址型探查，來找出 BackendAddressPool 中有哪些伺服器正在作用中。 API 管理服務只會回應具有正確主機標頭的要求，因此預設探查會失敗。 需要定義自訂的健全狀況探查以協助應用程式閘道判斷服務正在執行，因此它應該轉送要求。
 * **自訂網域憑證︰** 若要從網際網路存取 API 管理，您需要建立其主機名稱和應用程式閘道前端 DNS 名稱的 CNAME 對應。 這可確保主機名稱的標頭和憑證傳送到轉送至 API 管理的應用程式閘道，是 APIM 可以辨識為有效的。 在此範例中，我們將使用兩個憑證 - 分別用於後端和開發人員入口網站。  
@@ -87,12 +87,12 @@ API 管理服務可以內部模式設定於虛擬網路中，因此只能從虛�
 > 如果您使用 Azure AD 或第三方驗證，請啟用應用程式閘道中的 [cookie 型工作階段同質性](../application-gateway/features.md#session-affinity)功能。
 
 > [!WARNING]
-> 若要防止應用程式閘道 WAF 在開發人員入口網站中中斷下載 OpenAPI 規格，您必須停用防火牆規則 `942200 - "Detects MySQL comment-/space-obfuscated injections and backtick termination"` 。
+> 若要防止應用程式閘道 WAF 在開發人員入口網站中中斷 OpenAPI 規格的下載，您必須停用防火牆規則 `942200 - "Detects MySQL comment-/space-obfuscated injections and backtick termination"` 。
 > 
-> 應用程式閘道 WAF 規則，這可能會中斷入口網站的功能，包括：
+> 應用程式閘道 WAF 規則可能會中斷入口網站的功能，包括：
 > 
-> - `920330`、、、、、、、、、（系統 `931130` `942100` `942110` `942180` `942200` `942260` `942370` `949110` `980130` 管理模式）
-> - `942200`、 `942260` 、 `942370` 、 `942430` 、（ `942440` 適用于已發佈的入口網站）
+> - `920300`管理模式的、、、、、、、、、 `920330` `931130` `942100` `942110` `942180` `942200` `942260` `942340` `942370` 。
+> - `942200``942260` `942370` `942430` `942440` 已發佈入口網站的、、、、。
 
 ## <a name="create-a-resource-group-for-resource-manager"></a>建立資源管理員的資源群組
 
@@ -192,11 +192,11 @@ $apimService = New-AzApiManagement -ResourceGroupName $resGroupName -Location $l
 ## <a name="set-up-a-custom-domain-name-in-api-management"></a>在 API 管理中設定自訂網域名稱
 
 > [!IMPORTANT]
-> 除了下列步驟之外，[新的開發人員入口網站](api-management-howto-developer-portal.md)也需要啟用 API 管理的管理端點連線。
+> 除了下列步驟之外， [新的開發人員入口網站](api-management-howto-developer-portal.md) 也需要啟用對 API 管理的管理端點的連線能力。
 
 ### <a name="step-1"></a>步驟 1
 
-使用具有網域之私密金鑰的憑證詳細資料，初始化下列變數。 在此範例中，我們會使用 `api.contoso.net` 和 `portal.contoso.net`。  
+使用具有網域私密金鑰的憑證詳細資料，初始化下列變數。 在此範例中，我們會使用 `api.contoso.net` 和 `portal.contoso.net`。  
 
 ```powershell
 $gatewayHostname = "api.contoso.net"                 # API gateway host
@@ -213,7 +213,7 @@ $certPortalPwd = ConvertTo-SecureString -String $portalCertPfxPassword -AsPlainT
 
 ### <a name="step-2"></a>步驟 2
 
-建立並設定 proxy 和入口網站的主機名稱設定物件。  
+為 proxy 和入口網站建立及設定主機名稱設定物件。  
 
 ```powershell
 $proxyHostnameConfig = New-AzApiManagementCustomHostnameConfiguration -Hostname $gatewayHostname -HostnameType Proxy -PfxPath $gatewayCertPfxPath -PfxPassword $certPwd
@@ -225,7 +225,7 @@ Set-AzApiManagement -InputObject $apimService
 ```
 
 > [!NOTE]
-> 若要設定舊版開發人員入口網站連線，您需要將取代 `-HostnameType DeveloperPortal` 為 `-HostnameType Portal` 。
+> 若要設定舊版開發人員入口網站連線能力，您需要將取代為 `-HostnameType DeveloperPortal` `-HostnameType Portal` 。
 
 ## <a name="create-a-public-ip-address-for-the-front-end-configuration"></a>建立前端組態的公用 IP 位址
 
@@ -243,7 +243,7 @@ $publicip = New-AzPublicIpAddress -ResourceGroupName $resGroupName -name "public
 
 ### <a name="step-1"></a>步驟 1
 
-建立名為**gatewayIP01**的應用程式閘道 IP 設定。 當應用程式閘道啟動時，它會從設定的子網路取得 IP 位址，再將網路流量路由傳送到後端 IP 集區中的 IP 位址。 請記住，每個執行個體需要一個 IP 位址。
+建立名為 **gatewayIP01**的應用程式閘道 IP 設定。 當應用程式閘道啟動時，它會從設定的子網路取得 IP 位址，再將網路流量路由傳送到後端 IP 集區中的 IP 位址。 請記住，每個執行個體需要一個 IP 位址。
 
 ```powershell
 $gipconfig = New-AzApplicationGatewayIPConfiguration -Name "gatewayIP01" -Subnet $appgatewaysubnetdata
@@ -298,7 +298,7 @@ $apimPortalProbe = New-AzApplicationGatewayProbeConfig -Name "apimportalprobe" -
 
 ### <a name="step-7"></a>步驟 7
 
-上傳要在具備 TLS 功能的後端集區資源上使用的憑證。 此憑證與您在上述步驟 4 中提供的憑證相同。
+上傳要在已啟用 TLS 的後端集區資源上使用的憑證。 此憑證與您在上述步驟 4 中提供的憑證相同。
 
 ```powershell
 $authcert = New-AzApplicationGatewayAuthenticationCertificate -Name "whitelistcert1" -CertificateFile $gatewayCertCerPath
@@ -369,7 +369,7 @@ Get-AzPublicIpAddress -ResourceGroupName $resGroupName -Name "publicIP01"
 ```
 
 ## <a name="summary"></a><a name="summary"> </a>摘要
-VNET 中設定的 Azure API 管理為所有已設定的 Api 提供單一閘道介面，不論它們是裝載于內部部署或雲端。 整合應用程式閘道與 API 管理提供選擇性地使特定 API 可在網際網路上存取的彈性，並提供 Web 應用程式防火牆來做為 API 管理執行個體的前端。
+在 VNET 中設定的 Azure API 管理會針對所有已設定的 Api 提供單一閘道介面，不論它們是裝載在內部部署環境或雲端中。 整合應用程式閘道與 API 管理提供選擇性地使特定 API 可在網際網路上存取的彈性，並提供 Web 應用程式防火牆來做為 API 管理執行個體的前端。
 
 ## <a name="next-steps"></a><a name="next-steps"> </a>後續步驟
 * 深入了解 Azure 應用程式閘道

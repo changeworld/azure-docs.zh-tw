@@ -10,15 +10,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/01/2020
+ms.date: 09/22/2020
 ms.author: allensu
 ms.custom: references_regions
-ms.openlocfilehash: 11184b2e9770ba6fd7c4ec9d04862c0890ac94c6
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: d55f52b5e99a7a617e2bec8bea4d6e6ef687730a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90933975"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336525"
 ---
 # <a name="cross-region-load-balancer-preview"></a>跨區域負載平衡器 (預覽) 
 
@@ -147,7 +147,7 @@ Azure 跨區域負載平衡器會使用地理鄰近性的負載平衡演算法�
 跨區域負載平衡器會共用標準負載平衡器的 [SLA](https://azure.microsoft.com/support/legal/sla/load-balancer/v1_0/ ) 。
 
  
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 請參閱 [建立公用標準負載平衡器](quickstart-load-balancer-standard-public-portal.md) ，開始使用負載平衡器。
 - 深入了解 [Azure Load Balancer](load-balancer-overview.md)。

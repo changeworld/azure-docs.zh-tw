@@ -11,12 +11,12 @@ ms.author: mithigpe
 author: minthigpen
 ms.reviewer: Luis.Quintanilla
 ms.date: 07/09/2020
-ms.openlocfilehash: 757646a1630443f297d4b7c538721e9facdc130c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: d063af3ba3b9261100af5e48a2c507a80ac76d98
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90897430"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322354"
 ---
 # <a name="model-interpretability-in-azure-machine-learning-preview"></a>Azure Machine Learning (預覽中的模型可解譯性) 
 
@@ -39,20 +39,11 @@ ms.locfileid: "90897430"
 
 ## <a name="interpretability-with-azure-machine-learning"></a>Azure Machine Learning 的可解譯性
 
-可解譯性類別可透過多個 SDK 套件取得： (瞭解如何[安裝適用于 Azure Machine Learning) 的 SDK 套件](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)
+可解譯性類別可透過下列 SDK 套件取得： (瞭解如何 [安裝適用于 Azure Machine Learning 的 SDK 套件](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)) 
 
-* `azureml.interpret`，包含 Microsoft 支援之功能的主要套件。
+* `azureml.interpret`，包含 Microsoft 所支援的功能。
 
-* `azureml.contrib.interpret`您可以嘗試的、預覽和實驗性功能。
-
-使用 `pip install azureml-interpret` 和 `pip install azureml-contrib-interpret` 一般用途。
-
-
-> [!IMPORTANT]
-> `contrib`未完全支援命名空間中的內容。 當實驗性功能變成熟時，它們會逐漸移至主要命名空間。
-.
-
-
+用於 `pip install azureml-interpret` 一般用途。
 
 ## <a name="how-to-interpret-your-model"></a>如何解讀模型
 
@@ -117,7 +108,7 @@ ms.locfileid: "90897430"
 您可以從遠端執行 Azure Machine Learning 計算的說明，並將說明資訊記錄到 Azure Machine Learning 的執行歷程記錄服務中。 記錄這項資訊之後，就可以在 Azure Machine Learning studio 進行使用者分析，立即取得說明中的報表和視覺效果。
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 請參閱 [如何](how-to-machine-learning-interpretability-aml.md) 在本機和 Azure Machine Learning 遠端計算資源上啟用模型定型的可解譯性。 
 - 如需其他案例，請參閱 [範例筆記本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model) 。 

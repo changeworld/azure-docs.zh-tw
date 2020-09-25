@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: arthii, logicappspm
 ms.topic: article
 ms.date: 05/15/2020
-ms.openlocfilehash: f646af4cad6101e019e58f4f50a40b07aff19461
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: a36b9d20fa20df56ec53e090976ea86e689ac74b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89660489"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322507"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>安裝 Azure Logic Apps 的內部部署資料閘道
 
@@ -114,7 +114,7 @@ ms.locfileid: "89660489"
 
    請注意 [新增到現有的閘道叢集] 的選項，當您針對[高可用性案例](#high-availability)安裝額外閘道時，就會選取該叢集。
 
-1. 檢查針對閘道安裝所使用的閘道雲端服務與 [Azure 服務匯流排](https://azure.microsoft.com/services/service-bus/)的區域。 根據預設，此區域是與您 Azure 帳戶的 Azure AD 租用戶相同的位置。
+1. 檢查閘道雲端服務的區域，以及閘道安裝所使用的 [Azure 服務匯流排訊息實例](../service-bus-messaging/service-bus-messaging-overview.md) 。 根據預設，此區域是與您 Azure 帳戶的 Azure AD 租用戶相同的位置。
 
    ![確認閘道服務與服務匯流排的區域](./media/logic-apps-gateway-install/confirm-gateway-region.png)
 
@@ -140,7 +140,7 @@ ms.locfileid: "89660489"
 
 ## <a name="check-or-adjust-communication-settings"></a>檢查或調整通訊設定
 
-內部部署的資料閘道依賴 [Azure 服務匯流排](../service-bus-messaging/service-bus-messaging-overview.md)來使用雲端連線，以及建立與閘道相關聯 Azure 區域對應的連出連線。 如果您的工作環境要求流量經由 Proxy 或防火牆存取網際網路，此限制可能會使內部部署的資料閘道無法連線到閘道雲端服務與 Azure 服務匯流排。 閘道有數個通訊設定可供您調整。 如需詳細資訊，請參閱下列主題：
+內部部署資料閘道取決於雲端連線 [Azure 服務匯流排的訊息](../service-bus-messaging/service-bus-messaging-overview.md) ，並建立與閘道相關聯 Azure 區域對應的輸出連線。 如果您的工作環境要求流量通過 proxy 或防火牆來存取網際網路，則這種限制可能會導致內部部署資料閘道無法連線到閘道雲端服務並 Azure 服務匯流排訊息。 閘道有數個通訊設定可供您調整。 如需詳細資訊，請參閱下列主題：
 
 * [調整內部部署的資料閘道的通訊設定](/data-integration/gateway/service-gateway-communication) \(部分機器翻譯\)
 * [設定內部部署的資料閘道的 Proxy 設定](/data-integration/gateway/service-gateway-proxy)
@@ -206,7 +206,7 @@ ms.locfileid: "89660489"
 
 閘道有助於讓幕後通訊更快且更安全。 此通訊在雲端使用者、閘道雲端服務與內部部署資料來源之間進行。 閘道雲端服務會將資料來源認證和閘道詳細資料予以加密並儲存。 服務也會在使用者、閘道與您的內部部署資料來源之間路由傳送查詢與其結果。
 
-閘道可搭配防火牆運作，而且僅使用輸出連線。 源自閘道代理程式的所有流量都是安全連出流量。 閘道會在加密通道上經過 [Azure 服務匯流排](../service-bus-messaging/service-bus-messaging-overview.md)轉送來自內部部署來源的資料。 此服務匯流排會建立閘道與呼叫服務之間的通道，但不會儲存任何資料。 透過閘道傳送的所有資料都會加密。
+閘道可搭配防火牆運作，而且僅使用輸出連線。 源自閘道代理程式的所有流量都是安全連出流量。 閘道會透過 [Azure 服務匯流排訊息](../service-bus-messaging/service-bus-messaging-overview.md)，從加密通道上的內部部署來源傳送資料。 此服務匯流排會建立閘道與呼叫服務之間的通道，但不會儲存任何資料。 透過閘道傳送的所有資料都會加密。
 
 ![內部部署的資料閘道的架構](./media/logic-apps-gateway-install/how-on-premises-data-gateway-works-flow-diagram.png)
 
@@ -217,9 +217,9 @@ ms.locfileid: "89660489"
 
 1. 雲端服務會建立查詢，以及資料來源的加密認證。 服務接著會將查詢與認證傳送到閘道佇列以進行處理。
 
-1. 閘道雲端服務會分析該查詢，並將要求推送至 Azure 服務匯流排。
+1. 閘道雲端服務會分析查詢，並將要求推送至 Azure 服務匯流排的訊息。
 
-1. Azure 服務匯流排會將暫止的要求傳送至閘道。
+1. Azure 服務匯流排訊息會將擱置的要求傳送至閘道。
 
 1. 閘道收到查詢、解密認證，並使用那些認證連線至一或多個資料來源。
 

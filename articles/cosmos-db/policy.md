@@ -1,23 +1,26 @@
 ---
 title: 使用 Azure 原則來實作 Azure Cosmos DB 資源的治理和控制
 description: 了解如何使用 Azure 原則來實作 Azure Cosmos DB 資源的治理和控制。
-author: plzm
-ms.author: paelaz
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/20/2020
-ms.openlocfilehash: a1b1c01f7cf720690decd9c7aac5fb14b92121ec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/23/2020
+ms.openlocfilehash: 44519a21296fd658f12b8d7df2191797b16caf7f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84432014"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320892"
 ---
 # <a name="use-azure-policy-to-implement-governance-and-controls-for-azure-cosmos-db-resources"></a>使用 Azure 原則來實作 Azure Cosmos DB 資源的治理和控制
 
 [Azure 原則](../governance/policy/overview.md)有助於強制執行組織治理標準、評估資源合規性，以及實作自動補救。 常見的使用案例包括安全性、成本管理和設定一致性。
 
 Azure 原則提供內建原則定義。 您可以針對內建原則定義未解決的案例，建立自訂原則定義。 如需詳細資訊，請參閱 [Azure 原則文件](../governance/policy/overview.md)。
+
+> [!IMPORTANT]
+> Azure 原則會在 Azure 服務的資源提供者層級強制執行。 Cosmos DB Sdk 可以對略過 Cosmos DB 資源提供者的資料庫、容器和輸送量資源執行大部分的管理作業，進而忽略使用 Azure 原則建立的任何原則。 若要確保原則的強制執行，請參閱 [防止 Azure Cosmos DB sdk 的變更](role-based-access-control.md#prevent-sdk-changes)
 
 ## <a name="assign-a-built-in-policy-definition"></a>指派內建原則定義
 
@@ -79,7 +82,7 @@ az provider show --namespace Microsoft.DocumentDB --expand "resourceTypes/aliase
 
 您可以使用[自訂原則定義規則](../governance/policy/tutorials/create-custom-policy-definition.md#policy-rule)中的任何屬性別名名稱。
 
-以下是原則定義的範例，它會檢查是否已針對多個寫入位置設定 Azure Cosmos DB 帳戶。 自訂原則定義包含兩個規則：一個用來檢查特定類型的屬性別名，另一個則用於類型的特定屬性，在此案例中是儲存多個寫入位置設定的欄位。 這兩個規則都會使用別名名稱。
+以下是原則定義的範例，可檢查是否已針對多個寫入位置設定 Azure Cosmos DB 帳戶。 自訂原則定義包含兩個規則：一個用於檢查特定類型的屬性別名，而第二個規則用於類型的特定屬性，在此案例中是儲存多個寫入位置設定的欄位。 這兩個規則都會使用別名名稱。
 
 ```json
 "policyRule": {
@@ -111,24 +114,24 @@ az provider show --namespace Microsoft.DocumentDB --expand "resourceTypes/aliase
 
 下列螢幕擷取畫面顯示兩個範例原則指派。
 
-其中一個指派是以內建原則定義為基礎，會檢查 Azure Cosmos DB 資源是否只部署到允許的 Azure 區域。 資源合規性會針對範圍內的資源顯示原則評估結果（符合規範或不符合規範）。
+其中一個指派是以內建原則定義為基礎，會檢查 Azure Cosmos DB 資源是否只部署到允許的 Azure 區域。 資源合規性會顯示原則評估結果， (符合規範或不符合規範的) 用於範圍內的資源。
 
-另一個指派是以自訂原則定義為基礎。 此指派會檢查是否已為多個寫入位置設定 Cosmos DB 帳戶。
+另一個指派是以自訂原則定義為基礎。 這項指派會檢查 Cosmos DB 帳戶是否已針對多個寫入位置進行設定。
 
-部署原則指派之後，合規性儀表板會顯示評估結果。 請注意，部署原則指派之後最多可能需要 30 分鐘的時間。 此外，在建立原則指派之後，[可以立即視需要啟動原則評估掃描](../governance/policy/how-to/get-compliance-data.md#on-demand-evaluation-scan)。
+部署原則指派之後，合規性儀表板會顯示評估結果。 請注意，部署原則指派之後最多可能需要 30 分鐘的時間。 此外，您可以在建立原則指派之後， [視需要立即啟動原則評估掃描](../governance/policy/how-to/get-compliance-data.md#on-demand-evaluation-scan) 。
 
-螢幕擷取畫面顯示下列範圍內 Azure Cosmos DB 帳戶的相容性評估結果：
+螢幕擷取畫面顯示下列範圍內 Azure Cosmos DB 帳戶的合規性評估結果：
 
-- 兩個帳戶中有零個符合必須設定虛擬網路（VNet）篩選的原則。
-- 兩個帳戶中有零個符合原則，需要為多個寫入位置設定帳戶
-- 兩個帳戶中有零個符合原則，即資源已部署到允許的 Azure 區域。
+- 兩個帳戶中的零個符合必須設定虛擬網路 (VNet) 篩選的原則。
+- 兩個帳戶中的零個符合需要針對多個寫入位置設定帳戶的原則
+- 兩個帳戶中的零個符合原則，可將資源部署至允許的 Azure 區域。
 
-:::image type="content" source="./media/policy/compliance.png" alt-text="列出的 Azure 原則指派的相容性結果":::
+:::image type="content" source="./media/policy/compliance.png" alt-text="列出 Azure 原則指派的合規性結果":::
 
-若要修復不符合規範的資源，請參閱[如何使用 Azure 原則補救資源](../governance/policy/how-to/remediate-resources.md)。
+若要修復不符合規範的資源，請參閱 [如何使用 Azure 原則來補救資源](../governance/policy/how-to/remediate-resources.md)。
 
 ## <a name="next-steps"></a>後續步驟
 
-- 請[參閱 Azure Cosmos DB 的自訂原則定義範例](https://github.com/Azure/azure-policy/tree/master/samples/CosmosDB)，包括以上所示的多個寫入位置和 VNet 篩選原則。
+- 請[參閱 Azure Cosmos DB 的範例自訂原則定義](https://github.com/Azure/azure-policy/tree/master/samples/CosmosDB)，包括以上顯示的多個寫入位置和 VNet 篩選原則。
 - [在 Azure 入口網站中建立原則指派](../governance/policy/assign-policy-portal.md)
 - [檢閱適用於 Azure Cosmos DB 的 Azure 原則內建原則定義](./policy-samples.md)

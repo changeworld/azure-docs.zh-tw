@@ -3,12 +3,12 @@ title: 判斷不符合規範的原因
 description: 如果資源不符合規範，有許多可能的原因。 了解如何找出導致不符合規範的原因。
 ms.date: 07/06/2020
 ms.topic: how-to
-ms.openlocfilehash: a666da4ecb97c24e7176e6c7cfbe2ee24f46f1b7
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 102a1a6a9573c73b4c1158a3c412be233e1a12b2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89648563"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334169"
 ---
 # <a name="determine-causes-of-non-compliance"></a>判斷不符合規範的原因
 
@@ -106,9 +106,15 @@ ms.locfileid: "89648563"
 
 ## <a name="compliance-details-for-guest-configuration"></a>來賓設定的合規性詳細資料
 
-對於「來賓設定」類別中的 _auditIfNotExists_ 原則，VM 內可能會評估多項設定，而且您必須檢視每項設定的詳細資料。 例如，如果您正在稽核密碼原則清單，而且其中只有一個原則具有「不符合規範」狀態，您就需要知道哪些特定密碼原則不符合規範，以及原因為何。
+針對_來賓_設定類別中的_auditIfNotExists_原則，可能會在虛擬機器內評估多個設定，您將需要查看每個設定的詳細資料。 例如，如果您正在稽核密碼原則清單，而且其中只有一個原則具有「不符合規範」狀態，您就需要知道哪些特定密碼原則不符合規範，以及原因為何。
 
-您也可能沒有直接登入 VM 的權限，但您必須回報 VM 為何「不符合規範」。
+您也可能不會有直接登入虛擬機器的存取權，但您需要報告虛擬機器不 _符合規範_的原因。
+
+## <a name="compliance-details-for-resource-provider-modes"></a>資源提供者模式的合規性詳細資料
+
+若為具有 [資源提供者模式](../concepts/definition-structure.md#resource-manager-modes)的指派，請選取 _不符合規範_ 的資源以開啟更深入的觀點。 在 [ **元件相容性** ] 索引標籤下，是指派的原則上的資源提供者模式的其他相關資訊，顯示 _不符合規範_的 **元件** 和 **元件識別碼**。
+
+:::image type="content" source="../media/getting-compliance-data/compliance-components.png" alt-text="[元件相容性] 索引標籤的螢幕擷取畫面以及資源提供者模式指派的合規性詳細資料。" border="false":::
 
 ### <a name="azure-portal"></a>Azure 入口網站
 

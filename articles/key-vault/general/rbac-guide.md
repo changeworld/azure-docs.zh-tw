@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 8/30/2020
 ms.author: mbaldwin
-ms.openlocfilehash: b80b3cf1712fab17b8f626bae5fef97849e44e20
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 4f943b11830c19ebb69dd501827deb158cecadf0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90972262"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336746"
 ---
 # <a name="provide-access-to-key-vault-keys-certificates-and-secrets-with-an-azure-role-based-access-control-preview"></a>使用 Azure 角色型存取控制 (預覽，提供 Key Vault 金鑰、憑證和秘密的存取權) 
 
@@ -45,6 +45,8 @@ Azure RBAC 模型可讓您在不同的範圍層級上設定許可權：管理群
 - [Azure Key Vault 服務限制](service-limits.md)
 
 ## <a name="azure-built-in-roles-for-key-vault-data-plane-operations-preview"></a>適用于 Key Vault 資料平面作業的 Azure 內建角色 (preview) 
+> [!NOTE]
+> `Key Vault Contributor` 角色是用來管理金鑰保存庫的管理平面作業。 它不允許存取金鑰、秘密和憑證。
 
 | 內建角色 | 描述 | ID |
 | --- | --- | --- |

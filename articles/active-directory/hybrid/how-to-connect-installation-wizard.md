@@ -17,18 +17,18 @@ ms.date: 07/17/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 900471675c0e77cc5d82641fead3f019a0fa90c8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9d81836b47acb19f624075480aafef74c9c0934c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85358679"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91306118"
 ---
 # <a name="azure-ad-connect-sync-running-the-installation-wizard-a-second-time"></a>Azure AD Connect 同步處理︰第二次執行安裝精靈
 第一次執行 Azure AD Connect 安裝精靈時，它會逐步引導您設定安裝。 如果您再次執行安裝精靈，它則會提供維護選項。
 
 >[!IMPORTANT]
->請注意，當同步處理正在進行時，您無法執行安裝精靈。  請先確認同步處理並未執行，再啟動嚮導。
+>請注意，當進行中的同步處理時，您無法執行安裝精靈。  啟動精靈之前，請先確認未執行同步處理。
 
 您可以在 [開始] 功能表中找到名為 **Azure AD Connect**的安裝精靈。
 
@@ -79,7 +79,7 @@ ms.locfileid: "85358679"
 此選項可讓您啟用及停用伺服器上的預備模式。 預備模式和其使用方式的詳細資訊可在 [作業](how-to-connect-sync-staging-server.md)中找到。
 
 此選項會顯示預備模式目前是已啟用還是已停用︰  
-![也會顯示預備模式目前狀態的選項](./media/how-to-connect-installation-wizard/stagingmodecurrentstate.png)
+![顯示已停用預備模式的螢幕擷取畫面。](./media/how-to-connect-installation-wizard/stagingmodecurrentstate.png)
 
 若要變更狀態，請選取此選項，並選取或取消選取核取方塊。  
 ![也會顯示預備模式目前狀態的選項](./media/how-to-connect-installation-wizard/stagingmodeenable.png)

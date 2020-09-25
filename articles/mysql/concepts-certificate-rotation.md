@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 4599346cd4538151f6c758253f1f1bf29bafdcbf
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: d9faa9dcd664f5dc8b7b0b633eedd19431a4b826
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90985782"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322201"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-mysql"></a>瞭解適用於 MySQL 的 Azure 資料庫的根 CA 變更變更
 
@@ -30,6 +30,7 @@ ms.locfileid: "90985782"
 使用 SSL/TLS 並確認根憑證的所有應用程式都需要更新根憑證。 您可以藉由檢查您的連接字串來識別您的連接是否驗證根憑證。
 -   如果您的連接字串包含 `sslmode=verify-ca` 或 `sslmode=verify-full` ，則需要更新憑證。
 -   如果您的連接字串包含 `sslmode=disable` 、 `sslmode=allow` 、 `sslmode=prefer` 或 `sslmode=require` ，就不需要更新憑證。 
+-  如果使用 JAVA 連接器，而您的連接字串包含 useSSL = false 或 requireSSL = false，您就不需要更新憑證。
 -   如果您的連接字串未指定 sslmode，您就不需要更新憑證。
 
 如果您使用的用戶端會將連接字串抽象化，請參閱用戶端的檔，以瞭解它是否會驗證憑證。
@@ -108,7 +109,7 @@ ms.locfileid: "90985782"
 針對使用自我裝載 Integration Runtime 的連接器，您可以在連接字串中明確包含 SSL 憑證檔案的路徑，您必須下載 [新的憑證](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem) ，並更新連接字串以使用它。
 
 ### <a name="7-do-i-need-to-plan-a-database-server-maintenance-downtime-for-this-change"></a>7. 我是否需要為此變更規劃資料庫伺服器維護停機時間？
-不可以。 因為這裡的變更只在用戶端連接到資料庫伺服器，所以資料庫伺服器不需要維護停機時間來進行這項變更。
+否。 因為這裡的變更只在用戶端連接到資料庫伺服器，所以資料庫伺服器不需要維護停機時間來進行這項變更。
 
 ### <a name="8--what-if-i-cannot-get-a-scheduled-downtime-for-this-change-before-october-26-2020-10262020"></a>8. 如果我無法在2020年10月26日之前取得此變更的排程停機時間， (10/26/2020) ？
 由於用來連接到伺服器的用戶端必須更新憑證資訊，如 [此處](./concepts-certificate-rotation.md#what-do-i-need-to-do-to-maintain-connectivity)的修正一節所述，在此情況下，伺服器不需要停機。
@@ -143,7 +144,7 @@ ms.locfileid: "90985782"
 若要確認您是否使用 SSL 連線來連線到伺服器，請參閱 [ssl 驗證](howto-configure-ssl.md#step-4-verify-the-ssl-connection)。
 
 ### <a name="14-is-there-an-action-needed-if-i-already-have-the-digicertglobalrootg2-in-my-certificate-file"></a>14. 如果我的憑證檔案中已經有 DigiCertGlobalRootG2，是否需要採取動作？
-不可以。 如果您的憑證檔案已經有 **DigiCertGlobalRootG2**，就不需要採取任何動作。
+否。 如果您的憑證檔案已經有 **DigiCertGlobalRootG2**，就不需要採取任何動作。
 
 ### <a name="15-what-if-i-have-further-questions"></a>15. 如果我有其他問題，該怎麼辦？
 如果您有任何疑問，請從 [Microsoft Q&中的](mailto:AzureDatabaseforMySQL@service.microsoft.com)「社區專家」獲得解答。 如果您有支援方案，且需要技術協助，請 [與我們聯絡](mailto:AzureDatabaseforMySQL@service.microsoft.com)。

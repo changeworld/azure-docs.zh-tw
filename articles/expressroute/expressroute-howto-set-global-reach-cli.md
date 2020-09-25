@@ -1,6 +1,6 @@
 ---
 title: Azure ExpressRoute：設定 ExpressRoute Global 觸及： CLI
-description: 本文可協助您將 ExpressRoute 線路連結在一起，在內部部署網路之間產生私人網路，並使觸角擴及全球。
+description: 瞭解如何將 ExpressRoute 線路連結在一起，以在您的內部部署網路之間建立私人網路，並使用 Azure CLI 實現全球存取範圍。
 services: expressroute
 author: duongau
 ms.service: expressroute
@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 12/12/2018
 ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 20ec5bb565a506d935ef7de6475e5062a21faa22
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 16a86982813b667ed5c761da27c8e9e5a43ab6cc
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89395480"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322490"
 ---
 # <a name="configure-expressroute-global-reach-by-using-the-azure-cli"></a>使用 Azure CLI 來設定 ExpressRoute 全球存取範圍
 
@@ -149,7 +149,7 @@ az network express-route peering connection delete -g <ResourceGroupName> --circ
 
 完成此作業後，您的內部部署網路之間將無法再透過 ExpressRoute 線路進行連線。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [深入了解 ExpressRoute 觸角擴及全球](expressroute-global-reach.md)
 * [確認 ExpressRoute 連線能力](expressroute-troubleshooting-expressroute-overview.md)

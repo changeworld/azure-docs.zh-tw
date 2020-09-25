@@ -4,14 +4,14 @@ description: 瞭解如何與 Kubernetes 資源互動，以管理 Azure 入口網
 services: container-service
 author: laurenhughes
 ms.topic: article
-ms.date: 08/11/2020
+ms.date: 09/21/2020
 ms.author: lahugh
-ms.openlocfilehash: 4a0acf284475f3c9119f3b9d012debad656b1faa
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 6a9567669445cb5aa94c1108051c961a216fabad
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661345"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335597"
 ---
 # <a name="access-kubernetes-resources-from-the-azure-portal-preview"></a>從 Azure 入口網站 (Preview 存取 Kubernetes 資源) 
 
@@ -24,7 +24,7 @@ Azure 入口網站中的 Kubernetes 資源檢視會取代 [AKS 儀表板附加][
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要查看 Azure 入口網站中的 Kubernetes 資源，您需要 AKS 叢集。 所有叢集都受到支援，但如果使用 Azure Active Directory (Azure AD) 整合，則您的叢集必須使用 [AKS 管理的 Azure AD 整合][aks-managed-aad]。 如果您的叢集使用舊版 Azure AD，您可以在入口網站中或使用 [Azure CLI][cli-aad-upgrade]升級您的叢集。
 
@@ -75,11 +75,25 @@ Kubernetes 資源檢視也包含 YAML 編輯器。 內建的 YAML 編輯器表�
 
 若要存取 Kubernetes 資源，您必須能夠存取 AKS 叢集、Kubernetes API 和 Kubernetes 物件。 確定您是叢集系統管理員或具有適當許可權的使用者，以存取 AKS 叢集。 如需叢集安全性的詳細資訊，請參閱 [AKS 的存取和身分識別選項][concepts-identity]。
 
+>[!NOTE]
+> Azure 入口網站中的 kubernetes 資源檢視僅支援受 [管理 aad](managed-aad.md) 的叢集或啟用非 AAD 的叢集。 如果您使用已啟用受控 AAD 的叢集，您的 AAD 使用者或身分識別必須擁有各自的角色/角色系結來存取 kubernetes API，以及提取[使用者 `kubeconfig` ](control-kubeconfig-access.md)的許可權。
+
 ### <a name="enable-resource-view"></a>啟用資源檢視
 
 針對現有的叢集，您可能需要啟用 Kubernetes 資源查看。 若要啟用資源檢視，請依照入口網站中的叢集提示進行。
 
 :::image type="content" source="media/kubernetes-portal/enable-resource-view.png" alt-text="Azure 入口網站訊息，以啟用 Kubernetes 資源查看。" lightbox="media/kubernetes-portal/enable-resource-view.png":::
+
+> [!TIP]
+> 您可以新增 [**api 伺服器授權 IP 範圍**](api-server-authorized-ip-ranges.md) 的 AKS 功能，以將 api 伺服器存取限制為僅限防火牆的公用端點。 這類叢集的另一個選項是更新 `--api-server-authorized-ip-ranges` ，以包含本機用戶端電腦或 IP 位址範圍 (的存取權，) 流覽入口網站。 為了允許此存取，您需要電腦的公用 IPv4 位址。 您可以使用下列命令找到此位址，或在網際網路瀏覽器中搜尋「我的 IP 位址」。
+```bash
+# Retrieve your IP address
+CURRENT_IP=$(dig @resolver1.opendns.com ANY myip.opendns.com +short)
+
+# Add to AKS approved list
+az aks update -g $RG -n $AKSNAME --api-server-authorized-ip-ranges $CURRENT_IP/32
+
+```
 
 ## <a name="next-steps"></a>後續步驟
 

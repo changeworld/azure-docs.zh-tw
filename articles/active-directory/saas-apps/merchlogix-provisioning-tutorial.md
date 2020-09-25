@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 03/27/2019
 ms.author: zhchia
-ms.openlocfilehash: 6fe256660dc73aa411cf06e2b56ce9ef26934e2f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 9be2205ad0664d58c7a2ef0c07481b1c7aa02402
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547989"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273342"
 ---
 # <a name="tutorial-configure-merchlogix-for-automatic-user-provisioning"></a>教學課程：設定 MerchLogix 來自動布建使用者
 
@@ -55,7 +55,7 @@ ms.locfileid: "88547989"
 
 5. 在結果窗格中，選取 [ **MerchLogix**]，然後按一下 [ **新增** ] 按鈕，將 MerchLogix 新增至您的 SaaS 應用程式清單。
 
-    ![MerchLogix 布建][4]
+    ![[加入] 區段的螢幕擷取畫面，其中包含稱為 [輸入名稱] 文字方塊。][4]
 
 ## <a name="assigning-users-to-merchlogix"></a>將使用者指派給 MerchLogix
 
@@ -88,7 +88,7 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 4. 將 [佈建模式] 設定為 [自動]。
 
-    ![MerchLogix 布建](./media/merchlogix-provisioning-tutorial/Merchlogix1.png)
+    ![MerchLogix-Prisioning 區段的螢幕擷取畫面，其中已叫用布建選項、將布建模式設定為 [自動] 和 [測試連接] 選項已被呼叫。](./media/merchlogix-provisioning-tutorial/Merchlogix1.png)
 
 5. 在 [系統 **管理員認證** ] 區段底下：
 
@@ -100,7 +100,7 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 7. 在 [通知電子郵件]**** 欄位中，輸入應該收到佈建錯誤通知的個人或群組電子郵件地址，然後選取 [發生失敗時傳送電子郵件通知]**** 核取方塊。
 
-8. 按一下 [檔案] 。
+8. 按一下 [檔案]  。
 
 9. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 使用者至 MerchLogix**]。
 

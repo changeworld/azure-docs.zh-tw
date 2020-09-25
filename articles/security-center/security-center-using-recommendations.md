@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/22/2019
+ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 347c539abbe90119a74394eeb748af12d30d0b15
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 4c6b8b0bfa78dca5ca32c8c72edcc463ebb9057a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90904666"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322133"
 ---
 # <a name="use-azure-security-center-recommendations-to-enhance-security"></a>使用 Azure 資訊安全中心建議增強安全性
 
@@ -77,7 +77,7 @@ Jeff 繼續瀏覽高優先權和中優先順序的建議，然後進行實作決
 監控資訊安全中心的建議有助於在發生攻擊之前消除安全性弱點。 當您補救建議時，您的安全分數和工作負載的安全性狀態會改進。 資訊安全中心會自動探索您所部署的新資源、根據您的安全性原則進行評估，並提供新的建議來保護它們。
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 請確定您已備妥監視程序，您會在監視過程中定期檢查資訊安全中心的建議，以確保資源在一段時間內保持安全無虞。
 
 本案例示範如何使用資訊安全中心的安全性原則和建議，以協助減少安全性攻擊。

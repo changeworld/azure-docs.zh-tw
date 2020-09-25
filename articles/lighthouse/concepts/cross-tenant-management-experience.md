@@ -1,14 +1,14 @@
 ---
 title: 跨租用戶管理體驗
 description: Azure 委派的資源管理能提供跨租用戶管理體驗。
-ms.date: 09/10/2020
+ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1ec2beeef86478e36fe3809e8dabcd40333c098a
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 70356fd3856e517ca8fb3414a4ae2a8ccf28326e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90602382"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336627"
 ---
 # <a name="cross-tenant-management-experiences"></a>跨租用戶管理體驗
 
@@ -48,7 +48,7 @@ Azure PowerShell [>select-azsubscription 指令程式](/powershell/module/Az.Acc
 
 [Azure Arc](../../azure-arc/index.yml)：
 
-- 在已啟用規模 Azure Arc 的伺服器上管理混合式伺服器 [ (preview) ](../../azure-arc/servers/overview.md)：
+- 在 [啟用規模 Azure Arc 的伺服器](../../azure-arc/servers/overview.md)上管理混合式伺服器：
   - 管理連線到 Azure 中委派的訂用帳戶和/或資源群組[之 azure 外部的 Windows Server 或 Linux 機器](../../azure-arc/servers/onboard-portal.md)
   - 使用 Azure 結構管理已連線的電腦，例如 Azure 原則和標記
   - 確定在客戶的混合式環境中套用相同的原則組

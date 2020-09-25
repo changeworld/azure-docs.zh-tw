@@ -4,19 +4,16 @@ description: 在本文中，您將瞭解使用 Azure 虛擬機器備份解決方
 ms.topic: conceptual
 ms.date: 07/17/2020
 ms.custom: references_regions
-ms.openlocfilehash: fa5ab60481b431971abb1e3fcb5c85492eb5b22a
-ms.sourcegitcommit: 655e4b75fa6d7881a0a410679ec25c77de196ea3
+ms.openlocfilehash: ce7e53bc740882a819e8a21e3ac95ab47d3b876a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/07/2020
-ms.locfileid: "89506690"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91271370"
 ---
 # <a name="selective-disk-backup-and-restore-for-azure-virtual-machines"></a>適用于 Azure 虛擬機器的選擇性磁片備份和還原
 
 Azure 備份支援使用虛擬機器備份解決方案，同時備份 VM 中的所有磁片 (作業系統和資料) 。 現在，您可以使用選擇性磁片備份和還原功能，在 VM 中備份資料磁片的子集。 如此可提供有效率且符合成本效益的解決方案，以滿足您的備份和還原需求。 每個復原點只包含備份作業中包含的磁片。 這可讓您在還原作業期間，從指定的復原點還原一部分的磁片。 這適用于從快照集與保存庫的還原。
-
->[!NOTE]
->適用于 Azure 虛擬機器的選擇性磁片備份和還原在所有區域都處於公開預覽狀態。
 
 ## <a name="scenarios"></a>案例
 
@@ -62,7 +59,7 @@ az backup protection enable-for-vm --resource-group {resourcegroup} --vault-name
 如果 VM 不在與保存庫相同的資源群組中，則 **ResourceGroup** 會參考在其中建立保存庫的資源群組。 提供 VM 識別碼，而不是 VM 名稱，如下所示。
 
 ```azurecli
-az backup protection enable-for-vm  --resource-group {ResourceGroup} --vault-name {vaultname} --vm $(az vm show -g VMResourceGroup -n MyVm --query id | tr -d '"') --policy-name {policyname} --disk-list-setting include --diskslist {LUN number(s) separated by space}
+az backup protection enable-for-vm  --resource-group {ResourceGroup} --vault-name {vaultname} --vm $(az vm show -g VMResourceGroup -n MyVm --query id --output tsv) --policy-name {policyname} --disk-list-setting include --diskslist {LUN number(s) separated by space}
 ```
 
 ### <a name="modify-protection-for-already-backed-up-vms-with-azure-cli"></a>使用 Azure CLI 修改已備份 Vm 的保護
@@ -86,7 +83,7 @@ az backup protection update-for-vm --resource-group {resourcegroup} --vault-name
 ### <a name="restore-disks-with-azure-cli"></a>使用 Azure CLI 復原磁碟
 
 ```azurecli
-az backup restore restore-disks --resource-group {resourcegroup} --vault-name {vaultname} -c {vmname} -i {vmname} --backup-management-type AzureIaasVM -r {restorepoint} --target-resource-group {targetresourcegroup} --storage-account {storageaccountname} --diskslist {LUN number of the disk(s) to be restored}
+az backup restore restore-disks --resource-group {resourcegroup} --vault-name {vaultname} -c {vmname} -i {vmname} -r {restorepoint} --target-resource-group {targetresourcegroup} --storage-account {storageaccountname} --diskslist {LUN number of the disk(s) to be restored}
 ```
 
 ### <a name="restore-only-os-disk-with-azure-cli"></a>僅還原具有 Azure CLI 的 OS 磁片
@@ -289,13 +286,34 @@ Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -StorageAccountName "
 
 針對已啟用選擇性磁片備份功能的 VM，不支援用來 **建立新 vm** 和 **取代現有** vm 的還原選項。
 
+Azure VM 備份目前不支援具有 ultra 磁片的 Vm 或連接到它們的共用磁片。 在這種情況下，選擇性磁片備份無法用於在這種情況下，這會排除磁片並備份 VM。
+
 ## <a name="billing"></a>計費
 
 Azure 虛擬機器備份會遵循現有的定價模型，其詳細說明請見 [此處](https://azure.microsoft.com/pricing/details/backup/)。
 
-只有當您選擇使用 [**僅 Os 磁片**] 選項進行備份時，才會針對 os 磁片計算**受保護的實例 (PI) 成本**。  如果您設定備份並至少選取一個資料磁片，則會針對所有連接至 VM 的磁片計算 PI 成本。 **備份儲存體成本** 只會根據包含的磁片計算，因此您可以節省儲存體成本。 一律會為 VM 中的所有磁片計算**快照集成本**， (包含和排除的磁片) 。  
+只有當您選擇使用 [**僅 Os 磁片**] 選項進行備份時，才會針對 os 磁片計算**受保護的實例 (PI) 成本**。  如果您設定備份並至少選取一個資料磁片，則會針對所有連接至 VM 的磁片計算 PI 成本。 **備份儲存體成本** 只會根據包含的磁片計算，因此您可以節省儲存體成本。 一律會為 VM 中的所有磁片計算**快照集成本**， (包含和排除的磁片) 。
 
-## <a name="next-steps"></a>接下來的步驟
+如果您已選擇跨區域還原 (CRR) 功能，則在排除磁片之後，會將 [CRR 定價](https://azure.microsoft.com/pricing/details/backup/) 套用至備份儲存體成本。
+
+## <a name="frequently-asked-questions"></a>常見問題集
+
+### <a name="how-is-protected-instance-pi-cost-calculated-for-only-os-disk-backup-in-windows-and-linux"></a>受保護的實例 (PI) 成本如何針對 Windows 和 Linux 中的 OS 磁片備份計算？
+
+PI 成本是根據 VM) 大小的實際 (來計算。
+
+- 針對 Windows：已使用的空間計算是以儲存作業系統 (磁片磁碟機為基礎，通常是 C： ) 。
+- 針對 Linux：已使用的空間計算是以裝載根檔案系統 (/) 的裝置為基礎。
+
+### <a name="i-have-configured-only-os-disk-backup-why-is-the-snapshot-happening-for-all-the-disks"></a>我只設定 OS 磁片備份，為什麼所有磁片都會發生快照集？
+
+選擇性的磁片備份功能可讓您藉由強化屬於備份一部分的內含磁片來節省備份保存庫儲存體成本。 不過，會針對所有連接至 VM 的磁片取得快照集。 因此，一律會為 VM 中的所有磁片計算快照集成本， (包含和排除的磁片) 。 如需詳細資訊，請參閱 [帳單](#billing)。
+
+### <a name="i-cant-configure-backup-for-the-azure-virtual-machine-by-excluding-ultra-disk-or-shared-disks-attached-to-the-vm"></a>我無法藉由將 ultra 磁片或連接至 VM 的共用磁片排除，來設定 Azure 虛擬機器的備份
+
+選擇性磁片備份功能是 Azure 虛擬機器備份解決方案的最上層提供的功能。 Azure VM 備份目前不支援具有 ultra 磁片的 Vm 或連接到它們的共用磁片。
+
+## <a name="next-steps"></a>後續步驟
 
 - [Azure VM 備份的支援矩陣](backup-support-matrix-iaas.md) \(部分機器翻譯\)
 - [常見問題-備份 Azure Vm](backup-azure-vm-backup-faq.md)

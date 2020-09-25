@@ -9,14 +9,14 @@ ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/20/2020
-ms.openlocfilehash: 31b49cdd9e0e5569981b2a0b0c6efcab7239e019
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dc9123735ef65bec89e99a14d25cba881be306fe
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77648507"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91297465"
 ---
 # <a name="monitor-migration-activity-using-the-azure-database-migration-service"></a>使用 Azure 資料庫移轉服務監視遷移活動
 在本文中，您會學習如何在資料庫層級與資料表層級監視移轉的進度。
@@ -36,7 +36,7 @@ ms.locfileid: "77648507"
     <tr>
       <th class="x-hidden-focus"><strong>欄位名稱</strong></th>
       <th><strong>欄位子狀態</strong></th>
-      <th><strong>描述</strong></th>
+      <th><strong>說明</strong></th>
     </tr>
   </thead>
   <tbody>
@@ -67,7 +67,7 @@ ms.locfileid: "77648507"
       <td>移轉已完成。</td>
     </tr>
     <tr>
-      <td>失敗</td>
+      <td>Failed</td>
       <td>移轉失敗。 按一下移轉詳細資料以查看移轉錯誤。</td>
     </tr>
     <tr>

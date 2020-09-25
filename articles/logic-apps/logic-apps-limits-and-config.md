@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
-ms.date: 08/03/2020
-ms.openlocfilehash: d5db970d4ed3c3988c96a2c0c33775bcbfb00d92
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.date: 09/16/2020
+ms.openlocfilehash: 41a43abc3ebae0dad6892bebd06cf995cce143f2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90986011"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322405"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure Logic Apps 的限制和設定資訊
 
@@ -283,7 +283,7 @@ Azure Logic Apps 透過閘道支援寫入作業，包括插入和更新。 不�
 
 | 名稱 | 多租用戶限制 | 整合服務環境限制 | 注意 |
 |------|--------------------|---------------------------------------|-------|
-| AS2 | v2 - 100 MB<br>v1 - 50 MB | v2 - 200 MB <br>v1 - 50 MB | 適用於解碼和編碼 |
+| AS2 | v2 - 100 MB<br>v1-25 MB | v2 - 200 MB <br>v1-25 MB | 適用於解碼和編碼 |
 | X12 | 50 MB | 50 MB | 適用於解碼和編碼 |
 | EDIFACT | 50 MB | 50 MB | 適用於解碼和編碼 |
 ||||

@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure Stack Edge Pro 系統需求 |Microsoft Docs
-description: 瞭解 Azure Stack Edge Pro 的軟體和網路需求
+title: Microsoft Azure Stack Edge 系統需求 |Microsoft Docs
+description: 瞭解 Microsoft Azure Stack Edge 解決方案的系統需求，以及連接到 Azure Stack Edge 的用戶端。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 091d272ff00982a0d0a5ae44885a04cc62d7a4b4
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: e542480db4ed82cf84c6ce04c62e2a07b6193f4a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90899143"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320722"
 ---
 # <a name="system-requirements-for-azure-stack-edge-pro-with-gpu"></a>使用 GPU Azure Stack Edge Pro 的系統需求 
 
@@ -73,7 +73,7 @@ Azure IoT Edge 允許使用支援的 IoT Hub 通訊協定，進行從內部部�
 
 | 連接埠號碼 | 內或外 | 連接埠範圍 | 必要 | 指引 |
 |----------|-----------|------------|----------|----------|
-| TCP 443 (HTTPS)| 外       | WAN        | Yes      | 開啟來佈建 IoT Edge 的輸出。 使用手動指令碼或 Azure IoT 裝置佈建服務 (DPS) 時，就需要此設定。|
+| TCP 443 (HTTPS)| 外       | WAN        | 是      | 開啟來佈建 IoT Edge 的輸出。 使用手動指令碼或 Azure IoT 裝置佈建服務 (DPS) 時，就需要此設定。|
 
 如需完整資訊，請參閱[適用於 IoT Edge 部署的防火牆和連接埠設定規則](https://docs.microsoft.com/azure/iot-edge/troubleshoot)。
 

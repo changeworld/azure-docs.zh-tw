@@ -3,12 +3,12 @@ title: Azure Migrate 設備架構
 description: 提供伺服器評估和移轉中所使用 Azure Migrate 設備的概觀。
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: 623790568fb8d86d8065711439f148211fc7fd6b
-ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
+ms.openlocfilehash: 028e0e5b0bbf83c08b5f9cd6d24d7914513ae89a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89514557"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322252"
 ---
 # <a name="azure-migrate-appliance-architecture"></a>Azure Migrate 設備架構
 
@@ -72,7 +72,7 @@ ms.locfileid: "89514557"
 2. **收集中繼資料和效能資料**：
     - 設備使用通用訊息模型 (CIM) 會話，從埠5985上的 Hyper-v 主機收集 Hyper-v VM 資料。
     - 根據預設，設備會與埠443通訊，以收集 vCenter Server 的 VMware VM 資料。
-3. **傳送資料**：設備會將收集到的資料傳送到 Azure Migrate 伺服器評量，並透過 SSL 埠443來 Azure Migrate 伺服器遷移。 設備可透過網際網路連線到 Azure，您也可以搭配使用 ExpressRoute 與公用/Microsoft 對等互連。
+3. **傳送資料**：設備會將收集到的資料傳送到 Azure Migrate 伺服器評量，並透過 SSL 埠443來 Azure Migrate 伺服器遷移。 設備可透過網際網路連線到 Azure，或透過 ExpressRoute (需要 Microsoft 對等互連) 。
     - 針對效能資料，設備會收集即時使用量資料。
         - VMware 每隔20秒會收集一次效能資料，而針對每個效能標準，每隔30秒會收集一次。
         - 收集的資料會匯總成建立單一資料點10分鐘。
@@ -88,7 +88,7 @@ ms.locfileid: "89514557"
 您可以將 HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\AzureAppliance 「自動更新」機碼設為 0 (DWORD) ，以關閉登錄中的自動更新。
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 請[參閱](migrate-appliance.md)設備支援矩陣。
 

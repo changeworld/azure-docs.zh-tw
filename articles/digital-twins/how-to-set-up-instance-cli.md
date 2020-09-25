@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: e9a78690128c2406277ab4e8fb6e6e4625d2787f
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: bb5ff0bf7347b87fdc3a103a03f9ff58279a367d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89280089"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320759"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-cli"></a>設定 Azure 數位 Twins 實例和驗證 (CLI) 
 
@@ -132,7 +132,7 @@ az ad app create --display-name <name-for-your-app-registration> --native-app --
 
 [!INCLUDE [digital-twins-setup-verify-app-registration-1.md](../../includes/digital-twins-setup-verify-app-registration-1.md)]
 
-首先，確認您上傳的 *manifest.js* 的設定已在註冊時正確設定。 若要這樣做，請從功能表列選取 [ *資訊清單* ]，以查看應用程式註冊的資訊清單程式碼。 滾動至程式碼視窗的底部，並在下方尋找您 *manifest.js* 的欄位 `requiredResourceAccess` ：
+接下來，確認已上傳 *manifest.js* 的設定已在註冊上正確設定。 若要這樣做，請從功能表列選取 [ *資訊清單* ]，以查看應用程式註冊的資訊清單程式碼。 滾動至程式碼視窗的底部，並在下方尋找您 *manifest.js* 的欄位 `requiredResourceAccess` ：
 
 [!INCLUDE [digital-twins-setup-verify-app-registration-2.md](../../includes/digital-twins-setup-verify-app-registration-2.md)]
 
@@ -148,10 +148,10 @@ az ad app create --display-name <name-for-your-app-registration> --native-app --
 
 [!INCLUDE [digital-twins-setup-additional-requirements.md](../../includes/digital-twins-setup-additional-requirements.md)]
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 使用 Azure 數位 Twins CLI 命令，在您的實例上測試個別 REST API 呼叫： 
-* [az dt 參考](https://docs.microsoft.com/cli/azure/ext/azure-iot/dt?view=azure-cli-latest)
+* [az dt 參考](https://docs.microsoft.com/cli/azure/ext/azure-iot/dt?view=azure-cli-latest&preserve-view=true)
 * [操作說明：*使用 Azure Digital Twins CLI*](how-to-use-cli.md)
 
 或者，請參閱如何藉由撰寫用戶端應用程式的驗證碼，將用戶端應用程式連接至您的實例：

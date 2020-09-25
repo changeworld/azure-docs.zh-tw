@@ -11,12 +11,12 @@ ms.date: 04/29/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bdc8b68206161abdd1782561c904d4e670ecca22
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 94710e99fa7d04d757f2ad5fd7b2d3f6e01371d1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85358951"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91306336"
 ---
 # <a name="move-azure-ad-connect-database-from-sql-server-express-to-sql-server"></a>將 Azure AD Connect 資料庫從 SQL Server Express 移至 SQL Server 
 
@@ -31,7 +31,7 @@ ms.locfileid: "85358951"
 使用下列步驟將 Azure AD Connect 資料庫移至遠端 SQL Server。
 
 1. 在 Azure AD Connect 伺服器上，移至 [服務]**** 並停止 [Microsoft Azure AD 同步]**** 服務。
-2. 找出 **%ProgramFiles%\Microsoft Azure AD Sync\Data**資料夾，並將**ADSync**和**ADSync_log .ldf**檔案複製到遠端 SQL Server。
+2. 找出 **%ProgramFiles%\Microsoft Azure AD Sync\Data** 資料夾，並將 **ADSync .mdf** 和 **ADSync_log .ldf** 檔案複製到遠端 SQL Server。
 3. 在 Azure AD Connect 伺服器上重新啟動 [Microsoft Azure AD 同步]**** 服務。
 4. 移至 [控制台] -> [程式] -> [程式和功能]，將 Azure AD Connect 解除安裝。  選取 Microsoft Azure AD Connect 並按一下最上方的 [解除安裝]。
 5. 在遠端 SQL Server 上，開啟 SQL Server Management Studio。
@@ -41,13 +41,13 @@ ms.locfileid: "85358951"
 
 8. 連結資料庫之後，請回到 Azure AD Connect 伺服器並安裝 Azure AD Connect。
 9. 一旦 MSI 安裝完成後，Azure AD Connect 精靈就會開始使用快速模式安裝。 按一下 [結束] 圖示將畫面關閉。
-   ![歡迎使用](./media/how-to-connect-install-move-db/db1.png)
+   ![顯示左側功能表中的 [歡迎使用 Azure A D Connect] 頁面的螢幕擷取畫面，其中已醒目提示左側功能表中的 [快速設定]。](./media/how-to-connect-install-move-db/db1.png)
 10. 啟動新的命令提示字元或 PowerShell 工作階段。 瀏覽至 \<drive>\program files\Microsoft Azure AD Connect 資料夾。 執行 .\AzureADConnect.exe /useexistingdatabase 命令，可在「使用現有資料庫」安裝模式中啟動 Azure AD Connect 精靈。
     ![PowerShell](./media/how-to-connect-install-move-db/db2.png)
 11. [歡迎使用 Azure AD Connect] 畫面隨即迎接您。 一旦您同意授權條款及隱私權注意事項後，請按一下 [繼續]****。
-    ![歡迎使用](./media/how-to-connect-install-move-db/db3.png)
+    ![顯示 [歡迎使用 Azure A D Connect] 頁面的螢幕擷取畫面](./media/how-to-connect-install-move-db/db3.png)
 12. 在 [安裝必要元件]**** 畫面上，會啟用 [使用現有的 SQL Server]**** 選項。 指定裝載 ADSync 資料庫的 SQL Server 名稱。 如果用來主控 ADSync 資料庫的 SQL 引擎執行個體不是 SQL Server 上的預設執行個體，您就必須指定 SQL 引擎執行個體名稱。 此外，如果未啟用 SQL 瀏覽，就必須指定 SQL 引擎執行個體的連接埠號碼。 例如：         
-    ![歡迎使用](./media/how-to-connect-install-move-db/db4.png)           
+    ![顯示 [安裝必要元件] 頁面的螢幕擷取畫面。](./media/how-to-connect-install-move-db/db4.png)           
 
 13. 在 [連線到 Azure AD]**** 畫面上，您必須提供 Azure AD 目錄的全域管理員認證。 建議使用預設 onmicrosoft.com 網域中的帳戶。 此帳戶只會用來在 Azure AD 中建立服務帳戶，而且在精靈完成後便不會使用。
     ![[連接]](./media/how-to-connect-install-move-db/db5.png)
@@ -57,14 +57,14 @@ ms.locfileid: "85358951"
  
 
 15. 在快顯對話方塊中，您可以 (i) 提供企業管理員認證，並且讓 Azure AD Connect 為您建立 AD DS 帳戶，或 (ii) 自行建立 AD DS 帳戶，並且為 Azure AD Connect 提供其認證。 一旦您選取選項並提供必要的認證後，請按一下 [確定]**** 以關閉快顯對話方塊。
-    ![歡迎使用](./media/how-to-connect-install-move-db/db7.png)
+    ![已選取 [建立新的 D 帳戶] 的 [A D 樹系帳戶] 快顯對話方塊螢幕擷取畫面。](./media/how-to-connect-install-move-db/db7.png)
  
 
-16. 一旦提供認證後，紅色十字圖示會取代為綠色勾號圖示。 按 [下一步] 。
-    ![歡迎使用](./media/how-to-connect-install-move-db/db8.png)
+16. 一旦提供認證後，紅色十字圖示會取代為綠色勾號圖示。 按 [下一步]  。
+    ![在輸入帳號憑證之後顯示 [連線您的目錄] 頁面的螢幕擷取畫面。](./media/how-to-connect-install-move-db/db8.png)
  
 
-17. 在 [**準備好設定**] 畫面上，按一下 [**安裝**]。
+17. 在 [ **準備設定** ] 畫面上，按一下 [ **安裝**]。
     ![歡迎使用](./media/how-to-connect-install-move-db/db9.png)
  
 

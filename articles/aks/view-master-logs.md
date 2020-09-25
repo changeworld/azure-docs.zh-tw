@@ -4,12 +4,12 @@ description: 了解如何在 Azure Kubernetes Service (AKS) 中啟用並檢視 K
 services: container-service
 ms.topic: article
 ms.date: 01/03/2019
-ms.openlocfilehash: a0207ebbb1596e41ad65e21a769d7041a239f767
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: 4d4485848bb81f9b745081bd999b3cd3e8101b41
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90004862"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91299066"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 中啟用並檢閱 Kubernetes 主要節點記錄
 
@@ -72,16 +72,18 @@ pod/nginx created
 選擇左邊的 [記錄]****。 若要查看 *kube-audit* 記錄檔，請在文字方塊中輸入下列查詢：
 
 ```
-KubePodInventory
-| where TimeGenerated > ago(1d)
+AzureDiagnostics
+| where Category == "kube-audit"
+| project log_s
 ```
 
 可能會傳回許多記錄。 若要將查詢範圍縮小以查看上一個步驟中所建立之 NGINX pod 的相關記錄，請新增其他 *where* 語句來搜尋 *NGINX* ，如下列範例查詢所示：
 
 ```
-KubePodInventory
-| where TimeGenerated > ago(1d)
-| where Name contains "nginx"
+AzureDiagnostics
+| where Category == "kube-audit"
+| where log_s contains "nginx"
+| project log_s
 ```
 
 如需有關如何查詢及篩選記錄資料的詳細資訊，請參閱 [查看或分析使用 log analytics 記錄搜尋所收集的資料][analyze-log-analytics]。
@@ -91,6 +93,7 @@ KubePodInventory
 AKS 會記錄下列事件：
 
 * [AzureActivity][log-schema-azureactivity]
+* [AzureDiagnostics][log-schema-azurediagnostics]
 * [AzureMetrics][log-schema-azuremetrics]
 * [ContainerImageInventory][log-schema-containerimageinventory]
 * [ContainerInventory][log-schema-containerinventory]
@@ -115,7 +118,7 @@ AKS 會記錄下列事件：
 | *masterclient*           | MasterClientCertificate 的 audit 記錄檔中的顯示名稱，您從 az aks get 認證取得的憑證 |
 | *nodeclient*             | 代理程式節點所使用之 ClientCertificate 的顯示名稱 |
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 在本文中，您已了解如何在 AKS 叢集中啟用並檢閱 Kubernetes 主要元件的記錄。 若要進行進一步的監視及疑難排解，您也可以[檢視 Kubelet 記錄][kubelet-logs]及[啟用 SSH 節點存取][aks-ssh]。
 
@@ -133,6 +136,7 @@ AKS 會記錄下列事件：
 [az-feature-list]: /cli/azure/feature#az-feature-list
 [az-provider-register]: /cli/azure/provider#az-provider-register
 [log-schema-azureactivity]: /azure/azure-monitor/reference/tables/azureactivity
+[log-schema-azurediagnostics]: /azure/azure-monitor/reference/tables/azurediagnostics
 [log-schema-azuremetrics]: /azure/azure-monitor/reference/tables/azuremetrics
 [log-schema-containerimageinventory]: /azure/azure-monitor/reference/tables/containerimageinventory
 [log-schema-containerinventory]: /azure/azure-monitor/reference/tables/containerinventory

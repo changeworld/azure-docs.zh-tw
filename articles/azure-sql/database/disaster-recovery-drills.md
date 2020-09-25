@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: mathoma, carlrab
+ms.reviewer: mathoma, sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: e32f2bf6f353e32fe96cd3c8b109d698cd3d40ef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f53a08a12c5afda8dbc3f25d9102f52b870ceea4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84344572"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321657"
 ---
 # <a name="performing-disaster-recovery-drills"></a>執行嚴重損壞修復演練
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -31,7 +31,7 @@ ms.locfileid: "84344572"
 
 執行演練的工作流程會因您 [設計商務持續性之應用程式](business-continuity-high-availability-disaster-recover-hadr-overview.md)的方式而異。 本文說明在 Azure SQL Database 的內容中進行災害復原演練的最佳做法。
 
-## <a name="geo-restore"></a>異地還原
+## <a name="geo-restore"></a>異地復原
 
 為了避免在進行災害復原演練時可能遺失資料，請使用測試環境來執行演練，方法是建立生產環境的複本，然後使用這個複本來驗證應用程式的容錯移轉工作流程。
 
@@ -41,7 +41,7 @@ ms.locfileid: "84344572"
 
 ### <a name="recovery"></a>復原
 
-* 如[這裡](disaster-recovery-guidance.md)所述，將資料庫異地還原到不同的伺服器。
+* 將資料庫異地還原至不同的伺服器[，如下所述。](disaster-recovery-guidance.md)
 * 將應用程式組態變更為連接到復原資料庫，並遵循[在復原後設定資料庫](disaster-recovery-guidance.md)指南以完成復原。
 
 ### <a name="validation"></a>驗證
@@ -70,5 +70,5 @@ ms.locfileid: "84344572"
 
 * 若要了解商務持續性案例，請參閱[持續性案例](business-continuity-high-availability-disaster-recover-hadr-overview.md)。
 * 若要了解 Azure SQL Database 自動備份，請參閱 [SQL Database 自動備份](automated-backups-overview.md)
-* 若要瞭解如何使用自動備份進行復原，請參閱[從服務起始的備份還原資料庫](recovery-using-backups.md)。
+* 若要瞭解如何使用自動備份進行復原，請參閱 [從服務起始的備份還原資料庫](recovery-using-backups.md)。
 * 若要了解更快速的復原選項，請參閱[主動式異地複寫](active-geo-replication-overview.md)和[自動容錯移轉群組](auto-failover-group-overview.md)。

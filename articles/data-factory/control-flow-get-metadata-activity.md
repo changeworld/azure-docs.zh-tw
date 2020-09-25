@@ -10,14 +10,14 @@ ms.assetid: 1c46ed69-4049-44ec-9b46-e90e964a4a8e
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/09/2020
+ms.date: 09/23/2020
 ms.author: jingwang
-ms.openlocfilehash: c761cf1265ad61517a9d0123b932d31b27d157dd
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: e32115c590d73f5c93f322d3bd542096f2964a4c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89613496"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91297601"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>在 Azure Data Factory 中取得中繼資料活動
 
@@ -35,7 +35,7 @@ ms.locfileid: "89613496"
 
 ## <a name="capabilities"></a>功能
 
-取得中繼資料活動會將資料集做為輸入，並將中繼資料資訊作為輸出傳回。 目前支援下列連接器和對應的可檢索中繼資料。 傳回的中繼資料大小上限為 2 MB。
+取得中繼資料活動會將資料集做為輸入，並將中繼資料資訊作為輸出傳回。 目前支援下列連接器和對應的可檢索中繼資料。 傳回的中繼資料大小上限約為 4 MB。
 
 >[!NOTE]
 >如果您在自我裝載整合執行時間上執行「取得中繼資料」活動，3.6 版或更新版本支援最新的功能。
@@ -63,7 +63,7 @@ ms.locfileid: "89613496"
 - 取得中繼資料活動不支援資料夾/檔案上的萬用字元篩選。
 - `structure``columnCount`從二進位、JSON 或 XML 檔案取得中繼資料時，不支援和。
 
-**關聯式資料庫**
+**關係資料庫**
 
 | 連接器/中繼資料 | structure | columnCount | exists |
 |:--- |:--- |:--- |:--- |
@@ -76,7 +76,7 @@ ms.locfileid: "89613496"
 
 您可以在 [取得中繼資料] 作用欄位清單中指定下列元資料類型，以取得對應的資訊：
 
-| 中繼資料類型 | 描述 |
+| 中繼資料類型 | 說明 |
 |:--- |:--- |
 | itemName | 檔案或資料夾的名稱。 |
 | itemType | 檔案或資料夾的類型。 傳回的值為 `File` 或 `Folder` 。 |
@@ -87,7 +87,7 @@ ms.locfileid: "89613496"
 | contentMD5 | 檔案的 MD5。 僅適用于檔案。 |
 | structure | 檔案或關係資料庫資料表的資料結構。 傳回的值是資料行名稱和資料行類型的清單。 |
 | columnCount | 檔案或關聯式資料表中的資料行數目。 |
-| exists| 檔案、資料夾或資料表是否存在。 請注意，如果 `exists` 在 [取得元資料欄位清單] 中指定，即使檔案、資料夾或資料表不存在，活動也不會失敗。 相反地， `exists: false` 會在輸出中傳回。 |
+| exists| 檔案、資料夾或資料表是否存在。 如果 `exists` 在 [取得中繼資料] 欄位清單中指定，即使檔案、資料夾或資料表不存在，活動也不會失敗。 相反地， `exists: false` 會在輸出中傳回。 |
 
 >[!TIP]
 >當您想要驗證檔案、資料夾或資料表是否存在時，請 `exists` 在 [取得中繼資料作用欄位] 清單中指定。 然後，您可以 `exists: true/false` 在活動輸出中檢查結果。 如果 `exists` 欄位清單中未指定，則如果找不到物件，取得中繼資料活動將會失敗。
@@ -166,7 +166,7 @@ ms.locfileid: "89613496"
 
 目前，取得中繼資料活動可能會傳回下列類型的中繼資料資訊：
 
-屬性 | 描述 | 必要
+屬性 | 說明 | 必要
 -------- | ----------- | --------
 欄位清單 | 需要的中繼資料資訊類型。 如需支援之中繼資料的詳細資訊，請參閱本文的 [中繼資料選項](#metadata-options) 一節。 | 是 
 資料集 | 取得中繼資料活動要取出其中繼資料的參考資料集。 如需支援之連接器的資訊，請參閱 [功能](#capabilities) 一節。 請參閱特定的連接器主題以取得資料集語法詳細資料。 | 是
@@ -224,7 +224,7 @@ storeSettings | 適用于使用格式類型資料集時。 | 否
 }
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 瞭解 Data Factory 所支援的其他控制流程活動：
 
 - [執行管線活動](control-flow-execute-pipeline-activity.md)

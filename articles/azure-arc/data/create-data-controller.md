@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 81c4558bde3ffdbec72a756562b972c2eed4a1ee
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: ba2d0acec37d0f59240381cdea04f4d53ded0b1c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934622"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273036"
 ---
 # <a name="create-the-azure-arc-data-controller"></a>建立 Azure Arc 資料控制器
 
@@ -45,7 +45,7 @@ ms.locfileid: "90934622"
 > [!NOTE]
 > 如果您在 Azure 上使用 Red Hat OpenShift 容器平臺，建議使用最新的可用版本。
 
-視您選擇的選項而定，將 _需要_某些工具，但建議您在開始建立 Azure Arc 資料控制器之前，先 [安裝所有用戶端工具](install-client-tools.md) 。
+視您選擇的選項而定，將 _需要_某些工具，但建議您在開始建立 Azure Arc 資料控制器之前，先 [安裝所有用戶端工具](./install-client-tools.md) 。
 
 無論您選擇哪一個選項，在建立過程中，您都必須提供下列資訊：
 
@@ -53,12 +53,12 @@ ms.locfileid: "90934622"
 - **資料控制器使用者名稱** -資料控制器系統管理員使用者的任何使用者名稱。
 - **資料控制器密碼** -資料控制器系統管理員使用者的密碼。
 - **Kubernetes 命名空間的名稱** -您想要在其中建立資料控制器的 Kubernetes 命名空間名稱。
-- 連線**能力模式**-叢集的連線[模式](connectivity.md)。 目前僅支援「間接」。
+- 連線**能力模式**-叢集的連線[模式](./connectivity.md)。 目前僅支援「間接」。
 - **Azure 訂** 用帳戶識別碼-azure 訂用帳戶 GUID，適用于您想要在 azure 中建立資料控制器資源的位置。
 - **Azure 資源組名** -您想要在 Azure 中建立資料控制器資源的資源組名。
 - **Azure 位置** -資料控制器資源中繼資料將儲存在 azure 中的 azure 位置。 如需可用區域的清單，請參閱 [Azure 全球基礎結構/產品（依區域](https://azure.microsoft.com/global-infrastructure/services/?products=azure-arc)）。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 有多個選項可用於建立 Azure Arc 資料控制器：
 
@@ -68,5 +68,5 @@ ms.locfileid: "90934622"
 - [使用 Azure Data CLI 建立資料控制器 (azdata) ](create-data-controller-using-azdata.md)
 - [使用 Azure Data Studio 建立資料控制器](create-data-controller-azure-data-studio.md)
 - [透過 Azure Data Studio 中的 Jupyter 筆記本，從 Azure 入口網站建立資料控制器](create-data-controller-resource-in-azure-portal.md)
-- [使用 Kubernetes 工具（例如 kubectl 或 oc）來建立資料控制器](create-data-controller-using-k8s-native-tools.md)
+- [使用 Kubernetes 工具（例如 kubectl 或 oc）來建立資料控制器](create-data-controller-using-kubernetes-native-tools.md)
 - [使用 Azure Arc 快速入門建立資料控制器，以獲得測試部署的加速體驗](https://github.com/microsoft/azure_arc#azure-arc-enabled-data-services)

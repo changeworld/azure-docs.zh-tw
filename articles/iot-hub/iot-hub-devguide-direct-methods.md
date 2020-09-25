@@ -1,23 +1,23 @@
 ---
 title: 了解 Azure IoT 中樞直接方法 | Microsoft Docs
 description: 開發人員指南 - 從服務應用程式使用直接方法叫用您裝置上的程式碼。
-author: nberdy
+author: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/17/2018
-ms.author: rezas
+ms.author: philmea
 ms.custom:
 - amqp
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 516b3bac5da2e078217d5c12f1efdf527b7c83a1
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: f68705309d15548dc9728686e2e0ecd6aaad3fba
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90029064"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334101"
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>了解 IoT 中樞的直接方法並從中樞叫用直接方法
 
@@ -55,7 +55,7 @@ IoT 中樞上具有**服務連線**權限的任何人都可以叫用裝置上的
 
 裝置上的直接方法引動過程是 HTTPS 呼叫，由下列項目組成︰
 
-* 特定裝置的*要求 URI* 與 [API 版本](https://docs.aws.amazon.com/cli/latest/reference/iot1click-devices/invoke-device-method.html)：
+* 特定裝置的*要求 URI* 與 [API 版本](https://docs.microsoft.com/rest/api/iothub/service/devices/invokemethod)：
 
     ```http
     https://fully-qualified-iothubname.azure-devices.net/twins/{deviceId}/methods?api-version=2018-06-30
@@ -220,7 +220,7 @@ IoT 中樞開發人員指南中的其他參考主題包括︰
 
 * [IoT 中樞 MQTT 支援](iot-hub-mqtt-support.md)針對 MQTT 通訊協定提供 IoT 中樞支援的詳細資訊。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 現在您已了解如何使用直接方法，接下來您可能對下列「IoT 中樞」開發人員指南文章感興趣︰
 

@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 08/27/2020
 author: palma21
-ms.openlocfilehash: edb38b0884629ebddb646df9d12d8b2e8d07b403
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: dfbef8da1349c2b86595f520e173aee9d455e3a4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90089542"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91299573"
 ---
 # <a name="use-the-azure-disk-container-storage-interface-csi-drivers-in-azure-kubernetes-service-aks-preview"></a>在 Azure Kubernetes Service (AKS)  (preview 中使用 Azure 磁片容器存放裝置介面 (CSI) 驅動程式) 
 Azure 磁片容器存放裝置介面 (CSI) 驅動程式是符合 [CSI 規格規範](https://github.com/container-storage-interface/spec/blob/master/spec.md)的驅動程式，AZURE KUBERNETES SERVICE (AKS) 用來管理 Azure 磁片的生命週期。
@@ -273,13 +273,14 @@ Filesystem      Size  Used Avail Use% Mounted on
 /dev/sdc         15G   46M   15G   1% /mnt/azuredisk
 ```
 
-<!--- ## Shared disk
+## <a name="shared-disk"></a>共用磁片
 
-[Azure shared disks](../virtual-machines/windows/disks-shared.md) is an Azure managed disks feature that enables attaching an Azure disk to agent nodes simultaneously. Attaching a managed disk to multiple agent nodes allows you, for example, to deploy new or migrate existing clustered applications to Azure.
+[Azure 共用磁片](../virtual-machines/windows/disks-shared.md) 是 azure 受控磁片的功能，可同時將 azure 磁片附加至代理程式節點。 例如，將受控磁片連結至多個代理程式節點可讓您將新的叢集應用程式部署至 Azure，或將其遷移至 Azure。
 
-> [!IMPORTANT] Currently, only raw block device (`volumeMode: Block`) is supported by the Azure disk CSI driver. Applications should manage the coordination and control of writes, reads, locks, caches, mounts, and fencing on the shared disk, which is exposed as a raw block device.
+> [!IMPORTANT] 
+> 目前， `volumeMode: Block` Azure 磁片 CSI 驅動程式只支援原始區塊裝置 () 。 應用程式應該在共用磁片上管理寫入、讀取、鎖定、快取、裝載和隔離的協調和控制，這會以原始區塊裝置的形式公開。
 
-Let's create a file called `shared-disk.yaml` by copying the following command that contains the shared disk storage class and PVC:
+讓我們藉 `shared-disk.yaml` 由複製下列包含共用磁片儲存類別和 PVC 的命令來建立呼叫的檔案：
 
 ```yaml
 apiVersion: storage.k8s.io/v1
@@ -307,7 +308,7 @@ spec:
   storageClassName: managed-csi-shared
 ```
 
-Create the storage class with the [kubectl apply][kubectl-apply] command, and specify your `shared-disk.yaml` file:
+使用 [kubectl apply][kubectl-apply] 命令建立儲存類別，並指定您的檔案 `shared-disk.yaml` ：
 
 ```console
 $ kubectl apply -f shared-disk.yaml
@@ -316,7 +317,7 @@ storageclass.storage.k8s.io/managed-csi-shared created
 persistentvolumeclaim/pvc-azuredisk-shared created
 ``` 
 
-Now let's create a file called `deployment-shared.yml` by copying the following command:
+現在，讓我們藉 `deployment-shared.yml` 由複製下列命令來建立呼叫的檔案：
 
 ```yaml
 apiVersion: apps/v1
@@ -348,7 +349,7 @@ spec:
             claimName: pvc-azuredisk-shared
 ```
 
-Create the deployment with the [kubectl apply][kubectl-apply] command, and specify your `deployment-shared.yml` file:
+使用 [kubectl apply][kubectl-apply] 命令建立部署，並指定您的檔案 `deployment-shared.yml` ：
 
 ```console
 $ kubectl apply -f deployment-shared.yml
@@ -356,7 +357,7 @@ $ kubectl apply -f deployment-shared.yml
 deployment/deployment-azuredisk created
 ```
 
-Finally, let's check the block device inside the pod:
+最後，讓我們檢查 pod 內的區塊裝置：
 
 ```console
 # kubectl exec -it deployment-sharedisk-7454978bc6-xh7jp bash
@@ -365,7 +366,6 @@ root@deployment-sharedisk-7454978bc6-xh7jp:/# dd if=/dev/zero of=/dev/sdx bs=102
 100+0 records out
 104857600 bytes (105 MB, 100 MiB) copied, 0.0502999 s, 2.1 GB/s
 ```
--->
 
 ## <a name="windows-containers"></a>Windows 容器
 

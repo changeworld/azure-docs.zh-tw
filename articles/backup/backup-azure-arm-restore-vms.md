@@ -4,12 +4,12 @@ description: 使用 Azure 入口網站從復原點還原 Azure 虛擬機器，�
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: d2b5c00df9f9b5b41877fe21181f11ea7fe76084
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 90179ee78569f1c7b0a7bdf4b4da031c26f01783
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90986542"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91271863"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>如何在 Azure 入口網站中還原 Azure VM 資料
 
@@ -43,7 +43,7 @@ Azure 備份提供數種方式來還原 VM。
   - 還原非 premium Vm 時，不支援 premium 儲存體帳戶。
   - 還原受管理的 Vm 時，不支援以網路規則設定的 premium 儲存體帳戶。
 
-## <a name="before-you-start"></a>開始之前
+## <a name="before-you-start"></a>在您開始使用 Intune 之前
 
 若要 (建立新的 VM) 來還原 VM，請確定您有正確的 Azure 角色型存取控制 (Azure RBAC) 還原 VM 操作的 [許可權](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions) 。
 
@@ -164,9 +164,6 @@ Azure 備份提供數種方式來還原 VM。
 
 ![還原設定](./media/backup-azure-arm-restore-vms/rest-config.png)
 
->[!NOTE]
->次要區域中的虛擬網路必須是唯一指派的，且不能用於該資源群組中的任何其他 Vm。
-
 ![觸發還原進行中的通知](./media/backup-azure-arm-restore-vms/restorenotifications.png)
 
 - 若要還原和建立 VM，請參閱 [建立 vm](#create-a-vm)。
@@ -263,7 +260,7 @@ Azure 備份提供數種方式來還原 VM。
 - 如果您將 VM 還原至相同的資源群組，並使用與原始備份 VM 相同的名稱，則會在還原後於 VM 上繼續進行備份。
 - 如果您將 VM 還原到不同的資源群組，或為還原的 VM 指定了不同的名稱，則您必須為還原的 VM 設定備份。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 如果您在還原過程中遇到困難，[請檢閱](backup-azure-vms-troubleshoot.md#restore)常見問題和錯誤。
 - 還原 VM 之後，深入了解[管理虛擬機器](backup-azure-manage-vms.md)

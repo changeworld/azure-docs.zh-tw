@@ -5,12 +5,12 @@ description: 了解如何透過 Azure 檔案服務以動態方式建立永續性
 services: container-service
 ms.topic: article
 ms.date: 07/01/2020
-ms.openlocfilehash: 0c11748c6faa0b94ff84dfc944e475116a2a1bd4
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 515994f07e524685df014a784309cd692a9491b7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88611393"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91299260"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-files-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 中以動態方式建立和使用 Azure 檔案服務的永續性磁碟區
 
@@ -33,6 +33,7 @@ ms.locfileid: "88611393"
 * *Standard_ZRS* - 標準區域備援儲存體 (ZRS)
 * *Standard_RAGRS* - 標準讀取權限異地備援儲存體 (RA-GRS)
 * *Premium_LRS* - 進階本地備援儲存體 (LRS)
+* *Premium_ZRS* -Premium 區域冗余儲存體 (ZRS) 
 
 > [!NOTE]
 > 在執行 Kubernetes 1.13 或更高版本的 AKS 叢集上，Azure 檔案儲存體支援進階儲存體，進階檔案共用最小為 100GB

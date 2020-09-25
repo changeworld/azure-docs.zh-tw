@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: oslake
 ms.author: moslake
-ms.reviewer: sstein, carlrab
-ms.date: 9/8/2020
-ms.openlocfilehash: 979976ba88c2acca282a7f8bef4784b9d91ce0aa
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.reviewer: sstein
+ms.date: 9/17/2020
+ms.openlocfilehash: 2d317ac2543289aca3a0741b424f71a2e903c74d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89565084"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321402"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL Database 無伺服器
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -97,7 +97,7 @@ Azure SQL Database 中單一資料庫的無伺服器計算層是由計算自動�
 
 在無伺服器和已布建的計算資料庫中，如果使用所有可用的記憶體，則可能會收回快取專案。
 
-請注意，當 CPU 使用率偏低時，使用中的快取使用率可能會根據使用模式而維持很高，並防止記憶體回收。  此外，在進行記憶體回收之前，使用者活動可能會有額外的延遲，因為定期背景進程會回應先前的使用者活動。  例如，刪除作業會產生標示為刪除的准刪除記錄，但在執行准刪除清除程式之前，不會實際刪除，這可能牽涉到將資料頁面讀入快取。
+請注意，當 CPU 使用率偏低時，使用中的快取使用率可能會根據使用模式而維持很高，並防止記憶體回收。  此外，在進行記憶體回收之前，使用者活動可能會有額外的延遲，因為定期背景進程會回應先前的使用者活動。  例如，「刪除作業」和「QDS 清除工作」會產生標示為刪除的准刪除記錄，但在准刪除清除程式執行時，可能需要將資料頁面讀入快取中，否則不會實際刪除。
 
 #### <a name="cache-hydration"></a>快取序列化
 
@@ -275,7 +275,7 @@ MODIFY ( SERVICE_OBJECTIVE = 'GP_S_Gen5_1') ;
 
 下表列出用來監視無伺服器資料庫之應用程式封裝和使用者集區之資源使用量的計量：
 
-|實體|計量|描述|單位|
+|單位|計量|描述|單位|
 |---|---|---|---|
 |應用程式套件|app_cpu_percent|應用程式所使用的虛擬核心百分比，相對於應用程式所允許的最大虛擬核心數。|百分比|
 |應用程式套件|app_cpu_billed|在報告期間內針對應用程式計費的計算數量。 在這段期間所支付的金額為此計量與虛擬核心單價的乘積。 <br><br>彙總一段時間內每秒使用的最大 CPU 與記憶體，即可判斷此計量的值。 如果使用的數量小於依照最小虛擬核心數與最小記憶體所設定的最小佈建數量，就會收取最小佈建數量的費用。為了比較 CPU 與記憶體以供計費用途，記憶體會依每個虛擬核心 3 GB 重新調整記憶體量，藉此規範成虛擬核心單位。|虛擬核心秒數|
@@ -365,7 +365,7 @@ Azure Hybrid Benefit (AHB) 與保留容量折扣並不適用于無伺服器計�
 
 無伺服器計算層級可于全球使用，但下欄區域除外：中國東部、中國北部、德國中部、德國東北部和 US Gov 中部 (愛荷華州) 。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 若要開始使用，請參閱 [快速入門：使用 Azure 入口網站在 Azure SQL Database 中建立單一資料庫](single-database-create-quickstart.md)。
 - 如需資源限制，請參閱[無伺服器計算層級資源限制](resource-limits-vcore-single-databases.md#general-purpose---serverless-compute---gen5)。

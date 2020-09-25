@@ -16,12 +16,12 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f137b61f36ee425bdfecf3135370fded04242335
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: fde2052078e0131e720411f91aa8ae7484338252
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89658747"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91295017"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quickstart"></a>Azure Active Directory 無縫單一登入：快速入門
 
@@ -125,7 +125,7 @@ ms.locfileid: "89658747"
 1. 開啟群組原則管理編輯器工具。
 2. 編輯套用至部分或所有使用者的群組原則。 此範例使用**預設網域原則**。
 3. 流覽至**User Configuration**[  >  **Policy**系統管理範本 Windows 元件的使用者設定原則]  >  **Administrative Templates**  >  **Windows Components**  >  **Internet Explorer**[  >  **網際網路主控台**  >  **安全性] 頁面**。 然後選取 [指派網站到區域清單]****。
-    ![單一登入](./media/how-to-connect-sso-quick-start/sso6.png)
+    ![螢幕擷取畫面，顯示已選取 [網站至區域指派清單] 的 [安全性] 頁面。](./media/how-to-connect-sso-quick-start/sso6.png)
 4. 啟用原則，然後在對話方塊中輸入下列值：
    - **值名稱**：轉送 Kerberos 票證的 Azure AD URL。
    - **值** (資料)：**1** 表示內部網路區域。
@@ -142,15 +142,15 @@ ms.locfileid: "89658747"
 
 5. 選取 [確定]  ，然後再選取一次 [建立]  。
 
-    ![單一登入](./media/how-to-connect-sso-quick-start/sso7.png)
+    ![螢幕擷取畫面，顯示已選取區域指派的 [顯示內容] 視窗。](./media/how-to-connect-sso-quick-start/sso7.png)
 
 6. 流覽至**使用者**設定  >  **原則**  >  **系統管理範本**  >  **Windows 元件**  >  **Internet Explorer**  >  **網際網路主控台**  >  **安全性頁面**  >  **內部網路區域**。 然後選取 [允許透過指令碼更新狀態列]****。
 
-    ![單一登入](./media/how-to-connect-sso-quick-start/sso11.png)
+    ![顯示 [近端內部網路區域] 頁面的螢幕擷取畫面，其中已選取 [允許透過腳本更新狀態列]。](./media/how-to-connect-sso-quick-start/sso11.png)
 
 7. 啟用原則設定，然後選取 [確定]****。
 
-    ![單一登入](./media/how-to-connect-sso-quick-start/sso12.png)
+    ![顯示 [允許透過腳本更新狀態列] 視窗並啟用原則設定的螢幕擷取畫面。](./media/how-to-connect-sso-quick-start/sso12.png)
 
 ### <a name="group-policy-preference-option---detailed-steps"></a>「群組原則喜好設定」選項 - 詳細步驟
 
@@ -158,7 +158,7 @@ ms.locfileid: "89658747"
 2. 編輯套用至部分或所有使用者的群組原則。 此範例使用**預設網域原則**。
 3. 流覽至**使用者**  >  **Preferences**  >  **設定喜好設定 Windows 設定**登錄  >  **Registry**  >  **新增**登錄  >  **專案**。
 
-    ![單一登入](./media/how-to-connect-sso-quick-start/sso15.png)
+    ![螢幕擷取畫面，顯示已選取 [登錄]，並已選取 [登錄專案]。](./media/how-to-connect-sso-quick-start/sso15.png)
 
 4. 在適當欄位中輸入下列值，然後按一下 [確定]****。
    - **機碼路徑**：***Software\Microsoft\Windows\CurrentVersion\Internet Settings\ZoneMap\Domains\microsoftazuread-sso.com\autologon***
@@ -166,7 +166,7 @@ ms.locfileid: "89658747"
    - **數值型別**： ***REG_DWORD***
    - **值資料**： ***00000001***
  
-     ![單一登入](./media/how-to-connect-sso-quick-start/sso16.png)
+     ![顯示 [新增登錄屬性] 視窗的螢幕擷取畫面。](./media/how-to-connect-sso-quick-start/sso16.png)
  
      ![單一登入](./media/how-to-connect-sso-quick-start/sso17.png)
 
@@ -234,7 +234,7 @@ Mozilla Firefox 不會自動使用 Kerberos 驗證。 每個使用者都必須�
 >[!IMPORTANT]
 >您不需要在啟用此功能後「立即」__ 執行此步驟。 至少每隔 30 天變換一次 Kerberos 解密金鑰。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [技術深入探討](how-to-connect-sso-how-it-works.md)：了解無縫單一登入功能的運作方式。
 - [常見問題集](how-to-connect-sso-faq.md)：取得無縫單一登入常見問題集的答案。

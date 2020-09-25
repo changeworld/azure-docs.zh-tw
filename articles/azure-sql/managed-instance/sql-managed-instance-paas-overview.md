@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: bonova
 ms.author: bonova
-ms.reviewer: sstein, carlrab, vanto
+ms.reviewer: sstein, vanto
 ms.date: 08/14/2020
-ms.openlocfilehash: 3d8bf3f087592a7d629a247b1c10721237699fdc
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: ce86f4e6ed5f29be3e36959e0f9db76edaab4982
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89613524"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273019"
 ---
 # <a name="what-is-azure-sql-managed-instance"></a>什麼是 Azure SQL 受控執行個體？
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -53,7 +53,7 @@ SQL 受控執行個體結合了 Azure SQL Database 和 SQL Server Database engin
 
 下表顯示 SQL 受控執行個體的主要功能：
 
-|功能 | 描述|
+|功能 | 說明|
 |---|---|
 | SQL Server 版本/組建 | SQL Server database engine (最新的穩定)  |
 | 受控自動化備份 | 是 |
@@ -237,7 +237,7 @@ SQL 受控執行個體可讓系統管理員花較少的時間處理系統管理�
 |`SERVERPROPERTY('EngineEdition')`|8|此值只會識別出受控執行個體。|
 |`@@SERVERNAME`, `SERVERPROPERTY ('ServerName')`|下列格式的完整執行個體 DNS 名稱：`<instanceName>`.`<dnsPrefix>`.database.windows.net，其中 `<instanceName>` 是客戶提供的名稱，而 `<dnsPrefix>` 是自動產生的部分名稱，確保全域 DNS 名稱是唯一的 (例如，"wcus17662feb9ce98")|範例：my-managed-instance.wcus17662feb9ce98.database.windows.net|
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 若要瞭解如何建立您的第一個受控實例，請參閱 [快速入門手冊](instance-create-quickstart.md)。
 - 如需功能與比較清單，請參閱 [SQL 的一般功能](../database/features-comparison.md)。

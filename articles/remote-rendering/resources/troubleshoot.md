@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: a5b625ea2b5b76d0938ac62be2202127ff0af66e
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: f82ea8361cef76b2030e5b257b3d3351968d8050
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90982977"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322184"
 ---
 # <a name="troubleshoot"></a>疑難排解
 
@@ -23,11 +23,7 @@ ms.locfileid: "90982977"
 
 ## <a name="client-cant-connect-to-server"></a>無法連線到伺服器
 
-請確定您的防火牆 (在裝置上、路由器內部等等) 不會封鎖下列連接埠：
-
-* **50051 (TCP)** -初始連線的必要項目 (HTTP 交握)
-* **8266 (TCP+UDP)** - 資料傳輸的必要項目
-* **5000 (TCP)** 、**5433 (TCP)** 、**8443 (TCP)** - [ArrInspector](tools/arr-inspector.md) 的必要項目
+請確定您的防火牆 (在裝置上、在路由器內等等，) 不會封鎖 [系統需求](../overview/system-requirements.md#network-ports)中所述的埠。
 
 ## <a name="error-disconnected-videoformatnotavailable"></a>錯誤 ' `Disconnected: VideoFormatNotAvailable` '
 
@@ -152,7 +148,7 @@ ms.locfileid: "90982977"
 
 Azure 遠端轉譯會在 Unity 轉譯管線中執行勾點，組合影片的畫面以進行重新投影。 若要確認這些攔截是否存在，請開啟功能表 *:::no-loc text="Window > Analysis > Frame debugger":::* 。 請加以啟用，並確定管線中的 `HolographicRemotingCallbackPass` 有兩個項目：
 
-![Unity 畫面偵錯工具](./media/troubleshoot-unity-pipeline.png)
+![Unity 轉譯管線](./media/troubleshoot-unity-pipeline.png)
 
 ## <a name="checkerboard-pattern-is-rendered-after-model-loading"></a>在模型載入之後轉譯棋盤模式
 
@@ -184,6 +180,12 @@ Azure 遠端轉譯會在 Unity 轉譯管線中執行勾點，組合影片的畫�
 ### <a name="arm64-builds-for-unity-projects-fail-because-audiopluginmshrtfdll-is-missing"></a>Unity 專案的 Arm64 組建失敗，因為遺漏 AudioPluginMsHRTF.dll
 
 `AudioPluginMsHRTF.dll`Arm64 已新增至3.0.1 版中的*Windows Mixed Reality*套件* (xr. windowsmr. metro) * 。 確定您已透過 Unity 封裝管理員安裝3.0.1 版或更新版本。 從 Unity 功能表列，流覽至 [ *Window >] 封裝管理員* ，然後尋找 *Windows Mixed Reality* 套件。
+
+## <a name="native-c-based-application-does-not-compile"></a>以原生 c + + 為基礎的應用程式不會編譯
+
+### <a name="library-not-found-error-for-uwp-application-or-dll"></a>UWP 應用程式或 Dll 發生「找不到程式庫」錯誤
+
+在 c + + Nuget 套件中，有檔案檔案會 `microsoft.azure.remoterendering.Cpp.targets` 定義要使用的二進位類別。 若要識別 `UWP` ，檔案中的條件會檢查 `ApplicationType == 'Windows Store'` 。 因此必須確保專案中已設定此類型。 當您透過 Visual Studio 的專案嚮導建立 UWP 應用程式或 Dll 時，就會發生這種情況。
 
 ## <a name="unstable-holograms"></a>不穩定的全像投影
 

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 08/10/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperfq1
-ms.openlocfilehash: c5e81b07bf43b86543af546ab5453563e7cf4004
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: f3194198447f024154c369d519d6ff55ee8ee699
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90886217"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91296682"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>在 Python 中設定自動化 ML 實驗
 
@@ -37,7 +37,7 @@ ms.locfileid: "90886217"
 
 如果您不想使用程式碼，您也可以[在 Azure Machine Learning Studio 中建立自動化機器學習實驗](how-to-use-automated-ml-for-ml-models.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 針對本文，您需要 
 * Azure Machine Learning 工作區。 若要建立工作區，請參閱[建立 Azure Machine Learning 工作區](how-to-manage-workspace.md)。
@@ -179,8 +179,29 @@ dataset = Dataset.Tabular.from_delimited_files(data)
 
 自動化機器學習會在自動化和調整程式期間嘗試不同的模型和演算法。 身為使用者，您不需要指定演算法。 
 
-第三個工作類型 (三個不同的 `task` 參數值 `forecasting` ，並使用類似的演算法集區做為工作 `regression`) 判斷要套用的演算法、模型清單。 請使用 `allowed_models` 或 `blocked_models` 參數，透過要包含或排除的可用模型進一步修改反覆項目。 您可以在 [SupportedModels 類別](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels) 中找到支援的模型清單，以進行 [分類](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.classification)、 [預測](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.forecasting)和 [回歸](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.regression)。
+三個不同的 `task` 參數值決定要套用的演算法或模型清單。 請使用 `allowed_models` 或 `blocked_models` 參數，透過要包含或排除的可用模型進一步修改反覆項目。 
 
+下表摘要說明依工作類型支援的模型。 
+
+> [!NOTE]
+> 如果您想要將自動 ML 建立的模型匯出至 [ONNX 模型](concept-onnx.md)，只有以 * 表示的演算法才能轉換為 ONNX 格式。 深入了解[將模型轉換為 ONNX](concept-automated-ml.md#use-with-onnx)。 <br> <br> 另請注意，ONNX 目前僅支援分類和迴歸工作。 
+
+分類 | 迴歸 | 時間序列預測
+|-- |-- |--
+[羅吉斯迴歸](https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression)* | [彈性網路](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)* | [彈性網路](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)
+[Light GBM](https://lightgbm.readthedocs.io/en/latest/index.html)* |[Light GBM](https://lightgbm.readthedocs.io/en/latest/index.html)*|[Light GBM](https://lightgbm.readthedocs.io/en/latest/index.html)
+[梯度提升](https://scikit-learn.org/stable/modules/ensemble.html#classification)* |[梯度提升](https://scikit-learn.org/stable/modules/ensemble.html#regression)* |[漸層停駐提升](https://scikit-learn.org/stable/modules/ensemble.html#regression)
+[決策樹](https://scikit-learn.org/stable/modules/tree.html#decision-trees)* |[決策樹](https://scikit-learn.org/stable/modules/tree.html#regression)* |[決策樹](https://scikit-learn.org/stable/modules/tree.html#regression)
+[K 最近鄰項目](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)* |[K 最近鄰項目](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)* |[K 最近鄰演算法](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)
+[線性 SVC](https://scikit-learn.org/stable/modules/svm.html#classification)* |[LARS Lasso](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)* |[LARS Lasso](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)
+[支援向量分類 (SVC)](https://scikit-learn.org/stable/modules/svm.html#classification)* |[隨機梯度下降 (SGD)](https://scikit-learn.org/stable/modules/sgd.html#regression)* |[隨機梯度下降 (SGD)](https://scikit-learn.org/stable/modules/sgd.html#regression)
+[隨機樹系](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)* |[隨機樹系](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)* |[隨機樹系](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)
+[極度隨機樹狀結構](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)* |[極度隨機樹狀結構](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)* |[極度隨機樹狀結構](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)
+[Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)* |[Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)* | [Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)
+[平均感知分類器](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.averagedperceptronbinaryclassifier?view=nimbusml-py-latest&preserve-view=true)|[線上梯度下降迴歸輸入變數](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.onlinegradientdescentregressor?view=nimbusml-py-latest&preserve-view=true) |[Auto-ARIMA](https://www.alkaline-ml.com/pmdarima/modules/generated/pmdarima.arima.auto_arima.html#pmdarima.arima.auto_arima)
+[貝氏機率分類](https://scikit-learn.org/stable/modules/naive_bayes.html#bernoulli-naive-bayes)* |[快速線性迴歸輸入變數](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.fastlinearregressor?view=nimbusml-py-latest&preserve-view=true)|[Prophet](https://facebook.github.io/prophet/docs/quick_start.html)
+[隨機梯度下降 (SGD)](https://scikit-learn.org/stable/modules/sgd.html#sgd)* ||ForecastTCN
+|[線性 SVM 分類器](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.linearsvmbinaryclassifier?view=nimbusml-py-latest&preserve-view=true)*||
 
 ### <a name="primary-metric"></a>主要計量
 `primary metric`參數會決定要在模型定型期間用來優化的度量。 可選取的可用計量取決於您所選擇的工作類型，下表顯示每種工作類型的有效主要計量。
@@ -329,7 +350,6 @@ run = experiment.submit(automl_config, show_output=True)
 ## <a name="register-and-deploy-models"></a>註冊和部署模型
 
 如需如何下載或註冊模型以部署至 web 服務的詳細資訊，請參閱 [部署模型的方式和位置](how-to-deploy-and-where.md)。
-
 
 <a name="explain"></a>
 
