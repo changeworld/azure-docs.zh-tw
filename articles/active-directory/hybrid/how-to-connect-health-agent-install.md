@@ -12,17 +12,17 @@ ms.subservice: hybrid
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
+ms.date: 09/24/2020
 ms.topic: how-to
-ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 9e6686c69eb6dababb577e9c556a8a13ec42485a
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 3b2c89086688451b16a8a6e10c25be65ffd4d9dd
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89296459"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273852"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Azure AD Connect Health 代理程式安裝
 
@@ -30,9 +30,13 @@ ms.locfileid: "89296459"
 
 ## <a name="requirements"></a>需求
 
+
+> [!IMPORTANT]
+> 不支援在 Windows Server Core 上安裝 Azure AD Connect Health 代理程式。
+
 下表是使用 Azure AD Connect Health 的需求清單。
 
-| 需求 | 描述 |
+| 需求 | 說明 |
 | --- | --- |
 | Azure AD Premium |Azure AD Connect Health 是 Azure AD Premium 的一個功能，而且需要 Azure AD Premium。 <br /><br />如需詳細資訊，請參閱 [開始使用 Azure AD Premium](../fundamentals/active-directory-get-started-premium.md) <br />若要開始使用 30 天免費試用版，請參閱[開始使用試用版](https://azure.microsoft.com/trial/get-started-active-directory/)。 |
 | 您必須是 Azure AD 的全域系統管理員，才能開始使用 Azure AD Connect Health |依預設，只有全域系統管理員可以安裝和設定 Health 代理程式，以便開始使用、存取入口網站，以及在 Azure AD Connect Health 內執行任何作業。 如需詳細資訊，請參閱[管理您的 Azure AD 目錄](../fundamentals/active-directory-administer.md)。 <br /><br /> 使用 Azure 角色型存取控制 (Azure RBAC) 您可以允許 Azure AD Connect Health 存取您組織中的其他使用者。 如需詳細資訊，請參閱 [適用于 Azure AD Connect Health 的 azure (AZURE RBAC) 的 azure 角色型存取控制。](how-to-connect-health-operations.md#manage-access-with-azure-rbac) <br /><br />**重要：** 在安裝代理程式時使用的帳戶必須是工作或學校帳戶。 不能是 Microsoft 帳戶。 如需詳細資訊，請參閱[以組織身分註冊 Azure](../fundamentals/sign-up-organization.md) |
@@ -48,7 +52,7 @@ ms.locfileid: "89296459"
 
 > [!NOTE]
 > 如果您有高度鎖定且極受限制的環境，除了上述允許的 IE 增強式安全性設定中所列的 Url 以外，您還需要新增下列服務端點清單中所述的 Url。 
->
+
 
 ### <a name="outbound-connectivity-to-the-azure-service-endpoints"></a>Azure 服務端點的輸出連線
 
@@ -57,7 +61,7 @@ ms.locfileid: "89296459"
 | 網域環境 | 必要 Azure 服務端點 |
 | --- | --- |
 | 一般公用 | <li>&#42;.blob.core.windows.net </li><li>&#42;.aadconnecthealth.azure.com </li><li>&#42;.servicebus.windows.net - Port: 5671 </li><li>&#42;.adhybridhealth.azure.com/</li><li>https:\//management.azure.com </li><li>https:\//policykeyservice.dc.ad.msft.net/</li><li>https:\//login.windows.net</li><li>https:\//login.microsoftonline.com</li><li>https:\//secure.aadcdn.microsoftonline-p.com </li><li>https:\//www.office.com *此端點在註冊期間僅用於探索目的。</li> |
-| Azure 德國 | <li>&#42;.blob.core.cloudapi.de </li><li>&#42;.servicebus.cloudapi.de </li> <li>&#42;.aadconnecthealth.microsoftazure.de </li><li>https:\//management.microsoftazure.de </li><li>https:\//policykeyservice.aadcdi.microsoftazure.de </li><li>https:\//login.microsoftonline.de </li><li>https:\//secure.aadcdn.microsoftonline-p.de </li><li>https:\//www.office.de *此端點在註冊期間僅用於探索目的。</li> |
+| Azure Germany | <li>&#42;.blob.core.cloudapi.de </li><li>&#42;.servicebus.cloudapi.de </li> <li>&#42;.aadconnecthealth.microsoftazure.de </li><li>https:\//management.microsoftazure.de </li><li>https:\//policykeyservice.aadcdi.microsoftazure.de </li><li>https:\//login.microsoftonline.de </li><li>https:\//secure.aadcdn.microsoftonline-p.de </li><li>https:\//www.office.de *此端點在註冊期間僅用於探索目的。</li> |
 | Azure Government | <li>&#42;.blob.core.usgovcloudapi.net </li> <li>&#42;.servicebus.usgovcloudapi.net </li> <li>&#42;.aadconnecthealth.microsoftazure.us </li> <li>https:\//management.usgovcloudapi.net </li><li>https:\//policykeyservice.aadcdi.azure.us </li><li>https:\//login.microsoftonline.us </li><li>https:\//secure.aadcdn.microsoftonline-p.com </li><li>https:\//www.office.com *此端點在註冊期間僅用於探索目的。</li> |
 
 
@@ -259,7 +263,7 @@ ms.locfileid: "89296459"
 ### <a name="quick-agent-installation-in-multiple-servers"></a>多部伺服器中的快速代理程式安裝
 
 1. 在 Azure AD 中建立具有密碼的使用者帳戶。
-2. 透過入口網站，在 Azure AD Connect Health 中為此本機 AAD 帳戶指派「 **擁有** 者」角色。 遵循 [此處](how-to-connect-health-operations.md#manage-access-with-azure-rbac)的步驟。 將角色指派給所有服務實例。 
+2. 透過入口網站，在 Azure AD Connect Health 中為此本機 AAD 帳戶指派「 **擁有** 者」角色。 遵循[此處](how-to-connect-health-operations.md#manage-access-with-azure-rbac)的步驟。 將角色指派給所有服務實例。 
 3. 下載本機網域控制站中的 .exe MSI 檔案以進行安裝。
 4. 執行下列腳本以進行註冊。 將參數取代為新建立的使用者帳戶及其密碼。 
 
@@ -319,7 +323,7 @@ Register-AzureADConnectHealthADDSAgent -Credential $myCreds
 您有下列選項來設定 Azure AD Connect Health 代理程式使用 HTTP Proxy。
 
 > [!NOTE]
-> 所有的 Azure AD Connect Health 代理程式服務都必須重新啟動，才會更新 Proxy 設定。 執行以下命令：<br />
+> 所有的 Azure AD Connect Health 代理程式服務都必須重新啟動，才會更新 Proxy 設定。 執行下列命令：<br />
 > 重新開機-服務 AzureADConnectHealth *
 >
 >

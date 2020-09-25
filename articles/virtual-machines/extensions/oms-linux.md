@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: akjosh
-ms.openlocfilehash: d24463834a49cdfbdb4599770caf579ae94582d8
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 38bbe52e45c348977cdda02a5399f6c89fb91bcc
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88999813"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91307444"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-linux"></a>適用於 Linux 的 Log Analytics 虛擬機器擴充功能
 
@@ -43,7 +43,7 @@ ms.locfileid: "88999813"
 
 | Log Analytics Linux VM 擴充功能版本 | Log Analytics 代理程式套件組合版本 | 
 |--------------------------------|--------------------------|
-| 1.13.13 | [1.13.7-0](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.13.7-0) |
+| 1.13.15 | [1.13.9-0](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.13.9-0) |
 | 1.12.25 | [1.12.15-0](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.12.15-0) |
 | 1.11.15 | [1.11.0-9](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.11.0-9) |
 | 1.10.0 | [1.10.0-1](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.10.0-1) |
@@ -211,7 +211,9 @@ az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 | 19 | OMI 套件安裝失敗 | 
 | 20 | SCX 套件安裝失敗 |
 | 51 | VM 的作業系統上不支援此擴充功能 | |
-| 55 | 無法連線至 Azure 監視器服務、遺漏必要套件或 dpkg 套件管理員遭到鎖定| 請確認系統是否有網際網路存取權，或已提供有效的 HTTP Proxy。 此外，請檢查工作區識別碼的正確性，並確認已安裝 curl 和 tar 公用程式。 |
+| 52 | 因為缺少相依性，所以此延伸模組失敗 | 檢查輸出和記錄檔，以取得遺漏何種相依性的詳細資訊。 |
+| 53 | 因為設定參數遺失或錯誤，所以此延伸模組失敗 | 檢查輸出和記錄檔，以取得發生錯誤的詳細資訊。 此外，請檢查工作區識別碼是否正確，並確認電腦已連線到網際網路。 |
+| 55 | 無法連線至 Azure 監視器服務、遺漏必要套件或 dpkg 套件管理員遭到鎖定| 請檢查系統是否可以存取網際網路，或是否已提供有效的 HTTP proxy。 此外，請檢查工作區識別碼是否正確，並確認已安裝捲曲和 tar 公用程式。 |
 
 如需其他疑難排解資訊，請參閱 [Log Analytics-Agent-for-Linux 疑難排解指南](../../azure-monitor/platform/vmext-troubleshoot.md)。
 

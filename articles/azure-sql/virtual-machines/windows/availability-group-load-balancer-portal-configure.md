@@ -7,18 +7,18 @@ author: MashaMSFT
 editor: monicar
 ms.assetid: d1f291e9-9af2-41ba-9d29-9541e3adcfcf
 ms.service: virtual-machines-sql
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 02/16/2017
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f59f8af3f9a845f7e8663877f6d806c33b216a41
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: b3f2e8b56af41d1729b9786adda3abdcc4eb0b02
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89482839"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325023"
 ---
 # <a name="configure-a-load-balancer-for-a-sql-server-always-on-availability-group-in-azure-virtual-machines"></a>設定 Azure 虛擬機器中 SQL Server Always On 可用性群組的負載平衡器
 
@@ -124,7 +124,7 @@ Azure 更新後端位址集區的設定。 您的可用性設定組現在有包�
    | **間隔** |*5* |
    | **狀況不良臨界值** |*2* |
 
-4.  選取 [確定]。 
+4.  選取 [確定]  。 
 
 > [!NOTE]
 > 確定您指定的連接埠會在兩個 SQL Server 執行個體的防火牆上開啟。 這兩個執行個體需要您所用 TCP 通訊埠的輸入規則。 如需詳細資訊，請參閱[新增或編輯防火牆規則](https://technet.microsoft.com/library/cc753558.aspx)。 
@@ -157,7 +157,7 @@ Azure 會建立探查，然後使用它來測試那一個 SQL Server 執行個�
    > 您可能必須向下捲動刀鋒視窗，以檢視所有的設定。
    > 
 
-4. 選取 [確定]。 
+4. 選取 [確定]  。 
 
 5. Azure 會設定負載平衡規則。 負載平衡器現已設定成將流量路由傳送到裝載可用性群組接聽程式的 SQL Server 執行個體。 
 

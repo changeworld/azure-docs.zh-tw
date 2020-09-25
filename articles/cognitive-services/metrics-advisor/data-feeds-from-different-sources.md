@@ -6,16 +6,16 @@ services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
-ms.subservice: ''
+ms.subservice: metrics-advisor
 ms.topic: conceptual
 ms.date: 09/04/2020
 ms.author: aahi
-ms.openlocfilehash: f9ab340e73ce8d58da63a0089073ac4770bf2d52
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 343db078880f55701730e096c3da85a6a7e5428a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90973388"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324462"
 ---
 # <a name="add-data-feeds-from-different-data-sources-to-metrics-advisor"></a>將來自不同資料來源的資料摘要新增至計量 Advisor
 
@@ -82,7 +82,7 @@ ms.locfileid: "90973388"
 
 * **容器**：計量顧問預期會將時間序列資料儲存為 blob 檔案， (單一容器下的每個時間戳記) 一個 blob。 這是 [容器名稱] 欄位。
 
-* **Blob 範本**：這是 blob 檔案名的範本。 例如： `/%Y/%m/X_%Y-%m-%d-%h-%M.json` 。 支援下列參數：
+* **Blob 範本**：這是 blob 檔案名的範本。 例如：`/%Y/%m/X_%Y-%m-%d-%h-%M.json`。 支援下列參數：
   * `%Y` 年份的格式為 `yyyy`
   * `%m` 月份的格式為 `MM`
   * `%d` 日期格式為 `dd`
@@ -119,7 +119,7 @@ ms.locfileid: "90973388"
 * **集合識別碼**：要查詢的集合識別碼。 這可以在 [**容器**] 區段下的 **[流覽]** 頁面中找到。
 * **Sql 查詢**：可取得資料並將其組成多維度時間序列資料的 SQL 查詢。 您可以 `@StartTime` `@EndTime` 在查詢中使用和變數。 其格式應為： `yyyy-MM-dd HH:mm:ss` 。
 
-    範例查詢︰
+    範例查詢：
     
     ``` mssql
     select StartDate, JobStatusId, COUNT(*) AS JobNumber from IngestionJobs WHERE and StartDate = @StartTime
@@ -198,7 +198,7 @@ The timestamp field must match one of these two formats:
 
   * `@StartTime`： datetime 格式為 `yyyy-MM-dd HH:mm:ss`
 
-    範例查詢︰
+    範例查詢：
     
     ``` mssql
     select StartDate, JobStatusId, COUNT(*) AS JobNumber from IngestionJobs WHERE and StartDate = @StartTime
@@ -232,7 +232,7 @@ The timestamp field must match one of these two formats:
 
 ## <a name="span-idhttphttp-requestspan"></a><span id="http">HTTP 要求</span>
 
-* **要求 url**：可以傳回 JSON 的 HTTP URL。 支援預留位置% Y，% m，% d，% h，% M：% Y = year （格式為 yyyy，% m = month，格式為 MM，% d = day，格式為 HH，% M = hour，格式為 mm）。 例如： `http://microsoft.com/ProjectA/%Y/%m/X_%Y-%m-%d-%h-%M` 。
+* **要求 url**：可以傳回 JSON 的 HTTP URL。 支援預留位置% Y，% m，% d，% h，% M：% Y = year （格式為 yyyy，% m = month，格式為 MM，% d = day，格式為 HH，% M = hour，格式為 mm）。 例如：`http://microsoft.com/ProjectA/%Y/%m/X_%Y-%m-%d-%h-%M`。
 * **要求 HTTP 方法**：使用 GET 或 POST。
 * **要求標頭**：可能會新增基本驗證。 
 * **要求**承載：僅支援 JSON 承載。 裝載 @StartTime 中支援預留位置。 回應應採用下列 JSON 格式： [{"timestamp"： "2018-01-01T00：00： 00Z"，"市"： "en-us"，"count"：11，"收益"： 1.23}、{"timestamp"： "2018-01-01T00：00： 00Z"、"市"： "zh-cn"、"count"：22、"收益"： 4.56}]。 (例如，當 2020-06-21T00：00：00Z 的資料是內嵌時， @StartTime = 2020-06-21T00：00： 00.0000000 + 00： 00) 
@@ -261,7 +261,7 @@ The timestamp field must match one of these two formats:
 * **連接**字串：用來存取于 postgresql DB 的連接字串。
 * **查詢**：取得資料並將其組成多維度時間序列資料以進行內嵌的查詢。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * 在等候度量資料內嵌到系統時，請閱讀 [如何管理資料](how-tos/manage-data-feeds.md)摘要設定。
 * 當您的度量資料內嵌時，您可以設定 [計量，並微調偵測設定的微調](how-tos/configure-metrics.md)。

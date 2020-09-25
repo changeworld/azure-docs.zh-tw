@@ -18,12 +18,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dadffd6fe3e6b438b21900f957f0d4ef71bb23cb
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: cc0c8c40e370579100c562e0289c97e3f5ce4236
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661271"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91274107"
 ---
 # <a name="manage-and-customize-active-directory-federation-services-by-using-azure-ad-connect"></a>使用 Azure AD Connect 管理和自訂 Active Directory Federation Services
 本文說明如何使用 Azure Active Directory (Azure AD) Connect 管理及自訂 Active Directory Federation Services (AD FS)。 它也包含您可能需要進行以完整設定 AD FS 伺服器陣列的其他常見 AD FS 工作。
@@ -52,11 +52,11 @@ ms.locfileid: "89661271"
    ![](./media/how-to-connect-fed-management/RepairADTrust1.PNG)
 
 2. 在 [連線到 Azure AD]**** 頁面上，提供 Azure AD 的全域系統管理員認證，然後按 [下一步]****。
-   ![連接至 Azure AD](./media/how-to-connect-fed-management/RepairADTrust2.PNG)
+   ![顯示 [連接到 Azure AD] 頁面的螢幕擷取畫面，其中包含輸入的範例認證。](./media/how-to-connect-fed-management/RepairADTrust2.PNG)
 
 3. 在 [遠端存取認證] **** 頁面上，輸入網域系統管理員的認證。
 
-   ![遠端存取認證](./media/how-to-connect-fed-management/RepairADTrust3.PNG)
+   ![顯示 [遠端存取認證] 頁面的螢幕擷取畫面，其中包含輸入的範例認證。](./media/how-to-connect-fed-management/RepairADTrust3.PNG)
 
     在按 [下一步] **** 之後，Azure AD Connect 會檢查憑證健康情況並顯示任何問題。
 
@@ -64,7 +64,7 @@ ms.locfileid: "89661271"
 
     [準備設定]**** 頁面會顯示為了修復信任，將執行的動作清單。
 
-    ![準備設定](./media/how-to-connect-fed-management/RepairADTrust5.PNG)
+    ![顯示 [準備設定] 頁面的螢幕擷取畫面，其中包含動作清單。](./media/how-to-connect-fed-management/RepairADTrust5.PNG)
 
 4. 按一下 [安裝] **** 以修復信任。
 
@@ -98,7 +98,7 @@ AD FS 替代登入識別碼的設定作業包含兩個主要步驟︰
 
 2. 在 [連線到 Azure AD]**** 頁面上，輸入 Azure AD 的全域系統管理員認證，然後按 [下一步]****。
 
-   ![連接至 Azure AD](./media/how-to-connect-fed-management/AddNewADFSServer2.PNG)
+   ![顯示 [連接到 Azure AD] 頁面的螢幕擷取畫面，其中包含輸入的範例認證。](./media/how-to-connect-fed-management/AddNewADFSServer2.PNG)
 
 3. 提供網域系統管理員認證。
 
@@ -106,9 +106,9 @@ AD FS 替代登入識別碼的設定作業包含兩個主要步驟︰
 
 4. Azure AD Connect 會要求您提供您在使用 Azure AD Connect 設定您的新 AD FS 伺服器陣列時所提供的 PFX 檔案的密碼。 按一下 [輸入密碼] **** 以提供 PFX 檔案的密碼。
 
-   ![憑證密碼](./media/how-to-connect-fed-management/AddNewADFSServer4.PNG)
+   ![顯示 [指定 SSL 憑證] 頁面的螢幕擷取畫面，其中已開啟 [憑證密碼] 視窗。](./media/how-to-connect-fed-management/AddNewADFSServer4.PNG)
 
-    ![指定 TLS/SSL 憑證](./media/how-to-connect-fed-management/AddNewADFSServer5.PNG)
+    ![在輸入 PFX 檔案的密碼之後，顯示 [指定 SSL 憑證] 頁面的螢幕擷取畫面。](./media/how-to-connect-fed-management/AddNewADFSServer5.PNG)
 
 5. 在 [AD FS 伺服器] **** 頁面上，輸入要新增到 AD FS 伺服器陣列的伺服器名稱或 IP 位址。
 
@@ -116,9 +116,9 @@ AD FS 替代登入識別碼的設定作業包含兩個主要步驟︰
 
 6. 按 [下一步]****，並逐步進行到最終的 [設定]**** 頁面。 Azure AD Connect 完成將伺服器新增至 AD FS 伺服器陣列之後，將提供您選項來驗證連線。
 
-   ![準備設定](./media/how-to-connect-fed-management/AddNewADFSServer7.PNG)
+   ![顯示 [準備設定] 頁面的螢幕擷取畫面，其中包含按一下 [安裝] 之後要完成的動作清單。](./media/how-to-connect-fed-management/AddNewADFSServer7.PNG)
 
-    ![安裝完成](./media/how-to-connect-fed-management/AddNewADFSServer8.PNG)
+    ![顯示 [安裝完成] 頁面的螢幕擷取畫面，其中顯示 [已成功驗證內部網路設定] 訊息。 ](./media/how-to-connect-fed-management/AddNewADFSServer8.PNG)
 
 ## <a name="add-an-ad-fs-wap-server"></a><a name="addwapserver"></a>新增 AD FS WAP 伺服器 
 
@@ -131,7 +131,7 @@ AD FS 替代登入識別碼的設定作業包含兩個主要步驟︰
 
 2. 提供 Azure 全域系統管理員認證。
 
-   ![連接至 Azure AD](./media/how-to-connect-fed-management/wapserver2.PNG)
+   ![顯示 [連接到 Azure AD] 頁面的螢幕擷取畫面，其中已輸入範例使用者名稱和密碼。](./media/how-to-connect-fed-management/wapserver2.PNG)
 
 3. 在 [指定 SSL 憑證]**** 頁面上，提供您在使用 Azure AD Connect 設定 AD FS 伺服器陣列時所提供之 PFX 檔案的密碼。
    ![憑證密碼](./media/how-to-connect-fed-management/WapServer3.PNG)
@@ -148,7 +148,7 @@ AD FS 替代登入識別碼的設定作業包含兩個主要步驟︰
 
 6. 在 [準備設定] **** 頁面上，精靈會顯示將執行的動作清單。
 
-   ![準備設定](./media/how-to-connect-fed-management/WapServer7.PNG)
+   ![顯示 [準備設定] 頁面的螢幕擷取畫面，其中包含要執行的動作清單。](./media/how-to-connect-fed-management/WapServer7.PNG)
 
 7. 按一下 [安裝] **** 以完成組態。 組態完成之後，精靈會提供您選項，來驗證與伺服器的連線。 按一下 [驗證] **** 來檢查連線能力。
 
@@ -176,7 +176,7 @@ AD FS 替代登入識別碼的設定作業包含兩個主要步驟︰
 
     選擇網域之後，精靈會提供您關於精靈將採取的進一步動作和組態影響的適當資訊。 在某些情況下，如果您選取尚未在 Azure AD 中驗證的網域，精靈將提供資訊協助您驗證網域。 如需詳細資訊，請參閱 [將您的自訂網域名稱新增至 Azure Active Directory](../fundamentals/add-custom-domain.md) 。
 
-5. 按 [下一步] 。 按 [下一步]****，然後 [準備設定] 頁面就會顯示 Azure AD Connect 將會執行的動作清單。 按一下 [安裝] **** 以完成組態。
+5. 按 [下一步]  。 按 [下一步]****，然後 [準備設定] 頁面就會顯示 Azure AD Connect 將會執行的動作清單。 按一下 [安裝] **** 以完成組態。
 
    ![準備設定](./media/how-to-connect-fed-management/AdditionalDomain5.PNG)
 
@@ -262,5 +262,5 @@ c1:[Type == "urn:anandmsft:tmp/idflag", Value =~ "useguid"]
 
 您可以使用 Azure AD Connect 新增多個要同盟的網域，如 [新增新的同盟網域](how-to-connect-fed-management.md#addfeddomain)所述。 Azure AD Connect 1.1.553.0 版和最新版本會為 issuerID 自動建立正確的宣告規則。 如果您無法使用 Azure AD Connect 1.1.553.0 版或最新版本，建議您使用 [Azure AD RPT 宣告規則](https://aka.ms/aadrptclaimrules)工具，針對 Azure AD 信賴憑證者的信任產生和設定正確的宣告規則。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 深入了解 [使用者登入選項](plan-connect-user-signin.md)。

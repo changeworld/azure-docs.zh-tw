@@ -1,6 +1,6 @@
 ---
 title: B2B 共同作業使用者的條件式存取-Azure AD
-description: Azure Active Directory B2B 共同作業支援多重要素驗證 (MFA) 以對您的公司應用程式進行選擇性存取
+description: 瞭解如何為 Azure Active Directory B2B 使用者強制執行多重要素驗證原則。
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -11,14 +11,14 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c0b6ceba4c3c9202e2024b5c163c0e98bb6cbf55
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: b47ec082daa6eee4ab593fdb5523087f9eb5b038
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87908698"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91274141"
 ---
-# <a name="conditional-access-for-b2b-collaboration-users"></a>適用于 B2B 共同作業使用者的條件式存取
+# <a name="conditional-access-for-b2b-collaboration-users"></a>B2B 共同作業使用者的條件式存取
 
 ## <a name="multi-factor-authentication-for-b2b-users"></a>B2B 使用者的多重要素驗證
 在使用 Azure AD B2B 共同作業的情況下，組織會為 B2B 使用者強制執行 Multi-Factor Authentication (MFA) 原則。 這些原則可以在租用戶層級、應用程式或個別使用者層級強制執行，也同樣針對組織的全職員工和成員啟用。 MFA 原則會在資源組織強制執行。
@@ -87,21 +87,21 @@ ms.locfileid: "87908698"
 
 因此，針對 B2B 使用者的 MFA 建議是一律要求使用邀請方租用戶的 MFA。 在某些情況下，此要求可能會導致雙重 MFA，但每次存取邀請方租用戶時的使用者體驗都會是可預測的：Sally 必須向邀請方租用戶註冊 MFA。
 
-### <a name="device-based-location-based-and-risk-based-conditional-access-for-b2b-users"></a>適用于 B2B 使用者的裝置型、以位置為基礎和風險型條件式存取
+### <a name="device-based-location-based-and-risk-based-conditional-access-for-b2b-users"></a>B2B 使用者以裝置為基礎、以位置為基礎的條件式存取，以及以風險為基礎的條件式存取
 
-當 Contoso 針對其公司資料啟用裝置型條件式存取原則時，會防止不受 Contoso 管理且不符合 Contoso 裝置原則的裝置進行存取。
+當 Contoso 為其公司資料啟用以裝置為基礎的條件式存取原則時，系統會防止不受 Contoso 管理且不符合 Contoso 裝置原則的裝置進行存取。
 
-如果 B2B 使用者的裝置未受 Contoso 管理，當 B2B 使用者從夥伴組織進行存取時，只要是在強制執行這些原則的內容中，系統就會封鎖其存取。 不過，Contoso 可以建立包含特定合作夥伴使用者的排除清單，以從裝置型條件式存取原則中排除這些專案。
+如果 B2B 使用者的裝置未受 Contoso 管理，當 B2B 使用者從夥伴組織進行存取時，只要是在強制執行這些原則的內容中，系統就會封鎖其存取。 不過，Contoso 可以建立包含特定合作夥伴使用者的排除清單，以將其從裝置型條件式存取原則中排除。
 
-#### <a name="mobile-application-management-policies-for-b2b"></a>適用于 B2B 的行動應用程式管理原則
+#### <a name="mobile-application-management-policies-for-b2b"></a>B2B 的行動應用程式管理原則
 
 條件式存取應用程式保護原則無法套用至 B2B 使用者，因為邀請的組織無法看到 B2B 使用者的主要組織。
 
-#### <a name="location-based-conditional-access-for-b2b"></a>適用于 B2B 的以位置為基礎的條件式存取
+#### <a name="location-based-conditional-access-for-b2b"></a>B2B 以位置為基礎的條件式存取
 
-如果邀請的組織能夠建立可定義其合作夥伴組織的信任 IP 位址範圍，就可以針對 B2B 使用者強制執行以位置為基礎的條件式存取原則。
+如果邀請的組織能夠建立定義其夥伴組織的信任 IP 位址範圍，則可為 B2B 使用者強制執行以位置為基礎的條件式存取原則。
 
-#### <a name="risk-based-conditional-access-for-b2b"></a>B2B 的以風險為基礎的條件式存取
+#### <a name="risk-based-conditional-access-for-b2b"></a>B2B 的風險型條件式存取
 
 目前，風險型登入原則無法套用至 B2B 使用者，因為風險評估是在 B2B 使用者的主要組織執行。
 

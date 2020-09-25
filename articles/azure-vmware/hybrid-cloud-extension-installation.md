@@ -1,18 +1,18 @@
 ---
-title: 安裝混合式雲端擴充功能 (HCX)
-description: 為您的 Azure VMware 解決方案私人雲端設定 VMware 混合式雲端擴充 (HCX) 解決方案
+title: 安裝 VMware HCX
+description: 為您的 Azure VMware 解決方案私人雲端設定 VMware HCX 解決方案
 ms.topic: how-to
-ms.date: 07/15/2020
-ms.openlocfilehash: fb8497af33b364c1d2ab475233bd2a83ef1befad
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.date: 09/24/2020
+ms.openlocfilehash: 76a7432b78ec2141039dcdc5dd1d7572335b18e1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752327"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91263195"
 ---
 # <a name="install-hcx-for-azure-vmware-solution"></a>安裝適用於 Azure VMware 解決方案的 HCX
 
-在本文中，我們將逐步解說為您的 Azure VMWare 解決方案私人雲端設定 VMWare 混合式雲端擴充 (HCX) 解決方案的程式。 HCX 可讓您將 VMware 工作負載遷移至雲端，以及透過各種內建 HCX 支援的遷移類型來進行其他已連線的網站。
+在本文中，我們將逐步解說為您的 Azure VMWare 解決方案私人雲端設定 VMWare HCX 解決方案的程式。 HCX 可讓您將 VMware 工作負載遷移至雲端，以及透過各種內建 HCX 支援的遷移類型來進行其他已連線的網站。
 
 HCX Advanced （預設安裝）最多支援三個網站連線 (內部部署或雲端到雲端) 。 如果需要三個以上的網站連線，客戶可以選擇透過支援啟用 HCX Enterprise 附加元件，此功能目前為預覽狀態。 HCX Enterprise 會在正式發行 (GA) 後對客戶收取額外費用，但提供[額外功能](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/)。
 
@@ -40,7 +40,7 @@ HCX Advanced （預設安裝）最多支援三個網站連線 (內部部署或�
 
 當您準備使用 Azure VMware 解決方案私用雲端 HCX 解決方案時，調整工作負載與計算和儲存體資源的大小是個基本的規劃步驟。 在初始私用雲端環境規劃中解決調整大小步驟。 
 
-您也可以在 Azure Migrate 入口網站 (中完成 Azure VMware 解決方案評估，以調整工作負載的大小 https://docs.microsoft.com/azure/migrate/how-to-create-azure-vmware-solution-assessment) 。
+您也可以在 Azure Migrate 入口網站中完成 [Azure VMware 解決方案評估](https://docs.microsoft.com/azure/migrate/how-to-create-azure-vmware-solution-assessment) ，以調整工作負載的大小。
 
 ## <a name="software-version-requirements"></a>軟體版本需求
 
@@ -67,15 +67,13 @@ HCX Advanced （預設安裝）最多支援三個網站連線 (內部部署或�
 
 ## <a name="deploy-the-vmware-hcx-ova-on-premises"></a>部署 VMware HCX OVA 內部部署
 
+1. `https://x.x.x.9`使用**cloudadmin**的使用者認證，在埠443上登入 AZURE VMware Solution HCX Manager，然後移至 [**支援**]。
+
+1. 選取 VMware HCX OVA 檔案的下載連結。 
+
 1. 登入 Azure VMware Solution SDDC vCenter，然後選取 [ **HCX**]。
-
-   :::image type="content" source="media/hybrid-cloud-extension-installation/avs-vsphere-client.png" alt-text="登入 Azure VMware Solution SDDC vCenter，然後選取 [HCX]。":::
-
-1. 在 [系統 **管理**] 底下，選取 [ **系統更新** ]，然後選取 [ **要求下載] 連結** 以下載 VMware HCX OVA 檔案。
-
-   :::image type="content" source="media/hybrid-cloud-extension-installation/administration-updates.png" alt-text="在 [系統管理] 底下，選取 [系統更新]，然後選取 [要求下載] 連結以下載 VMware HCX OVA 檔案。":::
-
-1. 接下來，移至內部部署 vCenter，然後選取 OVF 範本以部署至您的內部部署 vCenter。  
+   
+1. 移至內部部署 vCenter，然後選取 OVF 範本以部署至您的內部部署 vCenter。  
 
    :::image type="content" source="media/hybrid-cloud-extension-installation/select-template.png" alt-text="接下來，移至內部部署 vCenter，然後選取 OVF 範本以部署至您的內部部署 vCenter。":::
 
@@ -95,7 +93,7 @@ HCX Advanced （預設安裝）最多支援三個網站連線 (內部部署或�
 
 安裝後，執行下列步驟。
 
-1. 登入內部部署 HCX 管理員 `https://HCXManagerIP:9443` ，並使用您的使用者名稱和密碼登入。 
+1. 登入內部部署 HCX 管理員 `https://HCXManagerIP:9443` ，並使用系統 **管理員** 使用者名稱認證登入。 
 
    > [!IMPORTANT]
    > 請務必包含 `9443` HCX MANAGER IP 位址的埠號碼。
@@ -193,7 +191,7 @@ HCX Advanced （預設安裝）最多支援三個網站連線 (內部部署或�
 
    :::image type="content" source="media/hybrid-cloud-extension-installation/vsphere-replication-network-profile.png" alt-text="從 [選取 vSphere 複寫網路設定檔] 中，選取網路設定檔 vSphere 的複寫介面 ESXi 主機，然後選取 [繼續]。":::
 
-1. 從 [ **選取網路擴充功能的分散式交換器**] 中，選取您的網路上將整合並聯機之 vm 的網路 DVS。  選取 \[繼續\]。  
+1. 從 [ **選取網路擴充功能的分散式交換器**] 中，選取您的網路上將整合並聯機之 vm 的網路 DVS。  選取 [繼續]。  
 
    :::image type="content" source="media/hybrid-cloud-extension-installation/distributed-switches.png" alt-text="從 [選取網路擴充功能的分散式交換器] 中，選取您的網路上將整合並聯機之 Vm 的網路 DVS。 選取 [繼續]。":::
 

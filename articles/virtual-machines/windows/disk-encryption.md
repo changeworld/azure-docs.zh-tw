@@ -2,18 +2,18 @@
 title: Azure 受控磁碟 - PowerShell 的伺服器端加密
 description: Azure 儲存體可以先加密待用資料來保護您的資料，然後再將資料保存在儲存體叢集。 您可以依賴 Microsoft 管理的金鑰來加密您的受控磁碟，或使用客戶管理的金鑰，以利用您自己的金鑰來管理加密。
 author: roygara
-ms.date: 07/10/2020
+ms.date: 09/23/2020
 ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 6174fbeb45c23c0ff04597305c6f65aef05bd26e
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 49898f2215139c4460c639dc8caa3d2764082e34
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815584"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91274770"
 ---
 # <a name="server-side-encryption-of-azure-disk-storage-for-powershell"></a>適用于 PowerShell 的 Azure 磁碟儲存體的伺服器端加密
 
@@ -47,6 +47,10 @@ Azure 受控磁碟中的資料會使用 256 位元的 [AES 加密](https://en.wi
 - 如果您的磁碟已啟用此功能，則無法停用。
     如果您需要解決此問題，必須[將所有資料複製到](disks-upload-vhd-to-managed-disk-powershell.md#copy-a-managed-disk)完全不同且未使用客戶管理的金鑰的受控磁碟。
 [!INCLUDE [virtual-machines-managed-disks-customer-managed-keys-restrictions](../../../includes/virtual-machines-managed-disks-customer-managed-keys-restrictions.md)]
+
+#### <a name="supported-regions"></a>支援區域
+
+客戶管理的金鑰可用於受控磁片可供使用的所有區域。
 
 ## <a name="encryption-at-host---end-to-end-encryption-for-your-vm-data"></a>VM 資料的主機端對端加密加密
 

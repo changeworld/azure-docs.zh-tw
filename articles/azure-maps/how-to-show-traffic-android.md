@@ -1,27 +1,27 @@
 ---
-title: 顯示 android 地圖上的流量資料 |Microsoft Azure 對應
-description: 在本文中，您將瞭解如何使用 Microsoft Azure Maps Android SDK，在地圖上顯示流量資料。
+title: 顯示 android 地圖上的交通資料 |Microsoft Azure 對應
+description: 在本文中，您將瞭解如何使用 Microsoft Azure Maps Android SDK 來顯示地圖上的流量資料。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 02/27/2020
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 8b07b520dec4e9149c6748777a119b68e56c65e9
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 93cabb566db02de7ef991fe9cdd293f8c399c3a3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87126392"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91272951"
 ---
-# <a name="show-traffic-data-on-the-map-using-azure-maps-android-sdk"></a>使用 Azure 地圖服務 Android SDK 顯示地圖上的流量資料
+# <a name="show-traffic-data-on-the-map-using-azure-maps-android-sdk"></a>使用 Azure 地圖服務 Android SDK 顯示地圖上的交通資料
 
-「流量資料」和「事件資料」是可在地圖上顯示的兩種類型的流量資料。 本指南說明如何顯示這兩種類型的流量資料。 事件資料包含像是結構、後端和事故等專案的點和行式資料。 流量資料會顯示有關道路流量的計量。
+Flow 資料和事件資料是可在地圖上顯示的兩種類型的流量資料。 本指南說明如何顯示這兩種類型的流量資料。 事件資料包含資料點和以行為基礎的資料，例如結構、路標和事故。 流程資料會顯示有關道路流量的計量。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-您必須先[建立 Azure 帳戶](quick-demo-map-app.md#create-an-azure-maps-account)並[取得訂用帳戶金鑰](quick-demo-map-app.md#get-the-primary-key-for-your-account)，才可以在地圖上顯示流量。 然後，您必須安裝[Azure 地圖服務 Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library)並載入對應。
+您必須先 [建立 Azure 帳戶](quick-demo-map-app.md#create-an-azure-maps-account)並 [取得訂用帳戶金鑰](quick-demo-map-app.md#get-the-primary-key-for-your-account)，才能在地圖上顯示流量。 然後，您必須安裝 [Azure 地圖服務 Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) 並載入對應。
 
 ## <a name="incidents-traffic-data"></a>事件流量資料
 
@@ -31,7 +31,7 @@ ms.locfileid: "87126392"
 import static com.microsoft.com.azure.maps.mapcontrol.options.TrafficOptions.incidents;
 ```
 
- 下列程式碼片段說明如何在地圖上顯示流量資料。 我們會將布林值傳遞給 `incidents` 方法，並將其傳遞給 `setTraffic` 方法。 
+ 下列程式碼片段說明如何在地圖上顯示交通資料。 我們會將布林值傳遞給 `incidents` 方法，並將它傳遞給 `setTraffic` 方法。 
 
 ```java
 protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +42,7 @@ protected void onCreate(Bundle savedInstanceState) {
 }
 ```
 
-## <a name="flow-traffic-data"></a>流量流量資料
+## <a name="flow-traffic-data"></a>流量資料
 
 首先，您必須匯入下列程式庫以呼叫 `setTraffic` 和 `flow` ：
 
@@ -51,14 +51,14 @@ import com.microsoft.azure.maps.mapcontrol.options.TrafficFlow;
 import static com.microsoft.azure.maps.mapcontrol.options.TrafficOptions.flow;
 ```
 
-使用下列程式碼片段來設定流量資料。 與上一節中的程式碼類似，我們會將方法的傳回值傳遞 `flow` 給 `setTraffic` 方法。 有四個可以傳遞至的值 `flow` ，而每個值都會觸發 `flow` 以傳回個別的值。 然後，的 `flow` 傳回值會當做引數傳遞至 `setTraffic` 。 請參閱下表中的這四個值：
+使用下列程式碼片段來設定流量資料。 與上一節中的程式碼類似，我們會將方法的傳回值傳遞 `flow` 給 `setTraffic` 方法。 有四個值可傳遞至 `flow` ，而且每個值都會觸發 `flow` 以傳回個別的值。 然後，的 `flow` 傳回值會以引數的形式傳遞給 `setTraffic` 。 請參閱下表中的下列四個值：
 
 |流程值 | 說明|
 | :-- | :-- |
-| TrafficFlow。無 | 不會在地圖上顯示流量資料 |
-| TrafficFlow。相對 | 顯示相對於道路自由流量速度的流量資料 |
-| TrafficFlow。 RELATIVE_DELAY | 顯示比平均預期延遲慢的區域 |
-| TrafficFlow。絕對 | 顯示道路上所有車輛的絕對速度 |
+| TrafficFlow。無 | 不顯示地圖上的交通資料 |
+| TrafficFlow。相對 | 顯示相對於道路的自由流動速度的流量資料 |
+| TrafficFlow.RELATIVE_DELAY | 顯示比平均預期延遲更慢的區域 |
+| TrafficFlow，絕對 | 顯示所有車輛在道路上的絕對速度 |
 
 ```java
 protected void onCreate(Bundle savedInstanceState) {
@@ -69,11 +69,11 @@ protected void onCreate(Bundle savedInstanceState) {
 }
 ```
 
-## <a name="show-incident-traffic-data-by-clicking-a-feature"></a>按一下功能來顯示事件流量資料
+## <a name="show-incident-traffic-data-by-clicking-a-feature"></a>按一下功能以顯示事件流量資料
 
-若要取得特定功能的事件，您可以使用下列程式碼。 當您按一下某項功能時，程式碼邏輯會檢查事件，並建立事件的相關訊息。 畫面底部會顯示訊息，其中包含詳細資料。
+若要取得特定功能的事件，您可以使用下列程式碼。 當您按一下某項功能時，程式碼邏輯會檢查事件，並建立事件的相關訊息。 畫面底部會顯示一則訊息，內含詳細資料。
 
-1. 首先，您必須編輯**res > layout > activity_main.xml**，使其看起來如下所示。 您可以使用您想要的值來取代 `mapcontrol_centerLat` 、 `mapcontrol_centerLng` 和 `mapcontrol_zoom` 。 回想一下，縮放層級是介於0和22之間的值。 在縮放層級0，整個世界都適合單一磚。
+1. 首先，您必須 **> activity_main.xml編輯 res > **配置，使其看起來如下所示。 您可以使用所 `mapcontrol_centerLat` 需的值來取代、 `mapcontrol_centerLng` 和 `mapcontrol_zoom` 。 回想一下，縮放層級是介於0到22之間的值。 在縮放層級0，整個世界都適合單一磚。
 
    ```XML
    <?xml version="1.0" encoding="utf-8"?>
@@ -96,7 +96,7 @@ protected void onCreate(Bundle savedInstanceState) {
    </FrameLayout>
    ```
 
-2. 將下列程式碼新增至您的**MainActivity**檔案。 預設會包含套件，因此請確定您已將套件保留在頂端。
+2. 將下列程式碼新增至 **>mainactivity** 檔案。 依預設會包含套件，因此請確定您將套件保持在最上層。
 
    ```java
    package <yourpackagename>;
@@ -221,7 +221,7 @@ protected void onCreate(Bundle savedInstanceState) {
    }
    ```
 
-3. 在您的應用程式中納入上述程式碼之後，您將能夠按一下功能，並查看流量事件的詳細資料。 根據您在**activity_main.xml**檔案中使用的緯度、經度和縮放層級值，您會看到類似下圖的結果：
+3. 當您在應用程式中納入上述程式碼之後，您將能夠按一下功能，並查看流量事件的詳細資料。 根據您在 **activity_main.xml** 檔案中使用的緯度、經度和縮放層級值，您會看到類似下圖的結果：
 
    <center>
 
@@ -231,7 +231,7 @@ protected void onCreate(Bundle savedInstanceState) {
 
 ## <a name="next-steps"></a>後續步驟
 
-若要瞭解如何將更多資料新增至地圖，請參閱下列指南：
+若要瞭解如何將更多資料新增至您的地圖，請參閱下列指南：
 
 > [!div class="nextstepaction"]
 > [新增符號圖層](how-to-add-symbol-to-android-map.md)

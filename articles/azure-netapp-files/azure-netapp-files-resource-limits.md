@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 9/16/2020
 ms.author: b-juche
-ms.openlocfilehash: 870863cc0b1a98aa0efe671da4a8f6a5bb7f53aa
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 0ddb9998c1e1b9b70303aeb4608bc0b53bc103ae
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90708099"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325482"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Azure NetApp Files 的資源限制
 
@@ -44,7 +44,9 @@ ms.locfileid: "90708099"
 |  單一磁片區的大小上限     |    100 TiB    |    否    |
 |  單一檔案的大小上限     |    16 TiB    |    否    |    
 |  單一目錄中目錄中繼資料的大小上限      |    320 MB    |    否    |    
-|  每個磁片區 ([maxfiles](#maxfiles)) 的檔案數目上限     |    1 億    |    是    |   
+|  每個磁片區 ([maxfiles](#maxfiles)) 的檔案數目上限     |    1 億    |    是    |    
+|  手動 QoS 磁片區的最小指派輸送量     |    1 MiB/秒   |    否    |    
+|  手動 QoS 磁片區的最大指派輸送量     |    4500 MiB/秒    |    否    |    
 |   (目的地磁片區的跨區域複寫資料保護磁片區數目)      |    5    |    是    |     
 
 如需詳細資訊，請參閱 [容量管理常見問題](azure-netapp-files-faqs.md#capacity-management-faqs)。

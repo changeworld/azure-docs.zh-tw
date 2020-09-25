@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: nitinme
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3d52cd57d48a03c5dab8cb8098cd212e76ca76a1
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 6f6b2ed9357acf4dceeb960b1abdf6813987f657
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88929069"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324887"
 ---
 # <a name="migrate-your-face-data-to-a-different-face-subscription"></a>將您的臉部資料移轉至其他臉部訂用帳戶
 
@@ -24,7 +24,7 @@ ms.locfileid: "88929069"
 
 相同的移轉策略也適用於 LargePersonGroup 和 LargeFaceList 物件。 如果您不熟悉本指南中的概念，請參閱 [臉部辨識概念](../concepts/face-recognition.md) 指南中的定義。 本指南使用臉部 .NET 用戶端程式庫搭配 c #。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 您需要下列專案：
 
@@ -237,4 +237,3 @@ await FaceClientEastAsia.Snapshot.DeleteAsync(snapshotId);
 - [臉部快照範例](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/FaceApiSnapshotSample/FaceApiSnapshotSample)
 - [新增臉部](how-to-add-faces.md)
 - [偵測影像中的臉部](HowtoDetectFacesinImage.md)
-- [識別影像中的臉部](HowtoIdentifyFacesinImage.md)

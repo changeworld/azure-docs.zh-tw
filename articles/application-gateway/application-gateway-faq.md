@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/26/2020
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: b55ba6ab73758ed562aaabeef91cf08acf659758
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 11b41f4dcffad2c98ea5d1f70346ba150fd18c17
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89646551"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91278629"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>應用程式閘道相關的常見問題集
 
@@ -49,7 +49,9 @@ Azure 應用程式閘道以服務形式提供應用程式傳遞控制器 (ADC)�
 
 ### <a name="in-what-regions-is-application-gateway-available"></a>應用程式閘道在哪些區域推出？
 
-應用程式閘道適用於全域 Azure 的所有區域。 [Azure China 21Vianet](https://www.azure.cn/) 和 [Azure Government](https://azure.microsoft.com/overview/clouds/government/) 中也提供此服務。
+應用程式閘道 v1 (Standard 和 WAF) 適用于全域 Azure 的所有區域。 [Azure China 21Vianet](https://www.azure.cn/) 和 [Azure Government](https://azure.microsoft.com/overview/clouds/government/) 中也提供此服務。
+
+針對應用程式閘道 v2 (Standard_v2 和 WAF_v2) 可用性，請參閱 [應用程式閘道 v2 支援的區域](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant#supported-regions)
 
 ### <a name="is-this-deployment-dedicated-for-my-subscription-or-is-it-shared-across-customers"></a>此部署是我的訂用帳戶專用，還是客戶共用？
 
@@ -182,11 +184,15 @@ v2 SKU 會自動確保將新執行個體分散在各個容錯網域和更新網�
 
 ### <a name="are-network-security-groups-supported-on-the-application-gateway-subnet"></a>應用程式閘道子網路是否支援網路安全性群組？
 
-[應用程式閘道子網路中的網路安全性群組](https://docs.microsoft.com/azure/application-gateway/configuration-overview#network-security-groups-on-the-application-gateway-subnet)。
+[應用程式閘道子網路中的網路安全性群組](https://docs.microsoft.com/azure/application-gateway/configuration-infrastructure#network-security-groups)。
 
 ### <a name="does-the-application-gateway-subnet-support-user-defined-routes"></a>應用程式閘道子網路是否支援使用者定義路由？
 
 請參閱[應用程式閘道子網路中支援的使用者定義路由](https://docs.microsoft.com/azure/application-gateway/configuration-infrastructure#supported-user-defined-routes)。
+
+### <a name="are-service-endpoint-policies-supported-in-the-application-gateway-subnet"></a>應用程式閘道子網是否支援服務端點原則？
+
+否。 應用程式閘道子網不支援儲存體帳戶的[服務端點原則](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoint-policies-overview)，並設定它將會封鎖 Azure 基礎結構流量。
 
 ### <a name="what-are-the-limits-on-application-gateway-can-i-increase-these-limits"></a>應用程式閘道的限制為何？ 是否可以增加這些限制？
 
@@ -222,7 +228,7 @@ v2 SKU 會自動確保將新執行個體分散在各個容錯網域和更新網�
 
 ### <a name="can-i-allow-application-gateway-access-to-only-a-few-source-ip-addresses"></a>我可以只允許少數幾個來源 IP 位址存取應用程式閘道嗎？
 
-是。 請參閱[限制特定來源 IP 的存取](https://docs.microsoft.com/azure/application-gateway/configuration-overview#allow-application-gateway-access-to-a-few-source-ips)。
+是。 請參閱[限制特定來源 IP 的存取](https://docs.microsoft.com/azure/application-gateway/configuration-infrastructure#allow-access-to-a-few-source-ips)。
 
 ### <a name="can-i-use-the-same-port-for-both-public-facing-and-private-facing-listeners"></a>公開和私人接聽程式是否可以使用相同的連接埠？
 

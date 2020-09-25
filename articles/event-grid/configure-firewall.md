@@ -3,12 +3,12 @@ title: 設定 Azure 事件方格主題或網域的 IP 防火牆
 description: 本文說明如何設定事件方格主題或網域的防火牆設定。
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: df6098df4817ee6c47378704c25d07433d6b9480
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: fd190a13a177b6b6d0f6b0dbcaa35d63dccd93c9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88509413"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324156"
 ---
 # <a name="configure-ip-firewall-for-azure-event-grid-topics-or-domains"></a>設定 Azure 事件方格主題或網域的 IP 防火牆 
 根據預設，只要要求提供有效的驗證與授權，就可以從網際網路存取主題和網域。 透過 IP 防火牆，您可以將其進一步限制為僅允許一組 IPv4 位址，或是使用 [CIDR (無類別網域間路由)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) 標記法來設定 IPv4 位址範圍。 源自其他任何 IP 位址的發行者將會遭到拒絕，且會收到 403 (禁止的) 回應。 如需事件方格所支援之網路安全性功能的詳細資訊，請參閱 [事件方格的網路安全性](network-security.md)。
@@ -23,7 +23,7 @@ ms.locfileid: "88509413"
 
     您可以使用以 IP 為基礎的防火牆規則來限制流量。 在無類別網域間路由中指定單一 IPv4 位址或 IP 位址範圍 (CIDR) 標記法。 
 
-    ![公用網路頁面](./media/configure-firewall/public-networks-page.png)
+    ![顯示 [公用網路存取] 頁面的螢幕擷取畫面，其中已選取 [公用網路]。](./media/configure-firewall/public-networks-page.png)
 3. 只允許私人端點連線存取此資源，請選取 **私人端點** 。 您可以使用此頁面上的 [ **私人端點連接** ] 索引標籤來管理連接。 
 
     ![公用網路頁面](./media/configure-firewall/private-endpoints-page.png)
@@ -35,7 +35,7 @@ ms.locfileid: "88509413"
 本節說明如何使用 Azure CLI 命令來建立具有輸入 IP 規則的主題。 本節所示的步驟適用于主題。 您可以使用類似的步驟來建立 **網域**的輸入 IP 規則。 
 
 
-### <a name="prerequisites"></a>先決條件
+### <a name="prerequisites"></a>Prerequisites
 執行下列命令，以更新適用于 CLI 的 Azure 事件方格延伸模組： 
 
 ```azurecli-interactive
@@ -162,7 +162,7 @@ az eventgrid topic update \
 ## <a name="use-powershell"></a>使用 PowerShell
 本節說明如何使用 Azure PowerShell 命令來建立具有輸入 IP 防火牆規則的 Azure 事件方格主題。 本節所示的步驟適用于主題。 您可以使用類似的步驟來建立 **網域**的輸入 IP 規則。 
 
-### <a name="prerequisites"></a>先決條件
+### <a name="prerequisites"></a>Prerequisites
 遵循 [如何：使用入口網站建立可存取資源的 Azure AD 應用程式和服務主體](../active-directory/develop/howto-create-service-principal-portal.md) ，以建立 Azure Active Directory 應用程式，並記下下列值：
 
 - 目錄 (租用戶) 識別碼

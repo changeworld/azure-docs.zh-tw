@@ -3,12 +3,12 @@ title: Azure Site Recovery 中的 VMware/實體嚴重損壞修復的支援矩陣
 description: 摘要說明使用 Azure Site Recovery 將 VMware Vm 和實體伺服器的災難復原至 Azure 的支援。
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: d5f4e99463260496c19c700c9cb1416acc4d5056
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 81cab05b9ad8d6d2bb7f37bc743b5237a4dd6d68
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90530041"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323612"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>從 VMware VM 和實體伺服器至 Azure 之災害復原的支援矩陣
 
@@ -77,7 +77,7 @@ Windows Server 2016 64 位 | 支援伺服器核心、含有桌面體驗的伺服
 Windows Server 2012 R2/Windows Server 2012 | 支援。
 Windows Server 2008 R2 SP1 和更新版本。 | 支援。<br/><br/> 從行動服務代理程式的 [9.30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) 版，您必須在執行 Windows 2008 R2 SP1 或更新版本的電腦上安裝 [服務堆疊更新 (SSU) ](https://support.microsoft.com/help/4490628) 和 [sha-1 更新](https://support.microsoft.com/help/4474419) 。 2019 年 9 月起不支援 SHA-1，而且如果未啟用 SHA-2 程式碼簽署，代理程式擴充功能將不會如預期般安裝/升級。 深入了解 [SHA-2 升級和需求](https://aka.ms/SHA-2KB)。
 Windows Server 2008 SP2 或更新版本 (64 位/32 位)  |  僅支援遷移。 [深入了解](migrate-tutorial-windows-server-2008.md)。<br/><br/> 從行動服務代理程式的 [9.30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) 版，您需要在 WINDOWS 2008 SP2 機器上安裝 [服務堆疊更新 (SSU) ](https://support.microsoft.com/help/4493730) 和 [sha-1 更新](https://support.microsoft.com/help/4474419) 。 2019年9月不支援 ISHA-1，如果未啟用 SHA-1 程式碼簽署，則代理程式延伸模組將不會如預期般安裝/升級。 深入了解 [SHA-2 升級和需求](https://support.microsoft.com/en-us/help/4472027/2019-sha-2-code-signing-support-requirement-for-windows-and-wsus)。
-Windows 10、Windows 8.1、Windows 8 | 支援。
+Windows 10、Windows 8.1、Windows 8 | 僅支援64位系統。 不支援32位系統。
 Windows 7 SP1 （含 SP1）64位 | 從 [更新彙總套件 36](https://support.microsoft.com/help/4503156) (行動服務) 的9.22 版開始支援。 </br></br> 從行動服務代理程式的 [9.30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) 中，您需要在 WINDOWS 7 SP1 電腦上安裝 [服務堆疊更新 (SSU) ](https://support.microsoft.com/help/4490628) 和 [sha-1 更新](https://support.microsoft.com/help/4474419) 。  2019 年 9 月起不支援 SHA-1，而且如果未啟用 SHA-2 程式碼簽署，代理程式擴充功能將不會如預期般安裝/升級。 深入了解 [SHA-2 升級和需求](https://support.microsoft.com/en-us/help/4472027/2019-sha-2-code-signing-support-requirement-for-windows-and-wsus)。
 
 ### <a name="for-linux"></a>若為 Linux
@@ -85,7 +85,7 @@ Windows 7 SP1 （含 SP1）64位 | 從 [更新彙總套件 36](https://support.m
 **作業系統** | **詳細資料**
 --- | ---
 Linux | 僅支援64位系統。 不支援32位系統。<br/><br/>每部 Linux 伺服器都應該已安裝 [linux Integration Services (.lis) 元件](https://www.microsoft.com/download/details.aspx?id=55106) 。 在測試容錯移轉/容錯移轉之後，必須在 Azure 中啟動伺服器。 如果缺少內建的 IIS 元件，請務必先安裝 [元件](https://www.microsoft.com/download/details.aspx?id=55106) ，再啟用複寫，讓機器在 Azure 中開機。 <br/><br/> Site Recovery 會協調容錯移轉以在 Azure 中執行 Linux 伺服器。 不過，Linux 廠商可能會將支援僅限於生命週期尚未結束的發行版本。<br/><br/> 在 Linux 散發套件上，僅支援屬於散發套件次要版本/更新的庫存核心。<br/><br/> 不支援升級各主要 Linux 散發套件版本的受保護機器。 若要升級，請停用複寫、升級作業系統，然後再次啟用複寫。<br/><br/> [深入瞭解](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure) Azure 中的 Linux 和開放原始碼技術支援。
-Linux Red Hat Enterprise | 5.2 至5.11</b><br/> 6.1 至6.10</b> </br> 7.0、7.1、7.2、7.3、7.4、7.5、7.6、 [7.7](https://support.microsoft.com/help/4528026/update-rollup-41-for-azure-site-recovery)、 [7.8](https://support.microsoft.com/help/4564347/)、 [7.9](https://support.microsoft.com/help/4578241/) </br> [8.0](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery)、8.1、 [8.2](https://support.microsoft.com/help/4570609) <br/> 在執行 Red Hat Enterprise Linux 5.2-5.11 & 6.1-6.10 的伺服器上，有幾個較舊的核心沒有預先安裝的 [Linux Integration Services (.lis) 元件](https://www.microsoft.com/download/details.aspx?id=55106) 。 如果缺少內建的 IIS 元件，請務必先安裝 [元件](https://www.microsoft.com/download/details.aspx?id=55106) ，再啟用複寫，讓機器在 Azure 中開機。
+Linux Red Hat Enterprise | 5.2 至5.11</b><br/> 6.1 至6.10</b> </br> 7.0、7.1、7.2、7.3、7.4、7.5、7.6、 [7.7](https://support.microsoft.com/help/4528026/update-rollup-41-for-azure-site-recovery)、 [7.8](https://support.microsoft.com/help/4564347/)、 [7.9 Beta 版](https://support.microsoft.com/help/4578241/) </br> [8.0](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery)、8.1、 [8.2](https://support.microsoft.com/help/4570609) <br/> 在執行 Red Hat Enterprise Linux 5.2-5.11 & 6.1-6.10 的伺服器上，有幾個較舊的核心沒有預先安裝的 [Linux Integration Services (.lis) 元件](https://www.microsoft.com/download/details.aspx?id=55106) 。 如果缺少內建的 IIS 元件，請務必先安裝 [元件](https://www.microsoft.com/download/details.aspx?id=55106) ，再啟用複寫，讓機器在 Azure 中開機。
 Linux：CentOS | 5.2 至5.11</b><br/> 6.1 至6.10</b><br/> </br> 7.0、7.1、7.2、7.3、7.4、7.5、7.6、 [7.7](https://support.microsoft.com/help/4528026/update-rollup-41-for-azure-site-recovery)、 [7.8](https://support.microsoft.com/help/4564347/)、 [7.9](https://support.microsoft.com/help/4578241/) </br> [8.0](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery)、8.1、 [8.2](https://support.microsoft.com/help/4570609) <br/><br/> 執行 CentOS 5.2-5.11 & 6.1-6.10 的伺服器上有幾個較舊的核心沒有預先安裝的  [Linux Integration Services (的 .lis) 元件](https://www.microsoft.com/download/details.aspx?id=55106) 。 如果缺少內建的 IIS 元件，請務必先安裝 [元件](https://www.microsoft.com/download/details.aspx?id=55106) ，再啟用複寫，讓機器在 Azure 中開機。
 Ubuntu | Ubuntu 14.04 * LTS server [ (檢查支援的核心版本) ](#ubuntu-kernel-versions)<br/>Ubuntu 16.04 * LTS server [ (檢查支援的核心版本) ](#ubuntu-kernel-versions) </br> Ubuntu 18.04 * LTS server [ (檢查支援的核心版本) ](#ubuntu-kernel-versions) </br> Ubuntu 20.04 * LTS server [ (檢查支援的核心版本) ](#ubuntu-kernel-versions) </br>  (*包含所有14.04 的支援。* x *、16.04。* x *、18.04。* x *、20.04。* x * 版本) 
 Debian | Debian 7/Debian 8 (包含所有7的支援。 *x*、8。 *x* 版本) ;Debian 9 (包含9.1 到9.13 的支援。 不支援 Debian 9.0。 ) [ (檢查支援的核心版本) ](#debian-kernel-versions)

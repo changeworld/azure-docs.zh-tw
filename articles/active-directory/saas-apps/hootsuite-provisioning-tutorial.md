@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 04/15/2020
 ms.author: Zhchia
-ms.openlocfilehash: 83b2a497cbeda188a4329e634256746f48984a89
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a67d61c5a7c8861b1e4462586e1e4dca9149ab4f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88521928"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91305438"
 ---
 # <a name="tutorial-configure-hootsuite-for-automatic-user-provisioning"></a>教學課程：設定 Hootsuite 來自動佈建使用者
 
@@ -78,13 +78,13 @@ Azure AD 佈建服務可讓您根據對應用程式的指派，或根據使用�
 
 3. 選取 [佈建] 索引標籤。按一下 [開始使用]。
 
-    ![[佈建] 索引標籤](common/provisioning.png)
+    ![已呼叫 [布建] 選項的 [管理選項] 螢幕擷取畫面。](common/provisioning.png)
 
     ![[開始使用] 刀鋒視窗](./media/hootsuite-provisioning-tutorial/get-started.png)
 
 4. 將 [佈建模式] 設定為 [自動]。
 
-    ![[佈建] 索引標籤](common/provisioning-automatic.png)
+    ![[布建模式] 下拉式清單的螢幕擷取畫面，其中已呼叫 [自動] 選項。](common/provisioning-automatic.png)
 
 5. 在 [管理員認證] 區段下的 [租用戶 URL] 中輸入 `https://platform.hootsuite.com/scim/v2`。 輸入稍早在＜步驟 2＞中所擷取之可長時間使用的祕密權杖。 按一下 [測試連線]，以確保 Azure AD 可以連線至 Hootsuite。 如果連線失敗，請確定您的 Hootsuite 帳戶具有管理員權限，然後再試一次。
 

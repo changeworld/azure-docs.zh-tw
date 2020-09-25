@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 10/29/2019
 ms.author: Zhchia
-ms.openlocfilehash: 56a865de8cb1be079f4935ef2a8f840f10589b26
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b78de4769f49954c4d4e860e75818f6485247a17
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550005"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91305625"
 ---
 # <a name="tutorial-configure-harness-for-automatic-user-provisioning"></a>教學課程：設定自動使用者布建的控管
 
@@ -27,7 +27,7 @@ ms.locfileid: "88550005"
 >
 > 此連接器目前為預覽版。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 本文所述的案例假設您已經具備下列必要條件：
 
@@ -82,7 +82,7 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
     ![[Azure Active Directory] 按鈕](common/select-azuread.png)
 
-1. 選取**企業應用**程式  >  的**所有應用程式**。
+1. 選取 [企業應用程式]   > [所有應用程式]  。
 
     ![[所有應用程式] 連結](common/enterprise-applications.png)
 
@@ -126,7 +126,7 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
     ![租用戶 URL + 權杖](common/provisioning-testconnection-tenanturltoken.png)
  
-   a. 在 [ **租使用者 URL** ] 方塊中，輸入 **`https://app.harness.io/gateway/api/scim/account/XCPzWkCIQ46ypIu2DeT7yw`** 。  
+   a. 在 [ **租使用者 URL** ] 方塊中，輸入 **`https://app.harness.io/gateway/api/scim/account/<your_harness_account_ID>`** 。 當您登入裝置時，您可以從瀏覽器中的 URL 取得您的控管帳戶識別碼。
    b. 在 [ **秘密權杖** ] 方塊中，輸入您在「設定用於布建的控管」一節的步驟6中儲存的 SCIM Authentication 權杖值。  
    c. 選取 [ **測試連接** ] 以確保 Azure AD 可以連接到控管。 如果連接失敗，請確定您的控管帳戶具有系統 *管理員* 許可權，然後再試一次。
 

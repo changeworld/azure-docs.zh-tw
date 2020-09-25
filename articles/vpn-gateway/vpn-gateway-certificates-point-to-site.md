@@ -1,19 +1,19 @@
 ---
 title: 產生和匯出 P2S 的憑證： PowerShell
 titleSuffix: Azure VPN Gateway
-description: 建立自我簽署的根憑證、匯出公開金鑰，以及使用 Windows 10 或 Windows Server 2016 中的 PowerShell 產生用戶端憑證。
+description: 使用 Windows 10 或 Windows Server 2016 上的 PowerShell，建立自我簽署的根憑證、匯出公開金鑰，以及產生用戶端憑證以進行 P2S。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: dc9f9ca72247ac54286037475912cf6051d8d2af
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: c1c69b301199b054fe6b1ef42cfcf7878a7a161c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89394172"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91306679"
 ---
 # <a name="generate-and-export-certificates-for-point-to-site-using-powershell"></a>使用 PowerShell 來產生並匯出點對站的憑證
 
@@ -31,7 +31,7 @@ ms.locfileid: "89394172"
 
 若要安裝用戶端憑證，請參閱[安裝點對站連線的用戶端憑證](point-to-site-how-to-vpn-client-install-azure-cert.md)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 繼續使用您的點對站設定。
 

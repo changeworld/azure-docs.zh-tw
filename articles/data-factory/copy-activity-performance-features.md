@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/05/2020
-ms.openlocfilehash: d93ff81bacbb537cc5891e0b869f164e0d6824c6
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.date: 09/24/2020
+ms.openlocfilehash: 8e46e9b323657b747fd73bad3b25ed66390f3aa9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89440536"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324326"
 ---
 # <a name="copy-activity-performance-optimization-features"></a>複製活動效能優化功能
 
@@ -42,7 +42,7 @@ ms.locfileid: "89440536"
 
 您將會被收取 **# 個已使用的 diu \* 複製持續時間 \* 單位價格/DIU 小時**。 請參閱 [此處](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/)的目前價格。 每一訂用帳戶類型可能會套用本地貨幣和個別折扣。
 
-**範例︰**
+**範例：**
 
 ```json
 "activities":[
@@ -100,7 +100,7 @@ ms.locfileid: "89440536"
 
 當您指定屬性的值時 `parallelCopies` ，請將來源和接收資料存放區的負載增加到帳戶。 此外，如果複製活動是由自我裝載整合執行時間所提升，也請考慮將其提升至自我裝載的整合執行時間。 當您對相同的資料存放區執行相同活動的多個活動或並存執行時，就會發生這種負載增加。 如果您注意到資料存放區或自我裝載整合執行時間在負載上感到不知所措，請減少此 `parallelCopies` 值以減輕負載。
 
-**範例︰**
+**範例：**
 
 ```json
 "activities":[
@@ -124,31 +124,35 @@ ms.locfileid: "89440536"
 
 ## <a name="staged-copy"></a>分段複製
 
-從來源資料存放區將資料複製到接收資料存放區時，您可以選擇使用 Blob 儲存體做為過渡暫存存放區。 暫存在下列情況下特別有用︰
+當您將資料從來源資料存放區複製到接收資料存放區時，您可以選擇使用 Azure Blob 儲存體或 Azure Data Lake Storage Gen2 作為過渡暫存存放區。 暫存在下列情況下特別有用︰
 
-- **您想要將資料從不同的資料存放區內嵌至 Azure Synapse Analytics (先前透過 PolyBase) 的 SQL 資料倉儲。** Azure Synapse Analytics 使用 PolyBase 作為高輸送量機制，將大量資料載入 Azure Synapse Analytics。 來源資料必須位於 Blob 儲存體或 Azure Data Lake 存放區，而且必須符合額外的條件。 當您從 Blob 儲存體或 Azure Data Lake Store 以外的資料存放區載入資料時，您可以啟用透過過渡暫存 Blob 儲存體的資料複製。 在此情況下，Azure Data Factory 會執行必要的資料轉換，以確保它符合 PolyBase 的需求。 然後，它會使用 PolyBase 來有效率地將資料載入 Azure Synapse Analytics。 如需詳細資訊，請參閱 [使用 PolyBase 將資料載入 Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-synapse-analytics)。
+- **您想要從各種資料存放區將資料內嵌至 Azure Synapse Analytics (先前的 SQL 資料倉儲) via PolyBase、從 gen2 複製資料，或從 Amazon Redshift/HDFS 內嵌資料。** 深入瞭解詳細資料：
+  - [使用 PolyBase 將資料載入 Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-synapse-analytics)。
+  - [雪花連接器](connector-snowflake.md)
+  - [Amazon Redshift 連接器](connector-amazon-redshift.md)
+  - [HDFS 連接器](connector-hdfs.md)
+- **您不想要在防火牆中開啟埠80和埠443以外的埠，因為公司的 IT 原則。** 例如，當您從內部部署資料存放區將資料複製到 Azure SQL Database 或 Azure Synapse Analytics 時，您需要針對 Windows 防火牆和公司防火牆啟用埠1433上的輸出 TCP 通訊。 在此案例中，分段複製可利用自我裝載整合執行時間，先透過 HTTP 或 HTTPS 在埠443上將資料複製到暫存儲存體，然後將資料從暫存載入 SQL Database 或 Azure Synapse Analytics。 在此流程中，您不需要啟用連接埠 1433。
 - **有時候，執行混合式資料移動需要一些時間， (也就是從內部部署資料存放區複製到雲端資料存放區，) 透過慢速網路連接。** 若要改善效能，您可以使用分段複製來壓縮內部部署資料，以便將資料移至雲端中的暫存資料存放區所需的時間較短。 然後，您可以在載入至目的地資料存放區之前，先解壓縮暫存存放區中的資料。
-- **您不想要在防火牆中開啟埠80和埠443以外的埠，因為公司的 IT 原則。** 例如，當您將資料從內部部署資料存放區複製到 Azure SQL Database 接收或 Azure Synapse Analytics 接收時，您需要在埠1433上啟用 Windows 防火牆和公司防火牆的輸出 TCP 通訊。 在此案例中，分段複製可利用自我裝載整合執行時間，先透過 HTTP 或 HTTPS 在埠443上將資料複製到 Blob 儲存體暫存實例。 然後，它可以從 Blob 儲存體預備環境將資料載入 SQL Database 或 Azure Synapse Analytics。 在此流程中，您不需要啟用連接埠 1433。
 
 ### <a name="how-staged-copy-works"></a>分段複製的運作方式
 
-當您啟用暫存功能時，會先從來源資料存放區複製資料到暫存 Blob 儲存體 (自備)。 接著再從暫存資料存放區複製資料到接收資料存放區。 Azure Data Factory 會自動為您管理兩階段流程。 當資料移動完成之後，Azure Data Factory 也會清除暫存儲存體中的暫存資料。
+當您啟用暫存功能時，首先會將資料從來源資料存放區複製到暫存儲存體， (攜帶您自己的 Azure Blob 或 Azure Data Lake Storage Gen2) 。 接下來，會將資料從暫存複製到接收資料存放區。 Azure Data Factory 複製活動會自動為您管理兩階段流程，而且在資料移動完成之後，也會清除暫存儲存體中的暫存資料。
 
 ![分段複製](media/copy-activity-performance/staged-copy.png)
 
-當您使用暫存存放區來啟動資料移動時，您可以指定是否要在將資料從來源資料存放區移到過渡或暫存資料存放區之前，先將資料壓縮，然後再將資料從過渡或暫存資料存放區移到接收資料存放區，然後再進行解壓縮。
+當您使用暫存存放區來啟動資料移動時，您可以指定是否要壓縮資料，然後再將資料從來源資料存放區移至暫存存放區，然後在將資料從過渡或暫存資料存放區移到接收資料存放區之前解壓縮。
 
 目前，您無法在透過不同自我裝載的 IRs 連接的兩個數據存放區之間複製資料，兩者都不具有分段複製。 在這種情況下，您可以設定兩個明確連結的複製活動，從來源複製到預備環境，然後從預備環境複製到接收。
 
 ### <a name="configuration"></a>設定
 
-在複製活動中設定 **>enablestaging** 設定，以指定是否要在將資料載入至目的地資料存放區之前，先將資料暫存于 Blob 儲存體中。 當您將 **>enablestaging** 設定為時 `TRUE` ，請指定下表所列的其他屬性。 您也需要為預備環境建立 Azure 儲存體或儲存體共用存取簽章連結服務（如果沒有的話）。
+在複製活動中設定 **>enablestaging** 設定，以指定是否要在將資料載入至目的地資料存放區之前，先在儲存體中暫存資料。 當您將 **>enablestaging** 設定為時 `TRUE` ，請指定下表所列的其他屬性。 
 
 | 屬性 | 描述 | 預設值 | 必要 |
 | --- | --- | --- | --- |
 | enableStaging |指定您是否要透過過渡暫存存放區複製資料。 |False |否 |
-| linkedServiceName |指定 [AzureStorage](connector-azure-blob-storage.md#linked-service-properties) 連結服務的名稱，以代表您用來做為過渡暫存存放區的儲存體執行個體。 <br/><br/> 您無法使用具有共用存取簽章的儲存體，透過 PolyBase 將資料載入 Azure Synapse Analytics。 您可以將它用於其他所有案例。 |N/A |是，當 **enableStaging** 設為 TRUE |
-| path |指定要包含分段資料的 Blob 儲存體路徑。 如果您未提供路徑，服務會建立一個容器來儲存暫存資料。 <br/><br/> 只有在使用具有共用存取簽章的儲存體時，或需要讓暫存資料位於特定位置時，才指定路徑。 |N/A |否 |
+| linkedServiceName |指定 [Azure Blob 儲存體](connector-azure-blob-storage.md#linked-service-properties) 或 [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) 連結服務的名稱，這是指您用來做為過渡暫存存放區的儲存體實例。 |N/A |是，當 **enableStaging** 設為 TRUE |
+| path |指定您想要包含暫存資料的路徑。 如果您未提供路徑，服務會建立一個容器來儲存暫存資料。 |N/A |否 |
 | enableCompression |指定是否應該先壓縮資料，再將資料複製到目的地。 此設定可減少傳輸的資料量。 |False |否 |
 
 >[!NOTE]
@@ -159,25 +163,24 @@ ms.locfileid: "89440536"
 ```json
 "activities":[
     {
-        "name": "Sample copy activity",
+        "name": "CopyActivityWithStaging",
         "type": "Copy",
         "inputs": [...],
         "outputs": [...],
         "typeProperties": {
             "source": {
-                "type": "SqlSource",
+                "type": "OracleSource",
             },
             "sink": {
-                "type": "SqlSink"
+                "type": "SqlDWSink"
             },
             "enableStaging": true,
             "stagingSettings": {
                 "linkedServiceName": {
-                    "referenceName": "MyStagingBlob",
+                    "referenceName": "MyStagingStorage",
                     "type": "LinkedServiceReference"
                 },
-                "path": "stagingcontainer/path",
-                "enableCompression": true
+                "path": "stagingcontainer/path"
             }
         }
     }

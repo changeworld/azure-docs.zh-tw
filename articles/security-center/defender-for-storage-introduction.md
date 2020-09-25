@@ -3,16 +3,16 @@ title: 適用于儲存體的 Azure Defender-優點和功能
 description: 瞭解適用于儲存體的 Azure Defender 的優點和功能。
 author: memildin
 ms.author: memildin
-ms.date: 9/12/2020
+ms.date: 9/22/2020
 ms.topic: conceptual
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 31d1bde1555f98164ccba32d4615ba51837c5ef7
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 1c47c1cd464c9dc0ac8dc78f5d6f91f33481922a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936753"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91307512"
 ---
 # <a name="introduction-to-azure-defender-for-storage"></a>適用于儲存體的 Azure Defender 簡介
 
@@ -28,7 +28,7 @@ ms.locfileid: "90936753"
 |釋放狀態：|正式上市 (GA)|
 |定價：|**適用于儲存體的 Azure Defender**會依[定價頁面上的](security-center-pricing.md)顯示方式計費|
 |受保護的儲存體類型|[Blob 儲存體](https://azure.microsoft.com/services/storage/blobs/)<br>[Azure 檔案](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)<br>[Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction) \(部分機器翻譯\)|
-|雲端：|![Yes](./media/icons/yes-icon.png) 商業雲端<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) 中國 Gov，其他 Gov|
+|雲端：|![是](./media/icons/yes-icon.png) 商業雲端<br>![是](./media/icons/yes-icon.png) US Gov<br>![否](./media/icons/no-icon.png) 中國 Gov，其他 Gov|
 |||
 
 
@@ -59,7 +59,7 @@ ms.locfileid: "90936753"
 
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 在本文中，您已瞭解 Azure Defender 的儲存體。
 

@@ -15,12 +15,12 @@ ms.date: 06/17/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0b52830e7cddb01c129df2344e26ac1684a88872
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 959837ff540fd95d186497858d7b9de1f8b1124d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89292719"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91274005"
 ---
 # <a name="review-access-for-yourself-to-groups-or-applications-in-azure-ad-access-reviews"></a>查看 Azure AD 存取權評論中群組或應用程式的存取權
 
@@ -65,13 +65,13 @@ Azure Active Directory (Azure AD) 簡化了企業如何使用稱為 Azure AD 存
 
     如果要求要檢查其他人的存取權，頁面看起來會不同。 如需詳細資訊，請參閱 [檢查群組或應用程式的存取權](perform-access-review.md)。
 
-    ![開啟存取權審核，詢問您是否仍需要存取群組](./media/review-your-access/perform-access-review.png)
+    ![顯示開啟存取權審查的螢幕擷取畫面，詢問您是否仍需要存取群組。](./media/review-your-access/perform-access-review.png)
 
 1. 按一下 **[是]** 以保留您的存取權，或按一下 [ **否** ] 移除您的存取權。
 
 1. 如果您按一下 **[是]**，可能需要在 [ **原因** ] 方塊中指定理由。
 
-    ![完成的存取權檢查，詢問您是否仍需要存取群組](./media/review-your-access/perform-access-review-submit.png)
+    ![顯示已完成的存取權檢查的螢幕擷取畫面，詢問您是否仍需要存取群組，並選取 [是]。](./media/review-your-access/perform-access-review-submit.png)
 
 1. 按一下 [提交]  。
 

@@ -1,6 +1,6 @@
 ---
-title: 在 Azure 中跨租使用者共用資源庫映射
-description: 瞭解如何使用共用映射資源庫跨 Azure 租使用者共用 VM 映射。
+title: 跨租使用者共用資源庫影像
+description: 瞭解如何使用共用映射資源庫在 Azure 租使用者之間共用的映射建立擴展集。
 author: cynthn
 ms.author: cynthn
 ms.topic: how-to
@@ -9,21 +9,21 @@ ms.subservice: imaging
 ms.date: 04/05/2019
 ms.reviewer: akjosh
 ms.custom: akjosh, devx-track-azurecli
-ms.openlocfilehash: 542dfbc28621e02cd2842fb174e986bfeb91e6ec
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: ea61b3bd76fc4ada48a8a2fb734a841b8a969272
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501673"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323476"
 ---
-# <a name="share-gallery-vm-images-across-tenants-in-azure"></a>在 Azure 中跨租使用者共用資源庫 VM 映射
+# <a name="share-images-across-tenants-with-shared-image-gallery"></a>使用共用映射庫跨租使用者共用映射
 
 [!INCLUDE [virtual-machines-share-images-across-tenants](../../includes/virtual-machines-share-images-across-tenants.md)]
 
 
 ## <a name="create-a-scale-set-using-azure-cli"></a>使用 Azure CLI 建立擴展集
 
-使用 appID、應用程式金鑰和租使用者1的識別碼，登入租使用者1的服務主體。 如有需要，您可以使用 `az account show --query "tenantId"` 來取得租使用者識別碼。
+使用 appID、應用程式金鑰和租使用者1的識別碼，登入租使用者1的服務主體。 您可以視 `az account show --query "tenantId"` 需要使用來取得租使用者識別碼。
 
 ```azurecli-interactive
 az account clear
@@ -38,7 +38,7 @@ az login --service-principal -u '<app ID>' -p '<Secret>' --tenant '<tenant 2 ID>
 az account get-access-token
 ```
 
-建立擴展集。 以您自己的方式取代範例中的資訊。
+建立擴展集。 以您自己的範例取代範例中的資訊。
 
 ```azurecli-interactive
 az vmss create \
@@ -51,4 +51,4 @@ az vmss create \
 
 ## <a name="next-steps"></a>後續步驟
 
-若遇到任何問題，您可以[針對共用映像資源庫問題進行疑難排解](troubleshooting-shared-images.md)。
+若遇到任何問題，您可以[針對共用映像資源庫問題進行疑難排解](../virtual-machines/troubleshooting-shared-images.md)。

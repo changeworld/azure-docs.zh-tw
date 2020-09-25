@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: article
-ms.openlocfilehash: 81480bea735017d3fc59e9c6cf126c2146a0c968
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 31fde0c7af652bc50eb5f06743c5dd5807a1762e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798460"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323720"
 ---
 # <a name="system-requirements"></a>系統需求
 
@@ -56,13 +56,24 @@ Azure 遠端轉譯目前僅支援 **HoloLens 2** 和 Windows 桌面做為目標�
 1. 請確定列出的編解碼器至少有版本 **1.0.21821.0**。
 1. 按一下 [ **取得更新** ] 按鈕，並等候安裝完成。
 
-## <a name="network"></a>Network (網路)
+## <a name="network"></a>網路
 
 穩定、低延遲的網路連接對於良好的使用者體驗很重要。
 
 如需 [網路需求](../reference/network-requirements.md)，請參閱專屬章節。
 
 若要針對網路問題進行疑難排解，請參閱 [疑難排解指南](../resources/troubleshoot.md#unstable-holograms)。
+
+### <a name="network-ports"></a>網路連接埠
+
+請確定您的防火牆 (在裝置上、路由器內部等等) 不會封鎖下列連接埠：
+
+| 連接埠              | 通訊協定 | 允許    | 說明 |
+|-------------------|----------|----------|-------------|
+| 50051             | TCP      | 傳出 |  (HTTP 信號交換的初始連接)  |
+| 8266              | UDP      | 傳出 | 資料傳輸 |
+| 5000、5433、8443  | TCP      | 傳出 | [ArrInspector 工具](../resources/tools/arr-inspector.md)的必要參數|
+
 
 ## <a name="software"></a>軟體
 

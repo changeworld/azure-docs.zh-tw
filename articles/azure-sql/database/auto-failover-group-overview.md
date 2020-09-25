@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: mathoma, carlrab
+ms.reviewer: mathoma, sstein
 ms.date: 08/28/2020
-ms.openlocfilehash: 3b81ce6e1b77db7b89f293850e2d00fde5d40cfa
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 7b4a85077c8e0147f926f9a86fc8a003591ec8ac
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89076509"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91277728"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>使用自動容錯移轉群組可以啟用多個資料庫透明且協調的容錯移轉
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -217,7 +217,7 @@ ms.locfileid: "89076509"
 
 下圖說明使用受控執行個體和自動容錯移轉群組之異地備援雲端應用程式的一般設定。
 
-![自動容錯移轉](./media/auto-failover-group-overview/auto-failover-group-mi.png)
+![自動容錯移轉圖表](./media/auto-failover-group-overview/auto-failover-group-mi.png)
 
 > [!NOTE]
 > 請參閱 [將受控實例新增至容錯移轉群組](../managed-instance/failover-group-add-instance-tutorial.md) ，以取得新增 SQL 受控執行個體以使用容錯移轉群組的詳細逐步教學課程。
@@ -237,16 +237,16 @@ ms.locfileid: "89076509"
 
 因為每個執行個體都在其自己的 VNet中隔離，因此必須允許這些 Vnet 之間的雙向流量。 請參閱 [Azure VPN 閘道](../../vpn-gateway/vpn-gateway-about-vpngateways.md)
 
-### <a name="creating-a-failover-group-between-managed-instances-in-different-subscriptions"></a>在不同訂用帳戶中的受控實例之間建立容錯移轉群組
+### <a name="creating-a-failover-group-between-managed-instances-in-different-subscriptions"></a>在不同訂用帳戶中的受控執行個體之間建立容錯移轉群組
 
 只要訂用帳戶與相同的 [Azure Active Directory 租](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis#terminology)使用者相關聯，您就可以在兩個不同的訂用帳戶中建立 SQL 受控實例之間的容錯移轉群組。 使用 PowerShell API 時，您可以藉由指定 `PartnerSubscriptionId` 次要 SQL 受控執行個體的參數來進行。 使用 REST API 時，參數中包含的每個實例識別碼都 `properties.managedInstancePairs` 可以有自己的 subscriptionID。
   
 > [!IMPORTANT]
-> Azure 入口網站不支援跨不同訂用帳戶建立容錯移轉群組。 此外，對於跨不同訂用帳戶和/或資源群組的現有容錯移轉群組，無法透過入口網站從主要 SQL 受控執行個體手動起始容錯移轉。 請改為從地理次要實例起始。
+> Azure 入口網站不支援跨不同訂用帳戶建立容錯移轉群組。 此外，對於跨不同訂用帳戶和/或資源群組的現有容錯移轉群組，無法透過入口網站從主要 SQL 受控執行個體手動起始容錯移轉。 請改為從異地次要執行個體起始。
 
-### <a name="managing-failover-to-secondary-instance"></a>管理容錯移轉至次要實例
+### <a name="managing-failover-to-secondary-instance"></a>管理容錯移轉至次要執行個體
 
-容錯移轉群組將會管理 SQL 受控執行個體中所有資料庫的容錯移轉。 建立群組時，實例中的每個資料庫都會自動異地複寫至次要 SQL 受控執行個體。 您無法使用容錯移轉群組來起始資料庫子集的部分容錯移轉。
+容錯移轉群組會管理 SQL 受控執行個體中所有資料庫的容錯移轉。 建立群組時，執行個體中的每個資料庫將會自動異地複寫到次要 SQL 執行個體。 您無法使用容錯移轉群組來起始資料庫子集的部分容錯移轉。
 
 > [!IMPORTANT]
 > 如果從主要 SQL 受控執行個體中移除資料庫，也會自動將它放在異地輔助 SQL 受控執行個體上。
@@ -348,16 +348,16 @@ CREATE LOGIN foo WITH PASSWORD = '<enterStrongPasswordHere>', SID = <login_sid>;
 > [!IMPORTANT]
 > 若要保證區域性中斷時的商務持續性，您必須確定前端元件與資料庫的異地備援。
 
-## <a name="enabling-geo-replication-between-managed-instances-and-their-vnets"></a>在受控實例及其 Vnet 之間啟用異地複寫
+## <a name="enabling-geo-replication-between-managed-instances-and-their-vnets"></a>在受控執行個體與其 VNet 之間啟用異地複寫
 
 當您在兩個不同區域中的主要和次要 SQL 受控實例之間設定容錯移轉群組時，每個實例都會使用獨立的虛擬網路進行隔離。 若要允許這些 Vnet 之間的複寫流量，請確定符合下列必要條件：
 
 - SQL 受控執行個體的兩個實例必須位於不同的 Azure 區域。
 - SQL 受控執行個體的兩個實例必須是相同的服務層級，而且具有相同的儲存體大小。
 - 您的 SQL 受控執行個體的次要實例必須是空的， (沒有任何使用者資料庫) 。
-- SQL 受控執行個體的實例所使用的虛擬網路必須透過 [VPN 閘道](../../vpn-gateway/vpn-gateway-about-vpngateways.md) 或 [Express Route](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md)進行連線。 當兩個虛擬網路透過內部部署網路連接時，請確定沒有防火牆規則封鎖埠5022和11000-11999。 目前不支援轉移的全域 VNet 對等互連。
+- SQL 受控執行個體的實例所使用的虛擬網路必須透過 [VPN 閘道](../../vpn-gateway/vpn-gateway-about-vpngateways.md) 或 [Express Route](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md)進行連線。 當兩個虛擬網路透過內部部署網路連線時，請確定防火牆規則不會封鎖連接埠 5022 和 11000-11999。 目前不支援轉移的全域 VNet 對等互連。
 - 這兩個 SQL 受控執行個體 Vnet 不能有重迭的 IP 位址。
-- 您必須將您的網路安全性群組設定 (NSG) 讓埠5022和範圍 11000 ~ 12000 針對來自其他受控實例子網的連線開啟輸入和輸出。 這是為了允許實例之間的複寫流量。
+- 您需要設定網路安全性群組 (NSG)，以便連接埠 5022 和範圍 11000 ~ 12000 開啟來自其他受控執行個體子網路的輸入和輸出連線。 這是為了允許執行個體之間的複寫流量。
 
    > [!IMPORTANT]
    > 設定錯誤的 NSG 安全性規則會導致資料庫複製作業停滯。
@@ -371,7 +371,7 @@ CREATE LOGIN foo WITH PASSWORD = '<enterStrongPasswordHere>', SID = <login_sid>;
 
 您可以將主要資料庫升級或降級至不同的計算大小 (在相同的服務層級內，而不是一般用途和業務關鍵之間)，而不需要將任何次要資料庫中斷連線。 升級時，建議您先升級所有次要資料庫，然後再升級主資料庫。 降級時，請反轉順序：先降級主資料庫，然後再降級所有次要資料庫。 當您將資料庫升級或降級到不同的服務層級時，會強制執行這項建議。
 
-建議使用此順序，以避免在較低 SKU 的次要複本超載時的問題，而且必須在升級或降級過程中重新植入。 您也可以藉由將主要複本設為唯讀，來避免此問題，因為它會影響對主要複本的所有讀寫工作負載。
+建議您特別注意此順序，以避免較低 SKU 的次要複本發生超載，而必須在升級或降級程序期間重新植入的問題。 您也可以將主要資料庫狀態設為唯讀，以此方式影響對主要資料庫的所有讀寫工作負載，來避免此問題。
 
 > [!NOTE]
 > 如果您在容錯移轉群組設定中建立次要資料庫，則不建議您降級次要資料庫。 這是為了確保您的資料層在容錯移轉啟動之後有足夠的容量來處理一般工作負載。
@@ -415,7 +415,7 @@ CREATE LOGIN foo WITH PASSWORD = '<enterStrongPasswordHere>', SID = <login_sid>;
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-| Command | 描述 |
+| 命令 | 說明 |
 | --- | --- |
 | [az sql failover-group create](/cli/azure/sql/failover-group#az-sql-failover-group-create) |此命令會建立容錯移轉群組，並同時在主要和次要伺服器上註冊|
 | [az sql 容錯移轉-群組刪除](/cli/azure/sql/failover-group#az-sql-failover-group-delete) | 從伺服器移除容錯移轉群組 |
@@ -425,7 +425,7 @@ CREATE LOGIN foo WITH PASSWORD = '<enterStrongPasswordHere>', SID = <login_sid>;
 
 # <a name="rest-api"></a>[Rest API](#tab/rest-api)
 
-| API | 描述 |
+| API | 說明 |
 | --- | --- |
 | [建立或更新容錯移轉群組](https://docs.microsoft.com/rest/api/sql/failovergroups/createorupdate) | 建立或更新容錯移轉群組 |
 | [刪除容錯移轉群組](https://docs.microsoft.com/rest/api/sql/failovergroups/delete) | 從伺服器移除容錯移轉群組 |
@@ -453,7 +453,7 @@ CREATE LOGIN foo WITH PASSWORD = '<enterStrongPasswordHere>', SID = <login_sid>;
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-| Command | 描述 |
+| 命令 | 說明 |
 | --- | --- |
 | [az sql failover-group create](/cli/azure/sql/failover-group#az-sql-failover-group-create) |此命令會建立容錯移轉群組，並同時在主要和次要伺服器上註冊|
 | [az sql 容錯移轉-群組刪除](/cli/azure/sql/failover-group#az-sql-failover-group-delete) | 從伺服器移除容錯移轉群組 |
@@ -463,7 +463,7 @@ CREATE LOGIN foo WITH PASSWORD = '<enterStrongPasswordHere>', SID = <login_sid>;
 
 # <a name="rest-api"></a>[Rest API](#tab/rest-api)
 
-| API | 描述 |
+| API | 說明 |
 | --- | --- |
 | [建立或更新容錯移轉群組](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/createorupdate) | 建立或更新容錯移轉群組的設定 |
 | [刪除容錯移轉群組](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/delete) | 從實例移除容錯移轉群組 |

@@ -18,12 +18,12 @@ ms.date: 02/26/2019
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6aa7be140b47d389bea0e7468d1a5ac7e58c3b1b
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 26fdf202cb9bcacee94c83578432f7a399f90a0c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89276281"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91306271"
 ---
 # <a name="monitor-ad-fs-using-azure-ad-connect-health"></a>使用 Azure AD Connect Health 監視 AD FS
 下列文件適用於使用 Azure AD Connect Health 來監視 AD FS 基礎結構。 如需有關監視 Azure AD Connect (同步處理) 的詳細資訊，請參閱 [使用 Azure AD Connect Health 進行同步](how-to-connect-health-sync.md)Azure AD Connect Health 處理。此外，如需使用 Azure AD Connect Health 監視 Active Directory Domain Services 的詳細資訊，請參閱 [使用 Azure AD Connect Health 搭配 AD DS](how-to-connect-health-adds.md)。
@@ -33,7 +33,7 @@ ms.locfileid: "89276281"
 
 您可以連按兩下作用中或已解決的警示，以開啟新的刀鋒視窗，其中含有額外資訊、解決警示可以採取的步驟，以及相關文件的連結。 您也可以檢視過去已解決的警示的歷史資料。
 
-![Azure AD Connect Health 入口網站](./media/how-to-connect-health-adfs/alert2.png)
+![顯示 Azure AD Connect Health [警示] 頁面的螢幕擷取畫面，其中已選取警示，並顯示 [警示詳細資料] 視窗。](./media/how-to-connect-health-adfs/alert2.png)
 
 ## <a name="usage-analytics-for-ad-fs"></a>AD FS 的使用情況分析
 Azure AD Connect Health 使用情況分析會分析您的同盟伺服器的驗證流量。 您可連按兩下使用情況分析方塊來開啟使用情況分析刀鋒視窗，以顯示數個度量和群組。
@@ -43,7 +43,7 @@ Azure AD Connect Health 使用情況分析會分析您的同盟伺服器的驗�
 >
 >
 
-![Azure AD Connect Health 入口網站](./media/how-to-connect-health-adfs/report1.png)
+![顯示 Azure AD Connect Health [使用方式分析] 頁面的螢幕擷取畫面。](./media/how-to-connect-health-adfs/report1.png)
 
 若要選取其他度量，請指定時間範圍；若要變更群組，請在使用情況分析圖表上按一下滑鼠右鍵，並選取 [編輯圖表]。 接著，您可以指定時間範圍、選取不同的度量，以及變更群組。 您可以根據不同的「度量」檢視驗證流量的分佈，並使用下列各節所述的相關「分組依據」參數來為每個度量分組：
 
@@ -78,7 +78,7 @@ Azure AD Connect Health 使用情況分析會分析您的同盟伺服器的驗�
 ## <a name="performance-monitoring-for-ad-fs"></a>AD FS 的效能監視
 Azure AD Connect Health 效能監視會提供關於度量的監視資訊。 選取 [監視] 方塊，以開啟內含度量詳細資訊的新刀鋒視窗。
 
-![Azure AD Connect Health 入口網站](./media/how-to-connect-health-adfs/perf1.png)
+![顯示 Azure AD Connect Health 效能「監視」頁面的螢幕擷取畫面。](./media/how-to-connect-health-adfs/perf1.png)
 
 選取刀鋒視窗頂端的 [篩選] 選項，您可以依伺服器篩選以查看個別伺服器的度量。 若要變更度量，請在監視刀鋒視窗底下的監視圖表上按一下滑鼠右鍵，然後選取 [編輯圖表] \(或選取 [編輯圖表] 按鈕)。 在開啟的新刀鋒視窗中，您可以從下拉式清單中選取其他計量，並指定檢視效能資料的時間範圍。
 
@@ -89,7 +89,7 @@ AD FS 伺服器上驗證要求失敗的常見原因之一就是要求所提供�
 
 Azure AD Connect Health for ADFS 會提供一份報告，內容有關因為使用者名稱或密碼無效而登入嘗試失敗的前 50 個使用者。 處理伺服器陣列中所有 AD FS 伺服器所產生的稽核事件，即可達成此報告。
 
-![Azure AD Connect Health 入口網站](./media/how-to-connect-health-adfs/report1a.png)
+![顯示 [報表] 區段的螢幕擷取畫面，其中包含過去30天內的錯誤密碼嘗試次數。](./media/how-to-connect-health-adfs/report1a.png)
 
 您可以在這份報告中輕鬆取得下列資訊︰
 
@@ -108,7 +108,7 @@ Azure AD Connect Health for ADFS 會提供一份報告，內容有關因為使�
 
 此報表會提供下列資訊：
 
-| 報告項目 | 描述 |
+| 報告項目 | 說明 |
 | --- | --- |
 | 使用者識別碼 |顯示所使用的使用者識別碼。 這個值是使用者所輸入的內容，在某些情況下是所使用的錯誤使用者識別碼。 |
 | 嘗試失敗 |顯示該特定使用者識別碼的嘗試失敗總數。 此資料表是依據最多失敗嘗試次數以遞減順序排序。 |

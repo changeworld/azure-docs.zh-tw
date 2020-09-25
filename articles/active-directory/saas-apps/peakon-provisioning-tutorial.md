@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 06/28/2019
 ms.author: zhchia
-ms.openlocfilehash: b16ca0c396e2c406677af351cf6b1de2a3499353
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 06fca39b1170d36f22040ccf48eb02f948e47e41
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543664"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91304635"
 ---
 # <a name="tutorial-configure-peakon-for-automatic-user-provisioning"></a>教學課程：設定 Peakon 來自動布建使用者
 
@@ -26,7 +26,7 @@ ms.locfileid: "88543664"
 >  本教學課程會說明建置在 Azure AD 使用者佈建服務之上的連接器。 如需此服務的用途、運作方式和常見問題等重要詳細資訊，請參閱[使用 Azure Active Directory 對 SaaS 應用程式自動佈建和取消佈建使用者](../app-provisioning/user-provisioning.md)。
 >
 > 此連接器目前為預覽版。 如需有關預覽功能的一般 Microsoft Azure 使用規定詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用規定](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 本教學課程中所述的案例假設您已具備下列必要條件
 
@@ -56,11 +56,11 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
 2.  選取 **[** 整合]。
     
-    ![Peakon-員工-布建](media/Peakon-provisioning-tutorial/Peakon-select-integration.png)
+    ![已呼叫 [整合] 選項的設定選項螢幕擷取畫面。](media/Peakon-provisioning-tutorial/Peakon-select-integration.png)
 
 3.  啟用 **員工**布建。
 
-    ![Peakon-員工-布建](media/Peakon-provisioning-tutorial/peakon05.png)
+    ![[員工布建] 區段的螢幕擷取畫面，其中已呼叫 [啟用] 選項。](media/Peakon-provisioning-tutorial/peakon05.png)
 
 4.  複製 **SCIM 2.0 URL** 和 **OAuth 持有人權杖**的值。 這些值會在 Azure 入口網站中您 Peakon 應用程式的 [布建] 索引標籤中輸入至 [ **租使用者 URL** ] 和 [ **秘密權杖** ] 欄位中。
 
@@ -105,11 +105,11 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
 3. 選取 [佈建] 索引標籤。
 
-    ![佈建索引標籤](common/provisioning.png)
+    ![已呼叫 [布建] 選項的 [管理選項] 螢幕擷取畫面。](common/provisioning.png)
 
 4. 將 [佈建模式] 設定為 [自動]。
 
-    ![佈建索引標籤](common/provisioning-automatic.png)
+    ![[布建模式] 下拉式清單的螢幕擷取畫面，其中已呼叫 [自動] 選項。](common/provisioning-automatic.png)
 
 5. 在 [系統**管理員認證**] 區段下，分別輸入稍早在**租使用者 URL**和**秘密權杖**中抓取的**SCIM 2.0 URL**和**OAuth 持有人權杖**值。 按一下 [ **測試連接** ] 以確保 Azure AD 可以連線至 Peakon。 如果連接失敗，請確定您的 Peakon 帳戶具有系統管理員許可權，然後再試一次。
 
@@ -119,7 +119,7 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
     ![通知電子郵件](common/provisioning-notification-email.png)
 
-8. 按一下 [檔案] 。
+8. 按一下 [檔案]  。
 
 9. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 使用者至 Peakon**]。
 

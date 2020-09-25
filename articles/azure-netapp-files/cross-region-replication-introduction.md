@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/16/2020
+ms.date: 09/23/2020
 ms.author: b-juche
-ms.openlocfilehash: e7d424435c29eb3e7a6779a7036816a7bedd2085
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 4df96f1c508df22e98a9c611ed04fecf6734970a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90708583"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91278289"
 ---
 # <a name="cross-region-replication-of-azure-netapp-files-volumes"></a>Azure NetApp Files 磁片區的跨區域複寫
 
@@ -45,6 +45,7 @@ Azure NetApp Files 磁片區複寫目前提供下列固定區域配對：
 * 日本東部和日本西部
 * 英國南部和德國中西部
 * 東南亞和澳大利亞東部
+* 印度中部和印度南部
 
 ## <a name="service-level-objectives"></a>服務層級目標
 
@@ -108,10 +109,10 @@ Azure NetApp Files 磁片區複寫目前提供下列固定區域配對：
 
 第2個月2的一般 Azure NetApp Files 儲存體容量費用適用于目的地磁片區。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 * [使用跨區域複寫的需求和考慮](cross-region-replication-requirements-considerations.md)
 * [建立複寫對等互連](cross-region-replication-create-peering.md)
-* [顯示覆寫關聯性的健全狀況狀態](cross-region-replication-display-health-status.md)
+* [顯示複寫關聯性的健全狀態](cross-region-replication-display-health-status.md)
 * [管理災害復原](cross-region-replication-manage-disaster-recovery.md)
 * [磁片區複寫計量](azure-netapp-files-metrics.md#replication)
 * [針對跨區域複寫進行疑難排解](troubleshoot-cross-region-replication.md)

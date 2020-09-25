@@ -1,14 +1,14 @@
 ---
 title: 使用 Azure 事件方格的 CloudEvents v1.0 架構
-description: 說明如何在 Azure 事件方格中將 CloudEvents 結構描述用於事件。 此服務支援雲端事件的 JSON 實作中的事件。
+description: 說明如何針對 Azure 事件方格中的事件使用 CloudEvents v1.0 架構。 此服務支援雲端事件的 JSON 實作中的事件。
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 1c6085c0397f23d44cf11d43a3e1da71f0e728bb
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: d17e92c28784ca31f3c9809c93e885b22c6a38d0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103070"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324173"
 ---
 # <a name="cloudevents-v10-schema-with-azure-event-grid"></a>使用 Azure 事件方格的 CloudEvents v1.0 架構
 
@@ -18,7 +18,7 @@ CloudEvents 提供用以發佈和取用雲端型事件的常見事件結構描�
 
 目前有數個[共同作業者](https://github.com/cloudevents/spec/blob/master/community/contributors.md) (包括 Microsoft) 正透過 [Cloud Native Computing Foundation](https://www.cncf.io/) 建置 CloudEvents。 目前可用的版本為 1.0。
 
-本文說明具有事件方格的 CloudEvents 架構。
+本文說明如何使用事件方格來 CloudEvents 架構。
 
 ## <a name="sample-event-using-cloudevents-schema"></a>使用 CloudEvents 架構的範例事件
 
@@ -68,4 +68,4 @@ CloudEvents 提供用以發佈和取用雲端型事件的常見事件結構描�
 對於所有的事件結構描述，事件方格在發佈至事件方格主題和建立事件訂閱時，都需要進行驗證。 如需詳細資訊，請參閱 [Event Grid 安全性和驗證](security-authentication.md)。
 
 ## <a name="next-steps"></a>後續步驟
-請參閱[如何搭配使用 CloudEvents v1.0 架構與事件方格](cloudevents-schema.md)。  
+瞭解 [如何搭配事件方格使用 CloudEvents v1.0 架構](cloudevents-schema.md)。  

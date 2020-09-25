@@ -7,12 +7,12 @@ ms.topic: how-to
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 08/14/2020
-ms.openlocfilehash: 2d19098ec82fe9361154d798b981341a86decf97
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 751fbbb83f1ccb75cb84453f8c03296f6d1a786c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89647821"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91275774"
 ---
 # <a name="azure-virtual-machine-image-validation"></a>Azure 虛擬機器映射驗證
 
@@ -20,7 +20,7 @@ ms.locfileid: "89647821"
 
 提交您的 VM 供應項目之前，請先完成下列步驟：
 
-- 使用一般化映像部署 Azure VM。
+- 使用一般化映像部署 Azure VM。 如需 [一般化映射](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-azure-vm-technical-asset#generalize-the-image)的詳細資訊，請參閱這裡。
 - 執行驗證。
 
 ## <a name="deploy-an-azure-vm-using-your-generalized-image"></a>使用一般化映像部署 Azure VM
@@ -589,7 +589,7 @@ Azure 認證的認證測試工具是在本機 Windows 電腦上執行，但可�
 
     :::image type="content" source="media/vm/azure-vm-cert-4.png" alt-text="顯示選取的 VM 使用者名稱和密碼。":::
 
-6. 選取 [下一步] 。
+6. 選取 [下一步]  。
 
 #### <a name="run-a-certification-test"></a>執行認證測試
 
@@ -599,7 +599,9 @@ Azure 認證的認證測試工具是在本機 Windows 電腦上執行，但可�
 
 最後一個畫面可讓您提供更多的資訊，例如 Linux VM 映射的 SSH 存取訊號，以及如果您要尋找例外狀況的任何失敗評量的說明。
 
-最後，選取 [產生報告]，以下載已執行測試案例的測試結果和記錄檔，以及問卷調查的答案。 將結果儲存在與您的 VHD 相同的容器中。
+最後，選取 [產生報告]，以下載已執行測試案例的測試結果和記錄檔，以及問卷調查的答案。 
+> [!Note]
+> 少數的發行者有一些案例，因為 vm 上已安裝防火牆之類的軟體，所以需要鎖定 Vm。 在此情況下，發行者可以在此下載已[認證的測試控管](https://aka.ms/AzureCertificationTestTool)，並提供[Marketplace 發行者支援](https://aka.ms/marketplacepublishersupport)的報表
 
 ## <a name="how-to-use-powershell-to-consume-the-self-test-api"></a>如何使用 PowerShell 來使用自我測試 API
 

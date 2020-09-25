@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: c1168602ccb527d8ffb3b64d5437a26490b44a21
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 770ded494f050631cd1c373f4b3fa5846c65e01a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90971513"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91275127"
 ---
 # <a name="set-up-a-connection-to-an-azure-storage-account-using-a-managed-identity"></a>使用受控識別設定與 Azure 儲存體帳戶的連接
 
@@ -143,6 +143,10 @@ Blob 索引子的索引子定義範例：
 如需建立索引子 API 的詳細資訊，請參閱 [建立索引子](/rest/api/searchservice/create-indexer)。
 
 如需有關定義索引子排程的詳細資訊，請參閱[如何排程 Azure 認知搜尋的索引子](search-howto-schedule-indexers.md)。
+
+## <a name="accessing-secure-data-in-storage-accounts"></a>存取儲存體帳戶中的安全資料
+
+使用防火牆和虛擬網路可以進一步保護 Azure 儲存體帳戶。 如果您想要從 blob 儲存體帳戶或使用防火牆或虛擬網路保護的 Data Lake Gen2 儲存體帳戶來索引內容，請遵循透過「信任的 [服務」例外狀況安全地存取儲存體帳戶中資料](search-indexer-howto-access-trusted-service-exception.md)的指示。
 
 ## <a name="see-also"></a>另請參閱
 

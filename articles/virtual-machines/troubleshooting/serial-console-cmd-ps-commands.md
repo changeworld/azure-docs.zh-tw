@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 571df9c07e71682e2be51a73e3837c79cb074c3a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ef533b3566ac557b57f1435a2a9b2dbe26896993
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87028459"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91306883"
 ---
 # <a name="windows-commands---cmd-and-powershell"></a>Windows 命令 - CMD 和 PowerShell
 
@@ -34,7 +34,7 @@ SAC 可讓您透過序列埠連線至執行中的作業系統。 當您從 SAC �
 
 由於 SAC 的螢幕緩衝區有所限制，因此，若命令較長，先在本機文字編輯器中輸入，然後再貼到 SAC 中，可能會較容易處理。
 
-## <a name="view-and-edit-windows-registry-settings"></a>檢視和編輯 Windows 登錄設定
+## <a name="view-and-edit-windows-registry-settings-using-cmd"></a>使用 CMD 來查看和編輯 Windows 登錄設定
 ### <a name="verify-rdp-is-enabled"></a>確認 RDP 已啟用
 `reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections`
 
@@ -49,7 +49,7 @@ SAC 可讓您透過序列埠連線至執行中的作業系統。 當您從 SAC �
 
 只有已設定相關的群組原則設定時，才需要使用第二個機碼 (在 \Policies 下)。 值若已設定於群組原則中，將會在下一次群組原則重新整理時重寫。
 
-## <a name="manage-windows-services"></a>管理 Windows 服務
+## <a name="manage-windows-services-using-cmd"></a>使用 CMD 管理 Windows 服務
 
 ### <a name="view-service-state"></a>檢視服務狀態
 `sc query termservice`
@@ -79,7 +79,7 @@ SAC 可讓您透過序列埠連線至執行中的作業系統。 當您從 SAC �
 或
 
 `sc stop termservice`
-## <a name="manage-networking-features"></a>管理網路功能
+## <a name="manage-networking-features-using-cmd"></a>使用 CMD 管理網路功能
 ### <a name="show-nic-properties"></a>顯示 NIC 屬性
 `netsh interface show interface`
 ### <a name="show-ip-properties"></a>顯示 IP 屬性
@@ -117,10 +117,10 @@ Azure VM 在客體作業系統中應一律設定為使用 DHCP 來取得 IP 位�
 ### <a name="disable-windows-firewall"></a>停用 Windows 防火牆
 `netsh advfirewall set allprofiles state off`
 
-您可以在進行疑難排解時使用此命令，以暫時排除 Windows 防火牆。 下次重新開機時，或當您使用下列命令啟用它時，它就會啟用。 請勿以停止 Windows 防火牆服務 (MPSSVC) 或基礎篩選引擎 (BFE) 服務的方式來排除 Windows 防火牆。 停止 MPSSVC 或 BFE 將會導致所有連線遭到封鎖。
+您可以在進行疑難排解時使用此命令，以暫時排除 Windows 防火牆。 它會在下次重新開機時啟用，或者當您使用下列命令來啟用它時。 請勿以停止 Windows 防火牆服務 (MPSSVC) 或基礎篩選引擎 (BFE) 服務的方式來排除 Windows 防火牆。 停止 MPSSVC 或 BFE 將會導致所有連線遭到封鎖。
 ### <a name="enable-windows-firewall"></a>啟用 Windows 防火牆
 `netsh advfirewall set allprofiles state on`
-## <a name="manage-users-and-groups"></a>管理使用者和群組
+## <a name="manage-users-and-groups-using-cmd"></a>使用 CMD 管理使用者和群組
 ### <a name="create-local-user-account"></a>建立本機使用者帳戶
 `net user /add <username> <password>`
 ### <a name="add-local-user-to-local-group"></a>將本機使用者新增至本機群組
@@ -150,7 +150,7 @@ Azure VM 在客體作業系統中應一律設定為使用 DHCP 來取得 IP 位�
 
 ### <a name="view-local-groups"></a>檢視本機群組
 `net localgroup`
-## <a name="manage-the-windows-event-log"></a>管理 Windows 事件記錄檔
+## <a name="manage-the-windows-event-log-using-cmd"></a>使用 CMD 管理 Windows 事件記錄檔
 ### <a name="query-event-log-errors"></a>查詢事件記錄檔錯誤
 `wevtutil qe system /c:10 /f:text /q:"Event[System[Level=2]]" | more`
 
@@ -165,7 +165,7 @@ Azure VM 在客體作業系統中應一律設定為使用 DHCP 來取得 IP 位�
 使用 `604800000` 回溯查看 7 天，而非 24 小時。
 ### <a name="query-event-log-by-event-id-provider-and-eventdata-in-the-last-7-days"></a>依事件識別碼、提供者和 EventData 查詢過去 7 天的事件記錄檔
 `wevtutil qe security /c:1 /f:text /q:"Event[System[Provider[@Name='Microsoft-Windows-Security-Auditing'] and EventID=4624 and TimeCreated[timediff(@SystemTime) <= 604800000]] and EventData[Data[@Name='TargetUserName']='<username>']]" | more`
-## <a name="view-or-remove-installed-applications"></a>檢視或移除已安裝的應用程式
+## <a name="view-or-remove-installed-applications-using-cmd"></a>使用 CMD 來查看或移除已安裝的應用程式
 ### <a name="list-installed-applications"></a>列出已安裝的應用程式
 `wmic product get Name,InstallDate | sort /r | more`
 
@@ -175,7 +175,7 @@ Azure VM 在客體作業系統中應一律設定為使用 DHCP 來取得 IP 位�
 
 針對您要移除的應用程式，將 `<name>` 取代為上述命令傳回的名稱。
 
-## <a name="file-system-management"></a>檔案系統管理
+## <a name="file-system-management-using-cmd"></a>使用 CMD 進行檔案系統管理
 ### <a name="get-file-version"></a>取得檔案版本
 `wmic datafile where "drive='C:' and path='\\windows\\system32\\drivers\\' and filename like 'netvsc%'" get version /format:list`
 
@@ -206,7 +206,7 @@ Azure VM 在客體作業系統中應一律設定為使用 DHCP 來取得 IP 位�
 ## <a name="manage-group-policy"></a>管理群組原則
 ### <a name="force-group-policy-update"></a>強制更新群組原則
 `gpupdate /force /wait:-1`
-## <a name="miscellaneous-tasks"></a>其他工作
+## <a name="miscellaneous-tasks-using-cmd"></a>使用 CMD 的其他工作
 ### <a name="show-os-version"></a>顯示作業系統版本
 `ver`
 
@@ -259,7 +259,7 @@ Azure VM 在客體作業系統中應一律設定為使用 DHCP 來取得 IP 位�
 
 `remove-module psreadline`
 
-## <a name="view-and-edit-windows-registry-settings"></a>檢視和編輯 Windows 登錄設定
+## <a name="view-and-edit-windows-registry-settings-using-powershell"></a>使用 PowerShell 來查看和編輯 Windows 登錄設定
 ### <a name="verify-rdp-is-enabled"></a>確認 RDP 已啟用
 `get-itemproperty -path 'hklm:\system\curRentcontrolset\control\terminal server' -name 'fdenytsconNections'`
 
@@ -272,7 +272,7 @@ Azure VM 在客體作業系統中應一律設定為使用 DHCP 來取得 IP 位�
 `set-itemproperty -path 'hklm:\software\policies\microsoft\windows nt\terminal services' -name 'fdenytsconNections' 0 -type dword`
 
 只有已設定相關的群組原則設定時，才需要使用第二個機碼 (在 \Policies 下)。 值若已設定於群組原則中，將會在下一次群組原則重新整理時重寫。
-## <a name="manage-windows-services"></a>管理 Windows 服務
+## <a name="manage-windows-services-using-powershell"></a>使用 PowerShell 管理 Windows 服務
 ### <a name="view-service-details"></a>檢視服務詳細資料
 `get-wmiobject win32_service -filter "name='termservice'" |  format-list Name,DisplayName,State,StartMode,StartName,PathName,ServiceType,Status,ExitCode,ServiceSpecificExitCode,ProcessId`
 
@@ -291,7 +291,7 @@ Azure VM 在客體作業系統中應一律設定為使用 DHCP 來取得 IP 位�
 `start-service termservice`
 ### <a name="stop-service"></a>停止服務
 `stop-service termservice`
-## <a name="manage-networking-features"></a>管理網路功能
+## <a name="manage-networking-features-using-powershell"></a>使用 PowerShell 管理網路功能功能
 ### <a name="show-nic-properties"></a>顯示 NIC 屬性
 `get-netadapter | where {$_.ifdesc.startswith('Microsoft Hyper-V Network Adapter')} |  format-list status,name,ifdesc,macadDresS,driverversion,MediaConNectState,MediaDuplexState`
 
@@ -320,7 +320,7 @@ Azure VM 在客體作業系統中應一律設定為使用 DHCP 來取得 IP 位�
 `test-netconnection`
 
 > [!NOTE]
-> 寫入進度 Cmdlet 可能無法與此命令搭配使用。 作為緩和措施，您可以 `$ProgressPreference = "SilentlyContinue"` 在 PowerShell 中執行來停用進度列。
+> 此命令可能無法使用寫入進度 Cmdlet。 作為緩和措施，您可以 `$ProgressPreference = "SilentlyContinue"` 在 PowerShell 中執行以停用進度列。
 
 或
 
@@ -357,7 +357,7 @@ Azure VM 在客體作業系統中應一律設定為使用 DHCP 來取得 IP 位�
 `Set-NetFirewallProfile -Profile Domain,Public,Private -Enabled False`
 
 `Set-NetFirewallProfile` 適用於 2012+。 在 2008R2 中請使用 `netsh advfirewall`，如先前的 CMD 一節中所示。
-## <a name="manage-users-and-groups"></a>管理使用者和群組
+## <a name="manage-users-and-groups-using-powershell"></a>使用 PowerShell 管理使用者和群組
 ### <a name="create-local-user-account"></a>建立本機使用者帳戶
 `new-localuser <name>`
 ### <a name="verify-user-account-is-enabled"></a>確認使用者帳戶已啟用
@@ -386,7 +386,7 @@ Azure VM 在客體作業系統中應一律設定為使用 DHCP 來取得 IP 位�
 `(get-localgroup).name | sort` `(get-wmiobject win32_group).Name | sort`
 
 `Get-LocalUser` 適用於 2012+。 在 2008R2 中請使用 `Get-WmiObject`。
-## <a name="manage-the-windows-event-log"></a>管理 Windows 事件記錄檔
+## <a name="manage-the-windows-event-log-using-powershell"></a>使用 PowerShell 管理 Windows 事件記錄檔
 ### <a name="query-event-log-errors"></a>查詢事件記錄檔錯誤
 `get-winevent -logname system -maxevents 1 -filterxpath "*[System[Level=2]]" | more`
 
@@ -401,12 +401,12 @@ Azure VM 在客體作業系統中應一律設定為使用 DHCP 來取得 IP 位�
 使用 `604800000` 回溯查看 7 天，而非 24 小時。 |
 ### <a name="query-event-log-by-event-id-provider-and-eventdata-in-the-last-7-days"></a>依事件識別碼、提供者和 EventData 查詢過去 7 天的事件記錄檔
 `get-winevent -logname system -maxevents 1 -filterxpath "*[System[Provider[@Name='Microsoft-Windows-Security-Auditing'] and EventID=4624 and TimeCreated[timediff(@SystemTime) <= 604800000]] and EventData[Data[@Name='TargetUserName']='<username>']]" | more`
-## <a name="view-or-remove-installed-applications"></a>檢視或移除已安裝的應用程式
+## <a name="view-or-remove-installed-applications-using-powershell"></a>使用 PowerShell 來查看或移除已安裝的應用程式
 ### <a name="list-installed-software"></a>列出已安裝的軟體
 `get-wmiobject win32_product | select installdate,name | sort installdate -descending | more`
 ### <a name="uninstall-software"></a>解除安裝軟體
 `(get-wmiobject win32_product -filter "Name='<name>'").Uninstall()`
-## <a name="file-system-management"></a>檔案系統管理
+## <a name="file-system-management-using-powershell"></a>使用 PowerShell 的檔案系統管理
 ### <a name="get-file-version"></a>取得檔案版本
 `(get-childitem $env:windir\system32\drivers\netvsc*.sys).VersionInfo.FileVersion`
 
@@ -415,7 +415,7 @@ Azure VM 在客體作業系統中應一律設定為使用 DHCP 來取得 IP 位�
 `$path='c:\bin';md $path;cd $path;(new-object net.webclient).downloadfile( ('htTp:/'+'/download.sysinternals.com/files/SysinternalsSuite.zip'),"$path\SysinternalsSuite.zip");(new-object -com shelL.apPlication).namespace($path).CopyHere( (new-object -com shelL.apPlication).namespace("$path\SysinternalsSuite.zip").Items(),16)`
 
 此範例會建立 `c:\bin` 資料夾，然後將 Sysinternals 工具套件下載並解壓縮至 `c:\bin`。
-## <a name="miscellaneous-tasks"></a>其他工作
+## <a name="miscellaneous-tasks-using-powershell"></a>使用 PowerShell 的其他工作
 ### <a name="show-os-version"></a>顯示作業系統版本
 `get-wmiobject win32_operatingsystem | format-list caption,version,buildnumber`
 ### <a name="view-os-install-date"></a>檢視作業系統安裝日期
@@ -477,7 +477,7 @@ Azure VM 在客體作業系統中應一律設定為使用 DHCP 來取得 IP 位�
 ### <a name="mac-address-instance-metadata"></a>Mac 位址 (執行個體中繼資料)
 `$im.network.interface.macAddress`
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 * 主要序列主控台 Windows 文件頁面位於[這裡](serial-console-windows.md)。
 * 序列主控台也適用於 [Linux](serial-console-linux.md) VM。
 * 深入了解[開機診斷](boot-diagnostics.md)。

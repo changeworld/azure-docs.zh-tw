@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 08/26/2020
+ms.date: 09/23/2020
 ms.author: cherylmc
-ms.openlocfilehash: 3c9023e23795fd51e5519727a0ab174dc6f75830
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 2f2184507e17e3ecae40bb33be4202c183d32b77
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934275"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91274228"
 ---
 # <a name="point-to-site-vpn-session-management"></a>點對站 VPN 會話管理
 
@@ -51,6 +51,6 @@ Azure 虛擬網路閘道可讓您輕鬆地查看並中斷目前點對站 VPN 會
    Disconnect-AzVirtualNetworkGatewayVpnConnection -VirtualNetworkGatewayName <name of the gateway> -ResourceGroupName <name of the resource group> -VpnConnectionId <VpnConnectionId of the session>
    ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 如需點對站連線的詳細資訊，請參閱 [關於點對站 VPN](point-to-site-about.md)。

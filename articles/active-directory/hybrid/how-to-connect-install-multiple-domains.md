@@ -16,12 +16,12 @@ ms.date: 05/31/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f913199e0c0ed438d4b95b879d4defc072c615aa
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 53a0da5b5db21c9a543d39d1b252b0b4c64e2a56
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662436"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91306356"
 ---
 # <a name="multiple-domain-support-for-federating-with-azure-ad"></a>與 Azure AD 同盟的多網域支援
 下列檔提供在與 Microsoft 365 或 Azure AD 網域同盟時，如何使用多個最上層網域和子域的指引。
@@ -38,7 +38,7 @@ ms.locfileid: "89662436"
 
 您可以使用 PowerShell 命令 `Get-MsolDomainFederationSettings -DomainName <your domain>` 來檢視 IssuerUri。
 
-![Get-MsolDomainFederationSettings](./media/how-to-connect-install-multiple-domains/MsolDomainFederationSettings.png)
+![螢幕擷取畫面，顯示在 PowerShell 中輸入 "Get-msoldomainfederationsettings" 命令之後的結果。](./media/how-to-connect-install-multiple-domains/MsolDomainFederationSettings.png)
 
 當您加入多個頂層網域時，問題便油然而生。  例如，假設您已在 Azure AD 和內部部署環境之間設定同盟。  針對本文件，會使用 bmcontoso.com 作為網域。  現在，假設我們加入第二個頂層網域 bmfabrikam.com。
 
@@ -46,7 +46,7 @@ ms.locfileid: "89662436"
 
 當您嘗試將 bmfabrikam.com 網域轉換為同盟時，就會發生錯誤。  原因在於 Azure AD 具有不允許 IssuerURI 屬性針對多個網域擁有相同值的限制。  
 
-![同盟錯誤](./media/how-to-connect-install-multiple-domains/error.png)
+![顯示 PowerShell 中同盟錯誤的螢幕擷取畫面。](./media/how-to-connect-install-multiple-domains/error.png)
 
 ### <a name="supportmultipledomain-parameter"></a>SupportMultipleDomain 參數
 若要解決此限制，您需要新增不同的 IssuerUri，這可以透過使用 `-SupportMultipleDomain` 參數來達成。  這個參數可搭配下列 Cmdlet 使用：
@@ -57,11 +57,11 @@ ms.locfileid: "89662436"
 
 這個參數可讓 Azure AD 根據網域名稱設定 IssuerUri。  IssuerUri 在 Azure AD 的所有目錄中將是唯一的。  使用參數可讓 PowerShell 命令順利完成。
 
-![同盟錯誤](./media/how-to-connect-install-multiple-domains/convert.png)
+![顯示成功完成 PowerShell 命令的螢幕擷取畫面。](./media/how-to-connect-install-multiple-domains/convert.png)
 
 查看 bmfabrikam.com 網域的設定，您可以看到以下內容：
 
-![同盟錯誤](./media/how-to-connect-install-multiple-domains/settings.png)
+![顯示 "bmfabrikam.com" 網域設定的螢幕擷取畫面。](./media/how-to-connect-install-multiple-domains/settings.png)
 
 `-SupportMultipleDomain` 不會變更其他端點，這些端點仍設為指向 adfs.bmcontoso.com 上的同盟服務。
 
@@ -88,11 +88,11 @@ c:[Type == "http://schemas.xmlsoap.org/claims/UPN"] => issue(Type = "http://sche
 
 如果您已成功地在 Azure AD 入口網站中加入新網域，接著嘗試使用 `Convert-MsolDomaintoFederated -DomainName <your domain>` 來轉換它，將會收到下列錯誤。
 
-![同盟錯誤](./media/how-to-connect-install-multiple-domains/trust1.png)
+![在嘗試使用 ">convert-msoldomaintofederated" 命令轉換新網域之後，在 PowerShell 中顯示同盟錯誤的螢幕擷取畫面。](./media/how-to-connect-install-multiple-domains/trust1.png)
 
 如果您嘗試加入 `-SupportMultipleDomain` 參數，將會收到下列錯誤：
 
-![同盟錯誤](./media/how-to-connect-install-multiple-domains/trust2.png)
+![在新增 "-SupportMultipleDomain" 參數之後顯示同盟錯誤的螢幕擷取畫面。](./media/how-to-connect-install-multiple-domains/trust2.png)
 
 單單嘗試針對原始網域執行 `Update-MsolFederatedDomain -DomainName <your domain> -SupportMultipleDomain` ，也會產生錯誤。
 
@@ -121,7 +121,7 @@ c:[Type == "http://schemas.xmlsoap.org/claims/UPN"] => issue(Type = "http://sche
 使用下列步驟以透過 Azure AD Connect 加入新的最上層網域。
 
 1. 從桌面或 [開始] 功能表啟動 Azure AD Connect
-2. 選擇 [新增其他 Azure AD 網域] ![新增其他 Azure AD 網域](./media/how-to-connect-install-multiple-domains/add1.png)
+2. 選擇 [新增額外的 Azure AD 網域] ![ 螢幕擷取畫面，顯示已選取 [新增額外的 Azure AD 網域] 的 [其他工作] 頁面。](./media/how-to-connect-install-multiple-domains/add1.png)
 3. 輸入您的 Azure AD 和 Active Directory 認證
 4. 選取要設定同盟的第二個網域。
    ![新增其他 Azure AD 網域](./media/how-to-connect-install-multiple-domains/add2.png)
@@ -130,7 +130,7 @@ c:[Type == "http://schemas.xmlsoap.org/claims/UPN"] => issue(Type = "http://sche
 ### <a name="verify-the-new-top-level-domain"></a>確認新的最上層網域
 藉由使用 PowerShell 命令 `Get-MsolDomainFederationSettings -DomainName <your domain>`，您可以檢視更新的 IssuerUri。  下列螢幕擷取畫面會顯示已在原始網域 `http://bmcontoso.com/adfs/services/trust` 上更新同盟設定
 
-![Get-MsolDomainFederationSettings](./media/how-to-connect-install-multiple-domains/MsolDomainFederationSettings.png)
+![顯示在原始網域上更新之同盟設定的螢幕擷取畫面。](./media/how-to-connect-install-multiple-domains/MsolDomainFederationSettings.png)
 
 此外，已將新網域上的 IssuerUri 設定為 `https://bmfabrikam.com/adfs/services/trust`
 
@@ -173,7 +173,7 @@ c:[Type == "http://schemas.xmlsoap.org/claims/UPN"] => issue(Type = "http://sche
 
 5. 按一下 [確定]。  按一下 [套用]。  按一下 [確定]。  關閉 [AD FS 管理]。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 安裝了 Azure AD Connect 之後，您可以 [驗證安裝和指派授權](how-to-connect-post-installation.md)。
 
 深入了解這些在安裝時啟用的功能︰[自動升級](how-to-connect-install-automatic-upgrade.md)、[防止意外刪除](how-to-connect-sync-feature-prevent-accidental-deletes.md)和 [Azure AD Connect Health](how-to-connect-health-sync.md)。

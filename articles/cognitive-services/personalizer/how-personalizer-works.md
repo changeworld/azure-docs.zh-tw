@@ -1,30 +1,32 @@
 ---
 title: 個人化工具的運作方式 - 個人化工具
-description: 個人化工具_迴圈_會使用機器學習來建立模型，以預測內容的最上層動作。 模型會以獨佔方式針對您使用排名和報酬呼叫傳送給它的資料進行定型。
+description: 個人化工具 _迴圈_ 會使用機器學習來建立模型，以預測內容的最佳動作。 模型會根據您使用排名和報酬呼叫傳送給它的資料，以獨佔方式定型。
+ms.service: cognitive-services
+ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 02/18/2020
-ms.openlocfilehash: 836c207213ac52a60e27da6fc957418187059023
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: cfbe5cf8c19bfafb38f6149391e09350785ebf9c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77623764"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91303602"
 ---
 # <a name="how-personalizer-works"></a>個人化工具的運作方式
 
-個人化工具資源（您的_學習迴圈_）會使用機器學習來建立模型，以預測內容的最上層動作。 模型會以獨佔方式針對您使用**排名**和**報酬呼叫傳送**給它的資料進行定型。 每個迴圈都完全獨立。
+個人化工具資源（您的 _學習迴圈_）使用機器學習來建立模型，以預測內容的最高動作。 模型會根據您使用**排名****和報酬**呼叫傳送給它的資料，以獨佔方式定型。 每個迴圈都是完全獨立的。
 
 ## <a name="rank-and-reward-apis-impact-the-model"></a>排名和獎勵 Api 會影響模型
 
-您可以_使用功能_和_內容功能_，將動作傳送至排名 API。 **排名** API 會決定使用：
+您可以 _使用功能_ 和 _內容功能_ 將動作傳送給排名 API。 **排名** API 會決定使用：
 
-* _惡意_探索：根據過去的資料，決定最佳動作的目前模型。
-* _探索_：選取不同的動作，而不是 top 動作。 您會在 Azure 入口網站中設定個人化工具資源的[此百分比](how-to-settings.md#configure-exploration-to-allow-the-learning-loop-to-adapt)。
+* _惡意_探索：目前的模型，以根據過去的資料來決定最佳的動作。
+* _探索_：選取不同的動作，而不是最重要的動作。 您可以在 Azure 入口網站中為您的個人化工具資源 [設定此百分比](how-to-settings.md#configure-exploration-to-allow-the-learning-loop-to-adapt) 。
 
-您可以決定報酬分數，並將該分數傳送給獎勵 API。 **報酬** API：
+您可以決定獎勵分數，並將該分數傳送給獎勵 API。 **報酬** API：
 
 * 會收集資料，藉由記錄每個排名呼叫的特性和報酬分數來將模型定型。
-* 會根據_學習原則_中指定的設定，使用該資料來更新模型。
+* 會根據 _學習原則_中指定的設定，使用該資料來更新模型。
 
 ## <a name="your-system-calling-personalizer"></a>您的系統呼叫個人化工具
 
@@ -32,13 +34,13 @@ ms.locfileid: "77623764"
 
 ![替代文字](./media/how-personalizer-works/personalization-how-it-works.png "個人化的運作方式")
 
-1. 您可以_使用功能_和_內容功能_，將動作傳送至排名 API。
+1. 您可以 _使用功能_ 和 _內容功能_ 將動作傳送給排名 API。
 
-    * 個人化工具會決定是要利用目前的模型，還是探索新的模型選擇。
+    * 個人化工具會決定是否要利用目前的模型，或探索模型的新選擇。
     * 排名結果傳送至事件中樞。
-1. 排名最高的排名會傳回您的系統作為_獎勵動作識別碼_。
-    您的系統會顯示該內容，並根據您自己的商務規則來決定報酬分數。
-1. 您的系統會將獎勵分數傳回給學習迴圈。
+1. 排名排名會傳回給您的系統作為 _獎勵動作識別碼_。
+    您的系統會提供該內容，並根據您自己的商務規則來決定獎勵分數。
+1. 您的系統會將獎勵分數傳回學習迴圈。
     * 當個人化工具收到報酬時，報酬會傳送至事件中樞。
     * 排名和報酬會相互關聯。
     * AI 模型會根據相互關聯結果來加以更新。
@@ -46,9 +48,9 @@ ms.locfileid: "77623764"
 
 ## <a name="personalizer-retrains-your-model"></a>個人化工具重新定型您的模型
 
-個人化工具會根據您在 Azure 入口網站中個人化工具資源的**模型頻率更新**設定，重新定型您的模型。
+個人化工具會根據您在 Azure 入口網站中個人化工具資源上的 **模型頻率更新** 設定來重新定型模型。
 
-個人化工具會使用目前保留的所有資料，根據您在 Azure 入口網站中個人化工具資源的天數內的**資料保留**設定。
+個人化工具會根據您在 Azure 入口網站中個人化工具資源的 **資料保留期** 設定，使用目前保留的所有資料。
 
 ## <a name="research-behind-personalizer"></a>個人化工具背後的研究
 

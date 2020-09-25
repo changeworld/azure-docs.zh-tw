@@ -1,6 +1,6 @@
 ---
 title: 在管線中使用自訂活動
-description: 了解如何建立自訂活動，並在 Azure 資料處理站管線中使用這些活動。
+description: 瞭解如何使用 .NET 建立自訂活動，然後使用 Azure Data Factory 管線中的活動。
 services: data-factory
 ms.service: data-factory
 author: nabhishek
@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/26/2018
-ms.openlocfilehash: 74e381a9ad32acdaa8cbb719824d74ca6d339f30
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8b8114a6abf5579ed0750862d59a5d13178339f6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84019957"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91276487"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>在 Azure 資料處理站管線中使用自訂活動
 
@@ -105,18 +105,18 @@ ms.locfileid: "84019957"
 | NAME                  | 管線中的活動名稱     | 是      |
 | description           | 說明活動用途的文字。  | 否       |
 | type                  | 針對自訂活動，活動類型是**自訂**。 | 是      |
-| linkedServiceName     | Azure Batch 的已連結的服務。 若要深入了解此已連結的服務，請參閱[計算已連結的服務](compute-linked-services.md)一文。  | Yes      |
-| 命令               | 要執行的自訂應用程式命令。 如果應用程式已經可以在 Azure Batch 集區節點上使用，則可以略過 resourceLinkedService 和 folderPath。 例如，您可以將命令指定為 `cmd /c dir`，該命令原生受 Windows Batch 集區節點支援。 | Yes      |
+| linkedServiceName     | Azure Batch 的已連結的服務。 若要深入了解此已連結的服務，請參閱[計算已連結的服務](compute-linked-services.md)一文。  | 是      |
+| 命令               | 要執行的自訂應用程式命令。 如果應用程式已經可以在 Azure Batch 集區節點上使用，則可以略過 resourceLinkedService 和 folderPath。 例如，您可以將命令指定為 `cmd /c dir`，該命令原生受 Windows Batch 集區節點支援。 | 是      |
 | resourceLinkedService | 對儲存體帳戶 (自訂應用程式儲存所在) 的 Azure 儲存體已連結的服務 | 否 &#42;       |
 | folderPath            | 自訂應用程式及其所有相依項目的資料夾路徑<br/><br/>如果您將相依性儲存在子資料夾中 (也就是 folderPath** 下的階層式資料夾結構)，當您將檔案複製到 Azure Batch 時，目前的資料夾結構會遭到壓平合併。 也就是所有檔案會複製到沒有子資料夾的單一資料夾中。 若要解決這個問題行為，請考慮壓縮檔案並複製壓縮的檔案，然後在所需位置中以自訂程式碼來將其解壓縮。 | 否 &#42;       |
-| referenceObjects      | 現有已連結的服務和資料集的陣列。 參考的已連結的服務和資料集會傳遞至 JSON 格式的自訂應用程式，讓您的自訂程式碼可以參考 Data Factory 的資源 | No       |
-| extendedProperties    | 使用者定義的屬性，可以傳遞至 JSON 格式的自訂應用程式，讓您的自訂程式碼可以參考其他屬性 | No       |
-| retentionTimeInDays | 針對自訂活動提交的檔案保留時間。 預設值為30天。 | No |
+| referenceObjects      | 現有已連結的服務和資料集的陣列。 參考的已連結的服務和資料集會傳遞至 JSON 格式的自訂應用程式，讓您的自訂程式碼可以參考 Data Factory 的資源 | 否       |
+| extendedProperties    | 使用者定義的屬性，可以傳遞至 JSON 格式的自訂應用程式，讓您的自訂程式碼可以參考其他屬性 | 否       |
+| retentionTimeInDays | 針對自訂活動提交的檔案保留時間。 預設值為30天。 | 否 |
 
 &#42; 必須同時指定或同時省略 `resourceLinkedService` 和 `folderPath` 屬性。
 
 > [!NOTE]
-> 如果您在自訂活動中將連結服務傳遞為 referenceObjects，則傳遞已啟用 Azure Key Vault 的連結服務是很好的安全性作法（因為它不包含任何安全字串），而且會直接從程式碼中的 Key Vault 使用秘密名稱提取認證。 您可以在[這裡](https://github.com/nabhishek/customactivity_sample/tree/linkedservice)找到參考已啟用 AKV 的已連結服務的範例，從 Key Vault 抓取認證，然後存取程式碼中的儲存體。
+> 如果您在自訂活動中將連結的服務當作 referenceObjects 傳遞，則將已啟用 Azure Key Vault 的連結服務傳遞 (是很好的安全性作法，因為它不包含任何安全字串) 並且會直接從程式碼 Key Vault 使用秘密名稱來提取認證。 您可以在 [這裡](https://github.com/nabhishek/customactivity_sample/tree/linkedservice) 找到參考 AKV 啟用連結服務的範例、從 Key Vault 抓取認證，然後在程式碼中存取儲存體。
 
 ## <a name="custom-activity-permissions"></a>自訂活動權限
 
@@ -301,12 +301,12 @@ Activity Error section:
 如果您想要在下游活動中取用 stdout.txt 的內容，可以在 "\@activity('MyCustomActivity').output.outputs[0]" 運算式中取得 stdout.txt 檔案的路徑。
 
 > [!IMPORTANT]
-> - activity.json、linkedServices.json 和 datasets.json 會儲存在 Batch 工作的執行階段資料夾。 在此範例中，上的 activity.js、上的 linkedServices.js和上的 datasets.js會儲存在 `"https://adfv2storage.blob.core.windows.net/adfjobs/\<GUID>/runtime/"` path 中。 您必須視需要個別加以清除。
+> - activity.json、linkedServices.json 和 datasets.json 會儲存在 Batch 工作的執行階段資料夾。 在此範例中，activity.json、linkedServices.json 和 datasets.js會儲存在 path 中 `"https://adfv2storage.blob.core.windows.net/adfjobs/\<GUID>/runtime/"` 。 您必須視需要個別加以清除。
 > - 如果已連結的服務使用自我裝載整合執行階段，機密資訊 (例如金鑰或密碼) 就會由自我裝載整合執行階段進行加密，以確保認證會保留在客戶定義的私人網路環境中。 某些機密欄位由您的自訂應用程式以這樣的方式參考時，可能會遺失。 視需要在 extendedProperties 中使用 SecureString，而不是使用已連結的服務參考。
 
 ## <a name="pass-outputs-to-another-activity"></a>將輸出傳遞到其他活動
 
-您可以將自訂活動中程式碼的自訂值傳回到 Azure Data Factory。 您可以從應用程式中將它們寫入到 `outputs.json`執行此動作。 Data Factory 會複製 `outputs.json` 的內容，並將其附加至活動輸出以作為 `customOutput` 屬性的值 （大小限制為 2 MB）。如果您想要使用 `outputs.json` 下游活動中的內容，您可以使用運算式來取得值 `@activity('<MyCustomActivity>').output.customOutput` 。
+您可以將自訂活動中程式碼的自訂值傳回到 Azure Data Factory。 您可以從應用程式中將它們寫入到 `outputs.json`執行此動作。 Data Factory 會複製 `outputs.json` 的內容，並將其附加至活動輸出以作為 `customOutput` 屬性的值  (大小限制為 2 MB。 ) 若要 `outputs.json` 在下游活動中取用的內容，您可以使用運算式來取得值 `@activity('<MyCustomActivity>').output.customOutput` 。
 
 ## <a name="retrieve-securestring-outputs"></a>擷取 SecureString 輸出
 
@@ -327,7 +327,7 @@ Activity Error section:
 
 ## <a name="compare-v2-custom-activity-and-version-1-custom-dotnet-activity"></a><a name="compare-v2-v1"></a> 比較 v2 自訂活動和第 1 版 (自訂) DotNet 活動
 
-在 Azure Data Factory 第1版中，您可以藉由建立 .NET 類別庫專案，並使用可實作為介面方法的類別，來執行（自訂） DotNet 活動 `Execute` `IDotNetActivity` 。 (自訂) DotNet 活動之 JSON 承載中的已連結服務、資料集及擴充屬性，都會以強型別物件的形式傳遞至執行方法。 如需第 1 版行為的詳細資料，請參閱[第 1 版中的 (自訂) DotNet](v1/data-factory-use-custom-activities.md)。 由於這項執行，您的第1版 DotNet 活動程式碼必須以 .NET Framework 4.5.2 為目標。 第 1 版 DotNet 活動也必須在 Windows 型 Azure Batch 集區節點上執行。
+在 Azure Data Factory 第1版中，您可以藉由建立 .NET 類別庫專案，並以實作為介面方法的類別，來執行 (的自訂) DotNet 活動 `Execute` `IDotNetActivity` 。 (自訂) DotNet 活動之 JSON 承載中的已連結服務、資料集及擴充屬性，都會以強型別物件的形式傳遞至執行方法。 如需第 1 版行為的詳細資料，請參閱[第 1 版中的 (自訂) DotNet](v1/data-factory-use-custom-activities.md)。 由於這項執行，您的第1版 DotNet 活動程式碼必須以 .NET Framework 4.5.2 為目標。 第 1 版 DotNet 活動也必須在 Windows 型 Azure Batch 集區節點上執行。
 
 在 Azure Data Factory V2 自訂活動中，您不需要執行 .NET 介面。 您現在可以在將之編譯為可執行檔的情況下，直接執行命令、指令碼，以及自己的自訂程式碼。 若要設定此實作，您需要一併指定 `Command` 屬性和 `folderPath` 屬性。 自訂活動會將可執行檔及其相依性上傳至 `folderpath`，並為您執行命令。
 
@@ -340,14 +340,14 @@ Activity Error section:
 |差異      | 自訂活動      | 第 1 版 (自訂) DotNet 活動      |
 | ---- | ---- | ---- |
 |定義自訂邏輯的方式      |提供可執行檔      |藉由執行 .NET DLL      |
-|自訂邏輯的執行環境      |Windows 或 Linux      |Windows （.NET Framework 4.5.2）      |
-|執行指令碼      |支援直接執行指令碼 (例如，Windows VM 上的 "cmd /c echo hello world")      |需要 .NET DLL 中的實作為      |
+|自訂邏輯的執行環境      |Windows 或 Linux      |Windows ( .NET Framework 4.5.2)       |
+|執行指令碼      |支援直接執行指令碼 (例如，Windows VM 上的 "cmd /c echo hello world")      |需要在 .NET DLL 中執行      |
 |需要資料集      |選擇性      |需要資料集來鏈結活動並傳遞資訊      |
 |將來自活動的資訊傳遞至自訂邏輯      |透過 ReferenceObjects (LinkedServices 和資料集) 和 ExtendedProperties (自訂屬性)      |透過 ExtendedProperties (自訂屬性)、輸入和輸出資料集      |
-|擷取自訂邏輯中的資訊      |剖析與可執行檔儲存於相同資料夾的 activity.json、linkedServices.json 和 datasets.json      |透過 .NET SDK （.NET 框架4.5.2）      |
+|擷取自訂邏輯中的資訊      |剖析與可執行檔儲存於相同資料夾的 activity.json、linkedServices.json 和 datasets.json      |透過 .NET SDK ( .NET 框架 4.5.2)       |
 |記錄      |直接寫入 STDOUT      |在 .NET DLL 中執行記錄器      |
 
-如果您的現有 .NET 程式碼是針對第1版（自訂） DotNet 活動所撰寫，您必須修改程式碼，才能使用目前版本的自訂活動。 遵循下列高階指導方針來更新程式碼：
+如果您的現有 .NET 程式碼是針對第1版 (自訂) DotNet 活動所撰寫，您必須修改程式碼，以使用目前版本的自訂活動。 遵循下列高階指導方針來更新程式碼：
 
   - 將專案從 .NET 類別庫變更為主控台應用程式。
   - 使用 `Main` 方法啟動您的應用程式。 已不再需要 `IDotNetActivity` 介面的 `Execute` 方法。

@@ -8,12 +8,12 @@ author: vikrambmsft
 ms.author: vikramb
 ms.date: 09/01/2020
 ms.custom: devx-track-terraform
-ms.openlocfilehash: 50e9eb6d5024d83e841532ed64e84b477a261c9a
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 72d8cb0ef80210cca1dbf1d2726590c0cb8540e5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89320965"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91261374"
 ---
 # <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>商業 marketplace 夥伴和客戶使用方式屬性
 
@@ -268,39 +268,7 @@ foreach ($deployment in $deployments){
 
 ## <a name="get-support"></a>取得支援
 
-有兩個支援管道，視您面臨的問題而定。
-
-如果您在合作夥伴中心遇到任何問題，例如查看客戶使用狀況歸因報告或登入，請向合作夥伴中心支援小組提出支援要求：[https://partner.microsoft.com/support](https://partner.microsoft.com/support)
-
-![[取得支援] 頁面的螢幕擷取畫面](./media/marketplace-publishers-guide/partner-center-log-in-support.png)
-
-一般來說，如果您在 Marketplace 上線和 (或) 客戶使用狀況歸因方面需要協助，像是如何設定客戶使用狀況溯源，請遵循下列步驟：
-
-1. 移至[支援連結](https://go.microsoft.com/fwlink/?linkid=844975)。
-
-1. 在 [問題類型] 下，選取 [Marketplace 上線]。
-
-1. 針對您的問題選擇 [類別]：
-
-   - 針對使用狀況關聯問題，請選取 [其他]。
-   - 針對 Azure Marketplace 的存取問題，請選取 [ **存取問題**]。
-
-     ![選擇問題類別](media/marketplace-publishers-guide/lu-article-incident.png)
-
-1. 選取 [提出要求]。
-
-1. 在下一頁，輸入必要值。 選取 [繼續]。
-
-1. 在下一頁，輸入必要值。
-
-   > [!IMPORTANT]
-   > 在 [事件標題] 方塊中，輸入 **ISV 使用狀況追蹤**。 請詳細描述您的問題。
-
-   ![輸入事件標題的 ISV 使用狀況追蹤](media/marketplace-publishers-guide/guid-dev-center-help-hd%201.png)
-
-1. 完成表單，然後選取 [提交]。
-
-關於售前、部署和應用程式開發情節，您也可以從 Microsoft 合作夥伴技術顧問取得技術指導，以了解和採納客戶使用狀況歸因。
+在 [合作夥伴中心中瞭解商用 marketplace 方案的支援](./partner-center-portal/support.md)選項。
 
 ### <a name="how-to-submit-a-technical-consultation-request"></a>如何提交技術諮詢要求
 

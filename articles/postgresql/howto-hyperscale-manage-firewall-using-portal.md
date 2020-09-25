@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 9/11/2020
-ms.openlocfilehash: d369614357bd62dc13073f650fbe5ce358d6dc6e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: dadd04497eae0e91bdf5ea3caad38beda35f7fa3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90884323"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91275416"
 ---
 # <a name="manage-firewall-rules-for-azure-database-for-postgresql---hyperscale-citus"></a>管理適用於 PostgreSQL Azure 資料庫的防火牆規則 - 超大規模 (Citus)
 伺服器層級防火牆規則可從所有指定 IP 位址或 IP 位址範圍來管理對超大規模 (Citus) 協調器節點的存取。
@@ -49,7 +49,7 @@ ms.locfileid: "90884323"
 
 ## <a name="connecting-from-azure"></a>從 Azure 連線
 
-有一種簡單方法可將超大規模資料庫存取權授與在 Azure 上裝載的應用程式 (例如 Azure Web Apps 應用程式，或在 Azure VM 中執行的應用程式)。 只需在入口網站中，從 [網路] 窗格將 [允許 Azure 服務和資源存取此伺服器群組] 選項設定為 [是]，然後按下 [儲存]。
+有一個簡單的方法可將超大規模 (Citus) 資料庫存取權授與 Azure (上裝載的應用程式，例如 Azure Web Apps 應用程式，或在 Azure VM 中執行的應用程式) 。 只需在入口網站中，從 [網路] 窗格將 [允許 Azure 服務和資源存取此伺服器群組] 選項設定為 [是]，然後按下 [儲存]。
 
 > [!IMPORTANT]
 > 這個選項會設定防火牆，以允許所有來自 Azure 的連線，包括來自其他客戶訂用帳戶的連線。 選取這個選項時，請確定您的登入和使用者權限會限制為只有授權的使用者才能存取。

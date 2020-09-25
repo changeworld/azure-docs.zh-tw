@@ -1,6 +1,6 @@
 ---
-title: 使用適用于 Linux Vm 的 Azure 映射產生器 & 共用映射資源庫（預覽）
-description: 使用 Azure Image Builder 和共用映像庫建立 Linux VM 映像。
+title: '使用適用于 Linux Vm 的 Azure 映射產生器 & 共用映射庫 (preview) '
+description: 瞭解如何使用 Azure 映射產生器和 Azure CLI，在共用映射庫中建立映射版本，然後全域散發映射。
 author: cynthn
 ms.author: cynthn
 ms.date: 05/05/2019
@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: danis
-ms.openlocfilehash: 1eeb8df2605bbe63fe72c5bd451b43111322a7f6
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: bab5a86cdf8e3fa6b17866fe4088b28ed3ece6f6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500907"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91307291"
 ---
 # <a name="preview-create-a-linux-image-and-distribute-it-to-a-shared-image-gallery"></a>預覽：建立 Linux 映像並將其發佈到共用映像庫 
 

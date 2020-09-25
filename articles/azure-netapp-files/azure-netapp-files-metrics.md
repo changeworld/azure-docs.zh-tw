@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/10/2020
+ms.date: 09/22/2020
 ms.author: b-juche
-ms.openlocfilehash: 1690a844ff700a2975be8e972fd90ba71eeb937c
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: f83baf7a038ad8cf17421c778deccbc7dc389d97
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90707776"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325550"
 ---
 # <a name="metrics-for-azure-netapp-files"></a>Azure NetApp Files 的計量
 
@@ -42,16 +42,19 @@ Azure NetApp Files 可針對配置的儲存體、實際的儲存體使用量、�
 
 ## <a name="usage-metrics-for-volumes"></a><a name="volumes"></a>磁碟區的使用計量
 
-<!--
-- *Volume Quota Size*    
-    The quota size (GiB) the volume is provisioned with.   
-    This size is the size you selected during capacity pool creation. 
+<!-- ANF-5023: fixed version: 2020.08, 2020.09
+- *Percentage Volume Consumed Size*    
+    The percentage of the volume consumed, including snapshots.  
 -->
+- *磁片區配置大小*   
+    布建的磁片區大小
+- *磁片區配額大小*    
+    磁片區布建 (GiB) 配額大小。   
 - *耗用的磁片區大小*   
-    磁片區中使用的總邏輯空間 (GiB) 。  
+    磁片區的邏輯大小 (使用的位元組) 。  
     此大小包含作用中的檔案系統和快照集所使用的邏輯空間。  
 - *磁片區快照集大小*   
-   磁片區中的快照集所使用的累加邏輯空間。  
+   磁片區中所有快照集的大小。  
 
 ## <a name="performance-metrics-for-volumes"></a>磁片區的效能計量
 
@@ -63,11 +66,28 @@ Azure NetApp Files 可針對配置的儲存體、實際的儲存體使用量、�
     每秒磁片區的讀取數目。
 - *寫入 IOPS*   
     每秒磁片區的寫入次數。
+- *讀取 MiB/秒*   
+    每秒讀取輸送量（以位元組為單位）。
+- *寫入 MiB/秒*   
+    每秒寫入輸送量（位元組）。
+
+<!-- ANF-4128; 2020.07
+- *Pool Provisioned Throughput*   
+    The total throughput a capacity pool can provide to its volumes based on "Pool Provisioned Size" and "Service Level".
+- *Pool Allocated to Volume Throughput*   
+    The total throughput allocated to volumes in a given capacity pool (that is, the total of the volumes' allocated throughput in the capacity pool).
+-->
+
+<!-- ANF-6443; future
+- *Pool Consumed Throughput*    
+    The total throughput being consumed by volumes in a given capacity pool.
+-->
+
 
 ## <a name="volume-replication-metrics"></a><a name="replication"></a>磁片區複寫計量
 
 - *磁片區複寫狀態是否狀況良好*   
-    複寫關聯性的條件。 
+    複寫關聯性的條件。 狀況良好的狀態是以表示 `1` 。 狀況不良狀態是以表示 `0` 。
 
 - *磁片區複寫傳送*    
     磁片區複寫的狀態是否為「傳輸中」。 

@@ -7,18 +7,18 @@ author: MashaMSFT
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/21/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 5d1d74f1240f919bb20d8893755a86abc19fa828
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: cf1fdd3feff76454f0e801d7bd53c63702000014
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533796"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91271982"
 ---
 # <a name="register-multiple-sql-virtual-machines-in-azure-with-the-sql-vm-resource-provider"></a>向 SQL VM 資源提供者註冊多個 Azure 中的 SQL 虛擬機器
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -36,7 +36,7 @@ ms.locfileid: "87533796"
 若要向資源提供者註冊您的 SQL Server VM，您將需要下列項目： 
 
 - 已[向資源提供者註冊](sql-vm-resource-provider-register.md#register-subscription-with-rp)，且包含未註冊 SQL Server 虛擬機器的 [Azure 訂用帳戶](https://azure.microsoft.com/free/)。 
-- 用來註冊虛擬機器的用戶端認證存在於下列任何 Azure 角色中： [**虛擬機器參與者**]、[**參與者**] 或 [**擁有**者]。 
+- 用來註冊虛擬機器的用戶端認證存在於下列任何 Azure 角色中： **虛擬機器參與者**、 **參與者**或 **擁有**者。 
 - 最新版的 [Az PowerShell](/powershell/azure/new-azureps-module-az)。 
 - 最新版 [Az. Microsoft.sqlvirtualmachine](https://www.powershellgallery.com/packages/Az.SqlVirtualMachine/0.1.0)。
 
@@ -134,7 +134,7 @@ Please find the detailed report in file RegisterSqlVMScriptReport1571314821.txt
 Please find the error details in file VMsNotRegisteredDueToError1571314821.log
 ```
 
-## <a name="register-all-vms-in-a-resource-group"></a>在資源群組中註冊所有 Vm
+## <a name="register-all-vms-in-a-resource-group"></a>註冊資源群組中的所有 Vm
 
 使用下列 Cmdlet，在單一資源群組中註冊所有 SQL Server 的虛擬機器： 
 
@@ -155,7 +155,7 @@ Please find the detailed report in file RegisterSqlVMScriptReport1571314821.txt
 Please find the error details in file VMsNotRegisteredDueToError1571314821.log
 ```
 
-## <a name="register-specific-vms-in-a-single-resource-group"></a>在單一資源群組中註冊特定 Vm
+## <a name="register-specific-vms-in-a-single-resource-group"></a>在單一資源群組中註冊特定的 Vm
 
 使用下列 Cmdlet，在單一資源群組中註冊特定 SQL Server 的虛擬機器：
 

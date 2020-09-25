@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/13/2020
+ms.date: 09/18/2020
 ms.author: duau
-ms.openlocfilehash: 995b8ab77779f0d3b9e2260ea18aa13aa242db36
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 0d669d4232adca3348b51c2a48947e0dabf0a472
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89399730"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324054"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door"></a>Azure Front Door 的常見問題
 
@@ -100,6 +100,31 @@ Azure Front Door 是全域散發的多租使用者服務。 因此，Front Door 
 
 -    使用 API 版本或更高版本，在您的 Front Door 上執行 GET 作業 `2020-01-01` 。 在 [API 呼叫] 中，尋找 [ `frontdoorID` 欄位]。 篩選傳入的標頭 '**FDID**'，並將 Front Door 傳送給您的後端，其值與欄位的值相同 `frontdoorID` 。 您也可以 `Front Door ID` 從 Front Door 入口網站頁面的 [總覽] 區段下找到值。 
 
+- 將規則篩選套用至後端 web 伺服器，以根據產生的 ' FDID ' 標頭值來限制流量。
+
+  以下是 [Microsoft Internet Information Services (IIS) ](https://www.iis.net/)的範例：
+
+    ``` xml
+    <?xml version="1.0" encoding="UTF-8"?>
+    <configuration>
+        <system.webServer>
+            <rewrite>
+                <rules>
+                    <rule name="Filter_X-Azure-FDID" patternSyntax="Wildcard" stopProcessing="true">
+                        <match url="*" />
+                        <conditions>
+                            <add input="{HTTP_X_AZURE_FDID}" pattern="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" negate="true" />
+                        </conditions>
+                        <action type="AbortRequest" />
+                    </rule>
+                </rules>
+            </rewrite>
+        </system.webServer>
+    </configuration>
+    ```
+
+
+
 ### <a name="can-the-anycast-ip-change-over-the-lifetime-of-my-front-door"></a>多點傳播 IP 是否可以在我的 Front Door 存留期內變更？
 
 Front Door 的前端任意傳播 IP 通常不會變更，而且在 Front Door 的存留期間可能會保持靜態。 但是，並沒有相同的 **保證** 。 請不要對 IP 採取任何直接的相依性。
@@ -132,6 +157,10 @@ Azure Front Door (AFD) 需要公用 IP 或可公開解析的 DNS 名稱來路由
 ### <a name="what-are-the-various-timeouts-and-limits-for-azure-front-door"></a>Azure Front Door 有何不同的超時和限制？
 
 瞭解 Azure Front Door 的所有記載的 [超時和限制](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-front-door-service-limits)。
+
+### <a name="how-long-does-it-take-for-a-rule-to-take-effect-after-being-added-to-the-front-door-rules-engine"></a>將規則新增至 Front Door 規則引擎之後，規則需要多久的時間才會生效？
+
+規則引擎設定大約需要10到15分鐘的時間才能完成更新。 您可以預期當更新完成時，規則就會生效。 
 
 ## <a name="performance"></a>效能
 

@@ -5,19 +5,19 @@ services: virtual-machines-linux
 author: MashaMSFT
 ms.date: 10/22/2019
 tags: azure-service-management
-ms.topic: conceptual
+ms.topic: quickstart
 ms.service: virtual-machines-sql
 ms.workload: iaas-sql-server
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 5ce3ab92be33b378aeb6694efe181ee19da5d3f4
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
-ms.translationtype: MT
+ms.openlocfilehash: e1a9d2722987464b1bb3c8b1489a2d1258a41d15
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284348"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273075"
 ---
-# <a name="provision-a-linux-virtual-machine-running-sql-server-in-the-azure-portal"></a>布建在 Azure 入口網站中執行 SQL Server 的 Linux 虛擬機器
+# <a name="provision-a-linux-virtual-machine-running-sql-server-in-the-azure-portal"></a>在 Azure 入口網站中布建執行 SQL Server 的 Linux 虛擬機器
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 > [!div class="op_single_selector"]
@@ -72,7 +72,7 @@ ms.locfileid: "87284348"
 1. 接著，輸入或選取下列值：
    * **區域**：選取適合您的 Azure 區域。
    * **可用性選項**：選擇最適合您應用程式和資料的可用性與備援選項。
-   * **變更大小**：選取此選項可挑選機器大小，完成時，請選擇 [選取]。 如需 VM 電腦大小的詳細資訊，請參閱[vm 大小](../../../virtual-machines/sizes.md)。
+   * **變更大小**：選取此選項可挑選機器大小，完成時，請選擇 [選取]。 如需 VM 機器大小的詳細資訊，請參閱 [vm 大小](../../../virtual-machines/sizes.md)。
 
      ![選擇 VM 大小](./media/sql-vm-create-portal-quickstart/vmsizes.png)
 

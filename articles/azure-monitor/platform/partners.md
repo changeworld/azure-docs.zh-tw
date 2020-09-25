@@ -3,13 +3,13 @@ title: 與 Azure 監視器整合的合作夥伴
 description: 了解 Azure Monitor 的監視合作夥伴以及如何存取與合作夥伴進行整合的文件。
 ms.subservice: ''
 ms.topic: conceptual
-ms.date: 05/29/2020
-ms.openlocfilehash: dbac5f28723b712788df61eda34a0db61b9c5652
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.date: 09/21/2020
+ms.openlocfilehash: a99d391b34ff1ad783ba4cb7b746760835bd3f43
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526471"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91278799"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure 監視器合作夥伴整合
 
@@ -74,11 +74,19 @@ CloudMonix 提供 Microsoft Azure 平台的監視、自動化和自我修復服�
 
 ![DataDog 標誌](./media/partners/datadog.png)
 
-Datadog 是全球領先的雲端規模應用程式監視服務。 它結合來自伺服器、資料庫、工具和服務的資料，呈現整個堆疊的整合檢視。 SaaS 型資料分析平台上提供這些功能。 此服務可讓開發和作業團隊協同運作，以避免停機時間、解決效能問題，並確保開發及部署週期能準時完成。 藉由整合 Datadog 和 Azure，您可以收集並檢視整個基礎結構的計量。 讓 VM 計量與應用程式層級計量相互關聯。 使用屬性和自訂標記的任意組合，細分您的計量。
+Azure 可讓客戶遷移和現代化其應用程式，以在雲端中執行，並與許多合作夥伴解決方案協調。 其中一個夥伴是 Datadog，可為使用者提供可檢視性和安全性工具，以瞭解應用程式在混合式和多重雲端環境中的健全狀況和效能。  但是，設定所需的整合通常需要在 Azure 入口網站和 Datadog 之間流覽。  這會增加複雜度、花費時間，而且如果專案無法運作，就很難進行疑難排解。  為了降低跨多個入口網站管理的負擔，Microsoft 已與 Datadog 合作，在 Azure 雲端平臺上建立整合式 Datadog 解決方案。  此解決方案可透過 Azure Marketplace 取得，可提供在 Azure 中使用 Datadog 雲端監視解決方案的流暢體驗。  
 
-[請移至文件。][datadog-doc]
+透過新的 Azure Datadog 整合，組織現在可以完全對應其舊版和雲端式系統，在雲端轉換的每個階段監視即時資料，並確保已遷移的應用程式符合效能目標。 這種整合結合了 Azure 的全球存在性、彈性、安全性和合規性，以及 Datadog 的記錄和監視功能，為企業創造最佳體驗。 透過這種整合體驗，您將能夠： 
 
-Datadog 的新 Azure marketplace 整合已排程于2020年10月發行。 當發行時，將會在此新增連結。 
+- 布建新的 Datadog 組織並設定其 Azure 資源，以將記錄和計量傳送至 Datadog，這是完全受控的設定，沒有任何基礎結構可供客戶進行設定和操作。  
+- 順暢地將記錄和計量傳送至 Datadog。 記錄轉送進程已完全自動化;除了使用診斷設定、事件中樞和函式來建立記錄轉送管線，您只要按幾下就可以設定所有專案。
+-   只要按一下，就能輕鬆地在 VM 主機上安裝 Datadog 代理程式。
+-   簡化單一登入 (SSO) Datadog，不再需要從 Datadog 入口網站進行個別登入。 
+-   透過 Azure 訂用帳戶發票來取得 Datadog 服務的統一帳單。
+
+註冊新的 Datadog 與 Azure 整合的 [公開預覽](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR4z3T2aGXUZPslUNJ3YpcapURFBHSUJIMVJTWDM5VUFPMVkyTVhMVlYzMS4u) 。  公開預覽將于2020年10月開始 Azure Marketplace 推出。
+
+如果您仍在使用先前手動設定的整合，請參閱 [DataDog 網站上的檔][datadog-doc]
 
 ## <a name="dynatrace"></a>Dynatrace
 

@@ -3,12 +3,12 @@ title: 管理 Azure DevTest Labs 中的公式來建立 VM | Microsoft Docs
 description: 本文說明如何從基礎 (自訂映像、Marketplace 映像或另一個公式) 或現有的 VM 建立公式。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 0a254d306ad2417c500571df4b8f2d852d21e7ae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f012a8c59a8e938334c3e1abc4c7b3ccd0e48d3e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85480400"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91308889"
 ---
 # <a name="manage-azure-devtest-labs-formulas"></a>管理 Azure DevTest Labs 公式
 
@@ -33,23 +33,23 @@ ms.locfileid: "85480400"
 
 3. 從實驗室清單中，選取所需的實驗室。  
 
-4. 在實驗室的頁面上，選取左側功能表上的 **[公式（可重複使用的基底）** ]。
+4. 在實驗室的頁面上，選取左側功能表上的 [ **公式] (可重複使用的基底) ** 。
 5. 在 [公式]**** 頁面上，選取 [+新增]****。
    
     ![加入公式](./media/devtest-lab-create-formulas/add-formula.png)
-6. 在 [**選擇基底**] 頁面上，選取您想要從中建立公式的基底（自訂映射、Marketplace 映射或共用映射庫映射）。
+6. 在 [ **選擇基底** ] 頁面上，選取您要從中建立公式的基底 (自訂映射、Marketplace 映射或共用映射庫映射) 。
 
-    :::image type="content" source="./media/devtest-lab-create-formulas/select-base.png" alt-text="選取基底映射":::
+    :::image type="content" source="./media/devtest-lab-create-formulas/select-base.png" alt-text="選取基礎映射":::
 1. 在 [建立公式]**** 頁面的 [基本設定]**** 索引標籤上，指定下列值：
    
     * **公式名稱** - 輸入公式的名稱。 當您建立 VM 時，這個值會在顯示在基本映像清單中。 輸入名稱時會立即驗證，如果無效，則會出現訊息指出有效名稱的需求。
-    - 輸入公式的選擇性**描述**。 
+    - 輸入公式的選擇性 **描述** 。 
     * **使用者名稱** - 輸入被授與系統管理員權限的使用者名稱。
     * **密碼** - 從下拉式清單中輸入或選取一個值，該值與您想用於指定使用者的密碼相關聯。 若要深入了解如何在金鑰保存庫中儲存祕密以及在建立實驗室資源時使用它們，請參閱[在 Azure Key Vault 中儲存祕密](devtest-lab-store-secrets-in-key-vault.md)。
 
-        如果您想要使用 Azure Key Vault 的秘密，而不是使用密碼，請選取 [**使用儲存的秘密**]。 
-    * **虛擬機器大小**-選取 [**變更大小**] 以變更 VM 的大小。 
-    - **OS 磁片類型**-選取您想要使用的磁片類型（[標準 HDD]、[標準 SSD] 或 [進階 SSD]）。
+        如果您想要使用 Azure Key Vault 的秘密，而不是使用密碼，請選取 [ **使用儲存的秘密** ]。 
+    * **虛擬機器大小** -選取 **變更大小** 來變更 VM 的大小。 
+    - **OS 磁片類型** -選取您想要使用的磁片類型 (標準 HDD、標準 SSD 或進階 SSD) 。
     * **成品** - 選取 [新增或移除成品]**** 頁面，在其中選取並設定您想要新增到基底映像中的成品。 如需構件的詳細資訊，請參閱[建立 Azure DevTest Labs 虛擬機器的自訂構件](devtest-lab-artifact-author.md)。
 
         ![基本設定頁面](./media/devtest-lab-create-formulas/basic-settings.png)
@@ -57,11 +57,11 @@ ms.locfileid: "85480400"
     - **虛擬網路** - 若要變更虛擬網路，請選取 [變更 Vnet]****。 
     - **子網路** - 若要變更子網路，請選取 [變更子網路]****。 
     - **IP 位址組態** - 指定您想要公用、私人或共用 IP 位址。 如需共用 IP 位址的詳細資訊，請參閱[了解 Azure DevTest Labs 中的共用 IP 位址](./devtest-lab-shared-ip.md)。
-    - **到期日期和時間**-您無法編輯此欄位。 
+    - **到期日期和時間** -您無法編輯此欄位。 
     - **允許宣告此機器** -「允許宣告」機器表示建立機器時不會指派擁有權。 取而代之的是，實驗室使用者將能夠在實驗室的頁面中，取得 (認領) 機器的擁有權。  
 
-        ![進階設定頁面](./media/devtest-lab-create-formulas/advanced-settings.png)
-    - 如果您選取共用映射庫映射作為基底，您也會看到 [**映射版本**] 欄位，可讓您從資源庫中選取您想要作為基底使用的映射版本。 
+        ![顯示 [建立公式 (可重複使用的基底) ] 頁面的 [Advanced] 設定的螢幕擷取畫面。](./media/devtest-lab-create-formulas/advanced-settings.png)
+    - 如果您選取了共用映射庫影像作為基底，您也會看到 [ **映射版本** ] 欄位，可讓您從資源庫選取要作為基底的映射版本。 
 
         ![進階設定頁面](./media/devtest-lab-create-formulas/advanced-settings-shared-image-gallery.png)
 8. 選取 [提交]**** 以建立公式。
@@ -98,7 +98,7 @@ ms.locfileid: "85480400"
 3. 從實驗室清單中，選取所需的實驗室。  
 4. 在實驗室的頁面上，選取 [公式 (可重複使用的基底)] ****。
    
-    ![公式功能表](./media/devtest-lab-manage-formulas/lab-settings-formulas.png)
+    ![顯示實驗室頁面的螢幕擷取畫面，其中已選取「公式 (可重複使用的基底) 」。](./media/devtest-lab-manage-formulas/lab-settings-formulas.png)
 5. 在 [Lab formulas] \(實驗室公式\)**** 頁面上，選取您想要修改的公式。
 6. 在 [更新公式]**** 頁面上，進行所需的編輯，然後選取 [更新]****。
 
@@ -113,7 +113,7 @@ ms.locfileid: "85480400"
     ![公式功能表](./media/devtest-lab-manage-formulas/lab-settings-formulas.png)
 5. 在 [Lab formulas] \(實驗室公式)**** 頁面上，選取您想要刪除之公式右邊的省略符號。
    
-    ![公式功能表](./media/devtest-lab-manage-formulas/lab-formulas-blade.png)
+    ![顯示 [實驗室公式] 頁面的螢幕擷取畫面，其中反白顯示公式選項的省略號。](./media/devtest-lab-manage-formulas/lab-formulas-blade.png)
 6. 在公式的操作功能表上，選取 [刪除] ****。
    
     ![公式操作功能表](./media/devtest-lab-manage-formulas/formula-delete-context-menu.png)

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: larryfr
 author: BlackMist
 ms.date: 07/08/2020
-ms.openlocfilehash: a37a09d971ee80d05f9e028ece1adc7962c0c1a0
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: e1b92563acd6983b1680cacc06a8f2d0789dddf1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905718"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91302497"
 ---
 # <a name="what-are-azure-machine-learning-environments"></a>什麼是 Azure Machine Learning 環境？
 
@@ -85,7 +85,7 @@ Azure Machine Learning 服務會在 Docker 映射和 conda 環境中建立環境
 
 如果您針對另一次執行使用相同的環境定義，Azure Machine Learning 服務會從工作區 ACR 重複使用快取的影像。 
 
-若要查看快取影像的詳細資料，請使用 [Environment.get_image_details](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#&preserve-view=trueget-image-details-workspace-) 方法。
+若要查看快取影像的詳細資料，請使用 [Environment.get_image_details](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true#&preserve-view=trueget-image-details-workspace-) 方法。
 
 為了判斷要重複使用快取的映射或建立新的映射，此服務會從環境定義中計算 [雜湊值](https://en.wikipedia.org/wiki/Hash_table) ，並將其與現有環境的雜湊進行比對。 雜湊的依據：
  
@@ -108,10 +108,10 @@ Azure Machine Learning 服務會在 Docker 映射和 conda 環境中建立環境
 若要更新封裝，請指定版本號碼來強制重建映射（例如） ```numpy==1.18.1``` 。 將會安裝新的相依性，包括嵌套的相依性，這可能會中斷先前運作的案例。 
 
 > [!WARNING]
->  此 [環境](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#&preserve-view=truebuild-workspace--image-build-compute-none-) 會重建快取的映射，並有可能的副作用會更新取消固定的封裝，並中斷與該快取映射對應之所有環境定義的重現性。
+>  此 [環境](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true#&preserve-view=truebuild-workspace--image-build-compute-none-) 會重建快取的映射，並有可能的副作用會更新取消固定的封裝，並中斷與該快取映射對應之所有環境定義的重現性。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * 瞭解如何在 Azure Machine Learning 中 [建立和使用環境](how-to-use-environments.md) 。
-* 請參閱 [環境類別](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py&preserve-view=true)的 Python SDK 參考檔。
+* 請參閱 [環境類別](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment%28class%29?view=azure-ml-py&preserve-view=true)的 Python SDK 參考檔。
 * 請參閱 R SDK 參考檔中的 [環境](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-environments)。

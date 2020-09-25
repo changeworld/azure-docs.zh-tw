@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 09/04/2020
 ms.author: b-juche
-ms.openlocfilehash: 405d872c178a3172454943b7d40ea276ea5c017e
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: e1be0879af02fac0f7ae926a02ea23fd6be84de4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89459051"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325684"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>使用 Azure NetApp Files 管理快照集
 
@@ -65,7 +65,7 @@ Azure NetApp Files 支援建立隨選快照集，並使用快照集原則來排�
     ```azurepowershell-interactive
     Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFSnapshotPolicy
     ```
-您也可以使用 Azure CLI 命令 [`az feature register`](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest#az-feature-register) ，並 [`az feature show`](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest#az-feature-show) 註冊功能並顯示註冊狀態。 
+您也可以使用 [Azure CLI 命令](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest&preserve-view=true) `az feature register` ，並 `az feature show` 註冊功能並顯示註冊狀態。 
 
 ### <a name="create-a-snapshot-policy"></a>建立快照集原則 
 
@@ -97,7 +97,7 @@ Azure NetApp Files 支援建立隨選快照集，並使用快照集原則來排�
 
     ![每月快照集原則](../media/azure-netapp-files/snapshot-policy-monthly.png) 
 
-4.  按一下 [儲存]。  
+4.  按一下 [檔案]  。  
 
 如果您需要建立其他快照集原則，請重複步驟3。
 您建立的原則會出現在 [快照集原則] 頁面中。
@@ -161,7 +161,7 @@ Azure NetApp Files 支援建立隨選快照集，並使用快照集原則來排�
 
     ![還原至新的磁片區](../media/azure-netapp-files/snapshot-restore-new-volume.png) 
 
-4. 按一下 [ **審核 + 建立**]。  按一下 [建立]  。   
+4. 按一下 [ **審核 + 建立**]。  按一下頁面底部的 [新增] 。   
     新的磁片區會使用快照集所使用的相同通訊協定。   
     快照集還原到的新磁碟區會出現在 [磁碟區] 刀鋒視窗中。
 
@@ -221,6 +221,6 @@ Azure NetApp Files 支援建立隨選快照集，並使用快照集原則來排�
 
 ## <a name="next-steps"></a>後續步驟
 
-* [了解 Azure NetApp Files 的儲存體階層](azure-netapp-files-understand-storage-hierarchy.md)
+* [針對快照集原則進行疑難排解](troubleshoot-snapshot-policies.md)
 * [Azure NetApp Files 的資源限制](azure-netapp-files-resource-limits.md)
 * [Azure NetApp Files 快照101影片](https://www.youtube.com/watch?v=uxbTXhtXCkw&feature=youtu.be)

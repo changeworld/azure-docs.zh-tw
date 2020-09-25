@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 04/02/2020
+ms.date: 09/22/2020
 ms.author: b-juche
-ms.openlocfilehash: d76af4901103b0eed8cd1cffac744f8fb41d9689
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2b52ad50854092cddd7b9e79cbeebd4a83017081
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483494"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325400"
 ---
 # <a name="set-up-a-capacity-pool"></a>設定容量集區
 
@@ -41,24 +41,35 @@ ms.locfileid: "85483494"
     [新增容量集區] 視窗隨即出現。
 
 3. 請提供新容量集區的下列資訊：  
-   * **名稱**  
+   * **Name**  
      指定容量集區的名稱。  
      每個 NetApp 帳戶的容量集區名稱必須是唯一的。
 
-   * **服務等級**   
+   * **服務層級**   
      此欄位會顯示容量集區的目標效能。  
-     指定容量集區的服務層級： [**Ultra**](azure-netapp-files-service-levels.md#Ultra)、 [**Premium**](azure-netapp-files-service-levels.md#Premium)或[**Standard**](azure-netapp-files-service-levels.md#Standard)。
+     指定容量集區的服務層級： [**Ultra**](azure-netapp-files-service-levels.md#Ultra)、 [**Premium**](azure-netapp-files-service-levels.md#Premium)或 [**Standard**](azure-netapp-files-service-levels.md#Standard)。
 
-   * **容量**     
+    * **大小**     
      指定您購買的容量集區大小。        
      最小容量集區大小是 4 TB。 您可以建立大小是 4 TB 倍數的集區。   
-      
-     ![新增容量集區](../media/azure-netapp-files/azure-netapp-files-new-capacity-pool.png)
 
-4. 按一下 [確定]。
+   * **Qos**   
+     指定容量集區是否應使用 **手動** 或 **自動** QoS 類型。  
+
+     請參閱 [儲存體](azure-netapp-files-understand-storage-hierarchy.md) 階層和 [效能考慮](azure-netapp-files-performance-considerations.md) ，以瞭解 QoS 類型。  
+
+     > [!IMPORTANT] 
+     > 將 **QoS 類型** 設定為 [ **手動** ] 是永久性的。 您無法轉換手動 QoS 容量集區以使用自動 QoS。 不過，您可以轉換自動 QoS 容量集區以使用手動 QoS。 請參閱 [變更容量集區以使用手動 QoS](manage-manual-qos-capacity-pool.md#change-to-qos)。   
+     > 針對容量集區使用手動 QoS 類型需要註冊。 請參閱 [管理手動 QoS 容量集](manage-manual-qos-capacity-pool.md#register-the-feature)區。 
+
+    ![新增容量集區](../media/azure-netapp-files/azure-netapp-files-new-capacity-pool.png)
+
+4. 按一下頁面底部的 [新增] 。
 
 ## <a name="next-steps"></a>後續步驟 
 
+- [儲存體階層](azure-netapp-files-understand-storage-hierarchy.md) 
 - [Azure NetApp Files 的服務等級](azure-netapp-files-service-levels.md)
-- 如需不同服務層級的價格，請參閱 [Azure NetApp Files 定價頁面](https://azure.microsoft.com/pricing/details/storage/netapp/)
+- [Azure NetApp Files 定價頁面](https://azure.microsoft.com/pricing/details/storage/netapp/)
+- [管理手動 QoS 容量集區](manage-manual-qos-capacity-pool.md)
 - [將子網路委派至 Azure NetApp Files](azure-netapp-files-delegate-subnet.md)

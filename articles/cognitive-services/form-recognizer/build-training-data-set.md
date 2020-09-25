@@ -1,5 +1,5 @@
 ---
-title: 如何建立自訂模型-表單辨識器的訓練資料集
+title: 如何建立自訂模型的訓練資料集-表單辨識器
 titleSuffix: Azure Cognitive Services
 description: 瞭解如何確保訓練資料集已針對定型表單辨識器模型進行優化。
 author: PatrickFarley
@@ -9,46 +9,45 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: pafarley
-ms.openlocfilehash: da9445b12ce6f35d249fc3af1a4a0ef560ba35de
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 073f1361771ded96b33158d040efd77306acd846
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905086"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91276931"
 ---
 # <a name="build-a-training-data-set-for-a-custom-model"></a>建立自訂模型的訓練資料集
 
-當您使用表單辨識器自訂模型時，您會提供自己的定型資料，讓模型可以訓練至您的產業特定表單。 
+當您使用表單辨識器自訂模型時，您會提供自己的定型資料給 [定型自訂模型](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync) 作業，讓模型可以定型至您的產業特定表單。 請遵循本指南來瞭解如何收集和準備資料，以有效地訓練模型。
 
-如果您是在沒有手動標籤的情況下進行定型，您可以使用五個已填滿的表單，或空白表單 (您必須在檔案名中包含 "empty" 一字) 加上兩個填滿的表單。 即使您有足夠的填滿表單，將空白表單加入訓練資料集可以改善模型的精確度。
+如果您沒有手動標籤的訓練，您可以使用五個填滿的表單或空白表單 (您必須在) 檔案名中包含 "empty" 一字，再加上兩個填滿的表單。 即使您有足夠的填寫表單，將空白表單加入訓練資料集，也可以改善模型的精確度。
 
-如果您想要使用手動加上標籤的定型資料，則必須以相同類型的至少五個填滿形式來啟動。 除了必要的資料集之外，您仍然可以使用未標記的表單和空白表單。
+如果您想要使用手動加上標籤的定型資料，您必須使用相同類型的至少五個填滿表單來開始。 除了所需的資料集之外，您仍然可以使用未標記的表單和空白的表單。
 
-## <a name="training-data-tips"></a>定型資料提示
+## <a name="custom-model-input-requirements"></a>自訂模型輸入需求
 
-請務必使用已針對定型優化的資料集。 使用下列秘訣，確保您可以從[訓練自訂模型](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync)作業取得最佳結果：
-
-* 可能的話，請使用以文字為基礎的 PDF 檔，而不是以影像為基礎的檔。 掃描的 Pdf 會當做影像來處理。
-* 針對填寫的表單，使用已填入其所有欄位的範例。
-* 使用在每個欄位中具有不同值的表單。
-* 如果您的表單影像品質較低，請使用較大的資料集 (10-15 影像，例如) 。
-* 訓練資料集的總大小最多可達500頁。
-
-## <a name="general-input-requirements"></a>一般輸入需求
-
-請確定您的訓練資料集也會遵循所有表單辨識器內容的輸入需求。 
+首先，請確定您的訓練資料集遵循表單辨識器的輸入需求。
 
 [!INCLUDE [input requirements](./includes/input-requirements.md)]
 
-## <a name="upload-your-training-data"></a>上傳您的定型資料
+## <a name="training-data-tips"></a>訓練資料秘訣
 
-當您將用於定型的一組表單檔放在一起時，您需要將它上傳至 Azure blob 儲存體容器。 如果您不知道如何建立具有容器的 Azure 儲存體帳戶，請遵循 Azure 入口網站的[Azure 儲存體快速入門](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)。 使用標準效能層級。
+請遵循這些額外的秘訣，進一步優化您的資料集進行定型。
 
-如果您想要使用手動加上標籤的資料，您也必須上傳 *.labels.js* ，並在與訓練檔對應的檔案*上.ocr.js* 。 您可以使用[範例標籤工具](./quickstarts/label-tool.md) (或您自己的 UI) 來產生這些檔案。
+* 可能的話，請使用以文字為基礎的 PDF 檔，而不是以影像為基礎的檔。 掃描的 Pdf 會以影像的形式處理。
+* 針對填寫的表單，請使用已填入所有欄位的範例。
+* 使用在每個欄位中具有不同值的表單。
+* 如果您的表單影像品質較低，請使用較大的資料集 (10-15 影像，例如) 。
 
-### <a name="organize-your-data-in-subfolders-optional"></a> (選擇性) 組織子資料夾中的資料
+## <a name="upload-your-training-data"></a>上傳定型資料
 
-根據預設，[訓練自訂模型](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync)API 只會使用位於儲存體容器根目錄的表單檔。 不過，如果您在 API 呼叫中指定，您可以使用子資料夾中的資料進行定型。 一般來說，[訓練自訂模型](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync)呼叫的主體具有下列格式，其中 `<SAS URL>` 是您容器的共用存取簽章 URL：
+當您將用於定型的一組表單檔彙集在一起時，您需要將它上傳至 Azure blob 儲存體容器。 如果您不知道如何使用容器建立 Azure 儲存體帳戶，請遵循 [Azure 入口網站的 Azure 儲存體快速入門](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)。 使用標準效能層級。
+
+如果您想要使用手動加上標籤的資料，您也必須上傳 *.labels.json* ，並.ocr.js對應至訓練檔的檔案 * 上* 。 您可以使用 [範例標籤工具](./quickstarts/label-tool.md) (或您自己的 UI) 來產生這些檔案。
+
+### <a name="organize-your-data-in-subfolders-optional"></a>在子資料夾中組織您的資料 (選擇性) 
+
+根據預設， [定型自訂模型](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync) API 只會使用位於儲存體容器根目錄的表單檔。 但是，如果您在 API 呼叫中指定資料，則可以使用子資料夾中的資料進行定型。 一般來說， [定型自訂模型](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync) 呼叫的主體具有下列格式，其中 `<SAS URL>` 是您容器的共用存取簽章 URL：
 
 ```json
 {
@@ -56,7 +55,7 @@ ms.locfileid: "87905086"
 }
 ```
 
-如果您將下列內容新增至要求本文，API 將會使用位於子資料夾中的檔進行定型。 `"prefix"`欄位是選擇性的，而且會將訓練資料集限制為路徑開頭為指定字串的檔案。 例如，的值 `"Test"` 會導致 API 只查看以 "Test" 一字開頭的檔案或資料夾。
+如果您將下列內容新增至要求本文，則 API 會使用位於子資料夾中的檔進行定型。 此 `"prefix"` 欄位是選擇性的，會將訓練資料集限制為其路徑開頭為指定字串的檔案。 例如，的值 `"Test"` 會讓 API 只查看以 "Test" 一字開頭的檔案或資料夾。
 
 ```json
 {
@@ -71,9 +70,14 @@ ms.locfileid: "87905086"
 
 ## <a name="next-steps"></a>後續步驟
 
-既然您已瞭解如何建立訓練資料集，請遵循快速入門來訓練自訂表單辨識器模型，並開始在您的表單上使用它。
+現在您已瞭解如何建立訓練資料集，接下來請遵循快速入門來訓練自訂表單辨識器模型，並開始在您的表單上使用它。
 
-* [使用捲曲來定型模型並將表單資料解壓縮](./quickstarts/curl-train-extract.md)
-* [使用 REST API 和 Python 來定型模型並將表單資料解壓縮](./quickstarts/python-train-extract.md)
-* [使用範例圖章工具以標籤進行定型](./quickstarts/label-tool.md)
+* [使用用戶端程式庫將模型定型並將表單資料解壓縮](./quickstarts/client-library.md)
+* [使用捲曲將模型定型並將表單資料解壓縮](./quickstarts/curl-train-extract.md)
+* [使用 REST API 和 Python 將模型定型並將表單資料解壓縮](./quickstarts/python-train-extract.md)
+* [使用範例標籤工具以標籤定型](./quickstarts/label-tool.md)
 * [使用 REST API 和 Python 以標籤進行定型](./quickstarts/python-labeled-data.md)
+
+## <a name="see-also"></a>請參閱
+
+* [什麼是表單辨識器？](./overview.md)

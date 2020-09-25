@@ -10,17 +10,17 @@ ms.author: jordane
 author: jpe316
 ms.date: 06/22/2020
 ms.custom: seodec18
-ms.openlocfilehash: 794e2c8b436b6a6dfa736bef59eb2ad0bda83bc2
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 490ee6e0dea5f5106d8027c2a4c9c7b09bb81fd0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90893139"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91307954"
 ---
 # <a name="install--use-the-cli-extension-for-azure-machine-learning"></a>安裝和使用 Azure Machine Learning 的 CLI 擴充功能
 
 
-Azure Machine Learning CLI 是 [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) 的擴充功能，而 Azure CLI 是 Azure 平台的跨平台命令列介面。 此擴充功能提供命令，供您使用 Azure Machine Learning， 讓您能夠自動化機器學習活動。 下列清單提供一些可透過 CLI 擴充功能執行的一些範例動作：
+Azure Machine Learning CLI 是 [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest&preserve-view=true) 的擴充功能，而 Azure CLI 是 Azure 平台的跨平台命令列介面。 此擴充功能提供命令，供您使用 Azure Machine Learning， 讓您能夠自動化機器學習活動。 下列清單提供一些可透過 CLI 擴充功能執行的一些範例動作：
 
 + 執行實驗來建立機器學習服務模型
 
@@ -34,13 +34,13 @@ CLI 不是 Azure Machine Learning SDK 的取代項目。 它是已經過最佳�
 
 * 若要使用 CLI，您必須擁有 Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前先建立免費帳戶。 立即試用[免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)。
 
-* 若要從您的**本機環境**使用本文件中的 CLI 命令，您需要 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
+* 若要從您的**本機環境**使用本文件中的 CLI 命令，您需要 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)。
 
     如果您使用 [Azure Cloud Shell](https://azure.microsoft.com//features/cloud-shell/)，則可透過瀏覽器存取 CLI，並存留在雲端。
 
 ## <a name="full-reference-docs"></a>完整參考文件
 
-尋找[適用於 Azure CLI 的 azure-cli-ml 擴充功能完整參考文件](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/?view=azure-cli-latest)。
+尋找[適用於 Azure CLI 的 azure-cli-ml 擴充功能完整參考文件](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/?view=azure-cli-latest&preserve-view=true)。
 
 ## <a name="connect-the-cli-to-your-azure-subscription"></a>將 CLI 連接至您的 Azure 訂用帳戶
 
@@ -57,7 +57,7 @@ az login
 
 [!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)]
 
-如需其他驗證方法，請參閱[使用 Azure CLI 登入](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest)。
+如需其他驗證方法，請參閱[使用 Azure CLI 登入](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest&preserve-view=true)。
 
 ## <a name="install-the-extension"></a>安裝延伸模組
 
@@ -111,7 +111,7 @@ az extension remove -n azure-cli-ml
     az ml workspace create -w myworkspace -g myresourcegroup
     ```
 
-    如需詳細資訊，請參閱 [az ml workspace create](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-create)。
+    如需詳細資訊，請參閱 [az ml workspace create](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-workspace-create)。
 
 + 將工作區設定連結至資料夾，以啟用 CLI 內容感知。
 
@@ -121,7 +121,7 @@ az extension remove -n azure-cli-ml
 
     此命令會建立一個 `.azureml` 子目錄，其中包含範例 runconfig 和 conda 環境檔案。 它也包含用來與 Azure Machine Learning 工作區通訊的 `config.json` 檔案。
 
-    如需詳細資訊，請參閱 [az ml folder attach](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/folder?view=azure-cli-latest#ext-azure-cli-ml-az-ml-folder-attach)。
+    如需詳細資訊，請參閱 [az ml folder attach](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/folder?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-folder-attach)。
 
 + 連結 Azure Blob 容器做為資料存放區。
 
@@ -129,7 +129,7 @@ az extension remove -n azure-cli-ml
     az ml datastore attach-blob  -n datastorename -a accountname -c containername
     ```
 
-    如需詳細資訊，請參閱 [az ml datastore attach-blob](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/datastore?view=azure-cli-latest#ext-azure-cli-ml-az-ml-datastore-attach-blob)。
+    如需詳細資訊，請參閱 [az ml datastore attach-blob](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/datastore?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-datastore-attach-blob)。
 
 + 上傳檔案到資料存放區。
 
@@ -137,7 +137,7 @@ az extension remove -n azure-cli-ml
     az ml datastore upload  -n datastorename -p sourcepath
     ```
 
-    如需詳細資訊，請參閱 [az ml datastore upload](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/datastore?view=azure-cli-latest#ext-azure-cli-ml-az-ml-datastore-upload)。
+    如需詳細資訊，請參閱 [az ml datastore upload](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/datastore?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-datastore-upload)。
 
 + 連結 AKS 叢集做為計算目標。
 
@@ -145,7 +145,7 @@ az extension remove -n azure-cli-ml
     az ml computetarget attach aks -n myaks -i myaksresourceid -g myresourcegroup -w myworkspace
     ```
 
-    如需詳細資訊，請參閱 [az ml computetarget attach aks](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/attach?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-attach-aks)
+    如需詳細資訊，請參閱 [az ml computetarget attach aks](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/attach?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-computetarget-attach-aks)
 
 ### <a name="compute-clusters"></a>計算叢集
 
@@ -182,7 +182,7 @@ az extension remove -n azure-cli-ml
         az ml computetarget amlcompute identity assign --name cpu-cluster '[system]'
         ```
 
-如需詳細資訊，請參閱 [az ml computetarget create amlcompute](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/create?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-create-amlcompute)。
+如需詳細資訊，請參閱 [az ml computetarget create amlcompute](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/create?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-computetarget-create-amlcompute)。
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-managed-identity-note.md)]
 
@@ -191,45 +191,45 @@ az extension remove -n azure-cli-ml
 ### <a name="compute-instance"></a>計算執行個體
 管理計算實例。  在下列所有範例中，計算實例的名稱為 **cpu**
 
-    + 建立新的 computeinstance。
++ 建立新的 computeinstance。
 
-        ```azurecli-interactive
-        az ml computetarget create computeinstance  -n cpu -s "STANDARD_D3_V2" -v
-        ```
+    ```azurecli-interactive
+    az ml computetarget create computeinstance  -n cpu -s "STANDARD_D3_V2" -v
+    ```
     
-        如需詳細資訊，請參閱 [az ml computetarget create computeinstance](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/create?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-create-computeinstance)。
+    如需詳細資訊，請參閱 [az ml computetarget create computeinstance](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/create?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-computetarget-create-computeinstance)。
 
-    + 停止 computeinstance。
++ 停止 computeinstance。
     
-        ```azurecli-interactive
-        az ml computetarget stop computeinstance -n cpu -v
-        ```
+    ```azurecli-interactive
+    az ml computetarget stop computeinstance -n cpu -v
+    ```
     
-        如需詳細資訊，請參閱 [az ml computetarget stop computeinstance](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/computeinstance?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-computeinstance-stop)。
+    如需詳細資訊，請參閱 [az ml computetarget stop computeinstance](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/computeinstance?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-computetarget-computeinstance-stop)。
     
-    + 啟動 computeinstance。
++ 啟動 computeinstance。
     
-        ```azurecli-interactive
-        az ml computetarget start computeinstance -n cpu -v
-       ```
+    ```azurecli-interactive
+    az ml computetarget start computeinstance -n cpu -v
+    ```
     
-        如需詳細資訊，請參閱 [az ml computetarget start computeinstance](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/computeinstance?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-computeinstance-start)。
+    如需詳細資訊，請參閱 [az ml computetarget start computeinstance](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/computeinstance?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-computetarget-computeinstance-start)。
     
-    + 重新開機 computeinstance。
++ 重新開機 computeinstance。
     
-        ```azurecli-interactive
-        az ml computetarget restart computeinstance -n cpu -v
-       ```
+    ```azurecli-interactive
+    az ml computetarget restart computeinstance -n cpu -v
+    ```
     
-        如需詳細資訊，請參閱 [az ml computetarget restart computeinstance](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/computeinstance?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-computeinstance-restart)。
+    如需詳細資訊，請參閱 [az ml computetarget restart computeinstance](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/computeinstance?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-computetarget-computeinstance-restart)。
     
-    + 刪除 computeinstance。
++ 刪除 computeinstance。
     
-        ```azurecli-interactive
-        az ml computetarget delete -n cpu -v
-       ```
+    ```azurecli-interactive
+    az ml computetarget delete -n cpu -v
+    ```
     
-        如需詳細資訊，請參閱 [az ml computetarget delete computeinstance](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-delete)。
+    如需詳細資訊，請參閱 [az ml computetarget delete computeinstance](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-computetarget-delete)。
 
 
 ## <a name="run-experiments"></a><a id="experiments"></a>執行實驗
@@ -243,11 +243,11 @@ az extension remove -n azure-cli-ml
     > [!TIP]
     > `az ml folder attach` 命令會建立一個 `.azureml` 子目錄，其中包含兩個範例 runconfig 檔案。 
     >
-    > 如果您有使用程式設計方式建立執行設定物件的 Python 指令碼，則可以使用 [RunConfig.save()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py#&preserve-view=truesave-path-none--name-none--separate-environment-yaml-false-) 以將其儲存為 runconfig 檔案。
+    > 如果您有使用程式設計方式建立執行設定物件的 Python 指令碼，則可以使用 [RunConfig.save()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py&preserve-view=true#&preserve-view=truesave-path-none--name-none--separate-environment-yaml-false-) 以將其儲存為 runconfig 檔案。
     >
     > 您可以在此 [JSON 檔案](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json)中找到完整的 runconfig 結構描述。 此結構描述是透過每個物件的 `description` 索引鍵自行記錄。 此外，有一些列舉的可能值，以及結尾的範本程式碼片段。
 
-    如需詳細資訊，請參閱 [az ml run submit-script](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-submit-script)。
+    如需詳細資訊，請參閱 [az ml run submit-script](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-run-submit-script)。
 
 * 檢視實驗清單：
 
@@ -255,7 +255,7 @@ az extension remove -n azure-cli-ml
     az ml experiment list
     ```
 
-    如需詳細資訊，請參閱 [az ml experiment list](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/experiment?view=azure-cli-latest#ext-azure-cli-ml-az-ml-experiment-list)。
+    如需詳細資訊，請參閱 [az ml experiment list](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/experiment?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-experiment-list)。
 
 ### <a name="hyperdrive-run"></a>HyperDrive 回合
 
@@ -299,7 +299,7 @@ az ml run submit-hyperdrive -e <experiment> -c <runconfig> --hyperdrive-configur
 
     如需用於定義資料集的 JSON 檔案格式相關資訊，請使用 `az ml dataset register --show-template`。
 
-    如需詳細資訊，請參閱 [az ml dataset register](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/dataset?view=azure-cli-latest#ext-azure-cli-ml-az-ml-dataset-register)。
+    如需詳細資訊，請參閱 [az ml dataset register](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/dataset?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-dataset-register)。
 
 + 列出工作區中的所有資料集：
 
@@ -307,7 +307,7 @@ az ml run submit-hyperdrive -e <experiment> -c <runconfig> --hyperdrive-configur
     az ml dataset list
     ```
 
-    如需詳細資訊，請參閱 [az ml dataset list](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/dataset?view=azure-cli-latest#ext-azure-cli-ml-az-ml-dataset-list)。
+    如需詳細資訊，請參閱 [az ml dataset list](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/dataset?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-dataset-list)。
 
 + 取得資料集的詳細資料：
 
@@ -315,7 +315,7 @@ az ml run submit-hyperdrive -e <experiment> -c <runconfig> --hyperdrive-configur
     az ml dataset show -n dataset-name
     ```
 
-    如需詳細資訊，請參閱 [az ml dataset show](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/dataset?view=azure-cli-latest#ext-azure-cli-ml-az-ml-dataset-show)。
+    如需詳細資訊，請參閱 [az ml dataset show](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/dataset?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-dataset-show)。
 
 + 取消註冊資料集：
 
@@ -323,7 +323,7 @@ az ml run submit-hyperdrive -e <experiment> -c <runconfig> --hyperdrive-configur
     az ml dataset unregister -n dataset-name
     ```
 
-    如需詳細資訊，請參閱 [az ml dataset unregister](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/dataset?view=azure-cli-latest#ext-azure-cli-ml-az-ml-dataset-archive)。
+    如需詳細資訊，請參閱 [az ml dataset unregister](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/dataset?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-dataset-archive)。
 
 ## <a name="environment-management"></a>環境管理
 
@@ -335,7 +335,7 @@ az ml run submit-hyperdrive -e <experiment> -c <runconfig> --hyperdrive-configur
     az ml environment scaffold -n myenv -d myenvdirectory
     ```
 
-    如需詳細資訊，請參閱 [az ml environment scaffold](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/environment?view=azure-cli-latest#ext-azure-cli-ml-az-ml-environment-scaffold)。
+    如需詳細資訊，請參閱 [az ml environment scaffold](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/environment?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-environment-scaffold)。
 
 + 註冊環境：
 
@@ -343,7 +343,7 @@ az ml run submit-hyperdrive -e <experiment> -c <runconfig> --hyperdrive-configur
     az ml environment register -d myenvdirectory
     ```
 
-    如需詳細資訊，請參閱 [az ml environment register](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/environment?view=azure-cli-latest#ext-azure-cli-ml-az-ml-environment-register)。
+    如需詳細資訊，請參閱 [az ml environment register](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/environment?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-environment-register)。
 
 + 列出註冊的環境：
 
@@ -351,7 +351,7 @@ az ml run submit-hyperdrive -e <experiment> -c <runconfig> --hyperdrive-configur
     az ml environment list
     ```
 
-    如需詳細資訊，請參閱 [az ml environment list](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/environment?view=azure-cli-latest#ext-azure-cli-ml-az-ml-environment-list)。
+    如需詳細資訊，請參閱 [az ml environment list](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/environment?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-environment-list)。
 
 + 下載註冊的環境：
 
@@ -359,11 +359,11 @@ az ml run submit-hyperdrive -e <experiment> -c <runconfig> --hyperdrive-configur
     az ml environment download -n myenv -d downloaddirectory
     ```
 
-    如需詳細資訊，請參閱 [az ml environment download](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/environment?view=azure-cli-latest#ext-azure-cli-ml-az-ml-environment-download)。
+    如需詳細資訊，請參閱 [az ml environment download](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/environment?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-environment-download)。
 
 ### <a name="environment-configuration-schema"></a>環境設定結構描述
 
-如果您使用 `az ml environment scaffold` 命令，它會產生可修改的範本 `azureml_environment.json` 檔案，並使用 CLI 來建立自訂環境設定。 最上層物件會鬆散地對應至 Python SDK 中的 [`Environment`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py&preserve-view=true) 類別。 
+如果您使用 `az ml environment scaffold` 命令，它會產生可修改的範本 `azureml_environment.json` 檔案，並使用 CLI 來建立自訂環境設定。 最上層物件會鬆散地對應至 Python SDK 中的 [`Environment`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment%28class%29?view=azure-ml-py&preserve-view=true) 類別。 
 
 ```json
 {
@@ -407,7 +407,7 @@ az ml run submit-hyperdrive -e <experiment> -c <runconfig> --hyperdrive-configur
 }
 ```
 
-下表詳細說明 JSON 檔案中的每個最上層欄位、欄位類型，以及描述。 如果物件類型已連結至 Python SDK 的類別，則每個 JSON 欄位與 Python 類別中的公用變數名稱之間會有鬆散的 1:1 比對。 在某些情況下，欄位可能會對應至建構函式引數，而不是類別變數。 例如，`environmentVariables` 欄位會對應至 [`Environment`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py&preserve-view=true) 類別中的 `environment_variables` 變數。
+下表詳細說明 JSON 檔案中的每個最上層欄位、欄位類型，以及描述。 如果物件類型已連結至 Python SDK 的類別，則每個 JSON 欄位與 Python 類別中的公用變數名稱之間會有鬆散的 1:1 比對。 在某些情況下，欄位可能會對應至建構函式引數，而不是類別變數。 例如，`environmentVariables` 欄位會對應至 [`Environment`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment%28class%29?view=azure-ml-py&preserve-view=true) 類別中的 `environment_variables` 變數。
 
 | JSON 欄位 | 類型 | 描述 |
 |---|---|---|
@@ -430,7 +430,7 @@ az ml run submit-hyperdrive -e <experiment> -c <runconfig> --hyperdrive-configur
     az ml pipeline create -n mypipeline -y mypipeline.yml
     ```
 
-    如需詳細資訊，請參閱 [az ml pipeline create](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/pipeline?view=azure-cli-latest#ext-azure-cli-ml-az-ml-pipeline-create)。
+    如需詳細資訊，請參閱 [az ml pipeline create](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/pipeline?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-pipeline-create)。
 
     如需關於管線 YAML 檔案的詳細資訊，請參閱[在 YAML 中定義機器學習管線](reference-pipeline-yaml.md)。
 
@@ -440,7 +440,7 @@ az ml run submit-hyperdrive -e <experiment> -c <runconfig> --hyperdrive-configur
     az ml run submit-pipeline -n myexperiment -y mypipeline.yml
     ```
 
-    如需詳細資訊，請參閱 [az ml run submit-pipeline](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-submit-pipeline)。
+    如需詳細資訊，請參閱 [az ml run submit-pipeline](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-run-submit-pipeline)。
 
     如需關於管線 YAML 檔案的詳細資訊，請參閱[在 YAML 中定義機器學習管線](reference-pipeline-yaml.md)。
 
@@ -450,7 +450,7 @@ az ml run submit-hyperdrive -e <experiment> -c <runconfig> --hyperdrive-configur
     az ml pipeline create-schedule -n myschedule -e myexpereiment -i mypipelineid -y myschedule.yml
     ```
 
-    如需詳細資訊，請參閱 [az ml pipeline create-schedule](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/pipeline?view=azure-cli-latest#ext-azure-cli-ml-az-ml-pipeline-create-schedule)。
+    如需詳細資訊，請參閱 [az ml pipeline create-schedule](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/pipeline?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-pipeline-create-schedule)。
 
     如需關於管線排程 YAML 檔案的詳細資訊，請參閱[在 YAML 中定義機器學習管線](reference-pipeline-yaml.md#schedules)。
 
@@ -464,14 +464,14 @@ az ml run submit-hyperdrive -e <experiment> -c <runconfig> --hyperdrive-configur
     az ml model register -n mymodel -p sklearn_regression_model.pkl
     ```
 
-    如需詳細資訊，請參閱 [az ml model register](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-register)。
+    如需詳細資訊，請參閱 [az ml model register](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-model-register)。
 
 + **選擇性**分析您的模型，以取得最佳的 CPU 和記憶體以供部署使用。
     ```azurecli-interactive
     az ml model profile -n myprofile -m mymodel:1 --ic inferenceconfig.json -d "{\"data\": [[1,2,3,4,5,6,7,8,9,10],[10,9,8,7,6,5,4,3,2,1]]}" -t myprofileresult.json
     ```
 
-    如需詳細資訊，請參閱 [az ml model profile](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-profile)。
+    如需詳細資訊，請參閱 [az ml model profile](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-model-profile)。
 
 + 將您的模型部署至 AKS
     ```azurecli-interactive
@@ -482,7 +482,7 @@ az ml run submit-hyperdrive -e <experiment> -c <runconfig> --hyperdrive-configur
     
     如需關於部署設定檔結構描述的詳細資訊，請參閱[部署設定結構描述](#deploymentconfig)。
 
-    如需詳細資訊，請參閱 [az ml model deploy](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-deploy)。
+    如需詳細資訊，請參閱 [az ml model deploy](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-model-deploy)。
 
 <a id="inferenceconfig"></a>
 
@@ -508,6 +508,6 @@ az ml run submit-hyperdrive -e <experiment> -c <runconfig> --hyperdrive-configur
 
 ## <a name="next-steps"></a>後續步驟
 
-* [Machine Learning CLI 擴充功能的命令參考](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml?view=azure-cli-latest)。
+* [Machine Learning CLI 擴充功能的命令參考](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml?view=azure-cli-latest&preserve-view=true)。
 
 * [使用 Azure Pipelines 定型及部署機器學習模型](/azure/devops/pipelines/targets/azure-machine-learning)

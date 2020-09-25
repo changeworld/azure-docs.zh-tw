@@ -4,23 +4,23 @@ description: 適用於 SAP 工作負載的 Oracle Azure 虛擬機器 DBMS 部署
 services: virtual-machines-linux,virtual-machines-windows
 documentationcenter: ''
 author: msjuergent
-manager: patfilot
+manager: bburns
 editor: ''
 tags: azure-resource-manager
-keywords: ''
+keywords: SAP、Azure、Oracle、Data Guard
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 12/14/2018
+ms.date: 09/20/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 66837a0e4118695b19776972fdb4fd88a70ee561
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: d83c4ffe4e60ef2896e16b97e1ec34d71a022b9b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690318"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91279003"
 ---
 # <a name="azure-virtual-machines-dbms-deployment-for-sap-workload"></a>適用於 SAP 工作負載的 Azure 虛擬機器 DBMS 部署
 
@@ -344,18 +344,20 @@ Windows 和 Oracle Linux 是 Oracle 和 Azure 上的 SAP 唯一支援的作業�
 
 ### <a name="oracle-configuration-guidelines-for-sap-installations-in-azure-vms-on-windows"></a>在 Windows 上的 Azure VM 中安裝 SAP 的 Oracle 設定指導方針
 
-根據 SAP 安裝手冊，與 Oracle 相關的檔案都不應該安裝或置於 VM 之 OS 磁碟 (C: 磁碟) 的系統驅動程式中。 不同大小的虛擬機器所能支援的附加磁碟數目皆不相同。 較小的虛擬機器類型只能支援較少數目的附加磁碟。 
+根據 SAP 安裝手冊，與 Oracle 相關的檔案不應安裝在 VM 的 OS 磁片中，或位於 (磁片磁碟機 c： ) 的 OS 磁片中。 不同大小的虛擬機器所能支援的附加磁碟數目皆不相同。 較小的虛擬機器類型只能支援較少數目的附加磁碟。 
 
-如果您擁有較小的 VM，我們建議將 Oracle home、stage、"saptrace"、"saparch"、"sapbackup"、"sapcheck"，或 "sapreorg" 安裝/置於 OS 磁碟中。 這些部分的 Oracle DBMS 元件並不會密集地使用 I/O 和 I/O 輸送量。 這代表 OS 磁碟可以處理它們的 I/O 需求。 OS 磁碟的預設大小為 127 GB。 
+如果您有較小的 vm，而且會達到可連結至 VM 的磁片數目限制，您可以將 Oracle home、stage、、、、或安裝/尋找 `saptrace` `saparch` `sapbackup` `sapcheck` `sapreorg` 至 OS 磁片。 這些部分的 Oracle DBMS 元件並不太密集 i/o 和 i/o 輸送量。 這代表 OS 磁碟可以處理它們的 I/O 需求。 OS 磁片的預設大小應為 127 GB。 
 
-如果可用空間不足，則可以將該磁碟的大小[調整](../../windows/expand-os-disk.md)為 2048 GB。 Oracle Database 和重做記錄檔則必須儲存在個別的資料磁碟上。 例外狀況為 Oracle 暫存資料表空間。 Tempfiles 可以在 D:/ (非永續性磁碟) 上建立。 非持續性 D:\ 磁碟機也會提供更好的 I/O 延遲和輸送量 (但 A 系列 VM 除外)。 
+Oracle Database 和重做記錄檔則必須儲存在個別的資料磁碟上。 例外狀況為 Oracle 暫存資料表空間。 `Tempfiles` 可以在 D：/ (非持續性磁片磁碟機) 上建立。 非持續性 D:\ 磁碟機也會提供更好的 I/O 延遲和輸送量 (但 A 系列 VM 除外)。 
 
-若要判斷 Tempfiles 空間的正確容量，您可以檢查現有系統上的 Tempfiles 大小。
+若要判斷的正確空間量 `tempfiles` ，您可以 `tempfiles` 在現有的系統上檢查的大小。
 
 ### <a name="storage-configuration"></a>儲存體組態
 只支援使用 NTFS 格式化磁碟的單一執行個體 Oracle。 所有的資料庫檔案都必須儲存在受控磁碟 (建議) 或 VHD 上的 NTFS 檔案系統上。 這些磁碟會掛接到 Azure VM，並且以 [Azure 分頁 Blob 儲存體](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) \(英文\) 或 [Azure 受控磁碟](../../managed-disks-overview.md)為基礎。 
 
-我們強烈建議使用 [Azure 受控磁碟](../../managed-disks-overview.md)。 我們也強烈建議針對 Oracle Database 部署使用[進階 SSD](../../disks-types.md)。
+查看 [Azure 儲存體類型的 SAP 工作負載](./planning-guide-storage.md) ，以取得適用于 DBMS 工作負載的特定 Azure 區塊儲存體類型的詳細資料。
+
+我們強烈建議使用 [Azure 受控磁碟](../../managed-disks-overview.md)。 我們也強烈建議針對您的 Oracle Database 部署使用 [azure premium 儲存體或 Azure Ultra 磁片](../../disks-types.md) 。
 
 Oracle Database 檔案不支援網路磁碟機或遠端共用 (例如 Azure 檔案服務)。 如需詳細資訊，請參閱
 
@@ -374,37 +376,37 @@ Azure 磁碟具有 IOPS 輸送量上的配額。 此概念已詳述於[適用於
 
 | 元件 | 磁碟 | Caching | 儲存體集區 |
 | --- | ---| --- | --- |
-| \oracle\<SID>\origlogaA & mirrlogB | Premium | None | 不需要 |
-| \oracle\<SID>\origlogaB & mirrlogA | Premium | None | 不需要 |
-| \oracle\<SID>\sapdata1...n | Premium | 唯讀 | 可以使用 |
+| \oracle\<SID>\origlogaA & mirrlogB | Premium 或 Ultra 磁片 | None | 不需要 |
+| \oracle\<SID>\origlogaB & mirrlogA | Premium 或 Ultra 磁片 | None | 不需要 |
+| \oracle\<SID>\sapdata1...n | Premium 或 Ultra 磁片 | 唯讀 | 可用於 Premium |
 | \oracle\<SID>\oraarch | 標準 | None | 不需要 |
-| Oracle Home、saptrace... | 作業系統磁碟 | | 不需要 |
+| Oracle `saptrace` Home、.。。 | OS 磁片 (Premium)  | | 不需要 |
 
 
-裝載線上重做記錄之磁碟的選取，應由 IOPs 需求來決定。 可以將所有 sapdata1...n (資料表空間) 儲存在單一已掛接磁碟上，前提是其大小、IOPS 及輸送量必須能滿足需求。 
+裝載線上重做記錄的磁片選擇應由 IOPS 需求來推動。 可以將所有 sapdata1...n (資料表空間) 儲存在單一已掛接磁碟上，前提是其大小、IOPS 及輸送量必須能滿足需求。 
 
 效能設定如下：
 
 | 元件 | 磁碟 | Caching | 儲存體集區 |
 | --- | ---| --- | --- |
-| \oracle\<SID>\origlogaA | Premium | None | 可以使用  |
-| \oracle\<SID>\origlogaB | Premium | None | 可以使用 |
-| \oracle\<SID>\mirrlogAB | Premium | None | 可以使用 |
-| \oracle\<SID>\mirrlogBA | Premium | None | 可以使用 |
-| \oracle\<SID>\sapdata1...n | Premium | 唯讀 | 建議  |
-| \oracle\SID\sapdata(n+1)* | Premium | None | 可以使用 |
-| \oracle\<SID>\oraarch* | Premium | None | 不需要 |
-| Oracle Home、saptrace... | 作業系統磁碟 | 不需要 |
+| \oracle\<SID>\origlogaA | Premium 或 Ultra 磁片 | 無 | 可用於 Premium  |
+| \oracle\<SID>\origlogaB | Premium 或 Ultra 磁片 | 無 | 可用於 Premium |
+| \oracle\<SID>\mirrlogAB | Premium 或 Ultra 磁片 | 無 | 可用於 Premium |
+| \oracle\<SID>\mirrlogBA | Premium 或 Ultra 磁片 | 無 | 可用於 Premium |
+| \oracle\<SID>\sapdata1...n | Premium 或 Ultra 磁片 | 唯讀 | 適用于 premium 的建議  |
+| \oracle\SID\sapdata(n+1)* | Premium 或 Ultra 磁片 | 無 | 可用於 Premium |
+| \oracle\<SID>\oraarch* | Premium 或 Ultra 磁片 | None | 不需要 |
+| Oracle `saptrace` Home、.。。 | OS 磁片 (Premium)  | 不需要 |
 
 *(n+1)：裝載 SYSTEM、TEMP 及 UNDO 資料表空間。 System 和 Undo 資料表空間的 I/O 模式，與其他裝載應用程式資料的資料表空間不同。 對於 System 和 Undo 資料表空間的效能來說，無快取是最佳選項。
 
 *oraarch：從效能的觀點來看，儲存體集區並非必要。 可以用它來換取更多空間。
 
-如果需要更多 IOPS，建議使用 Windows 存放集區 (僅適用於 Windows Server 2012 和更新版本)，以在多個已掛接的磁碟上建立一個大型邏輯裝置。 這種方法可以簡化管理磁碟空間的系統管理負荷，並使您無需手動將檔案分散到多個掛接的磁碟。
+如果 Azure premium 儲存體需要更多 IOPS，建議使用 Windows 儲存集區 (僅適用于 Windows Server 2012 和更新版本的) ，以在多個已掛接的磁片上建立一個大型邏輯裝置。 這種方法可以簡化管理磁碟空間的系統管理負荷，並使您無需手動將檔案分散到多個掛接的磁碟。
 
 
 #### <a name="write-accelerator"></a>寫入加速器
-針對 Azure M 系列的 VM，和 Azure 進階儲存體效能相比，寫入線上重做記錄的延遲將會大幅降低。 請針對以 Azure 進階儲存體為基礎並用於線上重做記錄檔的磁碟 (VHD) 啟用 Azure 寫入加速器。 如需詳細資訊，請參閱[寫入加速器](../../how-to-enable-write-accelerator.md)。
+針對 Azure M 系列 Vm，相較于 Azure premium 儲存體，寫入線上重做記錄的延遲可能會降低。 請針對以 Azure 進階儲存體為基礎並用於線上重做記錄檔的磁碟 (VHD) 啟用 Azure 寫入加速器。 如需詳細資訊，請參閱[寫入加速器](../../how-to-enable-write-accelerator.md)。 或使用 Azure Ultra 磁片來進行線上重做記錄磁片區。
 
 
 ### <a name="backuprestore"></a>備份/還原
@@ -437,7 +439,7 @@ Oracle 支援 Oracle 軟體在以 Oracle Linux 為客體 OS 的 Microsoft Azure 
 
 根據 SAP 安裝手冊，與 Oracle 相關的檔案都不應該安裝或置於 VM 之開機磁碟的系統驅動程式中。 不同大小的虛擬機器所能支援的附加磁碟數目皆不相同。 較小的虛擬機器類型只能支援較少數目的附加磁碟。 
 
-在此情況下，我們建議將 Oracle home、stage、saptrace、saparch、sapbackup、sapcheck，或 sapreorg 安裝/置於開機磁碟中。 這些部分的 Oracle DBMS 元件並不會密集地使用 I/O 和 I/O 輸送量。 這代表 OS 磁碟可以處理它們的 I/O 需求。 OS 磁碟的預設大小為 30 GB。 您可以使用 Azure 入口網站、PowerShell 或 CLI 來擴展開機磁碟。 擴展開機磁碟之後，您便可以針對 Oracle 二進位檔新增額外的磁碟分割。
+在此情況下，我們建議將 Oracle home、stage、、、、或的安裝/定位 `saptrace` `saparch` `sapbackup` `sapcheck` `sapreorg` 到開機磁片。 這些部分的 Oracle DBMS 元件並不會密集地使用 I/O 和 I/O 輸送量。 這代表 OS 磁碟可以處理它們的 I/O 需求。 OS 磁碟的預設大小為 30 GB。 您可以使用 Azure 入口網站、PowerShell 或 CLI 來擴展開機磁碟。 擴展開機磁碟之後，您便可以針對 Oracle 二進位檔新增額外的磁碟分割。
 
 
 ### <a name="storage-configuration"></a>儲存體組態
@@ -445,6 +447,8 @@ Oracle 支援 Oracle 軟體在以 Oracle Linux 為客體 OS 的 Microsoft Azure 
 針對 Azure 上的 Oracle Database 檔案，支援 ext4、xfs 或 Oracle ASM 檔案系統。 所有的資料庫檔案都必須儲存於以 VHD 或受控磁碟為基礎的這些檔案系統上。 這些磁碟會掛接到 Azure VM，並且以 [Azure 分頁 Blob 儲存體](<https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>) \(英文\) 或 [Azure 受控磁碟](../../managed-disks-overview.md)為基礎。
 
 針對 Oracle Linux UEK 核心，UEK 必須至少為第 4 版，才能支援 [Azure 進階 SSD](../../premium-storage-performance.md#disk-caching)。
+
+簽出 [Azure 儲存體類型的 SAP 工作負載](./planning-guide-storage.md) ，以取得適用于 DBMS 工作負載的特定 Azure 區塊儲存體類型的詳細資料。
 
 我們非常建議使用 [Azure 受控磁碟](../../managed-disks-overview.md)。 我們也非常建議針對 Oracle Database 部署使用 [Azure 進階 SSD](../../disks-types.md)。
 
@@ -456,7 +460,7 @@ Oracle Database 檔案不支援網路磁碟機或遠端共用 (例如 Azure 檔�
 
 如果您是使用以 Azure 分頁 Blob 儲存體或受控磁碟為基礎的磁碟，在[適用於 SAP 工作負載的 Azure 虛擬機器 DBMS 部署考量](dbms_guide_general.md)中所述的內容同樣適用於搭配 Oracle Database 所做的部署。
 
- Azure 磁碟具有 IOPS 輸送量上的配額。 此概念已詳述於[適用於 SAP 工作負載的 Azure 虛擬機器 DBMS 部署考量](dbms_guide_general.md)。確切的配額會根據使用的 VM 類型而定。 如需 VM 類型及其配額的清單，請參閱 [Azure 中 Linux 虛擬機器的大小][virtual-machines-sizes-linux]。
+Azure 磁碟具有 IOPS 輸送量上的配額。 此概念已詳述於[適用於 SAP 工作負載的 Azure 虛擬機器 DBMS 部署考量](dbms_guide_general.md)。確切的配額會根據使用的 VM 類型而定。 如需 VM 類型及其配額的清單，請參閱 [Azure 中 Linux 虛擬機器的大小][virtual-machines-sizes-linux]。
 
 若要識別支援的 Azure VM 類型，請參閱 SAP 附註 [1928533]。
 
@@ -464,11 +468,11 @@ Oracle Database 檔案不支援網路磁碟機或遠端共用 (例如 Azure 檔�
 
 | 元件 | 磁碟 | Caching | 移除* |
 | --- | ---| --- | --- |
-| /oracle/\<SID>/origlogaA & mirrlogB | Premium | None | 不需要 |
-| /oracle/\<SID>/origlogaB & mirrlogA | Premium | None | 不需要 |
-| /oracle/\<SID>/sapdata1...n | Premium | 唯讀 | 可以使用 |
+| /oracle/\<SID>/origlogaA & mirrlogB | Premium 或 Ultra 磁片 | None | 不需要 |
+| /oracle/\<SID>/origlogaB & mirrlogA | Premium 或 Ultra 磁片 | None | 不需要 |
+| /oracle/\<SID>/sapdata1...n | Premium 或 Ultra 磁片 | 唯讀 | 可用於 Premium |
 | /oracle/\<SID>/oraarch | 標準 | None | 不需要 |
-| Oracle Home、saptrace... | 作業系統磁碟 | | 不需要 |
+| Oracle `saptrace` Home、.。。 | OS 磁片 (Premium)  | | 不需要 |
 
 *移除：使用 RAID0 的 LVM stripe 或 MDADM
 
@@ -478,14 +482,14 @@ Oracle Database 檔案不支援網路磁碟機或遠端共用 (例如 Azure 檔�
 
 | 元件 | 磁碟 | Caching | 移除* |
 | --- | ---| --- | --- |
-| /oracle/\<SID>/origlogaA | Premium | None | 可以使用  |
-| /oracle/\<SID>/origlogaB | Premium | None | 可以使用 |
-| /oracle/\<SID>/mirrlogAB | Premium | None | 可以使用 |
-| /oracle/\<SID>/mirrlogBA | Premium | None | 可以使用 |
-| /oracle/\<SID>/sapdata1...n | Premium | 唯讀 | 建議  |
-| /oracle/\<SID>/sapdata(n+1)* | Premium | None | 可以使用 |
-| /oracle/\<SID>/oraarch* | Premium | None | 不需要 |
-| Oracle Home、saptrace... | 作業系統磁碟 | 不需要 |
+| /oracle/\<SID>/origlogaA | Premium 或 Ultra 磁片 | 無 | 可用於 Premium  |
+| /oracle/\<SID>/origlogaB | Premium 或 Ultra 磁片 | 無 | 可用於 Premium |
+| /oracle/\<SID>/mirrlogAB | Premium 或 Ultra 磁片 | 無 | 可用於 Premium |
+| /oracle/\<SID>/mirrlogBA | Premium 或 Ultra 磁片 | 無 | 可用於 Premium |
+| /oracle/\<SID>/sapdata1...n | Premium 或 Ultra 磁片 | 唯讀 | 適用于 Premium 的建議  |
+| /oracle/\<SID>/sapdata(n+1)* | Premium 或 Ultra 磁片 | 無 | 可用於 Premium |
+| /oracle/\<SID>/oraarch* | Premium 或 Ultra 磁片 | None | 不需要 |
+| Oracle `saptrace` Home、.。。 | OS 磁片 (Premium)  | 不需要 |
 
 *移除：使用 RAID0 的 LVM stripe 或 MDADM
 
@@ -494,11 +498,11 @@ Oracle Database 檔案不支援網路磁碟機或遠端共用 (例如 Azure 檔�
 *oraarch：從效能的觀點來看，儲存體集區並非必要。
 
 
-如果需要更多 IOPS，建議使用 LVM (邏輯磁碟區管理員) 或 MDADM，以在多個已掛接的磁碟上建立一個大型邏輯裝置。 如需詳細資訊，請參閱[適用於 SAP 工作負載的 Azure 虛擬機器 DBMS 部署考量](dbms_guide_general.md)文件，以取得利用 LVM 或 MDADM 的指導方針和指示。 這種方法可以簡化管理磁碟空間的系統管理負荷，並使您無需手動將檔案分散到多個掛接的磁碟。
+如果使用 Azure premium 儲存體時需要更多 IOPS，建議使用 LVM (邏輯磁片區管理員) 或 MDADM，在多個已掛接的磁片上建立一個大型邏輯磁片區。 如需詳細資訊，請參閱[適用於 SAP 工作負載的 Azure 虛擬機器 DBMS 部署考量](dbms_guide_general.md)文件，以取得利用 LVM 或 MDADM 的指導方針和指示。 這種方法可以簡化管理磁碟空間的系統管理負荷，並使您無需手動將檔案分散到多個掛接的磁碟。
 
 
 #### <a name="write-accelerator"></a>寫入加速器
-針對 Azure M 系列的 VM，當您使用 Azure 寫入加速器時，和 Azure 進階儲存體效能相比，寫入線上重做記錄的延遲將會大幅降低。 請針對以 Azure 進階儲存體為基礎並用於線上重做記錄檔的磁碟 (VHD) 啟用 Azure 寫入加速器。 如需詳細資訊，請參閱[寫入加速器](../../how-to-enable-write-accelerator.md)。
+針對 Azure M 系列 Vm，當您使用 Azure 寫入加速器時，寫入線上重做記錄的延遲可以透過使用 Azure premium 儲存體時的因素來降低。 請針對以 Azure 進階儲存體為基礎並用於線上重做記錄檔的磁碟 (VHD) 啟用 Azure 寫入加速器。 如需詳細資訊，請參閱[寫入加速器](../../how-to-enable-write-accelerator.md)。 或使用 Azure Ultra 磁片來進行線上重做記錄磁片區。
 
 
 ### <a name="backuprestore"></a>備份/還原
@@ -523,5 +527,9 @@ sudo curl -so /etc/udev/rules.d/68-azure-sriov-nm-unmanaged.rules https://raw.gi
 </code></pre>
 
 
-### <a name="other"></a>其他
-[適用於 SAP 工作負載的 Azure 虛擬機器 DBMS 部署考量](dbms_guide_general.md)也說明其他與搭配 Oracle Database 的 VM 部署相關的重要概念，包括 Azure 可用性設定組和 SAP 監視。
+## <a name="next-steps"></a>後續步驟
+閱讀文章 
+
+- [適用於 SAP 工作負載的 Azure 虛擬機器 DBMS 部署考量](dbms_guide_general.md)
+ 
+

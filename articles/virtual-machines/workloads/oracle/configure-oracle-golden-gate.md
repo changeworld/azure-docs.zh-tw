@@ -3,7 +3,7 @@ title: 在 Azure Linux VM 上實作 Oracle Golden Gate| Microsoft Docs
 description: 快速在您的 Azure 環境中啟動並執行 Oracle Golden Gate。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: rgardler
+author: dbakevlar
 manager: ''
 editor: ''
 tags: azure-resource-manager
@@ -13,25 +13,25 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
-ms.author: rogardle
-ms.openlocfilehash: 5ed99fd6a16743846033313fcf13702f69f3e728
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.author: kegorman
+ms.openlocfilehash: 24dfe52b7f08d93dfba70c7b63812eac53431d5c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87088354"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91274787"
 ---
 # <a name="implement-oracle-golden-gate-on-an-azure-linux-vm"></a>在 Azure Linux VM 上實作 Oracle Golden Gate 
 
 Azure CLI 可用來從命令列或在指令碼中建立和管理 Azure 資源。 本指南詳述如何使用 Azure CLI 從 Azure Marketplace 資源庫映像部署 Oracle 12c 資料庫。 
 
-這份文件逐步示範如何在 Azure VM 上建立、安裝及設定 Oracle Golden Gate。 在本教學課程中，會在單一區域的可用性設定組中設定兩部虛擬機器。 您可以使用相同的教學課程，針對單一 Azure 區域中不同可用性區域的 Vm 設定 OracleGolden 閘道，或針對兩個不同區域中的 Vm 進行設定。
+這份文件逐步示範如何在 Azure VM 上建立、安裝及設定 Oracle Golden Gate。 在本教學課程中，會在單一區域的可用性設定組中設定兩部虛擬機器。 您可以使用相同的教學課程，為單一 Azure 區域中不同可用性區域的 Vm，或在兩個不同區域中設定的 Vm 設定 OracleGolden 閘道。
 
 開始之前，請確定已安裝 Azure CLI。 如需詳細資訊，請參閱 [Azure CLI 安裝指南](/cli/azure/install-azure-cli)。
 
 ## <a name="prepare-the-environment"></a>準備環境
 
-若要執行 Oracle Golden Gate 的安裝，您需要在相同的可用性設定組建立兩個 Azure VM。 您用來建立 Vm 的 Marketplace 映射是**oracle： oracle-Database-Ee：12.1.0.2：最新版本**。
+若要執行 Oracle Golden Gate 的安裝，您需要在相同的可用性設定組建立兩個 Azure VM。 您用來建立 Vm 的 Marketplace 映射是 **oracle： oracle-Database-Ee：12.1.0.2：最新版本**。
 
 您也需要熟悉 Unix 編輯器 vi，並且對 x11 (X Windows) 有基本了解。
 
@@ -416,7 +416,7 @@ SQL> EXIT;
    > 金鑰中必須包含字串 `ssh-rsa`。 此外，金鑰的內容必須是單行文字。
    >  
 
-6. 啟動 PuTTY。 在 [**類別目錄**] 窗格中 **，選取 [** 連線  >  **SSH**  >  **驗證**]。在 [**驗證的私密金鑰**檔] 方塊中，流覽至您稍早產生的金鑰。
+6. 啟動 PuTTY。 在 [**類別目錄**] 窗格中，選取 [**連接**  >  **SSH**  >  **驗證**]。在 [**驗證的私密金鑰**檔案] 方塊中，流覽至您稍早產生的金鑰。
 
    ![[設定私密金鑰] 頁面上的螢幕擷取畫面](./media/oracle-golden-gate/setprivatekey.png)
 
@@ -432,7 +432,7 @@ SQL> EXIT;
 
 若要安裝 Oracle Golden Gate，請完成下列步驟：
 
-1. 以 oracle 的身分登入。 （您應該能夠登入，而不會提示您輸入密碼）。在開始安裝之前，請確定 Xming 正在執行。
+1. 以 oracle 的身分登入。  (您應該能夠登入，而不會提示您輸入密碼。 ) 確定 Xming 正在執行，然後再開始安裝。
 
    ```bash
    $ cd /opt/fbo_ggs_Linux_x64_shiphome/Disk1
@@ -443,7 +443,7 @@ SQL> EXIT;
 
    ![安裝程式之 [選取安裝] 分頁的螢幕擷取畫面](./media/oracle-golden-gate/golden_gate_install_01.png)
 
-3. 變更軟體位置。 然後選取 [啟動管理員]**** 方塊並輸入資料庫位置。 選取 [下一步] 以繼續進行操作。
+3. 變更軟體位置。 然後選取 [啟動管理員]**** 方塊並輸入資料庫位置。 選取 [下一步] 以繼續操作。
 
    ![[選取安裝] 分頁的螢幕擷取畫面](./media/oracle-golden-gate/golden_gate_install_02.png)
 
@@ -732,7 +732,7 @@ SQL> EXIT;
 
 ### <a name="set-up-the-replication-myvm1-and-myvm2"></a>設定複寫 (myVM1 和 myVM2)
 
-#### <a name="1-set-up-the-replication-on-myvm2-replicate"></a>1. 在 myVM2 上設定複寫（複寫）
+#### <a name="1-set-up-the-replication-on-myvm2-replicate"></a>1. 在 myVM2 上設定複寫 (複製) 
 
   ```bash
   $ cd /u01/app/oracle/product/12.1.0/oggcore_1
@@ -755,7 +755,7 @@ SQL> EXIT;
   GGSCI> EXIT
   ```
 
-#### <a name="2-set-up-the-replication-on-myvm1-primary"></a>2. 在 myVM1 （主要）上設定複寫
+#### <a name="2-set-up-the-replication-on-myvm1-primary"></a>2. 在 myVM1 (主要) 上設定複寫
 
 啟動初始載入並且檢查錯誤：
 
@@ -766,7 +766,7 @@ GGSCI> START EXTRACT INITEXT
 GGSCI> VIEW REPORT INITEXT
 ```
 
-#### <a name="3-set-up-the-replication-on-myvm2-replicate"></a>3. 在 myVM2 上設定複寫（複寫）
+#### <a name="3-set-up-the-replication-on-myvm2-replicate"></a>3. 在 myVM2 上設定複寫 (複製) 
 
 使用您之前取得的數字變更 SCN 編號：
 

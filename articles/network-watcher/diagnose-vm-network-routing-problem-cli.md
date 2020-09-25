@@ -1,7 +1,7 @@
 ---
 title: 診斷 VM 網路路由問題-Azure CLI
 titleSuffix: Azure Network Watcher
-description: 在本文章中，您將了解如何使用 Azure 網路監看員的下一個躍點功能，以診斷虛擬機器網路路由問題。
+description: 在本文中，您將瞭解如何使用 Azure 網路監看員的下一個躍點功能，來診斷虛擬機器網路路由問題的 Azure CLI。
 services: network-watcher
 documentationcenter: network-watcher
 author: damendo
@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: damendo
 ms.custom: ''
-ms.openlocfilehash: 889db5cdcb1807b859339eaf326e3cec7ea64b84
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5fa083626135170a05844a5e4434b608a1fabe60
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84738799"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91302208"
 ---
 # <a name="diagnose-a-virtual-machine-network-routing-problem---azure-cli"></a>診斷虛擬機器網路路由問題 - Azure CLI
 
@@ -85,7 +85,7 @@ az network watcher show-next-hop \
   --out table
 ```
 
-幾秒鐘之後，輸出就會通知您**nextHopType**是**網際網路**，而**routeTableId**則是**系統路由**。 此結果可讓您知道通往目的地的路由是有效的。
+幾秒鐘後，輸出會通知您 **nextHopType** 是 **網際網路**，而且 **routeTableId** 是 **系統路由**。 此結果可讓您知道通往目的地的路由是有效的。
 
 測試從 VM 輸出至 172.31.0.100 的通訊：
 
@@ -99,7 +99,7 @@ az network watcher show-next-hop \
   --out table
 ```
 
-傳回的**輸出會通知您沒有** **NextHopType**，而且**routeTableId**也是**系統路由**。 此結果可讓您知道，雖然通往目的地的系統路由是有效的，但沒有下一個躍點可將流量路由至目的地。
+傳回的輸出會通知您沒有 **任何** **NextHopType**，而且 **routeTableId** 也是 **系統路由**。 此結果可讓您知道，雖然通往目的地的系統路由是有效的，但沒有下一個躍點可將流量路由至目的地。
 
 ## <a name="view-details-of-a-route"></a>檢視路由的詳細資料
 

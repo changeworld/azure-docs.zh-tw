@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/20/2020
 ms.author: cynthn
-ms.openlocfilehash: 8a122a36b14bd3c5f4912387dc98585cb89ab53b
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: 399022c1ef740865e4b2f7b82e2175e748a2a925
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705635"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91306951"
 ---
 # <a name="time-sync-for-linux-vms-in-azure"></a>Azure 中的 Linux VM 時間同步
 
@@ -26,7 +26,7 @@ ms.locfileid: "88705635"
 Azure 受到執行 Windows Server 2016 之基礎結構的支援。 Windows Server 2016 的演算法經過改善，用來修正時間和調整本機時鐘以便與 UTC 同步。  Windows Server 2016 的準確時間功能大幅改善了 VMICTimeSync 服務控管 VM 與主機以獲得準確時間的方式。 改善功能包括更精確的 VM 開始或 VM 還原初始時間，以及插斷延遲修正。 
 
 > [!NOTE]
-> 如需 Windows Time 服務的快速概觀，請參閱此[整體概觀影片](https://aka.ms/WS2016TimeVideo)。
+> 如需 Windows Time 服務的快速概觀，請參閱此[高階概觀影片](https://aka.ms/WS2016TimeVideo)。
 >
 > 如需詳細資訊，請參閱 [Windows Server 2016 的準確時間](/windows-server/networking/windows-time-service/accurate-time)。 
 
@@ -138,7 +138,7 @@ cat /sys/class/ptp/ptp0/clock_name
 refclock PHC /dev/ptp0 poll 3 dpoll -2 offset 0
 ```
 
-如需 Ubuntu 和 NTP 的詳細資訊，請參閱 [時間同步](https://help.ubuntu.com/lts/serverguide/NTP.html)處理。
+如需 Ubuntu 和 NTP 的詳細資訊，請參閱 [時間同步](https://ubuntu.com/server/docs/network-ntp)處理。
 
 如需 Red Hat 和 NTP 的詳細資訊，請參閱 [設定 NTP](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/ch-configuring_ntp_using_ntpd#s1-Configure_NTP)。 
 

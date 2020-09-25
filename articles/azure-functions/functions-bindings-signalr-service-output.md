@@ -1,24 +1,24 @@
 ---
 title: Azure Functions SignalR Service 輸出系結
-description: 瞭解如何從 Azure Functions 傳送 SignalR Service 訊息。
+description: 瞭解 Azure Functions 的 SignalR Service 輸出系結。
 author: craigshoemaker
 ms.topic: reference
 ms.custom: devx-track-csharp
 ms.date: 02/20/2020
 ms.author: cshoe
-ms.openlocfilehash: b401ff20b553629341c5190deb4cfc54c474d789
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 7fa49583c17c198642d4ad6d72a0faa19dcfe659
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212579"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323323"
 ---
-# <a name="signalr-service-output-binding-for-azure-functions"></a>Azure Functions 的 SignalR Service 輸出系結
+# <a name="signalr-service-output-binding-for-azure-functions"></a>SignalR Service Azure Functions 的輸出系結
 
-若使用 SignalR** 輸出繫結，即可使用 Azure SignalR Service 來傳送一或多則訊息。 您可以廣播訊息來：
+若使用 SignalR** 輸出繫結，即可使用 Azure SignalR Service 來傳送一或多則訊息。 您可以廣播訊息至：
 
 - 所有已連線的用戶端
-- 已驗證特定使用者的已連線用戶端
+- 針對特定使用者驗證的已連線用戶端
 
 輸出系結也可讓您管理群組。
 
@@ -26,7 +26,7 @@ ms.locfileid: "88212579"
 
 ## <a name="broadcast-to-all-clients"></a>廣播到所有用戶端
 
-下列範例顯示的函式會使用輸出系結，將訊息傳送至所有已連線的用戶端。 *目標*是要在每個用戶端上叫用之方法的名稱。 *Arguments*屬性是零個或多個要傳遞至用戶端方法之物件的陣列。
+下列範例顯示的函式會使用輸出系結，將訊息傳送至所有連線的用戶端。 *目標*是要在每個用戶端上叫用的方法名稱。 *Arguments*屬性是要傳遞給用戶端方法的零或多個物件的陣列。
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -156,7 +156,7 @@ public SignalRMessage sendMessage(
 
 ## <a name="send-to-a-user"></a>傳送給使用者
 
-您只能將訊息傳送至已通過使用者驗證的連線，方法是在 SignalR 訊息中設定 *使用者識別碼* 。
+您可以藉由設定 SignalR 訊息中的 *使用者識別碼* ，只將訊息傳送到已通過使用者驗證的連線。
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -291,7 +291,7 @@ public SignalRMessage sendMessage(
 
 ## <a name="send-to-a-group"></a>傳送至群組
 
-您可以藉由設定 SignalR 訊息中的 *組名* ，僅將訊息傳送至已新增至群組的連接。
+您只能將訊息傳送至已新增至群組的連接，方法是在 SignalR 訊息中設定 *組名* 。
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -426,7 +426,7 @@ public SignalRMessage sendMessage(
 
 ## <a name="group-management"></a>群組管理
 
-SignalR Service 可讓使用者新增至群組。 然後可以將訊息傳送給群組。 您可以使用輸出系結 `SignalR` 來管理使用者的群組成員資格。
+SignalR Service 可讓使用者新增至群組。 然後可以將訊息傳送至群組。 您可以使用輸出系結 `SignalR` 來管理使用者的群組成員資格。
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -453,9 +453,9 @@ public static Task AddToGroup(
 }
 ```
 
-### <a name="remove-user-from-a-group"></a>從群組中移除使用者
+### <a name="remove-user-from-a-group"></a>從群組移除使用者
 
-下列範例會從群組中移除使用者。
+下列範例會將使用者從群組中移除。
 
 ```csharp
 [FunctionName("removeFromGroup")]
@@ -477,7 +477,7 @@ public static Task RemoveFromGroup(
 ```
 
 > [!NOTE]
-> 為了取得正確的系結 `ClaimsPrincipal` ，您必須已在 Azure Functions 中設定驗證設定。
+> 為了取得正確的系結 `ClaimsPrincipal` ，您必須在 Azure Functions 中設定驗證設定。
 
 # <a name="c-script"></a>[C# 指令碼](#tab/csharp-script)
 
@@ -485,7 +485,7 @@ public static Task RemoveFromGroup(
 
 下列範例會將使用者新增至群組。
 
-*function.js上的*範例
+範例 *function.js開啟*
 
 ```json
 {
@@ -519,11 +519,11 @@ public static Task Run(
 }
 ```
 
-### <a name="remove-user-from-a-group"></a>從群組中移除使用者
+### <a name="remove-user-from-a-group"></a>從群組移除使用者
 
-下列範例會從群組中移除使用者。
+下列範例會將使用者從群組中移除。
 
-*function.js上的*範例
+範例 *function.js開啟*
 
 ```json
 {
@@ -558,7 +558,7 @@ public static Task Run(
 ```
 
 > [!NOTE]
-> 為了取得正確的系結 `ClaimsPrincipal` ，您必須已在 Azure Functions 中設定驗證設定。
+> 為了取得正確的系結 `ClaimsPrincipal` ，您必須在 Azure Functions 中設定驗證設定。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -566,7 +566,7 @@ public static Task Run(
 
 下列範例會將使用者新增至群組。
 
-*function.js上的*範例
+範例 *function.js開啟*
 
 ```json
 {
@@ -590,11 +590,11 @@ module.exports = async function (context, req) {
 };
 ```
 
-### <a name="remove-user-from-a-group"></a>從群組中移除使用者
+### <a name="remove-user-from-a-group"></a>從群組移除使用者
 
-下列範例會從群組中移除使用者。
+下列範例會將使用者從群組中移除。
 
-*function.js上的*範例
+範例 *function.js開啟*
 
 ```json
 {
@@ -624,7 +624,7 @@ module.exports = async function (context, req) {
 
 下列範例會將使用者新增至群組。
 
-*function.js上的*範例
+範例 *function.js開啟*
 
 ```json
 {
@@ -636,7 +636,7 @@ module.exports = async function (context, req) {
 }
 ```
 
-*\_\_init. py__*
+*\_\_init.py__*
 
 ```python
 def main(req: func.HttpRequest, action: func.Out[str]) -> func.HttpResponse:
@@ -647,11 +647,11 @@ def main(req: func.HttpRequest, action: func.Out[str]) -> func.HttpResponse:
     }))
 ```
 
-### <a name="remove-user-from-a-group"></a>從群組中移除使用者
+### <a name="remove-user-from-a-group"></a>從群組移除使用者
 
-下列範例會從群組中移除使用者。
+下列範例會將使用者從群組中移除。
 
-*function.js上的*範例
+範例 *function.js開啟*
 
 ```json
 {
@@ -663,7 +663,7 @@ def main(req: func.HttpRequest, action: func.Out[str]) -> func.HttpResponse:
 }
 ```
 
-*\_\_init. py__*
+*\_\_init.py__*
 
 ```python
 def main(req: func.HttpRequest, action: func.Out[str]) -> func.HttpResponse:
@@ -698,9 +698,9 @@ public SignalRGroupAction addToGroup(
 }
 ```
 
-### <a name="remove-user-from-a-group"></a>從群組中移除使用者
+### <a name="remove-user-from-a-group"></a>從群組移除使用者
 
-下列範例會從群組中移除使用者。
+下列範例會將使用者從群組中移除。
 
 ```java
 @FunctionName("removeFromGroup")
@@ -722,7 +722,7 @@ public SignalRGroupAction removeFromGroup(
 
 ---
 
-## <a name="configuration"></a>組態
+## <a name="configuration"></a>設定
 
 ### <a name="signalrconnectioninfo"></a>SignalRConnectionInfo
 
@@ -753,4 +753,4 @@ public SignalRGroupAction removeFromGroup(
 
 ## <a name="next-steps"></a>後續步驟
 
-- [傳回服務端點 URL 和存取權杖， (輸入系結) ](./functions-bindings-signalr-service-input.md)
+- [傳回 (輸入系結的服務端點 URL 和存取權杖) ](./functions-bindings-signalr-service-input.md)

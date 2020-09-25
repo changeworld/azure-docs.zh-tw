@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 05/15/2018
 ms.topic: conceptual
-ms.openlocfilehash: b07e21131d9560a49d99644525835ac5ee3bac9e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 21d84bea808ba5832b81d415001a3fc25a7e1630
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "61442206"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323952"
 ---
 # <a name="integrate-sim-data-in-the-remote-monitoring-solution"></a>在遠端監視解決方案中整合 SIM 資料
 
@@ -29,7 +29,7 @@ IoT 裝置通常會使用 SIM 卡連線到雲端，讓裝置能從任何地方�
 
 ## <a name="telefnica-iot-integration-setup"></a>Telefónica IoT 整合設定
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>Prerequisites
 
 這項額外的遠端監視功能目前為預覽狀態。 若要將連線資料同步處理到 Azure 遠端監視解決方案，請遵循下列步驟：
 
@@ -61,7 +61,7 @@ Telefónica SIM 和 Azure Twin 裝置識別碼關聯是以 Telefónica IoT SIM�
 * 網路位置
 * 已取用的資料流量
 
-![儀表板](./media/iot-accelerators-remote-monitoring-telefonica-sim/dashboard.png)
+![Azure IoT 遠端監視儀表板中 Device Explorer 視窗的螢幕擷取畫面。 顯示 WeatherStation 裝置詳細資料的資料列會反白顯示。](./media/iot-accelerators-remote-monitoring-telefonica-sim/dashboard.png)
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -70,5 +70,5 @@ Telefónica SIM 和 Azure Twin 裝置識別碼關聯是以 Telefónica IoT SIM�
 * [操作 Azure IoT 遠端監視解決方案](quickstart-remote-monitoring-deploy.md)
 * [執行進階監視](iot-accelerators-remote-monitoring-monitor.md)
 * [管理您的裝置](iot-accelerators-remote-monitoring-manage.md)
-* [裝置問題疑難排解](iot-accelerators-remote-monitoring-maintain.md)
+* [針對裝置問題進行疑難排解](iot-accelerators-remote-monitoring-maintain.md)
 
