@@ -11,12 +11,12 @@ ms.reviewer: sgilley
 ms.date: 03/09/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 2b944f6207ecc47df4176a512a900e08e6b0d643
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 051a910fb8803f7c9ebc6d9cdfb00bc814db4c0e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90885937"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91250856"
 ---
 # <a name="train-models-with-azure-machine-learning-using-estimator"></a>藉由估算器使用 Azure Machine Learning 將模型定型
 
@@ -129,7 +129,7 @@ print(run.get_portal_url())
 
 將模型定型之後，您可以將其儲存並註冊到您的工作區。 註冊模型可讓您在工作區中儲存模型並設定其版本，以簡化[模型管理和部署](concept-model-management-and-deployment.md)。
 
-執行下列程式碼將會向您的工作區註冊模型，並讓其可在遠端計算內容或部署指令碼中依名稱來加以參考。 如需詳細資訊和其他參數，請參閱參考文件中的 [`register_model`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#&preserve-view=trueregister-model-model-name--model-path-none--tags-none--properties-none--model-framework-none--model-framework-version-none--description-none--datasets-none--sample-input-dataset-none--sample-output-dataset-none--resource-configuration-none----kwargs-)。
+執行下列程式碼將會向您的工作區註冊模型，並讓其可在遠端計算內容或部署指令碼中依名稱來加以參考。 如需詳細資訊和其他參數，請參閱參考文件中的 [`register_model`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py&preserve-view=true#&preserve-view=trueregister-model-model-name--model-path-none--tags-none--properties-none--model-framework-none--model-framework-version-none--description-none--datasets-none--sample-input-dataset-none--sample-output-dataset-none--resource-configuration-none----kwargs-)。
 
 ```python
 model = run.register_model(model_name='sklearn-sample', model_path=None)

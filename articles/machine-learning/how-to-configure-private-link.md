@@ -10,20 +10,34 @@ ms.custom: how-to
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 09/03/2020
-ms.openlocfilehash: 83927c9df9a4f1a6ab32c15c481898ec68f53c4c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/21/2020
+ms.openlocfilehash: 619960238125191e7bd4e702a49016c8fd58c847
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90898146"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91296649"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace-preview"></a>設定 Azure Machine Learning 工作區的 Azure Private Link (預覽) 
 
 在本檔中，您將瞭解如何搭配使用 Azure Private Link 與您的 Azure Machine Learning 工作區。 如需針對 Azure Machine Learning 設定虛擬網路的相關資訊，請參閱 [虛擬網路隔離和隱私權總覽](how-to-network-security-overview.md)
 
 > [!IMPORTANT]
-> 使用 Azure Private Link 搭配 Azure Machine Learning 工作區目前處於公開預覽狀態。 這項功能僅適用于 **美國東部**、 **美國中南部** 和 **美國西部 2** 區域。 此預覽版是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> 使用 Azure Private Link 搭配 Azure Machine Learning 工作區目前處於公開預覽狀態。 這項功能僅適用于下欄區域：
+>
+> * 美國東部
+> * **美國中南部**
+> * **美國西部**
+> * **美國西部 2**
+> * **加拿大中部**
+> * **東南亞**
+> * **日本東部**
+> * **北歐**
+> * **澳大利亞東部**
+> * **英國南部**
+>
+> 此預覽版是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 
+> 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 Azure Private Link 可讓您使用私人端點連接到工作區。 私人端點是虛擬網路內的一組私人 IP 位址。 然後，您可以將工作區的存取許可權制為只在私人 IP 位址上進行。 Private Link 有助於降低資料遭到外泄的風險。 若要深入了解私人端點，請參閱 [Azure Private Link](/azure/private-link/private-link-overview) 一文。
 
@@ -34,6 +48,10 @@ Azure Private Link 可讓您使用私人端點連接到工作區。 私人端點
 
 > [!TIP]
 > Azure Machine Learning 計算實例可以與工作區和私人端點搭配使用。 這項功能目前在 **美國東部**、 **美國中南部** 和 **美國西部 2** 區域處於公開預覽狀態。
+
+## <a name="prerequisites"></a>Prerequisites
+
+如果您計畫使用具有客戶管理金鑰的已啟用私人連結的工作區，您必須使用支援票證要求這項功能。 如需詳細資訊，請參閱 [管理和增加配額](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases)。
 
 ## <a name="create-a-workspace-that-uses-a-private-endpoint"></a>建立使用私人端點的工作區
 
@@ -54,6 +72,6 @@ Azure Private Link 可讓您使用私人端點連接到工作區。 私人端點
 如需 Azure 虛擬機器的詳細資訊，請參閱 [虛擬機器檔](/azure/virtual-machines/)。
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 如需保護 Azure Machine Learning 工作區安全的詳細資訊，請參閱 [虛擬網路隔離和隱私權總覽](how-to-network-security-overview.md) 文章。

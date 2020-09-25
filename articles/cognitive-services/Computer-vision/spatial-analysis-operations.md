@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 09/01/2020
 ms.author: aahi
-ms.openlocfilehash: 5955bc35acfaf8f877e68db083871c353a3ce326
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: f9df17afe8b6d25df3d9dcc5f4eec0b9a028404f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90984925"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91254001"
 ---
 # <a name="spatial-analysis-operations"></a>空間分析作業
 
@@ -23,7 +23,7 @@ ms.locfileid: "90984925"
 
 空間分析容器會執行下列作業：
 
-| 作業識別碼| 描述|
+| 作業識別碼| 說明|
 |---------|---------|
 | cognitiveservices，spatialanalysis-personcount | 在相機的視圖欄位中，計算指定區域內的人員。 <br> 發出初始 _personCountEvent_ 事件，然後在計數變更時 _personCountEvent_ 事件。  |
 | cognitiveservices，spatialanalysis-personcrossingline | 追蹤某位人員如何在相機的視圖欄位中，跨越指定的行。 <br>當人員跨越該行並提供方向資訊時，發出 _personLineEvent_ 事件。 
@@ -32,7 +32,7 @@ ms.locfileid: "90984925"
 
 您也可以在版本中使用上述所有作業 `.debug` ，這可讓您在處理影片框架時將其視覺化。 您必須 `xhost +` 在主機電腦上執行，才能啟用影片框架和事件的視覺效果。
 
-| 作業識別碼| 描述|
+| 作業識別碼| 說明|
 |---------|---------|
 | cognitiveservices spatialanalysis-personcount. debug | 在相機的視圖欄位中，計算指定區域內的人員。 <br> 發出初始 _personCountEvent_ 事件，然後在計數變更時 _personCountEvent_ 事件。  |
 | cognitiveservices spatialanalysis-personcrossingline. debug | 追蹤某位人員如何在相機的視圖欄位中，跨越指定的行。 <br>當人員跨越該行並提供方向資訊時，發出 _personLineEvent_ 事件。 
@@ -43,7 +43,7 @@ ms.locfileid: "90984925"
 
 <!--more details on the setup can be found in the [LVA Setup page](LVA-Setup.md). Below is the list of the operations supported with Live Video Analytics. -->
 
-| 作業識別碼| 描述|
+| 作業識別碼| 說明|
 |---------|---------|
 | cognitiveservices，spatialanalysis-personcount. livevideoanalytics | 在相機的視圖欄位中，計算指定區域內的人員。 <br> 發出初始 _personCountEvent_ 事件，然後在計數變更時 _personCountEvent_ 事件。  |
 | cognitiveservices，spatialanalysis-personcrossingline. livevideoanalytics | 追蹤某位人員如何在相機的視圖欄位中，跨越指定的行。 <br>當人員跨越該行並提供方向資訊時，發出 _personLineEvent_ 事件。 
@@ -57,7 +57,7 @@ ms.locfileid: "90984925"
 
 這些是每個空間分析作業所需的參數。
 
-| 作業參數| 描述|
+| 作業參數| 說明|
 |---------|---------|
 | 作業識別碼 | 上表中的運算識別碼。|
 | 已啟用 | 布林值： true 或 false|
@@ -88,7 +88,7 @@ ms.locfileid: "90984925"
 }
 ```
 
-| 名稱 | 類型| 描述|
+| 名稱 | 類型| 說明|
 |---------|---------|---------|
 | `zones` | list| 區域清單。 |
 | `name` | 字串| 此區域的易記名稱。|
@@ -121,7 +121,7 @@ ms.locfileid: "90984925"
 }
 ```
 
-| 名稱 | 類型| 描述|
+| 名稱 | 類型| 說明|
 |---------|---------|---------|
 | `lines` | list| 行的清單。|
 | `name` | 字串| 這一行的易記名稱。|
@@ -152,7 +152,7 @@ ms.locfileid: "90984925"
 }
 ```
 
-| 名稱 | 類型| 描述|
+| 名稱 | 類型| 說明|
 |---------|---------|---------|
 | `zones` | list| 區域清單。 |
 | `name` | 字串| 此區域的易記名稱。|
@@ -184,7 +184,7 @@ ms.locfileid: "90984925"
 }
 ```
 
-| 名稱 | 類型| 描述|
+| 名稱 | 類型| 說明|
 |---------|---------|---------|
 | `zones` | list| 區域清單。 |
 | `name` | 字串| 此區域的易記名稱。|
@@ -644,7 +644,7 @@ ms.locfileid: "90984925"
 
 ## <a name="deploying-spatial-analysis-operations-at-scale-multiple-cameras"></a>大規模部署空間分析作業 (多個相機) 
 
-為了取得 Gpu 的最佳效能和使用方式，您可以使用圖形實例，在多個相機上部署任何空間分析作業。 以下是在五個 (5) 攝影機上執行 cognitiveservices. spatialanalysis personcount 操作的範例。
+為了取得 Gpu 的最佳效能和使用方式，您可以使用圖形實例，在多個相機上部署任何空間分析作業。 以下是 `cognitiveservices.vision.spatialanalysis-personcount` 在五個攝影機上執行操作的範例。
 
 ```json
  "properties.desired": {
@@ -725,11 +725,11 @@ ms.locfileid: "90984925"
       }
   }
   ```
-| 名稱 | 類型| 描述|
+| 名稱 | 類型| 說明|
 |---------|---------|---------|
-| `batch_size` | int | 指出該操作中將使用的相機數目。|
+| `batch_size` | int | 指出將在作業中使用的相機數目。 |
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [部署人員計數 web 應用程式](spatial-analysis-web-app.md)
 * [記錄和疑難排解](spatial-analysis-logging.md)

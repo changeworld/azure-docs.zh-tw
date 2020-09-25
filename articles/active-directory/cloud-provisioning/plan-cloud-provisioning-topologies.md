@@ -11,12 +11,12 @@ ms.date: 02/26/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d442c980ad5bbe3b56eae127b6e9eaeddf380a4e
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 172e836a212f9ce097c2c4e392a7386a510c2c6b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526845"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91266287"
 ---
 # <a name="azure-ad-connect-cloud-provisioning-supported-topologies-and-scenarios"></a>Azure AD Connect 雲端布建支援的拓撲和案例
 本文說明各種內部部署和 Azure Active Directory (Azure AD 使用 Azure AD Connect 雲端布建的) 拓撲。 本文僅包含支援的設定和案例。
@@ -34,7 +34,7 @@ ms.locfileid: "90526845"
 - 您無法變更用於來源錨點的屬性。
 
 ## <a name="single-forest-single-azure-ad-tenant"></a>單一樹系、單一 Azure AD 租用戶
-![單一樹系和單一租用戶的拓撲](media/plan-cloud-provisioning-topologies/single-forest.png)
+![此圖顯示單一樹系和單一租使用者的拓撲。](media/plan-cloud-provisioning-topologies/single-forest.png)
 
 最簡單的拓撲是單一內部部署樹系、一或多個網域，以及單一 Azure AD 租使用者。  如需此案例的範例，請參閱[教學課程：具有單一 Azure AD 租使用者的單一樹](tutorial-single-forest.md)系
 
@@ -45,7 +45,7 @@ ms.locfileid: "90526845"
 常見拓撲是多個 AD 樹系、一或多個網域，以及單一 Azure AD 租使用者。  
 
 ## <a name="existing-forest-with-azure-ad-connect-new-forest-with-cloud-provisioning"></a>具有 Azure AD Connect 的現有樹系、具有雲端布建的新樹系
-![單一樹系和單一租用戶的拓撲](media/plan-cloud-provisioning-topologies/existing-forest-new-forest.png)
+![此圖顯示現有樹系和新樹系的拓撲。](media/plan-cloud-provisioning-topologies/existing-forest-new-forest.png)
 
 此案例是拓撲類似于多樹系案例，不過這項作業牽涉到現有的 Azure AD Connect 環境，然後使用 Azure AD Connect 雲端布建來建立新的樹系。  如需此案例的範例，請參閱[教學課程：具有單一 Azure AD 租使用者的現有樹](tutorial-existing-forest.md)系
 

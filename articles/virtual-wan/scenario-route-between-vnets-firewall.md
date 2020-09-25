@@ -6,15 +6,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 08/04/2020
+ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 7a344b9c1383976cfe1b7507c120e19221f3555f
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 301bc64bee291fa25506e7f435e923be7e244cd4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589345"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91267511"
 ---
 # <a name="scenario-azure-firewall---custom"></a>案例： Azure 防火牆-自訂
 
@@ -26,7 +26,7 @@ ms.locfileid: "88589345"
 
 **連接矩陣**
 
-| 寄件者           | 變更為：      | *Vnet*      | *分支*    | *網際網路*   |
+| 從           | 變更為：      | *Vnet*      | *分支*    | *網際網路*   |
 |---             |---       |---           |---            |---           |
 | **Vnet**      |   &#8594;|     X        |     AzFW      |     AzFW     |
 | **分支**   |   &#8594;|    AzFW      |       X       |       X      |

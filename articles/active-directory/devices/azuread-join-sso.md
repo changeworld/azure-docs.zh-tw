@@ -1,6 +1,6 @@
 ---
 title: 內部部署資源的 SSO 如何在加入 Azure AD 的裝置上運作 | Microsoft Docs
-description: 了解如何設定混合式 Azure Active Directory 已加入的裝置。
+description: 瞭解如何藉由設定已加入混合式 Azure Active Directory 的裝置來擴充 SSO 體驗。
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -11,38 +11,38 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 149b01401cd6feb7610510efeb1ad9a3c69f3ecf
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: ba802cb86d68298cd4dfff94162069590744833c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86024038"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91256457"
 ---
 # <a name="how-sso-to-on-premises-resources-works-on-azure-ad-joined-devices"></a>內部部署資源的 SSO 如何在加入 Azure AD 的裝置上運作
 
-加入 Azure Active Directory (Azure AD) 的裝置可對租用戶雲端應用程式提供單一登入 (SSO) 體驗可能已不稀奇。 如果您的環境具有內部部署 Active Directory （AD），您也可以將這些裝置上的 SSO 體驗延伸至依賴內部部署 AD 的資源和應用程式。 
+加入 Azure Active Directory (Azure AD) 的裝置可對租用戶雲端應用程式提供單一登入 (SSO) 體驗可能已不稀奇。 如果您的環境具有內部部署 Active Directory (AD) ，您也可以將這些裝置上的 SSO 體驗擴充到依賴內部部署 AD 的資源和應用程式。 
 
 本文將說明此作業的運作方式。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
- 如果 Azure AD 聯結的電腦未連線到您組織的網路，則需要 VPN 或其他網路基礎結構。 內部部署 SSO 需要與內部部署 AD DS 網域控制站之間的通訊。
+ 如果 Azure AD 加入的電腦未連線到您組織的網路，則需要 VPN 或其他網路基礎結構。 內部部署 SSO 需要與內部部署 AD DS 網域控制站之間的連線能力。
 
 ## <a name="how-it-works"></a>運作方式 
 
-透過已加入 Azure AD 的裝置，您的使用者已將 SSO 體驗帶入環境中的雲端應用程式。 如果您的環境具有 Azure AD 和內部部署 AD，您可能會想要將 SSO 體驗的範圍擴充到內部部署企業營運（LOB）應用程式、檔案共用和印表機。
+透過已加入 Azure AD 的裝置，您的使用者已將 SSO 體驗帶入環境中的雲端應用程式。 如果您的環境有 Azure AD 和內部部署 AD，您可能會想要將 SSO 體驗的範圍延伸至內部部署企業營運 (LOB) 應用程式、檔案共用和印表機。
 
 加入 Azure AD 的裝置不了解您的內部部署 AD 環境，因為這些裝置未加入該環境。 不過，您可以透過 Azure AD Connect 將其他有關內部部署 AD 的資訊提供給這些裝置。
 
-同時具有 Azure AD 和內部部署 AD 的環境也稱為混合式環境。 如果您有混合式環境，您很可能已經部署了 Azure AD Connect，可將內部部署身分識別資訊同步至雲端。 做為同步處理常式的一部分，Azure AD Connect 會將內部部署使用者資訊同步到 Azure AD。 當使用者登入混合式環境中已加入 Azure AD 的裝置時：
+同時具有 Azure AD 和內部部署 AD 的環境也稱為混合式環境。 如果您有混合式環境，您很可能已經部署了 Azure AD Connect，可將內部部署身分識別資訊同步至雲端。 在同步處理過程中，Azure AD Connect 會將內部部署使用者資訊同步處理至 Azure AD。 當使用者登入混合式環境中已加入 Azure AD 的裝置時：
 
-1. Azure AD 會將使用者內部部署網域的詳細資料連同主要的重新整理[權杖](concept-primary-refresh-token.md)一起傳送回裝置
-1. 「本地安全機構」（LSA）服務會在裝置上啟用 Kerberos 和 NTLM 驗證。
+1. Azure AD 將使用者內部部署網域的詳細資料，連同主要重新整理[權杖](concept-primary-refresh-token.md)傳送回裝置
+1. 本地安全機構 (LSA) 服務會在裝置上啟用 Kerberos 和 NTLM 驗證。
 
-在嘗試對使用者的內部部署環境中要求 Kerberos 或 NTLM 的資源進行存取時，裝置會：
+在嘗試存取在使用者的內部部署環境中要求 Kerberos 或 NTLM 的資源期間，裝置：
 
 1. 將內部網域資訊和使用者認證傳送給找到的 DC，以對使用者進行驗證。
-1. 根據內部部署資源或應用程式支援的通訊協定，接收 Kerberos[票證授權票證（TGT）](/windows/desktop/secauthn/ticket-granting-tickets)或 NTLM 權杖。 如果嘗試取得網域的 Kerberos TGT 或 NTLM 權杖失敗（相關的 DCLocator 超時可能會造成延遲），則會嘗試認證管理員專案，或使用者可能會收到要求目標資源認證的驗證快顯視窗。
+1. 根據內部部署資源或應用程式所支援的通訊協定，收到 Kerberos [票證授權票證 (TGT) ](/windows/desktop/secauthn/ticket-granting-tickets) 或 NTLM 權杖。 如果嘗試取得網域的 Kerberos TGT 或 NTLM 權杖失敗 (相關的 DCLocator timeout 可能會造成延遲) 、嘗試認證管理員的專案，或使用者可能會收到要求目標資源認證的驗證快顯視窗。
 
 只要應用程式已設定 **Windows 整合式驗證**，當使用者嘗試存取這些應用程式時，就可順利地取得 SSO。
 
@@ -62,7 +62,7 @@ Windows Hello 企業版需要其他設定，才能從已加入 Azure AD 的裝�
 - 用來管理所有 AD 物件的 Active Directory 使用者和電腦 (ADUC) 嵌入式管理單元。 不過，您必須指定您想要以手動方式連線的網域。
 - DHCP 嵌入式管理單元，用來管理已加入 AD 的 DHCP 伺服器。 不過，您可能需要指定 DHCP 伺服器名稱或位址。
  
-## <a name="what-you-should-know"></a>您應該知道的事情
+## <a name="what-you-should-know"></a>您應該知道的事項
 
 您可能必須調整 Azure AD Connect 中的[網域型篩選](../hybrid/how-to-connect-sync-configure-filtering.md#domain-based-filtering)，以確保必要網域的相關資料會保持同步。
 

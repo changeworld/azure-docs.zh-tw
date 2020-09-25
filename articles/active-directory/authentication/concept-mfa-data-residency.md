@@ -5,18 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 09/15/2020
+ms.date: 09/24/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e5d8dc60ee0a1f4742382b1cec8ef3ed60e8fb3
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 1b8673dd98ab66714c54720ea1d909a90e117c18
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90970669"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91266423"
 ---
 # <a name="data-residency-and-customer-data-for-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication 的資料落地與客戶資料
 
@@ -28,7 +28,7 @@ Azure Multi-Factor Authentication 服務在美國、歐洲和亞太地區都有�
 
 * 使用電話的多重要素驗證是來自美國資料中心，由全域提供者路由傳送。
 * 來自其他地區（例如歐洲或澳大利亞）的一般用途使用者驗證要求，目前是根據使用者的位置進行處理。
-* 使用 Microsoft Authenticator 應用程式的推播通知，會根據使用者的位置來發出區域資料中心。
+* 使用 Microsoft Authenticator 應用程式的推播通知，目前是根據使用者的位置在區域資料中心內處理。
     * 裝置廠商專屬的服務，例如 Apple Push 通知，可能在使用者的位置之外。
 
 ## <a name="personal-data-stored-by-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication 儲存的個人資料

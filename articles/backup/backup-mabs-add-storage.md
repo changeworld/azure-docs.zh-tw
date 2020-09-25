@@ -3,12 +3,12 @@ title: 在 Azure 備份伺服器中使用新式備份儲存體
 description: 了解 Azure 備份伺服器中的新功能。 本文說明如何升級您的備份伺服器安裝。
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: 997b2052751473d095b6534ef0bcbe3ed6a099ad
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: b077296e58e1193e454a686a392d802e905500a5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378231"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91292892"
 ---
 # <a name="add-storage-to-azure-backup-server"></a>在 Azure 備份伺服器中新儲存體
 
@@ -18,7 +18,7 @@ Azure 備份伺服器 V2 和更新版本支援 Modern Backup Storage，可節省
 > 若要使用新式備份儲存體，您必須在 Windows Server 2016 上執行備份伺服器 V2 或 V3 或在 Windows Server 2019 上執行 V3。
 > 如果您在舊版 Windows Server 上執行備份伺服器 V2，Azure 備份伺服器將無法利用新式備份儲存體。 相反地，它保護工作負載的方式會和備份伺服器 V1 一樣。 如需詳細資訊，請參閱備份伺服器版本[保護對照表](backup-mabs-protection-matrix.md)。
 >
-> 為了達成增強的備份效能，建議您在 Windows Server 2019 上使用階層式存放裝置部署 MABS v3。 如需設定階層式存放裝置的步驟，請參閱 DPM 文章「使用階層式[存放區設定 mb](/system-center/dpm/add-storage?view=sc-dpm-2019#set-up-mbs-with-tiered-storage)」。
+> 為了達成增強的備份效能，建議您在 Windows Server 2019 上使用階層式存放裝置部署 MABS v3。 如需設定階層式存放裝置的步驟，請參閱 DPM 文章「使用階層式[存放區設定 mb](/system-center/dpm/add-storage#set-up-mbs-with-tiered-storage)」。
 
 ## <a name="volumes-in-backup-server"></a>備份伺服器中的磁碟區
 
@@ -105,7 +105,7 @@ Update-DPMDiskStorage [-Volume] <Volume> [[-FriendlyName] <String> ] [[-Datasour
 
    ![停止保護成員](/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-stop-protection1.png)
 
-2. 在 [從群組中移除]**** 對話方塊中，檢閱儲存集區中已使用的磁碟空間和可用空間。 預設值是讓復原點留在磁碟上，並讓復原點按照所關聯的保留原則來到期。 選取 [確定]。
+2. 在 [從群組中移除]**** 對話方塊中，檢閱儲存集區中已使用的磁碟空間和可用空間。 預設值是讓復原點留在磁碟上，並讓復原點按照所關聯的保留原則來到期。 選取 [確定]  。
 
    如果您想要立即將已使用的磁碟空間歸還給可用的儲存集區，請選取 [刪除磁碟上的複本]**** 核取方塊，以刪除與該成員相關聯的備份資料 (與復原點)。
 
@@ -127,7 +127,7 @@ Update-DPMDiskStorage [-Volume] <Volume> [[-FriendlyName] <String> ] [[-Datasour
 
 3. 在可用磁碟清單中選取您要新增的磁碟，選取 [新增]****，然後選取 [確定]****。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 在安裝備份伺服器之後，請了解如何準備您的伺服器或開始保護工作負載。
 

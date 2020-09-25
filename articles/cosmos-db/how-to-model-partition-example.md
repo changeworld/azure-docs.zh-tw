@@ -1,22 +1,22 @@
 ---
-title: 在 Azure Cosmos DB 上使用真實世界的範例來建立模型和分割資料
+title: 使用真實世界範例在 Azure Cosmos DB 上建立模型和分割資料
 description: 了解如何使用 Azure Cosmos DB Core API 建立實際範例的模型及加以分割
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: thweiss
-ms.custom: devx-track-javascript
-ms.openlocfilehash: d5809d7475759450a513153abf641f7943163d98
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: be8e43585fca77fc891a9142066d406444b674d8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422210"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91253229"
 ---
 # <a name="how-to-model-and-partition-data-on-azure-cosmos-db-using-a-real-world-example"></a>如何使用實際範例在 Azure Cosmos DB 上建立資料的模型及加以分割
 
-本文是以數種 Azure Cosmos DB 概念為基礎，例如[資料模型](modeling-data.md)化、[分割](partitioning-overview.md)和布[建的輸送量](request-units.md)，以示範如何處理真實世界的資料設計練習。
+本文以數個 Azure Cosmos DB 概念為基礎，例如 [資料模型](modeling-data.md)化、資料 [分割](partitioning-overview.md)和布 [建的輸送量](request-units.md) ，以示範如何處理實際的資料設計練習。
 
 如果您經常使用關聯式資料庫，您可能已有設計資料模型的習慣和觀念。 基於特定的條件約束，以及 Azure Cosmos DB 的獨特功能，這些最佳做法大多無法發揮實際功效，而可能迫使您選擇次佳的解決方案。 本文的目的，是要引導您在 Azure Cosmos DB 中完成為實際使用案例建立模型的程序，從建立項目模型、實體共置到容器分割，逐步完成。
 
@@ -52,9 +52,9 @@ ms.locfileid: "87422210"
 - **[Q4]** 列出貼文的留言
 - **[C4]** 對貼文按讚
 - **[Q5]** 列出貼文的讚
-- **[Q6]** 列出以簡短形式建立的*x*最新貼文（摘要）
+- **[Q6]** 以簡短形式列出最近建立的 *x* 個最新貼文 (摘要) 
 
-在此階段中，我們尚未考慮到每個實體 (使用者、貼文等) 所將包含的詳細資料。 此步驟通常是在針對關聯式存放區進行設計時要破解的第一個步驟，因為我們必須找出這些實體在資料表、資料行、外鍵等方面的轉譯方式。對於不會在寫入時強制執行任何架構的檔資料庫，這方面的顧慮就少很多。
+在此階段中，我們尚未考慮到每個實體 (使用者、貼文等) 所將包含的詳細資料。 此步驟通常是在針對關聯式存放區進行設計時要破解的第一個步驟，因為我們必須找出這些實體在資料表、資料行、外鍵等方面的轉譯方式。在寫入時，不會強制執行任何架構的檔資料庫也不會有太大的顧慮。
 
 之所以要在一開始就找出存取模式，主要是因為這份要求清單將成為我們的測試套件。 我們在每次反覆執行資料模型時，都將查看每個要求，並檢查其效能和延展性。
 
@@ -228,7 +228,7 @@ ms.locfileid: "87422210"
 
 :::image type="content" source="./media/how-to-model-partition-example/V1-Q6.png" alt-text="擷取最新的貼文並彙總其他資料" border="false":::
 
-同樣地，我們的初始查詢不會針對容器的分割區索引鍵進行篩選 `posts` ，這會觸發昂貴的展開傳送。當我們以較大的結果集為目標，並使用子句來排序結果時，這會變得 `ORDER BY` 更糟，這會使要求單位的成本更高。
+同樣地，我們的初始查詢不會篩選容器的分割區索引鍵 `posts` ，這會觸發昂貴的展開傳送。當我們以更大的結果集為目標，並使用子句來排序結果時，這項功能會更糟 `ORDER BY` ，因為要求單位的要求單位會更昂貴。
 
 | **延遲** | **RU 費用** | **效能** |
 | --- | --- | --- |
@@ -243,7 +243,7 @@ ms.locfileid: "87422210"
 
 我們將從第一個問題開始逐一解決這些問題。
 
-## <a name="v2-introducing-denormalization-to-optimize-read-queries"></a>V2：介紹反正規化以優化讀取查詢
+## <a name="v2-introducing-denormalization-to-optimize-read-queries"></a>V2：將執行反正規化以優化讀取查詢的簡介
 
 我們之所以必須在某些情況下發出其他要求，是因為初始要求的結果未包含我們需要傳回的所有資料。 在使用 Azure Cosmos DB 等非關聯式資料存放區時，這類問題通常可藉由對我們的資料集反正規化資料而獲得解決。
 
@@ -403,7 +403,7 @@ function updateUsernames(userId, username) {
 | --- | --- | --- |
 | 4 毫秒 | 8.92 RU | ✅ |
 
-## <a name="v3-making-sure-all-requests-are-scalable"></a>V3：確定所有要求都是可調整的
+## <a name="v3-making-sure-all-requests-are-scalable"></a>V3：確定所有要求都可調整
 
 檢視整體效能的改進時，我們發現還有兩個要求未完全最佳化：**[Q3]** 和 **[Q6]**。 這些要求牽涉到不會依目標容器的分割區索引鍵進行篩選的查詢。
 
@@ -557,12 +557,12 @@ function truncateFeed() {
 
 | | V1 | V2 | V3 |
 | --- | --- | --- | --- |
-| **C1** | 7 毫秒 / 5.71 RU | 7 毫秒 / 5.71 RU | 7 毫秒 / 5.71 RU |
-| **起** | 2 毫秒 / 1 RU | 2 毫秒 / 1 RU | 2 毫秒 / 1 RU |
+| **低耗** | 7 毫秒 / 5.71 RU | 7 毫秒 / 5.71 RU | 7 毫秒 / 5.71 RU |
+| **季** | 2 毫秒 / 1 RU | 2 毫秒 / 1 RU | 2 毫秒 / 1 RU |
 | **C2** | 9 毫秒 / 8.76 RU | 9 毫秒 / 8.76 RU | 9 毫秒 / 8.76 RU |
-| **Q2** | 9 毫秒 / 19.54 RU | 2 毫秒 / 1 RU | 2 毫秒 / 1 RU |
-| **季度** | 130 毫秒 / 619.41 RU | 28 毫秒 / 201.54 RU | 4 毫秒 / 6.46 RU |
-| **低耗** | 7 毫秒 / 8.57 RU | 7 毫秒 / 15.27 RU | 7 毫秒 / 15.27 RU |
+| **同比** | 9 毫秒 / 19.54 RU | 2 毫秒 / 1 RU | 2 毫秒 / 1 RU |
+| **三** | 130 毫秒 / 619.41 RU | 28 毫秒 / 201.54 RU | 4 毫秒 / 6.46 RU |
+| **C3** | 7 毫秒 / 8.57 RU | 7 毫秒 / 15.27 RU | 7 毫秒 / 15.27 RU |
 | **[Q4]** | 23 毫秒 / 27.72 RU | 4 毫秒 / 7.72 RU | 4 毫秒 / 7.72 RU |
 | **C4** | 6 毫秒 / 7.05 RU | 7 毫秒 / 14.67 RU | 7 毫秒 / 14.67 RU |
 | **[Q5]** | 59 毫秒 / 58.92 RU | 4 毫秒 / 8.92 RU | 4 毫秒 / 8.92 RU |
@@ -588,4 +588,4 @@ function truncateFeed() {
 
 - [使用資料庫、容器和項目](databases-containers-items.md)
 - [Azure Cosmos DB 中的資料分割](partitioning-overview.md)
-- [變更 Azure Cosmos DB 中的摘要](change-feed.md)
+- [Azure Cosmos DB 中的變更摘要](change-feed.md)

@@ -1,20 +1,22 @@
 ---
 title: 遷移總覽-LUIS
 description: 瞭解遷移路徑上的內容
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/22/2020
-ms.openlocfilehash: 4080dd27414c2da551b60ad430278c18768337c9
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: d6ecacf9aa1a7e650de74a412ed4f161ed0e0790
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88587815"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91253797"
 ---
 # <a name="migration-in-luis"></a>LUIS 中的遷移
 
 有幾個專案是在遷移路徑上。 使用下表來瞭解受影響的內容，以及何時需要完成的遷移。
 
-|區域|描述|遷移完成日期|
+|區域|說明|遷移完成日期|
 |--|--|--|
 |[預測 Api](luis-migration-api-v3.md)|遷移至 V3 API。|TBD|
 |[編寫 API](luis-migration-authoring-entities.md)|遷移至 V3 API。|TBD|

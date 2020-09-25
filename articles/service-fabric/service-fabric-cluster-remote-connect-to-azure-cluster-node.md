@@ -3,12 +3,12 @@ title: 遠端連線至 Azure Service Fabric 叢集節點
 description: 了解如何從遠端連線擴展集執行個體 (Service Fabric 叢集節點)。
 ms.topic: conceptual
 ms.date: 03/23/2018
-ms.openlocfilehash: c7ca4f0d5dce1b19837a44d5c9749f3e1293c6b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 98d573af4fc2026134e75d4caf24a09e57e52c87
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75458328"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268089"
 ---
 # <a name="remote-connect-to-a-virtual-machine-scale-set-instance-or-a-cluster-node"></a>遠端連線到虛擬機器擴展集執行個體或叢集節點
 在 Azure 中執行的 Service Fabric 叢集內，您定義的每個叢集節點類型都會[設定虛擬機器的個別擴展](service-fabric-cluster-nodetypes.md)。  您可以從遠端連線特定的擴展集執行個體 (叢集節點)。  不同於單一執行個體的 VM，VM 擴展集的執行個體不會有自己的虛擬 IP 位址。 當您要尋找可用來遠端連線至特定執行個體的 IP 位址和連接埠時，可能有點困難。
@@ -19,13 +19,13 @@ ms.locfileid: "75458328"
 
     在叢集中定義的每個節點類型通常都有它自己的虛擬 IP 位址和專用負載平衡器。 根據預設，節點類型的負載平衡器名稱採用下列格式：LB-{cluster-name}-{node-type}**；例如，LB-mycluster-FrontEnd**。 
     
-    在 Azure 入口網站的負載平衡器頁面上，選取 [**設定**] [  >  **輸入 NAT 規則**]： 
+    在 Azure 入口網站的負載平衡器頁面上，選取 [**設定**  >  **輸入 NAT 規則**： 
 
-    ![負載平衡器輸入 NAT 規則](./media/service-fabric-cluster-remote-connect-to-azure-cluster-node/lb-window.png)
+    ![Azure 入口網站中負載平衡器頁面的螢幕擷取畫面。 在左側功能表的 [設定] 底下，選取 [輸入 NAT 規則]。](./media/service-fabric-cluster-remote-connect-to-azure-cluster-node/lb-window.png)
 
     下列螢幕擷取畫面顯示 FrontEnd 節點類型的輸入 NAT 規則： 
 
-    ![負載平衡器輸入 NAT 規則](./media/service-fabric-cluster-remote-connect-to-azure-cluster-node/nat-rules.png)
+    ![顯示負載平衡器輸入 NAT 規則的螢幕擷取畫面。 每個規則都會列出名稱、IP 版本、目的地、目標和服務。](./media/service-fabric-cluster-remote-connect-to-azure-cluster-node/nat-rules.png)
 
     針對每個節點，IP 位址會出現在 [目的地]**** 資料行中，[目標]**** 資料行會提供擴展集執行個體，而 [服務]**** 資料行會提供連接埠號碼。 針對遠端連線，連接埠會以遞增順序配置給每個節點 (開頭為連接埠 3389)。
 
@@ -52,7 +52,7 @@ ms.locfileid: "75458328"
 
 若要了解後續步驟，請閱讀下列文章：
 * 請參閱[「到處部署」功能和與 Azure 受控叢集比較的概觀](service-fabric-deploy-anywhere.md)。
-* 深入瞭解叢集[安全性](service-fabric-cluster-security.md)。
+* 瞭解叢集 [安全性](service-fabric-cluster-security.md)。
 * 部署後在叢集 VM 上[更新 RDP 連接埠範圍值](./scripts/service-fabric-powershell-change-rdp-port-range.md)
 * 變更叢集 VM 的[管理員使用者名稱和密碼](./scripts/service-fabric-powershell-change-rdp-user-and-pw.md)
 

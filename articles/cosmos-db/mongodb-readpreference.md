@@ -1,5 +1,5 @@
 ---
-title: 搭配適用于 MongoDB 的 Azure Cosmos DB API 使用讀取喜好設定
+title: 搭配 Azure Cosmos DB 的 MongoDB API 使用讀取喜好設定
 description: 了解如何搭配 Azure Cosmos DB 適用於 MongoDB 的 API 使用 MongoDB 讀取喜好設定
 author: sivethe
 ms.author: sivethe
@@ -8,19 +8,19 @@ ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: how-to
 ms.date: 02/26/2019
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 22530e79a2bcf34a88ea857bda56b6f424894461
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: a0bc2118c1a7e719c5ac45cb4d253a0708acefdf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421989"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91292333"
 ---
 # <a name="how-to-globally-distribute-reads-using-azure-cosmos-dbs-api-for-mongodb"></a>如何使用 Azure Cosmos DB 適用於 MongoDB 的 API 來設定全域散發讀取
 
 本文說明如何搭配 Azure Cosmos DB 適用於 MongoDB 的 API 使用 [MongoDB 讀取喜好設定](https://docs.mongodb.com/manual/core/read-preference/)來全域散發讀取作業。
 
-## <a name="prerequisites"></a>必要條件 
+## <a name="prerequisites"></a>Prerequisites 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
 [!INCLUDE [cosmos-db-emulator-mongodb](../../includes/cosmos-db-emulator-mongodb.md)]
 
@@ -87,7 +87,7 @@ MongoDB 通訊協定會提供下列讀取喜好設定模式供用戶端使用：
 根據常見案例，建議您使用下列設定：
 
 1. 如果需要**低延遲讀取區域**，請使用 **NEAREST** 讀取喜好設定模式。 此設定會將讀取作業導向至最接近的可用區域。 請注意，如果最接近的區域是寫入區域，則會將這些作業導向至該區域。
-2. 如果需要**高可用性和異地散發的讀取**（延遲不是條件約束），則請使用**主要慣用**或**次要慣用**的讀取喜好設定模式。 此設定會將讀取作業分別導向至可用的寫入或讀取區域。 如果區域無法使用，則會根據讀取喜好設定行為，將要求導向至下一個可用的區域。
+2. 如果需要 **讀取的高可用性和地理分佈** (延遲不是) 的條件約束，則請使用 **主要慣用** 或 **次要慣用** 的讀取喜好設定模式。 此設定會將讀取作業分別導向至可用的寫入或讀取區域。 如果區域無法使用，則會根據讀取喜好設定行為將要求導向到下一個可用的區域。
 
 下列來自範例應用程式的程式碼片段示範如何在 NodeJS 中設定 NEAREST 讀取喜好設定：
 
@@ -166,8 +166,8 @@ MongoClient.connect(url, function(err, client) {
 
 如果您將不繼續使用此應用程式，請使用下列步驟，在 Azure 入口網站中刪除此文章所建立的所有資源：
 
-1. 從 Azure 入口網站的左側功能表中，按一下 [資源群組]****，然後按一下您所建立資源的名稱。 
-2. 在資源群組頁面上，按一下 [刪除]****，在文字方塊中輸入要刪除之資源的名稱，然後按一下 [刪除]****。
+1. 從 Azure 入口網站的左側功能表中，按一下 [資源群組]  ，然後按一下您所建立資源的名稱。 
+2. 在資源群組頁面上，按一下 [刪除]  ，在文字方塊中輸入要刪除之資源的名稱，然後按一下 [刪除]  。
 
 ## <a name="next-steps"></a>後續步驟
 

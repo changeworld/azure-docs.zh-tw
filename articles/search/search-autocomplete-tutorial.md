@@ -8,13 +8,13 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/08/2020
-ms.custom: devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: 8be53838f6262eaafc643bc78fd08b6f02d9bac6
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.custom: devx-track-js, devx-track-csharp
+ms.openlocfilehash: bf5ebafa1b1ad9e2cfabcfc3d474392ecdbc98e6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89660264"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268276"
 ---
 # <a name="add-autocomplete-and-suggestions-to-client-apps"></a>將自動完成和建議新增至用戶端應用程式
 
@@ -67,7 +67,7 @@ Api 不會對部分查詢強加最小長度需求;它可以只是一個字元。
 
 針對建議，您應該進一步精簡回應以避免重複，或看似不相關的結果。 若要控制結果，請在要求中包含更多參數。 下列參數適用于自動完成和建議，但可能更是建議的必要項，特別是在建議工具組含多個欄位時。
 
-| 參數 | 使用方式 |
+| 參數 | 使用量 |
 |-----------|-------|
 | **$select** | 如果您在建議工具中有多個 **sourceFields** ，請使用 **$select** 選擇 () 中提供值的欄位 `$select=GameTitle` 。 |
 | **searchFields** | 將查詢限制為特定欄位。 |
@@ -247,7 +247,7 @@ public ActionResult AutoComplete(string term)
 
 自動完成函式會取用搜尋字詞輸入。 此方法會建立 [AutoCompleteParameters 物件](/rest/api/searchservice/autocomplete)。 結果接著會轉換為 JSON，以供在用戶端中顯示。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 請遵循下列連結以取得端對端指示，或示範搜尋即用類型體驗的程式碼。 這兩個程式碼範例都包含混合的建議和自動完成。
 

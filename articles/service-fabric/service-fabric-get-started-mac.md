@@ -5,13 +5,13 @@ author: suhuruli
 ms.topic: conceptual
 ms.date: 11/17/2017
 ms.author: suhuruli
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 74dfe54bf5f842aea59bf6cb35a00aeef81766f1
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.custom: devx-track-js
+ms.openlocfilehash: a0c9b552947f2a9dc0f3fee3d39829efdcea1b68
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87429014"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91249921"
 ---
 # <a name="set-up-your-development-environment-on-mac-os-x"></a>在 Mac OS X 上設定開發環境
 > [!div class="op_single_selector"]
@@ -23,7 +23,7 @@ ms.locfileid: "87429014"
 
 您可以建置 Azure Service Fabric 應用程式，以使用 Mac OS X 在 Linux 叢集上執行。本文件涵蓋如何設定您的 Mac 進行開發。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 Azure Service Fabric 不會在 Mac OS X 上以原生方式執行。若要執行本機 Service Fabric 叢集，我們提供預先設定的 Docker 容器映像。 開始之前，您需要：
 
 * 至少 4 GB 的 RAM。
@@ -49,7 +49,7 @@ Azure Service Fabric 不會在 Mac OS X 上以原生方式執行。若要執行�
     
     >[!NOTE]
     >
-    >建議您直接在 Docker 中修改背景程式，因為檔案上 daemon.js的位置會因電腦而異。 例如，~/Library/Containers/com.docker.docker/Data/database/com.docker.driver.amd64-linux/etc/docker/daemon.json。
+    >建議您直接在 Docker 中修改 daemon，因為檔案 daemon.js的位置可能會因電腦而異。 例如，~/Library/Containers/com.docker.docker/Data/database/com.docker.driver.amd64-linux/etc/docker/daemon.json。
     >
 
     >[!TIP]
@@ -215,7 +215,7 @@ docker run -itd -p 19080:19080 -v /Users/sayantan/work/workspaces/mySFWorkspace:
 ## <a name="next-steps"></a>後續步驟
 <!-- Links -->
 * [使用 Yeoman 在 Linux 上建立和部署第一個 Service Fabric Java 應用程式](service-fabric-create-your-first-linux-application-with-java.md)
-* [使用適用于 Eclipse 的 Service Fabric 外掛程式，在 Linux 上建立和部署您的第一個 Service Fabric JAVA 應用程式](service-fabric-get-started-eclipse.md)
+* [使用適用于 Eclipse 的 Service Fabric 外掛程式，在 Linux 上建立及部署您的第一個 Service Fabric JAVA 應用程式](service-fabric-get-started-eclipse.md)
 * [在 Azure 入口網站中建立 Service Fabric 叢集](service-fabric-cluster-creation-via-portal.md)
 * [使用 Azure Resource Manager 來建立 Service Fabric 叢集](service-fabric-cluster-creation-via-arm.md)
 * [了解 Service Fabric 應用程式模型](service-fabric-application-model.md)

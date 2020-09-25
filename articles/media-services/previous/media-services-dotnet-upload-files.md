@@ -1,6 +1,6 @@
 ---
 title: 使用 .NET 將檔案上傳至媒體服務帳戶 | Microsoft Docs
-description: 了解如何建立並上傳資產，以將媒體內容移至媒體服務中。
+description: 瞭解如何使用 .NET 建立和上傳資產，以將媒體內容帶入媒體服務。
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 51f6b40fc4cafad16ef6f6ca92fafa7ba1378c4a
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 83e9b0278e99867cafa7e633bc382e490ec273c1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89255931"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91250518"
 ---
 # <a name="upload-files-into-a-media-services-account-using-net"></a>使用 .NET 將檔案上傳至媒體服務帳戶
 

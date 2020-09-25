@@ -8,14 +8,14 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.tgt_pltfrm: arduino
-ms.date: 02/10/2020
+ms.date: 09/16/2020
 ms.author: robinsh
-ms.openlocfilehash: 5551655843b8d3ed5b6d70f5d6ed3a0eb4d0e92f
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 5f51ffc3135ff35214a2c5c40cce1f2b3fcaf33e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83746966"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91290882"
 ---
 # <a name="weather-forecast-using-the-sensor-data-from-your-iot-hub-in-azure-machine-learning"></a>在 Azure Machine Learning 中使用 IoT 中樞的感應器資料進行氣象預報
 
@@ -46,6 +46,10 @@ ms.locfileid: "83746966"
   - 位於您訂用帳戶中的 Azure IoT 中樞。
   - 將訊息傳送到您 Azure IoT 中樞的用戶端應用程式。
 - [Azure Machine Learning Studio (傳統版)](https://studio.azureml.net/) 帳戶。
+- 慣用的 [Azure 儲存體帳戶](https://docs.microsoft.com/azure/storage/common/storage-account-overview?toc=/azure/storage/blobs/toc.json#types-of-storage-accounts)（ **一般用途 v2** 帳戶），但任何支援 Azure Blob 儲存體的 Azure 儲存體帳戶也可以運作。
+
+> [!Note]
+> 本文使用 Azure 串流分析和數個其他付費服務。 必須在 Azure 區域之間傳輸資料時，Azure 串流分析中會產生額外費用。 基於這個理由，確定您的資源群組、IoT 中樞和 Azure 儲存體帳戶，以及稍後在本教學課程中新增的 Machine Learning Studio (傳統) 工作區和 Azure 串流分析作業，都位於相同的 Azure 區域。 您可以在 [ [依區域的 azure 產品可用性] 頁面](https://azure.microsoft.com/global-infrastructure/services/?products=machine-learning-studio&regions=all)上，查看 Azure Machine Learning Studio 和其他 azure 服務的區域支援。
 
 ## <a name="deploy-the-weather-prediction-model-as-a-web-service"></a>將氣象預報模型部署為 Web 服務
 
@@ -59,7 +63,7 @@ ms.locfileid: "83746966"
 
    ![在 Azure AI 資源庫中開啟 [氣象預測模型] 頁面](media/iot-hub-weather-forecast-machine-learning/weather-prediction-model-in-azure-ai-gallery.png)
 
-1. 在 Microsoft Azure Machine Learning Studio (傳統版) 中按一下 [在 Studio 中開啟 (傳統版)] 以開啟模型。
+1. 選取 [ **在 studio 中開啟] (傳統) ** 開啟 Microsoft Azure Machine Learning Studio (傳統) 中的模型。 從資源庫快顯視窗中選取 IoT 中樞附近的區域，以及 **複製實驗** 中的正確工作區。
 
    ![在 Azure Machine Learning Studio (傳統版) 中開啟氣象預報模型](media/iot-hub-weather-forecast-machine-learning/open-ml-studio.png)
 
@@ -67,7 +71,7 @@ ms.locfileid: "83746966"
 
 若要讓模型正確運作，溫度和濕度資料必須可轉換為數值資料。 在本節中，您會將 R 指令碼模組新增至氣象預測模型，以移除具有無法轉換為數值之溫度或濕度資料值的任何資料列。
 
-1. 在 [Azure Machine Learning Studio] 視窗的左側，按一下箭號以展開 [工具] 面板。 在搜尋方塊中輸入 "Execute"。 選取**執行 R 指令碼**模組。
+1. 在 Azure Machine Learning Studio 視窗的左側，選取箭號以展開 [工具] 面板。 在搜尋方塊中輸入 "Execute"。 選取**執行 R 指令碼**模組。
 
    ![選取執行 R 指令碼模組](media/iot-hub-weather-forecast-machine-learning/select-r-script-module.png)
 
@@ -98,21 +102,21 @@ ms.locfileid: "83746966"
 
 在本節中，您會驗證模型、根據模型設定預測性 Web 服務，然後部署 Web 服務。
 
-1. 按一下 [執行] 來驗證模型中的步驟。 完成此步驟可能需要數分鐘的時間。
+1. 選取 [ **執行** ] 以驗證模型中的步驟。 完成此步驟可能需要數分鐘的時間。
 
    ![執行實驗來驗證步驟](media/iot-hub-weather-forecast-machine-learning/run-experiment.png)
 
-1. 按一下 [設定 Web 服務] > [預測性 Web 服務]。 預測性實驗圖表隨即開啟。
+1. 選取 [**設定 web 服務**  >  **預測性 web 服務**]。 預測性實驗圖表隨即開啟。
 
    ![在 Azure Machine Learning Studio (傳統版) 中部署氣象預報模型](media/iot-hub-weather-forecast-machine-learning/predictive-experiment.png)
 
-1. 在預測性實驗圖表中，刪除 **Web 服務輸入**模組，以及頂端的**氣象資料集**之間的連線。 然後，將 [Web 服務輸入] 模組拖曳至接近 [評分模型] 模組並加以連線，如下所示：
+1. 在預測性實驗圖中，刪除 **Web 服務輸入** 模組與頂端 **資料集中的選取資料行** 之間的連接。 然後，將 [Web 服務輸入] 模組拖曳至接近 [評分模型] 模組並加以連線，如下所示：
 
-   ![在 Azure Machine Learning Studio (傳統版) 中連線兩個模組](media/iot-hub-weather-forecast-machine-learning/13_connect-modules-azure-machine-learning-studio.png)
+   ![在 Azure Machine Learning Studio (傳統版) 中連線兩個模組](media/iot-hub-weather-forecast-machine-learning/connect-modules-azure-machine-learning-studio.png)
 
-1. 按一下 [執行] 來驗證模型中的步驟。
+1. 選取 [ **執行** ] 以驗證模型中的步驟。
 
-1. 按一下 [部署 Web 服務] 來將模型部署為 Web 服務。
+1. 選取 [ **部署 WEB 服務** ]，將模型部署為 WEB 服務。
 
 1. 在模型的儀表板上，下載**要求/回應**的 **Excel 2010 或舊版活頁簿**。
 
@@ -129,45 +133,53 @@ ms.locfileid: "83746966"
 
 ### <a name="create-a-stream-analytics-job"></a>建立串流分析作業
 
-1. 在 [Azure 入口網站](https://portal.azure.com/)中，按一下 [建立資源] > [物聯網] > [串流分析作業]。
+1. 在 [ [Azure 入口網站](https://portal.azure.com/)中，選取 [ **建立資源**]。 在搜尋方塊中輸入「串流分析作業」，然後從 [結果] 下拉式清單中選取 [ **串流分析工作** ]。 當 [ **串流分析工作** ] 窗格開啟時，選取 [ **建立**]。
 1. 輸入作業的以下資訊。
 
    **作業名稱**：作業的名稱。 此名稱必須是全域唯一的。
+
+   **訂**用帳戶：如果您的訂用帳戶與預設值不同，請選取它。
 
    **資源群組**：使用 IoT 中樞所用的相同資源群組。
 
    **位置**：使用與資源群組相同的位置。
 
-   **釘選到儀表板**：核取此選項可讓您從儀表板輕鬆地存取 IoT 中樞。
+   將所有其他欄位保留為預設值。
 
-   ![在 Azure 中建立串流分析作業](media/iot-hub-weather-forecast-machine-learning/7_create-stream-analytics-job-azure.png)
+   ![在 Azure 中建立串流分析作業](media/iot-hub-weather-forecast-machine-learning/create-stream-analytics-job.png)
 
-1. 按一下頁面底部的 [新增] 。
+1. 選取 [建立]。
 
 ### <a name="add-an-input-to-the-stream-analytics-job"></a>將輸入新增至串流分析作業
 
 1. 開啟串流分析作業。
-1. 在 [作業拓撲] 之下，按一下 [輸入]。
-1. 在 [輸入] 窗格中，按一下 [新增]，然後輸入下列資訊︰
+1. 在 [作業拓撲] 下，選取 [輸入]。
+1. 在 [ **輸入** ] 窗格中，選取 [ **新增資料流程輸入**]，然後從下拉式清單中選取 [ **IoT 中樞** ]。 在 [ **新增輸入** ] 窗格中，選擇您訂用帳戶中的 [ **選取 IoT 中樞** ]，然後輸入下列資訊：
 
    **輸入別名**：輸入的唯一別名。
 
-   **來源**：選取 [IoT 中樞]。
+   **訂**用帳戶：如果您的訂用帳戶與預設值不同，請選取它。
+
+   **Iot 中樞**：從您的訂用帳戶選取 IoT 中樞。
+
+   **共用存取原則名稱**：選取  **服務**。  (您也可以使用 **iothubowner**。 ) 
 
    **取用者群組**：選取您所建立的取用者群組。
 
-   ![在 Azure 中將輸入新增至串流分析作業](media/iot-hub-weather-forecast-machine-learning/8_add-input-stream-analytics-job-azure.png)
+   將所有其他欄位保留為預設值。
 
-1. 按一下頁面底部的 [新增] 。
+   ![在 Azure 中將輸入新增至串流分析作業](media/iot-hub-weather-forecast-machine-learning/add-input-stream-analytics-job.png)
+
+1. 選取 [儲存]。
 
 ### <a name="add-an-output-to-the-stream-analytics-job"></a>將輸出新增至串流分析作業
 
-1. 在 [作業拓撲] 之下，按一下 [輸出]。
-1. 在 [輸出] 窗格中，按一下 [新增]，然後輸入下列資訊︰
+1. 在 [作業拓撲] 下，選取 [輸出]。
+1. 在 [ **輸出** ] 窗格中，選取 [ **新增**]，然後從下拉式清單中選取 [ **Blob 儲存體]/[Data Lake Storage** ]。 在新的 [ **輸出** ] 窗格中，選擇 [ **從您的訂用帳戶選取儲存體** ]，然後輸入下列資訊：
 
    **輸出別名**：輸出的唯一別名。
 
-   **接收**：選取 [Blob 儲存體]。
+   **訂**用帳戶：如果您的訂用帳戶與預設值不同，請選取它。
 
    **儲存體帳戶**：您 Blob 儲存體的儲存體帳戶。 您可以建立儲存體帳戶，或使用現有的帳戶。
 
@@ -175,32 +187,28 @@ ms.locfileid: "83746966"
 
    **事件序列化格式**：選取 [CSV]。
 
-   ![在 Azure 中將輸出新增至串流分析作業](media/iot-hub-weather-forecast-machine-learning/9_add-output-stream-analytics-job-azure.png)
+   ![在 Azure 中將輸出新增至串流分析作業](media/iot-hub-weather-forecast-machine-learning/add-output-stream-analytics-job.png)
 
-1. 按一下頁面底部的 [新增] 。
+1. 選取 [儲存]。
 
 ### <a name="add-a-function-to-the-stream-analytics-job-to-call-the-web-service-you-deployed"></a>將功能新增至串流分析作業，以呼叫您所部署的 Web 服務
 
-1. 在 [作業拓撲] 下，按一下 [函式] > [新增]。
-1. 輸入以下資訊：
+1. 在 [ **作業拓撲**] 下，選取 [ **函數**]。
+1. 在 [ **函數** ] 窗格中，選取 [ **新增**]，然後從下拉式清單中選取 [ **Azure ML Studio** ]。  (確定選取 **AZURE Ml Studio**，而不是 **azure ml 服務**。 ) 在 **新** 的函式窗格上，選擇 **手動提供 Azure Machine Learning 函數設定** ，然後輸入下列資訊：
 
    **函式別名**：輸入 `machinelearning`。
-
-   **函式類型**：選取 [Azure ML]。
-
-   **匯入選項**：選取 [從不同的訂用帳戶匯入]。
 
    **URL**：輸入您從 Excel 活頁簿記下的 Web 服務 URL。
 
    **金鑰**：輸入您從 Excel 活頁簿記下的存取金鑰。
 
-   ![在 Azure 中將功能新增至串流分析作業](media/iot-hub-weather-forecast-machine-learning/10_add-function-stream-analytics-job-azure.png)
+   ![在 Azure 中將功能新增至串流分析作業](media/iot-hub-weather-forecast-machine-learning/add-function-stream-analytics-job.png)
 
-1. 按一下頁面底部的 [新增] 。
+1. 選取 [儲存]。
 
 ### <a name="configure-the-query-of-the-stream-analytics-job"></a>設定串流分析作業的查詢
 
-1. 在 [作業拓撲] 之下，按一下 [查詢]。
+1. 在 [作業拓撲] 下，選取 [查詢]。
 1. 將現有程式碼取代為下列程式碼：
 
    ```sql
@@ -216,13 +224,16 @@ ms.locfileid: "83746966"
 
    使用作業的輸出別名取代 `[YourOutputAlias]`。
 
-1. 按一下 [檔案] 。
+1. 選取 [儲存佇列]。
+
+> [!Note]
+> 如果您選取 [ **測試查詢**]，將會看到下列訊息：不支援使用 Machine Learning 函數進行查詢測試。 請修改查詢，然後再試一次。 您可以放心地忽略此訊息，然後選取 **[確定]** 關閉訊息方塊。 請務必先儲存查詢，然後再繼續進行下一節。
 
 ### <a name="run-the-stream-analytics-job"></a>執行串流分析作業
 
-在串流分析作業中，按一下 [啟動] > [立即] > [啟動]。 成功啟動作業後，作業狀態會從 [已停止] 變更為 [執行中]。
+在串流分析作業中，選取左窗格上的 **[總覽** ]。 然後選取 [立即**啟動**]  >  **Now**  >  ** **。 成功啟動作業後，作業狀態會從 [已停止] 變更為 [執行中]。
 
-![執行串流分析作業](media/iot-hub-weather-forecast-machine-learning/11_run-stream-analytics-job-azure.png)
+![執行串流分析作業](media/iot-hub-weather-forecast-machine-learning/run-stream-analytics-job.png)
 
 ## <a name="use-microsoft-azure-storage-explorer-to-view-the-weather-forecast"></a>使用 Microsoft Azure 儲存體總管來檢視氣象預報
 
@@ -232,7 +243,7 @@ ms.locfileid: "83746966"
 1. 開啟 [Azure 儲存體總管]。
 1. 登入您的 Azure 帳戶。
 1. 選取您的訂用帳戶。
-1. 按一下您的訂用帳戶 > [儲存體帳戶] > 您的儲存體帳戶 > [Blob 容器] > 您的容器。
+1. 選取您的訂用帳戶 > **儲存體** 帳戶 > 您的儲存體帳戶 > **Blob 容器** > 您的容器。
 1. 下載 .csv 檔案來查看結果。 最後一個資料行記錄下雨的機會。
 
    ![使用 Azure Machine Learning 取得氣象預報結果](media/iot-hub-weather-forecast-machine-learning/weather-forecast-result.png)

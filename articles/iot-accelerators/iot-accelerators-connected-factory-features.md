@@ -8,14 +8,17 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: dobett
-ms.openlocfilehash: c868aa0f1c2449ccf163523c9ded25a31d1d84c4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3a294368e82bcd00f98c26504b3141e8f39fe0c4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73820099"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91261595"
 ---
 # <a name="what-is-connected-factory-iot-solution-accelerator"></a>連線處理站 IoT 解決方案加速器是什麼？
+
+> [!IMPORTANT]
+> 當我們更新這篇文章時，請參閱 [Azure 產業 IoT](https://azure.github.io/Industrial-IoT/) 的最新內容。
 
 連線處理站是 Microsoft 的 Azure 產業 IoT 參考架構實作，封裝為開放原始碼解決方案。 您可以用它來當作商業產品的起點。 您可以將連線處理站解決方案的預先建立版本，從 [Azure IoT 解決方案加速器](https://www.azureiotsolutions.com/#solutions/types/CF)部署到 Azure 訂用帳戶。
 
@@ -61,8 +64,8 @@ ms.locfileid: "73820099"
 ## <a name="customizability"></a>自訂能力
 
 - 自訂解決方案以滿足特定的業務需求。
-- 完整的解決方案原始程式碼可在 GitHub 上取得。 請參閱[連線](https://github.com/Azure/azure-iot-connected-factory)處理站預先設定的解決方案存放庫。
+- 完整的解決方案原始程式碼可在 GitHub 上取得。 請參閱 [連線](https://github.com/Azure/azure-iot-connected-factory) 處理站預先設定的解決方案存放庫。
 
 ## <a name="next-steps"></a>後續步驟
 
-若要深入瞭解連線的處理站解決方案加速器，請參閱快速入門：[嘗試以雲端為基礎的解決方案來管理我的工業 IoT 裝置](quickstart-connected-factory-deploy.md)。
+若要深入瞭解連線處理站解決方案加速器，請參閱快速入門 [試用雲端式解決方案來管理我的產業 IoT 裝置](quickstart-connected-factory-deploy.md)。

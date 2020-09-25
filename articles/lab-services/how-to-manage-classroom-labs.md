@@ -3,12 +3,12 @@ title: 管理 Azure 實驗室服務中的教室實驗室 | Microsoft Docs
 description: 了解如何建立和設定教室實驗室、檢視所有教室實驗室、與實驗室使用者共用註冊連結，或刪除實驗室。
 ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: ed5eb05fa586e19fdf684a4f88b56e7b0185baf4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1a251f668508ee0b727c5e2ace65d1ea4eb5123e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445384"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91251672"
 ---
 # <a name="manage-classroom-labs-in-azure-lab-services"></a>管理 Azure 實驗室服務中的教室實驗室 
 本文說明如何建立和刪除教室實驗室。 它也示範如何檢視實驗室帳戶中的所有教室實驗室。 
@@ -32,7 +32,7 @@ ms.locfileid: "85445384"
     1. 檢閱頁面上顯示的**每小時總價**。 
     1. 選取 [儲存]。
 
-        ![[新增實驗室] 視窗](./media/tutorial-setup-classroom-lab/new-lab-window.png)
+        ![顯示 [新增實驗室] 視窗的螢幕擷取畫面。](./media/tutorial-setup-classroom-lab/new-lab-window.png)
 
         > [!NOTE]
         > 如果實驗室帳戶已設為[允許實驗室建立者挑選實驗室位置](allow-lab-creator-pick-lab-location.md)選項，您會看到用以選取實驗室位置的選項。 

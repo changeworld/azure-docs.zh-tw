@@ -6,17 +6,20 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/21/2020
-ms.openlocfilehash: e630ccec744c4edf0dc80d374ecc93526f960d44
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 00d0808e83a888a39f9268328feb209167c9b644
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934254"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91295984"
 ---
 # <a name="track-database-activity-with-audit-logs-in-azure-database-for-mysql-flexible-server"></a>使用適用於 MySQL 的 Azure 資料庫彈性伺服器中的 Audit 記錄來追蹤資料庫活動
 
 > [!IMPORTANT] 
 > 適用於 MySQL 的 Azure 資料庫彈性伺服器目前處於公開預覽狀態
+
+> [!NOTE]
+> Azure 監視器診斷設定與存取記錄的整合正在進行部署，而且很快就會提供完整功能。
 
 適用於 MySQL 的 Azure 資料庫彈性的伺服器可讓使用者設定 audit 記錄。 您可以使用 Audit 記錄來追蹤資料庫層級活動，包括連接、管理員、DDL 和 DML 事件。 這些記錄類型通常用於合規性用途。
 
@@ -49,6 +52,9 @@ ms.locfileid: "90934254"
 | `TABLE_ACCESS` | -僅適用于 MySQL 5。7 <br> -Table read 語句，例如 SELECT 或 INSERT INTO .。。選擇 <br> -資料表 delete 語句，例如 DELETE 或 TRUNCATE TABLE <br> -資料表 insert 語句，例如 INSERT 或 REPLACE <br> -資料表 update 語句，例如 UPDATE |
 
 ## <a name="access-audit-logs"></a>存取稽核記錄
+
+> [!NOTE]
+> Azure 監視器診斷設定與存取記錄的整合正在進行部署，而且很快就會提供完整功能。
 
 Audit 記錄檔會與 Azure 監視器診斷設定整合。 當您在 MySQL 彈性伺服器上啟用 audit 記錄之後，您可以將它們發出至 Azure 監視器記錄、事件中樞或 Azure 儲存體。 若要深入瞭解診斷設定，請參閱 [診斷記錄檔](../../azure-monitor/platform/platform-logs-overview.md)。 若要深入瞭解如何啟用 Azure 入口網站中的診斷設定，請參閱 [audit log portal 文章](how-to-configure-audit-logs-portal.md#set-up-diagnostics)。
 
@@ -195,7 +201,7 @@ Audit 記錄檔會與 Azure 監視器診斷設定整合。 當您在 MySQL 彈�
     | order by TimeGenerated asc nulls last
     ``` 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 - 深入瞭解 [查詢記錄緩慢](concepts-slow-query-logs.md)
 - 從[Azure 入口網站](how-to-configure-audit-logs-portal.md)設定 audit 查詢記錄
 <!-- - [How to configure audit logs in the Azure portal](howto-configure-audit-logs-portal.md)-->

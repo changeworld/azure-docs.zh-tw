@@ -3,16 +3,16 @@ title: 設定 Azure VMware 解決方案的 Azure 備份伺服器
 description: 使用 Azure 備份伺服器設定您的 Azure VMware 解決方案環境，以備份虛擬機器。
 ms.topic: how-to
 ms.date: 06/09/2020
-ms.openlocfilehash: 0dd2b16254e697a08d0ff542a5ddcb3fc7e4103d
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 516f4a2fa92740897e186a782e276fc6d40fc925
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88750627"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91255004"
 ---
 # <a name="set-up-azure-backup-server-for-azure-vmware-solution"></a>設定 Azure VMware 解決方案的 Azure 備份伺服器
 
-Azure 備份伺服器是一種健全的企業備份和復原系統，可針對您的商務持續性和嚴重損壞修復 (BCDR) 策略。 在 Azure VMware 解決方案預覽期間，您只能使用 Azure 備份伺服器來設定虛擬機器 (VM) 層級備份。 
+Azure 備份伺服器是一種健全的企業備份和復原系統，可針對您的商務持續性和嚴重損壞修復 (BCDR) 策略。 在 Azure VMware 解決方案期間，您只能使用 Azure 備份伺服器來設定虛擬機器 (VM) 層級備份。 
 
 Azure 備份伺服器可以將備份資料儲存至：
 
@@ -34,7 +34,7 @@ Azure 備份伺服器可以將備份資料儲存至：
 - **無代理程式備份：** Azure 備份伺服器不需要在 vCenter 或 ESXi 伺服器上安裝代理程式來備份虛擬機器。 相反地，只需提供 IP 位址或完整功能變數名稱 (FQDN) ，以及用來向 Azure 備份伺服器驗證 VMware 伺服器的登入認證。
 - **雲端整合式備份：** Azure 備份伺服器可保護磁片和雲端的工作負載。 Azure 備份伺服器的備份和復原工作流程可協助您管理長期保留和異地備份。
 - 偵測**並保護 vCenter 所管理的 vm：** Azure 備份伺服器會偵測並保護部署于 vCenter 或 ESXi 伺服器上的 Vm。 Azure 備份伺服器也會偵測 vCenter 所管理的 Vm，讓您可以保護大型部署。
-- **資料夾層級 start-autoprotection：** vCenter 可讓您在 vm 資料夾中組織您的 vm。 Azure 備份伺服器會偵測這些資料夾，而且您可以使用它來保護資料夾層級（包括所有子資料夾）的 Vm。 保護資料夾時，Azure 備份伺服器不僅會保護該資料夾中的 Vm，還可保護稍後新增的 Vm。 Azure 備份伺服器會每天偵測到新的 Vm，並自動加以保護。 當您在遞迴資料夾中組織 Vm 時，Azure 備份伺服器會自動偵測並保護部署在遞迴資料夾中的新 Vm。
+- **資料夾層級 start-autoprotection：** vCenter 可讓您在 vm 資料夾中組織您的 vm。 Azure 備份伺服器會偵測這些資料夾。 您可以使用它來保護資料夾層級的 Vm，包括所有子資料夾。 保護資料夾時，Azure 備份伺服器不僅會保護該資料夾中的 Vm，還可保護稍後新增的 Vm。 Azure 備份伺服器會每天偵測到新的 Vm，並自動加以保護。 當您在遞迴資料夾中組織 Vm 時，Azure 備份伺服器會自動偵測並保護部署在遞迴資料夾中的新 Vm。
 - **Azure 備份伺服器繼續保護叢集中的 VMotioned vm：** 當 Vm vMotioned 在叢集內進行負載平衡時，Azure 備份伺服器會自動偵測並繼續 VM 保護。
 - **更快速地復原所需** 的檔案：Azure 備份伺服器可以從 Windows VM 復原檔案或資料夾，而不需要復原整個 VM。
 
@@ -68,7 +68,7 @@ Azure 備份伺服器會部署為 Azure 基礎結構即服務 (IaaS) VM，以保
 
 ### <a name="determine-the-size-of-the-virtual-machine"></a>判斷虛擬機器的大小
 
-您必須在您于上一個步驟中建立的虛擬網路中建立 Windows 虛擬機器。 當您選擇要執行 Azure 備份伺服器的伺服器時，請從 Windows Server 2019 Datacenter 的資源庫映射開始。 本教學課程會 [在 Azure 入口網站中建立您的第一個 Windows 虛擬機器，讓](../virtual-machines/windows/quick-create-portal.md) 您在 azure 中開始使用建議的 VM，即使您從未使用過 azure 也是如此。
+在您于上一個步驟中建立的虛擬網路中建立 Windows 虛擬機器。 當您選擇要執行 Azure 備份伺服器的伺服器時，請從 Windows Server 2019 Datacenter 的資源庫映射開始。 本教學課程會 [在 Azure 入口網站中建立您的第一個 Windows 虛擬機器，讓](../virtual-machines/windows/quick-create-portal.md) 您在 azure 中開始使用建議的 VM，即使您從未使用過 azure 也是如此。
 
 下表摘要說明每個 Azure 備份伺服器虛擬機器大小的受保護工作負載數目上限。 此資訊會取決於內部效能和延展性測試，以及工作負載的大小和變換的標準值。 實際的工作負載大小可以更大，但應該由連接至 Azure 備份伺服器虛擬機器的磁片容納。
 
@@ -140,7 +140,7 @@ Azure 備份伺服器 VM 必須加入網域，而且在 VM 上具有系統管理
 
 1. 在左側功能表上，選取 [所有服務]  。
 
-   ![在左側功能表中，選取 [所有服務]。](../backup/media/backup-create-rs-vault/click-all-services.png)
+   ![在左側功能表上，選取 [所有服務]  。](../backup/media/backup-create-rs-vault/click-all-services.png)
 
 1. 在 [ **所有服務** ] 對話方塊中，輸入 [復原 **服務** ]，然後從清單中選取 [復原 **服務保存庫** ]。
 
@@ -152,7 +152,7 @@ Azure 備份伺服器 VM 必須加入網域，而且在 VM 上具有系統管理
 
    ![新增復原服務保存庫。](../backup/media/backup-create-rs-vault/add-button-create-vault.png)
 
-   [復原服務保存庫] 對話方塊隨即開啟。
+   [復原服務保存庫]  對話方塊隨即開啟。
 
 1. 輸入 **名稱**、 **訂**用帳戶、 **資源群組**和 **位置**的值。
 
@@ -183,8 +183,6 @@ Azure 備份伺服器 VM 必須加入網域，而且在 VM 上具有系統管理
 1. 在 [設定]**** 下方，選取 [屬性]****。 在 [ **備份**設定] 下，選取 [ **更新**]。
 
 1. 選取儲存體複寫類型，然後選取 [**儲存]。**
-
-   ![設定新保存庫的儲存體設定。](../backup/media/backup-try-azure-backup-in-10-mins/recovery-services-vault-backup-configuration.png)
 
 ## <a name="download-and-install-the-software-package"></a>下載並安裝軟體套件
 
@@ -309,7 +307,7 @@ Azure 備份伺服器 VM 必須加入網域，而且在 VM 上具有系統管理
    * **資料庫**： **DatabaseName**應為**ReportServer $ \<SQLInstanceName> **。
    * **入口網站 URL**：應**Reports_ \<SQLInstanceName> ****虛擬目錄**。
 
-   [深入了解](/sql/reporting-services/report-server/configure-and-administer-a-report-server-ssrs-native-mode?view=sql-server-2017) SSRS 設定。
+   深入瞭解 [SSRS](/sql/reporting-services/report-server/configure-and-administer-a-report-server-ssrs-native-mode)設定。
 
    > [!NOTE]
    > [Microsoft Online Services 條款](https://www.microsoft.com/licensing/product-licensing/products) (OST) 管理用來作為 Azure 備份伺服器資料庫的 SQL Server 授權。 根據 OST，與 Azure 備份伺服器配套 SQL Server 只能用來做為 Azure 備份伺服器的資料庫。

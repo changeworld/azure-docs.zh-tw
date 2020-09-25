@@ -12,12 +12,12 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: fd49e922e5952f5a7c4b7f477dd33d6518010428
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 71b6f35b107a8cb213e97d9a05bdf93b93967606
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90088318"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91256886"
 ---
 # <a name="troubleshoot-publisher-verification"></a>針對發行者驗證進行疑難排解
 如果您無法完成此程式，或在 [發行者驗證](publisher-verification-overview.md)中遇到非預期的行為，您應該先執行下列動作，如果您收到錯誤或看到非預期的行為： 
@@ -150,31 +150,45 @@ HTTP/1.1 200 OK
 
 ### <a name="mpnaccountnotfoundornoaccess"></a>MPNAccountNotFoundOrNoAccess     
 
-您提供的 MPN 識別碼 (<MPNID>) 不存在，或您沒有其存取權。 提供有效的 MPN 識別碼，然後再試一次。 
+您提供的 MPN 識別碼 (<MPNID>) 不存在，或您沒有其存取權。 提供有效的 MPN 識別碼，然後再試一次。
+    
+最常見的原因是登入的使用者不是合作夥伴中心中 MPN 帳戶的適當角色成員，請參閱合格角色清單的 [需求](publisher-verification-overview.md#requirements) ，並查看 [常見問題](#common-issues) 以取得詳細資訊。 也可能是因為應用程式註冊的租使用者未新增至 MPN 帳戶，或 MPN 識別碼無效而造成。
 
 ### <a name="mpnglobalaccountnotfound"></a>MPNGlobalAccountNotFound     
 
-您提供的 MPN 識別碼 (<MPNID>) 無效。 提供有效的 MPN 識別碼，然後再試一次。 
+您提供的 MPN 識別碼 (<MPNID>) 無效。 提供有效的 MPN 識別碼，然後再試一次。
+    
+最常見的原因是提供的 MPN 識別碼對應至夥伴位置帳戶 (PLA) 。 僅支援合作夥伴通用帳戶。 如需詳細資訊，請參閱 [合作夥伴中心帳戶結構](/partner-center/account-structure) 。
 
 ### <a name="mpnaccountinvalid"></a>MPNAccountInvalid    
 
-您提供的 MPN 識別碼 (<MPNID>) 無效。 提供有效的 MPN 識別碼，然後再試一次。 
+您提供的 MPN 識別碼 (<MPNID>) 無效。 提供有效的 MPN 識別碼，然後再試一次。
+    
+最常見的原因是提供了錯誤的 MPN 識別碼。
 
 ### <a name="mpnaccountnotvetted"></a>MPNAccountNotVetted  
 
 您提供的 MPN 識別碼 (<MPNID>) 尚未完成調查程序。 在合作夥伴中心完成此程序，然後再試一次。 
+    
+最常見的原因是 MPN 帳戶未完成 [驗證](/partner-center/verification-responses) 程式。
 
 ### <a name="nopublisheridonassociatedmpnaccount"></a>NoPublisherIdOnAssociatedMPNAccount  
 
 您提供的 MPN 識別碼 (<MPNID>) 無效。 提供有效的 MPN 識別碼，然後再試一次。 
+   
+最常見的原因是提供了錯誤的 MPN 識別碼。
 
 ### <a name="mpniddoesnotmatchassociatedmpnaccount"></a>MPNIdDoesNotMatchAssociatedMPNAccount    
 
-您提供的 MPN 識別碼 (<MPNID>) 無效。 提供有效的 MPN 識別碼，然後再試一次。 
+您提供的 MPN 識別碼 (<MPNID>) 無效。 提供有效的 MPN 識別碼，然後再試一次。
+    
+最常見的原因是提供了錯誤的 MPN 識別碼。
 
 ### <a name="applicationnotfound"></a>ApplicationNotFound  
 
-找不到目標應用程式 (<AppId>)。 提供有效的應用程式識別碼，然後再試一次。 
+找不到目標應用程式 (<AppId>)。 提供有效的應用程式識別碼，然後再試一次。
+    
+最常見的原因是透過圖形 API 執行驗證，而且提供的應用程式識別碼不正確。 注意-必須提供應用程式的識別碼，而不是 AppId/ClientId。
 
 ### <a name="b2ctenantnotallowed"></a>B2CTenantNotAllowed  
 
@@ -188,13 +202,19 @@ Azure AD B2C 租用戶不支援此功能。
 
 目標應用程式 (\<AppId\>) 必須設定發行者網域。 設定發行者網域，然後再試一次。
 
+當應用程式上未設定 [發行者網域](howto-configure-publisher-domain.md) 時發生。
+
 ### <a name="publisherdomainmismatch"></a>PublisherDomainMismatch  
 
 目標應用程式的發行者網域 (<publisherDomain>) 與合作夥伴中心中用來執行電子郵件驗證的網域 (<pcDomain>) 不符。 請確認這些網域相符，然後再試一次。 
+    
+當應用程式的 [發行者網域](howto-configure-publisher-domain.md) 或其中一個 [自訂網域](../fundamentals/add-custom-domain.md) 都未新增至 Azure AD 租使用者時，就會符合合作夥伴中心中用來執行電子郵件驗證的網域。
 
 ### <a name="notauthorizedtoverifypublisher"></a>NotAuthorizedToVerifyPublisher   
 
 您無權在此應用程式上設定已驗證的發行者屬性 (<AppId>) 
+  
+最常見的原因是登入的使用者不是 Azure AD 中 MPN 帳戶的適當角色成員，請參閱合格角色清單的 [需求](publisher-verification-overview.md#requirements) ，並查看 [常見問題](#common-issues) 以取得詳細資訊。
 
 ### <a name="mpnidwasnotprovided"></a>MPNIdWasNotProvided  
 
@@ -202,7 +222,11 @@ Azure AD B2C 租用戶不支援此功能。
 
 ### <a name="msanotsupported"></a>MSANotSupported  
 
-Microsoft 取用者帳戶不支援此功能。 僅支援 Azure AD 使用者在 Azure AD 中註冊的應用程式。 
+Microsoft 取用者帳戶不支援此功能。 僅支援 Azure AD 使用者在 Azure AD 中註冊的應用程式。
+
+### <a name="interactionrequired"></a>InteractionRequired
+
+在嘗試將已驗證的發行者新增至應用程式之前，尚未執行多重要素驗證時發生。 如需詳細資訊，請參閱 [常見的問題](#common-issues) 。
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -216,4 +240,4 @@ Microsoft 取用者帳戶不支援此功能。 僅支援 Azure AD 使用者在 A
 - 應用程式註冊所在的 TenantId
 - MPN 識別碼
 - 正在進行 REST 要求 
-- 正在傳回的錯誤碼和訊息 
+- 正在傳回的錯誤碼和訊息

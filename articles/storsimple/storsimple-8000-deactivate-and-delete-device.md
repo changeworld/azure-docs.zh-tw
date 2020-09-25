@@ -1,6 +1,6 @@
 ---
 title: 停用及刪除 StorSimple 8000 系列裝置 | Microsoft Docs
-description: 描述如何停用然後刪除 StorSimple 裝置，將其從服務中移除。
+description: 瞭解如何停用及刪除已連線至 StorSimple 裝置管理員服務的 StorSimple 裝置。
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2018
 ms.author: alkohli
-ms.openlocfilehash: 825a10bec7a9d415bdcf76e5b6f28f04060bb411
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 64163011506380eec87457a2d8a2f699ec56dc68
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514029"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91249632"
 ---
 # <a name="deactivate-and-delete-a-storsimple-device"></a>停用及刪除 StorSimple 裝置
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 本文說明如何停用及刪除已連線至 StorSimple 裝置管理員服務的 StorSimple 裝置。 本文中的指導僅適用於包含 StorSimple 雲端設備的 StorSimple 8000 系列裝置。 如果您使用 StorSimple Virtual Array，請移至[停用及刪除 StorSimple Virtual Array](storsimple-virtual-array-deactivate-and-delete-device.md)。
 
@@ -41,7 +41,7 @@ ms.locfileid: "85514029"
 >
 > - 在您停用 StorSimple 實體裝置或雲端設備之前，請停止或刪除相依於該裝置的用戶端和主機。
 >
-> - 如果從裝置刪除資料之前，已刪除與磁片區容器相關聯之儲存體帳戶中的儲存體帳戶或容器，您會收到錯誤訊息，而且可能無法刪除資料。 我們建議您先刪除裝置上的資料，再刪除其中的儲存體帳戶或容器。 不過，在此情況下，您必須繼續進行裝置停用和刪除，假設已從儲存體帳戶中移除該資料。
+> - 如果從裝置刪除資料之前，已刪除儲存體帳戶 (s) 或與磁片區容器相關聯之儲存體帳戶中的容器，您將會收到錯誤，而且可能無法刪除資料。 建議您在刪除儲存體帳戶或其中的容器之前，先刪除裝置上的資料。 不過，在這種情況下，您必須繼續進行裝置停用和刪除，前提是已將資料從儲存體帳戶中移除。
 
 閱讀本教學課程之後，您將能夠：
 

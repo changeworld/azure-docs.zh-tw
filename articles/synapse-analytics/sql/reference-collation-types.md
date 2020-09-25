@@ -8,12 +8,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: ef9d0eb3dd97795f3b6757759679351f857891ab
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 5e46cd744be609adff764edfe5a506b710e9d788
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90032855"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91288064"
 ---
 # <a name="database-collation-support-for-synapse-sql"></a>Synapse SQL 的資料庫定序支援
 
@@ -24,7 +24,7 @@ ms.locfileid: "90032855"
 您可以在建立時使用 CREATE DATABASE 語句來指定預設的 Synapse SQL 隨選資料庫定序。
 
 ## <a name="change-collation"></a>變更定序
-若要變更 SQL 集區資料庫的預設定序，您可以在布建體驗中簡單地更新 [定序] 欄位。 例如，如果您想要將預設定序變更為區分大小寫，您只需將定序從 SQL_Latin1_General_CP1_CI_AS 重新命名為 SQL_Latin1_General_CP1_CS_AS。 
+若要變更 SQL 集區資料庫的預設定序，請更新布建體驗中的 [定序] 欄位。 例如，如果您想要將預設定序變更為區分大小寫，您可以將定序從 SQL_Latin1_General_CP1_CI_AS 重新命名為 SQL_Latin1_General_CP1_CS_AS。 
 
 若要變更 SQL 隨選資料庫的預設定序，您可以使用 ALTER DATABASE 語句。
 

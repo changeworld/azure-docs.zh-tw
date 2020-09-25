@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 09/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: c64a42c66a3b1c1810c17347e18979d599b36b6f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 8dd6ab5bcb42765c995e8cd767358be5e62aa0b6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934097"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91288388"
 ---
 # <a name="query-azure-cosmos-db-data-using-sql-on-demand-in-azure-synapse-link-preview"></a>在 Azure Synapse 連結中使用 SQL 隨選查詢 Azure Cosmos DB 資料 (preview) 
 
-SQL 無伺服器 (先前的 SQL 隨選) 可讓您以近乎即時的方式，分析在 [Azure Synapse 連結](../../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) 啟用的 Azure Cosmos DB 容器中的資料，而不會影響交易式工作負載的效能。 它提供了一個熟悉的 T-sql 語法，可從 [分析存放區](../../cosmos-db/analytical-store-introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) 查詢資料，並透過 t-sql 介面整合各種 BI 和臨機操作查詢工具的連接。
+SQL 無伺服器 (先前的 SQL 隨選) 可讓您以近乎即時的方式，在已啟用 [Azure Synapse 連結](../../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) 的 Azure Cosmos DB 容器中分析資料，而不會影響交易式工作負載的效能。 它提供了一個熟悉的 T-sql 語法，可從 [分析存放區](../../cosmos-db/analytical-store-introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) 查詢資料，並透過 t-sql 介面整合各種 BI 和臨機操作查詢工具的連接。
 
 > [!NOTE]
 > 支援使用 SQL 隨選查詢 Azure Cosmos DB 分析存放區目前處於閘道預覽狀態。 
@@ -44,7 +44,7 @@ Azure Cosmos DB 連接字串會指定 Azure Cosmos DB 帳戶名稱、資料庫�
 'account=<database account name>;database=<database name>;region=<region name>;key=<database account master key>'
 ```
 
-在語法中，指定了不含引號的 Azure Cosmos DB 容器名稱 `OPENROWSET` 。 如果容器名稱具有任何特殊字元 (例如，虛線 '-' ) ，則應該將名稱包裝在 `[]` 語法中 (的方括弧) 內 `OPENROWSET` 。
+在語法中，指定了不含引號的 Azure Cosmos DB 容器名稱 `OPENROWSET` 。 如果容器名稱具有任何特殊字元 (例如，虛線 '-' ) ，則應該將名稱包裝在 `[]` 語法中 (方括弧) 內 `OPENROWSET` 。
 
 > [!NOTE]
 > SQL 隨選不支援查詢 Azure Cosmos DB 交易式存放區。
@@ -71,7 +71,7 @@ FROM OPENROWSET(
        'account=MyCosmosDbAccount;database=covid;region=westus2;key=C0Sm0sDbKey==',
        EcdcCases) as documents
 ```
-在上述範例中，我們會指示 SQL 視需要連接到 `covid` Azure Cosmos DB 帳戶中 `MyCosmosDbAccount` 使用 Azure Cosmos DB (金鑰驗證的資料庫) 。 接著，我們會 `EcdcCases` 在區域中存取容器的分析存放區 `West US 2` 。 因為沒有特定屬性的投射，所以函式 `OPENROWSET` 會傳回 Azure Cosmos DB 專案中的所有屬性。
+在上述範例中，我們會指示 SQL 視需要連接到 `covid` `MyCosmosDbAccount` 使用 Azure Cosmos DB (金鑰驗證 Azure Cosmos DB 帳戶中的資料庫) 。 接著，我們會 `EcdcCases` 在區域中存取容器的分析存放區 `West US 2` 。 因為沒有特定屬性的投射，所以函式 `OPENROWSET` 會傳回 Azure Cosmos DB 專案中的所有屬性。
 
 如果您需要流覽相同 Azure Cosmos DB 資料庫中其他容器的資料，您可以使用相同的連接字串和參考所需的容器做為第三個參數：
 
@@ -85,7 +85,7 @@ FROM OPENROWSET(
 
 ## <a name="explicitly-specify-schema"></a>明確指定架構
 
-雖然中的自動架構推斷功能 `OPENROWSET` 提供簡單、容易使用的 querience，但您的商務案例可能會要求您明確指定架構，以從 Azure Cosmos DB 的資料中讀取相關的屬性。
+雖然中的自動架構推斷功能 `OPENROWSET` 提供簡單、容易使用的 querience，但您的商務案例可能會要求您明確地從 Azure Cosmos DB 資料的唯讀相關屬性指定架構。
 
 `OPENROWSET` 可讓您明確指定想要從容器中的資料讀取哪些屬性，以及指定其資料類型。 假設我們已從 [ECDC covid-19 資料集中](https://azure.microsoft.com/services/open-datasets/catalog/ecdc-covid-19-cases/) 匯入一些資料，並將下列結構匯入 Azure Cosmos DB：
 
@@ -118,7 +118,7 @@ FROM OPENROWSET(
 
 ## <a name="querying-nested-objects-and-arrays"></a>查詢嵌套的物件和陣列
 
-Azure Cosmos DB 可讓您將更複雜的資料模型組合成嵌套物件或陣列，以表示更複雜的資料模型。 Azure Cosmos DB 的 [Synapse] 連結的自動同步處理功能會管理現成的分析存放區中的架構標記法，包括處理可依需求從 SQL 進行豐富查詢的嵌套資料類型。
+Azure Cosmos DB 可讓您將更複雜的資料模型組合成嵌套物件或陣列，以表示更複雜的資料模型。 Azure Cosmos DB 的 [Synapse] 連結的 [自動同步功能] 會管理現成的分析存放區中的架構標記法，包括處理可依需求從 SQL 進行豐富查詢的嵌套資料類型。
 
 例如， [電源線-19](https://azure.microsoft.com/services/open-datasets/catalog/covid-19-open-research/) 資料集具有遵循下列結構的 JSON 檔：
 
@@ -179,7 +179,7 @@ FROM
 
 ## <a name="flattening-nested-arrays"></a>簡維的嵌套陣列
 
-Azure Cosmos DB 的資料可能有像是來自 [Cord19](https://azure.microsoft.com/services/open-datasets/catalog/covid-19-open-research/) 資料集的作者陣列這樣的嵌套子陣列：
+Azure Cosmos DB 的資料可能會有嵌套的子陣列，例如來自 [Cord19](https://azure.microsoft.com/services/open-datasets/catalog/covid-19-open-research/) 資料集的作者陣列：
 
 ```json
 {
@@ -236,7 +236,7 @@ Epidemi 的補充資訊 .。。 | `[{"first":"Nicolas","last":"4#","suffix":"","
 
 ## <a name="azure-cosmos-db-to-sql-type-mappings"></a>Azure Cosmos DB 至 SQL 類型對應
 
-請務必先注意，雖然 Azure Cosmos DB 的交易式存放區與架構無關，但架構化分析存放區以優化分析查詢效能。 利用 Synapse 連結的自動同步處理功能，Azure Cosmos DB 管理現成的分析存放區中的架構標記法，包括處理嵌套的資料類型。 由於 SQL 隨選查詢分析存放區，因此請務必瞭解如何將 Azure Cosmos DB 輸入資料類型對應到 SQL 資料類型。
+請務必先注意，雖然 Azure Cosmos DB 的交易式存放區與架構無關，但架構化分析存放區以優化分析查詢效能。 利用 Synapse 連結的自動同步功能，Azure Cosmos DB 管理現成的分析存放區中的架構標記法，包括處理嵌套的資料類型。 由於 SQL 隨選查詢分析存放區，因此請務必瞭解如何將 Azure Cosmos DB 輸入資料類型對應到 SQL 資料類型。
 
 SQL (Core) API 的 Azure Cosmos DB 帳戶支援數位、字串、布林值、null、嵌套物件或陣列的 JSON 屬性類型。 如果您在中使用子句，則需要選擇符合這些 JSON 類型的 SQL 類型 `WITH` `OPENROWSET` 。 請參閱下列 SQL 資料行類型，以用於 Azure Cosmos DB 中的不同屬性類型。
 
@@ -247,7 +247,7 @@ SQL (Core) API 的 Azure Cosmos DB 帳戶支援數位、字串、布林值、nul
 | Decimal | FLOAT |
 | String | Varchar (UTF8 資料庫定序)  |
 | 日期時間 (ISO 格式化字串)  | Varchar (30)  |
-| 日期時間 (unix 時間戳記 )  | BIGINT |
+| 日期時間 (unix 時間戳記)  | BIGINT |
 | Null | `any SQL type` 
 | 嵌套物件或陣列 | Varchar (max)  (UTF8 資料庫定序) ，序列化為 JSON 文字 |
 

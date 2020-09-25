@@ -9,21 +9,21 @@ ms.service: active-directory
 ms.topic: how-to
 ms.subservice: users-groups-roles
 ms.workload: identity
-ms.date: 04/16/2020
+ms.date: 09/22/2020
 ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b48bebe6aa5f9862d5f51fea257c4b7f3057639b
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 22992f66d45b9bdb76383301cccff645c98a74d9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88794479"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91264774"
 ---
 # <a name="azure-ad-administrative-units-troubleshooting-and-faq"></a>Azure AD 管理單位：疑難排解和常見問題
 
-若要在 Azure Active Directory (Azure AD) 中進行更細微的系統管理控制，您可以將使用者指派至範圍限制為一或多個系統管理單位 Azure AD au (的) 角色。 如需一般工作的 PowerShell 腳本範例，請參閱 [使用管理單位](/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0)。
+若要在 Azure Active Directory (Azure AD) 中進行更細微的系統管理控制，您可以將使用者指派至範圍限制為一或多個系統管理單位 Azure AD au (的) 角色。 如需一般工作的 PowerShell 腳本範例，請參閱 [使用管理單位](/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0&preserve-view=true)。
 
 ## <a name="frequently-asked-questions"></a>常見問題集
 
@@ -67,9 +67,9 @@ ms.locfileid: "88794479"
 
 **問： PowerShell 和圖形 API 是否支援管理單位？**
 
-**答：** 是。 您可以在 [PowerShell Cmdlet 檔](/powershell/module/Azuread/?view=azureadps-2.0-preview) 和 [範例腳本](/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0-preview)中找到管理單位的支援。 
+**答：** 是。 您可以在 [PowerShell Cmdlet 檔](/powershell/module/Azuread/?view=azureadps-2.0-preview&preserve-view=true) 和 [範例腳本](/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0-preview&preserve-view=true)中找到管理單位的支援。
 
-在 Microsoft Graph 中尋找 [>administrativeunit 資源類型](/graph/api/resources/administrativeunit?view=graph-rest-beta) 的支援。
+在 Microsoft Graph 中尋找 [>administrativeunit 資源類型](/graph/api/resources/administrativeunit?view=graph-rest-beta&preserve-view=true) 的支援。
 
 ## <a name="next-steps"></a>後續步驟
 

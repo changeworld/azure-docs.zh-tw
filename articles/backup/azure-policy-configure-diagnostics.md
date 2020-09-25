@@ -3,12 +3,12 @@ title: 大規模設定保存庫診斷設定
 description: 使用 Azure 原則為指定範圍中的所有保存庫設定 Log Analytics 診斷設定
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.openlocfilehash: 25946bb742c7666e7d394477318f647009b2f50e
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 33956fe7ce2e162d58ef3aa09feaea2882dccb36
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378044"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91293079"
 ---
 # <a name="configure-vault-diagnostics-settings-at-scale"></a>大規模設定保存庫診斷設定
 
@@ -34,7 +34,7 @@ Azure 備份所提供的報告解決方案會利用 Log Analytics (LA) 。 針�
 
 1. 登入 Azure 入口網站，然後流覽至 **原則** 儀表板。
 2. 選取左側功能表中的 [ **定義** ]，以取得跨 Azure 資源的所有內建原則清單。
-3. 篩選 **分類 = 監視**的清單。 找出名為 **[預覽]：將復原服務保存庫的診斷設定部署至 Log Analytics 工作區，以取得資源專屬類別**的原則。
+3. 篩選 **分類 = 備份**的清單。 找出名為 **[預覽]：將復原服務保存庫的診斷設定部署至 Log Analytics 工作區，以取得資源專屬類別**的原則。
 
     ![原則定義窗格](./media/backup-azure-policy-configure-diagnostics/policy-definition-blade.png)
 

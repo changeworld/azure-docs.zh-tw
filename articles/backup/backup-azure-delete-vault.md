@@ -3,18 +3,18 @@ title: 刪除 Microsoft Azure 復原服務保存庫
 description: 在本文中，您將瞭解如何移除相依性，然後刪除 Azure 備份復原服務保存庫。
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.openlocfilehash: c0b75d147abba45a745f811de5e4b8ac45088bd8
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: fd941db933d243b83c1c19c7ae0fdfc2d7869b8a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826730"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91293062"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>刪除 Azure 備份復原服務保存庫
 
 本文說明如何刪除 [Azure 備份](backup-overview.md) 復原服務保存庫。 它包含移除相依性，然後刪除保存庫的指示。
 
-## <a name="before-you-start"></a>開始之前
+## <a name="before-you-start"></a>在您開始使用 Intune 之前
 
 您無法刪除具有下列任何相依性的復原服務保存庫：
 
@@ -123,7 +123,7 @@ ms.locfileid: "88826730"
 >如果您已刪除或遺失來源電腦，但未停止備份，則下次排定的備份將會失敗。 舊的復原點會根據原則過期，但永遠會保留最後一個復原點，直到您停止備份並刪除資料為止。 您可以遵循本節中的步驟來執行 [此動作](#delete-protected-items-on-premises)。
 
 1. 開啟 MARS 管理主控台，移至 [ **動作** ] 窗格，然後選取 [ **排程備份**]。
-2. 在 [ **修改或停止排定的備份** ] 頁面上，選取 [ **停止使用此備份排程]，然後刪除所有儲存的備份**。 然後，選取 [下一步]  。
+2. 在 [ **修改或停止排定的備份** ] 頁面上，選取 [ **停止使用此備份排程]，然後刪除所有儲存的備份**。 然後，選取 [下一步]。
 
     ![修改或停止已排程的備份。](./media/backup-azure-delete-vault/modify-schedule-backup.png)
 
@@ -331,7 +331,7 @@ ms.locfileid: "88826730"
                        [--yes]
     ```
 
-    如需詳細資訊，請參閱這 [篇文章](/cli/azure/backup/vault?view=azure-cli-latest)
+    如需詳細資訊，請參閱這 [篇文章](/cli/azure/backup/vault)
 
 ## <a name="delete-the-recovery-services-vault-by-using-azure-resource-manager"></a>使用 Azure Resource Manager 刪除復原服務保存庫
 

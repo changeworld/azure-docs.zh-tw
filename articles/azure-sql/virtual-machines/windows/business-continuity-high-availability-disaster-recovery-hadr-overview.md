@@ -8,17 +8,17 @@ editor: ''
 tags: azure-service-management
 ms.assetid: 53981f7e-8370-4979-b26a-93a5988d905f
 ms.service: virtual-machines-sql
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/27/2020
 ms.author: mathoma
-ms.openlocfilehash: 3b18582cdb34708c379725d361d1fcc5e608ae38
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 8459ab364fc0af15dd1a1b0035e4ce27d192f7a9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89462746"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91293453"
 ---
 # <a name="business-continuity-and-hadr-for-sql-server-on-azure-virtual-machines"></a>Azure 虛擬機器上 SQL Server 的商務持續性和 HADR
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -160,7 +160,7 @@ Azure 磁碟中的異地複寫不支援將相同資料庫的資料檔與記錄�
 
 如果您沒有在儲存體帳戶上停用異地複寫的選項，請將資料庫的所有資料和記錄檔保留在同一個磁片上。 如果您因為資料庫大小而必須使用一個以上的磁片，請部署先前所列的其中一個嚴重損壞修復解決方案，以確保資料的冗余。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 決定 [可用性群組](availability-group-overview.md) 或 [容錯移轉叢集實例](failover-cluster-instance-overview.md) 是否為您企業的最佳商務持續性解決方案。 然後，請參閱為您的環境設定高可用性和嚴重損壞修復的 [最佳作法](hadr-cluster-best-practices.md) 。 
 

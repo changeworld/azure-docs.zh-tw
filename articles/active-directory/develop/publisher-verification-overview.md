@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: 0c30b5305fb5496db86a20be7a37f36b894ecc8b
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 53861bbff9ba328ca97063df59cfedc6e886212d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90089746"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258144"
 ---
 # <a name="publisher-verification"></a>發行者驗證
 
@@ -33,9 +33,10 @@ Azure AD 同意提示和其他畫面上會出現一個藍色的「已驗證」�
 
 - **改善標章** - 「已驗證」徽章會出現在 Azure AD 的[同意提示](application-consent-experience.md)、企業應用程式頁面，以及使用者和系統管理員所使用的其他 UX 表面。 
 
-- **企業採用更流暢**-系統管理員可以設定 [使用者同意原則](../manage-apps/configure-user-consent.md)，並將發行者驗證狀態設定為其中一個主要原則準則。 
+- **企業採用更流暢**-系統管理員可以設定 [使用者同意原則](../manage-apps/configure-user-consent.md)，並將發行者驗證狀態設定為其中一個主要原則準則。
 
-- **改善風險評估** - Microsoft 偵測「有風險的」同意要求時會包含發行者驗證作為信號。 
+> [!NOTE]
+> 自2020年11月起，使用者將無法再將同意授與最新註冊的多租使用者應用程式，而不需要經過驗證的發行者。 這會套用至在11月 2020 8 日之後註冊的應用程式，使用 OAuth 2.0 來要求基本登入和讀取使用者設定檔以外的許可權，並要求來自不同租使用者的使用者同意，而不是應用程式註冊所在的租使用者。 同意畫面上會顯示警告，通知使用者這些應用程式具有風險，而且來自未驗證的發行者。    
 
 ## <a name="requirements"></a>需求
 發行者驗證有幾個必要條件，而許多 Microsoft 合作夥伴已完成部分條件。 其中包括： 
@@ -69,7 +70,7 @@ Azure AD 同意提示和其他畫面上會出現一個藍色的「已驗證」�
 
   同時與 Microsoft 365 整合的開發人員可以從這些程式獲得額外好處。 如需詳細資訊，請參閱 [Microsoft 365 發行者證明](/microsoft-365-app-certification/docs/attestation)和 [Microsoft 365 應用程式認證](/microsoft-365-app-certification/docs/certification)。 
 
-- **這與 Azure AD 應用程式庫相同嗎？** 不同，發行者驗證是 [Azure Active Directory 應用程式庫](../azuread-dev/howto-app-gallery-listing.md)的互補程式，但是是個別的程式。 無論是否參與該程式，符合上述準則的開發人員都應該獨立完成發行者驗證流程。 
+- **這與 Azure AD 應用程式庫相同嗎？** 不同，發行者驗證是 [Azure Active Directory 應用程式庫](v2-howto-app-gallery-listing.md)的互補程式，但是是個別的程式。 無論是否參與該程式，符合上述準則的開發人員都應該獨立完成發行者驗證流程。 
 
 ## <a name="next-steps"></a>後續步驟
 * 了解如何[將應用程式標示為發行者已驗證](mark-app-as-publisher-verified.md)。

@@ -4,18 +4,18 @@ description: 如何在 Azure Blockchain Workbench 中管理使用者。
 ms.date: 07/15/2020
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: 541d5b2fa3d1a0cd5c4beba65cfe5ff3bdc3124a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: be078e7149ba008ab8b7ad44a016a0d1cf82df0e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538220"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91263006"
 ---
 # <a name="manage-users-in-azure-blockchain-workbench"></a>在 Azure Blockchain Workbench 中管理使用者
 
 Azure Blockchain Workbench 納入了對屬於協會一分子的人員與組織進行使用者管理的功能。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 需要進行 Blockchain Workbench 部署。 請參閱 [Azure Blockchain Workbench 部署](deploy.md)，以取得部署的詳細資訊。
 
@@ -41,8 +41,8 @@ Blockchain Workbench 使用者必須存在於 Azure AD 租用戶中，才能將�
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 1. 在右上角選取帳戶，以確認您位於與 Blockchain Workbench 相關聯的 Azure AD 租用戶內。
-1. 選取 [ **Azure Active Directory > 企業應用程式**]。
-1. 將 [**應用程式類型**] 下拉式篩選變更為 [**所有應用程式**]，**然後選取 [** 套用]。
+1. 選取 **Azure Active Directory > 企業應用程式**。
+1. 將 [ **應用程式類型** ] 下拉式篩選器變更為 **所有應用程式** ， **然後選取 [** 套用]。
 1. 選取 Azure Blockchain Workbench 的 Azure AD 用戶端應用程式
 
     ![所有企業應用程式註冊](./media/manage-users/select-blockchain-client-app.png)
@@ -77,11 +77,11 @@ Blockchain Workbench 使用者必須存在於 Azure AD 租用戶中，才能將�
 #### <a name="add-member-to-application"></a>將成員新增至應用程式
 
 1. 選取成員圖格來顯示目前成員的清單。
-1. 選取 [新增成員]****。
+1. 選取 [新增成員]。
 
-    ![新增成員](./media/manage-users/application-add-members.png)
+    ![螢幕擷取畫面顯示 [應用程式成員資格] 視窗，其中醒目提示 [新增成員] 按鈕。](./media/manage-users/application-add-members.png)
 
-1. 搜尋使用者的名稱。  只有存在於 Blockchain Workbench 租用戶的 Azure AD 使用者才會列出。 如果找不到使用者，則需要[新增 Azure AD 使用者](#add-azure-ad-users)。
+1. 搜尋使用者的名稱。  只有存在於 Blockchain Workbench 租用戶的 Azure AD 使用者才會列出。 如果找不到使用者，您需要 [新增 Azure AD 的使用者](#add-azure-ad-users)。
 
     ![新增成員](./media/manage-users/find-user.png)
 
@@ -89,7 +89,7 @@ Blockchain Workbench 使用者必須存在於 Azure AD 租用戶中，才能將�
 
     ![選取角色成員](./media/manage-users/application-select-role.png)
 
-1. 選取 [新增]**** 以在應用程式中新增與角色相關聯的成員。
+1. 選取 [新增]  以在應用程式中新增與角色相關聯的成員。
 
 #### <a name="remove-member-from-application"></a>從應用程式中移除成員
 

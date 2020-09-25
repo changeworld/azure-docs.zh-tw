@@ -12,38 +12,28 @@ ms.workload: identity
 ms.date: 05/18/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 92f0909660427e414264442523dba3ed2abe0142
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: a6cbb574245c7b11d2437693d60fd952becedba3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83771854"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91257549"
 ---
 # <a name="scenario-desktop-app-that-calls-web-apis"></a>案例：呼叫 Web API 的傳統型應用程式
 
 了解建置可呼叫 Web API 的傳統型應用程式所需的一切。
 
-## <a name="prerequisites"></a>Prerequisites
-
-[!INCLUDE [Pre-requisites](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
-
 ## <a name="get-started"></a>開始使用
 
-如果您還沒有這麼做，請遵循 .NET 桌面快速入門、通用 Windows 平台 (UWP) 快速入門或 macOS 原生應用程式快速入門，建立您的第一個應用程式：
+如果您還沒有這麼做，請完成快速入門以建立您的第一個應用程式：
 
-> [!div class="nextstepaction"]
-> [快速入門：取得權杖，並從 Windows 桌面應用程式呼叫 Microsoft Graph API](./quickstart-v2-windows-desktop.md)
-
-
-> [!div class="nextstepaction"]
-> [快速入門：取得權杖，並從 UWP 應用程式呼叫 Microsoft Graph API](./quickstart-v2-uwp.md)
-
-> [!div class="nextstepaction"]
-> [快速入門：取得權杖，並從 macOS 原生應用程式呼叫 Microsoft Graph API](./quickstart-v2-ios.md)
+- [快速入門：取得權杖，並從 Windows 桌面應用程式呼叫 Microsoft Graph API](./quickstart-v2-windows-desktop.md)
+- [快速入門：取得權杖，並從 UWP 應用程式呼叫 Microsoft Graph API](./quickstart-v2-uwp.md)
+- [快速入門：取得權杖，並從 macOS 原生應用程式呼叫 Microsoft Graph API](./quickstart-v2-ios.md)
 
 ## <a name="overview"></a>概觀
 
-您撰寫傳統型應用程式，而且想要讓使用者登入您的應用程式，並呼叫 Web API (例如 Microsoft Graph)、其他 Microsoft API 或您自己的 Web API。 您有數種可能性：
+您撰寫傳統型應用程式，而且想要讓使用者登入您的應用程式，並呼叫 Web API (例如 Microsoft Graph)、其他 Microsoft API 或您自己的 Web API。 您有幾種選項：
 
 - 在下列情況，您可使用互動式權杖取得：
 
@@ -64,6 +54,10 @@ ms.locfileid: "83771854"
 ## <a name="specifics"></a>特性
 
 傳統型應用程式有幾個特性。 其主要取決於您的應用程式是否使用互動式驗證。
+
+## <a name="recommended-reading"></a>建議閱讀資料
+
+[!INCLUDE [recommended-topics](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
 
 ## <a name="next-steps"></a>後續步驟
 

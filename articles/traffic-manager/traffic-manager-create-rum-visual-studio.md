@@ -11,13 +11,13 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 03/16/2018
 ms.author: duau
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 2d31f51c7af37ed6729900c5851113d8d1e9b587
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.custom: devx-track-js
+ms.openlocfilehash: c49672ad38ac8cf80214d03870b5876d741e76ec
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401328"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91259861"
 ---
 # <a name="how-to-send-real-user-measurements-to-traffic-manager-with-visual-studio-mobile-center"></a>如何使用 Visual Studio Mobile Center 將實際使用者度量傳送給流量管理員
 
@@ -95,7 +95,7 @@ ms.locfileid: "89401328"
     MobileCenter.start(getApplication(), "<Your Mobile Center AppSecret>", RealUserMeasurements.class);
     ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 - 深入了解[實際使用者度量](traffic-manager-rum-overview.md)
 - 了解 [流量管理員的運作方式](traffic-manager-overview.md)
 - 深入了解 [Mobile Center](https://docs.microsoft.com/mobile-center/)

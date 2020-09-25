@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: joflore
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a26a7320cab20c769ddf8dd1f24cd6fda0cc7d64
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 9f1d4c5b55dd2a24c1fb41540fdc5d3ae26849a2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90561528"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258671"
 ---
 # <a name="plan-a-conditional-access-deployment"></a>規劃條件式存取部署
 
@@ -262,7 +262,7 @@ CA 原則是 if-then 語句：如果符合指派，則套用這些存取控制�
 
 * 適用時機 (如果適用)
 
-![命名標準](media/plan-conditional-access/11.png)
+![顯示原則命名標準的螢幕擷取畫面。](media/plan-conditional-access/11.png)
 
 **範例**；要求從外部網路存取 Dynamics CRP 應用程式之行銷使用者使用 MFA 的原則可能是：
 

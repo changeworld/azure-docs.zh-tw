@@ -10,14 +10,14 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: fd0a782fc0c54cf14db9cac07712dea6d8f2e523
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 00709ca5e842e51edbf5b26c53fe0a18e80bb896
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88751957"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91262343"
 ---
-# <a name="receipt-concepts"></a>接收概念
+# <a name="receipt-concepts"></a>回條概念
 
 Azure 表單辨識器可以使用其中一個預先建立的模型來分析收據。 回條 API 會以英文從銷售收據中解壓縮重要資訊，例如商家名稱、交易日期、交易總計、明細專案等等。 
 
@@ -74,14 +74,11 @@ Azure 表單辨識器可以使用其中一個預先建立的模型來分析收�
   > 語言輸入 
   >
   > 預建的收據 2.1-preview。1有選擇性的要求參數，可指定其他英文市場的收據地區設定。 若為美式英文的銷售收據 (EN-US) 、加拿大 (EN-US) 、英國 (半 GB) 和印度 () ，您可以指定地區設定以取得改進的結果。 如果在 2.1-preview. 1 中未指定地區設定，此模型將會預設為 EN-US 模型。
-  
- ### <a name="input-requirements"></a>輸入需求 
 
-[!INCLUDE [input reqs](./includes/input-requirements-receipts.md)]
 
 ## <a name="the-analyze-receipt-operation"></a>分析收據操作
 
-「 [分析](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeReceiptAsync) 回條」會使用收據的影像或 PDF 作為輸入，並將 intrest 和文字的值解壓縮。 呼叫會傳回稱為的回應標頭欄位 `Operation-Location` 。 `Operation-Location`值是包含要在下一個步驟中使用之結果識別碼的 URL。
+「 [分析](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeReceiptAsync) 回條」會使用收據的影像或 PDF 作為輸入，並解壓縮感興趣的值和文字。 呼叫會傳回稱為的回應標頭欄位 `Operation-Location` 。 `Operation-Location`值是包含要在下一個步驟中使用之結果識別碼的 URL。
 
 |回應標頭| 結果 URL |
 |:-----|:----|
@@ -456,7 +453,10 @@ Azure 表單辨識器可以使用其中一個預先建立的模型來分析收�
 
 ## <a name="next-steps"></a>後續步驟
 
-- 遵循快速入門以開始使用 [接收 API Python 快速入門](./quickstarts/python-receipts.md)。
-- 瞭解 [表單辨識器 REST API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer/api)。
-- 深入瞭解 [表單辨識器](overview.md)。
+- 完成 [表單辨識器用戶端程式庫快速入門](quickstarts/client-library.md) ，以使用您所選語言的表單辨識器來開始撰寫收據處理應用程式。
+- 或者，遵循 [收據 API Python 快速入門](./quickstarts/python-receipts.md) ，使用 REST API 辨識收據。
 
+## <a name="see-also"></a>請參閱
+
+* [什麼是表單辨識器？](./overview.md)
+* [REST API 參考檔](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer/api)

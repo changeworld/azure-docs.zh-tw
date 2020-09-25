@@ -3,15 +3,15 @@ title: 針對 Azure 度量警示進行疑難排解
 description: Azure 監視器計量警示和可能解決方案的常見問題。
 author: harelbr
 ms.author: harelbr
-ms.topic: reference
+ms.topic: troubleshooting
 ms.date: 09/14/2020
 ms.subservice: alerts
-ms.openlocfilehash: b0e39982b3d62e0ef722a139024b499efc254f5f
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: f9003aa7b9b2c28e443485484ccd4eb50fa6e0dd
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90068757"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91294220"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>針對 Azure 監視器計量警示中的問題進行疑難排解 
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/03/2020
 ms.author: aahi
 ms.custom: seodec18
-ms.openlocfilehash: 674c906a4316ec92101f3f2028a57aa82db3f504
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: a2469768c2207210e17035a67d4b05fb0cc6bb6c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90982003"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91254171"
 ---
 # <a name="configure-computer-vision-docker-containers"></a>設定電腦視覺 Docker 容器
 
@@ -31,12 +31,12 @@ ms.locfileid: "90982003"
 
 容器也有下列容器特定的設定設定：
 
-|必要|設定|用途|
+|必要|設定|目的|
 |--|--|--|
-|No|ReadEngineConfig:ResultExpirationPeriod|結果到期期間（以小時為單位）。 預設值為 48 小時。 設定會指定系統應該清除辨識結果的時間。 例如，如果為 `resultExpirationPeriod=1` ，則系統會在處理常式之後清除辨識結果1小時。 如果為 `resultExpirationPeriod=0` ，則系統會在取出結果之後清除辨識結果。|
-|No|Cache： Redis|啟用 Redis 儲存體以儲存結果。 如果有多個讀取容器放在負載平衡器後方，就 *需要* 快取。|
-|No|佇列： RabbitMQ|啟用 RabbitMQ 來分派工作。 當有多個讀取容器放在負載平衡器後方時，此設定會很有用。|
-|No|儲存體：:D ocumentStore：： MongoDB|啟用 MongoDB 以永久儲存結果。|
+|否|ReadEngineConfig:ResultExpirationPeriod|結果到期期間（以小時為單位）。 預設值為 48 小時。 設定會指定系統應該清除辨識結果的時間。 例如，如果為 `resultExpirationPeriod=1` ，則系統會在處理常式之後清除辨識結果1小時。 如果為 `resultExpirationPeriod=0` ，則系統會在取出結果之後清除辨識結果。|
+|否|Cache： Redis|啟用 Redis 儲存體以儲存結果。 如果有多個讀取容器放在負載平衡器後方，就 *需要* 快取。|
+|否|佇列： RabbitMQ|啟用 RabbitMQ 來分派工作。 當有多個讀取容器放在負載平衡器後方時，此設定會很有用。|
+|否|儲存體：:D ocumentStore：： MongoDB|啟用 MongoDB 以永久儲存結果。|
 
 ## <a name="apikey-configuration-setting"></a>ApiKey 組態設定
 
@@ -60,7 +60,7 @@ ms.locfileid: "90982003"
 
 請記得將 `vision/v1.0` 路由新增至端點 URI，如下表所示。 
 
-|必要| Name | 資料類型 | 描述 |
+|必要| 名稱 | 資料類型 | 描述 |
 |--|------|-----------|-------------|
 |是| `Billing` | String | 計費端點 URI<br><br>範例：<br>`Billing=https://westcentralus.api.cognitive.microsoft.com/vision/v1.0` |
 
@@ -88,7 +88,7 @@ ms.locfileid: "90982003"
 
 主機裝載位置的正確語法會隨著主機作業系統而有所不同。 此外，[主機電腦](computer-vision-how-to-install-containers.md#the-host-computer)的裝載位置可能會因為 Docker 服務帳戶所使用的權限與主機裝載位置的權限互相衝突，而無法存取。 
 
-|選擇性| Name | 資料類型 | 描述 |
+|選擇性| 名稱 | 資料類型 | 描述 |
 |-------|------|-----------|-------------|
 |不允許| `Input` | String | 電腦視覺容器不會使用此項目。|
 |選用| `Output` | String | 輸出裝載的目標。 預設值是 `/output`。 這是記錄的位置。 這包括容器記錄。 <br><br>範例：<br>`--mount type=bind,src=c:\output,target=/output`|
@@ -124,7 +124,7 @@ ms.locfileid: "90982003"
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
-mcr.microsoft.com/azure-cognitive-services/vision/read:3.0 \
+mcr.microsoft.com/azure-cognitive-services/vision/read:3.0-preview \
 Eula=accept \
 Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}
@@ -134,7 +134,7 @@ ApiKey={API_KEY}
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
-mcr.microsoft.com/azure-cognitive-services/vision/read:3.0 \
+mcr.microsoft.com/azure-cognitive-services/vision/read:3.0-preview \
 Eula=accept \
 Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}
@@ -167,6 +167,6 @@ Logging:Console:LogLevel:Default=Information
 
 ---
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * 請參閱 [如何安裝及執行容器](computer-vision-how-to-install-containers.md)。

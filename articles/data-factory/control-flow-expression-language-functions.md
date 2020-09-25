@@ -10,12 +10,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/25/2019
-ms.openlocfilehash: 81a83c629a1cdcde77ec43751f32ebfe1dfb3425
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 79cc17ba4f845e2263d1a09af4a3f9ae4150f362
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84266843"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91292195"
 ---
 # <a name="expressions-and-functions-in-azure-data-factory"></a>Azure Data Factory 中的運算式和函式
 
@@ -68,7 +68,7 @@ ms.locfileid: "84266843"
 ### <a name="complex-expression-example"></a>複雜運算式範例
 下列範例顯示的複雜範例參考活動輸出的深度子欄位。 若要參考評估為子欄位的管道參數，請使用 [] 語法，而不是點 (.) 運算子 (如同 subfield1 和 subfield2 的情況)
 
-@activity('{activityName}').output.{subfield1}.{subfield2}[pipeline().parameters.subfield3].{subfield4}
+@activity ( '*activityName*' ) 。輸出。*subfield1*。*subfield2*[管線 ( # A3. 參數。*subfield3*]。*subfield4*
 
 ### <a name="a-dataset-with-a-parameter"></a>具有參數的資料集
 在以下範例中，BlobDataset 會採用一個名為 **path** 的參數。 其值會藉由使用下列運算式，設定 **folderPath** 屬性的值：`dataset().path`。 
@@ -532,7 +532,7 @@ addToTime('2018-01-01T00:00:00Z', 1, 'Day', 'D')
 
 ### <a name="and"></a>和
 
-檢查兩個運算式是否皆為 true。
+請檢查這兩個運算式是否為 true。
 當兩個運算式都是 true 時，傳回 true，如果至少有一個運算式為 false，則傳回 false。
 
 ```
@@ -541,12 +541,12 @@ and(<expression1>, <expression2>)
 
 | 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*運算式*2>，<*運算式*2> | 是 | Boolean | 要檢查的運算式 |
+| <*運算式運算式*>，<的*運算式*2> | 是 | Boolean | 要檢查的運算式 |
 |||||
 
 | 傳回值 | 類型 | 描述 |
 | ------------ | -----| ----------- |
-| true 或 false | Boolean | 當兩個運算式都是 true 時，傳回 true。 至少一個運算式為 False 時，則傳回 False。 |
+| true 或 false | Boolean | 當兩個運算式都為 true 時，傳回 true。 至少一個運算式為 False 時，則傳回 False。 |
 ||||
 
 *範例 1*
@@ -2397,7 +2397,7 @@ or(<expression1>, <expression2>)
 
 | 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*運算式*2>，<*運算式*2> | 是 | Boolean | 要檢查的運算式 |
+| <*運算式運算式*>，<的*運算式*2> | 是 | Boolean | 要檢查的運算式 |
 |||||
 
 | 傳回值 | 類型 | 描述 |

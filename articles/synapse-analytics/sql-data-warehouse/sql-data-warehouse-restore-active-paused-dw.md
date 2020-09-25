@@ -11,29 +11,29 @@ ms.date: 08/29/2018
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f8dc7be63506e586b90d1e389d26ac591dce9c3b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 62db1acd704aeb563c5644d7c963c65a3abdfd0c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075882"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289645"
 ---
 # <a name="restore-an-existing-sql-pool"></a>還原現有的 SQL 集區
 
-在本文中，您將瞭解如何使用 Azure 入口網站和 PowerShell，在 Azure Synapse 分析中還原現有的 SQL 集區。
+在本文中，您將瞭解如何使用 Azure 入口網站和 PowerShell，在 Azure Synapse Analytics 中還原現有的 SQL 集區。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-**請驗證您的 DTU 容量。** 每個集區都是由具有預設 DTU 配額的[邏輯 SQL 伺服器](../../azure-sql/database/logical-servers.md)（例如，myserver.database.windows.net）所主控。 確認伺服器有足夠的剩餘 DTU 配額可供要還原的資料庫。 若要了解如何計算所需 DTU 或要求更多 DTU，請參閱 [要求 DTU 配額變更](sql-data-warehouse-get-started-create-support-ticket.md)。
+**請驗證您的 DTU 容量。** 每個集區都是由 [邏輯 SQL server](../../azure-sql/database/logical-servers.md) 所主控 (例如，具有預設 DTU 配額的 myserver.database.windows.net) 。 確認伺服器有足夠的剩餘 DTU 配額來還原資料庫。 若要了解如何計算所需 DTU 或要求更多 DTU，請參閱 [要求 DTU 配額變更](sql-data-warehouse-get-started-create-support-ticket.md)。
 
 ## <a name="before-you-begin"></a>開始之前
 
-1. 請務必[安裝 Azure PowerShell](/powershell/azure/?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
-2. 擁有您想要從中還原的現有還原點。 如果您想要建立新的還原，請參閱教學課程，[以建立新的使用者定義還原點](sql-data-warehouse-restore-points.md)。
+1. 請務必 [安裝 Azure PowerShell](/powershell/azure/?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
+2. 具有您想要從中還原的現有還原點。 如果您想要建立新的還原，請參閱教學課程， [以建立新的使用者定義還原點](sql-data-warehouse-restore-points.md)。
 
 ## <a name="restore-an-existing-sql-pool-through-powershell"></a>透過 PowerShell 還原現有的 SQL 集區
 
-若要從還原點還原現有的 SQL 集區，請使用[Set-azsqldatabase 搭配](/powershell/module/az.sql/restore-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)PowerShell Cmdlet。
+若要從還原點還原現有的 SQL 集區，請使用 [>set-azsqldatabase](/powershell/module/az.sql/restore-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) PowerShell Cmdlet。
 
 1. 開啟 PowerShell。
 
@@ -45,14 +45,14 @@ ms.locfileid: "87075882"
 
 5. 使用 RestorePointCreationDate 挑選出想要的還原點。
 
-6. 使用[Set-azsqldatabase 搭配](/powershell/module/az.sql/restore-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)PowerShell Cmdlet，將 SQL 集區還原到所需的還原點。
+6. 使用 [restore->set-azsqldatabase](/powershell/module/az.sql/restore-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) PowerShell CMDLET 將 SQL 集區還原至所需的還原點。
 
-    1. 若要將 SQL 集區還原到不同的伺服器，請務必指定其他伺服器名稱。  此伺服器也可以位於不同的資源群組和區域中。
-    2. 若要還原至不同的訂用帳戶，請使用 [移動] 按鈕，將伺服器移至另一個訂用帳戶。
+    1. 若要將 SQL 集區還原至不同的伺服器，請務必指定其他伺服器名稱。  此伺服器也可以位於不同的資源群組和區域中。
+    2. 若要還原至不同的訂用帳戶，請使用 [移動] 按鈕將伺服器移至另一個訂用帳戶。
 
 7. 確認還原的 SQL 集區已上線。
 
-8. 還原完成之後，您可以遵循在復原[之後設定資料庫](../../azure-sql/database/disaster-recovery-guidance.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#configure-your-database-after-recovery)來設定已復原的 SQL 集區。
+8. 還原完成之後，您可以在復原 [之後設定資料庫](../../azure-sql/database/disaster-recovery-guidance.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#configure-your-database-after-recovery)，以設定已復原的 SQL 集區。
 
 ```Powershell
 
@@ -69,7 +69,7 @@ Get-AzSubscription
 Select-AzSubscription -SubscriptionName $SubscriptionName
 
 # Or list all restore points
-Get-AzSqlDatabaseRestorePoints -ResourceGroupName $ResourceGroupName -ServerName $ServerName -DatabaseName $DatabaseName
+Get-AzSqlDatabaseRestorePoint -ResourceGroupName $ResourceGroupName -ServerName $ServerName -DatabaseName $DatabaseName
 
 # Get the specific database to restore
 $Database = Get-AzSqlDatabase -ResourceGroupName $ResourceGroupName -ServerName $ServerName -DatabaseName $DatabaseName
@@ -96,7 +96,7 @@ $RestoredDatabase.status
 
     ![ 還原概觀](./media/sql-data-warehouse-restore-active-paused-dw/restoring-01.png)
 
-4. 選取 [自動還原點]**** 或 [使用者定義的還原點]****。 如果 SQL 集區沒有任何自動還原點，請等待幾個小時，或先建立使用者定義的還原點，再進行還原。 若為使用者定義的還原點，請選取現有的還原點，或建立一個新的。 針對 [**伺服器**]，您可以在不同的資源群組和區域中挑選伺服器，或建立一個新的。 提供所有參數之後，請按一下 [**審核 + 還原**]。
+4. 選取 [自動還原點]**** 或 [使用者定義的還原點]****。 如果 SQL 集區沒有任何自動還原點，請等候幾個小時，或在還原之前先建立使用者定義的還原點。 針對使用者定義的還原點，請選取現有的還原點，或建立一個新的還原點。 針對 **伺服器**，您可以選擇不同資源群組和區域中的伺服器，或建立一個新的伺服器。 提供所有參數之後，請按一下 [ **審核 + 還原**]。
 
     ![自動還原點](./media/sql-data-warehouse-restore-active-paused-dw/restoring-11.png)
 

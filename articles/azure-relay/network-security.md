@@ -1,20 +1,20 @@
 ---
 title: Azure 轉送的網路安全性
-description: 本文說明如何設定來自私人端點的存取權
+description: 本文說明如何搭配 Azure 轉送使用 IP 防火牆規則和私人端點。
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: bf49eff29385b5b72639420416df87b9187845e8
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 3aa3ffd119f65ec5181b0c382472cc4ef3c8bac4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87532980"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91263720"
 ---
 # <a name="network-security-for-azure-relay"></a>Azure 轉送的網路安全性 
 本文說明如何搭配 Azure 轉送使用下列安全性功能： 
 
-- IP 防火牆規則（預覽）
-- 私人端點（預覽）
+- IP 防火牆規則 (預覽) 
+- 私人端點 (預覽) 
 
 > [!NOTE]
 > Azure 轉送不支援網路服務端點。 
@@ -25,9 +25,9 @@ ms.locfileid: "87532980"
 
 此功能在只應該從特定知名網站存取 Azure 轉送的情況下會很有幫助。 防火牆規則可讓您設定規則以接受源自特定 IPv4 位址的流量。 例如，如果您搭配 [Azure Express Route](../expressroute/expressroute-faqs.md#supported-services) 使用轉送，您可以建立**防火牆規則**以僅允許來自您內部部署基礎結構 IP 位址的流量。 
 
-IP 防火牆規則會在轉送命名空間層級套用。 因此，規則會套用至來自用戶端的所有連接 (使用任何受支援的通訊協定)。 從不符合轉送命名空間上允許之 IP 規則的 IP 位址進行的任何連線嘗試都會被視為未經授權而遭到拒絕。 回應則不涉及 IP 規則。 IP 篩選器規則會依序套用，而且第一個符合 IP 位址的規則會決定接受或拒絕動作。
+IP 防火牆規則會套用於轉送命名空間層級。 因此，規則會套用至來自用戶端的所有連接 (使用任何受支援的通訊協定)。 從不符合轉送命名空間上允許之 IP 規則的 IP 位址嘗試進行的任何連線，都會被拒絕為未經授權。 回應則不涉及 IP 規則。 IP 篩選器規則會依序套用，而且第一個符合 IP 位址的規則會決定接受或拒絕動作。
 
-如需詳細資訊，請參閱[如何設定轉送命名空間的 IP 防火牆](ip-firewall-virtual-networks.md)
+如需詳細資訊，請參閱 [如何設定轉送命名空間的 IP 防火牆](ip-firewall-virtual-networks.md)
 
 ## <a name="private-endpoints"></a>私人端點
 
@@ -38,11 +38,11 @@ Azure **Private Link 服務**可讓您透過虛擬網路中的私人端點，存
 > [!NOTE]
 > 此功能目前為**預覽**狀態。 
 
-如需詳細資訊，請參閱[如何設定私人端點](private-link-service.md)。
+如需詳細資訊，請參閱 [如何設定私人端點](private-link-service.md)
 
 
 ## <a name="next-steps"></a>後續步驟
 查看下列文章：
 
 - [如何設定 IP 防火牆](ip-firewall-virtual-networks.md)
-- [如何設定私用端點](private-link-service.md)
+- [如何設定私人端點](private-link-service.md)

@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: aahi
-ms.openlocfilehash: 2d19c061ad1e5cf033d2801df64a0ae37736c418
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: f85a7e2acf911772ecc6562217918352e909fcbb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90983014"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91254069"
 ---
 # <a name="telemetry-and-troubleshooting"></a>遙測和疑難排解
 
@@ -103,7 +103,7 @@ az ad sp create-for-rbac --role="Monitoring Metrics Publisher" --name "<principa
 
 ### <a name="system-health-events"></a>系統健康情況事件
 
-| 活動名稱 | 描述|
+| 活動名稱 | 說明|
 |------|---------|
 |archon_exit    |當 *使用者將空間* 分析模組狀態從「執行」變更為「 *已停止*」時傳送。  |
 |archon_error   |當容器內的任何進程損毀時傳送。 這是嚴重錯誤。  |
@@ -313,8 +313,7 @@ az ad sp create-for-rbac --role="Monitoring Metrics Publisher" --name "<principa
 
 「容器不是處於有效的狀態。 訂用帳戶驗證失敗，狀態為「不相符」。 Api 金鑰並非適用于指定的容器類型。」
 
-如需詳細資訊，請參閱 [要求核准以執行容器](spatial-analysis-container.md#request-approval-to-run-the-container)。 
-
+如需詳細資訊，請參閱 [要求核准以執行容器](spatial-analysis-container.md#request-approval-to-run-the-container)。
 
 ## <a name="troubleshooting-the-azure-stack-edge-device"></a>針對 Azure Stack Edge 裝置進行疑難排解
 
@@ -401,13 +400,13 @@ kubectl logs <pod-name> -n <namespace> --all-containers
 
 ### <a name="useful-commands"></a>有用的命令
 
-|命令  |描述  |
+|命令  |說明  |
 |---------|---------|
 |`Get-HcsKubernetesUserConfig -AseUser`     | 產生 Kubernetes 設定檔。 使用命令時，請將資訊複製到名為 *config*的檔案中。請勿使用副檔名儲存檔案。        |
 | `Get-HcsApplianceInfo` | 傳回您裝置的相關資訊。 |
 | `Enable-HcsSupportAccess` | 產生存取認證以啟動支援會話。 |
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [部署人員計數 web 應用程式](spatial-analysis-web-app.md)
 * [設定空間分析作業](./spatial-analysis-operations.md)

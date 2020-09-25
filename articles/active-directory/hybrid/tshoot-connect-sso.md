@@ -13,12 +13,12 @@ ms.date: 10/07/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bdaa84d54bbd5558c995014aa4621b0051a36e97
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 60f23efa4f46849e1fe8b0ebe05cdd83ec16f49e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90016260"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91294813"
 ---
 # <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>針對 Azure Active Directory 無縫單一登入進行疑難排解
 
@@ -37,6 +37,7 @@ ms.locfileid: "90016260"
 - 如果您正在同步處理 30 個或更多的 Active Directory 樹系，便無法透過 Azure AD Connect 啟用無縫 SSO。 您可以在租用戶上[手動啟用](#manual-reset-of-the-feature)此功能，以解決這個問題。
 - 將 Azure AD 服務 URL (`https://autologon.microsoftazuread-sso.com`) 新增至 [信任的網站] 區域，而不是 [近端內部網路] 區域，會 *封鎖使用者登入*。
 - 無縫 SSO 支援 Kerberos 的 AES256_HMAC_SHA1、AES128_HMAC_SHA1 和 RC4_HMAC_MD5 加密類型。 建議將 AzureADSSOAcc $ 帳戶的加密類型設定為 AES256_HMAC_SHA1，或使用其中一個 AES 類型與 RC4 來增加安全性。 加密類型會儲存在 Active Directory 中帳戶的 >msds-supportedencryptiontypes 屬性上。  如果 [AzureADSSOAcc $ 帳戶加密類型] 設定為 [RC4_HMAC_MD5]，而您想要將其變更為其中一個 AES 加密類型，請務必先變換 AzureADSSOAcc $ 帳戶的 Kerberos 解密金鑰，如相關問題的 [常見問題檔](how-to-connect-sso-faq.md) 所述，否則不會發生無縫 SSO。
+-  如果您有多個具有樹系信任的樹系，在其中一個樹系中啟用 SSO，則會在所有信任的樹系中啟用 SSO。 如果您在已啟用 SSO 的樹系中啟用 SSO，您會收到錯誤，指出已在樹系中啟用 SSO。
 
 ## <a name="check-status-of-feature"></a>檢查功能的狀態
 

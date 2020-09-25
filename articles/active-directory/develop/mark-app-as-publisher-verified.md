@@ -12,16 +12,16 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: acb4b601118b341d14bc5e7c549d22eef23b2cc2
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 80731421b6a0d3f5bdabf117a7239bafa056e652
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90085700"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258331"
 ---
 # <a name="mark-your-app-as-publisher-verified"></a>將應用程式標示為發行者已驗證
 
-當應用程式標示為「發行者已驗證」時，表示發行者已使用其 Microsoft 合作夥伴網路 (MPN) 帳戶通過身分驗證，並將此 MPN 帳戶與其應用程式註冊相關聯。 本文說明如何完成 [發行者驗證](publisher-verification-overview.md) 程式。
+當應用程式註冊有經過驗證的發行者時，即表示應用程式的發行者已使用其 Microsoft 合作夥伴網路 (MPN) 帳戶來 [驗證](/partner-center/verification-responses) 其身分識別，並已將此 MPN 帳戶與其應用程式註冊相關聯。 本文說明如何完成 [發行者驗證](publisher-verification-overview.md) 程式。
 
 ## <a name="quickstart"></a>快速入門
 如果已在 Microsoft 合作夥伴網路 (MPN) 中註冊並符合[必要條件](publisher-verification-overview.md#requirements)，就可以立即開始使用： 
@@ -42,9 +42,9 @@ ms.locfileid: "90085700"
 
 1. 確定您已使用 [多重要素驗證](../fundamentals/concept-fundamentals-mfa-get-started.md) 登入組織 (Azure AD) 帳戶，該帳戶已獲授權可對應用 (程式進行變更) 您要標示為「發行者驗證」，並在合作夥伴中心的 MPN 帳戶上。
 
-    - 在 Azure AD 此使用者必須是下列其中一個角色的成員：應用程式系統管理員、雲端應用程式系統管理員、全域管理員。 
+    - 在 Azure AD 此使用者必須是下列其中一個 [角色](../users-groups-roles/directory-assign-admin-roles.md)的成員：應用程式系統管理員、雲端應用程式系統管理員、全域管理員。 
 
-    - 在合作夥伴中心內，此使用者必須擁有下列其中一種角色：MPN 管理員、帳戶管理員或全域管理員 (這是在 Azure AD 中主控的共用角色)。 
+    - 在合作夥伴中心內，此使用者必須擁有下列其中一種[角色](/partner-center/permissions-overview)：MPN 管理員、帳戶管理員或全域管理員 (這是在 Azure AD 中主控的共用角色)。 
 
 1. 流覽至應用程式註冊入口網站：  
 

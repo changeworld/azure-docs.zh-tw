@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/11/2020
 ms.author: memildin
-ms.openlocfilehash: 2012f590aa833bea1b49955958095917a6479665
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 09b23e9951c6da597b82d2e012a57f2c93410a5d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89438563"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289798"
 ---
 # <a name="archive-for-whats-new-in-azure-security-center"></a>Azure 資訊安全中心內新功能的封存？
 
@@ -76,7 +76,7 @@ Azure 資訊安全中心正在擴充其容器安全性功能，以保護 Azure K
 - **安全性建議** - 可採取動作的建議，以協助您符合 AKS 的安全性最佳做法。 這些建議會包含在您的安全分數中，以確保這些建議會被視為組織安全性狀態的一部份。 如需 AKS 相關的建議，您可以參閱「應使用角色型存取控制來限制對 Kubernetes Service 叢集的存取」。
 - **威脅防護** - 透過 AKS 部署的持續分析，資訊安全中心在主機和 AKS 叢集層級偵測到威脅和惡意活動的警示。
 
-深入瞭解 [Azure Kubernetes Service 與資訊安全中心整合](azure-kubernetes-service-integration.md)。
+深入瞭解 [Azure Kubernetes Service 與資訊安全中心整合](defender-for-kubernetes-introduction.md)。
 
 深入瞭解[資訊安全中心內的容器安全性功能](container-security.md)。
 

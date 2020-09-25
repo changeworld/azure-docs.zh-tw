@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 4f6b24b17ac0e12c286a11abe8732bb86e2deb5c
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.custom: devx-track-js
+ms.openlocfilehash: d32f39daeb66990d99915e8bbcca5dd637d4f914
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89297343"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91296258"
 ---
 # <a name="connect-to-media-services-v3-api---nodejs"></a>連接至媒體服務 v3 API-Node.js
 
@@ -27,7 +27,7 @@ ms.locfileid: "89297343"
 
 本文說明如何使用服務主體登入方法，連線到 Azure 媒體服務 v3 node.js SDK。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 安裝 [Node.js](https://nodejs.org/en/download/)。
 - [建立媒體服務帳戶](./create-account-howto.md)。 請務必記住資源群組名稱和「媒體服務」帳戶名稱。
@@ -131,6 +131,6 @@ node index.js
 - [媒體服務概念](concepts-overview.md)
 - [NPM 安裝 azure-arm-mediaservices](https://www.npmjs.com/package/azure-arm-mediaservices/)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 探索媒體服務 [Node.js 參考](/javascript/api/overview/azure/mediaservices/management)文件，並查看[範例](https://github.com/Azure-Samples/media-services-v3-node-tutorials)示範如何搭配使用媒體服務 API 與 Node.js。

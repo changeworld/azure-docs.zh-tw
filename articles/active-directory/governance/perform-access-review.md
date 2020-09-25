@@ -15,12 +15,12 @@ ms.date: 06/17/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: efab031ac2ad96524ce12e6d1c4a942f01ce2344
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 7e03ba5e7a4a24ee3114946230f78a64ea3d42cf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89299961"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91265676"
 ---
 # <a name="review-access-to-groups-and-applications-in-azure-ad-access-reviews"></a>在 Azure AD 存取權評論中審查群組和應用程式的存取權
 
@@ -37,7 +37,7 @@ Azure Active Directory (Azure AD) 簡化了企業如何使用稱為 Azure AD 存
 
 1. 尋找 Microsoft 的電子郵件，要求您複習存取權。 以下是用來檢查群組存取權的電子郵件範例。
 
-    ![Microsoft 的電子郵件範例，可審查群組的存取權](./media/perform-access-review/access-review-email.png)
+    ![顯示 Microsoft 用來審查群組存取權的範例電子郵件的螢幕擷取畫面。](./media/perform-access-review/access-review-email.png)
 
 1. 按一下 [ **開始審核** ] 連結以開啟存取權審核。
 
@@ -54,7 +54,7 @@ Azure Active Directory (Azure AD) 簡化了企業如何使用稱為 Azure AD 存
         > [!NOTE]
         > 如果看不到 [ **存取權審核** ] 磚，就不會對該組織執行任何存取權審核，此時不需要採取任何動作。
 
-        ![應用程式和群組的暫止存取權審核清單](./media/perform-access-review/access-reviews-list.png)
+        ![顯示應用程式和群組的暫止存取權審核清單的螢幕擷取畫面。](./media/perform-access-review/access-reviews-list.png)
 
     1. 按一下您想要執行之存取權審核的 [ **開始審核** ] 連結。
 
@@ -99,7 +99,7 @@ Azure Active Directory (Azure AD) 簡化了企業如何使用稱為 Azure AD 存
 
 1. 在頁面底部的藍色列中，按一下 [ **接受建議**]。
 
-    ![開啟顯示接受建議按鈕的存取權審核清單](./media/perform-access-review/accept-recommendations.png)
+    ![螢幕擷取畫面，顯示已選取 [接受建議] 按鈕的開啟存取權審核清單。](./media/perform-access-review/accept-recommendations.png)
 
     您會看到建議的動作摘要。
 
@@ -203,6 +203,6 @@ Azure Active Directory (Azure AD) 簡化了企業如何使用稱為 Azure AD 存
 >[!NOTE]
 >當您接受建議時，將不會變更先前的決策。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [完成群組或應用程式的存取權檢閱](complete-access-review.md)

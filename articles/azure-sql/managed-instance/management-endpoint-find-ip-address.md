@@ -10,27 +10,27 @@ ms.devlang: ''
 ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
-ms.reviewer: sstein, carlrab
+ms.reviewer: sstein
 ms.date: 12/04/2018
-ms.openlocfilehash: 40a44fe46cf38c633380c4c353960cc4e11f2f3d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e80c1ce7357feac19104c3f88764edffb0bdbfbc
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708717"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91263196"
 ---
 # <a name="determine-the-management-endpoint-ip-address---azure-sql-managed-instance"></a>判斷管理端點 IP 位址-Azure SQL 受控執行個體 
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-Azure SQL 受控執行個體虛擬叢集包含 Azure 用於管理作業的管理端點。 管理端點會受到網路層級內建防火牆和應用程式層級的相互憑證驗證所保護。 您可以判斷管理端點的 IP 位址，但您無法存取此端點。
+Azure SQL 受控執行個體虛擬叢集包含 Azure 用來管理作業的管理端點。 管理端點會受到網路層級內建防火牆和應用程式層級的相互憑證驗證所保護。 您可以判斷管理端點的 IP 位址，但您無法存取此端點。
 
-若要判斷管理 IP 位址，請在您的 SQL 受控執行個體 FQDN：上進行[DNS 查閱](/windows-server/administration/windows-commands/nslookup) `mi-name.zone_id.database.windows.net` 。 這會傳回類似的 DNS 專案 `trx.region-a.worker.vnet.database.windows.net` 。 接著，您可以在此 FQDN 上執行 DNS 查閱，並移除 ". vnet"。 這會傳回管理 IP 位址。 
+若要判斷管理 IP 位址，請在您的 SQL 受控執行個體 FQDN 上進行 [DNS 查閱](/windows-server/administration/windows-commands/nslookup) ： `mi-name.zone_id.database.windows.net` 。 這會傳回類似的 DNS 專案 `trx.region-a.worker.vnet.database.windows.net` 。 然後，您可以對此 FQDN 進行 DNS 查閱，並將 "vnet" 移除。 這會傳回管理 IP 位址。 
 
-如果您將取代 \<MI FQDN\> 為 SQL 受控執行個體的 DNS 專案，則此 PowerShell 程式碼會為 `mi-name.zone_id.database.windows.net` 您執行所有動作：
+如果您將取代 \<MI FQDN\> 為 SQL 受控執行個體的 DNS 專案，則此 PowerShell 程式碼會為您完成此作業： `mi-name.zone_id.database.windows.net`
   
 ``` powershell
   $MIFQDN = "<MI FQDN>"
   resolve-dnsname $MIFQDN | select -first 1  | %{ resolve-dnsname $_.NameHost.Replace(".vnet","")}
 ```
 
-如需 SQL 受控執行個體和連線的詳細資訊，請參閱[AZURE sql 受控執行個體連線性架構](connectivity-architecture-overview.md)。
+如需 SQL 受控執行個體和連線能力的詳細資訊，請參閱 [AZURE sql 受控執行個體連線能力架構](connectivity-architecture-overview.md)。

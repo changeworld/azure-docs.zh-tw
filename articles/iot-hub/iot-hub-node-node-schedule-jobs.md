@@ -9,15 +9,15 @@ services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 08/16/2019
-ms.custom: mqtt, devx-track-javascript
-ms.openlocfilehash: 16e6c72f9fbb710524752c2d220d442735d809b7
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: mqtt, devx-track-js
+ms.openlocfilehash: 2c5ce219e40117a2b656b7acab6dd68a1d20dffb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420765"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91251927"
 ---
-# <a name="schedule-and-broadcast-jobs-nodejs"></a>排程和廣播作業（Node.js）
+# <a name="schedule-and-broadcast-jobs-nodejs"></a>排程及廣播工作 ( # A0) 
 
 [!INCLUDE [iot-hub-selector-schedule-jobs](../../includes/iot-hub-selector-schedule-jobs.md)]
 
@@ -33,7 +33,7 @@ Azure IoT 中樞是一項完全受控的服務，可讓後端應用程式建立�
 
 * 裝置對應項和屬性：[開始使用裝置對應項](iot-hub-node-node-twin-getstarted.md)和[教學課程：如何使用裝置對應項屬性](tutorial-device-twins.md)
 
-* 直接方法： [IoT 中樞開發人員指南-直接方法](iot-hub-devguide-direct-methods.md)和[教學課程：直接方法](quickstart-control-device-node.md)
+* 直接方法： [IoT 中樞開發人員指南-直接方法](iot-hub-devguide-direct-methods.md) 和 [教學課程：直接方法](quickstart-control-device-node.md)
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
@@ -45,7 +45,7 @@ Azure IoT 中樞是一項完全受控的服務，可讓後端應用程式建立�
 
 在本教學課程結尾處，您會有兩個 Node.js 應用程式：
 
-* **simDevice.js**，這會使用裝置身分識別連接到您的 IoT 中樞，並接收**lockDoor**直接方法。
+* **simDevice.js**，其會使用裝置身分識別連線到您的 IoT 中樞，並接收 **>lockdoor** 直接方法。
 
 * **scheduleJobService.js** 會使用作業在模擬裝置應用程式中呼叫直接方法，並更新裝置對應項 (twin) 的所需屬性。
 
@@ -99,7 +99,7 @@ Azure IoT 中樞是一項完全受控的服務，可讓後端應用程式建立�
     var client = Client.fromConnectionString(connectionString, Protocol);
     ```
 
-6. 新增下列函式以處理**lockDoor**方法。
+6. 新增下列函式以處理 **>lockdoor** 方法。
 
     ```javascript
     var onLockDoor = function(request, response) {
@@ -117,7 +117,7 @@ Azure IoT 中樞是一項完全受控的服務，可讓後端應用程式建立�
     };
     ```
 
-7. 新增下列程式碼以註冊**lockDoor**方法的處理常式。
+7. 加入下列程式碼，以註冊 **>lockdoor** 方法的處理常式。
 
    ```javascript
    client.open(function(err) {
@@ -144,7 +144,7 @@ Azure IoT 中樞是一項完全受控的服務，可讓後端應用程式建立�
 
 ## <a name="schedule-jobs-for-calling-a-direct-method-and-updating-a-device-twins-properties"></a>排定用於呼叫直接方法及更新裝置對應項 (twin) 屬性的作業
 
-在本節中，您會建立 Node.js 主控台應用程式，以使用直接方法在裝置上起始遠端**lockDoor** ，並更新裝置對應項的屬性。
+在本節中，您會建立 Node.js 主控台應用程式，該應用程式會使用直接方法在裝置上起始遠端 **>lockdoor** ，並更新裝置對應項的屬性。
 
 1. 建立名為 **scheduleJobService** 的新空白資料夾。  在命令提示字元中，使用下列命令在 **scheduleJobService** 資料夾中建立 package.json 檔案。  接受所有預設值：
 
@@ -160,7 +160,7 @@ Azure IoT 中樞是一項完全受控的服務，可讓後端應用程式建立�
 
 3. 使用文字編輯器，在 [scheduleJobService]**** 資料夾中建立新的 **scheduleJobService.js** 檔案。
 
-4. 在**scheduleJobService.js**檔案的開頭新增下列 ' 必要 ' 語句：
+4. 在 **scheduleJobService.js** 檔案的開頭新增下列 ' 必要 ' 語句：
 
     ```javascript
     'use strict';
@@ -169,7 +169,7 @@ Azure IoT 中樞是一項完全受控的服務，可讓後端應用程式建立�
     var JobClient = require('azure-iothub').JobClient;
     ```
 
-5. 新增下列變數宣告。 以 `{iothubconnectionstring}` 您在[取得 IoT 中樞連接字串](#get-the-iot-hub-connection-string)中複製的值取代預留位置值。 如果您註冊的裝置不同于**myDeviceId**，請務必在查詢準則中加以變更。
+5. 新增下列變數宣告。 將 `{iothubconnectionstring}` 預留位置值取代為您在 [取得 IoT 中樞連接字串](#get-the-iot-hub-connection-string)中所複製的值。 如果您註冊的裝置不同于 **>mydeviceid**，請務必在查詢準則中加以變更。
 
     ```javascript
     var connectionString = '{iothubconnectionstring}';
@@ -290,7 +290,7 @@ Azure IoT 中樞是一項完全受控的服務，可讓後端應用程式建立�
 
    ![模擬裝置應用程式輸出](./media/iot-hub-node-node-schedule-jobs/sim-device.png)
 
-   以下顯示直接方法和裝置對應項更新的服務排程工作，以及執行完成的作業：
+   以下顯示直接方法和裝置對應項更新的服務排程工作，以及執行到完成的作業：
 
    ![執行模擬裝置應用程式](./media/iot-hub-node-node-schedule-jobs/schedule-job-service.png)
 
@@ -298,6 +298,6 @@ Azure IoT 中樞是一項完全受控的服務，可讓後端應用程式建立�
 
 在本教學課程中，您已使用作業來排定裝置的直接方法，以及更新裝置對應項 (twin) 的屬性。
 
-若要繼續開始使用 IoT 中樞和裝置管理模式（例如遠端透過空中固件更新），請參閱[教學課程：如何執行固件更新](tutorial-firmware-update.md)。
+若要繼續開始使用「IoT 中樞」和裝置管理模式（例如透過無線固件更新進行遠端），請參閱 [教學課程：如何執行固件更新](tutorial-firmware-update.md)。
 
 若要繼續開始使用 IoT 中樞，請參閱[開始使用 Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)。

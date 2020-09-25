@@ -14,12 +14,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c341235a646fff28a16d30d1bf010932b02cf19
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 2cd95d01c9b49bb6002c00c805dc82dcf30941e3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89660960"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91295031"
 ---
 #  <a name="use-a-saml-20-identity-provider-idp-for-single-sign-on"></a>使用 SAML 2.0 識別提供者 (IdP) 來進行單一登入
 
@@ -306,7 +306,7 @@ Microsoft 已提供一項工具供您用來測試 SAML 2.0 型識別提供者。
 2.  按一下 [立即安裝] 以開始下載及安裝此工具。
 3.  選取 [我無法設定與 Office 365、Azure 或其他使用 Azure Active Directory 之服務的同盟]。
 4.  工具開始下載並執行後，您會看到 [連線診斷] 視窗。 此工具會逐步引導您完成同盟連線的測試。
-5.  連線分析程式將開啟 SAML 2.0 IDP 以供您登入。請輸入所要測試使用者主體的認證：![SAML](./media/how-to-connect-fed-saml-idp/saml1.png)
+5.  連線分析程式會開啟您的 SAML 2.0 IDP 讓您登入，並輸入您要測試之使用者主體的認證： ![ 顯示 SAML 2.0 IDP 登入視窗的螢幕擷取畫面。](./media/how-to-connect-fed-saml-idp/saml1.png)
 6.  在同盟測試登入視窗中，您應該針對設定來與 SAML 2.0 識別提供者進行同盟的 Azure AD 租用戶，輸入租用戶的帳戶名稱和密碼。 此工具會嘗試使用這些認證來進行登入，而系統則會在輸出中提供登入嘗試期間所執行之測試的詳細結果。
 ![SAML](./media/how-to-connect-fed-saml-idp/saml2.png)
 7. 此視窗顯示失敗的測試結果。 按一下 [檢閱詳細結果] 將會顯示所執行之每項測試結果的相關資訊。 您也可以將結果儲存至磁碟中以便共用。

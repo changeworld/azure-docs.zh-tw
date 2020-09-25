@@ -6,21 +6,22 @@ documentationcenter: ''
 author: msjuergent
 manager: juergent
 editor: ''
+keywords: S224、S448、S672、Optane、SAP、HANA、Sku、S896、、、、
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/02/2020
+ms.date: 09/23/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 670ef515f0397e3cbdf4fc443ac97d7c73a4a374
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 6911128cfbaa87229a09bcea0d655c6110c2d208
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89421946"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91259776"
 ---
-# <a name="available-skus-for-hli"></a>HLI 可用的 SKU
+# <a name="available-skus-for-hana-large-instances"></a>適用于 HANA 大型實例的可用 Sku
 
 Azure 的 Azure 區域中有數個 Azure 區域中的數個設定，可在 Azure 上以僅限修訂3戳記為基礎的 Azure (大型實例) 服務 SAP Hana：
 
@@ -52,31 +53,31 @@ Azure 區域中的數個 Azure 區域中有數個 Azure 區域中的數個設定
 | YES <br />[OLAP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2185)、 [OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2265) | SAP HANA on Azure S96<br /> – 2 x Intel®®處理器 E7-8890 v4 <br /> 48 個 CPU 核心和 96 個 CPU 執行緒 |  768 GB | 768 GB | --- | 3.0 TB | 可用 |
 | YES <br /> [OLAP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2186)、 [OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2269) | Azure S224 上的 SAP Hana<br /> – 4 x Intel®®白金級8276處理器 <br /> 112 CPU 核心和 224 CPU 執行緒 |  3.0 TB | 3.0 TB | --- | 6.3 TB | 可用 |
 | YES <br />[OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2297) | Azure S224m 上的 SAP Hana<br /> – 4 x Intel®®白金級8276處理器 <br /> 112 CPU 核心和 224 CPU 執行緒 |  6.0 TB | 6.0 TB | --- | 10.5 TB | 可用 |
+| YES <br />[OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2381) | Azure S224om 上的 SAP Hana<br /> – 4 x Intel®®白金級8276處理器 <br /> 112 CPU 核心和 224 CPU 執行緒 | 6.0 TB |  3.0 TB |  3.0 TB | 10.5 TB | 可用 |
 | 否 | Azure S224oo 上的 SAP Hana<br /> – 4 x Intel®®白金級8276處理器 <br /> 112 CPU 核心和 224 CPU 執行緒 | 4.5 TB |  1.5 TB |  3.0 TB | 8.4 TB | 可用 |
-| 否 | Azure S224om 上的 SAP Hana<br /> – 4 x Intel®®白金級8276處理器 <br /> 112 CPU 核心和 224 CPU 執行緒 | 6.0 TB |  3.0 TB |  3.0 TB | 10.5 TB | 可用 |
 | 否 | Azure S224ooo 上的 SAP Hana<br /> – 4 x Intel®®白金級8276處理器 <br /> 112 CPU 核心和 224 CPU 執行緒 | 7.5 TB |  1.5 TB |  6.0 TB | 12.7 TB | 可用 |
 | 否 | Azure S224oom 上的 SAP Hana<br /> – 4 x Intel®®白金級8276處理器 <br /> 112 CPU 核心和 224 CPU 執行緒 | 9.0 TB |  3.0 TB |  6.0 TB | 14.8 TB | 可用 |
 | YES <br />[OLAP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=1983)、 [OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2268) | SAP HANA on Azure S384<br /> – 8 x Intel® Xeon® Processor E7-8890 v4<br /> 192 個 CPU 核心和 384 個 CPU 執行緒 |  4.0 TB | 4.0 TB | --- | 16 TB | 可用 |
 | YES <br />[OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2080) | SAP HANA on Azure S384m<br /> – 8 x Intel® Xeon® Processor E7-8890 v4<br /> 192 個 CPU 核心和 384 個 CPU 執行緒 |  6.0 TB | 6.0 TB | --- | 18 TB |  可用  |
 | YES <br />[OLAP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=1984)、 [OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2267) | SAP HANA on Azure S384xm<br /> – 8 x Intel® Xeon® Processor E7-8890 v4<br /> 192 個 CPU 核心和 384 個 CPU 執行緒 |  8.0 TB | 8.0 TB | --- | 28 TB | 可用 |
-| 否 | Azure S448 上的 SAP Hana<br /> – 8 x Intel®®白金級8276處理器 <br /> 224 CPU 核心和 448 CPU 執行緒 | 6.0 TB |  6.0 TB |  --- | 10.5 TB | 僅適用于 (Rev 4)  |
-| 否 | Azure S448m 上的 SAP Hana<br /> – 8 x Intel®®白金級8276處理器 <br /> 224 CPU 核心和 448 CPU 執行緒 | 12.0 TB |  12.0 TB |  --- | 18.9 TB | 僅適用于 (Rev 4)  |
+| YES <br />[OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2378) | Azure S448 上的 SAP Hana<br /> – 8 x Intel®®白金級8276處理器 <br /> 224 CPU 核心和 448 CPU 執行緒 | 6.0 TB |  6.0 TB |  --- | 10.5 TB | 僅適用于 (Rev 4)  |
+| YES <br />[OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2377) | Azure S448m 上的 SAP Hana<br /> – 8 x Intel®®白金級8276處理器 <br /> 224 CPU 核心和 448 CPU 執行緒 | 12.0 TB |  12.0 TB |  --- | 18.9 TB | 僅適用于 (Rev 4)  |
 | 否 | Azure S448oo 上的 SAP Hana<br /> – 8 x Intel®®白金級8276處理器 <br /> 224 CPU 核心和 448 CPU 執行緒 | 9.0 TB |  3.0 TB |  6.0 TB | 14.8 TB  | 僅適用于 (Rev 4)  |
 | 否 | Azure S448om 上的 SAP Hana<br /> – 8 x Intel®®白金級8276處理器 <br /> 224 CPU 核心和 448 CPU 執行緒 | 12.0 TB |  6.0 TB |  6.0 TB | 18.9 TB  | 僅適用于 (Rev 4)  |
 | 否 | Azure S448ooo 上的 SAP Hana<br /> – 8 x Intel®®白金級8276處理器 <br /> 224 CPU 核心和 448 CPU 執行緒 | 15.0 TB |  3.0 TB |  12.0 TB | 23.2 TB  | 僅適用于 (Rev 4)  |
 | 否 | Azure S448oom 上的 SAP Hana<br /> – 8 x Intel®®白金級8276處理器 <br /> 224 CPU 核心和 448 CPU 執行緒 | 18.0 TB |  6.0 TB |  12.0 TB | 27.4 TB  | 僅適用于 (Rev 4)  |
 | YES <br />[OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2049) | SAP HANA on Azure S576m<br /> – 12 x Intel® Xeon® Processor E7-8890 v4<br /> 288 個 CPU 核心和 576 個 CPU 執行緒 |  12.0 TB | 12.0 TB | --- | 28 TB | 僅適用于 (Rev 4)  |
 | 否 | SAP HANA on Azure S576xm<br /> – 12 x Intel® Xeon® Processor E7-8890 v4<br /> 288 個 CPU 核心和 576 個 CPU 執行緒 |  18.0 TB | 18.0 | --- |  41 TB | 可用 |
-| YES <br />[OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=1985) | SAP HANA on Azure S768m<br /> – 16 x Intel® Xeon® Processor E7-8890 v4<br /> 384 個 CPU 核心和 768 個 CPU 執行緒 |  16.0 TB | 16.0 TB | -- | 36 TB | 可用 |
-| 否 | SAP HANA on Azure S768xm<br /> – 16 x Intel® Xeon® Processor E7-8890 v4<br /> 384 個 CPU 核心和 768 個 CPU 執行緒 |  24.0 TB | 24.0 TB | --- | 56 TB | 可用 |
-| 否 | Azure S672 上的 SAP Hana<br /> – 12 x Intel®®白金級8276處理器 <br /> 336 CPU 核心和 672 CPU 執行緒 | 9.0 TB |  9.0 TB |  --- | 14.7 TB | 僅適用于 (Rev 4)  |
-| 否 | Azure S672m 上的 SAP Hana<br /> – 12 x Intel®®白金級8276處理器 <br /> 336 CPU 核心和 672 CPU 執行緒 | 18.0 TB |  18.0 TB |  --- | 27.4 TB | 僅適用于 (Rev 4)  |
+| YES <br />[OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2380) | Azure S672 上的 SAP Hana<br /> – 12 x Intel®®白金級8276處理器 <br /> 336 CPU 核心和 672 CPU 執行緒 | 9.0 TB |  9.0 TB |  --- | 14.7 TB | 僅適用于 (Rev 4)  |
+| YES <br />[OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2379) | Azure S672m 上的 SAP Hana<br /> – 12 x Intel®®白金級8276處理器 <br /> 336 CPU 核心和 672 CPU 執行緒 | 18.0 TB |  18.0 TB |  --- | 27.4 TB | 僅適用于 (Rev 4)  |
 | 否 | Azure S672oo 上的 SAP Hana<br /> – 12 x Intel®®白金級8276處理器 <br /> 336 CPU 核心和 672 CPU 執行緒 | 13.5 TB |  4.5 TB |  9.0 TB | 21.1 TB  | 僅適用于 (Rev 4)  |
 | 否 | Azure S672om 上的 SAP Hana<br /> – 12 x Intel®®白金級8276處理器 <br /> 336 CPU 核心和 672 CPU 執行緒 | 18.0 TB |  9.0 TB |  9.0 TB | 27.4 TB  | 僅適用于 (Rev 4)  |
 | 否 | Azure S672ooo 上的 SAP Hana<br /> – 12 x Intel®®白金級8276處理器 <br /> 336 CPU 核心和 672 CPU 執行緒 | 22.5 TB |  4.5 TB |  18.0 TB | 33.7 TB  | 僅適用于 (Rev 4)  |
 | 否 | Azure S672oom 上的 SAP Hana<br /> – 12 x Intel®®白金級8276處理器 <br /> 336 CPU 核心和 672 CPU 執行緒 | 27.0 TB |  9.0 TB |  18.0 TB | 40.0 TB  | 僅適用于 (Rev 4)  |
+| YES <br />[OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=1985) | SAP HANA on Azure S768m<br /> – 16 x Intel® Xeon® Processor E7-8890 v4<br /> 384 個 CPU 核心和 768 個 CPU 執行緒 |  16.0 TB | 16.0 TB | -- | 36 TB | 可用 |
+| 否 | SAP HANA on Azure S768xm<br /> – 16 x Intel® Xeon® Processor E7-8890 v4<br /> 384 個 CPU 核心和 768 個 CPU 執行緒 |  24.0 TB | 24.0 TB | --- | 56 TB | 可用 |
+|  YES <br />[OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2376)  | Azure S896 上的 SAP Hana<br /> – 16 x Intel®®白金級8276處理器 <br /> 448 CPU 核心和 896 CPU 執行緒 | 12.0 TB |  12.0 TB |  --- | 18.9 TB | 僅適用于 (Rev 4)  |
 | YES <br />[OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2328) | Azure S896m 上的 SAP Hana<br /> – 16 x Intel®®白金級8276處理器 <br /> 448 CPU 核心和 896 CPU 執行緒 | 24.0 TB | 24.0 TB | -- | 35.8 TB | 可用 |
-| 否 | Azure S896 上的 SAP Hana<br /> – 16 x Intel®®白金級8276處理器 <br /> 448 CPU 核心和 896 CPU 執行緒 | 12.0 TB |  12.0 TB |  --- | 18.9 TB | 僅適用于 (Rev 4)  |
 | 否 | Azure S896oo 上的 SAP Hana<br /> – 16 x Intel®®白金級8276處理器 <br /> 448 CPU 核心和 896 CPU 執行緒 | 18.0 TB |  6.0 TB |  12.0 TB | 27.4 TB  | 僅適用于 (Rev 4)  |
 | 否 | Azure S896om 上的 SAP Hana<br /> – 16 x Intel®®白金級8276處理器 <br /> 448 CPU 核心和 896 CPU 執行緒 | 24.0 TB |  12.0 TB |  12.0 TB | 35.8 TB  | 僅適用于 (Rev 4)  |
 | 否 | Azure S896ooo 上的 SAP Hana<br /> – 16 x Intel®®白金級8276處理器 <br /> 448 CPU 核心和 896 CPU 執行緒 | 30.0 TB |  6.0 TB |  24.0 TB | 44.3 TB  | 僅適用于 (Rev 4)  |

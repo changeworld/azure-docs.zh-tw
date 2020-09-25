@@ -1,17 +1,17 @@
 ---
-title: 具有 VS Code 消費者入門的 Azure Service Fabric
+title: 使用 VS Code 消費者入門的 Azure Service Fabric
 description: 本文是使用 Visual Studio Code 建立 Service Fabric 應用程式的概觀。
 author: peterpogorski
 ms.topic: article
 ms.date: 06/29/2018
 ms.author: pepogors
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 1480b5e1ddab86761adb1c7caef808de89a3d947
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.custom: devx-track-js
+ms.openlocfilehash: a2ac8a84b4df4a241665e7f4269803908733ca82
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87428990"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91249904"
 ---
 # <a name="service-fabric-for-visual-studio-code"></a>適用於 Visual Studio Code 的 Service Fabric
 
@@ -22,7 +22,7 @@ ms.locfileid: "87428990"
 > [!IMPORTANT]
 > Service Fabric Java 應用程式可以在 Windows 機器上開發，但是只能部署到 Azure Linux 叢集上。 不支援在 Windows 上針對 Java 應用程式進行偵錯。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 必須在所有環境上安裝下列必要條件。
 
@@ -70,7 +70,7 @@ ms.locfileid: "87428990"
 
 **Service Fabric: Create Application** 命令會在您目前的工作區中建立全新 Service Fabric 應用程式。 根據開發機器上安裝的是哪個 Yeoman 產生器，您可以建立數種類型的 Service Fabric 應用程式，包括 Java、C#、容器及客體專案。 
 
-1.  選取 [ **Service Fabric：建立應用程式**] 命令
+1.  選取 [ **Service Fabric：建立應用程式** ] 命令
 2.  選取新 Service Fabric 應用程式的類型。 
 3.  輸入您想要建立的應用程式名稱
 3.  選取您想要新增到 Service Fabric 應用程式中的服務類型。 
@@ -81,7 +81,7 @@ ms.locfileid: "87428990"
 ### <a name="service-fabric-add-service"></a>Service Fabric: Add Service
 **Service Fabric: Add Service** 命令會將新服務新增至現有的 Service Fabric 應用程式中。 服務要新增至其中的應用程式，必須位於工作區的根目錄中。 
 
-1.  選取 [ **Service Fabric：新增服務**] 命令。
+1.  選取 [ **Service Fabric：加入服務** ] 命令。
 2.  選取目前 Service Fabric 應用程式的類型。 
 3.  選取您想要新增到 Service Fabric 應用程式中的服務類型。 
 4.  遵循提示來為服務命名。 
@@ -99,7 +99,7 @@ ms.locfileid: "87428990"
 **Service Fabric: Deploy Application** 命令會在本機叢集上部署您的 Service Fabric 應用程式。 在使用命令之前，請先確定您的本機叢集正在執行。 
 
 1. 選取 **Service Fabric: Deploy Application** 命令
-2. 使用 Service Fabric Explorer （HTTP： \/ /localhost： 19080/Explorer）來查看本機叢集，以確認已安裝應用程式。 這可能需要一些時間，請耐心等候。
+2. 使用 Service Fabric Explorer (HTTP： \/ /localhost： 19080/Explorer) 來查看本機叢集，以確認已安裝應用程式。 這可能需要一些時間，請耐心等候。
 3. 您也可以於未在 Cloud.json 檔案中設定參數時使用 **Service Fabric: Publish Application** 命令，以部署到本機叢集。
 
 > [!NOTE]
@@ -112,7 +112,7 @@ ms.locfileid: "87428990"
 2.  使用 Service Fabric Explorer 檢視叢集，確認應用程式是否已移除。 這可能需要一些時間，請耐心等候。
 
 ### <a name="service-fabric-build-application"></a>Service Fabric: Build Application
-**Service Fabric： Build Application**命令可以 Service Fabric 應用程式中建立 JAVA 或 c #。 
+**Service Fabric： Build Application**命令可以建立 JAVA 或 c # Service Fabric 應用程式。 
 
 1.  在執行此命令之前，請先確定您是在應用程式根資料夾中。 命令會識別應用程式類型 (C# 或 Java)，並且據以建置您的應用程式。
 2.  選取 **Service Fabric: Build Application** 命令。

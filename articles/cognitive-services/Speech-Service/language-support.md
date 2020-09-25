@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: 9a1745aa0e78dafca70ea90d4a5ac92f340312b3
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: b50f6c4b2ed86b950e68cf8c55b63af687ff9ead
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90706927"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91298044"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>語音服務的語言和語音支援
 
@@ -140,42 +140,75 @@ Microsoft Speech SDK 和 REST API 均支援這些語音，且各支援依地區�
 
 |Locale  | Language            | 性別 | 語音名稱 | 樣式支援 |
 |--|--|--|--|--|
-| `ar-EG` | 阿拉伯文 (埃及)                  | Female | `ar-EG-SalmaNeural`      | 一般 |
-| `ar-SA` | 阿拉伯文 (沙烏地阿拉伯)           | Female | `ar-SA-ZariyahNeural`    | 一般 |
-| `ca-ES` | 加泰蘭文 (西班牙)                 | Female | `ca-ES-AlbaNeural`       | 一般 |
-| `da-DK` | 丹麥文 (丹麥)                | Female | `da-DK-ChristelNeural`   | 一般 |
-| `de-DE` | 德文 (德國)                | Female | `de-DE-KatjaNeural`      | 一般 |
-| `en-AU` | 英文 (澳大利亞)             | Female | `en-AU-NatashaNeural`    | 一般 |
-| `en-CA` | 英文 (加拿大)                | Female | `en-CA-ClaraNeural`      | 一般 |
-| `en-GB` | 英文 (英國)                    | Female | `en-GB-LibbyNeural`      | 一般 |
-|         |                                 | Female | `en-GB-MiaNeural`        | 一般 |
-| `en-IN` | 英文 (印度)                 | Female | `en-IN-NeerjaNeural`     | 一般 |
-| `en-US` | 英文 (美國)                    | Female | `en-US-AriaNeural`       | 一般，提供多種語音樣式 |
-|         |                                 | Male   | `en-US-GuyNeural`        | 一般 |
-| `es-ES` | 西班牙文 (西班牙)                 | Female | `es-ES-ElviraNeural`     | 一般 |
-| `es-MX` | 西班牙文 (墨西哥)                | Female | `es-MX-DaliaNeural`      | 一般 |
-| `fi-FI` | 芬蘭文 (芬蘭)               | Female | `fi-FI-NooraNeural`      | 一般 |
-| `fr-CA` | 法文 (加拿大)                 | Female | `fr-CA-SylvieNeural`     | 一般 |
-| `fr-FR` | 法文 (法國)                 | Female | `fr-FR-DeniseNeural`     | 一般 |
-| `hi-IN` | 印度文 (印度)                   | Female | `hi-IN-SwaraNeural`      | 一般 |
-| `it-IT` | 義大利文 (義大利)                 | Female | `it-IT-ElsaNeural`       | 一般 |
-| `ja-JP` | 日文                        | Female | `ja-JP-NanamiNeural`     | 一般 |
-| `ko-KR` | 韓文                          | Female | `ko-KR-SunHiNeural`      | 一般 |
-| `nb-NO` | 挪威文                       | Female | `nb-NO-IselinNeural`     | 一般 |
-| `nl-NL` | 荷蘭文 (Netherland)               | Female | `nl-NL-ColetteNeural`    | 一般 |
-| `pl-PL` | 波蘭文 (波蘭)                 | Female | `pl-PL-ZofiaNeural`      | 一般 |
-| `pt-BR` | 葡萄牙文 (巴西)             | Female | `pt-BR-FranciscaNeural`  | 一般，提供多種語音樣式 |
-| `tr-TR` | 土耳其文                         | Female | `tr-TR-EmelNeural`       | 一般 |
-| `pt-PT` | 葡萄牙文 (葡萄牙)           | Female | `pt-PT-FernandaNeural`   | 一般 |
-| `ru-RU` | 俄文 (俄羅斯)                | Female | `ru-RU-DariyaNeural`     | 一般 |
-| `sv-SE` | 瑞典文 (瑞典)                | Female | `sv-SE-HilleviNeural`    | 一般 |
-| `th-TH` | 泰文 (泰國)                 | Female | `th-TH-AcharaNeural`     | 一般 |
-| `zh-CN` | 中文 (中文，簡化)   | Female | `zh-CN-XiaoxiaoNeural`   | 一般，提供多種語音樣式 |
-|         |                                 | Female | `zh-CN-XiaoyouNeural`    | 兒童語音，針對故事敘述進行最佳化 |
-|         |                                 | Male   | `zh-CN-YunyangNeural`    | 針對新聞閱讀進行最佳化，提供多種語音樣式 |
-|         |                                 | Male   | `zh-CN-YunyeNeural`      | 針對故事敘述進行最佳化 |
-| `zh-HK` | 中文 (廣東話，繁體)   | Female | `zh-HK-HiuGaaiNeural`| 一般 |
-| `zh-TW` | 中文 (繁體，國語)   | Female | `zh-TW-HsiaoYuNeural`    | 一般 |
+| `ar-EG` | 阿拉伯文 (埃及)  | Female | `ar-EG-SalmaNeural` | 一般 |
+| `ar-SA` | 阿拉伯文 (沙烏地阿拉伯)  | Female | `ar-SA-ZariyahNeural` | 一般 |
+| `bg-BG`<sup>新增</sup> | 保加利亞文 (Bulgary)  | Female | `bg-BG-KalinaNeural` | 一般 |
+| `ca-ES` | 加泰羅尼亞文 (西班牙)  | Female | `ca-ES-AlbaNeural` | 一般 |
+| `cs-CZ`<sup>新增</sup> | 捷克文 (捷克文)   | Female | `cs-CZ-VlastaNeural` | 一般 |
+| `da-DK` | 丹麥文 (丹麥)  | Female | `da-DK-ChristelNeural` | 一般 |
+| `de-AT`<sup>新增</sup> | 德文 (奧地利) | Female | `de-AT-IngridNeural` | 一般 |
+| `de-CH`<sup>新增</sup> | 德文 (瑞士) | Female | `de-CH-LeniNeural` | 一般 |
+| `de-DE` | 德文 (德國)  | Female | `de-DE-KatjaNeural` | 一般 |
+| `de-DE`<sup>新增</sup> | 德文 (德國) | Male | `de-DE-ConradNeural` | 一般 |
+| `el-GR`<sup>新增</sup> | 希臘文 (希臘) | Female | `el-GR-AthinaNeural` | 一般 |
+| `en-AU` | 英文 (澳大利亞)  | Female | `en-AU-NatashaNeural` | 一般 |
+| `en-AU`<sup>新增</sup> | 澳大利亞 (澳大利亞)  | Male | `en-AU-WilliamNeural` | 一般 |
+| `en-CA` | 英文 (加拿大)  | Female | `en-CA-ClaraNeural` | 一般 |
+| `en-GB` | 英文 (英國)  | Female | `en-GB-LibbyNeural` | 一般 |
+| `en-GB` | 英文 (英國)  | Female | `en-GB-MiaNeural` | 一般 |
+| `en-GB`<sup>新增</sup> | 英文 (英國) | Male | `En-GB-RyanNeural` | 一般 |
+| `en-IE`<sup>新增</sup> | 愛爾蘭英文 (愛爾蘭)  | Female | `en-IE-EmilyNeural` | 一般 |
+| `en-IN` | 英文 (印度)  | Female | `en-IN-NeerjaNeural` | 一般 |
+| `en-US` | 美國英語 ()  | Female | `en-US-AriaNeural` | 一般，提供多種語音樣式 |
+| `en-US` | 美國英語 ()  | Male | `en-US-GuyNeural` | 一般 |
+| `en-US`<sup>新增</sup> | 美國英語 ()  | Female | `en-US-JennyNeural` | 一般，提供多種語音樣式 |
+| `es-ES` | 西班牙文 (西班牙)  | Female | `es-ES-ElviraNeural` | 一般 |
+| `es-ES`<sup>新增</sup> | 西班牙文 (西班牙)  | Male | `es-ES-AlvaroNeural` | 一般 |
+| `es-MX` | 西班牙文 (墨西哥)  | Female | `es-MX-DaliaNeural` | 一般 |
+| `es-MX`<sup>新增</sup> | 西班牙文 (墨西哥) | Male | `es-MX-JorgeNeural` | 一般 |
+| `fi-FI` | 芬蘭文 (芬蘭)  | Female | `fi-FI-NooraNeural` | 一般 |
+| `fr-CA` | 法文 (加拿大)  | Female | `fr-CA-SylvieNeural` | 一般 |
+| `fr-CA`<sup>新增</sup> | 法文 (加拿大) | Male | `fr-CA-JeanNeural` | 一般 |
+| `fr-CH`<sup>新增</sup> | 法文 (瑞士) | Female | `fr-CH-ArianeNeural` | 一般 |
+| `fr-FR` | 法文 (法國)  | Female | `fr-FR-DeniseNeural` | 一般 |
+| `fr-FR`<sup>新增</sup> | 法文 (法國) | Male | `fr-FR-HenriNeural` | 一般 |
+| `he-IL`<sup>新增</sup> | 希伯來文 (Isareal)  | Female | `he-IL-HilaNeural` | 一般 |
+| `hi-IN` | 印度文 (印度)  | Female | `hi-IN-SwaraNeural` | 一般 |
+| `hr-HR`<sup>新增</sup> | 克羅埃西亞文 (克羅埃西亞) | Female | `hr-HR-GabrijelaNeural` | 一般 |
+| `hu-HU`<sup>新增</sup> | 匈牙利文 (匈牙利) | Female | `hu-HU-NoemiNeural` | 一般 |
+| `id-ID`<sup>新增</sup> | Bahasa 印尼 (印尼)  | Male | `id-ID-ArdiNeural` | 一般 |
+| `it-IT` | 義大利文 (義大利)  | Female | `it-IT-ElsaNeural` | 一般 |
+| `it-IT`<sup>新增</sup> | 義大利文 (義大利) | Female | `it-IT-IsabellaNeural` | 一般 |
+| `it-IT`<sup>新增</sup> | 義大利文 (義大利) | Male | `it-IT-DiegoNeural` | 一般 |
+| `ja-JP` | 日本 (日本)  | Female | `ja-JP-NanamiNeural` | 一般 |
+| `ja-JP`<sup>新增</sup> | 日文 (日本) | Male | `ja-JP-KeitaNeural` | 一般 |
+| `ko-KR` | 韓文 (南韓國)  | Female | `ko-KR-SunHiNeural` | 一般 |
+| `ko-KR`<sup>新增</sup> | 韓文 (韓國) | Male | `ko-KR-InJoonNeural` | 一般 |
+| `ms-MY`<sup>新增</sup> | 馬來文 (馬來西亞) | Female | `ms-MY-YasminNeural` | 一般 |
+| `nb-NO` | 挪威文、博克 (挪威)  | Female | `nb-NO-IselinNeural` | 一般 |
+| `nl-NL` | 荷蘭文 (荷蘭)  | Female | `nl-NL-ColetteNeural` | 一般 |
+| `pl-PL` | 波蘭文 (波蘭)  | Female | `pl-PL-ZofiaNeural` | 一般 |
+| `pt-BR` | 葡萄牙文 (巴西)  | Female | `pt-BR-FranciscaNeural` | 一般，提供多種語音樣式 |
+| `pt-BR`<sup>新增</sup> | 巴西葡萄牙文 (巴西)  | Male | `pt-BR-AntonioNeural` | 一般 |
+| `pt-PT` | 葡萄牙文 (葡萄牙)  | Female | `pt-PT-FernandaNeural` | 一般 |
+| `ro-RO`<sup>新增</sup> | 羅馬尼亞文 (羅馬尼亞) | Female | `ro-RO-AlinaNeural` | 一般 |
+| `ru-RU` | 俄文 (俄羅斯)  | Female | `ru-RU-DariyaNeural` | 一般 |
+| `sk-SK`<sup>新增</sup> | 斯洛伐克文 (斯洛伐克) | Female | `sk-SK-ViktoriaNeural` | 一般 |
+| `sl-SI`<sup>新增</sup> | 斯洛維尼亞文 (斯洛維尼亞) | Female | `sl-SI-PetraNeural` | 一般 |
+| `sv-SE` | 瑞典文 (瑞典)  | Female | `sv-SE-HilleviNeural` | 一般 |
+| `ta-IN`<sup>新增</sup> | 坦米爾文 (印度) | Female | `ta-IN-PallaviNeural` | 一般 |
+| `te-IN`<sup>新增</sup> | 特拉古文 (印度) | Female | `te-IN-ShrutiNeural` | 一般 |
+| `th-TH` | 泰國 (泰國)  | Female | `th-TH-AcharaNeural` | 一般 |
+| `th-TH`<sup>新增</sup> | 泰文 (泰國) | Female | `th-TH-PremwadeeNeural` | 一般 |
+| `tr-TR` | 土耳其文 (土耳其)  | Female | `tr-TR-EmelNeural` | 一般 |
+| `vi-VN`<sup>新增</sup> | 越南文 (越南) | Female | `vi-VN-HoaiMyNeural` | 一般 |
+| `zh-CN` | 中文 (簡體中文、中國)  | Female | `zh-CN-XiaoxiaoNeural` | 一般，提供多種語音樣式 |
+| `zh-CN` | 中文 (簡體中文、中國)  | Female | `zh-CN-XiaoyouNeural` | 兒童語音，針對故事敘述進行最佳化 |
+| `zh-CN` | 中文 (簡體中文、中國)  | Male | `zh-CN-YunyangNeural` | 針對新聞閱讀優化，可使用多個聲音樣式 |
+| `zh-CN` | 中文 (簡體中文、中國)  | Male | `zh-CN-YunyeNeural` | 針對故事敘述進行最佳化 |
+| `zh-HK` | 廣東話 (繁體中文（香港特別行政區）)  | Female | `zh-HK-HiuGaaiNeural` | 一般 |
+| `zh-TW` | 中文 (繁體中文、臺灣)  | Female | `zh-TW-HsiaoYuNeural` | 一般 |
+
 
 > [!IMPORTANT]
 > `en-US-JessaNeural` 的語音已變更為 `en-US-AriaNeural`。 如果您之前使用過「Jessa」，請轉換為「Aria」。
@@ -191,88 +224,83 @@ Microsoft Speech SDK 和 REST API 均支援這些語音，且各支援依地區�
 
 | Locale | Language | 性別 | 語音名稱 |
 |--|--|--|--|
-| <sup>1</sup>`ar-EG` | 阿拉伯文 (埃及) | Female | "ar-EG-Hoda" |
-| `ar-SA` | 阿拉伯文 (沙烏地阿拉伯) | Male | "ar-SA-Naayf" |
-| `bg-BG` | 保加利亞文 | Male |  "bg-BG-Ivan" |
-| `ca-ES` | 卡達隆尼亞文 | Female |  "ca-ES-HerenaRUS" |
-| `cs-CZ` | 捷克文 | Male | "cs-CZ-Jakub" |
-| `da-DK` | 丹麥文 | Female |  "da-DK-HelleRUS" |
-| `de-AT` | 德文 (奧地利) | Male | "de-AT-Michael" |
-| `de-CH` | 德文 (瑞士) | Male |  "de-CH-Karsten" |
-| `de-DE` | 德文 (德國) | Female |  "de-DE-Hedda" |
-|  |  | Female | "de-DE-HeddaRUS" |
-|  |  | Male |  "de-DE-Stefan-Apollo" |
-| `el-GR` | 希臘文 | Male | "el-GR-Stefanos" |
-| `en-AU` | 英文 (澳大利亞) | Female |  "en-AU-Catherine" |
-|  |  | Female |  "en-AU-HayleyRUS" |
-| `en-CA` | 英文 (加拿大) | Female |  "en-CA-Linda" |
-|  |  | Female |  "en-CA-HeatherRUS" |
-| `en-GB` | 英文 (英國) | Female |  "en-GB-Susan-Apollo" |
-|  |  | Female |  "en-GB-HazelRUS" |
-|  |  | Male |  "en-GB-George-Apollo" |
-| `en-IE` | 英文 (愛爾蘭) | Male | "en-IE-Sean" |
-| `en-IN` | 英文 (印度) | Female | "en-IN-Heera-Apollo" |
-|  |  | Female |  "en-IN-PriyaRUS" |
-|  |  | Male |  "en-IN-Ravi-Apollo" |
-| `en-US` | 英文 (美國) | Female |  "en-US-ZiraRUS" |
-|  |  | Female | "en-US-AriaRUS" |
-|  |  | Male | "en-US-BenjaminRUS" |
-|  |  | Male |  "en-US-Guy24kRUS" |
-| `es-ES` | 西班牙文 (西班牙) | Female |  "es-ES-Laura-Apollo" |
-|  |  | Female | "es-ES-HelenaRUS" |
-|  |  | Male | "es-ES-Pablo-Apollo" |
-| `es-MX` | 西班牙文 (墨西哥) | Female |  "es-MX-HildaRUS" |
-|  |  | Male | "es-MX-Raul-Apollo" |
-| `fi-FI` | 芬蘭文 | Female | "fi-FI-HeidiRUS" |
-| `fr-CA` | 法文 (加拿大) | Female | "fr-CA-Caroline" |
-|  |  | Female | "fr-CA-HarmonieRUS" |
-| `fr-CH` | 法文 (瑞士) | Male | "fr-CH-Guillaume" |
-| `fr-FR` | 法文 (法國) | Female |  "fr-FR-Julie-Apollo" |
-|  |  | Female |"fr-FR-HortenseRUS" |
-|  |  | Male |  "fr-FR-Paul-Apollo" |
-| `he-IL` | 希伯來文 (以色列) | Male |  "he-IL-Asaf" |
-| `hi-IN` | 印度文 (印度) | Female | "hi-IN-Kalpana-Apollo" |
-|  |  | Female |  "hi-IN-Kalpana" |
-|  |  | Male |  "hi-IN-Hemant" |
-| `hr-HR` | 克羅埃西亞文 | Male | "hr-HR-Matej" |
-| `hu-HU` | 匈牙利文 | Male |  "hu-HU-Szabolcs" |
-| `id-ID` | 印尼文 | Male | "id-ID-Andika" |
-| `it-IT` | 義大利文 | Male |  "it-IT-Cosimo-Apollo" |
-|  |  | Female |  "it-IT-LuciaRUS" |
-| `ja-JP` | 日文 | Female |  "ja-JP-Ayumi-Apollo" |
-|  |  | Male | "ja-JP-Ichiro-Apollo" |
-|  |  | Female |  "ja-JP-HarukaRUS" |
-| `ko-KR` | 韓文 | Female | "ko-KR-HeamiRUS" |
-| `ms-MY` | 馬來文 | Male |  "ms-MY-Rizwan" |
-| `nb-NO` | 挪威文 | Female |  "nb-NO-HuldaRUS" |
-| `nl-NL` | 荷蘭文 | Female |  "nl-NL-HannaRUS" |
-| `pl-PL` | 波蘭文 | Female |  "pl-PL-PaulinaRUS" |
-| `pt-BR` | 葡萄牙文 (巴西) | Female | "pt-BR-HeloisaRUS" |
-|  |  | Male |  "pt-BR-Daniel-Apollo" |
-| `pt-PT` | 葡萄牙文 (葡萄牙) | Female | "pt-PT-HeliaRUS" |
-| `ro-RO` | 羅馬尼亞文 | Male | "ro-RO-Andrei" |
-| `ru-RU` | 俄文 | Female |  "ru-RU-Irina-Apollo" |
-|  |  | Male | "ru-RU-Pavel-Apollo" |
-|  |  | Female |  ru-RU-EkaterinaRUS |
-| `sk-SK` | 斯洛伐克文 | Male | "sk-SK-Filip" |
-| `sl-SI` | 斯洛維尼亞文 | Male |  "sl-SI-Lado" |
-| `sv-SE` | 瑞典文 | Female | "sv-SE-HedvigRUS" |
-| `ta-IN` | 坦米爾文 (印度) | Male |  "ta-IN-Valluvar" |
-| `te-IN` | 特拉古文 (印度) | Female |  "te-IN-Chitra" |
-| `th-TH` | 泰文 | Male |  "th-TH-Pattara" |
-| `tr-TR` | 土耳其文 (土耳其) | Female | "tr-TR-SedaRUS" |
-| `vi-VN` | 越南文 | Male |  "vi-VN-An" |
-| `zh-CN` | 中文 (中文，簡化)  | Female |  "zh-CN-HuihuiRUS" |
-|  |  | Female | "zh-CN-Yaoyao-Apollo" |
-|  |  | Male | "zh-CN-Kangkang-Apollo" |
-| `zh-HK` | 中文 (廣東話，繁體) | Female |  "zh-HK-Tracy-Apollo" |
-|  |  | Female | "zh-HK-TracyRUS" |
-|  |  | Male |  "zh-HK-Danny-Apollo" |
-| `zh-TW` | 中文 (繁體，國語) | Female |  "zh-TW-Yating-Apollo" |
-|  |  | Female | "zh-TW-HanHanRUS" |
-|  |  | Male |  "zh-TW-Zhiwei-Apollo" |
-
-**1** *ar-EG 支援現代標準阿拉伯文 (MSA)。*
+| `ar-EG` | 阿拉伯文 (阿拉伯文 )  | Female | `ar-EG-Hoda` |
+| `ar-SA` | 阿拉伯文 (沙烏地阿拉伯) | Male | `ar-SA-Naayf` |
+| `bg-BG` | 保加利亞文 (保加利亞) | Male | `bg-BG-Ivan` |
+| `ca-ES` | 加泰蘭文 (西班牙) | Female | `ca-ES-HerenaRUS` |
+| `cs-CZ` | 捷克文 (捷克共和國) | Male | `cs-CZ-Jakub` |
+| `da-DK` | 丹麥文 (丹麥) | Female | `da-DK-HelleRUS` |
+| `de-AT` | 德文 (奧地利) | Male | `de-AT-Michael` |
+| `de-CH` | 德文 (瑞士) | Male | `de-CH-Karsten` |
+| `de-DE` | 德文 (德國) | Female | `de-DE-HeddaRUS` |
+| `de-DE` | 德文 (德國) | Male | `de-DE-Stefan` |
+| `el-GR` | 希臘文 (希臘) | Male | `el-GR-Stefanos` |
+| `en-AU` | 英文 (澳大利亞) | Female | `en-AU-Catherine` |
+| `en-AU` | 英文 (澳大利亞) | Female | `en-AU-HayleyRUS` |
+| `en-CA` | 英文 (加拿大) | Female | `en-CA-HeatherRUS` |
+| `en-CA` | 英文 (加拿大) | Female | `en-CA-Linda` |
+| `en-GB` | 英文 (英國) | Male | `en-GB-George` |
+| `en-GB` | 英文 (英國) | Female | `en-GB-HazelRUS` |
+| `en-GB` | 英文 (英國) | Female | `en-GB-Susan` |
+| `en-IE` | 英文 (愛爾蘭) | Male | `en-IE-Sean` |
+| `en-IN` | 英文 (印度) | Female | `en-IN-Heera` |
+| `en-IN` | 英文 (印度) | Female | `en-IN-PriyaRUS` |
+| `en-IN` | 英文 (印度) | Male | `en-IN-Ravi` |
+| `en-US` | 英文 (美國) | Male | `en-US-BenjaminRUS` |
+| `en-US` | 英文 (美國) | Male | `en-US-GuyRUS` |
+| `en-US` | 英文 (美國) | Female | `en-US-JessaRUS` |
+| `en-US` | 英文 (美國) | Female | `en-US-ZiraRUS` |
+| `es-ES` | 西班牙文 (西班牙) | Female | `es-ES-HelenaRUS` |
+| `es-ES` | 西班牙文 (西班牙) | Female | `es-ES-Laura` |
+| `es-ES` | 西班牙文 (西班牙) | Male | `es-ES-Pablo` |
+| `es-MX` | 西班牙文 (墨西哥) | Female | `es-MX-HildaRUS` |
+| `es-MX` | 西班牙文 (墨西哥) | Male | `es-MX-Raul` |
+| `fi-FI` | 芬蘭文 (芬蘭) | Female | `fi-FI-HeidiRUS` |
+| `fr-CA` | 法文 (加拿大) | Female | `fr-CA-Caroline` |
+| `fr-CA` | 法文 (加拿大) | Female | `fr-CA-HarmonieRUS` |
+| `fr-CH` | 法文 (瑞士) | Male | `fr-CH-Guillaume` |
+| `fr-FR` | 法文 (法國) | Female | `fr-FR-HortenseRUS` |
+| `fr-FR` | 法文 (法國) | Female | `fr-FR-Julie` |
+| `fr-FR` | 法文 (法國) | Male | `fr-FR-Paul` |
+| `he-IL` | 希伯來文 (以色列) | Male | `he-IL-Asaf` |
+| `hi-IN` | 印度文 (印度) | Male | `hi-IN-Hemant` |
+| `hi-IN` | 印度文 (印度) | Female | `hi-IN-Kalpana` |
+| `hr-HR` | 克羅埃西亞文 (克羅埃西亞) | Male | `hr-HR-Matej` |
+| `hu-HU` | 匈牙利文 (匈牙利) | Male | `hu-HU-Szabolcs` |
+| `id-ID` | 印尼文 (印尼) | Male | `id-ID-Andika` |
+| `it-IT` | 義大利文 (義大利) | Male | `it-IT-Cosimo` |
+| `it-IT` | 義大利文 (義大利) | Female | `it-IT-LuciaRUS` |
+| `ja-JP` | 日文 (日本) | Female | `ja-JP-Ayumi` |
+| `ja-JP` | 日文 (日本) | Female | `ja-JP-HarukaRUS` |
+| `ja-JP` | 日文 (日本) | Male | `ja-JP-Ichiro` |
+| `ko-KR` | 韓文 (南韓國)  | Female | `ko-KR-HeamiRUS` |
+| `ms-MY` | 馬來文 (馬來西亞) | Male | `ms-MY-Rizwan` |
+| `nb-NO` | 挪威文，巴克摩 (挪威) | Female | `nb-NO-HuldaRUS` |
+| `nl-NL` | 荷蘭文 (荷蘭) | Female | `nl-NL-HannaRUS` |
+| `pl-PL` | 波蘭文 (波蘭) | Female | `pl-PL-PaulinaRUS` |
+| `pt-BR` | 葡萄牙文 (巴西) | Male | `pt-BR-Daniel` |
+| `pt-BR` | 葡萄牙文 (巴西) | Female | `pt-BR-HeloisaRUS` |
+| `pt-PT` | 葡萄牙文 (葡萄牙) | Female | `pt-PT-HeliaRUS` |
+| `ro-RO` | 羅馬尼亞文 (羅馬尼亞) | Male | `ro-RO-Andrei` |
+| `ru-RU` | 俄文 (俄羅斯) | Female | `ru-RU-EkaterinaRUS` |
+| `ru-RU` | 俄文 (俄羅斯) | Female | `ru-RU-Irina` |
+| `ru-RU` | 俄文 (俄羅斯) | Male | `ru-RU-Pavel` |
+| `sk-SK` | 斯洛伐克文 (斯洛伐克) | Male | `sk-SK-Filip` |
+| `sl-SI` | 斯洛維尼亞文 (斯洛維尼亞) | Male | `sl-SI-Lado` |
+| `sv-SE` | 瑞典文 (瑞典) | Female | `sv-SE-HedvigRUS` |
+| `ta-IN` | 坦米爾文 (印度) | Male | `ta-IN-Valluvar` |
+| `te-IN` | 特拉古文 (印度) | Female | `te-IN-Chitra` |
+| `th-TH` | 泰文 (泰國) | Male | `th-TH-Pattara` |
+| `tr-TR` | 土耳其文 (土耳其) | Female | `tr-TR-SedaRUS` |
+| `vi-VN` | 越南文 (越南) | Male | `vi-VN-An` |
+| `zh-CN` | 中文 (簡體中文、中國)  | Female | `zh-CN-HuihuiRUS` |
+| `zh-CN` | 中文 (簡體中文、中國)  | Male | `zh-CN-Kangkang` |
+| `zh-CN` | 中文 (簡體中文、中國)  | Female | `zh-CN-Yaoyao` |
+| `zh-HK` | 廣東話 (繁體中文（香港特別行政區）)  | Male | `zh-HK-Danny` |
+| `zh-HK` | 廣東話 (繁體中文（香港特別行政區）)  | Female | `zh-HK-TracyRUS` |
+| `zh-TW` | 中文 (繁體中文、臺灣)  | Female | `zh-TW-HanHanRUS` |
+| `zh-TW` | 中文 (繁體中文、臺灣)  | Female | `zh-TW-Yating` |
+| `zh-TW` | 中文 (繁體中文、臺灣)  | Male | `zh-TW-Zhiwei` |
 
 > [!IMPORTANT]
 > `en-US-Jessa` 的語音已變更為 `en-US-Aria`。 如果您之前使用過「Jessa」，請轉換為「Aria」。

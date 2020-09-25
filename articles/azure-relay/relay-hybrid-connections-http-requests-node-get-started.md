@@ -3,13 +3,13 @@ title: Azure 轉送混合式連接-Node 中的 HTTP 要求
 description: 在 Node 中為 Azure 轉送混合式連線 HTTP 要求撰寫 Node.js 主控台應用程式。
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: ff6b4e6b99299091910df537bf90984f493405e3
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.custom: devx-track-js
+ms.openlocfilehash: 249b4fa231cd54a1a8054b32985ed0e48fcc16f1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87382860"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91263754"
 ---
 # <a name="get-started-with-relay-hybrid-connections-http-requests-in-node"></a>在 Node 中開始使用轉送混合式連線 HTTP 要求
 

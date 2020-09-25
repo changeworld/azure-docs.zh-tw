@@ -1,6 +1,6 @@
 ---
 title: 設定跨不同區域的 SQL Server Always On 可用性群組
-description: 本文說明如何在具有不同區域複本的 Azure 虛擬機器上設定 SQL Server Always On 可用性群組。
+description: 本文說明如何在具有不同區域複本的 Azure 虛擬機器上，設定 SQL Server Always On 可用性群組。
 services: virtual-machines
 documentationCenter: na
 author: MashaMSFT
@@ -8,18 +8,18 @@ editor: monicar
 tags: azure-service-management
 ms.assetid: 388c464e-a16e-4c9d-a0d5-bb7cf5974689
 ms.service: virtual-machines-sql
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: e33a5e32848dfd0a6cf252d6876616fc89edd1d7
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: f312b690ac7743b1574dbbec9d408b3fafbb0194
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284263"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91263176"
 ---
 # <a name="configure-a-sql-server-always-on-availability-group-across-different-azure-regions"></a>跨不同的 Azure 區域設定 SQL Server Always On 可用性群組
 
@@ -100,20 +100,20 @@ ms.locfileid: "87284263"
 
    ![叢集屬性](./media/availability-group-manually-configure-multiple-regions/cluster-name-properties.png)
 
-   在 [屬性] 對話方塊上，選取 [IP 位址] 下的 [新增]，然後從遠端網路區域新增叢集名稱的 IP 位址。 在 [ **IP 位址**] 對話方塊中選取 **[確定]** ，然後再次選取 [叢集**內容] 對話方塊上的** **[確定]** 來儲存新的 IP 位址。 
+   在 [屬性] 對話方塊上，選取 [IP 位址] 下的 [新增]，然後從遠端網路區域新增叢集名稱的 IP 位址。 在 [ **IP 位址**] 對話方塊中選取 **[確定**]，然後再次**選取 [叢集內容] 對話方塊**上的 **[確定**]，以儲存新的 IP 位址。 
 
    ![新增叢集 IP](./media/availability-group-manually-configure-multiple-regions/add-cluster-ip-address.png)
 
 
 1. 將 IP 位址新增為核心叢集名稱的相依性。
 
-   再開啟一次叢集屬性，然後選取 [相依**性] 索引**標籤。設定兩個 IP 位址的或相依性： 
+   再次開啟叢集屬性，然後選取 [相依 **性] 索引** 標籤。設定兩個 IP 位址的或相依性： 
 
    ![叢集屬性](./media/availability-group-manually-configure-multiple-regions/cluster-ip-dependencies.png)
 
 1. 將 IP 位址資源新增至叢集中的可用性群組角色。 
 
-   以滑鼠右鍵按一下容錯移轉叢集管理員中的 [可用性群組] 角色，選擇 [**新增資源**]、[**更多資源**]，然後選取 [ **IP 位址**]。
+   以滑鼠右鍵按一下容錯移轉叢集管理員中的可用性群組角色，選擇 [ **新增資源**]、[ **更多資源**]，然後選取 [ **IP 位址**]。
 
    ![建立 IP 位址](./media/availability-group-manually-configure-multiple-regions/20-add-ip-resource.png)
 
@@ -170,16 +170,16 @@ ms.locfileid: "87284263"
 若要測試對遠端區域的接聽程式連線能力，您可以將複本容錯移轉至遠端區域。 當複本是非同步複本時，容錯移轉容易導致潛在的資料遺失。 若要容錯移轉又不遺失資料，請將可用性模式變更為同步，並將容錯移轉模式設定為自動。 使用下列步驟：
 
 1. 在 [物件總管] 中，連接到裝載主要複本的 SQL Server 執行個體。
-1. 在 [ **AlwaysOn 可用性群組**]、[**可用性群組**] 底下，以滑鼠右鍵按一下可用性群組，然後選取 [**屬性**]。
+1. 在 [ **AlwaysOn 可用性群組**]、[ **可用性群組**] 下，以滑鼠右鍵按一下可用性群組，然後選取 [ **屬性**]。
 1. 在 [一般] 頁面上的 [可用性複本] 底下，將 DR 站台中的次要複本設定成使用 [同步認可] 模式和 [自動] 容錯移轉模式。
 1. 如果您在與主要複本相同的站台中有次要複本以支援高可用性，請將此複本設定為 [非同步認可] 和 [手動]。
 1. 選取 [確定]。
-1. 在**物件總管**中，以滑鼠右鍵按一下可用性群組，然後選取 [**顯示儀表板**]。
+1. 在 **物件總管**中，以滑鼠右鍵按一下可用性群組，然後選取 [ **顯示儀表板**]。
 1. 在儀表板上，確認 DR 站台上的複本已同步。
-1. 在**物件總管**中，以滑鼠右鍵按一下可用性群組，然後選取 [**容錯移轉 ...**]。SQL Server Management 工作室會開啟嚮導來故障切換 SQL Server。  
-1. 選取 **[下一步]**，然後選取 DR 網站中的 SQL Server 實例。 再次選取 **[下一步]** 。
+1. 在 **物件總管**中，以滑鼠右鍵按一下可用性群組，然後選取 [ **容錯移轉 ...**]。SQL Server Management studio 會開啟嚮導以容錯移轉 SQL Server。  
+1. 選取 [ **下一步]**，然後選取 DR 網站中的 SQL Server 實例。 再次選取 **[下一步]** 。
 1. 連接到 DR 網站中的 SQL Server 實例，然後選取 **[下一步]**。
-1. 在 [**摘要**] 頁面上確認設定，然後選取 **[完成]**。
+1. 在 [ **摘要** ] 頁面上確認設定，然後選取 **[完成]**。
 
 測試完連線之後，請將主要複本移回到您的主要資料中心，並將可用性模式設定回其一般作業設定。 下表顯示本文件所述架構的一般作業設定：
 

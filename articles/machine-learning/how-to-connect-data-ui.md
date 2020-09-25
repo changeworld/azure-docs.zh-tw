@@ -11,12 +11,12 @@ author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 09/22/2020
 ms.custom: how-to
-ms.openlocfilehash: 54d33b849f809dbe1ebefbbc3d2f63db6877e86e
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: feb79a2a077f819cce22925f23f5ed640d05e8d3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90994522"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91296666"
 ---
 # <a name="connect-to-data-with-the-azure-machine-learning-studio"></a>使用 Azure Machine Learning studio 連接到資料
 
@@ -24,18 +24,18 @@ ms.locfileid: "90994522"
 
 下表定義並摘要說明資料存放區和資料集的優點。 
 
-||描述| 優點|   
+|Object|描述| 優點|   
 |---|---|---|
-|資料存放區| 將您的連線資訊（例如您的訂用帳戶識別碼和權杖授權）儲存在與工作區相關聯的 [Key Vault](https://azure.microsoft.com/services/key-vault/) ，以安全地連線到您在 Azure 上的儲存體服務 | 因為您的資訊已安全地儲存，所以您 <br><br> <li> 請勿 &nbsp; 將 &nbsp; 驗證認證 &nbsp; 或原始資料來源放在風險中。 <li> 您不再需要在腳本中硬編碼。
+|資料存放區| 將您的連線資訊（例如您的訂用帳戶識別碼和權杖授權）儲存在與工作區相關聯的 [Key Vault](https://azure.microsoft.com/services/key-vault/) ，以安全地連線到您在 Azure 上的儲存體服務 | 因為您的資訊已安全地儲存，所以您 <br><br> <li> 請勿 &nbsp; 將 &nbsp; 驗證 &nbsp; 認證 &nbsp; 或 &nbsp; 原始 &nbsp; 資料來源放在風險中。 <li> 您不再需要在腳本中硬編碼。
 |資料集| 藉由建立資料集，您可以建立資料來源位置的參考，以及其中繼資料的複本。 您可以使用資料集 <br><br><li> 在模型定型期間存取資料。<li> 共用資料並與其他使用者共同作業。<li> 利用開放原始碼程式庫（例如 pandas）來探索資料。 | 因為資料集會進行延遲的評估，且資料會保留在現有的位置，所以您 <br><br><li>在您的儲存體中保留單一的資料複本。<li> 不會產生額外的儲存體成本 <li> 不會有意外變更原始資料來源的風險。<li>改善 ML 工作流程的效能速度。 
 
 若要瞭解資料存放區和資料集如何符合 Azure Machine Learning 的整體資料存取工作流程，請參閱 [安全存取資料](concept-data.md#data-workflow) 檔。
 
-如需程式碼優先體驗，請參閱下列文章，以使用 [Azure Machine Learning PYTHON SDK](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py) ：
+如需程式碼優先體驗，請參閱下列文章，以使用 [Azure Machine Learning PYTHON SDK](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py&preserve-view=true) ：
 * [使用資料存放區連接到 Azure 儲存體服務](how-to-access-data.md)。 
 * [建立 Azure Machine Learning 資料集](how-to-create-register-datasets.md)。 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前先建立免費帳戶。 試用[免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)。
 
@@ -112,22 +112,22 @@ ms.locfileid: "90994522"
 >[!NOTE]
 > 針對無關類型特徵顯示的空白項目。
 
-統計資料|描述
-------|------
-功能| 要進行摘要的資料行名稱。
-設定檔| 以推斷類型為基礎的內嵌視覺效果。 例如，字串、布林值和日期會具備值的計數，小數 (數值) 則會包含近似長條圖。 這可供快速了解資料的分佈。
-類型分佈| 資料行中類型的內嵌值計數。 Null 為其自身的類型，因此此視覺效果在偵測奇數或遺漏值時相當實用。
-類型|資料行的推斷類型。 可能的值包括：字串、布林值、日期和小數。
-最小值| 資料行的最小值。 針對類型沒有固有順序 (例如布林值) 的功能，會出現空白專案。
-最大值| 資料行的最小值。 
-Count| 資料行中遺漏和未遺漏項目的總數。
-未遺漏計數| 資料行中未遺漏的項目數。 空字串和錯誤都會視為值，因此不會計入「未遺漏計數」中。
-分位數| 每個分位數的近似值可供了解資料其分佈。
-平均值| 資料行的算術平均數或平均。
-標準差| 此資料行資料的離散或變異量量值。
-Variance| 此資料行資料從其平均值分散程度的量值。 
-偏度| 此資料行資料與常態分佈相異程度的量值。
-峰度| 相較於常態分佈，此資料行資料集中於尾端程度的量值。
+|統計資料|描述
+|------|------
+|功能| 要進行摘要的資料行名稱。
+|設定檔| 以推斷類型為基礎的內嵌視覺效果。 例如，字串、布林值和日期會具備值的計數，小數 (數值) 則會包含近似長條圖。 這可供快速了解資料的分佈。
+|類型分佈| 資料行中類型的內嵌值計數。 Null 為其自身的類型，因此此視覺效果在偵測奇數或遺漏值時相當實用。
+|類型|資料行的推斷類型。 可能的值包括：字串、布林值、日期和小數。
+|最小值| 資料行的最小值。 針對類型沒有固有順序 (例如布林值) 的功能，會出現空白專案。
+|最大值| 資料行的最小值。 
+|Count| 資料行中遺漏和未遺漏項目的總數。
+|未遺漏計數| 資料行中未遺漏的項目數。 空字串和錯誤都會視為值，因此不會計入「未遺漏計數」中。
+|分位數| 每個分位數的近似值可供了解資料其分佈。
+|平均值| 資料行的算術平均數或平均。
+|標準差| 此資料行資料的離散或變異量量值。
+|Variance| 此資料行資料從其平均值分散程度的量值。 
+|偏度| 此資料行資料與常態分佈相異程度的量值。
+|峰度| 相較於常態分佈，此資料行資料集中於尾端程度的量值。
 
 ## <a name="storage-access-and-permissions"></a>儲存體存取和許可權
 
@@ -166,7 +166,7 @@ Variance| 此資料行資料從其平均值分散程度的量值。
 
 在機器學習實驗中使用您的資料集來定型 ML 模型。 [深入瞭解如何使用資料集定型](how-to-train-with-datasets.md)
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [使用 TabularDatasets 和自動化機器學習訓練的逐步範例](tutorial-first-experiment-automated-ml.md)。
 

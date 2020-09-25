@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 09/18/2020
 ms.author: cynthn
 ms.custom: fasttrack-edit, mvc, references_regions
-ms.openlocfilehash: d7a158d91295aedc14f1f913ae152c496066fab5
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: b2143e4a9e4c24291ca2840f51e1b63c12017b04
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90891689"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91264231"
 ---
 # <a name="regions-that-support-availability-zones-in-azure"></a>在 Azure 中支援可用性區域的區域
 
@@ -44,7 +44,7 @@ ms.locfileid: "90891689"
 | Azure 防火牆                     | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | **資料庫** |  |  |  |  |
 | Azure 資料總管                | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| SQL Database                       | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | ： heavy_check_mark： (Preview)  | :heavy_check_mark: |
+| SQL Database                       | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | Azure Cache for Redis              | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | Azure Cosmos DB                    | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | **分析** |  |  |  |  |
@@ -77,7 +77,7 @@ ms.locfileid: "90891689"
 | Azure 防火牆                     | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | **資料庫** |  |  |  |  |
 | Azure 資料總管                | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| SQL Database                       | :heavy_check_mark: | ： heavy_check_mark： (Preview)  | :heavy_check_mark: | :heavy_check_mark: |
+| SQL Database                       | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | Azure Cache for Redis              | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | Azure Cosmos DB                    | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | **分析** |  |  |  |  |
@@ -131,6 +131,6 @@ Azure 也會在下欄區域中提供可用性區域支援：
 
 若要深入瞭解這三個區域中的可用性區域支援，請洽詢您的 Microsoft 銷售或客戶代表，或開啟技術支援要求。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [Azure 中的區域和可用性區域](az-overview.md) \(部分機器翻譯\)

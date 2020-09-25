@@ -1,19 +1,19 @@
 ---
-title: 以 JAVA 建立您的第一個可靠服務
-description: 概述使用無狀態與具狀態服務來建立 Microsoft Azure Service Fabric 應用程式。
+title: 在 JAVA 中建立您的第一個可靠服務
+description: 在 JAVA 中建立具有無狀態和具狀態服務之 Microsoft Azure Service Fabric 應用程式的簡介。
 author: suhuruli
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.custom: devx-track-java
 ms.author: suhuruli
-ms.openlocfilehash: 30797e68081e346ee0f31f77da15f820776337a0
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: f74265c7b774e4b471c8621e99377a009f939ee1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324500"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91250091"
 ---
-# <a name="get-started-with-reliable-services-in-java"></a>開始使用 JAVA 中的 Reliable Services
+# <a name="get-started-with-reliable-services-in-java"></a>以 JAVA 開始使用 Reliable Services
 > [!div class="op_single_selector"]
 > * [Windows 上的 c #](service-fabric-reliable-services-quick-start.md)
 > * [在 Linux 上使用 Java](service-fabric-reliable-services-quick-start-java.md)

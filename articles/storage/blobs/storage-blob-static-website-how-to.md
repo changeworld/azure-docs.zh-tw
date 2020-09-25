@@ -7,19 +7,22 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.author: normesta
 ms.date: 03/04/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: bac476cfbe78ad6fcf73b6a2319581cc60524a57
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.custom: devx-track-js
+ms.openlocfilehash: 052a28dc69bf5c758133ca98366efc63105f4a56
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432566"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289866"
 ---
 # <a name="host-a-static-website-in-azure-storage"></a>在 Azure 儲存體中裝載靜態網站
 
 您可直接從 Azure 儲存體 GPv2 帳戶中的容器內提供靜態內容 (HTML、CSS、JavaScript 和影像檔)。 若要深入了解，請參閱 [Azure 儲存體中的靜態網站裝載](storage-blob-static-website.md)。
 
 本文說明如何使用 Azure 入口網站、Azure CLI 或 PowerShell 來啟用靜態網站裝載。
+
+> [!NOTE]
+> 務必建立一般用途的 v2 標準儲存體帳戶。 靜態網站無法在任何其他類型的儲存體帳戶中使用。
 
 ## <a name="enable-static-website-hosting"></a>啟用靜態網站裝載
 

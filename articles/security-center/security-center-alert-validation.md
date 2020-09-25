@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/04/2019
+ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: cf73b3949b0a0dc1e76ebdebb191af0a33ce22ff
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: ac76ce5d4fb788e6c2fb3dc9ec01c8d88bfb55cb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89180468"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268062"
 ---
 # <a name="alert-validation-in-azure-security-center"></a>Azure 資訊安全中心中的警示驗證
 這份文件可協助您了解如何驗證您的系統是否已針對 Azure 資訊安全中心警示正確設定。
@@ -62,16 +62,16 @@ ms.locfileid: "89180468"
 
 ## <a name="validate-alerts-on-kubernetes"></a>在 Kubernetes 上驗證警示 <a name="validate-kubernetes"></a>
 
-如果您使用整合 Azure Kubernetes Service 的安全性中心預覽功能，請執行下列 kubectl 命令來測試您的警示是否正常運作：
+如果您已整合 Azure Kubernetes Service 與安全性中心，您可以使用下列 kubectl 命令來測試您的警示是否正常運作：
 
 ```kubectl get pods --namespace=asc-alerttest-662jfi039n```
 
-如需 Azure Kubernetes Service 與 Azure 資訊安全中心整合的詳細資訊，請參閱 [這篇文章](azure-kubernetes-service-integration.md)。
+如需有關如何防禦 Kubernetes 節點和叢集的詳細資訊，請參閱 [Azure Defender For Kubernetes 簡介](defender-for-kubernetes-introduction.md)
 
 ## <a name="next-steps"></a>後續步驟
 本文介紹警示驗證程序。 現在，您已熟悉此驗證，請嘗試下列文章︰
 
 * [在 Azure 資訊安全中心中驗證 Azure Key Vault 威脅偵測](https://techcommunity.microsoft.com/t5/azure-security-center/validating-azure-key-vault-threat-detection-in-azure-security/ba-p/1220336)
-* [管理和回應 Azure 資訊安全中心中的安全性警示](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts) -瞭解如何管理警示，以及回應安全中心的安全性事件。
+* [管理和回應 Azure 資訊安全中心中的安全性警示](security-center-managing-and-responding-alerts.md) -瞭解如何管理警示，以及回應安全中心的安全性事件。
 * [Azure 資訊安全中心的安全性健全狀況監視](security-center-monitoring.md) - 了解如何監視 Azure 資源的健全狀況。
-* [瞭解 Azure 資訊安全中心中的安全性警示](https://docs.microsoft.com/azure/security-center/security-center-alerts-type) -瞭解不同類型的安全性警示。
+* [瞭解 Azure 資訊安全中心中的安全性警示](security-center-alerts-type.md) -瞭解不同類型的安全性警示。

@@ -11,17 +11,17 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=garyericson, previous-ms.author=garye
-ms.openlocfilehash: d09f13a65a72c6c856a7fcd3d943ec116f3da43f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f60b62faa36352ab1221b23332fca695f32a3d74
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76721858"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91250635"
 ---
 # <a name="cheat-sheet-for-an-automated-data-pipeline-for-azure-machine-learning-predictions"></a>適用於 Azure Machine Learning 預測之自動資料管線的小祕技
 「Microsoft Azure Machine Learning 自動資料管線小祕技」 **** 可協助您瀏覽用於傳送資料至可由預測性分析模型評分之機器學習 Web 服務的技術。
 
-根據您的資料是在內部部署、在雲端或即時串流，您可以使用不同的機制將資料移至您的 web 服務端點以進行計分。
+根據您的資料是內部部署、雲端或即時串流，有不同的機制可用來將資料移至您的 web 服務端點以進行評分。
 這份小祕技會逐步引導您做出各項決定，並提供可協助您開發方案之文章的連結。
 
 ## <a name="download-the-machine-learning-automated-data-pipeline-cheat-sheet"></a>下載「Microsoft Azure Machine Learning 自動資料管線小祕技」
@@ -29,13 +29,12 @@ ms.locfileid: "76721858"
 
 在此下載小祕技： **[Microsoft Azure Machine Learning 自動資料管線小祕技](https://download.microsoft.com/download/C/C/7/CC726F8B-2E6F-4C20-9B6F-AFBEE8253023/microsoft-machine-learning-operationalization-cheat-sheet_v1.pdf)**
 
-![Microsoft Azure Machine Learning Studio （傳統）功能總覽][op-cheat-sheet]
+![Microsoft Azure Machine Learning Studio (傳統) 功能總覽][op-cheat-sheet]
 
 [op-cheat-sheet]: ./media/automated-data-pipeline-cheat-sheet/machine-learning-automated-data-pipeline-cheat-sheet_v1.1.png
 
 
 ## <a name="more-help-with-machine-learning-studio"></a>Machine Learning Studio 的更多說明
-* 如需 Microsoft Azure Machine Learning 的總覽，請參閱[Microsoft Azure 上的機器學習服務簡介](../studio/what-is-machine-learning.md)。
-* 如需如何部署評分 Web 服務的說明，請參閱 [部署 Azure Machine Learning Web 服務](../studio/deploy-a-machine-learning-web-service.md)。
-* 如需如何使用評分 Web 服務的討論，請參閱[如何使用 Azure Machine Learning Web 服務](../studio/consume-web-services.md)。
-
+* 如需 Microsoft Azure Machine Learning 的總覽，請參閱 [Microsoft Azure 上的機器學習簡介](../classic/index.yml)。
+* 如需如何部署評分 Web 服務的說明，請參閱 [部署 Azure Machine Learning Web 服務](../classic/deploy-a-machine-learning-web-service.md)。
+* 如需如何使用評分 Web 服務的討論，請參閱[如何使用 Azure Machine Learning Web 服務](../classic/consume-web-services.md)。

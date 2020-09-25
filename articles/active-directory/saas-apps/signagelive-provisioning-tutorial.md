@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/23/2019
 ms.author: Zhchia
-ms.openlocfilehash: 7bf9e7a4c17134a47cbaafbc2bde25d467c6a978
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: f6bb119e5e82ce642722d0f739177fc1e4c06c25
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548543"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91255714"
 ---
 # <a name="tutorial-configure-signagelive--for-automatic-user-provisioning"></a>教學課程：設定 Signagelive 來自動布建使用者
 
@@ -95,11 +95,11 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
 3. 選取 [佈建] 索引標籤。
 
-    ![佈建索引標籤](common/provisioning.png)
+    ![已呼叫 [布建] 選項的 [管理選項] 螢幕擷取畫面。](common/provisioning.png)
 
 4. 將 [佈建模式] 設定為 [自動]。
 
-    ![佈建索引標籤](common/provisioning-automatic.png)
+    ![[布建模式] 下拉式清單的螢幕擷取畫面，其中已呼叫 [自動] 選項。](common/provisioning-automatic.png)
 
 5. 在 [管理員認證] 區段下的 [ ` https://samlapi.signagelive.com/scim/v2` **租使用者 URL**] 中輸入。 在 [ **秘密權杖** ] 欄位中，輸入工程開發小組所提供的 **持有人權杖** 值。 按一下 [ **測試連接** ] 以確保 Azure AD 可以連線至 Signagelive。 如果連接失敗，請確定您的 Signagelive 帳戶具有系統管理員許可權，然後再試一次。
     ![租用戶 URL + 權杖](common/provisioning-testconnection-tenanturltoken.png)
@@ -108,23 +108,23 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
     ![通知電子郵件](common/provisioning-notification-email.png)
 
-7. 按一下 [檔案] 。
+7. 按一下 [檔案]  。
 
 8. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 使用者至 Signagelive**]。
 
-    ![Signagelive 使用者對應](media/signagelive-provisioning-tutorial/usermapping.png)
+    ![[對應] 區段的螢幕擷取畫面，其中包含 [同步處理 Azure Active Directory 使用者] Signagelive 選項稱為 [已登出]。](media/signagelive-provisioning-tutorial/usermapping.png)
 
 9. 在 [ **屬性對應** ] 區段中，檢查從 Azure AD 同步處理到 Signagelive 的使用者屬性。 選取為 [比對 **] 屬性的屬性會** 用來比對 Signagelive 中的使用者帳戶以進行更新作業。 選取 [儲存] 按鈕以認可所有變更。
 
-    ![Signagelive 使用者屬性](media/signagelive-provisioning-tutorial/userattribute.png)
+    ![顯示有七個對應的 [屬性對應] 區段螢幕擷取畫面。](media/signagelive-provisioning-tutorial/userattribute.png)
 
 10. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 群組至 Signagelive**]。
 
-    ![Signagelive 使用者對應](media/signagelive-provisioning-tutorial/groupmapping.png)
+    ![[對應] 區段的螢幕擷取畫面，其中已呼叫 [同步處理 Azure Active Directory 群組至 Signagelive 選項。](media/signagelive-provisioning-tutorial/groupmapping.png)
 
 11. 在 [ **屬性對應** ] 區段中，檢查從 Azure AD 同步處理到 Signagelive 的群組屬性。 選取為 [比對 **] 屬性的屬性會** 用來比對 Signagelive 中的群組帳戶以進行更新作業。 選取 [儲存] 按鈕以認可所有變更。
 
-    ![Signagelive 使用者屬性](media/signagelive-provisioning-tutorial/groupattribute.png)
+    ![[屬性對應] 區段的螢幕擷取畫面，其中顯示三個對應。](media/signagelive-provisioning-tutorial/groupattribute.png)
 
 12. 若要設定範圍篩選，請參閱[範圍篩選教學課程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中提供的下列指示。
 

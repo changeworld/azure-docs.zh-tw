@@ -4,18 +4,18 @@ description: 了解如何使用 Azure 備份伺服器將 Exchange Server 備份�
 ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 03/24/2017
-ms.openlocfilehash: eff702cb50317e6b685e19e7df1ffc99b5fc1736
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 86389ef89ced74905db0fc8bfeaabcea6140762a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89377620"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91262989"
 ---
 # <a name="back-up-an-exchange-server-to-azure-with-azure-backup-server"></a>使用 Azure 備份伺服器將 Exchange Server 備份至 Azure
 
 本文說明如何設定 Microsoft Azure 備份伺服器 (MABS)，以將 Microsoft Exchange Server 備份至 Azure。  
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 繼續之前，請確定已[安裝並備妥](backup-azure-microsoft-azure-backup.md) Azure 備份伺服器。
 
@@ -23,8 +23,8 @@ ms.locfileid: "89377620"
 
 若要在 Exchange Server 上安裝 MABS 保護代理程式，請遵循下列步驟：
 
-1. 請確定已正確設定防火牆。 請參閱 [設定代理程式的防火牆例外狀況](/system-center/dpm/configure-firewall-settings-for-dpm?view=sc-dpm-2019)。
-2. 在 MABS 系統管理員主控台中選取 [ **管理 > 代理程式] > 安裝** ，以在 Exchange 伺服器上安裝代理程式。 如需詳細步驟，請參閱[安裝 MABS 保護代理程式](/system-center/dpm/deploy-dpm-protection-agent?view=sc-dpm-2019) 。
+1. 請確定已正確設定防火牆。 請參閱 [設定代理程式的防火牆例外狀況](/system-center/dpm/configure-firewall-settings-for-dpm)。
+2. 在 MABS 系統管理員主控台中選取 [ **管理 > 代理程式] > 安裝** ，以在 Exchange 伺服器上安裝代理程式。 如需詳細步驟，請參閱[安裝 MABS 保護代理程式](/system-center/dpm/deploy-dpm-protection-agent) 。
 
 ## <a name="create-a-protection-group-for-the-exchange-server"></a>建立 Exchange Server 的保護群組
 
@@ -47,7 +47,7 @@ ms.locfileid: "89377620"
 
    * 我想要使用磁碟進行短期保護。
    * 我想要線上保護。
-6. 選取 [下一步] 。
+6. 選取 [下一步]  。
 7. 如果您想要檢查 Exchange Server 資料庫的完整性，請選取 [執行 Eseutil 以檢查資料完整性] **** 選項。
 
     選取此選項之後，將會在 MABS 上執行備份一致性檢查，以避免在 Exchange 伺服器上執行 **eseutil** 命令所產生的 i/o 流量。
@@ -57,7 +57,7 @@ ms.locfileid: "89377620"
    > ![eseutil 錯誤](./media/backup-azure-backup-exchange-server/eseutil-error.png)
    >
    >
-8. 選取 [下一步] 。
+8. 選取 [下一步]  。
 9. 選取用於 **複本備份**的資料庫，然後選取 **[下一步]**。
 
    > [!NOTE]
@@ -105,6 +105,6 @@ ms.locfileid: "89377620"
 
     ![選擇線上複寫](./media/backup-azure-backup-exchange-server/choose-online-replication.png)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [Azure 備份常見問題集](backup-azure-backup-faq.md)

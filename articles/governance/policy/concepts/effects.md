@@ -1,14 +1,14 @@
 ---
 title: 了解效果的運作方式
 description: 「Azure 原則」定義有各種效果，可決定合規性的管理和回報方式。
-ms.date: 08/27/2020
+ms.date: 09/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: d2ea27ceda36d2feebcf12cc47ac741093b0729c
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.openlocfilehash: b6622796ab0554f692a3b64e0b41d60f49c561b1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89425529"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91251999"
 ---
 # <a name="understand-azure-policy-effects"></a>了解 Azure 原則效果
 
@@ -22,9 +22,9 @@ ms.locfileid: "89425529"
 - [拒絕](#deny)
 - [DeployIfNotExists](#deployifnotexists)
 - [Disabled](#disabled)
-- [Modify](#modify)
+- [修改](#modify)
 
-即將 _淘汰_下列效果：
+以下是已被 _取代_的效果：
 
 - [EnforceOPAConstraint](#enforceopaconstraint)
 - [EnforceRegoPolicy](#enforceregopolicy)
@@ -374,8 +374,8 @@ DeployIfNotExists 效果的 **details** 屬性，含有用於定義所要比對�
 
 此效果是搭配 `Microsoft.Kubernetes.Data` 的原則定義「模式」使用， 用於將 [OPA Constraint Framework](https://github.com/open-policy-agent/frameworks/tree/master/constraint#opa-constraint-framework) 定義的 Gatekeeper v3 許可控制規則傳遞到[開放式原則代理程式](https://www.openpolicyagent.org/) (OPA)，再到 Azure 上的 Kubernetes 叢集。
 
-> [!NOTE]
-> [適用於 Kubernetes 的 Azure 原則](./policy-for-kubernetes.md)處理 [預覽] 狀態，且僅支援 Linux 節點集區與內建的原則定義。 內建的原則定義位在 **Kubernetes** 類別中。 具有 **EnforceOPAConstraint** 效果和相關 **Kubernetes 服務** 類別的有限預覽原則定義即將 _淘汰_。 相反地，請使用對資源提供者模式進行 _audit_ 和 _deny_ 的效果 `Microsoft.Kubernetes.Data` 。
+> [!IMPORTANT]
+> 具有 **EnforceOPAConstraint** 效果的有限預覽原則定義和相關的 **Kubernetes 服務** 類別已被 _取代_。 相反地，請使用對資源提供者模式進行 _audit_ 和 _deny_ 的效果 `Microsoft.Kubernetes.Data` 。
 
 ### <a name="enforceopaconstraint-evaluation"></a>EnforceOPAConstraint 評估
 
@@ -430,8 +430,8 @@ EnforceOPAConstraint 效果的 **details** 屬性有子屬性可描述 Gatekeepe
 
 此效果是搭配 `Microsoft.ContainerService.Data` 的原則定義「模式」使用， 用於將 [Rego](https://www.openpolicyagent.org/docs/latest/policy-language/#what-is-rego) 定義的 Gatekeeper v2 許可控制規則傳遞到 [Azure Kubernetes 服務](../../../aks/intro-kubernetes.md)上的[開放式原則代理程式](https://www.openpolicyagent.org/) (OPA)。
 
-> [!NOTE]
-> [適用於 Kubernetes 的 Azure 原則](./policy-for-kubernetes.md)處理 [預覽] 狀態，且僅支援 Linux 節點集區與內建的原則定義。 內建的原則定義位在 **Kubernetes** 類別中。 具有 **EnforceRegoPolicy** 效果及相關 **Kubernetes 服務**類別的有限預覽原則定義將會遭_取代_。 相反地，請使用對資源提供者模式進行 _audit_ 和 _deny_ 的效果 `Microsoft.Kubernetes.Data` 。
+> [!IMPORTANT]
+> 具有 **EnforceRegoPolicy** 效果及相關 **Kubernetes 服務**類別的有限預覽原則定義將會遭到_取代_。 相反地，請使用對資源提供者模式進行 _audit_ 和 _deny_ 的效果 `Microsoft.Kubernetes.Data` 。
 
 ### <a name="enforceregopolicy-evaluation"></a>EnforceRegoPolicy 評估
 

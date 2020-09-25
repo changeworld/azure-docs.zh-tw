@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 06/02/2020
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: 6f773f57bea40ba87f35ca2bbefe424d084afb2e
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: c30b82e44833e413c1576bf64e8fef263c58b246
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89462134"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91264604"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 中使用 kubenet 網路與您自己的 IP 位址範圍
 
@@ -20,7 +20,7 @@ ms.locfileid: "89462134"
 
 本文將說明如何使用 *kubenet* 網路來建立虛擬網路子網路，並將其與 AKS 叢集搭配使用。 如需網路選項與考量的詳細資訊，請參閱 [Kubernetes 和 AKS 的網路概念][aks-network-concepts]。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 適用於 AKS 叢集的虛擬網路必須允許輸出網際網路連線.
 * 請勿在相同子網路中建立多個 AKS 叢集。
@@ -162,13 +162,13 @@ az role assignment create --assignee <appId> --scope $VNET_ID --role "Network Co
 
 下列 IP 位址範圍也定義為叢集建立程序的一部分：
 
-* *--service-cidr* 用於為 AKS 叢集中的內部服務指派 IP 位址。 此 IP 位址範圍應該是您的網路環境中其他未使用的位址空間。 如果您使用 Express Route 或站對站 VPN 連線連接或計畫連接 Azure 虛擬網路，則此範圍包括任何內部部署網路範圍。
+* *--service-cidr* 用於為 AKS 叢集中的內部服務指派 IP 位址。 如果您使用 Express Route 或站對站 VPN 連線來連接或規劃連接 Azure 虛擬網路，則此 IP 位址範圍應該是未在您網路環境中的其他地方使用的位址空間，包括任何內部部署網路範圍。
 
 * *--dns-service-ip* 位址應該是服務 IP 位址範圍的 *.10* 位址。
 
 * *--pod-cidr* 應該是您的網路環境中未使用的大型位址空間。 如果您使用 Express Route 或站對站 VPN 連線連接或計畫連接 Azure 虛擬網路，則此範圍包括任何內部部署網路範圍。
     * 此位址範圍必須大到足以容納您希望相應增加的節點數目。 如果您需要更多位址用於其他節點，則無法在部署叢集之後變更此位址範圍。
-    * Pod IP 位址範圍用來為叢集中的每個節點指派 */24* 位址空間。 在下列範例中， *--pod-* *10.244.0.0/16* 的 cidr 會指派第一個節點 *10.244.0.0/24*、第二個節點 *10.244.1.0/24*和第三個節點 *10.244.2.0/24*。
+    * Pod IP 位址範圍可用來將 */24* 位址空間指派給叢集中的每個節點。 在下列範例中， *--pod-* *10.244.0.0/16* 的 cidr 會指派第一個節點 *10.244.0.0/24*、第二個節點 *10.244.1.0/24*和第三個節點 *10.244.2.0/24*。
     * 隨著叢集縮放比例或升級，Azure 平台會繼續為每個新的節點指派一個 Pod IP 位址範圍。
     
 * *--Docker 橋接器位址*可讓 AKS 節點與基礎管理平臺進行通訊。 此 IP 位址不能在您叢集的虛擬網路 IP 位址範圍內，而且不應該與您網路上使用中的其他位址範圍重疊。
@@ -244,7 +244,7 @@ az network vnet subnet list --resource-group
 az aks create -g MyResourceGroup -n MyManagedCluster --vnet-subnet-id MySubnetID
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 透過將 AKS 叢集部署到您現有的虛擬網路子網路中，您現在可以如往常一樣使用叢集。 開始使用 [Azure Dev Spaces 建立應用程式][dev-spaces]、 [使用 Helm 部署現有的應用][use-helm]程式，或 [使用 Helm 建立新的應用程式][develop-helm]。
 

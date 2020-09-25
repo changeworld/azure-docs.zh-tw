@@ -3,12 +3,12 @@ title: 如何查詢容器 Azure 監視器的記錄 |Microsoft Docs
 description: 適用于容器的 Azure 監視器會收集計量和記錄資料，而本文將說明記錄並包含範例查詢。
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.openlocfilehash: f9b30f11ae6a2f64601b9595bfb1d45493209849
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 2f0e9848ffbf7584d75b5e994e49379186a69641
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89569674"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91254885"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-containers"></a>如何查詢容器 Azure 監視器的記錄
 
@@ -27,7 +27,7 @@ ms.locfileid: "89569674"
 | 清查 Kubernetes 叢集中的節點部分 | Kube API | `KubeNodeInventory` | TimeGenerated、Computer、ClusterName、ClusterId、LastTransitionTimeReady、Labels、Status、KubeletVersion、KubeProxyVersion、CreationTimeStamp、SourceSystem | 
 | Kubernetes 事件 | Kube API | `KubeEvents` | TimeGenerated、Computer、ClusterId_s、FirstSeen_t、LastSeen_t、Count_d、ObjectKind_s、Namespace_s、Name_s、Reason_s、Type_s、TimeGenerated_s、SourceComponent_s、ClusterName_s、Message、SourceSystem | 
 | Kubernetes 叢集中的服務 | Kube API | `KubeServices` | TimeGenerated、ServiceName_s、Namespace_s、SelectorLabels_s、ClusterId_s、ClusterName_s、ClusterIP_s、ServiceType_s、SourceSystem | 
-| Kubernetes 叢集節點部分的效能計量 | 使用計量是從 Kube api 的 cAdvisor 和限制取得 | 效能 &#124; 其中 ObjectName = = "K8SNode" | Computer、ObjectName、CounterName &#40;cpuAllocatableBytes、memoryAllocatableBytes、cpuCapacityNanoCores、memoryCapacityBytes、memoryRssBytes、cpuUsageNanoCores、memoryWorkingsetBytes、restartTimeEpoch&#41;、CounterValue、TimeGenerated、CounterPath、SourceSystem | 
+| Kubernetes 叢集節點部分的效能計量 | 使用計量是從 Kube api 的 cAdvisor 和限制取得 | 效能 &#124; 其中 ObjectName = = "K8SNode" | Computer、ObjectName、CounterName &#40;cpuAllocatableNanoCores、memoryAllocatableBytes、cpuCapacityNanoCores、memoryCapacityBytes、memoryRssBytes、cpuUsageNanoCores、memoryWorkingsetBytes、restartTimeEpoch&#41;、CounterValue、TimeGenerated、CounterPath、SourceSystem | 
 | Kubernetes 叢集容器部分的效能計量 | 使用計量是從 Kube api 的 cAdvisor 和限制取得 | 效能 &#124; 其中 ObjectName = = "K8SContainer" | CounterName &#40; cpuRequestNanoCores、memoryRequestBytes、cpuLimitNanoCores、memoryWorkingSetBytes、restartTimeEpoch、cpuUsageNanoCores、memoryRssBytes&#41;、CounterValue、TimeGenerated、CounterPath、SourceSystem | 
 | 自訂計量 ||`InsightsMetrics` | Computer、Name、Namespace、原點、SourceSystem、Tag<sup>1</sup>、TimeGenerated、Type、Va _ResourceId | 
 
@@ -108,7 +108,7 @@ KubeMonAgentEvents | where Level != "Info"
 
 ![從代理程式記錄資訊事件的查詢結果](./media/container-insights-log-search/log-query-example-kubeagent-events.png)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 容器的 Azure 監視器不包含一組預先定義的警示。 請參閱 [容器的 Azure 監視器建立效能警示](container-insights-alerts.md) ，以瞭解如何建立高 CPU 和記憶體使用量的建議警示，以支援您的 DevOps 或操作程式和程式。 
 

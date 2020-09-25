@@ -4,12 +4,12 @@ description: 針對安裝、註冊「Azure 備份伺服器」以及備份和還�
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: 70431ee42566d1cbba5ed239b9da55c2ff7a2afe
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: d3b2ee87dda09fe1b5611d00ce567304aec33a6f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88999218"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91298366"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>針對 Azure 備份伺服器進行疑難排解
 
@@ -71,7 +71,7 @@ Reg query "HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Setup"
 
 | 作業 | 錯誤詳細資料 | 因應措施 |
 | --- | --- | --- |
-| Backup | 複本不一致 | 確認已開啟「保護群組」精靈中的自動一致性檢查選項。 如需複寫選項和一致性檢查的詳細資訊，請參閱[這篇文章](/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-2019)。<br> <ol><li> 如果是系統狀態/BMR 備份，請確認已在受保護的伺服器上安裝 Windows Server Backup。</li><li> 檢查 DPM/「Microsoft Azure 備份伺服器」上 DPM 儲存體集區中的空間相關問題，並視需要配置儲存體。</li><li> 檢查受保護伺服器上「磁碟區陰影複製服務」的狀態。 如果處於已停用狀態，請將它設定為手動啟動。 在伺服器上啟動該服務。 然後返回 DPM/「Microsoft Azure 備份伺服器」主控台，並開始一致性檢查作業的同步處理。</li></ol>|
+| Backup | 複本不一致 | 確認已開啟「保護群組」精靈中的自動一致性檢查選項。 如需複寫選項和一致性檢查的詳細資訊，請參閱[這篇文章](/system-center/dpm/create-dpm-protection-groups)。<br> <ol><li> 如果是系統狀態/BMR 備份，請確認已在受保護的伺服器上安裝 Windows Server Backup。</li><li> 檢查 DPM/「Microsoft Azure 備份伺服器」上 DPM 儲存體集區中的空間相關問題，並視需要配置儲存體。</li><li> 檢查受保護伺服器上「磁碟區陰影複製服務」的狀態。 如果處於已停用狀態，請將它設定為手動啟動。 在伺服器上啟動該服務。 然後返回 DPM/「Microsoft Azure 備份伺服器」主控台，並開始一致性檢查作業的同步處理。</li></ol>|
 
 ## <a name="online-recovery-point-creation-failed"></a>線上復原點建立失敗
 
@@ -95,7 +95,7 @@ Reg query "HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Setup"
 
 | 作業 | 錯誤詳細資料 | 因應措施 |
 | --- | --- | --- |
-| 將代理程式推送至受保護的伺服器 | 代理程式作業失敗，因為上的 DPM 代理程式協調員服務發生通訊錯誤 \<ServerName> 。 | **如果產品所示的建議動作沒有用，請執行下列步驟**： <ul><li> 如果您要從不受信任的網域連接電腦，請遵循下列 [步驟](/system-center/dpm/back-up-machines-in-workgroups-and-untrusted-domains?view=sc-dpm-2019)。 <br> (或) </li><li> 如果您是從受信任的網域連接電腦，請使用 [此 blog](https://techcommunity.microsoft.com/t5/system-center-blog/data-protection-manager-agent-network-troubleshooting/ba-p/344726)中所述的步驟進行疑難排解。 <br>(或)</li><li> 嘗試停用防毒功能來作為疑難排解步驟。 如果這能解決問題，請修改[這篇文章](/system-center/dpm/run-antivirus-server?view=sc-dpm-2019)中建議的防毒設定。</li></ul> |
+| 將代理程式推送至受保護的伺服器 | 代理程式作業失敗，因為上的 DPM 代理程式協調員服務發生通訊錯誤 \<ServerName> 。 | **如果產品所示的建議動作沒有用，請執行下列步驟**： <ul><li> 如果您要從不受信任的網域連接電腦，請遵循下列 [步驟](/system-center/dpm/back-up-machines-in-workgroups-and-untrusted-domains)。 <br> (或) </li><li> 如果您是從受信任的網域連接電腦，請使用 [此 blog](https://techcommunity.microsoft.com/t5/system-center-blog/data-protection-manager-agent-network-troubleshooting/ba-p/344726)中所述的步驟進行疑難排解。 <br>(或)</li><li> 嘗試停用防毒功能來作為疑難排解步驟。 如果這能解決問題，請修改[這篇文章](/system-center/dpm/run-antivirus-server)中建議的防毒設定。</li></ul> |
 
 ## <a name="setup-could-not-update-registry-metadata"></a>安裝程式無法更新登錄中繼資料
 
@@ -108,7 +108,7 @@ Reg query "HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Setup"
 
 | 作業 | 錯誤詳細資料 | 因應措施 |
 | --- | --- | --- |
-| 將代理程式推送至受保護的伺服器 | 為伺服器指定的認證無效。 | **如果產品所示的建議動作沒有用，請執行下列步驟**： <br> 如[這篇文章](/system-center/dpm/deploy-dpm-protection-agent?view=sc-dpm-2019)所指定，嘗試手動將保護代理程式安裝在生產伺服器上。|
+| 將代理程式推送至受保護的伺服器 | 為伺服器指定的認證無效。 | **如果產品所示的建議動作沒有用，請執行下列步驟**： <br> 如[這篇文章](/system-center/dpm/deploy-dpm-protection-agent)所指定，嘗試手動將保護代理程式安裝在生產伺服器上。|
 | Azure 備份代理程式無法連線到 Azure 備份服務 (ID：100050) | Azure 備份代理程式無法連線到 Azure 備份服務。 | **如果產品所示的建議動作沒有用，請執行下列步驟**： <br>1.從已提升權限的提示字元中執行下列命令︰**psexec -i -s "c:\Program Files\Internet Explorer\iexplore.exe**。 這會開啟 Internet Explorer 視窗。 <br/> 2.移至 [工具] > [網際網路選項] > [連線] > [LAN 設定]。 <br/> 3.變更設定以使用 Proxy 伺服器。 接著提供 Proxy 伺服器詳細資料。<br/> 4.如果機器的網際網路存取受限，請確定機器或 Proxy 上的防火牆設定允許這些 [URL](install-mars-agent.md#verify-internet-access) 和 [IP 位址](install-mars-agent.md#verify-internet-access)。|
 | Azure 備份代理程式安裝失敗 | Microsoft Azure 復原服務安裝失敗。 「Microsoft Azure 復原服務」安裝作業對系統所做的所有變更都已復原。 (識別碼：4024) | 手動安裝「Azure 代理程式」。
 
@@ -117,8 +117,8 @@ Reg query "HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Setup"
 | 作業 | 錯誤詳細資料 | 因應措施 |
 | --- | --- | --- |
 | 設定保護群組 | DPM 無法列舉受保護電腦 (受保護的電腦名稱) 上的應用程式元件。 | 在相關資料來源/元件層級的設定保護群組 UI 畫面上，選取 [重新整理]。 |
-| 設定保護群組 | 無法設定保護 | 如果受保護的伺服器是 SQL Server，請確認是否已將 sysadmin 角色權限提供給受保護電腦上的系統帳戶 (NTAuthority\System)，如[這篇文章](/system-center/dpm/back-up-sql-server?view=sc-dpm-2019)所述。
-| 設定保護群組 | 此保護群組在儲存體集區中的可用空間不足。 | 新增至儲存體集區的磁碟[不應包含分割區](/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-2019)。 刪除磁碟上的任何現有磁碟區。 然後將它們新增至儲存體集區。|
+| 設定保護群組 | 無法設定保護 | 如果受保護的伺服器是 SQL Server，請確認是否已將 sysadmin 角色權限提供給受保護電腦上的系統帳戶 (NTAuthority\System)，如[這篇文章](/system-center/dpm/back-up-sql-server)所述。
+| 設定保護群組 | 此保護群組在儲存體集區中的可用空間不足。 | 新增至儲存體集區的磁碟[不應包含分割區](/system-center/dpm/create-dpm-protection-groups)。 刪除磁碟上的任何現有磁碟區。 然後將它們新增至儲存體集區。|
 | 原則變更 |無法修改備份原則。 錯誤：由於發生內部服務錯誤 [0x29834]，導致目前的操作失敗。 請在一段時間之後重試此作業。 如果問題持續發生， 請連絡 Microsoft 支援服務。 | **原因：**<br/>此錯誤發生在三個情況下：啟用安全性設定時，當您嘗試將保留範圍縮減至低於先前指定的最小值時，以及當您在不支援的版本時。  (不支援的版本低於 Microsoft Azure 備份 Server 版本2.0.9052 版和 Azure 備份伺服器 update 1。 )  <br/>**建議的動作：**<br/> 若要繼續進行原則相關的更新，請將保留期設定成大於所指定的最短保留期。 (最短保留期就每日而言是 7 天、就每週而言是 4 週、就每月而言是 3 個月，或就每年而言則是 1 年)。 <br><br>(選擇性) 另一個慣用的方法是更新備份代理程式和「Azure 備份伺服器」，以利用所有安全性更新。 |
 
 ## <a name="backup"></a>Backup
@@ -129,7 +129,7 @@ Reg query "HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Setup"
 | Backup | 如果您只要備份系統狀態，請確認受保護的電腦上有足夠的可用空間可儲存系統狀態備份。 | <ol><li>確認受保護電腦上已安裝 Windows Server Backup。</li><li>確認受保護電腦上有足夠的空間可儲存系統狀態。 進行這項確認的最簡單方式就是移至受保護的電腦、開啟 Windows Server Backup、一路點選選項，然後選取 [BMR]。 接著，UI 會告訴您需要多少空間。 開啟 [WSB] > [本機備份] > [備份排程] > [選取備份設定] > [完整伺服器] (會顯示大小)。 使用此大小進行驗證。</li></ol>
 | Backup | BMR 的備份失敗 | 如果 BMR 大小很大，請將一些應用程式檔案移到作業系統磁碟機後再重試。 |
 | Backup | 在新的 Microsoft Azure 備份伺服器上重新保護 VMWare VM 的選項，未顯示為可供新增。 | VMWare 屬性指向已停用的舊「Microsoft Azure 備份伺服器」執行個體。 若要解決此問題：<br><ol><li>在 VCenter (SC-VMM 的對等項目) 中，移至 [摘要] 索引標籤，然後移至 [自訂屬性]。</li>  <li>從 [DPMServer] 值中刪除舊的「Microsoft Azure 備份伺服器」名稱。</li>  <li>返回新的「Microsoft Azure 備份伺服器」，然後修改 PG。  選取 [重新整理] 按鈕之後，就會顯示 VM 並含有可供新增到保護的核取方塊。</li></ol> |
-| Backup | 存取檔案/共用資料夾時發生錯誤 | 依照[在 DPM 伺服器上執行防毒軟體](/system-center/dpm/run-antivirus-server?view=sc-dpm-2019)一文的建議，嘗試修改防毒設定。|
+| Backup | 存取檔案/共用資料夾時發生錯誤 | 依照[在 DPM 伺服器上執行防毒軟體](/system-center/dpm/run-antivirus-server)一文的建議，嘗試修改防毒設定。|
 
 ## <a name="change-passphrase"></a>變更複雜密碼
 
@@ -142,7 +142,7 @@ Reg query "HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Setup"
 
 | 作業 | 錯誤詳細資料 | 因應措施 |
 | --- | --- | --- |
-| 使用 Office 365 帳戶來設定電子郵件通知 |錯誤識別碼：2013| **原因：**<br> 嘗試使用 Office 365 帳戶 <br>**建議的動作：**<ol><li> 首先，在 Exchange 上，請確定 DPM 伺服器已設定為「允許接收連接器上的匿名轉送」。 如需如何進行此設定的詳細資訊，請參閱[允許接收連接器上的匿名轉送](/exchange/mail-flow/connectors/allow-anonymous-relay?view=exchserver-2019)。</li> <li> 如果您無法使用內部 SMTP 轉送，而需要使用 Office 365 伺服器來進行設定，您可以將 IIS 設定為轉送。 將 DPM 伺服器設定為[使用 IIS 將 SMTP 轉送至 O365](/exchange/mail-flow/test-smtp-with-telnet?view=exchserver-2019)。<br><br>  請務必使用 user\@domain.com 格式，而「不是」 domain\user。<br><br><li>將 DPM 指向為使用本機伺服器名稱作為 SMTP 伺服器、連接埠 587。 然後將它指向應作為電子郵件來源的使用者電子郵件。<li> DPM SMTP 設定頁面上的使用者名稱和密碼應該用於 DPM 所在網域的網域帳戶。 </li><br> 當您變更 SMTP 伺服器位址時，請對新設定進行變更、關閉 [設定] 方塊，然後重新開啟它，以確定它會反映新的值。  只是變更和測試不一定會讓新設定生效，因此以這種方式測試是最佳做法。<br><br>在此程序期間，您可藉由關閉 DPM 主控台並編輯下列登錄機碼，隨時清除這些設定︰**HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Notification\ <br/> 刪除 SMTPPassword 和 SMTPUserName 金鑰**。 您可以在再次啟動它時，將它們加回到 UI 中。
+| 使用 Office 365 帳戶來設定電子郵件通知 |錯誤識別碼：2013| **原因：**<br> 嘗試使用 Office 365 帳戶 <br>**建議的動作：**<ol><li> 首先，在 Exchange 上，請確定 DPM 伺服器已設定為「允許接收連接器上的匿名轉送」。 如需如何進行此設定的詳細資訊，請參閱[允許接收連接器上的匿名轉送](/exchange/mail-flow/connectors/allow-anonymous-relay)。</li> <li> 如果您無法使用內部 SMTP 轉送，而需要使用 Office 365 伺服器來進行設定，您可以將 IIS 設定為轉送。 將 DPM 服務器設定為 [使用 IIS 將 SMTP 轉送至 O365](/exchange/mail-flow/test-smtp-with-telnet)。<br><br>  請務必使用 user\@domain.com 格式，而「不是」 domain\user。<br><br><li>將 DPM 指向為使用本機伺服器名稱作為 SMTP 伺服器、連接埠 587。 然後將它指向應作為電子郵件來源的使用者電子郵件。<li> DPM SMTP 設定頁面上的使用者名稱和密碼應該用於 DPM 所在網域的網域帳戶。 </li><br> 當您變更 SMTP 伺服器位址時，請對新設定進行變更、關閉 [設定] 方塊，然後重新開啟它，以確定它會反映新的值。  只是變更和測試不一定會讓新設定生效，因此以這種方式測試是最佳做法。<br><br>在此程序期間，您可藉由關閉 DPM 主控台並編輯下列登錄機碼，隨時清除這些設定︰**HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Notification\ <br/> 刪除 SMTPPassword 和 SMTPUserName 金鑰**。 您可以在再次啟動它時，將它們加回到 UI 中。
 
 ## <a name="common-issues"></a>常見問題
 
