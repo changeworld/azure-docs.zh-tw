@@ -13,12 +13,12 @@ metadata:
   ms.date: 09/10/2020
   featureFlags:
   - clicktale
-  ms.openlocfilehash: ae4e327b7b4d230bd89baccdd27d5ac416ebb6cb
-  ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+  ms.openlocfilehash: aec131b8c7a3e5092b6b090668fb0eb006b079a3
+  ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 09/15/2020
-  ms.locfileid: "90087944"
+  ms.lasthandoff: 09/22/2020
+  ms.locfileid: "90904125"
 highlightedContent:
   items:
   - title: Azure 開發人員開始使用指南
@@ -36,7 +36,7 @@ highlightedContent:
 productDirectory:
   title: 瀏覽 Azure 產品
   items:
-  - title: 異常偵測器 (預覽)
+  - title: Anomaly Detector
     summary: 輕鬆為應用程式賦予異常偵測功能
     imageSrc: https://static.docs.com/ui/media/product/azure/anomaly-detector.svg
     azureCategories:
@@ -144,6 +144,13 @@ productDirectory:
     azureCategories:
     - ai-machine-learning
     url: cognitive-services/bing-web-search/overview.md
+  - title: 通訊服務
+    summary: 在您的應用程式中新增即時語音、影片和電話通訊
+    imageSrc: ./media/index/communication-services.svg
+    azureCategories:
+    - web
+    - mobile
+    url: communication-services/overview.md
   - title: 電腦視覺
     summary: 從影像擷取可操作的資訊
     imageSrc: https://static.docs.com/ui/media/product/azure/cognitive-services.svg
@@ -610,7 +617,7 @@ productDirectory:
     azureCategories:
     - databases
     url: azure-sql/managed-instance/index.yml
-  - title: Azure SQL Edge (預覽)
+  - title: Azure SQL Edge
     summary: 磁碟使用量低、邊緣最佳化的資料引擎，並內建 AI
     imageSrc: https://static.docs.com/ui/media/product/azure/sql-database-edge.svg
     azureCategories:

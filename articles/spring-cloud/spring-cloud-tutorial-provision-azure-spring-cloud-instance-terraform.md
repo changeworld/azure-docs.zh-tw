@@ -7,14 +7,16 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 06/26/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 1f2e4ddc2d2cfbbfb7f95e5ae6b1af7a76eece85
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.openlocfilehash: 4ef08ea03cab711901225cab227a0f5f84055d7a
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89426345"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90906808"
 ---
 # <a name="tutorial-provision-an-azure-spring-cloud-instance-with-terraform"></a>教學課程：使用 Terraform 佈建 Azure Spring Cloud 執行個體
+
+**本文適用於：** ✔️ Java ✔️ C#
 
 本教學課程會使用 Terraform 建立 Azure Spring Cloud 執行個體。 這些程序會逐步引導您建立下列資源：
 

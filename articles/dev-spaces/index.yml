@@ -11,12 +11,12 @@ metadata:
   ms.author: zarhoads
   manager: gwallace
   ms.date: 09/30/2019
-  ms.openlocfilehash: ac8900298670323551a25d4ef7ac3f7b44249c5a
-  ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+  ms.openlocfilehash: 0100ace6dcf4701a8491f034f36075dc483849ec
+  ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 08/14/2020
-  ms.locfileid: "88209902"
+  ms.lasthandoff: 09/22/2020
+  ms.locfileid: "90970060"
 landingContent:
 - title: 關於 Azure Dev Spaces
   linkLists:
@@ -46,13 +46,11 @@ landingContent:
       url: how-to/ingress-https-traefik.md
     - text: 針對自訂輸入和 HTTPS 使用 NGINX
       url: how-to/ingress-https-nginx.md
-- title: 預覽功能
+- title: 橋接至 Kubernetes
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: 使用 GitHub Actions 搭配 Azure Dev Spaces
-      url: how-to/github-actions.md
-    - text: 將 Visual Studio Code 和 Kubernetes 與本機處理序搭配使用
-      url: https://code.visualstudio.com/docs/containers/local-process-kubernetes
-    - text: 將 Visual Studio 和 Kubernetes 與本機處理序搭配使用
-      url: /visualstudio/containers/local-process-kubernetes
+    - text: 將橋接至 Kubernetes 與 Visual Studio Code 搭配使用
+      url: https://code.visualstudio.com/docs/containers/bridge-to-kubernetes
+    - text: 將橋接至 Kubernetes 與 Visual Studio 搭配使用
+      url: /visualstudio/containers/bridge-to-kubernetes

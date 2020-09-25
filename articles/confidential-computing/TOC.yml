@@ -1,27 +1,65 @@
 - name: Azure 機密運算
-  href: overview.md
+  href: ./index.yml
+- name: 概觀
+  expanded: true
+  items:
+    - name: 歡迎使用 Azure 機密運算
+      href: overview.md
+    - name: 使用個案和案例
+      href: use-cases-scenarios.md
 - name: 快速入門
   expanded: true
   items:
-    - name: 在 Azure 入口網站中建立
-      href: quick-create-portal.md
-    - name: 使用 Marketplace 建立
-      href: quick-create-marketplace.md
+    - name: 虛擬機器
+      items:
+        - name: 在 Azure 入口網站中建立
+          href: quick-create-portal.md
+        - name: 使用 Marketplace 建立
+          href: quick-create-marketplace.md
+    - name: Azure Kubernetes Services (AKS)
+      items:
+        - name: AKS 機密節點概觀
+          href: confidential-nodes-aks-overview.md
+        - name: 具有 Azure CLI 的機密節點
+          href: confidential-nodes-aks-get-started.md
+        - name: AKS 上的機密節點常見問題
+          href: confidential-nodes-aks-faq.md
 - name: 概念
   expanded: true
   items:
-    - name: 虛擬機器上的解決方案
-      href: virtual-machine-solutions.md
+    - name: 虛擬機器 (VM)
+      items:
+        - name: 記憶體保護區感知虛擬機器
+          href: confidential-computing-enclaves.md
+        - name: 虛擬機器上的解決方案
+          href: virtual-machine-solutions.md
+        - name: 機密運算 VM 常見問題
+          href: faq.md
+    - name: 容器計算
+      expanded: true
+      items:
+        - name: 機密容器 (增益與轉移)
+          items:
+            - name: 開始使用
+              href: confidential-containers.md
+        - name: 記憶體保護區感知容器
+          items:
+            - name: 開始使用
+              href: enclave-aware-containers.md
+    - name: 證明
+      href: attestation.md
+    - name: XBOX Video Application Development
+      href: application-development.md
 - name: 作法
-  expanded: true
   items:
     - name: Fortanix 記憶體保護區管理員
       href: how-to-fortanix-enclave-manager.md
-- name: 資源
-  expanded: true
+- name: 參考資料
   items:
-    - name: 常見問題集
-      href: faq.md
+    - name: SGX 報價協助程式功能
+      href: confidential-nodes-out-of-proc-attestation.md
+- name: 資源
+  items:
     - name: 機密運算意見反映
       href: 'https://feedback.azure.com/forums/919792-azure-confidential-compute'
     - name: StackOverflow

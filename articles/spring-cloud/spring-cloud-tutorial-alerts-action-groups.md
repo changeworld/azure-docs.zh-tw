@@ -7,14 +7,16 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 12/29/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: 856bace0c67c5afedd6305158326af46037e7f21
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: dc8dffb12dcd205671e2219dbef45ac14f9f7df7
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89299221"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90892542"
 ---
 # <a name="tutorial-how-to-monitor-spring-cloud-resources-using-alerts-and-action-groups"></a>教學課程：如何使用警示和動作群組監視 Spring Cloud 資源
+
+**本文適用於：** ✔️ Java ✔️ C#
 
 Azure Spring Cloud 警示支援根據可用的儲存體、要求率或資料使用量等條件來監視資源。 當比率或條件符合定義的規格時，警示就會傳送通知。
 
@@ -58,11 +60,11 @@ Azure Spring Cloud 警示支援根據可用的儲存體、要求率或資料使�
 
 ## <a name="set-up-alert"></a>設定警示 
 
-先前的步驟已建立使用電子郵件的 [動作群組]。 您也可以使用電話通知、Webhook、Azure 函式等等。  
+先前的步驟已建立使用電子郵件的 [動作群組]。 您也可以使用電話通知、Webhook、Azure 函式等等。 下列步驟會設定**警示**。
 
-若要設定**警示**，請瀏覽回 [警示] 頁面，然後按一下 [管理警示規則]。
+1. 瀏覽回 [警示] 頁面，然後按一下 [管理警示規則]。
 
-  ![入口網站定義警示的螢幕擷取畫面](media/alerts-action-groups/alerts-2.png)
+   ![入口網站定義警示的螢幕擷取畫面](media/alerts-action-groups/alerts-2.png)
 
 1. 選取警示的 [資源]。
 
@@ -84,9 +86,9 @@ Azure Spring Cloud 警示支援根據可用的儲存體、要求率或資料使�
 
 1. 按一下 [完成] 。
 
-若要進一步了解可用於監視的條件，請參閱[使用者入口網站計量選項](spring-cloud-concept-metrics.md#user-metrics-options)。
+   若要進一步了解可用於監視的條件，請參閱[使用者入口網站計量選項](spring-cloud-concept-metrics.md#user-metrics-options)。
 
- 在 [動作] 下方，按一下 [選取動作群組]。 從 [動作] 窗格中選取先前定義的 [動作群組]。
+1. 在 [動作] 下方，按一下 [選取動作群組]。 從 [動作] 窗格中選取先前定義的 [動作群組]。
 
    ![入口網站新增警示規則的螢幕擷取畫面 4](media/alerts-action-groups/alerts-3-3.png) 
 
@@ -98,13 +100,13 @@ Azure Spring Cloud 警示支援根據可用的儲存體、要求率或資料使�
 
    ![入口網站新增警示規則的螢幕擷取畫面 5](media/alerts-action-groups/alerts-3-4.png)
 
-確認新的警示規則已啟用。
+1. 確認新的警示規則已啟用。
 
    ![入口網站新增警示規則的螢幕擷取畫面 6](media/alerts-action-groups/alerts-4.png)
 
 您也可以使用 [計量] 頁面來建立規則：
 
-   ![入口網站新增警示規則的螢幕擷取畫面 7](media/alerts-action-groups/alerts-5.png)
+![入口網站新增警示規則的螢幕擷取畫面 7](media/alerts-action-groups/alerts-5.png)
 
 ## <a name="next-steps"></a>後續步驟
 

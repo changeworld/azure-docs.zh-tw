@@ -1,0 +1,125 @@
+- name: 適用於 IoT 的 Azure Defender 文件
+  href: index.yml
+- name: 概觀
+  href: overview.md
+  items:
+    - name: 方案架構
+      href: architecture.md
+    - name: 適用於 Azure RTOS 的安全性模組
+      href: iot-security-azure-rtos.md
+    - name: 安全性代理程式
+      href: security-agent-architecture.md
+    - name: Edge 安全性模組
+      href: security-edge-architecture.md
+    - name: 服務必要條件
+      href: service-prerequisites.md
+    - name: 開始使用適用於 IoT 的 Azure Defender
+      href: getting-started.md
+      items:
+        - name: IoT 中樞
+          href: iot-hub-integration.md
+        - name: 安全性代理程式
+          href: security-agents.md
+- name: 快速入門
+  expanded: true
+  items:
+    - name: 設定 Azure RTOS 的安全性模組
+      href: quickstart-azure-rtos-security-module.md
+    - name: 在 IoT 中樞上架適用於 IoT 的 Azure Defender
+      href: quickstart-onboard-iot-hub.md
+    - name: 設定您的解決方案
+      href: quickstart-configure-your-solution.md
+    - name: 建立適用於 IoT 模組對應項的 Azure Defender
+      href: quickstart-create-security-twin.md
+    - name: 調查安全性建議
+      href: quickstart-investigate-security-recommendations.md
+    - name: 建立自訂的安全性警訊
+      href: quickstart-create-custom-alerts.md
+    - name: 調查安全性警示
+      href: quickstart-investigate-security-alerts.md
+- name: 概念
+  items:
+    - name: 適用於 Azure RTOS 的安全性模組
+      items:
+        - name: 了解 Azure RTOS 的安全性模組
+          href: concept-rtos-security-module.md
+        - name: Azure RTOS 安全性模組的警示和建議
+          href: concept-rtos-security-alerts-recommendations.md
+    - name: 安全性代理程式驗證
+      href: concept-security-agent-authentication-methods.md
+    - name: 安全性模組
+      href: concept-security-module.md
+    - name: 安全性警示
+      href: concept-security-alerts.md
+    - name: 可自訂的安全性警示
+      href: concept-customizable-security-alerts.md
+    - name: 安全性建議
+      href: concept-recommendations.md
+    - name: 基準
+      href: concept-baseline.md
+    - name: 事件彙總
+      href: event-aggregation.md
+    - name: 定價和相關成本
+      href: concept-pricing.md
+- name: 操作指南
+  items:
+    - name: 使用 Azure RTOS 的安全性模組
+      href: how-to-azure-rtos-security-module.md
+    - name: 我應該部署哪個代理程式？
+      items:
+        - name: 選取要部署的代理程式
+          href: how-to-deploy-agent.md
+        - name: 在 Windows 裝置上部署以 C# 為基礎的安全性代理程式
+          href: how-to-deploy-windows-cs.md
+        - name: 在 Linux 裝置上部署以 C# 為基礎的安全性代理程式
+          href: how-to-deploy-linux-cs.md
+        - name: 在 Linux 裝置上部署以 C 為基礎的安全性代理程式
+          href: how-to-deploy-linux-c.md
+    - name: 安全性代理程式疑難排解
+      items:
+        - name: 針對適用於 IoT安全性代理程式 的 Azure Defender Linux 疑難排解
+          href: troubleshoot-agent.md
+        - name: 本機組態 C
+          href: azure-iot-security-local-configuration-c.md
+        - name: 本機組態 C#
+          href: azure-iot-security-local-configuration-csharp.md
+    - name: 部署 Edge 安全性模組
+      href: how-to-deploy-edge.md
+    - name: 設定安全性代理程式
+      href: how-to-agent-configuration.md
+    - name: 傳送您的安全性訊息
+      href: how-to-send-security-messages.md
+    - name: 存取未經處理的安全性資料
+      href: how-to-security-data-access.md
+    - name: 調查裝置
+      href: how-to-investigate-device.md
+    - name: 連線到 Azure Sentinel
+      href: how-to-configure-with-sentinel.md
+    - name: 自訂您的解決方案
+      href: how-to-customize-solution.md
+- name: 參考資料
+  items:
+    - name: Azure RTOS 安全性模組 API
+      href: azure-rtos-security-module-api.md
+    - name: 常見問題集
+      href: resources-frequently-asked-questions.md
+    - name: Azure 藍圖
+      href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
+- name: 資源
+  items:
+    - name: 使用 Microsoft Learn 建置安全性技能
+      href: 'https://docs.microsoft.com/learn/browse/?term=securityS&terms=securityS'
+    - name: Azure 資訊安全中心文件
+      href: 'https://docs.microsoft.com/azure/security-center/'
+    - name: Azure 安全性文件
+      href: 'https://docs.microsoft.com/azure/security/'
+    - name: Stack Overflow 上的 Azure RTOS 安全性模組
+      href: 'https://stackoverflow.com/questions/tagged/azure-rtos+azure-iot-security-module'
+    - name: Azure IoT 安全性、隱私權和合規性部落格
+      href: 'https://techcommunity.microsoft.com/t5/iot-security/bd-p/IoTSecurity'
+    - name: 區域可用性
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: 定價
+      href: 'https://azure.microsoft.com/pricing/details/security-center/'
+    - name: 影片
+      href: 'https://azure.microsoft.com/resources/videos/index/?services=security-center&service=internet-of-things&page=1&sort=newest'

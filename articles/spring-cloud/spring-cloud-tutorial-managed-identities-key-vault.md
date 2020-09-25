@@ -7,14 +7,16 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/08/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: fc803cbe3dd1ec57b6cd286513efe8393a1471e9
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 646b95e7e106b8657f8aeec2426b88cd6da20357
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89297122"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90885653"
 ---
 # <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-spring-cloud-app"></a>教學課程：使用受控識別將 Key Vault 連線至 Azure Spring Cloud 應用程式
+
+**本文適用於：** ✔️ Java
 
 本文說明如何建立 Azure Spring Cloud 應用程式的受控識別，並用其來存取 Azure Key Vault。
 
@@ -23,18 +25,18 @@ Azure Key Vault 可用來安全地儲存應用程式的權杖、密碼、憑證�
 ## <a name="prerequisites"></a>必要條件
 
 * [註冊 Azure 訂用帳戶](https://azure.microsoft.com/free/)
-* [安裝 Azure CLI 2.0.67 版或更新版本](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
+* [安裝 Azure CLI 2.0.67 版或更新版本](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)
 * [安裝 Maven 3.0 或更新版本](https://maven.apache.org/download.cgi) \(英文\)
 
 ## <a name="create-a-resource-group"></a>建立資源群組
-資源群組是在其中部署與管理 Azure 資源的邏輯容器。 使用 [az group create](/cli/azure/group?view=azure-cli-latest#az-group-create) 命令建立用來包含 Key Vault 和 Spring Cloud 的資源群組：
+資源群組是在其中部署與管理 Azure 資源的邏輯容器。 使用 [az group create](/cli/azure/group?view=azure-cli-latest&preserve-view=true#az-group-create) 命令建立用來包含 Key Vault 和 Spring Cloud 的資源群組：
 
 ```azurecli-interactive
 az group create --name "myResourceGroup" -l "EastUS"
 ```
 
 ## <a name="set-up-your-key-vault"></a>設定您的 Key Vault
-若要建立 Key Vault，請使用 [az keyvault create](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) 命令：
+若要建立 Key Vault，請使用 [az keyvault create](/cli/azure/keyvault?view=azure-cli-latest&preserve-view=true#az-keyvault-create) 命令：
 
 > [!Important]
 > 每個金鑰保存庫必須有唯一的名稱。 在下列範例中，以您的 Key Vault 名稱取代 <your-keyvault-name>。
@@ -45,7 +47,7 @@ az keyvault create --name "<your-keyvault-name>" -g "myResourceGroup"
 
 記下傳回的 `vaultUri`，其格式為 "https://<your-keyvault-name>.vault.azure.net"。 這會在下列步驟中用到。
 
-您現在可以使用 [az keyvault secret set](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-set) 命令將秘密放在 Key Vault 中：
+您現在可以使用 [az keyvault secret set](/cli/azure/keyvault/secret?view=azure-cli-latest&preserve-view=true#az-keyvault-secret-set) 命令將秘密放在 Key Vault 中：
 
 ```azurecli-interactive
 az keyvault secret set --vault-name "<your-keyvault-name>" \
@@ -165,7 +167,7 @@ az keyvault set-policy --name "<your-keyvault-name>" --object-id ${SERVICE_IDENT
 
 ## <a name="build-sample-spring-boot-app-with-java-sdk"></a>使用 Java SDK 建立 Spring Boot 應用程式範例
 
-此範例可以設定並取得 Azure Key Vault 中的祕密。 [適用於 Java 的 Azure Key Vault 祕密用戶端程式庫](https://docs.microsoft.com/java/api/overview/azure/security-keyvault-secrets-readme?view=azure-java-stablelibrary)會在 Azure SDK 上提供 Azure Active Directory 權杖驗證支援。 其會提供一組 **TokenCredential** 的實作，以用來建構可支援 AAD 權杖驗證的 Azure SDK 用戶端。
+此範例可以設定並取得 Azure Key Vault 中的祕密。 [適用於 Java 的 Azure Key Vault 祕密用戶端程式庫](https://docs.microsoft.com/java/api/overview/azure/security-keyvault-secrets-readme?view=azure-java-stablelibrary&preserve-view=true)會在 Azure SDK 上提供 Azure Active Directory 權杖驗證支援。 其會提供一組 **TokenCredential** 的實作，以用來建構可支援 AAD 權杖驗證的 Azure SDK 用戶端。
 
 Azure Key Vault 祕密用戶端程式庫可讓您安全地儲存及控制權杖、密碼、API 金鑰和其他祕密的存取權。 此程式庫提供建立、擷取、更新、刪除、清除、備份、還原和列出秘密及其版本的作業。
 
@@ -189,7 +191,7 @@ Azure Key Vault 祕密用戶端程式庫可讓您安全地儲存及控制權杖�
     azure.keyvault.uri=https://<your-keyvault-name>.vault.azure.net
     ```
 
-3. 請包含 [ManagedIdentityCredentialBuilder](https://docs.microsoft.com/java/api/com.azure.identity.managedidentitycredentialbuilder?view=azure-java-stable)，以從 Azure Active Directory 取得權杖，以及包含 [SecretClientBuilder](https://docs.microsoft.com/java/api/com.azure.security.keyvault.secrets.secretclientbuilder?view=azure-java-stable)，以在程式碼中設定或取得來自 Key Vault 的祕密。
+3. 請包含 [ManagedIdentityCredentialBuilder](https://docs.microsoft.com/java/api/com.azure.identity.managedidentitycredentialbuilder?view=azure-java-stable&preserve-view=true)，以從 Azure Active Directory 取得權杖，以及包含 [SecretClientBuilder](https://docs.microsoft.com/java/api/com.azure.security.keyvault.secrets.secretclientbuilder?view=azure-java-stable&preserve-view=true)，以在程式碼中設定或取得來自 Key Vault 的祕密。
 
     在已複製的範例專案中，從 [MainController.java](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples/blob/master/managed-identity-keyvault/src/main/java/com/microsoft/azure/MainController.java#L28) 取得範例。
 
@@ -231,3 +233,4 @@ Azure Key Vault 祕密用戶端程式庫可讓您安全地儲存及控制權杖�
 * [如何針對 Azure Spring Cloud 應用程式啟用系統指派的受控識別](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-howto-enable-system-assigned-managed-identity)
 * [深入了解 Azure 資源受控識別](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/active-directory/managed-identities-azure-resources/overview.md)
 * [在 GitHub Actions 中使用 Key Vault 驗證 Azure Spring Cloud](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-github-actions-key-vault)
+

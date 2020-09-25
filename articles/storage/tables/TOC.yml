@@ -50,8 +50,8 @@
         - name: Azure 儲存體待用加密
           href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
           items:
-            - name: 客戶管理的金鑰與 Azure Key Vault
-              href: ../common/encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+            - name: 使用客戶自控金鑰進行加密
+              href: ../common/customer-managed-keys-overview.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
         - name: Azure 原則的安全性控制
           displayName: 'regulatory, compliance, standards, domains'
           href: ../common/security-controls-policy.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
@@ -104,17 +104,15 @@
           items:
             - name: 建立支援客戶管理金鑰的帳戶
               href: ../common/account-encryption-key-create.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
-            - name: 設定客戶管理的金鑰
+            - name: 使用客戶自控金鑰來設定加密
               items:
-                - name: 入口網站
-                  href: ../common/storage-encryption-keys-portal.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
-                - name: PowerShell
-                  href: ../common/storage-encryption-keys-powershell.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
-                - name: Azure CLI
-                  href: ../common/storage-encryption-keys-cli.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+                - name: 將客戶自控金鑰儲存在金鑰保存庫中
+                  href: ../common/customer-managed-keys-configure-key-vault.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+                - name: 將客戶自控金鑰儲存在受控 HSM 中
+                  href: ../common/customer-managed-keys-configure-key-vault-hsm.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
             - name: 檢查帳戶的加密金鑰模型
               href: ../common/storage-encryption-key-model-get.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
-            - name: 啟用儲存體帳戶的基礎結構加密
+            - name: 啟用帳戶的基礎結構加密
               href: ../common/infrastructure-encryption-enable.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
         - name: 設定用戶端加密
           items:
@@ -136,6 +134,8 @@
                   href: ../common/transport-layer-security-configure-minimum-version.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
                 - name: 設定用戶端應用程式的 TLS 版本
                   href: ../common/transport-layer-security-configure-client-version.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+        - name: 設定 Azure Defender 以進行威脅防護
+          href: ../common/azure-defender-storage-configure.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
     - name: 管理資料備援
       items:
         - name: 變更資料複寫的方式

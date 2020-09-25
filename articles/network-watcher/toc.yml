@@ -31,6 +31,8 @@
       href: connection-monitor-preview.md
     - name: 診斷虛擬機器網路流量篩選問題
       href: network-watcher-ip-flow-verify-overview.md
+    - name: 診斷 NSG 規則和流量篩選
+      href: network-watcher-network-configuration-diagnostics-overview.md
     - name: 診斷虛擬機器路由問題
       href: network-watcher-next-hop-overview.md
     - name: 診斷輸出虛擬機器通訊問題

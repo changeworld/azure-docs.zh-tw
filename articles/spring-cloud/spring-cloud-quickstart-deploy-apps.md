@@ -7,15 +7,177 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 08/03/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 8931c22c3656cf9708756153268ab1d9d87b8343
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+zone_pivot_groups: programming-languages-spring-cloud
+ms.openlocfilehash: 94caa879aa005f8f41e44b8a56400e87f6174247
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89050823"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90908342"
 ---
 # <a name="quickstart-build-and-deploy-apps-to-azure-spring-cloud"></a>快速入門：建置應用程式並將其部署至 Azure Spring Cloud
 
+::: zone pivot="programming-language-csharp"
+在本快速入門中，您會使用 Azure CLI 來建置微服務應用程式，並將其部署至 Azure Spring Cloud。
+
+## <a name="prerequisites"></a>必要條件
+
+* 完成此系列的前面幾個快速入門：
+
+  * [佈建 Azure Spring Cloud 服務](spring-cloud-quickstart-provision-service-instance.md)。
+  * [設定 Azure Spring Cloud 設定伺服器](spring-cloud-quickstart-setup-config-server.md)。
+
+## <a name="download-the-sample-app"></a>下載範例應用程式
+
+如果您一直使用 Azure Cloud Shell 到這裡，請切換至本機命令提示字元，以執行下列步驟。
+
+1. 建立新資料夾，並複製範例應用程式存放庫。
+
+   ```console
+   mkdir source-code
+   ```
+
+   ```console
+   cd source-code
+   ```
+
+   ```console
+   git clone https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples
+   ```
+
+1. 瀏覽至存放庫目錄。
+
+   ```console
+   cd Azure-Spring-Cloud-Samples
+   ```
+
+## <a name="deploy-planetweatherprovider"></a>部署 PlanetWeatherProvider
+
+1. 在您的 Azure Spring Cloud 執行個體中，為 PlanetWeatherProvider 專案建立應用程式。
+
+   ```azurecli
+   az spring-cloud app create --name planet-weather-provider --runtime-version NetCore_31
+   ```
+
+   為了啟用自動註冊服務的功能，您提供給應用程式的名稱和專案的 *appsettings.json* 檔案中所具有的 `spring.application.name` 值相同：
+
+   ```json
+   "spring": {
+     "application": {
+       "name": "planet-weather-provider"
+     }
+   }
+   ```
+
+   此命令可能需要幾分鐘才能完成執行。
+
+1. 將目錄變更為 `PlanetWeatherProvider` 專案資料夾。
+
+   ```console
+   cd steeltoe-sample/src/planet-weather-provider
+   ```
+
+1. 建立要部署的二進位檔和 *.zip* 檔案。
+
+   ```console
+   dotnet publish -c release -o ./publish
+   ```
+
+   > [!TIP]
+   > 專案檔包含下列 XML，以便在將二進位檔撰寫到 *./publish* 資料夾之後，將二進位檔封裝到 *.zip* 檔案中：
+   >
+   > ```xml
+   > <Target Name="Publish-Zip" AfterTargets="Publish">
+   >   <ZipDirectory SourceDirectory="$(PublishDir)" DestinationFile="$(MSBuildProjectDirectory)/publish-deploy-planet.zip" Overwrite="true" />
+   > </Target>
+   > ```
+
+1. 部署至 Azure。
+
+   在執行下列命令之前，請確定命令提示字元位於專案資料夾。
+
+   ```console
+   az spring-cloud app deploy -n planet-weather-provider --runtime-version NetCore_31 --main-entry Microsoft.Azure.SpringCloud.Sample.PlanetWeatherProvider.dll --artifact-path ./publish-deploy-planet.zip
+   ```
+
+   `--main-entry` 選項會指定從 *.zip* 檔案的根資料夾到應用程式進入點所在 *.dll* 檔案的相對路徑。 在服務上傳 *.zip* 檔案之後，其會解壓縮所有檔案和資料夾，並嘗試執行所指定 *.dll* 檔案中的進入點。
+
+   此命令可能需要幾分鐘才能完成執行。
+
+## <a name="deploy-solarsystemweather"></a>部署 SolarSystemWeather
+
+1. 在您的 Azure Spring Cloud 執行個體中建立另一個應用程式，這次是為 SolarSystemWeather 專案而建立：
+
+   ```azurecli
+   az spring-cloud app create --name solar-system-weather --runtime-version NetCore_31
+   ```
+
+   `solar-system-weather` 是 `SolarSystemWeather` 專案的 *appsettings.json* 檔案中所指定的名稱。
+
+   此命令可能需要幾分鐘才能完成執行。
+
+1. 將目錄變更為 `SolarSystemWeather` 專案。
+
+   ```console
+   cd ../solar-system-weather
+   ```
+
+1. 建立要部署的二進位檔和 *.zip* 檔案。
+
+   ```console
+   dotnet publish -c release -o ./publish
+   ```
+
+1. 部署至 Azure。
+
+   ```console
+   az spring-cloud app deploy -n solar-system-weather --runtime-version NetCore_31 --main-entry Microsoft.Azure.SpringCloud.Sample.SolarSystemWeather.dll --artifact-path ./publish-deploy-solar.zip
+   ```
+   
+   此命令可能需要幾分鐘才能完成執行。
+
+## <a name="assign-public-endpoint"></a>指派公用端點
+
+若要測試應用程式，請從瀏覽器將 HTTP GET 要求傳送至 `solar-system-weather` 應用程式。  若要這麼做，您需要可供要求使用的公用端點。
+
+1. 若要指派端點，請執行下列命令。
+
+   ```azurecli
+   az spring-cloud app update -n solar-system-weather --is-public true
+   ```
+
+1. 若要取得端點的 URL，請執行下列命令。
+
+   Windows：
+
+   ```azurecli
+   az spring-cloud app show -n solar-system-weather -o table
+   ```
+
+   Linux：
+
+   ```azurecli
+   az spring-cloud app show --name solar-system-weather | grep url
+   ```
+
+## <a name="test-the-application"></a>測試應用程式
+
+將 GET 要求傳送至 `solar-system-weather` 應用程式。 在瀏覽器中，瀏覽至結尾附加了 `/weatherforecast` 的公用 URL。 例如：
+
+```
+https://servicename-solar-system-weather.azuremicroservices.io/weatherforecast
+```
+
+輸出是 JSON：
+
+```json
+[{"Key":"Mercury","Value":"very warm"},{"Key":"Venus","Value":"quite unpleasant"},{"Key":"Mars","Value":"very cool"},{"Key":"Saturn","Value":"a little bit sandy"}]
+```
+
+此回應顯示兩個微服務應用程式都在運作中。 `SolarSystemWeather` 應用程式會傳回從 `PlanetWeatherProvider` 應用程式擷取的資料。
+::: zone-end
+
+::: zone pivot="programming-language-java"
 本文件說明如何使用下列方式建置微服務應用程式，並將其部署至 Azure Spring Cloud：
 * Azure CLI
 * Maven 外掛程式
@@ -25,9 +187,9 @@ ms.locfileid: "89050823"
 
 ## <a name="prerequisites"></a>先決條件
 
-* [安裝 JDK 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable)
+* [安裝 JDK 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable&preserve-view=true)
 * [註冊 Azure 訂用帳戶](https://azure.microsoft.com/free/)
-* (選擇性) [安裝 Azure CLI 版本 2.0.67 或更高版本](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)，並使用下列命令安裝 Azure Spring Cloud 擴充功能：`az extension add --name spring-cloud`
+* (選擇性) [安裝 Azure CLI 版本 2.0.67 或更高版本](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)，並使用下列命令安裝 Azure Spring Cloud 擴充功能：`az extension add --name spring-cloud`
 * (選擇性) [安裝 Azure Toolkit for IntelliJ](https://plugins.jetbrains.com/plugin/8053-azure-toolkit-for-intellij/) 並[登入](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in)
 
 ## <a name="deployment-procedures"></a>部署程序
@@ -148,7 +310,7 @@ ms.locfileid: "89050823"
 
     ![部署至 Azure 1](media/spring-cloud-intellij-howto/revision-deploy-to-azure-1.png)
 
-1. 在 [名稱] 欄位中，將 *:gateway* 附加至參考設定的現有**名稱**。
+1. 在 [名稱] 欄位中，將 *:gateway* 附加至現有的 [名稱]。
 1. 在 [成品] 文字方塊中，選取 [com.piggymetrics:gateway:1.0-SNAPSHOT]。
 1. 在 [訂用帳戶] 文字方塊中，驗證您的訂用帳戶。
 1. 在 [Spring Cloud] 文字方塊中，選取您在[佈建 Azure Spring Cloud 執行個體](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-provision-service-instance)中所建立的 Azure Spring Cloud 執行個體。
@@ -174,7 +336,7 @@ ms.locfileid: "89050823"
 1. 重複這些程序來設定和部署 `account-service`。
 ---
 
-瀏覽至上一個步驟輸出的 URL 來存取 PiggyMetrics 應用程式。 例如，`https://<service instance name>-gateway.azuremicroservices.io`
+瀏覽至上一個步驟輸出的 URL 來存取 PiggyMetrics 應用程式。 例如： `https://<service instance name>-gateway.azuremicroservices.io`
 
 ![存取 PiggyMetrics](media/spring-cloud-quickstart-launch-app-cli/launch-app.png)
 
@@ -189,15 +351,25 @@ ms.locfileid: "89050823"
 
     ![瀏覽應用程式二](media/spring-cloud-quickstart-launch-app-cli/navigate-app2-url.png)
 
+::: zone-end
+
 ## <a name="clean-up-resources"></a>清除資源
-在前述步驟中，您在資源群組中建立了 Azure 資源。 如果您在未來不需要這些資源，請從入口網站刪除資源群組，或在 Cloud Shell 中執行下列命令：
+
+如果您想要繼續進行本系列的下一個快速入門，請略過此步驟。
+
+在這些快速入門中，您已建立 Azure 資源，這些資源如果留在訂用帳戶中，將會繼續產生費用。 如果您不打算繼續進行下一個快速入門，而且未來也不會用到這些資源，則請使用入口網站或在 Cloud Shell 中執行下列命令來刪除資源群組：
+
 ```azurecli
 az group delete --name <your resource group name; for example: helloworld-1558400876966-rg> --yes
 ```
-在上述步驟中，您也會設定預設的資源群組名稱。 若要清除該預設值，請在 Cloud Shell 中執行下列命令：
+
+在先前的快速入門中，您也設定了預設的資源群組名稱。 如果您不打算繼續進行下一個快速入門，則請執行下列 CLI 命令來清除該預設值：
+
 ```azurecli
 az configure --defaults group=
 ```
+
 ## <a name="next-steps"></a>後續步驟
 > [!div class="nextstepaction"]
 > [記錄、計量和追蹤](spring-cloud-quickstart-logs-metrics-tracing.md)
+

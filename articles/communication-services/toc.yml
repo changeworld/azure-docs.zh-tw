@@ -1,0 +1,88 @@
+- name: Azure 通訊服務文件
+  href: index.yml
+- name: 概觀
+  expanded: true
+  items:
+    - name: 什麼是 Azure 通訊服務？
+      href: overview.md
+- name: 快速入門
+  expanded: true
+  items:
+    - name: 建立通訊服務資源
+      href: quickstarts/create-communication-resource.md
+    - name: 建立和管理存取權杖
+      href: quickstarts/access-tokens.md
+    - name: 聊天
+      items:
+        - name: 將聊天新增至您的應用程式
+          href: quickstarts/chat/get-started.md
+    - name: 電話語音和 SMS
+      items:
+        - name: 取得電話號碼
+          href: quickstarts/telephony-sms/get-phone-number.md
+        - name: 傳送 SMS 訊息
+          href: quickstarts/telephony-sms/send.md
+        - name: 處理 SMS 事件
+          href: quickstarts/telephony-sms/handle-sms-events.md
+    - name: 語音和視訊通話
+      items:
+        - name: 將語音電話新增至您的應用程式
+          href: quickstarts/voice-video-calling/getting-started-with-calling.md
+        - name: 使用通話用戶端程式庫
+          href: quickstarts/voice-video-calling/calling-client-samples.md
+- name: 教學課程
+  expanded: false
+  items:
+    - name: 使用 Azure Functions 來組建受信任的驗證服務
+      href: tutorials/trusted-service-tutorial.md
+- name: 概念
+  expanded: false
+  items:
+    - name: 聊天
+      items:
+        - name: 聊天用戶端程式庫概觀
+          href: concepts/chat/sdk-features.md
+        - name: 聊天概念
+          href: concepts/chat/concepts.md
+    - name: 電話語音和 SMS
+      items:
+        - name: SMS 用戶端程式庫概觀
+          href: concepts/telephony-sms/sdk-features.md
+        - name: SMS 概念
+          href: concepts/telephony-sms/concepts.md
+        - name: 規劃您的電話語音和 SMS 解決方案
+          href: concepts/telephony-sms/plan-solution.md
+    - name: 語音和視訊通話
+      items:
+        - name: 通話用戶端程式庫概觀
+          href: concepts/voice-video-calling/calling-sdk-features.md
+        - name: 語音和視訊概念
+          href: concepts/voice-video-calling/about-call-types.md
+    - name: 用戶端與伺服器架構
+      href: concepts/client-and-server-architecture.md
+    - name: 通話流程
+      href: concepts/call-flows.md
+    - name: 用戶端程式庫和 REST API
+      href: concepts/sdk-options.md
+    - name: 定價模式
+      href: concepts/pricing.md
+    - name: 驗證
+      href: concepts/authentication.md
+    - name: 事件處理
+      href: concepts/event-handling.md
+    - name: 通知
+      href: concepts/notifications.md
+- name: 範例
+  items:
+    - name: 群組通話 Hero 範例
+      href: samples/calling-hero-sample.md
+    - name: 群組聊天 Hero 範例
+      href: samples/chat-hero-sample.md
+- name: 參考資料
+  items:
+    - name: REST API 文件
+      href: 'https://docs.microsoft.com/rest/api/azure/'
+- name: 資源
+  items:
+    - name: 版本資訊
+      href: release-notes.md

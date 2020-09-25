@@ -1,0 +1,102 @@
+### YamlMime:Landing
+title: Azure 通訊服務
+summary: Azure 通訊服務是一種雲端式通訊服務，可讓您在應用程式中新增語音、影片、聊天和電話通訊。 請注意，Azure 通訊服務目前處於公開預覽狀態。
+metadata:
+  title: Azure 通訊服務
+  description: Azure 通訊服務是一種雲端式通訊服務，可讓您在應用程式中新增語音、影片、聊天和電話通訊。 請注意，Azure 通訊服務目前處於公開預覽狀態。
+  ms.service: azure-communication-services
+  ms.topic: landing-page
+  author: mikben
+  ms.author: mikben
+  ms.date: 08/10/2020
+  ms.openlocfilehash: 6081063605439982e29984cc4378ec3aee7ac08a
+  ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 09/22/2020
+  ms.locfileid: "90928751"
+landingContent:
+- title: 關於 Azure 通訊服務
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什麼是 Azure 通訊服務？
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: 用戶端程式庫選項
+      url: concepts/sdk-options.md
+- title: 開始使用
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 建立通訊服務資源
+      url: quickstarts/create-communication-resource.md
+    - text: 建立和管理使用者存取權杖
+      url: quickstarts/access-tokens.md
+  - linkListType: concept
+    links:
+    - text: 用戶端與伺服器架構
+      url: concepts/client-and-server-architecture.md
+    - text: 驗證與授權
+      url: concepts/authentication.md
+    - text: 事件處理
+      url: concepts/event-handling.md
+    - text: 通知
+      url: concepts/notifications.md
+- title: 語音和視訊通話
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 將語音和視訊通話新增至您的應用程式
+      url: quickstarts/voice-video-calling/getting-started-with-calling.md
+    - text: 使用通話用戶端程式庫
+      url: quickstarts/voice-video-calling/calling-client-samples.md
+  - linkListType: concept
+    links:
+    - text: 語音和視訊概念
+      url: concepts/voice-video-calling/about-call-types.md
+    - text: 通話用戶端程式庫概觀
+      url: concepts/voice-video-calling/calling-sdk-features.md
+    - text: 通話流程
+      url: concepts/call-flows.md
+- title: 電話語音和 SMS
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 取得電話號碼
+      url: quickstarts/telephony-sms/get-phone-number.md
+    - text: 傳送 SMS 訊息
+      url: quickstarts/telephony-sms/send.md
+    - text: 處理 SMS 事件
+      url: quickstarts/telephony-sms/handle-sms-events.md
+  - linkListType: concept
+    links:
+    - text: SMS 概念
+      url: concepts/telephony-sms/concepts.md
+    - text: SMS 用戶端程式庫概觀
+      url: concepts/telephony-sms/sdk-features.md
+    - text: 通話概觀
+      url: concepts/voice-video-calling/calling-sdk-features.md
+    - text: 規劃您的電話語音和 SMS 解決方案
+      url: concepts/telephony-sms/plan-solution.md
+- title: 聊天
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 將聊天新增至您的應用程式
+      url: quickstarts/chat/get-started.md
+  - linkListType: concept
+    links:
+    - text: 聊天概念
+      url: concepts/chat/concepts.md
+    - text: 聊天用戶端程式庫概觀
+      url: concepts/chat/sdk-features.md
+- title: 範例
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: 開始使用群組通話 Hero 範例
+      url: samples/calling-hero-sample.md
+    - text: 開始使用聊天 Hero 範例
+      url: samples/chat-hero-sample.md

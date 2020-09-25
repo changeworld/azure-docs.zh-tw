@@ -7,14 +7,17 @@ ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 05107d0246be2273c09e91573bd30a4108ac7795
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: cd10421ddcf752625b8040e1afa4e7b15f142ce2
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89290322"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90885691"
 ---
 # <a name="map-an-existing-custom-domain-to-azure-spring-cloud"></a>將現有的自訂網域對應至 Azure Spring Cloud
+
+**本文適用於：** ✔️ Java ✔️ C#
+
 網域名稱服務 (DNS) 是一種在整個網路中儲存網路節點名稱的技術。 本教學課程會使用 CNAME 記錄來對應網域，例如 www.contoso.com。 其會使用憑證來保護自訂網域，並示範如何強制執行傳輸層安全性 (TLS)，也稱為安全通訊端層 (SSL)。 
 
 憑證會將網路流量加密。 這些 TLS/SSL 憑證可以儲存在 Azure Key Vault 中。 

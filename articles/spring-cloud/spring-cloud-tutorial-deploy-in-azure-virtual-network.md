@@ -7,14 +7,16 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/21/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: a7905ae0fdbd797d9b544cb71f44b82af1295246
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 979ecf77fe53238dfd377c5fd2baf394de985c2f
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88688448"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90892900"
 ---
 # <a name="tutorial-deploy-azure-spring-cloud-in-azure-virtual-network-vnet-injection"></a>教學課程：在 Azure 虛擬網路中部署 Azure Spring Cloud (VNet 插入)
+
+**本文適用於：** ✔️ Java ✔️ C#
 
 本教學課程說明如何在虛擬網路中部署 Azure Spring Cloud 服務執行個體。 這有時稱為「VNet 插入」。  
 
@@ -38,7 +40,7 @@ az provider register --namespace Microsoft.AppPlatform
 * **子網路**：虛擬網路必須包含兩個專用於 Azure Spring Cloud 服務執行個體的子網路： 
     * 一個用於服務執行階段
     * 一個用於 Spring Boot 微服務應用程式。 
-    * 這些子網路與 Azure Spring Cloud 服務執行個體之間有一對一的關聯性。 您不能在單一子網路內共用多個服務執行個體。 您必須針對所部署的每個服務執行個體使用新的子網路。
+    * 這些子網路與 Azure Spring Cloud 服務執行個體之間有一對一的關聯性。 您必須針對所部署的每個服務執行個體使用新的子網路，且每個子網路只能包含單一服務執行個體。
 * **位址空間**：一個最高 /28 的 CIDR 區塊用於服務執行階段子網路，另一個最高 /24 的 CIDR 區塊用於 Spring Boot 微服務應用程式子網路。
 * **路由表**：子網路不能有相關聯的現有路由表。
 

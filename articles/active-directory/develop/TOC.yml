@@ -445,7 +445,7 @@
           href: supported-accounts-validation.md
         - name: 單一租用戶與多租用戶應用程式
           href: single-and-multi-tenant-apps.md
-        - name: 發行者認證 (預覽)
+        - name: 發行者驗證
           href: publisher-verification-overview.md
     - name: 權限及同意
       displayName: Scopes
@@ -553,9 +553,9 @@
           href: howto-add-terms-of-service-privacy-statement.md
         - name: 設定應用程式的發行者驗證
           items:
-            - name: 將您的應用程式標示為已驗證發行者 (預覽)
+            - name: 將應用程式標示為發行者已驗證
               href: mark-app-as-publisher-verified.md
-            - name: 針對發行者驗證進行疑難排解 (預覽)
+            - name: 針對發行者驗證進行疑難排解
               href: troubleshoot-publisher-verification.md
     - name: 使用 Microsoft 驗證程式庫
       displayName: MSAL

@@ -7,14 +7,17 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/22/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 6e4494762c4652d3db66940dddebb13c3ab03af3
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 5ca0c498e9fd03ce6397824465f9e1e006eeccc1
+ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87449409"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90905389"
 ---
 # <a name="tutorial-set-up-autoscale-for-microservice-applications"></a>教學課程：設定微服務應用程式的自動調整
+
+**本文適用於：** ✔️ Java ✔️ C#
+
 自動調整是 Azure Spring Cloud 的內建功能，可協助微服務應用程式在需求變更時以最佳效能執行。 這包括修改虛擬 CPU、記憶體和應用程式執行個體的數目。 本文說明如何使用 Microsoft Azure 入口網站或 Azure CLI 為您的應用程式設定自動調整。
 
 ## <a name="prerequisites"></a>必要條件
@@ -68,4 +71,4 @@ ms.locfileid: "87449409"
 ## <a name="next-steps"></a>後續步驟
 
 * [Microsoft Azure 的自動調整概觀](https://docs.microsoft.com/azure/azure-monitor/platform/autoscale-overview)
-* [Azure CLI 監視自動調整](https://docs.microsoft.com/cli/azure/monitor/autoscale?view=azure-cli-latest)
+* [Azure CLI 監視自動調整](https://docs.microsoft.com/cli/azure/monitor/autoscale?view=azure-cli-latest&preserve-view=true)

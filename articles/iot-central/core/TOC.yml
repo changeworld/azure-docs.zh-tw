@@ -109,7 +109,7 @@
           href: howto-run-a-job.md
     - name: 轉換
       items:
-        - name: 將資料匯出至雲端目的地 (預覽)
+        - name: 將資料匯出至雲端目的地
           href: howto-export-data.md
         - name: 將資料匯出至雲端目的地 (舊版)
           href: howto-export-data-legacy.md

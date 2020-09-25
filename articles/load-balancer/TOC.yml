@@ -39,6 +39,10 @@
       href: powershell-samples.md
 - name: 概念
   items:
+    - name: 跨區域負載平衡器
+      href: cross-region-overview.md
+    - name: 新功能
+      href: whats-new.md
     - name: 元件
       href: components.md
     - name: 概念

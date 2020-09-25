@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/05/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: f7134d0e8087d17e78a13c958298006e321bd192
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: 754a47b3692847957de7f3d666f4dc09dc309d25
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84346211"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "91025222"
 ---
 ### <a name="is-custom-ipsecike-policy-supported-on-all-azure-vpn-gateway-skus"></a>是否所有的 Azure VPN 閘道 SKU 都支援自訂 IPsec/IKE 原則？
 除了基本的 SKU 以外，所有 Azure SKU 都支援自訂 IPsec/IKE 原則。
@@ -31,7 +31,7 @@ ms.locfileid: "84346211"
 | ---              | ---                                                                           |
 | IKEv2 加密 | AES256、AES192、AES128、DES3、DES                                             |
 | IKEv2 完整性  | SHA384、SHA256、SHA1、MD5                                                     |
-| DH 群組         | DHGroup24、ECP384、ECP256、DHGroup14 (DHGroup2048)、DHGroup2、DHGroup1、無 |
+| DH 群組         | DHGroup24、ECP384、ECP256、DHGroup14 (DHGroup2048)、DHGroup2、DHGroup1、無  |
 | IPsec 加密 | GCMAES256、GCMAES192、GCMAES128、AES256、AES192、AES128、DES3、DES、無      |
 | IPsec 完整性  | GCMAES256、GCMAES192、GCMAES128、SHA256、SHA1、MD5                            |
 | PFS 群組        | PFS24、ECP384、ECP256、PFS2048、PFS2、PFS1、無                              |
@@ -100,11 +100,14 @@ SA 存留期只需要在本機指定，不需要相符。
 ### <a name="do-i-need-to-specify-the-same-policy-on-both-vnet-to-vnet-connection-resources"></a>VNet 對 VNet 連線的兩個資源是否需要指定相同的原則？
 是。 VNet 對 VNet 通道在 Azure 中包含兩個連線資源，這兩個資源各自應對一個方向。 確保這兩個連線資源具有相同的原則，否則系統不會建立 VNet 對 VNet 連線。
 
+### <a name="what-is-the-default-dpd-timeout-value-can-i-specify-a-different-dpd-timeout"></a>什麼是預設的 DPD 逾時值？ 我可以指定不同的 DPD 逾時嗎？
+預設DPD 逾時值為 45 秒。 您可以在每個 IPsec 或 VNet 對 VNet 連線上指定不同的 DPD 逾時值，介於 9 秒到 3600 秒之間。
+
 ### <a name="does-custom-ipsecike-policy-work-on-expressroute-connection"></a>自訂 IPsec/IKE 原則是否適用於 ExpressRoute 連線？
 否。 IPsec/IKE 原則只適用於透過 Azure VPN 閘道的 S2S VPN 連線和 VNet 對 VNet 連線。
 
 ### <a name="how-do-i-create-connections-with-ikev1-or-ikev2-protocol-type"></a>如何建立與 IKEv1 或 IKEv2 通訊協定類型的連線？
-除了基本 SKU、標準 SKU 和其他[舊版 sku](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-skus-legacy#gwsku)以外，您可以在所有 RouteBased VPN 類型 sku 上建立 IKEv1 連接。 建立連線時，您可以指定 IKEv1 或 IKEv2 的連線通訊協定類型。 如果您未指定連線通訊協定類型，即會在適用的情況下，使用 IKEv2 作為預設選項。 如需詳細資訊，請參閱 [PowerShell Cmdlet](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworkgatewayconnection?) 文件。 如需 SKU 類型與 IKEv1/IKEv2 支援，請參閱[將閘道連線至設定原則的 VPN 裝置](../articles/vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md) (機器翻譯)。
+除了基本 SKU、標準 SKU 和其他[舊版 SKU](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-skus-legacy#gwsku) 以外，您可以在所有 RouteBased VPN 類型 SKU 上建立 IKEv1 連線。 建立連線時，您可以指定 IKEv1 或 IKEv2 的連線通訊協定類型。 如果您未指定連線通訊協定類型，即會在適用的情況下，使用 IKEv2 作為預設選項。 如需詳細資訊，請參閱 [PowerShell Cmdlet](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworkgatewayconnection?) 文件。 如需 SKU 類型與 IKEv1/IKEv2 支援，請參閱[將閘道連線至設定原則的 VPN 裝置](../articles/vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md) (機器翻譯)。
 
 ### <a name="is-transit-between-between-ikev1-and-ikev2-connections-allowed"></a>在 IKEv1 與 IKEv2 連線之間，是否可以進行傳輸？
 是。 支援在 IKEv1 與 IKEv2 連線之間進行傳輸。

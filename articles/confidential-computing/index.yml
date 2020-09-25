@@ -1,0 +1,115 @@
+### YamlMime:Landing
+title: Azure 機密運算文件
+summary: Azure 機密運算提供的解決方案可讓您在雲端處理敏感性資料時加以隔離。 了解如何透過閱讀概念、完成教學課程和使用程式碼範例，根據機密運算基礎結構來建立及部署應用程式。 使用以機密運算為基礎建置的 Microsoft 產品，盡可能保護您的工作負載。
+metadata:
+  title: Azure 機密運算
+  description: 了解 Azure 機密運算如何保護使用中的資料，並了解在雲端中組建機密工作負載的方式。
+  ms.service: virtual-machines
+  ms.subservice: workloads
+  ms.topic: landing-page
+  author: JBCook
+  ms.author: jencook
+  ms.date: 09/22/2020
+  ms.openlocfilehash: abe5104ff5425103baaca72efdc960a34ffc6a73
+  ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 09/22/2020
+  ms.locfileid: "90991963"
+landingContent:
+- title: 關於 Azure 機密運算
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什麼是 Azure 機密運算？
+      url: overview.md
+    - text: 案例
+      url: use-cases-scenarios.md
+  - linkListType: concept
+    links:
+    - text: 虛擬機器
+      url: confidential-computing-enclaves.md
+    - text: AKS 上的容器運算
+      url: confidential-containers.md
+    - text: 應用程式開發
+      url: application-development.md
+    - text: 證明
+      url: attestation.md
+  - linkListType: reference
+    links:
+    - text: Intel SGX 虛擬機器
+      url: ../virtual-machines/dcv2-series.md
+- title: 虛擬機器
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Intel SGX 虛擬機器
+      url: confidential-computing-enclaves.md
+  - linkListType: concept
+    links:
+    - text: 虛擬機器上的解決方案
+      url: virtual-machine-solutions.md
+  - linkListType: quickstart
+    links:
+    - text: 在 Azure 入口網站中部署
+      url: quick-create-portal.md
+    - text: 在 Azure Marketplace 中部署
+      url: quick-create-marketplace.md
+  - linkListType: reference
+    links:
+    - text: 機密運算虛擬機器常見問題
+      url: faq.md
+    - text: 定價
+      url: https://azure.microsoft.com/pricing/details/virtual-machines/linux/#DC1s-C8s%20v2
+    - text: 可用性
+      url: https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines
+- title: 容器計算
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Azure Kubernetes Service (AKS) 機密運算節點 (預覽)
+      url: confidential-nodes-aks-overview.md
+  - linkListType: concept
+    links:
+    - text: 機密容器
+      url: confidential-containers.md
+    - text: 記憶體保護區感知容器
+      url: enclave-aware-containers.md
+    - text: 進程外證明
+      url: confidential-nodes-out-of-proc-attestation.md
+  - linkListType: quickstart
+    links:
+    - text: AKS 上的簡單記憶體保護區容器應用程式
+      url: confidential-nodes-aks-get-started.md
+  - linkListType: sample
+    links:
+    - text: 機密容器範例 (在 SGX 上未修改的容器)
+      url: https://github.com/Azure-Samples/confidential-container-samples
+    - text: 記憶體保護區感知容器範例
+      url: https://github.com/Azure-Samples/enclave-aware-container-samples
+  - linkListType: reference
+    links:
+    - text: AKS 上的機密節點常見問題
+      url: confidential-nodes-aks-overview.md
+    - text: 關於 Azure Kubernetes Service (AKS)
+      url: ../aks/intro-kubernetes.md
+- title: 機密雲端服務
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Microsoft Azure 證明
+      url: ../attestation/overview.md
+    - text: 機密推斷 ONNX 執行時間
+      url: https://aka.ms/confidentialinference
+- title: 以機密運算組建
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: AKS 上的機密醫療保健示範
+      url: https://github.com/Azure-Samples/confidential-container-samples
+    - text: 在 AKS 上使用開啟記憶體保護區證明相互 TLS
+      url: https://github.com/Azure-Samples/enclave-aware-container-samples
+  - linkListType: reference
+    links:
+    - text: 開啟記憶體保護區 (OE) SDK
+      url: https://aka.ms/oesdkGitHubRepo

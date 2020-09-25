@@ -132,6 +132,8 @@
       items:
         - name: 調整 AKS 叢集
           href: scale-cluster.md
+        - name: 停止 AKS 叢集 (預覽)
+          href: start-stop-cluster.md
         - name: 升級 AKS 叢集
           href: upgrade-cluster.md
         - name: 使用執行時間 SLA
@@ -307,8 +309,10 @@
           href: /virtualization/windowscontainers/manage-docker/optimize-windows-dockerfile?context=/azure/aks/context/aks-context
     - name: 開發及執行應用程式
       items:
-        - name: 將 Visual Studio Code 和 Kubernetes 與本機處理序搭配使用 (預覽)
-          href: 'https://code.visualstudio.com/docs/containers/local-process-kubernetes'
+        - name: 將橋接至 Kubernetes 與 Visual Studio Code 搭配使用
+          href: 'https://code.visualstudio.com/docs/containers/bridge-to-kubernetes'
+        - name: 將橋接至 Kubernetes 與 Visual Studio 搭配使用
+          href: /visualstudio/containers/bridge-to-kubernetes
         - name: 使用 Helm 安裝現有的應用程式
           href: kubernetes-helm.md
         - name: 使用 OpenFaaS
