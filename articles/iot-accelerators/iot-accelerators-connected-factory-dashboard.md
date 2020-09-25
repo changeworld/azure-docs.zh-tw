@@ -1,6 +1,6 @@
 ---
 title: 使用連線的處理站儀表板 - Azure | Microsoft Docs
-description: 本文說明如何使用連線處理站儀表板的功能來監視和管理您的工業 IoT 裝置。
+description: 本文說明如何使用連線處理站儀表板的功能來監視和管理您的產業 IoT 裝置。
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -8,18 +8,21 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 07/10/2018
 ms.author: dobett
-ms.openlocfilehash: b53177d578768428665891704269e63bd8edb09e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 797bd97940aa49db87b4ca4dd96f140208cd69b6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73820168"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91261867"
 ---
 # <a name="use-features-in-the-connected-factory-solution-accelerator-dashboard"></a>使用連線處理站儀表板的功能
 
+> [!IMPORTANT]
+> 當我們更新這篇文章時，請參閱 [Azure 產業 IoT](https://azure.github.io/Industrial-IoT/) 的最新內容。
+
 [部署雲端式解決方案來管理我的工業 IoT 裝置](quickstart-connected-factory-deploy.md)快速入門會示範如何瀏覽儀表板以及回應警示。 本使用方法指南會示範一些額外的儀表板功能，可用來監視及管理您的工業 IoT 裝置。
 
-## <a name="apply-filters"></a>套用篩選
+## <a name="apply-filters"></a>套用篩選條件
 
 您可以篩選儀表板上顯示的資訊，例如**處理站位置**面板或**警示**面板：
 
@@ -33,7 +36,7 @@ ms.locfileid: "73820168"
 
 1. 然後會套用篩選條件。 額外的漏斗圖示表示已套用篩選條件：
 
-    [![已套用連線處理站解決方案加速器篩選](./media/iot-accelerators-connected-factory-dashboard/filterapplied-inline.png)](./media/iot-accelerators-connected-factory-dashboard/filterapplied-expanded.png#lightbox)
+    [![已套用連線的工廠解決方案加速器篩選](./media/iot-accelerators-connected-factory-dashboard/filterapplied-inline.png)](./media/iot-accelerators-connected-factory-dashboard/filterapplied-expanded.png#lightbox)
 
     > [!NOTE]
     > 使用中的篩選條件不會影響已顯示的 OEE 和 KPI 值，它只會篩選清單內容。
@@ -56,7 +59,7 @@ ms.locfileid: "73820168"
 
 1. 若要展開伺服器樹狀目錄中的任何節點，請按一下該節點。 正在發佈遙測的節點旁邊有勾號：
 
-    [![連線的處理站解決方案加速器伺服器樹狀目錄](./media/iot-accelerators-connected-factory-dashboard/servertree-inline.png)](./media/iot-accelerators-connected-factory-dashboard/servertree-expanded.png#lightbox)
+    [![連線的處理站解決方案加速器伺服器樹狀結構](./media/iot-accelerators-connected-factory-dashboard/servertree-inline.png)](./media/iot-accelerators-connected-factory-dashboard/servertree-expanded.png#lightbox)
 
 1. 以滑鼠右鍵按一下要讀取、寫入、發佈或呼叫該節點的項目。 您可使用的動作取決於您的節點權限和屬性。 讀取選項會顯示一個內容面板，以顯示特定節點的值。 寫入選項會顯示一個內容面板，您可以在此輸入新值。 呼叫選項會顯示一個節點，您可以在此輸入呼叫的參數。
 
@@ -66,13 +69,13 @@ ms.locfileid: "73820168"
 
 1. 瀏覽至 OPC UA 伺服器瀏覽器樹狀目錄中您想要發佈的節點。
 
-1. 以滑鼠右鍵按一下節點。 按一下 [**發佈**]：
+1. 以滑鼠右鍵按一下節點。 按一下 [ **發行**]：
 
     [![連線的處理站解決方案加速器發佈節點](./media/iot-accelerators-connected-factory-dashboard/publishnode-inline.png)](./media/iot-accelerators-connected-factory-dashboard/publishnode-expanded.png#lightbox)
 
 1. 隨即顯示一個內容面板，告訴您發佈成功。 此節點會出現在站區層級檢視中，且旁邊有核取記號：
 
-    [![連線的工廠解決方案加速器發佈成功](./media/iot-accelerators-connected-factory-dashboard/publishsuccess-inline.png)](./media/iot-accelerators-connected-factory-dashboard/publishsuccess-expanded.png#lightbox)
+    [![連線的處理站解決方案加速器發佈成功](./media/iot-accelerators-connected-factory-dashboard/publishsuccess-inline.png)](./media/iot-accelerators-connected-factory-dashboard/publishsuccess-expanded.png#lightbox)
 
 ## <a name="command-and-control"></a>命令與控制
 

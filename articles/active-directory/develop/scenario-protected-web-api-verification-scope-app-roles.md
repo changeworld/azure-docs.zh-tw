@@ -1,7 +1,7 @@
 ---
 title: 驗證受保護 Web API 的範圍和應用程式角色 | Azure
 titleSuffix: Microsoft identity platform
-description: 了解如何建立受保護的 Web API，並設定應用程式的程式碼。
+description: 確認應用程式只會代表具有正確範圍的應用程式，以及具有正確應用程式角色的背景程式應用程式呼叫 API。
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: c3cf8bfd2810e9c26a6f65c50c1a22baeec892af
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 1e5c8b788f1abbfbd46c4dfe6c7bb9d87adcee86
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855465"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91257261"
 ---
 # <a name="protected-web-api-verify-scopes-and-app-roles"></a>受保護的 Web API：驗證範圍和應用程式角色
 

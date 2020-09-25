@@ -11,31 +11,26 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 60e4ca80faa2c8787a13d87ab06cad9243299e50
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: dc0aee2e6c1b06850ffd0385626955a9798e7aeb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89291940"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91257311"
 ---
 # <a name="scenario-single-page-application"></a>案例：單一頁面應用程式
 
 瞭解建立單一頁面應用程式 (SPA) 所需的一切。
 
-## <a name="prerequisites"></a>必要條件
-
-[!INCLUDE [Prerequisites](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
-
 ## <a name="getting-started"></a>開始使用
 
-您可以遵循 JavaScript SPA 快速入門來建立您的第一個應用程式：
+如果您還沒有這麼做，請完成 JavaScript SPA 快速入門以建立您的第一個應用程式：
 
-> [!div class="nextstepaction"]
-> [快速入門：單一頁面應用程式](./quickstart-v2-javascript.md)
+[快速入門：單一頁面應用程式](./quickstart-v2-javascript.md)
 
 ## <a name="overview"></a>概觀
 
-許多新式 web 應用程式都是以用戶端的單一頁面應用程式來建立。 開發人員使用 JavaScript 或 SPA 架構（例如角度、Vue 和回應）來撰寫它們。 這些應用程式會在網頁瀏覽器上執行，而且其驗證特性與傳統伺服器端 web 應用程式不同。 
+許多新式 web 應用程式都是以用戶端的單一頁面應用程式來建立。 開發人員使用 JavaScript 或 SPA 架構（例如角度、Vue 和回應）來撰寫它們。 這些應用程式會在網頁瀏覽器上執行，而且其驗證特性與傳統伺服器端 web 應用程式不同。
 
 Microsoft 身分識別平臺提供 **兩個** 選項，可讓單一頁面應用程式登入使用者，並取得權杖來存取後端服務或 web api：
 
@@ -57,7 +52,11 @@ Microsoft 身分識別平臺提供 **兩個** 選項，可讓單一頁面應用�
 * 使用已註冊應用程式屬性的應用程式設定，例如應用程式識別碼。
 * 使用適用于 JavaScript 的 Microsoft 驗證程式庫 ( # A0) 來進行登入和取得權杖的驗證流程。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="recommended-reading"></a>建議閱讀資料
+
+[!INCLUDE [recommended-topics](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
+
+## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
 > [應用程式註冊](scenario-spa-app-registration.md)

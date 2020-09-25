@@ -1,7 +1,7 @@
 ---
-title: 為呼叫 web Api 的 Web API 取得權杖 |Azure
+title: 取得可呼叫 web Api 的 web API 權杖 |蔚藍
 titleSuffix: Microsoft identity platform
-description: 瞭解如何建立 Web API，以呼叫需要取得應用程式權杖的 web Api。
+description: 瞭解如何建立 web API，以呼叫需要取得應用程式權杖的 web Api。
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -12,22 +12,25 @@ ms.workload: identity
 ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 7e0701cc5a9bb14800a48e2281dba1eb6ea0cf72
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ab0b74ffbcd8167613c6a8470e2f9102566edc60
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87026453"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91257226"
 ---
-# <a name="a-web-api-that-calls-web-apis-acquire-a-token-for-the-app"></a>呼叫 web Api 的 Web API：取得應用程式的權杖
+# <a name="a-web-api-that-calls-web-apis-acquire-a-token-for-the-app"></a>呼叫 web Api 的 web API：取得應用程式的權杖
 
-建立用戶端應用程式物件之後，請使用它來取得可用於呼叫 Web API 的權杖。
+當您建立用戶端應用程式物件之後，請使用它來取得權杖，以供您用來呼叫 web API。
 
 ## <a name="code-in-the-controller"></a>控制器中的程式碼
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-以下是使用在 API 控制器的動作中呼叫的 Microsoft 程式碼範例。 它會呼叫名為*todolist*的下游 API。 若要取得權杖以呼叫下游 API，您可以在控制器的函式中，透過相依性 `ITokenAcquisition` 插入來插入服務（如果您使用 Blazor，則會使用您的頁面處理常式），並將它用於控制器動作中，取得使用者的權杖（ `GetAccessTokenForUserAsync` ），或在背景工作案例的情況下，為應用程式本身（ `GetAccessTokenForAppAsync` ）。
+*Web.config* 會新增擴充方法，以提供用來呼叫 Microsoft Graph 或下游 Web API 的便利服務。 這些方法會在 [呼叫 Web api 的 WEB api 中詳細說明：呼叫 API](scenario-web-api-call-api-call-api.md)。 使用這些 helper 方法時，您不需要手動取得權杖。
+
+但是，如果您想要以手動方式取得權杖，下列程式碼將示範如何在 API 控制器中使用*web.config。* 它會呼叫名為 *todolist*的下游 API。
+若要取得權杖來呼叫下游 API，您可以在控制器的函式中將相依性 `ITokenAcquisition` 插入插入服務 (或您的頁面函式（如果您使用 Blazor) ），並在您的控制器動作中使用它，為使用者 (`GetAccessTokenForUserAsync`) 或應用程式本身取得權杖 (`GetAccessTokenForAppAsync` 在背景程式案例的情況下) 。
 
 ```csharp
 [Authorize]
@@ -58,7 +61,7 @@ public class MyApiController : Controller
 }
 ```
 
-如需方法的詳細資訊 `callTodoListService` ，請參閱[呼叫 web api 的 Web API：呼叫 API](scenario-web-api-call-api-call-api.md)。
+如需此方法的詳細資訊 `callTodoListService` ，請參閱  [呼叫 web api 的 web Api：呼叫 API](scenario-web-api-call-api-call-api.md)。
 
 # <a name="java"></a>[Java](#tab/java)
 以下是在 API 控制器的動作中呼叫的程式碼範例。 它會呼叫下游 API Microsoft Graph。
@@ -83,11 +86,11 @@ public class ApiController {
 
 # <a name="python"></a>[Python](#tab/python)
 
-Python Web API 必須使用一些中介軟體來驗證從用戶端收到的持有人權杖。 然後，Web API 可以藉由呼叫方法，使用 MSAL Python 程式庫取得下游 API 的存取權杖 [`acquire_token_on_behalf_of`](https://msal-python.readthedocs.io/en/latest/?badge=latest#msal.ConfidentialClientApplication.acquire_token_on_behalf_of) 。 尚未提供使用 MSAL Python 來示範此流程的範例。
+Python web API 需要使用中介軟體來驗證從用戶端收到的持有人權杖。 然後，web API 就可以藉由呼叫方法，使用 MSAL Python 程式庫來取得下游 API 的存取權杖 [`acquire_token_on_behalf_of`](https://msal-python.readthedocs.io/en/latest/?badge=latest#msal.ConfidentialClientApplication.acquire_token_on_behalf_of) 。 使用 MSAL Python 示範此流程的範例還無法使用。
 
 ---
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [呼叫 web Api 的 Web API：呼叫 API](scenario-web-api-call-api-call-api.md)
+> [呼叫 web api 的 web API：呼叫 API](scenario-web-api-call-api-call-api.md)

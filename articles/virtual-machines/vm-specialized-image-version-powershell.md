@@ -1,6 +1,6 @@
 ---
 title: 從特製化映射建立 VM
-description: 使用共用映射資源庫中的特製化映射來建立 VM。
+description: 使用共用映射庫中的特製化映射來建立 VM。
 author: cynthn
 ms.service: virtual-machines
 ms.subservice: imaging
@@ -9,22 +9,22 @@ ms.topic: how-to
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 44fbbbdb1c36f74a4131d4e5a82de6ef058381f8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 547712d16cb6a7504d1a875b6155a587746d86bf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86508743"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91279190"
 ---
-# <a name="create-a-vm-using-a-specialized-image"></a>使用特製化映射建立 VM 
+# <a name="create-a-vm-using-a-specialized-image"></a>使用特製化映射來建立 VM 
 
-從儲存在共用映射資源庫中的特製化映射版本建立 VM。 如果想要使用一般化映射版本建立 VM，請參閱[使用一般化映射建立 vm](vm-generalized-image-version-powershell.md)。
+從儲存在共用映射庫中的特製化映射版本建立 VM。 如果您想要使用一般化映射版本建立 VM，請參閱 [使用一般化映射建立 vm](vm-generalized-image-version-powershell.md)。
 
-一旦有了特製化映射版本，您就可以建立一或多個新的 Vm。 使用 [New-AzVM](/powershell/module/az.compute/new-azvm) Cmdlet。 
+有了特製化映射版本之後，您就可以建立一或多個新的 Vm。 使用 [New-AzVM](/powershell/module/az.compute/new-azvm) Cmdlet。 
 
-在此範例中，我們會使用映射定義識別碼，以確保您的新 VM 會使用最新版本的映射。 您也可以使用的映射版本識別碼，來使用特定版本 `Set-AzVMSourceImage -Id` 。 例如，若要使用 image *1.0.0*版的型別： `Set-AzVMSourceImage -Id "/subscriptions/<subscription ID where the gallery is located>/resourceGroups/myGalleryRG/providers/Microsoft.Compute/galleries/myGallery/images/myImageDefinition/versions/1.0.0"` 。 
+在此範例中，我們使用映射定義識別碼，以確保新的 VM 將會使用最新的映射版本。 您也可以使用的映射版本識別碼來使用特定版本 `Set-AzVMSourceImage -Id` 。 例如，若要使用映射 *1.0.0* 版類型： `Set-AzVMSourceImage -Id "/subscriptions/<subscription ID where the gallery is located>/resourceGroups/myGalleryRG/providers/Microsoft.Compute/galleries/myGallery/images/myImageDefinition/versions/1.0.0"` 。 
 
-請注意，使用特定映射版本表示自動化可能會失敗，因為該特定映射版本無法使用，因為它已從區域中刪除或移除。 除非需要特定映射版本，否則建議使用映射定義識別碼來建立新的 VM。
+請注意，使用特定映射版本表示如果無法使用特定映射版本，則自動化可能會失敗，因為它已從區域中刪除或移除。 除非需要特定映射版本，否則建議使用映射定義識別碼來建立新的 VM。
 
 視需要取代此範例中的資源名稱。 
 
@@ -104,7 +104,7 @@ New-AzVM `
 ```
 
 ## <a name="attach-the-data-disk"></a>連接資料磁碟
-如果您的映射包含資料磁片，您需要將資料磁片連結至 VM。
+如果您的映射包含資料磁片，您需要將資料磁片連接至 VM。
 
 ```azurepowershell-interactive
 
@@ -124,7 +124,7 @@ Add-AzVMDataDisk `
 
 
 ## <a name="next-steps"></a>後續步驟
-[Azure 映射產生器（預覽）](./linux/image-builder-overview.md)可協助自動建立映射版本，您甚至可以使用它來更新和[建立現有映射版本的新映射版本](./linux/image-builder-gallery-update-image-version.md)。 
+[Azure 映射產生器 (預覽版) ](./linux/image-builder-overview.md) 可協助自動建立映射版本，您甚至可以使用它來更新和 [建立現有映射版本的新映射版本](./linux/image-builder-gallery-update-image-version.md)。 
 
 您也可以使用範本建立共用映像庫資源。 有數個 Azure 快速入門範本可以使用： 
 
@@ -133,4 +133,4 @@ Add-AzVMDataDisk `
 - [在共用映像資源庫中建立映像版本](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
 - [從映像版本建立 VM](https://azure.microsoft.com/resources/templates/101-vm-from-sig/)
 
-如需共用映像資源庫的詳細資訊，請參閱[概觀](./windows/shared-image-galleries.md)。 若遇到任何問題，請參閱[針對共用映像資源庫問題進行疑難排解](./windows/troubleshooting-shared-images.md)。
+如需共用映像資源庫的詳細資訊，請參閱[概觀](./windows/shared-image-galleries.md)。 若遇到任何問題，請參閱[針對共用映像資源庫問題進行疑難排解](troubleshooting-shared-images.md)。

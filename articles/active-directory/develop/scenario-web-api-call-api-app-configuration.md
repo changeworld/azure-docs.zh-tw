@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 08/05/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: e9faea3462ae953e474b5053b651808b03f07c23
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: c1c882694f6ae3d8a3b217ed5e7e3d6050189135
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855461"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91257177"
 ---
 # <a name="a-web-api-that-calls-web-apis-code-configuration"></a>呼叫 web Api 的 web API：程式碼設定
 
@@ -27,9 +27,18 @@ ms.locfileid: "88855461"
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
+## <a name="microsoftidentityweb"></a>Web.config
+
+Microsoft 建議您在開發 ASP.NET Core 受保護的 API 來呼叫下游 Web Api 時，使用 [Web.config](https://www.nuget.org/packages/Microsoft.Identity.Web) NuGet 套件。 請參閱 [受保護的 WEB API：程式碼設定 |](scenario-protected-web-api-app-configuration.md#microsoftidentityweb) 在 WEB API 的內容中快速呈現該程式庫的資訊。
+
 ## <a name="client-secrets-or-client-certificates"></a>用戶端密碼或用戶端憑證
 
-假設您的 web API 現在呼叫下游 web API，您必須在檔案的 *appsettings.js* 中提供用戶端密碼或用戶端憑證。
+假設您的 web API 現在呼叫下游 web API，您必須在檔案的 *appsettings.js* 中提供用戶端密碼或用戶端憑證。 您也可以新增一個區段，以指定：
+
+- 下游 web API 的 URL
+- 呼叫 API 所需的範圍
+
+在下列範例中， `GraphBeta` 區段會指定這些設定。
 
 ```JSON
 {
@@ -37,12 +46,16 @@ ms.locfileid: "88855461"
     "Instance": "https://login.microsoftonline.com/",
     "ClientId": "[Client_id-of-web-api-eg-2ec40e65-ba09-4853-bcde-bcb60029e596]",
     "TenantId": "common"
-  
+
    // To call an API
    "ClientSecret": "[Copy the client secret added to the app from the Azure portal]",
    "ClientCertificates": [
   ]
- }
+ },
+ "GraphBeta": {
+    "BaseUrl": "https://graph.microsoft.com/beta",
+    "Scopes": "user.read"
+    }
 }
 ```
 
@@ -54,7 +67,7 @@ ms.locfileid: "88855461"
     "Instance": "https://login.microsoftonline.com/",
     "ClientId": "[Client_id-of-web-api-eg-2ec40e65-ba09-4853-bcde-bcb60029e596]",
     "TenantId": "common"
-  
+
    // To call an API
    "ClientCertificates": [
       {
@@ -62,8 +75,12 @@ ms.locfileid: "88855461"
         "KeyVaultUrl": "https://msidentitywebsamples.vault.azure.net",
         "KeyVaultCertificateName": "MicrosoftIdentitySamplesCert"
       }
-  ]
- }
+   ]
+  },
+  "GraphBeta": {
+    "BaseUrl": "https://graph.microsoft.com/beta",
+    "Scopes": "user.read"
+  }
 }
 ```
 
@@ -71,28 +88,88 @@ Web.config 提供數種方式來描述憑證（透過設定或程式碼）。 �
 
 ## <a name="startupcs"></a>Startup.cs
 
-使用 Web.config，如果您想要讓 web API 呼叫下游 Web Api，請在 `.EnableTokenAcquisitionToCallDownstreamApi()` 之後新增該行 `.AddMicrosoftIdentityWebApi(Configuration)` ，然後選擇權杖快取執行，例如 `.AddInMemoryTokenCaches()` ，在 *Startup.cs*中：
+您的 web API 將需要取得下游 API 的權杖。 您可以在後面加上一行來指定它 `.EnableTokenAcquisitionToCallDownstreamApi()` `.AddMicrosoftIdentityWebApi(Configuration)` 。 這行程式碼 `ITokenAcquisition` 會顯示您可以在控制器/頁面動作中使用的服務。 不過，您會在接下來的兩個專案點中看到，您甚至可以更輕鬆地完成。 您也需要選擇權杖快取執行，例如 `.AddInMemoryTokenCaches()` ，在 *Startup.cs*中：
 
 ```csharp
 using Microsoft.Identity.Web;
 
 public class Startup
 {
-  ...
+  // ...
   public void ConfigureServices(IServiceCollection services)
   {
-   // ...
-    services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-            .AddMicrosoftIdentityWebApi(Configuration, "AzureAd")
-                .EnableTokenAcquisitionToCallDownstreamApi()
-                .AddInMemoryTokenCaches();
   // ...
+  services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+          .AddMicrosoftIdentityWebApi(Configuration, Configuration.GetSection("AzureAd"))
+            .EnableTokenAcquisitionToCallDownstreamApi()
+            .AddInMemoryTokenCaches();
+   // ...
   }
   // ...
 }
 ```
 
-如同 web 應用程式，您可以選擇各種權杖快取執行。 如需詳細資訊，請參閱 GitHub 上的 [Microsoft 身分識別 web wiki-權杖](https://aka.ms/ms-id-web/token-cache-serialization) 快取序列化。
+如果您不想要自行取得權杖，則 *Microsoft* 會提供兩種機制，可從另一個 API 呼叫下游 Web API。 您選擇的選項取決於您是否要呼叫 Microsoft Graph 或其他 API。
+
+### <a name="option-1-call-microsoft-graph"></a>選項1：呼叫 Microsoft Graph
+
+如果您想要呼叫 Microsoft Graph，則在您的 API 動作中，您可以直接使用 `GraphServiceClient` MICROSOFT GRAPH SDK) 所公開的 (。 若要公開 Microsoft Graph：
+
+1. 將 [>microsoft.azure.webjobs.extensions.microsoftgraph](https://www.nuget.org/packages/Microsoft.Identity.Web.MicrosoftGraph) NuGet 套件新增至您的專案。
+1. `.AddMicrosoftGraph()` `.EnableTokenAcquisitionToCallDownstreamApi()` 在*Startup.cs*檔案中新增。 `.AddMicrosoftGraph()` 有數個覆寫。 使用接受設定區段作為參數的覆寫，程式碼就會變成：
+
+```csharp
+using Microsoft.Identity.Web;
+
+public class Startup
+{
+  // ...
+  public void ConfigureServices(IServiceCollection services)
+  {
+  // ...
+  services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+          .AddMicrosoftIdentityWebApi(Configuration, Configuration.GetSection("AzureAd"))
+            .EnableTokenAcquisitionToCallDownstreamApi()
+               .AddMicrosoftGraph(Configuration.GetSection("GraphBeta"))
+            .AddInMemoryTokenCaches();
+   // ...
+  }
+  // ...
+}
+```
+
+### <a name="option-2-call-a-downstream-web-api-other-than-microsoft-graph"></a>選項2：呼叫 Microsoft Graph 以外的下游 web API
+
+為了呼叫 Microsoft Graph 以外的下游 *API，我們會提供* `.AddDownstreamWebApi()` 要求權杖的權杖並呼叫下游 Web api。
+
+```csharp
+using Microsoft.Identity.Web;
+
+public class Startup
+{
+  // ...
+  public void ConfigureServices(IServiceCollection services)
+  {
+  // ...
+  services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+          .AddMicrosoftIdentityWebApi(Configuration, "AzureAd")
+            .EnableTokenAcquisitionToCallDownstreamApi()
+               .AddDownstreamWebApi("MyApi", Configuration.GetSection("GraphBeta"))
+            .AddInMemoryTokenCaches();
+   // ...
+  }
+  // ...
+}
+```
+
+如同 web 應用程式，您可以選擇各種權杖快取執行。 如需詳細資訊，請參閱 GitHub 上的 [Microsoft 身分識別 web-權杖](https://aka.ms/ms-id-web/token-cache-serialization) 快取序列化。
+
+下圖顯示 Startup.cs 檔案的各種可能性 *，以及其*對*Startup.cs*檔案的影響：
+
+:::image type="content" source="media/scenarios/microsoft-identity-web-startup-cs.png" alt-text="建立 web api 時，您可以選擇呼叫下游 api 和權杖快取執行。":::
+
+> [!NOTE]
+> 若要完全了解此處的程式碼範例，則需要熟悉 [ASP.NET Core 基本概念](/aspnet/core/fundamentals) (機器翻譯)，特別是[相依性插入](/aspnet/core/fundamentals/dependency-injection)和[選項](/aspnet/core/fundamentals/configuration/options)。
 
 # <a name="java"></a>[Java](#tab/java)
 

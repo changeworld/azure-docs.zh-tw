@@ -9,12 +9,12 @@ metadata:
   author: laurenhughes
   ms.author: lahugh
   ms.date: 07/21/2020
-  ms.openlocfilehash: 35138e4e5569ddfa46cb60c742e7ae0b3868c8cd
-  ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+  ms.openlocfilehash: 98d96c36e8ec801c2a8a5a87d0075f2d9b57bd98
+  ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 08/04/2020
-  ms.locfileid: "87563325"
+  ms.lasthandoff: 09/22/2020
+  ms.locfileid: "90984962"
 landingContent:
 - title: 關於 Azure Kubernetes Service (AKS)
   linkLists:
@@ -50,14 +50,14 @@ landingContent:
       url: kubernetes-walkthrough-portal.md
     - text: Resource Manager 範本
       url: kubernetes-walkthrough-rm-template.md
-- title: 使用具有 Kubernetes 的本機處理序開發和偵錯應用程式
+- title: 使用橋接至 Kubernetes 部署及偵錯應用程式
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: 將 Visual Studio Code 和 Kubernetes 與本機處理序搭配使用 (預覽)
-      url: https://code.visualstudio.com/docs/containers/local-process-kubernetes
-    - text: 將 Visual Studio 和 Kubernetes 與本機處理序搭配使用 (預覽)
-      url: /visualstudio/containers/local-process-kubernetes
+    - text: 將橋接至 Kubernetes 與 Visual Studio Code 搭配使用
+      url: https://code.visualstudio.com/docs/containers/bridge-to-kubernetes
+    - text: 將橋接至 Kubernetes 與 Visual Studio 搭配使用
+      url: /visualstudio/containers/bridge-to-kubernetes
 - title: 部署、管理及更新應用程式
   linkLists:
   - linkListType: tutorial

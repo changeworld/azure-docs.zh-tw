@@ -3,29 +3,29 @@ title: 死信和重試原則-Azure 事件方格
 description: 說明如何為事件方格自訂事件傳遞選項。 設定無效信件目的地，然後指定要重試傳遞的時間長度。
 ms.topic: conceptual
 ms.date: 07/20/2020
-ms.openlocfilehash: 2ff1d05899fb74583489649154ffa062e857cb95
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e780ddd5c49b1a2cced10a1907d25784b0285f01
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074872"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91261799"
 ---
-# <a name="dead-letter-and-retry-policies"></a>無效信件與重試原則
+# <a name="set-dead-letter-location-and-retry-policy"></a>設定寄不出的信件位置和重試原則
 
 當建立事件訂用帳戶時，您可以自訂事件傳遞的設定。 本文說明如何設定無效信件位置及自訂重試設定。 如需這些功能的相關資訊，請參閱[事件方格訊息傳遞和重試](delivery-and-retry.md)。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 > [!NOTE]
-> 若要瞭解訊息傳遞、重試和無效信件，請參閱概念性文章：[事件方格訊息傳遞和重試]()。
+> 若要瞭解訊息傳遞、重試和無效信件，請參閱概念文章： [事件方格訊息傳遞和重試]()。
 
 ## <a name="set-dead-letter-location"></a>設定無效信件位置
 
 若要設定無效信件位置，您必須要有儲存體帳戶用以保存無法傳遞至端點的事件。 範例會取得現有儲存體帳戶的資源識別碼。 它們會建立事件訂閱，使用該儲存體帳戶中的容器作為無效信件端點。
 
 > [!NOTE]
-> - 在執行本文中的命令之前，請先在儲存體中建立儲存體帳戶和 blob 容器。
-> - 事件方格服務會在此容器中建立 blob。 Blob 的名稱會有事件方格訂用帳戶的名稱，並以大寫顯示所有字母。 例如，如果訂用帳戶的名稱是「我的 Blob 訂閱」，則無效信件 blob 的名稱將會有「我的 BLOB 訂閱」（myblobcontainer/「我的 BLOB-訂用帳戶/2019/8/8/5/111111111-1111-1111-1111-111111111111.json）。 此行為是為了防止在 Azure 服務之間進行處理時的差異。
+> - 執行本文中的命令之前，請先在儲存體中建立儲存體帳戶和 blob 容器。
+> - 事件方格服務會在此容器中建立 blob。 Blob 的名稱會有事件方格訂用帳戶的名稱，而且所有字母都是大寫。 例如，如果訂用帳戶的名稱是「我的 Blob 訂用帳戶」，則無效信件 blob 的名稱在) 上將會有我的 BLOB 訂用帳戶 (myblobcontainer/MY BLOB-訂用帳戶/2019/8/8/5/111111111-1111-1111-1111-111111111111.js。 此行為是為了防止 Azure 服務之間的大小寫處理有所差異。
 
 
 ### <a name="azure-cli"></a>Azure CLI
@@ -99,7 +99,7 @@ az eventgrid event-subscription create \
 ```
 
 > [!NOTE]
-> 如果您同時設定 `event-ttl` 和 `max-deliver-attempts`，事件方格就會使用前者作為到期條件，來判斷何時停止事件傳遞。 例如，如果您將30分鐘設定為存留時間（TTL）和10個最大傳遞嘗試。 當未在30分鐘後傳遞事件（或）未在嘗試10次之後傳遞時（以先發生者為准），事件會是無效字母。  
+> 如果您同時設定 `event-ttl` 和 `max-deliver-attempts`，事件方格就會使用前者作為到期條件，來判斷何時停止事件傳遞。 例如，如果您將30分鐘設定為存留時間 (TTL) 和10個最大傳遞嘗試次數。 如果在30分鐘後未傳遞事件 (或在嘗試10次之後未傳遞) （以先發生者為准），事件就會是不正確字母。  
 
 ### <a name="powershell"></a>PowerShell
 
@@ -128,7 +128,7 @@ New-AzEventGridSubscription `
 ```
 
 > [!NOTE]
-> 如果您同時設定 `event-ttl` 和 `max-deliver-attempts`，事件方格就會使用前者作為到期條件，來判斷何時停止事件傳遞。 例如，如果您將30分鐘設定為存留時間（TTL）和10個最大傳遞嘗試。 當未在30分鐘後傳遞事件（或）未在嘗試10次之後傳遞時（以先發生者為准），事件會是無效字母。  
+> 如果您同時設定 `event-ttl` 和 `max-deliver-attempts`，事件方格就會使用前者作為到期條件，來判斷何時停止事件傳遞。 例如，如果您將30分鐘設定為存留時間 (TTL) 和10個最大傳遞嘗試次數。 如果在30分鐘後未傳遞事件 (或在嘗試10次之後未傳遞) （以先發生者為准），事件就會是不正確字母。  
 
 ## <a name="next-steps"></a>後續步驟
 
