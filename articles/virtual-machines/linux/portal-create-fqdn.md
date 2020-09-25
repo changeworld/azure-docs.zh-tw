@@ -1,6 +1,6 @@
 ---
 title: 在 Azure 入口網站中建立 VM 的 FQDN
-description: 了解如何在 Azure 入口網站中為基於 Resource Manager 的虛擬機器建立完整格式的網域名稱或 FQDN。
+description: 瞭解如何在 Azure 入口網站中建立 Linux 虛擬機器的完整功能變數名稱或 FQDN。
 author: cynthn
 ms.service: virtual-machines
 ms.subservice: networking
@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.date: 08/15/2018
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9ac44c8d157102a39df9c580938589862dafd0a4
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: deae22ad0c763e48df053d19beefba6054ed2767
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371884"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331466"
 ---
 # <a name="create-a-fully-qualified-domain-name-in-the-azure-portal-for-a-linux-vm"></a>在 Azure 入口網站中建立 Linux VM 的完整網域名稱
 

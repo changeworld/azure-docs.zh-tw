@@ -1,35 +1,35 @@
 ---
-title: 使用 Azure 映射產生器建立 Windows VM （預覽）
-description: 使用 Azure 映射產生器來建立 Windows VM。
+title: '使用 Azure 映射建立器建立 Windows VM (預覽版) '
+description: 使用 Azure 映射建立器建立 Windows VM。
 author: cynthn
 ms.author: cynthn
 ms.date: 05/05/2020
 ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.subservice: imaging
-ms.openlocfilehash: f0d8a37f0edc161cbd73bf7438dc1c9486c4251b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 62d80426dec6f5d63d8fa5d67d64d6aafb881110
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87027932"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320008"
 ---
-# <a name="preview-create-a-windows-vm-with-azure-image-builder"></a>預覽：使用 Azure 映射產生器建立 Windows VM
+# <a name="preview-create-a-windows-vm-with-azure-image-builder"></a>預覽：使用 Azure 映射建立器建立 Windows VM
 
-本文說明如何使用 Azure VM 映射產生器來建立自訂的 Windows 映像。 本文[中的範例會使用自](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#properties-customize)定義映射：
-- PowerShell （ScriptUri）-下載並執行[powershell 腳本](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/testPsScript.ps1)。
+本文說明如何使用 Azure VM 映射產生器來建立自訂的 Windows 映像。 本文 [中的範例會使用自](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#properties-customize) 定義自訂映射：
+- PowerShell (ScriptUri) -下載並執行 [PowerShell 腳本](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/testPsScript.ps1)。
 - Windows 重新開機-重新開機 VM。
-- PowerShell （內嵌）-執行特定的命令。 在此範例中，它會使用在 VM 上建立目錄 `mkdir c:\\buildActions` 。
-- File-從 GitHub 將檔案複製到 VM。 這個範例會將[index.md](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/exampleArtifacts/buildArtifacts/index.html)複製到 `c:\buildArtifacts\index.html` VM 上的。
-- buildTimeoutInMinutes-增加組建時間以允許執行較長的組建，預設值是240分鐘，您可以增加組建時間以允許較長的執行中組建。
+- PowerShell (內嵌) -執行特定命令。 在此範例中，它會使用在 VM 上建立目錄 `mkdir c:\\buildActions` 。
+- 將檔案從 GitHub 複製到 VM。 此範例會將 [index.md](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/exampleArtifacts/buildArtifacts/index.html) 複製到 `c:\buildArtifacts\index.html` VM 上的。
+- buildTimeoutInMinutes-增加組建時間以允許較長的執行組建，預設值為240分鐘，而您可以增加組建時間以允許較長的執行組建。
 - vmProfile-指定 vmSize 和網路屬性
 - osDiskSizeGB-您可以增加影像的大小
-- 身分識別-提供可供 Azure 映射產生器在組建期間使用的身分識別
+- 身分識別-提供 Azure 映射產生器在組建期間使用的身分識別
 
 
-您也可以指定 `buildTimeoutInMinutes` 。 預設值是240分鐘，您可以增加組建時間以允許較長的執行中組建。
+您也可以指定 `buildTimeoutInMinutes` 。 預設值為240分鐘，而您可以增加組建時間以允許較長的執行組建。
 
-我們將會使用樣本 .json 範本來設定映像。 我們使用的 json 檔案位於： [helloImageTemplateWin.js開啟](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/0_Creating_a_Custom_Windows_Managed_Image/helloImageTemplateWin.json)。 
+我們將會使用樣本 .json 範本來設定映像。 我們正在使用的 json 檔案如下： [helloImageTemplateWin.json](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/0_Creating_a_Custom_Windows_Managed_Image/helloImageTemplateWin.json)。 
 
 
 > [!IMPORTANT]
@@ -94,7 +94,7 @@ imageName=aibWinImage
 subscriptionID=<Your subscription ID>
 ```
 ## <a name="create-a-resource-group"></a>建立資源群組
-此資源群組用來儲存映射設定範本成品和映射。
+此資源群組是用來儲存映射設定範本成品和映射。
 
 
 ```azurecli-interactive
@@ -102,7 +102,7 @@ az group create -n $imageResourceGroup -l $location
 ```
 
 ## <a name="create-a-user-assigned-identity-and-set-permissions-on-the-resource-group"></a>建立使用者指派的身分識別，並在資源群組上設定權限
-影像產生器將會使用提供的[使用者身分識別](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md#user-assigned-managed-identity)，將影像插入資源群組中。 在此範例中，您將建立 Azure 角色定義，其中具有要執行發佈映射的細微動作。 然後此將角色定義指派給使用者身分識別。
+影像產生器會使用提供的 [使用者身分識別](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md#user-assigned-managed-identity) ，將映射插入資源群組中。 在此範例中，您將建立一個 Azure 角色定義，其具有執行發佈映射的細微動作。 然後此將角色定義指派給使用者身分識別。
 
 ## <a name="create-user-assigned-managed-identity-and-grant-permissions"></a>建立使用者指派的受控識別並授與許可權 
 ```bash
@@ -140,7 +140,7 @@ az role assignment create \
 
 ## <a name="download-the-image-configuration-template-example"></a>下載映射設定範本範例
 
-已為您建立參數化映射設定範本，以供您嘗試。 下載範例 json 檔案，並使用您先前設定的變數來設定它。
+已為您建立參數化映射設定範本以供您試用。 下載範例 json 檔案，並使用您先前設定的變數進行設定。
 
 ```azurecli-interactive
 curl https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/0_Creating_a_Custom_Windows_Managed_Image/helloImageTemplateWin.json -o helloImageTemplateWin.json
@@ -154,15 +154,15 @@ sed -i -e "s%<imgBuilderId>%$imgBuilderId%g" helloImageTemplateWin.json
 
 ```
 
-您可以在終端機中使用像是的文字編輯器來修改此範例 `vi` 。
+您可以使用類似的文字編輯器，在終端機中修改這個範例 `vi` 。
 
 ```azurecli-interactive
 vi helloImageTemplateWin.json
 ```
 
 > [!NOTE]
-> 針對來源映射，您必須一律[指定版本](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#image-version-failure)，而不能使用 `latest` 。
-> 如果您新增或變更將映射散發至其中的資源群組，您必須在資源群組上[設定許可權](#create-a-user-assigned-identity-and-set-permissions-on-the-resource-group)。
+> 針對來源影像，您必須一律 [指定版本](../linux/image-builder-troubleshoot.md#build--step-failed-for-image-version)，而不能使用 `latest` 。
+> 如果您新增或變更要將映射發佈至其中的資源群組，您必須在資源群組上 [設定許可權](#create-a-user-assigned-identity-and-set-permissions-on-the-resource-group) 。
  
 ## <a name="create-the-image"></a>建立映像
 
@@ -177,16 +177,16 @@ az resource create \
     -n helloImageTemplateWin01
 ```
 
-完成時，這會將成功訊息傳回至主控台，並 `Image Builder Configuration Template` 在中建立 `$imageResourceGroup` 。 如果您啟用「顯示隱藏的類型」，您可以在 [Azure 入口網站] 的資源群組中看到此資源。
+完成時，這會將成功訊息傳回主控台，並 `Image Builder Configuration Template` 在中建立 `$imageResourceGroup` 。 如果您啟用 [顯示隱藏的類型]，您可以在 Azure 入口網站的資源群組中看到此資源。
 
-在背景中，映射產生器也會在您的訂用帳戶中建立預備資源群組。 此資源群組用於映射組建。 它的格式如下：`IT_<DestinationResourceGroup>_<TemplateName>`
+在背景中，影像產生器也會在您的訂用帳戶中建立預備資源群組。 此資源群組會用於映射組建。 它的格式如下： `IT_<DestinationResourceGroup>_<TemplateName>`
 
 > [!Note]
-> 您不能直接刪除暫存資源群組。 首先，刪除映射範本成品，這會導致暫存資源群組遭到刪除。
+> 您不得直接刪除暫存資源群組。 先刪除映射範本成品，這將會刪除暫存資源群組。
 
 如果服務在映射設定範本提交期間報告失敗：
--  請參閱這些[疑難排解](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#template-submission-errors--troubleshooting)步驟。 
-- 您必須先使用下列程式碼片段刪除範本，然後再重試提交。
+-  請參閱這些 [疑難排解](../linux/image-builder-troubleshoot.md#troubleshoot-image-template-submission-errors) 步驟。 
+- 您將需要先使用下列程式碼片段刪除範本，再重試提交。
 
 ```azurecli-interactive
 az resource delete \
@@ -196,7 +196,7 @@ az resource delete \
 ```
 
 ## <a name="start-the-image-build"></a>啟動映射組建
-使用[az resource invoke-action](/cli/azure/resource#az-resource-invoke-action)啟動映射建立程式。
+使用 [az 資源叫用-action](/cli/azure/resource#az-resource-invoke-action)來啟動影像建立流程。
 
 ```azurecli-interactive
 az resource invoke-action \
@@ -208,12 +208,12 @@ az resource invoke-action \
 
 等候組建完成。 這可能需要大約15分鐘的時間。
 
-如果您遇到任何錯誤，請參閱這些[疑難排解](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#image-build-errors--troubleshooting)步驟。
+如果您遇到任何錯誤，請參閱這些 [疑難排解](../linux/image-builder-troubleshoot.md#troubleshoot-common-build-errors) 步驟。
 
 
 ## <a name="create-the-vm"></a>建立 VM
 
-使用您建立的映射建立 VM。 將取代 *\<password>* 為您自己 `aibuser` 在 VM 上的密碼。
+使用您建立的映射來建立 VM。 *\<password>* 以您自己 `aibuser` 在 VM 上的密碼取代。
 
 ```azurecli-interactive
 az vm create \
@@ -237,11 +237,11 @@ dir c:\
 - buildActions
 - buildArtifacts
 
-## <a name="clean-up"></a>清理
+## <a name="clean-up"></a>清除
 
 當您完成時，請刪除資源。
 
-### <a name="delete-the-image-builder-template"></a>刪除映射產生器範本
+### <a name="delete-the-image-builder-template"></a>刪除 image builder 範本
 
 ```azurecli-interactive
 az resource delete \
@@ -269,6 +269,6 @@ az group delete -n $imageResourceGroup
 ```
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
-若要深入瞭解本文中所使用之 json 檔案的元件，請參閱影像產生器[範本參考](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+若要深入瞭解本文中所使用之 json 檔案的元件，請參閱影像產生器 [範本參考](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。

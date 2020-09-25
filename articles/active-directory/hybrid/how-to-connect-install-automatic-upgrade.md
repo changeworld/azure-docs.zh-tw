@@ -16,12 +16,12 @@ ms.date: 06/09/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dcc6de1ce50e86f177023a0a66c436633c8d502c
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 9c8dcc8766b21551f3cd62289805fe735ef0f333
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053281"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317611"
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect：自動升級
 此功能已隨組建 [1.1.105.0 (於 2016 年 2 月發行)](reference-connect-version-history.md) 一起推出。  這項功能已在[組建 1.1.561](reference-connect-version-history.md) 中更新，且現在支援先前未支援的其他案例。
@@ -57,14 +57,14 @@ ms.locfileid: "88053281"
 
 如果您認為有問題，請先執行 `Get-ADSyncAutoUpgrade` 確保已啟用自動升級。
 
-如果狀態是 [已暫停]，您可以使用 `Get-ADSyncAutoUpgrade -Detail` 來查看原因。  暫止原因可以包含任何字串值，但通常會包含 UpgradeResult 的字串值，也就是 `UpgradeNotSupportedNonLocalDbInstall` 或 `UpgradeAbortedAdSyncExeInUse` 。  可能也會傳回復合值，例如 `UpgradeFailedRollbackSuccess-GetPasswordHashSyncStateFailed` 。
+如果狀態為「已暫止」，您可以使用 `Get-ADSyncAutoUpgrade -Detail` 來查看原因。  暫停原因可以包含任何字串值，但通常會包含 UpgradeResult 的字串值，也就是 `UpgradeNotSupportedNonLocalDbInstall` 或 `UpgradeAbortedAdSyncExeInUse` 。  也可以傳回復合值，例如 `UpgradeFailedRollbackSuccess-GetPasswordHashSyncStateFailed` 。
 
-也可以取得不是 UpgradeResult 的結果，例如 ' AADHealthEndpointNotDefined ' 或 ' DirSyncInPlaceUpgradeNonLocalDb '。
+也可以取得不是 UpgradeResult 的結果，亦即 ' AADHealthEndpointNotDefined ' 或 ' DirSyncInPlaceUpgradeNonLocalDb '。
 
 然後，確定您已在您的 Proxy 或防火牆中開啟所需的 URL。 自動更新會如 [概觀](#overview)所述使用 Azure AD Connect Health。 如果您使用 Proxy，請確定 Health 已設定為使用 [roxy 伺服器](how-to-connect-health-agent-install.md#configure-azure-ad-connect-health-agents-to-use-http-proxy)。 而且測試對 Azure AD 的 [Health 連線](how-to-connect-health-agent-install.md#test-connectivity-to-azure-ad-connect-health-service) 。
 
-透過對已驗證 Azure AD 的連線，即可查看事件記錄檔。 啟動事件檢視器，並查看 **應用程式** 事件記錄。 新增來源 **Azure AD Connect 升級**的事件記錄篩選以及事件識別碼範圍 **300-399**。  
-![自動升級的事件記錄篩選](./media/how-to-connect-install-automatic-upgrade/eventlogfilter.png)  
+透過對已驗證 Azure AD 的連線，即可查看事件記錄檔。 啟動事件檢視器，並查看 **應用程式** 事件記錄。 加入來源 **Azure AD Connect 升級** 的 eventlog 篩選器，以及事件識別碼範圍 **300-399**。  
+![顯示 [篩選目前的記錄] 視窗的螢幕擷取畫面，其中已反白顯示 [事件來源] 和 [包含/排除] 事件識別碼方塊。](./media/how-to-connect-install-automatic-upgrade/eventlogfilter.png)  
 
 您現在可以看到與自動升級狀態關聯的事件記錄。  
 ![自動升級的事件記錄篩選](./media/how-to-connect-install-automatic-upgrade/eventlogresult.png)  
@@ -97,7 +97,7 @@ ms.locfileid: "88053281"
 | UpgradeNotSupportedInvalidPersistedState |安裝不是快速設定或 DirSync 升級。 |
 | UpgradeNotSupportedNonLocalDbInstall |您不是使用 SQL Server Express LocalDB 資料庫。 |
 |UpgradeNotSupportedLocalDbSizeExceeded|本機資料庫大小大於或等於 8 GB|
-|UpgradeNotSupportedAADHealthUploadDisabled|已從入口網站停用健全狀況資料上傳|
+|UpgradeNotSupportedAADHealthUploadDisabled|已從入口網站停用健康情況資料上傳|
 
 ## <a name="next-steps"></a>後續步驟
 深入了解 [整合內部部署身分識別與 Azure Active Directory](whatis-hybrid-identity.md)。

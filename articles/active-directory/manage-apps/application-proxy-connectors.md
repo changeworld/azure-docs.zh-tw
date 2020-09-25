@@ -1,6 +1,6 @@
 ---
 title: 了解 Azure AD 應用程式 Proxy 連接器 | Microsoft Docs
-description: 涵蓋 Azure AD 應用程式 Proxy 連接器的基本概念。
+description: 瞭解 Azure AD 應用程式 Proxy 連接器。
 services: active-directory
 author: kenwith
 manager: celestedg
@@ -12,12 +12,12 @@ ms.date: 11/15/2018
 ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 236e8e32eedce1a075aa4b3d1600c9c5595b7e2c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e7f14c757df8bcc38bf226cb6346c400087c2d7a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84764667"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319821"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>了解 Azure AD 應用程式 Proxy 連接器
 
@@ -76,7 +76,7 @@ Azure AD 會提供您部署之所有連接器的自動更新。 只要應用程�
 - 您只擁有一個連接器，建議安裝第二個連接器並[建立連接器群組](application-proxy-connector-groups.md)。 如此可避免出現停機時間，並提供更高的可用性。  
 - 更新開始時，連接器正處於交易中途。 雖然遺失起始交易，您的瀏覽器應該會自動重試作業，或您可以重新整理頁面。 當重新傳送要求時，流量會路由傳送至備份連接器。
 
-若要查看先前發行版本本的相關資訊，以及它們所包含的變更，請參閱[應用程式 Proxy 版本發行歷程記錄](application-proxy-release-version-history.md)。
+若要查看先前發行之版本的相關資訊，以及它們所包含的變更，請參閱 [應用程式 Proxy-版本發行歷程記錄](application-proxy-release-version-history.md)。
 
 ## <a name="creating-connector-groups"></a>建立連接器群組
 
@@ -88,9 +88,9 @@ Azure AD 會提供您部署之所有連接器的自動更新。 只要應用程�
 
 ## <a name="capacity-planning"></a>容量規劃
 
-請務必確定連接器之間已規劃了足夠的容量，能夠處理預計流量。 我們建議每個連接器群組至少有兩個連接器，以提供高可用性和規模。 如果您可能需要在任何時間點服務機器，則有三個連接器是最佳做法。
+請務必確定連接器之間已規劃了足夠的容量，能夠處理預計流量。 我們建議每個連接器群組都至少有兩個連接器，以提供高可用性和規模。 如果您在任何時間點都可能需要為機器提供服務，則有三個連接器是最佳的。
 
-一般而言，使用者越多，您需要的機器就越大。 下表提供磁片區的概述，以及不同機器可以處理的預期延遲。 請注意，這完全是根據預期的每秒交易數 (TPS)，而不是依據使用者，因為使用模式都不同，無法用來預測負載。 根據回應大小和後端應用程式回應時間，也會有一些差異，較大的回應和較慢的回應時間會導致「最大 TPS」較低。 我們也建議有額外的機器，讓電腦上的分散式負載一律會提供充足的緩衝區。 額外的容量可確保具備高可用性和復原能力。
+一般而言，使用者越多，您需要的機器就越大。 以下表格提供磁片區和預期延遲的不同電腦可以處理的概要。 請注意，這完全是根據預期的每秒交易數 (TPS)，而不是依據使用者，因為使用模式都不同，無法用來預測負載。 根據回應大小和後端應用程式回應時間，也會有一些差異，較大的回應和較慢的回應時間會導致「最大 TPS」較低。 此外，我們也建議有額外的電腦，如此一來，跨機器的分散式負載一律會提供充足的緩衝區。 額外的容量可確保具備高可用性和復原能力。
 
 |核心|RAM|預期延遲 (MS)-P99|最大 TPS|
 | ----- | ----- | ----- | ----- |
@@ -99,16 +99,16 @@ Azure AD 會提供您部署之所有連接器的自動更新。 只要應用程�
 |8|32|270|1190|
 |16|64|245|1200*|
 
-\*這部電腦使用自訂設定來引發除了 .NET 建議設定以外的一些預設連接限制。 我們建議先使用預設設定執行測試，然後再連絡支援人員為您的租用戶變更此限制。
+\* 此電腦使用自訂設定來引發一些預設的連線限制，超過 .NET 建議的設定。 我們建議先使用預設設定執行測試，然後再連絡支援人員為您的租用戶變更此限制。
 
 > [!NOTE]
 > 在 4、8 和 16 核心的機器之間，最大 TPS 沒有太大差異。 它們之間的主要差異在於預期延遲。
 >
-> 此表格也著重于連接器的預期效能（根據其安裝所在的機器類型而定）。 這與應用程式 Proxy 服務的節流限制不同，請參閱[服務限制和限制](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-service-limits-restrictions)。
+> 此表格也會根據其安裝所在的電腦類型，將重點放在連接器的預期效能。 這與應用程式 Proxy 服務的節流限制不同，請參閱 [服務限制和限制](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-service-limits-restrictions)。
 
 ## <a name="security-and-networking"></a>安全性和網路服務
 
-在允許連接器將要求傳送至應用程式 Proxy 服務的網路上，任何地方都可以安裝連接器。 重點是執行連接器的電腦也可存取您的應用程式。 您可以在貴公司網路內或在雲端中執行的虛擬機器上安裝連接器。 連接器可以在周邊網路（也稱為非軍事區域（DMZ））中執行，但不是必要的，因為所有流量都是輸出的，因此您的網路保持安全。
+在允許連接器將要求傳送至應用程式 Proxy 服務的網路上，任何地方都可以安裝連接器。 重點是執行連接器的電腦也可存取您的應用程式。 您可以在貴公司網路內或在雲端中執行的虛擬機器上安裝連接器。 連接器可以在周邊網路（也稱為非軍事區域）中執行， (DMZ) ，但不一定要這麼做，因為所有流量都是輸出的，因此您的網路會保持安全。
 
 連接器僅會傳送輸出要求。 輸出流量會傳送到應用程式 Proxy 服務和已發佈應用程式。 不需要開啟輸入連接埠，因為建立工作階段後，流量就會雙向流動。 也不需要透過您的防火牆來設定內部存取。
 
@@ -118,7 +118,7 @@ Azure AD 會提供您部署之所有連接器的自動更新。 只要應用程�
 
 應用程式 Proxy 服務的級別很明顯，但級別是連接器的一項因素。 您需要有足夠的連接器，以處理尖峰流量。 因為連接器是無狀態，所以不受使用者或工作階段的數目所影響。 相反地，它們會依要求數目和其承載大小而作出反應。 以標準 Web 流量而言，一台普通電腦每秒可以處理幾千個要求。 具體產能取決於確切的電腦特性。
 
-連接器效能受限於 CPU 和網路。 TLS 加密和解密需要 CPU 效能，而網路對於取得應用程式和 Azure 線上服務的快速連線很重要。
+連接器效能受限於 CPU 和網路。 TLS 加密和解密需要 CPU 效能，而網路對於取得應用程式和 Azure 線上服務的快速連線相當重要。
 
 相反地，連接器發行需要較少的記憶體。 線上服務可以處理大部分的處理程序，及所有未經驗證的流量。 所有可在雲端中完成的內容都是在雲端中完成。
 
@@ -128,7 +128,7 @@ Azure AD 會提供您部署之所有連接器的自動更新。 只要應用程�
 
 - **線上服務**：Azure 的應用程式 Proxy 服務連線變慢或高度延遲都會影響連接器效能。 為了達到最佳效能，請使用 Express Route 將貴組織連線到 Azure。 否則，請網路服務小組確定與 Azure 的連線盡可能以有效方式處理。
 - **後端應用程式︰** 在某些情況下，連接器和後端應用程式之間有其他 Proxy，可能會使連線變慢或無法連線。 若要針對此情節進行疑難排解，可從連接器伺服器開啟瀏覽器，並嘗試存取應用程式。 如果您在 Azure 中執行連接器，但應用程式為內部部署，體驗就可能無法如您的使用者所預期。
-- **網域控制站**：如果連接器使用 Kerberos 限制委派來執行單一登入（SSO），則會在將要求傳送至後端之前，先與網域控制站聯繫。 連接器有 Kerberos 票證的快取 (但是在忙碌環境中)，網域控制器的回應速度可能會影響效能。 在 Azure 中執行、但與內部部署之網域控制器通訊的連接器會更常發生這個問題。
+- **網域控制站**：如果連接器使用 Kerberos 限制委派 (SSO) 執行單一登入，則會在將要求傳送至後端之前，先與網域控制站聯繫。 連接器有 Kerberos 票證的快取 (但是在忙碌環境中)，網域控制器的回應速度可能會影響效能。 在 Azure 中執行、但與內部部署之網域控制器通訊的連接器會更常發生這個問題。
 
 如需將您網路最佳化的詳細資訊，請參閱[使用 Azure Active Directory 應用程式 Proxy 時的網路拓撲考量](application-proxy-network-topology.md)。
 
@@ -136,7 +136,7 @@ Azure AD 會提供您部署之所有連接器的自動更新。 只要應用程�
 
 連接器可以在未加入網域的電腦上執行。 不過，如果您想要對使用整合式 Windows 驗證 (IWA) 的應用程式執行單一登入 (SSO)，則需要已加入網域的電腦。 在此情況下，連接器電腦必須代表已發佈應用程式的使用者加入可以執行 [Kerberos](https://web.mit.edu/kerberos) 限制委派的網域。
 
-連接器也可以聯結至具有部分信任或唯讀網域控制站的樹系中的網域。
+連接器也可以加入至樹系中具有部分信任或唯讀網域控制站的網域。
 
 ## <a name="connector-deployments-on-hardened-environments"></a>強化環境上的連接器部署
 
@@ -153,9 +153,9 @@ Azure AD 會提供您部署之所有連接器的自動更新。 只要應用程�
 
 使用的憑證是特定於應用程式 Proxy 服務。 它們會在初始註冊期間建立，且每隔幾個月會由連接器自動更新。
 
-第一次成功更新憑證之後，Azure AD 應用程式 Proxy 連接器服務（網路服務）沒有從本機電腦存放區移除舊憑證的許可權。 如果憑證已過期或服務將不再使用它，您可以安全地將它刪除。
+第一次成功更新憑證之後， (Network Service) 的 Azure AD 應用程式 Proxy 連接器服務沒有任何許可權可從本機電腦存放區中移除舊的憑證。 如果憑證已過期或服務不再使用它，您可以安全地將其刪除。
 
-若要避免憑證更新的問題，請確定已啟用從連接器到已[記載目的地](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application#prepare-your-on-premises-environment)的網路通訊。
+若要避免憑證更新時發生問題，請確定已啟用從連接器到所 [記錄目的地](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application#prepare-your-on-premises-environment) 的網路通訊。
 
 如果連接器有數個月未連線至服務，它的憑證可能會過期。 在此情況下，請解除安裝並重新安裝連接器以觸發註冊。 您可以執行下列 PowerShell 命令：
 
@@ -163,7 +163,7 @@ Azure AD 會提供您部署之所有連接器的自動更新。 只要應用程�
 Import-module AppProxyPSModule
 Register-AppProxyConnector
 ```
-若要深入瞭解如何驗證憑證和疑難排解問題，請參閱[驗證應用程式 Proxy 信任憑證的電腦和後端元件支援](application-proxy-connector-installation-problem.md#verify-machine-and-backend-components-support-for-application-proxy-trust-certificate)。
+若要深入瞭解如何驗證憑證並針對問題進行疑難排解，請參閱 [驗證應用程式 Proxy 信任憑證的電腦和後端元件支援](application-proxy-connector-installation-problem.md#verify-machine-and-backend-components-support-for-application-proxy-trust-certificate)。
 
 ## <a name="under-the-hood"></a>背後原理
 
@@ -175,9 +175,9 @@ Register-AppProxyConnector
 
 ![使用效能監視器將計數器新增至連接器](./media/application-proxy-connectors/performance-monitor.png)
 
-連接器同時具有系統**管理員**和**會話**記錄。 系統**管理**記錄檔包含重要事件和其錯誤。 **會話**記錄檔包含所有交易及其處理詳細資料。
+連接器同時具有系統 **管理員** 和 **會話** 記錄。 系統 **管理員** 記錄檔包含主要事件和錯誤。 **會話**記錄包含所有交易及其處理詳細資料。
 
-若要查看記錄，請開啟**事件檢視器**並移至 [**應用程式及服務**] [記錄] [  >  **Microsoft**  >  **AadApplicationProxy**  >  **連接器**]。 若要顯示**會話**記錄檔，請在 [ **View** ] 功能表上，選取 [**顯示分析和調試記錄**]。 **會話**記錄通常用於疑難排解，而且預設為停用。 讓它可以開始收集事件，並在不再需要時將它停用。
+若要查看記錄，請開啟**事件檢視器**並移至 [**應用程式和服務記錄**檔  >  **Microsoft**  >  **microsoftaadapplicationproxy**  >  **連接器**]。 若要讓 **會話** 記錄顯示，請在 [ **View** ] 功能表上選取 [ **顯示分析和調試記錄**]。 **會話**記錄通常用於疑難排解，而且預設為停用。 讓它開始收集事件，並在不再需要時加以停用。
 
 您可以檢查 [服務] 視窗中的服務狀態。 連接器包含兩個 Windows 服務︰實際連接器和更新程式。 這兩者必須一直執行。
 

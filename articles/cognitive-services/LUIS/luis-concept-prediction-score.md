@@ -1,18 +1,20 @@
 ---
 title: 預測分數-LUIS
-description: 預測分數會根據使用者語句，指出 LUIS API 服務針對預測結果所擁有的信心程度。
+description: 預測分數表示 LUIS API 服務對預測結果的信賴程度（以使用者語句為基礎）。
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/14/2020
-ms.openlocfilehash: 709a34f0a278d8a17267c7544583798d54167dad
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d836273e61752ff208133466016ce7c6ff9c28fa
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81382368"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316455"
 ---
 # <a name="prediction-scores-indicate-prediction-accuracy-for-intent-and-entities"></a>預測分數表示意圖和實體的預測準確性
 
-預測分數表示 LUIS 對於使用者語句預測結果的信賴程度。
+預測分數表示 LUIS 對使用者語句預測結果的信賴程度。
 
 預測分數介於零 (0) 到一 (1) 之間。 高信賴度 LUIS 分數的範例是 0.99。 低信賴度的範例是 0.01。
 
@@ -25,38 +27,38 @@ ms.locfileid: "81382368"
 
 ## <a name="top-scoring-intent"></a>最高分的意圖
 
-每個語句預測都會傳回一個最高分的意圖。 這項預測是預測分數的數值比較。
+每個語句預測都會傳回一個最高分的意圖。 此預測是預測分數的數值比較。
 
-## <a name="proximity-of-scores-to-each-other"></a>分數與彼此的鄰近程度
+## <a name="proximity-of-scores-to-each-other"></a>分數彼此相近
 
-前2個分數的差異可能非常小。 LUIS 不會指出這個鄰近性，而是傳回最高分。
+前2個分數在兩者之間可能有極小的差異。 LUIS 不會指出傳回最高分的這個鄰近程度。
 
 ## <a name="return-prediction-score-for-all-intents"></a>傳回所有意圖的預測分數
 
-測試或端點結果可以包含所有意圖。 此設定會使用正確的 querystring 名稱/值組，在端點上設定。
+測試或端點結果可以包含所有意圖。 您可以使用正確的查詢字串名稱/值組，在端點上設定此設定。
 
-|預測 API|Querystring 名稱|
+|預測 API|查詢字串名稱|
 |--|--|
 |V3|`show-all-intents=true`|
 |V2|`verbose=true`|
 
 ## <a name="review-intents-with-similar-scores"></a>檢閱具有相似分數的意圖
 
-檢查所有意圖的分數是一種很好的方法，用來確認不只識別正確的意圖，但下一個識別意圖的分數會大幅且一致地語句。
+檢查所有意圖的分數，是一種很好的方法，可以確認唯一識別的意圖是否正確，但下一個識別意圖的分數在語句中會大幅且一致地降低。
 
-如果有多個意圖的預測分數相近，則 LUIS 可能會根據語句的內容，在意圖之間做切換。 若要修正這種情況，請繼續將語句新增至每個意圖，並具有更廣泛的內容差異，或讓用戶端應用程式（例如聊天機器人）進行以程式設計方式選擇如何處理2個前意圖。
+如果有多個意圖的預測分數相近，則 LUIS 可能會根據語句的內容，在意圖之間做切換。 若要修正這種情況，請繼續將語句新增至每個意圖，並提供更多的內容差異，或您可以讓用戶端應用程式（例如聊天機器人）進行程式設計選擇，以瞭解如何處理2個最上層意圖。
 
-因為不具**決定性的定型**，所以這兩個過度計分的意圖可能會反轉。 第一高分可能會變成第二高分，而第二高分可能會變成第一高分。 為了避免這種情況，請將範例語句新增至該語句的前兩個意圖，並使用文字選擇和內容來區分2個意圖。 兩個意圖應具有相同數目的範例語句。 若要避免因為訓練而發生反轉，區隔語句的經驗法則是分數上要有 15% 的差異。
+這 2 個分數過於接近的意圖可能會因為**非決定性訓練**而反轉。 第一高分可能會變成第二高分，而第二高分可能會變成第一高分。 為了避免發生這種情況，請將範例語句新增至該語句的每個前兩個意圖，並以單字選擇和區分這兩個意圖的內容來進行。 兩個意圖應具有相同數目的範例語句。 若要避免因為訓練而發生反轉，區隔語句的經驗法則是分數上要有 15% 的差異。
 
-您可以透過[訓練所有資料](luis-how-to-train.md#train-with-all-data)來關閉**不具決定性的定型**。
+您可以[使用所有資料來定型，以](luis-how-to-train.md#train-with-all-data)關閉**不具決定性的定型**。
 
-## <a name="differences-with-predictions-between-different-training-sessions"></a>不同訓練課程之間的預測差異
+## <a name="differences-with-predictions-between-different-training-sessions"></a>不同定型會話之間的預測差異
 
-當您在不同的應用程式中定型相同的模型，而且分數不相同時，這項差異是因為有不具**決定性的定型**（隨機性的元素）。 其次，當語句與多個意圖有任何重疊時，即意謂著相同語句的最高分意圖會根據定型變更。
+當您在不同的應用程式中定型相同的模型，而且分數不同時，這項差異是因為隨機性) 的元素 (有不具 **決定性的定型** 。 其次，當語句與多個意圖有任何重疊時，即意謂著相同語句的最高分意圖會根據定型變更。
 
-如果您的聊天機器人需要特定的 LUIS 分數來表示意圖的信心，您應該使用前兩個意圖之間的分數差異。 這種情況會提供定型變化的彈性。
+如果聊天機器人需要特定的 LUIS 分數來指出意圖的信賴度，您應該使用前兩個意圖之間的分數差異。 這種情況為定型中的變化提供彈性。
 
-您可以透過[訓練所有資料](luis-how-to-train.md#train-with-all-data)來關閉**不具決定性的定型**。
+您可以[使用所有資料來定型，以](luis-how-to-train.md#train-with-all-data)關閉**不具決定性的定型**。
 
 ## <a name="e-exponent-notation"></a>E (指數) 標記法
 
@@ -70,7 +72,7 @@ ms.locfileid: "81382368"
 
 ## <a name="application-settings"></a>應用程式設定
 
-使用[應用程式設定](luis-reference-application-settings.md)來控制變音符號和標點符號如何影響預測分數。
+使用 [應用程式設定](luis-reference-application-settings.md) 來控制如何對預測分數造成變音符號和標點符號的影響。
 
 ## <a name="next-steps"></a>後續步驟
 

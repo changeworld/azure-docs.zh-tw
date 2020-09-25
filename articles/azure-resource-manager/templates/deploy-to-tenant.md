@@ -2,13 +2,13 @@
 title: 將資源部署到租用戶
 description: 描述如何在 Azure Resource Manager 範本中的租用戶範圍部署資源。
 ms.topic: conceptual
-ms.date: 09/04/2020
-ms.openlocfilehash: 9b653f3fd4ed66f23521ea3ec8f9972e3b6cc09c
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.date: 09/24/2020
+ms.openlocfilehash: af75e4f0e51ac685986e57b3b92a23dd37174460
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89468550"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91284754"
 ---
 # <a name="create-resources-at-the-tenant-level"></a>在租用戶層級建立資源
 
@@ -42,7 +42,7 @@ ms.locfileid: "89468550"
 * [指示](/azure/templates/microsoft.billing/billingaccounts/billingprofiles/instructions)
 * [invoiceSections](/azure/templates/microsoft.billing/billingaccounts/billingprofiles/invoicesections)
 
-### <a name="schema"></a>結構描述
+## <a name="schema"></a>結構描述
 
 您用於租用戶部署的結構描述與用於資源群組部署的結構描述不同。
 
@@ -78,11 +78,23 @@ Azure Active Directory 的全域管理員不會自動具備指派角色的權限
 
 主體現在具備部署範本所需的權限。
 
+## <a name="deployment-scopes"></a>部署範圍
+
+部署至租使用者時，您可以將租使用者中的租使用者或管理群組、訂用帳戶和資源群組設為目標。 部署範本的使用者必須擁有指定範圍的存取權。
+
+在範本的資源區段中定義的資源會套用至租使用者。
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/default-tenant.json" highlight="5":::
+
+若要鎖定租使用者內的管理群組，請新增嵌套部署並指定 `scope` 屬性。
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/tenant-to-mg.json" highlight="10,17,22":::
+
 ## <a name="deployment-commands"></a>部署命令
 
 用於租用戶部署的命令與用於資源群組部署的命令不同。
 
-針對 Azure CLI，使用 [az deployment tenant create](/cli/azure/deployment/tenant?view=azure-cli-latest#az-deployment-tenant-create)：
+針對 Azure CLI，使用 [az deployment tenant create](/cli/azure/deployment/tenant#az-deployment-tenant-create)：
 
 ```azurecli-interactive
 az deployment tenant create \
@@ -109,56 +121,6 @@ New-AzTenantDeployment `
 您可以提供部署的名稱，或使用預設的部署名稱。 預設名稱是範本檔案的名稱。 例如，部署名為 **azuredeploy.json** 的範本會建立預設的部署名稱 **azuredeploy**。
 
 對於每個部署名稱而言，此位置是不可變的。 當某個位置已經有名稱相同的現有部署時，您無法在其他位置建立部署。 如果您收到錯誤代碼 `InvalidDeploymentLocation`，請使用不同的名稱或與先前該名稱部署相同的位置。
-
-## <a name="deployment-scopes"></a>部署範圍
-
-部署至租使用者時，您可以將租使用者中的租使用者或管理群組、訂用帳戶和資源群組設為目標。 部署範本的使用者必須擁有指定範圍的存取權。
-
-在範本的資源區段中定義的資源會套用至租使用者。
-
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "resources": [
-        tenant-level-resources
-    ],
-    "outputs": {}
-}
-```
-
-若要鎖定租使用者內的管理群組，請新增嵌套部署並指定 `scope` 屬性。
-
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "mgName": {
-            "type": "string"
-        }
-    },
-    "variables": {
-        "mgId": "[concat('Microsoft.Management/managementGroups/', parameters('mgName'))]"
-    },
-    "resources": [
-        {
-            "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2020-06-01",
-            "name": "nestedMG",
-            "scope": "[variables('mgId')]",
-            "location": "eastus",
-            "properties": {
-                "mode": "Incremental",
-                "template": {
-                    nested-template-with-resources-in-mg
-                }
-            }
-        }
-    ],
-    "outputs": {}
-}
-```
 
 ## <a name="use-template-functions"></a>使用範本函式
 

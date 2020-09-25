@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 08/12/2020
 ms.custom: seodec18, has-adal-ref
-ms.openlocfilehash: bbec605f25c2e74178bdb5c28d0a7995e4e265f1
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 9e032b8bb2dd8c82e8b076517f4309baae41c6f9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690386"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320308"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Azure Time Series Insights API 的驗證和授權
 
@@ -85,7 +85,7 @@ Azure Active Directory 應用程式註冊流程包含三個主要步驟。
 
    1. 在 C# 中，下列程式碼可代表應用程式來取得權杖。 如需如何從 Gen1 環境查詢資料的完整範例，請參閱 [使用 c # 的查詢資料](time-series-insights-query-data-csharp.md)。
 
-        請參閱 [Azure 時間序列深入解析](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/gen1-sample/csharp-tsi-gen1-sample/Program.cs)] 存放庫以存取 c # 程式碼。 
+        請參閱 [Azure 時間序列深入解析](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/gen1-sample/csharp-tsi-gen1-sample/Program.cs)] 存放庫以存取 c # 程式碼。
 
    1. 然後， `Authorization` 當應用程式呼叫 AZURE 時間序列深入解析 API 時，就可以在標頭中傳遞權杖。
 
@@ -117,7 +117,7 @@ Azure Active Directory 應用程式註冊流程包含三個主要步驟。
 > [!IMPORTANT]
 > 此權杖必須確切核發給 `https://api.timeseries.azure.com/` 資源 (也稱為權杖的「對象」)。
 
-> * 因此， [Postman](https://www.getpostman.com/) **AuthURL** 將會是：`https://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/authorize?scope=https://api.timeseries.azure.com/.default`
+> * 因此， [Postman](https://www.getpostman.com/) **AuthURL** 將會是：`https://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/authorize?scope=https://api.timeseries.azure.com//.default`
 > * `https://api.timeseries.azure.com/` 有效，但 `https://api.timeseries.azure.com` 無效。
 
 選擇性的要求標頭如下所述。

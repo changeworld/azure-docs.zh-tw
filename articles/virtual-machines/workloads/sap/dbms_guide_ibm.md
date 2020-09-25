@@ -3,21 +3,22 @@ title: 適用于 SAP 工作負載的 IBM Db2 Azure 虛擬機器 DBMS 部署 |Mic
 description: 適用於 SAP 工作負載的 IBM DB2 Azure 虛擬機器 DBMS 部署
 services: virtual-machines-linux,virtual-machines-windows
 author: msjuergent
-manager: patfilot
+manager: bburns
 tags: azure-resource-manager
+keywords: Azure、Db2、SAP、IBM
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 08/18/2020
+ms.date: 09/20/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bc881b1b366a152c2d592463c8025ea1087307cf
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: a2be5daf5bcad0f5b4530ba7a76986dae4833aa5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89461956"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331262"
 ---
 # <a name="ibm-db2-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>適用於 SAP 工作負載的 IBM DB2 Azure 虛擬機器 DBMS 部署
 
@@ -80,58 +81,58 @@ ms.locfileid: "89461956"
 
 SAP 支援附注 [1928533]中列出的任何 VM 類型都支援 IBM DB2 For Sap NetWeaver 應用程式。  執行 IBM Db2 資料庫的建議 VM 系列是 Esd_v4/Eas_v4/Es_v3，以及適用于大型多 tb 資料庫的 M/M_v2 系列。 您可以藉由啟用 M 系列寫入加速器來改善 IBM Db2 交易記錄檔磁片寫入效能。 
 
-以下是各種大小的基準設定，以及從小規模到很大的 SAP on Db2 部署使用方式：
+以下是各種大小的基準設定，以及從小規模到大型部署的 SAP 部署使用。 此清單是以 Azure premium 儲存體為基礎。 不過，Azure Ultra 磁片也完全支援 Db2，也可以使用。 只要使用容量、高載輸送量和高載 IOPS 的值，即可定義 Ultra 磁片設定。 您可以限制/db2//log_dir 的 IOPS， <SID> 大約是 5000 iops。 
 
 #### <a name="extra-small-sap-system-database-size-50---200-gb-example-solution-manager"></a>超小型 SAP 系統：資料庫大小 50-200 GB：範例解決方案管理員
 | VM 名稱/大小 |Db2 掛接點 |Azure 進階磁碟 |磁片的 NR |IOPS |輸送量 [MB/s] |大小 [GB] |高載 IOPS |高載指派 [GB] | 等量大小 | Caching |
 | --- | --- | --- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-|E4ds_v4 |/db2 |P6 |1 |240  |50  |64  |3.500  |170  ||  |
-|vCPU：4 |/db2/ <SID> /sapdata |P10 |2 |1.000  |200  |256  |7.000  |340  |256 KB |唯讀 |
-|RAM： 32 GiB |/db2/ <SID> /saptmp |P6 |1 |240  |50  |128  |3.500  |170  | ||
-| |/db2/ <SID> /log_dir |P6 |2 |480  |100  |128  |7.000  |340  |64 KB ||
-| |/db2/ <SID> /offline_log_dir |P10 |1 |500  |100  |128  |3.500  |170  || |
+|E4ds_v4 |/db2 |P6 |1 |240  |50  |64  |3,500  |170  ||  |
+|vCPU：4 |/db2/ <SID> /sapdata |P10 |2 |1,000  |200  |256  |7,000  |340  |256 KB |唯讀 |
+|RAM： 32 GiB |/db2/ <SID> /saptmp |P6 |1 |240  |50  |128  |3,500  |170  | ||
+| |/db2/ <SID> /log_dir |P6 |2 |480  |100  |128  |7,000  |340  |64 KB ||
+| |/db2/ <SID> /offline_log_dir |P10 |1 |500  |100  |128  |3,500  |170  || |
 
 #### <a name="small-sap-system-database-size-200---750-gb-small-business-suite"></a>小型 SAP 系統：資料庫大小 200-750 GB： small Business Suite
 | VM 名稱/大小 |Db2 掛接點 |Azure 進階磁碟 |磁片的 NR |IOPS |輸送量 [MB/s] |大小 [GB] |高載 IOPS |高載指派 [GB] | 等量大小 | Caching |
 | --- | --- | --- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-|E16ds_v4 |/db2 |P6 |1 |240  |50  |64  |3.500  |170  || |
-|vCPU：16 |/db2/ <SID> /sapdata |P15 |4 |4.400  |500  |1.024  |14.000  |680  |256 KB |唯讀 |
-|RAM： 128 GiB |/db2/ <SID> /saptmp |P6 |2 |480  |100  |128  |7.000  |340  |128 KB ||
-| |/db2/ <SID> /log_dir |P15 |2 |2.200  |250  |512  |7.000  |340  |64 KB ||
-| |/db2/ <SID> /offline_log_dir |P10 |1 |500  |100  |128  |3.500  |170  ||| 
+|E16ds_v4 |/db2 |P6 |1 |240  |50  |64  |3,500  |170  || |
+|vCPU：16 |/db2/ <SID> /sapdata |P15 |4 |4400  |500  |1.024  |14,000  |680  |256 KB |唯讀 |
+|RAM： 128 GiB |/db2/ <SID> /saptmp |P6 |2 |480  |100  |128  |7,000  |340  |128 KB ||
+| |/db2/ <SID> /log_dir |P15 |2 |2,200  |250  |512  |7,000  |340  |64 KB ||
+| |/db2/ <SID> /offline_log_dir |P10 |1 |500  |100  |128  |3,500  |170  ||| 
 
 #### <a name="medium-sap-system-database-size-500---1000-gb-small-business-suite"></a>中 SAP 系統：資料庫大小 500-1000 GB： small Business Suite
 | VM 名稱/大小 |Db2 掛接點 |Azure 進階磁碟 |磁片的 NR |IOPS |輸送量 [MB/s] |大小 [GB] |高載 IOPS |高載指派 [GB] | 等量大小 | Caching |
 | --- | --- | --- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-|E32ds_v4 |/db2 |P6 |1 |240  |50  |64  |3.500  |170  || |
-|vCPU：32 |/db2/ <SID> /sapdata |P30 |2 |10.000  |400  |2.048  |10.000  |400  |256 KB |唯讀 |
-|RAM： 256 GiB |/db2/ <SID> /saptmp |P10 |2 |1.000  |200  |256  |7.000  |340  |128 KB ||
-| |/db2/ <SID> /log_dir |P20 |2 |4.600  |300  |1.024  |7.000  |340  |64 KB ||
-| |/db2/ <SID> /offline_log_dir |P15 |1 |1.100  |125  |256  |3.500  |170  ||| 
+|E32ds_v4 |/db2 |P6 |1 |240  |50  |64  |3,500  |170  || |
+|vCPU：32 |/db2/ <SID> /sapdata |P30 |2 |10,000  |400  |2.048  |10,000  |400  |256 KB |唯讀 |
+|RAM： 256 GiB |/db2/ <SID> /saptmp |P10 |2 |1,000  |200  |256  |7,000  |340  |128 KB ||
+| |/db2/ <SID> /log_dir |P20 |2 |4600  |300  |1.024  |7,000  |340  |64 KB ||
+| |/db2/ <SID> /offline_log_dir |P15 |1 |1,100  |125  |256  |3,500  |170  ||| 
 
 #### <a name="large-sap-system-database-size-750---2000-gb-business-suite"></a>大型 SAP 系統：資料庫大小 750-2000 GB： Business Suite
 | VM 名稱/大小 |Db2 掛接點 |Azure 進階磁碟 |磁片的 NR |IOPS |輸送量 [MB/s] |大小 [GB] |高載 IOPS |高載指派 [GB] | 等量大小 | Caching |
 | --- | --- | --- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-|E64ds_v4 |/db2 |P6 |1 |240  |50  |64  |3.500  |170  || |
-|vCPU：64 |/db2/ <SID> /sapdata |P30 |4 |20.000  |800  |4.096  |20.000  |800  |256 KB |唯讀 |
-|RAM： 504 GiB |/db2/ <SID> /saptmp |P15 |2 |2.200  |250  |512  |7.000  |340  |128 KB ||
-| |/db2/ <SID> /log_dir |P20 |4 |9.200  |600  |2.048  |14.000  |680  |64 KB ||
-| |/db2/ <SID> /offline_log_dir |P20 |1 |2.300  |150  |512  |3.500  |170  || |
+|E64ds_v4 |/db2 |P6 |1 |240  |50  |64  |3,500  |170  || |
+|vCPU：64 |/db2/ <SID> /sapdata |P30 |4 |20,000  |800  |4.096  |20,000  |800  |256 KB |唯讀 |
+|RAM： 504 GiB |/db2/ <SID> /saptmp |P15 |2 |2,200  |250  |512  |7,000  |340  |128 KB ||
+| |/db2/ <SID> /log_dir |P20 |4 |9200  |600  |2.048  |14,000  |680  |64 KB ||
+| |/db2/ <SID> /offline_log_dir |P20 |1 |2,300  |150  |512  |3,500  |170  || |
 
-#### <a name="large-multi-terabyte-sap-system-database-size-2tb-global-business-suite-system"></a>大型多 tb 的 SAP 系統：資料庫大小 2TB +：通用 Business Suite 系統
+#### <a name="large-multi-terabyte-sap-system-database-size-2-tb-global-business-suite-system"></a>大型多 tb 的 SAP 系統：資料庫大小 2 TB +：通用 Business Suite 系統
 | VM 名稱/大小 |Db2 掛接點 |Azure 進階磁碟 |磁片的 NR |IOPS |輸送量 [MB/s] |大小 [GB] |高載 IOPS |高載指派 [GB] | 等量大小 | Caching |
 | --- | --- | --- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-|M128s |/db2 |P10 |1 |500  |100  |128  |3.500  |170  || |
-|vCPU：128 |/db2/ <SID> /sapdata |P40 |4 |30.000  |1.000  |8.192  |30.000  |1.000  |256 KB |唯讀 |
-|RAM： 2048 GiB |/db2/ <SID> /saptmp |P20 |2 |4.600  |300  |1.024  |7.000  |340  |128 KB ||
-| |/db2/ <SID> /log_dir |P30 |4 |20.000  |800  |4.096  |20.000  |800  |64 KB |WriteAccelerator |
-| |/db2/ <SID> /offline_log_dir |P30 |1 |5.000  |200  |1.024  |5.000  |200  || |
+|M128s |/db2 |P10 |1 |500  |100  |128  |3,500  |170  || |
+|vCPU：128 |/db2/ <SID> /sapdata |P40 |4 |30,000  |1.000  |8.192  |30,000  |1.000  |256 KB |唯讀 |
+|RAM： 2048 GiB |/db2/ <SID> /saptmp |P20 |2 |4600  |300  |1.024  |7,000  |340  |128 KB ||
+| |/db2/ <SID> /log_dir |P30 |4 |20,000  |800  |4.096  |20,000  |800  |64 KB |WriteAccelerator |
+| |/db2/ <SID> /offline_log_dir |P30 |1 |5,000  |200  |1.024  |5,000  |200  || |
 
 
 ### <a name="backuprestore"></a>備份/還原
 針對 IBM Db2 for LUW 的備份/還原功能，是利用與標準 Windows Server 作業系統和 Hyper-V 上所做的相同方式來支援。
 
-您必須確定您擁有恰當且有效的資料庫備份策略。 
+請確定您已備妥有效的資料庫備份策略。 
 
 如同裸機部署，備份/還原效能取決於可以平行讀取的磁碟區數目，以及這些磁碟區可能的輸送量。 此外，備份壓縮所使用的 CPU 耗用量在最多有 8 個 CPU 執行緒的 VM 上扮演重要的角色。 因此，您可以假設︰
 
@@ -161,7 +162,7 @@ SAP 支援附注 [1928533]中列出的任何 VM 類型都支援 IBM DB2 For Sap 
 
 支援 Db2 高可用性災害復原 (HADR)。 如果 HA 組態的虛擬機器具有運作中的名稱解析，則 Azure 中的設定與內部部署中完成的任何設定並無任何差別。 不建議只依賴 IP 解析。
 
-請勿將異地複寫使用於可儲存資料庫磁碟的儲存體帳戶。 如需詳細資訊，請參閱[針對 SAP 工作負載而部署 Azure 虛擬機器 DBMS 時的考量](dbms_guide_general.md)文件。 
+請勿將異地複寫使用於可儲存資料庫磁碟的儲存體帳戶。 如需詳細資訊，請參閱 [適用于 SAP 工作負載的 Azure 虛擬機器 DBMS 部署](dbms_guide_general.md)的檔考慮。 
 
 ### <a name="accelerated-networking"></a>加速網路
 至於 Windows 上的 Db2 部署，強烈建議按照[Azure 加速網路](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) \(英文\) 所述，使用 Azure 的加速網路功能。 另請考慮在[適用於 SAP 工作負載的 Azure 虛擬機器 DBMS 部署考量](dbms_guide_general.md)中所提出的建議。 
@@ -226,6 +227,12 @@ SAP 支援附注 [1928533]中列出的任何 VM 類型都支援 IBM DB2 For Sap 
 [2191498]:https://launchpad.support.sap.com/#/notes/2191498
 [2233094]:https://launchpad.support.sap.com/#/notes/2233094
 [2243692]:https://launchpad.support.sap.com/#/notes/2243692
+
+
+## <a name="next-steps"></a>後續步驟
+閱讀文章 
+
+- [適用於 SAP 工作負載的 Azure 虛擬機器 DBMS 部署考量](dbms_guide_general.md)
 
 [azure-cli]:../../../cli-install-nodejs.md
 [azure-portal]:https://portal.azure.com

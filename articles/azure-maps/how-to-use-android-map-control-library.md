@@ -1,20 +1,20 @@
 ---
 title: 開始使用 Android 地圖控制項 | Microsoft Azure Maps
-description: 熟悉 Azure 地圖服務 Android SDK。 請參閱如何在 Android Studio 中建立專案、安裝 SDK，並建立互動式地圖。
+description: 熟悉 Azure 地圖服務 Android SDK。 瞭解如何在 Android Studio 中建立專案、安裝 SDK，以及建立互動式地圖。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 04/26/2019
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: fca1b48911ff2af977b8415ad1d9ec1cc2801623
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 2cda543781118a19ba4999e774b96ae81857f442
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037757"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330922"
 ---
 # <a name="getting-started-with-azure-maps-android-sdk"></a>開始使用 Azure 地圖服務 Android SDK
 

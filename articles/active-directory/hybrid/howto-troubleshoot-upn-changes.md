@@ -11,12 +11,12 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: caf0fdf5fd167987ea0fd7111a05b04bd5bf848f
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 6a1acdbeb29091bae0be214b740023f13928506a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279783"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319838"
 ---
 # <a name="plan-and-troubleshoot-user-principal-name-changes-in-azure-active-directory"></a>在 Azure Active Directory 中規劃使用者主體名稱變更並進行疑難排解
 
@@ -57,9 +57,9 @@ Bsimon@contoso.com至Britta.Simon@contoso.com
 
     例如，如果某人變更了部門，您可能會變更其網域： 
 
-   * 按 Britta.Simon@contoso.com 移至 Britta.Simon@contosolabs.com <br>
-     或<br>
-    * 按 Britta.Simon@corp.contoso.com 移至 Britta.Simon@labs.contoso.com 
+   * Britta.Simon@contoso.com 到 Britta.Simon@contosolabs.com <br>
+     Or<br>
+    * Britta.Simon@corp.contoso.com 到 Britta.Simon@labs.contoso.com 
 
 建議您每次更新其主要電子郵件地址時，變更使用者的 UPN。
 
@@ -94,7 +94,7 @@ username@labs.contoso.com.
 
 當您要將使用者帳戶從 Active Directory 同步處理到 Azure AD 時，請確定 Active Directory 中的 Upn 對應到 Azure AD 中的已驗證網域。
 
-![已驗證網域的螢幕擷取畫面](./media/howto-troubleshoot-upn-changes/verified-domains.png)
+![顯示對應至已驗證 Azure Azure A D 網域之 Upn 範例的螢幕擷取畫面。](./media/howto-troubleshoot-upn-changes/verified-domains.png)
 
 如果 userPrincipalName 屬性的值未對應到 Azure AD 中已驗證的網域，同步處理常式會以 onmicrosoft.com 值取代尾碼。
 
@@ -246,7 +246,7 @@ Microsoft Authenticator 應用程式會負責將裝置註冊到 Azure AD。 裝�
 
 OneDrive 使用者已知在 UPN 變更之後遇到問題。 如需詳細資訊，請參閱 [UPN 變更如何影響 ONEDRIVE URL 和 onedrive 功能](/onedrive/upn-changes)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 請參閱下列資源：
 * [Azure AD Connect：設計概念](./plan-connect-design-concepts.md)

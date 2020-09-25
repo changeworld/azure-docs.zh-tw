@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/04/2020
 ms.topic: how-to
-ms.openlocfilehash: 49d3fd953d069f4368d28e26265114e574e8100a
-ms.sourcegitcommit: 655e4b75fa6d7881a0a410679ec25c77de196ea3
+ms.openlocfilehash: e899b249261ea3238695a2e2be6001cb6a9bc763
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/07/2020
-ms.locfileid: "89506656"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318053"
 ---
 # <a name="convert-models"></a>轉換模型
 
@@ -21,9 +21,8 @@ Azure 遠端轉譯可讓您呈現非常複雜的模型。 若要達到最大效�
 
 轉換服務支援下列格式：
 
-- **FBX**  (2011 版和更新版本) 
-- **GLTF** (2.x 版) 
-- **GLB**  (2.x 版) 
+- **FBX**  (2011 版到2020版) 
+- **GLTF** /**GLB** (2.x 版) 
 
 關於材質屬性轉換的格式有些許差異，如 [模型格式的章節材質對應](../../reference/material-mapping.md)中所列。
 
@@ -53,7 +52,7 @@ Azure 遠端轉譯可讓您呈現非常複雜的模型。 若要達到最大效�
 - [快速入門：轉換模型以進行](../../quickstarts/convert-model.md) 轉譯是如何轉換模型的逐步介紹。
 - 示範轉換服務使用方式的[範例 PowerShell 腳本](../../samples/powershell-example-scripts.md)，可以在 [*腳本*] 資料夾中的[ARR 範例儲存](https://github.com/Azure/azure-remote-rendering)機制中找到。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [使用 Azure Blob 儲存體進行模型轉換](blob-storage.md)
 - [模型轉換 REST API](conversion-rest-api.md)

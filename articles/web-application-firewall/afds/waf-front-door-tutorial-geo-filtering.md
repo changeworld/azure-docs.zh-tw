@@ -1,6 +1,6 @@
 ---
 title: 為 Azure Front Door Service 設定地區篩選 Web 應用程式防火牆原則
-description: 在本教學課程中，您會了解如何建立地區篩選原則，並將此原則與現有的 Front Door 前端主機產生關聯
+description: 在本教學課程中，您將瞭解如何建立地區篩選原則，並將此原則與現有的 Front Door 前端主機產生關聯。
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/10/2020
 ms.author: victorh
 ms.reviewer: tyao
-ms.openlocfilehash: fd38d900285f6cda0c98dd1f49076ea04180b18c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a7ab7debffc8e88f385fbba6ae52af74ef98b25f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87068316"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91266935"
 ---
 # <a name="set-up-a-geo-filtering-waf-policy-for-your-front-door"></a>為 Front Door 設定地區篩選 WAF 原則
 

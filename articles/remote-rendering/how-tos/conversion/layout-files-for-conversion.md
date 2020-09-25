@@ -5,12 +5,12 @@ author: MalcolmTyrrell
 ms.author: matyrr
 ms.date: 09/03/2020
 ms.topic: how-to
-ms.openlocfilehash: 8acd19408c328ef3f534ba7bc41c96e395f768be
-ms.sourcegitcommit: 655e4b75fa6d7881a0a410679ec25c77de196ea3
+ms.openlocfilehash: 13c4b841fe2d0b62472628d9382b5f6ee3d1fa6c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/07/2020
-ms.locfileid: "89510968"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318070"
 ---
 # <a name="laying-out-files-for-conversion"></a>配置檔案以進行轉換
 
@@ -28,6 +28,10 @@ ms.locfileid: "89510968"
 
 > [!Note]
 > 建議您將檔案放在輸入容器中，使檔案的相對位置與建立資產時相同。
+
+> [!Note]
+> 偏好建立附有相對路徑的資產。
+> 針對 [3Ds max 設定教材](../../tutorials/modeling/3dsmax-material-setup.md) 的教學課程，提供了3Ds 的最大範例，說明如何確保資產使用相對路徑。
 
 ## <a name="finding-textures"></a>尋找材質
 

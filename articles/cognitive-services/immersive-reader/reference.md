@@ -10,18 +10,18 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: 73322cdee151969e6e765690284bbffc1c871f4e
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: aa85f1323795098d161e6bfb1b9cf9237b2a5501
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90090188"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330599"
 ---
 # <a name="immersive-reader-javascript-sdk-reference-v11"></a>沈浸式閱讀程式 (v1.1) 的 JavaScript SDK 參考
 
 沈浸式閱讀程式 SDK 包含 JavaScript 程式庫，可讓您將沈浸式閱讀程式整合到您的應用程式中。
 
-## <a name="functions"></a>函式
+## <a name="functions"></a>函數
 
 SDK 會公開函式：
 
@@ -84,7 +84,7 @@ SDK 提供啟動沈浸式閱讀程式之按鈕的預設樣式。 您 `immersive-
 
 使用下列屬性來設定按鈕的外觀和風格。
 
-| 屬性 | 描述 |
+| 屬性 | 說明 |
 | --------- | ----------- |
 | `data-button-style` | 設定按鈕的樣式。 可以是 `icon`、`text` 或 `iconAndText`。 預設值為 `icon`。 |
 | `data-locale` | 設定地區設定。 例如，`en-US` 或 `fr-FR`。 預設為英文 `en` 。 |
@@ -115,7 +115,7 @@ renderButtons(options?: RenderButtonsOptions): void;
 
 #### <a name="renderbuttons-parameters"></a>renderButtons 參數
 
-| 名稱 | 類型 | 描述 |
+| 名稱 | 類型 | 說明 |
 | ---- | ---- |------------ |
 | `options` | [renderButtons 選項](#renderbuttons-options) | 設定 renderButtons 函式之特定行為的選項。 選擇性。 |
 
@@ -131,7 +131,7 @@ renderButtons(options?: RenderButtonsOptions): void;
 
 #### <a name="renderbuttons-options-parameters"></a>renderButtons 選項參數
 
-| 設定 | 類型 | 描述 |
+| 設定 | 類型 | 說明 |
 | ------- | ---- | ----------- |
 | 元素 | HTMLDivElement [] | 要在其中呈現沈浸式閱讀程式按鈕的元素。 |
 
@@ -192,7 +192,7 @@ Required: false
 
 ## <a name="types"></a>類型
 
-### <a name="content"></a>Content
+### <a name="content"></a>內容
 
 包含要在沈浸式閱讀程式中顯示的內容。
 
@@ -205,7 +205,7 @@ Required: false
 
 #### <a name="content-parameters"></a>內容參數
 
-| 名稱 | 類型 | 描述 |
+| 名稱 | 類型 | 說明 |
 | ---- | ---- |------------ |
 | title | String | 顯示在沈浸式閱讀程式頂端的標題文字 (選擇性)  |
 | 區塊 | [區塊 []](#chunk) | 區塊陣列 |
@@ -240,7 +240,7 @@ Default value: null
 
 #### <a name="chunk-parameters"></a>區塊參數
 
-| 名稱 | 類型 | 描述 |
+| 名稱 | 類型 | 說明 |
 | ---- | ---- |------------ |
 | 內容 | String | 字串，其中包含傳送至沈浸式閱讀程式的內容。 |
 | lang | String | 文字的語言，其值為 IETF BCP 47 語言標記格式，例如 en、es。 如果未指定，則會自動偵測語言。 請參閱[支援的語言](#supported-languages)。 |
@@ -305,17 +305,17 @@ Default value: "text/plain"
 
 #### <a name="options-parameters"></a>Options 參數
 
-| 名稱 | 類型 | 描述 |
+| 名稱 | 類型 | 說明 |
 | ---- | ---- |------------ |
 | uiLang | String | UI 的語言，其值為 IETF BCP 47 語言標記格式，例如 en、es。 如果未指定，則預設為瀏覽器語言。 |
-| timeout | Number | LaunchAsync 的持續時間 (以毫秒為單位) 在[launchAsync](#launchasync)失敗前發生逾時錯誤 (預設值為15000毫秒) 。 此超時只適用于初始啟動的 [讀取器] 頁面，其中會在 [讀取器] 頁面開啟時觀察到成功，並開始微調。 應該不需要調整時間。 |
-| uiZIndex | Number | 將建立 (預設值為 1000) 的 iframe 的 Z-索引。 |
-| useWebview | 布林值| 使用 web 程式標記而非 iframe，以與 Chrome 應用程式相容 (預設為 false) 。 |
+| timeout | 數字 | LaunchAsync 的持續時間 (以毫秒為單位) 在[launchAsync](#launchasync)失敗前發生逾時錯誤 (預設值為15000毫秒) 。 此超時只適用于初始啟動的 [讀取器] 頁面，其中會在 [讀取器] 頁面開啟時觀察到成功，並開始微調。 應該不需要調整時間。 |
+| uiZIndex | 數字 | 將建立 (預設值為 1000) 的 iframe 的 Z-索引。 |
+| useWebview | Boolean| 使用 web 程式標記而非 iframe，以與 Chrome 應用程式相容 (預設為 false) 。 |
 | onExit | 函式 | 當沈浸式閱讀程式結束時執行。 |
-| allowFullscreen | 布林值 | 切換全螢幕 (預設值的功能是) 。 |
-| hideExitButton | 布林值 | 是否要隱藏沈浸式閱讀程式的離開按鈕箭號 (預設為 false) 。 如果有提供替代機制來結束沈浸式閱讀程式 (例如移動工具列的向後箭號) ，則應該只有 true。 |
+| allowFullscreen | Boolean | 切換全螢幕 (預設值的功能是) 。 |
+| hideExitButton | Boolean | 是否要隱藏沈浸式閱讀程式的離開按鈕箭號 (預設為 false) 。 如果有提供替代機制來結束沈浸式閱讀程式 (例如移動工具列的向後箭號) ，則應該只有 true。 |
 | cookiePolicy | [CookiePolicy](#cookiepolicy-options) | 沈浸式閱讀程式的 cookie 使用量設定 (預設值為 *CookiePolicy。停* 用) 。 主機應用程式會負責根據歐盟 Cookie 合規性原則取得任何必要的使用者同意。 請參閱 [Cookie 原則選項](#cookiepolicy-options)。 |
-| disableFirstRun | 布林值 | 停用第一次執行體驗。 |
+| disableFirstRun | Boolean | 停用第一次執行體驗。 |
 | readAloudOptions | [ReadAloudOptions](#readaloudoptions) | 設定大聲讀出的選項。 |
 | translationOptions | [TranslationOptions](#translationoptions) | 設定翻譯的選項。 |
 | >displayoptions | [>displayoptions](#displayoptions) | 設定文字大小、字型等的選項。 |
@@ -390,11 +390,11 @@ type ReadAloudOptions = {
 
 #### <a name="readaloudoptions-parameters"></a>ReadAloudOptions 參數
 
-| 名稱 | 類型 | 描述 |
+| 名稱 | 類型 | 說明 |
 | ---- | ---- |------------ |
 | voice | String | 語音，也就是「女性」或「男性」。 請注意，並非所有語言都支援這兩種性別。 |
-| 速度 | Number | 播放速度必須介於0.5 到2.5 （含）之間。 |
-| 播放 | 布林值 | 當沈浸式閱讀程式載入時，會自動開始大聲朗讀。 |
+| 速度 | 數字 | 播放速度必須介於0.5 到2.5 （含）之間。 |
+| 播放 | Boolean | 當沈浸式閱讀程式載入時，會自動開始大聲朗讀。 |
 
 ##### `-voice`
 ```Parameters
@@ -432,8 +432,8 @@ type TranslationOptions = {
 | 名稱 | 類型 | 描述 |
 | ---- | ---- |------------ |
 | 語言 | String | 設定翻譯語言，此值為 IETF BCP 47 語言標記格式，例如 fr-fr、es-MX、zh-Hans-CN。 自動啟用 word 或檔轉譯所需。 |
-| autoEnableDocumentTranslation | 布林值 | 自動轉譯整份檔。 |
-| autoEnableWordTranslation | 布林值 | 自動啟用文字轉譯。 |
+| autoEnableDocumentTranslation | Boolean | 自動轉譯整份檔。 |
+| autoEnableWordTranslation | Boolean | 自動啟用文字轉譯。 |
 
 ##### `-language`
 ```Parameters
@@ -457,10 +457,10 @@ type DisplayOptions = {
 
 #### <a name="displayoptions-parameters"></a>>displayoptions 參數
 
-| 名稱 | 類型 | 描述 |
+| 名稱 | 類型 | 說明 |
 | ---- | ---- |------------ |
-| textSize | Number | 設定選擇的文字大小。 |
-| increaseSpacing | 布林值 | 設定是否開啟或關閉文字間距。 |
+| textSize | 數字 | 設定選擇的文字大小。 |
+| increaseSpacing | Boolean | 設定是否開啟或關閉文字間距。 |
 | fontFamily | String | 設定所選字型 ( "Calibri"、"ComicSans" 或 "Sitka" ) 。 |
 
 ##### `-textSize`
@@ -491,30 +491,30 @@ enum CookiePolicy { Disable, Enable }
 
 #### <a name="settings-parameters"></a>Settings 參數
 
-| 設定 | 類型 | 描述 |
+| 設定 | 類型 | 說明 |
 | ------- | ---- | ----------- |
-| textSize | Number | 設定選擇的文字大小。 |
+| textSize | 數字 | 設定選擇的文字大小。 |
 | fontFamily | String | 設定所選字型 ( "Calibri"、"ComicSans" 或 "Sitka" ) 。 |
-| textSpacing | Number | 設定是否開啟或關閉文字間距。 |
-| formattingEnabled | 布林值 | 設定是否開啟或關閉 HTML 格式化。 |
+| textSpacing | 數字 | 設定是否開啟或關閉文字間距。 |
+| formattingEnabled | Boolean | 設定是否開啟或關閉 HTML 格式化。 |
 | Theme - 佈景主題 | String | 設定選擇的主題 (例如 "Light"、"深色" ... ) 。 |
-| syllabificationEnabled | 布林值 | 設定 syllabification 是開啟或關閉。 |
-| nounHighlightingEnabled | 布林值 | 這會設定是否開啟或關閉名詞反白顯示。 |
+| syllabificationEnabled | Boolean | 設定 syllabification 是開啟或關閉。 |
+| nounHighlightingEnabled | Boolean | 這會設定是否開啟或關閉名詞反白顯示。 |
 | nounHighlightingColor | String | 設定選擇的名詞反白顯示色彩。 |
-| verbHighlightingEnabled | 布林值 | 設定是否開啟或關閉動詞反白顯示。 |
+| verbHighlightingEnabled | Boolean | 設定是否開啟或關閉動詞反白顯示。 |
 | verbHighlightingColor | String | 設定所選擇的動詞反白顯示色彩。 |
-| adjectiveHighlightingEnabled | 布林值 | 設定是否開啟或關閉形容詞反白顯示。 |
+| adjectiveHighlightingEnabled | Boolean | 設定是否開啟或關閉形容詞反白顯示。 |
 | adjectiveHighlightingColor | String | 設定所選擇的形容詞反白顯示色彩。 |
-| adverbHighlightingEnabled | 布林值 | 設定是否開啟或關閉副詞反白顯示。 |
+| adverbHighlightingEnabled | Boolean | 設定是否開啟或關閉副詞反白顯示。 |
 | adverbHighlightingColor | String | 設定選擇的副詞反白顯示色彩。 |
-| pictureDictionaryEnabled | 布林值 | 設定是否開啟或關閉相片字典。 |
-| posLabelsEnabled | 布林值 | 設定是否要開啟或關閉每個醒目提示部分的上標文字標籤。  |
+| pictureDictionaryEnabled | Boolean | 設定是否開啟或關閉相片字典。 |
+| posLabelsEnabled | Boolean | 設定是否要開啟或關閉每個醒目提示部分的上標文字標籤。  |
 
 <br>
 
 ## <a name="supported-languages"></a>支援的語言
 
-沈浸式閱讀程式的翻譯功能支援多種語言。 如需詳細資訊，請參閱[這篇文章](https://www.onenote.com/learningtools/languagesupport)。
+沈浸式閱讀程式的翻譯功能支援多種語言。 如需詳細資料，請參閱 [語言支援](./language-support.md) 。
 
 <br>
 

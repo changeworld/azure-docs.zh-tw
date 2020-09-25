@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/12/2020
-ms.openlocfilehash: bcc7ebd8d9a6e61425ba7cd980a400c3fe756492
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 47a280a46cbc0650efb9a7576bb21bb31d1d2613
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88762329"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330412"
 ---
 # <a name="delete-activity-in-azure-data-factory"></a>Azure Data Factory 中的 Delete 活動
 
@@ -52,6 +52,7 @@ ms.locfileid: "88762329"
 -   [SFTP](connector-sftp.md)
 -   [Amazon S3](connector-amazon-simple-storage-service.md)
 -   [Google Cloud Storage](connector-google-cloud-storage.md)
+-   [HDFS](connector-hdfs.md)
 
 ## <a name="syntax"></a>語法
 
@@ -83,7 +84,7 @@ ms.locfileid: "88762329"
 
 ## <a name="type-properties"></a>類型屬性
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 | --- | --- | --- |
 | 資料集 | 提供資料集參考，以判斷要刪除哪些檔案或資料夾 | 是 |
 | 遞迴 | 指出是否從子資料夾、或只有從指定的資料夾，以遞迴方式刪除檔案。  | 否。 預設值為 `false`。 |
@@ -766,7 +767,7 @@ GetMetadata 活動使用資料集來列舉檔案清單。
 
 -   使用 delete 活動中的檔案屬性篩選： modifiedDatetimeStart 和 modifiedDatetimeEnd 來選取要刪除的檔案時，請務必同時在 delete 活動中設定 "wildcardFileName"： "*"。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 深入瞭解如何在 Azure Data Factory 中移動檔案。
 

@@ -16,12 +16,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3853d0e5754f368043414ea4eaade8c4adf179e9
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 5e55526e0a63a0c603e2b62ccb3ac0efed911cff
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661853"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91295221"
 ---
 # <a name="azure-ad-connect-sync-understanding-the-default-configuration"></a>Azure AD Connect 同步處理：了解預設組態
 本文說明現成可用的組態規則。 其中說明這些規則以及這些規則對組態有何影響。 它也會逐步引導您進行 Azure AD Connect 同步的預設設定。其目標在於讀者瞭解設定模型（名為宣告式布建）在真實世界範例中的運作方式。 本文假設您已使用安裝精靈安裝並設定 Azure AD Connect Sync。
@@ -148,7 +148,7 @@ SRE 是一種資源套件工具，它會隨 Azure AD Connect 同步進行安裝�
 
 同步處理規則具有四個組態區段：說明、範圍篩選器、聯結規則及轉換。
 
-#### <a name="description"></a>描述
+#### <a name="description"></a>說明
 第一個區段提供基本資訊，例如名稱和說明。
 
 ![同步處理規則編輯器中的說明索引標籤](./media/concept-azure-ad-connect-sync-default-configuration/syncruledescription.png)
@@ -160,7 +160,7 @@ SRE 是一種資源套件工具，它會隨 Azure AD Connect 同步進行安裝�
 #### <a name="scoping-filter"></a>範圍篩選器
 範圍篩選器區段是用來設定同步處理規則套用的時機。 由於您目前看到的同步處理規則名稱表示只應針對已啟用使用者套用，因此您必須設定該範圍，切勿將 AD 屬性 **userAccountControl** 設為位元 2。 當同步處理引擎在 AD 中尋找使用者時，如果 **userAccountControl** 設為十進位值 512 (啟用的一般使用者)，則會套用此同步處理規則。 當使用者的 **userAccountControl** 設為 514 (停用的一般使用者) 時，則不會套用此規則。
 
-![同步處理規則編輯器中的範圍索引標籤](./media/concept-azure-ad-connect-sync-default-configuration/syncrulescopingfilter.png)
+![顯示 [編輯輸入同步處理規則] 視窗之 [範圍篩選器] 區段的螢幕擷取畫面。](./media/concept-azure-ad-connect-sync-default-configuration/syncrulescopingfilter.png)
 
 範圍篩選器具有可為巢狀的群組和子句。 必須滿足群組中的所有子句，才能套用同步處理規則。 如果多個群組已經過定義時，則必須至少滿足一個群組才能套用該規則。 也就是說，系統會在群組間評估邏輯 OR ，而在單一群組中評估邏輯 AND。 您可以在輸出同步處理規則 **Out to AAD – Group Join**中找到此組態的範例。 同步處理篩選器有數個群組，例如，一個適用於安全性群組 (`securityEnabled EQUAL True`) 的群組，和一個適用於通訊群組 (`securityEnabled EQUAL False`) 的群組。
 

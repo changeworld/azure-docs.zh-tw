@@ -12,12 +12,12 @@ ms.date: 05/20/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f4eba1b48b651c8efe9e9d737e226727cb244fb
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 779b29c8d31dffa495926a7f2ca5e1f77870078c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662478"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319906"
 ---
 # <a name="azure-ad-connect-sync-v2-endpoint-api-public-preview"></a>Azure AD Connect sync V2 端點 API (公開預覽) 
 Microsoft 已為 Azure AD Connect 部署了新的端點 (API)，以提升 Azure Active Directory 同步處理服務作業的效能。 藉由使用新的 V2 端點，您將會在匯出和匯入至 Azure AD 時，遇到顯著的效能提升。 這個新的端點支援下列項目：
@@ -116,12 +116,12 @@ Microsoft 已為 Azure AD Connect 部署了新的端點 (API)，以提升 Azure 
 1. 開啟 Azure AD 同步處理規則編輯器 
 2. 在編輯器中，針對 [方向] 選擇 [輸出] 
 3. 按一下 [Out to AAD – Group Join] 同步處理規則 
-4. 按一下 [編輯] 按鈕 ![編輯同步處理規則](media/how-to-connect-sync-endpoint-api-v2/endpoint2.png)
+4. 按一下 [ **編輯** ] 按鈕 ![ 螢幕擷取畫面，其中顯示已選取 [移至 AAD 群組聯結] 的 [查看和管理您的同步處理規則]。](media/how-to-connect-sync-endpoint-api-v2/endpoint2.png)
 
 6. 按一下 [是] 按鈕來停用預設規則，並建立可編輯的複本。
- ![編輯同步處理規則](media/how-to-connect-sync-endpoint-api-v2/endpoint3.png)
+ ![顯示 [編輯保留規則確認] 視窗的螢幕擷取畫面，其中已選取 [是] 按鈕。](media/how-to-connect-sync-endpoint-api-v2/endpoint3.png)
 
-7. 在 [描述] 頁面的快顯視窗中，將優先順序設定為介於 1 到 99 之間的可用值![編輯同步處理規則](media/how-to-connect-sync-endpoint-api-v2/endpoint4.png)
+7. 在 [ **描述** ] 頁面上的快顯視窗中，將優先順序設定為1到99的可用值， ![ 此螢幕擷取畫面會顯示醒目提示 [優先順序] 的 [編輯輸出同步處理規則] 視窗。](media/how-to-connect-sync-endpoint-api-v2/endpoint4.png)
 
 8. 在 [轉換] 頁面上，更新 [成員] 轉換的 [來源] 值，並以 50001 與 250000 之間的值取代 ‘50000’。 這項取代作業會增加將同步至 Azure AD 之群組的成員資格大小上限。 我們建議從 100k 的數字開始，以了解同步處理大型群組對您同步效能所造成的影響。 
  

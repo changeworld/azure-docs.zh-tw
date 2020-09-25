@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 05/15/2020
 ms.author: Zhchia
-ms.openlocfilehash: 7aaa87691f1ebfa79cd58dae56bf9bd1b979131b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 41ffd7606cb4c01cd8c2da56898b67cf177c358e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88538578"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329171"
 ---
 # <a name="tutorial-configure-8x8-for-automatic-user-provisioning"></a>教學課程：設定 8x8 來自動佈建使用者
 
@@ -94,13 +94,13 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
 3. 選取 [佈建] 索引標籤。按一下 [開始使用]。
 
-    ![[佈建] 索引標籤](common/provisioning.png)
+    ![已呼叫 [布建] 選項的 [管理選項] 螢幕擷取畫面。](common/provisioning.png)
 
    ![[開始使用] 刀鋒視窗](./media/8x8-provisioning-tutorial/get-started.png)
 
 4. 將 [佈建模式] 設定為 [自動]。
 
-    ![佈建索引標籤](common/provisioning-automatic.png)
+    ![[布建模式] 下拉式清單的螢幕擷取畫面，其中已呼叫 [自動] 選項。](common/provisioning-automatic.png)
 
 5. 在 [管理員認證] 區段下，將 **8x8 URL** 從 Configuration Manager 複製到**租用戶 URL**。 將 **8x8 API 權杖** 從 Configuration Manager 複製到**祕密權杖**。 按一下 [測試連線]，以確保 Azure AD 可以連線至 8x8。 如果連線失敗，請確定您的 8x8 帳戶具有系統管理員權限並再試一次。
 

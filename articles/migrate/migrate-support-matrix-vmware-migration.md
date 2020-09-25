@@ -3,12 +3,12 @@ title: Azure Migrate 中的 VMware 遷移支援
 description: 瞭解 Azure Migrate 中 VMware VM 遷移的支援。
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 430b491780e10840274f16315b159a8095c11889
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: f7fd5b15d9671ed160166d16c1aceda818faa8e0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89612533"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318138"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>VMware 遷移的支援矩陣
 
@@ -41,7 +41,7 @@ ms.locfileid: "89612533"
 --- | ---
 **VMware vCenter Server** | 版本5.5、6.0、6.5 或6.7。
 **VMware vSphere ESXI 主機** | 版本5.5、6.0、6.5 或6.7。
-**vCenter Server 許可權** | 無代理程式遷移使用 [遷移設備](migrate-appliance.md)。 設備需要 vCenter Server 中的這些許可權：<br/><br/> - **資料存放區。流覽**：允許流覽 VM 記錄檔，以針對快照建立和刪除進行疑難排解。<br/><br/> - **資料存放區. FileManagement**：允許資料存放區瀏覽器中的讀取/寫入/刪除/重新命名作業，以疑難排解快照集的建立和刪除。<br/><br/> - **VirtualMachine.Config。變更追蹤**：允許啟用或停用 VM 磁片的變更追蹤，以提取快照之間變更的資料區塊。<br/><br/> - **VirtualMachine.Config。DiskLease**：允許 VM 的磁片租用作業，使用 VMware vSphere 的虛擬磁片開發工具組 (VDDK) 來讀取磁片。<br/><br/> - **VirtualMachine DiskAccess**：特別針對 vSphere 6.0 和更新版本 () 允許在 VM 上開啟磁片，以在使用 VDDK 的磁片上進行隨機讀取存取。<br/><br/> - **VirtualMachine： DiskRandomRead**：允許在 VM 上開啟磁片，以使用 VDDK 來讀取磁片。<br/><br/> - **VirtualMachine： DiskRandomAccess**：允許在 VM 上開啟磁片，以使用 VDDK 來讀取磁片。<br/><br/> - **VirtualMachine. GetVmFiles**：允許在與 VM 相關聯的檔案上進行讀取作業，以下載記錄，並在發生失敗時進行疑難排解。<br/><br/> - VirtualMachine：允許建立和管理 VM 快照集以進行複寫。 ** \* **<br/><br/> - **虛擬機器。進行互動**：允許在遷移至 Azure 期間關閉 VM 的電源。
+**vCenter Server 許可權** | 無代理程式遷移使用 [遷移設備](migrate-appliance.md)。 設備需要 vCenter Server 中的這些許可權：<br/><br/> - **資料存放區。流覽**：允許流覽 VM 記錄檔，以針對快照建立和刪除進行疑難排解。<br/><br/> - **資料存放區. FileManagement**：允許資料存放區瀏覽器中的讀取/寫入/刪除/重新命名作業，以疑難排解快照集的建立和刪除。<br/><br/> - **VirtualMachine.Config。變更追蹤**：允許啟用或停用 VM 磁片的變更追蹤，以提取快照之間變更的資料區塊。<br/><br/> - **VirtualMachine.Config。DiskLease**：允許 VM 的磁片租用作業，使用 VMware vSphere 的虛擬磁片開發工具組 (VDDK) 來讀取磁片。<br/><br/> - **VirtualMachine DiskAccess**：特別針對 vSphere 6.0 和更新版本 () 允許在 VM 上開啟磁片，以在使用 VDDK 的磁片上進行隨機讀取存取。<br/><br/> - **VirtualMachine： DiskRandomRead**：允許在 VM 上開啟磁片，以使用 VDDK 來讀取磁片。<br/><br/> - **VirtualMachine： DiskRandomAccess**：允許在 VM 上開啟磁片，以使用 VDDK 來讀取磁片。<br/><br/> - **VirtualMachine. GetVmFiles**：允許在與 VM 相關聯的檔案上進行讀取作業，以下載記錄，並在發生失敗時進行疑難排解。<br/><br/> - VirtualMachine：允許建立和管理 VM 快照集以進行複寫。 ** \* **<br/><br/> - **VirtualMachine。關機**：允許在遷移至 Azure 期間關閉 VM 的電源。
 
 
 
@@ -53,10 +53,10 @@ ms.locfileid: "89612533"
 --- | ---
 **支援的作業系統** | 您可以遷移 Azure 所支援的 [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) 和 [Linux](../virtual-machines/linux/endorsed-distros.md) 作業系統。
 **Azure 中的 Windows Vm** | 您可能需要在遷移之前對 Vm [進行一些變更](prepare-for-migration.md#verify-required-changes-before-migrating) 。 
-**Azure 中的 Linux Vm** | 有些 VM 可能需要變更，才能在 Azure 中執行。<br/><br/> 針對 Linux，Azure Migrate 會自動為這些作業系統進行變更：<br/> -Red Hat Enterprise Linux 6.5 +、7.0 +<br/> -CentOS 6.5 +、7.0 +</br> -SUSE Linux Enterprise Server 12 SP1 +<br/> -Ubuntu 14.04 LTS、16.04 LTS、18.04 LTS<br/> -Debian 7、8。 針對其他作業系統，您必須手動進行 [必要的變更](prepare-for-migration.md#verify-required-changes-before-migrating) 。
+**Azure 中的 Linux Vm** | 有些 VM 可能需要變更，才能在 Azure 中執行。<br/><br/> 針對 Linux，Azure Migrate 會自動為這些作業系統進行變更：<br/> -Red Hat Enterprise Linux 8.1、8.0、7.8、7.7、7.6、7.5、7.4、7.0、6。x<br/> -分幣 OS 8.1、8.0、7.7、7.6、7.5、7.4、6。x</br> -SUSE Linux Enterprise Server 12 SP1 +<br/> -SUSE Linux Enterprise Server 15 SP1 <br/>-Ubuntu 19.04、19.10、14.04 LTS、16.04 LTS、18.04 LTS<br/> -Debian 7、8 <br/> Oracle Linux 7.7、7.7-CI<br/> 針對其他作業系統，您必須手動進行 [必要的變更](prepare-for-migration.md#verify-required-changes-before-migrating) 。
 **Linux 開機** | 如果/boot 是在專用磁碟分割上，它應該位於 OS 磁片上，而不會分散到多個磁片。<br/> 如果/boot 是根 (/) 磁碟分割的一部分，則 '/' 磁碟分割應位於 OS 磁片上，而不是跨越其他磁片。
-**UEFI 開機** | 不支援遷移具有 UEFI 開機的 Vm。
-**磁碟大小** | 2 TB 的 OS 磁片;適用于資料磁片的 8 TB。
+**UEFI 開機** | 支援。 以 UEFI 為基礎的 Vm 將會遷移至 Azure 第2代 Vm。 
+**磁碟大小** | 2 TB 的 OS 磁片 (BIOS 開機) ;4 TB 的 OS 磁片 (UEFI 開機) ;適用于資料磁片的 8 TB。
 **磁片限制** |  每個 VM 最多60個磁片。
 **加密的磁片/磁片區** | 具有加密磁片/磁片區的 Vm 不支援遷移。
 **共用磁碟叢集** | 不支援。
@@ -116,10 +116,10 @@ vSphere/ESXI 主機 | TCP 埠902上的輸入，可讓設備從快照集複寫資
 **網路/儲存體** | 如需最新資訊，請參閱 Site Recovery 的 [網路](../site-recovery/vmware-physical-azure-support-matrix.md#network) 和 [儲存體](../site-recovery/vmware-physical-azure-support-matrix.md#storage) 必要條件。 Azure Migrate 提供相同的網路/儲存體需求。
 **Azure 需求** | 如需最新資訊，請參閱 [Azure 網路](../site-recovery/vmware-physical-azure-support-matrix.md#azure-vm-network-after-failover)、 [儲存體](../site-recovery/vmware-physical-azure-support-matrix.md#azure-storage)和 Site Recovery 的 [計算](../site-recovery/vmware-physical-azure-support-matrix.md#azure-compute) 需求。 Azure Migrate 的 VMware 遷移需求相同。
 **行動服務** | 行動服務代理程式必須安裝在您想要遷移的每個 VM 上。
-**UEFI 開機** | 支援。
+**UEFI 開機** | 支援。 以 UEFI 為基礎的 Vm 將會遷移至 Azure 第2代 Vm。 
 **UEFI-安全開機**         | 不支援遷移。
 **目標磁片** | Vm 只能遷移至受控磁片， (標準 HDD、標準 SSD、Azure 中的 premium SSD) 。
-**磁碟大小** | 2 TB 的 OS 磁片;適用于資料磁片的 8 TB。
+**磁碟大小** | 2 TB 的 OS 磁片 (BIOS 開機) ;4 TB 的 OS 磁片 (UEFI 開機) ;適用于資料磁片的 8 TB。
 **磁片限制** |  每個 VM 最多63個磁片。
 **加密的磁片/磁片區** | 具有加密磁片/磁片區的 Vm 不支援遷移。
 **共用磁碟叢集** | 不支援。
@@ -173,6 +173,6 @@ VM 名稱 | 從 1 到 63 個字元。<br/><br/> 只能使用字母、數字和�
 在遷移後連接-Linux | 使用 SSH 進行遷移之後，使用 SSH 連線到 Azure Vm：<br/><br/> 在遷移之前，請在內部部署機器上，確認安全殼層服務是否設定為 [啟動]，且防火牆規則允許 SSH 連線。<br/><br/> 在容錯移轉之後，在 Azure VM 上，允許 SSH 埠的連入連線連線到已容錯移轉的 VM 上的網路安全性群組規則，以及其所連接的 Azure 子網。<br/><br/> 此外，新增 VM 的公用 IP 位址。  
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 [選取](server-migrate-overview.md) VMware 遷移選項。

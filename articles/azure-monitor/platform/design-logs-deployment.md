@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/20/2019
-ms.openlocfilehash: 49ab515c265b4b4444e7d4ca5b93c4e898e4cf54
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: a4186909db3d784938ada4baaaf08aba02b31d30
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90527304"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317118"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>設計 Azure 監視器記錄部署
 
@@ -62,7 +62,7 @@ Log Analytics 工作區提供：
 
 使用者可存取的資料是由下表所列的因素組合所決定。 以下各節將說明每個步驟。
 
-| 因素 | 描述 |
+| 因素 | 說明 |
 |:---|:---|
 | [存取模式](#access-mode) | 使用者用來存取工作區的方法。  定義可用資料的範圍以及套用的存取控制模式。 |
 | [存取控制模式](#access-control-mode) | 在工作區上設定，定義是否要在工作區或資源層級套用許可權。 |
@@ -131,22 +131,31 @@ Azure 監視器是一種大規模的資料服務，服務對象為每月需傳�
 
 如果您以高於工作區中所設定閾值的 80% 速率將資料傳送至工作區時，則每隔 6 小時會將事件傳送至工作區中的 [作業] 資料表，同時會持續超過閾值。 當內嵌的磁碟區速率高於閾值時，則系統會卸除某些資料，且每隔 6 小時會將事件傳送至工作區中的 [作業] 資料表，同時會持續超過閾值。 如果您的內嵌磁片區速率持續超過閾值，或您很快就會到達該速率，您可以藉由開啟支援要求來要求在中增加。 
 
-若要在您的工作區中 approching 或達到內嵌磁片區速率限制時收到通知，請使用下列查詢建立 [記錄警示規則](alerts-log.md) ，其中的結果數目大於零、5分鐘的評估期，以及5分鐘的頻率。
+若要在您的工作區中收到接近或達到內嵌磁片區速率限制的通知，請使用下列查詢建立記錄警示規則，並根據大於零的結果數目、5分鐘的評估期和5分鐘的頻率來建立 [記錄警示規則](alerts-log.md) 。
 
-已達 80% 閾值的擷取磁碟區速率：
+超過閾值的內嵌磁片區速率
 ```Kusto
 Operation
-|where OperationCategory == "Ingestion"
-|where Detail startswith "The data ingestion volume rate crossed 80% of the threshold"
+| where Category == "Ingestion"
+| where OperationKey == "Ingestion rate limit"
+| where Level == "Error"
 ```
 
-已達閾值的擷取磁碟區速率：
+超過閾值80% 的內嵌磁片區速率
 ```Kusto
 Operation
-|where OperationCategory == "Ingestion"
-|where Detail startswith "The data ingestion volume rate crossed the threshold"
+| where Category == "Ingestion"
+| where OperationKey == "Ingestion rate limit"
+| where Level == "Warning"
 ```
 
+超過閾值70% 的內嵌磁片區速率
+```Kusto
+Operation
+| where Category == "Ingestion"
+| where OperationKey == "Ingestion rate limit"
+| where Level == "Info"
+```
 
 ## <a name="recommendations"></a>建議
 

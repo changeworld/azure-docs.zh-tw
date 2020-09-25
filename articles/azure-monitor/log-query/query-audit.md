@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/03/2020
-ms.openlocfilehash: bfaa9d8908d9401441d8811c3edcd087781b1d89
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: df937ba7f23f2789d929a043c7239ababb24374f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89458632"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91285055"
 ---
 # <a name="audit-queries-in-azure-monitor-logs-preview"></a>Azure 監視器記錄中的 Audit 查詢 (preview) 
 記錄查詢 audit 記錄檔提供有關在 Azure 監視器中執行之記錄查詢的遙測。 這包括執行查詢時、執行的物件、使用的工具、查詢文字，以及描述查詢執行的效能統計資料等資訊。
@@ -64,11 +64,12 @@ ms.locfileid: "89458632"
 
 ## <a name="considerations"></a>考量
 
+- 只有在使用者內容中執行查詢時，才會記錄查詢。 將不會記錄 Azure 內的服務對服務。 這項排除所包含的兩個主要查詢集合是計費計算和自動化的警示執行。 在警示的情況下，將不會記錄排程的警示查詢本身;警示建立畫面中的第一次執行警示是在使用者內容中執行，而且將可供進行審核。 
 - 來自 Azure 資料總管 proxy 的查詢無法使用效能統計資料。 這些查詢的所有其他資料仍會填入。
 - [混淆字串常](/azure/data-explorer/kusto/query/scalar-data-types/string#obfuscated-string-literals)值之字串的*h*提示不會影響查詢審核記錄。 查詢將會完全依照提交方式來捕捉，而不會將字串模糊化。 您應確定只有具有合規性許可權的使用者可以使用 Log Analytics 工作區中可用的各種 RBAC 模式來查看這項資料。
 - 對於包含多個工作區資料的查詢，只會在使用者具有存取權的工作區中捕捉查詢。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 深入瞭解 [診斷設定](../platform/diagnostic-settings.md)。
 - 深入瞭解 [優化記錄查詢](query-optimization.md)。

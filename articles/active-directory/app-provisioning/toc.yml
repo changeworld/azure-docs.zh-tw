@@ -78,7 +78,7 @@
     - name: 建立 SCIM 端點和設定佈建
       href: use-scim-to-provision-users-and-groups.md
     - name: 使用 MS Graph 將組態自動化
-      href: application-provisioning-configure-api.md
+      href: 'https://docs.microsoft.com/graph/application-provisioning-configure-api'
 - name: 參考
   items:
     - name: SCIM 2.0 通訊協定合規性
@@ -109,7 +109,7 @@
       href: 'https://azure.microsoft.com/pricing/details/active-directory'
     - name: 服務更新
       href: 'https://azure.microsoft.com/updates/?product=active-directory'
-    - name: Stack Overflow
+    - name: 堆疊溢位
       href: 'https://stackoverflow.com/questions/tagged/azure-active-directory'
     - name: 影片
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=active-directory'

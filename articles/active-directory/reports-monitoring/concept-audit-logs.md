@@ -13,20 +13,22 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 07/17/2019
+ms.date: 09/17/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 86eec0cf7108e2d3b47f7b98dbdaffe76be8afd8
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 23cfc2ea17e1801ec4caeea9e8933cfdc72e33d4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90603504"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331245"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory 入口網站中的稽核活動報告 
 
 透過 Azure Active Directory (Azure AD) 報告，您可以取得判斷環境執行狀況所需的資訊。
+
+
 
 報告架構由下列元件組成：
 
@@ -45,7 +47,7 @@ ms.locfileid: "90603504"
 
 ## <a name="audit-logs"></a>稽核記錄
 
-Azure AD 稽核記錄會提供符合規範的系統活動記錄。 若要存取 audit 報告，請在**Azure Active Directory**的 [**監視**] 區段中選取 [ **audit 記錄**檔]。 請注意，「審核記錄」可能會有最多一小時的延遲，因此在您完成工作之後，審核活動資料可能會花很長的時間才會顯示在入口網站中。
+Azure AD 稽核記錄會提供符合規範的系統活動記錄。 若要存取 audit 報告，請在**Azure Active Directory**的 [**監視**] 區段中選取 [ **audit 記錄**檔]。 
 
 
 
@@ -62,15 +64,15 @@ Azure AD 稽核記錄會提供符合規範的系統活動記錄。 若要存取 
 
 您可以按一下工具列中的 [資料 **行** ]，以自訂清單查看。
 
-![稽核記錄](./media/concept-audit-logs/columns.png "稽核記錄")
+![Audit 資料行](./media/concept-audit-logs/columns.png "Audit 資料行")
 
 這可讓您顯示其他欄位，或移除已顯示的欄位。
 
-![稽核記錄](./media/concept-audit-logs/columnselect.png "稽核記錄")
+![移除欄位](./media/concept-audit-logs/columnselect.png "移除欄位")
 
 選取清單檢視中的項目，即可取得更詳細的資訊。
 
-![稽核記錄](./media/concept-audit-logs/details.png "稽核記錄")
+![選取專案](./media/concept-audit-logs/details.png "選取專案")
 
 
 ## <a name="filtering-audit-logs"></a>篩選稽核記錄
@@ -85,7 +87,7 @@ Azure AD 稽核記錄會提供符合規範的系統活動記錄。 若要存取 
 - 啟動者 (執行者)
 - 日期範圍
 
-![稽核記錄](./media/concept-audit-logs/filter.png "稽核記錄")
+![篩選物件](./media/concept-audit-logs/filter.png "Filter 物件")
 
 **服務**篩選器可讓您從下列服務的下拉式清單中選取：
 
@@ -157,7 +159,7 @@ Azure AD 稽核記錄會提供符合規範的系統活動記錄。 若要存取 
 
 您也可以選取 [ **下載** ] 按鈕，選擇下載篩選過的資料，最多可達250000筆記錄。 您可以下載 CSV 或 JSON 格式的記錄檔。 您可以下載的記錄數目會受限於 [Azure Active Directory 報告保留原則](reference-reports-data-retention.md)。
 
-![稽核記錄](./media/concept-audit-logs/download.png "稽核記錄")
+![下載資料](./media/concept-audit-logs/download.png "下載資料")
 
 ## <a name="audit-logs-shortcuts"></a>稽核記錄快速鍵
 
@@ -188,11 +190,11 @@ Azure AD 稽核記錄會提供符合規範的系統活動記錄。 若要存取 
 
 如果您只想要檢查與使用者相關的審核資料，您可以在 [**使用者**] 索引標籤的 [**監視**] 區段中，找到 [ **Audit 記錄**檔] 底下的篩選視圖。這個進入點已**usermanagement program.cs**為預先選取的類別。
 
-![稽核記錄](./media/concept-audit-logs/users.png "稽核記錄")
+![使用者](./media/concept-audit-logs/users.png "User")
 
 如果您只想要檢查與群組相關的審核資料，您可以在 [**群組**] 索引標籤的 [**監視**] 區段中，找到 [ **Audit 記錄**檔] 底下的篩選視圖。這個進入點已**GroupManagement**為預先選取的類別。
 
-![稽核記錄](./media/concept-audit-logs/groups.png "稽核記錄")
+![篩選群組](./media/concept-audit-logs/groups.png "篩選群組")
 
 ### <a name="enterprise-applications-audit-logs"></a>企業應用程式稽核記錄
 
@@ -206,7 +208,7 @@ Azure AD 稽核記錄會提供符合規範的系統活動記錄。 若要存取 
 
 如果您想檢閱應用程式相關的稽核資料，可以在 [企業應用程式]**** 刀鋒視窗的 [活動]**** 區段中的 [稽核記錄]**** 之下找到篩選過的檢視。 這個進入點會將 **企業應用程式** 預先選取為 **應用程式類型**。
 
-![稽核記錄](./media/concept-audit-logs/enterpriseapplications.png "稽核記錄")
+![企業應用程式](./media/concept-audit-logs/enterpriseapplications.png "企業應用程式")
 
 ## <a name="microsoft-365-activity-logs"></a>Microsoft 365 活動記錄
 

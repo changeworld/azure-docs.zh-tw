@@ -2,13 +2,13 @@
 title: 將資源部署至管理群組
 description: 說明如何在 Azure Resource Manager 範本的管理群組範圍中部署資源。
 ms.topic: conceptual
-ms.date: 09/15/2020
-ms.openlocfilehash: 2325e9f5a03f7451492c9b9b8e929df95ddc3852
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.date: 09/24/2020
+ms.openlocfilehash: 0c5ed8d2427a9e0329db6ebd7f0aa48aa4912a48
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90605221"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91284817"
 ---
 # <a name="create-resources-at-the-management-group-level"></a>在管理群組層級建立資源
 
@@ -45,7 +45,7 @@ ms.locfileid: "90605221"
 
 * [「標記」](/azure/templates/microsoft.resources/tags)
 
-### <a name="schema"></a>結構描述
+## <a name="schema"></a>結構描述
 
 用於管理群組部署的架構與資源群組部署的架構不同。
 
@@ -60,6 +60,30 @@ https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeployment
 ```json
 https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#
 ```
+
+## <a name="deployment-scopes"></a>部署範圍
+
+部署至管理群組時，您可以將部署命令中指定的管理群組設為目標，也可以選取租使用者中的另一個管理群組。
+
+在範本的資源區段中定義的資源會從部署命令套用至管理群組。
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/default-mg.json" highlight="5":::
+
+若要以另一個管理群組為目標，請新增嵌套部署並指定 `scope` 屬性。 將 `scope` 屬性設定為格式的值 `Microsoft.Management/managementGroups/<mg-name>` 。
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/scope-mg.json" highlight="10,17,22":::
+
+您也可以將管理群組中的訂用帳戶或資源群組設為目標。 部署範本的使用者必須擁有指定範圍的存取權。
+
+若要以管理群組內的訂用帳戶為目標，請使用嵌套部署和 `subscriptionId` 屬性。
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/mg-to-subscription.json" highlight="10,18":::
+
+若要以該訂用帳戶內的資源群組為目標，請新增另一個嵌套的部署和 `resourceGroup` 屬性。
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/mg-to-resource-group.json" highlight="10,21,25":::
+
+若要使用管理群組部署來建立訂用帳戶內的資源群組，並將儲存體帳戶部署到該資源群組，請參閱 [部署至訂用帳戶和資源群組](#deploy-to-subscription-and-resource-group)。
 
 ## <a name="deployment-commands"></a>部署命令
 
@@ -94,97 +118,6 @@ New-AzManagementGroupDeployment `
 您可以提供部署的名稱，或使用預設的部署名稱。 預設名稱是範本檔案的名稱。 例如，部署名為 **azuredeploy.json** 的範本會建立預設的部署名稱 **azuredeploy**。
 
 對於每個部署名稱而言，此位置是不可變的。 當某個位置已經有名稱相同的現有部署時，您無法在其他位置建立部署。 如果您收到錯誤代碼 `InvalidDeploymentLocation`，請使用不同的名稱或與先前該名稱部署相同的位置。
-
-## <a name="deployment-scopes"></a>部署範圍
-
-部署至管理群組時，您可以將部署命令或租使用者中其他管理群組中指定的管理群組設為目標。 您也可以將管理群組中的訂用帳戶或資源群組設為目標。 部署範本的使用者必須擁有指定範圍的存取權。
-
-在範本的資源區段中定義的資源會從部署命令套用至管理群組。
-
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "resources": [
-        management-group-level-resources
-    ],
-    "outputs": {}
-}
-```
-
-若要以另一個管理群組為目標，請新增嵌套部署並指定 `scope` 屬性。
-
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "mgName": {
-            "type": "string"
-        }
-    },
-    "variables": {
-        "mgId": "[concat('Microsoft.Management/managementGroups/', parameters('mgName'))]"
-    },
-    "resources": [
-        {
-            "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2019-10-01",
-            "name": "nestedDeployment",
-            "scope": "[variables('mgId')]",
-            "location": "eastus",
-            "properties": {
-                "mode": "Incremental",
-                "template": {
-                    nested-template-with-resources-in-different-mg
-                }
-            }
-        }
-    ],
-    "outputs": {}
-}
-```
-
-若要以管理群組內的訂用帳戶為目標，請使用嵌套部署和 `subscriptionId` 屬性。 若要以該訂用帳戶內的資源群組為目標，請新增另一個嵌套的部署和 `resourceGroup` 屬性。
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "resources": [
-    {
-      "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2020-06-01",
-      "name": "nestedSub",
-      "location": "westus2",
-      "subscriptionId": "00000000-0000-0000-0000-000000000000",
-      "properties": {
-        "mode": "Incremental",
-        "template": {
-          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-          "contentVersion": "1.0.0.0",
-          "resources": [
-            {
-              "type": "Microsoft.Resources/deployments",
-              "apiVersion": "2020-06-01",
-              "name": "nestedRG",
-              "resourceGroup": "rg2",
-              "properties": {
-                "mode": "Incremental",
-                "template": {
-                  nested-template-with-resources-in-resource-group
-                }
-              }
-            }
-          ]
-        }
-      }
-    }
-  ]
-}
-```
-
-若要使用管理群組部署來建立訂用帳戶內的資源群組，並將儲存體帳戶部署到該資源群組，請參閱 [部署至訂用帳戶和資源群組](#deploy-to-subscription-and-resource-group)。
 
 ## <a name="use-template-functions"></a>使用範本函式
 

@@ -2,41 +2,37 @@
 title: 概念-網路互連能力
 description: 瞭解 Azure VMware 解決方案中網路和互連能力的重要層面和使用案例。
 ms.topic: conceptual
-ms.date: 07/23/2020
-ms.openlocfilehash: 3420f6aa61ced7632175f3e12edda9de72639517
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.date: 09/21/2020
+ms.openlocfilehash: 4ffcdd8ea42df127ee1480927f4fdf2eb8f137b8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88750575"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316883"
 ---
-# <a name="azure-vmware-solution-preview-networking-and-interconnectivity-concepts"></a>Azure VMware 解決方案預覽版網路和互連能力概念
+# <a name="azure-vmware-solution-networking-and-interconnectivity-concepts"></a>Azure VMware 解決方案網路和互連能力概念
 
-Azure VMware Solution (AVS) 提供可供內部部署和 Azure 架構環境或資源的使用者和應用程式存取的 VMware 私用雲端環境。 Azure ExpressRoute 和 VPN 連線等服務會提供連線能力。 這些服務需要特定的網路位址範圍和防火牆埠來啟用服務。  
+[!INCLUDE [avs-networking-description](includes/avs-networking-description.md)]
 
-部署私用雲端時，會建立用於管理、布建和 vMotion 的私人網路。 它們可用來存取 vCenter 和 NSX-T 管理員以及虛擬機器 vMotion 或部署。 您可以從 Azure 中的 VNet 或從內部部署環境存取所有的私人網路。 ExpressRoute Global Reach 用來將私人雲端連線到內部部署環境，而此連線需要在您的訂用帳戶中具有 ExpressRoute 線路的 VNet 才能運作。
+互連能力的實用觀點是考慮兩種類型的 Azure VMware 解決方案私用雲端實施：
 
-此外，在部署私用雲端時，會布建並提供網際網路和 Azure 服務的存取權，讓生產網路上的 Vm 可以取用它們。  預設會停用新私人雲端的網際網路存取，而且可以隨時啟用或停用。
+1. [**基本僅限 azure 的互連能力**](#azure-virtual-network-interconnectivity) 可讓您在 azure 中只使用單一虛擬網路來管理和使用您的私人雲端。 此實作為最適合不需要從內部部署環境存取的 Azure VMware 解決方案評估或實施。
 
-互連能力的實用觀點是考慮這兩種類型的 AVS 私用雲端實施：
-
-1. [**基本僅限 azure 的互連能力**](#azure-virtual-network-interconnectivity) 可讓您在 azure 中只使用單一虛擬網路來管理和使用您的私人雲端。 這項執行最適合不需要從內部部署環境存取的 AVS 評估或實施。
-
-1. [**完整內部部署至私用雲端互連能力**](#on-premises-interconnectivity) 延伸了基本的僅限 Azure 的實作為，包括內部部署和 AVS 私用雲端之間的互連能力。
+1. [**完整內部部署至私用雲端互連能力**](#on-premises-interconnectivity) 可延伸基本僅限 Azure 的實作為，包括內部部署與 Azure VMware 解決方案私人雲端之間的互連能力。
  
-在本文中，我們將討論一些建立網路功能和互連能力的重要概念，包括需求和限制。 此外，我們也將討論這兩種 AVS 私用雲端互連能力實施類型的詳細資訊。 本文提供您需要知道的資訊，讓您設定網路以正確地使用 AVS。
+在本文中，我們將討論一些建立網路功能和互連能力的重要概念，包括需求和限制。 我們也將涵蓋兩種 Azure VMware Solution 私用雲端互連能力實施類型的詳細資訊。 本文提供您需要知道的資訊，以設定您的網路以正確使用 Azure VMware 解決方案。
 
-## <a name="avs-private-cloud-use-cases"></a>AVS 私用雲端使用案例
+## <a name="azure-vmware-solution-private-cloud-use-cases"></a>Azure VMware 解決方案私用雲端使用案例
 
-AVS 私人雲端的使用案例包括：
+Azure VMware 解決方案私人雲端的使用案例包括：
 - 雲端中的新 VMware VM 工作負載
-- VM 工作負載高載至雲端 (內部部署到 AVS) 
-- 將 VM 工作負載遷移至雲端 (內部部署到 AVS) 
-- 嚴重損壞修復 (AVS 到 AVS 或內部部署到 AVS) 
+- VM 工作負載高載至雲端 (內部部署至 Azure VMware 解決方案) 
+- 將 VM 工作負載遷移至雲端 (內部部署至 Azure VMware 解決方案僅) 
+- 嚴重損壞修復 (Azure vmware 解決方案至 azure VMware 解決方案或內部部署至 Azure VMware 解決方案) 
 - Azure 服務的使用量
 
 > [!TIP]
-> 所有適用于 AVS 服務的使用案例都會啟用內部部署至私人雲端連線。
+> Azure VMware 解決方案服務的所有使用案例都會啟用內部部署對私人雲端連線。
 
 ## <a name="azure-virtual-network-interconnectivity"></a>Azure 虛擬網路互連能力
 
@@ -61,10 +57,10 @@ AVS 私人雲端的使用案例包括：
 
 若要完整互連能力至您的私人雲端，請啟用 ExpressRoute 全球存取範圍，然後要求授權金鑰和私用對等互連識別碼，以在 Azure 入口網站的全球存取範圍內。 授權金鑰和對等互連識別碼是用來在您的訂用帳戶中的 ExpressRoute 線路和新私人雲端的 ExpressRoute 線路之間建立全球存取範圍。 一旦連結之後，這兩個 ExpressRoute 線路會將內部部署環境之間的網路流量路由傳送至私人雲端。  請參閱教學課程，以針對要求和使用授權金鑰和對等互連識別碼的程式， [建立 ExpressRoute 全球存取範圍對等互連至私人雲端](tutorial-expressroute-global-reach-private-cloud.md) 。
 
-## <a name="next-steps"></a>後續步驟 
 
-- 深入瞭解網路連線 [能力的考慮和需求](tutorial-network-checklist.md)。 
-- 瞭解 [私用雲端儲存體概念](concepts-storage.md)。
+
+## <a name="next-steps"></a>後續步驟 
+瞭解 [私用雲端儲存體概念](concepts-storage.md)。
 
 
 <!-- LINKS - external -->

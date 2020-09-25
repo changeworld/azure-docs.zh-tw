@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 09/23/2020
 ms.author: erhopf
-ms.openlocfilehash: d4da9a819d7aa96992259112c75154b1651341ac
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: c55d69e99715a0c646c4e836df06cf105f9770bf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90604734"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319096"
 ---
 # <a name="inspect-custom-speech-data"></a>檢查自訂語音資料
 
@@ -35,7 +35,7 @@ ms.locfileid: "90604734"
 3. 按一下 [ **加入測試**]。
 4. 選取 [ **檢查品質 (僅限音訊的資料) **。 提供測試的名稱、描述，然後選取您的音訊資料集。
 5. 選取最多兩個您想要測試的模型。
-6. 按一下 [建立]。
+6. 按一下頁面底部的 [新增] 。
 
 成功建立測試之後，您可以看到模型如何轉譯您所指定的音訊資料集，或將兩個模型的結果與並排比較。
 
@@ -79,11 +79,13 @@ ms.locfileid: "90604734"
 
 ### <a name="edit-transcription-by-listening-to-audio"></a>藉由接聽音訊來編輯轉譯
 
-資料上傳成功之後，請按一下每個專案名稱以查看資料的詳細資料。 詳細資料頁面會列出資料集中的所有檔案，而且您可以按一下所需的語句。 針對每個語句，您可以播放音訊並檢查文字記錄，並在找到任何插入、刪除或替代錯誤時編輯轉譯。 如需錯誤類型的詳細資訊，請參閱 [資料評估](how-to-custom-speech-evaluate-data.md) 的作法。
+資料上傳成功之後，請按一下每個專案名稱以查看資料的詳細資料。 您也可以使用 [**上一****步] 和 [下一步]** 來移動每個檔案。
+
+詳細資料頁面會列出每個音訊檔案中的所有區段，您可以按一下所需的語句。 針對每個語句，您可以播放音訊並檢查文字記錄，並在找到任何插入、刪除或替代錯誤時編輯轉譯。 如需錯誤類型的詳細資訊，請參閱 [資料評估](how-to-custom-speech-evaluate-data.md) 的作法。
 
 ![編輯器頁面](media/custom-speech/custom-speech-editor.png)
 
-如果音訊檔很長，則會自動分成較小的片段。 您可以使用 [**上一****步] 和 [下一步]** 在頁面之間移動來逐一編輯這些專案。 進行編輯之後，請按一下 [ **儲存** ] 按鈕。
+進行編輯之後，請按一下 [ **儲存** ] 按鈕。
 
 ### <a name="export-datasets-from-the-editor"></a>從編輯器匯出資料集
 

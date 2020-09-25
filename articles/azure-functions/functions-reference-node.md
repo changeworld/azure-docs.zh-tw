@@ -4,13 +4,13 @@ description: 了解如何使用 JavaScript 開發函式。
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 6ff56ba6dc85901c8cdc7a9b06fbc261feb8792d
-ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
+ms.custom: devx-track-js
+ms.openlocfilehash: bd5eea6d97ca5ff20622c651b2c6ee75f9014d55
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89055323"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317171"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions JavaScript 開發人員指南
 
@@ -204,8 +204,8 @@ module.exports = (context) => {
 | 屬性名稱  | 類型  | 描述 |
 |---------|---------|---------|
 | `invocationId` | String | 提供特定函式呼叫的唯一識別碼。 |
-| `functionName` | 字串 | 提供正在執行之函式的名稱 |
-| `functionDirectory` | 字串 | 提供函數應用程式目錄。 |
+| `functionName` | String | 提供正在執行之函式的名稱 |
+| `functionDirectory` | String | 提供函數應用程式目錄。 |
 
 下列範例顯示如何傳回 `invocationId` 。
 
@@ -293,7 +293,7 @@ context.log(message)
 可讓您寫入預設追蹤層級的資料流函式記錄。 `context.log` 上有其他可用的記錄方法，可讓您在其他追蹤層級寫入函式記錄︰
 
 
-| 方法                 | 描述                                |
+| 方法                 | 說明                                |
 | ---------------------- | ------------------------------------------ |
 | **_訊息_ (錯誤) **   | 寫入錯誤層級或更低層級的記錄。   |
 | **warn(_message_)**    | 寫入警告層級或更低層級的記錄。 |
@@ -370,7 +370,7 @@ HTTP 和 Webhook 觸發程序以及 HTTP 輸出繫結會使用要求和回應物
 
 `context.req` (要求) 物件具有下列屬性：
 
-| 屬性      | 描述                                                    |
+| 屬性      | 說明                                                    |
 | ------------- | -------------------------------------------------------------- |
 | _body_        | 包含要求本文的物件。               |
 | _頭_     | 包含要求標頭的物件。                   |
@@ -385,7 +385,7 @@ HTTP 和 Webhook 觸發程序以及 HTTP 輸出繫結會使用要求和回應物
 
 `context.res` (回應) 物件具有下列屬性：
 
-| 屬性  | 描述                                               |
+| 屬性  | 說明                                               |
 | --------- | --------------------------------------------------------- |
 | _body_    | 包含回應本文的物件。         |
 | _頭_ | 包含回應標頭的物件。             |
@@ -487,7 +487,7 @@ module.exports = function(context) {
 
 
 ### <a name="using-kudu"></a>使用 Kudu
-1. 移至 `https://<function_app_name>.scm.azurewebsites.net`。
+1. 前往 `https://<function_app_name>.scm.azurewebsites.net`。
 
 2. 按一下**偵錯主控台**  >  **CMD**]。
 

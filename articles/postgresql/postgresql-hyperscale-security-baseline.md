@@ -1,22 +1,22 @@
 ---
-title: 適用于適用於 PostgreSQL 的 Azure 資料庫的 Azure 安全性基準-超大規模
-description: 適用於 PostgreSQL 的 Azure 資料庫超大規模安全性基準提供的程式指引和資源，可讓您執行 Azure 安全性基準測試中所指定的安全性建議。
+title: '適用于適用於 PostgreSQL 的 Azure 資料庫的 Azure 安全性基準-超大規模 (Citus) '
+description: 適用於 PostgreSQL 的 Azure 資料庫超大規模 (Citus) 安全性基準提供的程式指引和資源，可讓您執行 Azure 安全性基準測試中所指定的安全性建議。
 author: msmbaldwin
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 37ebd1702ed8ef059b38378b89f5a5cb61748568
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: c82451ca9f1f974aba7578b0dfc4f6f0eb99ac16
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89231294"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318121"
 ---
-# <a name="azure-security-baseline-for-azure-database-for-postgresql---hyperscale"></a>適用于適用於 PostgreSQL 的 Azure 資料庫的 Azure 安全性基準-超大規模
+# <a name="azure-security-baseline-for-azure-database-for-postgresql---hyperscale-citus"></a>適用于適用於 PostgreSQL 的 Azure 資料庫的 Azure 安全性基準-超大規模 (Citus) 
 
-適用于適用於 PostgreSQL 的 Azure 資料庫超大規模的 Azure 安全性基準包含可協助您改善部署安全性狀態的建議。
+適用于適用於 PostgreSQL 的 Azure 資料庫超大規模 (Citus 的 Azure 安全性基準) 包含可協助您改善部署安全性狀態的建議。
 
 此服務的基準取自 [Azure 安全性效能評定 1.0 版](https://docs.microsoft.com/azure/security/benchmarks/overview)，其會提供如何在 Azure 上使用最佳做法指引來保護雲端解決方案的建議。
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 15f4f5d9eea8f53a894289160df00a1c1d8d8048
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 0f1bde255355e7a4f47df6a3969837410692cef5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90601753"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91266054"
 ---
 # <a name="continuous-access-evaluation"></a>持續存取評估
 
@@ -66,8 +66,8 @@ Exchange 和 SharePoint 可以同步處理重要的條件式存取原則，以�
 
 | | Office web 應用程式 | Office Win32 應用程式 | IOS 版 Office | Android 版 Office | Mac 版 Office |
 | :--- | :---: | :---: | :---: | :---: | :---: |
-| **SharePoint Online** | 支援 | 支援 | 不支援 | 支援 | 支援 |
-| **Exchange Online** | 支援 | 支援 | 不支援 | 支援 | 支援 |
+| **SharePoint Online** | 不支援 | 支援 | 支援 | 支援 | 支援 |
+| **Exchange Online** | 不支援 | 支援 | 支援 | 支援 | 支援 |
 
 ### <a name="client-side-claim-challenge"></a>用戶端宣告挑戰
 

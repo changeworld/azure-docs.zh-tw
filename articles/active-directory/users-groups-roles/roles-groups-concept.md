@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2932bfc2f9606326ae38711237e5e10912d41aca
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 1c3143dac79b37ff6dac04856311394440dec9a1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90053764"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317407"
 ---
 # <a name="use-cloud-groups-to-manage-role-assignments-in-azure-active-directory-preview"></a>使用雲端群組來管理 Azure Active Directory (預覽中的角色指派) 
 
@@ -64,7 +64,7 @@ Azure AD 可讓您使用名為 isAssignableToRole 的新屬性（稱為群組）
   - 角色指派的結束時間可能會不正確地顯示。
   - 在 PIM 入口網站中，[ **我的角色** ] 只會顯示一個角色指派，不論指派 (透過一或多個群組授與的方法數目，以及直接) 。
 - *僅 Azure AD P2 授權客戶* 即使在刪除群組之後，它仍會在 PIM UI 中顯示為該角色的合格成員。 功能沒問題;這只是 Azure 入口網站的快取問題。  
-- Exchange 系統管理中心尚未透過群組辨識角色成員資格，但 PowerShell Cmdlet 將可運作。
+- 使用新的 [Exchange 系統管理中心](https://admin.exchange.microsoft.com/) 透過群組成員資格指派角色。 舊的 Exchange 系統管理中心尚未支援這項功能。 Exchange PowerShell Cmdlet 將會如預期般運作。
 - Azure 資訊保護入口網站 (傳統入口網站) 無法透過群組辨識角色成員資格。 您可以 [遷移至統一的敏感度標籤平臺](/azure/information-protection/configure-policy-migrate-labels) ，然後使用 Office 365 安全性 & 合規性中心來使用群組指派來管理角色。
 
 我們正在修正這些問題。
@@ -73,7 +73,7 @@ Azure AD 可讓您使用名為 isAssignableToRole 的新屬性（稱為群組）
 
 使用此功能時，您的 Azure AD 組織中必須有可用的 Azure AD Premium P1 授權。 若要同時使用 Privileged Identity Management 進行即時角色啟用，您必須擁有可用的 Azure AD Premium P2 授權。 若要尋找您需求的正確授權，請參閱 [比較免費和 Premium 方案的正式運作功能](../fundamentals/active-directory-whatis.md#what-are-the-azure-ad-licenses)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [建立可指派角色的群組](roles-groups-create-eligible.md)
 - [將角色指派給角色可指派的群組](roles-groups-assign-role.md)

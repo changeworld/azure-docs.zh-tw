@@ -7,14 +7,14 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 04/14/2020
-ms.openlocfilehash: 62f30d8a0fe1b2f2397fc16161929279a148aaa2
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 741bea5129e5fa9660e198a74e23f0ef6c67dc23
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037502"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329749"
 ---
-# <a name="support-for-the-microsoft-commercial-marketplace"></a>支援 Microsoft 商業 marketplace
+# <a name="support-for-the-microsoft-commercial-marketplace"></a>Microsoft 商業 marketplace 的支援
 
 您對以 Microsoft 商業市集發行者身分開始使用有任何疑問嗎？ 以下是商業市集的支援選項清單。 除了下列資源之外，您也可以在 [C + AI 社群論壇的 Marketplace 頻道](https://www.microsoftpartnercommunity.com/t5/Marketplace/bd-p/2222)取得許多問題的解答。  
 
@@ -38,8 +38,7 @@ ms.locfileid: "88037502"
 ## <a name="marketing-resources"></a>行銷資源  
 
 | 支援通道 | 描述 | 可用性 |  
-|:--- |:--- |:--- |  
-| 電子郵件：[cosell@microsoft.com](mailto:cosell@microsoft.com) | 支援上架程序和有關共同銷售計劃的問題。 | 以美國太平洋時區為準。 |  
+|:--- |:--- |:--- |
 | 電子郵件：[gtm@microsoft.com](mailto:gtm@microsoft.com) | 支援 GTM 權益和計劃問題。 | 上班時間採用美國太平洋時區。 |  
 | 電子郵件：[cebrand@microsoft.com](mailto:cebrand@microsoft.com) | 回答和 Azure 標誌與商標的使用方式有關的問題。 |  |  
 

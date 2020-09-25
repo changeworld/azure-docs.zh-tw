@@ -3,12 +3,12 @@ title: 原則定義結構的詳細資料
 description: 描述如何使用原則定義來建立組織中 Azure 資源的慣例。
 ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: a049134a32fd6026cc1e0c4044a7b9d08fb9bd8f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: f9b64255723c6e53a6d8fe945bf19506ba30644e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90895382"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330276"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure 原則定義結構
 
@@ -102,16 +102,19 @@ Azure 原則內建和模式都是 [Azure 原則範例](../samples/index.md)。
 
 建立會強制執行標籤或位置的原則時，應該使用 `indexed`。 雖然並非必要，但它可防止不支援標籤和位置的資源在合規性結果中顯示為不符合規範。 有一個例外，就是**資源群組**和**訂用帳戶**。 原則定義若在資源群組或訂用帳戶上強制執行位置或標籤，就應該將 **mode** 設定為 `all`，並明確地以 `Microsoft.Resources/subscriptions/resourceGroups` 或 `Microsoft.Resources/subscriptions` 類型作為目標。 如需範例，請參閱[模式：標籤 - 範例 #1](../samples/pattern-tags.md)。 如需支援標籤的資源清單，請參閱 [Azure 資源的標籤支援](../../../azure-resource-manager/management/tag-support.md)。
 
-### <a name="resource-provider-modes-preview"></a><a name="resource-provider-modes"></a>資源提供者模式 (預覽)
+### <a name="resource-provider-modes"></a>資源提供者模式
 
-預覽期間目前支援下列資源提供者模式：
+以下是完整支援的資源提供者節點：
 
-- `Microsoft.ContainerService.Data`，用來管理 [Azure Kubernetes Service](../../../aks/intro-kubernetes.md) 上的許可控制站規則。 使用此資源提供者模式的定義 **必須** 使用 [EnforceRegoPolicy](./effects.md#enforceregopolicy) 效果。 此模型即將_淘汰_。
-- `Microsoft.Kubernetes.Data`，用來在 Azure 上或外部管理 Kubernetes 叢集。 使用此資源提供者模式的定義會使用效果 _audit_、 _deny_和 _disabled_。 使用 [EnforceOPAConstraint](./effects.md#enforceopaconstraint) 效果即將被 _取代_。
+- `Microsoft.Kubernetes.Data`，用來在 Azure 上或外部管理 Kubernetes 叢集。 使用此資源提供者模式的定義會使用效果 _audit_、 _deny_和 _disabled_。 [EnforceOPAConstraint](./effects.md#enforceopaconstraint)效果的使用已被_取代_。
+
+下列資源提供者模式目前支援作為 **預覽**：
+
+- `Microsoft.ContainerService.Data`，用來管理 [Azure Kubernetes Service](../../../aks/intro-kubernetes.md) 上的許可控制站規則。 使用此資源提供者模式的定義 **必須** 使用 [EnforceRegoPolicy](./effects.md#enforceregopolicy) 效果。 此模式已被 _取代_。
 - `Microsoft.KeyVault.Data`，用來管理 [Azure Key Vault](../../../key-vault/general/overview.md) 中的保存庫和憑證。
 
 > [!NOTE]
-> 資源提供者模式只支援內建原則定義，且在預覽期間不支援計劃。
+> 資源提供者模式僅支援內建原則定義。
 
 ## <a name="metadata"></a>中繼資料
 
@@ -552,9 +555,9 @@ Azure 原則支援下列類型的效果：
 - **Deny**：會在活動記錄中產生事件，並讓要求失敗
 - **DeployIfNotExists**：如果相關資源不存在，則會部署該資源
 - **Disabled**：不會評估資源是否符合原則規則的規範
-- **EnforceOPAConstraint** (預覽)：針對 Azure 上的自我管理 Kubernetes 叢集，設定 Open Policy Agent 許可控制站與 Gatekeeper v3 (預覽)
-- **EnforceRegoPolicy** (預覽)：在 Azure Kubernetes Service 中，設定 Open Policy Agent 許可控制站與 Gatekeeper v2 (預覽)
 - **Modify**：新增、更新或移除資源中已定義的標籤
+- **EnforceOPAConstraint** (已淘汰的) ：在 Azure 上為自我管理的 Kubernetes 叢集設定開放原則代理程式招生控制器搭配閘道管理員 v3
+- **EnforceRegoPolicy** (已淘汰) ：設定在 Azure Kubernetes Service 中具有閘道管理員 V2 的開啟原則代理程式招生控制器
 
 如需每個效果的完整詳細資料、評估順序、屬性和範例，請參閱[了解 Azure 原則效果](effects.md)。
 
@@ -592,6 +595,18 @@ Azure 原則支援下列類型的效果：
 - `requestContext().apiVersion`
   - 傳回已觸發原則評估的要求 API 版本 (範例：`2019-09-01`)。
     此值是在建立/更新資源時用於進行 PUT/PATCH 要求評估的 API 版本。 在對現有資源進行合規性評估時，一律使用最新的 API 版本。
+- `policy()`
+  - 傳回有關正在評估之原則的下列資訊。 您可以從傳回的物件存取屬性 (範例： `[policy().assignmentId]`) 。
+  
+  ```json
+  {
+    "assignmentId": "/subscriptions/ad404ddd-36a5-4ea8-b3e3-681e77487a63/providers/Microsoft.Authorization/policyAssignments/myAssignment",
+    "definitionId": "/providers/Microsoft.Authorization/policyDefinitions/34c877ad-507e-4c82-993e-3452a6e0ad3c",
+    "setDefinitionId": "/providers/Microsoft.Authorization/policySetDefinitions/42a694ed-f65e-42b2-aa9e-8052e9740a92",
+    "definitionReferenceId": "StorageAccountNetworkACLs"
+  }
+  ```
+  
   
 #### <a name="policy-function-example"></a>原則函式範例
 
@@ -713,7 +728,7 @@ Azure 原則支援下列類型的效果：
 
 如需詳細資訊，請參閱[評估 [\*] 別名](../how-to/author-policies-for-arrays.md#evaluating-the--alias)。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 請參閱 [計畫定義結構](./initiative-definition-structure.md)
 - 在 [Azure 原則範例](../samples/index.md)檢閱範例。

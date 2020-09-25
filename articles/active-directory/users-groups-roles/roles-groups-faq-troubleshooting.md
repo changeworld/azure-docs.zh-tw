@@ -1,6 +1,6 @@
 ---
 title: 針對指派給雲端群組的角色進行疑難排解常見問題-Azure Active Directory |Microsoft Docs
-description: 將 Azure AD 角色指派給 Azure 入口網站、PowerShell 或圖形 API 中角色可指派的群組。
+description: 瞭解在 Azure Active Directory 中將角色指派給群組的一些常見問題和疑難排解秘訣。
 services: active-directory
 author: curtand
 manager: daveba
@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a3f2a23da5baa3a5d1955b10d18411fcedc3acd1
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 7acbb9aa443cde8df7016d3f2a38d58002b98dcd
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798290"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317390"
 ---
 # <a name="troubleshooting-roles-assigned-to-cloud-groups"></a>對指派給雲端群組的角色進行疑難排解
 

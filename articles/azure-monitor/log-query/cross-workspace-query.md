@@ -6,27 +6,30 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/01/2020
-ms.openlocfilehash: 7cfa3d5652e13ddc88db70674049069a5b391297
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e2f9430ae039cc54c3e6180eb8ea76791d17f67f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322120"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91285123"
 ---
-# <a name="perform-cross-resource-log-queries-in-azure-monitor"></a>在 Azure 監視器中執行跨資源記錄查詢  
+# <a name="perform-log-query-in-azure-monitor-that-span-across-workspaces-and-apps"></a>在跨工作區和應用程式的 Azure 監視器中執行記錄查詢
+
+Azure 監視器記錄在相同的資源群組、另一個資源群組或另一個訂用帳戶中，支援跨多個 Log Analytics 工作區和 Application Insights 應用程式進行查詢。 這讓您對資料能有全系統的檢視。
+
+有兩種方法可以查詢儲存在多個工作區和應用程式中的資料：
+1. 明確地指定工作區和應用程式詳細資料。 這項技術詳述于本文中。
+2. 隱含地使用 [資源內容查詢](../platform/design-logs-deployment.md#access-mode)。 當您在特定資源、資源群組或訂用帳戶的內容中進行查詢時，將會從包含這些資源資料的所有工作區提取相關的資料。 將不會提取儲存在應用程式中的 Application Insights 資料。
 
 > [!IMPORTANT]
-> 如果您使用以[工作區為基礎的 Application Insights 資源](../app/create-workspace-resource.md)遙測會儲存在 log Analytics 工作區中，並包含所有其他記錄資料。 使用 log （）運算式來撰寫查詢，其中包含多個工作區中的應用程式。 針對同一個工作區中的多個應用程式，您不需要跨工作區查詢。
+> 如果您使用以 [工作區為基礎的 Application Insights 資源](../app/create-workspace-resource.md) 遙測會與所有其他記錄資料儲存在 Log Analytics 工作區中。 使用 log ( # A1 運算式來撰寫查詢，其中包含多個工作區中的應用程式。 針對相同工作區中的多個應用程式，您不需要跨工作區查詢。
 
-先前使用 Azure 監視器時，您只能分析來自目前工作區內的資料，這項限制讓您無法跨訂用帳戶中定義的多個工作區執行查詢。  此外，您只能搜尋在 Application Insights 中或從 Visual Studio 直接使用 Application Insights 從 Web 應用程式收集的遙測項目。 如此一來，也難以將作業和應用程式資料一起以原生方式分析。
-
-現在您不僅可以跨多個 Log Analytics 工作區查詢，也可以查詢來自相同資源群組、另一個資源群組或其他訂用帳戶中特定 Application Insights 應用程式中的資料。 這讓您對資料能有全系統的檢視。 您只能在 [Log Analytics](./log-query-overview.md) 中執行這些類型的查詢。
 
 ## <a name="cross-resource-query-limits"></a>跨資源查詢限制 
 
-* 您可以包含在單一查詢中的 Application Insights 資源和 Log Analytics 工作區數目限制為100。
-* View Designer 不支援跨資源查詢。 您可以在 Log Analytics 中撰寫查詢，並將它釘選到 Azure 儀表板，以將[記錄查詢視覺化](../learn/tutorial-logs-dashboards.md)。 
-* 新的 [scheduledQueryRules API](/rest/api/monitor/scheduledqueryrules) 支援記錄警示中的跨資源查詢。 根據預設，Azure 監視器會使用[舊版 Log Analytics 警示 API](../platform/api-alerts.md) 從 Azure 入口網站建立新的記錄警示規則，除非您從[舊版記錄警示 API](../platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api) 切換。 切換之後，新的 API 將成為 Azure 入口網站中新警示規則的預設值，並允許您建立跨資源查詢記錄警示規則。 您可以使用[SCHEDULEDQUERYRULES api 的 Azure Resource Manager 範本](../platform/alerts-log.md#log-alert-with-cross-resource-query-using-azure-resource-template)來建立跨資源查詢記錄警示規則，而不需進行切換，但此警示規則可透過[scheduledQueryRules api](/rest/api/monitor/scheduledqueryrules)來管理，而不是從 Azure 入口網站。
+* 您可以包含在單一查詢中的 Application Insights 資源與 Log Analytics 工作區數目限制為100。
+* View Designer 不支援跨資源查詢。 您可以在 Log Analytics 中撰寫查詢，並將其釘選到 Azure 儀表板，以 [視覺化方式呈現記錄查詢](../learn/tutorial-logs-dashboards.md)。 
+* 只有目前的 [SCHEDULEDQUERYRULES API](/rest/api/monitor/scheduledqueryrules)支援記錄警示中的跨資源查詢。 如果您使用舊版 Log Analytics 警示 API，您必須 [切換到目前的 api](../platform/alerts-log-api-switch.md)。
 
 
 ## <a name="querying-across-log-analytics-workspaces-and-from-application-insights"></a>跨 Log Analytics 工作區和從 Application Insights 查詢
@@ -41,7 +44,7 @@ ms.locfileid: "87322120"
 
     `workspace("contosoretail-it").Update | count`
 
-* 限定名稱-是工作區的「完整名稱」，由訂用帳戶名稱、資源群組和元件名稱所組成，其格式如下： *subscriptionName/resourceGroup/componentName*。 
+* 限定名稱-是工作區的「完整名稱」，由訂用帳戶名稱、資源群組及元件名稱所組成，格式如下： *subscriptionName/resourceGroup/componentName*。 
 
     `workspace('contoso/contosoretail/contosoretail-it').Update | count`
 
@@ -132,7 +135,7 @@ applicationsScoping
 ```
 
 >[!NOTE]
->這個方法無法搭配記錄警示使用，因為警示規則資源（包括工作區和應用程式）的存取驗證是在警示建立期間執行。 不支援在建立警示之後，將新資源新增至函式。 如果您想要針對記錄警示中的資源範圍使用函式，您必須在入口網站中編輯警示規則，或使用 Resource Manager 範本來更新已設定範圍的資源。 或者，您可以在記錄警示查詢中包含資源的清單。
+> 因為警示規則資源（包括工作區和應用程式）的存取驗證是在警示建立期間執行，所以此方法無法與記錄警示一起使用。 不支援在建立警示之後，將新的資源新增至函式。 如果您想要在記錄警示中使用資源範圍的函式，您需要在入口網站中編輯警示規則，或使用 Resource Manager 範本來更新已設定範圍的資源。 或者，您也可以在記錄警示查詢中包含資源清單。
 
 
 ![時間圖](media/cross-workspace-query/chart.png)

@@ -9,12 +9,12 @@ ms.author: umajay
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 782a046b92c9d6cf755bfea0551d7f8153faa859
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: c1560325f21fd60e6bdb2a64eb987359a7246ff2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934351"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317322"
 ---
 # <a name="storage-configuration"></a>儲存體組態
 
@@ -151,10 +151,11 @@ sqldemo11-logs-claim   Bound    pvc-41b33bbd-debb-4153-9a41-02ce2bf9c665   10Gi 
 
 - 您 **必須** 使用遠端共用儲存類別來確保資料的持久性，如此一來，如果 pod 或節點在 pod 重新開機時不會再重新連線，則可以再次連接至永久性磁片區。
 - 寫入控制器 SQL 實例、計量 DB 和記錄 DB 的資料通常是相當低的磁片區，而且不會受到延遲的影響，所以超高效能的儲存體並不重要。 如果您的使用者經常使用 Grafana 和 Kibana 介面，且您有大量的資料庫實例，則您的使用者可能會受益于更快速執行的儲存體。
-- 所需的儲存體容量是因為每個資料庫實例都會收集記錄和計量，而您所部署的資料庫實例數目變數。 資料會保留在記錄檔和計量 DB 中，以在清除前2周。 TODO：每個 DB 實例需要多少儲存體？
+- 所需的儲存體容量是因為每個資料庫實例都會收集記錄和計量，而您所部署的資料庫實例數目變數。 資料會保留在記錄檔和計量 DB 中，以在清除前2周。 
 - 變更儲存類別後置部署很困難、未記載且不受支援。 請務必在部署階段正確選擇儲存類別。
 
-> **注意：** 如果未指定任何儲存類別，則會使用預設的儲存類別。 每個 Kubernetes 叢集只能有一個預設的儲存類別。 您可以 [變更預設儲存類別](https://kubernetes.io/docs/tasks/administer-cluster/change-default-storage-class/)。
+> [!NOTE]
+> 如果未指定任何儲存類別，則會使用預設的儲存類別。 每個 Kubernetes 叢集只能有一個預設的儲存類別。 您可以 [變更預設儲存類別](https://kubernetes.io/docs/tasks/administer-cluster/change-default-storage-class/)。
 
 ### <a name="database-instance-storage-configuration"></a>資料庫實例儲存體設定
 
@@ -162,7 +163,8 @@ sqldemo11-logs-claim   Bound    pvc-41b33bbd-debb-4153-9a41-02ce2bf9c665   10Gi 
 
 使用或命令建立實例 `azdata arc sql mi create` 時 `azdata arc postgres server create` ，有兩個參數可以用來設定儲存類別：
 
-> **注意：** 其中有些參數正在開發中，將會在 `azdata arc sql mi create` `azdata arc postgres server create` 即將推出的版本中提供。
+> [!NOTE]
+> 其中有些參數正在開發中，將會在 `azdata arc sql mi create` `azdata arc postgres server create` 即將推出的版本中提供。
 
 |參數名稱、簡短名稱|用途|
 |---|---|

@@ -16,12 +16,12 @@ ms.date: 11/11/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ad2bf071d4aa5b49541c710ef9b0793a1076ea9
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 1ec5757b41da630c4cb09ad0c096aee87572615d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662497"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319889"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-microsoft-365-resources"></a>Azure Active Directory Connect 同步：設定 Microsoft 365 資源的慣用資料位置
 本主題的目的在於逐步解說如何在 Azure Active Directory (Azure AD) Connect 同步處理中設定慣用資料位置的屬性。當有人使用 Microsoft 365 的多地理位置功能時，您可以使用這個屬性來指定使用者 Microsoft 365 資料的地理位置。 (「區域」** 與「地區」** 這兩個詞可交換使用。)
@@ -44,7 +44,7 @@ Microsoft 365 中的地區可供多地理位置使用：
 | --- | --- |
 | 亞太地區 | APC |
 | 澳洲 | AUS |
-| 加拿大 | CAN |
+| Canada | CAN |
 | 歐盟 | 歐元 |
 | 法國 | FRA |
 | 印度 | IND |
@@ -62,7 +62,7 @@ Microsoft 365 中的地區可供多地理位置使用：
 
 ### <a name="azure-ad-connect-support-for-synchronization"></a>Azure AD Connect 支援同步處理
 
-Azure AD Connect 可對 1.1.524.0 版和更新版本之**使用者**物件的 **PreferredDataLocation** 屬性進行同步處理。 明確說來：
+Azure AD Connect 可對 1.1.524.0 版和更新版本之**使用者**物件的 **PreferredDataLocation** 屬性進行同步處理。 尤其是：
 
 * 已擴充 Azure AD 連接器中**使用者**物件類型的結構描述，進而納入 **preferredDataLocation** 屬性。 此屬性的類型是單一值字串。
 * 已擴充 Metaverse 連接器中**人員**物件類型的結構描述，進而納入 **preferredDataLocation** 屬性。 此屬性的類型是單一值字串。
@@ -118,7 +118,7 @@ Azure AD Connect 可對 1.1.524.0 版和更新版本之**使用者**物件的 **
 4. 確定您已在屬性清單中，勾選您選擇使用的來源屬性。 如果看不到您的屬性，請選取 [全部顯示]**** 核取方塊。
 5. 若要儲存，請選取 [確定]****。
 
-![Synchronization Service Manager 和 [屬性] 對話方塊的螢幕擷取畫面](./media/how-to-connect-sync-feature-preferreddatalocation/preferreddatalocation-step2.png)
+![顯示 Synchronization Service Manager 和 [屬性] 對話方塊的螢幕擷取畫面，其中反白顯示 [屬性] 清單。](./media/how-to-connect-sync-feature-preferreddatalocation/preferreddatalocation-step2.png)
 
 ## <a name="step-4-add-preferreddatalocation-to-the-azure-ad-connector-schema"></a>步驟4：將 **PreferredDataLocation** 新增至 Azure AD 連接器架構
 **只有當您執行 Connect 版本1.3.21 或更舊版本時，才需要執行此步驟。如果您是在1.4.18 或更新版本上，請跳至步驟5。**  
@@ -143,7 +143,7 @@ Azure AD Connect 可對 1.1.524.0 版和更新版本之**使用者**物件的 **
     | 屬性 | 值 | 詳細資料 |
     | --- | --- | --- |
     | 名稱 | 提供名稱 | 例如，“In from AD – User preferredDataLocation” |
-    | 描述 | *提供自訂描述* |  |
+    | 說明 | *提供自訂描述* |  |
     | 連線系統 | 挑選內部部署 Active Directory 連接器** |  |
     | 連線系統物件類型 | **使用者** |  |
     | Metaverse 物件類型 | **人員** |  |
@@ -262,7 +262,7 @@ Azure AD Connect 可對 1.1.524.0 版和更新版本之**使用者**物件的 **
 ![Exchange Online PowerShell 的螢幕擷取畫面](./media/how-to-connect-sync-feature-preferreddatalocation/preferreddatalocation-mailboxregion.png)  
 假設租用戶已標示為能夠使用這項功能，則信箱會移至正確的地區。 這可藉由查看信箱所在的伺服器名稱來確認。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 深入瞭解 Microsoft 365 的多地理位置：
 

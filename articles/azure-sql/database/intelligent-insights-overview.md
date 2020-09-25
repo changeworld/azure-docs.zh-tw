@@ -1,6 +1,6 @@
 ---
 title: 使用 Intelligent Insights 監視資料庫效能
-description: Azure SQL Database 和 Azure SQL 受控執行個體中的 Intelligent Insights 會使用內建智慧功能，透過人工智慧持續監視資料庫使用量，並偵測導致效能不佳的干擾性事件。
+description: Azure SQL Database 和 Azure SQL 受控執行個體中的 Intelligent Insights 使用內建智慧，透過人工智慧持續監視資料庫使用方式，並偵測導致效能不佳的干擾性事件。
 services: sql-database
 ms.service: sql-db-mi
 ms.subservice: performance
@@ -9,21 +9,21 @@ ms.devlang: ''
 ms.topic: conceptual
 author: danimir
 ms.author: danil
-ms.reviewer: jrasnik, carlrab
+ms.reviewer: jrasnik, sstein
 ms.date: 06/12/2020
-ms.openlocfilehash: 96557a6049b316a69c32e96012206eab128e024a
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 4f6bbbdbbee6cf83a6bea463cf200be0cf671897
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85986499"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317050"
 ---
-# <a name="intelligent-insights-using-ai-to-monitor-and-troubleshoot-database-performance-preview"></a>Intelligent Insights 使用 AI 來監視和疑難排解資料庫效能（預覽）
+# <a name="intelligent-insights-using-ai-to-monitor-and-troubleshoot-database-performance-preview"></a>Intelligent Insights 使用 AI 來監視和疑難排解資料庫效能 (預覽) 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Azure SQL Database 和 Azure SQL 受控執行個體中的 Intelligent Insights 可讓您瞭解資料庫效能發生什麼情況。
+Azure SQL Database 和 Azure SQL 受控執行個體中的 Intelligent Insights，可讓您瞭解資料庫效能發生什麼狀況。
 
-Intelligent Insights 使用內建的智慧功能透過人工智慧持續監視資料庫使用情況，並偵測導致效能不佳的干擾性事件。 一旦偵測到，就會執行詳細的分析，以產生 Intelligent Insights 資源記錄（稱為 SQLInsights），並具有問題的智慧型評估。 此評估包含資料庫效能問題的根本原因分析，並在可能的情況下提供效能改進建議。
+Intelligent Insights 使用內建的智慧功能透過人工智慧持續監視資料庫使用情況，並偵測導致效能不佳的干擾性事件。 一旦偵測到，就會執行詳細的分析，此分析會產生名為 SQLInsights) 的 Intelligent Insights 資源記錄 (，其中包含此問題的智慧型評量。 此評估包含資料庫效能問題的根本原因分析，並在可能的情況下提供效能改進建議。
 
 ## <a name="what-can-intelligent-insights-do-for-you"></a>Intelligent Insights 可以為您做什麼
 
@@ -39,13 +39,13 @@ Intelligent Insights 是 Azure 內建智慧功能的一項獨特功能，可提�
 
 ## <a name="how-does-intelligent-insights-work"></a>Intelligent Insights 如何運作
 
-Intelligent Insights 會藉由將最後一小時的資料庫工作負載與過去七天的基準工作負載做比較，來分析資料庫效能。 資料庫工作負載是由被判斷為對資料庫效能最具影響的查詢 (例如重複次數最多和最大型的查詢) 所組成。 因為每個資料庫都是根據其結構、資料、使用方式和應用程式而唯一的，所以每個產生的工作負載基準都是該工作負載特有且唯一的。 獨立於工作負載基準之外，Intelligent Insights 也會監視絕對作業臨界值，並偵測有關等候時間過長的問題、重大例外狀況，以及有關可能影響效能之查詢參數化的問題。
+Intelligent Insights 會藉由將最後一小時的資料庫工作負載與過去七天的基準工作負載做比較，來分析資料庫效能。 資料庫工作負載是由被判斷為對資料庫效能最具影響的查詢 (例如重複次數最多和最大型的查詢) 所組成。 因為每個資料庫都是根據其結構、資料、使用方式和應用程式而唯一的，所以產生的每個工作負載基準都是該工作負載特有且唯一的。 獨立於工作負載基準之外，Intelligent Insights 也會監視絕對作業臨界值，並偵測有關等候時間過長的問題、重大例外狀況，以及有關可能影響效能之查詢參數化的問題。
 
 在使用人工智慧透過多個受觀察計量偵測到效能降低問題之後，系統便會執行分析。 系統會產生診斷記錄，以及針對您資料庫所發生之情況的智慧型深入解析。 Intelligent Insights 可讓您從資料庫效能問題一開始出現到解決為止，都能輕鬆追蹤情況。 系統會針對每個偵測到的問題追蹤其整個生命週期 (從初始問題偵測、驗證效能改進，到其完成為止)。
 
 ![資料庫效能分析工作流程](./media/intelligent-insights-overview/intelligent-insights-concept.png)
 
-用來測量和偵測資料庫效能問題的計量，是以查詢持續時間、逾時要求、過長的等候時間及發生錯誤的要求作為基礎。 如需計量的詳細資訊，請參閱[偵測計量](#detection-metrics)。
+用來測量和偵測資料庫效能問題的計量，是以查詢持續時間、逾時要求、過長的等候時間及發生錯誤的要求作為基礎。 如需計量的詳細資訊，請參閱 [偵測計量](#detection-metrics)。
 
 已識別的資料庫效能降低會記錄在 SQLInsights 記錄檔中，其中包含由下列屬性組成的智慧專案：
 
@@ -60,46 +60,46 @@ Intelligent Insights 會藉由將最後一小時的資料庫工作負載與過�
 | 根本原因分析 | 所識別之問題的根原因分析，此分析會以人類看得懂的格式顯示。 有些深入解析可能會在可能的情況下包含效能改進建議。 |
 |||
 
-如需有關使用 Intelligent Insights 搭配 Azure SQL 分析和一般使用案例的實際操作總覽，請參閱這段影片：
+如需有關使用 Intelligent Insights 搭配 Azure SQL 分析和一般使用案例的實際操作簡介，請參閱這段影片：
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Get-Intelligent-Insights-for-Improving-Azure-SQL-Database-Performance/player]
 >
 
-Intelligent Insights 在探索和疑難排解資料庫效能問題方面發揮作用。 若要使用 Intelligent Insights 針對資料庫效能問題進行疑難排解，請參閱針對[Intelligent Insights 的效能問題進行疑難排解](intelligent-insights-troubleshoot-performance.md)。
+Intelligent Insights 在探索和針對資料庫效能問題進行疑難排解時發揮作用。 若要使用 Intelligent Insights 針對資料庫效能問題進行疑難排解，請參閱 [疑難排解 Intelligent Insights 的效能問題](intelligent-insights-troubleshoot-performance.md)。
 
 ## <a name="intelligent-insights-options"></a>Intelligent Insights 選項
 
-可用的 Intelligent Insights 選項包括：
+可用的 Intelligent Insights 選項如下：
 
 | Intelligent Insights 選項 | 支援 Azure SQL Database | Azure SQL 受控執行個體支援 |
 | :----------------------------- | ----- | ----- |
-| **設定 Intelligent Insights** -為您的資料庫設定 Intelligent Insights 分析。 | 是 | 是 |
-| **串流深入解析至 Azure SQL 分析**--串流深入解析以 Azure SQL 分析。 | 是 | 是 |
-| **串流見解以 Azure 事件中樞**串流深入解析，事件中樞以進一步自訂整合。 | 是 | 是 |
-| **串流深入解析以 Azure 儲存體**串流深入解析至 Azure 儲存體進行進一步的分析和長期保存。 | 是 | 是 |
+| **設定** 您的資料庫 Intelligent Insights 設定 Intelligent Insights 分析。 | 是 | 是 |
+| **將見解串流至 Azure SQL 分析** --串流見解以 Azure SQL 分析。 | 是 | 是 |
+| **串流深入解析至** 事件中樞的 Azure 事件中樞串流見解，以進一步自訂整合。 | 是 | 是 |
+| **串流見解以 Azure 儲存體** 串流見解，以 Azure 儲存體進行進一步的分析和長期保存。 | 是 | 是 |
 
 > [!NOTE]
-> 智慧型深入解析是預覽功能，不適用於下欄區域：西歐、北歐、美國西部1和美國東部1。
+> 智慧型深入解析是預覽功能，無法在下欄區域使用：西歐、北歐、美國西部1和美國東部1。
 
-## <a name="configure-the-export-of-the-intelligent-insights-log"></a>設定匯出 Intelligent Insights 記錄
+## <a name="configure-the-export-of-the-intelligent-insights-log"></a>設定匯出 Intelligent Insights 記錄檔
 
-Intelligent Insights 的輸出可以串流處理至數個目的地的其中一個，以供分析：
+Intelligent Insights 的輸出可以串流至數個目的地的其中一個，以供分析之用：
 
-- 串流至 Log Analytics 工作區的輸出可以與[Azure SQL 分析](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql)搭配使用，以透過 Azure 入口網站的使用者介面來觀看深入解析。 這是整合式 Azure 解決方案，而且是檢視深入解析的最常見方式。
-- 串流處理至 Azure 事件中樞的輸出可用於自訂監視和警示案例的開發
-- 串流至 Azure 儲存體的輸出可用於自訂應用程式開發，例如自訂報告、長期資料保存等等。
+- 串流至 Log Analytics 工作區的輸出可以搭配 [Azure SQL 分析](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql) 使用，以透過 Azure 入口網站的使用者介面來查看見解。 這是整合式 Azure 解決方案，而且是檢視深入解析的最常見方式。
+- 串流至 Azure 事件中樞的輸出可用於開發自訂監視和警示案例
+- 串流至 Azure 儲存體的輸出可以用於自訂應用程式開發，例如自訂報告、長期資料保存等等。
 
-Azure SQL 分析、Azure 事件中樞、Azure 儲存體或協力廠商產品的整合，會先在資料庫的 [診斷設定] 分頁中啟用 Intelligent Insights 記錄（「SQLInsights」記錄），然後將 Intelligent Insights 記錄資料設定為串流至其中一個目的地。
+Azure SQL 分析、Azure 事件中樞、Azure 儲存體或協力廠商產品的整合，可以先啟用 Intelligent Insights 記錄 (資料庫之診斷設定分頁) 中的 "SQLInsights" 記錄 Intelligent Insights，然後將記錄資料設定為串流處理到其中一個目的地。
 
-如需如何啟用 Intelligent Insights 記錄，以及設定將計量和資源記錄資料串流處理至取用產品的詳細資訊，請參閱[度量和診斷記錄](metrics-diagnostic-telemetry-logging-streaming-export-configure.md)。
+如需有關如何啟用 Intelligent Insights 記錄，以及將計量和資源記錄資料設定為串流處理到取用產品的詳細資訊，請參閱 [計量和診斷記錄](metrics-diagnostic-telemetry-logging-streaming-export-configure.md)。
 
 ### <a name="set-up-with-azure-sql-analytics"></a>使用 Azure SQL 分析設定
 
-Azure SQL 分析解決方案使用 Intelligent Insights 資源記錄資料，為資料庫效能提供圖形化使用者介面、報告和警示功能。
+Azure SQL 分析解決方案使用 Intelligent Insights 資源記錄資料，為資料庫效能提供圖形使用者介面、報告和警示功能。
 
-從 marketplace 將 Azure SQL 分析新增至您的 Azure 入口網站儀表板，並建立工作區，請參閱[設定 Azure SQL 分析](../../azure-monitor/insights/azure-sql.md#configuration)
+從 marketplace 將 Azure SQL 分析新增至 Azure 入口網站儀表板，並建立工作區，請參閱 [設定 Azure SQL 分析](../../azure-monitor/insights/azure-sql.md#configuration)
 
-若要使用 Intelligent Insights 搭配 Azure SQL 分析，請將 Intelligent Insights 記錄資料設定為要串流處理到您在上一個步驟中建立的 Azure SQL 分析工作區，請參閱[計量和診斷記錄](metrics-diagnostic-telemetry-logging-streaming-export-configure.md)。
+若要搭配使用 Intelligent Insights 與 Azure SQL 分析，請將 Intelligent Insights 記錄資料設定為串流處理至您在上一個步驟中建立的 Azure SQL 分析工作區，請參閱 [計量和診斷記錄](metrics-diagnostic-telemetry-logging-streaming-export-configure.md)。
 
 下列範例顯示透過 Azure SQL 分析所檢視的 Intelligent Insights：
 
@@ -107,17 +107,17 @@ Azure SQL 分析解決方案使用 Intelligent Insights 資源記錄資料，為
 
 ### <a name="set-up-with-event-hubs"></a>使用事件中樞設定
 
-若要搭配事件中樞使用 Intelligent Insights，請設定要串流處理至事件中樞的 Intelligent Insights 記錄資料，請參閱[計量和診斷記錄](metrics-diagnostic-telemetry-logging-streaming-export-configure.md)，並[將 Azure 診斷記錄串流至事件中樞](../../azure-monitor/platform/resource-logs-stream-event-hubs.md)。
+若要搭配事件中樞使用 Intelligent Insights，請將 Intelligent Insights 記錄資料設定為串流處理到事件中樞，請參閱 [計量和診斷記錄](metrics-diagnostic-telemetry-logging-streaming-export-configure.md) ，並 [將 Azure 診斷記錄串流至事件中樞](../../azure-monitor/platform/resource-logs-stream-event-hubs.md)。
 
-若要使用事件中樞來設定自訂監視和警示，請參閱[事件中樞中的計量和診斷記錄](metrics-diagnostic-telemetry-logging-streaming-export-configure.md#what-to-do-with-metrics-and-resource-logs-in-event-hubs)的處理方式。
+若要使用事件中樞來設定自訂監視和警示，請參閱 [事件中樞的計量和診斷記錄](metrics-diagnostic-telemetry-logging-streaming-export-configure.md#what-to-do-with-metrics-and-resource-logs-in-event-hubs)的處理方式。
 
 ### <a name="set-up-with-azure-storage"></a>使用 Azure 儲存體設定
 
-若要搭配使用 Intelligent Insights 與儲存體，請將 Intelligent Insights 記錄資料設定為要串流處理至儲存體，請參閱[計量和診斷記錄](metrics-diagnostic-telemetry-logging-streaming-export-configure.md)，並[串流至 Azure 儲存體](metrics-diagnostic-telemetry-logging-streaming-export-configure.md#stream-into-azure-storage)。
+若要搭配使用 Intelligent Insights 與儲存體，請將 Intelligent Insights 記錄資料設定為串流處理至儲存體，查看 [計量和診斷記錄](metrics-diagnostic-telemetry-logging-streaming-export-configure.md) ，以及 [串流至 Azure 儲存體](metrics-diagnostic-telemetry-logging-streaming-export-configure.md#stream-into-azure-storage)。
 
 ### <a name="custom-integrations-of-intelligent-insights-log"></a>自訂的 Intelligent Insights 記錄整合
 
-若要使用 Intelligent Insights 搭配協力廠商工具或自訂警示和監視開發，請參閱[使用 Intelligent Insights 資料庫效能診斷記錄](intelligent-insights-use-diagnostics-log.md)。
+若要使用 Intelligent Insights 搭配協力廠商工具或自訂警示和監視開發，請參閱 [使用 Intelligent Insights 資料庫效能診斷記錄](intelligent-insights-use-diagnostics-log.md)。
 
 ## <a name="detection-metrics"></a>偵測計量
 
@@ -136,13 +136,13 @@ Azure SQL 分析解決方案使用 Intelligent Insights 資源記錄資料，為
 
 - 所偵測到問題的詳細資料。
 - 針對所偵測到問題的根本原因分析。
-- 有關如何在可能的情況下改善受監視資料庫效能的建議。
+- 可能的話，建議您如何改善受監視資料庫的效能。
 
 ## <a name="query-duration"></a>查詢持續時間
 
 查詢持續時間效能降低模型會分析個別的查詢，並偵測與效能基準相比，花費在編譯和執行查詢上的時間是否增加。
 
-如果內建的智慧功能偵測到查詢編譯或查詢執行時間大幅增加而影響到工作負載效能，這些查詢就會標示為查詢持續時間效能降低問題。
+如果內建的智慧功能偵測到查詢編譯或查詢執行時間大幅增加而影響工作負載效能，則這些查詢會標示為查詢持續時間效能降低問題。
 
 Intelligent Insights 診斷記錄會輸出效能降低之查詢的查詢雜湊。 查詢雜湊會表示效能降低是否與會增加查詢持續時間的查詢編譯或執行時間增加有關。
 
@@ -150,7 +150,7 @@ Intelligent Insights 診斷記錄會輸出效能降低之查詢的查詢雜湊�
 
 逾時要求效能降低模型會分析個別的查詢，並偵測與效能基準期間相比，查詢執行層級的逾時及資料庫層級的整體要求逾時是否有任何增加。
 
-某些查詢甚至可能會在抵達執行階段之前便逾時。 透過已中止的背景工作角色與所提出的要求，內建智慧會測量並分析所有到達資料庫的查詢，不論它們是否進入執行階段。
+某些查詢甚至可能會在抵達執行階段之前便逾時。 透過已中止的背景工作角色與提出的要求，內建智慧量值並分析所有已到達資料庫的查詢（不論是否到達執行階段）。
 
 在所執行之查詢的逾時數目或已中止之要求背景工作角色的數目增加到超出系統所管理的臨界值之後，診斷記錄中就會填入智慧型深入解析。
 
@@ -158,7 +158,7 @@ Intelligent Insights 診斷記錄會輸出效能降低之查詢的查詢雜湊�
 
 ## <a name="excessive-wait-times"></a>過長的等候時間
 
-過長的等候時間模型會監視個別的資料庫查詢。 它會偵測超出系統所管理之絕對臨界值的特高查詢等候統計資料。 系統會使用來觀察下列查詢過多的等候時間計量，[查詢存放區等候統計資料（query_store_wait_stats）](/sql/relational-databases/system-catalog-views/sys-query-store-wait-stats-transact-sql)：
+過長的等候時間模型會監視個別的資料庫查詢。 它會偵測超出系統所管理之絕對臨界值的特高查詢等候統計資料。 下列查詢會使用 [查詢存放區等候統計資料 (sys.query_store_wait_stats) ](/sql/relational-databases/system-catalog-views/sys-query-store-wait-stats-transact-sql)，來觀察到過多的等候時間計量：
 
 - 達到資源限制
 - 達到彈性集區資源限制
@@ -187,5 +187,5 @@ Intelligent Insights 記錄會輸出發生錯誤之要求的計數。 它會指�
 
 ## <a name="next-steps"></a>後續步驟
 
-- 瞭解如何[使用 SQL 分析來監視資料庫](../../azure-monitor/insights/azure-sql.md)。
-- 瞭解如何針對[Intelligent Insights 的效能問題進行疑難排解](intelligent-insights-troubleshoot-performance.md)。
+- 瞭解如何 [使用 SQL 分析來監視資料庫](../../azure-monitor/insights/azure-sql.md)。
+- 瞭解如何對 [Intelligent Insights 的效能問題進行疑難排解](intelligent-insights-troubleshoot-performance.md)。

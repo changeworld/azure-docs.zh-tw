@@ -7,15 +7,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/02/2020
-ms.openlocfilehash: 40ce2844e33c9a71f87e434a6a3e9f8e0f7e3cc6
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 360578a36b92711c55b1fc65befa1b3df7927aad
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322103"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330888"
 ---
 # <a name="unify-multiple-azure-monitor-application-insights-resources"></a>整合多個 Azure 監視器 Application Insights 資源 
-本文說明如何在同一個位置查詢和查看所有 Application Insights 記錄資料，即使它們位於不同的 Azure 訂用帳戶中，也可以取代 Application Insights Connector。 您可以包含在單一查詢中的 Application Insights 資源數目限制為100。
+本文說明如何在單一位置查詢和查看您所有的 Application Insights 記錄資料（即使它們位於不同的 Azure 訂用帳戶中），以取代 Application Insights Connector 的取代。 您可以包含在單一查詢中的 Application Insights 資源數目限制為100。
 
 ## <a name="recommended-approach-to-query-multiple-application-insights-resources"></a>查詢多個 Application Insights 資源的建議方法 
 在查詢中列出多個 Application Insights 資源可能很麻煩且難以維護。 相反地，您可以利用函數將查詢邏輯與應用程序範圍分開。  
@@ -27,9 +27,9 @@ ms.locfileid: "87322103"
 您可以隨時修改所列出的應用程式，方法是在入口網站中瀏覽至您工作區中的 [查詢總管] 並選取函式來進行編輯後再儲存，或是使用 `SavedSearch` PowerShell Cmdlet。 
 
 >[!NOTE]
->這個方法無法搭配記錄警示使用，因為警示規則資源（包括工作區和應用程式）的存取驗證是在警示建立期間執行。 不支援在建立警示之後，將新資源新增至函式。 如果您想要針對記錄警示中的資源範圍使用函式，您必須在入口網站中編輯警示規則，或使用 Resource Manager 範本來更新已設定範圍的資源。 或者，您可以在記錄警示查詢中包含資源的清單。
+>因為警示規則資源（包括工作區和應用程式）的存取驗證是在警示建立期間執行，所以此方法無法與記錄警示一起使用。 不支援在建立警示之後，將新的資源新增至函式。 如果您想要在記錄警示中使用資源範圍的函式，您需要在入口網站中編輯警示規則，或使用 Resource Manager 範本來更新已設定範圍的資源。 或者，您也可以在記錄警示查詢中包含資源清單。
 
-`withsource= SourceApp` 命令在結果中新增一個資料行，可指定傳送記錄的應用程式。 在此範例中，parse 運算子是選擇性的，並使用從 SourceApp 屬性中解壓縮應用程式名稱。 
+`withsource= SourceApp` 命令在結果中新增一個資料行，可指定傳送記錄的應用程式。 Parse 運算子在此範例中為選擇性，並使用從 SourceApp 屬性解壓縮應用程式名稱。 
 
 ```
 union withsource=SourceApp 
@@ -57,7 +57,7 @@ applicationsScoping
 ![跨查詢結果範例](media/unify-app-resource-data/app-insights-query-results.png)
 
 >[!NOTE]
->新的 [scheduledQueryRules API](/rest/api/monitor/scheduledqueryrules) 支援記錄警示中的[跨資源查詢](./cross-workspace-query.md)。 根據預設，Azure 監視器會使用[舊版 Log Analytics 警示 API](../platform/api-alerts.md) 從 Azure 入口網站建立新的記錄警示規則，除非您從[舊版記錄警示 API](../platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api) 切換。 切換之後，新的 API 將成為 Azure 入口網站中新警示規則的預設值，並允許您建立跨資源查詢記錄警示規則。 您可以使用[SCHEDULEDQUERYRULES api 的 ARM 範本](../platform/alerts-log.md#log-alert-with-cross-resource-query-using-azure-resource-template)來建立[跨資源查詢](./cross-workspace-query.md)記錄警示規則，而不需進行切換，但此警示規則可透過[scheduledQueryRules api](/rest/api/monitor/scheduledqueryrules) （而不是從 Azure 入口網站）進行管理。
+>只有目前的[SCHEDULEDQUERYRULES API](/rest/api/monitor/scheduledqueryrules)支援記錄警示中的[跨資源查詢](./cross-workspace-query.md)。 如果您使用舊版 Log Analytics 警示 API，您必須 [切換到目前的 api](../platform/alerts-log-api-switch.md)。 [請參閱範例範本](../platform/alerts-log-create-templates.md)。
 
 ## <a name="application-insights-and-log-analytics-workspace-schema-differences"></a>Application Insights 和 Log Analytics 工作區結構描述差異
 下表顯示 Log Analytics 和 Application Insights 之間的結構描述差異。  
@@ -70,16 +70,16 @@ applicationsScoping
 | ApplicationTypeVersion | application_Version |
 | AvailabilityCount | itemCount |
 | AvailabilityDuration | duration |
-| AvailabilityMessage | message |
+| AvailabilityMessage | 訊息 |
 | AvailabilityRunLocation | location |
 | AvailabilityTestId | id |
 | AvailabilityTestName | NAME |
 | AvailabilityTimestamp | timestamp |
 | 瀏覽器 | client_browser |
-| 城市 | client_city |
+| City | client_city |
 | ClientIP | client_IP |
 | 電腦 | cloud_RoleInstance | 
-| 國家/地區 | client_CountryOrRegion | 
+| Country | client_CountryOrRegion | 
 | CustomEventCount | itemCount | 
 | CustomEventDimensions | customDimensions |
 | CustomEventName | NAME | 
@@ -87,8 +87,8 @@ applicationsScoping
 | DeviceType | client_Type | 
 | ExceptionCount | itemCount | 
 | ExceptionHandledAt | handledAt |
-| ExceptionMessage | message | 
-| ExceptionType | type |
+| ExceptionMessage | 訊息 | 
+| ExceptionType | 類型 |
 | OperationID | operation_id |
 | OperationName | operation_Name | 
 | OS | client_OS | 
@@ -106,7 +106,7 @@ applicationsScoping
 | RoleInstance | cloud_RoleInstance |
 | SessionId | session_Id | 
 | SourceSystem | operation_SyntheticSource |
-| TelemetryTYpe | type |
+| TelemetryTYpe | 類型 |
 | URL | url |
 | UserAccountId | user_AccountId |
 

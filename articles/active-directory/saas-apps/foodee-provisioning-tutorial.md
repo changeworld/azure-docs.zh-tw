@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 08/30/2019
 ms.author: Zhchia
-ms.openlocfilehash: 40549fa8880fb4dc4d29046b0037621610f0b130
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 1d3ea609cda37c3bb0de28d8eb1a19944809980d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544177"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331151"
 ---
 # <a name="tutorial-configure-foodee-for-automatic-user-provisioning"></a>教學課程：設定 Foodee 來自動布建使用者
 
@@ -27,7 +27,7 @@ ms.locfileid: "88544177"
 >
 > 此連接器目前為預覽版。 如需預覽功能的「Azure 使用條款」功能的詳細資訊，請參閱 [Microsoft Azure 預覽的補充使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 本教學課程假設您已符合下列必要條件：
 
@@ -75,7 +75,7 @@ Azure AD 使用稱為「 *指派* 」的概念，來判斷哪些使用者應該�
 
     ![Azure Active Directory 命令](common/select-azuread.png)
 
-1. 選取**企業應用**程式  >  的**所有應用程式**。
+1. 選取 [企業應用程式]   > [所有應用程式]  。
 
     ![[企業應用程式] 窗格](common/enterprise-applications.png)
 
@@ -106,11 +106,11 @@ Azure AD 使用稱為「 *指派* 」的概念，來判斷哪些使用者應該�
 
 1. 選取 [佈建] 索引標籤。
 
-    ![佈建索引標籤](common/provisioning.png)
+    ![已呼叫 [布建] 選項的 [管理選項] 螢幕擷取畫面。](common/provisioning.png)
 
 1. 在 [布建 **模式]** 下拉式清單中，選取 [ **自動**]。
 
-    ![佈建索引標籤](common/provisioning-automatic.png)
+    ![[布建模式] 下拉式清單的螢幕擷取畫面，其中已呼叫 [自動] 選項。](common/provisioning-automatic.png)
 
 1. 在 [系統 **管理員認證**] 下，執行下列動作：
 

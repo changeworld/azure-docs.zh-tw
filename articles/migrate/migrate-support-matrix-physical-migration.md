@@ -4,12 +4,12 @@ description: 瞭解 Azure Migrate 中實體伺服器遷移的支援。
 ms.topic: conceptual
 ms.custom: fasttrack-edit
 ms.date: 06/14/2020
-ms.openlocfilehash: 2e71ab5cd934f2fe931cd901d425061455cc9f0e
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: 95456298b3275c83152115d700a4539cab2d2a67
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89535443"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318155"
 ---
 # <a name="support-matrix-for-physical-server-migration"></a>實體伺服器遷移的支援矩陣
 
@@ -43,10 +43,10 @@ ms.locfileid: "89535443"
 **網路/儲存體** | 如需最新資訊，請參閱 Site Recovery 的 [網路](../site-recovery/vmware-physical-azure-support-matrix.md#network) 和 [儲存體](../site-recovery/vmware-physical-azure-support-matrix.md#storage) 必要條件。 Azure Migrate 提供相同的網路/儲存體需求。
 **Azure 需求** | 如需最新資訊，請參閱 [Azure 網路](../site-recovery/vmware-physical-azure-support-matrix.md#azure-vm-network-after-failover)、 [儲存體](../site-recovery/vmware-physical-azure-support-matrix.md#azure-storage)和 Site Recovery 的 [計算](../site-recovery/vmware-physical-azure-support-matrix.md#azure-compute) 需求。 Azure Migrate 的實體伺服器遷移需求相同。
 **行動服務** | 行動服務代理程式必須安裝在您要遷移的每部電腦上。
-**UEFI 開機** | Azure 中已遷移的機器會自動轉換成 BIOS 開機 Azure VM。 僅支援執行 Windows Server 2012 和更新版本的伺服器。<br/><br/> OS 磁片應該有最多四個磁碟分割，而磁片區應使用 NTFS 格式化。
+**UEFI 開機** | 支援。 以 UEFI 為基礎的機器將會遷移至 Azure 第2代 Vm。  <br/><br/> OS 磁片應該有最多四個磁碟分割，而磁片區應使用 NTFS 格式化。
 **UEFI-安全開機**         | 不支援遷移。
 **目標磁片** | 電腦只能遷移至受控磁片， (標準 HDD、標準 SSD、Azure 中的 premium SSD) 。
-**磁碟大小** | 2 TB 的 OS 磁片;適用于資料磁片的 8 TB。
+**磁碟大小** | 2 TB 的 OS 磁片 (BIOS 開機) ;4 TB 的 OS 磁片 (UEFI 開機) ;適用于資料磁片的 8 TB。
 **磁片限制** |  每部電腦最多63個磁片。
 **加密的磁片/磁片區** |  具有加密磁片/磁片區的電腦不支援遷移。
 **共用磁碟叢集** | 不支援。
@@ -90,6 +90,6 @@ VM 名稱 | 從 1 到 63 個字元。<br/> 只能使用字母、數字和連字�
 在遷移後連接-Linux | 使用 SSH 進行遷移之後，使用 SSH 連線到 Azure Vm：<br/> 在遷移之前，請在內部部署機器上，確認安全殼層服務是否設定為 [啟動]，且防火牆規則允許 SSH 連線。<br/> 在容錯移轉之後，在 Azure VM 上，允許 SSH 埠的連入連線連線到已容錯移轉的 VM 上的網路安全性群組規則，以及其所連接的 Azure 子網。 此外，新增 VM 的公用 IP 位址。 |  
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 [遷移](tutorial-migrate-physical-virtual-machines.md) 實體伺服器。

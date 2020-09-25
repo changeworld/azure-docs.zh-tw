@@ -1,6 +1,6 @@
 ---
 title: Azure Front Door 快取 |Microsoft Docs
-description: 本文可協助您瞭解 Azure Front Door 如何監視後端的健康情況
+description: 本文可協助您瞭解已啟用快取之路由規則 Front Door 的行為。
 services: frontdoor
 documentationcenter: ''
 author: duongau
@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/10/2018
+ms.date: 09/16/2020
 ms.author: duau
-ms.openlocfilehash: aada5b976721fdfed31131095f7f2b12aefefea9
-ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
+ms.openlocfilehash: 221627a756c69d11ec5385b12970bb835d6a0a0c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90024276"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318449"
 ---
 # <a name="caching-with-azure-front-door"></a>使用 Azure Front Door 快取
 下列文件會利用已啟用快取的路由規則來指定 Front Door 的行為。 Front Door 是現代的內容傳遞網路 (CDN) ，因此除了動態網站加速和負載平衡之外，它也支援像任何其他 CDN 一樣的快取行為。
@@ -113,7 +113,7 @@ Front Door 上的快取清除是不區分大小寫的。 此外，它們是無�
 2. 快取-控制：最大壽命 =\<seconds>
 3. 到期： \<http-date>
 
-快取控制回應標頭，表示不快取回應，例如快取控制：私用、快取控制：無快取和快取控制：不接受存放區。 不過，如果 POP 中有多個針對相同 URL 的要求，它們可能共用回應。 如果沒有快取控制項存在，預設行為是 AFD 會快取 X 個時間長度的資源，其中的 X 會隨機挑選介於1到3天之間。
+快取控制回應標頭，表示不快取回應，例如快取控制：私用、快取控制：無快取和快取控制：不接受存放區。  如果沒有快取控制項存在，預設行為是 AFD 會快取 X 個時間長度的資源，其中的 X 會隨機挑選介於1到3天之間。
 
 ## <a name="request-headers"></a>要求標頭
 

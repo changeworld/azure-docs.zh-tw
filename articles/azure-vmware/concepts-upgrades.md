@@ -1,28 +1,61 @@
 ---
-title: 概念-私用雲端升級
-description: 瞭解 Azure VMware 解決方案中的重要升級程式和功能
+title: 概念-私用雲端更新和升級
+description: 深入瞭解 Azure VMware 解決方案中的重要升級程式和功能。
 ms.topic: conceptual
-ms.date: 05/04/2020
-ms.openlocfilehash: f541aa4e4963cf40fad71201180ea118a1513fca
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.date: 09/22/2020
+ms.openlocfilehash: 380e97eae559145a9ef5ed7b6e7bf14f18039eed
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752197"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316795"
 ---
-# <a name="azure-vmware-solution-upgrade-concepts"></a>Azure VMware 解決方案升級概念
+# <a name="azure-vmware-solution-private-cloud-updates-and-upgrades"></a>Azure VMware 解決方案私用雲端更新和升級
 
-Azure VMware 解決方案私用雲端的主要優點之一，就是為您維護平臺。 平臺維護包括自動升級至 VMware 驗證的軟體套件組合。 升級會定期執行，以確保您一律擁有最新的軟體驗證版本。
+## <a name="overview"></a>概觀
 
-## <a name="azure-vmware-solution-private-cloud-software-upgrades"></a>Azure VMware 解決方案私用雲端軟體升級
+Azure VMware 解決方案私用雲端的主要優點之一，就是為您維護平臺。 平臺維護包括自動更新 VMware 驗證軟體套件組合，協助確保您使用的是最新版的已驗證 Azure VMware 解決方案私用雲端軟體。
 
-Azure VMware 解決方案私用雲端平臺包含特定版本的 VMware vSphere、ESXi、vSAN 和 NSX-T 軟體。 私用雲端軟體套件組合經過驗證，可用於新的私人雲端安裝，以及用於升級現有的私人雲端。
+具體而言，Azure VMware 解決方案私用雲端包含：
 
-生命週期管理升級程式不需要為您的私人雲端停機。 升級程式可確保您會自動使用最新版的已驗證 Azure VMware 解決方案私用雲端軟體。 升級會定期套用，因此私用雲端絕對不會超過最新版本的已驗證軟體套件組合的一個版本。 您將會收到已規劃的私人雲端升級通知。 如果您的私用雲端是在最新版本的某個版本中，您可以延遲升級。
+- 以 VMware ESXi 的虛擬程式布建的專用裸機伺服器節點 
+- 用於管理 ESXi 和 vSAN 的 vCenter server 
+- VMware NSX-T vSphere 工作負載 Vm 的軟體定義網路  
+- 適用于 vSphere 工作負載 Vm 的 VMware vSAN 資料存放區  
+- 適用于工作負載行動性的 VMware HCX  
 
-驗證時，會套用重大修補程式和更新。 您將會在必要的重大升級之前收到通知。 此原則可確保您的私人雲端會立即套用重大修補程式和更新。
+除了這些元件之外，Azure VMware 解決方案私用雲端還包含 Azure 基礎中的資源，以連線及操作私用雲端。 Azure VMware 解決方案會持續監視基礎和 VMware 元件的健康情況。 當 Azure VMware 解決方案偵測到失敗時，會採取動作來修復失敗的元件。 
 
-《私用雲端 [和叢集概念](concepts-private-clouds-clusters.md) 」一文中提供 VMware 軟體版本和 [常見問題](faq.md)。
+## <a name="what-components-get-updated"></a>哪些元件會更新？   
+
+Azure VMware 解決方案會更新下列 VMware 元件： 
+
+- 在裸機伺服器節點上執行 vCenter Server 和 ESXi 
+- vSAN 
+- NSX-T 
+
+Azure VMware 解決方案也會更新基礎中的軟體，例如驅動程式、網路交換器上的軟體，以及裸機節點上的固件。 
+
+## <a name="types-of-updates"></a>更新類型
+
+Azure VMware 解決方案會將下列類型的更新套用至 VMware 元件：
+
+- 修補程式： VMware 所發行的安全性修補程式和 bug 修正。 
+- 更新：一或多個 VMware 元件的次要版本更新。 
+- 升級：一或多個 VMware 元件的主要版本更新。
+
+在您的私人雲端套用修補程式之前和之後，您將會收到通知。 我們也會與您合作，在將更新或升級套用至您的私人雲端之前，先排程維護時段。 
+
+## <a name="vmware-appliance-backup"></a>VMware 設備備份 
+
+除了進行更新，Azure VMware 解決方案還會針對這些 VMware 元件進行設定備份：
+
+- vCenter Server 
+- NSX-T 管理員 
+
+在失敗的時候，Azure VMware 解決方案可以從設定備份還原這些設定。 
+
+如需 VMware 軟體版本的詳細資訊，請參閱私用雲端 [和叢集概念文章](concepts-private-clouds-clusters.md) 和 [常見問題](faq.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -1,26 +1,26 @@
 ---
 title: 安全性概觀
-description: Azure Arc 啟用的伺服器 (preview) 的安全性資訊。
+description: Azure Arc 已啟用伺服器的安全性資訊。
 ms.topic: conceptual
-ms.date: 08/31/2020
-ms.openlocfilehash: 17641fab9933d9d6a60c2b21912f755acc01a6dd
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.date: 09/23/2020
+ms.openlocfilehash: be79be3030af76425b54fd683784d0e216ac2cf5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89447762"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329035"
 ---
-# <a name="azure-arc-for-servers-preview-security-overview"></a>適用於伺服器的 Azure Arc (preview) 安全性總覽
+# <a name="azure-arc-for-servers-security-overview"></a>適用於伺服器的 Azure Arc 安全性總覽
 
 本文說明在您的企業中部署 Azure Arc 啟用的伺服器之前，應該評估的安全性設定和考慮。
 
 ## <a name="identity-and-access-control"></a>身分識別與存取控制
 
-每部 Azure Arc 啟用的伺服器都具有受控識別，作為 Azure 訂用帳戶內資源群組的一部分，代表執行內部部署或其他雲端環境的伺服器。 此資源的存取權是由標準的 [Azure 角色型存取控制](../../role-based-access-control/overview.md)所控制。 您可以從 Azure 入口網站中的 [ [**存取控制] (IAM) **](../../role-based-access-control/role-assignments-portal.md#access-control-iam) ] 頁面，確認可存取已啟用 Azure Arc 之伺服器的人員。
+每個啟用 Azure Arc 的伺服器都具有受控識別作為 Azure 訂用帳戶內資源群組的一部分，此身分識別代表執行內部部署或其他雲端環境的伺服器。 此資源的存取權是由標準的 [Azure 角色型存取控制](../../role-based-access-control/overview.md)所控制。 您可以從 Azure 入口網站中的 [ [**存取控制] (IAM) **](../../role-based-access-control/role-assignments-portal.md#access-control-iam) ] 頁面，確認可存取已啟用 Azure Arc 之伺服器的人員。
 
 :::image type="content" source="./media/security-overview/access-control-page.png" alt-text="Azure Arc 啟用的伺服器存取控制" border="false" lightbox="./media/security-overview/access-control-page.png":::
 
-授與 [參與者](../../role-based-access-control/built-in-roles.md#contributor) 或系統管理員角色存取權的使用者和應用程式可以對資源進行變更，包括在電腦上部署或刪除 [擴充](manage-vm-extensions.md) 功能。 延伸模組可以包含在具特殊許可權的內容中執行的任意腳本，因此請考慮 Azure 資源上的任何參與者，以成為非 Azure 伺服器的間接系統管理員。
+授與 [參與者](../../role-based-access-control/built-in-roles.md#contributor) 或系統管理員角色存取權的使用者和應用程式可以對資源進行變更，包括在電腦上部署或刪除 [擴充](manage-vm-extensions.md) 功能。 延伸模組可以包含在具特殊許可權的內容中執行的任意腳本，因此請考慮 Azure 資源上的任何參與者，以成為伺服器的間接系統管理員。
 
 **Azure Connected Machine**上線角色可供大規模上線，而且只能在 Azure 中讀取或建立新的啟用 Arc 的伺服器。 它無法用來刪除已經註冊或管理延伸模組的伺服器。 建議的最佳作法是只將此角色指派給 Azure Active Directory (Azure AD) 的服務主體，以供大規模登入機器。
 
@@ -28,9 +28,9 @@ ms.locfileid: "89447762"
 
 ## <a name="agent-security-and-permissions"></a>代理程式安全性和許可權
 
-若要管理 Azure Connected Machine 代理程式 (azcmagent) ，在 Windows 上，您的使用者帳戶必須是本機系統管理員群組的成員，而在 Linux 上，您必須具有根存取權限。
+若要在 Windows 上管理 Azure Connected Machine 代理程式 (azcmagent) 您的使用者帳戶必須是本機系統管理員群組的成員。 在 Linux 上，您必須具有根存取權限。
 
-Azure Connected Machine 代理程式是由在您的電腦上執行的三個服務所組成。
+Azure Connected Machine 代理程式是由三個服務所組成，這些服務會在您的電腦上執行。
 
 * 混合式 Instance Metadata Service (himds) 服務會負責弧線的所有核心功能。這包括將心跳傳送至 Azure、公開其他應用程式的本機實例中繼資料服務，以瞭解機器的 Azure 資源識別碼，以及抓取 Azure AD 權杖來向其他 Azure 服務進行驗證。 此服務會在 Windows 上以無特殊許可權的虛擬服務帳戶執行，並在 Linux 上以 **himds** 使用者的形式執行。
 
@@ -56,4 +56,4 @@ Azure Connected Machine 代理程式會使用公開金鑰驗證來與 Azure 服�
 
 ## <a name="next-steps"></a>後續步驟
 
-在為多部混合式電腦評估或啟用已啟用 Arc 的伺服器 (預覽) 之前，請參閱[連線的電腦代理程式概觀](agent-overview.md)來了解需求、代理程式的相關技術詳細資料，以及部署方法。
+在為多部混合式電腦評估或啟用已啟用 Arc 的伺服器之前，請參閱[連線的電腦代理程式概觀](agent-overview.md)來了解需求、代理程式的相關技術詳細資料，以及部署方法。

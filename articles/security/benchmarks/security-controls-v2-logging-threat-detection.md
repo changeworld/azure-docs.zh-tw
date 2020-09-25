@@ -4,17 +4,17 @@ description: Azure 安全性基準測試 V2 記錄和威脅偵測
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/13/2020
+ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 24ddca37a729a459382fc96a2f6e0ef1a7832f37
-ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
+ms.openlocfilehash: 9ada1956af2dabdb8e5deff33722af7a8691dd19
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90059171"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91295459"
 ---
-# <a name="security-control-logging-and-threat-detection"></a>安全性控制：記錄和威脅偵測
+# <a name="security-control-v2-logging-and-threat-detection"></a>安全性控制 V2：記錄和威脅偵測
 
 記錄和威脅偵測涵蓋了在 Azure 上偵測威脅，以及啟用、收集和儲存 Azure 服務之審核記錄的控制項。 這包括使用控制項來啟用偵測、調查和補救程式，以在 Azure 服務中產生具有原生威脅偵測的高品質警示;它也包括使用 Azure 監視器收集記錄，並使用 Azure Sentinel、時間同步處理和記錄保留來集中進行安全性分析。 
 
@@ -40,11 +40,11 @@ ms.locfileid: "90059171"
 
 **責任**：客戶
 
-**客戶安全性專案關係人**：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [基礎結構和端點安全性](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
-- [安全性作業 (SecOps) ](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [安全性作業](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 - [狀態管理](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)   
 
@@ -77,11 +77,11 @@ Azure 資訊安全中心也可能會對某些可疑活動發出警示，例如�
 
 **責任**：客戶
 
-**客戶安全性專案關係人**：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [基礎結構和端點安全性](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
-- [安全性作業 (SecOps) ](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [安全性作業](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 - [狀態管理](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)   
 
@@ -111,11 +111,11 @@ Azure 資訊安全中心也可能會對某些可疑活動發出警示，例如�
 
 **責任**：客戶
 
-**客戶安全性專案關係人**：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [基礎結構和端點安全性](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
-- [安全性作業 (SecOps) ](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [安全性作業](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 - [狀態管理](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)   
 
@@ -129,7 +129,7 @@ Azure 資訊安全中心也可能會對某些可疑活動發出警示，例如�
 |--|--|--|--|
 | LT-4 | 6.2、6.3、8。8 | AU-3，AU-12 |
 
-針對 Azure 資源啟用記錄，以符合合規性、威脅偵測和調查，以及威脅搜尋的需求。 
+啟用 Azure 資源的記錄，以符合合規性、威脅偵測、搜尋和事件調查的需求。 
 
 您可以使用 Azure 資訊安全中心和 Azure 原則來啟用在 Azure 資源上收集的資源記錄和記錄資料，以存取審核、安全性和資源記錄。 活動記錄 (自動提供) 包含事件來源、日期、使用者、時間戳記、來源位址、目的地位址，以及其他有用的項目。 
 
@@ -141,9 +141,9 @@ Azure 資訊安全中心也可能會對某些可疑活動發出警示，例如�
 
 **責任**：共用
 
-**客戶安全性專案關係人**：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
-- [安全性作業 (SecOps) ](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [安全性作業](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 基礎結構和端點安全性 
 
@@ -171,7 +171,7 @@ Azure 資訊安全中心也可能會對某些可疑活動發出警示，例如�
 
 **責任**：客戶
 
-**客戶安全性專案關係人**：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [安全性架構](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
@@ -185,25 +185,25 @@ Azure 資訊安全中心也可能會對某些可疑活動發出警示，例如�
 |--|--|--|--|
 | LT-6 | 6.4 | AU-3，AU-11 |
 
-根據您的合規性、規定和其他需求來設定記錄保留期。 
+根據您的合規性、法規和商務需求來設定記錄保留期。 
 
 在 Azure 監視器中，您可以根據組織的合規性法規來設定 Log Analytics 工作區保留期限。 使用 Azure 儲存體、Data Lake 或 Log Analytics 工作區帳戶來取得長期和封存儲存體。
 
 - [變更 Log Analytics 中的資料保留期限](../../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
 
-如何設定 Azure 儲存體客戶紀錄檔的保留原則： ttps://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account#configure-logging
+- [如何設定 Azure 儲存體客戶紀錄的保留原則](../../storage/common/storage-monitor-storage-account.md#configure-logging)
 
 - [Azure 資訊安全中心警示和建議匯出](../../security-center/continuous-export.md)
 
 **責任**：客戶
 
-**客戶安全性專案關係人**：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [安全性架構](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
 - [應用程式安全性與 DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
 
-- [安全性作業 (SecOps) ](/azure/cloud-adoption-framework/organize/cloud-security-operations-center) 
+- [安全性作業](/azure/cloud-adoption-framework/organize/cloud-security-operations-center) 
 
 - [安全性合規性管理](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)
 
@@ -225,7 +225,7 @@ Microsoft 會維護大部分 Azure PaaS 和 SaaS 服務的時間來源。 針對
 
 **責任**：共用
 
-**客戶安全性專案關係人**：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [原則和標準](/azure/cloud-adoption-framework/organize/cloud-security-policy-standards)
 
