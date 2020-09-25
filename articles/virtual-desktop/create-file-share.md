@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ced763ca4abd32f3b824f05f2f5786a5d9cfd4c4
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 583384d6f0ec71dc724868db61ee07ead7269607
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88825438"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91287316"
 ---
 # <a name="create-a-profile-container-with-azure-files-and-ad-ds"></a>使用 Azure 檔案儲存體和 AD DS 建立設定檔容器
 
@@ -19,7 +19,7 @@ ms.locfileid: "88825438"
 
 此程式會使用 Active Directory Domain Services (AD DS) ，也就是內部部署的目錄服務。 如果您要尋找如何使用 Azure AD DS 建立 FSLogix 設定檔容器的相關資訊，請參閱 [使用 Azure 檔案儲存體建立 FSLogix 設定檔容器](create-profile-container-adds.md)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 開始之前，請確定您的網域控制站已同步處理至 Azure，並可從您的工作階段主機所連線的 Azure 虛擬網路 (VNET) 解析。
 
@@ -60,7 +60,7 @@ ms.locfileid: "88825438"
 
 3. 選取 [ **+ 檔案共用**]，建立名為 **設定檔**的新檔案共用，然後輸入適當的配額，或將欄位保留空白表示無配額。
 
-4. 選取 [建立]  。
+4. 選取 [建立]。
 
 ## <a name="enable-active-directory-authentication"></a>啟用 Active Directory authentication
 
@@ -131,7 +131,7 @@ ms.locfileid: "88825438"
     - 將正斜線取代為 `/` 反斜線 `\` 。
     - 將您在 [建立 Azure 檔案共用](#create-an-azure-file-share) 時所建立的檔案共用名稱新增至 UNC 結尾。
 
-        例如：`\\customdomain.file.core.windows.net\<fileshare-name>`
+        例如： `\\customdomain.file.core.windows.net\<fileshare-name>`
 
 ### <a name="get-the-storage-account-key"></a>取得儲存體帳戶金鑰
 
@@ -154,7 +154,7 @@ ms.locfileid: "88825438"
 2. 執行下列命令來掛接 Azure 檔案共用，並為其指派磁碟機號：
 
      ```cmd
-     net use <desired-drive-letter>: <UNC-pat> <SA-key> /user:Azure\<SA-name>
+     net use <desired-drive-letter>: <UNC-path> <SA-key> /user:Azure\<SA-name>
      ```
 
 3. 執行下列命令來檢查 Azure 檔案共用的存取權限：

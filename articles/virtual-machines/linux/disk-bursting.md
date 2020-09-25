@@ -1,6 +1,6 @@
 ---
 title: 受控磁碟高載
-description: 了解適用於 Azure 磁碟的磁碟高載和適用於 Azure 虛擬機器的磁碟高載
+description: 瞭解適用于 Linux 上 Azure 虛擬機器的 Azure 磁片與磁片高載的磁片負載平衡。
 author: albecker1
 ms.author: albecker
 ms.date: 09/22/2020
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 107b1cbde35ef639883f86153859679a834735a3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 2e5fc8bde2c79a355fb7963c9101c4b040f97fa7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90891846"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91275146"
 ---
 # <a name="managed-disk-bursting"></a>受控磁碟高載
 [!INCLUDE [managed-disks-bursting](../../../includes/managed-disks-bursting.md)]

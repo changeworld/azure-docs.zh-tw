@@ -1,6 +1,6 @@
 ---
 title: Azure API 管理中的頁面範本 | Microsoft Docs
-description: 了解如何使用「Azure API 管理」中的一組範本來自訂開發人員入口網站頁面的內容。
+description: 瞭解如何在 Azure API 管理中自訂開發人員入口網站頁面範本的內容。
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 78866804f10d12beda46f1fab9c8c78509a5a0b2
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 24d026785025dba4ae45de404edec67c2cf3871a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86249966"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335580"
 ---
 # <a name="page-templates-in-azure-api-management"></a>Azure API 管理中的頁面範本
 「Azure API 管理」可讓您使用一組可設定開發人員入口網站頁面內容的範本，來自訂那些頁面的內容。 使用這些範本時，您可以運用 [DotLiquid](http://dotliquidmarkup.org/) 語法和您選擇的編輯器 (例如 [DotLiquid for Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers))，以及一組提供的當地語系化[字串資源](api-management-template-resources.md#strings)、[字符資源](api-management-template-resources.md#glyphs)和[頁面控制項](api-management-page-controls.md)，依照您的想法自由靈活地設定頁面內容。  
@@ -38,7 +38,7 @@ ms.locfileid: "86249966"
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
-##  <a name="sign-in"></a><a name="SignIn"></a>登錄  
+##  <a name="sign-in"></a><a name="SignIn"></a> 登錄  
  「登入」**** 範本可讓您自訂開發人員入口網站中的登入頁面。  
   
  ![登入頁面](./media/api-management-page-templates/APIM-Sign-In-Page-Developer-Portal-Templates.png "APIM 登入頁面開發人員入口網站範本")  
@@ -137,7 +137,7 @@ ms.locfileid: "86249966"
 }
 ```  
   
-##  <a name="sign-up"></a><a name="SignUp"></a>登記  
+##  <a name="sign-up"></a><a name="SignUp"></a> 登記  
  「註冊」**** 範本可讓您自訂開發人員入口網站中的註冊頁面。  
   
  ![註冊頁面](./media/api-management-page-templates/APIM-Sign-Up-Page-Developer-Portal-Templates.png "APIM 註冊頁面開發人員入口網站範本")  
@@ -185,7 +185,7 @@ ms.locfileid: "86249966"
 }  
 ```  
   
-##  <a name="page-not-found"></a><a name="PageNotFound"></a>找不到頁面  
+##  <a name="page-not-found"></a><a name="PageNotFound"></a> 找不到頁面  
  「找不到頁面」**** 範本可讓您自訂開發人員入口網站中的「找不到頁面」頁面。  
   
  ![找不到頁面](./media/api-management-page-templates/APIM-Not-Found-Page-Developer-Portal-Templates.png "APIM 找不到頁面開發人員入口網站範本")  
@@ -227,7 +227,7 @@ ms.locfileid: "86249966"
   
 ### <a name="data-model"></a>資料模型  
   
-|屬性|類型|描述|  
+|屬性|類型|說明|  
 |--------------|----------|-----------------|  
 |referenceCode|字串|因發生內部錯誤而顯示此頁面時所產生的代碼。|  
 |errorCode|字串|因發生內部錯誤而顯示此頁面時所產生的代碼。|  

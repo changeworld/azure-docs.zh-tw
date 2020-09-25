@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 42b980f809074c275a5e62098d4162e4cb4340a0
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 84e692540d376c95a4a981249eba42060ed4ab80
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89259365"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91287095"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>使用 Azure Active Directory authentication (Preview 登入 Azure 中的 Windows 虛擬機器) 
 
@@ -39,7 +39,7 @@ ms.locfileid: "89259365"
 > [!NOTE]
 > 啟用這項功能之後，您在 Azure 中的 Windows Vm 將 Azure AD 聯結。 您無法將它加入其他網域（例如內部部署 AD 或 Azure AD DS）。 如果您需要這樣做，您必須卸載擴充功能，將 VM 與 Azure AD 租使用者中斷連線。
 
-## <a name="requirements"></a>規格需求
+## <a name="requirements"></a>需求
 
 ### <a name="supported-azure-regions-and-windows-distributions"></a>支援的 Azure 區域和 Windows 散發套件
 
@@ -49,7 +49,7 @@ ms.locfileid: "89259365"
 - Windows 10 1809 和更新版本
 
 > [!IMPORTANT]
-> 只有已加入 Azure AD 的 Windows 10 電腦或混合式 Azure AD 聯結至與 VM **相同** 的目錄時，才允許從遠端連線至已加入 Azure AD 的 vm。 
+> 僅允許從 Azure AD 註冊的 Windows 10 電腦進行遠端連線（這些 Azure AD Vm 已註冊） (啟動 Windows 10 20H1) ，Azure AD 聯結或混合式 Azure AD 聯結至與 VM **相同** 的目錄。 
 
 以下是目前在這項功能的預覽期間支援的 Azure 區域：
 

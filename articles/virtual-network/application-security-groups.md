@@ -1,7 +1,7 @@
 ---
 title: Azure 應用程式安全性群組總覽
 titlesuffix: Azure Virtual Network
-description: 瞭解如何使用應用程式安全性群組。
+description: 深入瞭解應用程式安全性群組的使用。
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: 775ef92a0ca486d1f8a6c44c78a4df04cd5ef467
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3542ae2e94c2fa3d3e9d6100738b2aabded94d15
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78274706"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91306662"
 ---
 # <a name="application-security-groups"></a>應用程式安全性群組
 
@@ -26,7 +26,7 @@ ms.locfileid: "78274706"
 
 ![應用程式安全性群組](./media/security-groups/application-security-groups.png)
 
-在上圖中，NIC1** 和 NIC2** 都是 AsgWeb** 應用程式安全性群組的成員。 NIC3** 是 AsgLogic** 應用程式安全性群組的成員。 NIC4** 是 AsgDb** 應用程式安全性群組的成員。 雖然在此範例中的每個網路介面都只是一個應用程式安全性群組的成員，但網路介面可以是多個應用程式安全性群組的成員，數量上限可參照 [Azure 限制](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)。 這些網路介面都沒有相關聯的網路安全性群組。 *NSG1*與這兩個子網相關聯，且包含下列規則：
+在上圖中，NIC1** 和 NIC2** 都是 AsgWeb** 應用程式安全性群組的成員。 NIC3** 是 AsgLogic** 應用程式安全性群組的成員。 NIC4** 是 AsgDb** 應用程式安全性群組的成員。 雖然此範例中的每個網路介面都只是一個網路安全性群組的成員，但網路介面可以是多個應用程式安全性群組的成員，最多可達 [Azure 的限制](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)。 這些網路介面都沒有相關聯的網路安全性群組。 *NSG1* 與這兩個子網相關聯，且包含下列規則：
 
 ## <a name="allow-http-inbound-internet"></a>Allow-HTTP-Inbound-Internet
 
@@ -34,7 +34,7 @@ ms.locfileid: "78274706"
 
 |優先順序|來源|來源連接埠| Destination | 目的地連接埠 | 通訊協定 | Access |
 |---|---|---|---|---|---|---|
-| 100 | Internet | * | AsgWeb | 80 | TCP | 允許 |
+| 100 | Internet | * | AsgWeb | 80 | TCP | Allow |
 
 ## <a name="deny-database-all"></a>Deny-Database-All
 
@@ -50,7 +50,7 @@ ms.locfileid: "78274706"
 
 |優先順序|來源|來源連接埠| Destination | 目的地連接埠 | 通訊協定 | Access |
 |---|---|---|---|---|---|---|
-| 110 | AsgLogic | * | AsgDb | 1433 | TCP | 允許 |
+| 110 | AsgLogic | * | AsgDb | 1433 | TCP | Allow |
 
 用於將應用程式安全性群組指定為來源或目的地的規則，只會套用至屬於此應用程式安全性群組成員的網路介面。 如果網路介面不是應用程式安全性群組的成員，則此規則不適用於此網路介面，即使子網路與網路安全性群組相關聯也一樣。
 
@@ -66,4 +66,4 @@ ms.locfileid: "78274706"
 
 ## <a name="next-steps"></a>後續步驟
 
-* 瞭解如何[建立網路安全性群組](tutorial-filter-network-traffic.md)。
+* 瞭解如何 [建立網路安全性群組](tutorial-filter-network-traffic.md)。

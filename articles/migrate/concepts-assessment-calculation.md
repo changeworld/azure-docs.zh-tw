@@ -3,12 +3,12 @@ title: Azure Migrate 伺服器評量中的 Azure VM 評量
 description: 瞭解 Azure Migrate Server 評量中的評量
 ms.topic: conceptual
 ms.date: 05/27/2020
-ms.openlocfilehash: 1d9c887f42089611ce7402aa32174958cd8c0b07
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: 4020df3ef77e4b8ae0618108f539322092b93079
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88261849"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91275518"
 ---
 # <a name="server-assessment-overview-migrate-to-azure-vms"></a>伺服器評定總覽 (遷移至 Azure Vm) 
 
@@ -80,7 +80,7 @@ ms.locfileid: "88261849"
     - **Hyper-v vm**：每隔30秒會收集一個範例點。
     - **實體伺服器**：每隔五分鐘會收集一次範例點。
 
-1. 設備會結合範例點，每隔10分鐘建立一個資料點。 若要建立資料點，設備會選取所有樣本的尖峰值。 然後，它會將資料點傳送至 Azure。
+1. 設備會結合範例點，每隔10分鐘建立 VMware 和 Hyper-v 伺服器的單一資料點，實體伺服器每隔5分鐘。 若要建立資料點，設備會選取所有樣本的尖峰值。 然後，它會將資料點傳送至 Azure。
 1. 伺服器評量會儲存上個月的10分鐘資料點。
 1. 當您建立評量時，伺服器評量會識別適合用於擔心的資料點。 識別是以 *效能歷程記錄* 和 *百分位數使用率*的百分位數值為基礎。
 
@@ -282,7 +282,7 @@ Azure Migrate 中每個以效能為基礎的 Azure VM 評量都與信賴評等�
     - 軟體保證
     - 保留執行個體
     - VM 運作時間
-    - Location
+    - 位置
     - 貨幣設定
 
     伺服器評量會匯總所有機器的成本，以計算每月總計算成本。

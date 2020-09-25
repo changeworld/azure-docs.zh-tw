@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: d3094a8cca317e53dd3b8bc8e9b32b956c89a376
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 98b7f9b1ed5e09a1f731e45f8ca2d148a4084986
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90904197"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336151"
 ---
 # <a name="troubleshoot-common-azure-spring-cloud-issues"></a>針對常見的 Azure 春季雲端問題進行疑難排解
 
@@ -234,6 +234,6 @@ Azure 春季雲端服務實例的名稱將會用來在下要求子功能變數�
 如果您的應用程式記錄可以封存到儲存體帳戶，但不會傳送至 Azure Log Analytics，請查看您是否 [正確設定工作區](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)。 如果您是使用 Azure Log Analytics 的免費層，請注意， [免費層不提供服務等級協定 (SLA) ](https://azure.microsoft.com/support/legal/sla/log-analytics/v1_3/)。
 ::: zone-end
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [如何在 Azure 春季雲端中自行診斷和解決問題](spring-cloud-howto-self-diagnose-solve.md)

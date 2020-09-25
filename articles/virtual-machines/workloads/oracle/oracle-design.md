@@ -3,7 +3,7 @@ title: 在 Azure 上設計和實作 Oracle 資料庫 | Microsoft Docs
 description: 在 Azure 環境中設計和實作 Oracle 資料庫。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: rgardler
+author: dbakevlar
 manager: ''
 editor: ''
 tags: azure-resource-manager
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
-ms.author: rogardle
-ms.openlocfilehash: 0dd787916159637ce92a29a5d4baa1ffe7a09ba4
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.author: kegorman
+ms.openlocfilehash: 70de7363634cee2790a40ecf056134cf002c762d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88510006"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91274702"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>在 Azure 中設計和實作 Oracle 資料庫
 
@@ -49,11 +49,11 @@ ms.locfileid: "88510006"
 | **網路功能** |LAN/WAN  |SDN (軟體定義網路)|
 | **安全性群組** |IP/連接埠限制工具 |[ (NSG) 的網路安全性群組 ](https://azure.microsoft.com/blog/network-security-groups) |
 | **恢復功能** |MTBF (平均失敗時間) |MTTR (平均復原時間)|
-| **預定的維修** |修補/升級|[可用性設定組](../../windows/infrastructure-example.md) (Azure 所管理的修補/升級) |
-| **Resource** |專用  |與其他用戶端共用|
+| **預定進行的維修** |修補/升級|[可用性設定組](../../windows/infrastructure-example.md) (Azure 所管理的修補/升級) |
+| **資源** |專用  |與其他用戶端共用|
 | **區域** |資料中心 |[區域配對](../../regions.md#region-pairs)|
 | **Storage** |SAN/實體磁碟 |[Azure 受控儲存體](https://azure.microsoft.com/pricing/details/managed-disks/?v=17.23h)|
-| **縮放比例** |垂直調整 |水平調整|
+| **調整** |垂直調整 |水平調整|
 
 
 ### <a name="requirements"></a>需求

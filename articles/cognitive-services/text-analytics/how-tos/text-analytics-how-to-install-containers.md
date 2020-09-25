@@ -11,19 +11,19 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: aahi
-ms.openlocfilehash: a83fd67a9ad5e5a36555fcbaed65b1d76936c33d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 27881d6271fbedfb5763b293d5145e2f87cd1c13
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90906100"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91309299"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>安裝並執行文字分析容器
 
 > [!NOTE]
 > * 情感分析 v3 的容器現已正式推出。 關鍵字組的擷取和語言偵測容器是以不受限的公開預覽形式提供。
 > * 實體連結和 NER 目前無法作為容器使用。
-> * 存取 health 容器的文字分析需要要求 [表單](https://aka.ms/cognitivegate)。 目前，您不需要支付其使用量的費用。
+> * 存取 health 容器的文字分析需要要求 [表單](https://aka.ms/csgate)。 目前，您不需要支付其使用量的費用。
 > * 容器映射位置最近可能已變更。 請閱讀本文以查看此容器的更新位置。
 
 容器可讓您在自己的環境中執行文字分析 API，而且非常適合您的特定安全性和資料控管需求。 文字分析容器提供原始文字的 advanced 自然語言處理，並包含三個主要功能：情感分析、關鍵字組解壓縮和語言偵測。 
@@ -33,7 +33,7 @@ ms.locfileid: "90906100"
 > [!IMPORTANT]
 > 免費帳戶的限制為每月5000筆交易，而只有**免費**和**標準**<a href="https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics" target="_blank">定價層 <span class="docon docon-navigate-external x-hidden-focus"></span> </a>適用于容器。 如需交易要求速率的詳細資訊，請參閱 [資料限制](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview#data-limits)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要執行任何文字分析容器，您必須擁有主機電腦和容器環境。
 
@@ -41,7 +41,7 @@ ms.locfileid: "90906100"
 
 使用文字分析容器之前，您必須符合下列必要條件：
 
-|必要|用途|
+|必要|目的|
 |--|--|
 |Docker 引擎| 您必須在[主機電腦](#the-host-computer)上安裝 Docker 引擎。 Docker 提供可在 [macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上設定 Docker 環境的套件。 如需 Docker 和容器基本概念的入門，請參閱 [Docker 概觀](https://docs.docker.com/engine/docker-overview/) \(英文\)。<br><br> Docker 必須設定為允許容器與 Azure 連線，以及傳送帳單資料至 Azure。 <br><br> **在 Windows 上**，也必須將 Docker 設定為支援 Linux 容器。<br><br>|
 |熟悉 Docker | 您應具備對 Docker 概念 (例如登錄、存放庫、容器和容器映像等) 的基本了解，以及基本 `docker` 命令的知識。| 
@@ -175,7 +175,7 @@ CPU 核心和記憶體會對應至 `--cpus` 和 `--memory` 設定，這些設定
 > [!IMPORTANT]
 > 認知服務容器在未連線至 Azure 以進行計量的情況下，將無法被授權以執行。 客戶必須啟用容器以持續與計量服務進行帳單資訊的通訊。 認知服務容器不會將客戶資料（例如正在分析的文字）傳送給 Microsoft， (例如) 。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * 檢閱[設定容器](../text-analytics-resource-container-config.md)以了解組態設定
 * 參閱[常見問題集 (FAQ)](../text-analytics-resource-faq.md) 來解決功能相關問題。

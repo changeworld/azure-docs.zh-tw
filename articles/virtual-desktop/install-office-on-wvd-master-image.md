@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 05/02/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 1596dd8c03ba546c47429183e5d237579f1634f1
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: b6369013d605ae538ad611a28a90e9c099bb7d80
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442917"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326043"
 ---
 # <a name="install-office-on-a-master-vhd-image"></a>在主要 VHD 映像上安裝 Office
 
@@ -79,7 +79,7 @@ Setup.exe /configure configuration.xml
   <RemoveMSI/>
   <Updates Enabled="FALSE"/>
   <Display Level="None" AcceptEULA="TRUE" />
-  <Logging Level=" Standard" Path="%temp%\WVDOfficeInstall" />
+  <Logging Level="Standard" Path="%temp%\WVDOfficeInstall" />
   <Property Name="FORCEAPPSHUTDOWN" Value="TRUE"/>
   <Property Name="SharedComputerLicensing" Value="1"/>
 </Configuration>
@@ -161,6 +161,6 @@ Windows 虛擬桌面不支援商務用 Skype。
 
 如需安裝 Microsoft 小組的協助，請參閱 [使用 Windows 虛擬桌面的 Microsoft 小組](teams-on-wvd.md)。 Windows 虛擬桌面的 Microsoft 團隊媒體優化可供預覽。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 現在您已將 Office 新增至映射，接下來您可以繼續自訂主要 VHD 映射。 請參閱 [準備和自訂主要 VHD 映射](set-up-customize-master-image.md)。

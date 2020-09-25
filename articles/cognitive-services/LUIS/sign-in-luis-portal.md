@@ -4,16 +4,17 @@ description: 如果您是登入 LUIS 入口網站的新使用者，登入體驗�
 services: cognitive-services
 ms.custom: ''
 ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.date: 09/08/2020
 ms.topic: how-to
 ms.author: a-sakand
 author: skandil
-ms.openlocfilehash: 58212fc35df7f230682d4f80b5eadf6cd8ca0902
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: 22f5ab332c52a3b567b37089def6e4a494a15d29
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90008012"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91309467"
 ---
 # <a name="sign-in-to-luis-portal"></a>登入 LUIS 入口網站
 
@@ -97,6 +98,6 @@ ms.locfileid: "90008012"
 * 建立新的資源時，請確定資源名稱只包含英數位元、'-'，而且不能以 '-' 開頭或結尾。 否則會失敗。
 * 請確定您擁有訂用帳戶的 [適當許可權，才能建立 Azure 資源](../../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles)。 如果您沒有適當的許可權，請洽詢訂用帳戶的管理員，以提供您足夠的許可權。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 瞭解如何 [啟動新的應用程式](luis-how-to-start-new-app.md)

@@ -3,12 +3,12 @@ title: 透過入口網站的 Azure 事件方格訂閱
 description: 本文說明如何使用 Azure 入口網站，為支援的來源（例如 Azure Blob 儲存體）建立事件方格訂用帳戶。
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: acbf83d6df0c7d74da5e561d98d0c3df23d5fbd5
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: e80e2243c93ab38187646256f567d6ab73c40100
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526454"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91308498"
 ---
 # <a name="subscribe-to-events-through-portal"></a>透過入口網站訂閱事件
 
@@ -40,7 +40,7 @@ ms.locfileid: "90526454"
 
 1. 提供有關事件訂閱的其他詳細資料，例如，用於處理事件的端點和訂閱名稱。
 
-   ![提供訂閱詳細資料](./media/subscribe-through-portal/provide-subscription-details.png)
+   ![顯示 [端點詳細資料] 和 [事件訂用帳戶詳細資料] 區段的螢幕擷取畫面，其中已輸入訂用帳戶名稱值。](./media/subscribe-through-portal/provide-subscription-details.png)
 
 1. 若要啟用無效信件功能及自訂重試原則，請選取 [其他功能]****。
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 10/15/2019
 ms.author: Zhchia
-ms.openlocfilehash: c889b2c7b11c5e649045e34cdac9e50a3a242b6a
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: cf71246caef377fb607a9ca7a765ec9ca5999744
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88524441"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91285906"
 ---
 # <a name="tutorial-configure-storegate-for-automatic-user-provisioning"></a>教學課程：設定 Storegate 來自動布建使用者
 
@@ -130,11 +130,11 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
 3. 選取 [佈建] 索引標籤。
 
-    ![佈建索引標籤](common/provisioning.png)
+    ![已呼叫 [布建] 選項的 [管理選項] 螢幕擷取畫面。](common/provisioning.png)
 
 4. 將 [佈建模式] 設定為 [自動]。
 
-    ![佈建索引標籤](common/provisioning-automatic.png)
+    ![[布建模式] 下拉式清單的螢幕擷取畫面，其中已呼叫 [自動] 選項。](common/provisioning-automatic.png)
 
 5. 在 [ **管理員認證** ] 區段下的 [ `https://dialpad.com/scim` **租使用者 URL**] 中輸入。 輸入您先前從 **秘密權杖**中的 Storegate 取出並儲存的值。 按一下 [ **測試連接** ] 以確保 Azure AD 可以連線至 Storegate。 如果連接失敗，請確定您的 Storegate 帳戶具有系統管理員許可權，然後再試一次。
 
@@ -144,7 +144,7 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
     ![通知電子郵件](common/provisioning-notification-email.png)
 
-7. 按一下 [檔案] 。
+7. 按一下 [檔案]  。
 
 8. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 使用者至 Storegate**]。
 

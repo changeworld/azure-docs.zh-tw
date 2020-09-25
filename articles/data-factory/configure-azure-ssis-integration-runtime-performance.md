@@ -1,5 +1,5 @@
 ---
-title: 設定 Azure SSIS Integration Runtime 的效能
+title: 設定 Azure-SSIS Integration Runtime 的效能
 description: 了解如何設定 Azure-SSIS Integration Runtime 的屬性，以獲得高效能
 services: data-factory
 ms.date: 01/10/2018
@@ -10,12 +10,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: ''
 manager: anandsub
-ms.openlocfilehash: 6aaa02c2e14cfc31a11da260da38705ba064ba79
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: db50049675766d9fd8a018c8730f48ac34e23bfc
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86523310"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91276657"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-for-high-performance"></a>設定 Azure-SSIS Integration Runtime 以獲得高效能
 
@@ -69,7 +69,7 @@ $SSISDBPricingTier = "[Basic|S0|S1|S2|S3|S4|S6|S7|S9|S12|P1|P2|P4|P6|P11|P15|…
 ```
 
 ## <a name="azuressislocation"></a>AzureSSISLocation
-**AzureSSISLocation** 是整合執行階段背景工作節點的位置。 背景工作節點會在 Azure SQL Database 中維持與 SSIS 目錄資料庫（SSISDB）的持續連接。 將**AzureSSISLocation**設定為裝載 SSISDB 的[邏輯 SQL server](../azure-sql/database/logical-servers.md)所在的相同位置，讓整合執行時間能夠盡可能有效率地運作。
+**AzureSSISLocation** 是整合執行階段背景工作節點的位置。 背景工作節點會在 Azure SQL Database 中維護 SSIS 目錄資料庫 (SSISDB) 的固定連接。 將 **AzureSSISLocation** 設定為與裝載 SSISDB 的 [邏輯 SQL server](../azure-sql/database/logical-servers.md) 相同的位置，讓整合執行時間盡可能有效率地運作。
 
 ## <a name="azuressisnodesize"></a>AzureSSISNodeSize
 Data Factory (包括 Azure-SSIS IR) 支援下列選項：
@@ -82,29 +82,29 @@ Data Factory (包括 Azure-SSIS IR) 支援下列選項：
 -   標準 \_ D2 \_ v3
 -   標準 \_ D4 \_ v3
 -   標準 \_ D8 \_ v3
--   標準 \_ D16 \_ v3 系列
--   標準 \_ D32 \_ v3 系列
--   標準 \_ D64 \_ v3 系列
+-   標準 \_ D16 \_ v3
+-   標準 \_ D32 \_ v3
+-   標準 \_ D64 \_ v3
 -   標準 \_ E2 \_ v3
 -   標準 \_ E4 \_ v3
--   標準 \_ E8 \_ v3 系列
--   標準 \_ E16 \_ v3 系列
--   標準 \_ E32 \_ v3 系列
--   標準 \_ E64 \_ v3 系列
+-   標準 \_ E8 \_ v3
+-   標準 \_ E16 \_ v3
+-   標準 \_ E32 \_ v3
+-   標準 \_ E64 \_ v3
 
 在由 SSIS 工程團隊進行的非官方內部測試中，D 系列似乎比 A 系列更適合 SSIS 套件執行。
 
 -   D 系列的效能/價格比率高於 A 數列，而 v3 系列的效能/價格比率高於 v2 系列。
--   D 系列的輸送量高於相同價格的一系列，而 v3 系列的輸送量高於相同價格的 v2 系列。
--   Azure SSIS IR 的 v2 系列節點不適合用于自訂設定，因此請改用 v3 系列節點。 如果您已經使用 v2 系列節點，請儘快切換為使用 v3 系列節點。
--   E 系列是記憶體優化的 VM 大小，可提供比其他機器更高的記憶體對 CPU 比例。如果您的套件需要大量的記憶體，您可以考慮選擇 [E series VM]。
+-   D 系列的輸送量高於具有相同價格的數列，而 v3 系列的輸送量高於相同價格的 v2 系列。
+-   Azure-SSIS IR 的 v2 系列節點不適合自訂安裝，因此請改用 v3 系列節點。 如果您已經使用 v2 系列節點，請儘快切換為使用 v3 系列節點。
+-   E 系列是記憶體優化的 VM 大小，可提供比其他電腦更高的記憶體與 CPU 比例。如果您的套件需要大量的記憶體，您可以考慮選擇 E 系列 VM。
 
 ### <a name="configure-for-execution-speed"></a>針對執行速度進行設定
 如果您不需要執行許多套件，且希望套件可以快速執行，請使用下列圖表中的資訊，以選擇適合您案例的虛擬機器類型。
 
-此資料表示單一背景工作節點上的單一套件執行。 封裝會從 Azure Blob 儲存體載入具有名字和姓氏資料行的3000000記錄、產生完整名稱資料行，並將完整名稱長度超過20個字元的記錄寫入 Azure Blob 儲存體。
+此資料表示單一背景工作節點上的單一套件執行。 封裝會從 Azure Blob 儲存體載入具有名字和姓氏資料行的3000000記錄、產生完整名稱資料行，並將全名超過20個字元的記錄寫入 Azure Blob 儲存體。
 
-Y 軸是在一小時內完成執行的封裝數目。 請注意，這只是一個記憶體耗用量封裝的測試結果。 如果您想要知道封裝的輸送量，建議您自行執行測試。
+Y 軸是在一小時內完成執行的封裝數目。 請注意，這只是一個記憶體取用封裝的測試結果。 如果您想要知道封裝的輸送量，建議您自行執行測試。
 
 ![SSIS Integration Runtime 套件執行速度](media/configure-azure-ssis-integration-runtime-performance/ssisir-execution-speedV2.png)
 
@@ -112,7 +112,7 @@ Y 軸是在一小時內完成執行的封裝數目。 請注意，這只是一�
 
 如果您需要執行許多套件，且很重視整體輸送量，請使用下列圖表中的資訊，以選擇適合您案例的虛擬機器類型。
 
-Y 軸是在一小時內完成執行的封裝數目。 請注意，這只是一個記憶體耗用量封裝的測試結果。 如果您想要知道封裝的輸送量，建議您自行執行測試。
+Y 軸是在一小時內完成執行的封裝數目。 請注意，這只是一個記憶體取用封裝的測試結果。 如果您想要知道封裝的輸送量，建議您自行執行測試。
 
 ![SSIS Integration Runtime 最大整體輸送量](media/configure-azure-ssis-integration-runtime-performance/ssisir-overall-throughputV2.png)
 
@@ -122,8 +122,7 @@ Y 軸是在一小時內完成執行的封裝數目。 請注意，這只是一�
 
 ## <a name="azuressismaxparallelexecutionspernode"></a>AzureSSISMaxParallelExecutionsPerNode
 
-當您已經使用功能強大的背景工作節點來執行套件時，增加 **AzureSSISMaxParallelExecutionsPerNode** 可能會增加整合執行階段的整體輸送量。 針對 Standard_D1_v2 節點，可支援每個節點有 1-4 個平行執行。 針對所有其他類型的節點，支援每個節點最大值（2 x 核心數，8）個平行執行。 如果您想要**AzureSSISMaxParallelExecutionsPerNode**超過我們支援的最大值，您可以開啟支援票證，我們可以為您增加最大值，之後您必須使用 Azure Powershell 來更新**AzureSSISMaxParallelExecutionsPerNode**。
-您可以根據套件的成本和背景工作角色節點的下列設定，評估適當的值。 如需詳細資訊，請參閱[一般用途的虛擬機器大小](../virtual-machines/windows/sizes-general.md)。
+當您已經使用功能強大的背景工作節點來執行套件時，增加 **AzureSSISMaxParallelExecutionsPerNode** 可能會增加整合執行階段的整體輸送量。 如果您想要增加最大值，您需要使用 Azure PowerShell 來更新 **>azuressismaxparallelexecutionspernode**。 您可以根據套件的成本和背景工作角色節點的下列設定，評估適當的值。 如需詳細資訊，請參閱[一般用途的虛擬機器大小](../virtual-machines/windows/sizes-general.md)。
 
 | 大小             | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大暫存儲存體輸送量：IOPS / 讀取 MBps / 寫入 MBps | 最大資料磁碟/輸送量：IOPS | 最大 NIC/預期的網路效能 (Mbps) |
 |------------------|------|-------------|------------------------|------------------------------------------------------------|-----------------------------------|------------------------------------------------|
@@ -136,15 +135,15 @@ Y 軸是在一小時內完成執行的封裝數目。 請注意，這只是一�
 | 標準 \_ D2 \_ v3 | 2    | 8           | 50                     | 3000 / 46 / 23                                             | 4/6x500                         | 2 / 1000                                       |
 | 標準 \_ D4 \_ v3 | 4    | 16          | 100                    | 6000 / 93 / 46                                             | 8/12x500                        | 2 / 2000                                       |
 | 標準 \_ D8 \_ v3 | 8    | 32          | 200                    | 12000 / 187 / 93                                           | 16/24x500                       | 4 / 4000                                       |
-| 標準 \_ D16 \_ v3 系列| 16   | 64          | 400                    | 24000 / 375 / 187                                          | 32/48x500                        | 8 / 8000                                       |
-| 標準 \_ D32 \_ v3 系列| 32   | 128         | 800                    | 48000 / 750 / 375                                          | 32/96x500                       | 8 / 16000                                      |
-| 標準 \_ D64 \_ v3 系列| 64   | 256         | 1600                   | 96000/1000/500                                         | 32/192x500                      | 8 / 30000                                      |
+| 標準 \_ D16 \_ v3| 16   | 64          | 400                    | 24000 / 375 / 187                                          | 32/48x500                        | 8 / 8000                                       |
+| 標準 \_ D32 \_ v3| 32   | 128         | 800                    | 48000 / 750 / 375                                          | 32/96x500                       | 8 / 16000                                      |
+| 標準 \_ D64 \_ v3| 64   | 256         | 1600                   | 96000/1000/500                                         | 32/192x500                      | 8 / 30000                                      |
 | 標準 \_ E2 \_ v3 | 2    | 16          | 50                     | 3000 / 46 / 23                                             | 4/6x500                         | 2 / 1000                                       |
 | 標準 \_ E4 \_ v3 | 4    | 32          | 100                    | 6000 / 93 / 46                                             | 8/12x500                        | 2 / 2000                                       |
-| 標準 \_ E8 \_ v3 系列 | 8    | 64          | 200                    | 12000 / 187 / 93                                           | 16/24x500                       | 4 / 4000                                       |
-| 標準 \_ E16 \_ v3 系列| 16   | 128         | 400                    | 24000 / 375 / 187                                          | 32/48x500                       | 8 / 8000                                       |
-| 標準 \_ E32 \_ v3 系列| 32   | 256         | 800                    | 48000 / 750 / 375                                          | 32/96x500                       | 8 / 16000                                      |
-| 標準 \_ E64 \_ v3 系列| 64   | 432         | 1600                   | 96000/1000/500                                         | 32/192x500                      | 8 / 30000                                      |
+| 標準 \_ E8 \_ v3 | 8    | 64          | 200                    | 12000 / 187 / 93                                           | 16/24x500                       | 4 / 4000                                       |
+| 標準 \_ E16 \_ v3| 16   | 128         | 400                    | 24000 / 375 / 187                                          | 32/48x500                       | 8 / 8000                                       |
+| 標準 \_ E32 \_ v3| 32   | 256         | 800                    | 48000 / 750 / 375                                          | 32/96x500                       | 8 / 16000                                      |
+| 標準 \_ E64 \_ v3| 64   | 432         | 1600                   | 96000/1000/500                                         | 32/192x500                      | 8 / 30000                                      |
 
 以下是為 **AzureSSISMaxParallelExecutionsPerNode** 屬性設定正確值的指導方針： 
 
@@ -154,13 +153,13 @@ Y 軸是在一小時內完成執行的封裝數目。 請注意，這只是一�
 
 ## <a name="ssisdbpricingtier"></a>SSISDBPricingTier
 
-**SSISDBPricingTier**是 Azure SQL Database 中的 SSIS 目錄資料庫（SSISDB）的定價層。 此設定會影響 IR 執行個體中的背景工作數目上限、將套件執行排入佇列的速度，以及載入執行記錄的速度。
+**SSISDBPricingTier** 是 Azure SQL Database 中 (SSISDB) 之 SSIS 目錄資料庫的定價層。 此設定會影響 IR 執行個體中的背景工作數目上限、將套件執行排入佇列的速度，以及載入執行記錄的速度。
 
 -   如果您不在意將套件執行排入佇列的速度和載入執行記錄的速度，則可以選擇最低資料庫定價層。 使用基本定價的 Azure SQL Database 支援一個整合執行階段執行個體中 8 個背景工作。
 
 -   如果背景工作計數超過 8 個或核心計數超過 50 個，則請選擇比「基本」更強大的資料庫。 否則，資料庫會變成整合執行階段執行個體的瓶頸，而且會嚴重影響整體效能。
 
--   如果記錄層級設定為 [詳細資訊]，請選擇更強大的資料庫（例如 s3）。 根據我們的非官方內部測試，s3 定價層可以支援具有2個節點的 SSIS 封裝執行，128個平行計數和詳細資訊記錄層級。
+-   如果記錄層級設定為 [詳細資訊]，請選擇較強大的資料庫（例如 s3）。 根據我們的非官方內部測試，s3 定價層可支援具有2個節點的 SSIS 套件執行、128並行計數和詳細資訊記錄層級。
 
 您也可以根據 Azure 入口網站上提供的[資料庫交易單位](../sql-database/sql-database-what-is-a-dtu.md) (DTU) 使用量資訊，調整資料庫定價層。
 

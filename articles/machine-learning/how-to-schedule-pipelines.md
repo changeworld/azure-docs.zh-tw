@@ -10,18 +10,18 @@ author: lobrien
 ms.date: 11/12/2019
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: ac1df12b10e32f35e8edbd52c3488b2d38db638a
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: df9447160fe6a0aa2a3ae001ad8a337c3ff488f2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89650815"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91275938"
 ---
 # <a name="schedule-machine-learning-pipelines-with-azure-machine-learning-sdk-for-python"></a>使用適用于 Python 的 Azure Machine Learning SDK 來排程機器學習管線
 
 在本文中，您將瞭解如何以程式設計方式排程要在 Azure 上執行的管線。 您可以選擇根據經過時間或檔案系統變更來建立排程。 以時間為基礎的排程可以用來處理例行的工作，例如監視資料漂移。 以變更為基礎的排程可以用來回應異常或無法預測的變更，例如上傳的新資料或正在編輯的舊資料。 在瞭解如何建立排程之後，您將瞭解如何取出和停用排程。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請建立 [免費帳戶](https://aka.ms/AMLFree)。
 
@@ -83,7 +83,7 @@ recurring_schedule = Schedule.create(ws, name="MyRecurringSchedule",
 
 檔案變更所觸發的管線可能比以時間為基礎的排程更有效率。 例如，您可能想要在檔案變更時，或將新檔案新增至資料目錄時執行前置處理步驟。 您可以監視資料存放區的任何變更，或資料存放區中特定目錄內的變更。 如果您監視特定的目錄，該目錄之子目錄內的變更將 _不_ 會觸發執行。
 
-若要建立檔案回應 `Schedule` ，您必須 `datastore` 在 [排程] 的呼叫中設定參數[。](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.schedule.schedule?view=azure-ml-py#&preserve-view=truecreate-workspace--name--pipeline-id--experiment-name--recurrence-none--description-none--pipeline-parameters-none--wait-for-provisioning-false--wait-timeout-3600--datastore-none--polling-interval-5--data-path-parameter-name-none--continue-on-step-failure-none--path-on-datastore-none---workflow-provider-none---service-endpoint-none-) 若要監視資料夾，請設定 `path_on_datastore` 引數。
+若要建立檔案回應 `Schedule` ，您必須 `datastore` 在 [排程] 的呼叫中設定參數[。](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.schedule.schedule?view=azure-ml-py&preserve-view=true#&preserve-view=truecreate-workspace--name--pipeline-id--experiment-name--recurrence-none--description-none--pipeline-parameters-none--wait-for-provisioning-false--wait-timeout-3600--datastore-none--polling-interval-5--data-path-parameter-name-none--continue-on-step-failure-none--path-on-datastore-none---workflow-provider-none---service-endpoint-none-) 若要監視資料夾，請設定 `path_on_datastore` 引數。
 
 `polling_interval`引數可讓您指定檢查資料存放區是否有變更的頻率（以分鐘為單位）。
 
@@ -142,7 +142,7 @@ stop_by_schedule_id(ws, schedule_id)
 
 如果您接著再執行 `Schedule.list(ws)` 一次，則應該會取得空白清單。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 在本文中，您已使用適用于 Python 的 Azure Machine Learning SDK，以兩種不同的方式來排程管線。 會根據經過的時鐘時間重複一次排程。 如果在指定的上 `Datastore` 或在該存放區的目錄內修改檔案，則會執行另一個排程。 您已瞭解如何使用入口網站來檢查管線和個別執行。 最後，您已瞭解如何停用排程，讓管線停止執行。
 

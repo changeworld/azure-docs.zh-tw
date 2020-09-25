@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: MashaMSFT
 ms.author: mathoma
-ms.reviewer: sstein, carlrab
+ms.reviewer: sstein
 ms.date: 08/27/2019
-ms.openlocfilehash: 80fa5b7264d675317fba3cc12fa5049bdea76906
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 0c4a3c97649f168d339f5209cc10a46f56e97381
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86042572"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335172"
 ---
 # <a name="tutorial-add-an-azure-sql-database-elastic-pool-to-a-failover-group"></a>教學課程：將 Azure SQL Database 彈性集區新增至容錯移轉群組
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -27,10 +27,10 @@ ms.locfileid: "86042572"
 >
 > - 建立單一資料庫。
 > - 將資料庫新增至彈性集區。
-> - 在兩部伺服器之間建立兩個彈性集區的[容錯移轉群組](auto-failover-group-overview.md)。
+> - 在兩部伺服器之間建立兩個彈性集區的 [容錯移轉群組](auto-failover-group-overview.md) 。
 > - 測試容錯移轉。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成本教學課程，請確定您具有下列項目︰
 
@@ -46,33 +46,33 @@ ms.locfileid: "86042572"
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 
-使用 Azure 入口網站建立彈性集區。
+使用 Azure 入口網站建立您的彈性集區。
 
-1. 在 Azure 入口網站的左側功能表中，選取 [Azure SQL]。 如果**AZURE SQL**不在清單中，請選取 [**所有服務**]，然後在搜尋方塊中輸入 "Azure sql"。 (選用) 選取 **Azure SQL** 旁的星號將其設為最愛，並新增為左側導覽中的項目。
+1. 在 Azure 入口網站的左側功能表中，選取 [Azure SQL]。 如果 **AZURE SQL** 不在清單中，請選取 [ **所有服務**]，然後在 [搜尋] 方塊中輸入「Azure SQL」。 (選用) 選取 **Azure SQL** 旁的星號將其設為最愛，並新增為左側導覽中的項目。
 1. 選取 [+ 新增] 以開啟 [選取 SQL 部署選項] 頁面。 您可以選取 [資料庫] 圖格上的 [顯示詳細資料]，以查看不同資料庫的其他資訊。
-1. 從 [ **SQL 資料庫**] 磚的 [**資源類型**] 下拉式選單中，選取 [**彈性集**區]。 選取 [**建立**] 以建立彈性集區。
+1. 從 [ **SQL 資料庫**] 磚的 [**資源類型**] 下拉式清單中選取 [**彈性集**區]。 選取 [ **建立** ] 以建立您的彈性集區。
 
     ![選取彈性集區](./media/failover-group-add-elastic-pool-tutorial/select-azure-sql-elastic-pool.png)
 
-1. 使用下列值來設定您的彈性集區：
+1. 使用下列值設定您的彈性集區：
    - **名稱**：為您的彈性集區提供唯一的名稱，例如 `myElasticPool` 。
-   - **訂**用帳戶：從下拉式選單選取您的訂用帳戶。
-   - **ResourceGroup**： `myResourceGroup` 從下拉式選單中，選取您在第1節中建立的資源群組。
-   - **伺服器**：從下拉式選單選取您在第1節中建立的伺服器。  
+   - **訂**用帳戶：從下拉式清單中選取您的訂用帳戶。
+   - **ResourceGroup**：從下拉式清單中選取 `myResourceGroup` 您在第1節中建立的資源群組。
+   - **伺服器**：從下拉式清單選取您在第1節中建立的伺服器。  
 
-       ![為彈性集區建立新的伺服器](./media/failover-group-add-elastic-pool-tutorial/use-existing-server-for-elastic-pool.png)
+       ![建立彈性集區的新伺服器](./media/failover-group-add-elastic-pool-tutorial/use-existing-server-for-elastic-pool.png)
 
-   - **計算 + 儲存體**：選取 [**設定彈性集**區] 以設定您的計算、儲存體，並將您的單一資料庫新增至彈性集區。 在 [**集區設定**] 索引標籤上，保留預設值第5代，其中包含2虛擬核心和32gb。
+   - **計算 + 儲存體**：選取 [ **設定彈性集** 區] 以設定您的計算、儲存體，並將您的單一資料庫新增至彈性集區。 在 [ **集區設定** ] 索引標籤上，保留預設值第5代，其中有2個虛擬核心和 [32gb]。
 
-1. 在 [**設定**] 頁面上，選取 [**資料庫**] 索引標籤，然後選擇 [**新增資料庫**]。 選擇您在第1節中建立的資料庫，**然後選取 [** 套用]，將它新增至您的彈性集區。 再次**選取**[套用] 以套用您的彈性集區設定，然後關閉 [**設定**] 頁面。
+1. 在 [ **設定** ] 頁面上，選取 [ **資料庫** ] 索引標籤，然後選擇 [ **新增資料庫**]。 選擇您在第1節中建立的資料庫， **然後選取 [套用]，將** 它新增至您的彈性集區。 選取 **[** 套用] 以套用您的彈性集區設定，並關閉 [ **設定** ] 頁面。
 
     ![將資料庫新增至彈性集區](./media/failover-group-add-elastic-pool-tutorial/add-database-to-elastic-pool.png)
 
-1. 選取 [**審查 + 建立**] 以審查您的彈性集區設定，然後選取 [**建立**] 以建立彈性集區。
+1. 選取 [ **審核 + 建立** ] 以檢查您的彈性集區設定，然後選取 [ **建立** ] 以建立您的彈性集區。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-使用 PowerShell 建立彈性集區和次要伺服器。
+使用 PowerShell 建立您的彈性集區和次要伺服器。
 
    ```powershell-interactive
    # Set variables for your server and database
@@ -127,44 +127,44 @@ ms.locfileid: "86042572"
 
 ## <a name="3---create-the-failover-group"></a>3-建立容錯移轉群組
 
-在此步驟中，您將在現有的伺服器與另一個區域中的新伺服器之間建立[容錯移轉群組](auto-failover-group-overview.md)。 然後將彈性集區新增至容錯移轉群組。
+在此步驟中，您將在現有的伺服器與另一個區域中的新伺服器之間建立 [容錯移轉群組](auto-failover-group-overview.md) 。 然後，將彈性集區新增至容錯移轉群組。
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 
 使用 Azure 入口網站建立您的容錯移轉群組。
 
-1. 在[Azure 入口網站](https://portal.azure.com)的左側功能表中，選取 [ **Azure SQL** ]。 如果 **Azure SQL** 不在清單中，請選取 [所有服務]，然後在搜尋方塊中鍵入 Azure SQL。 (選用) 選取 **Azure SQL** 旁的星號將其設為最愛，並新增為左側導覽中的項目。
+1. 在[Azure 入口網站](https://portal.azure.com)的左側功能表中選取**Azure SQL** 。 如果 **Azure SQL** 不在清單中，請選取 [所有服務]，然後在搜尋方塊中鍵入 Azure SQL。 (選用) 選取 **Azure SQL** 旁的星號將其設為最愛，並新增為左側導覽中的項目。
 1. 選取在上一節中建立的彈性集區，例如 `myElasticPool` 。
-1. 在 [**總覽**] 窗格中，選取 [**伺服器名稱**] 下的伺服器名稱，以開啟伺服器的設定。
+1. 在 [ **總覽** ] 窗格中，選取 [ **伺服器名稱** ] 下的伺服器名稱，以開啟伺服器的設定。
   
-    ![開啟適用于彈性集區的伺服器](./media/failover-group-add-elastic-pool-tutorial/server-for-elastic-pool.png)
+    ![開啟彈性集區的伺服器](./media/failover-group-add-elastic-pool-tutorial/server-for-elastic-pool.png)
 
-1. 在 [**設定**] 窗格下選取 [**容錯移轉群組**]，然後選取 [**新增群組**] 以建立新的容錯移轉群組。
+1. 選取 [**設定**] 窗格底下的 [**容錯移轉群組**]，然後選取 [**新增群組**] 以建立新的容錯移轉群組。
 
-    ![加入新的容錯移轉群組](./media/failover-group-add-elastic-pool-tutorial/elastic-pool-failover-group.png)
+    ![新增容錯移轉群組](./media/failover-group-add-elastic-pool-tutorial/elastic-pool-failover-group.png)
 
-1. 在 [**容錯移轉群組**] 頁面上，輸入或選取下列值，然後選取 [**建立**]：
+1. 在 [ **容錯移轉群組** ] 頁面上，輸入或選取下列值，然後選取 [ **建立**：
     - **容錯移轉組名**：輸入唯一的容錯移轉組名，例如 `failovergrouptutorial` 。
-    - **次要伺服器**：選取 [*設定必要設定*] 選項，然後選擇 [**建立新的伺服器**]。 或者，您也可以選擇已經存在的伺服器做為次要伺服器。 輸入新次要伺服器的下列值後，請選取 [**選取**]。
+    - **次要伺服器**：選取 *設定必要設定* 的選項，然後選擇 **建立新的伺服器**。 或者，您也可以選擇已經存在的伺服器做為次要伺服器。 為新的次要伺服器輸入下列值之後，請選取 [ **選取**]。
         - **伺服器名稱**：輸入次要伺服器的唯一名稱，例如 `mysqlsecondary` 。
-        - **伺服器管理員登**入：輸入`azureuser`
+        - **伺服器管理員登**入：類型 `azureuser`
         - **密碼**：輸入符合密碼需求的複雜密碼。
-        - **位置**：從下拉式選單中選擇位置，例如 `East US` 。 這個位置不能與您的主伺服器位於相同的位置。
+        - **位置**：從下拉式清單中選擇一個位置，例如 `East US` 。 此位置不能與主伺服器位於相同的位置。
 
        > [!NOTE]
-       > 伺服器登入和防火牆設定必須符合您的主伺服器。
+       > 伺服器登入和防火牆設定必須符合主伺服器的設定。
 
        ![建立容錯移轉群組的次要伺服器](./media/failover-group-add-elastic-pool-tutorial/create-secondary-failover-server.png)
 
-1. 選取**群組中**的 [資料庫]，然後選取您在第2節中建立的彈性集區。 應該會出現警告，提示您在次要伺服器上建立彈性集區。 選取警告，然後選取 **[確定]** 以在次要伺服器上建立彈性集區。 
+1. 選取 **群組中的 [資料庫** ]，然後選取您在第2節中建立的彈性集區。 應該會出現警告，提示您在次要伺服器上建立彈性集區。 選取警告，然後選取 **[確定]** ，在次要伺服器上建立彈性集區。 
 
    ![將彈性集區新增至容錯移轉群組](./media/failover-group-add-elastic-pool-tutorial/add-elastic-pool-to-failover-group.png)
 
-1. 選取 [**選取**] 將您的彈性集區設定套用到容錯移轉群組，然後選取 [**建立**] 以建立容錯移轉群組。 將彈性集區新增至容錯移轉群組，將會自動啟動異地複寫程式。
+1. 選取 [ **選取** ] 將您的彈性集區設定套用至容錯移轉群組，然後選取 [ **建立** ] 以建立您的容錯移轉群組。 將彈性集區新增至容錯移轉群組，將會自動啟動異地複寫程式。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-使用 PowerShell 建立容錯移轉群組。
+使用 PowerShell 建立您的容錯移轉群組。
 
    ```powershell-interactive
    # Set variables for your server and database
@@ -254,24 +254,24 @@ ms.locfileid: "86042572"
 
 使用 Azure 入口網站測試容錯移轉群組的容錯移轉。
 
-1. 在[Azure 入口網站](https://portal.azure.com)的左側功能表中，選取 [ **Azure SQL** ]。 如果 **Azure SQL** 不在清單中，請選取 [所有服務]，然後在搜尋方塊中鍵入 Azure SQL。 (選用) 選取 **Azure SQL** 旁的星號將其設為最愛，並新增為左側導覽中的項目。
+1. 在[Azure 入口網站](https://portal.azure.com)的左側功能表中選取**Azure SQL** 。 如果 **Azure SQL** 不在清單中，請選取 [所有服務]，然後在搜尋方塊中鍵入 Azure SQL。 (選用) 選取 **Azure SQL** 旁的星號將其設為最愛，並新增為左側導覽中的項目。
 1. 選取在上一節中建立的彈性集區，例如 `myElasticPool` 。
-1. 在 [**伺服器名稱**] 底下選取伺服器的名稱，以開啟伺服器的設定。
+1. 在 [ **伺服器名稱** ] 底下選取伺服器的名稱，以開啟伺服器的設定。
 
-    ![開啟適用于彈性集區的伺服器](./media/failover-group-add-elastic-pool-tutorial/server-for-elastic-pool.png)
+    ![開啟彈性集區的伺服器](./media/failover-group-add-elastic-pool-tutorial/server-for-elastic-pool.png)
 
-1. 在 [**設定**] 窗格下選取 [**容錯移轉群組**]，然後選擇您在第2節中建立的容錯移轉群組。
+1. 選取 [**設定**] 窗格底下的 [**容錯移轉群組**]，然後選擇您在第2節中建立的容錯移轉群組。
   
    ![從入口網站選取容錯移轉群組](./media/failover-group-add-elastic-pool-tutorial/select-failover-group.png)
 
-1. 檢查哪一台伺服器是主要的，哪個伺服器是次要的。
-1. 從工作窗格中選取 [**容錯移轉**]，以容錯移轉包含彈性集區的容錯移轉群組。
-1. 在通知您將會中斷 TDS 會話的警告上，選取 **[是]** 。
+1. 檢查哪一個是主要伺服器，以及哪個伺服器是次要伺服器。
+1. 從工作窗格中選取 [ **容錯移轉** ]，以容錯移轉包含彈性集區的容錯移轉群組。
+1. 在警告上選取 **[是]** ，通知您 TDS 會話將會中斷連線。
 
    ![容錯移轉包含您資料庫的容錯移轉群組](./media/failover-group-add-elastic-pool-tutorial/failover-sql-db.png)
 
-1. 檢查哪一個伺服器是主要的，哪一個是次要伺服器。 如果容錯移轉成功，這兩部伺服器應該會有已交換的角色。
-1. 再次選取 [**容錯移轉**]，將容錯移轉群組容錯回復至原始設定。
+1. 檢查哪一個是主要伺服器，哪個伺服器是次要伺服器。 如果容錯移轉成功，這兩部伺服器應該具有交換的角色。
+1. 再次選取 [ **容錯移轉** ]，容錯移轉群組會容錯回復為原始設定。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -355,8 +355,8 @@ ms.locfileid: "86042572"
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 
 1. 瀏覽至您在 [Azure 入口網站](https://portal.azure.com)中的資源群組。
-1. 選取 [**刪除資源群組**] 以刪除群組中的所有資源，以及資源群組本身。
-1. 在文字方塊中輸入資源群組的名稱， `myResourceGroup` 然後選取 [**刪除**] 以刪除資源群組。
+1. 選取 [  **刪除資源群組** ] 以刪除群組中的所有資源，以及資源群組本身。
+1. 在文字方塊中輸入資源群組的名稱， `myResourceGroup` 然後選取 [ **刪除** ] 以刪除資源群組。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -381,7 +381,7 @@ ms.locfileid: "86042572"
 ---
 
 > [!IMPORTANT]
-> 如果您想要保留資源群組，但要刪除次要資料庫，請先將其從容錯移轉群組中移除，然後再刪除它。 將次要資料庫從容錯移轉群組中移除之前先將它刪除，可能會導致無法預期的行為。
+> 如果您想要保留資源群組，但要刪除次要資料庫，請先將它從容錯移轉群組中移除，再加以刪除。 從容錯移轉群組中移除次要資料庫之前，先將它刪除，可能會導致無法預期的行為。
 
 ## <a name="full-script"></a>完整指令碼
 
@@ -400,7 +400,7 @@ ms.locfileid: "86042572"
 | [New-AzSqlElasticPool](/powershell/module/az.sql/new-azsqlelasticpool) | 建立 Azure SQL Database 的彈性資料庫集區。|
 | [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) | 設定資料庫的屬性，或將現有資料庫移到彈性集區中。 |
 | [New-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/new-azsqldatabasefailovergroup) | 建立新的容錯移轉群組。 |
-| [Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase) | 取得 SQL Database 中的一個或多個資料庫。 |
+| [Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase) | 取得 SQL Database 中的一或多個資料庫。 |
 | [Add-AzSqlDatabaseToFailoverGroup](/powershell/module/az.sql/add-azsqldatabasetofailovergroup) | 將一或多個 Azure SQL 資料庫新增至容錯移轉群組。 |
 | [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) | 取得或列出 Azure SQL Database 容錯移轉群組。 |
 | [Switch-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup)| 執行 Azure SQL Database 容錯移轉群組的容錯移轉。 |
@@ -408,19 +408,19 @@ ms.locfileid: "86042572"
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 
-沒有可供 Azure 入口網站使用的腳本。
+Azure 入口網站沒有任何可用的腳本。
 
 ---
 
 ## <a name="next-steps"></a>後續步驟
 
-在本教學課程中，您已將 Azure SQL Database 彈性集區新增至容錯移轉群組，並已測試容錯移轉。 您已了解如何︰
+在本教學課程中，您已將 Azure SQL Database 彈性集區新增至容錯移轉群組，並測試容錯移轉。 您已了解如何︰
 
 > [!div class="checklist"]
 >
 > - 建立單一資料庫。
 > - 將資料庫新增至彈性集區。
-> - 在兩部伺服器之間建立兩個彈性集區的[容錯移轉群組](auto-failover-group-overview.md)。
+> - 在兩部伺服器之間建立兩個彈性集區的 [容錯移轉群組](auto-failover-group-overview.md) 。
 > - 測試容錯移轉。
 
 請前進到下一個關於如何使用 DMS 進行移轉的教學課程。

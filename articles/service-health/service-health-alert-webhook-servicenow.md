@@ -1,17 +1,17 @@
 ---
-title: 使用 ServiceNow 傳送 Azure 服務健康情況警示
+title: 使用 ServiceNow 傳送 Azure 服務健康狀態警示
 description: 取得關於 ServiceNow 執行個體服務健康情況事件的個人化通知。
 ms.topic: conceptual
 ms.date: 06/10/2019
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 68175dc17c1601eab097b94d4eefaa2706731f5c
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.custom: devx-track-js
+ms.openlocfilehash: f120e9d950cc349d0331a476dbfbfe9d7e599f0c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432522"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91307563"
 ---
-# <a name="send-azure-service-health-alerts-with-servicenow-using-webhooks"></a>使用 webhook 透過 ServiceNow 傳送 Azure 服務健康情況警示
+# <a name="send-azure-service-health-alerts-with-servicenow-using-webhooks"></a>使用 webhook 搭配 ServiceNow 傳送 Azure 服務健康狀態警示
 
 本文會示範如何使用 Webhook 來整合 Azure 服務健康情況警示與 ServiceNow。 設定好 Webhook 與 ServiceNow 執行個體的整合之後，當 Azure 服務的問題影響到您時，您就會收到警示 (透過現有的通知基礎結構)。 每次引發 Azure 服務健康情況警示時，它就會透過 ServiceNow 的指令碼式 REST API 呼叫 Webhook。
 
@@ -161,7 +161,7 @@ ms.locfileid: "87432522"
 1. 完成後選取 [儲存]**** 以建立警示。
 
 ### <a name="for-an-existing-action-group"></a>現有的動作群組：
-1. 在 [ [Azure 入口網站](https://portal.azure.com/)中，選取 [**監視**]。
+1. 在 [ [Azure 入口網站](https://portal.azure.com/)中，選取 [ **監視**]。
 
 1. 在 [設定]**** 區段上，選取 [動作群組]****。
 
@@ -178,7 +178,7 @@ ms.locfileid: "87432522"
 1. 完成後選取 [儲存]**** 來更新動作群組。
 
 ## <a name="testing-your-webhook-integration-via-an-http-post-request"></a>透過 HTTP POST 要求測試 Webhook 整合
-1. 建立您想要傳送的服務健康情況承載。 您可以在[Azure 活動記錄警示的 webhook](../azure-monitor/platform/activity-log-alerts-webhook.md)找到範例服務健康情況 webhook 承載。
+1. 建立您想要傳送的服務健康情況承載。 您可以在 Webhook 中找到 [Azure 活動記錄警示](../azure-monitor/platform/activity-log-alerts-webhook.md)的範例服務健康情況 webhook 承載。
 
 1. 建立 HTTP POST 要求，如下所示：
 
@@ -194,7 +194,7 @@ ms.locfileid: "87432522"
 1. 移至 [ServiceNow](https://www.servicenow.com/)，以確認您的整合已設定成功。
 
 ## <a name="next-steps"></a>後續步驟
-- 瞭解如何[設定現有問題管理系統的 webhook 通知](service-health-alert-webhook-guide.md)。
-- 檢查[活動記錄警示 webhook 架構](../azure-monitor/platform/activity-log-alerts-webhook.md)。 
+- 瞭解如何 [設定現有問題管理系統的 webhook 通知](service-health-alert-webhook-guide.md)。
+- 檢查 [活動記錄警示 webhook 架構](../azure-monitor/platform/activity-log-alerts-webhook.md)。 
 - 深入了解[服務健康狀態通知](./service-notifications.md)。
 - 深入了解[動作群組](../azure-monitor/platform/action-groups.md)。

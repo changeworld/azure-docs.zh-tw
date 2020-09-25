@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: danimir
 ms.author: danil
-ms.reviewer: jrasnik, carlrab
+ms.reviewer: jrasnik, sstein
 ms.date: 12/19/2018
-ms.openlocfilehash: 035b13140ee1fb7a48d0cea9a3611eac145d9f8c
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 0e13d69b8d821267a993cd2ca9a3b6d0d686ccf9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90970675"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91284528"
 ---
 # <a name="find-and-apply-performance-recommendations"></a>尋找和套用效能建議
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -39,11 +39,11 @@ ms.locfileid: "90970675"
 
 依照可能帶來的效能影響排序，建議分成下列類別：
 
-| 影響 | 描述 |
+| 影響 | 說明 |
 |:--- |:--- |
 | 高 |高影響建議提供最明顯的效能影響。 |
-| 中 |中度影響建議會改善效能，但不顯著。 |
-| 低度 |低影響建議比沒有建議時提供更好的效能，但改善可能不顯著。 |
+| 中型 |中度影響建議會改善效能，但不顯著。 |
+| 低 |低影響建議比沒有建議時提供更好的效能，但改善可能不顯著。 |
 
 > [!NOTE]
 > Azure SQL Database 必須至少監視活動一整天，才能找出一些建議。 相較於隨機蹦出的零星活動，一致的查詢模式更有利於 Azure SQL Database 最佳化。 如果 [效能建議] **** 頁面中目前沒有可用的建議，該頁面會提供訊息說明原因。
@@ -132,7 +132,7 @@ Azure SQL Database 可讓您使用下列 3 個選項的其中任一選項來控�
 | Pending |已收到套用建議命令，且已排程執行。 |
 | 執行中 |正在套用建議。 |
 | Validating |成功套用建議，而服務正在衡量益處。 |
-| 成功 |已成功套用建議，並證實有益處。 |
+| Success |已成功套用建議，並證實有益處。 |
 | 錯誤 |套用建議程序期間發生錯誤。 這可能是暫時性問題，也可能是資料表的結構描述變更，造成指令碼不再有效。 |
 | 還原 |已套用建立但被認為無助於效能，正在自動還原。 |
 | 已還原 |已還原建議。 |
@@ -160,7 +160,7 @@ Azure SQL Database 可讓您使用下列 3 個選項的其中任一選項來控�
 
 Azure SQL Database 提供改善資料庫效能的建議。 藉由提供 T-SQL 指令碼，您會獲得最佳化資料庫的協助，並最終改善查詢效能。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 監視建議，並繼續套用建議以改善效能。 資料庫工作負載會動態地持續變更。 Azure SQL Database 會繼續監視並提供可能改善資料庫效能的建議。
 

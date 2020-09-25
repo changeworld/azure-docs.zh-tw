@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: lcozzens
-ms.openlocfilehash: b1483230313b9e1b8e59cafea478b14ba0dfcc70
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 10510774409a6b75687086290b32885b30d9131a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88587339"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335376"
 ---
 # <a name="azure-app-configuration-faq"></a>Azure 應用程式組態常見問題
 
@@ -41,7 +41,11 @@ ms.locfileid: "88587339"
 
 ## <a name="does-app-configuration-encrypt-my-data"></a>應用程式設定是否會將我的資料加密？
 
-是。 應用程式設定會加密其保存的所有金鑰值，並將網路通訊加密。 索引鍵名稱和標籤是用來作為抓取設定資料的索引，且不會加密。
+可以。 應用程式設定會加密其保存的所有金鑰值，並將網路通訊加密。 索引鍵名稱和標籤是用來作為抓取設定資料的索引，且不會加密。
+
+## <a name="where-does-data-stored-in-app-configuration-reside"></a>應用程式設定中儲存的資料位於何處？ 
+
+儲存在應用程式設定中的客戶資料位於客戶的應用程式設定存放區建立所在的區域。 應用程式設定可能會將資料複寫到 [配對的區域](https://docs.microsoft.com/azure/best-practices-availability-paired-regions) 以進行資料恢復，但不會複寫或移動其地理位置以外的客戶資料，如 [Azure 中的資料](https://azure.microsoft.com/global-infrastructure/data-residency/)落地所定義。 客戶與終端使用者可以從全球任何地點移動、複製或存取其客戶資料。
 
 ## <a name="how-is-app-configuration-different-from-azure-app-service-settings"></a>應用程式設定與 Azure App Service 設定有何不同？
 
@@ -107,7 +111,7 @@ Azure App Service 可讓您定義每個 App Service 實例的應用程式設定�
 
 如果您的應用程式會定期遇到 HTTP 狀態碼429回應，請考慮重新設計，以減少提出的要求數目。 如需詳細資訊，請參閱 [減少對應用程式設定所提出的要求](./howto-best-practices.md#reduce-requests-made-to-app-configuration)
 
-## <a name="my-application-receives-http-status-code-429-responses-why"></a>我的應用程式收到 HTTP 狀態碼429回應。 原因為何？
+## <a name="my-application-receives-http-status-code-429-responses-why"></a>我的應用程式收到 HTTP 狀態碼429回應。 為何會這樣？
 
 在這些情況下，您將會收到 HTTP 狀態碼429回應：
 

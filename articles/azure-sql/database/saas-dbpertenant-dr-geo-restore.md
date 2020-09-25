@@ -1,5 +1,5 @@
 ---
-title: SaaS 應用程式：用於嚴重損壞修復的異地冗余備份
+title: SaaS 應用程式：用於嚴重損壞修復的異地多餘備份
 description: 了解在發生中斷的狀況時，如何使用 Azure SQL Database 異地備援備份來復原多租用戶 SaaS 應用程式
 services: sql-database
 ms.service: sql-database
@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
-ms.reviewer: sstein
+ms.reviewer: ''
 ms.date: 01/14/2019
-ms.openlocfilehash: 70d21170bfc172f30b01c2af093bc82a54c80dd3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 44ed9c0d19b6e0034b49e36448765d098d575273
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84028369"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325312"
 ---
 # <a name="use-geo-restore-to-recover-a-multitenant-saas-application-from-database-backups"></a>使用異地還原從資料庫備份復原多租用戶 SaaS 應用程式
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -42,8 +42,8 @@ ms.locfileid: "84028369"
  
 
 在開始本教學課程之前，請完成下列先決條件：
-* 部署每個租用戶應用程式的 Wingtip Tickets SaaS 資料庫。 若要在五分鐘內完成部署，請參閱[部署及探索每一租使用者的 Wingtip 票證 SaaS 資料庫應用程式](saas-dbpertenant-get-started-deploy.md)。 
-* 安裝 Azure PowerShell。 如需詳細資訊，請參閱[開始使用 Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps)。
+* 部署每個租用戶應用程式的 Wingtip Tickets SaaS 資料庫。 若要在五分鐘內進行部署，請參閱 [部署和探索 Wingtip Ticket SaaS database per tenant 應用程式](saas-dbpertenant-get-started-deploy.md)。 
+* 安裝 Azure PowerShell。 如需詳細資訊，請參閱 [開始使用 Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps)。
 
 ## <a name="introduction-to-the-geo-restore-recovery-pattern"></a>地理還原復原模式簡介
 
@@ -63,12 +63,12 @@ ms.locfileid: "84028369"
 本教學課程會使用 Azure SQL Database 和 Azure 平台的功能來因應下列挑戰：
 
 * [Azure Resource Manager 範本](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-create-first-template)，以盡快保留所有所需的容量。 Azure Resource Manager 範本是用來在復原區域中佈建原始伺服器和彈性集區的鏡像映像。 也會針對佈建新租用戶，建立不同的伺服器和集區。
-* [彈性資料庫用戶端程式庫](elastic-database-client-library.md)（EDCL），以建立及維護租使用者資料庫目錄。 擴充的目錄包含定期重新整理的集區和資料庫組態資訊。
-* EDCL 的[分區管理復原功能](elastic-database-recovery-manager.md)，可在復原和回復期間維護目錄中的資料庫位置專案。  
+* [彈性資料庫用戶端程式庫](elastic-database-client-library.md) (EDCL) ，以建立和維護租使用者資料庫目錄。 擴充的目錄包含定期重新整理的集區和資料庫組態資訊。
+* [分區](elastic-database-recovery-manager.md) EDCL 的管理復原功能，以在復原和回復期間維護目錄中的資料庫位置專案。  
 * [異地還原](../../key-vault/general/disaster-recovery-guidance.md)可從自動維護的異地備援備份復原目錄和租用戶資料庫。 
 * 以租用戶優先順序發送的[非同步還原作業](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations)，這些作業依照系統針對每個集區住列，並已批次方式處理，因此集區不會多載。 在執行之前或執行期間，如有必要，可以取消這些作業。   
 * [異地複寫](active-geo-replication-overview.md)可在中斷之後將資料庫回復至原始區域。 當您使用異地複寫時，不會遺失任何資料且對租用戶的影響最小。
-* [SQL SERVER DNS 別名](../../sql-database/dns-alias-overview.md)，可讓目錄同步程式連線至使用中的目錄，而不論其位置為何。  
+* [SQL SERVER DNS 別名](../../sql-database/dns-alias-overview.md)，可讓目錄同步處理常式連接到使用中的目錄，無論其位置為何。  
 
 ## <a name="get-the-disaster-recovery-scripts"></a>取得災害復原指令碼
 
@@ -97,7 +97,7 @@ ms.locfileid: "84028369"
 
 3. 在 [Azure 入口網站](https://portal.azure.com)中，檢閱及開啟您部署應用程式的資源群組。
 
-   請注意部署 app service 元件和 SQL Database 的資源和區域。
+   請注意應用程式服務元件和 SQL Database 的部署所在的資源和區域。
 
 ## <a name="sync-the-tenant-configuration-into-the-catalog"></a>將租用戶組態同步至目錄中
 
@@ -159,7 +159,7 @@ ms.locfileid: "84028369"
 
     * 由於還原要求是以平行方式在所有集區中處理，因此最好將重要的租用戶分散到多個集區。 
 
-10. 監視服務以判斷資料庫何時還原。 還原租用戶資料庫之後，會在目錄中將它標示為上線，並且會記錄租用戶資料庫的 rowversion 總和。 
+10. 監視服務，以判斷還原資料庫的時間。 還原租用戶資料庫之後，會在目錄中將它標示為上線，並且會記錄租用戶資料庫的 rowversion 總和。 
 
     * 租用戶資料庫在目錄中標示為「已上線」後，即可供應用程式存取。
 
@@ -361,7 +361,7 @@ ms.locfileid: "84028369"
 ## <a name="designing-the-application-to-ensure-that-the-app-and-the-database-are-co-located"></a>設計應用程式以確保應用程式和資料庫共置 
 應用程式已設計為一律從與租用戶資料庫所在相同區域中的執行個體連線。 此設計可降低應用程式與資料庫之間的延遲。 此最佳化假設應用程式對資料庫的互動比使用者對應用程式的互動更為頻繁。  
 
-在回復期間的某些時刻，租用戶資料庫可能分散於復原和原始區域間。 對於各個資料庫，應用程式會執行租用戶伺服器名稱的 DNS 查閱，以查閱資料庫所在的區域。 伺服器名稱是別名。 使用別名的伺服器名稱會包含區域名稱。 如果應用程式不在與資料庫相同的區域中，它會重新導向至與伺服器相同之區域中的實例。 重新導向至資料庫所在之相同區域中的執行個體，可盡量縮短應用程式與資料庫之間的延遲。  
+在回復期間的某些時刻，租用戶資料庫可能分散於復原和原始區域間。 對於各個資料庫，應用程式會執行租用戶伺服器名稱的 DNS 查閱，以查閱資料庫所在的區域。 伺服器名稱為別名。 使用別名的伺服器名稱會包含區域名稱。 如果應用程式不在與資料庫相同的區域中，它會重新導向至與伺服器相同區域中的實例。 重新導向至資料庫所在之相同區域中的執行個體，可盡量縮短應用程式與資料庫之間的延遲。  
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -369,7 +369,7 @@ ms.locfileid: "84028369"
 > [!div class="checklist"]
 > 
 > * 使用租用戶目錄來保存定期重新整理的組態資訊，如此可在另一個區域中建立鏡像映像復原環境。
-> * 使用異地還原將資料庫復原到修復區域。
+> * 使用異地還原將資料庫復原至復原區域。
 > * 更新租用戶目錄以反映已還原租用戶資料庫位置。 
 > * 使用 DNS 別名，可讓應用程式連線至整個租用戶目錄，而無需重新設定。
 > * 在中斷問題解決之後，使用異地複寫將已復原的資料庫重新回復到其原始區域。

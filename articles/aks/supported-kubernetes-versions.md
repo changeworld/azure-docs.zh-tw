@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 09/08/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: fb5b9c446ea5574970b14c683fac258c17199fef
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: a36eb588c7128f13fb21b368d308ed00171fbb4b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89565361"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335529"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) 中支援的 Kubernetes 版本
 
@@ -135,12 +135,11 @@ az aks get-versions --location eastus --output table
 
 |  K8s 版本 | 上游版本  | AKS 預覽  | AKS GA  | 生命週期結束 |
 |--------------|-------------------|--------------|---------|-------------|
+| 1.16  | Sep-19-19  | Jan 2019   | 三月2020  | 1.19 GA | 
 | 1.17  | Dec-09-19  | Jan 2019   | 2020年7月  | 1.20 GA | 
 | 1.18  | Mar-23-20  | 2020 年 5 月   | 2020年8月  | 1.21 GA | 
-| 1.19  | 8月-04-20  | 2020年8月   | 11月2020  | 1.22 GA | 
-| 1.20  | * 11 月2020    | * 12 月2020   | * 1 月2021  | 1.23 GA | 
-
-\* 暫止上游發行日期確認。
+| 1.19  | 8月-04-20  | Sep 2020   | 11月2020  | 1.22 GA | 
+| 1.20  | Dec-08-20  | Jan 2021   | 三月2021  | 1.23 GA | 
 
 ## <a name="faq"></a>常見問題集
 
@@ -181,7 +180,7 @@ az aks get-versions --location eastus --output table
 
 略過多個版本只能在從不支援的版本升級回支援的版本時進行。 例如，從不支援的 *1.10. x* 升級 > 支援的 *1.15。 x* 可以完成。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如需如何升級叢集的相關資訊，請參閱[升級 Azure Kubernetes Service (AKS) 叢集][aks-upgrade]。
 

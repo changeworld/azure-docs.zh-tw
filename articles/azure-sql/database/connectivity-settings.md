@@ -7,14 +7,14 @@ titleSuffix: Azure SQL Database and Azure Synapse Analytics (formerly SQL Data W
 ms.topic: conceptual
 author: rohitnayakmsft
 ms.author: rohitna
-ms.reviewer: carlrab, vanto
+ms.reviewer: sstein, vanto
 ms.date: 07/06/2020
-ms.openlocfilehash: f664ffbfc9aa38dcf8eb7736b28613efb95bde63
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 431d7ff2631f9b4a0a20db82c40b512c41209b7e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89438172"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325363"
 ---
 # <a name="azure-sql-connectivity-settings"></a>Azure SQL 連線能力設定
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -76,7 +76,7 @@ To manage server or database level firewall rules, please enable the public netw
 # Update Public Network Access to Disabled
 $SecureString = ConvertTo-SecureString "password" -AsPlainText -Force
 
-Set-AzSqlServer -ServerName sql-server-name -ResourceGroupName sql-server-group -SqlAdministratorPassword $SecureString -PublicNetworkAccess "Enabled"
+Set-AzSqlServer -ServerName sql-server-name -ResourceGroupName sql-server-group -SqlAdministratorPassword $SecureString -PublicNetworkAccess "Disabled"
 ```
 
 ## <a name="change-public-network-access-via-cli"></a>透過 CLI 變更公用網路存取
@@ -217,7 +217,7 @@ az resource show --ids %sqlserverid%
 az resource update --ids %sqlserverid% --set properties.connectionType=Proxy
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 如需如何在 Azure SQL Database 中運作的總覽，請參閱連線 [架構](connectivity-architecture.md)
 - 如需有關如何變更伺服器連線原則的詳細資訊，請參閱 [連結 [-原則](https://docs.microsoft.com/cli/azure/sql/server/conn-policy)]。

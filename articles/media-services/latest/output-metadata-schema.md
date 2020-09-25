@@ -1,6 +1,6 @@
 ---
 title: Azure 媒體服務輸出中繼資料結構描述 | Microsoft Docs
-description: 本文提供 Azure 媒體服務輸出中繼資料架構的總覽。
+description: 本文概述 Azure 媒體服務 v3 輸出中繼資料架構。
 author: IngridAtMicrosoft
 manager: femila
 editor: ''
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 66f4e426ee6d77b9faa1efab3deb3d7ee4baf47d
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: aa6d4edc4348fa850eeb7e8d91ce0791ee4c7170
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89289364"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336406"
 ---
 # <a name="output-metadata"></a>輸出中繼資料
 
@@ -36,12 +36,12 @@ ms.locfileid: "89289364"
 
 編碼作業的 AssetFile 項目集合。  
 
-| Name | 描述 |
+| 名稱 | 說明 |
 | --- | --- |
 | **來源** |為了產生此 AssetFile 所處理之輸入/來源媒體檔案的集合。<br />範例： `"Sources": [{"Name": "Ignite-short_1280x720_AACAudio_3551.mp4"}]`|
 | **VideoTracks**|每個實體 AssetFile 都可以內含零或多個交錯形成適當容器格式的視訊播放軌。 <br />請參閱 [VideoTracks](#videotracks)。 |
 | **AudioTracks**|每個實體資產檔案可以內含零個或多個交錯形成適當容器格式的音訊播放軌。 這是所有音訊播放軌的集合。<br /> 如需詳細資訊，請參閱 [AudioTracks](#audiotracks)。 |
-| **名稱**<br />必要 |媒體資產檔案名稱。 <br /><br />範例： `"Name": "Ignite-short_1280x720_AACAudio_3551.mp4"`|
+| **Name**<br />必要 |媒體資產檔案名稱。 <br /><br />範例： `"Name": "Ignite-short_1280x720_AACAudio_3551.mp4"`|
 | **大小**<br />必要 |資產檔案大小 (以位元組為單位)。 <br /><br />範例： `"Size": 32414631`|
 | **有效期間**<br />必要 |內容播放持續時間。 如需詳細資訊，請參閱 [ISO8601](https://www.iso.org/iso-8601-date-and-time-format.html) 格式。 <br /><br />範例： `"Duration": "PT1M10.315S"`|
 
@@ -49,7 +49,7 @@ ms.locfileid: "89289364"
 
 每個實體 AssetFile 都可以內含零或多個交錯形成適當容器格式的視訊播放軌。 **VideoTracks** 元素代表所有視訊播放軌集合。  
 
-| Name | 說明 |
+| 名稱 | 說明 |
 | --- | --- |
 | **識別碼**<br /> 必要 |此影片播放軌以零為起始的索引。 **注意：**  此 **識別碼** 不一定是在用於 trackid 中使用的檔案。 <br /><br />範例： `"Id": 1`|
 | **FourCC**<br />必要 | Ffmpeg 所報告的影片編解碼器 FourCC 程式碼。  <br /><br />範例： `"FourCC": "avc1"`|
@@ -67,7 +67,7 @@ ms.locfileid: "89289364"
 
 每個實體資產檔案可以內含零個或多個交錯形成適當容器格式的音訊播放軌。 **AudioTracks** 元素代表所有這些音訊播放軌集合。  
 
-| Name  | 說明 |
+| 名稱  | 說明 |
 | --- | --- |
 | **識別碼**<br />必要  |此音訊播放軌以零為基底的索引。 **注意：**  這不一定是在用於 trackid 中使用的檔案。  <br /><br />範例： `"Id": 2`|
 | **轉碼器**  |音訊播放軌轉碼器字串。  <br /><br />範例： `"Codec": "aac"`|
@@ -260,6 +260,6 @@ ms.locfileid: "89289364"
 }
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 [從 HTTPS URL 建立工作輸入](job-input-from-http-how-to.md)

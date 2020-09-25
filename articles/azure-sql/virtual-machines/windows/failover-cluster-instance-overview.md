@@ -7,17 +7,17 @@ author: MashaMSFT
 editor: monicar
 tags: azure-service-management
 ms.service: virtual-machines-sql
-ms.topic: article
+ms.topic: overview
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: 6d77855f095c59b47156af735f4581076ce5a09c
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
-ms.translationtype: MT
+ms.openlocfilehash: a8bfa91ac9b70c0ff4f461bd9e10899d1170b24d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89611632"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91272502"
 ---
 # <a name="failover-cluster-instances-with-sql-server-on-azure-virtual-machines"></a>Azure 虛擬機器上具有 SQL Server 的容錯移轉叢集實例
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -46,7 +46,7 @@ Azure Vm 上的 SQL Server 會使用 Windows Server 容錯移轉叢集 (WSFC) �
 
 Azure Vm 上的 SQL Server 提供各種選項，作為部署 SQL Server 容錯移轉叢集實例的共用儲存體解決方案： 
 
-||[Azure 共用磁碟](../../../virtual-machines/windows/disks-shared.md)|[進階檔案共用](../../../storage/files/storage-how-to-create-premium-fileshare.md) |[儲存空間直接存取 (S2D)](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)|
+||[Azure 共用磁碟](../../../virtual-machines/windows/disks-shared.md)|[進階檔案共用](../../../storage/files/storage-how-to-create-premium-fileshare.md) |[儲存空間直接存取 (S2D) ](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)|
 |---------|---------|---------|---------|
 |**最低 OS 版本**| 全部 |Windows Server 2012|Windows Server 2016|
 |**最小 SQL Server 版本**|全部|SQL Server 2012|SQL Server 2016|
@@ -163,7 +163,7 @@ Azure 虛擬機器支援 Windows Server 2019 上的 Microsoft Distributed Transa
 - 基本負載平衡器不處理 RPC 連接埠。
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 請參閱叢集設定的 [最佳做法](hadr-cluster-best-practices.md)，然後您可以 [準備 SQL Server VM 以進行 FCI](failover-cluster-instance-prepare-vm.md)。 
 

@@ -10,12 +10,12 @@ author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: 3306e51fe2fdbb2586be9684432d8f8c310afe95
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: afd78acadf133a9f128eec402eba9d0eed51b8e3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90900586"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91284477"
 ---
 # <a name="azure-sql-edge-release-notes"></a>Azure SQL Edge 版本資訊 
 
@@ -23,17 +23,23 @@ ms.locfileid: "90900586"
 
 ## <a name="azure-sql-edge---100-rtm"></a>Azure SQL Edge-1.0.0 (RTM) 
 
-### <a name="sql-engine-build-number---15020001549"></a>SQL 引擎組建編號-15.0.2000.1549
+### <a name="sql-engine-build-number---15020001552"></a>SQL 引擎組建編號-15.0.2000.1552
 
 ### <a name="whats-new"></a>新功能
 1. 以 Ubuntu 18.04 為基礎的容器映射。 
 2. 和函數的支援 `IGNORE NULL` 和 `RESPECT NULL` 語法 `LAST_VALUE()` `FIRST_VALUE()` 。 
 3. 使用 ONNX 進行預測的可靠性改進。
-4. 支援以資料保留原則為基礎的清除。      
-   - 支援叢集資料行存放區索引的優化清除。
+4. 支援以資料保留原則為基礎的清除。
+   - 用於疑難排解保留清除工作的信號緩衝區支援。
 5. 新功能支援 
    - 快速復原
    - 自動調整查詢
+   - 啟用平行執行案例
+6. 低電源模式的省電改進
+7. 串流新功能支援 
+   - [快照集視窗](https://docs.microsoft.com/stream-analytics-query/snapshot-window-azure-stream-analytics) ：新的視窗類型，可讓您依確切時間抵達的事件分組。 
+   - 啟用 [TopOne](https://docs.microsoft.com/stream-analytics-query/topone-azure-stream-analytics) 和 [CollectTop](https://docs.microsoft.com/stream-analytics-query/collecttop-azure-stream-analytics) as 分析函式，這將可讓您傳回由您選擇的資料行排序的記錄，而不需要成為視窗的一部分。 
+   - [MATCH_RECOGNIZE](https://docs.microsoft.com/stream-analytics-query/match-recognize-stream-analytics)的改善。 
 
 ### <a name="fixes"></a>修正
 1. 疑難排解 TSQL 串流作業的其他錯誤訊息和詳細資料。 
@@ -41,9 +47,13 @@ ms.locfileid: "90900586"
 3. TSQL 串流引擎修正： 
    - 清除已停止的串流作業 
    - 修正當地語系化和 unicode 處理的改進
+   - 改善 Edge TSQL 資料流程的有用，讓使用者能夠從 get_streaming_job 查詢作業失敗錯誤。
 4. 以資料保留原則為基礎的清除
    - 針對保留原則建立和清除案例的修正。
 5. 修正背景計時器工作，以改善低電源模式的電源節約。
+
+### <a name="known-issues"></a>已知問題 
+1. Date_Bucket T-sql 函數不能用在計算資料行中。
 
 
 ## <a name="ctp-23"></a>CTP 2.3

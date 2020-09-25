@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 12/10/2019
 ms.author: jeedes
-ms.openlocfilehash: b4ee17ba6587c38efb6da15117a5c55dc5abb873
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: bddb33210f3b1d76a89ce18ddf6884898905f388
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90979731"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91286396"
 ---
 # <a name="tutorial-configure-servicenow-for-automatic-user-provisioning"></a>教學課程：設定 ServiceNow 來自動佈建使用者
 
@@ -93,11 +93,11 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
 3. 選取 [佈建] 索引標籤。
 
-    ![佈建索引標籤](common/provisioning.png)
+    ![已呼叫 [布建] 選項的 [管理選項] 螢幕擷取畫面。](common/provisioning.png)
 
 4. 將 [佈建模式] 設定為 [自動]。
 
-    ![佈建索引標籤](common/provisioning-automatic.png)
+    ![[布建模式] 下拉式清單的螢幕擷取畫面，其中已呼叫 [自動] 選項。](common/provisioning-automatic.png)
 
 5. 在 [管理員認證] 區段下，輸入您的 ServiceNow 管理員認證和使用者名稱。 按一下 [測試連線]，以確保 Azure AD 可以連線至 ServiceNow。 如果連線失敗，請確定您的 ServiceNow 帳戶具有管理員權限，然後再試一次。
 
