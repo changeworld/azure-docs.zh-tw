@@ -9,12 +9,12 @@ ms.subservice: synapse-link
 ms.date: 09/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 336409b8b6f804b224b87d5fb11fded0654b8619
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 0cdc9e242c2254cafaf0af75bcb8f8879cf3eb58
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90895525"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91287822"
 ---
 # <a name="azure-synapse-link-preview-for-azure-cosmos-db-supported-features"></a>適用於 Azure Cosmos DB 的 Azure Synapse Link (預覽) 支援的功能
 
@@ -29,7 +29,7 @@ Azure Cosmos DB 中有兩種類型的容器：
 > [!IMPORTANT]
 > 在未啟用受控虛擬網路的 Synapse 工作區中，目前支援 Azure Cosmos DB 的 Azure Synapse 連結。 
 
-您可以在未啟用 Synapse Link 的情況下連線至 Azure Cosmos DB 的容器，此時，您只能讀取/寫入交易存放區。 接下來是 Azure Cosmos DB Synapse 連結內目前支援的功能清單。 
+您可以連接到 Azure Cosmos DB 容器，而不需要啟用 Synapse 連結。 在此案例中，您只能讀取/寫入交易式存放區。 接下來是 Azure Cosmos DB Synapse 連結內目前支援的功能清單。 
 
 | 類別              | 描述 |[Spark](https://docs.microsoft.com/azure/synapse-analytics/sql/on-demand-workspace-overview) | [SQL 無伺服器](https://docs.microsoft.com/azure/synapse-analytics/sql/on-demand-workspace-overview) |
 | -------------------- | ----------------------------------------------------------- |----------------------------------------------------------- | ----------------------------------------------------------- |
@@ -39,9 +39,9 @@ Azure Cosmos DB 中有兩種類型的容器：
 | **讀取**    | 可讀取的 Azure Cosmos DB 容器類型 | OLTP/HTAP | HTAP  |
 | **寫入**   | Azure Synapse 執行時間可以用來將資料寫入 Azure Cosmos DB 容器 | 是 | 否 |
 
-* 如果您將資料從 Spark 寫入 Azure Cosmos DB 容器中，這會透過 Azure Cosmos DB 的交易式存放區進行，並且會影響 Azure Cosmos DB 上的交易式工作負載效能，並耗用要求單位。
-* 目前不支援透過外部資料表進行 Synapse SQL 集區整合。
-
+* 如果您將資料從 Spark 寫入 Azure Cosmos DB 容器中，此程式會透過 Azure Cosmos DB 的交易式存放區進行。 它會藉由取用要求單位來影響 Azure Cosmos DB 的交易效能。
+* 目前不支援透過外部資料表的 SQL 集區整合。
+ 
 ## <a name="supported-code-generated-actions-for-spark"></a>Spark 支援的程式碼產生動作
 
 | 手勢              | 描述 |OLTP |HTAP  |
@@ -51,7 +51,6 @@ Azure Cosmos DB 中有兩種類型的容器：
 | **將 DataFrame 寫入容器** |將資料寫入容器中|✓| ✓ |
 | **從容器載入串流 DataFrame** |使用 Azure Cosmos DB 變更摘要進行資料串流|✓| ✓ |
 | **將串流 DataFrame 寫入容器** |使用 Azure Cosmos DB 變更摘要進行資料串流|✓| ✓ |
-
 
 
 ## <a name="supported-code-generated-actions-for-sql-serverless"></a>SQL 無伺服器支援的程式碼產生動作

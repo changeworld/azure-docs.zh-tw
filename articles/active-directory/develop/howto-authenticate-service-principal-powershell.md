@@ -13,12 +13,12 @@ ms.tgt_pltfrm: multiple
 ms.date: 06/26/2020
 ms.author: ryanwi
 ms.reviewer: tomfitz
-ms.openlocfilehash: 5d9bf672aae3cf55ae7cf22aa1437f01ced99901
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: e034149372ba061ec958e0c1e22187d33009080c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89178802"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91265828"
 ---
 # <a name="how-to-use-azure-powershell-to-create-a-service-principal-with-a-certificate"></a>操作說明：使用 Azure PowerShell 建立具有憑證的服務主體
 
@@ -225,3 +225,4 @@ Get-AzADApplication -DisplayName exampleapp | New-AzADAppCredential `
 * 若要使用密碼設定服務主體，請參閱[使用 Azure PowerShell 建立 Azure 服務主體](/powershell/azure/create-azure-service-principal-azureps)。
 * 如需應用程式和服務主體的詳細說明，請參閱[應用程式物件和服務主體物件](app-objects-and-service-principals.md)。
 * 如需 Azure AD 驗證的詳細資訊，請參閱 [Azure AD 的驗證案例](./authentication-vs-authorization.md)。
+* 如需使用 **Microsoft Graph**來處理應用程式註冊的詳細資訊，請參閱 [應用程式](/graph/api/resources/application) API 參考。

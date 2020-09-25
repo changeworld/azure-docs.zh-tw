@@ -1,7 +1,7 @@
 ---
 title: 設定 & 管理內容參考
 titleSuffix: Azure SQL Managed Instance
-description: 說明如何設定和管理 Azure SQL 受控執行個體內容的參考指南。
+description: 指導您如何設定和管理 Azure SQL 受控執行個體的內容參考指南。
 services: sql-database
 ms.service: sql-managed-instance
 ms.subservice: operations
@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
-ms.reviewer: sstein, carlr
+ms.reviewer: sstein
 ms.date: 04/16/2019
-ms.openlocfilehash: de8d1b7aba7763799228c831af61bf83a79937bb
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 332b5198f046d0096e95e79e27cbc49408e6d136
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167941"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325193"
 ---
 # <a name="azure-sql-managed-instance-content-reference"></a>Azure SQL 受控執行個體內容參考
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -26,8 +26,8 @@ ms.locfileid: "88167941"
 
 ## <a name="load-data"></a>載入資料
 
-- [遷移至 AZURE sql 受控執行個體](migrate-to-instance-from-sql-server.md)：瞭解建議的遷移程式和工具，以遷移至 azure sql 受控執行個體。
-- [將 TDE 憑證遷移至 AZURE SQL 受控執行個體](tde-certificate-migrate.md)：如果您的 SQL Server 資料庫受到透明資料加密 (TDE) 的保護，則您需要遷移 SQL 受控執行個體可用來將您想要在 Azure 中還原之備份解密的憑證。
+- [遷移至 AZURE sql 受控執行個體](migrate-to-instance-from-sql-server.md)：瞭解遷移至 azure sql 受控執行個體的建議遷移程式和工具。
+- 將[TDE 憑證遷移至 AZURE SQL 受控執行個體](tde-certificate-migrate.md)：如果您的 SQL Server 資料庫受到透明資料加密 (TDE) 的保護，您將需要遷移 SQL 受控執行個體可用來解密您要在 Azure 中還原之備份的憑證。
 - [從 BACPAC 匯入 DB](../database/database-import.md)
 - [從 BACPAC 匯出 DB](../database/database-export.md)
 - [使用 BCP 載入資料](../load-from-csv-with-bcp.md)
@@ -35,12 +35,12 @@ ms.locfileid: "88167941"
 
 ## <a name="network-configuration"></a>網路組態
 
-- [判斷子網大小](vnet-subnet-determine-size.md)：由於部署 SQL 受控執行個體之後無法調整子網，因此您必須計算打算部署到子網的受控實例數目和類型所需的位址 IP 範圍。 
-- [建立新的 VNet 和子網](virtual-network-subnet-create-arm-template.md)：根據[網路需求](connectivity-architecture-overview.md#network-requirements)設定虛擬網路和子網。 
-- [設定現有的 VNet 和子網](vnet-existing-add-subnet.md)：確認網路需求，並設定現有的虛擬網路和子網以部署 SQL 受控執行個體。 
-- [設定自訂 dns](custom-dns-configure.md)：設定自訂 dns，以透過 db 郵件設定檔的連結伺服器，將外部資源存取權授與 SQL 受控執行個體的自訂網域。 
-- [同步網路](azure-app-sync-network-configuration.md)設定：如果您在[將應用程式與 Azure 虛擬網路整合](../../app-service/web-sites-integrate-with-vnet.md)之後無法建立連線，請重新整理網路設定計劃。
-- [尋找管理端點 IP 位址](management-endpoint-find-ip-address.md)：判斷 SQL 受控執行個體用來進行管理的公用端點。 
+- [判斷子網大小](vnet-subnet-determine-size.md)：由於在部署 SQL 受控執行個體之後，無法調整子網的大小，因此您需要計算您打算部署至子網的受控實例數目和類型需要的 IP 位址範圍。 
+- [建立新的 VNet 和子網](virtual-network-subnet-create-arm-template.md)：根據 [網路需求](connectivity-architecture-overview.md#network-requirements)設定虛擬網路和子網。 
+- [設定現有的 VNet 和子網](vnet-existing-add-subnet.md)：確認網路需求，並設定您現有的虛擬網路和子網以部署 SQL 受控執行個體。 
+- [設定自訂 dns](custom-dns-configure.md)：設定自訂 dns，以透過 db mail 設定檔的連結伺服器，授與從 SQL 受控執行個體存取自訂網域的外部資源。 
+- [同步網路](azure-app-sync-network-configuration.md)設定：如果您在將 [應用程式與 Azure 虛擬網路整合](../../app-service/web-sites-integrate-with-vnet.md)之後，無法建立連線，請重新整理網路設定方案。
+- [尋找管理端點 IP 位址](management-endpoint-find-ip-address.md)：判斷 SQL 受控執行個體基於管理目的而使用的公用端點。 
 - [確認內建防火牆保護](management-endpoint-verify-built-in-firewall.md)：確認 SQL 受控執行個體只允許必要端口上的流量，以及其他內建的防火牆規則。 
 - [連接應用程式](connect-application-instance.md)：瞭解將應用程式連接到 SQL 受控執行個體的不同模式。
 
@@ -56,9 +56,9 @@ ms.locfileid: "88167941"
 - [移除 TDE 保護裝置](../database/transparent-data-encryption-byok-remove-tde-protector.md)
 - [設定記憶體內部 OLTP](../in-memory-oltp-configure.md)
 - [設定 Azure 自動化](../database/automation-manage.md)
-- [異動複寫](replication-between-two-instances-configure-tutorial.md)可讓您在受控實例之間複寫資料，或從內部部署 SQL Server 複寫至 SQL 受控執行個體，反之亦然。
-- [設定威脅偵測](threat-detection-configure.md)-[威脅偵測](../database/threat-detection-overview.md)是內建的 Azure SQL 受控執行個體功能，可偵測各種潛在的攻擊，例如 SQL 插入式攻擊或來自可疑位置的存取。 
-- [建立警示](alerts-create.md)可讓您針對受監視的計量（例如 CPU 使用率、儲存空間耗用量、IOPS 和其他 SQL 受控執行個體）設定警示。 
+- [異動複寫](replication-between-two-instances-configure-tutorial.md) 可讓您在受控實例之間複寫資料，或從 SQL Server 內部部署到 SQL 受控執行個體，反之亦然。
+- [設定威脅偵測](threat-detection-configure.md) – [威脅偵測](../database/threat-detection-overview.md) 是內建的 Azure SQL 受控執行個體功能，可偵測各種潛在的攻擊，例如 SQL 插入或從可疑位置存取。 
+- [建立警示](alerts-create.md) 可讓您針對受監視的計量（例如 CPU 使用率、儲存體空間耗用量、IOPS 及其他 SQL 受控執行個體）設定警示。 
 
 ## <a name="monitoring-and-tuning"></a>監視和微調
 
@@ -72,16 +72,16 @@ ms.locfileid: "88167941"
 ### <a name="extended-events"></a>擴充事件
 
 - [擴充事件](../database/xevent-db-diff-from-svr.md)
-- [將擴充事件儲存到事件檔案中](../database/xevent-code-event-file.md)
-- [將擴充事件儲存到信號緩衝區](../database/xevent-code-ring-buffer.md)
+- [將擴充的事件儲存至事件檔](../database/xevent-code-event-file.md)
+- [將擴充的事件儲存至信號緩衝區](../database/xevent-code-ring-buffer.md)
 
 ### <a name="alerting"></a>警示
 
-- [在受控實例上建立警示](alerts-create.md)
+- [在受控執行個體上建立警示](alerts-create.md)
 
 ## <a name="operations"></a>作業
 
-- [在 SQL 受控執行個體上由使用者起始的手動容錯移轉](user-initiated-failover.md)
+- [SQL 受控執行個體上使用者起始的手動容錯移轉](user-initiated-failover.md)
 
 ## <a name="develop-applications"></a>開發應用程式
 
@@ -110,4 +110,4 @@ ms.locfileid: "88167941"
 
 ## <a name="next-steps"></a>後續步驟
 
-從[部署 SQL 受控執行個體](instance-create-quickstart.md)開始。
+從 [部署 SQL 受控執行個體](instance-create-quickstart.md)開始著手。

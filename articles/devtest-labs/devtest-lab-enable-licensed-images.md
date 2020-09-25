@@ -3,12 +3,12 @@ title: 在 Azure DevTest Labs 中啟用授權映像 | Microsoft Docs
 description: 了解如何使用 Azure 入口網站在 Azure DevTest Labs 中啟用授權映像
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: a043679e27580254c56fe118838dd355be5a58de
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: e2b6e495be2257548782143517f5a970b424860c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286507"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91276351"
 ---
 # <a name="enable-a-licensed-image-in-your-lab-in-azure-devtest-labs"></a>在 Azure DevTest Labs 中啟用授權映像
 
@@ -19,7 +19,7 @@ ms.locfileid: "87286507"
 
 1. 登入 [Azure 入口網站](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
 
-1. 選取 [**所有服務**]，然後從清單中選取 [ **DevTest Labs** ]。
+1. 選取 [ **所有服務**]，然後從清單中選取 [ **DevTest Labs** ]。
 
 1. 從實驗室清單中，選取所需的實驗室。  
 
@@ -47,7 +47,7 @@ ms.locfileid: "87286507"
 
 1. 找出您想要讓使用者存取，但還未接受條款的授權映像。 例如，您可能會看到一個「資料科學虛擬機器」，顯示 [接受條款]**** 或 [必須檢閱條款]**** 其中一種狀態。
 
-    ![[設定以程式設計方式部署] 視窗](./media/devtest-lab-create-custom-image-from-licensed-image/devtest-lab-licensed-images.png)
+    ![顯示資料科學虛擬機器影像的螢幕擷取畫面，其中顯示 [已接受的條款] 和 [需要的條款檢查]](./media/devtest-lab-create-custom-image-from-licensed-image/devtest-lab-licensed-images.png)
 
    > [!NOTE]
    > 「資料科學 VM」是預先安裝、設定及測試過數個熱門工具的 Azure 虛擬機器映像，這些工具常用於資料分析、機器學習服務和 AI 訓練。 [適用於 Linux 和 Windows 的 Azure 資料科學虛擬機器簡介](../machine-learning/data-science-virtual-machine/overview.md)提供有關 DSVM 的大量相關資訊。

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 09/02/2020
+ms.date: 09/24/2020
 ms.author: aahi
-ms.openlocfilehash: b51319716035cc4f59d50922846b067f4eda31d3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 6a1f8cc9526d1f8393f8e7aa434587d8e4c0e979
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90900482"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334664"
 ---
 # <a name="install-and-run-speech-service-containers"></a>安裝和執行語音服務容器 
 
@@ -37,22 +37,22 @@ ms.locfileid: "90900482"
 >
 > 若要使用語音容器，您必須提交線上要求並核准。 如需詳細資訊，請參閱下一節 **執行容器的要求核准** 。
 
-| 功能 | 功能 | Latest |
+| 容器 | 特性 | Latest |
 |--|--|--|
-| 語音轉文字 | 使用中繼結果分析情感和轉譯連續即時語音或批次音訊錄製。  | 2.3.1 |
-| 自訂語音轉換文字 | 從 [自訂語音入口網站](https://speech.microsoft.com/customspeech)使用自訂模型，以中繼結果轉譯連續的即時語音或批次音訊錄製至文字。 | 2.3.1 |
-| 文字轉換語音 | 使用純文字輸入或語音合成標記語言 (SSML) 將文字轉換成自然發音語音。 | 1.5.0 |
-| 自訂文字轉換語音 | 使用 [自訂語音入口網站](https://aka.ms/custom-voice-portal)中的自訂模型，將文字轉換成自然發音語音，並以純文字輸入或語音合成標記語言 (SSML) 。 | 1.5.0 |
+| 語音轉文字 | 使用中繼結果分析情感和轉譯連續即時語音或批次音訊錄製。  | 2.5.0 |
+| 自訂語音轉換文字 | 從 [自訂語音入口網站](https://speech.microsoft.com/customspeech)使用自訂模型，以中繼結果轉譯連續的即時語音或批次音訊錄製至文字。 | 2.5.0 |
+| 文字轉換語音 | 使用純文字輸入或語音合成標記語言 (SSML) 將文字轉換成自然發音語音。 | 1.7.0 |
+| 自訂文字轉換語音 | 使用 [自訂語音入口網站](https://aka.ms/custom-voice-portal)中的自訂模型，將文字轉換成自然發音語音，並以純文字輸入或語音合成標記語言 (SSML) 。 | 1.7.0 |
 | 語音語言偵測 | 偵測音訊檔案中所說的語言。 | 1.0 |
 | 神經文字轉換語音 | 使用深度類神經網路技術將文字轉換成自然發音語音，以允許更自然合成的語音。 | 1.1.0 |
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/cognitive-services/)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 使用語音容器之前的必要條件如下：
 
-| 必要 | 用途 |
+| 必要 | 目的 |
 |--|--|
 | Docker 引擎 | 您必須在[主機電腦](#the-host-computer)上安裝 Docker 引擎。 Docker 提供可在 [macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上設定 Docker 環境的套件。 如需 Docker 和容器基本概念的入門，請參閱 [Docker 概觀](https://docs.docker.com/engine/docker-overview/) \(英文\)。<br><br> Docker 必須設定為允許容器與 Azure 連線，以及傳送帳單資料至 Azure。 <br><br> **在 Windows 上**，也必須將 Docker 設定為支援 Linux 容器。<br><br> |
 | 熟悉 Docker | 您應具備對 Docker 概念 (例如登錄、存放庫、容器和容器映像等) 的基本了解，以及基本 `docker` 命令的知識。 |
@@ -96,7 +96,7 @@ grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detect
 
 ## <a name="request-approval-to-the-run-the-container"></a>要求核准執行容器
 
-填寫並提交 [要求表單](https://aka.ms/cognitivegate) ，以要求存取容器。 
+填寫並提交 [要求表單](https://aka.ms/csgate) ，以要求存取容器。 
 
 [!INCLUDE [Request access to public preview](../../../includes/cognitive-services-containers-request-access.md)]
 
@@ -358,7 +358,7 @@ CloudAI:SentimentAnalysisSettings:SentimentAnalysisApiKey={SENTIMENT_APIKEY}
 
 下表表示各種 `docker run` 參數及其對應的描述：
 
-| 參數 | 描述 |
+| 參數 | 說明 |
 |---------|---------|
 | `{VOLUME_MOUNT}` | 主機電腦 [磁片區掛接](https://docs.docker.com/storage/volumes/)，docker 會使用它來保存自訂模型。 例如， *C:\CustomSpeech* ，其中 *C 磁片磁碟機* 位於主機電腦上。 |
 | `{MODEL_ID}` | 自訂語音入口網站的 [**定型**] 頁面中的自訂語音**模型識別碼**。 |
@@ -439,7 +439,7 @@ ApiKey={API_KEY}
 
 下表表示各種 `docker run` 參數及其對應的描述：
 
-| 參數 | 描述 |
+| 參數 | 說明 |
 |---------|---------|
 | `{VOLUME_MOUNT}` | 主機電腦 [磁片區掛接](https://docs.docker.com/storage/volumes/)，docker 會使用它來保存自訂模型。 例如， *C:\CustomSpeech* ，其中 *C 磁片磁碟機* 位於主機電腦上。 |
 | `{MODEL_ID}` | 自訂語音入口網站的 [**定型**] 頁面中的自訂語音**模型識別碼**。 |
@@ -468,7 +468,7 @@ ApiKey={API_KEY}
 * 如果自訂模型先前已下載，則 `ModelId` 會忽略。
 * 在容器結束之後自動將其移除。 容器映像仍可在主機電腦上使用。
 
-# <a name="language-detection"></a>[語言偵測](#tab/lid)
+# <a name="speech-language-detection"></a>[語音語言偵測](#tab/lid)
 
 若要執行 *語音語言偵測* 容器，請執行下列 `docker run` 命令。
 
@@ -482,7 +482,7 @@ ApiKey={API_KEY}
 
 此命令： 
 
-* 從容器映射執行語音語言偵測容器。
+* 從容器映射執行語音語言偵測容器。 目前，您不需要支付執行此映射的費用。 
 * 配置1個 CPU 核心和 1 gb (GB) 的記憶體。
 * 公開 TCP 通訊埠5003，並為容器配置虛擬 TTY。
 * 在容器結束之後自動將其移除。 容器映像仍可在主機電腦上使用。
@@ -509,7 +509,7 @@ docker run --rm -v ${HOME}:/root -ti antsu/on-prem-client:latest ./speech-to-tex
 | 容器 | SDK 主機 URL | 通訊協定 |
 |--|--|--|
 | 標準語音轉換文字和自訂語音轉換文字 | `ws://localhost:5000` | WS |
-| 文字轉換語音 (包括標準、自訂和類神經) 、語言偵測 | `http://localhost:5000` | HTTP |
+| 文字轉換語音 (包括標準、自訂和類神經) 、語音語言偵測 | `http://localhost:5000` | HTTP |
 
 如需使用 WSS 和 HTTPS 通訊協定的詳細資訊，請參閱 [容器安全性](../cognitive-services-container-support.md#azure-cognitive-services-container-security)。
 
@@ -687,7 +687,7 @@ speech_config.set_service_property(
 > [!IMPORTANT]
 >  認知服務容器在未連線至 Azure 以進行計量的情況下，將無法被授權以執行。 客戶必須啟用容器以持續與計量服務進行帳單資訊的通訊。 認知服務容器不會將客戶資料 (例如正在分析的影像或文字) 傳送至 Microsoft。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * 審核設定 [容器](speech-container-configuration.md) 以進行設定
 * 瞭解如何 [使用 Kubernetes 和 Helm 的語音服務容器](speech-container-howto-on-premises.md)

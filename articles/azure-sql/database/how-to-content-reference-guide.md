@@ -1,6 +1,6 @@
 ---
 title: 設定 & 管理內容參考
-description: 尋找內容的參考，教您設定和管理 Azure SQL Database。
+description: 尋找說明如何設定和管理 Azure SQL Database 的內容參考。
 services: sql-database
 ms.service: sql-database
 ms.subservice: single-database
@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
-ms.reviewer: carlr
+ms.reviewer: sstein
 ms.date: 01/14/2020
-ms.openlocfilehash: e5fd842e47c606c8f41aafe72253c1c4a1e885f3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fa79af1047862e8694fa6342942ffd0793bafcb6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84324383"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334996"
 ---
 # <a name="configure-and-manage-content-reference---azure-sql-database"></a>設定和管理內容參考-Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -26,7 +26,7 @@ ms.locfileid: "84324383"
 ## <a name="load-data"></a>載入資料
 
 - [移轉至 SQL Database](migrate-to-database-from-sql-server.md)
-- 瞭解如何[在遷移之後管理 SQL Database](manage-data-after-migrating-to-database.md)。
+- 瞭解如何 [在遷移之後管理 SQL Database](manage-data-after-migrating-to-database.md)。
 - [複製資料庫](database-copy.md)
 - [從 BACPAC 匯入 DB](database-import.md)
 - [從 BACPAC 匯出 DB](database-export.md)
@@ -35,7 +35,7 @@ ms.locfileid: "84324383"
 
 ## <a name="configure-features"></a>設定功能
 
-- [設定 Azure Active Directory （Azure AD）驗證](authentication-aad-configure.md)
+- [設定 Azure Active Directory (Azure AD) auth](authentication-aad-configure.md)
 - [設定條件式存取](conditional-access-configure.md)
 - [多重要素 Azure AD 驗證](authentication-mfa-ssms-overview.md)
 - [設定 Multi-Factor Authentication](authentication-mfa-ssms-configure.md)
@@ -77,7 +77,7 @@ ms.locfileid: "84324383"
 
 - [查詢多個資料庫之間垂直分割的資料](elastic-query-getting-started-vertical.md)。
 - [跨相應放大的資料層報告](elastic-query-horizontal-partitioning.md)。
-- [跨不同架構的資料表進行查詢](elastic-query-vertical-partitioning.md)。
+- [跨具有不同架構的資料表進行查詢](elastic-query-vertical-partitioning.md)。
 
 ### <a name="data-sync"></a>資料同步
 
@@ -90,7 +90,7 @@ ms.locfileid: "84324383"
 
 ## <a name="elastic-database-jobs"></a>彈性資料庫工作
 
-- [建立和管理](elastic-jobs-powershell-create.md)使用 PowerShell 彈性資料庫作業。
+- [建立與管理](elastic-jobs-powershell-create.md) 使用 PowerShell 的彈性資料庫作業。
 - 使用 Transact-SQL [建立及管理](elastic-jobs-tsql-create-manage.md)彈性資料庫作業。
 - [移轉 (從舊的彈性工作)](elastic-jobs-migrate.md)。
 
@@ -128,7 +128,7 @@ ms.locfileid: "84324383"
 - [為彈性集區而設計](disaster-recovery-strategies-for-applications-with-elastic-pool.md)
 - [為應用程式升級而設計](manage-application-rolling-upgrade.md)
 
-### <a name="design-multi-tenant-software-as-a-service-saas-applications"></a>設計多租使用者軟體即服務（SaaS）應用程式
+### <a name="design-multi-tenant-software-as-a-service-saas-applications"></a> (SaaS) 應用程式中設計多租使用者軟體即服務
 
 - [SaaS 設計模式](saas-tenancy-app-design-patterns.md)
 - [SaaS 影片索引子](saas-tenancy-video-index-wingtip-brk3120-20171011.md)
@@ -136,4 +136,4 @@ ms.locfileid: "84324383"
 
 ## <a name="next-steps"></a>後續步驟
 
-- 深入瞭解[AZURE SQL 受控執行個體的操作指南](../managed-instance/how-to-content-reference-guide.md)
+- 深入瞭解 [AZURE SQL 受控執行個體的操作指南](../managed-instance/how-to-content-reference-guide.md)

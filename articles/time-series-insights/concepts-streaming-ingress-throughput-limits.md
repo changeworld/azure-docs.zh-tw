@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: a9ac55802e4bcc435bb4bd6fd4af8977db9fd293
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 3bc68b7f4682ff00d2b93a75e39e0e5eabe4637b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88950454"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91287435"
 ---
 # <a name="streaming-ingestion-throughput-limits"></a>串流內嵌輸送量限制
 
@@ -35,7 +35,7 @@ Azure 時間序列深入解析 Gen2 串流資料輸入限制如下所述。
 > [!TIP]
 >
 > * 要求可以提供擷取速度最高可達 8 MBps 的環境支援。
-> * 如果您需要更高的輸送量，請透過 Azure 入口網站提交支援票證來連絡我們。
+> * 如果您需要透過 Azure 入口網站提交支援票證，請與我們聯絡。
  
 * **範例 1：**
 
@@ -96,6 +96,6 @@ Azure 時間序列深入解析 Gen2 目前有 **每個資料分割限制 0.5 MBp
 * [事件中樞規模](https://docs.microsoft.com/azure/event-hubs/event-hubs-scalability#throughput-units)
 * [事件中樞分割區](https://docs.microsoft.com/azure/event-hubs/event-hubs-features#partitions)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 深入瞭解資料 [儲存體](./concepts-storage.md)

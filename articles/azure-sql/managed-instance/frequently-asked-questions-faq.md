@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 09/21/2020
-ms.openlocfilehash: 2e3bf8251cfb5da20cade65831ef34dbc6709b1b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 74c603576016b72edddb4c0fe7aa970bd8626a4a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90887387"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325210"
 ---
 # <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Azure SQL 受控執行個體常見問題集 (FAQ)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -94,7 +94,7 @@ ms.locfileid: "90887387"
 
 **如何調整受控實例？**
 
-您可以從 [Azure 入口網站](../database/service-tiers-vcore.md?tabs=azure-portal#selecting-a-hardware-generation)、 [PowerShell](https://docs.microsoft.com/archive/blogs/sqlserverstorageengine/change-size-azure-sql-managed-instance-using-powershell)、 [Azure CLI](https://docs.microsoft.com/cli/azure/sql/mi?view=azure-cli-latest#az-sql-mi-update) 或 [ARM 範本](https://docs.microsoft.com/archive/blogs/sqlserverstorageengine/updating-azure-sql-managed-instance-properties-using-arm-templates)來調整受控實例。
+您可以從 [Azure 入口網站](../database/service-tiers-vcore.md?tabs=azure-portal#selecting-a-hardware-generation)、 [PowerShell](https://docs.microsoft.com/archive/blogs/sqlserverstorageengine/change-size-azure-sql-managed-instance-using-powershell)、 [Azure CLI](https://docs.microsoft.com/cli/azure/sql/mi?view=azure-cli-latest#az-sql-mi-update&preserve-view=true) 或 [ARM 範本](https://docs.microsoft.com/archive/blogs/sqlserverstorageengine/updating-azure-sql-managed-instance-properties-using-arm-templates)來調整受控實例。
 
 **我可以將我的受控執行個體從一個區域移到另一個區域嗎？**
 
@@ -102,7 +102,7 @@ ms.locfileid: "90887387"
 
 **如何刪除我的受控執行個體？**
 
-您可以透過 Azure 入口網站、 [PowerShell](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlinstance?view=azps-4.3.0)、 [AZURE CLI](https://docs.microsoft.com/cli/azure/sql/mi?view=azure-cli-latest#az-sql-mi-delete) 或 [Resource Manager REST api](https://docs.microsoft.com/rest/api/sql/managedinstances/delete)來刪除受控實例。
+您可以透過 Azure 入口網站、 [PowerShell](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlinstance?view=azps-4.3.0&preserve-view=true)、 [AZURE CLI](https://docs.microsoft.com/cli/azure/sql/mi?view=azure-cli-latest#az-sql-mi-delete&preserve-view=true) 或 [Resource Manager REST api](https://docs.microsoft.com/rest/api/sql/managedinstances/delete)來刪除受控實例。
 
 **建立或更新實例或還原資料庫需要花費多少時間？**
 
@@ -135,9 +135,9 @@ ms.locfileid: "90887387"
 
 其中一個選項是將 [資料庫匯出至 bacpac](../database/database-export.md) ，然後匯 [入 bacpac](../database/database-import.md)檔案。 如果您的資料庫小於 100 GB，這是建議的方法。
 
-如果資料庫中的所有資料表都有*主鍵*，而且資料庫中沒有任何記憶體內部 OLTP 物件，則可以使用[異動複寫](replication-two-instances-and-sql-server-configure-tutorial.md?view=sql-server-2017)。
+如果資料庫中的所有資料表都有*主鍵*，而且資料庫中沒有任何記憶體內部 OLTP 物件，則可以使用[異動複寫](replication-two-instances-and-sql-server-configure-tutorial.md?view=sql-server-2017&preserve-view=true)。
 
-從受控實例取得的原生 COPY_ONLY 備份無法還原到 SQL Server，因為相較于 SQL Server，受控實例具有較高的資料庫版本。 如需詳細資訊，請參閱 [僅複本備份](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server?view=sql-server-ver15)。
+從受控實例取得的原生 COPY_ONLY 備份無法還原到 SQL Server，因為相較于 SQL Server，受控實例具有較高的資料庫版本。 如需詳細資訊，請參閱 [僅複本備份](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server?view=sql-server-ver15&preserve-view=true)。
 
 **如何將 SQL Server 實例遷移至 SQL 受控執行個體？**
 
@@ -184,11 +184,11 @@ ms.locfileid: "90887387"
 
 **是否可以使用 SQL Profiler 進行效能追蹤？**
 
-是，支援 SQL Profiler 或 SQL 受控執行個體。 如需詳細資訊，請參閱 [SQL Profiler](https://docs.microsoft.com/sql/tools/sql-server-profiler/sql-server-profiler?view=sql-server-ver15)。
+是，支援 SQL Profiler 或 SQL 受控執行個體。 如需詳細資訊，請參閱 [SQL Profiler](https://docs.microsoft.com/sql/tools/sql-server-profiler/sql-server-profiler?view=sql-server-ver15&preserve-view=true)。
 
 **受控執行個體資料庫 Database Advisor 和查詢效能深入解析支援嗎？**
 
-否，不支援它們。 您可以使用 [dmv](../database/monitoring-with-dmvs.md) 和 [查詢存放區](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store?view=sql-server-ver15) 搭配 [SQL Profiler](https://docs.microsoft.com/sql/tools/sql-server-profiler/sql-server-profiler?view=sql-server-ver15) 和 [XEvents](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events?view=sql-server-ver15) 來監視您的資料庫。
+否，不支援它們。 您可以使用 [dmv](../database/monitoring-with-dmvs.md) 和 [查詢存放區](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store?view=sql-server-ver15&preserve-view=true) 搭配 [SQL Profiler](https://docs.microsoft.com/sql/tools/sql-server-profiler/sql-server-profiler?view=sql-server-ver15&preserve-view=true) 和 [XEvents](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events?view=sql-server-ver15&preserve-view=true) 來監視您的資料庫。
 
 **我可以在 SQL 受控執行個體上建立計量警示嗎？**
 
@@ -228,7 +228,7 @@ SQL 受控執行個體的儲存體大小取決於所選服務層級 (一般用�
 
 **是否支援隨選備份？**
 
-是的，您可以在 Azure Blob 儲存體中建立僅限複製的完整備份，但它只能在受控執行個體中還原。 如需詳細資訊，請參閱 [僅複本備份](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server?view=sql-server-ver15)。 但是，如果資料庫因為加密所用的憑證無法存取，而由服務管理的 TDE 加密，就不可能只複本備份。 在這種情況下，請使用時間點還原功能將資料庫移至另一個 SQL 受控執行個體，或切換至客戶管理的金鑰。
+是的，您可以在 Azure Blob 儲存體中建立僅限複製的完整備份，但它只能在受控執行個體中還原。 如需詳細資訊，請參閱 [僅複本備份](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server?view=sql-server-ver15&preserve-view=true)。 但是，如果資料庫因為加密所用的憑證無法存取，而由服務管理的 TDE 加密，就不可能只複本備份。 在這種情況下，請使用時間點還原功能將資料庫移至另一個 SQL 受控執行個體，或切換至客戶管理的金鑰。
 
 **原生還原 (從 .bak 檔案) 至受控執行個體支援嗎？**
 
@@ -262,7 +262,7 @@ SQL 受控執行個體負責設定管理埠的規則。 這是透過名為 [服�
 
 **是否可以設定 NVA 或內部部署防火牆，以根據 Fqdn 篩選輸出管理流量？**
 
-不可以。 這種情況不受支援，原因如下：
+否。 這種情況不受支援，原因如下：
 -   代表回應輸入管理要求的路由傳送流量是非對稱的，且無法運作。
 -   路由傳送至儲存體的流量會受到輸送量限制和延遲的影響，如此一來，我們就無法提供預期的服務品質和可用性。
 -   根據經驗，這些設定容易出錯，也不支援。
@@ -281,7 +281,7 @@ SQL 受控執行個體負責設定管理埠的規則。 這是透過名為 [服�
 
 **需要空白的子網才能建立受控執行個體嗎？**
 
-不可以。 您可以使用空的子網或已包含受控執行個體 (s) 的子網。 
+否。 您可以使用空的子網或已包含受控執行個體 (s) 的子網。 
 
 **我可以變更子網位址範圍嗎？**
 
@@ -289,7 +289,7 @@ SQL 受控執行個體負責設定管理埠的規則。 這是透過名為 [服�
 
 **我可以將受控實例移至另一個子網嗎？**
 
-不可以。 這是目前的受控執行個體設計限制。 不過，您可以在另一個子網中布建新的實例，並在舊的和新的實例之間手動備份和還原資料，或執行跨實例的 [時間點還原](point-in-time-restore.md?tabs=azure-powershell)。
+否。 這是目前的受控執行個體設計限制。 不過，您可以在另一個子網中布建新的實例，並在舊的和新的實例之間手動備份和還原資料，或執行跨實例的 [時間點還原](point-in-time-restore.md?tabs=azure-powershell)。
 
 **是否需要空的虛擬網路來建立受控執行個體？**
 
@@ -297,7 +297,7 @@ SQL 受控執行個體負責設定管理埠的規則。 這是透過名為 [服�
 
 **我可以使用子網中的其他服務來放置受控執行個體嗎？**
 
-不可以。 我們目前不支援將受控執行個體放在已包含其他資源類型的子網中。
+否。 我們目前不支援將受控執行個體放在已包含其他資源類型的子網中。
 
 ## <a name="connectivity"></a>連線能力 
 
@@ -390,7 +390,7 @@ Express Route 線路對等互連是最好的做法。 這不會與跨區域的�
 
 **我可以利用「攜帶您自己的金鑰」模型來進行 TDE 嗎？**
 
-是，適用于 BYOK 的 Azure Key Vault 案例適用于 Azure SQL 受控執行個體。 如需詳細資訊，請參閱 [透明資料加密與客戶管理的金鑰](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql?view=sql-server-ver15&tabs=azure-portal#customer-managed-transparent-data-encryption---bring-your-own-key)。
+是，適用于 BYOK 的 Azure Key Vault 案例適用于 Azure SQL 受控執行個體。 如需詳細資訊，請參閱 [透明資料加密與客戶管理的金鑰](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql?view=sql-server-ver15&tabs=azure-portal#customer-managed-transparent-data-encryption---bring-your-own-key&preserve-view=true)。
 
 **我可以遷移加密的 SQL Server 資料庫嗎？**
 
@@ -509,6 +509,10 @@ ALTER LOGIN <login_name> WITH CHECK_EXPIRATION = OFF;
 
 
 ## <a name="service-updates"></a>服務更新
+
+**Azure SQL Database & SQL 受控執行個體的根 CA 變更為何？**
+
+請參閱 [Azure SQL Database & SQL 受控執行個體的憑證輪替](https://docs.microsoft.com/azure/azure-sql/updates/ssl-root-certificate-expiring)。 
 
 **什麼是 SQL 受控執行個體的規劃維護事件？**
 

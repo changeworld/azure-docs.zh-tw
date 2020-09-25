@@ -8,12 +8,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: f859700be32bda5d8245429076c2359d1adf9d5a
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 33022d005deca5d1350278218fb6f1fca1a35ca1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90988059"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91287742"
 ---
 # <a name="azure-synapse-studio-preview-troubleshooting"></a>Azure Synapse Studio (預覽版) 疑難排解
 
@@ -31,7 +31,8 @@ ms.locfileid: "90988059"
 
 使用「SQL 隨選」執行查詢可提供「無法建立與伺服器的連接」錯誤訊息。
 
-![螢幕擷取畫面顯示無法建立與伺服器訊息的連接。](media/troubleshooting-synapse-studio/symptom2.png)
+![徵兆2](media/troubleshooting-synapse-studio/symptom2.png)
+ 
 
 ## <a name="troubleshooting-steps"></a>疑難排解步驟
 
@@ -54,7 +55,7 @@ ms.locfileid: "90988059"
 
 請重試您在 Azure Synapse Studio 中執行的作業。 您可能會在 [開發人員工具] 中看到 [網路] 清單中顯示的新專案。 請注意目前的系統時間，以提供支援票證。
 
-![螢幕擷取畫面顯示已選取 [網路] 和 [停用快取] 的 DevTools 視窗。](media/troubleshooting-synapse-studio/network-panel.png)
+![網路-面板1](media/troubleshooting-synapse-studio/network-panel.png)
 
 尋找 Url 資料行符合下列模式的專案：
 
@@ -66,7 +67,7 @@ ms.locfileid: "90988059"
 
 - 狀態開頭為「 (失敗) 」，請加寬 [狀態] 資料行，或將指標停留在狀態文字上方以查看完整文字。 開啟支援票證時，請包含文字和/或螢幕擷取畫面。
 
-    ![螢幕擷取畫面會顯示結果，包括 [狀態] 資料行中的 [失敗] 值。](media/troubleshooting-synapse-studio/status-text.png)
+    ![狀態文字](media/troubleshooting-synapse-studio/status-text.png)
 
     - 如果您看到 ERR_NAME_NOT_RESOLVED，並在10分鐘內建立了工作區，請等候10分鐘，然後再試一次，以查看問題是否仍然存在。
     - 如果您看到 ERR_INTERNET_DISCONNECTED 或 ERR_NETWORK_CHANGED，可能表示您的電腦網路連線有問題。 請檢查您的網路連線，然後再次嘗試操作。
@@ -83,21 +84,22 @@ ms.locfileid: "90988059"
 
 如果您看不到標頭，或標頭沒有上面所列的其中一個值，請在開啟票證時附加專案詳細資料的螢幕擷取畫面。
 
-![螢幕擷取畫面顯示 DevTools 視窗，並在回應標頭中反白顯示 U R L。](media/troubleshooting-synapse-studio/item-details.png)
-
+ 
+![專案詳細資料](media/troubleshooting-synapse-studio/item-details.png)
+ 
 如果上述步驟無法解決您的問題，您可能需要開啟支援票證。 提交您的支援票證時，請包含本指南開頭所下載的「會話識別碼」或「診斷資訊」。
 
 回報問題時，您可以選擇在 [開發人員工具] 中取得 [主控台] 索引標籤的螢幕擷取畫面，並將其附加至支援票證。 滾動內容，並視需要使用多個螢幕擷取畫面來捕捉整個訊息。
 
-![螢幕擷取畫面顯示 DevTools 視窗，大小為顯示可能螢幕擷取畫面的完整訊息。](media/troubleshooting-synapse-studio/developer-tool-console.png)
+![開發人員工具主控台](media/troubleshooting-synapse-studio/developer-tool-console.png)
 
 如果您要連接螢幕擷取畫面，請在拍攝螢幕擷取畫面時，提供時間 (或預估時間範圍) 。 這可協助我們查看問題。
 
 某些瀏覽器支援在 [主控台] 索引標籤中顯示時間戳記。針對 Chromium Edge/Chrome，請開啟 [開發人員工具] 中的 [設定] 對話方塊，然後在 [喜好設定] 索引標籤中選取 [顯示時間戳記]。
 
-![螢幕擷取畫面顯示 [DevTools] 視窗，其中包含在內容功能表中選取的設定。](media/troubleshooting-synapse-studio/developer-tool-console-settings.png)
+![開發人員工具主控台設定](media/troubleshooting-synapse-studio/developer-tool-console-settings.png)
 
-![螢幕擷取畫面顯示已選取 [顯示時間戳記] 的 [DevTools] 視窗喜好設定。](media/troubleshooting-synapse-studio/show-time-stamp.png)
+![顯示時間戳記](media/troubleshooting-synapse-studio/show-time-stamp.png)
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 如果先前的步驟無法協助您解決問題，請 [建立支援票證](../../sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)

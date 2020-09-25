@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: bonova
 ms.author: bonova
-ms.reviewer: carlrab, jovanpop, sachinp, sstein
+ms.reviewer: sstein, jovanpop, sachinp
 ms.date: 09/14/2020
-ms.openlocfilehash: 3c9389e6063279e214e3650f6364dc25ff773db5
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: c563862c777dd9b5bf4c9f31155aa65c430acd1a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90069589"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323230"
 ---
 # <a name="overview-of-azure-sql-managed-instance-resource-limits"></a>Azure SQL 受控執行個體資源限制總覽
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -76,8 +76,8 @@ SQL 受控執行個體有兩個服務層級： [一般用途](../database/servic
 | 每個實例的資料庫檔案數目上限 | 最高280，除非已達到實例儲存體大小或 [Azure Premium 磁片儲存體配置空間](../database/doc-changes-updates-release-notes.md#exceeding-storage-space-with-small-database-files) 的限制。 | 32767每個資料庫的檔案，除非已達到實例儲存體大小限制。 |
 | 資料檔案大小上限 | 受限於目前可用的實例儲存體大小 (最大值為 2 TB-8 TB) 和 [Azure Premium 磁片儲存體配置空間](../database/doc-changes-updates-release-notes.md#exceeding-storage-space-with-small-database-files)。 | 受限於目前可用的實例儲存體大小 (高達 1 TB-4 TB) 。 |
 | 記錄檔大小上限 | 受限於 2 TB 和目前可用的實例儲存體大小。 | 受限於 2 TB 和目前可用的實例儲存體大小。 |
-| 資料/記錄 IOPS (大約) | 每個實例最多 30-40 K IOPS *、500-7500/每個檔案<br/>\*[增加檔案大小以取得更多 IOPS](#file-io-characteristics-in-general-purpose-tier)| 10 k-200 K (2500 IOPS/vCore) <br/>新增更多虛擬核心，以取得更佳的 IO 效能。 |
-| 每個實例的記錄寫入輸送量限制 ()  | 每個虛擬核心 3 MB/秒<br/>最大 22 MB/秒 | 每個 vCore 4 MB/秒<br/>最大 48 MB/秒 |
+| 資料/記錄 IOPS (大約) | 每個實例最多 30-40 K IOPS *、500-7500/每個檔案<br/>\*[增加檔案大小以取得更多 IOPS](#file-io-characteristics-in-general-purpose-tier)| 10 k-200 K (4000 IOPS/vCore) <br/>新增更多虛擬核心，以取得更佳的 IO 效能。 |
+| 每個實例的記錄寫入輸送量限制 ()  | 每個虛擬核心 3 MB/秒<br/>每個實例最大 120 MB/秒<br/>每個資料庫 22-65 MB/秒<br/>\*[增加檔案大小以取得更好的 IO 效能](#file-io-characteristics-in-general-purpose-tier) | 每個 vCore 4 MB/秒<br/>最大 96 MB/秒 |
 | 資料輸送量 (大約) | 每個檔案 100 - 250 MB/秒<br/>\*[增加檔案大小以取得更好的 IO 效能](#file-io-characteristics-in-general-purpose-tier) | 不受限制。 |
 | 儲存體 IO 延遲 (大約)  | 5-10 毫秒 | 1-2 毫秒 |
 | 記憶體內部 OLTP | 不支援 | 可用， [大小取決於 vCore 數目](#in-memory-oltp-available-space) |
@@ -90,7 +90,7 @@ SQL 受控執行個體有兩個服務層級： [一般用途](../database/servic
 另外還有幾個考慮： 
 
 - **目前可用的實例儲存體大小** 是保留實例大小與使用的儲存空間之間的差異。
-- 使用者和系統資料庫中的資料和記錄檔大小都會包含在實例儲存體大小，並與儲存體大小上限相比較。 使用 [sys. master_files](/sql/relational-databases/system-catalog-views/sys-master-files-transact-sql) 系統檢視，判斷資料庫所使用的總空間。 錯誤記錄不會持續留存，也不計入大小。 備份並未計入儲存體大小。
+- 使用者和系統資料庫中的資料和記錄檔大小都會包含在實例儲存體大小，並與儲存體大小上限相比較。 您可以使用 [sys.master_files](/sql/relational-databases/system-catalog-views/sys-master-files-transact-sql) 系統檢視，判斷資料庫所使用的總空間。 錯誤記錄不會持續留存，也不計入大小。 備份並未計入儲存體大小。
 - 一般用途層中的輸送量和 IOPS 也取決於 SQL 受控執行個體未明確限制的檔案 [大小](#file-io-characteristics-in-general-purpose-tier) 。
   您可以使用[自動容錯移轉群組](../database/auto-failover-group-configure.md)，在不同的 Azure 區域中建立另一個可讀取的複本
 - 最大實例 IOPS 取決於設定檔配置和工作負載的散發。 舉例來說，如果您建立 7 x 1TB 檔案，且每個檔案的大小上限為 1 TB，且每7個小型檔案 (小於 128 GB) 每個 500 IOPS，則可以取得每個實例 38500 IOPS (7x5000 + 7x500) 如果您的工作負載可以使用所有檔案。 請注意，某些 IOPS 也會用於自動備份。

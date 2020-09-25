@@ -10,21 +10,21 @@ ms.devlang: ''
 ms.topic: conceptual
 author: bonova
 ms.author: bonova
-ms.reviewer: sstein, carlrab
+ms.reviewer: sstein
 ms.date: 09/05/2019
-ms.openlocfilehash: 8c49f751bae048d2faf7047e538eebcac5d818b5
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 3753004b2bd9c18399655cffd594392b63c14264
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89658728"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325159"
 ---
 # <a name="what-is-an-azure-sql-managed-instance-pool-preview"></a>什麼是 Azure SQL 受控執行個體集區 (preview) ？
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 Azure SQL 受控執行個體中的實例集區可提供便利且符合成本效益的方式，將較小的 SQL Server 實例大規模遷移至雲端。
 
-執行個體集區可讓您根據您的總移轉需求預先佈建計算資源。 然後，您可以部署數個個別的受控執行個體以達到您預先佈建的計算層級。 例如，如果您預先布建8虛擬核心，您可以部署兩個 2 vCore 和一個 4 vCore 實例，然後將資料庫移轉至這些實例。 在可用的實例集區之前，在遷移至雲端時，通常必須將較小且較少的計算密集型工作負載合併到較大的受控實例。 將資料庫群組遷移至大型實例的需求，通常需要謹慎的容量規劃和資源管理、額外的安全性考慮，以及一些額外的資料匯總在實例層級上運作。
+執行個體集區可讓您根據您的總移轉需求預先佈建計算資源。 然後，您可以部署數個個別的受控執行個體以達到您預先佈建的計算層級。 例如，如果您預先布建8虛擬核心，您可以部署 2 2 vCore 和 1 4 vCore 實例，然後將資料庫移轉至這些實例。 在可用的實例集區之前，在遷移至雲端時，通常必須將較小且較少的計算密集型工作負載合併到較大的受控實例。 將資料庫群組遷移至大型實例的需求，通常需要謹慎的容量規劃和資源管理、額外的安全性考慮，以及一些額外的資料匯總在實例層級上運作。
 
 此外，實例集區支援原生 VNet 整合，因此您可以在相同的子網中部署多個實例集區和多個單一實例。
 
@@ -149,7 +149,7 @@ Azure SQL 受控執行個體中的實例集區可提供便利且符合成本效�
 
 如需有關實例集區定價的完整詳細資訊，請參閱[SQL 受控執行個體定價頁面](https://azure.microsoft.com/pricing/details/sql-database/managed/)上的*實例*集區一節。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 若要開始使用實例集區，請參閱 [SQL 受控執行個體](instance-pools-configure.md)集區操作指南。
 - 若要瞭解如何建立您的第一個受控實例，請參閱 [快速入門手冊](instance-create-quickstart.md)。

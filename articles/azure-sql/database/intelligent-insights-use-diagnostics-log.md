@@ -1,6 +1,6 @@
 ---
 title: Intelligent Insights 效能診斷記錄
-description: Intelligent Insights 提供 Azure SQL Database 和 Azure SQL 受控執行個體效能問題的診斷記錄
+description: Intelligent Insights 提供 Azure SQL Database 的診斷記錄和 Azure SQL 受控執行個體效能問題
 services: sql-database
 ms.service: sql-db-mi
 ms.subservice: performance
@@ -9,28 +9,28 @@ ms.devlang: ''
 ms.topic: conceptual
 author: danimir
 ms.author: danil
-ms.reviewer: jrasnik, carlrab
+ms.reviewer: jrasnik, sstein
 ms.date: 06/12/2020
-ms.openlocfilehash: 398a96dc505309e565b13cb42f610d8571b9413e
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 5fd0f14f4bbc919efd5b3c236b13654574d456d7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85986319"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334968"
 ---
 # <a name="use-the-intelligent-insights-performance-diagnostics-log-of-azure-sql-database-and-azure-sql-managed-instance-performance-issues"></a>使用 Azure SQL Database 的 Intelligent Insights 效能診斷記錄和 Azure SQL 受控執行個體效能問題
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-此頁面提供有關如何使用[Intelligent Insights](intelligent-insights-overview.md) Azure SQL Database 和 Azure SQL 受控執行個體效能問題、其格式，以及您的自訂開發需求所包含之資料所產生的效能診斷記錄的資訊。 您可以將此診斷記錄傳送至[Azure 監視器記錄](../../azure-monitor/insights/azure-sql.md)、 [Azure 事件中樞](../../azure-monitor/platform/resource-logs-stream-event-hubs.md)、 [Azure 儲存體](metrics-diagnostic-telemetry-logging-streaming-export-configure.md#stream-into-azure-storage)或協力廠商解決方案，以取得自訂的 DevOps 警示和報告功能。
+此頁面提供有關如何使用 [Intelligent Insights](intelligent-insights-overview.md) Azure SQL Database 所產生之效能診斷記錄的資訊，以及 Azure SQL 受控執行個體效能問題、其格式，以及自訂開發需求所包含的資料。 您可以將此診斷記錄傳送給 [Azure 監視器記錄](../../azure-monitor/insights/azure-sql.md)、 [Azure 事件中樞](../../azure-monitor/platform/resource-logs-stream-event-hubs.md)、 [Azure 儲存體](metrics-diagnostic-telemetry-logging-streaming-export-configure.md#stream-into-azure-storage)或協力廠商解決方案，以取得自訂 DevOps 警示和報告功能。
 
 > [!NOTE]
-> 智慧型深入解析是預覽功能，不適用於下欄區域：西歐、北歐、美國西部1和美國東部1。
+> 智慧型深入解析是預覽功能，無法在下欄區域使用：西歐、北歐、美國西部1和美國東部1。
 
 ## <a name="log-header"></a>記錄標頭
 
 診斷記錄使用 JSON 標準格式來輸出 Intelligent insights 結果。 用於存取 Intelligent Insights 記錄的確切類別屬性是一個固定值 "SQLInsights"。
 
-記錄的標頭是通用的，而且包含在建立項目時顯示的時間戳記 (TimeGenerated)。 它也包含資源識別碼（ResourceId），其參考與專案相關的特定資料庫。 類別 (Category)、 層級 (Level) 和作業名稱 (OperationName) 是值不會變更的固定屬性。 它們表示記錄項目為參考資訊，來自 Intelligent Insights (SQLInsights)。
+記錄的標頭是通用的，而且包含在建立項目時顯示的時間戳記 (TimeGenerated)。 它也包含資源識別碼 (ResourceId) 參考專案相關的特定資料庫。 類別 (Category)、 層級 (Level) 和作業名稱 (OperationName) 是值不會變更的固定屬性。 它們表示記錄項目為參考資訊，來自 Intelligent Insights (SQLInsights)。
 
 ```json
 "TimeGenerated" : "2017-9-25 11:00:00", // time stamp of the log entry
@@ -138,11 +138,11 @@ Intelligent Insights 效能記錄的最後部分是關於所識別之效能降�
 "rootCauseAnalysis_s" : "High data IO caused performance to degrade. It seems that this database is missing some indexes that could help."
 ```
 
-您可以使用 Intelligent Insights 效能記錄檔搭配[Azure 監視器記錄]( https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql)或協力廠商解決方案，以取得自訂的 DevOps 警示和報告功能。
+您可以使用 Intelligent Insights 效能記錄檔搭配 [Azure 監視器記錄]( https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql) 或協力廠商解決方案，以取得自訂 DevOps 警示和報告功能。
 
 ## <a name="next-steps"></a>後續步驟
 
 - 了解 [Intelligent Insights](intelligent-insights-overview.md) 概念。
-- 瞭解如何針對[Intelligent Insights 的效能問題進行疑難排解](intelligent-insights-troubleshoot-performance.md)。
-- 瞭解如何[使用 Azure SQL 分析來監視效能問題](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql)。
+- 瞭解如何對 [Intelligent Insights 的效能問題進行疑難排解](intelligent-insights-troubleshoot-performance.md)。
+- 瞭解如何 [使用 Azure SQL 分析來監視效能問題](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql)。
 - 了解如何[收集並取用來自 Azure 資源的記錄資料](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)。

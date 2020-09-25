@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: MladjoA
 ms.author: mlandzic
-ms.reviewer: vanto, carlrab
+ms.reviewer: vanto, sstein
 ms.date: 08/25/2020
-ms.openlocfilehash: c812dfa0be3e5ced40b7f347639aeb2540b75351
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 34a849fde315b45bdb1df577cf26c91f458abd72
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88871508"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323213"
 ---
 # <a name="transparent-data-encryption-in-sql-managed-instance-using-your-own-key-from-azure-key-vault"></a>使用您自己的金鑰從 Azure Key Vault 透明資料加密在 SQL 受控執行個體
 
@@ -25,7 +25,7 @@ ms.locfileid: "88871508"
 
 此 PowerShell 腳本範例會使用來自 Azure Key Vault 的金鑰，設定 Azure SQL 受控執行個體透明資料加密 (TDE) 與客戶管理的金鑰。 這通常稱為「攜帶您自己的金鑰」 (BYOK) 案例來進行 TDE。 若要深入瞭解，請參閱 [AZURE SQL 透明資料加密與客戶管理的金鑰](../../database/transparent-data-encryption-byok-overview.md)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 現有的受控執行個體。 請參閱 [使用 PowerShell 建立受控實例](create-configure-managed-instance-powershell.md)。
 

@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 04a308805dd69c4d9245d287a391f1e7fa7d50f2
-ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
+ms.reviewer: jrasnick
+ms.openlocfilehash: c03051e2c8fddc21e4399375faeff6a40fb4d0d4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89055561"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91288098"
 ---
 # <a name="use-file-metadata-in-queries"></a>在查詢中使用檔案中繼資料
 
@@ -22,7 +22,7 @@ SQL 隨選可以處理多個檔案和資料夾，如 [查詢資料夾和多個](
 
 有時可能需要知道哪些檔案或資料夾來源與結果集中特定的資料列相互關聯。
 
-您可以使用函式 `filepath` 和 `filename` 傳回結果集中的檔案名稱和/或路徑。 或是用以根據檔案名稱和/或資料夾路徑來篩選資料。 上述函式會在 [filename 函式](query-data-storage.md#filename-function)與 [filepath 函式](query-data-storage.md#filepath-function)等語法區段中說明。 夏文中會提供範例及簡要介紹。
+您可以使用函式 `filepath` 和 `filename` 傳回結果集中的檔案名稱和/或路徑。 或是用以根據檔案名稱和/或資料夾路徑來篩選資料。 上述函式會在 [filename 函式](query-data-storage.md#filename-function)與 [filepath 函式](query-data-storage.md#filepath-function)等語法區段中說明。 在下列各節中，您會在範例中找到簡短描述。
 
 ## <a name="prerequisites"></a>Prerequisites
 

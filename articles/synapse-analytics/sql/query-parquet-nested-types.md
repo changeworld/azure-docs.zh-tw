@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: f58adf124634ce1b4326f0026718688f0eb1dc7b
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.reviewer: jrasnick
+ms.openlocfilehash: 08502704515c791bf63f4803b7446a0471c0a869
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89076730"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91288251"
 ---
 # <a name="query-nested-types-in-parquet-and-json-files-by-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中使用 SQL 隨選 (預覽) 來查詢 Parquet 和 JSON 檔案中的巢狀型別
 
@@ -47,7 +47,7 @@ FROM
 > [!IMPORTANT]
 > 此範例會使用 COVID-19-19 Open Research 資料集的檔案。 [請參閱此處的授權和資料結構](https://azure.microsoft.com/services/open-datasets/catalog/covid-19-open-research/)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 第一個步驟是建立將建立資料來源的資料庫。 然後，您將在資料庫上執行 [安裝腳本](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) 來初始化物件。 安裝腳本會建立範例中所使用的資料來源、資料庫範圍的認證，以及外部檔案格式。
 

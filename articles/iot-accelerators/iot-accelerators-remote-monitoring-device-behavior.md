@@ -8,20 +8,20 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/29/2018
 ms.topic: conceptual
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 4840363b2f6645fceca80f6dd57ece64fb2c8163
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: 7f887aac91bdb1b8c752806c7c5076708a40bc10
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87419915"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91276164"
 ---
 # <a name="implement-the-device-model-behavior"></a>實作裝置模型行為
 
 [了解裝置模型結構描述](iot-accelerators-remote-monitoring-device-schema.md)一文說明了定義模擬裝置模型的結構描述。 該文參考兩種類型的 JavaScript 檔案，這兩種類型都可以實作模擬裝置的行為：
 
-- **狀態**以固定間隔執行的 JavaScript 檔案，以更新裝置的內部狀態。
-- **方法**當解決方案在裝置上叫用方法時，所執行的 JavaScript 檔案。
+- **狀態** 以固定間隔執行以更新裝置內部狀態的 JavaScript 檔案。
+- **方法** 當方案在裝置上叫用方法時所執行的 JavaScript 檔案。
 
 > [!NOTE]
 > 裝置模型行為只適用於裝載於裝置模擬服務中的模擬裝置。 如果您想要建立真實裝置，請參閱[將裝置連線到遠端監視解決方案加速器](iot-accelerators-connecting-devices.md)。

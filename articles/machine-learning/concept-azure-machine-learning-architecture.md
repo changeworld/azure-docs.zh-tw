@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 08/20/2020
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: 7f10454eff7958f59cf16b19e98918062b2a61a3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 71032c49ac5164f13189baf64668f8998fdc186a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90886324"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91276079"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Azure Machine Learning 的運作方式：架構和概念
 
@@ -102,24 +102,17 @@ Azure Machine Learning 會記錄所有執行，並在實驗中儲存下列資訊
 
 [工作區](#workspace)  > [實驗](#experiments)  > [執行](#runs)  > **執行**設定
 
-回合組態是定義指令碼在指定的計算目標中應如何執行的一組指示。 此組態包含一組豐富的行為定義，例如是否使用現有的 Python 環境，或使用依據規格建立的 Conda 環境。
+回合設定會定義如何在指定的計算目標中執行腳本。 您可以使用此設定來指定要執行的腳本、計算目標和 Azure ML 環境、任何分散式工作專屬的設定，以及一些其他屬性。 如需一組完整的可設定選項的詳細資訊，請參閱 [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true)。
 
 回合設定可保存在包含定型腳本的目錄內的檔案中。   您也可以將它視為記憶體內建物件，用來提交執行。
 
-如需執行設定的範例，請參閱 [使用計算目標來定型您的模型](how-to-set-up-training-targets.md)。
-
-### <a name="estimators"></a>估算器
-
-為了能夠利用熱門架構來將模型定型，您可以使用估算器類別來輕鬆地建立回合組態。 您可以建立和使用一般的[估算器](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py&preserve-view=true)來提交定型指令碼，以使用您選擇的任何學習架構 (例如 scikit-learn)。
-
-如需估算器的詳細資訊，請參閱 [使用估算器將 ML 模型定型](how-to-train-ml-models.md)。
+如需執行設定的範例，請參閱 [設定定型](how-to-set-up-training-targets.md)回合。
 
 ### <a name="snapshots"></a>快照集
 
 [工作區](#workspace)  > [實驗](#experiments)  > [執行](#runs)  > **快照**集
 
 提交回合時，Azure Machine Learning 會將包含指令碼的目錄壓縮成 zip 檔案，然後傳送至計算目標。 接著會將 zip 檔案解壓縮並在該處執行指令碼。 Azure Machine Learning 也會將 zip 檔案以快照方式儲存在回合記錄中。 任何擁有工作區存取權的人都能瀏覽回合記錄並下載快照集。
-
 
 ### <a name="logging"></a>記錄
 
@@ -133,7 +126,7 @@ Azure Machine Learning 會為您自動記錄標準執行計量。 不過，您�
 
 ### <a name="git-tracking-and-integration"></a>Git 追蹤與整合
 
-當您啟動來源目錄是本機 Git 存放庫的定型回合時，該存放庫的相關資訊會儲存在回合歷程記錄中。 這適用於使用估算器、ML 管線或指令碼執行所提交的執行。 其也適用於從 SDK 或 Machine Learning CLI 提交的執行。
+當您啟動來源目錄是本機 Git 存放庫的定型回合時，該存放庫的相關資訊會儲存在回合歷程記錄中。 這適用于使用腳本執行設定或 ML 管線提交的執行。 其也適用於從 SDK 或 Machine Learning CLI 提交的執行。
 
 如需詳細資訊，請參閱 [Azure Machine Learning 的 Git 整合](concept-train-model-git-integration.md)。
 
