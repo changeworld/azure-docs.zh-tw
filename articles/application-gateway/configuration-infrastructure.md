@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 09/09/2020
 ms.author: surmb
-ms.openlocfilehash: ce0e03407349505d54aeb22b164fa8593446967d
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: cd1dc953c35233010250bf7f959c94d1de50fe4a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89652816"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319787"
 ---
 # <a name="application-gateway-infrastructure-configuration"></a>應用程式閘道基礎結構設定
 
@@ -20,10 +20,10 @@ ms.locfileid: "89652816"
 
 ## <a name="virtual-network-and-dedicated-subnet"></a>虛擬網路和專用子網
 
-應用程式閘道是您虛擬網路中的專用部署。 在您的虛擬網路中，應用程式閘道需要專用子網。 子網中可以有指定應用程式閘道部署的多個實例。 您也可以在子網中部署其他應用程式閘道。 但您無法在應用程式閘道子網中部署任何其他資源。
+應用程式閘道是您虛擬網路中的專用部署。 在您的虛擬網路中，應用程式閘道需要專用子網。 子網中可以有指定應用程式閘道部署的多個實例。 您也可以在子網中部署其他應用程式閘道。 但您無法在應用程式閘道子網中部署任何其他資源。 您無法在相同的子網上混合 Standard_v2 和標準 Azure 應用程式閘道。
 
 > [!NOTE]
-> 您無法在相同的子網上混合 Standard_v2 和標準 Azure 應用程式閘道。
+> 應用程式閘道子網目前不支援[虛擬網路服務端點原則](../virtual-network/virtual-network-service-endpoint-policies-overview.md)。
 
 ### <a name="size-of-the-subnet"></a>子網路的大小
 
@@ -113,6 +113,6 @@ Azure 也會在每個子網中保留5個 IP 位址供內部使用：前四個和
 
   任何需要透過任何虛擬裝置、中樞/輪輻虛擬網路或內部部署來重新導向 0.0.0.0/0 的案例，都不支援 V2 的 (強制通道) 。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [瞭解前端 IP 位址](configuration-front-end-ip.md)設定。

@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
-ms.openlocfilehash: 3798396c72bc01bc20f1b4ee3ee66961fe33bff5
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 7701fe91d0e3f78f9596687bf945ba4b11c2d199
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90933908"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331687"
 ---
 # <a name="manage-an-azure-database-for-mysql---flexible-server-preview-using-the-azure-cli"></a>使用 Azure CLI 管理適用於 MySQL 的 Azure 資料庫彈性的伺服器 (預覽) 
 
@@ -20,7 +20,7 @@ ms.locfileid: "90933908"
 
 本文說明如何管理 Azure 中部署的彈性伺服器 (預覽版) 。 管理工作包括計算和儲存體調整、管理員密碼重設，以及查看伺服器詳細資料。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。 本文需要您以本機方式執行 Azure CLI 2.0 版或更新版本。 若要查看所安裝的版本，請執行 `az --version` 命令。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
 
 您必須使用 [az login](https://docs.microsoft.com/cli/azure/reference-index#az-login) 命令登入您的帳戶。 請注意 **id** 屬性，這是指您的 Azure 帳戶的**訂用帳戶識別碼**。
@@ -40,7 +40,7 @@ az account set --subscription <subscription id>
 
 ## <a name="scale-compute-and-storage"></a>調整計算和儲存體
 
-您可以使用下列命令，輕鬆地擴大計算層級、虛擬核心和儲存體。 您可以看到所有伺服器作業，您可以執行 [az mysql 有彈性的伺服器伺服器總覽](/cli/azure/mysql/server)
+您可以使用下列命令，輕鬆地擴大計算層級、虛擬核心和儲存體。 您可以看到所有伺服器作業，您可以執行 [az mysql 有彈性的伺服器更新](/cli/azure/mysql/flexible-server#az_mysql_flexible_server_update)
 
 ```azurecli-interactive
 az mysql flexible-server update --resource-group myresourcegroup --name mydemoserver --sku-name Standard_D4ds_v4 --storage-size 6144
@@ -64,10 +64,10 @@ storage-size | 6144 | 伺服器的儲存體容量 (單位為 MB)。 最小值為
 
 | Cmdlet | 使用量| 描述 |
 | --- | ---| --- |
-|[az mysql 彈性-伺服器資料庫建立](/cli/azure/sql/db#az-mysql-flexible-server-db-create)|```az mysql flexible-server db create -g myresourcegroup -s mydemoserver -n mydatabasename``` |建立資料庫|
-|[az mysql 彈性-伺服器資料庫刪除](/cli/azure/sql/db#az-mysql-flexible-server-db-delete)|```az mysql flexible-server db delete -g myresourcegroup -s mydemoserver -n mydatabasename```|從伺服器刪除您的資料庫。 此命令不會刪除您的伺服器。 |
-|[az mysql 彈性-伺服器資料庫清單](/cli/azure/sql/db#az-mysql-flexible-server-db-list)|```az mysql flexible-server db list -g myresourcegroup -s mydemoserver```|列出伺服器上的所有資料庫|
-|[az mysql 彈性-伺服器資料庫顯示](/cli/azure/sql/db#az-mysql-flexible-server-db-show)|```az mysql flexible-server db show -g myresourcegroup -s mydemoserver -n mydatabasename```|顯示資料庫的更多詳細資料|
+|[az mysql 彈性-伺服器資料庫建立](/cli/azure/mysql/flexible-server/db#az_mysql_flexible_server_db_create)|```az mysql flexible-server db create -g myresourcegroup -s mydemoserver -n mydatabasename``` |建立資料庫|
+|[az mysql 彈性-伺服器資料庫刪除](/cli/azure/mysql/flexible-server/db#az_mysql_flexible_server_db_delete)|```az mysql flexible-server db delete -g myresourcegroup -s mydemoserver -n mydatabasename```|從伺服器刪除您的資料庫。 此命令不會刪除您的伺服器。 |
+|[az mysql 彈性-伺服器資料庫清單](/cli/azure/mysql/flexible-server/db#az_mysql_flexible_server_db_list)|```az mysql flexible-server db list -g myresourcegroup -s mydemoserver```|列出伺服器上的所有資料庫|
+|[az mysql 彈性-伺服器資料庫顯示](/cli/azure/mysql/flexible-server/db#az_mysql_flexible_server_db_show)|```az mysql flexible-server db show -g myresourcegroup -s mydemoserver -n mydatabasename```|顯示資料庫的更多詳細資料|
 
 ## <a name="update-admin-password"></a>更新系統管理員密碼
 您可以使用此命令變更系統管理員角色的密碼
@@ -80,13 +80,13 @@ az mysql flexible-server update --resource-group myresourcegroup --name mydemose
 > 密碼必須包含下列三個類別的字元：英文大寫字母、英文小寫字母、數位和非英數位元。
 
 ## <a name="delete-a-server"></a>刪除伺服器
-如果您只想要刪除 MySQL 具彈性的伺服器，您可以執行 [az MySQL 有彈性的伺服器刪除](/cli/azure/mysql/server#az-mysql-flexible-server-delete) 命令。
+如果您只想要刪除 MySQL 具彈性的伺服器，您可以執行 [az MySQL 有彈性的伺服器刪除](/cli/azure/mysql/flexible-server#az_mysql_flexible_server_delete) 命令。
 
 ```azurecli-interactive
 az mysql flexible-server delete --resource-group myresourcegroup --name mydemoserver
 ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 - [瞭解如何啟動或停止伺服器](how-to-stop-start-server-portal.md)
 - [瞭解如何管理虛擬網路](how-to-manage-virtual-network-cli.md)
 - [連線問題疑難排解](how-to-troubleshoot-common-connection-issues.md)

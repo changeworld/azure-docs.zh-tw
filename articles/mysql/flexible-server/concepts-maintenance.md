@@ -6,12 +6,12 @@ ms.author: nlarin
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: 67529ce3546046eaba75bd3beacd7bb9b96445fe
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: a2e99440a7c8f33eee9d3c9fe2276ac3868ff4b6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934394"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331755"
 ---
 # <a name="scheduled-maintenance-in-azure-database-for-mysql--flexible-server"></a>適用於 MySQL 的 Azure 資料庫中的排程維護 – 彈性伺服器
 
@@ -43,8 +43,8 @@ ms.locfileid: "90934394"
 
 在罕見的情況下，系統可能會取消維護事件，或可能無法順利完成。 在此情況下，系統會分別建立有關已取消或失敗之維護事件的通知。 下次嘗試執行維護時，將會根據目前的排程設定排程，您將會在五天前收到通知。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * 瞭解如何 [變更維護排程](how-to-maintenance-portal.md)
-* 瞭解如何使用 Azure 服務健康狀態來[取得即將進行維護的相關通知](/azure/service-health/service-notifications.md)
-* 瞭解如何 [設定即將進行之排程維護事件的相關警示](/azure/service-health/resource-health-alert-monitor-guide.md)
+* 瞭解如何使用 Azure 服務健康狀態來[取得即將進行維護的相關通知](../../service-health/service-notifications.md)
+* 瞭解如何 [設定即將進行之排程維護事件的相關警示](../../service-health/resource-health-alert-monitor-guide.md)

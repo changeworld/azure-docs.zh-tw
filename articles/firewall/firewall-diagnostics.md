@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: how-to
-ms.date: 09/02/2020
+ms.date: 09/17/2020
 ms.author: victorh
-ms.openlocfilehash: 92fc4252dd52236e2cc4e8fdfdd2afa32059a721
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 784459282007edab599d54edff0d2b38eed07b34
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89376939"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320637"
 ---
 # <a name="monitor-azure-firewall-logs-and-metrics"></a>監視 Azure 防火牆記錄和計量
 
@@ -24,7 +24,7 @@ ms.locfileid: "89376939"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 開始之前，您應該先閱讀 [Azure 防火牆記錄和計量](logs-and-metrics.md) ，以瞭解適用于 azure 防火牆的診斷記錄和計量。
 
@@ -35,14 +35,17 @@ ms.locfileid: "89376939"
 1. 在 Azure 入口網站中，開啟您的防火牆資源群組，然後選取防火牆。
 2. 在 [監視]**** 下方，選取 [診斷設定]****。
 
-   針對 Azure 防火牆，可以使用兩個服務特定的記錄：
+   針對 Azure 防火牆，有四個可用的服務特定記錄：
 
    * AzureFirewallApplicationRule
    * AzureFirewallNetworkRule
+   * AzureFirewallThreatIntelLog
+   * AzureFirewallDnsProxy
+
 
 3. 選取 [ **新增診斷設定**]。 [診斷設定]**** 頁面中提供診斷記錄的設定。
 5. 在此範例中，Azure 監視器記錄會儲存記錄，因此請輸入**防火牆記錄分析**作為名稱。
-6. 在 [ **記錄**檔] 底下，選取 [ **>azurefirewallapplicationrule** ] 和 [ **AzureFirewallNetworkRule** ] 以收集應用程式和網路規則的記錄。
+6. 在 [ **記錄**] 底下，選取 [ **>azurefirewallapplicationrule**]、[ **AzureFirewallNetworkRule**]、[ **AzureFirewallThreatIntelLog**] 和 [ **AzureFirewallDnsProxy** ] 以收集記錄。
 7. 選取 [ **傳送至 Log Analytics** ] 以設定您的工作區。
 8. 選取您的訂用帳戶。
 9. 選取 [儲存]。
@@ -94,7 +97,7 @@ ms.locfileid: "89376939"
 ## <a name="view-metrics"></a>檢視計量
 流覽至 Azure 防火牆，並在 [ **監視** 選取的 **計量**] 下進行。 若要檢視可用的值，請選取 [計量]**** 下拉式清單。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 既然您已設定防火牆來收集記錄，您可以探索 Azure 監視器記錄以檢視您的資料。
 

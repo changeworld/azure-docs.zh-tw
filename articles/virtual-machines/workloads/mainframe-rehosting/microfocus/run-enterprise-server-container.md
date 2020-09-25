@@ -12,12 +12,12 @@ ms.date: 06/29/2020
 tags: ''
 keywords: ''
 ms.service: multiple
-ms.openlocfilehash: 3c4afc6c0adb8d499e38abf3d709a951774dda4e
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: bfd40d39907c4e69ded0fa257305d346ca261836
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90974059"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319991"
 ---
 # <a name="run-micro-focus-enterprise-server-50-in-a-docker-container-on-azure"></a>在 Azure 上的 Docker 容器中執行微焦點企業伺服器5。0
 
@@ -27,7 +27,7 @@ Docker 可為應用程式新增可攜性和隔離。 例如，您可以從一部
 
 本教學課程會從 Azure Marketplace 安裝 **具有容器 VM 的 Windows 2016 Datacenter** 。 此 VM 包含 **Docker 18.09.0**。 接下來的步驟會示範如何部署容器、加以執行，然後使用3270模擬器連接到該容器。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 開始使用之前，請先參閱下列必要條件：
 
@@ -121,9 +121,9 @@ Docker 可為應用程式新增可攜性和隔離。 例如，您可以從一部
 
 1.  若要啟動企業伺服器5.0 和 acctdemo 應用程式，請在命令提示字元中輸入：
 
-    ~~~
+    ```
     **docker run -p 16002:86/tcp -p 16002:86/udp -p 9040-9050:9040-9050 -p 9000-9010:9000-9010 -ti --network="nat" --rm microfocus/es-acctdemo:win\_5.0\_x64
-    ~~~
+    ```
 
 1.  安裝3270終端機模擬器（例如 [x3270](http://x3270.bgp.nu/) ），並使用它來透過埠9040連接至正在執行的映射。
 
@@ -133,15 +133,15 @@ Docker 可為應用程式新增可攜性和隔離。 例如，您可以從一部
 
     2.  若要取得 acctdemo 容器的 IP 位址，請使用上一個步驟中的容器識別碼，如下所示：
 
-    ~~~
+    ```
     docker inspect \<containerID\> --format="{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}"
-    ~~~
+    ```
 
     例如：
 
-    ~~~
+    ```
     docker inspect 22a0fe3159d0 --format="{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}"
-    ~~~
+    ```
 
 4. 請注意 acctdemo 映射的 IP 位址。 例如，下列輸出中的位址是172.19.202.52。
 
@@ -167,9 +167,9 @@ Docker 可為應用程式新增可攜性和隔離。 例如，您可以從一部
 
     ![企業伺服器管理主控台](media/run-image-9.png)
 
-這樣就完成了！ 現在您正在執行和管理 Docker 容器中的 CICS 應用程式。
+就這麼簡單！ 現在您正在執行和管理 Docker 容器中的 CICS 應用程式。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 -   [在 Azure 上安裝微焦點企業伺服器5.0 和企業開發人員5。0](./set-up-micro-focus-azure.md)
 

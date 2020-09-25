@@ -13,12 +13,12 @@ ms.date: 03/21/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd16dd5a20a677568c928f805c1aaa5f2c222f24
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: a0fc1bc3158e04c9b1f677af7ef2375ac3ed2ce7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279936"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320042"
 ---
 # <a name="fix-modified-default-rules-in-azure-ad-connect"></a>修正 Azure AD Connect 中修改過的預設規則
 
@@ -73,7 +73,7 @@ Azure Active Directory (Azure AD) Connect 會使用預設的同步處理規則�
 #### <a name="add-an-inbound-sync-rule"></a>新增輸入同步處理規則
 輸入同步處理規則表示屬性的來源是連接器空間，而目標是元處理。 例如，若要讓內部部署的新屬性流程 Active Directory 至 Azure Active Directory，請建立新的輸入同步處理規則。 啟動 [ **同步處理規則編輯器**]，選取 [ **輸入** ] 做為方向，然後選取 [ **新增規則**]。 
 
- ![同步處理規則編輯器](media/how-to-connect-fix-default-rules/default3a.png)
+ ![螢幕擷取畫面，顯示已選取 [輸入] 和 [新增規則] 的 [同步處理規則編輯器]。](media/how-to-connect-fix-default-rules/default3a.png)
 
 遵循您自己的命名慣例來命名規則。 在這裡，我們會使用 **來自 AD 使用者的自訂**。 這表示規則是自訂規則，而且是從 Active Directory 連接器空間到元系的輸入規則。   
 
@@ -176,7 +176,7 @@ Azure AD 同步負責處理大部分的物件。 您可以減少物件的範圍�
 
 在 [預覽] 視窗中，選取左窗格中的 [ **產生預覽** 並匯 **入屬性流程** ]。
 
-![預覽](media/how-to-connect-fix-default-rules/default14.png)
+![螢幕擷取畫面，顯示已選取 [匯入屬性流程] 和 [產生預覽] 的 [預覽] 視窗。](media/how-to-connect-fix-default-rules/default14.png)
  
 請注意，新加入的規則會在物件上執行，並將 `cloudFiltered` 屬性設定為 true。
 
@@ -190,7 +190,7 @@ Azure AD 同步負責處理大部分的物件。 您可以減少物件的範圍�
  
 若要修正規則以將其變更回預設設定，請刪除修改過的規則，並啟用預設規則。 確定您不會遺失您嘗試達成的自訂。 當您準備好時，請執行 **完整同步**處理。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 - [硬體和先決條件](how-to-connect-install-prerequisites.md) 
 - [快速設定](how-to-connect-install-express.md)
 - [自訂設定](how-to-connect-install-custom.md)

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: d528ff41d8b7098e313e070dfe734960cdc89eaa
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 4dc768b92a9ffbeafc31ef81d065237f47fb645e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827523"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331874"
 ---
 # <a name="secure-azure-digital-twins"></a>保護 Azure 數位 Twins
 
@@ -83,7 +83,7 @@ Azure 數位 Twins 會將待用資料和傳輸中的資料加密提供給資料�
 
 ## <a name="next-steps"></a>後續步驟
 
-* 請參閱 [*如何：設定實例和驗證*](how-to-set-up-instance-scripted.md)，以瞭解這些概念的作用。
+* 請參閱 [*如何：設定實例和驗證*](how-to-set-up-instance-portal.md)，以瞭解這些概念的作用。
 
 * 請參閱 how to [*：撰寫應用程式驗證程式*](how-to-authenticate-client.md)代碼，以瞭解如何從用戶端應用程式程式碼與這些概念互動。
 

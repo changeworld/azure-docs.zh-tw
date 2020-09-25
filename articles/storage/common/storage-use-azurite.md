@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: how-to
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 35a93669bf301b3be1d560a0777751c12f3c9d14
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: f18746242ef9f680f44be1fd614c6c769289aadb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89001904"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331568"
 ---
 # <a name="use-the-azurite-emulator-for-local-azure-storage-development"></a>使用 Azurite 模擬器進行本機 Azure 儲存體開發
 
@@ -499,7 +499,7 @@ var client = new QueueClient(
 1. 選取 **本機 & 附加**
 1. 以滑鼠右鍵按一下 [ **儲存體帳戶** ]，然後選取 **[連接到 Azure 儲存體]**。
 1. 選取 [**使用連接字串**]
-1. 選取 [下一步] 。
+1. 選取 [下一步]  。
 1. 在 [ **顯示名稱** ] 欄位中輸入值。
 1. 輸入本檔上一節的[HTTPS 連接字串](#https-connection-strings)
 1. 選取 [**下一步**]
@@ -555,6 +555,12 @@ Azurite 與 Azure 儲存體錯誤處理邏輯一致，但是有一些差異。 �
 Azurite 支援讀取權限異地冗余複寫 (GRS) 。 針對儲存體資源，請附加 `-secondary` 至帳戶名稱，以存取次要位置。 例如，您可以使用下列位址，在 Azurite 中使用唯讀次要資料庫存取 blob：
 
 `http://127.0.0.1:10000/devstoreaccount1-secondary/mycontainer/myblob.txt`
+
+### <a name="table-support"></a>資料表支援
+
+Azurite 中的資料表支援目前正在開發中，並已開放參與！ 如需最新的進度，請檢查 [Azurite V3 資料表](https://github.com/Azure/Azurite/wiki/Azurite-V3-Table) 專案。
+
+持久函式的支援需要資料表。
 
 ## <a name="azurite-is-open-source"></a>Azurite 是開放原始碼
 

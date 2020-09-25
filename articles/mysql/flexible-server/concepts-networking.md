@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 9/21/2020
-ms.openlocfilehash: 550f3367fe2e5283aff788b36203e988361590ad
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 9/23/2020
+ms.openlocfilehash: 4eb9ffceada245f7a7f4b2631a79330fb497a452
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90933870"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331721"
 ---
 # <a name="connectivity-and-networking-concepts-for-azure-database-for-mysql---flexible-server-preview"></a>適用於 MySQL 的 Azure 資料庫彈性的伺服器 (預覽) 的連線能力和網路概念
 
@@ -62,6 +62,8 @@ ms.locfileid: "90933870"
 
    您的 MySQL 彈性伺服器必須在 **委派** 的子網中，且僅適用于 mysql 彈性伺服器使用。 此委派表示只有適用於 MySQL 的 Azure 資料庫彈性伺服器可以使用該子網路。 委派的子網路中不可以有其他 Azure 資源類型。 您可以委派子網，方法是將其委派屬性指派為 Microsoft.dbformysql/flexibleServers。
 
+* ** (NSG) 的網路安全性群組 ** 網路安全性群組中的安全性規則可讓您篩選可流入和流出虛擬網路子網和網路介面的網路流量類型。 如需詳細資訊，請參閱 [網路安全性群組總覽](../../virtual-network/network-security-groups-overview.md) 。
+
 
 ### <a name="unsupported-virtual-network-scenarios"></a>不支援的虛擬網路案例
 * 公用端點 (或公用 IP 或 DNS) -部署至虛擬網路的彈性伺服器不能有公用端點
@@ -108,11 +110,9 @@ ms.locfileid: "90933870"
 ## <a name="hostname"></a>主機名稱
 無論您選擇何種網路選項，我們建議您在連線到彈性的伺服器時，一律使用 (FQDN) 作為主機名稱的完整功能變數名稱。 伺服器的 IP 位址不保證保持靜態。 使用 FQDN 將有助於避免變更您的連接字串。 
 
-IP 變更的其中一個情況是，如果您使用區域多餘的 HA，而且主要和次要複本之間發生容錯移轉。 使用 FQDN 即表示您可以使用相同的連接字串順暢地重試連接。
-
 範例
 * 推薦 `hostname = servername.mysql.database.azure.com`
-* 避免使用 `hostname = 10.0.0.4` (私人位址) 或 `hostname = 40.2.45.67` (公用 IP) 
+* 可能的話，請避免使用 `hostname = 10.0.0.4` (私人位址) 或 `hostname = 40.2.45.67` (公用 IP) 
 
 
 
@@ -122,7 +122,7 @@ IP 變更的其中一個情況是，如果您使用區域多餘的 HA，而且�
 適用於 MySQL 的 Azure 資料庫彈性的伺服器僅支援使用傳輸層安全性 (TLS 1.2) 的加密連接。 TLS 1.0 和 TLS 1.1 的所有連入連線都會遭到拒絕。 您無法停用或變更連接到適用於 MySQL 的 Azure 資料庫彈性伺服器的 TLS 版本。
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 * 了解如何使用 [Azure 入口網站](how-to-manage-virtual-network-portal.md)或 [Azure CLI](how-to-manage-virtual-network-cli.md) 啟用私人存取 (vnet 整合)
 * 了解如何使用 [Azure 入口網站](how-to-manage-firewall-portal.md) 或 [Azure CLI](how-to-manage-firewall-cli.md) 啟用公用存取 (允許的 IP 位址)
 * 瞭解如何 [使用 TLS](how-to-connect-tls-ssl.md)

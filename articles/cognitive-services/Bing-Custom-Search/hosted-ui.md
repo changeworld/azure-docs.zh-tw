@@ -10,13 +10,13 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 857195e0befb95035572b5b52a01d151b332518e
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-js
+ms.openlocfilehash: 4a63a54f5ad4d1bcccecb1d1a4892ef55c238b92
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406345"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319175"
 ---
 # <a name="configure-your-hosted-ui-experience"></a>設定託管的 UI 體驗
 
@@ -36,9 +36,9 @@ Bing 自訂搜尋會提供一個託管 UI，您可輕鬆地將它以 JavaScript 
   
 4. 選取配置。
 
-    - 搜尋列和結果（預設值）：在搜尋方塊下方顯示搜尋結果。
-    - 僅結果：只顯示搜尋結果，不包含搜尋方塊。 使用此版面配置時，您必須提供搜尋查詢 (`&q=<query string>`)。 在 JavaScript 程式碼片段或 HTML 端點連結中，將查詢參數新增到要求 URL。
-    - 快顯：提供搜尋方塊，並在滑動重迭中顯示搜尋結果。
+    - 搜尋列和結果 (預設) ：在其下方顯示搜尋結果。
+    - 僅限結果：只顯示搜尋結果，不含搜尋方塊。 使用此版面配置時，您必須提供搜尋查詢 (`&q=<query string>`)。 在 JavaScript 程式碼片段或 HTML 端點連結中，將查詢參數新增到要求 URL。
+    - 快顯視窗：提供搜尋方塊，並在滑動重迭中顯示搜尋結果。
 
 5. 選取色彩佈景主題。 按一下 [自訂佈景主題]****，即可自訂符合您應用程式的色彩。 若要變更色彩，請輸入色彩的 RGB HEX 值 (例如 `#366eb8`)，或按一下色彩預覽。
 
@@ -95,20 +95,20 @@ Bing 自訂搜尋會提供一個託管 UI，您可輕鬆地將它以 JavaScript 
 
 ### <a name="web-search-configurations"></a>Web 搜尋組態
 
-- 已啟用 web 結果：決定是否啟用 web 搜尋（您會在頁面頂端看到 [Web] 索引標籤）
-- Enable 自動建議：決定是否啟用自訂自動建議（請參閱[定價](https://azure.microsoft.com/pricing/details/cognitive-services/bing-custom-search/)以取得額外費用）。
-- 每頁的 web 結果：一次顯示的 web 搜尋結果數目（最大值為每頁50個結果）。
-- 影像標題：決定是否要以搜尋結果顯示影像。
+- 啟用 web 結果：決定是否啟用 web 搜尋 (您會在頁面頂端看到 [Web] 索引標籤) 
+- 啟用自動建議：判斷是否已啟用自訂自動建議 (請參閱其他成本) 的 [定價](https://azure.microsoft.com/pricing/details/cognitive-services/bing-custom-search/) 。
+- 每一頁面的 web 結果：一次顯示的 web 搜尋結果數目 (最大值為每頁) 的50結果。
+- 影像標題：決定是否以搜尋結果顯示影像。
 
-如果您按一下 [**顯示高級**設定]，則會顯示下列設定：
+如果您按一下 [ **顯示高級**設定]，則會顯示下列設定：
 
-- 反白顯示文字：決定是否要以粗體顯示結果的搜尋字詞。
-- 連結目標：決定當使用者按一下搜尋結果時，網頁會在新的瀏覽器索引標籤（空白）還是相同的瀏覽器索引標籤（本身）中開啟。
+- 醒目提示單字：決定是否以粗體顯示結果和搜尋字詞。
+- 連結目標：決定當使用者按一下搜尋結果時，是否在新的瀏覽器索引標籤中開啟網頁 (空白) 或相同的瀏覽器索引標籤 (自助) 。
 
 ### <a name="image-search-configurations"></a>影像搜尋組態
 
-- 已啟用影像結果：決定是否啟用影像搜尋（您會在頁面頂端看到 [影像] 索引標籤）。
-- 每頁的影像結果：一次顯示的影像搜尋結果數目（最大值為每頁150個結果）。
+- 啟用影像結果：決定是否啟用影像搜尋 (您會在頁面頂端看到 [影像] 索引標籤) 。
+- 每一頁面的影像結果：一次顯示的影像搜尋結果數目 (最大值為每頁) 的150結果。
 
 如果您按一下 [顯示進階設定]****，將顯示下列設定。  
   
@@ -116,8 +116,8 @@ Bing 自訂搜尋會提供一個託管 UI，您可輕鬆地將它以 JavaScript 
 
 ### <a name="video-search-configurations"></a>影片搜尋組態
 
-- 已啟用影片結果：決定是否啟用影片搜尋（您會在頁面頂端看到 [影片] 索引標籤）。
-- 每頁的影片結果：一次顯示的影片搜尋結果數目（最大值為每頁150個結果）。
+- 啟用的影片結果：決定是否啟用影片搜尋 (您會在頁面) 頂端看到 [影片] 索引標籤。
+- 每一頁面的影片結果：一次顯示的影片搜尋結果數目 (最大值為每頁) 的150結果。
 
 如果您按一下 [顯示進階設定]****，將顯示下列設定。  
   
@@ -125,8 +125,8 @@ Bing 自訂搜尋會提供一個託管 UI，您可輕鬆地將它以 JavaScript 
 
 ### <a name="miscellaneous-configurations"></a>其他組態
 
-- 頁面標題：顯示在 [搜尋結果] 頁面標題區域中的文字（不適用於快顯版面配置）。
-- 工具列主題：決定 [搜尋結果] 頁面標題區域的背景色彩。
+- 頁面標題：顯示在 [搜尋結果] 頁面標題區域中的文字 (不適用於彈出版面配置) 。
+- 工具列主題：決定搜尋結果頁面標題區域的背景色彩。
 
 如果您按一下 [顯示進階設定]****，將顯示下列設定。  
 

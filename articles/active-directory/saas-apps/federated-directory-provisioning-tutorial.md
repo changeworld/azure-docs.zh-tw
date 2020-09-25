@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/12/2019
 ms.author: zhchia
-ms.openlocfilehash: c083b0ca7fa506bb951a9ef27d2af04d61482eda
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 336c1e78143c09e07b8f05c3dbd10ca647844242
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555152"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319940"
 ---
 # <a name="tutorial-configure-federated-directory-for-automatic-user-provisioning"></a>教學課程：設定同盟目錄來自動布建使用者
 
@@ -128,11 +128,11 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
 3. 選取 [佈建] 索引標籤。
 
-    ![佈建索引標籤](common/provisioning.png)
+    ![已呼叫 [布建] 選項的 [管理選項] 螢幕擷取畫面。](common/provisioning.png)
 
 4. 將 [佈建模式] 設定為 [自動]。
 
-    ![[佈建] 索引標籤](common/provisioning-automatic.png)
+    ![[布建模式] 下拉式清單的螢幕擷取畫面，其中已呼叫 [自動] 選項。](common/provisioning-automatic.png)
 
 5. 在 [管理員認證] 區段下的 [租用戶 URL] 中輸入 `https://api.federated.directory/v2/`。 輸入您先前從 **秘密權杖**中的同盟目錄中取出和儲存的值。 按一下 [ **測試連接** ] 以確保 Azure AD 可以連線到同盟目錄。 如果連接失敗，請確定您的同盟目錄帳戶具有系統管理員許可權，然後再試一次。
 
@@ -142,7 +142,7 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
     ![通知電子郵件](common/provisioning-notification-email.png)
 
-9. 按一下 [檔案] 。
+9. 按一下 [檔案]  。
 
 10. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 使用者至同盟目錄**]。
 

@@ -2,13 +2,13 @@
 title: 資源的標記支援
 description: 顯示哪些 Azure 資源類型支援標記。 提供所有 Azure 服務的詳細資料。
 ms.topic: conceptual
-ms.date: 09/08/2020
-ms.openlocfilehash: ea46e263d934c327cf6dfa343a5e0b5a170f545e
-ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
+ms.date: 09/21/2020
+ms.openlocfilehash: dd991167e703ad9faa7803bcecbbb6dc7eff94e7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89513909"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91284953"
 ---
 # <a name="tag-support-for-azure-resources"></a>Azure 資源的標記支援
 本文將說明資源類型是否支援[標記](tag-resources.md)。 標示為 [ **支援** 標籤] 的資料行會指出資源類型是否有標記的屬性。 在 [ **成本] 報表中** 標示為 [標籤] 的資料行會指出該資源類型是否要將標記傳遞給成本報告。 您可以依 [成本管理成本分析](../../cost-management-billing/costs/group-filter.md) 和 [Azure 計費發票及每日使用量資料](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md)中的標記來查看成本。
@@ -21,6 +21,7 @@ ms.locfileid: "89513909"
 > - [Microsoft.Addons](#microsoftaddons)
 > - [Microsoft.ADHybridHealthService](#microsoftadhybridhealthservice)
 > - [Microsoft.Advisor](#microsoftadvisor)
+> - [AgFoodPlatform](#microsoftagfoodplatform)
 > - [Microsoft.AlertsManagement](#microsoftalertsmanagement)
 > - [Microsoft.AnalysisServices](#microsoftanalysisservices)
 > - [Microsoft.ApiManagement](#microsoftapimanagement)
@@ -64,6 +65,7 @@ ms.locfileid: "89513909"
 > - [Microsoft.CostManagement](#microsoftcostmanagement)
 > - [Microsoft.CustomerLockbox](#microsoftcustomerlockbox)
 > - [Microsoft.CustomProviders](#microsoftcustomproviders)
+> - [D365CustomerInsights](#microsoftd365customerinsights)
 > - [Microsoft.DataBox](#microsoftdatabox)
 > - [Microsoft.DataBoxEdge](#microsoftdataboxedge)
 > - [Microsoft.Databricks](#microsoftdatabricks)
@@ -154,6 +156,7 @@ ms.locfileid: "89513909"
 > - [Microsoft.ResourceHealth](#microsoftresourcehealth)
 > - [Microsoft.Resources](#microsoftresources)
 > - [Microsoft.SaaS](#microsoftsaas)
+> - [Microsoft ScVmm](#microsoftscvmm)
 > - [Microsoft.Search](#microsoftsearch)
 > - [Microsoft.Security](#microsoftsecurity)
 > - [Microsoft.SecurityGraph](#microsoftsecuritygraph)
@@ -233,6 +236,13 @@ ms.locfileid: "89513909"
 > | 中繼資料 | 否 | 否 |
 > | Mahout | 否 | 否 |
 > | suppressions | 否 | 否 |
+
+## <a name="microsoftagfoodplatform"></a>AgFoodPlatform
+
+> [!div class="mx-tableFixed"]
+> | 資源類型 | 支援標記 | 成本報告中的標記 |
+> | ------------- | ----------- | ----------- |
+> | farmBeats | 是 | 是 |
 
 ## <a name="microsoftalertsmanagement"></a>Microsoft.AlertsManagement
 
@@ -401,6 +411,7 @@ ms.locfileid: "89513909"
 > | ------------- | ----------- | ----------- |
 > | cloudManifestFiles | 否 | 否 |
 > | edgeSubscriptions | 是 | 是 |
+> | linkedSubscriptions | 是 | 是 |
 > | registrations | 是 | 是 |
 > | 註冊/customerSubscriptions | 否 | 否 |
 > | registrations / products | 否 | 否 |
@@ -456,6 +467,7 @@ ms.locfileid: "89513909"
 > | billingAccounts/billingProfiles/pricesheet | 否 | 否 |
 > | billingAccounts/billingProfiles/pricesheetDownloadOperations | 否 | 否 |
 > | billingAccounts/billingProfiles/products | 否 | 否 |
+> | billingAccounts/billingProfiles/保留 | 否 | 否 |
 > | billingAccounts/billingProfiles/交易 | 否 | 否 |
 > | billingAccounts/billingProfiles/validateDetachPaymentMethodEligibility | 否 | 否 |
 > | billingAccounts/billingRoleAssignments | 否 | 否 |
@@ -499,6 +511,7 @@ ms.locfileid: "89513909"
 > | billingAccounts/patchOperations | 否 | 否 |
 > | billingAccounts/paymentMethods | 否 | 否 |
 > | billingAccounts/產品 | 否 | 否 |
+> | billingAccounts/保留 | 否 | 否 |
 > | billingAccounts/交易 | 否 | 否 |
 > | billingPeriods | 否 | 否 |
 > | billingPermissions | 否 | 否 |
@@ -580,6 +593,10 @@ ms.locfileid: "89513909"
 > | Redis/privateEndpointConnections | 否 | 否 |
 > | Redis/privateLinkResources | 否 | 否 |
 > | redisEnterprise | 是 | 是 |
+> | RedisEnterprise / privateEndpointConnectionProxies | 否 | 否 |
+> | RedisEnterprise/privateEndpointConnectionProxies/validate | 否 | 否 |
+> | RedisEnterprise / privateEndpointConnections | 否 | 否 |
+> | RedisEnterprise / privateLinkResources | 否 | 否 |
 
 ## <a name="microsoftcapacity"></a>Microsoft.Capacity
 
@@ -594,6 +611,7 @@ ms.locfileid: "89513909"
 > | catalogs | 否 | 否 |
 > | commercialReservationOrders | 否 | 否 |
 > | 兌換 | 否 | 否 |
+> | ownReservations | 否 | 否 |
 > | placePurchaseOrder | 否 | 否 |
 > | reservationOrders | 否 | 否 |
 > | reservationOrders / calculateRefund | 否 | 否 |
@@ -747,6 +765,11 @@ ms.locfileid: "89513909"
 > | ------------- | ----------- | ----------- |
 > | availabilitySets | 是 | 是 |
 > | cloudServices | 是 | 是 |
+> | cloudServices/networkInterfaces | 否 | 否 |
+> | cloudServices/publicIPAddresses | 否 | 否 |
+> | cloudServices/roleInstances | 否 | 否 |
+> | cloudServices/roleInstances/networkInterfaces | 否 | 否 |
+> | cloudServices/角色 | 否 | 否 |
 > | diskAccesses | 是 | 是 |
 > | diskEncryptionSets | 是 | 是 |
 > | disks | 是 | 是 |
@@ -774,7 +797,7 @@ ms.locfileid: "89513909"
 > | virtualMachineScaleSets | 是 | 是 |
 > | virtualMachineScaleSets/擴充功能 | 否 | 否 |
 > | virtualMachineScaleSets/networkInterfaces | 否 | 否 |
-> | virtualMachineScaleSets/publicIPAddresses | 否 | 否 |
+> | virtualMachineScaleSets/publicIPAddresses | 是 | 否 |
 > | virtualMachineScaleSets/virtualMachines | 否 | 否 |
 > | virtualMachineScaleSets/virtualMachines/networkInterfaces | 否 | 否 |
 
@@ -922,6 +945,13 @@ ms.locfileid: "89513909"
 > | associations | 否 | 否 |
 > | resourceProviders | 是 | 是 |
 
+## <a name="microsoftd365customerinsights"></a>D365CustomerInsights
+
+> [!div class="mx-tableFixed"]
+> | 資源類型 | 支援標記 | 成本報告中的標記 |
+> | ------------- | ----------- | ----------- |
+> | 執行個體 | 是 | 是 |
+
 ## <a name="microsoftdatabox"></a>Microsoft.DataBox
 
 > [!div class="mx-tableFixed"]
@@ -966,7 +996,7 @@ ms.locfileid: "89513909"
 > | factories / integrationRuntimes | 否 | 否 |
 
 > [!NOTE]
-> 如果您的資料處理站中有 Azure SSIS 整合執行時間，其執行成本將會以 data factory 標記標記。  您必須停止並重新啟動執行中的 Azure SSIS 整合執行時間，才能將新的 data factory 標記套用至其執行成本。
+> 如果您的資料處理站中有 Azure SSIS 整合執行時間，其執行成本將會以 data factory 標記標記。 您必須停止並重新啟動執行中的 Azure SSIS 整合執行時間，才能將新的 data factory 標記套用至其執行成本。
 
 ## <a name="microsoftdatalakeanalytics"></a>Microsoft.DataLakeAnalytics
 
@@ -1033,6 +1063,8 @@ ms.locfileid: "89513909"
 > | servers/privateLinkResources | 否 | 否 |
 > | servers/queryTexts | 否 | 否 |
 > | servers/recoverableServers | 否 | 否 |
+> | 伺服器/開始 | 否 | 否 |
+> | 伺服器/停止 | 否 | 否 |
 > | servers/topQueryStatistics | 否 | 否 |
 > | servers / virtualNetworkRules | 否 | 否 |
 > | servers/waitStatistics | 否 | 否 |
@@ -1042,6 +1074,7 @@ ms.locfileid: "89513909"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 支援標記 | 成本報告中的標記 |
 > | ------------- | ----------- | ----------- |
+> | flexibleServers | 是 | 是 |
 > | servers | 是 | 是 |
 > | servers / advisors | 否 | 否 |
 > | servers / keys | 否 | 否 |
@@ -1050,7 +1083,10 @@ ms.locfileid: "89513909"
 > | servers/privateLinkResources | 否 | 否 |
 > | servers/queryTexts | 否 | 否 |
 > | servers/recoverableServers | 否 | 否 |
+> | 伺服器/開始 | 否 | 否 |
+> | 伺服器/停止 | 否 | 否 |
 > | servers/topQueryStatistics | 否 | 否 |
+> | 伺服器/升級 | 否 | 否 |
 > | servers / virtualNetworkRules | 否 | 否 |
 > | servers/waitStatistics | 否 | 否 |
 
@@ -1225,6 +1261,7 @@ ms.locfileid: "89513909"
 > | namespaces / eventhubs / authorizationrules | 否 | 否 |
 > | namespaces / eventhubs / consumergroups | 否 | 否 |
 > | namespaces / networkrulesets | 否 | 否 |
+> | 命名空間/privateEndpointConnections | 否 | 否 |
 
 ## <a name="microsoftexperimentation"></a>Microsoft.Experimentation
 
@@ -1321,8 +1358,8 @@ ms.locfileid: "89513909"
 > | 服務/iomtconnectors/連接 | 否 | 否 |
 > | 服務/iomtconnectors/對應 | 否 | 否 |
 > | 服務/privateEndpointConnectionProxies | 否 | 否 |
-> | 服務/privateEndpointConnections | 是 | 是 |
-> | 服務/privateLinkResources | 是 | 是 |
+> | 服務/privateEndpointConnections | 否 | 否 |
+> | 服務/privateLinkResources | 否 | 否 |
 
 ## <a name="microsofthybridcompute"></a>Microsoft.HybridCompute
 
@@ -1330,7 +1367,9 @@ ms.locfileid: "89513909"
 > | 資源類型 | 支援標記 | 成本報告中的標記 |
 > | ------------- | ----------- | ----------- |
 > | machines | 是 | 是 |
+> | 機器/assessPatches | 否 | 否 |
 > | machines / extensions | 是 | 是 |
+> | 機器/installPatches | 否 | 否 |
 
 ## <a name="microsofthybriddata"></a>Microsoft.HybridData
 
@@ -1428,6 +1467,8 @@ ms.locfileid: "89513909"
 > | vaults | 是 | 是 |
 > | 保存庫/accessPolicies | 否 | 否 |
 > | 保存庫/eventGridFilters | 否 | 否 |
+> | 保存庫/金鑰 | 否 | 否 |
+> | 保存庫/金鑰/版本 | 否 | 否 |
 > | vaults / secrets | 否 | 否 |
 
 ## <a name="microsoftkubernetes"></a>Microsoft.Kubernetes
@@ -1466,7 +1507,7 @@ ms.locfileid: "89513909"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 支援標記 | 成本報告中的標記 |
 > | ------------- | ----------- | ----------- |
-> | labaccounts | 是 | 是 |
+> | labaccounts | 是 | 否 |
 > | users | 否 | 否 |
 
 ## <a name="microsoftlogic"></a>Microsoft.Logic
@@ -1496,6 +1537,7 @@ ms.locfileid: "89513909"
 > | 資源類型 | 支援標記 | 成本報告中的標記 |
 > | ------------- | ----------- | ----------- |
 > | workspaces | 是 | 是 |
+> | 工作區/codeJobs | 否 | 否 |
 > | workspaces / computes | 否 | 否 |
 > | 工作區/eventGridFilters | 否 | 否 |
 > | 工作區/inferenceEndpoints | 是 | 是 |
@@ -1705,6 +1747,7 @@ ms.locfileid: "89513909"
 > | frontdoorWebApplicationFirewallPolicies | 是，但 (請參閱 [以下附注](#frontdoor))  | 是 |
 > | getDnsResourceReference | 否 | 否 |
 > | internalNotify | 否 | 否 |
+> | ipGroups | 是 | 是 |
 > | loadBalancers | 是 | 是 |
 > | localNetworkGateways | 是 | 是 |
 > | natGateways | 是 | 是 |
@@ -1874,6 +1917,7 @@ ms.locfileid: "89513909"
 > | 資源類型 | 支援標記 | 成本報告中的標記 |
 > | ------------- | ----------- | ----------- |
 > | accounts | 是 | 是 |
+> | deletedAccounts | 否 | 否 |
 
 ## <a name="microsoftproviderhub"></a>Microsoft.ProviderHub
 
@@ -1973,6 +2017,17 @@ ms.locfileid: "89513909"
 > | 應用程式所需 | 是 | 是 |
 > | saasresources | 否 | 否 |
 
+## <a name="microsoftscvmm"></a>Microsoft ScVmm
+
+> [!div class="mx-tableFixed"]
+> | 資源類型 | 支援標記 | 成本報告中的標記 |
+> | ------------- | ----------- | ----------- |
+> | 雲 | 是 | 是 |
+> | VirtualMachines | 是 | 是 |
+> | VirtualMachineTemplates | 是 | 是 |
+> | VirtualNetworks | 是 | 是 |
+> | vmmservers | 是 | 是 |
+
 ## <a name="microsoftsearch"></a>Microsoft.Search
 
 > [!div class="mx-tableFixed"]
@@ -2004,6 +2059,7 @@ ms.locfileid: "89513909"
 > | discoveredSecuritySolutions | 否 | 否 |
 > | externalSecuritySolutions | 否 | 否 |
 > | InformationProtectionPolicies | 否 | 否 |
+> | iotDefenderSettings | 否 | 否 |
 > | iotSecuritySolutions | 是 | 是 |
 > | iotSecuritySolutions / analyticsModels | 否 | 否 |
 > | iotSecuritySolutions / analyticsModels / aggregatedAlerts | 否 | 否 |
@@ -2012,6 +2068,7 @@ ms.locfileid: "89513909"
 > | iotSecuritySolutions / iotAlertTypes | 否 | 否 |
 > | iotSecuritySolutions / iotRecommendations | 否 | 否 |
 > | iotSecuritySolutions / iotRecommendationTypes | 否 | 否 |
+> | iotSensors | 否 | 否 |
 > | jitNetworkAccessPolicies | 否 | 否 |
 > | jitPolicies | 否 | 否 |
 > | 原則 | 否 | 否 |
@@ -2030,6 +2087,7 @@ ms.locfileid: "89513909"
 > | securityStatusesSummaries | 否 | 否 |
 > | serverVulnerabilityAssessments | 否 | 否 |
 > | settings | 否 | 否 |
+> | sqlVulnerabilityAssessments | 否 | 否 |
 > | subAssessments | 否 | 否 |
 > | 工作 | 否 | 否 |
 > | topologies | 否 | 否 |
@@ -2081,6 +2139,7 @@ ms.locfileid: "89513909"
 > | namespaces / disasterrecoveryconfigs | 否 | 否 |
 > | namespaces / eventgridfilters | 否 | 否 |
 > | namespaces / networkrulesets | 否 | 否 |
+> | 命名空間/privateEndpointConnections | 否 | 否 |
 > | namespaces / queues | 否 | 否 |
 > | namespaces / queues / authorizationrules | 否 | 否 |
 > | namespaces / topics | 否 | 否 |
@@ -2201,6 +2260,7 @@ ms.locfileid: "89513909"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 支援標記 | 成本報告中的標記 |
 > | ------------- | ----------- | ----------- |
+> | deletedAccounts | 否 | 否 |
 > | storageAccounts | 是 | 是 |
 > | storageAccounts / blobServices | 否 | 否 |
 > | storageAccounts / fileServices | 否 | 否 |

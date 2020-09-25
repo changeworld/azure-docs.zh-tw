@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/19/2019
 ms.author: genli
-ms.openlocfilehash: be124e7677774cbe6b4a0a2730c662f25b619ee0
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f9907be0e7cd14876964b820d9b267f279fc50d3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525971"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331449"
 ---
 # <a name="troubleshoot-a-linux-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-the-azure-portal"></a>使用 Azure 入口網站將 OS 磁碟連結至復原 VM，以針對 Linux VM 進行疑難排解
 如果 Linux 虛擬機器 (VM) 發生開機或磁碟錯誤，您可能需要對虛擬硬碟本身執行疑難排解步驟。 常見的例子是 `/etc/fstab` 中的項目無效，導致 VM 無法成功開機。 本文詳細說明如何使用 Azure 入口網站將虛擬硬碟連接至另一個 Linux VM，以修正任何錯誤，然後重新建立原始 VM。
@@ -26,9 +26,9 @@ ms.locfileid: "86525971"
 疑難排解程序如下所示︰
 
 1. 停止受影響的 VM。
-1. 取得 VM 的 OS 磁片快照集。
+1. 製作 VM 的 OS 磁片快照集。
 1. 從快照集建立虛擬硬碟。
-1. 將虛擬硬碟連結和掛接至另一個 Windows VM，以進行疑難排解。
+1. 將虛擬硬碟連結和掛接至另一個 Linux VM，以進行疑難排解。
 1. 連接至疑難排解 VM。 編輯檔案或執行任何工具來修正原始虛擬硬碟的問題。
 1. 從疑難排解 VM 卸載並中斷連結虛擬硬碟。
 1. 交換 VM 的 OS 磁片。
@@ -45,13 +45,13 @@ ms.locfileid: "86525971"
 
 您也可以按一下橫跨在開機診斷記錄頂端的**螢幕擷取畫面**，下載所擷取的 VM 螢幕擷取畫面。
 
-## <a name="take-a-snapshot-of-the-os-disk"></a>建立 OS 磁片的快照集
-快照集是完整的虛擬硬碟 (VHD) 唯讀複本。 建議您在建立快照集之前，先完全關閉 VM，以清除正在進行中的任何處理程式。 若要建立 OS 磁片的快照集，請依照下列步驟進行：
+## <a name="take-a-snapshot-of-the-os-disk"></a>取得 OS 磁片的快照集
+快照集是完整的虛擬硬碟 (VHD) 唯讀複本。 建議您在建立快照集之前，先將 VM 完全關閉，以清除進行中的任何處理程式。 若要取得 OS 磁片的快照集，請遵循下列步驟：
 
-1. 移至[Azure 入口網站](https://portal.azure.com)。 從側邊欄選取 [**虛擬機器**]，然後選取發生問題的 VM。
-1. 在左窗格中選取 [**磁片**]，然後選取作業系統磁片的名稱。
-    ![關於 OS 磁片名稱的影像](./media/troubleshoot-recovery-disks-portal-windows/select-osdisk.png)
-1. 在作業系統磁片的 [**總覽**] 頁面上，選取 [**建立快照**集]。
+1. 移至 [Azure 入口網站](https://portal.azure.com)。 從側邊欄選取 [ **虛擬機器** ]，然後選取有問題的 VM。
+1. 在左窗格中，選取 [ **磁片**]，然後選取 OS 磁片的名稱。
+    ![作業系統磁片名稱的相關影像](./media/troubleshoot-recovery-disks-portal-windows/select-osdisk.png)
+1. 在 OS 磁片的 [ **總覽** ] 頁面上，選取 [ **建立快照**集]。
 1. 在與 OS 磁片相同的位置中建立快照集。
 
 ## <a name="create-a-disk-from-the-snapshot"></a>從快照集建立磁碟
@@ -90,17 +90,17 @@ ms.locfileid: "86525971"
      
     New-AzDisk -Disk $diskConfig -ResourceGroupName $resourceGroupName -DiskName $diskName
     ```
-3. 如果命令執行成功，您將會在您提供的資源群組中看到新的磁片。
+3. 如果命令成功執行，您將會在所提供的資源群組中看到新的磁片。
 
-## <a name="attach-disk-to-another-vm"></a>將磁片連接至另一個 VM
-在接下來幾個步驟中，您將使用另一個 VM 進行疑難排解。 將磁片連結至疑難排解 VM 之後，您可以流覽並編輯磁片的內容。 此程式可讓您更正任何設定錯誤，或檢查其他應用程式或系統記錄檔。 若要將磁片連結至另一個 VM，請遵循下列步驟：
+## <a name="attach-disk-to-another-vm"></a>將磁片連結至另一個 VM
+在接下來幾個步驟中，您將使用另一個 VM 進行疑難排解。 將磁片連結至疑難排解 VM 之後，您可以流覽並編輯磁片的內容。 此程式可讓您更正任何設定錯誤，或查看其他應用程式或系統記錄檔。 若要將磁片連結至另一個 VM，請遵循下列步驟：
 
-1. 從入口網站選取資源群組，然後選取疑難排解 VM。 選取 [**磁片**]，選取 [**編輯**]，然後按一下 [**新增資料磁片**]：
+1. 從入口網站選取資源群組，然後選取疑難排解 VM。 選取 [ **磁片**]，選取 [ **編輯**]，然後按一下 [ **新增資料磁片**：
 
     ![在入口網站中連結現有磁碟](./media/troubleshoot-recovery-disks-portal-windows/attach-existing-disk.png)
 
-2. 在 [**資料磁片**] 清單中，選取您所識別 VM 的 OS 磁片。 如果您看不到 OS 磁片，請確定疑難排解 VM 和 OS 磁片位於相同的區域（位置）。 
-3. 選取 [**儲存**] 以套用變更。
+2. 在 [ **資料磁片** ] 清單中，選取您所識別 VM 的 OS 磁片。 如果您沒有看到 OS 磁片，請確定疑難排解 VM 和 OS 磁片位於相同區域 (位置) 。 
+3. 選取 [ **儲存** ] 以套用變更。
 
 ## <a name="mount-the-attached-data-disk"></a>掛接已連結的資料磁碟
 
@@ -166,13 +166,13 @@ ms.locfileid: "86525971"
 
 ## <a name="swap-the-os-disk-for-the-vm"></a>交換 VM 的 OS 磁片
 
-Azure 入口網站現在支援變更 VM 的 OS 磁片。 若要這樣做，請遵循下列步驟：
+Azure 入口網站現在支援變更 VM 的 OS 磁片。 若要執行此動作，請依照下列步驟執行：
 
-1. 移至[Azure 入口網站](https://portal.azure.com)。 從側邊欄選取 [**虛擬機器**]，然後選取發生問題的 VM。
-1. 在左窗格中選取 [**磁片**]，然後選取 [**交換 OS 磁片**]。
-        ![Azure 入口網站中交換 OS 磁片的相關影像](./media/troubleshoot-recovery-disks-portal-windows/swap-os-ui.png)
+1. 移至 [Azure 入口網站](https://portal.azure.com)。 從側邊欄選取 [ **虛擬機器** ]，然後選取有問題的 VM。
+1. 在左窗格中，選取 [ **磁片**]，然後選取 [ **交換 OS 磁片**]。
+        ![Azure 入口網站中交換 OS 磁片的相關映射](./media/troubleshoot-recovery-disks-portal-windows/swap-os-ui.png)
 
-1. 選擇您已修復的新磁片，然後輸入 VM 的名稱以確認變更。 如果您在清單中看不到磁片，請在從疑難排解 VM 卸離磁片後，等待 10 ~ 15 分鐘。 也請確定磁片與 VM 位於相同的位置。
+1. 選擇您修復的新磁片，然後輸入 VM 的名稱以確認變更。 如果您在清單中看不到磁片，請在從疑難排解 VM 卸離磁片之後等候 10 ~ 15 分鐘。 也請確定磁片與 VM 位於相同的位置。
 1. 選取 [確定]。
 
 ## <a name="next-steps"></a>後續步驟

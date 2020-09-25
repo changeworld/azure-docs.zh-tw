@@ -8,16 +8,16 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 09/17/2020
 ms.author: ambapat
-ms.openlocfilehash: b90d868042e9fb947afdfae9acf35262912eff94
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: ce275674704cd7538f25a2d3f31d0e65aecd7925
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90994729"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320620"
 ---
 # <a name="import-hsm-protected-keys-to-managed-hsm-byok"></a>將受 HSM 保護的金鑰匯入至受控 HSM (BYOK) 
 
- Azure Key Vault 受控 HSM 支援匯入內部部署硬體安全模組中產生的金鑰 (HSM) ;金鑰永遠不會離開 HSM 保護界限。 此案例通常稱為「攜帶您自己的金鑰」(BYOK)。 受控 HSM 使用 nCipher nShield 系列的 Hsm (FIPS 140-2 層級3驗證) 來保護您的金鑰。
+ Azure Key Vault 受控 HSM 支援匯入內部部署硬體安全模組中產生的金鑰 (HSM) ;金鑰永遠不會離開 HSM 保護界限。 此案例通常稱為「攜帶您自己的金鑰」(BYOK)。 受控 HSM 會使用 (FIPS 140-2 層級3驗證) 的 Marvell LiquidSecurity HSM 介面卡來保護您的金鑰。
 
 使用本文中的資訊可協助您規劃、產生及傳輸您自己的受 HSM 保護金鑰，以搭配使用受控 HSM。
 
@@ -40,7 +40,7 @@ ms.locfileid: "90994729"
 * 將 BYOK 檔案上傳到受控 HSM 時，受控 HSM 會使用 KEK 私密金鑰來解密目標金鑰內容，並將它匯入為 HSM 金鑰。 這種操作完全是在 HSM 內部執行。 目標金鑰一律會保留在 HSM 保護界限內。
 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要使用本文中的 Azure CLI 命名，您必須具有下列項目：
 

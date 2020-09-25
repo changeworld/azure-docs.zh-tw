@@ -4,12 +4,12 @@ description: 使用 Azure Resource Manager 將資源移到新的資源群組或�
 ms.topic: conceptual
 ms.date: 09/15/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 43b5cd8c9fa5947ff8f345bd0cd3ad26d9e61923
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: cd05fe045532ee1b1f1fb88e502d786daabf9365
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90603147"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319549"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>將資源移到新的資源群組或訂用帳戶 \(部分機器翻譯\)
 
@@ -34,6 +34,10 @@ ms.locfileid: "90603147"
    * [網路移動指導方針](./move-limitations/networking-move-limitations.md)
    * [復原服務移動指引](../../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json)
    * [虛擬機器移動指導方針](./move-limitations/virtual-machines-move-limitations.md)
+
+1. 如果您將具有直接指派 Azure 角色的資源移至資源 (或子資源) ，則不會移動角色指派，也不會變成孤立的角色指派。 移動之後，您必須重新建立角色指派。 最後，系統會自動移除孤立的角色指派，但在移動資源之前移除角色指派是最佳做法。
+
+    如需如何管理角色指派的相關資訊，請參閱 [列出 azure 角色指派](../../role-based-access-control/role-assignments-list-portal.md#list-role-assignments-at-a-scope) 和 [新增或移除 azure 角色指派](../../role-based-access-control/role-assignments-portal.md)。
 
 1. 來源和目的地訂用帳戶必須為作用中。 如果您在啟用已停用的帳戶時遇到問題，請[建立 Azure 支援要求](../../azure-portal/supportability/how-to-create-azure-support-request.md)。 針對問題類型選取 [訂用帳戶管理]****。
 

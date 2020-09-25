@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: e69a03cd142fdbcc5864ee38a4843e1c2e44a124
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5fe11b20ff8e96bc4b0d997c49201aafdd2e2cac
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79477148"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320518"
 ---
 # <a name="execute-data-science-tasks-exploration-modeling-and-deployment"></a>執行資料科學工作：探索、模型化和部署
 
@@ -30,7 +30,7 @@ ms.locfileid: "79477148"
 
 資料科學家可以利用許多方式執行探索和報告：使用 Python 可用的程式庫和套件 (例如 matplotlib) 或使用 R (例如 ggplot 或 lattice)。 資料科學家可以自訂這類程式碼，以符合特定情節的資料探索需求。 處理結構化資料與非結構化資料的需求不同，例如文字或影像。 
 
-Azure Machine Learning 之類的產品也提供資料整頓和探索的[先進資料準備](../how-to-create-register-datasets.md)，包括功能建立。 使用者應決定最符合其需求的工具、程式庫和套件。 
+產品（例如 Azure Machine Learning）也提供資料整頓和探索的 [先進資料準備](../how-to-create-register-datasets.md) ，包括功能建立。 使用者應決定最符合其需求的工具、程式庫和套件。 
 
 在此階段結尾處的交付項目是資料探索報告。 報告應該提供相當完整的資料檢視，以用於模型化及評估資料是否適合繼續進行模型化步驟。 下列各節中針對半自動探索、模型化和報告所討論的 Team Data Science Process (TDSP) 公用程式也提供標準化的資料探索和模型化報告。 
 
@@ -98,7 +98,7 @@ YAML 檔案是用來指定：
 逐步解說還會提供進一步範例，說明**特定情節**之程序中的所有步驟。 [範例逐步解說](walkthroughs.md)文章中會列出這些逐步解說以及簡短說明的連結。 這些逐步解說說明如何將雲端、內部部署工具及服務組合成工作流程或管線，以建立智慧型應用程式。
 
 > [!NOTE]
-> 如需使用 Azure Machine Learning Studio 進行部署，請參閱[部署 Azure Machine Learning Web 服務](../studio/deploy-a-machine-learning-web-service.md)。
+> 如需使用 Azure Machine Learning Studio 進行部署，請參閱[部署 Azure Machine Learning Web 服務](../classic/deploy-a-machine-learning-web-service.md)。
 >
 >
 
@@ -111,5 +111,3 @@ YAML 檔案是用來指定：
 [追蹤資料科學專案的進度](track-progress.md)會顯示資料科學家可如何追蹤資料科學專案的進度。
 
 [模型作業和 CI/CD](ci-cd-flask.md) 會示範如何使用開發模型執行 CI/CD。
-
-

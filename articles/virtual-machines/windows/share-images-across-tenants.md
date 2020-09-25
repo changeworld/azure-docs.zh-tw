@@ -1,6 +1,6 @@
 ---
 title: 在 Azure 中跨租使用者共用資源庫映射
-description: 瞭解如何使用共用映射資源庫跨 Azure 租使用者共用 VM 映射。
+description: 瞭解如何使用 Windows 範例，透過共用映射資源庫，跨 Azure 租使用者共用 VM 映射。
 author: axayjo
 ms.service: virtual-machines-windows
 ms.subservice: imaging
@@ -9,22 +9,22 @@ ms.topic: how-to
 ms.date: 07/15/2019
 ms.author: akjosh
 ms.reviewer: cynthn
-ms.openlocfilehash: 1c09bf6ddef88999394ea0575d11a0fbad05f87d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4fb4589d072b57113e1f40675786d012ec699d16
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074190"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331432"
 ---
 # <a name="share-gallery-vm-images-across-azure-tenants"></a>跨 Azure 租使用者共用資源庫 VM 映射
 
-共用映射資源庫可讓您使用 RBAC 共用影像。 您可以使用 RBAC，在租使用者中共用映射，甚至是租使用者外部的個人。 如需這個簡單共用選項的詳細資訊，請參閱[共用資源庫](./shared-images-portal.md#share-the-gallery)。
+共用映射庫可讓您使用 RBAC 共用映射。 您可以使用 RBAC 來共用您租使用者中的影像，甚至是租使用者以外的個人。 如需這個簡單共用選項的詳細資訊，請參閱 [共用資源庫](./shared-images-portal.md#share-the-gallery)。
 
 [!INCLUDE [virtual-machines-share-images-across-tenants](../../../includes/virtual-machines-share-images-across-tenants.md)]
 
 
 > [!IMPORTANT]
-> 您無法使用入口網站，從另一個 azure 租使用者中的映射部署 VM。 若要從租使用者之間共用的映射建立 VM，您必須使用[Azure CLI](../linux/share-images-across-tenants.md)或 Powershell。
+> 您無法使用入口網站，從另一個 azure 租使用者中的映射部署 VM。 若要從租使用者之間共用的映射建立 VM，您必須使用 [Azure CLI](../linux/share-images-across-tenants.md) 或 Powershell。
 
 ## <a name="create-a-vm-using-powershell"></a>使用 PowerShell 建立 VM
 
@@ -41,7 +41,7 @@ Connect-AzAccount -ServicePrincipal -Credential $cred  -Tenant "<Tenant 1 ID>"
 Connect-AzAccount -ServicePrincipal -Credential $cred -Tenant "<Tenant 2 ID>"
 ```
 
-在具有應用程式註冊許可權的資源群組中建立 VM。 將此範例中的資訊取代為您自己的。
+在資源群組中建立具有應用程式註冊許可權的 VM。 將此範例中的資訊取代為您自己的資訊。
 
 
 
@@ -85,4 +85,4 @@ New-AzVM -ResourceGroupName $resourceGroup -Location $location -VM $vmConfig
 
 ## <a name="next-steps"></a>後續步驟
 
-您也可以使用[Azure 入口網站](shared-images-portal.md)建立共用映射庫資源。
+您也可以使用 [Azure 入口網站](shared-images-portal.md)來建立共用映射庫資源。

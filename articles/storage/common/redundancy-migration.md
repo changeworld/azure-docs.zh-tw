@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 05/05/2020
+ms.date: 09/24/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: ca9a796483c52e2e74231dfcbb67a72b913d35d7
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 5f570f13fd39bd25b37c35a2c823e64eaa02fef5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89072990"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91295391"
 ---
 # <a name="change-how-a-storage-account-is-replicated"></a>變更儲存體帳戶的複寫方式
 
@@ -39,8 +39,8 @@ Azure 儲存體提供下列類型的複寫：
 
 | 開關 | ...LRS | ...GRS/RA-GRS | ...ZRS | ...GZRS/RA-GZRS |
 |--------------------|----------------------------------------------------|---------------------------------------------------------------------|----------------------------------------------------|---------------------------------------------------------------------|
-| <b>...從 LRS</b> | N/A | 使用 Azure 入口網站、PowerShell 或 CLI 來變更複寫設定<sup>1</sup> | 執行手動遷移 <br /><br />要求即時移轉 | 執行手動遷移 <br /><br /> 或 <br /><br /> 先切換至 GRS/RA-GRS，然後要求即時移轉<sup>1</sup> |
-| <b>...從 GRS/RA-GRS</b> | 使用 Azure 入口網站、PowerShell 或 CLI 來變更複寫設定 | N/A | 執行手動遷移 <br /><br /> 或 <br /><br /> 先切換至 LRS，然後再要求即時移轉 | 執行手動遷移 <br /><br /> 要求即時移轉 |
+| <b>...從 LRS</b> | N/A | 使用 Azure 入口網站、PowerShell 或 CLI 來變更複寫設定<sup>1</sup> | 執行手動遷移 <br /><br /> 或者 <br /><br /> 要求即時移轉 | 執行手動遷移 <br /><br /> 或者 <br /><br /> 先切換至 GRS/RA-GRS，然後要求即時移轉<sup>1</sup> |
+| <b>...從 GRS/RA-GRS</b> | 使用 Azure 入口網站、PowerShell 或 CLI 來變更複寫設定 | N/A | 執行手動遷移 <br /><br /> 或者 <br /><br /> 先切換至 LRS，然後再要求即時移轉 | 執行手動遷移 <br /><br /> 或者 <br /><br /> 要求即時移轉 |
 | <b>...從 ZRS</b> | 執行手動遷移 | 執行手動遷移 | N/A | 使用 Azure 入口網站、PowerShell 或 CLI 來變更複寫設定<sup>1、2</sup> |
 | <b>...從 GZRS/RA-GZRS</b> | 執行手動遷移 | 執行手動遷移 | 使用 Azure 入口網站、PowerShell 或 CLI 來變更複寫設定 | N/A |
 
@@ -48,11 +48,11 @@ Azure 儲存體提供下列類型的複寫：
 下欄區域不支援從<sup>ZRS 轉換為</sup>GZRS/RA-GZRS，反之亦然：美國東部2、美國東部、西歐。
 
 > [!CAUTION]
-> 如果您已針對 (RA-) GRS 或 (RA-) GZRS 帳戶執行 [帳戶容錯移轉](storage-disaster-recovery-guidance.md) ，則在容錯移轉之後，該帳戶會在新的主要區域中以本機方式重複。 不支援針對容錯移轉所產生的 LRS 帳戶即時移轉至 ZRS 或 GZRS。 您將需要 [手動遷移](#perform-a-manual-migration-to-zrs) 至 ZRS 或 GZRS。
+> 如果您已針對 (RA-) GRS 或 (RA-) GZRS 帳戶執行 [帳戶容錯移轉](storage-disaster-recovery-guidance.md) ，則在容錯移轉之後，該帳戶會在新的主要區域中以本機方式重複。 不支援針對容錯移轉所產生的 LRS 帳戶即時移轉至 ZRS 或 GZRS。 即使在所謂的容錯回復作業情況下，也是如此。 例如，如果您執行從 GZRS 到次要區域中 LRS 的帳戶容錯移轉，然後再次將它設定為使用 RA GRS，並執行另一個帳戶容錯移轉至原始主要區域，您就無法將原始即時移轉的支援與主要區域中的遠端協助 GZRS 聯繫。 相反地，您必須手動遷移至 ZRS 或 GZRS。
 
 ## <a name="change-the-replication-setting"></a>變更複寫設定
 
-您可以使用 Azure 入口網站、PowerShell 或 Azure CLI 來變更儲存體帳戶的複寫設定，只要您未變更在主要區域中複寫資料的方式即可。 如果您要從主要區域中的 LRS 遷移至主要區域中的 ZRS，或反之亦然，則必須執行 [手動遷移](#perform-a-manual-migration-to-zrs) 或 [即時移轉](#request-a-live-migration-to-zrs)。
+您可以使用 Azure 入口網站、PowerShell 或 Azure CLI 來變更儲存體帳戶的複寫設定，只要您未變更在主要區域中複寫資料的方式即可。 如果您要從主要區域中的 LRS 遷移至主要區域中的 ZRS，或反之亦然，則必須執行手動遷移或即時移轉。
 
 變更儲存體帳戶的複寫方式，不會導致應用程式的停機時間。
 
@@ -89,7 +89,7 @@ az storage account update \
 
 ---
 
-## <a name="perform-a-manual-migration-to-zrs"></a>執行手動遷移至 ZRS
+## <a name="perform-a-manual-migration-to-zrs-gzrs-or-ra-gzrs"></a>執行手動遷移至 ZRS、GZRS 或 RA-GZRS
 
 如果您想要變更在主要區域中複寫儲存體帳戶中資料的方式，方法是從 LRS 移至 ZRS 或反之亦然，然後您可以選擇執行手動遷移。 手動移轉比即時移轉更具彈性。 您可以控制手動遷移的時間，如果您需要在特定日期內完成遷移，請使用此選項。
 
@@ -102,9 +102,11 @@ az storage account update \
 - 使用現有的工具（例如 AzCopy）、其中一個 Azure 儲存體用戶端程式庫或可靠的協力廠商工具來複製資料。
 - 如果您熟悉 Hadoop 或 HDInsight，可以將來源儲存體帳戶和目的地儲存體帳戶帳戶連結至您的叢集。 然後，使用 DistCp 之類的工具來平行處理資料複製程序。
 
-## <a name="request-a-live-migration-to-zrs"></a>要求即時移轉至 ZRS
+## <a name="request-a-live-migration-to-zrs-gzrs-or-ra-gzrs"></a>要求即時移轉至 ZRS、GZRS 或 RA-GZRS
 
-如果您需要將儲存體帳戶從 LRS 或 GRS 遷移至主要區域中的 ZRS，而不需要應用程式停機時間，您可以向 Microsoft 要求即時移轉。 在即時移轉期間，您可以存取儲存體帳戶中的資料，而不會遺失耐久性或可用性。 在遷移過程中會保留 Azure 儲存體 SLA。 沒有與即時移轉相關聯的資料遺失。 在遷移之後，服務端點、存取金鑰、共用存取簽章和其他帳戶選項都會保持不變。
+如果您需要將儲存體帳戶從 LRS 遷移至主要區域中的 ZRS，而不需要應用程式停機時間，您可以向 Microsoft 要求即時移轉。 若要從 LRS 遷移至 GZRS 或 RA-GZRS，請先切換至 GRS 或 RA-GRS，然後要求即時移轉。 同樣地，您可以要求從 GRS 或 GRS 到 GZRS 或 RA-GZRS 的即時移轉。 若要從 GRS 或 GRS 遷移至 ZRS，請先切換至 LRS，然後要求即時移轉。
+
+在即時移轉期間，您可以存取儲存體帳戶中的資料，而不會遺失耐久性或可用性。 在遷移過程中會保留 Azure 儲存體 SLA。 沒有與即時移轉相關聯的資料遺失。 在遷移之後，服務端點、存取金鑰、共用存取簽章和其他帳戶選項都會保持不變。
 
 ZRS 僅支援一般用途 v2 帳戶，因此請務必先升級您的儲存體帳戶，再將即時移轉的要求提交至 ZRS。 如需詳細資訊，請參閱[升級至一般用途 v2 儲存體帳戶](storage-account-upgrade.md)。 儲存體帳戶必須包含要透過即時移轉來遷移的資料。
 
@@ -123,14 +125,14 @@ ZRS 僅支援一般用途 v2 帳戶，因此請務必先升級您的儲存體帳
 
 1. 選取 **新的支援要求**
 2. 根據您的帳戶資訊，完成 [基本]**** 資訊。 在 [服務]**** 區段中，選取 [儲存體帳戶管理]**** 和您想要轉換成 ZRS 的資源。
-3. 選取 [下一步]。
+3. 選取 [下一步]  。
 4. 在 [問題]**** 區段中，指定下列值︰
     - **嚴重性**：將預設值保持不變。
     - **問題類型**：選取 [資料移轉]****。
     - **類別**：選取 [ **遷移至 ZRS**]。
     - **標題**：輸入描述性標題，例如 **ZRS 帳戶移轉**。
     - **詳細資料**：在 [**詳細資料**] 方塊中輸入其他詳細資料，例如，我想要從區域中的 [LRS，GRS] 遷移至 ZRS \_ \_ 。
-5. 選取 [下一步]。
+5. 選取 [下一步]  。
 6. 確認 [連絡人資訊]**** 刀鋒視窗上的連絡人資訊正確。
 7. 選取 [建立]。
 

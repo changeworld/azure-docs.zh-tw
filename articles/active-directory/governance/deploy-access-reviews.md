@@ -16,12 +16,12 @@ ms.date: 08/14/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7154bc1f033806d359726cff8ed227f2219559ec
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 51983e52643d587fc497a1a67fcb0cd29dbb7f17
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89461029"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91306560"
 ---
 # <a name="planning-azure-active-directory-access-reviews-deployment"></a>規劃 Azure Active Directory 存取審查部署
 
@@ -37,7 +37,7 @@ ms.locfileid: "89461029"
 
 * 將審核結果自動化，例如移除使用者的資源存取權
 
-  ![規劃存取權評論](./media/deploy-access-review/1-planning-review.png)
+  ![顯示存取權審核流程的圖表。](./media/deploy-access-review/1-planning-review.png)
 
 存取評論是 [Azure AD Identity Governance](identity-governance-overview.md) 的功能。 另一項功能是 [權利管理](entitlement-management-overview.md)、 [Privileged Identity Management](../privileged-identity-management/pim-configure.md) 和 [使用](../conditional-access/terms-of-use.md)規定。 它們一起可協助組織解決下列四個問題：
 
@@ -300,7 +300,7 @@ ms.locfileid: "89461029"
 
 開啟 [生命週期] 索引標籤，以向下滾動以存取評論。
 
- ![編輯原則](./media/deploy-access-review/5-plan-access-packages-admin-ui.png)
+ ![螢幕擷取畫面，顯示 [生命週期] 索引標籤中的 [編輯原則]。](./media/deploy-access-review/5-plan-access-packages-admin-ui.png)
 
 ## <a name="plan-access-reviews-for-groups"></a>規劃群組的存取權審核
 
@@ -419,7 +419,7 @@ ms.locfileid: "89461029"
 
 為了降低過時存取的風險，系統管理員可以定期審核對存取套件具有作用中指派的使用者。 遵循下列連結中的指示：
 
-| 操作說明文章| 描述 |
+| 操作說明文章| 說明 |
 | - | - |
 | [建立存取權評論](entitlement-management-access-reviews-create.md)| 啟用存取套件的評論。 |
 | [執行存取權審核](entitlement-management-access-reviews-review-access.md)| 針對指派給存取套件的其他使用者執行存取權審核。 |
@@ -433,7 +433,7 @@ ms.locfileid: "89461029"
 
 員工和來賓的群組和應用程式存取需求可能會隨著時間而改變。 為了降低與過時存取權指派相關的風險，系統管理員可以建立群組成員或應用程式存取的存取權審核。 遵循下列連結中的指示：
 
-| 操作說明文章| 描述 |
+| 操作說明文章| 說明 |
 | - | - |
 | [建立存取權評論](create-access-review.md)| 針對群組成員或應用程式存取建立一或多個存取權審核。 |
 | [執行存取權審核](perform-access-review.md)| 針對具有應用程式存取權的群組成員或使用者執行存取權檢查。 |
@@ -446,11 +446,11 @@ ms.locfileid: "89461029"
 
 若要減少與過時角色指派相關聯的風險，您應該定期檢查特殊許可權 Azure AD 角色的存取權。
 
-![審查 azure ad 角色](./media/deploy-access-review/8-review-azure-ad-roles-picker.png)
+![顯示 Azure A D 角色 [審核成員資格] 清單的螢幕擷取畫面。](./media/deploy-access-review/8-review-azure-ad-roles-picker.png)
 
 遵循下列連結中的指示：
 
-| 操作說明文章 | 描述 |
+| 操作說明文章 | 說明 |
 | - | - |
  [建立存取權評論](../privileged-identity-management/pim-how-to-start-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| 在 PIM 中建立特殊許可權 Azure AD 角色的存取權審核 |
 | [自行審核您的存取權](../privileged-identity-management/pim-how-to-perform-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| 如果您指派給系統管理角色，請核准或拒絕角色的存取權 |
@@ -465,7 +465,7 @@ ms.locfileid: "89461029"
 
 遵循下列連結中的指示：
 
-| 操作說明文章| 描述 |
+| 操作說明文章| 說明 |
 | - | -|
 | [建立存取權評論](../privileged-identity-management/pim-resource-roles-start-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| 在 PIM 中建立特殊許可權 Azure 資源角色的存取權審核 |
 | [自行審核您的存取權](../privileged-identity-management/pim-resource-roles-perform-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| 如果您指派給系統管理角色，請核准或拒絕角色的存取權 |
@@ -511,7 +511,7 @@ ms.locfileid: "89461029"
 
 如需更高階的查詢和存取權檢查分析，以及追蹤變更和完成評論，建議您將 Azure AD 審核記錄匯出至 [Azure Log Analytics](../reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account.md) 或 Azure 事件中樞。 當您儲存在 Azure Log Analytics 中時，您可以使用 [功能強大的分析語言](../reports-monitoring/howto-analyze-activity-logs-log-analytics.md) –並建立您自己的儀表板。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 深入瞭解下列相關技術。
 

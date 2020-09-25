@@ -14,30 +14,32 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/26/2019
 ms.author: yelevin
-ms.openlocfilehash: 51e6c74a8b80b94ca552645cfbb76bd4e162a62b
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: cd84a4b50ba32ee3f562ace9b2583cf5e561be84
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88650055"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320382"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>使用常見事件格式連接您的外部解決方案
 
 
 當您連線到傳送 CEF 訊息的外部解決方案時，有三個步驟可以連接 Azure Sentinel：
 
-步驟1： [部署代理程式以連線 CEF](connect-cef-agent.md) 步驟2： [執行解決方案特定步驟](connect-cef-solution-config.md) 3：驗證連線 [能力](connect-cef-verify.md)
+步驟1： [部署 Syslog/CEF](connect-cef-agent.md) 轉寄站來連線 CEF 步驟2： [執行解決方案特定步驟](connect-cef-solution-config.md) 步驟3： [驗證連線能力](connect-cef-verify.md)
 
-本文說明連線的運作方式、提供必要條件，並提供在安全性解決方案上部署代理程式的步驟，以傳送常見事件格式 (CEF) 訊息在 Syslog 上。 
+本文說明連線的運作方式、提供必要條件，並提供在安全性解決方案上部署代理程式的步驟，以在 Syslog 上傳送常見的事件格式 (CEF) 訊息。 
 
 > [!NOTE] 
 > 資料會儲存在您執行 Azure Sentinel 之工作區的地理位置。
 
-若要進行此連線，您需要在專用 Linux 電腦上部署代理程式 (VM 或內部部署) ，以支援設備和 Azure Sentinel 之間的通訊。 下圖說明在 Azure 中的 Linux VM 發生時的設定。
+若要進行此連線，您必須部署 Syslog 轉寄站伺服器，以支援設備與 Azure Sentinel 之間的通訊。  伺服器是由已安裝 Log Analytics Linux 代理程式的專用 Linux 機器 (VM 或內部部署) 所組成。 
+
+下圖說明在 Azure 中的 Linux VM 發生時的設定：
 
  ![Azure 中的 CEF](./media/connect-cef/cef-syslog-azure.png)
 
-或者，如果您使用另一個雲端或內部部署機器中的 VM，則會有此設定。 
+或者，如果您使用另一個雲端或內部部署機器中的 VM，則會有此設定： 
 
  ![內部部署的 CEF](./media/connect-cef/cef-syslog-onprem.png)
 
@@ -46,10 +48,10 @@ ms.locfileid: "88650055"
 
 請務必根據您組織的安全性原則來設定電腦的安全性。 例如，您可以設定您的網路，使其符合您的公司網路安全性原則，並變更 daemon 中的埠和通訊協定，以符合您的需求。 您可以使用下列指示來改進您的電腦安全性性設定：  [Azure 中的安全 VM](../virtual-machines/security-policy.md)、 [網路安全性的最佳做法](../security/fundamentals/network-best-practices.md)。
 
-若要在安全性解決方案和 Syslog 電腦之間使用 TLS 通訊，您必須設定 Syslog daemon (rsyslog 或 syslog-ng) 在 TLS 中進行通訊： [使用 tls Rsyslog 加密 Syslog 流量](https://www.rsyslog.com/doc/v8-stable/tutorials/tls_cert_summary.html)、 [使用 tls 加密記錄訊息-Syslog-ng](https://support.oneidentity.com/technical-documents/syslog-ng-open-source-edition/3.22/administration-guide/60#TOPIC-1209298)。
+若要使用 Syslog 來源與 Syslog 轉寄站之間的 TLS 通訊，您必須設定 Syslog daemon (rsyslog 或 syslog-ng) 在 TLS 中進行通訊： [使用 tls Rsyslog 加密 Syslog 流量](https://www.rsyslog.com/doc/v8-stable/tutorials/tls_cert_summary.html)、 [使用 tls 加密記錄訊息– Syslog-ng](https://support.oneidentity.com/technical-documents/syslog-ng-open-source-edition/3.22/administration-guide/60#TOPIC-1209298)。
 
  
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 請確定您用來作為 proxy 的 Linux 機器正在執行下列其中一個作業系統：
 
 - 64 位元

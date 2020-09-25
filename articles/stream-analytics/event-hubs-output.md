@@ -6,13 +6,13 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 08/25/2020
-ms.openlocfilehash: 50d2d974815e0921d99154bce67f604b7314970d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/23/2020
+ms.openlocfilehash: 86a6c1a15d804a6c758e90dbd4bdd7057a7a2716
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90892029"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91295259"
 ---
 # <a name="event-hubs-output-from-azure-stream-analytics"></a>Azure 串流分析的事件中樞輸出
 
@@ -46,7 +46,23 @@ ms.locfileid: "90892029"
 
 ## <a name="custom-metadata-properties-for-output"></a>輸出的自訂中繼資料屬性
 
-您可以將查詢資料行當做使用者屬性附加至外寄郵件。 這些資料行不會進入承載。 屬性會以輸出訊息上的字典形式呈現。 「索引鍵」是資料行名稱，「值」是屬性字典中的資料行值。 除了「記錄」和「陣列」以外，支援所有串流分析資料類型。  
+您可以將查詢資料行當做使用者屬性附加至外寄郵件。 這些資料行不會進入承載。 屬性會以輸出訊息上的字典形式呈現。 「索引鍵」是資料行名稱，「值」是屬性字典中的資料行值。 除了「記錄」和「陣列」以外，支援所有串流分析資料類型。
+
+在下列範例中，會將欄位 `DeviceId` 和 `DeviceStatus` 加入至中繼資料。
+
+1. 使用下列查詢：
+
+   ```sql
+   select *, DeviceId, DeviceStatus from iotHubInput
+   ```
+
+1. `DeviceId,DeviceStatus`在輸出中將設定為屬性資料行。
+
+   :::image type="content" source="media/event-hubs-output/property-columns.png" alt-text="屬性資料行":::
+
+下圖是使用 [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer)在 EventHub 中檢查的預期輸出訊息屬性。
+
+:::image type="content" source="media/event-hubs-output/custom-properties.png" alt-text="事件自訂屬性":::
 
 ## <a name="next-steps"></a>後續步驟
 

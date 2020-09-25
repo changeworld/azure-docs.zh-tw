@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/22/2020
-ms.openlocfilehash: 963c9c06409eca2b2f836388b94f8b80484a671a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/23/2020
+ms.openlocfilehash: e4d3a594011cb57ce6dfd951215d0ae7471ae7c2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90933847"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331670"
 ---
 # <a name="networking-overview---azure-database-for-postgresql---flexible-server"></a>網路功能總覽-適用於 PostgreSQL 的 Azure 資料庫-彈性的伺服器
 
@@ -62,7 +62,7 @@ ms.locfileid: "90933847"
 
    您的于 postgresql 彈性伺服器必須位於 **委派** 的子網中，以供于 postgresql 彈性的伺服器使用。 此委派表示只有適用於 PostgreSQL 的 Azure 資料庫彈性的伺服器可以使用該子網。 委派的子網路中不可以有其他 Azure 資源類型。 您可以委派子網，方法是將其委派屬性指派為 DBforPostgreSQL/flexibleServers。
 
-瞭解如何在 [Azure 入口網站](how-to-manage-virtual-network-portal.md) 或 [Azure CLI](how-to-manage-virtual-network-cli.md)中使用私人存取 (VNet 整合) 來建立具彈性的伺服器。
+* ** (NSG) 的網路安全性群組 ** 網路安全性群組中的安全性規則可讓您篩選可流入和流出虛擬網路子網和網路介面的網路流量類型。 如需詳細資訊，請參閱 [網路安全性群組總覽](../../virtual-network/network-security-groups-overview.md) 。
 
 
 ### <a name="unsupported-virtual-network-scenarios"></a>不支援的虛擬網路案例
@@ -71,6 +71,7 @@ ms.locfileid: "90933847"
 * 子網中有資源存在時，無法增加 (位址空間) 的子網大小
 * 不支援跨區域的對等互連 Vnet
 
+瞭解如何在 [Azure 入口網站](how-to-manage-virtual-network-portal.md) 或 [Azure CLI](how-to-manage-virtual-network-cli.md)中使用私人存取 (VNet 整合) 來建立具彈性的伺服器。
 
 ## <a name="public-access-allowed-ip-addresses"></a>公用存取 (允許的 IP 位址)
 公用存取方法的特性包括：
@@ -107,12 +108,9 @@ ms.locfileid: "90933847"
 ## <a name="hostname"></a>主機名稱
 無論您選擇何種網路選項，我們建議您在連線到彈性的伺服器時，一律使用 (FQDN) 作為主機名稱的完整功能變數名稱。 伺服器的 IP 位址不保證保持靜態。 使用 FQDN 將有助於避免變更您的連接字串。 
 
-IP 變更的其中一個情況是，如果您使用區域多餘的 HA，而且主要和次要複本之間發生容錯移轉。 使用 FQDN 即表示您可以使用相同的連接字串順暢地重試連接。
-
 範例
 * 推薦 `hostname = servername.postgres.database.azure.com`
-* 避免使用 `hostname = 10.0.0.4` (私人位址) 或 `hostname = 40.2.45.67` (公用位址) 
-
+* 可能的話，請避免使用 `hostname = 10.0.0.4` (私人位址) 或 `hostname = 40.2.45.67` (公用位址) 
 
 
 ## <a name="tls-and-ssl"></a>TLS 和 SSL
@@ -120,6 +118,6 @@ IP 變更的其中一個情況是，如果您使用區域多餘的 HA，而且�
 
 適用於 PostgreSQL 的 Azure 資料庫彈性的伺服器只支援使用傳輸層安全性加密的連接。 TLS 1.0 和 TLS 1.1 的所有連入連線都會遭到拒絕。 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 * 瞭解如何在[Azure 入口網站](how-to-manage-virtual-network-portal.md)或[Azure CLI](how-to-manage-virtual-network-cli.md)中使用**私人存取 (VNet 整合) **來建立具彈性的伺服器。
 * 瞭解如何建立具有公用存取權的彈性伺服器 ([Azure 入口網站](how-to-manage-firewall-portal.md)或[Azure CLI](how-to-manage-firewall-cli.md)中 **) 允許的 IP 位址**。

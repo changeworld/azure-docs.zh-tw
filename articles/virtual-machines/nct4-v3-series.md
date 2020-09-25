@@ -8,16 +8,16 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 08/10/2020
 ms.author: vikancha
-ms.openlocfilehash: af9f7eb21d533bc5fb365e7cbf1fb8fc18184fa7
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 17ce5314f58a92158ff4fd187ad0ca46bb14a275
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89375222"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320161"
 ---
 # <a name="ncast4_v3-series-in-preview"></a>預覽版中的 NCasT4_v3 系列 ()  
 
-NCasT4_v3 系列虛擬機器支援 [Nvidia Tesla T4](https://www.nvidia.com/en-us/data-center/tesla-t4/) GPU 和 AMD EPYC 7V12 (羅馬) cpu。 Vm 最多可以有4個 NVIDIA T4 Gpu （每個都有 16 GB 的記憶體），最多64個非多執行緒 AMD EPYC 7V12 (羅馬) 處理器核心和 440 GiB 的系統記憶體。 這些虛擬機器適用于使用 CUDA、TensorFlow、Pytorch、Caffe 和其他架構，或使用 NVIDIA GRID 技術的圖形工作負載來執行 ML 和 AI 工作負載。 NCasT4_v3 系列適合用來執行推斷工作負載。
+NCasT4_v3 系列虛擬機器支援 [Nvidia Tesla T4](https://www.nvidia.com/en-us/data-center/tesla-t4/) GPU 和 AMD EPYC 7V12 (羅馬) cpu。 Vm 最多可以有4個 NVIDIA T4 Gpu （每個都有 16 GB 的記憶體），最多64個非多執行緒 AMD EPYC 7V12 (羅馬) 處理器核心和 440 GiB 的系統記憶體。 這些虛擬機器適用于部署 AI 服務，例如即時推斷使用者產生的要求，或使用 NVIDIA 的方格驅動程式和虛擬 GPU 技術的互動式圖形和視覺效果工作負載。 以 CUDA、TensorRT、Caffe、ONNX 和其他架構為基礎的標準 GPU 計算工作負載，或是以 GPU 加速圖形應用程式為基礎的 OpenGL 和 DirectX，可在 NCasT4_v3 系列上以經濟實惠的方式進行部署，並接近使用者的距離。
 
 您可以 [提交要求](https://aka.ms/NCT4v3Preview) 成為預覽程式的一部分。
 

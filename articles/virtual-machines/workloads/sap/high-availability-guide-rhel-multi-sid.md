@@ -1,6 +1,6 @@
 ---
-title: RHEL 多 SID 指南上 SAP NW 的 Azure Vm 高可用性 |Microsoft Docs
-description: SAP NetWeaver on Red Hat Enterprise Linux 的 Azure 虛擬機器高可用性
+title: Azure Vm 在 RHEL 多重 SID 上適用于 SAP NW 的高可用性指南 |Microsoft Docs
+description: 在 Azure 虛擬機器上建立 SAP NW 的高可用性， (Vm) RHEL 多重 SID。
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: rdeltcheva
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/04/2020
 ms.author: radeltch
-ms.openlocfilehash: 892c45db835457d5f0127d7377d722fc7f0df518
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 612bd019dc7a4bdf481fde4511084245fabd1620
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87760748"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319957"
 ---
-# <a name="high-availability-for-sap-netweaver-on-azure-vms-on-red-hat-enterprise-linux-for-sap-applications-multi-sid-guide"></a>Azure Vm 上的 SAP NetWeaver 高可用性-適用于 SAP 應用程式的 Red Hat Enterprise Linux 多 SID 指南
+# <a name="high-availability-for-sap-netweaver-on-azure-vms-on-red-hat-enterprise-linux-for-sap-applications-multi-sid-guide"></a>Azure Vm 上的 SAP NetWeaver 的高可用性，適用于 SAP 應用程式的多 SID 指南 Red Hat Enterprise Linux
 
 [dbms-guide]:dbms-guide.md
 [deployment-guide]:deployment-guide.md
@@ -49,14 +49,14 @@ ms.locfileid: "87760748"
 [sap-hana-ha]:sap-hana-high-availability-rhel.md
 [glusterfs-ha]:high-availability-guide-rhel-glusterfs.md
 
-本文說明如何使用 SAP 應用程式的 Red Hat Enterprise Linux，將多個 SAP NetWeaver 高可用性系統部署 (也就是在 Azure Vm 上的兩個節點叢集中的多 SID) 。  
+本文說明如何部署多個 SAP NetWeaver 高可用性系統 (也就是 Azure Vm 上的兩個節點叢集中的多重 SID) ，並 Red Hat Enterprise Linux 適用于 SAP 應用程式。  
 
-在範例設定、安裝命令等中，三個 SAP NetWeaver 7.50 系統會部署在單一的雙節點高可用性叢集。 SAP 系統 Sid 包括：
-* **NW1**： ASCS 實例號碼**00**和虛擬主機名稱**msnw1ascs**;ERS 實例號碼**02**和虛擬主機名稱**msnw1ers**。  
-* **NW2**： ASCS 實例號碼**10**和虛擬主機名稱**msnw2ascs**;ERS 實例編號**12**和虛擬主機名稱**msnw2ers**。  
-* **NW3**： ASCS 實例號碼**20**和虛擬主機名稱**msnw3ascs**;ERS 實例號碼**22**和虛擬主機名稱**msnw3ers**。  
+在範例設定中，安裝命令等會將三個 SAP NetWeaver 7.50 系統部署在單一的雙節點高可用性叢集中。 SAP 系統 Sid 如下：
+* **NW1**： ASCS 實例號碼 **00** 和虛擬主機名稱 **msnw1ascs**;ERS 實例號碼 **02** 和虛擬主機名稱 **msnw1ers**。  
+* **NW2**： ASCS 實例號碼 **10** 和虛擬主機名稱 **msnw2ascs**;ERS 實例號碼 **12** 和虛擬主機名稱 **msnw2ers**。  
+* **NW3**： ASCS 實例號碼 **20** 和虛擬主機名稱 **msnw3ascs**;ERS 實例號碼 **22** 和虛擬主機名稱 **msnw3ers**。  
 
-本文並未涵蓋資料庫層和 SAP NFS 共用的部署。 在本文的範例中，我們會針對 NFS 共用使用[Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-create-volumes.md) volume **sapMSID** ，假設已部署磁片區。 我們也假設 Azure NetApp Files 磁片區是以 NFSv3 通訊協定來部署，而且 SAP systems NW1、NW2 和 NW3 的 ASCS 和 ERS 實例的叢集資源有下列檔案路徑：  
+本文未涵蓋資料庫層和 SAP NFS 共用的部署。 在本文的範例中，我們會使用 [Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-create-volumes.md)  volume **SAPMSID** 來作為 NFS 共用，並假設已部署磁片區。 我們也假設 Azure NetApp Files 磁片區會使用 NFSv3 通訊協定來部署，而且 SAP systems NW1、NW2 和 NW3 的 ASCS 和 ERS 實例的叢集資源會有下列檔案路徑：  
 
 * volume sapMSID (nfs://10.42.0.4/sapmnt<b>NW1</b>) 
 * volume sapMSID (nfs://10.42.0.4/usrsap<b>NW1</b>ascs) 
@@ -96,7 +96,7 @@ ms.locfileid: "87760748"
   * [高可用性附加元件管理](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_administration/index)
   * [高可用性附加元件參考](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/index)
   * [在 RHEL 7.5 中使用獨立資源為 SAP Netweaver 設定 ASCS/ERS](https://access.redhat.com/articles/3569681)
-  * [使用獨立的排入佇列伺服器設定 SAP S/4HANA ASCS/ERS (ENSA2) 在 RHEL 的 Pacemaker 中](https://access.redhat.com/articles/3974941)
+  * [在 RHEL 上的 Pacemaker 中使用獨立的佇列伺服器 2 (ENSA2) 來設定 SAP S/4HANA ASCS/ERS](https://access.redhat.com/articles/3974941)
 * Azure 專用 RHEL 文件：
   * [RHEL 高可用性叢集的支援原則：以 Microsoft Azure 虛擬機器作為叢集成員](https://access.redhat.com/articles/3131341)
   * [在 Microsoft Azure 上安裝和設定 Red Hat Enterprise Linux 7.4 (和更新版本) 高可用性叢集](https://access.redhat.com/articles/3252491)
@@ -104,21 +104,21 @@ ms.locfileid: "87760748"
 
 ## <a name="overview"></a>概觀
 
-在容錯移轉發生時，參與叢集的虛擬機器必須調整大小，才能執行所有資源。 每個 SAP SID 可以在多重 SID 高可用性叢集中彼此獨立地故障轉換。  
+如果發生容錯移轉，則參與叢集的虛擬機器必須調整大小，才能執行所有資源。 每個 SAP SID 都可在多重 SID 高可用性叢集中彼此獨立地進行容錯移轉。  
 
-為了達到高可用性，SAP NetWeaver 需要高度可用的共用。 在本檔中，我們會使用部署在[Azure NetApp FILES NFS 磁片](../../../azure-netapp-files/azure-netapp-files-create-volumes.md)區上的 SAP 共用來呈現範例。 您也可以在高可用性[GlusterFS](./high-availability-guide-rhel-glusterfs.md)叢集上裝載共用，以供多個 SAP 系統使用。  
+為了達到高可用性，SAP NetWeaver 需要高度可用的共用。 在此檔中，我們會提供在 [Azure NetApp FILES NFS 磁片](../../../azure-netapp-files/azure-netapp-files-create-volumes.md)區上部署 SAP 共用的範例。 您也可以在高可用性的 [GlusterFS](./high-availability-guide-rhel-glusterfs.md)叢集上裝載共用，以供多個 SAP 系統使用。  
 
 ![SAP NetWeaver 高可用性概觀](./media/high-availability-guide-rhel/ha-rhel-multi-sid.png)
 
 > [!IMPORTANT]
-> 在 Azure Vm 中，以 Red Hat Linux 做為客體作業系統的 SAP ASCS/ERS 的多 SID 叢集支援，其限制為相同叢集上的**五個**sap sid。 每個新的 SID 都會增加複雜性。 **不支援**在同一個叢集上混合使用 SAP 排入佇列複寫伺服器1和排入佇列複寫伺服器2。 多 SID 叢集描述在一個 Pacemaker 叢集中安裝多個具有不同 Sid 的 SAP ASCS/ERS 實例。 目前只有 ASCS/ERS 支援多 SID 叢集。  
+> 支援使用 Red Hat Linux 作為 Azure Vm 中的客體作業系統的 SAP ASCS/ERS 的多重 SID 叢集，在相同的叢集上限制為 **五個** SAP sid。 每個新的 SID 都會增加複雜度。 **不支援**在相同的叢集上混用 SAP 排入佇列複寫伺服器1和排入佇列複寫伺服器2。 多重 SID 叢集描述在一個 Pacemaker 叢集中安裝具有不同 Sid 的多個 SAP ASCS/ERS 實例。 目前只支援 ASCS/ERS 的多重 SID 叢集。  
 
 > [!TIP]
-> SAP ASCS/ERS 的多 SID 叢集是較複雜的解決方案。 更複雜的方式是執行。 這也牽涉到更高的系統管理工作，在執行維護活動時 (例如 OS 修補) 。 開始實際執行之前，請花時間仔細規劃部署和所有相關元件，例如 Vm、NFS 掛接、Vip、負載平衡器設定等等。  
+> SAP ASCS/ERS 的多重 SID 叢集是複雜性較高的解決方案。 更複雜的方式是執行。 在執行維護活動時，也需要較高的系統管理工作， (例如 OS 修補) 。 開始實際執行之前，請花一些時間仔細規劃部署以及所有相關的元件，例如 Vm、NFS 掛接、Vip、負載平衡器設定等等。  
 
 SAP NetWeaver ASCS、SAP NetWeaver SCS 和 SAP NetWeaver ERS 會使用虛擬主機名稱和虛擬 IP 位址。 在 Azure 上必須有負載平衡器才能使用虛擬 IP 位址。 我們建議使用 [tandard Load Balancer](../../../load-balancer/quickstart-load-balancer-standard-public-portal.md)。  
 
-下列清單顯示使用三個 SAP 系統，針對此多 SID 叢集範例的) SCS 和 ERS 負載平衡器 (的設定。 針對每個 Sid，您將需要個別的前端 IP、健康情況探查和負載平衡規則，分別用於每個 ASCS 和 ERS 實例。 將屬於 ASCS/ASCS 叢集一部分的所有 Vm 指派給單一 ILB 的一個後端集區。  
+下列清單顯示具有三個 SAP 系統的這個多重 SID 叢集範例 () SCS 和 ERS 負載平衡器的設定。 每個 Sid 的每個 ASCS 和 ERS 實例都需要個別的前端 IP、健康情況探查和負載平衡規則。 將屬於 ASCS/ASCS 叢集中的所有 Vm 指派給單一 ILB 的一個後端集區。  
 
 ### <a name="ascs"></a>(A)SCS
 
@@ -129,7 +129,7 @@ SAP NetWeaver ASCS、SAP NetWeaver SCS 和 SAP NetWeaver ERS 會使用虛擬主�
 
 * 探查埠
   * 埠 620<strong> &lt; nr &gt; </strong>，因此適用于 NW1、NW2 和 NW3 探查埠 620**00**、620**10**和 620**20**
-* 負載平衡規則-為每個實例建立一個，也就是 NW1/ASCS、NW2/ASCS 和 NW3/ASCS。
+* 負載平衡規則-為每個實例建立一個規則，也就是 NW1/ASCS、NW2/ASCS 和 NW3/ASCS。
   * 若使用 Standard Load Balancer，請選取 [HA 連接埠]
   * 若使用基本負載平衡器，請為下列連接埠建立負載平衡規則
     * 32<strong>&lt;nr&gt;</strong> TCP
@@ -148,8 +148,8 @@ SAP NetWeaver ASCS、SAP NetWeaver SCS 和 SAP NetWeaver ERS 會使用虛擬主�
   * NW3 10.3.1.55 的 IP 位址
 
 * 探查連接埠
-  * 埠 621<strong> &lt; nr &gt; </strong>，因此適用于 NW1、NW2 和 N3 探查埠 621**02**，621**12**和 621**22**
-* 負載平衡規則-為每個實例建立一個，也就是 NW1/ERS、NW2/ERS 和 NW3/ERS。
+  * 埠 621<strong> &lt; nr &gt; </strong>，因此適用于 NW1、NW2 和 N3 探查埠 621**02**、621**12**和 621**22**
+* 負載平衡規則-為每個實例建立一個規則，也就是 NW1/ERS、NW2/ERS 和 NW3/ERS。
   * 若使用 Standard Load Balancer，請選取 [HA 連接埠]
   * 若使用基本負載平衡器，請為下列連接埠建立負載平衡規則
     * 32<strong>&lt;nr&gt;</strong> TCP
@@ -169,44 +169,44 @@ SAP NetWeaver ASCS、SAP NetWeaver SCS 和 SAP NetWeaver ERS 會使用虛擬主�
 
 ## <a name="sap-shares"></a>SAP 共用
 
-SAP NetWeaver 需要傳輸、設定檔目錄等的共用儲存體。 針對高可用性的 SAP 系統，請務必擁有高可用性共用。 您將需要決定 SAP 共用的架構。 其中一個選項是在[Azure NetApp FILES NFS 磁片](../../../azure-netapp-files/azure-netapp-files-create-volumes.md)區上部署共用。  使用 Azure NetApp Files，您將可取得 SAP NFS 共用的內建高可用性。
+SAP NetWeaver 需要傳輸和設定檔目錄等的共用儲存體。 若為高可用性的 SAP 系統，請務必擁有高可用性的共用。 您將需要決定 SAP 共用的架構。 其中一個選項是在 [Azure NetApp FILES NFS 磁片](../../../azure-netapp-files/azure-netapp-files-create-volumes.md)區上部署共用。  使用 Azure NetApp Files，您將可取得 SAP NFS 共用的內建高可用性。
 
-另一個選項是[在適用于 Sap NetWeaver Red Hat Enterprise Linux 上的 Azure vm 上建立 GlusterFS](./high-availability-guide-rhel-glusterfs.md)，可以在多個 sap 系統之間共用。 
+另一個選項是在 [適用于 Sap NetWeaver Red Hat Enterprise Linux 的 Azure vm](./high-availability-guide-rhel-glusterfs.md)上建立 GlusterFS，可在多個 sap 系統之間共用。 
 
 ## <a name="deploy-the-first-sap-system-in-the-cluster"></a>在叢集中部署第一個 SAP 系統
 
-既然您已決定 SAP 共用的架構，請在叢集中部署第一個 SAP 系統，遵循對應的檔。
+既然您已決定 SAP 共用的架構，請在叢集中部署第一個 SAP 系統，並遵循對應的檔。
 
-* 如果使用 Azure NetApp Files NFS 磁片區，請遵循[Red Hat Enterprise Linux 上的 Sap NetWeaver 的 Azure vm 高可用性和適用于 sap 應用程式的 Azure NetApp Files](./high-availability-guide-rhel-netapp-files.md)  
-* 如果使用 GlusterFS 叢集，請[在 SAP NetWeaver 的 Red Hat Enterprise Linux 上，遵循 Azure vm 上的 GlusterFS](./high-availability-guide-rhel-glusterfs.md)。  
+* 如果使用 Azure NetApp Files NFS 磁片區，請遵循 sap [NetWeaver 的 Azure vm 高可用性，Red Hat Enterprise Linux 搭配適用于 sap 應用程式的 Azure Netapp Files](./high-availability-guide-rhel-netapp-files.md)  
+* 如果使用 GlusterFS 叢集，請 [在 SAP NetWeaver 的 Red Hat Enterprise Linux 上，于 Azure vm 上執行 GlusterFS](./high-availability-guide-rhel-glusterfs.md)。  
 
-上列檔會引導您完成準備必要的基礎結構、建立叢集、準備 OS 以執行 SAP 應用程式的步驟。  
+上列檔將引導您完成準備必要基礎結構、建立叢集、準備 OS 以執行 SAP 應用程式的步驟。  
 
 > [!TIP]
-> 在將額外的 SAP Sid 新增至叢集之前，請務必先測試叢集的故障切換功能（在第一個系統部署之後）。 如此一來，您就知道叢集功能可以運作，然後再將其他 SAP 系統的複雜性新增至叢集。   
+> 請一律先測試叢集的容錯移轉功能，在部署第一個系統之後，再將額外的 SAP Sid 新增至叢集。 如此一來，您就知道叢集功能可正常運作，然後再將其他 SAP 系統的複雜性新增至叢集。   
 
 ## <a name="deploy-additional-sap-systems-in-the-cluster"></a>在叢集中部署其他 SAP 系統
 
-在此範例中，我們假設系統**NW1**已經部署在叢集中。 我們將示範如何在叢集 SAP systems **NW2**和**NW3**中進行部署。 
+在此範例中，我們假設已在叢集中部署系統 **NW1** 。 我們將示範如何在叢集 SAP systems **NW2** 和 **NW3**中進行部署。 
 
 下列項目會加上下列其中一個前置詞： **[A]** - 適用於所有節點、 **[1]** - 僅適用於節點 1 或 **[2]** - 僅適用於節點 2。
 
 ### <a name="prerequisites"></a>Prerequisites 
 
 > [!IMPORTANT]
-> 在遵循在叢集中部署其他 SAP 系統的指示之前，請遵循指示，在叢集中部署第一個 SAP 系統，因為只有在第一次部署時才需要執行步驟。  
+> 依照指示，在叢集中部署其他 SAP 系統之前，請遵循指示，在叢集中部署第一個 SAP 系統，因為只有在第一次部署系統時才需要執行這些步驟。  
 
 本檔假設：
 * Pacemaker 叢集已設定且正在執行。  
-* 至少有一個 SAP 系統 (ASCS/ERS 實例) 已部署，而且正在叢集中執行。  
+* 至少有一個 SAP 系統 (ASCS/ERS 實例) 已部署且正在叢集中執行。  
 * 已測試叢集容錯移轉功能。  
-* 已部署所有 SAP 系統的 NFS 共用。  
+* 所有 SAP 系統的 NFS 共用都已部署。  
 
-### <a name="prepare-for-sap-netweaver-installation"></a>準備進行 SAP NetWeaver 安裝
+### <a name="prepare-for-sap-netweaver-installation"></a>準備 SAP NetWeaver 安裝
 
-1. 將新部署之系統 (的設定（也就是**NW2**） **NW3**) 新增至現有的 Azure Load Balancer，遵循透過[Azure 入口網站手動部署 Azure Load Balancer](./high-availability-guide-rhel-netapp-files.md#deploy-linux-manually-via-azure-portal)的指示。 調整您設定的 IP 位址、健康情況探查埠、負載平衡規則。  
+1. 將新部署之系統的設定 (也就是 **NW2**、 **NW3**) 到現有的 Azure Load Balancer，並遵循指示以 [手動方式部署 Azure Load Balancer 透過 Azure 入口網站](./high-availability-guide-rhel-netapp-files.md#deploy-linux-manually-via-azure-portal)。 調整 IP 位址、健康情況探查埠、設定的負載平衡規則。  
 
-2. **[A]** 其他 SAP 系統的安裝程式名稱解析。 您可以使用 [DNS 伺服器] 或 [ `/etc/hosts` 在所有節點上修改]。 這個範例顯示如何使用檔案 `/etc/hosts` 。  將 IP 位址和主機名稱調整為您的環境。 
+2. **[A]** 其他 SAP 系統的設定名稱解析。 您可以使用 DNS 伺服器，或 `/etc/hosts` 在所有節點上修改。 此範例顯示如何使用檔案 `/etc/hosts` 。  將 IP 位址和主機名稱調整為您的環境。 
 
     ```
     sudo vi /etc/hosts
@@ -220,7 +220,7 @@ SAP NetWeaver 需要傳輸、設定檔目錄等的共用儲存體。 針對高�
     10.3.1.55 msnw3ers
    ```
 
-3. **[A]** 為您要部署到叢集的其他**NW2**和**NW3** SAP 系統建立共用目錄。 
+3. **[A]** 為您要部署到叢集的其他 **NW2** 和 **NW3** SAP 系統建立共用目錄。 
 
     ```
     sudo mkdir -p /sapmnt/NW2
@@ -243,16 +243,16 @@ SAP NetWeaver 需要傳輸、設定檔目錄等的共用儲存體。 針對高�
     sudo chattr +i /usr/sap/NW3/ERS22
    ```
 
-4. **[A]** 針對您要部署至叢集的其他 sap 系統，新增/Sapmnt/SID 和/usr/sap/SID/SYS 檔案系統的掛接專案。 在此範例中為**NW2**和**NW3**。  
+4. **[A]** 針對您要部署到叢集的其他 sap 系統，新增/Sapmnt/SID 和/usr/sap/SID/SYS 檔案系統的掛接專案。 在此範例中為 **NW2** 和 **NW3**。  
 
-   `/etc/fstab`針對您要部署至叢集的其他 SAP 系統，使用檔案系統來更新檔案。  
+   `/etc/fstab`針對您要部署到叢集的其他 SAP 系統，使用檔案系統更新檔案。  
 
-   * 如果使用 Azure NetApp Files，請遵循[這裡](./high-availability-guide-rhel-netapp-files.md#prepare-for-sap-netweaver-installation)的指示  
-   * 如果使用 GlusterFS 叢集，請遵循[這裡](./high-availability-guide-rhel.md#prepare-for-sap-netweaver-installation)的指示  
+   * 如果使用 Azure NetApp Files，請依照[此處](./high-availability-guide-rhel-netapp-files.md#prepare-for-sap-netweaver-installation)的指示執行。  
+   * 如果使用 GlusterFS 叢集，請遵循[此處](./high-availability-guide-rhel.md#prepare-for-sap-netweaver-installation)的指示  
 
 ### <a name="install-ascs--ers"></a>安裝 ASCS/ERS
 
-1. 針對您要部署至叢集的其他 SAP 系統的 ASCS 實例，建立虛擬 IP 和健康情況探查叢集資源。 此處顯示的範例是針對**NW2**和**NW3** ASCS，在 Azure NetApp Files 磁片區上使用具有 NFSV3 通訊協定的 NFS。  
+1. 針對您要部署到叢集的其他 SAP 系統，建立 ASCS 實例的虛擬 IP 和健康情況探查叢集資源。 此處顯示的範例適用于 **NW2** 和 **NW3** ASCS，在 Azure NetApp Files 磁片區上使用 NFS 搭配 NFSv3 通訊協定。  
 
     ```
     sudo pcs resource create fs_NW2_ASCS Filesystem device='10.42.0.4:/sapMSIDR/usrsapNW2ascs' \
@@ -280,11 +280,11 @@ SAP NetWeaver 需要傳輸、設定檔目錄等的共用儲存體。 針對高�
     --group g-NW3_ASCS
     ```
 
-   請確定叢集狀態為 [確定]，而且所有資源都已啟動。 資源在哪一個節點上執行並不重要。  
+   請確定叢集狀態為 [確定]，而且所有資源皆已啟動。 資源在哪一個節點上執行並不重要。  
 
 2. **[1]** 安裝 SAP NetWeaver ASCS  
 
-   使用對應至 ASCS 負載平衡器前端設定之 IP 位址的虛擬主機名稱，將 SAP NetWeaver ASCS 安裝為 root。 例如，對於系統**NW2**，虛擬主機名稱為<b>msnw2ascs</b>、 <b>10.3.1.52</b> ，以及您用於探查負載平衡器的實例編號，例如<b>10</b>。 針對系統**NW3**，虛擬主機名稱為<b>msnw3ascs</b>、 <b>10.3.1.54</b> ，以及您用於探查負載平衡器的實例編號，例如<b>20</b>。 記下您為每個 SAP SID 安裝 ASCS 的叢集節點。  
+   使用對應至 ASCS 負載平衡器前端設定 IP 位址的虛擬主機名稱，將 SAP NetWeaver ASCS 安裝為 root。 例如，在系統 **NW2**中，虛擬主機名稱為 <b>msnw2ascs</b>、 <b>10.3.1.52</b> 和您用於探查負載平衡器的實例號碼，例如 <b>10</b>。 針對系統 **NW3**，虛擬主機名稱為 <b>msnw3ascs</b>、 <b>10.3.1.54</b> 和您用於探查負載平衡器的實例號碼，例如 <b>20</b>。 請注意您針對每個 SAP SID 安裝 ASCS 的叢集節點。  
 
    您可以使用 sapinst 參數 SAPINST_REMOTE_ACCESS_USER 來允許非 root 使用者連線到 sapinst。 您可以使用參數 SAPINST_USE_HOSTNAME，使用虛擬主機名稱來安裝 SAP。  
 
@@ -294,9 +294,9 @@ SAP NetWeaver 需要傳輸、設定檔目錄等的共用儲存體。 針對高�
     sudo swpm/sapinst SAPINST_REMOTE_ACCESS_USER=sapadmin SAPINST_USE_HOSTNAME=virtual_hostname
     ```
 
-   如果安裝無法在/usr/sap/**SID**/ASCS**實例 #** 中建立子資料夾，請嘗試將擁有者設為**SID**adm，並將群組設定為 ASCS**實例 #** 的 sapsys，然後重試。
+   如果安裝無法在/usr/sap/**SID**/ASCS**實例 #** 中建立子資料夾，請嘗試將 [擁有者] 設為 [ **sid**adm]，並將 [群組] 設定為 ASCS**實例 #** 的 sapsys，然後重試。
 
-3. **[1]** 為您要部署至叢集的其他 SAP 系統 ERS 實例建立虛擬 IP 和健康情況探查叢集資源。 此處顯示的範例是針對**NW2**和**NW3** ERS，在 Azure NetApp Files 磁片區上使用具有 NFSV3 通訊協定的 NFS。  
+3. **[1]** 針對您要部署到叢集的額外 SAP 系統，建立 ERS 實例的虛擬 IP 和健康情況探查叢集資源。 此處顯示的範例適用于 **NW2** 和 **NW3** ERS，在 Azure NetApp Files 磁片區上使用 NFS 搭配 NFSv3 通訊協定。  
 
     ```
     sudo pcs resource create fs_NW2_AERS Filesystem device='10.42.0.4:/sapMSIDR/usrsapNW2ers' \
@@ -324,9 +324,9 @@ SAP NetWeaver 需要傳輸、設定檔目錄等的共用儲存體。 針對高�
      --group g-NW3_AERS
    ```
 
-   請確定叢集狀態為 [確定]，而且所有資源都已啟動。  
+   請確定叢集狀態為 [確定]，而且所有資源皆已啟動。  
 
-   接下來，請確定新建立之 ERS 群組的資源在叢集節點上執行，與安裝相同 SAP 系統之 ASCS 實例的叢集節點相反。  例如，如果已在上安裝 NW2 ASCS `rhelmsscl1` ，請確定 NW2 ERS 群組正在執行 `rhelmsscl2` 。  您可以 `rhelmsscl2` 針對群組中的其中一個叢集資源執行下列命令，將 NW2 ERS 群組遷移至： 
+   接下來，請確定新建立的 ERS 群組的資源正在叢集節點上執行，而與安裝相同 SAP 系統之 ASCS 實例的叢集節點相反。  例如，如果已在上安裝 NW2 ASCS `rhelmsscl1` ，請確定 NW2 ERS 群組正在執行 `rhelmsscl2` 。  您可以 `rhelmsscl2` 針對群組中的其中一個叢集資源執行下列命令，以將 NW2 ERS 群組遷移至： 
 
     ```
       pcs resource move fs_NW2_AERS rhelmsscl2
@@ -334,7 +334,7 @@ SAP NetWeaver 需要傳輸、設定檔目錄等的共用儲存體。 針對高�
 
 4. **[2]** 安裝 SAP NetWeaver ERS
 
-   使用對應至 ERS 負載平衡器前端設定之 IP 位址的虛擬主機，在另一個節點上以 root 身分安裝 SAP NetWeaver ERS。 例如，對於系統**NW2**，虛擬主機名稱會是<b>msnw2ers</b>、 <b>10.3.1.53</b> ，以及您用於探查負載平衡器的實例編號，例如<b>12</b>。 針對系統**NW3**，虛擬主機名稱<b>msnw3ers</b>、 <b>10.3.1.55</b> ，以及您用於探查負載平衡器的實例編號，例如<b>22</b>。 
+   使用對應至 ERS 負載平衡器前端設定 IP 位址的虛擬主機名稱，將 SAP NetWeaver ERS 安裝為另一個節點上的根節點。 例如，在系統 **NW2**中，虛擬主機名稱為 <b>msnw2ers</b>、 <b>10.3.1.53</b> 和您用於探查負載平衡器的實例號碼，例如 <b>12</b>。 若為系統 **NW3**，則為虛擬主機名稱 <b>msnw3ers</b>、 <b>10.3.1.55</b> ，以及用於探查負載平衡器的實例號碼，例如 <b>22</b>。 
 
    您可以使用 sapinst 參數 SAPINST_REMOTE_ACCESS_USER 來允許非 root 使用者連線到 sapinst。 您可以使用參數 SAPINST_USE_HOSTNAME，使用虛擬主機名稱來安裝 SAP。  
 
@@ -347,16 +347,16 @@ SAP NetWeaver 需要傳輸、設定檔目錄等的共用儲存體。 針對高�
    > [!NOTE]
    > 請使用 SWPM SP 20 PL 05 或更高版本。 較低版本無法正確設定權限，因而會讓安裝失敗。
 
-   如果安裝無法在/usr/sap/**NW2**/ERS**Instance #** 中建立子資料夾，請嘗試將擁有者設為**sid**adm，並將群組設定為 ERS**實例 #** 資料夾的 sapsys，然後再試一次。
+   如果安裝無法在/usr/sap/**NW2**/ERS**實例 #** 中建立子資料夾，請嘗試將 [擁有者] 設定為 [ **sid**adm]，並將群組設定為 [ERS**實例 #** ] 資料夾的 sapsys，然後再試一次。
 
-   如果您需要將新部署 SAP 系統的 ERS 群組遷移到不同的叢集節點，請不要忘記移除 ERS 群組的位置限制式。 您可以藉由執行下列命令來移除條件約束 (此範例是針對 SAP systems **NW2**和**NW3**) 所提供的。 請務必移除您在命令中用來移動 ERS 叢集群組之相同資源的暫存條件約束。
+   如果您需要將新部署的 SAP 系統的 ERS 群組遷移至不同的叢集節點，請記得移除 ERS 群組的位置限制式。 您可以藉由執行下列命令來移除條件約束 (針對 SAP systems **NW2** 和 **NW3**) 提供範例。 請務必移除您在命令中使用的相同資源的暫時條件約束，以移動 ERS 叢集群組。
 
     ```
       pcs resource clear fs_NW2_AERS
       pcs resource clear fs_NW3_AERS
     ```
 
-5. **[1]** 針對新安裝的 SAP 系統 (s) ，調整 ASCS/SCS 和 ERS 實例設定檔。 以下顯示的範例適用于 NW2。 您必須針對新增至叢集的所有 SAP 實例，調整 ASCS/SCS 和 ERS 設定檔。  
+5. **[1]** 針對新安裝的 SAP system (s) ，調整 ASCS/SCS 和 ERS 實例設定檔。 以下顯示的範例適用于 NW2。 您將需要針對新增至叢集的所有 SAP 實例，調整 ASCS/SCS 和 ERS 設定檔。  
  
    * ASCS/SCS 設定檔
 
@@ -371,7 +371,7 @@ SAP NetWeaver 需要傳輸、設定檔目錄等的共用儲存體。 針對高�
       enque/encni/set_so_keepalive = true
       ```
 
-     針對 ENSA1 和 ENSA2，請確定 `keepalive` OS 參數設定如 SAP 附注[1410736](https://launchpad.support.sap.com/#/notes/1410736)中所述。    
+     針對 ENSA1 和 ENSA2，請確定 `keepalive` 作業系統參數已設定為 SAP note [1410736](https://launchpad.support.sap.com/#/notes/1410736)中所述。    
 
    * ERS 設定檔
 
@@ -388,7 +388,7 @@ SAP NetWeaver 需要傳輸、設定檔目錄等的共用儲存體。 針對高�
 
 6. **[A]** 更新 /usr/sap/sapservices 檔案
 
-   若要防止 sapinit 啟動腳本啟動實例，Pacemaker 所管理的所有實例都必須從檔案加上批註 `/usr/sap/sapservices` 。  以下顯示的範例適用于 SAP systems **NW2**和**NW3**。  
+   為了防止 sapinit 啟動腳本啟動實例，Pacemaker 管理的所有實例都必須從檔案標記為批註 `/usr/sap/sapservices` 。  以下顯示的範例適用于 SAP 系統 **NW2** 和 **NW3**。  
 
    ```
     # On the node where ASCS was installed, comment out the line for the ASCS instacnes
@@ -402,7 +402,7 @@ SAP NetWeaver 需要傳輸、設定檔目錄等的共用儲存體。 針對高�
 
 7. **[1]** 建立新安裝之 sap 系統的 sap 叢集資源。  
 
-   如果使用佇列伺服器1架構 (ENSA1) ，請定義 SAP systems **NW2**和**NW3**的資源，如下所示：
+   如果使用佇列伺服器1架構 (ENSA1) ，請定義 SAP systems **NW2** 和 **NW3** 的資源，如下所示：
 
     ```
      sudo pcs property set maintenance-mode=true
@@ -447,7 +447,7 @@ SAP NetWeaver 需要傳輸、設定檔目錄等的共用儲存體。 針對高�
     ```
 
    SAP 在 SAP NW 7.52 中引進了加入佇列伺服器 2 的支援 (包括複寫)。 從 ABAP 平台 1809 開始，根據預設會安裝加入佇列伺服器 2。 如需加入佇列伺服器 2 的支援，請參閱 SAP Note [2630416](https://launchpad.support.sap.com/#/notes/2630416)。
-   如果使用佇列伺服器2架構 ([ENSA2](https://help.sap.com/viewer/cff8531bc1d9416d91bb6781e628d4e0/1709%20001/en-US/6d655c383abf4c129b0e5c8683e7ecd8.html)) ，請定義 SAP systems **NW2**和**NW3**的資源，如下所示：
+   如果使用佇列伺服器2架構 ([ENSA2](https://help.sap.com/viewer/cff8531bc1d9416d91bb6781e628d4e0/1709%20001/en-US/6d655c383abf4c129b0e5c8683e7ecd8.html)) ，請定義 SAP systems **NW2** 和 **NW3** 的資源，如下所示：
 
     ```
      sudo pcs property set maintenance-mode=true
@@ -494,10 +494,10 @@ SAP NetWeaver 需要傳輸、設定檔目錄等的共用儲存體。 針對高�
    若正在從舊版本升級並切換到加入佇列伺服器 2，請參閱 SAP Note [2641019](https://launchpad.support.sap.com/#/notes/2641019)。 
 
    > [!NOTE]
-   > 上述設定中的超時只是範例，可能需要針對特定的 SAP 設定進行調整。 
+   > 上述設定中的超時只是範例，可能需要針對特定的 SAP 安裝程式進行調整。 
 
    請確定叢集狀態正常，且所有資源皆已啟動。 資源在哪一個節點上執行並不重要。
-   下列範例顯示在將 SAP systems **NW2**和**NW3**新增至叢集之後，叢集資源狀態。 
+   下列範例會顯示在將 SAP 系統 **NW2** 和 **NW3** 新增至叢集之後，叢集資源的狀態。 
 
     ```
      sudo pcs status
@@ -539,7 +539,7 @@ SAP NetWeaver 需要傳輸、設定檔目錄等的共用儲存體。 針對高�
         rsc_sap_NW3_ERS22  (ocf::heartbeat:SAPInstance):   Started rhelmsscl1
     ```
 
-8. **[A]** 在這兩個節點上新增 ASCS 和 ERS 的防火牆規則。  下列範例顯示 SAP 系統**NW2**和**NW3**的防火牆規則。  
+8. **[A]** 在兩個節點上新增 ASCS 和 ERS 的防火牆規則。  下列範例顯示 SAP 系統 **NW2** 和 **NW3**的防火牆規則。  
 
    ```
     # NW2 - ASCS
@@ -602,24 +602,24 @@ SAP NetWeaver 需要傳輸、設定檔目錄等的共用儲存體。 針對高�
 
 ### <a name="proceed-with-the-sap-installation"></a>繼續進行 SAP 安裝 
 
-完成 SAP 安裝的方式：
+完成 SAP 安裝：
 
 * [準備您的 SAP NetWeaver 應用程式伺服器](./high-availability-guide-rhel-netapp-files.md#2d6008b0-685d-426c-b59e-6cd281fd45d7)
 * [安裝 DBMS 實例](./high-availability-guide-rhel-netapp-files.md#install-database)
 * [安裝主要 SAP 應用程式伺服器](./high-availability-guide-rhel-netapp-files.md#sap-netweaver-application-server-installation)
 * 安裝一或多個額外的 SAP 應用程式實例
 
-## <a name="test-the-multi-sid-cluster-setup"></a>測試多 SID 叢集設定
+## <a name="test-the-multi-sid-cluster-setup"></a>測試多重 SID 叢集設定
 
-下列測試是 Red Hat 最佳做法指南中的測試案例子集。 為了方便起見，其中包含了它們。 如需完整的叢集測試清單，請參考下列檔：
+下列測試是 Red Hat 最佳作法指南中測試案例的子集。 為了方便起見，我們會包含它們。 如需完整的叢集測試清單，請參考下列檔：
 
-* 如果使用 Azure NetApp Files NFS 磁片區，請依照適用于[sap 應用程式的 Azure Netapp files，針對 RHEL 上的 Sap NetWeaver 進行 Azure vm 高可用性](./high-availability-guide-rhel-netapp-files.md)
-* 如果使用高可用性 `GlusterFS` ，請遵循[RHEL for sap 應用程式上適用于 sap NetWeaver 的 Azure vm 高可用性](./high-availability-guide-rhel.md)。  
+* 如果使用 Azure NetApp Files NFS 磁片區，請遵循適用于 sap [NetWeaver ON RHEL 的 Azure vm 高可用性（適用于 sap 應用程式的 Azure Netapp files](./high-availability-guide-rhel-netapp-files.md) ）
+* 如果使用高 `GlusterFS` 可用性，請遵循 [sap NETWEAVER on RHEL for sap 應用程式的 Azure vm 高可用性](./high-availability-guide-rhel.md)。  
 
-請一律閱讀 Red Hat 最佳做法指南，並執行可能已新增的所有其他測試。  
-所呈現的測試是在兩個節點中，已安裝三個 SAP 系統的多 SID 叢集。  
+請一律閱讀 Red Hat 最佳作法指南，並執行可能已新增的所有其他測試。  
+所呈現的測試是在兩個節點中，已安裝三個 SAP 系統的多重 SID 叢集。  
 
-1. 手動遷移 ASCS 實例。 此範例示範如何遷移 SAP 系統 NW3 的 ASCS 實例。
+1. 手動遷移 ASCS 實例。 此範例顯示如何遷移 SAP system NW3 的 ASCS 實例。
 
    開始測試之前的資源狀態：
 
@@ -661,7 +661,7 @@ SAP NetWeaver 需要傳輸、設定檔目錄等的共用儲存體。 針對高�
         rsc_sap_NW3_ERS22  (ocf::heartbeat:SAPInstance):   Started rhelmsscl1
    ```
 
-   以 root 身分執行下列命令，以遷移 NW3 ASCS 實例。
+   以 root 身份執行下列命令，以遷移 NW3 ASCS 實例。
 
    ```
     pcs resource move rsc_sap_NW3_ASCS200
@@ -754,13 +754,13 @@ SAP NetWeaver 需要傳輸、設定檔目錄等的共用儲存體。 針對高�
         rsc_sap_NW3_ERS22  (ocf::heartbeat:SAPInstance):   Started rhelmsscl2
    ```
 
-   在節點上以 root 身分執行下列命令，其中至少有一個 ASCS 實例正在執行。 在此範例中，我們在上執行了命令 `rhelmsscl1` ，其中 NW1、NW2 和 NW3 的 ASCS 實例正在執行。  
+   在節點上以 root 身份執行下列命令，其中至少有一個 ASCS 實例正在執行。 在此範例中，我們已在上執行命令 `rhelmsscl1` ，其中 NW1、NW2 和 NW3 的 ASCS 實例正在執行。  
 
    ```
    echo c > /proc/sysrq-trigger
    ```
 
-   在測試之後，以及在節點之後損毀的狀態重新開機之後，看起來應該像這樣。
+   測試之後，以及在節點之後，當機的狀態重新開機時，看起來應該像這樣。
 
    ```
     Full list of resources:

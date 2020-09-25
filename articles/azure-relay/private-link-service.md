@@ -1,25 +1,19 @@
 ---
 title: 將 Azure 轉送與 Azure Private Link 服務整合
 description: 了解如何整合 Azure 轉送與 Azure Private Link 服務
-ms.date: 06/23/2020
+ms.date: 09/24/2020
 ms.topic: article
-ms.openlocfilehash: e5c35f9333378a5f0b87956e8a916491d51e3cb3
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 10d82fe8e272ed18dcc339830dfef0f71d4b2ddb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88719422"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91263831"
 ---
 # <a name="integrate-azure-relay-with-azure-private-link-preview"></a>將 Azure 轉送與 Azure Private Link 整合 (預覽)
 Azure **Private Link 服務**可讓您透過虛擬網路中的私人端點，存取各 Azure 服務 (例如 Azure 轉送、Azure 服務匯流排、Azure 事件中樞、Azure 儲存體和 Azure Cosmos DB)，以及 Azure 裝載的客戶/合作夥伴服務。 如需詳細資訊，請參閱[何謂 Azure Private Link (預覽)？](../private-link/private-link-overview.md)
 
 **私人端點**是一種網路介面，其允許您在虛擬網路中執行的工作負載，透過私密又安全的方式，連線到具有 **Private Link 資源**的服務 (例如，「轉送」命名空間)。 私人端點會使用您 VNet 中的私人 IP 位址，有效地將服務帶入您的 VNet 中。 服務的所有流量都可以透過私人端點路由傳送，因此不需要閘道、NAT 裝置、ExpressRoute、VPN 連線或公用 IP 位址。 虛擬網路和服務間的流量會在通過 Microsoft 骨幹網路時隨之減少，降低資料在網際網路中公開的風險。 您可以允許連線到特定 Azure 轉送命名空間，在存取控制中提供細微性層級。 
-
-
-> [!IMPORTANT]
-> 此功能目前為**預覽**狀態。 
->
-> 我們目前在傳送者用戶端上支援 Private Link 連線。 
 
 
 ## <a name="add-a-private-endpoint-using-azure-portal"></a>使用 Azure 入口網站新增私人端點

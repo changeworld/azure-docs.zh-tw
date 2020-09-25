@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: danimir
 ms.author: danil
-ms.reviewer: jrasnik, carlrab
+ms.reviewer: jrasnik, sstein
 ms.date: 12/03/2019
-ms.openlocfilehash: e7a3dd1c58f2bddb767dcac4ac2b5e354be77f65
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: dfd21a38c46238dbd9d58d3eae5b3f9414d3c5fc
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90981458"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91284494"
 ---
 # <a name="enable-automatic-tuning-in-the-azure-portal-to-monitor-queries-and-improve-workload-performance"></a>在 Azure 入口網站中啟用自動調整，以監視查詢並改善工作負載效能
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -28,7 +28,7 @@ Azure SQL Database 會自動管理資料服務，這些服務會持續監視您�
 
 - [Azure 入口網站](automatic-tuning-enable.md#azure-portal)
 - [REST API](automatic-tuning-enable.md#rest-api) 呼叫
-- [T-sql](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) 命令
+- [T-sql](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current&preserve-view=true) 命令
 
 > [!NOTE]
 > 針對 Azure SQL 受控執行個體，僅能透過 [t-sql](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management) 設定支援的選項 FORCE_LAST_GOOD_PLAN。 本文所述的 Azure 入口網站基礎設定和自動索引調整選項不適用於 Azure SQL 受控執行個體。
@@ -109,7 +109,7 @@ ALTER DATABASE current SET AUTOMATIC_TUNING (FORCE_LAST_GOOD_PLAN = ON, CREATE_I
 > 在 [主動式異地](auto-failover-group-overview.md)複寫的情況下，只需要在主資料庫上設定自動調整。 自動套用的調整動作，例如索引建立或刪除，將會自動複寫至唯讀次要資料庫。 嘗試在唯讀次要複本上透過 T-SQL 啟用自動調整會導致失敗，因為不支援在唯讀次要複本上使用不同的調整設定。
 >
 
-若要找出更連續的 T-sql 選項來設定自動調整，請參閱 [ALTER DATABASE SET options (transact-sql) ](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current)。
+若要找出更連續的 T-sql 選項來設定自動調整，請參閱 [ALTER DATABASE SET options (transact-sql) ](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current&preserve-view=true)。
 
 ## <a name="disabled-by-the-system"></a>被系統停用
 
@@ -125,7 +125,7 @@ ALTER DATABASE current SET AUTOMATIC_TUNING (FORCE_LAST_GOOD_PLAN = ON, CREATE_I
 
 請參閱 [自動調整電子郵件通知](automatic-tuning-email-notifications-configure.md) 指南。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 閱讀[自動調整文章](automatic-tuning-overview.md)，進一步了解自動調整，以及它如何協助您改善效能。
 - 如需 Azure SQL Database 效能建議的概觀，請參閱[效能建議](database-advisor-implement-performance-recommendations.md)。

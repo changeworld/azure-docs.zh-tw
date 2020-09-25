@@ -14,12 +14,12 @@ ms.date: 06/10/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39eb45f4488c0ddc63ab8e7357a122b47777feee
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: aed5dcf98e37b0d075804985355bdabe3b50b712
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662346"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91295340"
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>自訂 Azure AD Connect 安裝
 當您想要更多安裝選項時，可使用 Azure AD Connect **自訂設定** 。 如果您有多個樹系，或如果您想要設定未涵蓋在快速安裝中的選用功能，可使用它。 只要是[**快速安裝**](how-to-connect-install-express.md)選項不能滿足部署或拓撲的情況，就可使用它。
@@ -46,7 +46,7 @@ ms.locfileid: "89662346"
 ### <a name="user-sign-in"></a>使用者登入
 在安裝必要元件後，系統會要求您選取使用者的單一登入方法。 下表提供可用選項的簡短說明。 如需登入方法的完整說明，請參閱[使用者登入](plan-connect-user-signin.md)。
 
-![使用者登入](./media/how-to-connect-install-custom/usersignin4.png)
+![顯示 [使用者登入] 頁面的螢幕擷取畫面，其中已選取 [密碼雜湊同步處理]。](./media/how-to-connect-install-custom/usersignin4.png)
 
 | 單一登入選項 | 描述 |
 | --- | --- |
@@ -75,7 +75,7 @@ ms.locfileid: "89662346"
 ### <a name="connect-your-directories"></a>連接您的目錄
 若要連線到您的 Active Directory 網域服務，Azure AD Connect 需要樹系名稱和具有足夠權限的帳戶認證。
 
-![連線目錄](./media/how-to-connect-install-custom/connectdir01.png)
+![顯示 [連線您的目錄] 頁面的螢幕擷取畫面。](./media/how-to-connect-install-custom/connectdir01.png)
 
 輸入樹系名稱並按一下 [新增目錄] 之後，快顯對話方塊隨即出現並提示您使用下列選項︰
 
@@ -300,7 +300,7 @@ AD FS 服務需要網域服務帳戶來驗證使用者，以及在 Active Direct
 ### <a name="select-the-azure-ad-domain-that-you-wish-to-federate"></a>選取您想要建立同盟的 Azure AD 網域
 此組態會用來設定 AD FS 與 Azure AD 之間的同盟關係。 它會設定 AD FS 將安全性權杖簽發給 Azure AD，並將 Azure AD 設定為信任來自此特定 AD FS 執行個體的權杖。 此頁面只能讓您在初始安裝中設定單一網域。 您可稍後再次執行 Azure AD Connect 以設定其他網域。
 
-![Azure AD 網域](./media/how-to-connect-install-custom/adfs6.png)
+![顯示 [Azure AD 網域] 頁面的螢幕擷取畫面。](./media/how-to-connect-install-custom/adfs6.png)
 
 ### <a name="verify-the-azure-ad-domain-selected-for-federation"></a>驗證所選取用於同盟的 Azure AD 網域
 當您選取要同盟的網域時，Azure AD Connect 會提供您所需資訊以供您驗證尚未驗證的網域。 請參閱[新增並驗證網域](../fundamentals/add-custom-domain.md)以了解如何使用這項資訊。
@@ -320,7 +320,7 @@ AD FS 服務需要網域服務帳戶來驗證使用者，以及在 Active Direct
 ### <a name="verify-the-domain"></a>驗證網域
 選取 [與 PingFederate 同盟] 後，系統會要求您驗證要建立同盟的網域。  從下拉式方塊中選取網域。
 
-![驗證網域](./media/how-to-connect-install-custom/ping1.png)
+![顯示 [Azure AD 網域] 的螢幕擷取畫面，其中已選取範例網域 "contoso.com"。](./media/how-to-connect-install-custom/ping1.png)
 
 ### <a name="export-the-pingfederate-settings"></a>匯出 PingFederate 設定
 
@@ -394,7 +394,7 @@ Azure AD Connect 會嘗試驗證在上一個步驟中從 PingFederate 中繼資�
 ### <a name="the-adsync-database-already-contains-data-and-cannot-be-overwritten"></a>「ADSync 資料庫已包含資料，而且無法覆寫」
 如果您使用 Azure AD Connect 自訂安裝，並在 [安裝必要元件] 頁面上選取 [使用現有 SQL 伺服器] 選項，則可能會出現錯誤，其中指出 **ADSync 資料庫已包含資料，而且無法覆寫。請移除現有資料庫，然後再試一次。**
 
-![錯誤](./media/how-to-connect-install-custom/error1.png)
+![顯示 [安裝必要元件] 頁面的螢幕擷取畫面。](./media/how-to-connect-install-custom/error1.png)
 
 這是因為對於上述文字方塊中指定的 SQL 伺服器而言，其 SQL 執行個體上已經有名為 **ADSync** 的現有資料庫。
 

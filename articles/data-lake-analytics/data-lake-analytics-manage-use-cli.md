@@ -6,12 +6,12 @@ ms.assetid: 4e5a3a0a-6d7f-43ed-aeb5-c3b3979a1e0a
 ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 01/29/2018
-ms.openlocfilehash: d4b9a7be36bd4c0a4044f3e76b96b21a16eb80de
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: f91619860b577981d9717904a3d4a3074c2eaf0f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132512"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320841"
 ---
 # <a name="manage-azure-data-lake-analytics-using-the-azure-command-line-interface-cli"></a>使用 Azure 命令列介面 (CLI) 管理 Azure Data Lake Analytics
 
@@ -20,7 +20,7 @@ ms.locfileid: "87132512"
 了解如何使用 Azure CLI 管理 Azure Data Lake Analytics 帳戶、資料來源、使用者和工作。 若要使用其他工具查看管理主題，請按一下上方的索引標籤選取器。
 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 開始進行本教學課程之前，您必須具備下列資源：
 
@@ -141,7 +141,7 @@ Data Lake Analytics 目前支援以下兩個資料來源：
    az dla account blob-storage list --account "<Data Lake Analytics account name>"
    ```
 
-![Data Lake Analytics 會列出資料來源](./media/data-lake-analytics-manage-use-cli/data-lake-analytics-list-data-source.png)
+![顯示 Azure C L I 並醒目提示 [dataLakeStoreAccounts：] 資訊的螢幕擷取畫面。](./media/data-lake-analytics-manage-use-cli/data-lake-analytics-list-data-source.png)
 
 ### <a name="delete-data-sources"></a>刪除資料來源：
 
@@ -185,7 +185,7 @@ Data Lake Analytics 目前支援以下兩個資料來源：
 >    ```
 
 ### <a name="cancel-jobs"></a>取消工作
-使用 list 命令來尋找工作識別碼，然後使用 cancel 來取消工作。
+使用 list 命令來尋找作業識別碼，然後使用 [取消] 來取消作業。
 
    ```azurecli
    az dla job cancel --account "<Data Lake Analytics account name>" --job-identity "<Job Id>"

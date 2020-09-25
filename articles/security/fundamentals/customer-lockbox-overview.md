@@ -7,13 +7,13 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.author: terrylan
 manager: rkarlin
-ms.date: 09/09/2020
-ms.openlocfilehash: 5c24bd80721f626e38dcb886e89231c0b86056df
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.date: 09/15/2020
+ms.openlocfilehash: 52cb5ac5423aac0599ba2827667ee670dde286a5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89650971"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331653"
 ---
 # <a name="customer-lockbox-for-microsoft-azure"></a>Microsoft Azure 的客戶加密箱
 
@@ -32,22 +32,23 @@ ms.locfileid: "89650971"
 
 - API 管理
 - Azure App Service
-- 適用於 MySQL 的 Azure 資料庫
-- Azure Databricks
-- Azure Synapse Analytics
 - 認知服務
 - Container Registry
+- 適用於 MySQL 的 Azure 資料庫
+- Azure Databricks
+- Azure 資料箱
+- Azure 資料總管
 - Azure Data Factory
 - 適用於 PostgreSQL 的 Azure 資料庫
-- Azure Kubernetes Service
-- Azure 資料箱
+- Azure Functions
 - HDInsight
-- 函數
+- Azure Kubernetes Service
+- Azure 監視器
 - Azure 儲存體
 - Azure SQL DB
-- Azure 資料總管
-- 虛擬機器 (現在也涵蓋記憶體傾印和受控磁片的存取權) 
 - Azure 訂用帳戶轉移
+- Azure Synapse Analytics
+- 虛擬機器 (現在也涵蓋記憶體傾印和受控磁片的存取權) 
 
 若要為您的組織啟用這些預覽供應專案的客戶加密箱，請註冊 [Azure 公開預覽客戶加密箱](https://aka.ms/customerlockbox/insiderprogram)。
 
@@ -146,7 +147,7 @@ ms.locfileid: "89650971"
 
 - Microsoft 工程師會在進行疑難排解時存取 Azure 平臺，並不慎存取客戶資料。 例如，Azure 網路小組會執行在網路裝置上產生封包捕獲的疑難排解。 但是，如果客戶在傳輸時將資料加密，則工程師無法讀取資料。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如果所有客戶的 [Azure 支援方案](https://azure.microsoft.com/support/plans/) 都具有基本等級的 **開發人員**，客戶加密箱會自動提供。
 

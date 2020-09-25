@@ -7,17 +7,17 @@ ms.author: baanders
 ms.date: 4/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 88f74bcc93d640ec8d4d9014c6f25a6d0d0df680
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.custom: devx-track-js
+ms.openlocfilehash: dd0d3e462f0b2d8b525e63d65d657a8f056d01a9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89614016"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331857"
 ---
 # <a name="write-client-app-authentication-code"></a>撰寫用戶端應用程式驗證碼
 
-[設定 Azure 數位 Twins 實例和驗證](how-to-set-up-instance-scripted.md)之後，您可以建立將用來與實例互動的用戶端應用程式。 設定好入門用戶端專案後，本文將說明 **如何在該用戶端應用程式中撰寫程式碼，以** 對 Azure 數位 Twins 實例進行驗證。
+[設定 Azure 數位 Twins 實例和驗證](how-to-set-up-instance-portal.md)之後，您可以建立將用來與實例互動的用戶端應用程式。 設定好入門用戶端專案後，本文將說明 **如何在該用戶端應用程式中撰寫程式碼，以** 對 Azure 數位 Twins 實例進行驗證。
 
 本文中有兩種方法可以撰寫範例程式碼。 您可以使用最適合您的語言，視您選擇的語言而定：
 * 範例程式碼的第一個區段會使用 Azure 數位 Twins .NET (c # ) SDK。 SDK 是 Azure SDK for .NET 的一部分，位於這裡： [*適用于 .net 的 Azure IoT 數位對應項用戶端程式庫*](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)。
@@ -25,9 +25,9 @@ ms.locfileid: "89614016"
 
 您也可以在 how [*to：使用 Azure 數位 Twins api 和 sdk*](how-to-use-apis-sdks.md)中，深入瞭解適用于 Azure 數位 Twins 的 Api 和 sdk。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-首先，請完成 how [*to：設定實例和驗證*](how-to-set-up-instance-scripted.md)中的設定步驟。 這可確保您有 Azure 數位 Twins 實例、您的使用者具有存取權限，而且您已設定用戶端應用程式的許可權。 完成此設定之後，您就可以開始撰寫用戶端應用程式程式碼。
+首先，請完成 how [*to：設定實例和驗證*](how-to-set-up-instance-portal.md)中的設定步驟。 這可確保您有 Azure 數位 Twins 實例、您的使用者具有存取權限，而且您已設定用戶端應用程式的許可權。 完成此設定之後，您就可以開始撰寫用戶端應用程式程式碼。
 
 若要繼續，您將需要一個用來撰寫程式碼的用戶端應用程式專案。 如果您尚未設定用戶端應用程式專案，請使用您選擇的語言建立基本專案，以搭配本教學課程使用。
 
@@ -45,13 +45,13 @@ ms.locfileid: "89614016"
 using Azure.Identity;
 using Azure.DigitalTwins.Core;
 ```
-若要使用 .NET SDK 進行驗證，請使用 [Azure 身分識別](https://docs.microsoft.com/dotnet/api/azure.identity?view=azure-dotnet) 程式庫中所定義的其中一個認證取得方法。 以下是在相同應用程式) 中經常使用 (的兩個：
+若要使用 .NET SDK 進行驗證，請使用 [Azure 身分識別](https://docs.microsoft.com/dotnet/api/azure.identity?view=azure-dotnet&preserve-view=true) 程式庫中所定義的其中一個認證取得方法。 以下是在相同應用程式) 中經常使用 (的兩個：
 
-* [InteractiveBrowserCredential](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet) 適用于互動式應用程式，可用於建立已驗證的 SDK 用戶端
-* [ManagedIdentityCredential](https://docs.microsoft.com/dotnet/api/azure.identity.managedidentitycredential?view=azure-dotnet) 適用于您需要受控識別 (MSI) 的情況，而且是使用 Azure Functions 的絕佳候選。
+* [InteractiveBrowserCredential](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet&preserve-view=true) 適用于互動式應用程式，可用於建立已驗證的 SDK 用戶端
+* [ManagedIdentityCredential](https://docs.microsoft.com/dotnet/api/azure.identity.managedidentitycredential?view=azure-dotnet&preserve-view=true) 適用于您需要受控識別 (MSI) 的情況，而且是使用 Azure Functions 的絕佳候選。
 
 ### <a name="interactivebrowsercredential-method"></a>InteractiveBrowserCredential 方法
-[InteractiveBrowserCredential](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet)方法適用于互動式應用程式，並會啟動網頁瀏覽器以進行驗證。
+[InteractiveBrowserCredential](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet&preserve-view=true)方法適用于互動式應用程式，並會啟動網頁瀏覽器以進行驗證。
 
 若要使用互動式瀏覽器認證來建立已驗證的 SDK 用戶端，請新增下列程式碼：
 
@@ -81,7 +81,7 @@ try
 > 雖然您可以將用戶端識別碼、租使用者識別碼和實例 URL 直接放入程式碼中（如上所示），但最好讓您的程式碼改為從設定檔或環境變數取得這些值。
 
 ### <a name="managedidentitycredential-method"></a>ManagedIdentityCredential 方法
- [ManagedIdentityCredential](https://docs.microsoft.com/dotnet/api/azure.identity.managedidentitycredential?view=azure-dotnet)方法適用于您需要[受控識別 (MSI) ](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)的情況，例如，使用 Azure Functions 時。
+ [ManagedIdentityCredential](https://docs.microsoft.com/dotnet/api/azure.identity.managedidentitycredential?view=azure-dotnet&preserve-view=true)方法適用于您需要[受控識別 (MSI) ](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)的情況，例如，使用 Azure Functions 時。
 在 Azure 函式中，您可以使用受控識別認證，如下所示：
 
 ```csharp
@@ -104,7 +104,7 @@ client = new DigitalTwinsClient(new Uri(adtInstanceUrl), cred, opts);
 
 本節說明如何在這種情況下進行驗證。
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>Prerequisites
 
 首先，您應該使用 AutoRest 中的步驟來完成建立自訂 SDK 的步驟，方法是使用 how [*to：建立適用于 Azure 數位 Twins 的自訂 sdk 和 AutoRest*](how-to-create-custom-sdks.md)。
 
@@ -197,7 +197,7 @@ export async function login() {
 
 MSAL 有更多選項可供您使用，以執行快取和其他驗證流程等專案。 如需詳細資訊，請參閱 [*Microsoft 驗證程式庫 (MSAL) 的總覽 *](../active-directory/develop/msal-overview.md)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 深入瞭解 Azure 數位 Twins 中的安全性運作方式：
 * [*概念： Azure 數位 Twins 解決方案的安全性*](concepts-security.md)

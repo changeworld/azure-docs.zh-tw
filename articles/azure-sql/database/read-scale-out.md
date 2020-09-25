@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: sstein, carlrab
+ms.reviewer: sstein
 ms.date: 09/03/2020
-ms.openlocfilehash: 2e7c931d6d99187b4ee7985be19374048c226312
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: bd393a897052dd0bd49851eee424c99ad1fcfb1f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442185"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319420"
 ---
 # <a name="use-read-only-replicas-to-offload-read-only-query-workloads"></a>使用唯讀複本來卸載唯讀查詢工作負載
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -89,14 +89,14 @@ SELECT DATABASEPROPERTYEX(DB_NAME(), 'Updateability');
 |:---|:---|
 |[sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| 提供過去一小時的資源使用率計量，包括 CPU、資料 IO 和記錄寫入使用量（相對於服務目標限制）。|
 |[sys.dm_os_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql)| 提供 database engine 實例的匯總等候統計資料。 |
-|[sys. dm_database_replica_states](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-database-replica-states-azure-sql-database)| 提供複本健全狀況狀態和同步處理統計資料。 重做佇列大小與重做速率可作為唯讀複本上的資料延遲指標。 |
+|[sys.dm_database_replica_states](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-database-replica-states-azure-sql-database)| 提供複本健全狀況狀態和同步處理統計資料。 重做佇列大小與重做速率可作為唯讀複本上的資料延遲指標。 |
 |[sys.dm_os_performance_counters](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-performance-counters-transact-sql)| 提供 database engine 效能計數器。|
 |[sys.dm_exec_query_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-stats-transact-sql)| 提供依查詢執行的統計資料，例如執行次數、使用的 CPU 時間等等。|
-|[sys. dm_exec_query_plan ( # B1 ](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-plan-transact-sql)| 提供快取的查詢計劃。 |
-|[sys. dm_exec_sql_text ( # B1 ](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-sql-text-transact-sql)| 提供快取查詢計劃的查詢文字。|
+|[sys.dm_exec_query_plan ( # B1 ](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-plan-transact-sql)| 提供快取的查詢計劃。 |
+|[sys.dm_exec_sql_text ( # B1 ](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-sql-text-transact-sql)| 提供快取查詢計劃的查詢文字。|
 |[sys.dm_exec_query_profiles](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-plan-stats-transact-sql)| 提供查詢執行時的即時查詢進度。|
-|[sys. dm_exec_query_plan_stats ( # B1 ](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-plan-stats-transact-sql)| 提供最後一個已知的實際執行計畫，包括查詢的執行時間統計資料。|
-|[sys. dm_io_virtual_file_stats ( # B1 ](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql)| 提供所有資料庫檔案的儲存體 IOPS、輸送量和延遲統計資料。 |
+|[sys.dm_exec_query_plan_stats ( # B1 ](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-plan-stats-transact-sql)| 提供最後一個已知的實際執行計畫，包括查詢的執行時間統計資料。|
+|[sys.dm_io_virtual_file_stats ( # B1 ](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql)| 提供所有資料庫檔案的儲存體 IOPS、輸送量和延遲統計資料。 |
 
 > [!NOTE]
 > `sys.resource_stats` `sys.elastic_pool_resource_stats` 邏輯 master 資料庫中的和 dmv 會傳回主要複本的資源使用量資料。
@@ -123,7 +123,7 @@ SELECT DATABASEPROPERTYEX(DB_NAME(), 'Updateability');
 > 如果您在對唯讀複本執行查詢時收到錯誤3961或錯誤1219，請重試查詢。
 
 > [!TIP]
-> 在 Premium 和業務關鍵服務層級中，當連接到唯讀複本時， `redo_queue_size` `redo_rate` [sys. dm_database_replica_states](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-database-replica-states-azure-sql-database) DMV 中的和資料行會用來監視資料同步處理常式，做為唯讀複本上的資料延遲指標。
+> 在 Premium 和業務關鍵服務層級中，當連接到唯讀複本時， `redo_queue_size` `redo_rate` [sys.dm_database_replica_states](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-database-replica-states-azure-sql-database) DMV 中的和資料行可用來監視資料同步處理常式，做為唯讀複本上的資料延遲指標。
 > 
 
 ## <a name="enable-and-disable-read-scale-out"></a>啟用和停用讀取相應放大
@@ -195,6 +195,6 @@ Body: {
 > [!NOTE]
 > 異地複寫次要資料庫的複本之間沒有自動迴圈配置資源或任何其他負載平衡路由。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 如需 SQL Database 超大規模供應專案的詳細資訊，請參閱 [超大規模服務層級](service-tier-hyperscale.md)。

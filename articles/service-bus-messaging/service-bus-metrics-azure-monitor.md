@@ -3,12 +3,12 @@ title: Azure 監視器中的 Azure 服務匯流排計量 | Microsoft Docs
 description: 本文說明如何使用 Azure 監視器來監視服務匯流排實體 (佇列、主題和訂閱)。
 ms.topic: article
 ms.date: 07/15/2020
-ms.openlocfilehash: 3081b46bebdba8e83e5584178b37aab2dffee599
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 158662a5d0fc3489b2cac638b28a64aa218b888e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88065007"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320433"
 ---
 # <a name="azure-service-bus-metrics-in-azure-monitor"></a>Azure 監視器中的 Azure 服務匯流排計量
 
@@ -29,17 +29,17 @@ Azure 監視器提供了多種方法供您存取計量。 您可以透過 [Azure
 
 您可以在 [Azure 入口網站](https://portal.azure.com)中監視一段時間的計量。 下列範例示範如何檢視帳戶層級的成功要求及連入要求：
 
-![Azure 入口網站中 [監視-計量] (預覽) ] 頁面的螢幕擷取畫面。][1]
+![Azure 入口網站中 [監視-計量 (預覽]) 頁面的螢幕擷取畫面。][1]
 
 您也可以直接透過命名空間來存取計量。 若要這樣做，請選取您的命名空間，然後按一下 [計量]。 若要顯示篩選至實體範圍的計量，請選取實體，然後按一下[計量]。
 
-![[監視-計量 () 預覽] 頁面的螢幕擷取畫面，已篩選為實體的範圍。][2]
+![監視度量 (預覽) 頁面的螢幕擷取畫面，已篩選至實體的範圍。][2]
 
 如需支援維度的計量，您必須使用所需的維度值來進行篩選。
 
 ## <a name="billing"></a>計費
 
-Azure 監視器上的計量和警示會按每項警示計費。 當警示已設定且在儲存之前，您應該可以在入口網站上使用這些費用。 
+Azure 監視器上的計量和警示會按每項警示計費。 當警示已設定且儲存之前，您應該會在入口網站上提供這些費用。 
 
 其他內嵌計量資料的解決方案會直接透過那些解決方案計費。 例如，如果您將計量資料封存到 Azure 儲存體帳戶，就要支付 Azure 儲存體的使用費。 如果您將計量資料串流到 Log Analytics 進行進階分析，則也需支付 Log Analytics 的費用。
 
@@ -80,7 +80,7 @@ Azure 監視器上的計量和警示會按每項警示計費。 當警示已設�
 | 活動訊息| 佇列/主題中的作用中訊息計數。 <br/><br/> 單位：Count <br/> 彙總類型：Average <br/> 維度：機構名稱 |
 | 無效訊息| 佇列/主題中的無效訊息計數。 <br/><br/> 單位：Count <br/> 彙總類型：Average <br/>維度：機構名稱 |
 | 排定的訊息| 佇列/主題中排程的訊息計數。 <br/><br/> 單位：Count <br/> 彙總類型：Average  <br/> 維度：機構名稱 |
-| 大小 | 實體 (佇列或主題的大小，以位元組為單位) 。 <br/><br/>單位：Count <br/>彙總類型：Average <br/>維度：機構名稱 | 
+| 大小 | 實體 (佇列或主題) 的大小（以位元組為單位）。 <br/><br/>單位：Count <br/>彙總類型：Average <br/>維度：機構名稱 | 
 
 > [!NOTE]
 > 下列計量值為時間點的值。 在該時間點之後立即取用的傳入訊息可能不會反映在這些計量中。 
@@ -147,7 +147,7 @@ Azure 服務匯流排支援下列的 Azure 監視器計量維度。 將維度新
     2. 輸入警示的**描述**。
     3. 選取警示規則的**嚴重性**。 
 
-        ![警示詳細資料](./media/service-bus-metrics-azure-monitor/alert-details.png)
+        ![[建立規則] 頁面的螢幕擷取畫面。 [定義警示詳細資料] 會展開，並醒目提示 [警示規則名稱]、[描述] 和 [嚴重性] 的欄位。](./media/service-bus-metrics-azure-monitor/alert-details.png)
 1. 在 [建立規則] 頁面上，展開 [定義動作群組]，選取 [新增動作群組]，然後在 [新增動作群組] 頁面上執行下列動作。 
     1. 輸入動作群組的名稱。
     2. 輸入動作群組的簡短名稱。 
@@ -161,7 +161,7 @@ Azure 服務匯流排支援下列的 Azure 監視器計量維度。 將維度新
         2. 輸入**電子郵件地址**。 
         3. 選取 [確定]。
 
-            ![警示詳細資料](./media/service-bus-metrics-azure-monitor/add-action-group.png)
+            ![[新增動作群組] 頁面的螢幕擷取畫面。 系統會將名為「傳送電子郵件」的動作新增至群組，其中包含 [電子郵件]/[SMS/推送/語音] 動作類型。](./media/service-bus-metrics-azure-monitor/add-action-group.png)
         4. 在 [新增動作群組] 頁面上，選取 [確定]。 
 1. 在 [建立規則] 頁面上，選取 [建立警示規則]。 
 

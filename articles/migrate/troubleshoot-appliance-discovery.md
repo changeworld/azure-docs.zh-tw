@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 9d4f30c5946e07b9f71c007d6f3f61efcae28637
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: b2a01e816c0f0569c207aa65e5027b935210e3b9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89296510"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331772"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>針對 Azure Migrate 設備和探索進行疑難排解
 
@@ -234,6 +234,7 @@ Azure Migrate 支援使用 Azure Migrate：伺服器評估來探索應用程式�
 9033：無法探索，因為 VM 使用者名稱包含不正確字元。     |   在使用者名稱中偵測到不正確字元。   |   請再次提供 VM 認證，以確保沒有任何不正確字元。
 9034：提供的使用者名稱不是 UPN 格式。    |   使用者名稱不是 UPN 格式。  |   請確定使用者名稱是 (UPN) 格式的使用者主體名稱。
 9035：無法探索，因為 Powershell 語言模式未設定為「完整語言」。  |   來賓 VM 中的 Powershell 語言模式未設定為完整語言。   |   確定 PowerShell 語言模式設定為 [完整語言]。
+9037：由於 VM 回應時間太高，資料收集暫時暫停。    |   探索到的 VM 花太多時間回應     |   不需要任何動作。 系統會在24小時內嘗試重試以進行應用程式探索，並在3小時內嘗試進行相依性分析 (無代理程式) 。
 10000：不支援作業系統類型。   |   伺服器上執行的作業系統不是 Windows 或 Linux。    |   支援的作業系統類型僅限 Windows 和 Linux。
 10001：在設備上找不到伺服器探索的腳本。    |   探索未如預期般運作。   |   請聯絡 Microsoft 支援服務以解決問題。
 10002：探索工作未及時完成。     |   探索代理程式未如預期般運作。     |   此問題應該會在24小時內自動解決。 如果問題持續發生，請連絡 Microsoft 支援服務。
@@ -248,5 +249,5 @@ Azure Migrate 支援使用 Azure Migrate：伺服器評估來探索應用程式�
 
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 設定適用于 [VMware](how-to-set-up-appliance-vmware.md)、 [hyper-v](how-to-set-up-appliance-hyper-v.md)或 [實體伺服器](how-to-set-up-appliance-physical.md)的設備。

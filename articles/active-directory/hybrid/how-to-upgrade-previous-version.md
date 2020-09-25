@@ -16,12 +16,12 @@ ms.date: 04/08/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69373e039320cd733fb859bb84e03e5493e05403
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: b78d3cab17b0cc4085c824cf35d4c6037f0e2af5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89277199"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319855"
 ---
 # <a name="azure-ad-connect-upgrade-from-a-previous-version-to-the-latest"></a>Azure AD Connect：從舊版升級到最新版本
 本主題說明各種可用於將 Azure Active Directory (Azure AD) Connect 安裝升級到最新版本的方法。 我們建議您讓自己的 Azure AD Connect 保持在最新版本。 當您進行大幅組態變更時，也會使用[變換移轉](#swing-migration)一節中的步驟。
@@ -33,7 +33,7 @@ ms.locfileid: "89277199"
 
 您可以使用幾種不同的策略來升級 Azure AD Connect。
 
-| 方法 | 描述 |
+| 方法 | 說明 |
 | --- | --- |
 | [自動升級](how-to-connect-install-automatic-upgrade.md) |對於使用快速安裝的客戶，這是最簡單的方法。 |
 | [就地升級](#in-place-upgrade) |如果您只有一台伺服器，您可以在該伺服器上就地升級安裝。 |
@@ -106,7 +106,7 @@ ms.locfileid: "89277199"
 
 1. 在升級期間， **取消** 核取 [設定 **完成時啟動同步處理**程式] 選項。 這會停用同步處理排程器，並且避免在移除覆寫之前自動開始同步處理週期。
 
-   ![DisableFullSyncAfterUpgrade](./media/how-to-upgrade-previous-version/disablefullsync01.png)
+   ![反白顯示 [設定完成時啟動同步處理常式] 選項的螢幕擷取畫面（當您需要清除時）。](./media/how-to-upgrade-previous-version/disablefullsync01.png)
 
 2. 升級完成之後，執行下列 Cmdlet 來找出已新增哪些覆寫：`Get-ADSyncSchedulerConnectorOverride | fl`
 
@@ -167,5 +167,5 @@ At line:1 char:1
 
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 深入瞭解如何 [整合您](whatis-hybrid-identity.md)的內部部署身分識別與 Azure Active Directory。

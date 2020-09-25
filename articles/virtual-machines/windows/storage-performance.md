@@ -1,6 +1,6 @@
 ---
 title: 將 Azure Lsv2 系列虛擬機器上的效能最佳化 - 儲存體
-description: 了解如何將 Lsv2 系列的虛擬機器上的解決方案效能最佳化。
+description: 瞭解如何使用 Windows 範例，在 Lsv2 系列虛擬機器上將解決方案的效能優化。
 author: sasha-melamed
 ms.service: virtual-machines-windows
 ms.subservice: sizes
@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 04/17/2019
 ms.author: joelpell
-ms.openlocfilehash: 82554982cd55b6c5fb2b96b2752b00401cb896d8
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 9d20379f60307fb8b8181ec50b87d3713a02ec6b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653625"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91306849"
 ---
 # <a name="optimize-performance-on-the-lsv2-series-windows-virtual-machines"></a>優化 Lsv2 系列 Windows 虛擬機器的效能
 

@@ -7,19 +7,19 @@ author: mgblythe
 ms.author: mblythe
 ms.date: 01/08/2020
 ms.topic: how-to
-ms.custom: devx-track-javascript
+ms.custom: devx-track-js
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: d19809df7f79f1d1fa84a90d552dbe5bf2449ea5
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 4e8d7054fb0df265285bda223e360ea61612aaf2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386889"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91263941"
 ---
 # <a name="use-a-markdown-tile-on-azure-dashboards-to-show-custom-content"></a>在 Azure 儀表板上使用 Markdown 磚以顯示自訂內容
 
-您可以將 Markdown 磚新增至 Azure 儀表板以顯示自訂的靜態內容。 例如，您可以在 markdown 磚上顯示基本指示、影像或一組超連結。
+您可以將 Markdown 磚新增至 Azure 儀表板以顯示自訂的靜態內容。 例如，您可以在 markdown 圖格上顯示基本指示、影像或超連結集。
 
 ## <a name="add-a-markdown-tile-to-your-dashboard"></a>將 Markdown 磚新增至您的儀表板
 
@@ -31,26 +31,26 @@ ms.locfileid: "87386889"
 
    ![顯示儀表板編輯檢視的螢幕擷取畫面](./media/azure-portal-markdown-tile/azure-portal-dashboard-edit.png)
 
-1. 在 [**磚庫**] 中，找出名為**Markdown**的磚，然後選取 [**新增**]。 磚會新增至儀表板，且 [編輯 Markdown]**** 窗格隨即開啟。
+1. 在 [ **圖**格資源庫] 中，找出稱為 **Markdown** 的磚，然後選取 [ **新增**]。 磚會新增至儀表板，且 [編輯 Markdown]**** 窗格隨即開啟。
 
-1. 輸入 [**標題**] 和 [**副標題**] 的值，這會在您移至另一個欄位之後顯示在磚上。
+1. 輸入**標題****和子標題的**值，這會在您移至另一個欄位之後，顯示在磚上。
 
-   ![顯示輸入標題和副標題之結果的螢幕擷取畫面](./media/azure-portal-markdown-tile/azure-portal-dashboard-enter-title.png)
+   ![顯示輸入標題和子標題之結果的螢幕擷取畫面](./media/azure-portal-markdown-tile/azure-portal-dashboard-enter-title.png)
 
-1. 選取其中一個選項來包含 markdown 內容： [**內嵌編輯**] 或 [**使用 URL 插入內容**]。
+1. 選取其中一個選項，包括 markdown 內容：使用 URL 進行 **內嵌編輯** 或 **插入內容**。
 
-   - 如果您想要直接輸入 markdown，請選取 [**內嵌編輯**]。
+   - 如果您想要直接輸入 markdown，請選取 [ **內嵌編輯** ]。
 
       ![顯示輸入內嵌內容的螢幕擷取畫面](./media/azure-portal-markdown-tile/azure-portal-dashboard-markdown-inline-content.png)
 
-   - 如果您想要使用線上託管的現有 markdown 內容，請選取 [**使用 URL 插入內容**]。
+   - 如果您想要使用線上主控的現有 markdown 內容，請選取 [ **使用 URL 插入內容** ]。
 
       ![顯示輸入 URL 的螢幕擷取畫面](./media/azure-portal-markdown-tile/azure-portal-dashboard-markdown-url.png)
 
       > [!NOTE]
-      > 為了增加安全性，您可以建立 markdown 檔案，並將它儲存在[已啟用加密的 Azure 儲存體帳戶 blob](../storage/common/storage-service-encryption.md)中，然後使用 [URL] 選項指向該檔案。 Markdown 內容會透過儲存體帳戶的加密選項進行加密。 只有具備檔案許可權的使用者才能在儀表板上看到 markdown 內容。
+      > 為了增加安全性，您可以建立 markdown 檔案，並將它儲存在 [啟用加密的 Azure 儲存體帳戶 blob](../storage/common/storage-service-encryption.md)中，然後使用 [URL] 選項指向檔案。 Markdown 內容會透過儲存體帳戶的加密選項進行加密。 只有具有檔案許可權的使用者可以在儀表板上看到 markdown 內容。
 
-1. 選取 [完成]**** 以關閉 [編輯 Markdown]**** 窗格。 您的內容會出現在 [Markdown] 圖格上，您可以拖曳右下角的控點來調整大小。
+1. 選取 [完成]**** 以關閉 [編輯 Markdown]**** 窗格。 您的內容會出現在 [Markdown] 圖格上，您可以拖曳右下角的控點來調整其大小。
 
    ![顯示自訂 Markdown 磚的螢幕擷取畫面](./media/azure-portal-markdown-tile/azure-portal-custom-markdown-tile.png)
 

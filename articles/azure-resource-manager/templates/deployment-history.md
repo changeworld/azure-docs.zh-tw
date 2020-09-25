@@ -3,25 +3,25 @@ title: 部署歷程記錄
 description: 說明如何使用入口網站、PowerShell、Azure CLI 及 REST API 來檢視 Azure Resource Manager 部署作業。
 tags: top-support-issue
 ms.topic: conceptual
-ms.date: 05/26/2020
-ms.openlocfilehash: b7439a70a3bd802a5f8a7c371fc04ab3eed31a5b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/23/2020
+ms.openlocfilehash: 00e0c51244d5c191d4c9f05f689b90ece81ec5a4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84117839"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91284613"
 ---
 # <a name="view-deployment-history-with-azure-resource-manager"></a>使用 Azure Resource Manager 來檢視部署歷程記錄
 
 Azure Resource Manager 可讓您查看您的部署歷程記錄。 您可以檢查過去部署中的特定作業，並查看已部署哪些資源。 此歷程記錄包含任何錯誤的相關資訊。
 
-資源群組的部署歷程記錄限制為800個部署。 當您接近限制時，就會自動從歷程記錄中刪除部署。 如需詳細資訊，請參閱[從部署歷程記錄自動刪除](deployment-history-deletions.md)。
+資源群組的部署歷程記錄限制為800部署。 當您接近限制時，就會自動從歷程記錄中刪除部署。 如需詳細資訊，請參閱 [從部署歷程記錄自動刪除](deployment-history-deletions.md)。
 
 如需解決特定部署錯誤的說明，請參閱 [針對使用 Azure Resource Manager 將資源部署至 Azure 時常見的錯誤進行疑難排解](common-deployment-errors.md)。
 
 ## <a name="get-deployments-and-correlation-id"></a>取得部署和相互關聯識別碼
 
-您可以透過 Azure 入口網站、PowerShell、Azure CLI 或 REST API 檢視部署的詳細資料。 每個部署都有相互關聯識別碼，可用來追蹤相關事件。 與技術支援小組合作疑難排解部署問題時，此識別碼會相當有用。
+您可以透過 Azure 入口網站、PowerShell、Azure CLI 或 REST API 檢視部署的詳細資料。 每個部署都有相互關聯識別碼，可用來追蹤相關事件。 如果您 [建立 Azure 支援要求](../../azure-portal/supportability/how-to-create-azure-support-request.md)，支援人員可能會要求您提供相互關聯識別碼。 支援會使用相互關聯識別碼來識別失敗部署的作業。
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 
@@ -61,13 +61,13 @@ Get-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -DeploymentName Ex
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-若要列出資源群組的部署，請使用 [az deployment group list](/cli/azure/group/deployment?view=azure-cli-latest#az-deployment-group-list)。
+若要列出資源群組的部署，請使用 [az deployment group list](/cli/azure/group/deployment#az-deployment-group-list)。
 
 ```azurecli-interactive
 az deployment group list --resource-group ExampleGroup
 ```
 
-若要取得特定部署，請使用 [az deployment group show](/cli/azure/group/deployment?view=azure-cli-latest#az-deployment-group-show)。
+若要取得特定部署，請使用 [az deployment group show](/cli/azure/group/deployment#az-deployment-group-show)。
 
 ```azurecli-interactive
 az deployment group show --resource-group ExampleGroup --name ExampleDeployment
@@ -212,6 +212,6 @@ GET https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/
 ## <a name="next-steps"></a>後續步驟
 
 * 如需解決特定部署錯誤的說明，請參閱 [針對使用 Azure Resource Manager 將資源部署至 Azure 時常見的錯誤進行疑難排解](common-deployment-errors.md)。
-* 若要瞭解如何在歷程記錄中管理部署，請參閱[從部署歷程記錄自動刪除](deployment-history-deletions.md)。
+* 若要瞭解如何在歷程記錄中管理部署，請參閱 [從部署歷程記錄自動刪除](deployment-history-deletions.md)。
 * 若要在執行之前驗證您的部署，請參閱 [使用 Azure Resource Manager 範本部署資源群組](deploy-powershell.md)。
 

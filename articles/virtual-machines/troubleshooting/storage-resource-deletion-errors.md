@@ -1,6 +1,6 @@
 ---
 title: 在 Azure 中對 Linux VM 上的儲存體資源刪除錯誤進行疑難排解 | Microsoft Docs
-description: 如何在刪除包含連結 VHD 的儲存體資源時，針對所發生的問題進行疑難排解。
+description: 瞭解如何在刪除包含附加 Vhd 的儲存體資源時，對 Linux Vm 上的問題進行疑難排解。
 keywords: ''
 services: virtual-machines
 author: genlin
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 8f145dcf8d476009d81056b3f4f970460209a5bc
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 8209f5b7fc02f59c33ad0a7b58ec6305d6eecf0c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88649732"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320076"
 ---
 # <a name="troubleshoot-storage-resource-deletion-errors"></a>針對儲存體資源刪除錯誤進行疑難排解
 
