@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: a6ee36e3aee515b589f1e460626df91a38f79f25
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.custom: codepen, devx-track-js
+ms.openlocfilehash: 75d2833a5b270fcfdcffa668ec0e308399edab8a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90089372"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91311445"
 ---
 # <a name="create-a-data-source"></a>建立資料來源
 
@@ -213,7 +213,7 @@ map.layers.add([polygonLayer, lineLayer, bubbleLayer]);
 深入了解本文使用的類別和方法：
 
 > [!div class="nextstepaction"]
-> [資料來源](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource)
+> [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource)
 
 > [!div class="nextstepaction"]
 > [DataSourceOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.datasourceoptions)

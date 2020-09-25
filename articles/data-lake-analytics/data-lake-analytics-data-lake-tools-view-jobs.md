@@ -5,19 +5,19 @@ ms.service: data-lake-analytics
 ms.assetid: bdf27b4d-6f58-4093-ab83-4fa3a99b5650
 ms.topic: how-to
 ms.date: 08/02/2017
-ms.openlocfilehash: 32684ea72df63de5b82941b3ef44e9d579d09eb4
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 717ad8bfaa9ddfcfa5775654408601ca13d3a636
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131883"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91282607"
 ---
 # <a name="use-job-browser-and-job-view-for-azure-data-lake-analytics"></a>使用適用於 Azure Data Lake Analytics 的作業瀏覽器和作業檢視
 Azure Data Lake Analytics 服務會將提交的作業封存在查詢存放區中。 在本文中，您會了解如何在適用於 Visual Studio 的 Azure Data Lake 工具中使用作業瀏覽器和作業檢視，來尋找作業歷程記錄資訊。 
 
 依預設，Azure Data Lake Analytics 服務會封存作業 30 天。 您可以藉由設定自訂的到期原則，從 Azure 入口網站設定有效期限。 期限到期後，您將無法存取作業資訊。 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 請參閱[適用於 Visual Studio 的 Azure Data Lake 工具](data-lake-analytics-data-lake-tools-get-started.md#prerequisites)。
 
 ## <a name="open-the-job-browser"></a>開啟作業瀏覽器
@@ -38,7 +38,7 @@ Azure Data Lake Analytics 服務會將提交的作業封存在查詢存放區中
     
       作業狀態說明作業階段︰
     
-      ![Azure Data Lake Analytics 作業階段狀態](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-phases.png)
+      ![顯示 Azure Data Lake Analytics 作業階段的螢幕擷取畫面。](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-phases.png)
     
     * 準備中︰將您的指令碼上傳到雲端，使用編譯服務以編譯和最佳化指令碼。
     * 已排入佇列︰當作業等待到足夠的資源，或是作業超過每個帳戶限制的並行作業數上限時，便會排入佇列。 優先順序設定會決定排入佇列的作業順序，數字越低表示優先順序愈高。
@@ -50,7 +50,7 @@ Azure Data Lake Analytics 服務會將提交的作業封存在查詢存放區中
     
       基本作業資訊會在作業摘要面板的下半部顯示。
     
-      ![Azure Data Lake Analytics 作業階段狀態](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-info.png)
+      ![顯示 [工作摘要] 的螢幕擷取畫面，其中包含文字方塊中的描述。](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-info.png)
     
     * 作業的結果︰成功或失敗。 作業在每個階段都可能會失敗。
     * 總持續時間︰提交時間和結束時間之間的時鐘時間 (持續時間)。
@@ -60,10 +60,10 @@ Azure Data Lake Analytics 服務會將提交的作業封存在查詢存放區中
     * 帳戶︰用於執行作業的 Data Lake Analytics 帳戶。
     * 作者︰提交作業的使用者，可以是實際人員的帳戶或系統帳戶。
     * 優先順序：作業的優先順序。 編號愈低，優先順序愈高。 它只會影響作業在佇列中的順序。 設定較高的優先順序，不會優先於執行中的作業。
-    * 平行處理原則︰並行 Azure Data Lake Analytics 單位 (ADLAU) (也稱為頂點) 的要求數目上限。 目前，一個頂點等於一個雙虛擬核心和 6 GB RAM 的 VM，但這在未來的 Data Lake Analytics 更新中可能會升級。
+    * 平行處理：要求的並行 Azure Data Lake Analytics 單位數目上限 (Adlau) ，也稱為頂點。 目前，一個頂點等於一個雙虛擬核心和 6 GB RAM 的 VM，但這在未來的 Data Lake Analytics 更新中可能會升級。
     * 剩餘的位元組︰作業完成之前需要處理的位元組。
     * 已讀取/寫入的位元組︰作業開始執行後已讀取/寫入的位元組。
-    * 總頂點︰作業作會分成許多的作業作片段，每份作業片段就稱為頂點。 這個值描述作業是由多少工作片段所組成。 您可以將頂點視為基本處理單位，也就是 Azure Data Lake Analytics 單位 (ADLAU)，且頂點可以在平行處理原則中執行。 
+    * 總頂點︰作業作會分成許多的作業作片段，每份作業片段就稱為頂點。 這個值描述作業是由多少工作片段所組成。 您可以將頂點視為基本進程單位（也稱為 Azure Data Lake Analytics 單位 (ADLAU) ），而且可以在平行處理原則中執行頂點。 
     * 完成/執行中/失敗︰完成/執行中/失敗的頂點計數。 頂點會因為使用者程式碼和系統失敗而失敗，但系統會自動重試幾次失敗的頂點。 如果頂點在重試後仍然失敗，則整個作業將會失敗。
 * 作業圖形
   
@@ -71,7 +71,7 @@ Azure Data Lake Analytics 服務會將提交的作業封存在查詢存放區中
   
     ![Azure Data Lake Analytics 作業階段狀態](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-logical-to-physical-plan.png)
   
-    作業分成許多的工作片段。 每份工作片段稱為頂點。 頂點分組為超級頂點 (也稱為階段)，並以作業圖形視覺化呈現。 作業圖形中的綠色階段牌子顯示階段。
+    作業分成許多的工作片段。 每份工作片段稱為頂點。 頂點會分組為超級頂點 (也稱為階段) ，並視覺化為工作圖形。 作業圖形中的綠色階段牌子顯示階段。
   
     階段中每的一個頂點都在進行同樣的工作，只是對象為相同資料的不同片段。 例如，如果您有一個 TB 資料的檔案，而且有數百個頂點在讀取它，則每個頂點都會讀取其中一個區塊。 這些頂點會在相同階段進行分組，並針對輸入檔的不同片段執行相同的工作。
   
@@ -109,7 +109,7 @@ Azure Data Lake Analytics 服務會將提交的作業封存在查詢存放區中
   * 持續時間︰階段花費的時鐘時間，您需要載入設定檔以查看此值。
   * 工作播放
     
-      Data Lake Analytics 會執行作業，並封存執行作業資訊的頂點，例如頂點何時啟動、停止、失敗以及重試的方式等。所有資訊都會自動記錄在查詢存放區中，並儲存在其作業設定檔中。 您可以透過作業檢視中的「載入設定檔」來下載作業設定檔，並在下載作業設定檔之後檢視作業播放。
+      Data Lake Analytics 會執行工作並封存執行工作資訊的頂點，例如頂點啟動、停止、失敗及重試的方式等等。所有資訊都會自動記錄在查詢存放區中，並儲存在其作業設定檔中。 您可以透過作業檢視中的「載入設定檔」來下載作業設定檔，並在下載作業設定檔之後檢視作業播放。
     
       作業播放是叢集中所進行作業的概括視覺效果。 作業播放可讓您觀看作業執行進度，並在很短的時間內 (通常少於 30 秒) 以視覺化方式偵測出效能異常和瓶頸。
   * 作業熱度圖顯示 
@@ -129,7 +129,7 @@ Azure Data Lake Analytics 服務會將提交的作業封存在查詢存放區中
     * 輸入/輸出輸送量︰每個階段輸入/輸出輸送量的熱度圖，您可以藉此確認您的作業是否為 I/O 界限作業。
 * 中繼資料作業
   
-    您可以在您的 U-SQL 腳本中執行一些中繼資料作業，例如建立資料庫、卸載資料表等等。這些作業會在編譯後的中繼資料操作中顯示。 您可以在這裡找到判斷提示、建立實體並捨棄實體。
+    您可以在您的 U SQL 腳本中執行一些中繼資料作業，例如建立資料庫、卸載資料表等。這些作業會在編譯後的中繼資料作業中顯示。 您可以在這裡找到判斷提示、建立實體並捨棄實體。
   
     ![Azure Data Lake Analytics 作業檢視中繼資料作業](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-view-metadata-operations.png)
 * 狀態記錄
@@ -161,7 +161,7 @@ Azure Data Lake Analytics 服務會將提交的作業封存在查詢存放區中
     您可以透過資源找到儲存於查詢存放區中的作業編譯輸出。 比方說，您可以在這裡找到用來顯示作業圖形的 “algebra.xml”、您已註冊的組件等。
 * 頂點執行檢視
   
-    它會顯示頂點執行詳細資料。 作業設定檔會封存每個頂點執行記錄，例如讀取/寫入的資料總數、執行時間、狀態等。透過此視圖，您可以取得作業執行方式的詳細資料。 如需詳細資訊，請參閱[在適用於 Visual Studio 的 Data Lake 工具中使用頂點執行檢視](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md)。
+    它會顯示頂點執行詳細資料。 作業設定檔會封存每個頂點執行記錄，例如讀取/寫入的資料總計、執行時間、狀態等等。透過這個觀點，您可以取得有關作業執行方式的詳細資料。 如需詳細資訊，請參閱[在適用於 Visual Studio 的 Data Lake 工具中使用頂點執行檢視](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md)。
 
 ## <a name="next-steps"></a>後續步驟
 * 若要記錄診斷資訊，請參閱 [為 Azure Data Lake Analytics 存取診斷記錄](data-lake-analytics-diagnostic-logs.md)

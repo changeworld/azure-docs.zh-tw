@@ -3,12 +3,12 @@ title: 在 Azure 實驗室服務中建立教室實驗室的排程 | Microsoft Do
 description: 了解如何在 Azure 實驗室服務中建立教室實驗室的排程，使實驗室中的 VM 可在指定的時間啟動和關閉。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: d6dcdd8d09c2c71c2d41aebd358639883ccfb33d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4eb4e2459069b61990f51f8d8de76522b736723e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445775"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326434"
 ---
 # <a name="create-and-manage-schedules-for-classroom-labs-in-azure-lab-services"></a>在 Azure 實驗室服務中建立和管理教室實驗室的排程 
 排程可讓您設定教室實驗室，使實驗室中的 VM 可在指定的時間自動啟動和關閉。 您可以定義一次性排程或週期性排程。 下列程序將為您提供建立和管理教室實驗室排程的步驟： 
@@ -20,14 +20,14 @@ ms.locfileid: "85445775"
 建立實驗室的排程事件，讓實驗室中的 VM 在特定時間自動啟動/停止。 您稍早指定的使用者配額，便是會在此排程時間以外指派給每位使用者的額外時間。 
 
 > [!NOTE]
-> 開始之前，以下是排程如何影響實驗室虛擬機器： 
->- 排程中未包含範本虛擬機器。 
->- 只有指派的虛擬機器才會啟動。 這表示，如果電腦不是由使用者（student）所宣告，電腦將不會在排程的時間開始。 
->- 所有虛擬機器（不論是否由使用者宣告）都會根據實驗室排程停止。 
+> 開始之前，以下是排程對實驗室虛擬機器的影響： 
+>- 範本虛擬機器未包含在排程中。 
+>- 只會啟動已指派的虛擬機器。 這表示，如果使用者未宣告電腦 (student) ，電腦將不會在排程的時間內啟動。 
+>- 所有虛擬機器 (無論是由使用者宣告，還是不) 會根據實驗室排程來停止。 
 
 1. 切換至 [排程] 頁面，然後選取工具列上的 [新增已排定事件]。 
 
-    ![[排程] 頁面上的 [新增排程] 按鈕](./media/how-to-create-schedules/add-schedule-button.png)
+    ![顯示 Azure 實驗室服務 [排程] 頁面的螢幕擷取畫面，其中已選取 [新增排程] 按鈕。](./media/how-to-create-schedules/add-schedule-button.png)
 2. 確認已為 [事件類型] 選取 [標準]。 您可以選取 [僅啟動]****，以便僅指定 VM 的啟動時間。 您可以選取 [僅停止]****，以便僅指定 VM 的停止時間。 
 7. 在 [重複]**** 區段中，選取目前的排程。 
 
@@ -56,18 +56,18 @@ ms.locfileid: "85445775"
 選取右上角的 [今天]**** 按鈕，可在行事曆中切換至目前的日期。 選取 [向左箭號]**** 可在行事曆中切換至上一週，[向右箭號]**** 則會切換至下一週。 
 
 ## <a name="edit-a-schedule"></a>編輯排程
-當您在行事曆中選取反白顯示的排程時，您會看到**編輯**或**刪除**排程的按鈕。 
+當您在行事曆中選取反白顯示的排程時，您會看到 **編輯** 或 **刪除** 排程的按鈕。 
 
 ![編輯排程頁面](./media/how-to-create-schedules/schedule-edit-button.png)
 
-在 [**編輯排程的事件**] 頁面上，您可以更新排程，然後選取 [**儲存**]。 
+在 [ **編輯排程事件** ] 頁面上，您可以更新排程，然後選取 [ **儲存**]。 
 
 ## <a name="delete-a-schedule"></a>刪除排程
 
-1. 若要刪除排程，請在行事曆中選取反白顯示的排程，然後選取垃圾桶圖示（刪除）按鈕：
+1. 若要刪除排程，請在行事曆中選取反白顯示的排程，然後選取 [回收站] 圖示 (刪除]) 按鈕：
 
     ![工具列上的刪除按鈕](./media/how-to-create-schedules/schedule-delete-button.png)
-2. 在 [**刪除排程事件**] 對話方塊中，選取 [**是]** 以確認刪除。 
+2. 在 [ **刪除排程事件** ] 對話方塊中，選取 [ **是]** 確認刪除。 
 
 
 

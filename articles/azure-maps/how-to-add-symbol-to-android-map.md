@@ -1,33 +1,33 @@
 ---
 title: 將符號圖層新增至 Android 地圖 |Microsoft Azure 對應
-description: 瞭解如何將標記新增至地圖。 請參閱使用 Azure 地圖服務 Android SDK 加入包含資料來源之以點為基礎之資料的符號圖層的範例。
+description: 瞭解如何將標記新增至地圖。 請參閱使用 Azure 地圖服務 Android SDK 來新增符號圖層，其中包含來自資料來源之以點為基礎之資料的符號圖層。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 04/26/2019
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 99a4f69a814314b233a3129ed31d18ffa1682d8d
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 10969e20cd7ae71cade230f6643a27d5d940ceaa
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037383"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91311269"
 ---
 # <a name="add-a-symbol-layer-to-a-map-using-azure-maps-android-sdk"></a>使用 Azure 地圖服務 Android SDK 將符號圖層新增至地圖
 
-本文說明如何使用 Azure 地圖服務 Android SDK，將資料來源中的點資料轉譯為地圖上的符號圖層。
+本文說明如何使用 Azure 地圖服務 Android SDK，將資料來源中的點資料呈現為地圖上的符號圖層。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-若要完全遵循本文中的步驟，您必須安裝[Azure 地圖服務 Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library)以載入對應。
+若要完全遵循這篇文章中的步驟，您必須安裝 [Azure 地圖服務 Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) 以載入對應。
 
 ## <a name="add-a-symbol-layer"></a>新增符號圖層
 
-若要使用符號圖層在地圖上新增標記，請依照下列步驟執行：
+若要使用符號圖層在地圖上新增標記，請遵循下列步驟：
 
-1. 編輯**res**  >  **版面**配置  >  **activity_main.xml** ，使其看起來像下列 XML：
+1. 編輯**res**  >  **版面**配置  >  **activity_main.xml** ，使其看起來類似下列 XML：
     
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
@@ -50,7 +50,7 @@ ms.locfileid: "88037383"
     </FrameLayout>
     ```
 
-2. 將下列程式碼片段複製到您類別的**onCreate ( # B1**方法中 `MainActivity.java` 。
+2. 將下列程式碼片段複製到您類別的 **>oncreate ( # B1 ** 方法中 `MainActivity.java` 。
 
     ```Java
     mapControl.onReady(map -> {
@@ -72,9 +72,9 @@ ms.locfileid: "88037383"
     
     ```
     
-    上述程式碼片段會先使用**onReady ( # B1**回呼方法來取得 Azure 地圖服務的地圖控制項實例。 然後，它會使用**DataSource**類別來建立資料來源物件，並將它加入至對應。 然後，它會將包含點幾何的**功能**新增至其中。 然後會將紅色標記影像設定為符號的圖示。 **符號圖層**會使用文字或圖示，將資料來源中包裝的點式資料轉譯為地圖上的符號。 接著會建立符號圖層，並將資料來源傳遞給它以轉譯，然後再新增至地圖的圖層。
+    上述程式碼片段會先使用 **onReady ( # B1 ** 回呼方法取得 Azure 地圖服務的地圖控制項實例。 接著，它會使用 **DataSource** 類別建立資料來源物件，並將它加入至對應。 然後，它會將包含點幾何的 **功能** 新增至其中。 接著會將紅色標記影像設定為符號的圖示。 **符號圖層**會使用文字或圖示，將資料來源中包裝的以點為基礎的資料轉譯為地圖上的符號。 接著會建立符號圖層，並將資料來源傳遞給它以轉譯，然後新增至地圖圖層。
     
-    新增上述程式碼片段之後，您 `MainActivity.java` 的看起來應該如下所示：
+    新增上述程式碼片段之後，您 `MainActivity.java` 應該看起來如下所示：
     
     ```Java
     package com.example.myapplication;
@@ -173,7 +173,7 @@ ms.locfileid: "88037383"
 ![Android 地圖釘選圖示](./media/how-to-add-symbol-to-android-map/android-map-pin.png)</center>
 
 > [!TIP]
-> 根據預設，符號圖層會藉由隱藏重迭的符號來優化符號的呈現。 當您放大時，隱藏的符號就會變成可見。 若要停用此功能並隨時呈現所有符號，請將 `iconAllowOverlap` 選項設定為 `true` 。
+> 根據預設，符號圖層會隱藏重迭的符號來將符號轉譯優化。 當您放大時，隱藏的符號就會變成可見。 若要停用這項功能並隨時轉譯所有符號，請將 `iconAllowOverlap` 選項設定為 `true` 。
 
 ## <a name="next-steps"></a>後續步驟
 

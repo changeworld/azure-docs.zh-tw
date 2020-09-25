@@ -5,20 +5,23 @@ description: 藉由建立及訂閱 Azure 入口網站中的資源，開始使用
 services: cognitive-services
 author: aahill
 manager: nitinme
+keywords: 認知服務，認知情報，認知解決方案，ai 服務
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 07/27/2020
+ms.date: 09/14/2020
 ms.author: aahi
-ms.openlocfilehash: 079ab59652c9ba709d8476c33a538b1d4a9f4846
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 623982826f82e44b8d031d19002d33e0a8e798bd
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90907017"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326859"
 ---
-# <a name="create-a-cognitive-services-resource-using-the-azure-portal"></a>使用 Azure 入口網站建立認知服務資源
+# <a name="quickstart-create-a-cognitive-services-resource-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站建立認知服務資源
 
 使用本快速入門開始使用 Azure 認知服務。 在 Azure 入口網站中建立認知服務資源之後，您將會取得用來驗證應用程式的端點和金鑰。
+
+Azure 認知服務是可搭配 REST API 和用戶端程式庫 SDK 的雲端式服務，可協助開發人員建置認知智慧應用程式，且無須直接人工智慧 (AI) 或資料科學技術或知識。 Azure 認知服務可讓開發人員使用認知解決方案，輕鬆地將認知功能新增至其應用程式，以查看、聆聽、說出、了解，甚至是開始的原因。
 
 
 [!INCLUDE [cognitive-services-subscription-types](../../includes/cognitive-services-subscription-types.md)]
@@ -38,7 +41,7 @@ ms.locfileid: "90907017"
     目前，多服務資源可讓您存取下列認知服務：
 
     - 電腦視覺
-    - 內容仲裁者
+    - 內容仲裁
     - 臉部
     - 語言理解 (LUIS)
     - 文字分析
@@ -56,10 +59,11 @@ ms.locfileid: "90907017"
     | 視覺                      | 語音                  | 語言                          | 決策             | 搜尋                 |
     |-----------------------------|-------------------------|-----------------------------------|----------------------|------------------------|
     | [電腦視覺](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision)         | [語音服務](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices)     | [沉浸式讀者](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesImmersiveReader)              | [異常偵測器](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector) | [Bing 搜尋 API V7](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7) |
-    | [自訂視覺服務](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesCustomVision) | [說話者辨識](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeakerRecognition) | [Language Understanding (LUIS) ](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne) | [內容仲裁](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator) | [Bing 自訂搜尋](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingCustomSearch) |
+    | [自訂視覺服務](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesCustomVision) | [說話者辨識](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeakerRecognition) | [語言理解 (LUIS)](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne) | [內容仲裁](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator) | [Bing 自訂搜尋](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingCustomSearch) |
     | [臉部](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFace)                    |                         | [QnA Maker](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker)                     | [個人化工具](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer)     | [Bing 實體搜尋](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingEntitySearch) |
     | [筆跡辨識器](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesInkRecognizer)        |                         | [文字分析](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics)                |  [Metrics Advisor](https://go.microsoft.com/fwlink/?linkid=2142156)                    | [Bing 拼字檢查](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSpellCheck-v7)   |
     |           |                         | [翻譯工具](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation)               |                      | [Bing 自動建議](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingAutosuggest-v7)                       |
+
     ***
 
 3. 在 [建立]**** 頁面上，提供下列資訊：
@@ -74,9 +78,9 @@ ms.locfileid: "90907017"
     | **定價層** | 認知服務帳戶的費用取決於您選擇的選項和使用方式。 如需詳細資訊，請參閱 API [定價詳細資料](https://azure.microsoft.com/pricing/details/cognitive-services/)。
     | **資源群組** | Azure 資源群組，將包含您的認知服務資源。 您可以建立新的群組，或將群組新增到既有的群組。 |
 
-    ![資源建立畫面](media/cognitive-services-apis-create-account/resource_create_screen-multi.png)
+    ![多服務資源資源建立畫面](media/cognitive-services-apis-create-account/resource_create_screen-multi.png)
 
-    按一下 [建立]。
+    按一下頁面底部的 [新增] 。
 
     #### <a name="single-service-resource"></a>[單一服務資源](#tab/singleservice)
 
@@ -88,9 +92,9 @@ ms.locfileid: "90907017"
     | **定價層** | 認知服務帳戶的費用取決於您選擇的選項和使用方式。 如需詳細資訊，請參閱 API [定價詳細資料](https://azure.microsoft.com/pricing/details/cognitive-services/)。
     | **資源群組** | Azure 資源群組，將包含您的認知服務資源。 您可以建立新的群組，或將群組新增到既有的群組。 |
 
-    ![單一資源建立畫面](media/cognitive-services-apis-create-account/resource_create_screen.png)
+    ![單一服務資源建立畫面](media/cognitive-services-apis-create-account/resource_create_screen.png)
 
-    按一下 [建立]。
+    按一下頁面底部的 [新增] 。
 
     ***
 

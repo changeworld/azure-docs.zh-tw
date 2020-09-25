@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure Data Factory 中的 Pig 活動轉換資料
-description: 了解如何使用 Azure 資料處理站中的 Pig 活動，以在隨選/您自己的 HDInsight 叢集上執行 Pig 指令碼。
+description: 瞭解如何使用 Azure data factory v1 中的 Pig 活動，在隨選/您自己的 HDInsight 叢集上執行 Pig 腳本。
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 5b8e7201a6239ef1fe83fb89d4b361995e305bbf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9e20b7a92d054a6664a00064fa7263b1150c3df9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74703199"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91282573"
 ---
 # <a name="transform-data-using-pig-activity-in-azure-data-factory"></a>使用 Azure Data Factory 中的 Pig 活動轉換資料
 > [!div class="op_single_selector" title1="轉換活動"]
@@ -85,12 +85,12 @@ Data Factory [管線](data-factory-create-pipelines.md)中的 HDInsight Pig 活�
 | 屬性 | 說明 | 必要 |
 | --- | --- | --- |
 | NAME |活動的名稱 |是 |
-| description |說明活動用途的文字 |No |
-| type |HDInsightPig |Yes |
-| 輸入 |Pig 活動所取用的一或多項輸入 |No |
+| description |說明活動用途的文字 |否 |
+| type |HDInsightPig |是 |
+| 輸入 |Pig 活動所取用的一或多項輸入 |否 |
 | 輸出 |Pig 活動所產生的一或多項輸出 |是 |
-| linkedServiceName |參考 HDInsight 叢集註冊為 Data Factory 中的連結服務 |Yes |
-| 指令碼 |指定 Pig 指令碼內嵌 |No |
+| linkedServiceName |參考 HDInsight 叢集註冊為 Data Factory 中的連結服務 |是 |
+| 指令碼 |指定 Pig 指令碼內嵌 |否 |
 | scriptPath |在 Azure blob 儲存體中儲存 Pig 指令碼，並提供檔案的路徑。 使用 'script' 或 'scriptPath' 屬性。 兩者無法同時使用。 檔案名稱有區分大小寫。 |否 |
 | 定義 |在使用 Pig 指令碼內指定參數做為參考的機碼/值組 |否 |
 
@@ -121,10 +121,10 @@ Store PigSampleOut into 'wasb://adfwalkthrough@anandsub14.blob.core.windows.net/
 
 若要在 Data Factory 管線中執行此 Pig 指令碼，請執行下列步驟：
 
-1. 建立連結服務以註冊[您自己的 HDInsight 計算叢集](data-factory-compute-linked-services.md#azure-hdinsight-linked-service)或設定[隨選 HDInsight 計算叢集](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service)。 讓我們來呼叫這個連結服務**HDInsightLinkedService**。
+1. 建立連結服務以註冊[您自己的 HDInsight 計算叢集](data-factory-compute-linked-services.md#azure-hdinsight-linked-service)或設定[隨選 HDInsight 計算叢集](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service)。 讓我們來呼叫此連結的服務 **HDInsightLinkedService**。
 2. 建立 [連結服務](data-factory-azure-blob-connector.md) 以設定裝載資料之 Azure Blob 儲存體的連接。 讓我們將此連結服務命名為 **StorageLinkedService**。
 3. 建立指向輸入和輸出資料的 [資料集](data-factory-create-datasets.md) 。 讓我們將此輸出資料集命名為 **PigSampleIn**，以及將輸出資料集命名為 **PigSampleOut**。
-4. 複製「Azure Blob 儲存體」在步驟 #2 所設定之檔案中的Pig 查詢。 如果裝載資料的 Azure 儲存體與裝載查詢檔案的儲存體不同，請建立個別的「Azure 儲存體」連結服務。 請參考活動組態中的連結服務。 使用**scriptPath**來指定 pig 指令檔和**scriptLinkedService**的路徑。 
+4. 複製「Azure Blob 儲存體」在步驟 #2 所設定之檔案中的Pig 查詢。 如果裝載資料的 Azure 儲存體與裝載查詢檔案的儲存體不同，請建立個別的「Azure 儲存體」連結服務。 請參考活動組態中的連結服務。 使用 **scriptPath** 來指定 pig 腳本檔案和 **scriptLinkedService**的路徑。 
    
    > [!NOTE]
    > 您也可以使用 **script** 屬性，在活動定義中以內嵌方式提供 Pig 指令碼。 不過，不建議使用此方法，因為必須逸出指令碼中的所有特殊字元，而且可能造成偵錯問題。 最佳做法是遵循步驟 #4。

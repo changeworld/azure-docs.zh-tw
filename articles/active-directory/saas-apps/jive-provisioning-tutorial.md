@@ -1,6 +1,6 @@
 ---
 title: 教學課程︰以 Azure Active Directory 設定 Jive 來自動佈建使用者 | Microsoft Docs
-description: 了解如何設定 Azure Active Directory 與 Jive 之間的單一登入。
+description: 瞭解您需要在 Jive 和 Azure AD 中執行的步驟，以將使用者帳戶從 Azure AD 自動布建和解除布建到 Jive。
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 351c7e21bfe59b22f451adddad8fed220c218358
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: fa45ece76499b50694d366ed2dcdd57cc1e0c7dc
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90983121"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91312091"
 ---
 # <a name="tutorial-configure-jive-for-automatic-user-provisioning"></a>教學課程︰設定 Jive 來自動佈建使用者
 

@@ -1,7 +1,7 @@
 ---
 title: 語言支援 - Bing Web 搜尋 API
 titleSuffix: Azure Cognitive Services
-description: Bing 新聞搜尋 API 支援的自然語言、國家/地區和區域清單。
+description: Bing Web 搜尋 API 所支援的自然語言、國家和地區的清單。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,18 +10,18 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: aahi
-ms.openlocfilehash: 9425de6e75a9a46d71ff85ce49b0650c8e7a9a16
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e378bc88d28173eaed0308db3034a54236d63098
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68882680"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91262819"
 ---
 # <a name="language-and-region-support-for-the-bing-web-search-api"></a>Bing Web 搜尋 API 支援的語言和區域
 
 Bing Web 搜尋 API 支援三十多個國家/地區，許多國家/地區具有一個以上的語言。 使用查詢指定國家/地區，有助於根據該國家/地區的興趣，縮小搜尋結果範圍。 結果可能包含 Bing 的連結，而且這些連結可能會根據指定的國家/地區或語言，將 Bing 的使用者體驗當地語系化。
 
-您可以使用 `cc` 查詢參數指定國家/地區。 指定國家或地區時，您必須使用[ `Accept-Language`標頭](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#headers)指定一或多個語言代碼。 使用[市場資料表](#markets)取得每個市場所支援的語言清單。
+您可以使用 `cc` 查詢參數指定國家/地區。 指定國家或地區時，您必須指定一或多個具有[ `Accept-Language` 標頭](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#headers)的語言代碼。 使用[市場資料表](#markets)取得每個市場所支援的語言清單。
 
 或者，您也可以使用 `mkt` 查詢參數和**市場**資料表的代碼來指定市場。 指定市場同時會指定國家/地區和慣用的語言。 您可以使用 `setLang` 查詢參數明確設定語言。
 
@@ -42,7 +42,7 @@ Bing Web 搜尋 API 支援三十多個國家/地區，許多國家/地區具有�
 |德國|DE|
 |香港特別行政區|HK|
 |印度|IN|
-|印尼|識別碼|
+|印尼|ID|
 |義大利|IT|
 |日本|JP|
 |南韓|KR|
@@ -71,7 +71,7 @@ Bing Web 搜尋 API 支援三十多個國家/地區，許多國家/地區具有�
 |國家/地區|Language|市場代碼|
 |-------|--------|-----------|
 |阿根廷|西班牙文|es-AR|
-|澳大利亞|英文|en-AU|
+|澳洲|英文|en-AU|
 |奧地利|德文|de-AT|
 |比利時|荷蘭文|nl-BE|
 |比利時|法文|fr-BE|
@@ -107,8 +107,8 @@ Bing Web 搜尋 API 支援三十多個國家/地區，許多國家/地區具有�
 |瑞士|德文|de-CH|
 |台灣|繁體中文|zh-TW|
 |土耳其|土耳其文|tr-TR|
-|United Kingdom|英文|en-GB|
-|美國|英文|zh-TW|
+|英國|英文|en-GB|
+|美國|英文|en-US|
 |美國|西班牙文|es-US|
 
 ## <a name="next-steps"></a>後續步驟

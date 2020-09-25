@@ -3,12 +3,12 @@ title: 使用儲存體總管將 VHD 檔案上傳至 Azure DevTest Labs
 description: 使用 Microsoft Azure 儲存體總管將 VHD 檔案上傳到實驗室的儲存體帳戶
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 6ed6ace63a135628b6d306b946c0356091bf1bd2
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: d4e421932ebba5d4f389000c12bcf44ac2f37599
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654509"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91282522"
 ---
 # <a name="upload-vhd-file-to-labs-storage-account-using-microsoft-azure-storage-explorer"></a>使用 Microsoft Azure 儲存體總管將 VHD 檔案上傳到實驗室的儲存體帳戶
 
@@ -90,19 +90,19 @@ ms.locfileid: "88654509"
 
     1. 在儲存體總管的右窗格中，您應該會在實驗室儲存體帳戶的 [上傳]**** Blob 容器中看到 Blob 清單。 在 Blob 編輯器工具列中，選取 [上傳]**** 
         
-        ![上傳按鈕][6]
+        ![螢幕擷取畫面，顯示已選取 [上傳] 按鈕的儲存體總管右窗格。][6]
     
     1. 從 [上傳]**** 下拉式功能表中，選取 [上傳檔案...]****。
     
     1. 在 [上傳檔案]**** 對話方塊中，選取省略符號。
         
-        ![選取檔案][8]  
+        ![顯示 [上傳檔案] 對話方塊並選取省略號的螢幕擷取畫面。][8]  
 
     1. 在 [選取要上傳的檔案]**** 對話方塊中，瀏覽至所需的 VHD 檔案、加以選取，然後選取 [開啟]****。
     
     1. 在回到 [上傳檔案]**** 對話方塊時，將 [Blob 類型]**** 變更為 [分頁 Blob]****。
     
-    1. 選取 [上傳] 。
+    1. 選取 [上傳]  。
 
         ![選取檔案][9]  
     

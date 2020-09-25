@@ -1,7 +1,7 @@
 ---
 title: 如何使用語音 SDK 選取音訊輸入裝置
 titleSuffix: Azure Cognitive Services
-description: '瞭解如何藉由取得連接到系統的音訊裝置識別碼，在語音 SDK （c + +、c #、Python、目標-C、JAVA、JavaScript）中選取音訊輸入裝置。'
+description: '深入瞭解如何在語音 SDK 中選取音訊輸入裝置 (c + +、c #、Python、目標 C、JAVA、JavaScript) ，方法是取得連接到系統之音訊裝置的識別碼。'
 services: cognitive-services
 author: chlandsi
 manager: nitinme
@@ -10,13 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: chlandsi
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 80671a40b5933a89962fa07b267d7e99e475657f
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-js
+ms.openlocfilehash: 0e67d0ae4d875699b26fdcd30093b0c2bf373458
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406685"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91282981"
 ---
 # <a name="how-to-select-an-audio-input-device-with-the-speech-sdk"></a>如何：使用語音 SDK 選取音訊輸入裝置
 
@@ -135,6 +135,10 @@ void ListEndpoints()
 
         // Print endpoint friendly name and endpoint ID.
         printf("Endpoint %d: \"%S\" (%S)\n", i, varName.pwszVal, pwszID);
+
+        CoTaskMemFree(pwszID);
+        pwszID = NULL;
+        PropVariantClear(&varName);
     }
 
 Exit:
@@ -176,7 +180,7 @@ namespace ConsoleApp
 
 ## <a name="audio-device-ids-on-uwp"></a>UWP 上的音訊裝置識別碼
 
-在通用 Windows 平臺（UWP）上，可以使用對應物件的屬性來取得音訊輸入裝置 `Id()` [`DeviceInformation`](/uwp/api/windows.devices.enumeration.deviceinformation) 。
+在通用 Windows 平臺 (UWP) 上，可以使用對應物件的屬性來取得音訊輸入裝置 `Id()` [`DeviceInformation`](/uwp/api/windows.devices.enumeration.deviceinformation) 。
 
 下列程式碼範例說明如何在 C++ 和 C# 中執行此作業：
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 08/17/2019
 ms.author: Zhchia
-ms.openlocfilehash: 28efbb605221b9f613b39c2a72d47c7606afb67e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: f5f7ed8a905aad873ecfc878979ac32af1e21730
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88526760"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91312221"
 ---
 # <a name="tutorial-configure-workgrid--for-automatic-user-provisioning"></a>教學課程：設定 Workgrid 來自動布建使用者
 
@@ -54,15 +54,15 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
 1. 登入 Workgrid。 流覽至 **使用者 > 使用者**布建。
 
-    ![Workgrid](media/Workgrid-provisioning-tutorial/user.png)
+    ![Workgrid U I 和 [使用者] 和 [使用者布建] 選項的螢幕擷取畫面。](media/Workgrid-provisioning-tutorial/user.png)
 
 2. 在 [ **帳戶管理 API**] 下，按一下 [ **建立認證**]。
 
-    ![Workgrid](media/Workgrid-provisioning-tutorial/scim.png)
+    ![[帳戶管理] P I 區段的螢幕擷取畫面，其中已叫用 [建立認證] 選項。](media/Workgrid-provisioning-tutorial/scim.png)
 
 3. 複製 **SCIM 端點** 和 **存取權杖** 值。 這些會在 Azure 入口網站中您 Workgrid 應用程式的 [布建] 索引標籤中輸入至 [ **租使用者 URL** ] 和 [ **秘密權杖** ] 欄位中。
 
-    ![Workgrid](media/Workgrid-provisioning-tutorial/token.png)
+    ![[帳戶管理] P I 區段的螢幕擷取畫面，其中已呼叫 S C I M 端點和存取權杖。](media/Workgrid-provisioning-tutorial/token.png)
 
 
 ## <a name="add-workgrid--from-the-gallery"></a>從資源庫新增 Workgrid
@@ -106,11 +106,11 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
 3. 選取 [佈建] 索引標籤。
 
-    ![佈建索引標籤](common/provisioning.png)
+    ![已呼叫 [布建] 選項的 [管理選項] 螢幕擷取畫面。](common/provisioning.png)
 
 4. 將 [佈建模式] 設定為 [自動]。
 
-    ![佈建索引標籤](common/provisioning-automatic.png)
+    ![[布建模式] 下拉式清單的螢幕擷取畫面，其中已呼叫 [自動] 選項。](common/provisioning-automatic.png)
 
 5. 在 [系統管理員認證] 區段底下，分別輸入**租使用者 URL**和**秘密權杖**中先前抓取的**SCIM 端點**和**存取權杖**值。 按一下 [ **測試連接** ] 以確保 Azure AD 可以連線至 Workgrid。 如果連接失敗，請確定您的 Workgrid 帳戶具有系統管理員許可權，然後再試一次。
 
@@ -120,11 +120,11 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
     ![通知電子郵件](common/provisioning-notification-email.png)
 
-7. 按一下 [檔案] 。
+7. 按一下 [檔案]  。
 
 8. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 使用者至 Workgrid**]。
 
-    ![Workgrid 使用者對應](media/Workgrid-provisioning-tutorial/usermapping.png)
+    ![[對應] 區段的螢幕擷取畫面，其中包含 [同步處理 Azure Active Directory 使用者] Workgrid 選項稱為 [已登出]。](media/Workgrid-provisioning-tutorial/usermapping.png)
 
 9. 在 [ **屬性對應** ] 區段中，檢查從 Azure AD 同步處理到 Workgrid 的使用者屬性。 選取為 [比對 **] 屬性的屬性會** 用來比對 Workgrid 中的使用者帳戶以進行更新作業。 選取 [儲存] 按鈕以認可所有變更。
 
@@ -132,11 +132,11 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
 10. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 群組至 Workgrid**
 
-    ![Workgrid 使用者對應](media/Workgrid-provisioning-tutorial/groupmapping.png)
+    ![[對應] 區段的螢幕擷取畫面，其中包含 [同步處理 Azure Active Directory 群組至 Workgrid] 選項（稱為 out）。](media/Workgrid-provisioning-tutorial/groupmapping.png)
 
 12. 在 [ **屬性對應** ] 區段中，檢查從 Azure AD 同步處理到 Workgrid 的群組屬性。 選取為 [比對 **] 屬性的屬性會** 用來比對 Workgrid 中的使用者帳戶以進行更新作業。 選取 [儲存] 按鈕以認可所有變更。
 
-    ![Workgrid 使用者對應](media/Workgrid-provisioning-tutorial/groupattribute.png)
+    ![[屬性對應] 區段的螢幕擷取畫面，其中顯示三個對應。](media/Workgrid-provisioning-tutorial/groupattribute.png)
 
 13. 若要設定範圍篩選，請參閱[範圍篩選教學課程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中提供的下列指示。
 

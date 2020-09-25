@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 04/30/2020
 ms.author: Zhchia
-ms.openlocfilehash: e8a64b3f42e52363f70d536963594bb6083a0992
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 03fa13e31724110e2b832cf490af325b8b570807
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548067"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91312289"
 ---
 # <a name="tutorial-configure-mediusflow-for-automatic-user-provisioning"></a>教學課程：設定 MediusFlow 來自動佈建使用者
 
@@ -135,11 +135,11 @@ Azure AD 佈建服務可讓您根據對應用程式的指派，或根據使用�
 
 3. 選取 [佈建] 索引標籤。
 
-    ![佈建索引標籤](common/provisioning.png)
+    ![已呼叫 [布建] 選項的 [管理選項] 螢幕擷取畫面。](common/provisioning.png)
 
 4. 將 [佈建模式] 設定為 [自動]。
 
-    ![佈建索引標籤](common/provisioning-automatic.png)
+    ![[布建模式] 下拉式清單的螢幕擷取畫面，其中已呼叫 [自動] 選項。](common/provisioning-automatic.png)
 
 5. 在 [管理員認證] 區段下，輸入稍早在 [租用戶 URL] 中取得的租用戶 URL 值。 輸入稍早在 [祕密權杖] 中所取得的祕密權杖值。 按一下 [測試連線]，以確保 Azure AD 可以連線至 MediusFlow。 如果連線失敗，請確定您的 MediusFlow 帳戶具有管理員權限，然後再試一次。
 

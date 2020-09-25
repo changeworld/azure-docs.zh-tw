@@ -10,14 +10,14 @@ ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
-ms.topic: article
+ms.topic: tutorial
 ms.date: 01/08/2020
-ms.openlocfilehash: 2ea351fb6b88a020a466849181fed0381baa7f04
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
-ms.translationtype: MT
+ms.openlocfilehash: b7e9491f3ddc49d49cf5301bba9d4f51fc9dd008
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087742"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91282335"
 ---
 # <a name="tutorial-migrate-mysql-to-azure-database-for-mysql-online-using-dms"></a>教學課程：使用 DMS 在線上將 MySQL 移轉至適用於 MySQL 的 Azure 資料庫
 
@@ -41,7 +41,7 @@ ms.locfileid: "87087742"
 > [!NOTE]
 > 無偏差通訊
 >
-> Microsoft 支援多樣化和 inclusionary 的環境。 本文包含對_一詞的_參考。 [適用于無偏差通訊的 Microsoft 樣式指南](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md)可辨識此為 exclusionary 單字。 本文中會使用這個字來進行一致性，因為它目前是出現在軟體中的單字。 當軟體更新為移除此單字時，此文章將會更新為對齊。
+> Microsoft 支援多樣化且 inclusionary 的環境。 本文包含單字 _從屬_的參考。 [適用于無偏差通訊的 Microsoft 樣式指南](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md)會將此視為排他性行為單字。 本文中會使用這個字來保持一致性，因為它目前是出現在軟體中的單字。 當軟體更新為移除該字時，將會更新本文以進行調整。
 >
 
 
@@ -51,10 +51,10 @@ ms.locfileid: "87087742"
 
 * 下載並安裝 [MySQL 社群版](https://dev.mysql.com/downloads/mysql/) 5.6 或 5.7。 內部部署 MySQL 版本必須符合「適用於 MySQL 的 Azure 資料庫」的版本。 例如，MySQL 5.6 只能移轉至「適用於 MySQL 的 Azure 資料庫」5.6，而無法升級至 5.7。
 * [在適用於 MySQL 的 Azure 資料庫中建立執行個體](https://docs.microsoft.com/azure/mysql/quickstart-create-mysql-server-database-using-azure-portal)。 如需關於如何使用 Azure 入口網站連接及建立資料庫的詳細資訊，請參閱[使用 MySQL Workbench 來連接及查詢資料](https://docs.microsoft.com/azure/mysql/connect-workbench)一文。  
-* 使用 Azure Resource Manager 部署模型建立 Azure 資料庫移轉服務的 Microsoft Azure 虛擬網路，以使用[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction)或[VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)為您的內部部署來源伺服器提供站對站連線能力。 如需有關建立虛擬網路的詳細資訊，請參閱[虛擬網路檔](https://docs.microsoft.com/azure/virtual-network/)，特別是快速入門文章，其中包含逐步解說的詳細資料。
+* 使用 Azure Resource Manager 部署模型來建立 Azure 資料庫移轉服務的 Microsoft Azure 虛擬網路，這會使用 [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) 或 [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)為您的內部部署來源伺服器提供站對站連線能力。 如需有關建立虛擬網路的詳細資訊，請參閱 [虛擬網路檔](https://docs.microsoft.com/azure/virtual-network/)集，特別是快速入門文章和逐步解說詳細資料。
 
     > [!NOTE]
-    > 在虛擬 networkNet 設定期間，如果您搭配使用 ExpressRoute 與網路對等互連，請將下列服務[端點](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)新增至將布建服務的子網：
+    > 在虛擬 networkNet 設定期間，如果您使用 ExpressRoute 搭配與 Microsoft 對等互連的網路，請將下列服務 [端點](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) 新增至將布建服務的子網：
     >
     > * 目標資料庫端點 (例如，SQL 端點、Cosmos DB 端點等)
     > * 儲存體端點
@@ -62,7 +62,7 @@ ms.locfileid: "87087742"
     >
     > 此為必要設定，因為 Azure 資料庫移轉服務沒有網際網路連線。
 
-* 請確定您的虛擬網路網路安全性群組規則不會對 Azure 資料庫移轉服務封鎖下列輸入通訊埠：443、53、9354、445、12000。 如需虛擬網路 NSG 流量篩選的詳細資訊，請參閱[使用網路安全性群組來篩選網路流量](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm)一文。
+* 確定您的虛擬網路網路安全性群組規則不會對 Azure 資料庫移轉服務封鎖下列輸入通訊埠：443、53、9354、445、12000。 如需虛擬網路 NSG 流量篩選的詳細資訊，請參閱文章 [使用網路安全性群組來篩選網路流量](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm)。
 * 設定[用於 Database Engine 存取的 Windows 防火牆](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access)。
 * 開啟您的 Windows 防火牆以允許 Azure 資料庫移轉服務存取來源 MySQL Server (依預設會使用 TCP 連接埠 3306)。
 * 使用來源資料庫前面的防火牆應用裝置時，您可能必須新增防火牆規則，才能讓 Azure 資料庫移轉服務存取來源資料庫，以進行移轉。
@@ -78,7 +78,7 @@ ms.locfileid: "87087742"
 * 使用下列組態，在來源資料庫的 my.ini (Windows) 或 my.cnf (Unix) 檔案中啟用二進位記錄：
 
   * **server_id** = 1 或更大 (僅與 MySQL 5.6 有關)
-  * **記錄檔-bin** = \<path>（僅適用于 MySQL 5.6）   例如： log-bin = E:\ MySQL_logs \BinLog
+  * **記錄-bin** = \<path> (僅適用于 MySQL 5.6) 例如： log-bin = E:\ MySQL_logs \BinLog
   * **binlog_format** = row
   * **Expire_logs_days** = 5 (建議不要使用零；僅與 MySQL 5.6 有關)
   * **Binlog_row_image** = full (僅與 MySQL 5.6 有關)
@@ -94,13 +94,13 @@ ms.locfileid: "87087742"
 
 若要完成所有資料表物件 (例如資料表結構描述、索引和預存程序)，我們必須從來源資料庫擷取結構描述，並套用至資料庫。 若要擷取結構描述，您可以使用 mysqldump 搭配 `--no-data` 參數。
 
-假設您在內部部署系統中有 MySQL**員工**範例資料庫，使用 mysqldump 執行架構遷移的命令為：
+假設您在內部部署系統中有 MySQL **員工** 範例資料庫，則使用 mysqldump 進行架構遷移的命令為：
 
 ```
 mysqldump -h [servername] -u [username] -p[password] --databases [db name] --no-data > [schema file path]
 ```
 
-例如:
+例如：
 
 ```
 mysqldump -h 10.10.123.123 -u root -p --databases employees --no-data > d:\employees.sql
@@ -112,7 +112,7 @@ mysqldump -h 10.10.123.123 -u root -p --databases employees --no-data > d:\emplo
 mysql.exe -h [servername] -u [username] -p[password] [database]< [schema file path]
  ```
 
-例如:
+例如：
 
 ```
 mysql.exe -h shausample.mysql.database.azure.com -u dms@shausample -p employees < d:\employees.sql
@@ -141,8 +141,8 @@ SET group_concat_max_len = 8192;
 執行查詢結果中的 Drop 外部索引鍵 (這是第二個資料行)，以卸除外部索引鍵。
 
 > [!NOTE]
-> Azure DMS 不支援 CASCADE 引用動作，這有助於在父資料表中刪除或更新資料列時，自動刪除或更新子資料工作表中相符的資料列。 如需詳細資訊，請參閱 MySQL 檔中的「[外鍵條件約束](https://dev.mysql.com/doc/refman/8.0/en/create-table-foreign-keys.html)」一文中所述的「參考動作」一節。
-> Azure DMS 會要求您在初始資料載入期間，將 foreign key 條件約束放在目標資料庫伺服器中，而且您不能使用參考動作。 如果您的工作負載相依于透過此參照動作來更新相關的子資料工作表，建議您改為執行傾印[和還原](https://docs.microsoft.com/azure/mysql/concepts-migrate-dump-restore)。 
+> Azure DMS 不支援串聯參考動作，這有助於在父資料表中的資料列遭到刪除或更新時，自動刪除或更新子資料工作表中相符的資料列。 如需詳細資訊，請參閱 MySQL 檔中的 [外鍵條件約束](https://dev.mysql.com/doc/refman/8.0/en/create-table-foreign-keys.html)的參考動作一節。
+> Azure DMS 要求您在初始資料載入期間，于目標資料庫伺服器中卸載外鍵條件約束，而且無法使用參考動作。 如果您的工作負載相依于透過這個參考動作更新相關的子資料工作表，我們建議您改為執行傾印 [和還原](https://docs.microsoft.com/azure/mysql/concepts-migrate-dump-restore) 。 
 
 
 > [!IMPORTANT]
@@ -182,15 +182,15 @@ SELECT Concat('DROP TRIGGER ', Trigger_Name, ';') FROM  information_schema.TRIGG
   
 3. 在 [建立移轉服務]**** 畫面上，指定服務的名稱、訂用帳戶，以及新的或現有的資源群組。
 
-4. 選取現有的虛擬網路，或建立一個新的。
+4. 選取現有的虛擬網路，或建立一個新的虛擬網路。
 
-    虛擬網路會為 Azure 資料庫移轉服務提供來源 SQL Server 和目標 Azure SQL Database 實例的存取權。
+    虛擬網路可讓 Azure 資料庫移轉服務存取來源 SQL Server 和目標 Azure SQL Database 實例。
 
-    如需有關如何在 Azure 入口網站中建立虛擬網路的詳細資訊，請參閱[使用 Azure 入口網站建立虛擬網路](https://aka.ms/DMSVnet)一文。
+    如需有關如何在 Azure 入口網站中建立虛擬網路的詳細資訊，請參閱 [使用 Azure 入口網站建立虛擬網路](https://aka.ms/DMSVnet)的文章。
 
 5. 選取定價層。
 
-    如需成本和定價層的詳細資訊，請參閱[定價頁面](https://aka.ms/dms-pricing)。
+    如需成本和定價層的詳細資訊，請參閱 [定價頁面](https://aka.ms/dms-pricing)。
 
     ![設定 Azure 資料庫移轉服務執行個體設定](media/tutorial-mysql-to-azure-mysql-online/dms-settings3.png)
 
@@ -237,7 +237,7 @@ SELECT Concat('DROP TRIGGER ', Trigger_Name, ';') FROM  information_schema.TRIGG
 
     ![對應到目標資料庫](media/tutorial-mysql-to-azure-mysql-online/dms-map-target-details.png)
    > [!NOTE] 
-   > 雖然您可以在此步驟中選取多個資料庫，但 Azure 資料庫移轉服務的每個實例最多可支援四個資料庫來進行並行遷移。 此外，訂用帳戶中的每個區域都有兩個 Azure 資料庫移轉服務實例的限制。 例如，如果您有要遷移的40資料庫，您只能同時遷移其中八個，而且只有在您已建立兩個 Azure 資料庫移轉服務實例時才可以。
+   > 雖然您可以在此步驟中選取多個資料庫，但每個 Azure 資料庫移轉服務實例最多可支援四個資料庫來進行並行遷移。 此外，訂用帳戶中的每個區域都有兩個 Azure 資料庫移轉服務實例的限制。 例如，如果您有要遷移的40資料庫，則只有在您建立了兩個 Azure 資料庫移轉服務實例時，才可以同時遷移八個資料庫。
 
 3. 選取 [儲存]****，在 [移轉摘要]**** 畫面的 [活動名稱]**** 文字方塊中，指定移轉活動的名稱，然後檢閱摘要，以確定來源和目標詳細資料都與您先前的指定相符。
 

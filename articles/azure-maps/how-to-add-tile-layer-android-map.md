@@ -1,25 +1,25 @@
 ---
 title: 將圖格圖層新增至 Android 地圖 |Microsoft Azure 對應
-description: 瞭解如何將圖格圖層新增至地圖。 請參閱使用 Azure 地圖服務 Android SDK 將氣象雷達圖新增至地圖的範例。
+description: 瞭解如何將圖格圖層新增至地圖。 請參閱使用 Azure 地圖服務 Android SDK 將天氣雷達圖重迭新增至地圖的範例。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 04/26/2019
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: bae1d06f1b5a96ad99d970613d957ce75a0c1393
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 905085d5b0787697d6094bd1337420ee8ae61d90
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037349"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91311082"
 ---
-# <a name="add-a-tile-layer-to-a-map-using-the-azure-maps-android-sdk"></a>使用 Azure 地圖服務 Android SDK 將磚圖層新增至地圖
+# <a name="add-a-tile-layer-to-a-map-using-the-azure-maps-android-sdk"></a>使用 Azure 地圖服務 Android SDK 將圖格圖層新增至地圖
 
-本文說明如何使用 Azure 地圖服務 Android SDK，在地圖上轉譯磚圖層。 圖格圖層可讓您在 Azure 地圖服務的地圖底圖上覆蓋影像。 您可以在[縮放層級和圖格格線](zoom-levels-and-tile-grid.md)文件中找到有關 Azure 地圖服務圖格顯示系統的詳細資訊。
+本文說明如何使用 Azure 地圖服務 Android SDK，在地圖上呈現圖格圖層。 圖格圖層可讓您在 Azure 地圖服務的地圖底圖上覆蓋影像。 您可以在[縮放層級和圖格格線](zoom-levels-and-tile-grid.md)文件中找到有關 Azure 地圖服務圖格顯示系統的詳細資訊。
 
-磚圖層會從伺服器載入磚。 您可以使用圖格圖層所瞭解的命名慣例，預先轉譯和儲存這些映射，就像伺服器上的任何其他影像一樣。 或者，您可以使用動態服務來呈現這些映射，以近乎即時的方式產生影像。 Azure 地圖服務 TileLayer 類別支援三種不同的磚服務命名慣例：
+圖格圖層會在伺服器的磚中載入。 您可以使用圖格圖層瞭解的命名慣例，在伺服器上預先轉譯和儲存這些映射，就像任何其他影像一樣。 或者，您可以使用動態服務轉譯這些映射，以近乎即時的方式產生影像。 Azure 地圖服務的 >tilelayer 類別支援三種不同的磚服務命名慣例：
 
 * X、Y、縮放標記法 - 以縮放層級為基礎，在圖格格線中的圖格上，x 是資料行位置，而 y 是資料列位置。
 * Quadkey 標記法 - 將 x、y、縮放資訊結合成單一字串值，以作為圖格的唯一識別碼。
@@ -35,20 +35,20 @@ ms.locfileid: "88037349"
 * `{z}` 圖格的縮放層級。 也需要 `{x}` 和 `{y}`。
 * `{quadkey}` -圖格 quadkey 識別碼，以 Bing Maps 圖格系統的命名慣例為基礎。
 * `{bbox-epsg-3857}` - 使用 `{west},{south},{east},{north}` 格式的週框方塊字串，位在 EPSG 3857 空間參考系統中。
-* `{subdomain}`-如果已指定子域值，則為子域值的預留位置。
+* `{subdomain}` -子域值的預留位置（如果已指定子域值）。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-若要完成本文中的程式，您必須安裝[Azure 地圖服務 Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library)以載入對應。
+若要完成本文中的程式，您必須安裝 [Azure 地圖服務 Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) 以載入地圖。
 
 
 ## <a name="add-a-tile-layer-to-the-map"></a>將圖格圖層新增至地圖
 
- 這個範例會示範如何建立指向一組磚的磚圖層。 這些磚使用「x，y，zoom」並排顯示系統。 此圖格圖層的來源是天氣雷達覆疊圖，資料來源：[愛荷華州立大學的愛荷華州環境氣象網 (Iowa Environmental Mesonet of Iowa State University)](https://mesonet.agron.iastate.edu/ogc/)。 
+ 這個範例示範如何建立指向一組圖格的圖格圖層。 這些磚會使用「x，y，zoom」圖格系統。 此圖格圖層的來源是天氣雷達覆疊圖，資料來源：[愛荷華州立大學的愛荷華州環境氣象網 (Iowa Environmental Mesonet of Iowa State University)](https://mesonet.agron.iastate.edu/ogc/)。 
 
 您可以遵循下列步驟，將圖格圖層新增至地圖。
 
-1. 編輯**res > 配置 > activity_main.xml** ，使其看起來如下所示：
+1. 編輯 **res > 配置 > activity_main.xml** 讓它看起來如下所示：
 
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
@@ -71,7 +71,7 @@ ms.locfileid: "88037349"
     </FrameLayout>
     ```
 
-2. 將下列程式碼片段複製到您類別的**onCreate ( # B1**方法中 `MainActivity.java` 。
+2. 將下列程式碼片段複製到您類別的 **>oncreate ( # B1 ** 方法中 `MainActivity.java` 。
 
     ```Java
     mapControl.onReady(map -> {
@@ -84,9 +84,9 @@ ms.locfileid: "88037349"
     });
     ```
     
-    上述程式碼片段會先使用**onReady ( # B1**回呼方法來取得 Azure 地圖服務的地圖控制項實例。 接著，它會建立 `TileLayer` 物件，並將格式化的**XYZ**磚 URL 傳遞到 `tileUrl` 選項中。 圖層的不透明度設定為 `0.8` ，因為所使用之磚服務的磚是256圖元磚，所以這項資訊會傳遞到 `tileSize` 選項中。 圖格圖層接著會傳遞至 maps 圖層管理員。
+    上述程式碼片段會先使用 **onReady ( # B1 ** 回呼方法取得 Azure 地圖服務的地圖控制項實例。 然後，它會建立 `TileLayer` 物件，並將格式化的 **XYZ** 磚 URL 傳遞至 `tileUrl` 選項中。 圖層的不透明度設定為 `0.8` ，因為所使用的磚服務磚是256圖元磚，所以會將此資訊傳遞至 `tileSize` 選項。 圖格圖層接著會傳遞至地圖圖層管理員。
 
-    新增上述程式碼片段之後，您 `MainActivity.java` 的看起來應該如下所示：
+    新增上述程式碼片段之後，您 `MainActivity.java` 應該看起來如下所示：
     
     ```Java
     package com.example.myapplication;

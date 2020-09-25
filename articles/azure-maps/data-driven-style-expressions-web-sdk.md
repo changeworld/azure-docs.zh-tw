@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
-ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: ea88797a6423118cba40d117a37dc9df75b0b7a1
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.custom: codepen, devx-track-js
+ms.openlocfilehash: 539145836849bb66bcf1f12a97ea405fe84c47bd
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90089440"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91311371"
 ---
 # <a name="data-driven-style-expressions-web-sdk"></a> (Web SDK) 的資料驅動樣式表達式
 
@@ -41,7 +41,7 @@ ms.locfileid: "90089440"
 
 Azure 地圖服務 Web SDK 支援許多類型的運算式。 運算式可以單獨使用，也可以與其他運算式搭配使用。
 
-| 運算式的類型 | 描述 |
+| 運算式的類型 | 說明 |
 |---------------------|-------------|
 | [匯總運算式](#aggregate-expression) | 運算式，定義在一組資料上處理的計算，可搭配的 `clusterProperties` 選項使用 `DataSource` 。 |
 | [布林運算式](#boolean-expressions) | 布林運算式提供一組布林運算子運算式來評估布林值比較。 |
@@ -90,14 +90,16 @@ Azure 地圖服務 Web SDK 支援許多類型的運算式。 運算式可以單�
 |------------|-------------|-------------|
 | `['at', number, array]` | 物件 (object) | 從陣列抓取專案。 |
 | `['geometry-type']` | 字串 | 取得特徵的幾何類型： Point、MultiPoint、LineString、MultiLineString、多邊形、MultiPolygon。 |
-| `['get', string]` | 值 | 從目前功能的屬性取得屬性值。 如果遺漏要求的屬性，則傳回 null。 |
-| `['get', string, object]` | 值 | 從提供之物件的屬性取得屬性值。 如果遺漏要求的屬性，則傳回 null。 |
+| `['get', string]` | value | 從目前功能的屬性取得屬性值。 如果遺漏要求的屬性，則傳回 null。 |
+| `['get', string, object]` | value | 從提供之物件的屬性取得屬性值。 如果遺漏要求的屬性，則傳回 null。 |
 | `['has', string]` | boolean | 判斷功能的屬性是否具有指定的屬性。 |
 | `['has', string, object]` | boolean | 判斷物件的屬性是否具有指定的屬性。 |
-| `['id']` | 值 | 取得功能的識別碼（如果有的話）。 |
+| `['id']` | value | 取得功能的識別碼（如果有的話）。 |
 | `['length', string | array]` | number | 取得字串或陣列的長度。 |
 | `['in', boolean | string | number, array]` | boolean | 判斷專案是否存在於陣列中 |
 | `['in', substring, string]` | boolean | 判斷子字串是否存在於字串中 |
+| `['index-of', boolean | string | number, array | string]`<br/><br/>`['index-of', boolean | string | number, array | string, number]` | number | 傳回在陣列中可以找到專案的第一個位置，或在字串中找到子字串，或 `-1` 如果找不到輸入，則為。 接受從哪裡開始搜尋的選擇性索引。 |
+| `['slice', array | string, number]`<br/><br/>`['slice', array | string, number, number]` | `string`\|陣列 | 從指定之起始索引的字串，或從開始索引和結束索引（如果已設定）的字串，傳回陣列或子字串的專案。 傳回值包含開始索引，但不含結束索引。 |
 
 **範例**
 
@@ -151,8 +153,11 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 //Get item [0][1] from a 2D array "properties.array2d[0][1]" = "b"
 ['at', 1, ['at', 0, ['get', 'array2d']]]
 
-//Check to see if a value is in an array property "properties.abcArray.indexOf('a') !== -1" = true
+//Check to see if a value is in an array "properties.abcArray.indexOf('a') !== -1" = true
 ['in', 'a', ['get', 'abcArray']]
+
+//Gets the index of the value 'b' in an array "properties.abcArray.indexOf('b')" = 1
+['index-of', 'b', ['get', 'abcArray']]
 
 //Get the length of an array "properties.abcArray.length" = 3
 ['length', ['get', 'abcArray']]
@@ -162,6 +167,12 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 //Check that "fillColor" exists as a subproperty of "_style".
 ['has', 'fillColor', ['get', '_style']]
+
+//Slice an array starting at index 2 "properties.abcArray.slice(2)" = ['c']
+['slice', ['get', 'abcArray'], 2]
+
+//Slice a string from index 0 to index 4 "properties.entityType.slice(0, 4)" = 'rest'
+['slice', ['get', 'entityType'], 0, 4]
 ```
 
 ## <a name="math-expressions"></a>數學運算式
@@ -225,8 +236,8 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 | 運算式 | 傳回類型 | 描述 |
 |------------|-------------|-------------|
-| `['! ', boolean]` | boolean | 邏輯否定。 `true`如果輸入是，則傳回 `false` ， `false` 如果輸入為，則傳回 `true` 。 |
-| `['!= ', value, value]` | boolean | `true`如果輸入值不相等，則傳回， `false` 否則傳回。 |
+| `['!', boolean]` | boolean | 邏輯否定。 `true`如果輸入是，則傳回 `false` ， `false` 如果輸入為，則傳回 `true` 。 |
+| `['!=', value, value]` | boolean | `true`如果輸入值不相等，則傳回， `false` 否則傳回。 |
 | `['<', value, value]` | boolean | `true`如果第一個輸入嚴格小於第二個輸入，則傳回， `false` 否則傳回。 引數必須是字串或兩個數字都是。 |
 | `['<=', value, value]` | boolean | `true`如果第一個輸入小於或等於第二個輸入，則傳回， `false` 否則傳回。 引數必須是字串或兩個數字都是。 |
 | `['==', value, value]` | boolean | `true`如果輸入值相等，則傳回， `false` 否則傳回。 引數必須是字串或兩個數字都是。 |

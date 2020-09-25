@@ -9,16 +9,16 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: egeaney
-ms.openlocfilehash: 86b15b0059c2e3466ef65daeb53780798b3882d0
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: c959231826125349ecd6a62afe529248f7ac2eec
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89079246"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326791"
 ---
 # <a name="form-recognizer-encryption-of-data-at-rest"></a>靜止資料的表單辨識器加密
 
-Azure 表單辨識器會在您將資料保存到雲端時，自動將資料加密。 表單辨識器加密可保護您的資料，並協助您符合組織的安全性和合規性承諾。
+當您將資料保存到雲端時，Azure 表單辨識器會自動將您的資料加密。 表單辨識器加密可保護您的資料，以協助您符合組織的安全性和合規性承諾。
 
 [!INCLUDE [cognitive-services-about-encryption](../includes/cognitive-services-about-encryption.md)]
 

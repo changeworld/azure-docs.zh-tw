@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/04/2020
 ms.author: deanwe
 ms.custom: references_regions
-ms.openlocfilehash: 8e48a5c896c4927b82f7d77f31b7f1c47fd156c5
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 089cf07854f1f29eda7028db614edb1028e5d66a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936837"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91311558"
 ---
 # <a name="azure-automanage-for-virtual-machines"></a>適用于虛擬機器的 Azure Automanage
 
@@ -37,18 +37,17 @@ ms.locfileid: "90936837"
 最後，經驗很簡單。
 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 在您嘗試啟用虛擬機器上的 Azure Automanage 之前，必須考慮幾個必要條件。
 
 - 僅限 Windows Server Vm
 - Vm 必須正在執行
-- 僅限非擴展集 Vm
 - Vm 必須位於支援的區域
 - 使用者必須有正確的許可權
 - Vm 不得連結至不同訂用帳戶中的 log analytics 工作區
 
-若要啟用 Automanage： **擁有** 者角色或 **參與者** 以及 **使用者存取系統管理員** 角色，則需要下列 RBAC 許可權。
+您必須具有 **參與者** 角色，才能使用現有的 Automanage 帳戶啟用 Automanage。 如果您要使用新的 Automanage 帳戶啟用 Automanage，您需要下列許可權： **擁有** 者角色或 **參與者** ，以及 **使用者存取系統管理員** 角色。
 
 也請務必注意，Automanage 僅支援位於下欄區域的 Windows Vm：西歐、美國東部、美國西部2、加拿大中部美國中西部。
 
@@ -105,7 +104,7 @@ Automanage 帳戶是安全性內容或執行自動化作業所用的身分識別
 在 Azure 入口網站體驗中，當您在 Vm 上啟用 Automanage 時，[ **啟用 AZURE VM 最佳作法** ] 分頁上會有一個 Advanced 下拉式清單，可讓您指派或手動建立 Automanage 帳戶。
 
 > [!NOTE]
-> 若要啟用 Automanage： **擁有** 者角色或 **參與者** 以及 **使用者存取系統管理員** 角色，則需要下列 RBAC 許可權。
+> 您必須具有 **參與者** 角色，才能使用現有的 Automanage 帳戶啟用 Automanage。 如果您要使用新的 Automanage 帳戶啟用 Automanage，您需要下列許可權： **擁有** 者角色或 **參與者** ，以及 **使用者存取系統管理員** 角色。
 
 
 ## <a name="status-of-vms"></a>Vm 的狀態
@@ -130,9 +129,9 @@ Automanage 帳戶是安全性內容或執行自動化作業所用的身分識別
 
 若要在 Azure 入口網站中執行這項操作，請移至 [ **Automanage – Azure 虛擬機器最佳作法** ] 頁面，其中會列出所有自動管理的 vm。 選取您要從 Automanage 停用的虛擬機器旁的核取方塊，然後按一下 [ **停用 automanagment** ] 按鈕。
 
-:::image type="content" source="media\automanage-virtual-machines\disable-step-1.png" alt-text="正在停用虛擬機器上的 Automanage。":::
+:::image type="content" source="media\automanage-virtual-machines\disable-step-1.png" alt-text="在虛擬機器上停用 Automanage。":::
 
-請仔細閱讀產生的快顯視窗中的訊息，再同意 **停**用。
+先仔細閱讀所產生快顯視窗中的訊息，然後同意 [停用]。
 
 ```
 Disabling automanagement in a VM results in the following behavior:
@@ -145,7 +144,7 @@ Disabling automanagement in a VM results in the following behavior:
 首先，最重要的是，我們不會將虛擬機器從我們上線它並設定的任何服務中關閉。 因此，這些服務所產生的任何費用都會繼續維持計費。 如有必要，您將需要關閉面板。 任何 Automanage 行為都會立即停止。 例如，我們將不再監視 VM 的漂移。
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 在本文中，您已瞭解虛擬機器的 Automanage 提供一種方法，可讓您不需要瞭解、上架及設定最佳作法的 Azure 服務。 此外，如果您從設定設定檔所設定的虛擬機器上線至 Automanage 的機器，我們會自動使其符合規範。
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 8d71cccfe0ebd049607d5b51e7211739c3a7209b
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.openlocfilehash: 89013e3b6ec9a0a6112e8b7fdcde4870be331d79
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89468703"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91282301"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>查詢 Azure 數位 Twins 對應項圖表
 
@@ -25,6 +25,15 @@ ms.locfileid: "89468703"
 ## <a name="query-syntax"></a>查詢語法
 
 本章節包含的範例查詢會說明查詢語言結構，並對 [數位 twins](concepts-twins-graph.md)執行可能的查詢作業。
+
+### <a name="show-all-existing-digital-twins"></a>顯示所有現有的數位 twins
+
+以下是會傳回實例中所有數位 twins 清單的基本查詢：
+
+```sql
+SELECT *
+FROM DIGITALTWINS
+```
 
 ### <a name="select-top-items"></a>選取最上層專案
 
@@ -169,7 +178,7 @@ AND Room.$dtId IN ['room1', 'room2']
 
 您可以使用組合運算子 **結合** 上述任何類型的查詢，以在單一查詢中包含更多詳細資料。 以下是一些額外的複合查詢範例，可同時查詢多個類型的對應項描述項。
 
-| 描述 | 查詢 |
+| 說明 | 查詢 |
 | --- | --- |
 | 在 *123 空間* 的裝置上，傳回服務角色為操作員的 MxChip 裝置 | `SELECT device`<br>`FROM DigitalTwins space`<br>`JOIN device RELATED space.has`<br>`WHERE space.$dtid = 'Room 123'`<br>`AND device.$metadata.model = 'dtmi:contosocom:DigitalTwins:MxChip:3'`<br>`AND has.role = 'Operator'` |
 | 取得具有名為*Contains*之關聯性的 twins，以及識別碼為*id1*的另一個對應項 | `SELECT Room`<br>`FROM DIGITIALTWINS Room`<br>`JOIN Thermostat ON Room.Contains`<br>`WHERE Thermostat.$dtId = 'id1'` |
@@ -179,11 +188,11 @@ AND Room.$dtId IN ['room1', 'room2']
 
 本節包含撰寫 Azure 數位 Twins 查詢時可用之運算子和函式的參考。
 
-### <a name="operators"></a>操作員
+### <a name="operators"></a>運算子
 
 支援下列運算子：
 
-| 系列 | 操作員 |
+| 系列 | 運算子 |
 | --- | --- |
 | 邏輯 |AND、OR、NOT |
 | 比較 |=、！ =、<、>、<=、>= |
@@ -193,7 +202,7 @@ AND Room.$dtId IN ['room1', 'room2']
 
 支援下列類型檢查和轉換函數：
 
-| 函式 | 描述 |
+| 函式 | 說明 |
 | -------- | ----------- |
 | IS_DEFINED | 傳回布林值，表示屬性是否已經指派值。 只有當值為基本型別時，才支援此功能。 基本類型包括字串、布林值、數值或 `null` 。 不支援 DateTime、物件類型和陣列。 |
 | IS_OF_MODEL | 傳回布林值，指出指定的對應項是否符合指定的模型類型 |
@@ -206,10 +215,10 @@ AND Room.$dtId IN ['room1', 'room2']
 
 以下是支援的字串函數：
 
-| 函式 | 描述 |
+| 函式 | 說明 |
 | -------- | ----------- |
-| STARTS_WITH(x, y) | 傳回布林值，表示第一個字串運算式是否以第二個字串運算式開頭。 |
-| ENDS_WITH(x, y) | 傳回布林值，表示第一個字串運算式是否以第二個字串運算式結尾。 |
+| STARTSWITH (x，y)  | 傳回布林值，表示第一個字串運算式是否以第二個字串運算式開頭。 |
+| ENDSWITH (x，y)  | 傳回布林值，表示第一個字串運算式是否以第二個字串運算式結尾。 |
 
 ## <a name="run-queries-with-an-api-call"></a>使用 API 呼叫來執行查詢
 
@@ -287,6 +296,6 @@ catch (RequestFailedException e)
         ```
 * 屬性名稱和值會區分大小寫，因此請小心使用模型中所定義的確切名稱。 如果屬性名稱的拼寫錯誤或大小寫不正確，則結果集是空的，而且不會傳回任何錯誤。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 深入瞭解 [Azure 數位 Twins api 和 sdk](how-to-use-apis-sdks.md)，包括用來執行本文中查詢的查詢 API。

@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/18/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 9e5b92918d93109183740be555bb805877862407
-ms.sourcegitcommit: 0fd1f3fe7817ad44d878d580ec167e1508051795
+ms.openlocfilehash: f0cb3d5f9184bacef42a0258add6dd2461a71dd7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/19/2020
-ms.locfileid: "90817865"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326655"
 ---
 # <a name="spring-data-azure-cosmos-db-v3-for-core-sql-api-release-notes-and-resources"></a>適用于 Core (SQL) API 的春季資料 Azure Cosmos DB v3：版本資訊和資源
 > [!div class="op_single_selector"]
@@ -96,17 +96,6 @@ cosmos.queryMetricsEnabled=true
 
 ### <a name="document-operations"></a>文件作業
 
-建立：
-:::code language="java" source="~/spring-data-azure-cosmos-db-sql-tutorial/azure-spring-data-cosmos-java-getting-started/src/main/java/com/azure/spring/data/cosmostutorial/SampleApplication.java" ID="Create":::
-
-刪除：
-:::code language="java" source="~/spring-data-azure-cosmos-db-sql-tutorial/azure-spring-data-cosmos-java-getting-started/src/main/java/com/azure/spring/data/cosmostutorial/SampleApplication.java" ID="Delete":::
-
-# <a name="query"></a>[查詢](#tab/queries)
-
-查詢：
-:::code language="java" source="~/spring-data-azure-cosmos-db-sql-tutorial/azure-spring-data-cosmos-java-getting-started/src/main/java/com/azure/spring/data/cosmostutorial/SampleApplication.java" ID="Query":::
-
 ---
 
 ## <a name="resources"></a>資源
@@ -115,58 +104,7 @@ cosmos.queryMetricsEnabled=true
 
 * **教學**課程： [GitHub 上的春季資料 Azure Cosmos DB 教學](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started)課程 
 
-## <a name="release-history"></a>版本歷程記錄
-
-### <a name="300-beta2-september-17-2020"></a>3.0.0-Beta. 2 (2020 年9月17日) 
-
-#### <a name="new-features"></a>新功能
-
-* 已將成品識別碼更新為 `azure-spring-data-cosmos` 。
-* 已將 azure cosmos 相依性更新為 `4.5.0` 。
-* `Query Annotation` 原生查詢的支援。
-* JAVA 11 的支援。
-* 藉由在批註中公開欄位來新增對嵌套分割區索引鍵的支援 `partitionKeyPath` `@Container` 。
-* 已新增可 `limit` `top` `first` 在定義存放庫 api 時，允許和使用之查詢類型的支援。
-
-#### <a name="key-bug-fixes"></a>重要 bug 修正
-
-* 修正搭配注釋使用時的嵌套分割區索引鍵錯誤 `@GeneratedValue` 。
-
-### <a name="300-beta1-august-17-2020"></a>3.0.0-Beta. 1 (2020 年8月17日) 
-
-#### <a name="new-features"></a>新功能
-
-* 將群組識別碼更新為 `com.azure` 。
-* 將成品識別碼更新為 `azure-spring-data-2-3-cosmos` 。
-* 將 azure cosmos SDK 相依性更新為 `4.3.2-beta.2` 。
-* 新增對審核實體的支援：自動管理 `createdBy` 、 `createdDate` 、 `lastModifiedBy` 和 `lastModifiedDate` 批註欄位。
-* 針對 `@GeneratedValue` 類型的識別碼欄位，加入自動識別碼產生的注釋支援 `String` 。
-* 針對具有多個資料庫的單一 Azure Cosmos DB 帳戶，以及多個具有多個資料庫的 Azure Cosmos DB 帳戶，新增多資料庫設定支援。
-* `@Version`在任何字串欄位上新增批註的支援。
-* 將同步 API 傳回類型更新為 `Iterable` 類型，而不是 `List` 。
-* `CosmosClientBuilder`從 AZURE COSMOS DB SDK 公開為類別的彈簧 bean `@Configuration` 。
-* `CosmosConfig`包含查詢計量和回應診斷處理器實作為的更新。
-* 新增針對 `Optional` 單一結果查詢傳回資料類型的支援。
-
-#### <a name="renames"></a>重 命名
-
-* `CosmosDbFactory` 至 `CosmosFactory` 。
-* `CosmosDBConfig` 至 `CosmosConfig` 。
-* `CosmosDBAccessException` 至 `CosmosAccessException` 。
-* `Document` 批註的批註 `Container` 。
-* `DocumentIndexingPolicy` 批註的批註 `CosmosIndexingPolicy` 。
-* `DocumentQuery` 至 `CosmosQuery` 。
-* 的應用程式屬性旗標 `populateQueryMetrics` `queryMetricsEnabled` 。
-
-#### <a name="key-bug-fixes"></a>重要 bug 修正
-
-* 將診斷記錄工作排程到 `Parallel` 執行緒，以避免封鎖 Netty i/o 執行緒。
-* 修正刪除操作的開放式鎖定。
-* 修正對子句之轉義查詢的問題 `IN` 。
-* 藉由允許 `long` 的資料類型來修正問題 `@Id` 。
-* 藉由允許 `boolean` 、 `long` 、 `int` 和 `double` 做為批註的資料類型 `@PartitionKey` 來修正問題。
-* `IgnoreCase` `AllIgnoreCase` 忽略 case 查詢的修正和關鍵字。
-* 當自動建立容器時，移除預設的要求單位值4000。
+[!INCLUDE[Release notes](~/azure-sdk-for-java-cosmos-db/sdk/cosmos/azure-spring-data-cosmos/CHANGELOG.md)]
 
 ## <a name="faq"></a>常見問題集
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: b88d017110f4d7b9859f2d801c5405ecee1589c5
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 3f9064c25581523167918b84a2d0027747e32bd9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89297462"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91282369"
 ---
 # <a name="manage-digital-twins"></a>管理 Digital Twins
 
@@ -166,14 +166,14 @@ object result = await client.GetDigitalTwin(id);
 數位對應項的已定義屬性會傳回為數字對應項上的最上層屬性。 不是 DTDL 定義一部分的中繼資料或系統資訊會以前置詞傳回 `$` 。 中繼資料屬性包括：
 * 此 Azure 數位 Twins 實例中數位對應項的識別碼，如下所示 `$dtId` 。
 * `$etag`，由 web 伺服器指派的標準 HTTP 欄位
-* 區段中的其他屬性 `$metadata` 。 它們包括：
+* 區段中的其他屬性 `$metadata` 。 其中包括：
     - 數位對應項之模型的 DTMI。
     - 每個可寫入屬性的同步處理狀態。 這最適用于裝置，在這種情況下，服務和裝置有可能具有發散狀態 (例如，當裝置離線時) 。 此屬性目前僅適用于連線到 IoT 中樞的實體裝置。 有了中繼資料區段中的資料之後，就可以瞭解屬性的完整狀態，以及上次修改的時間戳記。 如需同步處理狀態的詳細資訊，請參閱關於同步處理裝置狀態的 [IoT 中樞教學](../iot-hub/tutorial-device-twins.md) 課程。
     - 服務特定的中繼資料，例如來自 IoT 中樞或 Azure 數位 Twins。 
 
 您可以使用您選擇的 JSON 剖析程式庫（例如），為對應項剖析傳回的 JSON `System.Text.Json` 。
 
-您也可以使用 SDK 隨附的序列化 helper 類別 `BasicDigitalTwin` ，這會以預先剖析的表單傳回核心對應項中繼資料和屬性。 請看以下範例：
+您也可以使用 SDK 隨附的序列化 helper 類別 `BasicDigitalTwin` ，這會以預先剖析的表單傳回核心對應項中繼資料和屬性。 範例如下：
 
 ```csharp
 Response<string> res = client.GetDigitalTwin(twin_id);
@@ -384,7 +384,18 @@ async Task FindAndDeleteIncomingRelationshipsAsync(string dtId)
 
 [!INCLUDE [digital-twins-known-issue-cloud-shell](../../includes/digital-twins-known-issue-cloud-shell.md)]
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="view-all-digital-twins"></a>查看所有數位 twins
+
+若要在您的實例中查看所有數位 twins，請使用 [查詢](how-to-query-graph.md)。 您可以使用 [查詢 api](how-to-use-apis-sdks.md) 或 [CLI 命令](how-to-use-cli.md)來執行查詢。
+
+以下是基本查詢的主體，會傳回實例中所有數位 twins 的清單：
+
+```sql
+SELECT *
+FROM DIGITALTWINS
+``` 
+
+## <a name="next-steps"></a>後續步驟
 
 瞭解如何建立和管理數位 twins 之間的關聯性：
 * [*How to：使用關聯性管理對應項圖表*](how-to-manage-graph.md)

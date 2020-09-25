@@ -4,19 +4,19 @@ description: Azure 安全性基準測試 V2 事件回應
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/13/2020
+ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 2dbdb1af139472d5c7f4537399d434e045bb05cb
-ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
+ms.openlocfilehash: 172607a7f8f036bbfb68e8d15e77b2a3e3fb5377
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90059167"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326383"
 ---
-# <a name="security-control-incident-response"></a>安全性控制：事件回應
+# <a name="security-control-v2-incident-response"></a>安全性控制 V2：事件回應
 
-事件回應涵蓋事件回應生命週期的控制-準備、偵測和分析、內含專案，以及事件後活動。 這包括使用 Azure 服務（例如 Azure 資訊安全中心和 Sentinel）將事件回應程式自動化。
+事件回應涵蓋事件回應生命週期的控制：準備、偵測和分析、內含專案，以及事件後活動。 這包括使用 Azure 服務（例如 Azure 資訊安全中心和 Sentinel）將事件回應程式自動化。
 
 ## <a name="ir-1-preparation--update-incident-response-process-for-azure"></a>IR-1：準備–更新 Azure 的事件回應程式
 
@@ -28,13 +28,13 @@ ms.locfileid: "90059167"
 
 - [跨企業環境執行安全性](https://aka.ms/AzSec4)
 
-- [事件回應參考指南](https://aka.ms/IRRG)
+- [事件回應參考指南](/microsoft-365/downloads/IR-Reference-Guide.pdf)
 
 **責任**：客戶
 
-**客戶安全性專案關係人**：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
-- [安全性作業 (SecOps) ](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [安全性作業](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 - [事件準備](/azure/cloud-adoption-framework/organize/cloud-security-incident-preparation)
 
@@ -52,9 +52,9 @@ ms.locfileid: "90059167"
 
 **責任**：客戶
 
-**客戶安全性專案關係人**：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
-- [安全性作業 (SecOps) ](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [安全性作業](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 - [事件準備](/azure/cloud-adoption-framework/organize/cloud-security-incident-preparation)
 
@@ -78,9 +78,9 @@ Azure 資訊安全中心在許多 Azure 資產之間提供高品質的警示。 
 
 **責任**：客戶
 
-**客戶安全性專案關係人**：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
-- [安全性作業 (SecOps) ](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [安全性作業](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 - [事件準備](/azure/cloud-adoption-framework/organize/cloud-security-incident-preparation)
 
@@ -92,17 +92,19 @@ Azure 資訊安全中心在許多 Azure 資產之間提供高品質的警示。 
 |--|--|--|--|
 | IR-4 | 19 | IR-4 |
 
-請確定分析師可以在調查潛在事件時查詢並使用各種不同的資料來源，以建立發生狀況的完整觀點。 請確定已針對其他分析師和未來的歷程記錄參考，捕捉見解和學習。 
+請確定分析師可以在調查潛在事件時查詢並使用各種不同的資料來源，以建立發生狀況的完整觀點。 您應收集不同的記錄檔，以追蹤潛在攻擊者在整個終止鏈上的活動，以避免點。  您也應該確定已針對其他分析師和未來的歷程記錄參考來捕捉見解和學習。  
 
 用於調查的資料來源包括已從範圍內服務和執行中的系統收集的集中式記錄來源，但也可以包括：
 
-網路資料–使用網路安全性群組的流量記錄、Azure 網路監看員和 Azure 監視器來捕捉網路流量記錄和其他分析資訊。 執行中系統的快照集： 
+- 網路資料–使用網路安全性群組的流量記錄、Azure 網路監看員和 Azure 監視器來捕捉網路流量記錄和其他分析資訊。 
 
--   使用 Azure 虛擬機器的快照集功能來建立執行中系統磁片的快照集。 
+- 執行中系統的快照集： 
 
--   使用作業系統的原生記憶體傾印功能來建立執行中系統記憶體的快照。
+    - 使用 Azure 虛擬機器的快照集功能來建立執行中系統磁片的快照集。 
 
--   您可以使用 Azure 服務的快照集功能，或您軟體本身的功能來建立執行中系統的快照集。
+    - 使用作業系統的原生記憶體傾印功能來建立執行中系統記憶體的快照。
+
+    - 您可以使用 Azure 服務的快照集功能，或您軟體本身的功能來建立執行中系統的快照集。
 
 Azure Sentinel 在幾乎任何記錄來源和案例管理入口網站中提供廣泛的資料分析，以管理事件的完整生命週期。 調查期間的智慧資訊可以與事件產生關聯，以供追蹤和報告之用。 
 
@@ -116,9 +118,9 @@ Azure Sentinel 在幾乎任何記錄來源和案例管理入口網站中提供�
 
 **責任**：客戶
 
-**客戶安全性專案關係人**：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
-- [安全性作業 (SecOps) ](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [安全性作業](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 - [事件準備](/azure/cloud-adoption-framework/organize/cloud-security-incident-preparation)
 
@@ -134,7 +136,7 @@ Azure Sentinel 在幾乎任何記錄來源和案例管理入口網站中提供�
 
 Azure 資訊安全中心會將嚴重性指派給每個警示，以協助您排列應先調查哪些警示的優先順序。 嚴重性取決於資訊安全中心在尋找或用來發出警示的分析中的可信度，以及導致警示的活動背後有惡意意圖的信賴等級。
 
-此外，使用標記標記訂用帳戶，並建立命名系統來識別和分類 Azure 資源，尤其是處理敏感性資料。  您需負責根據發生事件的 Azure 資源和環境的重要性，設定警示的補救優先順序。
+此外，請使用標記來標示資源，並建立命名系統來識別和分類 Azure 資源，尤其是處理敏感性資料的資源。  您需負責根據發生事件的 Azure 資源和環境的重要性，設定警示的補救優先順序。
 
 - [Azure 資訊安全中心的安全性警示](../../security-center/security-center-alerts-overview.md)
 
@@ -142,9 +144,9 @@ Azure 資訊安全中心會將嚴重性指派給每個警示，以協助您排�
 
 **責任**：客戶
 
-**客戶安全性專案關係人**：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
-- [安全性作業 (SecOps) ](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [安全性作業](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 - [事件準備](/azure/cloud-adoption-framework/organize/cloud-security-incident-preparation)
 
@@ -166,9 +168,9 @@ Azure 資訊安全中心會將嚴重性指派給每個警示，以協助您排�
 
 **責任**：客戶
 
-**客戶安全性專案關係人**：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
-- [安全性作業 (SecOps) ](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [安全性作業](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 - [事件準備](/azure/cloud-adoption-framework/organize/cloud-security-incident-preparation)
 

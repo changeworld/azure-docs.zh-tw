@@ -11,14 +11,17 @@ manager: philmea
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: c664d4859a306387b4eafa2f19ab5877ccf6eb1b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6a4b65195488f101d36aaf73956f1422bfccbbf9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81686949"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91282131"
 ---
 # <a name="run-opc-publisher"></a>執行 OPC 發行者
+
+> [!IMPORTANT]
+> 當我們更新這篇文章時，請參閱 [Azure 產業 IoT](https://azure.github.io/Industrial-IoT/) 的最新內容。
 
 此文章會描述如何執行 OPC 發行者並對其進行偵錯。 它也會描述效能和記憶體上的考量。
 
@@ -372,7 +375,7 @@ OPC 發行者可以直接作為 [Azure IoT Edge](https://docs.microsoft.com/azur
 若要將 OPC 發行者作為模組加入您的 IoT Edge 部署，請移至您在 Azure 入口網站中的 IoT 中樞設定，並完成下列步驟：
 
 1. 移至 [IoT Edge]**** 並建立或選取您的 IoT Edge 裝置。
-1. 選取 [**設定模組**]。
+1. 選取 [ **設定模組**]。
 1. 選取 [部署模組]**** 底下的 [新增]****，然後選取 [IoT Edge 模組]****。
 1. 在 [名稱]**** 欄位中，輸入 **publisher**。
 1. 在 [映像 URI]**** 欄位中，輸入 `mcr.microsoft.com/iotedge/opc-publisher:<tag>`

@@ -11,13 +11,13 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: qiohu
 zone_pivot_groups: programming-languages-set-two
-ms.custom: devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: 3d761bbad4cb2cd2cdd1c34459f25c811bb41c7e
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.custom: devx-track-js, devx-track-csharp
+ms.openlocfilehash: 820e0b78b986a8836e173513e1508641ac450333
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88918684"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91282924"
 ---
 # <a name="specify-source-language-for-speech-to-text"></a>指定語音轉換文字來源語言
 
@@ -199,7 +199,7 @@ SPXSpeechRecognizer* speechRecognizer = [[SPXSpeechRecognizer alloc] initWithSpe
 
 ::: zone-end
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 * 如需語音轉換文字支援的語言和地區設定清單，請參閱 [語言支援](language-support.md)。
 

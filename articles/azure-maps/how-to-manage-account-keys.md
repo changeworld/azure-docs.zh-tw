@@ -1,19 +1,19 @@
 ---
 title: 在 Azure 入口網站中管理您的 Azure 地圖服務帳戶 |Microsoft Azure 對應
-description: 瞭解如何使用 Azure 入口網站來管理 Azure 地圖服務帳戶。 瞭解如何建立新帳戶，以及如何刪除現有的帳戶。
+description: 瞭解如何使用 Azure 入口網站來管理 Azure 地圖服務帳戶。 瞭解如何建立新的帳戶，以及如何刪除現有的帳戶。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 01/27/2020
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 5717e48683234e55638393d232d931bc50cb59b1
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: c618e8193bed1f35cbbe884d5725c4ecfb25dd75
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037315"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91311116"
 ---
 # <a name="manage-your-azure-maps-account"></a>管理 Azure 地圖服務帳戶
 
@@ -31,7 +31,7 @@ ms.locfileid: "88037315"
 
 4. 輸入新帳戶的資訊。
 
-[![在 Azure 入口網站中輸入 Azure 地圖服務帳戶資訊](./media/how-to-manage-account-keys/new-account-portal.png)](./media/how-to-manage-account-keys/new-account-portal.png#lightbox)
+[![在 Azure 入口網站中輸入 Azure 地圖服務的帳戶資訊](./media/how-to-manage-account-keys/new-account-portal.png)](./media/how-to-manage-account-keys/new-account-portal.png#lightbox)
 
 ## <a name="delete-an-account"></a>刪除帳戶
 
@@ -43,7 +43,7 @@ ms.locfileid: "88037315"
 
 ## <a name="next-steps"></a>後續步驟
 
-使用 Azure 地圖服務設定驗證，並瞭解如何取得 Azure 地圖服務的訂用帳戶金鑰：
+設定 Azure 地圖服務的驗證，並瞭解如何取得 Azure 地圖服務的訂用帳戶金鑰：
 > [!div class="nextstepaction"]
 > [管理驗證](how-to-manage-authentication.md)
 

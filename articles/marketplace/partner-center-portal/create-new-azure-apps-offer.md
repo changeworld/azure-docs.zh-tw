@@ -7,12 +7,12 @@ ms.topic: how-to
 author: AarathiN
 ms.author: aarathin
 ms.date: 07/14/2020
-ms.openlocfilehash: e7e7845b458d6d1a37b65fb79e0e7e9c13b0d07d
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 512f901c33ebce4fef06629fe78976a071820c87
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89646943"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91251418"
 ---
 # <a name="create-an-azure-application-offer"></a>建立 Azure 應用程式供應項目
 
@@ -188,7 +188,7 @@ Azure 應用程式方法有兩種：解決方案範本和受控應用程式。
 5. 隱私權原則位址 (連結) 
 6. 供應項目名稱
 7. 摘要
-8. 描述
+8. 說明
 9. 螢幕擷取畫面/影片
 
 <br>以下是供應專案資訊出現在 Azure 入口網站中的範例：
@@ -197,9 +197,9 @@ Azure 應用程式方法有兩種：解決方案範本和受控應用程式。
 
 #### <a name="call-out-descriptions"></a>撥出描述
 
-1. Title
-2. 描述
-3. 實用的連結
+1. 標題
+2. 說明
+3. 實用連結
 4. 螢幕擷取畫面
 
 #### <a name="name"></a>名稱
@@ -559,7 +559,7 @@ Azure Government 服務會處理受限於特定政府法規和需求的資料。
 * **Azure AD 租使用者識別碼** (必要) –請輸入 AZURE ACTIVE DIRECTORY (AD) [租使用者識別碼](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)) 。 若要尋找此識別碼，請登入 [Azure 入口網站](https://portal.azure.com/)，選取左側功能表中的 [Active Directory] 索引標籤，選取 [內容]，然後尋找列出的 [目錄識別碼] 號碼 (例如 50c464d3-4930-494c-963c-1e951d15360e)。 您也可以在 [https://www.whatismytenantid.com](https://www.whatismytenantid.com) 中，使用網域名稱 URL 來查閱組織的租用戶識別碼。
 * **Azure AD 租用戶名稱** (Dynamic 365 為必要) – 輸入您的 Azure Active Directory (AD) 名稱。 若要尋找此名稱，請登入 [Azure 入口網站](https://portal.azure.com/)，位於右上角的租用戶名稱會列在您的帳戶名稱底下。
 * **Azure AD 應用程式識別碼** (必要) –請輸入 AZURE ACTIVE DIRECTORY (AD) [應用程式識別碼](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)) 。 若要尋找此識別碼，請登入 [Azure 入口網站](https://portal.azure.com/)，選取左側導覽功能表中的 [Active Directory] 索引標籤，選取 [應用程式註冊]，然後尋找列出的 [應用程式識別碼] 號碼 (例如 50c464d3-4930-494c-963c-1e951d15360e)。
-* **Azure Active Directory 應用程式用戶端密碼** (必要) –請輸入 Azure AD 應用程式 [用戶端密碼](../../active-directory/develop/howto-create-service-principal-portal.md#create-a-new-application-secret)) 。 若要尋找此值，請登入 [Azure 入口網站](https://portal.azure.com/)。 在左側導覽功能表中，選取 [Azure Active Directory] 索引標籤，選取 [應用程式註冊]，然後選取您的試用產品應用程式。 接下來，選取 [憑證及祕密]、選取 [新增用戶端密碼]、輸入描述、選取 [到期] 底下的 [永不]，然後選擇 [新增]。 離開此頁面之前，請務必複製此值。
+* **Azure Active Directory 應用程式用戶端密碼** (必要) –請輸入 Azure AD 應用程式 [用戶端密碼](../../active-directory/develop/howto-create-service-principal-portal.md#option-2-create-a-new-application-secret)) 。 若要尋找此值，請登入 [Azure 入口網站](https://portal.azure.com/)。 在左側導覽功能表中，選取 [Azure Active Directory] 索引標籤，選取 [應用程式註冊]，然後選取您的試用產品應用程式。 接下來，選取 [憑證及祕密]、選取 [新增用戶端密碼]、輸入描述、選取 [到期] 底下的 [永不]，然後選擇 [新增]。 離開此頁面之前，請務必複製此值。
 
 選取 [儲存草稿] 後再繼續。
 
