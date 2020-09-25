@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 07/24/2020
 ms.author: ramakoni
 ms.custom: security-recommendations,fasttrack-edit
-ms.openlocfilehash: 467f7b3525883e16e57a06ff97cf4fd386279d22
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: b38ba59b3efc7e5869eecbc84879a6c0a4ce7369
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88958230"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360203"
 ---
 # <a name="troubleshooting-intermittent-outbound-connection-errors-in-azure-app-service"></a>針對 Azure App Service 中間歇性的輸出連線錯誤進行疑難排解
 
@@ -32,7 +32,7 @@ Azure App 服務上裝載的應用程式和函式可能會出現下列一或多�
 這些徵兆的主要原因是應用程式實例無法開啟與外部端點的新連接，因為它已達到下列其中一項限制：
 
 * TCP 連接：可以進行的輸出連接數目有限制。 這會與使用的背景工作角色大小相關聯。
-* SNAT 埠：如同 Azure 中的 [輸出](../load-balancer/load-balancer-outbound-connections.md)連線所討論，azure 會使用來源網路位址轉譯 (SNAT) 和 Load Balancer (不會向客戶公開，) 在公用 IP 位址空間中與 Azure 外部的端點進行通訊。 Azure App 服務上的每個實例一開始都會獲得預先配置的 **128** SNAT 埠數目。 該限制會影響對相同主機和埠組合的開啟連接。 如果您的應用程式建立混合位址和埠組合的連線，則不會使用 SNAT 埠。 當您重複呼叫相同的位址和埠組合時，就會使用 SNAT 埠。 連接埠一經釋放，即可視需要重複使用。 Azure 網路負載平衡器只會在等候4分鐘後，從關閉的連線回收 SNAT 埠。
+* SNAT 埠：如同 [azure 中的輸出](../load-balancer/load-balancer-outbound-connections.md)連線所討論，azure 會使用來源網路位址轉譯 (SNAT) 和 Load Balancer (不會向客戶公開，) 在公用 IP 位址空間中與 azure 外部的端點進行通訊，以及不利用服務端點的 azure 內部端點。 Azure App 服務上的每個實例一開始都會獲得預先配置的 **128** SNAT 埠數目。 該限制會影響對相同主機和埠組合的開啟連接。 如果您的應用程式建立混合位址和埠組合的連線，則不會使用 SNAT 埠。 當您重複呼叫相同的位址和埠組合時，就會使用 SNAT 埠。 連接埠一經釋放，即可視需要重複使用。 Azure 網路負載平衡器只會在等候4分鐘後，從關閉的連線回收 SNAT 埠。
 
 當應用程式或函式快速開啟新的連接時，它們可以快速耗盡其預先配置的128埠配額。 然後會封鎖它們，直到新的 SNAT 埠變成可用為止（透過動態配置額外的 SNAT 埠），或重複使用已回收的 SNAT 埠。 因為無法建立新連線而遭到封鎖的應用程式或函式，將會開始遇到本文的 **徵兆** 一節中所述的一或多個問題。
 
@@ -124,7 +124,7 @@ HTTP 連接共用
 
 避免輸出 TCP 限制比較容易解決，因為限制是由背景工作的大小所設定。 您可以看到沙箱中的限制 [跨 VM 的數值限制-TCP 連接](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#cross-vm-numerical-limits)
 
-|限制名稱|描述|Small (A1) |中型 (A2) |大型 (A3) | (ASE 的隔離層) |
+|限制名稱|說明|Small (A1) |中型 (A2) |大型 (A3) | (ASE 的隔離層) |
 |---|---|---|---|---|---|
 |連接|整個 VM 的連接數目|1920|3968|8064|16,000|
 
@@ -156,7 +156,7 @@ TCP 連接和 SNAT 埠不會直接相關。 TCP 連接使用偵測器包含在�
 * TCP 連接限制發生在背景工作角色實例層級。 Azure 網路輸出負載平衡不會使用適用于 SNAT 埠限制的 TCP 連接度量。
 * TCP 連接限制會以沙箱的[跨 VM 數值限制（tcp 連線）](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#cross-vm-numerical-limits)說明
 
-|限制名稱|描述|Small (A1) |中型 (A2) |大型 (A3) | (ASE 的隔離層) |
+|限制名稱|說明|Small (A1) |中型 (A2) |大型 (A3) | (ASE 的隔離層) |
 |---|---|---|---|---|---|
 |連接|整個 VM 的連接數目|1920|3968|8064|16,000|
 

@@ -7,12 +7,12 @@ ms.author: jpalma
 ms.date: 06/29/2020
 ms.custom: fasttrack-edit
 author: palma21
-ms.openlocfilehash: 00a20ece2358f0054e4490ffb914f78b82d9c509
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: 236b69b1e10eb80b9c0a5e27b213eb3972209346
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89594254"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361036"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>控制 Azure Kubernetes Service (AKS) 中叢集節點的連出流量
 
@@ -184,7 +184,7 @@ AKS 叢集需要下列網路和 FQDN/應用程式規則，如果您想要設定 
 | *.oms.opinsights.azure.com | **`HTTPS:443`** | Omsagent 會使用此端點來驗證 log analytics 服務。 |
 | *.monitoring.azure.com | **`HTTPS:443`** | 此端點是用來將計量資料傳送至 Azure 監視器。 |
 
-### <a name="azure-dev-spaces"></a>Azure Dev Spaces
+### <a name="azure-dev-spaces"></a>Azure 開發人員空間
 
 更新您的防火牆或安全性設定，以允許下列所有 Fqdn 和 [Azure Dev Spaces 基礎結構服務][dev-spaces-service-tags]之間的網路流量。
 
@@ -766,7 +766,7 @@ az network firewall nat-rule create --collection-name exampleset --destination-a
 您應該會看到 AKS 投票應用程式。 在此範例中，防火牆公用 IP 為 `52.253.228.132` 。
 
 
-![aks-投票](media/limit-egress-traffic/aks-vote.png)
+![螢幕擷取畫面顯示具有貓、狗和重設等按鈕的 K S 投票應用程式。](media/limit-egress-traffic/aks-vote.png)
 
 
 ### <a name="clean-up-resources"></a>清除資源
@@ -777,7 +777,7 @@ az network firewall nat-rule create --collection-name exampleset --destination-a
 az group delete -g $RG
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 在本文中，您已瞭解當您想要限制叢集的輸出流量時，所允許的埠和位址。 您也已瞭解如何使用 Azure 防火牆來保護您的輸出流量。 
 

@@ -11,12 +11,12 @@ ms.author: srbozovi
 ms.reviewer: vanto
 ms.date: 10/07/2019
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e46c6d1c14d226522a1d534418b91076efeaaccf
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: f1c4fe8268d24026609f55d76a102a5c9a4e8295
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89070712"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91356293"
 ---
 # <a name="azure-sql-managed-instance-connection-types"></a>Azure SQL 受控執行個體連線類型
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -27,14 +27,14 @@ ms.locfileid: "89070712"
 
 Azure SQL 受控執行個體支援以下兩種連線類型：
 
-- **重新導向 (建議使用)：** 用戶端直接與裝載資料庫的節點建立連線。 若要啟用使用重新導向的連線，您必須開啟防火牆和網路安全性群組 (NSG) ，以允許在埠1433和11000-11999 上進行存取。 封包會直接傳送到資料庫，因此會使用重新導向 proxy 的延遲和輸送量效能改進。
-- **Proxy (預設) ：** 在此模式中，所有連接都會使用 proxy 閘道元件。 若要啟用連線，只需要開啟私人網路的埠1433和公用連接的埠3342。 視工作負載的本質而定，選擇此模式可能會導致延遲提高和輸送量降低。 我們強烈建議透過 proxy 連線原則來進行重新導向連線原則，以獲得最低的延遲和最高的輸送量。
+- 重新**導向 (建議的) ：** 用戶端會直接與裝載資料庫的節點建立連接。 若要使用重新導向來啟用連線，您必須開啟防火牆和網路安全性群組 (NSG)，以允許在連接埠 1433 和 11000-11999 上進行存取。 封包會直接移至資料庫，因此使用「透過 Proxy 重新導向」可改善延遲和輸送量效能。
+- **Proxy (預設) ：** 在此模式中，所有連接都會使用 proxy 閘道元件。 若要啟用連線，只需要開啟私人網路的連接埠 1433 和公用連線的連接埠 3342。 視工作負載的本質而定，選擇此模式可能會導致延遲提高和輸送量降低。 為了將延遲降到最低及將輸送量提升到最高，強烈建議您採用重新導向連線原則，而不要採用 Proxy 連線原則。
 
 ## <a name="redirect-connection-type"></a>重新導向連線類型
 
 在重新導向連線類型中，在建立 SQL 引擎的 TCP 會話之後，用戶端會話會從負載平衡器取得虛擬叢集節點的目的地虛擬 IP。 後續的封包會直接流向虛擬叢集節點，略過閘道。 下圖說明此流量。
 
-![redirect.png](./media/connection-types-overview/redirect.png)
+![圖表顯示內部部署網路，該網路已連線到 Azure 虛擬網路中的閘道，以及連線到虛擬網路中資料庫主要節點的重新導向查詢。](./media/connection-types-overview/redirect.png)
 
 > [!IMPORTANT]
 > 重新導向連線類型目前僅適用于私人端點。 無論連線類型設定為何，透過公用端點的連接都會通過 proxy。
@@ -43,7 +43,7 @@ Azure SQL 受控執行個體支援以下兩種連線類型：
 
 在 proxy 連線類型中，會使用閘道建立 TCP 會話，且所有後續的封包都會流經它。 下圖說明此流量。
 
-![proxy.png](./media/connection-types-overview/proxy.png)
+![圖表顯示內部部署網路，其中 proxy 已連線到 Azure 虛擬網路中的閘道，請在虛擬網路中的資料庫主要節點旁進行連線。](./media/connection-types-overview/proxy.png)
 
 ## <a name="changing-connection-type"></a>變更連線類型
 

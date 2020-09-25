@@ -9,13 +9,13 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 08/17/2017
 ms.author: tagore
-ms.custom: devx-track-javascript
-ms.openlocfilehash: c2d76ccd0c2e81147c39f81568fd1394cc1868b6
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.custom: devx-track-js
+ms.openlocfilehash: 86bc968c922bcfb90da9ae2babd456ce4db81cb7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90032872"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327471"
 ---
 # <a name="build-and-deploy-a-nodejs-application-to-an-azure-cloud-service"></a>建立 Node.js 應用程式並部署到 Azure 雲端服務
 
@@ -32,7 +32,7 @@ ms.locfileid: "90032872"
 
 ![顯示 Hello World 網頁的網頁瀏覽器][A web browser displaying the Hello World web page]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 > [!NOTE]
 > 本教學課程使用 Azure PowerShell (需要 Windows)。
 
@@ -172,7 +172,7 @@ Publish-AzureServiceProject -ServiceName $ServiceName  -Location "East US" -Laun
    > [!NOTE]
    > 刪除服務不會刪除初次發佈服務時建立的儲存體帳戶，而且將持續對使用的儲存體計費。 如果沒有其他項目正在使用儲存體，您可以將它刪除。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 如需詳細資訊，請參閱 [Node.js 開發人員中心]。
 
 <!-- URL List -->

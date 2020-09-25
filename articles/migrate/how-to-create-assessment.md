@@ -1,33 +1,33 @@
 ---
-title: 使用 Azure Migrate Server 評估來建立 Azure VM 評估 |Microsoft Docs
-description: 說明如何使用 Azure Migrate Server 評估工具來建立 Azure VM 評估
+title: 使用 Azure Migrate 伺服器評量建立 Azure VM 評量 |Microsoft Docs
+description: 說明如何使用 Azure Migrate Server 評定工具來建立 Azure VM 評量
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
 ms.date: 07/15/2019
 ms.author: raynew
-ms.openlocfilehash: ec95cde1f023b4d034c2fae9cc5a54744ccdc9a7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c4132ca675af136d7fd50b8ddd02277919a5ed28
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85549810"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361087"
 ---
 # <a name="create-an-azure-vm-assessment"></a>建立 Azure VM 評量
 
-本文說明如何為內部部署 VMware Vm 或具有 Azure Migrate： Server 評估的 Hyper-v Vm 建立 Azure VM 評估。
+本文說明如何使用 Azure Migrate：伺服器評量來建立適用于內部部署 VMware Vm 或 Hyper-v Vm 的 Azure VM 評量。
 
-[Azure Migrate](migrate-services-overview.md)可協助您遷移至 Azure。 Azure Migrate 能提供集中式的中樞，以追蹤針對 Azure 的內部部署基礎結構、應用程式與資料的探索、評量及移轉。 該中樞能提供 Azure 工具以進行評量和移轉，也提供協力廠商獨立軟體廠商 (ISV) 供應項目。 
+[Azure Migrate](migrate-services-overview.md) 可協助您遷移至 Azure。 Azure Migrate 能提供集中式的中樞，以追蹤針對 Azure 的內部部署基礎結構、應用程式與資料的探索、評量及移轉。 該中樞能提供 Azure 工具以進行評量和移轉，也提供協力廠商獨立軟體廠商 (ISV) 供應項目。 
 
 ## <a name="before-you-start"></a>在您開始使用 Intune 之前
 
-- 請確定您已[建立](how-to-add-tool-first-time.md)Azure Migrate 專案。
-- 如果您已經建立專案，請確定您已[新增](how-to-assess.md)Azure Migrate：伺服器評估工具。
-- 若要建立評量，您需要設定適用于[VMware](how-to-set-up-appliance-vmware.md)或[hyper-v](how-to-set-up-appliance-hyper-v.md)的 Azure Migrate 設備。 設備會探索內部部署機器，並將中繼資料和效能資料傳送至 Azure Migrate：伺服器評量。 [深入了解](migrate-appliance.md)。
+- 請確定您已 [建立](how-to-add-tool-first-time.md) Azure Migrate 專案。
+- 如果您已建立專案，請確定您已 [新增](how-to-assess.md) Azure Migrate：伺服器評定工具。
+- 若要建立評量，您必須設定適用于 [VMware](how-to-set-up-appliance-vmware.md) 或 [hyper-v](how-to-set-up-appliance-hyper-v.md)的 Azure Migrate 設備。 設備會探索內部部署機器，並將中繼資料和效能資料傳送至 Azure Migrate：伺服器評量。 [深入了解](migrate-appliance.md)。
 
 
-## <a name="azure-vm-assessment-overview"></a>Azure VM 評估總覽
-有兩種類型的調整大小準則，您可以使用 Azure Migrate：伺服器評估來建立 Azure VM 評估。
+## <a name="azure-vm-assessment-overview"></a>Azure VM 評量總覽
+您可以使用兩種類型的大小調整準則來建立使用 Azure Migrate：伺服器評量的 Azure VM 評量。
 
 **評量** | **詳細資料** | **Data**
 --- | --- | ---
@@ -43,9 +43,9 @@ ms.locfileid: "85549810"
 1. 檢閱適用於建立評估的[最佳做法](best-practices-assessment.md)。
 2. 在 [伺服器] 索引標籤的 **[Azure Migrate：伺服器評量]** 磚中，按一下 [評估]。
 
-    ![評定](./media/how-to-create-assessment/assess.png)
+    ![螢幕擷取畫面顯示在 [評量工具] 底下選取 [評定] Azure Migrate 伺服器。](./media/how-to-create-assessment/assess.png)
 
-3. 在 [**評估伺服器**] 中，選取 [Azure VM] 做為 [評估類型]，選取 [探索來源] 並指定評量名稱。
+3. 在 [評估伺服器] 中，選取「Azure VM」作為評量類型，選取探索來源，然後指定評量名稱。
 
     ![評量基本概念](./media/how-to-create-assessment/assess-servers-azurevm.png)
 
@@ -53,9 +53,9 @@ ms.locfileid: "85549810"
 
     ![評量屬性](./media/how-to-create-assessment//view-all.png)
 
-5. 按 **[下一步]** 以**選取要評估的機器**。 在 [選取或建立群組] 中，選取 [新建]，然後指定群組名稱。 群組會將一或多個 VM 收集在一起以進行評估。
+5. 按一下 [下一步] 以**選取要評量的機器**。 在 [選取或建立群組] 中，選取 [新建]，然後指定群組名稱。 群組會將一或多個 VM 收集在一起以進行評估。
 6. 在 [將機器新增至群組] 中，選取要新增至群組的 VM。
-7. 按 **[下一步]** 以**查看 [+ 建立評估**]，以查看評量詳細資料。
+7. 按一下 下一步 以**檢閱+ 建立評量**來檢閱評量詳細資料。
 8. 按一下 [建立評估] 以建立群組，然後執行評估。
 
     ![建立評估](./media/how-to-create-assessment//assessment-create.png)
@@ -65,15 +65,15 @@ ms.locfileid: "85549810"
 
 
 
-## <a name="review-an-azure-vm-assessment"></a>審查 Azure VM 評估
+## <a name="review-an-azure-vm-assessment"></a>檢閱 Azure VM 評量
 
-Azure VM 評估會說明：
+Azure VM 評量內容會說明：
 
 - **Azure 移轉整備程度**：VM 是否適合移轉至 Azure。
 - **每月成本預估**：在 Azure 中執行 VM 的預估每月計算和儲存體成本。
 - **每月儲存體成本預估**：移轉之後的磁碟儲存體預估成本。
 
-### <a name="view-an-azure-vm-assessment"></a>查看 Azure VM 評估
+### <a name="view-an-azure-vm-assessment"></a>查看 Azure VM 評量
 
 1. 在 [移轉目標] >  [伺服器] 中，按一下 [Azure Migrate：伺服器評量] 中的 [評量]。
 2. 在 [評量] 中，按一下評量來加以開啟。
@@ -132,5 +132,5 @@ Azure VM 評估會說明：
 
 ## <a name="next-steps"></a>後續步驟
 
-- 瞭解如何使用相依性[對應](how-to-create-group-machine-dependencies.md)來建立高度信賴群組。
+- 瞭解如何使用相依性 [對應](how-to-create-group-machine-dependencies.md) 來建立高信賴度群組。
 - [深入了解](concepts-assessment-calculation.md)評定的計算方式。

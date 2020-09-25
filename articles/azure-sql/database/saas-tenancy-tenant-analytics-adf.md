@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: 2f4f81f8159e5800da7dfec58c01f474cb1c0d07
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 66f22fa2781fb4c0f4caa07323b3de8cac1ef9fd
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89437440"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361104"
 ---
 # <a name="explore-saas-analytics-with-azure-sql-database-azure-synapse-analytics-data-factory-and-power-bi"></a>使用 Azure SQL Database、Azure Synapse Analytics、Data Factory 和 Power BI 探索 SaaS 分析
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -66,7 +66,7 @@ SaaS 應用程式會保留雲端中可能非常大量的租用戶資料。 此�
 
 ## <a name="setup"></a>安裝程式
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>Prerequisites
 
 若要完成本教學課程，請確定符合下列必要條件：
 
@@ -111,7 +111,7 @@ SaaS 應用程式會保留雲端中可能非常大量的租用戶資料。 此�
     1. 星狀結構描述資料表是 **fact_Tickets**、**dim_Customers**、**dim_Venues**、**dim_Events** 和 **dim_Dates**。
     1. 預存程序 **sp_transformExtractedData** 可用來轉換資料，並將資料載入星型結構描述資料表。
 
-![DWtables](./media/saas-tenancy-tenant-analytics-adf/DWtables.JPG)
+![螢幕擷取畫面顯示物件總管，並展開資料表以顯示各種資料庫物件。](./media/saas-tenancy-tenant-analytics-adf/DWtables.JPG)
 
 #### <a name="blob-storage"></a>Blob 儲存體
 
@@ -167,7 +167,7 @@ Azure Data Factory 可用來協調擷取、載入及轉換資料。 在本教學
   
 ### <a name="data-warehouse-pattern-overview"></a>資料倉儲模式概觀
 
-Azure Synapse (先前的 SQL 資料倉儲) 可作為分析存放區，以執行租使用者資料的匯總。 在此範例中，會使用 PolyBase 將資料載入資料倉儲。 未經處理資料會載入具有識別欄位的暫存表格，以追蹤已轉換成星型結構描述資料表的資料列。 下列影像顯示載入模式：![loadingpattern](./media/saas-tenancy-tenant-analytics-adf/loadingpattern.JPG)
+Azure Synapse (先前的 SQL 資料倉儲) 可作為分析存放區，以執行租使用者資料的匯總。 在此範例中，會使用 PolyBase 將資料載入資料倉儲。 未經處理資料會載入具有識別欄位的暫存表格，以追蹤已轉換成星型結構描述資料表的資料列。 下圖顯示載入模式：圖表會 ![ 顯示資料庫資料表的載入模式。](./media/saas-tenancy-tenant-analytics-adf/loadingpattern.JPG)
 
 此範例使用緩時變維度 (SCD) 類型 1 的維度資料表。 每個維度都具有使用識別欄位定義的 Surrogate 索引鍵。 最佳做法是預先填入日期維度資料表，節省時間。 若是其他維度資料表，則會使用 CREATE TABLE AS SELECT ... (CTAS) 語句來建立臨時表，其中包含現有已修改和未修改的資料列，以及代理索引鍵。 可使用 IDENTITY_INSERT=ON 進行。 然後將新資料列插入附有 IDENTITY_INSERT=OFF 的資料表。 若要簡單復原，可重新命名現有的維度資料表和暫存資料表，即可變成新的維度資料表。 每次執行之前，會刪除舊的維度資料表。
 
@@ -181,14 +181,14 @@ Azure Synapse (先前的 SQL 資料倉儲) 可作為分析存放區，以執行�
 
 1. 在 ADF 使用者介面的 [建立者]**** 索引標籤中，選取左側窗格 **SQLDBToDW** 管道。
 1. 按一下 [觸發]**** 並且從下拉式功能表按一下 [立即觸發]****。 這個動作會立即執行管道。 在生產案例中，您會定義執行管道的時間表，以便重新整理排程中的資料。
-  ![adf_trigger](./media/saas-tenancy-tenant-analytics-adf/adf_trigger.JPG)
+  ![螢幕擷取畫面會顯示名為 S Q L D B 至 D W 之管線的 Factory 資源，並已展開觸發程式選項並立即選取觸發程式。](./media/saas-tenancy-tenant-analytics-adf/adf_trigger.JPG)
 1. 在 [管道執行]**** 頁面上，按一下 [完成]****。
 
 ### <a name="monitor-the-pipeline-run"></a>監視管道執行
 
 1. 在 ADF 使用者介面中，從左側功能表切換至 [監視器]**** 索引標籤。
 1. 按一下 [重新整理]****，直到 SQLDBToDW 管道的狀態顯示 [已成功]****。
-  ![adf_monitoring](./media/saas-tenancy-tenant-analytics-adf/adf_monitoring.JPG)
+  ![螢幕擷取畫面顯示狀態為 [成功] 的 S Q L D B 至 D W 管線。](./media/saas-tenancy-tenant-analytics-adf/adf_monitoring.JPG)
 1. 使用 SSMS 連線到資料倉儲，並查詢星型結構描述資料表，以確認資料已載入這些資料表中。
 
 當管道完成之後，事實資料表會保留所有場地的票證銷售資料，而維度資料表會填入對應的場地、事件及客戶。

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/19/2018
-ms.openlocfilehash: 9339ed7d0ab122420b37a67a96ee0d9d324e2f15
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 446517f56d1f5ba6fa32408489f07411ee1a3e02
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442900"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91356793"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---multi-tenant-app"></a>使用擷取的資料執行跨租用戶分析 - 多租用戶應用程式
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -36,7 +36,7 @@ ms.locfileid: "89442900"
 > - 查詢分析資料庫。
 > - 針對資料視覺效果使用 Power BI，反白顯示租用戶資料的趨勢，並對改善提出建議。
 
-![architectureOverView](./media/saas-multitenantdb-tenant-analytics/architectureOverview.png)
+![下圖顯示本文所使用的架構。](./media/saas-multitenantdb-tenant-analytics/architectureOverview.png)
 
 ## <a name="offline-tenant-analytics-pattern"></a>離線租用戶分析模式
 
@@ -53,7 +53,7 @@ ms.locfileid: "89442900"
 
 中央和維度資料表一起可以促成有效分析處理。 本教學課程中使用的星狀結構描述會顯示在下列映像中：
  
-![StarSchema](./media/saas-multitenantdb-tenant-analytics/StarSchema.png)
+![資料庫關係圖顯示四個連接至中央資料庫物件的資料庫物件。](./media/saas-multitenantdb-tenant-analytics/StarSchema.png)
 
 最後，會查詢星狀結構描述資料表。 查詢結果會以視覺化方式顯示，以反白顯示租用戶行為的深入解析以及其對於應用程式的使用。 您可以使用這個星狀結構描述執行查詢，協助探索如下所示的項目：
 
@@ -66,7 +66,7 @@ ms.locfileid: "89442900"
 
 ## <a name="setup"></a>安裝程式
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>Prerequisites
 
 若要完成本教學課程，請確定符合下列必要條件：
 
@@ -111,7 +111,7 @@ ms.locfileid: "89442900"
 - 星狀結構描述資料表是 **fact_Tickets**、**dim_Customers**、**dim_Venues**、**dim_Events** 和 **dim_Dates**。
 - **sp_ShredRawExtractedData**預存程序是用來從未經處理資料資料表填入星狀結構描述資料表。
 
-![tenantAnalytics](./media/saas-multitenantdb-tenant-analytics/tenantAnalytics.png)
+![螢幕擷取畫面顯示分析存放區節點的 S s 物件總管，包括資料表、Views 和節點。](./media/saas-multitenantdb-tenant-analytics/tenantAnalytics.png)
 
 ## <a name="data-extraction"></a>資料擷取 
 
@@ -139,7 +139,7 @@ ms.locfileid: "89442900"
 4. 按 **F5** 執行腳本，該腳本會建立並執行從每個租使用者資料庫中解壓縮票證和客戶資料的作業。 作業會將資料儲存至分析存放區。
 5. 查詢 tenantanalytics 資料庫中的 TicketsRawData 資料表，以確定資料表已填入來自所有租用戶的票證資訊。
 
-![ticketExtracts](./media/saas-multitenantdb-tenant-analytics/ticketExtracts.png)
+![螢幕擷取畫面顯示在物件總管中選取 TicketsRawData d b o 的 ExtractTickets 資料庫。](./media/saas-multitenantdb-tenant-analytics/ticketExtracts.png)
 
 重複上述步驟，但是這次在步驟 2 中將 **\ExtractTickets.sql** 取代為 **\ExtractVenuesEvents.sql**。
 
@@ -159,7 +159,7 @@ ms.locfileid: "89442900"
 4. 允許足夠時間讓作業成功執行。
     - 請檢查 jobs.jobs_execution 資料表的**生命週期**資料行，以取得作業的狀態。 請確認作業「已成功」****，再繼續作業。 成功的執行會顯示類似下圖的資料：
 
-![shreddingJob](./media/saas-multitenantdb-tenant-analytics/shreddingJob.PNG)
+![螢幕擷取畫面顯示執行 sp_ShredRawExtractedData 程式的成功結果。](./media/saas-multitenantdb-tenant-analytics/shreddingJob.PNG)
 
 ## <a name="data-exploration"></a>資料探索
 
@@ -174,11 +174,11 @@ ms.locfileid: "89442900"
 3. 在 [取得資料]**** 視窗中，選取 [Azure SQL Database]。
 4. 在 [資料庫登入] 視窗中，輸入您的伺服器名稱 (catalog- \<User\> database.windows.net) 。 針對 [資料連線模式]**** 選取 [匯入]****，然後按一下 [確定]。 
 
-    ![powerBISignIn](./media/saas-multitenantdb-tenant-analytics/powerBISignIn.PNG)
+    ![螢幕擷取畫面顯示 SQL Server 資料庫] 對話方塊，您可以在其中輸入伺服器和資料庫。](./media/saas-multitenantdb-tenant-analytics/powerBISignIn.PNG)
 
 5. 選取左窗格中的 [ **資料庫** ]，然後輸入 [使用者名稱 = *開發人員*]，然後輸入 password = *P \@ ssword1*。 按一下 [ **連接**]。  
 
-    ![DatabaseSignIn](./media/saas-multitenantdb-tenant-analytics/databaseSignIn.PNG)
+    ![螢幕擷取畫面顯示 [SQL Server 資料庫] 對話方塊，您可以在其中輸入使用者名稱和密碼。](./media/saas-multitenantdb-tenant-analytics/databaseSignIn.PNG)
 
 6. 在分析資料庫底下的 [導覽]**** 窗格中，選取星狀結構描述資料表：fact_Tickets dim_Events、dim_Venues、dim_Customers 和 dim_Dates。 然後選取 [載入]****。 
 
@@ -186,13 +186,13 @@ ms.locfileid: "89442900"
 
 您會從分析票證銷售資料來查看跨地點之使用方式的變化來開始。 在 Power BI 中選取下列選項，以依據每個地點銷售的票證總數，繪製橫條圖。 由於票證產生器中的隨機變化，您的結果可能會不同。
  
-![TotalTicketsByVenues](./media/saas-multitenantdb-tenant-analytics/TotalTicketsByVenues.PNG)
+![螢幕擷取畫面會顯示 Power bi 視覺效果，以及右邊資料視覺效果的控制項。](./media/saas-multitenantdb-tenant-analytics/TotalTicketsByVenues.PNG)
 
 上圖確認每個地點銷售的票證數目會有所不同。 銷售較多票證的地點會比銷售較少票證的地點更常使用您的服務。 有機會根據不同的租用戶需求，量身打造資源配置。
 
 您可以進一步分析資料，以查看票證銷售如何隨著時間而變化。 在 Power BI 中選取下列選項，以繪製 60 天期間內每天的票證銷售總數。
  
-![SaleVersusDate](./media/saas-multitenantdb-tenant-analytics/SaleVersusDate.PNG)
+![螢幕擷取畫面顯示 Power bi 視覺效果，標題為 [票證銷售分配] 與 [銷售日]。](./media/saas-multitenantdb-tenant-analytics/SaleVersusDate.PNG)
 
 上述圖表會顯示某些地點的該票證銷售尖峰。 這些尖峰會強化某些地點可能不成比例地耗用系統資源的概念。 目前為止何時出現尖峰並沒有任何明顯模式。
 

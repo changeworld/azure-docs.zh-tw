@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: 6887371e50f5b7e8706cac0a0700873c42bdac06
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 0463d11466859c0f30901a0afd960bdc7b2599a5
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91321640"
+ms.locfileid: "91357776"
 ---
 # <a name="disaster-recovery-strategies-for-applications-using-azure-sql-database-elastic-pools"></a>使用 Azure SQL Database 彈性集區之應用程式的嚴重損壞修復策略
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -78,7 +78,7 @@ Azure SQL Database 提供數個功能，可在發生災難性事件時提供應�
 
 若要支援此案例，請將試用版租用戶與付費租用戶分開，方法是將它們放入個別的彈性集區中。 試用版客戶的每個租用戶的 eDTU 或虛擬核心較低，SLA 也因復原時間較長而較低。 付費客戶所在集區中每個租用戶的 eDTU 或虛擬核心和 SLA 都較高。 為了保證最低的復原時間，我們會對付費客戶的租用戶資料庫進行異地複寫。 下圖說明此組態。
 
-![圖 4](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-4.png)
+![圖表顯示主要區域和 D R 區域，其採用管理資料庫與付費客戶主要集區之間的異地複寫，以及沒有試用版客戶集區複寫的次要集區。](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-4.png)
 
 與第一個案例相同，管理資料庫會相當活躍，因此針對它使用單一異地複寫的資料庫 (1)。 這可確保新客戶訂用帳戶、設定檔更新和其他管理作業的可預測效能。 主要管理資料庫複本所在區域是主要區域，而次要管理資料庫複本所在區域是 DR 區域。
 
@@ -86,7 +86,7 @@ Azure SQL Database 提供數個功能，可在發生災難性事件時提供應�
 
 如果主要區域中斷，下圖說明讓您的應用程式上線的復原步驟：
 
-![圖 5](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-5.png)
+![下圖顯示主要區域的中斷情形、容錯移轉至管理資料庫、付費客戶次要集區，以及為試用版客戶建立和還原。](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-5.png)
 
 * 將管理資料庫立即容錯移轉到 DR 區域 (3)。
 * 變更應用程式的連接字串，使其指向 DR 區域。 現在，系統會在 DR 區域中建立所有新的帳戶和租用戶資料庫。 現有試用版客戶會發現其資料暫時無法使用。
@@ -99,7 +99,7 @@ Azure SQL Database 提供數個功能，可在發生災難性事件時提供應�
 
 當 Azure 在您於 DR 區域中還原應用程式「之後」 ** 復原主要區域時，您可以繼續在該區域中執行應用程式，也可以決定容錯回復到主要區域。 如果在完成容錯移轉程序「之前」** 復原主要區域，請考慮立即容錯回復。 此容錯回復會採取下圖中所說明的步驟：
 
-![圖 6](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-6.png)
+![圖表顯示還原主要區域之後要執行的容錯回復步驟。](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-6.png)
 
 * 取消所有未處理的異地還原要求。
 * 容錯移轉管理資料庫 (8)。 復原區域之後，舊的主要已自動成為次要。 現在，它再次變成主要。  
@@ -128,7 +128,7 @@ Azure SQL Database 提供數個功能，可在發生災難性事件時提供應�
 
 為了保證中斷期間的最低復原時間，我們會在這兩個區域使用 50% 的主要資料庫來異地複寫付費客戶的租用戶資料庫。 同樣地，每個區域都有 50% 的次要資料庫。 因此，如果區域離線，則只會影響 50% 的付費客戶資料庫，且只須對這個部分進行容錯移轉。 其他資料庫會保持不變。 下圖說明此組態：
 
-![圖 4](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-7.png)
+![圖表顯示稱為 Region A 和次要地區的主要區域，稱為「區域 B」，其採用管理資料庫與付費客戶主要集區之間的異地複寫，以及不含試用版客戶集區複寫的次要集區。](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-7.png)
 
 與先前的案例相同，管理資料庫會相當活躍，因此請將它們設定為單一異地複寫的資料庫 (1)。 這可確保新客戶訂用帳戶、設定檔更新和其他管理作業的可預測效能。 區域 A 是管理資料庫的主要區域，而區域 B 會用於復原管理資料庫。
 
@@ -136,7 +136,7 @@ Azure SQL Database 提供數個功能，可在發生災難性事件時提供應�
 
 下圖說明在區域 A 中斷時要採取的復原步驟。
 
-![圖 5](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-8.png)
+![下圖顯示主要區域的中斷狀況，並容錯移轉至管理資料庫、付費客戶次要集區，以及建立及還原試用版客戶至區域 B。](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-8.png)
 
 * 將管理資料庫立即容錯移轉到區域 B (3)。
 * 變更應用程式的連接字串以指向區域 B 中的管理資料庫。修改管理資料庫，確定系統是在區域 B 中建立新的帳戶和租用戶資料庫，而且在這裡也有發現現有的租用戶資料庫。 現有試用版客戶會發現其資料暫時無法使用。
@@ -152,7 +152,7 @@ Azure SQL Database 提供數個功能，可在發生災難性事件時提供應�
 
 復原區域 A 時，您需要決定是否要將區域 B 用於試用版客戶或容錯回復到使用區域 A 中的試用版客戶集區。其中一個準則可能是在復原後修改多少百分比的試用版租用戶資料庫。 不論決策為何，您都必須重新平衡兩個集區之間的付費租用戶。 下圖說明當試用版租用戶資料庫容錯回復至區域 A 時的程序。  
 
-![圖 6](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-9.png)
+![圖表顯示還原區域 A 之後要執行的容錯回復步驟。](./media/disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-9.png)
 
 * 取消試用版 DR 集區的所有未處理異地還原要求。
 * 容錯移轉管理資料庫 (8)。 復原區域之後，舊的主要已自動成為次要。 現在，它再次變成主要。  

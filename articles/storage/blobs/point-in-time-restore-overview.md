@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 09/18/2020
+ms.date: 09/22/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 7fbebf21b79d2a533de0a872dfe6a10bc8f8e7e5
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 32d0c44abed2d4ace4c8896922ed7f6ed8b596ff
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90987042"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326094"
 ---
 # <a name="point-in-time-restore-for-block-blobs"></a>區塊 blob 的時間點還原
 
@@ -36,13 +36,6 @@ Azure 儲存體會分析在要求的還原點（以 UTC 時間指定）和目前
 一次只能在一個儲存體帳戶上執行一個還原作業。 還原作業在進行中時無法取消，但可以執行第二個還原作業來復原第一項作業。
 
 **還原 Blob 範圍**作業會傳回可唯一識別作業的還原識別碼。 若要檢查時間點還原的狀態，請使用「**還原 Blob 範圍**」作業所傳回的還原識別碼，呼叫「**取得還原狀態**」作業。
-
-請記住下列關於還原作業的限制：
-
-- 已透過 [Put 區塊](/rest/api/storageservices/put-block) 或 [PUT 區塊從 URL](/rest/api/storageservices/put-block-from-url)上傳，但未透過 [put block List](/rest/api/storageservices/put-block-list)認可的區塊不是 blob 的一部分，因此不會在還原作業中還原。
-- 無法還原具有作用中租用的 blob。 如果包含作用中租用的 blob 包含在要還原的 blob 範圍內，則還原作業會以不可部分完成的方式失敗。
-- 在還原作業中，不會建立或刪除快照集。 只有基底 blob 會還原為先前的狀態。
-- 如果在目前的時間和還原點之間的期間內，將 blob 移至經常性存取層與非經常性存取層之間，則會將 blob 還原至先前的層級。 不過，已移至封存層的 blob 將不會還原。
 
 > [!IMPORTANT]
 > 當您執行還原作業時，Azure 儲存體會封鎖作業期間正在還原之範圍中 blob 的資料作業。 主要位置會封鎖讀取、寫入和刪除作業。 基於這個理由，在進行還原作業時，在 Azure 入口網站中列出容器的作業可能不會如預期般執行。
@@ -76,9 +69,12 @@ Azure 儲存體會分析在要求的還原點（以 UTC 時間指定）和目前
 
 區塊 blob 的時間點還原具有下列限制和已知問題：
 
-- 只有標準一般用途 v2 儲存體帳戶中的區塊 blob 可以還原為時間點還原作業的一部分。 附加 blob、分頁 blob 和 premium 區塊 blob 不會還原。 如果您已在保留期限內刪除容器，則該容器將不會隨著時間點還原作業還原。 若要瞭解如何刪除容器的保護，請參閱容器的虛 [刪除 (預覽) ](soft-delete-container-overview.md)。
-- 只有經常性存取層或非經常性存取層中的區塊 blob，才能在時間點還原作業中還原。 不支援還原封存層中的區塊 blob。 例如，如果經常性存取層的 Blob 在兩天前已移至封存層，且還原作業還原至三天前的某個時間點，則 Blob 不會還原至經常性存取層。 若要還原封存的 blob，請先將它移出封存層。
-- 如果要還原之範圍中的區塊 blob 有作用中的租用，則時間點還原作業將會失敗。 在起始還原作業之前，請先中斷任何使用中的租用。
+- 只有標準一般用途 v2 儲存體帳戶中的區塊 blob 可以還原為時間點還原作業的一部分。 附加 blob、分頁 blob 和 premium 區塊 blob 不會還原。 
+- 如果您已在保留期限內刪除容器，則該容器將不會隨著時間點還原作業還原。 如果您嘗試還原的 blob 範圍包含已刪除容器中的 blob，則時間點還原作業將會失敗。 若要瞭解如何刪除容器的保護，請參閱容器的虛 [刪除 (預覽) ](soft-delete-container-overview.md)。
+- 如果在目前的時間和還原點之間的期間內，將 blob 移至經常性存取層與非經常性存取層之間，則會將 blob 還原至先前的層級。 不支援還原封存層中的區塊 blob。 例如，如果經常性存取層的 Blob 在兩天前已移至封存層，且還原作業還原至三天前的某個時間點，則 Blob 不會還原至經常性存取層。 若要還原封存的 blob，請先將它移出封存層。 如需詳細資訊，請參閱 [解除凍結封存層的 blob 資料](storage-blob-rehydration.md)。
+- 已透過 [Put 區塊](/rest/api/storageservices/put-block) 或 [PUT 區塊從 URL](/rest/api/storageservices/put-block-from-url)上傳，但未透過 [put block List](/rest/api/storageservices/put-block-list)認可的區塊不是 blob 的一部分，因此不會在還原作業中還原。
+- 無法還原具有作用中租用的 blob。 如果包含作用中租用的 blob 包含在要還原的 blob 範圍內，則還原作業會以不可部分完成的方式失敗。 在起始還原作業之前，請先中斷任何使用中的租用。
+- 在還原作業中，不會建立或刪除快照集。 只有基底 blob 會還原為先前的狀態。
 - 不支援還原 Azure Data Lake Storage Gen2 的平面和階層命名空間。
 
 > [!IMPORTANT]
@@ -92,7 +88,7 @@ Azure 儲存體會分析在要求的還原點（以 UTC 時間指定）和目前
 
 如需時間點還原價格的詳細資訊，請參閱 [區塊 blob 定價](https://azure.microsoft.com/pricing/details/storage/blobs/)。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [在區塊 blob 資料上執行時間點還原](point-in-time-restore-manage.md)
 - [Azure Blob 儲存體中的變更摘要支援](storage-blob-change-feed.md)

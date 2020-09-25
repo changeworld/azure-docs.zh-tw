@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: panosper
-ms.openlocfilehash: a14ac8089aa29a592164168e6ccfc4fd2342f68c
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 50ca6eacc7e75a3ff391401e7ced0e3583f1a285
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661515"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91357568"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>語音轉換文字常見問題集
 
@@ -29,7 +29,7 @@ ms.locfileid: "88661515"
 
 **問：如果我想要使用基準模型，該從何處著手？**
 
-**答**：首先，取得[訂用帳戶金鑰](get-started.md)。 如果您想要對預先部署的基準模型進行 REST 呼叫，請參閱 [REST API](rest-apis.md)。 如果您想要使用 WebSocket，請[下載 SDK](speech-sdk.md)。
+**答**：首先，取得[訂用帳戶金鑰](overview.md#try-the-speech-service-for-free)。 如果您想要對預先部署的基準模型進行 REST 呼叫，請參閱 [REST API](rest-apis.md)。 如果您想要使用 WebSocket，請[下載 SDK](speech-sdk.md)。
 
 **問：我是否一定要建置自訂語音模型？**
 
