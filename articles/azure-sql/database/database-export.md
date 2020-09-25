@@ -1,35 +1,35 @@
 ---
-title: 將 Azure SQL Database 匯出至 BACPAC 檔案（Azure 入口網站）
+title: '將 Azure SQL Database 匯出至 BACPAC 檔案 (Azure 入口網站) '
 titleSuffix: Azure SQL Database & Azure SQL Managed Instance
-description: 使用 Azure 入口網站，將資料庫匯出至 BACPAC 檔案。
+description: 使用 Azure 入口網站將資料庫匯出至 BACPAC 檔案。
 services: sql-database
 ms.service: sql-db-mi
 ms.subservice: data-movement
 author: stevestein
 ms.custom: sqldbrb=2
 ms.author: sstein
-ms.reviewer: carlrab
+ms.reviewer: ''
 ms.date: 07/16/2019
 ms.topic: conceptual
-ms.openlocfilehash: 10d10ccfbd04a52f6d522700d66d2c959fed24ee
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 9fb638feb254d5789d26cd854c0dcb3ae70da472
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85982411"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91284321"
 ---
 # <a name="export-to-a-bacpac-file---azure-sql-database-and-azure-sql-managed-instance"></a>匯出至 BACPAC 檔案-Azure SQL Database 和 Azure SQL 受控執行個體
 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-當您需要匯出資料庫以封存或移至另一個平台時，可以將資料庫結構描述和資料匯出至 [BACPAC](https://msdn.microsoft.com/library/ee210546.aspx#Anchor_4) 檔案。 BACPAC 檔案是副檔名為 BACPAC 的 ZIP 檔案，其中包含來自資料庫的中繼資料和資料。 BACPAC 檔案可以儲存在 Azure Blob 儲存體或內部部署位置的本機儲存體中，之後再匯入至 Azure SQL Database、Azure SQL 受控執行個體或 SQL Server 實例。
+當您需要匯出資料庫以封存或移至另一個平台時，可以將資料庫結構描述和資料匯出至 [BACPAC](https://msdn.microsoft.com/library/ee210546.aspx#Anchor_4) 檔案。 BACPAC 檔案是副檔名為 BACPAC 的 ZIP 檔案，其中包含資料庫的中繼資料和資料。 BACPAC 檔案可以儲存在 Azure Blob 儲存體中，或儲存在內部部署位置的本機儲存體中，之後再匯入回 Azure SQL Database、Azure SQL 受控執行個體或 SQL Server 實例。
 
 ## <a name="considerations"></a>考量
 
-- 若要讓匯出保持交易一致性，您必須確定在匯出期間未發生任何寫入活動，或從資料庫的交易[一致性複本](database-copy.md)匯出。
+- 若要讓匯出處於交易一致狀態，您必須確定在匯出期間未發生任何寫入活動，或是您要從資料庫的交易 [一致性複本](database-copy.md) 匯出。
 - 如果您要匯出至 blob 儲存體，BACPAC 檔案的大小上限為 200 GB。 若要封存較大的 BACPAC 檔案，請將匯出到本機儲存體。
 - 不支援使用本文所討論的方法將 BACPAC 檔案匯出到 Azure 進階儲存體。
-- 目前不支援在防火牆後方儲存。
+- 目前不支援在防火牆後方的儲存體。
 - 如果匯出作業超過 20 個小時，它可能會被取消。 若要增加匯出期間的效能，您可以︰
 
   - 暫時提高計算大小。
@@ -41,28 +41,28 @@ ms.locfileid: "85982411"
 
 ## <a name="the-azure-portal"></a>Azure 入口網站
 
-目前不支援使用 Azure 入口網站從[AZURE SQL 受控執行個體](../managed-instance/sql-managed-instance-paas-overview.md)匯出資料庫的 BACPAC。 請改用 SQL Server Management Studio 或 SQLPackage。
+目前不支援使用 Azure 入口網站從 [AZURE SQL 受控執行個體](../managed-instance/sql-managed-instance-paas-overview.md) 匯出資料庫的 BACPAC。 請改用 SQL Server Management Studio 或 SQLPackage。
 
 > [!NOTE]
-> 處理透過 Azure 入口網站或 PowerShell 提交的匯入/匯出要求的機器，必須儲存 BACPAC 檔案，以及資料層應用程式架構（DacFX）所產生的暫存檔案。 所需的磁碟空間在大小相同的資料庫之間有很大的差異，而且可能需要最多3倍資料庫大小的磁碟空間。 執行匯入/匯出要求的機器僅具有450GB 本機磁碟空間。 因此，某些要求可能會因錯誤而失敗 `There is not enough space on the disk` 。 在此情況下，因應措施是在具有足夠本機磁碟空間的電腦上執行 sqlpackage.exe。 我們建議使用[SqlPackage](#sqlpackage-utility)來匯入/匯出大於150GB 的資料庫，以避免發生此問題。
+> 處理透過 Azure 入口網站或 PowerShell 提交之匯入/匯出要求的電腦，必須儲存 BACPAC 檔案，以及資料層應用程式架構 (DacFX) 所產生的暫存檔案。 需要的磁碟空間在大小相同的資料庫之間有很大的差異，而且可能需要資料庫大小最多3倍的磁碟空間。 執行匯入/匯出要求的電腦只有450GB 的本機磁碟空間。 因此，某些要求可能會因為錯誤而失敗 `There is not enough space on the disk` 。 在此情況下，因應措施是在具有足夠本機磁碟空間的電腦上執行 sqlpackage.exe。 我們鼓勵使用 [SqlPackage](#sqlpackage-utility) 來匯入/匯出大於150GB 的資料庫，以避免此問題。
 
 1. 若要使用 [Azure 入口網站](https://portal.azure.com)匯出資料庫，請開啟資料庫頁面，然後按一下工具列上的 [匯出]****。
 
    ![資料庫匯出](./media/database-export/database-export1.png)
 
-2. 指定 BACPAC 檔案名稱、選取要匯出之現有的 Azure 儲存體帳戶和容器，然後提供適當的認證以存取來源資料庫。 即使您是 Azure 系統管理員，也需要 SQL **Server 系統管理員登**入，因為 azure 管理員不等於擁有 Azure SQL Database 或 Azure SQL 受控執行個體的系統管理員許可權。
+2. 指定 BACPAC 檔案名稱、選取要匯出之現有的 Azure 儲存體帳戶和容器，然後提供適當的認證以存取來源資料庫。 如果您是 Azure 系統管理員，則需要 SQL **Server 系統管理員登** 入，因為 azure 系統管理員不等於具有 Azure SQL Database 或 azure SQL 受控執行個體的系統管理員許可權。
 
     ![資料庫匯出](./media/database-export/database-export2.png)
 
 3. 按一下 [確定]。
 
-4. 若要監視匯出作業的進度，請開啟包含匯出資料庫之伺服器的頁面。 在 [設定]**** 下，然後按一下 [匯入/匯出記錄]****。
+4. 若要監視匯出作業的進度，請開啟包含要匯出之資料庫的伺服器頁面。 在 [設定]**** 下，然後按一下 [匯入/匯出記錄]****。
 
    ![匯出記錄](./media/database-export/export-history.png)
 
 ## <a name="sqlpackage-utility"></a>SQLPackage 公用程式
 
-若要使用[SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage)命令列公用程式，在 SQL Database 中匯出資料庫，請參閱[匯出參數和屬性](https://docs.microsoft.com/sql/tools/sqlpackage#export-parameters-and-properties)。 SQLPackage 公用程式隨附於最新版的 [SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) 和 [SQL Server Data Tools for Visual Studio](https://msdn.microsoft.com/library/mt204009.aspx)，或者您也可以直接從 Microsoft 下載中心下載最新版的 [SqlPackage](https://www.microsoft.com/download/details.aspx?id=53876)。
+若要使用 [SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage) 命令列公用程式在 SQL Database 中匯出資料庫，請參閱 [匯出參數和屬性](https://docs.microsoft.com/sql/tools/sqlpackage#export-parameters-and-properties)。 SQLPackage 公用程式隨附於最新版的 [SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) 和 [SQL Server Data Tools for Visual Studio](https://msdn.microsoft.com/library/mt204009.aspx)，或者您也可以直接從 Microsoft 下載中心下載最新版的 [SqlPackage](https://www.microsoft.com/download/details.aspx?id=53876)。
 
 針對大部分生產環境中的延展性和效能，我們建議您使用 SQLPackage 公用程式。 如需 SQL Server 客戶諮詢小組部落格中有關使用 BACPAC 檔案進行移轉的主題，請參閱[使用 BACPAC 檔案從 SQL Server 移轉至 Azure SQL Database](https://blogs.msdn.microsoft.com/sqlcat/20../../migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/)。
 
@@ -74,14 +74,14 @@ SqlPackage.exe /a:Export /tf:testExport.bacpac /scs:"Data Source=apptestserver.d
 
 ## <a name="sql-server-management-studio-ssms"></a>SQL Server Management Studio (SSMS)
 
-最新版本的 SQL Server Management Studio 會提供 wizard 將 Azure SQL Database 或 SQL 受控執行個體資料庫中的資料庫匯出至 BACPAC 檔案。 請參閱[匯出資料層應用程式](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/export-a-data-tier-application)。
+SQL Server Management Studio 的最新版本會提供一個嚮導，將 Azure SQL Database 或 SQL 受控執行個體資料庫中的資料庫匯出至 BACPAC 檔案。 請參閱[匯出資料層應用程式](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/export-a-data-tier-application)。
 
 ## <a name="powershell"></a>PowerShell
 
 > [!NOTE]
-> [AZURE SQL 受控執行個體](../managed-instance/sql-managed-instance-paas-overview.md)目前不支援使用 Azure PowerShell 將資料庫匯出至 BACPAC 檔案。 若要將受控執行個體匯出到 BACPAC 檔案，請使用 SQL Server Management Studio 或 SQLPackage。
+> [AZURE SQL 受控執行個體](../managed-instance/sql-managed-instance-paas-overview.md) 目前不支援使用 Azure PowerShell 將資料庫匯出至 BACPAC 檔案。 若要將受控執行個體匯出到 BACPAC 檔案，請使用 SQL Server Management Studio 或 SQLPackage。
 
-使用[AzSqlDatabaseExport](/powershell/module/az.sql/new-azsqldatabaseexport) Cmdlet 將匯出資料庫要求提交至 Azure SQL Database 服務。 視資料庫大小而定，匯出作業可能需要一些時間才能完成。
+使用 [AzSqlDatabaseExport](/powershell/module/az.sql/new-azsqldatabaseexport) 指令程式，將匯出資料庫要求提交給 Azure SQL Database 服務。 視資料庫大小而定，匯出作業可能需要一些時間才能完成。
 
 ```powershell
 $exportRequest = New-AzSqlDatabaseExport -ResourceGroupName $ResourceGroupName -ServerName $ServerName `
@@ -89,7 +89,7 @@ $exportRequest = New-AzSqlDatabaseExport -ResourceGroupName $ResourceGroupName -
   -AdministratorLogin $creds.UserName -AdministratorLoginPassword $creds.Password
 ```
 
-若要檢查匯出要求的狀態，請使用[AzSqlDatabaseImportExportStatus](/powershell/module/az.sql/get-azsqldatabaseimportexportstatus) Cmdlet。 如果在要求後立即執行此 Cmdlet，通常會傳回 **Status : InProgress**。 當您看見 **Status: Succeeded** 時，便代表匯出已完成。
+若要檢查匯出要求的狀態，請使用 [AzSqlDatabaseImportExportStatus](/powershell/module/az.sql/get-azsqldatabaseimportexportstatus) Cmdlet。 如果在要求後立即執行此 Cmdlet，通常會傳回 **Status : InProgress**。 當您看見 **Status: Succeeded** 時，便代表匯出已完成。
 
 ```powershell
 $exportStatus = Get-AzSqlDatabaseImportExportStatus -OperationStatusLink $exportRequest.OperationStatusLink
@@ -106,10 +106,10 @@ $exportStatus
 
 ## <a name="next-steps"></a>後續步驟
 
-- 若要瞭解單一資料庫和集區資料庫的長期備份保留，做為匯出資料庫以供封存之用的替代方案，請參閱[長期備份保留](long-term-retention-overview.md)。 您可以使用 SQL Agent 作業來排程[僅限複製的資料庫備份](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server)，以替代長期備份保留。
+- 若要瞭解單一資料庫和集區資料庫的長期備份保留，以做為封存用途匯出資料庫的替代方案，請參閱 [長期備份保留](long-term-retention-overview.md)。 您可以使用 SQL Agent 作業來排程[僅限複製的資料庫備份](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server)，以替代長期備份保留。
 - 如需 SQL Server 客戶諮詢小組部落格中有關使用 BACPAC 檔案進行移轉的主題，請參閱[使用 BACPAC 檔案從 SQL Server 移轉至 Azure SQL Database](https://blogs.msdn.microsoft.com/sqlcat/2016/10/20/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/)。
 - 若要了解如何將 BACPAC 匯入 SQL Server 資料庫，請參閱 [將 BACPAC 匯入 SQL Server 資料庫](https://msdn.microsoft.com/library/hh710052.aspx)。
 - 若要了解如何將 BACPAC 從 SQL Server 資料庫匯出，請參閱[匯出資料層應用程式](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/export-a-data-tier-application)
-- 若要瞭解如何使用資料移轉服務來遷移資料庫，請參閱[使用 DMS 從 SQL Server 遷移至 Azure SQL Database 離線](../../dms/tutorial-sql-server-to-azure-sql.md)。
+- 若要瞭解如何使用資料移轉服務來遷移資料庫，請參閱 [使用 DMS 從 SQL Server 遷移至 Azure SQL Database 離線](../../dms/tutorial-sql-server-to-azure-sql.md)。
 - 如果您要從 SQL Server 匯出以準備移轉至 Azure SQL Database，請參閱[將 SQL Server 資料庫移轉至 Azure SQL Database](migrate-to-database-from-sql-server.md)。
 - 若要了解如何管理和共用儲存體金鑰，以及安全地共用存取簽章，請參閱 [Azure 儲存體安全性指南](https://docs.microsoft.com/azure/storage/common/storage-security-guide)。

@@ -11,12 +11,12 @@ author: jpe316
 ms.author: jordane
 ms.date: 03/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: 394d048ce5978c2789e47b984abebaf30dec5f93
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 6f03a1e44fdb62570b693753f5e01c7ab0f53e78
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90893565"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91302412"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps：使用 Azure Machine Learning 的模型管理、部署及監視
 
@@ -158,7 +158,7 @@ Azure ML 讓您能夠使用中繼資料來追蹤所有 ML 資產的端對端審�
 > [!TIP]
 > 雖然會自動捕獲有關模型和資料集的部分資訊，您也可以使用 __標記__來新增其他資訊。 在您的工作區中尋找已註冊的模型和資料集時，您可以使用標記作為篩選準則。
 >
-> 將資料集與已註冊的模型產生關聯是選擇性步驟。 如需在註冊模型時參考資料集的詳細資訊，請參閱 [模型](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model(class)?view=azure-ml-py&preserve-view=true) 類別參考。
+> 將資料集與已註冊的模型產生關聯是選擇性步驟。 如需在註冊模型時參考資料集的詳細資訊，請參閱 [模型](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py&preserve-view=true) 類別參考。
 
 
 ## <a name="notify-automate-and-alert-on-events-in-the-ml-lifecycle"></a>針對 ML 生命週期中的事件進行通知、自動化及警示
@@ -203,7 +203,7 @@ Azure ML 會將重要事件發佈至 Azure EventGrid，可用來通知和自動�
 
 您也可以使用 Azure Data Factory 來建立資料內嵌管線，以準備用於定型的資料。 如需詳細資訊，請參閱 [資料內嵌管線](how-to-cicd-data-ingestion.md)。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 若要深入瞭解，請閱讀及探索下列資源：
 

@@ -1,6 +1,6 @@
 ---
 title: 查詢效能深入解析
-description: 查詢效能監視會針對 Azure SQL Database 中的單一和集區資料庫，識別最耗用 CPU 和長時間執行的查詢。
+description: 查詢效能監視會識別 Azure SQL Database 中單一和集區資料庫的最多 CPU 耗用和長時間執行的查詢。
 services: sql-database
 ms.service: sql-database
 ms.subservice: performance
@@ -9,37 +9,37 @@ ms.devlang: ''
 ms.topic: conceptual
 author: danimir
 ms.author: danil
-ms.reviewer: jrasnik, carlrab
+ms.reviewer: jrasnik, sstein
 ms.date: 03/10/2020
-ms.openlocfilehash: 76be966d8202bb56a6762a261be5adeaf2d58d6b
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 0805ea3c18525cd4a7491b7b74d8a3cd1a01c6ab
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926394"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334906"
 ---
 # <a name="query-performance-insight-for-azure-sql-database"></a>Azure SQL Database 的查詢效能深入解析
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-查詢效能深入解析提供單一和集區資料庫的智慧型查詢分析。 它有助於識別您的工作負載中最常見的資源取用和長時間執行的查詢。 這可協助您找到要優化的查詢，以改善整體工作負載效能，並有效率地使用您要支付的資源。 查詢效能深入解析藉由提供下列功能，協助您花更少的時間針對資料庫效能進行疑難排解：
+查詢效能深入解析針對單一和集區資料庫提供智慧型查詢分析。 它可協助您識別工作負載中最重要的資源耗用和長時間執行的查詢。 這可協助您找出要優化的查詢，以提升整體工作負載效能，並有效率地使用您要支付的資源。 查詢效能深入解析藉由提供下列功能，協助您針對資料庫效能花較少的時間進行疑難排解：
 
 * 深入瞭解您的資料庫資源 (DTU) 耗用量
-* 依 CPU、持續時間和執行計數的前幾個資料庫查詢的詳細資料 (可能的微調候選項目以改善效能) 
-* 能夠向下切入查詢的詳細資料，以查看查詢文字和資源使用率的歷程記錄
-* 顯示來自[資料庫顧問](database-advisor-implement-performance-recommendations.md)之效能建議的批註
+* 依 CPU、持續時間和執行計數的最上層資料庫查詢詳細資料 (可能的微調候選效能改進) 
+* 深入瞭解查詢詳細資料的能力，以查看查詢文字和資源使用率的歷程記錄
+* 顯示[資料庫顧問](database-advisor-implement-performance-recommendations.md)效能建議的注釋
 
 ![查詢效能深入解析](./media/query-performance-insight-use/opening-title.png)
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-「查詢效能深入解析」要求 [查詢存放區](https://msdn.microsoft.com/library/dn817826.aspx) 在您的資料庫上為作用中狀態。 預設會針對 Azure SQL Database 中的所有資料庫自動啟用此功能。 如果查詢存放區未執行，Azure 入口網站會提示您加以啟用。
+「查詢效能深入解析」要求 [查詢存放區](https://msdn.microsoft.com/library/dn817826.aspx) 在您的資料庫上為作用中狀態。 預設會自動啟用 Azure SQL Database 中的所有資料庫。 如果查詢存放區未執行，Azure 入口網站會提示您加以啟用。
 
 > [!NOTE]
 > 如果入口網站中出現「此資料庫的查詢存放區未正確設定」訊息，請參閱[最佳化查詢存放區組態](#optimize-the-query-store-configuration)。
 
 ## <a name="permissions"></a>權限
 
-您需要下列[azure 角色型存取控制 (AZURE RBAC) ](../../role-based-access-control/overview.md)許可權，才能使用查詢效能深入解析：
+您需要下列 [azure 角色型存取控制 (AZURE RBAC) ](../../role-based-access-control/overview.md) 使用查詢效能深入解析的許可權：
 
 * 檢視最耗用資源的查詢和圖表時，需具備**讀取者**、**擁有者**、**參與者**、**SQL DB 參與者** 或 **SQL Server 參與者**權限。
 * 檢視查詢文字時，需具備**擁有者**、**參與者**、**SQL DB 參與者**或 **SQL Server 參與者**權限。
@@ -55,13 +55,13 @@ ms.locfileid: "87926394"
 
 3. 在第一個索引標籤上，檢閱排名最前面的資源取用查詢清單。
 4. 選取個別的查詢來檢視其詳細資料。
-5. 開啟**智慧型效能**  >  **效能建議**，並檢查是否有任何可用的效能建議。 如需內建效能建議的詳細資訊，請參閱[Azure SQL Database Advisor](database-advisor-implement-performance-recommendations.md)。
+5. 開啟**智慧型效能**  >  **效能建議**，並檢查是否有任何可用的效能建議。 如需內建效能建議的詳細資訊，請參閱 [Azure SQL Database Advisor](database-advisor-implement-performance-recommendations.md)。
 6. 使用滑桿或縮放圖示來變更觀測的間隔。
 
    ![效能儀表板](./media/query-performance-insight-use/performance.png)
 
 > [!NOTE]
-> 為了讓 Azure SQL Database 在查詢效能深入解析中轉譯資訊，查詢存放區需要捕捉幾個小時的資料。 如果在某段時間內資料庫沒有活動，或查詢存放區處於非作用中狀態，則在「查詢效能深入解析」顯示該時間範圍時，圖表將是空的。 如果查詢存放區未執行，您可以隨時加以啟用。 如需詳細資訊，請參閱[查詢存放區的最佳做法](https://docs.microsoft.com/sql/relational-databases/performance/best-practice-with-the-query-store)。
+> 若要讓 Azure SQL Database 在查詢效能深入解析中呈現資訊，查詢存放區需要捕獲幾小時的資料。 如果在某段時間內資料庫沒有活動，或查詢存放區處於非作用中狀態，則在「查詢效能深入解析」顯示該時間範圍時，圖表將是空的。 如果查詢存放區未執行，您可以隨時加以啟用。 如需詳細資訊，請參閱[查詢存放區的最佳做法](https://docs.microsoft.com/sql/relational-databases/performance/best-practice-with-the-query-store)。
 >
 
 如需資料庫效能的建議，請選取 [查詢效能深入解析] 導覽刀鋒視窗上的[建議](database-advisor-implement-performance-recommendations.md)。
@@ -85,7 +85,7 @@ ms.locfileid: "87926394"
    >
    > 如需更精細的比較 (最精細為一分鐘)，請考慮建立自訂 DTU 使用率圖表：
    >
-   > 1. 在 [Azure 入口網站中，選取 [ **Azure SQL Database**  >  **監視**]。
+   > 1. 在 [Azure 入口網站中，選取**Azure SQL Database**  >  **監視**]。
    > 2. 選取 [計量]。
    > 3. 選取 [+新增圖表]****。
    > 4. 選取圖表上的 DTU 百分比。
@@ -177,7 +177,7 @@ ms.locfileid: "87926394"
    >
    > 若要更詳盡地了解資料庫的 DTU 耗用量 (最詳細為一分鐘)，請考慮在 Azure 入口網站中建立自訂圖表：
    >
-   > 1. 選取 [ **Azure SQL Database**  >  **監視**]。
+   > 1. 選取**Azure SQL Database**  >  **監視**]。
    > 2. 選取 [計量]。
    > 3. 選取 [+新增圖表]****。
    > 4. 選取圖表上的 DTU 百分比。
@@ -192,7 +192,7 @@ ms.locfileid: "87926394"
 
 在某些情況下，很高的執行計數可能會導致網路往返次數增加。 往返次數會影響效能。 它們會受限於網路延遲和下游伺服器延遲。
 
-例如，許多資料導向的網站會針對每個使用者要求大量存取資料庫。 雖然連接共用有助於，伺服器上增加的網路流量和處理負載可能會使效能變慢。 一般情況下，應盡可能壓低往返次數。
+例如，許多資料導向的網站會針對每個使用者要求大量存取資料庫。 雖然連接共用有助於，但是伺服器上增加的網路流量和處理負載可能會降低效能。 一般情況下，應盡可能壓低往返次數。
 
 若要識別經常執行的 ( 「多對話」 ) 查詢：
 
@@ -207,7 +207,7 @@ ms.locfileid: "87926394"
 
 在「查詢效能深入解析」中瀏覽您的工作負載時，您可能會注意到圖表最上方含有垂直線的圖示。
 
-這些圖示是註釋。 它們會顯示[Azure SQL Database Advisor](database-advisor-implement-performance-recommendations.md)的效能建議。 將滑鼠停留在註釋上方，可取得關於效能建議的摘要資訊。
+這些圖示是註釋。 它們會顯示 [Azure SQL Database Advisor](database-advisor-implement-performance-recommendations.md)的效能建議。 將滑鼠停留在註釋上方，可取得關於效能建議的摘要資訊。
 
    ![查詢註釋](./media/query-performance-insight-use/annotation.png)
 
@@ -219,7 +219,7 @@ ms.locfileid: "87926394"
 
 使查詢和效能調整動作相互關聯，有助於深入了解您的工作負載。
 
-## <a name="optimize-the-query-store-configuration"></a>將查詢存放區設定優化
+## <a name="optimize-the-query-store-configuration"></a>優化查詢存放區設定
 
 在使用查詢效能深入解析時，您可能會看到下列查詢存放區錯誤訊息：
 
@@ -238,14 +238,14 @@ ms.locfileid: "87926394"
 
 保留期原則有兩種：
 
-* 以**大小為基礎**：如果此原則設定為 [**自動**]，則會在達到接近大小上限時自動清除資料。
-* **時間**型：根據預設，此原則設定為30天。 如果查詢存放區的空間用盡，就會刪除 30 天之前的查詢資訊。
+* **大小**：如果此原則設定為 [ **自動**]，則會在達到接近最大值時自動清除資料。
+* 以**時間為基礎：根據**預設，此原則設為30天。 如果查詢存放區的空間用盡，就會刪除 30 天之前的查詢資訊。
 
 您可以將擷取原則設為：
 
 * **All**：查詢存放區會捕捉所有查詢。
-* **Auto**：查詢存放區忽略不常執行的查詢，以及具有無意義的編譯和執行持續時間的查詢。 執行次數、編譯持續時間和執行階段持續時間的閾值皆由內部決定。 這是預設選項。
-* **無**：查詢存放區會停止捕捉新的查詢，但仍會收集已捕捉之查詢的執行時間統計資料。
+* **Auto**：查詢存放區忽略無意義的編譯和執行期間的不頻繁查詢和查詢。 執行次數、編譯持續時間和執行階段持續時間的閾值皆由內部決定。 這是預設選項。
+* **無**：查詢存放區停止捕捉新的查詢，但仍會收集已捕捉的查詢執行時間統計資料。
 
 建議您從 [SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) 或 Azure 入口網站執行下列命令，將所有原則設為 [自動]****，並將清除原則設為 30 天。 (請將 `YourDB` 取代為資料庫名稱)。
 
@@ -278,4 +278,4 @@ ms.locfileid: "87926394"
 
 ## <a name="next-steps"></a>後續步驟
 
-請考慮使用[Azure SQL 分析](../../azure-monitor/insights/azure-sql.md)，以進行大量單一和集區資料庫、彈性集區、受控實例和實例資料庫的先進效能監視。
+請考慮使用 [Azure SQL 分析](../../azure-monitor/insights/azure-sql.md) ，以進行大量單一和集區資料庫、彈性集區、受控實例和實例資料庫的先進效能監視。

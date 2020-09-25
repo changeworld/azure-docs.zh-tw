@@ -11,14 +11,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: VanMSFT
 ms.author: vanto
-ms.reviewer: carlrab
+ms.reviewer: sstein
 ms.date: 03/23/2020
-ms.openlocfilehash: 891d5907ee8c964ebe7e281f6298205712ce1186
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 7be78a0c05942aebb9e3154a79035d71f87becd3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89441165"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334900"
 ---
 # <a name="authorize-database-access-to-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>授權資料庫存取 SQL Database、SQL 受控執行個體和 Azure Synapse Analytics
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -169,6 +169,6 @@ ms.locfileid: "89441165"
 - [資料遮罩](dynamic-data-masking-overview.md) 可用來限制公開機密資料。
 - [預存程序](https://docs.microsoft.com/sql/relational-databases/stored-procedures/stored-procedures-database-engine) 可用來限制對資料庫可採取的動作。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如需所有 Azure SQL Database 和 SQL 受控執行個體安全性功能的總覽，請參閱 [安全性總覽](security-overview.md)。

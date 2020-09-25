@@ -11,12 +11,12 @@ author: lobrien
 ms.date: 8/25/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq1
-ms.openlocfilehash: ddc8186e85001a2a3ed2ed9f57b8f025133ef16a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 46a5f4036be2d670689f7e936a31dc63e0690ddc
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90897747"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91302378"
 ---
 # <a name="publish-and-track-machine-learning-pipelines"></a>發佈和追蹤機器學習管線
 
@@ -26,7 +26,7 @@ ms.locfileid: "90897747"
 
 機器學習管線是機器學習工作的可重複使用工作流程。 管線的其中一個優點是會增加共同作業。 您也可以在使用新版本時，讓客戶使用目前的模型，來為管線進行版本處理。 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 建立 [Azure Machine Learning 工作區](how-to-manage-workspace.md) 以保存您的所有管線資源
 
@@ -84,6 +84,74 @@ response = requests.post(published_pipeline1.endpoint,
                          json={"ExperimentName": "My_Pipeline",
                                "ParameterAssignments": {"pipeline_arg": 20}})
 ```
+
+`json`POST 要求的引數必須包含索引 `ParameterAssignments` 鍵的字典，其中包含管線參數和其值。 此外， `json` 引數可能包含下列索引鍵：
+
+| Key | 描述 |
+| --- | --- | 
+| `ExperimentName` | 與此端點相關聯的實驗名稱 |
+| `Description` | 描述端點的自由格式文字 | 
+| `Tags` | 可以用來標記和標注要求的自由格式索引鍵/值組  |
+| `DataSetDefinitionValueAssignments` | 用於變更資料集而不需要重新定型的字典 (請參閱下面的討論)  | 
+| `DataPathAssignments` | 用於變更 datapaths 而不需要重新定型的字典 (請參閱以下討論)  | 
+
+### <a name="changing-datasets-and-datapaths-without-retraining"></a>在不重新訓練的情況下變更資料集和 datapaths
+
+您可能想要在不同的資料集和 datapaths 上進行定型和推斷。 例如，您可能想要針對較小、sparser 的資料集進行定型，但對完整資料集進行推斷。 您可以使用 `DataSetDefinitionValueAssignments` 要求的引數中的索引鍵來切換資料集 `json` 。 您可以使用切換 datapaths `DataPathAssignments` 。 兩者的技巧很類似：
+
+1. 在您的管線定義腳本中， `PipelineParameter` 為資料集建立。 `DatasetConsumptionConfig` `DataPath` 從下列建立或 `PipelineParameter` ：
+
+    ```python
+    tabular_dataset = Dataset.Tabular.from_delimited_files('https://dprepdata.blob.core.windows.net/demo/Titanic.csv')
+    tabular_pipeline_param = PipelineParameter(name="tabular_ds_param", default_value=tabular_dataset)
+    tabular_ds_consumption = DatasetConsumptionConfig("tabular_dataset", tabular_pipeline_param)
+    ```
+
+1. 在您的 ML 腳本中，使用下列方式存取動態指定的資料集 `Run.get_context().input_datasets` ：
+
+    ```python
+    from azureml.core import Run
+    
+    input_tabular_ds = Run.get_context().input_datasets['tabular_dataset']
+    dataframe = input_tabular_ds.to_pandas_dataframe()
+    # ... etc ...
+    ```
+
+    請注意，ML 腳本會存取針對 () 指定的值 `DatasetConsumptionConfig` `tabular_dataset` ，而非 `PipelineParameter` () 的值 `tabular_ds_param` 。
+
+1. 在您的管線定義腳本中，將設定 `DatasetConsumptionConfig` 為的參數 `PipelineScriptStep` ：
+
+    ```python
+    train_step = PythonScriptStep(
+        name="train_step",
+        script_name="train_with_dataset.py",
+        arguments=["--param1", tabular_ds_consumption],
+        inputs=[tabular_ds_consumption],
+        compute_target=compute_target,
+        source_directory=source_directory)
+    
+    pipeline = Pipeline(workspace=ws, steps=[train_step])
+    ```
+
+1. 若要在推斷 REST 呼叫中動態切換資料集，請使用 `DataSetDefinitionValueAssignments` ：
+    
+    ```python
+    tabular_ds1 = Dataset.Tabular.from_delimited_files('path_to_training_dataset')
+    tabular_ds2 = Dataset.Tabular.from_delimited_files('path_to_inference_dataset')
+    ds1_id = tabular_ds1.id
+    d22_id = tabular_ds2.id
+    
+    response = requests.post(rest_endpoint, 
+                             headers=aad_token, 
+                             json={
+                                "ExperimentName": "MyRestPipeline",
+                               "DataSetDefinitionValueAssignments": {
+                                    "tabular_ds_param": {
+                                        "SavedDataSetReference": {"Id": ds1_id #or ds2_id
+                                    }}}})
+    ```
+
+筆記本 [展示資料集和 >pipelineparameter](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-showcasing-dataset-and-pipelineparameter.ipynb) 和 [展示資料路徑和 >pipelineparameter](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-showcasing-datapath-and-pipelineparameter.ipynb) 都有這項技術的完整範例。
 
 ## <a name="create-a-versioned-pipeline-endpoint"></a>建立已建立版本的管線端點
 
@@ -152,7 +220,7 @@ p.disable()
 
 您可以使用重新啟用它 `p.enable()` 。 如需詳細資訊，請參閱 [PublishedPipeline 類別](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.publishedpipeline?view=azure-ml-py&preserve-view=true) 參考。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 使用 [GitHub 上的這些 Jupyter Notebook](https://aka.ms/aml-pipeline-readme) 來進一步探索機器學習管線。
 - 請參閱 [azureml-管線-核心](https://docs.microsoft.com/python/api/azureml-pipeline-core/?view=azure-ml-py&preserve-view=true) 封裝和 [azureml-管線-步驟](https://docs.microsoft.com/python/api/azureml-pipeline-steps/?view=azure-ml-py&preserve-view=true) 套件的 SDK 參考說明。

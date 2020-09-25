@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/13/2019
+ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 9e8bd56655adfa1f7cdb769ac6cd282193b1bcf2
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: ff408b8c8111eeb9c5b112a430858811276572c3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90901383"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323776"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Azure 資訊安全中心的檔案完整性監視
 了解如何利用此逐步解說，在 Azure 資訊安全中心設定檔案完整性監視 (FIM)。
@@ -31,7 +31,7 @@ ms.locfileid: "90901383"
 |釋放狀態：|正式上市 (GA)|
 |定價：|需要 [適用于伺服器的 Azure Defender](defender-for-servers-introduction.md)|
 |必要的角色和許可權：|**工作區擁有** 者可以啟用/停用 FIM (如需詳細資訊，請參閱 [適用于 Log Analytics 的 Azure 角色](https://docs.microsoft.com/services-hub/health/azure-roles#azure-roles)) 。<br>**讀者** 可以看到結果。|
-|雲端：|![Yes](./media/icons/yes-icon.png) 商業雲端<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) 中國 Gov，其他 Gov|
+|雲端：|![是](./media/icons/yes-icon.png) 商業雲端<br>![是](./media/icons/yes-icon.png) US Gov<br>![否](./media/icons/no-icon.png) 中國 Gov，其他 Gov|
 |||
 
 
@@ -206,7 +206,7 @@ FIM 使用 Azure 變更追蹤解決方案來追蹤及識別您環境中的變更
 
    ![新增要監視的項目][14]
 
-3. 選取 [新增]  。 [Add for Change Tracking] \(新增變更追蹤項目\)**** 會隨即開啟。
+3. 選取 [新增]。 [Add for Change Tracking] \(新增變更追蹤項目\)**** 會隨即開啟。
 
    ![輸入所要求的資訊][15]
 
@@ -251,7 +251,7 @@ FIM 使用 Azure 變更追蹤解決方案來追蹤及識別您環境中的變更
 
 4. 選取 [移除]**** 以停用。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 在本文中，您已瞭解如何在安全中心 (FIM) 中使用檔案完整性監視。 若要深入了解資訊安全中心，請參閱下列頁面：
 
 * [設定安全性原則](tutorial-security-policy.md) --瞭解如何為您的 Azure 訂用帳戶和資源群組設定安全性原則。

@@ -1,22 +1,22 @@
 ---
 title: 存取和管理 IBM DB2 資源
-description: 藉由使用 Azure Logic Apps 建立自動化工作流程，來讀取、編輯、更新及管理 IBM DB2 資源
+description: 使用 Azure Logic Apps 建立自動化工作流程，以讀取、編輯、更新及管理 IBM DB2 資源
 services: logic-apps
 ms.suite: integration
 ms.reviewer: plarsen, logicappspm
 ms.topic: conceptual
 ms.date: 08/23/2018
 tags: connectors
-ms.openlocfilehash: bd85155f932d57319f5f27081b44b48e5540bfb2
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 6c9c54450788a89a7b1aadbb0b4682a60619c061
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284042"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334594"
 ---
-# <a name="access-and-manage-ibm-db2-resources-by-using-azure-logic-apps"></a>使用 Azure Logic Apps 存取和管理 IBM DB2 資源
+# <a name="access-and-manage-ibm-db2-resources-by-using-azure-logic-apps"></a>使用 Azure Logic Apps 來存取和管理 IBM DB2 資源
 
-透過[Azure Logic Apps](../logic-apps/logic-apps-overview.md)和[IBM DB2 連接器](/connectors/db2/)，您可以根據儲存在 DB2 資料庫中的資源，建立自動化的工作和工作流程。 工作流程可以連線到資料庫中的資源、讀取和列出資料庫資料表、新增資料列、變更資料列、刪除資料列，不一而足。 您可以將動作納入邏輯應用程式中，以取得資料庫回應，並提供輸出給其他動作使用。
+使用 [Azure Logic Apps](../logic-apps/logic-apps-overview.md) 和 [IBM DB2 連接器](/connectors/db2/)，您可以根據儲存在 DB2 資料庫中的資源，建立自動化的工作和工作流程。 工作流程可以連線到資料庫中的資源、讀取和列出資料庫資料表、新增資料列、變更資料列、刪除資料列，不一而足。 您可以將動作納入邏輯應用程式中，以取得資料庫回應，並提供輸出給其他動作使用。
 
 本文說明如何建立邏輯應用程式來執行各種資料庫作業。 如果您不熟悉邏輯應用程式，請檢閱[什麼是 Azure Logic Apps？](../logic-apps/logic-apps-overview.md)
 
@@ -24,7 +24,7 @@ ms.locfileid: "87284042"
 
 DB2 連接器內含 Microsoft 用戶端，以便透過 TCP/IP 網路來與遠端 DB2 伺服器通訊。 您可以使用此連接器來存取雲端資料庫，例如在 Azure 虛擬化中執行的 IBM DB2 for Windows。 您也可以在[安裝和設定內部部署資料閘道](../logic-apps/logic-apps-gateway-connection.md)後，存取內部部署 DB2 資料庫。
 
-IBM DB2 連接器支援這些 IBM DB2 平臺和版本，以及支援分散式關係資料庫架構（DRDA） SQL 存取管理員（SQLAM）版本10和11的 IBM DB2 相容產品：
+IBM DB2 連接器支援這些 IBM DB2 平臺和版本，以及支援分散式關係資料庫架構的 IBM DB2 相容產品 (DRDA) SQL 存取管理員 (SQLAM) 版本10和11：
 
 | 平台 | 版本 | 
 |----------|---------|
@@ -47,7 +47,7 @@ IBM DB2 連接器支援以下資料庫作業，這些作業對應至連接器中
 | 使用 DELETE 移除一個資料列 | 刪除資料列 |
 |||
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先[註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
 
@@ -120,7 +120,7 @@ IBM DB2 連接器支援以下資料庫作業，這些作業對應至連接器中
 
 若要手動執行邏輯應用程式，請在設計工具的工具列上，選擇 [執行]****。 邏輯應用程式執行完成後，您即可檢視執行的輸出。
 
-1. 在邏輯應用程式功能表上，選取 [概觀]****。
+1. 在邏輯應用程式功能表上，選取 [概觀]  。
 
 1. 在 [摘要]**** 底下的 [執行歷程記錄]**** 區段中，選取最新的執行，也就是清單中的第一個項目。
 
@@ -157,7 +157,7 @@ IBM DB2 連接器支援以下資料庫作業，這些作業對應至連接器中
    | **區域識別碼** | 是 | 所需記錄的識別碼，例如此例中的「99999」 |
    ||||
 
-   ![選取資料表](./media/connectors-create-api-db2/db2-get-row-action-select-table.png)
+   ![顯示「取得資料列 (預覽) 」動作的螢幕擷取畫面，其中已開啟「資料表名稱」清單和「區域」值。](./media/connectors-create-api-db2/db2-get-row-action-select-table.png)
 
 1. 當您完成時，請在設計工具的工具列上，選擇 [儲存]****。
 
@@ -165,7 +165,7 @@ IBM DB2 連接器支援以下資料庫作業，這些作業對應至連接器中
 
 若要手動執行邏輯應用程式，請在設計工具的工具列上，選擇 [執行]****。 邏輯應用程式執行完成後，您即可檢視執行的輸出。
 
-1. 在邏輯應用程式功能表上，選取 [概觀]****。
+1. 在邏輯應用程式功能表上，選取 [概觀]  。
 
 1. 在 [摘要]**** 底下的 [執行歷程記錄]**** 區段中，選取最新的執行，也就是清單中的第一個項目。
 
@@ -192,7 +192,7 @@ IBM DB2 連接器支援以下資料庫作業，這些作業對應至連接器中
 
 1. 開啟 [資料表名稱]**** 清單，然後選取所需的資料表，也就是此例中的「AREA」：
 
-   ![選取資料表](./media/connectors-create-api-db2/db2-get-rows-action-select-table.png)
+   ![顯示 [取得資料列 (預覽) ] 動作的螢幕擷取畫面，其中已在 [資料表名稱] 清單中選取 [區域] 值。](./media/connectors-create-api-db2/db2-get-rows-action-select-table.png)
 
 1. 若要指定篩選條件或查詢結果，請選擇 [顯示進階選項]****。
 
@@ -202,7 +202,7 @@ IBM DB2 連接器支援以下資料庫作業，這些作業對應至連接器中
 
 若要手動執行邏輯應用程式，請在設計工具的工具列上，選擇 [執行]****。 邏輯應用程式執行完成後，您即可檢視執行的輸出。
 
-1. 在邏輯應用程式功能表上，選取 [概觀]****。
+1. 在邏輯應用程式功能表上，選取 [概觀]  。
 
 1. 在 [摘要]**** 底下的 [執行歷程記錄]**** 區段中，選取最新的執行，也就是清單中的第一個項目。
 
@@ -241,7 +241,7 @@ IBM DB2 連接器支援以下資料庫作業，這些作業對應至連接器中
 
    例如：
 
-   ![選取資料表](./media/connectors-create-api-db2/db2-insert-row-action-select-table.png)
+   ![顯示 Logic Apps 設計工具的螢幕擷取畫面，其中顯示「插入資料列 (預覽) 」動作和範例屬性值。](./media/connectors-create-api-db2/db2-insert-row-action-select-table.png)
 
 1. 當您完成時，請在設計工具的工具列上，選擇 [儲存]****。
 
@@ -249,7 +249,7 @@ IBM DB2 連接器支援以下資料庫作業，這些作業對應至連接器中
 
 若要手動執行邏輯應用程式，請在設計工具的工具列上，選擇 [執行]****。 邏輯應用程式執行完成後，您即可檢視執行的輸出。
 
-1. 在邏輯應用程式功能表上，選取 [概觀]****。
+1. 在邏輯應用程式功能表上，選取 [概觀]  。
 
 1. 在 [摘要]**** 底下的 [執行歷程記錄]**** 區段中，選取最新的執行，也就是清單中的第一個項目。
 
@@ -289,7 +289,7 @@ IBM DB2 連接器支援以下資料庫作業，這些作業對應至連接器中
 
    例如：
 
-   ![選取資料表](./media/connectors-create-api-db2/db2-update-row-action-select-table.png)
+   ![顯示 Logic Apps 設計工具的螢幕擷取畫面，其中包含您選取資料表的 [更新資料列 (預覽) ] 動作。](./media/connectors-create-api-db2/db2-update-row-action-select-table.png)
 
 1. 當您完成時，請在設計工具的工具列上，選擇 [儲存]****。
 
@@ -297,7 +297,7 @@ IBM DB2 連接器支援以下資料庫作業，這些作業對應至連接器中
 
 若要手動執行邏輯應用程式，請在設計工具的工具列上，選擇 [執行]****。 邏輯應用程式執行完成後，您即可檢視執行的輸出。
 
-1. 在邏輯應用程式功能表上，選取 [概觀]****。
+1. 在邏輯應用程式功能表上，選取 [概觀]  。
 
 1. 在 [摘要]**** 底下的 [執行歷程記錄]**** 區段中，選取最新的執行，也就是清單中的第一個項目。
 
@@ -334,7 +334,7 @@ IBM DB2 連接器支援以下資料庫作業，這些作業對應至連接器中
 
    例如：
 
-   ![選取資料表](./media/connectors-create-api-db2/db2-delete-row-action-select-table.png)
+   ![顯示 Logic Apps 設計工具的螢幕擷取畫面，其中包含您選取要刪除之資料表的 [刪除資料列 (預覽) ] 動作。](./media/connectors-create-api-db2/db2-delete-row-action-select-table.png)
 
 1. 當您完成時，請在設計工具的工具列上，選擇 [儲存]****。
 
@@ -342,7 +342,7 @@ IBM DB2 連接器支援以下資料庫作業，這些作業對應至連接器中
 
 若要手動執行邏輯應用程式，請在設計工具的工具列上，選擇 [執行]****。 邏輯應用程式執行完成後，您即可檢視執行的輸出。
 
-1. 在邏輯應用程式功能表上，選取 [概觀]****。
+1. 在邏輯應用程式功能表上，選取 [概觀]  。
 
 1. 在 [摘要]**** 底下的 [執行歷程記錄]**** 區段中，選取最新的執行，也就是清單中的第一個項目。
 
@@ -359,10 +359,10 @@ IBM DB2 連接器支援以下資料庫作業，這些作業對應至連接器中
 
 ## <a name="connector-reference"></a>連接器參考
 
-如需此連接器的更多技術詳細資料，例如連接器的 Swagger 檔案所描述的觸發程式、動作和限制，請參閱[連接器的參考頁面](/connectors/db2/)。
+如需此連接器的更多技術詳細資料，如連接器的 Swagger 檔案所述的觸發程式、動作和限制，請參閱 [連接器的參考頁面](/connectors/db2/)。
 
 > [!NOTE]
-> 對於[整合服務環境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中的邏輯應用程式，此連接器的 ise 標記版本會使用[ISE 訊息限制](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)。
+> 若為 [整合服務環境 ](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中的邏輯應用程式 (ISE) ，此連接器的 ISE 標記版本會改用 [ise 訊息限制](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) 。
 
 ## <a name="next-steps"></a>後續步驟
 

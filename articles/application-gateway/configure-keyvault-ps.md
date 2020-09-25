@@ -1,19 +1,19 @@
 ---
 title: 以 Key Vault 憑證設定 TLS 終止 - PowerShell
 titleSuffix: Azure Application Gateway
-description: 了解 Azure 應用程式閘道如何與 Key Vault 整合，以使用連結到 HTTPS 所支援接聽程式的伺服器憑證。
+description: 瞭解如何使用 Azure PowerShell 腳本，將您的金鑰保存庫與您的應用程式閘道整合，以使用 TLS/SSL 終止憑證。
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: how-to
 ms.date: 05/26/2020
 ms.author: victorh
-ms.openlocfilehash: 4a872bc63be33ebed0a8ba9d89383cdfc9feef28
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: aaaeed9d8d6a2d84fa13f495f581dc1f5fdc19e2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386277"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323418"
 ---
 # <a name="configure-tls-termination-with-key-vault-certificates-using-azure-powershell"></a>透過 Azure PowerShell 使用 Key Vault 憑證設定 TLS 終止
 

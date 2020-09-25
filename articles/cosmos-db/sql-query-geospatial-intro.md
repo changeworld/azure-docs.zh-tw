@@ -1,22 +1,22 @@
 ---
 title: Azure Cosmos DB 中的地理空間和 GeoJSON 位置資料
-description: 瞭解如何使用 Azure Cosmos DB 和 SQL API 來建立空間物件。
+description: 瞭解如何使用 Azure Cosmos DB 和 SQL API 建立空間物件。
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: tisande
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 25150722e2d42625731cb741be80b86645c857e0
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: ee88b980c448bfbf581537aef4653fde5354623a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420085"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91302926"
 ---
 # <a name="geospatial-and-geojson-location-data-in-azure-cosmos-db"></a>Azure Cosmos DB 中的地理空間和 GeoJSON 位置資料
 
-本文將介紹 Azure Cosmos DB 中的地理空間功能。 目前僅 Azure Cosmos DB SQL API 帳戶支援儲存和存取地理空間資料。 閱讀我們的關於地理空間索引的檔之後，您將能夠回答下列問題：
+本文將介紹 Azure Cosmos DB 中的地理空間功能。 目前只有 Azure Cosmos DB SQL API 帳戶支援儲存和存取地理空間資料。 閱讀我們的地理空間索引編制檔之後，您將能夠回答下列問題：
 
 * 如何在 Azure Cosmos DB 中儲存空間資料？
 * 如何以 SQL 和 LINQ 查詢 Azure Cosmos DB 中的地理空間資料？
@@ -24,21 +24,21 @@ ms.locfileid: "87420085"
 
 ## <a name="spatial-data-use-cases"></a>空間資料使用案例
 
-地理空間資料通常會牽涉到鄰近性查詢，例如「尋找我目前位置附近的所有咖啡廳」。 常見的使用案例包括：
+地理空間資料通常涉及鄰近性查詢，例如「尋找我目前位置附近的所有咖啡廳」。 常見的使用案例包括：
 
-* 地理位置分析，驅動特定的行銷計畫。
+* 地理位置分析，推動特定的行銷計畫。
 * 以位置為基礎的個人化，適用于多個產業，例如零售和醫療保健。
 * 物流增強功能，適用于傳輸優化。
-* 風險分析，特別是針對保險和金融公司。
+* 風險分析，特別是針對保險和財務公司。
 * 環境感知，適用于警示和通知。
 
 ## <a name="introduction-to-spatial-data"></a>空間資料簡介
 
 空間資料可描述空間中物件的位置和形狀。 在大部分的應用程式中，這些會對應至地球上的物件和地理空間資料。 空間資料可以用來代表人、感興趣的地方、城市邊界或湖泊。
 
-Azure Cosmos DB 的 SQL API 支援兩種空間資料類型： **geometry**資料類型和**geography**資料類型。
+Azure Cosmos DB 的 SQL API 支援兩種空間資料類型： **geometry** 資料類型和 **geography** 資料類型。
 
-- **Geometry**類型代表 Euclidean （平面）座標系統中的資料
+- **Geometry**型別代表 Euclidean (平面) 座標系統中的資料
 - **geography** 類型代表圓形表面座標系統中的資料。
 
 ## <a name="supported-data-types"></a>支援的資料類型
@@ -49,14 +49,14 @@ Azure Cosmos DB 支援下列空間資料類型：
 
 - Point
 - LineString
-- 多邊形
+- Polygon
 - MultiPolygon
 
 ### <a name="points"></a>點
 
 **點** 代表空間中的單一位置。 在地理空間資料中，某個點所代表的確切位置可能是雜貨店的街道地址、電話亭、汽車或城市。  點會使用其座標組或經緯度，以 GeoJSON (和 Azure Cosmos DB) 來表示。
 
-以下是某個點的 JSON 範例：
+以下是某個點的範例 JSON：
 
 **Azure Cosmos DB 中的點**
 
@@ -84,13 +84,13 @@ Azure Cosmos DB 支援下列空間資料類型：
 }
 ```
 
-### <a name="points-in-a-geometry-coordinate-system"></a>Geometry 座標系統中的點
+### <a name="points-in-a-geometry-coordinate-system"></a>幾何座標系統中的點
 
-若為**geometry**資料類型，GeoJSON 規格會先指定水準軸和垂直軸秒。
+若為 **geometry** 資料類型，GeoJSON 規格會指定水準軸和垂直軸的第二個。
 
 ### <a name="points-in-a-geography-coordinate-system"></a>地理座標系統中的點
 
-對於**geography**資料類型，GeoJSON 規格會指定經度 first 和緯度 second。 如同其他的地圖應用程式，經度和緯度為角度，並以度為表示單位。 經度值是從本初子午線測量，並介於 -180 度和 180.0 度之間；緯度值是從赤道測量，並介於 -90.0 度和 90.0 度之間。
+針對 **geography** 資料類型，GeoJSON 規格會指定經度 first 和緯度 second。 如同其他的地圖應用程式，經度和緯度為角度，並以度為表示單位。 經度值是從本初子午線測量，並介於 -180 度和 180.0 度之間；緯度值是從赤道測量，並介於 -90.0 度和 90.0 度之間。
 
 Azure Cosmos DB 會依照 WGS-84 參考系統所表示的方式來解譯座標。 請參閱下方詳細的座標參考系統資料。
 
@@ -110,7 +110,7 @@ Azure Cosmos DB 會依照 WGS-84 參考系統所表示的方式來解譯座標�
 
 ### <a name="polygons"></a>多邊形
 
-**多邊形**是連接點的界限，會形成封閉的 LineString。 多邊形常用來代表自然構成物，例如湖泊，或代表政治管轄權，例如城市和州省。 以下是 Azure Cosmos DB 中多邊形的範例：
+**多邊形**是形成封閉 LineString 之連接點的界限。 多邊形常用來代表自然構成物，例如湖泊，或代表政治管轄權，例如城市和州省。 以下是 Azure Cosmos DB 中的多邊形範例：
 
 **GeoJSON 中的多邊形**
 
@@ -136,7 +136,7 @@ Azure Cosmos DB 會依照 WGS-84 參考系統所表示的方式來解譯座標�
 
 ### <a name="multipolygons"></a>MultiPolygons
 
-**MultiPolygon**是零個或多個多邊形的陣列。 **MultiPolygons**不能重迭邊或具有任何通用區域。 他們可能會接觸一或多個點。
+**MultiPolygon**是零或多個多邊形的陣列。 **MultiPolygons** 不能重迭邊或具有任何通用區域。 他們可以接觸一或多個點。
 
 **GeoJSON 中的 MultiPolygons**
 
@@ -162,9 +162,9 @@ Azure Cosmos DB 會依照 WGS-84 參考系統所表示的方式來解譯座標�
 
 ## <a name="coordinate-reference-systems"></a>座標參考系統
 
-由於地球的形狀是不規則的，地理地理空間資料的座標會以許多座標參考系統（CRS）來表示，而每一個都有自己的參考框架和測量單位。 例如「英國國家格網參考系統」對英國而言是精確的參考系統，但對其他地區則不是。
+由於地球的形狀很不規則，地理空間地理空間資料的座標會以許多座標參考系統表示 (CRS) ，每個都有自己的參考框架和測量單位。 例如「英國國家格網參考系統」對英國而言是精確的參考系統，但對其他地區則不是。
 
-現今最常使用的 CRS 是「全球大地座標系統」[WGS-84](https://earth-info.nga.mil/GandG/update/index.php)。 GPS 裝置和許多地圖服務，包括 Google 地圖與 Bing Maps API 均是使用 WGS-84。 Azure Cosmos DB 僅支援使用 WGS-84 CRS 編制和查詢地理空間資料。
+現今最常使用的 CRS 是「全球大地座標系統」[WGS-84](https://earth-info.nga.mil/GandG/update/index.php)。 GPS 裝置和許多地圖服務，包括 Google 地圖與 Bing Maps API 均是使用 WGS-84。 Azure Cosmos DB 僅支援使用 WGS-84 CRS 來編制地理空間資料的索引和查詢。
 
 ## <a name="creating-documents-with-spatial-data"></a>建立具有空間資料的文件
 當您建立包含 GeoJSON 值的文件時，值會根據容器的索引編製原則，自動以空間索引進行索引編製。 如果您是以動態類型的語言 (如 Python 或 Node.js) 使用 Azure Cosmos DB SDK，則必須建立有效的 GeoJSON。
@@ -185,7 +185,7 @@ client.createDocument(`dbs/${databaseName}/colls/${collectionName}`, userProfile
 });
 ```
 
-如果您使用的是 SQL api，您可以使用 `Point` `LineString` `Polygon` 命名空間中的、、和 `MultiPolygon` 類別， `Microsoft.Azure.Cosmos.Spatial` 將位置資訊內嵌在應用程式物件中。 這些類別可協助將空間資料序列化和還原序列化簡化成 GeoJSON。
+如果您使用的是 SQL api，您可以使用 `Point` `LineString` `Polygon` 命名空間內的、、和類別，在 `MultiPolygon` `Microsoft.Azure.Cosmos.Spatial` 您的應用程式物件內內嵌位置資訊。 這些類別可協助將空間資料序列化和還原序列化簡化成 GeoJSON。
 
 **以 .NET 建立具有地理空間資料的文件**
 
@@ -210,12 +210,12 @@ await container.CreateItemAsync( new UserProfile
     });
 ```
 
-如果您沒有緯度和經度資訊，但具有實體位址或位置名稱（例如城市或國家/地區），您可以使用地理編碼服務（例如 Bing 地圖 REST 服務）來查詢實際的座標。 在 [這裡](https://msdn.microsoft.com/library/ff701713.aspx)深入了解 Bing Maps 地理編碼。
+如果您沒有緯度和經度資訊，但具有實體位址或位置名稱（例如城市或國家/地區），您可以使用地理編碼服務（例如 Bing 地圖服務 REST 服務）來查閱實際的座標。 在 [這裡](https://msdn.microsoft.com/library/ff701713.aspx)深入了解 Bing Maps 地理編碼。
 
 ## <a name="next-steps"></a>後續步驟
 
 既然您已了解如何開始使用 Azure Cosmos DB 中的地理空間支援，您可以接著：
 
 * 深入了解 [Azure Cosmos DB 查詢](sql-query-getting-started.md)
-* 深入瞭解如何[使用 Azure Cosmos DB 來查詢空間資料](sql-query-geospatial-query.md)
-* 深入瞭解如何[使用 Azure Cosmos DB 編制索引空間資料](sql-query-geospatial-index.md)
+* 深入瞭解如何 [使用 Azure Cosmos DB 來查詢空間資料](sql-query-geospatial-query.md)
+* 深入瞭解 [索引空間資料與 Azure Cosmos DB](sql-query-geospatial-index.md)

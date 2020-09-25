@@ -1,5 +1,5 @@
 ---
-title: 將資料從 CSV 檔案載入資料庫（bcp）
+title: 將 CSV 檔案中的資料載入 (bcp) 的資料庫
 description: 對於較小的資料大小，請使用 bcp 將資料匯入 Azure SQL Database。
 services: sql-database
 ms.service: sql-database
@@ -9,23 +9,23 @@ ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
-ms.reviewer: carlrab
+ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: a5c09ef5ca1e3a4f47c4fd9d7d022c000378a6d3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9c07abc336d77719bb2af54ccf11a4786225b0e9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84032999"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91283900"
 ---
-# <a name="load-data-from-csv-into-azure-sql-database-or-sql-managed-instance-flat-files"></a>將資料從 CSV 載入 Azure SQL Database 或 SQL 受控執行個體（一般檔案）
+# <a name="load-data-from-csv-into-azure-sql-database-or-sql-managed-instance-flat-files"></a>將資料從 CSV 載入 Azure SQL Database 或 SQL 受控執行個體 (一般檔案) 
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
 
 您可以使用 bcp 命令列公用程式，將 CSV 檔案中的資料匯入 Azure SQL Database 或 Azure SQL 受控執行個體。
 
 ## <a name="before-you-begin"></a>開始之前
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>Prerequisites
 
 若要完成本文中的步驟，您需要：
 

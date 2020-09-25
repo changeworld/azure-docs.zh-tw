@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: mathoma, carlrab
+ms.reviewer: mathoma, sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: 1346fed738bb9afa595b63c91064a481e2ee2b51
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8645e8c1f1f371f1416a998af41104ebb6867eea
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84031939"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334878"
 ---
 # <a name="manage-rolling-upgrades-of-cloud-applications-by-using-sql-database-active-geo-replication"></a>使用 SQL Database 主動式異地複寫管理雲端應用程式的輪流升級
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -110,7 +110,7 @@ ALTER DATABASE <Prod_DB>
 SET (ALLOW_CONNECTIONS = NO)
 ```
 
-2. 中斷次要資料庫的連線以終止異地複寫（11）。 此動作會建立獨立但完全同步的生產資料庫複本。 此資料庫將會升級。 下列範例使用 Transact-sql，但也提供[PowerShell](/powershell/module/az.sql/remove-azsqldatabasesecondary?view=azps-1.5.0) 。 
+2. 中斷次要 (11) 的連線，以終止異地複寫。 此動作會建立獨立但完全同步的生產資料庫複本。 此資料庫將會升級。 下列範例使用 Transact-sql，但 [PowerShell](/powershell/module/az.sql/remove-azsqldatabasesecondary?view=azps-1.5.0) 也可供使用。 
 
 ```sql
 -- Disconnect the secondary, terminating geo-replication
@@ -151,8 +151,8 @@ REMOVE SECONDARY ON SERVER <Partner-Server>
 
 ## <a name="next-steps"></a>後續步驟
 
-* 如需商務持續性的總覽和案例，請參閱[商務持續性總覽](business-continuity-high-availability-disaster-recover-hadr-overview.md)。
-* 若要深入瞭解 Azure SQL Database 主動式異地複寫，請參閱[使用主動式異地複寫建立可讀取的次要資料庫](active-geo-replication-overview.md)。
+* 如需商務持續性的總覽和案例，請參閱 [商務持續性總覽](business-continuity-high-availability-disaster-recover-hadr-overview.md)。
+* 若要瞭解 Azure SQL Database 主動式異地複寫，請參閱 [使用主動式異地複寫建立可讀取的次要資料庫](active-geo-replication-overview.md)。
 * 若要了解 Azure SQL Database 自動容錯移轉群組，請參閱[使用自動容錯移轉群組可以啟用多個資料庫透明且協調的容錯移轉](auto-failover-group-overview.md)。
 * 若要了解 Azure App Service 中的預備環境，請參閱[在 Azure App Service 中設定預備環境](../../app-service/deploy-staging-slots.md)。
 * 若要了解 Azure 流量管理員設定檔，請參閱[管理 Azure 流量管理員設定檔](../../traffic-manager/traffic-manager-manage-profiles.md)。

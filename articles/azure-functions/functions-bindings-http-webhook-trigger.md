@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 29ec547a6033b77d92ad7949df286dc94e3243a2
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 6466647056535635b67cd53012d051f11e9b484c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213939"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323306"
 ---
 # <a name="azure-functions-http-trigger"></a>Azure Functions HTTP 觸發程序
 
@@ -37,7 +37,7 @@ HTTP 觸發函式的預設傳回值為：
 ```cs
 [FunctionName("HttpTriggerCSharp")]
 public static async Task<IActionResult> Run(
-    [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] 
+    [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)]
     HttpRequest req, ILogger log)
 {
     log.LogInformation("C# HTTP trigger function processed a request.");
@@ -128,111 +128,6 @@ public static string Run(Person person, ILogger log)
 public class Person {
      public string Name {get; set;}
 }
-```
-
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
-
-下列範例示範的是使用繫結之 function.json 檔案，以及 [JavaScript 函式](functions-reference-node.md)中的觸發程序繫結。 函式會尋找 `name` 參數，其位於查詢字串或 HTTP 要求的主體。
-
-以下是 *function.json* 檔案：
-
-```json
-{
-    "disabled": false,    
-    "bindings": [
-        {
-            "authLevel": "function",
-            "type": "httpTrigger",
-            "direction": "in",
-            "name": "req"
-        },
-        {
-            "type": "http",
-            "direction": "out",
-            "name": "res"
-        }
-    ]
-}
-```
-
-[設定](#configuration)章節會說明這些屬性。
-
-以下是 JavaScript 程式碼：
-
-```javascript
-module.exports = function(context, req) {
-    context.log('Node.js HTTP trigger function processed a request. RequestUri=%s', req.originalUrl);
-
-    if (req.query.name || (req.body && req.body.name)) {
-        context.res = {
-            // status defaults to 200 */
-            body: "Hello " + (req.query.name || req.body.name)
-        };
-    }
-    else {
-        context.res = {
-            status: 400,
-            body: "Please pass a name on the query string or in the request body"
-        };
-    }
-    context.done();
-};
-```
-
-# <a name="python"></a>[Python](#tab/python)
-
-下列範例示範 *function.json* 檔案中的觸發程序繫結，以及使用此繫結的 [Python 函式](functions-reference-python.md)。 函式會尋找 `name` 參數，其位於查詢字串或 HTTP 要求的主體。
-
-以下是 *function.json* 檔案：
-
-```json
-{
-    "scriptFile": "__init__.py",
-    "disabled": false,    
-    "bindings": [
-        {
-            "authLevel": "function",
-            "type": "httpTrigger",
-            "direction": "in",
-            "name": "req"
-        },
-        {
-            "type": "http",
-            "direction": "out",
-            "name": "res"
-        }
-    ]
-}
-```
-
-[設定](#configuration)章節會說明這些屬性。
-
-以下是 Python 程式碼：
-
-```python
-import logging
-import azure.functions as func
-
-
-def main(req: func.HttpRequest) -> func.HttpResponse:
-    logging.info('Python HTTP trigger function processed a request.')
-
-    name = req.params.get('name')
-    if not name:
-        try:
-            req_body = req.get_json()
-        except ValueError:
-            pass
-        else:
-            name = req_body.get('name')
-
-    if name:
-        return func.HttpResponse(f"Hello {name}!")
-    else:
-        return func.HttpResponse(
-            "Please pass a name on the query string or in the request body",
-            status_code=400
-        )
 ```
 
 # <a name="java"></a>[Java](#tab/java)
@@ -421,6 +316,166 @@ public HttpResponseMessage run(
 }
 ```
 
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+下列範例示範的是使用繫結之 function.json 檔案，以及 [JavaScript 函式](functions-reference-node.md)中的觸發程序繫結。 函式會尋找 `name` 參數，其位於查詢字串或 HTTP 要求的主體。
+
+以下是 *function.json* 檔案：
+
+```json
+{
+    "disabled": false,    
+    "bindings": [
+        {
+            "authLevel": "function",
+            "type": "httpTrigger",
+            "direction": "in",
+            "name": "req"
+        },
+        {
+            "type": "http",
+            "direction": "out",
+            "name": "res"
+        }
+    ]
+}
+```
+
+[設定](#configuration)章節會說明這些屬性。
+
+以下是 JavaScript 程式碼：
+
+```javascript
+module.exports = function(context, req) {
+    context.log('Node.js HTTP trigger function processed a request. RequestUri=%s', req.originalUrl);
+
+    if (req.query.name || (req.body && req.body.name)) {
+        context.res = {
+            // status defaults to 200 */
+            body: "Hello " + (req.query.name || req.body.name)
+        };
+    }
+    else {
+        context.res = {
+            status: 400,
+            body: "Please pass a name on the query string or in the request body"
+        };
+    }
+    context.done();
+};
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+下列範例顯示檔案 *function.js* 中的觸發程式系結，以及 [PowerShell](functions-reference-node.md)函式。 函式會尋找 `name` 參數，其位於查詢字串或 HTTP 要求的主體。
+
+```json
+{
+  "bindings": [
+    {
+      "authLevel": "function",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "Request",
+      "methods": [
+        "get",
+        "post"
+      ]
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "Response"
+    }
+  ]
+}
+```
+
+```powershell
+using namespace System.Net
+
+# Input bindings are passed in via param block.
+param($Request, $TriggerMetadata)
+
+# Write to the Azure Functions log stream.
+Write-Host "PowerShell HTTP trigger function processed a request."
+
+# Interact with query parameters or the body of the request.
+$name = $Request.Query.Name
+if (-not $name) {
+    $name = $Request.Body.Name
+}
+
+$body = "This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response."
+
+if ($name) {
+    $body = "Hello, $name. This HTTP triggered function executed successfully."
+}
+
+# Associate values to output bindings by calling 'Push-OutputBinding'.
+Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{
+    StatusCode = [HttpStatusCode]::OK
+    Body       = $body
+})
+```
+
+
+# <a name="python"></a>[Python](#tab/python)
+
+下列範例示範 *function.json* 檔案中的觸發程序繫結，以及使用此繫結的 [Python 函式](functions-reference-python.md)。 函式會尋找 `name` 參數，其位於查詢字串或 HTTP 要求的主體。
+
+以下是 *function.json* 檔案：
+
+```json
+{
+    "scriptFile": "__init__.py",
+    "disabled": false,    
+    "bindings": [
+        {
+            "authLevel": "function",
+            "type": "httpTrigger",
+            "direction": "in",
+            "name": "req"
+        },
+        {
+            "type": "http",
+            "direction": "out",
+            "name": "res"
+        }
+    ]
+}
+```
+
+[設定](#configuration)章節會說明這些屬性。
+
+以下是 Python 程式碼：
+
+```python
+import logging
+import azure.functions as func
+
+
+def main(req: func.HttpRequest) -> func.HttpResponse:
+    logging.info('Python HTTP trigger function processed a request.')
+
+    name = req.params.get('name')
+    if not name:
+        try:
+            req_body = req.get_json()
+        except ValueError:
+            pass
+        else:
+            name = req_body.get('name')
+
+    if name:
+        return func.HttpResponse(f"Hello {name}!")
+    else:
+        return func.HttpResponse(
+            "Please pass a name on the query string or in the request body",
+            status_code=400
+        )
+```
+
 ---
 
 ## <a name="attributes-and-annotations"></a>屬性和註釋
@@ -448,14 +503,6 @@ public static Task<IActionResult> Run(
 
 C# 指令碼不支援屬性。
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
-
-JavaScript 不支援屬性。
-
-# <a name="python"></a>[Python](#tab/python)
-
-Python 指令碼不支援屬性。
-
 # <a name="java"></a>[Java](#tab/java)
 
 這個範例示範如何使用 [HttpTrigger](https://github.com/Azure/azure-functions-java-library/blob/dev/src/main/java/com/microsoft/azure/functions/annotation/HttpTrigger.java) 屬性。
@@ -473,6 +520,18 @@ public HttpResponseMessage<String> HttpTrigger(
 ```
 
 如需完整範例，請參閱[觸發程序範例](#example)。
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+JavaScript 不支援屬性。
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+PowerShell 不支援屬性。
+
+# <a name="python"></a>[Python](#tab/python)
+
+Python 指令碼不支援屬性。
 
 ---
 
@@ -565,47 +624,6 @@ public static IActionResult Run(HttpRequest req, string category, int? id, ILogg
 }
 ```
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
-
-在 Node 中，函式執行階段會提供來自 `context` 物件的要求本文。 如需詳細資訊，請參閱 [JavaScript 觸發程序範例](#example)。
-
-下列範例示範如何從 `context.bindingData` 讀取路由參數。
-
-```javascript
-module.exports = function (context, req) {
-
-    var category = context.bindingData.category;
-    var id = context.bindingData.id;
-    var message = `Category: ${category}, ID: ${id}`;
-
-    context.res = {
-        body: message;
-    }
-
-    context.done();
-}
-```
-
-# <a name="python"></a>[Python](#tab/python)
-
-函式執行內容是透過宣告為 `func.HttpRequest` 的參數公開。 這個執行個體可讓函式存取資料路由參數、查詢字串值和方法，讓您能夠傳回 HTTP 回應。
-
-一旦定義，即可透過呼叫 `route_params` 方法，將路由參數提供給函式。
-
-```python
-import logging
-
-import azure.functions as func
-
-def main(req: func.HttpRequest) -> func.HttpResponse:
-
-    category = req.route_params.get('category')
-    id = req.route_params.get('id')
-    message = f"Category: {category}, ID: {id}"
-
-    return func.HttpResponse(message)
-```
-
 # <a name="java"></a>[Java](#tab/java)
 
 函式執行內容是 `HttpTrigger` 屬性中所宣告的屬性。 屬性可讓您定義路由參數、授權層級、HTTP 指令動詞和連入要求執行個體。
@@ -633,6 +651,63 @@ public class HttpTriggerJava {
         return request.createResponseBuilder(HttpStatus.OK).body(message).build();
     }
 }
+```
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+在 Node 中，函式執行階段會提供來自 `context` 物件的要求本文。 如需詳細資訊，請參閱 [JavaScript 觸發程序範例](#example)。
+
+下列範例示範如何從 `context.bindingData` 讀取路由參數。
+
+```javascript
+module.exports = function (context, req) {
+
+    var category = context.bindingData.category;
+    var id = context.bindingData.id;
+    var message = `Category: ${category}, ID: ${id}`;
+
+    context.res = {
+        body: message;
+    }
+
+    context.done();
+}
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+在檔案 *function.js* 中宣告的路由參數可作為物件的屬性存取 `$Request.Params` 。
+
+```powershell
+$Category = $Request.Params.category
+$Id = $Request.Params.id
+
+$Message = "Category:" + $Category + ", ID: " + $Id
+
+Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{
+    StatusCode = [HttpStatusCode]::OK
+    Body = $Message
+})
+```
+
+# <a name="python"></a>[Python](#tab/python)
+
+函式執行內容是透過宣告為 `func.HttpRequest` 的參數公開。 這個執行個體可讓函式存取資料路由參數、查詢字串值和方法，讓您能夠傳回 HTTP 回應。
+
+一旦定義，即可透過呼叫 `route_params` 方法，將路由參數提供給函式。
+
+```python
+import logging
+
+import azure.functions as func
+
+def main(req: func.HttpRequest) -> func.HttpResponse:
+
+    category = req.route_params.get('category')
+    id = req.route_params.get('id')
+    message = f"Category: {category}, ID: {id}"
+
+    return func.HttpResponse(message)
 ```
 
 ---
@@ -668,7 +743,7 @@ public class HttpTriggerJava {
 
 ## <a name="working-with-client-identities"></a>使用用戶端身分識別
 
-如果您的函式應用程式使用 [App Service 驗證/授權](../app-service/overview-authentication-authorization.md)，您可以透過程式碼來檢視已驗證的用戶端相關資訊。 這項資訊是以[由平台插入的要求標頭](../app-service/app-service-authentication-how-to.md#access-user-claims)形式提供。 
+如果您的函式應用程式使用 [App Service 驗證/授權](../app-service/overview-authentication-authorization.md)，您可以透過程式碼來檢視已驗證的用戶端相關資訊。 這項資訊是以[由平台插入的要求標頭](../app-service/app-service-authentication-how-to.md#access-user-claims)形式提供。
 
 您也可以從繫結資料來讀取這項資訊。 這項功能僅適用於 Functions 2.x 和更新版本的執行階段。 它目前也僅適用於 .NET 語言。
 
@@ -738,7 +813,15 @@ public static void Run(JObject input, ClaimsPrincipal principal, ILogger log)
 }
 ```
 
+# <a name="java"></a>[Java](#tab/java)
+
+通過驗證的使用者可透過 [HTTP 標頭](../app-service/app-service-authentication-how-to.md#access-user-claims)取得。
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+通過驗證的使用者可透過 [HTTP 標頭](../app-service/app-service-authentication-how-to.md#access-user-claims)取得。
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 通過驗證的使用者可透過 [HTTP 標頭](../app-service/app-service-authentication-how-to.md#access-user-claims)取得。
 
@@ -746,9 +829,6 @@ public static void Run(JObject input, ClaimsPrincipal principal, ILogger log)
 
 通過驗證的使用者可透過 [HTTP 標頭](../app-service/app-service-authentication-how-to.md#access-user-claims)取得。
 
-# <a name="java"></a>[Java](#tab/java)
-
-通過驗證的使用者可透過 [HTTP 標頭](../app-service/app-service-authentication-how-to.md#access-user-claims)取得。
 
 ---
 
@@ -816,11 +896,11 @@ Webhook 授權是由 Webhook 接收器元件 (HTTP 觸發程序的一部分) 處
 
 ## <a name="content-types"></a>內容類型
 
-將二進位和表單資料傳遞至非 C # 函式需要使用適當的 content-type 標頭。 支援的內容類型包括 `octet-stream` 二進位資料和 [多部分類型](https://www.iana.org/assignments/media-types/media-types.xhtml#multipart)。
+將二進位和表單資料傳遞至非 C # 函式時，您需要使用適當的 content-type 標頭。 支援的內容類型包括 `octet-stream` 二進位資料和 [多部分類型](https://www.iana.org/assignments/media-types/media-types.xhtml#multipart)。
 
 ### <a name="known-issues"></a>已知問題
 
-在非 C # 函式中，以 content-type 傳送的要求會 `image/jpeg` 產生 `string` 傳遞給函數的值。 在這類情況下，您可以手動將 `string` 值轉換成位元組陣列，以存取未經處理的二進位資料。
+在非 C # 函式中，以 content-type 傳送的要求會 `image/jpeg` 產生傳給 `string` 函數的值。 在這類情況下，您可以手動將 `string` 值轉換為位元組陣列，以存取原始的二進位資料。
 
 ## <a name="limits"></a>限制
 

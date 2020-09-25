@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
-ms.reviewer: carlrab
+ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 4627c094c3913d01f06c237b133e1ed0ea4ed2e0
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 21239d868213df5d3208b8c790c67d675928d98a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90969791"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91283763"
 ---
 # <a name="managed-api-reference-for-azure-sql-managed-instance"></a>適用于 Azure SQL 受控執行個體的受控 API 參考
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -83,7 +83,7 @@ ms.locfileid: "90969791"
 > [!IMPORTANT]
 > 您無法使用 Transact-sql 建立或刪除受控實例。
 
-| 命令 | 描述 |
+| 命令 | 說明 |
 | --- | --- |
 |[CREATE DATABASE](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-mi-current&preserve-view=true)|在 SQL 受控執行個體中建立新的實例資料庫。 您必須連接到 master 資料庫才能建立新的資料庫。|
 | [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-mi-current&preserve-view=true) |修改 SQL 受控執行個體中的實例資料庫。|
@@ -92,7 +92,7 @@ ms.locfileid: "90969791"
 
 若要建立及設定受控實例，請使用這些 REST API 要求。
 
-| 命令 | 描述 |
+| 命令 | 說明 |
 | --- | --- |
 |[Managed Instances - Create Or Update](https://docs.microsoft.com/rest/api/sql/managedinstances/createorupdate)|建立或更新受控實例。|
 |[Managed Instances - Delete](https://docs.microsoft.com/rest/api/sql/managedinstances/delete)|刪除受控實例。|
@@ -104,7 +104,7 @@ ms.locfileid: "90969791"
 |[受控執行個體作業-取得](https://docs.microsoft.com/rest/api/sql/managedinstanceoperations/get)|取得在受控實例上執行的特定管理作業。|
 |[受控執行個體作業-取消](https://docs.microsoft.com/rest/api/sql/managedinstanceoperations/cancel)|取消在受控實例上執行的特定管理操作。|
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 若要深入了解如何將 SQL Server 資料庫移轉至 Azure，請參閱[移轉至 Azure SQL Database](../database/migrate-to-database-from-sql-server.md)。
 - 如需支援功能的詳細資訊，請參閱 [功能](../database/features-comparison.md)。

@@ -10,15 +10,15 @@ ms.custom: sqldbrb=2
 ms.topic: conceptual
 author: monhaber
 ms.author: ronmat
-ms.reviewer: vanto, carlrab
+ms.reviewer: vanto, sstein
 ms.date: 09/21/2020
 tags: azure-synapse
-ms.openlocfilehash: 0f0dde0da69ad225e39292681fc079aba4b81203
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: bf228d31180f5c2223fde7433d2d9b335e2b8853
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90885148"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91284154"
 ---
 # <a name="advanced-threat-protection-for-azure-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>Azure SQL Database、SQL 受控執行個體和 Azure Synapse Analytics 的 Advanced 威脅防護
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -59,7 +59,7 @@ Advanced 威脅防護會將其警示與 [Azure 安全性中心](https://azure.mi
 
 按一下 [ **Advanced 威脅防護警示** ] 以啟動 [Azure 資訊安全中心警示] 頁面，並概要說明在資料庫上偵測到的作用中 SQL 威脅。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 深入瞭解 [Azure SQL Database & Azure Synapse 中的「先進威脅防護](threat-detection-configure.md)」。
 - 深入瞭解 [AZURE SQL 受控執行個體中的「先進威脅防護](../managed-instance/threat-detection-configure.md)」。

@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
-ms.reviewer: sstein, bonova, carlrab, vanto
+ms.reviewer: sstein, bonova, vanto
 ms.date: 11/09/2018
-ms.openlocfilehash: a04f4879bbd06c2fa6c1af921d7adafdef9417d6
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 9d58a8c1dc79c10ed42fd1675115eb14f2ad4d3e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88871440"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91283704"
 ---
 # <a name="connect-your-application-to-azure-sql-managed-instance"></a>將您的應用程式連線到 Azure SQL 受控執行個體
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -152,7 +152,7 @@ ms.locfileid: "88871440"
 |Node.js 驅動程式| 2.1.1 |
 |OLEDB 驅動程式| 18.0.2.0 |
 |SSMS| 18.0 或 [更高版本](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) |
-|[Smo](https://docs.microsoft.com/sql/relational-databases/server-management-objects-smo/sql-server-management-objects-smo-programming-guide) | [150](https://www.nuget.org/packages/Microsoft.SqlServer.SqlManagementObjects) 或更高版本 |
+|[SMO](https://docs.microsoft.com/sql/relational-databases/server-management-objects-smo/sql-server-management-objects-smo-programming-guide) | [150](https://www.nuget.org/packages/Microsoft.SqlServer.SqlManagementObjects) 或更高版本 |
 
 ## <a name="next-steps"></a>後續步驟
 

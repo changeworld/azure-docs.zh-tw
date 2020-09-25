@@ -3,13 +3,13 @@ title: 將容器群組部署至 Azure 虛擬網路
 description: 瞭解如何使用 Azure 命令列介面，將容器群組部署至新的或現有的 Azure 虛擬網路。
 ms.topic: article
 ms.date: 07/02/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: c5eff486299a3974e8fb9b4b12d6bb74880c48d8
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.custom: devx-track-js
+ms.openlocfilehash: e5a31742956c2ba9bd15026f7667c971c20694a3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89569385"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91303003"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>將容器執行個體部署至 Azure 虛擬網路
 
@@ -222,7 +222,7 @@ az network profile delete --id $NETWORK_PROFILE_ID -y
 az network vnet delete --resource-group $RES_GROUP --name aci-vnet
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 若要使用 Resource Manager 範本部署新的虛擬網路、子網路、網路設定檔及容器群組，請參閱 [Create an Azure container group with VNet](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aci-vnet
 ) (使用 VNet 建立 Azure 容器群組)。

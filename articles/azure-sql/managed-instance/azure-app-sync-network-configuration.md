@@ -1,7 +1,7 @@
 ---
-title: 同步處理 Azure App Service 的網路設定
+title: Azure App Service 的同步網路設定
 titleSuffix: Azure SQL Managed Instance
-description: 本文討論如何將 Azure App Service 主控方案的網路設定與您的 Azure SQL 受控執行個體同步。
+description: 本文討論如何使用 Azure SQL 受控執行個體同步處理 Azure App Service 主控方案的網路設定。
 services: sql-database
 ms.service: sql-managed-instance
 ms.subservice: operations
@@ -10,19 +10,19 @@ ms.devlang: ''
 ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
-ms.reviewer: sstein, bonova, carlrab
+ms.reviewer: sstein, bonova
 ms.date: 12/13/2018
-ms.openlocfilehash: a0192f204fdb0797d98947a174bf6d669034b666
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fc77b73f7e284dcaacdc64fdc7e3c72579d2e135
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84695448"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91283695"
 ---
-# <a name="sync-networking-configuration-for-azure-app-service-hosting-plan-with-azure-sql-managed-instance"></a>使用 Azure SQL 受控執行個體同步 Azure App Service 主控方案的網路設定
+# <a name="sync-networking-configuration-for-azure-app-service-hosting-plan-with-azure-sql-managed-instance"></a>使用 Azure SQL 受控執行個體同步處理 Azure App Service 主控方案的網路設定
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-雖然您[已將應用程式與 Azure 虛擬網路整合](../../app-service/web-sites-integrate-with-vnet.md)，但無法建立與 SQL 受控執行個體的連接。 重新整理或同步處理服務方案的網路設定可以解決此問題。 
+雖然您將 [應用程式與 Azure 虛擬網路整合在一起](../../app-service/web-sites-integrate-with-vnet.md)，但您無法建立 SQL 受控執行個體的連接。 重新整理或同步處理服務方案的網路設定可以解決此問題。 
 
 ## <a name="sync-network-configuration"></a>同步網路組態 
 
@@ -30,9 +30,9 @@ ms.locfileid: "84695448"
 
 1. 移至您的 Web 應用程式 App Service 方案。
 
-   ![App Service 方案的螢幕擷取畫面](./media/azure-app-sync-network-configuration/app-service-plan.png)
+   ![App Service 計畫的螢幕擷取畫面](./media/azure-app-sync-network-configuration/app-service-plan.png)
 
-2. 選取 [**網路**]，然後選取 [**按一下這裡以管理**]。
+2. 選取 [ **網路** ]，然後選取 [ **按一下這裡以管理**]。
 
    ![管理服務方案的螢幕擷取畫面](./media/azure-app-sync-network-configuration/manage-plan.png)
 
@@ -42,10 +42,10 @@ ms.locfileid: "84695448"
 
 4. 等待同步處理完成。
   
-   ![同步處理完成的螢幕擷取畫面](./media/azure-app-sync-network-configuration/sync-done.png)
+   ![完成同步處理的螢幕擷取畫面](./media/azure-app-sync-network-configuration/sync-done.png)
 
-您現在已準備好嘗試重新建立與 SQL 受控執行個體的連線。
+您現在已準備好嘗試重新建立與 SQL 受控執行個體的連接。
 
 ## <a name="next-steps"></a>後續步驟
 
-- 如需有關為 SQL 受控執行個體設定 VNet 的詳細資訊，請參閱[sql 受控執行個體 VNet 架構](connectivity-architecture-overview.md)和[如何設定現有的 vnet](vnet-existing-add-subnet.md)。
+- 如需為 SQL 受控執行個體設定 VNet 的詳細資訊，請參閱 [sql 受控執行個體 vnet 架構](connectivity-architecture-overview.md) 及 [如何設定現有的 vnet](vnet-existing-add-subnet.md)。

@@ -1,5 +1,5 @@
 ---
-title: 開始使用 Azure IoT 中樞模組識別 & 模組對應項（Node.js）
+title: '開始使用 Azure IoT 中樞模組識別 & 模組對應項 ( # A1) '
 description: 了解如何使用適用於 Node.js 的 IoT SDK，建立模組身分識別及更新模組對應項。
 author: wesmc7777
 manager: philmea
@@ -9,20 +9,20 @@ services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 04/26/2018
-ms.custom: amqp, devx-track-javascript
-ms.openlocfilehash: 214c0533e6aefcfa496533359221f7a3061031b8
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: amqp, devx-track-js
+ms.openlocfilehash: c3862cae096adc2284469750cefd5538493cf653
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420731"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91302851"
 ---
-# <a name="get-started-with-iot-hub-module-identity-and-module-twin-nodejs"></a>開始使用 IoT 中樞模組身分識別和模組對應項（Node.js）
+# <a name="get-started-with-iot-hub-module-identity-and-module-twin-nodejs"></a>開始使用 IoT 中樞模組身分識別和模組對應項 ( # A0) 
 
 [!INCLUDE [iot-hub-selector-module-twin-getstarted](../../includes/iot-hub-selector-module-twin-getstarted.md)]
 
 > [!NOTE]
-> [模組身分識別與模組對應項](iot-hub-devguide-module-twins.md)類似於 Azure IoT 中樞裝置身分識別與裝置對應項，但提供更精細的細微性。 雖然 Azure IoT 中樞裝置身分識別和裝置對應項可讓後端應用程式設定裝置，並提供裝置狀況的可見度，但模組身分識別和模組對應項會為裝置的個別元件提供這些功能。 在具備多個元件的可用裝置 (例如以作業系統為基礎的裝置或韌體裝置) 上，它允許每個元件有獨立的組態和狀況。
+> [模組身分識別與模組對應項](iot-hub-devguide-module-twins.md)類似於 Azure IoT 中樞裝置身分識別與裝置對應項，但提供更精細的細微性。 雖然 Azure IoT 中樞裝置身分識別和裝置對應項可讓後端應用程式設定裝置，並提供裝置條件的可見度，但模組身分識別和模組對應項會為裝置的個別元件提供這些功能。 在具備多個元件的可用裝置 (例如以作業系統為基礎的裝置或韌體裝置) 上，它允許每個元件有獨立的組態和狀況。
 
 在本教學課程結尾處，您會有兩個 Node.js 應用程式：
 
@@ -57,7 +57,7 @@ ms.locfileid: "87420731"
 
 2. 在該目錄的內部，先執行 **npm init -y** 以使用預設值建立空白的 package.json。 這是程式碼的專案檔。
 
-3. 執行**npm install-S azure-iothub \@ 模組-preview**以在**node_modules**子目錄中安裝服務 SDK。
+3. 執行 **npm install-S iothub \@ 模組-preview** ，在 **node_modules** 子目錄內安裝服務 SDK。
 
     > [!NOTE]
     > 子目錄名稱 node_modules 使用字組模組來表示「節點程式庫」。 此詞彙在此處與 IoT 中樞模組無關。
@@ -119,7 +119,7 @@ ms.locfileid: "87420731"
 
     ```
 
-此應用程式會在 **myFirstDevice** 裝置下方建立識別碼為 **myFirstDevice** 的裝置身分識別，以及識別碼為 **myFirstModule** 的模組身分識別。 （如果該模組識別碼已經存在身分識別登錄中，程式碼就會直接抓取現有的模組資訊）。應用程式接著會顯示該身分識別的主要金鑰。 您會在模擬模組應用程式中使用此金鑰來連線到您的 IoT 中樞。
+此應用程式會在 **myFirstDevice** 裝置下方建立識別碼為 **myFirstDevice** 的裝置身分識別，以及識別碼為 **myFirstModule** 的模組身分識別。  (如果身分識別登錄中已經有該模組識別碼，則程式碼只會抓取現有的模組資訊。 ) 應用程式，則會顯示該身分識別的主要金鑰。 您會在模擬模組應用程式中使用此金鑰來連線到您的 IoT 中樞。
 
 使用 add.js 節點執行。 它會為裝置身分識別提供一個連接字串，並為模組身分識別提供另一個連接字串。
 
@@ -130,11 +130,11 @@ ms.locfileid: "87420731"
 
 在這一節中，您會在模擬裝置上建立 Node.js 應用程式，以便更新模組對應項報告的屬性。
 
-1. **取得您的模組連接字串**--登入[Azure 入口網站](https://portal.azure.com/)。 瀏覽至您的 IoT 中樞並按一下 IoT 裝置。 尋找 myFirstDevice 並加以開啟，您會看到已成功建立 myFirstModule。 複製模組連接字串。 在下一個步驟中需要用到它。
+1. **取得您的模組連接字串** --登入 [Azure 入口網站](https://portal.azure.com/)。 瀏覽至您的 IoT 中樞並按一下 IoT 裝置。 尋找 myFirstDevice 並加以開啟，您會看到已成功建立 myFirstModule。 複製模組連接字串。 在下一個步驟中需要用到它。
 
    ![Azure 入口網站模組詳細資料](./media/iot-hub-node-node-module-twin-getstarted/module-detail.png)
 
-2. 與您在上述步驟中所做的一樣，請為您的裝置程式碼建立一個目錄，並使用 NPM 將它初始化並安裝裝置 SDK （**NPM install-S amqp \@ 模組-preview**）。
+2. 類似于您在上述步驟中所做的，請為您的裝置程式碼建立目錄，並使用 NPM 將它初始化，並安裝裝置 SDK (**NPM 安裝--amqp \@ 模組-預覽**) 。
 
    > [!NOTE]
    > 您可能會感覺 npm 安裝命令執行速度慢。 請耐心等候，它正從封裝存放庫中提取大量程式碼。
@@ -199,7 +199,7 @@ ms.locfileid: "87420731"
    F:\temp\module_twin>node twin.js
    ```
 
-   您接著會看到：
+   然後，您會看到：
 
    ```console
    client opened

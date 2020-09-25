@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/19/2020
 ms.author: memildin
-ms.openlocfilehash: 40b96cac4c9ad638373fbb75f736dc7eded42b43
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 9a781fd48b30ccb32b0a733e5aa1ac054b96dc12
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90883936"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323649"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>在 Azure 資訊安全中心整合安全性解決方案
 這份文件可協助您管理已連線到 Azure 資訊安全中心的安全性解決方案，並且新增新的項目。
@@ -40,7 +40,7 @@ ms.locfileid: "90883936"
 資訊安全中心也會為您提供弱點分析：
 
 * SQL 資料庫 - 請參閱[探索弱點評量儀表板中的弱點評量報告](defender-for-sql-usage.md#explore-vulnerability-assessment-reports)
-* Azure Container Registry 映射-請參閱 [Azure Container Registry 與 Security Center 整合 (Preview) ](azure-container-registry-integration.md)
+* Azure Container Registry 映射-請參閱 [使用適用于容器登錄的 Azure Defender 來掃描映射是否有弱點](defender-for-container-registries-usage.md)
 
 ## <a name="how-security-solutions-are-integrated"></a>安全性解決方案如何整合
 從資訊安全中心部署的 Azure 安全性解決方案會自動連線。 您也可以連接其他安全性資料來源，包括在內部部署或其他雲端中執行的電腦。
@@ -101,7 +101,7 @@ ms.locfileid: "90883936"
 
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 在本文中，您已了解如何在資訊安全中心中整合夥伴解決方案。 如需相關資訊，請參閱下列文章：
 

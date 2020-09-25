@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: MashaMSFT
 ms.author: mathoma
-ms.reviewer: carlrab
+ms.reviewer: sstein
 ms.date: 04/20/2020
-ms.openlocfilehash: 95fc877636fe1d3dac466dc32fc49cee56f35185
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: a335f6ac015397ba2b2634d0d604c194a768260a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89290509"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91283202"
 ---
 # <a name="transactional-replication-with-azure-sql-managed-instance-preview"></a>使用 Azure SQL 受控執行個體 (Preview 的異動複寫) 
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -190,7 +190,7 @@ Azure SQL 受控執行個體可支援從下列版本的 SQL Server 訂閱者：
 - 針對資料遺失的容錯移轉，複寫也會正常運作。 它會再次複寫遺失的變更。
 - 如果是資料遺失的容錯移轉，但資料遺失超出散發資料庫保留期限，SQL 受控執行個體系統管理員就必須重新初始化訂閱資料庫。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如需有關設定異動複寫的詳細資訊，請參閱下列教學課程：
 

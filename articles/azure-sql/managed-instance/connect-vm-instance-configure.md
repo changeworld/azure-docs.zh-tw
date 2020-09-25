@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
-ms.reviewer: sstein, carlrab, srbozovi, bonova
+ms.reviewer: sstein, srbozovi, bonova
 ms.date: 02/18/2019
-ms.openlocfilehash: 72d5a722e6c1e6b936c6ec0386036317e887bb92
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 072dc3c453984eb30805bb6c2c8c44cc39b06d17
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90969827"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91283593"
 ---
 # <a name="quickstart-configure-an-azure-vm-to-connect-to-azure-sql-managed-instance"></a>快速入門：設定 Azure VM 以連接到 Azure SQL 受控執行個體
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -27,7 +27,7 @@ ms.locfileid: "90969827"
 
 如需顯示如何改為使用點對站連線從內部部署用戶端電腦連線的快速入門，請參閱 [設定點對站](point-to-site-p2s-configure.md)連線。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 本快速入門會使用建立 [受控實例](instance-create-quickstart.md) 中建立的資源作為起點。
 
@@ -49,7 +49,7 @@ ms.locfileid: "90969827"
 
 3. 使用此資料表中的資訊填妥表單：
 
-   | 設定| 建議的值 | 描述 |
+   | 設定| 建議的值 | 說明 |
    | ---------------- | ----------------- | ----------- |
    | **名稱** | 任何有效名稱|如需有效的名稱，請參閱[命名規則和限制](/azure/architecture/best-practices/resource-naming)。|
    | **位址範圍 (CIDR 區塊)** | 有效範圍 | 針對此快速入門，使用預設值即可。|
@@ -78,7 +78,7 @@ ms.locfileid: "90969827"
 
 2. 使用下表中的資訊填妥表單：
 
-   | 設定| 建議的值 | 描述 |
+   | 設定| 建議的值 | 說明 |
    | ---------------- | ----------------- | ----------- |
    | **訂用帳戶** | 有效的訂用帳戶 | 必須是您有權限在其中建立新資源的訂用帳戶。 |
    | **資源群組** |您在 [建立 SQL 受控執行個體](instance-create-quickstart.md) 快速入門中所指定的資源群組|此資源群組必須是 VNet 所在的資源群組。|
@@ -144,7 +144,7 @@ ms.locfileid: "90969827"
 
 連線之後，您可以檢視 [資料庫] 節點中的系統和使用者資料庫，以及 [安全性]、[伺服器物件]、[複寫]、[管理]、[SQL Server 代理程式] 和 [XEvent Profiler] 節點中的各種物件。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 如需示範如何使用點對站連線從內部部署用戶端電腦進行連線的快速入門，請參閱 [設定點對站](point-to-site-p2s-configure.md)連線。
 - 如需有關應用程式連線選項的概觀，請參閱[將您的應用程式連線至 SQL 受控執行個體](connect-application-instance.md)。

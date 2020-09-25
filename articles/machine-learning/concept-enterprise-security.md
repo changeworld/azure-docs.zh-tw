@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 09/09/2020
-ms.openlocfilehash: af32be357899090e0df96e2c67910a4f9ad5194d
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 35b39ceb7ef54b0e00eaa53dad821c9336ea88ca
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90988083"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91302616"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Azure Machine Learning 的企業安全性
 
@@ -118,7 +118,7 @@ Azure Machine Learning 仰賴其他 Azure 服務來處理計算資源。 計算�
 ### <a name="encryption-at-rest"></a>待用加密
 
 > [!IMPORTANT]
-> 如果您的工作區包含敏感性資料，建議您在建立工作區時，設定 [hbi_workspace 旗標](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#&preserve-view=truecreate-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) \(部分機器翻譯\)。 只有在建立 `hbi_workspace` 工作區時，才可以設定旗標。 無法針對現有的工作區進行變更。
+> 如果您的工作區包含敏感性資料，建議您在建立工作區時，設定 [hbi_workspace 旗標](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truecreate-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) \(部分機器翻譯\)。 只有在建立 `hbi_workspace` 工作區時，才可以設定旗標。 無法針對現有的工作區進行變更。
 
 旗標會 `hbi_workspace` 控制 [microsoft 針對診斷目的所收集的資料](#microsoft-collected-data) 量，並 [在 microsoft 管理的環境中啟用額外的加密](../security/fundamentals/encryption-atrest.md)。 此外，它也會啟用下列動作：
 
@@ -156,7 +156,7 @@ Azure Machine Learning 會在 Azure Cosmos DB 執行個體中儲存計量和中�
     * `cmk_keyvault`:此參數是您訂用帳戶中金鑰保存庫的資源識別碼。 此金鑰保存庫必須位於您將用於 Azure Machine Learning 工作區的相同地區和訂用帳戶中。 
     
         > [!NOTE]
-        > 此金鑰保存庫執行個體可以與您佈建工作區時 Azure Machine Learning 所建立的金鑰保存庫不同。 如果您想要將相同的金鑰保存庫執行個體用於工作區，請在佈建工作區時傳遞相同的金鑰保存庫，方法是使用 [key_vault 參數](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#&preserve-view=truecreate-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) \(部分機器翻譯\)。 
+        > 此金鑰保存庫執行個體可以與您佈建工作區時 Azure Machine Learning 所建立的金鑰保存庫不同。 如果您想要將相同的金鑰保存庫執行個體用於工作區，請在佈建工作區時傳遞相同的金鑰保存庫，方法是使用 [key_vault 參數](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truecreate-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) \(部分機器翻譯\)。 
 
 此 Cosmos DB 實例會建立在您訂用帳戶的 Microsoft 管理資源群組中，以及所需的任何資源。 受控資源群組的命名格式為 `<AML Workspace Resource Group Name><GUID>`。 如果您的 Azure Machine Learning 工作區使用私人端點，也會為 Cosmos DB 實例建立虛擬網路。 此 VNet 可用來保護 Cosmos DB 與 Azure Machine Learning 之間的通訊。
 
@@ -197,7 +197,7 @@ Azure Machine Learning 會在 Azure Cosmos DB 執行個體中儲存計量和中�
 
 如需建立和使用部署設定的相關詳細資訊，請參閱下列文章：
 
-* [AciWebservice.deploy_configuration()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice?view=azure-ml-py#&preserve-view=truedeploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none-) 參考
+* [AciWebservice.deploy_configuration()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice?view=azure-ml-py&preserve-view=true#&preserve-view=truedeploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none-) 參考
 * [部署的位置和方式](how-to-deploy-and-where.md)
 * [將模型部署到 Azure 容器執行個體](how-to-deploy-azure-container-instance.md)
 
@@ -291,6 +291,10 @@ Microsoft 也建議您不要將敏感性資訊 (例如帳戶金鑰祕密) 儲存
 >
 > 其中一些動作會出現在工作區的 [活動] 區域中，但這些通知不會指出起始活動的人員。
 
+### <a name="vulnerability-scanning"></a>弱點掃描
+
+Azure 資訊安全中心為混合式雲端工作負載提供統一的安全性管理和進階威脅防護。 針對 Azure machine learning，您應該啟用 Azure Container Registry 資源的掃描，並 Azure Kubernetes Service 資源。 請參閱 [Azure Container Registry 的影像掃描（由安全性中心](https://docs.microsoft.com/azure/security-center/azure-container-registry-integration) 和 [Azure Kubernetes Services 與安全性中心整合](https://docs.microsoft.com/azure/security-center/azure-kubernetes-service-integration)）。
+
 ## <a name="data-flow-diagrams"></a>資料流程圖
 
 ### <a name="create-workspace"></a>建立工作區
@@ -362,7 +366,7 @@ Microsoft 也建議您不要將敏感性資訊 (例如帳戶金鑰祕密) 儲存
 
 [![推斷工作流程](media/concept-enterprise-security/inferencing.png)](media/concept-enterprise-security/inferencing.png#lightbox)
 
-## <a name="audit-and-manage-compliance"></a>審核及管理合規性
+## <a name="audit-and-manage-compliance"></a>稽核及管理合規性
 
 [Azure 原則](/azure/governance/policy) 是一種管理工具，可讓您確保 Azure 資源符合您的原則。 您可以使用 Azure Machine Learning 指派下列原則：
 

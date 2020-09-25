@@ -4,12 +4,12 @@ description: 本文說明如何設定 Azure 事件方格主題或網域的私人
 ms.topic: how-to
 ms.date: 07/07/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: fa67ba8dbe8106c0311bafec07a1510ca0c25c3f
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: e2e164d55f61f7a08e689aea106eac678b553c82
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88508833"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324139"
 ---
 # <a name="configure-private-endpoints-for-azure-event-grid-topics-or-domains"></a>設定 Azure 事件方格主題或網域的私人端點
 您可以使用 [私人端點](../private-link/private-endpoint-overview.md) 來安全地透過 [私人連結](../private-link/private-link-overview.md) ，直接從您的虛擬網路將事件輸入至主題和網域，而不需經過公用網際網路。 私人端點會使用您主題或網域的 VNet 位址空間中的 IP 位址。 如需詳細的概念資訊，請參閱 [網路安全性](network-security.md)。
@@ -42,9 +42,9 @@ ms.locfileid: "88508833"
         3. 確認 [ **目標 subresource** ] 設定為 [ **主題** ] 或 [ **網域** (]，取決於您) 選取的資源類型。    
         4. 完成時，選取 [下一步:設定 >] 按鈕 (位於頁面底部)。 
 
-            ![私人端點-資源頁面](./media/configure-private-endpoints/resource-page.png)
+            ![顯示 [建立私人端點-資源] 頁面的螢幕擷取畫面。](./media/configure-private-endpoints/resource-page.png)
     2. 如果您選取 **[使用資源識別碼或別名連線至資源]**，請遵循下列步驟：
-        1. 輸入資源的識別碼。 例如： `/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>` 。  
+        1. 輸入資源的識別碼。 例如：`/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>`。  
         2. 針對 [ **資源**]，輸入 **主題** 或 **網域**。 
         3.  (選擇性) 新增要求訊息。 
         4. 完成時，選取 [下一步:設定 >] 按鈕 (位於頁面底部)。 
@@ -108,7 +108,7 @@ ms.locfileid: "88508833"
 
 1. 選取您要拒絕的 **私人端點** ，然後在工具列上選取 [ **拒絕** ]。
 
-    ![私人端點-拒絕](./media/configure-private-endpoints/reject-button.png)
+    ![顯示已選取 [拒絕] 的 [網路-私人端點連線 (預覽) ] 的螢幕擷取畫面。](./media/configure-private-endpoints/reject-button.png)
 1. 在 [ **拒絕連接** ] 對話方塊中，輸入批註 (選擇性) ，然後選取 **[是]**。 
 
     ![私人端點-拒絕](./media/configure-private-endpoints/reject.png)
@@ -151,7 +151,7 @@ az network private-endpoint delete --resource-group <RESOURECE GROUP NAME> --nam
 
 
 
-### <a name="prerequisites"></a>先決條件
+### <a name="prerequisites"></a>Prerequisites
 執行下列命令，以更新適用于 CLI 的 Azure 事件方格延伸模組： 
 
 ```azurecli-interactive

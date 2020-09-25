@@ -8,18 +8,18 @@ editor: monicar
 tags: azure-service-management
 ms.assetid: c492db4c-3faa-4645-849f-5a1a663be55a
 ms.service: virtual-machines-sql
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 8e62d2d1955b5b323ad31cc5d45106210e3e22c6
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 278e5feb327c1376b7644050f414f680334d5c50
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88651177"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91263227"
 ---
 # <a name="prerequisites-for-creating-always-on-availability-groups-on-sql-server-on-azure-virtual-machines"></a>在 Azure 虛擬機器上的 SQL Server 上建立 Always On 可用性群組的必要條件
 
@@ -122,7 +122,7 @@ Azure 會讓您回到入口網站儀表板，並在建立完新網路時通知�
 
 5. 若要建立第二個子網，請選取 [ **+ 子網**]。
 6. 在 [新增子網路] 上，於 [名稱] 下方輸入 **sqlsubnet** 來設定子網路。 Azure 會自動指定有效的 [位址範圍] 。 確認此位址範圍中至少有 10 個位址。 在生產環境中，您可能需要更多位址。
-7. 選取 [確定]。
+7. 選取 [確定]  。
 
     ![設定虛擬網路](./media/availability-group-manually-configure-prerequisites-tutorial-/08-configuresubnet.png)
 
@@ -320,7 +320,7 @@ Azure 會建立虛擬機器。
     >[DNS 選項] 頁面可能警告您，指出無法建立此 DNS 伺服器的委派。 您在非生產環境中可以忽略這個警告。
     >
 
-22. 選取 [ **下一步** ]，直到對話方塊達到 **必要條件** 檢查。 然後，選取 [安裝]。
+22. 選取 [ **下一步** ]，直到對話方塊達到 **必要條件** 檢查。 然後選取 [安裝]。
 
 在伺服器完成組態變更之後，重新啟動伺服器。
 
@@ -415,7 +415,7 @@ Azure 會建立虛擬機器。
 2. 在 [伺服器管理員]**** 中，選取 [本機伺服器]****。
 3. 選取 [ **工作組** ] 連結。
 4. 在 [ **電腦名稱稱** ] 區段中，選取 [ **變更**]。
-5. 選取 [網域] 核取方塊，然後在文字方塊中輸入 **corp.contoso.com**。 選取 [確定]。
+5. 選取 [網域] 核取方塊，然後在文字方塊中輸入 **corp.contoso.com**。 選取 [確定]  。
 6. 在 [Windows 安全性] 快顯對話方塊中，指定預設的網域系統管理員帳戶 (**CORP\DomainAdmin**) 和密碼 (**Contoso!0000**) 的認證。
 7. 當您看到「歡迎使用 corp.contoso.com 網域」訊息時，請選取 **[確定]**。
 8. 選取 [ **關閉**]，然後在快顯視窗中選取 [ **立即重新開機** ]。
@@ -471,7 +471,7 @@ Azure 會建立虛擬機器。
 
 1. 將登入設定為 [系統管理員 (sysadmin)] 固定伺服器角色的成員。
 
-1. 選取 [確定]。
+1. 選取 [確定]  。
 
 在其他 SQL Server VM 上重複上述步驟。
 
@@ -517,7 +517,7 @@ Azure 會建立虛擬機器。
 
    ![SQL 防火牆](./media/availability-group-manually-configure-prerequisites-tutorial-/35-tcpports.png)
 
-5. 選取 [下一步]。
+5. 選取 [下一步]  。
 6. 在 [ **動作** ] 頁面上，保持選取 **[允許連接** ]，然後選取 **[下一步]**。
 7. 在 [ **設定檔** ] 頁面上，接受預設設定，然後選取 **[下一步]**。
 8. 在 [**名稱**] 頁面上，在 [**名稱**] 文字方塊中指定規則名稱 (例如**Azure LB 探查**) ，然後選取 **[完成]**。

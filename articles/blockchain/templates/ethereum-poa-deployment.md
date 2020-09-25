@@ -4,13 +4,13 @@ description: 使用乙太坊證明聯盟解決方案，在 Azure 上部署和設
 ms.date: 07/23/2020
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 8ce343045f7ff124f5faf86b13210bfb5b3b5519
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.custom: devx-track-js
+ms.openlocfilehash: d1d3ad94957e791b2178b6c60d4c7debdec2b391
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90527151"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91283423"
 ---
 # <a name="deploy-ethereum-proof-of-authority-consortium-solution-template-on-azure"></a>在 Azure 上部署乙太坊證明聯盟解決方案範本
 
@@ -27,7 +27,7 @@ ms.locfileid: "90527151"
 > [!IMPORTANT]
 > 請考慮使用 [Azure 區塊鏈服務](../service/overview.md) 而不是 Azure 解決方案範本上的乙太坊。 Azure 區塊鏈服務是受支援的受控 Azure 服務。 同位乙太坊轉換成以團體導向的開發與維護。 如需詳細資訊，請參閱將同位檢查 [轉換乙太坊至 OPENETHEREUM DAO](https://www.parity.io/parity-ethereum-openethereum-dao/)。
 
-選項 | 服務模型 | 一般使用案例
+選項 | 服務模型 | 常見使用案例
 -------|---------------|-----------------
 解決方案範本 | IaaS | 解決方案範本是 Azure Resource Manager 範本，可用來布建完整設定的區塊鏈網路拓撲。 範本會針對指定的區塊鏈網路類型，部署及設定 Microsoft Azure 計算、網路和儲存體服務。 解決方案範本是在沒有服務等級協定的情況下提供。 使用 [Microsoft 問與答頁面](/answers/topics/azure-blockchain-workbench.html)來取得支援。
 [Azure 區塊鏈服務](../service/overview.md) | PaaS | Azure 區塊鏈服務 Preview 簡化了聯盟區塊鏈網路的構成、管理和治理。 針對需要 PaaS、聯盟管理或合約和交易隱私權的解決方案，使用 Azure 區塊鏈服務。
@@ -90,7 +90,7 @@ Docker 容器用於可靠性和模組化。 Azure Container Registry 用來在�
 
 ![基本概念](./media/ethereum-poa-deployment/basic-blade.png)
 
-參數 | 描述 | 範例值
+參數 | 說明 | 範例值
 ----------|-------------|--------------
 建立新的網路或加入現有的網路 | 您可以建立新的聯盟網路，或加入既有的聯盟網路。 加入現有的網路需要額外的參數。 | 新建
 電子郵件地址 | 當您的部署完成時，您會收到電子郵件通知，其中包含您部署的相關資訊。 | 有效的電子郵件地址
@@ -101,7 +101,7 @@ VM 使用者名稱 | 每個所部署 VM 的管理員使用者名稱 | 1-64 個�
 資源群組| 要對其部署聯盟網路的資源群組。 | myResourceGroup
 Location | 資源群組的 Azure 區域。 | 美國西部 2
 
-選取 [確定]。
+選取 [確定]  。
 
 ### <a name="deployment-regions"></a>部署區域
 
@@ -109,13 +109,13 @@ Location | 資源群組的 Azure 區域。 | 美國西部 2
 
 ![部署區域](./media/ethereum-poa-deployment/deployment-regions.png)
 
-參數 | 描述 | 範例值
+參數 | 說明 | 範例值
 ----------|-------------|--------------
 區域數目|要部署聯盟網路的區域數目| 2
 第一個區域 | 要部署聯盟網路的第一個區域 | 美國西部 2
 第二個區域 | 部署聯盟網路的第二個區域。 當區域數量為二或更大時，就會顯示其他區域。 | 美國東部 2
 
-選取 [確定]。
+選取 [確定]  。
 
 ### <a name="network-size-and-performance"></a>網路大小和效能
 
@@ -123,7 +123,7 @@ Location | 資源群組的 Azure 區域。 | 美國西部 2
 
 ![網路大小和效能](./media/ethereum-poa-deployment/network-size-and-performance.png)
 
-參數 | 描述 | 範例值
+參數 | 說明 | 範例值
 ----------|-------------|--------------
 負載平衡的驗證器節點數目 | 要布建為網路一部分的驗證器節點數目。 | 2
 驗證器節點儲存體效能 | 每個已部署之驗證程式節點的受控磁片類型。 如需定價的詳細資訊，請參閱 [儲存體定價](https://azure.microsoft.com/pricing/details/managed-disks/) | 標準 SSD
@@ -137,7 +137,7 @@ F1|標準 SSD|low|low|high
 D2_v3|標準 SSD|中|中|中
 F16s|進階 SSD|high|high|low
 
-選取 [確定]。
+選取 [確定]  。
 
 ### <a name="ethereum-settings"></a>以太坊設定
 
@@ -145,7 +145,7 @@ F16s|進階 SSD|high|high|low
 
 ![以太坊設定](./media/ethereum-poa-deployment/ethereum-settings.png)
 
-參數 | 描述 | 範例值
+參數 | 說明 | 範例值
 ----------|-------------|--------------
 聯盟成員識別碼 | 與參與聯盟網路的每個成員相關聯的識別碼。 它是用來設定 IP 位址空間，以避免發生衝突。 針對私人網路，成員識別碼在相同網路中的不同組織間應該是唯一的。  即使相同組織會部署到多個區域，仍然需要唯一成員識別碼。 請記下此參數的值，因為您需要與其他聯結成員共用，以確保不會發生衝突。 有效範圍是0到255。 | 0
 網路識別碼 | 為要部署的聯盟以太坊網路指定網路識別碼。 每個以太坊網路都有自己的網路識別碼，1 是公用網路的識別碼。 有效範圍是5到999999999 | 10101010
@@ -156,7 +156,7 @@ F16s|進階 SSD|high|high|low
 區塊重新封印期 (秒) | 當網路上沒有任何交易時，將建立空白區塊的頻率。 頻率越高，越快有定局，但會增加儲存成本。 | 15
 交易許可權合約 | 交易授權合約的位元組程式碼。 將智慧型合約部署和執行限制為允許的乙太坊帳戶清單。 |
 
-選取 [確定]。
+選取 [確定]  。
 
 ### <a name="monitoring"></a>監視
 
@@ -164,15 +164,15 @@ F16s|進階 SSD|high|high|low
 
 ![Azure 監視器](./media/ethereum-poa-deployment/azure-monitor.png)
 
-參數 | 描述 | 範例值
+參數 | 說明 | 範例值
 ----------|-------------|--------------
 監視 | 啟用監視的選項 | 啟用
 連接至現有的 Azure 監視器記錄 | 建立新的 Azure 監視器記錄實例或加入現有實例的選項 | 新建
-Location | 部署新實例的區域 | 美國東部
+位置 | 部署新實例的區域 | 美國東部
 現有的 log analytics 工作區識別碼 (連接到現有的 Azure 監視器記錄 = 加入現有的) |現有 Azure 監視器記錄實例的工作區識別碼||NA
 現有的 log analytics 主要金鑰 (連接到現有的 Azure 監視器記錄檔 = 加入現有的) |用來連接到現有 Azure 監視器記錄實例的主要金鑰||NA
 
-選取 [確定]。
+選取 [確定]  。
 
 ### <a name="summary"></a>摘要
 
@@ -561,7 +561,7 @@ Azure 流量管理員可跨不同區域的多個部署路由傳入的流量，�
 
 在下列範例中，您會建立簡單的智慧型合約。 您可以使用 Truffle 來編譯智慧型合約，並將其部署至您的區塊鏈網路。 一旦部署之後，您就能透過交易呼叫智慧型合約函式。
 
-#### <a name="prerequisites"></a>必要條件
+#### <a name="prerequisites"></a>Prerequisites
 
 * 安裝 [Python 2.7.15](https://www.python.org/downloads/release/python-2715/)。 Truffle 和 Web3 需要 Python。 選取 [安裝] 選項，以在您的路徑中包含 Python。
 * 安裝 Truffle v 5.0.5 `npm install -g truffle@v5.0.5` 。 Truffle 需要安裝數個工具，包括 [Node.js](https://nodejs.org) 和 [Git](https://git-scm.com/)。 如需詳細資訊，請參閱 [Truffle 檔](https://github.com/trufflesuite/truffle)。
