@@ -1,5 +1,5 @@
 ---
-title: 伺服器參數-超大規模 (超大規模 (Citus) -適用於 PostgreSQL 的 Azure 資料庫
+title: 伺服器參數-超大規模 (Citus) -適用於 PostgreSQL 的 Azure 資料庫
 description: 超大規模 (Citus 中的參數) SQL API
 author: jonels-msft
 ms.author: jonels
@@ -7,23 +7,23 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: reference
 ms.date: 08/10/2020
-ms.openlocfilehash: 2b4d3d44cb4e78f52ab03f31e58df5e66118ae25
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 07f966c7b0be542f848f1a0a4eaf2b5549735b4b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89441505"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336236"
 ---
 # <a name="server-parameters"></a>伺服器參數
 
 有各種伺服器參數會影響超大規模 (Citus) 的行為，兩者都是來自標準于 postgresql，而特定于超大規模 (Citus) 。
 您可以在超大規模 (Citus) 伺服器群組的 Azure 入口網站中設定這些參數。 在 [ **設定** ] 類別下，選擇 [背景 **工作節點參數** ] 或 [ **協調器節點參數**]。 這些頁面可讓您設定所有背景工作節點的參數，或僅針對協調器節點設定參數。
 
-## <a name="hyperscale-parameters"></a>超大規模參數
+## <a name="hyperscale-citus-parameters"></a>超大規模 (Citus) 參數
 
 > [!NOTE]
 >
-> 執行舊版 Citus 引擎的超大規模伺服器群組可能無法提供下列所有參數。
+> 超大規模 (Citus) 執行舊版 Citus 引擎的伺服器群組可能無法提供以下所列的所有參數。
 
 ### <a name="general-configuration"></a>一般設定
 
@@ -345,7 +345,7 @@ STATEMENT:  select * from foo;
 * [parallel_tuple_cost](https://www.postgresql.org/docs/current/runtime-config-query.html#GUC-PARALLEL-TUPLE-COST) -設定規劃人員將每個元組 (資料列) 從背景工作傳遞至主要後端的成本預估
 * [pg_stat_statements。儲存](https://www.postgresql.org/docs/current/pgstatstatements.html#id-1.11.7.38.8) -跨伺服器關機儲存 pg_stat_statements 的統計資料
 * [pg_stat_statements. track](https://www.postgresql.org/docs/current/pgstatstatements.html#id-1.11.7.38.8) -選取要追蹤的語句 pg_stat_statements
-* [pg_stat_statements。 track_utility](https://www.postgresql.org/docs/current/pgstatstatements.html#id-1.11.7.38.8) -選取是否要追蹤公用程式命令 pg_stat_statements
+* [pg_stat_statements。 track_utility](https://www.postgresql.org/docs/current/pgstatstatements.html#id-1.11.7.38.8) -選取 pg_stat_statements 是否追蹤公用程式命令
 * [quote_all_identifiers](https://www.postgresql.org/docs/current/runtime-config-compatible.html#GUC-QUOTE-ALL-IDENTIFIERS) -產生 SQL 片段時，將所有識別碼加上引號
 * [random_page_cost](https://www.postgresql.org/docs/current/runtime-config-query.html#GUC-RANDOM-PAGE-COST) -設定 planner 的 nonsequentially 提取磁片的成本預估頁面
 * [row_security](https://www.postgresql.org/docs/current/runtime-config-client.html#GUC-ROW-SECURITY) -啟用資料列安全性
@@ -383,7 +383,7 @@ STATEMENT:  select * from foo;
 * [xmlbinary](https://www.postgresql.org/docs/current/runtime-config-client.html#GUC-XMLBINARY) -設定二進位值如何以 XML 編碼
 * [xmloption](https://www.postgresql.org/docs/current/runtime-config-client.html#GUC-XMLOPTION) -設定隱含剖析和序列化作業中的 XML 資料是否要視為檔或內容片段
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 除了伺服器參數以外，另一種形式的設定是超大規模 (Citus) server 群組中的資源設定 [選項](concepts-hyperscale-configuration-options.md) 。
 * 基礎于 postgresql 資料基底也有設定 [參數](http://www.postgresql.org/docs/current/static/runtime-config.html)。

@@ -1,5 +1,5 @@
 ---
-title: 將訓練回合提交至計算目標
+title: 設定定型回合
 titleSuffix: Azure Machine Learning
 description: 在各種定型環境上定型您的機器學習模型， (計算目標) 。 您可以輕鬆地在定型環境之間切換。 在本機開始定型作業。 如果您需要擴增，請切換至雲端式計算目標。
 services: machine-learning
@@ -8,46 +8,43 @@ ms.author: sgilley
 ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
-ms.date: 08/28/2020
+ms.date: 09/25/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: 8b07d19ca88a2d680a4f9efbb85fcf60b895a2b3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: f93b6ab43e1dbf9230c92d22f8fb22ca48eb720e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90907598"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91275756"
 ---
-# <a name="submit-a-training-run-to-a-compute-target"></a>將訓練回合提交至計算目標
+# <a name="configure-and-submit-training-runs"></a>設定並提交定型回合
 
-在本文中，您將瞭解如何使用各種定型環境 ([計算目標](concept-compute-target.md)) 來定型您的機器學習模型。
+在本文中，您將瞭解如何設定和提交 Azure Machine Learning 回合以訓練您的模型。
 
-定型時，通常在本機電腦上啟動，然後在不同的計算目標上執行該定型指令碼。 有了 Azure Machine Learning，您就可以在各種計算目標上執行腳本，而不需要變更定型腳本。
+定型時，通常會在您的本機電腦上啟動，然後再向外擴充到雲端式叢集。 有了 Azure Machine Learning，您就可以在各種計算目標上執行腳本，而不需要變更定型腳本。
 
 您只需要在 **腳本執行**設定內定義每個計算目標的環境。  然後，當您想要在不同的計算目標上執行定型實驗時，為該計算指定回合組態。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 如果您沒有 Azure 訂用帳戶，請在開始前先建立免費帳戶。 立即試用[免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)
-* [適用于 Python 的 AZURE MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)
+* [適用于 Python 的 AZURE MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true) ( # B0 = 1.13.0) 
 * [Azure Machine Learning 工作區](how-to-manage-workspace.md)、`ws`
 * 計算目標 `my_compute_target` 。  建立具有下列內容的計算目標：
   * [Python SDK](how-to-create-attach-compute-sdk.md) 
   * [Azure Machine Learning Studio](how-to-create-attach-compute-studio.md)
 
 ## <a name="whats-a-script-run-configuration"></a><a name="whats-a-run-configuration"></a>什麼是腳本執行設定？
+[ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true)可用來設定提交定型回合作為實驗一部分的必要資訊。
 
-您可以使用 [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true) 物件提交訓練實驗。  此物件包含：
+您可以使用 ScriptRunConfig 物件提交訓練實驗。  此物件包含：
 
 * **source_directory**：包含定型指令碼的來源目錄
-* **指令碼**：識別定型指令碼
-* **run_config**：回合 [設定，它](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py&preserve-view=true)接著會定義定型的發生位置。 在中， `run_config` 您會指定執行定型腳本時要使用的計算目標和環境。  
-
-## <a name="whats-an-environment"></a>什麼是環境？
-
-Azure Machine Learning [環境](concept-environments.md) 是您機器學習訓練發生所在環境的封裝。 他們會指定您訓練和評分腳本周圍的 Python 套件、環境變數和軟體設定。 它們也會指定執行時間 (Python、Spark 或 Docker) 。  
-
-環境是在中的  `run_config` 物件所指定 `ScriptRunConfig` 。
+* **腳本**：要執行的定型腳本
+* **compute_target**：要在其上執行的計算目標
+* **環境**：執行腳本時要使用的環境
+* 還有一些其他可設定的選項 (如需詳細資訊，請參閱 [參考檔](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true)) 
 
 ## <a name="train-your-model"></a><a id="submit"></a>定型模型
 
@@ -55,13 +52,12 @@ Azure Machine Learning [環境](concept-environments.md) 是您機器學習訓�
 
 1. 建立要執行的實驗
 1. 建立將執行腳本的環境
-1. 建立參考計算目標和環境的腳本執行設定
+1. 建立 ScriptRunConfig，以指定計算目標和環境
 1. 提交執行
 1. 等待執行完成
 
 或者您可以：
 
-* 使用 `Estimator` 物件提交實驗，如[使用估算程式將 ML 模型定型](how-to-train-ml-models.md)中所示。
 * 提交用於[超參數微調](how-to-tune-hyperparameters.md)的 HyperDrive 回合。
 * 透過 [VS Code 擴充功能](tutorial-train-deploy-image-classification-model-vscode.md#train-the-model)來提交實驗。
 
@@ -73,19 +69,27 @@ Azure Machine Learning [環境](concept-environments.md) 是您機器學習訓�
 from azureml.core import Experiment
 
 experiment_name = 'my_experiment'
-
 experiment = Experiment(workspace=ws, name=experiment_name)
 ```
 
-## <a name="create-an-environment"></a>建立環境
+## <a name="select-a-compute-target"></a>選取計算目標
 
-策劃環境包含 Python 套件的集合，預設可在您的工作區中使用。 這些環境是由快取的 Docker 映射所支援，可減少執行準備成本。 針對遠端計算目標，您可以使用下列其中一個常用的策劃環境來開始：
+選取您的定型腳本將在其上執行的計算目標。 如果 ScriptRunConfig 中未指定任何計算目標，或者 `compute_target='local'` ，AZURE ML 會在本機執行您的腳本。 
+
+本文中的範例程式碼假設您已從「必要條件」一節中建立計算目標 `my_compute_target` 。
+
+## <a name="create-an-environment"></a>建立環境
+Azure Machine Learning [環境](concept-environments.md) 是您機器學習訓練發生所在環境的封裝。 他們會指定您訓練和評分腳本周圍的 Python 套件、Docker 映射、環境變數和軟體設定。 它們也會指定 (Python、Spark 或 Docker) 的執行時間。
+
+您可以定義自己的環境，或使用 Azure ML 策劃環境。 [策劃環境](https://docs.microsoft.com/azure/machine-learning/how-to-use-environments#use-a-curated-environment) 是預先定義的環境，在您的工作區中預設為可用。 這些環境是由快取的 Docker 映射所支援，可減少執行準備成本。 如需可用策劃環境的完整清單，請參閱 [Azure Machine Learning 策劃環境](https://docs.microsoft.com/azure/machine-learning/resource-curated-environments) 。
+
+針對遠端計算目標，您可以使用下列其中一個常用的策劃環境來開始：
 
 ```python
 from azureml.core import Workspace, Environment
 
 ws = Workspace.from_config()
-my_environment = Environment.get(workspace=ws, name="AzureML-Minimal")
+myenv = Environment.get(workspace=ws, name="AzureML-Minimal")
 ```
 
 如需有關環境的詳細資訊和詳細資訊，請參閱 [Azure Machine Learning 中的建立 & 使用軟體環境](how-to-use-environments.md)。
@@ -97,47 +101,45 @@ my_environment = Environment.get(workspace=ws, name="AzureML-Minimal")
 ```python
 from azureml.core import Environment
 
-# Editing a run configuration property on-fly.
-my_environment = Environment("user-managed-env")
-
-my_environment.python.user_managed_dependencies = True
+myenv = Environment("user-managed-env")
+myenv.python.user_managed_dependencies = True
 
 # You can choose a specific Python environment by pointing to a Python path 
-#my_environment.python.interpreter_path = '/home/johndoe/miniconda3/envs/myenv/bin/python'
+# myenv.python.interpreter_path = '/home/johndoe/miniconda3/envs/myenv/bin/python'
 ```
 
-## <a name="create-script-run-configuration"></a>建立腳本執行設定
+## <a name="create-the-script-run-configuration"></a>建立腳本執行設定
 
-現在您已有 (`compute_target`) 和環境 () 的計算目標 `my_environment` ，請建立執行定型腳本的腳本回合設定， (`train.py` 位於您目錄中的) `project_folder` ：
+現在您已有 (`my_compute_target`) 和環境 () 的計算目標 `myenv` ，請建立執行定型腳本的腳本回合設定， (`train.py` 位於您目錄中的) `project_folder` ：
 
 ```python
 from azureml.core import ScriptRunConfig
 
-script_run_config = ScriptRunConfig(source_directory=project_folder, script='train.py')
-
-# Set compute target
-script_run_config.run_config.target = my_compute_target
-
-# Set environment.   If you don't do this, a default environment will be created.
-script_run_config.run_config.environment = my_environment
+src = ScriptRunConfig(source_directory=project_folder,
+                      script='train.py',
+                      compute_target=my_compute_target,
+                      environment=myenv)
 ```
 
-您也可能想要設定執行的架構。
+如果您未指定環境，將會為您建立預設環境。
 
-* 針對 HDI 叢集：
-    ```python
-    src.run_config.framework = "pyspark"
-    ```
+如果您有想要傳遞給定型腳本的命令列引數，您可以透過 ScriptRunConfig 函式的參數指定這些引數 **`arguments`** ，例如。 `arguments=['--arg1', arg1_val, '--arg2', arg2_val]`
 
-* 遠端虛擬機器：
-    ```python
-    src.run_config.framework = "python"
-    ```
+如果您想要覆寫執行所允許的預設最大時間，可以透過 **`max_run_duration_seconds`** 參數進行。 如果系統所花費的時間超過此值，系統會嘗試自動取消執行。
+
+### <a name="specify-a-distributed-job-configuration"></a>指定分散式作業設定
+如果您想要執行分散式訓練作業，請將分散式工作專屬的設定提供給 **`distributed_job_config`** 參數。 支援的設定類型包括 [MpiConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?view=azure-ml-py&preserve-view=true)、 [TensorflowConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.tensorflowconfiguration?view=azure-ml-py&preserve-view=true)。 
+
+如需執行分散式 Horovod、TensorFlow 和 PyTorch 作業的詳細資訊和範例，請參閱：
+
+* [將 TensorFlow 模型定型](https://docs.microsoft.com/azure/machine-learning/how-to-train-tensorflow#distributed-training)
+* [將 PyTorch 模型定型](https://docs.microsoft.com/azure/machine-learning/how-to-train-pytorch#distributed-training)
 
 ## <a name="submit-the-experiment"></a>提交實驗
 
 ```python
-run = experiment.submit(config=script_run_config)
+run = experiment.submit(config=src)
+run.wait_for_completion(show_output=True)
 ```
 
 > [!IMPORTANT]
@@ -147,17 +149,24 @@ run = experiment.submit(config=script_run_config)
 > 
 > 如需快照集的詳細資訊，請參閱 [快照](concept-azure-machine-learning-architecture.md#snapshots)集。
 
+> [!IMPORTANT]
+> **特殊資料夾** Azure Machine Learning 會特別對待 *outputs* 與 *logs*, 這兩個資料夾。 在定型期間，當您將檔案寫入到相對於根目錄且名為 *outputs* 與 *logs* 的資料夾 (分別是 `./outputs` 與 `./logs`) 時，這些檔案會自動上傳到執行歷程記錄，因此當您的回合完成之後，您就能存取它們。
+>
+> 若要在定型期間建立成品 (例如模型檔案、檢查點、資料檔案或繪製的影像)，請將這些成品寫入到 `./outputs` 資料夾。
+>
+> 同樣地，您也可以將來自您定型回合的任何記錄寫入到 `./logs` 資料夾。 若要利用 Azure Machine Learning 的 [TensorBoard 整合](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/export-run-history-to-tensorboard/export-run-history-to-tensorboard.ipynb)，請務必將您的 TensorBoard 記錄寫入到此資料夾。 當您的回合在執行時，您將能啟動 TensorBoard 並串流這些記錄。  稍後，您也可以從任何先前的回合還原記錄。
+>
+> 例如，若要在您的遠端定型回合執行完成之後將寫入到 *outputs* 資料夾的檔案下載到您的本機電腦，請執行：`run.download_file(name='outputs/my_output_file', output_file_path='my_destination_path')`
 
-<a id="gitintegration"></a>
-
-## <a name="git-tracking-and-integration"></a>Git 追蹤與整合
+## <a name="git-tracking-and-integration"></a><a id="gitintegration"></a>Git 追蹤與整合
 
 當您啟動來源目錄是本機 Git 存放庫的定型回合時，該存放庫的相關資訊會儲存在回合歷程記錄中。 如需詳細資訊，請參閱 [Azure Machine Learning 的 Git 整合](concept-train-model-git-integration.md)。
 
 ## <a name="notebook-examples"></a>筆記本範例
 
-如需具有各種計算目標的定型範例，請參閱下列筆記：
+請參閱這些筆記本，以取得設定各種定型案例執行的範例：
 * [how-to-use-azureml/training](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training)
+* [how-to-use-azureml/ml-frameworks](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks)
 * [tutorials/img-classification-part1-training.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/image-classification-mnist-data/img-classification-part1-training.ipynb)
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-clone-for-examples.md)]
@@ -165,7 +174,8 @@ run = experiment.submit(config=script_run_config)
 ## <a name="next-steps"></a>後續步驟
 
 * [教學課程：定型模型](tutorial-train-models-with-aml.md)會使用受控計算目標來定型模型。
-* 瞭解如何 [有效率地調整超參數](how-to-tune-hyperparameters.md) 來建立更好的模型。view = azure-ml-.py&preserve-view = true) 
+* 瞭解如何使用特定的 ML 架構（例如 [scikit-learn-](how-to-train-scikit-learn.md)learning、 [TensorFlow](how-to-train-tensorflow.md)和 [PyTorch](how-to-train-pytorch.md)）來定型模型。
+* 了解如何[有效率地微調超參數](how-to-tune-hyperparameters.md)以便建置更好的模型。
 * 擁有定型的模型之後，請了解[部署模型的方式和位置](how-to-deploy-and-where.md)。
-* 檢視 [RunConfiguration 類別](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.runconfiguration?view=azure-ml-py&preserve-view=true) SDK 參考。
+* 查看 [ScriptRunConfig class](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true) SDK 參考。
 * [搭配使用 Azure Machine Learning 與 Azure 虛擬網路](how-to-enable-virtual-network.md)

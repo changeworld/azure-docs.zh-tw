@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 63755616bb524226d3c40d32b9695f4b787860d9
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.reviewer: jrasnick
+ms.openlocfilehash: d2f8a30503e14e647cbc9151ebcea7efa000ca07
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489702"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91288285"
 ---
 # <a name="query-csv-files"></a>查詢 CSV 檔案
 
@@ -29,11 +29,11 @@ ms.locfileid: "87489702"
 
 ## <a name="quickstart-example"></a>快速入門範例
 
-`OPENROWSET`函式可讓您藉由提供檔案的 URL，讀取 CSV 檔案的內容。
+`OPENROWSET` 函數可讓您藉由提供檔案的 URL 來讀取 CSV 檔案的內容。
 
 ### <a name="read-a-csv-file"></a>讀取 csv 檔案
 
-查看檔案內容最簡單的方式 `CSV` ，就是提供檔案 URL 來 `OPENROWSET` 運作、指定 csv `FORMAT` 和 2.0 `PARSER_VERSION` 。 如果檔案可公開使用，或者您的 Azure AD 身分識別可以存取此檔案，則您應該能夠使用查詢來查看檔案的內容，如下列範例所示：
+若要查看檔案的內容，最簡單的方式 `CSV` 就是提供檔案 URL 來 `OPENROWSET` 運作、指定 csv `FORMAT` 和 2.0 `PARSER_VERSION` 。 如果檔案可公開取得，或您的 Azure AD 識別可以存取此檔案，您應該能夠使用如下列範例所示的查詢來查看檔案的內容：
 
 ```sql
 select top 10 *
@@ -44,18 +44,18 @@ from openrowset(
     firstrow = 2 ) as rows
 ```
 
-選項 `firstrow` 是用來略過 CSV 檔案中的第一個資料列，在此案例中代表標頭。 請確定您可以存取此檔案。 如果您的檔案受到 SAS 金鑰或自訂身分識別的保護，您就必須設定[sql 登入的伺服器層級認證](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential)。
+選項 `firstrow` 可用來略過 CSV 檔案中代表標頭的第一個資料列（在此案例中）。 請確定您可以存取此檔案。 如果您的檔案受到 SAS 金鑰或自訂身分識別的保護，您將需要設定 [sql 登入的伺服器層級認證](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential)。
 
-### <a name="data-source-usage"></a>資料來源使用方式
+### <a name="data-source-usage"></a>資料來源使用量
 
-上一個範例使用檔案的完整路徑。 或者，您可以建立外部資料源，其位置會指向儲存體的根資料夾：
+上一個範例使用檔案的完整路徑。 或者，您可以使用指向儲存體根資料夾的位置來建立外部資料源：
 
 ```sql
 create external data source covid
 with ( location = 'https://pandemicdatalake.blob.core.windows.net/public/curated/covid-19/ecdc_cases' );
 ```
 
-建立資料來源之後，您可以在函式中使用該資料來源和檔案的相對路徑 `OPENROWSET` ：
+建立資料來源之後，您可以使用該資料來源以及函式中檔案的相對路徑 `OPENROWSET` ：
 
 ```sql
 select top 10 *
@@ -68,11 +68,11 @@ from openrowset(
     ) as rows
 ```
 
-如果資料來源受到 SAS 金鑰或自訂身分識別的保護，您可以[使用資料庫範圍認證來設定資料來源](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#database-scoped-credential)。
+如果使用 SAS 金鑰或自訂身分識別來保護資料來源，您可以 [使用資料庫範圍認證來設定資料來源](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#database-scoped-credential)。
 
 ### <a name="explicitly-specify-schema"></a>明確指定架構
 
-`OPENROWSET`可讓您使用子句明確指定您想要從檔案讀取的資料行 `WITH` ：
+`OPENROWSET` 可讓您明確地指定要使用子句從檔案讀取的資料行 `WITH` ：
 
 ```sql
 select top 10 *
@@ -89,7 +89,7 @@ from openrowset(
     ) as rows
 ```
 
-子句中資料類型後的數位 `WITH` 代表 CSV 檔案中的資料行索引。
+在子句中的資料類型後面的數位 `WITH` 代表 CSV 檔案中的資料行索引。
 
 在下列各節中，您可以瞭解如何查詢各種類型的 CSV 檔案。
 
@@ -246,13 +246,13 @@ WHERE
 > [!NOTE]
 > 如果未指定 ESCAPECHAR，此查詢將會失敗，因為在 "Slov,enia" 中的逗號會視為欄位分隔符號，而不是國家/地區名稱的一部分。 "Slov,enia" 會視為兩個資料行。 因此，特定資料列會比其他資料列多出一個的資料行，且比您在 WITH 子句中的定義多一個資料行。
 
-### <a name="escape-quoting-characters"></a>轉義引號字元
+### <a name="escape-quoting-characters"></a>Escape 引號字元
 
-下列查詢顯示如何讀取具有標頭資料列的檔案，其中包含 Unix 樣式的新行、以逗號分隔的資料行，以及值內的已轉義雙引號字元。 請注意，與其他範例相比，檔案的位置不同。
+下列查詢會示範如何讀取含有標頭資料列的檔案，其中包含 Unix 樣式的新行、逗點分隔的資料行，以及值內的有引號的雙引號字元。 請注意，與其他範例相比，檔案的位置不同。
 
 檔案預覽：
 
-![下列查詢顯示如何讀取具有標頭資料列的檔案，其中包含 Unix 樣式的新行、以逗號分隔的資料行，以及值內的已轉義雙引號字元。](./media/query-single-csv-file/population-unix-hdr-escape-quoted.png)
+![下列查詢會示範如何讀取含有標頭資料列的檔案，其中包含 Unix 樣式的新行、逗點分隔的資料行，以及值內的有引號的雙引號字元。](./media/query-single-csv-file/population-unix-hdr-escape-quoted.png)
 
 ```sql
 SELECT *

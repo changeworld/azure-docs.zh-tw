@@ -5,20 +5,20 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/22/2020
-ms.openlocfilehash: fd0826ad11a153d72ee47f35930d25f0df498418
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/23/2020
+ms.openlocfilehash: dd7aed0d23dd657b655e473565611ef36c592562
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936777"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336321"
 ---
 # <a name="logical-replication-and-logical-decoding-in-azure-database-for-postgresql---flexible-server"></a>適用於 PostgreSQL 的 Azure 資料庫-彈性伺服器中的邏輯複寫和邏輯解碼
 
 > [!IMPORTANT]
 > 適用於 PostgreSQL 的 Azure 資料庫 - 彈性伺服器為預覽狀態
 
-適用於 PostgreSQL 的 Azure 資料庫彈性的伺服器支援于 postgresql 的邏輯複寫和邏輯解碼功能。
+針對 Postgres 第11版，適用於 PostgreSQL 的 Azure 資料庫彈性的伺服器支援于 postgresql 的邏輯複寫和邏輯解碼功能。
 
 ## <a name="comparing-logical-replication-and-logical-decoding"></a>比較邏輯複寫和邏輯解碼
 邏輯複寫和邏輯解碼有幾個相似之處。 兩者都是
@@ -43,7 +43,11 @@ ms.locfileid: "90936777"
 1. 將 server 參數設定 `wal_level` 為 `logical` 。
 2. 重新開機伺服器以套用 `wal_level` 變更。
 3. 確認您的于 postgresql 實例允許來自連線資源的網路流量。
-4. 執行複寫命令時，請使用系統管理員使用者。
+4. 授與系統管理員使用者複寫許可權。
+   ```SQL
+   ALTER ROLE <adminname> WITH REPLICATION;
+   ```
+
 
 ## <a name="using-logical-replication-and-logical-decoding"></a>使用邏輯複寫和邏輯解碼
 
@@ -54,7 +58,7 @@ ms.locfileid: "90936777"
 
 以下是您可以用來嘗試邏輯複寫的一些範例程式碼。
 
-1. 連接到發行者。 建立資料表並加入一些資料。
+1. 連接到發行者資料庫。 建立資料表並加入一些資料。
    ```SQL
    CREATE TABLE basic(id SERIAL, name varchar(40));
    INSERT INTO basic(name) VALUES ('apple');
@@ -66,14 +70,14 @@ ms.locfileid: "90936777"
    CREATE PUBLICATION pub FOR TABLE basic;
    ```
 
-3. 連接到訂閱者。 使用與發行者端相同的架構來建立資料表。
+3. 連接到訂閱者資料庫。 使用與發行者端相同的架構來建立資料表。
    ```SQL
    CREATE TABLE basic(id SERIAL, name varchar(40));
    ```
 
 4. 建立將連接到您稍早建立之發行集的訂閱。
    ```SQL
-   CREATE SUBSCRIPTION sub CONNECTION 'host=<server>.postgres.database.azure.com user=<admin> dbname=<dbname>' PUBLICATION pub;
+   CREATE SUBSCRIPTION sub CONNECTION 'host=<server>.postgres.database.azure.com user=<admin> dbname=<dbname> password=<password>' PUBLICATION pub;
    ```
 
 5. 您現在可以在「訂閱者」端查詢資料表。 您會看到它已收到來自發行者的資料。
@@ -170,10 +174,11 @@ SELECT * FROM pg_replication_slots;
 
 [設定](howto-alert-on-metrics.md)**使用的最大交易識別碼**和**儲存體**上的警示，並在值增加超過一般閾值時通知您。 
 
-## <a name="read-replicas"></a>讀取複本
-有彈性的伺服器目前不支援適用於 PostgreSQL 的 Azure 資料庫讀取複本。
+## <a name="limitations"></a>限制
+* 已有彈性的伺服器目前不支援**讀取複本**-適用於 PostgreSQL 的 Azure 資料庫讀取複本。
+* **插槽和 HA 容錯移轉** -在次要 AZ 的待命伺服器上無法使用主伺服器上的邏輯複寫位置。 如果您的伺服器使用區域多餘的高可用性選項，這會適用于您。 當容錯移轉至待命伺服器時，不會在待命上提供邏輯複寫位置。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 * 深入瞭解 [網路選項](concepts-networking.md)
 * 瞭解彈性伺服器中可用的 [擴充](concepts-extensions.md) 功能
 * 深入瞭解 [高可用性](concepts-high-availability.md)

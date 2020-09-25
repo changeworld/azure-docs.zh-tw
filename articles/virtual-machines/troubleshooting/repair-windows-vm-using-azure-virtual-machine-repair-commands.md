@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 09/10/2019
 ms.author: v-miegge
-ms.openlocfilehash: 7addc87f3096a75a55d0ea3b5804fd0006d5cb8c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 66dfd198b543ec49fabe381b50174b182cf070c7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86526481"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336032"
 ---
 # <a name="repair-a-windows-vm-by-using-the-azure-virtual-machine-repair-commands"></a>使用 Azure 虛擬機器修復命令修復 Windows VM
 
@@ -31,7 +31,7 @@ ms.locfileid: "86526481"
 > * 一次只能執行一個指令碼。
 > * 無法取消執行中的指令碼。
 > * 指令碼可以執行的最長時間是 90 分鐘，經過這段時間後會逾時。
-> * 針對使用 Azure 磁碟加密的 Vm，只支援使用單一傳遞加密（含或不含 KEK）加密的受控磁片。
+> * 針對使用 Azure 磁碟加密的 Vm，僅支援使用單一傳遞加密)  (加密的受控磁片。
 
 
 ## <a name="repair-process-overview"></a>修復流程概觀
@@ -60,7 +60,7 @@ ms.locfileid: "86526481"
 
    如果您偏好在本機安裝和使用 CLI，本快速入門需要有 Azure CLI 2.0.30 版或更新版本。 執行 ``az --version`` 以尋找版本。 如果您需要安裝或升級 Azure CLI，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
    
-   如果您需要使用不同于目前登入 Azure 入口網站的帳戶登入 Cloud Shell，您可以使用 ``az login`` [az login reference](/cli/azure/reference-index?view=azure-cli-latest#az-login)。  若要在與您帳戶相關聯的訂閱之間切換，您可以使用 ``az account set --subscription`` [az account set reference](/cli/azure/account?view=azure-cli-latest#az-account-set)。
+   如果您需要使用與目前登入 Azure 入口網站不同的帳戶登入 Cloud Shell，可以使用 ``az login`` [az login 參考](/cli/azure/reference-index?view=azure-cli-latest#az-login)。  若要在與您帳戶相關聯的訂用帳戶之間切換，您可以使用 ``az account set --subscription`` [az 帳戶集參考](/cli/azure/account?view=azure-cli-latest#az-account-set)。
 
 2. 如果這是您第一次使用 `az vm repair` 命令，請新增 vm-repair CLI 擴充功能。
 
@@ -74,19 +74,19 @@ ms.locfileid: "86526481"
    az extension update -n vm-repair
    ```
 
-3. 執行 `az vm repair create`。 此命令會建立非功能性 VM 的 OS 磁碟複本、在新的資源群組中建立修復 VM，以及連結 OS 磁碟複本。  修復 VM 的大小和區域會與指定的非功能性 VM 相同。 所有步驟中使用的資源群組和 VM 名稱將適用于非功能性 VM。 如果您的 VM 使用 Azure 磁碟加密命令會嘗試解除鎖定加密的磁片，以便在連接至修復 VM 時可存取。
+3. 執行 `az vm repair create`。 此命令會建立非功能性 VM 的 OS 磁碟複本、在新的資源群組中建立修復 VM，以及連結 OS 磁碟複本。  修復 VM 的大小和區域會與指定的非功能性 VM 相同。 所有步驟中使用的資源群組和 VM 名稱將適用于無法運作的 VM。 如果您的 VM 使用 Azure 磁碟加密命令將會嘗試解除鎖定加密的磁片，使其可在連接至修復 VM 時存取。
 
    ```azurecli-interactive
-   az vm repair create -g MyResourceGroup -n myVM --repair-username username --repair-password password!234 --verbose
+   az vm repair create -g MyResourceGroup -n myVM --repair-username username --repair-password 'password!234' --verbose
    ```
 
-4. 執行 `az vm repair run`。 此命令會透過修復 VM，在連結的磁碟上執行指定的修復指令碼。 如果您使用的疑難排解指南指定了執行識別碼，請在此使用，否則可以使用 `az vm repair list-scripts` 來查看可用的修復指令碼。 此處使用的資源群組和 VM 名稱適用于步驟3中使用的非功能 VM。
+4. 執行 `az vm repair run`。 此命令會透過修復 VM，在連結的磁碟上執行指定的修復指令碼。 如果您使用的疑難排解指南指定了執行識別碼，請在此使用，否則可以使用 `az vm repair list-scripts` 來查看可用的修復指令碼。 此處使用的資源群組和 VM 名稱適用于步驟3中所使用的非功能性 VM。
 
    ```azurecli-interactive
    az vm repair run -g MyResourceGroup -n MyVM --run-on-repair --run-id win-hello-world --verbose
    ```
 
-5. 執行 `az vm repair restore`。 此命令會將已修復的 OS 磁碟與 VM 的原始 OS 磁碟交換。 此處使用的資源群組和 VM 名稱適用于步驟3中使用的非功能 VM。
+5. 執行 `az vm repair restore`。 此命令會將已修復的 OS 磁碟與 VM 的原始 OS 磁碟交換。 此處使用的資源群組和 VM 名稱適用于步驟3中所使用的非功能性 VM。
 
    ```azurecli-interactive
    az vm repair restore -g MyResourceGroup -n MyVM --verbose

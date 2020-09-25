@@ -1,18 +1,18 @@
 ---
 title: 適用於 Windows Server 的 Azure Hybrid Benefit
-description: 了解如何發揮 Windows 軟體保證的最大效益，以將內部部署授權帶到 Azure
+description: 瞭解如何將內部部署授權帶到 Azure，讓您的 Windows 軟體保證獲益發揮最大效益。
 author: xujing-ms
 ms.service: virtual-machines-windows
 ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 4/22/2018
 ms.author: xujing
-ms.openlocfilehash: 1c87c517a0013fa31ba63ef1f78677fe85f5d287
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 43784fe2bb94d5abd012f22ed530e4631a304614
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074269"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335981"
 ---
 # <a name="azure-hybrid-benefit-for-windows-server"></a>適用於 Windows Server 的 Azure Hybrid Benefit
 對於擁有軟體保證的客戶，適用於 Windows Server 的 Azure Hybrid Benefit 讓您能夠以較低的成本來使用內部部署 Windows Server 授權，以及在 Azure 上執行 Windows 虛擬機器。 您可以使用適用於 Windows Server 的 Azure Hybrid Benefit 部署具有 Windows OS 的新虛擬機器。 本文章會詳述使用適用於 Windows Server 的 Azure Hybrid Benefit 來部署新 VM 的步驟，以及您如何更新現有的執行中 VM。 如需有關適用於 Windows Server 之 Azure Hybrid Benefit 的授權和節省成本詳細資訊，請參閱[適用於 Windows Server 的 Azure Hybrid Benefit 授權頁面](https://azure.microsoft.com/pricing/hybrid-use-benefit/)。
@@ -24,7 +24,7 @@ ms.locfileid: "87074269"
 
 ## <a name="classic-vms"></a>傳統 VM
 
-若為傳統 Vm，則只支援從內部部署自訂映射部署新的 VM。 若要充分利用本文章所支援的功能，您必須先將傳統 VM 移轉至 Resource Manager 模型。
+若為傳統 Vm，則僅支援從內部部署自訂映射部署新的 VM。 若要充分利用本文章所支援的功能，您必須先將傳統 VM 移轉至 Resource Manager 模型。
 
 [!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
  
@@ -65,7 +65,7 @@ az vm create \
     --license-type Windows_Server
 ```
 
-### <a name="template"></a>範本
+### <a name="template"></a>[範本]
 在 Resource Manager 範本內，必須指定 `licenseType` 的額外參數。 您可以進一步了解如何[製作 Azure Resource Manager 範本](../../azure-resource-manager/templates/template-syntax.md)
 ```json
 "properties": {
@@ -162,7 +162,7 @@ az vm list --query "[?licenseType=='Windows_Server']" -o table
 ```
 
 ## <a name="deploy-a-virtual-machine-scale-set-with-azure-hybrid-benefit-for-windows-server"></a>使用適用於 Windows Server 的 Azure Hybrid Benefit 部署虛擬機器擴展集
-在虛擬機器擴展集 Resource Manager 範本內，必須在 VirtualMachineProfile 屬性中指定額外參數 `licenseType`。 您可以透過 ARM 範本、PowerShell、Azure CLI 或 REST，在您的擴展集建立或更新期間執行此動作。
+在虛擬機器擴展集 Resource Manager 範本內，必須在 VirtualMachineProfile 屬性中指定額外參數 `licenseType`。 您可以透過 ARM 範本、PowerShell、Azure CLI 或 REST，在擴展集的建立或更新期間執行此動作。
 
 下列範例使用 ARM 範本搭配 Windows Server 2016 Datacenter 映像︰
 ```json
@@ -188,9 +188,9 @@ az vm list --query "[?licenseType=='Windows_Server']" -o table
 您也可以深入了解如何[修改虛擬機器擴展集](../../virtual-machine-scale-sets/virtual-machine-scale-sets-upgrade-scale-set.md)以便取得更多更新擴展集的方式。
 
 ## <a name="next-steps"></a>後續步驟
-- 閱讀更多有關[如何使用 Azure Hybrid Benefit 節省成本的](https://azure.microsoft.com/pricing/hybrid-use-benefit/)資訊
+- 深入瞭解 [如何使用 Azure Hybrid Benefit 來節省成本](https://azure.microsoft.com/pricing/hybrid-use-benefit/)
 - 深入了解 [Azure Hybrid Benefit 的常見問題集](https://azure.microsoft.com/pricing/hybrid-use-benefit/faq/)
 - 深入了解[適用於 Windows Server 的 Azure Hybrid Benefit 授權詳細指導方針](/windows-server/get-started/azure-hybrid-benefit)
 - 深入了解[適用於 Windows Server 的 Azure Hybrid Benefit 和 Azure Site Recovery 能使將應用程式移轉至 Azure 更符合成本效益](https://azure.microsoft.com/blog/hybrid-use-benefit-migration-with-asr/) \(英文\)
 - 深入了解[在 Azure上使用多租用戶裝載權限的 Windows 10](./windows-desktop-multitenant-hosting-deployment.md) \(英文\)
-- 深入瞭解如何[使用 Resource Manager 範本](../../azure-resource-manager/management/overview.md)
+- 深入瞭解如何 [使用 Resource Manager 範本](../../azure-resource-manager/management/overview.md)

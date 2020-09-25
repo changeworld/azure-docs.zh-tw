@@ -6,20 +6,29 @@ ms.author: b-juche
 ms.service: azure-netapp-files
 ms.workload: storage
 ms.topic: how-to
-ms.date: 08/28/2020
-ms.openlocfilehash: f9dc54959979d00d57536e3a3fa2262d27e28f96
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.date: 09/22/2020
+ms.openlocfilehash: d5db91a8864d6090466b40197187c9386e053d12
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89072191"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325533"
 ---
 # <a name="mount-or-unmount-a-volume-for-windows-or-linux-virtual-machines"></a>對 Windows 或 Linux 虛擬機器掛接或取消掛接磁碟區 
 
 您可以視需要對 Windows 或 Linux 虛擬機器掛接或取消掛接磁碟區。  Linux 虛擬機器的掛接指示可與 Azure NetApp Files 上取得。  
 
-> [!IMPORTANT] 
-> 您至少必須要有一個匯出原則，才能存取 NFS 磁片區。
+## <a name="requirements"></a>需求 
+
+* 您至少必須要有一個匯出原則，才能存取 NFS 磁片區。
+* 若要成功掛接 NFS 磁片區，請確定用戶端和 NFS 磁片區之間已開啟下列 NFS 埠：
+    * 111 = `RPCBIND/Portmapper`
+    * 635 = `mountd`
+    * 2049 = `nfs`
+    * 4045 = `nlockmgr` (僅限 NFSv3) 
+    * 4046 = `status` (僅限 NFSv3) 
+
+## <a name="steps"></a>步驟
 
 1. 按一下 [ **磁片** 區] 分頁，然後選取您要掛接的磁片區。 
 2. 從選取的磁片區按一下 [ **掛接指示** ]，然後依照指示來掛接磁片區。 

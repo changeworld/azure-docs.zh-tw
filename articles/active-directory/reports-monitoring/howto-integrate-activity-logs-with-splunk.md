@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 監視器整合 Splunk |Microsoft Docs
-description: 瞭解如何使用 Azure 監視器將 Azure Active Directory 記錄與 SumoLogic 整合
+description: 瞭解如何使用 Azure 監視器將 Azure Active Directory 記錄與 Splunk 整合。
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -17,20 +17,20 @@ ms.date: 03/10/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 61cae487c588c7649de638d9ea6d3111bfbe9e1a
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 351669453a5ce6930d3eb912e95e530d14febf61
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89229679"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335845"
 ---
 # <a name="how-to-integrate-azure-active-directory-logs-with-splunk-using-azure-monitor"></a>如何：使用 Azure 監視器將 Azure Active Directory 記錄與 Splunk 整合
 
 在此文章中，您將了解如何使用 Azure 監視器將 Azure Active Directory (Azure AD) 記錄與 Splunk 整合。 您首先會將記錄路由傳送至 Azure 事件中樞，然後將事件中樞與 Splunk 整合。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
-若要使用此功能，您需要：
+若要使用此功能，您必須要有：
 
 - 包含 Azure AD 活動記錄的 Azure 事件中樞。 了解如何[將活動記錄串流至事件中樞](./tutorial-azure-monitor-stream-logs-to-event-hub.md)。 
 
@@ -56,6 +56,6 @@ ms.locfileid: "89229679"
 
 ## <a name="next-steps"></a>後續步驟
 
-* [解讀 Azure 監視器中的 audit logs 架構](reference-azure-monitor-audit-log-schema.md)
-* [在 Azure 監視器中解讀登入記錄架構](reference-azure-monitor-sign-ins-log-schema.md)
+* [解譯 Azure 監視器中的稽核記錄結構描述](reference-azure-monitor-audit-log-schema.md)
+* [解譯 Azure 監視器中的登入記錄結構描述](reference-azure-monitor-sign-ins-log-schema.md)
 * [常見問題集和已知問題](concept-activity-logs-azure-monitor.md#frequently-asked-questions)

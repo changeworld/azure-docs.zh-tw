@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 06/29/2020
+ms.date: 09/22/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 034d2410b97562946216815e5bdafd35fe1bc40b
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 672918280a988771431dccc81f042226addf029d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90601668"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91265930"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>使用條件式存取來設定驗證工作階段管理
 
@@ -89,6 +89,8 @@ Azure Active Directory 的 (Azure AD) 使用者登入頻率的預設設定是90�
 
 > [!WARNING]
 > 如果您使用目前處於公開預覽狀態的 [可設定權杖存留期](../develop/active-directory-configurable-token-lifetimes.md) 功能，請注意，我們不支援針對相同的使用者或應用程式組合建立兩個不同的原則：一個是此功能，另一個則使用可設定的權杖存留期功能。 Microsoft 計畫在2020年5月1日淘汰可設定的權杖存留期功能，並以條件式存取驗證會話管理功能取代。  
+>
+> 在啟用登入頻率之前，請確定您的租使用者中已停用其他重新驗證設定。 如果已啟用 [記住受信任裝置上的 MFA]，請務必在使用登入頻率之前將它停用，因為這兩個設定一起使用，可能會導致使用者意外提示。 若要深入瞭解重新驗證提示和會話存留期，請參閱文章、 [優化重新驗證提示，以及瞭解 Azure Multi-Factor Authentication 的會話存留期](../authentication/concepts-azure-multi-factor-authentication-prompts-session-lifetime.md)。
 
 ### <a name="policy-1-sign-in-frequency-control"></a>原則1：登入頻率控制
 

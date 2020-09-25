@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol, rosssmi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a3cdb851ca00300d995bcf2075252a360242197
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 122cc6a2be17cb35e77b638a60fc5fa4f035c0d4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90601957"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91266134"
 ---
 # <a name="how-to-require-approved-client-apps-for-cloud-app-access-with-conditional-access"></a>操作說明：需要經過核准的用戶端應用程式使用條件式存取來存取雲端應用程式
 
@@ -47,7 +47,7 @@ ms.locfileid: "90601957"
 1. 在 [指派] 底下，選取 [使用者和群組]
    1. 在 [包括] 底下，選取 [所有使用者] 或您想要套用此原則的特定**使用者和群組**。 
    1. 選取 [完成] 。
-1. 在 [雲端應用程式或動作] > [包含] 底下，選取 [Office 365 (預覽)]。
+1. 在 [**雲端應用程式] 或 [動作**  >  **包括**] 下，選取 [ **Office 365**]。
 1. 在 [條件] 下，選取 [裝置平台]。
    1. 將 [設定] 設定為 [是]。
    1. 包含 **Android** 和 **iOS**。

@@ -4,17 +4,17 @@ description: 瞭解如何使用 Azure 地圖服務 Web SDK，將影像圖示和�
 author: rbrundritt
 ms.author: richbrun
 ms.date: 8/6/2019
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
-ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: d6c7ba255b0dcec280d05eab36be71b8c9a726ae
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.custom: codepen, devx-track-js
+ms.openlocfilehash: f43c0086cfd6e51e0fbcd5d30911aa6c8e9a6518
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90086550"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335546"
 ---
 # <a name="how-to-use-image-templates"></a>如何使用映像範本
 
@@ -119,7 +119,7 @@ map.imageSprite.createFromTemplate('myTemplatedIcon', 'marker-flat', 'teal', '#f
 
 如果您的應用程式使用與不同圖示的相同圖示，或您要建立可新增其他影像範本的模組，您可以從 Azure 地圖服務 web SDK 輕鬆地新增和取出這些圖示。 在命名空間上使用下列靜態函數 `atlas` 。
 
-| 名稱 | 傳回類型 | 描述 | 
+| 名稱 | 傳回類型 | 說明 | 
 |-|-|-|
 | `addImageTemplate(templateName: string, template: string, override: boolean)` | | 將自訂 SVG 影像範本新增至塔命名空間。 |
 |  `getImageTemplate(templateName: string, scale?: number)`| 字串 | 依名稱抓取 SVG 範本。 |

@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: aamalvea
 ms.author: aamalvea
-ms.reviewer: jrasnik, carlrab
+ms.reviewer: jrasnik, sstein
 ms.date: 05/04/2020
-ms.openlocfilehash: 2b7457ad5870e31d682f8727901795c9d6d73f06
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: fdfa709d50f351d3202a01c5d3df65bb3015e887
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442661"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335105"
 ---
 # <a name="create-alerts-for-azure-sql-database-and-azure-synapse-analytics-using-the-azure-portal"></a>使用 Azure 入口網站建立 Azure SQL Database 和 Azure Synapse Analytics 的警示
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -63,7 +63,7 @@ ms.locfileid: "89442661"
   ![選取信號](./media/alerts-insights-configure-portal/select-signal.png)
 6. 選取信號（例如 **CPU 百分比**）後，[ **設定信號邏輯** ] 頁面隨即出現。
   ![設定訊號邏輯](./media/alerts-insights-configure-portal/configure-signal-logic.png)
-7. 在此頁面上，設定該臨界數值型別、運算子、匯總類型、閾值、匯總細微性和評估頻率。 然後按一下 [ **完成**]。
+7. 在此頁面上，設定該臨界數值型別、運算子、匯總類型、閾值、匯總細微性和評估頻率。 然後按一下 [完成]。
 8. 在 [ **建立規則**] 中，選取現有的 **動作群組** 或建立新的群組。 動作群組可讓您定義警示條件發生時所要採取的動作。
   ![定義動作群組](./media/alerts-insights-configure-portal/action-group.png)
 
@@ -71,6 +71,6 @@ ms.locfileid: "89442661"
 
 在10分鐘內，警示會處於作用中狀態，如先前所述的觸發程式。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 深入了解 [在警示中設定 webhook](../../azure-monitor/platform/alerts-webhooks.md)。

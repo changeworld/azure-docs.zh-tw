@@ -1,6 +1,6 @@
 ---
 title: Azure 媒體服務事件的 Azure 事件格線結構描述
-description: 描述利用 Azure 事件格線提供給媒體服務事件的屬性
+description: 深入瞭解使用 Azure 事件方格提供媒體服務事件的屬性。
 services: media-services
 documentationcenter: ''
 author: IngridAtMicrosoft
@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: reference
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: f7c9f3b000973868c003477e58de14634b139cae
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 47ba1af15101ae68cf5311ed73f7078bf9fc7f35
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267661"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336423"
 ---
 # <a name="azure-event-grid-schemas-for-media-services-events"></a>Azure 媒體服務事件的 Azure 事件格線結構描述
 
@@ -139,7 +139,7 @@ ms.locfileid: "89267661"
 | 屬性 | 類型 | 說明 |
 | -------- | ---- | ----------- |
 | previousState | 字串 | 工作在該事件之前的狀態。 |
-| state | 字串 | 在此事件中，被通知的工作新狀態。 例如，「已排程：作業已準備好開始」或「已完成：作業已完成」。|
+| 狀態 | 字串 | 在此事件中，被通知的工作新狀態。 例如，「已排程：作業已準備好開始」或「已完成：作業已完成」。|
 
 工作狀態可以是以下其中一個值：*已排入佇列*、*已排程*、*處理中*、*已完成*、*錯誤*、*已取消*、*取消中*
 
@@ -446,7 +446,7 @@ ms.locfileid: "89267661"
 | -------- | ---- | ----------- |
 | trackType | 字串 | 資料軌的類型 (音訊/視訊)。 |
 | trackName | 字串 | 資料軌的名稱。 |
-| bitrate | integer | 資料軌的位元速率。 |
+| bitrate | 整數 | 資料軌的位元速率。 |
 | timestamp | 字串 | 資料區塊的卸除時間戳記。 |
 | timescale | 字串 | 時間戳記的時幅。 |
 | ResultCode | 字串 | 資料區塊卸除的原因。 **FragmentDrop_OverlapTimestamp** 或 **FragmentDrop_NonIncreasingTimestamp**。 |
@@ -486,7 +486,7 @@ ms.locfileid: "89267661"
 | -------- | ---- | ----------- |
 | trackType | 字串 | 資料軌的類型 (音訊/視訊)。 |
 | trackName | 字串 | 資料軌的名稱 (由編碼器提供，在 RTMP 的案例中，伺服器會以 TrackType_Bitrate** 格式產生)。 |
-| bitrate | integer | 資料軌的位元速率。 |
+| bitrate | 整數 | 資料軌的位元速率。 |
 | ingestUrl | 字串 | 即時事件所提供的內嵌 URL。 |
 | encoderIp | 字串  | 編碼器的 IP。 |
 | encoderPort | 字串 | 此資料流來源編碼器的連接埠。 |
@@ -603,15 +603,15 @@ ms.locfileid: "89267661"
 | -------- | ---- | ----------- |
 | trackType | 字串 | 資料軌的類型 (音訊/視訊)。 |
 | trackName | 字串 | 資料軌的名稱 (由編碼器提供，在 RTMP 的案例中，伺服器會以 TrackType_Bitrate** 格式產生)。 |
-| bitrate | integer | 資料軌的位元速率。 |
-| incomingBitrate | integer | 根據來自編碼器的資料區塊所計算出的位元速率。 |
+| bitrate | 整數 | 資料軌的位元速率。 |
+| incomingBitrate | 整數 | 根據來自編碼器的資料區塊所計算出的位元速率。 |
 | lastTimestamp | 字串 | 資料軌在過去 20 秒所收到的最新時間戳記。 |
 | timescale | 字串 | 用來表示時間戳記的時幅。 |
-| overlapCount | integer | 在過去 20 秒有重疊時間戳記的資料區塊數目。 |
-| discontinuityCount | integer | 在過去 20 秒所觀察到的中斷次數。 |
-| nonIncreasingCount | integer | 在過去 20 秒所收到有過去時間戳記的資料區塊數目。 |
+| overlapCount | 整數 | 在過去 20 秒有重疊時間戳記的資料區塊數目。 |
+| discontinuityCount | 整數 | 在過去 20 秒所觀察到的中斷次數。 |
+| nonIncreasingCount | 整數 | 在過去 20 秒所收到有過去時間戳記的資料區塊數目。 |
 | unexpectedBitrate | bool | 在過去 20 秒內，預期和實際的位元速率差異是否超過允許的限制。 只有在「incomingBitrate >= 2* 位元速率」或「incomingBitrate <= 位元速率/2」或「IncomingBitrate = 0」時，才會是 true。 |
-| state | 字串 | 即時事件的狀態。 |
+| 狀態 | 字串 | 即時事件的狀態。 |
 | healthy | bool | 根據計數和旗標來指出內嵌是否狀況良好。 如果 overlapCount = 0 && discontinuityCount = 0 && nonIncreasingCount = 0 && unexpectedBitrate = false，則健康情況為 true。 |
 
 ### <a name="liveeventtrackdiscontinuitydetected"></a>LiveEventTrackDiscontinuityDetected
@@ -647,7 +647,7 @@ ms.locfileid: "89267661"
 | -------- | ---- | ----------- |
 | trackType | 字串 | 資料軌的類型 (音訊/視訊)。 |
 | trackName | 字串 | 資料軌的名稱 (由編碼器提供，在 RTMP 的案例中，伺服器會以 TrackType_Bitrate** 格式產生)。 |
-| bitrate | integer | 資料軌的位元速率。 |
+| bitrate | 整數 | 資料軌的位元速率。 |
 | previousTimestamp | 字串 | 上一個片段的時間戳記。 |
 | newTimestamp | 字串 | 當前片段的時間戳記。 |
 | discontinuityGap | 字串 | 上述兩個時間戳記之間的間距。 |

@@ -4,23 +4,23 @@ description: 瞭解如何使用 Azure 地圖服務中的地圖控制項用戶端
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 07/20/2020
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 7d45adc10a84af2cf1e5bfddd09c990e53a9f7e2
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.custom: devx-track-js
+ms.openlocfilehash: 19db4fb0d75369a0f272eef1180e86f47d45d284
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90086346"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335325"
 ---
 # <a name="use-the-azure-maps-map-control"></a>使用 Azure 地圖服務的地圖控制項
 
 地圖控制項用戶端 JavaScript 程式庫可讓您在 web 或行動應用程式中呈現地圖和內嵌 Azure 地圖服務功能。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要在網頁中使用地圖控制項，您必須具備下列其中一個必要條件：
 

@@ -4,21 +4,21 @@ description: Azure 安全性基準測試 V2 治理和策略
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/13/2020
+ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: e8a5196bf71712caae1218933ed13345f4cecd99
-ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
+ms.openlocfilehash: 255e5533dc19036624042a0b82116c4dc107d762
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90059160"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336219"
 ---
-# <a name="security-control-governance-and-strategy"></a>安全性控制：治理和策略
+# <a name="security-control-v2-governance-and-strategy"></a>安全性控制 V2：治理和策略
 
-備份和復原涵蓋的控制項，可確保在不同的服務層級執行、驗證和保護資料和設定備份。
+治理和策略提供的指導方針可確保一致的安全性策略，以及記載的治理方法來引導並維持安全性保證，包括為不同的雲端安全性功能、統一的技術策略，以及支援的原則和標準建立角色和責任。
 
-## <a name="gs-1-define-asset-management-and-protection-strategy"></a>GS-1：定義資產管理和保護原則
+## <a name="gs-1-define-asset-management-and-data-protection-strategy"></a>GS-1：定義資產管理與資料保護策略
 
 | Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP800-53 r4 ID (s)  |
 |--|--|--|--|
@@ -44,47 +44,70 @@ ms.locfileid: "90059160"
 
 -   適當的密碼編譯標準
 
-注意：您的雲端和內部部署資產管理和保護方法可能會因多種因素而有所不同，例如應用程式服務/裝載模型、商務風險和合規性需求。 
-
+如需詳細資訊，請參閱下列參考資料：
 - [Azure 安全性架構建議-儲存體、資料和加密](https://docs.microsoft.com/azure/architecture/framework/security/storage-data-encryption?toc=/security/compass/toc.json&amp;bc=/security/compass/breadcrumb/toc.json)
 
 - [Azure 安全性基礎-Azure 資料安全性、加密和儲存體](../fundamentals/encryption-overview.md)
 
 - [雲端採用架構-Azure 資料安全性和加密最佳作法](https://docs.microsoft.com/azure/security/fundamentals/data-encryption-best-practices?toc=/azure/cloud-adoption-framework/toc.json&amp;bc=/azure/cloud-adoption-framework/_bread/toc.json)
 
-- [Azure 安全性基準測試-資產管理](/azure/security/benchmarks/security-controls-v2-asset-management)
+- [Azure 安全性基準測試-資產管理](/azure/security/benchmarks/security-benchmark-v2-asset-management)
 
-- [Azure 安全性基準測試-資料保護](/azure/security/benchmarks/security-controls-v2-data-protection)
+- [Azure 安全性基準測試-資料保護](/azure/security/benchmarks/security-benchmark-v2-data-protection)
 
 **責任**：客戶
 
-**客戶安全性專案關係人**：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [所有專案關係人](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)
 
-## <a name="gs-2-define-security-posture-management-strategy"></a>GS-2：定義安全性狀態管理原則
+## <a name="gs-2-define-enterprise-segmentation-strategy"></a>GS-2：定義企業分割策略
 
 | Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP800-53 r4 ID (s)  |
 |--|--|--|--|
-| GS-2 | 20、3、5 | RA、CM、SC |
+| GS-2 | 4、9、16 | AC、CA、SC |
+
+使用身分識別、網路、應用程式、訂用帳戶、管理群組和其他控制項的組合，建立企業級的策略來分割資產的存取權。
+
+請仔細平衡安全性分隔的需求，以及針對需要彼此通訊並存取資料的系統，啟用每日作業的需求。
+
+請確定跨控制項類型（包括網路安全性、身分識別和存取模型、應用程式許可權/存取模型，以及人力流程式控制件）一致地實行分割策略。
+
+- [Azure 中的分割策略指引 (影片) ](/security/compass/microsoft-security-compass-introduction#azure-components-and-reference-model-2151)
+
+- [Azure (檔中的分割策略指引) ](/security/compass/governance#enterprise-segmentation-strategy)
+
+- [利用企業分割策略來調整網路分割](/security/compass/network-security-containment#align-network-segmentation-with-enterprise-segmentation-strategy)
+
+**責任**：客戶
+
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
+
+- [所有專案關係人](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)
+
+## <a name="gs-3-define-security-posture-management-strategy"></a>GS-3：定義安全性狀態管理原則
+
+| Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP800-53 r4 ID (s)  |
+|--|--|--|--|
+| GS-3 | 20、3、5 | RA、CM、SC |
 
 持續測量並減輕個別資產及其託管環境的風險。 設定高價值資產的優先順序以及高度公開的攻擊面，例如已發佈的應用程式、網路輸入和輸出點、使用者和系統管理員端點等等。
 
-- [Azure 安全性基準測試-狀態與弱點管理](/azure/security/benchmarks/security-controls-v2-posture-vulnerability-management)
+- [Azure 安全性基準測試-狀態與弱點管理](/azure/security/benchmarks/security-benchmark-v2-posture-vulnerability-management)
 
 **責任**：客戶
 
-**客戶安全性專案關係人**：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [所有專案關係人](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)
 
-## <a name="gs-3-align-organization-roles-responsibilities-and-accountabilities"></a>GS-3：讓組織角色、職責和責任保持一致
+## <a name="gs-4-align-organization-roles-responsibilities-and-accountabilities"></a>GS-4：讓組織角色、職責和責任保持一致
 
 | Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP800-53 r4 ID (s)  |
 |--|--|--|--|
-| GS-3 | N/A | PL，PM |
+| GS-4 | N/A | PL，PM |
 
-確定您記載並傳達安全性組織中角色和責任的明確策略。 優先提供安全性決策的明確責任、對共同責任模型的教育，以及雲端安全性的技術教育。 
+確定您記載並傳達安全性組織中角色和責任的明確策略。 優先提供安全性決策的明確責任、教育所有人共同責任模型，以及教育技術小組來保護雲端。
 
 - [Azure 安全性最佳作法 1-人員：教育小組雲端安全性旅程](https://aka.ms/AzSec1)
 
@@ -94,15 +117,15 @@ ms.locfileid: "90059160"
 
 **責任**：客戶
 
-**客戶安全性專案關係人**：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [所有專案關係人](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)
 
-## <a name="gs-4-define-network-security-strategy"></a>GS-4：定義網路安全性策略
+## <a name="gs-5-define-network-security-strategy"></a>GS-5：定義網路安全性策略
 
 | Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP800-53 r4 ID (s)  |
 |--|--|--|--|
-| GS-4 | 9 | CA，SC |
+| GS-5 | 9 | CA，SC |
 
 建立 Azure 網路安全性方法，作為組織整體安全性存取控制策略的一部分。  
 
@@ -120,11 +143,11 @@ ms.locfileid: "90059160"
 
 -   最新的網路安全性構件 (例如網狀圖、參考網路架構) 
 
-注意：您的雲端和內部部署的網路安全性方法可能會因多種因素而有所不同，例如應用程式服務模型、威脅暴露和混合式網路設定。
+如需詳細資訊，請參閱下列參考資料：
 
 - [Azure 安全性最佳做法 11-架構。單一整合的安全性策略](https://aka.ms/AzSec11)
 
-- [Azure 安全性基準測試-網路安全性](/azure/security/benchmarks/security-controls-v2-network-security)
+- [Azure 安全性基準測試-網路安全性](/azure/security/benchmarks/security-benchmark-v2-network-security)
 
 - [Azure 網路安全性概觀](../fundamentals/network-overview.md)
 
@@ -132,15 +155,15 @@ ms.locfileid: "90059160"
 
 **責任**：客戶
 
-**客戶安全性專案關係人**：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [所有專案關係人](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)
 
-## <a name="gs-5-define-identity-and-privileged-access-strategy"></a>GS-5：定義身分識別和特殊許可權存取策略
+## <a name="gs-6-define-identity-and-privileged-access-strategy"></a>GS-6：定義身分識別和特殊許可權存取策略
 
 | Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP800-53 r4 ID (s)  |
 |--|--|--|--|
-| GS-5 | 16、4 | AC、AU、SC |
+| GS-6 | 16、4 | AC、AU、SC |
 
 建立 Azure 身分識別和特殊許可權的存取方法，作為組織整體安全性存取控制策略的一部分。  
 
@@ -156,11 +179,11 @@ ms.locfileid: "90059160"
 
 -   使用者身分識別和存取權檢查和協調流程
 
-注意：您的雲端和內部部署的身分識別和特殊許可權存取方法，可能會因多種因素而有所不同，例如資料/應用程式存取路徑、服務模型和客戶/合作夥伴存取策略。
+如需詳細資訊，請參閱下列參考資料：
 
-- [Azure 安全性基準測試-身分識別管理](/azure/security/benchmarks/security-controls-v2-identity-management)
+- [Azure 安全性基準測試-身分識別管理](/azure/security/benchmarks/security-benchmark-v2-identity-management)
 
-- [Azure 安全性基準測試-特殊許可權存取](/azure/security/benchmarks/security-controls-v2-privileged-access)
+- [Azure 安全性基準測試-特殊許可權存取](/azure/security/benchmarks/security-benchmark-v2-privileged-access)
 
 - [Azure 安全性最佳做法 11-架構。單一整合的安全性策略](https://aka.ms/AzSec11)
 
@@ -168,15 +191,15 @@ ms.locfileid: "90059160"
 
 **責任**：客戶
 
-**客戶安全性專案關係人**：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [所有專案關係人](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)
 
-## <a name="gs-6-define-logging-and-threat-response-strategy"></a>GS-6：定義記錄和威脅回應策略
+## <a name="gs-7-define-logging-and-threat-response-strategy"></a>GS-7：定義記錄和威脅回應策略
 
 | Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP800-53 r4 ID (s)  |
 |--|--|--|--|
-| GS-6 | 19 | IR、AU、RA、SC |
+| GS-7 | 19 | IR、AU、RA、SC |
 
 建立記錄和威脅回應策略，以快速偵測和補救威脅，同時符合合規性需求。 排定為分析師提供高品質的警示和順暢的體驗，讓他們可以專注于威脅，而不是整合和手動步驟。 
 
@@ -196,11 +219,10 @@ ms.locfileid: "90059160"
 
 -   處理事件和事件後活動的流程，例如經驗教訓和辨識項保留
 
-注意：您的雲端和內部部署的記錄和威脅偵測方法可能會因多種因素而有所不同，例如合規性需求、威脅環境，以及偵測和補救功能。 
+如需詳細資訊，請參閱下列參考資料：
+- [Azure 安全性基準測試-記錄和威脅偵測](/azure/security/benchmarks/security-benchmark-v2-logging-threat-detection)
 
-- [Azure 安全性基準測試-記錄和威脅偵測](/azure/security/benchmarks/security-controls-v2-logging-threat-detection)
-
-- [Azure 安全性基準測試-事件回應](/azure/security/benchmarks/security-controls-v2-incident-response)
+- [Azure 安全性基準測試-事件回應](/azure/security/benchmarks/security-benchmark-v2-incident-response)
 
 - [Azure 安全性最佳作法 4-處理。更新雲端的事件回應程式](https://aka.ms/AzSec11)
 
@@ -210,15 +232,15 @@ ms.locfileid: "90059160"
 
 **責任**：客戶
 
-**客戶安全性專案關係人**：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [所有專案關係人](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)
 
-## <a name="gs-7-define-backup-and-recovery-strategy"></a>GS-7：定義備份和復原策略
+## <a name="gs-8-define-backup-and-recovery-strategy"></a>GS-8：定義備份和復原策略
 
 | Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP800-53 r4 ID (s)  |
 |--|--|--|--|
-| GS-7 | 10 | CP |
+| GS-8 | 10 | CP |
 
 為您的組織建立 Azure 備份和復原策略。 
 
@@ -230,9 +252,8 @@ ms.locfileid: "90059160"
 
 -   使用存取控制和資料加密來保護備份
 
-注意：雲端和內部部署的備份和復原方法，可能會因為多個因素而異，例如基礎結構冗余、應用程式服務/裝載模型，以及合規性需求。
-
-- [Azure 安全性基準測試-備份和復原](/azure/security/benchmarks/security-controls-v2-backup-recovery)
+如需詳細資訊，請參閱下列參考資料：
+- [Azure 安全性基準測試-備份和復原](/azure/security/benchmarks/security-benchmark-v2-backup-recovery)
 
 - [Azure 架構完善的架構-Azure 應用程式的備份和災難復原](/azure/architecture/framework/resiliency/backup-and-recovery)
 
@@ -240,7 +261,7 @@ ms.locfileid: "90059160"
 
 **責任**：客戶
 
-**客戶安全性專案關係人**：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [所有專案關係人](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)
 

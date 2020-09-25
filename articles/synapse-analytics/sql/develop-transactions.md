@@ -10,14 +10,14 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: c5d23770aab0bde745152d918adfe83209819899
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: de36d1eda21903480eee986df72c5274e1aa6dff
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500754"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91288608"
 ---
-# <a name="use-transactions-in-sql-pool"></a>在 SQL 集區中使用交易
+# <a name="use-transactions-in-sql-pool"></a>使用 SQL 集區中的交易
 
 在 SQL 集區 (資料倉儲) 中實作交易以便開發解決方案的祕訣。
 
@@ -29,10 +29,10 @@ ms.locfileid: "87500754"
 
 SQL 集區實作 ACID 交易。 交易式支援的隔離等級預設為 READ UNCOMMITTED。  您可在連線至 master 資料庫時，開啟使用者資料庫的 [READ_COMMITTED_SNAPSHOT] 資料庫選項，將其變更為 [READ COMMITTED SNAPSHOT ISOLATION]。  
 
-啟用之後，此資料庫中所有交易都會在 READ COMMITTED SNAPSHOT ISOLATION 的狀態下執行，且將不會接受在工作階段層級上設定為 READ UNCOMMITTED。 如需詳細資料，請參閱 [ALTER DATABASE SET 選項 (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest)。
+啟用之後，此資料庫中所有交易都會在 READ COMMITTED SNAPSHOT ISOLATION 的狀態下執行，且將不會接受在工作階段層級上設定為 READ UNCOMMITTED。 如需詳細資料，請參閱 [ALTER DATABASE SET 選項 (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest&preserve-view=true)。
 
 ## <a name="transaction-size"></a>交易大小
-單一資料修改交易的大小是有限制的。 每個散發都會套用的限制。 因此，將限制乘以散發計數可算出總配置。 
+單一資料修改交易的大小是有限制的。 每個散發都會套用的限制。 如此一來，就可以藉由將限制乘以分佈計數來計算總配置。 
 
 若要大致估計交易中的資料列總數，請將散發容量除以每個資料列的大小總計。 針對可變動的長度資料行，請考慮取得平均資料行長度，而不是使用大小上限。
 
@@ -81,7 +81,7 @@ SQL 集區實作 ACID 交易。 交易式支援的隔離等級預設為 READ UNC
 
 系統會針對每個交易或作業套用交易大小限制。 它不會套用到所有並行交易。 因此允許每一個交易在記錄檔中寫入這個資料量。
 
-若要最佳化寫入記錄的資料量並降到最低，請參閱[交易的最佳做法](../sql-data-warehouse/sql-data-warehouse-develop-best-practices-transactions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)一文。
+若要優化寫入記錄的資料量，並將其最小化，請參閱「 [交易最佳做法](../sql-data-warehouse/sql-data-warehouse-develop-best-practices-transactions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) 」一文。
 
 > [!WARNING]
 > 交易大小上限僅可針對 HASH 或 ROUND_ROBIN 散發資料表 (資料會平均分佈) 來達成。 如果交易是以扭曲方式將資料寫入散發，則可能會在到達交易大小上限之前就先達到限制。
@@ -134,11 +134,11 @@ SELECT @xact_state AS TransactionState;
 
 前述程式碼會產生下列錯誤訊息：
 
-Msg 111233, Level 16, State 1, Line 1 111233; 目前的交易已經中止，並已回復任何暫止的變更。 原因：處於僅限復原狀態中的交易，未在使用 DDL、DML 或 SELECT 陳述式之前明確復原。
+Msg 111233, Level 16, State 1, Line 1 111233; 目前的交易已經中止，並已回復任何暫止的變更。 原因：處於僅限復原狀態中的交易，未在 DDL、DML 或 SELECT 語句之前明確復原。
 
 您不會收到 ERROR_* 函式的輸出。
 
-SQL 集區中的程式碼需要稍微變更：
+在 SQL 集區中，程式碼必須稍微改變：
 
 ```sql
 SET NOCOUNT ON;
@@ -181,21 +181,19 @@ SELECT @xact_state AS TransactionState;
 
 ## <a name="error_line-function"></a>Error_Line() 函式
 
-另外值得注意的是，SQL 集區不會實作或支援 ERROR_LINE() 函式。 如果您的程式碼中有此函式，您必須將其移除才能符合 SQL 集區規範。 在程式碼中使用查詢標籤，而不需實作對等的功能。 如需詳細資訊，請參閱 [LABEL](develop-label.md) 文章。
+另外值得注意的是，SQL 集區不會實作或支援 ERROR_LINE() 函式。 如果您的程式碼中有此函式，您必須將它移除，使其符合 SQL 集區的規範。 在程式碼中使用查詢標籤，而不需實作對等的功能。 如需詳細資訊，請參閱 [標籤](develop-label.md) 文章。
 
 ## <a name="use-of-throw-and-raiserror"></a>使用 THROW 和 RAISERROR
 
 THROW 是在 SQL 集區中引發例外狀況的新式實作，但也支援 RAISERROR。 不過，有一些值得注意的差異。
 
-* 對於 THROW，使用者定義的錯誤訊息數目不能在 100,000 - 150,000 範圍內
+* 使用者自訂錯誤訊息數目不能在 100000-150000 範圍中擲回
 * RAISERROR 錯誤訊息固定為 50,000
 * 不支援使用 sys.messages
 
 ## <a name="limitations"></a>限制
 
-SQL 集區有一些與交易相關的其他限制。
-
-如下所示：
+SQL 集區有一些與交易相關的其他限制。 如下所示：
 
 * 沒有分散式交易
 * 不允許巢狀交易

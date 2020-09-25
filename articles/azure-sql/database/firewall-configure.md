@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: VanMSFT
 ms.author: vanto
-ms.reviewer: carlrab
+ms.reviewer: sstein
 ms.date: 06/17/2020
-ms.openlocfilehash: ef46a0040ba767197028d170372a4a9edca9feee
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 9b6b0ee6fa33ecd0d677d7d075236517d85d4ab7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442695"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335108"
 ---
 # <a name="azure-sql-database-and-azure-synapse-ip-firewall-rules"></a>Azure SQL Database 和 Azure Synapse IP 防火牆規則
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -267,7 +267,7 @@ az sql server firewall-rule create --resource-group myResourceGroup --server $se
   - 要求您的網際網路服務提供者輸入指派給存取伺服器之用戶端電腦的 IP 位址範圍。 將該 IP 位址範圍新增為 IP 防火牆規則。
   - 改為針對您的用戶端電腦取得靜態 IP 位址。 將 IP 位址新增為 IP 防火牆規則。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 確認您的公司網路環境允許來自計算 IP 位址範圍的輸入通訊 (包括 Azure 資料中心所使用的 SQL 範圍) 。 您可能必須將這些 IP 位址新增至允許清單。 請參閱 [Microsoft Azure DATACENTER IP 範圍](https://www.microsoft.com/download/details.aspx?id=41653)。  
 - 如需有關建立伺服器層級 IP 防火牆規則的快速入門，請參閱 [在 Azure SQL Database 中建立單一資料庫](single-database-create-quickstart.md)。

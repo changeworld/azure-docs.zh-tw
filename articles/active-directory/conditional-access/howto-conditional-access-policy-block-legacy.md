@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 08/07/2020
+ms.date: 09/22/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b4a0a411f51eed3a262ee59eb8e93b983755af3
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 2499a89907eb63f01adbc80a6d206911c09c1259
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90601549"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91265947"
 ---
 # <a name="conditional-access-block-legacy-authentication"></a>條件式存取：封鎖舊式驗證
 
@@ -26,7 +26,7 @@ ms.locfileid: "90601549"
 
 下列步驟將協助建立條件式存取原則，以封鎖舊式驗證要求。 此原則會以[報告專用模式](howto-conditional-access-insights-reporting.md)啟動，讓管理員可以判斷對現有使用者的影響。 當管理員確信原則會如預期套用時，可以切換至 [開啟]，或藉由新增特定群組和排除其他群組以進行階段部署。
 
-1. 以系統管理員身分登入 **Azure 入口網站**。
+1. 以全域管理員、安全性系統管理員或條件式存取管理員的身分，登入 **Azure 入口網站**。
 1. 瀏覽至 [Azure Active Directory] > [安全性] > [條件式存取]。
 1. 選取 [新增原則]。
 1. 為您的原則命名。 我們建議組織針對其原則的名稱建立有意義的標準。

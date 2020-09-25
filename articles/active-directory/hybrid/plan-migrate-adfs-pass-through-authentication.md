@@ -12,12 +12,12 @@ ms.date: 05/29/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7e5a5b06bc95d022cfad66118db4b55e9369b5bd
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: a0ee8661ca985e1882cff54d2fc2cdc5e9ad0a22
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661891"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335964"
 ---
 # <a name="migrate-from-federation-to-pass-through-authentication-for-azure-active-directory"></a>從 Azure Active Directory 的同盟移轉至傳遞驗證
 
@@ -100,7 +100,7 @@ Get-MsolDomainFederationSettings -DomainName Contoso.com | fl *
 
 請確認可能已為您的同盟設計和部署文件自訂的任何設定。 具體來說，請尋找 **PreferredAuthenticationProtocol**、**SupportsMfa** 和 **PromptLoginBehavior** 中的自訂。
 
-如需詳細資訊，請參閱下列文章：
+如需詳細資訊，請參閱這些文章：
 
 * [AD FS prompt=login 參數支援](/windows-server/identity/ad-fs/operations/ad-fs-prompt-login)
 * [Set-MsolDomainAuthentication](/powershell/module/msonline/set-msoldomainauthentication?view=azureadps-1.0)
@@ -128,7 +128,7 @@ Get-MsolDomainFederationSettings -DomainName Contoso.com | fl *
 
 從同盟身分識別轉換為受控識別之前，請仔細查看您目前如何使用 AD FS Azure AD、Microsoft 365 和其他應用程式 (信賴憑證者信任) 。 具體而言，請考量下表所說明的案例：
 
-| If | 結果為 |
+| 如果 | 結果為 |
 |-|-|
 | 您打算繼續使用 AD FS 與 Azure AD 和 Microsoft 365) 以外的其他應用程式 (。 | 在轉換網域之後，您將使用 AD FS 和 Azure AD。 請考量使用者體驗。 在某些情況下，使用者可能需要驗證兩次：一次是 Azure AD (其中使用者會將 SSO 存取權提供給其他應用程式（例如 Microsoft 365) ），然後再次針對仍系結至 AD FS 做為信賴憑證者信任的任何應用程式取得。 |
 | 您的 AD FS 執行個體經過高度自訂，且仰賴 onload.js 檔案中特定的自訂設定 (例如您已變更登入體驗，使得使用者的使用者名稱必須採用 **SamAccountName** 格式，而非使用者主體名稱 (UPN)，或是您的組織已將登入體驗高度品牌化)。 在 Azure AD 中無法複製 onload.js 檔案。 | 在繼續作業之前，您必須確認 Azure AD 可符合您目前的自訂需求。 如需詳細資訊和指引，請參閱 AD FS 商標和 AD FS 自訂的相關章節。|
@@ -160,7 +160,7 @@ Get-MsolDomainFederationSettings -DomainName Contoso.com | fl *
 
 如需詳細資訊，請參閱[設定已加入混合式 Azure AD 的裝置](../devices/hybrid-azuread-join-plan.md)。
 
-#### <a name="branding"></a>Branding
+#### <a name="branding"></a>商標
 
 如果您的組織[自訂了 ADFS 登入頁面](/windows-server/identity/ad-fs/operations/ad-fs-user-sign-in-customization)以顯示更多有關組織的資訊，請考慮以類似的方式[自訂 Azure AD 登入頁面](../fundamentals/customize-branding.md)。
 
@@ -283,9 +283,9 @@ Azure AD 智慧鎖定可防範暴力密碼破解攻擊。 在使用傳遞驗證�
 
 4. 執行驗證代理程式安裝。 在安裝期間，您必須輸入全域管理員帳戶的認證。
 
-   ![此螢幕擷取畫面顯示 Microsoft Azure AD Connect 驗證代理程式套件頁面上的 [安裝] 按鈕](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image11.png)
+   ![顯示您用來執行 Microsoft Azure AD Connect 驗證代理程式套件的 [安裝] 按鈕的螢幕擷取畫面。](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image11.png)
 
-   ![顯示登入頁面的螢幕擷取畫面](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image12.png)
+   ![顯示 Microsoft 登入頁面的螢幕擷取畫面。](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image12.png)
 
 5. 安裝驗證代理程式之後，您可以回到傳遞驗證代理程式健康情況頁面檢查其他代理程式的狀態。
 
@@ -327,7 +327,7 @@ Azure AD 智慧鎖定可防範暴力密碼破解攻擊。 在使用傳遞驗證�
    * [無縫單一登入]**** 設為 [啟用]****。
    * [傳遞驗證]**** 設為 [啟用]****。
    
-   ![此螢幕擷取畫面顯示 [使用者登入] 區段中的設定](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image19.png)
+   ![顯示使用者登入區段中所要驗證之設定的螢幕擷取畫面。](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image19.png)
 8. 選取 [**傳遞驗證**]，並確認狀態為 [作用中 **]。**<br />
    
    如果驗證代理程式未啟用，請先完成某些[疑難排解步驟](./tshoot-connect-pass-through-authentication.md)，再繼續進行下一個步驟中的網域轉換程序。 若未先驗證傳遞驗證代理程式已成功安裝，且其狀態在 Azure 入口網站中顯示為「使用中」****，即進行網域轉換，可能導致驗證中斷。
@@ -368,7 +368,7 @@ Azure AD 智慧鎖定可防範暴力密碼破解攻擊。 在使用傳遞驗證�
    * [無縫單一登入]**** 設為 [啟用]****。
    * [傳遞驗證]**** 設為 [啟用]****。<br />
 
-   ![此螢幕擷取畫面顯示 [使用者登入] 區段中的設定](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image26.png)<br />
+   ![在 Azure AD 入口網站的 [使用者登入] 區段中顯示設定的螢幕擷取畫面。](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image26.png)<br />
 
 ## <a name="testing-and-next-steps"></a>測試和下一個步驟
 
@@ -455,7 +455,7 @@ Azure AD 智慧鎖定可防範暴力密碼破解攻擊。 在使用傳遞驗證�
 
 如需詳細資訊，請參閱[對 Azure Active Directory 傳遞驗證進行疑難排解](./tshoot-connect-pass-through-authentication.md)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 了解 [Azure AD Connect 設計概念](plan-connect-design-concepts.md)。
 * 選擇 [正確的驗證](./choose-ad-authn.md)。

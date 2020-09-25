@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/09/2020
+ms.date: 09/22/2020
 ms.author: b-juche
-ms.openlocfilehash: 9822d7bd769ea161ddcf195d695f27024351ca4b
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 4b8c879a89da47a081e4b95382d17b3d2baede9d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662446"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325567"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>關於 Azure NetApp Files 的常見問題
 
@@ -29,7 +29,7 @@ ms.locfileid: "89662446"
 
 ### <a name="does-the-nfs-data-path-go-over-the-internet"></a>NFS 資料路徑是否經過網際網路？  
 
-不會。 NFS 資料路徑不會經過網際網路。 Azure NetApp Files 是部署至 Azure 虛擬網路的 azure 原生服務， (VNet) 可用的服務。 Azure NetApp Files 使用委派的子網，並直接在 VNet 上布建網路介面。 
+否。 NFS 資料路徑不會經過網際網路。 Azure NetApp Files 是部署至 Azure 虛擬網路的 azure 原生服務， (VNet) 可用的服務。 Azure NetApp Files 使用委派的子網，並直接在 VNet 上布建網路介面。 
 
 如需詳細資料，請參閱 [Azure NetApp Files 網路規劃的指導方針](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-network-topologies) 。  
 
@@ -48,7 +48,7 @@ ms.locfileid: "89662446"
 
 ### <a name="can-i-set-or-select-my-own-ip-address-for-an-azure-netapp-files-volume"></a>我可以為 Azure NetApp Files 磁片區設定或選取自己的 IP 位址嗎？  
 
-不會。 對 Azure NetApp Files 磁片區的 IP 指派是動態的。 不支援靜態 IP 指派。 
+否。 對 Azure NetApp Files 磁片區的 IP 指派是動態的。 不支援靜態 IP 指派。 
 
 ### <a name="does-azure-netapp-files-support-dual-stack-ipv4-and-ipv6-vnet"></a>Azure NetApp Files 是否支援 (IPv4 和 IPv6) VNet 的雙重 stack？
 
@@ -132,6 +132,12 @@ Azure NetApp Files 支援 NFSv3 和 Nfsv4.1 4.1。 您可以使用任何 NFS 版
 
 您可以指定根帳號是否可以存取磁片區，而不是使用磁片區的匯出原則。 如需詳細資訊，請參閱 [設定 NFS 磁片區的匯出原則](azure-netapp-files-configure-export-policy.md) 。
 
+### <a name="can-i-use-the-same-file-path-volume-creation-token-for-multiple-volumes"></a>我可以針對多個磁片區使用相同的檔案路徑 (磁片區建立權杖) 嗎？
+
+是，您可以。 不過，檔案路徑必須在不同的訂用帳戶或不同的區域中使用。   
+
+例如，您可以建立名為的磁片區 `vol1` 。 然後，您可以在 `vol1` 不同的容量集區中建立另一個磁片區，但在相同的訂用帳戶和區域中呼叫。 在此情況下，使用相同的磁片區名稱 `vol1` 將會造成錯誤。 若要使用相同的檔案路徑，該名稱必須位於不同的區域或訂用帳戶中。
+
 ## <a name="smb-faqs"></a>SMB 常見問題集
 
 ### <a name="which-smb-versions-are-supported-by-azure-netapp-files"></a>Azure NetApp Files 支援哪些 SMB 版本？
@@ -163,12 +169,6 @@ Azure NetApp Files 支援 Active Directory Domain Services 版的 Windows Server
 SMB 用戶端所報告的磁片區大小是 Azure NetApp Files 磁片區可成長的大小上限。 SMB 用戶端上所顯示的 Azure NetApp Files 磁片區大小，並不會反映磁片區的配額或大小。 您可以透過 Azure 入口網站或 API 取得 Azure NetApp Files 磁片區大小或配額。
 
 <!--
-### Does Azure NetApp Files support Kerberos encryption?
-
-Yes, by default, Azure NetApp Files supports both AES-128 and AES-256 encryption for traffic between the service and the targeted Active Directory domain controllers. See [Create an SMB volume for Azure NetApp Files](azure-netapp-files-create-volumes-smb.md) for requirements. 
--->
-
-<!--
 ### Does Azure NetApp Files support LDAP signing? 
 
 Yes, Azure NetApp Files supports LDAP signing by default. This functionality enables secure LDAP lookups between the Azure NetApp Files service and the user-specified [Active Directory Domain Services domain controllers](https://docs.microsoft.com/windows/win32/ad/active-directory-domain-services). For more information, see [ADV190023 | Microsoft Guidance for Enabling LDAP Channel Binding and LDAP Signing](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV190023).
@@ -196,7 +196,7 @@ Azure NetApp Files 提供容量集區和磁片區使用計量。 您也可以使
 
 ### <a name="can-i-manage-azure-netapp-files-through-azure-storage-explorer"></a>我可以透過 Azure 儲存體總管管理 Azure NetApp Files 嗎？
 
-不會。 Azure 儲存體總管不支援 Azure NetApp Files。
+否。 Azure 儲存體總管不支援 Azure NetApp Files。
 
 ### <a name="how-do-i-determine-if-a-directory-is-approaching-the-limit-size"></a>如何? 判斷目錄是否接近限制大小？
 
@@ -253,13 +253,13 @@ NetApp 提供以 SaaS 為基礎的解決方案，也就是 [Netapp Cloud Sync](h
 
 ### <a name="is-migration-with-azure-data-box-supported"></a>是否支援遷移 Azure 資料箱？
 
-不會。 Azure 資料箱目前不支援 Azure NetApp Files。 
+否。 Azure 資料箱目前不支援 Azure NetApp Files。 
 
 ### <a name="is-migration-with-azure-importexport-service-supported"></a>是否支援使用 Azure 匯入/匯出服務進行遷移？
 
-不會。 Azure 匯入/匯出服務目前不支援 Azure NetApp Files。
+否。 Azure 匯入/匯出服務目前不支援 Azure NetApp Files。
 
-## <a name="next-steps"></a>接下來的步驟  
+## <a name="next-steps"></a>後續步驟  
 
 - [Microsoft Azure ExpressRoute 常見問題](https://docs.microsoft.com/azure/expressroute/expressroute-faqs)
 - [Microsoft Azure 虛擬網路常見問題](https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq)
