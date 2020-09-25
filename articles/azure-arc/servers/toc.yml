@@ -47,7 +47,9 @@
       items:
         - name: 代理程式連線問題
           href: troubleshoot-agent-onboard.md
-- name: 參考資料
+        - name: VM 擴充功能問題
+          href: troubleshoot-vm-extensions.md
+- name: 參考
   items:
     - name: 資料存留處
       href: data-residency.md

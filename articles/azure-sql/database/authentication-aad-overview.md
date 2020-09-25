@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
-ms.reviewer: vanto, carlrab
+ms.reviewer: vanto, sstein
 ms.date: 04/23/2020
-ms.openlocfilehash: 943569a16101ac170d01d08250b31ba67c0e590e
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 8221c77c0e6adeabe869a088089733d289a2f6ca
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89434277"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91277927"
 ---
 # <a name="use-azure-active-directory-authentication"></a>使用 Azure Active Directory authentication
 
@@ -161,14 +161,14 @@ Azure Active Directory 驗證支援下列方法，使用 Azure AD 身分識別�
 - 使用 Azure 入口網站匯 **入資料庫** 和 **匯出資料庫** blade，可支援 Azure SQL Database 和 Azure Synapse 的 Azure AD 驗證。 PowerShell 命令也支援使用 Azure AD 驗證的匯入和匯出。
 - 使用 CLI 可支援 SQL Database、SQL 受控執行個體和 Azure Synapse 的 Azure AD 驗證。 如需詳細資訊，請參閱使用 SQL Database 或 Azure Synapse 和[SQL Server-az SQL Server](https://docs.microsoft.com/cli/azure/sql/server)來[設定和管理 Azure AD authentication](authentication-aad-configure.md) 。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 若要瞭解如何建立和填入 Azure AD 的實例，然後使用 Azure SQL Database、SQL 受控執行個體或 Azure Synapse 進行設定，請參閱 [使用 SQL Database、sql 受控執行個體或 Azure Synapse 來設定及管理 Azure Active Directory 驗證](authentication-aad-configure.md)。
 - 如需使用 Azure AD 伺服器主體 (使用 SQL 受控執行個體) 登入的教學課程，請參閱 Azure AD[使用 sql 的](../managed-instance/aad-security-configure-tutorial.md)登入 (伺服器主體) 
 - 如需 SQL Database 中的登入、使用者、資料庫角色和許可權的總覽，請參閱登入 [、使用者、資料庫角色和許可權](logins-create-manage.md)。
 - 如需資料庫主體的詳細資訊，請參閱[主體](https://msdn.microsoft.com/library/ms181127.aspx)。
 - 如需資料庫角色的詳細資訊，請參閱[資料庫角色](https://msdn.microsoft.com/library/ms189121.aspx)。
-- 如需為 SQL 受控執行個體建立 Azure AD 伺服器主體 (登入) 的語法，請參閱  [建立登](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current)入。
+- 如需為 SQL 受控執行個體建立 Azure AD 伺服器主體 (登入) 的語法，請參閱  [建立登](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true)入。
 - 如需 SQL Database 中防火牆規則的詳細資訊，請參閱 [SQL Database 防火牆規則](firewall-configure.md)。
 
 <!--Image references-->

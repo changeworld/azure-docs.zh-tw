@@ -8,17 +8,17 @@ editor: ''
 tags: azure-resource-management
 ms.assetid: 95a89072-0edf-49b5-88ed-584891c0e066
 ms.service: virtual-machines-sql
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/04/2018
 ms.author: mikeray
-ms.openlocfilehash: 6a03a91eeb9296e60aa147f97634a15e8d344209
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 49c1c8ad80b7be0cbca7ceb76eb1e38e1c091cf9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87293047"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91293385"
 ---
 # <a name="backup-and-restore-for-sql-server-on-azure-vms"></a>Azure VM 上的 SQL Server 備份與還原
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]

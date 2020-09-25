@@ -1,7 +1,7 @@
 ---
 title: 使用 Azure CLI 設定公用 IP 位址的路由喜好設定
 titlesuffix: Azure Virtual Network
-description: 了解如何使用網際網路流量路由喜好設定來建立公用 IP
+description: 瞭解如何使用 Azure CLI，建立具有網際網路流量路由喜好設定的公用 IP。
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 05/18/2020
 ms.author: mnayak
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 64284b198fc76c219ffe0dfbc57461b587b23130
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 39514f8a34e85525e2a8900a8e6e3cc8656fb84a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87504597"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329290"
 ---
 # <a name="configure-routing-preference-for-a-public-ip-address-using-azure-cli"></a>使用 Azure CLI 設定公用 IP 位址的路由喜好設定
 

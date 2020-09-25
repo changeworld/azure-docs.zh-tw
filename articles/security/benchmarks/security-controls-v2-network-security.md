@@ -4,17 +4,17 @@ description: Azure 安全性基準測試 V2 網路安全性
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/13/2020
+ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 184416794011d259af3568c81e4648d822a2c4a5
-ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
+ms.openlocfilehash: 9833f63d999ab7c24174853bd37f4e7a76f6dfbf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90059236"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329426"
 ---
-# <a name="security-control-network-security"></a>安全性控制：網路安全性
+# <a name="security-control-v2-network-security"></a>安全性控制 V2：網路安全性
 
 網路安全性涵蓋保護和保護 Azure 網路的控制措施。 這包括保護虛擬網路、建立私人連線、預防和緩和外部攻擊，以及保護 DNS 的安全。
 
@@ -30,15 +30,19 @@ ms.locfileid: "90059236"
 
 使用 Azure 資訊安全中心調適型網路強化，以根據外部網路流量規則的參考，建議可限制埠和來源 Ip 的網路安全性群組設定。
 
+使用 Azure Sentinel 探索舊版不安全的通訊協定（例如 SSL/TLSv1、SMBv1、LM/NTLMv1、wDigest、不帶正負號的 LDAP 系結，以及 Kerberos 中的弱式密碼）的使用方式。
+
 - [如何建立具有安全性規則的網路安全性群組](../../virtual-network/tutorial-filter-network-traffic.md)
 
 - [如何部署和設定 Azure 防火牆](../../firewall/tutorial-firewall-deploy-portal.md)
 
 - [Azure 資訊安全中心中的適應性網路強化](../../security-center/security-center-adaptive-network-hardening.md)
 
+- [Azure Sentinel 不安全的通訊協定活頁簿](../../sentinel/quickstart-get-visibility.md#use-built-in-workbooks)
+
 **責任**：客戶
 
-**客戶安全性專案關係人**：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [安全性架構](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -54,7 +58,7 @@ ms.locfileid: "90059236"
 
 使用 Azure ExpressRoute 或 Azure 虛擬私人網路 (VPN) ，在共置環境中的 Azure 資料中心與內部部署基礎結構之間建立私人連線。 ExpressRoute 連線不會經過公用網際網路，而且提供比一般網際網路連線更可靠、速度更快且延遲更低的位置。 針對點對站 VPN 和站對站 VPN，您可以使用這些 VPN 選項和 Azure ExpressRoute 的任意組合，將內部部署裝置或網路連線到虛擬網路。
 
-若要將 Azure 中的兩個或多個虛擬網路連接在一起，請使用虛擬網路對等互連。 對等互連虛擬網路之間的網路流量是私人的，並且會保留在 Azure 骨幹網路上。 
+若要將 Azure 中的兩個或多個虛擬網路連接在一起，請使用虛擬網路對等互連或 Private Link。 對等互連虛擬網路之間的網路流量是私人的，並且會保留在 Azure 骨幹網路上。 
 
 - [什麼是 ExpressRoute 連線模型](../../expressroute/expressroute-connectivity-models.md) 
 
@@ -62,9 +66,11 @@ ms.locfileid: "90059236"
 
 - [虛擬網路對等互連](../../virtual-network/virtual-network-peering-overview.md)
 
+- [Azure Private Link](../../private-link/private-link-service-overview.md)
+
 **責任**：客戶
 
-**客戶安全性專案關係人**：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [安全性架構](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -88,7 +94,7 @@ ms.locfileid: "90059236"
 
 **責任**：客戶
 
-**客戶安全性專案關係人**：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [安全性架構](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -108,6 +114,7 @@ ms.locfileid: "90059236"
 -   使用 Web 應用程式防火牆 (Azure 應用程式閘道、Azure Front Door 和 Azure 內容傳遞網路 (CDN) 中的 WAF) 功能，以保護您的應用程式、服務和 Api 免于應用層的攻擊。 
 
 -   藉由在 Azure 虛擬網路上啟用 DDoS 標準保護，來保護您的資產免于 DDoS 攻擊。 
+-   使用 Azure 資訊安全中心來偵測與上述相關的設定錯誤的風險。 
 
 - [Azure 防火牆文件](/azure/firewall/)
 
@@ -117,9 +124,9 @@ ms.locfileid: "90059236"
 
 **責任**：客戶
 
-**客戶安全性專案關係人**：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
-None
+無
 
 ## <a name="ns-5-deploy-intrusion-detectionintrusion-prevention-systems-idsips"></a>NS-5：部署入侵偵測/入侵防護系統 (IDS/IPS) 
 
@@ -139,7 +146,7 @@ None
 
 **責任**：客戶
 
-**客戶安全性專案關係人**：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [安全性架構](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -165,7 +172,7 @@ None
 
 **責任**：客戶
 
-**客戶安全性專案關係人**：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [安全性架構](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -191,7 +198,7 @@ None
 
 **責任**：客戶
 
-**客戶安全性專案關係人**：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [安全性架構](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 

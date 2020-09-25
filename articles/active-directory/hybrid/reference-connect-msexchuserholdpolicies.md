@@ -10,27 +10,27 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 08/23/2019
+ms.date: 09/15/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e4950906e016b9e1915d18ecacc1edcfda8b4d09
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 2a5a4659671f8d4ded64a4f04f84abf1f67d8825
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279392"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91265250"
 ---
 # <a name="azure-ad-connect---msexchuserholdpolicies-and-cloudmsexchuserholdpolicies"></a>Azure AD Connect-msExchUserHoldPolicies 和 cloudMsExchUserHoldPolicies
 下列參考檔說明 Exchange 使用的這些屬性，以及編輯預設同步處理規則的適當方式。
 
 ## <a name="what-are-msexchuserholdpolicies-and-cloudmsexchuserholdpolicies"></a>MsExchUserHoldPolicies 和 cloudMsExchUserHoldPolicies 是什麼？
-有兩種類型的 [保留](/Exchange/policy-and-compliance/holds/holds?view=exchserver-2019) 可供 Exchange 伺服器使用：訴訟保存和就地保存。 若已啟用訴訟保存，所有信箱都會保留在保存中。  就地保存僅用來保留符合您使用就地電子檔探索工具所定義之搜尋查詢準則的專案。
+有兩種類型的 [保留](https://docs.microsoft.com/Exchange/policy-and-compliance/holds/holds?view=exchserver-2019) 可供 Exchange 伺服器使用：訴訟保存和就地保存。 若已啟用訴訟保存，所有信箱都會保留在保存中。  就地保存僅用來保留符合您使用就地電子檔探索工具所定義之搜尋查詢準則的專案。
 
 MsExchUserHoldPolcies 和 cloudMsExchUserHoldPolicies 屬性可讓內部部署 AD 和 Azure AD 根據使用者是在線上使用內部部署 Exchange 或 Exchange，判斷哪些使用者正在進行保存。
 
 ## <a name="msexchuserholdpolicies-synchronization-flow"></a>msExchUserHoldPolicies 同步處理流程
-依預設，MsExchUserHoldPolcies 會 Azure AD Connect 直接同步處理到元處理中的 msExchUserHoldPolicies 屬性，然後再到 Azure AD 中的 msExchUserHoldPolices 屬性。
+依預設，MsExchUserHoldPolcies 會 Azure AD Connect 直接同步處理到元處理中的 msExchUserHoldPolicies 屬性，然後再到 Azure AD 中的 msExchUserHoldPolicies 屬性。
 
 下表說明流程：
 
@@ -38,7 +38,7 @@ MsExchUserHoldPolcies 和 cloudMsExchUserHoldPolicies 屬性可讓內部部署 A
 
 |Active Directory 屬性|屬性名稱|流程類型|元屬性|同步處理規則|
 |-----|-----|-----|-----|-----|
-|內部部署 Active Directory|msExchUserHoldPolicies|直接|msExchUserHoldPolices|In from AD-使用者 Exchange|
+|內部部署 Active Directory|msExchUserHoldPolicies|直接|msExchUserHoldPolicies|In from AD-使用者 Exchange|
 
 輸出至 Azure AD：
 
@@ -47,7 +47,7 @@ MsExchUserHoldPolcies 和 cloudMsExchUserHoldPolicies 屬性可讓內部部署 A
 |Azure Active Directory|msExchUserHoldPolicies|直接|msExchUserHoldPolicies|Out 至 AAD – UserExchangeOnline|
 
 ## <a name="cloudmsexchuserholdpolicies-synchronization-flow"></a>cloudMsExchUserHoldPolicies 同步處理流程
-依預設，cloudMsExchUserHoldPolicies 會 Azure AD Connect 直接同步處理到元處理中的 cloudMsExchUserHoldPolicies 屬性。 然後，如果元 msExchUserHoldPolices 中的不是 null，就會將屬性流動至 Active Directory。
+依預設，cloudMsExchUserHoldPolicies 會 Azure AD Connect 直接同步處理到元處理中的 cloudMsExchUserHoldPolicies 屬性。 然後，如果元 msExchUserHoldPolicies 中的不是 null，就會將屬性流動至 Active Directory。
 
 下表說明流程：
 

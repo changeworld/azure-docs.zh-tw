@@ -3,13 +3,13 @@ title: JavaScript web 應用程式的 Azure 應用程式見解
 description: 取得頁面流覽和會話計數、web 用戶端資料、單一頁面應用程式 (SPA) ，以及追蹤使用模式。 Detect exceptions and performance issues in JavaScript web pages.
 ms.topic: conceptual
 ms.date: 08/06/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 9f335ca6912545b39fb8276f5895f98e653735d0
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.custom: devx-track-js
+ms.openlocfilehash: ddbdeaed1cf3f69c20c272ea3e9dde405119bc24
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89656940"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328899"
 ---
 # <a name="application-insights-for-web-pages"></a>適用於網頁的 Application Insights
 
@@ -104,7 +104,7 @@ IE 8 (或較少的) 不支援報告 SDK 載入失敗。 這有助於減少程式
 
 可用的設定選項為 
 
-| 名稱 | 類型 | 描述
+| 名稱 | 類型 | 說明
 |------|------|----------------
 | src | 字串 **[必要]** | 要從何處載入 SDK 的完整 URL。 此值可用於動態新增之腳本/標記的 "src" 屬性 &lt; &gt; 。 您可以使用公用 CDN 位置或您自己的私人託管位置。
 | NAME | 字串 *[選用]* | 已初始化之 SDK 的全域名稱，預設為 `appInsights` 。 因此 ```window.appInsights``` 將會是已初始化之實例的參考。 注意：如果您提供名稱值或先前的實例透過全域名稱 appInsightsSDK 指派 () 則此名稱值也會定義在全域命名空間中 ```window.appInsightsSDK=<name value>``` ，這是 SDK 初始化程式碼所需的值，以確保其初始化和更新正確的程式碼片段基本架構和 proxy 方法。
@@ -115,7 +115,7 @@ IE 8 (或較少的) 不支援報告 SDK 載入失敗。 這有助於減少程式
 
 ### <a name="sending-telemetry-to-the-azure-portal"></a>將遙測傳送至 Azure 入口網站
 
-根據預設，Application Insights JavaScript SDK 會 autocollects 許多遙測專案，這些專案有助於判斷您的應用程式和基礎使用者體驗的健康情況。 它們包括：
+根據預設，Application Insights JavaScript SDK 會 autocollects 許多遙測專案，這些專案有助於判斷您的應用程式和基礎使用者體驗的健康情況。 其中包括：
 
 - 您應用程式中未攔截到的**例外**狀況，包括有關的資訊
     - 堆疊追蹤
@@ -161,20 +161,20 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 | sessionExpirationMs | 86400000 | 如果會話已繼續此時間量（以毫秒為單位），則會記錄會話。 預設值為24小時 |
 | maxBatchSizeInBytes | 10000 | 遙測批次的大小上限。 如果批次超過此限制，則會立即傳送並啟動新的批次 |
 | maxBatchInterval | 15000 | 傳送 (毫秒之前，批次遙測的時間長度)  |
-| disableExceptionTracking | false | 若為 true，則不會實驗自動收集例外狀況。 預設為 false。 |
-| disableTelemetry | false | 若為 true，則不會收集或傳送遙測。 預設為 false。 |
-| enableDebug | false | 若為 true，則不論 SDK 記錄設定為何， **內部** 偵錯工具資料都會擲回為例外狀況， **而不** 是記錄。 預設為 false。 <br>***注意：*** 啟用此設定將會在發生內部錯誤時，導致中斷的遙測。 這有助於快速找出您的設定或使用 SDK 的問題。 如果您不想在進行偵錯工具時遺失遙測，請考慮使用 `consoleLoggingLevel` 或， `telemetryLoggingLevel` 而不是 `enableDebug` 。 |
+| disableExceptionTracking | false | 若為 true，則不會實驗自動收集例外狀況。 預設值為 false。 |
+| disableTelemetry | false | 若為 true，則不會收集或傳送遙測。 預設值為 false。 |
+| enableDebug | false | 若為 true，則不論 SDK 記錄設定為何， **內部** 偵錯工具資料都會擲回為例外狀況， **而不** 是記錄。 預設值為 false。 <br>***注意：*** 啟用此設定將會在發生內部錯誤時，導致中斷的遙測。 這有助於快速找出您的設定或使用 SDK 的問題。 如果您不想在進行偵錯工具時遺失遙測，請考慮使用 `consoleLoggingLevel` 或， `telemetryLoggingLevel` 而不是 `enableDebug` 。 |
 | loggingLevelConsole | 0 | 將 **內部** Application Insights 錯誤記錄到主控台。 <br>0：關閉、 <br>1：僅嚴重錯誤， <br>2：所有 (錯誤 & 警告)  |
 | loggingLevelTelemetry | 1 | 以遙測的形式傳送 **內部** Application Insights 錯誤。 <br>0：關閉、 <br>1：僅嚴重錯誤， <br>2：所有 (錯誤 & 警告)  |
 | diagnosticLogInterval | 10000 | 內部記錄佇列的 (內部) 輪詢間隔 (毫秒)  |
 | samplingPercentage | 100 | 將傳送的事件百分比。 預設值為100，表示傳送所有事件。 如果您想要保留大型應用程式的資料上限，請設定此設定。 |
-| autoTrackPageVisitTime | false | 若為 true，則在 pageview 上，會追蹤先前檢測的網頁檢視時間，並將其傳送為遙測，並為目前的 pageview 啟動新的計時器。 預設為 false。 |
-| disableAjaxTracking | false | 若為 true，則不會實驗自動收集 Ajax 呼叫。 預設為 false。 |
+| autoTrackPageVisitTime | false | 若為 true，則在 pageview 上，會追蹤先前檢測的網頁檢視時間，並將其傳送為遙測，並為目前的 pageview 啟動新的計時器。 預設值為 false。 |
+| disableAjaxTracking | false | 若為 true，則不會實驗自動收集 Ajax 呼叫。 預設值為 false。 |
 | disableFetchTracking | true | 若為 true，則不會實驗自動收集提取要求。 預設值為 true。 |
-| overridePageViewDuration | false | 若為 true，則在呼叫 trackPageView 時，trackPageView 的預設行為會變更為記錄網頁檢視持續時間間隔的結尾。 如果為 false，且未提供任何自訂持續時間給 trackPageView，則會使用流覽計時 API 來計算網頁檢視效能。 預設為 false。 |
+| overridePageViewDuration | false | 若為 true，則在呼叫 trackPageView 時，trackPageView 的預設行為會變更為記錄網頁檢視持續時間間隔的結尾。 如果為 false，且未提供任何自訂持續時間給 trackPageView，則會使用流覽計時 API 來計算網頁檢視效能。 預設值為 false。 |
 | maxAjaxCallsPerView | 500 | 預設值 500-控制每個網頁檢視將監視多少 Ajax 呼叫。 設定為-1，可監視頁面上所有 (無限制) Ajax 呼叫。 |
 | disableDataLossAnalysis | true | 如果為 false，則會在啟動時檢查尚未傳送之專案的內部遙測傳送者緩衝區。 |
-| disableCorrelationHeaders | false | 若為 false，SDK 會將 ( ' Request-Id ' 和 ' Request-CoNtext ' 的兩個標頭新增 ) 至所有相依性要求，以將它們與伺服器端上的對應要求相互關聯。 預設為 false。 |
+| disableCorrelationHeaders | false | 若為 false，SDK 會將 ( ' Request-Id ' 和 ' Request-CoNtext ' 的兩個標頭新增 ) 至所有相依性要求，以將它們與伺服器端上的對應要求相互關聯。 預設值為 false。 |
 | correlationHeaderExcludedDomains |  | 停用特定網域的相互關聯標頭 |
 | correlationHeaderDomains |  | 啟用特定網域的相互關聯標頭 |
 | disableFlushOnBeforeUnload | false | 預設值為 false。 若為 true，onBeforeUnload 事件觸發程式時，將不會呼叫 flush 方法 |
@@ -182,11 +182,11 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 | isCookieUseDisabled | false | 預設值為 false。 若為 true，SDK 將不會儲存或讀取 cookie 中的任何資料。|
 | cookieDomain | null | 自訂 cookie 網域。 如果您想要在子域之間共用 Application Insights cookie，這會很有説明。 |
 | isRetryDisabled | false | 預設值為 false。 若為 false，則在206上重試 (部分成功) 、408 (timeout) 、429 (太多要求) 、500 (內部伺服器錯誤) 、503 (服務無法使用) ，以及 0 (離線，只有在偵測到時)  |
-| isStorageUseDisabled | false | 若為 true，SDK 將不會儲存或讀取本機和會話儲存體中的任何資料。 預設為 false。 |
+| isStorageUseDisabled | false | 若為 true，SDK 將不會儲存或讀取本機和會話儲存體中的任何資料。 預設值為 false。 |
 | isBeaconApiDisabled | true | 若為 false，SDK 會使用指標[API](https://www.w3.org/TR/beacon)傳送所有遙測 |
 | onunloadDisableBeacon | false | 預設值為 false。 當索引標籤關閉時，SDK 會使用指標[API](https://www.w3.org/TR/beacon)來傳送所有剩餘的遙測 |
 | sdkExtension | null | 設定 sdk 延伸模組名稱。 只允許字母字元。 延伸模組名稱會新增為 ' sdkVersion ' 標記的前置詞 (例如 ' ext_javascript： 2.0.0 ' ) 。 預設為 Null。 |
-| isBrowserLinkTrackingEnabled | false | 預設為 false。 若為 true，SDK 將會追蹤所有 [瀏覽器連結](/aspnet/core/client-side/using-browserlink) 要求。 |
+| isBrowserLinkTrackingEnabled | false | 預設值為 false。 若為 true，SDK 將會追蹤所有 [瀏覽器連結](/aspnet/core/client-side/using-browserlink) 要求。 |
 | appId | null | AppId 可用於在用戶端上發生的 AJAX 相依性與伺服器端要求之間的相互關聯。 啟用指標 API 時，它無法自動使用，但可以在設定中手動設定。 預設值為 null |
 | enableCorsCorrelation | false | 若為 true，SDK 會將 ( ' Request-Id ' 和 ' Request-CoNtext ' 的兩個標頭新增 ) 至所有 CORS 要求，以將外寄 AJAX 相依性與伺服器端的對應要求相互關聯。 預設值為 false。 |
 | namePrefix | 未定義 | 選擇性的值，將用作 localStorage 和 cookie 名稱的名稱後置詞。
@@ -220,7 +220,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 | [React Native](javascript-react-native-plugin.md) \(英文\)|
 | [Angular](https://github.com/microsoft/ApplicationInsights-JS/tree/master/extensions/applicationinsights-angularplugin-js) |
 
-## <a name="correlation"></a>相互關聯
+## <a name="correlation"></a>Correlation
 
 用戶端與伺服器端的相互關聯支援：
 

@@ -1,6 +1,6 @@
 ---
 title: 安裝和設定 Windows Azure 診斷擴充功能 (WAD)
-description: 了解如何收集 Azure 儲存體帳戶中的 Azure 診斷資料，以便使用數個可用工具的其中一個工具加以檢視。
+description: 瞭解如何安裝和設定 Windows 診斷延伸模組。 此外，瞭解如何將資料儲存在和 Azure 儲存體帳戶的說明。
 services: azure-monitor
 author: bwren
 ms.subservice: diagnostic-extension
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: bwren
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 46234f3b4bfd467db9b5754b5590603ff3d42915
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: e6ccba27fb599cb26da86e94d3500f4f806ecb76
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90974545"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328865"
 ---
 # <a name="install-and-configure-windows-azure-diagnostics-extension-wad"></a>安裝和設定 Windows Azure 診斷擴充功能 (WAD)
 [Azure 診斷擴充功能](diagnostics-extension-overview.md)是 Azure 監視器中的代理程式，可收集來自客體作業系統的監視資料，以及 Azure 虛擬機器和其他計算資源的工作負載。 本文提供有關安裝和設定 Windows 診斷擴充功能的詳細資訊，以及說明如何在 Azure 儲存體帳戶中儲存資料。

@@ -2,21 +2,25 @@
 title: 教學課程：使用 Azure Active Directory 設定 Webroot 安全性意識訓練以進行自動使用者布建 |Microsoft Docs
 description: 瞭解如何從 Azure AD 自動布建和解除布建使用者帳戶，以 Webroot 安全性意識訓練。
 services: active-directory
+documentationcenter: ''
 author: Zhchia
 writer: Zhchia
-manager: CelesteDG
+manager: beatrizd
+ms.assetid: 455f4396-930e-4db5-a167-d3ea6a860a17
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2020
 ms.author: Zhchia
-ms.openlocfilehash: 9345aaac306c8c009d6fc0a01c57beed3a22b10b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 31c0e9a690bde7a52a32fd9194afda76e1aaba8c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88523468"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329103"
 ---
 # <a name="tutorial-configure-webroot-security-awareness-training-for-automatic-user-provisioning"></a>教學課程：設定自動使用者布建的 Webroot 安全性意識訓練
 
@@ -61,7 +65,7 @@ ms.locfileid: "88523468"
 
 4. 複製並儲存 **秘密權杖**。 在 Azure 入口網站中，您 Webroot 安全性認知訓練應用程式之 [布建] 索引標籤的 [秘密權杖] 欄位中將會輸入此值。
 
-5. 按一下 [完成]。
+5. 按一下 [完成] 。
 
     ![複製秘密權杖](./media/webroot-security-awareness-training-provisioning-tutorial/copy-secret-token.png)
 
@@ -94,11 +98,11 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
 3. 選取 [佈建] 索引標籤。
 
-    ![佈建索引標籤](common/provisioning.png)
+    ![已呼叫 [布建] 選項的 [管理選項] 螢幕擷取畫面。](common/provisioning.png)
 
 4. 將 [佈建模式] 設定為 [自動]。
 
-    ![佈建索引標籤](common/provisioning-automatic.png)
+    ![[布建模式] 下拉式清單的螢幕擷取畫面，其中已呼叫 [自動] 選項。](common/provisioning-automatic.png)
 
 5. 在 [ **管理員認證** ] 區段下的 [ `https://awarenessapi.webrootanywhere.com/api/v2/scim` **租使用者 URL**] 中輸入。 輸入稍早在 [祕密權杖] 中所擷取的祕密權杖值。 按一下 [ **測試連接** ] 以確保 Azure AD 可以連線至 Webroot 安全性意識訓練。 如果連接失敗，請確定您的 Webroot 安全性認知訓練帳戶具有系統管理員許可權，然後再試一次。
 
@@ -152,7 +156,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
 1. 使用[佈建記錄](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) \(部分機器翻譯\) 來判斷哪些使用者已佈建成功或失敗
 2. 檢查[進度列](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user) \(部分機器翻譯\) 來查看佈建週期的狀態，以及其接近完成的程度
-3. 如果佈建設定似乎處於狀況不良的狀態，應用程式將會進入隔離狀態。 [在此](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status) \(部分機器翻譯\) 深入了解隔離狀態。  
+3. 如果佈建設定似乎處於狀況不良的狀態，應用程式將會進入隔離狀態。 [在此](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)深入了解隔離狀態。  
 
 ## <a name="additional-resources"></a>其他資源
 

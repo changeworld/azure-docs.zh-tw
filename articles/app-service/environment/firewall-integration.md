@@ -4,15 +4,15 @@ description: 了解如何與 Azure 防火牆整合，以保護從 App Service �
 author: ccompy
 ms.assetid: 955a4d84-94ca-418d-aa79-b57a5eb8cb85
 ms.topic: article
-ms.date: 07/13/2020
+ms.date: 09/24/2020
 ms.author: ccompy
 ms.custom: seodec18, references_regions
-ms.openlocfilehash: e79381c156247efafa55de51f7e2e0154dbc1b51
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 782074fc491c0b5e03ced36563bafa8679e78330
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962497"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91264655"
 ---
 # <a name="locking-down-an-app-service-environment"></a>鎖定 App Service 環境
 
@@ -155,6 +155,9 @@ AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
 |wdcpalt.microsoft.com:443 |
 |wdcp.microsoft.com:443 |
 |ocsp.msocsp.com:443 |
+|ocsp.msocsp.com:80 |
+|oneocsp.microsoft.com:80 |
+|oneocsp.microsoft.com:443 |
 |mscrl.microsoft.com:443 |
 |mscrl.microsoft.com:80 |
 |crl.microsoft.com:443 |
@@ -162,6 +165,7 @@ AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
 |www.thawte.com:443 |
 |crl3.digicert.com:80 |
 |ocsp.digicert.com:80 |
+|ocsp.digicert.com:443 |
 |csc3-2009-2.crl.verisign.com:80 |
 |crl.verisign.com:80 |
 |ocsp.verisign.com:80 |
@@ -350,10 +354,9 @@ Linux 在 US Gov 區域中無法使用，因此未列為選擇性設定。
 |management.core.usgovcloudapi.net:80 |
 |management.usgovcloudapi.net:80 |
 |maupdateaccountff.blob.core.usgovcloudapi.net:80 |
-|mscrl.microsoft.com
-|ocsp.digicert.0 |
-|ocsp.msocsp.co|
-|ocsp.verisign.0 |
+|mscrl.microsoft.com:80
+|ocsp.digicert.com:80 |
+|ocsp.verisign.com:80 |
 |rteventse.trafficmanager.net:80 |
 |settings-n.data.microsoft.com:80 |
 |shavamafestcdnprod1.azureedge.net:80 |
@@ -392,6 +395,7 @@ Linux 在 US Gov 區域中無法使用，因此未列為選擇性設定。
 |definitionupdates.microsoft.com:443 |
 |download.windowsupdate.com:443 |
 |fairfax.warmpath.usgovcloudapi.net:443 |
+|gcs.monitoring.core.usgovcloudapi.net:443 |
 |flighting.cp.wd.microsoft.com:443 |
 |gcwsprodgmdm2billing.queue.core.usgovcloudapi.net:443 |
 |gcwsprodgmdm2billing.table.core.usgovcloudapi.net:443 |
@@ -411,6 +415,9 @@ Linux 在 US Gov 區域中無法使用，因此未列為選擇性設定。
 |mscrl.microsoft.com:443 |
 |ocsp.digicert.com:443 |
 |ocsp.msocsp.com:443 |
+|ocsp.msocsp.com:80 |
+|oneocsp.microsoft.com:80 |
+|oneocsp.microsoft.com:443 |
 |ocsp.verisign.com:443 |
 |rteventservice.trafficmanager.net:443 |
 |settings-win.data.microsoft.com:443 |

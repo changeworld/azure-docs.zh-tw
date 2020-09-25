@@ -10,18 +10,18 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 09/01/2020
 ms.author: aahi
-ms.openlocfilehash: b17e2618cd87c0689fa531e893149a1b2fab8d20
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 52df2ad0dc4c60c24e341a9765e31bcf9776bf5e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90987188"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91277286"
 ---
 # <a name="install-and-run-the-spatial-analysis-container-preview"></a>安裝並執行空間分析容器 (預覽版) 
 
 空間分析容器可讓您分析即時串流影片，以瞭解人員之間的空間關聯性、其移動和實體環境中物件的互動。 容器非常適合用於特定的安全性和資料控管需求。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/cognitive-services)
 * 擁有 Azure 訂用帳戶之後，在 Azure 入口網站中<a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title="建立電腦視覺資源"  target="_blank">建立電腦視覺資源<span class="docon docon-navigate-external x-hidden-focus"></span></a>，以取得您的金鑰和端點。 在其部署後，按一下 [前往資源]。
@@ -30,7 +30,7 @@ ms.locfileid: "90987188"
 
 ### <a name="spatial-analysis-container-requirements"></a>空間分析容器需求
 
-若要執行空間分析容器，您需要具有 [NVIDIA Tesla T4 GPU](https://www.nvidia.com/data-center/tesla-t4/)的計算裝置。 建議您搭配使用 [Azure Stack Edge](https://azure.microsoft.com/products/azure-stack/edge/) 與 GPU 加速，不過，容器會在任何其他符合最低需求的桌上型電腦上執行。 我們會將此裝置稱為主機電腦。
+若要執行空間分析容器，您需要具有 [NVIDIA Tesla T4 GPU](https://www.nvidia.com/en-us/data-center/tesla-t4/)的計算裝置。 建議您搭配使用 [Azure Stack Edge](https://azure.microsoft.com/products/azure-stack/edge/) 與 GPU 加速，不過，容器會在任何其他符合最低需求的桌上型電腦上執行。 我們會將此裝置稱為主機電腦。
 
 #### <a name="azure-stack-edge-device"></a>[Azure Stack Edge 裝置](#tab/azure-stack-edge)
 
@@ -63,7 +63,7 @@ Azure Stack Edge 是具有網路資料傳輸功能的硬體即服務解決方案
 
 ---
 
-| 需求 | 描述 |
+| 需求 | 說明 |
 |--|--|
 | 相機 | 空間分析容器未系結至特定的相機品牌。 攝影機裝置必須：支援即時串流通訊協定 (RTSP) 和 h.264 編碼，可供主機電腦存取，而且能夠以15FPS 和1080p 解析度進行串流處理。 |
 | Linux 作業系統 | 您必須在主機電腦上安裝[Ubuntu Desktop 18.04 LTS](http://releases.ubuntu.com/18.04/) 。  |
@@ -71,7 +71,7 @@ Azure Stack Edge 是具有網路資料傳輸功能的硬體即服務解決方案
 
 ## <a name="request-approval-to-run-the-container"></a>要求核准以執行容器
 
-填寫並提交 [要求表單](https://aka.ms/cognitivegate) ，以要求核准以執行容器。 
+填寫並提交 [要求表單](https://aka.ms/csgate) ，以要求核准以執行容器。
 
 該表格需要有關您本身、您的公司，以及您將會使用該容器之使用者情節的資訊。 在您提交表單之後，Azure 認知服務小組將會進行審查，並以電子郵件傳送您的決策。
 
@@ -111,12 +111,13 @@ Azure Stack Edge 是具有網路資料傳輸功能的硬體即服務解決方案
 
 在 [ **設定 Edge 計算**]   頁面中，選擇現有的 IoT 中樞，或選擇建立一個新的。 根據預設，會使用標準 (S1) 定價層來建立 IoT 中樞資源。 若要使用免費層 IoT 中樞資源，請建立一個，然後選取它。 IoT 中樞資源使用 Azure Stack Edge 資源所使用的相同訂用帳戶和資源群組 
 
-按一下 [建立]。 建立 IoT 中樞資源可能需要幾分鐘的時間。 建立 IoT 中樞資源之後，[ **設定 Edge 計算** ] 圖格將會更新以顯示新的設定。 若要確認已設定 Edge 計算角色，請選取 [ **設定計算**] 磚上的 [ **View config** ]   。
+按一下頁面底部的 [新增] 。 建立 IoT 中樞資源可能需要幾分鐘的時間。 建立 IoT 中樞資源之後，[ **設定 Edge 計算** ] 圖格將會更新以顯示新的設定。 若要確認已設定 Edge 計算角色，請選取 [ **設定計算**] 磚上的 [ **View config** ]   。
 
 在 Edge 裝置上設定 Edge 計算角色時，其會建立兩個裝置：一個 IoT 裝置和一個 IoT Edge 裝置。 這兩個裝置都可以在 IoT 中樞資源中檢視。 Azure IoT Edge 執行時間將已在 IoT Edge 裝置上執行。            
 
 > [!NOTE]
-> 目前只有 Linux 平臺適用于 IoT Edge 裝置。 如需針對 Azure Stack Edge 裝置進行疑難排解的協助，請參閱 [記錄和疑難排解](spatial-analysis-logging.md) 文章。
+> * 目前只有 Linux 平臺支援 IoT Edge 裝置。 如需針對 Azure Stack Edge 裝置進行疑難排解的協助，請參閱 [記錄和疑難排解](spatial-analysis-logging.md) 文章。
+> * 若要深入瞭解如何設定 IoT Edge 裝置以透過 proxy 伺服器進行通訊，請參閱 [設定 IoT Edge 裝置以透過 proxy 伺服器進行通訊](https://docs.microsoft.com/azure/iot-edge/how-to-configure-proxy-support#azure-portal)
 
 ###  <a name="enable-mps-on-azure-stack-edge"></a>在 Azure Stack Edge 上啟用 MP 
 
@@ -260,13 +261,14 @@ az iot hub create --name "test-iot-hub-123" --sku S1 --resource-group "test-reso
 az iot hub device-identity create --hub-name "test-iot-hub-123" --device-id "my-edge-device" --edge-enabled
 ```
 
-如果主機電腦不是 Azure Stack Edge 裝置，您將需要安裝 [Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux) 版本1.0.8。 遵循下列步驟下載正確的版本： Ubuntu Server 18.04：
+如果主機電腦不是 Azure Stack Edge 裝置，您將需要安裝 [Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux) 版本1.0.8。 遵循下列步驟下載正確的版本：
+
+Ubuntu Server 18.04：
 ```bash
 curl https://packages.microsoft.com/config/ubuntu/18.04/multiarch/prod.list > ./microsoft-prod.list
 ```
 
 複製產生的清單。
-
 ```bash
 sudo cp ./microsoft-prod.list /etc/apt/sources.list.d/
 ```
@@ -316,7 +318,7 @@ sudo systemctl restart iotedge
 
 下表顯示 IoT Edge 模組所使用的各種環境變數。 您也可以使用中的屬性，在上述連結的部署資訊清單中設定它們 `env` `spatialanalysis` ：
 
-| 設定名稱 | 值 | 描述|
+| 設定名稱 | 值 | 說明|
 |---------|---------|---------|
 | ARCHON_LOG_LEVEL | 更多資訊詳細 | 記錄層級，請選取兩個值的其中一個|
 | ARCHON_SHARED_BUFFER_LIMIT | 377487360 | 不要修改|
@@ -324,8 +326,8 @@ sudo systemctl restart iotedge
 | ARCHON_NODES_LOG_LEVEL | 更多資訊詳細 | 記錄層級，請選取兩個值的其中一個|
 | OMP_WAIT_POLICY | 被動 | 不要修改|
 | QT_X11_NO_MITSHM | 1 | 不要修改|
-| API_KEY | 您的 API 金鑰| 從電腦視覺資源的 Azure 入口網站收集此值。 在 Azure 入口網站中，您可以在資源的 [ **金鑰和端點** ] 區段中找到它。 |
-| BILLING_ENDPOINT | 您的端點 URI| 從電腦視覺資源的 Azure 入口網站收集此值。 在 Azure 入口網站中，您可以在資源的 [ **金鑰和端點** ] 區段中找到它。|
+| API_KEY | 您的 API 金鑰| 從電腦視覺資源的 Azure 入口網站收集此值。 您可以在資源的 [ **金鑰和端點** ] 區段中找到它。 |
+| BILLING_ENDPOINT | 您的端點 URI| 從電腦視覺資源的 Azure 入口網站收集此值。 您可以在資源的 [ **金鑰和端點** ] 區段中找到它。|
 | 使用者授權合約 | accept | 此值必須設定為 [ *接受* ]，容器才能執行 |
 | DISPLAY | ：1 | 此值必須與主機電腦上的輸出相同 `echo $DISPLAY` 。 Azure Stack Edge 裝置沒有顯示。 這項設定不適用|
 
@@ -339,10 +341,9 @@ sudo systemctl restart iotedge
 az login
 az extension add --name azure-iot
 az iot edge set-modules --hub-name "<IoT Hub name>" --device-id "<IoT Edge device name>" --content DeploymentManifest.json -–subscription "<subscriptionId>"
-
 ```
 
-|參數  |描述  |
+|參數  |說明  |
 |---------|---------|
 | `--deployment-id` | 部署的新名稱。 |
 | `--hub-name` | 您的 Azure IoT 中樞名稱。 |
@@ -427,7 +428,7 @@ Azure 認知服務容器不會授權執行，而不會連線到計量/帳單端�
 * 容器映射在 Azure IoT Edge 中會以 IoT 模組的形式執行。
 * 如何設定容器並將其部署在主機電腦上。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [部署人員計數 web 應用程式](spatial-analysis-web-app.md)
 * [設定空間分析作業](spatial-analysis-operations.md)

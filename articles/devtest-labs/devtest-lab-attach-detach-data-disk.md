@@ -3,12 +3,12 @@ title: 在 Azure DevTest Labs 中將資料磁碟連結至虛擬機器或中斷�
 description: 了解如何在 Azure DevTest Labs 中將資料磁碟連結至虛擬機器或中斷連結
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 222bf06dc07cc2538bc0512b4a41b7bd91bc1ebf
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 8eebfbda421233bcec780d441a4020acce740618
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653914"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328508"
 ---
 # <a name="attach-or-detach-a-data-disk-to-a-virtual-machine-in-azure-devtest-labs"></a>在 Azure DevTest Labs 中將資料磁碟連結至虛擬機器或中斷連結
 [Azure 受控磁碟](../virtual-machines/managed-disks-overview.md)會管理與虛擬機器資料磁碟相關聯的儲存體帳戶。 使用者將新的資料磁碟連結至 VM、指定所需的磁碟類型和大小，Azure 就會自動建立和管理磁碟。 之後資料磁碟可以從 VM 中斷連結，稍後再重新連結至相同的 VM，或連結至屬於相同使用者的不同 VM。
@@ -35,7 +35,7 @@ ms.locfileid: "88653914"
 1. 藉由輸入資料磁碟名稱、類型和大小，來完成 [連結新磁碟]**** 窗格。
 
     ![完成「連結新磁碟」表單](./media/devtest-lab-attach-detach-data-disk/devtest-lab-attach-new-form.png)
-1. 選取 [確定]。
+1. 選取 [確定]  。
 
 經過幾分鐘之後，新的資料磁片會建立並連結至 VM，並顯示在該 VM 的 **資料磁片** 清單中。
 
@@ -46,7 +46,7 @@ ms.locfileid: "88653914"
 1. 從左側功能表選取 [磁碟]****。
 1. 選取 [連結新項目]**** 以將可用的資料磁碟連結至 VM。
 
-    ![將現有的資料磁碟連結至虛擬機器](./media/devtest-lab-attach-detach-data-disk/devtest-lab-attach-existing-button.png)
+    ![顯示選取 [磁片] 設定並選取 [附加現有] 的螢幕擷取畫面。](./media/devtest-lab-attach-detach-data-disk/devtest-lab-attach-existing-button.png)
 
 1. 從 [連結現有磁碟]**** 窗格中，選取 [確定]。
 
@@ -67,7 +67,7 @@ ms.locfileid: "88653914"
     ![選取虛擬機器的資料磁碟](./media/devtest-lab-attach-detach-data-disk/devtest-lab-detach-button.png) 
 1. 從磁碟的詳細資料窗格頂端選取 [中斷連結]****。
 
-    ![卸離資料磁碟](./media/devtest-lab-attach-detach-data-disk/devtest-lab-detach-data-disk2.png)
+    ![螢幕擷取畫面顯示磁片的 [詳細資料] 窗格，其中醒目提示 [卸離] 動作。](./media/devtest-lab-attach-detach-data-disk/devtest-lab-detach-data-disk2.png)
 1. 選取 [是]**** 以確認您想要中斷連結資料磁碟。
 
 磁碟已中斷連結，且可用於連結至另一個 VM。 

@@ -1,6 +1,6 @@
 ---
 title: 設定 Azure 檔案同步網路端點 |Microsoft Docs
-description: Azure 檔案同步的網路功能選項概觀。
+description: 瞭解如何設定 Azure 檔案同步的網路端點。
 author: roygara
 ms.service: storage
 ms.topic: how-to
@@ -8,12 +8,12 @@ ms.date: 5/11/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 7210d414c06f154395b9128be6ed10175ad1e838
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 747d03b228d41066cfc834b4a9c044b16c767622
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89077053"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329358"
 ---
 # <a name="configuring-azure-file-sync-network-endpoints"></a>設定 Azure 檔案同步網路端點
 Azure 檔案儲存體和 Azure 檔案同步提供兩種主要類型的端點，用來存取 Azure 檔案共用： 

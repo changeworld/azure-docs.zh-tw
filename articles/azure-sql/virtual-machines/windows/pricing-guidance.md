@@ -8,27 +8,27 @@ editor: ''
 tags: azure-service-management
 ms.assetid: ''
 ms.service: virtual-machines-sql
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/09/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: b1d07b3ff41c16ff2145311a0b42d8c57a8e7b82
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: 7d18273d07cda3a6fe3517c47c9be12a2d236438
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88141953"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316931"
 ---
-# <a name="pricing-guidance-for-sql-server-on-azure-vms"></a>Azure Vm 上 SQL Server 的定價指導方針
+# <a name="pricing-guidance-for-sql-server-on-azure-vms"></a>Azure Vm 上的 SQL Server 定價指導方針
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-本文提供[Azure 虛擬機器上 SQL Server](sql-server-on-azure-vm-iaas-what-is-overview.md)的定價指導方針。 影響成本的選項有數個，而挑選平衡成本和業務需求的正確映像相當重要。
+本文提供 [Azure 虛擬機器上 SQL Server](sql-server-on-azure-vm-iaas-what-is-overview.md)的定價指導方針。 影響成本的選項有數個，而挑選平衡成本和業務需求的正確映像相當重要。
 
 > [!TIP]
-> 如果您只需要找出 SQL Server edition 和虛擬機器 (VM) 大小的特定組合成本預估，請參閱[Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows)或[Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux)的定價頁面。 從 [OS/軟體] 清單選取您的平台和 SQL Server 版本。
+> 如果您只需要找出特定 SQL Server edition 和虛擬機器組合 (VM) 大小的成本預估，請參閱 [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows) 或 [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux)的定價頁面。 從 [OS/軟體] 清單選取您的平台和 SQL Server 版本。
 >
 > ![VM 定價頁面上的 UI](./media/pricing-guidance/virtual-machines-pricing-ui.png)
 >
@@ -42,7 +42,7 @@ ms.locfileid: "88141953"
 
 針對這些開發/測試和輕量型生產環境工作負載，您也可以選擇符合這些工作負載的較小 VM 大小來節省成本。 在某些情況下，DS1v2 可能是理想的選擇。
 
-若要使用這些映射中的其中一個來建立執行 SQL Server 2017 的 Azure VM，請參閱下列連結：
+若要使用這些映射的其中一個來建立執行 SQL Server 2017 的 Azure VM，請參閱下列連結：
 
 | 平台 | 免費授權的映像 |
 |---|---|
@@ -65,9 +65,9 @@ ms.locfileid: "88141953"
 
 ## <a name="pay-per-usage"></a>依使用量付費
 
-**依使用量支付 SQL Server 授權費用** (亦稱為**隨用隨付**) 意謂著執行 Azure VM 的每秒鐘費用都包含 SQL Server 授權的費用。 您可以在適用于[Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows)或[Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux)的 Azure 虛擬機器定價頁面中，查看不同 SQL Server 版本 (Web、Standard、Enterprise) 的定價。
+**依使用量支付 SQL Server 授權費用** (亦稱為**隨用隨付**) 意謂著執行 Azure VM 的每秒鐘費用都包含 SQL Server 授權的費用。 您可以在 [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows) 或 [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux)的 Azure 虛擬機器定價頁面中，看到不同 SQL Server 版本 (Web、Standard、Enterprise) 的定價。
 
-所有版本的 SQL Server (2012 SP3 到 2019) 的成本都相同。 每秒鐘的授權費用取決於 VM vCPU 數目。
+所有版本的 SQL Server (2012 SP3 至 2019) 的費用都相同。 每秒鐘的授權費用取決於 VM vCPU 數目。
 
 針對下列情況，建議採用依使用量支付 SQL Server 授權費用：
 
@@ -85,7 +85,7 @@ ms.locfileid: "88141953"
 | Ubuntu | [SQL Server 2017 Web Azure VM](https://portal.azure.com/#create/Microsoft.SQLServer2017WebonUbuntuServer1604LTS)<br/>[SQL Server 2017 Standard Azure VM](https://portal.azure.com/#create/Microsoft.SQLServer2017StandardonUbuntuServer1604LTS)<br/>[SQL Server 2017 Enterprise Azure VM](https://portal.azure.com/#create/Microsoft.SQLServer2017EnterpriseonUbuntuServer1604LTS) |
 
 > [!IMPORTANT]
-> 當您在 Azure 入口網站中建立 SQL Server 虛擬機器時，[**選擇大小**] 視窗會顯示估計的成本。 請務必注意，此預估值僅僅是執行 VM 的計算成本以及任何 OS 授權成本 (Windows 或協力廠商 Linux 作業系統)。
+> 當您在 Azure 入口網站中建立 SQL Server 的虛擬機器時，[ **選擇大小** ] 視窗就會顯示估計的成本。 請務必注意，此預估值僅僅是執行 VM 的計算成本以及任何 OS 授權成本 (Windows 或協力廠商 Linux 作業系統)。
 >
 > ![選擇 VM 大小刀鋒視窗](./media/pricing-guidance/sql-vm-choose-size-pricing-estimate.png)
 >
@@ -102,9 +102,9 @@ ms.locfileid: "88141953"
 > BYOL 映像需要具有軟體保證的 Enterprise 合約。 Azure 雲端解決方案合作夥伴 (CSP) 目前不會提供這類映像。 CSP 客戶可以藉由部署隨用隨付映像，然後啟用 [Azure Hybrid Benefit](licensing-model-azure-hybrid-benefit-ahb-change.md)，來攜帶自己的授權。
 
 > [!NOTE]
-> BYOL 映像目前只適用於 Windows 虛擬機器。 不過，您可以在僅有 Linux 的 VM 上手動安裝 SQL Server。 請參閱[LINUX VM 上的 SQL SERVER 常見問題](../linux/frequently-asked-questions-faq.md)中的指導方針。
+> BYOL 映像目前只適用於 Windows 虛擬機器。 不過，您可以在僅有 Linux 的 VM 上手動安裝 SQL Server。 請參閱 [LINUX VM 上 SQL Server](../linux/frequently-asked-questions-faq.md)中的指導方針常見問題。
 
-建議您透過授權行動性使用您自己的 SQL Server 授權：
+建議您透過授權行動性提供自己的 SQL Server 授權給：
 
 - **持續性工作負載**。 例如，需要全年無休支援業務營運的應用程式。
 
@@ -117,7 +117,7 @@ ms.locfileid: "88141953"
 | **節省成本** | [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) 可讓您省下高達 55% 的成本。 如需詳細資訊，請參閱[切換授權模型](licensing-model-azure-hybrid-benefit-ahb-change.md) |
 | **免費的被動次要複本** | 自備授權的另一個優點是每一 SQL Server 可享有[一個免費的被動次要複本授權](https://azure.microsoft.com/pricing/licensing-faq/)，以用於提供高可用性。 這讓高可用性 SQL Server 部署 (例如使用「永遠開啟可用性群組」) 的授權費用得以砍半。 執行被動次要複本的權限是透過「容錯移轉伺服器軟體保證」權益來提供。 |
 
-若要使用其中一個自備授權映射來建立執行 SQL Server 2017 的 Azure VM，請參閱前面加上 "{BYOL}" 的 Vm：
+若要使用下列其中一個自備授權映射來建立執行 SQL Server 2017 的 Azure VM，請查看前面加上 "{BYOL}" 的 Vm：
 
 - [SQL Server 2017 Enterprise Azure VM](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2017EnterpriseWindowsServer2016)
 - [SQL Server 2017 Standard Azure VM](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2017StandardonWindowsServer2016)
@@ -156,7 +156,7 @@ SQL Server 的授權成本與 vCPU 數目直接相關。 選擇符合預期的 C
 
 例如，如果您只是要在 Azure VM 上試用 SQL Server，您就不會希望不小心讓它持續執行數週而產生費用。 其中一個解決方案就是使用[自動關閉功能](https://azure.microsoft.com/blog/announcing-auto-shutdown-for-vms-using-azure-resource-manager/)。
 
-![SQL Server VM autoshutdown](./media/pricing-guidance/sql-vm-auto-shutdown.png)
+![SQL Server VM 自動關機](./media/pricing-guidance/sql-vm-auto-shutdown.png)
 
 自動關閉是 [Azure DevTest Labs](https://azure.microsoft.com/services/devtest-lab) 所提供的較大一組相似功能的一部分。
 
@@ -167,7 +167,7 @@ SQL Server 的授權成本與 vCPU 數目直接相關。 選擇符合預期的 C
 
 ## <a name="next-steps"></a>後續步驟
 
-如需一般的 Azure 定價指導方針，請參閱[使用 Azure 計費與成本管理避免非預期的成本](../../../cost-management-billing/manage/getting-started.md)。 如需最新的 Azure 虛擬機器定價（包括 SQL Server），請參閱適用于[Windows vm](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)和[Linux vm](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)的 azure 虛擬機器定價頁面。
+如需一般的 Azure 定價指導方針，請參閱[使用 Azure 計費與成本管理避免非預期的成本](../../../cost-management-billing/manage/getting-started.md)。 如需最新的 Azure 虛擬機器定價（包括 SQL Server），請參閱適用于 [Windows vm](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) 和 [Linux Vm](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)的 azure 虛擬機器定價頁面。
 
 如需 Azure 虛擬機器上 SQL Server 的總覽，請參閱下列文章：
 

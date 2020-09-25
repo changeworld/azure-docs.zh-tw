@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 605df0f26600f962bda7a0a0def800a91d74b022
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 83741f5bc55eb222b379a274ef403f766553b21f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90562948"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328626"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-scripted"></a>設定 Azure 數位 Twins 實例和驗證 (腳本) 
 
@@ -26,15 +26,19 @@ ms.locfileid: "90562948"
 
 [!INCLUDE [digital-twins-setup-steps-prereq.md](../../includes/digital-twins-setup-steps-prereq.md)]
 
+## <a name="prerequisites-download-the-script"></a>必要條件：下載腳本
+
+範例腳本是以 PowerShell 撰寫的。 它是 [**Azure 數位 Twins 範例**](https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples/)的一部分，您可以藉由流覽至該範例連結並選取標題底下的 [ *下載 ZIP* ] 按鈕，將其下載到您的電腦。
+
+這會將範例專案下載到您的電腦，做為 _**Azure_Digital_Twins_samples.zip**_。 流覽至您電腦上的資料夾，並將其解壓縮以解壓縮檔案。
+
+在解壓縮的資料夾中，部署腳本位於_Azure_Digital_Twins_samples > 腳本 > **deploy.ps1** _。
+
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="run-the-deployment-script"></a>執行部署指令碼
 
 本文使用 Azure 數位 Twins 程式碼範例，以半自動部署 Azure 數位 Twins 實例和必要的驗證。 它也可以用來作為撰寫您自己的腳本互動的起點。
-
-範例腳本是以 PowerShell 撰寫的。 它是 [Azure 數位 Twins 範例](https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples/)的一部分，您可以藉由流覽至該範例連結並選取標題底下的 [ *下載 ZIP* ] 按鈕，將其下載到您的電腦。
-
-在下載的範例資料夾中，部署腳本位於_Azure_Digital_Twins_samples.zip > 腳本 > **deploy.ps1** _。
 
 以下是在 Cloud Shell 中執行部署腳本的步驟。
 1. 移至瀏覽器中的 [Azure Cloud Shell](https://shell.azure.com/) 視窗。 使用下列命令登入：
@@ -43,19 +47,29 @@ ms.locfileid: "90562948"
     ```
     如果 CLI 可以開啟預設瀏覽器，它會執行這項操作，並載入 Azure 登入頁面。 否則，請在 *https://aka.ms/devicelogin* 開啟瀏覽器頁面，並輸入顯示在終端機中的授權碼。
  
-2. 登入之後，請查看 Cloud Shell 視窗圖示列。 選取 [上傳/下載檔案] 圖示，然後選擇 [上傳]。
+2. 在 Cloud Shell 圖示列中，確認您的 Cloud Shell 設定為執行 PowerShell 版本。
 
-    :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-upload.png" alt-text="顯示所選上傳選項的 Cloud Shell 視窗":::
+    :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-powershell.png" alt-text="顯示所選 PowerShell 版本的 Cloud Shell 視窗":::
 
-    流覽至您電腦上的 _**deploy.ps1**_ 檔案，然後按 [開啟]。 這會將檔案上傳至 Cloud Shell，以便您可以在 [Cloud Shell] 視窗中執行該檔案。
+1. 選取 [上傳/下載檔案] 圖示，然後選擇 [上傳]。
 
-3. `./deploy.ps1`在 Cloud Shell 視窗中傳送命令，以執行腳本。 當腳本透過自動化安裝步驟執行時，系統會要求您傳入下列值：
+    :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-upload.png" alt-text="顯示所選上傳圖示的 Cloud Shell 視窗":::
+
+    流覽至您電腦上的_**deploy.ps1**_ 檔案 (_Azure_Digital_Twins_samples > 腳本 > **deploy.ps1** _) 並點擊 [開啟]。 這會將檔案上傳至 Cloud Shell，以便您可以在 [Cloud Shell] 視窗中執行該檔案。
+
+4. `./deploy.ps1`在 Cloud Shell 視窗中傳送命令，以執行腳本。  (回想一下，若要貼到 Cloud Shell，您可以在 Windows 和 Linux 上使用 **Ctrl + shift + v** ，或在 macOS 上使用 **Cmd + shift + v** 。 您也可以使用滑鼠右鍵功能表。 ) 
+
+    ```azurecli
+    ./deploy.ps1
+    ```
+
+    當腳本透過自動化安裝步驟執行時，系統會要求您傳入下列值：
     * 針對實例：要使用的 Azure 訂用帳戶的訂用帳戶*識別碼*
     * 針對實例：您要部署實例的 *位置* 。 若要查看哪些區域支援 Azure 數位 Twins，請造訪 [*依區域提供的 azure 產品*](https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins)。
     * 針對實例： *資源組* 名。 您可以使用現有的資源群組，或輸入要建立之新的名稱。
     * 針對實例： Azure 數位 Twins 實例的 *名稱* 。 新實例的名稱在訂用帳戶的區域內必須是唯一的 (也就是說，如果您的訂用帳戶在已使用您所選名稱的區域中有另一個 Azure 數位 Twins 實例，系統會要求您挑選不同的名稱) 。
     * 針對應用程式註冊：要與註冊相關聯的 *Azure AD 應用程式顯示名稱* 。 此應用程式註冊可讓您設定 [Azure 數位 Twins api](how-to-use-apis-sdks.md)的存取權限。 稍後，用戶端應用程式會向應用程式註冊進行驗證，因此會將設定的存取權限授與 Api。
-    * 針對應用程式註冊： Azure AD 應用程式的 *Azure AD 應用程式回復 URL* 。 請使用 `http://localhost`。 腳本會為其設定 *公用用戶端/原生 (mobile & desktop) * URI。
+    * 針對應用程式註冊： Azure AD 應用程式的 *Azure AD 應用程式回復 URL* 。 使用 `http://localhost`。 腳本會為其設定 *公用用戶端/原生 (mobile & desktop) * URI。
 
 此腳本會建立 Azure 數位 Twins 實例、為您的 Azure 使用者指派 *Azure 數位 Twins 擁有者 (預覽版) * 角色，以及設定 Azure AD 應用程式註冊以供用戶端應用程式使用。
 
@@ -107,9 +121,15 @@ ms.locfileid: "90562948"
 
 如果您想要確認由腳本所設定的資源和許可權的建立，您可以在 [Azure 入口網站](https://portal.azure.com)中查看這些資源和許可權。
 
+如果您無法驗證任何步驟是否成功，請重試此步驟。 您可以使用 [Azure 入口網站](how-to-set-up-instance-portal.md) 或 [CLI](how-to-set-up-instance-cli.md) 指示，個別執行這些步驟。
+
 ### <a name="verify-instance"></a>驗證實例
 
-若要確認您的實例已建立，請移至 Azure 入口網站中的 [Azure 數位 Twins 頁面](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.DigitalTwins%2FdigitalTwinsInstances) 。 此頁面會列出您所有的 Azure 數位 Twins 實例。 在清單中尋找新建立之實例的名稱。
+若要確認您的實例已建立，請移至 Azure 入口網站中的 [Azure 數位 Twins 頁面](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.DigitalTwins%2FdigitalTwinsInstances) 。 您可以藉由在入口網站的搜尋列中搜尋 *Azure 數位 Twins* 來自行前往此頁面。
+
+此頁面會列出您所有的 Azure 數位 Twins 實例。 在清單中尋找新建立之實例的名稱。
+
+如果驗證失敗，您可以使用 [入口網站](how-to-set-up-instance-portal.md#create-the-azure-digital-twins-instance) 或 [CLI](how-to-set-up-instance-cli.md#create-the-azure-digital-twins-instance)重試建立實例。
 
 ### <a name="verify-user-role-assignment"></a>確認使用者角色指派
 
@@ -117,16 +137,18 @@ ms.locfileid: "90562948"
 
 > [!NOTE]
 > 回想一下，腳本目前將這個必要的角色指派給從 Cloud Shell 執行腳本的相同使用者。 如果您需要將此角色指派給即將管理實例的其他人，您現在可以透過 Azure 入口網站 ([指示](how-to-set-up-instance-portal.md#set-up-user-access-permissions)) 或 CLI ([指示](how-to-set-up-instance-cli.md#set-up-user-access-permissions)) 。
->
-> 如果腳本設定有任何問題，您也可以使用入口網站或 CLI 來重做您自己的角色指派。
+
+如果驗證失敗，您也可以使用 [入口網站](how-to-set-up-instance-portal.md#set-up-user-access-permissions) 或 [CLI](how-to-set-up-instance-cli.md#set-up-user-access-permissions)來重做自己的角色指派。
 
 ### <a name="verify-app-registration"></a>確認應用程式註冊
 
 [!INCLUDE [digital-twins-setup-verify-app-registration-1.md](../../includes/digital-twins-setup-verify-app-registration-1.md)]
 
-首先，請確認已在註冊時正確設定 Azure 數位 Twins 許可權設定。 若要這樣做，請從功能表列選取 [ *資訊清單* ]，以查看應用程式註冊的資訊清單程式碼。 滾動至程式碼視窗底部，然後在底下尋找這些欄位 `requiredResourceAccess` 。 這些值應該符合以下螢幕擷取畫面中的值：
+接下來，確認已在註冊時正確設定 Azure 數位 Twins 許可權設定。 若要這樣做，請從功能表列選取 [ *資訊清單* ]，以查看應用程式註冊的資訊清單程式碼。 滾動至程式碼視窗底部，然後在底下尋找這些欄位 `requiredResourceAccess` 。 這些值應該符合以下螢幕擷取畫面中的值：
 
 [!INCLUDE [digital-twins-setup-verify-app-registration-2.md](../../includes/digital-twins-setup-verify-app-registration-2.md)]
+
+如果其中一或兩個驗證步驟都不成功，請使用 [入口網站](how-to-set-up-instance-portal.md#set-up-access-permissions-for-client-applications) 或 [CLI](how-to-set-up-instance-cli.md#set-up-access-permissions-for-client-applications) 指示重試建立應用程式註冊。
 
 ## <a name="other-possible-steps-for-your-organization"></a>您組織的其他可能步驟
 
@@ -135,7 +157,7 @@ ms.locfileid: "90562948"
 ## <a name="next-steps"></a>後續步驟
 
 使用 Azure 數位 Twins CLI 命令，在您的實例上測試個別 REST API 呼叫： 
-* [az dt 參考](https://docs.microsoft.com/cli/azure/ext/azure-iot/dt?view=azure-cli-latest)
+* [az dt 參考](https://docs.microsoft.com/cli/azure/ext/azure-iot/dt?view=azure-cli-latest&preserve-view=true)
 * [操作說明：*使用 Azure Digital Twins CLI*](how-to-use-cli.md)
 
 或者，請參閱如何藉由撰寫用戶端應用程式的驗證碼，將用戶端應用程式連接至您的實例：

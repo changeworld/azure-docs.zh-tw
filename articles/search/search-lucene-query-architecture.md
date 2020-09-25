@@ -8,12 +8,12 @@ ms.author: jlembicz
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: c2d5b4758f80d07516500c663762d7c8607e2a30
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 50a1656fcb92d9777d4a9476ef2a4c1fd2f2efc6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88917953"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329477"
 ---
 # <a name="full-text-search-in-azure-cognitive-search"></a>Azure 認知搜尋中的全文檢索搜尋
 
@@ -51,7 +51,7 @@ ms.locfileid: "88917953"
 
 下列範例是您可能會使用 [REST API](/rest/api/searchservice/search-documents)傳送給 Azure 認知搜尋的搜尋要求。  
 
-~~~~
+```
 POST /indexes/hotels/docs/search?api-version=2020-06-30
 {
     "search": "Spacious, air-condition* +\"Ocean view\"",
@@ -61,7 +61,7 @@ POST /indexes/hotels/docs/search?api-version=2020-06-30
     "orderby": "geo.distance(location, geography'POINT(-159.476235 22.227659)')", 
     "queryType": "full" 
 }
-~~~~
+```
 
 針對此要求，搜尋引擎會執行下列作業︰
 
@@ -76,9 +76,9 @@ POST /indexes/hotels/docs/search?api-version=2020-06-30
 
 如前所述，查詢字串是要求的第一行︰ 
 
-~~~~
+```
  "search": "Spacious, air-condition* +\"Ocean view\"", 
-~~~~
+```
 
 查詢剖析器會分隔運算子 (例如範例中的 `*` 和 `+`) 與搜尋詞彙，並將搜尋查詢解構為支援類型的子查詢**︰ 
 
@@ -104,9 +104,9 @@ POST /indexes/hotels/docs/search?api-version=2020-06-30
 
 當 `searchMode=any` (這是預設值) 時，spacious 和 air-condition 之間的空白分隔符號為 OR (`||`)，會使範例查詢文字相當於︰ 
 
-~~~~
+```
 Spacious,||air-condition*+"Ocean view" 
-~~~~
+```
 
 明確運算子 (例如 `+"Ocean view"` 中的 `+`) 在布林值查詢建構中是很明確的 (詞彙必須** 相符)。 較不明顯的是如何解譯其餘詞彙︰spacious 和 air-condition。 搜尋引擎應該尋找 ocean view 和 ** spacious 和 ** air-condition 的相符項目嗎？ 還是它應該尋找 ocean view 加上其中一項**？ 
 
@@ -114,9 +114,9 @@ Spacious,||air-condition*+"Ocean view"
 
 假設我們現在設定 `searchMode=all`。 在此情況下，空白會解譯為 "and" 作業。 每個其餘詞彙都必須存在於文件中，才可認定為相符。 產生的範例查詢會如下解譯︰ 
 
-~~~~
+```
 +Spacious,+air-condition*+"Ocean view"
-~~~~
+```
 
 此查詢的經修改查詢樹狀結構會如下所示，其中相符文件是所有三個子查詢的交集︰ 
 
@@ -152,16 +152,16 @@ Spacious,||air-condition*+"Ocean view"
 
 可以使用[分析 API](/rest/api/searchservice/test-analyzer)來測試分析器的行為。 提供您想要分析的詞彙，查看指定分析器將會產生的文字。 例如，若要查看標準分析器會如何處理 "air-condition" 文字，您可以發出下列要求︰
 
-~~~~
+```json
 {
     "text": "air-condition",
     "analyzer": "standard"
 }
-~~~~
+```
 
 標準分析器會將輸入文字分成下列兩個權杖，並以開始和結束位移 (用於點閱數醒目提示) 等屬性以及它們的位置 (用於相符片語) 加以註解︰
 
-~~~~
+```json
 {
   "tokens": [
     {
@@ -178,7 +178,7 @@ Spacious,||air-condition*+"Ocean view"
     }
   ]
 }
-~~~~
+```
 
 <a name="exceptions"></a>
 
@@ -192,7 +192,7 @@ Spacious,||air-condition*+"Ocean view"
 
 擷取文件是指在索引中尋找包含相符詞彙的文件。 了解這個階段的最佳方式就是範例。 讓我們從具有下列簡單結構描述的旅館索引開始︰ 
 
-~~~~
+```json
 {
     "name": "hotels",
     "fields": [
@@ -201,11 +201,11 @@ Spacious,||air-condition*+"Ocean view"
         { "name": "description", "type": "Edm.String", "searchable": true }
     ] 
 } 
-~~~~
+```
 
 進一步假設這個索引包含下列四個文件︰ 
 
-~~~~
+```json
 {
     "value": [
         {
@@ -230,7 +230,7 @@ Spacious,||air-condition*+"Ocean view"
         }
     ]
 }
-~~~~
+```
 
 **詞彙編製索引的方式**
 
@@ -268,7 +268,7 @@ Spacious,||air-condition*+"Ocean view"
 | 詞彙 | 文件清單 |
 |------|---------------|
 | air | 3
-| 和 | 4
+| 及 | 4
 | beach | 1
 | conditioned | 3
 | comfortable | 3
@@ -321,10 +321,12 @@ Spacious,||air-condition*+"Ocean view"
 ### <a name="scoring-example"></a>評分範例
 
 還記得與我們範例查詢相符的三份文件︰
-~~~~
+
+```
 search=Spacious, air-condition* +"Ocean view"  
-~~~~
-~~~~
+```
+
+```json
 {
   "value": [
     {
@@ -347,7 +349,7 @@ search=Spacious, air-condition* +"Ocean view"
     }
   ]
 }
-~~~~
+```
 
 文件 1 與查詢最相符，因為 spacious** 詞彙和必要的 ocean view** 片語都出現在 [描述] 欄位中。 接下來兩個文件只符合 *ocean view* 片語。 您可能會很意外，文件 2 和 3 的相關性分數不同，即使它們符合查詢的方式相同。 這是因為相較於只有 TF/IDF，評分公式具有更多個元件。 在此情況下，已將較高的分數指派給文件 3，因為它的說明較短。 深入了解 [Lucene 的實際評分公式](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/search/similarities/TFIDFSimilarity.html)，以了解欄位長度和其他因素會如何影響相關性分數。
 
@@ -391,7 +393,7 @@ Azure 認知搜尋中的所有索引都會自動分割成多個分區，讓我�
 
 + [設定自訂分析器](/rest/api/searchservice/custom-analyzers-in-azure-search)以進行最少的處理，或是在特定欄位上進行特殊的處理。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 [搜尋檔 REST API](/rest/api/searchservice/search-documents) 
 

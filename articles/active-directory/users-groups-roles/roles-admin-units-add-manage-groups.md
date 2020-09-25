@@ -1,5 +1,5 @@
 ---
-title: 在管理單位中新增、移除和列出群組 (預覽) - Azure Active Directory | Microsoft Docs
+title: 新增、移除及列出管理單位中的群組-Azure Active Directory |Microsoft Docs
 description: 在 Azure Active Directory 的管理單位中管理群組及其角色權限
 services: active-directory
 documentationcenter: ''
@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.topic: how-to
 ms.subservice: users-groups-roles
 ms.workload: identity
-ms.date: 06/23/2020
+ms.date: 09/22/2020
 ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 76026313eea8c8fbb2f3e55321e2e4ebbe5dcfc7
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 324d0ff0659270c6f2e90c0456ded83344f73936
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85850916"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91264988"
 ---
 # <a name="add-and-manage-groups-in-administrative-units-in-azure-active-directory"></a>在 Azure Active Directory 中的管理單位新增和管理群組
 
@@ -31,7 +31,7 @@ ms.locfileid: "85850916"
 
 ### <a name="azure-portal"></a>Azure 入口網站
 
-在預覽中，您只能將群組個別指派給管理單位。 沒有將群組大量指派給管理單位的選項。 您可以使用入口網站中的兩種方式之一，將群組指派給管理單位：
+您只能將群組個別指派給管理單位。 沒有將群組大量指派給管理單位的選項。 您可以使用入口網站中的兩種方式之一，將群組指派給管理單位：
 
 1. 從 **Azure AD > 群組**頁面
 

@@ -3,18 +3,18 @@ title: 檢視 Azure 自動化更新評量
 description: 此文章說明如何檢視更新管理部署的更新評量。
 services: automation
 ms.subservice: update-management
-ms.date: 07/28/2020
+ms.date: 09/17/2020
 ms.topic: conceptual
-ms.openlocfilehash: 92861304a946e357b2b265cd825eceb8e22f7d2d
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 2e32fc7c1872bf18b7f1c995f281a9b09ec45dc8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87449976"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91264442"
 ---
-# <a name="view-update-assessments"></a>檢視更新評估
+# <a name="view-update-assessments-in-update-management"></a>在更新管理中查看更新評量
 
-在更新管理中，您可以查看電腦的相關資訊、遺失的更新、更新部署，以及排程的更新部署。
+在更新管理中，您可以查看機器的相關資訊、遺失的更新、更新部署，以及排程的更新部署。 您可以從選取的已啟用 Arc 伺服器，或從所有設定的電腦和伺服器上的自動化帳戶，查看範圍設定為所選 Azure 虛擬機器的評定資訊。
 
 ## <a name="sign-in-to-the-azure-portal"></a>登入 Azure 入口網站
 
@@ -22,27 +22,33 @@ ms.locfileid: "87449976"
 
 ## <a name="view-update-assessment"></a>檢視更新評量
 
-在更新管理中，您可以查看電腦的相關資訊、遺失的更新、更新部署，以及排程的更新部署。
+若要從 Azure VM 查看更新評定，請流覽至 [ **虛擬機器** ]，然後從清單中選取您的虛擬機器。 從左側功能表中，選取 [**來賓 + 主機更新**]，然後選取 [ **guest + 主機更新**] 頁面上的 [**移至更新管理**]。
+
+在更新管理中，您可以查看機器的相關資訊、遺失的更新、更新部署，以及排程的更新部署。
+
+[![適用于 AZURE VM 的更新管理評量查看](./media/update-mgmt-view-update-assessments/update-assessment-azure-vm.png)](./media/update-mgmt-view-update-assessments/update-assessment-azure-vm-expanded.png#lightbox)
+
+若要從啟用 Arc 的伺服器查看更新評定，請流覽至 [ **伺服器]-Azure Arc** ，然後從清單中選取您的伺服器。 從左側功能表中，選取 [ **來賓和主機更新**]。 在 [ **來賓 + 主機更新** ] 頁面上，選取 [ **移至更新管理**]。
+
+在更新管理中，您可以查看已啟用 Arc 的電腦、缺少的更新、更新部署和排程更新部署的相關資訊。
+
+[![適用于已啟用 Arc 之伺服器的更新管理評估視圖](./media/update-mgmt-view-update-assessments/update-assessment-arc-server.png)](./media/update-mgmt-view-update-assessments/update-assessment-arc-server-expanded.png#lightbox)
+
+若要在所有電腦上查看更新評估，包括來自您自動化帳戶的已啟用 Arc 的伺服器，請流覽至 [ **自動化** 帳戶]，然後從清單中選取已啟用更新管理的自動化帳戶。 在您的自動化帳戶中，從左側功能表中選取 [ **更新管理** ]。
+
+您環境的更新會列在 [ **更新管理** ] 頁面上。 如果有任何更新被識別為遺漏，[ **遺失的更新** ] 索引標籤上會顯示一份清單。
 
 [![更新管理預設視圖](./media/update-mgmt-overview/update-management-view.png)](./media/update-mgmt-overview/update-management-view-expanded.png#lightbox)
 
-若要查看更新評估，請執行下列動作。
+在 [ **相容性** ] 欄下，您可以看到上次評估電腦的時間。 在 [ **更新代理程式就緒** ] 資料行下，您可以看到更新代理程式的健康情況。 如果發生問題，請選取連結來移至可協助您更正問題的疑難排解文件。
 
-1. 在 [Azure 入口網站中，流覽至 [**自動化帳戶**]，並從清單中選取已啟用更新管理的自動化帳戶。
+在 [資訊連結] 下，選取某項更新的連結可開啟支援文章，其中提供有關更新的重要資訊。
 
-2. 在您的自動化帳戶中，從左側窗格中選取 [**更新管理**]。
+[![查看更新狀態](./media/update-mgmt-view-update-assessments/missing-updates.png)](./media/update-mgmt-view-update-assessments/missing-updates-expanded.png#lightbox)
 
-3. 您環境的更新會列在 [**更新管理**] 頁面上。 如果有任何更新識別為遺失，則 [**遺失更新**] 索引標籤上會顯示它們的清單。
+按一下更新的任何其他地方，即可開啟 [記錄搜尋] 窗格。 記錄搜尋的查詢已針對該特定更新預先定義。 您可以修改此查詢或建立您自己的查詢，以檢視詳細資訊。
 
-   在 [**相容性**] 欄底下，您可以看到上次評估電腦的時間。 在 [**更新代理程式就緒**] 資料行下，您可以看到更新代理程式的健全狀況。 如果發生問題，請選取連結來移至可協助您更正問題的疑難排解文件。
-
-4. 在 [資訊連結] 下，選取某項更新的連結可開啟支援文章，其中提供有關更新的重要資訊。
-
-     [![查看更新狀態](./media/update-mgmt-view-update-assessments/missing-updates.png)](./media/update-mgmt-view-update-assessments/missing-updates-expanded.png#lightbox)
-
-5. 按一下更新的任何其他地方，即可開啟 [記錄搜尋] 窗格。 記錄搜尋的查詢已針對該特定更新預先定義。 您可以修改此查詢或建立您自己的查詢，以檢視詳細資訊。
-
-    [![查看記錄查詢結果](./media/update-mgmt-view-update-assessments/logsearch-results.png)](./media/update-mgmt-view-update-assessments/logsearch-results-expanded.png#lightbox)
+[![查看記錄查詢結果](./media/update-mgmt-view-update-assessments/logsearch-results.png)](./media/update-mgmt-view-update-assessments/logsearch-results-expanded.png#lightbox)
 
 ## <a name="view-missing-updates"></a>檢視缺少的更新
 
@@ -86,4 +92,4 @@ sudo yum -q --security check-update
 
 ## <a name="next-steps"></a>後續步驟
 
-此程式的下一個階段是將[更新部署](update-mgmt-deploy-updates.md)至不符合規範的機器，並審查部署結果。
+程式的下一個階段是將 [更新部署](update-mgmt-deploy-updates.md) 至不符合規範的電腦，並檢查部署結果。

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: c357720c937a5b63944b7fc598eaff428f85bfb6
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: d6222c9275dfe022e897bb6324df5bb30e1a8905
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90706813"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91276810"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>Azure Cosmos DB 的高可用性
 
@@ -129,6 +129,8 @@ az cosmosdb create \
 
 ## <a name="building-highly-available-applications"></a>高度可用的應用程式
 
+- 在這些事件期間，檢查 [Azure Cosmos sdk](troubleshoot-sdk-availability.md) 的預期行為，以及影響它的設定。
+
 - 為了確保高寫入和讀取可用性，請將您的 Azure Cosmos 帳戶設定為跨越至少兩個具有多個寫入區域的區域。 這項設定可針對 Sla 所支援的讀取和寫入，提供最高的可用性、最低延遲和最佳的擴充性。 若要深入瞭解，請參閱如何 [使用多個寫入區域來設定您的 Azure Cosmos 帳戶](tutorial-global-distribution-sql-api.md)。
 
 - 針對使用單一寫入區域設定的多重區域 Azure Cosmos 帳戶，請 [使用 Azure CLI 或 Azure 入口網站來啟用自動容錯移轉](how-to-manage-database-account.md#automatic-failover)。 啟用自動容錯移轉之後，只要發生區域性災難，Cosmos DB 就會自動容錯移轉您的帳戶。  
@@ -146,3 +148,4 @@ az cosmosdb create \
 - [全域散發 - 運作原理](global-dist-under-the-hood.md)
 - [Azure Cosmos DB 中的一致性層級](consistency-levels.md)
 - [如何使用多個寫入區域設定您的 Cosmos 帳戶](how-to-multi-master.md)
+- [Dns 多區域性環境上的 SDK 行為](troubleshoot-sdk-availability.md)

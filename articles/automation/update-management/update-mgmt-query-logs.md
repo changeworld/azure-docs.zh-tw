@@ -3,14 +3,14 @@ title: 查詢 Azure 自動化更新管理記錄
 description: 本文說明如何在 Log Analytics 工作區中查詢更新管理的記錄。
 services: automation
 ms.subservice: update-management
-ms.date: 07/28/2020
+ms.date: 09/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 290fb0165038eea8740361a12a6d4bfe2c1bf138
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 777d794716c7c17caf8d4c73007b91a625f40043
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87449978"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91264298"
 ---
 # <a name="query-update-management-logs"></a>查詢更新管理記錄
 
@@ -26,7 +26,7 @@ ms.locfileid: "87449978"
 
 建立類型為 `RequiredUpdate` 的記錄，代表電腦所需的更新。 這些記錄具有下表中的屬性：
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 |----------|-------------|
 | 電腦 | 報告機器的完整網域名稱。 |
 | KBID | Windows Update 的知識庫文章識別碼。 |
@@ -105,12 +105,12 @@ ms.locfileid: "87449978"
 
 建立類型為 `UpdateRunProgress` 的記錄，依照電腦提供排程部署的更新部署狀態。 這些記錄具有下表中的屬性：
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 |----------|-------------|
 | 電腦 | 報告機器的完整網域名稱。 |
 | ComputerEnvironment | 環境。 值為 Azure 或非 Azure。 |
 | CorrelationId | 更新的 Runbook 作業執行唯一識別碼。 |
-| EndTime | 同步處理程序結束的時間。 |
+| EndTime | 同步處理程序結束的時間。 *目前未使用這個屬性。請參閱 TimeGenerated。* |
 | ErrorResult | 無法安裝更新時所產生的 Windows Update 錯誤碼。 |
 | InstallationStatus | 用戶端電腦上更新的可能安裝狀態，<br> `NotStarted` - 尚未觸發作業。<br> `FailedToStart` - 無法在電腦上啟動作業。<br> `Failed` - 作業已啟動但失敗，發生例外狀況。<br> `InProgress` - 進行中的作業。<br> `MaintenanceWindowExceeded` - 如果執行仍在進行中，但已達到維護時段間隔。<br> `Succeeded` - 作業成功。<br> `InstallFailed` - 無法成功安裝更新。<br> `NotIncluded`<br> `Excluded` |
 | KBID | Windows Update 的知識庫文章識別碼。 |
@@ -123,8 +123,8 @@ ms.locfileid: "87449978"
 | ResourceType | 資源類型。 |
 | SourceComputerId | 代表來源電腦的唯一識別碼。 |
 | SourceSystem | 記錄的來源系統。 值為 `OperationsManager`。 |
-| StartTime | 排定安裝更新的時間。 |
-| SubscriptionId | Azure 訂用帳戶的唯一識別碼。 | 
+| StartTime | 排定安裝更新的時間。 *目前未使用這個屬性。請參閱 TimeGenerated。* |
+| SubscriptionId | Azure 訂用帳戶的唯一識別碼。 |
 | SucceededOnRetry | 指出第一次嘗試時更新執行是否失敗的值，而目前的作業是重試嘗試。 |
 | TimeGenerated | 建立記錄的日期和時間。 |
 | Title | 更新的標題。 |

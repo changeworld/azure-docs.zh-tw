@@ -1,6 +1,6 @@
 ---
 title: 在 RHEL 上使用 Azure NetApp Files 的 azure Vm 高可用性（適用于 SAP NW） |Microsoft Docs
-description: SAP NetWeaver on Red Hat Enterprise Linux 的 Azure 虛擬機器高可用性
+description: 在 Azure 虛擬機器上建立 SAP NW 的高可用性 (Vm) RHEL 搭配 Azure NetApp Files。
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: rdeltcheva
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/04/2020
 ms.author: radeltch
-ms.openlocfilehash: 5ba5ebcb68ed206bab038f0a892e24834ddb0f22
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 51da96ab5c42c0b48f53969139bd8b87690b8319
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653421"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329273"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux-with-azure-netapp-files-for-sap-applications"></a>適用于 sap Red Hat Enterprise Linux NetWeaver 的 azure 虛擬機器高可用性，適用于 SAP 應用程式的 Azure NetApp Files
 
@@ -662,7 +662,7 @@ Azure NetApp files 可在數個 [azure 區域](https://azure.microsoft.com/globa
     ```
 
    SAP 在 SAP NW 7.52 中引進了加入佇列伺服器 2 的支援 (包括複寫)。 從 ABAP 平台 1809 開始，根據預設會安裝加入佇列伺服器 2。 如需加入佇列伺服器 2 的支援，請參閱 SAP Note [2630416](https://launchpad.support.sap.com/#/notes/2630416)。
-   如果使用佇列伺服器2架構 ([ENSA2](https://help.sap.com/viewer/cff8531bc1d9416d91bb6781e628d4e0/1709%20001/en-US/6d655c383abf4c129b0e5c8683e7ecd8.html)) ，請安裝資源代理程式 resource-agents-sap-4.1.1 12-01.2.2. x86_64 el7 或更新版本，然後定義資源，如下所示：
+   如果使用佇列伺服器2架構 ([ENSA2](https://help.sap.com/viewer/cff8531bc1d9416d91bb6781e628d4e0/1709%20001/en-US/6d655c383abf4c129b0e5c8683e7ecd8.html)) ，請安裝資源代理程式資源代理程式-sap-4.1.1-12.el7.x86_64 或更新版本，然後定義資源，如下所示：
 
     ```
     sudo pcs property set maintenance-mode=true

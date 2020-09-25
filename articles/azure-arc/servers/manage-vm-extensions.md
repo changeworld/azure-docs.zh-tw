@@ -1,14 +1,14 @@
 ---
 title: Azure Arc 啟用的伺服器的 VM 延伸模組管理
 description: Azure Arc 啟用的伺服器可以管理虛擬機器擴充功能的部署，以使用非 Azure Vm 提供部署後設定和自動化工作。
-ms.date: 09/02/2020
+ms.date: 09/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 988c4d7b2fcbffb95932fe70d8014de74dd33343
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 1c3d50f407f4412a14201dfe669334dbb083d323
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90887741"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329069"
 ---
 # <a name="virtual-machine-extension-management-with-azure-arc-enabled-servers"></a>已啟用 Azure Arc 的伺服器的虛擬機器擴充功能管理
 
@@ -34,9 +34,9 @@ VM 擴充功能只能在 [支援的區域](overview.md#supported-regions)清單�
 
 ## <a name="extensions"></a>延伸模組
 
-在此預覽中，我們會在 Windows 和 Linux 機器上支援下列 VM 擴充功能。
+在此版本中，我們支援 Windows 和 Linux 機器上的下列 VM 擴充功能。
 
-|延伸模組 |OS |Publisher |其他資訊 |
+|延伸模組 |OS |發行者 |其他資訊 |
 |----------|---|----------|-----------------------|
 |CustomScriptExtension |Windows |Microsoft.Compute |[Windows 自訂腳本擴充功能](../../virtual-machines/extensions/custom-script-windows.md)|
 |DSC |Windows |Microsoft PowerShell|[Windows PowerShell DSC 延伸模組](../../virtual-machines/extensions/dsc-windows.md)|
@@ -51,7 +51,7 @@ VM 擴充功能可以使用 Azure Resource Manager 範本、從 Azure 入口網�
 
 若要瞭解 Azure Connected Machine 代理程式封裝和延伸模組代理程式元件的詳細資料，請參閱 [代理程式總覽](agent-overview.md#agent-component-details)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 這項功能取決於您訂用帳戶中的下列 Azure 資源提供者：
 
@@ -66,10 +66,7 @@ VM 擴充功能可以使用 Azure Resource Manager 範本、從 Azure 入口網�
 
 確認您的電腦符合 Azure Connected Machine 代理程式支援的 Windows 和 Linux 作業系統 [版本](agent-overview.md#supported-operating-systems) 。
 
-這項功能支援的已連線電腦代理程式的最小版本為：
-
-* Windows-0.7. x
-* Linux-0.8. x
+Windows 和 Linux 上這項功能支援的已連線電腦代理程式的最小版本是1.0 版。
 
 若要將您的電腦升級為所需的代理程式版本，請參閱 [升級代理程式](manage-agent.md#upgrading-agent)。
 
@@ -77,7 +74,7 @@ VM 擴充功能可以使用 Azure Resource Manager 範本、從 Azure 入口網�
 
 您可以透過 Azure 入口網站，將 VM 擴充功能套用至伺服器管理的電腦。
 
-1. 在瀏覽器中，移至 [Azure 入口網站](https://aka.ms/arcserver-preview)。
+1. 在瀏覽器中，移至 [Azure 入口網站](https://portal.azure.com)。
 
 2. 在入口網站中，流覽至 [ **伺服器-Azure Arc** ]，然後從清單中選取您的混合式電腦。
 
@@ -719,22 +716,10 @@ New-AzResourceGroupDeployment -ResourceGroupName "ContosoEngineering" -TemplateF
 
 4. 選取 [ **卸載** ]，當系統提示您確認時，請選取 **[是]** 以繼續。
 
-## <a name="troubleshooting"></a>疑難排解
-
-您可以從 Azure 入口網站抓取有關延伸模組部署狀態的資料。
-
-下列疑難排解步驟適用於所有虛擬機器擴充功能。
-
-1. 若要檢查來賓代理程式記錄檔，請查看您的延伸模組在中布建于 `%SystemDrive%\ProgramData\GuestConfig\ext_mgr_logs` Windows 和下的 Linux 時的活動 `/var/lib/GuestConfig/ext_mgr_logs` 。
-
-2. 如需 Windows 的詳細資訊，請參閱特定延伸模組的延伸模組記錄檔 `%SystemDrive%\ProgramData\GuestConfig\extension_logs\<Extension>` 。 擴充功能輸出會記錄到安裝在 Linux 上的每個擴充功能的檔案 `/var/lib/GuestConfig/extension_logs` 。
-
-3. 針對錯誤碼、已知問題等，請參閱延伸模組特定檔疑難排解章節。您可以在延伸模組總覽的 [ **疑難排解和支援** ] 區段中找到每個擴充功能的其他疑難排解資訊。 這包括寫入記錄檔的錯誤碼描述。 擴充功能文章會連結到本文稍早所述的 [延伸模組資料表](#extensions) 。
-
-4. 查看系統記錄。 檢查是否有其他作業對擴充功能造成干擾，例如，長時間執行且需要以獨佔方式存取套件管理員的其他應用程式安裝。
-
 ## <a name="next-steps"></a>後續步驟
 
-- 了解如何使用 [Azure 原則](../../governance/policy/overview.md)，針對例如 VM [來賓設定](../../governance/policy/concepts/guest-configuration.md)、確認機器回報至預期的 Log Analytics 工作區、使用 [Azure 監視器與 VM](../../azure-monitor/insights/vminsights-enable-policy.md) 啟用監視等等項目，管理您的機器。
+* 疑難排解資訊可在 [VM 延伸模組指南](troubleshoot-vm-extensions.md)中找到。
 
-- 深入瞭解 [[Log Analytics 代理程式]](../../azure-monitor/platform/log-analytics-agent.md)。 當您想要收集作業系統和工作負載監視資料、使用自動化 runbook 或功能（例如更新管理）進行管理時，或使用其他 Azure 服務（例如 [Azure 資訊安全中心](../../security-center/security-center-intro.md)）時，需要適用于 Windows 和 Linux 的 Log Analytics 代理程式。
+* 了解如何使用 [Azure 原則](../../governance/policy/overview.md)，針對例如 VM [來賓設定](../../governance/policy/concepts/guest-configuration.md)、確認機器回報至預期的 Log Analytics 工作區、使用 [Azure 監視器與 VM](../../azure-monitor/insights/vminsights-enable-policy.md) 啟用監視等等項目，管理您的機器。
+
+* 深入了解 [Log Analytics 代理程式](../../azure-monitor/platform/log-analytics-agent.md)。 當您想要收集作業系統和工作負載監視資料、使用自動化 runbook 或功能（例如更新管理）進行管理時，或使用其他 Azure 服務（例如 [Azure 資訊安全中心](../../security-center/security-center-intro.md)）時，需要適用于 Windows 和 Linux 的 Log Analytics 代理程式。

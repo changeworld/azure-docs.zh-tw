@@ -7,17 +7,17 @@ author: MashaMSFT
 editor: monicar
 tags: azure-service-management
 ms.service: virtual-machines-sql
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: 50546a3efc008e074f4e7831d2cc657539b2f98b
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: e98bfbf58c179fe9df0d99e0522e5747d220ae52
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89612317"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317016"
 ---
 # <a name="cluster-configuration-best-practices-sql-server-on-azure-vms"></a>Azure Vm 上的叢集設定最佳作法 (SQL Server) 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -27,7 +27,7 @@ ms.locfileid: "89612317"
 本文針對 [容錯移轉叢集實例 (fci) ](failover-cluster-instance-overview.md) 和 [可用性群組](availability-group-overview.md) 提供叢集設定的最佳做法，以搭配 Azure vm 上的 SQL Server 使用。 
 
 
-## <a name="networking"></a>網路
+## <a name="networking"></a>網路功能
 
 針對每部伺服器使用單一 NIC (叢集節點) 和單一子網。 Azure 網路功能具有實體冗余，讓 Azure 虛擬機器來賓叢集上不需要額外的 Nic 和子網。 叢集驗證報告會警告您節點只能在單一網路上觸達。 您可以在 Azure 虛擬機器來賓容錯移轉叢集上忽略此警告。
 
@@ -144,7 +144,7 @@ Azure 虛擬機器支援 Windows Server 2019 上的 Microsoft Distributed Transa
 - 基本負載平衡器不處理 RPC 連接埠。
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 確定您的解決方案有適當的最佳作法之後，請先 [準備 SQL SERVER VM 以進行 FCI](failover-cluster-instance-prepare-vm.md)。 您也可以使用 [Azure CLI](availability-group-az-cli-configure.md)或 [Azure 快速入門範本](availability-group-quickstart-template-configure.md)來建立可用性群組。 
 

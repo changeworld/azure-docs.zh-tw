@@ -1,20 +1,20 @@
 ---
 title: 使用 Windows PowerShell DSC 安裝已連線的機器代理程式
 description: 在本文中，您將瞭解如何使用已啟用 Azure Arc 的伺服器，使用 Windows PowerShell DSC 將機器連線到 Azure。
-ms.date: 09/02/2020
+ms.date: 09/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 5349ff870be324c0137d2adcaf201ecdac286cbc
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 2c36a79790f3e31e897dfe750f430f05eaa34d04
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90887646"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329052"
 ---
 # <a name="how-to-install-the-connected-machine-agent-using-windows-powershell-dsc"></a>如何使用 Windows PowerShell DSC 來安裝已連線的機器代理程式
 
 您可以使用 [Windows PowerShell Desired State Configuration](/powershell/scripting/dsc/getting-started/winGettingStarted) (DSC) ，將 Windows 電腦的軟體安裝和設定自動化。 本文說明如何使用 DSC，在混合式 Windows 電腦上安裝已啟用 Azure Arc 的伺服器連線的機器代理程式。
 
-## <a name="requirements"></a>規格需求
+## <a name="requirements"></a>需求
 
 - Windows PowerShell 版本4.0 或更高版本
 
@@ -86,6 +86,8 @@ PowerShell 資源庫中的 [CompositeResource](https://www.powershellgallery.com
 
 ## <a name="next-steps"></a>後續步驟
 
-- 了解如何使用 [Azure 原則](../../governance/policy/overview.md)，針對例如 VM [來賓設定](../../governance/policy/concepts/guest-configuration.md)、確認機器回報至預期的 Log Analytics 工作區、使用 [Azure 監視器與 VM](../../azure-monitor/insights/vminsights-enable-policy.md) 啟用監視等等項目，管理您的機器。
+* 疑難排解資訊可在「連線的 [機器代理程式疑難排解指南](troubleshoot-agent-onboard.md)」中找到。
 
-- 深入了解 [Log Analytics 代理程式](../../azure-monitor/platform/log-analytics-agent.md)。 您需要適用於 Windows 和 Linux 的 Log Analytics 代理程式來主動監視機器上執行的作業系統和工作負載、使用自動化 Runbook 或解決方案 (例如更新管理) 來管理機器，或使用其他 Azure 服務 (例如 [Azure 資訊安全中心](../../security-center/security-center-intro.md))。
+* 了解如何使用 [Azure 原則](../../governance/policy/overview.md)，針對例如 VM [來賓設定](../../governance/policy/concepts/guest-configuration.md)、確認機器回報至預期的 Log Analytics 工作區、使用 [Azure 監視器與 VM](../../azure-monitor/insights/vminsights-enable-policy.md) 啟用監視等等項目，管理您的機器。
+
+* 深入了解 [Log Analytics 代理程式](../../azure-monitor/platform/log-analytics-agent.md)。 您需要適用於 Windows 和 Linux 的 Log Analytics 代理程式來主動監視機器上執行的作業系統和工作負載、使用自動化 Runbook 或解決方案 (例如更新管理) 來管理機器，或使用其他 Azure 服務 (例如 [Azure 資訊安全中心](../../security-center/security-center-intro.md))。

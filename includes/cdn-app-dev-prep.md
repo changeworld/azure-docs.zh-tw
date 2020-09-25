@@ -4,12 +4,12 @@ ms.service: azure-cdn
 ms.topic: include
 ms.date: 11/21/2018
 ms.author: mazha
-ms.openlocfilehash: 41f2d4540f665137d34d262546cdc1a2edfbae3a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4967991b0edaa854acbf6b308596859d662311fe
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77608751"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316746"
 ---
 ## <a name="prerequisites"></a>必要條件
 在撰寫 CDN 管理程式碼之前，您必須做一些準備工作，讓程式碼與 Azure Resource Manager 進行互動。 若要執行這項準備作業，您必須：
@@ -26,10 +26,10 @@ ms.locfileid: "77608751"
     ![建立新的資源群組](./media/cdn-app-dev-prep/cdn-new-rg-1-include.png)
 3. 將您的資源群組命名為 CdnConsoleTutorial 。  選取您的訂用帳戶，並選擇離您最近的位置。  您可以視需要按一下 [釘選到儀表板] 核取方塊，將資源群組釘選到入口網站的儀表板上。  釘選可方便日後尋找。  進行選擇之後，按一下 [建立] 。
 
-    ![為資源群組命名](./media/cdn-app-dev-prep/cdn-new-rg-2-include.png)
+    ![[資源群組] 對話方塊的螢幕擷取畫面。](./media/cdn-app-dev-prep/cdn-new-rg-2-include.png)
 4. 建立資源群組之後，如果您未將它釘選到儀表板，可以依序按一下 [瀏覽] 和 [資源群組] 來尋找。  如需開啟，請按一下資源群組。  請記下您的**訂用帳戶 ID**。 我們稍後將會用到此資訊。
 
-    ![為資源群組命名](./media/cdn-app-dev-prep/cdn-subscription-id-include.png)
+    ![C D N 主控台教學課程區段的螢幕擷取畫面。](./media/cdn-app-dev-prep/cdn-subscription-id-include.png)
 
 ### <a name="creating-the-azure-ad-application-and-applying-permissions"></a>建立 Azure AD 應用程式，然後套用權限
 有兩種方式可使用 Azure Active Directory 來驗證應用程式︰個別使用者或服務主體。 服務主體類似於 Windows 中的服務帳戶。  我們並未授與特定使用者權限來與 CDN 設定檔互動，而是改為將權限授與服務主體。  服務主體通常用於自動化的非互動式處理程序。  雖然本教學課程是撰寫互動式主控台應用程式，但我們將著重在服務主體處理方法。

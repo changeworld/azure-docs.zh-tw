@@ -2,13 +2,13 @@
 title: 設定 Azure VMware 解決方案的 vRealize 作業
 description: 瞭解如何為您的 Azure VMware 解決方案私人雲端設定 vRealize 作業。
 ms.topic: how-to
-ms.date: 08/06/2020
-ms.openlocfilehash: 729ee5c64776d7d04f702af62451175f7c53421b
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.date: 09/22/2020
+ms.openlocfilehash: 06b88eb610c4633018889315ab1cfd340d3f4b57
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88750394"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91293136"
 ---
 # <a name="set-up-vrealize-operations-for-azure-vmware-solution"></a>設定 Azure VMware 解決方案的 vRealize 作業
 
@@ -58,7 +58,23 @@ vRealize Operations Manager 是一種操作管理平臺，可讓 VMware 基礎�
 > 如需安裝 vRealize Operations Manager 的逐步指南，請參閱 [VMware 檔](https://docs.vmware.com/en/vRealize-Operations-Manager/8.1/com.vmware.vcom.vapp.doc/GUID-7FFC61A0-7562-465C-A0DC-46D092533984.html) 。
 
 
+## <a name="known-limitations"></a>已知限制
 
+- **cloudadmin@vsphere.local**Azure VMware 解決方案中的使用者具有[有限的許可權](concepts-rbac.md)。 在 Azure VMware 解決方案上)  (Vm 的虛擬機器，不支援使用 VMware 工具的內部來賓記憶體收集。 在此情況下，作用中和已耗用的記憶體使用率仍會繼續運作。
+- 以主機為基礎之商務意圖的工作負載優化無法運作，因為 Azure VMware 解決方案會管理叢集設定，包括 DRS 設定。
+- VRealize Operations Manager 8.0 和更新版本中，已完全支援使用叢集型商務意圖在 SDDC 中放置跨叢集的工作負載優化。 但是，工作負載優化不會察覺資源集區，而是將虛擬機器放置在叢集層級。 使用者可以在 Azure VMware Solution vCenter Server 介面中手動更正此錯誤。
+- 您無法使用 Azure VMware 解決方案 vCenter Server 認證來登入 vRealize Operations Manager。 
+- Azure VMware 解決方案不支援 vRealize Operations Manager 外掛程式。
+
+使用 vCenter Server 雲端帳戶將 Azure VMware 解決方案 vCenter 連接到 vRealize Operations Manager 時，您將會遇到下列警告：
+
+:::image type="content" source="./media/vrealize-operations-manager/warning-adapter-instance-creation-succeeded.png" alt-text="警告介面卡實例建立成功":::
+
+因為 **cloudadmin@vsphere.local** Azure VMware 解決方案中的使用者沒有足夠的許可權來執行註冊所需的所有 vCenter Server 動作，所以會發生此警告。 不過，這些許可權足以讓介面卡實例進行資料收集，如下所示：
+
+:::image type="content" source="./media/vrealize-operations-manager/adapter-instance-to-perform-data-collection.png" alt-text="用來執行資料收集的介面卡實例":::
+
+如需詳細資訊，請參閱設定 [VCenter Adapter 實例所需的許可權](https://docs.vmware.com/en/vRealize-Operations-Manager/8.1/com.vmware.vcom.core.doc/GUID-3BFFC92A-9902-4CF2-945E-EA453733B426.html)。
 
 <!-- LINKS - external -->
 

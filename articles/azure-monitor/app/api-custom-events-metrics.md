@@ -3,13 +3,13 @@ title: 自訂事件和度量的 Application Insights API | Microsoft Docs
 description: 在您的裝置或桌面應用程式、網頁或服務中插入幾行程式碼，來追蹤使用狀況及診斷問題。
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.custom: devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: f60fdf9164d09b10d12ada7481edb503cd57a411
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.custom: devx-track-js, devx-track-csharp
+ms.openlocfilehash: e9f175e2585a5254922c9e859cf5ece2afbbc3e3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936566"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91264128"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>自訂事件和度量的 Application Insights API
 
@@ -32,7 +32,7 @@ ms.locfileid: "88936566"
 
 您可以 [附加屬性和度量](#properties) 至這裡大部分的遙測呼叫。
 
-## <a name="before-you-start"></a><a name="prep"></a>在您開始使用 Intune 之前
+## <a name="before-you-start"></a><a name="prep"></a>開始之前
 
 如果您還沒有 Application Insights SDK 的參考：
 
@@ -489,7 +489,7 @@ trackTrace(message: string, properties?: {[string]:string}, severityLevel?: Seve
 
 記錄診斷事件，例如進入或離開某個方法。
 
- 參數 | 描述
+ 參數 | 說明
 ---|---
 `message` | 診斷資料。 可以比名稱長很多。
 `properties` | 字串與字串的對應：用來在入口網站中 [篩選例外](#properties) 狀況的其他資料。 預設為空白。
@@ -1094,7 +1094,7 @@ telemetry.Context.Operation.Name = "MyOperationName";
 ## <a name="reference-docs"></a>參考文件
 
 * [ASP.NET 參考](/dotnet/api/overview/azure/insights?view=azure-dotnet)
-* [JAVA 參考](/java/api/overview/azure/appinsights?view=azure-java-stable/)
+* [Java 參考](/java/api/overview/azure/appinsights?view=azure-java-stable/)
 * [JavaScript 參考](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md)
 
 ## <a name="sdk-code"></a>SDK 程式碼

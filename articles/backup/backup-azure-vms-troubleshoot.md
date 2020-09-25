@@ -4,12 +4,12 @@ description: 在本文中，了解如何針對備份和還原 Azure 虛擬機器
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: a574c43c02c759529c5a0907682c06d4d40fb85a
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 39bc6178d0cabf6c0220d2c54e0c532a6f9a5aa2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89376174"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316727"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>針對 Azure 虛擬機器上的備份失敗進行疑難排解
 
@@ -105,7 +105,7 @@ ms.locfileid: "89376174"
 
 發生此錯誤是因為 VSS 寫入器處於不良狀態。 Azure 備份擴充功能會與 VSS 寫入器互動，以取得磁片的快照集。 若要解決此問題，請依照下列步驟執行︰
 
-請重新啟動處於不良狀態的 VSS 寫入器。
+步驟1：重新開機處於不良狀態的 VSS 寫入器。
 - 從提升權限的命令提示字元，執行 ```vssadmin list writers```。
 - 輸出會包含所有 VSS 寫入器和其狀態。 針對狀態不是 **[1]** 的每個 vss 寫入器，重新開機各自的 vss 寫入器服務。 
 - 若要重新開機服務，請從提高許可權的命令提示字元執行下列命令：
@@ -117,12 +117,20 @@ ms.locfileid: "89376174"
 > 重新開機某些服務可能會影響您的生產環境。 請確定已遵循核准程式，並在排定的停機時間重新開機服務。
  
    
-如果重新開機 VSS 寫入器並未解決此問題，而且問題仍持續發生，因為超時，則：
-- 從提升許可權的命令提示字元中執行下列命令 (系統管理員) ，以防止建立 blob 快照集的執行緒。
+步驟2：如果重新開機 VSS 寫入器並未解決問題，請從提升許可權的命令提示字元中執行下列命令 (系統管理員) ，以防止建立 blob 快照集的執行緒。
 
 ```console
 REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v SnapshotWithoutThreads /t REG_SZ /d True /f
 ```
+步驟3：如果步驟1和2沒有解決問題，可能是因為因為 IOPS 受限而導致 VSS 寫入器超時。<br>
+
+若要確認，請流覽至 [ ***系統] 並事件檢視器應用程式記錄*** 檔，並檢查下列錯誤訊息：<br>
+*陰影複製提供者會在保存要陰影複製之磁片區的寫入時超時。這可能是因為應用程式或系統服務的磁片區上有過多活動。當磁片區上的活動減少時，稍後再試一次。*<br>
+
+解決方案：
+- 檢查是否有可將負載分散到 VM 磁片的可能性。 這會減少單一磁片上的負載。 您可以藉 [由在儲存體層級啟用診斷計量來檢查 IOPs 節流](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/performance-diagnostics#install-and-run-performance-diagnostics-on-your-vm)。
+- 將備份原則變更為當 VM 上的負載降到最低時，在離峰時段執行備份。
+- 升級 Azure 磁片以支援更高的 IOPs。 [請於此處深入了解](https://docs.microsoft.com/azure/virtual-machines/disks-types)
 
 ### <a name="extensionfailedvssserviceinbadstate---snapshot-operation-failed-due-to-vss-volume-shadow-copy-service-in-bad-state"></a>ExtensionFailedVssServiceInBadState 快照集作業失敗，因為 VSS (磁片區陰影複製) 服務處於不正確的狀態
 
@@ -306,6 +314,13 @@ VM 代理程式是 Azure 復原服務延伸模組的必要條件。 請安裝 Az
 | 備份無法取消作業： <br>請等候作業完成。 |None |
 
 ## <a name="restore"></a>還原
+
+#### <a name="disks-appear-offline-after-file-restore"></a>磁片在檔案還原後會離線
+
+在還原之後，您會注意到磁片已離線，然後： 
+* 確認執行腳本的電腦是否符合作業系統需求。 [深入了解](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#system-requirements)。  
+* 請確定您不會還原至相同的來源， [深入瞭解](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#original-backed-up-machine-versus-another-machine)。
+
 
 | 錯誤詳細資料 | 因應措施 |
 | --- | --- |

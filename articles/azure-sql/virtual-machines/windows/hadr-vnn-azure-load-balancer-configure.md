@@ -1,6 +1,6 @@
 ---
 title: 使用 HADR 的 Azure Load Balancer 設定 VNN
-description: 瞭解如何設定 Azure 負載平衡器，以將流量路由至可用性群組或容錯移轉叢集實例（FCI）的虛擬網路名稱（VNN），並在 Azure Vm 上使用 SQL Server，以提供高可用性和嚴重損壞修復（HADR）。
+description: 瞭解如何設定 Azure 負載平衡器，以將流量路由傳送至虛擬網路名稱 (VNN) 適用于您的可用性群組或容錯移轉叢集實例 (FCI) 搭配 Azure Vm 上的 SQL Server，以提供高可用性和嚴重損壞修復 (HADR) 。
 services: virtual-machines-windows
 documentationcenter: na
 author: MashaMSFT
@@ -8,25 +8,25 @@ manager: jroth
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 10ff324e85082a4a5911e2c949744e7df1d9ad0b
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 2f36e568603ded5a89f88cf11627a09a5a240fac
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965467"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316982"
 ---
-# <a name="configure-vnn-with-azure-load-balancer-sql-server-on-azure-vms"></a>使用 Azure Load Balancer 設定 VNN （Azure Vm 上的 SQL Server）
+# <a name="configure-vnn-with-azure-load-balancer-sql-server-on-azure-vms"></a>使用 Azure Vm 上的 Azure Load Balancer (SQL Server 來設定 VNN) 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-在 Azure 虛擬機器上，叢集會使用負載平衡器來保存一次必須在一個叢集節點上的 IP 位址。 在此解決方案中，負載平衡器會保留 Azure 中叢集資源所使用之虛擬網路名稱（VNN）的 IP 位址。 
+在 Azure 虛擬機器上，叢集使用負載平衡器來保存一次必須在一個叢集節點上的 IP 位址。 在此解決方案中，負載平衡器會保存虛擬網路名稱的 IP 位址， (VNN) 由 Azure 中的叢集資源使用。 
 
-本文說明如何使用 Azure Load Balancer 服務來設定負載平衡器。 負載平衡器會將流量路由傳送至您的[可用性群組（AG）](availability-group-overview.md)接聽程式或[容錯移轉叢集實例（fci）](failover-cluster-instance-overview.md) ，並使用 Azure vm 上的 SQL Server 來進行高可用性和嚴重損壞修復（HADR）。 
+本文說明如何使用 Azure Load Balancer 服務來設定負載平衡器。 負載平衡器會將流量路由傳送至您的 [可用性群組 (AG) ](availability-group-overview.md) 接聽程式或 [容錯移轉叢集實例 (Fci) ](failover-cluster-instance-overview.md) 搭配 Azure vm 上的 SQL Server，以提供高可用性和嚴重損壞修復 (HADR) 。 
 
 
 
@@ -34,18 +34,18 @@ ms.locfileid: "85965467"
 
 建議先準備好下列項目，再完成本文中的步驟：
 
-- 決定 Azure Load Balancer 是[HADR 解決方案的適當連接選項](hadr-cluster-best-practices.md#connectivity)。
-- 已設定您的[可用性群組](availability-group-overview.md)接聽程式或[容錯移轉叢集實例](failover-cluster-instance-overview.md)。 
-- 已安裝最新版的[PowerShell](/powershell/azure/install-az-ps?view=azps-4.2.0)。 
+- 決定 Azure Load Balancer 是 [HADR 解決方案](hadr-cluster-best-practices.md#connectivity)的適當連線選項。
+- 已設定您的 [可用性群組](availability-group-overview.md) 接聽程式或 [容錯移轉叢集實例](failover-cluster-instance-overview.md)。 
+- 已安裝最新版本的 [PowerShell](/powershell/azure/install-az-ps?view=azps-4.2.0)。 
 
 
 ## <a name="create-load-balancer"></a>建立負載平衡器
 
-使用[Azure 入口網站](https://portal.azure.com)來建立負載平衡器：
+使用 [Azure 入口網站](https://portal.azure.com) 來建立負載平衡器：
 
 1. 在 Azure 入口網站中，前往包含虛擬機器的資源群組。
 
-1. 選取 [新增]。 搜尋 Azure Marketplace 以取得**Load Balancer**。 選取 [Load Balancer]。
+1. 選取 [新增]。 搜尋 **Load Balancer**的 Azure Marketplace。 選取 [Load Balancer]。
 
 1. 選取 [建立]。
 
@@ -59,7 +59,7 @@ ms.locfileid: "85965467"
    - **SKU**：標準。
    - **虛擬網路**：與虛擬機器相同的網路。
    - **IP 位址指派**：靜態。 
-   - **私人 IP 位址**：您指派給叢集網路資源的 ip 位址。
+   - **私人 ip 位址**：指派給叢集網路資源的 ip 位址。
 
    下列映像會顯示 [建立負載平衡器] UI：
 
@@ -74,21 +74,21 @@ ms.locfileid: "85965467"
 
 1. 將後端集區關聯至包含 VM 的可用性設定組。
 
-1. 在 [目標網路 IP 設定] 下方，選取 [虛擬機器]，並選擇將作為叢集節點加入的虛擬機器。 請務必包含將裝載 FCI 或可用性群組的所有虛擬機器。
+1. 在 [目標網路 IP 設定] 下方，選取 [虛擬機器]，並選擇將作為叢集節點加入的虛擬機器。 請務必包含所有將裝載 FCI 或可用性群組的虛擬機器。
 
 1. 選取 [確定] 以建立後端集區。
 
 ## <a name="configure-health-probe"></a>設定健康情況探查
 
-1. 在 [負載平衡器] 窗格上，選取 [**健康情況探查**]。
+1. 在 [負載平衡器] 窗格中，選取 [ **健康情況探查**]。
 
 1. 選取 [新增]。
 
-1. 在 [**新增健康情況探查**] <span id="probe"> </span>窗格中，設定下列健全狀況探查參數：
+1. 在 [**新增健康情況探查**] <span id="probe"> </span>窗格中，設定下列健康情況探查參數：
 
    - **Name**：健康情況探查的名稱。
    - **通訊協定**：TCP。
-   - **埠**：在[準備 VM 時](failover-cluster-instance-prepare-vm.md#uninstall-sql-server-1)，您在防火牆中為健康情況探查建立的埠。 在本文中，範例使用 TCP 連接埠 `59999`。
+   - **埠**： [當您準備 VM 時](failover-cluster-instance-prepare-vm.md#uninstall-sql-server-1)，在防火牆中為健康情況探查建立的埠。 在本文中，範例使用 TCP 連接埠 `59999`。
    - **間隔**：5 秒。
    - **狀況不良閾值**：2 次連續失敗。
 
@@ -96,16 +96,16 @@ ms.locfileid: "85965467"
 
 ## <a name="set-load-balancing-rules"></a>設定負載平衡規則
 
-1. 在 [負載平衡器] 窗格上，選取 [**負載平衡規則**]。
+1. 在 [負載平衡器] 窗格中，選取 [ **負載平衡規則**]。
 
 1. 選取 [新增]。
 
 1. 設定負載平衡規則參數：
 
    - **名稱**：負載平衡規則的名稱。
-   - **前端 ip 位址**： SQL Server FCI 或 AG 接聽程式的叢集網路資源的 IP 位址。
-   - **埠**： SQL Server TCP 通訊埠。 預設執行個體連接埠為 1433。
-   - **後端埠**：當您啟用**浮動 IP （伺服器直接回傳）** 時，與**埠**值相同的埠。
+   - **前端 ip 位址**： SQL Server FCI 或 AG 接聽程式的叢集網路資源的 ip 位址。
+   - **埠**： SQL Server TCP 埠。 預設執行個體連接埠為 1433。
+   - **後端埠**：當您啟用**浮動 IP (直接伺服器傳回) **時，與**埠**值相同的埠。
    - **後端集區**：先前設定的後端集區名稱。
    - **健康情況探查**：先前設定的健康狀態探查。
    - **工作階段持續性**：無。
@@ -134,13 +134,13 @@ Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"
 下表描述您需要更新的值：
 
 
-|**ReplTest1**|**描述**|
+|**ReplTest1**|**說明**|
 |---------|---------|
 |`Cluster Network Name`| 網路的 Windows Server 容錯移轉叢集名稱。 在 [容錯移轉叢集管理員] > [網路] 中，以滑鼠右鍵按一下網路，然後選取 [屬性]。 正確的值在 [一般] 索引標籤的 [名稱] 底下。|
-|`SQL Server FCI/AG listener IP Address Resource Name`|SQL Server FCI 的資源名稱或 AG 接聽程式的 IP 位址。 在 [容錯移轉叢集管理員] > [角色] 中，於 SQL Server FCI 角色下方的 [伺服器名稱] 下，以滑鼠右鍵按一下 IP 位址資源，然後選取 [屬性]。 正確的值在 [一般] 索引標籤的 [名稱] 底下。|
-|`ILBIP`|內部負載平衡器（ILB）的 IP 位址。 此位址會在 Azure 入口網站中設定為 ILB 的前端位址。 這也是 SQL Server FCI 的 IP 位址。 您可以在 [容錯移轉叢集管理員] 中，您找到 `<SQL Server FCI/AG listener IP Address Resource Name>` 所在位置的相同內容頁面上找到該位址。|
-|`nnnnn`|您在負載平衡器健康情況探查中設定的探查埠。 任何未使用的 TCP 連接埠都有效。|
-|SubnetMask| 叢集參數的子網路遮罩。 它必須是 TCP IP 廣播位址： `255.255.255.255` 。| 
+|`SQL Server FCI/AG listener IP Address Resource Name`|SQL Server FCI 或 AG 接聽程式 IP 位址的資源名稱。 在 [容錯移轉叢集管理員] > [角色] 中，於 SQL Server FCI 角色下方的 [伺服器名稱] 下，以滑鼠右鍵按一下 IP 位址資源，然後選取 [屬性]。 正確的值在 [一般] 索引標籤的 [名稱] 底下。|
+|`ILBIP`|內部負載平衡器的 IP 位址 (ILB) 。 此位址會在 Azure 入口網站中設定為 ILB 的前端位址。 這也是 SQL Server FCI 的 IP 位址。 您可以在 [容錯移轉叢集管理員] 中，您找到 `<SQL Server FCI/AG listener IP Address Resource Name>` 所在位置的相同內容頁面上找到該位址。|
+|`nnnnn`|您在負載平衡器的健康情況探查中設定的探查埠。 任何未使用的 TCP 連接埠都有效。|
+|SubnetMask| Cluster 參數的子網路遮罩。 它必須是 TCP IP 廣播位址： `255.255.255.255` 。| 
 
 
 設定叢集探查之後，即可在 PowerShell 中查看所有叢集參數。 執行此指令碼︰
@@ -157,7 +157,7 @@ Get-ClusterResource $IPResourceName | Get-ClusterParameter
 
 # <a name="failover-cluster-instance"></a>[容錯移轉叢集執行個體](#tab/fci)
 
-請執行下列步驟：
+執行下列步驟：
 
 1. 使用 RDP 連接到其中一個 SQL Server 叢集節點。
 1. 開啟 [容錯移轉叢集管理員]。 選取 [角色]。 請注意哪個節點擁有 SQL Server FCI 角色。
@@ -170,21 +170,21 @@ Get-ClusterResource $IPResourceName | Get-ClusterParameter
 
 # <a name="ag-listener"></a>[AG 接聽程式](#tab/ag)
 
-請執行下列步驟：
+執行下列步驟：
 
-1. 開啟[SQL Server Management Studio）](/sql/ssms/download-sql-server-management-studio-ssms)並連接到您的可用性群組接聽程式。 
+1. 開啟 [SQL Server Management Studio) ](/sql/ssms/download-sql-server-management-studio-ssms) ，並連接到您的可用性群組接聽程式。 
 
-1. 展開**物件總管**中的**Always On 可用性群組**。 
-1. 以滑鼠右鍵按一下可用性群組，然後選取 [**容錯移轉**]。 
-1. 依照 wizard 的提示，將可用性群組故障切換至次要複本。 
+1. 在**物件總管**中展開**Always On 可用性群組**。 
+1. 以滑鼠右鍵按一下可用性群組，然後選取 [ **容錯移轉**]。 
+1. 遵循 wizard 提示，將可用性群組容錯移轉至次要複本。 
 
-當複本切換角色並同時同步處理時，容錯移轉就會成功。 
+當複本切換角色且兩者皆已同步處理時，容錯移轉會成功。 
 
 ---
 
 ## <a name="test-connectivity"></a>測試連線能力
 
-若要測試連線能力，請登入相同虛擬網路中的另一部虛擬機器。 開啟**SQL Server Management Studio** ，並連接到 SQL Server FCI 名稱或可用性群組接聽程式。
+若要測試連線能力，請登入相同虛擬網路中的另一部虛擬機器。 開啟 **SQL Server Management Studio** ，然後連接到 SQL Server FCI 名稱或可用性群組接聽程式。
 
 >[!NOTE]
 >若有需要，您可[下載 SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)。
@@ -193,7 +193,7 @@ Get-ClusterResource $IPResourceName | Get-ClusterParameter
 
 ## <a name="next-steps"></a>後續步驟
 
-若要深入瞭解 Azure 中 SQL Server HADR 功能，請參閱[可用性群組](availability-group-overview.md)和[容錯移轉叢集實例](failover-cluster-instance-overview.md)。 您也可以瞭解設定環境以提供高可用性和嚴重損壞修復的[最佳作法](hadr-cluster-best-practices.md)。 
+若要深入瞭解 Azure 中 SQL Server HADR 功能，請參閱 [可用性群組](availability-group-overview.md) 和 [容錯移轉叢集實例](failover-cluster-instance-overview.md)。 您也可以瞭解設定環境以達到高可用性和嚴重損壞修復的 [最佳作法](hadr-cluster-best-practices.md) 。 
 
 
 

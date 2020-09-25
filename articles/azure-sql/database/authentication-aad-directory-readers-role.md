@@ -1,6 +1,6 @@
 ---
-title: 適用于 Azure SQL 的 Azure Active Directory 中的目錄讀取者角色
-description: Azure AD 應用程式 (服務主體) 支援 Azure SQL Database、Azure SQL 受控執行個體和 Azure Synapse Analytics 中 Azure AD 使用者建立
+title: Azure Active Directory 中適用於 Azure SQL 的 Directory 讀者角色
+description: 深入瞭解 Azure SQL Azure AD 中的目錄讀取者角色。
 ms.service: sql-db-mi
 ms.subservice: security
 ms.custom: azure-synapse
@@ -9,14 +9,14 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/14/2020
-ms.openlocfilehash: a517a4b14a64be2b9bf12270eef3d08e14d8f3c8
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 5a6fb2c1c539c5b8e353f5c3720cb9d001dcbbc9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88556230"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91277935"
 ---
-# <a name="directory-readers-role-in-azure-active-directory-for-azure-sql"></a>適用于 Azure SQL 的 Azure Active Directory 中的目錄讀取者角色
+# <a name="directory-readers-role-in-azure-active-directory-for-azure-sql"></a>Azure Active Directory 中適用於 Azure SQL 的 Directory 讀者角色
 
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
@@ -39,9 +39,9 @@ Azure Active Directory (Azure AD) 引進了 [使用雲端群組來管理 Azure A
 
 為了將 [**目錄讀取**](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers) 者角色指派給身分識別，需要具有 [全域管理員](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator) 或特殊許可權 [角色管理員](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) 許可權的使用者。 通常管理或部署 SQL Database、SQL 受控執行個體或 Azure Synapse 的使用者，可能無法存取這些高度特殊許可權的角色。 這通常會讓建立未規劃的 Azure SQL 資源的使用者變得複雜，或需要具有高特殊許可權角色成員的協助，而大型組織通常無法存取這些成員。
 
-針對 SQL 受控執行個體，必須先將 **目錄讀取器** 角色指派給受控實例識別，才能 [為受控實例設定 Azure AD 系統管理員](authentication-aad-configure.md#provision-azure-ad-admin-sql-managed-instance)。 
+針對 SQL 受控執行個體，必須先將**目錄讀者**角色指派給受控執行個體身分識別，才能[設定受控執行個體的 Azure AD 管理員](authentication-aad-configure.md#provision-azure-ad-admin-sql-managed-instance)。 
 
-設定邏輯伺服器的 Azure AD 系統管理員時，不需要為 SQL Database 或 Azure Synapse 指派 **目錄讀取** 者角色給伺服器身分識別。 不過，若要在 SQL Database 或 Azure Synapse 中代表 Azure AD 應用程式啟用 Azure AD 物件建立，則需要 **目錄讀取** 者角色。 如果未將角色指派給 SQL 邏輯伺服器身分識別，在 Azure SQL 中建立 Azure AD 使用者將會失敗。 如需詳細資訊，請參閱[使用 Azure SQL 的 Azure Active Directory 服務主體](authentication-aad-service-principal.md)。
+設定邏輯伺服器的 Azure AD 管理員時，對於 SQL Database 或 Azure Synapse，不需要將**目錄讀者**角色指派給伺服器身分識別。 不過，若要在 SQL Database 或 Azure Synapse 中代表 Azure AD 應用程式啟用 Azure AD 物件建立，則需要**目錄讀者**角色。 如果角色未指派給 SQL 邏輯伺服器身分識別，將無法在 Azure SQL 中建立 Azure AD 使用者。 如需詳細資訊，請參閱[使用 Azure SQL 的 Azure Active Directory 服務主體](authentication-aad-service-principal.md)。
 
 ## <a name="granting-the-directory-readers-role-to-an-azure-ad-group"></a>將目錄讀取者角色授與 Azure AD 群組
 
@@ -49,7 +49,7 @@ Azure Active Directory (Azure AD) 引進了 [使用雲端群組來管理 Azure A
 
 此解決方案仍然需要高許可權的使用者 (全域管理員或特殊許可權角色管理員) 建立群組，並將使用者指派為一次性的活動，但 Azure AD 群組擁有者將能夠指派其他成員繼續進行。 如此一來，未來就不需要使用高許可權的使用者來設定其 Azure AD 租使用者中的所有 SQL 資料庫、SQL 受控實例或 Azure Synapse 伺服器。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [教學課程：指派目錄讀取者角色給 Azure AD 群組和管理角色指派](authentication-aad-directory-readers-role-tutorial.md)
+> [教學課程：將目錄讀取者角色指派給 Azure AD 群組並管理角色指派](authentication-aad-directory-readers-role-tutorial.md)
