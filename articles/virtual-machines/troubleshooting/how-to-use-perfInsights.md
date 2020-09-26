@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 52cdf25b4d77fee0a7a2182e3f1ce60865caf066
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: f49ae5139dc92ec1448e5dea05be8c8c216ef91e
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90088556"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361342"
 ---
 # <a name="how-to-use-perfinsights-in-azure"></a>如何在 Azure 中使用 PerfInsights
 
@@ -259,8 +259,8 @@ Diskspd I/O 工作負載測試 (OS 磁碟 [寫入] 和集區磁碟 [讀取/寫�
 
 選取 [Findings] \(結果)**** 索引標籤。
 
-![PerfInsights 報告的螢幕擷取畫面](media/how-to-use-perfInsights/pi-finding-tab.png)
-![PerfInsights 報告的螢幕擷取畫面](media/how-to-use-perfInsights/pi-findings.png)
+![PerfInsights 報表之 [總覽] 索引標籤的螢幕擷取畫面。 ](media/how-to-use-perfInsights/pi-finding-tab.png)
+ ![PerfInsights 報表的 [儲存體] 索引標籤螢幕擷取畫面。](media/how-to-use-perfInsights/pi-findings.png)
 
 > [!NOTE] 
 > 分類為「高」的結果是可能會造成效能問題的已知問題。 分類為「中」的結果表示不一定會造成效能問題的非最佳化設定。 分類為「低」的結果是僅用來參考的資訊說明。

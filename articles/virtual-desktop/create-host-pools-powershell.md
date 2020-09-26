@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 08/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 1275eab36e21ea6befdda13e14759a30ef5398a3
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: ce3b2b30b1ed421937c11e58bc014cc740b45480
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121148"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91287282"
 ---
 # <a name="create-a-windows-virtual-desktop-host-pool-with-powershell"></a>使用 PowerShell 建立 Windows 虛擬桌面主機集區
 
@@ -109,7 +109,7 @@ $token = Get-AzWvdRegistrationInfo -ResourceGroupName <resourcegroupname> -HostP
 1. 使用建立虛擬機器時所提供的認證來[連線到虛擬機器](../virtual-machines/windows/quick-create-portal.md#connect-to-virtual-machine)。
 2. 下載並安裝 Windows 虛擬桌面代理程式。
    - 下載 [Windows 虛擬桌面代理程式](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RWrmXv)。
-   - 執行安裝程式。 當安裝程式要求您提供註冊權杖時，請輸入您從**AzWvdRegistrationInfo Cmdlet 取得**的值。
+   - 執行安裝程式。 當安裝程式要求您輸入註冊權杖時，請輸入您從 **AzWvdRegistrationInfo Cmdlet 取得** 的值。
 3. 下載並安裝 Windows 虛擬桌面代理程式開機載入器。
    - 下載 [Windows 虛擬桌面代理程式開機載入器](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RWrxrH)。
    - 執行安裝程式。
@@ -119,28 +119,28 @@ $token = Get-AzWvdRegistrationInfo -ResourceGroupName <resourcegroupname> -HostP
 
 ## <a name="update-the-agent"></a>更新代理程式
 
-如果您是在下列其中一種情況下，則需要更新代理程式：
+如果您是下列其中一種情況，您必須更新代理程式：
 
 - 您想要將先前註冊的會話遷移至新的主機集區
-- 更新之後，工作階段主機不會出現在您的主機集區中
+- 更新之後，工作階段主機未出現在您的主機集區中
 
 若要更新代理程式：
 
 1. 以系統管理員身分登入 VM。
-2. 移至 [**服務**]，然後停止**Rdagent**和**遠端桌面代理程式載入**器進程。
-3. 接下來，尋找代理程式和開機載入器 Msi。 它們會放在**C:\DeployAgent**資料夾中，或是您在安裝時所儲存的位置。
-4. 尋找下列檔案並將其卸載：
+2. 移至 [ **服務**]，然後停止 **Rdagent** 和 **遠端桌面代理程式載入** 器進程。
+3. 接下來，尋找代理程式和開機載入器 Msi。 它們會位於 **C:\DeployAgent** 資料夾中，或是您在安裝時所儲存的位置。
+4. 尋找下列檔案並將它們卸載：
      
-     - RDInfra. RDAgent。安裝程式-x64-verx. x. x
+     - RDInfra. RDAgent. verx. x. x. x. x
      - RDInfra. RDAgentBootLoader. 安裝程式-x64
 
-   若要卸載這些檔案，請在每個檔案名上按一下滑鼠右鍵，然後選取 [**卸載**]。
+   若要卸載這些檔案，請在每個檔案名上按一下滑鼠右鍵，然後選取 [ **卸載**]。
 5. （選擇性）您也可以移除下列登錄設定：
      
      - Computer \ HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\RDInfraAgent
      - Computer \ HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\RDAgentBootLoader
 
-6. 卸載這些專案之後，這應該會移除與舊主機集區的所有關聯。 如果您想要將此主機重新註冊到服務，請依照向[WIndows 虛擬桌面主機集區註冊虛擬機器](create-host-pools-powershell.md#register-the-virtual-machines-to-the-windows-virtual-desktop-host-pool)中的指示進行。
+6. 卸載這些專案之後，這應該會移除與舊主機集區的所有關聯。 如果您想要將此主機重新註冊至服務，請遵循向 [Windows 虛擬桌面主機集區註冊虛擬機器](create-host-pools-powershell.md#register-the-virtual-machines-to-the-windows-virtual-desktop-host-pool)中的指示。
 
 
 ## <a name="next-steps"></a>後續步驟

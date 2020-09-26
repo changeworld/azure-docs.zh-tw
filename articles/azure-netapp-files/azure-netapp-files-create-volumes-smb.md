@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 09/16/2020
+ms.date: 09/24/2020
 ms.author: b-juche
-ms.openlocfilehash: 6a90a4ad44bff392b5fe6cd0af13313bd98ce2a6
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: e2c487b62813bc4480786daa08666fe6471bd18d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90988315"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325703"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>建立適用於 Azure NetApp Files 的 SMB 磁碟區
 
@@ -255,7 +255,7 @@ Azure NetApp Files 支援使用 NFS 建立磁片區 (NFSv3 和 Nfsv4.1 4.1) 、S
 
         在每個容量集區中，磁碟區名稱必須是唯一的。 長度至少必須有三個字元。 您可以使用任何英數字元。   
 
-        您不可使用 `default` 做為磁碟區名稱。
+        您無法使用 `default` 或 `bin` 做為磁片區名稱。
 
     * **容量集區**  
         指定您想要在其中建立磁碟區的容量集區。
@@ -264,6 +264,11 @@ Azure NetApp Files 支援使用 NFS 建立磁片區 (NFSv3 和 Nfsv4.1 4.1) 、S
         指定配置給磁碟區的邏輯儲存體大小。  
 
         [可用配額] 欄位會顯示所選容量集區中可用來建立新磁碟區的未使用空間量。 新磁碟區的大小不可超過可用配額。  
+
+    * **輸送量 (MiB/秒) **   
+        如果磁片區是在手動 QoS 容量集區中建立的，請指定您要用於磁片區的輸送量。   
+
+        如果磁片區是建立在自動 QoS 容量集區中，則此欄位中顯示的值會是 (配額 x 服務層級輸送量) 。   
 
     * **虛擬網路**  
         指定您要從中存取磁碟區的 Azure 虛擬網路 (VNet)。  

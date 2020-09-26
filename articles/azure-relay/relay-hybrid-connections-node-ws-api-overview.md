@@ -1,21 +1,21 @@
 ---
 title: Azure 轉送 Node API 概觀 | Microsoft Docs
-description: 本文概要說明 Azure 轉送服務的 Node.js API。 它也會說明如何使用 hyco-ws-ws 節點套件。
+description: 本文提供 Azure 轉送服務之 Node.js API 的總覽。 它也會示範如何使用 hyco-ws ws 節點套件。
 ms.topic: article
 ms.date: 06/23/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 67d818a95d63b3097f81f799a287fb4c48a1cfb7
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.custom: devx-track-js
+ms.openlocfilehash: 558f49c09203192ff4cbb1af392eaeef8d705c94
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386243"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91263482"
 ---
 # <a name="relay-hybrid-connections-node-api-overview"></a>轉送混合式連線 Node API 概觀
 
 ## <a name="overview"></a>概觀
 
-Azure 轉送混合式連線的 [`hyco-ws`](https://www.npmjs.com/package/hyco-ws) 節點封裝建置於並擴充[' ws '](https://www.npmjs.com/package/ws) NPM 封裝。 此封裝重新匯出該基本封裝的所有匯出，並新增新的匯出，可啟用與 Azure 轉送服務混合式連線功能整合。 
+Azure 轉送混合式連線的 [`hyco-ws`](https://www.npmjs.com/package/hyco-ws) 節點封裝已建立並擴充 [' ws '](https://www.npmjs.com/package/ws) NPM 套件。 此封裝重新匯出該基本封裝的所有匯出，並新增新的匯出，可啟用與 Azure 轉送服務混合式連線功能整合。 
 
 現有的應用程式 `require('ws')` 可以改為搭配使用這個套件與 `require('hyco-ws')`，這也會啟用混合式案例，其中應用程式可以從「防火牆內部」及透過混合式連線，在本機接聽 WebSocket 連線，全部都在相同的時間。
   
@@ -142,7 +142,7 @@ function(socket)
 接受新的 WebSocket 連線時就會發出。 物件類型是 `ws.WebSocket`，與基本封裝相同。
 
 
-##### <a name="error"></a>錯誤
+##### <a name="error"></a>error
 
 ```JavaScript
 function(error)

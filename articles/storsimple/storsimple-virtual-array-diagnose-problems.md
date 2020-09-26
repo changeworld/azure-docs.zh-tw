@@ -1,6 +1,6 @@
 ---
 title: 針對 StorSimple Virtual Array 進行疑難排解 | Microsoft Docs
-description: 描述 StorSimple 裝置管理員診斷功能，並說明如何使用它來針對 StorSimple Virtual Array 進行疑難排解。
+description: 瞭解 StorSimple 裝置管理員服務中提供的自助疑難排解功能。
 services: storsimple
 documentationcenter: ''
 author: manuaery
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
-ms.openlocfilehash: 684554c5eaf3f5fa2701bad2d49c082595552adb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6cb78a7042ca3acbb27f510207783b97f733cfb0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515191"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91249530"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-troubleshoot-the-storsimple-virtual-array"></a>使用 StorSimple 裝置管理員服務來針對 StorSimple Virtual Array 進行疑難排解
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 StorSimple 裝置管理員在服務摘要刀鋒視窗內提供 [診斷並解決問題]**** 設定，並醒目提示虛擬陣列可能經常發生的一些問題，以及如何解決。 本教學課程介紹 StorSimple 裝置管理員服務內提供的自助式疑難排解功能。
 

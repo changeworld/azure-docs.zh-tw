@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.date: 03/05/2020
-ms.openlocfilehash: bd77af133b88e1ba93054dbb7e0f896d8d418f89
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 71ac7793fe5226215c5d4eab98f84dba356b114c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90893551"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91275960"
 ---
 # <a name="git-integration-for-azure-machine-learning"></a>Azure Machine Learning 的 Git 整合
 
@@ -35,13 +35,95 @@ Azure Machine Learning 為工作區中的所有使用者提供共用檔案系統
 
 您可以將任何可驗證的 Git 存放庫複製到 (GitHub、Azure Repos、BitBucket 等 ) 
 
-如需如何使用 Git CLI 的指南，請參閱[這裡。](https://guides.github.com/introduction/git-handbook/)
+如需複製的詳細資訊，請參閱 [如何使用 GIT CLI](https://guides.github.com/introduction/git-handbook/)的指南。
+
+## <a name="authenticate-your-git-account-with-ssh"></a>使用 SSH 驗證您的 Git 帳戶
+### <a name="generate-a-new-ssh-key"></a>產生新的 SSH 金鑰
+1) 在 [Azure Machine Learning 筆記本] 索引標籤中[，開啟終端機視窗](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#terminal)。
+
+2) 貼上下列文字，並以您的電子郵件地址取代。
+
+```bash
+ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+```
+
+這會使用提供的電子郵件作為標籤，來建立新的 ssh 金鑰。
+
+```
+> Generating public/private rsa key pair.
+```
+
+3) 當系統提示您「輸入要用來儲存金鑰的檔案」時，請按 Enter。 這會接受預設檔案位置。
+
+4) 確認預設位置是 [/home/azureuser/.ssh]，然後按 enter。 否則，請指定 '/home/azureuser/.ssh ' 位置。
+
+> [!TIP]
+> 請確定 SSH 金鑰儲存在 '/home/azureuser/.ssh ' 中。 只有計算實例的擁有者可以存取此檔案儲存在計算實例上
+
+```
+> Enter a file in which to save the key (/home/azureuser/.ssh/id_rsa): [Press enter]
+```
+
+5) 在提示字元中，輸入安全的複雜密碼。 建議您將複雜密碼新增至 SSH 金鑰，以提高安全性
+
+```
+> Enter passphrase (empty for no passphrase): [Type a passphrase]
+> Enter same passphrase again: [Type passphrase again]
+```
+
+### <a name="add-the-public-key-to-git-account"></a>將公開金鑰新增至 Git 帳戶
+1) 在終端機視窗中，複製公開金鑰檔案的內容。 如果您重新命名了金鑰，請將 id_rsa .pub 取代為公開金鑰檔名稱。
+
+```bash
+cat ~/.ssh/id_rsa.pub
+```
+> [!TIP]
+> **在終端機中複製並貼上**
+> * Windows： `Ctrl-Insert` 複製並使用 `Ctrl-Shift-v` 或 `Shift-Insert` 貼上。
+> * Mac 作業系統：`Cmd-c` 進行複製，`Cmd-v` 即可貼上。
+> * FireFox/IE 可能無法正確支援剪貼簿權限。
+
+2) 選取並複製剪貼簿中的金鑰輸出。
+
++ [GitHub](https://docs.github.com/github/authenticating-to-github/adding-a-new-ssh-key-to-your-github-account)
+
++ [GitLab](https://docs.gitlab.com/ee/ssh/#adding-an-ssh-key-to-your-gitlab-account)
+
++ [Azure DevOps](https://docs.microsoft.com/azure/devops/repos/git/use-ssh-keys-to-authenticate?view=azure-devops#step-2--add-the-public-key-to-azure-devops-servicestfs)  從 **步驟 2**開始。
+
++ [BitBucket](https://support.atlassian.com/bitbucket-cloud/docs/set-up-an-ssh-key/#SetupanSSHkey-ssh2)。 從 **步驟 4**開始。
+
+### <a name="clone-the-git-repository-with-ssh"></a>使用 SSH 複製 Git 存放庫
+
+1) 從 Git 存放庫複製 SSH Git 複製 URL。
+
+2) 將 url 貼到 `git clone` 以下命令，以使用您的 SSH git 存放庫 url。 這看起來會像這樣：
+
+```bash
+git clone git@example.com:GitUser/azureml-example.git
+Cloning into 'azureml-example'...
+```
+
+您將會看到如下的回應：
+
+```bash
+The authenticity of host 'example.com (192.30.255.112)' can't be established.
+RSA key fingerprint is SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added 'github.com,192.30.255.112' (RSA) to the list of known hosts.
+```
+
+SSH 可能會顯示伺服器的 SSH 指紋，並要求您進行驗證。 您應確認顯示的指紋符合 SSH 公開金鑰頁面中的其中一個指紋。
+
+SSH 會在連線至未知的主機時顯示此指紋，以防止 [攔截式攻擊](https://technet.microsoft.com/library/cc959354.aspx)。 一旦您接受主機的指紋，除非指紋變更，否則 SSH 不會再次提示您。
+
+3) 當系統詢問您是否要繼續連接時，請輸入 `yes` 。 Git 將複製存放庫，並設定來源遠端以使用 SSH 連線，以供未來的 Git 命令使用。
 
 ## <a name="track-code-that-comes-from-git-repositories"></a>追蹤來自 Git 存放庫的程式碼
 
 當您從 Python SDK 或 Machine Learning CLI 提交定型回合時，定型模型所需的檔案會上傳至您的工作區。 如果 `git` 您的開發環境中有可用的命令，上傳程式會使用它來檢查檔案是否儲存在 git 存放庫中。 如果是，則您的 git 存放庫的資訊也會隨著定型回合的一部分上傳。 這項資訊會儲存在定型執行的下列屬性中：
 
-| 屬性 | 用來取得值的 Git 命令 | 描述 |
+| 屬性 | 用來取得值的 Git 命令 | 說明 |
 | ----- | ----- | ----- |
 | `azureml.git.repository_uri` | `git ls-remote --get-url` | 您的存放庫複製來源的 URI。 |
 | `mlflow.source.git.repoURL` | `git ls-remote --get-url` | 您的存放庫複製來源的 URI。 |
@@ -110,8 +192,8 @@ run.properties['azureml.git.commit']
 az ml run list -e train-on-amlcompute --last 1 -w myworkspace -g myresourcegroup --query '[].properties'
 ```
 
-如需詳細資訊，請參閱 [az ml 執行](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest) 參考檔。
+如需詳細資訊，請參閱 [az ml 執行](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest&preserve-view=true) 參考檔。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [使用計算目標來將模型定型](how-to-set-up-training-targets.md)

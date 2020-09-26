@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 0ff76ea3bd39f31880d0140e182ad99f293689e6
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f539786de589dbab3a191a5343ba315349533447
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505358"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360985"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-classic-cloud-services"></a>將客體作業系統計量傳送至 Azure 監視器計量存放區的傳統雲端服務 
 
@@ -26,15 +26,15 @@ ms.locfileid: "86505358"
 
 本文中所述的程序僅適用於 Azure 雲端服務中的效能計數器。 不適合用於其他自訂計量。 
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
-- 您必須是 Azure 訂用帳戶的[服務管理員或共同管理員](../../cost-management-billing/manage/add-change-subscription-administrator.md)。 
+- 您必須是 Azure 訂用 [帳戶的服務管理員或共同管理員](../../cost-management-billing/manage/add-change-subscription-administrator.md) 。 
 
 - 您必須先向 [Microsoft.Insights](../../azure-resource-manager/management/resource-providers-and-types.md) 註冊您的訂用帳戶。 
 
 - 您需要安裝 [Azure PowerShell](/powershell/azure) 或 [Azure Cloud Shell](../../cloud-shell/overview.md)。
 
-- 您的雲端服務必須位於[支援自訂計量的區域](metrics-custom-overview.md#supported-regions)中。
+- 您的雲端服務必須位於 [支援自訂計量的區域](metrics-custom-overview.md#supported-regions)中。
 
 ## <a name="provision-a-cloud-service-and-storage-account"></a>佈建雲端服務與儲存體帳戶 
 
@@ -46,7 +46,7 @@ ms.locfileid: "86505358"
 
 ## <a name="create-a-service-principal"></a>建立服務主體 
 
-使用[使用入口網站建立可存取資源的 Azure Active Directory 應用程式和服務主體](../../active-directory/develop/howto-create-service-principal-portal.md)中的指示，在您的 Azure Active Directory 租使用者中建立服務主體。 進行此流程時，請注意下列事項： 
+使用入口網站中的指示建立 [可存取資源的 Azure Active Directory 應用程式和服務主體](../../active-directory/develop/howto-create-service-principal-portal.md)，以在您的 Azure Active Directory 租使用者中建立服務主體。 進行此流程時，請注意下列事項： 
 
 - 您可以將任何 URL 填入為登入 URL。  
 - 為此應用程式建立新用戶端密碼。  
@@ -173,9 +173,9 @@ Set-AzureServiceDiagnosticsExtension -ServiceName <classicCloudServiceName> -Sto
 
 1. 前往 Azure 入口網站。 
 
-   ![計量 Azure 入口網站](./media/collect-custom-metrics-guestos-vm-cloud-service-classic/navigate-metrics.png)
+   ![螢幕擷取畫面顯示 [監視] Azure 入口網站，然後選取 [計量]。](./media/collect-custom-metrics-guestos-vm-cloud-service-classic/navigate-metrics.png)
 
-2. 在左側功能表上，選取 [**監視]。**
+2. 在左側功能表上選取 [ **監視]。**
 
 3. 在 [監視]**** 刀鋒視窗上，選取 [計量預覽]**** 索引標籤。
 
@@ -183,11 +183,11 @@ Set-AzureServiceDiagnosticsExtension -ServiceName <classicCloudServiceName> -Sto
 
 5. 在 [命名空間] 下拉式功能表中，選取 [ **azure**]。 
 
-6. 在 [計量] 下拉式功能表中，選取 [ **Memory\committed bytes 使用中的位元組**]。 
+6. 在 [計量] 下拉式功能表中，選取 [ **Memory\committed bytes 使用的位元組**]。 
 
 您可使用維度篩選與分割功能，檢視特定角色或角色執行個體所使用的記憶體總數。 
 
- ![計量 Azure 入口網站](./media/collect-custom-metrics-guestos-vm-cloud-service-classic/metrics-graph.png)
+ ![螢幕擷取畫面：顯示計量資料。](./media/collect-custom-metrics-guestos-vm-cloud-service-classic/metrics-graph.png)
 
 ## <a name="next-steps"></a>後續步驟
 

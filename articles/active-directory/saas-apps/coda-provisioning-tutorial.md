@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/31/2020
 ms.author: Zhchia
-ms.openlocfilehash: 95ee630c1190167227a4ab3514a0c36db0401e45
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ce70a4df50be9004182e80711de449bab146a800
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91273359"
+ms.locfileid: "91360900"
 ---
 # <a name="tutorial-configure-coda-for-automatic-user-provisioning"></a>教學課程：設定 Coda 來自動布建使用者
 
@@ -93,7 +93,7 @@ Azure AD 布建服務可讓您根據應用程式的指派，或根據使用者�
 
 5. 在 [ **管理員認證** ] 區段下，輸入您稍早在步驟2中取出的 Coda 租使用者 URL 和秘密權杖。 按一下 [ **測試連接** ] 以確保 Azure AD 可以連線至 Coda。 如果連接失敗，請確定您的 Coda 帳戶具有系統管理員許可權，然後再試一次。
 
-    ![佈建](./media/coda-provisioning-tutorial/provisioning.png)
+    ![螢幕擷取畫面顯示 [管理認證] 對話方塊，您可以在其中輸入租使用者 U R L 和秘密權杖。](./media/coda-provisioning-tutorial/provisioning.png)
 
 6. 在 [通知電子郵件] 欄位中，輸入應該收到佈建錯誤通知的個人或群組電子郵件地址，然後選取 [發生失敗時傳送電子郵件通知] 核取方塊。
 

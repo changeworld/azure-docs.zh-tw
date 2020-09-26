@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/13/2020
 ms.author: Zhchia
-ms.openlocfilehash: 5f549cce9116975521675e9e38c9793f1209862c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 73f560ccf7ba910ce9077f2eff2d2bdb90736cc2
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91333455"
+ms.locfileid: "91361257"
 ---
 # <a name="tutorial-configure-sap-analytics-cloud-for-automatic-user-provisioning"></a>教學課程：設定 SAP Analytics Cloud 來自動布建使用者
 
@@ -109,7 +109,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
 5. 在 [管理員認證] 區段下，輸入稍早在 [租用戶 URL] 中擷取的租用戶 URL 值。 輸入稍早在 **秘密權杖**中取出的存取權杖值。 按一下 [ **測試連接** ] 以確保 Azure AD 可以連線至 InVision。 如果連接失敗，請確定您的 SAP Analytics Cloud 帳戶具有系統管理員許可權，然後再試一次。
 
-    ![佈建](./media/sap-analytics-cloud-provisioning-tutorial/provisioning.png)
+    ![螢幕擷取畫面顯示 [管理認證] 對話方塊，您可以在其中輸入租使用者 U R L 和秘密權杖。](./media/sap-analytics-cloud-provisioning-tutorial/provisioning.png)
 
 6. 在 [通知電子郵件] 欄位中，輸入應該收到佈建錯誤通知的個人或群組電子郵件地址，然後選取 [發生失敗時傳送電子郵件通知] 核取方塊。
 

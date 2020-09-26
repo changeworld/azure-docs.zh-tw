@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: wolfma
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3b9a491f7546fbaa8722498b164bfa56353dfcfc
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: fe864212eaccb67335586ef8b25049529ab36b81
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89050177"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360747"
 ---
 # <a name="how-to-use-batch-transcription"></a>如何使用批次轉譯
 
@@ -41,9 +41,9 @@ ms.locfileid: "89050177"
 批次轉譯作業會以最大量的方式進行排程。
 您無法預估工作何時會變更為「執行中」狀態，但它應該會在正常系統載入的幾分鐘內發生。 一旦處於執行中狀態，轉譯的速度會比音訊執行時間的播放速度快。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-如同語音服務的所有功能，您可以依照我們的[快速入門指南](get-started.md)從 [Azure 入口網站](https://portal.azure.com)建立訂用帳戶金鑰。
+如同語音服務的所有功能，您可以依照我們的[快速入門指南](overview.md#try-the-speech-service-for-free)從 [Azure 入口網站](https://portal.azure.com)建立訂用帳戶金鑰。
 
 >[!NOTE]
 > 需要適用于語音服務的標準訂用帳戶 (S0) ，才能使用批次轉譯。 免費的訂用帳戶金鑰 (F0) 無法運作。 如需詳細資訊，請參閱 [定價和限制](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)。
@@ -63,7 +63,7 @@ ms.locfileid: "89050177"
 針對身歷聲音訊串流，會在轉譯期間分割左邊和右邊的通道。 正在為每個通道建立 JSON 結果檔。
 若要建立已排序的最終文字記錄，請使用每個語句所產生的時間戳記。
 
-### <a name="configuration"></a>組態
+### <a name="configuration"></a>設定
 
 設定參數會以 JSON 形式提供 (一或多個個別檔案) ：
 

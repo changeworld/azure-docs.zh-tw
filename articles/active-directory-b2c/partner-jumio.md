@@ -11,24 +11,24 @@ ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 36a402669f8af465a1cedbf1585e16c972b18015
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 4e5becdd026b0a1c9e848b183ebeee5833654461
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89293110"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91259266"
 ---
 # <a name="tutorial-for-configuring-jumio-with-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 設定 Jumio 的教學課程
 
 在此範例教學課程中，我們會提供有關如何整合 Azure Active Directory B2C (Azure AD B2C) 與 [Jumio](https://www.jumio.com/)的指引。 Jumio 是一項識別碼驗證服務，可啟用即時自動化識別碼驗證，以協助保護客戶資料。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要開始使用，您需要：
 
 - Azure AD 訂用帳戶。 如果沒有訂用帳戶，您可以取得[免費帳戶](https://azure.microsoft.com/free/)。
 
-- 連結至 Azure 訂用帳戶的 [Azure AD B2C 租](https://review.docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant) 使用者。
+- 連結至 Azure 訂用帳戶的 [Azure AD B2C 租](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant) 使用者。
 
 ## <a name="scenario-description"></a>案例描述
 
@@ -46,7 +46,7 @@ Jumio 整合包含下列元件：
 
 ![Azure AD B2C 與 Jumio 整合的架構圖表。](./media/partner-jumio/jumio-architecture-diagram.png)
 
-|步驟 | 描述 |
+|步驟 | 說明 |
 |:-----| :-----------|
 | 1. | 使用者抵達頁面，以登入或註冊以建立帳戶。 Azure AD B2C 會收集使用者屬性。
 | 2. | Azure AD B2C 會呼叫中介層 API，並傳遞使用者屬性。
@@ -104,7 +104,7 @@ Jumio 整合包含下列元件：
 
 您可以 [在 Azure App Service 中設定應用程式設定](https://docs.microsoft.com/azure/app-service/configure-common#configure-app-settings)。 使用這個方法，您可以安全地進行設定，而不需要將它們簽入存放庫。 您必須提供下列設定給 Rest API：
 
-| 應用程式設定 | 來源 | 備註 |
+| 應用程式設定 | 來源 | 注意 |
 | :-------- | :------------| :-----------|
 |JumioSettings:AuthUsername | Jumio 帳戶設定 |     |
 |JumioSettings:AuthPassword | Jumio 帳戶設定 |     |
@@ -164,7 +164,7 @@ Jumio 整合包含下列元件：
 
 5. 建立使用者屬性之後，會在流程期間呼叫 Jumio 服務。 如果流程未完成，請檢查使用者是否未儲存在目錄中。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如需詳細資訊，請參閱下列文章：
 

@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.date: 09/16/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: d80a1ba515aa137eba57051f080b4a2b4f311072
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 8406074933489e53e9235a8a6a05b68f1dd42a85
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90708576"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91259131"
 ---
 # <a name="tutorial-for-configuring-saviynt-with-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 設定 Saviynt 的教學課程
 
-在此範例教學課程中，我們會提供有關如何將 Azure Active Directory (AD) B2C 與 [Saviynt](https://saviynt.com/)整合的指引。 Saviynt 的安全性管理員平臺可在單一整合平臺中，提供現今企業所需的可見度、安全性和治理。 Saviynt 納入了應用程式風險和治理、基礎結構管理、特殊許可權帳戶管理和客戶風險分析。
+在此範例教學課程中，我們會提供有關如何將 Azure Active Directory (AD) B2C 與 [Saviynt](https://saviynt.com/integrations/azure-ad/for-b2c/)整合的指引。 Saviynt 的安全性管理員平臺可在單一整合平臺中，提供現今企業所需的可見度、安全性和治理。 Saviynt 納入了應用程式風險和治理、基礎結構管理、特殊許可權帳戶管理和客戶風險分析。
 
 在此範例教學課程中，您將設定 Saviynt，以針對 Azure AD B2C 使用者提供更精細的存取控制型委派系統管理。 Saviynt 會執行下列檢查，以判斷使用者是否有權管理 Azure AD B2C 的使用者。
 
@@ -30,7 +30,7 @@ ms.locfileid: "90708576"
 
 - 資料層級安全性，以判斷使用者是否可以對特定使用者執行特定作業。 例如，UK 地區的服務台系統管理員只能管理 UK 使用者。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要開始使用，您需要：
 
@@ -46,7 +46,7 @@ Saviynt 整合包含下列元件：
 
 - [Azure AD B2C](https://azure.microsoft.com/services/active-directory/external-identities/b2c/) –企業對客戶身分識別即服務，可讓您自訂客戶註冊、登入及管理其設定檔的方式。
 
-- [Saviynt](https://saviynt.com/) –身分識別管理平臺，可為使用者生命週期管理和 Azure AD B2C 使用者的存取治理提供更細緻的委派系統管理。  
+- [Saviynt](https://saviynt.com/integrations/azure-ad/for-b2c/) –身分識別管理平臺，可為使用者生命週期管理和 Azure AD B2C 使用者的存取治理提供更細緻的委派系統管理。  
 
 - [MICROSOFT GRAPH api](https://docs.microsoft.com/graph/use-the-api) –此 Api 提供 Saviynt 的介面，以管理 Azure AD B2C 中的 Azure AD B2C 使用者和其存取權。
 
@@ -54,7 +54,7 @@ Saviynt 整合包含下列元件：
 
 ![顯示 saviynt 架構圖表的影像](./media/partner-saviynt/saviynt-architecture-diagram.png)
 
-|步驟 | 描述 |
+|步驟 | 說明 |
 |:-----| :-----------|
 | 1. | 委派的系統管理員會透過 Saviynt 啟動管理 Azure AD B2C 使用者操作。
 | 2. | 如果委派的系統管理員可以進行特定作業，Saviynt 會以其授權引擎進行驗證。
@@ -73,7 +73,7 @@ Saviynt 整合包含下列元件：
 
 ## <a name="configure-azure-ad-b2c-with-saviynt"></a>使用 Saviynt 設定 Azure AD B2C
 
-### <a name="creating-an-azure-ad-application-for-saviynt"></a>建立 Saviynt 的 Azure AD 應用程式
+### <a name="create-an-azure-ad-application-for-saviynt"></a>建立 Saviynt 的 Azure AD 應用程式
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/#home)。
 
@@ -108,7 +108,7 @@ Saviynt 整合包含下列元件：
 
 15. 需要租使用者識別碼、用戶端識別碼和用戶端密碼，才能完成 Saviynt 中的設定。
 
-### <a name="enabling-saviynt-to-delete-users"></a>啟用 Saviynt 以刪除使用者
+### <a name="enable-saviynt-to-delete-users"></a>啟用 Saviynt 以刪除使用者
 
 下列步驟說明如何在 Azure AD B2C 中啟用 Saviynt 以執行使用者刪除作業。
 
@@ -129,7 +129,7 @@ Add-MsolRoleMember -RoleName "Company Administrator" -RoleMemberType ServicePrin
 
 流覽至您的 Saviynt 應用程式租使用者，並測試使用者生命週期管理和存取治理使用案例。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 如需詳細資訊，請參閱下列文章：
 

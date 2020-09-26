@@ -3,12 +3,12 @@ title: IoT Edge 版本資訊的即時影片分析-Azure
 description: 本主題提供有關 IoT Edge 版本、增強功能、bug 修正和已知問題的即時影片分析版本資訊。
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: 0bdf11cd99d99067dc53dde7d55fd37b96a382c9
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: e33a62891f9503a4f2ff907585316c3737c876e6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90882726"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91250465"
 ---
 # <a name="live-video-analytics-on-iot-edge-release-notes"></a>IoT Edge 版本資訊的即時影片分析
 
@@ -23,7 +23,7 @@ ms.locfileid: "90882726"
 
 <hr width=100%>
 
-## <a name="september-22-2020"></a>2020年9月22日
+## <a name="september-22-2020"></a>2020 年 9 月 22 日
 
 此課程模組的2020年9月更新版本戳記為：
 
@@ -36,7 +36,7 @@ mcr.microsoft.com/media/live-video-analytics:1.0.4
 
 ### <a name="module-updates"></a>模組更新
 
-* 新的圖形擴充功能節點， [MediaGraphCognitiveServicesVisionExtension](custom-vision-tutorial.md) 可與「 [空間分析」模組](spatial-analysis-tutorial.md) 整合 (預覽版) 自認知服務。
+* 新的圖形擴充功能節點， [MediaGraphCognitiveServicesVisionExtension](spatial-analysis-tutorial.md) 可與認知服務中的 [空間分析](https://docs.microsoft.com/legal/cognitive-services/computer-vision/intro-to-spatial-analysis-public-preview) (預覽版) 模組整合。
 * 已新增 Linux ARM64 裝置的支援-使用 [手動步驟](deploy-iot-edge-device.md) 部署到這類裝置。
 
 ### <a name="documentation-updates"></a>文件更新

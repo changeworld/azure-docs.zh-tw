@@ -1,6 +1,6 @@
 ---
 title: Azure AD Connect：針對 Azure Active Directory Connect 強制執行 TLS 1.2| Microsoft Docs
-description: 本文章列出 Azure AD Connect 和 Azure AD Sync 的所有版本
+description: 瞭解如何強制 Azure AD Connect 伺服器僅使用傳輸層安全性 (TLS) 1.2。
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -15,12 +15,12 @@ ms.date: 10/28/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ff5c75785622b43e66b808009c4674d4b2f2b50
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2c610eb8fe6caf308117fa7adfc6e2f2a35c6352
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78300843"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325890"
 ---
 # <a name="tls-12-enforcement-for-azure-ad-connect"></a>針對 Azure AD Connect 強制執行 TLS 1.2
 
@@ -34,11 +34,11 @@ ms.locfileid: "78300843"
 
 
 ### <a name="enable-tls-12"></a>啟用 TLS 1.2
-- [HKEY_LOCAL_MACHINE \SOFTWARE\WOW6432Node\Microsoft \\ 。NETFramework\v4.0.30319
-  - "SystemDefaultTlsVersions" = dword：00000001
+- [HKEY_LOCAL_MACHINE \SOFTWARE\WOW6432Node\Microsoft \\ 。NETFramework\v4.0.30319]
+  - ">systemdefaulttlsversions" = dword：00000001
   - "SchUseStrongCrypto" = dword： .0000001
-- [HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft \\ 。NETFramework\v4.0.30319
-  - "SystemDefaultTlsVersions" = dword：00000001
+- [HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft \\ 。NETFramework\v4.0.30319]
+  - ">systemdefaulttlsversions" = dword：00000001
   - "SchUseStrongCrypto"=dword:00000001
 - [HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2 \ 伺服器]
   - "Enabled" = dword：00000001
@@ -80,11 +80,11 @@ ms.locfileid: "78300843"
 ```
 
 ### <a name="disable-tls-12"></a>停用 TLS 1.2
-- [HKEY_LOCAL_MACHINE \SOFTWARE\WOW6432Node\Microsoft \\ 。NETFramework\v4.0.30319
-  - "SystemDefaultTlsVersions" = dword：00000000
-  - "SchUseStrongCrypto" = dword：0000000
-- [HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft \\ 。NETFramework\v4.0.30319
-  - "SystemDefaultTlsVersions" = dword：00000000
+- [HKEY_LOCAL_MACHINE \SOFTWARE\WOW6432Node\Microsoft \\ 。NETFramework\v4.0.30319]
+  - ">systemdefaulttlsversions" = dword：00000000
+  - "SchUseStrongCrypto" = dword： .0000000..。n
+- [HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft \\ 。NETFramework\v4.0.30319]
+  - ">systemdefaulttlsversions" = dword：00000000
   - "SchUseStrongCrypto" = dword：00000000
 - [HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2 \ 伺服器]
   - "Enabled" = dword：00000000

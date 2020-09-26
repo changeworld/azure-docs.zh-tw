@@ -3,14 +3,14 @@ title: Azure 自動化中的 Runbook 執行
 description: 本文提供在 Azure 自動化中處理 Runbook 的概觀。
 services: automation
 ms.subservice: process-automation
-ms.date: 04/14/2020
+ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 6db4ceed0121f072104312ac24abb13fb241737b
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: b5dd445ec4dd9014f107c0a349deed6cde47f968
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186039"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325822"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Azure 自動化中的 Runbook 執行
 
@@ -39,7 +39,7 @@ Azure 自動化中的 Runbook 可以在 Azure 沙箱或[混合式 Runbook 背景
 您也可以使用[混合式 Runbook 背景工作角色](automation-hybrid-runbook-worker.md)，直接在裝載角色的電腦上執行 Runbook，以及針對環境中的本機資源執行 Runbook。 Azure 自動化會儲存並管理 Runbook，然後將 Runbook 傳遞至一或多個指派的電腦。
 
 >[!NOTE]
->若要在 Linux 混合式 Runbook 背景工作角色上執行，您的指令碼必須經過簽署，也要相應地設定背景工作角色。 或者，[必須關閉簽章驗證](automation-linux-hrw-install.md#turn-off-signature-validation)。 
+>若要在 Linux 混合式 Runbook 背景工作角色上執行，您的指令碼必須經過簽署，也要相應地設定背景工作角色。 或者，[必須關閉簽章驗證](automation-linux-hrw-install.md#turn-off-signature-validation)。
 
 下表列出一些 Runbook 執行工作，並列出針對各 Runbook 建議的執行環境。
 
@@ -56,12 +56,18 @@ Azure 自動化中的 Runbook 可以在 Azure 沙箱或[混合式 Runbook 背景
 |使用具有特定需求的模組| Hybrid Runbook Worker|部份範例如下：</br> WinSCP - 相依於 winscp.exe </br> IIS 系統管理 - 相依於啟用或管理 IIS|
 |使用安裝程式來安裝模組|Hybrid Runbook Worker|沙箱的模組必須支援複製。|
 |使用需要 .NET Framework 4.7.2 以外版本的 Runbook 或模組|Hybrid Runbook Worker|Azure 沙箱支援 .NET Framework 4.7.2，不支援升級至不同版本。|
-|執行需要提高權限的指令碼|Hybrid Runbook Worker|沙箱不允許提高權限。 使用混合式 Runbook 背景工作角色時，您可以關閉 UAC，並使用 [Invoke-Command](/powershell/module/microsoft.powershell.core/invoke-command?view=powershell-7) 來執行需要提高權限的命令。|
+|執行需要提高權限的指令碼|Hybrid Runbook Worker|沙箱不允許提高權限。 使用混合式 Runbook 背景工作角色時，您可以關閉 UAC，並使用 [Invoke-Command](/powershell/module/microsoft.powershell.core/invoke-command) 來執行需要提高權限的命令。|
 |執行需要存取 Windows Management Instrumentation (WMI) 的指令碼|Hybrid Runbook Worker|在雲端的沙箱中執行的作業無法存取 WMI 提供者。 |
+
+## <a name="temporary-storage-in-a-sandbox"></a>沙箱中的暫存儲存體
+
+如果您需要建立暫存檔案做為 runbook 邏輯的一部分，您可以使用 Temp 資料夾 (也就是在 azure `$env:TEMP` 沙箱中針對在 azure 中執行的 runbook) 。 唯一的限制是，您不能使用超過 1 GB 的磁碟空間，也就是每個沙箱的配額。 使用 PowerShell 工作流程時，此案例可能會造成問題，因為 PowerShell 工作流程會使用檢查點，而且可以在不同的沙箱中重試腳本。
+
+使用混合式沙箱，您可以 `C:\temp` 根據混合式 Runbook 背景工作角色上的儲存體可用性來使用。 不過，根據 Azure VM 的建議，您不應該使用 Windows 或 Linux 上的 [暫存磁片](../virtual-machines/managed-disks-overview.md#temporary-disk) 來取得需要保存的資料。
 
 ## <a name="resources"></a>資源
 
-您的 Runbook 必須包含邏輯來處理[資源](/rest/api/resources/resources)，例如 VM、網路和網路上的資源。 資源繫結至 Azure 訂用帳戶，而 Runbook 需要適當的認證才能存取任何資源。 關於在 Runbook 中處理資源的範例，請參閱[處理資源](manage-runbooks.md#handle-resources)。 
+您的 Runbook 必須包含邏輯來處理[資源](/rest/api/resources/resources)，例如 VM、網路和網路上的資源。 資源繫結至 Azure 訂用帳戶，而 Runbook 需要適當的認證才能存取任何資源。 關於在 Runbook 中處理資源的範例，請參閱[處理資源](manage-runbooks.md#handle-resources)。
 
 ## <a name="security"></a>安全性
 
@@ -79,18 +85,18 @@ Azure [訂用帳戶](/office365/enterprise/subscriptions-licenses-accounts-and-t
 
 ## <a name="azure-monitor"></a>Azure 監視器
 
-Azure 自動化會使用[Azure 監視器](../azure-monitor/overview.md)來監視其機器作業。 這些作業需要 Log Analytics 工作區和 [Log Analytics 代理程式](../azure-monitor/platform/log-analytics-agent.md)。
+Azure 自動化利用 [Azure 監視器](../azure-monitor/overview.md) 來監視其電腦操作。 作業需要 Log Analytics 工作區和 [Log analytics 代理程式](../azure-monitor/platform/log-analytics-agent.md)。
 
 ### <a name="log-analytics-agent-for-windows"></a>適用於 Windows 的 Log Analytics 代理程式
 
-[適用於 Windows 的 Log Analytics 代理程式](../azure-monitor/platform/agent-windows.md)可搭配 Azure 監視器，一起管理 Windows VM 和實體電腦。 這些機器可以在 Azure 或非 Azure 環境中執行，例如本地資料中心。 您必須將代理程式設定為向一或多個 Log Analytics 工作區報告。 
+[適用於 Windows 的 Log Analytics 代理程式](../azure-monitor/platform/agent-windows.md)可搭配 Azure 監視器，一起管理 Windows VM 和實體電腦。 這些機器可以在 Azure 或非 Azure 環境中執行，例如本地資料中心。 您必須將代理程式設定為向一或多個 Log Analytics 工作區報告。
 
 >[!NOTE]
 >適用於 Windows 的 Log Analytics 代理程式先前稱為 Microsoft Monitoring Agent (MMA)。
 
 ### <a name="log-analytics-agent-for-linux"></a>Log Analytics Linux 代理程式
 
-[適用於 Linux 的 Log Analytics 代理程式](../azure-monitor/platform/agent-linux.md)運作方式類似適用於 Windows 的代理程式，但會將 Linux 電腦連線到 Azure 監視器。 這個代理程式是以 **nxautomation** 使用者帳戶安裝，此帳戶允許執行需要 root 權限的命令，例如在混合式 Runbook 背景工作角色上。 **nxautomation** 帳戶是不需要密碼的系統帳戶。 
+[適用於 Linux 的 Log Analytics 代理程式](../azure-monitor/platform/agent-linux.md)運作方式類似適用於 Windows 的代理程式，但會將 Linux 電腦連線到 Azure 監視器。 這個代理程式是以 **nxautomation** 使用者帳戶安裝，此帳戶允許執行需要 root 權限的命令，例如在混合式 Runbook 背景工作角色上。 **nxautomation** 帳戶是不需要密碼的系統帳戶。
 
 在[安裝 Linux 混合式背景工作角色](automation-linux-hrw-install.md)期間，必須有具備對應 sudo 權限的 **nxautomation** 帳戶。 如果您嘗試安裝背景工作角色，但此帳戶不存在或沒有適當的權限，則安裝會失敗。
 
@@ -104,7 +110,7 @@ Log Analytics 代理程式和 **nxautomation** 帳戶可用的記錄如下：
 
 ## <a name="runbook-permissions"></a>Runbook 權限
 
-Runbook 需要有權限來透過認證向 Azure 進行驗證。 請參閱[管理 Azure 自動化執行身分帳戶](manage-runas-account.md)。 
+Runbook 需要有權限來透過認證向 Azure 進行驗證。 請參閱[管理 Azure 自動化執行身分帳戶](manage-runas-account.md)。
 
 ## <a name="modules"></a>模組
 
@@ -112,7 +118,7 @@ Azure 自動化支援許多預設模組，包括一些 AzureRM 模組 (AzureRM.A
 
 ## <a name="certificates"></a>憑證
 
-Azure 自動化使用[憑證](shared-resources/certificates.md)向 Azure 進行驗證，或將憑證新增至 Azure 或協力廠商資源。 憑證都妥善儲存，供 Runbook 和 DSC 設定來存取。 
+Azure 自動化使用[憑證](shared-resources/certificates.md)向 Azure 進行驗證，或將憑證新增至 Azure 或協力廠商資源。 憑證都妥善儲存，供 Runbook 和 DSC 設定來存取。
 
 您的 Runbook 可以使用自我簽署憑證，這種憑證不是由憑證授權單位 (CA) 簽署。 請參閱[建立新的憑證](shared-resources/certificates.md#create-a-new-certificate)。
 
@@ -120,10 +126,10 @@ Azure 自動化使用[憑證](shared-resources/certificates.md)向 Azure 進行�
 
 Azure 自動化支援一個從相同自動化帳戶來執行作業的環境。 單一 Runbook 一次可以執行許多工作。 同時執行的作業越多，越常會分派到相同的沙箱。 
 
-相同沙箱流程中執行的作業可能影響彼此。 例如執行 [Disconnect-AzAccount](/powershell/module/az.accounts/disconnect-azaccount?view=azps-3.7.0) Cmdlet。 執行此 Cmdlet 會中斷連接共用沙箱流程中的每個 Runbook 作業。 如需有關解決此情況的範例，請參閱[防止同時作業](manage-runbooks.md#prevent-concurrent-jobs)。
+相同沙箱流程中執行的作業可能影響彼此。 例如執行 [Disconnect-AzAccount](/powershell/module/az.accounts/disconnect-azaccount) Cmdlet。 執行此 Cmdlet 會中斷連接共用沙箱流程中的每個 Runbook 作業。 如需有關解決此情況的範例，請參閱[防止同時作業](manage-runbooks.md#prevent-concurrent-jobs)。
 
 >[!NOTE]
->如果 PowerShell 作業是從 Azure 沙箱中執行的 Runbook 啟動，可能無法以完整的 [PowerShell 語言模式](/powershell/module/microsoft.powershell.core/about/about_language_modes)執行。 
+>如果 PowerShell 作業是從 Azure 沙箱中執行的 Runbook 啟動，可能無法以完整的 [PowerShell 語言模式](/powershell/module/microsoft.powershell.core/about/about_language_modes)執行。
 
 ### <a name="job-statuses"></a>工作狀態
 
@@ -146,17 +152,17 @@ Azure 自動化支援一個從相同自動化帳戶來執行作業的環境。 �
 
 ## <a name="activity-logging"></a>活動記錄
 
-在 Azure 自動化中執行 Runbook 時會將詳細資料寫入自動化帳戶的活動記錄中。 如需使用此記錄的詳細資訊，請參閱[從活動記錄取出詳細資料](manage-runbooks.md#retrieve-details-from-activity-log)。 
+在 Azure 自動化中執行 Runbook 時會將詳細資料寫入自動化帳戶的活動記錄中。 如需使用此記錄的詳細資訊，請參閱[從活動記錄取出詳細資料](manage-runbooks.md#retrieve-details-from-activity-log)。
 
 ## <a name="exceptions"></a>例外狀況
 
-本節說明在 Runbook 中處理例外狀況或間歇問題的一些方法。 例如 WebSocket 例外狀況。 正確處理例外狀況可防止因為暫時性網路失敗而造成 Runbook 失敗。 
+本節說明在 Runbook 中處理例外狀況或間歇問題的一些方法。 例如 WebSocket 例外狀況。 正確處理例外狀況可防止因為暫時性網路失敗而造成 Runbook 失敗。
 
 ### <a name="erroractionpreference"></a>ErrorActionPreference
 
 [ErrorActionPreference](/powershell/module/microsoft.powershell.core/about/about_preference_variables#erroractionpreference) 變數決定 PowerShell 如何回應非終止錯誤。 終止錯誤一律會終止，不受 `ErrorActionPreference` 所影響。
 
-當 Runbook 使用 `ErrorActionPreference` 時，平常的非終止錯誤 (例如來自 [Get-ChildItem](/powershell/module/microsoft.powershell.management/get-childitem?view=powershell-7) Cmdlet 的 `PathNotFound`) 會阻止 Runbook 完成。 下列範例示範 `ErrorActionPreference` 的用法。 當指令碼停止時，最後的 [Write-Output](/powershell/module/microsoft.powershell.utility/write-output?view=powershell-7) 命令永遠不會執行。
+當 Runbook 使用 `ErrorActionPreference` 時，平常的非終止錯誤 (例如來自 [Get-ChildItem](/powershell/module/microsoft.powershell.management/get-childitem) Cmdlet 的 `PathNotFound`) 會阻止 Runbook 完成。 下列範例示範 `ErrorActionPreference` 的用法。 當指令碼停止時，最後的 [Write-Output](/powershell/module/microsoft.powershell.utility/write-output) 命令永遠不會執行。
 
 ```powershell-interactive
 $ErrorActionPreference = 'Stop'
@@ -214,7 +220,7 @@ Azure 沙箱中的 Runbook 作業無法存取任何裝置或應用程式特性�
 
 ## <a name="webhooks"></a>Webhook
 
-外部服務 (例如 Azure DevOps Services 和 GitHub) 可以在 Azure 自動化中啟動 Runbook。 為了以這種方式啟動，服務需要透過單一 HTTP 要求來使用 [Webhook](automation-webhooks.md)。 使用 Webhook 時，Runbook 不需要實作完整的 Azure 自動化功能就能啟動。 
+外部服務 (例如 Azure DevOps Services 和 GitHub) 可以在 Azure 自動化中啟動 Runbook。 為了以這種方式啟動，服務需要透過單一 HTTP 要求來使用 [Webhook](automation-webhooks.md)。 使用 Webhook 時，Runbook 不需要實作完整的 Azure 自動化功能就能啟動。
 
 ## <a name="shared-resources"></a><a name="fair-share"></a>共用資源
 
@@ -222,13 +228,13 @@ Azure 沙箱中的 Runbook 作業無法存取任何裝置或應用程式特性�
 
 對於長時間執行的 Azure 自動化工作，建議使用混合式 Runbook 背景工作角色。 混合式 Runbook 背景工作角色並未受限於公平共用，而且未限制 Runbook 執行時間長度。 其他作業[限制](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits)會套用至 Azure 沙箱和混合式 Runbook 背景工作角色。 雖然混合式 Runbook 背景工作角色不受限於 3 小時的公平共用限制，但您應該以發生非預期的本機基礎結構問題時，也能夠重新啟動的背景工作角色，作為您開發 Runbook 執行的環境。
 
-另一個選項是使用子 Runbook 將 Runbook 最佳化。 例如，您的 Runbook 可能在數個資源上重複執行同一個函式，例如，在數個資料庫上執行資料庫作業。 您可以將此函式移至[子 Runbook](automation-child-runbooks.md)，然後讓您的 Runbook 使用 [Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.7.0) 來呼叫此函式。 子 Runbook 會個別的流程中平行執行。
+另一個選項是使用子 Runbook 將 Runbook 最佳化。 例如，您的 Runbook 可能在數個資源上重複執行同一個函式，例如，在數個資料庫上執行資料庫作業。 您可以將此函式移至[子 Runbook](automation-child-runbooks.md)，然後讓您的 Runbook 使用 [Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook) 來呼叫此函式。 子 Runbook 會個別的流程中平行執行。
 
-使用子 Runbook 可縮短父 Runbook 完成所需的總時間。 如果您的 Runbook 在子系完成後，仍然還有其他作業，則可以使用 [Get-AzAutomationJob](/powershell/module/az.automation/get-azautomationjob?view=azps-3.7.0) Cmdlet 來檢查子 Runbook 的作業狀態。
+使用子 Runbook 可縮短父 Runbook 完成所需的總時間。 如果您的 Runbook 在子系完成後，仍然還有其他作業，則可以使用 [Get-AzAutomationJob](/powershell/module/az.automation/get-azautomationjob) Cmdlet 來檢查子 Runbook 的作業狀態。
 
 ## <a name="next-steps"></a>後續步驟
 
 * 若要開始使用 PowerShell Runbook，請參閱[教學課程：建立 PowerShell Runbook](learn/automation-tutorial-runbook-textual-powershell.md)。
 * 若要使用 Runbook，請參閱[在 Azure 自動化中管理 Runbook](manage-runbooks.md)。
 * 如需 PowerShell 的詳細資料，請參閱 [PowerShell 文件](/powershell/scripting/overview)。
-* * 如需 PowerShell Cmdlet 參考，請參閱 [Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation)。
+* 如需 PowerShell Cmdlet 參考，請參閱 [Az.Automation](/powershell/module/az.automation#automation)。

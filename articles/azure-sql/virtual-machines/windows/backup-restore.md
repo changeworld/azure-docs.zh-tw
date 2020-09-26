@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/04/2018
 ms.author: mikeray
-ms.openlocfilehash: 49c1c8ad80b7be0cbca7ceb76eb1e38e1c091cf9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a4965c587cb2f42c8411d48af2417dd3fe3d5edb
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91293385"
+ms.locfileid: "91360781"
 ---
 # <a name="backup-and-restore-for-sql-server-on-azure-vms"></a>Azure VM 上的 SQL Server 備份與還原
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -129,23 +129,23 @@ SQL Server 2016 和更新版本的 VM，會透過自動備份 v2 提供更多自
 
 | 選項 | 自動備份 | 適用於 SQL 的 Azure 備份 | 手動備份 |
 |---|---|---|---|
-| 需要其他 Azure 服務 |   | ![是](./media/backup-restore/yes.png) |   |
-| 在 Azure 入口網站中設定備份原則 | ![是](./media/backup-restore/yes.png) | ![是](./media/backup-restore/yes.png) |   |
-| 在 Azure 入口網站中還原資料庫 |   | ![是](./media/backup-restore/yes.png) |   |
-| 於單一儀表板中管理多部伺服器 |   | ![是](./media/backup-restore/yes.png) |   |
-| 時間點還原 | ![是](./media/backup-restore/yes.png) | ![是](./media/backup-restore/yes.png) | ![是](./media/backup-restore/yes.png) |
-| 15 分鐘復原點目標 (RPO) | ![是](./media/backup-restore/yes.png) | ![是](./media/backup-restore/yes.png) | ![是](./media/backup-restore/yes.png) |
-| 短期備份保留原則 (天) | ![是](./media/backup-restore/yes.png) | ![是](./media/backup-restore/yes.png) |   |
-| 長期備份保留原則 (月、年) |   | ![是](./media/backup-restore/yes.png) |   |
-| 針對 SQL Server Always On 的內建支援 |   | ![是](./media/backup-restore/yes.png) |   |
-| 備份至 Azure 儲存體帳戶 | ![是](./media/backup-restore/yes.png)(自動) | ![是](./media/backup-restore/yes.png)(自動) | ![是](./media/backup-restore/yes.png)(由客戶管理) |
-| 儲存體與備份檔案的管理 | | ![是](./media/backup-restore/yes.png) |  |
-| 備份至 VM 上的已連接磁碟 |   |   | ![是](./media/backup-restore/yes.png) |
-| 可集中自訂的備份報告 |   | ![是](./media/backup-restore/yes.png) |   |
-| 彙總的失敗電子郵件警示 |   | ![是](./media/backup-restore/yes.png) |   |
-| 根據 Azure 監視器記錄來自訂監視 |   | ![是](./media/backup-restore/yes.png) |   |
-| 使用 SSMS 或 Transact-SQL 指令碼監視備份作業 | ![是](./media/backup-restore/yes.png) | ![是](./media/backup-restore/yes.png) | ![是](./media/backup-restore/yes.png) |
-| 使用 SSMS 或 Transact-SQL 指令碼還原資料庫 | ![是](./media/backup-restore/yes.png) |   | ![是](./media/backup-restore/yes.png) |
+| 需要其他 Azure 服務 |   | ![綠色核取記號。](./media/backup-restore/yes.png) |   |
+| 在 Azure 入口網站中設定備份原則 | ![綠色核取記號。](./media/backup-restore/yes.png) | ![綠色核取記號。](./media/backup-restore/yes.png) |   |
+| 在 Azure 入口網站中還原資料庫 |   | ![綠色核取記號。](./media/backup-restore/yes.png) |   |
+| 於單一儀表板中管理多部伺服器 |   | ![綠色核取記號。](./media/backup-restore/yes.png) |   |
+| 時間點還原 | ![綠色核取記號。](./media/backup-restore/yes.png) | ![綠色核取記號。](./media/backup-restore/yes.png) | ![綠色核取記號。](./media/backup-restore/yes.png) |
+| 15 分鐘復原點目標 (RPO) | ![綠色核取記號。](./media/backup-restore/yes.png) | ![綠色核取記號。](./media/backup-restore/yes.png) | ![綠色核取記號。](./media/backup-restore/yes.png) |
+| 短期備份保留原則 (天) | ![綠色核取記號。](./media/backup-restore/yes.png) | ![綠色核取記號。](./media/backup-restore/yes.png) |   |
+| 長期備份保留原則 (月、年) |   | ![綠色核取記號。](./media/backup-restore/yes.png) |   |
+| 針對 SQL Server Always On 的內建支援 |   | ![綠色核取記號。](./media/backup-restore/yes.png) |   |
+| 備份至 Azure 儲存體帳戶 | ![綠色核取記號。](./media/backup-restore/yes.png)(自動) | ![綠色核取記號。](./media/backup-restore/yes.png)(自動) | ![綠色核取記號。](./media/backup-restore/yes.png)(由客戶管理) |
+| 儲存體與備份檔案的管理 | | ![綠色核取記號。](./media/backup-restore/yes.png) |  |
+| 備份至 VM 上的已連接磁碟 |   |   | ![綠色核取記號。](./media/backup-restore/yes.png) |
+| 可集中自訂的備份報告 |   | ![綠色核取記號。](./media/backup-restore/yes.png) |   |
+| 彙總的失敗電子郵件警示 |   | ![綠色核取記號。](./media/backup-restore/yes.png) |   |
+| 根據 Azure 監視器記錄來自訂監視 |   | ![綠色核取記號。](./media/backup-restore/yes.png) |   |
+| 使用 SSMS 或 Transact-SQL 指令碼監視備份作業 | ![綠色核取記號。](./media/backup-restore/yes.png) | ![綠色核取記號。](./media/backup-restore/yes.png) | ![綠色核取記號。](./media/backup-restore/yes.png) |
+| 使用 SSMS 或 Transact-SQL 指令碼還原資料庫 | ![綠色核取記號。](./media/backup-restore/yes.png) |   | ![綠色核取記號。](./media/backup-restore/yes.png) |
 
 ## <a name="next-steps"></a>後續步驟
 

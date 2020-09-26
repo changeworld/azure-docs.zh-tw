@@ -1,52 +1,72 @@
 ---
 title: 儲存體總覽-Azure 時間序列深入解析 Gen2 |Microsoft Docs
 description: 瞭解 Azure 時間序列深入解析 Gen2 中的資料儲存體。
-author: esung22
-ms.author: elsung
-manager: diviso
+author: lyrana
+ms.author: lyhughes
+manager: deepakpalled
 ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 08/31/2020
+ms.date: 09/15/2020
 ms.custom: seodec18
-ms.openlocfilehash: c05de0462dde2b09e0e01919dfc691a85df153fa
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: d8e3c7258a70902fe362ee73c2f366146484ce54
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89483264"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91287524"
 ---
 # <a name="data-storage"></a>資料儲存體
 
-當您建立 Azure 時間序列深入解析 Gen2 環境時，您會建立兩個 Azure 資源：
+本文說明 Azure 時間序列深入解析 Gen2 中的資料儲存體。 其中涵蓋暖和冷、資料可用性和最佳作法。
 
-* 可以針對暖資料儲存進行設定的 Azure 時間序列深入解析 Gen2 環境。
-* 用於冷資料儲存的 Azure 儲存體帳戶。
+## <a name="provisioning"></a>佈建
 
-您暖存放區中的資料只能透過 [時間序列查詢 api](./time-series-insights-update-tsq.md) 和 [Azure 時間序列深入解析 Explorer](./time-series-insights-update-explorer.md)來使用。 您的暖存放區將會在建立 Azure 時間序列深入解析 Gen2 環境時，于選取的 [保留期間](./time-series-insights-update-plan.md#the-preview-environment) 內包含最近的資料。
+當您建立 Azure 時間序列深入解析 Gen2 環境時，您有下列選項：
 
-Azure 時間序列深入解析 Gen2 會以 [Parquet 檔案格式](#parquet-file-format-and-folder-structure)，將您的冷儲存資料儲存至 Azure Blob 儲存體。 Azure 時間序列深入解析 Gen2 會以獨佔方式管理此冷存放區資料，但可供您直接讀取為標準 Parquet 檔案。
+* 冷資料存放區：
+   * 在您為環境選擇的訂用帳戶和區域中，建立新的 Azure 儲存體資源。
+   * 附加既有的 Azure 儲存體帳戶。 此選項僅適用于從 Azure Resource Manager [範本](https://docs.microsoft.com/azure/templates/microsoft.timeseriesinsights/allversions)進行部署，且不會顯示在 Azure 入口網站中。
+* 暖資料存放區：
+   * 暖存放區是選擇性的，可以在布建期間或之後啟用或停用。 如果您決定稍後啟用暖存放區，而且您的冷存放區中已經有資料， [請參閱下面](concepts-storage.md#warm-store-behavior) 的小節以瞭解預期的行為。 暖存放區資料保留時間可以設定為7到31天，也可以視需要調整。
+
+當事件內嵌時，如果已啟用) 和冷存放區，則會在暖存放區 (中建立索引。
+
+[![儲存體總覽](media/concepts-storage/pipeline-to-storage.png)](media/concepts-storage/pipeline-to-storage.png#lightbox)
+
 
 > [!WARNING]
 > 身為冷存放區資料所在 Azure Blob 儲存體帳戶的擁有者，您可以完整存取帳戶中的所有資料。 此存取權包括寫入和刪除權限。 請勿編輯或刪除 Azure 時間序列深入解析 Gen2 寫入的資料，因為這可能會導致資料遺失。
 
 ## <a name="data-availability"></a>資料可用性
 
-Azure 時間序列深入解析 Gen2 資料分割和索引資料，以獲得最佳查詢效能。 如果在索引之後啟用) 和冷存放區，就可以從暖 (中查詢資料。 正在擷取的資料量可能會影響此可用性。
+Azure 時間序列深入解析 Gen2 資料分割和索引資料，以獲得最佳查詢效能。 如果在索引之後啟用) 和冷存放區，就可以從暖 (中查詢資料。 正在內嵌的資料量和每個分割區的輸送量速率可能會影響可用性。 請參閱事件來源 [輸送量限制](./concepts-streaming-ingress-throughput-limits.md) 和 [最佳作法](./concepts-streaming-ingestion-event-sources.md#streaming-ingestion-best-practices) ，以獲得最佳效能。 您也可以設定延遲 [警示](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-environment-mitigate-latency#monitor-latency-and-throttling-with-alerts) ，以在您的環境遇到處理資料的問題時收到通知。
 
 > [!IMPORTANT]
 > 在資料變成可用之前，您可能會遇到最多60秒的時間。 如果您遭遇超過 60 秒的嚴重延遲，請透過 Azure 入口網站提交支援票證。
 
-## <a name="azure-storage"></a>Azure 儲存體
+## <a name="warm-store"></a>暖存放區
+
+您可以透過 [時間序列查詢 api](./time-series-insights-update-tsq.md)、 [Azure 時間序列深入解析 TSI Explorer](./time-series-insights-update-explorer.md)或 [Power BI 連接器](./how-to-connect-power-bi.md)，取得暖存放區中的資料。 暖存放區查詢是免費的，而且沒有配額，但有 [30 個](https://docs.microsoft.com/rest/api/time-series-insights/reference-api-limits#query-apis---limits) 並行要求的限制。
+
+### <a name="warm-store-behavior"></a>暖存放區行為 
+
+* 啟用時，串流至您環境的所有資料都會路由傳送至您的暖存放區，而不論事件時間戳記為何。 請注意，串流內嵌管線是針對近乎即時的串流處理所建立，且 [不支援](./concepts-streaming-ingestion-event-sources.md#historical-data-ingestion)擷取歷程記錄事件。
+* 保留期限是根據事件在暖存放區中編制索引的時間來計算，而不是事件時間戳記。 這表示在保留期限過了之後，暖存放區中的資料將無法再使用，即使事件時間戳記適用于未來。
+  - 範例：具有10天天氣預報的事件會在設定為7天保留期間的暖儲存體容器中內嵌並編制索引。 在7天后，將無法再于暖存放區中存取預測，但可以從冷查詢進行查詢。 
+* 如果您在現有的環境中啟用暖存放區，而該環境已經在冷儲存體中建立最新的資料，請注意，您的暖存放區將不會再填滿此資料。
+* 如果您剛剛啟用暖存放區，並在瀏覽器中看到您最近的資料時遇到問題，您可以暫時切換暖存放區查詢：
+
+   [![停用暖查詢](media/concepts-storage/toggle-warm.png)](media/concepts-storage/toggle-warm.png#lightbox)
+
+## <a name="cold-store"></a>冷存放區
 
 本節說明與 Azure 時間序列深入解析 Gen2 相關的 Azure 儲存體詳細資料。
 
 如需 Azure Blob 儲存體的完整說明，請參閱[儲存體 Blob 簡介](../storage/blobs/storage-blobs-introduction.md)。
 
-### <a name="your-storage-account"></a>您的儲存體帳戶
-
-當您建立 Azure 時間序列深入解析 Gen2 環境時，會建立一個 Azure 儲存體帳戶做為您的長期冷存放區。  
+### <a name="your-cold-storage-account"></a>您的冷儲存體帳戶
 
 Azure 時間序列深入解析 Gen2 會在您的 Azure 儲存體帳戶中最多保留每個事件的兩個複本。 一個複本儲存依擷取時間排序的事件，一律允許以時間排序的順序存取事件。 經過一段時間後，Azure 時間序列深入解析 Gen2 也會建立資料的重新分割複本，以針對效能查詢進行優化。
 

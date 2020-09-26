@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 09/02/2020
 ms.author: yushwang
-ms.openlocfilehash: 3f5fd8433f8de4dab39a73e889a71c4b262dc924
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 48756b43e64576a5dd38467bb1dd97e91c168a06
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89394494"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360849"
 ---
 # <a name="highly-available-cross-premises-and-vnet-to-vnet-connectivity"></a>高可用性跨單位和 VNet 對 VNet 連線
 本文針對使用 Azure VPN 閘道的跨單位和 VNet 對 VNet 連線提供高可用性組態選項的概觀。
@@ -20,7 +20,7 @@ ms.locfileid: "89394494"
 ## <a name="about-azure-vpn-gateway-redundancy"></a><a name = "activestandby"></a>關於 Azure VPN 閘道備援
 每個 Azure VPN 閘道都是由作用中-待命組態中的兩個執行個體組成。 對於作用中執行個體所發生的任何計劃性維護或非計劃性中斷，待命執行個體都會自動進行接管 (容錯移轉)，並繼續 S2S VPN 或 VNet 對 VNet 連線。 切換會導致短暫中斷。 對於計劃性維護，應在 10 到 15 秒內還原連線。 對於非計劃問題，連線復原會更久，大約 1 分鐘到 1 分半 (最糟的情況)。 對於閘道的 P2S VPN 用戶端連線，P2S 連接將會中斷連線，而使用者必須從用戶端電腦重新連線。
 
-![作用中-待命](./media/vpn-gateway-highlyavailable/active-standby.png)
+![圖表顯示內部部署網站，其中有私人 I P 子網和內部部署 V P N 連線到作用中的 Azure V P N 閘道，以連線到裝載于 Azure 中的子網，且有可用的待命閘道。](./media/vpn-gateway-highlyavailable/active-standby.png)
 
 ## <a name="highly-available-cross-premises-connectivity"></a>高可用性跨單位連線
 若要為跨單位連線提供更好的可用性，有幾個選項可用︰
@@ -49,7 +49,7 @@ ms.locfileid: "89394494"
 ### <a name="active-active-azure-vpn-gateway"></a>主動-主動 Azure VPN 閘道
 您現在可以在主動-主動組態中建立 Azure VPN 閘道，其中兩個閘道 VM 執行個體將會對內部部署 VPN 裝置建立 S2S VPN 通道，如下圖所示︰
 
-![主動-主動](./media/vpn-gateway-highlyavailable/active-active.png)
+![圖表顯示內部部署網站，其私人 I P 子網和內部部署 V P N 連線至兩個使用中的 Azure V P N 閘道，以連線到裝載于 Azure 中的子網。](./media/vpn-gateway-highlyavailable/active-active.png)
 
 在此組態中，每個 Azure 閘道執行個體都會有唯一的公用 IP 位址，而每個執行個體會對在區域網路閘道與連線中指定的內部部署 VPN 裝置建立 IPsec/IKE S2S VPN 通道。 請注意，這兩個 VPN 通道實際上屬於相同的連線。 您仍必須設定內部部署 VPN 裝置，才能接受或建立對這兩個 Azure VPN 閘道公用 IP 位址的兩個 S2S VPN 通道。
 
@@ -71,10 +71,10 @@ ms.locfileid: "89394494"
 ## <a name="highly-available-vnet-to-vnet-connectivity-through-azure-vpn-gateways"></a>透過 Azure VPN 閘道的高可用性 VNet 對 VNet 連線
 相同的主動-主動組態也適用於 Azure VNet 對 VNet 連線。 您可以為兩個虛擬網路建立主動-主動 VPN 閘道，並將它們連在一起，以在兩個 VNet 之間形成包含 4 個通道的相同完整網狀連線，如下圖所示︰
 
-![VNet 對 VNet](./media/vpn-gateway-highlyavailable/vnet-to-vnet.png)
+![圖顯示兩個裝載私用 I P 子網的 Azure 區域，以及兩個虛擬網站所連線的 Azure V P N 閘道。](./media/vpn-gateway-highlyavailable/vnet-to-vnet.png)
 
 這可確保任何計劃性維護事件的兩個虛擬網路之間一律有一組通道，以提供更好的可用性。 即使適用於跨單位連線的相同拓撲需要兩個連線，如上所示的 VNet 對 VNet 拓樸對每個閘道只需要一個連線。 此外，除非透過 VNet 對 VNet 連線的傳輸路由是必要的，否則 BGP 是選擇性的。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 如需設定主動-主動跨單位和 VNet 對 VNet 連線的步驟，請參閱[設定跨單位和 VNet 對 VNet 連線的主動-主動 VPN 閘道](vpn-gateway-activeactive-rm-powershell.md)。
 
