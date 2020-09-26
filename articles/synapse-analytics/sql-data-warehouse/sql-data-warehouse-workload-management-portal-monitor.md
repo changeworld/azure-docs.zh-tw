@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 4f46ed1890bb62acc92eea28c55bf9abd6153e8b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 13b0dc3af524b16430408f8a920c7477c412414d
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85208683"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362724"
 ---
 # <a name="azure-synapse-analytics--workload-management-portal-monitoring"></a>Azure Synapse Analytics - 工作負載管理入口網站監視
 
@@ -59,7 +59,8 @@ WITH ( WORKLOAD_GROUP = 'wgPriority'
 計量 1：有效的最低資源百分比 (Avg 彙總，`blue line`)<br>
 計量 2：依系統百分比配置的工作負載群組 (Avg 彙總，`purple line`)<br>
 篩選：[Workload Group] = `wgPriority`<br>
-![underutilized-wg.png](./media/sql-data-warehouse-workload-management-portal-monitor/underutilized-wg.png) 圖表顯示 25% 的工作負載隔離中，平均使用率只有 10%。  在此情況下，`MIN_PERCENTAGE_RESOURCE` 參數值可能會降到 10 或 15 之間，並允許系統上的其他工作負載耗用資源。
+![螢幕擷取畫面顯示具有兩個度量和篩選的圖表。](./media/sql-data-warehouse-workload-management-portal-monitor/underutilized-wg.png)
+此圖表顯示有25% 的工作負載隔離，平均使用了10%。  在此情況下，`MIN_PERCENTAGE_RESOURCE` 參數值可能會降到 10 或 15 之間，並允許系統上的其他工作負載耗用資源。
 
 ### <a name="workload-group-bottleneck"></a>工作負載群組瓶頸
 
@@ -81,7 +82,8 @@ WITH ( WORKLOAD_GROUP = 'wgDataAnalyst'
 計量 2：依最大資源百分比配置的工作負載群組 (Avg 彙總，`purple line`)<br>
 計量 3：已排入佇列的工作負載群組查詢 (Sum 彙總，`turquoise line`)<br>
 篩選：[Workload Group] = `wgDataAnalyst`<br>
-![bottle-necked-wg](./media/sql-data-warehouse-workload-management-portal-monitor/bottle-necked-wg.png) 圖表顯示在資源上有 9% 的容量，工作負載群組已使用90% 以上 (來自「依最大資源百分比計量配置的工作負載群組」)。  如「已排入佇列的工作負載群組查詢計量」所示，查詢佇列十分穩定。  在此情況下，將 `CAP_PERCENTAGE_RESOURCE` 增加為大於 9% 的值，可允許同時執行更多查詢。  增加 `CAP_PERCENTAGE_RESOURCE` 會假設有足夠的資源可供使用，而且不會被其他工作負載群組隔離。  檢查「有效的容量資源百分比計量」，以確認已增加容量。  如果需要更多輸送量，也請考慮將 `REQUEST_MIN_RESOURCE_GRANT_PERCENT` 增加為大於 3 的值。  增加 `REQUEST_MIN_RESOURCE_GRANT_PERCENT` 可能會讓查詢的執行速度更快。
+![螢幕擷取畫面顯示具有三個度量和篩選的圖表。](./media/sql-data-warehouse-workload-management-portal-monitor/bottle-necked-wg.png)
+此圖表顯示在資源上有9% 的上限，工作負載群組為90% 以上的使用量 (從 *工作負載群組配置到資源百分比度量上限*) 。  如「已排入佇列的工作負載群組查詢計量」所示，查詢佇列十分穩定。  在此情況下，將 `CAP_PERCENTAGE_RESOURCE` 增加為大於 9% 的值，可允許同時執行更多查詢。  增加 `CAP_PERCENTAGE_RESOURCE` 會假設有足夠的資源可供使用，而且不會被其他工作負載群組隔離。  檢查「有效的容量資源百分比計量」，以確認已增加容量。  如果需要更多輸送量，也請考慮將 `REQUEST_MIN_RESOURCE_GRANT_PERCENT` 增加為大於 3 的值。  增加 `REQUEST_MIN_RESOURCE_GRANT_PERCENT` 可能會讓查詢的執行速度更快。
 
 ## <a name="next-steps"></a>後續步驟
 

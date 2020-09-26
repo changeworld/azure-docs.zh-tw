@@ -2,15 +2,15 @@
 title: 在程式碼中使用 TLS/SSL 憑證
 description: 瞭解如何在您的程式碼中使用用戶端憑證。 使用用戶端憑證來驗證遠端資源，或使用它們來執行密碼編譯工作。
 ms.topic: article
-ms.date: 11/04/2019
+ms.date: 09/22/2020
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: b62352d09419de11135f4d7a2740e0e74b80255d
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: e791e4ca3481bc0aea931abe946751415f1e1614
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962123"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91311813"
 ---
 # <a name="use-a-tlsssl-certificate-in-your-code-in-azure-app-service"></a>在 Azure App Service 的程式碼中使用 TLS/SSL 憑證
 
@@ -107,29 +107,6 @@ PrivateKey privKey = (PrivateKey) ks.getKey("<subject-cn>", ("<password>").toCha
 
 針對不支援或未提供 Windows 憑證存放區支援的語言，請參閱 [從檔案載入憑證](#load-certificate-from-file)。
 
-## <a name="load-certificate-in-linux-apps"></a>在 Linux 應用程式中載入憑證
-
-`WEBSITE_LOAD_CERTIFICATES`應用程式設定可讓您的 Linux 託管應用程式存取指定的憑證 (包括) 為檔案的自訂容器應用程式。 這些檔案會在下列目錄中找到：
-
-- 私用憑證- `/var/ssl/private` ( 檔案 `.p12`) 
-- 公開憑證- `/var/ssl/certs` ( 檔案 `.der`) 
-
-憑證檔案名是憑證指紋。 下列 c # 程式碼說明如何在 Linux 應用程式中載入公開憑證。
-
-```csharp
-using System;
-using System.IO;
-using System.Security.Cryptography.X509Certificates;
-
-...
-var bytes = File.ReadAllBytes("/var/ssl/certs/<thumbprint>.der");
-var cert = new X509Certificate2(bytes);
-
-// Use the loaded certificate
-```
-
-若要瞭解如何從 Node.js、PHP、Python、JAVA 或 Ruby 中的檔案載入 TLS/SSL 憑證，請參閱個別語言或 web 平臺的檔。
-
 ## <a name="load-certificate-from-file"></a>從檔案載入憑證
 
 例如，如果您需要載入您手動上傳的憑證檔案，最好是使用 [FTPS](deploy-ftp.md) 而非 [Git](deploy-local-git.md)來上傳憑證。 您應該將機密資料（例如私用憑證）保存在原始檔控制之外。
@@ -152,6 +129,39 @@ using System.Security.Cryptography.X509Certificates;
 
 ...
 var bytes = File.ReadAllBytes("~/<relative-path-to-cert-file>");
+var cert = new X509Certificate2(bytes);
+
+// Use the loaded certificate
+```
+
+若要瞭解如何從 Node.js、PHP、Python、JAVA 或 Ruby 中的檔案載入 TLS/SSL 憑證，請參閱個別語言或 web 平臺的檔。
+
+## <a name="load-certificate-in-linuxwindows-containers"></a>在 Linux/Windows 容器中載入憑證
+
+`WEBSITE_LOAD_CERTIFICATES`應用程式設定可讓您的 Windows 或 Linux 容器應用程式存取指定的憑證 (包括) 為檔案的內建 Linux 容器。 這些檔案會在下列目錄中找到：
+
+| 容器平臺 | 公開憑證 | 私人憑證 |
+| - | - | - |
+| Windows 容器 | `C:\appservice\certificates\public` | `C:\appservice\certificates\private` |
+| Linux 容器 | `/var/ssl/certs` | `/var/ssl/private` |
+
+憑證檔案名是憑證指紋。 
+
+> [!NOTE]
+> App Service 將憑證路徑插入 Windows 容器中，作為下列環境變數 `WEBSITE_PRIVATE_CERTS_PATH` 、 `WEBSITE_INTERMEDIATE_CERTS_PATH` 、 `WEBSITE_PUBLIC_CERTS_PATH` 和 `WEBSITE_ROOT_CERTS_PATH` 。 最好是使用環境變數來參考憑證路徑，而不是硬式編碼憑證路徑，以防日後的憑證路徑變更。
+>
+
+此外， [Windows Server Core 容器](configure-custom-container.md#supported-parent-images) 會在 **LocalMachine\My**中自動將憑證載入至憑證存放區。 若要載入憑證，請遵循與 [Windows 應用程式中的載入憑證](#load-certificate-in-windows-apps)相同的模式。 針對以 Windows Nano 為基礎的容器，請使用上述提供的檔案路徑， [直接從檔案載入憑證](#load-certificate-from-file)。
+
+下列 c # 程式碼說明如何在 Linux 應用程式中載入公開憑證。
+
+```csharp
+using System;
+using System.IO;
+using System.Security.Cryptography.X509Certificates;
+
+...
+var bytes = File.ReadAllBytes("/var/ssl/certs/<thumbprint>.der");
 var cert = new X509Certificate2(bytes);
 
 // Use the loaded certificate

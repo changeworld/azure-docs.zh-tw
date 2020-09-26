@@ -9,16 +9,19 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: dobett
-ms.openlocfilehash: 6062f8b3992732e0e0f9bbdae9549e69c393f4ff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a092859517ee6ac41e62e55fe95f72b8bfdf87d5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67080493"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91290717"
 ---
 # <a name="customize-how-the-connected-factory-solution-displays-data-from-your-opc-ua-servers"></a>自訂連線處理站解決方案顯示 OPC UA 伺服器資料的方式
 
-連線的處理站解決方案會彙總並顯示連線到解決方案的 OPC UA 伺服器資料。 您可以瀏覽並傳送命令至解決方案的 OPC UA 伺服器。 如需 OPC UA 的詳細資訊，請參閱連線的處理站[常見問題](iot-accelerators-faq-cf.md)。
+> [!IMPORTANT]
+> 當我們更新這篇文章時，請參閱 [Azure 產業 IoT](https://azure.github.io/Industrial-IoT/) 的最新內容。
+
+連線的處理站解決方案會彙總並顯示連線到解決方案的 OPC UA 伺服器資料。 您可以瀏覽並傳送命令至解決方案的 OPC UA 伺服器。 如需 OPC UA 的詳細資訊，請參閱連線處理站 [常見問題](iot-accelerators-faq-cf.md)。
 
 解決方案中的彙總資料範例包括「整體設備效率 (OEE)」和「關鍵效能指標 (KPI)」，您可以在儀表板的工廠、生產線與工作站層級分別檢視這些資料。 下列螢幕擷取畫面顯示 [Munich (慕尼黑)]**** 工廠的 [Production line 1 (生產線 1)]**** 的 [Assembly (組件)]**** 工作站的 OEE 和 KPI 值：
 
@@ -39,7 +42,7 @@ ms.locfileid: "67080493"
 
 ## <a name="data-sources"></a>資料來源
 
-連線的處理站解決方案會顯示連線到解決方案的 OPC UA 伺服器資料。 預設安裝包含數台執行工廠模擬的 OPC UA 伺服器。 您可以將您自己的 OPC UA 伺服器 [透過閘道連接] [.lnk-connect-cf] 新增至您的解決方案。
+連線的處理站解決方案會顯示連線到解決方案的 OPC UA 伺服器資料。 預設安裝包含數台執行工廠模擬的 OPC UA 伺服器。 您可以將您自己的 OPC UA 伺服器（透過閘道連接）新增至您的解決方案。
 
 您可以在儀表板中瀏覽連線的 OPC UA 伺服器可傳送至您的解決方案的資料項目︰
 
@@ -56,7 +59,7 @@ ms.locfileid: "67080493"
 
     ![發行的項目][img-published]
 
-1. 如果您是解決方案中的*系統管理員*，您可以選擇發行資料項目，使其可在連線的處理站解決方案中使用。 身為管理員，您也可以變更 OPC UA 伺服器中的資料項目值及呼叫方法。
+1. 如果您是解決方案中的 *系統管理員* ，您可以選擇發行資料項目，使其可在連線的處理站解決方案中使用。 身為管理員，您也可以變更 OPC UA 伺服器中的資料項目值及呼叫方法。
 
 ## <a name="map-the-data"></a>對應資料
 
@@ -71,7 +74,7 @@ ms.locfileid: "67080493"
 
 ## <a name="deploy-the-changes"></a>部署變更
 
-當您完成對檔案的**ContosoTopologyDescription.js**變更時，您必須將連線的處理站解決方案重新部署到您的 Azure 帳戶。
+當您完成對檔案 **ContosoTopologyDescription.js** 的變更時，您必須將連線的處理站解決方案重新部署到您的 Azure 帳戶。
 
 **azure-iot-connected-factory** 存放庫包含一個 **build.ps1** PowerShell 指令碼，可用於重新建置並部署解決方案。
 

@@ -11,24 +11,24 @@ ms.date: 04/15/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: fe847dfa24e618d2e837943309475f0a436d3a44
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 4c07ad2aaf6c682dc370e3223dba1f199242ca2f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89459295"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289226"
 ---
 # <a name="best-practices-for-loading-data-for-data-warehousing"></a>用於載入資料以進行資料倉儲作業的最佳做法
 
-載入資料的建議和效能優化
+在本文中，您可以找到載入資料的建議和效能優化。
 
 ## <a name="prepare-data-in-azure-storage"></a>在 Azure 儲存體中準備資料
 
-若要將延遲降至最低，請共置您的儲存層與資料倉儲。
+若要將延遲降至最低，請共置您的儲存層和您的資料倉儲。
 
 將資料匯出成 ORC 檔案格式時，如有大量文字資料行，則可能發生 Java 記憶體不足錯誤。 若要解決這項限制，只能匯出部分資料行。
 
-PolyBase 無法載入具有超過 1 百萬個位元組之資料的資料列。 當您將資料放入 Azure Blob 儲存體或 Azure Data Lake Store 中的文字檔案時，這些檔案必須有少於 1 百萬個位元組的資料。 不論資料表結構描為何，此位元組限制皆成立。
+PolyBase 無法載入具有超過1000000個位元組之資料的資料列。 當您將資料放入 Azure Blob 儲存體或 Azure Data Lake Store 中的文字檔案時，這些檔案必須有少於 1 百萬個位元組的資料。 不論資料表結構描為何，此位元組限制皆成立。
 
 每種檔案格式具有不同的效能特性。 若要最快載入，使用壓縮的分隔文字檔案。 UTF-8 和 UTF-16 效能之間的差異最小。
 
@@ -64,7 +64,7 @@ PolyBase 無法載入具有超過 1 百萬個位元組之資料的資料列。 �
 
 ## <a name="allow-multiple-users-to-load"></a>允許多個使用者載入
 
-通常需要讓多個使用者將資料載入資料倉儲中。 使用 [CREATE TABLE AS SELECT (Transact-SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) 載入所需資料庫的 CONTROL 權限。  CONTROL 權限可控制所有結構描述的存取。 您可能不希望所有的載入使用者都能控制所有結構描述的存取。 若要限制權限，請使用 DENY CONTROL 陳述式。
+通常需要讓多個使用者將資料載入資料倉儲中。 使用 [CREATE TABLE AS SELECT (Transact-SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 載入所需資料庫的 CONTROL 權限。  CONTROL 權限可控制所有結構描述的存取。 您可能不希望所有的載入使用者都能控制所有結構描述的存取。 若要限制權限，請使用 DENY CONTROL 陳述式。
 
 例如，請考慮將資料庫結構描述 schema_A 用於 dept A 以及 schema_B 用於 dept B，讓資料庫使用者 user_A 和 user_B 個別成為 dept A 及 B 中載入的 PolyBase 之使用者。 這兩個使用者皆已獲得 CONTROL 資料庫權限。 結構描述 A 和 B 的建立者現在是使用 DENY 鎖定其結構描述：
 
@@ -83,14 +83,14 @@ User_A 和 user_B 現在已從其他部門的架構鎖定。
 
 ## <a name="load-to-a-columnstore-index"></a>載入至資料行存放區索引
 
-資料行存放區索引需要大量的記憶體，才能將資料壓縮成高品質的資料列群組。 為了最佳的壓縮和索引效率，資料行存放區索引需要將多達 1,048,576 個資料列壓縮到每個資料列群組中。 當記憶體不足時，資料行存放區索引可能無法達到最大的壓縮率。 這反而會影響查詢效能。 如需深入探討，請參閱[資料行存放區記憶體最佳化](data-load-columnstore-compression.md)。
+資料行存放區索引需要大量的記憶體，才能將資料壓縮成高品質的資料列群組。 為了最佳的壓縮和索引效率，資料行存放區索引需要將多達 1,048,576 個資料列壓縮到每個資料列群組中。 當記憶體不足時，資料行存放區索引可能無法達到最大的壓縮率。 這會影響查詢效能。 如需深入探討，請參閱[資料行存放區記憶體最佳化](data-load-columnstore-compression.md)。
 
 - 若要確保載入使用者有足夠的記憶體可達到最大的壓縮率，請使用是中型或大型資源類別成員的載入使用者。
-- 載入足夠的資料列，完全填滿新的資料列群組。 在大量載入期間，每 1,048,576 個資料列會以完整資料列群組形式直接壓縮到資料行存放區中。 若載入的資料列少於 102,400 個，則會將資料列傳送至差異存放區，其中的資料列會保存在 b 型樹狀結構索引中。 如果您載入太少資料列，這些資料列可能全都會移至差異存放區，並不會立即壓縮成資料行存放區格式。
+- 載入足夠的資料列，完全填滿新的資料列群組。 在大量載入期間，會將每個1048576資料列直接壓縮成資料行存放區，以做為完整的資料列群組。 若載入的資料列少於 102,400 個，則會將資料列傳送至差異存放區，其中的資料列會保存在 b 型樹狀結構索引中。 如果您載入太少資料列，這些資料列可能全都會移至差異存放區，並不會立即壓縮成資料行存放區格式。
 
 ## <a name="increase-batch-size-when-using-sqlbulkcopy-api-or-bcp"></a>使用 SQLBulkCopy API 或 BCP 時，增加批次大小
 
-如先前所述，使用 PolyBase 載入將會提供 Synapse SQL 集區的最高輸送量。 如果您無法使用 PolyBase 載入，而且必須使用 SQLBulkCopy API (或 BCP) 您應考慮增加批次大小以提高輸送量，這是一項很好的經驗法則是從10到100個數據列之間的批次大小。
+如先前所述，使用 PolyBase 載入將會提供 Synapse SQL 集區的最高輸送量。 如果您無法使用 PolyBase 載入，而且必須使用 SQLBulkCopy API (或 BCP) ，您應該考慮增加批次大小，以獲得更好的輸送量-理想的經驗法則是10到100個數據列之間的批次大小。
 
 ## <a name="manage-loading-failures"></a>管理載入失敗
 
@@ -100,13 +100,13 @@ User_A 和 user_B 現在已從其他部門的架構鎖定。
 
 ## <a name="insert-data-into-a-production-table"></a>將資料插入生產資料表中
 
-使用 [INSERT 陳述式](/sql/t-sql/statements/insert-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)單次載入小型資料表，或甚至定期重新載入查閱，可能會與使用 `INSERT INTO MyLookup VALUES (1, 'Type 1')` 之類的陳述式有一樣好的效果。  不過，單一插入的效率不如執行大量載入。
+使用 [INSERT 陳述式](/sql/t-sql/statements/insert-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)單次載入小型資料表，或甚至定期重新載入查閱，可能會與使用 `INSERT INTO MyLookup VALUES (1, 'Type 1')` 之類的陳述式有一樣好的效果。  不過，單一插入的效率不如執行大量載入。
 
 如果您整天有數千個或更多單一插入，請將插入分批，以便進行大量載入。  開發將單一插入附加至檔案的程序，然後建立另一個可定期載入檔案的程序。
 
 ## <a name="create-statistics-after-the-load"></a>建立載入後的統計資料
 
-為了改善查詢效能，在首次載入資料或資料發生重大變更之後，建立所有資料表的所有資料行統計資料非常重要。  這可以手動完成，也可以啟用 [自動建立統計資料](../sql-data-warehouse/sql-data-warehouse-tables-statistics.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
+若要改善查詢效能，請務必在第一次載入或資料中發生重大變更之後，針對所有資料表的所有資料行建立統計資料。 建立統計資料可以手動完成，也可以啟用 [自動建立統計資料](../sql-data-warehouse/sql-data-warehouse-tables-statistics.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
 
 如需統計資料的詳細說明，請參閱[統計資料](develop-tables-statistics.md)。 下列範例顯示如何在 Customer_Speed 資料表的五個數據行上手動建立統計資料。
 
@@ -124,7 +124,7 @@ create statistics [YearMeasured] on [Customer_Speed] ([YearMeasured]);
 
 若要輪替 Azure 儲存體帳戶金鑰：
 
-對於金鑰已變更的每個儲存體帳戶，發出 [ALTER DATABASE SCOPED CREDENTIAL](/sql/t-sql/statements/alter-database-scoped-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)。
+對於金鑰已變更的每個儲存體帳戶，發出 [ALTER DATABASE SCOPED CREDENTIAL](/sql/t-sql/statements/alter-database-scoped-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。
 
 範例：
 
@@ -142,7 +142,7 @@ ALTER DATABASE SCOPED CREDENTIAL my_credential WITH IDENTITY = 'my_identity', SE
 
 不需要對基礎外部資料來源進行其他變更。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 若要深入瞭解 PolyBase 以及設計 (ELT) 進程的解壓縮、載入和轉換，請參閱 [為 Azure Synapse Analytics 設計 ELT](../sql-data-warehouse/design-elt-data-loading.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
 - 如需載入教學課程，請 [使用 PolyBase 將資料從 Azure blob 儲存體載入至 Azure Synapse Analytics](../sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 3cb35cdf217d497b612dee12aedb869b0583e464
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 556177b0f3eb156f5b128995cb81555aa77bc8d2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90986697"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289900"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure 資訊安全中心的新功能
 
@@ -288,7 +288,7 @@ Pod 安全性原則 (預覽版) 淘汰之後，您必須使用已被取代的功
 
 當安全中心識別未啟用安全性預設值的 Azure 訂用帳戶時，現在會提供安全性建議。 到目前為止，安全性中心建議使用條件式存取啟用多重要素驗證，這是 Azure Active Directory (AD) premium 授權的一部分。 針對使用免費 Azure AD 的客戶，我們現在建議啟用安全性預設值。 
 
-我們的目標是鼓勵更多客戶使用 MFA 來保護其雲端環境，並減輕也是您的 [安全分數](https://docs.microsoft.com/azure/security-center/secure-score-security-controls)最具影響力的其中一項最高風險。
+我們的目標是鼓勵更多客戶使用 MFA 來保護其雲端環境，並減輕也是您的 [安全分數](secure-score-security-controls.md)最具影響力的其中一項最高風險。
 
 深入瞭解 [安全性預設值](https://docs.microsoft.com/azure/active-directory/fundamentals/concept-fundamentals-security-defaults)。
 
@@ -429,7 +429,7 @@ Azure 儲存體的威脅防護會偵測 Azure 儲存體帳戶可能有害的活�
 
 在 [ [安全性建議參考] 頁面](recommendations-reference.md)中，深入瞭解上述各項。
 
-深入瞭解 [Azure 資訊安全中心中的威脅防護](https://docs.microsoft.com/azure/security-center/threat-protection)。
+深入瞭解 [Azure 資訊安全中心中的威脅防護](azure-defender.md)。
 
 
 
@@ -442,13 +442,13 @@ Azure 儲存體的威脅防護會偵測 Azure 儲存體帳戶可能有害的活�
 
 若要深入瞭解資訊安全中心的容器安全性，請閱讀下列文章：
 
-- [簡介安全性中心的容器安全性功能](https://docs.microsoft.com/azure/security-center/container-security)
-- [與 Azure Container Registry 整合的詳細資料](https://docs.microsoft.com/azure/security-center/azure-container-registry-integration)
-- [與 Azure Kubernetes Service 整合的詳細資料](https://docs.microsoft.com/azure/security-center/azure-kubernetes-service-integration)
-- [如何掃描您的登錄並強化您的 Docker 主機](https://docs.microsoft.com/azure/security-center/monitor-container-security)
-- [Azure Kubernetes Service 叢集威脅防護功能的安全性警示](https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-akscluster)
-- [Azure Kubernetes Service 主機威脅防護功能的安全性警示](https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-containerhost)
-- [容器的安全性建議](https://docs.microsoft.com/azure/security-center/recommendations-reference#recs-containers)
+- [簡介安全性中心的容器安全性功能](container-security.md)
+- [與 Azure Container Registry 整合的詳細資料](defender-for-container-registries-introduction.md)
+- [與 Azure Kubernetes Service 整合的詳細資料](defender-for-kubernetes-introduction.md)
+- [如何掃描您的登錄並強化您的 Docker 主機](container-security.md)
+- [Azure Kubernetes Service 叢集威脅防護功能的安全性警示](alerts-reference.md#alerts-akscluster)
+- [Azure Kubernetes Service 主機威脅防護功能的安全性警示](alerts-reference.md#alerts-containerhost)
+- [容器的安全性建議](recommendations-reference.md#recs-containers)
 
 
 
@@ -537,10 +537,9 @@ Advanced data security 為您的 SQL 電腦提供了弱點評定和先進的威�
 
 在 [ [計算和應用程式建議](recommendations-reference.md#recs-computeapp) ] 資料表中深入瞭解這兩個新的建議。
 
-深入瞭解 Azure 資訊安全中心如何使用 [Log Analytics 代理程式](https://docs.microsoft.com/azure/security-center/faq-data-collection-agents#what-is-the-log-analytics-agent)中的代理程式？。
+深入瞭解 Azure 資訊安全中心如何使用 [Log Analytics 代理程式](faq-data-collection-agents.md#what-is-the-log-analytics-agent)中的代理程式？。
 
-深入瞭解 [Azure Arc 電腦的擴充](https://docs.microsoft.com/azure/azure-arc/servers/manage-vm-extensions#enable-extensions-from-the-portal)功能。
-
+深入瞭解 [Azure Arc 電腦的擴充](../azure-arc/servers/manage-vm-extensions.md#enable-extensions-from-the-portal)功能。
 
 
 ### <a name="new-policies-to-create-continuous-export-and-workflow-automation-configurations-at-scale"></a>可大規模建立連續匯出和工作流程自動化設定的新原則
@@ -597,7 +596,7 @@ Advanced data security 為您的 SQL 電腦提供了弱點評定和先進的威�
 | [應在虛擬機器上啟用進階威脅防護](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f4da35fc9-c9e7-4960-aec9-797fe7d9051d)           | 4da35fc9-c9e7-4960-aec9-797fe7d9051d |
 |                                                                                                                                                                                                                                                                       |                                      |
 
-深入瞭解 [Azure 資訊安全中心中的威脅防護](https://docs.microsoft.com/azure/security-center/threat-protection)。
+深入瞭解 [Azure 資訊安全中心中的威脅防護](azure-defender.md)。
 
 
 
@@ -721,7 +720,7 @@ Advanced data security 為您的 SQL 電腦提供了弱點評定和先進的威�
 
 ### <a name="crash-dump-analysis-capabilities-migrating-to-fileless-attack-detection"></a>損毀傾印分析功能移轉至無檔案攻擊偵測 
 
-我們會將 Windows 損毀傾印分析 (CDA) 偵測功能整合到[無檔案攻擊偵測](https://docs.microsoft.com/azure/security-center/threat-protection#windows-fileless)。 無檔案攻擊偵測分析會針對 Windows 機器引進下列安全性警示的改良版本：探索到程式碼插入、偵測到偽裝的 Windows 模組、發現的程式碼，以及偵測到可疑的程式碼片段。
+我們會將 Windows 損毀傾印分析 (CDA) 偵測功能整合到[無檔案攻擊偵測](defender-for-servers-introduction.md#what-are-the-benefits-of-azure-defender-for-servers)。 無檔案攻擊偵測分析會針對 Windows 機器引進下列安全性警示的改良版本：探索到程式碼插入、偵測到偽裝的 Windows 模組、發現的程式碼，以及偵測到可疑的程式碼片段。
 
 此轉換的一些優點：
 

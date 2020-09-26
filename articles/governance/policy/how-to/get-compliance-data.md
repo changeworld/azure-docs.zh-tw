@@ -3,12 +3,12 @@ title: 取得原則合規性資料
 description: Azure 原則評估和效果會決定合規性。 了解如何取得 Azure 資源的合規性詳細資料。
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 2ab75bdab0dcf910da91eb60b5f0cf23892d6c51
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 83bf00710346193a89b59c6a72a0e4840dd5abfb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90895422"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91291009"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>取得 Azure 資源的合規性資料
 
@@ -605,12 +605,17 @@ PolicyDefinitionAction     : deny
 PolicyDefinitionCategory   : tbd
 ```
 
-範例：取得與不符合規範虛擬網路資源相關且在特定日期後發生的事件。
+範例：取得與不相容的虛擬網路資源相關的事件，這些資源會在特定日期之後發生、轉換成 CSV 物件，以及匯出至檔案。
 
 ```azurepowershell-interactive
-PS> Get-AzPolicyEvent -Filter "ResourceType eq '/Microsoft.Network/virtualNetworks'" -From '2018-05-19'
+$policyEvents = Get-AzPolicyEvent -Filter "ResourceType eq '/Microsoft.Network/virtualNetworks'" -From '2020-09-19'
+$policyEvents | ConvertTo-Csv | Out-File 'C:\temp\policyEvents.csv'
+```
 
-Timestamp                  : 5/19/2018 5:18:53 AM
+物件的輸出 `$policyEvents` 看起來如下所示：
+
+```output
+Timestamp                  : 9/19/2020 5:18:53 AM
 ResourceId                 : /subscriptions/{subscriptionId}/resourceGroups/RG-Tags/providers/Mi
                              crosoft.Network/virtualNetworks/RG-Tags-vnet
 PolicyAssignmentId         : /subscriptions/{subscriptionId}/resourceGroups/RG-Tags/providers/Mi
@@ -642,7 +647,7 @@ Trent Baker
 
 ## <a name="azure-monitor-logs"></a>Azure 監視器記錄
 
-如果您有一個 [Log Analytics 工作區](../../../azure-monitor/log-query/log-query-overview.md)，其中來自[活動記錄分析解決方案](../../../azure-monitor/platform/activity-log.md)的 `AzureActivity` 解決方案已繫結至您的訂用帳戶，則您也可以使用簡單的 Kusto 查詢和 `AzureActivity` 資料表，以檢視來自評估週期的不符合規範結果。 有了「Azure 監視器」記錄中的詳細資料，您便可以設定警示來監看不符合規範的情況。
+如果您的 [Log Analytics 工作區](../../../azure-monitor/log-query/log-query-overview.md) 與 `AzureActivity` 您的訂用帳戶系結的 [活動記錄分析解決方案](../../../azure-monitor/platform/activity-log.md) 中，您也可以使用簡單的 Kusto 查詢和資料表，從評估新的和更新的資源來查看不符合規範的結果 `AzureActivity` 。 有了「Azure 監視器」記錄中的詳細資料，您便可以設定警示來監看不符合規範的情況。
 
 :::image type="content" source="../media/getting-compliance-data/compliance-loganalytics.png" alt-text="Azure 監視器記錄的螢幕擷取畫面，其中顯示 AzureActivity 資料表中 Azure 原則動作。" border="false":::
 

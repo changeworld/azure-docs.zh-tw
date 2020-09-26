@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: 80658839e804112ae9c8a049943bca54441b015b
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: cd80f0b2a5e2ad1fd4c2cff73728d57a2beafc7e
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89437389"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361512"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---single-tenant-app"></a>在單一租用戶應用程式中使用擷取的資料執行跨租用戶分析
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -36,7 +36,7 @@ ms.locfileid: "89437389"
 > - 查詢分析資料庫。
 > - 針對資料視覺效果使用 Power BI，反白顯示租用戶資料的趨勢，並對改善提出建議。
 
-![architectureOverView](./media/saas-tenancy-tenant-analytics/architectureOverview.png)
+![下圖顯示本文所使用的架構。](./media/saas-tenancy-tenant-analytics/architectureOverview.png)
 
 ## <a name="offline-tenant-analytics-pattern"></a>離線租用戶分析模式
 
@@ -65,7 +65,7 @@ ms.locfileid: "89437389"
 
 ## <a name="setup"></a>安裝程式
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>Prerequisites
 
 若要完成本教學課程，請確定符合下列必要條件：
 
@@ -138,7 +138,7 @@ ms.locfileid: "89437389"
 4. 按下 F5 以執行指令碼，該指令碼會建立和執行作業，從每個租用戶資料庫擷取票證和客戶資料。 作業會將資料儲存至分析存放區。
 5. 查詢 tenantanalytics 資料庫中的 TicketsRawData 資料表，以確定資料表已填入來自所有租用戶的票證資訊。
 
-![ticketExtracts](./media/saas-tenancy-tenant-analytics/ticketExtracts.png)
+![螢幕擷取畫面顯示在物件總管中選取 TicketsRawData d b o 的 ExtractTickets 資料庫。](./media/saas-tenancy-tenant-analytics/ticketExtracts.png)
 
 重複上述步驟，但是這次在步驟 2 中將 **\ExtractTickets.sql** 取代為 **\ExtractVenuesEvents.sql**。
 
@@ -177,7 +177,7 @@ ms.locfileid: "89437389"
 
 5. 選取左窗格中的 [ **資料庫** ]，然後輸入 [使用者名稱 = *開發人員*]，然後輸入 password = *P \@ ssword1*。 按一下 [ **連接**]。  
 
-    ![databasesignin](./media/saas-tenancy-tenant-analytics/databaseSignIn.PNG)
+    ![螢幕擷取畫面顯示 [SQL Server 資料庫] 對話方塊，您可以在其中輸入使用者名稱和密碼。](./media/saas-tenancy-tenant-analytics/databaseSignIn.PNG)
 
 6. 在分析資料庫底下的 [導覽]**** 窗格中，選取星狀結構描述資料表：fact_Tickets dim_Events、dim_Venues、dim_Customers 和 dim_Dates。 然後選取 [載入]****。 
 
@@ -185,13 +185,13 @@ ms.locfileid: "89437389"
 
 您會從分析票證銷售資料來查看跨地點之使用方式的變化來開始。 在 Power BI 中選取下列選項，以依據每個地點銷售的票證總數，繪製橫條圖。 由於票證產生器中的隨機變化，您的結果可能會不同。
  
-![TotalTicketsByVenues](./media/saas-tenancy-tenant-analytics/TotalTicketsByVenues.PNG)
+![螢幕擷取畫面會顯示 Power bi 視覺效果，以及右邊資料視覺效果的控制項。](./media/saas-tenancy-tenant-analytics/TotalTicketsByVenues.PNG)
 
 上圖確認每個地點銷售的票證數目會有所不同。 銷售較多票證的地點會比銷售較少票證的地點更常使用您的服務。 有機會根據不同的租用戶需求，量身打造資源配置。
 
 您可以進一步分析資料，以查看票證銷售如何隨著時間而變化。 在 Power BI 中選取下列選項，以繪製 60 天期間內每天的票證銷售總數。
  
-![SaleVersusDate](./media/saas-tenancy-tenant-analytics/SaleVersusDate.PNG)
+![螢幕擷取畫面顯示 Power bi 視覺效果，標題為 [票證銷售分配] 與 [銷售日]。](./media/saas-tenancy-tenant-analytics/SaleVersusDate.PNG)
 
 上述圖表會顯示某些地點的該票證銷售尖峰。 這些尖峰會強化某些地點可能不成比例地耗用系統資源的概念。 目前為止何時出現尖峰並沒有任何明顯模式。
 
@@ -217,7 +217,7 @@ AverageTicketsSold = AVERAGEX( SUMMARIZE( TableName, TableName[Venue Name] ), CA
 
 選取下列視覺效果選項，來繪製每個地點銷售票證的百分比，決定其相對成功程度。
 
-![AvgTicketsByVenues](./media/saas-tenancy-tenant-analytics/AvgTicketsByVenues.PNG)
+![螢幕擷取畫面顯示 Power bi 視覺效果，標題為每個場地銷售的平均票證。](./media/saas-tenancy-tenant-analytics/AvgTicketsByVenues.PNG)
 
 上圖顯示即使大部分地點銷售票證的 80% 以上，但是有一些地點連填滿一半的座位都辦不到。 試用 Values Well 以選取每個地點銷售票證的最大或最小百分比。
 

@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 07/10/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 3214ce260fa4981b8ac970bdf3520ecd7de59e18
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 47df04a0195c4cfcc4e40db5bf21387a284f682c
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90985574"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362243"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>使用 Azure Machine Learning 建立、檢閱和部署自動化機器學習模型
 
@@ -143,7 +143,7 @@ ms.locfileid: "90985574"
 
 1.  (選擇性的) View 特徵化設定：如果您選擇在 [**其他設定**] 表單中啟用**自動特徵化**，則會套用預設的特徵化技術。 在 **View 特徵化設定** 中，您可以變更這些預設值，並據以進行自訂。 瞭解如何 [自訂 featurizations](#customize-featurization)。 
 
-    ![Azure Machine Learning studio 工作類型表單](media/how-to-use-automated-ml-for-ml-models/view-featurization-settings.png)
+    ![螢幕擷取畫面顯示 [選取工作類型] 對話方塊，其中已呼叫 [View 特徵化 settings]。](media/how-to-use-automated-ml-for-ml-models/view-featurization-settings.png)
 
 ## <a name="customize-featurization"></a>自訂特徵化
 

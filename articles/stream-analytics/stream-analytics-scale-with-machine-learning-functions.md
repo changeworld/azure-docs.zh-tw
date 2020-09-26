@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 03/16/2020
-ms.openlocfilehash: 1493a15a97ca88d0ed914f78b1906088c03dff10
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: a0cc70f5bf994e03088511a0d10796746a434bd7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86037404"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91300304"
 ---
 # <a name="scale-your-stream-analytics-job-with-azure-machine-learning-studio-classic-functions"></a>使用 Azure Machine Learning Studio (傳統版) 函式調整串流分析作業
 
@@ -25,7 +25,7 @@ ms.locfileid: "86037404"
 
 串流分析中的 Machine Learning 函式可如同一般函式呼叫使用於串流分析查詢語言中。 不過，在幕後，這些函式呼叫實際上是 Azure Machine Learning Web 服務要求。
 
-您可以藉由在相同的 Web 服務 API 呼叫中同時「批次處理」多個資料列，來改善 Machine Learning Web 服務要求的輸送量。 此群組稱為「迷你批次」。 如需詳細資訊，請參閱 [Azure Machine Learning Studio (傳統版) Web 服務](../machine-learning/studio/consume-web-services.md)。 串流分析中的 Azure Machine Learning Studio (傳統版) 支援處於預覽狀態。
+您可以藉由在相同的 Web 服務 API 呼叫中同時「批次處理」多個資料列，來改善 Machine Learning Web 服務要求的輸送量。 此群組稱為「迷你批次」。 如需詳細資訊，請參閱 [Azure Machine Learning Studio (傳統版) Web 服務](../machine-learning/classic/consume-web-services.md)。 串流分析中的 Azure Machine Learning Studio (傳統版) 支援處於預覽狀態。
 
 ## <a name="configure-a-stream-analytics-job-with-machine-learning-functions"></a>使用 Machine Learning 函式設定串流分析作業
 
@@ -58,7 +58,7 @@ ms.locfileid: "86037404"
 
 您也可以設定 Machine Learning Web 服務的「同時呼叫數上限」。 建議將此參數設定為最大值 (目前為200)。
 
-如需此設定的詳細資訊，請參閱 [Machine Learning Web 服務的調整文章](../machine-learning/studio/create-endpoint.md)。
+如需此設定的詳細資訊，請參閱 [Machine Learning Web 服務的調整文章](../machine-learning/classic/create-endpoint.md)。
 
 ## <a name="example--sentiment-analysis"></a>範例 – 情感分析
 以下範例包含具有情感分析 Machine Learning 函式的串流分析作業，如 [串流分析 Machine Learning 整合教學課程](stream-analytics-machine-learning-integration-tutorial.md)所述。
