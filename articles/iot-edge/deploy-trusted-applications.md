@@ -5,14 +5,14 @@ author: kgremban
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 09/15/2020
+ms.date: 09/25/2020
 ms.author: kgremban
-ms.openlocfilehash: 3a43d7e3e406e4a248e0ac2c27fb74a2f1b036cf
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: d81cc6c94c04c683362fd12cd6777c304a4b0a84
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936855"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361971"
 ---
 # <a name="confidential-computing-at-the-edge"></a>邊緣的機密計算
 
@@ -42,8 +42,8 @@ Open 記憶體保護區支援多個硬體平臺。 記憶體保護區的 IoT Edg
 
 Open 記憶體保護區存放庫也包含可協助開發人員開始使用的範例。 如需詳細資訊，請選擇其中一篇簡介文章：
 
-* [在 Linux 上建立開放式記憶體保護區 SDK 範例](https://github.com/openenclave/openenclave/blob/master/samples/README_Linux.md)
-* [在 Windows 上建立開放式記憶體保護區 SDK 範例](https://github.com/openenclave/openenclave/blob/master/samples/README_Windows.md)
+* [在 Linux 上建立開放式記憶體保護區 SDK 範例](https://github.com/openenclave/openenclave/blob/master/samples/BuildSamplesLinux.md)
+* [在 Windows 上建立開放式記憶體保護區 SDK 範例](https://github.com/openenclave/openenclave/blob/master/samples/BuildSamplesWindows.md)
 
 ## <a name="hardware"></a>硬體
 
@@ -55,6 +55,6 @@ Open 記憶體保護區存放庫也包含可協助開發人員開始使用的範
 
 當您準備好開發和部署受信任的應用程式時，適用于 Visual Studio Code 的 [Microsoft Open 記憶體保護區](https://marketplace.visualstudio.com/items?itemName=ms-iot.msiot-vscode-openenclave) 延伸模組可提供協助。 您可以使用 Linux 或 Windows 作為開發電腦，以開發適用于 TrustBox 的模組。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 瞭解如何使用[適用于 Visual Studio Code 的 Open 記憶體保護區擴充](https://github.com/openenclave/openenclave/tree/master/devex/vscode-extension)功能，以 IoT Edge 模組開始開發受信任的應用程式

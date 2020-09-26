@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: arvinh
-ms.openlocfilehash: ef87a1c7163825fcee8f4a27408719839d8a6d43
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: e908c8d19a4640995c536580b6584558212ada3e
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549699"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361564"
 ---
 # <a name="tutorial-configure-linkedin-sales-navigator-for-automatic-user-provisioning"></a>教學課程︰設定 LinkedIn Sales Navigator 來自動佈建使用者
 
@@ -71,12 +71,12 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
     > [!NOTE]
     > 若未啟用自動指派授權，表示只有使用者資料會同步處理。
 
-    ![LinkedIn Sales Navigator 佈建](./media/linkedinsalesnavigator-provisioning-tutorial/linkedin_1.PNG)
+    ![螢幕擷取畫面顯示 LinkedIn 帳戶中心的全域設定。](./media/linkedinsalesnavigator-provisioning-tutorial/linkedin_1.PNG)
 
     > [!NOTE]
     > 若啟用自動指派授權，您需要記下應用程式執行個體及授權類型。 授權的指派採取先到先拿原則，一直到所有授權都指派完為止。
 
-    ![LinkedIn Sales Navigator 佈建](./media/linkedinsalesnavigator-provisioning-tutorial/linkedin_2.PNG)
+    ![螢幕擷取畫面顯示 S C I M 設定頁面。](./media/linkedinsalesnavigator-provisioning-tutorial/linkedin_2.PNG)
 
 5. 按一下 [產生權杖]****。 您應該會看到您的存取權杖顯示在存取權杖]**** 欄位下。
 
@@ -90,7 +90,7 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 10. 將 [佈建模式] 設定為 [自動]。
 
-    ![LinkedIn Sales Navigator 佈建](./media/linkedinsalesnavigator-provisioning-tutorial/linkedin_3.PNG)
+    ![顯示 LinkedIn 提高布建頁面的螢幕擷取畫面。](./media/linkedinsalesnavigator-provisioning-tutorial/linkedin_3.PNG)
 
 11. 填寫 [系統管理員認證]**** 底下的下列欄位：
 
@@ -102,15 +102,15 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 12. 在 [通知電子郵件]**** 欄位中輸入應收到佈建錯誤通知的個人或群組之電子郵件地址，然後勾選下列核取方塊。
 
-13. 按一下 [檔案] 。
+13. 按一下 [檔案]  。
 
 14. 在 [屬性對應]**** 區段中，檢閱將從 Azure AD 同步至 LinkedIn Sales Navigator 的使用者和群組屬性。 請注意，選取為 [比對]**** 屬性的屬性會用來比對 LinkedIn Sales Navigator 中的使用者帳戶和群組以進行更新作業。 選取 [儲存] 按鈕以認可任何變更。
 
-    ![LinkedIn Sales Navigator 佈建](./media/linkedinsalesnavigator-provisioning-tutorial/linkedin_4.PNG)
+    ![顯示對應的螢幕擷取畫面，包括屬性對應。](./media/linkedinsalesnavigator-provisioning-tutorial/linkedin_4.PNG)
 
 15. 若要啟用 LinkedIn Sales Navigator 的 Azure AD 佈建服務，在 [設定]**** 區段中，將 [佈建狀態]**** 變更為 [開啟]****
 
-16. 按一下 [檔案] 。
+16. 按一下 [檔案]  。
 
 這會啟動在 [使用者和群組] 區段中指派給 LinkedIn Sales Navigator 的任何使用者和/或群組之初始同步處理。 請注意，初始同步處理會比後續同步處理花費更多時間執行，只要服務正在執行，這大約每 40 分鐘便會發生一次。 您可以使用 [同步處理詳細資料]**** 區段來監視進度，並依循連結前往佈建活動記錄，此記錄會描述您 LinkedIn Sales Navigator 應用程式上佈建服務所執行的所有動作。
 

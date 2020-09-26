@@ -14,28 +14,30 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 07/28/2020
 ms.author: b-juche
-ms.openlocfilehash: 9bb3e93b99ce8d5a61501d417a71e5e38753f5ff
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: da7aa0889940c560df705e3c47f5ccb1960aee2c
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87513021"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361019"
 ---
 # <a name="delegate-a-subnet-to-azure-netapp-files"></a>將子網路委派至 Azure NetApp Files 
 
 您必須將子網路委派至 Azure NetApp Files。   在建立磁碟區時，您必須指定已委派的子網路。
 
 ## <a name="considerations"></a>考量
-* 新建子網路的精靈會預設為 /24 網路遮罩，供 251 個可用的 IP 位址使用。 使用/28 網路遮罩（提供11個可用的 IP 位址）就足以應付服務。
+
+* 新建子網路的精靈會預設為 /24 網路遮罩，供 251 個可用的 IP 位址使用。 使用/28 網路遮罩（提供11個可用的 IP 位址）對服務已足夠。
 * 在每個 Azure 虛擬網路 (VNet) 中，都只有一個子網路可委派給 Azure NetApp Files。   
-   Azure 可讓您在 VNet 中建立多個委派的子網。  不過，如果您使用一個以上的委派子網，嘗試建立新的磁片區將會失敗。  
-   VNet 中只能有一個委派的子網。 NetApp 帳戶可以將磁片區部署到多個 Vnet，每個都有自己的委派子網。  
+   Azure 可讓您在 VNet 中建立多個委派的子網。  但是，如果您使用多個委派的子網，任何嘗試建立新磁片區的嘗試都會失敗。  
+   VNet 中只能有一個委派的子網。 NetApp 帳戶可將磁片區部署到多個 Vnet，每個都有自己的委派子網。  
 * 您無法在已委派的子網路中指定網路安全性群組或服務端點。 這樣做會導致子網路委派失敗。
 * 目前不支援從全域對等互連的虛擬網路存取磁片區。
-* 不支援在已委派給 Azure NetApp Files 的子網中，于具有位址首碼（目的地）的 VM 子網上建立[使用者定義的自訂路由](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#custom-routes)。 這麼做會影響 VM 連線能力。
+* 不支援在已委派至 Azure NetApp Files 的子網中，于具有位址首碼 (目的地) 的 VM 子網上建立 [使用者定義的自訂路由](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#custom-routes) 。 這麼做會影響 VM 連線能力。 Azure NetApp Files 會對委派的子網建立系統路由。 如果您需要路由表以進行疑難排解，則路由會顯示在路由表的 **有效路由** 中。
 
-## <a name="steps"></a>步驟 
-1.  從 Azure 入口網站移至 [虛擬網路]**** 刀鋒視窗，並選取要用於 Azure NetApp Files 的虛擬網路。    
+## <a name="steps"></a>步驟
+
+1.  移至 Azure 入口網站中的 [ **虛擬網路** ] 分頁，然後選取您想要用於 Azure NetApp Files 的虛擬網路。    
 
 1. 在 [虛擬網路] 刀鋒視窗中選取 [子網路]****，然後按一下 [+ 子網路]**** 按鈕。 
 
@@ -48,7 +50,8 @@ ms.locfileid: "87513021"
     
 您也可以在[建立 Azure NetApp Files 的磁碟區](azure-netapp-files-create-volumes.md)時建立及委派子網路。 
 
-## <a name="next-steps"></a>後續步驟  
+## <a name="next-steps"></a>後續步驟
+
 * [建立適用於 Azure NetApp Files 的磁碟區](azure-netapp-files-create-volumes.md)
 * [了解 Azure 服務的虛擬網路整合](https://docs.microsoft.com/azure/virtual-network/virtual-network-for-azure-services)
 

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: troubleshooting, contperfq4
 ms.date: 08/13/2020
-ms.openlocfilehash: 1524e51fff64b00a798f15425973145feee730fe
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 67ab15a6b890bc5f28cd18fca8a35adbc7437778
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651651"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91280975"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Azure Machine Learning 的已知問題與疑難排解
 
@@ -291,12 +291,12 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
 
 * **ModuleErrors (沒有名稱為) 的模組 **：如果您在 Azure ML 中提交實驗時遇到 ModuleErrors，這表示定型腳本預期會安裝套件，但不會新增套件。 提供套件名稱之後，Azure ML 會在用於定型回合的環境中安裝套件。 
 
-    如果您使用 [估算器](concept-azure-machine-learning-architecture.md#estimators) 來提交實驗，您可以 `pip_packages` `conda_packages` 根據您要安裝套件的來源，在估算器中透過或參數指定封裝名稱。 您也可以使用來指定具有所有相依性的 yml 檔案， `conda_dependencies_file` 或使用參數列出 txt 檔案中的所有 pip 需求 `pip_requirements_file` 。 如果您有自己的 Azure ML 環境物件，而您想要覆寫估算器所使用的預設映射，您可以透過估算器函式的參數來指定該環境 `environment` 。
+    如果您使用估算器來提交實驗，您可以 `pip_packages` `conda_packages` 根據您要安裝套件的來源，在估算器中透過或參數指定封裝名稱。 您也可以使用來指定具有所有相依性的 yml 檔案， `conda_dependencies_file` 或使用參數列出 txt 檔案中的所有 pip 需求 `pip_requirements_file` 。 如果您有自己的 Azure ML 環境物件，而您想要覆寫估算器所使用的預設映射，您可以透過估算器函式的參數來指定該環境 `environment` 。
 
     Azure ML 也提供適用于 TensorFlow、PyTorch、Chainer 和 SKLearn 的架構專屬估算器。 使用這些估算器可確保您在用於定型的環境中，代表您安裝了 core framework 相依性。 您可以選擇指定額外的相依性，如上所述。 
  
     您可以在 [AzureML 容器](https://github.com/Azure/AzureML-Containers)中看到 Azure ML 維護的 docker 映射及其內容。
-    架構特有的相依性列在個別的架構檔中- [Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py#&preserve-view=trueremarks)、 [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py#&preserve-view=trueremarks)、 [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py#&preserve-view=trueremarks)、 [SKLearn](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py#&preserve-view=trueremarks)。
+    架構特有的相依性列在個別的架構檔中- [Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py&preserve-view=true#&preserve-view=trueremarks)、 [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py&preserve-view=true#&preserve-view=trueremarks)、 [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py&preserve-view=true#&preserve-view=trueremarks)、 [SKLearn](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py&preserve-view=true#&preserve-view=trueremarks)。
 
     > [!Note]
     > 如果您認為特定套件在 Azure ML 維護的映射和環境中有很大的不足，請在 [AzureML 容器](https://github.com/Azure/AzureML-Containers)中提出 GitHub 問題。 
@@ -305,7 +305,7 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
 
 * **Horovod 已關閉**：在大部分情況下，如果您遇到「AbortedError： Horovod 已關閉」這個例外狀況，就表示其中一個處理常式的基礎例外狀況導致 Horovod 關機。 MPI 作業中的每個排名都會在 Azure ML 中取得專屬的記錄檔。 這些記錄會命名為 `70_driver_logs` 。 在分散式訓練的情況下，記錄檔名稱會加上尾碼， `_rank` 以方便區分記錄檔。 若要找出造成 Horovod 關機的確切錯誤，請流覽所有記錄檔，然後 `Traceback` 在 driver_log 檔案的結尾尋找。 其中一個檔案將提供實際的根本例外狀況。 
 
-* **執行或實驗刪除**：您可以使用 [實驗.](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment(class)?view=azure-ml-py#&preserve-view=truearchive--) 封存方法來封存實驗，或從 Azure Machine Learning Studio 用戶端的實驗索引標籤中，透過 [封存實驗] 按鈕來封存實驗。 此動作會從清單查詢和 views 中隱藏實驗，但不會將其刪除。
+* **執行或實驗刪除**：您可以使用 [實驗.](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truearchive--) 封存方法來封存實驗，或從 Azure Machine Learning Studio 用戶端的實驗索引標籤中，透過 [封存實驗] 按鈕來封存實驗。 此動作會從清單查詢和 views 中隱藏實驗，但不會將其刪除。
 
     目前不支援永久刪除個別實驗或執行。 如需有關刪除工作區資產的詳細資訊，請參閱 [匯出或刪除您的 Machine Learning 服務工作區資料](how-to-export-delete-data.md)。
 
@@ -320,7 +320,7 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
 
 ## <a name="automated-machine-learning"></a>自動化機器學習
 
-* **最新版本的 AutoML 相依性最新升級將會中斷 compatibilitity**：從 SDK 的版本1.13.0 開始，由於我們在先前的套件中釘選的舊版本與較新版本的版本不相容，因此不會在舊版 sdk 中載入模型。 您將會看到如下的錯誤：
+* **將 AutoML 相依性升級為較新版本的最新版本將會中斷相容性**：從 SDK 的版本1.13.0 開始，由於我們在先前的套件中釘選的舊版本與較新版本的版本不相容，因此不會在舊版 sdk 中載入模型。 您將會看到如下的錯誤：
   * 找不到模組：例如 `No module named 'sklearn.decomposition._truncated_svd` ，
   * 匯入錯誤：例如 `ImportError: cannot import name 'RollingOriginValidator'` ，
   * 屬性錯誤：例如 `AttributeError: 'SimpleImputer' object has no attribute 'add_indicator`
@@ -340,7 +340,7 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
     pip install --upgrade scikit-learn==0.20.3
   ```
  
-* **預測 R2 分數一律為零**：如果所提供的定型資料具有的時間序列包含與最後一個 `n_cv_splits`  +  資料點相同的值，就會發生此問題 `forecasting_horizon` 。 如果您的時間序列中應有此模式，您可以將主要計量切換為正規化的 mean 平方根誤差。
+* **預測 R2 分數一律為零**：如果所提供的定型資料具有的時間序列包含與最後一個 `n_cv_splits`  +  資料點相同的值，就會發生此問題 `forecasting_horizon` 。 如果您的時間序列中必須要有這種模式，您可以將主要計量切換為正規化的根本平方誤差。
  
 * **TensorFlow**：從 SDK 版本1.5.0 版來，自動化機器學習預設不會安裝 TensorFlow 模型。 若要安裝 TensorFlow 並搭配自動化 ML 實驗使用，請透過 CondaDependecies 安裝 TensorFlow = = 1.12.0。 
  
@@ -366,7 +366,7 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
     * 執行命令，確定已安裝 conda 64 位，而不是32位 `conda info` 。 `platform` `win-64` 適用于 Windows 或 `osx-64` Mac。
     * 確定已安裝 conda 4.4.10 或更新版本。 您可以使用命令來檢查版本 `conda -V` 。 如果您已安裝先前的版本，您可以使用下列命令來更新它： `conda update conda` 。
     * 轉銷商 `gcc: error trying to exec 'cc1plus'`
-      *  如果 `gcc: error trying to exec 'cc1plus': execvp: No such file or directory` 發生錯誤，請使用檔案命令安裝 build essentials `sudo apt-get install build-essential` 。
+      *  如果 `gcc: error trying to exec 'cc1plus': execvp: No such file or directory` 發生錯誤，請使用命令來安裝 build essentials `sudo apt-get install build-essential` 。
       * 傳遞新名稱做為 automl_setup 的第一個參數，以建立新的 conda 環境。 使用來查看現有的 conda 環境 `conda env list` ，並將其移除 `conda env remove -n <environmentname>` 。
       
 * **automl_setup_linux. sh 失敗**：如果 Ubuntu linux 上的 automl_setup_linus sh 失敗，並出現下列錯誤： `unable to execute 'gcc': No such file or directory`-
@@ -376,7 +376,7 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
   4. `automl_setup_linux.sh`重新執行
 
 * **.ipynb 失敗**：
-  * 若為本機 conda，請先確定 automl_setup 有 susccessfully 執行。
+  * 若為本機 conda，請先確定 automl_setup 已成功執行。
   * 請確定 subscription_id 正確。 選取 [所有服務]，然後選取 [訂用帳戶]，以在 Azure 入口網站中尋找 subscription_id。 字元 "<" 和 ">" 不應包含在 subscription_id 值中。 例如， `subscription_id = "12345678-90ab-1234-5678-1234567890abcd"` 具有有效的格式。
   * 確定訂用帳戶的參與者或擁有者存取權。
   * 檢查區域是否為其中一個支援的區域： `eastus2` 、 `eastus` 、 `westcentralus` 、 `southeastasia` 、 `westeurope` 、、、 `australiaeast` `westus2` `southcentralus` 。
@@ -384,21 +384,21 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
   
 * 匯**入 AutoMLConfig 失敗**：自動化機器學習版1.0.76 中有套件變更，需要先卸載舊版本，然後再更新為新版本。 如果在 `ImportError: cannot import name AutoMLConfig` v 1.0.76 至 v 1.0.76 或更新版本之前從 SDK 版本升級之後遇到，請執行下列程式來解決錯誤： `pip uninstall azureml-train automl` `pip install azureml-train-auotml` Automl_setup .cmd 腳本會自動執行此工作。 
 
-* **工作區。 from_config 失敗**：如果呼叫 Ws = workspace. from_config ( # A1 ' 失敗-
+* **workspace.from_config 失敗**：如果呼叫 ws = Workspace.from_config ( # A1 ' 失敗-
   1. 確定已成功執行 .ipynb 筆記本。
-  2. 如果正在從執行所在資料夾下的資料夾中執行筆記本 `configuration.ipynb` ，請將資料夾 aml_config，並將其包含的檔案 config.js複製到新資料夾。 工作區。 from_config 讀取筆記本資料夾或其父資料夾的 config.js。
+  2. 如果正在從執行所在資料夾下的資料夾中執行筆記本 `configuration.ipynb` ，請將資料夾 aml_config，並將其包含的檔案 config.js複製到新資料夾。 Workspace.from_config 讀取筆記本資料夾或其父資料夾的 config.js。
   3. 如果使用新的訂用帳戶、資源群組、工作區或區域，請確定您已再次執行 `configuration.ipynb` 筆記本。 如果工作區已存在於指定的訂用帳戶下的指定資源群組中，則直接變更 config.js將會運作。
   4. 如果您想要變更區域，請變更工作區、資源群組或訂用帳戶。 `Workspace.create` 將不會建立或更新工作區（如果已存在），即使指定的區域不同也是一樣。
   
-* **範例筆記本失敗**：如果範例筆記本失敗，並出現 preperty、方法或程式庫不存在的錯誤：
-  * 確定已在 jupyter 筆記本中選取 correctcorrect 核心。 核心會顯示在 [筆記本] 頁面的右上方。 預設值為 azure_automl。 請注意，核心會儲存為筆記本的一部分。 因此，如果您切換至新的 conda 環境，就必須在筆記本中選取新的核心。
+* **範例筆記本失敗**：如果範例筆記本失敗，並出現屬性、方法或程式庫不存在的錯誤：
+  * 確定已在 jupyter 筆記本中選取正確的核心。 核心會顯示在 [筆記本] 頁面的右上方。 預設值為 azure_automl。 請注意，核心會儲存為筆記本的一部分。 因此，如果您切換至新的 conda 環境，就必須在筆記本中選取新的核心。
       * 針對 Azure Notebooks，它應該是 Python 3.6。 
-      * 在本機 conda 環境中，它應該是您在 automl_setup 中指定的 conda envioronment 名稱。
+      * 在本機 conda 環境中，它應該是您在 automl_setup 中指定的 conda 環境名稱。
   * 確定筆記本適用于您所使用的 SDK 版本。 您可以在 jupyter 筆記本資料格中執行，以檢查 SDK 版本 `azureml.core.VERSION` 。 您可以從 GitHub 下載舊版範例筆記本，方法是按一下按鈕、選取索引標籤， `Branch` `Tags` 然後選取版本。
 
 * **Windows 中的 Numpy 匯入失敗**：有些 Windows 環境看到使用最新 Python 版本 3.6.8 Numpy 載入的錯誤。 如果您看到此問題，請嘗試使用 Python 版本3.6.7。
 
-* **Numpy 匯入失敗**：檢查自動化 ml conda 環境中的 tensorflow 版本。 支援的版本為 1.13 <。 如果版本為 >= 1.13，請從環境卸載 tensorflow。您可以檢查 tensorflow 的版本，並將其卸載，如下所示：
+* **Numpy 匯入失敗**：檢查自動化 ml conda 環境中的 TensorFlow 版本。 支援的版本為 1.13 <。 如果版本為 >= 1.13，請從環境卸載 TensorFlow。您可以檢查 TensorFlow 的版本，並將其卸載，如下所示：
   1. 啟動命令 shell，並啟用自動 ml 封裝的安裝 conda 環境。
   2. 輸入 `pip freeze` 並尋找， `tensorflow` 如果找到的話，所列出的版本應該是 < 1.13
   3. 如果列出的版本不是支援的版本，請 `pip uninstall tensorflow` 在命令 shell 中輸入 y 確認。
@@ -475,7 +475,7 @@ az aks get-credentials -g <rg> -n <aks cluster name>
 
 如需詳細資訊，請參閱[管理使用者和角色](how-to-assign-roles.md)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 請參閱更多關於 Azure Machine Learning 的疑難排解文章：
 

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewers: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: fe4b25dfd8bf96d1ed6dab189543e0e1b810ecd8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3542bb502bbb0d41ff6a35902bc38262c26876de
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84026929"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361716"
 ---
 # <a name="cross-tenant-reporting-using-distributed-queries"></a>使用分散式查詢跨租用戶報告
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -36,7 +36,7 @@ ms.locfileid: "84026929"
 若要完成本教學課程，請確定已完成下列必要條件：
 
 
-* 已部署 Wingtip Tickets SaaS Database Per Tenant 應用程式。 若要在五分鐘內完成部署，請參閱[部署及探索 Wingtip 票證 SaaS 資料庫每一租使用者應用程式](../../sql-database/saas-dbpertenant-get-started-deploy.md)
+* 已部署 Wingtip Tickets SaaS Database Per Tenant 應用程式。 若要在五分鐘內進行部署，請參閱 [部署和探索 Wingtip Ticket SaaS Database Per Tenant 應用程式](../../sql-database/saas-dbpertenant-get-started-deploy.md)
 * 已安裝 Azure PowerShell。 如需詳細資料，請參閱[開始使用 Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps)
 * 已安裝 SQL Server Management Studio (SSMS)。 若要下載和安裝 SSMS，請參閱[下載 SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)。
 
@@ -53,7 +53,7 @@ SaaS 應用程式的其中一個機會是使用儲存在雲端的大量租用戶
 
 ## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>取得 Wingtip Tickets SaaS Database Per Tenant 應用程式指令碼
 
-Wingtip 票證 SaaS 多租使用者資料庫腳本和應用程式原始程式碼可在[.. wingtipticketssaas-multitenantdb-master-Wingtipticketssaas-dbpertenant-master](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant) GitHub 存放庫中取得。 關於下載和解除封鎖 Wingtip Tickets SaaS 指令碼的步驟，請參閱[一般指引](saas-tenancy-wingtip-app-guidance-tips.md)。
+Wingtip Ticket SaaS 多租使用者資料庫腳本和應用程式原始程式碼可在 [>wingtipticketssaas-dbpertenant-master >wingtipticketssaas-dbpertenant-master](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant) GitHub 存放庫中取得。 關於下載和解除封鎖 Wingtip Tickets SaaS 指令碼的步驟，請參閱[一般指引](saas-tenancy-wingtip-app-guidance-tips.md)。
 
 ## <a name="create-ticket-sales-data"></a>建立票證銷售資料
 
@@ -93,10 +93,10 @@ Wingtip 票證 SaaS 多租使用者資料庫腳本和應用程式原始程式碼
 
 1. 在 [物件總管]**** 中，展開 [contosoconcethall]**** > [檢視]****：
 
-   ![檢視](./media/saas-tenancy-cross-tenant-reporting/views.png)
+   ![螢幕擷取畫面顯示 Views 節點的內容，包括四種類型的場地 d b o。](./media/saas-tenancy-cross-tenant-reporting/views.png)
 
 2. 以滑鼠右鍵按一下 **dbo.Venues**。
-3. 選取 [**腳本視圖] 做為**[  >  **建立**  >  **新的查詢編輯器] 視窗**
+3. 選取**Script View as**[  >  **建立**  >  **新查詢編輯器視窗**的腳本視圖]
 
 產生其他任何 *Venue* 檢視的指令碼，以查看如何新增 *VenueId*。
 
@@ -106,7 +106,7 @@ Wingtip 票證 SaaS 多租使用者資料庫腳本和應用程式原始程式碼
 
 1. 在 PowerShell ISE** 中開啟 ...\\Learning Modules\\Operational Analytics\\Adhoc Reporting\\Demo-AdhocReporting.ps1**。 
 
-1. 設定 **$DemoScenario = 2**，_部署隨選報表資料庫_。
+1. 設定 **$DemoScenario = 2**， _部署隨選報表資料庫_。
 
 1. 按 **F5** 以執行指令碼並建立 adhocreporting** 資料庫。
 
@@ -148,7 +148,7 @@ Wingtip 票證 SaaS 多租使用者資料庫腳本和應用程式原始程式碼
 
 檢查執行計畫時，將滑鼠停留在計畫圖示上方，以取得詳細資料。 
 
-值得注意的是，定義外部資料來源時的設定 **DISTRIBUTION = SHARDED(VenueId)** 可改善許多情況的效能。 由於每個*VenueId*都會對應至個別的資料庫，因此篩選可以從遠端執行，只傳回所需的資料。
+值得注意的是，定義外部資料來源時的設定 **DISTRIBUTION = SHARDED(VenueId)** 可改善許多情況的效能。 由於每個 *VenueId* 都對應到個別的資料庫，所以篩選會輕鬆地在遠端完成，只傳回所需的資料。
 
 1. 在 SSMS 中開啟 ...\\Learning Modules\\Operational Analytics\\Adhoc Reporting\\Demo-AdhocReportingQueries.sql**。
 2. 確定您已連線到 **adhocreporting** 資料庫。

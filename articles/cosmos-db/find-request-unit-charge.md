@@ -6,13 +6,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/01/2019
 ms.author: thweiss
-ms.custom: devx-track-javascript
-ms.openlocfilehash: d692a884688d81fdf16261edff816fa8f0215877
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: 81660bee32cace458424c9975c74ca7980148e29
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422312"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316183"
 ---
 # <a name="find-the-request-unit-charge-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中尋找要求單位費用
 
@@ -83,7 +83,7 @@ while (query.HasMoreResults)
 
 [!code-csharp[](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos/tests/Microsoft.Azure.Cosmos.Tests/SampleCodeForDocs/CustomDocsSampleCode.cs?name=GetRequestCharge)]
 
-如需詳細資訊，請參閱[快速入門：在 Azure Cosmos DB 中使用 SQL API 帳戶建立 .net web 應用程式](create-sql-api-dotnet.md)。
+如需詳細資訊，請參閱 [快速入門：在 Azure Cosmos DB 中使用 SQL API 帳戶建立 .net web 應用程式](create-sql-api-dotnet.md)。
 
 ---
 
@@ -115,7 +115,7 @@ feedResponse.forEach(result -> {
 });
 ```
 
-如需詳細資訊，請參閱[快速入門：使用 AZURE COSMOS DB SQL API 帳戶來建立 JAVA 應用程式](create-sql-api-java.md)。
+如需詳細資訊，請參閱 [快速入門：使用 AZURE COSMOS DB SQL API 帳戶建立 JAVA 應用程式](create-sql-api-java.md)。
 
 ### <a name="use-the-nodejs-sdk"></a>使用 Node.js SDK
 
@@ -150,7 +150,7 @@ while (query.hasMoreResults()) {
 }
 ```
 
-如需詳細資訊，請參閱[快速入門：使用 Azure Cosmos DB 的 SQL API 帳戶來建立 Node.js 應用程式](create-sql-api-nodejs.md)。 
+如需詳細資訊，請參閱 [快速入門：使用 AZURE COSMOS DB SQL API 帳戶建立 Node.js 應用程式](create-sql-api-nodejs.md)。 
 
 ### <a name="use-the-python-sdk"></a>使用 Python SDK
 
@@ -166,7 +166,7 @@ response = client.ExecuteStoredProcedure(
 request_charge = client.last_response_headers['x-ms-request-charge']
 ```
 
-如需詳細資訊，請參閱[快速入門：使用 AZURE COSMOS DB SQL API 帳戶建立 Python 應用程式](create-sql-api-python.md)。 
+如需詳細資訊，請參閱 [快速入門：使用 AZURE COSMOS DB SQL API 帳戶建立 Python 應用程式](create-sql-api-python.md)。 
 
 ## <a name="azure-cosmos-db-api-for-mongodb"></a>適用於 MongoDB 的 Azure Cosmos DB API
 
@@ -182,7 +182,7 @@ RU 費用可用名為 `getLastRequestStatistics` 的自訂[資料庫命令](http
 
 1. 前往 [資料總管]**** 窗格，然後選取您要處理的容器。
 
-1. 選取 [新增查詢]。
+1. 選取 [新增查詢]  。
 
 1. 輸入有效的查詢，然後選取 [執行查詢]****。
 
@@ -207,7 +207,7 @@ Dictionary<string, object> stats = database.RunCommand(new GetLastRequestStatist
 double requestCharge = (double)stats["RequestCharge"];
 ```
 
-如需詳細資訊，請參閱[快速入門：使用適用于 MongoDB 的 AZURE COSMOS DB API 建立 .net web 應用程式](create-mongodb-dotnet.md)。
+如需詳細資訊，請參閱 [快速入門：使用適用于 MongoDB 的 AZURE COSMOS DB API 建立 .net web 應用程式](create-mongodb-dotnet.md)。
 
 ### <a name="use-the-mongodb-java-driver"></a>使用 MongoDB Java 驅動程式
 
@@ -219,7 +219,7 @@ Document stats = database.runCommand(new Document("getLastRequestStatistics", 1)
 Double requestCharge = stats.getDouble("RequestCharge");
 ```
 
-如需詳細資訊，請參閱[快速入門：使用適用于 MongoDB 的 AZURE COSMOS DB API 和 JAVA SDK 來建立 web 應用程式](create-mongodb-java.md)。
+如需詳細資訊，請參閱 [快速入門：使用適用于 MongoDB 的 AZURE COSMOS DB API 和 JAVA SDK 來建立 web 應用程式](create-mongodb-java.md)。
 
 ### <a name="use-the-mongodb-nodejs-driver"></a>使用 MongoDB Node.js 驅動程式
 
@@ -232,7 +232,7 @@ db.command({ getLastRequestStatistics: 1 }, function(err, result) {
 });
 ```
 
-如需詳細資訊，請參閱[快速入門：將現有的 MongoDB Node.js web 應用程式遷移至 Azure Cosmos DB](create-mongodb-nodejs.md)。
+如需詳細資訊，請參閱 [快速入門：將現有的 MongoDB Node.js web 應用程式遷移至 Azure Cosmos DB](create-mongodb-nodejs.md)。
 
 ## <a name="cassandra-api"></a>Cassandra API
 
@@ -247,7 +247,7 @@ RowSet rowSet = session.Execute("SELECT table_name FROM system_schema.tables;");
 double requestCharge = BitConverter.ToDouble(rowSet.Info.IncomingPayload["RequestCharge"].Reverse().ToArray(), 0);
 ```
 
-如需詳細資訊，請參閱[快速入門：使用 .NET SDK 建立 Cassandra 應用程式和 Azure Cosmos DB](create-cassandra-dotnet.md)。
+如需詳細資訊，請參閱 [快速入門：使用 .NET SDK 和 Azure Cosmos DB 來建立 Cassandra 應用程式](create-cassandra-dotnet.md)。
 
 ### <a name="use-the-java-sdk"></a>使用 Java SDK
 
@@ -258,7 +258,7 @@ ResultSet resultSet = session.execute("SELECT table_name FROM system_schema.tabl
 Double requestCharge = resultSet.getExecutionInfo().getIncomingPayload().get("RequestCharge").getDouble();
 ```
 
-如需詳細資訊，請參閱[快速入門：使用 JAVA SDK 建立 Cassandra 應用程式和 Azure Cosmos DB](create-cassandra-java.md)。
+如需詳細資訊，請參閱 [快速入門：使用 JAVA SDK 和 Azure Cosmos DB 來建立 Cassandra 應用程式](create-cassandra-java.md)。
 
 ## <a name="gremlin-api"></a>Gremlin API
 
@@ -277,7 +277,7 @@ ResultSet<dynamic> results = client.SubmitAsync<dynamic>("g.V().count()").Result
 double requestCharge = (double)results.StatusAttributes["x-ms-request-charge"];
 ```
 
-如需詳細資訊，請參閱[快速入門：使用 Azure Cosmos DB GREMLIN API 帳戶來建立 .NET Framework 或核心應用程式](create-graph-dotnet.md)。
+如需詳細資訊，請參閱 [快速入門：使用 Azure Cosmos DB GREMLIN API 帳戶建立 .NET Framework 或 Core 應用程式](create-graph-dotnet.md)。
 
 ### <a name="use-the-java-sdk"></a>使用 Java SDK
 
@@ -288,7 +288,7 @@ ResultSet results = client.submit("g.V().count()");
 Double requestCharge = (Double)results.statusAttributes().get().get("x-ms-request-charge");
 ```
 
-如需詳細資訊，請參閱[快速入門：使用 JAVA SDK 在 Azure Cosmos DB 中建立圖形資料庫](create-graph-java.md)。
+如需詳細資訊，請參閱 [快速入門：使用 JAVA SDK 在 Azure Cosmos DB 中建立圖形資料庫](create-graph-java.md)。
 
 ## <a name="table-api"></a>資料表 API
 
@@ -303,7 +303,7 @@ if (tableResult.RequestCharge.HasValue) // would be false when using Azure Stora
 }
 ```
 
-如需詳細資訊，請參閱[快速入門：使用 .NET SDK 建立資料表 API 應用程式和 Azure Cosmos DB](create-table-dotnet.md)。
+如需詳細資訊，請參閱 [快速入門：使用 .NET SDK 和 Azure Cosmos DB 建立資料表 API 應用程式](create-table-dotnet.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

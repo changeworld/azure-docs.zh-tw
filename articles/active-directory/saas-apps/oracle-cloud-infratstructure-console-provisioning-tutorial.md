@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/16/2020
 ms.author: Zhchia
-ms.openlocfilehash: 7efe58081604708ff090d28f7274c738406c5007
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 665e4870619751bbda062473d0c2549b26352d94
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91255878"
+ms.locfileid: "91361597"
 ---
 # <a name="tutorial-configure-oracle-cloud-infrastructure-console-for-automatic-user-provisioning"></a>教學課程：設定 Oracle 雲端基礎結構主控台來自動布建使用者
 
@@ -108,7 +108,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
 5. 在 [系統 **管理員認證** ] 區段下，以格式輸入 **租使用者 URL** `https://<IdP ID>.identity.oraclecloud.com/admin/v1` 。 例如 `https://idcs-0bfd023ff2xx4a98a760fa2c31k92b1d.identity.oraclecloud.com/admin/v1` 。 輸入稍早在 [祕密權杖] 中所擷取的祕密權杖值。 按一下 [ **測試連接** ] 以確保 Azure AD 可以連線至 Oracle 雲端基礎結構主控台。 如果連接失敗，請確定您的 Oracle 雲端基礎結構主控台帳戶具有系統管理員許可權，然後再試一次。
 
-    ![佈建](./media/oracle-cloud-infratstructure-console-provisioning-tutorial/provisioning.png)
+    ![螢幕擷取畫面顯示 [管理認證] 對話方塊，您可以在其中輸入租使用者 U R L 和秘密權杖。](./media/oracle-cloud-infratstructure-console-provisioning-tutorial/provisioning.png)
 
 6. 在 [通知電子郵件] 欄位中，輸入應該收到佈建錯誤通知的個人或群組電子郵件地址，然後選取 [發生失敗時傳送電子郵件通知] 核取方塊。
 

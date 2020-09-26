@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.author: vaidyas
-author: vaidyas
+author: vaidya-s
 ms.reviewer: larryfr
 ms.date: 03/06/2020
 ms.topic: conceptual
 ms.custom: how-to, racking-python
-ms.openlocfilehash: b386c058a2795402cc60fddf6c187b57aec2185e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 133c885f29ceff0b8c4764507a80df5ee24cf4a1
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91328389"
+ms.locfileid: "91361722"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-preview"></a>將機器學習模型部署至 Azure Functions (preview) 
 
@@ -120,7 +120,7 @@ print(blob.location)
 
 ## <a name="deploy-image-as-a-web-app"></a>將映射部署為 web 應用程式
 
-1. 使用下列命令來取得包含映射之 Azure Container Registry 的登入認證。 取代 `<myacr>` 為先前從傳回的值 `package.location` ： 
+1. 使用下列命令來取得包含映射之 Azure Container Registry 的登入認證。 取代 `<myacr>` 為先前從傳回的值 `blob.location` ： 
 
     ```azurecli-interactive
     az acr credential show --name <myacr>
