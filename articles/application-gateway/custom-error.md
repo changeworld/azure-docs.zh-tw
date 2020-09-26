@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/16/2019
 ms.author: victorh
-ms.openlocfilehash: 953be98de855162127fd8b8b8273fe9817668db7
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: ff3e9db4dcfe0bedc348323dbbddd1e66124fc5d
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88934815"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360152"
 ---
 # <a name="create-application-gateway-custom-error-pages"></a>建立應用程式閘道的自訂錯誤頁面
 
@@ -48,7 +48,7 @@ ms.locfileid: "88934815"
 
 1. 在入口網站中瀏覽至 [應用程式閘道]，然後選擇應用程式閘道。
 
-    ![ag-overview](media/custom-error/ag-overview.png)
+    ![螢幕擷取畫面顯示應用程式閘道的 [總覽] 頁面。](media/custom-error/ag-overview.png)
 2. 按一下 [接聽程式]****，然後瀏覽至您要指定錯誤頁面的特定接聽程式。
 
     ![應用程式閘道接聽程式](media/custom-error/ag-listener.png)

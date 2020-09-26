@@ -1,21 +1,21 @@
 ---
-title: 快速將現有的應用程式部署至叢集
+title: 將現有的應用程式快速部署到叢集
 description: 使用 Azure Service Fabric 叢集來裝載現有的 Node.js 應用程式與 Visual Studio。
 ms.topic: conceptual
 ms.date: 12/06/2017
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 9b39e14b18a784274f1bac12072f4fa39de2bb87
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.custom: devx-track-js
+ms.openlocfilehash: 29278faa80340d17e9ed9093dd5f432fd24a3a2d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87430722"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91314278"
 ---
 # <a name="host-a-nodejs-application-on-azure-service-fabric"></a>在 Azure Service Fabric 上裝載 Node.js 應用程式
 
 本快速入門可協助您將現有的應用程式 (在此範例中為 Node.js) 部署到在 Azure 上執行的 Service Fabric 叢集。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 開始之前，請確定您已 [設定開發環境](service-fabric-get-started.md)。 其中包括安裝 Service Fabric SDK 和 Visual Studio 2019 或2015。
 
@@ -44,7 +44,7 @@ ms.locfileid: "87430722"
 
 | 設定                   | 值 |
 | ------------------------- | ------ |
-| 程式碼封裝資料夾       | _&lt;具有 Node.js 應用程式的資料夾&gt;_ |
+| 程式碼封裝資料夾       | _&lt;您 Node.js 應用程式的資料夾&gt;_ |
 | 程式碼封裝行為     | 將資料夾內容複製到專案 |
 | 程式                   | node.exe |
 | 引數                 | server.js |
@@ -56,7 +56,7 @@ ms.locfileid: "87430722"
 
 Visual Studio 會建立應用程式專案和動作項目服務專案，並在 [方案總管] 中加以顯示。
 
-應用程式專案（**MyGuestApp**）未直接包含任何程式碼。 專案會參考一組服務專案。 此外，它還包含三種其他類型的內容：
+應用程式專案 (**>myguestapp**) 不會直接包含任何程式碼。 專案會參考一組服務專案。 此外，它還包含三種其他類型的內容：
 
 * **發佈設定檔**  
 用來管理不同環境的工具喜好設定。
@@ -88,7 +88,7 @@ Visual Studio 會建立應用程式專案和動作項目服務專案，並在 [�
 
 ## <a name="deploy-to-azure"></a>部署至 Azure
 
-如果您按下**F5**並執行專案，則會將它部署到本機叢集。 不過，讓我們改為將它部署到 Azure。
+如果您按下 **F5** 並執行專案，它就會部署到本機叢集。 不過，讓我們改為將它部署到 Azure。
 
 以滑鼠右鍵按一下專案，然後選擇 [發佈...]**** 來開啟對話方塊，以發佈至 Azure。
 
@@ -98,7 +98,7 @@ Visual Studio 會建立應用程式專案和動作項目服務專案，並在 [�
 
 如果您先前尚未這樣做，請選擇要部署至的 Azure 帳戶。 如果您沒有 Azure 帳戶，請[註冊一個][create-account]。
 
-在 [連線端點]**** 之下，選取要部署 Service Fabric 叢集的位置。 如果您沒有，請選取 [ ** &lt; 建立新叢集 ... &gt; ** ]，以開啟 [Azure 入口網站的網頁瀏覽器視窗。 如需詳細資訊，請參閱[在入口網站中建立叢集](service-fabric-cluster-creation-via-portal.md#create-cluster-in-the-azure-portal)。 
+在 [連線端點]**** 之下，選取要部署 Service Fabric 叢集的位置。 如果您沒有帳戶，請選取 [ ** &lt; 建立新 &gt; **叢集]，這會開啟 Azure 入口網站的網頁瀏覽器視窗。 如需詳細資訊，請參閱[在入口網站中建立叢集](service-fabric-cluster-creation-via-portal.md#create-cluster-in-the-azure-portal)。 
 
 當您建立 Service Fabric 叢集時，請務必將 [自訂端點]**** 設定設為 **80**。
 
@@ -124,7 +124,7 @@ Visual Studio 會建立應用程式專案和動作項目服務專案，並在 [�
 
 ## <a name="delete-the-cluster"></a>選取叢集
 
-別忘了刪除您在本快速入門中建立的所有資源，因為您必須支付這些資源的費用。
+別忘了刪除您為本快速入門建立的所有資源，因為您需要支付這些資源的費用。
 
 ## <a name="next-steps"></a>後續步驟
 深入了解[客體可執行檔](service-fabric-guest-executables-introduction.md)。

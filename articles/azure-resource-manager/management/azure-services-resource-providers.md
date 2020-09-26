@@ -3,12 +3,12 @@ title: Azure 服務的資源提供者
 description: 列出 Azure Resource Manager 的所有資源提供者命名空間，並顯示該命名空間的 Azure 服務。
 ms.topic: conceptual
 ms.date: 09/04/2020
-ms.openlocfilehash: 34b2476b8194b8ad6f8e7e86e2644a1c0d0bbb4b
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: b740c8ee7c28bfeeaecc42121d0c7ce4a323ab3e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89483996"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330820"
 ---
 # <a name="resource-providers-for-azure-services"></a>Azure 服務的資源提供者 \(部分機器翻譯\)
 
@@ -57,7 +57,7 @@ ms.locfileid: "89483996"
 | Microsoft Commerce<sup>1</sup> | core |
 | Microsoft.Compute | [虛擬機器](../../virtual-machines/index.yml)<br />[虛擬機器擴展集](../../virtual-machine-scale-sets/index.yml) |
 | Microsoft. 耗用量<sup>1</sup> | [成本管理](/azure/cost-management/) |
-| Microsoft.ContainerInstance | [容器執行個體](../../container-instances/index.yml) |
+| Microsoft.ContainerInstance | [Container Instances](../../container-instances/index.yml) |
 | Microsoft.ContainerRegistry | [Container Registry](../../container-registry/index.yml) |
 | Microsoft.ContainerService | [Azure Kubernetes Service (AKS)](../../aks/index.yml) |
 | CostManagement<sup>1</sup> | [成本管理](/azure/cost-management/) |
@@ -69,7 +69,7 @@ ms.locfileid: "89483996"
 | Microsoft.Databricks | [Azure Databricks](/azure/azure-databricks/) |
 | Microsoft.DataCatalog | [資料目錄](../../data-catalog/index.yml) |
 | Microsoft.DataFactory | [Data Factory](../../data-factory/index.yml) |
-| Microsoft.DataLakeAnalytics | [Data Lake Analytics](../../data-lake-analytics/index.yml) |
+| Microsoft.DataLakeAnalytics | [資料湖分析](../../data-lake-analytics/index.yml) |
 | Microsoft.DataLakeStore | [Azure Data Lake Storage Gen2](../../storage/blobs/data-lake-storage-introduction.md) \(部分機器翻譯\) |
 | Microsoft.DataMigration | [Azure 資料庫移轉服務](../../dms/index.yml) |
 | Microsoft.DataProtection | 資料保護 |
@@ -81,7 +81,7 @@ ms.locfileid: "89483996"
 | Microsoft.DesktopVirtualization | [Windows 虛擬桌面](../../virtual-desktop/index.yml) |
 | Microsoft.Devices | [Azure IoT 中樞](../../iot-hub/index.yml)<br />[Azure IoT 中樞裝置佈建服務](../../iot-dps/index.yml) |
 | Microsoft.DevOps | [Azure DevOps](/azure/devops/) |
-| Microsoft.DevSpaces | [Azure Dev Spaces](../../dev-spaces/index.yml) |
+| Microsoft.DevSpaces | [Azure 開發人員空間](../../dev-spaces/index.yml) |
 | Microsoft.DevTestLab | [Azure 實驗室服務](../../lab-services/index.yml) |
 | Microsoft.DigitalTwins | [Azure Digital Twins](../../digital-twins/overview.md) |
 | Microsoft.DocumentDB | [Azure Cosmos DB](../../cosmos-db/index.yml) |
@@ -98,7 +98,7 @@ ms.locfileid: "89483996"
 | Microsoft.HealthcareApis | [適用於 FHIR 的 Azure API](../../healthcare-apis/index.yml) |
 | Microsoft.HybridCompute | [Azure Arc](../../azure-arc/index.yml) |
 | Microsoft.HybridData | [StorSimple](../../storsimple/index.yml) |
-| HybridNetwork  | Stack Edge 支援 |
+| HybridNetwork  | [私人 Edge 區域](../../networking/edge-zones-overview.md) |
 | Microsoft.ImportExport | [Azure 匯入/匯出](../../storage/common/storage-import-export-service.md) |
 | microsoft.insights | [Azure 監視器](../../azure-monitor/index.yml) |
 | Microsoft.IoTCentral | [Azure IoT 中心](../../iot-central/index.yml) |
@@ -126,7 +126,7 @@ ms.locfileid: "89483996"
 | Microsoft.Migrate | [Azure Migrate](../../migrate/migrate-services-overview.md) |
 | Microsoft.MixedReality | [Azure Spatial Anchors](../../spatial-anchors/index.yml) |
 | Microsoft.NetApp | [Azure NetApp Files](../../azure-netapp-files/index.yml) |
-| Microsoft.Network | [應用程式閘道](../../application-gateway/index.yml)<br />[Azure Bastion](../../bastion/index.yml)<br />[Azure DDoS 保護](../../virtual-network/ddos-protection-overview.md)<br />[Azure DNS](../../dns/index.yml)<br />[Azure ExpressRoute](../../expressroute/index.yml)<br />[Azure 防火牆](../../firewall/index.yml)<br />[Azure Front Door Service](../../frontdoor/index.yml)<br />[Azure Private Link](../../private-link/index.yml)<br />[負載平衡器](../../load-balancer/index.yml)<br />[網路監看員](../../network-watcher/index.yml)<br />[流量管理員](../../traffic-manager/index.yml)<br />[虛擬網路](../../virtual-network/index.yml)<br />[Virtual WAN](../../virtual-wan/index.yml)<br />[VPN 閘道](../../vpn-gateway/index.yml)<br /> |
+| Microsoft.Network | [應用程式閘道](../../application-gateway/index.yml)<br />[Azure Bastion](../../bastion/index.yml)<br />[Azure DDoS 保護](../../virtual-network/ddos-protection-overview.md)<br />[Azure DNS](../../dns/index.yml)<br />[Azure ExpressRoute](../../expressroute/index.yml)<br />[Azure 防火牆](../../firewall/index.yml)<br />[Azure Front Door Service](../../frontdoor/index.yml)<br />[Azure Private Link](../../private-link/index.yml)<br />[負載平衡器](../../load-balancer/index.yml)<br />[網路監看員](../../network-watcher/index.yml)<br />[流量管理員](../../traffic-manager/index.yml)<br />[虛擬網路](../../virtual-network/index.yml)<br />[虛擬 WAN](../../virtual-wan/index.yml)<br />[VPN 閘道](../../vpn-gateway/index.yml)<br /> |
 | Microsoft 筆記本 | [Azure Notebooks](https://notebooks.azure.com/help/introduction) |
 | Microsoft.NotificationHubs | [通知中樞](../../notification-hubs/index.yml) |
 | Microsoft.ObjectStore | 物件存放區 |
@@ -163,9 +163,9 @@ ms.locfileid: "89483996"
 | Microsoft.Solutions | [Azure 受控應用程式](../managed-applications/index.yml) |
 | Microsoft.Sql | [Azure SQL Database](../../azure-sql/database/index.yml)<br /> [Azure SQL 受控執行個體](../../azure-sql/managed-instance/index.yml) <br />[Azure Synapse Analytics](/azure/sql-data-warehouse/) |
 | Microsoft.SqlVirtualMachine | [Azure 虛擬機器上的 SQL Server](../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md) |
-| Microsoft.Storage | [存放裝置](../../storage/index.yml) |
+| Microsoft.Storage | [Storage](../../storage/index.yml) |
 | Microsoft.StorageCache | [Azure HPC Cache](../../hpc-cache/index.yml) |
-| Microsoft.StorageSync | [存放裝置](../../storage/index.yml) |
+| Microsoft.StorageSync | [Storage](../../storage/index.yml) |
 | Microsoft.StorSimple | [StorSimple](../../storsimple/index.yml) |
 | Microsoft.StreamAnalytics | [Azure 串流分析](../../stream-analytics/index.yml) |
 | Microsoft.Subscription | core |
@@ -186,6 +186,6 @@ ms.locfileid: "89483996"
 
 預設註冊<sup>1</sup>
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
-如需資源提供者的詳細資訊，包括如何註冊資源提供者，請參閱 [Azure 資源提供者和類型](resource-providers-and-types.md)
+如需資源提供者的詳細資訊，包括如何註冊資源提供者，請參閱 [Azure 資源提供者和類型](resource-providers-and-types.md)。

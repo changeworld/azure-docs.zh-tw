@@ -3,16 +3,16 @@ title: 將您的非 Azure 機器連線至 Azure 資訊安全中心
 description: 瞭解如何將您的非 Azure 機器連線至安全中心
 author: memildin
 ms.author: memildin
-ms.date: 9/12/2020
+ms.date: 9/22/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 2602df2e8a2699914ee32138a8aeba31d7f58cdb
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 82b8161f92f337002e9d8bbdc45cd53d5921fc00
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934064"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91280669"
 ---
 #  <a name="connect-your-non-azure-machines-to-security-center"></a>將您的非 Azure 機器連線至安全中心
 
@@ -96,7 +96,7 @@ ms.locfileid: "90934064"
   ![icon2](./media/quick-onboard-linux-computer/security-center-monitoring-icon2.png) Azure VM
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 此頁面說明如何將您的非 Azure 機器新增至 Azure 資訊安全中心。 若要監視其狀態，請使用下列頁面所述的清查工具：
 

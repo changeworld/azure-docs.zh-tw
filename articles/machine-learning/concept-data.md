@@ -11,12 +11,12 @@ author: nibaccam
 ms.author: nibaccam
 ms.date: 08/31/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 85aa78223b8db76cfb430341b19878bc6bbe87d7
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: ac0b3c151b379096ffb60e049d18b8f6219b1445
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651168"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91359676"
 ---
 # <a name="secure-data-access-in-azure-machine-learning"></a>Azure Machine Learning 中的安全資料存取
 
@@ -48,7 +48,7 @@ Azure Machine Learning 可讓您輕鬆地連接到雲端中的資料。  它提�
 
 下圖提供此建議工作流程的視覺化示範。
 
-![資料概念-圖表](./media/concept-data/data-concept-diagram.svg)
+![圖表顯示 Azure 儲存體服務，該服務會流入資料存放區，以流入資料集。 此資料集會流入模型定型，而這些定型會流入資料的漂移，進而流動回資料集。](./media/concept-data/data-concept-diagram.svg)
 
 ## <a name="datastores"></a>資料存放區
 
@@ -121,7 +121,7 @@ Azure Machine Learning 可讓您在集中的位置建立、管理及監視標籤
 
 請參閱 [建立資料集監視器](how-to-monitor-datasets.md) 的文章，以深入瞭解如何針對資料集內的新資料偵測和警示資料漂移。
 
-## <a name="next-steps"></a>接下來的步驟 
+## <a name="next-steps"></a>後續步驟 
 
 + [使用這些步驟](how-to-create-register-datasets.md)，在 Azure Machine Learning Studio 或 Python SDK 中建立資料集。
 + 使用我們的 [範例筆記本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/work-with-data/)試用資料集定型範例。

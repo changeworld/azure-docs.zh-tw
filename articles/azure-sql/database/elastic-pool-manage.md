@@ -7,15 +7,15 @@ ms.subservice: elastic-pools
 ms.topic: conceptual
 author: oslake
 ms.author: moslake
-ms.reviewer: carlrab
+ms.reviewer: sstein
 ms.date: 03/12/2019
 ms.custom: seoapril2019 sqldbrb=1
-ms.openlocfilehash: e87a083f5b31237c00bc8421774c14d3ef8ef33f
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: bd3917c42859d4240fbb3a75f951ff38a548e204
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89439673"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330803"
 ---
 # <a name="manage-elastic-pools-in-azure-sql-database"></a>在 Azure SQL Database 中管理彈性集區
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -88,7 +88,7 @@ ms.locfileid: "89439673"
 > 您無法使用 Transact-SQL 建立、更新或刪除 Azure SQL Database 彈性集區。 您可以新增或移除彈性集區中的資料庫，也可以使用 DMV 傳回現有彈性集區的資訊。
 >
 
-| Command | 描述 |
+| 命令 | 說明 |
 | --- | --- |
 |[CREATE DATABASE (Azure SQL Database)](/sql/t-sql/statements/create-database-azure-sql-database)|在現有的集區建立新的資料庫，或建立新的資料庫做為單一資料庫。 您必須連接到 master 資料庫才能建立新的資料庫。|
 | [ALTER DATABASE (Azure SQL Database)](/sql/t-sql/statements/alter-database-azure-sql-database) |將資料庫移入彈性集區、將資料庫移出彈性集區，或在彈性集區之間移動資料庫。|
@@ -100,7 +100,7 @@ ms.locfileid: "89439673"
 
 若要建立和管理 SQL Database 彈性集區和集區資料庫，請使用這些 REST API 要求。
 
-| Command | 描述 |
+| 命令 | 說明 |
 | --- | --- |
 |[彈性集區-建立或更新](https://docs.microsoft.com/rest/api/sql/elasticpools/createorupdate)|建立新的彈性集區或更新現有的彈性集區。|
 |[彈性集區-刪除](https://docs.microsoft.com/rest/api/sql/elasticpools/delete)|刪除彈性集區。|
@@ -115,7 +115,7 @@ ms.locfileid: "89439673"
 |[資料庫-依伺服器列出](https://docs.microsoft.com/rest/api/sql/databases/listbyserver)|傳回伺服器中的資料庫清單。|
 |[資料庫 - 更新](https://docs.microsoft.com/rest/api/sql/databases/update)|更新現有的資料庫。|
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 若要深入了解使用彈性集區的 SaaS 應用程式的設計模式，請參閱 [採用 Azure SQL Database 的多租用戶 SaaS 應用程式的設計模式](saas-tenancy-app-design-patterns.md)。
 * 如需使用彈性集區的 SaaS 教學課程，請參閱 [Wingtip SaaS 應用程式簡介](saas-dbpertenant-wingtip-app-overview.md)。

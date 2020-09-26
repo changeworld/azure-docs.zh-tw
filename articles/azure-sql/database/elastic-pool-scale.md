@@ -9,55 +9,55 @@ ms.devlang: ''
 ms.topic: conceptual
 author: oslake
 ms.author: moslake
-ms.reviewer: carlrab
-ms.date: 7/31/2020
-ms.openlocfilehash: d8055c89af8adcb88a2055e617e27c030e05d5ae
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.reviewer: sstein
+ms.date: 09/16/2020
+ms.openlocfilehash: 2792a93748600d71c37972058c8e496928543c9b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87504376"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330701"
 ---
 # <a name="scale-elastic-pool-resources-in-azure-sql-database"></a>在 Azure SQL Database 中調整彈性集區
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 本文說明如何在 Azure SQL Database 中調整彈性集區和集區資料庫可用的計算和儲存資源。
 
-## <a name="change-compute-resources-vcores-or-dtus"></a>變更計算資源（虛擬核心或 Dtu）
+## <a name="change-compute-resources-vcores-or-dtus"></a> (虛擬核心或 Dtu) 變更計算資源
 
-一開始挑選虛擬核心或 Edtu 數目之後，您可以根據使用[Azure 入口網站](elastic-pool-manage.md#azure-portal)、 [PowerShell](/powershell/module/az.sql/Get-AzSqlElasticPool)、 [Azure CLI](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-update)或[REST API](https://docs.microsoft.com/rest/api/sql/elasticpools/update)的實際體驗，以動態方式相應增加或相應減少彈性集區。
+一開始挑選虛擬核心或 Edtu 的數目之後，您就可以根據使用 [Azure 入口網站](elastic-pool-manage.md#azure-portal)、 [PowerShell](/powershell/module/az.sql/Get-AzSqlElasticPool)、 [Azure CLI](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-update)或 [REST API](https://docs.microsoft.com/rest/api/sql/elasticpools/update)的實際體驗，動態地相應增加或減少彈性集區。
 
 ### <a name="impact-of-changing-service-tier-or-rescaling-compute-size"></a>變更服務層級或重新調整計算大小的影響
 
-變更彈性集區的服務層級或計算大小，會遵循與單一資料庫類似的模式，而且主要涉及執行下列步驟的服務：
+變更彈性集區的服務層級或計算大小，會遵循與單一資料庫類似的模式，而且主要牽涉到服務執行下列步驟：
 
-1. 為彈性集區建立新的計算實例  
+1. 建立彈性集區的新計算實例  
 
-    會使用要求的服務層級和計算大小來建立彈性集區的新計算實例。 針對某些服務層級和計算大小變更的組合，必須在新的計算實例中建立每個資料庫的複本，這牽涉到複製資料，而且可能會強烈影響整體延遲。 不論是哪一種情況，在此步驟期間，資料庫都會維持線上狀態，而且連接會繼續導向至原始計算實例中的資料庫。
+    彈性集區的新計算實例是以要求的服務層級和計算大小所建立。 針對某些服務層級和計算大小變更的組合，必須在新的計算實例中建立每個資料庫的複本，其中牽涉到複製資料，而且可能會對整體延遲造成強烈影響。 無論是哪種情況，在此步驟期間，資料庫會保持上線狀態，並繼續將連接導向至原始計算實例中的資料庫。
 
 2. 將連接的路由切換至新的計算實例
 
-    原始計算實例中的資料庫現有連接會被捨棄。 新的計算實例中的資料庫會建立任何新的連接。 針對某些服務層級和計算大小變更的組合，資料庫檔案會在切換期間卸離並重新附加。  無論如何，當資料庫無法使用的時間通常不到30秒，而且通常只需要幾秒鐘，切換就會導致短暫的服務中斷。 當連接中斷時，如果有長時間執行的交易在執行中，則此步驟可能需要較長的時間才能復原中止的交易。 [加速資料庫](../accelerated-database-recovery.md)復原可以降低中止長時間執行之交易的影響。
+    原始計算實例中資料庫的現有連接會遭到卸載。 新的計算實例中的資料庫會建立任何新的連接。 針對某些服務層級和計算大小變更的組合，系統會在切換期間卸離和重新附加資料庫檔案。  無論如何，在資料庫無法使用的情況下，通常不到30秒，而且通常只需要幾秒鐘的時間，切換可能會導致短暫的服務中斷。 如果在中斷連接時執行長時間執行的交易，則此步驟可能需要較長的時間才能復原中止的交易。 [加速資料庫](../accelerated-database-recovery.md) 復原可以降低中止長時間執行之交易的影響。
 
 > [!IMPORTANT]
-> 在工作流程中的任何步驟期間，都不會遺失任何資料。
+> 工作流程中的任何步驟都不會遺失任何資料。
 
 ### <a name="latency-of-changing-service-tier-or-rescaling-compute-size"></a>變更服務層級或重新調整計算大小的延遲
 
-變更服務層級或重新調整單一資料庫或彈性集區之計算大小的預估延遲會參數化，如下所示：
+變更服務層級的估計延遲、調整單一資料庫或彈性集區的計算大小、將資料庫移入/移出彈性集區，或在彈性集區之間移動資料庫的參數化方式如下：
 
-|服務層|基本單一資料庫、</br>標準（S0-S1）|基本彈性集區，</br>標準（S2-S12）、 </br>一般用途單一資料庫或彈性集區|Premium 或 Business Critical 單一資料庫或彈性集區|超大規模資料庫
+|服務層級|基本單一資料庫，</br>標準 (S0-S1) |基本彈性集區，</br>標準 (S2-S12) 、 </br>一般用途單一資料庫或彈性集區|Premium 或 Business Critical 單一資料庫或彈性集區|超大規模資料庫
 |:---|:---|:---|:---|:---|
-|**基本單一資料庫， </br> 標準（S0-S1）**|&bull;與 &nbsp; 使用的空間無關的固定時間延遲</br>&bull;&nbsp;通常不到5分鐘|&bull;&nbsp;因數據複製而使用的資料庫空間的延遲比例</br>&bull;&nbsp;通常，每 GB 使用的空間少於1分鐘|&bull;&nbsp;因數據複製而使用的資料庫空間的延遲比例</br>&bull;&nbsp;通常，每 GB 使用的空間少於1分鐘|&bull;&nbsp;因數據複製而使用的資料庫空間的延遲比例</br>&bull;&nbsp;通常，每 GB 使用的空間少於1分鐘|
-|**基本彈性集區、 </br> 標準（S2-S12）、 </br> 一般用途單一資料庫或彈性集區**|&bull;&nbsp;因數據複製而使用的資料庫空間的延遲比例</br>&bull;&nbsp;通常，每 GB 使用的空間少於1分鐘|&bull;與 &nbsp; 使用的空間無關的固定時間延遲</br>&bull;&nbsp;通常不到5分鐘|&bull;&nbsp;因數據複製而使用的資料庫空間的延遲比例</br>&bull;&nbsp;通常，每 GB 使用的空間少於1分鐘|&bull;&nbsp;因數據複製而使用的資料庫空間的延遲比例</br>&bull;&nbsp;通常，每 GB 使用的空間少於1分鐘|
-|**Premium 或 Business Critical 單一資料庫或彈性集區**|&bull;&nbsp;因數據複製而使用的資料庫空間的延遲比例</br>&bull;&nbsp;通常，每 GB 使用的空間少於1分鐘|&bull;&nbsp;因數據複製而使用的資料庫空間的延遲比例</br>&bull;&nbsp;通常，每 GB 使用的空間少於1分鐘|&bull;&nbsp;因數據複製而使用的資料庫空間的延遲比例</br>&bull;&nbsp;通常，每 GB 使用的空間少於1分鐘|&bull;&nbsp;因數據複製而使用的資料庫空間的延遲比例</br>&bull;&nbsp;通常，每 GB 使用的空間少於1分鐘|
-|**超大規模資料庫**|N/A|N/A|N/A|&bull;與 &nbsp; 使用的空間無關的固定時間延遲</br>&bull;&nbsp;通常小於2分鐘|
+|**基本單一資料庫， </br> 標準 (S0-S1) **|&bull;&nbsp;固定時間延遲，與使用的空間無關</br>&bull;&nbsp;通常不到5分鐘|&bull;&nbsp;由於資料複製而使用資料庫空間的延遲比例</br>&bull;&nbsp;通常每 GB 使用的空間不到1分鐘|&bull;&nbsp;由於資料複製而使用資料庫空間的延遲比例</br>&bull;&nbsp;通常每 GB 使用的空間不到1分鐘|&bull;&nbsp;由於資料複製而使用資料庫空間的延遲比例</br>&bull;&nbsp;通常每 GB 使用的空間不到1分鐘|
+|**基本彈性集區、 </br> 標準 (S2-S12) 、 </br> 一般用途單一資料庫或彈性集區**|&bull;&nbsp;由於資料複製而使用資料庫空間的延遲比例</br>&bull;&nbsp;通常每 GB 使用的空間不到1分鐘|&bull;&nbsp;針對單一資料庫，固定時間延遲與使用的空間無關</br>&bull;&nbsp;通常不到5分鐘的單一資料庫</br>&bull;&nbsp;針對彈性集區，與資料庫數目成正比|&bull;&nbsp;由於資料複製而使用資料庫空間的延遲比例</br>&bull;&nbsp;通常每 GB 使用的空間不到1分鐘|&bull;&nbsp;由於資料複製而使用資料庫空間的延遲比例</br>&bull;&nbsp;通常每 GB 使用的空間不到1分鐘|
+|**Premium 或 Business Critical 單一資料庫或彈性集區**|&bull;&nbsp;由於資料複製而使用資料庫空間的延遲比例</br>&bull;&nbsp;通常每 GB 使用的空間不到1分鐘|&bull;&nbsp;由於資料複製而使用資料庫空間的延遲比例</br>&bull;&nbsp;通常每 GB 使用的空間不到1分鐘|&bull;&nbsp;由於資料複製而使用資料庫空間的延遲比例</br>&bull;&nbsp;通常每 GB 使用的空間不到1分鐘|&bull;&nbsp;由於資料複製而使用資料庫空間的延遲比例</br>&bull;&nbsp;通常每 GB 使用的空間不到1分鐘|
+|**超大規模資料庫**|N/A|N/A|N/A|&bull;&nbsp;固定時間延遲，與使用的空間無關</br>&bull;&nbsp;通常不到2分鐘|
 
 > [!NOTE]
 >
-> - 如果變更服務層級或重新調整彈性集區的計算，就應該使用集區中所有資料庫所使用的空間總和來計算估計值。
-> - 如果將資料庫移入/移出彈性集區，只有資料庫所使用的空間會影響延遲，而非彈性集區所使用的空間。
-> - 針對標準和一般用途的彈性集區，如果彈性集區使用 Premium 檔案共用（[PFS](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)）儲存體，則將資料庫移入/移出彈性集區的延遲，或在彈性集區之間移動時，將會與資料庫大小成正比。 若要判斷集區是否使用 PFS 儲存體，請在集區中任何資料庫的內容中執行下列查詢。 如果 AccountType 資料行中的值為 `PremiumFileStorage` ，則集區會使用 PFS 儲存體。
+> - 在變更服務層級或重新調整彈性集區計算的情況下，應該使用在集區中的所有資料庫所使用的空間總和來計算預估值。
+> - 在彈性集區之間移動資料庫的情況下，只有資料庫使用的空間會影響延遲，而不會影響彈性集區所使用的空間。
+> - 針對標準和一般目的彈性集區，如果彈性集區使用 Premium 檔案共用 ([PFS](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)) 儲存體，則將資料庫移入/移出彈性集區或在彈性集區之間移動的延遲會與資料庫大小成正比。 若要判斷集區是否使用 PFS 儲存體，請在集區中任何資料庫的內容中執行下列查詢。 如果 AccountType 資料行中的值為 `PremiumFileStorage` 或 `PremiumFileStorage-ZRS` ，則集區會使用 PFS 儲存體。
 
 ```sql
 SELECT s.file_id,
@@ -69,7 +69,7 @@ WHERE s.type_desc IN ('ROWS', 'LOG');
 ```
 
 > [!TIP]
-> 若要監視進行中的作業，請參閱：[使用 SQL REST API 管理作業](https://docs.microsoft.com/rest/api/sql/operations/list)、[使用 CLI 管理](/cli/azure/sql/db/op)作業、[使用 t-sql 監視作業](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database)和這兩個 PowerShell 命令： [get-azsqldatabaseactivity](/powershell/module/az.sql/get-azsqldatabaseactivity)和[get-azsqldatabaseactivity](/powershell/module/az.sql/stop-azsqldatabaseactivity)。
+> 若要監視進行中的作業，請參閱：使用 [SQL REST API 管理作業](https://docs.microsoft.com/rest/api/sql/operations/list)、 [使用 CLI 管理作業](/cli/azure/sql/db/op)、 [使用 t-sql 監視作業](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) ，以及這兩個 PowerShell 命令： [>get-azsqldatabaseactivity](/powershell/module/az.sql/get-azsqldatabaseactivity) 和 [>get-azsqldatabaseactivity](/powershell/module/az.sql/stop-azsqldatabaseactivity)。
 
 ### <a name="additional-considerations-when-changing-service-tier-or-rescaling-compute-size"></a>變更服務層級或重新調整計算大小時的其他考慮
 
@@ -83,7 +83,7 @@ WHERE s.type_desc IN ('ROWS', 'LOG');
 ## <a name="change-elastic-pool-storage-size"></a>變更彈性集區儲存體大小
 
 > [!IMPORTANT]
-> 在某些情況下，您可能需要壓縮資料庫來回收未使用的空間。 如需詳細資訊，請參閱[管理 Azure SQL Database 中的檔案空間](file-space-manage.md)。
+> 在某些情況下，您可能需要壓縮資料庫來回收未使用的空間。 如需詳細資訊，請參閱 [管理 Azure SQL Database 中](file-space-manage.md)的檔案空間。
 
 ### <a name="vcore-based-purchasing-model"></a>以虛擬核心為基礎的購買模型
 
@@ -95,7 +95,7 @@ WHERE s.type_desc IN ('ROWS', 'LOG');
 - 彈性集區儲存體的價格為儲存體數量乘以服務層的儲存體單價。 如需有關額外儲存體的價格詳細資訊，請參閱 [SQL Database 定價](https://azure.microsoft.com/pricing/details/sql-database/)。
 
 > [!IMPORTANT]
-> 在某些情況下，您可能需要壓縮資料庫來回收未使用的空間。 如需詳細資訊，請參閱[管理 Azure SQL Database 中的檔案空間](file-space-manage.md)。
+> 在某些情況下，您可能需要壓縮資料庫來回收未使用的空間。 如需詳細資訊，請參閱 [管理 Azure SQL Database 中](file-space-manage.md)的檔案空間。
 
 ### <a name="dtu-based-purchasing-model"></a>以 DTU 為基礎的購買模型
 
@@ -104,7 +104,7 @@ WHERE s.type_desc IN ('ROWS', 'LOG');
 - 彈性集區之額外儲存體的價格為額外儲存體數量乘以服務層的額外儲存體單價。 如需有關額外儲存體的價格詳細資訊，請參閱 [SQL Database 定價](https://azure.microsoft.com/pricing/details/sql-database/)。
 
 > [!IMPORTANT]
-> 在某些情況下，您可能需要壓縮資料庫來回收未使用的空間。 如需詳細資訊，請參閱[管理 Azure SQL Database 中的檔案空間](file-space-manage.md)。
+> 在某些情況下，您可能需要壓縮資料庫來回收未使用的空間。 如需詳細資訊，請參閱 [管理 Azure SQL Database 中](file-space-manage.md)的檔案空間。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: mathoma, carlrab
+ms.reviewer: mathoma, sstein
 ms.date: 08/27/2020
-ms.openlocfilehash: a269796c072a235e4ecd47731ca37a774750a3cf
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 3526510e4cbd77ffe1f468512e1128dcebe9b1da
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018360"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330837"
 ---
 # <a name="creating-and-using-active-geo-replication---azure-sql-database"></a>建立和使用主動式異地複寫-Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -122,9 +122,9 @@ ms.locfileid: "89018360"
 
 不平衡次要設定的另一個結果是在容錯移轉之後，應用程式效能可能會因為新主資料庫的計算容量不足而受到影響。 在此情況下，必須將資料庫服務目標擴大至必要的層級，這可能會花費大量時間和計算資源，而且在擴大程式結束時需要 [高可用性](high-availability-sla.md) 容錯移轉。
 
-如果您決定以較低的計算大小來建立次要資料庫，則 Azure 入口網站中的記錄 IO 百分比圖表會提供一個很好的方法，來估計維持複寫負載所需的次要資料庫最小計算大小。 例如，如果您的主資料庫是 P6 (1000 DTU) 而且其記錄寫入百分比為50%，則次要複本必須至少為 P4 (500 DTU) 。 若要取出歷程記錄 IO 資料，請使用 [sys. resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) 視圖。 若要以較高的資料細微性來取得最新的記錄寫入資料，更能反映記錄檔速率的短期尖峰，請使用 [sys. dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) view。
+如果您決定以較低的計算大小來建立次要資料庫，則 Azure 入口網站中的記錄 IO 百分比圖表會提供一個很好的方法，來估計維持複寫負載所需的次要資料庫最小計算大小。 例如，如果您的主資料庫是 P6 (1000 DTU) 而且其記錄寫入百分比為50%，則次要複本必須至少為 P4 (500 DTU) 。 若要取出歷程記錄 IO 資料，請使用 [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) view。 若要以較高的資料細微性來取得最新的記錄寫入資料，更能反映記錄檔速率的短期尖峰，請使用 [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) view。
 
-由於次要複本上較低的計算大小，會使用 HADR_THROTTLE_LOG_RATE_MISMATCHED_SLO 等候類型（在 [sys. dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) 和 [sys. dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql) 資料庫檢視中可見）來報告主要複本上的交易記錄檔速率節流。
+由於次要複本上較低的計算大小，會使用 HADR_THROTTLE_LOG_RATE_MISMATCHED_SLO 等候類型（可在 [sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) 和 [sys.dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql) 資料庫檢視中看見）來回報主要複本上的交易記錄檔速率節流。
 
 > [!NOTE]
 > 主要複本上的交易記錄速率可能會因為與次要複本上較低計算大小無關的原因而受到節流。 即使次要資料庫具有與主資料庫相同或更高的計算大小，也可能會發生這種節流。 如需詳細資料，包括不同類型記錄速率節流的等候類型，請參閱 [交易記錄速率管理](resource-limits-logical-server.md#transaction-log-rate-governance)。
@@ -216,7 +216,7 @@ ms.locfileid: "89018360"
 > 如果您已在容錯移轉群組設定中建立次要資料庫，則不建議降級次要資料庫。 這是為了確保您的資料層在容錯移轉啟動之後有足夠的容量來處理一般工作負載。
 
 > [!IMPORTANT]
-> 除非次要資料庫第一次調整為較高的層級，否則容錯移轉群組中的主資料庫無法調整為較高的層級。 如果您嘗試在調整次要資料庫之前調整主資料庫，您可能會收到下列錯誤：
+> 容錯移轉群組中的主要資料庫無法調整為較高的層級，除非次要資料庫第一次調整為較高的層級。 如果您嘗試在調整次要資料庫之前調整主資料庫，您可能會收到下列錯誤：
 >
 > `Error message: The source database 'Primaryserver.DBName' cannot have higher edition than the target database 'Secondaryserver.DBName'. Upgrade the edition on the target before upgrading the source.`
 >
@@ -230,7 +230,7 @@ ms.locfileid: "89018360"
 
 ## <a name="monitoring-geo-replication-lag"></a>監視異地複寫延遲
 
-若要監視有關 RPO 的延遲，請使用主資料庫上[sys. dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) *replication_lag_sec*資料行。 它會顯示在主資料庫上認可的交易之間的延遲（以秒為單位），並保存在次要資料庫上。 例如 如果延隔時間的值為1秒，則表示主資料庫目前是否受到中斷的影響並起始容錯移轉，將不會儲存1秒的最新轉換。
+若要監視有關 RPO 的延遲，請使用主資料庫上[sys.dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) *replication_lag_sec*資料行。 它會顯示在主資料庫上認可的交易之間的延遲（以秒為單位），並保存在次要資料庫上。 例如 如果延隔時間的值為1秒，則表示主資料庫目前是否受到中斷的影響並起始容錯移轉，將不會儲存1秒的最新轉換。
 
 若要針對已套用至次要資料庫的主資料庫變更（也就是可從次要資料庫讀取）來測量延遲，請將次要資料庫上的 *last_commit* 時間與主資料庫上的相同值進行比較。
 
@@ -246,11 +246,11 @@ ms.locfileid: "89018360"
 > [!IMPORTANT]
 > 這些 Transact-SQL 命令僅適用於作用中異地複寫，不適用於容錯移轉群組。 因此，它們也不會套用至 SQL 受控執行個體的實例，因為它們只支援容錯移轉群組。
 
-| Command | 描述 |
+| 命令 | 說明 |
 | --- | --- |
-| [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |使用 ADD SECONDARY ON SERVER 引數，針對現有資料庫建立次要資料庫並開始資料複寫 |
-| [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |使用 FAILOVER 或 FORCE_FAILOVER_ALLOW_DATA_LOSS，將次要資料庫切換為主要資料庫以便開始容錯移轉 |
-| [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |使用 REMOVE SECONDARY ON SERVER，來終止 SQL Database 和指定次要資料庫間的資料複寫。 |
+| [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current&preserve-view=true) |使用 ADD SECONDARY ON SERVER 引數，針對現有資料庫建立次要資料庫並開始資料複寫 |
+| [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current&preserve-view=true) |使用 FAILOVER 或 FORCE_FAILOVER_ALLOW_DATA_LOSS，將次要資料庫切換為主要資料庫以便開始容錯移轉 |
+| [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current&preserve-view=true) |使用 REMOVE SECONDARY ON SERVER，來終止 SQL Database 和指定次要資料庫間的資料複寫。 |
 | [sys.geo_replication_links](/sql/relational-databases/system-dynamic-management-views/sys-geo-replication-links-azure-sql-database) |傳回伺服器上每個資料庫的所有現有複寫連結的相關資訊。 |
 | [sys.dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) |取得給定資料庫之複寫連結的上次複寫時間、最後一個複寫延遲和其他相關資訊。 |
 | [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) |顯示所有資料庫作業的狀態，包括複寫連結的狀態。 |
@@ -277,7 +277,7 @@ ms.locfileid: "89018360"
 
 ### <a name="rest-api-manage-failover-of-single-and-pooled-databases"></a>REST API：管理單一和集區資料庫的容錯移轉
 
-| API | 描述 |
+| API | 說明 |
 | --- | --- |
 | [Create or Update Database (createMode=Restore)](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) |建立、更新或還原主要或次要資料庫。 |
 | [取得建立或更新資料庫狀態](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) |在建立作業期間傳回狀態。 |

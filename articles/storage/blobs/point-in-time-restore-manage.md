@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/18/2020
+ms.date: 09/23/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 226e35452e4b266c3c0a698505d47ab9a53b9761
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 828b5c34aaccf2a53aa197f921a8ef02d46821ae
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90984384"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91280465"
 ---
 # <a name="perform-a-point-in-time-restore-on-block-blob-data"></a>在區塊 blob 資料上執行時間點還原
 
@@ -44,7 +44,7 @@ ms.locfileid: "90984384"
 1. 在 [ **設定**] 底下，選擇 [ **資料保護**]。
 1. 選取 [ **開啟時間點** 還原]。 當您選取此選項時，也會啟用 blob、版本控制和變更摘要的虛刪除。
 1. 設定時間點還原的最大還原點（以天為單位）。 此數位必須至少為一天，小於針對「blob 虛刪除」指定的保留週期。
-1. 儲存您的變更。
+1. 儲存變更。
 
 下圖顯示針對時間點還原設定的儲存體帳戶（還原點為七天前），以及 blob 虛刪除14天的保留期限。
 
@@ -54,9 +54,7 @@ ms.locfileid: "90984384"
 
 若要使用 PowerShell 設定時間點還原，請先安裝 [Az. Storage](https://www.powershellgallery.com/packages/Az.Storage) module version 2.6.0 或更新版本。 然後呼叫 AzStorageBlobRestorePolicy 命令，以啟用儲存體帳戶的時間點還原。
 
-下列範例會啟用虛刪除，並設定虛刪除保留期間、啟用變更摘要，然後啟用時間點還原。 執行範例之前，請使用 Azure 入口網站或 Azure Resource Manager 範本，也可以啟用 blob 版本設定。
-
-執行此範例時，請記得以您自己的值取代角括弧中的值：
+下列範例會啟用虛刪除，並設定虛刪除保留期間、啟用變更摘要和版本控制，然後啟用時間點還原。    執行此範例時，請記得以您自己的值取代角括弧中的值：
 
 ```powershell
 # Sign in to your Azure account.
@@ -71,10 +69,11 @@ Enable-AzStorageBlobDeleteRetentionPolicy -ResourceGroupName $rgName `
     -StorageAccountName $accountName `
     -RetentionDays 14
 
-# Enable change feed.
+# Enable change feed and versioning.
 Update-AzStorageBlobServiceProperty -ResourceGroupName $rgName `
     -StorageAccountName $accountName `
-    -EnableChangeFeed $true
+    -EnableChangeFeed $true `
+    -IsVersioningEnabled $true
 
 # Enable point-in-time restore with a retention period of 7 days.
 # The retention period for point-in-time restore must be at least
@@ -246,7 +245,7 @@ $restoreOperation.Parameters.BlobRanges
 
 ---
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [區塊 blob 的時間點還原](point-in-time-restore-overview.md)
 - [虛刪除](soft-delete-overview.md)
