@@ -1,37 +1,40 @@
 ---
-title: 將全文檢索搜尋新增至 Azure Blob 儲存體
+title: 搜尋 Azure Blob 儲存體內容
 titleSuffix: Azure Cognitive Search
-description: 在 Azure 認知搜尋中建立全文檢索搜尋索引時，將內容解壓縮並將結構新增至 Azure Blob。
+description: 瞭解如何從 Azure blob 中解壓縮文字，並讓它在 Azure 認知搜尋索引中可供全文檢索搜尋。
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 72d00b70cf3568466715668aa441ee295614c740
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/23/2020
+ms.openlocfilehash: f61bf635cc61a2153a7bb016ef4b4711d7ba7391
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935240"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91355290"
 ---
-# <a name="add-full-text-search-to-azure-blob-data-using-azure-cognitive-search"></a>使用 Azure 認知搜尋將全文檢索搜尋新增至 Azure Blob 資料
+# <a name="search-over-azure-blob-storage-content"></a>搜尋 Azure Blob 儲存體內容
 
-搜尋 Azure Blob 儲存體中儲存的各種內容類型可能是難以解決的問題。 不過，使用 [Azure 認知搜尋](search-what-is-azure-search.md)，您只要按幾下，即可編製索引並搜尋 Blob 內容。 Azure 認知搜尋具有內建的整合，可讓您透過 [Blob 索引子](search-howto-indexing-azure-blob-storage.md)，從 Blob 儲存體編製索引，將資料來源感知功能新增至索引編製。
+搜尋 Azure Blob 儲存體中儲存的各種內容類型可能是難以解決的問題。 在本文中，請參閱從 blob 解壓縮內容和中繼資料，並將其傳送至 Azure 認知搜尋中搜尋索引的基本工作流程。 您可以使用全文檢索搜尋來查詢產生的索引。
+
+> [!NOTE]
+> 已經熟悉工作流程和組合嗎？ [如何設定 blob 索引子](search-howto-indexing-azure-blob-storage.md) 是您的下一個步驟。
 
 ## <a name="what-it-means-to-add-full-text-search-to-blob-data"></a>將全文檢索搜尋新增至 Blob 資料的意義
 
-Azure 認知搜尋是一種雲端搜尋服務，可提供在您搜尋服務上裝載的使用者定義索引上運作的索引編製和查詢引擎。 使用雲端中的查詢引擎共置您的可搜尋內容是效能的必要項，並以使用者所預期搜尋查詢的速度傳回結果。
+Azure 認知搜尋是一種搜尋服務，支援透過使用者定義的索引來編制索引和查詢工作負載，其中包含在雲端託管的遠端可搜尋內容。 您可以使用查詢引擎來將可搜尋的內容與查詢引擎共置，以獲得效能，並以使用者所預期的速度傳回結果。
 
-Azure 認知搜尋會在索引層與 Azure Blob 儲存體整合，將 Blob 內容匯入編製索引為「反向索引」的搜尋文件，以及其他支援自由格式文字查詢和篩選運算式的查詢結構。 因為您的 Blob 內容已編製索引為搜尋索引，所以對 Blob 內容的存取可以利用 Azure 認知搜尋中的完整查詢功能範圍。
+認知搜尋會在索引層級與 Azure Blob 儲存體整合，將您的 Blob 內容匯入為已編制索引的 *反向索引* 的搜尋檔，以及其他支援自由格式文字查詢和篩選運算式的查詢結構。 因為您的 blob 內容已編制索引為搜尋索引，所以您可以使用 Azure 認知搜尋中的完整查詢功能範圍來尋找 blob 內容中的資訊。
 
-建立並填入索引之後，其會獨立存在於您的 Blob 容器中，但您可以重新執行索引編製作業，以使用底層容器的變更來重新整理索引。 個別 Blob 的時間戳記資訊會用於變更偵測。 您可以選擇排程執行或隨選索引編製作為重新整理機制。
-
-輸入是您在 Azure Blob 儲存體中的 Blob (在單一容器中)。 Blob 幾乎可以是任何類型的文字資料。 如果您的 Blob 包含影像，您可以將 [AI 擴充新增至 Blob 索引編製](search-blob-ai-integration.md)，以建立及擷取影像中的文字。
+輸入是您在 Azure Blob 儲存體中的 Blob (在單一容器中)。 Blob 幾乎可以是任何類型的文字資料。 如果您的 blob 包含影像，您可以將 [AI 擴充新增至 blob 索引](search-blob-ai-integration.md) ，以建立和解壓縮影像中的文字。
 
 輸出一律是 Azure 認知搜尋索引，用於在用戶端應用程式中進行快速文字搜尋、擷取及探索。 介於兩者之間的是索引編製管線結構本身。 管線是以「索引子」功能為基礎，這會在此文章中進一步討論。
 
-## <a name="start-with-services"></a>開始使用服務
+建立並填入索引之後，它會獨立于 blob 容器之外，但您可以重新執行索引作業，以根據變更的檔重新整理索引。 個別 Blob 的時間戳記資訊會用於變更偵測。 您可以選擇排程執行或隨選索引編製作為重新整理機制。
+
+## <a name="required-resources"></a>所需資源
 
 您需要 Azure 認知搜尋和 Azure Blob 儲存體。 在 Blob 儲存體中，您需要提供來源內容的容器。
 
@@ -41,7 +44,7 @@ Azure 認知搜尋會在索引層與 Azure Blob 儲存體整合，將 Blob 內�
 
 ## <a name="use-a-blob-indexer"></a>使用 Blob 索引子
 
-「索引子」是資料來源感知的子服務，其具備內部邏輯，可用來取樣資料、讀取中繼資料、擷取資料，以及將資料從原生格式序列化為 JSON 文件以供後續匯入。 
+*索引子*是認知搜尋中的資料來源感知子服務，配備了內部邏輯來取樣資料、讀取中繼資料、取出資料，以及將原生格式的資料序列化為 JSON 檔以進行後續匯入。 
 
 Azure 儲存體中的 Blob 是使用 [Azure 認知搜尋 Blob 儲存體索引子](search-howto-indexing-azure-blob-storage.md)來編製索引。 您可以使用**匯入資料**精靈、REST API 或 .NET SDK 來叫用此索引子。 在程式碼中，您可以藉由設定類型，以及提供包含 Azure 儲存體帳戶和 Blob 容器的連線資訊，來使用此索引子。 您可以藉由建立虛擬目錄來將 Blob 子集化，然後將其當作參數傳遞，或藉由篩選檔案類型副檔名來進行。
 
@@ -65,11 +68,12 @@ Blob 索引子隨附設定參數，如果底層資料提供足夠的資訊，則
 > 若要深入了解 Blob 索引，請參閱[使用 Blob 索引來管理及尋找 Azure Blob 儲存體上的資料](../storage/blobs/storage-manage-find-blobs.md)。
 
 ### <a name="indexing-json-blobs"></a>編製 JSON Blob 的索引
+
 可以將索引子設定為擷取在包含 JSON 的 Blob 中找到的結構化內容。 索引子可以讀取 JSON Blob，並將結構化內容剖析成搜尋文件的適當欄位。 索引子也會採用包含 JSON 物件陣列的 Blob，並將每個元素對應至個別的搜尋文件。 您可以設定剖析模式，以影響索引子所建立 JSON 物件的類型。
 
 ## <a name="search-blob-content-in-a-search-index"></a>搜尋搜尋索引中的 Blob 內容 
 
-索引編製的輸出是搜尋索引，用於在用戶端應用程式中使用任意文字和篩選查詢進行互動式探索。 若要進行內容的初始探索和驗證，建議您從入口網站中的[搜尋總管](search-explorer.md)開始檢查文件結構。 您可以在搜尋總管中使用[簡單查詢語法](query-simple-syntax.md)、[完整查詢語法](query-lucene-syntax.md)和[篩選運算式語法](query-odata-filter-orderby-syntax.md)。
+索引子的輸出是搜尋索引，用於在用戶端應用程式中使用免費文字和已篩選查詢的互動式探索。 若要進行內容的初始探索和驗證，建議您從入口網站中的[搜尋總管](search-explorer.md)開始檢查文件結構。 您可以在搜尋總管中使用[簡單查詢語法](query-simple-syntax.md)、[完整查詢語法](query-lucene-syntax.md)和[篩選運算式語法](query-odata-filter-orderby-syntax.md)。
 
 更永久的解決方案是收集查詢輸入，並在用戶端應用程式中將回應呈現為搜尋結果。 下列 C# 教學課程說明如何建立搜尋應用程式：[在 Azure 認知搜尋中建立您的第一個應用程式](tutorial-csharp-create-first-app.md)。
 

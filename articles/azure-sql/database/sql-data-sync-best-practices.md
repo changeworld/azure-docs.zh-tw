@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
-ms.reviewer: carlrab
+ms.reviewer: ''
 ms.date: 12/20/2018
-ms.openlocfilehash: a45fc5f4e56ff3a5d7f0be167c5d758aa0e47caf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fd9bc17db3eccc64f35d7295d57dc120364481dd
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84196361"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332979"
 ---
 # <a name="best-practices-for-azure-sql-data-sync"></a>Azure SQL 資料同步最佳做法 
 
@@ -27,7 +27,7 @@ ms.locfileid: "84196361"
 如需 SQL 資料同步的概觀，請參閱[使用 Azure SQL 資料同步，跨多個雲端和內部部署資料庫同步處理資料](sql-data-sync-data-sql-server-sql-database.md)。
 
 > [!IMPORTANT]
-> Azure SQL 資料同步目前**不**支援 Azure SQL 受控執行個體。
+> Azure SQL 資料同步目前 **不** 支援 Azure SQL 受控執行個體。
 
 ## <a name="security-and-reliability"></a><a name="security-and-reliability"></a> 安全性與可靠性
 
@@ -43,7 +43,7 @@ ms.locfileid: "84196361"
 
 -   **針對同步安裝**。 建立/更改資料表、更改資料庫、建立程序、選取/更改結構描述、建立使用者定義型別。
 
--   **進行中的同步**處理。選取/插入/更新/刪除選取要同步處理的資料表，以及同步處理中繼資料和追蹤資料表;服務所建立之預存程式的 Execute 許可權;使用者定義資料表類型的 Execute 許可權。
+-   **進行中的同步**處理。選取/插入/更新/刪除已選取要同步處理的資料表，以及同步處理中繼資料與追蹤資料表的選取/插入/更新/刪除;服務所建立之預存程式的 Execute 許可權;使用者定義資料表類型的 Execute 許可權。
 
 -   **針對取消佈建**。 在同步作業中針對資料表所做的更改、針對同步處理中繼資料資料表的選取/刪除、針對同步處理追蹤資料表、預存程序和使用者定義型別的控制。
 
@@ -58,7 +58,7 @@ Azure SQL Database 僅支援一組認證。 若要在此條件約束內完成這
 
 #### <a name="database-size"></a>資料庫大小
 
-當您建立新的資料庫時，請設定大小上限，使其一律大於您部署的資料庫。 如果您未將大小上限設為大於已部署的資料庫，同步處理將會失敗。 雖然 SQL 資料同步不提供自動成長，不過，您可以在資料庫建立之後執行 `ALTER DATABASE` 命令來增加它的大小。 請確定您停留在資料庫大小限制內。
+當您建立新的資料庫時，請設定大小上限，使其一律大於您部署的資料庫。 如果您未將大小上限設為大於已部署的資料庫，同步處理將會失敗。 雖然 SQL 資料同步不提供自動成長，不過，您可以在資料庫建立之後執行 `ALTER DATABASE` 命令來增加它的大小。 確定您保持在資料庫大小限制內。
 
 > [!IMPORTANT]
 > SQL 資料同步會與每個資料庫一起儲存其他中繼資料。 在計算所需的空間時，請務必將這些中繼資料納入考量。 所增加的額外負荷量與資料表寬度 (例如，窄的資料表需要更多額外負荷) 和流量相關。
@@ -96,7 +96,7 @@ SQL 資料同步提供基本資料庫自動佈建。
 -   不會佈建來源資料表上的現有觸發程序。  
 -   不會在目的地資料庫上建立檢視和預存程序。
 -   目的地資料表中不會針對外部索引鍵限制式重新建立 ON UPDATE CASCADE 和 ON DELETE CASCADE 動作。
--   如果您有有效位數大於28的十進位或數值資料行，SQL 資料同步可能會在同步處理期間遇到轉換溢位問題。我們建議您將 decimal 或 numeric 資料行的有效位數限制為28或更少。
+-   如果您有有效位數大於28的 decimal 或 numeric 資料行，SQL 資料同步可能會在同步處理期間遇到轉換溢位問題。建議您將十進位或數值資料行的有效位數限制為28或更少。
 
 #### <a name="recommendations"></a>建議
 
@@ -118,7 +118,7 @@ SQL 資料同步提供基本資料庫自動佈建。
 
 請將前述指導方針套用在複雜的同步群組設定，例如混合企業到雲端和雲端到雲端等案例的設定。
 
-## <a name="sync"></a>Sync
+## <a name="sync"></a>同步
 
 ### <a name="avoid-slow-and-costly-initial-sync"></a><a name="avoid-a-slow-and-costly-initial-synchronization"></a> 避免慢速和高成本的首次同步處理
 
@@ -197,7 +197,7 @@ SQL 資料同步提供基本資料庫自動佈建。
 
 #### <a name="scenario"></a>狀況
 
-1. 同步群組 A 是使用 SQL Database 實例和與本機代理程式1相關聯的 SQL Server 資料庫所建立。
+1. 同步處理群組 A 是使用 SQL Database 實例和與本機代理程式1相關聯的 SQL Server 資料庫所建立。
 2. 相同的內部部署資料庫已向本機代理程式 2 註冊 (此代理程式並未與任何同步群組建立關聯)。
 3. 從本機代理程式 2 取消註冊內部部署資料庫，會移除內部部署資料庫之同步群組 A 的追蹤和中繼資料表。
 4. 同步群組 A 作業失敗，並發生下列錯誤：「目前的作業無法完成，因為資料庫未佈建以進行同步處理，或是您沒有同步設定資料表的權限。」
@@ -222,21 +222,21 @@ SQL 資料同步提供基本資料庫自動佈建。
 
 ### <a name="avoid-schema-refresh-timeout"></a>避免架構重新整理超時
 
-如果您有要同步處理的複雜架構，如果同步中繼資料資料庫的 SKU 較低（例如：基本），您可能會在架構重新整理期間遇到「作業超時」。 
+如果您有要同步處理的複雜架構，如果同步中繼資料資料庫有較低的 SKU，您可能會在架構重新整理期間遇到「作業超時」 (範例：基本) 。 
 
 #### <a name="solution"></a>解決方案
 
-若要減少此問題，請將您的同步中繼資料資料庫相應增加為具有較高的 SKU，例如 S3。 
+若要緩解此問題，請將您的同步中繼資料資料庫擴大為具有較高的 SKU，例如 S3。 
 
 ## <a name="next-steps"></a>後續步驟
 如需有關 SQL 資料同步的詳細資訊，請參閱：
 
 -   概觀 - [使用 Azure SQL 資料同步，跨多個雲端和內部部署資料庫同步資料](sql-data-sync-data-sql-server-sql-database.md)
 -   設定 SQL 資料同步
-    - 在入口網站中-[教學課程：設定 SQL 資料同步在 Azure SQL Database 和 SQL Server 之間同步處理資料](sql-data-sync-sql-server-configure.md)
+    - 在入口網站中- [教學課程：設定 SQL 資料同步，以同步 Azure SQL Database 和 SQL Server 之間的資料](sql-data-sync-sql-server-configure.md)
     - 透過 PowerShell
         -  [使用 PowerShell 在 Azure SQL Database 中的多個資料庫之間進行同步處理](scripts/sql-data-sync-sync-data-between-sql-databases.md)
-        -  [使用 PowerShell 在 SQL Database 中的資料庫和 SQL Server 實例中的資料庫之間進行同步處理](scripts/sql-data-sync-sync-data-between-azure-onprem.md)
+        -  [使用 PowerShell 在 SQL Database 的資料庫與 SQL Server 實例中的資料庫之間進行同步處理](scripts/sql-data-sync-sync-data-between-azure-onprem.md)
 -   Data Sync Agent - [適用於 Azure SQL Data Sync 的 Data Sync Agent](sql-data-sync-agent-overview.md)
 -   監視 - [使用 Azure 監視器記錄監視 SQL 資料同步](sql-data-sync-monitor-sync.md)
 -   疑難排解 - [為 Azure SQL 資料同步的問題進行疑難排解](sql-data-sync-troubleshoot.md)

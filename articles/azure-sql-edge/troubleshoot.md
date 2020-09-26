@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: d8da8bcf3d2bb6b2af2b5c69ce003289d83d3884
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 517fed0dd9eb1736344546bde9f79e52ee17182f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934431"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333098"
 ---
 # <a name="troubleshooting-azure-sql-edge-deployments"></a>針對 Azure SQL Edge 部署進行疑難排解 
 
@@ -138,35 +138,15 @@ docker exec -it <Container ID> /bin/bash
 
 現在您可以執行命令，就像是在容器內部的終端機中執行它們一樣。 完成後，鍵入 `exit`。 這會在互動式命令工作階段中結束，但您的容器會繼續執行。
 
-## <a name="troubleshooting-issues-with-data-streaming"></a>針對資料串流的問題進行疑難排解
-
-根據預設，Azure SQL Edge 串流引擎記錄會寫入至名為 `current` **/var/opt/mssql/log/services/00000001-0000-0000-0000-000000000000** 目錄下的檔案。 您可以直接透過對應的磁片區或資料磁片區容器來存取該檔案，或啟動 SQL Edge 容器的互動式命令提示字元會話。 
-
-此外，如果您可以使用用戶端工具連接到 SQL Edge 實例，您可以使用下列 T-sql 命令來存取目前的串流引擎記錄檔。 
-
-```sql
-
-select value as log, try_convert(DATETIME2, substring(value, 0, 26)) as timestamp 
-from 
-    STRING_SPLIT
-    (
-        (
-            select BulkColumn as logs
-            FROM OPENROWSET (BULK '/var/opt/mssql/log/services/00000001-0000-0000-0000-000000000000/current', SINGLE_CLOB) MyFile
-        ),
-        CHAR(10)
-    ) 
-where datalength(value) > 0
-
-```
-
 ### <a name="enabling-verbose-logging"></a>啟用詳細資訊記錄
 
 如果串流引擎的預設記錄層級未提供足夠的資訊，可以在 SQL Edge 中啟用串流引擎的 debug 記錄。 若要啟用 debug 記錄，請將 `RuntimeLogLevel=debug` 環境變數新增至您的 SQL Edge 部署。 啟用偵錯工具記錄之後，請嘗試重現問題，並檢查記錄中是否有任何相關的訊息或例外狀況。 
 
+> [!NOTE]
+> 詳細資訊記錄選項應該只用于疑難排解，而不應該用於一般生產工作負載。 
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [在 SQL Edge 中使用 ONNX 的 Machine Learning 和人工智慧](onnx-overview.md)
 - [Azure SQL Edge 中的資料串流](stream-data.md)

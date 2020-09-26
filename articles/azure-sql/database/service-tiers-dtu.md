@@ -1,6 +1,6 @@
 ---
 title: 服務層-以 DTU 為基礎的購買模型
-description: 瞭解以 DTU 為基礎的購買模型中的服務層，以提供計算和儲存體大小 Azure SQL Database。
+description: 深入瞭解以 DTU 為基礎的購買模型中的服務層級，Azure SQL Database 提供計算和儲存體大小。
 services: sql-database
 ms.service: sql-database
 ms.subservice: service
@@ -9,26 +9,26 @@ ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
-ms.reviewer: carlrab
+ms.reviewer: ''
 ms.date: 11/26/2019
-ms.openlocfilehash: fbf753436a259993f6869372ae3ba7272f2a181a
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: ba2170923885eac19af4bfe3ce55ea653371c0e8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87541697"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321351"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>以 DTU 為基礎的購買模式的服務層
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-以 DTU 為基礎的購買模式的服務層是以一系列計算大小來做區分，這些等級各有一定數量的內含儲存體、一定的備份保留期和一定的價格。 以 DTU 為基礎的購買模型中的所有服務層級，在[停機時間](https://azure.microsoft.com/support/legal/sla/sql-database/v1_2/)最短的情況之下，提供變更計算大小的彈性不過，有一段很短的時間會將連線中斷連接到資料庫，而這可以使用重試邏輯來減輕。 單一資料庫和彈性集區會根據服務層級和計算大小，以每小時為單位來計費。
+以 DTU 為基礎的購買模式的服務層是以一系列計算大小來做區分，這些等級各有一定數量的內含儲存體、一定的備份保留期和一定的價格。 以 DTU 為基礎的購買模型中的所有服務層級，可在最短的 [停機時間](https://azure.microsoft.com/support/legal/sla/sql-database/v1_2/)內靈活變更計算大小;不過，在一段時間內會有一段時間切換到資料庫的連線中斷，您可以使用重試邏輯來減輕這些問題。 單一資料庫和彈性集區會根據服務層級和計算大小，以每小時為單位來計費。
 
 > [!IMPORTANT]
-> [AZURE SQL 受控執行個體](../managed-instance/sql-managed-instance-paas-overview.md)不支援以 DTU 為基礎的購買模型。 
+> [AZURE SQL 受控執行個體](../managed-instance/sql-managed-instance-paas-overview.md) 不支援以 DTU 為基礎的購買模型。 
 
 
 > [!NOTE]
-> 如需以虛擬核心為基礎之服務層級的相關資訊，請參閱[以虛擬核心為基礎的服務層級](service-tiers-vcore.md)。 如需區分以 DTU 為基礎的服務層級和 vCore 為基礎之服務層級的詳細資訊，請參閱[購買模型](purchasing-models.md)。
+> 如需以虛擬核心為基礎之服務層級的相關資訊，請參閱[以虛擬核心為基礎的服務層級](service-tiers-vcore.md)。 如需區分以 DTU 為基礎之服務層級和 vCore 為基礎之服務層級的詳細資訊，請參閱 [購買模型](purchasing-models.md)。
 
 ## <a name="compare-the-dtu-based-service-tiers"></a>比較以 DTU 為基礎的服務層級
 
@@ -38,25 +38,25 @@ ms.locfileid: "87541697"
 | :-- | --: |--:| --:|
 |**目標工作負載**|開發與生產|開發與生產|開發與生產|
 |**執行時間 SLA**|99.99%|99.99%|99.99%|
-|**備份保留上限**|7 天|35 天|35 天|
+|**備份保留期上限**|7 天|35 天|35 天|
 |**CPU**|低|低、中、高|中、高|
-|**IO 輸送量 (大約)** |1-5 每個 DTU 的 IOPS| 1-5 每個 DTU 的 IOPS | 每個 DTU 25 IOPS|
+|**IO 輸送量 (大約)** |每個 DTU 1-5 IOPS| 每個 DTU 1-5 IOPS | 每個 DTU 25 個 IOPS|
 |**IO 延遲 (大約)**|5 毫秒 (讀取)，10 毫秒 (寫入)|5 毫秒 (讀取)，10 毫秒 (寫入)|2 毫秒 (讀取/寫入)|
 |**資料行存放區索引** |N/A|S3 和更新版本|支援|
-|**記憶體內部 OLTP**|不適用|N/A|支援|
+|**記憶體內部 OLTP**|N/A|N/A|支援|
 
 > [!IMPORTANT]
-> 基本、標準 S0、S1 和 S2 服務層提供少於一個 vCore （CPU）。  針對需要大量 CPU 的工作負載，建議使用 S3 或更高的服務層。 
+> 基本、標準 S0、S1 和 S2 服務層級提供少於一 vCore (CPU) 。  針對需要大量 CPU 的工作負載，建議使用 S3 或更高的服務層。 
 >
->關於資料儲存區，基本、標準 S0 和 S1 服務層會放在標準分頁 Blob 上。 標準分頁 Blob 使用硬碟（HDD）為基礎的存放裝置媒體，最適合用於開發、測試及其他較不常存取效能變化的工作負載。
+>關於資料儲存，基本、標準 S0 和 S1 服務層級會置於標準分頁 Blob 上。 標準分頁 Blob 使用硬碟 (HDD) 型存放裝置媒體，最適合用來開發、測試和其他不受效能變異影響的不常存取工作負載。
 >
 
 > [!NOTE]
-> 您可以在基本服務層級的 Azure SQL Database 中取得免費資料庫，並搭配 Azure 免費帳戶來探索 Azure。 如需相關資訊，請參閱[使用您的免費 Azure 免費帳戶，建立受管理的雲端資料庫](https://azure.microsoft.com/free/services/sql-database/)。
+> 您可以在基本服務層級的 Azure SQL Database 中取得免費的資料庫，並搭配 Azure 免費帳戶以探索 Azure。 如需相關資訊，請參閱[使用您的免費 Azure 免費帳戶，建立受管理的雲端資料庫](https://azure.microsoft.com/free/services/sql-database/)。
 
 ## <a name="single-database-dtu-and-storage-limits"></a>單一資料庫 DTU 和儲存空間限制
 
-單一資料庫的計算大小會以資料庫交易單位 (DTU) 表示，而彈性集區的計算大小則會以彈性資料庫交易單位 (eDTU) 表示。 如需 Dtu 和 Edtu 的詳細資訊，請參閱以[dtu 為基礎的購買模型](purchasing-models.md#dtu-based-purchasing-model)。
+單一資料庫的計算大小會以資料庫交易單位 (DTU) 表示，而彈性集區的計算大小則會以彈性資料庫交易單位 (eDTU) 表示。 如需 Dtu 和 Edtu 的詳細資訊，請參閱以 [dtu 為基礎的購買模型](purchasing-models.md#dtu-based-purchasing-model)。
 
 ||基本|標準|Premium|
 | :-- | --: | --: | --: |
@@ -64,7 +64,7 @@ ms.locfileid: "87541697"
 | **DTU 上限** | 5 | 3000 | 4000 |
 
 > [!IMPORTANT]
-> 在某些情況下，您可能需要壓縮資料庫來回收未使用的空間。 如需詳細資訊，請參閱[管理 Azure SQL Database 中的檔案空間](file-space-manage.md)。
+> 在某些情況下，您可能需要壓縮資料庫來回收未使用的空間。 如需詳細資訊，請參閱 [管理 Azure SQL Database 中](file-space-manage.md)的檔案空間。
 
 ## <a name="elastic-pool-edtu-storage-and-pooled-database-limits"></a>彈性集區 eDTU、儲存體及集區資料庫限制
 
@@ -77,9 +77,9 @@ ms.locfileid: "87541697"
 | **每個集區的資料庫數目上限** | 500  | 500 | 100 |
 
 > [!IMPORTANT]
-> 所有區域目前均可取得進階層中超過 1 TB 的儲存空間，但不包括：中國東部、中國北部、德國中部和德國東北部。 在這些區域中，進階層中的儲存空間上限為 1 TB。  如需詳細資訊，請參閱 [P11-P15 目前的限制](single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb)。  
+> 所有區域目前均可使用進階層中超過 1 TB 的儲存體，但：中國東部、中國北部、德國中部和德國東北部除外。 在這些區域中，進階層中的儲存空間上限為 1 TB。  如需詳細資訊，請參閱 [P11-P15 目前的限制](single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb)。  
 > [!IMPORTANT]
-> 在某些情況下，您可能需要壓縮資料庫來回收未使用的空間。 如需詳細資訊，請參閱[管理 Azure SQL Database 中的檔案空間](file-space-manage.md)。
+> 在某些情況下，您可能需要壓縮資料庫來回收未使用的空間。 如需詳細資訊，請參閱 [管理 Azure SQL Database 中](file-space-manage.md)的檔案空間。
 
 ## <a name="dtu-benchmark"></a>DTU 基準測試
 
@@ -147,7 +147,7 @@ ms.locfileid: "87541697"
    - 執行選取的交易及測量回應時間。
    - 等候步調延遲。
 3. 關閉資料庫連接。
-4. [結束]。
+4. 結束。
 
 步調延遲 (在步驟 2c) 為隨機選取，但其分佈具有 1.0 秒的平均值。 因此每位使用者平均每秒可以產生最多一筆交易。
 

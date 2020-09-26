@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: aahi
-ms.openlocfilehash: 5bb244796414c828e1535e4874fc85aa83f182dc
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: dffd12f319bd2766decda5874299cd7115f0502b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89300063"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91309195"
 ---
 # <a name="how-to-use-text-analytics-for-health-preview"></a>How to：使用文字分析的健全狀況 (預覽) 
 
@@ -28,7 +28,7 @@ ms.locfileid: "89300063"
 
 健康情況的文字分析是一種容器化服務，可從非結構化文字（例如醫生的附注、放電摘要、臨床檔和電子健康情況記錄）中，將相關的醫療資訊解壓縮並標記出來。  
 
-## <a name="features"></a>功能
+## <a name="features"></a>特性
 
 健全狀況容器的文字分析目前會在您自己的開發環境中，針對符合您特定安全性和資料治理需求的英文語言文字，執行名稱為實體辨識 (NER) 、關聯性、實體否定和實體連結。
 
@@ -73,7 +73,7 @@ ms.locfileid: "89300063"
 
 ## <a name="request-access-to-the-container-registry"></a>要求存取容器登錄
 
-填寫並提交 [認知服務容器要求表單](https://aka.ms/cognitivegate) ，以要求存取容器。 您目前不會針對健康情況使用量的文字分析付費。 
+填寫並提交 [認知服務容器要求表單](https://aka.ms/csgate) ，以要求存取容器。 您目前不會針對健康情況使用量的文字分析付費。 
 
 [!INCLUDE [Request access to the container registry](../../../../includes/cognitive-services-containers-request-access-only.md)]
 

@@ -10,13 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.date: 06/17/2020
 ms.topic: conceptual
-ms.custom: how-to, has-adal-ref, devx-track-javascript
-ms.openlocfilehash: 878b3d4a522fd2b7567ed6005283d041064d9fe5
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.custom: how-to, has-adal-ref, devx-track-js
+ms.openlocfilehash: 0650b1c6364a187447ea3a378675df9d76eef4d9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90885986"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91275722"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>設定 Azure Machine Learning 資源和工作流程的驗證
 
@@ -77,7 +77,7 @@ ms.locfileid: "90885986"
 >
 > 授與最小存取權的原因是，服務主體會使用密碼進行驗證，而且密碼可能會儲存為自動化腳本的一部分。 如果密碼洩漏，則擁有特定工作所需的最低存取權可將 SP 的惡意使用降至最低。
 
-建立 SP 並授與存取權給工作區的最簡單方式是使用 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。 若要建立服務主體，並授與它對您工作區的存取權，請使用下列步驟：
+建立 SP 並授與存取權給工作區的最簡單方式是使用 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)。 若要建立服務主體，並授與它對您工作區的存取權，請使用下列步驟：
 
 > [!NOTE]
 > 您必須是訂用帳戶的系統管理員，才能執行上述所有步驟。
@@ -92,7 +92,7 @@ ms.locfileid: "90885986"
 
     [!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)] 
 
-    如需其他驗證方法，請參閱[使用 Azure CLI 登入](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest)。
+    如需其他驗證方法，請參閱[使用 Azure CLI 登入](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest&preserve-view=true)。
 
 1. 安裝 Azure Machine Learning 擴充功能：
 
@@ -190,7 +190,7 @@ ws.get_details()
 
 ### <a name="use-a-service-principal-from-the-azure-cli"></a>從 Azure CLI 使用服務主體
 
-您可以使用服務主體來 Azure CLI 命令。 如需詳細資訊，請參閱 [使用服務主體登入](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest#sign-in-using-a-service-principal)。
+您可以使用服務主體來 Azure CLI 命令。 如需詳細資訊，請參閱 [使用服務主體登入](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest&preserve-view=true#sign-in-using-a-service-principal)。
 
 ### <a name="use-a-service-principal-with-the-rest-api-preview"></a>使用具有 REST API (預覽的服務主體) 
 

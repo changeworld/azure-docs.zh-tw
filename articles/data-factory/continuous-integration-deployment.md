@@ -10,13 +10,13 @@ ms.author: daperlov
 ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
-ms.date: 08/31/2020
-ms.openlocfilehash: 8749b64b664571abab6f354018dcbd2bd797531e
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.date: 09/23/2020
+ms.openlocfilehash: a5856d85b6a967f49fd651942ca6e4596bf15e7d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90531214"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320966"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Azure Data Factory 中的持續整合和傳遞
 
@@ -212,13 +212,17 @@ ms.locfileid: "90531214"
 * 您使用自動化 CI/CD，而且想要在 Resource Manager 部署期間變更某些屬性，但預設不會將屬性參數化。
 * 您的處理站很大，以致預設 Resource Manager 範本無效，這是因為其具有的參數超過允許的上限 (256)。
 
-若要覆寫預設參數化範本，請在 git 分支的根資料夾中建立名為 **arm-template-parameters-definition.json** 的檔案。 您必須使用該確切的檔案名稱。
+若要覆寫預設參數化範本，請移至管理中樞，並在 [原始檔控制] 區段中選取 [ **參數化範本** ]。 選取 [ **編輯範本** ] 以開啟 [參數化範本程式碼編輯器]。 
 
-   ![自訂 parameters 檔案](media/continuous-integration-deployment/custom-parameters.png)
+![管理自訂參數](media/author-management-hub/management-hub-custom-parameters.png)
+
+建立自訂參數化範本會在 git 分支的根資料夾中，建立名為 **arm-template-parameters-definition.js** 的檔案。 您必須使用該確切的檔案名稱。
+
+![自訂 parameters 檔案](media/continuous-integration-deployment/custom-parameters.png)
 
 從共同作業分支發佈時，Data Factory 會讀取這個檔案，並使用其組態來產生參數化的屬性。 如果找不到檔案，則會使用預設範本。
 
-匯出 Resource Manager 範本時，Data Factory 會從您目前正在處理的任何分支 (而不只是從共同作業分支) 讀取此檔案。 您可以從私人分支建立或編輯該檔案，在 UI 中選取 [匯出 ARM 範本]，即可測試變更。 接著，您可將檔案合併到共同作業分支中。
+匯出 Resource Manager 範本時，Data Factory 會從目前正在處理的分支（而不是共同作業分支）讀取此檔案。 您可以從私人分支建立或編輯該檔案，在 UI 中選取 [匯出 ARM 範本]，即可測試變更。 接著，您可將檔案合併到共同作業分支中。
 
 > [!NOTE]
 > 自訂參數化範本不會變更 ARM 範本參數限制 256。 其可讓您選擇並減少參數化屬性的數目。

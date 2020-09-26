@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: vturecek
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 0ae2ed163560aee4c0c3525ab31910e37afaa5b9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a7f25d4156c3d2671e1a15a1253ed7ba22265af0
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85847013"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91354865"
 ---
 # <a name="introduction-to-service-fabric-resource-model"></a>Azure Service Fabric 資源模型簡介
 
@@ -66,7 +66,7 @@ Service Fabric 資源模型描述一種簡單的方法，可定義組成 Service
 
 容器通常可提供暫存磁碟。 但暫存磁碟是暫時的物件，因此您會得到新的暫存磁碟，當容器損毀時則會遺失資訊。 您也很難與其他容器共用暫存磁碟上的資訊。 磁碟區是容器裡面掛接的目錄，可用來保存狀態。 磁碟區會提供一般用途的檔案儲存體，並可讓您使用一般磁碟 I/O 檔案 API 來讀取/寫入檔案。 磁碟區資源是一種宣告方式，可描述目錄的掛接方式以及其支援儲存體 (檔案儲存體磁碟區或 Service Fabric 可靠磁碟區)。  如需詳細資訊，請參閱[儲存狀態](service-fabric-mesh-storing-state.md#volumes)。
 
-![磁碟區][Image3]
+![下圖顯示的服務流向磁片區，該磁片區會流向 Service Fabric 可靠的磁片區，然後流向複寫的本機磁片，然後 Azure 檔案儲存體磁片區，再到網路儲存體。][Image3]
 
 ## <a name="programming-models"></a>程式設計模型
 服務資源只需要一個容器映像即可執行，而且資源相關的程式碼套件會參照該映像。 您可以在容器裡面使用任何架構，不需要知道或使用 Service Fabric Mesh 專用的 API，即可執行以任何語言撰寫的程式碼。 
@@ -75,7 +75,7 @@ Service Fabric 資源模型描述一種簡單的方法，可定義組成 Service
 
 ## <a name="packaging-and-deployment"></a>封裝和部署
 
-以資源模型為基礎的 Service Fabric Mesh 應用程式會封裝為 Docker 容器。  Service Fabric Mesh 是共用的多租用戶環境，容器則可提供高層級的隔離機制。  這些應用程式會使用 JSON 格式或 YAML 格式 (這會接著轉換為 JSON) 來描述。 將網狀應用程式部署至 Azure Service Fabric 網格時，用來描述應用程式的 JSON 是 Azure Resource Manager 範本。 資源會對應至 Azure 資源。  將網狀應用程式部署至 Service Fabric 叢集（獨立或 Azure 託管）時，用來描述應用程式的 JSON 格式類似于 Azure Resource Manager 範本。  Mesh 應用程式在部署後可透過 HTTP 介面或 Azure CLI 來管理。 
+以資源模型為基礎的 Service Fabric Mesh 應用程式會封裝為 Docker 容器。  Service Fabric Mesh 是共用的多租用戶環境，容器則可提供高層級的隔離機制。  這些應用程式會使用 JSON 格式或 YAML 格式 (這會接著轉換為 JSON) 來描述。 將網狀應用程式部署至 Azure Service Fabric 網狀時，用來描述應用程式的 JSON 是 Azure Resource Manager 的範本。 資源會對應至 Azure 資源。  將網狀應用程式部署至 Service Fabric 叢集 (獨立或 Azure 裝載的) 時，用來描述應用程式的 JSON 格式類似于 Azure Resource Manager 範本。  Mesh 應用程式在部署後可透過 HTTP 介面或 Azure CLI 來管理。 
 
 
 ## <a name="next-steps"></a>後續步驟 

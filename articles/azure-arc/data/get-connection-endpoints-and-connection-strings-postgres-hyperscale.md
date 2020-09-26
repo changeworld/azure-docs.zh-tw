@@ -10,12 +10,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 93b0547ba25f6534593a0a016ebfa5cbe4d2be2e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 4087d618209ab4db46f89ef4e6db7ac87ca4cf57
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936802"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331007"
 ---
 # <a name="get-connection-endpoints-and-form-connection-strings-for-your-arc-enabled-postgresql-hyperscale-server-group"></a>針對已啟用 Arc 的于 postgresql 超大規模伺服器群組取得連接端點和表單連接字串
 
@@ -39,7 +39,7 @@ azdata login --endpoint https://<external IP address of host/data controller>:30
 ```
 
 #### <a name="2-show-the-connection-endpoints"></a>2. 顯示連接端點
-執行以下命令：
+執行下列命令：
 ```console
 azdata arc postgres endpoint list -n <server group name>
 ```
@@ -77,7 +77,7 @@ postgres=#
 ```
 > [!NOTE]
 >
-> - 在名為 "_于 postgresql Instance_ " 的結束點中指出之_于 postgresql_使用者的密碼是您在建立伺服器群組時所選擇的密碼。
+> - 在名為 "_于 postgresql Instance_" 的結束點中指出的_postgres_使用者密碼是您在部署伺服器群組時所選擇的密碼。
 > - 關於 azdata：與您的連線相關聯的租用會持續約10小時。 之後，您必須重新連接。 如果您的租用已過期，當您嘗試使用 azdata 以外的 (執行命令時，將會收到下列錯誤訊息： azdata 登入) ：_錯誤： (401) _ 
 >  _原因：未經授權_的 
 >  _HTTP 回應標頭： HTTPHeaderDict ( {' Date '： ' Sun，06 Sep 2020 16:58:38 GMT '，' content-type '： ' 0 '，' WWW-驗證 '： '_ 
@@ -157,7 +157,7 @@ host=192.168.1.121; dbname=postgres user=postgres password={your_password_here} 
 Database=postgres; Data Source=192.168.1.121; User Id=postgres; Password={your_password_here}
 ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 - 瞭解如何相應放大 (在您的伺服器群組[) 新增背景工作節點](scale-out-postgresql-hyperscale-server-group.md)
 - 深入瞭解向上 [或向下延展 (增加/減少記憶體/虛擬核心) ](scale-up-down-postgresql-hyperscale-server-group-using-cli.md) 伺服器群組
 

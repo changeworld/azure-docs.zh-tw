@@ -5,18 +5,18 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: conceptual
-ms.date: 04/07/2020
+ms.date: 09/25/2020
 ms.author: victorh
-ms.openlocfilehash: bbb78fd879bc5c6bb8c2624329a23d7137b11660
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: ba9f42bc932a37e1052f17db2ae00413e0769d59
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651993"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91355732"
 ---
 # <a name="azure-application-gateway-features"></a>Azure 應用程式閘道功能
 
-[Azure 應用程式閘道](overview.md) 是一種 web 流量負載平衡器，可讓您管理 web 應用程式的流量。
+[Azure 應用程式閘道](overview.md)是網路流量負載平衡器，可讓您管理 Web 應用程式的流量。
 
 ![應用程式閘道概念](media/overview/figure1-720.png)
 
@@ -24,7 +24,7 @@ ms.locfileid: "89651993"
 
 - [安全通訊端層 (SSL/TLS) 終止](#secure-sockets-layer-ssltls-termination)
 - [自動調整](#autoscaling)
-- [區域備援](#zone-redundancy)
+- [區域冗余](#zone-redundancy)
 - [靜態 VIP](#static-vip)
 - [Web 應用程式防火牆](#web-application-firewall)
 - [AKS 的輸入控制器](#ingress-controller-for-aks)
@@ -147,15 +147,15 @@ Application Gateway 和 WAF v2 SKU 支援在要求及回應封包於用戶端與
 
 ## <a name="sizing"></a>調整大小
 
-應用程式閘道 Standard_v2 可以設定自動調整規模或固定大小的部署。 此 SKU 不提供不同的實例大小。 如需 v2 效能和定價的詳細資訊，請參閱自動調整 [v2](application-gateway-autoscaling-zone-redundant.md) 和 [瞭解定價](understanding-pricing.md)。
+應用程式閘道 Standard_v2 可以設定自動調整規模或固定大小的部署。 V2 SKU 未提供不同的實例大小。 如需 v2 效能和定價的詳細資訊，請參閱自動調整 [v2](application-gateway-autoscaling-zone-redundant.md) 和 [瞭解定價](understanding-pricing.md)。
 
-應用程式閘道標準提供三種大小： **小型**、 **中型**和 **大型**。 小型執行個體大小是針對開發和測試案例。
+應用程式閘道標準 (v1) 提供三種大小： **小型**、 **中型**和 **大型**。 小型執行個體大小是針對開發和測試案例。
 
 如需應用程式閘道限制的完整清單，請瀏覽[應用程式閘道服務限制](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fapplication-gateway%2ftoc.json#application-gateway-limits)。
 
 下表顯示每個應用程式閘道 v1 執行個體，在啟用 SSL 卸載時的平均效能輸送量：
 
-| 平均後端頁面回應大小 | 小 | 中 | 大 |
+| 平均後端頁面回應大小 | 小 | 中型 | 大 |
 | --- | --- | --- | --- |
 | 6 KB |7.5 Mbps |13 Mbps |50 Mbps |
 | 100 KB |35 Mbps |100 Mbps |200 Mbps |
@@ -167,6 +167,6 @@ Application Gateway 和 WAF v2 SKU 支援在要求及回應封包於用戶端與
 
 針對應用程式閘道 v1-v2 功能比較，請參閱自動調整 [和區域冗余應用程式閘道 v2](application-gateway-autoscaling-zone-redundant.md#feature-comparison-between-v1-sku-and-v2-sku)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 瞭解應用程式閘道的運作方式- [應用程式閘道的運作方式](how-application-gateway-works.md)

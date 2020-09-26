@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/03/2017
-ms.openlocfilehash: 08fcf3540b2f8677f3fbfff49f21f99062d0ca40
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 45f63aed410c4d140259808044872cbbecfaa95b
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91342053"
+ms.locfileid: "91355562"
 ---
 # <a name="manage-azure-machine-learning-studio-classic-web-services-using-api-management"></a>使用 API 管理來管理 Machine Learning Studio (傳統版) Web 服務
 
-**適用於：** ![是](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (傳統版)![否](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
+**適用于：** ![適用于。 ](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (傳統) 不 ![ 適用。](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)  
 
 
 ## <a name="overview"></a>概觀
@@ -50,7 +50,7 @@ Azure API 管理是一項 Azure 服務，可讓您藉由定義使用者存取、
 
 新服務建立作業最多可能需要花費 30 分鐘的時間。
 
-![create-service](./media/manage-web-service-endpoints-using-api-management/create-service.png)
+![螢幕擷取畫面顯示 [P I Management service] 對話方塊，其中包含建立服務所需的選項。](./media/manage-web-service-endpoints-using-api-management/create-service.png)
 
 
 ## <a name="create-the-api"></a>建立 API
@@ -87,12 +87,12 @@ Azure API 管理是一項 Azure 服務，可讓您藉由定義使用者存取、
 2. 對於 [URL 範本]，輸入 "`/workspaces/{workspace}/services/{service}/execute?api-version={apiversion}&details={details}`"。
 3. 輸入 [顯示名稱] \(此範例使用「RRS 執行」)。
 
-   ![加入 RRS 作業簽章](./media/manage-web-service-endpoints-using-api-management/add-rrs-operation-signature.png)
+   ![螢幕擷取畫面：顯示簽章頁面，您可以在其中輸入顯示名稱。](./media/manage-web-service-endpoints-using-api-management/add-rrs-operation-signature.png)
 
 4. 按一下左側的 [回應] > [新增]，然後選取 [200 確定]。
 5. 按一下 [儲存]  儲存這個作業。
 
-   ![加入 RRS 作業回應](./media/manage-web-service-endpoints-using-api-management/add-rrs-operation-response.png)
+   ![螢幕擷取畫面顯示具有 [儲存] 按鈕的 [操作 R R S 執行] 頁面。](./media/manage-web-service-endpoints-using-api-management/add-rrs-operation-response.png)
 
 ## <a name="add-bes-operations"></a>加入 BES 作業
 
@@ -141,15 +141,15 @@ Azure API 管理是一項 Azure 服務，可讓您藉由定義使用者存取、
 
 1. 按一下 [開發人員入口網站]。
 
-   ![開發人員入口網站](./media/manage-web-service-endpoints-using-api-management/developer-portal.png)
+   ![螢幕擷取畫面顯示開發人員入口網站連結。](./media/manage-web-service-endpoints-using-api-management/developer-portal.png)
 
 2. 按一下上層功能表中的 [API]，然後按一下 [AzureML 示範 API] 以查看可用的作業。
 
-   ![demoazureml API](./media/manage-web-service-endpoints-using-api-management/demoazureml-api.png)
+   ![螢幕擷取畫面顯示 Azure M L 示範 A P I 連結。](./media/manage-web-service-endpoints-using-api-management/demoazureml-api.png)
 
 3. 為作業選取 [RRS 執行]  。 按一下 [試試看] 。
 
-   ![試試看](./media/manage-web-service-endpoints-using-api-management/try-it.png)
+   ![螢幕擷取畫面顯示 Azure M L 示範 A P I 對話方塊，其中已選取 [執行後 R R R S]，並顯示 [試用] 按鈕。](./media/manage-web-service-endpoints-using-api-management/try-it.png)
 
 4. 對於 [要求參數]，輸入您的 [工作區] 和 [服務]，在 [API 版本] 中輸入"2.0，以及在 [詳細資料] 中輸入 "true"。 您可以在 AzureML Web 服務儀表板中找到您的**工作區**和**服務** (請參閱附錄 A 中的**測試 Web 服務**)。
 
@@ -157,15 +157,15 @@ Azure API 管理是一項 Azure 服務，可讓您藉由定義使用者存取、
 
    對於 [要求本文]，輸入 `{"Inputs": {"input1": {"ColumnNames": ["Col2"], "Values": [["This is a good day"]]}}, "GlobalParameters": {}}`。
 
-   ![AzureML 示範 API](./media/manage-web-service-endpoints-using-api-management/azureml-demo-api.png)
+   ![螢幕擷取畫面顯示 Azure M L 示範 A P I 要求參數、要求標頭、要求主體和授權。](./media/manage-web-service-endpoints-using-api-management/azureml-demo-api.png)
 
 5. 按一下 [ **傳送**]。
 
-   ![傳送](./media/manage-web-service-endpoints-using-api-management/send.png)
+   ![螢幕擷取畫面顯示 [傳送] 按鈕。](./media/manage-web-service-endpoints-using-api-management/send.png)
 
 叫用作業之後，開發人員入口網站會顯示來自後端服務 [要求的 URL]、[回應狀態]、[回應標頭]，以及任何的 [回應內容]。
 
-![回應狀態](./media/manage-web-service-endpoints-using-api-management/response-status.png)
+![螢幕擷取畫面顯示開發人員入口網站，顯示回應狀態、回應延遲、回應標頭和回應內容。](./media/manage-web-service-endpoints-using-api-management/response-status.png)
 
 ## <a name="appendix-a---creating-and-testing-a-simple-azureml-web-service"></a>附錄 A - 建立及測試簡單的 AzureML Web 服務
 ### <a name="creating-the-experiment"></a>建立實驗
@@ -177,11 +177,11 @@ Azure API 管理是一項 Azure 服務，可讓您藉由定義使用者存取、
 
 首先，使用您選擇的瀏覽器巡覽至：[https://studio.azureml.net/](https://studio.azureml.net/) ，並輸入您的認證進行登入。 接下來，建立新的空白實驗。
 
-![搜尋實驗範本](./media/manage-web-service-endpoints-using-api-management/search-experiment-templates.png)
+![螢幕擷取畫面顯示已選取實驗的新頁面和文字搜尋。](./media/manage-web-service-endpoints-using-api-management/search-experiment-templates.png)
 
 重新命名為 **SimpleFeatureHashingExperiment**。 展開 [儲存的資料集]，將 [來自 Amazon 的書籍評論] 拖曳到您的實驗。
 
-![簡單的特徵雜湊實驗](./media/manage-web-service-endpoints-using-api-management/simple-feature-hashing-experiment.png)
+![螢幕擷取畫面顯示左側的範例和右邊的 [SimpleFeatureHashingExperiment] 窗格，其中包含在此拖曳專案的指示。](./media/manage-web-service-endpoints-using-api-management/simple-feature-hashing-experiment.png)
 
 展開 [資料轉換] 和 [操作]，將 [選取資料集中的資料行] 拖曳到您的實驗。 將 [來自 Amazon 的書籍評論] 連接到 [選取資料集中的資料行]。
 
@@ -193,53 +193,53 @@ Azure API 管理是一項 Azure 服務，可讓您藉由定義使用者存取、
 
 展開 [文字分析]，將 [特徵雜湊] 拖曳到實驗。 將 [選取資料集中的資料行] 連接到 [特徵雜湊]。
 
-![連接專案資料行](./media/manage-web-service-endpoints-using-api-management/connect-project-columns.png)
+![螢幕擷取畫面顯示新增至工作區的功能雜湊專案。](./media/manage-web-service-endpoints-using-api-management/connect-project-columns.png)
 
 在 [雜湊位元大小] 中，輸入 **3**。 這會建立 8 (23) 個資料行。
 
-![雜湊位元大小](./media/manage-web-service-endpoints-using-api-management/hashing-bitsize.png)
+![螢幕擷取畫面顯示已選取特徵雜湊的屬性，您可以輸入雜湊 bitsize。](./media/manage-web-service-endpoints-using-api-management/hashing-bitsize.png)
 
 此時，您可能想要按一下 [執行]  ，以測試實驗。
 
-![執行](./media/manage-web-service-endpoints-using-api-management/run.png)
+![螢幕擷取畫面：顯示 [執行] 按鈕。](./media/manage-web-service-endpoints-using-api-management/run.png)
 
 ### <a name="create-a-web-service"></a>建立 Web 服務
 現在建立 Web 服務。 展開 [Web 服務]，將 [輸入] 拖曳到您的實驗。 將 [輸入] 連接到 [特徵雜湊]。 另將 [輸出]  拖曳到您的實驗。 將 [輸出] 連接到 [特徵雜湊]。
 
-![輸出至特徵雜湊](./media/manage-web-service-endpoints-using-api-management/output-to-feature-hashing.png)
+![螢幕擷取畫面會顯示指定變更之後的工作區。](./media/manage-web-service-endpoints-using-api-management/output-to-feature-hashing.png)
 
 按一下 [發佈 Web 服務] 。
 
-![發佈 Web 服務](./media/manage-web-service-endpoints-using-api-management/publish-web-service.png)
+![螢幕擷取畫面顯示 [發佈 WEB 服務] 按鈕。](./media/manage-web-service-endpoints-using-api-management/publish-web-service.png)
 
 按一下 [是]  發佈實驗。
 
-![[是] 表示發佈](./media/manage-web-service-endpoints-using-api-management/yes-to-publish.png)
+![螢幕擷取畫面顯示確認訊息和發行的選項。](./media/manage-web-service-endpoints-using-api-management/yes-to-publish.png)
 
 ### <a name="test-the-web-service"></a>測試 Web 服務
 AzureML Web 服務是由 RSS (要求/回應服務) 和 BES (批次執行服務) 端點所組成。 RSS 適用於同步執行。 BES 適用於非同步工作執行。 若要使用下面的範例 Python 原始碼來測試您的 Web 服務，您可能需要下載並安裝適用於 Python 的 Azure SDK (請參閱：[如何安裝 Python](/azure/developer/python/azure-sdk-install))。
 
 下面的範例原始碼也需要用到實驗的**工作區**、**服務**和 **API 金鑰**。 若要尋找工作區和服務，請在 Web 服務儀表板中，按一下實驗的 [要求/回應] 或 [批次執行]。
 
-![尋找工作區和服務](./media/manage-web-service-endpoints-using-api-management/find-workspace-and-service.png)
+![螢幕擷取畫面：顯示 [要求] 窗格，您可以在其中找到工作區和服務值。](./media/manage-web-service-endpoints-using-api-management/find-workspace-and-service.png)
 
 若要尋找 [API 金鑰]，請按一下 Web 服務儀表板中的實驗。
 
-![尋找 API 金鑰](./media/manage-web-service-endpoints-using-api-management/find-api-key.png)
+![螢幕擷取畫面顯示 web 服務儀表板中的實驗，您可以在其中找到 P I 鍵。](./media/manage-web-service-endpoints-using-api-management/find-api-key.png)
 
 #### <a name="test-rrs-endpoint"></a>測試 RRS 端點
 ##### <a name="test-button"></a>測試按鈕
 測試 RRS 端點的一個簡單方式，是在 Web 服務儀表板上，按一下 [測試]  。
 
-![test](./media/manage-web-service-endpoints-using-api-management/test.png)
+![螢幕擷取畫面顯示 web 服務儀表板中具有 [測試] 按鈕的實驗。](./media/manage-web-service-endpoints-using-api-management/test.png)
 
 在 [col2] 中，輸入**這是美好的一天**。 按一下核取記號。
 
-![輸入資料](./media/manage-web-service-endpoints-using-api-management/enter-data.png)
+![螢幕擷取畫面顯示 [輸入要預測的資料] 對話方塊，您可以在其中輸入文字，例如，這是一個好日子。](./media/manage-web-service-endpoints-using-api-management/enter-data.png)
 
 您會看到類似下列畫面：
 
-![範例輸出](./media/manage-web-service-endpoints-using-api-management/sample-output.png)
+![螢幕擷取畫面顯示實驗的結果，這是一個好的日子，而引號中有幾個數位。](./media/manage-web-service-endpoints-using-api-management/sample-output.png)
 
 ##### <a name="sample-code"></a>範例程式碼
 測試 RRS 的另一個方式，是利用用戶端程式碼。 如果您按一下儀表板上的 [要求/回應] 並捲動至底部，您會看到 C#、Python 和 R 的範例程式碼。您也會看到 RRS 要求的語法，包括要求 URI、標頭和本文。

@@ -8,14 +8,14 @@ ms.subservice: features
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
-ms.reviewer: sashan, moslake, carlrab
+ms.reviewer: sashan, moslake
 ms.date: 08/14/2020
-ms.openlocfilehash: 19f811c636d5cf3ffb3eef9904c7ba4f7d456b5f
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: ceb1c9711d67b32f9a31e6105df0e0e0eec42907
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89462202"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321368"
 ---
 # <a name="vcore-model-overview---azure-sql-database-and-azure-sql-managed-instance"></a>vCore 模型總覽-Azure SQL Database 和 Azure SQL 受控執行個體 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -107,7 +107,7 @@ To enable M-series hardware for a subscription and region, a support request mus
 |Fsv2 系列     |-Intel® 8168 (Skylake) 處理器<br>-採用最大的核心 turbo 頻率速度 3.4 GHz，以及最大單一核心 turbo 頻率速度 3.7 g h z。<br>-布建高達72虛擬核心 (1 vCore = 1 超執行緒) |-每個 vCore 1.9 GB<br>-布建高達 136 GB|
 |M 系列     |-Intel® E7-8890 v3 2.5 GHz 和 Intel® 8280M 2.7 GHz (Cascade Lake) 處理器<br>-布建高達128虛擬核心 (1 vCore = 1 超執行緒) |-每個 vCore 29 GB<br>-布建高達 3.7 TB|
 
-\* 在 [sys. dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) 動態管理檢視中，使用 INTEL® SP-8160 (Skylake) 處理器之資料庫的硬體世代會顯示為 Gen6，而使用 INTEL® 8272CL (Cascade Lake) 的資料庫產生硬體時，會顯示為 Gen7。 無論處理器類型 (Broadwell、Skylake 或 Cascade Lake) ，所有第5代資料庫的資源限制都相同。
+\* 在 [sys.dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) 動態管理檢視中，使用 INTEL® SP-8160 (Skylake) 處理器之資料庫的硬體世代會顯示為 Gen6，而使用 INTEL® 8272CL (Cascade Lake) 的資料庫產生硬體時，會顯示為 Gen7。 無論處理器類型 (Broadwell、Skylake 或 Cascade Lake) ，所有第5代資料庫的資源限制都相同。
 
 如需資源限制的詳細資訊，請參閱 [單一資料庫的資源限制 (vCore) ](resource-limits-vcore-single-databases.md)，或彈性集區 [的資源限制 (vCore) ](resource-limits-vcore-elastic-pools.md)。
 
@@ -222,7 +222,7 @@ On the **Details** page, provide the following:
 Approved support requests are typically fulfilled within 5 business days.
 -->
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 若要開始使用，請參閱： 
 - [使用 Azure 入口網站建立 SQL Database](single-database-create-quickstart.md)

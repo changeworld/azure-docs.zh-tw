@@ -6,14 +6,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: conceptual
-ms.date: 09/12/2020
+ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 7933cc692ebc3b40e5f608a917dce51f5298fbe3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: f3a1dc716e4db51d9d8b488bd98fc254f8dad842
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90904651"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322150"
 ---
 # <a name="create-automatic-responses-to-alerts-and-recommendations-with-workflow-automation"></a>使用工作流程自動化來建立警示和建議的自動回應
 
@@ -33,7 +33,7 @@ ms.locfileid: "90904651"
 |釋放狀態：|正式上市 (GA)|
 |定價：|免費|
 |必要的角色和許可權：|資源群組的**安全性系統管理員角色**或**擁有**者<br>也必須具有目標資源的寫入權限<br><br>若要使用 Azure Logic Apps 工作流程，您也必須具有下列 Logic Apps 角色/許可權：<br> - [邏輯應用程式操作員](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-operator) 許可權是必要的或邏輯應用程式讀取/觸發存取 (此角色無法建立或編輯邏輯應用程式;只 *執行* 現有的) <br> - 邏輯應用程式建立和修改需要[邏輯應用程式參與者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-contributor)許可權<br>如果您想要使用邏輯應用程式連接器，您可能需要額外的認證來登入其各自的服務 (例如，您的 Outlook/團隊/時差實例) |
-|雲端：|![Yes](./media/icons/yes-icon.png) 商業雲端<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![Yes](./media/icons/yes-icon.png) 中國 Gov，其他 Gov|
+|雲端：|![是](./media/icons/yes-icon.png) 商業雲端<br>![是](./media/icons/yes-icon.png) US Gov<br>![是](./media/icons/yes-icon.png) 中國 Gov，其他 Gov|
 |||
 
 
@@ -67,14 +67,12 @@ ms.locfileid: "90904651"
 
     在邏輯應用程式設計工具中，支援下列來自安全性中心連接器的觸發程式：
 
-    * **建立或觸發 Azure 資訊安全中心建議時**
-    * **建立或觸發 Azure 資訊安全中心警示時** 
-    
-    > [!TIP]
-    > 您可以自訂觸發程式，使其只與您感興趣的嚴重性層級的警示相關聯。
+    * **建立或觸發 Azure 資訊安全中心建議時** -如果您的邏輯應用程式依賴已淘汰或已取代的建議，則您的自動化將會停止運作，而您將需要更新觸發程式。 若要追蹤建議的變更，請參閱 [Azure 資訊安全中心版本](release-notes.md)資訊。
+
+    * **當 Azure 資訊安全中心警示建立或觸發時** ，您可以自訂觸發程式，使其只與您感興趣的嚴重性層級的警示相關聯。
     
     > [!NOTE]
-    > 如果您使用的是舊版觸發程式「當觸發 Azure 資訊安全中心警示的回應」時，工作流程自動化功能將不會啟動您的 Logic Apps。 相反地，請使用上述任一觸發程式。 
+    > 如果您使用的是舊版觸發程式「當觸發 Azure 資訊安全中心警示的回應」時，您的邏輯應用程式將不會由工作流程自動化功能啟動。 相反地，請使用上述任一觸發程式。 
 
     [![範例邏輯應用程式](media/workflow-automation/sample-logic-app.png)](media/workflow-automation/sample-logic-app.png#lightbox)
 
@@ -97,7 +95,7 @@ ms.locfileid: "90904651"
 
 若要查看傳遞給邏輯應用程式實例之安全性警示或建議事件的原始事件架構，請造訪 [工作流程自動化資料類型架構](https://aka.ms/ASCAutomationSchemas)。 如果您未使用上述的「安全性中心」內建邏輯應用程式連接器，但改為使用邏輯應用程式的一般 HTTP 連接器，這項功能就很有用。您可以使用事件 JSON 架構，視需要手動進行剖析。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 在本文中，您已瞭解如何建立 Logic Apps、在資訊安全中心自動執行，以及手動執行它們。 
 

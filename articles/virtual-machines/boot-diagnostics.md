@@ -7,12 +7,12 @@ author: mimckitt
 ms.author: mimckitt
 ms.topic: conceptual
 ms.date: 08/04/2020
-ms.openlocfilehash: 0b3e1b3bc296676c44eddf34b35a0d4e06d3b8c4
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: b51b44f3a3d0889836bb41e0bf2fa37234338cf4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90007327"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91287078"
 ---
 # <a name="azure-boot-diagnostics"></a>Azure 開機診斷
 
@@ -38,7 +38,8 @@ ms.locfileid: "90007327"
 - 開機診斷不支援 premium 儲存體帳戶，如果用於開機診斷的高階儲存體帳戶，使用者將會 `StorageAccountTypeNotSupported` 在啟動 VM 時收到錯誤。 
 - Resource Manager API 版本 "2020-06-01" 和更新版本支援受控儲存體帳戶。
 - Azure 序列主控台目前與用於開機診斷的受控儲存體帳戶不相容。 深入瞭解 [Azure 序列主控台](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-overview)。
+- 使用管理儲存體帳戶的開機診斷目前只能透過 Azure 入口網站套用。 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 深入瞭解 [Azure 序列主控台](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-overview) ，以及如何使用開機診斷對 [azure 中的虛擬機器進行疑難排解](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics)。

@@ -4,12 +4,12 @@ description: 使用 Service Fabric 的 DNS 服務來從叢集內部探索微服�
 ms.topic: conceptual
 ms.date: 7/20/2018
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a05669bbd6de44447d7eb11a0b9941d18e8048d1
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: f7f06920820cdc73f8d3101ab24ee46625931ee4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021267"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268038"
 ---
 # <a name="dns-service-in-azure-service-fabric"></a>Azure Service Fabric 中的 DNS 服務
 「DNS 服務」是一個選用的系統服務，您可以在叢集中啟用以使用 DNS 通訊協定來探索其他服務。 
@@ -18,7 +18,7 @@ ms.locfileid: "89021267"
 
 DNS 服務會將 DNS 名稱對應到服務名稱，接著服務名稱會由命名服務解析並傳回服務端點。 服務的 DNS 名稱是在建立時提供的。 下圖顯示 DNS 服務運用於無狀態服務的情形。
 
-![服務端點](./media/service-fabric-dnsservice/stateless-dns.png)
+![此圖顯示 dns 服務針對無狀態服務如何將 DNS 名稱對應到服務名稱。](./media/service-fabric-dnsservice/stateless-dns.png)
 
 從 Service Fabric 6.3 版開始，Service Fabric DNS 通訊協定已進行擴充，而包含為分割的具狀態服務定址的配置。 這些擴充功能可讓您使用具狀態服務 DNS 名稱和分割區名稱的組合，來解析特定分割區的 IP 位址。 三種分割配置均受到支援：
 
@@ -28,7 +28,7 @@ DNS 服務會將 DNS 名稱對應到服務名稱，接著服務名稱會由命�
 
 下圖顯示 DNS 服務運用於分割具狀態服務的情形。
 
-![具狀態服務端點](./media/service-fabric-dnsservice/stateful-dns.png)
+![此圖顯示 dns 服務針對分割的無狀態服務，如何將 DNS 名稱對應到服務名稱。](./media/service-fabric-dnsservice/stateful-dns.png)
 
 DNS 服務不支援動態連接埠。 若要解決動態連接埠上所公開的服務，請使用[反向 Proxy 服務](./service-fabric-reverseproxy.md)。
 
