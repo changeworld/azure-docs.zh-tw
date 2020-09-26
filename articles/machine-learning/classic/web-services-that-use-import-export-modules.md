@@ -11,16 +11,16 @@ ms.subservice: studio
 ms.topic: how-to
 ms.date: 03/28/2017
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7b1d8f939e403c795effeca14943791d1554742f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a963a9f10ee23c50f50e66191e92f0839c457d9c
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91342698"
+ms.locfileid: "91362834"
 ---
 # <a name="deploy-azure-machine-learning-studio-classic-web-services-that-use-data-import-and-data-export-modules"></a>部署使用資料匯入和資料匯出模組的 Azure Machine Learning Studio (傳統版) Web 服務
 
-**適用於：** ![是](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (傳統版)![否](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
+**適用于：** ![適用于。 ](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (傳統) 不 ![ 適用。](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)  
 
 
 當您建立預測性實驗時，通常會新增 Web 服務輸入和輸出。 當您部署實驗時，取用者可以透過輸入和輸出傳送和接收 Web 服務的資料。 對於某些應用程式，取用者的資料可能可以從資料摘要獲得，或者資料已經位於外部資料來源 (例如 Azure Blob 儲存體)。 在這些情況下，應用程式就不需要使用 Web 服務的輸入和輸出讀取和寫入資料。 而是可以改用「批次執行服務 (BES)」使用「匯入資料」模組從資料來源讀取資料，然後使用「匯出資料」模組將評分結果寫入不同的資料位置。

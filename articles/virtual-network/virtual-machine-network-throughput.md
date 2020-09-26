@@ -1,6 +1,6 @@
 ---
 title: Azure 虛擬機器網路輸送量 | Microsoft Docs
-description: 瞭解 Azure 虛擬機器的網路輸送量，包括如何將頻寬配置給虛擬機器。
+description: 深入瞭解 Azure 虛擬機器的網路輸送量，包括如何將頻寬配置給虛擬機器。
 services: virtual-network
 documentationcenter: na
 author: steveesp
@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 4/26/2019
 ms.author: steveesp
 ms.reviewer: kumud, mareat
-ms.openlocfilehash: 4fed883c8fa92df77af432e1e4a4b3acca72a0d2
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: f0bad935c7c3d44f57dd171f714f31856bc2089c
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87265109"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361308"
 ---
 # <a name="virtual-machine-network-bandwidth"></a>虛擬機器網路頻寬
 
@@ -46,27 +46,27 @@ Azure 虛擬機器必須連結一個 (但可以有數個) 網路介面。 配置
 
 ## <a name="network-flow-limits"></a>網路流量限制
 
-除了頻寬，VM 上的網路連線數目會在任何指定的時間內出現，可能會影響其網路效能。 Azure 網路堆疊會針對稱為「流程」的資料結構中的每個方向，維護 TCP/UDP 連線的狀態。 一般的 TCP/UDP 連接會建立2個流程，一個用於輸入，另一個用於輸出方向。 
+除了頻寬以外，VM 上存在於任何指定時間的網路連線數目可能會影響其網路效能。 Azure 網路堆疊會針對名為「流程」的資料結構，維護每個 TCP/UDP 連接方向的狀態。 一般的 TCP/UDP 連接會建立2個流程，一個用於輸入，另一個用於輸出方向。 
 
-端點之間的資料傳輸除了執行資料傳輸的流程之外，還需要建立數個流量。 某些範例是針對 DNS 解析建立的流程，以及針對負載平衡器健康情況探查所建立的流程。 另請注意，網路虛擬裝置（Nva）（例如閘道、proxy、防火牆）將會看到針對在設備上終止的連線所建立的流程，並由設備產生。 
+端點之間的資料傳輸需要建立數個流程，以及執行資料傳輸的流程。 某些範例是針對 DNS 解析建立的流程，以及針對負載平衡器健康情況探查所建立的流程。 另請注意，網路虛擬裝置 (Nva) 例如閘道、proxy、防火牆，會看到針對在設備上終止並由設備產生的連線所建立的流程。 
 
-![透過轉送設備的 TCP 交談流量計數](media/virtual-machine-network-throughput/flow-count-through-network-virtual-appliance.png)
+![透過轉送設備進行 TCP 交談的流程計數](media/virtual-machine-network-throughput/flow-count-through-network-virtual-appliance.png)
 
-## <a name="flow-limits-and-recommendations"></a>流程限制與建議
+## <a name="flow-limits-and-recommendations"></a>流程限制和建議
 
-目前，Azure 網路堆疊針對具有8個以上 CPU 核心和100k 流量總計的 Vm，支援250K 的總網路流量，並在 CPU 核心少於8個的 Vm 上提供良好的效能。 超過此限制時，網路效能會正常降低，而其他流量則會以固定限制500K 總流量，250K 輸入和250K 輸出，在這之後會捨棄額外的流程。
+現今，Azure 網路堆疊支援250K 網路流量的總計，且具有超過8個 CPU 核心和100k 個流量的 Vm，且效能適用于具有少於8個 CPU 核心的 Vm 的良好效能。 超過此限制，其他流程的網路效能會因500K 總數的限制（250K 輸入和250K 輸出）而正常下降，之後會捨棄額外的流程。
 
 | 效能等級 | 具有 <8 個 CPU 核心的 Vm | 具有8個以上 CPU 核心的 Vm |
 | ----------------- | --------------------- | --------------------- |
-|<b>良好的效能</b>|100K 流量 |250K 流程|
+|<b>良好的效能</b>|100K 流程 |250K 流程|
 |<b>效能降低</b>|超過100k 流量|上述250K 流程|
 |<b>流程限制</b>|500K 流程|500K 流程|
 
-[Azure 監視器](../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachines)中提供計量，可追蹤 VM 或 VMSS 實例上的網路流量和流量建立速率。
+您可以在 [Azure 監視器](../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachines) 中找到計量，以追蹤 VM 或 VMSS 實例上的網路流量和流程建立率。
 
-![azure-monitor-flow-metrics.png](media/virtual-machine-network-throughput/azure-monitor-flow-metrics.png)
+![螢幕擷取畫面顯示 Azure 監視器的 [計量] 頁面，其中包含折線圖以及輸入和輸出流程的總計。](media/virtual-machine-network-throughput/azure-monitor-flow-metrics.png)
 
-連接建立和終止速率也會影響網路效能，因為連線建立和終止共用 CPU 與封包處理常式。 建議您根據預期的流量模式來基準工作負載，並適當地相應放大工作負載，以符合您的效能需求。 
+連接建立和終止速率也可能會影響網路效能，因為連線建立和終止共用 CPU 與封包處理常式。 建議您根據預期的流量模式來基準測試工作負載，並適當地相應放大工作負載，以符合您的效能需求。 
 
 ## <a name="next-steps"></a>後續步驟
 

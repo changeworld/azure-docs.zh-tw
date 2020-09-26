@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cynthn
-ms.openlocfilehash: 4dc3e128ac1c611a8527c3044bfac566edc24c74
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: fe89b58f71b14b211863fd46ba523e8c866764f1
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91342562"
+ms.locfileid: "91361784"
 ---
 # <a name="manage-the-availability-of-linux-virtual-machines"></a>管理 Linux 虛擬機器的可用性
 
@@ -36,7 +36,7 @@ ms.locfileid: "91342562"
 
 * 使用可用性區域來防止資料中心失敗
 * 針對備援在可用性設定組中設定多部虛擬機器
-* 針對可用性設定組中的 Vm 使用受控磁片]
+* 將受控磁碟使用於可用性設定組中的 VM
 * 使用排定的事件主動回應 VM 影響事件
 * 將每個應用程式層設定至不同的可用性設定組中
 * 將負載平衡器與可用性區域或可用性設定組結合

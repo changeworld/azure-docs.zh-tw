@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 02/05/2020
 ms.author: Zhchia
-ms.openlocfilehash: 8917343175dd5ed8f82c1929683de98034323163
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8548e6c4c3e2b31d9fb16273bcc441ca38127831
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91321912"
+ms.locfileid: "91361818"
 ---
 # <a name="tutorial-configure-purecloud-by-genesys-for-automatic-user-provisioning"></a>教學課程：設定 PureCloud by Genesys 來自動布建使用者
 
@@ -88,7 +88,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
 5. 在 [系統 **管理員認證** ] 區段底下，分別在 [ **租使用者 URL** ] 和 [ **秘密權杖** ] 欄位中 Genesys API url 和 Oauth 權杖來輸入您的 PureCloud。 `{{API Url}}/api/v2/scim/v2`您可以從[PureCloud 開發人員中心](https://developer.mypurecloud.com/api/rest/index.html)使用 PURECLOUD 區域的 api URL，將 api url 結構化為。 按一下 [ **測試連接** ] 以確保 Azure AD 可以透過 Genesys 連線至 PureCloud。 如果連接失敗，請確定您的 PureCloud by Genesys 帳戶具有系統管理員許可權，然後再試一次。
 
-    ![佈建](./media/purecloud-by-genesys-provisioning-tutorial/provisioning.png)
+    ![螢幕擷取畫面顯示 [管理認證] 對話方塊，您可以在其中輸入租使用者 U R L 和秘密權杖。](./media/purecloud-by-genesys-provisioning-tutorial/provisioning.png)
 
 6. 在 [通知電子郵件] 欄位中，輸入應該收到佈建錯誤通知的個人或群組電子郵件地址，然後選取 [發生失敗時傳送電子郵件通知] 核取方塊。
 

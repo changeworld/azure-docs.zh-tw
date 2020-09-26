@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: c4d0639831d2f6f60a719637c5158fba5caf6f43
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 8391202e991c240b03bd79b947c1c3c6dcc9afd7
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83659346"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362532"
 ---
 # <a name="configure-rules"></a>設定規則
 
@@ -33,7 +33,7 @@ IoT Central 中的規則是可自訂的回應工具，會觸發來自已連線�
 
 在下列螢幕擷取畫面中，條件會檢查溫度大於 70&deg; F，且濕度小於 10。 當這兩個陳述都是 True 時，規則會評估為 True 並觸發動作。
 
-![條件](media/howto-configure-rules/conditions.png)
+![螢幕擷取畫面顯示的冰箱監視器具有針對溫度和濕度指定的條件。](media/howto-configure-rules/conditions.png)
 
 ### <a name="use-a-cloud-property-in-a-value-field"></a>在值欄位中使用雲端屬性
 

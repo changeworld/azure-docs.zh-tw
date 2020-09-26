@@ -1,19 +1,19 @@
 ---
 title: 使用 AI 瞭解 Blob 儲存體資料
 titleSuffix: Azure Cognitive Search
-description: 使用 Azure 認知搜尋中的 AI 擴充管線，將語義、自然語言處理和影像分析新增至 Azure blob。
+description: 瞭解 Azure 認知搜尋中的自然語言和影像分析功能，以及這些程式如何適用于儲存在 Azure blob 中的內容。
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: ce5eafe0b36f07d8de366b6d4adb92e894fcb67e
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/23/2020
+ms.openlocfilehash: a0d32f00bd3c7f8daa2984bdc7c9b9dfb5add218
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936736"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362792"
 ---
 # <a name="use-ai-to-understand-blob-storage-data"></a>使用 AI 瞭解 Blob 儲存體資料
 
@@ -22,9 +22,9 @@ Azure Blob 儲存體中的資料通常是各式各樣的非結構化內容，例
 + 使用光學字元辨識將影像中的文字解壓縮 (OCR) 
 + 從相片產生場景描述或標記
 + 偵測語言並將文字翻譯成不同的語言
-+ 使用命名實體辨識處理文字 (NER) 尋找人員、日期、地點或組織的參考 
++ 藉由尋找人員、日期、地點或組織的參考，以透過實體辨識推斷結構
 
-雖然您可能只需要其中一個 AI 功能，但通常會將多個這些功能結合成相同的管線 (例如，從掃描的影像中解壓縮文字，然後尋找其中所參考的所有日期和位置) 。 
+雖然您可能只需要其中一個 AI 功能，但通常會將多個這些功能結合成相同的管線 (例如，從掃描的影像中解壓縮文字，然後尋找其中所參考的所有日期和位置) 。 您也可以將自訂 AI 或機器學習處理的形式納入自訂的 AI 或機器學習處理，以作為您的資料和您的需求量身打造的頂級外部套件或內部模型。
 
 AI 擴充會建立儲存在欄位中的新資訊，並以文字形式捕獲。 擴充之後，您可以透過全文檢索搜尋從搜尋索引存取此資訊，或將擴充的檔傳送回 Azure 儲存體，以增強新的應用程式體驗，包括探索或分析案例的資料。 
 
@@ -36,31 +36,37 @@ AI 擴充會建立儲存在欄位中的新資訊，並以文字形式捕獲。 �
 
 輸入是您在 Azure Blob 儲存體中的 Blob (在單一容器中)。 Blob 可以是幾乎任何類型的文字或影像資料。 
 
-輸出一律是搜尋索引，用來在用戶端應用程式中進行快速文字搜尋、抓取和探索。 此外，輸出也可以是將擴充的檔投射到 Azure blob 或 Azure 資料表中的 *知識存放區* ，以在 Power BI 或資料科學工作負載等工具中進行下游分析。
+輸出一律是搜尋索引，用來在用戶端應用程式中進行快速文字搜尋、抓取和探索。 此外，輸出也可以是將擴充的檔投射到 Azure blob 或 Azure 資料表中的 [*知識存放區*](knowledge-store-concept-intro.md) ，以在 Power BI 或資料科學工作負載等工具中進行下游分析。
 
 Between 是管線架構本身。 管線是以 *索引子* 功能為基礎，您可以在其中指派 *技能集*，此功能是由提供 AI 的一或多項 *技能* 所組成。 管線的目的是要產生擴充的 *檔* ，以輸入為原始內容，但在透過管線移動時，會挑選額外的結構、內容和資訊。 在編制索引期間，會使用擴充的檔來建立反向索引和其他用於全文檢索搜尋或探索和分析的結構。
 
-## <a name="start-with-services"></a>開始使用服務
+## <a name="required-resources"></a>所需資源
 
-您需要 Azure 認知搜尋和 Azure Blob 儲存體。 在 Blob 儲存體中，您需要提供來源內容的容器。
+您需要 Azure Blob 儲存體、Azure 認知搜尋，以及提供 AI 的第三個服務或機制：
 
-您可以在您的儲存體帳戶入口網站頁面中直接開始。 在左側導覽頁面的 [Blob 服務] 底下，按一下 [新增 Azure 認知搜尋] 以建立新服務，或選取現有服務。 
++ 針對內建 AI，認知搜尋可與 Azure 認知服務視覺和自然語言處理 Api 整合。 您可以 [附加認知服務資源](cognitive-search-attach-cognitive-services.md) ，將光學字元辨識新增 (OCR) 、影像分析或自然語言處理 (語言偵測、文字翻譯、實體辨識、關鍵字組解壓縮) 。 
 
-將 Azure 認知搜尋新增至儲存體帳戶之後，您可以遵循標準程式來擴充任何 Azure 資料來源中的資料。 建議您在 Azure 認知搜尋中使用 [匯 **入資料** ]，以取得 AI 擴充的簡易初始簡介。 本快速入門會逐步引導您完成下列步驟： [在入口網站中建立 AI 擴充管線](cognitive-search-quickstart-blob.md)。 
++ 針對使用 Azure 資源的自訂 AI，您可以定義可包裝您要使用之外部函式或模型的自訂技能。 [自訂技能](cognitive-search-custom-skill-interface.md) 可以使用 Azure Functions、Azure Machine Learning、Azure 表單辨識器所提供的程式碼，或可透過 HTTPS 連線的其他資源。
 
-在下列各節中，我們將探索更多元件和概念。
++ 對於自訂的非 Azure AI，您的模型或模組必須可透過 HTTP 存取索引子。
+
+如果您沒有所有可用的服務，請直接在您的儲存體帳戶入口網站頁面中開始。 在左側導覽頁面的 [Blob 服務] 底下，按一下 [新增 Azure 認知搜尋] 以建立新服務，或選取現有服務。 
+
+將 Azure 認知搜尋新增至儲存體帳戶之後，您可以遵循標準程式來擴充任何 Azure 資料來源中的資料。 建議您在 Azure 認知搜尋中使用 [匯 **入資料** ]，以取得 AI 擴充的簡易初始簡介。 您可以在工作流程期間附加認知服務資源。 本快速入門會逐步引導您完成下列步驟： [在入口網站中建立 AI 擴充管線](cognitive-search-quickstart-blob.md)。 
+
+下列各節會進一步探討元件和工作流程。
 
 ## <a name="use-a-blob-indexer"></a>使用 Blob 索引子
 
 AI 擴充是索引管線的附加元件，在 Azure 認知搜尋中，這些管線是建立在 *索引子*的最上層。 「索引子」是資料來源感知的子服務，其具備內部邏輯，可用來取樣資料、讀取中繼資料、擷取資料，以及將資料從原生格式序列化為 JSON 文件以供後續匯入。 索引子通常會單獨用來匯入，與 AI 分開，但如果您想要建立 AI 擴充管線，您將需要索引子和技能集。 本節會重點說明索引子;下一節著重于技能集。
 
-Azure 儲存體中的 Blob 是使用 [Azure 認知搜尋 Blob 儲存體索引子](search-howto-indexing-azure-blob-storage.md)來編製索引。 您可以使用**匯入資料**精靈、REST API 或 .NET SDK 來叫用此索引子。 在程式碼中，您可以藉由設定類型，以及提供包含 Azure 儲存體帳戶和 Blob 容器的連線資訊，來使用此索引子。 您可以藉由建立虛擬目錄來將 Blob 子集化，然後將其當作參數傳遞，或藉由篩選檔案類型副檔名來進行。
+Azure 儲存體中的 blob 是使用 [blob 索引子](search-howto-indexing-azure-blob-storage.md)來編制索引。 您可以使用 [匯 **入資料** ] wizard、REST API 或 SDK 來叫用此索引子。 當索引子所使用的資料來源是 Azure Blob 容器時，就會叫用 blob 索引子。 您可以藉由建立虛擬目錄來編制 blob 子集的索引，然後以參數的形式傳遞，也可以藉由篩選檔案類型副檔名來編制索引。
 
 索引子會執行「文件破解」(開啟 Blob 以檢查內容)。 連線到資料來源之後，其就是管線中的第一個步驟。 若是 blob 資料，則會偵測到 PDF、office 檔、影像和其他內容類型。 使用文字擷取的文件破解是免費的。 使用映射解壓縮的檔破解，會以您在 [定價] [頁面](https://azure.microsoft.com/pricing/details/search/)上找到的費率來計費。
 
 雖然所有檔都將會被破解，但只有在您明確提供執行此動作的技巧時，才會發生擴充。 例如，如果您的管線只包含影像分析，則會忽略容器或檔中的文字。
 
-Blob 索引子隨附設定參數，如果底層資料提供足夠的資訊，則支援變更追蹤。 您可以在 [Azure 認知搜尋 Blob 儲存體索引子](search-howto-indexing-azure-blob-storage.md)中深入了解核心功能。
+Blob 索引子隨附設定參數，如果基礎資料提供足夠的資訊，則支援變更追蹤。 您可以深入瞭解 [如何設定 blob 索引子](search-howto-indexing-azure-blob-storage.md)。
 
 ## <a name="add-ai-components"></a>新增 AI 元件
 
@@ -79,20 +85,6 @@ AI 擴充是指尋找模式或特性的模組，然後據以執行作業。 相�
 認知服務所支援的內建技能需要 [附加的認知服務](cognitive-search-attach-cognitive-services.md) 多個訂用帳戶金鑰，可讓您存取資源。 全功能金鑰可提供影像分析、語言偵測、文字翻譯和文字分析。 其他內建技能是 Azure 認知搜尋的功能，且不需要額外的服務或金鑰。 文字合併、分隔器和合併是在設計管線時，有時需要的協助程式技巧範例。
 
 如果您只使用自訂技能和內建的公用程式技能，就不會有與認知服務相關的相依性或成本。
-
-<!-- ## Order of operations
-
-Now we've covered indexers, content extraction, and skills, we can take a closer look at pipeline mechanisms and order of operations.
-
-A skillset is a composition of one or more skills. When multiple skills are involved, the skillset operates as sequential pipeline, producing dependency graphs, where output from one skill becomes input to another. 
-
-For example, given a large blob of unstructured text, a sample order of operations for text analytics might be as follows:
-
-1. Use Text Splitter to break the blob into smaller parts.
-1. Use Language Detection to determine if content is English or another language.
-1. Use Text Translator to get all text into a common language.
-1. Run Entity Recognition, Key Phrase Extraction, or Sentiment Analysis on chunks of text. In this step, new fields are created and populated. Entities might be location, people, organization, dates. Key phrases are short combinations of words that appear to belong together. Sentiment score is a rating on continuum of negative (0) to positive (1) sentiment.
-1. Use Text Merger to reconstitute the document from the smaller chunks. -->
 
 ## <a name="consume-ai-enriched-output-in-downstream-solutions"></a>在下游解決方案中使用 AI 擴充的輸出
 
