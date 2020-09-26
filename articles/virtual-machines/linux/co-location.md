@@ -1,20 +1,20 @@
 ---
-title: 共同尋找 Linux Vm
-description: 瞭解如何共同尋找 Azure VM 資源，以改善延遲。
+title: 共置 Linux Vm
+description: 深入瞭解如何將適用于 Linux 的 Azure VM 資源共同定位，以改善延遲。
 ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: zivr
-ms.openlocfilehash: 000c8c8955314060ae9bdedb96b086a509fb3e96
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 6bf01f4da6ce96b413c87b81c14a998603cebd6b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87368637"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91279718"
 ---
-# <a name="co-locate-resources-for-improved-latency"></a>共同找出資源以改善延遲
+# <a name="co-locate-resources-for-improved-latency"></a>共置資源以改善延遲
 
-在 Azure 中部署您的應用程式時，將實例分散到不同區域或可用性區域會建立網路延遲，這可能會影響應用程式的整體效能。 
+在 Azure 中部署應用程式時，跨區域或可用性區域分散實例會建立網路延遲，這可能會影響應用程式的整體效能。 
 
 ## <a name="proximity-placement-groups"></a>鄰近位置群組
 
@@ -22,10 +22,10 @@ ms.locfileid: "87368637"
 
 ## <a name="next-steps"></a>後續步驟
 
-使用 Azure CLI 將 VM 部署至[鄰近放置群組](proximity-placement-groups.md)。
+使用 Azure CLI 將 VM 部署至 [鄰近位置群組](proximity-placement-groups.md) 。
 
-瞭解如何[測試網路延遲](https://aka.ms/TestNetworkLatency?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+瞭解如何 [測試網路延遲](https://aka.ms/TestNetworkLatency?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
-瞭解如何[優化網路輸送量](../../virtual-network/virtual-network-optimize-network-bandwidth.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。  
+瞭解如何將 [網路輸送量優化](../../virtual-network/virtual-network-optimize-network-bandwidth.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。  
 
-瞭解如何搭配[SAP 應用程式使用鄰近放置群組](../workloads/sap/sap-proximity-placement-scenarios.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+瞭解如何搭配 [使用鄰近位置群組和 SAP 應用程式](../workloads/sap/sap-proximity-placement-scenarios.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。

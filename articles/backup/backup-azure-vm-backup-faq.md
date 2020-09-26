@@ -4,12 +4,12 @@ description: 在本文中，探索使用 Azure 備份服務備份 Azure Vm 的�
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: 7206a62e3148c1bbb8d2e3704d991025deeece37
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 8813794d44803a32bc6e156d3ca76360d84604c5
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89377313"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91370822"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>常見問題-備份 Azure Vm
 
@@ -21,9 +21,15 @@ ms.locfileid: "89377313"
 
 當您建立 VM 時，您可以針對執行 [受支援作業系統](backup-support-matrix-iaas.md#supported-backup-actions)的 vm 啟用備份。
 
+### <a name="why-initial-backup-is-taking-lot-of-time-to-complete"></a>為什麼初次備份需要大量時間才能完成？
+
+初始備份一律是完整備份，而且會取決於資料的大小和處理備份的時間。 <br>
+若要改善備份效能，請參閱 [備份最佳做法](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction#best-practices); [備份考慮](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction#backup-and-restore-considerations) 和 [備份效能](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction#backup-performance)<br>
+雖然增量備份的備份時間總計小於 24 小時，但是可能不適合第一次備份。
+
 ### <a name="is-the-backup-cost-included-in-the-vm-cost"></a>VM 成本中是否包含備份成本？
 
-不會。 備份成本與 VM 的成本分開。 深入瞭解 [Azure 備份定價](https://azure.microsoft.com/pricing/details/backup/)。
+否。 備份成本與 VM 的成本分開。 深入瞭解 [Azure 備份定價](https://azure.microsoft.com/pricing/details/backup/)。
 
 ### <a name="which-permissions-are-required-to-enable-backup-for-a-vm"></a>啟用 VM 備份需要哪些許可權？
 
@@ -43,7 +49,7 @@ ms.locfileid: "89377313"
 
 ### <a name="does-an-on-demand-backup-job-use-the-same-retention-schedule-as-scheduled-backups"></a>隨選備份作業是否會使用與排定備份相同的保留排程？
 
-不會。 指定隨選備份作業的保留範圍。 根據預設，若從入口網站觸發，則會保留 30 天。
+否。 指定隨選備份作業的保留範圍。 根據預設，若從入口網站觸發，則會保留 30 天。
 
 ### <a name="i-recently-enabled-azure-disk-encryption-on-some-vms-will-my-backups-continue-to-work"></a>我在最近一些 VM 上啟用了 Azure 磁碟加密。 我的備份是否會繼續運作？
 
@@ -154,6 +160,10 @@ Azure 備份現在支援使用 Azure 虛擬機器備份解決方案進行選擇�
 ### <a name="can-i-access-the-vm-once-restored-due-to-a-vm-having-broken-relationship-with-domain-controller"></a>是否可以在還原後存取 VM，因為 VM 與網域控制站的關聯性中斷？
 
 是的，您可以在還原後存取 VM，因為 VM 與網域控制站之間的關聯性中斷。 如需詳細資訊，請參閱這篇[文章](./backup-azure-arm-restore-vms.md#post-restore-steps)
+
+### <a name="why-restore-operation-is-taking-long-time-to-complete"></a>為什麼還原作業需要很長的時間才能完成？
+
+總還原時間取決於每秒的輸入/輸出作業 (IOPS) 和儲存體帳戶的輸送量。 如果目標儲存體帳戶與其他應用程式讀取和寫入作業一起載入，則總還原時間可能會受到影響。 若要改善還原作業，請選取未與其他應用程式資料一起載入的儲存體帳戶。
 
 ## <a name="manage-vm-backups"></a>管理 VM 備份
 

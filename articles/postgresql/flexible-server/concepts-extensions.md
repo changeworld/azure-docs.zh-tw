@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/22/2020
-ms.openlocfilehash: 1126c218f8e80b7d89183746890a3fae1357d29d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/23/2020
+ms.openlocfilehash: f38006e83be47142a6d7a6db25eefb3daccd0d92
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934109"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91307580"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---flexible-server"></a>適用於 PostgreSQL 的 Azure 資料庫-彈性伺服器中的于 postgresql 延伸模組
 
@@ -31,8 +31,10 @@ PostgreSQL 提供下列功能：使用擴充功能來擴充您的資料庫功能
 下列擴充功能可在具有 Postgres 版本12的適用於 PostgreSQL 的 Azure 資料庫彈性伺服器中使用。 
 
 > [!div class="mx-tableFixed"]
-> | **延伸模組**| **延伸模組版本** | **說明** |
+> | **分機**| **延伸模組版本** | **說明** |
 > |---|---|---|
+> |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 3.0.0           | 用來將位址剖析為組成項目。 |
+> |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 3.0.0           | Address >standardizer US 資料集範例|
 > |[amcheck](https://www.postgresql.org/docs/12/amcheck.html)                    | 1.2             | 用來驗證關聯性完整性的函數|
 > |[綻放](https://www.postgresql.org/docs/12/bloom.html)                    | 1.0             | bloom 存取方法-以簽章為基礎的索引|
 > |[btree_gin](https://www.postgresql.org/docs/12/btree-gin.html)                    | 1.3             | 支援在 GIN 中編制一般資料類型的索引|
@@ -61,7 +63,11 @@ PostgreSQL 提供下列功能：使用擴充功能來擴充您的資料庫功能
 > |[pgrowlocks](https://www.postgresql.org/docs/12/pgrowlocks.html)                   | 1.2             | 顯示資料列層級鎖定資訊|
 > |[pgstattuple](https://www.postgresql.org/docs/12/pgstattuple.html)                  | 1.5             | 顯示元組層級統計資料|
 > |[plpgsql](https://www.postgresql.org/docs/12/plpgsql.html)                      | 1.0             | PL/pgSQL 程式語言|
-> |[postgis](https://www.postgis.net/)                      | 3.0.0           | PostGIS geometry、geography 和點陣空間類型和函數|
+> |[postgis](https://www.postgis.net/)                      | 3.0.0           | PostGIS geometry、geography |
+> |[postgis_raster](https://www.postgis.net/)               | 3.0.0           | PostGIS 點陣類型和函式| 
+> |[postgis_sfcgal](https://www.postgis.net/)               | 3.0.0           | PostGIS SFCGAL 函式|
+> |[postgis_tiger_geocoder](https://www.postgis.net/)       | 3.0.0           | PostGIS tiger 地理編碼器和 reverse 地理編碼器|
+> |[postgis_topology](https://postgis.net/docs/Topology.html)             | 3.0.0           | PostGIS 拓撲空間類型和函式|
 > |[postgres_fdw](https://www.postgresql.org/docs/12/postgres-fdw.html)                 | 1.0             | 遠端于 postgresql 伺服器的外部資料包裝函式|
 > |[sslinfo](https://www.postgresql.org/docs/12/sslinfo.html)                    | 1.2             | SSL 憑證的相關資訊|
 > |[tsm_system_rows](https://www.postgresql.org/docs/12/tsm-system-rows.html)                    | 1.0             |  將資料列數限制為限制的 TABLESAMPLE 方法|
@@ -74,8 +80,10 @@ PostgreSQL 提供下列功能：使用擴充功能來擴充您的資料庫功能
 下列擴充功能可在具有 Postgres 11 版的適用於 PostgreSQL 的 Azure 資料庫彈性伺服器中使用。 
 
 > [!div class="mx-tableFixed"]
-> | **延伸模組**| **延伸模組版本** | **說明** |
+> | **分機**| **延伸模組版本** | **說明** |
 > |---|---|---|
+> |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 2.5.1           | 用來將位址剖析為組成項目。 |
+> |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 2.5.1           | Address >standardizer US 資料集範例|
 > |[amcheck](https://www.postgresql.org/docs/11/amcheck.html)                    | 1.1             | 用來驗證關聯性完整性的函數|
 > |[綻放](https://www.postgresql.org/docs/11/bloom.html)                    | 1.0             | bloom 存取方法-以簽章為基礎的索引|
 > |[btree_gin](https://www.postgresql.org/docs/11/btree-gin.html)                    | 1.3             | 支援在 GIN 中編制一般資料類型的索引|
@@ -105,6 +113,9 @@ PostgreSQL 提供下列功能：使用擴充功能來擴充您的資料庫功能
 > |[pgstattuple](https://www.postgresql.org/docs/11/pgstattuple.html)                  | 1.5             | 顯示元組層級統計資料|
 > |[plpgsql](https://www.postgresql.org/docs/11/plpgsql.html)                      | 1.0             | PL/pgSQL 程式語言|
 > |[postgis](https://www.postgis.net/)                      | 2.5.1           | PostGIS geometry、geography 和點陣空間類型和函數|
+> |[postgis_sfcgal](https://www.postgis.net/)               | 2.5.1           | PostGIS SFCGAL 函式|
+> |[postgis_tiger_geocoder](https://www.postgis.net/)       | 2.5.1           | PostGIS tiger 地理編碼器和 reverse 地理編碼器|
+> |[postgis_topology](https://postgis.net/docs/Topology.html)             | 2.5.1           | PostGIS 拓撲空間類型和函式|
 > |[postgres_fdw](https://www.postgresql.org/docs/11/postgres-fdw.html)                 | 1.0             | 遠端于 postgresql 伺服器的外部資料包裝函式|
 > |[sslinfo](https://www.postgresql.org/docs/11/sslinfo.html)                    | 1.2             | SSL 憑證的相關資訊|
 > |[tablefunc](https://www.postgresql.org/docs/11/tablefunc.html)                    | 1.0             | 操作整個資料表的函式，包括交叉資料表|
@@ -114,11 +125,23 @@ PostgreSQL 提供下列功能：使用擴充功能來擴充您的資料庫功能
 > |[uuid-ossp](https://www.postgresql.org/docs/11/uuid-ossp.html)                    | 1.1             |  (Uuid 產生通用唯一識別碼) |
 
 
+## <a name="dblink-and-postgres_fdw"></a>dblink 和 postgres_fdw
+[dblink](https://www.postgresql.org/docs/current/contrib-dblink-function.html) 和 [postgres_fdw](https://www.postgresql.org/docs/current/postgres-fdw.html) 可讓您從一個于 postgresql 伺服器連接到另一個伺服器，或連接到同一部伺服器中的另一個資料庫。 傳送端伺服器必須允許接收伺服器的輸出連接。 接收端伺服器必須允許來自傳送伺服器的連接。
+
+如果您打算使用這兩個擴充功能，建議您使用 [VNet 整合](concepts-networking.md) 來部署伺服器。 根據預設，VNet 整合允許在 VNET 中的伺服器之間進行連線。 您也可以選擇使用 [VNet 網路安全性群組](../../virtual-network/manage-network-security-group.md) 來自訂存取。
+
+
 ## <a name="pg_prewarm"></a>pg_prewarm
 
 Pg_prewarm 擴充功能會將關聯式資料載入快取中。 預先準備快取表示在重新開機後，您的查詢在第一次執行時有更好的回應時間。 適用於 PostgreSQL 的 Azure 資料庫彈性的伺服器目前無法使用自動 prewarm 功能。
 
+## <a name="pg_stat_statements"></a>pg_stat_statements
+[Pg_stat_statements 的延伸](https://www.postgresql.org/docs/current/pgstatstatements.html)模組會在每個適用於 PostgreSQL 的 Azure 資料庫的彈性伺服器上預先載入，以提供一種方式來追蹤 SQL 語句的執行統計資料。
+控制延伸模組計入哪些陳述式的設定 `pg_stat_statements.track` 預設為 `top`，這表示會追蹤用戶端直接發出的所有陳述式。 其他兩個會追蹤層級 `none` 和 `all`。 這項設定可設定為伺服器參數。
 
-## <a name="next-steps"></a>下一步
+pg_stat_statements 提供查詢執行資訊，不過會對於伺服器效能造成影響，因為它會記錄每個 SQL 陳述式。 如果您不主動使用 pg_stat_statements 延伸模組，我們建議您將 `pg_stat_statements.track` 設定為 `none`。 請注意，某些協力廠商監視服務可能會需要 pg_stat_statements 傳遞查詢效能深入解析，因此請確認這是否為您的情況。
+
+
+## <a name="next-steps"></a>後續步驟
 
 如果您未看見想要使用的擴充功能，請讓我們知道。 投票給現有的要求，或在我們的 [意見反應論壇](https://feedback.azure.com/forums/597976-azure-database-for-postgresql)中建立新的意見反應要求。

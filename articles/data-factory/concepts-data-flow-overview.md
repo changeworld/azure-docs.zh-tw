@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: references_regions
 ms.date: 09/02/2020
-ms.openlocfilehash: b5042eb86f5d534655fd831147a9ab4ebb094e9b
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 7d73d832f96d087964c46c6c735c0385832c08db
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89419958"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91370907"
 ---
 # <a name="mapping-data-flows-in-azure-data-factory"></a>對應 Azure Data Factory 中的資料流程
 
@@ -61,7 +61,7 @@ ms.locfileid: "89419958"
 
 [ **優化** ] 索引標籤包含設定資料分割配置的設定。 若要深入瞭解如何優化您的資料流程，請參閱「 [對應資料流程效能指南](concepts-data-flow-performance.md)」。
 
-![最佳化](media/data-flow/optimize.png "最佳化")
+![螢幕擷取畫面顯示 [優化] 索引標籤，其中包含資料分割選項、資料分割類型和資料分割數目。](media/data-flow/optimize.png)
 
 #### <a name="inspect"></a>檢查
 

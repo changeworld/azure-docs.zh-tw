@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: reference
 ms.date: 08/31/2020
 ms.author: aahi
-ms.openlocfilehash: 5d2ff25762f28c19b6d389a779fb455de3c84f3e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 2a24433389e738bf5d0ecb7ecac6bf369c8ba183
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91253763"
+ms.locfileid: "91369479"
 ---
 # <a name="azure-cognitive-services-container-image-tags"></a>Azure 認知服務容器映射標記
 
@@ -1131,22 +1131,22 @@ Azure 認知服務提供許多容器映射。 容器的登錄和對應的存放�
 | 影像標記                                  | 注意                                                                      |
 |---------------------------------------------|:---------------------------------------------------------------------------|
 | `latest`                                    | 具有地區設定和語音的容器映射 `en-US` `en-US-AriaNeural` 。      |
-| `1.1.0-amd64-de-de-katjaneural-preview`     | 具有地區設定和語音的容器映射 `de-DE` `de-DE-KatjaNeural` 。     |
-| `1.1.0-amd64-en-au-natashaneural-preview`   | 具有地區設定和語音的容器映射 `en-AU` `en-AU-NatashaNeural` 。   |
-| `1.1.0-amd64-en-ca-claraneural-preview`     | 具有地區設定和語音的容器映射 `en-CA` `en-CA-ClaraNeural` 。     |
-| `1.1.0-amd64-en-gb-libbyneural-preview`     | 具有地區設定和語音的容器映射 `en-GB` `en-GB-LibbyNeural` 。     |
-| `1.1.0-amd64-en-gb-mianeural-preview`       | 具有地區設定和語音的容器映射 `en-GB` `en-GB-MiaNeural` 。       |
-| `1.1.0-amd64-en-us-arianeural-preview`      | 具有地區設定和語音的容器映射 `en-US` `en-US-AriaNeural` 。      |
-| `1.1.0-amd64-en-us-guyneural-preview`       | 具有地區設定和語音的容器映射 `en-US` `en-US-GuyNeural` 。       |
-| `1.1.0-amd64-es-es-elviraneural-preview`    | 具有地區設定和語音的容器映射 `es-ES` `es-ES-ElviraNeural` 。    |
-| `1.1.0-amd64-es-mx-dalianeural-preview`     | 具有地區設定和語音的容器映射 `es-MX` `es-MX-DaliaNeural` 。     |
-| `1.1.0-amd64-fr-ca-sylvieneural-preview`    | 具有地區設定和語音的容器映射 `fr-CA` `fr-CA-SylvieNeural` 。    |
-| `1.1.0-amd64-fr-fr-deniseneural-preview`    | 具有地區設定和語音的容器映射 `fr-FR` `fr-FR-DeniseNeural` 。    |
-| `1.1.0-amd64-it-it-elsaneural-preview`      | 具有地區設定和語音的容器映射 `it-IT` `it-IT-ElsaNeural` 。      |
-| `1.1.0-amd64-ja-jp-nanamineural-preview`    | 具有地區設定和語音的容器映射 `ja-JP` `ja-JP-NanamiNeural` 。    |
-| `1.1.0-amd64-ko-kr-sunhineural-preview`     | 具有地區設定和語音的容器映射 `ko-KR` `ko-KR-SunHiNeural` 。     |
-| `1.1.0-amd64-pt-br-franciscaneural-preview` | 具有地區設定和語音的容器映射 `pt-BR` `pt-BR-FranciscaNeural` 。 |
-| `1.1.0-amd64-zh-cn-xiaoxiaoneural-preview`  | 具有地區設定和語音的容器映射 `zh-CN` `zh-CN-XiaoxiaoNeural` 。  |
+| `1.2.0-amd64-de-de-katjaneural-preview`     | 具有地區設定和語音的容器映射 `de-DE` `de-DE-KatjaNeural` 。     |
+| `1.2.0-amd64-en-au-natashaneural-preview`   | 具有地區設定和語音的容器映射 `en-AU` `en-AU-NatashaNeural` 。   |
+| `1.2.0-amd64-en-ca-claraneural-preview`     | 具有地區設定和語音的容器映射 `en-CA` `en-CA-ClaraNeural` 。     |
+| `1.2.0-amd64-en-gb-libbyneural-preview`     | 具有地區設定和語音的容器映射 `en-GB` `en-GB-LibbyNeural` 。     |
+| `1.2.0-amd64-en-gb-mianeural-preview`       | 具有地區設定和語音的容器映射 `en-GB` `en-GB-MiaNeural` 。       |
+| `1.2.0-amd64-en-us-arianeural-preview`      | 具有地區設定和語音的容器映射 `en-US` `en-US-AriaNeural` 。      |
+| `1.2.0-amd64-en-us-guyneural-preview`       | 具有地區設定和語音的容器映射 `en-US` `en-US-GuyNeural` 。       |
+| `1.2.0-amd64-es-es-elviraneural-preview`    | 具有地區設定和語音的容器映射 `es-ES` `es-ES-ElviraNeural` 。    |
+| `1.2.0-amd64-es-mx-dalianeural-preview`     | 具有地區設定和語音的容器映射 `es-MX` `es-MX-DaliaNeural` 。     |
+| `1.2.0-amd64-fr-ca-sylvieneural-preview`    | 具有地區設定和語音的容器映射 `fr-CA` `fr-CA-SylvieNeural` 。    |
+| `1.2.0-amd64-fr-fr-deniseneural-preview`    | 具有地區設定和語音的容器映射 `fr-FR` `fr-FR-DeniseNeural` 。    |
+| `1.2.0-amd64-it-it-elsaneural-preview`      | 具有地區設定和語音的容器映射 `it-IT` `it-IT-ElsaNeural` 。      |
+| `1.2.0-amd64-ja-jp-nanamineural-preview`    | 具有地區設定和語音的容器映射 `ja-JP` `ja-JP-NanamiNeural` 。    |
+| `1.2.0-amd64-ko-kr-sunhineural-preview`     | 具有地區設定和語音的容器映射 `ko-KR` `ko-KR-SunHiNeural` 。     |
+| `1.2.0-amd64-pt-br-franciscaneural-preview` | 具有地區設定和語音的容器映射 `pt-BR` `pt-BR-FranciscaNeural` 。 |
+| `1.2.0-amd64-zh-cn-xiaoxiaoneural-preview`  | 具有地區設定和語音的容器映射 `zh-CN` `zh-CN-XiaoxiaoNeural` 。  |
 
 ## <a name="key-phrase-extraction"></a>關鍵片語擷取
 

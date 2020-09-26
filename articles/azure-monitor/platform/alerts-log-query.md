@@ -1,217 +1,218 @@
 ---
-title: Azure 監視器中的記錄警示查詢 | Microsoft Docs
-description: 對於在 Azure 監視器更新中撰寫記錄警示的有效查詢以及轉換現有查詢的程序提供建議。
-author: yossi-y
-ms.author: yossiy
+title: 優化記錄警示查詢 |Microsoft Docs
+description: 撰寫有效率警示查詢的建議
+author: yanivlavi
+ms.author: yalavi
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.subservice: alerts
-ms.openlocfilehash: be2d49a824066b8926ae455978facb34c0b44310
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7f03858b2427b2a2069ebe2c9d06425e7a741e2b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505460"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91294354"
 ---
-# <a name="log-alert-queries-in-azure-monitor"></a>Azure 監視器中的記錄警示查詢
-[以 Azure 監視器記錄為基礎的警示規則](alerts-unified-log.md)會定期執行，因此您應該確定已撰寫規則將額外負荷和延遲降至最低。 這篇文章對於撰寫記錄警示的有效查詢以及轉換現有查詢的程序提供建議。 
+# <a name="optimizing-log-alert-queries"></a>優化記錄警示查詢
+本文描述如何寫入和轉換 [記錄警示](alerts-unified-log.md) 查詢，以達到最佳效能。 優化查詢可減少延遲，以及經常執行的警示載入。
 
-## <a name="types-of-log-queries"></a>記錄查詢類型
-[Azure 監視器中的記錄查詢](../log-query/log-query-overview.md)是以資料表或[搜尋](/azure/kusto/query/searchoperator)或聯[集](/azure/kusto/query/unionoperator)運算子為開頭。
+## <a name="how-to-start-writing-an-alert-log-query"></a>如何開始撰寫警示記錄查詢
 
-例如，下列查詢只限於 _SecurityEvent_ 資料表，而且搜尋特定事件識別碼。 這是查詢必須處理的唯一資料表。
+警示查詢會開始 [查詢 Log Analytics 中](alerts-log.md#create-a-log-alert-rule-with-the-azure-portal) 指出問題的記錄資料。 您可以使用「 [警示查詢範例」主題](../log-query/saved-queries.md) 來瞭解您可以探索的內容。 您也可以 [開始撰寫自己的查詢](../log-query/get-started-portal.md)。 
+
+### <a name="queries-that-indicate-the-issue-and-not-the-alert"></a>指出問題的查詢，而不是警示
+
+警示流程的建立是為了將表示問題的結果轉換成警示。 例如，在類似以下的查詢案例中：
 
 ``` Kusto
-SecurityEvent | where EventID == 4624 
+SecurityEvent
+| where EventID == 4624
 ```
 
-開頭為 `search` 或 `union` 的查詢可供您搜尋同一個資料表中的多個資料行，或甚至搜尋多個資料表。 下列範例會顯示搜尋字詞 _Memory_ 的多個方法：
+如果使用者的意圖是警示，當發生此事件種類時，警示邏輯會附加 `count` 至查詢。 將執行的查詢將會是：
 
-```Kusto
-search "Memory"
-search * | where == "Memory"
-search ObjectName: "Memory"
-search ObjectName == "Memory"
-union * | where ObjectName == "Memory"
+``` Kusto
+SecurityEvent
+| where EventID == 4624
+| count
 ```
 
-雖然在資料探索期間可使用 `search` 和 `union` 搜尋詞彙的整個資料模型，但是效果不如使用資料表，因為這些必須掃描多個資料表。 由於警示規則的查詢會定期執行，因此可能會導致過多的額外負荷，而導致警示出現延遲。 由於這個額外負荷，對於 Azure 中的記錄警示規則進行的查詢開頭一律是資料表，這會定義明確的範圍，藉以改善查詢效能和結果相關性。
+不需要將警示邏輯新增到查詢中，這樣做可能甚至會造成問題。 在上述範例中，如果您將包含 `count` 在查詢中，它一律會產生值1，因為警示服務將會完成 `count` `count` 。
 
-## <a name="unsupported-queries"></a>不支援的查詢
-從 2019 年 1 月 11 日開始，Azure 入口網站不支援建立或修改使用 `search` 或 `union` 運算子的記錄警示規則。 在警示規則中使用這些運算子會傳回錯誤訊息。 這項變更不影響現有的警示規則，以及使用 Log Analytics API 建立和編輯的警示規則。 此外，您仍應考慮變更使用這幾種查詢的任何警示規則，以便改善其效率。  
+### <a name="avoid-limit-and-take-operators"></a>避免 `limit` 和 `take` 運算子
 
-使用[跨資源查詢](../log-query/cross-workspace-query.md)的記錄警示規則不受此變更所影響，因為跨資源查詢使用 `union`，這會將查詢範圍限制於特定資源。 這並不等於 `union *`，這已經無法再使用。  下列範例在記錄警示規則中有效：
+`limit` `take` 在查詢中使用和會增加警示的延遲和載入，因為結果不會隨著時間而保持一致。 建議您只在需要時才使用它。
+
+## <a name="log-query-constraints"></a>記錄查詢準則約束
+[Azure 監視器中的記錄查詢](../log-query/log-query-overview.md) 是以資料表、 [`search`](/azure/kusto/query/searchoperator) 或運算子開頭 [`union`](/azure/kusto/query/unionoperator) 。
+
+記錄警示規則的查詢應該一律以資料表開頭，以定義清楚的範圍，以改善查詢效能和結果相關性。 警示規則中的查詢經常執行，因此使用 `search` 和 `union` 可能會導致額外的額外負荷增加警示的延遲，因為它需要跨多個資料表進行掃描。 這些運算子也可以減少警示服務將查詢優化的能力。
+
+我們不支援建立或修改使用或運算子的記錄警示規則 `search` `union` ，而這些規則預期會進行跨資源查詢。
+
+例如，下列警示查詢的範圍是 _SecurityEvent_ 資料表，並且會搜尋特定的事件識別碼。 這是查詢必須處理的唯一資料表。
+
+``` Kusto
+SecurityEvent
+| where EventID == 4624
+```
+
+使用 [跨資源查詢](../log-query/cross-workspace-query.md) 的記錄警示規則不會受到這項變更的影響，因為跨資源查詢會使用的類型 `union` ，這會將查詢範圍限制為特定的資源。 下列範例是有效的記錄警示查詢：
 
 ```Kusto
-union 
-app('Contoso-app1').requests, 
-app('Contoso-app2').requests, 
+union
+app('Contoso-app1').requests,
+app('Contoso-app2').requests,
 workspace('Contoso-workspace1').Perf 
 ```
 
 >[!NOTE]
->新的 [scheduledQueryRules API](/rest/api/monitor/scheduledqueryrules) 支援記錄警示中的[跨資源查詢](../log-query/cross-workspace-query.md)。 根據預設，Azure 監視器會使用[舊版 Log Analytics 警示 API](api-alerts.md) 從 Azure 入口網站建立新的記錄警示規則，除非您從[舊版記錄警示 API](alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api) 切換。 切換之後，新的 API 將成為 Azure 入口網站中新警示規則的預設值，並允許您建立跨資源查詢記錄警示規則。 您可以使用[適用於 scheduledQueryRules API 的 ARM 範本](alerts-log.md#log-alert-with-cross-resource-query-using-azure-resource-template)建立[跨資源查詢](../log-query/cross-workspace-query.md)記錄警示規則而無需進行切換 – 但此警示規則可透過 [scheduledQueryRules API](/rest/api/monitor/scheduledqueryrules) 進行管理，而不是 Azure 入口網站。
+> 新的[SCHEDULEDQUERYRULES API](/rest/api/monitor/scheduledqueryrules)支援[跨資源查詢](../log-query/cross-workspace-query.md)。 如果您仍使用 [舊版 Log Analytics 警示 API](api-alerts.md) 來建立記錄警示，您可以在 [這裡](alerts-log-api-switch.md)瞭解如何切換。
 
 ## <a name="examples"></a>範例
-下列範例包含使用 `search` 和 `union` 的記錄檔查詢，並提供您可用來修改這些查詢以便搭配警示規則使用的步驟。
+下列範例包含使用和的記錄查詢 `search` ， `union` 並提供可讓您用來修改這些查詢以用於警示規則的步驟。
 
 ### <a name="example-1"></a>範例 1
-您想要使用下列查詢建立記錄警示規則，以便使用 `search` 擷取效能資訊： 
+您想要使用下列查詢建立記錄警示規則，以使用下列程式抓取效能資訊 `search` ： 
 
 ``` Kusto
-search * | where Type == 'Perf' and CounterName == '% Free Space' 
-| where CounterValue < 30 
-| summarize count()
+search *
+| where Type == 'Perf' and CounterName == '% Free Space'
+| where CounterValue < 30
 ```
-  
 
 若要修改此查詢，請先使用下列查詢識別屬性隸屬的資料表：
 
 ``` Kusto
-search * | where CounterName == '% Free Space'
+search *
+| where CounterName == '% Free Space'
 | summarize by $table
 ```
- 
 
-此查詢的結果會顯示 _CounterName_ 屬性來自於 _Perf_ 資料表。 
+此查詢的結果會顯示 _CounterName_ 屬性來自於 _Perf_ 資料表。
 
-您可以使用此結果來建立警示規則，以便用於下列查詢：
+您可以使用此結果來建立下列您將用於警示規則的查詢：
 
 ``` Kusto
-Perf 
-| where CounterName == '% Free Space' 
-| where CounterValue < 30 
-| summarize count()
+Perf
+| where CounterName == '% Free Space'
+| where CounterValue < 30
 ```
-
 
 ### <a name="example-2"></a>範例 2
-您想要使用下列查詢建立記錄警示規則，以便使用 `search` 擷取效能資訊： 
+您想要使用下列查詢建立記錄警示規則，以使用下列程式抓取效能資訊 `search` ： 
 
 ``` Kusto
-search ObjectName =="Memory" and CounterName=="% Committed Bytes In Use"  
-| summarize Avg_Memory_Usage =avg(CounterValue) by Computer 
+search ObjectName =="Memory" and CounterName=="% Committed Bytes In Use"
+| summarize Avg_Memory_Usage =avg(CounterValue) by Computer
 | where Avg_Memory_Usage between(90 .. 95)  
-| count 
 ```
-  
 
 若要修改此查詢，請先使用下列查詢識別屬性隸屬的資料表：
 
 ``` Kusto
-search ObjectName=="Memory" and CounterName=="% Committed Bytes In Use" 
-| summarize by $table 
+search ObjectName=="Memory" and CounterName=="% Committed Bytes In Use"
+| summarize by $table
 ```
- 
 
-此查詢的結果會顯示 _ObjectName_ 和 _CounterName_ 屬性來自於 _Perf_ 資料表。 
+此查詢的結果會顯示 _ObjectName_ 和 _CounterName_ 屬性來自於 _Perf_ 資料表。
 
-您可以使用此結果來建立警示規則，以便用於下列查詢：
+您可以使用此結果來建立下列您將用於警示規則的查詢：
 
 ``` Kusto
-Perf 
-| where ObjectName =="Memory" and CounterName=="% Committed Bytes In Use" 
-| summarize Avg_Memory_Usage=avg(CounterValue) by Computer 
-| where Avg_Memory_Usage between(90 .. 95)  
-| count 
+Perf
+| where ObjectName =="Memory" and CounterName=="% Committed Bytes In Use"
+| summarize Avg_Memory_Usage=avg(CounterValue) by Computer
+| where Avg_Memory_Usage between(90 .. 95)
 ```
- 
 
 ### <a name="example-3"></a>範例 3
 
-您想要使用下列查詢建立記錄警示規則，以便使用 `search` 和 `union` 擷取效能資訊： 
+您想要使用下列查詢建立記錄警示規則，以使用 `search` 和 `union` 來取出效能資訊： 
 
 ``` Kusto
-search (ObjectName == "Processor" and CounterName == "% Idle Time" and InstanceName == "_Total")  
-| where Computer !in ((union * | where CounterName == "% Processor Utility" | summarize by Computer))
-| summarize Avg_Idle_Time = avg(CounterValue) by Computer|  count  
+search (ObjectName == "Processor" and CounterName == "% Idle Time" and InstanceName == "_Total")
+| where Computer !in (
+    union *
+    | where CounterName == "% Processor Utility"
+    | summarize by Computer)
+| summarize Avg_Idle_Time = avg(CounterValue) by Computer
 ```
- 
 
 若要修改此查詢，請先使用下列查詢，在查詢的第一個部分中識別屬性隸屬的資料表： 
 
 ``` Kusto
-search (ObjectName == "Processor" and CounterName == "% Idle Time" and InstanceName == "_Total")  
-| summarize by $table 
+search (ObjectName == "Processor" and CounterName == "% Idle Time" and InstanceName == "_Total")
+| summarize by $table
 ```
 
-此查詢的結果會顯示所有這些屬性來自於 _Perf_ 資料表。 
+此查詢的結果會顯示所有這些屬性來自於 _Perf_ 資料表。
 
 現在，使用 `union` 與 `withsource` 命令，識別哪一個來源資料表已提供每個資料列。
 
 ``` Kusto
-union withsource=table * | where CounterName == "% Processor Utility" 
-| summarize by table 
+union withsource=table *
+| where CounterName == "% Processor Utility"
+| summarize by table
 ```
- 
 
-此查詢的結果會顯示這些屬性也來自於 _Perf_ 資料表。 
+此查詢的結果會顯示這些屬性也來自於 _Perf_ 資料表。
 
-您可以使用這些結果來建立警示規則，以便用於下列查詢： 
+您可以使用這些結果來建立下列您將用於警示規則的查詢： 
 
 ``` Kusto
-Perf 
-| where ObjectName == "Processor" and CounterName == "% Idle Time" and InstanceName == "_Total" 
-| where Computer !in ( 
-    (Perf 
-    | where CounterName == "% Processor Utility" 
-    | summarize by Computer)) 
-| summarize Avg_Idle_Time = avg(CounterValue) by Computer 
-| count 
+Perf
+| where ObjectName == "Processor" and CounterName == "% Idle Time" and InstanceName == "_Total"
+| where Computer !in (
+    (Perf
+    | where CounterName == "% Processor Utility"
+    | summarize by Computer))
+| summarize Avg_Idle_Time = avg(CounterValue) by Computer
 ``` 
 
 ### <a name="example-4"></a>範例 4
-您想要使用下列查詢建立記錄警示規則，以便聯結兩個 `search` 查詢的結果：
+您想要使用下列查詢建立記錄警示規則，以聯結兩個查詢的結果 `search` ：
 
 ```Kusto
-search Type == 'SecurityEvent' and EventID == '4625' 
-| summarize by Computer, Hour = bin(TimeGenerated, 1h) 
-| join kind = leftouter ( 
-    search in (Heartbeat) OSType == 'Windows' 
-    | summarize arg_max(TimeGenerated, Computer) by Computer , Hour = bin(TimeGenerated, 1h) 
-    | project Hour , Computer  
-)  
-on Hour 
-| count 
+search Type == 'SecurityEvent' and EventID == '4625'
+| summarize by Computer, Hour = bin(TimeGenerated, 1h)
+| join kind = leftouter (
+    search in (Heartbeat) OSType == 'Windows'
+    | summarize arg_max(TimeGenerated, Computer) by Computer , Hour = bin(TimeGenerated, 1h)
+    | project Hour , Computer
+) on Hour
 ```
- 
 
 若要修改此查詢，請先使用下列查詢，識別聯結的左邊有這些屬性的資料表： 
 
 ``` Kusto
-search Type == 'SecurityEvent' and EventID == '4625' 
-| summarize by $table 
+search Type == 'SecurityEvent' and EventID == '4625'
+| summarize by $table
 ```
- 
 
 結果指出聯結的左邊出現的屬性屬於 _SecurityEvent_ 資料表。 
 
 現在使用下列查詢，識別聯結的右邊有這些屬性的資料表： 
-
  
 ``` Kusto
-search in (Heartbeat) OSType == 'Windows' 
-| summarize by $table 
+search in (Heartbeat) OSType == 'Windows'
+| summarize by $table
 ```
-
  
-結果指出聯結的右邊出現的屬性屬於 Heartbeat 資料表。 
+結果會指出聯結右邊的屬性屬於 _心跳_ 表。
 
-您可以使用這些結果來建立警示規則，以便用於下列查詢： 
-
+您可以使用這些結果來建立下列您將用於警示規則的查詢： 
 
 ``` Kusto
 SecurityEvent
 | where EventID == '4625'
 | summarize by Computer, Hour = bin(TimeGenerated, 1h)
 | join kind = leftouter (
-    Heartbeat  
-    | where OSType == 'Windows' 
-    | summarize arg_max(TimeGenerated, Computer) by Computer , Hour = bin(TimeGenerated, 1h) 
-    | project Hour , Computer  
-)  
-on Hour 
-| count 
+    Heartbeat
+    | where OSType == 'Windows'
+    | summarize arg_max(TimeGenerated, Computer) by Computer , Hour = bin(TimeGenerated, 1h)
+    | project Hour , Computer
+) on Hour
 ```
 
 ## <a name="next-steps"></a>後續步驟

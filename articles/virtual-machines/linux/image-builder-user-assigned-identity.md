@@ -1,26 +1,26 @@
 ---
-title: 建立虛擬機器映射，並使用使用者指派的受控識別來存取 Azure 儲存體中的檔案（預覽）
-description: 使用 Azure 映射產生器建立虛擬機器映射，可以使用使用者指派的受控識別來存取儲存在 Azure 儲存體中的檔案。
+title: '建立虛擬機器映射，並使用使用者指派的受控識別來存取 Azure 儲存體 (preview 中的檔案) '
+description: 使用 Azure 映射建立器建立虛擬機器映射，以使用使用者指派的受控識別來存取儲存在 Azure 儲存體中的檔案。
 author: cynthn
 ms.author: cynthn
 ms.date: 05/02/2019
 ms.topic: how-to
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.subservice: imaging
-ms.openlocfilehash: 79349f9da45a623581c40276c8e69d490c1dd253
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f5734d4b1871dd285fc83a72631f7d645e0b72ff
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87085549"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91307257"
 ---
-# <a name="create-an-image-and-use-a-user-assigned-managed-identity-to-access-files-in-azure-storage"></a>建立映射，並使用使用者指派的受控識別來存取 Azure 儲存體中的檔案 
+# <a name="create-an-image-and-use-a-user-assigned-managed-identity-to-access-files-in-azure-storage"></a>建立映射並使用使用者指派的受控識別，以存取 Azure 儲存體中的檔案 
 
-Azure 映射產生器支援使用腳本，或從多個位置複製檔案，例如 GitHub 和 Azure 儲存體等。若要使用這些功能，它們必須可從外部存取 Azure 映射產生器，但您可以使用 SAS 權杖來保護 Azure 儲存體 blob。
+Azure Image Builder 支援使用腳本，或從多個位置（例如 GitHub 和 Azure 儲存體等）複製檔案。若要使用這些功能，您必須可從外部存取 Azure 映射產生器，但您可以使用 SAS 權杖保護 Azure 儲存體 blob。
 
-本文說明如何使用 Azure VM 映射產生器來建立自訂映射，其中服務會使用[使用者指派的受控識別](../../active-directory/managed-identities-azure-resources/overview.md)來存取 Azure 儲存體中的檔案以進行映射自訂，而不必讓檔案可公開存取，或設定 SAS 權杖。
+本文說明如何使用 Azure VM 映射產生器來建立自訂映射，其中服務會使用 [使用者指派的受控識別](../../active-directory/managed-identities-azure-resources/overview.md) 來存取 Azure 儲存體中的檔案以進行映射自訂，而不需要讓檔案可公開存取，或設定 SAS 權杖。
 
-在下列範例中，您將建立兩個資源群組，一個將用於自訂映射，另一個則主控包含腳本檔案的 Azure 儲存體帳戶。 這會模擬真實的案例，在此情況下，您可能會在映射產生器以外的不同儲存體帳戶中有組建成品或影像檔案。 您將建立使用者指派的身分識別，然後授與該腳本檔案的讀取權限，但您不會設定該檔案的任何公用存取權。 接著，您將使用 Shell 自訂程式，從儲存體帳戶下載並執行該腳本。
+在下列範例中，您將建立兩個資源群組，一個將用於自訂映射，另一個則會裝載包含腳本檔案的 Azure 儲存體帳戶。 這會模擬真實的案例，在此案例中，您可能會在映射產生器以外的不同儲存體帳戶中有組建成品或影像檔案。 您將建立使用者指派的身分識別，然後將腳本檔案的讀取權限授與該檔案，但您不會設定該檔案的任何公用存取權。 然後，您將使用 Shell 自訂程式，從儲存體帳戶下載並執行該腳本。
 
 
 > [!IMPORTANT]
@@ -95,7 +95,7 @@ az group create -n $strResourceGroup -l $location
 
 建立使用者指派的身分識別，並設定資源群組的許可權。
 
-影像產生器將會使用提供的[使用者身分識別](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md#user-assigned-managed-identity)，將影像插入資源群組中。 在此範例中，您將建立 Azure 角色定義，其中具有要執行發佈映射的細微動作。 然後此將角色定義指派給使用者身分識別。
+影像產生器會使用提供的 [使用者身分識別](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md#user-assigned-managed-identity) ，將映射插入資源群組中。 在此範例中，您將建立一個 Azure 角色定義，其具有執行發佈映射的細微動作。 然後此將角色定義指派給使用者身分識別。
 
 ```console
 # create user assigned identity for image builder to access the storage account where the script is located
@@ -150,7 +150,7 @@ az storage blob copy start \
     --source-uri https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/customizeScript.sh
 ```
 
-授與映射產生器許可權，以在映射資源群組中建立資源。 此 `--assignee` 值是使用者身分識別識別碼。
+授與 Image Builder 許可權，以在映射資源群組中建立資源。 此 `--assignee` 值為使用者身分識別識別碼。
 
 ```azurecli-interactive
 az role assignment create \
@@ -164,7 +164,7 @@ az role assignment create \
 
 ## <a name="modify-the-example"></a>修改範例
 
-下載範例 json 檔案，並使用您建立的變數加以設定。
+下載範例 json 檔案，並使用您所建立的變數進行設定。
 
 ```console
 curl https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage/helloImageTemplateMsi.json -o helloImageTemplateMsi.json
@@ -216,7 +216,7 @@ az vm create \
   --generate-ssh-keys
 ```
 
-建立 VM 之後，請啟動與 VM 的 SSH 會話。
+建立 VM 之後，啟動 VM 的 SSH 會話。
 
 ```console
 ssh aibuser@<publicIp>
@@ -256,4 +256,4 @@ az group delete -n $strResourceGroup
 
 ## <a name="next-steps"></a>後續步驟
 
-如果您在使用 Azure 映射產生器時遇到任何問題，請參閱[疑難排解](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md?toc=%2fazure%2fvirtual-machines%context%2ftoc.json)。
+如果您在使用 Azure 映射產生器時遇到任何問題，請參閱 [疑難排解](image-builder-troubleshoot.md?toc=%2fazure%2fvirtual-machines%context%2ftoc.json)。

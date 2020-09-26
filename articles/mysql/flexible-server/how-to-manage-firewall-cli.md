@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 9/21/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 4279da10de92bc8bf9cd564eaae02db2fef76a64
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 7fe0e91f30930b9aaf0fb484b3b1e74d707d8c21
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936640"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91307801"
 ---
 # <a name="create-and-manage-azure-database-for-mysql---flexible-server-firewall-rules-using-the-azure-cli"></a>使用 Azure CLI 建立及管理適用於 MySQL 的 Azure 資料庫具彈性的伺服器防火牆規則
 
@@ -33,17 +33,17 @@ ms.locfileid: "90936640"
 
 若要開啟 Cloud Shell，只要選取程式碼區塊右上角的 [試試看]  即可。 您也可以移至 [https://shell.azure.com/bash](https://shell.azure.com/bash)，從另一個瀏覽器索引標籤開啟 Cloud Shell。 選取 [複製]  即可複製程式碼區塊，將它貼到 Cloud Shell 中，然後選取 **Enter** 鍵加以執行。
 
-如果您偏好在本機安裝和使用 CLI，本快速入門需要有 Azure CLI 2.0 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
+如果您偏好在本機安裝和使用 CLI，本快速入門需要有 Azure CLI 2.0 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-您必須使用 [az login](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-login) 命令登入您的帳戶。 請注意 **id** 屬性，它會參考您 Azure 帳戶的訂用帳戶 **識別碼** 。
+您必須使用 [az login](https://docs.microsoft.com/cli/azure/reference-index#az-login) 命令登入您的帳戶。 請注意 **id** 屬性，它會參考您 Azure 帳戶的訂用帳戶 **識別碼** 。
 
 ```azurecli-interactive
 az login
 ```
 
-使用 [az account set](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az-account-set) 命令來選取您帳戶底下的特定訂用帳戶。 記下**az 登**入輸出中的**識別碼**值，以做為命令中**訂閱**引數的值。 如果您有多個訂用帳戶，請選擇資源計費的適當訂用帳戶。 若要取得您的所有訂用帳戶，請使用 [az account list](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az-account-list)。
+使用 [az account set](https://docs.microsoft.com/cli/azure/account#az-account-set) 命令來選取您帳戶底下的特定訂用帳戶。 記下**az 登**入輸出中的**識別碼**值，以做為命令中**訂閱**引數的值。 如果您有多個訂用帳戶，請選擇資源計費的適當訂用帳戶。 若要取得您的所有訂用帳戶，請使用 [az account list](https://docs.microsoft.com/cli/azure/account#az-account-list)。
 
 ```azurecli
 az account set --subscription <subscription id>
@@ -53,7 +53,7 @@ az account set --subscription <subscription id>
 
 您可以使用 `az mysql flexible-server --public access` 命令來建立具有 *公用存取 (允許的 IP 位址) * 的彈性伺服器，並在建立有彈性的伺服器期間設定防火牆規則。 您可以使用 **--public-存取** 切換參數來提供可連接到伺服器的允許 IP 位址。 您可以提供要包含在允許的 ip 清單中的單一或 IP 位址範圍。 IP 位址範圍必須以破折號分隔，而且不包含任何空格。 使用 CLI 建立有彈性的伺服器有各種不同的選項，如下列範例所示。
 
-請參閱 Azure CLI 參考檔 <!--FIXME --> 以取得可設定的 CLI 參數完整清單。 例如，在下列命令中，您可以選擇性地指定資源群組。
+請參閱 Azure CLI [參考檔](/cli/azure/mysql/flexible-server) ，以取得可設定的 CLI 參數的完整清單。 例如，在下列命令中，您可以選擇性地指定資源群組。
 
 - 建立具有公用存取權的彈性伺服器，並新增用戶端 IP 位址以存取伺服器
     ```azurecli-interactive
@@ -95,7 +95,7 @@ az account set --subscription <subscription id>
 - **顯示**：顯示有彈性的伺服器防火牆規則的詳細資料。
 - **刪除**：刪除有彈性的伺服器防火牆規則。
 
-請參閱 Azure CLI 參考檔 <!--FIXME --> 以取得可設定的 CLI 參數完整清單。 例如，在下列命令中，您可以選擇性地指定資源群組。
+請參閱 Azure CLI [參考檔](/cli/azure/mysql/flexible-server) ，以取得可設定的 CLI 參數的完整清單。 例如，在下列命令中，您可以選擇性地指定資源群組。
 
 ### <a name="create-a-firewall-rule"></a>建立防火牆規則
 使用 `az mysql flexible-server firewall-rule create` 命令在伺服器上建立新的防火牆規則。
@@ -154,7 +154,7 @@ az mysql flexible-server firewall-rule delete --name mydemoserver --rule-name Fi
 ```
 成功時，沒有任何輸出。 發生錯誤時，就會顯示錯誤訊息文字。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 - 深入瞭解[適用於 MySQL 的 Azure 資料庫彈性伺服器中的網路](./concepts-networking.md)功能
 - 深入瞭解 [適用於 MySQL 的 Azure 資料庫彈性的伺服器防火牆規則](./concepts-networking.md#public-access-allowed-ip-addresses)
 - [使用 Azure 入口網站建立和管理適用於 MySQL 的 Azure 資料庫彈性伺服器防火牆規則](./how-to-manage-firewall-portal.md)。

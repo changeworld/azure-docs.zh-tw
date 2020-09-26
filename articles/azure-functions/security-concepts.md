@@ -3,12 +3,12 @@ title: 保護 Azure Functions
 description: 了解如何讓您的函式程式碼更安全地在 Azure 中執行，以免遭受常見的攻擊。
 ms.date: 4/13/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9bec32c4c3d8005ef0d3c9fc5732785a5fa19a0c
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: e48991788307a47d0e01a7921e0c94d77ddcd5ad
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87850707"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91294745"
 ---
 # <a name="securing-azure-functions"></a>保護 Azure Functions
 
@@ -76,12 +76,12 @@ Functions 也會與 Azure 監視器記錄整合，讓您能夠將函式應用程
 
 根據預設，金鑰會儲存在設定所提供之帳戶的 Blob 儲存體容器中 `AzureWebJobsStorage` 。 您可以使用特定的應用程式設定來覆寫此行為，並將金鑰儲存在不同的位置。
 
-|Location  |設定 | 值 | 描述  |
+|位置  |設定 | 值 | 說明  |
 |---------|---------|---------|---------|
-|不同的儲存體帳戶     |  `AzureWebJobsSecretStorageSas`       | `<BLOB_SAS_URL` | 根據提供的 SAS URL，將金鑰儲存在第二個儲存體帳戶的 Blob 儲存體中。 金鑰會先經過加密，再使用您的函式應用程式特有的秘密加以儲存。 |
-|檔案系統   | `AzureWebJobsSecretStorageType`   |  `files`       | 金鑰會保存在檔案系統上，並在使用您的函式應用程式特有的秘密儲存之前加密。 |
-|Azure 金鑰保存庫  | `AzureWebJobsSecretStorageType`<br/>`AzureWebJobsSecretStorageKeyVaultName` | `keyvault`<br/>`<VAULT_NAME>` | 保存庫必須具有對應至主機資源之系統指派受控識別的存取原則。 存取原則應將下列秘密許可權授與識別： `Get` 、 `Set` 、 `List` 和 `Delete` 。 <br/>在本機執行時，會使用開發人員身分識別，而且設定必須位於檔案中的[local.settings.js](functions-run-local.md#local-settings-file)。 | 
-|Kubernetes 秘密  |`AzureWebJobsSecretStorageType`<br/>`AzureWebJobsKubernetesSecretName` (選擇性) | `kubernetes`<br/>`<SECRETS_RESOURCE>` | 只有在 Kubernetes 中執行函數執行時間時才支援。 若 `AzureWebJobsKubernetesSecretName` 未設定，則會將存放庫視為唯讀。 在此情況下，必須在部署前產生值。 當部署至 Kubernetes 時，Azure Functions Core Tools 會自動產生值。|
+|不同的儲存體帳戶     |  `AzureWebJobsSecretStorageSas`       | `<BLOB_SAS_URL` | 會根據提供的 SAS URL，將金鑰儲存在第二個儲存體帳戶的 Blob 儲存體中。 金鑰會在使用您函式應用程式特有的秘密進行儲存之前進行加密。 |
+|檔案系統   | `AzureWebJobsSecretStorageType`   |  `files`       | 金鑰會保存在檔案系統上，並使用您函式應用程式特有的秘密在儲存體之前加密。 |
+|Azure 金鑰保存庫  | `AzureWebJobsSecretStorageType`<br/>`AzureWebJobsSecretStorageKeyVaultName` | `keyvault`<br/>`<VAULT_NAME>` | 保存庫必須具有對應于主機資源的系統指派受控識別的存取原則。 存取原則應授與身分識別下列秘密許可權： `Get` 、 `Set` 、 `List` 和 `Delete` 。 <br/>在本機執行時，會使用開發人員身分識別，而設定必須在 [local.settings.js](functions-run-local.md#local-settings-file)的檔案中。 | 
+|Kubernetes 秘密  |`AzureWebJobsSecretStorageType`<br/>`AzureWebJobsKubernetesSecretName` (選擇性) | `kubernetes`<br/>`<SECRETS_RESOURCE>` | 只有在 Kubernetes 中執行函數執行時間時才支援。 若 `AzureWebJobsKubernetesSecretName` 未設定，則會將存放庫視為唯讀。 在此情況下，必須在部署前產生這些值。 Azure Functions Core Tools 部署至 Kubernetes 時，會自動產生這些值。|
 
 ### <a name="authenticationauthorization"></a>驗證/授權
 
@@ -95,7 +95,7 @@ Functions 也會與 Azure 監視器記錄整合，讓您能夠將函式應用程
 
 #### <a name="user-management-permissions"></a>使用者管理權限
 
-函數支援內建的[azure 角色型存取控制， (AZURE RBAC) ](../role-based-access-control/overview.md)。 函式支援的 Azure 角色為[參與者](../role-based-access-control/built-in-roles.md#contributor)、[擁有](../role-based-access-control/built-in-roles.md#owner)者和[讀者](../role-based-access-control/built-in-roles.md#owner)。 
+函數支援內建的 [azure 角色型存取控制 (AZURE RBAC) ](../role-based-access-control/overview.md)。 函式支援的 Azure 角色為 [參與者](../role-based-access-control/built-in-roles.md#contributor)、 [擁有](../role-based-access-control/built-in-roles.md#owner)者和 [讀者](../role-based-access-control/built-in-roles.md#owner)。 
 
 權限會在函式應用層級生效。 您必須具備參與者角色，才能執行大部分函式應用程式層級的工作。 只有擁有者角色可以刪除函式應用程式。 
 
@@ -128,6 +128,8 @@ Functions 也會與 Azure 監視器記錄整合，讓您能夠將函式應用程
 例如，每個函式應用程式都需要一個相關聯且由執行階段使用的儲存體帳戶。 根據預設，此儲存體帳戶的連線會儲存在名為 `AzureWebJobsStorage` 的應用程式設定中。
 
 應用程式設定和連接字串會以加密方式儲存在 Azure 中。 只有在應用程式啟動時，才會將其解密，然後插入至應用程式的處理序記憶體。 加密金鑰會定期輪替。 如果您想要改為管理祕密的安全儲存體，應用程式設定就應該改為參考 Azure Key Vault。 
+
+您也可以在本機電腦上開發函式時，根據預設，在 local.settings.js檔案中加密設定。 若要深入瞭解，請參閱 `IsEncrypted` [本機設定檔](functions-run-local.md#local-settings-file)中的屬性。  
 
 #### <a name="key-vault-references"></a>Key Vault 參考
 

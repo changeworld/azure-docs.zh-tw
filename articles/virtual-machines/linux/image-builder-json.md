@@ -4,16 +4,16 @@ description: 了解如何建立範本以搭配 Azure Image Builder 使用。
 author: danielsollondon
 ms.author: danis
 ms.date: 08/13/2020
-ms.topic: conceptual
-ms.service: virtual-machines-linux
+ms.topic: reference
+ms.service: virtual-machines
 ms.subservice: imaging
 ms.reviewer: cynthn
-ms.openlocfilehash: 3c2dbf8c98901d5a4147939c42e289abf25f7d21
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 43f33093010aa6a70d02c58e9faa34f7f0e2dfee
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378366"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91307274"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>預覽：建立 Azure Image Builder 範本 
 
@@ -96,7 +96,7 @@ Azure Image Builder 會使用 .json 檔案，將資訊傳遞至 Image Builder �
 ```
 
 ## <a name="vnetconfig"></a>vnetConfig
-如果您未指定任何 VNET 屬性，則 Image Builder 會建立自己的 VNET、公用 IP 和 NSG。 公用 IP 可供服務與建置 VM 通訊，不過，如果您不希望公用 IP 或 Image Builder 能夠存取現有的 VNET 資源 (例如設定伺服器 (DSC、Chef、Puppet、Ansible)、檔案共用等)，則可指定 VNET。 如需詳細資訊，請檢閱[網路功能文件](https://github.com/danielsollondon/azvmimagebuilder/blob/master/aibNetworking.md#networking-with-azure-vm-image-builder)，這是選擇性動作。
+如果您未指定任何 VNET 屬性，則 Image Builder 會建立自己的 VNET、公用 IP 和 NSG。 公用 IP 可供服務與建置 VM 通訊，不過，如果您不希望公用 IP 或 Image Builder 能夠存取現有的 VNET 資源 (例如設定伺服器 (DSC、Chef、Puppet、Ansible)、檔案共用等)，則可指定 VNET。 如需詳細資訊，請檢閱[網路功能文件](image-builder-networking.md)，這是選擇性動作。
 
 ```json
     "vnetConfig": {
@@ -120,7 +120,7 @@ Azure Image Builder 會使用 .json 檔案，將資訊傳遞至 Image Builder �
 
 ## <a name="identity"></a>身分識別
 
-必要項：若要讓映射產生器擁有讀取/寫入映射的許可權，請從 Azure 儲存體讀入腳本，您必須建立具有個別資源許可權的 Azure 使用者指派的身分識別。 如需有關 Image Builder 許可權如何運作以及相關步驟的詳細資訊，請參閱 [檔](https://github.com/danielsollondon/azvmimagebuilder/blob/master/aibPermissions.md#azure-vm-image-builder-permissions-explained-and-requirements)。
+必要項：若要讓映射產生器擁有讀取/寫入映射的許可權，請從 Azure 儲存體讀入腳本，您必須建立具有個別資源許可權的 Azure 使用者指派的身分識別。 如需有關 Image Builder 許可權如何運作以及相關步驟的詳細資訊，請參閱 [檔](image-builder-user-assigned-identity.md)。
 
 
 ```json
@@ -233,7 +233,7 @@ az vm image list -l westus -f UbuntuServer -p Canonical --output table –-all
 [ERROR] complete: 'context deadline exceeded'
 ```
 
-如果您未指定 buildTimeoutInMinutes 值，或將其設定為 0，則會使用預設值。 您可以增加或減少此值，最多可達 960 分鐘 (16 小時)。 對於 Windows，我們不建議將此值設為低於 60 分鐘。 如果您發現即將達到逾時，請檢閱[記錄](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#collecting-and-reviewing-aib-image-build-logs)，查看自訂步驟是否正在等待使用者輸入之類的內容。 
+如果您未指定 buildTimeoutInMinutes 值，或將其設定為 0，則會使用預設值。 您可以增加或減少此值，最多可達 960 分鐘 (16 小時)。 對於 Windows，我們不建議將此值設為低於 60 分鐘。 如果您發現即將達到逾時，請檢閱[記錄](image-builder-troubleshoot.md#customization-log)，查看自訂步驟是否正在等待使用者輸入之類的內容。 
 
 如果您發現需要更多時間才能完成自訂，請將此值設為您所需的值，但有一些額外負荷。 但請勿將其設得太高，因為您可能必須等候到逾時，才能看到錯誤。 
 
@@ -481,7 +481,7 @@ Write-Output '>>> Sysprep complete ...'
 * Windows：c:\DeprovisioningScript.ps1
 * Linux：/tmp/DeprovisioningScript.sh
 
-Image Builder 將會讀取這些命令，而這些命令會寫出至 AIB 記錄檔 ‘customization.log’。 請參閱[疑難排解](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#collecting-and-reviewing-aib-logs)以了解如何收集記錄。
+Image Builder 將會讀取這些命令，而這些命令會寫出至 AIB 記錄檔 ‘customization.log’。 請參閱[疑難排解](image-builder-troubleshoot.md#customization-log)以了解如何收集記錄。
  
 ## <a name="properties-distribute"></a>屬性：distribute
 
@@ -658,7 +658,7 @@ az resource invoke-action \
 ### <a name="cancelling-an-image-build"></a>取消映射組建
 如果您執行的是您認為不正確的映射組建、等候使用者輸入，或您覺得永遠不會順利完成，則可以取消組建。
 
-您可以隨時取消組建。 如果發佈階段已啟動，您仍然可以取消，但您必須清除任何可能未完成的映射。 Cancel 命令不會等候取消完成，請 `lastrunstatus.runstate` 使用這些狀態 [命令](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#get-statuserror-of-the-template-submission-or-template-build-status)監視取消進度。
+您可以隨時取消組建。 如果發佈階段已啟動，您仍然可以取消，但您必須清除任何可能未完成的映射。 Cancel 命令不會等候取消完成，請 `lastrunstatus.runstate` 使用這些狀態 [命令](image-builder-troubleshoot.md#customization-log)監視取消進度。
 
 
 命令範例 `cancel` ：
