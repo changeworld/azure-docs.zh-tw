@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 11/12/2019
+ms.date: 09/22/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to work with routing tables for NVA.
-ms.openlocfilehash: adfc8d6a0b3bfed1726ddd45e9f4ad5981bdef95
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 40154a9c3cefed69bd3f1639153099b944da79b5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86122293"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91267120"
 ---
 # <a name="create-a-virtual-hub-route-table-to-steer-traffic-to-a-network-virtual-appliance"></a>建立虛擬中樞路由表以將流量引導到網路虛擬設備
 
@@ -36,9 +36,9 @@ ms.locfileid: "86122293"
 
 請確認您已符合下列條件：
 
-* 您有網路虛擬設備 (NVA)。 這是您選擇的協力廠商軟體，通常會從虛擬網路中的 Azure Marketplace 布建。
+* 您有網路虛擬設備 (NVA)。 這是您選擇的協力廠商軟體，通常是從虛擬網路中的 Azure Marketplace 布建。
 * 您有一個指派給 NVA 網路介面的私人 IP。 
-* NVA 無法部署在虛擬中樞內。 它必須部署在不同的 VNet。 在本文中，NVA VNet 稱為 'DMZ VNet'。
+* 無法在虛擬中樞中部署 NVA。 它必須部署在不同的 VNet。 在本文中，NVA VNet 稱為 'DMZ VNet'。
 * 'DMZ VNet' 可以有一或多個虛擬網路與其連接。 在本文中，此 VNet 是稱為「間接輪幅 VNet」。 這些 Vnet 可以使用 VNet 對等互連連接到 DMZ VNet。
 * 請確認您已建立 2 個 Vnet。 它們會當作輪輻 Vnet。 在本文中，VNet 輪輻位址空間是 10.0.2.0/24 和 10.0.3.0/24。 如果您需要如何建立 VNet 的詳細資訊，請參閱[使用 PowerShell 建立虛擬網路](../virtual-network/quick-create-powershell.md)。
 * 請確定任何 Vnet 中都沒有虛擬網路閘道。
