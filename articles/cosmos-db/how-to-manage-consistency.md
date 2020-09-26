@@ -6,13 +6,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 06/10/2020
 ms.author: anfeldma
-ms.custom: devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: 85c99892a225de933da337e748ebde3370b6f7a3
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.custom: devx-track-js, devx-track-csharp
+ms.openlocfilehash: 7a07a42e208cb0f6fe91f6a65777fd28155106a1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019601"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330548"
 ---
 # <a name="manage-consistency-levels-in-azure-cosmos-db"></a>管理 Azure Cosmos DB 中的一致性層級
 
@@ -101,7 +101,7 @@ var response = await client.GetContainer(databaseName, containerName)
 
    [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=ManageConsistencyAsync)]
 
-# <a name="sync"></a>[同步處理](#tab/api-sync)
+# <a name="sync"></a>[同步](#tab/api-sync)
 
    Java SDK V4 (Maven com.azure::azure-cosmos) 同步 API
 
@@ -127,7 +127,7 @@ AsyncDocumentClient client =
                 .withConnectionPolicy(policy).build();
 ```
 
-# <a name="sync"></a>[同步處理](#tab/api-sync)
+# <a name="sync"></a>[同步](#tab/api-sync)
 
 同步 JAVA V2 SDK (Maven .com. azure：： azure-documentdb) 
 
@@ -202,7 +202,7 @@ ItemResponse<SalesOrder> response = await container.ReadItemAsync<SalesOrder>(sa
 
    [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=ManageConsistencySessionAsync)]
 
-# <a name="sync"></a>[同步處理](#tab/api-sync)
+# <a name="sync"></a>[同步](#tab/api-sync)
 
    Java SDK V4 (Maven com.azure::azure-cosmos) 同步 API
 
@@ -236,7 +236,7 @@ requestOptions.setSessionToken(sessionToken);
 Observable<ResourceResponse<Document>> readObservable = client.readDocument(document.getSelfLink(), options);
 ```
 
-# <a name="sync"></a>[同步處理](#tab/api-sync)
+# <a name="sync"></a>[同步](#tab/api-sync)
 
 同步 JAVA V2 SDK (Maven .com. azure：： azure-documentdb) 
 

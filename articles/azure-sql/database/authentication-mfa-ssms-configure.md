@@ -12,12 +12,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/27/2019
-ms.openlocfilehash: b1dbd66e34790599020233c5b1249593a4c0472d
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 8f72b9e9dfc2aa35960f9f81219a4c8973e2fe5b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442644"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91277915"
 ---
 # <a name="configure-multi-factor-authentication-for-sql-server-management-studio-and-azure-ad"></a>設定適用於 SQL Server Management Studio 和 Azure AD 的多重要素驗證
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -40,22 +40,22 @@ ms.locfileid: "89442644"
 
 1. 若要使用通用驗證進行連線，請在 [連線 **到伺服器** ] 對話方塊的 [SQL SERVER MANAGEMENT STUDIO (SSMS) 中選取 [ **具有 MFA 支援的 Active Directory-通用**]。 (如果您看到 **Active Directory 通用驗證**，則表示您不是使用最新的 SSMS 版本。)
 
-   ![1mfa-universal-connect](./media/authentication-mfa-ssms-configure/mfa-no-tenant-ssms.png)  
+   ![S s M S 中 [連接到伺服器] 對話方塊中 [連接屬性] 索引標籤的螢幕擷取畫面。已在 [連接到資料庫] 下拉式清單中選取 [MyDatabase]。](./media/authentication-mfa-ssms-configure/mfa-no-tenant-ssms.png)  
 2. 使用 Azure Active Directory 認證完成 [使用者名稱]**** 方塊 (採用 `user_name@domain.com` 格式)。
 
-   ![1mfa-universal-connect-user](./media/authentication-mfa-ssms-configure/1mfa-universal-connect-user.png)
+   ![伺服器類型、伺服器名稱、驗證和使用者名稱的 [連接到伺服器] 對話方塊設定的螢幕擷取畫面。](./media/authentication-mfa-ssms-configure/1mfa-universal-connect-user.png)
 3. 如果您是以來賓使用者的身份連線，就不再需要為來賓使用者完成 AD 功能變數名稱或租使用者識別碼欄位，因為 SSMS 18. x 或更新版本會自動辨識它。 如需詳細資訊，請參閱 [SQL Database 的通用驗證、SQL 受控執行個體和 Azure Synapse (MFA 的 SSMS 支援) ](../database/authentication-mfa-ssms-overview.md)。
 
-   ![mfa-無租使用者-ssms](./media/authentication-mfa-ssms-configure/mfa-no-tenant-ssms.png)
+   ![S s M S 中 [連接到伺服器] 對話方塊中 [連接屬性] 索引標籤的螢幕擷取畫面。已在 [連接到資料庫] 下拉式清單中選取 [MyDatabase]。](./media/authentication-mfa-ssms-configure/mfa-no-tenant-ssms.png)
 
    但是，如果您是使用 SSMS 17. x 或更舊的來賓使用者來連線，則必須按一下 [ **選項**]，然後在 [連線 **屬性** ] 對話方塊中，完成 [ **AD 功能變數名稱] 或 [租使用者識別碼** ] 方塊。
 
-   ![mfa-tenant-ssms](./media/authentication-mfa-ssms-configure/mfa-tenant-ssms.png)
+   ![[連接到伺服器] 對話方塊中 S s M S 的 [連線屬性] 索引標籤螢幕擷取畫面。已填入 [AD 功能變數名稱] 或 [租使用者識別碼] 屬性選項。](./media/authentication-mfa-ssms-configure/mfa-tenant-ssms.png)
 
 4. 選取 [ **選項** ]，並在 [ **選項** ] 對話方塊上指定資料庫。  (如果已連線的使用者是 (亦即) 的來賓使用者 joe@outlook.com ，您必須核取此方塊，並新增目前的 AD 功能變數名稱或租使用者識別碼作為選項的一部分。 請參閱 [SQL Database 的通用驗證，並 Azure Synapse Analytics (MFA 的 SSMS 支援) ](../database/authentication-mfa-ssms-overview.md)。 然後按一下 [ **連接**]。  
 5. 當 [登入您的帳戶] **** 對話方塊顯示時，請提供您 Azure Active Directory 身分識別的帳戶和密碼。 如果使用者不屬於與 Azure AD 同盟的網域，則不需要密碼。
 
-   ![2mfa-sign-in](./media/authentication-mfa-ssms-configure/2mfa-sign-in.png)  
+   ![Azure SQL Database 和資料倉儲的 [登入帳戶] 對話方塊的螢幕擷取畫面。 系統會填入帳戶和密碼。](./media/authentication-mfa-ssms-configure/2mfa-sign-in.png)  
 
    > [!NOTE]
    > 如果是使用不需要 MFA 的帳戶進行通用驗證，則您可以在此時連線。 對於需要 MFA 的使用者，請繼續執行下列步驟：
@@ -63,18 +63,18 @@ ms.locfileid: "89442644"
 
 6. 可能會顯示兩個 MFA 設定對話方塊。 這個一次性作業是根據 MFA 系統管理員設定而定，因此可能是選擇性的。 對於已啟用 MFA 的網域，有時會預先定義這個步驟 (例如，網域會要求使用者使用智慧卡和 pin)。
 
-   ![3mfa-setup](./media/authentication-mfa-ssms-configure/3mfa-setup.png)
+   ![[登入您的帳戶] 對話方塊的螢幕擷取畫面，其中包含設定額外安全性驗證的提示 Azure SQL Database 和資料倉儲。](./media/authentication-mfa-ssms-configure/3mfa-setup.png)
   
 7. 第二個可能的一次性對話方塊可讓您選取驗證方法的詳細資料。 可能的選項是由您的系統管理員所設定。
 
-   ![4mfa-verify-1](./media/authentication-mfa-ssms-configure/4mfa-verify-1.png)  
+   ![[其他安全性驗證] 對話方塊的螢幕擷取畫面，其中包含選取和設定驗證方法的選項。](./media/authentication-mfa-ssms-configure/4mfa-verify-1.png)  
 8. Azure Active Directory 會傳送確認資訊給您。 當您收到驗證碼時，請將其輸入 [輸入驗證碼]**** 方塊，然後按一下 [登入]****。
 
-   ![5mfa-verify-2](./media/authentication-mfa-ssms-configure/5mfa-verify-2.png)  
+   ![[登入您的帳戶] 對話方塊的螢幕擷取畫面，其中包含可提示您輸入驗證碼的 Azure SQL Database 和資料倉儲。](./media/authentication-mfa-ssms-configure/5mfa-verify-2.png)  
 
 驗證完成時，SSMS 即會正常連線 (假設認證和防火牆存取有效)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 如需多重要素驗證的總覽，請參閱 [SQL Database 的通用驗證、SQL 受控執行個體和 Azure Synapse (MFA 的 SSMS 支援) ](../database/authentication-mfa-ssms-overview.md)。  
 - 授與對資料庫的其他存取權：[SQL Database 驗證和授權：授與存取權](logins-create-manage.md)  

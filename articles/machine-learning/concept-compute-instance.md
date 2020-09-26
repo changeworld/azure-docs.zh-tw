@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 08/25/2020
-ms.openlocfilehash: ec7fc5cec7d8ba63d9a628c3ede978818a2c3012
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 14229af9766f6604e71713f835935d43f6c7fcc6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90031019"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330140"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>什麼是 Azure Machine Learning 計算執行個體？
 
@@ -30,7 +30,7 @@ Azure Machine Learning 計算實例是適用于資料科學家的受控雲端架
 
 計算實例是完全受控的雲端式工作站，最適合您的機器學習開發環境。 其提供下列優點：
 
-|主要權益|描述|
+|主要權益|說明|
 |----|----|
 |生產力|您可以使用整合式筆記本以及下列 Azure Machine Learning studio 中的工具來建立和部署模型：<br/>-  Jupyter<br/>-  JupyterLab<br/>-RStudio (preview) <br/>計算實例已與 Azure Machine Learning 工作區和 studio 完全整合。 您可以與工作區中的其他資料科學家共用筆記本和資料。 您也可以使用[SSH](how-to-set-up-vs-code-remote.md)設定 VS Code 遠端開發 |
 |受控且安全|降低您的安全性磁碟使用量，並提升與企業安全性需求的合規性。 計算執行個體會提供健全的管理原則和安全的網路設定，例如：<br/><br/>-從 Resource Manager 範本或 Azure Machine Learning SDK 自動布建<br/>- [Azure 角色型存取控制 (Azure RBAC) ](/azure/role-based-access-control/overview)<br/>- [虛擬網路支援](how-to-enable-virtual-network.md#compute-instance)<br/>- 用以啟用/停用 SSH 存取的 SSH 原則<br/>已啟用 TLS 1。2 |
@@ -69,7 +69,7 @@ Azure Machine Learning 計算執行個體可讓您在工作區中以完全整合
 |Anaconda Python||
 |Jupyter 和擴充功能||
 |Jupyterlab 和擴充功能||
-[Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)</br>從 PyPI|包含大部分的 azureml 額外套件。  若要查看完整清單，請[在計算執行個體上開啟終端機視窗](how-to-run-jupyter-notebooks.md#terminal)並執行 <br/> `conda list -n azureml_py36 azureml*` |
+[Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)</br>從 PyPI|包含大部分的 azureml 額外套件。  若要查看完整清單，請[在計算執行個體上開啟終端機視窗](how-to-run-jupyter-notebooks.md#terminal)並執行 <br/> `conda list -n azureml_py36 azureml*` |
 |其他 PyPI 套件|`jupytext`</br>`tensorboard`</br>`nbconvert`</br>`notebook`</br>`Pillow`|
 |Conda 套件|`cython`</br>`numpy`</br>`ipykernel`</br>`scikit-learn`</br>`matplotlib`</br>`tqdm`</br>`joblib`</br>`nodejs`</br>`nb_conda_kernels`|
 |深度學習套件|`PyTorch`</br>`TensorFlow`</br>`Keras`</br>`Horovod`</br>`MLFlow`</br>`pandas-ml`</br>`scrapbook`|
@@ -91,6 +91,30 @@ Python 套件全都安裝在 **Python 3.6 - AzureML** 環境中。
 * Jupyter Lab：在 [啟動器] 索引標籤中的 [其他] 標題下，選取 [終端機] 圖格。
 * Jupyter：在 [檔案] 索引標籤的右上角選取 [新增] > [終端機]。
 * 透過 SSH 連線到電腦。  然後將 Python 套件安裝到 **Python 3.6 - AzureML** 環境中。  將 R 套件安裝到 **R** 環境中。
+
+### <a name="add-new-kernels"></a>加入新的核心程序
+
+若要將新的 Jupyter 核心新增至計算實例：
+
+1. 從 Jupyter、JupyterLab 或從筆記本窗格或 SSH 建立新的終端機到計算實例
+2. 使用終端機視窗建立新的環境。  例如，下列程式碼會建立 `newenv` ：
+    ```shell
+    conda create --name newenv
+    ```
+3. 啟用環境。  例如，建立 `newenv` 之後：
+
+    ```shell
+    conda activate newenv
+    ```
+4. 將 pip 和 ipykernel 套件安裝至新環境，並為該 conda 環境建立核心
+
+    ```shell
+    conda install pip
+    conda install ipykernel
+    python -m ipykernel install --user --name newenv --display-name "Python (newenv)"
+    ```
+
+您可以安裝任何[可用的 Jupyter 核心程序](https://github.com/jupyter/jupyter/wiki/Jupyter-kernels) 。
 
 ## <a name="accessing-files"></a>存取檔案
 
@@ -136,7 +160,7 @@ Python 套件全都安裝在 **Python 3.6 - AzureML** 環境中。
 * *MachineLearningServices/workspace/計算/停止/動作*
 * *MachineLearningServices/workspace/計算/重新開機/動作*
 
-### <a name="create-a-compute-instance"></a><a name="create"></a>建立計算實例
+### <a name="create-a-compute-instance"></a><a name="create"></a>建立計算執行個體
 
 在 Azure Machine Learning studio 的工作區中，從 [**計算**] 區段或 [**筆記本**] 區段中[建立新的計算實例](how-to-create-attach-compute-studio.md#compute-instance)（當您準備好要執行其中一個筆記本時）。 
 
@@ -153,7 +177,7 @@ Python 套件全都安裝在 **Python 3.6 - AzureML** 環境中。
 ### <a name="create-on-behalf-of-preview"></a>代表 (預覽版建立) 
 
 系統管理員可以代表資料科學家建立計算實例，並使用下列專案將實例指派給它們：
-* [Azure Resource Manager 範本](https://docs.microsoft.com/azure/templates/microsoft.machinelearningservices/2020-06-01/workspaces/computes)。  如需有關如何尋找此範本所需之 TenantID 和 ObjectID 的詳細資訊，請參閱 [尋找驗證設定的識別物件識別碼](../healthcare-apis/find-identity-object-ids.md)。  您也可以在 Azure Active Directory 入口網站中找到這些值。
+* [Azure Resource Manager 範本](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/preview/2020-09-01-preview/examples/createComputeInstance.json)。  如需有關如何尋找此範本所需之 TenantID 和 ObjectID 的詳細資訊，請參閱 [尋找驗證設定的識別物件識別碼](../healthcare-apis/find-identity-object-ids.md)。  您也可以在 Azure Active Directory 入口網站中找到這些值。
 * REST API
 
 您建立計算實例所需的資料科學家需要下列 RBAC 許可權： 
