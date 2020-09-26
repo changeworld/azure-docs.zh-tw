@@ -16,12 +16,12 @@ ms.date: 01/15/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 268cf61596366d451057861db1fa5ac2d35e87d0
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: d1d364089d5df24cfc4e7a75c3fd6b81248f0cd6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662407"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91313306"
 ---
 # <a name="identity-synchronization-and-duplicate-attribute-resiliency"></a>身分識別同步處理和重複屬性恢復功能
 重複屬性恢復功能是 Azure Active Directory 中的一項功能，可在執行 Microsoft 的其中一種同步處理工具時，消除 **UserPrincipalName** 和 SMTP **ProxyAddress** 衝突所造成的衝突。
@@ -101,7 +101,7 @@ _** \<OriginalPrefix> + \<4DigitNumber> \@ \<InitialTenantDomain> . onmicrosoft.
 
 `Get-MsolDirSyncProvisioningError -ErrorCategory PropertyConflict -PropertyName UserPrincipalName`
 
-或
+Or
 
 `Get-MsolDirSyncProvisioningError -ErrorCategory PropertyConflict -PropertyName ProxyAddresses`
 
@@ -124,7 +124,7 @@ _** \<OriginalPrefix> + \<4DigitNumber> \@ \<InitialTenantDomain> . onmicrosoft.
 ## <a name="microsoft-365-admin-center"></a>Microsoft 365 系統管理中心
 您可以在 Microsoft 365 系統管理中心中查看目錄同步處理錯誤。 Microsoft 365 系統管理中心中的報表只會顯示有這些錯誤的 **使用者** 物件。 並不會顯示「群組」**** 和「連絡人」**** 之間的衝突相關資訊。
 
-![作用中使用者](./media/how-to-connect-syncservice-duplicate-attribute-resiliency/1234.png "作用中使用者")
+![顯示 Microsoft 365 系統管理中心中目錄同步處理錯誤的螢幕擷取畫面。](./media/how-to-connect-syncservice-duplicate-attribute-resiliency/1234.png "作用中使用者")
 
 如需有關如何在 Microsoft 365 系統管理中心中查看目錄同步處理錯誤的指示，請參閱 [Microsoft 365 中的識別目錄同步處理錯誤](https://support.office.com/article/Identify-directory-synchronization-errors-in-Office-365-b4fc07a5-97ea-4ca6-9692-108acab74067)。
 
@@ -132,7 +132,7 @@ _** \<OriginalPrefix> + \<4DigitNumber> \@ \<InitialTenantDomain> . onmicrosoft.
 當利用這個新行為處理具有重複屬性衝突的物件時，通知會包含在標準身分識別同步處理錯誤報告電子郵件中，而該電子郵件回傳送給租用戶的技術通知連絡人。 不過，此行為有一項重大變更。 在過去，重複屬性衝突的相關資訊會包含在每個後續的錯誤報告中，直到解決衝突為止。 利用這個新行為，給定衝突的錯誤通知只會出現一次 - 在衝突的屬性遭到隔離時。
 
 ProxyAddress 衝突的電子郵件通知範例如下所示︰  
-    ![作用中使用者](./media/how-to-connect-syncservice-duplicate-attribute-resiliency/6.png "作用中使用者")  
+    ![顯示 ProxyAddress 衝突的電子郵件通知範例的螢幕擷取畫面。](./media/how-to-connect-syncservice-duplicate-attribute-resiliency/6.png "作用中使用者")  
 
 ## <a name="resolving-conflicts"></a>解決衝突
 這些錯誤的疑難排解策略和解決技巧不得與過去處理重複屬性錯誤的方式不同。 唯一的差別在於計時器工作將會掃掠服務端上的租用戶，以在衝突解決後，自動將有問題的屬性新增至適當的物件。

@@ -6,14 +6,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: how-to
-ms.date: 11/14/2019
+ms.date: 09/24/2020
 ms.author: victorh
-ms.openlocfilehash: 55b5b5419734999ebd50ca364251602112e29987
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: 5b2bb50fc2ad8084d79097fe7acb449821d0a4da
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89594283"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331054"
 ---
 # <a name="create-an-application-gateway-with-external-redirection-using-azure-powershell"></a>使用 Azure PowerShell 建立具有外部重新導向的應用程式閘道
 
@@ -156,9 +156,4 @@ Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAdd
 
 ## <a name="next-steps"></a>後續步驟
 
-在本文中，您已了解如何：
-
-> [!div class="checklist"]
-> * 設定網路
-> * 建立接聽程式和重新導向規則
-> * 建立應用程式閘道
+- [使用 Azure PowerShell 來建立具有內部重新導向的應用程式閘道](redirect-internal-site-powershell.md)

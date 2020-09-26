@@ -6,14 +6,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 07/07/2020
+ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: 00d79f8058d7d478f7fe97ba9677e47098b70e1b
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: cae74a5f4859d208765c9a7e5cde05ff3c0c3096
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89145921"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91313683"
 ---
 # <a name="how-to-configure-virtual-hub-routing"></a>如何設定虛擬中樞路由
 
@@ -32,7 +32,7 @@ ms.locfileid: "89145921"
 
    :::image type="content" source="./media/how-to-virtual-hub-routing/basics.png" alt-text="[基本] 索引標籤":::
 
-   * **名稱**
+   * **Name**
    * **路由**
    * **路由名稱**
    * **目的地類型**
@@ -84,7 +84,7 @@ ms.locfileid: "89145921"
 
 :::image type="content" source="./media/how-to-virtual-hub-routing/routing-configuration.png" alt-text="設定路由設定" lightbox="./media/how-to-virtual-hub-routing/routing-configuration-expand.png":::
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如需虛擬中樞路由的詳細資訊，請參閱 [關於虛擬中樞路由](about-virtual-hub-routing.md)。
 如需虛擬 WAN 的詳細資訊，請參閱[常見問題集](virtual-wan-faq.md)。

@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: reference
-ms.date: 08/31/2020
+ms.date: 09/22/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a861a038cefec56dfaaed1aca443f494dc82680
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: c65d77d2cf50a59f18f0007e809e9913c3a5ae13
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90055753"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91304215"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 中的系統管理員角色權限
 
@@ -155,8 +155,6 @@ Azure AD 可能已新增一或多個角色，以提供更細微的權限，但�
 ### <a name="conditional-access-administrator"></a>[條件式存取管理員](#conditional-access-administrator-permissions)
 
 具備此角色的使用者能夠管理 Azure Active Directory 條件式存取設定。
-> [!NOTE]
-> 若要在 Azure 中部署 Exchange ActiveSync 條件式存取原則，使用者也必須是全域管理員。
 
 ### <a name="customer-lockbox-access-approver"></a>[客戶加密箱存取核准者](#customer-lockbox-access-approver-permissions)
 

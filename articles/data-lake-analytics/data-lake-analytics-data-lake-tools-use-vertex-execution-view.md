@@ -1,17 +1,17 @@
 ---
-title: 適用于 Visual Studio 的 Data Lake 工具中的頂點執行視圖
+title: Data Lake Tools for Visual Studio 的頂點執行視圖
 description: 本文描述如何使用頂點執行檢視來測驗 Data Lake Analytics 作業。
 services: data-lake-analytics
 ms.service: data-lake-analytics
 ms.assetid: 5366d852-e7d6-44cf-a88c-e9f52f15f7df
 ms.topic: how-to
 ms.date: 10/13/2016
-ms.openlocfilehash: 2fdce38b19cd38439baa5d640707d159cd713657
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: b8688af24e2b67f0e21de8344188b9a946f3258b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87125611"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331942"
 ---
 # <a name="use-the-vertex-execution-view-in-data-lake-tools-for-visual-studio"></a>在適用於 Visual Studio 的 Data Lake 工具中使用 Vertex 執行檢視
 了解如何使用頂點執行檢視測驗 Data Lake Analytics 作業。
@@ -20,20 +20,20 @@ ms.locfileid: "87125611"
 ## <a name="open-the-vertex-execution-view"></a>開啟頂點執行檢視
 在 Data Lake Tools for Visual Studio 中開啟 U-SQL 作業。 按一下左下角的 [頂點執行檢視]****。 系統可能會提示您先載入設定檔，這可能需要一些時間，視您的網路連線而定。
 
-![Data Lake Analytics 工具頂點執行檢視](./media/data-lake-analytics-data-lake-tools-use-vertex-execution-view/data-lake-tools-open-vertex-execution-view.png)
+![顯示 Data Lake Analytics 工具頂點執行視圖的螢幕擷取畫面](./media/data-lake-analytics-data-lake-tools-use-vertex-execution-view/data-lake-tools-open-vertex-execution-view.png)
 
 ## <a name="understand-vertex-execution-view"></a>了解頂點執行檢視
 [頂點執行檢視] 有三個部分：
 
-![Data Lake Analytics 工具頂點執行檢視](./media/data-lake-analytics-data-lake-tools-use-vertex-execution-view/data-lake-tools-vertex-execution-view.png)
+![顯示頂點執行視圖的螢幕擷取畫面，其中已醒目提示 [頂點選取器] 和中央-頂端和中央-下窗格。](./media/data-lake-analytics-data-lake-tools-use-vertex-execution-view/data-lake-tools-vertex-execution-view.png)
 
 左邊的**頂點選取器**可讓您根據功能選取頂點 (例如前 10 個讀取的資料，或根據階段選擇)。 其中一個最常使用的篩選條件是查看**關鍵路徑的頂點**。 **關鍵路徑** 是 U-SQL 作業頂點的最長鏈結。 了解關鍵路徑有助於最佳化您的作業，方法是檢查哪一個頂點耗用最長時間。
   
-![Data Lake Analytics 工具頂點執行檢視](./media/data-lake-analytics-data-lake-tools-use-vertex-execution-view/data-lake-tools-vertex-execution-view-pane2.png)
+![顯示 [頂點執行視圖] 頂端中央窗格的螢幕擷取畫面，其中顯示 [所有頂點的執行狀態]。](./media/data-lake-analytics-data-lake-tools-use-vertex-execution-view/data-lake-tools-vertex-execution-view-pane2.png)
 
 正上方的窗格顯示**所有頂點的執行狀態**。
   
-![Data Lake Analytics 工具頂點執行檢視](./media/data-lake-analytics-data-lake-tools-use-vertex-execution-view/data-lake-tools-vertex-execution-view-pane3.png)
+![顯示頂點執行視圖底部窗格的螢幕擷取畫面，其中顯示每個頂點的相關資訊。](./media/data-lake-analytics-data-lake-tools-use-vertex-execution-view/data-lake-tools-vertex-execution-view-pane3.png)
 
 正下方的窗格顯示每個頂點的相關資訊：
 * 處理序名稱︰頂點執行個體的名稱。 由 StageName|VertexName|VertexRunInstance 中的不同部分組成。 例如，SV7_Split[62].v1 頂點表示階段 SV7_Split 中第 62 號頂點的第二個執行中執行個體 (.v1，從 0 開始編制索引)。

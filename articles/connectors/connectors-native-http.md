@@ -7,12 +7,12 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 09/14/2020
 tags: connectors
-ms.openlocfilehash: 5f6328144760b3c55c55fbef13917359fa9e1a62
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: f005bdfa5643ea187fb2973cac065563c4cc2ee6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526736"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91292450"
 ---
 # <a name="call-service-endpoints-over-http-or-https-from-azure-logic-apps"></a>從 Azure Logic Apps 透過 HTTP 或 HTTPS 呼叫服務端點
 
@@ -104,7 +104,7 @@ ms.locfileid: "90526736"
 
 以下是 HTTP 觸發程式或動作之輸出的詳細資訊，會傳回下列資訊：
 
-| 屬性 | 類型 | 描述 |
+| 屬性 | 類型 | 說明 |
 |----------|------|-------------|
 | `headers` | JSON 物件 | 要求的標頭 |
 | `body` | JSON 物件 | 具有來自要求之本文內容的物件 |
@@ -247,7 +247,7 @@ HTTP 要求有 [超時限制](../logic-apps/logic-apps-limits-and-config.md#http
 
 如果 HTTP 觸發程式或動作包含這些標頭，Logic Apps 會將這些標頭從產生的要求訊息中移除，而不會顯示任何警告或錯誤：
 
-* `Accept-*`
+* `Accept-*` 標頭除外 `Accept-version`
 * `Allow`
 * `Content-*`，但這些除外：`Content-Disposition`、`Content-Encoding` 和 `Content-Type`
 * `Cookie`

@@ -16,17 +16,17 @@ ms.date: 07/18/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef1e988bef3876fafdee4f7f6f109858e85d75d0
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: efb332cf8d5e34a435010a39a12b38f87cff5875
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89278729"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91313360"
 ---
 # <a name="monitor-azure-ad-connect-sync-with-azure-ad-connect-health"></a>使用 Azure AD Connect Health 監視 Azure AD Connect 同步處理
 下列文件適用於使用 Azure AD Connect Health 來監視 Azure AD Connect (同步處理)。  如需使用 Azure AD Connect Health 來監視 AD FS 的詳細資訊，請參閱 [在 AD FS 使用 Azure AD Connect Health](how-to-connect-health-adfs.md)。 此外，如需使用 Azure AD Connect Health 監視 Active Directory Domain Services 的詳細資訊，請參閱 [使用 Azure AD Connect Health 搭配 AD DS](how-to-connect-health-adds.md)。
 
-![適用於同步處理的 Azure AD Connect Health](./media/how-to-connect-health-sync/syncsnapshot.png)
+![[同步的 Azure AD Connect Health] 頁面的螢幕擷取畫面。](./media/how-to-connect-health-sync/syncsnapshot.png)
 
 ## <a name="alerts-for-azure-ad-connect-health-for-sync"></a>適用於同步處理的 Azure AD Connect Health 警示
 ＜適用於同步處理的 Azure AD Connect Health 警示＞小節將為您提供作用中警示的清單。 每個警示都包含相關資訊、解決步驟，以及相關文件的連結。 選取作用中或已解決的警示，您將會看到一個包含額外資訊的新刀鋒視窗，以及解決警示可以採取的步驟，和其他文件的連結。 您也可以檢視過去已解決的警示的歷史資料。
@@ -40,11 +40,11 @@ ms.locfileid: "89278729"
 
 這會限制服務的警示評估。 您會在 Azure 入口網站中您的服務之下，看到指出這種情況的橫幅。
 
-![適用於同步處理的 Azure AD Connect Health](./media/how-to-connect-health-sync/banner.png)
+![指出警示評估受限的警示橫幅螢幕擷取畫面。 更新您的設定，以啟用所有警示。](./media/how-to-connect-health-sync/banner.png)
 
 您可以按一下 [設定] 並允許 Azure AD Connect Health 代理程式上傳所有的錯誤記錄，加以變更。
 
-![適用於同步處理的 Azure AD Connect Health](./media/how-to-connect-health-sync/banner2.png)
+![稱為 [設定] 選項的螢幕擷取畫面，以及已呼叫 [儲存] 選項和 [開啟] 選項的 [設定] 區段。](./media/how-to-connect-health-sync/banner2.png)
 
 ## <a name="sync-insight"></a>同步處理深入了解
 系統管理員通常想要了解將變更同步至 Azure AD 所花的時間，以及所發生的變更數量。 此功能使用下列圖形，輕鬆地呈現這項資訊：   
@@ -55,14 +55,14 @@ ms.locfileid: "89278729"
 ### <a name="sync-latency"></a>同步處理延遲
 這項功能提供連接器同步處理作業 (匯入、匯出等) 延遲的圖形化趨勢。  這提供快速且輕鬆的方式，讓您了解不僅僅作業的延遲 (如果您會發生大量變更也很好)，還提供一個方式來偵測延遲中可能需要進一步調查的異常行為。
 
-![同步處理延遲](./media/how-to-connect-health-sync/synclatency02.png)
+![螢幕擷取畫面：過去3天的執行設定檔延遲時間圖。](./media/how-to-connect-health-sync/synclatency02.png)
 
 根據預設，只會顯示 Azure AD 連接器「匯出」作業的延遲。  若要查看連接器上的更多作業，或檢視其他連接器的作業，請以滑鼠右鍵按一下圖表，然後選取 [編輯圖表]，或按一下 [編輯延遲圖表] 按鈕，然後選擇特定作業和連接器。
 
 ### <a name="sync-object-changes"></a>同步處理物件的變更
 這項功能提供正在評估並匯出至 Azure AD 的變更數的圖形化趨勢。  現在，嘗試從同步處理記錄收集此資訊並不容易。  圖表不僅可讓您以更簡單的方式監視您的環境中發生的變更數，同時提供正在發生的失敗的視覺化檢視。
 
-![同步處理延遲](./media/how-to-connect-health-sync/syncobjectchanges02.png)
+![從過去3天開始，將統計資料匯出至 Azure AD 的螢幕擷取畫面。](./media/how-to-connect-health-sync/syncobjectchanges02.png)
 
 ## <a name="object-level-synchronization-error-report"></a>物件層級同步處理錯誤報告
 在 Windows Server AD 與 Azure AD 之間使用 Azure AD Connect 同步處理身分識別資料時，針對可能發生的同步處理錯誤，這項功能提供相關的報告。

@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: alzam
-ms.openlocfilehash: f77d17881054440b01e30e738a8c38407c38b4a4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a54397fe7cfecef6813105645b7f2b218894875e
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91306543"
+ms.locfileid: "91367847"
 ---
 # <a name="prepare-azure-active-directory-tenant-for-user-vpn-openvpn-protocol-connections"></a>準備 Azure Active Directory 租使用者以進行使用者 VPN OpenVPN 通訊協定連線
 
@@ -76,7 +76,7 @@ ms.locfileid: "91306543"
 
 4. 出現提示時選取 [接受]。
 
-    ![Accept](./media/openvpn-create-azure-ad-tenant/accept.jpg)
+    ![螢幕擷取畫面顯示對話方塊，其中包含要求您的組織接受的訊息許可權，以及其他資訊。](./media/openvpn-create-azure-ad-tenant/accept.jpg)
 
 5. 在您的 Azure AD 下，在 **企業應用程式**中，您現在應該會看到列出的 **Azure VPN** 。
 

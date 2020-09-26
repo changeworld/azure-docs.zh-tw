@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/03/2019
+ms.date: 09/16/2020
 ms.author: kenwith
-ms.openlocfilehash: 5040fca85857cd131731d67c543c08fb1114ccee
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 666c4e52ed521c169ff80b33e2ab0e83b13e4d03
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88235219"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91266695"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>在 Azure Active Directory 中自訂 SaaS 應用程式的使用者佈建屬性對應
 
@@ -316,6 +316,7 @@ SCIM 應用程式的屬性名稱必須遵循下列範例顯示的模式。 您�
 - Azure AD 佈建服務不支援佈建 Null 值。
 - 其主索引鍵 (通常是 "ID") 不應包含在屬性對應中作為目標屬性。 
 - 角色屬性通常需要使用運算式來對應，而不是直接對應。 如需角色對應的詳細資訊，請參閱上一節。 
+- 雖然您可以從對應中停用群組，但不支援停用使用者。 
 
 ## <a name="next-steps"></a>後續步驟
 

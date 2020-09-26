@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 0e24c08c9689394fa6efdbc03d960c597496e8ad
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: b1bb22b702cae77ba40fbeeaca1c11c9063bffe8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89231243"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331602"
 ---
 # <a name="azure-security-baseline-for-azure-ddos-protection-standard"></a>適用于 Azure DDoS 保護 Standard 的 Azure 安全性基準
 
@@ -96,7 +96,7 @@ ms.locfileid: "89231243"
 
 此外，Azure Active Directory (AD) 具有必須明確指派且可供查詢的內建角色。 使用 Azure AD PowerShell 模組執行臨機操作查詢，以探索屬於系統管理群組成員的帳戶。
 
-- [瞭解 Azure DDoS 保護中的許可權](../../virtual-network/manage-ddos-protection.md#permissions)
+- [瞭解 Azure DDoS 保護中的許可權](../../virtual-network/manage-ddos-protection.md#permissions-and-restrictions)
 
 - [如何使用 PowerShell 在 Azure AD 中取得目錄角色](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/10/2020
-ms.openlocfilehash: 4aeb97f112f0c95329b1449fe9c1423fdd5bd0d6
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 4b91a9a73035b3add309e72ce544375520cf279e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90894500"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91278612"
 ---
 # <a name="monitoring-your-key-vault-service-with-azure-monitor-for-key-vault"></a>使用 Key Vault 的 Azure 監視器監視您的金鑰保存庫服務
 適用于 Key Vault 的 Azure 監視器可提供您 Key Vault 要求、效能、失敗和延遲的統一觀點，藉以全面監視您的金鑰保存庫。
@@ -25,21 +25,6 @@ ms.locfileid: "90894500"
 -    **可自訂項目**可讓您變更想要查看的計量、修改或設定對應於限制的閾值，以及儲存您自己的活頁簿。 活頁簿中的圖表可釘選到 Azure 儀表板。
 
 Key Vault 的 Azure 監視器結合了記錄和計量，以提供全域監視解決方案。 所有使用者都可存取以計量為基礎的監視資料，但若要納入以記錄為基礎的視覺效果，使用者可能必須[啟用 Azure Key Vault 的記錄](../../key-vault/general/logging.md)。
-
-## <a name="configuring-your-key-vaults-for-monitoring"></a>為金鑰保存庫進行監視設定
-
-> [!NOTE]
-> 啟用記錄是一項付費服務，可提供額外的監視功能。
-
-1. [作業 & 延遲] 索引標籤可協助您決定要啟用多少和哪些金鑰保存庫。 若要開始進行收集，請選取 [啟用] 按鈕，這會使您進入個別的活頁簿，其中列出需要啟用診斷記錄的金鑰保存庫。
-
-    ![作業和延遲索引標籤的螢幕擷取畫面，其中顯示藍色的啟用按鈕](./media/key-vaults-insights-overview/enable-logging.png)
-
-2. 若要啟用診斷記錄，請按一下 [動作] 資料行底下的 [啟用] 連結，然後建立新的診斷設定，以將記錄傳送至 Log Analytics 工作區。 建議將所有記錄傳送至相同的工作區。
-
-3. 儲存診斷設定之後，您將可在 Key Vault Insights 底下檢視所有以記錄為基礎的圖表和視覺效果。 請注意，可能需要幾分鐘到數小時的時間，才會開始填入記錄。
-
-4. 如需如何為您的 Key Vault 服務啟用診斷記錄的相關協助，請參閱[完整指南](../../key-vault/general/logging.md)。
 
 ## <a name="view-from-azure-monitor"></a>從 Azure 監視器檢視
 
@@ -165,10 +150,6 @@ Key Vault 的 Azure 監視器結合了記錄和計量，以提供全域監視解
 我們只會顯示從選取的訂用帳戶篩選器中選擇、且包含金鑰保存庫的訂用帳戶；您可以在 Azure 入口網站標頭的 [目錄 + 訂用帳戶] 中選取該篩選器。
 
 ![訂用帳戶篩選器的螢幕擷取畫面](./media/key-vaults-insights-overview/Subscriptions.png)
-
-### <a name="i-am-getting-an-error-message-that-the-query-exceeds-the-maximum-number-of-workspacesregions-allowed-what-to-do-now"></a>我收到一則錯誤訊息，指出「查詢超過允許的工作區/區域數目上限」、現在該怎麼做
-
-目前有 25 個區域和 200 個工作區的限制，若要檢視您的資料，您必須減少訂用帳戶和/或資源群組的數目。
 
 ### <a name="i-want-to-make-changes-or-add-additional-visualizations-to-key-vault-insights-how-do-i-do-so"></a>我想要進行變更，或將其他視覺效果新增至 Key Vault 見解，該怎麼做
 

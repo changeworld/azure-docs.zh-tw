@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/31/2020
-ms.openlocfilehash: 1ea6d09609d1b7b3f7ba7297a040447d1fc24756
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: f9578fadfbe057b723af63e338bf8bda63cf6f21
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684389"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330905"
 ---
 # <a name="how-to-chart-performance-with-azure-monitor-for-vms"></a>如何使用適用於 VM 的 Azure 監視器來繪製效能圖表
 
@@ -21,7 +21,7 @@ ms.locfileid: "83684389"
 以下是適用於 VM 的 Azure 監視器的效能收集限制。
 
 - **可用記憶體**不適用於執行 Red Hat Linux (RHEL) 6 的虛擬機器。 此計量是根據[核心版本 3.14](http://www.man7.org/linux/man-pages/man1/free.1.html) 引進的 **MemAvailable** 計算而得。
-- 計量僅適用於使用 EXT 檔案系統系列 (EXT2、EXT3、EXT4) 的 Linux 虛擬機器上的資料磁碟。
+- 計量僅適用于使用 XFS filesystem 或 EXT filesystem 系列 (EXT2、EXT3、EXT4) 的 Linux 虛擬機器上的資料磁片。
 
 ## <a name="multi-vm-perspective-from-azure-monitor"></a>Azure 監視器的多 VM 檢視方塊
 
