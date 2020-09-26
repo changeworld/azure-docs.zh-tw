@@ -11,18 +11,18 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: diberry
-ms.openlocfilehash: 25b360f90a0920aad2ea5e68cda31a68be5d37a9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ccd732c644cf0a5641099a9731f65dd7b03bf374
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73486677"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316404"
 ---
 # <a name="testing-example-utterances-in-luis"></a>在 LUIS 中測試範例語句
 
 測試是一個程序，其中您會將範例語句提供給 LUIS，然後獲得 LUIS 所辨識意圖和實體的回應。 
 
-您可以互動方式測試 LUIS，一次一個語句，或提供語句的。 在測試時，您可以比較目前作用中模型的預測回應與已發行模型的預測回應。 
+您可以互動方式測試 LUIS，一次一個語句，或提供一組語句。 在測試過程中，您可以將目前使用中模型的預測回應與已發行之模型的預測回應進行比較。 
 
 <a name="A-test-score"></a>
 <a name="Score-all-intents"></a>
@@ -32,7 +32,7 @@ ms.locfileid: "73486677"
 請參閱[預測分數](luis-concept-prediction-score.md)概念，以深入了解預測分數。
 
 ## <a name="interactive-testing"></a>互動式測試
-互動式測試是從 LUIS 入口網站的 [**測試**] 面板中完成。 您可以輸入語句來查看意圖和實體的識別與評分情況。 如果 LUIS 未在 [測試] 面板中以您預期的方式預測意圖和實體，請將它複製到 [**意圖**] 頁面，做為新的語句。 然後為實體標記該語句的各個部分，並將 LUIS 定型。 
+互動式測試會從 LUIS 入口網站的 [ **測試** ] 面板中完成。 您可以輸入語句來查看意圖和實體的識別與評分情況。 如果 LUIS 未在測試面板中的語句預測意圖和實體，請將它複製到 **意圖** 頁面作為新的語句。 然後為實體標記該語句的元件，並將 LUIS 定型。 
 
 ## <a name="batch-testing"></a>批次測試
 如果您要一次測試多個語句，請參閱[批次測試](luis-concept-batch-test.md)。
@@ -46,7 +46,7 @@ ms.locfileid: "73486677"
 如果您對端點進行測試，而不想要記錄語句，請記得使用 `logging=false` 查詢字串設定。
 
 ## <a name="where-to-find-utterances"></a>語句尋找位置
-LUIS 會將所有記錄的語句儲存在查詢記錄檔中，並可從**應用程式**清單頁面上的 LUIS 入口網站下載，以及 LUIS[撰寫 api](https://go.microsoft.com/fwlink/?linkid=2092087)。 
+LUIS 會將所有已記錄的語句儲存在查詢記錄中，可從 **應用程式** 清單頁面下載到 LUIS 入口網站，以及 LUIS [撰寫 api](https://go.microsoft.com/fwlink/?linkid=2092087)。 
 
 任何 LUIS 不確定的語句都會列在 [LUIS](luis-reference-regions.md) 網站的[檢閱端點語句](luis-how-to-review-endpoint-utterances.md)**** 頁面中。 
 

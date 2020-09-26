@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/24/2020
 ms.author: aahi
-ms.openlocfilehash: 6a1f8cc9526d1f8393f8e7aa434587d8e4c0e979
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: be4b7f6a0f8afae9188b1f969956424041e77d9e
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91334664"
+ms.locfileid: "91371672"
 ---
 # <a name="install-and-run-speech-service-containers"></a>安裝和執行語音服務容器 
 
@@ -44,7 +44,7 @@ ms.locfileid: "91334664"
 | 文字轉換語音 | 使用純文字輸入或語音合成標記語言 (SSML) 將文字轉換成自然發音語音。 | 1.7.0 |
 | 自訂文字轉換語音 | 使用 [自訂語音入口網站](https://aka.ms/custom-voice-portal)中的自訂模型，將文字轉換成自然發音語音，並以純文字輸入或語音合成標記語言 (SSML) 。 | 1.7.0 |
 | 語音語言偵測 | 偵測音訊檔案中所說的語言。 | 1.0 |
-| 神經文字轉換語音 | 使用深度類神經網路技術將文字轉換成自然發音語音，以允許更自然合成的語音。 | 1.1.0 |
+| 神經文字轉換語音 | 使用深度類神經網路技術將文字轉換成自然發音語音，以允許更自然合成的語音。 | 1.2.0 |
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/cognitive-services/)。
 
@@ -245,7 +245,7 @@ docker pull mcr.microsoft.com/azure-cognitive-services/speechservices/neural-tex
 下列標記是格式的範例：
 
 ```
-1.1.0-amd64-en-us-arianeural-preview
+1.2.0-amd64-en-us-arianeural-preview
 ```
 
 針對所有支援的地區設定和類 **神經文字轉換語音** 容器的對應語音，請參閱類 [神經文字轉換語音影像標記](../containers/container-image-tags.md#neural-text-to-speech)。

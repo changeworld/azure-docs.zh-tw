@@ -5,14 +5,14 @@ services: iot-hub
 author: jlian
 ms.service: iot-fundamentals
 ms.topic: conceptual
-ms.date: 06/16/2020
+ms.date: 09/24/2020
 ms.author: jlian
-ms.openlocfilehash: fadcefb0b802ec3064ac917ab98320f61f24ae5c
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: eb25fc0d7831bc06b708431ce3d47c73b36fe5c6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90033518"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91281245"
 ---
 # <a name="iot-hub-support-for-virtual-networks-with-private-link-and-managed-identity"></a>IoT 中樞利用 Private Link 和受控識別支援虛擬網路
 
@@ -236,7 +236,7 @@ IoT 中樞的檔案上傳功能可讓裝置將檔案上傳至客戶所擁有儲�
 
 4. 在 IoT 中樞的資源頁面上，巡覽至 [檔案上傳] 索引標籤。
 
-5. 在顯示的頁面上，選取想要在 blob 儲存體中使用的容器，然後視需要設定 [檔案通知設定]、[SAS TTL]、[預設 TTL] 和 [最大傳遞計數]。 選取 [以身分 **識別為基礎** ] 作為儲存體端點的 **驗證類型** 。 按一下 [ **建立** ] 按鈕。
+5. 在顯示的頁面上，選取想要在 blob 儲存體中使用的容器，然後視需要設定 [檔案通知設定]、[SAS TTL]、[預設 TTL] 和 [最大傳遞計數]。 選取 [以身分 **識別為基礎** ] 作為儲存體端點的 **驗證類型** 。 按一下 [建立] 按鈕。 如果您在此步驟中收到錯誤，請暫時將您的儲存體帳戶設定為允許來自 **所有網路**的存取，然後再試一次。 一旦檔案上傳設定完成之後，您就可以在儲存體帳戶上設定防火牆。
 
 現在，您用於檔案上傳的儲存體端點已設定為使用中樞系統所指派身分識別，且即使有防火牆限制，也有權存取儲存體資源。
 

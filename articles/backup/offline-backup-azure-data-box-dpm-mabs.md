@@ -3,12 +3,12 @@ title: 使用 DPM 和 MABS 的 Azure 資料箱進行離線備份
 description: 您可以使用 Azure 資料箱從 DPM 與 MABS 離線植入初始備份資料。
 ms.topic: conceptual
 ms.date: 08/12/2020
-ms.openlocfilehash: 3755a4cc77455b37ae1545247992a3c8c4f25653
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 2fd8a137abf8b76d1587894bfa3fe8447e0d646b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89177681"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91271489"
 ---
 # <a name="offline-seeding-using-azure-data-box-for-dpm-and-mabs-preview"></a>使用 DPM 和 MABS (Preview) 的 Azure 資料箱進行離線植入
 
@@ -110,7 +110,7 @@ DPM/MABS 伺服器會在系統內容中運作，因此需要將相同層級的�
 
 ## <a name="transfer-initial-backup-data-to-azure-data-box-devices"></a>將初始備份資料傳輸至 Azure 資料箱裝置
 
-1. 在您的 DPM/MABS 伺服器上，依照下列步驟 [建立新的保護群組](https://docs.microsoft.com/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-2019)。 如果您要將線上保護新增至現有的保護群組，請以滑鼠右鍵按一下現有的保護群組，然後選取 [ **新增線上保護** ]，然後從 **步驟 8**開始。
+1. 在您的 DPM/MABS 伺服器上，依照下列步驟 [建立新的保護群組](https://docs.microsoft.com/system-center/dpm/create-dpm-protection-groups)。 如果您要將線上保護新增至現有的保護群組，請以滑鼠右鍵按一下現有的保護群組，然後選取 [ **新增線上保護** ]，然後從 **步驟 8**開始。
 2. 在 [選取群組成員] 頁面上，指定您想要備份的電腦和來源。
 3. 在 [選取資料保護方法] 頁面上，指定短期與長期備份的處理方式。 請務必選取 [我想要線上保護]。
 

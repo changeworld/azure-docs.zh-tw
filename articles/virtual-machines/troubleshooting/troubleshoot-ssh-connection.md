@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 05/30/2017
 ms.author: genli
-ms.openlocfilehash: c0f4e02a76044268946a4a482eaeccf5d622b8a7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 678bad67b454ec0930d2cf30df45ba7b2c822e35
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87036259"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371451"
 ---
 # <a name="troubleshoot-ssh-connections-to-an-azure-linux-vm-that-fails-errors-out-or-is-refused"></a>針對 SSH 連線至 Azure Linux VM 失敗、發生錯誤或被拒進行疑難排解
 本文可協助您找出並更正當您嘗試連接到 Linux 虛擬機器 (VM) 時，因為安全殼層 (SSH) 錯誤、SSH 連線失敗或 SSH 被拒而發生的問題。 您可以使用 Azure 入口網站、Azure CLI 或適用於 Linux 的 VM 存取擴充功能，針對連線問題進行疑難排解並予以解決。
@@ -29,16 +29,16 @@ ms.locfileid: "87036259"
 ## <a name="quick-troubleshooting-steps"></a>快速疑難排解步驟
 在每個疑難排解步驟完成之後，請嘗試重新連接到 VM。
 
-1. [重設 SSH 設定](#reset-config)。
-2. [重設使用者的認證](#reset-credentials)。
-3. 確認[網路安全性群組](../../virtual-network/security-overview.md)規則允許 SSH 流量。
-   * 請確定[網路安全性群組規則](#security-rules)存在，以允許 SSH 流量（預設為 TCP 通訊埠22）。
+1. [重設 SSH 設定](#reset-the-ssh-configuration)。
+2. [重設使用者的認證](#reset-ssh-credentials-for-a-user) 。
+3. 確認 [網路安全性群組](../../virtual-network/network-security-groups-overview.md) 規則允許 SSH 流量。
+   * 請確定 [網路安全性群組規則](#check-security-rules) 存在，以允許預設 (TCP 埠 22) 的 SSH 流量。
    * 若未使用 Azure 負載平衡器，則無法使用連接埠重新導向 / 對應功能。
-4. 檢查[VM 資源健康狀態](../../service-health/resource-health-overview.md)。
+4. 檢查 [VM 資源健康狀態](../../service-health/resource-health-overview.md)。
    * 確定 VM 回報告為狀況良好。
-   * 如果您已[啟用開機診斷](boot-diagnostics.md)，請確認 VM 並未在記錄中回報開機錯誤。
-5. [重新開機 VM](#restart-vm)。
-6. 重新[部署 VM](#redeploy-vm)。
+   * 如果您已 [啟用開機診斷](boot-diagnostics.md)，請確認 VM 並未在記錄中回報開機錯誤。
+5. [重新開機 VM](#restart-a-vm)。
+6. 重新[部署 VM](#redeploy-a-vm)。
 
 如需更詳細的疑難排解步驟與說明，請繼續閱讀。
 
@@ -46,7 +46,7 @@ ms.locfileid: "87036259"
 您可以使用下列方法之一重設認證或 SSH 組態：
 
 * [Azure 入口網站](#use-the-azure-portal) - 適用於您需要快速重設 SSH 組態或 SSH 金鑰，而且未安裝 Azure 工具時。
-* [AZURE Vm 序列主控台](https://aka.ms/serialconsolelinux)-無論 SSH 設定為何，VM 序列主控台都會正常執行，並可為您提供 VM 的互動式主控台。 事實上，「無法 SSH」的情況特別是序列主控台設計來協助解決的。 請參閱下列詳細資訊。
+* [AZURE Vm 序列主控台](https://aka.ms/serialconsolelinux) -無論 SSH 設定為何，VM 序列主控台都可以運作，並會為您的 vm 提供互動式主控台。 事實上，「無法 SSH」的情況特別是序列主控台的設計目的是為了協助解決。 請參閱下列詳細資訊。
 * [Azure CLI](#use-the-azure-cli) - 如果您已在命令列上，請快速重設 SSH 設定或認證。 如果您正在使用傳統 VM，可以使用 [Azure 傳統 CLI](#use-the-azure-classic-cli)。
 * [Azure VMAccessForLinux 擴充功能](#use-the-vmaccess-extension) - 建立並重複使用 json 定義檔案，以重設 SSH 組態或使用者認證。
 
@@ -59,35 +59,35 @@ Azure 入口網站可供快速重設 SSH 組態或使用者認證，而不需在
 
 ![在 Azure 入口網站中重設 SSH 組態或認證](./media/troubleshoot-ssh-connection/reset-credentials-using-portal.png)
 
-### <a name="reset-the-ssh-configuration"></a><a id="reset-config" />重設 SSH 組態
+### <a name="reset-the-ssh-configuration"></a>重設 SSH 組態
 若要重設 SSH 組態，請在 [模式]**** 區段中選取 `Reset configuration only`，如前面的螢幕擷取畫面所示，然後選取 [更新]****。 完成此動作後，嘗試再次存取您的 VM。
 
-### <a name="reset-ssh-credentials-for-a-user"></a><a id="reset-credentials" />重設使用者的 SSH 認證
+### <a name="reset-ssh-credentials-for-a-user"></a>重設使用者的 SSH 認證
 若要重設現有使用者的認證，請在 [模式]**** 區段中選取 `Reset SSH public key` 或 `Reset password`，如前面的螢幕擷取畫面所示。 指定使用者名稱和 SSH 金鑰或新的密碼，然後選取 [更新]****。
 
 您也可以經由此功能表，在此 VM 上建立具備 sudo 權限的使用者。 輸入新的使用者名稱和相關聯的密碼或 SSH 金鑰，然後選取 [更新]****。
 
-### <a name="check-security-rules"></a><a id="security-rules" />檢查安全性規則
+### <a name="check-security-rules"></a>網路安全性規則
 
-使用[IP 流量驗證](../../network-watcher/diagnose-vm-network-traffic-filtering-problem.md)來確認網路安全性群組中的規則是否會封鎖虛擬機器的流量。 您也可以檢閱有效的安全性群組規則，以確保輸入「允許」NSG 規則存在並已針對 SSH 連接埠 (預設值 22) 設定優先順序。 如需詳細資訊，請參閱[使用有效安全性規則對 VM 流量流程進行疑難排解](../../virtual-network/diagnose-network-traffic-filter-problem.md)。
+使用 [IP 流量驗證](../../network-watcher/diagnose-vm-network-traffic-filtering-problem.md) 來確認網路安全性群組中的規則是否封鎖進出虛擬機器的流量。 您也可以檢閱有效的安全性群組規則，以確保輸入「允許」NSG 規則存在並已針對 SSH 連接埠 (預設值 22) 設定優先順序。 如需詳細資訊，請參閱 [使用有效安全性規則對 VM 流量流程進行疑難排解](../../virtual-network/diagnose-network-traffic-filter-problem.md)。
 
 ### <a name="check-routing"></a>檢查路由
 
 使用網路監看員的[下一個躍點](../../network-watcher/diagnose-vm-network-routing-problem.md)功能，確認路由不會防止流量從虛擬機器往返路由傳送。 您也可以檢閱有效路由，以查看網路介面的所有有效路由。 如需詳細資訊，請參閱[使用有效路由來針對 VM 流量流程進行疑難排解](../../virtual-network/diagnose-network-routing-problem.md)。
 
 ## <a name="use-the-azure-vm-serial-console"></a>使用 Azure VM 序列主控台
-[AZURE VM 序列主控台](./serial-console-linux.md)可讓您存取 Linux 虛擬機器的文字型主控台。 您可以使用主控台，在互動式 shell 中針對 SSH 連線進行疑難排解。 請確定您已符合使用序列主控台的[必要條件](./serial-console-linux.md#prerequisites)，並嘗試下列命令以進一步疑難排解您的 SSH 連線能力。
+[AZURE VM 序列主控台](./serial-console-linux.md)可讓您存取 Linux 虛擬機器的文字型主控台。 您可以使用主控台，在互動式 shell 中針對 SSH 連線進行疑難排解。 確定您已符合使用序列主控台的 [必要條件](./serial-console-linux.md#prerequisites) ，並嘗試下列命令以進一步針對 SSH 連線進行疑難排解。
 
 ### <a name="check-that-ssh-is-running"></a>檢查 SSH 是否正在執行
-您可以使用下列命令來確認 SSH 是否正在您的 VM 上執行：
+您可以使用下列命令來確認 SSH 是否正在 VM 上執行：
 
 ```console
 ps -aux | grep ssh
 ```
 
-如果有任何輸出，SSH 就會啟動並執行。
+如果有任何輸出，SSH 便會啟動並執行。
 
-### <a name="check-which-port-ssh-is-running-on"></a>檢查 SSH 正在哪個埠上執行
+### <a name="check-which-port-ssh-is-running-on"></a>檢查 SSH 執行所在的埠
 
 您可以使用下列命令來檢查 SSH 執行所在的埠：
 
@@ -130,7 +130,7 @@ az vm user update --resource-group myResourceGroup --name myVM \
 ```
 
 ## <a name="use-the-vmaccess-extension"></a>使用 VMAccess 擴充功能
-適用于 Linux 的 VM 存取延伸模組會讀取 json 檔案，該檔案會定義要執行的動作。這些動作包括重設 SSHD、重設 SSH 金鑰或新增使用者。 您仍可使用 Azure CLI 來呼叫 VMAccess 擴充功能，但您可以視需要將 json 檔案重複使用於多個 VM。 這種方法可讓您建立 json 檔案的儲存機制，以便之後針對特定案例進行呼叫。
+適用于 Linux 的 VM 存取擴充功能會讀取 json 檔案，該檔案會定義要執行的動作。這些動作包括重設 SSHD、重設 SSH 金鑰，或新增使用者。 您仍可使用 Azure CLI 來呼叫 VMAccess 擴充功能，但您可以視需要將 json 檔案重複使用於多個 VM。 這種方法可讓您建立 json 檔案的儲存機制，以便之後針對特定案例進行呼叫。
 
 ### <a name="reset-sshd"></a>重設 SSHD
 使用下列內容，建立名為 `settings.json` 的檔案︰
@@ -206,7 +206,7 @@ azure vm reset-access --resource-group myResourceGroup --name myVM \
     --user-name myUsername --ssh-key-file ~/.ssh/id_rsa.pub
 ```
 
-## <a name="restart-a-vm"></a><a id="restart-vm" />重新啟動 VM
+## <a name="restart-a-vm"></a>重新啟動 VM
 如果您重設 SSH 組態和使用者認證，或在執行此作業時發生錯誤，您可以嘗試重新啟動 VM 以處理基礎計算問題。
 
 ### <a name="azure-portal"></a>Azure 入口網站
@@ -231,7 +231,7 @@ az vm restart --resource-group myResourceGroup --name myVM
 azure vm restart --resource-group myResourceGroup --name myVM
 ```
 
-## <a name="redeploy-a-vm"></a><a id="redeploy-vm" />重新部署 VM
+## <a name="redeploy-a-vm"></a>重新部署 VM
 您可以將 VM 重新部署到 Azure 中的另一個節點，這可能會修正任何的基礎網路問題。 如需重新部署 VM 的相關資訊，請參閱[將虛擬機器重新部署至新的 Azure 節點](./redeploy-to-new-node-windows.md?toc=/azure/virtual-machines/windows/toc.json)。
 
 > [!NOTE]
@@ -277,7 +277,7 @@ azure vm redeploy --resource-group myResourceGroup --name myVM
   * 建立 *sudo* 使用者帳戶。
   * 重設 SSH 組態。
 * 檢查 VM 的資源健康狀態是否有任何平台問題。<br>
-     選取您的 VM，並向下滾動**設定**[  >  **檢查健全狀況**]。
+     選取您的 VM 並向下切入**設定**  >  **檢查健康**情況。
 
 ## <a name="additional-resources"></a>其他資源
 * 如果在依循這些步驟之後仍無法以 SSH 連線到您的 VM，請參閱[更詳細的疑難排解步驟](detailed-troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)以檢閱其他的步驟來解決您的問題。

@@ -12,12 +12,12 @@ manager: rkarlin
 author: memildin
 ms.reviewer: vanto
 ms.date: 09/21/2020
-ms.openlocfilehash: b789cd423d2260ce709a02ffb3ac5ea500997609
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: d567876e0210c025fa34c5b82791eafe4cdff561
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934130"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372148"
 ---
 # <a name="azure-defender-for-sql"></a>適用於 SQL 的 Azure Defender
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -39,7 +39,7 @@ Azure Defender 提供一組先進的 SQL 安全性功能，包括 SQL 弱點評�
 
 下列步驟可讓您開始使用 Azure Defender。
 
-## <a name="1-enable-azure-defender"></a>1. 啟用 Azure Defender
+## <a name="enable-azure-defender"></a>啟用 Azure Defender
 
 您可以透過 [Azure 入口網站](https://portal.azure.com)存取 Azure Defender。 在您的伺服器或受控實例的 [**安全性**] 標題下流覽至 [ **security center** ]，以啟用 Azure Defender。
 
@@ -48,15 +48,15 @@ Azure Defender 提供一組先進的 SQL 安全性功能，包括 SQL 弱點評�
 >
 > Azure Defender 的成本與每個節點 Azure 資訊安全中心標準層定價一致，其中節點是整個伺服器或受控實例。 因此，您只需支付一次，即可使用 Azure Defender 保護伺服器或受控實例上的所有資料庫。 您可以一開始就使用免費試用版來試用 Azure Defender。
 
-## <a name="2-start-tracking-vulnerabilities-and-investigating-threat-alerts"></a>2. 開始追蹤弱點和調查威脅警示
+## <a name="start-tracking-vulnerabilities-and-investigating-threat-alerts"></a>開始追蹤弱點和調查威脅警示
 
 按一下 [弱點評估]**** 卡可檢視和管理弱點掃描和報告，以及追蹤您的安全性水準。 如果已收到安全性警示，請按一下 [ **Advanced 威脅防護** 卡] 以查看警示的詳細資料，並透過 [Azure 資訊安全中心安全性警示] 頁面，查看您 Azure 訂用帳戶中所有警示的匯總報告。
 
-## <a name="3-manage-azure-defender-settings"></a>3. 管理 Azure Defender 設定
+## <a name="manage-azure-defender-settings"></a>管理 Azure Defender 設定
 
 若要查看及管理 Azure Defender 設定，請流覽至您伺服器或受控實例的 [**安全性**] 標題下的 [ **security center** ]。 在此頁面上，您可以啟用或停用 Azure Defender，以及修改整個伺服器或受控實例的弱點評定和先進的威脅防護設定。
 
-## <a name="4-manage-azure-defender-settings-for-a-database"></a>4. 管理資料庫的 Azure Defender 設定
+## <a name="manage-azure-defender-settings-for-a-database"></a>管理資料庫的 Azure Defender 設定
 
 若要覆寫特定資料庫的 Azure Defender 設定，請核取 [在 **資料庫層級啟用 Azure defender FOR SQL** ] 核取方塊。 只有當您有特定的需求，可針對個別資料庫接收個別的 Advanced 威脅防護警示或弱點評定結果，而不是針對伺服器或受控實例上的所有資料庫接收警示和結果時，才使用此選項。
 
@@ -64,7 +64,7 @@ Azure Defender 提供一組先進的 SQL 安全性功能，包括 SQL 弱點評�
 
 您的伺服器或受控實例的 azure Defender for SQL 設定也可以從 Azure Defender 資料庫窗格連線。 按一下 [主要 Azure Defender] 窗格中的 [ **設定** ]，然後按一下 [ **View AZURE defender for SQL server 設定**]。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 深入瞭解 [弱點評定](sql-vulnerability-assessment.md)
 - 深入瞭解 [Advanced 威脅防護](threat-detection-configure.md)

@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
-ms.openlocfilehash: 1d0687e6cdcc8208218183cb873f9620a5525d37
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: b8fe32a079358fda48c6f5ee0c7eec9894a543a5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936663"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91295901"
 ---
 # <a name="configure-and-access-audit-logs-for-azure-database-for-mysql---flexible-server-using-the-azure-portal"></a>使用 Azure 入口網站為適用於 MySQL 的 Azure 資料庫彈性的伺服器設定及存取 audit 記錄
 
@@ -20,7 +20,7 @@ ms.locfileid: "90936663"
 
 您可以從 Azure 入口網站設定適用於 MySQL 的 Azure 資料庫彈性的伺服器 [審核記錄](concepts-audit-logs.md) 和診斷設定。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 本文中的步驟需要您擁有有 [彈性的伺服器](quickstart-create-server-portal.md)。
 
 ## <a name="configure-audit-logging"></a>設定 audit 記錄
@@ -51,6 +51,9 @@ ms.locfileid: "90936663"
 
 ## <a name="set-up-diagnostics"></a>設定診斷
 
+> [!NOTE]
+> Azure 監視器診斷設定與存取記錄的整合正在進行部署，而且很快就會提供完整功能。
+
 Audit 記錄檔與 Azure 監視器診斷設定整合，可讓您使用管線將記錄傳送至 Azure 監視器記錄、事件中樞或 Azure 儲存體。
 
 1. 在提要欄位的 [ **監視** ] 區段下，選取 [ **診斷設定**]。
@@ -71,7 +74,7 @@ Audit 記錄檔與 Azure 監視器診斷設定整合，可讓您使用管線將�
 
 如果您使用管線將審核記錄傳送至 Azure 監視器記錄 (Log Analytics) ，請參閱您可以用來進行分析的一些 [範例查詢](concepts-audit-logs.md#analyze-logs-in-azure-monitor-logs) 。  
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 深入瞭解 [audit 記錄](concepts-audit-logs.md)
 - 瞭解 [慢速查詢記錄](concepts-slow-query-logs.md)

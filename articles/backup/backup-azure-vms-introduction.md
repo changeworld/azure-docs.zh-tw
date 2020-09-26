@@ -3,12 +3,12 @@ title: 關於 Azure VM 備份
 description: 在本文中，您將瞭解 Azure 備份服務如何備份 Azure 虛擬機器，以及如何遵循最佳作法。
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: f9da75a66d25896e8d977910e2eb7fbe6ea69ca1
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 58079cba9a65ab4df3632bb641397ba10496ae81
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89014637"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371502"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>Azure VM 備份的總覽
 
@@ -105,6 +105,13 @@ Azure 備份會根據備份排程來取得快照集。
 - **分割磁片：** 當磁片變更是連續的時，備份作業會更快。 如果變更分散在磁碟中，則備份會必較慢。
 - **磁片變換：** 如果正在進行增量備份的受保護磁片有超過 200 GB 的每日變換，則備份可能需要很長的時間 (超過8小時) 才能完成。
 - **備份版本：** 最新版本的備份 (稱為「立即還原」版本，) 使用比總和檢查碼比較更優化的進程來識別變更。 但是，如果您使用「立即還原」並已刪除備份快照集，則備份會切換至總和檢查碼比較。 在此情況下，備份作業將會超過24小時 (或) 失敗。
+
+### <a name="restore-performance"></a>還原效能
+
+這些常見的案例可能會影響整個還原時間：
+
+- 總還原時間取決於每秒的輸入/輸出作業 (IOPS) 和儲存體帳戶的輸送量。
+- 如果目標儲存體帳戶與其他應用程式讀取和寫入作業一起載入，則總還原時間可能會受到影響。 若要改善還原作業，請選取未與其他應用程式資料一起載入的儲存體帳戶。
 
 ## <a name="best-practices"></a>最佳作法
 

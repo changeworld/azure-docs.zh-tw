@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/15/2020
-ms.openlocfilehash: 07a8c26f7fc314680c51270ebafe03d4e3a84757
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 098c0a85dc6c0fac8b78f344c4c8559b168b9114
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88749852"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371332"
 ---
 # <a name="managed-identities-in-azure-hdinsight"></a>Azure HDInsight 中的受控識別
 
@@ -27,7 +27,7 @@ ms.locfileid: "88749852"
 
 在 Azure HDInsight 中，受控識別只能由適用于內部元件的 HDInsight 服務使用。 目前沒有支援的方法可以使用安裝在 HDInsight 叢集節點上的受控識別來產生存取權杖，以存取外部服務。 針對某些 Azure 服務（例如計算 Vm），受控識別會以您可用來取得存取權杖的端點來執行。 此端點目前無法在 HDInsight 節點中使用。
 
-如果您需要啟動應用程式以避免將秘密/密碼放入分析作業 (例如 SCALA 作業) ，您可以使用腳本動作，將您自己的憑證 distrubte 到叢集節點，然後使用該憑證來 aquire 存取權杖 (例如存取 Azure KeyVault) 。
+如果您需要啟動應用程式以避免將秘密/密碼放在分析作業中 (例如 SCALA 作業) ，您可以使用腳本動作，將您自己的憑證散發到叢集節點，然後使用該憑證來取得存取權杖 (例如存取 Azure KeyVault) 。
 
 ## <a name="create-a-managed-identity"></a>建立受控識別
 
@@ -47,6 +47,15 @@ ms.locfileid: "88749852"
 * [Azure Data Lake Storage Gen2](hdinsight-hadoop-use-data-lake-storage-gen2.md#create-a-user-assigned-managed-identity) \(部分機器翻譯\)
 * [企業安全性套件](domain-joined/apache-domain-joined-configure-using-azure-adds.md#create-and-authorize-a-managed-identity)
 * [客戶管理的金鑰磁碟加密](disk-encryption.md)
+
+HDInsight 會自動更新您在這些案例中使用之受控識別的憑證。 不過，當長時間執行的叢集使用多個不同的受控識別時，有一項限制，憑證更新可能無法如預期般針對所有受控識別運作。 由於這項限制，如果您打算使用長時間執行的叢集 (例如超過60天的) ，我們建議您在上述所有案例中使用相同的受控識別。 
+
+如果您已經使用多個不同的受控識別來建立長時間執行的叢集，而且遇到下列其中一個問題：
+ * 在 ESP 叢集中，叢集服務會開始失敗或擴大，而其他作業則會因為驗證錯誤而失敗。
+ * 在 ESP 叢集中，變更 AAD DS LDAPS 憑證時，LDAPS 憑證不會自動更新，因此 LDAP 同步和擴展 ups 會開始失敗。
+ * ADLS Gen2 的 MSI 存取開始失敗。
+ * 在 CMK 案例中無法輪替加密金鑰。
+然後，您應該將上述案例所需的角色和許可權指派給叢集中使用的所有受控識別。 例如，如果您針對 ADLS Gen2 和 ESP 叢集使用不同的受控識別，則兩者都應該將「儲存體 blob 資料擁有者」和「HDInsight 網域服務參與者」角色指派給他們，以避免在這些問題中遇到。
 
 ## <a name="faq"></a>常見問題集
 

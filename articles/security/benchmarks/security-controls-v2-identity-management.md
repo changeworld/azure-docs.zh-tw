@@ -4,17 +4,17 @@ description: Azure 安全性基準測試 V2 身分識別管理
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/13/2020
+ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: bcd88f9f21c68f7f6cdda7299ac97d67e97dc009
-ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
+ms.openlocfilehash: a007b8e85440faab6f3d9f35c49ee207ee1597ff
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90059212"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91295493"
 ---
-# <a name="security-control-identity-management"></a>安全性控制：身分識別管理
+# <a name="security-control-v2-identity-management"></a>安全性控制 V2：身分識別管理
 
 身分識別管理涵蓋的控制項可使用 Azure Active Directory 建立安全的身分識別和存取控制。 這包括使用單一登入、增強式驗證、受控識別 (和服務原則) 應用程式、條件式存取，以及帳戶異常監視。
 
@@ -45,9 +45,9 @@ Azure Active Directory (Azure AD) 是 Azure 的預設身分識別和存取管理
 
 **責任**：客戶
 
-**客戶安全性專案關係人**：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
-- [身分識別和金鑰](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys) 
+- [身分識別與金鑰管理](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys) 
 
 - [安全性架構](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
@@ -77,9 +77,9 @@ Azure Active Directory (Azure AD) 是 Azure 的預設身分識別和存取管理
 
 **責任**：客戶
 
-**客戶安全性專案關係人**：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
-- [身分識別和金鑰](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
+- [身分識別與金鑰管理](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
 
 - [應用程式安全性和 DevSecOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
@@ -97,11 +97,11 @@ Azure AD 可提供 Azure 資源、雲端應用程式和內部部署應用程式�
 
 **責任**：客戶
 
-**客戶安全性專案關係人**：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [安全性架構](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
-- [身分識別和金鑰](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
+- [身分識別與金鑰管理](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
 
 - [應用程式安全性和 DevSecOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
@@ -132,11 +132,11 @@ Azure AD 透過多重要素驗證 (MFA) 和強式無密碼方法來支援強式�
 
 **責任**：客戶
 
-**客戶安全性專案關係人**：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [安全性架構](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
-- [身分識別和金鑰](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
+- [身分識別與金鑰管理](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
 
 - [應用程式安全性和 DevSecOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
@@ -179,7 +179,7 @@ Azure 進階威脅防護 (ATP) 是一種安全性解決方案，可使用內部�
 
 **責任**：客戶
 
-**客戶安全性專案關係人**：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [應用程式安全性和 DevSecOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
@@ -201,9 +201,9 @@ Azure 進階威脅防護 (ATP) 是一種安全性解決方案，可使用內部�
 
 **責任**：客戶
 
-**客戶安全性專案關係人**：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
-- [身分識別和金鑰](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
+- [身分識別與金鑰管理](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
 
 - [應用程式安全性和 DevSecOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
@@ -217,13 +217,17 @@ Azure 進階威脅防護 (ATP) 是一種安全性解決方案，可使用內部�
 |--|--|--|--|
 | 識別碼-7 | 18.1、18。7 | IA-5 |
 
-執行認證掃描器來識別程式碼中的認證。 認證掃描器也鼓勵將探索到的認證移至更安全的位置，例如 Azure Key Vault。
+執行 Azure DevOps 認證掃描器來識別程式碼中的認證。 認證掃描器也鼓勵將探索到的認證移至更安全的位置，例如 Azure Key Vault。
+
+在 GitHub 中，您可以使用原生密碼掃描功能來識別程式碼中的認證或其他形式的秘密。
 
 - [如何設定認證掃描器](https://secdevtools.azurewebsites.net/helpcredscan.html)
 
+- [GitHub 秘密掃描](https://docs.github.com/github/administering-a-repository/about-secret-scanning)
+
 **責任**：客戶
 
-**客戶安全性專案關係人**：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [應用程式安全性和 DevSecOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
@@ -247,7 +251,7 @@ Azure AD 應用程式 Proxy 可讓您將舊版內部部署應用程式發佈至�
 
 **責任**：客戶
 
-**客戶安全性專案關係人**：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [安全性架構](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 

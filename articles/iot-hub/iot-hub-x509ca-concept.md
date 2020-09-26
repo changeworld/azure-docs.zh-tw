@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 09/18/2017
 ms.author: eustacea
-ms.openlocfilehash: 4487772aba22f1ce577e6a0d8263ce1200b6345f
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: c707f6108c73a268bcac18c45afb70ae17185bb8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90019898"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91308107"
 ---
 # <a name="conceptual-understanding-of-x509-ca-certificates-in-the-iot-industry"></a>概念性了解 IoT 產業中的 X.509 CA 憑證
 
@@ -87,7 +87,7 @@ X.509 CA 憑證上傳程序就只是將 CA 憑證上傳到 IoT 中樞。 IoT 中
 
 ### <a name="proof-of-possession-of-the-certificate"></a>證明憑證擁有權
 
-和所有數位憑證一樣，X.509 CA 憑證也是容易遭到竊聽的公開資訊。 因此，竊聽者可能會攔截憑證，然後嘗試將它當作自己的憑證來上傳。 在我們的範例中，IoT 中樞會想要確定 Company-X 所上傳的 CA 憑證確實屬於 Company-X。 其作法是向 Company-X 查問，讓其透過[擁有權證明 (PoP) 流程](https://tools.ietf.org/html/rfc5280#section-3.1)證明其確實擁有憑證。 擁有權證明流程需要 IoT 中樞產生隨機數字以供 Company-X 使用其私密金鑰來簽署。 如果 Company-X 遵循 PKI 最佳做法並保護其私密金鑰，則只有他們能夠正確的回應擁有權證明查問。 在成功回應擁有權證明查問後，IoT 中樞會繼續註冊 X.509 CA 憑證。
+和所有數位憑證一樣，X.509 CA 憑證也是容易遭到竊聽的公開資訊。 因此，竊聽者可能會攔截憑證，然後嘗試將它當作自己的憑證來上傳。 在我們的範例中，IoT 中樞會想要確定 Company-X 所上傳的 CA 憑證確實屬於 Company-X。 它是由具挑戰性的公司 X 來證明，事實上透過 [擁有權證明 (PoP) 流程](https://tools.ietf.org/html/rfc5280#section-3.1)擁有憑證。 擁有權證明流程需要 IoT 中樞產生隨機數字以供 Company-X 使用其私密金鑰來簽署。 如果 Company-X 遵循 PKI 最佳做法並保護其私密金鑰，則只有他們能夠正確的回應擁有權證明查問。 在成功回應擁有權證明查問後，IoT 中樞會繼續註冊 X.509 CA 憑證。
 
 成功回應 IoT 中樞所提出的擁有權證明查問後，就能完成 X.509 CA 註冊。
 

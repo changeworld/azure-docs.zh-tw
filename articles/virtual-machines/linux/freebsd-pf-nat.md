@@ -8,12 +8,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/20/2017
 ms.author: kyliel
-ms.openlocfilehash: 85804e0f9293ec2e63aa319854e9559da11c8be1
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 6a20708c5564075c24eb031a39292b020a2ecc00
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286269"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371315"
 ---
 # <a name="how-to-use-freebsds-packet-filter-to-create-a-secure-firewall-in-azure"></a>如何使用 FreeBSD 的「封包篩選器」在 Azure 中建立安全防火牆
 本文介紹如何透過 Azure Resource Manager 範本，針對常見的 Web 伺服器案例，使用 FreeBSD 的「封包篩選器」來部署 NAT 防火牆。
@@ -25,7 +25,7 @@ PF (封包篩選器，也寫成 pf) 是一個 BSD 授權的具狀態封包篩選
 如果您對於在雲端為您的 Web 伺服器設定安全的防火牆感興趣，就讓我們開始吧！ 您也可以套用這個 Azure Resource Manager 範本中使用的指令碼來設定您的網路拓撲。
 Azure Resource Manager 範本會設定一部 FreeBSD 虛擬機器，此虛擬機器會使用 PF 和兩部已安裝並設定 Nginx Web 伺服器的 FreeBSD 虛擬機器，來執行 NAT/重新導向。 除了為兩部 Web 伺服器的輸出流量執行 NAT 之外，NAT/重新導向虛擬機器還會攔截 HTTP 要求，然後以循環方式將這些要求重新導向到兩部 Web 伺服器。 VNet 會使用無法經路由傳送的私人 IP 位址空間 10.0.0.2/24，而您可以修改此範本的參數。 Azure Resource Manager 範本也為整個 VNet 定義了路由表，此表格是個別路由的集合，可用來根據目的地 IP 位址覆寫 Azure 預設路由。 
 
-![pf_topology](./media/freebsd-pf-nat/pf_topology.jpg)
+![圖表顯示 NAT 實例上的公用 I P 位址，會將迴圈配置資源方法重新導向至裝載 Nginx web 伺服器的兩個後端虛擬機器。](./media/freebsd-pf-nat/pf_topology.jpg)
     
 ### <a name="deploy-through-azure-cli"></a>透過 Azure CLI 進行部署
 您需要安裝最新的 [Azure CLI](/cli/azure/install-az-cli2)，並使用 [az login](/cli/azure/reference-index) 來登入 Azure 帳戶。 使用 [az group create](/cli/azure/group) 來建立資源群組。 下列範例會在 `West US` 位置建立名為 `myResourceGroup` 的資源群組。

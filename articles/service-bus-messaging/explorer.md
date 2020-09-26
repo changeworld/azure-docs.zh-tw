@@ -3,12 +3,12 @@ title: 使用 Azure Service Bus Explorer 來執行服務匯流排上的資料作
 description: 此文章提供有關如何使用以入口網站為基礎的 Azure Service Bus Explorer 來存取 Azure 服務匯流排資料資訊。
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 3fa619334f1918e16c487269fe3715f5338adf85
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e5e97c6860c2cc01048f4f7caf9f40f9e07592d0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85340539"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91295595"
 ---
 # <a name="use-service-bus-explorer-to-perform-data-operations-on-service-bus-preview"></a>使用 Service Bus Explorer 來執行服務匯流排上的資料作業 (預覽)
 
@@ -104,7 +104,7 @@ Service Bus Explorer 上的接收函式允許一次接收單一訊息。 接收�
 
 當接收作業成功時，訊息詳細資料會顯示在格線中，如下所示。 您可以從格線中選取訊息，以顯示其詳細資料。
 
-:::image type="content" source="./media/service-bus-explorer/receive-message-from-queue-2.png" alt-text="ReceiveMessageFromQueue":::
+:::image type="content" source="./media/service-bus-explorer/receive-message-from-queue-2.png" alt-text="Azure 服務匯流排 Explorer 中 [佇列] 視窗的螢幕擷取畫面，其中顯示佇列中所選取之作用中訊息的訊息詳細資料。":::
 
 
 ### <a name="peeking-a-message-from-a-queue"></a>預覽來自佇列的訊息
@@ -156,7 +156,7 @@ Service Bus Explorer 上的接收函式允許一次接收單一訊息。 接收�
 
 當接收作業成功時，已接收訊息會顯示在格線中，如下所示。 若要檢視訊息的詳細資料，請按一下該訊息。
 
-:::image type="content" source="./media/service-bus-explorer/receive-message-from-subscription.png" alt-text="ReceiveMessageFromQueue":::
+:::image type="content" source="./media/service-bus-explorer/receive-message-from-subscription.png" alt-text="Azure 服務匯流排 Explorer 中 [接收] 索引標籤的螢幕擷取畫面，其中顯示已接收之作用中訊息的訊息詳細資料。":::
 
 ### <a name="peeking-a-message-from-a-subscription"></a>預覽來自訂閱的訊息
 

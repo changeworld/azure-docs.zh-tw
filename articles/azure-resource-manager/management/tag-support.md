@@ -3,12 +3,12 @@ title: 資源的標記支援
 description: 顯示哪些 Azure 資源類型支援標記。 提供所有 Azure 服務的詳細資料。
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: dd991167e703ad9faa7803bcecbbb6dc7eff94e7
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 27e25b1048bb759a3b38859788c27c03f1cf0447
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91284953"
+ms.locfileid: "91371536"
 ---
 # <a name="tag-support-for-azure-resources"></a>Azure 資源的標記支援
 本文將說明資源類型是否支援[標記](tag-resources.md)。 標示為 [ **支援** 標籤] 的資料行會指出資源類型是否有標記的屬性。 在 [ **成本] 報表中** 標示為 [標籤] 的資料行會指出該資源類型是否要將標記傳遞給成本報告。 您可以依 [成本管理成本分析](../../cost-management-billing/costs/group-filter.md) 和 [Azure 計費發票及每日使用量資料](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md)中的標記來查看成本。
@@ -1537,11 +1537,8 @@ ms.locfileid: "91284953"
 > | 資源類型 | 支援標記 | 成本報告中的標記 |
 > | ------------- | ----------- | ----------- |
 > | workspaces | 是 | 是 |
-> | 工作區/codeJobs | 否 | 否 |
 > | workspaces / computes | 否 | 否 |
 > | 工作區/eventGridFilters | 否 | 否 |
-> | 工作區/inferenceEndpoints | 是 | 是 |
-> | 工作區/inferenceEndpoints/部署 | 是 | 是 |
 > | 工作區/Linkedservices.json 和 datasets.json | 否 | 否 |
 
 ## <a name="microsoftmaintenance"></a>Microsoft.Maintenance

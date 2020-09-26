@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 07/07/2020
 ms.author: aahi
-ms.openlocfilehash: b9452baf0301233a1cd6e05621a89d013d32c9e0
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: b28049f1854494b61d63824334b986d814a641cd
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90906080"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91309300"
 ---
-填寫並提交 [認知服務容器要求表單](https://aka.ms/cognitivegate) ，以要求存取容器。
+填寫並提交 [認知服務容器要求表單](https://aka.ms/csgate) ，以要求存取容器。
 該表格需要有關您本身、您的公司，以及您將會使用該容器之使用者情節的資訊。 在您提交表單之後，Azure 認知服務小組會審核該表單，以確保您符合存取私人容器登錄的條件。
 
 > [!IMPORTANT]

@@ -3,12 +3,12 @@ title: 將資源部署到租用戶
 description: 描述如何在 Azure Resource Manager 範本中的租用戶範圍部署資源。
 ms.topic: conceptual
 ms.date: 09/24/2020
-ms.openlocfilehash: af75e4f0e51ac685986e57b3b92a23dd37174460
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 48b3fbcedb119ae699624e79f83297f4ecbc9ede
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91284754"
+ms.locfileid: "91372386"
 ---
 # <a name="create-resources-at-the-tenant-level"></a>在租用戶層級建立資源
 
@@ -24,7 +24,7 @@ ms.locfileid: "91284754"
 * [policyDefinitions](/azure/templates/microsoft.authorization/policydefinitions)
 * [policySetDefinitions](/azure/templates/microsoft.authorization/policysetdefinitions)
 
-針對角色型存取控制，請使用：
+若要 (azure RBAC) 的 Azure 角色型存取控制，請使用：
 
 * [roleAssignments](/azure/templates/microsoft.authorization/roleassignments)
 
