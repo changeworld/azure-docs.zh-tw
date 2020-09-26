@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: 8645e8c1f1f371f1416a998af41104ebb6867eea
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 44005dafb1e3eee60f163f80ad2e4282147233e4
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91334878"
+ms.locfileid: "91355613"
 ---
 # <a name="manage-rolling-upgrades-of-cloud-applications-by-using-sql-database-active-geo-replication"></a>使用 SQL Database 主動式異地複寫管理雲端應用程式的輪流升級
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -40,7 +40,7 @@ ms.locfileid: "91334878"
 > [!NOTE]
 > 這些準備步驟不會影響生產環境，其可在完整存取模式下運作。
 
-![可供雲端災害復原的 SQL Database 異地複寫組態。](./media/manage-application-rolling-upgrade/option1-1.png)
+![圖顯示雲端嚴重損壞修復的 SQL Database 異地複寫設定。](./media/manage-application-rolling-upgrade/option1-1.png)
 
 準備步驟完成時，應用程式就已準備好實際升級。 下圖說明升級程序的相關步驟：
 
@@ -48,7 +48,7 @@ ms.locfileid: "91334878"
 2. 使用規劃的終止模式 (4) 中斷次要資料庫的連線。 此動作會建立主要資料庫的完全同步獨立複本。 此資料庫將會升級。
 3. 將次要資料庫切換為讀寫模式，然後執行升級指令碼 (5)。
 
-![可供雲端災害復原的 SQL Database 異地複寫組態。](./media/manage-application-rolling-upgrade/option1-2.png)
+![圖顯示執行升級腳本的雲端嚴重損壞修復 SQL Database 異地複寫設定。](./media/manage-application-rolling-upgrade/option1-2.png)
 
 如果升級順利完成，您現在已準備好將使用者切換至升級後的應用程式複本，其可成為生產環境。 切換涉及其他一些步驟，如下圖所示：
 
@@ -67,7 +67,7 @@ ms.locfileid: "91334878"
 > [!NOTE]
 > 復原不需要 DNS 變更，因為您尚未執行交換作業。
 
-![可供雲端災害復原的 SQL Database 異地複寫組態。](./media/manage-application-rolling-upgrade/option1-4.png)
+![圖表顯示在預備環境已解除委任的情況中，雲端災難復原的 SQL Database 異地複寫設定。](./media/manage-application-rolling-upgrade/option1-4.png)
 
 這個選項的重要優點是您可以依照一組簡單的步驟，在單一區域中升級應用程式。 升級的金額成本相對較低。 
 
@@ -98,7 +98,7 @@ ms.locfileid: "91334878"
 > [!NOTE]
 > 這些準備步驟不會影響生產環境中的應用程式。 它仍會以讀寫模式完全運作。
 
-![可供雲端災害復原的 SQL Database 異地複寫組態。](./media/manage-application-rolling-upgrade/option2-1.png)
+![圖顯示使用完整同步處理的應用程式複本，進行雲端嚴重損壞修復的 SQL Database 異地複寫設定。](./media/manage-application-rolling-upgrade/option2-1.png)
 
 準備步驟完成時，預備環境就準備好升級。 下圖說明這些升級步驟：
 
@@ -120,14 +120,14 @@ REMOVE SECONDARY ON SERVER <Partner-Server>
 
 3. 對 `contoso-1-staging.azurewebsites.net`、`contoso-dr-staging.azurewebsites.net` 和預備主要資料庫執行升級指令碼 (12)。 資料庫變更會自動複寫至預備次要資料庫。
 
-![可供雲端災害復原的 SQL Database 異地複寫組態。](./media/manage-application-rolling-upgrade/option2-2.png)
+![圖顯示使用複寫至預備環境的資料庫變更，進行雲端災難復原的 SQL Database 異地複寫設定。](./media/manage-application-rolling-upgrade/option2-2.png)
 
 如果升級順利完成，您現在已準備好將使用者切換至應用程式的 V2 版本。 下圖說明相關步驟：
 
 1. 在主要區域 (13) 和備份區域 (14) 中啟用 Web 應用程式的生產與預備環境之間的交換作業。 應用程式的 V2 現在成為備份區域中具有備援複本的生產環境。
 2. 如果您不再需要 V1 應用程式 (15 和 16)，您可以解除委任預備環境。
 
-![可供雲端災害復原的 SQL Database 異地複寫組態。](./media/manage-application-rolling-upgrade/option2-3.png)
+![圖顯示雲端嚴重損壞修復的 SQL Database 異地複寫設定，並選擇性解除委任預備環境。](./media/manage-application-rolling-upgrade/option2-3.png)
 
 如果升級程序失敗 (例如由於升級指令碼發生錯誤)，請將預備環境視為不一致狀態。 若要將應用程式復原到升級前狀態，請還原為在生產環境中使用應用程式的 V1。 下圖顯示必要步驟：
 
@@ -139,7 +139,7 @@ REMOVE SECONDARY ON SERVER <Partner-Server>
 > [!NOTE]
 > 復原不需要 DNS 變更，因為您尚未執行交換作業。
 
-![可供雲端災害復原的 SQL Database 異地複寫組態。](./media/manage-application-rolling-upgrade/option2-4.png)
+![此圖顯示在還原升級程式時，雲端災難復原的 SQL Database 異地複寫設定。](./media/manage-application-rolling-upgrade/option2-4.png)
 
 這個選項的重要優點是您可以以平行方式升級應用程式及其異地備援複本，而不會在升級期間危及商務持續性。
 

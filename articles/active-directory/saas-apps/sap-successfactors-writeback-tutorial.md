@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: identity
 ms.date: 08/05/2020
 ms.author: chmutali
-ms.openlocfilehash: b185f29cea61b9c366714a1af72648aeee35b61c
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 5ec06960e695abfa4bf004633b1f171214a5d29a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90017926"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91286528"
 ---
 # <a name="tutorial-configure-attribute-write-back-from-azure-ad-to-sap-successfactors"></a>教學課程：設定從 Azure AD 將屬性回寫回 SAP SuccessFactors
 本教學課程的目的是要示範將屬性從 Azure AD 回寫至 SAP SuccessFactors 員工中心的步驟。 
@@ -125,68 +125,97 @@ ms.locfileid: "90017926"
 
 ## <a name="preparing-for-successfactors-writeback"></a>準備 SuccessFactors 回寫
 
-SuccessFactors 回寫布建應用程式會使用特定的程式 *代碼* 值，在員工中心設定電子郵件和電話號碼。 這些程式 *代碼* 值會設定為屬性對應表中的常數值，且每個 SuccessFactors 實例都是不同的。 本節使用 [Postman](https://www.postman.com/downloads/) 來提取程式碼值。 您可以使用 [捲曲](https://curl.haxx.se/)、 [Fiddler](https://www.telerik.com/fiddler) 或任何其他類似的工具來傳送 HTTP 要求。 
+SuccessFactors 回寫布建應用程式會使用特定的程式 *代碼* 值，在員工中心設定電子郵件和電話號碼。 這些程式 *代碼* 值會設定為屬性對應表中的常數值，且每個 SuccessFactors 實例都是不同的。 本節提供捕獲這些程式 *代碼* 值的步驟。
 
-### <a name="download-and-configure-postman-with-your-successfactors-tenant"></a>使用您的 SuccessFactors 租使用者下載並設定 Postman
+   > [!NOTE]
+   > 請與您的 SuccessFactors 管理員一起完成本節中的步驟。 
 
-1. 下載 [Postman](https://www.postman.com/downloads/)
-1. 在 Postman 應用程式中建立「新集合」。 將它稱為 "SuccessFactors"。 
+### <a name="identify-email-and-phone-number-picklist-names"></a>識別電子郵件和電話號碼挑選清單名稱 
+
+在 SAP SuccessFactors 中，挑選 *清單* 是一組可設定的選項，可讓使用者進行選取。 不同類型的電子郵件和電話號碼 (例如商務、個人、其他) 使用挑選清單來表示。 在此步驟中，我們將識別您 SuccessFactors 租使用者中設定的挑選清單，以儲存電子郵件和電話號碼值。 
+ 
+1. 在 SuccessFactors Admin Center 中，搜尋 [ *管理商務*設定]。 
 
    > [!div class="mx-imgBorder"]
-   > ![新增 Postman 集合](./media/sap-successfactors-inbound-provisioning/new-postman-collection.png)
+   > ![管理商務配置](./media/sap-successfactors-inbound-provisioning/manage-business-config.png)
 
-1. 在 [授權] 索引標籤中，輸入在上一節中設定之 API 使用者的認證。 將類型設定為「基本驗證」。 
+1. 在 [ **HRIS 元素**] 底下，選取 [ **emailInfo** ]，然後按一下 [**電子郵件類型**] 欄位的*詳細資料*。
 
    > [!div class="mx-imgBorder"]
-   > ![Postman 授權](./media/sap-successfactors-inbound-provisioning/postman-authorization.png)
+   > ![取得電子郵件資訊](./media/sap-successfactors-inbound-provisioning/get-email-info.png)
 
-1. 儲存組態。 
+1. 在 [ **電子郵件類型** 詳細資料] 頁面上，記下與此欄位相關聯的挑選清單名稱。 依預設，它是 **ecEmailType**。 不過，在您的租使用者中可能會有所不同。 
+
+   > [!div class="mx-imgBorder"]
+   > ![識別電子郵件挑選清單](./media/sap-successfactors-inbound-provisioning/identify-email-picklist.png)
+
+1. 在 [ **HRIS 元素**] 底下，選取 [**所**]，然後按一下 [**電話類型**] 欄位的*詳細資料*。
+
+   > [!div class="mx-imgBorder"]
+   > ![取得電話資訊](./media/sap-successfactors-inbound-provisioning/get-phone-info.png)
+
+1. 在 [ **電話類型** 詳細資料] 頁面上，記下與此欄位相關聯的挑選清單名稱。 依預設，它是 **ecPhoneType**。 不過，在您的租使用者中可能會有所不同。 
+
+   > [!div class="mx-imgBorder"]
+   > ![識別手機挑選清單](./media/sap-successfactors-inbound-provisioning/identify-phone-picklist.png)
 
 ### <a name="retrieve-constant-value-for-emailtype"></a>取得 emailType 的常數值
 
-1. 在 Postman 中，按一下與 SuccessFactors 集合相關聯的省略號 ( ... ) ，然後新增名為「取得電子郵件類型」的「新要求」，如下所示。 
+1. 在 SuccessFactors Admin Center 中，搜尋並開啟挑選 *清單中心*。 
+1. 使用上一節所捕獲的電子郵件挑選清單名稱 (例如 ecEmailType) 來尋找電子郵件挑選清單。 
 
    > [!div class="mx-imgBorder"]
-   > ![Postman 電子郵件要求 ](./media/sap-successfactors-inbound-provisioning/postman-email-request.png)
+   > ![尋找電子郵件類型挑選清單](./media/sap-successfactors-inbound-provisioning/find-email-type-picklist.png)
 
-1. 開啟 [取得電子郵件類型] 要求面板。 
-1. 在 [取得 URL] 中，新增下列 URL，並將其取代 `successFactorsAPITenantName` 為您的 SuccessFactors 實例的 API 租使用者。 
-   `https://<successfactorsAPITenantName>/odata/v2/Picklist('ecEmailType')?$expand=picklistOptions&$select=picklistOptions/id,picklistOptions/externalCode&$format=json`
+1. 開啟主動電子郵件挑選清單。 
 
    > [!div class="mx-imgBorder"]
-   > ![Postman 取得電子郵件類型](./media/sap-successfactors-inbound-provisioning/postman-get-email-type.png)
+   > ![開啟活動電子郵件類型挑選清單](./media/sap-successfactors-inbound-provisioning/open-active-email-type-picklist.png)
 
-1. [授權] 索引標籤會繼承為集合設定的驗證。 
-1. 按一下 [傳送] 以叫用 API 呼叫。 
-1. 在回應主體中，查看 JSON 結果集，並尋找對應至的識別碼 `externalCode = B` 。 
+1. 在 [電子郵件類型挑選清單] 頁面上，選取 [ *企業* ] 電子郵件類型。
 
    > [!div class="mx-imgBorder"]
-   > ![Postman 電子郵件類型回應](./media/sap-successfactors-inbound-provisioning/postman-email-type-response.png)
+   > ![選取商務電子郵件類型](./media/sap-successfactors-inbound-provisioning/select-business-email-type.png)
 
-1. 請記下此值，作為在屬性對應表中與 *emailType* 搭配使用的常數。
+1. 記下與*商務*電子郵件相關聯的**選項識別碼**。 這是我們將在屬性對應表中搭配 *emailType* 使用的程式碼。
+
+   > [!div class="mx-imgBorder"]
+   > ![取得電子郵件類型代碼](./media/sap-successfactors-inbound-provisioning/get-email-type-code.png)
+
+   > [!NOTE]
+   > 當您複製值時，請捨棄逗號字元。 例如，如果 **選項識別碼** 值為 *8448*，則將 Azure AD 中的 *emailType* 設定為常數位 *8448* (，而不含逗號字元) 。 
 
 ### <a name="retrieve-constant-value-for-phonetype"></a>取得 phoneType 的常數值
 
-1. 在 [Postman] 中，按一下與 SuccessFactors 集合相關聯的省略號 ( ... ) ，然後新增名為「取得電話類型」的「新要求」，如下所示。 
+1. 在 SuccessFactors Admin Center 中，搜尋並開啟挑選 *清單中心*。 
+1. 使用上一節所捕捉的電話挑選清單名稱來尋找電話挑選清單。 
 
    > [!div class="mx-imgBorder"]
-   > ![Postman 電話要求](./media/sap-successfactors-inbound-provisioning/postman-phone-request.png)
+   > ![尋找電話類型挑選清單](./media/sap-successfactors-inbound-provisioning/find-phone-type-picklist.png)
 
-1. 開啟 [取得電話類型] 要求面板。 
-1. 在 [取得 URL] 中，新增下列 URL，並將其取代 `successFactorsAPITenantName` 為您的 SuccessFactors 實例的 API 租使用者。 
-   `https://<successfactorsAPITenantName>/odata/v2/Picklist('ecPhoneType')?$expand=picklistOptions&$select=picklistOptions/id,picklistOptions/externalCode&$format=json`
+1. 開啟主動電話挑選清單。 
 
    > [!div class="mx-imgBorder"]
-   > ![Postman 取得電話類型](./media/sap-successfactors-inbound-provisioning/postman-get-phone-type.png)
+   > ![開啟主動電話類型挑選清單](./media/sap-successfactors-inbound-provisioning/open-active-phone-type-picklist.png)
 
-1. [授權] 索引標籤會繼承為集合設定的驗證。 
-1. 按一下 [傳送] 以叫用 API 呼叫。 
-1. 在回應主體中，查看 JSON 結果集，並尋找對應于和的 *識別碼* `externalCode = B` `externalCode = C` 。 
+1. 在 [電話類型挑選清單] 頁面上，檢查 [挑選 **清單] 值**下所列的不同電話類型。
 
    > [!div class="mx-imgBorder"]
-   > ![Postman-電話](./media/sap-successfactors-inbound-provisioning/postman-phone-type-response.png)
+   > ![審核電話類型](./media/sap-successfactors-inbound-provisioning/review-phone-types.png)
 
-1. 請記下這些值，做為要搭配屬性對應表中的 *businessPhoneType* 和 *cellPhoneType* 使用的常數。
+1. 記下與*公司*電話相關聯的**選項識別碼**。 這是我們將在屬性對應表中搭配 *businessPhoneType* 使用的程式碼。
+
+   > [!div class="mx-imgBorder"]
+   > ![取得公司電話代碼](./media/sap-successfactors-inbound-provisioning/get-business-phone-code.png)
+
+1. 記下與*移動*電話相關聯的**選項識別碼**。 這是我們將在屬性對應表中搭配 *cellPhoneType* 使用的程式碼。
+
+   > [!div class="mx-imgBorder"]
+   > ![取得行動電話代碼](./media/sap-successfactors-inbound-provisioning/get-cell-phone-code.png)
+
+   > [!NOTE]
+   > 當您複製值時，請捨棄逗號字元。 例如，如果 **選項識別碼** 值為 *10606*，則將 Azure AD 中的 *cellPhoneType* 設定為常數位 *10606* (，而不含逗號字元) 。 
+
 
 ## <a name="configuring-successfactors-writeback-app"></a>設定 SuccessFactors 回寫應用程式
 
@@ -310,7 +339,7 @@ SuccessFactors 布建應用程式設定完成之後，您就可以在 Azure 入�
 
 請參閱 SAP SuccessFactors 整合參考指南的 [回寫案例一節](../app-provisioning/sap-successfactors-integration-reference.md#writeback-scenarios) 。 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [深入探討 Azure AD 與 SAP SuccessFactors 整合參考](../app-provisioning/sap-successfactors-integration-reference.md)
 * [瞭解如何針對佈建活動檢閱記錄和取得報告](../app-provisioning/check-status-user-account-provisioning.md)

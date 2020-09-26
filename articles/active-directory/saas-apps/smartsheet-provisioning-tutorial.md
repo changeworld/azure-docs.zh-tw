@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 06/07/2019
 ms.author: jeedes
-ms.openlocfilehash: f323b563d90de315bdbb317f88d7f9449be6c008
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 623ec6999add175e85f117e547fba61734d2b892
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88546690"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91285980"
 ---
 # <a name="tutorial-configure-smartsheet-for-automatic-user-provisioning"></a>教學課程：設定 Smartsheet 來自動布建使用者
 
@@ -37,7 +37,7 @@ ms.locfileid: "88546690"
 
 本教學課程中概述的案例假設您已經具有下列必要條件：
 
-* [Azure AD 的租](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant)使用者。
+* [Azure AD 租用戶](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant)。
 * Azure AD 中具有設定佈建[權限](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)的使用者帳戶 (例如，應用程式管理員、雲端應用程式管理員、應用程式擁有者或全域管理員)。
 * [Smartsheet 租](https://www.smartsheet.com/pricing)使用者。
 * Smartsheet Enterprise 或 Enterprise 頂級方案上具有系統管理員許可權的使用者帳戶。
@@ -69,15 +69,15 @@ ms.locfileid: "88546690"
 
 5. 藉由流覽至**應用程式和**整合，產生使用 Azure AD 設定自動使用者布建所需的**秘密權杖**。
 
-    ![Smartsheet 安裝](media/smartsheet-provisioning-tutorial/Smartsheet05.png)
+    ![Smartsheet 系統管理員頁面的螢幕擷取畫面，其中包含已呼叫的使用者頭像和應用程式 & 整合選項。](media/smartsheet-provisioning-tutorial/Smartsheet05.png)
 
 6. 選擇 [ **API 存取**]。 按一下 [ **產生新的存取權杖**]。
 
-    ![Smartsheet 安裝](media/smartsheet-provisioning-tutorial/Smartsheet06.png)
+    ![[個人設定] 對話方塊的螢幕擷取畫面，其中包含 API 存取權並產生新的存取權杖選項（稱為 out）。](media/smartsheet-provisioning-tutorial/Smartsheet06.png)
 
 7. 定義 API 存取權杖的名稱。 按一下 [確定]。
 
-    ![Smartsheet 安裝](media/smartsheet-provisioning-tutorial/Smartsheet07.png)
+    ![第1個步驟中的螢幕擷取畫面：已呼叫 [確定] 選項來產生 API 存取權杖。](media/smartsheet-provisioning-tutorial/Smartsheet07.png)
 
 8. 複製 API 存取權杖並加以儲存，因為這會是您唯一可以查看的時間。 這在 Azure AD 的 [ **秘密權杖** ] 欄位中是必要的。
 
@@ -117,11 +117,11 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
 3. 選取 [佈建] 索引標籤。
 
-    ![佈建索引標籤](common/provisioning.png)
+    ![已呼叫 [布建] 選項的 [管理選項] 螢幕擷取畫面。](common/provisioning.png)
 
 4. 將 [佈建模式] 設定為 [自動]。
 
-    ![佈建索引標籤](common/provisioning-automatic.png)
+    ![[布建模式] 下拉式清單的螢幕擷取畫面，其中已呼叫 [自動] 選項。](common/provisioning-automatic.png)
 
 5. 在 [系統**管理員認證**] 區段下，輸入稍早從**租使用者 URL**和**秘密權杖**中的 Smartsheet 抓取的**SCIM 2.0 基底 url 和存取權杖**值。 按一下 [ **測試連接** ] 以確保 Azure AD 可以連線至 Smartsheet。 如果連接失敗，請確定您的 Smartsheet 帳戶具有系統管理員許可權，然後再試一次。
 
@@ -131,7 +131,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
     ![通知電子郵件](common/provisioning-notification-email.png)
 
-7. 按一下 [檔案] 。
+7. 按一下 [檔案]  。
 
 8. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 使用者至 Smartsheet**]。
 
@@ -150,7 +150,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
    |externalId|String|
    |角色 [主要 eq "True"]。顯示|String|
    |角色 [主要 eq "True"]。類型|String|
-   |role [primary eq "True"]。值|String|
+   |roles[primary eq "True"].value|String|
    |角色|String|
    urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:department|String|
    |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:division|String|
@@ -179,7 +179,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
 1. 使用[佈建記錄](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) \(部分機器翻譯\) 來判斷哪些使用者已佈建成功或失敗
 2. 檢查[進度列](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user) \(部分機器翻譯\) 來查看佈建週期的狀態，以及其接近完成的程度
-3. 如果佈建設定似乎處於狀況不良的狀態，應用程式將會進入隔離狀態。 [在此](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status) \(部分機器翻譯\) 深入了解隔離狀態。  
+3. 如果佈建設定似乎處於狀況不良的狀態，應用程式將會進入隔離狀態。 [在此](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)深入了解隔離狀態。  
 
 ## <a name="connector-limitations"></a>連接器限制
 

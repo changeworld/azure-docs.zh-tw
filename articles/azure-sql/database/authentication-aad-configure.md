@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
-ms.reviewer: vanto, carlrab
+ms.reviewer: vanto, sstein
 ms.date: 08/17/2020
-ms.openlocfilehash: 22ed36213c932c7e202817fd093e1ec96aec94fd
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: f354cb25c93826b50c0094e75ef7a1756f7625b7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89434396"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91278170"
 ---
 # <a name="configure-and-manage-azure-ad-authentication-with-azure-sql"></a>使用 Azure SQL 設定和管理 Azure AD 驗證
 
@@ -89,19 +89,19 @@ Azure (中裝載 SQL Database 或 Azure Synapse) 的每一部 [伺服器](logica
 
 3. 流覽至您想要用於 Azure AD 整合的 SQL 受控執行個體。
 
-   ![aad](./media/authentication-aad-configure/aad.png)
+   ![Azure 入口網站的螢幕擷取畫面，其中顯示所選 SQL 受控實例的 Active Directory 系統管理頁面開啟。](./media/authentication-aad-configure/aad.png)
 
 4. 選取 [Active Directory 管理員] 頁面頂端的橫幅，並對目前的使用者授與權限。
 
-    ![授與權限 - 入口網站](./media/authentication-aad-configure/grant-permissions.png)
+    ![對話方塊的螢幕擷取畫面，可授與許可權給 SQL 受控實例以存取 Active Directory。 已選取 [授與許可權] 按鈕。](./media/authentication-aad-configure/grant-permissions.png)
 
 5. 作業成功之後，會在右上角顯示下列通知：
 
-    ![成功](./media/authentication-aad-configure/success.png)
+    ![確認已成功更新受控實例的 active directory 讀取權限的通知螢幕擷取畫面。](./media/authentication-aad-configure/success.png)
 
 6. 現在您可以選擇您的 SQL 受控執行個體 Azure AD 系統管理員。 若要這麼做，請在 [Active Directory 系統管理員] 頁面上，選取 [設定系統管理員]**** 命令。
 
-    ![設定系統管理員](./media/authentication-aad-configure/set-admin.png)
+    ![螢幕擷取畫面，顯示在所選 SQL 受控實例的 Active Directory 系統管理頁面上，反白顯示的 [設定管理] 命令。](./media/authentication-aad-configure/set-admin.png)
 
 7. 在 [Azure AD 管理] 頁面上，搜尋使用者，選取要成為系統管理員的使用者或群組，然後選取 [ **選取**]。
 
@@ -111,7 +111,7 @@ Azure (中裝載 SQL Database 或 Azure Synapse) 的每一部 [伺服器](logica
 
 8. 在 Active Directory 管理] 頁面的頂端，選取 [ **儲存**]。
 
-    ![儲存](./media/authentication-aad-configure/save.png)
+    ![Active Directory 系統管理員頁面的螢幕擷取畫面，其中的 [設定管理員] 和 [移除系統管理員] 按鈕旁邊的頂端列中有 [儲存] 按鈕。](./media/authentication-aad-configure/save.png)
 
     變更系統管理員的程序可能需要幾分鐘的時間。 接著，新的系統管理員就會出現在 [Active Directory 系統管理員] 方塊中。
 
@@ -190,7 +190,7 @@ else {
 
 下表列出用來布建和管理 SQL 受控執行個體 Azure AD 系統管理員的 Cmdlet：
 
-| Cmdlet 名稱 | 描述 |
+| Cmdlet 名稱 | 說明 |
 | --- | --- |
 | [設定-AzSqlInstanceActiveDirectoryAdministrator](/powershell/module/az.sql/set-azsqlinstanceactivedirectoryadministrator) |為目前訂用帳戶中的 SQL 受控執行個體布建 Azure AD 系統管理員。  (必須來自目前的訂用帳戶) |
 | [移除-AzSqlInstanceActiveDirectoryAdministrator](/powershell/module/az.sql/remove-azsqlinstanceactivedirectoryadministrator) |移除目前訂用帳戶中 SQL 受控執行個體的 Azure AD 系統管理員。 |
@@ -218,7 +218,7 @@ Remove-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName "ResourceGro
 
 您也可以藉由呼叫下列 CLI 命令，為 SQL 受控執行個體布建 Azure AD 管理員：
 
-| Command | 描述 |
+| 命令 | 說明 |
 | --- | --- |
 |[az sql mi ad-admin create](/cli/azure/sql/mi/ad-admin#az-sql-mi-ad-admin-create) | 布建 SQL 受控執行個體 (的 Azure Active Directory 系統管理員必須來自目前的訂用帳戶) 。 |
 |[az sql mi ad-admin delete](/cli/azure/sql/mi/ad-admin#az-sql-mi-ad-admin-delete) | 移除 SQL 受控執行個體的 Azure Active Directory 系統管理員。 |
@@ -279,7 +279,7 @@ Remove-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName "ResourceGro
 
 用來布建和管理 SQL Database 和 Azure Synapse Azure AD 管理員的 Cmdlet：
 
-| Cmdlet 名稱 | 描述 |
+| Cmdlet 名稱 | 說明 |
 | --- | --- |
 | [設定-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/set-azsqlserveractivedirectoryadministrator) |為裝載 SQL Database 或 Azure Synapse 的伺服器布建 Azure Active Directory 系統管理員。  (必須來自目前的訂用帳戶)  |
 | [移除-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/remove-azsqlserveractivedirectoryadministrator) |移除裝載 SQL Database 或 Azure Synapse 之伺服器的 Azure Active Directory 系統管理員。|
@@ -324,7 +324,7 @@ Remove-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -Se
 
 您可以藉由呼叫下列 CLI 命令來布建 Azure AD 管理員：
 
-| Command | 描述 |
+| 命令 | 說明 |
 | --- | --- |
 |[az sql server ad-admin create](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-create) | 為裝載 SQL Database 或 Azure Synapse 的伺服器布建 Azure Active Directory 系統管理員。  (必須來自目前的訂用帳戶)  |
 |[az sql server ad-admin delete](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-delete) | 移除裝載 SQL Database 或 Azure Synapse 之伺服器的 Azure Active Directory 系統管理員。 |
@@ -344,7 +344,7 @@ Remove-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -Se
 
 - 從 .NET Framework 4.6 或更新版本 [https://msdn.microsoft.com/library/5a4x27ek.aspx](https://msdn.microsoft.com/library/5a4x27ek.aspx) 。
 - Azure Active Directory SQL Server (*ADAL.DLL*) 的驗證程式庫。 以下是安裝最新 SSMS、ODBC 以及包含 *ADAL.DLL* 程式庫 OLE DB 驅動程式的下載連結。
-  - [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)
+  - [Transact-SQL](/sql/ssms/download-sql-server-management-studio-ssms)
   - [ODBC Driver 17 for SQL Server](https://www.microsoft.com/download/details.aspx?id=56567)
   - [適用于 SQL Server 的 OLE DB Driver 18](https://www.microsoft.com/download/details.aspx?id=56730)
 
@@ -532,7 +532,7 @@ sqlcmd -S Target_DB_or_DW.testsrv.database.windows.net -U bob@contoso.com -P MyA
 
 下列 blog 中可找到疑難排解 Azure AD 驗證問題的指引： <https://techcommunity.microsoft.com/t5/azure-sql-database/troubleshooting-problems-related-to-azure-ad-authentication-with/ba-p/1062991>
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 如需 SQL Database 中的登入、使用者、資料庫角色和許可權的總覽，請參閱登入 [、使用者、資料庫角色和使用者帳戶](logins-create-manage.md)。
 - 如需資料庫主體的詳細資訊，請參閱[主體](https://msdn.microsoft.com/library/ms181127.aspx)。

@@ -3,12 +3,12 @@ title: Azure Migrate Server 遷移的常見問題
 description: 取得有關使用 Azure Migrate Server 遷移來遷移機器的常見問題的解答。
 ms.topic: conceptual
 ms.date: 08/28/2020
-ms.openlocfilehash: b0ae28fc387125b198bed202d857c3b9ecdd44bb
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 80334bb2f0d6c0284c9031a99c0eb469b348873d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89050653"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91275535"
 ---
 # <a name="azure-migrate-server-migration-common-questions"></a>Azure Migrate Server 遷移：常見問題
 
@@ -18,6 +18,28 @@ ms.locfileid: "89050653"
 - [Azure Migrate 設備](common-questions-appliance.md)的相關問題
 - [探索、評量和相依性視覺效果](common-questions-discovery-assessment.md)的相關問題
 - 在[Azure Migrate 論壇](https://aka.ms/AzureMigrateForum)中取得問題的解答
+
+## <a name="does-azure-migrate-convert-uefi-based-machines-to-bios-based-machines-and-migrate-them-to-azure-as-azure-generation-1-vms"></a>Azure Migrate 是否將 UEFI 型機器轉換成 BIOS 型機器，並將其遷移至 Azure 作為 Azure 第1代 Vm？
+Azure Migrate：伺服器遷移工具會將所有 UEFI 型機器遷移至 Azure 作為 Azure 第2代 Vm。 我們不再支援將 UEFI 型 Vm 轉換成 BIOS 型 Vm。 請注意，所有 BIOS 電腦都只會遷移至 Azure 作為 Azure 第1代 Vm。
+
+## <a name="how-can-i-migrate-uefi-based-machines-to-azure-as-azure-generation-1-vms"></a>如何將 UEFI 型機器遷移至 Azure 作為 Azure 第1代 Vm？
+Azure Migrate：伺服器遷移工具會將 UEFI 型機器遷移至 Azure 作為 Azure 第2代 Vm。 如果您想要將它們遷移至 Azure 第1代 Vm，請在啟動複寫之前將開機類型轉換成 BIOS，然後使用 Azure Migrate：伺服器遷移工具來遷移至 Azure。
+ 
+## <a name="which-operating-systems-are-supported-for-migration-of-uefi-based-machines-to-azure"></a>哪些作業系統支援將 UEFI 型機器遷移至 Azure？
+
+| **以 UEFI 為基礎的電腦支援的作業系統** | **無代理程式 VMware 至 Azure**                                                                                                             | **無代理程式 Hyper-v 到 Azure** | **以代理程式為基礎的 VMware、實體和其他雲端到 Azure** |
+| ------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------ | ---------------------------------------------------------- |
+| Windows Server 2019、2016、2012 R2、201                 | Y                                                                                                                                         | Y                              | Y                                                          |
+| Windows 10 專業版、Windows 10 企業版                   | Y                                                                                                                                         | Y                              | Y                                                          |
+| SUSE Linux Enterprise Server 15 SP1                     | Y                                                                                                                                         | Y                              | Y                                                          |
+| SUSE Linux Enterprise Server 12 SP4                     | Y                                                                                                                                         | Y                              | Y                                                          |
+| Ubuntu Server 16.04、18.04、19.04、19.10                | Y                                                                                                                                         | Y                              | Y                                                          |
+| RHEL 8.1、8.0、7.8、7.7、7.6、7.5、7.4、7.0、6。x        | Y<br>                 _RHEL 8.x 需要 [手動準備](https://go.microsoft.com/fwlink/?linkid=2143939)_   | Y                              | Y                                                          |
+| 分幣 OS 8.1、8.0、7.7、7.6、7.5、7.4、6。x               | Y<br>_美分 OS 8.x 需要 [手動準備](https://go.microsoft.com/fwlink/?linkid=2143939)_ | Y                              | Y                                                          |
+| Oracle Linux 7.7、7.7-CI                                |  Y                                                                                                                                        | Y                              | Y                                                          |
+
+## <a name="can-i-use-the-recovery-services-vault-created-by-azure-migrate-for-disaster-recovery-scenarios"></a>是否可以使用 Azure Migrate 針對嚴重損壞修復案例所建立的復原服務保存庫？
+我們不建議使用 Azure Migrate 所建立的復原服務保存庫來進行嚴重損壞修復案例。 這樣做可能會導致 Azure Migrate 中的開始複寫失敗。 
 
 ## <a name="where-should-i-install-the-replication-appliance-for-agent-based-migrations"></a>要在哪裡安裝以代理程式為基礎之遷移的複寫設備？
 
@@ -30,7 +52,7 @@ ms.locfileid: "89050653"
 ## <a name="can-i-migrate-aws-vms-running-amazon-linux-operating-system"></a>是否可以遷移執行 Amazon Linux 作業系統的 AWS Vm？
 
 執行 Amazon Linux 的 Vm 無法依原樣遷移，因為只有 AWS 才支援 Amazon Linux OS。
-若要遷移在 Amazon Linux 上執行的工作負載，您可以在 Azure 中啟動 CentOS/RHEL VM，並使用相關的工作負載遷移方法來遷移在 AWS Linux 機器上執行的工作負載。 例如，視工作負載而定，可能會有工作負載專屬的工具可協助進行遷移，例如在 web 伺服器的情況下針對資料庫或部署工具。
+若要遷移在 Amazon Linux 上執行的工作負載，您可以在 Azure 中啟動 CentOS/RHEL VM，並使用相關的工作負載移轉方法，遷移在 AWS Linux 電腦上執行的工作負載。 例如，視工作負載而定，可能有工作負載專屬的工具可協助移轉，例如適用於 Web 伺服器的資料庫或部署工具。
 
 ## <a name="what-geographies-are-supported-for-migration-with-azure-migrate"></a>支援哪些地理位置以 Azure Migrate 進行遷移？
 
@@ -200,11 +222,6 @@ Azure Migrate server 遷移功能支援的方式，就像是目前的遷移。 �
 
 無代理程式複寫會產生對 VMware vCenter Server 和 VMware ESXi 主機的一些效能影響。 由於無代理程式複寫使用快照集，因此會耗用儲存體上的 IOPS，因此需要一些 IOPS 儲存體頻寬。 如果您的環境中有儲存體或 IOPs 的限制，則不建議使用無代理程式複寫。
 
-## <a name="can-i-do-agentless-migration-of-uefi-vms-to-azure-gen-2"></a>我可以將 UEFI Vm 的無代理程式遷移至 Azure Gen 2 嗎？
-
-不知道。 您可以使用以 [VMware 代理](https://docs.microsoft.com/azure/migrate/tutorial-migrate-vmware-agent)程式為基礎的遷移、 [hyper-v 遷移](https://docs.microsoft.com/azure/migrate/tutorial-migrate-physical-virtual-machines)或 [實體伺服器遷移](https://docs.microsoft.com/azure/migrate/tutorial-migrate-physical-virtual-machines) 選項，將這些 Vm 遷移至 Gen 2 Azure vm。
-
-***注意：*** 請確定您在 Azure 中選取支援第2代 UEFI 的適當 VM 大小。
 
 ## <a name="next-steps"></a>後續步驟
 

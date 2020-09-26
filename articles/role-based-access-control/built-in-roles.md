@@ -7,14 +7,14 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 09/04/2020
+ms.date: 09/22/2020
 ms.custom: generated
-ms.openlocfilehash: 25c231265bb4ec497af5559624b7228167add76d
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: f5d5b4f801dd406518a6ba516bf2e38e01cb96ac
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89483451"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91275263"
 ---
 # <a name="azure-built-in-roles"></a>Azure 內建角色
 
@@ -113,6 +113,8 @@ ms.locfileid: "89483451"
 > | [HDInsight 網域服務參與者](#hdinsight-domain-services-contributor) | 可讀取、建立、修改和刪除 HDInsight 企業安全性套件所需的網域服務相關作業 | 8d8d5a11-05d3-4bda-a417-a08778121c7c |
 > | [Log Analytics 參與者](#log-analytics-contributor) | 「Log Analytics 參與者」角色可以讀取所有監視資料和編輯監視設定。 編輯監視設定包括將 VM 延伸模組新增至 VM、讀取儲存體帳戶金鑰以便能夠設定從「Azure 儲存體」收集記錄、建立及設定「自動化」帳戶、新增解決方案，以及設定所有 Azure 資源上的 Azure 診斷。 | 92aaf0da-9dab-42b6-94a3-d43ce8d16293 |
 > | [Log Analytics 讀者](#log-analytics-reader) | 「Log Analytics 讀者」可以檢視和搜尋所有監視資料，以及檢視監視設定，包括檢視所有 Azure 資源上的 Azure 診斷設定。 | 73c42c96-874c-492b-b04d-ab87d138a893 |
+> | [架構登錄參與者 (預覽) ](#schema-registry-contributor-preview) | 讀取、寫入和刪除架構登錄群組和架構。 | 5dffeca3-4936-4216-b2bc-10343a5abb25 |
+> | [Schema Registry Reader (Preview) ](#schema-registry-reader-preview) | 讀取及列出架構登錄群組和架構。 | 2c56ea50-c6b3-40a6-83c0-9d98858bc7d2 |
 > | **區塊鏈** |  |  |
 > | [區塊鏈成員節點存取 (預覽)](#blockchain-member-node-access-preview) | 允許存取區塊鏈成員節點 | 31a002a1-acaf-453e-8a5b-297c9ca1ea24 |
 > | **AI + 機器學習** |  |  |
@@ -3849,6 +3851,7 @@ ACR 隔離資料寫入者
 > | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 取得指定範圍中所有資源的可用性狀態 |
 > | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/deployments/* | 建立和管理部署 |
 > | [Microsoft .Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 取得或列出資源群組。 |
+> | [Microsoft .Sql](resource-provider-operations.md#microsoftsql)/locations/administratorAzureAsyncOperation/read |  |
 > | [/ManagedInstances/databases/currentSensitivityLabels/*](resource-provider-operations.md#microsoftsql) |  |
 > | [/ManagedInstances/databases/recommendedSensitivityLabels/*](resource-provider-operations.md#microsoftsql) |  |
 > | [/ManagedInstances/databases/schemas/tables/columns/sensitivityLabels/*](resource-provider-operations.md#microsoftsql) |  |
@@ -3886,6 +3889,8 @@ ACR 隔離資料寫入者
 > | [/Servers/securityAlertPolicies/*](resource-provider-operations.md#microsoftsql) | 建立和管理 SQL Server 安全性警示原則 |
 > | [/Servers/vulnerabilityAssessments/*](resource-provider-operations.md#microsoftsql) |  |
 > | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |
+> | [Microsoft .sql](resource-provider-operations.md#microsoftsql)/servers/administrators/read | 取得特定的 Azure Active Directory 系統管理員物件 |
+> | [/Servers/azureADOnlyAuthentications/*](resource-provider-operations.md#microsoftsql) |  |
 > | **NotActions** |  |
 > | 無 |  |
 > | **DataActions** |  |
@@ -3910,6 +3915,7 @@ ACR 隔離資料寫入者
         "Microsoft.ResourceHealth/availabilityStatuses/read",
         "Microsoft.Resources/deployments/*",
         "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Sql/locations/administratorAzureAsyncOperation/read",
         "Microsoft.Sql/managedInstances/databases/currentSensitivityLabels/*",
         "Microsoft.Sql/managedInstances/databases/recommendedSensitivityLabels/*",
         "Microsoft.Sql/managedInstances/databases/schemas/tables/columns/sensitivityLabels/*",
@@ -3946,7 +3952,9 @@ ACR 隔離資料寫入者
         "Microsoft.Sql/servers/read",
         "Microsoft.Sql/servers/securityAlertPolicies/*",
         "Microsoft.Sql/servers/vulnerabilityAssessments/*",
-        "Microsoft.Support/*"
+        "Microsoft.Support/*",
+        "Microsoft.Sql/servers/administrators/read",
+        "Microsoft.Sql/servers/azureADOnlyAuthentications/*"
       ],
       "notActions": [],
       "dataActions": [],
@@ -4005,6 +4013,8 @@ ACR 隔離資料寫入者
 > | [/Servers/extendedAuditingSettings/*](resource-provider-operations.md#microsoftsql) |  |
 > | [/Servers/securityAlertPolicies/*](resource-provider-operations.md#microsoftsql) | 編輯 SQL Server 安全性警示原則 |
 > | [/Servers/vulnerabilityAssessments/*](resource-provider-operations.md#microsoftsql) |  |
+> | [Microsoft .Sql](resource-provider-operations.md#microsoftsql)/servers/azureADOnlyAuthentications/delete | 只 Azure Active Directory authentication 物件刪除特定伺服器 |
+> | [Microsoft .Sql](resource-provider-operations.md#microsoftsql)/servers/azureADOnlyAuthentications/write | 將特定伺服器新增或更新 Azure Active Directory 只有驗證物件 |
 > | **DataActions** |  |
 > | 無 |  |
 > | **NotDataActions** |  |
@@ -4060,7 +4070,9 @@ ACR 隔離資料寫入者
         "Microsoft.Sql/servers/databases/vulnerabilityAssessmentSettings/*",
         "Microsoft.Sql/servers/extendedAuditingSettings/*",
         "Microsoft.Sql/servers/securityAlertPolicies/*",
-        "Microsoft.Sql/servers/vulnerabilityAssessments/*"
+        "Microsoft.Sql/servers/vulnerabilityAssessments/*",
+        "Microsoft.Sql/servers/azureADOnlyAuthentications/delete",
+        "Microsoft.Sql/servers/azureADOnlyAuthentications/write"
       ],
       "dataActions": [],
       "notDataActions": []
@@ -4503,6 +4515,88 @@ ACR 隔離資料寫入者
     }
   ],
   "roleName": "Log Analytics Reader",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="schema-registry-contributor-preview"></a>架構登錄參與者 (預覽) 
+
+讀取、寫入和刪除架構登錄群組和架構。
+
+> [!div class="mx-tableFixed"]
+> | 動作 | 描述 |
+> | --- | --- |
+> | [/Namespaces/schemagroups/*](resource-provider-operations.md#microsofteventhub) |  |
+> | **NotActions** |  |
+> | 無 |  |
+> | **DataActions** |  |
+> | [/Namespaces/schemas/*](resource-provider-operations.md#microsofteventhub) |  |
+> | **NotDataActions** |  |
+> | 無 |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Read, write, and delete Schema Registry groups and schemas.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/5dffeca3-4936-4216-b2bc-10343a5abb25",
+  "name": "5dffeca3-4936-4216-b2bc-10343a5abb25",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.EventHub/namespaces/schemagroups/*"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.EventHub/namespaces/schemas/*"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Schema Registry Contributor (Preview)",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="schema-registry-reader-preview"></a>Schema Registry Reader (Preview) 
+
+讀取及列出架構登錄群組和架構。
+
+> [!div class="mx-tableFixed"]
+> | 動作 | 描述 |
+> | --- | --- |
+> | [/Namespaces/schemagroups/read](resource-provider-operations.md#microsofteventhub) | 取得 SchemaGroup 資源描述的清單 |
+> | **NotActions** |  |
+> | 無 |  |
+> | **DataActions** |  |
+> | [/Namespaces/schemas/read](resource-provider-operations.md#microsofteventhub) | 取出架構 |
+> | **NotDataActions** |  |
+> | 無 |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Read and list Schema Registry groups and schemas.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/2c56ea50-c6b3-40a6-83c0-9d98858bc7d2",
+  "name": "2c56ea50-c6b3-40a6-83c0-9d98858bc7d2",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.EventHub/namespaces/schemagroups/read"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.EventHub/namespaces/schemas/read"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Schema Registry Reader (Preview)",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
@@ -5376,7 +5470,7 @@ ACR 隔離資料寫入者
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
 > | --- | --- |
-> | [Microsoft. AzureStack](resource-provider-operations.md#microsoftazurestack)/edgeSubscriptions/read | 取得 Azure Stack Edge 訂用帳戶的屬性 |
+> | [Microsoft. AzureStack](resource-provider-operations.md#microsoftazurestack)/edgeSubscriptions/read |  |
 > | [Microsoft. AzureStack](resource-provider-operations.md#microsoftazurestack)/registrations/products/*/action |  |
 > | [Microsoft. AzureStack](resource-provider-operations.md#microsoftazurestack)/registrations/products/read | 取得 Azure Stack Marketplace 產品的屬性 |
 > | [Microsoft. AzureStack](resource-provider-operations.md#microsoftazurestack)/registrations/read | 取得 Azure Stack 註冊的屬性 |
@@ -6151,6 +6245,7 @@ Azure Sentinel 讀者 [深入瞭解](../sentinel/roles.md)
 > | --- | --- |
 > | [SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/*/read |  |
 > | [Microsoft. SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/dataConnectorsCheckRequirements/action | 檢查使用者授權和使用權 |
+> | [Microsoft. SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/threatIntelligence/indicators/query/action | 查詢威脅情報指標 |
 > | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/analytics/query/action | 使用新的引擎進行搜尋。 |
 > | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/*/read | 檢視記錄分析資料 |
 > | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/LinkedServices/read | 取得指定工作區下已連結的服務。 |
@@ -6185,6 +6280,7 @@ Azure Sentinel 讀者 [深入瞭解](../sentinel/roles.md)
       "actions": [
         "Microsoft.SecurityInsights/*/read",
         "Microsoft.SecurityInsights/dataConnectorsCheckRequirements/action",
+        "Microsoft.SecurityInsights/threatIntelligence/indicators/query/action",
         "Microsoft.OperationalInsights/workspaces/analytics/query/action",
         "Microsoft.OperationalInsights/workspaces/*/read",
         "Microsoft.OperationalInsights/workspaces/LinkedServices/read",
@@ -6222,6 +6318,12 @@ Azure Sentinel 回應者 [深入瞭解](../sentinel/roles.md)
 > | [Microsoft. SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/dataConnectorsCheckRequirements/action | 檢查使用者授權和使用權 |
 > | [Microsoft. SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/cases/* |  |
 > | [Microsoft. SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/incidents/* |  |
+> | [Microsoft. SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/threatIntelligence/indicators/appendTags/action | 將標記附加至威脅情報指標 |
+> | [Microsoft. SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/threatIntelligence/indicators/query/action | 查詢威脅情報指標 |
+> | [Microsoft. SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/threatIntelligence/bulkTag/action | 大量標記威脅情報 |
+> | [Microsoft. SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/threatIntelligence/indicators/appendTags/action | 將標記附加至威脅情報指標 |
+> | [Microsoft. SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/threatIntelligence/indicators/replaceTags/action | 取代威脅情報指標的標記 |
+> | [Microsoft. SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/threatIntelligence/queryIndicators/action | 查詢威脅情報指標 |
 > | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/analytics/query/action | 使用新的引擎進行搜尋。 |
 > | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/*/read | 檢視記錄分析資料 |
 > | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/dataSources/read | 取得工作區下的資料來源。 |
@@ -6258,6 +6360,12 @@ Azure Sentinel 回應者 [深入瞭解](../sentinel/roles.md)
         "Microsoft.SecurityInsights/dataConnectorsCheckRequirements/action",
         "Microsoft.SecurityInsights/cases/*",
         "Microsoft.SecurityInsights/incidents/*",
+        "Microsoft.SecurityInsights/threatIntelligence/indicators/appendTags/action",
+        "Microsoft.SecurityInsights/threatIntelligence/indicators/query/action",
+        "Microsoft.SecurityInsights/threatIntelligence/bulkTag/action",
+        "Microsoft.SecurityInsights/threatIntelligence/indicators/appendTags/action",
+        "Microsoft.SecurityInsights/threatIntelligence/indicators/replaceTags/action",
+        "Microsoft.SecurityInsights/threatIntelligence/queryIndicators/action",
         "Microsoft.OperationalInsights/workspaces/analytics/query/action",
         "Microsoft.OperationalInsights/workspaces/*/read",
         "Microsoft.OperationalInsights/workspaces/dataSources/read",
@@ -6420,6 +6528,7 @@ Azure Sentinel 回應者 [深入瞭解](../sentinel/roles.md)
 > | **NotActions** |  |
 > | [Microsoft. KeyVault](resource-provider-operations.md#microsoftkeyvault)/locations/deletedVaults/purge/action | 清除虛刪除的 Key Vault |
 > | [Microsoft. KeyVault](resource-provider-operations.md#microsoftkeyvault)/hsmPools/* |  |
+> | [Microsoft. KeyVault](resource-provider-operations.md#microsoftkeyvault)/managedHsms/* |  |
 > | **DataActions** |  |
 > | 無 |  |
 > | **NotDataActions** |  |
@@ -6445,7 +6554,8 @@ Azure Sentinel 回應者 [深入瞭解](../sentinel/roles.md)
       ],
       "notActions": [
         "Microsoft.KeyVault/locations/deletedVaults/purge/action",
-        "Microsoft.KeyVault/hsmPools/*"
+        "Microsoft.KeyVault/hsmPools/*",
+        "Microsoft.KeyVault/managedHsms/*"
       ],
       "dataActions": [],
       "notDataActions": []
@@ -6785,6 +6895,7 @@ Azure Sentinel 回應者 [深入瞭解](../sentinel/roles.md)
 > | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/*/read | 讀取角色和角色指派 |
 > | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/policyAssignments/* | 建立及管理原則指派 |
 > | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/policyDefinitions/* | 建立及管理原則定義 |
+> | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/policyExemptions/* |  |
 > | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/policySetDefinitions/* | 建立及管理原則集合 |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 建立和管理傳統計量警示 |
 > | [Microsoft. 管理](resource-provider-operations.md#microsoftmanagement)/managementGroups/read | 列出已驗證之使用者的管理群組。 |
@@ -6814,6 +6925,7 @@ Azure Sentinel 回應者 [深入瞭解](../sentinel/roles.md)
         "Microsoft.Authorization/*/read",
         "Microsoft.Authorization/policyAssignments/*",
         "Microsoft.Authorization/policyDefinitions/*",
+        "Microsoft.Authorization/policyExemptions/*",
         "Microsoft.Authorization/policySetDefinitions/*",
         "Microsoft.Insights/alertRules/*",
         "Microsoft.Management/managementGroups/read",
@@ -8483,6 +8595,7 @@ Azure Sentinel 回應者 [深入瞭解](../sentinel/roles.md)
 > | --- | --- |
 > | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/policyassignments/read | 取得關於原則指派的資訊。 |
 > | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/policydefinitions/read | 取得關於原則定義的資訊。 |
+> | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/policyexemptions/read | 取得原則豁免的相關資訊。 |
 > | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/policysetdefinitions/read | 取得原則集合定義的相關資訊。 |
 > | **NotActions** |  |
 > | 無 |  |
@@ -8505,6 +8618,7 @@ Azure Sentinel 回應者 [深入瞭解](../sentinel/roles.md)
       "actions": [
         "Microsoft.Authorization/policyassignments/read",
         "Microsoft.Authorization/policydefinitions/read",
+        "Microsoft.Authorization/policyexemptions/read",
         "Microsoft.Authorization/policysetdefinitions/read"
       ],
       "notActions": [],
@@ -8531,6 +8645,7 @@ Azure Sentinel 回應者 [深入瞭解](../sentinel/roles.md)
 > | */read | 讀取密碼以外的所有類型的資源。 |
 > | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/policyassignments/* | 建立及管理原則指派 |
 > | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/policydefinitions/* | 建立及管理原則定義 |
+> | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/policyexemptions/* |  |
 > | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/policysetdefinitions/* | 建立及管理原則集合 |
 > | [Microsoft.policyinsights](resource-provider-operations.md#microsoftpolicyinsights)/* |  |
 > | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |
@@ -8555,6 +8670,7 @@ Azure Sentinel 回應者 [深入瞭解](../sentinel/roles.md)
         "*/read",
         "Microsoft.Authorization/policyassignments/*",
         "Microsoft.Authorization/policydefinitions/*",
+        "Microsoft.Authorization/policyexemptions/*",
         "Microsoft.Authorization/policysetdefinitions/*",
         "Microsoft.PolicyInsights/*",
         "Microsoft.Support/*"

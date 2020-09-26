@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: fe85dfb39a9787376221cb9beeea11bec35293f4
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: a6db1866c42dbb90d6ea0f288aceed4672424fe0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90604456"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321964"
 ---
 # <a name="tutorial-configure-mypolicies-for-automatic-user-provisioning"></a>教學課程：設定 myPolicies 來自動布建使用者
 
@@ -97,11 +97,11 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
 3. 選取 [佈建] 索引標籤。
 
-    ![佈建索引標籤](common/provisioning.png)
+    ![已呼叫 [布建] 選項的 [管理選項] 螢幕擷取畫面。](common/provisioning.png)
 
 4. 將 [佈建模式] 設定為 [自動]。
 
-    ![布建索引標籤 Automatica](common/provisioning-automatic.png)
+    ![[布建模式] 下拉式清單的螢幕擷取畫面，其中已呼叫 [自動] 選項。](common/provisioning-automatic.png)
 
 5. 在 [系統**管理員認證**] 區段的 [租使用者 URL] 中輸入， `https://<myPoliciesCustomDomain>.mypolicies.com/scim` 其中**Tenant URL** `<myPoliciesCustomDomain>` 是您的 myPolicies 自訂網域。 您可以從您的 URL 取出 myPolicies 客戶網域。
 範例： `<demo0-qa>` . mypolicies.com。
@@ -114,7 +114,7 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
     ![通知電子郵件](common/provisioning-notification-email.png)
 
-8. 按一下 [檔案] 。
+8. 按一下 [檔案]  。
 
 9. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 使用者至 myPolicies**]。
 

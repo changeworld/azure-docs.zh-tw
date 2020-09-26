@@ -2,17 +2,17 @@
 title: 具有 Azure DevOps 入門 Azure IoT Edge 的 CI/CD 管線 |Microsoft Docs
 description: Azure DevOps 入門版可供輕鬆地開始使用 Azure。 它可協助您透過幾個簡單的步驟啟動您所選擇的 Azure IoT Edge 應用程式。
 author: shizn
-ms.author: xshi
+ms.author: kgremban
 ms.date: 08/25/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 7251e84af001422de2c0e33ca04fdfdb309f7afd
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: f0f0452854ef7456d1bdf7caf0674fab5bd14557
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89302091"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91297125"
 ---
 # <a name="create-a-cicd-pipeline-for-iot-edge-with-azure-devops-starter"></a>使用 Azure DevOps Starter 建立 IoT Edge 的 CI/CD 管線
 
