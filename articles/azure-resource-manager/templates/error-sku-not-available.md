@@ -1,18 +1,18 @@
 ---
-title: SKU 無法使用錯誤
-description: 描述如何在使用 Azure Resource Manager 部署資源時，針對 [無法使用 SKU] 錯誤進行疑難排解。
+title: SKU 無法使用的錯誤
+description: 說明使用 Azure Resource Manager 部署資源時，如何針對 SKU 無法使用的錯誤進行疑難排解。
 ms.topic: troubleshooting
 ms.date: 02/18/2020
-ms.openlocfilehash: 3dcc26f2d74799a6d282ee4bd733d36bec7b05e4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 37ad70093cce4cea6689fecbc3b6ccb91db5017b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78942720"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333217"
 ---
 # <a name="resolve-errors-for-sku-not-available"></a>解決 SKU 無法使用的錯誤
 
-本文說明如何解決 **SkuNotAvailable** 錯誤。 如果您找不到該區域/區域或符合您業務需求的替代區域/區域中的適當 SKU，請向 Azure 支援服務提交[SKU 要求](https://aka.ms/skurestriction)。
+本文說明如何解決 **SkuNotAvailable** 錯誤。 如果您在該區域/區域或符合您業務需求的替代區域/區域中找不到適當的 SKU，請向 Azure 支援提交 [SKU 要求](https://aka.ms/skurestriction) 。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -30,11 +30,11 @@ for subscription '<subscriptionID>'. Please try another tier or deploy to a diff
 
 當您選取的資源 SKU (例如 VM 大小) 不適用於您選取的位置時，就會收到這個錯誤。
 
-如果您要部署 Azure 點 VM 或「點」擴展集實例，則在此位置中沒有適用于 Azure 點的任何容量。 如需詳細資訊，請參閱[找出錯誤訊息](../../virtual-machines/error-codes-spot.md)。
+如果您要部署 Azure 點 VM 或擴展集實例，此位置沒有任何 Azure 位置的容量。 如需詳細資訊，請參閱 [找出錯誤訊息](../../virtual-machines/error-codes-spot.md)。
 
 ## <a name="solution-1---powershell"></a>解決方案 1：PowerShell
 
-若要判斷區域/區域中可用的 Sku，請使用[get-azcomputeresourcesku](/powershell/module/az.compute/get-azcomputeresourcesku)命令。 依據位置篩選結果。 您必須擁有最新版 PowerShell 才能執行此命令。
+若要判斷區域/區域中有哪些可用的 Sku，請使用 [>get-azcomputeresourcesku](/powershell/module/az.compute/get-azcomputeresourcesku) 命令。 依據位置篩選結果。 您必須擁有最新版 PowerShell 才能執行此命令。
 
 ```azurepowershell-interactive
 Get-AzComputeResourceSku | where {$_.Locations -icontains "centralus"}
@@ -51,7 +51,7 @@ virtualMachines       Standard_A2    centralus             NotAvailableForSubscr
 virtualMachines       Standard_D1_v2 centralus   {2, 1, 3}                                  MaxResourceVolumeMB
 ```
 
-一些其他範例：
+一些額外的範例：
 
 ```azurepowershell-interactive
 Get-AzComputeResourceSku | where {$_.Locations.Contains("centralus") -and $_.ResourceType.Contains("virtualMachines") -and $_.Name.Contains("Standard_DS14_v2")}
@@ -78,7 +78,6 @@ virtualMachines  southcentralus  Standard_F2                ...             None
 virtualMachines  southcentralus  Standard_F4                ...             None
 ...
 ```
-
 
 ## <a name="solution-3---azure-portal"></a>解決方案 3：Azure 入口網站
 

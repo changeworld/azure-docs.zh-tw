@@ -1,6 +1,6 @@
 ---
 title: 教學課程︰以 Azure Active Directory 設定 Workplace by Facebook 來自動佈建使用者 | Microsoft Docs
-description: 了解如何設定 Azure Active Directory 與 Workplace by Facebook 之間的單一登入。
+description: 瞭解您必須在 Workplace by Facebook 和 Azure Active Directory (Azure AD) 中執行的步驟，以設定自動使用者布建。
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 04/28/2020
 ms.author: jeedes
-ms.openlocfilehash: ae13e062f50e1e8eefeaa886c67c636cf6230c18
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: c72ca7cb521c5c7e7ed33e9a0539de0df252ac92
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90973876"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321893"
 ---
 # <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>教學課程：設定 Workplace by Facebook 來自動佈建使用者
 
@@ -30,7 +30,7 @@ ms.locfileid: "90973876"
 
 >[!VIDEO https://www.youtube.com/embed/oF7I0jjCfrY]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 本教學課程中概述的案例假設您已經具有下列必要條件：
 
@@ -81,11 +81,11 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
 3. 選取 [佈建] 索引標籤。
 
-    ![佈建索引標籤](common/provisioning.png)
+    ![已呼叫 [布建] 選項的 [管理選項] 螢幕擷取畫面。](common/provisioning.png)
 
 4. 將 [佈建模式] 設定為 [自動]。
 
-    ![佈建索引標籤](common/provisioning-automatic.png)
+    ![[布建模式] 下拉式清單的螢幕擷取畫面，其中已呼叫 [自動] 選項。](common/provisioning-automatic.png)
 
 5. 在 [ **管理員認證** ] 區段下，按一下 [ **授權**]。 系統會將您重新導向至 Workplace by Facebook 的授權頁面。 輸入您的 Workplace by Facebook 使用者名稱，然後按一下 [ **繼續** ] 按鈕。 按一下 [ **測試連接** ] 以確保 Azure AD 可以連線至 Workplace by Facebook。 如果連接失敗，請確定您的 Workplace by Facebook 帳戶具有系統管理員許可權，然後再試一次。
 
@@ -108,7 +108,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
    |userName|String|
    |displayName|String|
    |作用中|Boolean|
-   |title|布林值|
+   |title|Boolean|
    |emails[type eq "work"].value|String|
    |name.givenName|String|
    |name.familyName|String|
@@ -132,7 +132,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
    |urn:scim:schemas:extension:enterprise:1.0.costCenter|String|
    |urn:scim:schemas:extension:enterprise:1.0.employeeNumber|String|
    |urn： scim：架構： extension： facebook： auth_method：1.0： auth_method|String|
-   |urn： scim：架構： extension： facebook： frontline：1.0.is_frontline|布林值|
+   |urn： scim：架構： extension： facebook： frontline：1.0.is_frontline|Boolean|
    |urn： scim：架構： extension： facebook： starttermdates： 1.0. 開始日期|整數|
 
 

@@ -16,12 +16,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 543c1a6706f794b81c4f93fc6fff3a61ed3fb9e3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 59dc94e37dfa1ef8b0b079bf5d78d0504e0cb8c7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "60246448"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91313615"
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning"></a>Azure AD Connect 同步處理：了解宣告式佈建
 本主題說明 Azure AD Connect 中的組態模型。 此模型稱為宣告式佈建，它可讓您輕鬆地進行組態變更。 本主題中所述的許多項目都是進階的，而且在大部分客戶案例中並非必要。
@@ -29,11 +29,11 @@ ms.locfileid: "60246448"
 ## <a name="overview"></a>概觀
 宣告式佈建正在處理來自來源連接的目錄中的物件，並決定應如何將物件和屬性從來源轉換到目標。 物件會在同步處理管線中進行處理，而輸入和輸出規則的管線都相同。 輸入規則是從連接器空間至 Metaverse，而輸出規則是從 Metaverse 至連接器空間。
 
-![同步處理管線](./media/concept-azure-ad-connect-sync-declarative-provisioning/sync1.png)  
+![顯示同步處理管線範例的圖表。](./media/concept-azure-ad-connect-sync-declarative-provisioning/sync1.png)  
 
 管線有數個不同的模組。 每個模組負責物件同步處理中的一個概念。
 
-![同步處理管線](./media/concept-azure-ad-connect-sync-declarative-provisioning/pipeline.png)  
+![此圖顯示管線中的模組。](./media/concept-azure-ad-connect-sync-declarative-provisioning/pipeline.png)  
 
 * 資料：來源物件
 * [範圍](#scope)：尋找所有適用的同步處理規則
@@ -44,7 +44,7 @@ ms.locfileid: "60246448"
 
 ## <a name="scope"></a>影響範圍
 範圍模組會評估物件，並判斷在範圍中且應納入處理的規則。 視物件上的屬性值而定，不同的同步處理規則會評估為在範圍中。 例如，沒有 Exchange 信箱的已停用使用者會有不同於具有信箱的已啟用使用者的規則。  
-![影響範圍](./media/concept-azure-ad-connect-sync-declarative-provisioning/scope1.png)  
+![顯示物件範圍模組的圖表。](./media/concept-azure-ad-connect-sync-declarative-provisioning/scope1.png)  
 
 範圍可定義為群組和子句。 子句位於群組中。 邏輯 AND 使用於群組中的所有子句之間。 例如，(department =IT AND country = Denmark)。 邏輯 OR 使用於群組之間。
 
@@ -78,7 +78,7 @@ ms.locfileid: "60246448"
  此圖中的聯結會從上而下處理。 首先，同步處理管線會查看是否有相符的 employeeID。 如果沒有，第二個規則會查看帳戶名稱是否可用來將物件聯結在一起。 如果也不相符，則第三個 (最後一個) 規則會使用使用者名稱尋找更模糊的相符項目。
 
 如果所有聯結規則經評估後沒有完全相符的項目，則會使用 [說明]**** 頁面上的 [連結類型]****。 如果此選項設定為 [佈建] ****，則目標中會建立新的物件。  
-![佈建或聯結](./media/concept-azure-ad-connect-sync-declarative-provisioning/join3.png)  
+![顯示 [連結類型] 下拉式功能表開啟的螢幕擷取畫面。](./media/concept-azure-ad-connect-sync-declarative-provisioning/join3.png)  
 
 一個物件應該只有一個同步處理規則具有在範圍中的聯結規則。 如果有多個同步處理規則定義了聯結，則會發生錯誤。 優先順序不會用於解決聯結衝突。 物件必須具有在範圍中的聯結規則，屬性才能以相同的輸入/輸出方向流動。 如果您需要讓屬性以輸入和輸出方式流向相同的物件，則聯結必須具有輸入和輸出同步處理規則。
 
@@ -101,7 +101,7 @@ ms.locfileid: "60246448"
 ### <a name="merging-attribute-values"></a>合併屬性值
 在屬性流程中，有一個設定可決定是否應該從數個不同的連接器合併多重值屬性。 預設值為 [Update] ****，表示應採用具有最高優先順序的同步處理規則。
 
-![合併類型](./media/concept-azure-ad-connect-sync-declarative-provisioning/mergetype.png)  
+![顯示 [新增轉換] 區段的螢幕擷取畫面，其中已開啟 [合併類型] 下拉式功能表。](./media/concept-azure-ad-connect-sync-declarative-provisioning/mergetype.png)  
 
 另外還有 **Merge** 和 **MergeCaseInsensitive**。 這些選項可讓您合併來自不同來源的值。 例如，它可用於合併來自數個不同樹系的成員或 proxyAddresses 屬性。 當您使用此選項時，物件範圍中的所有同步處理規則必須使用相同的合併類型。 您不能定義從一個連接器 **Update** 和從另一個連接器 **Merge**。 如果您嘗試，您會收到錯誤。
 
@@ -146,7 +146,7 @@ ms.locfileid: "60246448"
 
 ### <a name="multiple-objects-from-the-same-connector-space"></a>相同連接器空間中的多個物件
 如果在聯結至相同 Metaverse 物件的相同連接器空間中有數個物件，則必須調整優先順序。 如果數個物件都是在相同同步處理規則的範圍中，則同步處理引擎便無法判斷優先順序。 應該貢獻值給 Metaverse 的來源物件模稜兩可。 即使來源中的屬性具有相同的值，此組態仍會回報為模稜兩可。  
-![多個物件聯結至相同的 mv 物件](./media/concept-azure-ad-connect-sync-declarative-provisioning/multiple1.png)  
+![顯示多個物件與透明 red X 覆迭聯結之相同 mv 物件的圖表。 ](./media/concept-azure-ad-connect-sync-declarative-provisioning/multiple1.png)  
 
 在此案例中，您需要變更同步處理規則的範圍，讓來源物件在範圍中有不同的同步處理規則。 這可讓您定義不同的優先順序。  
 ![多個物件聯結至相同的 mv 物件](./media/concept-azure-ad-connect-sync-declarative-provisioning/multiple2.png)  
