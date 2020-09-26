@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/28/2020
-ms.openlocfilehash: 01e2a2db3757e8d13749faf53b47300c8188915e
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.date: 09/23/2020
+ms.openlocfilehash: d0c6de2fdf0720e671090e8a817b00e25c5f3d42
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89484471"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332146"
 ---
 # <a name="copy-and-transform-data-in-azure-synapse-analytics-formerly-sql-data-warehouse-by-using-azure-data-factory"></a>使用 Azure Data Factory，在 Azure Synapse Analytics (先前的 SQL 資料倉儲) 中複製和轉換資料
 
@@ -61,7 +61,7 @@ ms.locfileid: "89484471"
 
 以下是 Azure Synapse Analytics 連結服務支援的屬性：
 
-| 屬性            | 描述                                                  | 必要                                                     |
+| 屬性            | 說明                                                  | 必要                                                     |
 | :------------------ | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | type                | 類型屬性必須設為 **AzureSqlDW**。             | 是                                                          |
 | connectionString    | 針對 **connectionString** 屬性指定連線到 Azure Synapse Analytics 執行個體所需的資訊。 <br/>將此欄位標記為 SecureString，將它安全地儲存在 Data Factory 中。 您也可以將密碼/服務主體金鑰放在 Azure Key Vault 中，而且，如果這是 SQL 驗證，則會從連接字串中提取 `password` 組態。 請參閱表格下方的 JSON 範例和[在 Azure Key Vault 中儲存認證](store-credentials-in-key-vault.md)一文深入了解詳細資料。 | 是                                                          |
@@ -144,7 +144,7 @@ ms.locfileid: "89484471"
     CREATE USER [your application name] FROM EXTERNAL PROVIDER;
     ```
 
-4. 如同您一般對 SQL 使用者或其他人所做的一樣，**將所需的權限授與服務主體**。 執行下列程式碼，或參閱[這裡](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=sql-server-2017)的更多選項。 如果您想要使用 PolyBase 來載入資料，請瞭解[所需的資料庫權限](#required-database-permission)。
+4. 如同您一般對 SQL 使用者或其他人所做的一樣，**將所需的權限授與服務主體**。 執行下列程式碼，或參閱[這裡](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql)的更多選項。 如果您想要使用 PolyBase 來載入資料，請瞭解[所需的資料庫權限](#required-database-permission)。
 
     ```sql
     EXEC sp_addrolemember db_owner, [your application name];
@@ -190,7 +190,7 @@ ms.locfileid: "89484471"
     CREATE USER [your Data Factory name] FROM EXTERNAL PROVIDER;
     ```
 
-3. 依照您平常為 SQL 使用者和其他人所進行的操作一樣，**授與 Data Factory 受控識別所需的權限**。 執行下列程式碼，或參閱[這裡](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=sql-server-2017)的更多選項。 如果您想要使用 PolyBase 來載入資料，請瞭解[所需的資料庫權限](#required-database-permission)。
+3. 依照您平常為 SQL 使用者和其他人所進行的操作一樣，**授與 Data Factory 受控識別所需的權限**。 執行下列程式碼，或參閱[這裡](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql)的更多選項。 如果您想要使用 PolyBase 來載入資料，請瞭解[所需的資料庫權限](#required-database-permission)。
 
     ```sql
     EXEC sp_addrolemember db_owner, [your Data Factory name];
@@ -222,7 +222,7 @@ ms.locfileid: "89484471"
 
 以下是 Azure Synapse Analytics 資料集支援的屬性：
 
-| 屬性  | 描述                                                  | 必要                    |
+| 屬性  | 說明                                                  | 必要                    |
 | :-------- | :----------------------------------------------------------- | :-------------------------- |
 | type      | 資料集的**類型**屬性必須設定為 **AzureSqlDWTable**。 | 是                         |
 | 結構描述 | 結構描述的名稱。 |否 (來源)；是 (接收)  |
@@ -261,7 +261,7 @@ ms.locfileid: "89484471"
 
 若要從 Azure Synapse Analytics 複製資料，請將複製活動來源中的**類型**屬性設定為 **SqlDWSource**。 複製活動的 [來源] 區段支援下列屬性：
 
-| 屬性                     | 描述                                                  | 必要 |
+| 屬性                     | 說明                                                  | 必要 |
 | :--------------------------- | :----------------------------------------------------------- | :------- |
 | type                         | 複製活動來源的**類型**屬性必須設定為 **SqlDWSource**。 | 是      |
 | sqlReaderQuery               | 使用自訂 SQL 查詢來讀取資料。 範例： `select * from MyTable`. | 否       |
@@ -372,16 +372,16 @@ Azure Data Factory 支援將資料載入 Azure Synapse Analytics 的三種方式
 - [使用 COPY 陳述式 (預覽)](#use-copy-statement)
 - 使用大量插入
 
-載入資料的最快速且可調整的方式是透過 [PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide)或[COPY 陳述式](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)(預覽)。
+載入資料的最快速且可調整的方式是透過 [PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide)或[COPY 陳述式](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql)(預覽)。
 
 若要將資料複製到 Azure Synapse Analytics，請將複製活動中的接收類型設定為 **>sqldwsink**。 複製活動的 [接收] 區段支援下列屬性：
 
-| 屬性          | 描述                                                  | 必要                                      |
+| 屬性          | 說明                                                  | 必要                                      |
 | :---------------- | :----------------------------------------------------------- | :-------------------------------------------- |
 | type              | 複製活動接收端的**類型**屬性必須設定為 **SqlDWSink**。 | 是                                           |
 | allowPolyBase     | 指出是否要使用 PolyBase 將資料載入 Azure Synapse Analytics 中。 `allowCopyCommand` 和 `allowPolyBase` 不可同時為 true。 <br/><br/>如需條件約束和詳細資料，請參閱 [使用 PolyBase 將資料載入 Azure Synapse Analytics](#use-polybase-to-load-data-into-azure-synapse-analytics) 一節。<br/><br/>允許的值為 **True** 和 **False** (預設值)。 | 否。<br/>使用 PolyBase 時套用。     |
 | polyBaseSettings  | 可以在 `allowPolybase` 屬性設定為 **true** 時指定的一組屬性。 | 否。<br/>使用 PolyBase 時套用。 |
-| allowCopyCommand | 指出是否要使用 (preview) 的 [COPY 語句](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) 將資料載入 Azure Synapse Analytics。 `allowCopyCommand` 和 `allowPolyBase` 不可同時為 true。 <br/><br/>如需條件約束和詳細資料，請參閱 [使用 COPY 語句將資料載入 Azure Synapse Analytics](#use-copy-statement) 一節。<br/><br/>允許的值為 **True** 和 **False** (預設值)。 | 否。<br>使用 COPY 時套用。 |
+| allowCopyCommand | 指出是否要使用 (preview) 的 [COPY 語句](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql) 將資料載入 Azure Synapse Analytics。 `allowCopyCommand` 和 `allowPolyBase` 不可同時為 true。 <br/><br/>如需條件約束和詳細資料，請參閱 [使用 COPY 語句將資料載入 Azure Synapse Analytics](#use-copy-statement) 一節。<br/><br/>允許的值為 **True** 和 **False** (預設值)。 | 否。<br>使用 COPY 時套用。 |
 | copyCommandSettings | 可以在 `allowCopyCommand` 屬性設定為 TRUE 時指定的一組屬性。 | 否。<br/>使用 COPY 時套用。 |
 | writeBatchSize    | 對於**每個批次**要插入 SQL 資料表中的資料列數。<br/><br/>允許的值為**整數** (資料列數目)。 根據預設，Data Factory 會依據資料列大小動態決定適當的批次大小。 | 否。<br/>使用 bulk insert 時套用。     |
 | writeBatchTimeout | 在逾時前等待批次插入作業完成的時間。<br/><br/>允許的值為**時間範圍**。 範例：「00:30:00」(30 分鐘)。 | 否。<br/>使用 bulk insert 時套用。        |
@@ -417,9 +417,10 @@ Azure Data Factory 支援將資料載入 Azure Synapse Analytics 的三種方式
 
 | 狀況                                                     | 建議的設定                                           |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 具有實體資料分割之大型資料表的完整載入。        | **分割區選項**：資料表的實體分割區。 <br><br/>在執行期間，Data Factory 會自動偵測實體分割區，並依分割區複製資料。 |
+| 具有實體資料分割之大型資料表的完整載入。        | **分割區選項**：資料表的實體分割區。 <br><br/>在執行期間，Data Factory 會自動偵測實體分割區，並依分割區複製資料。 <br><br/>若要檢查您的資料表是否有實體分割區，您可以參考 [此查詢](#sample-query-to-check-physical-partition)。 |
 | 從大型資料表完整載入（沒有實體資料分割），同時使用整數或 datetime 資料行進行資料分割。 | **分割選項**：動態範圍分割。<br>**分割** 區資料行 (選擇性) ：指定用來分割資料的資料行。 如果未指定，則會使用索引或主鍵資料行。<br/>**分割區上限** 和資料 **分割下限** (選擇性) ：指定是否要判斷資料分割 stride。 這不是用來篩選資料表中的資料列，而是資料表中的所有資料列都會進行分割和複製。 如果未指定，複製活動會自動偵測這些值。<br><br>例如，如果您的資料分割資料行 "ID" 的值範圍從1到100，而且您將下限設定為20，並將上限設為80，並將平行複製設為4，則 Data Factory 會分別以4個數據分割識別碼（範圍 <= 20、[21、50]、[51、80] 和 >= 81）抓取資料。 |
-| 使用自訂查詢（沒有實體資料分割）載入大量資料，並使用資料分割的整數或日期/日期時間資料行。 | **分割選項**：動態範圍分割。<br>**查詢**：`SELECT * FROM <TableName> WHERE ?AdfDynamicRangePartitionCondition AND <your_additional_where_clause>`。<br>**分割資料行**：指定用來分割資料的資料行。<br>**分割區上限** 和資料 **分割下限** (選擇性) ：指定是否要判斷資料分割 stride。 這不是用來篩選資料表中的資料列，而且查詢結果中的所有資料列都會進行分割和複製。 如果未指定，複製活動會自動偵測該值。<br><br>在執行期間，Data Factory 會 `?AdfRangePartitionColumnName` 以實際的資料行名稱和每個資料分割的值範圍取代，並傳送至 Azure Synapse Analytics。 <br>例如，如果您的資料分割資料行 "ID" 的值範圍從1到100，而且您將下限設定為20，並將上限設為80，並將平行複製設為4，則 Data Factory 會分別以4個數據分割識別碼（範圍 <= 20、[21、50]、[51、80] 和 >= 81）抓取資料。 |
+| 使用自訂查詢（沒有實體資料分割）載入大量資料，並使用資料分割的整數或日期/日期時間資料行。 | **分割選項**：動態範圍分割。<br>**查詢**：`SELECT * FROM <TableName> WHERE ?AdfDynamicRangePartitionCondition AND <your_additional_where_clause>`。<br>**分割資料行**：指定用來分割資料的資料行。<br>**分割區上限** 和資料 **分割下限** (選擇性) ：指定是否要判斷資料分割 stride。 這不是用來篩選資料表中的資料列，而且查詢結果中的所有資料列都會進行分割和複製。 如果未指定，複製活動會自動偵測該值。<br><br>在執行期間，Data Factory 會 `?AdfRangePartitionColumnName` 以實際的資料行名稱和每個資料分割的值範圍取代，並傳送至 Azure Synapse Analytics。 <br>例如，如果您的資料分割資料行 "ID" 的值範圍從1到100，而且您將下限設定為20，並將上限設為80，並將平行複製設為4，則 Data Factory 會分別以4個數據分割識別碼（範圍 <= 20、[21、50]、[51、80] 和 >= 81）抓取資料。 <br><br>以下是針對不同案例的查詢範例：<br> 1. 查詢整個資料表： <br>`SELECT * FROM <TableName> WHERE ?AdfDynamicRangePartitionCondition`<br> 2. 從包含資料行選取和其他 where 子句篩選的資料表查詢： <br>`SELECT <column_list> FROM <TableName> WHERE ?AdfDynamicRangePartitionCondition AND <your_additional_where_clause>`<br> 3. 使用子查詢進行查詢： <br>`SELECT <column_list> FROM (<your_sub_query>) AS T WHERE ?AdfDynamicRangePartitionCondition AND <your_additional_where_clause>`<br> 4. 查詢子查詢中的資料分割： <br>`SELECT <column_list> FROM (SELECT <your_sub_query_column_list> FROM <TableName> WHERE ?AdfDynamicRangePartitionCondition) AS T`
+|
 
 使用資料分割選項載入資料的最佳作法：
 
@@ -453,6 +454,22 @@ Azure Data Factory 支援將資料載入 Azure Synapse Analytics 的三種方式
 }
 ```
 
+### <a name="sample-query-to-check-physical-partition"></a>檢查實體資料分割的範例查詢
+
+```sql
+SELECT DISTINCT s.name AS SchemaName, t.name AS TableName, c.name AS ColumnName, CASE WHEN c.name IS NULL THEN 'no' ELSE 'yes' END AS HasPartition
+FROM sys.tables AS t
+LEFT JOIN sys.objects AS o ON t.object_id = o.object_id
+LEFT JOIN sys.schemas AS s ON o.schema_id = s.schema_id
+LEFT JOIN sys.indexes AS i ON t.object_id = i.object_id
+LEFT JOIN sys.index_columns AS ic ON ic.partition_ordinal > 0 AND ic.index_id = i.index_id AND ic.object_id = t.object_id
+LEFT JOIN sys.columns AS c ON c.object_id = ic.object_id AND c.column_id = ic.column_id
+LEFT JOIN sys.types AS y ON c.system_type_id = y.system_type_id
+WHERE s.name='[your schema]' AND t.name = '[your table name]'
+```
+
+如果資料表有實體分割區，您會看到 "HasPartition" 為 "yes"。
+
 ## <a name="use-polybase-to-load-data-into-azure-synapse-analytics"></a>使用 PolyBase 將資料載入 Azure Synapse Analytics
 
 使用 [PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) 是以高輸送量將大量資料載入 Azure Synapse Analytics 的有效方法。 使用 PolyBase 而不是預設的 BULKINSERT 機制，將可看到輸送量大幅提升。 如需使用案例的逐步解說，請參閱[將 1 TB 載入至 Azure Synapse Analytics](v1/data-factory-load-sql-data-warehouse.md)。
@@ -465,7 +482,7 @@ Azure Data Factory 支援將資料載入 Azure Synapse Analytics 的三種方式
 
 在複製活動的 `polyBaseSettings` 下支援下列 PolyBase 設定：
 
-| 屬性          | 描述                                                  | 必要                                      |
+| 屬性          | 說明                                                  | 必要                                      |
 | :---------------- | :----------------------------------------------------------- | :-------------------------------------------- |
 | rejectValue       | 指定在查詢失敗前可以拒絕的資料列數目或百分比。<br/><br/>在 [CREATE EXTERNAL TABLE (Transact-SQL)](https://msdn.microsoft.com/library/dn935021.aspx)的＜引數＞一節中，深入瞭解 PolyBase 的拒絕選項。 <br/><br/>允許的值為 0 (預設值)、1、2 等其他值。 | 否                                            |
 | rejectType        | 指定 **rejectValue** 選項為常值或百分比。<br/><br/>允許的值為**值** (預設值) 和**百分比**。 | 否                                            |
@@ -507,7 +524,7 @@ Azure Synapse Analytics PolyBase 直接支援 Azure Blob、Azure Data Lake Stora
 4. `wildcardFolderPath``wildcardFilename` `modifiedDateTimeStart` 未指定、、、、 `modifiedDateTimeEnd` `prefix` `enablePartitionDiscovery` 和 `additionalColumns` 。
 
 >[!NOTE]
->如果您的來源是資料夾，請注意 PolyBase 會從資料夾及其所有子資料夾擷取檔案，而且不會從檔案名稱開頭為底線 (_) 或句號 (.) 的檔案中擷取資料，如[這裡 - LOCATION 引數](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql?view=azure-sqldw-latest#arguments-2)所述。
+>如果您的來源是資料夾，請注意 PolyBase 會從資料夾及其所有子資料夾擷取檔案，而且不會從檔案名稱開頭為底線 (_) 或句號 (.) 的檔案中擷取資料，如[這裡 - LOCATION 引數](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql#arguments-2)所述。
 
 ```json
 "activities":[
@@ -545,12 +562,12 @@ Azure Synapse Analytics PolyBase 直接支援 Azure Blob、Azure Data Lake Stora
 
 ### <a name="staged-copy-by-using-polybase"></a>使用 PolyBase 分段複製
 
-當您的來源資料與 PolyBase 原本不相容時，可透過過渡暫存 Azure Blob 儲存體執行個體 (不可以是 Azure 進階儲存體) 來啟用資料複製。 在此情況下，Azure Data Factory 會自動轉換資料，以符合 PolyBase 的資料格式需求。 然後，它會叫用 PolyBase 將資料載入 Azure Synapse Analytics 中。 最後，它會清除 Blob 儲存體中的暫存資料。 如需透過暫存 Azure Blob 儲存體執行個體複製資料的詳細資訊，請參閱[分段複製](copy-activity-performance-features.md#staged-copy)。
+當您的來源資料與 PolyBase 原生不相容時，請啟用透過過渡暫存 Azure Blob 或 Azure Data Lake Storage Gen2 的資料複製， (它不能是 Azure 進階儲存體) 。 在此情況下，Azure Data Factory 會自動轉換資料，以符合 PolyBase 的資料格式需求。 然後，它會叫用 PolyBase 將資料載入 Azure Synapse Analytics 中。 最後，它會清除儲存體中的暫存資料。 如需透過暫存複製資料的詳細資訊，請參閱 [分段複製](copy-activity-performance-features.md#staged-copy) 。
 
-若要使用此功能，請建立 [Azure Blob 儲存體連結服務](connector-azure-blob-storage.md#linked-service-properties)，讓其參考具有過渡 Blob 儲存體的 Azure 儲存體帳戶。 然後指定複製活動的 `enableStaging` 和 `stagingSettings` 屬性，如下列程式碼所示。
+若要使用這項功能，請建立 [Azure Blob 儲存體連結服務](connector-azure-blob-storage.md#linked-service-properties) 或 [Azure Data Lake Storage Gen2 連結服務](connector-azure-data-lake-storage.md#linked-service-properties) ，以參考具有暫時儲存體的 Azure 儲存體帳戶。 然後指定複製活動的 `enableStaging` 和 `stagingSettings` 屬性，如下列程式碼所示。
 
 >[!IMPORTANT]
->如果您的暫存 Azure 儲存體設定了 VNet 服務端點，您必須使用受控識別驗證 - 請參閱[使用 VNet 服務端點搭配 Azure 儲存體的影響](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)。 從 [Azure Blob 受控識別驗證](connector-azure-blob-storage.md#managed-identity)的 Data Factory 中，瞭解所需的設定。
+>如果您的暫存 Azure 儲存體設定了 VNet 服務端點，您必須使用受控識別驗證 - 請參閱[使用 VNet 服務端點搭配 Azure 儲存體的影響](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)。 從 [Azure Blob 受控身分識別驗證](connector-azure-blob-storage.md#managed-identity) 和 [Azure Data Lake Storage Gen2 受控身分識別驗證](connector-azure-data-lake-storage.md#managed-identity)Data Factory 瞭解所需的設定。
 
 ```json
 "activities":[
@@ -580,7 +597,7 @@ Azure Synapse Analytics PolyBase 直接支援 Azure Blob、Azure Data Lake Stora
             "enableStaging": true,
             "stagingSettings": {
                 "linkedServiceName": {
-                    "referenceName": "MyStagingBlob",
+                    "referenceName": "MyStagingStorage",
                     "type": "LinkedServiceReference"
                 }
             }
@@ -619,8 +636,7 @@ PolyBase 負載的限制為小於 1 MB 的資料列。 這無法用來載入 VAR
 ErrorCode=FailedDbOperation, ......HadoopSqlException: Error converting data type VARCHAR to DECIMAL.....Detailed Message=Empty string can't be converted to DECIMAL.....
 ```
 
-解決方法是在複製活動接收中取消選取 [使用類型預設] 選項 (如 false) - > PolyBase 設定。 「[USE_TYPE_DEFAULT](https://docs.microsoft.com/sql/t-sql/statements/create-external-file-format-transact-sql?view=azure-sqldw-latest#arguments
-)」是 PolyBase原生設定，會指定當 PolyBase 從文字檔擷取資料時，如何處理分隔符號文字檔中遺漏的值。
+解決方法是在複製活動接收中取消選取 [使用類型預設] 選項 (如 false) - > PolyBase 設定。 「[USE_TYPE_DEFAULT](https://docs.microsoft.com/sql/t-sql/statements/create-external-file-format-transact-sql#arguments)」是 PolyBase原生設定，會指定當 PolyBase 從文字檔擷取資料時，如何處理分隔符號文字檔中遺漏的值。
 
 **`tableName` 在 Azure Synapse Analytics 中**
 
@@ -651,7 +667,7 @@ NULL 值是一種特殊形式的預設值。 如果資料欄可以是 Null，Blo
 
 ## <a name="use-copy-statement-to-load-data-into-azure-synapse-analytics-preview"></a><a name="use-copy-statement"></a> 使用 COPY 語句將資料載入 Azure Synapse Analytics (preview) 
 
-Azure Synapse Analytics [COPY 語句](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) (preview) 直接支援從 **Azure Blob 載入資料和 Azure Data Lake Storage Gen2**。 如果您的來源資料符合本節所述的準則，您可以選擇在 ADF 中使用 COPY 語句將資料載入 Azure Synapse Analytics 中。 Azure Data Factory 會檢查設定，並在不符合準則時失敗複製活動執行。
+Azure Synapse Analytics [COPY 語句](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql) (preview) 直接支援從 **Azure Blob 載入資料和 Azure Data Lake Storage Gen2**。 如果您的來源資料符合本節所述的準則，您可以選擇在 ADF 中使用 COPY 語句將資料載入 Azure Synapse Analytics 中。 Azure Data Factory 會檢查設定，並在不符合準則時失敗複製活動執行。
 
 >[!NOTE]
 >目前 Data Factory 僅支援從複製陳述式相容來源複製，如下所述。
@@ -688,10 +704,10 @@ Azure Synapse Analytics [COPY 語句](https://docs.microsoft.com/sql/t-sql/state
 
 在複製活動的 `allowCopyCommand` 下支援下列 COPY 陳述式設定：
 
-| 屬性          | 描述                                                  | 必要                                      |
+| 屬性          | 說明                                                  | 必要                                      |
 | :---------------- | :----------------------------------------------------------- | :-------------------------------------------- |
 | defaultValues | 針對 Azure Synapse Analytics 中的每個目標資料行指定預設值。  屬性中的預設值會覆寫資料倉儲中設定的預設條件約束，而且識別欄位不可有預設值。 | 否 |
-| additionalOptions | 將直接在 [copy 語句](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)的 "With" 子句中傳遞給 Azure Synapse Analytics COPY 語句的其他選項。 視需要將值加上引號，以配合 COPY 陳述式需求。 | 否 |
+| additionalOptions | 將直接在 [copy 語句](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql)的 "With" 子句中傳遞給 Azure Synapse Analytics COPY 語句的其他選項。 視需要將值加上引號，以配合 COPY 陳述式需求。 | 否 |
 
 ```json
 "activities":[
@@ -779,7 +795,7 @@ SQL 範例：```Select * from MyTable where customerId > 1000 and customerId < 2
 - 重新建立：資料表會遭到捨棄並重新建立。 如果要動態建立新的資料表，則為必要。
 - Truncate：會移除目標資料表中的所有資料列。
 
-**啟用暫存：** 決定在寫入 Azure Synapse 分析時，是否要使用 [PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide?view=sql-server-ver15)
+**啟用暫存：** 決定在寫入 Azure Synapse 分析時，是否要使用 [PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide)
 
 **批次大小**：控制要在每個值區中寫入的資料列數目。 較大的批次大小會改善壓縮和記憶體優化，但會導致在快取資料時發生記憶體例外狀況的風險。
 
