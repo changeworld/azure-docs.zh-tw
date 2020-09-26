@@ -11,17 +11,17 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
-ms.openlocfilehash: 4f594f663267de7ed746082e77ae603e5592e721
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9c229fe6c1ccc7e2ce8e4f46ece51f315c8b7a90
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84034709"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362609"
 ---
 # <a name="elastic-database-tools-glossary"></a>彈性資料庫工具字彙
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-下列詞彙是針對[彈性資料庫工具](elastic-scale-introduction.md)所定義。 這些工具是用來管理[分區對應](elastic-scale-shard-map-management.md)，並且包含[用戶端程式庫](elastic-database-client-library.md)、[分割合併工具](elastic-scale-overview-split-and-merge.md)、[彈性集區](elastic-pool-overview.md)及[查詢](elastic-query-overview.md)。 
+下列詞彙是針對 [彈性資料庫工具](elastic-scale-introduction.md)所定義。 這些工具是用來管理[分區對應](elastic-scale-shard-map-management.md)，並且包含[用戶端程式庫](elastic-database-client-library.md)、[分割合併工具](elastic-scale-overview-split-and-merge.md)、[彈性集區](elastic-pool-overview.md)及[查詢](elastic-query-overview.md)。 
 
 在[使用彈性資料庫工具加入分區](elastic-scale-add-a-shard.md)和[使用 RecoveryManager 類別來修正分區對應問題](elastic-database-recovery-manager.md)中會用到這些詞彙。
 
@@ -67,7 +67,7 @@ ms.locfileid: "84034709"
 
 **分區對應管理員**：管理物件和資料存放區，其中包含分區對應、分區位置，以及一或多個分區集的對應。
 
-![對應][2]
+![圖表顯示與 shardmaps_global、shards_global 和 shard_mappings_global 相關聯的分區對應管理員。][2]
 
 ## <a name="verbs"></a>動詞
 **水平縮放**：藉由在分區對應中新增或移除分區而相應放大 (或縮小) 分區集合的動作，如下所示。

@@ -7,12 +7,12 @@ ms.service: azure-cdn
 ms.topic: article
 ms.date: 05/26/2020
 ms.author: allensu
-ms.openlocfilehash: 75633521474ec3bcbc35cea49ea7a2da6a271e01
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 295bc0a20a547bf944f48af6711b18af34571b02
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83872519"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362575"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-reference"></a>來自 Verizon Premium 的 Azure CDN 規則引擎參考
 
@@ -41,7 +41,7 @@ ms.locfileid: "83872519"
 - 一組功能，可定義 CDN 將如何處理上述要求。
 這些項目會在下圖中識別。
 
-![原則部署工作流程](./media/cdn-verizon-premium-rules-engine-reference/verizon-rules-engine-reference.png)
+![具有標籤的螢幕擷取畫面會顯示條件運算式、比對和規則的功能。](./media/cdn-verizon-premium-rules-engine-reference/verizon-rules-engine-reference.png)
 
 ### <a name="policy"></a>原則
 原則是由一組唯讀規則所組成，可用來：

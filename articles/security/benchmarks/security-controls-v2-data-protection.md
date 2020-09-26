@@ -4,17 +4,17 @@ description: Azure 安全性基準測試 V2 資料保護
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/13/2020
+ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: e377c6669b1db96f549958173aded4f29bae6713
-ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
+ms.openlocfilehash: ab42acbc07072f48d28b3adb5bc4c65672f257bc
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90059156"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91314312"
 ---
-# <a name="security-control-data-protection"></a>安全性控制：資料保護
+# <a name="security-control-v2-data-protection"></a>安全性控制 V2：資料保護
 
 資料保護涵蓋對待用、傳輸中的資料保護，以及經由授權的存取機制的控制。 這包括使用 Azure 中的存取控制、加密和記錄來探索、分類、保護及監視機密資料資產。
 
@@ -22,7 +22,7 @@ ms.locfileid: "90059156"
 
 | Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP800-53 r4 ID (s)  |
 |--|--|--|--|
-| DP-1 | 14.5、14。7 | SI-4，SC-28 |
+| DP-1 | 13.1、14.5、14。7 | SC-28 |
 
 探索、分類和標示您的機密資料，讓您可以設計適當的控制項，以確保組織的技術系統會安全地儲存、處理及傳輸機密資訊。 
 
@@ -36,7 +36,7 @@ ms.locfileid: "90059156"
 
 **責任**：共用
 
-**客戶安全性專案關係人**：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [應用程式安全性與 DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)  
 
@@ -62,7 +62,7 @@ ms.locfileid: "90059156"
 
 **責任**：共用
 
-**客戶安全性專案關係人**：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [應用程式安全性與 DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
 
@@ -90,9 +90,9 @@ Azure 資訊保護 (AIP) 為已分類及標示的資訊提供監視功能。
 
 **責任**：共用
 
-**客戶安全性專案關係人**：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
-- [安全性作業中心 (SOC)](/azure/cloud-adoption-framework/organize/cloud-security) 
+- [安全性作業](/azure/cloud-adoption-framework/organize/cloud-security) 
 
 - [應用程式安全性與 DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
 
@@ -118,7 +118,7 @@ Azure 資訊保護 (AIP) 為已分類及標示的資訊提供監視功能。
 
 **責任**：共用
 
-**客戶安全性專案關係人**：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [安全性架構](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -148,7 +148,7 @@ Azure 預設會提供待用資料的加密。 針對高度敏感的資料，您�
 
 **責任**：共用
 
-**客戶安全性專案關係人**：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [安全性架構](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 

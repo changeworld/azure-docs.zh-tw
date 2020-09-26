@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: ramamill
-ms.openlocfilehash: c3e4b1c97c5fcc86a863313c2d6f54d93f26390e
-ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
+ms.openlocfilehash: 3b9edab6e908b4506a92c78aa8f3f53277b9c17b
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89055036"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360866"
 ---
 # <a name="reprotect-failed-over-azure-vms-to-the-primary-region"></a>重新保護已容錯移轉到主要區域的 Azure VM
 
@@ -22,7 +22,7 @@ ms.locfileid: "89055036"
 1. 重新保護次要區域中的 VM，好讓它們開始複寫到主要區域。
 1. 重新保護完成且 Vm 正在複寫之後，您可以從次要區域容錯移轉至主要區域。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 必須認可從主要到次要區域的 VM 容錯移轉。
 - 主要目標網站應該可供使用，而且您應該能夠存取或建立該區域中的資源。
@@ -31,9 +31,9 @@ ms.locfileid: "89055036"
 
 1. 在保存**庫**  >  複寫的**專案**中，以滑鼠右鍵按一下已容錯移轉的 VM，然後選取 [**重新保護**]。 重新保護的顯示方向應該是從次要到主要。
 
-   ![重新保護](./media/site-recovery-how-to-reprotect-azure-to-azure/reprotect.png)
+   ![螢幕擷取畫面顯示虛擬機器，其中包含已選取重新保護的內容功能表。](./media/site-recovery-how-to-reprotect-azure-to-azure/reprotect.png)
 
-1. 檢閱資源群組、網路、儲存體和可用性設定組。 然後按一下 [確定]  。 如果有任何資源標記為新的，則會在重新保護過程中建立這些資源。
+1. 檢閱資源群組、網路、儲存體和可用性設定組。 然後按一下 [確定] 。 如果有任何資源標記為新的，則會在重新保護過程中建立這些資源。
 1. 重新保護作業會在目標網站植入最新資料。 作業完成之後，就會進行差異複寫。 然後，您可以容錯移轉回到主要網站。 您可以使用自訂選項，來選取您想要在重新保護期間使用的儲存體帳戶或網路。
 
    ![自訂選項](./media/site-recovery-how-to-reprotect-azure-to-azure/customize.png)
@@ -44,7 +44,7 @@ ms.locfileid: "89055036"
 
 ![自訂](./media/site-recovery-how-to-reprotect-azure-to-azure/customizeblade.png)
 
-|屬性 |備註  |
+|屬性 |注意  |
 |---------|---------|
 |目標資源群組 | 修改要在其中建立 VM 的目標資源群組。 目標 VM 會在重新保護過程中加以刪除。 您可以選擇容錯移轉之後要在其中建立 VM 的新資源群組。 |
 |目標虛擬網路 | 目標網路無法在重新保護作業期間進行變更。 若要變更網路，請重新進行網路對應。 |

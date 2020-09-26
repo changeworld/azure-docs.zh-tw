@@ -4,12 +4,12 @@ description: 在此文章中，您將了解如何從 Azure 虛擬機器復原點
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.custom: references_regions
-ms.openlocfilehash: fd68c33e4425d717837923b90119d42569a1f003
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 3f26f761b3d683be71f7f6d900d91dd432ceefc8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89178515"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91292960"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>從 Azure 虛擬機器備份復原檔案
 
@@ -303,16 +303,16 @@ mount [RAID Disk Path] [/mountpath]
 
 - `download.microsoft.com`
 - 復原服務 Url (地理名稱是指復原服務保存庫所在的區域) 
-  - `https://pod01-rec2.geo-name.backup.windowsazure.com` 適用于 Azure 公用區域的 () 
-  - `https://pod01-rec2.geo-name.backup.windowsazure.cn` (適用於 Azure China 21Vianet)
-  - `https://pod01-rec2.geo-name.backup.windowsazure.us` (適用於 Azure US Government)
-  - `https://pod01-rec2.geo-name.backup.windowsazure.de` (適用於 Azure 德國)
+  - `https://pod01-rec2.GEO-NAME.backup.windowsazure.com` 適用于 Azure 公用區域的 () 
+  - `https://pod01-rec2.GEO-NAME.backup.windowsazure.cn` (適用於 Azure China 21Vianet)
+  - `https://pod01-rec2.GEO-NAME.backup.windowsazure.us` (適用於 Azure US Government)
+  - `https://pod01-rec2.GEO-NAME.backup.windowsazure.de` (適用於 Azure 德國)
 - 輸出連接埠 53 (DNS)、443、3260
 
 > [!NOTE]
 >
-> - 下載的指令碼檔案名稱將會在 URL 中填入 **geo-name**。 例如：下載的腳本名稱開頭為 \' VMname \' \_ \' geoname \' _ \' GUID \' ，例如*ContosoVM_wcus_12345678*
-> - URL 會是 <https://pod01-rec2.wcus.backup.windowsazure.com>」
+> 您在 [上述](#mount-the-volume-and-copy-files) 步驟5中下載的腳本檔案，會在檔案的名稱中使用 **地理位置名稱** 。 使用該 **地理名稱** 填入 URL。 下載的腳本名稱開頭會是： \' VMname \' \_ \' geoname \' _ \' GUID \' 。<br><br>
+> 舉例來說，如果指令檔名是 *ContosoVM_wcus_12345678*，則 **地理名稱** 是 *wcus* ，而 URL 會是：<br> <https://pod01-rec2.wcus.backup.windowsazure.com>
 >
 
 若為 Linux，指令碼需要 'open-iscsi' 和 'lshw' 元件來連接到復原點。 如果元件不存在於執行指令碼所在的電腦上，則指令碼會要求安裝元件的權限。 同意安裝必要的元件。

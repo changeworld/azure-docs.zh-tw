@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: jingwang
-ms.openlocfilehash: 562acfe1ae96f7f88b72945846bcb49c0cc1f216
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 2a0093ebb6e3214553cf5603151831d6ae53d862
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89179533"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332044"
 ---
 # <a name="copy-data-from-the-hdfs-server-by-using-azure-data-factory"></a>使用 Azure Data Factory 從 HDFS 伺服器複製資料
 
@@ -34,6 +34,7 @@ ms.locfileid: "89179533"
 
 - 使用支援的[來源和接收矩陣](copy-activity-overview.md)[複製活動](copy-activity-overview.md)
 - [查閱活動](control-flow-lookup-activity.md)
+- [刪除活動](delete-activity.md)
 
 具體而言，HDFS 連接器支援：
 
@@ -58,7 +59,7 @@ ms.locfileid: "89179533"
 
 以下是針對 HDFS 已連結服務支援的屬性：
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
 | type | *Type*屬性必須設定為*Hdfs*。 | 是 |
 | url |HDFS 的 URL |是 |
@@ -119,7 +120,7 @@ ms.locfileid: "89179533"
 
 以下是針對 `location` 以格式為基礎的資料集設定中的 HDFS 支援的屬性：
 
-| 屬性   | 描述                                                  | 必要 |
+| 屬性   | 說明                                                  | 必要 |
 | ---------- | ------------------------------------------------------------ | -------- |
 | type       | 資料集內的 *type* 屬性 `location` 必須設定為 *HdfsLocation*。 | 是      |
 | folderPath | 資料夾的路徑。 如果您想要使用萬用字元來篩選資料夾，請略過此設定，並在 [活動來源設定] 中指定路徑。 | 否       |
@@ -161,17 +162,19 @@ ms.locfileid: "89179533"
 
 以下是針對 `storeSettings` 以格式為基礎的複製來源設定下的 HDFS 支援的屬性：
 
-| 屬性                 | 描述                                                  | 必要                                      |
+| 屬性                 | 說明                                                  | 必要                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
 | type                     | 下的 *類型* 屬性 `storeSettings` 必須設為 **HdfsReadSettings**。 | 是                                           |
 | ***找出要複製的檔案*** |  |  |
-| 選項 1：靜態路徑<br> | 從資料集所指定的資料夾或檔案路徑複製。 如果您想要複製資料夾中的所有檔案，請另外將 `wildcardFileName` 指定為 `*`。 |  |
+| 選項 1：靜態路徑<br> | 從資料集所指定的資料夾或檔案路徑複製。 若您想要複製資料夾中的所有檔案，請另外將 `wildcardFileName` 指定為 `*`。 |  |
 | 選項 2：萬用字元<br>- wildcardFolderPath | 含有萬用字元的資料夾路徑，可用來篩選來源資料夾。 <br>允許的萬用字元為：`*` (符合零或多個字元) 和 `?` (符合零或單一字元)。 `^`如果您的實際資料夾名稱裡面有萬用字元或這個 escape 字元，請使用來進行 escape。 <br>如需更多範例，請參閱 [資料夾和檔案篩選範例](#folder-and-file-filter-examples)。 | 否                                            |
 | 選項 2：萬用字元<br>- wildcardFileName | 在指定的 folderPath/wildcardFolderPath 下，用來篩選來源檔案的檔案名。 <br>允許的萬用字元為： `*` (符合零或多個字元) 和 `?` (符合零或單一字元) ; `^` 如果您的實際資料夾名稱包含萬用字元或此 escape 字元，請使用來進行 escape。  如需更多範例，請參閱 [資料夾和檔案篩選範例](#folder-and-file-filter-examples)。 | 是 |
 | 選項 3：檔案清單<br>- fileListPath | 表示複製指定的檔案集。 指向文字檔，其中包含您想要複製的檔案清單 (每行一個檔案，以及資料集) 中設定之路徑的相對路徑。<br/>當您使用此選項時，請勿在資料集中指定檔案名。 如需更多範例，請參閱檔案 [清單範例](#file-list-examples)。 |否 |
 | ***其他設定*** |  | |
 | 遞迴 | 指出是否從子資料夾、或只有從指定的資料夾，以遞迴方式讀取資料。 當 `recursive` 設定為 *true* 且接收是檔案型存放區時，就不會在接收時複製或建立空的資料夾或子資料夾。 <br>允許的值為 *true* (預設值) 和 *false*。<br>設定 `fileListPath` 時，不適用此屬性。 |否 |
+| deleteFilesAfterCompletion | 指出是否要在成功移至目的地存放區之後，從來源存放區刪除二進位檔案。 檔案刪除是針對每個檔案，因此當複製活動失敗時，您會看到部分檔案已複製到目的地並從來源刪除，其他檔案仍在來源存放區上。 <br/>這個屬性只在二進位檔案複製案例中有效。 預設值： false。 |否 |
 | modifiedDatetimeStart    | 檔案會根據 *上次修改*的屬性進行篩選。 <br>如果檔案的上次修改時間在的範圍內，則會選取這些檔案 `modifiedDatetimeStart` `modifiedDatetimeEnd` 。 時間會以 *2018-12-01T05：00： 00Z*的格式套用至 UTC 時區。 <br> 屬性可以是 Null，這表示不會將任何檔案屬性篩選套用至資料集。  當 `modifiedDatetimeStart` 有 datetime 值但 `modifiedDatetimeEnd` 為 Null 時，表示已選取上次修改屬性大於或等於日期時間值的檔案。  當 `modifiedDatetimeEnd` 有 datetime 值但 `modifiedDatetimeStart` 為 Null 時，表示已選取其上次修改屬性小於 datetime 值的檔案。<br/>設定 `fileListPath` 時，不適用此屬性。 | 否                                            |
+| modifiedDatetimeEnd      | 同上。  
 | enablePartitionDiscovery | 針對已分割的檔案，指定是否從檔案路徑剖析分割區，並將它們新增為其他來源資料行。<br/>允許的值為 **false** (預設) 和 **true**。 | 否                                            |
 | partitionRootPath | 當資料分割探索已啟用時，請指定絕對根路徑，以便將分割的資料夾讀取為數據行。<br/><br/>如果未指定，則預設為<br/>-當您在資料集或來源上的檔案清單中使用檔案路徑時，資料分割根路徑是在資料集中設定的路徑。<br/>-當您使用萬用字元資料夾篩選時，資料分割根路徑是第一個萬用字元之前的子路徑。<br/><br/>例如，假設您將資料集中的路徑設定為 "root/folder/year = 2020/month = 08/day = 27"：<br/>-如果您將資料分割根路徑指定為 "root/folder/year = 2020"，則除了檔案內的資料行之外，複製活動會分別產生兩個數據行， `month` 以及 `day` 值為 "08" 和 "27" 的資料行。<br/>-如果未指定資料分割根路徑，將不會產生額外的資料行。 | 否                                            |
 | maxConcurrentConnections | 可以同時連線到儲存體存放區的連接數目。 只有當您想要限制與資料存放區的並行連接時，才需要指定值。 | 否                                            |
@@ -250,7 +253,7 @@ ms.locfileid: "89179533"
 
 複製活動支援使用 DistCp 將檔案複製到 Azure Blob 儲存體 (包括 [分段複製](copy-activity-performance.md)) 或 azure data lake store。 在此情況下，DistCp 可以利用叢集的電源，而不是在自我裝載整合執行時間上執行。 使用 DistCp 可提供較佳的複製輸送量，特別是當您的叢集非常強大時。 複製活動會根據 data factory 中的設定，自動建立 DistCp 命令、將它提交至您的 Hadoop 叢集，以及監視複製狀態。
 
-### <a name="prerequisites"></a>先決條件
+### <a name="prerequisites"></a>Prerequisites
 
 若要使用 DistCp 將檔案從 HDFS 複製到 Azure Blob 儲存體 (包括分段複製) 或 Azure data lake store），請確定您的 Hadoop 叢集符合下列需求：
 
@@ -278,7 +281,7 @@ ms.locfileid: "89179533"
 
 ### <a name="option-1-join-a-self-hosted-integration-runtime-machine-in-the-kerberos-realm"></a><a name="kerberos-join-realm"></a>選項1：加入 Kerberos 領域中的自我裝載整合執行時間電腦
 
-#### <a name="requirements"></a>規格需求
+#### <a name="requirements"></a>需求
 
 * 自我裝載整合執行時間電腦必須加入 Kerberos 領域，且無法加入任何 Windows 網域。
 
@@ -312,7 +315,7 @@ ms.locfileid: "89179533"
 
 ### <a name="option-2-enable-mutual-trust-between-the-windows-domain-and-the-kerberos-realm"></a><a name="kerberos-mutual-trust"></a>選項 2：啟用 Windows 網域和 Kerberos 領域之間的相互信任
 
-#### <a name="requirements"></a>規格需求
+#### <a name="requirements"></a>需求
 
 *   自我裝載整合執行時間電腦必須加入 Windows 網域。
 *   您需要更新網域控制站設定的權限。
@@ -431,6 +434,10 @@ ms.locfileid: "89179533"
 ## <a name="lookup-activity-properties"></a>查閱活動屬性
 
 如需查閱活動屬性的詳細資訊，請參閱 [Azure Data Factory 中的查閱活動](control-flow-lookup-activity.md)。
+
+## <a name="delete-activity-properties"></a>刪除活動屬性
+
+如需刪除活動屬性的相關資訊，請參閱 [Azure Data Factory 中的刪除活動](delete-activity.md)。
 
 ## <a name="legacy-models"></a>舊版模型
 
