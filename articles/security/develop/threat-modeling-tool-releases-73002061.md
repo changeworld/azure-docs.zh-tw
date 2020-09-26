@@ -1,29 +1,29 @@
 ---
 title: Microsoft Threat Modeling Tool 版本 02/11/2020-Azure
-description: 記載 Threat Modeling Tool 的版本資訊
+description: 記載威脅模型化工具 release 7.3.00206.1 的版本資訊。
 author: jegeib
 ms.author: jegeib
 ms.service: security
 ms.topic: article
 ms.date: 02/25/2020
-ms.openlocfilehash: da4e61d6c89e62c3598570b30ce749390915ca1b
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: fa89ffcfd37629f95fbf281a6a703a173acd5d48
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259332"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317917"
 ---
 # <a name="threat-modeling-tool-update-release-73002061---02112020"></a>Threat Modeling Tool 更新版本 7.3.00206.1-02/11/2020
 
- (TMT) 的 Microsoft Threat Modeling Tool 版本7.3.00206.1 已于 11 2020 年2月發行，其中包含下列變更：
+Microsoft Threat Modeling Tool (TMT) 的版本7.3.00206.1 已于 11 2020 年2月發行，並包含下列變更：
 
-- Bug 修正
+- 錯誤修正
 
-## <a name="notable-bug-fixes"></a>值得注意的 bug 修正
+## <a name="notable-bug-fixes"></a>值得注意的錯誤修正
 
-### <a name="errors-related-to-priority-values-outside-of-the-expected-ranges"></a>與預期範圍外的優先順序值相關的錯誤
+### <a name="errors-related-to-priority-values-outside-of-the-expected-ranges"></a>在預期範圍之外的優先順序值相關錯誤
 
-某些客戶在開啟 "Threat Modeling Tool 2016" 或自訂範本中建立的檔案時，回報收到下列錯誤訊息：
+某些客戶回報在開啟 "Threat Modeling Tool 2016" 或自訂範本中建立的檔案時，收到下列錯誤訊息：
 
 ```output
 System.InvalidOperationException: Invalid Priority value. Accepted values are [0..4] and 'High', 'Medium', 'Low' at ThreatModeling.Model.Threat.get_Priority()
@@ -36,9 +36,9 @@ System.ArgumentOutOfRangeException: Accepted values are 'High', 'Medium', and 'L
 ## <a name="system-requirements"></a>系統需求
 
 - 支援的作業系統
-  - [Microsoft Windows 10 年度更新](https://blogs.windows.com/windowsexperience/2016/08/02/how-to-get-the-windows-10-anniversary-update/#HTkoK5Zdv0g2F2Zq.97)版（含）以後版本
+  - [Microsoft Windows 10 年度更新版](https://blogs.windows.com/windowsexperience/2016/08/02/how-to-get-the-windows-10-anniversary-update/#HTkoK5Zdv0g2F2Zq.97) 或更新版本
 - 必要的 .NET 版本
-  - [.Net 4.7.1](https://go.microsoft.com/fwlink/?LinkId=863262)或更新版本
+  - [.Net 4.7.1](https://go.microsoft.com/fwlink/?LinkId=863262) 或更新版本
 - 其他需求
   - 必須有網際網路連線可接收工具和範本的更新。
 

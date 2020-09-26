@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 678b7571d54c8938c163801a584ad813c6e5963f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 9e7ac5afb176e58ce47f918ddcbab742ecb90baf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551161"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317441"
 ---
 # <a name="tutorial-configure-concur-for-automatic-user-provisioning"></a>教學課程︰設定 Concur 來自動佈建使用者
 
@@ -96,7 +96,7 @@ Concur 顧問或用戶端系統管理員必須建立不同的 Web 服務系統�
 
 9. 將 [佈建模式] 設定為 [自動]。 
  
-    ![佈建](./media/concur-provisioning-tutorial/provisioning.png)
+    ![Azure 入口網站中 Concur [布建] 索引標籤的螢幕擷取畫面。 [布建模式] 設定為 [自動]，[測試連接] 按鈕會反白顯示。](./media/concur-provisioning-tutorial/provisioning.png)
 
 10. 在 [管理員認證]**** 區段下，輸入 Concur 系統管理員的**使用者名稱**和**密碼**。
 

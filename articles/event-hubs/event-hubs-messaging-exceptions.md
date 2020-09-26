@@ -1,17 +1,22 @@
 ---
-title: Azure 事件中樞例外狀況
+title: 'Azure 事件中樞-例外狀況 (舊版) '
 description: 本文提供 Azure 事件中樞傳訊例外狀況和建議的動作清單。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: b3a7023dc44d7280284fec1eccf00a3dbe88b7ec
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 5a7ca32893a106cd59df548ae3118665acaea654
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90908379"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318478"
 ---
-# <a name="event-hubs-messaging-exceptions---net"></a>事件中樞訊息例外狀況-.NET
+# <a name="event-hubs-messaging-exceptions---net-legacy"></a>事件中樞訊息例外狀況-.NET (舊版) 
 本節列出 .NET Framework Api 所產生的 .NET 例外狀況。 
+
+> [!IMPORTANT]
+> 本文所列的部分例外狀況只適用于舊版事件中樞 .NET 程式庫。 例如： Microsoft.. 1. * 例外狀況。
+> 
+> 如需新 .NET 程式庫所產生之 EventHubsException 的相關資訊，請參閱 [EventHubsException-.net](exceptions-dotnet.md)
 
 ## <a name="exception-categories"></a>例外狀況類別
 

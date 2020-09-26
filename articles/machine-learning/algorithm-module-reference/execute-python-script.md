@@ -10,12 +10,12 @@ ms.custom: devx-track-python
 author: likebupt
 ms.author: keli19
 ms.date: 07/27/2020
-ms.openlocfilehash: 3a39b12afb715cf091ff1af1dcc7cc702769bed3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 3a02581ab898fad0440f45626676ec6bdd7227eb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90908021"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318257"
 ---
 # <a name="execute-python-script-module"></a>執行 Python 腳本模組
 
@@ -58,7 +58,7 @@ if spec is None:
 > 如果您的管線包含多個執行 Python 腳本模組，而這些模組需要的套件不在預先安裝的清單中，請在每個模組中安裝套件。
 
 ## <a name="upload-files"></a>上傳檔案
-[執行 Python 腳本] 模組支援使用 [Azure Machine Learning PYTHON SDK](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py#&preserve-view=trueupload-file-name--path-or-stream-)上傳檔案。
+[執行 Python 腳本] 模組支援使用 [Azure Machine Learning PYTHON SDK](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py&preserve-view=true#upload-file-name--path-or-stream-)上傳檔案。
 
 下列範例顯示如何在執行 Python 腳本模組中上傳影像檔案：
 

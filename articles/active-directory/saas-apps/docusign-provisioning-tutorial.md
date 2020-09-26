@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 5b4e74d5db2d1454360370c05d75cdf826875143
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d56f9890396d0381d24676964dabc57e2020ec28
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88535929"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317424"
 ---
 # <a name="tutorial-configure-docusign-for-automatic-user-provisioning"></a>教學課程︰設定 DocuSign 來自動佈建使用者
 
@@ -65,7 +65,7 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 1. 將 [佈建模式] 設定為 [自動]。 
 
-    ![佈建](./media/docusign-provisioning-tutorial/provisioning.png)
+    ![Azure 入口網站中 DocuSign [布建] 索引標籤的螢幕擷取畫面。 布建模式設定為 [自動] 和 [管理員使用者名稱]、[密碼] 和 [測試連接]。](./media/docusign-provisioning-tutorial/provisioning.png)
 
 1. 在 [管理員認證]**** 區段下，提供下列組態設定：
    

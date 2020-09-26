@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 08/17/2019
 ms.author: Zhchia
-ms.openlocfilehash: aa11cd9dedc2446b3952378e53b1f7248abbfa47
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 3c2fba1cba2c06e07b262e37eac651afb5c102cf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88526205"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317479"
 ---
 # <a name="tutorial-configure-workteam--for-automatic-user-provisioning"></a>教學課程：設定 Workteam 來自動布建使用者
 
@@ -54,15 +54,15 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
 1. 登入 [Workteam](https://app.workte.am/account/signin)。 按一下 [**組織設定**]  >  **設定**。
 
-    ![Workteam](media/workteam-provisioning-tutorial/settings.png)
+    ![已呼叫 [組織設定] 和 [設定] 選項的 [Workteam U I] 螢幕擷取畫面。](media/workteam-provisioning-tutorial/settings.png)
 
 2. 滾動至底部並啟用 Workteam 的布建功能。
 
-    ![Workteam](media/workteam-provisioning-tutorial/icon.png)
+    ![[設定] 區段底部的螢幕擷取畫面，其中包含已呼叫的 S C I M 使用者布建齒輪圖示。](media/workteam-provisioning-tutorial/icon.png)
 
 3. 複製 **基底 Url** 和 **持有人權杖**。 這些值會在 Azure 入口網站中您 Workteam 應用程式的 [布建] 索引標籤中輸入至 [ **租使用者 URL**] 和 [ **秘密權杖** ] 欄位中。
 
-    ![Workteam](media/workteam-provisioning-tutorial/scim.png)
+    ![[S C I M 設定] 對話方塊的螢幕擷取畫面，其中已將基底 U R L 和持有人權杖的文字方塊稱為 out。](media/workteam-provisioning-tutorial/scim.png)
 
 
 ## <a name="add-workteam--from-the-gallery"></a>從資源庫新增 Workteam
@@ -106,11 +106,11 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
 3. 選取 [佈建] 索引標籤。
 
-    ![佈建索引標籤](common/provisioning.png)
+    ![已呼叫 [布建] 選項的 [管理選項] 螢幕擷取畫面。](common/provisioning.png)
 
 4. 將 [佈建模式] 設定為 [自動]。
 
-    ![佈建索引標籤](common/provisioning-automatic.png)
+    ![[布建模式] 下拉式清單的螢幕擷取畫面，其中已呼叫 [自動] 選項。](common/provisioning-automatic.png)
 
 5. 在 [管理員認證] 區段底下，分別輸入**租使用者 URL**和**秘密權杖**中稍早抓取的**基底 url**和**持有人權杖**值。 按一下 [ **測試連接** ] 以確保 Azure AD 可以連線至 Workteam。 如果連接失敗，請確定您的 Workteam 帳戶具有系統管理員許可權，然後再試一次。
 
@@ -120,7 +120,7 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
     ![通知電子郵件](common/provisioning-notification-email.png)
 
-7. 按一下 [檔案] 。
+7. 按一下 [檔案]  。
 
 8. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 使用者至 Workteam**]。
 

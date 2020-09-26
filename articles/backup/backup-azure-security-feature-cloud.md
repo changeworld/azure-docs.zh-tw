@@ -3,12 +3,12 @@ title: Azure 備份的虛刪除
 description: 瞭解如何使用 Azure 備份中的安全性功能，讓備份更安全。
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 76928b98bdb21ffa79fce8435bfe4dda92e0c72d
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: d7998c7f9def6ce9965ded3b6ec700f7975891eb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89179958"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91271540"
 ---
 # <a name="soft-delete-for-azure-backup"></a>Azure 備份的虛刪除
 
@@ -29,7 +29,7 @@ ms.locfileid: "89179958"
 
 新建立的保存庫預設會啟用虛刪除，以防止備份資料遭到意外或惡意刪除。  不建議停用此功能。 如果您打算將受保護的專案移至新的保存庫，而且在刪除和重新保護 (（例如在測試環境中）之前，您應該考慮停用虛刪除，則唯一的情況是您應考慮停用虛刪除 ) 。只有保存庫擁有者可以停用這項功能。 如果您停用此功能，所有未來的受保護專案刪除都會立即移除，而不需要還原。 在停用此功能之前，以虛刪除狀態存在的備份資料，將會在14天的期間內保持為虛刪除狀態。 如果您想要立即永久刪除這些專案，您需要取消刪除，然後再次刪除它們，以永久刪除。
 
- 請務必記住，一旦停用虛刪除功能，所有類型的工作負載（包括 SQL server 和 SAP Hana 工作負載）都會停用此功能。 例如，一旦針對訂用帳戶啟用 [SQL Server/SAP Hana 預覽](./soft-delete-sql-saphana-in-azure-vm.md#steps-to-enroll-in-preview) ，就不可能只針對 SQL Server 或 SAP Hana db 停用虛刪除，同時讓相同保存庫中的虛擬機器保持啟用狀態。 您可以建立不同的保存庫以進行細微的控制。
+請務必記住，一旦停用虛刪除，就會針對所有類型的工作負載停用此功能。 例如，您不可能只針對 SQL server 或 SAP Hana Db 停用虛刪除，同時讓相同保存庫中的虛擬機器保持啟用狀態。 您可以建立不同的保存庫以進行細微的控制。
 
 ### <a name="disabling-soft-delete-using-azure-portal"></a>使用 Azure 入口網站停用虛刪除
 
@@ -160,7 +160,7 @@ AppVM1           DeleteBackupData     Completed            12/5/2019 12:44:15 PM
 
 ### <a name="will-my-snapshots-follow-the-same-lifecycle-as-my-recovery-points-in-the-vault"></a>我的快照集會跟保存庫中的復原點是否遵循相同的生命週期？
 
-是。
+可以。
 
 ### <a name="how-can-i-trigger-the-scheduled-backups-again-for-a-soft-deleted-resource"></a>如何針對虛刪除的資源再次觸發排程備份？
 

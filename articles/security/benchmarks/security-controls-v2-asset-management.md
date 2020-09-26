@@ -4,17 +4,17 @@ description: Azure 安全性基準測試 V2 資產管理
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/13/2020
+ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: ba010c0dd3384af895c68d980fcae788c2d6d45a
-ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
+ms.openlocfilehash: 845c4f3194f35c68306e74734e5ecc6109d9c103
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90059159"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318019"
 ---
-# <a name="security-control-asset-management"></a>安全性控制：資產管理
+# <a name="security-control-v2-asset-management"></a>安全性控制 V2：資產管理
 
 資產管理涵蓋的控制項可確保 Azure 資源的安全性可見度和治理。 這包括安全性人員的許可權建議、資產清查的安全性存取，以及管理服務和資源的核准 (清查、追蹤和正確的) 。
 
@@ -22,7 +22,7 @@ ms.locfileid: "90059159"
 
 | Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP800-53 r4 ID (s)  |
 |--|--|--|--|
-| 上午-1 | 1.1、1.2、1.3、1.4、9.1、12。1 | CM-7、CM-8、CM-11、PM-5 |
+| 上午-1 | 1.1、1。2 | CM-8，下午5點 |
 
 請確定安全性小組已獲得 Azure 租使用者和訂用帳戶中的安全性讀取者許可權，讓他們可以使用 Azure 資訊安全中心監視安全性風險。 
 
@@ -38,7 +38,7 @@ ms.locfileid: "90059159"
 
 **責任**：客戶
 
-**客戶安全性專案關係人**：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [基礎結構和端點安全性](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
@@ -48,7 +48,7 @@ ms.locfileid: "90059159"
 
 | Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP800-53 r4 ID (s)  |
 |--|--|--|--|
-| 上午-2 | 1.5 | CM-8，下午5點 |
+| 上午-2 | 1.1、1.2、1.4、1.5、9.1、12。1 | CM-8，下午5點 |
 
 請確定安全性小組可以存取 Azure 上不斷更新的資產清查。 安全性小組通常需要此清查來評估其組織對新興風險的潛在風險，並做為持續安全性改進的輸入。 
 
@@ -64,7 +64,7 @@ Azure 資訊安全中心清查功能和 Azure Resource Graph 可以查詢及探�
 
 **責任**：客戶
 
-**客戶安全性專案關係人**：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [基礎結構和端點安全性](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
@@ -86,7 +86,7 @@ Azure 資訊安全中心清查功能和 Azure Resource Graph 可以查詢及探�
 
 **責任**：客戶
 
-**客戶安全性專案關係人**：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [安全性合規性管理](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)
 
@@ -106,7 +106,7 @@ Azure 資訊安全中心清查功能和 Azure Resource Graph 可以查詢及探�
 
 **責任**：客戶
 
-**客戶安全性專案關係人**：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [基礎結構和端點安全性](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
@@ -126,7 +126,7 @@ Azure 資訊安全中心清查功能和 Azure Resource Graph 可以查詢及探�
 
 **責任**：客戶
 
-**客戶安全性專案關係人**：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [狀態管理](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)  
 
@@ -136,7 +136,7 @@ Azure 資訊安全中心清查功能和 Azure Resource Graph 可以查詢及探�
 
 | Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP800-53 r4 ID (s)  |
 |--|--|--|--|
-| 上午-6 | 2.6 | AC-3，CM-7，CM-8，CM-10，CM-11 |
+| 上午-6 | 2.6、2。7 | AC-3，CM-7，CM-8，CM-10，CM-11 |
 
 確定只有授權的軟體會執行，而且所有未經授權的軟體都會在 Azure 虛擬機器上遭到封鎖而無法執行。
 
@@ -156,7 +156,7 @@ Azure 資訊安全中心清查功能和 Azure Resource Graph 可以查詢及探�
 
 **責任**：客戶
 
-**客戶安全性專案關係人**：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [基礎結構和端點安全性](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 

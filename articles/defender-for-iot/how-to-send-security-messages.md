@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/09/2020
 ms.author: mlottner
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 476e242559a5c6f8f389a411a563ffb97e683fb3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.custom: devx-track-js
+ms.openlocfilehash: 5217940a3696bd001db421e61be8313453807c8b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90933876"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318512"
 ---
 # <a name="send-security-messages-sdk"></a>傳送安全性訊息 SDK
 
@@ -226,7 +226,7 @@ public void SendSecurityMessage(string message)
 }
 ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 閱讀適用于 IoT 的 Defender 服務 [總覽](overview.md)
 - 深入瞭解適用于 IoT 的 Defender [架構](architecture.md)

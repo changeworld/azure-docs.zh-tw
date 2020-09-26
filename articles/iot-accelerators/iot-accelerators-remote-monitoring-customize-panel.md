@@ -8,13 +8,13 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/05/2018
 ms.topic: conceptual
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 207e5b8d9735004b6dc1a9662a3f66fbed8c2307
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: 1dcca8409022ba4cf1f988b7c777e3a1fa511060
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422686"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318359"
 ---
 # <a name="add-a-custom-panel-to-the-dashboard-in-the-remote-monitoring-solution-accelerator-web-ui"></a>在遠端監視解決方案加速器 Web UI 中的儀表板上新增自訂面板
 
@@ -25,7 +25,7 @@ ms.locfileid: "87422686"
 
 本文中的面板範例會顯示於現有儀表板頁面上。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成本操作指南中的部署，您必須在本機開發機器上安裝下列軟體：
 
@@ -97,4 +97,4 @@ npm start
 
 在本文中，您已了解可用來協助您在遠端監視解決方案加速器 Web UI 中新增或自訂儀表板的資源。
 
-如需遠端監視解決方案加速器的詳細概念資訊，請參閱[遠端監視架構](iot-accelerators-remote-monitoring-sample-walkthrough.md)。
+如需有關遠端監視解決方案加速器的詳細概念資訊，請參閱 [遠端監視架構](iot-accelerators-remote-monitoring-sample-walkthrough.md)。

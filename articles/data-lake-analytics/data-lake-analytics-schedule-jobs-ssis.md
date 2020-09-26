@@ -1,6 +1,6 @@
 ---
 title: 使用 SSIS 對 Azure Data Lake Analytics U-SQL 作業進行排程
-description: 瞭解如何使用 SQL Server Integration Services，透過內嵌腳本或從 U-SQL 查詢檔案來排程 U-SQL 作業。
+description: 瞭解如何使用 SQL Server Integration Services 搭配內嵌腳本或從 U SQL 查詢檔案來排程 U SQL 作業。
 services: data-lake-analytics
 ms.reviewer: jasonh
 ms.assetid: 66dd58b1-0b28-46d1-aaae-43ee2739ae0a
@@ -8,18 +8,18 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.workload: big-data
 ms.date: 07/17/2018
-ms.openlocfilehash: ac747b87cf1a0f2d7c85d05975a31f953bfa5aae
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: a5c7b9fb6a3431534d743f1ebd0b21f1da9fab7b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132495"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318699"
 ---
 # <a name="schedule-u-sql-jobs-using-sql-server-integration-services-ssis"></a>使用 SQL Server Integration Services (SSIS) 對 U-SQL 作業進行排程
 
 在本文件中，您會了解如何使用 SQL Server Integration Services (SSIS) 來協調及建立 U-SQL 作業。 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 [適用於 Integration Services 的 Azure Feature Pack](https://docs.microsoft.com/sql/integration-services/azure-feature-pack-for-integration-services-ssis?view=sql-server-2017#scenario-managing-data-in-the-cloud) 能提供 [Azure Data Lake Analytics 工作](https://docs.microsoft.com/sql/integration-services/control-flow/azure-data-lake-analytics-task?view=sql-server-2017)和 [Azure Data Lake Analytics 連線管理員](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-data-lake-analytics-connection-manager?view=sql-server-2017)，以協助連線至 Azure Data Lake Analytics 服務。 若要使用此工作，請務必安裝：
 
@@ -56,7 +56,7 @@ Azure Data Lake Analytics 工作能讓使用者將 U-SQL 作業提交至 Azure D
 
 在 SSIS 套件設計檢視中，新增 **Azure Data Lake Store 檔案系統工作**和 **Foreach 迴圈容器**，並在該 Foreach 迴圈容器中新增 **Azure Data Lake Analytics 工作**。 Azure Data Lake Store 檔案系統工作可協助將您 ADLS 帳戶中的 U-SQL 檔案下載至暫時資料夾。 Foreach 迴圈容器和 Azure Data Lake Analytics 工作可協助將暫時資料夾中的每個 U-SQL 檔案，以 U-SQL 作業的形式提交至 Azure Data Lake Analytics 帳戶。
 
-![在 Azure Data Lake Store 中使用 U-SQL 檔案](./media/data-lake-analytics-schedule-jobs-ssis/use-u-sql-files-in-azure-data-lake-store.png)
+![顯示新增至 Foreach 迴圈容器 Azure Data Lake 儲存區檔案系統工作的圖表。](./media/data-lake-analytics-schedule-jobs-ssis/use-u-sql-files-in-azure-data-lake-store.png)
 
 ### <a name="configure-azure-data-lake-store-file-system-task"></a>設定 Azure Data Lake Store 檔案系統工作
 
@@ -77,7 +77,7 @@ Azure Data Lake Analytics 工作能讓使用者將 U-SQL 作業提交至 Azure D
 
 3. 將 [列舉程式設定]**** 底下的 [資料夾]**** 設定為 `*.usql`，使迴圈容器能擷取結尾為 `.usql` 的檔案。
 
-    ![設定 Foreach 迴圈容器](./media/data-lake-analytics-schedule-jobs-ssis/configure-foreach-loop-container-collection.png)
+    ![顯示已選取 [集合] 的 [Foreach 迴圈編輯器] 的螢幕擷取畫面，並反白顯示列舉值和列舉值設定區段。](./media/data-lake-analytics-schedule-jobs-ssis/configure-foreach-loop-container-collection.png)
 
 4. 在 [變數對應]**** 頁面中，新增使用者定義的變數以取得每個 U-SQL 檔案的檔案名稱。 將 [索引]**** 設定為 0 以取得檔案名稱。 在此範例中，會定義稱為 `User::FileName` 的變數。 此變數將會被用來在 Azure Data Lake Analytics 工作中以動態方式取得 U-SQL 指令碼檔案連線，並設定 U-SQL 作業名稱。
 
@@ -91,10 +91,10 @@ Azure Data Lake Analytics 工作能讓使用者將 U-SQL 作業提交至 Azure D
     
     若要建立此檔案連線：
 
-   1. 選擇 [ **\<New Connection...>** [fileconnection] 設定]。
+   1. 選擇 [ **\<New Connection...>** [fileconnection] 設定。
    2. 將 [使用類型]**** 設定為 [現有檔案]****，並將 [檔案]**** 設定為任何現有檔案的檔案路徑。
 
-       ![設定 Foreach 迴圈容器](./media/data-lake-analytics-schedule-jobs-ssis/configure-file-connection-for-foreach-loop-container.png)
+       ![顯示檔案連線管理員編輯器的螢幕擷取畫面，其中已選取 [使用類型] 的 [現有檔案]。](./media/data-lake-analytics-schedule-jobs-ssis/configure-file-connection-for-foreach-loop-container.png)
 
    3. 在 [連線管理員]**** 檢視中，以滑鼠右鍵按一下剛剛建立的檔案連線，然後選擇 [屬性]****。
 
@@ -117,7 +117,7 @@ Azure Data Lake Analytics 工作能讓使用者將 U-SQL 作業提交至 Azure D
 
 您可以透過使用 Azure Feature Pack 中的 **Azure Blob 下載工作**，來在 Azure Blob 儲存體中使用 U-SQL 檔案。 此方法可讓您使用雲端上的指令碼。
 
-這些步驟類似于[案例2：在 Azure Data Lake 存放區中使用 U-SQL](#scenario-2-use-u-sql-files-in-azure-data-lake-store)檔案。 將 Azure Data Lake Store 檔案系統工作變更為 Azure Blob 下載工作。 [深入了解 Azure Blob 下載工作](https://docs.microsoft.com/sql/integration-services/control-flow/azure-blob-download-task?view=sql-server-2017)。
+這些步驟類似于 [案例2：在 Azure Data Lake 存放區中使用 U SQL](#scenario-2-use-u-sql-files-in-azure-data-lake-store)檔案。 將 Azure Data Lake Store 檔案系統工作變更為 Azure Blob 下載工作。 [深入了解 Azure Blob 下載工作](https://docs.microsoft.com/sql/integration-services/control-flow/azure-blob-download-task?view=sql-server-2017)。
 
 控制流程如下所示。
 
@@ -135,7 +135,7 @@ Azure Data Lake Analytics 工作能讓使用者將 U-SQL 作業提交至 Azure D
 
     ![將檔案連線新增至本機檔案](./media/data-lake-analytics-schedule-jobs-ssis/configure-file-connection-for-foreach-loop-container.png)
 
-4. 新增**Azure Data Lake Analytics**工作和：
+4. 新增 **Azure Data Lake Analytics** 工作和：
     1. 將 [SourceType]**** 設定為 [FileConnection]****。
     2. 將 [FileConnection]**** 設定為剛剛建立的檔案連線。
 

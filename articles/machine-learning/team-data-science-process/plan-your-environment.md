@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 29190cee748db17caee32497de5512bee736bae0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 603628e24d7ccdffeafea392ab56aa7e47781a37
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87047720"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91296479"
 ---
 # <a name="how-to-identify-scenarios-and-plan-for-advanced-analytics-data-processing"></a>如何識別案例和規劃進階分析資料處理
 
@@ -66,7 +66,7 @@ ms.locfileid: "87047720"
 如需用來將資料內嵌或載入至各種不同儲存體和處理環境的程序和資源，請參閱：
 
 * [將資料載入至儲存體環境以便進行分析](ingest-data.md)
-* [從各種資料來源將定型資料匯入 Azure Machine Learning Studio （傳統）](../studio/import-data.md)
+* [從各種資料來源將定型資料匯入 Azure Machine Learning Studio (傳統) ](../classic/import-data.md)
 
 ### <a name="does-the-data-need-to-be-moved-on-a-regular-schedule-or-modified-during-migration"></a>資料是否需要定期移動或在移轉期間修改？
 
@@ -75,11 +75,11 @@ ms.locfileid: "87047720"
 * 同時涉及內部部署和雲端資源的混合式案例
 * 在移轉的過程中由商務邏輯交易、修改或變更資料的案例
 
-如需詳細資訊，請參閱[使用 Azure Data Factory 將資料從 SQL Server 資料庫移至 SQL Azure](move-sql-azure-adf.md)。
+如需詳細資訊，請參閱 [使用 Azure Data Factory 將資料從 SQL Server 資料庫移至 SQL Azure](move-sql-azure-adf.md)。
 
 ### <a name="how-much-of-the-data-is-to-be-moved-to-azure"></a>有多少資料要移至 Azure？
 
-大型資料集可能會超過某些環境的儲存體容量。 如需範例，請參閱下一節中的 Machine Learning Studio （傳統）大小限制的討論。 在這種情況下，您在分析期間可以使用資料樣本。 如需如何在各種 Azure 環境中縮減取樣資料集的詳細資訊，請參閱 [在 Team Data Science Process 中進行資料取樣](sample-data.md)。
+大型資料集可能會超過某些環境的儲存體容量。 如需範例，請參閱下一節中 Machine Learning Studio (傳統) 的大小限制討論。 在這種情況下，您在分析期間可以使用資料樣本。 如需如何在各種 Azure 環境中縮減取樣資料集的詳細資訊，請參閱 [在 Team Data Science Process 中進行資料取樣](sample-data.md)。
 
 ## <a name="data-characteristics-questions-type-format-and-size"></a>資料特性問題：類型、格式和大小
 
@@ -106,9 +106,9 @@ ms.locfileid: "87047720"
 * 中型：大於 2 GB 且小於 10 GB
 * 大型：大於 10 GB
 
-採用 Azure Machine Learning Studio （傳統）環境，例如：
+採用 Azure Machine Learning Studio (傳統) 環境，例如：
 
-* 如需 Azure Machine Learning Studio 支援的資料格式和 類型的清單，請參閱 [支援的資料格式和資料類型](../studio/import-data.md#supported-data-formats-and-data-types) 一節。
+* 如需 Azure Machine Learning Studio 支援的資料格式和 類型的清單，請參閱 [支援的資料格式和資料類型](../classic/import-data.md#supported-data-formats-and-data-types) 一節。
 * 如需分析程序中使用的其他 Azure 服務限制的相關資訊，請參閱 [Azure 訂用帳戶和服務限制、配額與限制](../../azure-resource-manager/management/azure-subscription-service-limits.md)。
 
 ## <a name="data-quality-questions-exploration-and-pre-processing"></a>資料品質問題：探索和前置處理
@@ -145,8 +145,8 @@ ms.locfileid: "87047720"
 
 ### <a name="what-tools-should-you-use-for-data-analysis"></a>您應該使用哪些工具進行資料分析？
 
-* [Microsoft Azure PowerShell](/powershell/azure/) -在指令碼語言中用來管理 Azure 資源的指令碼語言
-* [Azure Machine Learning Studio](../studio/what-is-ml-studio.md)
+* [Microsoft Azure PowerShell](/powershell/azure/) -用來以指令碼語言管理 Azure 資源的指令碼語言
+* [Azure Machine Learning Studio](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 * [Revolution Analytics](https://www.microsoft.com/sql-server/machinelearningserver)
 * [RStudio](https://www.rstudio.com)
 * [適用於 Visual Studio 的 Python 工具](https://aka.ms/ptvsdocs)

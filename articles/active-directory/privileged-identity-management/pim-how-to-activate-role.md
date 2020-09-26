@@ -14,12 +14,12 @@ ms.date: 07/06/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0306ae3193dc53f25a1e82eae1eb09c7d26ba9b6
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 2a2c3c112183e102f6c3c4a0bebb83376c7e8d85
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90055447"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317532"
 ---
 # <a name="activate-my-azure-ad-roles-in-pim"></a>在 PIM 中啟用 Azure AD 角色
 
@@ -40,7 +40,7 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 簡化了
 
 # <a name="new-version"></a>[新版本](#tab/new)
 
-## <a name="activate-a-role"></a>啟用角色
+## <a name="activate-a-role-for-new-version"></a>啟用新版本的角色
 
 當您需要擔任 Azure AD 角色時，您可以在 Privileged Identity Management 中開啟 **我的角色** 來要求啟用。
 
@@ -80,7 +80,7 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 簡化了
 
     ![啟用要求正在等待核准通知](./media/pim-resource-roles-activate-your-roles/resources-my-roles-activate-notification.png)
 
-## <a name="view-the-status-of-your-requests"></a>檢視要求狀態
+## <a name="view-the-status-of-your-requests-for-new-version"></a>查看新版本的要求狀態
 
 您可以檢視要啟用的擱置要求狀態。
 
@@ -92,7 +92,7 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 簡化了
 
 1. 捲動至右側可檢視 [要求狀態]**** 欄。
 
-## <a name="cancel-a-pending-request"></a>取消擱置要求
+## <a name="cancel-a-pending-request-for-new-version"></a>取消新版本的暫止要求
 
 如果您不需要啟用需要核准的角色，您可以隨時取消擱置要求。
 
@@ -106,7 +106,7 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 簡化了
 
    ![已反白顯示取消動作的我的要求清單](./media/pim-resource-roles-activate-your-roles/resources-my-requests-cancel.png)
 
-## <a name="troubleshoot"></a>疑難排解
+## <a name="troubleshoot-for-new-version"></a>針對新版本進行疑難排解
 
 ### <a name="permissions-are-not-granted-after-activating-a-role"></a>啟用角色之後未授與權限
 
@@ -226,6 +226,6 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 簡化了
 
  ---
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [在 Privileged Identity Management 中啟用我的 Azure AD 角色](pim-how-to-activate-role.md)

@@ -3,12 +3,12 @@ title: 支援 Azure Migrate 中的 Hyper-v 遷移
 description: 深入瞭解使用 Azure Migrate 進行 Hyper-v 遷移的支援。
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: 4f3609560fa59c08c4d92f4faa36c7fbbffb95d7
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 0054b6983e7d11dd36a92f21cd1cb20314fb9408
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89051146"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318223"
 ---
 # <a name="support-matrix-for-hyper-v-migration"></a>Hyper-v 遷移的支援矩陣
 
@@ -38,12 +38,12 @@ ms.locfileid: "89051146"
 | :----------------------------- | :------------------- |
 | **作業系統** | Azure 支援的所有 [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) 和 [Linux](../virtual-machines/linux/endorsed-distros.md) 作業系統。 |
 **Windows Server 2003** | 針對執行 Windows Server 2003 的 Vm，您必須先 [安裝 hyper-v Integration Services](prepare-windows-server-2003-migration.md) ，然後再進行遷移。 | 
-**Azure 中的 Linux Vm** | 有些 VM 可能需要變更，才能在 Azure 中執行。<br/><br/> 針對 Linux，Azure Migrate 會自動為這些作業系統進行變更：<br/> -Red Hat Enterprise Linux 6.5 +、7.0 +<br/> -CentOS 6.5 +、7.0 +</br> -SUSE Linux Enterprise Server 12 SP1 +<br/> -Ubuntu 14.04 LTS、16.04 LTS、18.04 LTS<br/> -Debian 7、8。 針對其他作業系統，您必須手動進行 [必要的變更](prepare-for-migration.md#linux-machines) 。
+**Azure 中的 Linux Vm** | 有些 VM 可能需要變更，才能在 Azure 中執行。<br/><br/> 針對 Linux，Azure Migrate 會自動為這些作業系統進行變更：<br/> -Red Hat Enterprise Linux 8.1、8.0、7.8、7.7、7.6、7.5、7.4、7.0、6。x<br/> -分幣 OS 8.1、8.0、7.7、7.6、7.5、7.4、6。x</br> -SUSE Linux Enterprise Server 12 SP1 +<br/> -SUSE Linux Enterprise Server 15 SP1 <br/>-Ubuntu 19.04、19.10、14.04 LTS、16.04 LTS、18.04 LTS<br/> -Debian 7、8 <br/> Oracle Linux 7.7、7.7-CI<br/> 針對其他作業系統，您必須手動進行 [必要的變更](prepare-for-migration.md#verify-required-changes-before-migrating) 。
 | **Azure 的必要變更** | 有些 VM 可能需要變更，才能在 Azure 中執行。 請在遷移前手動進行調整。 相關文章包含如何進行這項操作的指示。 |
 | **Linux 開機**                 | 如果/boot 是在專用磁碟分割上，它應該位於 OS 磁片上，而不會分散到多個磁片。<br/> 如果/boot 是根 (/) 磁碟分割的一部分，則 '/' 磁碟分割應位於 OS 磁片上，而不是跨越其他磁片。 |
-| **UEFI 開機**                  | 支援。 確定您選取 Azure 第2代 VM 所支援的 VM 大小  |
+| **UEFI 開機**                  | 支援。 以 UEFI 為基礎的 Vm 將會遷移至 Azure 第2代 Vm。  |
 | **UEFI-安全開機**         | 不支援遷移。|
-| **磁碟大小**                  | 2 TB 的 OS 磁片，4 TB 的資料磁片。|
+| **磁碟大小**                  | 2 TB 的 OS 磁片 (BIOS 開機) 、4 TB 的 OS 磁片 (UEFI 開機) 、4 TB 的資料磁片。|
 | **磁片編號** | 每個 VM 最多16個磁片。|
 | **加密的磁片/磁片區**    | 不支援遷移。|
 | **RDM/傳遞磁片**      | 不支援遷移。|

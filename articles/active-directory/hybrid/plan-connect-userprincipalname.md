@@ -10,12 +10,12 @@ ms.workload: identity
 ms.service: active-directory
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e105d4909705622a931c51bcb7cf0a9db4179525
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 58b4bbcac110398ee4ff132b76ce8c4868ee17f8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279596"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317586"
 ---
 # <a name="azure-ad-userprincipalname-population"></a>Azure AD UserPrincipalName 填入
 
@@ -54,7 +54,7 @@ Azure AD Connect 會同步處理屬性。  在安裝期間，您可以檢視已�
 
 若要在 Azure AD 啟用替代登入識別碼，且您使用的是 Azure AD Connect，則不需要進行額外的設定步驟。 您可以直接從精靈設定替代識別碼。 請參閱同步處理一節下的使用者 Azure AD 登入設定。在 [ **使用者主體名稱** ] 下拉式清單中，選取替代登入識別碼的屬性。
 
-![未驗證的網域](./media/plan-connect-userprincipalname/altloginid.png)  
+![醒目顯示 [使用者主體名稱] 清單的螢幕擷取畫面，您可以在其中選取 [替代登入識別碼] 屬性。](./media/plan-connect-userprincipalname/altloginid.png)  
 
 如需詳細資訊，請參閱[設定替代登入識別碼](/windows-server/identity/ad-fs/operations/configuring-alternate-login-id) \(機器翻譯\) 和 [Azure AD 登入設定](how-to-connect-install-custom.md#azure-ad-sign-in-configuration)
 

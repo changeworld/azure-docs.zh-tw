@@ -8,13 +8,13 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/05/2018
 ms.topic: conceptual
-ms.custom: devx-track-javascript
-ms.openlocfilehash: f10be59501368012b0e4269f402fe258da552e25
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: afd8c5b01b9f36606bf6bd43fbed747ca83ba320
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422737"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318410"
 ---
 # <a name="add-a-custom-flyout-to-the-remote-monitoring-solution-accelerator-web-ui"></a>在遠端監視解決方案加速器 Web UI 中新增自訂飛出視窗
 
@@ -25,7 +25,7 @@ ms.locfileid: "87422737"
 
 本文中的飛出視窗範例會顯示在有格線的頁面上，[在遠端監視解決方案加速器 Web UI 中新增自訂格線](iot-accelerators-remote-monitoring-customize-grid.md)操作方式文章會說明如何新增。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成本操作指南中的部署，您必須在本機開發機器上安裝下列軟體：
 
@@ -142,4 +142,4 @@ npm start
 
 現在您已在頁面上定義飛出視窗，下一個步驟是[在遠端監視解決方案加速器 Web UI 中的儀表板新增面板](iot-accelerators-remote-monitoring-customize-panel.md)。
 
-如需遠端監視解決方案加速器的詳細概念資訊，請參閱[遠端監視架構](iot-accelerators-remote-monitoring-sample-walkthrough.md)。
+如需有關遠端監視解決方案加速器的詳細概念資訊，請參閱 [遠端監視架構](iot-accelerators-remote-monitoring-sample-walkthrough.md)。

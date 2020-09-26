@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 897c0f3c51d6d9bea1f90a66ccf50aa51e22f118
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: c46d977b6ce4eaa62aefc6874ce2b855a4711670
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90088301"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317507"
 ---
 # <a name="troubleshoot-azure-ad-connectivity"></a>Azure AD 連線能力進行疑難排解
 這篇文章說明 Azure AD Connect 與 Azure AD 之間的連線的運作方式，以及如何疑難排解連線問題。 這些問題最有可能出現在具有 Proxy 伺服器的環境中。
@@ -85,7 +85,7 @@ Proxy 伺服器也必須開啟必要的 URL。 如需官方清單，請參閱 [O
 
 PowerShell 會使用 machine.config 中的組態來連絡 Proxy。 winhttp/netsh 中設定應該不會影響這些 Cmdlet。
 
-如果 Proxy 設定正確，您應該會收到成功的狀態：![proxy200](./media/tshoot-connect-connectivity/invokewebrequest200.png)
+如果 proxy 設定正確，您應該會收到成功狀態： ![ 當正確設定 proxy 時顯示成功狀態的螢幕擷取畫面。](./media/tshoot-connect-connectivity/invokewebrequest200.png)
 
 如果您收到 **無法連線到遠端伺服器**，則 PowerShell 會嘗試在未使用 proxy 的情況下進行直接呼叫，或未正確設定 DNS。 請確定已正確設定 **machine.config** 檔案。
 ![unabletoconnect](./media/tshoot-connect-connectivity/invokewebrequestunable.png)
