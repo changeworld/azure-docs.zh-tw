@@ -4,21 +4,21 @@ description: Go-To-Market 服務 - 本節描述了發行者可以使用的 Micro
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 07/06/2020
+ms.date: 09/24/2020
 author: keferna
 ms.author: keferna
-ms.openlocfilehash: 0a98bf7d6a035dbf293bda5d8afe5d0e1130f58f
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: da3194559ef5ec4c325f7dc15591f57c0d9c38c9
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705549"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91368232"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>您的商業市集權益
 
-您已發佈至 Microsoft 商業 marketplace，現在您想要查看您的供應專案是否成功。 我們會為您提供各種權益，可加速供應項目成長所必須的銷售、技術和行銷資源都包含在內。
+您已發佈至 Microsoft 商業 marketplace，現在您想要查看您的供應專案是否成功。 我們會為您提供加速供應專案成長所需的銷售、技術和行銷優勢。
 
-一旦您的供應專案上線 Microsoft AppSource 或 Azure Marketplace，請移至 [合作夥伴中心](https://partner.microsoft.com/dashboard/mpn/membership/benefits/commercialmarketplace) 以存取並啟用您符合資格的行銷、銷售和技術權益。 Marketplace Rewards 權益會依據商業市集參與程度和銷售量逐漸累積。 參與程度越高，取得的獎勵就越多。
+一旦您的供應專案上線 Microsoft AppSource 或 Azure Marketplace，請移至 [合作夥伴中心](https://partner.microsoft.com/dashboard/mpn/membership/benefits/commercialmarketplace) 以存取並啟用您符合資格的行銷、銷售和技術權益。 觀看 Marketplace Rewards [示範影片](https://partner.microsoft.com/asset/detail/marketplace-rewards-demo-mp4) ，以瞭解如何在 Marketplace Rewards 中註冊，並在合作夥伴中心中啟用權益。 Marketplace Rewards 權益會依據商業市集參與程度和銷售量逐漸累積。 參與程度越高，取得的獎勵就越多。
 
 ## <a name="marketplace-rewards"></a>Marketplace Rewards
 
@@ -44,13 +44,12 @@ Marketplace Rewards 設計是為了在特定成長階段為您提供支援，先
 2. 移至合作夥伴中心中的 [Marketplace Rewards](https://partner.microsoft.com/dashboard/mpn/program/commercialmarketplace) ，然後選取 [ **在 Marketplace Rewards 計畫中註冊**]。
 3. 若要啟用銷售和行銷權益，請指派公司行銷連絡人。 此連絡人會收到您作用中 Marketplace Rewards 的後續相關通知。
 4. 若要新增或更新您的行銷連絡人資訊，請移至 Marketplace Rewards 頁面上 [銷售和行銷權益] 索引標籤的頂端，然後選取 [新增]、[更新] 或 [變更]。  接下來，執行下列作業：
-
     1. 從清單中選取使用者。 若想要指派的使用者不在清單中，您可以在 [帳戶設定] 中新增使用者。
     1. 提供使用者的電子郵件地址，但此地址不同於和貴公司合作夥伴中心帳戶相關聯的電子郵件地址。 我們會透過電子郵件將 Marketplace Rewards 權益的使用寄到您指定的行銷連絡人電子郵件地址。
     1. 提供此行銷連絡人的連絡電話和慣用語言。 在您完成輸入此資訊之後，請選取 [指派使用者]。
     1. 更新行銷連絡人之後，請選取 [啟用]，以取得您想要開始使用的權益。 一旦您啟用權益，Rewards 小組成員會在一週內與您的行銷連絡人連絡。
 
-**技術權益**
+### <a name="technical-benefits"></a>技術權益
 
 1. 您可以在雲端和混合式解決方案的售前、設計、部署和應用程式開發階段，使用您的技術優勢來要求技術協助。 若要請求協助，請填寫要求表單，然後選取 [提交要求]。
 2. 當您解鎖這些權益時，我們會透過電子郵件分享如何利用 Azure 贊助權益。
@@ -79,7 +78,7 @@ Marketplace Rewards 設計是為了在特定成長階段為您提供支援，先
 
 這些權益是專為支援行銷、銷售和技術活動而設計，可協助您獲得更多訪客、接收更多潛在客戶，並且轉換更多業務。
 
-所有具有現場供應專案的合作夥伴，都可以與專屬的 engagement 經理合作，為您的商業 marketplace 供應專案組合選擇最高價值的活動。 這項業務開發屬於每個供應項目的長效服務，也就是您可以配合貴公司更大範圍的行銷和銷售策略時機，挑選您的活動及其執行的時機點。 
+所有具有現場供應專案的合作夥伴，都可以與專屬的 engagement 經理合作，為您的商業 marketplace 供應專案組合選擇最高價值的活動。 這項業務開發屬於每個供應項目的長效服務，也就是您可以配合貴公司更大範圍的行銷和銷售策略時機，挑選您的活動及其執行的時機點。
 
 ![行銷權益](./media/marketplace-publishers-guide/marketing-benefit.png)
 
@@ -97,23 +96,23 @@ Marketplace Rewards 設計是為了在特定成長階段為您提供支援，先
 
 ### <a name="publisher-agreement"></a>發行者合約
 
-本頁面所述之所有活動都涵蓋於[市集發行者合約](https://go.microsoft.com/fwlink/?LinkID=699560)中，且遵循商業權益方案的補充條款規範。
+本頁面上所述的所有活動都是由 Microsoft [publisher 合約](https://go.microsoft.com/fwlink/?LinkID=699560) 所涵蓋，並遵循「商業利益方案」增補條款。
 
 ### <a name="cancellation-policy"></a>取消原則
 
-[上市和試用版](determine-your-listing-type.md)發行者可以選擇加入或退出各項供應項目發佈的活動。 合作夥伴隨時都可以退出任何業務開發項目。 
+[上市和試用版](determine-your-listing-type.md)發行者可以選擇加入或退出各項供應項目發佈的活動。 合作夥伴隨時都可以退出任何業務開發項目。
 
-對於出現已下行為的發行者，Microsoft 將保留撤銷及終止 Marketplace Rewards 權益的權利： 
+對於出現已下行為的發行者，Microsoft 將保留撤銷及終止 Marketplace Rewards 權益的權利：
 
 * 使用其 marketplace 清單來參與不合法的活動。
 * 收到已知或認為詐騙的購買。
-* 從商業市場中取消列出。 
+* 從商業市場中取消列出。
 * 使用其供應專案來顯示違反著作權或商標法則的行銷或其他內容。
 * 違反 [azure 贊助方案](https://azure.microsoft.com/offers/ms-azr-0036p/)的原則，包括（但不限於）對自己的內部作業或比特幣挖掘使用 azure 贊助資金。
 
 在下列情況中，Microsoft 會保留撤銷和終止 Marketplace Rewards 的權利：
 
-* 進行購買的客戶不小心，希望取消購買。 
+* 進行購買的客戶不小心，希望取消購買。
 * 客戶會在使用合作夥伴的產品之前取消。
 
 ### <a name="offer-availability"></a>供應專案可用性
@@ -124,10 +123,7 @@ Marketplace Rewards 設計是為了在特定成長階段為您提供支援，先
 
 ## <a name="next-steps"></a>後續步驟
 
-登入 [合作夥伴中心](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) 以建立或設定您的供應專案。
-
-在 [合作夥伴中心](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)中啟用 Marketplace Rewards 的權益。
-
-請檢閱[可供您使用的自助服務資源 ](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/)(英文)。
-
-註冊 [Microsoft AppSource 和 Azure Marketplace 社群論壇](https://aka.ms/MarketplaceCommunity)，深入瞭解相關主題或加入討論。
+- 登入 [合作夥伴中心](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) 以建立或設定您的供應專案。
+- 在 [合作夥伴中心](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)中啟用 Marketplace Rewards 的權益。
+- 請檢閱[可供您使用的自助服務資源 ](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/)(英文)。
+- 註冊 [Microsoft AppSource 和 Azure Marketplace 社群論壇](https://aka.ms/MarketplaceCommunity)，深入瞭解相關主題或加入討論。

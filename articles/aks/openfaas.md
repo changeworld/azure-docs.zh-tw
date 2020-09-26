@@ -6,18 +6,18 @@ ms.topic: conceptual
 ms.date: 03/05/2018
 ms.author: juda
 ms.custom: mvc
-ms.openlocfilehash: 98b1842f81703041f419850be17c0c05a24b7c6b
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: a4834ece4741b14981c08721e28bf528cab1da89
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89440893"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91368884"
 ---
 # <a name="using-openfaas-on-aks"></a>在 AKS 上使用 OpenFaaS
 
 [OpenFaaS][open-faas] 是一種架構，可透過使用容器來建立無伺服器函式。 由於是開放原始碼專案，它在社群內被廣泛採用。 本文件詳述在 Azure Kubernetes Service (AKS) 叢集上安裝和使用 OpenFaas 的做法。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 為了要完成本文中的步驟，您需要下列項目。
 
@@ -134,7 +134,7 @@ echo -n $PASSWORD | ./faas-cli login -g $OPENFAAS_URL -u admin --password-stdin
 
 按一下 [部署新函式]****，並搜尋 **Figlet**。 選取 Figlet 函式，然後按一下 [部署]****。
 
-![Figlet](media/container-service-serverless/figlet.png)
+![螢幕擷取畫面顯示 [部署新的函式] 對話方塊，並在搜尋行上顯示文字 figlet。](media/container-service-serverless/figlet.png)
 
 使用 curl 叫用此函式。 將下列範例中的 IP 位址取代為您的 OpenFaas 閘道。
 

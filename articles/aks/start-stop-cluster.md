@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 09/24/2020
 author: palma21
-ms.openlocfilehash: 460b592924a19449d77ce8d45f470f3e3129f4a6
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 4a814d575e0879daec64ebfdabc1539219bea250
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91357942"
+ms.locfileid: "91368935"
 ---
 # <a name="stop-and-start-an-azure-kubernetes-service-aks-cluster-preview"></a>停止並啟動 Azure Kubernetes Service (AKS) 叢集 (預覽) 
 
@@ -28,6 +28,7 @@ ms.locfileid: "91357942"
 使用叢集啟動/停止功能時，適用下列限制：
 
 - 只有虛擬機器擴展集支援的叢集才支援這項功能。
+- 在預覽期間，私人叢集不支援這項功能。
 - 已停止 AKS 叢集的叢集狀態最多會保留12個月。 如果您的叢集已停止超過12個月，則無法復原叢集狀態。 如需詳細資訊，請參閱 [AKS 支援原則](support-policies.md)。
 - 您只能啟動或刪除已停止的 AKS 叢集。 若要執行任何作業（例如調整規模或升級），請先啟動您的叢集。
 
