@@ -8,12 +8,12 @@ ms.date: 08/26/2020
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.service: digital-twins
-ms.openlocfilehash: e2cb8ee282666d7a9a567ca04762b26de3b3b9bd
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 1725c3ff162e4f6b7ac3a5ea1ede6976c827b510
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89443036"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328488"
 ---
 # <a name="move-an-azure-digital-twins-instance-to-a-different-azure-region"></a>將 Azure 數位 Twins 實例移至不同的 Azure 區域
 
@@ -30,7 +30,7 @@ ms.locfileid: "89443036"
     - 重新連結連接的資源。
 4. 清除來源資源：刪除原始實例。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 在嘗試重新建立您的 Azure 數位 Twins 實例之前，最好先流覽原始實例的元件，並清楚瞭解所有需要重新建立的部分。
 
@@ -113,7 +113,7 @@ ms.locfileid: "89443036"
 
 ### <a name="create-a-new-instance"></a>建立新的實例
 
-首先， **在您的目的地區域中建立新的 Azure 數位 Twins 實例**。 若要這樣做，請遵循 how [*to：設定實例和驗證*](how-to-set-up-instance-scripted.md)中的步驟，讓這些指標牢記在心：
+首先， **在您的目的地區域中建立新的 Azure 數位 Twins 實例**。 若要這樣做，請遵循 how [*to：設定實例和驗證*](how-to-set-up-instance-portal.md)中的步驟，讓這些指標牢記在心：
 * **如果**新的實例位於不同的資源群組中，您可以保留相同的名稱。 如果您需要使用包含原始實例的相同資源群組，則新的實例將需要它自己的相異名稱。
 * 當系統提示您輸入位置時，請輸入目標新區域。
 * 您 **不需要** 重新建立應用程式註冊。 您的新實例可以重複使用您已經擁有的相同應用程式註冊。
@@ -214,7 +214,7 @@ ADT Explorer 現在會將您的模型和圖形 (（包括 twins 和) 關聯性�
 
 完成此步驟之後，目的地區域中的新實例應該是原始實例的複本。
 
-## <a name="verify"></a>驗證
+## <a name="verify"></a>確認
 
 若要確認您的新實例是否已正確設定，您可以使用下列工具：
 * [**Azure 入口網站**](https://portal.azure.com) (適合用來確認新的實例存在且位於正確的目的地區域中;也適用于驗證端點和路由，以及其他 Azure 服務的連線) 

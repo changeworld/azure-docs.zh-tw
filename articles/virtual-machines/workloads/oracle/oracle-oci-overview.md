@@ -3,7 +3,7 @@ title: 整合 Microsoft Azure 與 Oracle Cloud Infrastructure | Microsoft Docs
 description: 了解用於整合 Microsoft Azure 上所執行 Oracle 應用程式與 Oracle Cloud Infrastructure (OCI) 中資料庫的解決方案。
 services: virtual-machines-linux
 documentationcenter: ''
-author: rgardler
+author: dbakevlar
 manager: ''
 tags: ''
 ms.assetid: ''
@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/01/2020
-ms.author: rogardle
+ms.author: kegorman
 ms.custom: ''
-ms.openlocfilehash: d93446f4db914c736235daeb4e08e82b9ff00e62
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: a73d327ad2a251b5043da7e58c14e5f6f311e334
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224497"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91274498"
 ---
 # <a name="oracle-application-solutions-integrating-microsoft-azure-and-oracle-cloud-infrastructure"></a>用於整合 Microsoft Azure 與 Oracle Cloud Infrastructure 的 Oracle 應用程式解決方案
 
@@ -35,7 +35,7 @@ Microsoft 與 Oracle 合作提供高輸送量的低延遲跨雲端連線，以�
 
 跨雲端連線提供一個解決方案，以供在 Azure 虛擬機器上執行 Oracle 領先業界的應用程式，以及自有的自訂應用程式，同時享有在 OCI 中託管資料庫服務的優點。 
 
-自2020之後，下列應用程式已通過跨雲端設定認證：
+自2020到5月為止，下列應用程式已通過跨雲端設定的認證：
 
 * E-Business Suite
 * JD Edwards EnterpriseOne

@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 03/06/2020
 ms.topic: conceptual
 ms.custom: how-to, racking-python
-ms.openlocfilehash: 239fc9de991066ec0603247abafae36a618d534f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: b386c058a2795402cc60fddf6c187b57aec2185e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90889865"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328389"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-preview"></a>將機器學習模型部署至 Azure Functions (preview) 
 
@@ -31,7 +31,7 @@ ms.locfileid: "90889865"
 ## <a name="prerequisites"></a>Prerequisites
 
 * Azure Machine Learning 工作區。 如需詳細資訊，請參閱 [建立工作區](how-to-manage-workspace.md) 文章。
-* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
+* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)。
 * 在您的工作區中註冊的已定型機器學習模型。 如果您沒有模型，請使用 [影像分類教學課程：定型模型](tutorial-train-models-with-aml.md) 來定型和註冊模型。
 
     > [!IMPORTANT]
@@ -295,7 +295,7 @@ print(blob.location)
 
 如需使用 blob 觸發程式的詳細資訊，請參閱 [建立 Azure blob 儲存體所觸發](/azure/azure-functions/functions-create-storage-blob-triggered-function) 的函式一文。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * 瞭解如何在 [函數](/azure/azure-functions/functions-create-function-linux-custom-image) 檔中設定函數應用程式。
 * 深入瞭解 Blob 儲存體如何觸發 [Azure blob 儲存體](https://docs.microsoft.com/azure/azure-functions/functions-bindings-storage-blob)系結。

@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 09/01/2020
-ms.openlocfilehash: c7c3825d97a5566a43346febc7bbf86a4b242b54
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: fc9d38f2e34e0b01183441fd48e39976d18a50e6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905696"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328457"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>將模型部署到 Azure Kubernetes Service 叢集
 
@@ -123,8 +123,8 @@ print(service.get_logs())
 
 * [AksCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.akscompute?view=azure-ml-py&preserve-view=true)
 * [AksWebservice.deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aks.aksservicedeploymentconfiguration?view=azure-ml-py&preserve-view=true)
-* [模型. 部署](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-)
-* [Webservice.wait_for_deployment](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#&preserve-view=truewait-for-deployment-show-output-false-)
+* [模型. 部署](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py&preserve-view=true#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-)
+* [Webservice.wait_for_deployment](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truewait-for-deployment-show-output-false-)
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -136,7 +136,7 @@ az ml model deploy -ct myaks -m mymodel:1 -n myservice -ic inferenceconfig.json 
 
 [!INCLUDE [deploymentconfig](../../includes/machine-learning-service-aks-deploy-config.md)]
 
-如需詳細資訊，請參閱 [az ml 模型部署](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-deploy) 參考。
+如需詳細資訊，請參閱 [az ml 模型部署](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-model-deploy) 參考。
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
@@ -188,7 +188,7 @@ concurrentRequests = targetRps * reqTime / targetUtilization
 replicas = ceil(concurrentRequests / maxReqPerContainer)
 ```
 
-如需有關設定、和的詳細資訊 `autoscale_target_utilization` `autoscale_max_replicas` ，請 `autoscale_min_replicas` 參閱 [>akswebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py) 模組參考。
+如需有關設定、和的詳細資訊 `autoscale_target_utilization` `autoscale_max_replicas` ，請 `autoscale_min_replicas` 參閱 [>akswebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py&preserve-view=true) 模組參考。
 
 ## <a name="deploy-models-to-aks-using-controlled-rollout-preview"></a>使用受控制的推出 (預覽版，將模型部署到 AKS) 
 
@@ -302,7 +302,7 @@ print(primary)
 ```
 
 > [!IMPORTANT]
-> 如果您需要重新產生金鑰，請使用 [`service.regen_key`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py&preserve-view=true)
+> 如果您需要重新產生金鑰，請使用 [`service.regen_key`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py&preserve-view=true)
 
 ### <a name="authentication-with-tokens"></a>使用權杖進行驗證
 
@@ -324,9 +324,14 @@ print(token)
 >
 > Microsoft 強烈建議您在與 Azure Kubernetes Service 叢集相同的區域中建立 Azure Machine Learning 工作區。 若要使用權杖進行驗證，Web 服務會呼叫 Azure Machine Learning 工作區的建立區域。 如果您的工作區區域無法使用，即使您的叢集與您的工作區位於不同的區域，您也將無法提取 web 服務的權杖。 這實際上會導致權杖型驗證無法使用，直到您的工作區區域再次可供使用為止。 此外，您的叢集區域和工作區區域之間的距離愈大，提取權杖所需的時間就愈長。
 >
-> 若要取得權杖，您必須使用 Azure Machine Learning SDK 或 [az ml 服務取得存取權杖](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/service?view=azure-cli-latest#ext-azure-cli-ml-az-ml-service-get-access-token) 命令。
+> 若要取得權杖，您必須使用 Azure Machine Learning SDK 或 [az ml 服務取得存取權杖](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/service?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-service-get-access-token) 命令。
 
-## <a name="next-steps"></a>下一步
+
+### <a name="vulnerability-scanning"></a>弱點掃描
+
+Azure 資訊安全中心為混合式雲端工作負載提供統一的安全性管理和進階威脅防護。 您應允許 Azure 資訊安全中心掃描您的資源，並遵循其建議。 如需詳細資訊，請參閱 [Azure Kubernetes Services 與資訊安全中心整合](https://docs.microsoft.com/azure/security-center/azure-kubernetes-service-integration)。
+
+## <a name="next-steps"></a>後續步驟
 
 * [使用 Azure 虛擬網路的安全推斷環境](how-to-secure-inferencing-vnet.md)
 * [如何使用自訂 Docker 映射部署模型](how-to-deploy-custom-docker-image.md)

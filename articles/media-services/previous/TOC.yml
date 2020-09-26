@@ -115,8 +115,6 @@
     - name: 編碼內容
       href: media-services-encode-asset.md
       items:
-        - name: 比較編碼器
-          href: media-services-compare-encoders.md
         - name: 管理編碼的速度和並行
           href: media-services-manage-encoding-speed.md
         - name: 媒體編碼器標準 (MES)
@@ -205,20 +203,6 @@
                   href: media-services-mes-preset-H264-Single-Bitrate-High-Quality-SD-for-Android.md
                 - name: H264 單一位元速率低品質 SD (適用於 Android)
                   href: media-services-mes-preset-H264-Single-Bitrate-Low-Quality-SD-for-Android.md
-        - name: 媒體編碼器高階工作流程
-          items:
-            - name: Media Encoder Premium Workflow 格式和轉碼器
-              href: media-services-premium-workflow-encoder-formats.md
-            - name: 使用媒體編碼器高階工作流程進行編碼
-              items:
-                - name: 媒體編碼器高階工作流程
-                  href: media-services-encode-with-premium-workflow.md
-                - name: 媒體編碼器 Premium 工作流程教學課程
-                  href: media-services-media-encoder-premium-workflow-tutorials.md
-                - name: 使用工作流程設計工具建立進階編碼工作流程
-                  href: media-services-workflow-designer.md
-                - name: 進階工作流程與多個輸入
-                  href: media-services-media-encoder-premium-workflow-multiplefilesinput.md
         - name: 建立會產生 fMP4 區塊的工作
           href: media-services-generate-fmp4-chunks.md
         - name: 媒體處理器

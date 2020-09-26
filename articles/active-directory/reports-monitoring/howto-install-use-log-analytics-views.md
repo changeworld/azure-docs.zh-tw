@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 56eee39a9e99e9d6752d1b4f6eb7182043ff14d6
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 168b41534f6ea6055294cc9e9cec139853904fea
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230580"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358894"
 ---
 # <a name="install-and-use-the-log-analytics-views-for-azure-active-directory"></a>安裝與使用適用於 Azure Active Directory 的記錄分析檢視
 
@@ -31,7 +31,7 @@ Azure Active Directory 的記錄分析檢視可協助您分析和搜尋 Azure AD
 * Audit logs： [audit logs 活動報告](concept-audit-logs.md) 可讓您存取在您的租使用者中執行的每項工作的歷程記錄。
 * 登入記錄：使用登 [入活動報告](concept-sign-ins.md)時，您可以決定誰執行了 audit 記錄中所報告的工作。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要使用記錄分析檢視，您需要：
 
@@ -56,7 +56,7 @@ Azure Active Directory 的記錄分析檢視可協助您分析和搜尋 Azure AD
 
 3. 選取其中一個檢視，以跳到個別的報告。 您也可以設定任何報告參數的警示。 例如，我們將設定發生任何登入錯誤時的警示。 為此，請依序選取 [登入事件]**** 檢視、[一段時間的登入錯誤]**** 報告和 [Analytics]****，以開啟詳細資料頁面，內含構成報告的實際查詢。 
 
-    ![詳細資料](./media/howto-install-use-log-analytics-views/details.png)
+    ![螢幕擷取畫面顯示具有報表查詢的 [分析詳細資料] 頁面。](./media/howto-install-use-log-analytics-views/details.png)
 
 
 4. 選取 [設定警示]****，然後在 [警示準則]**** 區段下方選取 [每當自訂記錄搜尋是&lt;未定義的邏輯&gt;時]****。 由於我們想要在發生任何登入錯誤時發出警示，因此請將預設警示邏輯的 [閾值]**** 設定為 **1**，然後選取 [完成]****。 

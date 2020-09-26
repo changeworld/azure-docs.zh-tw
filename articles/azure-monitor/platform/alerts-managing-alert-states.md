@@ -5,12 +5,12 @@ ms.subservice: alerts
 ms.topic: conceptual
 author: anantr
 ms.date: 09/24/2018
-ms.openlocfilehash: a22d7b7b962b36f93ee804c64b3bc6b08ecceb0f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a53390dee8eb504f92e66bb3573814bd411be0b7
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77667511"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358958"
 ---
 # <a name="manage-alert-and-smart-group-states"></a>管理警示與智慧群組狀態
 
@@ -20,30 +20,30 @@ Azure 監視器中的警示現在有[警示的狀態和監視條件](https://aka
 
 1. 您可以透過下列不同方式變更警示的狀態： 
     * 在 [所有警示] 頁面中，按一下要變更狀態之警示旁邊的核取方塊，然後按一下 [變更狀態]。   
-    ![監視](./media/alerts-managing-alert-states/state-all-alerts.jpg)
+    ![螢幕擷取畫面顯示已選取變更狀態的 [所有警示] 頁面。](./media/alerts-managing-alert-states/state-all-alerts.jpg)
     * 在特定警示執行個體的 [警示詳細資料] 頁面中，您可以按一下 [變更狀態]   
-    ![監視](./media/alerts-managing-alert-states/state-alert-details.jpg)
+    ![螢幕擷取畫面顯示已選取變更警示狀態的 [警示詳細資料] 頁面。](./media/alerts-managing-alert-states/state-alert-details.jpg)
     * 在特定警示執行個體的 [警示詳細資料] 頁面，您也可以在 [智慧群組] 窗格中按一下要變更狀態之警示旁邊的核取方塊    
-    ![監視](./media/alerts-managing-alert-states/state-alert-details-sg.jpg)
+    ![螢幕擷取畫面顯示有某些實例具有核取記號的 [警示詳細資料] 頁面。](./media/alerts-managing-alert-states/state-alert-details-sg.jpg)
 
     * 在 [智慧群組詳細資料] 頁面中的成員警示清單中，您可以按一下要變更狀態之警示旁邊的核取方塊，然後按一下 [變更狀態] 以變更其狀態。   
-    ![監視](./media/alerts-managing-alert-states/state-sg-details-alerts.jpg)
+    ![螢幕擷取畫面顯示 [智慧群組詳細資料] 頁面，您可以在其中選取要變更狀態的警示。](./media/alerts-managing-alert-states/state-sg-details-alerts.jpg)
 1. 按一下 [變更狀態] 時會開啟一個快顯視窗，讓您選取各種狀態 (New/Acknowledged/Closed)，如有必要也可輸入註解。   
-![監視](./media/alerts-managing-alert-states/state-alert-change.jpg)
+![螢幕擷取畫面顯示 [詳細資料變更警示] 對話方塊。](./media/alerts-managing-alert-states/state-alert-change.jpg)
 1. 完成之後，狀態變更會記錄到個別警示的歷程記錄中。 開啟個別的 [詳細資料] 頁面並查看歷程記錄區段，即可檢視這些資料。    
-![監視](./media/alerts-managing-alert-states/state-alert-history.jpg)
+![螢幕擷取畫面：顯示狀態變更的歷程記錄。](./media/alerts-managing-alert-states/state-alert-history.jpg)
 
 ## <a name="change-the-state-of-a-smart-group"></a>變更智慧群組的狀態
 1. 您可以透過下列不同方式變更智慧群組的狀態：
     1. 在 [智慧群組] 清單頁面中，按一下要變更狀態之智慧群組旁邊的核取方塊，然後按一下 [變更狀態]  
-    ![監視](./media/alerts-managing-alert-states/state-sg-list.jpg)
+    ![螢幕擷取畫面：顯示智慧群組的變更狀態頁面。](./media/alerts-managing-alert-states/state-sg-list.jpg)
     1. 在 [智慧型群組詳細資料] 頁面中，您可以按一下 [變更狀態]        
-    ![監視](./media/alerts-managing-alert-states/state-sg-details.jpg)
+    ![螢幕擷取畫面顯示已選取 [變更智慧群組狀態] 的 [智慧群組詳細資料] 頁面。](./media/alerts-managing-alert-states/state-sg-details.jpg)
 1. 按一下 [變更狀態] 時會開啟一個快顯視窗，讓您選取各種狀態 (New/Acknowledged/Closed)，如有必要也可輸入註解。 
-![監視](./media/alerts-managing-alert-states/state-sg-change.jpg)
+![螢幕擷取畫面：顯示智慧群組的 [變更狀態] 對話方塊。](./media/alerts-managing-alert-states/state-sg-change.jpg)
    > [!NOTE]
    >  變更智慧群組的狀態不會變更個別成員警示的狀態。
 
 1. 完成之後，狀態變更會記錄到個別智慧群組的歷程記錄中。 開啟個別的 [詳細資料] 頁面並查看歷程記錄區段，即可檢視這些資料。     
-![監視](./media/alerts-managing-alert-states/state-sg-history.jpg)
+![螢幕擷取畫面：顯示智慧群組的變更歷程記錄。](./media/alerts-managing-alert-states/state-sg-history.jpg)
 
