@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/18/2020
+ms.date: 09/22/2020
 ms.author: alkohli
-ms.openlocfilehash: 8366c5b7a05b35891bcf87e446229357a5511359
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 6949b2265e1b22d924b67d0d46e5b2f2bf9c23ac
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90899542"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330395"
 ---
 # <a name="use-kubectl-to-run-a-kubernetes-stateful-application-with-a-persistentvolume-on-your-azure-stack-edge-pro-device"></a>使用 kubectl 搭配 Azure Stack Edge Pro 裝置上的 PersistentVolume 來執行 Kubernetes 具狀態應用程式
 
@@ -21,8 +21,10 @@ ms.locfileid: "90899542"
 
 此程式適用于已 [在 Azure Stack Edge Pro 裝置上審核 Kubernetes 儲存體](azure-stack-edge-gpu-kubernetes-storage.md) 並熟悉 [Kubernetes 儲存體](https://kubernetes.io/docs/concepts/storage/)概念的人。
 
+Azure Stack Edge Pro 也支援執行 Azure SQL Edge 容器，而這些容器的部署方式類似于 MySQL 的詳細說明。 如需詳細資訊，請參閱 [AZURE SQL Edge](../azure-sql-edge/overview.md)。
 
-## <a name="prerequisites"></a>必要條件
+
+## <a name="prerequisites"></a>Prerequisites
 
 部署可設定狀態的應用程式之前，請確定您已在裝置和您將用來存取裝置的用戶端上完成下列必要條件：
 
@@ -352,6 +354,6 @@ C:\Users\user>
     ![刪除本機共用以取得 PV](./media/azure-stack-edge-gpu-deploy-stateful-application-static-provision-kubernetes/delete-edge-local-share-1.png)
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 若要瞭解如何動態布建儲存體，請參閱 [在 Azure Stack Edge Pro 裝置上透過動態布建來部署具狀態應用程式](azure-stack-edge-gpu-deploy-stateful-application-dynamic-provision-kubernetes.md)

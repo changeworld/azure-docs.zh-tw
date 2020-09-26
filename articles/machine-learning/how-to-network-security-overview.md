@@ -11,12 +11,12 @@ author: aashishb
 ms.date: 07/07/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, references_regions
-ms.openlocfilehash: 36d3d84949e44719474656d07da9c7b7c46a4e98
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: ce4bbf81f5b74a06f06778c512995684fa1394c4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90893174"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329794"
 ---
 # <a name="virtual-network-isolation-and-privacy-overview"></a>虛擬網路隔離和隱私權總覽
 
@@ -28,7 +28,7 @@ ms.locfileid: "90893174"
 
 **1. VNet 總覽**  >  [2。保護工作區](how-to-secure-workspace-vnet.md)  >  [3。保護定型環境](how-to-secure-training-vnet.md)  >  [4。保護推斷環境](how-to-secure-inferencing-vnet.md)  >  [5。啟用 studio 功能](how-to-enable-studio-virtual-network.md)
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 本文假設您已熟悉下列主題：
 + [Azure 虛擬網路](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)
@@ -83,7 +83,6 @@ ms.locfileid: "90893174"
 - 工作區 Private Link 僅適用于下欄區域： eastus、westus2、southcentralus
     - 這項限制不適用於相關聯的資源。 例如，您可以在任何 Azure Machine Learning 區域中啟用 VNet 以進行儲存。
 - 所有資源都必須位於相同的 VNet 後方。 不過，也允許相同 VNet 內的子網。
-- 某些 studio 功能（例如設計工具、AutoML、標籤和資料分析）不能與設定為使用私人端點的儲存體帳戶搭配使用。 如果您需要使用這些 studio 功能，請改用服務端點。
 
 ## <a name="secure-the-training-environment"></a>保護定型環境
 
@@ -150,7 +149,7 @@ ms.locfileid: "90893174"
 * 提交 AutoML 實驗。
 * 開機磁碟區標專案。
 
-若要在使用儲存體服務端點時啟用完整功能，請參閱 [在虛擬網路中使用 Azure Machine Learning studio](how-to-enable-studio-virtual-network.md#access-data-using-the-studio)。 目前，studio 不支援儲存體私人端點。
+若要在使用儲存體服務端點時啟用完整功能，請參閱 [在虛擬網路中使用 Azure Machine Learning studio](how-to-enable-studio-virtual-network.md#access-data-using-the-studio)。 Studio 支援儲存體帳戶的服務端點和私人端點。
 
 ### <a name="limitations"></a>限制
 - Studio 無法存取設定為使用私人端點之儲存體帳戶中的資料。 如需完整的功能，您必須使用服務端點來儲存及使用受控識別。
@@ -161,7 +160,7 @@ ms.locfileid: "90893174"
 
 如需防火牆設定的詳細資訊，請參閱在 [防火牆後方使用工作區](how-to-access-azureml-behind-firewall.md)。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 本文是四部分虛擬網路系列的第一篇。 請參閱文章的其餘部分，以瞭解如何保護虛擬網路：
 

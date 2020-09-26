@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 07/27/2020
-ms.openlocfilehash: 3e1832d656ea2bad772a686e52a357c1daf0ded5
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: f75853a66c43c69ec191f28951f8f6ffc4353f93
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90883207"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330157"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Azure Machine Learning 中的計算目標是什麼？ 
 
@@ -51,7 +51,7 @@ Azure Machine Learning 在不同的計算資源之間有不同的支援。  您�
 您可以從下列來源建立 Azure Machine Learning 計算實例或計算叢集：
 * [Azure Machine Learning Studio](how-to-create-attach-compute-studio.md)
 * Azure 入口網站
-* Python SDK [ComputeInstance](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computeinstance(class)?view=azure-ml-py&preserve-view=true) 和 [AmlCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute(class)?view=azure-ml-py&preserve-view=true) 類別
+* Python SDK [ComputeInstance](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computeinstance%28class%29?view=azure-ml-py&preserve-view=true) 和 [AmlCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute%28class%29?view=azure-ml-py&preserve-view=true) 類別
 * [R SDK](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-compute-targets) (預覽) 
 * Resource Manager 範本。 如需範例範本，請參閱 [建立 Azure Machine Learning 計算範本](https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-compute-create-amlcompute)。
 * [Azure CLI 的](reference-azure-machine-learning-cli.md#resource-management)機器學習擴充功能。  
@@ -84,7 +84,9 @@ Azure Machine Learning 在不同的計算資源之間有不同的支援。  您�
 |------------|------------|
 | D | 無 |
 | Dv2 | 無 |  
-| DSv2 | 無 |  
+| Dv3 | 無|
+| DSv2 | 無 | 
+| DSv3 | 無|
 | FSv2 | 無 | 
 | HBv2 | 需要核准 |  
 | HCS | 需要核准 |  

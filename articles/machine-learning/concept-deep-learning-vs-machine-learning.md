@@ -1,24 +1,27 @@
 ---
 title: 深度學習與機器學習服務
-titleSuffix: Azure
-description: 瞭解深度學習與機器學習和人工智慧的關聯性。 深度學習適用于詐騙偵測、語音 & 臉部辨識、情感分析，以及時間序列預測等案例。
+titleSuffix: Azure Machine Learning
+description: 瞭解深度學習與機器學習和 AI 之間的關聯。 在 Azure Machine Learning 中，請使用深度學習模型來偵測詐騙、偵測物件，以及執行其他功能。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.author: lazzeri
 author: FrancescaLazzeri
-ms.date: 03/05/2020
-ms.openlocfilehash: 177f1992eb0cd93ad871ef3a181460417b1ef523
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/22/2020
+ms.custom: contperfq1
+ms.openlocfilehash: d462ed4627254275703d88cadbaf5d55a106da55
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905131"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330123"
 ---
-# <a name="deep-learning-vs-machine-learning"></a>深度學習與機器學習服務
+# <a name="deep-learning-vs-machine-learning-in-azure-machine-learning"></a>Azure Machine Learning 中的深度學習與機器學習
 
-本文可協助您比較深度學習與機器學習。 您將瞭解這兩個概念的比較，以及它們如何融入更廣泛的人工智慧類別中。 本文也會說明如何將深度學習套用至真實世界的案例，例如詐騙偵測、語音和臉部辨識、情感分析，以及時間序列預測。
+本文說明深度學習與機器學習，以及它們如何融入更廣泛的人工智慧類別中。 瞭解您可以在 Azure Machine Learning 上建立的深度學習解決方案，例如詐騙偵測、語音和臉部辨識、情感分析，以及時間序列預測。
+
+如需有關為您的解決方案選擇演算法的指引，請參閱 Machine Learning 演算法功能提要（適用于 [工作表](algorithm-cheat-sheet.md)）。
 
 ## <a name="deep-learning-machine-learning-and-ai"></a>深度學習、機器學習和 AI
 
@@ -37,7 +40,7 @@ ms.locfileid: "90905131"
 
 - **人工智慧 (AI) ** 是一種可讓電腦模仿人類智慧的技術。 它包含機器學習服務。 
  
-請務必瞭解 AI、機器學習和深度學習之間的關聯性。 機器學習是一種達成人工智慧的途徑。 藉由使用機器學習和深度學習技術，您可以建立電腦系統和應用程式，以進行通常與人類智慧相關聯的工作。 這些工作包括影像辨識、語音辨識和語言轉譯。
+藉由使用機器學習和深度學習技術，您可以建立電腦系統和應用程式，以進行通常與人類智慧相關聯的工作。 這些工作包括影像辨識、語音辨識和語言轉譯。
 
 ## <a name="techniques-of-deep-learning-vs-machine-learning"></a>深度學習與機器學習服務的技術 
 
@@ -58,7 +61,7 @@ ms.locfileid: "90905131"
 
 因為人工類神經網路結構，所以深度學習擅長在非結構化資料（例如影像、音效、影片和文字）中的識別模式。 基於這個理由，深度學習會快速轉換許多產業，包括醫療保健、能源、財務和運輸。 這些產業現在重新思考傳統的商務流程。 
 
-以下段落將說明一些最常見的深度學習應用程式。
+以下段落將說明一些最常見的深度學習應用程式。 在 Azure Machine Learning 中，您可以使用從開放原始碼架構建立的模型，或使用所提供的工具來建立模型。
 
 ### <a name="named-entity-recognition"></a>命名實體辨識
 
@@ -69,6 +72,8 @@ ms.locfileid: "90905131"
 深度學習已套用在許多物件偵測使用案例中。 物件偵測包含兩個部分：影像分類和影像當地語系化。 影像 _分類_ 會識別影像的物件，例如車輛或人員。 影像 _當地語系化_ 會提供這些物件的特定位置。 
 
 物件偵測已用於遊戲、零售、觀光和自我駕駛汽車等產業中。
+
+瞭解如何在 Azure Machine Learning 中使用開放原始碼架構的影像分類模型： [使用 Pytorch 模型分類影像](https://docs.microsoft.com/azure/machine-learning/how-to-train-pytorch?WT.mc_id=docs-article-lazzeri)
 
 ### <a name="image-caption-generation"></a>產生影像標題
 
@@ -87,6 +92,8 @@ ms.locfileid: "90905131"
 以深度學習方法為基礎的文字分析牽涉到分析大量的文字資料 (例如，醫療檔或支出收據) 、辨識模式，以及建立組織內和精簡的資訊。
 
 公司會使用深度學習來執行文字分析，以偵測內部交易與政府法規的合規性。 另一個常見的例子是保險詐騙：文字分析通常用來分析大量檔，以辨識保險索賠詐騙的機會。 
+
+瞭解如何在 Azure Machine Learning 中使用 TensorFlow 模型： [使用 TensorFlow 模型將手寫數位分類](https://docs.microsoft.com/azure/machine-learning/how-to-train-tensorflow?WT.mc_id=docs-article-lazzeri)
 
 ## <a name="artificial-neural-networks"></a>人工類神經網路
 
@@ -108,16 +115,10 @@ Feedforward 類神經網路是最簡單的人工類神經網路類型。 在 fee
 
 卷積類神經網路已用於影片辨識、影像辨識和推薦系統等區域。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
-下列文章說明如何在 [Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/?WT.mc_id=docs-article-lazzeri)中使用深度學習技術：
-
-- [使用 TensorFlow 模型將手寫數位分類](https://docs.microsoft.com/azure/machine-learning/how-to-train-tensorflow?WT.mc_id=docs-article-lazzeri)
+下列文章說明在 [Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/?WT.mc_id=docs-article-lazzeri)中使用開放原始碼深度學習模型的更多選項：
 
 - [使用 TensorFlow 估算器和 Keras 分類手寫數位](https://docs.microsoft.com/azure/machine-learning/how-to-train-keras?WT.mc_id=docs-article-lazzeri)
 
-- [使用 Pytorch 模型分類影像](https://docs.microsoft.com/azure/machine-learning/how-to-train-pytorch?WT.mc_id=docs-article-lazzeri)
-
 - [使用 Chainer 模型將手寫數位分類](https://docs.microsoft.com/azure/machine-learning/how-to-train-ml-models)
-
-此外，也請使用 [Machine Learning 演算法](algorithm-cheat-sheet.md) 的功能，來選擇模型的演算法。

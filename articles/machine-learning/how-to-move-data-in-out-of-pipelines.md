@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 08/20/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4, devx-track-python
-ms.openlocfilehash: fa78ab00e337ee6f2a42e23a2899d79a09a7ea3d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: a1bd93931f8a94f598952b28fc3db23d33e5783f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90904975"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329766"
 ---
 # <a name="moving-data-into-and-between-ml-pipeline-steps-python"></a>將資料匯入 ML 管線步驟並在其中來回移動 (Python)
 
@@ -33,7 +33,7 @@ ms.locfileid: "90904975"
 - 建立 `Dataset` `PipelineData` 您想要保存的新物件
 
 > [!TIP]
-> 提供在管線步驟之間傳遞暫存資料，以及在管線執行後保存資料的改良體驗，可在公開預覽類別  [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true) 和中使用 [`OutputTabularDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig?view=azure-ml-py&preserve-view=true) 。  這些類別是 [實驗](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py#&preserve-view=truestable-vs-experimental) 性預覽功能，而且可能隨時變更。
+> 提供在管線步驟之間傳遞暫存資料，以及在管線執行後保存資料的改良體驗，可在公開預覽類別  [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true) 和中使用 [`OutputTabularDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig?view=azure-ml-py&preserve-view=true) 。  這些類別是 [實驗](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py&preserve-view=true#&preserve-view=truestable-vs-experimental) 性預覽功能，而且可能隨時變更。
 
 
 ## <a name="prerequisites"></a>Prerequisites
