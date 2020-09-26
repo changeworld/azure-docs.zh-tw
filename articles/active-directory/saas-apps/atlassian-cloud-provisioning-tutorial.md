@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 12/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 14418d4d280f4da629aecd5a95b5a49e6856e2c1
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: ca2284e3e2f581d1935a8978d26fd674154d581b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549381"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333500"
 ---
 # <a name="tutorial-configure-atlassian-cloud-for-automatic-user-provisioning"></a>教學課程：設定 Atlassian Cloud 來自動布建使用者
 
@@ -35,7 +35,7 @@ ms.locfileid: "88549381"
 
 本教學課程中概述的案例假設您已經具有下列必要條件：
 
-* [Azure AD 的租](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant)使用者。
+* [Azure AD 租用戶](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant)。
 * Azure AD 中具有設定佈建[權限](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)的使用者帳戶 (例如，應用程式管理員、雲端應用程式管理員、應用程式擁有者或全域管理員)。
 * [Atlassian 雲端租使用者](https://www.atlassian.com/licensing/cloud)
 * Atlassian Cloud 中具有系統管理員許可權的使用者帳戶。
@@ -49,11 +49,12 @@ ms.locfileid: "88549381"
 
 1. 流覽至 [Atlassian 組織管理員](https://admin.atlassian.com) **> 選取組織 > 目錄**。
 
-    ![Atlassian 雲端布建](./media/atlassian-cloud-provisioning-tutorial/select-directory.png)
+    ![[系統管理] 頁面的螢幕擷取畫面，其中已呼叫 [目錄] 選項。](./media/atlassian-cloud-provisioning-tutorial/select-directory.png)
 
 2. 按一下 [ **使用者** 布建]，然後按一下 [ **建立目錄**]。 在 Azure AD 入口網站中，複製將在您的 Atlassian Cloud 應用程式的 [布建] 索引標籤中輸入 [**租使用者 URL** ] 和 [**秘密權杖**] 欄位的**目錄基底 url**和**持有人權杖**。
 
-    ![Atlassian 雲端布建 ](./media/atlassian-cloud-provisioning-tutorial/secret-token-1.png) ![ Atlassian 雲端布建 ](./media/atlassian-cloud-provisioning-tutorial/secret-token-2.png) ![ Atlassian 雲端布建](./media/atlassian-cloud-provisioning-tutorial/secret-token-3.png)
+    ![[系統管理] 頁面的螢幕擷取畫面，其中已呼叫 [使用者布建] 選項。 ](./media/atlassian-cloud-provisioning-tutorial/secret-token-1.png)![[建立權杖] 頁面的螢幕擷取畫面。](./media/atlassian-cloud-provisioning-tutorial/secret-token-2.png)
+    ![示範時間目錄權杖頁面的螢幕擷取畫面。](./media/atlassian-cloud-provisioning-tutorial/secret-token-3.png)
 
 
 ## <a name="step-3-add-atlassian-cloud-from-the-azure-ad-application-gallery"></a>步驟 3： 從 Azure AD 應用程式資源庫新增 Atlassian Cloud
@@ -85,11 +86,11 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
 3. 選取 [佈建] 索引標籤。
 
-    ![佈建索引標籤](common/provisioning.png)
+    ![已呼叫 [布建] 選項的 [管理選項] 螢幕擷取畫面。](common/provisioning.png)
 
 4. 將 [佈建模式] 設定為 [自動]。
 
-    ![佈建索引標籤](common/provisioning-automatic.png)
+    ![[布建模式] 下拉式清單的螢幕擷取畫面，其中已呼叫 [自動] 選項。](common/provisioning-automatic.png)
 
 5. 在 [系統 **管理員認證** ] 區段下，輸入稍早從 Atlassian Cloud 帳戶取出的 **租使用者 URL** 和 **秘密權杖** 。 按一下 [ **測試連接** ] 以確保 Azure AD 可以連線至 Atlassian Cloud。 如果連接失敗，請確定您的 Atlassian Cloud 帳戶具有系統管理員許可權，然後再試一次。
 
@@ -99,7 +100,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
     ![通知電子郵件](common/provisioning-notification-email.png)
 
-7. 按一下 [檔案] 。
+7. 按一下 [檔案]  。
 
 8. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 使用者至 Atlassian 雲端**]。
 
@@ -144,7 +145,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
 1. 使用[佈建記錄](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) \(部分機器翻譯\) 來判斷哪些使用者已佈建成功或失敗
 2. 檢查[進度列](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user) \(部分機器翻譯\) 來查看佈建週期的狀態，以及其接近完成的程度
-3. 如果佈建設定似乎處於狀況不良的狀態，應用程式將會進入隔離狀態。 [在此](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status) \(部分機器翻譯\) 深入了解隔離狀態。  
+3. 如果佈建設定似乎處於狀況不良的狀態，應用程式將會進入隔離狀態。 [在此](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)深入了解隔離狀態。  
 
 ## <a name="connector-limitations"></a>連接器限制
 

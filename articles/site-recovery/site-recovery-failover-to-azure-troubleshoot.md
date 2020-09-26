@@ -9,12 +9,12 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 01/08/2020
 ms.author: mayg
-ms.openlocfilehash: 39a92dbdc0bdcd0fdd2bb06efe3fbd4bfe33069d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e2ab52120e2a5db6648caac61f0228cb0be7e67b
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87071202"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91355035"
 ---
 # <a name="troubleshoot-errors-when-failing-over-vmware-vm-or-physical-machine-to-azure"></a>針對將 VMware VM 或實體機器容錯移轉至 Azure 時的錯誤進行疑難排解
 
@@ -78,14 +78,14 @@ Site Recovery 無法在 Azure 中建立已容錯移轉的虛擬機器。 這可�
 
 ## <a name="unable-to-connectrdpssh-to-the-failed-over-virtual-machine-due-to-grayed-out-connect-button-on-the-virtual-machine"></a>因虛擬機器上的 [連線] 按鈕變成灰色，而無法對容錯移轉的虛擬機器進行連線/RDP/SSH
 
-如需 RDP 問題的詳細疑難排解指示，請參閱[這裡](../virtual-machines/troubleshooting/troubleshoot-rdp-connection.md)的檔。
+如需有關 RDP 問題的詳細疑難排解指示，請參閱 [此處](../virtual-machines/troubleshooting/troubleshoot-rdp-connection.md)的檔。
 
-如需 SSH 問題的詳細疑難排解指示，請參閱[這裡](../virtual-machines/troubleshooting/troubleshoot-ssh-connection.md)的檔。
+如需 SSH 問題的詳細疑難排解指示，請參閱 [此處](../virtual-machines/troubleshooting/troubleshoot-ssh-connection.md)的檔。
 
 如果 Azure 中容錯移轉虛擬機器上的 [連線] 按鈕呈現灰色，而您未透過 Express Route 或網站間 VPN 連線來連線到 Azure，則請：
 
-1. 移至 [虛擬機器] > [網路]，按一下所需網路介面的名稱。  ![network-interface](media/site-recovery-failover-to-azure-troubleshoot/network-interface.PNG)
-2. 瀏覽至 [IP 組態]，然後按一下所需 IP 組態的名稱欄位。 ![IPConfigurations](media/site-recovery-failover-to-azure-troubleshoot/IpConfigurations.png)
+1. 移至 [虛擬機器] > [網路]，按一下所需網路介面的名稱。  ![螢幕擷取畫面顯示已選取網路介面名稱之虛擬機器的 [網路] 頁面。](media/site-recovery-failover-to-azure-troubleshoot/network-interface.PNG)
+2. 瀏覽至 [IP 組態]，然後按一下所需 IP 組態的名稱欄位。 ![螢幕擷取畫面顯示已選取 I P 設定名稱之網路介面的 [我的設定] 頁面。](media/site-recovery-failover-to-azure-troubleshoot/IpConfigurations.png)
 3. 若要啟用公用 IP 位址，請按一下 [啟用]。 ![啟用 IP](media/site-recovery-failover-to-azure-troubleshoot/Enable-Public-IP.png)
 4. 按一下 [設定必要設定] > [建立新項目]。 ![建立新項目](media/site-recovery-failover-to-azure-troubleshoot/Create-New-Public-IP.png)
 5. 輸入公用位址的名稱，選擇 [SKU] 和 [指派] 的預設選項，然後按一下 [確定]。

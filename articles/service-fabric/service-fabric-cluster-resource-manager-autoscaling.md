@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: miradic
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f57e5079543a3112b4fa59f26ba0ae27c24b79a2
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 060bb9dcdd504846c76ab4c782b2857fdddfa394
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89005508"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91354797"
 ---
 # <a name="introduction-to-auto-scaling"></a>自動調整簡介
 自動調整是 Service Fabric 的一項額外功能，可根據服務所回報的負載，或根據其資源使用情況，來動態調整服務。 自動調整提供絕佳的彈性，並可讓您依需求佈建額外的服務執行個體或分割區。 整個自動調整程序是自動化並在背景執行的，在您於服務上設定原則之後，即無須在服務層級進行手動調整作業。 您可以在建立服務時，或隨時藉由更新服務，來開啟自動調整功能。
@@ -51,7 +51,7 @@ ms.locfileid: "89005508"
 * 「最大執行個體計數」__ 會定義調整的上限。 如果分割區的執行個體數目達到此限制，則不論負載情況為何，服務都不會相應放大規模。 您可以指定 -1 的值來省略此限制，在此情況下，服務將儘可能相應放大規模 (以叢集內可用的節點數目為限)。
 * _最小實例計數_ 會定義調整的下限。 如果分割區的執行個體數目達到此限制，則不論負載情況為何，服務都不會相應縮小規模。
 
-## <a name="setting-auto-scaling-policy"></a>設定自動調整原則
+## <a name="setting-auto-scaling-policy-for-instance-based-scaling"></a>針對以實例為基礎的調整設定自動調整原則
 
 ### <a name="using-application-manifest"></a>使用應用程式資訊清單
 ``` xml
@@ -133,7 +133,7 @@ Update-ServiceFabricService -Stateless -ServiceName "fabric:/AppName/ServiceName
 > [!WARNING] 
 > 當 AddRemoveIncrementalNamedPartitionScalingMechanism 搭配具狀態服務使用時，Service Fabric 會在**沒有任何通知或警告**的情況下新增或移除分割區。 觸發縮放機制後，就不會執行資料的重新分割。 如果是 scale out 作業，新的資料分割將會是空的，而且如果是 scale in 作業，則 **會將資料分割與其包含的所有資料一起刪除**。
 
-## <a name="setting-auto-scaling-policy"></a>設定自動調整原則
+## <a name="setting-auto-scaling-policy-for-partition-based-scaling"></a>設定以資料分割為基礎之調整的自動調整原則
 
 ### <a name="using-application-manifest"></a>使用應用程式資訊清單
 ``` xml

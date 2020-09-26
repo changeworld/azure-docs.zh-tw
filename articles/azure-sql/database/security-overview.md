@@ -12,19 +12,19 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto, emlisa
 ms.date: 09/21/2020
-ms.openlocfilehash: f3ae5e1ef4dc2968724daeafb32f26cf445b0d2f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: f0ebd511d0b706d1d2066ea87f45c89ae536da69
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90885287"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321419"
 ---
 # <a name="an-overview-of-azure-sql-database-and-sql-managed-instance-security-capabilities"></a>Azure SQL Database 與 SQL 受控執行個體安全性功能的總覽
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 本文概述使用 [Azure SQL Database](sql-database-paas-overview.md) 和 [Azure SQL 受控執行個體](../managed-instance/sql-managed-instance-paas-overview.md)保護應用程式資料層的基本概念。 所述的安全性策略會遵循下圖所示的多層式深度防禦方法，並從外部移入：
 
-![sql 安全性 layer.png](./media/security-overview/sql-security-layer.png)
+![多層式深度防禦的圖表。 客戶資料是以網路安全性、存取管理、威脅和資訊保護層級為 encased。](./media/security-overview/sql-security-layer.png)
 
 ## <a name="network-security"></a>網路安全性
 
@@ -77,7 +77,7 @@ IP 防火牆規則會根據每個要求的來源 IP 位址授與資料庫存取�
 
 資料列層級安全性可讓客戶根據執行查詢的使用者特性 (例如群組成員資格或執行內容)，來控制對資料庫資料表中資料列的存取。 資料列層級安全性也可以用來執行自訂的標籤式安全性概念。 如需詳細資訊，請參閱資料 [列層級安全性](/sql/relational-databases/security/row-level-security)。
 
-![azure 資料庫 rls.png](./media/security-overview/azure-database-rls.png)
+![圖表顯示資料列層級安全性會防止使用者透過用戶端應用程式存取 SQL 資料庫的個別資料列。](./media/security-overview/azure-database-rls.png)
 
 ## <a name="threat-protection"></a>威脅保護
 
@@ -91,7 +91,7 @@ SQL Database 和 SQL 受控執行個體 audit 會將資料庫事件記錄至客�
 
 先進的威脅防護會分析您的記錄，以偵測不尋常的行為，以及可能有害的存取或惡意探索資料庫的嘗試。 系統會針對可疑的活動建立警示，例如 SQL 插入式攻擊、可能的資料滲透，以及暴力密碼破解攻擊或存取模式中的異常情況，以攔截許可權提升和違反的認證使用。 系統會從  [Azure 資訊安全中心](https://azure.microsoft.com/services/security-center/)中查看警示，其中會提供可疑活動的詳細資料，並提供進一步調查的建議以及減輕威脅的動作。 您可以針對每部伺服器啟用 Advanced 威脅防護，以產生額外費用。 如需詳細資訊，請參閱 [SQL Database Advanced 威脅防護入門](threat-detection-configure.md)。
 
-![azure 資料庫 td.jpg](./media/security-overview/azure-database-td.jpg)
+![此圖顯示 SQL 威脅偵測監視從外部攻擊者和惡意 insider 存取 web 應用程式的 SQL 資料庫。](./media/security-overview/azure-database-td.jpg)
 
 ## <a name="information-protection-and-encryption"></a>資訊保護和加密
 
@@ -122,13 +122,13 @@ SQL Database 和 SQL 受控執行個體對所有連線強制執行加密 (SSL/TL
 
 ### <a name="always-encrypted-encryption-in-use"></a>一律加密 (使用中加密)
 
-![azure 資料庫 ae.png](./media/security-overview/azure-database-ae.png)
+![此圖顯示 Always Encrypted 功能的基本概念。 只有包含金鑰的應用程式才會存取具有鎖定的 SQL 資料庫。](./media/security-overview/azure-database-ae.png)
 
 [一律加密](/sql/relational-databases/security/encryption/always-encrypted-database-engine)功能的設計訴求是要保護特定資料庫資料行中儲存的敏感性資料以防存取 (例如，信用卡號碼、身分證號碼，或「必須知道」__ 的資料)。 這包括資料庫管理員或其他特殊權限的使用者，該使用者經授權存取資料庫以執行管理工作，但沒有存取已加密資料行中特定資料的商務需求。 資料一律會加密，這表示加密的資料會解密，僅供可存取加密金鑰的用戶端應用程式進行處理。 加密金鑰永遠不會公開給 SQL Database 或 SQL 受控執行個體，而且可以儲存在 [Windows 憑證存放區](always-encrypted-certificate-store-configure.md) 或 [Azure Key Vault](always-encrypted-azure-key-vault-configure.md)中。
 
 ### <a name="dynamic-data-masking"></a>動態資料遮罩
 
-![azure 資料庫 ddm.png](./media/security-overview/azure-database-ddm.png)
+![顯示動態資料遮罩的圖表。 商務應用程式會將資料傳送到 SQL 資料庫，以在將資料傳回給商務應用程式之前將資料遮罩。](./media/security-overview/azure-database-ddm.png)
 
 動態資料遮罩會對不具權限的使用者遮罩機密資料，從而限制其曝光。 動態資料遮罩會自動在 Azure SQL Database 和 SQL 受控執行個體中探索潛在的敏感性資料，並提供可採取動作的建議以遮罩這些欄位，對應用層的影響最低。 其運作方式為針對指定的資料庫欄位隱匿查詢結果集中的敏感性資料，而不變更資料庫中的資料。 如需詳細資訊，請參閱 [開始使用 SQL Database 和 SQL 受控執行個體動態資料遮罩](dynamic-data-masking-overview.md)。
 
@@ -140,7 +140,7 @@ SQL Database 和 SQL 受控執行個體對所有連線強制執行加密 (SSL/TL
 
 ### <a name="data-discovery-and-classification"></a>資料探索與分類
 
-資料探索與分類 (目前為預覽狀態) 提供內建于 Azure SQL Database 和 SQL 受控執行個體的先進功能，可用於探索、分類、標記及保護資料庫中的敏感性資料。 探索與分類您最具敏感性的資料 (商業/財務、醫療保健、個人資料等)，可在您組織的資訊保護方面扮演著關鍵角色。 它可以作為以下的基礎結構：
+資料探索與分類 (目前為預覽狀態) 提供內建于 Azure SQL Database 和 SQL 受控執行個體的先進功能，可用於探索、分類、標記及保護資料庫中的敏感性資料。 探索與分類您最具敏感性的資料 (商業/財務、醫療保健、個人資料等)，可在您組織的資訊保護方面扮演著關鍵角色。 它可以作為下列的基礎結構：
 
 - 各種安全性案例，例如針對敏感性資料異常存取的監視 (稽核) 及警示。
 - 對包含高度敏感性資料的資料庫進行存取控制並強化安全性。
@@ -148,11 +148,11 @@ SQL Database 和 SQL 受控執行個體對所有連線強制執行加密 (SSL/TL
 
 如需詳細資訊，請參閱 [開始使用資料探索和分類](data-discovery-and-classification-overview.md)。
 
-### <a name="compliance"></a>合規性
+### <a name="compliance"></a>法規遵循
 
 除了上述可協助您的應用程式符合各種安全性需求的特色和功能之外，Azure SQL Database 也定期參與稽核，並且經過認證符合許多法規標準。 如需詳細資訊，請參閱 [Microsoft Azure 信任中心](https://www.microsoft.com/trust-center/compliance/compliance-overview) ，您可以在此找到最新的 SQL Database 合規性認證清單。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 如需使用登入、使用者帳戶、資料庫角色，以及 SQL Database 和 SQL 受控執行個體中之許可權的討論，請參閱管理登入 [和使用者帳戶](logins-create-manage.md)。
 - 如需資料庫審核的討論，請參閱「 [審核](../../azure-sql/database/auditing-overview.md)」。

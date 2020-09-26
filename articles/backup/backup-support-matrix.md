@@ -4,12 +4,12 @@ description: 摘要說明 Azure 備份服務的支援設定和限制。
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.custom: references_regions
-ms.openlocfilehash: 94a795ad91be1d648ad025287f5c5bc6f1d8d07e
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: d9da2ee893244afc7150ab6249dbe51845d5d0c2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90985016"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332707"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure 備份的支援矩陣
 
@@ -39,6 +39,7 @@ Azure 備份會使用復原服務保存庫來協調和管理備份。 其也會�
 **移動保存庫** | 您可以在訂用帳戶之間[移動保存庫](./backup-azure-move-recovery-services-vault.md)，或在相同訂用帳戶的資源群組之間移動。 不過，不支援跨區域移動保存庫。
 **在保存庫之間移動資料** | 不支援在保存庫之間移動已備份的資料。
 **修改保存庫儲存體類型** | 您可以在儲存備份之前，修改保存庫的儲存體複寫類型 (異地備援儲存體或本地備援儲存體)。 開始在保存庫中進行備份後，即無法修改複寫類型。
+**區域備援儲存體 (ZRS)** | 可在英國南部 (UKS) 和南東亞 (海洋) 區域中使用。
 
 ## <a name="on-premises-backup-support"></a>內部部署備份支援
 
@@ -150,9 +151,9 @@ Azure 備份已新增跨區域還原功能來加強資料可用性和復原功�
 | 備份管理類型 | 支援                                                    | 支援的區域 |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
 | Azure VM               | 是。   支援加密 VM 和磁碟小於 4 TB 的 VM | 所有 Azure 公用區域和主權雲端。  |
-| SQL/SAP HANA | Yes                                                          | 所有 Azure 公用區域和主權雲端。             |
+| SQL/SAP HANA | 是                                                          | 美國西部 2 (WUS2) 、美國中西部 (WCUS) 、加拿大中部 (CNC) 、加拿大東部 (CNE) 、美國東部 (EUS) 、美國西部 (WUS) 、日本東部 (JPE) 、日本東部 (JPE)  |
 | MARS 代理程式/內部部署  | 否                                                           | N/A               |
-| AFS                    | 否                                                           | N/A               |
+| Azure 檔案共用) 的 AFS (                 | 否                                                           | N/A               |
 
 ## <a name="next-steps"></a>後續步驟
 

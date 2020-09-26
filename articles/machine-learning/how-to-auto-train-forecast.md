@@ -10,29 +10,30 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, contperfq1
 ms.date: 08/20/2020
-ms.openlocfilehash: 982c7a41f1e05c34ddf0fbae9f944df4a4d08fa5
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: ce8ff8bedc6f6e4f99a940bbdb26bd3fafc930d8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90893375"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91296768"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>將時間序列預測模型自動定型
 
 
 在本文中，您將瞭解如何在 [Azure Machine Learning PYTHON SDK](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py&preserve-view=true)中使用自動化機器學習服務（AutoML）來設定和定型時間序列預測回歸模型。 
 
+若要這樣做，您可以： 
+
+> [!div class="checklist"]
+> * 準備資料以進行時間序列模型。
+> * 在物件中設定特定的時間序列參數 [`AutoMLConfig`](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig) 。
+> * 使用時間序列資料執行預測。
+
 如需低程式碼體驗，請參閱[教學課程：使用自動化機器學習來預測需求](tutorial-automated-ml-forecast.md)，以取得在 [Azure Machine Learning 工作室](https://ml.azure.com/)中使用自動化機器學習的時間序列預測範例。
 
 不同于傳統的時間序列方法，在自動化 ML 中，過去的時間序列值會「轉換」為回歸輸入變數與其他預測指標的額外維度。 這個方法會在定型期間結合多個內容變數及其相互關聯性。 由於有多個因素可能會影響預測，因此此方法非常吻合真實世界的預測案例。 例如，當預測銷售時，歷程記錄趨勢、匯率和價格的相互作用全都會共同推動銷售結果。 
 
-下列範例會示範如何操作：
-
-* 準備資料以進行時間序列模型化
-* 在 [`AutoMLConfig`](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig) 物件中設定特定的時間序列參數
-* 使用時間序列資料執行預測
-
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 針對本文，您需要 
 
@@ -118,52 +119,20 @@ automl_config = AutoMLConfig(task='forecasting',
 深入瞭解 AutoML 如何套用交叉驗證，以 [防止過度調整的模型](concept-manage-ml-pitfalls.md#prevent-over-fitting)。
 
 ## <a name="configure-experiment"></a>設定實驗
-[`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py&preserve-view=true) 物件會定義自動化機器學習工作所需的設定和資料。 預測模型的設定類似于設定標準回歸模型，但某些特徵化步驟和設定選項特別適用于時間序列資料。 
 
-### <a name="featurization-steps"></a>特徵化步驟
+[`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py&preserve-view=true) 物件會定義自動化機器學習工作所需的設定和資料。 預測模型的設定類似于設定標準回歸模型，但特定的模型、設定選項和特徵化步驟則特別存在於時間序列資料中。 
 
-在每個自動化機器學習實驗中，預設會將自動調整和正規化技術套用至您的資料。 這些技術是 **特徵化** 的類型，可協助 *特定* 的演算法，而這些演算法對不同規模的功能很敏感。 深入瞭解[AutoML 中特徵化的](how-to-configure-auto-features.md#automatic-featurization)預設特徵化步驟
+### <a name="supported-models"></a>支援的模型
+自動化機器學習會在建立和微調程式的過程中，自動嘗試不同的模型和演算法。 身為使用者，您不需要指定演算法。 針對預測實驗，原生時間序列和深度學習模型都屬於建議系統的一部分。 下表摘要說明此模型子集。 
 
-但是，下列步驟只會針對工作 `forecasting` 類型執行：
+>[!Tip]
+> 傳統的回歸模型也會測試為建議系統的一部分，以進行預測實驗。 如需完整的模型清單，請參閱 [支援的模型資料表](how-to-configure-auto-train.md#supported-models) 。 
 
-* 偵測時間序列取樣頻率 (例如，每小時、每天、每週)，並為不存在的時間點建立新記錄，使序列連續不斷。
-* 插補目標中的遺漏值 (透過向前填滿)，以及插補特徵資料行中的遺漏值 (使用中位數的資料行值)
-* 建立以時間序列識別碼為基礎的功能，以啟用跨不同系列的固定效果
-* 建立時間型特徵，以協助學習季節性模式
-* 將類別變數編碼為數值數量
-
-若要取得這些步驟的結果所建立功能的摘要，請參閱 [特徵化透明度](how-to-configure-auto-features.md#featurization-transparency)
-
-> [!NOTE]
-> 自動化機器學習特徵化步驟 (功能標準化、處理遺漏的資料、將文字轉換為數值等等) 會成為基礎模型的一部分。 使用模型進行預測時，定型期間所套用的相同特徵化步驟會自動套用至您的輸入資料。
-
-#### <a name="customize-featurization"></a>自訂特徵化
-
-您也可以選擇自訂您的特徵化設定，以確保用來定型 ML 模型的資料和功能會產生相關的預測。 
-
-支援的工作自訂 `forecasting` 包括：
-
-|自訂|定義|
-|--|--|
-|**資料行用途更新**|針對指定的資料行覆寫自動偵測到的功能類型。|
-|**轉換器參數更新** |更新指定轉換器的參數。 目前支援 *Imputer* (fill_value 和中位數) 。|
-|**卸除資料行** |指定要從特徵化中捨棄的資料行。|
-
-若要使用 SDK 自訂 featurizations，請 `"featurization": FeaturizationConfig` 在您的物件中指定 `AutoMLConfig` 。 深入瞭解 [自訂 featurizations](how-to-configure-auto-features.md#customize-featurization)。
-
-```python
-featurization_config = FeaturizationConfig()
-# `logQuantity` is a leaky feature, so we remove it.
-featurization_config.drop_columns = ['logQuantitity']
-# Force the CPWVOL5 feature to be of numeric type.
-featurization_config.add_column_purpose('CPWVOL5', 'Numeric')
-# Fill missing values in the target column, Quantity, with zeroes.
-featurization_config.add_transformer_params('Imputer', ['Quantity'], {"strategy": "constant", "fill_value": 0})
-# Fill mising values in the `INCOME` column with median value.
-featurization_config.add_transformer_params('Imputer', ['INCOME'], {"strategy": "median"})
-```
-
-如果您在實驗中使用 Azure Machine Learning studio，請參閱 [如何在 studio 中自訂特徵化](how-to-use-automated-ml-for-ml-models.md#customize-featurization)。
+模型| 描述 | 優點
+----|----|---
+Prophet (預覽)|Prophet 最適合用於具有強烈季節性影響，且包含數個季節歷程記錄資料的時間序列。 若要利用此模型，請使用將它安裝在本機 `pip install fbprophet` 。 | 精確且快速，能夠應付時間序列中的極端值、遺失資料及重大變更。
+自動 ARIMA (預覽)|自動回歸整合式移動平均 (ARIMA) 在資料為固定的情況下執行效果最佳。 這表示其統計屬性 (如平均值和變異數) 在整個集合上是常數。 例如，若投擲一枚硬幣，則不論您是今天、明天還是明年投擲，出現正面的機率都是 50%。| 由於過去值是用來預測未來值，因此非常適用於單一變量序列。
+ForecastTCN (預覽)| ForecastTCN 是一種神經網路模型，其設計目的是要處理最嚴苛的預測工作，並擷取資料中的非線性本機和全球趨勢，以及時間序列之間的關聯性。|能夠運用資料中的複雜趨勢，並配合最大的資料集立即調整。
 
 ### <a name="configuration-settings"></a>組態設定
 
@@ -221,6 +190,51 @@ automl_config = AutoMLConfig(task='forecasting',
                              **time_series_settings)
 ```
 
+### <a name="featurization-steps"></a>特徵化步驟
+
+在每個自動化機器學習實驗中，預設會將自動調整和正規化技術套用至您的資料。 這些技術是 **特徵化** 的類型，可協助 *特定* 的演算法，而這些演算法對不同規模的功能很敏感。 深入瞭解[AutoML 中特徵化的](how-to-configure-auto-features.md#automatic-featurization)預設特徵化步驟
+
+但是，下列步驟只會針對工作 `forecasting` 類型執行：
+
+* 偵測時間序列取樣頻率 (例如，每小時、每天、每週)，並為不存在的時間點建立新記錄，使序列連續不斷。
+* 插補目標中的遺漏值 (透過向前填滿)，以及插補特徵資料行中的遺漏值 (使用中位數的資料行值)
+* 建立以時間序列識別碼為基礎的功能，以啟用跨不同系列的固定效果
+* 建立時間型特徵，以協助學習季節性模式
+* 將類別變數編碼為數值數量
+
+若要取得這些步驟的結果所建立功能的摘要，請參閱 [特徵化透明度](how-to-configure-auto-features.md#featurization-transparency)
+
+> [!NOTE]
+> 自動化機器學習特徵化步驟 (功能標準化、處理遺漏的資料、將文字轉換為數值等等) 會成為基礎模型的一部分。 使用模型進行預測時，定型期間所套用的相同特徵化步驟會自動套用至您的輸入資料。
+
+#### <a name="customize-featurization"></a>自訂特徵化
+
+您也可以選擇自訂您的特徵化設定，以確保用來定型 ML 模型的資料和功能會產生相關的預測。 
+
+支援的工作自訂 `forecasting` 包括：
+
+|自訂|定義|
+|--|--|
+|**資料行用途更新**|針對指定的資料行覆寫自動偵測到的功能類型。|
+|**轉換器參數更新** |更新指定轉換器的參數。 目前支援 *Imputer* (fill_value 和中位數) 。|
+|**卸除資料行** |指定要從特徵化中捨棄的資料行。|
+
+若要使用 SDK 自訂 featurizations，請 `"featurization": FeaturizationConfig` 在您的物件中指定 `AutoMLConfig` 。 深入瞭解 [自訂 featurizations](how-to-configure-auto-features.md#customize-featurization)。
+
+```python
+featurization_config = FeaturizationConfig()
+# `logQuantity` is a leaky feature, so we remove it.
+featurization_config.drop_columns = ['logQuantitity']
+# Force the CPWVOL5 feature to be of numeric type.
+featurization_config.add_column_purpose('CPWVOL5', 'Numeric')
+# Fill missing values in the target column, Quantity, with zeroes.
+featurization_config.add_transformer_params('Imputer', ['Quantity'], {"strategy": "constant", "fill_value": 0})
+# Fill mising values in the `INCOME` column with median value.
+featurization_config.add_transformer_params('Imputer', ['INCOME'], {"strategy": "median"})
+```
+
+如果您在實驗中使用 Azure Machine Learning studio，請參閱 [如何在 studio 中自訂特徵化](how-to-use-automated-ml-for-ml-models.md#customize-featurization)。
+
 ## <a name="optional-configurations"></a>選擇性設定
 
 其他選擇性設定適用于預測工作，例如啟用深度學習和指定目標滾動視窗匯總。 
@@ -250,17 +264,7 @@ automl_config = AutoMLConfig(task='forecasting',
 
 若要啟用在 Azure Machine Learning studio 中建立之 AutoML 實驗的 DNN，請參閱 [studio 操作說明中的工作類型設定](how-to-use-automated-ml-for-ml-models.md#create-and-run-experiment)。
 
-
-自動化 ML 會為使用者提供原生時間序列和深度學習模型來作為建議系統的一部分。 
-
-模型| 描述 | 優點
-----|----|---
-Prophet (預覽)|Prophet 最適合用於具有強烈季節性影響，且包含數個季節歷程記錄資料的時間序列。 若要利用此模型，請使用將它安裝在本機 `pip install fbprophet` 。 | 精確且快速，能夠應付時間序列中的極端值、遺失資料及重大變更。
-自動 ARIMA (預覽)|自動回歸整合式移動平均 (ARIMA) 在資料為固定的情況下執行效果最佳。 這表示其統計屬性 (如平均值和變異數) 在整個集合上是常數。 例如，若投擲一枚硬幣，則不論您是今天、明天還是明年投擲，出現正面的機率都是 50%。| 由於過去值是用來預測未來值，因此非常適用於單一變量序列。
-ForecastTCN (預覽)| ForecastTCN 是一種神經網路模型，其設計目的是要處理最嚴苛的預測工作，並擷取資料中的非線性本機和全球趨勢，以及時間序列之間的關聯性。|能夠運用資料中的複雜趨勢，並配合最大的資料集立即調整。
-
 如需運用 DNN 的詳細程式碼範例，請參閱[飲料生產預測筆記本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-beer-remote/auto-ml-forecasting-beer-remote.ipynb)。
-
 
 ### <a name="target-rolling-window-aggregation"></a>目標移動時段彙總
 預測器可擁有的最佳資訊通常是目標其最新值。  目標輪流視窗匯總可讓您將資料值的滾動匯總新增為特徵。 產生和使用這些額外特徵作為額外的內容資料，可協助提高定型模型的精確度。
@@ -283,7 +287,7 @@ experiment = Experiment(ws, "forecasting_example")
 local_run = experiment.submit(automl_config, show_output=True)
 best_run, fitted_model = local_run.get_output()
 ```
-
+ 
 ## <a name="forecasting-with-best-model"></a>使用最佳模型進行預測
 
 使用最佳模型反覆項目來預測測試資料集的值。

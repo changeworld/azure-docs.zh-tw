@@ -5,21 +5,21 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: how-to
-ms.date: 03/12/2020
+ms.date: 09/17/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: c9ce265707743d98f6c93d3facca33e16d1b75ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 75d8b63328f71df2f8de22a95c106c5cc18dc28f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85513509"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91275198"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>使用 Azure 匯入/匯出服務匯出 Azure Blob 儲存體中的資料
 
 本文提供的逐步指示會說明如何使用 Azure 匯入/匯出服務，安全地從 Azure Blob 儲存體匯出大量資料。 此服務需要您將空磁碟機寄送至 Azure 資料中心。 此服務會將您儲存體帳戶的資料匯出至磁碟機，然後將磁碟機寄回給您。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 在建立匯出作業來轉送 Azure Blob 儲存體中的資料之前，請仔細檢閱並完成此服務的下列必要條件清單。
 您必須：
@@ -27,12 +27,12 @@ ms.locfileid: "85513509"
 - 具有可用於匯入/匯出服務的有效 Azure 訂用帳戶。
 - 具有至少一個 Azure 儲存體帳戶。 請參閱[匯入/匯出服務支援的儲存體帳戶和儲存體類型](storage-import-export-requirements.md)清單。 如需建立新儲存體帳戶的詳細資訊，請參閱 [如何建立儲存體帳戶](storage-account-create.md)(英文)。
 - 具有屬於[支援類型](storage-import-export-requirements.md#supported-disks)的磁碟，且數量足夠。
-- 擁有 FedEx/DHL 帳戶。 如果您想要使用 FedEx/DHL 以外的貨運公司，請聯絡 Azure 資料箱營運小組，網址為 `adbops@microsoft.com` 。
+- 擁有 FedEx/DHL 帳戶。 如果您想要使用 FedEx/DHL 以外的電訊廠商，請聯絡 Azure 資料箱營運團隊 `adbops@microsoft.com` 。
   - 帳戶必須是有效的、需要有餘額，且必須有退貨運送功能。
   - 產生匯出作業的追蹤號碼。
   - 每個作業都應該具有個別的追蹤號碼。 不支援多個作業使用相同的追蹤號碼。
   - 如果您沒有貨運公司帳戶，請移至：
-    - [建立 FedEX 帳戶](https://www.fedex.com/en-us/create-account.html) \(英文\)，或
+    - [建立 FedEx 帳戶](https://www.fedex.com/en-us/create-account.html)，或
     - [建立 DHL 帳戶](http://www.dhl-usa.com/en/express/shipping/open_account.html) \(英文\)。
 
 ## <a name="step-1-create-an-export-job"></a>步驟 1：建立匯出作業
@@ -44,7 +44,7 @@ ms.locfileid: "85513509"
 
     ![移至匯入/匯出作業](./media/storage-import-export-data-from-blobs/export-from-blob1.png)
 
-3. 按一下 [**建立匯入/匯出作業**]。
+3. 按一下 [ **建立匯入/匯出作業**]。
 
     ![按一下 [匯入/匯出作業]](./media/storage-import-export-data-from-blobs/export-from-blob2.png)
 
@@ -83,14 +83,14 @@ ms.locfileid: "85513509"
 
 6. 在 [寄返資訊]**** 中：
 
-    - 從下拉式清單中選取貨運公司。 如果您想要使用 FedEx/DHL 以外的貨運公司，請從下拉式清單中選擇現有的選項。 請聯絡 Azure 資料箱營運小組， `adbops@microsoft.com` 其中包含您打算使用之電訊廠商的相關資訊。
-    - 輸入您在該貨運公司中建立的有效貨運帳戶號碼。 當您的匯出作業完成後，Microsoft 會使用此帳戶將磁片磁碟機寄回給您。
-    - 提供完整且有效的連絡人名稱、電話、電子郵件、街道地址、城市、郵遞區號、州/省和國家/地區。
+    - 從下拉式清單中選取貨運公司。 如果您想要使用 FedEx/DHL 以外的電訊廠商，請從下拉式清單中選擇現有的選項。 請與 `adbops@microsoft.com`  您打算使用的電訊廠商相關資訊，聯絡 Azure 資料箱營運團隊。
+    - 輸入您在該貨運公司中建立的有效貨運帳戶號碼。 當匯出作業完成後，Microsoft 會使用此帳戶將磁片磁碟機寄回給您。
+    - 提供完整且有效的連絡人名稱、電話、電子郵件、街道位址、城市、郵遞區號、州/省和國家/地區。
 
         > [!TIP]
         > 請提供群組電子郵件，而不是指定單一使用者的電子郵件地址。 這樣可以確保即使當系統管理員不在時，您也可以收到通知。
 
-7. **總結**：
+7. **摘要**：
 
     - 檢閱作業的詳細資料。
     - 請記下作業名稱及所提供的 Azure 資料中心寄送地址，以將磁碟機寄送至 Azure。
@@ -117,27 +117,25 @@ ms.locfileid: "85513509"
 當儀表板報告該作業已完成時，磁碟機已寄送給您，您可以在入口網站上取得貨運的追蹤號碼。
 
 1. 當您收到具有匯出資料的磁碟機之後，您需要取得 BitLocker 金鑰才能對磁碟機解除鎖定。 移至 Azure 入口網站中的匯出作業。 按一下 [匯入/匯出]**** 索引標籤。
-2. 從清單中選取並按一下您的匯出作業。 移至 [**加密**] 並複製金鑰。
+2. 從清單中選取並按一下您的匯出作業。 移至 [ **加密** ] 並複製金鑰。
 
-   ![檢視匯出工作的 BitLocker 金鑰](./media/storage-import-export-service/export-job-bitlocker-keys-02.png)
+   ![檢視匯出工作的 BitLocker 金鑰](./media/storage-import-export-data-from-blobs/export-from-blob7.png)
 
 3. 使用 BitLocker 金鑰來對磁碟機解除鎖定。
 
 匯出已完成。
 
-## <a name="step-5-unlock-the-disks"></a>步驟5：解除鎖定磁片
+## <a name="step-5-unlock-the-disks"></a>步驟5：將磁片解除鎖定
 
-如果使用 WAImportExport 工具的版本1.4.0.300，請使用下列命令來解除鎖定磁片磁碟機：
+使用下列命令來解除鎖定磁片磁碟機：
 
-   `WAImportExport Unlock /bk:<BitLocker key (base 64 string) copied from journal (*.jrn*) file> /driveLetter:<Drive letter>`  
+   `WAImportExport Unlock /bk:<BitLocker key (base 64 string) copied from Encryption blade in Azure portal> /driveLetter:<Drive letter>`  
 
 以下是範例輸入的範例。
 
    `WAImportExport.exe Unlock /bk:CAAcwBoAG8AdQBsAGQAIABiAGUAIABoAGkAZABkAGUAbgA= /driveLetter:e`
 
-如果使用舊版的工具，請使用 [BitLocker] 對話方塊來解除鎖定磁片磁碟機。
-
-此時，您可以刪除作業或將其保留。 作業會在90天后自動刪除。
+目前，您可以刪除作業或將其保留。 作業會在90天后自動刪除。
 
 ## <a name="check-the-number-of-drives"></a>確認磁碟機數目
 
@@ -155,7 +153,7 @@ ms.locfileid: "85513509"
 
     下表會說明這些參數：
 
-    |命令列參數|Description|  
+    |命令列參數|說明|  
     |--------------------------|-----------------|  
     |**/logdir**|選擇性。 記錄檔目錄。 詳細資訊記錄檔會寫入至這個目錄。 如未指定，將使用目前的目錄做為記錄目錄。|  
     |**/sn**|必要。 匯出作業的儲存體帳戶名稱。|  
@@ -209,7 +207,7 @@ Number of drives needed:        3
 
 下表顯示有效 Blob 路徑範例：
 
-   | 選取器 | Blob 路徑 | Description |
+   | 選取器 | Blob 路徑 | 說明 |
    | --- | --- | --- |
    | 開頭為 |/ |匯出儲存體帳戶中的所有 Blob |
    | 開頭為 |/$root/ |匯出根容器中的所有 Blob |

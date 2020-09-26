@@ -14,12 +14,12 @@ ms.custom:
 - it-pro
 - seo-update-azuread-jan"
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb81e5a72ff1f5a8d4442e6e1f211ad2368f6277
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 10c396c4e4b4eac83f08ae0cbbe565f8621688a4
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88206293"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91354967"
 ---
 # <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>針對 Azure Active Directory B2B 共同作業問題進行疑難排解
 
@@ -40,7 +40,7 @@ ms.locfileid: "88206293"
 
 ## <a name="invitations-have-been-disabled-for-directory"></a>已針對目錄停用邀請
 
-如果您收到通知，指出您沒有邀請使用者的許可權，請確認您的使用者帳戶已獲授權可在 Azure Active Directory > 使用者設定下邀請外部使用者，> 外部使用者 > 管理外部協同作業設定：
+如果您收到通知，指出您沒有邀請使用者的許可權，請確認您的使用者帳戶已獲授權，可在 Azure Active Directory > 使用者設定 > 外部使用者 > 管理外部共同作業設定：
 
 ![顯示外部使用者設定的螢幕擷取畫面](media/troubleshoot/external-user-settings.png)
 
@@ -54,7 +54,7 @@ ms.locfileid: "88206293"
 
 當邀請使用者的組織使用 Azure Active Directory，但指定使用者的帳戶不存在 (例如，使用者不存在於 Azure AD contoso.com 中)。 contoso.com 的系統管理員可能已建立防止建立使用者的原則。 使用者必須向管理員確認，以判斷是否允許外部使用者。 外部使用者的管理員需要允許其網域中存在已驗證的電子郵件使用者 (請參閱[本文](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0)，了解允許已驗證的電子郵件使用者)。
 
-![指出租使用者不允許以電子郵件驗證的使用者的錯誤](media/troubleshoot/allow-email-verified-users.png)
+![錯誤指出租使用者不允許電子郵件驗證的使用者](media/troubleshoot/allow-email-verified-users.png)
 
 ### <a name="external-user-does-not-exist-already-in-a-federated-domain"></a>外部使用者不存在於同盟網域中
 
@@ -85,15 +85,15 @@ ms.locfileid: "88206293"
 
 ## <a name="you-receive-an-aadsts65005-error-when-you-try-to-log-in-to-an-azure-resource"></a>當您嘗試登入 Azure 資源時，收到「AADSTS65005」錯誤
 
-具有來賓帳戶的使用者無法登入，並收到下列錯誤訊息：
+具有 guest 帳戶的使用者無法登入，且會收到下列錯誤訊息：
 
 ```plaintext
     AADSTS65005: Using application 'AppName' is currently not supported for your organization contoso.com because it is in an unmanaged state. An administrator needs to claim ownership of the company by DNS validation of contoso.com before the application AppName can be provisioned.
 ```
 
-使用者具有 Azure 使用者帳戶，而且是已被放棄或未受管理的病毒租使用者。 此外，租使用者中沒有全域或公司系統管理員。
+使用者有 Azure 使用者帳戶，而且是已放棄或未受管理的病毒租使用者。 此外，租使用者中不會有任何全域或公司系統管理員。
 
-若要解決此問題，您必須接管放棄的租使用者。 請參閱  [Azure Active Directory 中以系統管理員身分接管非受控目錄](https://docs.microsoft.com/azure/active-directory/users-groups-roles/domains-admin-takeover)。 您也必須針對有問題的網域尾碼存取網際網路對向 DNS，才能提供您控制命名空間的直接辨識項。 當租使用者回到受管理的狀態之後，請與客戶討論是否讓使用者和已驗證的功能變數名稱是其組織的最佳選項。
+若要解決此問題，您必須接管已放棄的租使用者。 請參閱  [在 Azure Active Directory 中，以系統管理員身分接管非受控目錄](https://docs.microsoft.com/azure/active-directory/users-groups-roles/domains-admin-takeover)。 您也必須針對有問題的網域尾碼存取網際網路對應的 DNS，以提供您控制命名空間的直接辨識項。 當租使用者返回受控狀態之後，請與客戶討論是否讓使用者與已驗證的功能變數名稱成為其組織的最佳選項。
 
 ## <a name="a-guest-user-with-a-just-in-time-or-viral-tenant-is-unable-to-reset-their-password"></a>具有 Just-In-Time (JIT) 或「病毒式」租用戶的來賓使用者無法重設其密碼
 
@@ -101,11 +101,25 @@ ms.locfileid: "88206293"
 
 ## <a name="a-guest-user-is-unable-to-use-the-azuread-powershell-v1-module"></a>來賓使用者無法使用 AzureAD PowerShell V1 模組
 
-自2019年11月18日起，您目錄中的來賓使用者 (定義為使用者帳戶，其中 **userType** 屬性等於 **來賓**) 遭到封鎖而無法使用 AzureAD PowerShell V1 模組。 接下來，使用者必須是成員使用者 (在其中， **userType** 等於 **member**) 或使用 AzureAD PowerShell V2 模組。
+自2019年11月18日起，您目錄中的來賓使用者 (定義為使用者帳戶，其中 **userType** 屬性等於 **來賓**) 遭到封鎖而無法使用 AzureAD PowerShell V1 模組。 接下來，使用者必須是成員使用者 (其中 **userType** 等於 **成員**) 或使用 AzureAD PowerShell V2 模組。
 
 ## <a name="in-an-azure-us-government-tenant-i-cant-invite-a-b2b-collaboration-guest-user"></a>在 Azure 美國政府租使用者中，我無法邀請 B2B 共同作業來賓使用者
 
-在 Azure 美國政府雲端中，目前只有在 Azure 美國政府雲端內的租使用者，以及同時支援 B2B 共同作業的租使用者之間，才支援 B2B 共同作業。 如果您邀請的租使用者不屬於 Azure 美國政府雲端的一部分，或是尚未支援 B2B 共同作業，您將會收到錯誤。 如需詳細資訊和限制，請參閱 [Azure Active Directory Premium P1 和 P2 變化](https://docs.microsoft.com/azure/azure-government/documentation-government-services-securityandidentity#azure-active-directory-premium-p1-and-p2)。
+在 Azure 美國政府雲端中，目前僅支援在 Azure 美國政府雲端內的租使用者之間進行 B2B 共同作業，而且兩者都支援 B2B 共同作業。 如果您邀請的租使用者不屬於 Azure 美國政府雲端，或尚未支援 B2B 共同作業的租使用者，您將會收到錯誤訊息。 如需詳細資料和限制，請參閱 [Azure Active Directory Premium P1 和 P2 變化](https://docs.microsoft.com/azure/azure-government/documentation-government-services-securityandidentity#azure-active-directory-premium-p1-and-p2)。
+
+## <a name="i-receive-the-error-that-azure-ad-cannot-find-the-aad-extensions-app-in-my-tenant"></a>我收到 Azure AD 在我的租使用者中找不到 aad 擴充功能-應用程式的錯誤
+
+使用自助式註冊功能時（例如自訂使用者屬性或使用者流程）， `aad-extensions-app. Do not modify. Used by AAD for storing user data.` 系統會自動建立名為的應用程式。 Azure AD 的外部身分識別會使用它來儲存註冊和自訂屬性所收集之使用者的相關資訊。
+
+如果您不小心刪除了 `aad-extensions-app` ，您有30天的時間可以復原。 您可以使用 Azure AD PowerShell 模組來還原應用程式。
+
+1. 啟動 Azure AD PowerShell 模組並執行 `Connect-AzureAD` 。
+1. 以您想要復原已刪除之應用程式的 Azure AD 租使用者的全域管理員身分登入。
+1. 執行 PowerShell 命令 `Get-AzureADDeletedApplication` 。
+1. 在清單中尋找顯示名稱開頭的應用程式 `aad-extensions-app` ，並複製其 `ObjectId` 屬性值。
+1. 執行 PowerShell 命令 `Restore-AzureADDeletedApplication -ObjectId {id}` 。 `{id}`使用 `ObjectId` 上一個步驟中的來取代命令的部分。
+
+您現在應該會在 Azure 入口網站中看到已還原的應用程式。
 
 ## <a name="next-steps"></a>後續步驟
 

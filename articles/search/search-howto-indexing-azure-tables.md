@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/11/2020
-ms.openlocfilehash: 26be48e7968345863799191539bd668ea6d9a4a2
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 2c67cd4d071660da2ca5714623695ca434329263
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88929562"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91275178"
 ---
 # <a name="how-to-index-tables-from-azure-table-storage-with-azure-cognitive-search"></a>如何使用 Azure 認知搜尋為 Azure 資料表儲存體中的資料表編制索引
 
@@ -69,6 +69,7 @@ ms.locfileid: "88929562"
 
 您可以採取下列其中一種方式提供資料表的認證︰ 
 
+- **受控識別連接字串**： `ResourceId=/subscriptions/<your subscription ID>/resourceGroups/<your resource group name>/providers/Microsoft.Storage/storageAccounts/<your storage account name>/;` 此連接字串不需要帳戶金鑰，但您必須遵循指示來 [設定與使用受控識別的 Azure 儲存體帳戶](search-howto-managed-identities-storage.md)的連線。
 - **完整存取儲存體帳戶連接字串**： `DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>` 您可以從 Azure 入口網站取得連接字串，方法是移至傳統儲存體帳戶的**儲存體帳戶**分頁  >  **設定**  >  **金鑰** () 或 Azure Resource Manager **Settings**  >  儲存體帳戶) 的設定**存取金鑰** (。
 - **儲存體帳戶共用存取簽章連接字串**： `TableEndpoint=https://<your account>.table.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=t&sp=rl` 在此情況下，共用存取簽章應該擁有容器 (資料表的清單和讀取權限) 和 (資料表資料列) 的物件。
 -  **資料表共用存取**簽章： `ContainerSharedAccessUri=https://<your storage account>.table.core.windows.net/<table name>?tn=<table name>&sv=2016-05-31&sig=<the signature>&se=<the validity end time>&sp=r` 共用存取簽章應該有資料表的查詢 (read) 許可權。

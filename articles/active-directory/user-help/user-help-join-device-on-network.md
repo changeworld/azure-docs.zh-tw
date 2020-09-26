@@ -12,12 +12,12 @@ ms.topic: end-user-help
 ms.date: 08/03/2018
 ms.author: curtand
 ms.reviewer: jairoc
-ms.openlocfilehash: 17c0b7bd802d4a50343f88b9517313489943e10c
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 146b867f1075a7eac1b6817f5fc8dbcd7ba04b02
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799480"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333404"
 ---
 # <a name="join-your-work-device-to-your-organizations-network"></a>將您的工作裝置加入組織的網路
 將您工作用的 Windows 10 裝置加入組織的網路，如此就能存取可能受限的資源。
@@ -54,7 +54,7 @@ ms.locfileid: "88799480"
 
     您的裝置現在已加入組織的網路。
 
-## <a name="to-make-sure-youre-joined"></a>確定您已加入
+## <a name="to-make-sure-youre-joined-new-device"></a>若要確認您已加入 (新的裝置) 
 您可以透過查看設定來確定您已加入。
 
 1. 開啟 [設定]，然後選取 [帳戶]。

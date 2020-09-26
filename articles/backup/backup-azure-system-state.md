@@ -3,12 +3,12 @@ title: 將 Windows 系統狀態備份至 Azure
 description: 瞭解如何將 Windows Server 電腦的系統狀態備份至 Azure。
 ms.topic: conceptual
 ms.date: 05/23/2018
-ms.openlocfilehash: ebe527ef7ddb32d46c2f39970f74b64c2594bf60
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 1b3573d757d2f7b1ffec9ae718aa791488960f3b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90975483"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332879"
 ---
 # <a name="back-up-windows-system-state-to-azure"></a>將 Windows 系統狀態備份至 Azure
 
@@ -38,7 +38,7 @@ ms.locfileid: "90975483"
     ![為新保存庫設定儲存體組態](./media/backup-try-azure-backup-in-10-mins/set-storage-configuration.png)
 4. 為保存庫選擇適當的儲存體複寫選項。
 
-    ![儲存體設定選項](./media/backup-try-azure-backup-in-10-mins/choose-storage-configuration.png)
+    ![儲存體設定選項](./media/backup-try-azure-backup-in-10-mins/choose-storage-configuration-for-vault.png)
 
     根據預設，保存庫具有異地備援儲存體。 如果您使用 Azure 做為主要的備份儲存體端點，請繼續使用 [異地備援]****。 如果您未使用 Azure 做為主要的備份儲存體端點，則選擇 [本地備援]****，以減少 Azure 儲存體成本。 在此[儲存體冗余總覽](../storage/common/storage-redundancy.md)中，深入瞭解[地理區域冗余](../storage/common/storage-redundancy.md#geo-redundant-storage)、[本機冗余](../storage/common/storage-redundancy.md#locally-redundant-storage)和[區域多餘的](../storage/common/storage-redundancy.md#zone-redundant-storage)儲存體選項。
 
@@ -185,7 +185,7 @@ ms.locfileid: "90975483"
 
 如果您有任何問題，請 [傳送意見](https://feedback.azure.com/forums/258995-azure-backup)反應給我們。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * 詳細了解如何 [備份 Windows 電腦](backup-windows-with-mars-agent.md)。
 * 現在您已備份好 Windows Server 系統狀態，接下來您可以[管理您的保存庫和伺服器](backup-azure-manage-windows-server.md)。

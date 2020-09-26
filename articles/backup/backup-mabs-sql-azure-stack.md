@@ -3,12 +3,12 @@ title: 備份 Azure Stack 中的 SQL Server 工作負載
 description: 在本文中，您將瞭解如何設定 Microsoft Azure 備份 Server (MABS) 來保護 Azure Stack 上的 SQL Server 資料庫。
 ms.topic: conceptual
 ms.date: 06/08/2018
-ms.openlocfilehash: 912e6f10b689217303786b20ec6315fca595a8c2
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 80de7913b010fca69c3703e423109f2ede653590
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89376327"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332809"
 ---
 # <a name="back-up-sql-server-on-azure-stack"></a>備份 Azure Stack 中的 SQL Server
 
@@ -24,10 +24,10 @@ ms.locfileid: "89376327"
 
 * 如果您有一個資料庫上其檔案位於遠端的檔案共用，則保護將會失敗，錯誤識別碼為 104。 MABS 不支援保護遠端檔案共用上的 SQL Server 資料。
 * MABS 無法保護儲存在遠端 SMB 共用上的資料庫。
-* 請確定[可用性群組複本設定為唯讀](/sql/database-engine/availability-groups/windows/configure-read-only-access-on-an-availability-replica-sql-server?view=sql-server-ver15)。
+* 請確定[可用性群組複本設定為唯讀](/sql/database-engine/availability-groups/windows/configure-read-only-access-on-an-availability-replica-sql-server)。
 * 您必須將系統帳戶 **NTAuthority\System** 明確新增至 SQL Server 上的系統管理員（Sysadmin）群組。
-* 當您執行部分自主資料庫的替代位置復原時，請確定目標 SQL 執行個體已啟用[自主資料庫](/sql/relational-databases/databases/migrate-to-a-partially-contained-database?view=sql-server-ver15#enable)功能。
-* 當您執行檔案資料流資料庫的替代位置復原時，請確定目標 SQL 執行個體已啟用[檔案資料流資料庫](/sql/relational-databases/blob/enable-and-configure-filestream?view=sql-server-ver15)功能。
+* 當您執行部分自主資料庫的替代位置復原時，請確定目標 SQL 執行個體已啟用[自主資料庫](/sql/relational-databases/databases/migrate-to-a-partially-contained-database#enable)功能。
+* 當您執行檔案資料流資料庫的替代位置復原時，請確定目標 SQL 執行個體已啟用[檔案資料流資料庫](/sql/relational-databases/blob/enable-and-configure-filestream)功能。
 * 保護 SQL Server AlwaysOn：
   * MABS 會在建立保護群組時偵測可用性群組。
   * MABS 會偵測容錯移轉並繼續保護資料庫。
@@ -45,10 +45,10 @@ ms.locfileid: "89376327"
     * 如果在選取的節點上備份失敗，則備份作業會失敗。
     * 不支援復原至原始位置。
 * SQL Server 2014 或以上的備份問題：
-  * SQL Server 2014 加入了新功能，可為 [Windows Azure Blob 儲存空間的內部部署 SQL Server 建立資料庫](/sql/relational-databases/databases/sql-server-data-files-in-microsoft-azure?view=sql-server-ver15)。 MABS 不能用來保護此設定。
+  * SQL Server 2014 加入了新功能，可為 [Windows Azure Blob 儲存空間的內部部署 SQL Server 建立資料庫](/sql/relational-databases/databases/sql-server-data-files-in-microsoft-azure)。 MABS 不能用來保護此設定。
   * SQL AlwaysOn 選項的「偏好次要」備份喜好設定有一些已知問題。 MABS 一律會從次要複本進行備份。 如果找不到次要複本，則備份會失敗。
 
-## <a name="before-you-start"></a>開始之前
+## <a name="before-you-start"></a>在您開始使用 Intune 之前
 
 [安裝及準備 Azure 備份伺服器](backup-mabs-install-azure-stack.md)。
 
@@ -60,7 +60,7 @@ ms.locfileid: "89376327"
 
     ![建立保護群組](./media/backup-azure-backup-sql/protection-group.png)
 
-    Azure 備份伺服器會啟動 [保護群組] 精靈，引導您建立**保護群組**。 選取 [下一步] 。
+    Azure 備份伺服器會啟動 [保護群組] 精靈，引導您建立**保護群組**。 選取 [下一步]  。
 
 3. 在 [選取保護群組類型]**** 畫面中，選取 [伺服器]****。
 
@@ -87,9 +87,9 @@ ms.locfileid: "89376327"
    >
    >
 
-7. 在 [檢閱磁碟配置]**** 畫面中，確認可用的整體儲存空間和潛在的磁碟空間。 選取 [下一步] 。
+7. 在 [檢閱磁碟配置]**** 畫面中，確認可用的整體儲存空間和潛在的磁碟空間。 選取 [下一步]  。
 
-8. 在 [選擇複本的建立方式]**** 中，選擇建立第一個復原點的方式。 您可以手動 (關閉網路) 傳輸此初始備份，以避免頻寬壅塞，或透過網路進行傳輸。 如果您選擇等候以傳送第一個備份，您可以指定初始傳輸的時間。 選取 [下一步] 。
+8. 在 [選擇複本的建立方式]**** 中，選擇建立第一個復原點的方式。 您可以手動 (關閉網路) 傳輸此初始備份，以避免頻寬壅塞，或透過網路進行傳輸。 如果您選擇等候以傳送第一個備份，您可以指定初始傳輸的時間。 選取 [下一步]  。
 
     ![初始複寫方法](./media/backup-azure-backup-sql/pg-manual.png)
 
@@ -163,13 +163,13 @@ ms.locfileid: "89376327"
 2. 以滑鼠右鍵按一下資料庫名稱，然後選取 [ **復原**]。
 
     ![從 Azure 復原](./media/backup-azure-backup-sql/sqlbackup-recover.png)
-3. MABS 會顯示復原點的詳細資料。 選取 [下一步] 。 若要覆寫資料庫，請選取復原類型 [復原到原始的 SQL Server 執行個體] ****。 選取 [下一步] 。
+3. MABS 會顯示復原點的詳細資料。 選取 [下一步]  。 若要覆寫資料庫，請選取復原類型 [復原到原始的 SQL Server 執行個體] ****。 選取 [下一步]  。
 
     ![復原到原始位置](./media/backup-azure-backup-sql/sqlbackup-recoveroriginal.png)
 
     在本例中，MABS 會將資料庫復原至另一個 SQL Server 執行個體或獨立的網路資料夾。
 
-4. 在 [指定復原選項] **** 畫面上，您可以選取 [網路頻寬使用節流設定] 等復原選項來進行復原所用頻寬的節流。 選取 [下一步] 。
+4. 在 [指定復原選項] **** 畫面上，您可以選取 [網路頻寬使用節流設定] 等復原選項來進行復原所用頻寬的節流。 選取 [下一步]  。
 
 5. 在 [摘要] **** 畫面中，您會看到目前為止提供的所有復原組態。 選取 [ **復原**]。
 
@@ -179,7 +179,7 @@ ms.locfileid: "89376327"
 
     一旦完成復原，還原的資料庫會是應用程式一致複本。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 請參閱[備份檔案和應用程式](backup-mabs-files-applications-azure-stack.md)一文。
 請參閱 [在 Azure Stack 上備份 SharePoint (英文)](backup-mabs-sharepoint-azure-stack.md) 一文。

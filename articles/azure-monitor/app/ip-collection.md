@@ -2,14 +2,14 @@
 title: Azure 應用程式 Insights IP 位址集合 |Microsoft Docs
 description: 瞭解如何使用 Azure 應用程式 Insights 處理 IP 位址和地理位置
 ms.topic: conceptual
-ms.date: 09/11/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: b702494347874a1b4977179ba882490223bdf924
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.date: 09/23/2020
+ms.custom: devx-track-js
+ms.openlocfilehash: 6131105ef78a8559b0fb95043a87e562e887ebfd
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90032821"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333302"
 ---
 # <a name="geolocation-and-ip-address-handling"></a>地理位置和 IP 位址處理
 
@@ -62,9 +62,7 @@ ms.locfileid: "90032821"
 
 如果您只需要修改單一 Application Insights 資源的行為，請使用 Azure 入口網站。 
 
-1. 移 Application Insights 資源 >**設定**  >  **匯出範本** 
-
-    ![匯出範本](media/ip-collection/export-template.png)
+1. 前往您的 Application Insights 資源 >**自動化**  >  **匯出範本** 
 
 2. 選取 **部署**
 

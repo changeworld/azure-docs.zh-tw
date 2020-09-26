@@ -3,12 +3,12 @@ title: MABS & System Center DPM 支援矩陣
 description: 本文摘要說明當您使用 Microsoft Azure 備份 Server (MABS) 或 System Center DPM 來備份內部部署和 Azure VM 資源時的 Azure 備份支援。
 ms.date: 02/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: e3ca83b8a2874304521d84f6901fcb9627ce80db
-ms.sourcegitcommit: 655e4b75fa6d7881a0a410679ec25c77de196ea3
+ms.openlocfilehash: 011e115c7f3cc94b03ffd9ad2467406c60738033
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/07/2020
-ms.locfileid: "89506605"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332690"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>使用 Microsoft Azure 備份 Server 或 System Center DPM 進行備份的支援矩陣
 
@@ -24,7 +24,7 @@ MABS 是以 System Center DPM 為基礎，並提供類似的功能，但有一�
 
 - MABS 不需要 System Center 授權即可執行。
 - 針對 MABS 和 DPM，Azure 提供長期備份儲存體。 此外，DPM 可讓您將資料備份在磁帶上進行長期儲存。 MABS 未提供這項功能。
-- [您可以使用次要 dpm 伺服器來備份主要 dpm 伺服器](/system-center/dpm/back-up-the-dpm-server?view=sc-dpm-2019)。 次要伺服器會保護主要伺服器資料庫，和儲存在主要伺服器上的資料來源複本。 當主要伺服器失敗時，次要伺服器將可繼續保護主要伺服器所保護的工作負載，直到主要伺服器恢復可用性為止。  MABS 未提供這項功能。
+- [您可以使用次要 dpm 伺服器來備份主要 dpm 伺服器](/system-center/dpm/back-up-the-dpm-server)。 次要伺服器會保護主要伺服器資料庫，和儲存在主要伺服器上的資料來源複本。 當主要伺服器失敗時，次要伺服器將可繼續保護主要伺服器所保護的工作負載，直到主要伺服器恢復可用性為止。  MABS 未提供這項功能。
 
 您可以從 [Microsoft 下載中心](https://www.microsoft.com/download/details.aspx?id=57520)下載 MABS。 它可以在內部部署或在 Azure VM 上執行。
 
@@ -43,7 +43,7 @@ DPM 和 MABS 皆提供備份多種不同應用程式和伺服器與用戶端作�
 1. 在 DPM 伺服器/MABS 上安裝 Microsoft Azure 復原服務 (MARS) 代理程式。
 1. MARS 代理程式會使用 Azure 備份，將 DPM/MABS 磁片備份到 Azure 中的備份復原服務保存庫。
 
-如需詳細資訊：
+其他資訊：
 
 - [深入了解](backup-architecture.md#architecture-back-up-to-dpmmabs) MABS 架構。
 - [複習](backup-support-matrix-mars-agent.md) MARS 代理程式支援的功能。
@@ -84,7 +84,7 @@ Azure 備份可以備份正在執行下列任何作業系統的 DPM/MABS 實例�
 --- | ---
 **安裝** | 在單一用途的電腦上安裝 DPM/MABS。<br/><br/> 請勿在網域控制站上、執行 Microsoft Exchange Server 或 System Center Operations Manager 的電腦上，或在叢集節點上安裝 DPM/MABS。<br/><br/> [檢查所有 DPM 系統需求](/system-center/dpm/prepare-environment-for-dpm#dpm-server)。
 **網域** | DPM/MABS 應該加入網域。 請先安裝 DPM/MABS，再將其加入網域。 不支援在部署之後將 DPM/MABS 移至新網域。
-**存放裝置** | DPM 2016/MABS v2 和更新版本支援新式備份儲存體 (MB) 。 MBS 不適用於 MABS v1。
+**Storage** | DPM 2016/MABS v2 和更新版本支援新式備份儲存體 (MB) 。 MBS 不適用於 MABS v1。
 **MABS 升級** | 您可以直接安裝 MABS v3，或是從 MABS v2 升級至 MABS v3。 [深入了解](backup-azure-microsoft-azure-backup.md#upgrade-mabs)。
 **移動 MABS** | 使用 MABS 時，支援將 MABS 移至新伺服器，同時保留儲存體。<br/><br/> 伺服器必須與原始伺服器同名。 如果您想要保留相同的儲存體集區，並使用相同的 MABS 資料庫來儲存資料復原點，則不可變更名稱。<br/><br/> 您將需要 MABS 資料庫的備份，因為您需要加以還原。
 
@@ -158,13 +158,13 @@ DPM 伺服器/MABS 需要存取下列 URL：
 |需求 |詳細資料 |
 |---------|---------|
 |Domain    | DPM/MABS 伺服器應該位於 Windows Server 2019、Windows Server 2016、Windows Server 2012 R2、Windows Server 2012 網域中。        |
-|網域信任   |  只要您在不同的樹系之間建立樹系層級的雙向信任，DPM/MABS 就支援跨樹系的資料保護。   <BR><BR>   在與 DPM/MABS 伺服器網域具有雙向信任關係的樹系中，DPM/MABS 可以保護跨網域的伺服器和工作站。 若要保護工作組或不受信任網域中的電腦，請參閱 [備份和還原工作組和不受信任網域中的工作負載。](/system-center/dpm/back-up-machines-in-workgroups-and-untrusted-domains?view=sc-dpm-2019)  |
+|網域信任   |  只要您在不同的樹系之間建立樹系層級的雙向信任，DPM/MABS 就支援跨樹系的資料保護。   <BR><BR>   在與 DPM/MABS 伺服器網域具有雙向信任關係的樹系中，DPM/MABS 可以保護跨網域的伺服器和工作站。 若要保護工作組或不受信任網域中的電腦，請參閱 [備份和還原工作組和不受信任網域中的工作負載。](/system-center/dpm/back-up-machines-in-workgroups-and-untrusted-domains)  |
 
 ## <a name="dpmmabs-storage-support"></a>DPM/MABS 儲存體支援
 
 備份至 DPM/MABS 的資料會儲存在本機磁片儲存體上。
 
-**存放裝置** | **詳細資料**
+**Storage** | **詳細資料**
 --- | ---
 **MBS** | DPM 2016/MABS v2 和更新版本支援新式備份儲存體 (MB) 。 MBS 不適用於 MABS v1。
 **Azure VM 上的 MABS 儲存體** | 資料會儲存在連接至 DPM/MABS VM 的 Azure 磁片上，並在 DPM/MABS 中進行管理。 可用於 DPM/MABS 存放集區的磁片數目受限於 VM 的大小。<br/><br/> A2 VM：4個磁片;A3 VM：8個磁片;A4 VM：16個磁片，每個磁片的大小上限為 1 TB。 這會決定可用的備份存放集區總數。<br/><br/> 您可以備份的資料量取決於連結的磁碟數目和大小。
@@ -185,12 +185,12 @@ DPM 伺服器/MABS 需要存取下列 URL：
 
 ## <a name="supported-backups-to-dpm"></a>DPM 支援的備份
 
-如需您可以使用 Data Protection Manager 保護之各種伺服器和工作負載的相關資訊，請參閱「 [DPM 可以備份哪些專案？」一](/system-center/dpm/dpm-protection-matrix?view=sc-dpm-2019)文。
+如需您可以使用 Data Protection Manager 保護之各種伺服器和工作負載的相關資訊，請參閱「 [DPM 可以備份哪些專案？」一](/system-center/dpm/dpm-protection-matrix)文。
 
 - DPM/MABS 備份的叢集工作負載應位於與 DPM/MABS 相同的網域中，或位於子域/受信任的網域中。
 - 您可以使用 NTLM/憑證驗證，在不受信任的網域或工作群組中備份資料。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [深入了解](backup-architecture.md#architecture-back-up-to-dpmmabs) MABS 架構。
 - [檢閱](backup-support-matrix-mars-agent.md) MARS 代理程式支援的作業。

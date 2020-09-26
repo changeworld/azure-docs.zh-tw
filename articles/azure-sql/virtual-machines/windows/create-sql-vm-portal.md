@@ -7,19 +7,19 @@ author: MashaMSFT
 tags: azure-resource-manager
 ms.assetid: 1aff691f-a40a-4de2-b6a0-def1384e086e
 ms.service: virtual-machines-sql
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
 ms.date: 11/07/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: e315f49cb0b78e13c4b6132f844397d1261ff0f9
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: a7cd15bab0b26a13f9ffb818aa29e8e262c0bd06
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88652010"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332911"
 ---
 # <a name="how-to-use-the-azure-portal-to-provision-a-windows-virtual-machine-with-sql-server"></a>如何使用 Azure 入口網站以 SQL Server 布建 Windows 虛擬機器
 
@@ -115,7 +115,7 @@ ms.locfileid: "88652010"
 
 * 建立新的 **虛擬網路** ，或使用您 SQL Server VM 的現有虛擬網路。 同時指定**子網路**。 
 
-* 在 [ **NIC 網路安全性群組**] 底下，選取 [基本] 安全性群組或 [advanced] 安全性群組。 選擇 [基本] 選項可讓您選取 SQL Server VM 的輸入埠，這是在 [ **基本** ] 索引標籤上所設定的相同值。選取 [advanced] 選項可讓您選擇現有的網路安全性群組，或建立一個新的群組。 
+* 在 [ **NIC 網路安全性群組**] 底下，選取 [基本] 安全性群組或 [advanced] 安全性群組。 選擇 [基本] 選項可讓您選取 SQL Server VM 的輸入埠，這是在 [ **基本** ] 索引標籤上設定的相同值。選取 [advanced] 選項可讓您選擇現有的網路安全性群組，或建立一個新的群組。 
 
 * 您可以對網路設定進行其他變更，或保留預設值。
 

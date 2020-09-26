@@ -3,12 +3,12 @@ title: Microsoft Azure 備份伺服器的新功能
 description: Microsoft Azure 備份伺服器可提供您經過強化的備份功能，讓您保護 VM、檔案和資料夾以及工作負載等項目。
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: ca06e52c81b909bb19008fdccfe4b3fdeb7e6248
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 39050d0f658e29b82f270f1fe53026e2fb80bfa1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89182134"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332758"
 ---
 # <a name="whats-new-in-microsoft-azure-backup-server-mabs"></a>Microsoft Azure 備份 Server (MABS 的新功能) 
 
@@ -23,7 +23,7 @@ Microsoft Azure 備份 Server (MABS) 第3版 UR1 是最新的更新，其中包�
 
 MABS V2 引進了 [Modern Backup Storage](backup-mabs-add-storage.md) (mb) ，以改善儲存使用量和效能。 MBS 使用 ReFS 作為基礎的檔案系統，MBS 旨在利用混合式儲存體 (例如階層式儲存體)。
 
-為了達到規模和效能（MB），我們建議使用 MABS V3 UR1 作為階層式磁片區的磁片區，在快閃儲存體 (SSD) 的整體儲存體) 中使用一 (小部分，以搭配 DPM HDD 儲存體。 具有階層式儲存體的 MABS V3 UR1 可提供50-70% 的備份速度。 如需設定階層式存放裝置的步驟，請參閱 DPM 文章以 [分層式儲存體設定 mb](/system-center/dpm/add-storage?view=sc-dpm-2019#set-up-mbs-with-tiered-storage) 。
+為了達到規模和效能（MB），我們建議使用 MABS V3 UR1 作為階層式磁片區的磁片區，在快閃儲存體 (SSD) 的整體儲存體) 中使用一 (小部分，以搭配 DPM HDD 儲存體。 具有階層式儲存體的 MABS V3 UR1 可提供50-70% 的備份速度。 如需設定階層式存放裝置的步驟，請參閱 DPM 文章以 [分層式儲存體設定 mb](/system-center/dpm/add-storage#set-up-mbs-with-tiered-storage) 。
 
 ### <a name="support-for-refs-volumes"></a>ReFS 磁碟區支援
 

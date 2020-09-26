@@ -11,12 +11,12 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 07/22/2020
 ms.custom: how-to, contperfq1, devx-track-python
-ms.openlocfilehash: 7a785aebc282a871d150f0c9b4cca59d7d03558e
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 639e4cde82fd8496c90f8ebf263dd42661a75748
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90976780"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91296802"
 ---
 # <a name="connect-to-azure-storage-services"></a>連線至 Azure 儲存體服務
 
@@ -113,7 +113,7 @@ ms.locfileid: "90976780"
 
 ### <a name="permissions"></a>權限
 
-針對 Azure blob 容器和 Azure Data Lake Gen 2 儲存體，請確定您的驗證認證具有 **儲存體 Blob 資料讀取器** 存取權。 深入瞭解 [儲存體 Blob 資料讀取器](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader)。 
+針對 Azure blob 容器和 Azure Data Lake Gen 2 儲存體，請確定您的驗證認證具有 **儲存體 Blob 資料讀取器** 存取權。 深入瞭解 [儲存體 Blob 資料讀取器](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader)。 帳戶 SAS 權杖預設為沒有許可權。 針對資料讀取權限，您的驗證認證必須具有容器和物件的最小清單和讀取權限。 若要進行資料寫入存取，也需要 [寫入] 和 [新增] 許可權。
 
 <a name="python"></a>
 
@@ -127,7 +127,7 @@ ms.locfileid: "90976780"
 * [Azure 檔案共用](#azure-file-share)
 * [Azure Data Lake Storage Generation 2](#azure-data-lake-storage-generation-2)
 
- 若要為其他支援的儲存體服務建立資料存放區，請參閱 [適用 `register_azure_*` 方法的參考檔](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore.datastore?view=azure-ml-py#&preserve-view=truemethods)。
+ 若要為其他支援的儲存體服務建立資料存放區，請參閱 [適用 `register_azure_*` 方法的參考檔](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore.datastore?view=azure-ml-py&preserve-view=true#&preserve-view=truemethods)。
 
 如果您偏好低程式碼體驗，請參閱 [使用 Azure Machine Learning Studio 連接到資料](how-to-connect-data-ui.md)。
 
@@ -136,7 +136,7 @@ ms.locfileid: "90976780"
 
 ### <a name="azure-blob-container"></a>Azure Blob 容器
 
-若要將 Azure Blob 容器註冊作為資料存放區，請使用 [`register_azure_blob_container()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#&preserve-view=trueregister-azure-blob-container-workspace--datastore-name--container-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false--blob-cache-timeout-none--grant-workspace-access-false--subscription-id-none--resource-group-none-)。
+若要將 Azure Blob 容器註冊作為資料存放區，請使用 [`register_azure_blob_container()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=trueregister-azure-blob-container-workspace--datastore-name--container-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false--blob-cache-timeout-none--grant-workspace-access-false--subscription-id-none--resource-group-none-)。
 
 下列程式碼會建立 `blob_datastore_name` 資料存放區，並將其註冊至 `ws` 工作區。 此資料存放區會使用提供的帳戶存取金鑰，存取 `my-account-name` 儲存體帳戶上的 `my-container-name` Blob 容器。 請參閱 [儲存體存取 & 許可權](#storage-access-and-permissions) 一節，以取得虛擬網路案例的指引，以及尋找所需驗證認證的位置。 
 
@@ -155,7 +155,7 @@ blob_datastore = Datastore.register_azure_blob_container(workspace=ws,
 
 ### <a name="azure-file-share"></a>Azure 檔案共用
 
-若要將 Azure 檔案共用註冊為資料存放區，請使用 [`register_azure_file_share()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#&preserve-view=trueregister-azure-file-share-workspace--datastore-name--file-share-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false-)。 
+若要將 Azure 檔案共用註冊為資料存放區，請使用 [`register_azure_file_share()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=trueregister-azure-file-share-workspace--datastore-name--file-share-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false-)。 
 
 下列程式碼會建立 `file_datastore_name` 資料存放區，並將其註冊至 `ws` 工作區。 此資料存放區會使用提供的帳戶存取金鑰，存取 `my-account-name` 儲存體帳戶上的 `my-fileshare-name` 檔案共用。 請參閱 [儲存體存取 & 許可權](#storage-access-and-permissions) 一節，以取得虛擬網路案例的指引，以及尋找所需驗證認證的位置。 
 
@@ -174,7 +174,7 @@ file_datastore = Datastore.register_azure_file_share(workspace=ws,
 
 ### <a name="azure-data-lake-storage-generation-2"></a>Azure Data Lake Storage Generation 2
 
-針對 Azure Data Lake Storage Generation 2 (ADLS Gen 2) 資料存放區，請使用 [register_azure_data_lake_gen2 ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore.datastore?view=azure-ml-py#&preserve-view=trueregister-azure-data-lake-gen2-workspace--datastore-name--filesystem--account-name--tenant-id--client-id--client-secret--resource-url-none--authority-url-none--protocol-none--endpoint-none--overwrite-false-) 透過[服務主體權限](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)註冊連線至 Azure DataLake Gen 2 儲存體的認證資料存放區。  
+針對 Azure Data Lake Storage Generation 2 (ADLS Gen 2) 資料存放區，請使用 [register_azure_data_lake_gen2 ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore.datastore?view=azure-ml-py&preserve-view=true#&preserve-view=trueregister-azure-data-lake-gen2-workspace--datastore-name--filesystem--account-name--tenant-id--client-id--client-secret--resource-url-none--authority-url-none--protocol-none--endpoint-none--overwrite-false-) 透過[服務主體權限](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)註冊連線至 Azure DataLake Gen 2 儲存體的認證資料存放區。  
 
 若要使用您的服務主體，您必須 [註冊您的應用程式](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals) ，並將服務主體授與 **儲存體 Blob 資料讀取器** 存取權。 深入了解 [ADLS Gen 2 的存取控制設定](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)。 
 
@@ -200,6 +200,14 @@ adlsgen2_datastore = Datastore.register_azure_data_lake_gen2(workspace=ws,
                                                              client_secret=client_secret) # the secret of service principal
 ```
 
+<a name="arm"></a>
+
+## <a name="create-datastores-using-azure-resource-manager"></a>使用 Azure Resource Manager 建立資料存放區
+
+有一些範本 [https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-datastore-create-*](https://github.com/Azure/azure-quickstart-templates/tree/master/) 可用於建立資料存放區。
+
+如需使用這些範本的詳細資訊，請參閱 [使用 Azure Resource Manager 範本建立 Azure Machine Learning 的工作區](how-to-create-workspace-template.md)。
+
 <a name="train"></a>
 ## <a name="use-data-in-your-datastores"></a>使用資料存放區中的資料
 
@@ -209,13 +217,13 @@ adlsgen2_datastore = Datastore.register_azure_data_lake_gen2(workspace=ws,
 
 ## <a name="get-datastores-from-your-workspace"></a>從您的工作區取得資料存放區
 
-若要取得在目前的工作區中註冊的特定資料存放區，請對 `Datastore` 類別使用 [`get()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#&preserve-view=trueget-workspace--datastore-name-) 靜態方法：
+若要取得在目前的工作區中註冊的特定資料存放區，請對 `Datastore` 類別使用 [`get()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=trueget-workspace--datastore-name-) 靜態方法：
 
 ```Python
 # Get a named datastore from the current workspace
 datastore = Datastore.get(ws, datastore_name='your datastore name')
 ```
-若要取得向指定工作區註冊的資料存放區清單，您可以對工作區物件使用 [`datastores`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace%28class%29?view=azure-ml-py#&preserve-view=truedatastores) 屬性：
+若要取得向指定工作區註冊的資料存放區清單，您可以對工作區物件使用 [`datastores`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truedatastores) 屬性：
 
 ```Python
 # List all datastores registered in the current workspace

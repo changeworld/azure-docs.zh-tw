@@ -1,34 +1,34 @@
 ---
-title: 搜尋 Azure Blob 儲存體內容
+title: 設定 Blob 索引子
 titleSuffix: Azure Cognitive Search
-description: 瞭解如何在 Azure Blob 儲存體中編制檔索引，以及如何使用 Azure 認知搜尋從檔中將文字解壓縮。
+description: 設定 Azure Blob 索引子，以針對 Azure 認知搜尋中的全文檢索搜尋作業自動編制 Blob 內容的索引。
 manager: nitinme
 author: mgottein
 ms.author: magottei
 ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 07/11/2020
-ms.custom: fasttrack-edit
-ms.openlocfilehash: 2ba511d3747ba308ae04ab1bbe3dcb89bca6a8a8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 09/23/2020
+ms.openlocfilehash: 9fccd731cee5044b36de9a0dba4a408a9a5b9a49
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91328287"
+ms.locfileid: "91355273"
 ---
-# <a name="how-to-index-documents-in-azure-blob-storage-with-azure-cognitive-search"></a>如何使用 Azure 認知搜尋為 Azure Blob 儲存體中的檔編制索引
+# <a name="how-to-configure-a-blob-indexer-in-azure-cognitive-search"></a>如何在 Azure 認知搜尋中設定 blob 索引子
 
-本文說明如何使用 Azure 認知搜尋來編制檔的索引 (例如 Pdf、Microsoft Office 檔，以及) 儲存在 Azure Blob 儲存體中的數種其他常見格式。 首先，它會說明安裝和設定 blob 索引子的基本概念。 然後，它會提供可能會發生之行為和案例的更深入探索。
+本文說明如何使用 Azure 認知搜尋來為以文字為基礎的 (檔編制索引，例如 Pdf、Microsoft Office 檔和數種其他常見格式) 儲存在 Azure Blob 儲存體中。 首先，它會說明安裝和設定 blob 索引子的基本概念。 然後，它會提供可能會發生之行為和案例的更深入探索。
 
 <a name="SupportedFormats"></a>
 
-## <a name="supported-document-formats"></a>支援的文件格式
+## <a name="supported-formats"></a>支援的格式
+
 blob 索引子可以從下列文件格式擷取文字：
 
 [!INCLUDE [search-blob-data-sources](../../includes/search-blob-data-sources.md)]
 
-## <a name="setting-up-blob-indexing"></a>設定 blob 編製索引
+## <a name="set-up-blob-indexing"></a>設定 blob 索引
 您可以使用下列項目設定 Azure Blob 儲存體索引子︰
 
 * [Azure 入口網站](https://ms.portal.azure.com)
@@ -130,7 +130,7 @@ blob 索引子可以從下列文件格式擷取文字：
 
 <a name="how-azure-search-indexes-blobs"></a>
 
-## <a name="how-azure-cognitive-search-indexes-blobs"></a>Azure 認知搜尋如何編制 blob 的索引
+## <a name="how-blobs-are-indexed"></a>Blob 的索引方式
 
 取決於[組態](#PartsOfBlobToIndex)，blob 索引子只可以編製儲存體中繼資料的索引 (僅當您關注中繼資料且無須編製 blob 內容的索引時很有用)，儲存體和內容中繼資料，或中繼資料和文字內容。 根據預設，索引子會擷取中繼資料和內容。
 
@@ -170,7 +170,7 @@ blob 索引子可以從下列文件格式擷取文字：
 
 您應該仔細考慮哪一個擷取的欄位應該對應至您的索引的索引鍵欄位。 候選對象是：
 
-* **metadata\_storage\_name** - 這可能是方便的候選對象，但是請注意，1) 名稱可能不是唯一的，因為您在不同的資料夾中可能會有相同名稱的 blob，以及 2) 名稱可能包含在文件所索引鍵中無效的字元，例如連字號。 您可以藉由使用 `base64Encode` [欄位對應函式](search-indexer-field-mappings.md#base64EncodeFunction)，處理無效的字元。如果您這麼做，請記得在將它們傳入例如「查閱」的 API 呼叫時，對文件索引鍵進行編碼。 (例如，在 .NET 中您可以針對該目的使用 [UrlTokenEncode 方法](/dotnet/api/system.web.httpserverutility.urltokenencode?view=netframework-4.8))。
+* **metadata\_storage\_name** - 這可能是方便的候選對象，但是請注意，1) 名稱可能不是唯一的，因為您在不同的資料夾中可能會有相同名稱的 blob，以及 2) 名稱可能包含在文件所索引鍵中無效的字元，例如連字號。 您可以藉由使用 `base64Encode` [欄位對應函式](search-indexer-field-mappings.md#base64EncodeFunction)，處理無效的字元。如果您這麼做，請記得在將它們傳入例如「查閱」的 API 呼叫時，對文件索引鍵進行編碼。 (例如，在 .NET 中您可以針對該目的使用 [UrlTokenEncode 方法](/dotnet/api/system.web.httpserverutility.urltokenencode))。
 * **metadata\_storage\_path** - 使用完整路徑以確保唯一性，但是路徑明確包含 `/` 字元，該字元[在文件索引鍵中無效](/rest/api/searchservice/naming-rules)。  如上所述，您可以選擇使用 `base64Encode` [函式](search-indexer-field-mappings.md#base64EncodeFunction)來編碼索引鍵。
 * 如果上述任何選項都不適合，您可以在 blob 中新增自訂中繼資料屬性。 但是，此選項需要您的 blob 上傳程序，將該中繼資料屬性新增至所有 blob。 因為索引鍵是必要屬性，所以沒有該屬性的所有 blob 都無法編製索引。
 
@@ -231,10 +231,12 @@ blob 索引子可以從下列文件格式擷取文字：
     }
 ```
 <a name="WhichBlobsAreIndexed"></a>
-## <a name="controlling-which-blobs-are-indexed"></a>控制要編製哪些 blob 的索引
+## <a name="index-by-file-type"></a>依檔案類型的索引
+
 您可以控制要編製哪些 blob 的索引，以及哪些要略過。
 
-### <a name="index-only-the-blobs-with-specific-file-extensions"></a>只將具有特定副檔名的 Blob 編製成索引
+### <a name="include-blobs-having-specific-file-extensions"></a>包含具有特定副檔名的 blob
+
 您可以使用 `indexedFileNameExtensions` 索引子組態參數，只將具有指定副檔名的 Blob 編製成索引。 值是包含副檔名 (有前置句點) 逗號分隔清單的字串。 例如，若只要將 .PDF 和 .DOCX Blob 編製成索引，請執行這項操作︰
 
 ```http
@@ -248,7 +250,8 @@ blob 索引子可以從下列文件格式擷取文字：
     }
 ```
 
-### <a name="exclude-blobs-with-specific-file-extensions"></a>排除具有特定副檔名的 Blob
+### <a name="exclude-blobs-having-specific-file-extensions"></a>排除具有特定副檔名的 blob
+
 您可以使用 `excludedFileNameExtensions` 組態參數，在編製索引時排除具有特定副檔名的 Blob。 值是包含副檔名 (有前置句點) 逗號分隔清單的字串。 例如，若要將除 .PNG 和 .JPEG 副檔名以外的所有 Blob 都編製成索引，請執行下列動作︰
 
 ```http
@@ -265,7 +268,7 @@ blob 索引子可以從下列文件格式擷取文字：
 如果同時有 `indexedFileNameExtensions` 和 `excludedFileNameExtensions` 參數，Azure 認知搜尋首先會查看 `indexedFileNameExtensions` ，然後是 `excludedFileNameExtensions` 。 這表示，如果兩份清單中有相同的副檔名，就會排除在索引編製外。
 
 <a name="PartsOfBlobToIndex"></a>
-## <a name="controlling-which-parts-of-the-blob-are-indexed"></a>控制要編製 blob 哪些部分的索引
+## <a name="index-parts-of-a-blob"></a>Blob 的索引部分
 
 您可以使用 `dataToExtract` 組態參數來控制要編製 blob 哪些部分的索引。 它可以採用下列值：
 
@@ -296,7 +299,8 @@ blob 索引子可以從下列文件格式擷取文字：
 | AzureSearch_SkipContent |"true" |這是相當於[上方](#PartsOfBlobToIndex)所描述之範圍設定為特定 blob 的 `"dataToExtract" : "allMetadata"` 設定。 |
 
 <a name="DealingWithErrors"></a>
-## <a name="dealing-with-errors"></a>處理錯誤
+
+## <a name="handle-errors"></a>處理錯誤
 
 根據預設，一旦遇到不受支援內容類型 (例如影像) 的 blob 時，blob 索引子就會停止。 您當然可以使用 `excludedFileNameExtensions` 參數來略過特定內容類型。 不過，您可能需要編製 blob 的索引，而不需要事先知道所有可能的內容類型。 若要在遇到不受支援的內容類型時繼續編製索引，請將 `failOnUnsupportedContentType` 組態參數設定為 `false`：
 
@@ -466,7 +470,7 @@ Azure 認知搜尋限制已編制索引之 blob 的大小。 這些限制記載�
 ## <a name="content-type-specific-metadata-properties"></a>內容類型特定的中繼資料屬性
 下表摘要說明每個檔案格式完成的處理，並描述 Azure 認知搜尋所解壓縮的中繼資料屬性。
 
-| 文件格式/內容類型 | 內容類型特定的中繼資料屬性 | 處理詳細資料 |
+| 文件格式/內容類型 | 已解壓縮中繼資料 | 處理詳細資料 |
 | --- | --- | --- |
 | HTML (text/html)  |`metadata_content_encoding`<br/>`metadata_content_type`<br/>`metadata_language`<br/>`metadata_description`<br/>`metadata_keywords`<br/>`metadata_title` |移除 HTML 標記並且擷取文字 |
 | PDF (應用程式/pdf)  |`metadata_content_type`<br/>`metadata_language`<br/>`metadata_author`<br/>`metadata_title` |擷取文字，包括內嵌文件 (不含影像) |

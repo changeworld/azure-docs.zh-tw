@@ -10,12 +10,12 @@ ms.reviewer: menchi
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: 0f41dbb4e6231e804249c3fce3dfc8275dcc00aa
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: adbded5a577a6bca42f2894a1a846993ca2330fe
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489005"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91296989"
 ---
 # <a name="register-an-azure-iot-edge-device"></a>註冊 Azure IoT Edge 裝置
 
@@ -149,10 +149,10 @@ Azure 訂閱的免費或標準 [IoT 中樞](../iot-hub/iot-hub-create-through-po
 
 ### <a name="retrieve-the-connection-string-with-the-azure-cli"></a>使用 Azure CLI 擷取連接字串
 
-當您準備好開始設定裝置時，需要連接字串才能利用實體裝置在 IoT 中樞中的身分識別來連結實體裝置。 使用 [az iot hub device-identity show-connection-string](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub/device-identity?view=azure-cli-latest#ext-azure-iot-az-iot-hub-device-identity-show-connection-string) 命令傳回單一裝置的連接字串：
+當您準備好開始設定裝置時，需要連接字串才能利用實體裝置在 IoT 中樞中的身分識別來連結實體裝置。 使用 [az iot hub device identity connection-string show](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub/device-identity/connection-string?view=azure-cli-latest#ext_azure_iot_az_iot_hub_device_identity_connection_string_show) 命令來傳回單一裝置的連接字串：
 
    ```azurecli
-   az iot hub device-identity show-connection-string --device-id [device id] --hub-name [hub name]
+   az iot hub device-identity connection-string show --device-id [device id] --hub-name [hub name]
    ```
 
 `device-id` 參數的值區分大小寫。 請勿複製連接字串兩旁的引號。

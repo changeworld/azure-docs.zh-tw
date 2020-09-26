@@ -3,13 +3,13 @@ title: 監視 Azure 應用程式服務效能 | Microsoft Docs
 description: Azure 應用程式服務的應用程式效能監視。 圖表載入和回應時間、相依性資訊，以及設定效能警示。
 ms.topic: conceptual
 ms.date: 08/06/2020
-ms.custom: devx-track-javascript, devx-track-dotnet
-ms.openlocfilehash: 952cd9669ecc3fb5ff1326d15aef25e1a1524ca5
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.custom: devx-track-js, devx-track-dotnet
+ms.openlocfilehash: 2ac5466e280bb7dd835314561f565ca72be2743c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90979430"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321810"
 ---
 # <a name="monitor-azure-app-service-performance"></a>監視 Azure App Service 效能
 
@@ -65,7 +65,7 @@ ms.locfileid: "90979430"
 | 收集使用趨勢，並啟用從可用性結果到交易的相互關聯 | 是 |是 |
 | 收集主機程序未處理的例外狀況 | 是 |是 |
 | 在使用取樣時，改善 APM 計量在負載下的精確度 | 是 |是 |
-| 將不同要求/相依性界限間的微服務相互關聯 | 無 (單一實例 APM 功能)  |Yes |
+| 將不同要求/相依性界限間的微服務相互關聯 | 無 (單一實例 APM 功能)  |是 |
 
 3. 若要進行設定（例如取樣）（您先前可以透過 applicationinsights.config 檔案來控制），您現在可以透過具有對應前置詞的應用程式設定，與這些相同的設定互動。 
 
@@ -407,7 +407,7 @@ $app = Set-AzWebApp -AppSettings $newAppSettings -ResourceGroupName $app.Resourc
 
 使用無程式碼監視時，只需要連接字串。 不過，我們仍然建議您在執行手動檢測時，設定檢測金鑰，以保持與舊版 SDK 的回溯相容性。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 * [在即時應用程式上執行分析工具](./profiler.md)。
 * [Azure Functions](https://github.com/christopheranderson/azure-functions-app-insights-sample) - 使用 Application Insights 監視 Azure Functions
 * [能夠讓 Azure 診斷](../platform/diagnostics-extension-to-application-insights.md) 傳送至 Application Insights。

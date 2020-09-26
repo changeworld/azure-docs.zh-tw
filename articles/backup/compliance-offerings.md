@@ -1,20 +1,20 @@
 ---
 title: Azure 備份合規性供應專案
-description: Azure 備份的相容性供應專案摘要
+description: Azure 備份的合規性供應專案摘要
 ms.topic: conceptual
 ms.date: 03/16/2020
-ms.openlocfilehash: 8f19896c157645104a392a6f5bb163b8d5729536
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e90a713eea07ac01212cfb3399167ed7e1b5449e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090989"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332656"
 ---
 # <a name="azure-backup-compliance-offerings"></a>Azure 備份合規性供應專案
 
 為協助組織符合控管個人資料收集和使用的國家、區域和業界特定需求的標準，Microsoft Azure 與 Azure 備份提供一套完整的認證和證明。
 
-您可以在下方找到 Azure 備份的相容性供應專案，以確保您的服務在使用 Azure 備份服務時受到管制。
+您可以在下方找到 Azure 備份的合規性供應專案，以確保您的服務在使用 Azure 備份服務時受到管制。
 
 ## <a name="global"></a>全域
 
@@ -31,7 +31,7 @@ ms.locfileid: "87090989"
 
 ## <a name="us-government"></a>美國政府
 
-* [DoD DISA L2、L4、L5](/microsoft-365/compliance/offering-dod-disa-l2-l4-l5?view=o365-worldwide)
+* [DoD DISA L2、L4、L5](/microsoft-365/compliance/offering-dod-disa-l2-l4-l5)
 * [FedRAMP](/microsoft-365/compliance/offering-fedramp)
 * [FIPS 140-2](/microsoft-365/compliance/offering-fips-140-2)
 
@@ -48,4 +48,4 @@ ms.locfileid: "87090989"
 
 ## <a name="next-steps"></a>後續步驟
 
-尋找[Microsoft TrustCenter](https://www.microsoft.com/TrustCenter/Compliance/default.aspx)合規性的最新涵蓋範圍和詳細資料。
+在 [Microsoft TrustCenter](https://www.microsoft.com/TrustCenter/Compliance/default.aspx)中尋找最新的涵蓋範圍和合規性的詳細資料。

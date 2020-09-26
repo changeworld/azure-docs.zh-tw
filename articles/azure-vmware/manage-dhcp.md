@@ -3,12 +3,12 @@ title: 如何建立和管理 DHCP
 description: 本文說明如何在 Azure VMware 解決方案中管理 DHCP。
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: ba7c3983f55ed729c77d2f24d3ef311a00522148
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: 2c059918f57b7f01058a031f1bf281b243855661
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90069555"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332826"
 ---
 # <a name="how-to-create-and-manage-dhcp-in-azure-vmware-solution"></a>如何在 Azure VMWare 解決方案中建立和管理 DHCP
 
@@ -24,7 +24,7 @@ NSX-T 提供為您的私人雲端設定 DHCP 的能力。 如果您打算使用 
 
 ### <a name="connect-dhcp-server-to-the-tier-1-gateway"></a>將 DHCP 伺服器連線至第1層閘道。
 
-1. 選取**第1層閘道**，選取閘道，然後選取 [**編輯**]
+1. 選取 [**第1層閘道**]、[閘道]，然後選取 [**編輯**]
 
    :::image type="content" source="./media/manage-dhcp/edit-tier-1-gateway.png" alt-text="選取要使用的閘道" border="true":::
 
@@ -56,7 +56,7 @@ NSX-T 提供為您的私人雲端設定 DHCP 的能力。 如果您打算使用 
 
 ## <a name="create-dhcp-relay-service"></a>建立 DHCP 轉送服務
 
-1. 在 [NSX-T] 視窗中，選取 [ **網路** ] 索引標籤，然後在 [ **IP 管理**] 下選取 [ **DHCP**]。 選取 [ **新增伺服器**]。 選擇 [DHCP 轉送] 作為 [ **伺服器類型** ]，並輸入轉送伺服器的伺服器名稱和 IP 位址。 選取 [儲存] 來儲存變更。
+1. 在 NXT-T 視窗中，選取 [ **網路** ] 索引標籤，然後在 [ **IP 管理**] 下選取 [ **DHCP**]。 選取 [ **新增伺服器**]。 選擇 [DHCP 轉送] 作為 [ **伺服器類型** ]，並輸入轉送伺服器的伺服器名稱和 IP 位址。 選取 [儲存] 來儲存變更。
 
    :::image type="content" source="./media/manage-dhcp/create-dhcp-relay.png" alt-text="建立 dhcp 轉送伺服器" border="true":::
 
