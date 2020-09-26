@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: aamalvea
 ms.author: aamalvea
-ms.reviewer: carlrab
+ms.reviewer: sstein
 ms.date: 08/25/2020
-ms.openlocfilehash: 4c7b78f14602632068a19d520aeeb940b543be61
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 3f87f47f652f71a57796d1cacd047b0448b49b7c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88948210"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333030"
 ---
 # <a name="plan-for-azure-maintenance-events-in-azure-sql-database-and-azure-sql-managed-instance"></a>規劃 Azure SQL Database 和 Azure SQL 受控執行個體中的 Azure 維護事件
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -45,7 +45,7 @@ ms.locfileid: "88948210"
 
 如果您的資料庫遇到登入失敗，請檢查[Azure 入口網站](https://portal.azure.com)中的 [[資源健康狀態](../../service-health/resource-health-overview.md#get-started)] 視窗，以取得目前的狀態。 [健康情況歷程記錄] 區段會包含每個事件停止運作的原因 (如果有的話)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 深入瞭解 Azure SQL Database 和 Azure SQL 受控執行個體的 [資源健康狀態](resource-health-to-troubleshoot-connectivity.md) 。
 - 如需重試邏輯的詳細資訊，請參閱 [暫時性錯誤的重試邏輯](troubleshoot-common-connectivity-issues.md#retry-logic-for-transient-errors)。

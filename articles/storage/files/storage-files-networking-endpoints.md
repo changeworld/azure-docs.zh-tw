@@ -1,6 +1,6 @@
 ---
 title: 設定 Azure 檔案儲存體網路端點 | Microsoft Docs
-description: Azure 檔案儲存體的網路功能選項概觀。
+description: 瞭解如何設定 Azure File network 端點。
 author: roygara
 ms.service: storage
 ms.topic: how-to
@@ -8,12 +8,12 @@ ms.date: 08/17/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: a38528e32061f57e3239ef4be26cdd437f4f8746
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 4e08c74e1fbc3da1ed11d6a2f7faeb26780d2a37
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89078587"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333540"
 ---
 # <a name="configuring-azure-files-network-endpoints"></a>設定 Azure 檔案儲存體網路端點
 

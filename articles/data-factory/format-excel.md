@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/14/2020
 ms.author: jingwang
-ms.openlocfilehash: 368b8d614ca77692e08a3cbe38132f5aff4eab91
-ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
+ms.openlocfilehash: dad1f9f232cb9d713af81f6aea57a4ffe651da19
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90061150"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331959"
 ---
 # <a name="excel-format-in-azure-data-factory"></a>Azure Data Factory 中的 Excel 格式
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -27,7 +27,7 @@ ms.locfileid: "90061150"
 
 如需可用來定義資料集的區段和屬性完整清單，請參閱[資料集](concepts-datasets-linked-services.md)一文。 本節提供 Excel 資料集所支援的屬性清單。
 
-| 屬性         | 描述                                                  | 必要 |
+| 屬性         | 說明                                                  | 必要 |
 | ---------------- | ------------------------------------------------------------ | -------- |
 | type             | 資料集的 type 屬性必須設定為 **Excel**。   | 是      |
 | location         | 檔案 (s) 的位置設定。 每個以檔案為基礎的連接器都有自己的位置類型和支援的屬性 `location` 。 | 是      |
@@ -36,7 +36,7 @@ ms.locfileid: "90061150"
 | firstRowAsHeader | 指定是否將指定工作表/範圍中的第一個資料列視為具有資料行名稱的標頭行。<br>允許的值為 **true** 和 **false** (預設) 。 | 否       |
 | nullValue        | 指定 null 值的字串表示。 <br>預設值為 **空字串**。 | 否       |
 | compression | 用來設定檔案壓縮的屬性群組。 當您想要在活動執行期間執行壓縮/解壓縮時，請設定此區段。 | 否 |
-| type<br/>) *下 `compression` *的 ( | 用來讀取/寫入 JSON 檔案的壓縮編解碼器。 <br>允許的值為 **bzip2**、 **gzip**、 **deflate**、 **ZipDeflate**、 **TarGzip**、 **snappy**或 **lz4**。 預設值不會壓縮。<br>**注意：** 目前的複製活動不支援 "snappy" & "lz4"，而且對應資料流程不支援 "ZipDeflate"。<br>**請注意** ，使用複製活動將 **ZipDeflate** 檔解壓縮 (s) 並寫入檔案型接收資料存放區時，檔案會解壓縮到資料夾： `<path specified in dataset>/<folder named as source zip file>/` 。 | 不會。  |
+| type<br/>) *下 `compression` *的 ( | 用來讀取/寫入 JSON 檔案的壓縮編解碼器。 <br>允許的值為 **bzip2**、 **gzip**、 **deflate**、 **ZipDeflate**、 **TarGzip**、 **snappy**或 **lz4**。 預設值不會壓縮。<br>**注意：** 目前的複製活動不支援 "snappy" & "lz4"，而且對應資料流程不支援 "ZipDeflate"。<br>**請注意** ，使用複製活動將 **ZipDeflate** 檔解壓縮 (s) 並寫入檔案型接收資料存放區時，檔案會解壓縮到資料夾： `<path specified in dataset>/<folder named as source zip file>/` 。 | 否。  |
 | 等級<br/>) *下 `compression` *的 ( | 壓縮比例。 <br>允許的值為 **最佳** 或 **最快速**。<br>- **最快：** 即使產生的檔案未以最佳方式壓縮，壓縮作業也應該儘快完成。<br>- **最佳**：即使作業需要較長的時間才能完成，壓縮作業也應以最佳方式壓縮。 如需詳細資訊，請參閱 [壓縮層級](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) 主題。 | 否       |
 
 以下是 Azure Blob 儲存體上的 Excel 資料集範例：
@@ -73,7 +73,7 @@ ms.locfileid: "90061150"
 
 [複製活動*** \* 來源 \* *** ] 區段支援下列屬性。
 
-| 屬性      | 描述                                                  | 必要 |
+| 屬性      | 說明                                                  | 必要 |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | 複製活動來源的 type 屬性必須設為 **ExcelSource**。 | 是      |
 | storeSettings | 一組屬性，說明如何從資料存放區讀取資料。 每個以檔案為基礎的連接器在下都有自己支援的讀取設定 `storeSettings` 。 | 否       |
@@ -106,7 +106,7 @@ ms.locfileid: "90061150"
 
 下表列出 Excel 來源所支援的屬性。 您可以在 [ **來源選項** ] 索引標籤中編輯這些屬性。使用內嵌資料集時，您將會看到其他檔案設定，這與 [ [資料集屬性](#dataset-properties) ] 區段中所述的屬性相同。
 
-| 名稱                      | 描述                                                  | 必要 | 允許的值                                            | 資料流程腳本屬性         |
+| 名稱                      | 說明                                                  | 必要 | 允許的值                                            | 資料流程腳本屬性         |
 | ------------------------- | ------------------------------------------------------------ | -------- | --------------------------------------------------------- | --------------------------------- |
 | 萬用字元路徑           | 將會處理所有符合萬用字元路徑的檔案。 覆寫資料集中設定的資料夾和檔案路徑。 | 否       | String[]                                                  | wildcardPaths                     |
 | 分割區根路徑       | 針對已分割的檔案資料，您可以輸入磁碟分割根路徑，以便將分割的資料夾讀取為數據行 | 否       | String                                                    | partitionRootPath                 |
@@ -114,6 +114,7 @@ ms.locfileid: "90061150"
 | 儲存檔案名稱的資料行 | 使用來原始檔案名和路徑建立新的資料行       | 否       | String                                                    | rowUrlColumn                      |
 | 完成後          | 在處理之後刪除或移動檔案。 從容器根目錄開始的檔案路徑 | 否       | Delete： `true` 或 `false` <br> 移動： `['<from>', '<to>']` | purgeFiles <br> moveFiles         |
 | 依上次修改篩選   | 選擇根據上次修改檔案的時間進行篩選 | 否       | 時間戳記                                                 | modifiedAfter <br> modifiedBefore |
+| 不允許找到任何檔案 | 若為 true，如果找不到任何檔案，就不會擲回錯誤 | 否 | `true` 或 `false` | ignoreNoFilesFound |
 
 ### <a name="source-example"></a>來源範例
 

@@ -6,12 +6,12 @@ ms.author: rosouz
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/09/2020
-ms.openlocfilehash: b52c493a700cd258e1458b0127aa19cebc714822
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: b5bf29969f8b6d54215e2b2f1a2d0b1587faad6f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90891603"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332180"
 ---
 # <a name="frequently-asked-questions-about-azure-synapse-link-for-azure-cosmos-db"></a>關於適用於 Azure Cosmos DB 的 Azure Synapse Link 常見問題
 
@@ -82,7 +82,7 @@ Azure Cosmos DB 保證會將交易和分析的工作負載效能隔離。 在容
 
 ### <a name="is-the-autosync-replication-from-transactional-store-to-the-analytical-store-asynchronous-or-synchronous-and-what-are-the-latencies"></a>從交易存放區到分析存放區的自動同步複寫是非同步或同步，其延遲為何？
 
-此複寫是非同步，目前預期的延遲大約是 2 分鐘。
+自動同步處理延遲通常是在2分鐘內。 如果有大量容器的共用輸送量資料庫，則個別容器的自動同步延遲可能會較高，且最多需要5分鐘的時間。 我們想要深入瞭解此延遲如何符合您的案例。 若要這樣做，請與 [Azure Cosmos DB 團隊](mailto:cosmosdbsynapselink@microsoft.com)聯繫。
 
 ### <a name="are-there-any-scenarios-where-the-items-from-the-transactional-store-are-not-automatically-propagated-to-the-analytical-store"></a>有沒有任何情況，交易存放區中的項目不會自動傳播到分析存放區嗎？
 

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: mbaldwin
-ms.openlocfilehash: 06cd02177d7d5c478f3378eb05517f1a37297e92
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3764b261b491c660da16d7989be20742fead1fbf
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84300727"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91359149"
 ---
 # <a name="azure-dedicated-hsm-networking"></a>Azure 專用 HSM 網路
 
@@ -60,7 +60,7 @@ Azure 專用 HSM 需要高度安全的網路環境。 無論是從 Azure 雲端�
 
 ### <a name="site-to-site-vpn"></a>站對站 VPN
 
-站對站虛擬私人網路允許在 Azure 型專用 HSM 與內部部署 IT 之間進行安全通訊。 這麼做的原因是，HSM 的內部部署有一個備份功能，而且需要兩個連線才能執行備份。
+站對站虛擬私人網路允許在 Azure 型專用 HSM 與內部部署 IT 之間進行安全通訊。 這樣做的原因是，HSM 的內部部署有一個備份裝置，而且需要兩者之間的連接來執行備份。
 
 ## <a name="connecting-virtual-networks"></a>連線虛擬網路
 
@@ -83,7 +83,7 @@ HSM 裝置可透過軟體程式庫，將流量重新導向其他 HSM。 如果�
 > [!NOTE]
 > 目前使用專用 HSM 進行跨區域連線方案時，無法使用全域 Vnet 對等互連，請改用 VPN 閘道。 
 
-![global-vnet](media/networking/global-vnet.png)
+![圖顯示兩個由兩個 V P N 閘道所連接的區域。 每個區域都包含對等互連的虛擬網路。](media/networking/global-vnet.png)
 
 ## <a name="next-steps"></a>後續步驟
 
