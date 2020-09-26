@@ -4,17 +4,17 @@ description: Azure 安全性基準測試 V2 端點安全性
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/13/2020
+ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: c04e4233ded34ceaeec9cd9afb240d3d1ac864e0
-ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
+ms.openlocfilehash: 3eab0080f80b26fc7074d8a64885148c0568d8b1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90059157"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91280611"
 ---
-# <a name="security-control-endpoint-security"></a>安全性控制：端點安全性
+# <a name="security-control-v2-endpoint-security"></a>安全性控制 V2：端點安全性
 
 端點安全性涵蓋端點偵測和回應中的控制項。 這包括針對 Azure 環境中的端點，使用端點偵測和回應 (EDR) 和反惡意程式碼服務。
 
@@ -36,7 +36,7 @@ Microsoft Defender 進階威脅防護將 EDR 功能提供為 enterprise endpoint
 
 **責任**：客戶
 
-**客戶安全性專案關係人**：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [基礎結構和端點安全性](/azure/cloud-adoption-framework/organize/cloud-security)
 
@@ -64,7 +64,7 @@ Azure 資訊安全中心可以自動識別您的虛擬機器使用許多常用�
 
 **責任**：客戶
 
-**客戶安全性專案關係人**：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [基礎結構和端點安全性](/azure/cloud-adoption-framework/organize/cloud-security)
 
@@ -88,7 +88,7 @@ Azure 資訊安全中心可以自動識別您的虛擬機器使用許多常用�
 
 **責任**：客戶
 
-**客戶安全性專案關係人**：
+**客戶安全性專案關係人** ([深入瞭解](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)) ：
 
 - [基礎結構和端點安全性](/azure/cloud-adoption-framework/organize/cloud-security)
 

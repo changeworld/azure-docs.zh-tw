@@ -2,13 +2,13 @@
 title: Azure 事件方格中的系統主題
 description: 描述 Azure 事件方格中的系統主題。
 ms.topic: conceptual
-ms.date: 08/27/2020
-ms.openlocfilehash: f5ca472ab5141207222987d476284813c2aacf56
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.date: 09/24/2020
+ms.openlocfilehash: b3a6e7528da2a11c2f91007425ab8beecaf920c3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019091"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91297278"
 ---
 # <a name="system-topics-in-azure-event-grid"></a>Azure 事件方格中的系統主題
 事件方格中的系統主題代表 Azure 服務所發佈的一或多個事件，例如 Azure 儲存體和 Azure 事件中樞。 例如，系統主題可能代表**所有 blob 事件**，或是只針對**特定儲存體帳戶**發佈**的 blob 和**已**刪除**blob 的事件。 在此範例中，將 blob 上傳至儲存體帳戶時，Azure 儲存體服務會將 **blob 建立** 的事件發佈至事件方格中的系統主題，然後將事件轉送至主題的 [訂閱者](event-handlers.md) ，以接收和處理事件。 
@@ -22,6 +22,7 @@ ms.locfileid: "89019091"
 - [Azure 應用程式組態](event-schema-app-configuration.md)
 - [Azure App Service](event-schema-app-service.md)
 - [Azure Blob 儲存體](event-schema-blob-storage.md)
+- [Azure 通訊服務](event-schema-communication-services.md) 
 - [Azure Container Registry](event-schema-container-registry.md)
 - [Azure 事件中樞](event-schema-event-hubs.md)
 - [Azure IoT 中心](event-schema-iot-hub.md)

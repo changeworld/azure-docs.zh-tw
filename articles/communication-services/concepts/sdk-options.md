@@ -9,14 +9,14 @@ ms.author: mikben
 ms.date: 03/18/2020
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: f39aa76e4bd2ce3d298e555f56b09d0218ef0862
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 2d5637be547b28c231ef757b5dd4355692dab88f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90933993"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318818"
 ---
-# <a name="client-libraries-and-rest-apis"></a>用戶端程式庫和 REST Api
+# <a name="client-libraries-and-rest-apis"></a>用戶端程式庫和 REST API
 
 [!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
@@ -28,7 +28,7 @@ Azure 通訊服務功能在概念上會組織成六個區域。 某些區域具�
 | ---------------------- | --------------------- | ---|-------------------------- | --------------------------------------------------------------------------- |
 | Azure Resource Manager | REST | 開啟            | Azure ResourceManager 通訊 | 布建和管理通訊服務資源             |
 | 通用                 | REST | 開啟               | Azure 通訊。 Common          | 提供其他用戶端程式庫的基底類型 |
-| 系統管理         | REST |                | Azure 通訊。管理  | 管理使用者、存取權杖及電話號碼、配置符合標準的 STUN 並開啟伺服器 |
+| 系統管理         | REST | 開啟               | Azure 通訊。管理  | 管理使用者、存取權杖及電話號碼、配置符合標準的 STUN 並開啟伺服器 |
 | 聊天                   | 具有專屬信的 REST | 開啟檔案關閉的來源信號套件    | Azure 通訊。聊天            | 在您的應用程式中新增即時以文字為基礎的聊天  |
 | SMS                    | REST | 開啟              | Azure。 SMS             | 傳送和接收 SMS 訊息 |
 | 呼叫                | 專屬傳輸 | 封閉式 |Azure 通訊。呼叫         | 利用語音、影片、螢幕共用和其他即時資料通訊功能          |
@@ -50,7 +50,7 @@ Azure 通訊服務功能在概念上會組織成六個區域。 某些區域具�
 
 通訊服務會在數個公用存放庫中發佈內建的程式庫。
 
-| 語言       | 已針對 .。。                       | 包裝 |
+| Language       | 已針對 .。。                       | 包裝 |
 | -------------- | ------------------------------------ | --------- |
 | .NET           | 跨平台                       | NuGet     |
 | Python         | Windows & Linux 伺服器              | Pypi      |
@@ -108,7 +108,7 @@ Azure 通訊服務功能在概念上會組織成六個區域。 某些區域具�
 
 您可能需要在2.05 版本的12個月內，更新至2.05 版的呼叫用戶端程式庫。 這應該可以簡單地取代成品，而不需要變更程式碼，因為 v 2.05 是在 v2 主要版本中，而且沒有任何重大變更。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 如需詳細資訊，請參閱下列用戶端程式庫總覽：
 

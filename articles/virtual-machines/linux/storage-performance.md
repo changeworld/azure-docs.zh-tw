@@ -1,6 +1,6 @@
 ---
 title: 將 Azure Lsv2 系列虛擬機器上的效能最佳化 - 儲存體
-description: 了解如何將 Lsv2 系列的虛擬機器上的解決方案效能最佳化。
+description: 瞭解如何使用 Linux 範例，在 Lsv2 系列虛擬機器上將解決方案的效能優化。
 services: virtual-machines-linux
 author: laurenhughes
 ms.service: virtual-machines-linux
@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/05/2019
 ms.author: joelpell
-ms.openlocfilehash: cd9e539e01e8e11d866186552ab3b8dde7e03f91
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 650164556223a73a722bc91ecb31491ee98cb8a5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654764"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91307096"
 ---
 # <a name="optimize-performance-on-the-lsv2-series-linux-virtual-machines"></a>優化 Lsv2 系列 Linux 虛擬機器的效能
 
@@ -97,7 +97,7 @@ Lsv2 系列 VM 會使用以 Zen 微架構為基礎的 AMD EYPC™ 伺服器處�
    使用每秒的絕對最大輸入/輸出作業 (IOPS) 時，rq_affinity 設定為次要調整。 一旦一切正常運作，請嘗試將 rq_affinity 設定為0，以查看是否有差異。
 
 * **我是否需要變更 blk_mq 設定？**  
-   RHEL/CentOS 7.x 會自動針對 NVMe 裝置使用 blk-mq。 不需要進行任何設定變更或設定。 Scsi_mod use_blk_mq 設定僅適用于 SCSI，在 Lsv2 預覽期間使用，因為 NVMe 裝置在來賓 Vm 中顯示為 SCSI 裝置。 目前 NVMe 裝置會顯示為 NVMe 裝置，因此 SCSI blk-mq 設定是不相關的。
+   RHEL/CentOS 7.x 會自動針對 NVMe 裝置使用 blk-mq。 不需要進行任何設定變更或設定。 Scsi_mod。使用 _blk_mq 設定僅適用于 SCSI，並在 Lsv2 Preview 期間使用，因為 NVMe 裝置在來賓 Vm 中顯示為 SCSI 裝置。 目前 NVMe 裝置會顯示為 NVMe 裝置，因此 SCSI blk-mq 設定是不相關的。
 
 * **我需要變更 "fio" 嗎？**  
    若要使用效能測量工具（例如 L64v2 和 L80v2 VM 大小中的 ' fio '）來取得最大 IOPS，請在每個 NVMe 裝置上將 "rq_affinity" 設定為0。  例如，此命令列將 L80v2 VM 中所有10部 NVMe 裝置的 "rq_affinity" 設定為零：

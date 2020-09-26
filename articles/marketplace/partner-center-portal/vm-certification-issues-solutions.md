@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 06/16/2020
-ms.openlocfilehash: 5b6d1ee41434d8aebac81d38ced9cadd93e51ba8
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 6d7f9ccd1c87b6105988a1f5d23700cb58693062
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89181437"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91296445"
 ---
 # <a name="issues-and-solutions-during-virtual-machine-certification"></a>虛擬機器認證期間的問題和解決方案 
 
@@ -34,6 +34,9 @@ ms.locfileid: "89181437"
 - [Linux 映像](../../virtual-machines/linux/endorsed-distros.md?toc=/azure/virtual-machines/linux/toc.json)
 - [Windows 映像](create-azure-vm-technical-asset.md#create-a-vm-image-using-an-approved-base)
 
+> [!Note]
+> 如果您使用的是不是從 Marketplace 取得的 Linux 基底映射，您可以使用 2048 KB 來位移第一個磁碟分割。 這可讓您使用未格式化的空間來新增計費資訊，並允許 Azure 將您的 VM 發佈至 Marketplace。  
+
 ## <a name="vm-extension-failure"></a>VM 延伸模組失敗
 
 查看您的映射是否支援 VM 擴充功能。
@@ -43,7 +46,7 @@ ms.locfileid: "89181437"
 1. 選取您的 Linux VM。
 1. 移至 [ **診斷設定**]。
 1. 藉由更新 **儲存體帳戶**來啟用基底矩陣。
-1. 選取 \[儲存\]。
+1. 選取 [儲存]。
 
    ![啟用來賓層級監視](./media/vm-certification-issues-solutions-1.png)
 
@@ -63,7 +66,7 @@ ms.locfileid: "89181437"
 
 布建問題可能包含下列失敗案例：
 
-|案例|錯誤|原因|解決方案|
+|狀況|錯誤|原因|解決方案|
 |---|---|---|---|
 |1| (VHD) 的虛擬硬碟無效|如果 VHD 頁尾中指定的 cookie 值不正確，VHD 將會視為無效。|重新建立映射並提交要求。|
 |2|不正確 blob 類型|VM 布建失敗，因為使用的區塊是 blob 類型，而不是頁面類型。|重新建立映射並提交要求。|
@@ -94,7 +97,7 @@ Microsoft 認證工具組可協助您執行測試案例，並確認您的 VHD �
 
 下表列出工具組將執行的 Linux 測試案例。 [描述] 中會陳述測試驗證。
 
-|案例|測試案例|說明|
+|狀況|測試案例|說明|
 |---|---|---|
 |1|Bash 歷程記錄|您應先清除 Bash 記錄檔，再建立 VM 映射。|
 |2|Linux 代理程式版本|應安裝 Azure Linux 代理程式2.2.41 或更新版本。|
@@ -111,7 +114,7 @@ Microsoft 認證工具組可協助您執行測試案例，並確認您的 VHD �
 
 下表列出執行先前的測試案例時所發現的常見錯誤：
  
-|案例|測試案例|錯誤|解決方法|
+|狀況|測試案例|錯誤|解決方法|
 |---|---|---|---|
 |1|Linux 代理程式版本測試案例|Linux 代理程式的最低版本是2.2.41 或更新版本。 自2020年5月1日起，這項需求是強制的。|請更新 Linux 代理程式版本，其應為2.241 或更新版本。 如需詳細資訊，您可以造訪 [Linux 代理程式版本更新頁面](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)。|
 |2|Bash 歷程記錄測試案例|如果您提交的映射中 bash 歷程記錄的大小超過 1 kb (KB) ，您將會看到錯誤。 大小限制為 1 KB，以確保不會在 bash 記錄檔中捕捉任何可能的機密資訊。|若要解決此問題，請將 VHD 掛接到任何其他工作中的 VM，並進行您想要的任何變更 (例如，刪除 *bash* 歷程記錄檔) ，將大小減少為小於或等於 1 KB。|
@@ -122,7 +125,7 @@ Microsoft 認證工具組可協助您執行測試案例，並確認您的 VHD �
 
 下表列出工具組將執行的 Windows 測試案例，以及測試驗證的描述：
 
-|案例 |測試案例|說明|
+|狀況 |測試案例|說明|
 |---|---|---|---|
 |1|OS 架構|Azure 僅支援64位作業系統。|
 |2|使用者帳戶相依性|應用程式執行不應依存于系統管理員帳戶。|
@@ -261,7 +264,7 @@ Azure 上的所有 Vhd 必須具有與 1 mb (MB) 的倍數相符的虛擬大小�
     
 請參閱下表，以瞭解當您使用共用存取簽章 (SAS) URL 下載 VM 映射時所發生的任何問題。
 
-|案例|錯誤|原因|解決方案|
+|狀況|錯誤|原因|解決方案|
 |---|---|---|---|
 |1|找不到 Blob|VHD 可能會從指定的位置刪除或移動。|| 
 |2|使用中的 Blob|VHD 會由另一個內部進程使用。|當您使用 SAS URL 下載 VHD 時，該 VHD 應該會處於使用中狀態。|
@@ -270,9 +273,12 @@ Azure 上的所有 Vhd 必須具有與 1 mb (MB) 的倍數相符的虛擬大小�
 |6|HTTP 條件式標頭|SAS URL 無效。|取得正確的 SAS URL。|
 |7|VHD 名稱無效|查看 VHD 名稱中是否有任何特殊字元，例如% sign (% ) 或引號 ( ") 。|藉由移除特殊字元來重新命名 VHD 檔案。|
 
-## <a name="first-1-mb-partition"></a>前 1 MB 磁碟分割
+## <a name="first-mb-2048-kb-partition-only-for-linux"></a>第一個 MB (2048 KB) 磁碟分割 (僅適用于 Linux) 
 
-當您提交 VHD 時，請確定 VHD 的前 1 MB 分割區是空的。 否則，您的要求將會失敗。
+當您提交 VHD 時，請確定 VHD 的前 2048 KB 是空的。 否則，您的要求將會失敗 *。
+
+>[!NOTE]
+>* 針對某些特殊映射（例如建置於 Azure Marketplace 的 Azure Windows 基礎映射之上），我們會檢查帳單標記，並在帳單標記存在且符合我們的內部可用值時，忽略 MB 的磁碟分割。
 
 ## <a name="default-credentials"></a>預設認證
 

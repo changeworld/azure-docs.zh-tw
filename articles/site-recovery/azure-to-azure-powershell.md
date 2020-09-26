@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure PowerShell 和 Azure Site Recovery 的 Azure Vm 嚴重損壞修復
+title: 使用 Azure PowerShell 和 Azure Site Recovery 進行 Azure Vm 的嚴重損壞修復
 description: 了解如何使用 Azure PowerShell 與 Azure Site Recovery 來設定 Azure 虛擬機器的災害復原。
 services: site-recovery
 author: sujayt
@@ -7,16 +7,16 @@ manager: rochakm
 ms.topic: article
 ms.date: 3/29/2019
 ms.author: sutalasi
-ms.openlocfilehash: 182b4f262361db001dcb6d47bf3e8f2aac6bc9b3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6a272294ca602e3f482156a7334084bf041f683e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091516"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91307546"
 ---
 # <a name="set-up-disaster-recovery-for-azure-virtual-machines-using-azure-powershell"></a>使用 Azure PowerShell 來設定 Azure 虛擬機器的災害復原
 
-在本文中，您會瞭解如何使用 Azure PowerShell 來設定和測試 Azure 虛擬機器的嚴重損壞修復。
+在本文中，您將瞭解如何使用 Azure PowerShell 來設定和測試 Azure 虛擬機器的嚴重損壞修復。
 
 您會了解如何：
 
@@ -28,7 +28,7 @@ ms.locfileid: "87091516"
 > - 建立作為複寫虛擬機器目的地的儲存體帳戶。
 > - 將 Azure 虛擬機器複寫到復原區域以供災害復原之用。
 > - 執行測試容錯移轉、驗證和清除測試容錯移轉。
-> - 損毀修復至復原區域。
+> - 容錯移轉至復原區域。
 
 > [!NOTE]
 > 可透過入口網站使用的案例功能，並非都能透過 Azure PowerShell 來使用。 目前不支援透過 Azure PowerShell 來使用的部分案例功能包括：
@@ -36,11 +36,11 @@ ms.locfileid: "87091516"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 在開始之前：
 - 請確定您了解[情節架構和元件](azure-to-azure-architecture.md)。
-- 請參閱所有元件的[支援需求](azure-to-azure-support-matrix.md)。
+- 檢閱所有元件的[支援需求](azure-to-azure-support-matrix.md)。
 - 您有 Azure PowerShell `Az` 模組。 如果您需要安裝或升級 Azure PowerShell，請按照此[安裝和設定 Azure PowerShell 指南](/powershell/azure/install-az-ps)的說明。
 
 ## <a name="sign-in-to-your-microsoft-azure-subscription"></a>登入您的 Microsoft Azure 訂用帳戶
@@ -51,7 +51,7 @@ ms.locfileid: "87091516"
 Connect-AzAccount
 ```
 
-選取您的 Azure 訂用帳戶。 使用 `Get-AzSubscription` Cmdlet 來取得您有權存取的 Azure 訂用帳戶清單。 使用 Cmdlet 來選取要使用的 Azure 訂用帳戶 `Set-AzContext` 。
+選取 Azure 訂用帳戶。 使用 `Get-AzSubscription` Cmdlet 來取得您可以存取的 Azure 訂用帳戶清單。 使用 Cmdlet 來選取要使用的 Azure 訂用帳戶 `Set-AzContext` 。
 
 ```azurepowershell
 Set-AzContext -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
@@ -59,7 +59,7 @@ Set-AzContext -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 
 ## <a name="get-details-of-the-virtual-machine-to-be-replicated"></a>取得要複寫之虛擬機器的詳細資料
 
-在本文中，「美國東部」區域中的虛擬機器會複寫到美國西部2區域中並加以復原。 正在複寫的虛擬機器有一個 OS 磁片和一個資料磁片。 範例中使用的虛擬機器名稱是 `AzureDemoVM` 。
+在本文中，美國東部區域中的虛擬機器會在美國西部2區域中複寫並復原。 正在複寫的虛擬機器有一個 OS 磁片和一個資料磁片。 範例中使用的虛擬機器名稱為 `AzureDemoVM` 。
 
 ```azurepowershell
 # Get details of the virtual machine
@@ -100,7 +100,7 @@ $DataDisk1VhdURI = $VM.StorageProfile.DataDisks[0].Vhd
 > * 復原服務保存庫的資源群組和受保護的虛擬機器必須位於不同的 Azure 位置。
 > * 復原服務保存庫和其所屬的資源群組可位於相同的 Azure 位置。
 
-在本文範例中，受保護的虛擬機器位於「美國東部」區域。 針對災害復原所選取的復原區域為「美國西部 2」區域。 復原服務保存庫和保存庫的資源群組都位於復原區域美國西部2。
+在本文範例中，受保護的虛擬機器位於「美國東部」區域。 針對災害復原所選取的復原區域為「美國西部 2」區域。 復原服務保存庫和保存庫的資源群組都位於復原區域美國西部2中。
 
 ```azurepowershell
 #Create a resource group for the recovery services vault in the recovery Azure region
@@ -115,7 +115,7 @@ Tags              :
 ResourceId        : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/a2ademorecoveryrg
 ```
 
-建立復原服務保存庫。 在此範例中， `a2aDemoRecoveryVault` 會在美國西部2區域中建立名為的復原服務保存庫。
+建立復原服務保存庫。 在此範例中，名為的復原服務保存庫 `a2aDemoRecoveryVault` 會建立在美國西部2區域中。
 
 ```azurepowershell
 #Create a new Recovery services vault in the recovery region
@@ -154,7 +154,7 @@ a2aDemoRecoveryVault a2ademorecoveryrg Microsoft.RecoveryServices Vaults
 Remove-Item -Path $Vaultsettingsfile.FilePath
 ```
 
-針對 Azure 到 Azure 的遷移，您可以將保存庫內容設定為新建立的保存庫：
+針對 Azure 至 Azure 的遷移，您可以將保存庫內容設定為新建立的保存庫：
 
 ```azurepowershell
 #Set the vault context for the PowerShell session.
@@ -170,7 +170,7 @@ Set-AzRecoveryServicesAsrVaultContext -Vault $vault
 - 每個區域只能建立單一網狀架構物件。
 - 如果您先前已在 Azure 入口網站中為 VM 啟用 Site Recovery 複寫，Site Recovery 便會自動建立網狀架構物件。 如果區域中已存在網狀架構物件，您便無法建立新的物件。
 
-開始之前，請先瞭解 Site Recovery 作業會以非同步方式執行。 您開始作業時，會提交 Azure Site Recovery 作業，並傳回作業追蹤物件。 使用「作業追蹤」物件來取得作業的最新狀態（ `Get-AzRecoveryServicesAsrJob` ），並監視操作的狀態。
+開始之前，請先瞭解 Site Recovery 的作業是以非同步方式執行。 您開始作業時，會提交 Azure Site Recovery 作業，並傳回作業追蹤物件。 您可以使用作業追蹤物件取得作業 (的最新狀態 `Get-AzRecoveryServicesAsrJob`) ，以及監視作業的狀態。
 
 ```azurepowershell
 #Create Primary ASR fabric
@@ -193,7 +193,7 @@ $PrimaryFabric = Get-AzRecoveryServicesAsrFabric -Name "A2Ademo-EastUS"
 
 ### <a name="create-a-site-recovery-fabric-object-to-represent-the-recovery-region"></a>建立 Site Recovery 網狀架構物件來代表復原區域
 
-復原網狀架構物件可代表復原 Azure 位置。 如果發生容錯移轉，虛擬機器就會複寫並復原到修復網狀架構所表示的復原區域。 此範例所使用的復原 Azure 區域是「美國西部 2」。
+復原網狀架構物件可代表復原 Azure 位置。 如果發生容錯移轉，虛擬機器會複寫並復原到復原網狀架構所代表的復原區域中。 此範例所使用的復原 Azure 區域是「美國西部 2」。
 
 ```azurepowershell
 #Create Recovery ASR fabric
@@ -289,7 +289,7 @@ $EusToWusPCMapping = Get-AzRecoveryServicesAsrProtectionContainerMapping -Protec
 
 ### <a name="create-a-protection-container-mapping-for-failback-reverse-replication-after-a-failover"></a>建立用於容錯回復 (在容錯移轉之後反向複寫) 的保護容器對應
 
-容錯移轉之後，當您準備好將已容錯移轉的虛擬機器帶回到原始的 Azure 區域時，就會進行容錯回復。 若要容錯回復，已故障的虛擬機器會從已故障的區域反向複寫到原始區域。 在反向複寫時，原始區域和復原區域的角色會對調。 原始區域現在會變成新的復原區域，原本的復原區域現在則會變成主要區域。 反向複寫的保護容器對應會表示原始區域和復原區域的對調角色。
+在容錯移轉之後，當您準備好讓已容錯移轉的虛擬機器回到原始 Azure 區域時，就會進行容錯回復。 若要容錯回復，已容錯移轉的虛擬機器會從已容錯移轉的區域反向複寫至原始區域。 在反向複寫時，原始區域和復原區域的角色會對調。 原始區域現在會變成新的復原區域，原本的復原區域現在則會變成主要區域。 反向複寫的保護容器對應會表示原始區域和復原區域的對調角色。
 
 ```azurepowershell
 #Create Protection container mapping (for fail back) between the Recovery and Primary Protection Containers with the Replication policy
@@ -316,7 +316,7 @@ $WusToEusPCMapping = Get-AzRecoveryServicesAsrProtectionContainerMapping -Protec
 $EastUSCacheStorageAccount = New-AzStorageAccount -Name "a2acachestorage" -ResourceGroupName "A2AdemoRG" -Location 'East US' -SkuName Standard_LRS -Kind Storage
 ```
 
-對於**未使用受控磁片**的虛擬機器，目標儲存體帳戶是復原區域中的儲存體帳戶，虛擬機器的磁片將會複寫到此復原區域中。 目標儲存體帳戶可以是標準儲存體帳戶，也可以是進階儲存體帳戶。 根據磁片的資料變更率（IO 寫入速率）以及針對儲存體類型 Azure Site Recovery 支援的變換限制，來選取所需的儲存體帳戶種類。
+針對 **不使用受控磁片**的虛擬機器，目標儲存體帳戶是復原區域中要複寫虛擬機器磁片的儲存體帳戶。 目標儲存體帳戶可以是標準儲存體帳戶，也可以是進階儲存體帳戶。 根據資料變更率來選取所需的儲存體帳戶類型 (磁片的 IO 寫入速率) ，以及針對儲存體類型 Azure Site Recovery 支援的流失限制。
 
 ```azurepowershell
 #Create Target storage account in the recovery region. In this case a Standard Storage account
@@ -325,9 +325,9 @@ $WestUSTargetStorageAccount = New-AzStorageAccount -Name "a2atargetstorage" -Res
 
 ## <a name="create-network-mappings"></a>建立網路對應
 
-網路對應會將主要區域的虛擬網路，對應至復原區域的虛擬網路。 網路對應會指定復原區域中的 Azure 虛擬網路，也就是主要虛擬網路中的虛擬機器應故障切換到其中。 一個 Azure 虛擬網路只能對應至復原區域中的單一 Azure 虛擬網路。
+網路對應會將主要區域的虛擬網路，對應至復原區域的虛擬網路。 網路對應會指定復原區域中的 Azure 虛擬網路，而主要虛擬網路中的虛擬機器應容錯移轉至該虛擬網路。 一個 Azure 虛擬網路只能對應至復原區域中的單一 Azure 虛擬網路。
 
-- 在復原區域中建立 Azure 虛擬網路，以故障切換至：
+- 在復原區域中建立 Azure 虛擬網路，以容錯移轉至：
 
    ```azurepowershell
     #Create a Recovery Network in the recovery region
@@ -338,7 +338,7 @@ $WestUSTargetStorageAccount = New-AzStorageAccount -Name "a2atargetstorage" -Res
     $WestUSRecoveryNetwork = $WestUSRecoveryVnet.Id
    ```
 
-- 取得主要虛擬網路。 虛擬機器所連接的 VNet：
+- 取出主要虛擬網路。 虛擬機器所連線的 VNet：
 
    ```azurepowershell
     #Retrieve the virtual network that the virtual machine is connected to
@@ -378,7 +378,7 @@ $WestUSTargetStorageAccount = New-AzStorageAccount -Name "a2atargetstorage" -Res
     Write-Output $TempASRJob.State
    ```
 
-- 建立反向方向的網路對應（容錯回復）：
+- 建立反向方向的網路對應 (容錯回復) ：
 
     ```azurepowershell
     #Create an ASR network mapping for fail back between the recovery Azure virtual network and the primary Azure virtual network
@@ -465,7 +465,7 @@ Write-Output $TempASRJob.State
 
 複寫程序一開始會先在復原區域中植入虛擬機器複寫磁碟的複本。 這個階段稱為初始複寫階段。
 
-初始複寫完成後，複寫會移至差異同步處理階段。 此時，系統會保護虛擬機器，供您對其執行測試容錯移轉作業。 在初始複寫完成後，代表虛擬機器的複寫專案複寫狀態會進入**受保護**狀態。
+初始複寫完成後，複寫會移至差異同步處理階段。 此時，系統會保護虛擬機器，供您對其執行測試容錯移轉作業。 在初始複寫完成之後，表示虛擬機器的複寫專案複寫狀態會進入 **受保護** 的狀態。
 
 請藉由取得虛擬機器所對應的受保護複寫項目詳細資料，來監視虛擬機器的複寫狀態和複寫健康情況。
 
@@ -479,9 +479,9 @@ FriendlyName ProtectionState ReplicationHealth
 AzureDemoVM  Protected       Normal
 ```
 
-## <a name="do-a-test-failover-validate-and-cleanup-test-failover"></a>執行測試容錯移轉、驗證和清除測試容錯移轉
+## <a name="do-a-test-failover-validate-and-cleanup-test-failover"></a>進行測試容錯移轉、驗證和清除測試容錯移轉
 
-虛擬機器的複寫已達到受保護的狀態之後，即可在虛擬機器上執行測試容錯移轉操作（在虛擬機器的複寫受保護專案上）。
+虛擬機器的複寫達到受保護的狀態之後，就可以在虛擬機器上的 (複寫受保護的專案上，執行測試容錯移轉操作) 。
 
 ```azurepowershell
 #Create a separate network for test failover (not connected to my DR network)
@@ -492,7 +492,7 @@ Add-AzVirtualNetworkSubnetConfig -Name "default" -VirtualNetwork $TFOVnet -Addre
 $TFONetwork= $TFOVnet.Id
 ```
 
-執行測試容錯移轉。
+進行測試容錯移轉。
 
 ```azurepowershell
 $ReplicationProtectedItem = Get-AzRecoveryServicesAsrReplicationProtectedItem -FriendlyName "AzureDemoVM" -ProtectionContainer $PrimaryProtContainer
@@ -526,7 +526,7 @@ Tasks            : {Prerequisites check for test failover, Create test virtual m
 Errors           : {}
 ```
 
-成功完成測試容錯移轉作業之後，您可以連接到測試容錯移轉虛擬機器，並驗證測試容錯移轉。
+測試容錯移轉工作成功完成之後，您可以連接到測試容錯移轉虛擬機器，並驗證測試容錯移轉。
 
 在測試容錯移轉虛擬機器上完成測試後，請啟動清除測試容錯移轉作業來清除測試複本。 此作業會刪除測試容錯移轉所建立的虛擬機器測試複本。
 
@@ -544,7 +544,7 @@ Succeeded
 
 ## <a name="fail-over-to-azure"></a>容錯移轉至 Azure
 
-將虛擬機器故障切換至特定的復原點。
+將虛擬機器容錯移轉至特定復原點。
 
 ```azurepowershell
 $RecoveryPoints = Get-AzRecoveryServicesAsrRecoveryPoint -ReplicationProtectedItem $ReplicationProtectedItem
@@ -573,7 +573,7 @@ $Job_Failover.State
 Succeeded
 ```
 
-當容錯移轉工作成功時，您可以認可容錯移轉作業。
+當容錯移轉作業成功時，您可以認可容錯移轉作業。
 
 ```azurepowershell
 $CommitFailoverJOb = Start-AzRecoveryServicesAsrCommitFailoverJob -ReplicationProtectedItem $ReplicationProtectedItem
@@ -601,9 +601,9 @@ Tasks            : {Prerequisite check, Commit}
 Errors           : {}
 ```
 
-## <a name="reprotect-and-fail-back-to-the-source-region"></a>重新保護並容錯回復到來源區域
+## <a name="reprotect-and-fail-back-to-the-source-region"></a>重新保護並容錯回復至來源區域
 
-容錯移轉之後，當您準備好回到原始區域時，請使用 Cmdlet 針對複寫保護的專案開始反向複寫 `Update-AzRecoveryServicesAsrProtectionDirection` 。
+在容錯移轉之後，當您準備好回到原始區域時，請使用 Cmdlet 啟動複寫受保護專案的反向複寫 `Update-AzRecoveryServicesAsrProtectionDirection` 。
 
 ```azurepowershell
 #Create Cache storage account for replication logs in the primary region
@@ -616,16 +616,16 @@ Update-AzRecoveryServicesAsrProtectionDirection -ReplicationProtectedItem $Repli
 -ProtectionContainerMapping $WusToEusPCMapping -LogStorageAccountId $WestUSCacheStorageAccount.Id -RecoveryResourceGroupID $sourceVMResourcegroup.ResourceId
 ```
 
-重新保護完成之後，您可以在反向方向容錯回復，美國西部到美國東部，然後容錯回復到來源區域。
+重新保護完成後，您可以反向進行容錯移轉、向美國西部和美國東部進行容錯移轉，然後容錯回復至來源區域。
 
 ## <a name="disable-replication"></a>停用複寫
 
-您可以使用 Cmdlet 來停用複寫 `Remove-AzRecoveryServicesAsrReplicationProtectedItem` 。
+您可以使用 Cmdlet 停用複寫 `Remove-AzRecoveryServicesAsrReplicationProtectedItem` 。
 
 ```azurepowershell
-Remove-AzRecoveryServicesAsrReplicationProtectedItem -ReplicationProtectedItem $ReplicatedItem
+Remove-AzRecoveryServicesAsrReplicationProtectedItem -ReplicationProtectedItem $ReplicationProtectedItem
 ```
 
 ## <a name="next-steps"></a>後續步驟
 
-請參閱[Azure Site Recovery powershell 參考](/powershell/module/az.RecoveryServices)，以瞭解如何使用 powershell 來建立復原計畫及測試復原方案容錯移轉等其他工作。
+請參閱 [Azure Site Recovery powershell 參考](/powershell/module/az.RecoveryServices) ，以瞭解如何使用 powershell 來建立復原計畫和測試復原方案的容錯移轉等其他工作。

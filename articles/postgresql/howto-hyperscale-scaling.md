@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 9/18/2020
-ms.openlocfilehash: fef873d5122fefb48c85281f71e206f95f3fbe48
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: dd59d0b09a28febfc0afe35d9f008ba0e0ee19ab
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90986724"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91295709"
 ---
 # <a name="server-group-size"></a>伺服器群組大小
 
@@ -26,13 +26,13 @@ ms.locfileid: "90986724"
 
 針對從現有的單一節點于 postgresql 資料庫實例遷移至超大規模 (Citus) ，我們建議您選擇一個叢集，其中的背景工作虛擬核心和 RAM 的數量總計等於原始實例的數目。 在這類案例中，我們看到了2倍的效能改進，因為分區化能改善資源使用率，並允許較小的索引等。
 
-協調器節點所需的虛擬核心數目取決於您現有的工作負載)  (寫入/讀取輸送量。 協調器節點不需要像背景工作節點一樣多的 RAM，但是 RAM 配置取決於 vCore 計數 (如超大規模設定) [選項](concepts-hyperscale-configuration-options.md) 中所述，因此 vCore 計數基本上是真正的決策。
+協調器節點所需的虛擬核心數目取決於您現有的工作負載)  (寫入/讀取輸送量。 協調器節點不需要像背景工作節點一樣多的 RAM，但是 RAM 配置是根據 vCore 計數來決定， (如 [超大規模 (Citus) 設定選項](concepts-hyperscale-configuration-options.md)) 所述，因此 vCore 計數基本上是真正的決策。
 
 ### <a name="real-time-analytics-use-case"></a>即時分析使用案例
 
 總虛擬核心：當工作資料適用于 RAM 時，您可預期超大規模 () Citus 的線性效能改進，與背景工作角色的數目成正比。 若要為您的需求判斷正確的虛擬核心數目，請考慮您的單一節點資料庫中的查詢目前延遲，以及超大規模 (Citus) 所需的延遲。 將目前的延遲除以所需的延遲，並將結果四捨五入。
 
-背景工作角色 RAM：最好的情況是提供足夠的記憶體，讓大部分的工作中集合能夠容納到記憶體。 您的應用程式所使用的查詢類型會影響記憶體需求。 您可以執行說明在查詢上進行分析，以判斷所需的記憶體數量。 請記住，虛擬核心和 RAM 會隨著 [超大規模設定選項](concepts-hyperscale-configuration-options.md) 一文中的說明一起調整。
+背景工作角色 RAM：最好的情況是提供足夠的記憶體，讓大部分的工作中集合能夠容納到記憶體。 您的應用程式所使用的查詢類型會影響記憶體需求。 您可以執行說明在查詢上進行分析，以判斷所需的記憶體數量。 請記住，虛擬核心和 RAM 會依 [超大規模 (Citus) 設定選項](concepts-hyperscale-configuration-options.md) 一文中的說明進行調整。
 
 ## <a name="scale-a-hyperscale-citus-server-group"></a>調整超大規模 (Citus) 伺服器群組
 
@@ -65,6 +65,6 @@ SELECT rebalance_table_shards('distributed_table_name');
 
 若要變更所有背景工作節點的虛擬核心，請調整 [**每個背景工作節點**的設定 (]) 的 [**虛擬核心**] 滑杆。 協調器節點的虛擬核心可以獨立調整。 調整 [ **Configuration (協調器] 節點) **下的 [**虛擬核心**] 滑杆。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 深入瞭解伺服器群組 [效能選項](concepts-hyperscale-configuration-options.md)。

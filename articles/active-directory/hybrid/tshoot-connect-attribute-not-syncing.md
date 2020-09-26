@@ -15,12 +15,12 @@ ms.date: 01/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1111b56a08343f1e12c3b2d582e350907ab37b46
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: a6df1347eab57a6971fe2e39c0a55869c8f23939
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89276026"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317482"
 ---
 # <a name="troubleshoot-an-attribute-not-synchronizing-in-azure-ad-connect"></a>針對 Azure AD Connect 中不會同步處理屬性的問題進行疑難排解
 
@@ -67,7 +67,7 @@ ms.locfileid: "89276026"
 
 * 按兩下 **Active Directory 連接器**以檢視**連接器空間**屬性。 按一下 [預覽]**** 按鈕，在下列對話方塊上，按一下 [產生預覽]**** 按鈕。
 
-  ![連接器空間屬性](media/tshoot-connect-attribute-not-syncing/tshoot-connect-attribute-not-syncing/csattributes.png)
+  ![顯示 [連接器空間物件屬性] 畫面的螢幕擷取畫面，其中已反白顯示 [預覽] 按鈕。](media/tshoot-connect-attribute-not-syncing/tshoot-connect-attribute-not-syncing/csattributes.png)
 
 * 現在，按一下 [匯入屬性流程]****，這會顯示從 **Active Directory 連接器空間**到 **Metaverse** 的屬性流程。 [同步化規則]**** 資料行會顯示已將哪些**同步化規則**提供給該屬性。 [資料來源]**** 資料行會顯示來自**連接器空間**的屬性。 [Metaverse 屬性]**** 資料行會顯示 **Metaverse** 中的屬性。 您可以在此處查看未同步處理的屬性。 如果您在此處找不到屬性，則這不會對應，而您必須建立新的自訂**同步化規則**來對應屬性。
 
@@ -75,7 +75,7 @@ ms.locfileid: "89276026"
 
 * 按一下左窗格中的 [匯出屬性流程]****，以使用**輸出同步化規則**來檢視從 **Metaverse** 回到 **Active Directory 連接器空間**的屬性流程。
 
-  ![連接器空間屬性](media/tshoot-connect-attribute-not-syncing/tshoot-connect-attribute-not-syncing/mvtocsattributeflow.png)
+  ![螢幕擷取畫面，顯示使用輸出同步處理規則從元處理常式傳回 Active Directory 連接器空間的屬性流程。](media/tshoot-connect-attribute-not-syncing/tshoot-connect-attribute-not-syncing/mvtocsattributeflow.png)
 
 * 同樣地，您可以檢視 **Azure Active Directory 連接器空間**物件，並且可以產生**預覽**來檢視從 **Metaverse** 到**連接器空間**的屬性流程，反之亦然，如此一來，您就能調查屬性不會同步處理的原因。
 

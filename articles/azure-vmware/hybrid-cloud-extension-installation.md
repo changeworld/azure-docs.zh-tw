@@ -3,18 +3,18 @@ title: 安裝 VMware HCX
 description: 為您的 Azure VMware 解決方案私人雲端設定 VMware HCX 解決方案
 ms.topic: how-to
 ms.date: 09/24/2020
-ms.openlocfilehash: a101712f2d80e0d8e70d37bd5b7b08931f62ba3d
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: cdeffa41db5aac597d8dfcf3a735cbeb7f0d8a8e
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91356548"
+ms.locfileid: "91370839"
 ---
 # <a name="install-hcx-for-azure-vmware-solution"></a>安裝適用於 Azure VMware 解決方案的 HCX
 
 在本文中，我們將逐步解說為您的 Azure VMWare 解決方案私人雲端設定 VMWare HCX 解決方案的程式。 HCX 可讓您將 VMware 工作負載遷移至雲端，以及透過各種內建 HCX 支援的遷移類型來進行其他已連線的網站。
 
-HCX Advanced （預設安裝）最多支援三個網站連線 (內部部署或雲端到雲端) 。 如果需要三個以上的網站連線，客戶可以選擇透過支援啟用 HCX Enterprise 附加元件，此功能目前為預覽狀態。 HCX Enterprise 會在正式發行 (GA) 後對客戶收取額外費用，但提供[額外功能](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/)。
+HCX Advanced （預設安裝）最多支援三個網站連線 (內部部署或雲端到雲端) 。 如果需要三個以上的網站連線或 HCX [企業功能](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/) ，客戶可以選擇透過支援來啟用 HCX Enterprise 附加元件，此功能目前為預覽狀態。 HCX EE 可搭配 AVS 作為預覽功能/服務。 HCX EE for AVS 處於預覽狀態，它是免費的函式/服務，受限於預覽服務的條款及條件。 HCX EE 服務正式推出後，您將會收到30天的通知，指出計費將會切換。 您也可以選擇切換關閉/退出服務。
 
 
 [在開始之前](#before-you-begin)，請先仔細檢閱[軟體版本需求](#software-version-requirements)和[先決條件](#prerequisites)。 
@@ -63,17 +63,15 @@ HCX Advanced （預設安裝）最多支援三個網站連線 (內部部署或�
 
 * 內部部署 HCX IX 和 NE 設備應能觸及 vCenter 和 ESXi 基礎結構。
 
-* 除了在 Azure 入口網站中用於 SDDC 部署的 /22 CIDR 網路位址區塊以外，若要部署 WAN 互連設備，HCX 需要 /29 區塊。 請務必將這項需求納入您的網路規劃中。
+* 若要部署 WAN 互連設備，已針對私人雲端建立的客戶提供了 \ 22 的特定 CIDR 範圍。
 
 ## <a name="deploy-the-vmware-hcx-ova-on-premises"></a>部署 VMware HCX OVA 內部部署
 
 1. `https://x.x.x.9`使用**cloudadmin**的使用者認證，在埠443上登入 AZURE VMware Solution HCX Manager，然後移至 [**支援**]。
 
-1. 選取 VMware HCX OVA 檔案的下載連結。 
+1. 選取要部署到 vCenter 的 VMware HCX OVA 檔案的下載連結。
 
-1. 登入 Azure VMware Solution SDDC vCenter，然後選取 [ **HCX**]。
-   
-1. 移至內部部署 vCenter，然後選取 OVF 範本以部署至您的內部部署 vCenter。  
+1. 移至內部部署 vCenter，然後選取新下載的 OVF 範本以部署至您的內部部署 vCenter。  
 
    :::image type="content" source="media/hybrid-cloud-extension-installation/select-template.png" alt-text="接下來，移至內部部署 vCenter，然後選取 OVF 範本以部署至您的內部部署 vCenter。":::
 

@@ -4,12 +4,12 @@ description: 針對在任何環境中執行的 JAVA 應用程式無程式碼應�
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 561a6405a49d8f15affbf6d8d4de1a7f4886826a
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 93b0b89cff7e48ddc4eb9173c9423961f96ec4bb
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90056093"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371298"
 ---
 # <a name="configuration-options---java-standalone-agent-for-azure-monitor-application-insights"></a>設定選項-適用于 Azure 監視器 Application Insights 的 JAVA 獨立代理程式
 
@@ -49,7 +49,18 @@ ms.locfileid: "90056093"
 
 :::image type="content" source="media/java-ipa/connection-string.png" alt-text="Application Insights 連接字串":::
 
+
+```json
+{
+  "instrumentationSettings": {
+    "connectionString": "InstrumentationKey=00000000-0000-0000-0000-000000000000"
+  }
+}
+```
+
 您也可以使用環境變數來設定連接字串 `APPLICATIONINSIGHTS_CONNECTION_STRING` 。
+
+若未設定連接字串，將會停用 JAVA 代理程式。
 
 ## <a name="cloud-role-name"></a>雲端角色名稱
 
@@ -93,7 +104,7 @@ ms.locfileid: "90056093"
 
 Application Insights JAVA 3.0 Preview 會自動透過 Log4j、Logback 和 util 來捕捉應用程式記錄。
 
-依預設，它會捕獲在層級或更新版本上執行的所有記錄 `WARN` 。
+依預設，它會捕獲在層級或更新版本上執行的所有記錄 `INFO` 。
 
 如果您想要變更此閾值：
 
@@ -103,13 +114,15 @@ Application Insights JAVA 3.0 Preview 會自動透過 Log4j、Logback 和 util �
     "preview": {
       "instrumentation": {
         "logging": {
-          "threshold": "ERROR"
+          "threshold": "WARN"
         }
       }
     }
   }
 }
 ```
+
+您也可以使用環境變數來設定記錄閾值 `APPLICATIONINSIGHTS_LOGGING_THRESHOLD` 。
 
 這些是 `threshold` 您可以在檔案中指定的有效值 `ApplicationInsights.json` ，以及它們如何對應至不同記錄架構之間的記錄層級：
 
@@ -136,9 +149,9 @@ Application Insights JAVA 3.0 Preview 會自動透過 Log4j、Logback 和 util �
     "preview": {
       "jmxMetrics": [
         {
-          "objectName": "java.lang:type=ClassLoading",
-          "attribute": "LoadedClassCount",
-          "display": "Loaded Class Count"
+          "objectName": "java.lang:type=Runtime",
+          "attribute": "Uptime",
+          "display": "JVM uptime (millis)"
         },
         {
           "objectName": "java.lang:type=MemoryPool,name=Code Cache",
@@ -150,6 +163,10 @@ Application Insights JAVA 3.0 Preview 會自動透過 Log4j、Logback 和 util �
   }
 }
 ```
+
+您也可以使用環境變數來設定 JMX 計量 `APPLICATIONINSIGHTS_JMX_METRICS` 。
+
+此環境變數內容必須是符合上述結構的 json 資料，例如 `[{"objectName": "java.lang:type=Runtime", "attribute": "Uptime", "display": "JVM uptime (millis)"}, {"objectName": "java.lang:type=MemoryPool,name=Code Cache", "attribute": "Usage.used", "display": "Code Cache Used"}]`
 
 ## <a name="micrometer-including-metrics-from-spring-boot-actuator"></a>Micrometer (包括來自彈簧開機傳動) 的計量
 
@@ -214,6 +231,8 @@ Application Insights JAVA 3.0 Preview 會自動透過 Log4j、Logback 和 util �
   }
 }
 ```
+
+您也可以使用環境變數來設定取樣百分比 `APPLICATIONINSIGHTS_SAMPLING_PERCENTAGE` 。
 
 ## <a name="http-proxy"></a>HTTP Proxy
 

@@ -13,8 +13,6 @@
       href: deploy-service-catalog-quickstart.md
 - name: 教學課程
   items:
-    - name: 發佈市集應用程式
-      href: publish-marketplace-app.md
     - name: 使用自訂提供者建立受控應用程式
       href: tutorial-create-managed-app-with-custom-provider.md
 - name: 範例
@@ -41,6 +39,8 @@
           href: create-uidefinition-overview.md
         - name: 測試入口網站介面
           href: test-createuidefinition.md
+        - name: 建立 Azure 應用程式供應項目
+          href: ../../marketplace/partner-center-portal/create-new-azure-apps-offer.md?toc=/azure/azure-resource-manager/managed-applications/toc.json
         - name: 要求 Just-In-Time 存取
           href: request-just-in-time-access.md
         - name: 使用現有虛擬網路
@@ -167,5 +167,5 @@
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: Resource Manager 範本最佳做法
       href: 'https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md'
-    - name: Stack Overflow
+    - name: 堆疊溢位
       href: 'http://stackoverflow.com/questions/tagged/azure-managedapps'

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/10/2019
 ms.author: mimckitt
-ms.openlocfilehash: c48ef0321ece2e7e0ffcdfcb8c0907c5f839e738
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: aba47500400004c1d6a7044a266bad6f20d5d9c9
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87831357"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360543"
 ---
 # <a name="proactively-ensuring-you-have-access-to-grub-and-sysrq-could-save-you-lots-of-down-time"></a>主動確保您有 GRUB 和 sysrq 的存取權，可以為您省下許多停機時間
 
@@ -210,11 +210,11 @@ Ubuntu 12.04 會允許存取序列主控台，但未提供互動能力。 沒看
 
 為 Ubuntu 選取 [進階選項]，然後按 Enter 鍵
 
-![ubunturec1](./media/virtual-machines-serial-console/ubunturec1.png)
+![螢幕擷取畫面顯示已選取適用于 Ubuntu 的 Advanced 選項的序列主控台。](./media/virtual-machines-serial-console/ubunturec1.png)
 
 選取顯示了 *(recovery mode)* 的那一行，不要按 Enter，而是按 "e"
 
-![ubunturec2](./media/virtual-machines-serial-console/ubunturec2.png)
+![螢幕擷取畫面顯示已選取復原模式版本的序列主控台。](./media/virtual-machines-serial-console/ubunturec2.png)
 
 找出會載入核心的那一行，並以目的地 **console=ttyS0** 替換最後一個參數 **nomodeset**
 
@@ -226,12 +226,12 @@ change to
 linux /boot/vmlinuz-4.15.0-1023-azure root=UUID=21b294f1-25bd-4265-9c4e-d6e4aeb57e97 ro recovery console=ttyS0
 ```
 
-![ubunturec3](./media/virtual-machines-serial-console/ubunturec3.png)
+![螢幕擷取畫面顯示具有變更值的序列主控台。](./media/virtual-machines-serial-console/ubunturec3.png)
 
 按 **Ctrl-x** 以啟動並載入核心。
 如果一切順利，您就會看到這些額外選項，其可協助您執行其他復原選項
 
-![ubunturec4](./media/virtual-machines-serial-console/ubunturec4.png)
+![螢幕擷取畫面顯示 [復原] 功能表上的序列主控台，其提供額外的修復選項。](./media/virtual-machines-serial-console/ubunturec4.png)
 
 
 ## <a name="red-hat-grub-configuration"></a>Red Hat GRUB 設定
@@ -337,11 +337,11 @@ terminal --timeout=5 serial console
 
 最後一行 *terminal –-timeout=5 serial console* 會進一步增加 **GRUB** 逾時時間，其方法是新增會顯示 **Press any key to continue.** 長達 5 秒的提示
 
-![rh6-1](./media/virtual-machines-serial-console/rh6-1.png)
+![螢幕擷取畫面顯示有輸出的主控台。](./media/virtual-machines-serial-console/rh6-1.png)
 
 不必按下 Esc 鍵，GRUB 功能表應該就會在畫面上出現，持續時間為所設定的逾時值 15。請務必在瀏覽器中按一下主控台，使功能表變成作用中狀態，並選取所需的核心
 
-![rh6-2](./media/virtual-machines-serial-console/rh6-2.png)
+![螢幕擷取畫面顯示具有兩個 Linux 選項的主控台。](./media/virtual-machines-serial-console/rh6-2.png)
 
 ## <a name="suse"></a>SuSE
 
@@ -405,18 +405,18 @@ kernel /boot/vmlinuz-3.0.101-108.74-default root=/dev/disk/by-uuid/ab6b62bb--
 擁有 GRUB 的存取權可讓您中斷初始化程序。這種互動對許多復原程序很有用。
 如果您沒有根密碼，且單一使用者要求您擁有根密碼，您可以藉由以 bash 提示字元取代 init 程式來將核心開機；此中斷可藉由將 init=/bin/bash 附加至核心開機行來達成
 
-![bash1](./media/virtual-machines-serial-console/bash1.png)
+![螢幕擷取畫面顯示具有更新開機線路的主控台。](./media/virtual-machines-serial-console/bash1.png)
 
 使用命令重新掛接您的/(根) 檔案系統 RW
 
 `mount -o remount,rw /`
 
-![bash2](./media/virtual-machines-serial-console/bash2.png)
+![螢幕擷取畫面顯示具有重新掛接動作的主控台。](./media/virtual-machines-serial-console/bash2.png)
 
 
 現在您可以執行根密碼變更或其他許多 Linux 設定變更
 
-![bash3](./media/virtual-machines-serial-console/bash3.png)
+![螢幕擷取畫面顯示主控台，您可以在其中變更根密碼和其他設定。](./media/virtual-machines-serial-console/bash3.png)
 
 使用下面這行重新啟動 VM 
 

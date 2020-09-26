@@ -2,30 +2,38 @@
 title: 包含檔案
 description: 包含檔案
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
-ms.devlang: na
 ms.topic: include
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: e52433cfae1e889f07818f582fc3aef0752932ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 79952ad04df4780e1b30eb9cf5c7a35f49cc34c2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74482496"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91257059"
 ---
-在閱讀本文之前，您應該先熟悉下列概念：
+如果您不熟悉身分識別和存取管理 (IAM) 與 OAuth 2.0 和 OpenID Connect，或甚至剛接觸到 Microsoft 身分識別平臺上的 IAM，則閱讀清單中的下列一組文章應該會很高。
 
-- [Microsoft 身分識別平台概觀](../articles/active-directory/develop/v2-overview.md)
-- [驗證基本概念](../articles/active-directory/develop/authentication-scenarios.md)
-- [對象](../articles/active-directory/develop/v2-supported-account-types.md)
-- [應用程式與服務主體](../articles/active-directory/develop/app-objects-and-service-principals.md)
-- [權限及同意](../articles/active-directory/develop/v2-permissions-and-consent.md)
-- [識別碼權杖](../articles/active-directory/develop/id-tokens.md)和[存取權杖](../articles/active-directory/develop/access-tokens.md)
+雖然在完成您的第一個快速入門或教學課程之前不需要閱讀，但它們涵蓋了平臺不可或缺的主題，並熟悉這些主題將可在您建立更複雜的案例時，協助您在路徑上。
+
+:::row:::
+    :::column:::
+        **驗證與授權**
+
+        - [驗證基本概念](../articles/active-directory/develop/authentication-vs-authorization.md)
+        - [識別碼權杖](../articles/active-directory/develop/id-tokens.md)
+        - [存取權杖](../articles/active-directory/develop/access-tokens.md)
+    :::column-end:::
+    :::column:::
+        **Microsoft 身分識別平台**
+
+        - [對象](../articles/active-directory/develop/v2-supported-account-types.md)
+        - [應用程式與服務主體](../articles/active-directory/develop/app-objects-and-service-principals.md)
+        - [權限和同意](../articles/active-directory/develop/v2-permissions-and-consent.md)
+    :::column-end:::
+:::row-end:::

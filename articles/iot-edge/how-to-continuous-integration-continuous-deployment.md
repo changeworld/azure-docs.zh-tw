@@ -3,17 +3,17 @@ title: 持續整合和持續部署到 Azure IoT Edge 裝置-Azure IoT Edge
 description: 使用 YAML-Azure IoT Edge 搭配 Azure DevOps 來設定持續整合和持續部署 Azure Pipelines
 author: shizn
 manager: philmea
-ms.author: xshi
+ms.author: kgremban
 ms.date: 08/20/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 0b68e354099a0038e1b418d6973eca2c774aed94
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: d29a5a6d0d4745655ce5b6d0cead3eaba77ed423
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89302097"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91281621"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge-devices"></a>持續整合和持續部署到 Azure IoT Edge 裝置
 
@@ -38,7 +38,7 @@ ms.locfileid: "89302097"
 * [環境變數](https://docs.microsoft.com/azure/devops/pipelines/process/variables?view=azure-devops&tabs=yaml%2Cbatch#environment-variables)
 * [輸出變數](https://docs.microsoft.com/azure/devops/pipelines/process/variables?view=azure-devops&tabs=yaml%2Cbatch#use-output-variables-from-tasks)
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * Azure Repos 存放庫。 如果您沒有存放庫，可以[在專案中建立新的 Git 存放庫](https://docs.microsoft.com/azure/devops/repos/git/create-new-repo?view=vsts&tabs=new-nav) \(英文\)。 針對本文，我們建立了名為 **IoTEdgeRepo** 的存放庫。
 * 已認可並推送至您存放庫的 IoT Edge 解決方案。 若要建立用於測試本文的新範例解決方案，請遵循[在 Visual Studio Code 中針對模組進行開發與偵錯](how-to-vs-code-develop-module.md)，或[在 Visual Studio Code 中對 C# 模組進行開發與偵錯](how-to-visual-studio-develop-csharp-module.md)中的步驟。 在本文中，我們在存放庫中建立了名為 **IoTEdgeSolution**的解決方案，其中包含名為 **filtermodule**的模組程式碼。
@@ -108,15 +108,15 @@ ms.locfileid: "89302097"
 
    * 工作：**複製**檔案
 
-       | 參數 | 描述 |
+       | 參數 | 說明 |
        | --- | --- |
        | 來源資料夾 | 要複製的來源資料夾。 空白是存放庫的根目錄。 如果檔案不在存放庫中，請使用變數。 範例： `$(agent.builddirectory)`.
-       | 目錄 | 新增兩行： `deployment.template.json` 和 `**/module.json` 。 |
+       | 內容 | 新增兩行： `deployment.template.json` 和 `**/module.json` 。 |
        | 目的檔案夾 | 指定變數 `$(Build.ArtifactStagingDirectory)` 。 請參閱 [組建變數](https://docs.microsoft.com/azure/devops/pipelines/build/variables?view=azure-devops&tabs=yaml#build-variables) 以瞭解描述。 |
 
    * 工作：**發行組建**成品
 
-       | 參數 | 描述 |
+       | 參數 | 說明 |
        | --- | --- |
        | 要發佈的路徑 | 指定變數 `$(Build.ArtifactStagingDirectory)` 。 請參閱 [組建變數](https://docs.microsoft.com/azure/devops/pipelines/build/variables?view=azure-devops&tabs=yaml#build-variables) 以瞭解描述。 |
        | 成品名稱 | 指定預設名稱： `drop` |
@@ -134,7 +134,7 @@ ms.locfileid: "89302097"
 
 [!INCLUDE [iot-edge-verify-iot-edge-continuous-integration-continuous-deployment](../../includes/iot-edge-verify-iot-edge-continuous-integration-continuous-deployment.md)]
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [適用于 IoT Edge Azure DevOps Starter 中的](how-to-devops-starter.md)IoT Edge DevOps 最佳做法範例
 * 在[了解單一裝置或大規模的 IoT Edge 部署](module-deployment-monitoring.md)中，了解 IoT Edge 部署。

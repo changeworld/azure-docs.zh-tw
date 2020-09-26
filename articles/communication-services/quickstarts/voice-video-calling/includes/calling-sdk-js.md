@@ -4,17 +4,17 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: 6922ab2aac8529da8ba55a98f465e3c0e3123b53
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 5542ca2f50152e7588f32e9ac8717f691fdb4d63
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934671"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91377613"
 ---
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
-- 已部署的通訊服務資源。 [建立通訊服務資源](../../create-communication-resource.md)。
+- 已部署通訊服務資源。 [建立通訊服務資源](../../create-communication-resource.md)。
 - `User Access Token`要啟用呼叫用戶端的。 如需[如何取得的 `User Access Token` ](../../access-tokens.md)詳細資訊
 - 選擇性：完成快速入門以 [開始將呼叫新增至您的應用程式](../getting-started-with-calling.md)
 
@@ -33,13 +33,13 @@ npm install @azure/communication-calling --save
 
 ## <a name="object-model"></a>物件模型
 
-下列類別和介面會處理 Azure 通訊服務呼叫用戶端程式庫的一些主要功能：
+下列類別和介面會處理 Azure 通訊服務通話用戶端程式庫的一些主要功能：
 
 | Name                             | 描述                                                                                                                                 |
 | ---------------------------------| ------------------------------------------------------------------------------------------------------------------------------------------- |
-| CallClient                       | CallClient 是呼叫用戶端程式庫的主要進入點。                                                                       |
-| CallAgent                        | CallAgent 可用來啟動及管理呼叫。                                                                                            |
-| AzureCommunicationUserCredential | AzureCommunicationUserCredential 類別會實 CommunicationUserCredential 介面，用來將 CallAgent 具現化。 |
+| CallClient                       | CallClient 是通話用戶端程式庫的主要進入點。                                                                       |
+| CallAgent                        | CallAgent 是用來啟動和管理通話。                                                                                            |
+| AzureCommunicationUserCredential | AzureCommunicationUserCredential 類別會實作用來具現化 CallAgent 的 CommunicationUserCredential 介面。 |
 
 
 ## <a name="initialize-the-callclient-create-callagent-and-access-devicemanager"></a>將 CallClient、create CallAgent 和 access DeviceManager 初始化
@@ -80,11 +80,11 @@ const oneToOneCall = callAgent.call([CommunicationUser]);
 
 const userCallee = { communicationUserId: <ACS_USER_ID> }
 const pstnCallee = { phoneNumber: <PHONE_NUMBER>};
-const groupCall = callClient.call([userCallee, pstnCallee], placeCallOptions);
+const groupCall = callAgent.call([userCallee, pstnCallee], placeCallOptions);
 
 ```
 
-### <a name="place-a-11-call-with-with-video-camera"></a>使用攝影機撥打1:1 電話
+### <a name="place-a-11-call-with-video-camera"></a>使用攝影機撥打1:1 電話
 > [!WARNING]
 > 目前不能有一個以上的傳出本機影片串流。
 若要撥打影片，您必須使用 deviceManager API 來列舉本機相機 `getCameraList` 。
@@ -95,7 +95,7 @@ const deviceManager = await callClient.getDeviceManager();
 const videoDeviceInfo = deviceManager.getCameraList()[0];
 localVideoStream = new LocalVideoStream(videoDeviceInfo);
 const placeCallOptions = {videoOptions: {localVideoStreams:[localVideoStream]}};
-const call = callClient.call(['acsUserId'], placeCallOptions);
+const call = callAgent.call(['acsUserId'], placeCallOptions);
 
 ```
 
@@ -104,7 +104,7 @@ const call = callClient.call(['acsUserId'], placeCallOptions);
 ```js
 
 const context = { groupId: <GUID>}
-const call = callClient.join(context);
+const call = callAgent.join(context);
 
 ```
 
@@ -113,19 +113,19 @@ const call = callClient.join(context);
 您可以存取呼叫屬性，並在呼叫以管理與影片和音訊相關的設定時執行各種作業。
 
 ### <a name="call-properties"></a>呼叫屬性
-* 取得此呼叫的唯一識別碼。
+* 取得此呼叫 (字串) 的唯一識別碼。
 ```js
 
 const callId: string = call.id;
 
 ```
 
-* 若要瞭解呼叫中的其他參與者，請檢查 `remoteParticipant` 實例上的集合 `call` 。
+* 若要瞭解呼叫中的其他參與者，請檢查 `remoteParticipant` 實例上的集合 `call` 。 陣列包含清單 `RemoteParticipant` 物件
 ```js
-const remoteParticipants: RemoteParticipants = call.remoteParticipants;
+const remoteParticipants = call.remoteParticipants;
 ```
 
-* 呼叫的傳入時，呼叫端的身分識別。
+* 呼叫的傳入時，呼叫端的身分識別。 身分識別是其中一種 `Identifier` 類型
 ```js
 
 const callerIdentity = call.callerIdentity;
@@ -135,7 +135,7 @@ const callerIdentity = call.callerIdentity;
 * 取得呼叫的狀態。
 ```js
 
-const callState: CallState = call.state;
+const callState = call.state;
 
 ```
 這會傳回代表呼叫之目前狀態的字串：
@@ -153,35 +153,34 @@ const callState: CallState = call.state;
 * 若要查看給定通話結束的原因，請檢查 `callEndReason` 屬性。
 ```js
 
-const callEndReason: CallEndReason = call.callEndReason;
+const callEndReason = call.callEndReason;
+// callEndReason.code (number) code associated with the reason
+// callEndReason.subCode (number) subCode associated with the reason
+```
+
+* 若要瞭解目前的呼叫是否為撥入電話，請檢查 `isIncoming` 屬性，它會傳回 `Boolean` 。
+```js
+const isIncoming = call.isIncoming;
+```
+
+*  若要檢查目前的麥克風是否已靜音，請檢查 `muted` 屬性，它會傳回 `Boolean` 。
+```js
+
+const muted = call.isMicrophoneMuted;
 
 ```
 
-* 若要瞭解目前的呼叫是否為傳入的呼叫，請檢查 `isIncoming` 屬性
+* 若要查看是否從指定的端點傳送螢幕共用串流，請檢查 `isScreenSharingOn` 屬性，它會傳回 `Boolean` 。
 ```js
 
-const isIncoming: boolean = call.isIncoming;
+const isScreenSharingOn = call.isScreenSharingOn;
 
 ```
 
-*  若要檢查目前的麥克風是否已靜音，請檢查 `muted` 屬性：
+* 若要檢查使用中的影片串流，請檢查 `localVideoStreams` 集合，其包含 `LocalVideoStream` 物件
 ```js
 
-const muted: boolean = call.isMicrophoneMuted;
-
-```
-
-* 若要查看是否從指定的端點傳送螢幕共用串流，請檢查 `isScreenSharingOn` 屬性：
-```js
-
-const isScreenSharingOn: boolean = call.isScreenSharingOn;
-
-```
-
-* 若要檢查主動式影片串流，請檢查 `localVideoStreams` 集合：
-```js
-
-const localVideoStreams: LocalVideoStream[] = call.localVideoStreams;
+const localVideoStreams = call.localVideoStreams;
 
 ```
 
@@ -194,7 +193,7 @@ const localVideoStreams: LocalVideoStream[] = call.localVideoStreams;
 //mute local device 
 await call.mute();
 
-//unmute device 
+//unmute local device 
 await call.unmute();
 
 ```
@@ -206,7 +205,7 @@ await call.unmute();
 
 
 ```js
-const localVideoStream = new SDK.LocalVideoStream(videoDeviceInfo);
+const localVideoStream = new LocalVideoStream(videoDeviceInfo);
 await call.startVideo(localVideoStream);
 
 ```
@@ -254,15 +253,16 @@ call.remoteParticipants; // [remoteParticipant, remoteParticipant....]
 * 取得此遠端參與者的識別碼。
 身分識別是 ' Identifier ' 類型的其中一個：
 ```js
-
-const identity: CommunicationUser | PhoneNumber | CallingApplication | UnknownIdentifier;
-
+const identifier = remoteParticipant.identifier;
+//It can be one of:
+// { communicationUserId: '<ACS_USER_ID'> } - object representing ACS User
+// { phoneNumber: '<E.164>' } - object representing phone number in E.164 format
 ```
 
 * 取得此遠端參與者的狀態。
 ```js
 
-const state: RemoteParticipantState = remoteParticipant.state;
+const state = remoteParticipant.state;
 ```
 狀態可以是下列其中一項
 * 「閒置」-初始狀態
@@ -275,28 +275,27 @@ const state: RemoteParticipantState = remoteParticipant.state;
 若要瞭解參與者離開通話的原因，請檢查 `callEndReason` 屬性：
 ```js
 
-const callEndReason: CallEndReason = remoteParticipant.callEndReason;
+const callEndReason = remoteParticipant.callEndReason;
+// callEndReason.code (number) code associated with the reason
+// callEndReason.subCode (number) subCode associated with the reason
+```
+
+* 若要檢查此遠端參與者是否為靜音，請檢查 `isMuted` 屬性，它會傳回 `Boolean`
+```js
+const isMuted = remoteParticipant.isMuted;
+```
+
+* 若要檢查此遠端參與者是否正在說話，請檢查它所傳回的 `isSpeaking` 屬性 `Boolean`
+```js
+
+const isSpeaking = remoteParticipant.isSpeaking;
 
 ```
 
-* 若要檢查此遠端參與者是否為靜音，請檢查 `isMuted` 屬性：
+* 若要檢查給定參與者在此呼叫中傳送的所有影片資料流程，請檢查 `videoStreams` 集合，其中包含 `RemoteVideoStream` 物件
 ```js
 
-const isMuted: boolean = remoteParticipant.isMuted;
-
-```
-
-* 若要檢查此遠端參與者是否正在說話，請檢查 `isSpeaking` 屬性：
-```js
-
-const isSpeaking: boolean = remoteParticipant.isSpeaking;
-
-```
-
-* 若要檢查給定參與者在此呼叫中傳送的所有影片資料流程，請檢查 `videoStreams` 集合：
-```js
-
-const videoStreams: RemoteVideoStream[] = remoteParticipant.videoStreams; // [RemoteVideoStream, ...]
+const videoStreams = remoteParticipant.videoStreams; // [RemoteVideoStream, ...]
 
 ```
 
@@ -312,13 +311,12 @@ const userIdentifier = { communicationUserId: <ACS_USER_ID> };
 const pstnIdentifier = { phoneNumber: <PHONE_NUMBER>}
 const remoteParticipant = call.addParticipant(userIdentifier);
 const remoteParticipant = call.addParticipant(pstnIdentifier);
-
 ```
 
 ### <a name="remove-participant-from-a-call"></a>從呼叫中移除參與者
 
 若要從呼叫中移除參與者 (可以叫用使用者或電話號碼) `removeParticipant` 。
-當參與者從呼叫中移除之後，您必須傳遞其中一個 ' identifier ' 類型。
+當參與者從呼叫中移除之後，您必須傳遞其中一個 ' Identifier ' 類型。
 參與者也會從集合中移除 `remoteParticipants` 。
 
 ```js
@@ -333,7 +331,6 @@ await call.removeParticipant(pstnIdentifier);
 若要列出遠端參與者的影片串流和螢幕共用串流，請檢查 `videoStreams` 集合：
 
 ```js
-
 const remoteVideoStream: RemoteVideoStream = call.remoteParticipants[0].videoStreams[0];
 const streamType: MediaStreamType = remoteVideoStream.type;
 ```
@@ -370,7 +367,7 @@ if (remoteParticipantStream.isAvailable) {
 const id: number = remoteVideoStream.id;
 ```
 
-* `StreamSize` -調整遠端影片串流 ( 寬度/高度 ) 
+* `StreamSize` -調整遠端影片串流 (寬度/高度) 
 ```js
 const size: {width: number; height: number} = remoteVideoStream.size;
 ```
