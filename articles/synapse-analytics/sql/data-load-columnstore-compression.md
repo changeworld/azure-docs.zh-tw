@@ -11,12 +11,12 @@ ms.date: 04/15/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 25ab7d275957aff03ad76bf2e946a98fc6cd8821
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: fecb78b240f5c983580d4bdb34535a879ffe3e2e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90032957"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289271"
 ---
 # <a name="maximize-rowgroup-quality-for-columnstore-index-performance"></a>將資料行存放區索引效能的資料列群組品質最大化
 
@@ -26,7 +26,7 @@ ms.locfileid: "90032957"
 
 因為資料行存放區索引會藉由掃描個別資料列群組的資料行區段來掃描資料表，最大化每個資料列群組的資料列數目可以提升查詢效能。 當資料列群組會有大量的資料列時，可改善資料壓縮，這表示從磁碟讀取的資料比較少。
 
-如需關於資料列群組的詳細資訊，請參閱[資料行存放區索引指南](/sql/relational-databases/indexes/columnstore-indexes-overview?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)。
+如需關於資料列群組的詳細資訊，請參閱[資料行存放區索引指南](/sql/relational-databases/indexes/columnstore-indexes-overview?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。
 
 ## <a name="target-size-for-rowgroups"></a>資料列群組的目標大小
 
@@ -34,15 +34,15 @@ ms.locfileid: "90032957"
 
 ## <a name="rowgroups-can-get-trimmed-during-compression"></a>資料列群組可以在壓縮期間進行修剪
 
-在大量載入或資料行存放區索引重建期間，有時可用的記憶體不足，無法壓縮指定給每個資料列群組的所有資料列。 當有記憶體不足的壓力時，資料行存放區索引會修剪資料列群組大小，因此會成功壓縮到資料行存放區內。
+在大量載入或資料行存放區索引重建期間，有時候沒有足夠的記憶體可用來壓縮為每個資料列群組指定的所有資料列。 當有記憶體不足的壓力時，資料行存放區索引會修剪資料列群組大小，因此會成功壓縮到資料行存放區內。
 
 如果記憶體不足，無法將至少10000個數據列壓縮到每個資料列群組中，則會產生錯誤。
 
-如需有關大量載入的詳細資訊，請參閱[大量載入叢集資料行存放區索引](/sql/relational-databases/indexes/columnstore-indexes-data-loading-guidance?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest#Bulk )。
+如需有關大量載入的詳細資訊，請參閱[大量載入叢集資料行存放區索引](/sql/relational-databases/indexes/columnstore-indexes-data-loading-guidance?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest#Bulk&preserve-view=true )。
 
 ## <a name="how-to-monitor-rowgroup-quality"></a>如何監視資料列群組品質
 
-DMV sys. dm_pdw_nodes_db_column_store_row_group_physical_stats ([sys. dm_db_column_store_row_group_physical_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) 包含符合 SQL db) 的視圖定義，可公開有用的資訊，例如資料列群組中的資料列數目，以及修剪時的修剪原因。 您可以建立下列檢視，並將其作為查詢這個 DMV 以取得有關資料列群組修剪資訊的便利方法。
+DMV sys.dm_pdw_nodes_db_column_store_row_group_physical_stats ([sys.dm_db_column_store_row_group_physical_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 包含的視圖定義符合 SQL db) ，可公開有用的資訊，例如資料列群組中的資料列數目，以及修剪時的修剪原因。 您可以建立下列檢視，並將其作為查詢這個 DMV 以取得有關資料列群組修剪資訊的便利方法。
 
 ```sql
 create view dbo.vCS_rg_physical_stats
@@ -77,14 +77,15 @@ trim_reason_desc 會告知是否已修剪資料列群組 (trim_reason_desc = NO_
 
 ## <a name="how-to-estimate-memory-requirements"></a>如何估計記憶體需求
 
-要壓縮一個資料列群組所需的最大記憶體大約是
+壓縮一個資料列群組所需的記憶體上限大約是，如下所示：
 
 - 72 MB +
 - \#資料列資料行 \* \# \* 8 個位元組 +
 - \#資料 \* \# 列短字串資料行 \* 32 位元組 +
 - \#長字串資料行 \* 壓縮字典 16 MB
 
-短字串資料行使用 < = 32 個位元組的字串資料類型和長字串資料行使用 > 32 個位元組的字串資料類型。
+> [!NOTE]
+> 其中簡短字串資料行使用 <= 32 位元組和長字串資料行的字串資料類型時，會使用 > 32 位元組的字串資料類型。
 
 會使用專為壓縮文字的壓縮方法來壓縮長字串。 這個壓縮方法會使用字典** 來儲存文字模式。 字典的大小上限為 16 MB。 資料列群組中的每一個長字串資料行只有一個字典。
 
@@ -121,7 +122,7 @@ trim_reason_desc 會告知是否已修剪資料列群組 (trim_reason_desc = NO_
 
 ### <a name="adjust-maxdop"></a>調整 MAXDOP
 
-當有多個 CPU 核心可供每個散發使用時，每個散發會將資料列群組平行壓縮到資料行存放區。 平行處理原則需要額外的記憶體資源，可能會導致記憶體不足的壓力和調整資料列群組。
+每個散發都有一個以上的 CPU 核心可供使用時，每個散發都會以平行方式將資料列群組壓縮到資料行存放區。 平行處理原則需要額外的記憶體資源，可能會導致記憶體不足的壓力和調整資料列群組。
 
 若要減少記憶體不足的壓力，您可以使用 MAXDOP 查詢提示來強制載入作業，以便在每個散發內的序列模式中執行。
 
@@ -139,7 +140,7 @@ DWU 大小和使用者資源類別會共同判斷有多少記憶體可供使用�
 - 若要增加 DWU，請參閱[如何調整效能？](../sql-data-warehouse/quickstart-scale-compute-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 - 若要變更查詢的資源類別，請參閱[變更使用者資源類別的範例](../sql-data-warehouse/resource-classes-for-workload-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#change-a-users-resource-class)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 若要尋找更多方法來改善 Synapse SQL 中的效能，請參閱 [效能總覽](../overview-cheat-sheet.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
 

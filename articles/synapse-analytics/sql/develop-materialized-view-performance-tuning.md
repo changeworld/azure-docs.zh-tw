@@ -1,6 +1,6 @@
 ---
 title: 使用具體化檢視進行效能調整
-description: 使用具體化檢視改善查詢效能時須知的建議和考量事項。
+description: 具體化視圖的建議和考慮，以改善您的查詢效能。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: d476bef6faa19defad1d2e1ef1a90f7e5d83def5
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 1f04f8b447f07f62561f56722df3b9502ad58d41
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495687"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289033"
 ---
 # <a name="performance-tuning-with-materialized-views"></a>使用具體化檢視進行效能調整
 
@@ -29,7 +29,7 @@ SQL 集區支援標準檢視和具體化檢視。  兩者都是使用 SELECT 運
 
 具體化檢視會在 SQL 集區中預先計算、儲存和維護其資料，就像資料表一樣。  具體化檢視不需要在每次使用時都重新計算。  這就是為什麼在具體化檢視中使用全部資料或資料子集的查詢其效能會加速的原因。  更棒的是，查詢可以使用具體化檢視，而無需建立直接參考，因此不需要變更應用程式程式碼。  
 
-大部分的標準檢視需求仍適用於具體化檢視。 如需具體化檢視語法和其他需求的詳細資料，請參閱 [CREATE MATERIALIZED VIEW AS SELECT](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)。
+大部分的標準檢視需求仍適用於具體化檢視。 如需具體化檢視語法和其他需求的詳細資料，請參閱 [CREATE MATERIALIZED VIEW AS SELECT](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。
 
 | 比較                     | 檢視                                         | 具體化檢視
 |:-------------------------------|:---------------------------------------------|:--------------------------------------------------------------|
@@ -55,8 +55,8 @@ SQL 集區支援標準檢視和具體化檢視。  兩者都是使用 SELECT 運
 相較於其他資料倉儲提供者，在 SQL 集區中實作的具體化檢視還額外提供下列優點：
 
 - 當基底資料表中有資料變更時，系統能自動並同步進行資料重新整理。 使用者不必採取任何動作。
-- 支援廣泛彙總涵式。 請參閱 [CREATE MATERIALIZED VIEW AS SELECT (Transact-SQL)](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)。
-- 支援查詢特定的具體化檢視建議。  請參閱 [EXPLAIN (Transact-SQL)](/sql/t-sql/queries/explain-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)。
+- 支援廣泛彙總涵式。 請參閱 [CREATE MATERIALIZED VIEW AS SELECT (Transact-SQL)](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。
+- 支援查詢特定的具體化檢視建議。  請參閱 [EXPLAIN (Transact-SQL)](/sql/t-sql/queries/explain-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。
 
 ## <a name="common-scenarios"></a>常見的案例  
 
@@ -143,13 +143,17 @@ GROUP BY A, C
 
 **監視具體化檢視**
 
-具體化檢視會儲存在資料倉儲中，就如同具有叢集資料行存放區索引 (CCI) 的資料表一樣。  從具體化檢視讀取資料包括了掃描索引及套用差異存放區中的變更。  當差異存放區中的資料列數目過高時，從具體化檢視解析查詢所需的時間會比直接查詢基底資料表更長。  為了避免查詢效能降低，最好是執行 [DBCC PDW_SHOWMATERIALIZEDVIEWOVERHEAD](/sql/t-sql/database-console-commands/dbcc-pdw-showmaterializedviewoverhead-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) 來監視檢視的 overhead_ratio (total_rows / base_view_row)。  如果 overhead_ratio 太高，請考慮重建具體化檢視，讓差異存放區中的所有資料列移至資料行存放區索引。  
+具體化檢視會儲存在資料倉儲中，就如同具有叢集資料行存放區索引 (CCI) 的資料表一樣。  從具體化檢視讀取資料包括了掃描索引及套用差異存放區中的變更。  當差異存放區中的資料列數目過高時，從具體化檢視解析查詢所需的時間會比直接查詢基底資料表更長。  
+
+為了避免查詢效能降低，最好是執行 [DBCC PDW_SHOWMATERIALIZEDVIEWOVERHEAD](/sql/t-sql/database-console-commands/dbcc-pdw-showmaterializedviewoverhead-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 來監視檢視的 overhead_ratio (total_rows / base_view_row)。  如果 overhead_ratio 太高，請考慮重建具體化檢視，讓差異存放區中的所有資料列移至資料行存放區索引。  
 
 **具體化檢視和結果集快取**
 
 這兩個功能導入至 SQL 集區的時間幾乎與查詢效能調整同時。 結果集快取用於從對靜態資料進行的重複查詢中達成高度並行與快速的回應。  
 
-若要使用快取的結果，要求查詢的快取形式必須符合產生快取的查詢。  此外，快取的結果必須套用至整個查詢。  具體化檢視允許在基底資料表中變更資料。  具體化檢視中的資料可以套用至查詢的某個片段。  此支援可讓共用部分計算的不同查詢使用相同的具體化檢視，而使效能加速。
+若要使用快取的結果，要求查詢的快取形式必須符合產生快取的查詢。  此外，快取的結果必須套用至整個查詢。  
+
+具體化檢視允許在基底資料表中變更資料。  具體化檢視中的資料可以套用至查詢的某個片段。  此支援可讓共用部分計算的不同查詢使用相同的具體化檢視，而使效能加速。
 
 ## <a name="example"></a>範例
 
@@ -352,7 +356,7 @@ GROUP BY c_customer_id
 
 ```
 
-再次檢查原始查詢的執行計畫。  現在，聯結的數目會從 17 變更為 5，且不會再重組。  按一下計畫中的 [篩選作業] 圖示。 其 [輸出清單] 會顯示來自具體化檢視中讀取的資料，而非基底資料表。  
+再次檢查原始查詢的執行計畫。  現在，聯結的數目會從 17 變更為 5，且不會再重組。  選取方案中的篩選作業圖示。 其 [輸出清單] 會顯示來自具體化檢視中讀取的資料，而非基底資料表。  
 
  ![Plan_Output_List_with_Materialized_Views](./media/develop-materialized-view-performance-tuning/output-list.png)
 

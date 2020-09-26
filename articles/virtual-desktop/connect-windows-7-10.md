@@ -3,33 +3,24 @@ title: 連線到 Windows 虛擬桌面 Windows 10 或 7-Azure
 description: 如何使用 Windows 桌面用戶端連接到 Windows 虛擬桌面。
 author: Heidilohr
 ms.topic: how-to
-ms.date: 07/16/2020
+ms.date: 09/22/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 0e4f41cb23ec4a9463b983049f5f37d09d1b8c71
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: c9da2acac0957d7fe06d0249775fbed73b5f458d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89226704"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91287333"
 ---
 # <a name="connect-with-the-windows-desktop-client"></a>與 Windows 桌面用戶端連線
 
-> 適用于： Windows 7、Windows 10 和 Windows 10 IoT 企業版
+> 適用於：Windows 10、Windows 10 IoT 企業版和 Windows 7
 
 >[!IMPORTANT]
->此內容適用於具有 Azure Resource Manager Windows 虛擬桌面物件的 Windows 虛擬桌面。 如果您使用不含 Azure Resource Manager 物件的 Windows 虛擬桌面 (傳統版)，請參閱[這篇文章](./virtual-desktop-fall-2019/connect-windows-7-10-2019.md)。
+>此內容適用於具有 Azure Resource Manager Windows 虛擬桌面物件的 Windows 虛擬桌面。 如果您使用不含 Azure Resource Manager 物件的 Windows 虛擬桌面 (傳統)，請參閱[此文章](./virtual-desktop-fall-2019/connect-windows-7-10-2019.md)。
 
-您可以使用 windows 桌面用戶端，在具有 Windows 7、Windows 10 和 Windows 10 IoT 企業版的裝置上存取 Windows 虛擬桌面資源。 用戶端不支援 Window 8 或 Windows 8.1。
-
->[!NOTE]
->Windows 用戶端會自動預設為 Windows 虛擬桌面 (傳統) 。 但是，如果用戶端偵測到使用者也有 Azure Resource Manager 的資源，則會自動新增資源，或通知使用者其可用。
-
-> [!IMPORTANT]
-> Windows 虛擬桌面不支援 RemoteApp 和桌面連線 (RADC) 用戶端或遠端桌面連線 (MSTSC) 用戶端。
-
-> [!IMPORTANT]
-> Windows 虛擬桌面目前不支援來自 Windows Store 的遠端桌面用戶端。
+您可以使用 Windows 桌面用戶端，在具有 Windows 10、Windows 10 IoT 企業版和 Windows 7 的裝置上存取 Windows 虛擬桌面資源。 用戶端不支援 Window 8 或 Windows 8.1。
 
 ## <a name="install-the-windows-desktop-client"></a>安裝 Windows 桌面用戶端
 
@@ -43,6 +34,9 @@ ms.locfileid: "89226704"
 
 安裝後，您可藉由搜尋**遠端桌面**，從 [開始] 功能表啟動用戶端。
 
+> [!IMPORTANT]
+> Windows 虛擬桌面不支援 RemoteApp 和桌面連線 (RADC) 用戶端或遠端桌面連線 (MSTSC) 用戶端。
+
 ## <a name="subscribe-to-a-workspace"></a>訂閱工作區
 
 訂閱工作區有兩種方式。 用戶端可以嘗試從您的工作或學校帳戶探索可供使用的資源，或者您可以直接指定資源所在的 URL，以免用戶端找不到資源。 訂閱工作區之後，您可以使用下列其中一種方法來啟動資源：
@@ -55,6 +49,9 @@ ms.locfileid: "89226704"
 1. 從用戶端的主頁面上，選取 [ **訂閱**]。
 2. 出現提示時，使用您的使用者帳戶登入。
 3. 資源將會出現在 [連接中心] 中，並依工作區分組。
+
+>[!NOTE]
+>Windows 用戶端會自動預設為 Windows 虛擬桌面 (傳統) 。 但是，如果用戶端偵測到使用者也有 Azure Resource Manager 的資源，則會自動新增資源，或通知使用者其可用。
 
 ### <a name="subscribe-with-a-url"></a>訂閱 URL
 

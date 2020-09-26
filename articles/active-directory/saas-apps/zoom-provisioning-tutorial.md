@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 06/3/2019
 ms.author: Zhchia
-ms.openlocfilehash: 15e3d72661ad35335c744fbaf0ab39627d254750
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: f5d76168b75d9352898d8f0abf80a6ccfb83af30
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545976"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333438"
 ---
 # <a name="tutorial-configure-zoom-for-automatic-user-provisioning"></a>教學課程：設定自動使用者布建的 Zoom
 
@@ -34,7 +34,7 @@ ms.locfileid: "88545976"
 
 本教學課程中概述的案例假設您已經具有下列必要條件：
 
-* [Azure AD 的租](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant)使用者。
+* [Azure AD 租用戶](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant)。
 * Azure AD 中具有設定佈建[權限](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)的使用者帳戶 (例如，應用程式管理員、雲端應用程式管理員、應用程式擁有者或全域管理員)。 
 * [Zoom 租](https://zoom.us/pricing)使用者。
 * 以系統管理員許可權縮放的使用者帳戶。
@@ -52,19 +52,19 @@ ms.locfileid: "88545976"
 
 2. 在頁面右上角流覽至 [ **管理** ]。 
 
-    ![縮放安裝](media/zoom-provisioning-tutorial/zoom02.png)
+    ![已呼叫 [管理] 選項的 Zoom 應用程式 Marketplace 螢幕擷取畫面。](media/zoom-provisioning-tutorial/zoom02.png)
 
 3. 流覽至您建立的 Azure AD 應用程式。 
     
-    ![Zoom 應用程式](media/zoom-provisioning-tutorial/zoom03.png)
+    ![已建立的應用程式區段的螢幕擷取畫面，其中已呼叫 Azure A D 應用程式。](media/zoom-provisioning-tutorial/zoom03.png)
 
 4. 在左側流覽窗格中選取 [ **應用程式認證** ]。
 
-    ![Zoom 應用程式](media/zoom-provisioning-tutorial/zoom04.png)
+    ![左側流覽窗格的螢幕擷取畫面，其中已醒目提示應用程式認證選項。](media/zoom-provisioning-tutorial/zoom04.png)
 
 5. 複製並儲存 **JWT 權杖**。 此值將會在 Azure 入口網站中縮放應用程式之 [布建] 索引標籤的 [ **秘密權杖** ] 欄位中輸入。 如果您需要新的非即將過期的權杖，您將需要重新設定將自動產生新權杖的到期時間。 
 
-    ![縮放安裝](media/zoom-provisioning-tutorial/zoom05.png)
+    ![[應用程式認證] 頁面的螢幕擷取畫面。](media/zoom-provisioning-tutorial/zoom05.png)
 
 ## <a name="step-3-add-zoom-from-the-azure-ad-application-gallery"></a>步驟 3： 從 Azure AD 應用程式資源庫新增縮放
 
@@ -95,11 +95,11 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
 3. 選取 [佈建] 索引標籤。
 
-    ![佈建索引標籤](common/provisioning.png)
+    ![已呼叫 [布建] 選項的 [管理選項] 螢幕擷取畫面。](common/provisioning.png)
 
 4. 將 [佈建模式] 設定為 [自動]。
 
-    ![佈建索引標籤](common/provisioning-automatic.png)
+    ![[布建模式] 下拉式清單的螢幕擷取畫面，其中已呼叫 [自動] 選項。](common/provisioning-automatic.png)
 
 5. 在 [系統 **管理員認證** ] 區段下，輸入 [ `https://api.zoom.us/scim` 租使用者 **URL**]。 輸入稍早在**秘密權杖**中取出的**JWT 權杖**值。 按一下 [ **測試連接** ]，以確保 Azure AD 可以連接到 [縮放]。 如果連接失敗，請確定您的縮放帳戶具有系統管理員許可權，然後再試一次。
 
@@ -145,7 +145,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
 1. 使用[佈建記錄](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) \(部分機器翻譯\) 來判斷哪些使用者已佈建成功或失敗
 2. 檢查[進度列](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user) \(部分機器翻譯\) 來查看佈建週期的狀態，以及其接近完成的程度
-3. 如果佈建設定似乎處於狀況不良的狀態，應用程式將會進入隔離狀態。 [在此](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status) \(部分機器翻譯\) 深入了解隔離狀態。  
+3. 如果佈建設定似乎處於狀況不良的狀態，應用程式將會進入隔離狀態。 [在此](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)深入了解隔離狀態。  
 
 ## <a name="connector-limitations"></a>連接器限制
 * Zoom 目前最多隻允許9999的基本使用者。
