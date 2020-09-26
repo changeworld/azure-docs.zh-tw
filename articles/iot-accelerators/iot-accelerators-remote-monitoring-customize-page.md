@@ -8,13 +8,13 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/02/2018
 ms.topic: conceptual
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 8101c01762749c2ceb085516936fa0c421fdb5f3
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: e585bc52121943102522f8c44291a4f9453d6214
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422703"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318393"
 ---
 # <a name="add-a-custom-page-to-the-remote-monitoring-solution-accelerator-web-ui"></a>在遠端監視解決方案加速器 Web UI 中新增自訂頁面
 
@@ -25,7 +25,7 @@ ms.locfileid: "87422703"
 
 其他操作說明指南會擴充此案例，將更多功能新增至您所新增的頁面。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成本操作指南中的部署，您必須在本機開發機器上安裝下列軟體：
 
@@ -155,13 +155,13 @@ npm start
 
 1. 使用 **pcs** CLI 來部署解決方案加速器的**基本**執行個體。 記下部署的名稱以及您為虛擬機器提供的認證。 如需詳細資訊，請參閱[使用 CLI 進行部署](iot-accelerators-remote-monitoring-deploy-cli.md)。
 
-1. 使用 Azure 入口網站或[AZ CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) ，以對裝載解決方案中微服務的虛擬機器啟用 SSH 存取。 例如：
+1. 使用 Azure 入口網站或 [AZ CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) 啟用 SSH 存取，以存取您解決方案中裝載微服務的虛擬機器。 例如：
 
     ```azurecli
     az network nsg rule update --name SSH --nsg-name {your solution name}-nsg --resource-group {your solution name} --access Allow
     ```
 
-    您只應該在測試和開發期間啟用 SSH 存取。 如果您啟用 SSH，[您應該儘快將它停用](../security/fundamentals/network-best-practices.md)。
+    您只應該在測試和開發期間啟用 SSH 存取。 如果您啟用 SSH， [您應該儘快將它停用](../security/fundamentals/network-best-practices.md)。
 
 1. 使用 Azure 入口網站或 [az CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) 來尋找虛擬機器的名稱和公用 IP 位址。 例如：
 
@@ -194,4 +194,4 @@ npm start
 
 您現在已定義了一個頁面，下一個步驟是[將自訂服務新增至遠端監視解決方案加速器 Web UI](iot-accelerators-remote-monitoring-customize-service.md)，以擷取要顯示在 UI 中的資料。
 
-如需遠端監視解決方案加速器的詳細概念資訊，請參閱[遠端監視架構](iot-accelerators-remote-monitoring-sample-walkthrough.md)。
+如需有關遠端監視解決方案加速器的詳細概念資訊，請參閱 [遠端監視架構](iot-accelerators-remote-monitoring-sample-walkthrough.md)。

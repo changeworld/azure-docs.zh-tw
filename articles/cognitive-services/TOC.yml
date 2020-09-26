@@ -23,7 +23,7 @@
       href: cognitive-services-apis-create-account-client-library.md
     - name: 使用 ARM 範本建立新的資源
       displayName: Resource Manager
-      href: resource-manager-template.md
+      href: create-account-resource-manager-template.md
     - name: 診斷記錄
       href: diagnostic-logging.md
 - name: 安全性

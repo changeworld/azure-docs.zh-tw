@@ -1,19 +1,19 @@
 ---
-title: 使用 CLI 將 Linux VM 部署至專用主機
-description: 使用 Azure CLI 將 VM 部署到專用主機。
+title: 使用 CLI 將 Vm 和擴展集實例部署到專用主機
+description: 使用 Azure CLI 將 Vm 和擴展集實例部署到專用主機。
 author: cynthn
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.topic: how-to
-ms.date: 01/09/2020
+ms.date: 09/25/2020
 ms.author: cynthn
-ms.openlocfilehash: 9435764d99476584680734817d55086f47e8216b
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: a85f5cb9cc519b180354445ca9ca2f8dd0354c23
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373618"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91370194"
 ---
-# <a name="deploy-vms-to-dedicated-hosts-using-the-azure-cli"></a>使用 Azure CLI 將 VM 部署到專用主機
+# <a name="deploy-to-dedicated-hosts-using-the-azure-cli"></a>使用 Azure CLI 部署至專用主機
  
 
 本文會引導您瞭解如何建立 Azure [專用主機](dedicated-hosts.md)來裝載您的虛擬機器 (VM)。 
@@ -23,22 +23,22 @@ ms.locfileid: "87373618"
 
 ## <a name="limitations"></a>限制
 
-- 專用主機目前不支援虛擬機器擴展集。
 - 專用主機可用的大小和硬體類型因區域而異。 若要深入瞭解，請參閱主機[定價頁面](https://aka.ms/ADHPricing)。
 
 ## <a name="create-resource-group"></a>建立資源群組 
 Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。 使用 az group create 建立資源群組。 下列範例會在「East US」(美國東部) 位置建立名為 myResourceGroup 的資源群組。
 
-```bash
+```azurecli-interactive
 az group create --name myDHResourceGroup --location eastus 
 ```
  
 ## <a name="list-available-host-skus-in-a-region"></a>列出區域中可用的主機 SKU
+
 並非所有的主機 SKU 都適用於所有區域和可用性區域。 
 
 在您開始佈建專用主機之前，列出可用的主機及任何供應項目的限制。 
 
-```bash
+```azurecli-interactive
 az vm list-skus -l eastus2  -r hostGroups/hosts  -o table  
 ```
  
@@ -52,9 +52,10 @@ az vm list-skus -l eastus2  -r hostGroups/hosts  -o table
 
 您也可以決定同時使用可用性區域和容錯網域。 
 
+
 在此範例中，我們將使用 [az vm host group create](/cli/azure/vm/host/group#az-vm-host-group-create) 建立一個同時使用可用性區域和容錯網域的主機群組。 
 
-```bash
+```azurecli-interactive
 az vm host group create \
    --name myHostGroup \
    -g myDHResourceGroup \
@@ -62,11 +63,22 @@ az vm host group create \
    --platform-fault-domain-count 2 
 ``` 
 
+新增 `--automatic-placement true` 參數，以將 vm 和擴展集實例自動放置在主機群組內的主機上。 如需詳細資訊，請參閱 [手動與自動放置 ](../dedicated-hosts.md#manual-vs-automatic-placement)。
+
+> [!IMPORTANT]
+> 自動放置目前處於公開預覽狀態。
+>
+> 若要參與預覽，請完成預覽上線問卷 [https://aka.ms/vmss-adh-preview](https://aka.ms/vmss-adh-preview) 。
+>
+> 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 
+>
+> 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+
 ### <a name="other-examples"></a>其他範例
 
 您也可以使用 [az vm host group create](/cli/azure/vm/host/group#az-vm-host-group-create) 在可用性區域 1 中建立主機群組 (且沒有容錯網域)。
 
-```bash
+```azurecli-interactive
 az vm host group create \
    --name myAZHostGroup \
    -g myDHResourceGroup \
@@ -76,7 +88,7 @@ az vm host group create \
  
 下列範例使用 [az vm host group create](/cli/azure/vm/host/group#az-vm-host-group-create) 僅使用容錯網域來建立主機群組 (在不支援可用性區域的區域中使用)。 
 
-```bash
+```azurecli-interactive
 az vm host group create \
    --name myFDHostGroup \
    -g myDHResourceGroup \
@@ -91,7 +103,7 @@ az vm host group create \
 
 使用 [az vm host create](/cli/azure/vm/host#az-vm-host-create) 建立主機。 如果您為主機群組設定容錯網域計數，系統會要求您指定主機的容錯網域。  
 
-```bash
+```azurecli-interactive
 az vm host create \
    --host-group myHostGroup \
    --name myHost \
@@ -105,28 +117,57 @@ az vm host create \
 ## <a name="create-a-virtual-machine"></a>建立虛擬機器 
 使用 [az vm create](/cli/azure/vm#az-vm-create) 在專用主機內建立虛擬機器。 如果您在建立主機群組時指定了可用性區域，則必須在建立虛擬機器時使用相同的區域。
 
-```bash
+```azurecli-interactive
 az vm create \
    -n myVM \
    --image debian \
-   --generate-ssh-keys \
    --host-group myHostGroup \
-   --host myHost \
    --generate-ssh-keys \
    --size Standard_D4s_v3 \
    -g myDHResourceGroup \
    --zone 1
 ```
+
+若要將 VM 放在特定的主機上，請使用 `--host` 而不是指定的主機群組 `--host-group` 。
  
 > [!WARNING]
 > 如果您在沒有足夠資源的主機上建立虛擬機器，虛擬機器將會以「失敗」狀態建立。 
+
+## <a name="create-a-scale-set-preview"></a> (預覽版建立擴展集) 
+
+> [!IMPORTANT]
+> 專用主機上的虛擬機器擴展集目前處於公開預覽狀態。
+>
+> 若要參與預覽，請完成預覽上線問卷 [https://aka.ms/vmss-adh-preview](https://aka.ms/vmss-adh-preview) 。
+>
+> 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 
+>
+> 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+
+當您部署擴展集時，請指定主機群組。
+
+```azurecli-interactive
+az vmss create \
+  --resource-group myResourceGroup \
+  --name myScaleSet \
+  --image UbuntuLTS \
+  --upgrade-policy-mode automatic \
+  --admin-username azureuser \
+  --host-group myHostGroup \
+  --generate-ssh-keys \
+  --size Standard_D4s_v3 \
+  -g myDHResourceGroup \
+  --zone 1
+```
+
+如果您想要手動選擇要將擴展集部署至哪個主機，請新增 `--host` 主機的名稱。
 
 
 ## <a name="check-the-status-of-the-host"></a>檢查主機的狀態
 
 您可以使用 [az vm host get-instance-view](/cli/azure/vm/host#az-vm-host-get-instance-view)，檢查主機的健全狀態，以及您仍然可以部署到主機的虛擬機器數目。
 
-```bash
+```azurecli-interactive
 az vm host get-instance-view \
    -g myDHResourceGroup \
    --host-group myHostGroup \
@@ -233,7 +274,7 @@ az vm host get-instance-view \
 ## <a name="export-as-a-template"></a>以範本形式匯出 
 如果您現在想要使用相同的參數來建立其他開發環境，或想要建立與其相符的生產環境，可以匯出範本。 Resource Manager 可使用定義了所有環境參數的 JSON 範本。 您可以藉由參考此 JSON 範本來建置整個環境。 您可以手動建立 JSON 範本，或將現有的環境匯出來為您建立 JSON 範本。 使用 [az group export](/cli/azure/group#az-group-export) 匯出您的資源群組。
 
-```bash
+```azurecli-interactive
 az group export --name myDHResourceGroup > myDHResourceGroup.json 
 ```
 
@@ -241,7 +282,7 @@ az group export --name myDHResourceGroup > myDHResourceGroup.json
  
 若要從您的範本建立環境，請使用 [az group deployment create](/cli/azure/group/deployment#az-group-deployment-create)。
 
-```bash
+```azurecli-interactive
 az group deployment create \ 
     --resource-group myNewResourceGroup \ 
     --template-file myDHResourceGroup.json 
@@ -254,25 +295,25 @@ az group deployment create \
 
 只有當不再有任何虛擬機器使用主機時，才能刪除主機。 使用 [az vm delete](/cli/azure/vm#az-vm-delete) 刪除 VM。
 
-```bash
+```azurecli-interactive
 az vm delete -n myVM -g myDHResourceGroup
 ```
 
 刪除 VM 之後，您可以使用 [az vm host delete](/cli/azure/vm/host#az-vm-host-delete) 刪除主機。
 
-```bash
+```azurecli-interactive
 az vm host delete -g myDHResourceGroup --host-group myHostGroup --name myHost 
 ```
  
 刪除您的所有主機之後，您可以使用 [az vm host group delete](/cli/azure/vm/host/group#az-vm-host-group-delete) 刪除主機群組。  
  
-```bash
+```azurecli-interactive
 az vm host group delete -g myDHResourceGroup --host-group myHostGroup  
 ```
  
 您也可以在單一命令中刪除整個資源群組。 這麼做會刪除群組中建立的所有資源，包括所有 VM、主機和主機群組。
  
-```bash
+```azurecli-interactive
 az group delete -n myDHResourceGroup 
 ```
 

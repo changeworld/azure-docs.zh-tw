@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: how-to
-ms.openlocfilehash: cf74322725c6e86ee455f83aadc4aade07000835
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 7a4e6d80d80441a1b94c1fb2bd8f82f247235fe3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057665"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318087"
 ---
 # <a name="create-an-azure-remote-rendering-account"></a>建立 Azure 遠端轉譯帳戶
 
@@ -28,13 +28,13 @@ ms.locfileid: "86057665"
     1. 將 [資源名稱] 設為帳戶名稱
     1. 如有需要，請更新「訂閱」
     1. 將「資源群組」設為您要選擇的資源群組
-    1. 從 [位置] 下拉式清單中選取要在其中建立此資源的區域。 請參閱下列[帳戶區域](create-an-account.md#account-regions)的備註。
+    1. 從 [位置] 下拉式清單中選取要用來建立此資源的區域。 請參閱下方 [帳戶區域](create-an-account.md#account-regions) 的備註。
 1. 建立帳戶之後，請瀏覽至該頁面並：
     1. 在 [總覽] 索引標籤中，記下「帳戶識別碼」
     1. 在 [設定] > [存取金鑰] 索引標籤中，記下 [主要金鑰] - 這是帳戶的秘密帳戶金鑰
 
 ### <a name="account-regions"></a>帳戶區域
-帳戶在帳戶建立期間指定的位置會決定要指派給帳戶資源的區域。 這在建立之後就無法變更。 不過，不論帳戶的位置為何，帳戶都可以用來連接到任何[支援區域](./../reference/regions.md)中的遠端轉譯會話。
+帳戶建立期間所指定的位置，會決定帳戶資源指派至哪個區域。 建立之後就無法變更。 但是，不論帳戶的位置為何，帳戶都可以用來連接到任何 [支援區域](./../reference/regions.md)中的遠端轉譯會話。
 
 ### <a name="retrieve-the-account-information"></a>擷取帳戶資訊
 
@@ -83,7 +83,7 @@ ms.locfileid: "86057665"
 
  按一下 [新增角色指派] 圖格中的 [新增] 按鈕，新增第一個角色：
 
-![儲存體帳戶 IAM](./media/azure-add-role-assignment.png)
+![儲存體帳戶 IAM 新增角色指派](./media/azure-add-role-assignment.png)
 
 * 第一個要指派的角色是 [擁有者]，如上面的螢幕擷取畫面所示。
 * 從 [指派存取權給] 下拉式清單中，選取 [遠端轉譯帳戶]。
@@ -100,6 +100,8 @@ ms.locfileid: "86057665"
 另一個下拉式清單會在第一個步驟中選取。
 
 如果您已新增這三個角色，您的 Azure 遠端轉譯帳戶就可以使用系統指派的受控服務識別碼存取儲存體帳戶。
+> [!IMPORTANT]
+> Azure 角色指派會由 Azure 儲存體快取，因此當您授與存取權給遠端轉譯帳戶，以及可用來存取您的儲存體帳戶時，可能會有最多30分鐘的延遲。 如需詳細資料，請參閱 [角色基底存取控制檔](https://docs.microsoft.com/azure/role-based-access-control/troubleshooting#role-assignment-changes-are-not-being-detected) 。
 
 ## <a name="next-steps"></a>後續步驟
 

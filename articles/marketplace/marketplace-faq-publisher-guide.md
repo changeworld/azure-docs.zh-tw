@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 09/11/2020
-ms.openlocfilehash: fa8ee205952d1bd39e932ca6c91e3cffe608bf95
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 5bf94faff86edf954c687ca3024c63229829ca04
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90032107"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91369717"
 ---
 # <a name="common-questions-about-the-microsoft-commercial-marketplace"></a>關於 Microsoft 商業 marketplace 的常見問題
 
@@ -229,7 +229,7 @@ Microsoft AppSource 支援信用卡付款。 Azure Marketplace 支援信用卡�
 
 客戶可以從世界各地 141 個位置的商業市場取得解決方案。
 
-若要檢閱位置清單，請前往[商業市集發行者的稅賦詳細資料](partner-center-portal/tax-details-paid-transactions.md)。
+若要檢閱位置清單，請前往[商業市集發行者的稅賦詳細資料](/partner-center/tax-details-marketplace?context=/azure/marketplace/context/context)。
 
 ### <a name="what-currencies-are-supported-with-the-commercial-marketplace"></a>商業市集支援哪些貨幣？
 
@@ -274,32 +274,32 @@ Microsoft AppSource 支援信用卡付款。 Azure Marketplace 支援信用卡�
 
 ### <a name="how-often-will-i-receive-payouts-for-sales-through-the-commercial-marketplace"></a>多常透過商業市集收到銷售的支出？
 
-支出每月發生一次。 如需付款排程的詳細資訊、尋找合作夥伴中心中即將推出的支出，以及我們如何處理客戶的非款項，請參閱付款 [原則詳細資料](partner-center-portal/payout-policy-details.md)。
+支出每月發生一次。 如需付款排程的詳細資訊、尋找合作夥伴中心中即將推出的支出，以及我們如何處理客戶的非款項，請參閱付款 [原則詳細資料](/partner-center/payout-policy-details?context=/azure/marketplace/context/context)。
 
 - 對於客戶使用 Enterprise 合約的交易，支出會在下一期的客戶發票30天內發出。 
 - 若為客戶使用信用卡的交易，在我們收到付款之後，會有額外的30天的申請期，以確保資金清楚，而且沒有任何退款或疑似詐騙。
 
 只有當銷售達到最小合併值 $50.00 時，才會發出支出。
 
-如需詳細資訊，請參閱[付款閾值、方法和時間範圍](partner-center-portal/payment-thresholds-methods-timeframes.md)。
+如需詳細資訊，請參閱[付款閾值、方法和時間範圍](/partner-center/payment-thresholds-methods-timeframes?context=/azure/marketplace/context/context)。
 
 ### <a name="in-what-countriesregions-are-taxes-managed-on-my-behalf"></a>在哪些國家/地區中，可代表我管理稅賦？
 
 客戶可以從全球各地的商業市場尋找解決方案，並在許多地點管理稅金。 
 
-若要檢閱完整位置清單，請前往[商業市集發行者的稅賦詳細資料](partner-center-portal/tax-details-paid-transactions.md)。
+若要檢閱完整位置清單，請前往[商業市集發行者的稅賦詳細資料](/partner-center/tax-details-marketplace?context=/azure/marketplace/context/context)。
 
 ### <a name="where-can-i-find-payout-reporting-for-the-commercial-marketplace"></a>哪裡可以找到商業市集的支出報告？
 
 在合作夥伴中心內，具有*擁有者*或*財務參與者*權限的使用者可以檢視支出報告。 這些使用者可以在右上方存取報告，方法是選取其中顯示手拿帳單的圖示。
 
-如需詳細資訊，請參閱[支付報告](partner-center-portal/payout-summary.md)。
+如需詳細資訊，請參閱付款 [聲明](/partner-center/payout-statement?context=/azure/marketplace/context/context)。
 
 ### <a name="how-do-i-configure-my-payout-method-and-destination"></a>如何設定我的支出方法和目的地？
 
 搭配合作夥伴中心，具有*擁有者*權限的使用者可以設定支出帳戶和稅單。 使用者可以選取右上方的 [設定] 按鈕 (齒輪圖示) 來執行這項操作。
 
-如需詳細資訊，請前往[支出帳戶和稅單](partner-center-portal/set-up-your-payout-account-tax-forms.md)。
+如需詳細資訊，請參閱 [設定您的支出帳戶和稅務表單](/partner-center/set-up-your-payout-account?context=/azure/marketplace/context/context)。
 
 ### <a name="are-returns-and-refunds-supported-with-the-commercial-marketplace"></a>商業市集支援退貨和退款嗎？
 

@@ -16,12 +16,12 @@ ms.date: 03/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dbc9e5a9187f9ef16ea03cfa6c97e438c2b26c99
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 77271679306b0fbde10c748afc7535f3ad3d0945
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85807599"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317560"
 ---
 # <a name="troubleshoot-password-hash-synchronization-with-azure-ad-connect-sync"></a>針對使用 Azure AD Connect 同步執行的密碼雜湊同步處理進行疑難排解
 
@@ -64,13 +64,13 @@ ms.locfileid: "85807599"
 
 3. 啟動 Azure AD Connect 精靈。
 
-4. 流覽至 [**其他**工作] 頁面，選取 [**疑難排解**]，然後按 **[下一步]**。
+4. 流覽至 [ **其他** 工作] 頁面，選取 [ **疑難排解**]，然後按 **[下一步]**。
 
-5. 在 [疑難排解] 頁面上，按一下 [**啟動**]，以在 PowerShell 中啟動 [疑難排解] 功能表。
+5. 在 [疑難排解] 頁面上，按一下 [ **啟動** ]，在 PowerShell 中啟動疑難排解功能表。
 
-6. 在主功能表中，選取 [針對**密碼雜湊同步處理進行疑難排解**]。
+6. 在主功能表中，選取 [針對 **密碼雜湊同步處理進行疑難排解**]。
 
-7. 在子功能表中，選取 [**密碼雜湊同步處理完全無法運作**]。
+7. 在子功能表中，選取 [ **密碼雜湊同步處理] 完全無法運作**。
 
 ### <a name="understand-the-results-of-the-troubleshooting-task"></a>了解疑難排解工作的結果
 
@@ -120,7 +120,7 @@ ms.locfileid: "85807599"
 
 如果內部部署 Active Directory 連接器用來同步密碼雜湊的 AD DS 帳戶沒有適當的權限，則會傳回下列錯誤：
 
-![不正確的認證](./media/tshoot-connect-password-hash-synchronization/phsglobalaccountincorrectpermission.png)
+![顯示當 AD DS 帳戶的使用者名稱或密碼不正確時所傳回錯誤的螢幕擷取畫面。](./media/tshoot-connect-password-hash-synchronization/phsglobalaccountincorrectpermission.png)
 
 #### <a name="incorrect-ad-ds-account-username-or-password"></a>不正確的 AD DS 帳戶使用者名稱或密碼
 
@@ -147,11 +147,11 @@ ms.locfileid: "85807599"
 
 3. 啟動 Azure AD Connect 精靈。
 
-4. 流覽至 [**其他**工作] 頁面，選取 [**疑難排解**]，然後按 **[下一步]**。
+4. 流覽至 [ **其他** 工作] 頁面，選取 [ **疑難排解**]，然後按 **[下一步]**。
 
-5. 在 [疑難排解] 頁面上，按一下 [**啟動**]，以在 PowerShell 中啟動 [疑難排解] 功能表。
+5. 在 [疑難排解] 頁面上，按一下 [ **啟動** ]，在 PowerShell 中啟動疑難排解功能表。
 
-6. 在主功能表中，選取 [針對**密碼雜湊同步處理進行疑難排解**]。
+6. 在主功能表中，選取 [針對 **密碼雜湊同步處理進行疑難排解**]。
 
 7. 在子功能表中，選取 [未同步特定使用者帳戶的密碼]****。
 
@@ -253,7 +253,7 @@ ms.locfileid: "85807599"
 
     ![來自密碼同步設定的 PowerShell 指令碼輸出](./media/tshoot-connect-password-hash-synchronization/psverifyconfig.png)  
 
-3. 如果 Azure AD 中未啟用此功能，或未啟用同步通道狀態，請執行 Connect 安裝精靈。 選取 **[自訂同步處理選項**]，然後取消選取 [密碼同步]。這項變更會暫時停用此功能。 然後再次執行嚮導並重新啟用密碼同步。再次執行腳本，以確認設定是否正確。
+3. 如果 Azure AD 中未啟用此功能，或未啟用同步通道狀態，請執行 Connect 安裝精靈。 選取 **[自訂同步處理選項**]，然後取消選取 [密碼同步]。這項變更會暫時停用此功能。 然後再次執行嚮導，並重新啟用密碼同步。請再次執行腳本，以確認設定是否正確。
 
 4. 查看事件記錄中是否有錯誤。 尋找下列事件，這些事件會指出問題所在︰
     * 來源：「目錄同步作業」識別碼：0、611、652、655。如果您看到這些事件，即表示有連線問題。 事件記錄訊息包含發生問題的樹系資訊。 如需詳細資訊，請參閱[連線問題](#connectivity problem)。
@@ -293,10 +293,10 @@ ms.locfileid: "85807599"
  
 8. 在 [選取目錄分割]**** 中選取您的網域，選取 [只使用慣用的網域控制站]**** 核取方塊，然後按一下 [設定]****。 
 
-9. 在清單中，輸入連接應用於密碼同步的網域控制站。相同的清單也用於匯入和匯出。 針對您的所有網域執行這些步驟。
+9. 在清單中，輸入 Connect 應該用來進行密碼同步的網域控制站。相同的清單也會用於匯入和匯出。 針對您的所有網域執行這些步驟。
 
 > [!NOTE]
-> 若要套用這些變更，請重新開機**Microsoft Azure AD 同步**處理（ADSync）服務。
+> 若要套用這些變更，請重新開機 **Microsoft Azure AD 同步** (ADSync) 服務。
 
 10. 如果此指令碼顯示沒有活動訊號，請執行[觸發所有密碼的完整同步](#trigger-a-full-sync-of-all-passwords)中的指令碼。
 
@@ -326,7 +326,7 @@ ms.locfileid: "85807599"
 
     f. 找出您要搜尋的使用者，然後按一下 [屬性]**** 來查看所有屬性。 如果該使用者不在搜尋結果中，請確認您的[篩選規則](how-to-connect-sync-configure-filtering.md)，且務必執行[套用並驗證變更](how-to-connect-sync-configure-filtering.md#apply-and-verify-changes)，如此 Connect 中才會顯示該使用者。
 
-    如 若要查看物件在過去一週的密碼同步詳細資料，請按一下 [記錄]****。  
+    g. 若要查看物件在過去一週的密碼同步詳細資料，請按一下 [記錄]****。  
 
     ![物件記錄詳細資料](./media/tshoot-connect-password-hash-synchronization/csobjectlog.png)  
 
@@ -338,15 +338,15 @@ ms.locfileid: "85807599"
 
     i. 按一下 [Metaverse 物件屬性]**** 來顯示使用者屬性清單。  
 
-    ![Metaverse 資訊](./media/tshoot-connect-password-hash-synchronization/mvpasswordsync.png)  
+    ![顯示元組物件屬性之使用者屬性清單的螢幕擷取畫面。](./media/tshoot-connect-password-hash-synchronization/mvpasswordsync.png)  
 
     確認沒有任何 **cloudFiltered** 屬性存在。 確定網域屬性 (domainFQDN 和 domainNetBios) 具有預期的值。
 
-    j. 按一下 [**連接器**] 索引標籤。請確定您看到的是內部部署 Active Directory 和 Azure AD 的連接器。
+    j. 按一下 [ **連接器** ] 索引標籤。請確定您同時看到內部部署 Active Directory 和 Azure AD 的連接器。
 
     ![Metaverse 資訊](./media/tshoot-connect-password-hash-synchronization/mvconnectors.png)  
 
-    k. 選取代表 Azure AD 的資料列，按一下 [**屬性** **]，** 然後按一下 [歷程] 索引標籤。在**PasswordSync**資料行中，連接器空間物件的輸出規則應該設定為**True**。 在預設組態中，同步規則的名稱是 **Out to AAD - User Join**。  
+    k. 選取代表 Azure AD 的資料列，按一下 [ **屬性** **]，** 然後按一下 [歷程] 索引標籤。在 **PasswordSync** 資料行中，連接器空間物件的輸出規則必須設定為 **True**。 在預設組態中，同步規則的名稱是 **Out to AAD - User Join**。  
 
     ![連接器空間物件屬性對話方塊](./media/tshoot-connect-password-hash-synchronization/cspasswordsync2.png)  
 
@@ -356,7 +356,7 @@ ms.locfileid: "85807599"
 
 | 狀態 | 描述 |
 | --- | --- |
-| 成功 |已成功同步處理密碼。 |
+| Success |已成功同步處理密碼。 |
 | FilteredByTarget |密碼會設為 [使用者必須在下次登入時變更密碼] ****。 未同步處理密碼。 |
 | NoTargetConnection |Metaverse 或 Azure AD 連接器空間中沒有任何物件。 |
 | SourceConnectorNotPresent |在內部部署 Active Directory 連接器空間中找不到任何物件。 |

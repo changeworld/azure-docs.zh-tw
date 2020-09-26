@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: e845136c4fed5a3d2e6863fdab0aa9f70fb30b5d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: fb628df5151f9124d7b7f319ff109ffca030ee90
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934618"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317339"
 ---
 # <a name="create-an-azure-arc-enabled-postgresql-hyperscale-server-group"></a>建立已啟用 Azure Arc 的于 postgresql 超大規模伺服器群組
 
@@ -59,7 +59,7 @@ Logged in successfully to `https://10.0.0.4:30080` in namespace `arc`. Setting a
 請先執行此步驟，再移至下一個步驟。 若要將于 postgresql 超大規模伺服器群組部署到非預設專案中的 Red Hat OpenShift，您需要對叢集執行下列命令，以更新安全性條件約束。 此命令會將所需的許可權授與將執行您的于 postgresql 超大規模伺服器群組的服務帳戶。 安全性內容條件約束 (SCC) **_arc-資料 scc_** 是您在部署 Azure Arc 資料控制器時所加入的條件約束。
 
 ```console
-oc adm policy add-scc-to-group arc-data-scc -z <server-group-name> -n <namespace name>
+oc adm policy add-scc-to-user arc-data-scc -z <server-group-name> -n <namespace name>
 ```
 
 _**伺服器組名** 是您將在下一個步驟中建立的伺服器組名。_
@@ -72,7 +72,7 @@ _**伺服器組名** 是您將在下一個步驟中建立的伺服器組名。_
 若要在 Azure Arc 上建立適用於 PostgreSQL 的 Azure 資料庫超大規模伺服器群組，請使用下列命令：
 
 ```console
-azdata arc postgres server create -n <name> --workers 2 --storage-class-data <storage class name> --storage-class-logs <storage class name> --storage-class-backups <storage class name>
+azdata arc postgres server create -n <name> --workers <# worker nodes with #>=2> --storage-class-data <storage class name> --storage-class-logs <storage class name> --storage-class-backups <storage class name>
 
 #Example
 #azdata arc postgres server create -n postgres01 --workers 2
@@ -80,25 +80,14 @@ azdata arc postgres server create -n <name> --workers 2 --storage-class-data <st
 
 > [!NOTE]
 > - **還有其他可用的命令列參數。 執行，以查看完整的選項清單 `azdata arc postgres server create --help` 。**
-> - 在預覽中，您必須指定備份的儲存類別 (_--儲存類別備份-scb_) 在您建立伺服器群組時，以便能夠進行備份和還原。
+> - 用於備份的儲存類別 (_--儲存類別備份-scb_) 預設為數據控制器的資料儲存類別（如果未提供）。
 > - --磁片區大小-* 參數所接受的單位是 Kubernetes 的資源數量 (整數，後面接著下列其中一個 SI 尾碼 (T、G、M、K、M) 或其對等的兩個對等 (Ti、Gi、Mi、Ki) # A5。
-> - 名稱長度必須為10個字元或更少，且必須符合 DNS 命名慣例。
+> - 名稱長度必須少於或等於12個字元，且必須符合 DNS 命名慣例。
 > - 系統會提示您輸入 _postgres_ standard 系統管理使用者的密碼。  您可以在 `AZDATA_PASSWORD` 執行 create 命令之前，先設定會話環境變數，以略過互動式提示字元。
-> - 如果您使用 AZDATA_USERNAME 部署資料控制器，並在相同的終端機會話中 AZDATA_PASSWORD，則 AZDATA_USERNAME 和 AZDATA_PASSWORD 的值也會用來部署于 postgresql 超大規模伺服器群組。 于 postgresql 超大規模資料庫引擎的預設系統管理員使用者名稱是 _于 postgresql_ ，此時無法變更。
+> - 如果您在相同的終端機會話中使用 AZDATA_USERNAME 和 AZDATA_PASSWORD 會話環境變數來部署資料控制器，則也會使用 AZDATA_PASSWORD 的值來部署于 postgresql 超大規模伺服器群組。 如果您想要使用其他密碼，請 (1) 更新 AZDATA_PASSWORD 或 (2 的值) 刪除 AZDATA_PASSWORD 環境變數或刪除其值會在您建立伺服器群組時，以互動方式提示輸入密碼。
+> - 于 postgresql 超大規模資料庫引擎的預設系統管理員使用者名稱是 _postgres_ ，此時無法變更。
 > - 建立于 postgresql 超大規模伺服器群組將不會在 Azure 中立即註冊資源。 在將 [資源清查](upload-metrics-and-logs-to-azure-monitor.md)  或 [使用量資料](view-billing-data-in-azure.md) 上傳至 azure 的過程中，會在 azure 中建立資源，而且您將能夠在 Azure 入口網站中看到您的資源。
-> - 在此時間點，無法變更--port 參數。
-> - 如果您的 Kubernetes 叢集中沒有預設的儲存類別，則必須使用參數--metadataStorageClass 來指定一個。 不這樣做會導致 create 命令失敗。 若要確認您的 Kubernetes 叢集上是否已宣告預設儲存類別，請會下列命令： 
->
->   ```console
->   kubectl get sc
->   ```
->
-> - 如果有設定為預設儲存類別的儲存類別，您會看到 ** (預設值) ** 附加至儲存類別的名稱。 例如：
->
->   ```output
->   NAME                       PROVISIONER                        AGE
->   local-storage (default)    kubernetes.io/no-provisioner       4d18h
->   ```
+
 
 
 ## <a name="list-your-azure-database-for-postgresql-server-groups-created-in-your-arc-setup"></a>列出在 Arc 設定中建立的適用於 PostgreSQL 的 Azure 資料庫伺服器群組
@@ -194,7 +183,7 @@ az network public-ip list -g azurearcvm-rg --query "[].{PublicIP:ipAddress}" -o 
 psql postgresql://postgres:<EnterYourPassword>@10.0.0.4:30655
 ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 閱讀適用於 PostgreSQL 的 Azure 資料庫超大規模的概念和操作指南，以將您的資料分散到多個于 postgresql 超大規模節點，並從適用於 PostgreSQL 的 Azure 資料庫超大規模的所有功能獲益。 :
     * [節點和資料表](../../postgresql/concepts-hyperscale-nodes.md)

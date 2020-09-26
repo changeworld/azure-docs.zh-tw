@@ -3,12 +3,12 @@ title: 連結範本以進行部署
 description: 描述如何在「Azure 資源管理員」範本中使用連結的範本，以建立模組化範本方案。 示範如何傳遞參數值、指定參數檔案，以及動態建立 URL。
 ms.topic: conceptual
 ms.date: 09/08/2020
-ms.openlocfilehash: f1fe07faeaddae3367fb1f8b4a37f7b0630b6e83
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: fb742ed4fabd6630d2d27f5876719e2e2b1a9a4d
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89535553"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91369309"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>部署 Azure 資源時使用連結和巢狀的範本
 
@@ -369,7 +369,7 @@ Resource Manager 必須能夠存取範本。 有一個選項是將連結的範�
 
 ## <a name="template-specs"></a>範本規格
 
-您可以建立 [範本規格](template-specs.md) ，將主要範本和其連結的範本封裝到您可以部署的單一實體，而不是在可存取的端點上維護連結的範本。 範本規格是您 Azure 訂用帳戶中的資源。 這可讓您輕鬆安全地與組織中的使用者共用範本。 您可以使用角色型存取控制 (RBAC) 來授與範本規格的存取權。這項功能目前為預覽狀態。
+您可以建立 [範本規格](template-specs.md) ，將主要範本和其連結的範本封裝到您可以部署的單一實體，而不是在可存取的端點上維護連結的範本。 範本規格是您 Azure 訂用帳戶中的資源。 這可讓您輕鬆安全地與組織中的使用者共用範本。 您可以使用 Azure 角色型存取控制 (Azure RBAC) 來授與範本規格的存取權。這項功能目前為預覽狀態。
 
 如需詳細資訊，請參閱
 
@@ -731,7 +731,7 @@ done
 目前，您無法連結到位於 [Azure 儲存體防火牆](../../storage/common/storage-network-security.md)後方之儲存體帳戶中的範本。
 
 > [!IMPORTANT]
-> 請考慮建立 [範本規格](template-specs.md)，而不是使用 SAS 權杖保護連結的範本。範本規格會將主要範本和其連結的範本安全地儲存為 Azure 訂用帳戶中的資源。 您可以使用 RBAC，將存取權授與需要部署範本的使用者。
+> 請考慮建立 [範本規格](template-specs.md)，而不是使用 SAS 權杖保護連結的範本。範本規格會將主要範本和其連結的範本安全地儲存為 Azure 訂用帳戶中的資源。 您可以使用 Azure RBAC，將存取權授與需要部署範本的使用者。
 
 下列範例顯示如何在連結到範本時傳遞 SAS 權杖：
 
@@ -799,13 +799,13 @@ az deployment group create --resource-group ExampleGroup --template-uri $url?$to
 
 下列範例顯示連結範本的一般用途。
 
-|主要的範本  |連結的範本 |描述  |
+|主要的範本  |連結的範本 |說明  |
 |---------|---------| ---------|
 |[Hello World](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworldparent.json) |[連結的範本](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworld.json) | 從連結的範本傳回字串。 |
 |[使用公用 IP 位址的負載平衡器](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) |[連結的範本](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) |從連結的範本傳回公用 IP 位址，並且在負載平衡器中設定該值。 |
 |[多個 IP 位址](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/static-public-ip-parent.json) | [連結的範本](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/static-public-ip.json) |在連結的範本中建立數個公用 IP 位址。  |
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 若要完成教學課程，請參閱[建立連結的 Azure Resource Manager 範本](./deployment-tutorial-linked-template.md)。
 * 若要了解如何定義您資源的部署順序，請參閱 [定義 Azure Resource Manager 範本中的相依性](define-resource-dependency.md)。

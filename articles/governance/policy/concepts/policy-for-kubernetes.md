@@ -3,12 +3,12 @@ title: 瞭解 Kubernetes 的 Azure 原則
 description: 了解 Azure 原則如何使用 Rego 和 Open Policy Agent 來管理在 Azure 或內部部署中執行 Kubernetes 的叢集。
 ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: dbe7257b577f0526e0d34c13e0102305e58cc656
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: bb4345426eddb8b0b5250980eb46cf0509a22cff
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91322456"
+ms.locfileid: "91369989"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters"></a>了解適用於 Kubernetes 叢集的 Azure 原則 \(部分機器翻譯\)
 
@@ -85,9 +85,6 @@ Azure 原則會延伸 [Gatekeeper](https://github.com/open-policy-agent/gatekeep
 ## <a name="install-azure-policy-add-on-for-aks"></a>安裝 AKS 的 Azure 原則附加元件
 
 在安裝 Azure 原則附加元件或啟用任何服務功能之前，您的訂用帳戶必須啟用 **Microsoft.ContainerService** 和 **Microsoft.PolicyInsights** 資源提供者。
-
-> [!IMPORTANT]
-> AKS 上 Azure 原則的正式運作 (GA) 會主動在所有區域中發行。 GA 版本的預期全域完成為9/29/2020。 沒有 GA 版本的區域使用方式需要預覽註冊步驟。 不過，這會在區域中有提供正式發行版本時自動更新。
 
 1. 您需要安裝並設定 Azure CLI 2.12.0 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
 

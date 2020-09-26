@@ -8,18 +8,18 @@ ms.workload: infrastructure
 ms.date: 08/01/2019
 ms.author: cynthn
 ms.reviewer: zivr
-ms.openlocfilehash: 599d13daac2e062c8f71f5f7d7133646a1447123
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: ac915aa3baba910895e10d21148b899347e8ae4e
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87266583"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91370482"
 ---
 # <a name="deploy-vms-to-dedicated-hosts-using-the-azure-powershell"></a>使用 Azure PowerShell 將 Vm 部署到專用主機
 
 本文會引導您瞭解如何建立 Azure [專用主機](dedicated-hosts.md)來裝載您的虛擬機器 (VM)。 
 
-請確定您已安裝 Azure PowerShell 2.8.0 或更新版本，且已使用登入 Azure 帳戶 `Connect-AzAccount` 。 
+請確定您已安裝 Azure PowerShell 2.8.0 版或更新版本，且您已使用中的 Azure 帳戶登入 `Connect-AzAccount` 。 
 
 ## <a name="limitations"></a>限制
 
@@ -34,7 +34,7 @@ ms.locfileid: "87266583"
  
 不論是哪一種情況，您都必須為主機群組提供容錯網域計數。 如果您不想在您的群組中跨越容錯網域，請使用容錯網域計數 1。 
 
-您也可以決定同時使用可用性區域和容錯網域。 這個範例會在區域1中建立具有2個容錯網域的主機群組。 
+您也可以決定同時使用可用性區域和容錯網域。 此範例會在區域1中建立具有2個容錯網域的主機群組。 
 
 
 ```azurepowershell-interactive
@@ -49,6 +49,14 @@ $hostGroup = New-AzHostGroup `
    -ResourceGroupName $rgName `
    -Zone 1
 ```
+
+
+新增 `-SupportAutomaticPlacement true` 參數，以將 vm 和擴展集實例自動放置在主機群組內的主機上。 如需詳細資訊，請參閱 [手動與自動放置 ](../dedicated-hosts.md#manual-vs-automatic-placement)。
+
+> [!IMPORTANT]
+> 自動放置目前處於公開預覽狀態。
+> 若要參與預覽，請完成預覽上線問卷 [https://aka.ms/vmss-adh-preview](https://aka.ms/vmss-adh-preview) 。
+> 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="create-a-host"></a>建立主機
 
@@ -94,7 +102,7 @@ New-AzVM `
 
 ## <a name="check-the-status-of-the-host"></a>檢查主機的狀態
 
-您可以使用[GetAzHost](/powershell/module/az.compute/get-azhost)搭配參數，檢查主機健全狀況狀態，以及您仍然可以部署到主機的虛擬機器數目 `-InstanceView` 。
+您可以使用 [GetAzHost](/powershell/module/az.compute/get-azhost) 搭配參數，檢查主機健全狀況狀態，以及您仍然可以部署到主機的虛擬機器數目 `-InstanceView` 。
 
 ```azurepowershell-interactive
 Get-AzHost `
@@ -165,13 +173,39 @@ Location               : eastus
 Tags                   : {}
 ```
 
+## <a name="create-a-scale-set-preview"></a> (預覽版建立擴展集) 
+
+> [!IMPORTANT]
+> 專用主機上的虛擬機器擴展集目前處於公開預覽狀態。
+> 若要參與預覽，請完成預覽上線問卷 [https://aka.ms/vmss-adh-preview](https://aka.ms/vmss-adh-preview) 。
+> 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+
+當您部署擴展集時，請指定主機群組。
+
+```azurepowershell-interactive
+New-AzVmss `
+  -ResourceGroupName "myResourceGroup" `
+  -Location "EastUS" `
+  -VMScaleSetName "myDHScaleSet" `
+  -VirtualNetworkName "myVnet" `
+  -SubnetName "mySubnet" `
+  -PublicIpAddressName "myPublicIPAddress" `
+  -LoadBalancerName "myLoadBalancer" `
+  -UpgradePolicyMode "Automatic"`
+  -HostGroupId $hostGroup.Id
+```
+
+如果您想要手動選擇要將擴展集部署至哪個主機，請新增 `--host` 主機的名稱。
+
+
+
 ## <a name="add-an-existing-vm"></a>新增現有的 VM 
 
-您可以將現有的 VM 新增至專用主機，但必須先 Stop\Deallocated. VM 將 VM 移至專用主機之前，請確定已支援 VM 設定：
+您可以將現有的 VM 新增至專用主機，但必須先將 VM Stop\Deallocated。 將 VM 移至專用主機之前，請確定支援 VM 設定：
 
-- VM 大小必須與專用主機位於相同大小的系列。 例如，如果您的專用主機已 DSv3，則 VM 大小可能會 Standard_D4s_v3，但不能是 Standard_A4_v2。 
+- VM 大小必須與專用主機位於相同大小的系列中。 例如，如果您的專用主機是 DSv3，則可以 Standard_D4s_v3 VM 大小，但不能是 Standard_A4_v2。 
 - VM 必須位於與專用主機相同的區域中。
-- VM 不能是鄰近放置群組的一部分。 將 VM 移至專用主機之前，請先從鄰近放置群組中移除它。 如需詳細資訊，請參閱[將 VM 移出鄰近位置群組](./proximity-placement-groups.md#move-an-existing-vm-out-of-a-proximity-placement-group)
+- VM 不能是鄰近放置群組的一部分。 將 VM 移至專用主機之前，請先從鄰近放置群組移除 VM。 如需詳細資訊，請參閱 [將 VM 移出鄰近位置群組](./proximity-placement-groups.md#move-an-existing-vm-out-of-a-proximity-placement-group)
 - VM 不能位於可用性設定組中。
 - 如果 VM 位於可用性區域中，它必須與主機群組位於相同的可用性區域。 VM 和主機群組的可用性區域設定必須相符。
 
@@ -215,25 +249,25 @@ Start-AzVM `
 
 即使您沒有部署虛擬機器，仍會向您收取專用主機的費用。 您應該刪除目前未使用的任何主機以節省成本。  
 
-只有當不再有任何虛擬機器使用主機時，才能刪除主機。 使用[update-azvm](/powershell/module/az.compute/remove-azvm)刪除 vm。
+只有當不再有任何虛擬機器使用主機時，才能刪除主機。 使用 [Remove-new-azvm](/powershell/module/az.compute/remove-azvm)刪除 vm。
 
 ```azurepowershell-interactive
 Remove-AzVM -ResourceGroupName $rgName -Name myVM
 ```
 
-刪除 Vm 之後，您可以使用[AzHost](/powershell/module/az.compute/remove-azhost)刪除主機。
+刪除 Vm 之後，您可以使用 [AzHost](/powershell/module/az.compute/remove-azhost)刪除主機。
 
 ```azurepowershell-interactive
 Remove-AzHost -ResourceGroupName $rgName -Name myHost
 ```
 
-刪除所有主機之後，您可以使用[AzHostGroup](/powershell/module/az.compute/remove-azhostgroup)刪除主機群組。 
+一旦刪除所有主機，您可以使用 [AzHostGroup](/powershell/module/az.compute/remove-azhostgroup)刪除主機群組。 
 
 ```azurepowershell-interactive
 Remove-AzHost -ResourceGroupName $rgName -Name myHost
 ```
 
-您也可以使用[remove-azresourcegroup](/powershell/module/az.resources/remove-azresourcegroup)，在單一命令中刪除整個資源群組。 這麼做會刪除群組中建立的所有資源，包括所有 VM、主機和主機群組。
+您也可以使用 [>new-azresourcegroup](/powershell/module/az.resources/remove-azresourcegroup)，在單一命令中刪除整個資源群組。 這麼做會刪除群組中建立的所有資源，包括所有 VM、主機和主機群組。
  
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name $rgName
@@ -244,4 +278,4 @@ Remove-AzResourceGroup -Name $rgName
 
 - [這裡](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-dedicated-hosts/README.md)有範例範本，範例中使用區域和容錯網域來獲得區域中的最大復原。
 
-- 您也可以使用[Azure 入口網站](dedicated-hosts-portal.md)部署專用主機。
+- 您也可以使用 [Azure 入口網站](dedicated-hosts-portal.md)部署專用主機。

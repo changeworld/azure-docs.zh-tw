@@ -8,13 +8,13 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 11/09/2018
 ms.topic: conceptual
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 412254f47a2700f77003f7db661f0ade214a1e23
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: 2789ed642979616a4491a61d146d8468552ec2e5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423196"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318444"
 ---
 # <a name="customize-the-remote-monitoring-solution-accelerator"></a>自訂遠端監視解決方案加速器
 
@@ -74,11 +74,11 @@ ms.locfileid: "87423196"
     npm start
     ```
 
-1. 上一個命令會在本機的 HTTP： \/ /localhost： 3000/儀表板上執行 UI。 您可以在網站執行期間編輯程式碼，並看到它動態更新。
+1. 上一個命令會在 HTTP： \/ /localhost： 3000/儀表板本機執行 UI。 您可以在網站執行期間編輯程式碼，並看到它動態更新。
 
 ## <a name="customize-the-layout"></a>自訂版面配置
 
-遠端監視解決方案中的每個頁面都是由一組控制項所組成，這在原始程式碼中稱為*面板*。 [**儀表板**] 頁面是由五個面板所組成：總覽、地圖、警示、遙測和分析。 您可以在 [pcs-remote-monitoring-webui](https://github.com/Azure/pcs-remote-monitoring-webui) \(英文\) GitHub 存放庫中找到定義每個頁面及其面板的原始程式碼。 例如，定義 [儀表板]**** 頁面、其版面配置，以及頁面上面板的程式碼位於 [src/components/pages/dashboard](https://github.com/Azure/pcs-remote-monitoring-webui/tree/master/src/components/pages/dashboard) \(英文\) 資料夾中。
+遠端監視解決方案中的每個頁面都是由一組控制項所組成，這在原始程式碼中稱為*面板*。 **儀表板**頁面是由五個面板所組成：總覽、地圖、警示、遙測及分析。 您可以在 [pcs-remote-monitoring-webui](https://github.com/Azure/pcs-remote-monitoring-webui) \(英文\) GitHub 存放庫中找到定義每個頁面及其面板的原始程式碼。 例如，定義 [儀表板]**** 頁面、其版面配置，以及頁面上面板的程式碼位於 [src/components/pages/dashboard](https://github.com/Azure/pcs-remote-monitoring-webui/tree/master/src/components/pages/dashboard) \(英文\) 資料夾中。
 
 由於面板會管理自己的版面配置及大小，因此您可以輕易地修改頁面的版面配置。 對 `src/components/pages/dashboard/dashboard.js` 檔案中的 **PageContent** 元素進行下列變更：
 
@@ -497,7 +497,7 @@ See the [Connect an external visualization tool](https://github.com/Azure/azure-
 
 在本文中，您已了解可用來協助您在遠端監視解決方案加速器中自訂 Web UI 的資源。 若要深入了解如何自訂 UI，請參閱下列文章：
 
-* [在遠端監視解決方案加速器 web UI 中新增自訂頁面](iot-accelerators-remote-monitoring-customize-page.md)
+* [將自訂頁面新增至遠端監視解決方案加速器 web UI](iot-accelerators-remote-monitoring-customize-page.md)
 * [在遠端監視解決方案加速器 Web UI 中新增自訂服務](iot-accelerators-remote-monitoring-customize-service.md)
 * [在遠端監視解決方案加速器 Web UI 中新增自訂格線](iot-accelerators-remote-monitoring-customize-grid.md)
 * [在遠端監視解決方案加速器 Web UI 中新增自訂飛出視窗](iot-accelerators-remote-monitoring-customize-flyout.md)
