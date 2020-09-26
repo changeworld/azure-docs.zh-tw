@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f0863a782b7f4531b900bc3c005a39387c83d983
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: a8a70097cbae3bc5ebf48c0358faa32aea0a6be5
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268222"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91370172"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>如何：規劃 Azure AD Join 實作
 
@@ -24,7 +24,7 @@ Azure AD Join 可讓您直接將裝置加入 Azure AD，而不需要加入內部
 
 本文將為您提供規劃 Azure AD Join 實作所需的資訊。
  
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 本文假設您熟悉 [Azure Active Directory 中的裝置管理簡介](./overview.md)。
 
@@ -184,7 +184,7 @@ Azure AD 聯結裝置的裝置管理是以 MDM 平臺（例如 Intune）和 MDM 
 
 若要從遠端桌面連線至已加入 Azure AD 的裝置，主機電腦必須已加入 Azure AD 或已加入混合式 Azure AD。 不支援從未加入或非 Windows 的裝置進行遠端桌面連線。 如需詳細資訊，請參閱[連線至已加入 Azure AD 的遠端 PC](/windows/client-management/connect-to-remote-aadj-pc)
 
-從 Windows 10 2004 更新開始，使用者可以從 Azure AD 註冊的 Windows 10 裝置，將遠端桌面也至已加入 Azure AD 的裝置。 
+從 Windows 10 2004 更新開始，使用者也可以使用遠端桌面，從 Azure AD 註冊的 Windows 10 裝置到 Azure AD 加入的裝置。 
 
 ## <a name="understand-your-provisioning-options"></a>了解您的佈建選項
 

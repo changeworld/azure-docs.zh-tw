@@ -7,12 +7,12 @@ ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: 55b789363397945e01d02d76cb0e573660d18b67
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: cb24ff0f2e09d98bf4a8cc4a502399fd9b38e350
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607494"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91369904"
 ---
 # <a name="frequently-asked-questions-about-transitioning-from-the-cloud-partner-portal-to-partner-center"></a>從 Cloud Partner 入口網站轉換到合作夥伴中心的常見問題
 
@@ -28,7 +28,7 @@ Cloud Partner 入口網站已轉換為合作夥伴中心。 合作夥伴中心�
 | 提供發佈和供應專案管理體驗 | 我們已將您的供應專案資料從 Cloud Partner 入口網站移至合作夥伴中心。 您現在會在合作夥伴中心中存取您的供應專案，以提供改良的使用者體驗和直覺化介面。 瞭解如何 [更新商業 marketplace 中的現有供應](partner-center-portal/update-existing-offer.md)專案。 |
 | 商業 marketplace 中供應專案的可用性 | 無變更。 如果您的供應專案在商業 marketplace 中，它將會繼續上線。 |
 | 新購買和部署 | 無變更。 您的客戶可以繼續購買及部署您的供應專案，而不會中斷。 |
-| 支出 | 任何購買和部署都會繼續以正常的方式支付給您。 深入瞭解如何 [在商業 marketplace 中付費](partner-center-portal/get-paid.md)。 |
+| 支出 | 任何購買和部署都會繼續以正常的方式支付給您。 深入瞭解如何 [在商業 marketplace 中付費](/partner-center/marketplace-get-paid?context=/azure/marketplace/context/context)。 |
 | 與現有 [Cloud Partner 入口網站 API](cloud-partner-portal-api-overview.md) \(部分機器翻譯\) 的 API 整合 | 仍然支援現有的 Cloud Partner 入口網站 Api，但您現有的整合仍可運作。 若要深入瞭解 [CLOUD PARTNER 入口網站 REST api 的支援嗎？](#are-the-cloud-partner-portal-rest-apis-still-supported) |
 | 分析 | 您可以藉由在合作夥伴中心中觀看分析，來繼續監視銷售、評估效能，以及優化您在商業市場中的優惠。 在 CPP 和合作夥伴中心中，分析報告的顯示方式有所差異。 例如，CPP 中的 **Seller Insights** 有一個 [ **訂單] & [使用量** ] 索引標籤，其中會顯示以使用量為基礎的供應專案和非使用量型供應專案的資料，而在合作夥伴中心 **訂單** ] 頁面的 SaaS 供應專案則有個別的索引標籤。 [在合作夥伴中心中深入瞭解商用 marketplace 的存取分析報表](partner-center-portal/analytics.md)。 |
 |||
@@ -162,7 +162,9 @@ Cloud Partner 入口網站先前支援的所有供應專案類型都可在合作
 - [計劃設定] 頁面
 - [計劃清單] 頁面
 - 計劃 [可用性] 頁面
-- 規劃技術設定頁面，如下所示： ![ ！ [螢幕擷取畫面顯示合作夥伴中心技術設定] 頁面。] (媒體/cpp-pc-常見問題/technical-configuration.png] 顯示合作夥伴中心技術設定頁面] ) ](media/cpp-pc-faq/technical-configuration.png#lightbox)
+- 規劃技術配置頁面，如下所示：
+
+![![螢幕擷取畫面顯示合作夥伴中心技術配置] 頁面。] (媒體/cpp-pc-常見問題/technical-configuration.png] 顯示合作夥伴中心技術設定頁面] ) ](media/cpp-pc-faq/technical-configuration.png#lightbox)
 
 供應專案識別碼現在會顯示在供應專案的左側導覽列中：
 

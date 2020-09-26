@@ -6,24 +6,28 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/14/2020
+ms.date: 09/21/2020
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b5a39b08f34bec5ee1db42cde1fb171452d0efd3
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: 78c25afe69565840ca1af013d29dd512550241b6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90069810"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91280216"
 ---
 # <a name="acquire-a-token-from-azure-ad-for-authorizing-requests-from-a-client-application"></a>從 Azure AD 取得權杖，以授權用戶端應用程式的要求
 
 使用 Azure Active Directory (Azure AD) 搭配 Azure Blob 儲存體或佇列儲存體的主要優點是，您的認證不再需要儲存在程式碼中。 相反地，您可以從 Microsoft 身分識別平臺要求 OAuth 2.0 存取權杖。 Azure AD 會 (使用者、群組或服務主體) 執行應用程式來驗證安全性主體。 如果驗證成功，Azure AD 會將存取權杖傳回給應用程式，然後應用程式就可以使用存取權杖來授權對 Azure Blob 儲存體或佇列儲存體的要求。
 
-本文說明如何設定原生應用程式或 web 應用程式，以使用 Microsoft 身分識別平臺2.0 進行驗證。 程式碼範例以 .NET 為主，但其他語言也是使用類似的方法。 如需 Microsoft 身分識別平臺2.0 的詳細資訊，請參閱 [microsoft 身分識別平臺 (v2.0) 總覽](../../active-directory/develop/v2-overview.md)。
+本文說明如何使用可供下載的範例應用程式，設定原生應用程式或 web 應用程式，以使用 Microsoft 身分識別平臺2.0 進行驗證。 範例應用程式有 .NET，但其他語言則是使用類似的方法。 如需 Microsoft 身分識別平臺2.0 的詳細資訊，請參閱 [microsoft 身分識別平臺 (v2.0) 總覽](../../active-directory/develop/v2-overview.md)。
 
 如需 OAuth 2.0 程式碼授與流程的概觀，請參閱[使用 OAuth 2.0 授權碼授與流程，授權存取 Azure Active Directory Web 應用程式](../../active-directory/develop/v2-oauth2-auth-code-flow.md)。
+
+## <a name="about-the-sample-application"></a>關於範例應用程式
+
+範例應用程式提供端對端體驗，示範如何設定 web 應用程式，以在本機開發環境中使用 Azure AD 進行驗證。 若要查看並執行範例應用程式，請先從 [GitHub](https://github.com/Azure-Samples/storage-dotnet-azure-ad-msal)複製或下載該應用程式。 然後，依照本文中所述的步驟來設定 Azure 應用程式註冊，並更新您環境的應用程式。
 
 ## <a name="assign-a-role-to-an-azure-ad-security-principal"></a>將角色指派給 Azure AD 安全性主體
 
@@ -31,38 +35,39 @@ ms.locfileid: "90069810"
 
 ## <a name="register-your-application-with-an-azure-ad-tenant"></a>向 Azure AD 租用戶註冊應用程式
 
-使用 Azure AD 來授與儲存體資源存取權的第一個步驟，是向 [Azure 入口網站](https://portal.azure.com)向 Azure AD 租使用者註冊用戶端應用程式。 當您註冊用戶端應用程式時，會將應用程式的相關資訊提供給 Azure AD。 Azure AD 接著會提供您在執行階段用來將應用程式與 Azure AD 產生關聯的用戶端識別碼 (也稱為「應用程式識別碼」**)。 若要深入了解用戶端識別碼，請參閱 [Azure Active Directory 中的應用程式和服務主體物件](../../active-directory/develop/app-objects-and-service-principals.md)。
+使用 Azure AD 來授與儲存體資源存取權的第一個步驟，是向 [Azure 入口網站](https://portal.azure.com)向 Azure AD 租使用者註冊用戶端應用程式。 當您註冊用戶端應用程式時，會將應用程式的相關資訊提供給 Azure AD。 Azure AD 接著會提供您在執行階段用來將應用程式與 Azure AD 產生關聯的用戶端識別碼 (也稱為「應用程式識別碼」**)。 若要深入了解用戶端識別碼，請參閱 [Azure Active Directory 中的應用程式和服務主體物件](../../active-directory/develop/app-objects-and-service-principals.md)。 若要註冊您的 Azure 儲存體應用程式，請依照 [快速入門：使用 Microsoft 身分識別平臺註冊應用程式](../../active-directory/develop/quickstart-configure-app-access-web-apis.md)中所示的步驟進行。 
 
-若要註冊您的 Azure 儲存體應用程式，請依照 [快速入門：使用 Microsoft 身分識別平臺註冊應用程式](../../active-directory/develop/quickstart-configure-app-access-web-apis.md)中所示的步驟進行。 下圖顯示註冊 web 應用程式的一般設定：
+下圖顯示註冊 web 應用程式的一般設定。 請注意，在此範例中，重新導向 URI 會設定為，以 `http://localhost:5000/signin-oidc` 測試開發環境中的範例應用程式。 您稍後可以在 Azure 入口網站中針對已註冊應用程式的 **驗證** 設定下修改此設定：
 
-![顯示如何使用 Azure AD 註冊您的儲存體應用程式的螢幕擷取畫面](./media/storage-auth-aad-app/app-registration.png)
+:::image type="content" source="media/storage-auth-aad-app/app-registration.png" alt-text="顯示如何使用 Azure AD 註冊您的儲存體應用程式的螢幕擷取畫面":::
 
 > [!NOTE]
 > 如果您將應用程式註冊為原生應用程式，可以為重新 **導向 uri**指定任何有效的 uri。 若為原生應用程式，此值不需要是實際的 URL。 針對 web 應用程式，重新導向 URI 必須是有效的 URI，因為它會指定提供權杖的 URL。
 
 註冊您的應用程式之後，您會在 [設定]**** 下看到應用程式識別碼 (或用戶端識別碼)︰
 
-![顯示用戶端識別碼的螢幕擷取畫面](./media/storage-auth-aad-app/app-registration-client-id.png)
+:::image type="content" source="media/storage-auth-aad-app/app-registration-client-id.png" alt-text="顯示用戶端識別碼的螢幕擷取畫面":::
 
 如需有關向 Azure AD 註冊應用程式的詳細資訊，請參閱[整合應用程式與 Azure Active Directory](../../active-directory/develop/quickstart-v2-register-an-app.md)。
 
-## <a name="grant-your-registered-app-permissions-to-azure-storage"></a>將 Azure 儲存體的權限授與已註冊的應用程式
+### <a name="grant-your-registered-app-permissions-to-azure-storage"></a>將 Azure 儲存體的權限授與已註冊的應用程式
 
 接下來，授與您的應用程式呼叫 Azure 儲存體 Api 的許可權。 此步驟可讓您的應用程式授權 Azure AD 的 Azure 儲存體要求。
 
-1. 在已註冊應用程式的 [ **總覽** ] 頁面上，選取 [ **View API 許可權**]。
-1. 在 [ **API 許可權** ] 區段中，選取 [ **新增許可權** ]，然後選擇 [ **Microsoft api**]。
-1. 從結果清單中選取 [ **Azure 儲存體** ]，以顯示 [ **要求 API 許可權** ] 窗格。
-1. 在 **您的應用程式需要哪種許可權類型？**，請注意，可用的許可權類型是 **委派許可權**。 預設會為您選取此選項。
-1. 在 [**要求 API 許可權**] 窗格的 [**選取許可權**] 區段中，選取 [ **user_impersonation**] 旁的核取方塊，然後按一下 [**新增許可權**]。
+1. 在已註冊應用程式的 [ **API 許可權** ] 頁面上，選取 [ **新增許可權**]。
+1. 在 [ **Microsoft api** ] 索引標籤下，選取 [ **Azure 儲存體**]。
+1. 在 [ **要求 API 許可權** ] 窗格中， **您的應用程式需要哪種許可權類型？**，請注意，可用的許可權類型是 **委派許可權**。 預設會為您選取此選項。
+1. 在 [ **許可權**] 底下，選取 [ **user_impersonation**] 旁的核取方塊，然後選取 [ **新增許可權** ] 按鈕。
 
-    ![顯示儲存體許可權的螢幕擷取畫面](media/storage-auth-aad-app/registered-app-permissions-1.png)
+    :::image type="content" source="media/storage-auth-aad-app/registered-app-permissions-1.png" alt-text="顯示儲存體 API 許可權的螢幕擷取畫面":::
 
-[ **API 許可權** ] 窗格現在會顯示您已註冊的 Azure AD 應用程式可存取 Microsoft Graph 和 Azure 儲存體 api。 當您第一次向 Azure AD 註冊應用程式時，系統會自動將權限授與 Microsoft Graph。
+1. 接著，按一下 **[授與系統管理員同意預設目錄**]，授與管理員同意這些許可權。
 
-![顯示註冊應用程式許可權的螢幕擷取畫面](media/storage-auth-aad-app/registered-app-permissions-2.png)
+[ **API 許可權** ] 窗格現在會顯示您已註冊的 Azure AD 應用程式可存取 Microsoft Graph 和 Azure 儲存體 api，並且授與該同意給預設目錄。 當您第一次向 Azure AD 註冊應用程式時，系統會自動將權限授與 Microsoft Graph。
 
-## <a name="create-a-client-secret"></a>建立用戶端密碼
+:::image type="content" source="media/storage-auth-aad-app/registered-app-permissions-2.png" alt-text="顯示已註冊應用程式之 API 許可權的螢幕擷取畫面":::
+
+### <a name="create-a-client-secret"></a>建立用戶端密碼
 
 應用程式需要用戶端密碼，才能在要求權杖時證明其身分識別。 若要新增用戶端密碼，請遵循下列步驟：
 
@@ -74,11 +79,21 @@ ms.locfileid: "90069810"
 
     ![顯示用戶端密碼的螢幕擷取畫面](media/storage-auth-aad-app/client-secret.png)
 
+### <a name="enable-implicit-grant-flow"></a>啟用隱含授與流程
+
+接下來，為您的應用程式設定隱含授與流程。 請遵循下列步驟：
+
+1. 在 Azure 入口網站中，流覽至您的應用程式註冊。
+1. 在 [ **管理** ] 區段中，選取 **驗證** 設定。
+1. 在 [ **隱含授** 與] 區段中，選取核取方塊以啟用識別碼權杖，如下圖所示：
+
+    :::image type="content" source="media/storage-auth-aad-app/enable-implicit-grant-flow.png" alt-text="顯示如何啟用隱含授與流程設定的螢幕擷取畫面":::
+
 ## <a name="client-libraries-for-token-acquisition"></a>取得權杖的用戶端程式庫
 
 當您註冊應用程式，並授與它存取 Azure Blob 儲存體或佇列儲存體中資料的許可權之後，您可以將程式碼新增至應用程式，以驗證安全性主體並取得 OAuth 2.0 權杖。 若要驗證並取得權杖，您可以使用其中一個 Microsoft 身分 [識別平臺驗證程式庫](../../active-directory/develop/reference-v2-libraries.md) ，或另一個支援 OpenID Connect 1.0 的開放原始碼程式庫。 然後，您的應用程式可以使用存取權杖來授權對 Azure Blob 儲存體或佇列儲存體的要求。
 
-如需支援取得權杖的案例清單，請參閱[Microsoft 驗證程式庫內容](/azure/active-directory/develop/msal-overview)的[驗證流程](/en-us/azure/active-directory/develop/msal-authentication-flows)一節。
+如需支援取得權杖的案例清單，請參閱[Microsoft 驗證程式庫 (MSAL) ](/azure/active-directory/develop/msal-overview)檔中的「[驗證流程](/en-us/azure/active-directory/develop/msal-authentication-flows)」一節。
 
 ## <a name="well-known-values-for-authentication-with-azure-ad"></a>使用 Azure AD 進行驗證所需的已知值
 
@@ -145,7 +160,7 @@ using Azure.Storage.Blobs;
 
 ```console
 Install-Package Microsoft.Azure.Storage.Blob
-Install-Package Microsoft.Identity.Web -Version 0.4.0-preview
+Install-Package Microsoft.Identity.Web -Version 0.4.0-preview //or a later version
 ```
 
 接下來，將下列 using 語句新增至 HomeController.cs 檔案：
@@ -160,7 +175,7 @@ using Microsoft.Azure.Storage.Blob;
 
 #### <a name="create-a-block-blob"></a>建立區塊 Blob
 
-新增下列程式碼片段來建立區塊 blob：
+新增下列程式碼片段來建立區塊 blob。 請記得以自有值來取代角括弧中的值：
 
 # <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
@@ -203,7 +218,7 @@ private static async Task<string> CreateBlob(string accessToken)
 > [!NOTE]
 > 若要使用 OAuth 2.0 權杖授權 blob 和佇列作業，您必須使用 HTTPS。
 
-在上面的範例中，.NET 用戶端程式庫會處理要求的授權以建立區塊 Blob。 適用于其他語言 Azure 儲存體用戶端程式庫也會處理要求的授權。 不過，若您透過 OAuth 權杖使用 REST API 呼叫 Azure 儲存體作業，則您將必須使用 OAuth 權杖授權該要求。
+在上面的範例中，.NET 用戶端程式庫會處理要求的授權以建立區塊 Blob。 適用于其他語言 Azure 儲存體用戶端程式庫也會處理要求的授權。 但是，如果您使用 REST API 以 OAuth 權杖呼叫 Azure 儲存體作業，則必須使用 OAuth 權杖來建立 **授權** 標頭。
 
 若要使用 OAuth 存取權杖呼叫 Blob 與佇列服務作業，請使用 **Bearer** 結構描述在 **Authorization** 標頭中傳遞存取權杖，並指定 2017-11-09 或更高的服務版本，如下列範例所示：
 
@@ -232,7 +247,7 @@ public async Task<IActionResult> Blob()
 }
 ```
 
-同意是使用者授權應用程式代表使用者存取受保護的資源所用的程序。 Microsoft 身分識別平臺2.0 支援累加式同意，這表示安全性主體最初可以要求一組最低許可權，並視需要新增一段時間的許可權。 當您的程式碼要求存取權杖時，請在參數中指定應用程式在任何給定時間所需的許可權範圍 `scope` 。 如需累加式同意的詳細資訊，請參閱 [增量和動態同意](../../active-directory/azuread-dev/azure-ad-endpoint-comparison.md#incremental-and-dynamic-consent)。
+同意是使用者授權應用程式代表使用者存取受保護的資源所用的程序。 Microsoft 身分識別平臺2.0 支援累加式同意，這表示安全性主體最初可以要求一組最低許可權，並視需要新增一段時間的許可權。 當您的程式碼要求存取權杖時，請指定應用程式所需的許可權範圍。 如需累加式同意的詳細資訊，請參閱 [增量和動態同意](../../active-directory/azuread-dev/azure-ad-endpoint-comparison.md#incremental-and-dynamic-consent)。
 
 ## <a name="view-and-run-the-completed-sample"></a>查看並執行完成的範例
 
@@ -240,7 +255,7 @@ public async Task<IActionResult> Blob()
 
 ### <a name="provide-values-in-the-settings-file"></a>在設定檔中提供值
 
-接下來，使用您自己的值更新檔案 *appsettings.js* ，如下所示：
+使用您自己的值來更新檔案 * 上的appsettings.js* ，如下所示：
 
 ```json
 {
@@ -249,15 +264,16 @@ public async Task<IActionResult> Blob()
     "Domain": "<azure-ad-domain-name>.onmicrosoft.com",
     "TenantId": "<tenant-id>",
     "ClientId": "<client-id>",
-    "CallbackPath": "/signin-oidc",
-    "SignedOutCallbackPath ": "/signout-callback-oidc",
-
-    // To call an API
     "ClientSecret": "<client-secret>"
+    "ClientCertificates": [
+    ],
+    "CallbackPath": "/signin-oidc"
   },
   "Logging": {
     "LogLevel": {
-      "Default": "Warning"
+      "Default": "Information",
+      "Microsoft": "Warning",
+      "Microsoft.Hosting.Lifetime": "Information"
     }
   },
   "AllowedHosts": "*"
@@ -271,26 +287,6 @@ public async Task<IActionResult> Blob()
 ```html
 https://<storage-account>.blob.core.windows.net/<container>/Blob1.txt
 ```
-
-### <a name="enable-implicit-grant-flow"></a>啟用隱含授與流程
-
-若要執行範例，您可能需要設定應用程式註冊的隱含授與流程。 遵循這些步驟：
-
-1. 在 Azure 入口網站中，流覽至您的應用程式註冊。
-1. 在 [ **管理** ] 區段中，選取 **驗證** 設定。
-1. 在 [ **隱含授** 與] 區段中，選取核取方塊以啟用識別碼權杖，如下圖所示：
-
-    ![顯示如何啟用隱含授與流程設定的螢幕擷取畫面](media/storage-auth-aad-app/enable-implicit-grant-flow.png)
-
-### <a name="update-the-port-used-by-localhost"></a>更新 localhost 使用的埠
-
-當您執行範例時，您可能會發現需要更新應用程式註冊中指定的重新導向 URI，以使用在執行時間指派的 *localhost* 埠。 若要將重新導向 URI 更新為使用指派的埠，請遵循下列步驟：
-
-1. 在 Azure 入口網站中，流覽至您的應用程式註冊。
-1. 在 [ **管理** ] 區段中，選取 **驗證** 設定。
-1. 在 [重新 **導向 uri**] 下，編輯與範例應用程式所使用的通訊埠，如下圖所示：
-
-    ![顯示應用程式註冊重新導向 Uri 的螢幕擷取畫面](media/storage-auth-aad-app/redirect-uri.png)
 
 ## <a name="next-steps"></a>後續步驟
 

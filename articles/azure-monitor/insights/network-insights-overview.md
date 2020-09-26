@@ -5,13 +5,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 09/22/2020
-ms.openlocfilehash: 88e69ac4156bb2bdfb217a4fc83ac2d798d08211
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.date: 09/24/2020
+ms.openlocfilehash: 2559c4f54aa19df248ddf756e376809dea516997
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90987892"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330943"
 ---
 # <a name="azure-monitor-for-networks-preview"></a>適用于網路 (預覽) 的 Azure 監視器
 針對所有已部署的網路資源，Azure 監視器 for Network 提供完整的 [健全狀況](https://docs.microsoft.com/azure/service-health/resource-health-checks-resource-types) 和計量觀點，而不需要任何 [設定](../platform/metrics-supported.md) 。  它也可讓您存取所有網路監視功能，例如連線 [監視器](../../network-watcher/connection-monitor-preview.md)、 [網路安全性群組的流量記錄 (nsg) ](../../network-watcher/network-watcher-nsg-flow-logging-overview.md)、使用 [分析](../../network-watcher/traffic-analytics.md)，以及其他網路 [診斷](../../network-watcher/network-watcher-monitoring-overview.md#diagnostics) 功能。
@@ -108,6 +108,6 @@ ms.locfileid: "90987892"
 
 ![診斷工具組索引標籤](media/network-insights-overview/azure-monitor-for-networks-diagnostic-toolkit.png)
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 深入瞭解 [什麼是 Azure 網路](../../network-watcher/network-watcher-monitoring-overview.md)監看員的網路監視？。

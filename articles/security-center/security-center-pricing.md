@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/28/2020
+ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 6d2127af2c2c9e04141551dae72f0177f495b165
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 393e769f147629d2d40344052ba502b22a18cd2a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90904775"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91314533"
 ---
 # <a name="pricing-of-azure-security-center"></a>Azure 資訊安全中心的定價
 Azure 資訊安全中心提供統一的安全性管理和進階的威脅防護，保護 Azure、內部部署和其他雲端中執行的工作負載。 其提供了針對混合式雲端工作負載的可見性和控制能力、可降低威脅曝露度的主動防禦措施、還有智慧型偵測可幫助您跟上網路攻擊快速發展的腳步。
@@ -65,7 +65,7 @@ Azure Defender 的前30天免費。 30天結束時，如果您選擇繼續使用
 > 您只能在資源層級為**適用於 MariaDB/MySQL/PostgreSQL 的 Azure 資料庫**啟用威脅防護。
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 在本文中，已向您介紹資訊安全中心的價格。 如需相關內容，請參閱：
 
 - [如何優化您的 Azure 工作負載成本](https://azure.microsoft.com/blog/how-to-optimize-your-azure-workload-costs/)

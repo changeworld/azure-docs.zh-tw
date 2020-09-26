@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/31/2020
-ms.openlocfilehash: b4c1e3eb7793a393004cde6f98a09777341e0e0e
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: ce48372db59d7fdc3364cbbe5bd55bd7fa63dd23
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89418971"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332163"
 ---
 # <a name="copy-data-from-or-to-azure-file-storage-by-using-azure-data-factory"></a>使用 Azure Data Factory 從 Azure File Storage 複製資料，或將資料複製到 Azure File Storage
 
@@ -60,7 +60,7 @@ ms.locfileid: "89418971"
 
 Data Factory 支援 Azure 檔案儲存體帳戶金鑰驗證的下列屬性：
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
 | type | 類型屬性必須設定為：**AzureFileStorage**。 | 是 |
 | connectionString | 指定連接到 Azure 檔案儲存體所需的資訊。 <br/> 您也可以將帳戶金鑰放在 Azure Key Vault 中，並 `accountKey` 從連接字串中提取設定。 如需詳細資訊，請參閱 Azure Key Vault 文章中的下列範例和 [存放區認證](store-credentials-in-key-vault.md) 。 |是 |
@@ -120,7 +120,7 @@ Data Factory 支援 Azure 檔案儲存體帳戶金鑰驗證的下列屬性：
 
 Data Factory 支援使用共用存取簽章驗證的下列屬性：
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
 | type | 類型屬性必須設定為：**AzureFileStorage**。 | 是 |
 | sasUri | 指定資源的共用存取簽章 URI。 <br/>將此欄位標示為 **SecureString** ，以安全地將它儲存在 Data Factory 中。 您也可以將 SAS 權杖放在 Azure Key Vault 中，以使用自動旋轉並移除權杖部分。 如需詳細資訊，請參閱下列範例，並 [將認證儲存在 Azure Key Vault 中](store-credentials-in-key-vault.md)。 | 是 |
@@ -182,7 +182,7 @@ Data Factory 支援使用共用存取簽章驗證的下列屬性：
 
 ### <a name="legacy-model"></a>舊版模型
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
 | type | 類型屬性必須設定為：**AzureFileStorage**。 | 是 |
 | 主機 | 指定 Azure File Storage 端點成為： <br/>\- 使用 UI：指定 `\\<storage name>.file.core.windows.net\<file service name>`<br/>- 使用 JSON：`"host": "\\\\<storage name>.file.core.windows.net\\<file service name>"`。 | 是 |
@@ -221,7 +221,7 @@ Data Factory 支援使用共用存取簽章驗證的下列屬性：
 
 在格式型資料集的 `location` 設定下，Azure 檔案儲存體支援下列屬性：
 
-| 屬性   | 描述                                                  | 必要 |
+| 屬性   | 說明                                                  | 必要 |
 | ---------- | ------------------------------------------------------------ | -------- |
 | type       | Dataset 中的 type 屬性 `location` 必須設為 **AzureFileStorageLocation**。 | 是      |
 | folderPath | 資料夾的路徑。 若您想要使用萬用字元來篩選資料夾，請略過此設定，並在活動來源設定中指定。 | 否       |
@@ -263,7 +263,7 @@ Data Factory 支援使用共用存取簽章驗證的下列屬性：
 
 在格式型複製來源的 `storeSettings` 設定下，Azure 檔案儲存體支援下列屬性：
 
-| 屬性                 | 描述                                                  | 必要                                      |
+| 屬性                 | 說明                                                  | 必要                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
 | type                     | 下的類型屬性 `storeSettings` 必須設為 **AzureFileStorageReadSettings**。 | 是                                           |
 | 尋找要複製的檔案： |  |  |
@@ -274,7 +274,7 @@ Data Factory 支援使用共用存取簽章驗證的下列屬性：
 | 選項 4：檔案清單<br>- fileListPath | 表示要複製指定的檔案集。 指向文字檔，其中包含您要複製的檔案清單，每行一個檔案，也就是在資料集中設定之路徑的相對路徑。<br/>使用此選項時，請勿指定資料集中的檔案名稱。 [檔案清單範例](#file-list-examples) (英文) 有更多範例可供參閱。 |否 |
 | 其他設定： |  | |
 | 遞迴 | 指出是否從子資料夾、或只有從指定的資料夾，以遞迴方式讀取資料。 當遞迴設定為 true 且接收是檔案型存放區時，就不會在接收上複製或建立空的資料夾或子資料夾。 <br>允許的值為 **true** (預設值) 和 **false**。<br>設定 `fileListPath` 時，不適用此屬性。 |否 |
-| deleteFilesAfterCompletion | 指出是否要在成功移至目的地存放區之後，從來源存放區刪除二進位檔案。 檔案刪除是針對每個檔案，因此當複製活動失敗時，您會看到部分檔案已複製到目的地並從來源刪除，其他檔案仍在來源存放區上。 <br/>這個屬性只適用于二進位複製案例，其中資料來源存放區為 Blob、ADLS Gen1、ADLS Gen2、S3、Google Cloud Storage、檔案、Azure 檔案、SFTP 或 FTP。 預設值： false。 |否 |
+| deleteFilesAfterCompletion | 指出是否要在成功移至目的地存放區之後，從來源存放區刪除二進位檔案。 檔案刪除是針對每個檔案，因此當複製活動失敗時，您會看到部分檔案已複製到目的地並從來源刪除，其他檔案仍在來源存放區上。 <br/>這個屬性只在二進位檔案複製案例中有效。 預設值： false。 |否 |
 | modifiedDatetimeStart    | 檔案篩選會根據以下屬性：上次修改時間。 <br>若檔案的上次修改時間在 `modifiedDatetimeStart` 與 `modifiedDatetimeEnd` 之間的時間範圍內，系統就會選取該檔案。 此時間會以 "2018-12-01T05:00:00Z" 格式套用至 UTC 時區。 <br> 屬性可以是 Null，這表示不會將任何檔案屬性篩選套用至資料集。  當 `modifiedDatetimeStart` 具有日期時間值，但 `modifiedDatetimeEnd` 為 NULL 時，意謂著系統將會選取上次更新時間屬性大於或等於此日期時間值的檔案。  當 `modifiedDatetimeEnd` 具有日期時間值，但 `modifiedDatetimeStart` 為 NULL 時，則意謂著系統將會選取上次更新時間屬性小於此日期時間值的檔案。<br/>設定 `fileListPath` 時，不適用此屬性。 | 否                                            |
 | modifiedDatetimeEnd      | 同上。                                               | 否                                            |
 | enablePartitionDiscovery | 針對已分割的檔案，指定是否從檔案路徑剖析分割區，並將它們新增為其他來源資料行。<br/>允許的值為 **false** (預設) 和 **true**。 | 否                                            |
@@ -328,7 +328,7 @@ Data Factory 支援使用共用存取簽章驗證的下列屬性：
 
 在格式型複製接收的 `storeSettings` 設定下，Azure 檔案儲存體支援下列屬性：
 
-| 屬性                 | 描述                                                  | 必要 |
+| 屬性                 | 說明                                                  | 必要 |
 | ------------------------ | ------------------------------------------------------------ | -------- |
 | type                     | 下的類型屬性 `storeSettings` 必須設為 **AzureFileStorageWriteSettings**。 | 是      |
 | copyBehavior             | 當來源是來自檔案型資料存放區的檔案時，會定義複製行為。<br/><br/>允許的值包括：<br/><b>- PreserveHierarchy (預設)</b>：保留目標資料夾中的檔案階層。 來源檔案到來源資料夾的相對路徑，與目標檔案到目標資料夾的相對路徑相同。<br/><b>- FlattenHierarchy</b>：來自來源資料夾的所有檔案都會在目標資料夾的第一層中。 目標檔案會有自動產生的名稱。 <br/><b>- MergeFiles</b>：將來自來源資料夾的所有檔案合併成一個檔案。 若已指定檔案名稱，合併檔案的名稱會是指定的名稱。 否則，就會是自動產生的檔案名稱。 | 否       |
@@ -422,7 +422,7 @@ Data Factory 支援使用共用存取簽章驗證的下列屬性：
 
 ### <a name="legacy-dataset-model"></a>舊版資料集模型
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
 | type | 資料集的類型屬性必須設定為：**FileShare** |是 |
 | folderPath | 資料夾的路徑。 <br/><br/>支援萬用字元篩選，允許的萬用字元為：`*` (比對零或多個字元) 和 `?` (比對零或單一字元)；如果您的實際資料夾名稱包含萬用字元或此逸出字元，請使用 `^` 來逸出。 <br/><br/>範例：rootfolder/subfolder/，如需更多範例，請參閱[資料夾和檔案篩選範例](#folder-and-file-filter-examples)。 |是 |
@@ -470,7 +470,7 @@ Data Factory 支援使用共用存取簽章驗證的下列屬性：
 
 ### <a name="legacy-copy-activity-source-model"></a>舊版複製活動來源模型
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
 | type | 複製活動來源的類型屬性必須設定為：**FileSystemSource** |是 |
 | 遞迴 | 表示是否從子資料夾，或只有從指定的資料夾，以遞迴方式讀取資料。 請注意，當 recursive 設定為 true，而接收器為檔案型存放區時，系統不會在接收器複製/建立空資料夾/子資料夾。<br/>允許的值為：**true** (預設值)、**false** | 否 |
@@ -510,7 +510,7 @@ Data Factory 支援使用共用存取簽章驗證的下列屬性：
 
 ### <a name="legacy-copy-activity-sink-model"></a>舊版複製活動接收模型
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
 | type | 複製活動接收器的類型屬性必須設定為：**FileSystemSink** |是 |
 | copyBehavior | 當來源是來自檔案型資料存放區的檔案時，會定義複製行為。<br/><br/>允許的值包括：<br/><b>- PreserveHierarchy (預設值)</b>：保留目標資料夾中的檔案階層。 來源檔案到來源資料夾的相對路徑，與目標檔案到目標資料夾的相對路徑相同。<br/><b>- FlattenHierarchy</b>：來自來源資料夾的所有檔案都在目標資料夾的第一層中。 目標檔案會有自動產生的名稱。 <br/><b>- MergeFiles</b>：將來源資料夾的所有檔案合併成一個檔案。 若指定檔案名稱，則合併的檔案名稱就是指定的名稱，否則為自動產生的檔案名稱。 | 否 |

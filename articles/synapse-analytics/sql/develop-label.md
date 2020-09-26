@@ -11,12 +11,12 @@ ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: 596b18332fc490f72ad185699fc59bf4521eca69
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: e8f78d6031e57da42e1d69587aedca0763c9fec2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90032175"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289067"
 ---
 # <a name="use-query-labels-in-synapse-sql"></a>在 Synapse SQL 中使用查詢標籤
 本文包含在 Synapse SQL 中使用查詢標籤的重要秘訣。
@@ -34,7 +34,7 @@ OPTION (LABEL = 'My Query Label')
 ;
 ```
 
-最後一行將字串 'My Query Label' 標記為查詢。 此標籤特別有幫助，因為標籤可透過 DMV 查詢。 查詢標籤會提供尋找問題查詢的機制，並且有助於透過 ELT 執行來識別進度。
+最後一行將字串 'My Query Label' 標記為查詢。 此標籤很有説明，因為標籤可透過 Dmv 進行查詢。 查詢標籤會提供尋找問題查詢的機制，並且有助於透過 ELT 執行來識別進度。
 
 良好的命名慣例最有説明。 例如，以 PROJECT、PROCEDURE、語句或批註開機磁碟區標，可在原始檔控制中的所有程式碼之間唯一識別查詢。
 

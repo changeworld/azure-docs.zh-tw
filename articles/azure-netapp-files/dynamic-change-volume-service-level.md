@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 08/26/2020
 ms.author: b-juche
-ms.openlocfilehash: fb83b30f0844b9bf0e362e6f1e3a3822ba0044d1
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 9050982338c4a6096ef180b34c0d0a0dca931427
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88949995"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91278306"
 ---
 # <a name="dynamically-change-the-service-level-of-a-volume"></a>動態變更磁碟區的服務等級
 
@@ -53,7 +53,7 @@ ms.locfileid: "88949995"
     ```azurepowershell-interactive
     Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFTierChange
     ```
-您也可以使用 Azure CLI 命令 [`az feature register`](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest#az-feature-register) ，並 [`az feature show`](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest#az-feature-show) 註冊功能並顯示註冊狀態。 
+您也可以使用 [Azure CLI 命令](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest&preserve-view=true) `az feature register` ，並 `az feature show` 註冊功能並顯示註冊狀態。 
 
 ## <a name="move-a-volume-to-another-capacity-pool"></a>將磁片區移至另一個容量集區
 
@@ -68,7 +68,7 @@ ms.locfileid: "88949995"
 3.  按一下 [確定]。
 
 
-## <a name="next-steps"></a>接下來的步驟  
+## <a name="next-steps"></a>後續步驟  
 
 * [Azure NetApp Files 的服務等級](azure-netapp-files-service-levels.md)
 * [設定容量集區](azure-netapp-files-set-up-capacity-pool.md)

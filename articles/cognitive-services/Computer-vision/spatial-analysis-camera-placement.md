@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: aahi
-ms.openlocfilehash: 00bca2d0c7e267bef8cd4a917463c5e7db159792
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 8e951e6cb18596b19f49bf42179297f656e3fa5f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90933919"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91304284"
 ---
 # <a name="camera-placement-guide"></a>攝影機放置指南
 
@@ -56,7 +56,7 @@ ms.locfileid: "90933919"
 
 ## <a name="camera-to-focal-point-distance"></a>攝影機與焦點距離
 
-_攝影機與焦距距離_ 是從焦點開始的線性距離， (或將感興趣的點中心焦點) 至相機。
+_攝影機與焦點距離_ 是從焦點 (或中央相機影像) 到以地面測量的相機之間的線性距離。
 
 ![攝影機與焦點距離](./media/spatial-analysis/camera-focal-point.png)
 
@@ -161,7 +161,7 @@ _攝影機與焦距距離_ 是從焦點開始的線性距離， (或將感興趣
 
 隨機佇列行表單茁壯。 如果佇列不是形成超過2-3 人，以及區域定義內的線條表單，就可以接受此佇列樣式。 如果佇列長度通常超過2-3 人，我們建議使用 retractable 皮帶關卡來協助引導佇列方向，並確保區域定義中的行形式。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [部署人員計數 web 應用程式](spatial-analysis-web-app.md)
 * [設定空間分析作業](./spatial-analysis-operations.md)

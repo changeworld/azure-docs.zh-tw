@@ -7,12 +7,12 @@ ms.service: application-gateway
 services: application-gateway
 ms.topic: conceptual
 ms.date: 11/16/2019
-ms.openlocfilehash: baa02c4d946a121f26f421af99835ae2bea18847
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 59ca7708b24d2e75381290b80adeb671e2b49822
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74130342"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362690"
 ---
 # <a name="overview-of-websocket-support-in-application-gateway"></a>應用程式閘道中的 WebSocket 支援概觀
 
@@ -26,13 +26,13 @@ ms.locfileid: "74130342"
 
 ## <a name="how-does-websocket-work"></a>WebSocket 的運作方式
 
-若要建立 WebSocket 連線，會在用戶端與伺服器之間交換特定的 HTTP 型交握。 如果成功，應用程式層通訊協定會從 HTTP「升級」為 WebSocket，使用先前建立的 TCP 連線。 當發生這種情形時，HTTP 會完全退場；端點使用 WebSocket 通訊協定傳送或接收資料，直到 WebSocket 連線關閉為止。 
+若要建立 WebSocket 連線，會在用戶端與伺服器之間交換特定以 HTTP 為基礎的交握。 如果成功，應用程式層通訊協定會從 HTTP「升級」為 WebSocket，使用先前建立的 TCP 連線。 當發生這種情形時，HTTP 會完全退場；端點使用 WebSocket 通訊協定傳送或接收資料，直到 WebSocket 連線關閉為止。 
 
-![websocket](./media/application-gateway-websocket/websocket.png)
+![圖表比較用戶端與 web 伺服器互動的方式，連接兩次以取得兩個回復，也就是 WebSocket 互動，用戶端會連接到伺服器一次，以取得多個回復。](./media/application-gateway-websocket/websocket.png)
 
 ### <a name="listener-configuration-element"></a>接聽程式組態元素
 
-現有的 HTTP 接聽程式可用來支援 WebSocket 流量。 以下是來自範例範本檔案中 httpListeners 元素的程式碼片段。 您必須同時擁有 HTTP 和 HTTPS 接聽程式才能支援 WebSocket 和保護 WebSocket 流量。 同樣地，您可以使用入口網站或 Azure PowerShell 在埠80/443 上建立具有接聽程式的應用程式閘道，以支援 WebSocket 流量。
+現有的 HTTP 接聽程式可用來支援 WebSocket 流量。 以下是來自範例範本檔案中 httpListeners 元素的程式碼片段。 您必須同時擁有 HTTP 和 HTTPS 接聽程式才能支援 WebSocket 和保護 WebSocket 流量。 同樣地，您可以使用入口網站或 Azure PowerShell 來建立應用程式閘道，並在埠80/443 上使用接聽程式來支援 WebSocket 流量。
 
 ```json
 "httpListeners": [
@@ -68,7 +68,7 @@ ms.locfileid: "74130342"
 
 ## <a name="backendaddresspool-backendhttpsetting-and-routing-rule-configuration"></a>BackendAddressPool、BackendHttpSetting 和路由規則組態
 
-若後端集區具有已啟用 WebSocket 的伺服器，使用 backendAddressPool 加以定義。 backendHttpSetting 是以後端連接埠 80 和 443 加以定義。 HTTP 設定中的要求超時值也適用于 WebSocket 會話。 路由規則中不需要進行任何變更，這是用來將適當的接聽程式系結至對應的後端位址集區。 
+若後端集區具有已啟用 WebSocket 的伺服器，使用 backendAddressPool 加以定義。 backendHttpSetting 是以後端連接埠 80 和 443 加以定義。 HTTP 設定中的要求超時值也適用于 WebSocket 會話。 路由規則中不需要任何變更，這是用來將適當的接聽程式系結到對應的後端位址集區。 
 
 ```json
 "requestRoutingRules": [{

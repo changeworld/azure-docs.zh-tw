@@ -1,6 +1,6 @@
 ---
 title: 設定連線處理站拓撲 - Azure | Microsoft Docs
-description: 本文說明如何設定連線的工廠解決方案加速器，包括其拓撲。
+description: 本文說明如何設定連線的處理站解決方案加速器，包括其拓撲。
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -8,14 +8,17 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: 5fa3d4d4fdfa0dd81cd8ab8772ffb3903dda289f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e015c6761b920ef37af2bbfd67ced5fc3218d532
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73820123"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91290682"
 ---
 # <a name="configure-the-connected-factory-solution-accelerator"></a>設定連線的處理站解決方案加速器
+
+> [!IMPORTANT]
+> 當我們更新這篇文章時，請參閱 [Azure 產業 IoT](https://azure.github.io/Industrial-IoT/) 的最新內容。
 
 連線的處理站解決方案加速器會針對虛構公司 Contoso 顯示模擬的儀表板。 此公司在全球許多地點都有工廠。
 
@@ -29,7 +32,7 @@ ms.locfileid: "73820123"
 * 測試站台
 * 封裝站台
 
-這些 OPC UA 伺服器會讓 OPC UA 節點和 [OPC 發行者](overview-opc-publisher.md) \(英文\) 將這些節點的值傳送至連線的處理站。 其中包括：
+這些 OPC UA 伺服器會讓 OPC UA 節點和 [OPC 發行者](overview-opc-publisher.md) \(英文\) 將這些節點的值傳送至連線的處理站。 這包括：
 
 * 目前的操作狀態，例如目前的耗電量。
 * 生產資訊，例如所生產的產品數目。
@@ -264,9 +267,9 @@ ms.locfileid: "73820123"
 
 此分類中的屬性會定義連線處理站儀表板的視覺外觀。 範例包括：
 
-* Name
+* 名稱
 * 說明
-* Image
+* 映像
 * 位置
 * 單位
 * 可見
@@ -291,7 +294,7 @@ WebApp 可維護其中包含所有拓撲節點相關資訊的內部資料字典�
 連線的處理站支援簡易的最小/最大閾值型警示產生機制。 為回應那些警示，有數個可以設定的預先定義動作。 下列屬性可控制這個機制：
 
 * 最大值
-* 最低需求
+* 最小值
 * MaximumAlertActions
 * MinimumAlertActions
 
@@ -307,7 +310,7 @@ WebApp 可維護其中包含所有拓撲節點相關資訊的內部資料字典�
 
   識別 OPC UA 伺服器中的節點值。 此屬性的格式必須是如在 OPC UA 規格中所指定。 在內嵌訊息中，此屬性會當作 **NodeId** 傳送。
 
-如需有關如何將遙測資料內嵌至連線的處理站的詳細資訊，請參閱[什麼是 OPC 發行者](overview-opc-publisher.md)。
+如需如何將遙測資料內嵌至連線處理站的詳細資訊，請參閱 [什麼是 OPC 發行者](overview-opc-publisher.md) 。
 
 ## <a name="example-how-kpi1-is-calculated"></a>範例：如何計算 KPI1
 
@@ -340,4 +343,4 @@ WebApp 可維護其中包含所有拓撲節點相關資訊的內部資料字典�
 
 ## <a name="next-steps"></a>後續步驟
 
-建議的下一個步驟是瞭解如何[自訂連線的](iot-accelerators-connected-factory-customize.md)處理站解決方案。
+建議的下一個步驟是瞭解如何 [自訂連線的](iot-accelerators-connected-factory-customize.md)處理站解決方案。

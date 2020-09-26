@@ -2,14 +2,14 @@
 title: 選擇集區的 VM 大小
 description: 如何為 Azure Batch 集區中的計算節點選取可用的 VM 大小
 ms.topic: conceptual
-ms.date: 08/07/2020
+ms.date: 09/22/2020
 ms.custom: seodec18
-ms.openlocfilehash: 9aef1fc21120401252d188b7373c6ce4139c71c4
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 2819bb5e4000f18653e47b616a551d69ec525d2c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88005135"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91271302"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>為 Azure Batch 集區中的運算節點選擇 VM 大小
 
@@ -37,11 +37,11 @@ ms.locfileid: "88005135"
 | Dv3、Dsv3 | 所有大小 |
 | Dav4<sup>1</sup> | 所有大小 |
 | Dasv4<sup>1</sup> | 所有大小 |
-| Ddv4, Ddsv4 |  無 - 尚未提供 |
-| Ev3、Esv3 | E64is_v3 和 E64i_v3 以外的所有大小 |
+| Ddv4, Ddsv4 |  所有大小 |
+| Ev3、Esv3 | 所有大小（E64is_v3 除外） |
 | Eav4<sup>1</sup> | 所有大小 |
 | Easv4<sup>1</sup> | 所有大小 |
-| Edv4, Edsv4 |  無 - 尚未提供 |
+| Edv4, Edsv4 |  所有大小 |
 | F、Fs | 所有大小 |
 | Fsv2 | 所有大小 |
 | G、Gs | 所有大小 |
@@ -52,7 +52,7 @@ ms.locfileid: "88005135"
 | Ls | 所有大小 |
 | Lsv2<sup>1</sup> | 所有大小 |
 | M<sup>1</sup> | 所有大小 |
-| Mv2 | 無 - 尚未提供 |
+| Mv2<sup>1、2</sup> | 所有大小 |
 | NC | 所有大小 |
 | NCv2<sup>1</sup> | 所有大小 |
 | NCv3<sup>1</sup> | 所有大小 |
@@ -60,10 +60,15 @@ ms.locfileid: "88005135"
 | NDv2<sup>1</sup> | 無 - 尚未提供 |
 | NV | 所有大小 |
 | NVv3<sup>1</sup> | 所有大小 |
-| NVv4 | None |
+| NVv4 | 無 - 尚未提供 |
 | SAP HANA | None |
 
-<sup>1</sup> 這些 VM 大小可在虛擬機器設定的 Batch 集區中配置，但必須建立新的 Batch 帳戶，並要求[增加特定配額](batch-quota-limit.md#increase-a-quota)。 一旦 Batch 帳戶完全支援每個 VM 系列的 vCPU 配額，就會移除這項限制。
+<sup>1</sup> 您可以在虛擬機器設定的 batch 集區中配置這些 VM 系列，但您必須建立新的 Batch 帳戶，並要求增加特定的 [配額](batch-quota-limit.md#increase-a-quota)。 一旦 Batch 帳戶完全支援每個 VM 系列的 vCPU 配額，就會移除這項限制。
+
+<sup>2</sup> 這些 vm 系列只能搭配第2代 vm 映射使用。
+
+### <a name="using-generation-2-vm-images"></a>使用第2代 VM 映射
+某些 VM 系列（例如 [Mv2](../virtual-machines/mv2-series.md)）只能搭配 [第2代 vm 映射](../virtual-machines/generation-2.md)使用。 第2代 VM 映射的指定方式與任何 VM 映射相同，使用 [' imageReference '](/rest/api/batchservice/pool/add#imagereference) 設定的 ' sku ' 屬性;' sku ' 字串具有尾碼，例如 "-g2" 或 "-gen2"。 若要取得 Batch 所支援的 VM 映射清單（包括第2代映射），請使用「 [列出支援的映射](/rest/api/batchservice/account/listsupportedimages) 」 API、 [PowerShell](/powershell/module/az.batch/get-azbatchsupportedimage)或 [Azure CLI](/cli/azure/batch/pool/supported-images)。
 
 ### <a name="pools-in-cloud-service-configuration"></a>雲端服務組態中的集區
 

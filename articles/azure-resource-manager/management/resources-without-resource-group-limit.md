@@ -1,20 +1,21 @@
 ---
 title: 沒有800計數限制的資源
-description: 列出資源群組中可有超過800個實例的 Azure 資源類型。
+description: 列出可在資源群組中有超過800個實例的 Azure 資源類型。
 ms.topic: conceptual
-ms.date: 05/04/2020
-ms.openlocfilehash: 6f7b45ec3691bc3a48d9aa3dfa072c1c68189007
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 09/21/2020
+ms.openlocfilehash: e7a15607b144f1d7916f310948f15dc28d76a205
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87040755"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330752"
 ---
-# <a name="resources-not-limited-to-800-instances-per-resource-group"></a>每個資源群組的資源不限於800實例
+# <a name="resources-not-limited-to-800-instances-per-resource-group"></a>資源不限於每個資源群組800個實例
 
-根據預設，您可以在每個資源群組中部署最多800個資源類型的實例。 不過，某些資源類型會豁免800實例的限制。 本文列出在資源群組中可以有超過800個實例的 Azure 資源類型。 所有其他資源類型的限制為800實例。
+根據預設，您可以在每個資源群組中部署最多800個資源類型的實例。 不過，某些資源類型會豁免800實例的限制。 本文列出可在資源群組中有超過800個實例的 Azure 資源類型。 所有其他資源類型的限制為800個實例。
 
-針對某些資源類型，您必須聯絡支援人員以移除800實例的限制。 這篇文章中注明了這些資源類型。
+針對某些資源類型，您必須聯絡支援人員，以移除800個實例的限制。 本文會注明這些資源類型。
+
 
 ## <a name="microsoftautomation"></a>Microsoft.Automation
 
@@ -22,13 +23,15 @@ ms.locfileid: "87040755"
 
 ## <a name="microsoftazurestack"></a>Microsoft.AzureStack
 
+* edgeSubscriptions
+* linkedSubscriptions
 * registrations
 * registrations/customerSubscriptions
 * registrations/products
 
 ## <a name="microsoftbotservice"></a>Microsoft.BotService
 
-* botServices-根據預設，限制為800個實例。 這項限制可以透過聯絡支援人員來增加。
+* >botservices.cs-預設限制為800個實例。 您可以聯繫支援人員來增加該限制。
 
 ## <a name="microsoftcompute"></a>Microsoft.Compute
 
@@ -38,6 +41,7 @@ ms.locfileid: "87040755"
 * galleries/images/versions
 * images
 * snapshots
+* virtualMachineScaleSets-預設限制為800個實例。 您可以聯繫支援人員來增加該限制。
 * virtualMachines
 
 ## <a name="microsoftcontainerinstance"></a>Microsoft.ContainerInstance
@@ -55,24 +59,29 @@ ms.locfileid: "87040755"
 * registries/tasks
 * registries/webhooks
 
+## <a name="microsoftd365customerinsights"></a>D365CustomerInsights
+
+* 執行個體
+
 ## <a name="microsoftdbformariadb"></a>Microsoft.DBforMariaDB
 
 * servers
 
 ## <a name="microsoftdbformysql"></a>Microsoft.DBforMySQL
 
+* flexibleServers
 * servers
 
 ## <a name="microsoftdbforpostgresql"></a>Microsoft.DBforPostgreSQL
 
+* flexibleServers
 * serverGroups
 * servers
 * serversv2
-* singleServers
 
 ## <a name="microsoftdevtestlab"></a>Microsoft.DevTestLab
 
-* 排程-根據預設，限制為800實例。 這項限制可以透過聯絡支援人員來增加。
+* schedules
 
 ## <a name="microsoftenterpriseknowledgegraph"></a>Microsoft.EnterpriseKnowledgeGraph
 
@@ -104,6 +113,10 @@ ms.locfileid: "87040755"
 
 * integrationAccounts
 * workflows
+
+## <a name="microsoftmedia"></a>Microsoft.Media
+
+* mediaservices/liveEvents
 
 ## <a name="microsoftnetapp"></a>Microsoft.NetApp
 
@@ -144,10 +157,10 @@ ms.locfileid: "87040755"
 * privateDnsZones/SRV
 * privateDnsZones/TXT
 * privateDnsZones/全部
-* privateDnsZones/virtualNetworkLinks
+* privateDnsZones/Registrationenabled
 * privateEndpoints
 * privateLinkServices
-* publicIPAddresses-根據預設，限制為800個實例。 這項限制可以透過聯絡支援人員來增加。
+* publicIPAddresses-預設限制為800個實例。 您可以聯繫支援人員來增加該限制。
 * serviceEndpointPolicies
 * trafficmanagerprofiles
 * virtualNetworkTaps
@@ -158,7 +171,7 @@ ms.locfileid: "87040755"
 
 ## <a name="microsoftpowerbi"></a>Microsoft.PowerBI
 
-* workspaceCollections-根據預設，限制為800個實例。 這項限制可以透過聯絡支援人員來增加。
+* workspaceCollections-預設限制為800個實例。 您可以聯繫支援人員來增加該限制。
 
 ## <a name="microsoftrelay"></a>Microsoft.Relay
 
@@ -192,4 +205,4 @@ ms.locfileid: "87040755"
 
 ## <a name="next-steps"></a>後續步驟
 
-如需配額和限制的完整清單，請參閱[Azure 訂用帳戶和服務限制、配額和條件約束](azure-subscription-service-limits.md)。
+如需配額和限制的完整清單，請參閱 [Azure 訂用帳戶和服務限制、配額和條件約束](azure-subscription-service-limits.md)。

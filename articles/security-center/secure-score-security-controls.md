@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/12/2020
+ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: b7cbba051dd0833a039d378cd73a59314c0221c8
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 3aab1329dc7bbcc70621684b3f1ac2362f4bc458
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905581"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268259"
 ---
 # <a name="secure-score-in-azure-security-center"></a>Azure 資訊安全中心的安全分數
 
@@ -179,7 +179,7 @@ Azure 資訊安全中心有兩個主要目標：協助您瞭解目前的安全�
     <td class="tg-lboi"; width=55%>- 應啟用 SQL 伺服器上的稽核<br>- 應啟用 App Service 中的診斷記錄<br>- 應啟用 Azure Data Lake Store 中的診斷記錄<br>- 應啟用 Azure 串流分析中的診斷記錄<br>- 應啟用 Batch 帳戶中的診斷記錄<br>- 應啟用 Data Lake Analytics 中的診斷記錄<br>- 應啟用事件中樞中的診斷記錄<br>- 應啟用 IoT 中樞中的診斷記錄<br>- 應啟用 Key Vault 中的診斷記錄<br>- 應啟用 Logic Apps 中的診斷記錄<br>- 應啟用搜尋服務中的診斷記錄<br>- 應啟用服務匯流排中的診斷記錄<br>- 應啟用虛擬機器擴展集中的診斷記錄<br>- Batch 帳戶上應設定計量警示規則<br>- SQL 稽核設定應已設定動作群組來擷取重要活動<br>- SQL 伺服器應設定有 90 天以上的稽核保留天數</td>
   </tr>
   <tr>
-    <td class="tg-lboi"><strong><p style="font-size: 16px">啟用 advanced 威脅防護 (最大分數 0) </p></strong>Azure 資訊安全中心的威脅防護可針對您的環境提供完整的防禦。 資訊安全中心在您環境的任何區域中偵測到威脅時，會產生警示。 這些警示會說明受影響資源的詳細資料、建議的補救步驟，以及在某些情況下會說明觸發邏輯應用程式以進行回應的選項。<br>每個威脅防護配套都是個別的選擇性供應專案，您可以使用此安全性控制中的相關建議來啟用。<br><a href="https://docs.microsoft.com/azure/security-center/threat-protection">深入瞭解資訊安全中心的威脅防護</a>。</td>
+    <td class="tg-lboi"><strong><p style="font-size: 16px">啟用 advanced 威脅防護 (最大分數 0) </p></strong>Azure 資訊安全中心的選用 Azure Defender 威脅防護方案可為您的環境提供完整的防禦。 資訊安全中心在您環境的任何區域中偵測到威脅時，會產生警示。 這些警示會說明受影響資源的詳細資料、建議的補救步驟，以及在某些情況下會說明觸發邏輯應用程式以進行回應的選項。<br>每個 Azure Defender 方案都是個別的選擇性供應專案，您可以使用此安全性控制中的相關建議來啟用此功能。<br><a href="https://docs.microsoft.com/azure/security-center/threat-protection">深入瞭解資訊安全中心的威脅防護</a>。</td>
     <td class="tg-lboi"; width=55%>- Azure SQL Database 伺服器上應啟用 Advanced data security<br>- 應在電腦上的 SQL server 上啟用 Advanced data security<br>- 應在虛擬機器上啟用 Advanced 威脅防護<br>- Azure App Service 方案上應啟用 Advanced 威脅防護<br>- 應在 Azure 儲存體帳戶上啟用 Advanced 威脅防護<br>- 應在 Azure Kubernetes Service 叢集上啟用 Advanced 威脅防護<br>- 應在 Azure Container Registry 登錄上啟用 Advanced 威脅防護<br>- 應在 Azure Key Vault 保存庫上啟用 Advanced 威脅防護</td>
   </tr>
   <tr>
@@ -197,14 +197,8 @@ Azure 資訊安全中心有兩個主要目標：協助您瞭解目前的安全�
 
 ## <a name="secure-score-faq"></a>安全分數常見問題集
 
-### <a name="why-has-my-secure-score-gone-down"></a>為什麼我的安全分數降低了？
-安全性中心已切換至增強的安全分數，其中包含計算分數的方式變更。 現在，您必須解決所有建議，資源才會得到點數。 分數也會變更為 0-10 分的計分方式。
-
 ### <a name="if-i-address-only-three-out-of-four-recommendations-in-a-security-control-will-my-secure-score-change"></a>如果我只解決安全性控制項四個建議中的三個，我的安全分數是否會改變？
 否。 在您補救單一資源的所有建議之前，分數不會變更。 若要取得控制項的最高分數，您必須補救所有資源的所有建議。
-
-### <a name="is-the-previous-experience-of-the-secure-score-still-available"></a>是否仍可看到先前的安全分數使用體驗？ 
-不可以。 在一段時間執行，以簡化轉換。 先前的模型現在已被取代。 
 
 ### <a name="if-a-recommendation-isnt-applicable-to-me-and-i-disable-it-in-the-policy-will-my-security-control-be-fulfilled-and-my-secure-score-updated"></a>如果建議不適用於我，而我在原則中停用建議，我的安全性控制項是否會完成，而且我的安全分數也會更新？
 是。 建議您在建議不適合您的環境時予以停用。 如需有關如何停用特定建議的指示，請參閱[停用安全性原則](https://docs.microsoft.com/azure/security-center/tutorial-security-policy#disable-security-policies)。

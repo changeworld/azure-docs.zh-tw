@@ -8,12 +8,12 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 09/11/2020
-ms.openlocfilehash: e52432c01e649754116fcd0420fa52ae6c4e3733
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 47d1f3c78a303f7a45457a435fa11f074c41d7aa
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90031852"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316149"
 ---
 # <a name="troubleshoot-mapping-data-flows-in-azure-data-factory"></a>針對 Azure Data Factory 中的對應資料流程進行疑難排解
 
@@ -116,7 +116,7 @@ ms.locfileid: "90031852"
 
 - **Message**：有大量的 null 值或遺漏值，可能是因為取樣的資料列數目太少所造成。 請嘗試更新調試資料列限制並重新整理資料。
 - **原因**：聯結條件不符合任何資料列，或在資料預覽期間導致大量的 null。
-- **建議**：移至 [Debug 設定]，並增加來源資料列限制中的資料列數目。 確定您已選取並 Azure IR 具有夠大的資料流程叢集，以處理更多資料。
+- **建議**：移至 [Debug 設定]，並增加來源資料列限制中的資料列數目。 請確定您選取的 Azure IR 具有夠大的資料流程叢集，以處理更多資料。
 
 
 ## <a name="general-troubleshooting-guidance"></a>一般疑難排解指引

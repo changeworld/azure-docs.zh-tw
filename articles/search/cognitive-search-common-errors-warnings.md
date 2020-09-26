@@ -7,13 +7,13 @@ author: amotley
 ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 142c6b4315eb1862dd116647f4396835c7286591
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.date: 09/23/2020
+ms.openlocfilehash: 8ceb6d4dddb76148be1e82ebc8c1994886a11da3
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378350"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362809"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>針對 Azure 認知搜尋中常見的索引子錯誤和警告進行疑難排解
 
@@ -32,7 +32,7 @@ ms.locfileid: "89378350"
 
 從 API 版本開始 `2019-05-06` ，專案層級的索引子錯誤和警告會結構化，以提供更清楚的原因和後續步驟。 它們包含下列屬性：
 
-| 屬性 | 描述 | 範例 |
+| 屬性 | 說明 | 範例 |
 | --- | --- | --- |
 | 索引鍵 | 受錯誤或警告影響之檔的檔識別碼。 | HTTPs： \/ /coromsearch.blob.core.windows.net/jfk-1k/docid-32112954.pdf |
 | NAME | 描述發生錯誤或警告之位置的作業名稱。 這是由下列結構產生： [category]。[子類別]。[resourceType]。CoNtext.resourcename | DocumentExtraction. azureblob. myBlobContainerName 擴充. WebApiSkill. mySkillName 投射. SearchIndex. OutputFieldMapping. myOutputFieldName SearchIndex. MergeOrUpload. myIndexName |
@@ -59,9 +59,9 @@ ms.locfileid: "89378350"
 
 | 原因 | 詳細資料/範例 | 解決方案 |
 | --- | --- | --- |
-| blob 超過大小限制 | 檔是 `'150441598'` 位元組，超過 `'134217728'` 目前服務層級的檔解壓縮大小上限位元組。 | [blob 索引錯誤](search-howto-indexing-azure-blob-storage.md#dealing-with-errors) |
-| blob 具有不支援的內容類型 | 檔有不支援的內容類型 `'image/png'` | [blob 索引錯誤](search-howto-indexing-azure-blob-storage.md#dealing-with-errors) |
-| blob 已加密 | 無法處理檔-可能已加密或密碼受到保護。 | 您可以略過具有 [blob 設定](search-howto-indexing-azure-blob-storage.md#controlling-which-parts-of-the-blob-are-indexed)的 blob。 |
+| blob 超過大小限制 | 檔是 `'150441598'` 位元組，超過 `'134217728'` 目前服務層級的檔解壓縮大小上限位元組。 | [blob 索引錯誤](search-howto-indexing-azure-blob-storage.md#DealingWithErrors) |
+| blob 具有不支援的內容類型 | 檔有不支援的內容類型 `'image/png'` | [blob 索引錯誤](search-howto-indexing-azure-blob-storage.md#DealingWithErrors) |
+| blob 已加密 | 無法處理檔-可能已加密或密碼受到保護。 | 您可以略過具有 [blob 設定](search-howto-indexing-azure-blob-storage.md#PartsOfBlobToIndex)的 blob。 |
 | 暫時性問題 | 「處理 blob 時發生錯誤：要求已中止：要求已取消。」 「處理期間的檔超時」。 | 有時會發生未預期的連線問題。 稍後再試一次使用您的索引子執行檔。 |
 
 <a name="could-not-parse-document"></a>
@@ -175,7 +175,7 @@ ms.locfileid: "89378350"
 
 ## <a name="error-integrated-change-tracking-policy-cannot-be-used-because-table-has-a-composite-primary-key"></a>錯誤：因為資料表具有複合主鍵，所以無法使用整合式變更追蹤原則
 
-這適用于 SQL 資料表，通常會在索引鍵定義為複合索引鍵時，或是當資料表已將唯一的叢集索引定義 (的 SQL 索引中（而非 Azure 搜尋服務索引) ）時發生。 主要的原因是在 [唯一叢集索引](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described?view=sql-server-ver15)的情況下，索引鍵屬性會修改為複合主鍵。 在這種情況下，請確定您的 SQL 資料表沒有唯一的叢集索引，或您將索引鍵欄位對應至保證不會有重複值的欄位。
+這適用于 SQL 資料表，通常會在索引鍵定義為複合索引鍵時，或是當資料表已將唯一的叢集索引定義 (的 SQL 索引中（而非 Azure 搜尋服務索引) ）時發生。 主要的原因是在 [唯一叢集索引](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described)的情況下，索引鍵屬性會修改為複合主鍵。 在這種情況下，請確定您的 SQL 資料表沒有唯一的叢集索引，或您將索引鍵欄位對應至保證不會有重複值的欄位。
 
 <a name="could-not-process-document-within-indexer-max-run-time"></a>
 

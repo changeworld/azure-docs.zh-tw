@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/06/2020
 ms.author: Zhchia
-ms.openlocfilehash: 27e34a66bb6dfa642b84bd8997b2b02c4981788e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 3f2f62fe158b946e00c7f81d0cb7eeb0d8f09437
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551545"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331122"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>教學課程︰設定 G Suite 來自動佈建使用者
 
@@ -133,13 +133,13 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
 3. 選取 [佈建] 索引標籤。按一下 [開始使用]。
 
-    ![佈建索引標籤](common/provisioning.png)
+    ![已呼叫 [布建] 選項的 [管理選項] 螢幕擷取畫面。](common/provisioning.png)
 
       ![[開始使用] 刀鋒視窗](./media/google-apps-provisioning-tutorial/get-started.png)
 
 4. 將 [佈建模式] 設定為 [自動]。
 
-    ![佈建索引標籤](common/provisioning-automatic.png)
+    ![[布建模式] 下拉式清單的螢幕擷取畫面，其中已呼叫 [自動] 選項。](common/provisioning-automatic.png)
 
 5. 在 [ **管理員認證** ] 區段下，按一下 [ **授權**]。 系統會在新的瀏覽器視窗中，將您重新導向至 Google 授權對話方塊。
 
@@ -273,7 +273,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
 1. 使用[佈建記錄](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) \(部分機器翻譯\) 來判斷哪些使用者已佈建成功或失敗
 2. 檢查[進度列](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user) \(部分機器翻譯\) 來查看佈建週期的狀態，以及其接近完成的程度
-3. 如果佈建設定似乎處於狀況不良的狀態，應用程式將會進入隔離狀態。 [在此](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status) \(部分機器翻譯\) 深入了解隔離狀態。
+3. 如果佈建設定似乎處於狀況不良的狀態，應用程式將會進入隔離狀態。 [在此](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)深入了解隔離狀態。
 
 ## <a name="additional-resources"></a>其他資源
 
