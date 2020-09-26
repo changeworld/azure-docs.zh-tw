@@ -1,14 +1,14 @@
 ---
 title: 管理已簽署的映像
-description: 了解如何為您的 Azure 容器登錄啟用內容信任，並推送及提取已簽署的映像。 內容信任是 Premium 服務層的一項功能。
+description: 了解如何為您的 Azure 容器登錄啟用內容信任，並推送及提取已簽署的映像。 內容信任是 Premium 服務層的功能。
 ms.topic: article
 ms.date: 09/06/2019
-ms.openlocfilehash: 34bb56bab869cb1f12541b65c59b06a73b215377
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 36d2a8ddef184804facdace2d517d7e2fdf1b24c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076846"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91253474"
 ---
 # <a name="content-trust-in-azure-container-registry"></a>Azure Container Registry 中的內容信任
 
@@ -40,7 +40,7 @@ Azure Container Registry 會實作 Docker 的[內容信任][docker-content-trust
 
 若要為您的登錄啟用內容信任，請先瀏覽至 Azure 入口網站中的登錄。 在 [原則] 下方，選取 [內容信任] > [已啟用] > [儲存]。 您也可以使用 Azure CLI 中的 [az acr config content-trust update][az-acr-config-content-trust-update] 命令。
 
-![在 Azure 入口網站中為登錄啟用內容信任][content-trust-01-portal]
+![螢幕擷取畫面顯示在 Azure 入口網站中啟用登錄的內容信任。][content-trust-01-portal]
 
 ## <a name="enable-client-content-trust"></a>啟用用戶端內容信任
 
@@ -114,7 +114,7 @@ az role assignment create --scope $REGISTRY_ID --role AcrImageSigner --assignee 
 `<service principal ID>` 可以是服務主體的 **appId**、**objectId**，或其 **servicePrincipalNames** 之一。 如需使用服務主體與 Azure Container Registry 的詳細資訊，請參閱[使用服務主體進行 Azure Container Registry 驗證](container-registry-auth-service-principal.md)。
 
 > [!IMPORTANT]
-> 進行任何角色變更之後，請執行 `az acr login` 來重新整理 Azure CLI 的本機身分識別權杖，以便讓新的角色生效。 如需驗證身分識別角色的詳細資訊，請參閱[使用 RBAC 來管理 azure 資源的存取權和 Azure CLI](../role-based-access-control/role-assignments-cli.md)和針對[Azure RBAC 進行疑難排解](../role-based-access-control/troubleshooting.md)。
+> 進行任何角色變更之後，請執行 `az acr login` 來重新整理 Azure CLI 的本機身分識別權杖，以便讓新的角色生效。 如需有關驗證身分識別角色的詳細資訊，請參閱 [使用 RBAC 管理 azure 資源的存取權和 Azure CLI](../role-based-access-control/role-assignments-cli.md) 以及針對 [Azure RBAC 進行疑難排解](../role-based-access-control/troubleshooting.md)。
 
 ## <a name="push-a-trusted-image"></a>推送信任的映像
 
