@@ -4,17 +4,17 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: c0213b050745712a5c77d4861b9cfba4fc953dfd
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: aec9d2049a69aebc7102a70274e5fb2a3ef865a8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934670"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91377520"
 ---
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
-- 已部署的通訊服務資源。 [建立通訊服務資源](../../create-communication-resource.md)。
+- 已部署通訊服務資源。 [建立通訊服務資源](../../create-communication-resource.md)。
 - `User Access Token`要啟用呼叫用戶端的。 如需[如何取得的 `User Access Token` ](../../access-tokens.md)詳細資訊
 - 選擇性：完成快速入門以 [開始將呼叫新增至您的應用程式](../getting-started-with-calling.md)
 
@@ -23,7 +23,7 @@ ms.locfileid: "90934670"
 ### <a name="install-the-package"></a>安裝套件
 
 <!-- TODO: update with instructions on how to download, install and add package to project -->
-找出您的專案層級 gradle，並確定將其新增 `mavenCentral()` 至和下的存放庫清單 `buildscript``allprojects`
+找出您的專案層級 build.gradle，並務必將 `mavenCentral()` 新增至 `buildscript` 和 `allprojects` 下的存放庫清單
 ```groovy
 buildscript {
     repositories {
@@ -56,13 +56,13 @@ dependencies {
 
 ## <a name="object-model"></a>物件模型
 
-下列類別和介面會處理 Azure 通訊服務呼叫用戶端程式庫的一些主要功能：
+下列類別和介面會處理 Azure 通訊服務通話用戶端程式庫的一些主要功能：
 
 | Name                                  | 描述                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
-| CallClient| CallClient 是呼叫用戶端程式庫的主要進入點。|
-| CallAgent | CallAgent 可用來啟動及管理呼叫。 |
-| CommunicationUserCredential | CommunicationUserCredential 會用來做為權杖認證，以具現化 CallAgent。|
+| CallClient| CallClient 是通話用戶端程式庫的主要進入點。|
+| CallAgent | CallAgent 是用來啟動和管理通話。 |
+| CommunicationUserCredential | CommunicationUserCredential 會當做權杖認證使用，以具現化 CallAgent。|
 
 ## <a name="initialize-the-callclient-create-a-callagent-and-access-the-devicemanager"></a>初始化 CallClient、建立 CallAgent，並存取 DeviceManager
 
@@ -81,8 +81,8 @@ DeviceManage deviceManager = await callClient.getDeviceManager().get();
 
 ## <a name="place-an-outgoing-call-and-join-a-group-call"></a>撥出來電並加入群組呼叫
 
-若要建立並啟動呼叫，您必須呼叫 `CallClient.call()` 方法，並將 `Identifier` 被呼叫端的 (s) 。
-若要加入群組呼叫，您需要呼叫 `CallClient.join()` 方法並提供 groupId。 群組識別碼必須是 GUID 或 UUID 格式。
+若要建立並啟動呼叫，您必須呼叫 `CallAgent.call()` 方法，並將 `Identifier` 被呼叫端的 (s) 。
+若要加入群組呼叫，您需要呼叫 `CallAgent.join()` 方法並提供 groupId。 群組識別碼必須是 GUID 或 UUID 格式。
 
 呼叫建立和啟動是同步的。 呼叫實例可讓您訂閱呼叫上的所有事件。
 
@@ -106,7 +106,7 @@ PhoneNumber acsUser2 = new PhoneNumber("<PHONE_NUMBER>");
 CommunicationIdentifier participants[] = new CommunicationIdentifier[]{ acsUser1, acsUser2 };
 StartCallOptions startCallOptions = new StartCallOptions();
 Context appContext = this.getApplicationContext();
-Call groupCall = callClient.call(participants, startCallOptions);
+Call groupCall = callAgent.call(participants, startCallOptions);
 ```
 
 ### <a name="place-a-11-call-with-with-video-camera"></a>使用攝影機撥打1:1 電話
@@ -266,7 +266,7 @@ catch(Exception e) {
 
 ### <a name="unregister-push-notification"></a>取消註冊推播通知
 
-- 應用程式可以隨時取消註冊推播通知。 只要 `unregisterPushNotification()` 在 callAgent 上呼叫方法即可。
+- 應用程式可以隨時取消註冊推播通知。 `unregisterPushNotification()`在 callAgent 上呼叫方法來取消註冊。
 
 ```java
 try {
@@ -300,7 +300,7 @@ CommunicationIdentifier callerId = call.getCallerId();
 ```java
 CallState callState = call.getState();
 ```
-它會傳回字串，reprensting 呼叫的目前狀態：
+它會傳回代表呼叫之目前狀態的字串：
 * ' None '-初始撥號狀態
 * 「連入」-指出來電為傳入，必須接受或拒絕
 * 「連線」-進入或接受呼叫後的初始轉換狀態
@@ -385,7 +385,7 @@ List<RemoteParticipant> remoteParticipants = call.getRemoteParticipants(); // [r
 * 取得此遠端參與者的識別碼。
 身分識別是其中一個 ' Identifier ' 類型
 ```java
-CommunicationIdentifier participantIdentity = remoteParticipant.getId();
+CommunicationIdentifier participantIdentity = remoteParticipant.getIdentifier();
 ```
 
 * 取得此遠端參與者的狀態。

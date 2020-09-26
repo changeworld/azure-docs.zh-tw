@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 84a1e2edcbe9e9da93a158ebc11e7bf638dae100
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: a11573da29cead49bfb17c2c5df3951229182959
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89462729"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360645"
 ---
 # <a name="speech-service-for-telephony-data"></a>語音服務的電話語音資料
 
@@ -62,7 +62,7 @@ ms.locfileid: "89462729"
 
 有些公司正在實驗提供來自外部語言支援電話的翻譯文字記錄，讓傳遞管理員可以瞭解其客戶的全球體驗。 我們可提供卓越的[翻譯](/azure/cognitive-services/speech-service/speech-translation)功能。 針對大量的地區設定，我們可以將音訊轉換為音訊或音訊轉換成文字。
 
-### <a name="text-to-speech"></a>文字轉換語音
+### <a name="text-to-speech"></a>文字轉語音
 
 實作可與客戶互動的 Bot 時，[文字轉換語音](text-to-speech.md)是另一個重要領域。 典型的路徑是客戶說話、其語音會轉譯為文字、分析文字的意圖、根據所辨識的意圖來合成回應，然後將資產呈現給客戶或產生合成的語音回應。 當然，這一切都必須快速發生，因此低延遲是這些系統成功時的重要元件。
 
@@ -121,7 +121,7 @@ ms.locfileid: "89462729"
 
  語音服務可與內建模型搭配使用。 不過，您可能會想要進一步自訂及調整產品或環境的體驗。 從原音模型調整到專屬於自身品牌的獨特聲音音調，都是自訂選項的範圍。 建立自訂模型之後，您可以在即時或批次模式中，搭配任何語音服務功能使用它。
 
-| 語音服務 | 型號 | 描述 |
+| 語音服務 | 型號 | 說明 |
 | -------------- | ----- | ----------- |
 | 語音轉文字 | [原音模型](how-to-customize-acoustic-models.md) | 針對用於特定環境 (例如汽車或工廠) 的應用程式、工具或裝置建立自訂原音模型，而這每一個的錄音條件都較特殊。 例如，帶有口音的語音、特定背景雜音或使用特定麥克風來錄音。 |
 |                | [語言模型](how-to-customize-language-model.md) | 建立自訂語言模型來提升特定產業的詞彙和文法轉譯，例如醫療術語或 IT 專業術語。 |
@@ -147,4 +147,4 @@ ms.locfileid: "89462729"
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [免費取得語音服務的訂用帳戶金鑰](get-started.md)
+> [免費取得語音服務的訂用帳戶金鑰](overview.md#try-the-speech-service-for-free)

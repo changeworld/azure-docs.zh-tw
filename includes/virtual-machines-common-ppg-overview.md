@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/30/2019
 ms.author: zivr
 ms.custom: include file
-ms.openlocfilehash: c7e3c9292b53aeb073e11a5293459e39a22ca81d
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: b5827d60b5968eb9f5e9e0a2ca5ec884366aea3d
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89570255"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91376675"
 ---
 將 Vm 放入單一區域可減少實例之間的實體距離。 將它們放在單一可用性區域內，也會讓它們彼此緊密地結合在一起。 不過，當 Azure 使用量增加時，單一可用性區域可能橫跨多個實體資料中心，這可能會導致網路延遲影響您的應用程式。 
 
@@ -47,6 +47,39 @@ ms.locfileid: "89570255"
 -   如果是彈性工作負載，您可以在其中新增和移除 VM 實例，在您的部署上具有鄰近放置群組條件約束，可能會導致無法滿足要求，導致 **AllocationFailure** 錯誤。 
 - 您可以視需要停止 (解除配置) 和啟動您的 Vm，是另一種達成彈性的方式。 因為當您停止 (將 VM 解除配置) VM 時，不會保留容量，因此再次啟動它可能會導致 **AllocationFailure** 錯誤。
 
+## <a name="planned-maintenance-and-proximity-placement-groups"></a>預定維修和鄰近放置群組
+
+規劃的維護事件（例如 Azure 資料中心的硬體解除委任）可能會影響鄰近放置群組中的資源對齊。 資源可能會移至不同的資料中心，因而中斷與鄰近放置群組相關聯的共置和延遲期望。
+
+### <a name="check-the-alignment-status"></a>檢查對齊狀態
+
+您可以執行下列動作來檢查鄰近放置群組的對齊狀態。
+
+
+- 您可以使用入口網站、CLI 和 PowerShell 來查看鄰近放置群組共置狀態。
+
+    -   使用 PowerShell 時，您可以使用 AzProximityPlacementGroup Cmdlet 來取得共置狀態，方法是包含選擇性參數 '-ColocationStatus '。
+
+    -   使用 CLI 時，可透過 `az ppg show` 包含選擇性參數 '--include-共置-status ' 來取得共置狀態。
+
+- 針對每個鄰近放置群組， **共置狀態** 屬性會提供群組資源的目前對齊狀態摘要。 
+
+    - **對齊**：資源位於鄰近放置群組的相同延遲波封中。
+
+    - **未知**：至少有一個 VM 資源解除配置。 一旦成功啟動它們之後，狀態應該會返回 [已 **對齊**]。
+
+    - **未對齊**：至少有一個 VM 資源未對齊鄰近放置群組。 未對齊的特定資源也會在成員資格區段中分開呼叫
+
+- 針對可用性設定組，您可以在 [可用性設定組] 總覽頁面中查看個別 Vm 對齊的相關資訊。
+
+- 針對擴展集，您可以在擴展集的 [**總覽**] 頁面的 [**實例**] 索引標籤中，看到個別實例對齊的相關資訊。 
+
+
+### <a name="re-align-resources"></a>重新調整資源 
+
+如果鄰近放置群組為 `Not Aligned` ，您可以 stop\deallocate 並重新啟動受影響的資源。 如果 VM 位於可用性設定組或擴展集中，則必須先 stopped\deallocated 可用性設定組或擴展集中的所有 Vm，才能重新開機。
+
+如果因為部署限制而發生配置失敗，您可能必須 stop\deallocate 受影響的鄰近放置群組中的所有資源 (包括) 的對齊資源，然後重新開機它們以還原對齊。
 
 ## <a name="best-practices"></a>最佳作法 
 - 針對最低延遲，請將鄰近位置群組與加速網路搭配使用。 如需詳細資訊，請參閱 [使用加速網路建立 Linux 虛擬機器](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) ，或 [建立具有加速網路功能的 Windows 虛擬](/azure/virtual-network/create-vm-accelerated-networking-powershell?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)機。

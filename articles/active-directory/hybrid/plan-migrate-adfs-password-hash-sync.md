@@ -12,12 +12,12 @@ ms.date: 05/29/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: afef3d41212c9366aa696bfcd0abff6c8cfc4eb3
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 3e85d2ef9d75bbff6357466e76ffcf60e3716e78
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662420"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273669"
 ---
 # <a name="migrate-from-federation-to-password-hash-synchronization-for-azure-active-directory"></a>從同盟移轉至 Azure Active Directory 的密碼雜湊同步處理
 
@@ -112,7 +112,7 @@ Get-MsolDomainFederationSettings -DomainName Contoso.com | fl *
 
 請確認可能已為您的同盟設計和部署文件自訂的任何設定。 具體來說，請尋找 **PreferredAuthenticationProtocol**、**SupportsMfa** 和 **PromptLoginBehavior** 中的自訂。
 
-如需詳細資訊，請參閱下列文章：
+如需詳細資訊，請參閱這些文章：
 
 * [AD FS prompt=login 參數支援](/windows-server/identity/ad-fs/operations/ad-fs-prompt-login)
 * [Set-MsolDomainAuthentication](/powershell/module/msonline/set-msoldomainauthentication?view=azureadps-1.0)
@@ -140,7 +140,7 @@ Get-MsolDomainFederationSettings -DomainName Contoso.com | fl *
 
 從同盟身分識別轉換為受控識別之前，請仔細查看您目前如何使用 AD FS Azure AD、Microsoft 365 和其他應用程式 (信賴憑證者信任) 。 具體而言，請考量下表所說明的案例：
 
-| If | 結果為 |
+| 如果 | 結果為 |
 |-|-|
 | 您打算繼續使用 AD FS 與 Azure AD 和 Microsoft 365) 以外的其他應用程式 (。 | 在轉換網域之後，您將使用 AD FS 和 Azure AD。 請考量使用者體驗。 在某些情況下，使用者可能需要驗證兩次：一次是 Azure AD (其中使用者會將 SSO 存取權提供給其他應用程式（例如 Microsoft 365) ），然後再次針對仍系結至 AD FS 做為信賴憑證者信任的任何應用程式取得。 |
 | 您的 AD FS 執行個體經過高度自訂，且仰賴 onload.js 檔案中特定的自訂設定 (例如您已變更登入體驗，使得使用者的使用者名稱必須採用 **SamAccountName** 格式，而非使用者主體名稱 (UPN)，或是您的組織已將登入體驗高度品牌化)。 在 Azure AD 中無法複製 onload.js 檔案。 | 在繼續作業之前，您必須確認 Azure AD 可符合您目前的自訂需求。 如需詳細資訊和指引，請參閱 AD FS 商標和 AD FS 自訂的相關章節。|
@@ -172,7 +172,7 @@ Get-MsolDomainFederationSettings -DomainName Contoso.com | fl *
 
 如需詳細資訊，請參閱[設定已加入混合式 Azure AD 的裝置](../devices/hybrid-azuread-join-plan.md)。
 
-#### <a name="branding"></a>Branding
+#### <a name="branding"></a>商標
 
 如果您的組織[自訂了 ADFS 登入頁面](/windows-server/identity/ad-fs/operations/ad-fs-user-sign-in-customization)以顯示更多有關組織的資訊，請考慮以類似的方式[自訂 Azure AD 登入頁面](../fundamentals/customize-branding.md)。
 
@@ -302,7 +302,7 @@ Get-MsolDomainFederationSettings -DomainName Contoso.com | fl *
 
 5. 在 [啟用單一登入]**** 頁面上，輸入網域系統管理員帳戶的認證，然後選取 [下一步]****。
 
-   ![螢幕擷取畫面：[啟用單一登入] 頁面](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image9.png)<br />
+   ![[啟用單一登入] 頁面的螢幕擷取畫面，您可以在其中輸入網域系統管理員帳號憑證。](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image9.png)<br />
 
    > [!NOTE]
    > 必須要有網域系統管理員帳戶認證，才能啟用無縫 SSO。 此程序會完成下列需要更高權限的動作。 網域系統管理員帳戶認證不會儲存在 Azure AD Connect 或 Azure AD 中。 網域系統管理員帳戶認證只會用來開啟功能。 此程序順利完成後，即會捨棄認證。
@@ -324,7 +324,7 @@ Get-MsolDomainFederationSettings -DomainName Contoso.com | fl *
    * [無縫單一登入]**** 設為 [啟用]****。
    * [密碼同步處理]**** 設為 [啟用]****。<br /> 
 
-   ![此螢幕擷取畫面顯示 [使用者登入] 區段中的設定](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image11.png)<br />
+   ![在 Azure AD 入口網站的 [使用者登入] 區段中顯示設定的螢幕擷取畫面。](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image11.png)<br />
 
 跳到[測試和下一個步驟](#testing-and-next-steps)。
 
@@ -476,7 +476,7 @@ Get-MsolDomainFederationSettings -DomainName Contoso.com | fl *
 
 如需詳細資訊，請參閱[如何才能變換 AZUREADSSOACC 電腦帳戶的 Kerberos 解密金鑰？](./how-to-connect-sso-faq.md)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 了解 [Azure AD Connect 設計概念](plan-connect-design-concepts.md)。
 * 選擇 [正確的驗證](./choose-ad-authn.md)。

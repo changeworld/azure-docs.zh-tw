@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f3a8cafa907cb66832faf033f7b62e68bf859097
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 49922599adb30e6c631f29b4831fda60cc000a40
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88918820"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360118"
 ---
 # <a name="integrate-with-a-client-application-using-speech-sdk"></a>使用語音 SDK 與用戶端應用程式整合
 
@@ -25,7 +25,7 @@ ms.locfileid: "88918820"
 - 發佈自訂命令應用程式，並取得應用程式識別碼 (應用程式識別碼) 
 - 使用語音 SDK 建立通用 Windows 平臺 (UWP) 用戶端應用程式，以讓您與您的自訂命令應用程式交談
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 需要自訂命令應用程式才能完成這篇文章。 如果您尚未建立自訂命令應用程式，可以遵循快速入門：
 > [!div class = "checklist"]
@@ -34,7 +34,7 @@ ms.locfileid: "88918820"
 您也需要：
 > [!div class = "checklist"]
 > * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) 或更高版本。 本指南是根據 Visual Studio 2019。
-> * 適用於語音服務的 Azure 訂用帳戶金鑰。 [免費取得一個](get-started.md)，或在[Azure 入口網站](https://portal.azure.com)上建立一個
+> * 適用於語音服務的 Azure 訂用帳戶金鑰。 [免費取得一個](overview.md#try-the-speech-service-for-free)，或在[Azure 入口網站](https://portal.azure.com)上建立一個
 > * [啟用您的裝置以進行開發](https://docs.microsoft.com/windows/uwp/get-started/enable-your-device-for-development)
 
 ## <a name="step-1-publish-custom-commands-application"></a>步驟1：發佈自訂命令應用程式

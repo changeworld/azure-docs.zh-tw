@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 7/10/2019
 ms.author: genli
-ms.openlocfilehash: ce60f360a6839d43b0cbc209242a1385a0984c9d
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: d4d25d8e79c30933546af2b823e328a652f482eb
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90088539"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360526"
 ---
 # <a name="how-to-use-perfinsights"></a>如何使用 PerfInsights
 
@@ -218,8 +218,8 @@ PerfInsights 可以收集並分析多種資訊。 下列幾節會說明常見案
 
 [ **總覽** ] 索引標籤提供基本的執行詳細資料和虛擬機器資訊。 [ **結果** ] 索引標籤會顯示 PerfInsights 報表所有不同區段的建議摘要。
 
-![PerfInsights 報表的螢幕擷取畫面](media/how-to-use-perfinsights-linux/perfinsights-linux-overview.png)  
-![PerfInsights 報表的螢幕擷取畫面](media/how-to-use-perfinsights-linux/perfinsights-linux-findings-tab.png)
+![PerfInsights 報表之 [總覽] 索引標籤的螢幕擷取畫面。](media/how-to-use-perfinsights-linux/perfinsights-linux-overview.png)  
+![PerfInsights 報表之 [Linux] 索引標籤的螢幕擷取畫面。](media/how-to-use-perfinsights-linux/perfinsights-linux-findings-tab.png)
 
 > [!NOTE]
 > 分類為「高」的結果是可能會造成效能問題的已知問題。 分類為「中」的結果表示不一定會造成效能問題的非最佳化設定。 分類為「低」的結果是僅用來參考的資訊說明。

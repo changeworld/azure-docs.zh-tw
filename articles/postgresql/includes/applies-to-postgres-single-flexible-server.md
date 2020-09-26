@@ -1,9 +1,9 @@
 ---
-ms.openlocfilehash: 47aab387fe43da16f5950d99d91c19b9153c8cf9
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: e622e3cf6f3d9403c3f55ba32167b4ac4e813d68
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90901475"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91377009"
 ---
-<Token>**適用于：** :::image type="content" source="../media/applies-to/yes.png" alt-text="是-單一伺服器":::適用於 PostgreSQL 的 Azure 資料庫-單一伺服器 :::image type="content" source="../media/applies-to/yes.png" alt-text="是-有彈性的伺服器":::適用於 PostgreSQL 的 Azure 資料庫-彈性伺服器 </Token>
+<Token>**適用于：** :::image type="icon" source="../media/applies-to/yes.png" border="false":::適用於 PostgreSQL 的 Azure 資料庫-單一伺服器 :::image type="icon" source="../media/applies-to/yes.png" border="false"::: 適用於 PostgreSQL 的 Azure 資料庫-彈性伺服器 </Token>

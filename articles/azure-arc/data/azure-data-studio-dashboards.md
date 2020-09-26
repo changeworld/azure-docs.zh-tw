@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: c2dd0ce3c3e9a0f1f699b58ed2657394ad9acbe1
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 608f984b3e3a3020863e0c28b0aa2ad504531e3b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934575"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273218"
 ---
 # <a name="azure-data-studio-dashboards"></a>Azure Data Studio 儀表板
 
@@ -24,7 +24,7 @@ ms.locfileid: "90934575"
 
 ## <a name="connecting-to-a-data-controller"></a>連接至資料控制器
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>Prerequisites
 
 - 下載 [Azure Data Studio](https://aka.ms/getazuredatastudio)
 - 已安裝 Azure Arc 擴充功能
@@ -49,7 +49,7 @@ NAME                      TYPE           CLUSTER-IP     EXTERNAL-IP      PORT(S)
 controller-svc-external   LoadBalancer   10.0.175.137   52.154.152.24    30080:32192/TCP                               22h
 ```
 
-如果您使用的是 LoadBalancer 類型，您會想要複製外部 IP 位址和埠號碼300080。  如果您使用的是 NodePort，您會想要使用 Kubernetes API 伺服器的 IP 位址，以及埠 (S) 資料行底下所列的埠號碼。
+如果您使用的是 LoadBalancer 類型，您會想要複製外部 IP 位址和埠號碼。 如果您使用的是 NodePort，您會想要使用 Kubernetes API 伺服器的 IP 位址，以及埠 (S) 資料行底下所列的埠號碼。
 
 現在，您會想要藉由合併此資訊來建立端點的 URL，如下所示：
 

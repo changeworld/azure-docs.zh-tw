@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 04/13/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f3f84a13100fc14c6c75fbfcc3e14ada75dc5b52
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 27beefc16987361d63aa7b26f6f666cbb6c3ab23
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91326888"
+ms.locfileid: "91376413"
 ---
 語音服務的其中一項核心功能是能夠辨識人類語音，並將它轉譯成其他語言。 在本快速入門中，您將瞭解如何在您的應用程式和產品中使用語音 SDK，以執行高品質的語音翻譯。 本快速入門涵蓋的主題包括：
 
@@ -24,7 +24,7 @@ ms.locfileid: "91326888"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-本文假設您具有 Azure 帳戶和語音服務訂用帳戶。 如果您沒有該帳戶和訂用帳戶，請[免費試用語音服務](../../../get-started.md)。
+本文假設您具有 Azure 帳戶和語音服務訂用帳戶。 如果您沒有該帳戶和訂用帳戶，請[免費試用語音服務](../../../overview.md#try-the-speech-service-for-free)。
 
 ## <a name="install-the-speech-sdk"></a>安裝語音 SDK
 

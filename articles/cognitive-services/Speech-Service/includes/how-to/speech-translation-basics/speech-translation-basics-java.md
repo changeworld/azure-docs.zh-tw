@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 04/13/2020
 ms.custom: devx-track-java
 ms.author: trbye
-ms.openlocfilehash: df9ef2610b0a51489c5f752e67fa146cd181fad8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b40789b64fc2a18523a06f13bfb03374f2d1a549
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91326891"
+ms.locfileid: "91376765"
 ---
 語音服務的其中一項核心功能是能夠辨識人類語音，並將它轉譯成其他語言。 在本快速入門中，您將瞭解如何在您的應用程式和產品中使用語音 SDK，以執行高品質的語音翻譯。 本快速入門涵蓋的主題包括：
 
@@ -24,7 +24,7 @@ ms.locfileid: "91326891"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-本文假設您具有 Azure 帳戶和語音服務訂用帳戶。 如果您沒有該帳戶和訂用帳戶，請[免費試用語音服務](../../../get-started.md)。
+本文假設您具有 Azure 帳戶和語音服務訂用帳戶。 如果您沒有該帳戶和訂用帳戶，請[免費試用語音服務](../../../overview.md#try-the-speech-service-for-free)。
 
 ## <a name="install-the-speech-sdk"></a>安裝語音 SDK
 
