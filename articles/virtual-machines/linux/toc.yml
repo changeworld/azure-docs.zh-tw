@@ -311,8 +311,6 @@
           href: compute-benchmark-scores.md
     - name: 背書發佈
       href: endorsed-distros.md
-    - name: 專用主機
-      href: dedicated-hosts.md
     - name: 維護和更新
       href: ../maintenance-and-updates.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: 磁碟儲存體
@@ -391,11 +389,12 @@
         - name: 複製 VM
           href: copy-vm.md
         - name: 使用專用主機
+          href: ../dedicated-hosts.md
           items:
             - name: CLI
               href: dedicated-hosts-cli.md
             - name: 入口網站
-              href: dedicated-hosts-portal.md
+              href: ../dedicated-hosts-portal.md
         - name: 部署 Spot VM
           items:
             - name: CLI
@@ -858,6 +857,7 @@
         - name: 變更可用性設定組
           href: ../windows/change-availability-set.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: 建立鄰近放置群組
+          displayName: PPG aligned colocation co-location
           items:
             - name: CLI
               href: proximity-placement-groups.md
