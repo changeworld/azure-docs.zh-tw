@@ -4,50 +4,50 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: fa7fd73a7d8019919a89dd9e9522b7389dc9c18f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 31f7e348a805c86964a8856fb81b83831c611de5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934666"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91377607"
 ---
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
-- 已部署的通訊服務資源。 [建立通訊服務資源](../../create-communication-resource.md)。
+- 已部署通訊服務資源。 [建立通訊服務資源](../../create-communication-resource.md)。
 - `User Access Token`要啟用呼叫用戶端的。 如需[如何取得的 `User Access Token` ](../../access-tokens.md)詳細資訊
 - 選擇性：完成快速入門以 [開始將呼叫新增至您的應用程式](../getting-started-with-calling.md)
 
 ## <a name="setting-up"></a>設定
 
-### <a name="creating-the-xcode-project"></a>建立 Xcode 專案
+### <a name="creating-the-xcode-project"></a>建立 XCode 專案
 
-在 Xcode 中，建立新的 iOS 專案，然後選取 [ **單一視圖] 應用程式** 範本。 本快速入門使用 [SwiftUI 架構](https://developer.apple.com/xcode/swiftui/)，因此您應該將 **語言** 設定為 **Swift** ，並將 **消費者介面** 設定為 **SwiftUI**。 在本快速入門中，您不會建立單元測試或 UI 測試。 您可以隨意取消選取 [ **包含單元測試** ]，也可以取消選取 [ **包含 UI 測試**]。
+在 Xcode 中建立新的 iOS 專案，並選取 [單一檢視應用程式] 範本。 本快速入門使用 [SwiftUI 架構](https://developer.apple.com/xcode/swiftui/)，因此您應該將 **語言** 設定為 **Swift** ，並將 **消費者介面** 設定為 **SwiftUI**。 在本快速入門中，您不會建立單元測試或 UI 測試。 您可以隨意取消選取 [ **包含單元測試** ]，也可以取消選取 [ **包含 UI 測試**]。
 
-:::image type="content" source="../media/ios/xcode-new-ios-project.png" alt-text="顯示 Xcode 中 [建立新專案] 視窗的螢幕擷取畫面。":::
+:::image type="content" source="../media/ios/xcode-new-ios-project.png" alt-text="顯示 Xcode 內建立新的 [新增專案] 視窗的螢幕擷取畫面。":::
 
 ### <a name="install-the-package"></a>安裝套件
 
-在您的專案中，將呼叫用戶端程式庫和其相依性 (AzureCore 和 AzureCommunication) 新增至您的專案。
+將 Azure 通訊服務通話用戶端程式庫及其相依性 (AzureCore.framework 和 AzureCommunication.framework) 新增至您的專案。
 
 > [!NOTE]
-> 隨著 AzureCommunicationCalling SDK 的發行，您將會發現 bash 腳本 `BuildAzurePackages.sh` 。 執行腳本時， `sh ./BuildAzurePackages.sh` 會提供您在下一個步驟中需要匯入至範例應用程式之所產生架構套件的路徑。 請注意，您必須在執行腳本之前，先設定 Xcode 命令列工具： [開始 Xcode]，然後選取 [喜好設定-> 位置]。 為命令列工具挑選您的 Xcode 版本。
+> 隨著 AzureCommunicationCalling SDK 的發行，您會發現 bash 指令檔 `BuildAzurePackages.sh`。 當執行 `sh ./BuildAzurePackages.sh` 時，指令檔會提供您已產生架構套件的路徑，該套件需要在下一個步驟中的範例應用程式中匯入。 請注意，您必須在執行指令碼之前，先設定 Xcode 命令列工具（如果尚未完成）：啟動 Xcode，選取 [喜好設定 -> 位置]。 選擇命令列工具的 Xcode 版本。 **請注意，BuildAzurePackages.sh 腳本只適用于 Xcode 11.5 和更新版本。**
 
-1. 下載適用于 iOS 的 Azure 通訊服務呼叫用戶端程式庫。
-2. 在 Xcode 中，按一下您的專案檔，然後選取組建目標以開啟 [專案設定編輯器]。
-3. 在 [ **一般** ] 索引標籤的 [架構]、[連結 **庫] 和 [內嵌內容** ] 區段中，按一下 [ **+]** 圖示。
-4. 在對話方塊的左下方，選擇 [ **新增**檔案]，流覽至非壓縮的用戶端程式庫套件的 **AzureCommunicationCalling 架構** 目錄。
-    1. 重複最後一個步驟，以新增 **AzureCore. framework** 和 **AzureCommunication**。
-5. 開啟 [專案設定編輯器] 的 [ **組建設定** ] 索引標籤，並流覽至 [ **搜尋路徑** ] 區段。 針對包含**AzureCommunicationCalling**的目錄，加入新的**架構搜尋路徑**專案。
-    1. 新增另一個架構搜尋路徑專案，指向包含相依性的資料夾。
+1. 下載適用於 iOS 的 Azure 通訊服務通話用戶端程式庫。
+2. 在 Xcode 中，按一下您的專案檔，然後選取建置目標，以開啟專案設定編輯器。
+3. 在 [一般] 索引標籤底下，瀏覽至 [架構、程式庫和內嵌內容] 區段，然後按一下 [+] 圖示。
+4. 在對話方塊的左下方，選擇 [新增檔案]，瀏覽至未解壓縮用戶端程式庫套件的 **AzureCommunicationCalling.framework** 目錄。
+    1. 重複最後一個步驟以新增 **AzureCore.framework** 和 **AzureCommunication.framework**。
+5. 開啟專案設定編輯器的 [建置設定] 索引標籤，並瀏覽至 [搜尋路徑] 區段。 針對包含 **AzureCommunicationCalling** 的目錄，新增新的**架構搜尋路徑**項目。
+    1. 新增另一個「架構搜尋路徑」項目，指向包含相依性的資料夾。
 
-:::image type="content" source="../media/ios/xcode-framework-search-paths.png" alt-text="螢幕擷取畫面，顯示在 XCode 中更新架構搜尋路徑。":::
+:::image type="content" source="../media/ios/xcode-framework-search-paths.png" alt-text="顯示 XCode 中更新架構搜尋路徑的螢幕擷取畫面。":::
 
 ### <a name="request-access-to-the-microphone"></a>要求存取麥克風
 
-若要存取裝置的麥克風，您需要使用來更新應用程式的 [資訊] 屬性清單 `NSMicrophoneUsageDescription` 。 您將相關聯的值設定為 `string` ，將會包含在系統用來要求使用者要求存取的對話方塊中。
+您必須以 `NSMicrophoneUsageDescription` 更新應用程式的資訊屬性清單，才能存取裝置的麥克風。 您可以將相關聯的值設定為 `string`，此值會包含在系統用來向使用者要求存取權的對話中。
 
-以滑鼠右鍵按一下 `Info.plist` 專案樹狀結構的專案，然後選取 [**開啟為**  >  **原始程式碼**]。 在最上層區段中新增下列幾行，然後儲存檔案 `<dict>` 。
+以滑鼠右鍵按一下專案樹狀結構的 `Info.plist` 項目，然後選取 [開啟形式]  >  [原始程式碼]。 將以下幾行新增至最上層 `<dict>` 區段中，然後儲存檔案。
 
 ```xml
 <key>NSMicrophoneUsageDescription</key>
@@ -56,7 +56,7 @@ ms.locfileid: "90934666"
 
 ### <a name="set-up-the-app-framework"></a>設定應用程式架構
 
-開啟專案的 **ContentView** 檔案，然後將宣告新增 `import` 至檔案頂端，以匯入 `AzureCommunicationCalling library` 。 此外，匯入之後 `AVFoundation` ，我們必須在程式碼中要求您輸入音訊許可權。
+開啟專案的 **ContentView.swift** 檔案，並且將 `import` 宣告新增至檔案頂端，以匯入 `AzureCommunicationCalling library`。 此外，匯入之後 `AVFoundation` ，我們必須在程式碼中要求您輸入音訊許可權。
 
 ```swift
 import AzureCommunicationCalling
@@ -68,12 +68,12 @@ import AVFoundation
 下列類別和介面會處理針對 iOS 呼叫用戶端程式庫的 Azure 通訊服務的一些主要功能。
 
 
-| Name                                  | 描述                                                  |
+| 名稱                                  | 描述                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
 | ACSCallClient | ACSCallClient 是呼叫用戶端程式庫的主要進入點。|
 | ACSCallAgent | ACSCallAgent 可用來啟動及管理呼叫。 |
-| CommunicationUserCredential | CommunicationUserCredential 會用來做為權杖認證，以具現化 CallAgent。| 
-| CommunicationIndentifier | CommunicationIndentifier 用來代表使用者的身分識別，這可以是下列其中一項： CommunicationUser/PhoneNumber/CallingApplication。 |
+| CommunicationUserCredential | CommunicationUserCredential 會當做權杖認證使用，以具現化 CallAgent。| 
+| CommunicationIndentifier | CommunicationIndentifier 是用來代表使用者的身分識別，可以是下列其中一項：CommunicationUser/PhoneNumber/CallingApplication。 |
 
 > [!NOTE]
 > 在執行事件委派時，應用程式必須保存需要事件訂閱之物件的強式參考。 例如，當叫用 `ACSRemoteParticipant` 方法時傳回物件， `call.addParticipant` 而應用程式會設定委派來接聽時 `ACSRemoteParticipantDelegate` ，應用程式必須保存物件的強式參考 `ACSRemoteParticipant` 。 否則，如果收集此物件，當呼叫 SDK 嘗試叫用物件時，委派將會擲回嚴重的例外狀況。

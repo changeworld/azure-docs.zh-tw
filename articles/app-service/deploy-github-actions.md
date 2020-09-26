@@ -7,12 +7,12 @@ ms.date: 10/25/2019
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: devx-track-python
-ms.openlocfilehash: 264976fdfe514a8778c60fe9242ac555f268718d
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 54e4ce409eb9f2a6bedd7861b3e268311f886b49
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962565"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273240"
 ---
 # <a name="deploy-to-app-service-using-github-actions"></a>使用 GitHub Actions 部署到 App Service
 
@@ -23,6 +23,22 @@ ms.locfileid: "88962565"
 > 
 
 工作流程是由您存放庫內 `/.github/workflows/` 路徑中的 YAML (. yml) 檔案所定義的。 此定義包含組成工作流程的各種步驟與參數。
+
+## <a name="use-the-deployment-center"></a>使用部署中心
+
+您可以使用 App Service Deployment Center 快速開始 GitHub Actions。 這會根據您的應用程式堆疊自動產生工作流程檔案，並將其認可到正確目錄中的 GitHub 存放庫。
+
+1. 在 Azure 入口網站中流覽至您的 webapp
+1. 在左側，按一下 [**部署中心**]
+1. 在 [**持續部署 (CI/CD) **] 下，選取 [ **GitHub** ]
+1. 接下來，選取 **GitHub Actions**
+1. 使用下拉式清單來選取您的 GitHub 存放庫、分支和應用程式堆疊
+    - 如果選取的分支受到保護，您仍然可以繼續新增工作流程檔案。 繼續進行之前，請務必先審查您的分支保護。
+1. 在最後一個畫面上，您可以檢查您的選取專案，並預覽將認可至存放庫的工作流程檔案。 如果選取專案正確無誤，請按一下 **[完成]** 。
+
+這會將工作流程檔案認可至存放庫。 建立及部署應用程式的工作流程將會立即開始。
+
+## <a name="add-the-workflow-manually"></a>手動新增工作流程
 
 Azure App Service 工作流程的檔案會有三個區段：
 

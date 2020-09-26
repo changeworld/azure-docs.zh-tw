@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a4ab403ebafbf078accd2ee2256c0c5bb69548e9
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: c837a4020ab1aaad1798d6b19e72e09edafea1f5
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87288262"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360347"
 ---
 # <a name="high-availability-architecture-and-scenarios-for-sap-netweaver"></a>SAP NetWeaver 的高可用性架構和案例
 
@@ -344,7 +344,7 @@ Azure 正在不同的 [Azure 區域](https://azure.microsoft.com/global-infrastr
 
 > 本節適用於：
 >
-> ![Windows][Logo_Windows] Windows 和 ![Linux][Logo_Linux] Linux
+> ![Windows 標誌。][Logo_Windows] Windows 和 ![Linux 標誌。][Logo_Linux] Linux
 >
 
 對於 SAP 應用程式伺服器和對話方塊執行個體，您通常不需要特定的高可用性解決方案。 您可以透過備援來達成高可用性，而且您會在 Azure 虛擬機器之不同的執行個體中，設定多個對話方塊執行個體。 您應該至少要有兩個 SAP 應用程式執行個體安裝在 Azure 虛擬機器的兩個執行個體中。
@@ -360,7 +360,7 @@ _**圖 1：** 高可用性的 SAP 應用程式伺服器_
 
     [升級網域][planning-guide-3.2.2]一節已介紹以 Azure 縮放單位內不同升級網域和容錯網域為基礎的基本功能。
 
-* 所有虛擬機器都不是相同容錯網域的一部分。  
+* 所有虛擬機器都不屬於相同的容錯網域。  
     容錯網域可確保部署虛擬機器，以便不會有任何單一失敗點影響所有虛擬機器的可用性。
 
 Azure 縮放單位內的 Azure 可用性設定組可使用的更新和容錯網域數目。 如果您持續將 VM 新增至單一可用性設定組，兩個或多個 VM 最終會在相同容錯或更新網域中。
@@ -382,7 +382,7 @@ _**圖 2：** Azure 可用性設定組中 SAP 應用程式伺服器的高可用�
 
 ### <a name="high-availability-architecture-for-an-sap-ascsscs-instance-on-windows"></a>Windows 上 SAP ASCS/SCS 執行個體的高可用性架構
 
-> ![Windows][Logo_Windows] Windows
+> ![Windows 標誌。][Logo_Windows] Windows
 >
 
 您可以使用 WSFC 解決方案來保護 SAP ASCS/SCS 執行個體。 解決方案有兩種變化：
@@ -395,7 +395,7 @@ _**圖 2：** Azure 可用性設定組中 SAP 應用程式伺服器的高可用�
 
 ### <a name="high-availability-architecture-for-an-sap-ascsscs-instance-on-linux"></a>Linux 上 SAP ASCS/SCS 執行個體的高可用性架構
 
-> ![Linux][Logo_Linux] Linux
+> ![Linux 標誌。][Logo_Linux] Linux
 > 
 > 如需藉由使用 SLES 叢集架構將 SAP ASCS/SCS 執行個體組成叢集的詳細資訊，請參閱[SAP NetWeaver 在適用於 SAP 應用程式之 SUSE Linux Enterprise Server 上的 Azure VM 高可用性][sap-suse-ascs-ha]。 如需 SLES 上的替代 HA 架構 (不需要高可用性 NFS)，請參閱[針對 SAP 應用程式使用 Azure NetApp Files 於 SUSE Linux Enterprise Server 上達到 SAP NetWeaver 高可用性的指南][sap-suse-ascs-ha-anf]。
 
@@ -404,7 +404,7 @@ _**圖 2：** Azure 可用性設定組中 SAP 應用程式伺服器的高可用�
 
 ### <a name="sap-netweaver-multi-sid-configuration-for-a-clustered-sap-ascsscs-instance"></a>叢集 SAP ASCS/SCS 執行個體的 SAP NetWeaver 多重 SID 設定
 
-> ![Windows][Logo_Windows] Windows
+> ![Windows 標誌。][Logo_Windows] Windows
 > 
 > WSFC 支援多重 SID (使用檔案共用和共用磁碟)。
 > 
@@ -414,7 +414,7 @@ _**圖 2：** Azure 可用性設定組中 SAP 應用程式伺服器的高可用�
 
 * [搭配 Windows Server 容錯移轉叢集和共用磁碟的 SAP ASCS/SCS 執行個體多重 SID 高可用性][sap-ascs-ha-multi-sid-wsfc-shared-disk]
 
-> ![Linux][Logo_Linux] Linux
+> ![Linux 標誌。][Logo_Linux] Linux
 > 
 > SAP ASCS/ERS 的 Linux Pacemaker 叢集支援多重 SID 群集 (在相同叢集上限制只能有**五**個 SAP SID)。
 > 如需 Linux 上多重 SID 高可用性架構的詳細資訊，請參閱：

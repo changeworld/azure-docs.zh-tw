@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 10/25/2019
 ms.author: jafreebe
 ms.reviewer: ushan
-ms.openlocfilehash: 6af23aba28ce3cda9982878ed08ec515aa25633a
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 7f2824f4dcacb26d8941f51db6129aea0bb5f915
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962599"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273274"
 ---
 # <a name="deploy-a-custom-container-to-app-service-using-github-actions"></a>使用 GitHub Actions 將自訂容器部署到 App Service
 
@@ -110,7 +110,7 @@ jobs:
 
 ## <a name="deploy-to-an-app-service-container"></a>部署至 App Service 容器
 
-若要將您的映射部署到 App Service 中的自訂容器，請使用 `azure/webapps-container-deploy@v1` 動作。 此動作有五個參數：
+若要將您的映射部署到 App Service 中的自訂容器，請使用 `azure/webapps-container-deploy@v2` 動作。 此動作有五個參數：
 
 | **參數**  | **說明**  |
 |---------|---------|
@@ -150,7 +150,7 @@ jobs:
         docker build . -t contoso.azurecr.io/nodejssampleapp:${{ github.sha }}
         docker push contoso.azurecr.io/nodejssampleapp:${{ github.sha }} 
       
-    - uses: azure/webapps-container-deploy@v1
+    - uses: azure/webapps-container-deploy@v2
       with:
         app-name: 'node-rnc'
         images: 'contoso.azurecr.io/nodejssampleapp:${{ github.sha }}'
