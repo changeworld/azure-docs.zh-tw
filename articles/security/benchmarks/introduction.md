@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/16/2019
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 53473b6be9e91adb636c3c9528e97ec644616115
-ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
+ms.openlocfilehash: f3b492534bedde50d2413b88fa38cd6325ed5df7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90058609"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328253"
 ---
 # <a name="azure-security-benchmark-introduction"></a>Azure 安全性基準測試簡介
 
@@ -23,8 +23,8 @@ Microsoft 發現，使用 *安全性基準* 檢驗可協助您快速保護雲端
 
 Azure 安全性基準測試包含一組高度影響的安全性建議，可用來協助保護您在 Azure 中使用的服務：
 
-- 安全性控制：這些建議一般適用于您的 Azure 租使用者和 Azure 服務。 每個建議都會識別共同作業者的清單，這些專案關係人通常牽涉到規劃、核准或實行基準測試。 
-- 服務基準：這些會將控制項套用至個別的 Azure 服務，以針對該服務的安全性設定提供建議。
+- **安全性控制**：這些建議一般適用于您的 azure 租使用者和 azure 服務。 每個建議都會識別共同作業者的清單，這些專案關係人通常牽涉到規劃、核准或實行基準測試。 
+- **服務基準**：這些會將控制項套用至個別的 Azure 服務，以針對該服務的安全性設定提供建議。
 
 ## <a name="implement-the-azure-security-benchmark"></a>執行 Azure 安全性基準測試
 - 藉由查看企業控制項和服務專屬基準的[檔](overview.md)來**規劃您的**Azure 安全性基準測試，以規劃您的控制架構，以及它如何對應至 CIS (控制 7.1) 和 NIST (SP800-53) framework。

@@ -2,15 +2,17 @@
 title: 如何使用撰寫和執行時間金鑰-LUIS
 description: 當您第一次使用 Language Understanding (LUIS) 時，您不需要建立撰寫金鑰。 當您想要發佈應用程式時，請使用您的執行時間端點，您必須建立執行時間金鑰，並將其指派給應用程式。
 services: cognitive-services
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 09/07/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 99f73399c410641be352111302b1d4999d1ebc1b
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 949ad4176cc7bf65e07e40323fc72a0a144b53b6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89565900"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327216"
 ---
 # <a name="create-luis-resources"></a>建立 LUIS 資源
 
@@ -27,9 +29,9 @@ LUIS 允許三種類型的 Azure 資源和一個非 Azure 資源：
 
 |資源|目的|認知服務 `kind`|認知服務 `type`|
 |--|--|--|--|
-|撰寫資源|可讓您建立、管理、定型、測試及發佈您的應用程式。 如果您想要在 programtically 或從 LUIS 入口網站撰寫 LUIS apps，請[建立 LUIS 編寫資源](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-azure-subscription#create-luis-resources-in-azure-portal)。 您需要先 [遷移您的 LUIS 帳戶](https://docs.microsoft.com/azure/cognitive-services/luis/luis-migration-authoring#what-is-migration) ，才能將 Azure authroring 資源連結至您的應用程式。 您可以藉由將人員指派給「 [參與者」角色](#contributions-from-other-authors)，來控制撰寫資源的許可權。 <br><br> LUIS 撰寫資源有一層有：<br> * **F0 撰寫資源** ，可提供1萬個免費的撰寫交易和1000個每月免費的預測端點要求。 |`LUIS.Authoring`|`Cognitive Services`|
-|預測資源| 發佈 LUIS 應用程式之後，請使用預測資源/金鑰來查詢預測端點要求。 請先建立 LUIS 預測資源，用戶端應用程式才會要求在撰寫或入門資源所提供的1000要求之外進行預測。 <br><br> 預測資源有兩個層級 avialble：<br> * **F0 預測資源** ，每月提供10000個免費的預測端點要求<br> * 為付費層的**S0 預測資源**。 [深入瞭解定價詳細資料](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/)|`LUIS`|`Cognitive Services`|
-|入門/試用資源|可讓您建立、管理、定型、測試及發佈您的應用程式。 如果您在第一次註冊 tp LUIS 時選擇 [入門資源] 選項，deafult 就會建立此設定。 不過，入門金鑰最後會被取代，而且所有 LUIS 使用者都必須 [遷移其帳戶](https://docs.microsoft.com/azure/cognitive-services/luis/luis-migration-authoring#what-is-migration) ，並將其 LUIS 應用程式連結至撰寫資源。 此資源並不會授與角色型存取控制（例如撰寫資源）的許可權。 <br><br> 就像撰寫資源一樣，入門資源提供了1百萬個免費的撰寫交易和1000個免費的預測端點要求。|-|不是 Azure 資源|
+|撰寫資源|可讓您建立、管理、定型、測試及發佈您的應用程式。 如果您想要在 programtically 或從 LUIS 入口網站撰寫 LUIS apps，請[建立 LUIS 編寫資源](luis-how-to-azure-subscription.md#create-luis-resources-in-azure-portal)。 您需要先 [遷移您的 LUIS 帳戶](luis-migration-authoring.md#what-is-migration) ，才能將 Azure authroring 資源連結至您的應用程式。 您可以藉由將人員指派給「 [參與者」角色](#contributions-from-other-authors)，來控制撰寫資源的許可權。 <br><br> LUIS 撰寫資源有一層有：<br> * **免費的 F0 撰寫資源** ，可提供1百萬個免費的撰寫交易和1000個每月免費測試預測端點要求。 |`LUIS.Authoring`|`Cognitive Services`|
+|預測資源| 發佈 LUIS 應用程式之後，請使用預測資源/金鑰來查詢預測端點要求。 請先建立 LUIS 預測資源，用戶端應用程式才會要求在撰寫或入門資源所提供的1000要求之外進行預測。 <br><br> 預測資源有兩個層級 avialble：<br> * **免費的 F0 預測資源** ，每月提供10000個免費的預測端點要求<br> * **標準 S0 預測資源** ，也就是付費層。 [深入瞭解定價詳細資料](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/)|`LUIS`|`Cognitive Services`|
+|入門/試用資源|可讓您建立、管理、定型、測試及發佈您的應用程式。 如果您在第一次註冊 tp LUIS 時選擇 [入門資源] 選項，deafult 就會建立此設定。 不過，入門金鑰最後會被取代，而且所有 LUIS 使用者都必須 [遷移其帳戶](luis-migration-authoring.md#what-is-migration) ，並將其 LUIS 應用程式連結至撰寫資源。 此資源並不會授與角色型存取控制（例如撰寫資源）的許可權。 <br><br> 就像撰寫資源一樣，入門資源提供了1百萬個免費的撰寫交易和1000個免費的測試預測端點要求。|-|不是 Azure 資源|
 |[認知服務的多服務資源金鑰](../cognitive-services-apis-create-account-cli.md?tabs=windows#create-a-cognitive-services-resource)|查詢與 LUIS 和其他支援的認知服務共用的預測端點要求。|`CognitiveServices`|`Cognitive Services`|
 
 
@@ -107,7 +109,7 @@ Azure 資源（例如 LUIS）由包含資源的訂用帳戶所擁有。
 
 擁有者和所有參與者都具有編寫應用程式的存取權。
 
-|撰寫存取權包括|備註|
+|撰寫存取權包括|注意|
 |--|--|
 |新增或移除端點金鑰||
 |匯出版本||
@@ -310,7 +312,7 @@ Azure 資源（例如 LUIS）由包含資源的訂用帳戶所擁有。
 
 為一段時間的**呼叫總數**計量新增計量警示。 新增應收到警示的所有人員電子郵件地址。 為應收到警示的所有系統新增 Webhook。 您也可以在警示觸發時執行邏輯應用程式。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 瞭解 [如何使用版本](luis-how-to-manage-versions.md) 來控制您的應用程式生命週期。
 * 遷移至新的 [撰寫資源](luis-migration-authoring.md)

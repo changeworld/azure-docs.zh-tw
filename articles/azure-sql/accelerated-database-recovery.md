@@ -1,7 +1,7 @@
 ---
 title: 加速資料庫復原
 titleSuffix: Azure SQL
-description: 加速資料庫復原可針對 Azure SQL 組合中的資料庫，提供快速且一致的資料庫復原、瞬間交易回復和積極記錄截斷。
+description: 加速資料庫復原可針對 Azure SQL 組合中的資料庫，提供快速且一致的資料庫復原、瞬間的交易回復，以及積極的記錄截斷。
 ms.service: sql-database
 ms.subservice: high-availability
 ms.custom: sqldbrb=4
@@ -9,19 +9,28 @@ ms.devlang: ''
 ms.topic: conceptual
 author: mashamsft
 ms.author: mathoma
-ms.reviewer: carlrab
+ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: a6d95bbcb0873086a799dcf216beab4a6b0d33de
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4c679b6bb0f5645ea7a972be03ba3621b824a501
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84344691"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327607"
 ---
 # <a name="accelerated-database-recovery-in-azure-sql"></a>Azure SQL 中的加速資料庫復原 
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
 
-**加速資料庫復原（ADR）** 是一項 SQL Server 的資料庫引擎功能，藉由重新設計 SQL Server 的資料庫引擎復原程式，大幅改善資料庫可用性（特別是在有長時間執行的交易時）。 ADR 目前適用于 Azure SQL Database、Azure SQL 受控執行個體、Azure VM 上的 SQL Server，以及 Azure Synapse Analytics 中的資料庫（目前為預覽狀態）。 ADR 的主要優點為：
+**加速資料庫復原 (ADR) ** 是 SQL Server database engine 功能，可透過重新設計 SQL Server 資料庫引擎復原程式，大幅改善資料庫可用性（特別是在有長時間執行的交易時）。 
+
+ADR 目前適用于 Azure SQL Database、Azure SQL 受控執行個體、Azure Synapse Analytics 中的資料庫 (目前為預覽) ，以及從 SQL Server 2019 開始的 Azure Vm 上的 SQL Server。 
+
+> [!NOTE] 
+> 在 Azure SQL Database 和 Azure SQL 受控執行個體中預設會啟用 ADR，且不支援任何產品的 ADR。 
+
+## <a name="overview"></a>概觀
+
+ADR 的主要優點為：
 
 - **快速且一致的資料庫復原**
 
@@ -37,13 +46,13 @@ ms.locfileid: "84344691"
 
 ## <a name="standard-database-recovery-process"></a>標準資料庫復原處理序
 
-資料庫復原會遵循[ARIES](https://people.eecs.berkeley.edu/~brewer/cs262/Aries.pdf)復原模式，並包含三個階段，如下圖所示，並會在圖表之後更詳細地說明。
+資料庫復原會遵循 [>aries](https://people.eecs.berkeley.edu/~brewer/cs262/Aries.pdf) 復原模式並包含三個階段，如下圖所示，並會在圖表後面詳細說明。
 
 ![目前的復原處理序](./media/accelerated-database-recovery/current-recovery-process.png)
 
 - **分析階段**
 
-  從最後一個成功的檢查點開始（或最舊的中途分頁 LSN）向前掃描交易記錄，直到結束為止，以判斷資料庫停止時的每個交易狀態。
+  從最後一個成功檢查點的開頭開始向前掃描交易記錄 (或最舊的中途分頁 LSN) 直到結束為止，以判斷資料庫停止時每個交易的狀態。
 
 - **重做階段**
 
@@ -53,11 +62,11 @@ ms.locfileid: "84344691"
 
   對於每個在發生毀損時處於作用中的交易，向後周遊記錄，以復原此交易所執行的作業。
 
-根據這項設計，SQL Server 資料庫引擎從非預期的重新開機復原所需的時間，與當機時系統中最長的使用中交易大小成正比。 復原需要回復所有未完成的交易。 所需時間與交易執行的工作和其已使用時間成比例。 因此，復原程式可能需要很長的時間才能存在長時間執行的交易（例如大型資料表的大量插入作業或索引建立作業）。
+根據這項設計，SQL Server 資料庫引擎從非預期的重新開機進行復原所需的時間，) 大約是 (與當機時系統中最長的使用中交易大小成正比。 復原需要回復所有未完成的交易。 所需時間與交易執行的工作和其已使用時間成比例。 因此，復原程式可能會花很長的時間來顯示長時間執行的交易 (例如大型的大量插入作業或針對大型資料表) 的索引建立作業。
 
 同時，根據此設計來取消/回復大型交易也會花費很長的時間，因為它使用如前所述的相同復原階段。
 
-此外，在有長時間執行的交易時，SQL Server 資料庫引擎無法截斷交易記錄檔，因為復原和回復處理常式需要其對應的記錄檔記錄。 由於這項 SQL Server 資料庫引擎的設計，有些客戶會面臨交易記錄檔大小變得非常大的問題，而且會耗用大量的磁片磁碟機空間。
+此外，當有長時間執行的交易時，SQL Server database engine 無法截斷交易記錄，因為復原和復原進程需要它們的對應記錄檔記錄。 由於這項 SQL Server 資料庫引擎的設計，有些客戶用來面對問題，那就是交易記錄檔的大小變得很大，而且會耗用大量的磁片磁碟機空間。
 
 ## <a name="the-accelerated-database-recovery-process"></a>加速資料庫復原程序
 
@@ -95,9 +104,9 @@ ADR 復原處理序與目前復原處理序具有相同的三個階段。 下圖
 
 ADR 的四個關鍵元件為：
 
-- **保存的版本存放區（PV）**
+- **持續版本存放區 (PVS)**
 
-  保存的版本存放區是新的 SQL Server 資料庫引擎機制，可保存資料庫本身所產生的資料列版本，而不是傳統的 `tempdb` 版本存放區。 PVS 會啟用資源隔離，以及改善可讀取之次要複本的可用性。
+  持續版本存放區是新的 SQL Server 資料庫引擎機制，用來保存資料庫本身所產生的資料列版本，而不是傳統 `tempdb` 版本存放區。 PVS 會啟用資源隔離，以及改善可讀取之次要複本的可用性。
 
 - **邏輯還原**
 
@@ -127,4 +136,4 @@ ADR 對於下列類型的工作負載產生的效益最大：
 
 - 具有長時間執行交易的工作負載。
 - 曾經歷使用中交易造成交易記錄大幅成長的工作負載。  
-- 因長時間執行的復原（例如非預期的服務重新開機或手動交易回復）而無法使用長時間執行資料庫的工作負載。
+- 由於長時間執行的復原 (（例如非預期的服務重新開機或手動交易回復) ），而經歷很長一段時間的資料庫無法使用的工作負載。

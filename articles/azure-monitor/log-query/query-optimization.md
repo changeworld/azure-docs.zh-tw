@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2019
-ms.openlocfilehash: efbc0ba4ef39be6a2a8598ad006cb3aea090974c
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 31b1ff3324c610c385ad793f124735be30cab9f9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89177738"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327709"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>優化 Azure 監視器中的記錄查詢
 Azure 監視器記錄使用 [Azure 資料總管 (ADX) ](/azure/data-explorer/) 儲存記錄資料，並執行查詢來分析該資料。 它會為您建立、管理和維護 ADX 叢集，並針對您的記錄分析工作負載進行優化。 當您執行查詢時，它會進行優化，並路由傳送至儲存工作區資料的適當 ADX 叢集。 Azure 監視器記錄和 Azure 資料總管都會使用許多自動查詢優化機制。 雖然自動優化提供大幅提升，但在某些情況下，您可以大幅改善查詢效能。 本文說明效能考慮，以及用來修正這些問題的幾項技術。
@@ -98,18 +98,34 @@ SecurityEvent
 
 ```Kusto
 //less efficient
-Heartbeat 
-| extend IPRegion = iif(RemoteIPLongitude  < -94,"WestCoast","EastCoast")
-| where IPRegion == "WestCoast"
-| summarize count(), make_set(IPRegion) by Computer
+Syslog
+| extend Msg = strcat("Syslog: ",SyslogMessage)
+| where  Msg  has "Error"
+| count 
 ```
 ```Kusto
 //more efficient
-Heartbeat 
-| where RemoteIPLongitude  < -94
-| extend IPRegion = iif(RemoteIPLongitude  < -94,"WestCoast","EastCoast")
-| summarize count(), make_set(IPRegion) by Computer
+Syslog
+| where  SyslogMessage  has "Error"
+| count 
 ```
+
+在某些情況下，查詢處理 enine 會隱含地建立評估的資料行，因為篩選只會在欄位上執行：
+```Kusto
+//less efficient
+SecurityEvent
+| where tolower(Process) == "conhost.exe"
+| count 
+```
+```Kusto
+//more efficient
+SecurityEvent
+| where Process =~ "conhost.exe"
+| count 
+```
+
+
+
 
 ### <a name="use-effective-aggregation-commands-and-dimensions-in-summarize-and-join"></a>在摘要和聯結中使用有效的匯總命令和維度
 
@@ -279,7 +295,7 @@ SecurityEvent
 | distinct FilePath, CallerProcessName1
 ```
 
-當上述專案不允許避免使用子查詢時，另一項技術是使用具體化 ( # A1 函式來提示查詢引擎，其中每一個來源資料都使用 [具體化 # A1 函數](/azure/data-explorer/kusto/query/materializefunction?pivots=azuremonitor)。 當來源資料來自查詢中使用數次的函式時，這非常有用。
+當上述專案不允許避免使用子查詢時，另一項技術是使用具體化 ( # A1 函式來提示查詢引擎，其中每一個來源資料都使用 [具體化 # A1 函數](/azure/data-explorer/kusto/query/materializefunction?pivots=azuremonitor)。 當來源資料來自查詢中使用數次的函式時，這非常有用。 當子查詢的輸出遠小於輸入時，具體化就有效。 查詢引擎會快取並重複使用所有出現的輸出。
 
 
 

@@ -4,16 +4,16 @@ description: 使用共用磁片設定 Azure 受控磁片，讓您可以在多個
 author: roygara
 ms.service: virtual-machines
 ms.topic: how-to
-ms.date: 08/21/2020
+ms.date: 09/22/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: ad70aa1d044649a0ca61060fff9880d4ef1e34c1
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 447380c7aed7e765695ea5389f0b3f2973a16b0d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752035"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328134"
 ---
 # <a name="enable-shared-disk"></a>啟用共用磁碟
 
@@ -147,7 +147,7 @@ New-AzDisk -ResourceGroupName 'myResourceGroup' -DiskName 'mySharedDisk' -Disk $
 使用部署共用磁片之後 `maxShares>1` ，您就可以將磁片掛接到您的一或多個 vm。
 
 > [!NOTE]
-> 如果您要部署 ultra 磁片，請確定它符合必要的需求。 如需詳細資料，請參閱 ultra 磁片文章的 [PowerShell](disks-enable-ultra-ssd.md#enable-ultra-disk-compatibility-on-an-existing-vm-1) 或 [CLI](disks-enable-ultra-ssd.md#enable-ultra-disk-compatibility-on-an-existing-vm) 一節。
+> 如果您要部署 ultra 磁片，請確定它符合必要的需求。 如需詳細資訊，請參閱 [使用 Azure ultra 磁片](disks-enable-ultra-ssd.md) 。
 
 ```azurepowershell-interactive
 

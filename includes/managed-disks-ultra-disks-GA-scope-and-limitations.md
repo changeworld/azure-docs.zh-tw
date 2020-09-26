@@ -8,61 +8,67 @@ ms.topic: include
 ms.date: 06/25/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 546c21802d275fe99ed2acbf00e32d37db3603f2
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: db377a933507f9a25b377ba52ebd956416a1dfd2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88225186"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328191"
 ---
 目前，ultra 磁片有額外的限制，如下所示：
 
-目前僅適用于 ultra 磁片的基礎結構冗余選項是「可用性區域」。 使用任何其他冗余選項的 Vm 無法連接 ultra 磁片。
+Ultra 磁片目前唯一可用的基礎結構冗余選項是可用性區域。 使用任何其他冗余選項的 Vm 無法連接 ultra 磁片。
 
-下表概述可使用 ultra 磁片的區域，以及其對應的可用性選項：
+下表列出 ultra 磁片的可用區域，以及其對應的可用性選項：
 
 > [!NOTE]
-> 如果下列清單中的區域沒有具備 ultra 磁片功能的可用性區域，則必須部署該區域中的 Vm，而不需要任何基礎結構重複選項，才能連接 ultra 磁片。
+> 如果下列清單中的區域沒有可支援 ultra 磁片的可用性區域，則該區域中的 Vm 必須在沒有任何基礎結構冗余選項的情況下部署，才能連接 ultra 磁片。
 
-|區域  |支援 ultra 磁片的可用性區域數目  |
+|區域  |冗余選項  |
 |---------|---------|
-|US Gov 維吉尼亞州     |無         |
-|US Gov 亞利桑那州     |無         |
-|美國中南部     |無         |
-|美國中部     |三個區域         |
-|美國西部     |無         |
-|美國西部 2    |三個區域         |
-|美國東部     |三個區域         |
-|美國東部 2     |三個區域         |
-|東南亞     |三個區域         |
-|東亞     |無         |
-|歐洲北部     |三個區域          |
-|西歐     |三個區域          |
-|英國南部     |三個區域          |
-|日本東部     |三個區域         |
-|法國中部    |兩個區域        |
-|巴西南部    |無        |
-|澳大利亞東部    |三個區域        |
-|加拿大中部 *    |三個區域        |
+|巴西南部     |不支援單一 Vm (可用性設定組和虛擬機器擴展集) |
+|印度中部     |不支援單一 Vm (可用性設定組和虛擬機器擴展集) |
+|東亞     |不支援單一 Vm (可用性設定組和虛擬機器擴展集) |
+|德國中西部     |不支援單一 Vm (可用性設定組和虛擬機器擴展集) |
+|南韓中部     |不支援單一 Vm (可用性設定組和虛擬機器擴展集) |
+|美國中南部    |不支援單一 Vm (可用性設定組和虛擬機器擴展集) |
+|US Gov 亞利桑那州     |不支援單一 Vm (可用性設定組和虛擬機器擴展集) |
+|US Gov 維吉尼亞州     |不支援單一 Vm (可用性設定組和虛擬機器擴展集) |
+|美國西部     |不支援單一 Vm (可用性設定組和虛擬機器擴展集)         |
+|澳大利亞東部     |三個可用性區域         |
+|加拿大中部 *     |三個可用性區域          |
+|美國中部     |三個可用性區域          |
+|美國東部     |三個可用性區域          |
+|美國東部 2     |三個可用性區域         |
+|法國中部    |兩個可用性區域        |
+|日本東部    |三個可用性區域        |
+|北歐    |三個可用性區域        |
+|英國南部    |三個可用性區域        |
+|西歐    | 三個可用性區域|
+|美國西部 2    |三個可用性區域|
 
-\* 請聯絡 Azure 支援以取得此區域可用性區域的存取權。
+\* 請聯絡 Azure 支援，以取得此區域的可用性區域存取權。
 
-- 僅支援下列 VM 系列：
+- 只有下列 VM 系列支援：
     - [ESv3](../articles/virtual-machines/ev3-esv3-series.md#esv3-series)
     - [Easv4](../articles/virtual-machines/eav4-easv4-series.md#easv4-series)
     - [Edsv4](../articles/virtual-machines/edv4-edsv4-series.md#edsv4-series)
     - [Esv4](../articles/virtual-machines/ev4-esv4-series.md#esv4-series)
     - [DSv3](../articles/virtual-machines/dv3-dsv3-series.md#dsv3-series)
+    - [Dasv4](../articles/virtual-machines/dav4-dasv4-series.md#dasv4-series)
+    - [Ddsv4](../articles/virtual-machines/ddv4-ddsv4-series.md#ddsv4-series)
+    - [Dsv4](../articles/virtual-machines/dv4-dsv4-series.md#dsv4-series)
     - [FSv2](../articles/virtual-machines/fsv2-series.md)
     - [LSv2](../articles/virtual-machines/lsv2-series.md)
     - [M](../articles/virtual-machines/workloads/sap/hana-vm-operations-storage.md)
     - [Mv2](../articles/virtual-machines/workloads/sap/hana-vm-operations-storage.md)
-- 並非每個 VM 大小都適用于具有 ultra 磁片的每個支援區域
-- 僅適用于資料磁片，而且只支援4k 實體磁區大小。 由於 Ultra 磁片的4K 原生磁區大小，有些應用程式無法與 ultra 磁片相容。 其中一個範例會 Oracle Database，這需要12.2 版或更新版本才能支援 ultra 磁片。  
-- 只能建立為空磁碟  
-- 目前不支援磁片快照集、VM 映射、可用性設定組、Azure 專用主機或 Azure 磁片加密
-- 目前不支援與 Azure 備份或 Azure Site Recovery 的整合
-- 僅支援非快取的讀取和非快取寫入
+- 並非每個 VM 大小都可在具有 ultra 磁片的每個支援區域中使用。
+- 只能作為資料磁片使用。 
+- 預設支援4k 實體磁區大小。 512E 磁區大小是以正式推出的供應專案的形式提供，但您必須 [註冊](https://aka.ms/ultradisk512e)。 大部分的應用程式都相容于4k 磁區大小，但有些應用程式需要512個位元組磁區的大小。 其中一個範例是 Oracle Database，這需要版本12.2 或更新版本，才能支援4k 原生磁片。 針對較舊版本的 Oracle DB，需要512個位元組的磁區大小。
+- 只能建立為空磁片。
+- 目前不支援磁片快照集、VM 映射、可用性設定組、Azure 專用主機或 Azure 磁片加密。
+- 目前不支援與 Azure 備份或 Azure Site Recovery 整合。
+- 只支援未快取的讀取和未快取的寫入。
 - GA Vm 上目前的 IOPS 上限為80000。
 
-根據預設，每個訂用帳戶每個區域最多可提供16個 TiB，但 ultra 磁片會依要求支援更高的容量。 若要要求增加容量，請聯絡 Azure 支援。
+Azure ultra 磁片預設會針對每個訂用帳戶在每個區域提供最多16個 TiB，但 ultra 磁片依要求支援更高的容量。 若要要求增加容量，請聯絡 Azure 支援。

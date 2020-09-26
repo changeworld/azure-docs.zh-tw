@@ -3,7 +3,7 @@ title: 在 Azure Linux 虛擬機器上設定 Oracle ASM | Microsoft Docs
 description: 快速在您的 Azure 環境中啟動並執行 Oracle ASM。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: rgardler
+author: dbakevlar
 manager: ''
 editor: ''
 tags: azure-resource-manager
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
-ms.author: rogardle
-ms.openlocfilehash: a707081aca4a28743bff8bdd1046a5e9aee285f1
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.author: kegorman
+ms.openlocfilehash: e82b458487dd4c865013c806447473d25c75017f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224395"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328083"
 ---
 # <a name="set-up-oracle-asm-on-an-azure-linux-virtual-machine"></a>在 Azure Linux 虛擬機器上設定 Oracle ASM  
 
@@ -210,7 +210,7 @@ ssh <publicIpAddress>
    fdisk /dev/sdc
    ```
    
-   使用上述提供的答案，命令的輸出 `fdisk` 應該如下所示：
+   使用上面提供的答案，命令的輸出 `fdisk` 看起來應該如下所示：
 
    ```output
    Device contains not a valid DOS partition table, or Sun, SGI or OSF disklabel
@@ -427,7 +427,7 @@ ssh <publicIpAddress>
    > 金鑰中必須包含字串 `ssh-rsa`。 此外，金鑰的內容必須是單行文字。
    >  
 
-6. 在用戶端系統上，啟動 PuTTY。 在 [**類別目錄**] 窗格中 **，移至 [** 連線] [  >  **SSH**  >  **驗證**]。在 [**驗證的私密金鑰**檔] 方塊中，流覽至您稍早產生的金鑰。
+6. 在用戶端系統上，啟動 PuTTY。 在 [**類別目錄**] 窗格中，移至 [**連接**  >  **SSH**  >  **驗證**]。在 [**驗證的私密金鑰**檔案] 方塊中，流覽至您稍早產生的金鑰。
 
    ![SSH 驗證選項的螢幕擷取畫面](./media/oracle-asm/setprivatekey.png)
 

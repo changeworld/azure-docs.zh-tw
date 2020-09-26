@@ -1,6 +1,6 @@
 ---
 title: 使用 PowerShell 建立具有 Azure 映射產生器的 Windows VM
-description: 使用 Azure 映射產生器 PowerShell 模組建立 Windows VM。
+description: 使用 Azure Image Builder PowerShell 模組建立 Windows VM。
 author: cynthn
 ms.author: cynthn
 ms.date: 06/17/2020
@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.subservice: imaging
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e25b2b53acdfb05af8572a01109961bf3002e429
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: a221ba8fe14db37729183774197bfc2db8bf2baa
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499410"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328100"
 ---
 # <a name="preview-create-a-windows-vm-with-azure-image-builder-using-powershell"></a>預覽：使用 PowerShell 建立具有 Azure 映射產生器的 Windows VM
 
@@ -29,7 +29,7 @@ ms.locfileid: "87499410"
 如果您選擇在本機使用 PowerShell，本文會要求您安裝 Az PowerShell 模組，並使用 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) Cmdlet 連線到您的 Azure 帳戶。 如需安裝 Az PowerShell 模組的詳細資訊，請參閱[安裝 Azure PowerShell](/powershell/azure/install-az-ps)。
 
 > [!IMPORTANT]
-> 雖然**ImageBuilder**和**az. ManagedServiceIdentity** PowerShell 模組處於預覽狀態，您必須使用 Cmdlet 搭配參數來個別安裝它們 `Install-Module` `AllowPrerelease` 。 這些 PowerShell 模組一旦正式運作之後，就會成為未來 Az PowerShell 模組版本的一部分，並在 Azure Cloud Shell 內以原生方式提供。
+> **ImageBuilder**和**az. ManagedServiceIdentity** PowerShell 模組目前為預覽狀態，您必須使用 `Install-Module` Cmdlet 搭配參數來個別安裝這些模組。 `AllowPrerelease` 這些 PowerShell 模組正式推出之後，就會成為未來 Az PowerShell 模組版本的一部分，並以原生方式從 Azure Cloud Shell 內提供。
 
 ```azurepowershell-interactive
 'Az.ImageBuilder', 'Az.ManagedServiceIdentity' | ForEach-Object {Install-Module -Name $_ -AllowPrerelease}
@@ -37,7 +37,7 @@ ms.locfileid: "87499410"
 
 [!INCLUDE [cloud-shell-try-it](../../../includes/cloud-shell-try-it.md)]
 
-如果您有多個 Azure 訂用帳戶，請選擇資源計費的適當訂用帳戶。 使用[set-azcoNtext](/powershell/module/az.accounts/set-azcontext) Cmdlet 來選取特定的訂用帳戶。
+如果您有多個 Azure 訂用帳戶，請選擇資源計費的適當訂用帳戶。 使用 [Set-AzContext](/powershell/module/az.accounts/set-azcontext) Cmdlet 來選取特定的訂用帳戶。
 
 ```azurepowershell-interactive
 Set-AzContext -SubscriptionId 00000000-0000-0000-0000-000000000000
@@ -45,7 +45,7 @@ Set-AzContext -SubscriptionId 00000000-0000-0000-0000-000000000000
 
 ### <a name="register-features"></a>註冊功能
 
-如果這是您在預覽期間第一次使用 Azure 映射產生器，請註冊新的**VirtualMachineTemplatePreview**功能。
+如果這是您第一次在預覽期間使用 Azure image builder，請註冊新的 **VirtualMachineTemplatePreview** 功能。
 
 ```azurepowershell-interactive
 Register-AzProviderFeature -ProviderNamespace Microsoft.VirtualMachineImages -FeatureName VirtualMachineTemplatePreview
@@ -54,7 +54,7 @@ Register-AzProviderFeature -ProviderNamespace Microsoft.VirtualMachineImages -Fe
 檢查功能註冊的狀態。
 
 > [!NOTE]
-> 在變更為之前， **RegistrationState**可能處於 `Registering` 數分鐘的狀態 `Registered` 。 等候狀態為 [**已註冊**]，再繼續進行。
+> 在變更為之前， **>registrationstate** 可能會處於 `Registering` 數分鐘的狀態 `Registered` 。 等到狀態 **註冊** 後再繼續。
 
 ```azurepowershell-interactive
 Get-AzProviderFeature -ProviderNamespace Microsoft.VirtualMachineImages -FeatureName VirtualMachineTemplatePreview
@@ -91,7 +91,7 @@ $imageTemplateName = 'myWinImage'
 $runOutputName = 'myDistResults'
 ```
 
-為您的 Azure 訂用帳戶識別碼建立變數。 若要確認 `subscriptionID` 變數包含您的訂用帳戶識別碼，您可以在下列範例中執行第二行。
+為您的 Azure 訂用帳戶識別碼建立變數。 若要確認 `subscriptionID` 變數是否包含您的訂用帳戶識別碼，您可以執行下列範例中的第二行。
 
 ```azurepowershell-interactive
 # Your Azure Subscription ID
@@ -103,13 +103,13 @@ Write-Output $subscriptionID
 
 使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) Cmdlet 來建立 [Azure 資源群組](../../azure-resource-manager/management/overview.md)。 資源群組是一個邏輯容器，Azure 資源會在其中以群組方式部署及管理。
 
-下列範例會根據變數所指定區域中的變數名稱，建立資源群組 `$imageResourceGroup` `$location` 。 此資源群組用來儲存映射設定範本成品和映射。
+下列範例會根據 `$location` 變數所指定區域中 `$imageResourceGroup` 變數中的名稱，建立資源群組。 此資源群組是用來儲存映射設定範本成品和映射。
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name $imageResourceGroup -Location $location
 ```
 
-## <a name="create-user-identity-and-set-role-permissions"></a>建立使用者身分識別並設定角色許可權
+## <a name="create-user-identity-and-set-role-permissions"></a>建立使用者身分識別和設定角色許可權
 
 使用下列範例，授與 Azure 映射產生器許可權，以在指定的資源群組中建立映射。 若沒有此許可權，映射建立程式將無法順利完成。
 
@@ -136,7 +136,7 @@ $identityNamePrincipalId = (Get-AzUserAssignedIdentity -ResourceGroupName $image
 
 ### <a name="assign-permissions-for-identity-to-distribute-images"></a>為身分識別指派權限以發佈映像
 
-下載 json 設定檔案，並根據本文中定義的設定加以修改。
+下載 json 設定檔，並根據本文中定義的設定加以修改。
 
 ```azurepowershell-interactive
 $myRoleImageCreationUrl = 'https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/solutions/12_Creating_AIB_Security_Roles/aibRoleImageCreation.json'
@@ -157,7 +157,7 @@ $Content | Out-File -FilePath $myRoleImageCreationPath -Force
 New-AzRoleDefinition -InputFile $myRoleImageCreationPath
 ```
 
-將角色定義授與映射產生器服務主體。
+將角色定義授與給 image builder 服務主體。
 
 ```azurepowershell-interactive
 $RoleAssignParams = @{
@@ -169,7 +169,7 @@ New-AzRoleAssignment @RoleAssignParams
 ```
 
 > [!NOTE]
-> 如果您收到錯誤：「已_超過 get-azroledefinition：角色定義限制」。無法建立更多角色定義。_」，請參閱針對[Azure RBAC 進行疑難排解](../../role-based-access-control/troubleshooting.md)。
+> 如果您收到錯誤：「_>get-azroledefinition：角色定義限制已超過」。無法建立更多角色定義。_」，請參閱 [疑難排解 Azure RBAC](../../role-based-access-control/troubleshooting.md)。
 
 ## <a name="create-a-shared-image-gallery"></a>建立共用映像庫
 
@@ -201,7 +201,7 @@ New-AzGalleryImageDefinition @GalleryParams
 
 ## <a name="create-an-image"></a>建立映像
 
-建立 Azure 映射產生器來源物件。 如需有效參數值的 Azure PowerShell，請參閱在[Azure Marketplace 中尋找 WINDOWS VM 映射](./cli-ps-findimage.md)。
+建立 Azure image builder 來源物件。 如需有效參數值的 Azure PowerShell，請參閱在 [Azure Marketplace 中尋找 WINDOWS VM 映射](./cli-ps-findimage.md) 。
 
 ```azurepowershell-interactive
 $SrcObjParams = @{
@@ -240,7 +240,7 @@ $ImgCustomParams = @{
 $Customizer = New-AzImageBuilderCustomizerObject @ImgCustomParams
 ```
 
-建立 Azure 映射產生器範本。
+建立 Azure image builder 範本。
 
 ```azurepowershell-interactive
 $ImgTemplateParams = @{
@@ -257,21 +257,21 @@ New-AzImageBuilderTemplate @ImgTemplateParams
 
 完成時，會傳回一則訊息，並在中建立映射產生器設定範本 `$imageResourceGroup` 。
 
-若要判斷範本建立程式是否成功，您可以使用下列範例。
+若要判斷範本建立流程是否成功，您可以使用下列範例。
 
 ```azurepowershell-interactive
 Get-AzImageBuilderTemplate -ImageTemplateName $imageTemplateName -ResourceGroupName $imageResourceGroup |
   Select-Object -Property Name, LastRunStatusRunState, LastRunStatusMessage, ProvisioningState
 ```
 
-在背景中，映射產生器也會在您的訂用帳戶中建立預備資源群組。 此資源群組用於映射組建。 其格式為： `IT_<DestinationResourceGroup>_<TemplateName>` 。
+在背景中，image builder 也會在您的訂用帳戶中建立預備資源群組。 此資源群組會用於映射組建。 格式如下： `IT_<DestinationResourceGroup>_<TemplateName>` 。
 
 > [!WARNING]
-> 請勿直接刪除暫存資源群組。 刪除映射範本成品，這會導致暫存資源群組遭到刪除。
+> 請勿直接刪除暫存資源群組。 刪除映射範本成品，這將會刪除暫存資源群組。
 
 如果服務在映射設定範本提交期間報告失敗：
 
-- 請參閱針對[AZURE VM 映射組建（AIB）失敗進行疑難排解](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#template-submission-errors--troubleshooting)。
+- 請參閱 [疑難排解 AZURE VM 映射組建 (AIB) 失敗](../linux/image-builder-troubleshoot.md)。
 - 請先使用下列範例刪除範本，再重試。
 
 ```azurepowershell-interactive
@@ -288,17 +288,17 @@ Start-AzImageBuilderTemplate -ResourceGroupName $imageResourceGroup -Name $image
 
 等待映射建立程式完成。 此步驟最多可能需要一小時的時間。
 
-如果您遇到錯誤，請參閱針對[AZURE VM 映射組建（AIB）失敗進行疑難排解](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#image-build-errors--troubleshooting)。
+如果您遇到錯誤，請參閱 [疑難排解 AZURE VM 映射組建 (AIB) 失敗](../linux/image-builder-troubleshoot.md)。
 
 ## <a name="create-a-vm"></a>建立 VM
 
-將 VM 的登入認證儲存在變數中。 密碼必須非常複雜。
+將 VM 的登入認證儲存在變數中。 必須使用複雜密碼。
 
 ```azurepowershell-interactive
 $Cred = Get-Credential
 ```
 
-使用您建立的映射建立 VM。
+使用您建立的映射來建立 VM。
 
 ```azurepowershell-interactive
 $ArtifactId = (Get-AzImageBuilderRunOutput -ImageTemplateName $imageTemplateName -ResourceGroupName $imageResourceGroup).ArtifactId
@@ -314,7 +314,7 @@ New-AzVM -ResourceGroupName $imageResourceGroup -Image $ArtifactId -Name myWinVM
 Get-Content -Path C:\buildActions\buildActionsOutput.txt
 ```
 
-您應該會看到以映射自訂程式期間所建立的檔案內容為基礎的輸出。
+您應該會看到以映射自訂程式期間建立的檔案內容為依據的輸出。
 
 ```Output
 Azure-Image-Builder-Was-Here
@@ -322,9 +322,9 @@ Azure-Image-Builder-Was-Here
 
 ## <a name="clean-up-resources"></a>清除資源
 
-如果不需要本文中建立的資源，您可以執行下列範例將它們刪除。
+如果不需要在本文中建立的資源，您可以執行下列範例將它們刪除。
 
-### <a name="delete-the-image-builder-template"></a>刪除映射產生器範本
+### <a name="delete-the-image-builder-template"></a>刪除 image builder 範本
 
 ```azurepowershell-interactive
 Remove-AzImageBuilderTemplate -ResourceGroupName $imageResourceGroup -Name $imageTemplateName
@@ -334,7 +334,7 @@ Remove-AzImageBuilderTemplate -ResourceGroupName $imageResourceGroup -Name $imag
 
 > [!CAUTION]
 > 下列範例會刪除指定的資源群組和其中包含的所有資源。
-> 如果本文範圍以外的資源存在於指定的資源群組中，則也會一併刪除。
+> 如果本文章範圍以外的資源存在於指定的資源群組中，則也會一併刪除。
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name $imageResourceGroup
@@ -342,4 +342,4 @@ Remove-AzResourceGroup -Name $imageResourceGroup
 
 ## <a name="next-steps"></a>後續步驟
 
-若要深入瞭解本文中所使用之 json 檔案的元件，請參閱影像產生器[範本參考](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+若要深入瞭解本文中所使用之 json 檔案的元件，請參閱影像產生器 [範本參考](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。

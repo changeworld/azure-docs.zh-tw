@@ -1,6 +1,6 @@
 ---
 title: 使用 Socket.io 的 Node.js 應用程式 - Azure
-description: 使用此教學課程來瞭解如何裝載通訊端。Azure 上的 IO 型交談應用程式。 Socket.IO 提供 node.js 伺服器和用戶端的即時通訊。
+description: 使用本教學課程來瞭解如何裝載通訊端。Azure 上以 IO 為基礎的聊天應用程式。 Socket.IO 提供 node.js 伺服器和用戶端的即時通訊。
 services: cloud-services
 documentationcenter: nodejs
 author: tgore03
@@ -9,13 +9,13 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: tagore
-ms.custom: devx-track-javascript
-ms.openlocfilehash: f3c19e77739ac8dbc503e51408b9b7830a8b5aa5
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.custom: devx-track-js
+ms.openlocfilehash: a3f661aa31511c5f1cf35d2e3c0429af6ab0c997
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88142463"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327522"
 ---
 # <a name="build-a-nodejs-chat-application-with-socketio-on-an-azure-cloud-service"></a>在 Azure 雲端服務上使用 Socket.IO 建立 Node.js 交談應用程式
 
@@ -25,11 +25,11 @@ Socket.IO 提供 node.js 伺服器和用戶端之間的即時通訊。 本教學
 
 ![A browser window displaying the service hosted on Azure][completed-app]
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 請確定已安裝下列產品及版本，以順利完成本文中的範例：
 
 * 安裝 [Visual Studio](https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx)
-* 安裝[Node.js](https://nodejs.org/download/)
+* 安裝 [Node.js](https://nodejs.org/download/)
 * 安裝 [Python 版本 2.7.10](https://www.python.org/)
 
 ## <a name="create-a-cloud-service-project"></a>建立雲端服務專案
@@ -126,7 +126,7 @@ Socket.IO 提供 node.js 伺服器和用戶端之間的即時通訊。 本教學
    > [!NOTE]
    > 如果您在啟動模擬器時遇到問題，例如：Start-AzureEmulator：發生未預期的失敗。  詳細資料：發生未預期的錯誤。通訊物件 System.ServiceModel.Channels.ServiceChannel 無法用於通訊，因為它處於錯誤狀態。
    >
-   > 重新安裝 AzureAuthoringTools v 2.7.1 和 AzureComputeEmulator v 2.7-請確定該版本符合。
+   > 重新安裝 AzureAuthoringTools v 2.7.1 和 AzureComputeEmulator v 2.7-請確定版本相符。
 
 2. 開啟瀏覽器並流覽至 **http://127.0.0.1** 。
 3. 當瀏覽器視窗開啟時，請輸入暱稱，然後按 Enter 鍵。

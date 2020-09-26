@@ -3,16 +3,16 @@ title: 將您的 GCP 帳戶連接到 Azure 資訊安全中心
 description: 從 Azure 資訊安全中心監視您的 GCP 資源
 author: memildin
 ms.author: memildin
-ms.date: 9/12/2020
+ms.date: 9/22/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: d5f478c279eb4c07332d047935f7c5dab89fd4b7
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: c4020bc5e96ff35fa2d04a872216e43abbba5323
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934715"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328304"
 ---
 #  <a name="connect-your-gcp-accounts-to-azure-security-center"></a>將您的 GCP 帳戶連接到 Azure 資訊安全中心
 
@@ -39,7 +39,7 @@ Azure 資訊安全中心保護 Azure 中的工作負載、Amazon Web Services (A
 |釋放狀態：|預覽|
 |定價：|需要 [適用于伺服器的 Azure Defender](defender-for-servers-introduction.md)|
 |必要的角色和許可權：|相關 Azure 訂用帳戶的**擁有**者或**參與者**|
-|雲端：|![Yes](./media/icons/yes-icon.png) 商業雲端<br>![No](./media/icons/no-icon.png) 全國/主權 (US Gov、中國 Gov、其他 Gov) |
+|雲端：|![是](./media/icons/yes-icon.png) 商業雲端<br>![否](./media/icons/no-icon.png) 全國/主權 (US Gov、中國 Gov、其他 Gov) |
 |||
 
 ## <a name="connect-your-gcp-account"></a>連接 GCP 帳戶
@@ -119,7 +119,7 @@ Azure 資訊安全中心保護 Azure 中的工作負載、Amazon Web Services (A
 :::image type="content" source="./media/quickstart-onboard-gcp/gcp-resource-types-in-inventory.png" alt-text="顯示 GCP 選項的資產清查頁面的資源類型篩選"::: 
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 連接您的 GCP 帳戶是 Azure 資訊安全中心中提供的多雲端體驗的一部分。 如需相關資訊，請參閱下列頁面：
 

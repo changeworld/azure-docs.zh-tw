@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/11/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 9caa377ebcdff5b0ae379f1b0b8269dac5b8f499
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 2ba511d3747ba308ae04ab1bbe3dcb89bca6a8a8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88924090"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328287"
 ---
 # <a name="how-to-index-documents-in-azure-blob-storage-with-azure-cognitive-search"></a>如何使用 Azure 認知搜尋為 Azure Blob 儲存體中的檔編制索引
 
@@ -73,6 +73,7 @@ blob 索引子可以從下列文件格式擷取文字：
 
 您可以採取下列其中一種方式提供 blob 容器的認證︰
 
+- **受控識別連接字串**： `ResourceId=/subscriptions/<your subscription ID>/resourceGroups/<your resource group name>/providers/Microsoft.Storage/storageAccounts/<your storage account name>/;` 此連接字串不需要帳戶金鑰，但您必須遵循指示來 [設定與使用受控識別的 Azure 儲存體帳戶](search-howto-managed-identities-storage.md)的連線。
 - **完整存取儲存體帳戶連接字串**： `DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>` 若要從 Azure 入口網站取得連接字串，您可以流覽至儲存體帳戶分頁 > 設定 > 適用于傳統儲存體帳戶的金鑰 () 或 > 儲存體帳戶 (的設定 Azure Resource Manager 存取金鑰) 。
 - **儲存體帳戶共用存取簽章** (SAS) 連接字串：`BlobEndpoint=https://<your account>.blob.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=b&sp=rl` SAS 應該有容器和物件 (在此案例中為 Blob) 上的列出和讀取權限。
 -  **容器共用存取**簽章： `ContainerSharedAccessUri=https://<your storage account>.blob.core.windows.net/<container name>?sv=2016-05-31&sr=c&sig=<the signature>&se=<the validity end time>&sp=rl` SAS 應該具有容器的清單和讀取權限。
@@ -148,7 +149,7 @@ blob 索引子可以從下列文件格式擷取文字：
 
   * **metadata\_storage\_name** (Edm.String) - blob 的檔案名稱。 例如，如果您有 blob /my-container/my-folder/subfolder/resume.pdf，這個欄位的值是 `resume.pdf`。
   * **metadata\_storage\_path** (Edm.String) - blob 的完整 URI，包括儲存體帳戶。 例如， `https://myaccount.blob.core.windows.net/my-container/my-folder/subfolder/resume.pdf`
-  * **metadata\_storage\_content\_type** (Edm.String) - 內容類型，如同您用來上傳 blob 的程式碼所指定。 例如 `application/octet-stream`。
+  * **metadata\_storage\_content\_type** (Edm.String) - 內容類型，如同您用來上傳 blob 的程式碼所指定。 例如： `application/octet-stream` 。
   * **metadata\_storage\_last\_modified** (Edm.DateTimeOffset) - 上次修改 blob 的時間戳記。 Azure 認知搜尋使用此時間戳記來識別已變更的 blob，以避免在初始編制索引之後重新建立所有專案的索引。
   * **metadata\_storage\_size** (Edm.Int64) - blob 大小 (位元組)。
   * **metadata\_storage\_content\_md5** (Edm.String) - blob 內容的 MD5 雜湊，如果有的話。
@@ -352,7 +353,7 @@ Azure 認知搜尋限制已編制索引之 blob 的大小。 這些限制記載�
 
 在此方法中，您將使用 Azure Blob 儲存體所提供的 [原生 blob 虛刪除](../storage/blobs/soft-delete-blob-overview.md) 功能。 如果您的儲存體帳戶已啟用原生 blob 虛刪除，則您的資料來源會設定原生虛刪除原則，而索引子會尋找已轉換為虛刪除狀態的 blob，索引子會從索引中移除該檔。 從 Azure Data Lake Storage Gen2 為 blob 編制索引時，不支援原生 blob 虛刪除原則。
 
-使用下列步驟：
+請使用下列步驟：
 1. [針對 Azure Blob 儲存體啟用原生虛刪除](../storage/blobs/soft-delete-blob-overview.md)。 建議您將保留原則設定為比索引子間隔排程更高的值。 如此一來，如果執行索引子時發生問題，或如果您有大量的檔要編制索引，則索引子會有很多時間最後處理虛刪除的 blob。 如果 blob 處於虛刪除狀態，Azure 認知搜尋索引子只會刪除索引中的檔。
 1. 在資料來源上設定原生 blob 虛刪除偵測原則。 範例如下所示。 因為這項功能處於預覽狀態，所以您必須使用預覽版 REST API。
 1. 執行索引子，或將索引子設定為依排程執行。 當索引子執行並處理 blob 時，會從索引中移除檔。
@@ -380,7 +381,7 @@ Azure 認知搜尋限制已編制索引之 blob 的大小。 這些限制記載�
 
 在此方法中，您將使用 blob 的中繼資料，來指出何時應從搜尋索引中移除檔。
 
-使用下列步驟：
+請使用下列步驟：
 
 1. 將自訂中繼資料索引鍵/值組新增至 blob，以指出 Azure 認知搜尋它會以邏輯方式刪除。
 1. 在資料來源上設定虛刪除資料行偵測原則。 範例如下所示。

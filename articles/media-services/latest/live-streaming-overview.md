@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 23898969f254063ee9e5385fee577661871ccf45
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 0eb814ea0d941ca01d3a21db1cb507ef273a1a18
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89298975"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328338"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>使用 Azure 媒體服務 v3 進行即時串流
 
@@ -60,7 +60,7 @@ Azure 媒體服務可讓您在 Azure 雲端上將實況活動傳遞給客戶。 
 
 ### <a name="pass-through"></a>傳遞
 
-![即時通行](./media/live-streaming/pass-through.svg)
+![此圖顯示如何內嵌和處理來自傳遞實況活動的影片和音訊摘要。](./media/live-streaming/pass-through.svg)
 
 使用傳遞 **實況**活動時，您會依賴內部部署即時編碼器來產生多位元率的影片串流，並使用 RTMP 或分散的輸入通訊協定) ，將該串流作為投稿摘要傳送給實況活動 (。 實況活動接著會透過連入影片串流傳送至動態封裝 (串流端點) ，而不需要任何進一步的轉碼。 這類的傳遞實況活動已針對長時間執行的即時活動或24x365 線性即時串流進行優化。 
 

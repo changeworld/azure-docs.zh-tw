@@ -2,20 +2,20 @@
 title: 資料存留處
 description: 資料存放區，以及 Azure Arc 啟用的伺服器的相關資訊。
 ms.topic: reference
-ms.date: 09/02/2020
+ms.date: 09/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: 8b4b8171bd7133e52928a5227c488bd6234ce686
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 73acb07b8caa3c1368c936463f04969c29d37985
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90908123"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327760"
 ---
 # <a name="azure-arc-enabled-servers-data-residency"></a>Azure Arc 啟用的伺服器：資料存放區
 
 本文說明資料存放區的概念，以及它如何套用至 Azure Arc 啟用的伺服器。
 
-Azure Arc 啟用的伺服器 **[適用](https://azure.microsoft.com/global-infrastructure/services/?products=azure-arc)** 于 **美國、歐洲或亞太地區**。
+Azure Arc 啟用的伺服器 **[適用](https://azure.microsoft.com/global-infrastructure/services/?products=azure-arc)** 于 **美國、歐洲、英國或亞太地區**。
 
 ## <a name="data-residency"></a>資料存留處
 
@@ -32,6 +32,6 @@ Azure Arc 啟用的伺服器會儲存 [AZURE VM 擴充](manage-vm-extensions.md)
 
 如需有關區域復原和合規性支援的詳細資訊，請參閱 [Azure 地理位置](https://azure.microsoft.com/global-infrastructure/geographies/)。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 深入瞭解如何設計 [Azure 復原](/azure/architecture/reliability/architect)。

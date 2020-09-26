@@ -8,12 +8,12 @@ ms.date: 9/11/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: 09181a28edf21f0a4da11a244d3c094469446ab5
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 6726dab6f1037f01eda316968e3c5b503aa9dbfb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90983444"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326566"
 ---
 # <a name="integrate-with-logic-apps-using-a-custom-connector"></a>使用自訂連接器與 Logic Apps 整合
 
@@ -28,7 +28,7 @@ Azure 數位 Twins 目前沒有認證 (預先建立的) 連接器可供 Logic Ap
 如果您沒有 Azure 訂閱，請在開始前**建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)** 。
 使用此帳戶登入 [Azure 入口網站](https://portal.azure.com) 。 
 
-本節的其餘部分將逐步引導您完成下列步驟：
+您也需要在必要條件設定中完成下列專案。 本節的其餘部分將逐步引導您完成下列步驟：
 - 設定 Azure Digital Twins 執行個體
 - 取得應用程式註冊用戶端密碼
 - 新增數位對應項
@@ -37,9 +37,9 @@ Azure 數位 Twins 目前沒有認證 (預先建立的) 連接器可供 Logic Ap
 
 若要將 Azure 數位 Twins 實例連線到本文中的 Logic Apps，您必須已設定 **Azure 數位 Twins 實例** 。 
 
-如果您現在需要設定新的實例，最簡單的方式就是執行自動化部署腳本範例。 遵循 how [*to：設定實例和驗證 (腳本) *](how-to-set-up-instance-scripted.md) 中的指示，設定新的實例和必要的 Azure AD 應用程式註冊。 這些指示也包含可驗證您已成功完成每個步驟，並已準備好繼續使用新執行個體的步驟。
+首先，設定 Azure 數位 Twins 實例和必要的驗證，以便能夠使用它。 若要這樣做，請依照 how [*to：設定實例和驗證*](how-to-set-up-instance-portal.md)中的指示進行。 根據您的偏好體驗，會提供 [Azure 入口網站](how-to-set-up-instance-portal.md)、 [CLI](how-to-set-up-instance-cli.md)或 [自動化 Cloud Shell 部署腳本範例](how-to-set-up-instance-scripted.md)的安裝程式文章。 所有版本的指示也包含驗證您已成功完成每個步驟的步驟，並已準備好繼續使用新的實例。
 
-在本教學課程中，您將需要設定執行個體時所輸入的下列值。 如果您需要再次收集這些值，請使用下列連結以前往設定文章中的對應章節，以在 [Azure 入口網站](https://portal.azure.com)中找到這些值。
+在本教學課程中，您將需要設定實例時的數個值。 如果您需要再次收集這些值，請使用下列連結以前往設定文章中的對應章節，以在 [Azure 入口網站](https://portal.azure.com)中找到這些值。
 * Azure Digital Twins 執行個體**_主機名稱_** ([在入口網站中尋找](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values))
 * Azure AD 應用程式註冊**_應用程式 (用戶端) 識別碼_** ([在入口網站中尋找](how-to-set-up-instance-portal.md#collect-important-values))
 * Azure AD 應用程式註冊**_目錄 (租用戶) 識別碼_** ([在入口網站中尋找](how-to-set-up-instance-portal.md#collect-important-values))
@@ -160,13 +160,13 @@ Azure 數位 Twins 目前沒有認證 (預先建立的) 連接器可供 Logic Ap
 
 接下來，您將建立邏輯應用程式，以使用新的連接器來自動化 Azure 數位 Twins 更新。
 
-流覽至 Azure 入口網站中的 [ [邏輯應用程式 (耗用量) ](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Logic%2Fworkflows) ] 頁面 (您可以使用此連結，或在入口網站的搜尋列) 中尋找。 按 [ *新增* ] 按鈕以建立邏輯應用程式。
+在 [Azure 入口網站](https://portal.azure.com)中，于入口網站的搜尋列中搜尋 *邏輯應用程式* 。 選取它應該會帶您前往 [ *邏輯應用程式* ] 頁面。 點擊 [ *建立邏輯應用程式* ] 按鈕，以建立新的邏輯應用程式。
 
-:::image type="content" source="media/how-to-integrate-logic-apps/create-logic-app.png" alt-text="Azure 入口網站中的「Logic Apps (耗用量) 」頁面。點擊 [新增] 按鈕":::
+:::image type="content" source="media/how-to-integrate-logic-apps/create-logic-app.png" alt-text="Azure 入口網站中的 [Logic Apps] 頁面。點擊 [新增] 按鈕":::
 
-在接下來的 [ *邏輯應用程式 (耗用量) * ] 頁面中，輸入您的訂用帳戶、資源群組。 此外，選擇邏輯應用程式的名稱，並選取位置。
+在接下來的 [ *邏輯應用程式* ] 頁面中，輸入您的訂用帳戶和資源群組。 此外，請選擇邏輯應用程式的名稱，然後選取部署位置。
 
-選取 [ _審核 + 建立_ ] 按鈕。
+點擊 [ _審核 + 建立_ ] 按鈕。
 
 這會將您帶到 [審核] 和 [ *建立* ] 索引標籤，您可以在此查看詳細資料，並在底部點擊 [ *建立* ] 以建立您的資源。
 
@@ -209,7 +209,7 @@ Azure 數位 Twins 目前沒有認證 (預先建立的) 連接器可供 Logic Ap
 
 如需查詢 Azure 數位 Twins 實例的詳細資訊，請參閱 how [*to：查詢對應項圖形*](how-to-query-graph.md)。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 在本文中，您已建立邏輯應用程式，以使用您提供的修補程式定期更新 Azure 數位 Twins 實例中的對應項。 您可以嘗試在自訂連接器中選取其他 Api，以針對實例上的各種動作建立 Logic Apps。
 

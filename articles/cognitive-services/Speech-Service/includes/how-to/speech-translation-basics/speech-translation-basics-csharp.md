@@ -5,14 +5,24 @@ ms.topic: include
 ms.date: 04/13/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1042383e285780f5ee9297b1c87615bbdd2fe1b6
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: f3f84a13100fc14c6c75fbfcc3e14ada75dc5b52
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88925247"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326888"
 ---
-## <a name="prerequisites"></a>必要條件
+語音服務的其中一項核心功能是能夠辨識人類語音，並將它轉譯成其他語言。 在本快速入門中，您將瞭解如何在您的應用程式和產品中使用語音 SDK，以執行高品質的語音翻譯。 本快速入門涵蓋的主題包括：
+
+* 翻譯語音轉換文字
+* 將語音翻譯成多種目的語言
+* 執行直接語音轉換語音翻譯
+
+## <a name="skip-to-samples-on-github"></a>跳至 GitHub 上的範例
+
+如果您想要直接跳至範例程式碼，請參閱 GitHub 上的 [c # 快速入門範例](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/dotnet/translate-speech-to-text) 。
+
+## <a name="prerequisites"></a>Prerequisites
 
 本文假設您具有 Azure 帳戶和語音服務訂用帳戶。 如果您沒有該帳戶和訂用帳戶，請[免費試用語音服務](../../../get-started.md)。
 
@@ -102,7 +112,7 @@ static async Task TranslateSpeechAsync()
 }
 ```
 
-[`SpeechRecognitionLanguage`][recognitionlang] 屬性需要語言/地區設定格式字串。 您可以提供支援的[地區設定/語言](../../../language-support.md)清單中位於 [地區設定] 資料行內的任何值。
+[`SpeechRecognitionLanguage`][recognitionlang] 屬性需要語言/地區設定格式字串。 您可以提供支援的[地區設定/語言](../../../language-support.md)清單中位於 [地區設定]  資料行內的任何值。
 
 ## <a name="add-translation-language"></a>新增翻譯語言
 

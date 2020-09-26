@@ -4,24 +4,34 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/13/2020
 ms.author: trbye
-ms.openlocfilehash: e83536042df1cebb1bb22d6c18d99ae4c3d87873
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: cb7bb9ef70451cece9dde88a7325fe652026b230
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86035926"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326889"
 ---
-## <a name="prerequisites"></a>必要條件
+語音服務的其中一項核心功能是能夠辨識人類語音，並將它轉譯成其他語言。 在本快速入門中，您將瞭解如何在您的應用程式和產品中使用語音 SDK，以執行高品質的語音翻譯。 本快速入門涵蓋的主題包括：
+
+* 翻譯語音轉換文字
+* 將語音翻譯成多種目的語言
+* 執行直接語音轉換語音翻譯
+
+## <a name="skip-to-samples-on-github"></a>跳至 GitHub 上的範例
+
+如果您想要直接跳至範例程式碼，請參閱 GitHub 上的 [Python 快速入門範例](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/python) 。
+
+## <a name="prerequisites"></a>Prerequisites
 
 本文假設您具有 Azure 帳戶和語音服務訂用帳戶。 如果您沒有該帳戶和訂用帳戶，請[免費試用語音服務](../../../get-started.md)。
 
 ## <a name="install-the-speech-sdk"></a>安裝語音 SDK
 
-您必須先安裝語音 SDK，才能執行動作。 根據您的平臺，遵循_關於語音 sdk_一文的<a href="https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/speech-sdk#get-the-speech-sdk" target="_blank">取得語音 <span class="docon docon-navigate-external x-hidden-focus"></span> sdk</a>一節中的指示。
+您必須先安裝語音 SDK，才能執行動作。 視您的平臺而定，請依照「_關於語音 sdk_ 」一文的「 <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/speech-sdk#get-the-speech-sdk" target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> 取得語音 sdk</a> 」一節中的指示進行。
 
 ## <a name="import-dependencies"></a>匯入相依性
 
-若要執行本文中的範例，請將下列 `import` 語句包含在 python 程式碼檔案的頂端。
+若要執行本文中的範例，請 `import` 在 python 程式碼檔案的頂端加入下列語句。
 
 ```python
 import os
@@ -30,7 +40,7 @@ import azure.cognitiveservices.speech as speechsdk
 
 ## <a name="sensitive-data-and-environment-variables"></a>敏感性資料和環境變數
 
-本文中的範例原始程式碼取決於用來儲存敏感性資料的環境變數，例如語音資源訂用帳戶金鑰和區域。 Python 程式碼檔案包含兩個從主機電腦環境變數指派的值，即 `SPEECH__SUBSCRIPTION__KEY` 和 `SPEECH__SERVICE__REGION` 。 這兩個變數都位於全域範圍內，使其可在程式碼檔案的函式定義中存取。 如需環境變數的詳細資訊，請參閱[環境變數和應用程式](../../../../cognitive-services-security.md#environment-variables-and-application-configuration)設定。
+本文中的範例原始程式碼相依于儲存機密資料的環境變數，例如語音資源訂用帳戶金鑰和區域。 Python 程式碼檔案包含從主機電腦環境變數（即和）指派的兩個 `SPEECH__SUBSCRIPTION__KEY` 值 `SPEECH__SERVICE__REGION` 。 這兩個變數都位於全域範圍，因此可在程式碼檔案的函式定義中進行存取。 如需環境變數的詳細資訊，請參閱 [環境變數和應用程式](../../../../cognitive-services-security.md#environment-variables-and-application-configuration)設定。
 
 ```python
 speech_key, service_region = os.environ['SPEECH__SUBSCRIPTION__KEY'], os.environ['SPEECH__SERVICE__REGION']
@@ -62,7 +72,7 @@ def translate_speech_to_text():
 
 ## <a name="change-source-language"></a>變更來源語言
 
-語音翻譯的一個常見工作是指定輸入（或來源）語言。 我們來看看如何將輸入語言變更為義大利文。 在您的程式碼中，與實例進行互動，並將 [`SpeechTranslationConfig`][config] 指派給 `speech_recognition_language` 屬性。
+語音翻譯的一個常見工作是指定輸入 (或來源) 語言。 我們來看看如何將輸入語言變更為義大利文。 在您的程式碼中，與 [`SpeechTranslationConfig`][config] 實例互動，並指派給 `speech_recognition_language` 屬性。
 
 ```python
 def translate_speech_to_text():
@@ -77,7 +87,7 @@ def translate_speech_to_text():
 
 ## <a name="add-translation-language"></a>新增翻譯語言
 
-語音翻譯的另一個常見工作是指定目標轉譯語言，至少需要一個，但支援多個。 下列程式碼片段會將法文和德文設定為翻譯語言目標。
+語音翻譯的另一項常見工作是指定目標翻譯語言，至少需要一個，但支援倍數。 下列程式碼片段會將法文和德文設定為翻譯語言目標。
 
 ```python
 def translate_speech_to_text():
@@ -91,11 +101,11 @@ def translate_speech_to_text():
     translation_config.add_target_language("de")
 ```
 
-每次呼叫時 [`add_target_language`][addlang] ，會指定新的目標轉譯語言。 換句話說，從來源語言辨識出語音時，每個目標轉譯都可做為所產生轉譯作業的一部分。
+每次呼叫時 [`add_target_language`][addlang] ，會指定新的目標翻譯語言。 換句話說，從來源語言辨識語音時，每個目標翻譯都可作為產生之轉譯作業的一部分。
 
 ## <a name="initialize-a-translation-recognizer"></a>初始化翻譯辨識器
 
-建立 [`SpeechTranslationConfig`][config] 之後，下一步是初始化 [`TranslationRecognizer`][recognizer]。 當您初始化 [`TranslationRecognizer`][recognizer] 時，您必須為其傳入您的 `translation_config`。 Configuration 物件會提供語音服務驗證要求所需的認證。
+建立 [`SpeechTranslationConfig`][config] 之後，下一步是初始化 [`TranslationRecognizer`][recognizer]。 當您初始化 [`TranslationRecognizer`][recognizer] 時，您必須為其傳入您的 `translation_config`。 設定物件會提供語音服務驗證要求所需的認證。
 
 如果您要使用裝置的預設麥克風來辨識語音，則 [`TranslationRecognizer`][recognizer] 應會顯示如下：
 
@@ -132,7 +142,7 @@ def translate_speech_to_text():
             translation_config=translation_config, audio_config=audio_config)
 ```
 
-如果您想要提供音訊檔案而不使用麥克風，您仍然需要提供 `audioConfig`。 不過，當您建立時 [`AudioConfig`][audioconfig] ， `use_default_microphone=True` 您會呼叫 `filename="path-to-file.wav"` 並提供參數，而不是使用呼叫 `filename` 。
+如果您想要提供音訊檔案而不使用麥克風，您仍然需要提供 `audioConfig`。 但是，當您建立時 [`AudioConfig`][audioconfig] ， `use_default_microphone=True` 您會使用呼叫 `filename="path-to-file.wav"` 並提供 `filename` 參數，而不是呼叫。
 
 ```python
 def translate_speech_to_text():
@@ -150,7 +160,7 @@ def translate_speech_to_text():
 
 ## <a name="translate-speech"></a>翻譯語音
 
-若要翻譯語音，語音 SDK 會依賴麥克風或音訊檔案輸入。 語音辨識會在語音翻譯之前進行。 在初始化所有物件之後，呼叫辨識一次函式並取得結果。
+為了翻譯語音，語音 SDK 會依賴麥克風或音訊檔案輸入。 語音轉換之前會進行語音辨識。 所有物件都已初始化之後，請呼叫「辨識一次」函數並取得結果。
 
 ```python
 import os
@@ -187,18 +197,18 @@ def get_result_text(reason, result):
 translate_speech_to_text()
 ```
 
-如需有關語音轉換文字的詳細資訊，請參閱[語音辨識的基本概念](../../../speech-to-text-basics.md)。
+如需語音轉換文字的詳細資訊，請參閱 [語音辨識的基本概念](../../../speech-to-text-basics.md)。
 
 ## <a name="synthesize-translations"></a>合成翻譯
 
-在成功的語音辨識和轉譯之後，結果會包含字典中的所有翻譯。 [`translations`][translations]字典索引鍵是目標轉譯語言，而值則是翻譯的文字。 可以翻譯辨識的語音，然後以不同的語言（語音轉換語音）合成。
+成功進行語音辨識和轉譯之後，結果會包含字典中的所有翻譯。 [`translations`][translations]字典索引鍵是目標翻譯語言，而值是翻譯的文字。 辨識的語音可以轉譯，然後以不同的語言合成 (語音轉換語音) 。
 
 ### <a name="event-based-synthesis"></a>以事件為基礎的合成
 
-`TranslationRecognizer`物件會公開 `Synthesizing` 事件。 事件會引發數次，並提供從轉譯辨識結果抓取合成音訊的機制。 如果您要翻譯成多種語言，請參閱[手動合成](#manual-synthesis)。 藉由指派 [`voice_name`][voicename] 並提供事件的事件處理常式來指定合成語音 `Synthesizing` ，以取得音訊。 下列範例會將轉譯的音訊儲存為 *.wav*檔案。
+`TranslationRecognizer`物件會公開 `Synthesizing` 事件。 事件會引發數次，並提供從轉譯辨識結果取出合成音訊的機制。 如果您要翻譯成多種語言，請參閱 [手動合成](#manual-synthesis)。 藉由指派來指定合成語音 [`voice_name`][voicename] ，並提供事件的事件處理常式 `Synthesizing` ，取得音訊。 下列範例會將翻譯的音訊儲存為 *.wav* 檔。
 
 > [!IMPORTANT]
-> 以事件為基礎的合成僅適用于單一轉譯，**請勿**新增多個目標轉譯語言。 此外， [`voice_name`][voicename] 應該是與目標轉譯語言相同的語言，例如， `"de"` 可以對應至 `"de-DE-Hedda"` 。
+> 以事件為基礎的合成僅適用于單一轉譯， **請勿** 新增多個目標翻譯語言。 此外，也 [`voice_name`][voicename] 應該與目標翻譯語言的語言相同，例如， `"de"` 可能會對應到 `"de-DE-Hedda"` 。
 
 ```python
 import os
@@ -252,7 +262,7 @@ translate_speech_to_text()
 
 ### <a name="manual-synthesis"></a>手動合成
 
-[`translations`][translations]字典可以用來從翻譯文字合成音訊。 逐一查看每個翻譯，併合成翻譯。 建立實例時 `SpeechSynthesizer` ，物件必須 `SpeechConfig` [`speech_synthesis_voice_name`][speechsynthesisvoicename] 將其屬性設定為所需的聲音。 下列範例會轉譯成五種語言，然後每個翻譯都會合成對應的類神經語言中的音訊檔案。
+[`translations`][translations]字典可以用來從翻譯文字合成音訊。 逐一查看每個翻譯，併合成翻譯。 建立實例時 `SpeechSynthesizer` ，物件必須 `SpeechConfig` [`speech_synthesis_voice_name`][speechsynthesisvoicename] 將其屬性設定為所需的聲音。 下列範例會轉譯成五種語言，然後每個轉譯都會合成對應的類神經語言中的音訊檔案。
 
 ```python
 import os
@@ -300,7 +310,7 @@ def synthesize_translations(result):
 translate_speech_to_text()
 ```
 
-如需有關語音合成的詳細資訊，請參閱[語音合成的基本概念](../../../text-to-speech-basics.md)。
+如需語音合成的詳細資訊，請參閱 [語音合成的基本概念](../../../text-to-speech-basics.md)。
 
 [config]: https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.translation.speechtranslationconfig?view=azure-python
 [audioconfig]: https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.audio.audioconfig?view=azure-python

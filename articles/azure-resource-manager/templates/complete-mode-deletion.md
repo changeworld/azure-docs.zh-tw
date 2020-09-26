@@ -2,13 +2,13 @@
 title: 完整模式刪除
 description: 顯示資源類型如何處理 Azure Resource Manager 範本中的完整模式刪除。
 ms.topic: conceptual
-ms.date: 08/25/2020
-ms.openlocfilehash: 08fed3420cf74d328dd9a92a6a2c9235c5d11300
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.date: 09/21/2020
+ms.openlocfilehash: e288d3af080a96616026e94ac7be352a7684c181
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855175"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327658"
 ---
 # <a name="deletion-of-azure-resources-for-complete-mode-deployments"></a>完整模式部署的 Azure 資源刪除
 
@@ -26,6 +26,7 @@ ms.locfileid: "88855175"
 > - [Microsoft.Addons](#microsoftaddons)
 > - [Microsoft.ADHybridHealthService](#microsoftadhybridhealthservice)
 > - [Microsoft.Advisor](#microsoftadvisor)
+> - [AgFoodPlatform](#microsoftagfoodplatform)
 > - [Microsoft.AlertsManagement](#microsoftalertsmanagement)
 > - [Microsoft.AnalysisServices](#microsoftanalysisservices)
 > - [Microsoft.ApiManagement](#microsoftapimanagement)
@@ -69,6 +70,7 @@ ms.locfileid: "88855175"
 > - [Microsoft.CostManagement](#microsoftcostmanagement)
 > - [Microsoft.CustomerLockbox](#microsoftcustomerlockbox)
 > - [Microsoft.CustomProviders](#microsoftcustomproviders)
+> - [D365CustomerInsights](#microsoftd365customerinsights)
 > - [Microsoft.DataBox](#microsoftdatabox)
 > - [Microsoft.DataBoxEdge](#microsoftdataboxedge)
 > - [Microsoft.Databricks](#microsoftdatabricks)
@@ -158,6 +160,7 @@ ms.locfileid: "88855175"
 > - [Microsoft.ResourceHealth](#microsoftresourcehealth)
 > - [Microsoft.Resources](#microsoftresources)
 > - [Microsoft.SaaS](#microsoftsaas)
+> - [Microsoft ScVmm](#microsoftscvmm)
 > - [Microsoft.Search](#microsoftsearch)
 > - [Microsoft.Security](#microsoftsecurity)
 > - [Microsoft.SecurityGraph](#microsoftsecuritygraph)
@@ -237,6 +240,13 @@ ms.locfileid: "88855175"
 > | 中繼資料 | 否 |
 > | Mahout | 否 |
 > | suppressions | 否 |
+
+## <a name="microsoftagfoodplatform"></a>AgFoodPlatform
+
+> [!div class="mx-tableFixed"]
+> | 資源類型 | 完整模式刪除 |
+> | ------------- | ----------- |
+> | farmBeats | 是 |
 
 ## <a name="microsoftalertsmanagement"></a>Microsoft.AlertsManagement
 
@@ -399,6 +409,7 @@ ms.locfileid: "88855175"
 > | ------------- | ----------- |
 > | cloudManifestFiles | 否 |
 > | edgeSubscriptions | 是 |
+> | linkedSubscriptions | 是 |
 > | registrations | 是 |
 > | 註冊/customerSubscriptions | 否 |
 > | registrations / products | 否 |
@@ -454,6 +465,7 @@ ms.locfileid: "88855175"
 > | billingAccounts/billingProfiles/pricesheet | 否 |
 > | billingAccounts/billingProfiles/pricesheetDownloadOperations | 否 |
 > | billingAccounts/billingProfiles/products | 否 |
+> | billingAccounts/billingProfiles/保留 | 否 |
 > | billingAccounts/billingProfiles/交易 | 否 |
 > | billingAccounts/billingProfiles/validateDetachPaymentMethodEligibility | 否 |
 > | billingAccounts/billingRoleAssignments | 否 |
@@ -497,6 +509,7 @@ ms.locfileid: "88855175"
 > | billingAccounts/patchOperations | 否 |
 > | billingAccounts/paymentMethods | 否 |
 > | billingAccounts/產品 | 否 |
+> | billingAccounts/保留 | 否 |
 > | billingAccounts/交易 | 否 |
 > | billingPeriods | 否 |
 > | billingPermissions | 否 |
@@ -578,6 +591,10 @@ ms.locfileid: "88855175"
 > | Redis/privateEndpointConnections | 否 |
 > | Redis/privateLinkResources | 否 |
 > | redisEnterprise | 是 |
+> | RedisEnterprise / privateEndpointConnectionProxies | 否 |
+> | RedisEnterprise/privateEndpointConnectionProxies/validate | 否 |
+> | RedisEnterprise / privateEndpointConnections | 否 |
+> | RedisEnterprise / privateLinkResources | 否 |
 
 ## <a name="microsoftcapacity"></a>Microsoft.Capacity
 
@@ -592,6 +609,7 @@ ms.locfileid: "88855175"
 > | catalogs | 否 |
 > | commercialReservationOrders | 否 |
 > | 兌換 | 否 |
+> | ownReservations | 否 |
 > | placePurchaseOrder | 否 |
 > | reservationOrders | 否 |
 > | reservationOrders / calculateRefund | 否 |
@@ -745,6 +763,11 @@ ms.locfileid: "88855175"
 > | ------------- | ----------- |
 > | availabilitySets | 是 |
 > | cloudServices | 是 |
+> | cloudServices/networkInterfaces | 否 |
+> | cloudServices/publicIPAddresses | 否 |
+> | cloudServices/roleInstances | 否 |
+> | cloudServices/roleInstances/networkInterfaces | 否 |
+> | cloudServices/角色 | 否 |
 > | diskAccesses | 是 |
 > | diskEncryptionSets | 是 |
 > | disks | 是 |
@@ -917,6 +940,13 @@ ms.locfileid: "88855175"
 > | associations | 否 |
 > | resourceProviders | 是 |
 
+## <a name="microsoftd365customerinsights"></a>D365CustomerInsights
+
+> [!div class="mx-tableFixed"]
+> | 資源類型 | 完整模式刪除 |
+> | ------------- | ----------- |
+> | 執行個體 | 是 |
+
 ## <a name="microsoftdatabox"></a>Microsoft.DataBox
 
 > [!div class="mx-tableFixed"]
@@ -1025,6 +1055,8 @@ ms.locfileid: "88855175"
 > | servers/privateLinkResources | 否 |
 > | servers/queryTexts | 否 |
 > | servers/recoverableServers | 否 |
+> | 伺服器/開始 | 否 |
+> | 伺服器/停止 | 否 |
 > | servers/topQueryStatistics | 否 |
 > | servers / virtualNetworkRules | 否 |
 > | servers/waitStatistics | 否 |
@@ -1034,6 +1066,7 @@ ms.locfileid: "88855175"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
+> | flexibleServers | 是 |
 > | servers | 是 |
 > | servers / advisors | 否 |
 > | servers / keys | 否 |
@@ -1042,7 +1075,10 @@ ms.locfileid: "88855175"
 > | servers/privateLinkResources | 否 |
 > | servers/queryTexts | 否 |
 > | servers/recoverableServers | 否 |
+> | 伺服器/開始 | 否 |
+> | 伺服器/停止 | 否 |
 > | servers/topQueryStatistics | 否 |
+> | 伺服器/升級 | 否 |
 > | servers / virtualNetworkRules | 否 |
 > | servers/waitStatistics | 否 |
 
@@ -1217,6 +1253,7 @@ ms.locfileid: "88855175"
 > | namespaces / eventhubs / authorizationrules | 否 |
 > | namespaces / eventhubs / consumergroups | 否 |
 > | namespaces / networkrulesets | 否 |
+> | 命名空間/privateEndpointConnections | 否 |
 
 ## <a name="microsoftexperimentation"></a>Microsoft.Experimentation
 
@@ -1313,8 +1350,8 @@ ms.locfileid: "88855175"
 > | 服務/iomtconnectors/連接 | 否 |
 > | 服務/iomtconnectors/對應 | 否 |
 > | 服務/privateEndpointConnectionProxies | 否 |
-> | 服務/privateEndpointConnections | 是 |
-> | 服務/privateLinkResources | 是 |
+> | 服務/privateEndpointConnections | 否 |
+> | 服務/privateLinkResources | 否 |
 
 ## <a name="microsofthybridcompute"></a>Microsoft.HybridCompute
 
@@ -1322,7 +1359,9 @@ ms.locfileid: "88855175"
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
 > | machines | 是 |
+> | 機器/assessPatches | 否 |
 > | machines / extensions | 是 |
+> | 機器/installPatches | 否 |
 
 ## <a name="microsofthybriddata"></a>Microsoft.HybridData
 
@@ -1393,6 +1432,8 @@ ms.locfileid: "88855175"
 > | vaults | 是 |
 > | 保存庫/accessPolicies | 否 |
 > | 保存庫/eventGridFilters | 否 |
+> | 保存庫/金鑰 | 否 |
+> | 保存庫/金鑰/版本 | 否 |
 > | vaults / secrets | 否 |
 
 ## <a name="microsoftkubernetes"></a>Microsoft.Kubernetes
@@ -1461,6 +1502,7 @@ ms.locfileid: "88855175"
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
 > | workspaces | 是 |
+> | 工作區/codeJobs | 否 |
 > | workspaces / computes | 否 |
 > | 工作區/eventGridFilters | 否 |
 > | 工作區/inferenceEndpoints | 是 |
@@ -1669,6 +1711,7 @@ ms.locfileid: "88855175"
 > | frontdoorWebApplicationFirewallPolicies | 是 |
 > | getDnsResourceReference | 否 |
 > | internalNotify | 否 |
+> | ipGroups | 是 |
 > | loadBalancers | 是 |
 > | localNetworkGateways | 是 |
 > | natGateways | 是 |
@@ -1832,6 +1875,7 @@ ms.locfileid: "88855175"
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
 > | accounts | 是 |
+> | deletedAccounts | 否 |
 
 ## <a name="microsoftproviderhub"></a>Microsoft.ProviderHub
 
@@ -1931,6 +1975,17 @@ ms.locfileid: "88855175"
 > | 應用程式所需 | 是 |
 > | saasresources | 否 |
 
+## <a name="microsoftscvmm"></a>Microsoft ScVmm
+
+> [!div class="mx-tableFixed"]
+> | 資源類型 | 完整模式刪除 |
+> | ------------- | ----------- |
+> | 雲 | 是 |
+> | VirtualMachines | 是 |
+> | VirtualMachineTemplates | 是 |
+> | VirtualNetworks | 是 |
+> | vmmservers | 是 |
+
 ## <a name="microsoftsearch"></a>Microsoft.Search
 
 > [!div class="mx-tableFixed"]
@@ -1962,6 +2017,7 @@ ms.locfileid: "88855175"
 > | discoveredSecuritySolutions | 否 |
 > | externalSecuritySolutions | 否 |
 > | InformationProtectionPolicies | 否 |
+> | iotDefenderSettings | 否 |
 > | iotSecuritySolutions | 是 |
 > | iotSecuritySolutions / analyticsModels | 否 |
 > | iotSecuritySolutions / analyticsModels / aggregatedAlerts | 否 |
@@ -1970,6 +2026,7 @@ ms.locfileid: "88855175"
 > | iotSecuritySolutions / iotAlertTypes | 否 |
 > | iotSecuritySolutions / iotRecommendations | 否 |
 > | iotSecuritySolutions / iotRecommendationTypes | 否 |
+> | iotSensors | 否 |
 > | jitNetworkAccessPolicies | 否 |
 > | jitPolicies | 否 |
 > | 原則 | 否 |
@@ -1988,6 +2045,7 @@ ms.locfileid: "88855175"
 > | securityStatusesSummaries | 否 |
 > | serverVulnerabilityAssessments | 否 |
 > | settings | 否 |
+> | sqlVulnerabilityAssessments | 否 |
 > | subAssessments | 否 |
 > | 工作 | 否 |
 > | topologies | 否 |
@@ -2039,6 +2097,7 @@ ms.locfileid: "88855175"
 > | namespaces / disasterrecoveryconfigs | 否 |
 > | namespaces / eventgridfilters | 否 |
 > | namespaces / networkrulesets | 否 |
+> | 命名空間/privateEndpointConnections | 否 |
 > | namespaces / queues | 否 |
 > | namespaces / queues / authorizationrules | 否 |
 > | namespaces / topics | 否 |
@@ -2153,6 +2212,7 @@ ms.locfileid: "88855175"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
+> | deletedAccounts | 否 |
 > | storageAccounts | 是 |
 > | storageAccounts / blobServices | 否 |
 > | storageAccounts / fileServices | 否 |
