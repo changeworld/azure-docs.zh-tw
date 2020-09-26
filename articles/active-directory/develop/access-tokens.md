@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/24/2020
+ms.date: 09/18/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: 9aa5eb54d79d98627697c51ee7dcb16a44fccb60
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: c59dbe9464e70c1a071b64fabf91ce56f409d8d7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90053203"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258516"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Microsoft 身分識別平台存取權杖
 
@@ -266,9 +266,17 @@ https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration
 | 系統管理員[透過 PowerShell](/powershell/module/azuread/revoke-azureaduserallrefreshtoken) 撤銷使用者的所有重新整理權杖 | 已撤銷 | 已撤銷 |已撤銷 | 已撤銷 | 已撤銷 |
 | Web 上的單一登出 ([v1.0](../azuread-dev/v1-protocols-openid-connect-code.md#single-sign-out)、[v2.0](v2-protocols-oidc.md#single-sign-out)) | 已撤銷 | 保持運作 | 已撤銷 | 保持運作 | 保持運作 |
 
+#### <a name="non-password-based"></a>非密碼型
+
+以 *非密碼為基礎* 的登入是指使用者未輸入密碼來取得密碼的登入。 以非密碼為基礎的登入範例包括：
+
+- 使用您的臉部搭配 Windows Hello
+- FIDO2 索引鍵
+- SMS
+- 語音
+- PIN 碼 
+
 > [!NOTE]
-> 「非密碼型」登入是讓使用者不需輸入密碼就能取得它的方式。 例如，使用臉部搭配 Windows Hello、FIDO2 金鑰或 PIN。
->
 > Windows 10 上的主要重新整理權杖 (PRT) 會根據認證進行區隔。 例如，Windows Hello 和密碼具有各自的 PRT，彼此隔離。 當使用者使用 Hello 認證 (PIN 或生物特徵辨識) 登入，然後變更密碼時，將會撤銷先前取得的密碼型 PRT。 以密碼重新登入會使舊的 PRT 失效，並要求新的 PRT。
 >
 > 使用重新整理權杖來擷取新的存取權杖和重新整理權杖時，不會使該權杖失效或撤銷。  不過，應用程式應該在使用舊權杖後立即加以捨棄，並將其取代為新權杖，因為新權杖中有新的到期時間。 

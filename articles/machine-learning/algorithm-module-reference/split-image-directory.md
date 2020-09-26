@@ -1,7 +1,7 @@
 ---
 title: 分割映像目錄
 titleSuffix: Azure Machine Learning
-description: 瞭解如何使用 Azure Machine Learning 中的「評分影像模型」模組，利用定型的影像模型來產生預測。
+description: 瞭解如何在 Azure Machine Learning 設計工具 (preview) 中使用分割影像目錄模組，將映射目錄的影像分割成兩個不同的集合。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
-ms.openlocfilehash: 63ae7115f905523a3aac131fd7e77b56eb695243
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 49c2d2c24cc8acd8468f660189212a8ae71a1d6e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90890259"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268922"
 ---
 # <a name="split-image-directory"></a>分割映像目錄
 
@@ -35,7 +35,7 @@ ms.locfileid: "90890259"
 
 ### <a name="expected-inputs"></a>預期的輸入
 
-| 名稱                  | 類型           | 描述              |
+| 名稱                  | 類型           | 說明              |
 | --------------------- | -------------- | ------------------------ |
 | 輸入影像目錄 | ImageDirectory | 要分割的映射目錄 |
 
@@ -47,7 +47,7 @@ ms.locfileid: "90890259"
 
 ### <a name="outputs"></a>輸出
 
-| 名稱                    | 類型           | 描述                              |
+| 名稱                    | 類型           | 說明                              |
 | ----------------------- | -------------- | ---------------------------------------- |
 | 輸出影像 directory1 | ImageDirectory | 包含所選映射的映射目錄 |
 | 輸出影像 directory2 | ImageDirectory | 包含所有其他映射的映射目錄 |

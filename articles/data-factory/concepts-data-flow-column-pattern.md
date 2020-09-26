@@ -6,19 +6,19 @@ ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 09/14/2020
-ms.openlocfilehash: c6a2d38644d844cb1231a24465478b7f70a85111
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.date: 09/16/2020
+ms.openlocfilehash: 74656401d7b0ef12cf509674921a6a5153ce992d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90531133"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91282913"
 ---
 # <a name="using-column-patterns-in-mapping-data-flow"></a>在對應資料流程中使用資料行模式
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-許多對應的資料流程轉換可讓您根據模式參考樣板資料行，而不是以硬式編碼的資料行名稱為基礎。 這種比對稱為資料 *行模式*。 您可以根據名稱、資料類型、資料流程或位置來定義要比對資料行的模式，而不需要完全相同的功能變數名稱。 有兩種案例可以用來提供資料行模式：
+許多對應的資料流程轉換可讓您根據模式參考樣板資料行，而不是以硬式編碼的資料行名稱為基礎。 這種比對稱為資料 *行模式*。 您可以根據名稱、資料類型、資料流程、來源或位置來定義要比對資料行的模式，而不需要完全相同的功能變數名稱。 有兩種案例可以用來提供資料行模式：
 
 * 如果傳入來源欄位經常變更，例如變更文字檔或 NoSQL 資料庫中的資料行。 此案例稱為 [架構漂移](concepts-data-flow-schema-drift.md)。
 * 如果您想要對大型資料行群組進行一般作業。 例如，想要將其資料行名稱中有 ' total ' 的每個資料行轉換成雙精度浮點數。
@@ -31,7 +31,7 @@ ms.locfileid: "90531133"
 
 ![資料行模式](media/data-flow/add-column-pattern.png "資料行模式")
 
-使用 [運算式](concepts-data-flow-expression-builder.md) 產生器來輸入比對條件。 根據資料 `name` 行的、、和，建立符合資料行的布林運算式 `type` `stream` `position` 。 此模式會影響任何漂移或定義的資料行，其中條件會傳回 true。
+使用 [運算式](concepts-data-flow-expression-builder.md) 產生器來輸入比對條件。 根據資料 `name` 行的、 `type` 、 `stream` 、 `origin` 和，建立符合資料行的布林運算式 `position` 。 此模式會影響任何漂移或定義的資料行，其中條件會傳回 true。
 
 比對條件下的兩個運算式方塊會指定受影響之資料行的新名稱和值。 用 `$$` 來參考相符欄位的現有值。 左運算式方塊會定義名稱，而右邊運算式方塊會定義值。
 
@@ -45,7 +45,7 @@ ms.locfileid: "90531133"
 
 ## <a name="rule-based-mapping-in-select-and-sink"></a>Select 和 sink 中以規則為基礎的對應
 
-對應來源和選取轉換中的資料行時，您可以加入固定對應或以規則為基礎的對應。 根據 `name` 、、和資料 `type` 行進行比對 `stream` `position` 。 您可以使用固定和以規則為基礎的對應組合。 依預設，具有大於50資料行的所有投影都會預設為以規則為基礎的對應，以符合每個資料行，並輸出輸入的名稱。 
+對應來源和選取轉換中的資料行時，您可以加入固定對應或以規則為基礎的對應。 根據、、、 `name` `type` 和資料 `stream` `origin` 行進行 `position` 比對。 您可以使用固定和以規則為基礎的對應組合。 依預設，具有大於50資料行的所有投影都會預設為以規則為基礎的對應，以符合每個資料行，並輸出輸入的名稱。 
 
 若要加入以規則為基礎的對應，請按一下 [ **新增對應** ]，然後選取 [ **規則型對應**]。
 
@@ -82,6 +82,7 @@ ms.locfileid: "90531133"
 * `type` 表示每個傳入資料行的資料類型
 * `stream` 代表與您流程中的每個資料流程或轉換相關聯的名稱
 * `position` 是資料流程中資料行的序數位置。
+* `origin` 這是產生或上次更新資料行時的轉換
 
 ## <a name="next-steps"></a>後續步驟
 * 深入瞭解資料轉換的對應資料流程[運算式語言](data-flow-expression-functions.md)

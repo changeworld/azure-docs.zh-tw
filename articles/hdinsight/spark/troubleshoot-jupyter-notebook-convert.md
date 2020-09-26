@@ -1,26 +1,26 @@
 ---
 title: 無法在 Azure HDInsight 中建立 Jupyter 筆記本
-description: 說明與 Azure HDInsight 叢集互動時，問題的疑難排解步驟和可能的解決方法。
+description: 瞭解與 Azure HDInsight 叢集互動時問題的疑難排解步驟和可能的解決方法。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 02/11/2020
-ms.openlocfilehash: 61e7cd8d37108b8f4eea88c4f6b6b2a8cdbfd605
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e4f4fcfa52733ec8f1f0ceedc669b8307efabf3c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77186790"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324003"
 ---
 # <a name="unable-to-create-jupyter-notebook-in-azure-hdinsight"></a>無法在 Azure HDInsight 中建立 Jupyter 筆記本
 
-本文說明與 Azure HDInsight 叢集互動時，問題的疑難排解步驟和可能的解決方法。
+本文說明與 Azure HDInsight 叢集互動時，問題的疑難排解步驟和可能的解決方式。
 
 ## <a name="issue"></a>問題
 
-啟動 Jupyter 筆記本時，您會收到一則錯誤訊息，其中包含：
+啟動 Jupyter 筆記本時，您會收到錯誤訊息，其中包含：
 
 ```error
 Cannot convert notebook to v5 because that version doesn't exist
@@ -28,7 +28,7 @@ Cannot convert notebook to v5 because that version doesn't exist
 
 ## <a name="cause"></a>原因
 
-版本不符。
+版本不相符。
 
 ## <a name="resolution"></a>解決方案
 
@@ -44,13 +44,13 @@ Cannot convert notebook to v5 because that version doesn't exist
     sudo nano /usr/bin/anaconda/lib/python2.7/site-packages/nbformat/_version.py
     ```
 
-1. 將**5**變更為**4** ，讓修改過的行顯示如下：
+1. 將 **5** 變更為 **4** ，讓修改過的行顯示如下：
 
     ```python
     version_info = (4, 0, 3)
     ```
 
-    輸入**Ctrl + X**、 **Y**、 **Enter**以儲存變更。
+    輸入 **Ctrl + X**、 **Y**、 **Enter**來儲存變更。
 
 1. 從網頁瀏覽器瀏覽至 `https://CLUSTERNAME.azurehdinsight.net/#/main/services/JUPYTER`，其中 `CLUSTERNAME` 是叢集的名稱。
 

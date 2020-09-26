@@ -3,12 +3,12 @@ title: Azure 服務匯流排地理災害復原 | Microsoft Docs
 description: 如何使用地理區域，在 Azure 服務匯流排中進行容錯移轉並執行災害復原
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: fcdeb499b8ebecc4ecddbfcbe32b812ce7e3efe5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c203ed197c1e5bfb15cfb503a04df79b85c630e
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341469"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372518"
 ---
 # <a name="azure-service-bus-geo-disaster-recovery"></a>Azure 服務匯流排地理災害復原
 
@@ -149,7 +149,7 @@ Azure 服務匯流排的地理災害復原功能就是一個災害復原解決�
 > [!NOTE]
 > 當您嘗試將具有私人端點的主要命名空間和次要命名空間配對時，驗證程序只會檢查次要命名空間上是否存在私人端點。 不會檢查端點是否正常運作，或在容錯移轉之後是否可運作。 您必須負責確保具有私人端點的次要命名空間在容錯移轉之後能如預期般運作。
 >
-> 若要測試私人端點組態是否相同，請從虛擬網路外部將[取得佇列](/rest/api/servicebus/queues/get)要求傳送至次要命名空間，並確認您收到來自服務的錯誤訊息。
+> 若要測試私人端點組態是否相同，請從虛擬網路外部將[取得佇列](/rest/api/servicebus/stable/queues/get)要求傳送至次要命名空間，並確認您收到來自服務的錯誤訊息。
 
 ### <a name="existing-pairings"></a>現有配對
 如果主要和次要命名空間之間的配對已存在，在主要命名空間上的私人端點建立將會失敗。 若要解決此問題，請先在次要命名空間上建立私人端點，然後再為主要命名空間建立私人端點。
@@ -179,7 +179,7 @@ Azure 服務匯流排的地理災害復原功能就是一個災害復原解決�
 
 ## <a name="next-steps"></a>後續步驟
 
-- 請參閱地理災害復原在[這裡的 REST API 參考](/rest/api/servicebus/disasterrecoveryconfigs)。
+- 請參閱地理災害復原在[這裡的 REST API 參考](/rest/api/servicebus/stable/disasterrecoveryconfigs)。
 - 執行地理災害復原在 [GitHub 上的範例](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoDR/SBGeoDR2/SBGeoDR2) \(英文\)。
 - 請參閱地理災害復原[範例以將訊息傳送至別名](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoDR/TestGeoDR/ConsoleApp1) \(英文\)。
 

@@ -1,16 +1,16 @@
 ---
-title: Azure Service Fabric 監視和診斷總覽
+title: Azure Service Fabric 監視與診斷總覽
 description: 了解如何對 Azure Service Fabric 叢集、應用程式和服務進行監視和診斷。
 author: srrengar
 ms.topic: conceptual
 ms.date: 1/17/2019
 ms.author: srrengar
-ms.openlocfilehash: 4b4e454532dec31cbcc92269d63c8be1ff92a9f6
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 25a50a2841a03929804be45be8012f9b5d0457ff
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86247518"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91357126"
 ---
 # <a name="monitoring-and-diagnostics-for-azure-service-fabric"></a>對 Azure Service Fabric 進行監視和診斷
 
@@ -37,13 +37,13 @@ Service Fabric 提供一組完整的現成事件。 這些 [Service Fabric 事�
 
 * Service Fabric 事件通道 - 在 Windows 上，透過一組用來挑選「作業和資料」與「傳訊」通道的相關 `logLevelKeywordFilters`，就能從單一 ETW 提供者取得 Service Fabric 事件 - 這是我們在需要時區分出待篩選傳出 Service Fabric 事件的方法。 在 Linux 上，Service Fabric 事件會經過 LTTng 並放入一個儲存體資料表，您可以視需要從這個資料表篩選事件。 這些通道包含經過策劃、結構化的事件，可用來進一步了解您的叢集狀態。 叢集建立時預設會啟用診斷，這會建立一個 Azure 儲存體表格，來自這些通道的事件會傳送到這個表格，供您將來查詢之用。 
 
-* EventStore - EventStore 是平台所提供的功能，提供可在 Service Fabric Explorer 中和透過 REST API 取得的 Service Fabric 平台事件。 您可以看到快照集檢視，其中顯示每個實體 (例如節點、服務、應用程式) 在叢集中發生什麼情況，並根據事件的時間進行查詢。 您也可以在[EventStore 總覽](service-fabric-diagnostics-eventstore.md)閱讀更多有關 EventStore 的資訊。    
+* EventStore - EventStore 是平台所提供的功能，提供可在 Service Fabric Explorer 中和透過 REST API 取得的 Service Fabric 平台事件。 您可以看到快照集檢視，其中顯示每個實體 (例如節點、服務、應用程式) 在叢集中發生什麼情況，並根據事件的時間進行查詢。 您也可以在 [EventStore 總覽](service-fabric-diagnostics-eventstore.md)中閱讀更多有關 EventStore 的資訊。    
 
-![EventStore](media/service-fabric-diagnostics-overview/eventstore.png)
+![螢幕擷取畫面：顯示 [節點] 窗格的 [事件] 索引標籤，其中包含 NodeDown 事件。](media/service-fabric-diagnostics-overview/eventstore.png)
 
-所提供的診斷預設便是以一組詳盡事件的形式提供。 這些[Service Fabric 事件](service-fabric-diagnostics-events.md)說明平臺在不同的實體（例如節點、應用程式、服務、資料分割等等）所做的動作。在上述的最後一個案例中，如果節點停止執行，平臺會發出 `NodeDown` 事件，而您可以使用您選擇的監視工具立即通知您。 其他常見的範例包括容錯移轉期間的 `ApplicationUpgradeRollbackStarted` 或 `PartitionReconfigured`。 **Windows 和 Linux 叢集上都會提供相同的事件。**
+所提供的診斷預設便是以一組詳盡事件的形式提供。 這些 [Service Fabric 事件](service-fabric-diagnostics-events.md) 說明平臺在不同的實體上執行的動作，例如節點、應用程式、服務、資料分割等等。在上述的最後一個案例中，如果節點停止運作，該平臺會發出事件，而您可以透過 `NodeDown` 您選擇的監視工具立即通知您。 其他常見的範例包括容錯移轉期間的 `ApplicationUpgradeRollbackStarted` 或 `PartitionReconfigured`。 **Windows 和 Linux 叢集上都會提供相同的事件。**
 
-這些事件會透過 Windows 和 Linux 上的標準通道傳送，並可由任何支援這些通道的監視工具讀取。 Azure 監視器的解決方案是 Azure 監視器記錄。 歡迎閱讀我們的[Azure 監視器記錄整合](service-fabric-diagnostics-event-analysis-oms.md)詳細資訊，其中包括叢集的自訂作業儀表板，以及您可以從中建立警示的一些範例查詢。 如需更多叢集監視概念，請參閱[平台層級事件和記錄產生](service-fabric-diagnostics-event-generation-infra.md)。
+這些事件會透過 Windows 和 Linux 上的標準通道傳送，並可由任何支援這些通道的監視工具讀取。 Azure 監視器的解決方案是 Azure 監視器記錄。 您可以閱讀更多有關我們的 [Azure 監視器記錄整合](service-fabric-diagnostics-event-analysis-oms.md) 的詳細資訊，包括適用于您叢集的自訂操作儀表板，以及您可以從中建立警示的一些範例查詢。 如需更多叢集監視概念，請參閱[平台層級事件和記錄產生](service-fabric-diagnostics-event-generation-infra.md)。
 
 ### <a name="health-monitoring"></a>健康狀況監視
 Service Fabric 平台包括健康情況模型，針對叢集中的實體狀態提供可延伸的健康情況報告。 每個節點、應用程式、服務、分割區、複本或執行個體，都有可持續更新的健康情況狀態。 健康情況狀態可以是「良好」、「警告」或「錯誤」。 您可以將 Service Fabric 事件想成從叢集到各種實體的「動詞」，並將健康情況想成針對每個實體的「形容詞」。 每當某個實體的健康情況轉換時，系統也會發出事件。 如此一來，您便可以使用和其他事件相同的方式，在自己所選的監視工具中針對健康情況事件設定查詢和警示。 
@@ -66,30 +66,30 @@ Service Fabric 平台包括健康情況模型，針對叢集中的實體狀態�
 
 Service Fabric 也會提供一組適用于 Reliable Services 和動作專案程式設計模型的效能計數器。 如果您使用上述其中一種模型，這些效能計數器可以提供資訊，以協助確保您的動作項目正確向上和向下微調，或者您的可靠服務要求處理的速度夠快。 如需詳細資訊，請參閱[可靠服務遠端的監視](service-fabric-reliable-serviceremoting-diagnostics.md#performance-counters)和 [Reliable Actors 的效能監視](service-fabric-reliable-actors-diagnostics.md#performance-counters)。 
 
-收集這些 Azure 監視器解決方案是 Azure 監視器記錄，就像平台層級監視一樣。 您應該使用[Log Analytics 代理程式](service-fabric-diagnostics-oms-agent.md)來收集適當的效能計數器，並在 Azure 監視器記錄中查看它們。
+收集這些 Azure 監視器的解決方案就像平台層級監視一樣 Azure 監視器記錄。 您應使用 [Log Analytics 代理程式](service-fabric-diagnostics-oms-agent.md) 來收集適當的效能計數器，並在 Azure 監視器記錄中加以查看。
 
 ## <a name="recommended-setup"></a>建議設定
 我們已說明監視的每個區域及範例案例，以下是監視上述所有區域所需之 Azure 監視工具及設定的摘要。 
 
 * 搭配 [Application Insights](service-fabric-tutorial-monitoring-aspnet.md) 進行應用程式監視監視
-* 使用[診斷代理](service-fabric-diagnostics-event-aggregation-wad.md)程式和[Azure 監視器記錄](service-fabric-diagnostics-oms-setup.md)進行叢集監視
-* 使用[Azure 監視器記錄](service-fabric-diagnostics-oms-agent.md)進行基礎結構監視
+* 使用[診斷代理程式](service-fabric-diagnostics-event-aggregation-wad.md)和[Azure 監視器記錄](service-fabric-diagnostics-oms-setup.md)監視叢集
+* 使用[Azure 監視器記錄](service-fabric-diagnostics-oms-agent.md)監視基礎結構
 
 您也可以使用及修改位於[這裡](service-fabric-diagnostics-oms-setup.md#deploy-azure-monitor-logs-with-azure-resource-manager)的範例 ARM 範例，來將所有必要資源和代理程式的部署自動化。 
 
 ## <a name="other-logging-solutions"></a>其他記錄解決方案
 
-雖然我們建議兩個解決方案， [Azure 監視器記錄](service-fabric-diagnostics-event-analysis-oms.md)和[Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md)已內建與 Service Fabric 的整合，但許多事件會透過 ETW 提供者寫出，並可使用其他記錄解決方案進行擴充。 您也應該研究 [Elastic Stack](https://www.elastic.co/products) (尤其是當您考慮在離線環境中執行叢集時)、[Dynatrace](https://www.dynatrace.com/)，或您偏好的其他任何平台。 我們在[這裡](service-fabric-diagnostics-partners.md)提供一份整合的合作夥伴清單。
+雖然我們建議的兩個解決方案， [Azure 監視器記錄](service-fabric-diagnostics-event-analysis-oms.md) 和 [Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md) 內建與 Service Fabric 的整合，但許多事件都是透過 ETW 提供者寫出，並且可與其他記錄解決方案進行擴充。 您也應該研究 [Elastic Stack](https://www.elastic.co/products) (尤其是當您考慮在離線環境中執行叢集時)、[Dynatrace](https://www.dynatrace.com/)，或您偏好的其他任何平台。 我們在[這裡](service-fabric-diagnostics-partners.md)提供一份整合的合作夥伴清單。
 
 不論選擇何種平台，重點在於您對於其所提供的使用者介面、查詢能力、可用的自訂視覺化與儀表板，以及可強化監視體驗的其他工具所抱持的感受。 
 
 ## <a name="next-steps"></a>後續步驟
 
-* 如需檢測應用程式的入門，請參閱[應用層級事件和記錄產生](service-fabric-diagnostics-event-generation-app.md)。
+* 若要開始檢測您的應用程式，請參閱 [應用層級事件和記錄產生](service-fabric-diagnostics-event-generation-app.md)。
 * 透過[監視和診斷 Service Fabric 上的 ASP.NET Core 應用程式](service-fabric-tutorial-monitoring-aspnet.md)中的步驟，來針對您的應用程式設定 Application Insights。
-* 深入瞭解監視平臺和事件 Service Fabric 在[平台層級事件和記錄產生](service-fabric-diagnostics-event-generation-infra.md)中提供給您。
-* 在安裝叢集的[Azure 監視器記錄中設定](service-fabric-diagnostics-oms-setup.md)Azure 監視器記錄與 Service Fabric 整合
-* 瞭解如何設定 Azure 監視器記錄來監視容器- [Azure Service Fabric 中 Windows 容器的監視和診斷](service-fabric-tutorial-monitoring-wincontainers.md)。
+* 深入瞭解監視平臺和事件 Service Fabric 在 [平台層級事件和記錄產生](service-fabric-diagnostics-event-generation-infra.md)中提供給您。
+* 在設定叢集的[Azure 監視器記錄](service-fabric-diagnostics-oms-setup.md)檔中，設定 Azure 監視器記錄與 Service Fabric 整合
+* 瞭解如何設定用於監視容器的 Azure 監視器記錄- [Azure Service Fabric 中的 Windows 容器的監視和診斷](service-fabric-tutorial-monitoring-wincontainers.md)。
 * 請參閱[診斷常見案例](service-fabric-diagnostics-common-scenarios.md)中的 Service Fabric 範例診斷問題和解決方案
 * 查看 [Service Fabric 診斷合作夥伴](service-fabric-diagnostics-partners.md)中與 Service Fabric 整合的其他診斷產品
 * 了解 Azure 資源的一般監視建議：[最佳做法 - 監視和診斷](/azure/architecture/best-practices/monitoring)。 

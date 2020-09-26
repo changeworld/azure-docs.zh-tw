@@ -7,17 +7,17 @@ ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: tisande
 ms.reviewer: sngun
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 56fbcc3950a739c4c9fc3df86468301e2e2ff4d8
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: 1e8e1aa9d8e582644d1d625fc8a97cc0e0c790df
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421122"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334390"
 ---
 # <a name="javascript-query-api-in-azure-cosmos-db"></a>Azure Cosmos DB 中的 JavaScript 查詢 API
 
-除了在 Azure Cosmos DB 中使用 SQL API 發出查詢以外， [Cosmos DB 伺服器端 SDK](https://azure.github.io/azure-cosmosdb-js-server/)還提供 JavaScript 介面，可在 Cosmos DB 的預存程式和觸發程式中執行優化的查詢。 不必一定要懂得 SQL 語言才能使用此 JavaScript 介面。 JavaScript 的查詢 API 使用 ECMAScript5 陣列內建和受歡迎的 JavaScript 程式庫如 lodash 所熟悉的語法，將述詞函式依序傳遞至函式呼叫，藉此以程式設計方式建立查詢。 JavaScript 執行階段會剖析查詢，並使用 Azure Cosmos DB 的索引，有效執行該查詢。
+除了使用 Azure Cosmos DB 中的 SQL API 發出查詢以外， [Cosmos DB 伺服器端 SDK](https://azure.github.io/azure-cosmosdb-js-server/) 還提供 JavaScript 介面，可在 Cosmos DB 預存程式和觸發程式中執行優化的查詢。 不必一定要懂得 SQL 語言才能使用此 JavaScript 介面。 JavaScript 的查詢 API 使用 ECMAScript5 陣列內建和受歡迎的 JavaScript 程式庫如 lodash 所熟悉的語法，將述詞函式依序傳遞至函式呼叫，藉此以程式設計方式建立查詢。 JavaScript 執行階段會剖析查詢，並使用 Azure Cosmos DB 的索引，有效執行該查詢。
 
 ## <a name="supported-javascript-functions"></a>支援的 JavaScript 函式
 

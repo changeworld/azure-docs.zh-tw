@@ -5,12 +5,12 @@ ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
 ms.date: 08/17/2020
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 80bb59527f416afd78b992fb12a4ef72956f91b7
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: c5dd703851054b058d96440a3a994b9d10eecfa3
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88587220"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372658"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure Functions 的規模調整和主控
 
@@ -34,7 +34,7 @@ App Service 方案可讓您利用您管理的專用基礎結構。 您的函數�
 
 當您使用取用方案時，會根據傳入事件的數目，動態新增和移除 Azure Functions 主控制項的實例。 此無伺服器方案會自動調整，您只需支付函式執行時使用的計算資源。 在取用方案中，函式執行會在一段可設定的時間之後逾時。
 
-帳單是根據執行數目、執行時間以及使用的記憶體。 計費會跨函式應用程式內的所有函式進行彙總。 如需詳細資訊，請參閱 [Azure Functions 價格頁面](https://azure.microsoft.com/pricing/details/functions/)。
+帳單是根據執行數目、執行時間以及使用的記憶體。 使用量會在函式應用程式內的所有函式中匯總。 如需詳細資訊，請參閱 [Azure Functions 價格頁面](https://azure.microsoft.com/pricing/details/functions/)。
 
 取用方案是預設主控方案，具有下列優點︰
 
@@ -58,7 +58,7 @@ App Service 方案可讓您利用您管理的專用基礎結構。 您的函數�
 
 若要瞭解如何在 Premium 方案中建立函數應用程式，請參閱 [Azure Functions premium 方案](functions-premium-plan.md)。
 
-高階方案的計費是根據所需和預先準備就緒的實例所使用的核心秒數和記憶體數目，而不是每次執行的計費和所耗用的記憶體。 每個方案至少必須有一個實例暖。 這表示不論執行次數為何，每個作用中的方案都有最低的每月費用。 請記住，高階方案中的所有函數應用程式都會共用預先準備就緒和使用中的實例。
+高階方案的計費是根據實例之間配置的核心秒數和記憶體數目，而不是每次執行的計費和所耗用的記憶體。  Premium 方案沒有執行費用。 每個方案必須隨時配置至少一個實例。 這會導致每個作用中方案的每月最低成本，無論函式為使用中或閒置。 請記住，高階方案中的所有函數應用程式都會共用已配置的實例。
 
 在下列情況下，請考慮 Azure Functions Premium 方案：
 
@@ -79,12 +79,12 @@ App Service 方案可讓您利用您管理的專用基礎結構。 您的函數�
 
 如同針對其他 App Service 資源（例如 web 應用程式），您會在 App Service 方案中針對函數應用程式支付相同的費用。 如需 App Service 方案運作方式的詳細資訊，請參閱 [Azure App Service 方案深入概觀](../app-service/overview-hosting-plans.md)。
 
-您可以使用 App Service 方案，藉由新增更多 VM 實例來手動相應放大。 您也可以啟用自動調整。 如需詳細資訊，請參閱[手動或自動調整執行個體計數規模](../azure-monitor/platform/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json)。 您也可以透過選擇不同的 App Service 方案來相應增加。 如需詳細資訊，請參閱[在 Azure 中為應用程式進行擴大](../app-service/manage-scale-up.md)。 
+您可以使用 App Service 方案，藉由新增更多 VM 實例來手動相應放大。 您也可以啟用自動調整規模，不過自動調整的速度會比高階方案的彈性規模更慢。 如需詳細資訊，請參閱[手動或自動調整執行個體計數規模](../azure-monitor/platform/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json)。 您也可以透過選擇不同的 App Service 方案來相應增加。 如需詳細資訊，請參閱[在 Azure 中為應用程式進行擴大](../app-service/manage-scale-up.md)。 
 
 在 App Service 方案上執行 JavaScript 函式時，您應該選擇 vCPU 數目較少的方案。 如需詳細資訊，請參閱 [選擇單一核心 App Service 方案](functions-reference-node.md#choose-single-vcpu-app-service-plans)。 
 <!-- Note: the portal links to this section via fwlink https://go.microsoft.com/fwlink/?linkid=830855 --> 
 
-在 [App Service 環境](../app-service/environment/intro.md) (ASE) 中執行，可讓您完全隔離您的函式，並利用高擴充功能。
+在 [App Service 環境](../app-service/environment/intro.md) (ASE) 中執行，可讓您完全隔離您的函式，並利用比 App Service 計畫更高的實例數目。
 
 ### <a name="always-on"></a><a name="always-on"></a> Always On
 
@@ -121,6 +121,12 @@ az appservice plan list --query "[?id=='$appServicePlanId'].sku.tier" --output t
 <!-- JH: Does using a Premium Storage account improve perf? -->
 
 若要深入瞭解儲存體帳戶類型，請參閱 [Azure 儲存體服務簡介](../storage/common/storage-introduction.md#core-storage-services)。
+
+### <a name="in-region-data-residency"></a>在區域資料存放區中
+
+當所有客戶資料都必須保留在單一區域內時，與函數應用程式相關聯的儲存體帳戶必須是 [在區域冗余中](../storage/common/storage-redundancy.md)的一個。  區域內多餘的儲存體帳戶也需要與 [Azure Durable Functions](./durable/durable-functions-perf-and-scale.md#storage-account-selection) 搭配使用 Durable Functions。
+
+當裝載于內部 Load Balancer App Service 環境 (或 ILB ASE) 時，其他平臺管理的客戶資料只會儲存在區域內。  您可以在 [ASE 區域冗余](../app-service/environment/zone-redundancy.md#in-region-data-residency)中找到詳細資料。
 
 ## <a name="how-the-consumption-and-premium-plans-work"></a>耗用量和進階方案的運作方式
 
@@ -185,7 +191,7 @@ az resource update --resource-type Microsoft.Web/sites -g <resource_group> -n <f
 |**[取用方案](#consumption-plan)**| 當您的函式執行時，自動調整規模並只支付計算資源的費用。 在取用方案中，會根據傳入事件的數目，動態新增和移除函式主機的實例。<br/> ✔預設主控方案。<br/>✔只有在您的函式執行時才需付費。<br/>✔自動相應放大，即使在高負載期間也是如此。|  
 |**[進階方案](#premium-plan)**|自動根據需求進行調整時，請使用預先準備就緒的背景工作角色來執行應用程式，而不會在閒置後延遲、在更強大的實例上執行，以及連接到 Vnet。 在下列情況下，除了 App Service 方案的所有功能之外，請考慮 Azure Functions Premium 方案： <br/>✔您的函式應用程式會持續執行，或幾乎持續執行。<br/>✔您有大量的小型執行，而且取用方案中有高執行帳單但低 GB 的第二份帳單。<br/>✔您需要的 CPU 或記憶體選項比取用方案所提供的更多。<br/>✔您的程式碼所需的執行時間，超過取用方案允許的執行時間上限。<br/>✔您需要的功能只適用于 Premium 方案，例如虛擬網路連線能力。|  
 |**[專用方案](#app-service-plan)**<sup>1</sup>|以一般 App Service 方案費率在 App Service 方案內執行您的函式。 適用于長時間執行的作業，以及需要更多預測性調整和成本的情況。 在下列情況下，請考慮 App Service 方案：<br/>✔您的現有、使用量過低的 Vm 已在執行其他 App Service 實例。<br/>✔您想要提供自訂映射，以在其上執行函數。|  
-|**[ASE](#app-service-plan)**<sup>1</sup>|App Service 環境 (ASE) 是一項 App Service 功能，可提供完全隔離和專用的環境，以安全地大規模執行 App Service 應用程式。 Ase 適用于需要下列需求的應用程式工作負載： <br/>✔非常高的規模。<br/>✔隔離和安全的網路存取。<br/>✔高記憶體使用量。|  
+|**[ASE](#app-service-plan)**<sup>1</sup>|App Service 環境 (ASE) 是一項 App Service 功能，可提供完全隔離和專用的環境，以安全地大規模執行 App Service 應用程式。 Ase 適用于需要下列需求的應用程式工作負載： <br/>✔非常高的規模。<br/>✔完整的計算隔離和安全的網路存取。<br/>✔高記憶體使用量。|  
 | **[Kubernetes](functions-kubernetes-keda.md)** | Kubernetes 提供在 Kubernetes 平臺上執行的完全隔離且專用的環境。  Kubernetes 適用于需要下列各項的應用程式工作負載： <br/>✔自訂的硬體需求。<br/>✔隔離和安全的網路存取。<br/>✔能夠在混合式或多重雲端環境中執行。<br/>✔與現有的 Kubernetes 應用程式和服務一起執行。|  
 
 <sup>1</sup> 針對各種 App Service 方案選項的特定限制，請參閱 [App Service 方案限制](../azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits)。

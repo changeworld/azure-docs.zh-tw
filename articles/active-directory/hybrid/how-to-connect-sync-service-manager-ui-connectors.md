@@ -17,16 +17,16 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a013af680ecc84a2a981341ba4bb95148adc799f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d215c2e200308664f24daa28a0054c8f1bcfc09c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85357251"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319872"
 ---
 # <a name="using-connectors-with-the-azure-ad-connect-sync-service-manager"></a>使用連接器搭配 Auzre AD Connect Sync Service Manager
 
-![Sync Service Manager](./media/how-to-connect-sync-service-manager-ui-connectors/connectors.png)
+![顯示同步處理 Service Manager 的螢幕擷取畫面。](./media/how-to-connect-sync-service-manager-ui-connectors/connectors.png)
 
 [連接器] 索引標籤可用來管理同步處理引擎連接的所有系統。
 
@@ -47,7 +47,7 @@ ms.locfileid: "85357251"
 
 ### <a name="delete"></a>刪除
 刪除動作適用於兩個不同的用途。  
-![Sync Service Manager](./media/how-to-connect-sync-service-manager-ui-connectors/connectordelete.png)
+![顯示「刪除連接器」視窗的螢幕擷取畫面，其中已選取 [僅刪除連接器空間]。](./media/how-to-connect-sync-service-manager-ui-connectors/connectordelete.png)
 
 [僅刪除連接器空間] **** 選項會移除所有資料，但保留組態。
 
@@ -58,17 +58,17 @@ ms.locfileid: "85357251"
 ### <a name="configure-run-profiles"></a>更新執行設定檔
 此選項可讓您查看連接器所設定的執行設定檔。
 
-![Sync Service Manager](./media/how-to-connect-sync-service-manager-ui-connectors/configurerunprofiles.png)
+![螢幕擷取畫面，顯示已選取 [差異匯入] 的 [設定執行設定檔] 視窗。](./media/how-to-connect-sync-service-manager-ui-connectors/configurerunprofiles.png)
 
 ### <a name="search-connector-space"></a>搜尋連接器空間
 尋找物件和疑難排解資料問題時，搜尋連接器空間動作非常有用。
 
-![Sync Service Manager](./media/how-to-connect-sync-service-manager-ui-connectors/cssearch.png)
+![顯示 [搜尋連接器空間] 視窗的螢幕擷取畫面。](./media/how-to-connect-sync-service-manager-ui-connectors/cssearch.png)
 
 先選取一個 [範圍] ****。 您可以依據資料 (RDN、DN、錨點、子樹狀目錄) 或物件狀態 (所有其他選項) 進行搜尋。  
-![Sync Service Manager](./media/how-to-connect-sync-service-manager-ui-connectors/cssearchscope.png)  
+![顯示 [範圍] 下拉式功能表的螢幕擷取畫面。](./media/how-to-connect-sync-service-manager-ui-connectors/cssearchscope.png)  
  例如，如果您進行樹狀子目錄的搜尋，將會取得某一個 OU 中的所有物件。  
-![Sync Service Manager](./media/how-to-connect-sync-service-manager-ui-connectors/cssearchsubtree.png)  
+![顯示「子樹」搜尋範例的螢幕擷取畫面。](./media/how-to-connect-sync-service-manager-ui-connectors/cssearchsubtree.png)  
 您可以從此格線選取物件、選取「屬性」****，然後[跟隨物件](tshoot-connect-object-not-syncing.md)，從來源連接器空間、通過 Metaverse，再到目標連接器空間。
 
 ### <a name="changing-the-ad-ds-account-password"></a>變更 AD DS 帳戶密碼
@@ -86,7 +86,7 @@ ms.locfileid: "85357251"
 3. 選取設定為使用 AD DS 帳戶的 AD 連接器。
 4. 選取 [動作] 下方的 [屬性]****。
 5. 在快顯對話方塊中，選取 [連線至 Active Directory 樹系]：
-6. 樹系名稱會指出對應的內部部署 AD。
+6. 樹系名稱表示對應的內部部署 AD。
 7. 使用者名稱會指出用於同步處理服務的 AD DS 帳戶。
 8. 在 [密碼] 文字方塊中輸入新的 AD DS 帳戶密碼 ![Azure AD Connect 同步處理加密金鑰公用程式](./media/how-to-connect-sync-service-manager-ui-connectors/key6.png)
 9. 按一下 [確定] 以儲存新密碼，然後重新啟動同步處理服務，以從記憶體快取中移除舊密碼。

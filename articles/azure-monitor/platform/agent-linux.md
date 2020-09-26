@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2020
-ms.openlocfilehash: 997064ad030d22531277f1c412add6916eb7733f
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 4414dc86ff318cfff5d224ce7aa064c31f3df460
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230461"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91294523"
 ---
 # <a name="install-log-analytics-agent-on-linux-computers"></a>在 Linux 電腦上安裝 Log Analytics 代理程式
 本文將詳細說明如何使用下列方法，在 Linux 電腦上安裝 Log Analytics 代理程式：
@@ -100,12 +100,12 @@ OMS 代理程式對 Linux 有有限的自訂支援。
 
 適用于 Linux 的 Log Analytics 代理程式是由多個套件所組成。 發行檔案包含下列套件，可透過使用參數執行 shell 組合來取得 `--extract` ：
 
-**套件** | **版本** | **描述**
+**套件** | **版本** | **說明**
 ----------- | ----------- | --------------
-omsagent | 1.12.15 | 適用于 Linux 的 Log Analytics 代理程式
+omsagent | 1.13.9 | 適用于 Linux 的 Log Analytics 代理程式
 omsconfig | 1.1.1 | Log Analytics 代理程式的設定代理程式
-omi | 1.6.3 | 開放式管理基礎結構 (OMI) --輕量 CIM 伺服器。 *請注意，OMI 需要 root 存取權，才能執行服務運作所需的 cron 作業。*
-scx | 1.6.3 | 作業系統效能計量的 OMI CIM 提供者
+omi | 1.6.4 | 開放式管理基礎結構 (OMI) --輕量 CIM 伺服器。 *請注意，OMI 需要 root 存取權，才能執行服務運作所需的 cron 作業。*
+scx | 1.6.4 | 作業系統效能計量的 OMI CIM 提供者
 apache-cimprov | 1.0.1 | OMI 的 Apache HTTP 伺服器效能監視提供者。 僅在偵測到 Apache HTTP 伺服器時才安裝。
 mysql-cimprov | 1.0.1 | OMI 的 MySQL 伺服器效能監視提供者。 僅在偵測到 MySQL/MariaDB 伺服器時才安裝。
 docker-cimprov | 1.0.0 | OMI 的 Docker 提供者。 僅在偵測到 Docker 時才安裝。
@@ -126,9 +126,9 @@ docker-cimprov | 1.0.0 | OMI 的 Docker 提供者。 僅在偵測到 Docker 時�
 
 如果您的 Linux 電腦需要透過 proxy 伺服器與 Log Analytics 通訊，您可以在命令列上指定此設定，包括 `-p [protocol://][user:password@]proxyhost[:port]` 。 *Protocol*屬性會接受 `http` 或 `https` ，而*proxyhost*屬性會接受 PROXY 伺服器的完整功能變數名稱或 IP 位址。 
 
-例如：`https://proxy01.contoso.com:30443`
+例如： `https://proxy01.contoso.com:30443`
 
-如果任何一種情況都需要驗證，您必須指定使用者名稱和密碼。 例如：`https://user01:password@proxy01.contoso.com:30443`
+如果任何一種情況都需要驗證，您必須指定使用者名稱和密碼。 例如： `https://user01:password@proxy01.contoso.com:30443`
 
 1. 若要設定 Linux 電腦以連線到 Log Analytics 工作區，請執行下列命令來提供工作區識別碼和主要金鑰。 下列命令會下載代理程式、驗證其總和檢查碼，並加以安裝。
     

@@ -1,6 +1,6 @@
 ---
 title: 在 StorSimple Virtual Array 上安裝 Update 0.6 | Microsoft Docs
-description: 描述如何透過 StorSimple Virtual Array Web UI，使用 Azure 入口網站和 Hotfix 方法套用更新
+description: 說明如何使用 StorSimple Virtual Array web UI，使用 Azure 入口網站和熱修正方法來套用更新0.6。
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/18/2017
 ms.author: alkohli
-ms.openlocfilehash: 02b85cb90948f35cb6f6c855cfbe81fd58301de0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 917af7ea1789394ddba5d349d631018e2b620216
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85513587"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91295680"
 ---
 # <a name="install-update-06-on-your-storsimple-virtual-array"></a>在 StorSimple Virtual Array 上安裝 Update 0.6
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 此文章說明透過本機 Web UI 和透過 Azure 入口網站在 StorSimple Virtual Array 上安裝 Update 0.6 時所需的步驟。 您套用軟體更新或 Hotfix，以便讓您的 StorSimple Virtual Array 保持在最新狀態。
 
@@ -58,7 +58,7 @@ ms.locfileid: "85513587"
 
 #### <a name="to-download-the-update-or-the-hotfix"></a>下載更新或 Hotfix
 
-1. 啟動 Internet Explorer 並流覽至 [https://catalog.update.microsoft.com](https://catalog.update.microsoft.com) 。
+1. 啟動 Internet Explorer，然後流覽至 [https://catalog.update.microsoft.com](https://catalog.update.microsoft.com) 。
 
 2. 如果這是您第一次在此電腦上使用 Microsoft Update Catalog，請在系統提示您安裝 Microsoft Update Catalog 附加元件時，按一下 [安裝]****。
 
@@ -95,11 +95,11 @@ ms.locfileid: "85513587"
 
 #### <a name="to-install-the-update-or-the-hotfix"></a>安裝更新或 Hotfix
 
-1. 在本機 web UI 中，移至 [**維護**] [  >  **軟體更新**]。 記下您在執行的軟體版本。 如果執行的是 **10.0.10290.0**，您不需要更新步驟 6 的 MDS 代理程式。
+1. 在本機 web UI 中，移至 [**維護**  >  **軟體更新**]。 記下您在執行的軟體版本。 如果執行的是 **10.0.10290.0**，您不需要更新步驟 6 的 MDS 代理程式。
    
     ![更新裝置](./media/storsimple-virtual-array-install-update-05/update1m.png)
 
-2. 在 [更新檔案路徑] **** 中，輸入更新或 Hotfix 的檔案名稱。 如果更新或 Hotfix 的安裝檔案是放在網路共用上，您也可以瀏覽至該檔案。 按一下 [套用] 。
+2. 在 [更新檔案路徑] **** 中，輸入更新或 Hotfix 的檔案名稱。 如果更新或 Hotfix 的安裝檔案是放在網路共用上，您也可以瀏覽至該檔案。 按一下 [套用]。
    
     ![更新裝置](./media/storsimple-virtual-array-install-update-05/update2m.png)
 
@@ -111,7 +111,7 @@ ms.locfileid: "85513587"
    
     ![更新裝置](./media/storsimple-virtual-array-install-update-05/update5m.png)
 
-5. 重新啟動完成後，您就會進入 [登入]**** 頁面。 若要確認裝置軟體是否已更新，請在本機 web UI 中，移至 [**維護**] [  >  **軟體更新**]。 顯示的軟體版本應該是 **10.0.0.0.0.10293** (適用於 Update 0.6)。
+5. 重新啟動完成後，您就會進入 [登入]**** 頁面。 若要確認裝置軟體是否已更新，請在本機 web UI 中，移至 [**維護**  >  **軟體更新**]。 顯示的軟體版本應該是 **10.0.0.0.0.10293** (適用於 Update 0.6)。
    
    > [!NOTE]
    > 我們在本機 Web UI 和 Azure 入口網站中回報軟體版本的方式略有不同。 例如，本機 Web UI 會回報 **10.0.0.0.0.10293**，而相同版本在 Azure 入口網站則會回報為 **10.0.10293.0**。

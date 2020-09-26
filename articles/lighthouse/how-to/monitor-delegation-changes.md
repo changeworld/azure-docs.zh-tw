@@ -3,12 +3,12 @@ title: 監視您管理租使用者中的委派變更
 description: 瞭解如何監視從客戶租使用者到您管理租使用者的委派活動。
 ms.date: 09/08/2020
 ms.topic: how-to
-ms.openlocfilehash: 19c8cd4fa2b43961c46640a736a91e3fed3ac79d
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 15e96939d4115bd93260687f637143cc798a4331
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89567600"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336593"
 ---
 # <a name="monitor-delegation-changes-in-your-managing-tenant"></a>監視您管理租使用者中的委派變更
 
@@ -46,7 +46,7 @@ ms.locfileid: "89567600"
 
 - [建立新的服務主體帳戶](../../active-directory/develop/howto-create-service-principal-portal.md) ，只用于此函式，而不是將此角色指派給用於其他自動化的現有服務主體。
 - 請確定此服務主體沒有任何委派客戶資源的存取權。
-- [使用憑證來進行驗證](../../active-directory/develop/howto-create-service-principal-portal.md#upload-a-certificate-or-create-a-secret-for-signing-in) ，並 [將其安全地儲存在 Azure Key Vault 中](../../key-vault/general/best-practices.md)。
+- [使用憑證來進行驗證](../../active-directory/develop/howto-create-service-principal-portal.md#authentication-two-options) ，並 [將其安全地儲存在 Azure Key Vault 中](../../key-vault/general/best-practices.md)。
 - 限制有權代表服務主體具有存取權的使用者。
 
 > [!NOTE]
@@ -177,7 +177,7 @@ else {
 
 將會顯示委派變更的清單。 您可以選取 [ **編輯資料行** ]，以顯示或隱藏 **狀態**、 **事件類別**、 **時間**、 **時間戳記**、 **訂**用帳戶、 **事件起始者**、 **資源群組**、 **資源類型**和 **資源** 值。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 瞭解如何讓客戶在 [Azure Lighthouse](../concepts/azure-delegated-resource-management.md)上架。
 - 瞭解 [Azure 監視器](../../azure-monitor/index.yml) 和 [Azure 活動記錄](../../azure-monitor/platform/platform-logs-overview.md)。

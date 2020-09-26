@@ -9,16 +9,16 @@ ms.topic: how-to
 ms.date: 08/10/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: c2ce40f7d8a8d08e191fce11c98bd780e0c2fda1
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 4b25458cc934097b5477c174ae7ecc47762e2929
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230070"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91280295"
 ---
 # <a name="enable-and-manage-soft-delete-for-containers-preview"></a>啟用及管理容器的虛刪除 (預覽) 
 
-容器虛刪除 (預覽) 可保護您的資料免于不慎或錯誤地修改或刪除。 針對儲存體帳戶啟用容器虛刪除時，在您指定的保留期限內，容器及其內容可能會在刪除之後復原。
+容器虛刪除 (預覽) 可保護您的資料免于不慎或錯誤地修改或刪除。 針對儲存體帳戶啟用容器虛刪除時，容器及其內容可能會在您指定的保留期限內被刪除後復原。
 
 如果應用程式或其他儲存體帳戶使用者可能不小心修改或刪除您的資料，Microsoft 建議開啟容器虛刪除。 本文說明如何啟用容器的虛刪除。 如需容器虛刪除的詳細資訊（包括如何註冊預覽版），請參閱 [容器的虛刪除 (預覽) ](soft-delete-container-overview.md)。
 
@@ -36,7 +36,7 @@ ms.locfileid: "89230070"
 1. 在 [ **Blob 服務**] 下找出**資料保護**設定。
 1. 將 [ **容器虛刪除** ] 屬性設定為 [ *已啟用*]。
 1. 在 [ **保留原則**] 底下，指定 Azure 儲存體保留虛刪除的容器的時間長度。
-1. 儲存您的變更。
+1. 儲存變更。
 
 :::image type="content" source="media/soft-delete-container-enable/soft-delete-container-portal-configure.png" alt-text="顯示如何在 Azure 入口網站中啟用容器虛刪除的螢幕擷取畫面":::
 
@@ -93,7 +93,7 @@ ms.locfileid: "89230070"
 您可以在保留期限內還原虛刪除的容器及其內容。 若要在 Azure 入口網站中還原虛刪除的容器，請遵循下列步驟：
 
 1. 在 Azure 入口網站中流覽至您的儲存體帳戶，並查看您的容器清單。
-1. 顯示您想要刪除之容器的內容功能表，然後從功能表中選擇 [取消 **刪除** ]。
+1. 顯示您想要還原之容器的內容功能表，然後從功能表中選擇 [取消 **刪除** ]。
 
     :::image type="content" source="media/soft-delete-container-enable/soft-delete-container-portal-restore.png" alt-text="顯示如何在 Azure 入口網站中還原虛刪除容器的螢幕擷取畫面":::
 

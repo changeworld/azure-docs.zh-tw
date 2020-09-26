@@ -1,7 +1,7 @@
 ---
 title: 使用 Bing 拼字檢查 API
 titleSuffix: Azure Cognitive Services
-description: 了解 Bing 拼字檢查的模式、設定和其他與 API 相關的資訊。
+description: 深入瞭解 Bing 拼寫檢查模式、設定，以及與 API 相關的其他資訊。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-spell-check
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: c5c9ad8be8bd4cd834b01a0c67e0bbc81b8cdd4a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a17ed0f13e352fb185d20d9dc2d7bfffa74ac957
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68881879"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334764"
 ---
 # <a name="using-the-bing-spell-check-api"></a>使用 Bing 拼字檢查 API
 

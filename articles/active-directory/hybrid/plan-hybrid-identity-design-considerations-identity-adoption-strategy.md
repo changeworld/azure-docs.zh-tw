@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1608039b051cb17684ca77cf7f00c705c9a8e7b5
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 318da4e92e6d07df1fcb89a4df0cb29d82caa630
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89659531"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91294857"
 ---
 # <a name="define-a-hybrid-identity-adoption-strategy"></a>定義混合式身分識別採用策略
 在這項工作中，您將為混合式身分識別解決方案，定義混合式身分識別採用策略，以滿足下列幾節已討論的商務需求：
@@ -55,7 +55,7 @@ Microsoft 有三個主要的整合案例，分別為雲端身分識別、同步�
 | 策略 | 優點 | 缺點 |
 | --- | --- | --- |
 | **雲端身分識別** |在小型組織中易於管理。 <br> 沒有項目可以在內部安裝或更新。 沒有其他硬體需求<br>使用者離職時輕易停用 |使用者存取雲端中的工作負載時必須登入 <br>  雲端和內部部署身分識別的密碼可能相同，也可能不相同 |
-| **已同步處理** |內部部署密碼會驗證內部部署和雲端目錄 <br>對小型、中型或大型組織來說易於管理 <br>使用者可以對一些資源進行單一登入 (SSO) <br> Microsoft 對於同步處理的慣用方法 <br>  易於管理 |基於公司的特定原則，有些客戶可能不願意將目錄與雲端同步 |
+| **已同步處理** |內部部署密碼會驗證內部部署和雲端目錄 <br>對小型、中型或大型組織來說易於管理 <br>使用者可以對一些資源進行單一登入 (SSO) <br> Microsoft 對於同步處理的慣用方法 <br>  易於管理 |某些客戶可能不願意將其目錄與雲端同步處理，因為特定公司的原則 |
 | **聯邦** |使用者可以有單一登入 (SSO)  <br>如果使用者終止或離開時，可以將帳戶立即停用並撤銷存取權。<br> 支援同步處理所無法解決的進階案例 |安裝和設定的詳細步驟 <br> 較高的維護 <br> STS 基礎結構可能需要額外的硬體 <br> 安裝同盟伺服器可能需要額外的硬體。 如果使用 AD FS，則需要額外的軟體 <br> 需要大量的設定才能使用 SSO <br> 重大失敗點是，同盟伺服器關閉時使用者會無法驗證 |
 
 ### <a name="client-experience"></a>用戶端體驗
@@ -68,7 +68,7 @@ Microsoft 有三個主要的整合案例，分別為雲端身分識別、同步�
 | 網頁瀏覽器 |表單架構驗證 |單一登入，有時需要提供組織識別碼 |
 | Outlook |提示輸入認證 |提示輸入認證 |
 | 商務用 Skype (Lync) |提示輸入認證 |在 Lync 中需要單一登入，在 Exchange 中會提示輸入認證 |
-| 商務用 OneDrive |提示輸入認證 |單一登入 |
+| OneDrive for Business |提示輸入認證 |單一登入 |
 | Office Pro Plus 訂用帳戶 |提示輸入認證 |單一登入 |
 
 **外部或不受信任的來源**：
@@ -210,7 +210,7 @@ Microsoft 有三個主要的整合案例，分別為雲端身分識別、同步�
 > 
 > 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 [判斷資料保護需求](plan-hybrid-identity-design-considerations-dataprotection-requirements.md)
 
 ## <a name="see-also"></a>另請參閱

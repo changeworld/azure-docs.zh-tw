@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: c99aa1bdb246d242c4c1cbd33672367b66f923ea
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: f2f01e2b58c997db08ad4427de7eef1ee3760c4a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89229965"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323495"
 ---
 # <a name="set-up-the-powershell-module-for-windows-virtual-desktop"></a>設定適用於 Windows 虛擬桌面的 PowerShell 模組
 
@@ -41,7 +41,8 @@ Install-Module -Name Az.DesktopVirtualization
 Connect-AzAccount
 ```
 
->!須知如果您要連線到 US Gov 入口網站，請改為執行下列 Cmdlet：
+>[!IMPORTANT]
+>如果您要連線到 US Gov 入口網站，請改為執行下列 Cmdlet：
 > 
 > ```powershell
 > Connect-AzAccount -EnvironmentName AzureUSGovernment

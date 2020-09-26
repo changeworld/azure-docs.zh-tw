@@ -4,18 +4,18 @@ description: 如何使用 Azure Site Recovery 將 Vm/實體伺服器容錯移轉
 ms.service: site-recovery
 ms.topic: article
 ms.date: 12/10/2019
-ms.openlocfilehash: d2f7fed25955d6a34c6162b87b82bfae5e58ff41
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 481e7c692be24bbebd14584f8158740a5b7043ba
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90563976"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317883"
 ---
 # <a name="run-a-failover-from-on-premises-to-azure"></a>執行從內部部署容錯移轉至 Azure
 
 本文說明如何在[Azure Site Recovery](site-recovery-overview.md)中將內部部署機器容錯移轉至 Azure
 
-## <a name="before-you-start"></a>開始之前
+## <a name="before-you-start"></a>在您開始使用 Intune 之前
 
 - [瞭解](failover-failback-overview.md) 嚴重損壞修復中的容錯移轉程式。
 - 如果您想要容錯移轉多部機器，請 [瞭解](recovery-plan-overview.md) 如何在復原方案中一起收集機器。
@@ -46,7 +46,7 @@ ms.locfileid: "90563976"
 1. 在 Site Recovery 保存庫中，選取 [復原**方案**]  >  *recoveryplan_name*。
 2. 按一下 [容錯移轉]。
 
-    ![螢幕擷取畫面顯示 [ADRP] 窗格，其中已從 [其他] 功能表選取 [容錯移轉]。](./media/site-recovery-failover/Failover.png)
+    ![Azure Site Recovery 的螢幕擷取畫面，其中顯示 [ADRP] 窗格，並從 [其他] 功能表選取 [容錯移轉]](./media/site-recovery-failover/Failover.png)
 
 3. 如果您要複寫至 Azure，請在**容錯移轉**  >  **容錯移轉方向**中保留預設值。
 4. 在 [ **容錯移轉**] 中，選取要容錯移轉的 **復原點** 。
@@ -81,7 +81,7 @@ ms.locfileid: "90563976"
 
 有一些與容錯移轉相關聯的工作。
 
-![容錯移轉](./media/site-recovery-failover/FailoverJob.png)
+![[工作] 頁面的螢幕擷取畫面，其中顯示 [名稱] 資料行中的 [群組1：開始] (1) 展開的作業清單。 會反白顯示 SQLServer 工作的行。](./media/site-recovery-failover/FailoverJob.png)
 
 - **必要條件檢查**：確保符合容錯移轉所需的所有條件。
 - **容錯移轉**：處理資料，以便從中建立 Azure VM。 如果您已選擇 **最新** 的復原點，則會從已傳送至服務的資料建立復原點。

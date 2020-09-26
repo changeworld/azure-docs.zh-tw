@@ -1,6 +1,6 @@
 ---
 title: 開始使用適用於 Node.js 的 Azure CDN SDK | Microsoft Docs
-description: 瞭解如何建立簡單的 Node.js 主控台應用程式，以示範如何自動建立和管理 Azure CDN 設定檔和端點。
+description: 瞭解如何建立簡單的 Node.js 主控台應用程式，以示範如何自動建立及管理 Azure CDN 設定檔和端點。
 services: cdn
 documentationcenter: nodejs
 author: zhangmanling
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
-ms.custom: devx-track-javascript
-ms.openlocfilehash: da695975b92ea6f81de103da5edf730811a193f8
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.custom: devx-track-js
+ms.openlocfilehash: f5d5c7a6e1f6993b19f38db2ae846b213a1d553e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88190700"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316747"
 ---
 # <a name="get-started-with-azure-cdn-development"></a>開始使用 Azure CDN 開發
 > [!div class="op_single_selector"]
@@ -124,7 +124,7 @@ npm install --save azure-arm-cdn
     var cdnClient = new cdnManagementClient(credentials, subscriptionId);
     ```
    
-    請務必以正確的資訊取代** &lt; 角括弧 &gt; **中的專案。  對於 `<redirect URI>`，請使用您在 Azure AD 中註冊應用程式時所輸入的重新導向 URI。
+    請務必將** &lt; 角括弧 &gt; **中的專案取代為正確的資訊。  對於 `<redirect URI>`，請使用您在 Azure AD 中註冊應用程式時所輸入的重新導向 URI。
 4. 我們的 Node.js 主控台應用程式將會採用一些命令列參數。  讓我們驗證看看是否已至少傳遞一個參數。
    
    ```javascript

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: e75dde14cf7182f5153b3a42b26f1c7e8a4e78ac
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 2a251ef426d41413cf81f46ca05b11640f01e87a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89258022"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333761"
 ---
 # <a name="azure-media-services-concepts"></a>Azure 媒體服務概念
 
@@ -103,12 +103,11 @@ Azure 媒體服務提供多個用於將雲端中之媒體編碼的選項。
 
 若要利用[動態封裝](media-services-dynamic-packaging-overview.md)功能，您必須將您的夾層 (來源) 檔編碼為一組調適性位元速率 MP4 檔案或調適性位元速率 Smooth Streaming 檔案，且至少要有一個標準或進階串流端點處於已啟動狀態。
 
-媒體服務支援本文中所描述的下列隨選編碼器：
+媒體服務支援本文中所述的下列隨選編碼器：
 
 * [Media Encoder Standard](media-services-encode-asset.md#media-encoder-standard)
-* [媒體編碼器高階工作流程](media-services-encode-asset.md#media-encoder-premium-workflow)
 
-如需支援編碼器的相關資訊，請參閱「 [編碼器](media-services-encode-asset.md)」。
+如需此支援之編碼器的詳細資訊，請參閱 [編碼器](media-services-encode-asset.md)。
 
 ## <a name="live-streaming"></a>即時資料流
 在 Azure 媒體服務中，通道代表處理即時串流內容的管線。 通道會以兩種方式之一收到即時輸入串流：
@@ -133,7 +132,7 @@ ArchiveWindowLength 也指定用戶端可從目前即時位置往回搜尋的最
 
 通道支援最多三個同時執行的程式，因此您可以建立相同內送串流的多個封存。 這可讓您視需要發行和封存事件的不同部分。 例如，您的商務需求是封存 6 小時的程式，但只廣播最後 10 分鐘。 為了達成此目的，您必須建立兩個同時執行的程式。 其中一個程式設定為封存 6 小時的事件，但是未發行該程式。 另一個程式則設定為封存 10 分鐘，並發行程式。
 
-如需詳細資訊，請參閱：
+如需詳細資訊，請參閱
 
 * [使用已啟用 Azure 媒體服務的通道來執行即時編碼](media-services-manage-live-encoder-enabled-channels.md)
 * [使用從內部部署編碼器接收多位元率即時資料流的通道](media-services-live-streaming-with-onprem-encoders.md)

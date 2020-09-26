@@ -1,18 +1,18 @@
 ---
 title: Azure 檔案同步的網路功能考量 | Microsoft Docs
-description: Azure 檔案同步的網路功能選項概觀。
+description: 瞭解如何設定網路功能，以使用 Azure 檔案同步在內部部署中快取檔。
 author: roygara
 ms.service: storage
 ms.topic: conceptual
 ms.date: 06/03/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: af5561a010ca1c2d45cf10a37a3b302d5e224158
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: HT
+ms.openlocfilehash: b291bd45b4003dd2241f40c810ed9d78af9f8bc9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85512559"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91267783"
 ---
 # <a name="azure-file-sync-networking-considerations"></a>Azure 檔案同步的網路功能考量
 您可以透過兩種方式連線至 Azure 檔案共用：

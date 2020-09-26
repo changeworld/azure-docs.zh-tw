@@ -1,18 +1,18 @@
 ---
 title: 設定 Azure 檔案儲存體的 DNS 轉送 | Microsoft Docs
-description: Azure 檔案儲存體的網路功能選項概觀。
+description: 瞭解如何為 Azure 檔案儲存體設定 DNS 轉送。
 author: roygara
 ms.service: storage
 ms.topic: how-to
 ms.date: 3/19/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 6404115e64ba0ac1f65ba1cfc8d26604f1ce9cfa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: HT
+ms.openlocfilehash: 4b5ce48cf15c890fbdb3dfd90d9d0ab922a2f4b2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85509960"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320263"
 ---
 # <a name="configuring-dns-forwarding-for-azure-files"></a>設定 Azure 檔案儲存體的 DNS 轉送
 Azure 檔案儲存體可讓您針對包含檔案共用的儲存體帳戶建立私人端點。 雖然適用於許多不同的應用程式，但私人端點特別適用於透過 VPN 或 ExpressRoute 連線，使用私人對等互連從內部部署網路連線至您的 Azure 檔案共用。 

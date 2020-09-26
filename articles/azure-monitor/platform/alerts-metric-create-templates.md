@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 7/9/2020
 ms.subservice: alerts
-ms.openlocfilehash: 3b0215ea2f02441f93e6eb9b672744638ae93b11
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e7d1e05c3b7487e2e6883a4663f807ca1095dc96
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321134"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317186"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>使用 Resource Manager 範本建立度量警示
 
@@ -27,7 +27,7 @@ ms.locfileid: "87321134"
 
 1. 使用下列範本之一，作為描述如何建立警示的 JSON 檔案。
 2. 編輯並使用對應的參數檔案作為 JSON，以自訂警示。
-3. 如需 `metricName` 參數，請參閱[Azure 監視器支援的計量](./metrics-supported.md)中的可用計量。
+3. 如需 `metricName` 參數的詳細資料，請參閱 [Azure 監視器支援的計量](./metrics-supported.md)中的可用計量。
 4. 使用[任何部署方法](../../azure-resource-manager/templates/deploy-powershell.md)部署範本。
 
 ## <a name="template-for-a-simple-static-threshold-metric-alert"></a>簡單靜態閾值的計量警示範本
@@ -268,7 +268,7 @@ New-AzResourceGroupDeployment -Name AlertDeployment -ResourceGroupName ResourceG
 ```azurecli
 az login
 
-az group deployment create \
+az deployment group create \
     --name AlertDeployment \
     --resource-group ResourceGroupofTargetResource \
     --template-file simplestaticmetricalert.json \
@@ -550,7 +550,7 @@ New-AzResourceGroupDeployment -Name AlertDeployment -ResourceGroupName ResourceG
 ```azurecli
 az login
 
-az group deployment create \
+az deployment group create \
     --name AlertDeployment \
     --resource-group ResourceGroupofTargetResource \
     --template-file simpledynamicmetricalert.json \
@@ -561,14 +561,14 @@ az group deployment create \
 >
 > 雖然計量警示能夠建立在與目標資源不同的資源群組中，但仍建議使用與目標資源相同的資源群組。
 
-## <a name="template-for-a-static-threshold-metric-alert-that-monitors-multiple-criteria"></a>可監視多個準則的靜態臨界值計量警示範本
+## <a name="template-for-a-static-threshold-metric-alert-that-monitors-multiple-criteria"></a>監視多個準則之靜態閾值度量警示的範本
 
-較新的計量警示支援多維度度量的警示，以及定義多個條件的支援（每個警示規則最多5使用準則來）。 您可以使用下列範本，針對維度計量建立更先進的度量警示規則，並指定多個準則。
+新的計量警示支援多維度計量的警示，並支援定義多個準則 (每個警示規則的最多5個使用準則) 。 您可以使用下列範本，針對維度計量建立更先進的計量警示規則，並指定多個準則。
 
 在包含多個準則的警示規則中使用維度時，請注意下列條件約束：
 - 在每個準則中，您只能為每個維度選取一個值。
 - 您不能使用 "\*" 作為維度值。
-- 當不同使用準則來中設定的計量支援相同的維度時，您必須以相同的方式，針對所有這些計量（在相關的使用準則來中）明確設定已設定的維度值。
+- 當不同使用準則中設定的度量支援相同的維度時，您必須以相同的方式，針對相關使用準則) 中的所有計量 (明確地設定維度值。
     - 在下列範例中，因為 **Transactions** 和 **SuccessE2ELatency** 計量都有 **ApiName** 維度，而且 *criterion1* 為 **ApiName** 維度指定了 *"GetBlob"* 值，所以 *criterion2* 也必須要為 **ApiName**維度設定 *"GetBlob"* 值。
 
 
@@ -792,7 +792,7 @@ New-AzResourceGroupDeployment -Name AlertDeployment -ResourceGroupName ResourceG
 ```azurecli
 az login
 
-az group deployment create \
+az deployment group create \
     --name AlertDeployment \
     --resource-group ResourceGroupofTargetResource \
     --template-file advancedstaticmetricalert.json \
@@ -802,11 +802,11 @@ az group deployment create \
 
 ## <a name="template-for-a-static-metric-alert-that-monitors-multiple-dimensions"></a>監視多個維度之靜態計量警示的範本
 
-您可以使用下列範本，針對維度計量建立靜態度量警示規則。
+您可以使用下列範本，針對維度計量建立靜態計量警示規則。
 
 單一警示規則可以一次監視多個計量時間序列，如此可管理較少的警示規則。
 
-在下列範例中，警示規則會監視**交易**度量的**ResponseType**和**ApiName**維度的維度值組合：
+在下列範例中，警示規則會監視**交易**度量的 **>responsetype**和**ApiName**維度的維度值組合：
 1. **ResponsType** - 若使用 "\*" 萬用字元，表示針對 **ResponseType** 維度的每個值 (包括未來的值)，都會分別監視不同的時間序列。
 2. **ApiName** - 只針對 **GetBlob** 和 **PutBlob** 維度值監視不同的時間序列。
 
@@ -943,7 +943,7 @@ az group deployment create \
 
 您可以使用上述的範本以及下面提供的參數檔案。 
 
-基於本逐步解說的目的，請將以下的 json 儲存並修改為 multidimensionalstaticmetricalert.parameters.js。
+基於本逐步解說的目的，請將以下的 json 儲存和修改為 multidimensionalstaticmetricalert.parameters.js。
 
 ```json
 {
@@ -1012,7 +1012,7 @@ New-AzResourceGroupDeployment -Name AlertDeployment -ResourceGroupName ResourceG
 ```azurecli
 az login
 
-az group deployment create \
+az deployment group create \
     --name AlertDeployment \
     --resource-group ResourceGroupofTargetResource \
     --template-file multidimensionalstaticmetricalert.json \
@@ -1020,13 +1020,13 @@ az group deployment create \
 ```
 
 
-## <a name="template-for-a-dynamic-thresholds-metric-alert-that-monitors-multiple-dimensions"></a>監視多個維度之動態閾值計量警示的範本
+## <a name="template-for-a-dynamic-thresholds-metric-alert-that-monitors-multiple-dimensions"></a>監視多個維度之動態臨界值計量警示的範本
 
 您可以使用下列範本，針對維度計量建立更先進的動態閾值計量警示規則。
 
-單一動態閾值警示規則可同時為數百個計量時間序列（甚至不同類型）建立量身打造的臨界值，這會導致較少的警示規則進行管理。
+單一動態閾值警示規則可為數百個計量時間序列建立量身打造的閾值， (一次) 不同的類型，這會產生較少的警示規則來進行管理。
 
-在下列範例中，警示規則會監視**交易**度量的**ResponseType**和**ApiName**維度的維度值組合：
+在下列範例中，警示規則會監視**交易**度量的 **>responsetype**和**ApiName**維度的維度值組合：
 1. **ResponsType** - 針對 **ResponseType** 維度的每個值 (包括未來的值)，都會分別監視不同的時間序列。
 2. **ApiName** - 只針對 **GetBlob** 和 **PutBlob** 維度值監視不同的時間序列。
 
@@ -1232,7 +1232,7 @@ New-AzResourceGroupDeployment -Name AlertDeployment -ResourceGroupName ResourceG
 ```azurecli
 az login
 
-az group deployment create \
+az deployment group create \
     --name AlertDeployment \
     --resource-group ResourceGroupofTargetResource \
     --template-file advanceddynamicmetricalert.json \
@@ -1241,10 +1241,10 @@ az group deployment create \
 
 >[!NOTE]
 >
-> 使用動態閾值的計量警示規則目前不支援多個條件。
+> 使用動態閾值的計量警示規則目前不支援多個準則。
 
 
-## <a name="template-for-a-static-threshold-metric-alert-that-monitors-a-custom-metric"></a>監視自訂計量的靜態閾值計量警示範本
+## <a name="template-for-a-static-threshold-metric-alert-that-monitors-a-custom-metric"></a>監視自訂度量之靜態閾值計量警示的範本
 
 您可以使用下列範本，針對自訂計量建立更進階的靜態閾值計量警示規則。
 
@@ -1432,7 +1432,7 @@ az group deployment create \
 
 您可以使用上述的範本以及下面提供的參數檔案。 
 
-基於本逐步解說的目的，請將以下的 json 儲存並修改為 customstaticmetricalert.parameters.js。
+基於本逐步解說的目的，請將以下的 json 儲存和修改為 customstaticmetricalert.parameters.js。
 
 ```json
 {
@@ -1495,7 +1495,7 @@ New-AzResourceGroupDeployment -Name AlertDeployment -ResourceGroupName ResourceG
 ```azurecli
 az login
 
-az group deployment create \
+az deployment group create \
     --name AlertDeployment \
     --resource-group ResourceGroupOfTargetResource \
     --template-file customstaticmetricalert.json \
@@ -1509,7 +1509,7 @@ az group deployment create \
 
 ## <a name="template-for-a-metric-alert-that-monitors-multiple-resources"></a>監視多個資源的計量警示範本
 
-前幾節已說明用來建立計量警示以監視單一資源的 Azure Resource Manager 範本範例。 Azure 監視器現在支援針對存在於相同 Azure 區域中的資源，使用單一計量警示規則監視多個資源（屬於相同類型）。 這項功能目前僅在 Azure 公用雲端中受到支援，而且僅適用于虛擬機器、SQL server 資料庫、SQL server 彈性集區和 Databox 邊緣裝置。 此外，這項功能僅適用於平台計量，且不支援自訂計量。
+前幾節已說明用來建立計量警示以監視單一資源的 Azure Resource Manager 範本範例。 針對存在於相同 Azure 區域中的資源，Azure 監視器現在支援使用單一計量警示規則監視多個相同類型的資源 () 。 這項功能目前僅支援在 Azure 公用雲端中，且僅適用于虛擬機器、SQL server 資料庫、SQL server 彈性集區和資料箱 edge 裝置。 此外，這項功能僅適用於平台計量，且不支援自訂計量。
 
 動態閾值警示規則也可一次為數百個計量序列 (甚至不同類型) 建立合適的閾值，讓需要管理的警示規則變少。
 
@@ -1522,7 +1522,7 @@ az group deployment create \
 > [!NOTE]
 >
 > 在監視多個資源的計量警示規則中，適用下列限制：
-> - 警示規則的範圍必須至少包含一個所選資源類型的資源。
+> - 警示規則的範圍必須包含至少一個所選資源類型的資源。
 > - 警示規則只能包含一個條件。
 
 ### <a name="static-threshold-alert-on-all-virtual-machines-in-one-or-more-resource-groups"></a>一個或多個資源群組中所有虛擬機器上的靜態閾值警示
@@ -1830,7 +1830,7 @@ New-AzResourceGroupDeployment -Name MultiResourceAlertDeployment -ResourceGroupN
 ```azurecli
 az login
 
-az group deployment create \
+az deployment group create \
     --name MultiResourceAlertDeployment \
     --resource-group ResourceGroupWhereRuleShouldbeSaved \
     --template-file all-vms-in-resource-group-static.json \
@@ -2165,7 +2165,7 @@ New-AzResourceGroupDeployment -Name MultiResourceAlertDeployment -ResourceGroupN
 ```azurecli
 az login
 
-az group deployment create \
+az deployment group create \
     --name MultiResourceAlertDeployment \
     --resource-group ResourceGroupWhereRuleShouldbeSaved \
     --template-file all-vms-in-resource-group-dynamic.json \
@@ -2475,7 +2475,7 @@ New-AzResourceGroupDeployment -Name MultiResourceAlertDeployment -ResourceGroupN
 ```azurecli
 az login
 
-az group deployment create \
+az deployment group create \
     --name MultiResourceAlertDeployment \
     --resource-group ResourceGroupWhereRuleShouldbeSaved \
     --template-file all-vms-in-subscription-static.json \
@@ -2807,7 +2807,7 @@ New-AzResourceGroupDeployment -Name MultiResourceAlertDeployment -ResourceGroupN
 ```azurecli
 az login
 
-az group deployment create \
+az deployment group create \
     --name MultiResourceAlertDeployment \
     --resource-group ResourceGroupWhereRuleShouldbeSaved \
     --template-file all-vms-in-subscription-dynamic.json \
@@ -3120,7 +3120,7 @@ New-AzResourceGroupDeployment -Name MultiResourceAlertDeployment -ResourceGroupN
 ```azurecli
 az login
 
-az group deployment create \
+az deployment group create \
     --name MultiResourceAlertDeployment \
     --resource-group ResourceGroupWhereRuleShouldbeSaved \
     --template-file list-of-vms-static.json \
@@ -3455,7 +3455,7 @@ New-AzResourceGroupDeployment -Name MultiResourceAlertDeployment -ResourceGroupN
 ```azurecli
 az login
 
-az group deployment create \
+az deployment group create \
     --name MultiResourceAlertDeployment \
     --resource-group ResourceGroupWhereRuleShouldbeSaved \
     --template-file list-of-vms-dynamic.json \
@@ -3598,7 +3598,7 @@ az group deployment create \
 }
 ```
 
-您可以使用 PowerShell 或 Azure CLI，透過範本和參數檔案來建立可用性測試和相關聯的警示。
+您可以使用 PowerShell 或 Azure CLI，使用範本和參數檔案來建立可用性測試和相關聯的警示。
 
 使用 Azure PowerShell
 
@@ -3616,7 +3616,7 @@ New-AzResourceGroupDeployment -Name AvailabilityAlertDeployment -ResourceGroupNa
 ```azurecli
 az login
 
-az group deployment create \
+az deployment group create \
     --name AvailabilityAlertDeployment \
     --resource-group ResourceGroupofApplicationInsightsComponent \
     --template-file availabilityalert.json \

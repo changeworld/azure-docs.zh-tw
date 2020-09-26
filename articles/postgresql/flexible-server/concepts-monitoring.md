@@ -5,15 +5,15 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/22/2020
-ms.openlocfilehash: 7d1d7f9759fc8e2826da6232981eb3a389576c07
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/23/2020
+ms.openlocfilehash: b0957219308dfaab2d375fb7c23926a13c745344
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90933891"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91314669"
 ---
-# <a name="monitor-metrics-azure-database-for-postgresql---flexible-server"></a>監視計量適用於 PostgreSQL 的 Azure 資料庫-彈性伺服器
+# <a name="monitor-metrics-on-azure-database-for-postgresql---flexible-server"></a>監視適用於 PostgreSQL 的 Azure 資料庫彈性伺服器上的計量
 
 > [!IMPORTANT]
 > 適用於 PostgreSQL 的 Azure 資料庫 - 彈性伺服器為預覽狀態
@@ -27,28 +27,29 @@ ms.locfileid: "90933891"
 下列計量適用于于 postgresql 彈性伺服器：
 
 
-|計量|計量顯示名稱|單位|描述|
+|計量|計量顯示名稱|單位|說明|
 |---|---|---|---|
+| active_connections | 作用中的連線 | Count | 您伺服器的連接數目。 | 
 | backup_storage_used | 已使用的備份儲存體 | 位元組 | 使用的備份儲存體數量。 此計量代表所有完整資料庫備份、差異備份和記錄備份所使用的儲存體總和（根據針對伺服器所設定的備份保留期限而定）。 備份的頻率是服務管理的。 針對異地複寫儲存體，備份儲存體使用量會是本機冗余儲存體的兩倍。 |
 | connections_failed | 失敗的連線 | Count | 失敗的連接。 |
-| connections_succeeded | 成功的連接 | Count | 成功的連接。 |
+| connections_succeeded | 成功的連接 | 計數 | 成功的連接。 |
 | cpu_credits_consumed | CPU Credits Consumed | Count | 彈性伺服器所使用的信用額度數目。 適用于高載層。 |
 | cpu_credits_remaining | 剩餘 CPU 信用額度 | Count | 可供高載的點數數目。 適用于高載層。 |
 | cpu_percent | CPU 百分比 | 百分比 | 使用中的 CPU 百分比。 | 
-| disk_queue_depth | 磁片佇列深度 | Count | 資料磁片的未完成 i/o 作業數目。 |
+| disk_queue_depth | 磁片佇列深度 | 計數 | 資料磁片的未完成 i/o 作業數目。 |
 | iops | IOPS | Count | 每秒磁片的 i/o 作業數目。 |
-| maximum_used_transactionIDs | 使用的最大交易識別碼 | Count | 使用中的最大交易識別碼。 |
+| maximum_used_transactionIDs | 使用的最大交易識別碼 | 計數 | 使用中的最大交易識別碼。 |
 | memory_percent | 記憶體百分比 | 百分比 | 使用中記憶體的百分比。 |
 | network_bytes_egress | Network Out | 位元組 | 連出網路流量的數量。 |
 | network_bytes_ingress | Network In | 位元組 | 傳入網路流量的數量。 |
-| read_iops | 讀取 IOPS | Count | 每秒的資料磁片 i/o 讀取作業數。 |
+| read_iops | 讀取 IOPS | 計數 | 每秒的資料磁片 i/o 讀取作業數。 |
 | read_throughput | 讀取輸送量 | 位元組 | 每秒從磁片讀取的位元組數。 |
 | storage_free | 免費儲存體 | 位元組 | 可用的儲存空間量。 |
 | storage_percent | 儲存體百分比 | 百分比 | 使用的儲存空間百分比。 此服務所使用的儲存體可能包括資料庫檔案、交易記錄和伺服器記錄。|
 | storage_used | 使用的儲存體 | 位元組 | 使用的儲存空間百分比。 此服務所使用的儲存體可能包括資料庫檔案、交易記錄和伺服器記錄。 |
 | txlogs_storage_used | 使用的交易記錄儲存體 | 位元組 | 交易記錄所使用的儲存空間量。 | 
 | write_throughput | 寫入輸送量 | 位元組 | 每秒寫入磁片的位元組數。 |
-| write_iops | 寫入 IOPS | Count | 每秒的資料磁片 i/o 寫入作業數。 |
+| write_iops | 寫入 IOPS | 計數 | 每秒的資料磁片 i/o 寫入作業數。 |
 
 ## <a name="server-logs"></a>伺服器記錄
 適用於 PostgreSQL 的 Azure 資料庫可讓您設定和存取 Postgres 的標準記錄。 若要深入瞭解記錄，請造訪 [記錄概念](concepts-logging.md)檔。

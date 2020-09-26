@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 838d2a1dd1c7b89c1f5c9fec6578312107264958
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 2512602b0c8c00c696253a708af13278bc513a1f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90602059"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258739"
 ---
 # <a name="conditional-access-cloud-apps-or-actions"></a>條件式存取：雲端應用程式或動作
 
@@ -31,9 +31,9 @@ ms.locfileid: "90602059"
 
 許多現有的 Microsoft 雲端應用程式都包含在您可從中選取的應用程式清單內。 
 
-管理員可以將條件式存取原則指派給下列 Microsoft 的雲端應用程式。 某些如 Office 365 (預覽) 和 Microsoft Azure 管理等應用程式，則包含多個相關的子系應用程式或服務。 以下並非詳盡清單，且會隨時變動。
+管理員可以將條件式存取原則指派給下列 Microsoft 的雲端應用程式。 某些應用程式（例如 Office 365 和 Microsoft Azure 管理）包含多個相關的子應用程式或服務。 以下並非詳盡清單，且會隨時變動。
 
-- [Office 365 (預覽)](#office-365-preview)
+- [Office 365](#office-365)
 - Azure Analysis Services
 - Azure DevOps
 - [Azure SQL Database 和資料倉儲](../../azure-sql/database/conditional-access-configure.md)
@@ -67,15 +67,15 @@ ms.locfileid: "90602059"
 - 虛擬私人網路 (VPN)
 - Windows Defender ATP
 
-### <a name="office-365-preview"></a>Office 365 (預覽)
+### <a name="office-365"></a>Office 365
 
 Microsoft 365 提供雲端式生產力和共同作業服務，例如 Exchange、SharePoint 和 Microsoft 小組。 Microsoft 365 雲端服務已緊密整合，以確保順暢且共同作業的體驗。 這項整合會在建立原則時造成混淆，因為某些應用程式 (如 Microsoft Teams) 與其他應用程式 (如 SharePoint 或 Exchange) 有相依性。
 
-Office 365 (預覽) 應用程式可讓您一次將這些服務全部設為目標。 建議使用新的 Office 365 (預覽) 應用程式，而非以個別的雲端應用程式為目標，以避免出現[服務相依性](service-dependencies.md)的問題。 以此應用程式群組做為目標，有助於避免發生因為原則和相依性不一致而導致的問題。
+Office 365 應用程式可讓您一次將這些服務設為目標。 我們建議使用新的 Office 365 應用程式，而不是以個別的雲端應用程式為目標，以避免 [服務](service-dependencies.md)相依性發生問題。 以此應用程式群組做為目標，有助於避免發生因為原則和相依性不一致而導致的問題。
 
-如果管理員想要從原則中排除特定應用程式，則可納入 Office 365 (預覽) 應用程式，並在原則中排除其選擇的特定應用程式。
+系統管理員可以選擇從原則中排除特定的應用程式（如果想要的話），包括 Office 365 應用程式，以及在原則中排除他們選擇的特定應用程式。
 
-Office 365 (預覽) 用戶端應用程式包含的主要應用程式：
+Office 365 用戶端應用程式中包含的重要應用程式：
 
    - Microsoft Flow
    - Microsoft Forms

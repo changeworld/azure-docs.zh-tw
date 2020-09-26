@@ -5,25 +5,25 @@ author: mumian
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: 10f8c2a17c161d7e5622636b08b524932defe451
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: d97390861200a0a7f3b04d951e0ca2a17796835d
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87826869"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372496"
 ---
 # <a name="manage-azure-resources-by-using-azure-powershell"></a>使用 Azure PowerShell 來管理 Azure 資源
 
-瞭解如何搭配[Azure Resource Manager](overview.md)使用 Azure PowerShell 來管理您的 Azure 資源。 如需管理資源群組，請參閱[使用 Azure PowerShell 來管理 Azure 資源群組](manage-resource-groups-powershell.md)。
+瞭解如何搭配使用 Azure PowerShell 與 [Azure Resource Manager](overview.md) 來管理您的 Azure 資源。 如需管理資源群組，請參閱 [使用 Azure PowerShell 管理 Azure 資源群組](manage-resource-groups-powershell.md)。
 
 關於管理資源的其他文章：
 
 - [使用 Azure 入口網站來管理 Azure 資源](manage-resources-portal.md)
 - [使用 Azure CLI 來管理 Azure 資源](manage-resources-cli.md)
 
-## <a name="deploy-resources-to-an-existing-resource-group"></a>將資源部署至現有的資源群組
+## <a name="deploy-resources-to-an-existing-resource-group"></a>將資源部署到現有的資源群組
 
-您可以使用 Azure PowerShell 直接部署 Azure 資源，或部署 Resource Manager 範本來建立 Azure 資源。
+您可以使用 Azure PowerShell 直接部署 Azure 資源，或部署 Resource Manager 範本以建立 Azure 資源。
 
 ### <a name="deploy-a-resource"></a>部署資源
 
@@ -46,7 +46,7 @@ $ctx = $storageAccount.Context
 
 ### <a name="deploy-a-template"></a>部署範本
 
-下列腳本會建立部署快速入門範本來建立儲存體帳戶。 如需詳細資訊，請參閱[快速入門：使用 Visual Studio Code 建立 Azure Resource Manager 範本](../templates/quickstart-create-templates-use-visual-studio-code.md?tabs=PowerShell)。
+下列腳本會建立部署快速入門範本來建立儲存體帳戶。 如需詳細資訊，請參閱 [快速入門：使用 Visual Studio Code 建立 Azure Resource Manager 範本](../templates/quickstart-create-templates-use-visual-studio-code.md?tabs=PowerShell)。
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -59,15 +59,15 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri
 
 ## <a name="deploy-a-resource-group-and-resources"></a>部署資源群組和資源
 
-您可以建立資源群組，並將資源部署到該群組。 如需詳細資訊，請參閱[建立資源群組並部署資源](../templates/deploy-to-subscription.md#resource-groups)。
+您可以建立資源群組，並將資源部署至群組。 如需詳細資訊，請參閱[建立資源群組並部署資源](../templates/deploy-to-subscription.md#resource-groups)。
 
 ## <a name="deploy-resources-to-multiple-subscriptions-or-resource-groups"></a>將資源部署至多個訂用帳戶或資源群組
 
-一般而言，您要將範本中的所有資源部署至單一資源群組。 不過，在某些情況下，您要將一組資源部署在一起，但將它們放在不同的資源群組或訂用帳戶中。 如需詳細資訊，請參閱[將 Azure 資源部署至多個訂用帳戶或資源群組](../templates/cross-scope-deployment.md)。
+一般而言，您要將範本中的所有資源部署至單一資源群組。 不過，在某些情況下，您要將一組資源部署在一起，但將它們放在不同的資源群組或訂用帳戶中。 如需詳細資訊，請參閱 [將 Azure 資源部署至多個訂用帳戶或資源群組](../templates/cross-scope-deployment.md)。
 
 ## <a name="delete-resources"></a>刪除資源
 
-下列腳本顯示如何刪除儲存體帳戶。
+下列腳本說明如何刪除儲存體帳戶。
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -76,7 +76,7 @@ $storageAccountName = Read-Host -Prompt "Enter the storage account name"
 Remove-AzStorageAccount -ResourceGroupName $resourceGroupName -AccountName $storageAccountName
 ```
 
-如需 Azure Resource Manager 如何排序資源刪除的詳細資訊，請參閱[Azure Resource Manager 資源群組刪除](delete-resource-group.md)。
+如需 Azure Resource Manager 如何排序資源刪除的詳細資訊，請參閱 [Azure Resource Manager 資源群組刪除](delete-resource-group.md)。
 
 ## <a name="move-resources"></a>移動資源
 
@@ -125,19 +125,19 @@ $lockId = (Get-AzResourceLock -ResourceGroupName $resourceGroupName -ResourceNam
 Remove-AzResourceLock -LockId $lockId
 ```
 
-如需詳細資訊，請參閱[使用 Azure Resource Manager 鎖定資源](lock-resources.md)。
+如需詳細資訊，請參閱 [使用 Azure Resource Manager 鎖定資源](lock-resources.md)。
 
 ## <a name="tag-resources"></a>標記資源
 
-標記可協助您以邏輯方式組織資源群組和資源。 如需相關資訊，請參閱[使用標記來組織您的 Azure 資源](tag-resources.md#powershell)。
+標記可協助您以邏輯方式組織您的資源群組和資源。 如需詳細資訊，請參閱 [使用標記來組織您的 Azure 資源](tag-resources.md#powershell)。
 
-## <a name="manage-access-to-resources"></a>管理對資源的存取
+## <a name="manage-access-to-resources"></a>管理資源的存取權
 
-Azure[角色型存取控制 (AZURE RBAC) ](../../role-based-access-control/overview.md)是您在 azure 中管理資源存取權的方式。 如需詳細資訊，請參閱[使用 RBAC 和 Azure PowerShell 來管理存取權](../../role-based-access-control/role-assignments-powershell.md)。
+Azure[角色型存取控制 (AZURE RBAC) ](../../role-based-access-control/overview.md)是您管理 azure 中資源存取權的方式。 如需詳細資訊，請參閱 [使用 Azure PowerShell 新增或移除 Azure 角色指派](../../role-based-access-control/role-assignments-powershell.md)。
 
 ## <a name="next-steps"></a>後續步驟
 
-- 若要瞭解 Azure Resource Manager，請參閱[Azure Resource Manager 總覽](overview.md)。
-- 若要瞭解 Resource Manager 範本語法，請參閱[瞭解 Azure Resource Manager 範本的結構和語法](../templates/template-syntax.md)。
-- 若要瞭解如何開發範本，請參閱[逐步教學](../index.yml)課程。
-- 若要查看 Azure Resource Manager 範本架構，請參閱[範本參考](/azure/templates/)。
+- 若要瞭解 Azure Resource Manager，請參閱 [Azure Resource Manager 總覽](overview.md)。
+- 若要瞭解 Resource Manager 範本語法，請參閱 [瞭解 Azure Resource Manager 範本的結構和語法](../templates/template-syntax.md)。
+- 若要瞭解如何開發範本，請參閱 [逐步教學](../index.yml)課程。
+- 若要查看 Azure Resource Manager 範本架構，請參閱 [範本參考](/azure/templates/)。

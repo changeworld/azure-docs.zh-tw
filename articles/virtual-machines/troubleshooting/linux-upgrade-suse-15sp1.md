@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 05/21/2020
 ms.author: arremana
-ms.openlocfilehash: 079574ab4c5846eae6266d1e13240baf99428a69
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7ed355f82b88f460ff4b372484a690f166a15550
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84449238"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91359506"
 ---
 # <a name="upgrade-azure-vm-with-sles-12-to-sles-15-sp1"></a>將 Azure VM 的 SLES 12 升級至 SLES 15 SP1
 
@@ -66,11 +66,11 @@ ms.locfileid: "84449238"
 
 6. 移至 [Azure 入口網站](https://portal.azure.com)，選取 VM，然後選取 [序列主控台]。 您會看到系統停止在「重新啟動：正在重新啟動系統」。 此流程大約需要 15 到 45 分鐘。 如果是第 2 代 VM，可能會停滯在「重新啟動：正在重新啟動系統」畫面。 在此情況下，請等待大約 45 分鐘的時間。 如果仍然沒有進展，請移至 Azure 入口網站中 VM 的**概覽**頁面，停止 VM，然後重新啟動它。
 
-     ![有關序列主控台中訊息的螢幕擷取畫面](./media/linux-upgrade-suse-15sp1/reboot-message.png)
+     ![序列主控台中有關訊息的螢幕擷取畫面。](./media/linux-upgrade-suse-15sp1/reboot-message.png)
 
 8. 使用新的核心重新啟動系統之後，您會看到下列訊息。
 
-     ![有關序列主控台中訊息的螢幕擷取畫面](./media/linux-upgrade-suse-15sp1/output-message.png)
+     ![使用新的核心重新開機系統之後，序列主控台中有關訊息的螢幕擷取畫面。](./media/linux-upgrade-suse-15sp1/output-message.png)
 9. 確認核心和 OS 版本，以檢查系統是否已成功升級。
 
     ```

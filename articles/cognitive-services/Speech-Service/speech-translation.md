@@ -12,12 +12,12 @@ ms.date: 09/01/2020
 ms.author: erhopf
 ms.custom: devx-track-csharp, cog-serv-seo-aug-2020
 keywords: 語音翻譯
-ms.openlocfilehash: 67bb418926932ebb7e443e77c65dd12c7352049d
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: e4bc2f07fce3917bfa59f79305498bb91889344d
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401209"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91359795"
 ---
 # <a name="what-is-speech-translation"></a>什麼是語音翻譯？
 
@@ -63,5 +63,5 @@ Microsoft 現在使用 NMT 來翻譯為最受歡迎的語言。 所有[可用於
 ## <a name="next-steps"></a>後續步驟
 
 * 完成語音翻譯 [快速入門](get-started-speech-translation.md)
-* [免費取得語音服務的訂用帳戶金鑰](get-started.md)
+* [免費取得語音服務的訂用帳戶金鑰](overview.md#try-the-speech-service-for-free)
 * [取得語音 SDK](speech-sdk.md)
