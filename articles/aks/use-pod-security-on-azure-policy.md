@@ -5,21 +5,18 @@ services: container-service
 ms.topic: article
 ms.date: 09/22/2020
 author: jluk
-ms.openlocfilehash: 9ebd12777c32a9415eeb1b77d9cd487b0f23eb29
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: fd4f79e0cae5028e4bbaa8a4f5115d5a767dcf54
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91299148"
+ms.locfileid: "91368850"
 ---
 # <a name="secure-pods-with-azure-policy"></a>使用 Azure 原則保護 pod
 
 若要改善 AKS 叢集的安全性，您可以控制要授與哪些函式，以及是否有任何針對公司原則執行的功能。 這項存取是透過 [適用于 AKS 的 Azure 原則附加][kubernetes-policy-reference]元件所提供的內建原則來定義。 藉由對 pod 規格的安全性層面提供額外的控制（例如根許可權），可讓您更嚴格地遵循安全性，並瞭解叢集中部署的內容。 如果 pod 不符合原則中指定的條件，Azure 原則可以不允許 pod 啟動或旗標違規。 本文說明如何使用 Azure 原則來限制 AKS 中的 pod 部署。
 
 ## <a name="before-you-begin"></a>開始之前
-
-> [!IMPORTANT]
-> AKS 上 Azure 原則的正式運作 (GA) 會主動在所有區域中發行。 GA 版本的預期全域完成為9/29/2020。 沒有 GA 版本的區域使用方式需要預覽註冊步驟。 不過，這會在區域中有提供正式發行版本時自動更新。
 
 此文章假設您目前具有 AKS 叢集。 如果您需要 AKS 叢集，請參閱[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 入口網站][aks-quickstart-portal]的 AKS 快速入門。
 
