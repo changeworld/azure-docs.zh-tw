@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 06/05/2020
+ms.date: 09/22/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9295b1d8a54d9c3c1a138a54f4b3706bd39227fd
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: e8a35902c198412f6e41c0cf39162836deb5e443
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89009537"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91280091"
 ---
 # <a name="list-blobs-with-net"></a>使用 .NET 列出 Blob
 
@@ -59,7 +59,7 @@ ms.locfileid: "89009537"
 
 ### <a name="filter-results-with-a-prefix"></a>使用前置詞篩選結果
 
-若要篩選容器清單，請指定 `prefix` 參數的字串。 前置詞字串可包含一或多個字元。 Azure 儲存體接著只會傳回名稱開頭為該前置詞的 Blob。
+若要篩選 blob 清單，請指定參數的字串 `prefix` 。 前置詞字串可包含一或多個字元。 Azure 儲存體接著只會傳回名稱開頭為該前置詞的 Blob。
 
 ### <a name="return-metadata"></a>傳回中繼資料
 

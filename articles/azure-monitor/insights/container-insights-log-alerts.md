@@ -3,12 +3,12 @@ title: 從容器的 Azure 監視器記錄警示 |Microsoft Docs
 description: 本文說明如何從容器 Azure 監視器建立自訂記錄警示，以取得記憶體和 CPU 使用率。
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: 2d86edc5994070ba909c6e3a0da2cf76e8359773
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 8c02442fef9b174075065e7852b7a25233899c48
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90973731"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91294541"
 ---
 # <a name="how-to-create-log-alerts-from-azure-monitor-for-containers"></a>如何從容器的 Azure 監視器建立記錄警示
 
@@ -275,7 +275,7 @@ InsightsMetrics
 
 ## <a name="create-an-alert-rule"></a>建立警示規則
 
-本節將逐步解說如何使用來自容器 Azure 監視器的效能資料來建立計量測量警示規則。 您可以使用此基本程式搭配各種記錄查詢來發出不同效能計數器的警示。 使用稍早提供的其中一個記錄搜尋查詢來開始。 若要使用 ARM 範本建立，請參閱 [使用 Azure 資源範本建立記錄警示的範例](../platform/alerts-log.md#sample-log-alert-creation-using-azure-resource-template)。
+本節將逐步解說如何使用來自容器 Azure 監視器的效能資料來建立計量測量警示規則。 您可以使用此基本程式搭配各種記錄查詢來發出不同效能計數器的警示。 使用稍早提供的其中一個記錄搜尋查詢來開始。 若要使用 ARM 範本建立，請參閱 [使用 Azure 資源範本建立記錄警示的範例](../platform/alerts-log-create-templates.md)。
 
 >[!NOTE]
 >若要建立容器資源使用率的警示規則，您必須切換至新的記錄警示 API，如「 [記錄警示的參數 API 喜好](../platform/alerts-log-api-switch.md)設定」中所述。
@@ -303,7 +303,7 @@ InsightsMetrics
 13. 選取現有的 **動作群組** 或建立新的群組。 此步驟可確保在每次觸發警示時都會採取相同的動作。 根據 IT 或 DevOps 作業小組管理事件的方式進行設定。
 14. 選取 [ **建立警示規則** ] 以完成警示規則。 此警示規則會立即開始執行。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 查看 [記錄查詢範例](container-insights-log-search.md#search-logs-to-analyze-data) 以查看預先定義的查詢和範例，以評估或自訂警示、視覺化或分析您的叢集。
 

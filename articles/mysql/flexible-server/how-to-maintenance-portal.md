@@ -6,12 +6,12 @@ ms.author: nlarin
 ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
-ms.openlocfilehash: 6c3ad5fff6958bce72f876e3ff4701cf081abe60
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: c8251eb2a89a7481ebc981f2b89668c363651b39
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936646"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91315009"
 ---
 # <a name="manage-scheduled-maintenance-settings-for-azure-database-for-mysql--flexible-server"></a>管理適用於 MySQL 的 Azure 資料庫-彈性伺服器的排程維護設定
  
@@ -20,7 +20,7 @@ ms.locfileid: "90936646"
 > [!IMPORTANT]
 > 適用於 MySQL 的 Azure 資料庫彈性的伺服器處於預覽階段。
  
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 若要完成本操作說明指南，您需要：
 - [適用於 MySQL 的 Azure 資料庫彈性的伺服器](quickstart-create-server-portal.md)
  
@@ -31,9 +31,9 @@ ms.locfileid: "90936646"
  
 ## <a name="notifications-about-scheduled-maintenance-events"></a>排程維護事件的相關通知
  
-您可以使用 Azure 服務健康狀態來 [查看](/azure/service-health/service-notifications.md) 即將推出的通知，並在彈性的伺服器上執行排程的維護。 您也可以在 Azure 服務健康狀態中 [設定](/azure/service-health/resource-health-alert-monitor-guide.md) 警示，以取得有關維護事件的通知。
+您可以使用 Azure 服務健康狀態來 [查看](../../service-health/service-notifications.md) 即將推出的通知，並在彈性的伺服器上執行排程的維護。 您也可以在 Azure 服務健康狀態中 [設定](../../service-health/resource-health-alert-monitor-guide.md) 警示，以取得有關維護事件的通知。
  
-## <a name="next-steps"></a>下一步  
+## <a name="next-steps"></a>後續步驟  
  
 * 瞭解 [適用於 MySQL 的 Azure 資料庫-彈性伺服器中的排程維護](concepts-maintenance.md)
-* [Azure 服務健康狀態](/azure/service-health/overview.md)的相關資訊
+* [Azure 服務健康狀態](../../service-health/overview.md)的相關資訊

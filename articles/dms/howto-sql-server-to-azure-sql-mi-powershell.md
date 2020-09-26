@@ -10,14 +10,14 @@ ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019,fasttrack-edit, devx-track-azurepowershell
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/20/2020
-ms.openlocfilehash: 37d61a5c199b59a13b54344f5ffaf69d7b369a1b
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: c82acb66266fd36e5b7155adbfa5bd5ade1b765c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89078056"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91291982"
 ---
 # <a name="migrate-sql-server-to-sql-managed-instance-with-powershell--azure-database-migration-service"></a>使用 PowerShell 將 SQL Server 遷移至 SQL 受控執行個體 & Azure 資料庫移轉服務
 
@@ -35,7 +35,7 @@ ms.locfileid: "89078056"
 
 本文包含如何執行線上與離線遷移的詳細資料。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成這些步驟，您需要：
 

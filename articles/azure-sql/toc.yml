@@ -1034,7 +1034,7 @@
                       href: virtual-machines/windows/availability-group-clusterless-workgroup-configure.md
                     - name: 手動設定
                       items:
-                        - name: 必要條件
+                        - name: Prerequisites
                           href: virtual-machines/windows/availability-group-manually-configure-prerequisites-tutorial.md
                         - name: 教學課程
                           href: virtual-machines/windows/availability-group-manually-configure-tutorial.md
@@ -1097,7 +1097,7 @@
               href: 'https://azure.microsoft.com/roadmap/?category=compute'
             - name: MSDN 論壇
               href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesforWindows&filter=alltypes&brandIgnore=True&sort=relevancedesc&searchTerm=SQL+Server'
-            - name: Stack Overflow
+            - name: 堆疊溢位
               href: 'https://stackoverflow.com/search?q=%5Bazure-virtual-machine%5D+sql+server'
     - name: Linux
       items:
@@ -1198,7 +1198,7 @@
       href: 'https://azure.microsoft.com/pricing/details/sql-database/'
     - name: MSDN 論壇
       href: 'https://social.msdn.microsoft.com/Forums/home?forum=ssdsgetstarted'
-    - name: Stack Overflow
+    - name: 堆疊溢位
       href: 'https://stackoverflow.com/questions/tagged/sql-azure'
     - name: 疑難排解
       items:
@@ -1210,6 +1210,8 @@
           href: database/database-import-export-hang.md
     - name: 服務更新
       items:
+        - name: SSL 根憑證即將到期
+          href: updates/ssl-root-certificate-expiring.md
         - name: 閘道 IP 位址更新
           href: database/gateway-migration.md
         - name: 定期維護事件

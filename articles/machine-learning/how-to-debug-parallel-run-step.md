@@ -10,13 +10,13 @@ ms.custom: troubleshooting
 ms.reviewer: jmartens, larryfr, vaidyas, laobri, tracych
 ms.author: trmccorm
 author: tmccrmck
-ms.date: 07/16/2020
-ms.openlocfilehash: 010843f4249909e23ffac3b41fb3acaf9c91eb17
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/23/2020
+ms.openlocfilehash: 7866f2dcaebe396759eb7f6315c457bfce307723
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90889995"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91315570"
 ---
 # <a name="debug-and-troubleshoot-parallelrunstep"></a>ParallelRunStep 的偵錯和疑難排解
 
@@ -35,13 +35,17 @@ ms.locfileid: "90889995"
 
 ParallelRunStep 作業具有分散的特性，因此會有來自數個不同來源的記錄。 不過，系統會建立兩個提供高階資訊的合併檔案：
 
-- `~/logs/overview.txt`:此檔案會提供關於目前為止所建立的迷你批次 (也稱為工作) 數目，以及目前為止處理的迷你批次數目的高階資訊。 在這部分，會顯示作業的結果。 如果作業失敗，則會顯示錯誤訊息，以及應從何處開始進行疑難排解。
+- `~/logs/job_progress_overview.txt`:此檔案會提供關於目前為止所建立的迷你批次 (也稱為工作) 數目，以及目前為止處理的迷你批次數目的高階資訊。 在這部分，會顯示作業的結果。 如果作業失敗，則會顯示錯誤訊息，以及應從何處開始進行疑難排解。
 
-- `~/logs/sys/master.txt`：此檔案會提供主要節點 (也稱為執行中工作的 orchestrator) view。 其中包含工作建立、進度監視和執行結果。
+- `~/logs/sys/master_role.txt`：此檔案會提供主要節點 (也稱為執行中工作的 orchestrator) view。 其中包含工作建立、進度監視和執行結果。
 
 使用 EntryScript 協助程式和 print 陳述式從輸入指令碼產生的記錄，將位於下列檔案中：
 
-- `~/logs/user/<ip_address>/<node_name>.log.txt`：這些檔案是使用 EntryScript helper 從 entry_script 寫入的記錄。 此外也包含 entry_script 中的 print 陳述式 (stdout)。
+- `~/logs/user/entry_script_log/<ip_address>/<process_name>.log.txt`：這些檔案是使用 EntryScript helper 從 entry_script 寫入的記錄。
+
+- `~/logs/user/stdout/<ip_address>/<process_name>.stdout.txt`：這些檔案是 stdout 的記錄 (例如 entry_script 的 print 語句) 。
+
+- `~/logs/user/stderr/<ip_address>/<process_name>.stderr.txt`：這些檔案是 entry_script stderr 的記錄。
 
 若要概略了解指令碼中的錯誤，可以參考：
 
@@ -49,17 +53,17 @@ ParallelRunStep 作業具有分散的特性，因此會有來自數個不同來�
 
 如需指令碼中所含錯誤的詳細資訊，可以參考：
 
-- `~/logs/user/error/`:包含所有擲回的錯誤和依節點組織的完整堆疊追蹤。
+- `~/logs/user/error/`：包含載入和執行輸入腳本時擲回之例外狀況的完整堆疊追蹤。
 
 如果您需要完整了解每個節點執行分數指令碼的方式，請查看每個節點的個別程序記錄。 程序記錄會位於 `sys/node` 資料夾中，依背景工作節點分組：
 
-- `~/logs/sys/node/<node_name>.txt`：此檔案會提供每個迷你批次的詳細資訊，因為它是由背景工作挑選或完成。 針對每個迷你批次，此檔案會包含：
+- `~/logs/sys/node/<ip_address>/<process_name>.txt`：此檔案會提供每個迷你批次的詳細資訊，因為它是由背景工作挑選或完成。 針對每個迷你批次，此檔案會包含：
 
     - 背景工作程序的 IP 位址和 PID。 
     - 項目總數、成功處理的項目計數，以及失敗的項目計數。
     - 開始時間、持續時間、處理時間和執行方法時間。
 
-您也可以找到每個背景工作程序的資源使用量資訊。 這項資訊採用 CSV 格式，位於 `~/logs/sys/perf/overview.csv` 中。 每個處理常式的相關資訊可在下取得 `~logs/sys/processes.csv` 。
+您也可以找到每個背景工作程序的資源使用量資訊。 這項資訊採用 CSV 格式，位於 `~/logs/sys/perf/<ip_address>/node_resource_usage.csv` 中。 每個處理常式的相關資訊可在下取得 `~logs/sys/perf/<ip_address>/processes_resource_usage.csv` 。
 
 ### <a name="how-do-i-log-from-my-user-script-from-a-remote-context"></a>如何從遠端內容中的使用者指令碼進行記錄？
 ParallelRunStep 可根據 process_count_per_node，在一個節點上執行多個進程。 若要從節點上的每個進程整理記錄，併合並 print 和 log 語句，我們建議使用 ParallelRunStep 記錄器，如下所示。 您會從 EntryScript 取得記錄器，並讓記錄顯示在入口網站的 [ **記錄檔/使用者** ] 資料夾中。
@@ -112,6 +116,28 @@ parser.add_argument('--labels_dir', dest="labels_dir", required=True)
 args, _ = parser.parse_known_args()
 
 labels_path = args.labels_dir
+```
+
+### <a name="how-to-use-input-datasets-with-service-principal-authentication"></a>如何使用輸入資料集搭配服務主體驗證？
+
+使用者可以傳遞輸入資料集和工作區中使用的服務主體驗證。 在 ParallelRunStep 中使用此類資料集需要註冊資料集，才能建立 ParallelRunStep 設定。
+
+```python
+service_principal = ServicePrincipalAuthentication(
+    tenant_id="***",
+    service_principal_id="***",
+    service_principal_password="***")
+ 
+ws = Workspace(
+    subscription_id="***",
+    resource_group="***",
+    workspace_name="***",
+    auth=service_principal
+    )
+ 
+default_blob_store = ws.get_default_datastore() # or Datastore(ws, '***datastore-name***') 
+ds = Dataset.File.from_files(default_blob_store, '**path***')
+registered_ds = ds.register(ws, '***dataset-name***', create_new_version=True)
 ```
 
 ## <a name="next-steps"></a>後續步驟

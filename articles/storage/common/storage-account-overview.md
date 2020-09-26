@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 4fe353467a11e9581db76ec495194878414f4dfb
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: c93508bebdcfce35a89b3d5e2a8abecc7ac84722
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230682"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91280142"
 ---
 # <a name="storage-account-overview"></a>儲存體帳戶概觀
 
@@ -32,7 +32,7 @@ Azure 儲存體帳戶包含您所有的 Azure 儲存體資料物件：Blob、檔
 
 - Blob (所有類型：區塊、附加、分頁)
 - Data Lake Gen2
-- 檔案儲存體
+- 檔案
 - 磁碟
 - 佇列
 - 資料表
@@ -49,7 +49,7 @@ Azure 儲存體帳戶包含您所有的 Azure 儲存體資料物件：Blob、檔
 一般用途 v1 儲存體帳戶提供所有 Azure 儲存體服務的存取權，但可能沒有最新的功能或每 gb 的最低定價。 一般用途 v1 儲存體帳戶支援這些 Azure 儲存體服務：
 
 - Blobs (所有類型)
-- 檔案儲存體
+- 檔案
 - 磁碟
 - 佇列
 - 資料表
@@ -78,7 +78,7 @@ FileStorage 帳戶提供獨特的效能專屬特性，例如 IOPS 高載。 如�
 
 為您的儲存體帳戶命名時，請記住這些規則：
 
-- 儲存體帳戶名稱的長度必須介於 3 到 24 個字元之間，且只能包含數字和小寫字母。
+- 儲存體帳戶名稱必須介於 3 到 24 個字元的長度，而且只能包含數字和小寫字母。
 - 儲存體帳戶名稱必須在 Azure 中是獨一無二的。 任兩個儲存體帳戶名稱不得相同。
 
 ## <a name="performance-tiers"></a>效能層級
@@ -108,7 +108,7 @@ Azure 儲存體提供不同的選項，以便根據使用量模式來存取區�
 
 - 經常性 **存取層** 。 這一層最適合用來經常存取儲存體帳戶中的物件。 存取經常性存取層中的資料最符合成本效益，但儲存體成本較高。 預設會在經常性存取層中建立新的儲存體帳戶。
 - 非 **經常性存取層** 。 這一層最適合用於儲存不常存取且至少儲存30天的大量資料。 在非經常性存取層中儲存資料更符合成本效益，但是存取該資料可能比存取經常性存取層中的資料更為昂貴。
-- 封存**層。** 這一層僅適用于個別的區塊 blob。 封存層最適合可容忍數小時的抓取延遲時間，而且將保留在封存層中至少180天的資料。 封存層是儲存資料最符合成本效益的選項。 不過，存取該資料比存取經常性存取層或非經常性存取層中的資料更為昂貴。
+- 「封存」存取層。 這一層僅適用于個別的區塊 blob。 封存層最適合可容忍數小時的抓取延遲時間，而且將保留在封存層中至少180天的資料。 封存層是儲存資料最符合成本效益的選項。 不過，存取該資料比存取經常性存取層或非經常性存取層中的資料更為昂貴。
 
 如果您的資料使用模式有變更，您可以隨時在這些存取層之間切換。 如需存取層的詳細資訊，請參閱 [Azure Blob 儲存體：經常性存取、非經常性存取層和封存存取層](../blobs/storage-blob-storage-tiers.md)。
 
@@ -133,6 +133,7 @@ Azure 儲存體提供不同的選項，以便根據使用量模式來存取區�
 - 資料表儲存體： `https://*mystorageaccount*.table.core.windows.net`
 - 佇列儲存體： `https://*mystorageaccount*.queue.core.windows.net`
 - Azure 檔案儲存體： `https://*mystorageaccount*.file.core.windows.net`
+- Azure Data Lake Storage Gen2： `https://*mystorageaccount*.dfs.core.windows.net` (使用 [專門針對大型資料優化的 ABFS 驅動程式](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction#key-features-of-data-lake-storage-gen2)。 ) 
 
 > [!NOTE]
 > 區塊 blob 和 blob 儲存體帳戶只會公開 Blob 服務端點。
