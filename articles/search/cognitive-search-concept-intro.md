@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/18/2020
-ms.openlocfilehash: 1c041d594b29c6e93b73eb1b0c623b3e566ceef5
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 2195ac4e5753addaee9e13c368b6e6a1b94354ff
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935495"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91363132"
 ---
 # <a name="ai-enrichment-in-azure-cognitive-search"></a>Azure 認知搜尋中的 AI 擴充
 
@@ -69,7 +69,7 @@ Azure 認知搜尋內建的技能是以認知服務 API 中預先定型的機器
 
 ![文件萃取階段](./media/cognitive-search-intro/document-cracking-phase-blowup.png "文件萃取")
 
- 支援的來源包括 Azure Blob 儲存體、Azure 資料表儲存體、Azure SQL Database 和 Azure Cosmos DB。 以文字為基礎的內容可以從下列檔案類型中擷取：PDF、Word、PowerPoint、CSV 檔案。 如需完整的清單，請參閱[支援的格式](search-howto-indexing-azure-blob-storage.md#supported-document-formats)。 索引編製會從小型、具代表性的資料集展開，然後再隨著解決方案的成熟而逐漸補強。
+ 支援的來源包括 Azure Blob 儲存體、Azure 資料表儲存體、Azure SQL Database 和 Azure Cosmos DB。 以文字為基礎的內容可以從下列檔案類型中擷取：PDF、Word、PowerPoint、CSV 檔案。 如需完整的清單，請參閱[支援的格式](search-howto-indexing-azure-blob-storage.md#SupportedFormats)。 索引編製會從小型、具代表性的資料集展開，然後再隨著解決方案的成熟而逐漸補強。
 
 ### <a name="step-2-cognitive-skills-and-enrichment-phase"></a>步驟2：認知技能和擴充階段
 
