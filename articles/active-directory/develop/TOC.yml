@@ -81,6 +81,8 @@
       items:
         - name: ASP.NET
           href: tutorial-v2-asp-webapp.md
+        - name: Blazor 伺服器
+          href: tutorial-blazor-server.md
     - name: 行動和傳統型應用程式
       items:
         - name: Android

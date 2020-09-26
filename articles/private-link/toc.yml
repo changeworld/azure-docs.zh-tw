@@ -24,6 +24,10 @@
     - name: 建立私人連結服務 - ARM 範本
       displayName: Resource Manager
       href: create-private-link-service-template.md
+- name: 教學課程
+  items:
+    - name: 連線至儲存體帳戶
+      href: tutorial-private-endpoint-storage-portal.md
 - name: 概念
   items:
     - name: 私人端點
@@ -38,8 +42,6 @@
           href: security-baseline.md
 - name: 如何
   items:
-    - name: 私下連線至儲存體帳戶
-      href: create-private-endpoint-storage-portal.md
     - name: 私下連線至 Cosmos DB 帳戶
       href: create-private-endpoint-cosmosdb-portal.md
     - name: 私下連線至 Web 應用程式
@@ -94,7 +96,7 @@
       href: 'https://azure.microsoft.com/pricing/details/private-link/'
     - name: 定價計算機
       href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: Stack Overflow
+    - name: 堆疊溢位
       href: 'https://stackoverflow.com/questions/tagged/azure-virtual-network'
     - name: 常見問題集
       href: private-link-faq.md
