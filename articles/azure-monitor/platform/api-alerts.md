@@ -4,23 +4,23 @@ description: Log Analytics 警示 REST API 可讓您在 Log Analytics 中建立�
 ms.subservice: logs
 ms.topic: conceptual
 ms.date: 07/29/2018
-ms.openlocfilehash: eec7aeab32aa071ce9d4476b15740c89210f0606
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: dce340db90c1528c46c1be0bc172751a04feaf31
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322324"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91294070"
 ---
 # <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>使用 REST API 在 Log Analytics 中建立及管理警示規則 
 
+> [!IMPORTANT]
+> 如同 [宣佈](https://azure.microsoft.com/updates/switch-api-preference-log-alerts/)，在 *2019 年6月1日* 之後建立的 log analytics 工作區 () 使用目前的 [scheduledQueryRules API](/rest/api/monitor/scheduledqueryrules/)來管理警示規則。 建議客戶切換至舊版工作區中 [目前的 API](./alerts-log-api-switch.md) ，以充分利用 Azure 監視器 scheduledQueryRules [權益](./alerts-log-api-switch.md#benefits)。 本文說明如何使用舊版 API 管理警示規則。
+
 Log Analytics 警示 REST API 可讓您在 Log Analytics 中建立及管理警示。  本文提供此 API 的詳細資料和幾個執行不同作業的範例。
 
-> [!IMPORTANT]
-> 如[先前所宣佈](https://azure.microsoft.com/updates/switch-api-preference-log-alerts/)，在*2019 年6月 1*日之後建立的 log analytics 工作區，將**能夠使用 Azure** ScheduledQueryRules [REST API](/rest/api/monitor/scheduledqueryrules/)、 [azure Resource Mananger 範本](./alerts-log.md#managing-log-alerts-using-azure-resource-template)和[PowerShell Cmdlet](./alerts-log.md#managing-log-alerts-using-powershell)來管理警示規則。 客戶可以輕鬆地切換較舊工作區的[警示規則管理慣用方式](./alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api)，利用 Azure 監視器 scheduledQueryRules 做為預設值，並取得許多[新的優點](./alerts-log-api-switch.md#benefits-of-switching-to-new-azure-api)，例如使用原生 PowerShell Cmdlet、增加規則中的回顧時間週期、在個別資源群組或訂用帳戶中建立規則，以及更多其他功能。
+Log Analytics 搜尋 API 是 RESTful，可透過 Azure Resource Manager REST API 來存取。 在本檔中，您將找到使用  [ARMClient](https://github.com/projectkudu/ARMClient)從 PowerShell 命令列存取 api 的範例，這是可簡化叫用 Azure Resource Manager API 的開放原始碼命令列工具。 使用 ARMClient 和 PowerShell 是存取 Log Analytics 搜尋 API 的許多選項之一。 這些工具可讓您利用 RESTful Azure Resource Manager API 呼叫 Log Analytics 工作區，並在其中執行搜尋命令。 API 會以 JSON 格式向您輸出搜尋結果，讓您以程式設計方式透過許多不同的方法使用搜尋結果。
 
-Log Analytics 搜尋 API 是 RESTful，可透過 Azure Resource Manager REST API 來存取。 在本檔中，您會找到使用[ARMClient](https://github.com/projectkudu/ARMClient)從 PowerShell 命令列存取 API 的範例，這是可簡化叫用 Azure Resource Manager API 的開放原始碼命令列工具。 使用 ARMClient 和 PowerShell 是存取 Log Analytics 搜尋 API 的許多選項之一。 這些工具可讓您利用 RESTful Azure Resource Manager API 呼叫 Log Analytics 工作區，並在其中執行搜尋命令。 API 會以 JSON 格式向您輸出搜尋結果，讓您以程式設計方式透過許多不同的方法使用搜尋結果。
-
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 目前，在 Log Analytics 中只能使用已儲存的搜尋來建立警示。  如需詳細資訊，請參閱 [記錄檔搜尋 REST API](../log-query/log-query-overview.md) 。
 
 ## <a name="schedules"></a>排程
@@ -76,7 +76,7 @@ armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName
 ```
 
 ### <a name="editing-a-schedule"></a>編輯排程
-針對已儲存的相同搜尋，使用 Put 方法並指定現有的排程識別碼，以修改該排程；在下列範例中，排程已停用。 要求的主體必須包含排程的*etag* 。
+針對已儲存的相同搜尋，使用 Put 方法並指定現有的排程識別碼，以修改該排程；在下列範例中，排程已停用。 要求的主體必須包含排程的 *etag* 。
 
 ```powershell
 $scheduleJson = "{'etag': 'W/\"datetime'2016-02-25T20%3A54%3A49.8074679Z'\""','properties': { 'Interval': 15, 'QueryTimeSpan':15, 'Enabled':'false' } }"
@@ -136,7 +136,7 @@ armclient delete /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupN
 ### <a name="alert-actions"></a>警示動作
 一個排程應該只有一個警示動作。  警示動作具有下表中的一或多個區段。  以下進一步詳細說明每一個區段。
 
-| 區段 | 描述 | 使用方式 |
+| 區段 | 描述 | 使用量 |
 |:--- |:--- |:--- |
 | 閾值 |執行動作的準則。| 將警示延伸至 Azure 之前或之後，都必須為每個警示指定。 |
 | 嚴重性 |用來在觸發時將警示分類的標籤。| 將警示延伸至 Azure 之前或之後，都必須為每個警示指定。 |
@@ -388,6 +388,6 @@ armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Na
 ## <a name="next-steps"></a>後續步驟
 
 * 在 Log Analytics 中使用 [REST API 執行記錄檔搜尋](../log-query/log-query-overview.md) 。
-* 瞭解[Azure 監視器中的記錄警示](./alerts-unified-log.md)
-* 如何[在 Azure 監視器中建立、編輯或記錄管理警示規則](./alerts-log.md)
+* 瞭解 [Azure 監視器中的記錄警示](./alerts-unified-log.md)
+* 如何 [建立、編輯或管理 Azure 監視器中的記錄警示規則](./alerts-log.md)
 

@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: e5d483af44116274019851f049d6222adfd8dbcd
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 4ef879806555634598d5de999bcd9fc01c050d60
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90904836"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91314550"
 ---
 # <a name="planning-and-operations-guide"></a>規劃與操作指南
 本指南適用于資訊技術 (IT) 專業人員、IT 架構設計人員、資訊安全性分析師，以及規劃使用 Azure 資訊安全中心的雲端系統管理員。
@@ -117,21 +117,21 @@ ms.locfileid: "90904836"
 安全性原則會定義工作負載的所需設定，並且協助確保符合公司或法規安全性需求。 您可以在資訊安全中心為 Azure 訂用帳戶定義原則，可以針對工作負載類型或資料機密性訂製。
 
 資訊安全中心原則包含下列元件：
-- [資料收集](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection)：代理程式佈建和資料收集設定。
-- [安全性原則](https://docs.microsoft.com/azure/security-center/security-center-policies)：一種 [Azure 原則](../governance/policy/overview.md) ，可判斷哪些控制項由安全性中心監視及建議，或使用 Azure 原則來建立新的定義、定義額外的原則，以及跨管理群組指派原則。
-- [電子郵件通知](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details)：安全性連絡人和通知設定。
-- [定價層](https://docs.microsoft.com/azure/security-center/security-center-pricing)：不論是否有 Azure Defender，都可以針對訂用帳戶、資源群組和工作區) 指定可供範圍 (中的資源使用的安全中心功能。
+- [資料收集](security-center-enable-data-collection.md)：代理程式佈建和資料收集設定。
+- [安全性原則](tutorial-security-policy.md)：一種 [Azure 原則](../governance/policy/overview.md) ，可判斷哪些控制項由安全性中心監視及建議，或使用 Azure 原則來建立新的定義、定義額外的原則，以及跨管理群組指派原則。
+- [電子郵件通知](security-center-provide-security-contact-details.md)：安全性連絡人和通知設定。
+- [定價層](security-center-pricing.md)：不論是否有 Azure Defender，都可以針對訂用帳戶、資源群組和工作區) 指定可供範圍 (中的資源使用的安全中心功能。
 
 > [!NOTE]
-> 指定安全性連絡人可確保如果發生安全性事件，Azure 可以觸達您組織中適當的人員。 如需如何啟用這項建議的詳細資訊，請閱讀 [在 Azure 資訊安全中心提供安全性連絡人詳細資料](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details) 。
+> 指定安全性連絡人可確保如果發生安全性事件，Azure 可以觸達您組織中適當的人員。 如需如何啟用這項建議的詳細資訊，請閱讀 [在 Azure 資訊安全中心提供安全性連絡人詳細資料](security-center-provide-security-contact-details.md) 。
 
 ### <a name="security-policies-definitions-and-recommendations"></a>安全性原則定義和建議
 資訊安全中心會為每個 Azure 訂用帳戶自動建立預設安全性原則。 您可以在資訊安全中心編輯原則，或使用 Azure 原則來建立新的定義、定義額外的原則，以及在整個管理群組 (可以代表整個組織、其中的營業單位等等) 指派原則，並且監視這些領域中這些原則的合規性。
 
-在設定安全性原則之前，請檢閱每個 [安全性建議](https://docs.microsoft.com/azure/security-center/security-center-recommendations)，並判斷這些原則是否適合您的各種訂用帳戶和資源群組。 此外，也務必了解該採取什麼動作才能處理安全性建議，以及您組織將負責監視新建議及採取必要步驟的人員。
+在設定安全性原則之前，請檢閱每個 [安全性建議](security-center-recommendations.md)，並判斷這些原則是否適合您的各種訂用帳戶和資源群組。 此外，也務必了解該採取什麼動作才能處理安全性建議，以及您組織將負責監視新建議及採取必要步驟的人員。
 
 ## <a name="data-collection-and-storage"></a>資料收集和儲存
-Azure 資訊安全中心使用 Log Analytics 代理程式–這是 Azure 監視器服務所使用的相同代理程式–用來從您的虛擬機器收集安全性資料。 從這個代理程式[收集的資料](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection)會儲存在 Log Analytics 工作區中。
+Azure 資訊安全中心使用 Log Analytics 代理程式–這是 Azure 監視器服務所使用的相同代理程式–用來從您的虛擬機器收集安全性資料。 從這個代理程式[收集的資料](security-center-enable-data-collection.md)會儲存在 Log Analytics 工作區中。
 
 ### <a name="agent"></a>代理程式
 
@@ -189,9 +189,9 @@ Azure 資訊安全中心使用 Log Analytics 代理程式–這是 Azure 監視�
 
 ### <a name="hardening-access-and-applications"></a>強化存取和應用程式
 
-您也應該在安全性作業中採用預防措施，來限制對 VM 的存取，並且控制在 VM 上執行的應用程式。 藉由鎖定前往您的 Azure VM 的輸入流量，可以降低被攻擊的曝光度，同時提供簡易存取以在需要時連線到 VM。 使用 [即時 VM](https://docs.microsoft.com/azure/security-center/security-center-just-in-time) 存取功能來強化 vm 的存取權。
+您也應該在安全性作業中採用預防措施，來限制對 VM 的存取，並且控制在 VM 上執行的應用程式。 藉由鎖定前往您的 Azure VM 的輸入流量，可以降低被攻擊的曝光度，同時提供簡易存取以在需要時連線到 VM。 使用 [即時 VM 存取](security-center-just-in-time.md) 存取功能來強化 vm 的存取權。
 
-您可以使用 [適應性應用](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application) 程式控制來限制哪些應用程式可以在 Azure 中的 vm 上執行。 除了其他優點之外，這也有助於強化 Vm 免于惡意程式碼的侵害。 資訊安全中心會使用機器學習來分析在 VM 中執行的進程，以協助您建立允許清單規則。
+您可以使用 [適應性應用](security-center-adaptive-application.md) 程式控制來限制哪些應用程式可以在 Azure 中的 vm 上執行。 除了其他優點之外，這也有助於強化 Vm 免于惡意程式碼的侵害。 資訊安全中心會使用機器學習來分析在 VM 中執行的進程，以協助您建立允許清單規則。
 
 
 ## <a name="incident-response"></a>事件回應
@@ -230,7 +230,7 @@ Azure 資訊安全中心使用 Log Analytics 代理程式–這是 Azure 監視�
 >
 >
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 在本文件中，您已了解如何規劃資訊安全中心的採用。 如要深入了解資訊安全中心，請參閱下列主題：
 
 * [在 Azure 資訊安全中心中管理及回應安全性警示](security-center-managing-and-responding-alerts.md)
