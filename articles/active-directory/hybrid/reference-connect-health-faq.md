@@ -16,12 +16,12 @@ ms.topic: reference
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d15b12b758adbf99ddabc88eb06be9daba1ece3e
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 6140f5fd431a0b089b45892130e075bde02a2eb2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89276196"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91299760"
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Azure AD Connect Health 常見問題集
 本文會回答有關 Azure Active Directory (Azure AD) Connect Health 的常見問題 (FAQ)。 這些常見問題涵蓋如何使用服務的相關問題，包括計費模型、功能、限制及支援。
@@ -68,7 +68,7 @@ ms.locfileid: "89276196"
 
 德國雲端不支援 Azure AD Connect Health，但[同步處理錯誤報告功能](how-to-connect-health-sync.md#object-level-synchronization-error-report)除外。
 
-| 角色 | 功能 | 德國雲端中支援 |
+| 角色 | 特性 | 德國雲端中支援 |
 | ------ | --------------- | --- |
 | 適用於同步處理的 Connect Health | 監視/見解/警示/分析 | 否 |
 |  | 同步處理錯誤報告 | 是 |
@@ -98,7 +98,7 @@ ms.locfileid: "89276196"
 
 **問：在安裝 Azure AD Connect Health 代理程式期間，我是否需要重新啟動我的伺服器？**
 
-不會。 安裝代理程式不需要您重新啟動伺服器。 不過，安裝某些先決條件的步驟可能需要重新啟動伺服器。
+否。 安裝代理程式不需要您重新啟動伺服器。 不過，安裝某些先決條件的步驟可能需要重新啟動伺服器。
 
 例如，在 Windows Server 2008 R2 上安裝 .NET 4.5 Framework 需要重新啟動伺服器。
 
@@ -115,7 +115,7 @@ ms.locfileid: "89276196"
 
 **問：連線到 HTTP Proxy 時，Azure AD Connect Health 是否支援基本驗證？**
 
-不會。 目前不支援為基本驗證指定任意使用者名稱和密碼的機制。
+否。 目前不支援為基本驗證指定任意使用者名稱和密碼的機制。
 
 **問：我需要開放哪些防火牆連接埠，Azure AD Connect Health 代理程式才能運作？**
 
@@ -128,6 +128,10 @@ ms.locfileid: "89276196"
 您可能會重新安裝伺服器的映像，或以相同的細節 (例如電腦名稱) 建立新的伺服器。 如果您並未從 Azure AD Connect Health 入口網站移除已經註冊的伺服器，就在新伺服器上安裝代理程式，您可能會看到兩個同名的項目。
 
 在此情況下，請手動刪除屬於舊伺服器的項目。 此伺服器的資料應該已過時。
+
+**問：我可以在 Windows Server Core 上安裝 Azure AD Connect health 代理程式嗎？**
+
+否。  不支援在 Server Core 上安裝。
 
 ## <a name="health-agent-registration-and-data-freshness"></a>Health 代理程式註冊和資料有效性
 
@@ -198,6 +202,7 @@ CheckForMS17-010
 
 **問：代理程式憑證何時會在到期前自動更新？**
 代理程式認證會在到期日之前的 **6 個月內** 自動更新。 如果未更新，請確定代理程式的網路連線是穩定的。 重新開機代理程式服務或更新至最新版本也可以解決此問題。
+
 
 
 ## <a name="related-links"></a>相關連結

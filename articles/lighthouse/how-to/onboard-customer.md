@@ -1,14 +1,14 @@
 ---
 title: 讓客戶在 Azure Lighthouse 上線
 description: 瞭解如何將客戶上架到 Azure Lighthouse，讓其資源可透過您自己的租使用者使用 Azure 委派的資源管理來存取及管理。
-ms.date: 08/20/2020
+ms.date: 09/24/2020
 ms.topic: how-to
-ms.openlocfilehash: 4de31a0ad2cdc3134cd61654a71ebe803982b52e
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 0b941c82c2ba0e98f524587f5ef4c4ecf86249eb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89483791"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336542"
 ---
 # <a name="onboard-a-customer-to-azure-lighthouse"></a>讓客戶在 Azure Lighthouse 上線
 
@@ -19,7 +19,7 @@ ms.locfileid: "89483791"
 
 您可以針對多個客戶重複上架程式。 當具有適當許可權的使用者登入您的管理租使用者時，該使用者可以跨客戶租使用者範圍獲得授權，以執行管理作業，而不需要登入每個個別的客戶租使用者。
 
-為了追蹤您對客戶參與的整體影響及接受表彰，您可將 Microsoft 合作夥伴網路 (MPN) 識別碼與能存取每個已上線訂用帳戶的至少一個使用者帳戶建立關聯。 您必須在服務提供者租使用者中執行此關聯。 建議您在租使用者中建立與您的 MPN 識別碼相關聯的服務主體帳戶，然後在您每次上架客戶時包含該服務主體。 如需詳細資訊，請參閱 [連結您的合作夥伴識別碼，讓合作夥伴在委派的資源上](partner-earned-credit.md)獲得點數。
+為了追蹤您對客戶參與的整體影響及接受表彰，您可將 Microsoft 合作夥伴網路 (MPN) 識別碼與能存取每個已上線訂用帳戶的至少一個使用者帳戶建立關聯。 您必須在服務提供者租使用者中執行此關聯。 建議您在租使用者中建立與您的 MPN 識別碼相關聯的服務主體帳戶，然後在您每次上架客戶時包含該服務主體。 如需詳細資訊，請參閱 [連結您的合作夥伴識別碼]，讓合作夥伴在委派的資源上獲得點數。
 
 > [!NOTE]
 > 當客戶購買的受控服務供應專案 (您 [發佈到 Azure Marketplace](publish-managed-services-offers.md)的公用或私用) 時，也可以上線至 Azure Lighthouse。 您也可以使用此處所述的上架程式，以及發佈至 Azure Marketplace 的供應專案。
@@ -33,9 +33,6 @@ ms.locfileid: "89483791"
 - 服務提供者租用戶的租用戶識別碼 (您將在其中管理客戶的資源)
 - 客戶租用戶的租用戶識別碼 (其中包含受服務提供者管理的資源)
 - 客戶租用戶中將由服務提供者管理的每個特定訂用帳戶 (或所含資源群組將會由服務提供者管理的訂用帳戶)，其訂用帳戶識別碼。
-
-> [!NOTE]
-> 即使只想要在訂用帳戶中將一或多個資源群組上線，部署也必須在訂用帳戶層級完成，因此您將需要訂用帳戶識別碼。
 
 如果還沒有這些識別碼值，您可使用下列其中一種方式來擷取。 請務必在部署中使用這些確切值。
 
@@ -128,6 +125,11 @@ az role definition list --name "<roleName>" | grep name
 
 上線程序必須使用提供在[範例存放庫](https://github.com/Azure/Azure-Lighthouse-samples/)中的 Azure Resource Manager 範本，以及經過修改以符合設定並定義授權的對應參數檔案。
 
+> [!IMPORTANT]
+> 此處所述的程式需要針對每個要上線的訂用帳戶進行個別的部署，即使您將訂用帳戶上架到相同的客戶租使用者。 如果要在相同客戶租用戶內的不同訂用帳戶中讓多個資源群組上線，您也需要個別部署。 不過，將單一訂用帳戶中的多個資源群組上線，是可在一次部署中完成的。
+>
+> 將多個供應項目套用至相同的訂用帳戶 (或訂用帳戶內的資源群組) 時，也需要個別部署。 所套用的每個供應專案必須使用不同的 **mspOfferName**。
+
 您選擇的範本將取決於是要讓整個訂用帳戶、一個資源群組，還是訂用帳戶內的多個資源群組上線。 如果您偏好使用範本讓已購買受控服務供應項目 (您發佈至 Azure Marketplace) 的客戶上線，我們也提供可用於此情況的範本。
 
 |若要讓項目上線  |使用此 Azure Resource Manager 範本  |並修改此參數檔案 |
@@ -137,10 +139,8 @@ az role definition list --name "<roleName>" | grep name
 |訂用帳戶內的多個資源群組   |[multipleRgDelegatedResourceManagement.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/multipleRgDelegatedResourceManagement.json)  |[multipleRgDelegatedResourceManagement.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/multipleRgDelegatedResourceManagement.parameters.json)    |
 |訂用帳戶 (使用發佈至 Azure Marketplace 的供應項目時)   |[marketplaceDelegatedResourceManagement.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.json)  |[marketplaceDelegatedResourceManagement.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.parameters.json)    |
 
-> [!IMPORTANT]
-> 此處所述的程式需要針對每個要上線的訂用帳戶進行個別的部署，即使您將訂用帳戶上架到相同的客戶租使用者。 如果要在相同客戶租用戶內的不同訂用帳戶中讓多個資源群組上線，您也需要個別部署。 不過，將單一訂用帳戶中的多個資源群組上線，是可在一次部署中完成的。
->
-> 將多個供應項目套用至相同的訂用帳戶 (或訂用帳戶內的資源群組) 時，也需要個別部署。 所套用的每個供應專案必須使用不同的 **mspOfferName**。
+> [!TIP]
+> 雖然您無法在一個部署中讓整個管理群組上線，但您可以 [在管理群組層級部署原則](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/policy-delegate-management-groups)。 此原則會檢查管理群組中的每個訂用帳戶是否已委派給指定的管理租使用者，如果不是，則會根據您提供的值建立指派。
 
 下列範例顯示經過修改且可用於訂用帳戶上線的 **delegatedResourceManagement.parameters.json** 檔案。 與資源群組參數檔案 (位於 [rg-delegated-resource-management](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/rg-delegated-resource-management) 資料夾) 類似，但還包含 **rgName** 參數，以識別要上線的特定資源群組。
 

@@ -3,22 +3,23 @@ title: '使用 Azure Kubernetes Service (AKS 中的 Azure 原則保護 pod) '
 description: '瞭解如何使用 Azure Kubernetes Service (AKS 上的 Azure 原則來保護 pod) '
 services: container-service
 ms.topic: article
-ms.date: 07/06/2020
+ms.date: 09/22/2020
 author: jluk
-ms.openlocfilehash: e1c5f32e8e5df69a9c4b1eeeda46caf9d8b51f6e
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 9ebd12777c32a9415eeb1b77d9cd487b0f23eb29
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89440871"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91299148"
 ---
-# <a name="secure-pods-with-azure-policy-preview"></a>使用 Azure 原則 (預覽的安全 pod) 
+# <a name="secure-pods-with-azure-policy"></a>使用 Azure 原則保護 pod
 
 若要改善 AKS 叢集的安全性，您可以控制要授與哪些函式，以及是否有任何針對公司原則執行的功能。 這項存取是透過 [適用于 AKS 的 Azure 原則附加][kubernetes-policy-reference]元件所提供的內建原則來定義。 藉由對 pod 規格的安全性層面提供額外的控制（例如根許可權），可讓您更嚴格地遵循安全性，並瞭解叢集中部署的內容。 如果 pod 不符合原則中指定的條件，Azure 原則可以不允許 pod 啟動或旗標違規。 本文說明如何使用 Azure 原則來限制 AKS 中的 pod 部署。
 
-[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
-
 ## <a name="before-you-begin"></a>開始之前
+
+> [!IMPORTANT]
+> AKS 上 Azure 原則的正式運作 (GA) 會主動在所有區域中發行。 GA 版本的預期全域完成為9/29/2020。 沒有 GA 版本的區域使用方式需要預覽註冊步驟。 不過，這會在區域中有提供正式發行版本時自動更新。
 
 此文章假設您目前具有 AKS 叢集。 如果您需要 AKS 叢集，請參閱[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 入口網站][aks-quickstart-portal]的 AKS 快速入門。
 
@@ -26,14 +27,13 @@ ms.locfileid: "89440871"
 
 若要透過 Azure 原則保護 AKS pod 的安全，您必須在 AKS 叢集上安裝適用于 AKS 的 Azure 原則附加元件。 請遵循下列 [步驟來安裝 Azure 原則附加](../governance/policy/concepts/policy-for-kubernetes.md#install-azure-policy-add-on-for-aks)元件。
 
-本檔假設您已在上面連結的逐步解說中部署下列各項。
+本檔假設您有下列各項，這些都部署在上述的逐步解說連結中。
 
 * 使用註冊 `Microsoft.ContainerService` 和 `Microsoft.PolicyInsights` 資源提供者 `az provider register`
-* 已 `AKS-AzurePolicyAutoApprove` 使用註冊預覽功能旗標 `az feature register`
-* Azure CLI 使用擴充功能 `aks-preview` 版本0.4.53 或更高版本安裝
-* 在支援的1.15 或更高版本上隨 Azure 原則附加元件一起安裝的 AKS 叢集
+* Azure CLI 2.12 或更高版本
+* 使用 Azure 原則附加元件安裝在1.15 或更高版本上的 AKS 叢集
 
-## <a name="overview-of-securing-pods-with-azure-policy-for-aks-preview"></a>概述如何使用 Azure 原則 AKS (Preview) 保護 pod
+## <a name="overview-of-securing-pods-with-azure-policy-for-aks"></a>概述如何使用 Azure 原則 AKS 來保護 pod
 
 >[!NOTE]
 > 本檔詳細說明如何使用 Azure 原則來保護 pod，這是 [預覽中 Kubernetes pod 安全性原則功能](use-pod-security-policies.md)的後續版本。
@@ -45,25 +45,53 @@ ms.locfileid: "89440871"
 
 先前，已透過 Kubernetes 專案啟用功能 [pod 安全性原則 (preview) ](use-pod-security-policies.md) ，以限制可部署的 pod。
 
-藉由使用 Azure 原則附加元件，AKS 叢集可以使用內建的 Azure 原則來保護 pod 和其他 Kubernetes 資源（類似于先前的 pod 安全性原則）。 適用于 AKS 的 Azure 原則附加元件會安裝 [閘道管理員](https://github.com/open-policy-agent/gatekeeper)的受管理實例（驗證的許可控制器）。 Kubernetes 的 Azure 原則是以開放原始碼開啟原則代理程式為基礎，而此代理程式依賴 [Rego 原則語言](../governance/policy/concepts/policy-for-kubernetes.md#policy-language)。
+藉由使用 Azure 原則附加元件，AKS 叢集可以使用內建的 Azure 原則，其可保護 pod 和其他 Kubernetes 資源（類似于先前的 pod 安全性原則）。 適用于 AKS 的 Azure 原則附加元件會安裝 [閘道管理員](https://github.com/open-policy-agent/gatekeeper)的受管理實例（驗證的許可控制器）。 Kubernetes 的 Azure 原則是以開放原始碼開啟原則代理程式為基礎，該代理程式依賴 [Rego 原則語言](../governance/policy/concepts/policy-for-kubernetes.md#policy-language)。
 
 本檔詳細說明如何使用 Azure 原則來保護 AKS 叢集中的 pod，以及指示如何從 pod 安全性原則 (preview) 進行遷移。
 
 ## <a name="limitations"></a>限制
 
-* 在預覽期間，可在單一叢集中執行具有 20 Azure 原則 Kubernetes 原則的 200 pod 限制。
-* 某些包含 AKS 受控 pod 的[系統命名空間](#namespace-exclusion)會排除在原則評估之外。
-* Windows pod [不支援安全性](https://kubernetes.io/docs/concepts/security/pod-security-standards/#what-profiles-should-i-apply-to-my-windows-pods)內容，因此許多 Azure 原則僅適用于 Linux pod，例如不允許在 Windows pod 中提升許可權的根許可權。
-* Pod 安全性原則和 AKS 的 Azure 原則附加元件無法同時啟用。 如果在啟用 pod 安全性原則的叢集中安裝 Azure 原則附加元件，請使用 [下列指示](use-pod-security-policies.md#enable-pod-security-policy-on-an-aks-cluster)停用 pod 安全性原則。
+下列一般限制適用于 Kubernetes 叢集的 Azure 原則附加元件：
+
+- Kubernetes **1.14** 版或更高版本支援 Kubernetes 的 Azure 原則附加元件。
+- Kubernetes 的 Azure 原則附加元件只能部署至 Linux 節點集區
+- 僅支援內建原則定義
+- 每個叢集每個原則的不符合規範記錄數目上限： **500**
+- 每一訂用帳戶不符合規範的記錄數目上限： **1000000**
+- 不支援在 Azure 原則附加元件之外安裝閘道管理員。 先卸載先前的閘道管理員安裝所安裝的任何元件，再啟用 Azure 原則附加元件。
+- 此[資源提供者模式](../governance/policy/concepts/definition-structure.md#resource-provider-modes)無法使用[不符合規範的原因](../governance/policy/how-to/determine-non-compliance.md#compliance-reasons)
+
+下列限制僅適用于 AKS 的 Azure 原則附加元件：
+
+- [AKS Pod 安全性原則 (preview) ](use-pod-security-policies.md) ，而且無法同時啟用 AKS 的 Azure 原則附加元件。 
+- 評估的 Azure 原則附加元件會自動排除命名空間： _kube-system_、 _閘道管理員系統_和 _aks-periscope_。
+
+### <a name="recommendations"></a>建議
+
+以下是使用 Azure 原則附加元件的一般建議：
+
+- Azure 原則附加元件需要3個閘道管理員元件才能執行：1個 audit pod 和2個 webhook pod 複本。 在需要進行審核和強制操作的叢集中，這些元件會耗用更多資源，因為 Kubernetes 資源和原則指派的計數會增加。
+
+  - 針對單一叢集中小於500的 pod，最多可有20個條件約束：每個元件2個 vcpu 和 350 MB 的記憶體。
+  - 在單一叢集中，有500個以上的 pod，最大為40限制：每個元件3個 vcpu 和 600 MB 的記憶體。
+
+下列建議僅適用于 AKS 和 Azure 原則附加元件：
+
+- 使用具有污點的系統節點集區 `CriticalAddonsOnly` 來排程閘道管理員。 如需詳細資訊，請參閱 [使用系統節點](use-system-pools.md#system-and-user-node-pools)集區。
+- 保護來自 AKS 叢集的輸出流量。 如需詳細資訊，請參閱 [控制叢集節點的輸出流量](limit-egress-traffic.md)。
+- 如果叢集已 `aad-pod-identity` 啟用，節點受控身分識別 (NMI) pod 會修改節點的 iptables，以攔截對 Azure 實例中繼資料端點的呼叫。 這項設定表示即使 pod 不使用，對中繼資料端點所提出的任何要求都會被 NMI 攔截 `aad-pod-identity` 。 您可以設定 AzurePodIdentityException .CRD，以通知 `aad-pod-identity` 來自符合 .crd 中所定義標籤之中繼資料端點的任何要求，都應該是 proxy，而不需要在 NMI 中處理。 在 `kubernetes.azure.com/managedby: aks` _kube_ 系統命名空間中具有標籤的系統 pod，應設定 `aad-pod-identity` AzurePodIdentityException .crd 來排除。 如需詳細資訊，請參閱 [停用 aad-pod-特定 pod 或應用程式](https://github.com/Azure/aad-pod-identity/blob/master/docs/readmes/README.app-exception.md)的身分識別。
+  若要設定例外狀況，請安裝 [mic 例外狀況 YAML](https://github.com/Azure/aad-pod-identity/blob/master/deploy/infra/mic-exception.yaml)。
+
+Azure 原則附加元件需要 CPU 和記憶體資源才能運作。 這些需求會隨著叢集的大小增加而增加。 如需使用 Azure 原則附加元件的一般指引，請參閱 [Azure 原則建議][policy-recommendations] 。
 
 ## <a name="azure-policies-to-secure-kubernetes-pods"></a>保護 Kubernetes pod 的 Azure 原則
 
 安裝 Azure 原則附加元件之後，預設不會套用任何原則。
 
-有11個 (11) 內建個別的 Azure 原則，以及兩個 (2) 內建的方案，專門保護 AKS 叢集中的 pod。
+有11個內建的個別 Azure 原則和兩個內建的計畫，專門保護 AKS 叢集中的 pod。
 每個原則都可以自訂效果。 [這裡會列出 AKS 原則及其支援效果][policy-samples]的完整清單。 深入瞭解 [Azure 原則效果](../governance/policy/concepts/effects.md)。
 
-您可以在管理群組、訂用帳戶或資源群組層級套用 Azure 原則。 在資源群組層級指派原則時，請確定已在原則範圍內選取目標 AKS 叢集的資源群組。 已安裝 Azure 原則附加元件的已指派範圍中的每個叢集都位於原則的範圍內。
+Azure 原則可套用於管理群組、訂用帳戶或資源群組層級。 在資源群組層級指派原則時，請確定已在原則範圍內選取目標 AKS 叢集的資源群組。 已安裝 Azure 原則附加元件的已指派範圍中的每個叢集都位於原則的範圍內。
 
 如果您 [ (預覽) 使用 pod 安全性原則 ](use-pod-security-policies.md)，請瞭解如何 [遷移至 Azure 原則以及其他行為差異](#migrate-from-kubernetes-pod-security-policy-to-azure-policy)。
 
@@ -71,7 +99,7 @@ ms.locfileid: "89440871"
 
 Azure 原則中的計畫是一組原則定義的集合，專為達成單一的整體目標而量身打造。 使用方案可以簡化跨 AKS 叢集的原則管理和指派。 方案以單一物件的形式存在，深入瞭解 [Azure 原則計畫](../governance/policy/overview.md#initiative-definition)。
 
-適用于 Kubernetes 的 Azure 原則提供兩個可保護 pod、 [基準](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicySetDefinitions%2Fa8640138-9b0a-4a28-b8cb-1666c838647d) 和 [限制](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicySetDefinitions%2F42b8ef37-b724-4e24-bbc8-7a7708edfe00)的內建方案。
+適用于 Kubernetes 的 Azure 原則提供兩個內建的方案，可保護 pod、 [基準](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicySetDefinitions%2Fa8640138-9b0a-4a28-b8cb-1666c838647d) 和 [受限](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicySetDefinitions%2F42b8ef37-b724-4e24-bbc8-7a7708edfe00)。
 
 這兩個內建的方案都是從 Kubernetes 中的 [pod 安全性原則](https://github.com/kubernetes/website/blob/master/content/en/examples/policy/baseline-psp.yaml)所使用的定義所建立。
 
@@ -132,7 +160,7 @@ AKS 需要在叢集上執行系統 pod，以提供重要的服務，例如 DNS �
 1. azure-arc
 1. aks-periscope
 
-您可以在建立、更新和審核期間排除其他自訂命名空間的評估。 如果您有在獲批准命名空間中執行的特製化 pod，而且想要避免觸發 audit 違規，則應使用此功能。
+您可以在建立、更新和審核期間排除其他自訂命名空間的評估。 如果您有在獲批准命名空間中執行的特製化 pod，而且想要避免觸發 audit 違規，則應該使用這些排除專案。
 
 ## <a name="apply-the-baseline-initiative"></a>套用基準計畫
 
@@ -274,7 +302,7 @@ az aks disable-addons --addons azure-policy --name MyAKSCluster --resource-group
 
 以下摘要說明 pod 安全性原則和 Azure 原則之間的行為變更。
 
-|案例| Pod 安全性原則 | Azure 原則 |
+|狀況| Pod 安全性原則 | Azure 原則 |
 |---|---|---|
 |安裝|啟用 pod 安全性原則功能 |啟用 Azure 原則附加元件
 |部署原則| 部署 pod 安全性原則資源| 將 Azure 原則指派給訂用帳戶或資源群組範圍。 Kubernetes 資源應用程式需要 Azure 原則附加元件。
@@ -290,9 +318,9 @@ az aks disable-addons --addons azure-policy --name MyAKSCluster --resource-group
 | [Pod 安全性原則標準-基準/預設值](https://kubernetes.io/docs/concepts/security/pod-security-standards/#baseline-default) | 使用者安裝 pod 安全性原則基準資源。 | Azure 原則提供可對應至基準 pod 安全性原則的 [內建基準方案](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicySetDefinitions%2Fa8640138-9b0a-4a28-b8cb-1666c838647d) 。
 | [Pod 安全性原則標準-受限制](https://kubernetes.io/docs/concepts/security/pod-security-standards/#restricted) | 使用者安裝 pod 安全性原則限制的資源。 | Azure 原則提供 [內建的限制方案](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicySetDefinitions%2F42b8ef37-b724-4e24-bbc8-7a7708edfe00) ，可對應至受限制的 pod 安全性原則。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
-本文說明如何套用 Azure 原則，以限制特殊許可權 pod 的部署，以避免使用特殊許可權存取。 有許多可以套用的原則，例如限制磁片區使用的原則。 如需可用選項的詳細資訊，請參閱 [Kubernetes 參考][kubernetes-policy-reference]檔的 Azure 原則。
+本文說明如何套用 Azure 原則，以限制特殊許可權 pod 的部署，以避免使用特殊許可權存取。 有許多可以套用的原則，例如限制使用磁片區的原則。 如需可用選項的詳細資訊，請參閱 [Kubernetes 參考][kubernetes-policy-reference]檔的 Azure 原則。
 
 如需限制 pod 網路流量的詳細資訊，請參閱 [在 AKS 中使用網路原則來保護 pod 之間的流量][network-policies]。
 
@@ -304,8 +332,12 @@ az aks disable-addons --addons azure-policy --name MyAKSCluster --resource-group
 [kubectl-describe]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe
 [kubectl-logs]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs
 [terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
+[aad-pod-identity]: https://github.com/Azure/aad-pod-identity
+[aad-pod-identity-exception]: https://github.com/Azure/aad-pod-identity/blob/master/docs/readmes/README.app-exception.md
 
 <!-- LINKS - internal -->
+[policy-recommendations]: ../governance/policy/concepts/policy-for-kubernetes.md
+[policy-limitations]: ../governance/policy/concepts/policy-for-kubernetes.md?#limitations
 [kubernetes-policy-reference]: ../governance/policy/concepts/policy-for-kubernetes.md
 [policy-samples]: policy-samples.md#microsoftcontainerservice
 [aks-quickstart-cli]: kubernetes-walkthrough.md

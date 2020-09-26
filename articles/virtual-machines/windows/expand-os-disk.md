@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 09/02/2020
 ms.author: kirpas
 ms.subservice: disks
-ms.openlocfilehash: 3f1c7fb08c3dcaa078de8f1ee0b90409289cfb43
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.openlocfilehash: b739bb94911e24002b359aabfa23583ecfc9de85
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89469207"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335998"
 ---
 # <a name="how-to-expand-the-os-drive-of-a-virtual-machine"></a>如何擴充虛擬機器的 OS 磁碟機
 
@@ -30,7 +30,7 @@ ms.locfileid: "89469207"
 - 使用較大的 OS 磁片磁碟機從內部部署遷移實體電腦或 VM。
 
 > [!IMPORTANT]
-> 必須將虛擬機器解除配置，才能調整 Azure 虛擬機器的 OS 磁碟大小。
+> 若要調整 Azure 虛擬機器的 OS 或資料磁片大小，必須將虛擬機器解除配置。
 >
 > 在擴充磁碟之後，您必須[擴充 OS 內的磁碟區](#expand-the-volume-within-the-os)以使用較大的磁碟。
 > 

@@ -4,19 +4,22 @@ description: 了解如何使用虛擬網路中的私人 IP 位址來設定 Azure
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 07/10/2020
+ms.date: 09/18/2020
 ms.author: thweiss
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: aa8fd911aaf5c61fc8c33ca469798291fca3d3d1
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: dd1a59c2e6b0656233174c53b08ab013ce73d0f1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502115"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334424"
 ---
 # <a name="configure-azure-private-link-for-an-azure-cosmos-account"></a>設定 Azure Cosmos 帳戶的 Azure Private Link
 
 藉由使用 Azure Private Link，即可透過私人端點連線到 Azure Cosmos 帳戶。 私人端點是虛擬網路內子網路中的一組私人 IP 位址。 您可接著限制透過私人 IP 位址對 Azure Cosmos 帳戶進行存取。 當 Private Link 與受限制的 NSG 原則結合時，即有助於降低資料外洩的風險。 若要深入了解私人端點，請參閱 [Azure Private Link](../private-link/private-link-overview.md) 一文。
+
+> [!NOTE]
+> Private Link 不會讓公用 DNS 無法解析您的 Azure Cosmos 端點。 傳入要求的篩選會在應用層級執行，而不是在傳輸或網路層級進行。
 
 Private Link 可讓使用者從虛擬網路內或從任何對等互連的虛擬網路存取 Azure Cosmos 帳戶。 對應至 Private Link 的資源也可透過 VPN 或 Azure ExpressRoute，以私人對等互連方式在內部部署環境存取。 
 
@@ -619,23 +622,34 @@ foreach ($ipconfig in $networkInterface.properties.ipConfigurations) {
 
 * 如果您未設定任何防火牆規則，則根據預設，所有流量都可存取 Azure Cosmos 帳戶。
 
-* 如果您設定公用流量或服務端點並建立私人端點，則不同類型之傳入流量會由對應類型的防火牆規則所授權。 如果已在同時設定服務端點的子網中設定私用端點：
-  * 由私人端點對應之資料庫帳戶的流量會透過私用端點路由傳送，
-  * 來自子網的其他資料庫帳戶的流量會透過服務端點來路由傳送。
+* 如果您設定公用流量或服務端點並建立私人端點，則不同類型之傳入流量會由對應類型的防火牆規則所授權。 如果私人端點是在同時設定服務端點的子網中設定：
+  * 私人端點所對應之資料庫帳戶的流量會透過私人端點路由傳送。
+  * 從子網流向其他資料庫帳戶的流量會透過服務端點路由傳送。
 
-* 如果未設定任何公用流量或服務端點並建立私人端點，則只能透過私人端點來存取 Azure Cosmos 帳戶。 如果您未設定公用流量或服務端點，則在拒絕或刪除所有已核准的私用端點之後，除非 [PublicNetworkAccess] 設為 [已停用] （請參閱下一節），否則將會開啟整個網路的帳戶。
+* 如果未設定任何公用流量或服務端點並建立私人端點，則只能透過私人端點來存取 Azure Cosmos 帳戶。 如果您未設定公用流量或服務端點，則在拒絕或刪除所有已核准的私人端點之後，除非將將 publicnetworkaccess 新增設為停用，否則帳戶會開啟至整個網路 (請參閱下一節) 。
 
 ## <a name="blocking-public-network-access-during-account-creation"></a>在帳戶建立期間封鎖公用網路存取
 
-如上一節所述，除非已設定特定防火牆規則，否則新增私人端點會使 Azure Cosmos 帳戶只能透過私人端點存取。 這表示在建立 Azure Cosmos 帳戶之後到新增私人端點之前，都可從公用流量連線到該帳戶。 為確保即使在建立私人端點之前也會停用公用網路存取，您可在帳戶建立期間將 `publicNetworkAccess` 旗標設定為 `Disabled`。 如需說明如何使用此旗標的範例，請參閱[此 Azure Resource Manager 範本](https://azure.microsoft.com/resources/templates/101-cosmosdb-private-endpoint/)。
+如上一節所述，除非已設定特定防火牆規則，否則新增私人端點會使 Azure Cosmos 帳戶只能透過私人端點存取。 這表示在建立 Azure Cosmos 帳戶之後到新增私人端點之前，都可從公用流量連線到該帳戶。 為確保即使在建立私人端點之前也會停用公用網路存取，您可在帳戶建立期間將 `publicNetworkAccess` 旗標設定為 `Disabled`。 請注意，此旗標優先于任何 IP 或虛擬網路規則;如果 `Disabled` 防火牆設定中允許來源 IP 或虛擬網路，則將旗標設定為時，所有公用和虛擬網路流量都會被封鎖。
 
-## <a name="port-range-when-using-direct-mode"></a>使用 direct 模式時的埠範圍
+如需說明如何使用此旗標的範例，請參閱[此 Azure Resource Manager 範本](https://azure.microsoft.com/resources/templates/101-cosmosdb-private-endpoint/)。
 
-當您透過直接模式連線搭配 Azure Cosmos 帳戶使用私人連結時，您必須確定已開啟完整範圍的 TCP 埠（0-65535）。
+## <a name="adding-private-endpoints-to-an-existing-cosmos-account-with-no-downtime"></a>將私人端點新增至現有的 Cosmos 帳戶而不會有停機時間
+
+根據預設，將私人端點新增至現有的帳戶會導致大約5分鐘的短暫停機時間。 請遵循下列指示來避免這種停機時間：
+
+1. 在您的防火牆設定中新增 IP 或虛擬網路規則，以明確地允許您的用戶端連接。
+1. 等候10分鐘，以確定已套用設定更新。
+1. 設定新的私人端點。
+1. 移除在步驟1設定的防火牆規則。
+
+## <a name="port-range-when-using-direct-mode"></a>使用直接模式時的埠範圍
+
+當您透過直接模式連線使用 Private Link 搭配 Azure Cosmos 帳戶時，您必須確定已開啟 (0-65535) 的完整 TCP 埠範圍。
 
 ## <a name="update-a-private-endpoint-when-you-add-or-remove-a-region"></a>新增或移除區域時更新私人端點
 
-在 Azure Cosmos 帳戶中新增或移除區域會需要新增或移除該帳戶的 DNS 項目。 新增或移除區域之後，即可更新子網路的私人 DNS 區域，以反映所新增或移除 DNS 項目及其對應的私人 IP 位址。
+除非您使用私人 DNS 區域群組，否則在 Azure Cosmos 帳戶中新增或移除區域會要求您新增或移除該帳戶的 DNS 專案。 新增或移除區域之後，即可更新子網路的私人 DNS 區域，以反映所新增或移除 DNS 項目及其對應的私人 IP 位址。
 
 例如，假設在三個區域中部署 Azure Cosmos 帳戶：「美國西部」、「美國中部」和「西歐」。 當為帳戶建立私人端點時，會在子網路中保留四個私人 IP。 這三個區域各有一個 IP，且全域/不限區域端點會有一個 IP。
 
@@ -649,7 +663,7 @@ foreach ($ipconfig in $networkInterface.properties.ipConfigurations) {
 
 * 單一 Azure Cosmos 帳戶上不能有超過200個私人端點。
 
-* 當您透過直接模式連線搭配 Azure Cosmos 帳戶使用私人連結時，您只能使用 TCP 通訊協定。 目前不支援 HTTP 通訊協定。
+* 當您透過直接模式連線使用 Private Link 搭配 Azure Cosmos 帳戶時，您只能使用 TCP 通訊協定。 目前不支援 HTTP 通訊協定。
 
 * 當針對 MongoDB 帳戶使用 Azure Cosmos DB 的 API 時，只有伺服器 3.6 版上的帳戶 (也就是使用 `*.mongo.cosmos.azure.com` 格式端點的帳戶) 支援私人端點。 伺服器 3.2 版上的帳戶 (也就是使用 `*.documents.azure.com` 格式端點的帳戶) 不支援 Private Link。 若要使用 Private Link，您應該將舊版帳戶移轉到新版本。
 
@@ -659,7 +673,7 @@ foreach ($ipconfig in $networkInterface.properties.ipConfigurations) {
 
 ### <a name="limitations-to-private-dns-zone-integration"></a>私人 DNS 區域整合的限制
 
-當從 Azure Cosmos 帳戶中刪除私人端點或移除區域時，不會自動移除私人 DNS 區域中的 DNS 記錄。 您必須手動移除 DNS 記錄，才能：
+除非您是使用私人 DNS 區域群組，否則當您刪除私人端點或從 Azure Cosmos 帳戶移除區域時，不會自動移除私人 DNS 區域中的 DNS 記錄。 您必須手動移除 DNS 記錄，才能：
 
 * 新增連結至此私人 DNS 區域的私人端點。
 * 將新區域新增至任何具有已連結至此私人 DNS 區域的私人端點其資料庫帳戶。

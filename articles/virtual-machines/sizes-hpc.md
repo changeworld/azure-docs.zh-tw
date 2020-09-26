@@ -6,19 +6,19 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 09/08/2020
+ms.date: 09/23/2020
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: 2a06c182f1f37942ac0921db254bf63bf177fec2
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: 29033cbabfcfa00c9f8458cbc161af67df5806cb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89595728"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325958"
 ---
 # <a name="high-performance-computing-vm-sizes"></a>高效能計算 VM 大小
 
-Azure H 系列虛擬機器 (Vm) 的設計目的是為各種實際的 HPC 工作負載，提供領先等級的效能、MPI 的擴充性和成本效益。
+Azure H 系列虛擬機器 (Vm) 的設計目的是為各種實際的 HPC 工作負載，提供領先等級的效能、擴充性和成本效益。
 
 [HBv2 系列](hbv2-series.md) Vm 已針對由記憶體頻寬驅動的應用程式優化，例如流動式動態、有限的元素分析，以及容器模擬。 HBv2 Vm 功能 120 AMD EPYC 7742 處理器核心，每個 CPU 核心 4 GB RAM，且不會同時進行多執行緒處理。 每個 HBv2 VM 最多可提供每秒 340 GB 的記憶體頻寬，以及最多 4 teraFLOPS 的 FP64 計算。
 
@@ -31,22 +31,23 @@ HBv2 Vm 具有 200 Gb/秒的 Mellanox HDR 空間，同時 HB 和 HC 系列的 Vm
 [H 系列](h-series.md) Vm 已針對依核心需求高 CPU 頻率或大型記憶體驅動的應用程式進行優化。 H 系列 Vm 的特色為8或16個 Intel 最高 E5 2667 v3 處理器核心、每個 CPU 核心7或 14 GB RAM，且無超執行緒。 H 系列功能 56 Gb/秒的 Mellanox FDR 可在非封鎖的 fat 樹狀結構設定中使用，以達到一致的 RDMA 效能。 H 系列 Vm 支援 Intel MPI 5.x 和 MS-CHAP。
 
 > [!NOTE]
-> A8 – A11 VM 計劃於 2021 年 3 月淘汰。 如需詳細資訊，請參閱 [HPC 移轉指南](https://azure.microsoft.com/resources/hpc-migration-guide/)。
+> [A8 – A11 vm](./sizes-previous-gen.md#a-series---compute-intensive-instances)預計在3/2021 淘汰。 如需詳細資訊，請參閱 [HPC 移轉指南](https://azure.microsoft.com/resources/hpc-migration-guide/)。
 
 ## <a name="rdma-capable-instances"></a>支援 RDMA 的執行個體
 
-大部分的 HPC VM 大小 (HBv2、HB、HC、H16r、H16mr、A8 和 A9) 提供遠端直接記憶體存取的網路介面， (RDMA) 連線能力。 使用 ' r ' (ND40rs_v2、ND24rs、NC24rs_v3、NC24rs_v2 和 NC24r) 所指定的 [N 系列](./nc-series.md) 大小，也支援 RDMA。 此介面除了其他 VM 大小所提供的標準 Azure 網路介面之外。
+大部分的 HPC VM 大小 (HBv2、HB、HC、H16r、H16mr、A8 和 A9) 提供遠端直接記憶體存取的網路介面， (RDMA) 連線能力。 使用 ' r ' (ND40rs_v2、ND24rs、NC24rs_v3、NC24rs_v2 和 NC24r) 所指定的 [N 系列](./nc-series.md) 大小，也支援 RDMA。 此介面除了其他 VM 大小所提供的標準 Azure 乙太網路介面之外。
 
 此介面可讓支援 RDMA 的實例透過未 (IB) 網路進行通訊、以 HDR 費率操作 HBv2、HB、HC、NDv2、FDR 費率、H16r、H16mr 及其他支援 RDMA 的 N 系列虛擬機器，以及 A8 和 A9 Vm 的 QDR 費率。 這些 RDMA 功能可以提高特定訊息傳遞介面 (MPI) 應用程式的延展性和效能。
 
 > [!NOTE]
 > 在 Azure HPC 中，有兩個類別的 Vm，取決於是否已啟用用於進行無用的 SR-IOV。 目前，已啟用已啟用功能的 Vm 的 SR-IOV 為： HBv2、HB、HC、NCv3 和 NDv2。 目前已啟用未啟用的 Vm 的其餘部分目前未啟用 SR-IOV。
-> 所有支援 RDMA 的 Vm 都支援 RDMA over IB。
+> RDMA 僅可透過 (IB) 網路來啟用，而且支援所有支援 RDMA 的 Vm。
 > 只有已啟用 SR-IOV 的 Vm 才支援透過 IB 進行的 IP。
+> 未透過 Ethernet 網路啟用 RDMA。
 
 - **作業系統** -LINUX 對 HPC vm 的支援非常完善;通常會使用散發版本，例如 CentOS、RHEL、Ubuntu、SUSE。 關於 Windows 支援，所有 HPC 系列 Vm 都支援 Windows Server 2016 和更新版本。 非 SR-IOV 啟用的 Vm 上也支援 windows Server 2012 R2、Windows Server 2012 (H16r、H16mr、A8 和 A9) 。 請注意， [HBv2 和其他具有64以上 (虛擬或實體) 核心的 vm 不支援 Windows Server 2012 R2](/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows)。 請參閱 [Vm 映射](./workloads/hpc/configure.md) 以取得 Marketplace 上支援的 vm 映射清單，以及如何適當地設定這些映射。
 
-- 全像 **/RDMA 驅動程式**-在已啟用功能的 vm 上，需要有適當的驅動程式才能啟用 RDMA。 在 Linux 上，針對 SR-IOV 和非 SR-IOV 啟用的 Vm，Marketplace 中的 CentOS-HPC VM 映射已預先設定適當的驅動程式。 您可以使用 [此處的指示](https://techcommunity.microsoft.com/t5/azure-compute/configuring-infiniband-for-ubuntu-hpc-and-gpu-vms/ba-p/1221351)，使用正確的驅動程式來設定 Ubuntu VM 映射。 如需現成可用 VM Linux OS 映射的詳細資訊，請參閱 [設定和優化 LINUX os 的 vm](./workloads/hpc/configure.md) 。
+- 使用已啟用的已啟用虛擬機器上的全像**和驅動程式**，需要適當的驅動程式才能啟用 RDMA。 在 Linux 上，針對 SR-IOV 和非 SR-IOV 啟用的 Vm，Marketplace 中的 CentOS-HPC VM 映射已預先設定適當的驅動程式。 您可以使用 [此處的指示](https://techcommunity.microsoft.com/t5/azure-compute/configuring-infiniband-for-ubuntu-hpc-and-gpu-vms/ba-p/1221351)，使用正確的驅動程式來設定 Ubuntu VM 映射。 如需現成可用 VM Linux OS 映射的詳細資訊，請參閱 [設定和優化 LINUX os 的 vm](./workloads/hpc/configure.md) 。
 
    在 Linux 上， [INFINIBANDDRIVERLINUX VM 延伸](./extensions/hpc-compute-infiniband-linux.md) 模組可以用來安裝 Mellanox OFED 驅動程式，並在啟用 Sr-iov 的 H 和 N 系列 vm 上啟用自動感知。 深入瞭解如何在 [HPC 工作負載](./workloads/hpc/enable-infiniband.md)上啟用支援 RDMA 的 vm 上的強大功能。
 
@@ -74,7 +75,7 @@ Azure 提供數個選項來建立 Windows HPC VM 的叢集，而這些 VM 可以
 
 - **MICROSOFT HPC Pack**  - [HPC Pack](/powershell/high-performance-computing/overview)包含適用于 ms-chap 的執行時間環境，可在支援 RDMA 的 Linux vm 上部署時使用 Azure RDMA 網路。 如需部署的範例，請參閱 [使用 HPC Pack 設定 LINUX RDMA 叢集以執行 MPI 應用程式](/powershell/high-performance-computing/hpcpack-linux-openfoam)。
 
-## <a name="deployment-considerations"></a>部署考量
+## <a name="deployment-considerations"></a>部署考量因素
 
 - **Azure 訂用帳戶** – 若要部署的不只是少數的計算密集執行個體，請考慮隨用隨付訂用帳戶或其他購買選項。 如果您使用 [Azure 免費帳戶](https://azure.microsoft.com/free/)，您只能使用有限數目的 Azure 計算核心。
 

@@ -1,6 +1,6 @@
 ---
 title: 針對因為檔案系統錯誤而啟動的 Linux VM 問題進行疑難排解 |Microsoft Docs
-description: 說明為何無法啟動 Linux VM，以及如何解決問題。
+description: 瞭解如何針對 Linux VM 因為檔案系統錯誤而啟動問題進行疑難排解
 services: virtual-machines-linux
 documentationcenter: ''
 author: v-miegge
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 10/09/2019
 ms.author: v-six
-ms.openlocfilehash: bae0eb91460bf7ab72abbaa7fa56b2515367d37d
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 8f12b88a0ddbc6ae31f40ab31b0126e4fd66b1a5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89436182"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325941"
 ---
 # <a name="troubleshoot-linux-vm-starting-issues-due-to-file-system-errors"></a>針對因為檔案系統錯誤而啟動的 Linux VM 問題進行疑難排解
 
@@ -88,7 +88,7 @@ Linux 有數個可用的檔案系統檢查程式。 在 Azure 中最常見的散
 
 2. 選取電源圖示按鈕，然後選取 [重新開機 VM]。  (如果序列主控台未啟用或未成功連接，您將不會看到該按鈕。 ) 
 
-   ![IMAGE](./media/linux-recovery-cannot-ssh-to-linux-vm-due-to-file-system-errors-fsck/restart-vm.png)
+   ![影像](./media/linux-recovery-cannot-ssh-to-linux-vm-due-to-file-system-errors-fsck/restart-vm.png)
 
 3. 將 VM 開機到緊急模式。
 
@@ -176,7 +176,7 @@ Linux 有數個可用的檔案系統檢查程式。 在 Azure 中最常見的散
 
 8. 檢查問題是否已解決。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [使用 Azure CLI 2.0 將 OS 磁碟連結至復原 VM，以針對 Linux VM 進行疑難排解](./troubleshoot-recovery-disks-linux.md)
 * [使用入口網站將資料磁碟附加至 Linux VM](../linux/attach-disk-portal.md)

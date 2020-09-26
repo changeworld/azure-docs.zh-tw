@@ -1,30 +1,21 @@
 ---
 title: 透過 macOS 的 SMB 掛接 Azure 檔案共用 | Microsoft Docs
-description: 瞭解如何使用搜尋工具或終端機搭配 macOS，透過 SMB 掛接 Azure 檔案共用。 Azure 檔案服務是 Microsoft 易於使用的雲端檔案系統。
-author: RenaShahMSFT
+description: 瞭解如何使用搜尋工具或終端機，透過 macOS 透過 SMB 掛接 Azure 檔案共用。 Azure 檔案服務是 Microsoft 易於使用的雲端檔案系統。
+author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/19/2017
-ms.author: renash
+ms.date: 09/23/2020
+ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 2cddf8a7d3dbc7abcc25fb76aba8a0af1790fe4d
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 119f4c0ea434bc431b40c905d9142e187b7d9474
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88034442"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326060"
 ---
 # <a name="mount-azure-file-share-over-smb-with-macos"></a>透過 macOS 的 SMB 掛接 Azure 檔案共用
-[Azure 檔案服務](storage-files-introduction.md)是 Microsoft 易於使用的雲端檔案系統。 您可以使用 macOS El Capitan 10.11+ 所推出的業界標準 SMB 3 通訊協定來掛接 Azure 檔案共用。 本文說明兩種在 macOS 上掛接 Azure 檔案共用的不同方式：使用 Finder UI 和使用終端機。
-
-> [!Note]  
-> 在透過 SMB 掛接 Azure 檔案共用之前，建議您停用 SMB 封包簽章。 不這樣做可能會導致從 macOS 存取 Azure 檔案共用時效能不佳。 SMB 連線將會加密，因此這不會影響您連線的安全性。 從終端機中，下列命令會停用 SMB 封包簽章，如同[停用 SMB 封包簽章的 Apple 支援文章](https://support.apple.com/HT205926)所描述：  
->    ```
->    sudo -s
->    echo "[default]" >> /etc/nsmb.conf
->    echo "signing_required=no" >> /etc/nsmb.conf
->    exit
->    ```
+[Azure 檔案服務](storage-files-introduction.md)是 Microsoft 易於使用的雲端檔案系統。 Azure 檔案共用可以使用業界標準的 SMB 3 通訊協定來掛接，方法是 macOS 高塞拉里昂 10.13 +。 本文說明兩種在 macOS 上掛接 Azure 檔案共用的不同方式：使用 Finder UI 和使用終端機。
 
 ## <a name="prerequisites-for-mounting-an-azure-file-share-on-macos"></a>在 macOS 上掛接 Azure 檔案共用的必要條件
 * **儲存體帳戶名稱**：若要掛接 Azure 檔案共用，您將需要儲存體帳戶的名稱。
@@ -37,7 +28,7 @@ ms.locfileid: "88034442"
 1. **開啟搜尋工具**：搜尋工具在 macOS 中為預設開啟，但是您可以按一下 Dock 上的 [macOS 臉部圖示] 確保它是目前選取的應用程式：  
     ![macOS 臉部圖示](./media/storage-how-to-use-files-mac/mount-via-finder-1.png)
 
-2. **從 [執行] 功能表中選取 [連線到伺服器**]：使用必要條件的 UNC 路徑，將開頭的雙反斜線 (`\\`) 轉換為 `smb://` ，並將所有其他反斜線 (`\`) 以轉送斜線 (`/`) 。 您的連結應看起來如下所示：![[連線至伺服器] 對話方塊](./media/storage-how-to-use-files-mac/mount-via-finder-2.png)
+2. **從 [執行] 功能表中選取 [連接到伺服器**]：使用必要條件的 UNC 路徑，將開頭的雙反斜線 (`\\`) 轉換為 `smb://` 和其他所有反斜線 (`\`) ，將斜線轉寄 (`/`) 。 您的連結應看起來如下所示：![[連線至伺服器] 對話方塊](./media/storage-how-to-use-files-mac/mount-via-finder-2.png)
 
 3. **提示您輸入使用者名稱和密碼時，使用儲存體帳戶名稱和儲存體帳戶金鑰**：當您在 [連線至伺服器] 對話方塊中按一下 [連線] 時，系統會提示您的使用者名稱和密碼 (這會使用您的 macOS 使用者名稱自動填入)。 您可以選擇將儲存體帳戶名稱/儲存體帳戶金鑰置於您的 macOS 金鑰鏈。
 
@@ -46,10 +37,10 @@ ms.locfileid: "88034442"
     ![已掛接的 Azure 檔案共用快照集](./media/storage-how-to-use-files-mac/mount-via-finder-3.png)
 
 ## <a name="mount-an-azure-file-share-via-terminal"></a>透過終端機掛接 Azure 檔案共用
-1. 將 `<storage-account-name>` 取代為儲存體帳戶的名稱。 當系統提示時，請提供儲存體帳戶金鑰作為密碼。 
+1. 將  `<storage-account-name>` 、 `<storage-account-key>` 和取代為 `<share-name>`   您環境的適當值。
 
     ```
-    mount_smbfs //<storage-account-name>@<storage-account-name>.file.core.windows.net/<share-name> <desired-mount-point>
+    open smb://<storage-account-name>:<storage-account-key>@<storage-account-name>.file.core.windows.net/<share-name>
     ```
 
 2. **視需要使用 Azure 檔案共用**：Azure 檔案共用將會掛接於先前命令所指定的掛接點。  
@@ -57,9 +48,4 @@ ms.locfileid: "88034442"
     ![已掛接的 Azure 檔案共用快照集](./media/storage-how-to-use-files-mac/mount-via-terminal-1.png)
 
 ## <a name="next-steps"></a>後續步驟
-請參閱這些連結，以取得 Azure 檔案服務的詳細資訊。
-
-* [Apple 支援文章 - 如何在 Mac 上連線檔案共用](https://support.apple.com/HT204445)
-* [常見問題集](../storage-files-faq.md)
-* [在 Windows 上進行疑難排解](storage-troubleshoot-windows-file-connection-problems.md)      
-* [在 Linux 上進行疑難排解](storage-troubleshoot-linux-file-connection-problems.md)    
+* [將您的 Mac 連線到共用的電腦和伺服器-Apple 支援](https://support.apple.com/guide/mac-help/connect-mac-shared-computers-servers-mchlp1140/mac)

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 08/2/2019
 ms.author: mayg
-ms.openlocfilehash: e9e66cbb024aa64e8c4cb5db9fc1c172fdc573fc
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 8b44a1d6119cc658b9460e0a52fa0629f759964a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135366"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336200"
 ---
 # <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>針對 VMware VM 和實體伺服器的複寫問題進行疑難排解
 
@@ -77,7 +77,7 @@ Site Recovery 會使用[處理伺服器](vmware-physical-azure-config-process-se
     - 巡覽至受影響複寫機器的 [磁碟] 刀鋒視窗，並複製複本磁碟名稱
     - 巡覽至此複本受控磁碟
     - 您可能會在 [概觀] 刀鋒視窗上看到一個橫幅，其指出已產生 SAS URL。 請按一下此橫幅並取消匯出。 如果看不到橫幅，則請忽略此步驟。
-    - 一旦撤銷 SAS URL，請移至受控磁片的 [設定] 分頁並增加大小，讓 Azure Site Recovery 在來源磁片上支援觀察到的流失率
+    - 一旦 SAS URL 遭到撤銷，請移至受控磁片的設定分頁，並增加大小，使 Azure Site Recovery 支援來源磁片上觀察到的變換率
 - 如果觀察到的變換為暫時性，請等候幾個小時讓擱置中的資料上傳，以趕上進度並建立復原點。
 - 如果磁碟包含非關鍵性資料，例如暫存記錄、測試資料等，請考慮將此資料移至別處，或從複寫中完全排除此磁碟
 - 如果問題持續發生，請使用 Site Recovery [部署規劃工具](site-recovery-deployment-planner.md#overview)來協助規劃複寫。
@@ -95,7 +95,7 @@ Site Recovery 會使用[處理伺服器](vmware-physical-azure-config-process-se
    - InMage Scout 應用程式服務
 4. 在來源機器上，檢查此位置上的記錄，以取得錯誤詳細資料：
 
-    *C:\Program Files （X86） \Microsoft Azure Site Recovery\agent\svagents \* .log*
+    *C:\Program Files (X86) \Microsoft Azure Site Recovery\agent\svagents \* . log*
 
 ### <a name="process-server-with-no-heartbeat-error-806"></a>處理伺服器沒有任何活動訊號 [錯誤 806]
 如果沒有任何活動訊號來自處理伺服器 (PS)，請檢查：
@@ -103,7 +103,7 @@ Site Recovery 會使用[處理伺服器](vmware-physical-azure-config-process-se
 2. 檢查 PS 上的下列記錄，以取得錯誤詳細資料：
 
     *C:\ProgramData\ASR\home\svsystems\eventmanager \* .log*\
-    和
+    還
     *C:\ProgramData\ASR\home\svsystems\ monitor_protection \* .log*
 
 ### <a name="master-target-server-with-no-heartbeat-error-78022"></a>主要目標伺服器沒有任何活動訊號 [錯誤 78022]
@@ -117,7 +117,7 @@ Site Recovery 會使用[處理伺服器](vmware-physical-azure-config-process-se
     - 確認 svagents 服務正在執行。 如果正在執行，請重新啟動該服務
     - 檢查此位置上的記錄，以取得錯誤詳細資料：
 
-        *C:\Program Files （X86） \Microsoft Azure Site Recovery\agent\svagents \* .log*
+        *C:\Program Files (X86) \Microsoft Azure Site Recovery\agent\svagents \* . log*
 3. 若要向設定伺服器註冊主要目標伺服器，請巡覽至 **%PROGRAMDATA%\ASR\Agent** 資料夾，然後在命令提示字元上執行下列命令：
    ```
    cmd
@@ -147,13 +147,13 @@ Site Recovery 會使用[處理伺服器](vmware-physical-azure-config-process-se
 **修正方式**：請參閱知識庫[文章](https://support.microsoft.com/help/4493364/fix-error-occurs-when-you-back-up-a-virtual-machine-with-non-component)
 
 #### <a name="cause-4-app-consistency-not-enabled-on-linux-servers"></a>原因4： Linux 伺服器上未啟用應用程式一致性
-**如何修正**：適用于 Linux 作業系統的 Azure Site Recovery 支援應用程式的自訂腳本，以進行應用程式一致性。 具有前置和後置選項的自訂腳本，會由 Azure Site Recovery 行動代理程式用於應用程式一致性。 [以下](./site-recovery-faq.md#replication)是啟用它的步驟。
+**如何修正** ：適用于 Linux 作業系統的 Azure Site Recovery 支援應用程式自訂腳本以進行應用程式一致性。 使用前置和後置選項的自訂腳本，將會由 Azure Site Recovery 行動代理程式用來進行應用程式一致性。 [以下](./site-recovery-faq.md#replication) 是啟用它的步驟。
 
 ### <a name="more-causes-due-to-vss-related-issues"></a>造成 VSS 相關問題的其他原因：
 
 若要進一步進行疑難排解，請檢查來源機器上的檔案，以取得失敗的確切錯誤碼：
 
-*C:\Program Files （x86） \Microsoft Azure Site Recovery\agent\Application Data\ApplicationPolicyLogs\vacp.log*
+*C:\Program Files (x86) \Microsoft Azure Site Recovery\agent\Application Data\ApplicationPolicyLogs\vacp.log*
 
 如何找出檔案中的錯誤？
 透過在編輯器中開啟 vacp.log 檔案來搜尋字串 "vacpError"
@@ -164,12 +164,12 @@ Site Recovery 會使用[處理伺服器](vmware-physical-azure-config-process-se
 
 #### <a name="vss-writer-is-not-installed---error-2147221164"></a>未安裝 VSS 寫入器 - 錯誤 2147221164
 
-修正方式：為了產生應用程式一致性標籤，Azure Site Recovery 會使用 Microsoft 磁碟區陰影複製服務 (VSS)。 這會為其作業安裝 VSS 提供者，以取得應用程式一致性快照集。 此 VSS 提供者會安裝為服務。 如果未安裝 VSS 提供者服務，應用程式一致性快照集建立會失敗，並出現錯誤識別碼0x80040154 「類別未註冊」。 </br>
+修正方式：為了產生應用程式一致性標籤，Azure Site Recovery 會使用 Microsoft 磁碟區陰影複製服務 (VSS)。 這會為其作業安裝 VSS 提供者，以取得應用程式一致性快照集。 此 VSS 提供者會安裝為服務。 如果未安裝 VSS 提供者服務，應用程式一致性快照集建立會失敗，並出現錯誤 ID 0x80040154 「類別未註冊」。 </br>
 請參閱 [VSS 寫入器安裝疑難排解的文章](./vmware-azure-troubleshoot-push-install.md#vss-installation-failures)
 
 #### <a name="vss-writer-is-disabled---error-2147943458"></a>已停用 VSS 寫入器 - 錯誤　2147943458
 
-修正方式：為了產生應用程式一致性標籤，Azure Site Recovery 會使用 Microsoft 磁碟區陰影複製服務 (VSS)。 這會為其作業安裝 VSS 提供者，以取得應用程式一致性快照集。 此 VSS 提供者會安裝為服務。 如果停用 VSS 提供者服務，應用程式一致性快照集建立會失敗，並出現錯誤識別碼「指定的服務已停用且無法啟動（0x80070422）」。 </br>
+**修正方式**：為了產生應用程式一致性標籤，Azure Site Recovery 會使用 Microsoft 磁碟區陰影複製服務 (VSS)。 這會為其作業安裝 VSS 提供者，以取得應用程式一致性快照集。 此 VSS 提供者會安裝為服務。 如果 VSS 提供者服務已停用，應用程式一致性快照集建立會失敗，並出現錯誤識別碼「指定的服務已停用且無法啟動 (0x80070422) 」。 </br>
 
 - 如果已停用 VSS，
     - 請確認 VSS 提供者服務的啟動類型設定為 [自動]。
@@ -192,6 +192,24 @@ Site Recovery 會使用[處理伺服器](vmware-physical-azure-config-process-se
         - VSS 服務
         - Azure Site Recovery VSS 提供者
         - VDS 服務
+
+## <a name="error-id-95001---insufficient-permissions-found"></a>錯誤 ID 95001-找不到足夠的許可權
+
+嘗試啟用複寫時，若應用程式資料夾沒有足夠的許可權，就會發生此錯誤。
+
+**如何修正**：若要解決此問題，請確定 IUSR 使用者具有下列所有提及資料夾的擁有者角色：
+
+- *C\ProgramData\Microsoft Azure Site Recovery\private*
+- 安裝目錄。 例如，如果安裝目錄是 F 磁片磁碟機，請將正確的許可權提供給-
+    - *F:\Program Files (x86) \Microsoft Azure Site Recovery\home\svsystems*
+- 安裝目錄中的 *\pushinstallsvc* 資料夾。 例如，如果安裝目錄是 F 磁片磁碟機，請將正確的許可權提供給-
+    - *F:\Program Files (x86) \Microsoft Azure Site Recovery\home\svsystems\pushinstallsvc*
+- 安裝目錄中的 *\etc* 資料夾。 例如，如果安裝目錄是 F 磁片磁碟機，請將正確的許可權提供給-
+    - *F:\Program Files (x86) \Microsoft Azure Site Recovery\home\svsystems\etc*
+- *C:\Temp*
+- *C:\thirdparty\php5nts*
+- 以下路徑下的所有專案-
+    - *C:\thirdparty\rrdtool-1.2.15-win32-perl58\rrdtool\Release\**
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -8,17 +8,17 @@ editor: ''
 tags: azure-service-management
 ms.assetid: 53981f7e-8370-4979-b26a-93a5988d905f
 ms.service: virtual-machines-sql
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/29/2020
 ms.author: mathoma
-ms.openlocfilehash: 93819332def05022272eabc130e0f2240938f244
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 43b0f64a1d88a71b221fac240392dc71b93eef76
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85955500"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91298823"
 ---
 # <a name="configure-a-workgroup-availability-group"></a>設定工作群組可用性群組 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -52,7 +52,7 @@ ms.locfileid: "85955500"
 
 若要設定 DNS 尾碼，請遵循下列步驟：
 
-1. RDP 傳入您的第一個節點，然後開啟伺服器管理員。 
+1. RDP 到您的第一個節點，並開啟伺服器管理員。 
 1. 選取 [本機伺服器]，然後在 [電腦名稱] 下選取虛擬機器的名稱。 
 1. 在 [如果您要重新命名這台電腦...] 底下，選取 [變更]。 
 1. 將工作群組名稱的變更為有意義的名稱，例如 `AGWORKGROUP`： 
@@ -77,7 +77,7 @@ ms.locfileid: "85955500"
 
 若要編輯主機檔案，請遵循下列步驟：
 
-1. RDP 入您的虛擬機器。 
+1. RDP 到您的虛擬機器。 
 1. 使用 [檔案總管] 移至 `c:\windows\system32\drivers\etc`。 
 1. 以滑鼠右鍵按一下 **hosts** 檔案，並使用 [記事本] \(或任何其他文字編輯器\) 開啟該檔案。
 1. 在檔案結尾，以 `IP Address, DNS Suffix #comment` 的形式為每個節點、可用性群組與接聽程式新增項目，如下所示： 
@@ -130,7 +130,7 @@ new-itemproperty -path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\
 
 ## <a name="create-a-cloud-witness"></a>建立雲端見證 
 
-在此步驟中，設定雲端共用見證。 如果您不熟悉這些步驟，請參閱[為容錯移轉叢集部署雲端見證](/windows-server/failover-clustering/deploy-cloud-witness)。 
+在此步驟中，設定雲端共用見證。 如果您不熟悉這些步驟，請參閱 [為容錯移轉叢集部署雲端見證](/windows-server/failover-clustering/deploy-cloud-witness)。 
 
 ## <a name="enable-the-availability-group-feature"></a>啟用可用性群組功能 
 
@@ -286,7 +286,7 @@ GO
 
 ## <a name="configure-a-load-balancer"></a>設定負載平衡器
 
-在最後一個步驟中，請使用[Azure 入口網站](availability-group-load-balancer-portal-configure.md)或[PowerShell](availability-group-listener-powershell-configure.md)來設定負載平衡器。
+在此最後一個步驟中，請使用 [Azure 入口網站](availability-group-load-balancer-portal-configure.md) 或 [PowerShell](availability-group-listener-powershell-configure.md)來設定負載平衡器。
 
 
 ## <a name="next-steps"></a>後續步驟

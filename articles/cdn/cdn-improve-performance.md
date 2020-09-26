@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 02/28/2018
 ms.author: allensu
-ms.openlocfilehash: bd32bbb5957832629fa19eb756b95356c0292ef1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3b8ce5b82b7d2022fd7feea1cd9efe8d524ee6a4
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84887697"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358282"
 ---
 # <a name="improve-performance-by-compressing-files-in-azure-cdn"></a>在 Azure CDN 中壓縮檔案以改善效能
 檔案壓縮是簡單且有效的方法，可提升檔案傳輸速度，並且在檔案從伺服器傳送出去之前先減少其大小，以增加頁面載入效能。 檔案壓縮可降低頻寬成本，並提供回應速度更快的體驗給使用者。
@@ -27,7 +27,7 @@ ms.locfileid: "84887697"
 有兩種方式可啟用檔案壓縮︰
 
 - 在原始伺服器上啟用壓縮。 在此情況下，Azure CDN 會傳遞壓縮的檔案，遞交給提出要求的用戶端。
-- 直接在 CDN POP 伺服器上啟用壓縮（*即時壓縮*）。 在此情況下，CDN 會壓縮檔案並將其提供給終端使用者，即使原始伺服器未壓縮這些檔案也是如此。
+- 直接在 CDN POP 伺服器上啟用壓縮 *， (即時) 壓縮* 。 在此情況下，CDN 會壓縮檔案並將其提供給終端使用者，即使原始伺服器未壓縮這些檔案也是如此。
 
 > [!IMPORTANT]
 > Azure CDN 組態變更會需要一些時間才能傳播至整個網路： 
@@ -53,12 +53,12 @@ ms.locfileid: "84887697"
     隨即開啟 [CDN 端點] 頁面。
 2. 選取 [壓縮]****。
 
-    ![CDN 壓縮選取項目](./media/cdn-file-compression/cdn-compress-select-std.png)
+    ![螢幕擷取畫面顯示已從入口網站功能表選取壓縮的端點。](./media/cdn-file-compression/cdn-compress-select-std.png)
 
     壓縮頁面隨即開啟。
 3. 選取 [開啟]**** 以開啟壓縮。
 
-    ![CDN 檔案壓縮選項](./media/cdn-file-compression/cdn-compress-standard.png)
+    ![螢幕擷取畫面顯示開啟壓縮。](./media/cdn-file-compression/cdn-compress-standard.png)
 4. 請使用預設的 MIME 類型，或是新增或移除 MIME 類型以修改清單。
 
    > [!TIP]
@@ -76,7 +76,7 @@ ms.locfileid: "84887697"
 > 本節僅適用於**來自 Verizon 的 Azure CDN 進階**設定檔。
 > 
 
-1. 在 [CDN 設定檔] 頁面中，選取 [**管理**]。
+1. 從 [CDN 設定檔] 頁面中，選取 [ **管理**]。
 
     ![CDN 管理選取](./media/cdn-file-compression/cdn-manage-btn.png)
 
@@ -101,7 +101,7 @@ ms.locfileid: "84887697"
 ### <a name="azure-cdn-standard-from-microsoft-profiles"></a>來自 Microsoft 的標準 Azure CDN
 
 如果是**來自 Microsoft 的標準 Azure CDN** 設定檔，只會壓縮符合資格的檔案。 若要符合壓縮，檔案必須︰
-- 屬於已[設定壓縮](#enabling-compression)的 MIME 類型。
+- 屬於已 [設定壓縮](#enabling-compression)的 MIME 類型。
 - 大於 1 KB
 - 小於 8 MB
 
@@ -149,7 +149,7 @@ ms.locfileid: "84887697"
 | 未壓縮 |不快取 |未壓縮 | |
 
 ### <a name="compression-is-enabled-and-file-is-eligible-for-compression"></a>已啟用壓縮且檔案適合進行壓縮
-| 用戶端要求的格式 (透過 Accept-Encoding 標頭) | 快取的檔案格式 | CDN 對用戶端的回應 | 備註 |
+| 用戶端要求的格式 (透過 Accept-Encoding 標頭) | 快取的檔案格式 | CDN 對用戶端的回應 | 注意 |
 | --- | --- | --- | --- |
 | Compressed |Compressed |Compressed |支援格式之間的 CDN 轉碼。 |
 | Compressed |未壓縮 |Compressed |CDN 執行壓縮。 |

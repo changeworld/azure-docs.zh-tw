@@ -4,21 +4,21 @@ description: 了解如何使用 Apache Spark MLlib 建立一個透過羅吉斯�
 services: synapse-analytics
 author: euangMS
 ms.service: synapse-analytics
-ms.reviewer: jrasnick, carlrab
+ms.reviewer: jrasnick
 ms.topic: conceptual
 ms.subservice: machine-learning
 ms.date: 04/15/2020
 ms.author: euang
-ms.openlocfilehash: e1ece0add7b0749cfd808b0a3ec7962dd43a302d
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 2b641075a45db29c07b96c1934d4540f4c3292dd
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88719337"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91259980"
 ---
 # <a name="build-a-machine-learning-app-with-apache-spark-mllib-and-azure-synapse-analytics"></a>使用 Apache Spark MLlib 和 Azure Synapse Analytics 來建置機器學習應用程式
 
-在本文中，您會了解如何使用 Apache Spark [MLlib](https://spark.apache.org/mllib/) 建立機器學習應用程式，在 Azure 開放資料集上進行簡單預測性分析。 Spark 提供內建的機器學習程式庫。 這個範例會透過羅吉斯迴歸使用「分類」。
+在本文中，您將瞭解如何使用 Apache Spark [MLlib](https://spark.apache.org/mllib/) 來建立機器學習應用程式，以對 Azure 開放資料集執行簡單的預測性分析。 Spark 提供內建的機器學習程式庫。 這個範例會透過羅吉斯迴歸使用「分類」。
 
 MLlib 是核心 Spark 程式庫，提供許多可用於機器學習工作的公用程式，包括具有下列用途的公用程式：
 
@@ -96,7 +96,7 @@ MLlib 是核心 Spark 程式庫，提供許多可用於機器學習工作的公�
     display(sampled_taxi_df)
     ```
 
-4. 根據所產生的資料集大小，以及您實驗或執行筆記本多次的需求而定，建議您在工作區中的本機快取資料集。 有三種方式可以執行明確的快取：
+4. 視所產生的資料集大小大小而定，您需要實驗或執行筆記本多次，建議您在工作區本機快取資料集。 有三種方式可以執行明確的快取：
 
    - 以檔案的形式將資料框架儲存在本機
    - 將資料框架儲存為暫存資料表或檢視
@@ -193,7 +193,7 @@ taxi_featurised_df = taxi_df.select('totalAmount', 'fareAmount', 'tipAmount', 'p
 
 ## <a name="create-a-logistic-regression-model"></a>建立羅吉斯迴歸模型
 
-最後一項工作，是將加上標籤的資料轉換成可依羅吉斯迴歸進行分析的格式。 羅吉斯迴歸演算法的輸入必須是一組「標籤-特性向量配對」，其中「特性向量」是代表輸入點的數字向量。 因此，我們需要將類別資料行轉換成數字。 `trafficTimeBins` 和 `weekdayString` 資料行必須轉換成整數表示。 有多種方法可以執行轉換，不過在此範例中採取的方法是「OneHotEncoding」，這是一種常見的方法。
+最後一項工作，是將加上標籤的資料轉換成可依羅吉斯迴歸進行分析的格式。 羅吉斯迴歸演算法的輸入必須是一組「標籤-特性向量配對」，其中「特性向量」是代表輸入點的數字向量。 因此，我們需要將類別資料行轉換成數字。 `trafficTimeBins`和資料 `weekdayString` 行需要轉換成整數表示。 有多種方法可以執行轉換，不過在此範例中採取的方法是「OneHotEncoding」，這是一種常見的方法。
 
 ```python
 # Since the sample uses an algorithm that only works with numeric features, convert them so they can be consumed
@@ -206,7 +206,7 @@ en2 = OneHotEncoder(dropLast=False, inputCol="weekdayIndex", outputCol="weekdayV
 encoded_final_df = Pipeline(stages=[sI1, en1, sI2, en2]).fit(taxi_featurised_df).transform(taxi_featurised_df)
 ```
 
-這會產生新的資料框架，其中包含正確格式的所有資料行來定型模型。
+此動作會產生一個新的資料框架，其中包含正確格式的所有資料行來定型模型。
 
 ## <a name="train-a-logistic-regression-model"></a>定型羅吉斯迴歸模型
 

@@ -1,333 +1,235 @@
 ---
 title: 使用 Azure 監視器建立、查看和記錄管理警示 |Microsoft Docs
-description: 使用 Azure 監視器來撰寫、查看和管理 Azure 中的記錄警示規則。
+description: 使用 Azure 監視器來建立、查看及記錄管理警示規則
 author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.subservice: alerts
-ms.openlocfilehash: 25604bde3afbbef0d541bc21996b59e98b3090f4
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 40cf46746587cbd221bd958ccb528c9e40cf18bf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327492"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91299367"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>使用 Azure 監視器來建立、檢視及管理記錄警示
 
 ## <a name="overview"></a>概觀
-本文說明如何使用 Azure 入口網站內的警示介面來建立和記錄管理警示。 警示規則是由三個元件所定義：
-- 目標：要監視的特定 Azure 資源
-- 準則：要評估事實的條件或邏輯。 若為 true，則會引發警示。  
-- 動作：傳送至通知 (電子郵件、SMS、Webhook 等) 接收者的特定呼叫。
 
-「**記錄警示**」一詞描述[log Analytics 工作區](../log-query/get-started-portal.md)中的記錄查詢或[Application Insights](../log-query/log-query-overview.md)評估的警示，並在結果為 true 時引發警示。 閱讀[記錄警示 - 概觀](alerts-unified-log.md)以深入了解其功能、術語和類型。
+記錄警示可讓使用者使用 [Log Analytics](../log-query/get-started-portal.md) 查詢來評估每個設定頻率的資源記錄，並根據結果引發警示。 規則可以使用 [動作群組](./action-groups.md)觸發一或多個動作。 [深入瞭解記錄警示的功能和術語](alerts-unified-log.md)。
+
+本文說明如何使用 Azure 監視器建立和記錄管理警示。 警示規則是由三個元件所定義：
+- 目標：要監視的特定 Azure 資源。
+- 準則：要評估的邏輯。 如果符合，則會引發警示。  
+- 動作：通知或自動化-電子郵件、SMS、webhook 等等。
+
+您也可以使用 Azure Resource Manager 範本建立記錄警示規則，這些範本會在 [個別的文章](alerts-log-create-templates.md)中說明。
 
 > [!NOTE]
-> Log [Analytics 工作區](../log-query/get-started-portal.md)中的記錄資料也可以路由傳送至 Azure 監視器計量資料庫。 計量警示有[不同的行為](alerts-metric-overview.md)，視您使用的資料而定，這可能會更理想。   如需有關如何將記錄路由至計量的詳細資訊，請參閱[記錄的度量警示](alerts-metric-logs.md)。
+> Log [Analytics 工作區](../log-query/get-started-portal.md) 中的記錄資料可以傳送至 Azure 監視器計量存放區。 計量警示有 [不同的行為](alerts-metric-overview.md)，視您使用的資料而定，這可能更適合。 如需有關如何將記錄路由至計量的詳細資訊，請參閱 [記錄的計量警示](alerts-metric-logs.md)。
 
 ## <a name="create-a-log-alert-rule-with-the-azure-portal"></a>使用 Azure 入口網站建立記錄警示規則
 
-1. 在[入口網站](https://portal.azure.com/)中，選取 [**監視**]。 在該區段中，選擇 [**警示**]。
+下列步驟可讓您開始撰寫警示的查詢：
+
+1. 移至您想要警示的資源。
+1. 在 [ **監視**] 底下，選取 [ **記錄**]。
+1. 查詢可指出問題的記錄資料。 您可以使用「 [警示查詢範例」主題](../log-query/saved-queries.md) 來瞭解您可以探索的內容，或 [開始撰寫您自己的查詢](../log-query/get-started-portal.md)。 此外，[了解如何建立最佳化的警示查詢](alerts-log-query.md)。
+1. 按 [+ 新增警示規則] 按鈕，以啟動警示建立流程。
+
+    ![Log Analytics - 設定警示](media/alerts-log/AlertsAnalyticsCreate.png)
+
+> [!NOTE]
+> 建議您在針對使用資源群組或訂用帳戶範圍的多個資源上執行的記錄使用資源存取模式時，大規模建立警示。 大規模警示可減少規則管理額外負荷。 若要能夠以資源為目標，請在結果中包含資源識別碼資料行。 [深入瞭解如何依照維度分割警示](alerts-unified-log.md#split-by-alert-dimensions)。
+
+### <a name="log-alert-for-log-analytics-and-application-insights"></a>記錄分析和 Application Insights 的記錄警示
+
+1. 如果查詢語法正確，則查詢的歷程記錄資料會顯示為圖形，並可選擇是否要從過去六小時到上周調整圖表週期。
+ 
+    如果您的查詢結果包含摘要資料或不含時間資料行的 [專案](/azure/kusto/query/projectoperator) 特定資料行，則圖表會顯示單一值。
+
+    ![設定警示規則](media/alerts-log/AlertsPreviewAlertLog.png)
+
+1. 使用 [ [**期間**](alerts-unified-log.md#query-time-range) ] 選項，選擇要評估指定條件的時間範圍。
+
+1. 記錄警示可以根據兩種類型的 [**量值**](alerts-unified-log.md#measure)：
+    1. **結果數目** -查詢所傳回的記錄計數。
+    1. **度量測量**  - 使用 [摘要] 來計算的匯總*值*會依所選運算式分組，並選取 [ [bin] ( # B1](/azure/kusto/query/binfunction) 。 例如：
+
+    ```Kusto
+    // Reported errors
+    union Event, Syslog // Event table stores Windows event records, Syslog stores Linux records
+    | where EventLevelName == "Error" // EventLevelName is used in the Event (Windows) records
+    or SeverityLevel== "err" // SeverityLevel is used in Syslog (Linux) records
+    | summarize AggregatedValue = count() by Computer, bin(TimeGenerated, 15m)
+    ```
+
+1. 針對計量測量警示邏輯，您可以選擇性地指定如何使用 [**匯總依據**] 選項來[分割依維度的警示](alerts-unified-log.md#split-by-alert-dimensions)。 資料列群組運算式必須是唯一的且已排序。
+
+    > [!NOTE]
+    > 由於 [bin ( # B1 ](/azure/kusto/query/binfunction) 可能會導致時間間隔不平均，因此警示服務會自動將 [Bin ( # B3 ](/azure/kusto/query/binfunction) 函式自動轉換成在執行時間使用適當的時間 [bin_at ( # B5 ](/azure/kusto/query/binatfunction) 函式，以確保具有固定點的結果。
+
+    > [!NOTE]
+    > 依警示維度分割僅適用于目前的 scheduledQueryRules API。 如果您使用舊版 [Log Analytics 警示 API](api-alerts.md)，您將需要切換。 [深入瞭解切換](./alerts-log-api-switch.md)。 只有 API 版本和更新版本才支援大規模以資源為中心的警示 `2020-05-01-preview` 。
+
+    ![[依據彙總] 選項](media/alerts-log/aggregate-on.png)
+
+1. 接下來，根據預覽資料設定 [**運算子**、 **臨界值**](alerts-unified-log.md#threshold-and-operator)和 [**頻率**](alerts-unified-log.md#frequency)。
+
+1. 您也可以選擇性地使用**總計或連續缺口**[來設定觸發警示的違規次數](alerts-unified-log.md#number-of-violations-to-trigger-alert)。
+
+1. 選取 [完成]。 
+
+1. 定義 **警示規則名稱**、 **描述**，然後選取警示 **嚴重性**。 這些詳細資料會用於所有警示動作。 此外，您可以在建立時選取 [ **啟用規則**]，以選擇不要在建立時啟動警示規則。
+
+1. 選擇是否要在引發警示之後隱藏規則動作一段時間，請使用 [ [**隱藏警示**](alerts-unified-log.md#state-and-resolving-alerts) ] 選項。 規則仍會執行並建立警示，但不會觸發動作來防止雜訊。 靜音動作值必須大於警示的頻率才會生效。
+
+    ![記錄警示的隱藏警示](media/alerts-log/AlertsPreviewSuppress.png)
+
+1. 指定警示規則是否應在符合警示條件時觸發一或多個 [**動作群組**](action-groups.md#webhook) 。
+
+    > [!NOTE]
+    > 針對可執行檔動作，請參閱 [Azure 訂用帳戶服務限制](../../azure-resource-manager/management/azure-subscription-service-limits.md) 。  
+
+1. 您可以選擇性地自訂記錄警示規則中的動作：
+
+    - **自訂電子郵件**主旨：覆寫電子郵件動作的 *電子郵件* 主旨。 您無法修改郵件的本文，而且此欄位 **不是電子郵件地址**。
+    - **包含自訂 Json**承載：會覆寫動作群組（假設動作群組包含 webhook 動作）所使用的 webhook Json。 深入瞭解 [記錄警示的 webhook 動作](./alerts-log-webhook.md)。
+
+    ![記錄警示的動作覆寫](media/alerts-log/AlertsPreviewOverrideLog.png)
+
+1. 如果所有欄位都已正確設定，則可以按一下 [ **建立警示規則** ] 按鈕並建立警示。
+
+    在幾分鐘之內，警示會開始作用，且先前所述觸發。
+
+    ![建立規則](media/alerts-log/AlertsPreviewCreate.png)
+
+#### <a name="creating-log-alert-for-log-analytics-and-application-insights-from-the-alerts-management"></a>從警示管理建立 Log Analytics 的記錄警示和 Application Insights
+
+> [!NOTE]
+> 資源中心的記錄目前不支援從警示管理建立
+
+1. 在 [入口網站](https://portal.azure.com/)中，選取 [ **監視** ]，然後選擇 [ **警示**]。
 
     ![監視](media/alerts-log/AlertsPreviewMenu.png)
 
-1. 按一下 [**新增警示規則**]。 
+1. 選取 [ **新增警示規則**]。 
 
     ![新增警示](media/alerts-log/AlertsPreviewOption.png)
 
-1. [**建立警示**] 窗格隨即出現。 其中包含四個部分： 
-    - 要套用警示的資源
-    - 要檢查的條件
-    - 條件為 true 時要採取的動作
-    - 用來命名和描述警示的詳細資料。 
+1. [ **建立警示** ] 窗格隨即出現。 其中有四個部分： 
+    - 要套用警示的資源。
+    - 要檢查的條件。
+    - 條件為 true 時要採取的動作。
+    - 要命名和描述警示的詳細資料。 
 
     ![建立規則](media/alerts-log/AlertsPreviewAdd.png)
 
-1. 使用 [選取資源]**** 連結並透過選取資源來指定目標，即可定義警示條件。 選擇 [訂閱]**、[資源類型]** 和 [資源]** (必選)，即可進行篩選。 
+1. 按下 [ **選取資源** ] 按鈕。 選擇 *訂*用帳戶、 *資源類型*，然後選取資源來進行篩選。 確定資源具有可用的記錄。
 
    ![選取資源](media/alerts-log/Alert-SelectResourceLog.png)
 
-1. 請確定**資源類型**是*log analytics*之類的分析來源，或*Application Insights* ，而信號類型為*log*。 按一下 [完成] 。 接下來，使用 [**新增準則**] 按鈕來查看可用於資源的信號選項清單。 針對*Log Analytics*或*Application Insights*尋找並選擇 [**自訂記錄搜尋**] 選項，視記錄警示的資料所在位置而定。
+1. 接下來，使用 [新增 **條件** ] 按鈕來查看可供資源使用的信號選項清單。 選取 [ **自訂記錄檔搜尋** 選項]。
 
    ![選取資源 - 自訂記錄搜尋](media/alerts-log/AlertsPreviewResourceSelectionLog.png)
 
    > [!NOTE]
-   > 
-   > [警示] 清單可匯入分析查詢作為訊號類型 - [記錄 (已儲存的查詢)]****，如上圖所示。 因此，使用者可以在分析中完美查詢，然後加以儲存以供日後用於警示。 如需使用已儲存查詢的詳細資訊，請參閱[在 Azure 監視器中使用記錄查詢](../log-query/log-query-overview.md)和[Application Insights 分析中的共用查詢](../app/app-insights-overview.md)。
+   > 警示入口網站會列出來自 Log Analytics 的已儲存查詢和 Application Insights，並可作為範本警示查詢使用。
 
-1. 選取之後，請在 [**搜尋查詢**] 欄位中建立警示查詢。 如果查詢語法不正確，欄位會以紅色顯示並出現錯誤。 
+1. 一旦選取之後，請在 [ **搜尋查詢** ] 欄位中撰寫、貼上或編輯警示查詢。
 
-1. 如果查詢語法正確，則查詢的歷程記錄資料會顯示為圖形，其中有選項可將時間範圍從過去六個小時調整為上周。
+1. 繼續進行 [最後一節](#log-alert-for-log-analytics-and-application-insights)所述的下一個步驟。
 
-    ![設定警示規則](media/alerts-log/AlertsPreviewAlertLog.png)
-
-   只有當查詢結果具有時間詳細資料時，才會顯示歷程記錄資料視覺效果。 如果您的查詢會產生摘要的資料或特定的資料行值，則顯示會顯示單一繪圖。
-  
-   針對使用 Application Insights 或[Log ANALYTICS API](/rest/api/monitor/scheduledqueryrules)的計量測量，您可以使用 [**匯總依據**] 選項來指定要將資料分組的特定變數。如下所示： 
-  
-   ![[依據彙總] 選項](media/alerts-log/aggregate-on.png)
-
-
-
-1. 接下來，選擇**警示邏輯**條件 [匯總] 和 [臨界值]。 
-
-1. 使用 [**期間**] 選項，選擇評估指定條件的時間週期。 
-
-1. 選擇警示以**頻率**執行的頻率。 
-
-    **記錄警示**可以根據：
-    - 記錄數目[](./alerts-unified-log.md#number-of-results-alert-rules)：如果查詢所傳回的記錄數目大於或小於所提供的值，則會建立警示。
-    - 計量測量[](./alerts-unified-log.md#metric-measurement-alert-rules)：如果結果中的每個「彙總值」** 超過提供的閾值，而且彙總值依據選擇的值來「分組」**，則會建立警示。 警示的違規數是所選時段中超過閾值的次數。 您可以跨結果集針對任何違規組合指定 [違規數總計]，或指定 [連續違規] 以要求違規必須發生於連續取樣中。
-
-
-1. 按一下 [完成] 。 
-
-1. 在 [**警示規則名稱**] 欄位中定義警示的名稱，以及從提供的選項中詳細**說明**警示的詳細資訊和**嚴重性**值。 這些詳細資料會在所有警示電子郵件、通知或由 Azure 監視器完成的推送中重複使用。 此外，您可以選擇在建立時按一下 [**啟用規則**]，立即啟動警示規則。
-
-1. 如果您想要隱藏一段時間的**警示**，請選擇此項。  當您開啟警示規則的隱藏功能時，此規則的動作會在建立新警示後停用並持續一段您所定義的時間。 規則仍會執行，並會在符合準則時建立警示記錄。 此設定可讓您有時間更正問題，而不需要執行重複的動作。
-
-   ![記錄警示的隱藏警示](media/alerts-log/AlertsPreviewSuppress.png)
-
-    > [!TIP]
-    > 指定大於警示頻率的隱藏警示值，以確保通知已停止而不重迭
-
-1. 在第三個和最後一個步驟中，指定當警示條件符合時，警示規則是否應觸發一個或多個**動作群組**。 您可以選擇任何現有的動作群組，或建立一個新的。 透過動作群組，您可以傳送執行一些動作，例如傳送電子郵件、傳送 SMS、呼叫 Webhook、使用 Azure Runbook 進行補救、推送至您的 ITSM 工具等等。 深入瞭解[動作群組](action-groups.md)。
-
-    > [!NOTE]
-    > 如需可執行動作的限制，請參閱[Azure 訂用帳戶服務限制](../../azure-resource-manager/management/azure-subscription-service-limits.md)。  
-
-    有一些額外的功能可用來覆寫預設動作：
-
-    - **電子郵件通知**：覆寫透過動作群組傳送之電子郵件中的*電子郵件*主旨。 您無法修改電子郵件的本文，且此欄位**不是**用於電子郵件地址。
-    - **包含自訂 Json**承載：覆寫動作群組所使用的 webhook Json （假設動作群組包含 webhook 類型）。 如需 webhook 格式的詳細資訊，請參閱[記錄警示的 webhook 動作](./alerts-log-webhook.md)。 提供的 [檢視 Webhook] 選項可用來檢查使用 JSON 資料範例的格式。
-
-        ![記錄警示的動作覆寫](media/alerts-log/AlertsPreviewOverrideLog.png)
-
-
-1. 如果所有欄位都有效，並且有綠色勾號，您就可以按一下 [建立警示規則]**** 按鈕，在 Azure [監視器 - 警示] 中建立警示。 您可以從「警示儀表板」中檢視所有警示。
-
-     ![建立規則](media/alerts-log/AlertsPreviewCreate.png)
-
-     在幾分鐘之內，警示會開始作用，且先前所述觸發。
-
-使用者也可以在[log analytics](../log-query/log-query-overview.md)中完成分析查詢，然後透過 [設定警示] 按鈕推送它以建立警示，然後依照上述教學課程中步驟6開始的指示進行。
-
- ![Log Analytics - 設定警示](media/alerts-log/AlertsAnalyticsCreate.png)
-
-### <a name="view--manage-log-alerts-in-azure-portal"></a>在 Azure 入口網站中檢視和管理記錄警示
-
-1. 在[入口網站](https://portal.azure.com/)中，選取 [**監視**]，然後在 [監視] 區段下選擇 [**警示**]。
-
-1. [**警示] 儀表板**隨即顯示-其中所有 Azure 警示（包括記錄警示）都會顯示在單一面板中;當您的記錄警示規則引發時，包含的每個實例。 若要深入了解，請參閱[警示管理](https://aka.ms/managealertinstances)。
-    > [!NOTE]
-    > 記錄警示規則由使用者提供的自訂查詢邏輯所組成，因此沒有已解決的狀態。 所以只要符合記錄警示規則中所指定的條件時，就會引發它。
-
-1. 在頂端的工具列上選取 [管理規則]****，即可瀏覽到規則管理區段 - 其中會列出所有已建立的警示規則 (包括已停用的警示)。
-    ![管理警示規則](media/alerts-log/manage-alert-rules.png)
-
-## <a name="managing-log-alerts-using-azure-resource-template"></a>使用 Azure 資源範本管理記錄警示
-
-「Azure 監視器」中的記錄警示與資源類型 `Microsoft.Insights/scheduledQueryRules/`相關聯。 如需有關此資源類型的詳細資訊，請參閱 [Azure 監視器 - 排程的查詢規則 API 參考](/rest/api/monitor/scheduledqueryrules/)。 建立 Application Insights 或 Log Analytics 的記錄警示時，可以使用[排程的查詢規則 API](/rest/api/monitor/scheduledqueryrules/) 來建立。
+### <a name="log-alert-for-all-other-resource-types"></a>所有其他資源類型的記錄警示
 
 > [!NOTE]
-> 管理 Log Analytics 的記錄警示時，也可以使用舊版 [Log Analytics Alert API](api-alerts.md) 及舊版 [Log Analytics 儲存的搜尋和警示](../insights/solutions.md)範本來管理。 如需有關預設使用這裡詳述之新 ScheduledQueryRules API 的詳細資訊，請參閱[切換至 Log Analytics 警示的新 API](alerts-log-api-switch.md)。
+> API 版本 `2020-05-01-preview` 和以資源為中心的記錄警示目前不會產生額外費用。  預覽版中的功能價格將于未來宣佈，並在開始計費之前提供通知。 如果您選擇在通知期間之後繼續使用新的 API 版本和以資源為中心的記錄警示，將會以適用的費率計費。
 
+1. 從 [ **條件** ] 索引標籤開始：
 
-### <a name="sample-log-alert-creation-using-azure-resource-template"></a>使用 Azure 資源範本建立範例記錄警示
+    1. 檢查 [**量值**](alerts-unified-log.md#measure)、 [**匯總類型**](alerts-unified-log.md#aggregation-type)和 [**匯總細微性**](alerts-unified-log.md#aggregation-granularity) 是否正確。 
+        1. 根據預設，此規則會計算過去5分鐘內的結果數目。
+        1. 如果我們偵測到摘要的查詢結果，則會在幾秒鐘內自動更新規則以進行捕捉。
 
-以下結構可用來根據資源範本使用[結果類型記錄警示數目](alerts-unified-log.md#number-of-results-alert-rules)的標準記錄搜尋查詢[建立排程的查詢規則](/rest/api/monitor/scheduledqueryrules/createorupdate)，其中使用資料集範例作為變數。
+    1. 視需要選擇 [依維度分割的警示](alerts-unified-log.md#split-by-alert-dimensions)： 
+       - 如果偵測到，系統會自動選取 [**資源識別碼**] 資料行，並將引發的警示內容變更為記錄的資源。 
+       - 您可以取消選取 [**資源識別碼**] 資料行，以在訂用帳戶或資源群組上引發警示。 當查詢結果是以跨資源為基礎時，取消選取會很有用。 例如，檢查80% 的資源群組虛擬機器是否遇到高 CPU 使用率的查詢。
+       - 使用維度資料表的任何數位或文字資料行類型，最多可以選取六個額外的 splittings。
+       - 系統會根據唯一組合的分割來個別引發警示，而警示承載則包含這種資訊。
+    
+        ![選取匯總參數和分割](media/alerts-log/select-aggregation-parameters-and-splitting.png)
 
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-    },
-    "variables": {
-        "alertLocation": "southcentralus",
-        "alertName": "samplelogalert",
-        "alertDescription": "Sample log search alert",
-        "alertStatus": "true",
-        "alertSource":{
-            "Query":"requests",
-            "SourceId": "/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/myRG/providers/microsoft.insights/components/sampleAIapplication",
-            "Type":"ResultCount"
-        },
-        "alertSchedule":{
-            "Frequency": 15,
-            "Time": 60
-        },
-        "alertActions":{
-            "SeverityLevel": "4"
-        },
-        "alertTrigger":{
-            "Operator":"GreaterThan",
-            "Threshold":"1"
-        },
-        "actionGrp":{
-            "ActionGroup": "/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/myRG/providers/microsoft.insights/actiongroups/sampleAG",
-            "Subject": "Customized Email Header",
-            "Webhook": "{ \"alertname\":\"#alertrulename\", \"IncludeSearchResults\":true }"
-        }
-    },
-    "resources":[ {
-        "name":"[variables('alertName')]",
-        "type":"Microsoft.Insights/scheduledQueryRules",
-        "apiVersion": "2018-04-16",
-        "location": "[variables('alertLocation')]",
-        "properties":{
-            "description": "[variables('alertDescription')]",
-            "enabled": "[variables('alertStatus')]",
-            "source": {
-                "query": "[variables('alertSource').Query]",
-                "dataSourceId": "[variables('alertSource').SourceId]",
-                "queryType":"[variables('alertSource').Type]"
-            },
-            "schedule":{
-                "frequencyInMinutes": "[variables('alertSchedule').Frequency]",
-                "timeWindowInMinutes": "[variables('alertSchedule').Time]"
-            },
-            "action":{
-                "odata.type": "Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.Microsoft.AppInsights.Nexus.DataContracts.Resources.ScheduledQueryRules.AlertingAction",
-                "severity":"[variables('alertActions').SeverityLevel]",
-                "aznsAction":{
-                    "actionGroup":"[array(variables('actionGrp').ActionGroup)]",
-                    "emailSubject":"[variables('actionGrp').Subject]",
-                    "customWebhookPayload":"[variables('actionGrp').Webhook]"
-                },
-                "trigger":{
-                    "thresholdOperator":"[variables('alertTrigger').Operator]",
-                    "threshold":"[variables('alertTrigger').Threshold]"
-                }
-            }
-        }
-    } ]
-}
+    1. **預覽**圖表會顯示一段時間的查詢評估結果。 您可以變更圖表期間，或選取因維度唯一的警示分割所產生的不同時間序列。
 
-```
+        ![預覽圖表](media/alerts-log/preview-chart.png)
 
-基於本逐步解說的目的，上述 JSON 範例可儲存為 (假設) sampleScheduledQueryRule.json，而且可以使用 [Azure 入口網站中的 Azure Resource Manager](../../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template) 來進行部署。
+    1. 接下來，根據預覽資料設定 **警示邏輯**; [**運算子**、 **臨界值**](alerts-unified-log.md#threshold-and-operator)和 [**頻率**](alerts-unified-log.md#frequency)。
 
+        ![具有臨界值和警示邏輯的預覽圖表](media/alerts-log/chart-and-alert-logic.png)
 
-### <a name="log-alert-with-cross-resource-query-using-azure-resource-template"></a>使用 Azure 資源範本和跨資源查詢的記錄警示
+    1. 您可以選擇性地在 [ **Advanced options** ] 區段中設定[**觸發警示的違規次數**](alerts-unified-log.md#number-of-violations-to-trigger-alert)。
+    
+        ![進階選項](media/alerts-log/advanced-options.png)
 
-以下結構可用來根據資源範本使用[計量測量類型記錄警示](../log-query/cross-workspace-query.md)的[跨資源記錄搜尋查詢](./alerts-unified-log.md#metric-measurement-alert-rules)[建立排程的查詢規則](/rest/api/monitor/scheduledqueryrules/createorupdate)，其中使用資料集範例作為變數。
+1. 在 [ **動作** ] 索引標籤中，選取或建立必要的 [動作群組](action-groups.md)。
 
-```json
+    ![[動作] 索引標籤](media/alerts-log/actions-tab.png)
 
-{
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-    },
-    "variables": {
-        "alertLocation": "Region Name for your Application Insights App or Log Analytics Workspace",
-        "alertName": "sample log alert",
-        "alertDescr": "Sample log search alert",
-        "alertStatus": "true",
-        "alertSource":{
-            "Query":"union workspace(\"servicews\").Update, app('serviceapp').requests | summarize AggregatedValue = count() by bin(TimeGenerated,1h), Classification",
-            "Resource1": "/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/contosoRG/providers/microsoft.OperationalInsights/workspaces/servicews",
-            "Resource2": "/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/contosoRG/providers/microsoft.insights/components/serviceapp",
-            "SourceId": "/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/contosoRG/providers/microsoft.OperationalInsights/workspaces/servicews",
-            "Type":"ResultCount"
-        },
-        "alertSchedule":{
-            "Frequency": 15,
-            "Time": 60
-        },
-        "alertActions":{
-            "SeverityLevel": "4",
-            "SuppressTimeinMin": 20
-        },
-        "alertTrigger":{
-            "Operator":"GreaterThan",
-            "Threshold":"1"
-        },
-        "metricMeasurement": {
-            "thresholdOperator": "Equal",
-            "threshold": "1",
-            "metricTriggerType": "Consecutive",
-            "metricColumn": "Classification"
-        },
-        "actionGrp":{
-            "ActionGroup": "/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/contosoRG/providers/microsoft.insights/actiongroups/sampleAG",
-            "Subject": "Customized Email Header",
-            "Webhook": "{ \"alertname\":\"#alertrulename\", \"IncludeSearchResults\":true }"
-        }
-    },
-    "resources":[ {
-        "name":"[variables('alertName')]",
-        "type":"Microsoft.Insights/scheduledQueryRules",
-        "apiVersion": "2018-04-16",
-        "location": "[variables('alertLocation')]",
-        "properties":{
-            "description": "[variables('alertDescr')]",
-            "enabled": "[variables('alertStatus')]",
-            "source": {
-                "query": "[variables('alertSource').Query]",
-                "authorizedResources": "[concat(array(variables('alertSource').Resource1), array(variables('alertSource').Resource2))]",
-                "dataSourceId": "[variables('alertSource').SourceId]",
-                "queryType":"[variables('alertSource').Type]"
-            },
-            "schedule":{
-                "frequencyInMinutes": "[variables('alertSchedule').Frequency]",
-                "timeWindowInMinutes": "[variables('alertSchedule').Time]"
-            },
-            "action":{
-                "odata.type": "Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.Microsoft.AppInsights.Nexus.DataContracts.Resources.ScheduledQueryRules.AlertingAction",
-                "severity":"[variables('alertActions').SeverityLevel]",
-                "throttlingInMin": "[variables('alertActions').SuppressTimeinMin]",
-                "aznsAction":{
-                    "actionGroup": "[array(variables('actionGrp').ActionGroup)]",
-                    "emailSubject":"[variables('actionGrp').Subject]",
-                    "customWebhookPayload":"[variables('actionGrp').Webhook]"
-                },
-                "trigger":{
-                    "thresholdOperator":"[variables('alertTrigger').Operator]",
-                    "threshold":"[variables('alertTrigger').Threshold]",
-                    "metricTrigger":{
-                        "thresholdOperator": "[variables('metricMeasurement').thresholdOperator]",
-                        "threshold": "[variables('metricMeasurement').threshold]",
-                        "metricColumn": "[variables('metricMeasurement').metricColumn]",
-                        "metricTriggerType": "[variables('metricMeasurement').metricTriggerType]"
-                    }
-                }
-            }
-        }
-    } ]
-}
+1. 在 [ **詳細資料** ] 索引標籤中，定義 **警示規則詳細資料**和 **專案詳細資料**。 您可以選擇性地設定是否要 **立即開始**執行，或在警示規則引發之後的期間將 [**動作靜音**](alerts-unified-log.md#state-and-resolving-alerts) 。
 
-```
+    > [!NOTE]
+    > 記錄警示規則目前是無狀態的，而且會在每次建立警示時引發動作，除非已定義靜音。
 
-> [!IMPORTANT]
-> 在記錄警示中使用跨資源查詢時，必須使用 [authorizedResources](/rest/api/monitor/scheduledqueryrules/createorupdate#source)，且使用者必須可存取所列的資源清單
+    ![詳細資料索引標籤](media/alerts-log/details-tab.png)
 
-基於本逐步解說的目的，上述 JSON 範例可儲存為 (假設) sampleScheduledQueryRule.json，而且可以使用 [Azure 入口網站中的 Azure Resource Manager](../../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template) 來進行部署。
+1. 在 [ **標記** ] 索引標籤中，設定警示規則資源上的任何必要標記。
+
+    ![標記索引標籤](media/alerts-log/tags-tab.png)
+
+1. 在 [ **審核 + 建立** ] 索引標籤中，會執行驗證，並通知任何問題。 檢查並核准規則定義。
+1. 如果所有欄位都是正確的，請選取 [ **建立** ] 按鈕，並完成建立警示規則。 所有警示都可以從警示管理中查看。
+ 
+    ![檢查和建立索引標籤](media/alerts-log/review-and-create-tab.png)
+
+## <a name="view--manage-log-alerts-in-azure-portal"></a>在 Azure 入口網站中檢視和管理記錄警示
+
+1. 在 [入口網站](https://portal.azure.com/)中，選取相關的資源或 **監視** 服務。 然後選取 [監視] 區段中的 [ **警示** ]。
+
+1. 警示管理會顯示所有引發的警示。 [深入瞭解警示管理](alerts-managing-alert-instances.md)。
+
+    > [!NOTE]
+    > 記錄警示規則目前為 [無狀態且無法解析](alerts-unified-log.md#state-and-resolving-alerts)。
+
+1. 選取頂端列上的 [ **管理規則** ] 按鈕以編輯規則：
+
+    ![ 管理警示規則](media/alerts-log/manage-alert-rules.png)
 
 ## <a name="managing-log-alerts-using-powershell"></a>使用 PowerShell 記錄管理警示
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Azure 監視器[排程的查詢規則 API](/rest/api/monitor/scheduledqueryrules/)是 REST API，而且與 Azure Resource Manager REST API 完全相容。 以下所列的 PowerShell Cmdlet 可用於利用已[排程的查詢規則 API](/rest/api/monitor/scheduledqueryrules/)。
+> [!NOTE]
+> API 版本目前不支援 PowerShell `2020-05-01-preview`
 
-- [AzScheduledQueryRule](/powershell/module/az.monitor/new-azscheduledqueryrule) ： PowerShell Cmdlet 可建立新的記錄警示規則。
+下列 PowerShell Cmdlet 可用來管理已 [排程查詢規則 API](/rest/api/monitor/scheduledqueryrules/)的規則。
+
+- [AzScheduledQueryRule](/powershell/module/az.monitor/new-azscheduledqueryrule) ： PowerShell Cmdlet 以建立新的記錄警示規則。
 - [AzScheduledQueryRule](/powershell/module/az.monitor/set-azscheduledqueryrule) ： PowerShell Cmdlet 可更新現有的記錄警示規則。
-- [AzScheduledQueryRuleSource](/powershell/module/az.monitor/new-azscheduledqueryrulesource) ： PowerShell Cmdlet 可建立或更新指定記錄警示之來源參數的物件。 做為[AzScheduledQueryRule](/powershell/module/az.monitor/new-azscheduledqueryrule)和[AzScheduledQueryRule](/powershell/module/az.monitor/set-azscheduledqueryrule) Cmdlet 的輸入使用。
-- [AzScheduledQueryRuleSchedule](/powershell/module/az.monitor/new-azscheduledqueryruleschedule)： PowerShell Cmdlet 可建立或更新指定記錄警示之排程參數的物件。 做為[AzScheduledQueryRule](/powershell/module/az.monitor/new-azscheduledqueryrule)和[AzScheduledQueryRule](/powershell/module/az.monitor/set-azscheduledqueryrule) Cmdlet 的輸入使用。
-- [AzScheduledQueryRuleAlertingAction](/powershell/module/az.monitor/new-azscheduledqueryrulealertingaction) ： PowerShell Cmdlet 可建立或更新指定記錄警示之動作參數的物件。 做為[AzScheduledQueryRule](/powershell/module/az.monitor/new-azscheduledqueryrule)和[AzScheduledQueryRule](/powershell/module/az.monitor/set-azscheduledqueryrule) Cmdlet 的輸入使用。
-- [AzScheduledQueryRuleAznsActionGroup](/powershell/module/az.monitor/new-azscheduledqueryruleaznsactiongroup) ： PowerShell Cmdlet 可建立或更新指定記錄警示之動作群組參數的物件。 用來做為[AzScheduledQueryRuleAlertingAction](/powershell/module/az.monitor/new-azscheduledqueryrulealertingaction) Cmdlet 的輸入。
-- [AzScheduledQueryRuleTriggerCondition](/powershell/module/az.monitor/new-azscheduledqueryruletriggercondition) ： PowerShell Cmdlet 可建立或更新指定記錄警示之觸發條件參數的物件。 用來做為[AzScheduledQueryRuleAlertingAction](/powershell/module/az.monitor/new-azscheduledqueryrulealertingaction) Cmdlet 的輸入。
-- [AzScheduledQueryRuleLogMetricTrigger](/powershell/module/az.monitor/new-azscheduledqueryrulelogmetrictrigger) ： PowerShell Cmdlet 可用於建立或更新物件，指定度量[量測類型記錄警示的計量](./alerts-unified-log.md#metric-measurement-alert-rules)觸發條件參數。 用來做為[AzScheduledQueryRuleTriggerCondition](/powershell/module/az.monitor/new-azscheduledqueryruletriggercondition) Cmdlet 的輸入。
-- [AzScheduledQueryRule](/powershell/module/az.monitor/get-azscheduledqueryrule) ：用來列出現有記錄警示規則或特定記錄警示規則的 PowerShell Cmdlet
-- [AzScheduledQueryRule](/powershell/module/az.monitor/update-azscheduledqueryrule) ：用來啟用或停用記錄警示規則的 PowerShell Cmdlet
-- [AzScheduledQueryRule](/powershell/module/az.monitor/remove-azscheduledqueryrule)： PowerShell Cmdlet 刪除現有的記錄警示規則
+- [AzScheduledQueryRuleSource](/powershell/module/az.monitor/new-azscheduledqueryrulesource) ： PowerShell Cmdlet 可建立或更新指定記錄警示來源參數的物件。 用來作為 [AzScheduledQueryRule](/powershell/module/az.monitor/new-azscheduledqueryrule) 和 [AzScheduledQueryRule](/powershell/module/az.monitor/set-azscheduledqueryrule) Cmdlet 的輸入。
+- [AzScheduledQueryRuleSchedule](/powershell/module/az.monitor/new-azscheduledqueryruleschedule)： PowerShell Cmdlet 可建立或更新物件，指定記錄警示的排程參數。 用來作為 [AzScheduledQueryRule](/powershell/module/az.monitor/new-azscheduledqueryrule) 和 [AzScheduledQueryRule](/powershell/module/az.monitor/set-azscheduledqueryrule) Cmdlet 的輸入。
+- [AzScheduledQueryRuleAlertingAction](/powershell/module/az.monitor/new-azscheduledqueryrulealertingaction) ： PowerShell Cmdlet 可建立或更新物件，指定記錄警示的動作參數。 用來作為 [AzScheduledQueryRule](/powershell/module/az.monitor/new-azscheduledqueryrule) 和 [AzScheduledQueryRule](/powershell/module/az.monitor/set-azscheduledqueryrule) Cmdlet 的輸入。
+- [AzScheduledQueryRuleAznsActionGroup](/powershell/module/az.monitor/new-azscheduledqueryruleaznsactiongroup) ： PowerShell Cmdlet 可建立或更新物件，指定記錄警示的動作群組參數。 用來作為 [AzScheduledQueryRuleAlertingAction](/powershell/module/az.monitor/new-azscheduledqueryrulealertingaction) Cmdlet 的輸入。
+- [AzScheduledQueryRuleTriggerCondition](/powershell/module/az.monitor/new-azscheduledqueryruletriggercondition) ： PowerShell Cmdlet 來建立或更新物件，以指定記錄警示的觸發條件參數。 用來作為 [AzScheduledQueryRuleAlertingAction](/powershell/module/az.monitor/new-azscheduledqueryrulealertingaction) Cmdlet 的輸入。
+- [AzScheduledQueryRuleLogMetricTrigger](/powershell/module/az.monitor/new-azscheduledqueryrulelogmetrictrigger) ： PowerShell Cmdlet 可建立或更新物件，指定 [計量測量類型記錄警示](./alerts-unified-log.md#calculation-of-measure-based-on-a-numeric-column-such-as-cpu-counter-value)的度量觸發條件參數。 用來作為 [AzScheduledQueryRuleTriggerCondition](/powershell/module/az.monitor/new-azscheduledqueryruletriggercondition) Cmdlet 的輸入。
+- [AzScheduledQueryRule](/powershell/module/az.monitor/get-azscheduledqueryrule) ： PowerShell Cmdlet 可列出現有的記錄警示規則或特定的記錄警示規則
+- [AzScheduledQueryRule](/powershell/module/az.monitor/update-azscheduledqueryrule) ： PowerShell Cmdlet 以啟用或停用記錄警示規則
+- [AzScheduledQueryRule](/powershell/module/az.monitor/remove-azscheduledqueryrule)： PowerShell Cmdlet 可刪除現有的記錄警示規則
 
 > [!NOTE]
-> ScheduledQueryRules PowerShell Cmdlet 只能管理已建立的 Cmdlet 本身，或使用 Azure 監視器[排程的查詢規則 API](/rest/api/monitor/scheduledqueryrules/)。 只有在使用者[切換 Log Analytics 警示的 API 喜好](alerts-log-api-switch.md)設定之後，才可以使用 ScheduledQueryRules PowerShell Cmdlet 來管理使用舊版[LOG analytics 警示 API](api-alerts.md)建立的記錄警示規則，以及[log analytics 儲存的搜尋和警示](../insights/solutions.md)的舊版範本。
+> ScheduledQueryRules PowerShell Cmdlet 只能管理在目前已 [排程的查詢規則 API](/rest/api/monitor/scheduledqueryrules/)中建立的規則。 使用舊版 [Log Analytics 警示 api](api-alerts.md) 所建立的記錄警示規則只能在 [切換至已排程的查詢規則 api](alerts-log-api-switch.md)之後，才使用 PowerShell 進行管理。
 
-下圖說明使用 scheduledQueryRules PowerShell Cmdlet 建立範例記錄警示規則的步驟。
+以下是使用 PowerShell 建立記錄警示規則的範例步驟：
 
 ```powershell
 $source = New-AzScheduledQueryRuleSource -Query 'Heartbeat | summarize AggregatedValue = count() by bin(TimeGenerated, 5m), _ResourceId' -DataSourceId "/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/contosoRG/providers/microsoft.OperationalInsights/workspaces/servicews"
@@ -345,26 +247,84 @@ $alertingAction = New-AzScheduledQueryRuleAlertingAction -AznsAction $aznsAction
 New-AzScheduledQueryRule -ResourceGroupName "contosoRG" -Location "Region Name for your Application Insights App or Log Analytics Workspace" -Action $alertingAction -Enabled $true -Description "Alert description" -Schedule $schedule -Source $source -Name "Alert Name"
 ```
 
-## <a name="managing-log-alerts-using-cli-or-api"></a>使用 CLI 或 API 記錄管理警示
+您也可以使用 PowerShell [，使用範本和參數](./alerts-log-create-templates.md) 檔案來建立記錄警示：
 
-Azure 監視器[排程的查詢規則 API](/rest/api/monitor/scheduledqueryrules/)是 REST API，而且與 Azure Resource Manager REST API 完全相容。 因此，可以使用 Azure CLI 的 Resource Manager 命令，透過 Powershell 使用。
+```powershell
+Connect-AzAccount
 
+Select-AzSubscription -SubscriptionName <yourSubscriptionName>
 
-> [!NOTE]
-> 管理 Log Analytics 的記錄警示時，也可以使用舊版 [Log Analytics Alert API](api-alerts.md) 及舊版 [Log Analytics 儲存的搜尋和警示](../insights/solutions.md)範本來管理。 如需有關預設使用這裡詳述之新 ScheduledQueryRules API 的詳細資訊，請參閱[切換至 Log Analytics 警示的新 API](alerts-log-api-switch.md)。
-
-記錄警示目前沒有專用的 CLI 命令;但如下所示，您可以透過 Azure Resource Manager CLI 命令，針對先前在資源範本區段中所顯示的範例資源範本（sampleScheduledQueryRule.js開啟）來使用：
-
-```azurecli
-az group deployment create --resource-group contosoRG --template-file sampleScheduledQueryRule.json
+New-AzResourceGroupDeployment -Name AlertDeployment -ResourceGroupName ResourceGroupofTargetResource `
+  -TemplateFile mylogalerttemplate.json -TemplateParameterFile mylogalerttemplate.parameters.json
 ```
 
-成功完成作業後，系統會傳回 201，說明新警示規則的建立，或是傳回 200，表示現有的警示規則已修改。
+## <a name="managing-log-alerts-using-cli"></a>使用 CLI 記錄管理警示
+
+> [!NOTE]
+> Azure CLI 支援僅適用于 scheduledQueryRules API 版本和更新版本 `2020-05-01-preview` 。 舊 API 版本可以搭配使用 Azure Resource Manager CLI 與範本，如下所述。 如果您使用舊版 [Log Analytics 警示 API](api-alerts.md)，您將必須切換為使用 CLI。 [深入瞭解切換](./alerts-log-api-switch.md)。
+
+先前幾節描述如何使用 Azure 入口網站建立、查看和記錄管理警示規則。 此節說明如何使用跨平台 [Azure CLI](/cli/azure/get-started-with-azure-cli) 執行相同的作業。 開始使用 Azure CLI 最快的方式就是透過 [Azure Cloud Shell](../../cloud-shell/overview.md)。 在本文中，我們將使用 Cloud Shell。
+
+1. 移至 Azure 入口網站，然後選取 **Cloud Shell**。
+
+1. 在出現提示時，您可以搭配 ``--help`` 選項來使用命令，以深入了解該命令與其使用方式。 例如，下列命令會顯示可用來建立、查看和記錄管理警示的命令清單：
+
+    ```azurecli
+    az monitor scheduled-query --help
+    ```
+
+1. 您可以建立記錄警示規則來監視系統事件錯誤的計數：
+
+    ```azurecli
+    az monitor scheduled-query create -g {ResourceGroup} -n {nameofthealert} --scopes {vm_id} --condition "count \'union Event, Syslog | where TimeGenerated > ago(1h) | where EventLevelName == \"Error\" or SeverityLevel== \"err\"\' > 2" --description {descriptionofthealert}
+    ```
+
+1. 您可以使用下列命令來查看資源群組中的所有記錄警示：
+
+    ```azurecli
+    az monitor scheduled-query list -g {ResourceGroup}
+    ```
+
+1. 您可以使用規則的名稱或資源識別碼，查看特定記錄警示規則的詳細資料：
+
+    ```azurecli
+    az monitor scheduled-query show -g {ResourceGroup} -n {AlertRuleName}
+    ```
+
+    ```azurecli
+    az monitor scheduled-query show --ids {RuleResourceId}
+    ```
+
+1. 您可以使用下列命令來停用記錄警示規則：
+
+    ```azurecli
+    az monitor scheduled-query update -g {ResourceGroup} -n {AlertRuleName} --enabled false
+    ```
+
+1. 您可以使用下列命令來刪除記錄警示規則：
+
+    ```azurecli
+    az monitor scheduled-query delete -g {ResourceGroup} -n {AlertRuleName}
+    ```
+
+您也可以搭配使用 Azure Resource Manager CLI 與 [範本](./alerts-log-create-templates.md) 檔案：
+
+```azurecli
+az login
+
+az group deployment create \
+    --name AlertDeployment \
+    --resource-group ResourceGroupofTargetResource \
+    --template-file mylogalerttemplate.json \
+    --parameters @mylogalerttemplate.parameters.json
+```
+
+建立成功時，會傳回201。 更新成功時，會傳回200。
 
 ## <a name="next-steps"></a>後續步驟
 
-* 瞭解[Azure 警示中的記錄警示](./alerts-unified-log.md)
-* 了解 [Webhook 動作記錄警示](./alerts-log-webhook.md)
-* 深入瞭解[Application Insights](../log-query/log-query-overview.md)
-* 深入瞭解[記錄查詢](../log-query/log-query-overview.md)。
+* 瞭解 [記錄警示](./alerts-unified-log.md)。
+* 使用 [Azure Resource Manager 範本](./alerts-log-create-templates.md)建立記錄警示。
+* 瞭解 [記錄警示的 webhook 動作](./alerts-log-webhook.md)。
+* 深入瞭解 [記錄查詢](../log-query/log-query-overview.md)。
 

@@ -9,12 +9,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6b1fe78ac00b57d7627a64970e84ae8b717ae5c3
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 35fb8adaa5f7c0fff1c6d967f0136736b8071ce4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501911"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91260150"
 ---
 # <a name="secure-your-synapse-workspace-preview"></a>保護您的 Synapse 工作區 (預覽)
 
@@ -82,7 +82,7 @@ ms.locfileid: "87501911"
   - 將 **WS1\_SparkAdmins** 指派給 Synapse Spark 管理員
   - 將 **WS1\_SQLAdmins** 指派給 Synapse SQL 管理員
 
-## <a name="step-4-configure-data-lake-storage-gen2-for-use-by-synapse-workspace"></a>步驟4：設定 Synapse 工作區所使用的 Data Lake Storage Gen2
+## <a name="step-4-configure-data-lake-storage-gen2-for-use-by-synapse-workspace"></a>步驟4：設定 Synapse 工作區使用 Data Lake Storage Gen2
 
 Synapse 工作區需要 STG1 和 CNT1 的存取權，才能執行管線和系統工作。
 
@@ -97,8 +97,8 @@ Synapse 工作區需要 STG1 和 CNT1 的存取權，才能執行管線和系統
 
 - 開啟 Azure 入口網站
 - 瀏覽至 WS1
-- 在 [設定] 底下，按一下 [SQL Active Directory 管理員]
-- 按一下 [設定系統管理員]，然後選擇 [WS1\_SQLAdmins]
+- 在 [**設定**] 底下，選取 **[SQL Active Directory 管理員**]
+- 選取 [ **設定管理員** ] 並選擇 [WS1 \_ SQLAdmins]
 
 ## <a name="step-6-maintain-access-control"></a>步驟6：維護存取控制
 
@@ -112,7 +112,7 @@ Synapse 工作區需要 STG1 和 CNT1 的存取權，才能執行管線和系統
 
 每個角色中的使用者都需要完成下列步驟：
 
-| Number | 步驟 | 工作區管理員 | Spark 管理員 | SQL 管理員 |
+| 數字 | 步驟 | 工作區管理員 | Spark 管理員 | SQL 管理員 |
 | --- | --- | --- | --- | --- |
 | 1 | 將 Parquet 檔案上傳至 CNT1 | YES | YES | YES |
 | 2 | 使用 SQL 隨選讀取 Parquet 檔案 | YES | 否 | YES |
@@ -123,8 +123,9 @@ Synapse 工作區需要 STG1 和 CNT1 的存取權，才能執行管線和系統
 
 > [!NOTE]
 > [1] 若要建立 SQL 或 Spark 集區，使用者在 Synapse 工作區上必須至少擁有「參與者」角色。
-> [!TIP]
 >
+ 
+>[!TIP]
 > - 有些步驟會刻意不讓某些角色執行。
 > - 請注意，如果未完整設定安全性，某些工作可能會失敗。 這些工作會在資料表中說明。
 
