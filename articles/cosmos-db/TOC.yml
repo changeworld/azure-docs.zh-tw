@@ -21,6 +21,8 @@
           href: create-sql-api-dotnet.md
         - name: JAVA 應用程式
           href: create-sql-api-java.md
+        - name: Spring Data 應用程式
+          href: create-sql-api-spring-data.md
         - name: Node.js 應用程式
           href: create-sql-api-nodejs.md
         - name: Python 應用程式
@@ -73,6 +75,8 @@
       href: sql-api-dotnet-v3sdk-samples.md
     - name: Java SDK v4 範例
       href: sql-api-java-sdk-samples.md
+    - name: Spring Data v3 範例
+      href: sql-api-spring-data-sdk-samples.md
     - name: Node.js 範例
       href: sql-api-nodejs-samples.md
     - name: Python 範例
@@ -1074,7 +1078,7 @@
               href: troubleshoot-not-found.md
             - name: 針對未經授權進行疑難排解
               href: troubleshoot-unauthorized.md
-            - name: SDK 在多區域環境中的可用性
+            - name: 在多區域環境中的可用性問題
               href: troubleshoot-sdk-availability.md
         - name: .NET
           items:
@@ -1118,6 +1122,8 @@
           href: ../synapse-analytics/synapse-link/how-to-connect-synapse-link-cosmos-db.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: 使用 Azure Synapse Spark 進行查詢
           href: ../synapse-analytics/synapse-link/how-to-query-analytical-store-spark.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+        - name: 使用 Synapse SQL 無伺服器進行查詢
+          href: ../synapse-analytics/sql/query-cosmos-db-analytical-store.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: 搭配使用 Power BI 與 Synapse Link
           href: synapse-link-power-bi.md
     - name: 內建分析搭配 Apache Spark

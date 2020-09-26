@@ -70,10 +70,14 @@
           href: cache-how-to-premium-clustering.md
         - name: 利用 Redis 資料永續性來留存您的快取
           href: cache-how-to-premium-persistence.md
+        - name: 新增更多複本
+          href: cache-how-to-multi-replicas.md
         - name: 使用虛擬網路保護快取
           href: cache-how-to-premium-vnet.md
         - name: 私下連線至快取
           href: cache-private-link.md
+        - name: 啟用區域備援
+          href: cache-how-to-zone-redundancy.md
         - name: 設定異地複寫
           href: cache-how-to-geo-replication.md
         - name: 使用保留容量來儲存

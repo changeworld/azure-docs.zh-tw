@@ -82,7 +82,13 @@
   items:
     - name: REST API 文件
       href: 'https://docs.microsoft.com/rest/api/azure/'
+    - name: 呼叫程式庫 (Android/Java)
+      href: 'https://docs.microsoft.com/java/api/com.azure.communication.calling?view=communication-services-java-android'
+    - name: 呼叫程式庫 (JS)
+      href: 'https://docs.microsoft.com/javascript/api/azure-communication-services/@azure/communication-calling/?view=azure-communication-services-js'
+    - name: 呼叫程式庫 (iOS)
+      href: 'https://docs.microsoft.com/objectivec/communication-services/calling/'
 - name: 資源
   items:
     - name: 版本資訊
-      href: release-notes.md
+      href: 'https://github.com/Azure/Communication/blob/master/releasenotes/2020-September-22.md'

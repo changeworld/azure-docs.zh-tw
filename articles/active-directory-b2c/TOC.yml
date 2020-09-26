@@ -474,7 +474,7 @@
       href: error-codes.md
     - name: 擴充功能應用程式
       href: extensions-app.md
-    - name: IEF 版本資訊
+    - name: 自訂原則 (IEF) 版本資訊
       href: custom-policy-developer-notes.md
     - name: Microsoft Graph API 作業
       href: microsoft-graph-operations.md
@@ -505,7 +505,7 @@
       href: 'https://azure.microsoft.com/updates/?product=active-directory-b2c'
     - name: 解決方案與訓練
       href: solution-articles.md
-    - name: Stack Overflow
+    - name: 堆疊溢位
       href: 'https://stackoverflow.com/questions/tagged/azure-ad-b2c+identity-experience-framework'
     - name: 支援
       href: support-options.md

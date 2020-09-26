@@ -15,6 +15,8 @@
   items:
     - name: 設定時間序列深入解析 Gen2 環境
       href: tutorials-set-up-tsi-environment.md
+    - name: Azure Digital Twins 與 Azure 時間序列深入解析 Gen2 之間的模型同步處理
+      href: tutorials-model-sync.md
 - name: 概念
   items:
     - name: Azure 時間序列深入解析 Gen2

@@ -20,8 +20,6 @@
       href: tutorial-nsx-t-network-segment.md
     - name: 7 - 將內部部署環境對等互連至私人雲端
       href: tutorial-expressroute-global-reach-private-cloud.md
-    - name: 8 - 透過內容庫部署 VM
-      href: tutorial-deploy-vm-content-library.md
 - name: 概念
   items:
     - name: 私人雲端和叢集
@@ -36,6 +34,8 @@
       href: concepts-rbac.md
     - name: 私人雲端升級
       href: concepts-upgrades.md
+    - name: 監視和修復私人雲端
+      href: concepts-monitor-repair-private-cloud.md
 - name: 操作指南
   items:
     - name: 啟用 Azure VMware 解決方案
@@ -48,6 +48,8 @@
       href: manage-dhcp.md
     - name: 災害復原
       href: disaster-recovery.md
+    - name: 透過內容庫部署 VM
+      href: deploy-vm-content-library.md
     - name: Azure 原生整合
       items:
         - name: API 管理
@@ -68,10 +70,16 @@
           href: deploy-traffic-manager-to-balance-avs-workloads.md
         - name: NetApp 檔案
           href: net-app-files.md
+    - name: GitHub Enterprise Server
+      href: github-enterprise-server.md
     - name: VMware 解決方案
       items:
         - name: 設定 vRealize 作業
           href: vrealize-operations-for-avs.md
+    - name: VMware 生態系統
+      items:
+        - name: VM 的備份解決方案
+          href: ecosystem-back-up-vms.md
 - name: 參考
   items: null
 - name: 資源

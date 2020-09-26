@@ -9,6 +9,8 @@
   items:
     - name: 建立自訂資源提供者
       href: create-custom-provider.md
+    - name: 建立自訂資源提供者 - Azure PowerShell
+      href: create-custom-provider-quickstart-powershell.md
 - name: 教學課程
   items:
     - name: 開始使用自訂提供者
@@ -45,6 +47,8 @@
       href: /rest/api/customproviders/
     - name: Azure CLI
       href: /cli/azure/ext/custom-providers/custom-providers/
+    - name: Azure PowerShell
+      href: /powershell/module/Az.CustomProviders/
     - name: Azure 原則內建
       displayName: 'samples, policies, definitions'
       href: ./policy-reference.md
@@ -58,5 +62,5 @@
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: Resource Manager 範本最佳做法
       href: 'https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md'
-    - name: Stack Overflow
+    - name: 堆疊溢位
       href: 'https://stackoverflow.com/questions/tagged/azure-custom-providers'

@@ -2,11 +2,14 @@
   href: index.yml
   items:
     - name: 概觀
+      expanded: true
       items:
         - name: 比較外部身分識別的解決方案
           href: compare-with-b2c.md
         - name: 什麼是 B2B 來賓使用者存取權？
           href: what-is-b2b.md
+        - name: 什麼是 Azure AD B2C？
+          href: 'https://docs.microsoft.com/azure/active-directory-b2c/overview'
     - name: 快速入門
       items:
         - name: 在入口網站中新增來賓使用者
@@ -15,15 +18,15 @@
           href: b2b-quickstart-invite-powershell.md
     - name: 教學課程
       items:
-        - name: 透過 PowerShell 大量邀請
+        - name: 透過 PowerShell 大量邀請來賓使用者
           href: bulk-invite-powershell.md
-        - name: 透過入口網站大量邀請
+        - name: 透過入口網站大量邀請來賓使用者
           href: tutorial-bulk-invite.md
-        - name: 強制執行 Multi-Factor Authentication
+        - name: 為來賓使用者強制執行多重要素驗證
           href: b2b-tutorial-require-mfa.md
     - name: 範例
       items:
-        - name: 自助式註冊的範例
+        - name: 來賓使用者的自助式註冊範例
           href: code-samples-self-service-sign-up.md
         - name: 程式碼和 Azure PowerShell 範例
           href: code-samples.md
@@ -63,9 +66,9 @@
     - name: 操作指南
       expanded: true
       items:
-        - name: 設定外部共用
+        - name: 設定外部共同作業設定
           href: delegate-invitations.md
-        - name: 邀請 B2B 使用者
+        - name: 邀請來賓使用者
           items:
             - name: 管理員新增 B2B 使用者
               href: add-users-administrator.md
@@ -91,7 +94,7 @@
               href: direct-federation-adfs.md
         - name: 單次密碼驗證
           href: one-time-passcode.md
-        - name: 自助式註冊 (預覽)
+        - name: 來賓使用者的自助式註冊 (預覽)
           items:
             - name: 新增自助式註冊使用者流程
               href: self-service-sign-up-user-flow.md
@@ -103,7 +106,7 @@
               href: self-service-sign-up-add-api-connector.md
             - name: 新增自訂核准系統
               href: self-service-sign-up-add-approvals.md
-        - name: 管理來賓帳戶
+        - name: 管理來賓使用者的帳戶
           items:
             - name: 將 B2B 使用者新增至角色
               href: add-guest-to-role.md
@@ -113,7 +116,7 @@
               href: user-properties.md
             - name: 適用於 Azure AD 整合應用程式的 B2B
               href: configure-saas-apps.md
-        - name: 管理混合式組織中的存取權
+        - name: 在混合式組織中管理來賓的存取權
           items:
             - name: 授與本機使用者雲端應用程式的存取權限
               href: hybrid-on-premises-to-cloud.md
@@ -147,7 +150,7 @@
           href: 'https://azure.microsoft.com/pricing/calculator/'
         - name: 服務更新
           href: 'https://azure.microsoft.com/updates/?product=active-directory'
-        - name: Stack Overflow
+        - name: 堆疊溢位
           href: 'https://stackoverflow.com/questions/tagged/azure-active-directory'
         - name: 影片
           href: 'https://azure.microsoft.com/documentation/videos/index/?services=active-directory'

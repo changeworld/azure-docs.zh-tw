@@ -81,12 +81,16 @@
       items:
         - name: 設定裝置範本
           href: howto-set-up-template.md
+        - name: 如何使用屬性
+          href: howto-use-properties.md
         - name: 準備和連線 Azure Sphere DevKit
           href: howto-connect-sphere.md
         - name: 準備及連線 RuuviTag 裝置
           href: howto-connect-ruuvi.md
         - name: 準備及連線 Rigado Cascade 500
           href: howto-connect-rigado-cascade-500.md
+        - name: 使用 x.509 連線裝置
+          href: how-to-connect-devices-x509.md
         - name: 連線其他 IoT 雲端
           href: howto-build-iotc-device-bridge.md
     - name: 保持連線

@@ -11,16 +11,16 @@
         - name: 簡介
           href: get-started.md
           displayName: 'get, started'
-        - name: 1 建立 Synapse 工作區
+        - name: 1  建立工作區
           href: get-started-create-workspace.md
           displayName: 'get, started'
-        - name: 2 使用 SQL 集區進行分析
+        - name: 2 使用 SQL 集區
           href: get-started-analyze-sql-pool.md
           displayName: 'get, started'
-        - name: 3 使用 Spark 進行分析
+        - name: 3 使用 Spark
           href: get-started-analyze-spark.md
           displayName: 'get, started'
-        - name: 4 使用隨選 SQL 進行分析
+        - name: 4 使用 SQL 隨選
           href: get-started-analyze-sql-on-demand.md
           displayName: 'get, started'
         - name: 5 分析儲存體帳戶中的資料
@@ -84,6 +84,8 @@
   items:
     - name: 執行 Apache Spark 應用程式
       href: ./spark/intellij-tool-synapse.md
+    - name: 執行適用於 Spark 集區的 PySpark 應用程式
+      href: ./spark/vscode-tool-synapse.md
     - name: Spark 作業定義
       href: ./spark/apache-spark-job-definitions.md
     - name: Power BI Desktop
@@ -210,6 +212,8 @@
               href: ../data-factory/concepts-data-flow-expression-builder.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: 運算式語言
               href: ../data-factory/data-flow-expression-functions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: 與 Azure Data Factory 的差異
+              href: ./data-integration/concepts-data-factory-differences.md
     - name: Spark
       items:
         - name: 概觀
@@ -943,7 +947,7 @@
       href: 'https://docs.microsoft.com/answers/questions/topics/single/25423.html'
     - name: 服務更新
       href: 'https://azure.microsoft.com/updates/?product=sql-data-warehouse'
-    - name: Stack Overflow
+    - name: 堆疊溢位
       href: 'https://stackoverflow.com/questions/tagged/azure-synapse/'
     - name: 支援
       href: ./sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json

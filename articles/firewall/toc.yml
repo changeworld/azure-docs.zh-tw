@@ -88,6 +88,8 @@
       href: firewall-diagnostics.md
     - name: Azure 監視器記錄
       href: log-analytics-samples.md
+    - name: Azure 防火牆活頁簿
+      href: firewall-workbook.md
 - name: 參考
   items:
     - name: Azure CLI

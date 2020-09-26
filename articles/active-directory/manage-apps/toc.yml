@@ -18,8 +18,10 @@
       href: add-application-portal-configure.md
     - name: 將使用者指派至應用程式
       href: add-application-portal-assign-users.md
-    - name: 設定單一登入
+    - name: 設定 SAML 型單一登入
       href: add-application-portal-setup-sso.md
+    - name: 設定 OIDC 型單一登入
+      href: add-application-portal-setup-oidc-sso.md
     - name: 刪除應用程式
       href: delete-application-portal.md
 - name: 教學課程
@@ -280,7 +282,7 @@
       href: 'https://azure.microsoft.com/pricing/details/active-directory'
     - name: 服務更新
       href: 'https://azure.microsoft.com/updates/?product=active-directory'
-    - name: Stack Overflow
+    - name: 堆疊溢位
       href: 'https://stackoverflow.com/questions/tagged/azure-active-directory'
     - name: 影片
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=active-directory'
