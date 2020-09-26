@@ -1,21 +1,21 @@
 ---
 title: 適用于 Azure Functions 的 Azure Blob 儲存體輸出系結
-description: 瞭解如何將 Azure Blob 儲存體資料提供給 Azure 函數。
+description: 瞭解如何將 Azure Blob 儲存體輸出系結資料提供給 Azure 函數。
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 9596e6a6fd32994f782125c9bd4b8ca6d5a94b03
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 56d8078347b5de775b30c8db2c9412598070046c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213065"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91285361"
 ---
 # <a name="azure-blob-storage-output-binding-for-azure-functions"></a>適用于 Azure Functions 的 Azure Blob 儲存體輸出系結
 
-輸出系結可讓您修改和刪除 Azure 函式中的 blob 儲存體資料。
+輸出系結可讓您修改和刪除 Azure Function 中的 blob 儲存體資料。
 
 如需安裝和設定詳細資料的相關資訊，請參閱[概觀](./functions-bindings-storage-blob.md)。
 
@@ -338,7 +338,7 @@ Python 指令碼不支援屬性。
 
 # <a name="java"></a>[Java](#tab/java)
 
-`@BlobOutput`屬性可讓您存取觸發函數的 blob。 如果您使用具有屬性的位元組陣列，請將設定 `dataType` 為 `binary` 。 如需詳細資訊，請參閱 [輸出範例](#example) 。
+`@BlobOutput`屬性可讓您存取觸發函數的 blob。 如果您搭配屬性使用位元組陣列，請將設定 `dataType` 為 `binary` 。 如需詳細資料，請參閱 [輸出範例](#example) 。
 
 ---
 
@@ -382,11 +382,11 @@ Python 指令碼不支援屬性。
 * 字串為 `func.Out(str)`
 * 資料流程為 `func.Out(func.InputStream)`
 
-如需詳細資訊，請參閱 [輸出範例](#example) 。
+如需詳細資料，請參閱 [輸出範例](#example) 。
 
 # <a name="java"></a>[Java](#tab/java)
 
-`@BlobOutput`屬性可讓您存取觸發函數的 blob。 如果您使用具有屬性的位元組陣列，請將設定 `dataType` 為 `binary` 。 如需詳細資訊，請參閱 [輸出範例](#example) 。
+`@BlobOutput`屬性可讓您存取觸發函數的 blob。 如果您搭配屬性使用位元組陣列，請將設定 `dataType` 為 `binary` 。 如需詳細資料，請參閱 [輸出範例](#example) 。
 
 ---
 
@@ -400,5 +400,5 @@ Python 指令碼不支援屬性。
 
 ## <a name="next-steps"></a>後續步驟
 
-- [在 blob 儲存體資料變更時執行函式](./functions-bindings-storage-blob-trigger.md)
-- [函式執行時讀取 blob 儲存體資料](./functions-bindings-storage-blob-input.md)
+- [在 blob 儲存體資料變更時執行函數](./functions-bindings-storage-blob-trigger.md)
+- [在函數執行時讀取 blob 儲存體資料](./functions-bindings-storage-blob-input.md)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/23/2019
 ms.author: Zhchia
-ms.openlocfilehash: 083bb7549bb555cbbefaf680d401696ecd64b9c9
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7b4a5e76ec8dad66bf300cc3e1d55471383f83ff
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544905"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91285789"
 ---
 # <a name="tutorial-configure-symantec-web-security-service-wss-for-automatic-user-provisioning"></a>教學課程：設定 Symantec Web Security Service (WSS) 來自動布建使用者
 
@@ -62,11 +62,11 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
 3.  選取 [ **協力廠商使用者 & 群組同步**]。 
 
-    ![Symantec Web Security Service](media/symantec-web-security-service/third-party-users.png)
+    ![協力廠商使用者 & 群組同步選項的螢幕擷取畫面。](media/symantec-web-security-service/third-party-users.png)
 
 4.  複製 **SCIM URL** 和 **權杖**。 這些值將會在您 Symantec Web Security Service 的 [布建] 索引標籤中輸入至 [ **租使用者 URL** ] 和 [ **秘密權杖** ] 欄位中， (WSS) 應用程式 Azure 入口網站。
 
-    ![Symantec Web Security Service](media/symantec-web-security-service/scim.png)
+    ![[新增整合] 對話方塊的螢幕擷取畫面，其中已將 S C I M U R L 和權杖文字方塊稱為 out。](media/symantec-web-security-service/scim.png)
 
 ## <a name="add-symantec-web-security-service-wss-from-the-gallery"></a>從資源庫新增 Symantec Web Security Service (WSS) 
 
@@ -109,11 +109,11 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
 3. 選取 [佈建] 索引標籤。
 
-    ![佈建索引標籤](common/provisioning.png)
+    ![已呼叫 [布建] 選項的 [管理選項] 螢幕擷取畫面。](common/provisioning.png)
 
 4. 將 [佈建模式] 設定為 [自動]。
 
-    ![佈建索引標籤](common/provisioning-automatic.png)
+    ![[布建模式] 下拉式清單的螢幕擷取畫面，其中已呼叫 [自動] 選項。](common/provisioning-automatic.png)
 
 5. 在 [系統管理員認證] 區段底下，分別輸入**租使用者 url**和**秘密權杖**中稍早抓取的**SCIM URL**和**權杖**值。 按一下 [ **測試連接** ]，以確保 Azure AD 可以連線到 Symantec Web Security Service。 如果連接失敗，請確定您的 Symantec Web Security Service (WSS) 帳戶具有系統管理員許可權，然後再試一次。
 
@@ -123,23 +123,23 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
     ![通知電子郵件](common/provisioning-notification-email.png)
 
-7. 按一下 [檔案] 。
+7. 按一下 [檔案]  。
 
 8. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 使用者到 Symantec Web Security SERVICE] (WSS) **。
 
-    ![Symantec Web Security Service (WSS) 使用者對應](media/symantec-web-security-service/usermapping.png)
+    ![[對應] 區段的螢幕擷取畫面，其中會將 [同步處理 Azure Active Directory 使用者與 Symantec Web Security Service W] 選項稱為 [已呼叫]。](media/symantec-web-security-service/usermapping.png)
 
 9. 在 [ **屬性對應** ] 區段中，檢查從 Azure AD 同步處理至 Symantec Web Security SERVICE (WSS) 的使用者屬性。 選取為 [比對] 屬性 **的屬性會** 用來比對 Symantec Web Security SERVICE (WSS) 中的使用者帳戶，以進行更新作業。 選取 [儲存] 按鈕以認可所有變更。
 
-    ![Symantec Web Security Service (WSS) 使用者對應](media/symantec-web-security-service/userattribute.png)
+    ![顯示16個相符屬性的 [屬性對應] 區段的螢幕擷取畫面。](media/symantec-web-security-service/userattribute.png)
 
 10. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 群組至 Symantec Web Security Service**]。
 
-    ![Symantec Web Security Service (WSS) 使用者對應](media/symantec-web-security-service/groupmapping.png)
+    ![[對應] 區段的螢幕擷取畫面，其中已將 [同步處理 Azure Active Directory 群組至 [Symantec Web Security Service W s] 選項稱為 [已呼叫]。](media/symantec-web-security-service/groupmapping.png)
 
 11. 在 [ **屬性對應** ] 區段中，檢查從 Azure AD 同步處理至 Symantec Web Security SERVICE (WSS) 的群組屬性。 選取為 [比對] 屬性 **的屬性會** 用來比對 Symantec Web Security Service 中的群組 (WSS) 以進行更新作業。 選取 [儲存] 按鈕以認可所有變更。
 
-    ![Symantec Web Security Service (WSS) 使用者對應](media/symantec-web-security-service/groupattribute.png)
+    ![顯示三個相符屬性的 [屬性對應] 區段的螢幕擷取畫面。](media/symantec-web-security-service/groupattribute.png)
 
 12. 若要設定範圍篩選，請參閱[範圍篩選教學課程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中提供的下列指示。
 

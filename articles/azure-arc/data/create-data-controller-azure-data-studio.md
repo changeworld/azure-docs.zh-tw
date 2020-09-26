@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 71678977f899b910a97dbb552233f36ca5a51f26
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: f6fd8169c587e928da9946d74335ddc758889144
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934643"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273138"
 ---
 # <a name="create-data-controller-in-azure-data-studio"></a>在 Azure Data Studio 中建立資料控制器
 
@@ -22,7 +22,7 @@ ms.locfileid: "90934643"
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 您需要存取 Kubernetes 叢集，並將您的 kubeconfig 檔案設定為指向您想要部署的 Kubernetes 叢集。
 - 您必須 [安裝用戶端工具](install-client-tools.md) ，包括 **Azure Data Studio** Azure Data Studio 擴充功能，這些擴充功能稱為 **Azure Arc** 和 **Azure 資料 CLI**。
@@ -42,7 +42,7 @@ ms.locfileid: "90934643"
 9. 輸入資料控制站的名稱，以及將建立資料控制器的命名空間。  
 
 > [!NOTE]
-> 如果命名空間已存在，則會使用此命名空間（如果命名空間尚未包含其他 Kubernetes 物件-pod 等）。 如果命名空間不存在，將會嘗試建立命名空間。  在 Kubernetes 叢集中建立命名空間需要 Kubernetes 叢集系統管理員許可權。  如果您沒有 Kubernetes 叢集系統管理員許可權，請要求您的 Kubernetes 叢集系統管理員 [使用 Kubernetes 原生工具來執行建立資料控制](./create-data-controller-using-k8s-native-tools.md) 站中的前幾個步驟，而 Kubernetes 管理員必須先執行這些步驟，才能完成此嚮導。
+> 如果命名空間已存在，則會使用此命名空間（如果命名空間尚未包含其他 Kubernetes 物件-pod 等）。 如果命名空間不存在，將會嘗試建立命名空間。  在 Kubernetes 叢集中建立命名空間需要 Kubernetes 叢集系統管理員許可權。  如果您沒有 Kubernetes 叢集系統管理員許可權，請要求您的 Kubernetes 叢集系統管理員 [使用 Kubernetes 原生工具來執行建立資料控制](./create-data-controller-using-kubernetes-native-tools.md) 站中的前幾個步驟，而 Kubernetes 管理員必須先執行這些步驟，才能完成此嚮導。
 
 > [!NOTE]
 > 注意：資料控制器和命名空間名稱將用來在 Kubernetes 叢集中建立自訂資源，因此必須符合 Kubernetes 的 [命名慣例](https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names)。

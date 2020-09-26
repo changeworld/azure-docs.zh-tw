@@ -6,21 +6,23 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/31/2020
+ms.date: 09/24/2020
 ms.author: alkohli
-ms.openlocfilehash: 107485277e28a44841b0d71fef686f0bcbf52216
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 8b733d1e5eae9cae01233fda4be078bd188e07c9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90899506"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334356"
 ---
-# <a name="update-your-azure-stack-edge-pro-with-gpu"></a>使用 GPU 更新 Azure Stack Edge Pro 
+# <a name="update-your-azure-stack-edge-pro-gpu"></a>更新您的 Azure Stack Edge Pro GPU 
 
-本文說明透過本機 web UI 和透過 Azure 入口網站在 Azure Stack Edge Pro 上安裝更新時所需的步驟。 您可以套用軟體更新或修補程式，以將裝置上的 Azure Stack Edge Pro 裝置和相關聯的 Kubernetes cluaster 保持在最新狀態。 
+本文說明透過本機 web UI 和透過 Azure 入口網站在 Azure Stack Edge Pro 上安裝更新時所需的步驟。 您可以套用軟體更新或修補程式，以將裝置上的 Azure Stack Edge Pro 裝置和相關聯的 Kubernetes 叢集保持在最新狀態。 
+
+本文中所述的程式是使用不同版本的軟體來執行，但程式對於目前的軟體版本會維持不變。
 
 > [!IMPORTANT]
-> - 更新 **2008** 對應于裝置上的 **2.1.1328.1904** 軟體版本。 如需此更新的詳細資訊，請參閱 [版本](azure-stack-edge-gpu-2008-release-notes.md)資訊。
+> - 更新 **2009** 對應于裝置上的 **2.1.1358.2075** 軟體版本。 如需此更新的詳細資訊，請參閱 [版本](azure-stack-edge-gpu-2009-release-notes.md)資訊。
 >
 > - 請記住，安裝更新或 Hotfix 會重新啟動您的裝置。 此更新需要您依序套用兩個更新。 首先，套用裝置軟體更新，然後 Kubernetes 更新。 假設 Azure Stack Edge Pro 是單一節點裝置，任何進行中的 i/o 都會中斷，而您的裝置會在裝置軟體更新時遇到最多30分鐘的停機時間。
 
@@ -82,7 +84,7 @@ ms.locfileid: "90899506"
 
     ![更新之後的軟體版本](./media/azure-stack-edge-gpu-install-update/portal-update-6.png)
 
-    如果您選擇只下載更新，請選取通知以開啟 [ **裝置更新** ] 分頁。 選取 [安裝]。
+    如果您選擇只下載更新，請選取通知以開啟 [ **裝置更新** ] 分頁。 選取 [安裝]  。
   
     ![更新之後的軟體版本](./media/azure-stack-edge-gpu-install-update/portal-update-7.png)
 
@@ -213,6 +215,6 @@ ms.locfileid: "90899506"
 10. 成功安裝 Kubernetes 更新之後，在 [**維護**  >  **軟體更新**] 中不會變更顯示的軟體。 
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 深入瞭解如何 [管理您的 Azure Stack Edge 專業人員](azure-stack-edge-manage-access-power-connectivity-mode.md)。

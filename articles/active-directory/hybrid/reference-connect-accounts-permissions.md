@@ -17,12 +17,12 @@ ms.date: 05/18/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 28fc05be7a5b54713aec8c4f830eeb2f7e6a251c
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: a1efafd353bea20ea1ada0b5e92a9e6df00deb78
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662343"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273595"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect：帳戶和權限
 
@@ -115,7 +115,7 @@ AD DS 連接器帳戶是為了在 Windows Server AD 中讀取和寫入而建立�
 
 下表摘要列出自訂安裝精靈頁面、所收集的認證，以及這些認證的用途。
 
-![快速安裝](./media/reference-connect-accounts-permissions/customize.png)
+![顯示自訂安裝精靈頁面的螢幕擷取畫面。](./media/reference-connect-accounts-permissions/customize.png)
 
 | 精靈頁面 | 收集的認證 | 所需的權限 | 用於 |
 | --- | --- | --- | --- |
@@ -208,7 +208,7 @@ AD DS 連接器帳戶是為了在 Windows Server AD 中讀取和寫入而建立�
 #### <a name="virtual-service-account"></a>虛擬服務帳戶
 虛擬服務帳戶是特殊的帳戶類型，這種帳戶沒有密碼，並且是由 Windows 進行管理。
 
-![VSA](./media/reference-connect-accounts-permissions/aadsyncvsa.png)
+![顯示 (VSA) 之虛擬服務帳戶的螢幕擷取畫面。](./media/reference-connect-accounts-permissions/aadsyncvsa.png)
 
 VSA 適用於同步處理引擎和 SQL 位於相同伺服器的情況。 如果您使用遠端 SQL，我們會建議您改用群組受控服務帳戶。
 
@@ -241,7 +241,7 @@ VSA 適用於同步處理引擎和 SQL 位於相同伺服器的情況。 如果�
 ### <a name="azure-ad-connector-account"></a>Azure AD 連接器帳戶
 系統會在 Azure AD 中建立帳戶供同步服務使用。 此帳戶可以由其顯示名稱來識別。
 
-![AD 帳戶](./media/reference-connect-accounts-permissions/aadsyncserviceaccount2.png)
+![顯示 Azure AD 帳戶的螢幕擷取畫面。](./media/reference-connect-accounts-permissions/aadsyncserviceaccount2.png)
 
 使用帳戶所在伺服器的名稱可以透過使用者名稱的第二個部分來識別。 在圖中，伺服器名稱是 DC1。 如果您有預備伺服器，則每個伺服器會有自己的帳戶。
 

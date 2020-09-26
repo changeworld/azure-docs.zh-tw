@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eef04be1891eac35577a5f4cb18d5b83b8d0f301
-ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
+ms.openlocfilehash: 6dba592417ca07d1858a7942b162b4dfa6a85680
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89669388"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273988"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>將 Google 新增為 B2B 來賓使用者的識別提供者
 
@@ -78,10 +78,10 @@ Teams 完全支援所有裝置上的 Google 來賓使用者。 Google 使用者�
 
 11. 在 [ **應用程式類型**] 下，選擇 [ **Web 應用程式** ]，並為應用程式提供適當的名稱，例如 "Azure AD B2B"，然後在 [ **授權重新導向 uri**] 下，輸入下列 uri：
     - `https://login.microsoftonline.com` 
-    - `https://login.microsoftonline.com/te/<directory id>/oauth2/authresp` <br>(其中，`<directory id>` 是目錄識別碼)
+    - `https://login.microsoftonline.com/te/<tenant id>/oauth2/authresp` <br> (，其中 `<tenant id>` 是您的租使用者識別碼) 
    
     > [!NOTE]
-    > 若要尋找目錄識別碼，請移至 https://portal.azure.com ，然後在 [Azure Active Directory] 底下，選擇 [屬性] 並複製 [目錄識別碼]。
+    > 若要尋找您的租使用者識別碼，請移至 https://portal.azure.com ，並在 [ **Azure Active Directory**] 下，選擇 [ **屬性** ] 並複製 **租使用者識別碼**。
 
     ![顯示 [已授權重新導向 URI] 區段的螢幕擷取畫面](media/google-federation/google-create-oauth-client-id.png)
 
