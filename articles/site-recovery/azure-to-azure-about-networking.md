@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 3/13/2020
 ms.author: harshacs
-ms.openlocfilehash: 0a2763beec9fed9025198ca283f7746286875512
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: db4c3be7c79448e4cf0df39688959ae09a671dbd
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90527372"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361410"
 ---
 # <a name="about-networking-in-azure-vm-disaster-recovery"></a>關於 Azure VM 災難修復中的網路功能
 
@@ -21,7 +21,7 @@ ms.locfileid: "90527372"
 
 本文提供您使用 [Azure Site Recovery](site-recovery-overview.md)，將 Azure VM 從一個區域複寫和復原到另一個區域時的網路功能指引。
 
-## <a name="before-you-start"></a>開始之前
+## <a name="before-you-start"></a>在您開始使用 Intune 之前
 
 了解 Site Recovery 如何針對[這種情況](azure-to-azure-architecture.md)提供災害復原。
 
@@ -82,11 +82,11 @@ login.microsoftonline.com | 需要此項目方可進行 Site Recovery 服務 URL
 
 1. 在 NSG 上針對 "Storage.EastUS" 建立輸出 HTTPS (443) 安全性規則，如以下螢幕擷取畫面所示。
 
-      ![storage-tag](./media/azure-to-azure-about-networking/storage-tag.png)
+      ![螢幕擷取畫面顯示針對儲存點東部 U S 的網路安全性群組新增輸出安全性規則。](./media/azure-to-azure-about-networking/storage-tag.png)
 
 2. 在 NSG 上針對 "AzureActiveDirectory" 建立輸出 HTTPS (443) 安全性規則，如以下螢幕擷取畫面所示。
 
-      ![aad-tag](./media/azure-to-azure-about-networking/aad-tag.png)
+      ![螢幕擷取畫面顯示為 Azure A 的網路安全性群組新增輸出安全性規則 D。](./media/azure-to-azure-about-networking/aad-tag.png)
 
 3. 與上述安全性規則類似，請在對應至目標位置的 NSG 上，為 "CentralUS" 建立輸出 HTTPS (443) 安全性規則。 這可讓您存取 Site Recovery 監視。
 

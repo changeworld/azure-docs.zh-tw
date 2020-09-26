@@ -1,18 +1,18 @@
 ---
 title: 使用 CLI Azure 應用程式閘道的外部流量重新導向
-description: 了解如何使用 Azure CLI，建立會將內部 Web 流量重新導向至適當集區的應用程式閘道。
+description: 瞭解如何使用 Azure CLI 來建立應用程式閘道，以將外部網路流量重新導向至適當的集區。
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: how-to
-ms.date: 11/13/2019
+ms.date: 09/24/2020
 ms.author: victorh
-ms.openlocfilehash: 7566122e4edf4357562e830197fade746f18a16f
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: 5a8d7aff6a030b3adbb5370caa166bbd290e09bc
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89594216"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331041"
 ---
 # <a name="create-an-application-gateway-with-external-redirection-using-the-azure-cli"></a>使用 Azure CLI 建立具有外部重新導向的應用程式閘道
 
@@ -131,8 +131,4 @@ az network application-gateway rule create \
 
 ## <a name="next-steps"></a>後續步驟
 
-在本教學課程中，您已了解如何：
-
-> * 設定網路
-> * 建立接聽程式和重新導向規則
-> * 建立應用程式閘道
+- [使用 Azure CLI 以建立具有內部重新導向的應用程式閘道](redirect-internal-site-cli.md)

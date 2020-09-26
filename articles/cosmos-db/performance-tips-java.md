@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/11/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 8d6aad3107acbeaa76f1cf7e5d9c631a2a5aa8b6
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: ac7879590424fa921425dcd077503733affeb634
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327815"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361742"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-sync-java-sdk-v2"></a>Azure Cosmos DB 同步 Java SDK v2 的效能提示
 
@@ -65,14 +65,14 @@ Azure Cosmos DB 是一個既快速又彈性的分散式資料庫，可在獲得�
       DocumentClient client = new DocumentClient(HOST, MASTER_KEY, connectionPolicy, null);
       ```
 
-      :::image type="content" source="./media/performance-tips-java/connection-policy.png" alt-text="Azure Cosmos DB 連接原則的圖例" border="false":::
+      :::image type="content" source="./media/performance-tips-java/connection-policy.png" alt-text="圖顯示 Azure Cosmos D B 連接原則。" border="false":::
 
    <a id="same-region"></a>
 2. **為了效能在相同 Azure 區域中共置用戶端**
 
     可能的話，請將呼叫 Azure Cosmos DB 的所有應用程式放在與 Azure Cosmos 資料庫相同的區域中。 以約略的比較來說，在相同區域內對 Azure Cosmos DB 進行的呼叫會在 1-2 毫秒內完成，但美國西岸和美國東岸之間的延遲則會大於 50 毫秒。 視要求所採用的路由而定，各項要求從用戶端傳遞至 Azure 資料中心界限時的這類延遲可能有所不同。 確保呼叫端應用程式與佈建的 Azure Cosmos DB 端點位於相同的 Azure 區域中，將可能達到最低的延遲。 如需可用區域的清單，請參閱 [Azure 區域](https://azure.microsoft.com/regions/#services)。
 
-    :::image type="content" source="./media/performance-tips/same-region.png" alt-text="Azure Cosmos DB 連接原則的圖例" border="false":::
+    :::image type="content" source="./media/performance-tips/same-region.png" alt-text="此圖顯示兩個區域中的要求和回應，電腦會透過中介層服務連接到 Cosmos D B 帳戶。" border="false":::
    
 ## <a name="sdk-usage"></a>SDK 的使用方式
 1. **安裝最新的 SDK**

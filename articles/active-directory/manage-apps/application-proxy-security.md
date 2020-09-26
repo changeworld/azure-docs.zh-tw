@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 13b020f633adc2e2286cc14b01c6d248fc2c1e3e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7f34355f790b56c43c2e9fae7ce23b6344b4739d
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84759881"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362141"
 ---
 # <a name="security-considerations-for-accessing-apps-remotely-with-azure-ad-application-proxy"></a>使用 Azure AD 應用程式 Proxy 遠端存取應用程式的安全性考量
 
@@ -83,7 +83,7 @@ Azure AD 應用程式 Proxy 是反向 Proxy，因此所有至後端應用程式�
 
 #### <a name="azure-ddos-protection-service"></a>Azure DDoS 保護服務
 
-透過應用程式 Proxy 發佈的應用程式會受到保護，以免遭受分散式阻斷服務 (DDoS) 攻擊。 **Azure DDoS 保護**是 Azure 平台提供的服務，可保護 Azure 資源免於遭受拒絕服務的攻擊。 系統會自動啟用**基本**服務層級，以提供永遠開啟的流量監視，以及即時緩和常見的網路層級攻擊。 還有**標準**層級可用，提供特別針對 Azure 虛擬網路資源而調整的額外風險降低功能。 如需詳細資訊，請參閱 [Azure DDoS 保護標準概觀](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview)。
+透過應用程式 Proxy 發佈的應用程式會受到保護，以免遭受分散式阻斷服務 (DDoS) 攻擊。 **Azure DDoS 保護**是 Azure 平台提供的服務，可保護 Azure 資源免於遭受拒絕服務的攻擊。 系統會自動啟用**基本**服務層級，以提供永遠開啟的流量監視，以及即時緩和常見的網路層級攻擊。 如需詳細資訊，請參閱 [Azure DDoS 保護標準概觀](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview)。
 
 ## <a name="under-the-hood"></a>背後原理
 

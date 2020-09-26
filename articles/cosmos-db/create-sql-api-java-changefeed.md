@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 06/11/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 3f2dcefa8ed2f4b80ec66851cdc67ee2283a6ac7
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
-ms.translationtype: HT
+ms.openlocfilehash: 86fcdde72145cf25ee289ef3869976fecd628707
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322817"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362039"
 ---
 # <a name="how-to-create-a-java-application-that-uses-azure-cosmos-db-sql-api-and-change-feed-processor"></a>如何建立 Java 應用程式，以使用 Azure Cosmos DB SQL API 和變更摘要處理器
 
@@ -110,11 +110,11 @@ mvn clean package
 
 1. 現在，在資料總管中導覽至 **InventoryContainer-pktype > items**。 這是具體化檢視 - 此容器鏡像 **InventoryContainer** 中的項目，因為其由變更摘要以程式設計方式插入。 請記下資料分割索引鍵 (```type```)。 所以此具體化檢視已針對篩選 ```type``` 的查詢最佳化，這在 **InventoryContainer** 上沒有效率，因為其依據 ```id``` 進行分割。
 
-    :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_materializedview2.JPG" alt-text="具體化檢視":::
+    :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_materializedview2.JPG" alt-text="螢幕擷取畫面顯示 Azure Cosmos D B 帳戶的資料總管頁面，其中包含選取的專案。":::
 
 1. 我們只要使用單一 ```upsertItem()``` 呼叫，就會同時從 **InventoryContainer** 和 **InventoryContainer-pktype** 中刪除文件。 首先，請查看 Azure 入口網站資料總管。 我們會刪除 ```/type == "plums"```的文件；其在底下以紅色圍住
 
-    :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_materializedview-emph-todelete.JPG" alt-text="具體化檢視":::
+    :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_materializedview-emph-todelete.JPG" alt-text="螢幕擷取畫面顯示已選取特定專案之 Azure Cosmos D B 帳戶的 [資料總管] 頁面。":::
 
     再次按 Enter 鍵，以呼叫範例程式碼中的 ```deleteDocument()``` 函式。 如下所示，此函式會使用 ```/ttl == 5``` 來 upsert 新版的文件，以將文件存留時間 (TTL) 設定為 5 秒。 
     

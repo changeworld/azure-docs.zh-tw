@@ -8,15 +8,15 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
-ms.date: 07/07/2020
+ms.date: 09/25/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, references_regions
-ms.openlocfilehash: ce4bbf81f5b74a06f06778c512995684fa1394c4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1690d4b236fce53e033f08fa6825eefe6359d9e9
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91329794"
+ms.locfileid: "91362209"
 ---
 # <a name="virtual-network-isolation-and-privacy-overview"></a>虛擬網路隔離和隱私權總覽
 
@@ -80,8 +80,19 @@ ms.locfileid: "91329794"
 ### <a name="limitations"></a>限制
 
 保護您的工作區和虛擬網路中的相關聯資源具有下列限制：
-- 工作區 Private Link 僅適用于下欄區域： eastus、westus2、southcentralus
-    - 這項限制不適用於相關聯的資源。 例如，您可以在任何 Azure Machine Learning 區域中啟用 VNet 以進行儲存。
+- 工作區 Private Link 僅適用于下欄區域：
+    - 美國東部
+    - **美國中南部**
+    - **美國西部**
+    - **美國西部 2**
+    - **加拿大中部**
+    - **東南亞**
+    - **日本東部**
+    - **北歐**
+    - **澳大利亞東部**
+    - **英國南部**
+    
+    這項限制不適用於相關聯的資源。 例如，您可以在任何 Azure Machine Learning 區域中啟用 VNet 以進行儲存。
 - 所有資源都必須位於相同的 VNet 後方。 不過，也允許相同 VNet 內的子網。
 
 ## <a name="secure-the-training-environment"></a>保護定型環境

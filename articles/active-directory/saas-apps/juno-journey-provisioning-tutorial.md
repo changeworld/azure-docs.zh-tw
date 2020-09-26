@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 04/16/2020
 ms.author: Zhchia
-ms.openlocfilehash: aa875877d4017409b961eedda2af281622c45cf9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: cb4dd6646eceaa6028dca4e04e9cddced487de3e
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91312331"
+ms.locfileid: "91361663"
 ---
 # <a name="tutorial-configure-juno-journey-for-automatic-user-provisioning"></a>教學課程：設定 Juno Journey 來自動佈建使用者
 
@@ -85,7 +85,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
 5. 在 [管理員認證] 區段下，輸入稍早在 [租用戶 URL] 中擷取的租用戶 URL 值。 輸入稍早在 [祕密權杖] 中所擷取的祕密權杖值。 按一下 [測試連線]，以確保 Azure AD 可連線至 Juno Journey。 如果連線失敗，請確定 Juno Journey 帳戶具有管理員權限，然後再試一次。
 
-    ![佈建](./media/juno-journey-provisioning-tutorial/provisioning.png)
+    ![螢幕擷取畫面顯示 [管理認證] 對話方塊，您可以在其中輸入租使用者 U R L 和秘密權杖。](./media/juno-journey-provisioning-tutorial/provisioning.png)
 
 6. 在 [通知電子郵件] 欄位中，輸入應該收到佈建錯誤通知的個人或群組電子郵件地址，然後選取 [發生失敗時傳送電子郵件通知] 核取方塊。
 

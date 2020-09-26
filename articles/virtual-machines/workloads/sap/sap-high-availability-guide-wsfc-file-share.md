@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 中的檔案共用在 WSFC 上叢集 SAP ASCS/SCS |Microsoft Docs
+title: 在 Azure 中使用檔案共用在 WSFC 上叢集 SAP ASCS/SCS |Microsoft Docs
 description: 了解如何在 Azure 中使用檔案共用於 Windows 容錯移轉叢集上進行 SAP ASCS/SCS 執行個體叢集處理。
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
@@ -16,23 +16,23 @@ ms.workload: infrastructure-services
 ms.date: 07/24/2019
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bf9e00e8acba241f1445977dcc53724b9981039f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 721389b557fde41b1461654b03299601e2384108
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87068695"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361325"
 ---
 # <a name="cluster-an-sap-ascsscs-instance-on-a-windows-failover-cluster-by-using-a-file-share-in-azure"></a>在 Azure 中使用檔案共用於 Windows 容錯移轉叢集上進行 SAP ASCS/SCS 執行個體叢集處理
 
-> ![Windows][Logo_Windows] Windows
+> ![Windows 標誌。][Logo_Windows] Windows
 >
 
 Windows Server 容錯移轉叢集是 Windows 中高可用性 SAP ASCS/SCS 安裝和 DBMS 的基礎。
 
 容錯移轉叢集是由 1+n 個獨立伺服器 (節點) 所組成的群組，這些伺服器會共同運作以提升應用程式和服務的可用性。 如果發生節點失敗，Windows Server 容錯移轉叢集會計算發生的失敗次數，以及仍然維持狀況良好的叢集，以提供應用程式和服務。 您可以從不同的仲裁模式選擇以達成容錯移轉叢集。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 在開始本文所述的工作之前，請檢閱此文章：
 
 * [SAP NetWeaver 的 Azure 虛擬機器高可用性架構和案例][sap-high-availability-architecture-scenarios]
@@ -70,10 +70,10 @@ SAP 已針對在 Windows 容錯移轉叢集上進行 SAP ASCS/SCS 執行個體�
 
 * SAP 中央服務 (包含自己的檔案結構、訊息及加入佇列處理序) 與 SAP 全域主機檔案是分開的。
 * SAP 中央服務會在 SAP ASCS/SCS 執行個體之下執行。
-* SAP ASCS/SCS 實例已叢集化，且可使用 \<ASCS/SCS virtual host name\> 虛擬主機名稱來存取。
-* Sap 全域檔案會放在 SMB 檔案共用上，並使用 \<SAP global host\> 主機名稱來存取： \\ \\ &lt; sap global host &gt; \sapmnt \\ &lt; SID &gt; \SYS \. .。
+* SAP ASCS/SCS 實例已叢集化，而且可以使用 \<ASCS/SCS virtual host name\> 虛擬主機名稱來存取。
+* Sap 全域檔案會置於 SMB 檔案共用，並使用 \<SAP global host\> 主機名稱來存取： \\ \\ &lt; sap global host &gt; \sapmnt \\ &lt; SID &gt; \SYS \. 。
 * SAP ASCS/SCS 執行個體是安裝於這兩個叢集節點上的本機磁碟。
-* \<ASCS/SCS virtual host name\>網路名稱與 &lt; SAP global 主機不同 &gt; 。
+* \<ASCS/SCS virtual host name\>網路名稱與 &lt; SAP 全域主機不同 &gt; 。
 
 ![圖 2：含 SMB 檔案共用的 SAP ASCS/SCS HA 架構][sap-ha-guide-figure-8004]
 
@@ -114,7 +114,7 @@ _**圖 4：** 用來保護 SAP 全域主機檔案的向外延展檔案共用_
 選擇儲存空間直接存取時，請考慮下列使用案例：
 
 - 用來建立儲存空間直接存取叢集的虛擬機器必須部署在 Azure 可用性設定組中。
-- 針對儲存空間直接存取叢集的嚴重損壞修復，您可以使用[Azure Site Recovery 服務](../../../site-recovery/azure-to-azure-support-matrix.md#replicated-machines---storage)。
+- 針對儲存空間直接存取叢集的災難復原，您可以使用 [Azure Site Recovery 服務](../../../site-recovery/azure-to-azure-support-matrix.md#replicated-machines---storage)。
 - 不支援跨不同 Azure 可用性區域延展儲存空間直接存取叢集。
 
 ### <a name="sap-prerequisites-for-scale-out-file-shares-in-azure"></a>Azure 中向外延展檔案共用的 SAP 必要條件
@@ -137,11 +137,11 @@ _**圖 4：** 用來保護 SAP 全域主機檔案的向外延展檔案共用_
 * 若要讓 VM 之間具備良好的網路效能，供儲存空間直接存取磁碟同步之用，請使用至少具有「高」網路頻寬的 VM 類型。
     如需詳細資訊，請參閱 [DSv2 系列][dv2-series]和 [DS 系列][ds-series]規格。
 * 建議您在儲存體集區中保留一些未配置的容量。 在儲存體集區中保留一些未配置的容量，可在磁碟機故障時，讓磁碟區空間「就地」修復。 這可改善資料安全性和效能。  如需詳細資訊，請參閱[選擇磁碟區大小][choosing-the-size-of-volumes-s2d]。
-* 您不需要為向外延展檔案共用網路名稱（例如）設定 Azure 內部負載平衡器 \<SAP global host\> 。 這是針對 \<ASCS/SCS virtual host name\> SAP ASCS/SCS 實例的，或針對 DBMS 而完成。 向外延展檔案共用會在所有叢集節點之間向外延展負載。 \<SAP global host\>會使用所有叢集節點的本機 IP 位址。
+* 您不需要為向外延展檔案共用網路名稱（例如）設定 Azure 內部負載平衡器 \<SAP global host\> 。 這會針對 \<ASCS/SCS virtual host name\> SAP ASCS/SCS 實例或 DBMS 的進行。 向外延展檔案共用會在所有叢集節點之間向外延展負載。 \<SAP global host\> 使用所有叢集節點的本機 IP 位址。
 
 
 > [!IMPORTANT]
-> 您不能將指向的 SAPMNT 檔案共用重新命名 \<SAP global host\> 。 SAP 僅支援共用名稱 "sapmnt"。
+> 您無法重新命名指向的 SAPMNT 檔案共用 \<SAP global host\> 。 SAP 僅支援共用名稱 "sapmnt"。
 >
 > 如需詳細資訊，請參閱 [SAP 附註 2492395 - 是否可變更共用名稱 sapmnt？][2492395]
 
@@ -158,7 +158,7 @@ _**圖 4：** 用來保護 SAP 全域主機檔案的向外延展檔案共用_
 _**圖 5：** 在兩個叢集中部署的 SAP ASCS/SCS 執行個體和向外延展檔案共用_
 
 > [!IMPORTANT]
-> 在 Azure 雲端中，用於 SAP 和向外延展檔案共用的每個叢集都必須部署在自己的 Azure 可用性設定組或跨 Azure 可用性區域。 這可確保叢集 VM 在基礎 Azure 基礎結構中，以分散方式放置。 這項技術支援可用性區域部署。
+> 在 Azure 雲端中，用於 SAP 和向外延展檔案共用的每個叢集，都必須部署在其自己的 Azure 可用性設定組或 Azure 可用性區域之間。 這可確保叢集 VM 在基礎 Azure 基礎結構中，以分散方式放置。 此技術支援可用性區域部署。
 >
 
 ## <a name="generic-file-share-with-sios-datakeeper-as-cluster-shared-disks"></a>將 SIOS DataKeeper 當作叢集共用磁碟的一般檔案共用

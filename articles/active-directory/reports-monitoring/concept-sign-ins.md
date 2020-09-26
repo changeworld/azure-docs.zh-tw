@@ -17,12 +17,12 @@ ms.date: 03/24/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99e15c6d1ca33623151b7a2d75e3e28878f673ef
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 2791b62d8abb1ade199ae3eb72deaf4db56f3725
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90603589"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361291"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory 入口網站中的登入活動報告
 
@@ -142,18 +142,18 @@ Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
 ![用戶端應用程式篩選](./media/concept-sign-ins/client-app-filter.png)
 
 
-|名稱|新式驗證|描述|
+|名稱|新式驗證|說明|
 |---|:-:|---|
 |驗證的 SMTP| |由 POP 和 IMAP 用戶端用來傳送電子郵件訊息。|
 |發現| |Outlook 和 EAS 用戶端用來尋找並連接到 Exchange Online 中的信箱。|
 |Exchange ActiveSync| |此篩選器會顯示已嘗試過 EAS 通訊協定的所有登入嘗試。|
-|瀏覽器|![核取記號](./media/concept-sign-ins/check.png)|顯示使用網頁瀏覽器之使用者的所有登入嘗試|
+|瀏覽器|![藍色核取記號。](./media/concept-sign-ins/check.png)|顯示使用網頁瀏覽器之使用者的所有登入嘗試|
 |Exchange ActiveSync| | 顯示使用者使用 Exchange ActiveSync 連線到 Exchange Online 的用戶端應用程式的所有登入嘗試|
 |Exchange Online PowerShell| |用來透過遠端 PowerShell 連接到 Exchange Online。 如果您封鎖 Exchange Online PowerShell 的基本驗證，則必須使用 Exchange Online PowerShell 模組進行連線。 如需相關說明，請參閱[使用多重要素驗證連線至 Exchange Online PowerShell](/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell)。|
 |Exchange Web 服務| |Outlook、Outlook for Mac 和協力廠商應用程式所使用的程式設計介面。|
 |IMAP4| |使用 IMAP 抓取電子郵件的舊版郵件用戶端。|
 |透過 HTTP 的 MAPI| |由 Outlook 2010 和更新版本使用。|
-|行動裝置應用程式和桌面用戶端|![藍色核取記號](./media/concept-sign-ins/check.png)|顯示使用行動裝置應用程式和桌面用戶端之使用者的所有登入嘗試。|
+|行動裝置應用程式和桌面用戶端|![藍色核取記號。](./media/concept-sign-ins/check.png)|顯示使用行動裝置應用程式和桌面用戶端之使用者的所有登入嘗試。|
 |離線通訊錄| |Outlook 下載並使用的地址清單集合複本。|
 |Outlook Anywhere (RPC over HTTP) | |由 Outlook 2016 及更早版本使用。|
 |Outlook 服務| |郵件和行事曆應用程式用來進行 Windows 10。|
@@ -232,7 +232,7 @@ Azure AD 和 Azure 入口網站都提供您登入資料的額外進入點：
 - 應用程式識別碼
 - 應用程式
 - 用戶端
-- Location
+- 位置
 - IP 位址
 - Date
 - 需要 MFA

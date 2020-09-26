@@ -11,12 +11,12 @@ ms.date: 03/27/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse, devx-track-csharp
-ms.openlocfilehash: 2edb3060437080e528d41d4af5f4affd4fbf3316
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: d32a51e391edbfd32cf57265562d4e0cb8fe0681
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89010183"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362175"
 ---
 # <a name="troubleshooting-connectivity-issues-in-synapse-sql-pool"></a>Synapse SQL 集區連線問題疑難排解
 
@@ -34,13 +34,14 @@ ms.locfileid: "89010183"
 
 如果資源健康狀態顯示您的 SQL 集區執行個體已暫停或正在調整，請遵循指引來繼續您的執行個體。
 
-![服務已暫停](./media/sql-data-warehouse-troubleshoot-connectivity/resource-health-pausing.png) 您可以在這裡找到資源健康狀態的其他相關資訊。
+![螢幕擷取畫面顯示已暫停或調整的 SQL 資料倉儲實例。](./media/sql-data-warehouse-troubleshoot-connectivity/resource-health-pausing.png)
+您可以在這裡找到資源健康狀態的其他相關資訊。
 
 ## <a name="check-for-paused-or-scaling-operation"></a>檢查已暫停或正在調整的作業
 
 請檢查入口網站，以查看您的 SQL 集區執行個體是否已暫停或正在調整。
 
-![服務已暫停](./media/sql-data-warehouse-troubleshoot-connectivity/overview-paused.png)
+![螢幕擷取畫面顯示如何檢查資料倉儲是否已暫停。](./media/sql-data-warehouse-troubleshoot-connectivity/overview-paused.png)
 
 如果您看到服務已暫停或正在調整，請檢查服務是否不在維護排程期間。 在 SQL 集區的入口網站「概觀」中，您會看到已選擇的維護排程。
 

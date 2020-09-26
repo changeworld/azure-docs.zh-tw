@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philMea
-ms.openlocfilehash: d79c42f3bdf84efcdf2187741ac270087be05272
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 14cf5238d29ede1ea229604316eee875b417e50e
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83681985"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361529"
 ---
 # <a name="drawing-conversion-errors-and-warnings"></a>繪製轉換錯誤和警告
 
@@ -35,9 +35,9 @@ ms.locfileid: "83681985"
 
 * 以下二圖顯示自我相交多邊形的範例。
 
-     ![自我相交的多邊形範例](./media/drawing-conversion-error-codes/geometry-warning-1.png)
+     ![自我交集多邊形的範例，例如1。](./media/drawing-conversion-error-codes/geometry-warning-1.png)
 
-     ![自我相交的多邊形範例](./media/drawing-conversion-error-codes/geometry-warning-2.png)
+     ![自我交集多邊形的範例，範例二。](./media/drawing-conversion-error-codes/geometry-warning-2.png)
 
 * 下圖顯示非封閉聚合線條。 假設圖層僅支援封閉幾何圖形。
 
