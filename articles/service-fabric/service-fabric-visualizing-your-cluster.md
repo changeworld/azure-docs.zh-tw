@@ -1,16 +1,16 @@
 ---
-title: 使用 Azure Service Fabric Explorer 視覺化您的叢集
+title: 使用 Azure Service Fabric Explorer 來視覺化您的叢集
 description: Service Fabric Explorer 是一種應用程式，可檢查和管理 Microsoft Azure Service Fabric 叢集中的雲端應用程式和節點。
 author: mikkelhegn
 ms.topic: conceptual
 ms.date: 01/24/2019
 ms.author: mikhegn
-ms.openlocfilehash: 92f6f495f6aac23785dd2a21672747bffb07e2e3
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 5c1a7de386baeb4b89fd12bd89236ea2e0348a57
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86256249"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91357211"
 ---
 # <a name="visualize-your-cluster-with-service-fabric-explorer"></a>使用 Service Fabric 總管視覺化叢集
 
@@ -52,7 +52,7 @@ Service Fabric Explorer 也裝載於 Service Fabric 叢集的 HTTP 管理端點�
 ### <a name="connect-to-a-secure-cluster"></a>連線到安全的叢集
 您可以為使用憑證或使用 Azure Active Directory (AAD) 來控制用戶端對您 Service Fabric 叢集的存取。
 
-如果您嘗試連線到安全的叢集，則視叢集的設定而定，您將需要出示用戶端憑證或使用 AAD 登入。
+如果您嘗試連線到安全的叢集，則根據叢集的設定，您將必須出示用戶端憑證或使用 AAD 登入。
 
 ## <a name="understand-the-service-fabric-explorer-layout"></a>了解 Service Fabric 總管配置
 您可以使用左邊的樹狀目錄來瀏覽 Service Fabric 總管。 在樹狀目錄的根目錄，叢集儀表板會提供您叢集的概觀，包括應用程式和節點健康情況的摘要。
@@ -83,7 +83,7 @@ Service Fabric 叢集中的節點會橫跨容錯網域和升級網域的二維�
 ## <a name="actions"></a>動作
 「Service Fabric 總管」提供一個對您叢集內的節點、應用程式及服務快速叫用動作的方式。
 
-例如，若要刪除應用程式實例，請從左邊的樹狀目錄中選擇應用程式，然後選擇 [**動作**] [  >  **刪除應用程式**]。
+例如，若要刪除應用程式實例，請從左邊的樹狀目錄中選擇應用程式，然後選擇 [**動作**  >  **刪除應用程式**]。
 
 ![在 Service Fabric 總管中刪除應用程式][sfx-delete-application]
 
@@ -106,7 +106,7 @@ Service Fabric 叢集中的節點會橫跨容錯網域和升級網域的二維�
 ## <a name="event-store"></a>事件存放區
 EventStore 是平台所提供的功能，可提供可在 Service Fabric Explorer 中及透過 REST API 取得的 Service Fabric 平台事件。 您可以看到快照集檢視，其中顯示每個實體 (例如節點、服務、應用程式) 在叢集中發生什麼情況，並根據事件的時間進行查詢。 您也可以在 [EventStore 概觀](service-fabric-diagnostics-eventstore.md)進一步了解 EventStore。   
 
-![EventStore][sfx-eventstore]
+![螢幕擷取畫面顯示已選取事件的 [節點] 窗格。][sfx-eventstore]
 
 >[!NOTE]
 >截至 Service Fabric 6.4 版為止， EventStore 不是預設啟用的功能，必須在 Resource Manager 範本中啟用
@@ -115,24 +115,24 @@ EventStore 是平台所提供的功能，可提供可在 Service Fabric Explorer
 >截至 Service Fabric 6.4 版為止， EventStore API 僅適用於在 Azure 上執行的 Windows 叢集。 我們正在將這個功能和我們的獨立叢集移植到 Linux。
 
 ## <a name="image-store-viewer"></a>映射存放區檢視器
-映射存放區檢視器是使用原生映射存放區所提供的功能，可讓您查看映射存放區的目前內容，以及取得檔案和資料夾資訊，以及移除檔案/資料夾。
+映射存放區檢視器是使用原生映射存放區的功能，可讓您查看映射存放區的目前內容，以及取得檔案和資料夾資訊，以及移除檔案/資料夾。
 
 ![Service Fabric 總管叢集對應][sfx-imagestore]
 
 ## <a name="backup-and-restore"></a>備份與還原
-Service Fabric Explorer 提供與[備份和還原](./service-fabric-reliable-services-backup-restore.md)互動的能力。 若要查看 SFX 中的備份和還原功能，必須啟用 [advanced] 模式。
+Service Fabric Explorer 提供與 [備份和還原](./service-fabric-reliable-services-backup-restore.md)互動的能力。 若要查看 SFX 中的備份和還原功能，必須啟用 [advanced] 模式。
 
 ![啟用 advanced 模式][0]
  
 可能的作業如下：
 
-* 建立、編輯和刪除備份原則。
+* 建立、編輯及刪除備份原則。
 * 啟用和停用應用程式、服務或分割區的備份。
-* 暫停和繼續應用程式、服務或分割區的備份。
+* 暫止和繼續應用程式、服務或分割區的備份。
 * 觸發和追蹤分割區的備份。
-* 觸發和追蹤分割區的還原。
+* 觸發和追蹤磁碟分割的還原。
 
-如需備份和還原服務的詳細資訊，請參閱[REST API 參考](/rest/api/servicefabric/sfclient-index-backuprestore)。
+如需有關備份和還原服務的詳細資訊，請參閱 [REST API 參考](/rest/api/servicefabric/sfclient-index-backuprestore)。
 ## <a name="next-steps"></a>後續步驟
 * [在 Visual Studio 中管理您的 Service Fabric 應用程式](service-fabric-manage-application-in-visual-studio.md)
 * [使用 PowerShell 部署 Service Fabric 應用程式](service-fabric-deploy-remove-applications.md)

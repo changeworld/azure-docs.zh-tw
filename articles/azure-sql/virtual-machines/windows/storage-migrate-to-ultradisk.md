@@ -8,18 +8,18 @@ editor: ''
 tags: azure-service-management
 ms.assetid: ''
 ms.service: virtual-machines-sql
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 07/09/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 42738ff71432284a156d0dfbb1f6cf160cbf4032
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 4ddafd9fbeda1752a782085244597aea3ccbdd2d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653237"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91271897"
 ---
 # <a name="migrate-log-disk-to-ultra-disk"></a>將記錄磁片遷移至 Ultra 磁片
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -58,7 +58,7 @@ VM 大小和區域的子集都支援 Ultra 磁片。 繼續之前，請先驗證
 
 ### <a name="attach-disk"></a>連接磁碟
 
-使用 Azure 入口網站將 ultra 磁片連接至您的虛擬機器。 如需詳細資訊，請參閱 [連接 ultra 磁片](../../../virtual-machines/disks-enable-ultra-ssd.md#attach-an-ultra-disk-using-the-azure-portal)
+使用 Azure 入口網站將 ultra 磁片連接至您的虛擬機器。 如需詳細資訊，請參閱 [連接 ultra 磁片](../../../virtual-machines/disks-enable-ultra-ssd.md#attach-an-ultra-disk)。
 
 連接磁片之後，請使用 Azure 入口網站再啟動一次您的 VM。 
 

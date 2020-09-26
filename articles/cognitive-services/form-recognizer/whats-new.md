@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: pafarley
-ms.openlocfilehash: ddd1f61ada539ebb00341dd83919f1c851a0f3e1
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 16bdb0d8ed421763895e61a6e1173fc7c5a48d4d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816366"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91297941"
 ---
 # <a name="whats-new-in-form-recognizer"></a>表單辨識器的新功能
 
@@ -38,7 +38,8 @@ ms.locfileid: "88816366"
 
 
 **2.0 版** 包含下列更新：
--   NET、Python、JAVA 和 JavaScript 的 [用戶端程式庫](quickstarts/client-library.md) 已進入正式運作狀態。 
+
+- NET、Python、JAVA 和 JavaScript 的 [用戶端程式庫](quickstarts/client-library.md) 已進入正式運作狀態。 
 
 
 您可以在 GitHub 上取得**新的範例**。 
@@ -148,7 +149,7 @@ ms.locfileid: "88816366"
   * **TIFF 檔案支援** 您現在可以使用 TIFF 檔來定型和解壓縮資料。
   * **提取精確度改進**
 
-* **預先建置的回條模型**
+* **預建的收據模型**
   * **秘訣數量** 您現在可以將秘訣數量和其他手寫值解壓縮。
   * **明細專案解壓縮** 您可以從收據中取出行專案值。
   * **信賴價值** 您可以針對每個已解壓縮的值來查看模型的信賴度。
@@ -176,4 +177,8 @@ ms.locfileid: "88816366"
 
 ## <a name="next-steps"></a>後續步驟
 
-請完成[快速入門](quickstarts/curl-train-extract.md)來開始使用[表單辨識器 API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm)。
+完成 [用戶端程式庫快速入門](quickstarts/client-library.md) ，以使用您所選語言的表單辨識器開始撰寫表單處理應用程式。
+
+## <a name="see-also"></a>請參閱
+
+* [什麼是表單辨識器？](./overview.md)

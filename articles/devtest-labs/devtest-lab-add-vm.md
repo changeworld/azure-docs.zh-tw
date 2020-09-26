@@ -3,12 +3,12 @@ title: 在 Azure DevTest Labs 中對實驗室新增 VM | Microsoft Docs
 description: 瞭解如何使用 Azure 入口網站在 Azure DevTest Labs 中將虛擬機器新增至實驗室。 您可以選擇自訂映射或公式的基底。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: c61e6e685a52ac3658cb9b9ca37f64fc51f3ce1e
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 07efcf93b963009494021b90e6c730c4615301ef
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88270711"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91297618"
 ---
 # <a name="add-a-vm-to-a-lab-in-azure-devtest-labs"></a>在 Azure DevTest Labs 中對實驗室新增 VM
 如果您已經[建立您的第一個 VM](tutorial-create-custom-lab.md#add-a-vm-to-the-lab)，您很有可能是透過預先載入的 [Marketplace 映像](devtest-lab-configure-marketplace-images.md)來完成的。 現在，如果您想要將後續的 VM 新增至您的實驗室，您也可以選擇一個「基底」**，它可以是[自訂映像](devtest-lab-create-template.md)或[公式](devtest-lab-manage-formulas.md)。 本教學課程會逐步引導您使用 Azure 入口網站，在 DevTest Labs 中對實驗室新增 VM。
@@ -30,7 +30,7 @@ ms.locfileid: "88270711"
     2. 輸入**使用者名稱**，此名稱會被授與虛擬機器上的系統管理員權限。 機器的**使用者名稱**會預先填入自動產生的唯一名稱。 此名稱會對應至您電子郵件地址中的使用者名稱。 這項功能可節省您每次建立新機器時，決定使用者名稱的時間。 同樣地，如果您想要的話，也可以使用您選擇的使用者名稱來覆寫此自動填入的欄位。 若要覆寫使用者名稱的自動填入值，請在 [使用者名稱]**** 文字方塊中輸入值。 此使用者會獲得虛擬機器上的**系統管理員**權限。
     3. 如果是在實驗室中建立第一個 VM，請為使用者輸入**密碼**。 若要讓此密碼以預設密碼的形式，儲存在與實驗室相關聯的 Azure 金鑰保存庫中，請選取 [儲存為預設密碼]****。 預設密碼會以下列名稱儲存在金鑰保存庫中：**VmPassword**。 當您嘗試在實驗室中建立後續的 VM 時，系統會自動選取 **VmPassword** 作為**密碼**。 若要覆寫此值，請清除 [使用儲存的祕密]**** 核取方塊，然後輸入密碼。
 
-        ![選擇基底](./media/tutorial-create-custom-lab/new-virtual-machine.png)
+        ![顯示 [建立實驗室資源] 頁面的螢幕擷取畫面，其中已選取 [基本設定] 並輸入「使用者設定」值。](./media/tutorial-create-custom-lab/new-virtual-machine.png)
 
         您可以也先將祕密儲存在金鑰保存庫中，然後在實驗室中建立 VM 時使用此祕密。 如需詳細資訊，請參閱[在金鑰保存庫中儲存祕密](devtest-lab-store-secrets-in-key-vault.md)。 若要使用儲存在金鑰保存庫中的密碼，請選取 [使用儲存的祕密]****，並指定與祕密 (密碼) 對應的金鑰值。
     4. 在 [更多選項]**** 區段中，選取 [變更大小]****。 選取其中一個預先定義的項目，以指定要建立之 VM 的處理器核心、RAM 大小及硬碟大小。

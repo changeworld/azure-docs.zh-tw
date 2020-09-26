@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/11/2019
 ms.author: asrastog
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: af8bd9a0420c90df4dea16fa8ebacbf4ea6494db
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 815dc0a90d79323fb88c98867b5540105a6fa8cc
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87488123"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91356191"
 ---
 # <a name="order-device-connection-events-from-azure-iot-hub-using-azure-cosmos-db"></a>使用 Azure Cosmos DB 排序來自 Azure IoT 中樞的裝置連線事件
 
@@ -227,11 +227,11 @@ Azure 事件方格可協助您建置以事件為基礎的應用程式，並輕�
 
 5. 選取 [新增參數]。 在顯示的下拉式清單中，勾選 [分割區索引鍵] 和 [預存程序的參數] 旁的方塊，然後按一下畫面上的任意處；這會新增資料分割索引鍵值的欄位，以及預存程序參數的欄位。
 
-   ![填入邏輯應用程式動作](./media/iot-hub-how-to-order-connection-state-events/logicapp-stored-procedure.png)
+   ![螢幕擷取畫面顯示已選取 [加入新的參數] 的 [執行預存程式] 專案。](./media/iot-hub-how-to-order-connection-state-events/logicapp-stored-procedure.png)
 
 6. 現在輸入分割區索引鍵值和參數，如下所示。 請務必放入方括弧和雙引號中，如下所示。 您可能必須按一下 [新增動態內容]，以取得您可在此使用的有效值。
 
-   ![填入邏輯應用程式動作](./media/iot-hub-how-to-order-connection-state-events/logicapp-stored-procedure-2.png)
+   ![螢幕擷取畫面顯示已輸入參數的執行預存程式專案。](./media/iot-hub-how-to-order-connection-state-events/logicapp-stored-procedure-2.png)
 
 7. 在顯示 [For Each] 的窗格頂端，確定 [選取先前步驟的輸出] 之下已選取 [主體]。
 

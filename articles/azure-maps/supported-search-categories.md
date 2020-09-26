@@ -1,6 +1,6 @@
 ---
 title: 搜尋類別 | Microsoft Azure 地圖服務
-description: 瞭解 Azure 地圖服務支援哪些搜尋類別。 查看所有支援的分類程式代碼，以及每一個所代表的點類型。
+description: 瞭解 Azure 地圖服務中支援的搜尋類別。 查看所有支援的分類程式代碼，以及每一個類別代碼所代表的感興趣點類型。
 author: sataneja
 ms.author: sataneja
 ms.date: 05/14/2018
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: a9e910c38000fc4dbc454b68b752925df9145837
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 240bc8429ca786eb2f474a5a0b6ee296deb3b356
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037672"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91310117"
 ---
 # <a name="azure-maps-supported-categories"></a>Azure 地圖服務支援的類別
 

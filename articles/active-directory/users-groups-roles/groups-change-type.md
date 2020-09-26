@@ -1,6 +1,6 @@
 ---
 title: 將靜態群組成員資格變更為動態 Azure AD |Microsoft Docs
-description: 如何建立成員資格規則，以自動填入群組和規則參考。
+description: 瞭解如何使用 Azure AD 系統管理中心或 PowerShell Cmdlet，將現有的群組從靜態轉換為動態成員資格。
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6ee5af5d7489835f125319050d291a89ab252a6
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 381ee08f44ad8fb4dade9b6229f5a5925cf2b6b7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88797117"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325856"
 ---
 # <a name="change-static-group-membership-to-dynamic-in-azure-active-directory"></a>在 Azure Active Directory 中將靜態群組成員資格變更為動態
 

@@ -1,31 +1,31 @@
 ---
 title: 建立儲存體帳戶
 titleSuffix: Azure Storage
-description: 瞭解如何使用 Azure 入口網站、Azure PowerShell 或 Azure CLI 來建立儲存體帳戶。 Azure 儲存體帳戶會在 Microsoft Azure 中提供唯一的命名空間，以儲存及存取您的資料。
+description: 瞭解如何建立儲存體帳戶來儲存 blob、檔案、佇列和資料表。 Azure 儲存體帳戶會在 Microsoft Azure 中提供唯一的命名空間，以讀取和寫入您的資料。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 02/07/2020
+ms.date: 09/24/2020
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 8b6f5f302465d075b7a0bcb0e6b12c75b1379bb5
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 9b993e5a7c5b3ee2327fe26437414d8ce74f7369
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89069811"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333574"
 ---
-# <a name="create-an-azure-storage-account"></a>建立 Azure 儲存體帳戶
+# <a name="create-a-storage-account"></a>建立儲存體帳戶
 
 Azure 儲存體帳戶包含您所有的 Azure 儲存體資料物件：Blob、檔案、佇列、資料表和磁碟。 儲存體帳戶會為您的 Azure 儲存體資料提供唯一的命名空間，此命名空間可透過 HTTP 或 HTTPS 從世界各地存取。 您 Azure 儲存體帳戶中的資料具有持久性、高度可用、安全且可大規模調整。
 
-在此操作說明文章中，您將瞭解如何使用 [Azure 入口網站](https://portal.azure.com/)、 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/)、 [Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest)或 [Azure Resource Manager 範本](../../azure-resource-manager/management/overview.md)來建立儲存體帳戶。  
+在此操作說明文章中，您將瞭解如何使用 [Azure 入口網站](https://portal.azure.com/)、 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/)、 [Azure CLI](https://docs.microsoft.com/cli/azure)或 [Azure Resource Manager 範本](../../azure-resource-manager/management/overview.md)來建立儲存體帳戶。  
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 
@@ -64,7 +64,7 @@ Azure Cloud Shell 是免費的 Bash Shell，您可以直接在 Azure 入口網�
 
 ### <a name="install-the-cli-locally"></a>在本機安裝 CLI
 
-您也可以在本機安裝及使用 Azure CLI。 此操作說明文章會要求您執行 Azure CLI 2.0.4 版版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。 
+您也可以在本機安裝及使用 Azure CLI。 本文中的範例需要 Azure CLI 2.0.4 版版或更新版本。 執行 `az --version` 來了解您安裝的版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
 
 # <a name="template"></a>[範本](#tab/template)
 
@@ -104,11 +104,9 @@ N/A
 
 ## <a name="create-a-storage-account"></a>建立儲存體帳戶
 
-現在您已準備好建立儲存體帳戶。
-
 每個儲存體帳戶都必須屬於 Azure 資源群組。 資源群組是用來群組 Azure 服務的邏輯容器。 當您建立儲存體帳戶時，可以選擇建立新的資源群組，或使用現有的資源群組。 本文說明如何建立新的資源群組。
 
-**一般用途 v2** 儲存體帳戶提供所有 Azure 儲存體服務的存取權：Blob、檔案、佇列、資料表和磁碟。 此處所述的步驟會建立一般用途 v2 儲存體帳戶，但建立任何類型儲存體帳戶的步驟都很類似。
+**一般用途 v2** 儲存體帳戶提供所有 Azure 儲存體服務的存取權：Blob、檔案、佇列、資料表和磁碟。 此處所述的步驟會建立一般用途 v2 儲存體帳戶，但建立任何類型儲存體帳戶的步驟都很類似。 如需儲存體帳戶類型及其他儲存體帳戶設定的詳細資訊，請參閱 [Azure 儲存體帳戶概觀](storage-account-overview.md)。
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 
@@ -186,7 +184,7 @@ az storage account create \
 ```
 
 > [!IMPORTANT]
-> 如果您打算使用 [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)，請 `--enable-hierarchical-namespace true` 在此參數清單中包含。 
+> 如果您打算使用 [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)，請 `--enable-hierarchical-namespace true` 在此參數清單中包含。
 
 若要使用不同的複寫選項來建立一般用途 v2 儲存體帳戶，請將下表中的所需值取代為 **sku** 參數。
 
@@ -230,8 +228,6 @@ az group deployment create --resource-group $resourceGroupName --template-file "
 - [其他儲存體帳戶範本範例](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Storage)。
 
 ---
-
-如需可用複寫選項的詳細資訊，請參閱[儲存體複寫選項](storage-redundancy.md)。
 
 ## <a name="delete-a-storage-account"></a>刪除儲存體帳戶
 
@@ -287,26 +283,6 @@ az storage account delete --name storageAccountName --resource-group resourceGro
 
 ## <a name="next-steps"></a>後續步驟
 
-在此操作說明文章中，您已建立一般用途 v2 標準儲存體帳戶。 若要瞭解如何在儲存體帳戶中上傳和下載 blob，請繼續進行其中一個 Blob 儲存體快速入門。
-
-# <a name="portal"></a>[入口網站](#tab/azure-portal)
-
-> [!div class="nextstepaction"]
-> [使用 Azure 入口網站處理 Blob](../blobs/storage-quickstart-blobs-portal.md)
-
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-
-> [!div class="nextstepaction"]
-> [使用 PowerShell 處理 Blob](../blobs/storage-quickstart-blobs-powershell.md)
-
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-> [!div class="nextstepaction"]
-> [使用 Azure CLI 處理 Blob](../blobs/storage-quickstart-blobs-cli.md)
-
-# <a name="template"></a>[範本](#tab/template)
-
-> [!div class="nextstepaction"]
-> [使用 Azure 入口網站處理 Blob](../blobs/storage-quickstart-blobs-portal.md)
-
----
+- [儲存體帳戶概觀](storage-account-overview.md)
+- [升級至一般用途 v2 儲存體帳戶](storage-account-upgrade.md)
+- [將 Azure 儲存體帳戶移至另一個區域](storage-account-move.md)

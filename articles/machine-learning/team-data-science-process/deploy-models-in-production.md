@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: e3e2ef3340ca836f56176c21cf3d221f0bf172b9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a44ead4f0e7c9fcd8dfd19f562b453e600ed6a31
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76722232"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333746"
 ---
 # <a name="deploy-models-to-production-to-play-an-active-role-in-making-business-decisions"></a>將模型部署到生產環境以便在進行業務決策時扮演主動角色
 
@@ -34,12 +34,12 @@ ms.locfileid: "76722232"
 >
 
 >[!NOTE]
->如需使用 Azure Machine Learning Studio 進行部署，請參閱[部署 Azure Machine Learning Web 服務](../studio/deploy-a-machine-learning-web-service.md)。
+>如需使用 Azure Machine Learning Studio 進行部署，請參閱[部署 Azure Machine Learning Web 服務](../classic/deploy-a-machine-learning-web-service.md)。
 >
 
 ## <a name="ab-testing"></a>A/B 測試
 
-當生產環境中有多個模型時，可以使用[A/B 測試](https://en.wikipedia.org/wiki/A/B_testing)來比較模型效能。 
+在生產環境中有多個模型時，可以使用 [A/B 測試](https://en.wikipedia.org/wiki/A/B_testing) 來比較模型效能。 
  
 ## <a name="next-steps"></a>後續步驟
 

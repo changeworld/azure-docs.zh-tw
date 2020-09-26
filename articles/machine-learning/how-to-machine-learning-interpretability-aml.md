@@ -11,12 +11,12 @@ ms.reviewer: Luis.Quintanilla
 ms.date: 07/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: dc07d2826d3c27fad1eee644da36cb7b4f85ea3c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: c23522911bd0c8dc9726a62cced839a1c4be37a6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90897458"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333829"
 ---
 # <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python-preview"></a>使用可解譯性套件以 Python (preview & 預測來說明 ML 模型) 
 
@@ -42,10 +42,9 @@ ms.locfileid: "90897458"
 ## <a name="generate-feature-importance-value-on-your-personal-machine"></a>在您的個人電腦上產生功能重要性值 
 下列範例顯示如何在您的個人電腦上使用可解譯性套件，而不需要聯繫 Azure 服務。
 
-1. 安裝 `azureml-interpret` 和 `azureml-contrib-interpret` 封裝。
+1. 安裝 `azureml-interpret` 套件。
     ```bash
     pip install azureml-interpret
-    pip install azureml-contrib-interpret
     ```
 
 2. 在本機 Jupyter 筆記本中將範例模型定型。
@@ -239,15 +238,14 @@ tabular_explainer = TabularExplainer(clf.steps[-1][1],
 * 使用 `ExplanationClient` 遠端執行中的來上傳可解譯性內容。
 * 稍後在本機環境中下載內容。
 
-1. 安裝 `azureml-interpret` 和 `azureml-contrib-interpret` 封裝。
+1. 安裝 `azureml-interpret` 套件。
     ```bash
     pip install azureml-interpret
-    pip install azureml-contrib-interpret
     ```
 1. 在本機 Jupyter Notebook 中建立定型指令碼。 例如： `train_explain.py` 。
 
     ```python
-    from azureml.contrib.interpret.explanation.explanation_client import ExplanationClient
+    from azureml.interpret import ExplanationClient
     from azureml.core.run import Run
     from interpret.ext.blackbox import TabularExplainer
 
@@ -280,7 +278,7 @@ tabular_explainer = TabularExplainer(clf.steps[-1][1],
 1. 請下載您本機 Jupyter 筆記本中的說明。
 
     ```python
-    from azureml.contrib.interpret.explanation.explanation_client import ExplanationClient
+    from azureml.interpret import ExplanationClient
     
     client = ExplanationClient.from_run(run)
     
@@ -304,7 +302,7 @@ tabular_explainer = TabularExplainer(clf.steps[-1][1],
 
 下圖提供定型模型的整體觀點，以及其預測和說明。
 
-|圖|描述|
+|圖|說明|
 |----|-----------|
 |資料探索| 顯示資料集和預測值的總覽。|
 |全域重要性|匯總個別資料點的特徵重要性值，以顯示模型的整體 top K (可設定的 K) 重要功能。 有助於瞭解基礎模型的整體行為。|
@@ -318,7 +316,7 @@ tabular_explainer = TabularExplainer(clf.steps[-1][1],
 
 您可以按一下任何一個整體繪圖中的任何個別資料點，為任何資料點載入個別的特徵重要性繪圖。
 
-|圖|描述|
+|圖|說明|
 |----|-----------|
 |本機重要性|針對個別預測，顯示可設定的前 K (K) 重要功能。 有助於說明特定資料點上基礎模型的本機行為。|
 |更動探索 (假設分析) |允許變更所選資料點的功能值，並觀察預測值的結果變更。|
@@ -332,29 +330,12 @@ tabular_explainer = TabularExplainer(clf.steps[-1][1],
 
 [![視覺效果儀表板 ICE 繪圖](./media/how-to-machine-learning-interpretability-aml/ice-plot.png)](./media/how-to-machine-learning-interpretability-aml/ice-plot.png#lightbox)
 
-> [!NOTE]
-> 在 Jupyter 核心啟動之前，請確定您已啟用視覺效果儀表板的 widget 擴充功能。
-
-* Jupyter 筆記本
-
-    ```shell
-    jupyter nbextension install --py --sys-prefix azureml.contrib.interpret.visualize
-    jupyter nbextension enable --py --sys-prefix azureml.contrib.interpret.visualize
-    ```
-
-* JupyterLab
-
-    ```shell
-    jupyter labextension install @jupyter-widgets/jupyterlab-manager
-    jupyter labextension install microsoft-mli-widget
-    ```
-
 若要載入視覺效果儀表板，請使用下列程式碼。
 
 ```python
 from interpret_community.widget import ExplanationDashboard
 
-ExplanationDashboard(global_explanation, model, dataset=x_test)
+ExplanationDashboard(global_explanation, model, datasetX=x_test)
 ```
 
 ### <a name="visualization-in-azure-machine-learning-studio"></a>Azure Machine Learning studio 中的視覺效果
@@ -370,7 +351,7 @@ ExplanationDashboard(global_explanation, model, dataset=x_test)
   1. 選取特定實驗來查看該實驗中的所有執行。
   1. 選取 [執行]，然後選取 [說明視覺效果] 儀表板的 [ **說明** ] 索引標籤。
 
-   [![視覺效果儀表板區域功能重要性](./media/how-to-machine-learning-interpretability-aml/amlstudio-experiments.png)](./media/how-to-machine-learning-interpretability-aml/amlstudio-experiments.png#lightbox)
+   [![實驗中 AzureML studio 的視覺效果儀表板區域功能重要性](./media/how-to-machine-learning-interpretability-aml/amlstudio-experiments.png)](./media/how-to-machine-learning-interpretability-aml/amlstudio-experiments.png#lightbox)
 
 * **模型** 窗格
   1. 如果您遵循 [使用 Azure Machine Learning 部署模型](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where)中的步驟來註冊原始模型，您可以在左窗格中選取 **模型** 來加以查看。
@@ -567,7 +548,7 @@ ExplanationDashboard(global_explanation, model, dataset=x_test)
 
    若要刪除已部署的 Web 服務，請使用 `service.delete()`。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 [深入瞭解模型可解譯性](how-to-machine-learning-interpretability.md)
 

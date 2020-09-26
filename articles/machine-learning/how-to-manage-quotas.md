@@ -11,12 +11,12 @@ ms.author: nigup
 ms.date: 05/08/2020
 ms.topic: conceptual
 ms.custom: troubleshooting,contperfq4
-ms.openlocfilehash: c86397b20a95f045ac5edfeb2cfa4833982df990
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: a25dcc187c1bb172106a3972c1cb57dfd473bc2f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90897414"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322371"
 ---
 # <a name="manage--increase-quotas-for-resources-with-azure-machine-learning"></a>管理及增加 Azure Machine Learning 資源的配額
 
@@ -136,6 +136,29 @@ ms.locfileid: "90897414"
 
 > [!NOTE]
 > [免費試用訂用帳戶](https://azure.microsoft.com/offers/ms-azr-0044p)無法增加限制或配額。 如果您有[免費試用訂用帳戶](https://azure.microsoft.com/offers/ms-azr-0044p)，則可以升級到[隨用隨付](https://azure.microsoft.com/offers/ms-azr-0003p/)訂用帳戶。 如需詳細資訊，請參閱[將 Azure 免費試用升級至隨用隨付](../billing/billing-upgrade-azure-subscription.md)和[免費試用訂用帳戶常見問題集](https://azure.microsoft.com/free/free-account-faq)。
+
+## <a name="private-endpoint-and-private-dns-quota-increases"></a>私人端點和私人 DNS 配額增加
+
+可以在訂用帳戶中建立的私人端點和私人 DNS 區域數目有一些限制。 雖然 Azure Machine Learning 會在 (客戶) 訂用帳戶中建立資源，但在某些情況下，會在 Microsoft 擁有的訂用帳戶中建立資源。 在下列案例中，您可能需要在 Microsoft 擁有的訂用帳戶中要求配額額度：
+
+* __使用客戶管理的金鑰 Private Link 啟用的工作區 (CMK) __
+* __虛擬網路背後工作區的 Azure Container Registry__
+* 將__已啟用 Private Link 的 Azure Kubernetes Service 叢集附加至您的工作區__。
+
+若要要求這些案例的額度，請使用下列步驟：
+
+1. [建立 Azure 支援要求](/azure/azure-portal/supportability/how-to-create-azure-support-request#create-a-support-request) ，並從 [ __基本__ ] 區段中選取下列選項：
+
+    | 欄位 | 選取項目 |
+    | ----- | ----- |
+    | 問題類型 | 技術 |
+    | 服務 | 我的服務。 在下拉式清單中選取 __Machine Learning__ 。 |
+    | 問題類型 | 工作區設定、SDK 和 CLI |
+    | 問題子類型 | 佈建或管理工作區時發生問題 |
+
+2. 在 [ __詳細資料__ ] 區段中，使用 [ __描述__ ] 欄位來提供您想要使用的 Azure 區域，以及您打算使用的案例。 如果您需要針對多個訂用帳戶要求增加配額，請同時列出此欄位中的訂用帳戶識別碼。
+
+3. 使用 __create__ 來建立要求。
 
 ## <a name="next-steps"></a>後續步驟
 

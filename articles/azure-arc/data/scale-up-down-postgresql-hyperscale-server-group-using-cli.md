@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: b96f38d04fe3e3cb59fa75424ae588fe0e38f510
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: dc77b3c8bc357b63047d20afa9493bbaaff77113
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934028"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91285310"
 ---
 # <a name="scale-up-and-down-an-azure-database-for-postgresql-hyperscale-server-group-using-cli-azdata-or-kubectl"></a>使用 CLI (azdata 或 kubectl 適用於 PostgreSQL 的 Azure 資料庫的超大規模伺服器群組擴大和縮小) 
 
@@ -84,7 +84,7 @@ kubectl describe postgresql-12/<server group name> [-n <namespace name>]
 
 您即將設定的設定必須在您為 Kubernetes 叢集設定的設定內考慮。 請確定您未設定 Kubernetes 叢集無法滿足的值。 這可能會導致錯誤或無法預期的行為。 例如，如果您的伺服器群組狀態在變更設定之後仍處於 [狀態 _更新_ ]，則可能表示您將下列參數設定為您的 Kubernetes 叢集無法滿足的值。 如果是這種情況，請還原變更或讀取 _troubleshooting_section。
 
-讓我們假設您想要將伺服器群組的定義擴大為：
+例如，假設您想要將伺服器群組的定義擴大為：
 
 - 最小 vCore = 2
 - 最大 vCore = 4
@@ -94,6 +94,13 @@ kubectl describe postgresql-12/<server group name> [-n <namespace name>]
 您可以使用下列其中一種方法：
 
 ### <a name="cli-with-azdata"></a>使用 azdata 的 CLI
+
+```console
+azdata arc postgres server edit -n <name of your server group> --cores-request <# core-request>  --cores-limit <# core-limit>  --memory-request <# memory-request>Mi  --memory-limit <# memory-limit>Mi
+```
+
+> [!CAUTION]
+> 以下範例提供的範例說明如何使用命令。 執行編輯命令之前，請務必將參數設定為 Kubernetes 叢集可接受的值。
 
 ```console
 azdata arc postgres server edit -n <name of your server group> --cores-request 2  --cores-limit 4  --memory-request 512Mi  --memory-limit 1024Mi
@@ -116,6 +123,10 @@ kubectl edit postgresql-12/<server group name> [-n <namespace name>]
 
 這會帶您進入 vi 編輯器，您可以在其中流覽和變更設定。 使用下列程式，將所需的設定對應至規格中的功能變數名稱：
 
+> [!CAUTION]
+> 以下範例提供的範例說明如何編輯設定。 更新設定之前，請務必將參數設定為 Kubernetes 叢集可接受的值。
+
+例如：
 - 最小 vCore = 2-> scheduling\default\resources\requests\cpu
 - Max vCore = 4-> scheduling\default\resources\limits\cpu
 - 最小記憶體 = 512Mb-> scheduling\default\resources\requests\cpu
@@ -170,7 +181,7 @@ kubectl describe postgresql-12/<server group name>  [-n <namespace name>]
 
 若要縮小伺服器群組，您可以執行相同的命令，但針對您想要縮小的設定設定較小的值。 若要移除要求和（或）限制，請將其值指定為空字串。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [向外擴充您的適用於 PostgreSQL 的 Azure 資料庫超大規模伺服器群組](scale-out-postgresql-hyperscale-server-group.md)
 - [儲存體設定和 Kubernetes 儲存體概念](storage-configuration.md)

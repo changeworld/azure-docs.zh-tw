@@ -3,12 +3,12 @@ title: 使用 Azure Site Recovery 將 Azure Stack VM 複寫至 Azure | Microsoft
 description: 了解如何使用 Azure Site Recovery 服務設定將 Azure Stack VM 進行災害復原至 Azure。
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: 61154e58582a3dcbab0f7ed9542d094be192ae74
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 5bc78dc5b01bb4790190268b303cb894de2b6f71
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90564304"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333710"
 ---
 # <a name="replicate-azure-stack-vms-to-azure"></a>將 Azure Stack VM 複寫至 Azure
 
@@ -40,7 +40,7 @@ Site Recovery 有助於商務持續性和災害復原 (BCDR) 策略的進行。 
 
 **位置** | **元件** |**詳細資料**
 --- | --- | ---
-**設定伺服器** | 在單一 Azure Stack VM 上執行。 | 在每個訂用帳戶中，設定組態伺服器 VM。 此 VM 會執行下列 Site Recovery 元件：<br/><br/> - 組態伺服器：負責協調內部部署與 Azure 之間的通訊，以及管理資料複寫。 - 處理序伺服器：作為複寫閘道。 負責接收複寫資料，以快取、壓縮和加密進行最佳化，然後將複寫資料傳送至 Azure 儲存體。<br/><br/> 如果您要複寫的 VM 超過以下所述的限制，您可以設定個別的獨立處理序伺服器。 [深入了解](vmware-azure-set-up-process-server-scale.md)。
+**組態伺服器** | 在單一 Azure Stack VM 上執行。 | 在每個訂用帳戶中，設定組態伺服器 VM。 此 VM 會執行下列 Site Recovery 元件：<br/><br/> - 組態伺服器：負責協調內部部署與 Azure 之間的通訊，以及管理資料複寫。 - 處理序伺服器：作為複寫閘道。 負責接收複寫資料，以快取、壓縮和加密進行最佳化，然後將複寫資料傳送至 Azure 儲存體。<br/><br/> 如果您要複寫的 VM 超過以下所述的限制，您可以設定個別的獨立處理序伺服器。 [深入了解](vmware-azure-set-up-process-server-scale.md)。
 **行動服務** | 安裝在您要複寫的每部 VM 上。 | 在本文的步驟中，我們準備了一個帳戶，讓行動服務會在複寫啟用時自動安裝在 VM 上。 如果您不想要自動安裝服務，還有一些其他方法可以使用。 [深入了解](vmware-azure-install-mobility-service.md)。
 **Azure** | 在 Azure 中，您需要復原服務保存庫、儲存體帳戶，以及虛擬網路。 |  複寫的資料會儲存在儲存體帳戶中。 當容錯移轉發生時，Azure VM 會新增至 Azure 網路。
 
@@ -164,13 +164,13 @@ Site Recovery 有助於商務持續性和災害復原 (BCDR) 策略的進行。 
 1. 按一下 [準備基礎結構] >  [來源]。
 2. 在 [準備來源]**** 中，按一下 [+組態伺服器]****。
 
-    ![設定來源](./media/azure-stack-site-recovery/plus-config-srv.png)
+    ![[+ 設定伺服器] 對話方塊的螢幕擷取畫面，其中顯示訊息「在上方的命令列中按一下 + 設定伺服器以設定一個 ...」。](./media/azure-stack-site-recovery/plus-config-srv.png)
 
 3. 在 [新增伺服器]  中，檢查 [設定伺服器]  是否出現在 [伺服器類型]  中。
 5. 下載 Site Recovery 統一安裝的安裝檔案。
 6. 下載保存庫註冊金鑰。 執行「整合安裝」時，您需要該註冊金鑰。 該金鑰在產生後會維持 5 天有效。
 
-    ![設定來源](./media/azure-stack-site-recovery/set-source2.png)
+    ![[新增伺服器] 對話方塊的螢幕擷取畫面，其中 [伺服器類型] 設為 [設定伺服器]，並醒目提示 [下載保存庫註冊金鑰] 按鈕。](./media/azure-stack-site-recovery/set-source2.png)
 
 
 ### <a name="run-azure-site-recovery-unified-setup"></a>執行 Azure Site Recovery 統一安裝

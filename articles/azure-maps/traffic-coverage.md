@@ -1,6 +1,6 @@
 ---
 title: 流量涵蓋範圍 |Microsoft Azure 對應
-description: 深入瞭解 Azure 地圖服務中的流量涵蓋範圍。 瞭解流量和事件的資訊是否可在世界各地的不同區域中取得。
+description: 瞭解 Azure 地圖服務中的流量涵蓋範圍。 查看全球不同區域是否可使用交通流程和事件的資訊。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 09/22/2018
@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 51fdbda755b98b47b700f57bf990b5c5356854a9
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 3b1b86e47164ce4c1a13a3dfe037c0ecc659fbee
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037604"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91310028"
 ---
 # <a name="azure-maps-traffic-coverage"></a>Azure 地圖服務交通涵蓋範圍
 
 Azure 地圖服務會以交通**流量**和**事件**的形式提供豐富的交通資訊。 此資料可以在地圖上以視覺形式呈現，或用來產生將行車條件納入考量的更聰明路線。
 
-不過，對應的資訊層級與所有國家或地區的精確度並不相同。 下表提供您可以從每個國家或地區要求的流量資訊類型的相關資訊： 
+不過，Maps 沒有相同層級的資訊和精確度適用于所有國家或地區。 下表提供您可以從每個國家或地區要求何種流量資訊的相關資訊： 
 
 ## <a name="americas"></a>美洲
 
@@ -27,7 +27,7 @@ Azure 地圖服務會以交通**流量**和**事件**的形式提供豐富的交
 |---------|:---------:|:---------:|
 |阿根廷      |✓         |✓         |
 |巴西     |✓         |✓         |
-|加拿大     |✓         |✓         |
+|Canada     |✓         |✓         |
 |智利     |✓         |✓         |
 |哥倫比亞      |✓         |✓         |
 |墨西哥     |✓         |✓         |
@@ -111,7 +111,7 @@ Azure 地圖服務會以交通**流量**和**事件**的形式提供豐富的交
 |英國     |✓         |✓         |
 |+直布羅陀     |✓         |✓         |
 |+ 根息島 & Jersey     |✓         |✓         |
-|+ Isle 的 Man     |✓         |✓         |
+|+ Isle 的男人     |✓         |✓         |
 |梵蒂岡   |✓         |✓         |
 
 

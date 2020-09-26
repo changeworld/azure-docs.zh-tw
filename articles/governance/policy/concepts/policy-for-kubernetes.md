@@ -1,16 +1,16 @@
 ---
-title: 預覽 - 了解適用於 Kubernetes 的 Azure 原則
-description: 了解 Azure 原則如何使用 Rego 和 Open Policy Agent 來管理在 Azure 或內部部署中執行 Kubernetes 的叢集。 這是預覽功能。
-ms.date: 08/07/2020
+title: 瞭解 Kubernetes 的 Azure 原則
+description: 了解 Azure 原則如何使用 Rego 和 Open Policy Agent 來管理在 Azure 或內部部署中執行 Kubernetes 的叢集。
+ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: a824548cb45f886bcf82bedad6e5d5c216bb7fea
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: dbe7257b577f0526e0d34c13e0102305e58cc656
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89645591"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322456"
 ---
-# <a name="understand-azure-policy-for-kubernetes-clusters-preview"></a>了解適用於 Kubernetes 叢集的 Azure 原則 (預覽)
+# <a name="understand-azure-policy-for-kubernetes-clusters"></a>了解適用於 Kubernetes 叢集的 Azure 原則 \(部分機器翻譯\)
 
 Azure 原則會延伸 [Gatekeeper](https://github.com/open-policy-agent/gatekeeper) v3 ([Open Policy Agent](https://www.openpolicyagent.org/) (OPA) 的_許可控制站 Webhook_)，以集中且一致的方式，對叢集進行大規模的政策實施和保護。 Azure 原則可以從單一位置管理和報告 Kubernetes 叢集的合規性狀態。 附加元件會制定下列功能：
 
@@ -25,7 +25,7 @@ Azure 原則會延伸 [Gatekeeper](https://github.com/open-policy-agent/gatekeep
 - [AKS 引擎](https://github.com/Azure/aks-engine/blob/master/docs/README.md)
 
 > [!IMPORTANT]
-> 適用於 Kubernetes 的 Azure 原則處於 [預覽] 狀態，且僅支援 Linux 節點集區與內建的原則定義。 內建的原則定義位在 **Kubernetes** 類別中。 具有 **EnforceOPAConstraint** 和 **EnforceRegoPolicy** 效果的有限預覽原則定義和相關的 **Kubernetes 服務** 類別已被 _取代_。 相反地，請使用對資源提供者模式進行 _audit_ 和 _deny_ 的效果 `Microsoft.Kubernetes.Data` 。
+> 適用于 AKS 引擎和已啟用 Arc 之 Kubernetes 的附加元件現供 **預覽**。 適用于 Kubernetes 的 Azure 原則僅支援 Linux 節點集區和內建原則定義。 內建的原則定義位在 **Kubernetes** 類別中。 具有 **EnforceOPAConstraint** 和 **EnforceRegoPolicy** 效果的有限預覽原則定義和相關的 **Kubernetes 服務** 類別已被 _取代_。 相反地，請使用對資源提供者模式進行 _audit_ 和 _deny_ 的效果 `Microsoft.Kubernetes.Data` 。
 
 ## <a name="overview"></a>概觀
 
@@ -45,29 +45,57 @@ Azure 原則會延伸 [Gatekeeper](https://github.com/open-policy-agent/gatekeep
 
 1. [等待驗證](#policy-evaluation)
 
+## <a name="limitations"></a>限制
+
+下列一般限制適用于 Kubernetes 叢集的 Azure 原則附加元件：
+
+- Kubernetes **1.14** 版或更高版本支援 Kubernetes 的 Azure 原則附加元件。
+- Kubernetes 的 Azure 原則附加元件只能部署至 Linux 節點集區
+- 僅支援內建原則定義
+- 每個叢集每個原則的不符合規範記錄數目上限： **500**
+- 每一訂用帳戶不符合規範的記錄數目上限： **1000000**
+- 不支援在 Azure 原則附加元件之外安裝閘道管理員。 先卸載先前的閘道管理員安裝所安裝的任何元件，再啟用 Azure 原則附加元件。
+- [不符合規範的原因](../how-to/determine-non-compliance.md#compliance-reasons)不適用於 `Microsoft.Kubernetes.Data` 
+   [資源提供者模式](./definition-structure.md#resource-provider-modes)
+
+下列限制僅適用于 AKS 的 Azure 原則附加元件：
+
+- [AKS Pod 安全性原則](../../../aks/use-pod-security-policies.md) 和 AKS 的 Azure 原則附加元件無法同時啟用。 如需詳細資訊，請參閱 [AKS pod 安全性限制](../../../aks/use-pod-security-on-azure-policy.md#limitations)。
+- 評估的 Azure 原則附加元件會自動排除命名空間： _kube-system_、 _閘道管理員系統_和 _aks-periscope_。
+
+## <a name="recommendations"></a>建議
+
+以下是使用 Azure 原則附加元件的一般建議：
+
+- Azure 原則附加元件需要3個閘道管理員元件才能執行：1個 audit pod 和2個 webhook pod 複本。 在需要進行審核和強制操作的叢集中，這些元件會耗用更多資源，因為 Kubernetes 資源和原則指派的計數會增加。
+
+  - 針對單一叢集中小於500的 pod，最多可有20個條件約束：每個元件2個 vcpu 和 350 MB 的記憶體。
+  - 在單一叢集中，有500個以上的 pod，最大為40限制：每個元件3個 vcpu 和 600 MB 的記憶體。
+
+- Windows pod [不支援安全性](https://kubernetes.io/docs/concepts/security/pod-security-standards/#what-profiles-should-i-apply-to-my-windows-pods)內容。
+  因此，某些 Azure 原則定義（例如不允許根許可權）無法在 Windows pod 中提升，而且只適用于 Linux pod。
+
+下列建議僅適用于 AKS 和 Azure 原則附加元件：
+
+- 使用具有污點的系統節點集區 `CriticalAddonsOnly` 來排程閘道管理員。 如需詳細資訊，請參閱 [使用系統節點](../../../aks/use-system-pools.md#system-and-user-node-pools)集區。
+- 保護來自 AKS 叢集的輸出流量。 如需詳細資訊，請參閱 [控制叢集節點的輸出流量](../../../aks/limit-egress-traffic.md)。
+- 如果叢集已 `aad-pod-identity` 啟用，節點受控身分識別 (NMI) pod 會修改節點的 iptables，以攔截對 Azure 實例中繼資料端點的呼叫。 這項設定表示即使 pod 不使用，對中繼資料端點所提出的任何要求都會被 NMI 攔截 `aad-pod-identity` 。 您可以設定 AzurePodIdentityException .CRD，以通知 `aad-pod-identity` 來自符合 .crd 中所定義標籤之中繼資料端點的任何要求，都應該是 proxy，而不需要在 NMI 中處理。 在 `kubernetes.azure.com/managedby: aks` _kube_ 系統命名空間中具有標籤的系統 pod，應設定 `aad-pod-identity` AzurePodIdentityException .crd 來排除。 如需詳細資訊，請參閱 [停用 aad-pod-特定 pod 或應用程式](https://github.com/Azure/aad-pod-identity/blob/master/docs/readmes/README.app-exception.md)的身分識別。
+  若要設定例外狀況，請安裝 [mic 例外狀況 YAML](https://github.com/Azure/aad-pod-identity/blob/master/deploy/infra/mic-exception.yaml)。
+
 ## <a name="install-azure-policy-add-on-for-aks"></a>安裝 AKS 的 Azure 原則附加元件
 
 在安裝 Azure 原則附加元件或啟用任何服務功能之前，您的訂用帳戶必須啟用 **Microsoft.ContainerService** 和 **Microsoft.PolicyInsights** 資源提供者。
 
-1. 您必須安裝並設定 Azure CLI 2.0.62 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
+> [!IMPORTANT]
+> AKS 上 Azure 原則的正式運作 (GA) 會主動在所有區域中發行。 GA 版本的預期全域完成為9/29/2020。 沒有 GA 版本的區域使用方式需要預覽註冊步驟。 不過，這會在區域中有提供正式發行版本時自動更新。
+
+1. 您需要安裝並設定 Azure CLI 2.12.0 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
 
 1. 註冊資源提供者和預覽功能。
 
    - Azure 入口網站：
 
-     1. 註冊 **Microsoft.ContainerService** 和 **Microsoft.PolicyInsights** 資源提供者。 如需相關步驟，請參閱[資源提供者和類型](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)。
-
-     1. 選取 [ **所有服務**]，然後搜尋並選取 [ **原則**]，以啟動 Azure 入口網站中的 Azure 原則服務。
-
-        :::image type="content" source="../media/policy-for-kubernetes/search-policy.png" alt-text="在所有服務中搜尋原則的螢幕擷取畫面。" border="false":::
-
-     1. 選取「Azure 原則」頁面左側的 [加入預覽]。
-
-        :::image type="content" source="../media/policy-for-kubernetes/join-aks-preview.png" alt-text="[原則] 頁面上 [加入預覽] 節點的螢幕擷取畫面。" border="false":::
-
-     1. 選取您要新增至預覽的訂用帳戶資料列。
-
-     1. 選取訂用帳戶清單頂端的 [加入] 按鈕。
+     註冊 **Microsoft.ContainerService** 和 **Microsoft.PolicyInsights** 資源提供者。 如需相關步驟，請參閱[資源提供者和類型](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)。
 
    - Azure CLI：
 
@@ -79,18 +107,9 @@ Azure 原則會延伸 [Gatekeeper](https://github.com/open-policy-agent/gatekeep
 
      # Provider register: Register the Azure Policy provider
      az provider register --namespace Microsoft.PolicyInsights
-
-     # Feature register: enables installing the add-on
-     az feature register --namespace Microsoft.ContainerService --name AKS-AzurePolicyAutoApprove
-
-     # Use the following to confirm the feature has registered
-     az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKS-AzurePolicyAutoApprove')].   {Name:name,State:properties.state}"
-
-     # Once the above shows 'Registered' run the following to propagate the update
-     az provider register -n Microsoft.ContainerService
      ```
 
-1. 如果已安裝有限的預覽原則定義，請在 [原則 (預覽)] 頁面下，使用 AKS 叢集上的 [停用] 按鈕移除附加元件。
+1. 如果已安裝有限的預覽原則定義，請在 [**原則**] 頁面下的 AKS 叢集上，使用 [**停**用] 按鈕移除附加元件。
 
 1. AKS 叢集必須是 _1.14_ 版或更新版本。 使用下列指令碼來驗證您的 AKS 叢集版本：
 
@@ -101,20 +120,7 @@ Azure 原則會延伸 [Gatekeeper](https://github.com/open-policy-agent/gatekeep
    az aks list
    ```
 
-1. 安裝 AKS 適用的 Azure CLI 預覽延伸模組 0.4.0 版 (`aks-preview`)：
-
-   ```azurecli-interactive
-   # Log in first with az login if you're not using Cloud Shell
-
-   # Install/update the preview extension
-   az extension add --name aks-preview
-
-   # Validate the version of the preview extension
-   az extension show --name aks-preview --query [version]
-   ```
-
-   > [!NOTE]
-   > 如果您先前已安裝 _aks-preview_ 延伸模組，請使用 `az extension update --name aks-preview` 命令安裝任何更新。
+1. 安裝版本 _2.12.0_ 或更高版本的 Azure CLI。 如需詳細資訊，請參閱 [安裝 Azure CLI](/cli/azure/install-azure-cli)。
 
 完成上述先決條件步驟後，請在您想要管理的 AKS 叢集中安裝 Azure 原則附加元件。
 
@@ -124,19 +130,16 @@ Azure 原則會延伸 [Gatekeeper](https://github.com/open-policy-agent/gatekeep
 
   1. 選取您的其中一個 AKS 叢集。
 
-  1. 選取 [Kubernetes 服務] 頁面左側的 [原則 (預覽)]。
-
-     :::image type="content" source="../media/policy-for-kubernetes/policies-preview-from-aks-cluster.png" alt-text="Kubernetes 服務頁面上 [原則 (預覽) ] 節點的螢幕擷取畫面。" border="false":::
+  1. 選取 [Kubernetes 服務] 頁面左側的 [ **原則** ]。
 
   1. 在主頁面中，選取 [啟用附加元件] 按鈕。
 
-     :::image type="content" source="../media/policy-for-kubernetes/enable-policy-add-on.png" alt-text="[在 Azure Kubernetes Services 上架至 Azure 原則] (K S) 頁面上的 [啟用附加元件] 按鈕的螢幕擷取畫面。":::
-
      <a name="migrate-from-v1"></a>
      > [!NOTE]
-     > 如果 [啟用附加元件] 按鈕呈現灰色，則表示訂用帳戶尚未新增至預覽。 如果 [ **停用附加** 元件] 按鈕已啟用，且顯示「遷移警告 v2」訊息，則會安裝 v1 附加元件，並在指派 v2 原則定義之前，必須先將其移除。 從2020年8月24日開始，已 _淘汰_ 的 v1 附加元件將會自動取代為 v2 附加元件。 接著，必須指派原則定義的新 v2 版本。 若要立即升級，請遵循下列步驟：
+     > 如果 [ **停用附加** 元件] 按鈕已啟用，且顯示「遷移警告 v2」訊息，則會安裝 v1 附加元件，並在指派 v2 原則定義之前，必須先將其移除。 已 _淘汰_ 的 v1 附加元件將會在8月24日起，自動取代為 v2 附加元件
+     > 2020. 接著，必須指派原則定義的新 v2 版本。 若要立即升級，請遵循下列步驟：
      >
-     > 1. 造訪您 AKS 叢集上 ** (preview) ** 頁面中的原則，以驗證您的 AKS 叢集是否已安裝 v1 附加元件，並具有「目前的叢集使用 Azure 原則附加元件 v1 ...」消息。
+     > 1. 造訪 AKS 叢集上的 [ **原則** ] 頁面，並將 [目前的叢集使用 Azure 原則附加元件 v1 ...]，以驗證您的 AKS 叢集是否已安裝 v1 附加元件消息。
      > 1. [移除附加](#remove-the-add-on-from-aks)元件。
      > 1. 選取 [ **啟用附加** 元件] 按鈕以安裝 v2 版本的附加元件。
      > 1. [指派 v1 內建原則定義的 v2 版本](#assign-a-built-in-policy-definition)
@@ -173,11 +176,11 @@ kubectl get pods -n gatekeeper-system
 }
 ```
 
-## <a name="install-azure-policy-add-on-for-azure-arc-enabled-kubernetes"></a>為已啟用 Azure Arc 的 Kubernetes 安裝 Azure 原則附加元件
+## <a name="install-azure-policy-add-on-for-azure-arc-enabled-kubernetes-preview"></a><a name="install-azure-policy-add-on-for-azure-arc-enabled-kubernetes"></a>針對已啟用 Azure Arc 的 Kubernetes 安裝 Azure 原則附加元件 (preview) 
 
 在安裝 Azure 原則附加元件或啟用任何服務功能之前，您的訂用帳戶必須啟用 **Microsoft.PolicyInsights** 資源提供者，並建立叢集服務主體的角色指派。
 
-1. 您必須安裝並設定 Azure CLI 2.0.62 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
+1. 您需要安裝並設定 Azure CLI 2.12.0 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
 
 1. 若要啟用資源提供者，請遵循[資源提供者和類型](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)中的步驟，或執行 Azure CLI 或 Azure PowerShell 命令：
 
@@ -277,7 +280,7 @@ kubectl get pods -n kube-system
 kubectl get pods -n gatekeeper-system
 ```
 
-## <a name="install-azure-policy-add-on-for-aks-engine"></a>安裝 AKS 引擎的 Azure 原則附加元件
+## <a name="install-azure-policy-add-on-for-aks-engine-preview"></a><a name="install-azure-policy-add-on-for-aks-engine"></a>安裝適用于 AKS Engine (preview 的 Azure 原則附加元件) 
 
 在安裝 Azure 原則附加元件或啟用任何服務功能之前，您的訂用帳戶必須啟用 **Microsoft.PolicyInsights** 資源提供者，並建立叢集服務主體的角色指派。
 
@@ -430,7 +433,7 @@ kubectl get pods -n gatekeeper-system
 > [!NOTE]
 > 雖然叢集管理員可能具備建立和更新 Azure 原則附加元件所安裝之條件約束範本和條件約束資源的權限，但這些不是支援的案例，因為手動更新會遭到覆寫。 Gatekeeper 會繼續評估安裝附加元件並指派 Azure 原則的原則定義之前已存在的原則。
 
-每隔 15 分鐘，附加元件就會呼叫叢集的完整掃描。 在收集完整掃描的詳細資料以及嘗試變更叢集的任何即時評估 (由 Gatekeeper 執行) 之後，此附加元件會將結果回報給 Azure 原則以納入[合規性詳細資料](../how-to/get-compliance-data.md)，例如任何 Azure 原則指派。 在稽核週期期間，只會傳回作用中原則指派的結果。 稽核結果也可以視為失敗條件約束 [狀態] 欄位中所列的[違規](https://github.com/open-policy-agent/gatekeeper#audit)。
+每隔 15 分鐘，附加元件就會呼叫叢集的完整掃描。 在收集完整掃描的詳細資料以及嘗試變更叢集的任何即時評估 (由 Gatekeeper 執行) 之後，此附加元件會將結果回報給 Azure 原則以納入[合規性詳細資料](../how-to/get-compliance-data.md)，例如任何 Azure 原則指派。 在稽核週期期間，只會傳回作用中原則指派的結果。 稽核結果也可以視為失敗條件約束 [狀態] 欄位中所列的[違規](https://github.com/open-policy-agent/gatekeeper#audit)。 如需 _不符合規範_ 之資源的詳細資訊，請參閱 [資源提供者模式的合規性詳細資料](../how-to/determine-non-compliance.md#compliance-details-for-resource-provider-modes)。
 
 > [!NOTE]
 > 在 Kubernetes 叢集 Azure 原則中，每個合規性報告都包含過去 45 分鐘內的所有違規。 時間戳記會指出違規發生的時間。
@@ -464,13 +467,9 @@ kubectl logs <gatekeeper pod name> -n gatekeeper-system
 
   1. 選取您想要停用 Azure 原則附加元件的 AKS 叢集。
 
-  1. 選取 [Kubernetes 服務] 頁面左側的 [原則 (預覽)]。
-
-     :::image type="content" source="../media/policy-for-kubernetes/policies-preview-from-aks-cluster.png" alt-text="Kubernetes 服務頁面上 [原則 (預覽) ] 節點的螢幕擷取畫面。" border="false":::
+  1. 選取 [Kubernetes 服務] 頁面左側的 [ **原則** ]。
 
   1. 在主頁面中，選取 [停用附加元件] 按鈕。
-
-     :::image type="content" source="../media/policy-for-kubernetes/disable-policy-add-on.png" alt-text="螢幕擷取畫面： [Azure Kubernetes Services 的上架至 Azure 原則] (K S) 頁面上的 [停用附加元件] 按鈕。" border="false":::
 
 - Azure CLI
 

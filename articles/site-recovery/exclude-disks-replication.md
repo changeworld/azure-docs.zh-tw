@@ -3,12 +3,12 @@ title: 使用 Azure Site Recovery 從複寫排除磁碟
 description: 如何使用 Azure Site Recovery 從 Azure 的複寫排除磁碟。
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.openlocfilehash: 778bb030d9768c5fbe1cb8aeba0becfc68c00629
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 15989fbfd65f758eb777c5170c217aba8707e0be
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86245393"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333659"
 ---
 # <a name="exclude-disks-from-disaster-recovery"></a>從災害復原排除磁碟
 
@@ -207,7 +207,7 @@ DB-Disk3 | Disk3 | F:\ | 使用者資料 2
 
 來源 VM 上的分頁檔設定如下所示：
 
-![來源虛擬機器上的分頁檔設定](./media/exclude-disks-replication/pagefile-d-drive-source-vm.png)
+![[虛擬記憶體] 對話方塊的螢幕擷取畫面，其中已醒目提示 [頁面檔案大小] 行，顯示分頁檔案大小 (MB) 3000-7000。](./media/exclude-disks-replication/pagefile-d-drive-source-vm.png)
 
 1. 我們會啟用 VM 的複寫。
 2. 我們會從複寫排除 DB-Disk1。
@@ -260,7 +260,7 @@ DB-Disk3 | Disk3 | F:\ | 使用者資料 2
 
 Azure VM 上的分頁檔設定如下所示：
 
-![Azure 虛擬機器上的分頁檔設定](./media/exclude-disks-replication/pagefile-azure-vm-after-failover-2.png)
+![[虛擬記憶體] 對話方塊的螢幕擷取畫面，其中已醒目提示顯示 [系統管理] 頁面檔案大小設定的 [磁片磁碟機] 行。](./media/exclude-disks-replication/pagefile-azure-vm-after-failover-2.png)
 
 
 ## <a name="next-steps"></a>後續步驟

@@ -12,12 +12,12 @@ ms.date: 09/01/2020
 ms.author: trbye
 ms.custom: cog-serv-seo-aug-2020
 keywords: 文字轉換語音
-ms.openlocfilehash: 8b8430135ffd15e8331b654628236a315f10cce3
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 5d60279a2e3cb6aa7226f518783d53a1a38ddaa8
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401175"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91357449"
 ---
 # <a name="what-is-text-to-speech"></a>什麼是文字轉換語音？
 
@@ -75,7 +75,7 @@ ms.locfileid: "89401175"
 - [語音 SDK](speech-sdk.md)
 - [REST API：文字轉語音](rest-text-to-speech.md)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
-- [取得免費的語音服務訂用帳戶](get-started.md)
+- [取得免費的語音服務訂用帳戶](overview.md#try-the-speech-service-for-free)
 - [取得語音 SDK](speech-sdk.md)

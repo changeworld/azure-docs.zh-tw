@@ -3,12 +3,12 @@ title: 使用 Azure Advisor 降低服務成本
 description: 使用 Azure Advisor 程式將 Azure 部署的成本最佳化。
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: d234e89d0d042999805fae73d3df24c03d1027c9
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 89bc72bcf3a19867341675f89cbc0a734d7996d5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654033"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325839"
 ---
 # <a name="reduce-service-costs-by-using-azure-advisor"></a>使用 Azure Advisor 降低服務成本
 
@@ -20,7 +20,7 @@ Azure Advisor 藉由識別閒置和使用量過低的資源，協助您優化並
 
 建議的動作會關閉或調整大小，特定于正在評估的資源。
 
-當下列兩個陳述都成立時，Advisor 中的 advanced 評估模型會考慮關閉虛擬機器： 
+當所有這些陳述都成立時，Advisor 中的 advanced 評估模型會考慮關閉虛擬機器： 
 - CPU 使用率的最大值 P95th 小於3%。 
 - 在七天的期間內，網路使用率低於2%。
 - 記憶體壓力低於臨界值

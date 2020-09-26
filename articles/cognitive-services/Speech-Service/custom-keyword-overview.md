@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: hasshah
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8c19650a8f36181e3e003414ff15add071e9a8ac
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: b2763372cc63637f73610e1936e3ea54a4524e7d
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88918888"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91356599"
 ---
 # <a name="what-is-a-keyword"></a>什麼是關鍵字？
 
@@ -26,7 +26,7 @@ ms.locfileid: "88918888"
 
 使用自訂關鍵字的自訂、效能和整合功能，您可以量身打造語音啟用，以最符合您產品的願景和使用者的需求。
 
-| 功能 | 描述 |
+| 功能 | 說明 |
 |----------|----------|
 | 關鍵字自訂 | 作為品牌的擴充功能，關鍵字會強化您與客戶建立的權益。 語音 Studio 上的自訂關鍵字入口網站可讓您指定最能代表您品牌的任何單字或簡短片語。 您可以藉由選擇正確的發音（會由產生的關鍵字模型接受）來進一步個人化關鍵字。
 | 關鍵字驗證 | 如果在本機偵測到關鍵字有高度信賴度，則會將音訊傳送至雲端，以進一步確認使用者是否已說出關鍵字。 關鍵字驗證藉由減少不正確的本機偵測和保護使用者隱私權的影響，來提供額外的安全性層級。
@@ -61,6 +61,6 @@ ms.locfileid: "88918888"
 
 ## <a name="next-steps"></a>後續步驟
 
-* [免費取得語音服務的訂用帳戶金鑰](get-started.md)
+* [免費取得語音服務的訂用帳戶金鑰](overview.md#try-the-speech-service-for-free)
 * [取得語音 SDK](speech-sdk.md)
 * [深入瞭解語音助理](voice-assistants.md)

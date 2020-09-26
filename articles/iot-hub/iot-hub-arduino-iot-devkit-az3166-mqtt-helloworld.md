@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure MQTT 用戶端程式庫將訊息傳送至 MQTT 伺服器
-description: 瞭解如何使用 MQTT 用戶端程式庫將訊息傳送到 MQTT broker。 另請瞭解如何將您的 mXChip IoT DevKit 設定為 MQTT 用戶端。
+description: 瞭解如何使用 MQTT 用戶端程式庫將訊息傳送至 MQTT 訊息代理程式。 同時瞭解如何將 mXChip IoT DevKit 設定為 MQTT 用戶端。
 author: liydu
 manager: jeffya
 ms.service: iot-hub
@@ -10,12 +10,12 @@ ms.tgt_pltfrm: arduino
 ms.date: 04/02/2018
 ms.author: liydu
 ms.custom: mqtt
-ms.openlocfilehash: a3a8c065c226d1cc94d79b44d16f288fab205a56
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 09ea3ceb15c9b175b8366bf3ac57a61e468ab72a
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337852"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91356021"
 ---
 # <a name="send-messages-to-an-mqtt-server"></a>將訊息傳送至 MQTT 伺服器
 
@@ -55,7 +55,7 @@ ms.locfileid: "87337852"
 
 輸入 `Ctrl+P` (macOS：`Cmd+P`) 以執行 `task device-upload`。 上傳完成後，DevKit 就會重新啟動並執行草圖。
 
-![device-upload](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/device-upload.jpg)
+![螢幕擷取畫面顯示命令提示字元視窗，此視窗會上傳並執行 Arduino 草圖。](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/device-upload.jpg)
 
 > [!NOTE]
 > 您可能會收到「錯誤：AZ3166：未知的套件」錯誤訊息。 未正確重新整理面板套件索引時，就會發生此錯誤。 若要解決此錯誤，請參閱 [IoT DevKit 常見問題集的開發一節](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#development)。
@@ -64,15 +64,15 @@ ms.locfileid: "87337852"
 
 在 VS Code 中，依照此程序來開啟和設定「序列監視器」：
 
-1. 按一下狀態列上的 `COM[X]` 文字，以設定含有 `STMicroelectronics` 的正確 COM 連接埠：![set-com-port](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/set-com-port.jpg)
+1. 按一下 `COM[X]` 狀態列上的文字，以設定正確的 COM 埠 `STMicroelectronics` ： ![ 螢幕擷取畫面顯示已選取 COM8 S T 微型電子設備 Visual Studio Code。](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/set-com-port.jpg)
 
-2. 按一下狀態列上的電源插頭圖示，以開啟「序列監視器」：![serial-monitor](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/serial-monitor.jpg)
+2. 按一下狀態列上的電源插頭圖示，以開啟序列監視器： ![ 螢幕擷取畫面會顯示 [發行摘要] 和狀態列中的電源插頭圖示。](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/serial-monitor.jpg)
   
-3. 在狀態列上，按一下代表「傳輸速率」的數字，然後設定為 `115200`![set-baud-rate](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/set-baud-rate.jpg)
+3. 在狀態列上，按一下代表「傳輸速率」的數位，並將其設定為 `115200` ： ![ 螢幕擷取畫面顯示在 Visual Studio Code 中設定傳輸速率。](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/set-baud-rate.jpg)
 
 「序列監視器」會顯示範例草圖傳送的所有訊息。 此草圖會將 DevKit 連線至 Wi-Fi。 一旦成功連線 Wi-Fi，草圖就會將訊息傳送至 MQTT 訊息代理程式。 然後，範例會分別使用 QoS 0 和 QoS 1，重複傳送兩則 "iot.eclipse.org" 訊息。
 
-![serial-output](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/serial-output.jpg)
+![螢幕擷取畫面：顯示顯示草圖所傳送之訊息的序列監視器。](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/serial-output.jpg)
 
 ## <a name="problems-and-feedback"></a>問題與意見反應
 
@@ -88,4 +88,4 @@ ms.locfileid: "87337852"
 
 ## <a name="next-steps"></a>後續步驟
 
-既然您已瞭解如何將 MXChip Iot DevKit 設定為 MQTT 用戶端，並使用 MQTT 用戶端程式庫將訊息傳送至 MQTT broker，以下是建議的後續步驟： [Azure Iot 遠端監視解決方案加速器總覽](https://docs.microsoft.com/azure/iot-suite/)
+現在您已瞭解如何將 MXChip Iot DevKit 設定為 MQTT 用戶端，並使用 MQTT 用戶端程式庫將訊息傳送至 MQTT 訊息代理程式，以下是建議的下一個步驟： [Azure Iot 遠端監視解決方案加速器總覽](https://docs.microsoft.com/azure/iot-suite/)

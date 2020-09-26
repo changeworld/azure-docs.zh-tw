@@ -8,15 +8,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
-ms.reviewer: sstein, carlrab, bonova, danil
+ms.reviewer: sstein, bonova, danil
 ms.date: 06/02/2020
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: d611fc7eff2efa7a632f4b5467b5829a8374b95e
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: 63aed3ce47a5499154041f067c292c656adcde6c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705379"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323170"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>SQL Server & Azure SQL 受控執行個體之間的 t-sql 差異
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -165,7 +165,7 @@ SQL 受控執行個體無法存取檔案，所以無法建立密碼編譯提供�
     - 從 SQL 受控執行個體匯出資料庫，並匯入至相同 Azure AD 網域內的 SQL Database。 
     - 從 SQL Database 匯出資料庫，並匯入至相同 Azure AD 網域內的 SQL 受控執行個體。
     - 從 SQL 受控執行個體匯出資料庫，並匯入至 SQL Server (2012 版或更新版本) 。
-      - 在此設定中，所有 Azure AD 使用者都會建立為 SQL Server 資料庫主體 (使用者) 沒有登入。 使用者的類型會列為 `SQL` ，而且 `SQL_USER` 在 sys. database_principals) 中會顯示為。 其許可權和角色會保留在 SQL Server 資料庫中繼資料中，並且可用於模擬。 不過，它們無法用來存取並使用其認證登入 SQL Server。
+      - 在此設定中，所有 Azure AD 使用者都會建立為 SQL Server 資料庫主體 (使用者) 沒有登入。 使用者的類型會列為 `SQL` ，而且 `SQL_USER` 在 sys.database_principals) 中會顯示為。 其許可權和角色會保留在 SQL Server 資料庫中繼資料中，並且可用於模擬。 不過，它們無法用來存取並使用其認證登入 SQL Server。
 
 - 只有 SQL 受控執行個體布建程式所建立的伺服器層級主體登入、伺服器角色的成員（例如 `securityadmin` 或），或在 `sysadmin` 伺服器層級具有 ALTER ANY login 許可權的其他登入，才能在 SQL 受控執行個體的 master 資料庫中，建立 Azure AD 的伺服器主體)  (登入。
 - 如果登入是 SQL 主體，只有屬於 `sysadmin` 角色一部分的登入可以使用 create 命令來為 Azure AD 帳戶建立登入。
@@ -174,11 +174,11 @@ SQL 受控執行個體無法存取檔案，所以無法建立密碼編譯提供�
 - 可允許 Azure AD 伺服器主體 (登入) 與 Azure AD 系統管理員帳戶重疊。 當您解析主體並將許可權套用至 SQL 受控執行個體時，Azure AD 伺服器主體 (登入) 優先于 Azure AD 管理員。
 - 在驗證期間，會套用下列順序來解析驗證主體：
 
-    1. 如果 Azure AD 帳戶以直接對應至 Azure AD 伺服器主體 (登入) （存在於 sys. server_principals 中的類型 "E"），請授與存取權，並將 Azure AD 伺服器主體的許可權授與 (登入) 。
-    2. 如果 Azure AD 帳戶是對應至 Azure AD 伺服器主體的 Azure AD 群組成員 (登入) （存在於 sys. server_principals as "X" 類型），則授與存取權，並套用 Azure AD 群組登入的許可權。
+    1. 如果 Azure AD 帳戶以直接對應至 Azure AD 伺服器主體 (登入) （存在於 sys.server_principals 中的類型 "E"），請授與存取權，並將 Azure AD 伺服器主體的許可權授與 (登入) 。
+    2. 如果 Azure AD 帳戶是對應至 Azure AD 伺服器主體的 Azure AD 群組成員 (登入) （存在於 sys.server_principals 中的類型 "X"），請授與存取權，並套用 Azure AD 群組登入的許可權。
     3. 如果 Azure AD 帳戶是特殊的入口網站設定 Azure AD admin for SQL 受控執行個體，但 SQL 受控執行個體系統檢視中並不存在，請套用 Azure AD 管理員 for SQL 受控執行個體 (舊版模式) 的特殊固定許可權。
-    4. 如果 Azure AD 帳戶以直接對應至資料庫中的 Azure AD 使用者（存在於 sys. database_principals 中）為類型 "E"，則授與存取權並套用 Azure AD 資料庫使用者的許可權。
-    5. 如果 Azure AD 帳戶是 Azure AD 群組的成員，而該群組是對應至資料庫中的 Azure AD 使用者（存在於 sys. database_principals 為類型 "X"），請授與存取權，並套用 Azure AD 群組登入的許可權。
+    4. 如果 Azure AD 帳戶以直接對應至資料庫中的 Azure AD 使用者（存在於 sys.database_principals 中）為 "E" 類型的資料庫，則授與存取權並套用 Azure AD 資料庫使用者的許可權。
+    5. 如果 Azure AD 帳戶是 Azure AD 群組的成員，而該群組是對應至資料庫中 Azure AD 使用者（存在於 sys.database_principals 中的類型 "X"），請授與存取權，並套用 Azure AD 群組登入的許可權。
     6. 如果有 Azure AD 的登入對應至 Azure AD 使用者帳戶或 Azure AD 群組帳戶，而此帳戶解析為驗證的使用者，則會套用此 Azure AD 登入的擁有權限。
 
 ### <a name="service-key-and-service-master-key"></a>服務金鑰和服務主要金鑰
@@ -278,7 +278,7 @@ SQL 受控執行個體無法存取檔案，所以無法建立密碼編譯提供�
 
 ### <a name="sql-server-agent"></a>SQL Server Agent
 
-- 在 SQL 受控執行個體中，目前不支援啟用和停用 SQL Server Agent。 SQL 代理程式一律會處於正在執行的狀態。
+- SQL 受控執行個體中目前不支援啟用和停用 SQL Server Agent。 SQL 代理程式一律會處於正在執行的狀態。
 - SQL Server Agent 設定是唯讀的。 `sp_set_agent_properties`SQL 受控執行個體不支援此程式。 
 - 工作
   - 支援 T-SQL 作業步驟。

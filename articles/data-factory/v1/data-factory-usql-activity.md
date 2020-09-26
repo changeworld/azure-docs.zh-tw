@@ -1,6 +1,6 @@
 ---
 title: 使用 U-SQL 腳本轉換資料-Azure
-description: 了解如何在 Azure Data Lake Analytics 計算服務上執行 U-SQL 指令碼來處理或轉換資料。
+description: 瞭解如何在 Azure Data Lake Analytics 計算服務-第1版上執行雙 SQL 腳本來處理或轉換資料。
 services: data-factory
 documentationcenter: ''
 ms.assetid: e17c1255-62c2-4e2e-bb60-d25274903e80
@@ -13,12 +13,12 @@ ms.author: abnarain
 ms.custom: devx-track-csharp
 manager: anandsub
 robots: noindex
-ms.openlocfilehash: a4ae575984badb2b03f72a77aaf580012a1fc002
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 17e5b5eaea90b5f67ad91f0b09a51b2f1aeffd68
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88997127"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322610"
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>在 Azure Data Lake Analytics 上執行 U-SQL 指令碼來轉換資料 
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
@@ -46,7 +46,7 @@ U-SQL 活動支援以下針對 Data Lake Analytics 的驗證類型：
 
 下表提供 JSON 定義中所使用之一般屬性的描述。 您可以在服務主體與使用者認證驗證之間進一步選擇。
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 | --- | --- | --- |
 | **type** |type 屬性應設為：**AzureDataLakeAnalytics**。 |是 |
 | **accountName** |Azure Data Lake Analytics 帳戶名稱。 |是 |
@@ -62,7 +62,7 @@ U-SQL 活動支援以下針對 Data Lake Analytics 的驗證類型：
 
 指定下列屬性以使用服務主體驗證：
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
 | **servicePrincipalId** | 指定應用程式的用戶端識別碼。 | 是 |
 | **servicePrincipalKey** | 指定應用程式的金鑰。 | 是 |
@@ -90,7 +90,7 @@ U-SQL 活動支援以下針對 Data Lake Analytics 的驗證類型：
 ### <a name="user-credential-authentication"></a>使用者認證驗證
 或者，您也可以藉由指定下列屬性，使用 Data Lake Analytics 的使用者認證驗證：
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
 | **授權** | 按一下「資料處理站編輯器」中的 [授權]**** 按鈕，然後輸入您的認證，此動作會將自動產生的授權 URL 指派給此屬性。 | 是 |
 | **sessionId** | OAuth 授權工作階段的 OAuth 工作階段識別碼。 每個工作階段識別碼都是唯一的，只能使用一次。 當您使用「資料處理站編輯器」時便會自動產生此設定。 | 是 |
@@ -206,13 +206,13 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 
 下表描述此活動特有的屬性之名稱和描述。 
 
-| 屬性            | 描述                              | 必要                                 |
+| 屬性            | 說明                              | 必要                                 |
 | :------------------ | :--------------------------------------- | :--------------------------------------- |
 | type                | 類型屬性必須設為 DataLakeAnalyticsU-SQL ****。 | 是                                      |
 | linkedServiceName   | 參考 Azure Data Lake Analytics 註冊為 Data Factory 中的連結服務 | 是                                      |
 | scriptPath          | 包含 U-SQL 指令碼的資料夾的路徑。 檔案的名稱有區分大小寫。 | 否 (如果您使用指令碼)                   |
 | scriptLinkedService | 連結服務會連結包含 Data Factory 的指令碼的儲存體 | 否 (如果您使用指令碼)                   |
-| 指令碼              | 指定內嵌指令碼而不是指定 scriptPath 和 scriptLinkedService。 例如： `"script": "CREATE DATABASE test"` 。 | 否 (如果您使用 scriptPath 和 scriptLinkedService) |
+| 指令碼              | 指定內嵌指令碼而不是指定 scriptPath 和 scriptLinkedService。 例如：`"script": "CREATE DATABASE test"`。 | 否 (如果您使用 scriptPath 和 scriptLinkedService) |
 | degreeOfParallelism | 同時用來執行作業的節點數目上限。 | 否                                       |
 | priority            | 判斷應該選取排入佇列的哪些工作首先執行。 編號愈低，優先順序愈高。 | 否                                       |
 | 參數          | U-SQL 指令碼的參數          | 否                                       |

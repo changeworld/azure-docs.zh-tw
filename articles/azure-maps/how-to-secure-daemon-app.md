@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: e445f26458d13d28dd4ef50c6c17d434554d9fd5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 5af7645db662a238099e013f84b0dc0fee2af62c
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91311065"
+ms.locfileid: "91355851"
 ---
 # <a name="secure-a-daemon-application"></a>保護 daemon 應用程式
 
@@ -122,7 +122,7 @@ ms.locfileid: "91311065"
 2. 在 [ **角色指派** ] 索引標籤上， **新增** 角色指派。 
 
     > [!div class="mx-imgBorder"]
-    > ![新增角色指派](./media/how-to-manage-authentication/add-role-assignment.png)
+    > ![螢幕擷取畫面顯示已選取 [新增] 的滾動指派。](./media/how-to-manage-authentication/add-role-assignment.png)
 
 3. 選取內建的 Azure 地圖服務角色定義，例如 **Azure 地圖服務資料讀取器** 或 **Azure 地圖服務資料參與者**。 在 [**指派存取權**] 底下，選取 [使用**使用者指派的受控識別**系統指派的受控識別**Azure AD 使用者、群組或服務主體**] 或 [受控識別]  /  ** **。 選取主體。 然後選取 [儲存]。
 

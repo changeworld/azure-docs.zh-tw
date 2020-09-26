@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 73d875e32f4fcf22551cf6b0946e49c2f826e523
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 5b186901551e421ba365b97a6de6a55ff791e5e9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90085020"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91310181"
 ---
 # <a name="web-sdk-supported-browsers"></a>Web SDK 支援的瀏覽器
 
@@ -29,7 +29,7 @@ if (!atlas.isSupported()) {
 }
 ```
 
-## <a name="desktop"></a>桌上型
+## <a name="desktop"></a>桌面
 
 Azure 地圖服務 Web SDK 支援下列桌面瀏覽器：
 
@@ -76,8 +76,6 @@ Node.js 中也支援下列 Web SDK 模組：
 
 深入瞭解 Azure 地圖服務 Web SDK：
 
-> [!div class="nextstepaction"]
-> [地圖控制項](how-to-use-map-control.md)
+[地圖控制項](how-to-use-map-control.md)
 
-> [!div class="nextstepaction"]
-> [服務模組](how-to-use-services-module.md)
+[服務模組](how-to-use-services-module.md)

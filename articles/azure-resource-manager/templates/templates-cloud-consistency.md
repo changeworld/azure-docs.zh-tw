@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/09/2018
 ms.author: mavane
 ms.custom: seodec18
-ms.openlocfilehash: 9355482c26cabb96fc6292bab5d542f36aec6a8c
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 72f9e332a4faa98a8a86ef7b6edbefe20357e33f
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88509751"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91356880"
 ---
 # <a name="develop-arm-templates-for-cloud-consistency"></a>開發適用于雲端一致性的 ARM 範本
 
@@ -655,7 +655,7 @@ Get-AzureRmVMExtensionImage -Location myLocation -PublisherName Microsoft.PowerS
 
 下圖顯示使用整合式開發環境 (IDE) 之小組的開發程序典型範例。 在時間軸的不同階段，會執行不同的測試類型。 在這裡，兩名開發人員處理相同的解決方案，而此案例既適用於一位開發人員也適用於大型小組。 每位開發人員一般都會建立中央存放庫的本機複本，讓每個人都能在本機複本上工作，但不影響可能要使用相同檔案的其他人。
 
-![工作流程](./media/templates-cloud-consistency/workflow.png)
+![下圖顯示兩組單元測試和整合測試在本機 I D E （以 C I/C D 開發流程合併至單元測試）、整合測試、測試部署，然後部署。](./media/templates-cloud-consistency/workflow.png)
 
 請考慮下列測試和自動化祕訣：
 
