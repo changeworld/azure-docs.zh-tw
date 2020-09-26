@@ -1,19 +1,19 @@
 ---
 title: 使用 CLI 進行 HTTP 至 HTTPS 重新導向
 titleSuffix: Azure Application Gateway
-description: 瞭解如何使用 Azure CLI 來建立應用程式閘道，以及新增 TLS 終止的憑證。
+description: 瞭解如何建立 HTTP 至 HTTPS 的重新導向，並使用 Azure CLI 新增 TLS 終止的憑證。
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: how-to
-ms.date: 11/15/2019
+ms.date: 09/24/2020
 ms.author: victorh
-ms.openlocfilehash: 828012e7e41f8710dc57f1c830b81d403507d27d
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: 7dbfa877f634256c86166892a38d048a95e56baa
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89594219"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331024"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-cli"></a>使用 Azure CLI 來建立具有 HTTP 到 HTTPS 重新導向功能的應用程式閘道
 
@@ -223,13 +223,6 @@ az network public-ip show \
 
 ## <a name="next-steps"></a>後續步驟
 
-在本教學課程中，您已了解如何：
-
-> [!div class="checklist"]
-> * 建立自我簽署憑證
-> * 設定網路
-> * 建立包含憑證的應用程式閘道
-> * 新增接聽程式和重新導向規則
-> * 建立包含預設後端集區的虛擬機器擴展集
+- [使用 Azure CLI 以建立具有內部重新導向的應用程式閘道](redirect-internal-site-cli.md)
 
 

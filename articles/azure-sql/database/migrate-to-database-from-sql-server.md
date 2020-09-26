@@ -1,6 +1,6 @@
 ---
 title: 將 SQL Server 資料庫移轉至 Azure SQL Database
-description: 深入瞭解 SQL Server 資料庫移轉至 Azure SQL Database。
+description: 瞭解 SQL Server 資料庫移轉至 Azure SQL Database。
 keywords: database migration,sql server database migration,database migration tools,migrate database,migrate sql database,資料庫移轉,sql server 資料庫移轉,資料庫移轉工具,移轉資料庫,移轉 sql database
 services: sql-database
 ms.service: sql-database
@@ -10,34 +10,34 @@ ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
-ms.reviewer: carlrab
+ms.reviewer: ''
 ms.date: 02/11/2019
-ms.openlocfilehash: 106337fb4756052ee682624290620093bf4a70b3
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 275ad3f2dfa04241b1f2a5687cb5dc32b7a31e75
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86081905"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333166"
 ---
 # <a name="sql-server-database-migration-to-azure-sql-database"></a>將 SQL Server 資料庫移轉至 Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-在本文中，您將瞭解將 SQL Server 2005 或更新版本的資料庫移轉至 Azure SQL Database 的主要方法。 如需遷移至 Azure SQL 受控執行個體的詳細資訊，請參閱[將 SQL Server 實例遷移至 AZURE sql 受控執行個體](../managed-instance/migrate-to-instance-from-sql-server.md)。 如需從其他平台移轉的移轉資訊，請參閱 [Azure 資料庫移轉指南](https://datamigration.microsoft.com/) \(英文\)。
+在本文中，您將瞭解將 SQL Server 2005 或更新版本的資料庫移轉至 Azure SQL Database 的主要方法。 如需遷移至 Azure SQL 受控執行個體的詳細資訊，請參閱 [將 SQL Server 實例遷移至 AZURE sql 受控執行個體](../managed-instance/migrate-to-instance-from-sql-server.md)。 如需從其他平台移轉的移轉資訊，請參閱 [Azure 資料庫移轉指南](https://datamigration.microsoft.com/) \(英文\)。
 
 ## <a name="migrate-to-a-single-database-or-a-pooled-database"></a>移轉至單一資料庫或集區資料庫
 
-有兩個主要方法可將 SQL Server 2005 或更新版本的資料庫移轉至 Azure SQL Database。 第一種方法比較簡單，但在移轉期間需要一些可能較長期的停機時間。 第二種方法比較複雜，但可大幅免去移轉期間的停機時間。
+有兩種主要方法可將 SQL Server 2005 或更新版本的資料庫移轉至 Azure SQL Database。 第一種方法比較簡單，但在移轉期間需要一些可能較長期的停機時間。 第二種方法比較複雜，但可大幅免去移轉期間的停機時間。
 
-不論是哪一種方法，您都需要使用 [Data Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) 來確定來源資料庫與 Azure SQL Database 相容。 除了與伺服器層級和跨資料庫作業相關的問題之外，SQL Database 正接近與 SQL Server 的[功能](features-comparison.md)同位。 依賴[部分支援或未支援功能](transact-sql-tsql-differences-sql-server.md)的資料庫和應用程式需要一些[再造來修正這些不相容情況](migrate-to-database-from-sql-server.md#resolving-database-migration-compatibility-issues)，然後才能移轉 SQL Server 資料。
+不論是哪一種方法，您都需要使用 [Data Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) 來確定來源資料庫與 Azure SQL Database 相容。 SQL Database 正接近與 SQL Server 相關的 [功能](features-comparison.md) ，而不是與伺服器層級和跨資料庫作業相關的問題。 依賴[部分支援或未支援功能](transact-sql-tsql-differences-sql-server.md)的資料庫和應用程式需要一些[再造來修正這些不相容情況](migrate-to-database-from-sql-server.md#resolving-database-migration-compatibility-issues)，然後才能移轉 SQL Server 資料。
 
 > [!NOTE]
 > 若要將非 SQL Server 資料庫 (包括 Microsoft Access、Sybase、MySQL Oracle 和 DB2) 移轉到 Azure SQL Database，請參閱 [SQL Server 移轉小幫手](https://blogs.msdn.microsoft.com/datamigration/2017/09/29/release-sql-server-migration-assistant-ssma-v7-6/)。
 
 ## <a name="method-1-migration-with-downtime-during-the-migration"></a>方法 1：在移轉期間會停機的移轉作業
 
- 如果您可以承受一些停機時間，或正在執行生產資料庫的測試遷移以供日後進行遷移，請使用此方法來遷移至單一或集區資料庫。 如需教學課程，請參閱[移轉 SQL Server Database](../../dms/tutorial-sql-server-to-azure-sql.md)。
+ 如果您可以承受一些停機時間，或您正在執行生產資料庫的測試遷移以供稍後進行遷移，請使用這個方法來遷移至單一或集區資料庫。 如需教學課程，請參閱[移轉 SQL Server Database](../../dms/tutorial-sql-server-to-azure-sql.md)。
 
-下列清單包含使用此方法來進行 SQL Server 資料庫之單一或集區資料庫移轉時的一般工作流程。 如需遷移至 SQL 受控執行個體，請參閱[遷移至 sql 受控執行個體](../managed-instance/migrate-to-instance-from-sql-server.md)。
+下列清單包含使用此方法來進行 SQL Server 資料庫之單一或集區資料庫移轉時的一般工作流程。 若要遷移至 SQL 受控執行個體，請參閱 [遷移至 sql 受控執行個體](../managed-instance/migrate-to-instance-from-sql-server.md)。
 
   ![VSSSDT 移轉圖表](./media/migrate-to-database-from-sql-server/azure-sql-migration-sql-db.png)
 
@@ -45,10 +45,10 @@ ms.locfileid: "86081905"
 2. 準備 Transact-SQL 指令碼形式的任何必要修正。
 3. 針對要移轉的來源資料庫建立交易一致性複本，或是在進行移轉時，防止在來源資料庫中進行新交易。 完成後面這個選項的方法包括停用用戶端連線或建立[資料庫快照集](https://msdn.microsoft.com/library/ms175876.aspx)。 移轉之後，您可能能夠使用異動複寫來更新所移轉的資料庫，以反映在移轉截止點之後所發生的變更。 請參閱[使用異動移轉來進行移轉](migrate-to-database-from-sql-server.md#method-2-use-transactional-replication)。  
 4. 部署 Transact-SQL 指令碼，將修正套用至資料庫複本。
-5. 使用 Data Migration Assistant，在 Azure SQL Database 中將資料庫複本[遷移](https://docs.microsoft.com/sql/dma/dma-migrateonpremsql)至新的資料庫。
+5. 使用 Data Migration Assistant 將資料庫複本[遷移](https://docs.microsoft.com/sql/dma/dma-migrateonpremsql)至 Azure SQL Database 中的新資料庫。
 
 > [!NOTE]
-> 您也可以不使用 DMA，而是使用 BACPAC 檔案。 請參閱將 BACPAC 檔案匯[入至 Azure SQL Database 中的新資料庫](database-import.md)。
+> 您也可以不使用 DMA，而是使用 BACPAC 檔案。 請參閱 [Azure SQL Database 中的將 BACPAC 檔案匯入至新的資料庫](database-import.md)。
 
 ### <a name="optimizing-data-transfer-performance-during-migration"></a>將移轉期間的資料傳輸效能最佳化
 
@@ -59,7 +59,7 @@ ms.locfileid: "86081905"
 - 在遷移期間停用 autostatistics
 - 分割區資料表與索引
 - 捨棄索引檢視表，然後於移轉完成後重新建立
-- 將極少查詢的歷程記錄資料移至另一個資料庫，並將此歷程記錄資料移轉至 Azure SQL Database 中的個別資料庫。 您接著可以使用[彈性查詢](elastic-query-overview.md)查詢此歷程記錄資料。
+- 將很少查詢的歷程記錄資料移至另一個資料庫，並將此歷程記錄資料移轉至 Azure SQL Database 中的個別資料庫。 您接著可以使用[彈性查詢](elastic-query-overview.md)查詢此歷程記錄資料。
 
 ### <a name="optimize-performance-after-the-migration-completes"></a>在移轉完成後將效能最佳化
 
@@ -67,11 +67,11 @@ ms.locfileid: "86081905"
 
 ## <a name="method-2-use-transactional-replication"></a>方法 2：使用異動複寫
 
-當您無法在進行遷移時，從生產環境中移除 SQL Server 資料庫時，您可以使用 SQL Server 異動複寫作為您的遷移解決方案。 若要使用此方法，來源資料庫必須符合[異動複寫需求](https://msdn.microsoft.com/library/mt589530.aspx)且與 Azure SQL Database 相容。 如需使用 AlwaysOn 的 SQL 複寫相關資訊，請參閱[設定 AlwaysOn 可用性群組 (SQL Server) 的複寫](/sql/database-engine/availability-groups/windows/configure-replication-for-always-on-availability-groups-sql-server)。
+當您無法在進行遷移時，從生產環境中移除 SQL Server 資料庫時，您可以使用 SQL Server 異動複寫做為您的遷移解決方案。 若要使用此方法，來源資料庫必須符合[異動複寫需求](https://msdn.microsoft.com/library/mt589530.aspx)且與 Azure SQL Database 相容。 如需使用 AlwaysOn 的 SQL 複寫相關資訊，請參閱[設定 AlwaysOn 可用性群組 (SQL Server) 的複寫](/sql/database-engine/availability-groups/windows/configure-replication-for-always-on-availability-groups-sql-server)。
 
-若要使用這個方案，請在 Azure SQL Database 中設定您的資料庫，做為您要遷移 SQL Server 實例的訂閱者。 異動複寫散發者會在新交易繼續進行的同時，從要被同步處理的資料庫 (發行者) 同步處理資料。
+若要使用此解決方案，您可以將 Azure SQL Database 中的資料庫設定為您想要遷移之 SQL Server 實例的訂閱者。 異動複寫散發者會在新交易繼續進行的同時，從要被同步處理的資料庫 (發行者) 同步處理資料。
 
-使用異動複寫時，您的資料或架構所做的所有變更都會顯示在 Azure SQL Database 的資料庫中。 一旦同步處理完成且您已準備好進行遷移，請將應用程式的連接字串變更為指向您的資料庫。 當異動複寫清空留在來源資料庫上的所有變更，並且您的所有應用程式都指向 Azure DB 之後，您便可以將異動複寫解除安裝。 您在 Azure SQL Database 中的資料庫現在是生產系統。
+使用異動複寫時，您的資料或架構所做的所有變更都會顯示在 Azure SQL Database 的資料庫中。 當同步處理完成且您已準備好遷移之後，請變更應用程式的連接字串，以將其指向您的資料庫。 當異動複寫清空留在來源資料庫上的所有變更，並且您的所有應用程式都指向 Azure DB 之後，您便可以將異動複寫解除安裝。 您在 Azure SQL Database 中的資料庫現在是您的生產系統。
 
  ![SeedCloudTR 圖表](./media/migrate-to-database-from-sql-server/SeedCloudTR.png)
 
@@ -81,7 +81,7 @@ ms.locfileid: "86081905"
 ## <a name="migration-to-sql-database-using-transaction-replication-workflow"></a>使用異動複寫工作流程移轉到 SQL Database
 
 > [!IMPORTANT]
-> 使用最新版的 SQL Server Management Studio，以與 Azure 和 SQL Database 的更新保持同步。 舊版 SQL Server Management Studio 無法將 SQL Database 設定為訂閱者。 [更新 SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)。
+> 使用 SQL Server Management Studio 的最新版本，以與 Azure 和 SQL Database 的更新保持同步。 舊版 SQL Server Management Studio 無法將 SQL Database 設定為訂閱者。 [更新 SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)。
 
 1. 設定散發套件
    - [使用 SQL Server Management Studio (SSMS)](/sql/relational-databases/replication/configure-publishing-and-distribution/)
@@ -100,12 +100,12 @@ ms.locfileid: "86081905"
   - 這麼做會影響伺服器的效能。
   - 如果無法接受效能影響，您可以使用另一部伺服器，但它會增加管理和系統管理的複雜度。
 - 當選取快照集資料夾時，請確定您選取的資料夾足以容納要複寫的每個資料表 BCP。
-- 建立快照集會鎖定相關聯的資料表，直到它完成為止，因此請適當地排程快照集。
+- 建立快照集會鎖定相關聯的資料表，直到完成為止，因此請適當地排程快照集。
 - Azure SQL Database 僅支援推送訂用帳戶。 您只能從來源資料庫新增訂閱者。
 
 ## <a name="resolving-database-migration-compatibility-issues"></a>解決資料庫移轉相容性問題
 
-您可能會遇到各種不同的相容性問題，取決於源資料庫中的 SQL Server 版本，以及您要遷移之資料庫的複雜性。 舊版 SQL Server 有更多的相容性問題。 除了使用您選擇之搜尋引擎的目標網際網路搜尋之外，請使用下列資源︰
+您可能會遇到各種不同的相容性問題，這取決於源資料庫的 SQL Server 版本，以及您要遷移之資料庫的複雜度。 舊版 SQL Server 有更多的相容性問題。 除了使用您選擇之搜尋引擎的目標網際網路搜尋之外，請使用下列資源︰
 
 - [Azure SQL Database 中不支援的 SQL Server 資料庫功能](transact-sql-tsql-differences-sql-server.md)
 - [SQL Server 2016 中已停止的 Database Engine 功能](https://msdn.microsoft.com/library/ms144262%28v=sql.130%29)
@@ -117,7 +117,7 @@ ms.locfileid: "86081905"
 除了搜尋網際網路和使用這些資源，另請使用 [Azure SQL Database 的 Microsoft 問答頁](https://docs.microsoft.com/answers/topics/azure-sql-database.html) (英文) 或 [StackOverflow](https://stackoverflow.com/) (英文)。
 
 > [!IMPORTANT]
-> Azure SQL 受控執行個體可讓您將現有的 SQL Server 實例及其資料庫移轉到最少的相容性問題。 請參閱[什麼是受控實例](../managed-instance/sql-managed-instance-paas-overview.md)。
+> Azure SQL 受控執行個體可讓您以最短的無相容性問題，遷移現有的 SQL Server 實例和其資料庫。 請參閱 [什麼是受控實例](../managed-instance/sql-managed-instance-paas-overview.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

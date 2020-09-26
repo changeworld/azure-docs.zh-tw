@@ -1,6 +1,6 @@
 ---
 title: 使用舊版從 MongoDB 複製資料
-description: 了解如何使用 Azure Data Factory 管線中的複製活動，將資料從 MongoDB 複製到支援的接收資料存放區。
+description: 瞭解如何使用舊版 Azure Data Factory 管線中的複製活動，將資料從 Mongo DB 複製到支援的接收資料存放區。
 services: data-factory
 author: linda33wj
 ms.author: jingwang
@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 08/12/2019
-ms.openlocfilehash: ce1419c7dbb2cdecfd653995707fd1ece7798557
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7cf4be078a7bee0bedbeac4326acb9ca290cde88
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84558174"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331976"
 ---
-# <a name="copy-data-from-mongodb-using-azure-data-factory-legacy"></a>使用 Azure Data Factory （舊版）從 MongoDB 複製資料
+# <a name="copy-data-from-mongodb-using-azure-data-factory-legacy"></a>使用 Azure Data Factory (舊版) 從 MongoDB 複製資料
 
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
 > * [第 1 版](v1/data-factory-on-premises-mongodb-connector.md)
@@ -39,7 +39,7 @@ ms.locfileid: "84558174"
 - MongoDB **2.4、2.6、3.0、3.2、3.4、3.6 版**。
 - 使用 **Basic** (基本) 或 **Anonymous** (匿名) 驗證來複製資料。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
@@ -57,16 +57,16 @@ Integration Runtime 提供內建的 MongoDB 驅動程式，因此從 MongoDB 複
 
 | 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
-| type |類型屬性必須設定為：**MongoDb** |Yes |
-| 伺服器 |MongoDB 伺服器的 IP 位址或主機名稱。 |Yes |
+| type |類型屬性必須設定為：**MongoDb** |是 |
+| 伺服器 |MongoDB 伺服器的 IP 位址或主機名稱。 |是 |
 | 連接埠 |MongoDB 伺服器用來接聽用戶端連線的 TCP 連接埠。 |否 (預設值為 27017) |
 | databaseName |您想要存取之 MongoDB 資料庫的名稱。 |是 |
-| authenticationType | 用來連線到 MongoDB 資料庫的驗證類型。<br/>允許的值為：**基本**和**匿名**。 |Yes |
+| authenticationType | 用來連線到 MongoDB 資料庫的驗證類型。<br/>允許的值為： **基本**和 **匿名**。 |是 |
 | username |用來存取 MongoDB 的使用者帳戶。 |是 (如果使用基本驗證)。 |
 | 密碼 |使用者的密碼。 將此欄位標記為 SecureString，將它安全地儲存在 Data Factory 中，或[參考 Azure Key Vault 中儲存的祕密](store-credentials-in-key-vault.md)。 |是 (如果使用基本驗證)。 |
 | authSource |您想要用來檢查驗證所用之認證的 MongoDB 資料庫名稱。 |否。 就基本驗證而言，預設會使用以 databaseName 屬性指定的系統管理員帳戶和資料庫。 |
-| enableSsl | 指定是否使用 TLS 來加密與伺服器的連接。 預設值為 false。  | No |
-| allowSelfSignedServerCert | 指定是否允許來自伺服器的自我簽署憑證。 預設值為 false。  | No |
+| enableSsl | 指定是否使用 TLS 加密與伺服器的連接。 預設值為 false。  | 否 |
+| allowSelfSignedServerCert | 指定是否允許來自伺服器的自我簽署憑證。 預設值為 false。  | 否 |
 | connectVia | 用來連線到資料存放區的 [Integration Runtime](concepts-integration-runtime.md)。 深入了解[必要條件](#prerequisites)一節。 如果未指定，就會使用預設的 Azure Integration Runtime。 |否 |
 
 **範例︰**
@@ -100,8 +100,8 @@ Integration Runtime 提供內建的 MongoDB 驅動程式，因此從 MongoDB 複
 
 | 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
-| type | 資料集的類型屬性必須設定為：**MongoDbCollection** | Yes |
-| collectionName |MongoDB 資料庫中集合的名稱。 |Yes |
+| type | 資料集的類型屬性必須設定為：**MongoDbCollection** | 是 |
+| collectionName |MongoDB 資料庫中集合的名稱。 |是 |
 
 **範例︰**
 
@@ -131,10 +131,10 @@ Integration Runtime 提供內建的 MongoDB 驅動程式，因此從 MongoDB 複
 
 | 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
-| type | 複製活動來源的類型屬性必須設定為：**MongoDbSource** | Yes |
+| type | 複製活動來源的類型屬性必須設定為：**MongoDbSource** | 是 |
 | 查詢 |使用自訂的 SQL-92 查詢來讀取資料。 例如：select * from MyTable。 |否 (如果已指定資料集中 "collectionName") |
 
-**範例︰**
+**範例：**
 
 ```json
 "activities":[
@@ -171,7 +171,7 @@ Integration Runtime 提供內建的 MongoDB 驅動程式，因此從 MongoDB 複
 
 ## <a name="schema-by-data-factory"></a>Data factory 的結構描述
 
-Azure Data Factory 服務會使用集合中**最新的100檔**，從 MongoDB 集合推斷架構。 如果這 100 份文件未包含完整結構描述，則在複製作業期間可能會忽略某些資料行。
+Azure Data Factory 服務會使用集合中 **最新的100檔** ，從 MongoDB 集合推斷架構。 如果這 100 份文件未包含完整結構描述，則在複製作業期間可能會忽略某些資料行。
 
 ## <a name="data-type-mapping-for-mongodb"></a>MongoDB 的資料類型對應
 
@@ -188,7 +188,7 @@ Azure Data Factory 服務會使用集合中**最新的100檔**，從 MongoDB 集
 | ObjectID |String |
 | String |String |
 | UUID |Guid |
-| Object |以 "_" 作為巢狀分隔符號來重新標準化為壓平合併資料行 |
+| 物件 |以 "_" 作為巢狀分隔符號來重新標準化為壓平合併資料行 |
 
 > [!NOTE]
 > 若要了解對使用虛擬資料表之陣列的支援，請參閱[對使用虛擬資料表之複雜類型的支援](#support-for-complex-types-using-virtual-tables)一節。
@@ -226,7 +226,7 @@ Azure Data Factory 會使用內建的 ODBC 驅動程式來連線到 MongoDB 資�
 * 資料在原始陣列之位置的指示
 * 陣列內每個元素的展開資料
 
-**資料表 "ExampleTable_Invoices"：**
+**資料表「ExampleTable_Invoices」：**
 
 | _id | ExampleTable_Invoices_dim1_idx | invoice_id | item | price | 折扣 |
 | --- | --- | --- | --- | --- | --- |
@@ -234,7 +234,7 @@ Azure Data Factory 會使用內建的 ODBC 驅動程式來連線到 MongoDB 資�
 | 1111 |1 |124 |oven |1235 |0.2 |
 | 2222 |0 |135 |fridge |12543 |0.0 |
 
-**資料表 "ExampleTable_Ratings"：**
+**資料表「ExampleTable_Ratings」：**
 
 | _id | ExampleTable_Ratings_dim1_idx | ExampleTable_Ratings |
 | --- | --- | --- |

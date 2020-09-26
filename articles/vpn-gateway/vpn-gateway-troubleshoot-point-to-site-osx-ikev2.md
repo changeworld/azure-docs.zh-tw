@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: troubleshooting
 ms.date: 03/27/2018
 ms.author: alzam
-ms.openlocfilehash: 33e67df5ad68a78cc35f7168813716d1d794d527
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: be7b6349a7bf51a4fb99e3604a04f9d95403b74f
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442797"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91359319"
 ---
 # <a name="troubleshoot-point-to-site-vpn-connections-from-mac-os-x-vpn-clients"></a>針對來自 Mac OS X VPN 用戶端的點對站 VPN 連線問題進行疑難排解
 
@@ -34,7 +34,7 @@ ms.locfileid: "89442797"
 4. [本機識別碼]**** 應該與用戶端憑證的**主體**相同。
 5. 按一下 [認證設定]**** 以開啟 [認證設定] 頁面。
 
-   ![驗證設定](./media/vpn-gateway-troubleshoot-point-to-site-osx-ikev2/ikev2auth2.jpg)
+   ![螢幕擷取畫面顯示已選取憑證的 [驗證設定] 對話方塊。](./media/vpn-gateway-troubleshoot-point-to-site-osx-ikev2/ikev2auth2.jpg)
 6. 確認已從下拉式清單中選取 [憑證]****。
 7. 按一下 [選取]**** 按鈕，並確認已選取正確的憑證。 按一下 [好]**** 以儲存所有變更。
 
@@ -48,7 +48,7 @@ ms.locfileid: "89442797"
 4. [本機識別碼]**** 可以空白。
 5. 按一下 [認證設定]**** 按鈕，然後確認已從下拉式清單中選取 [使用者名稱]。
 
-   ![驗證設定](./media/vpn-gateway-troubleshoot-point-to-site-osx-ikev2/ikev2auth4.png)
+   ![螢幕擷取畫面顯示已選取使用者名稱的 [驗證設定] 對話方塊。](./media/vpn-gateway-troubleshoot-point-to-site-osx-ikev2/ikev2auth4.png)
 6. 確認所輸入的認證正確。
 
 ## <a name="additional-steps"></a><a name="additional"></a>其他步驟
@@ -62,5 +62,5 @@ ms.locfileid: "89442797"
   
 3. 如果網路追蹤沒有伺服器回應，請確認您已在 Azure 入口網站網站上的 Azure 閘道設定頁面上啟用 IKEv2 通訊協定。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 如需其他協助，請參閱 [Microsoft 支援服務](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。

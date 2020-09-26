@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: jeedes
-ms.openlocfilehash: 76c0f4f021646b4cbf1a09559e085176353a4a3c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 44f2195fb68b5a17eab3980f72cbc5374e1c033a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88525607"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91312901"
 ---
 # <a name="tutorial-configure-box-for-automatic-user-provisioning"></a>教學課程︰設定 Box 來自動佈建使用者
 
@@ -24,7 +24,7 @@ ms.locfileid: "88525607"
 > [!NOTE]
 > 本教學課程會說明建置在 Azure AD 使用者佈建服務之上的連接器。 如需此服務的用途、運作方式和常見問題等重要詳細資訊，請參閱[使用 Azure Active Directory 對 SaaS 應用程式自動佈建和取消佈建使用者](../app-provisioning/user-provisioning.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要設定 Azure AD 與 Box 整合，您需要下列項目：
 
@@ -93,17 +93,17 @@ Azure 入口網站的 [Box] > [使用者和群組]**** 索引標籤可讓您指�
 
 4. 將 [佈建模式] 設定為 [自動]。 
 
-    ![佈建](./media/box-userprovisioning-tutorial/provisioning.png)
+    ![Azure 入口網站中 Box [布建] 索引標籤的螢幕擷取畫面。 布建模式設定為 [自動]，[授權] 會在 [管理員認證] 中醒目提示。](./media/box-userprovisioning-tutorial/provisioning.png)
 
 5. 在 [管理員認證]**** 區段底下，按一下 [授權]**** 以在新的瀏覽器視窗中開啟 Box 登入對話方塊。
 
 6. 在 [登入以授與 Box 存取權]**** 頁面上，提供必要的認證，然後按一下 [授權]****。 
    
-    ![啟用自動使用者佈建](./media/box-userprovisioning-tutorial/IC769546.png "啟用自動使用者佈建")
+    ![登入以授與 box 螢幕存取權的螢幕擷取畫面，其中顯示電子郵件和密碼的專案，以及授權按鈕。](./media/box-userprovisioning-tutorial/IC769546.png "啟用自動使用者佈建")
 
 7. 按一下 [授與 Box 存取權] **** ，以授權進行此作業並返回 Azure 入口網站。 
    
-    ![啟用自動使用者佈建](./media/box-userprovisioning-tutorial/IC769549.png "啟用自動使用者佈建")
+    ![對話方塊中 [授權存取] 畫面的螢幕擷取畫面，其中顯示說明訊息和 [授與存取權給 Box] 按鈕。](./media/box-userprovisioning-tutorial/IC769549.png "啟用自動使用者佈建")
 
 8. 在 Azure 入口網站中，按一下 [測試連線]**** 以確保 Azure AD 可以連線到您的 Box 應用程式。 如果連線失敗，請確定您的 Box 帳戶具有小組系統管理員權限，並再試一次「授權」**** 步驟。
 

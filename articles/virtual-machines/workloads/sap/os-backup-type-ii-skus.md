@@ -1,6 +1,6 @@
 ---
 title: SAP HANA on Azure (大型執行個體) 類型 II SKU 的作業系統備份和還原 | Microsoft Docs
-description: 針對 Azure （大型實例）類型 II Sku 上的 SAP Hana 執行作業系統備份和還原
+description: 針對 Azure (大型實例上的 SAP Hana 執行作業系統備份和還原) 類型 II Sku
 services: virtual-machines-linux
 documentationcenter: ''
 author: saghorpa
@@ -13,25 +13,25 @@ ms.workload: infrastructure
 ms.date: 07/12/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 100e1b974e54d8c0065194bc7beb18f458011434
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b02c669439c54f34afb4212949b20f6793784103
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77616874"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91359420"
 ---
-# <a name="os-backup-and-restore-for-type-ii-skus-of-revision-3-stamps"></a>修訂版3戳記之類型 II Sku 的 OS 備份和還原
+# <a name="os-backup-and-restore-for-type-ii-skus-of-revision-3-stamps"></a>修訂3戳記的類型 II Sku 的 OS 備份和還原
 
-本檔說明針對修訂版3的「HANA 大型實例」**類型 II sku**執行作業系統檔案層級備份和還原的步驟。 
+本檔說明針對「HANA 大型實例」的「HANA 大型實例」的 **類型 II sku** 執行作業系統檔案層級備份和還原的步驟。 
 
 >[!Important]
-> **本文不適用於修訂版 4 HANA 大型實例戳記中的類型 II SKU 部署。** 類型 II HANA 大型實例單位的開機 LUN，部署于修訂版 4 HANA 大型實例戳記中。您可以使用儲存體快照集來備份，這是類型 I Sku 已經在修訂3戳記中的情況。
+> **本文不適用於第4修訂版的 HANA 大型實例戳記中的類型 II SKU 部署。** 第 II 個 HANA 大型實例單位的開機 LUN （部署于修訂4的 HANA 大型實例戳記）可以用儲存體快照集備份，因為這是類型 I Sku 已在修訂3戳記中的情況。
 
 
 >[!NOTE]
 >作業系統備份指令碼使用已預先安裝在伺服器中的 ReaR 軟體。  
 
-Microsoft 小組完成布建之後 `Service Management` ，預設會使用兩個備份排程來設定伺服器，以備份作業系統的檔案系統層級。 您可以使用下列命令來檢查備份作業的排程：
+Microsoft 小組布建完成後 `Service Management` ，預設會設定伺服器使用兩個備份排程來備份作業系統的檔案系統層級。 您可以使用下列命令來檢查備份作業的排程：
 ```
 #crontab –l
 ```
@@ -41,7 +41,7 @@ Microsoft 小組完成布建之後 `Service Management` ，預設會使用兩個
 ```
 ## <a name="how-to-take-a-manual-backup"></a>如何進行手動備份？
 
-OS 檔案系統備份已使用**cron 作業**進行排程。 不過，您也可以手動執行作業系統檔案等級備份。 若要執行手動備份，請執行下列命令：
+作業系統檔案系統備份已使用 **cron 作業** 進行排程。 不過，您也可以手動執行作業系統檔案等級備份。 若要執行手動備份，請執行下列命令：
 
 ```
 #rear -v mkbackup
@@ -67,9 +67,9 @@ OS 檔案系統備份已使用**cron 作業**進行排程。 不過，您也可�
 >[!NOTE] 
 >從備份還原檔案之後，您需要將檔案複製到想要的位置。
 
-下列螢幕擷取畫面顯示還原完整備份：
+下列螢幕擷取畫面顯示完整備份的還原：
 
-![HowtoRestoreaBackup.PNG](media/HowToHLI/OSBackupTypeIISKUs/HowtoRestoreaBackup.PNG)
+![螢幕擷取畫面顯示具有還原的命令提示字元視窗。](media/HowToHLI/OSBackupTypeIISKUs/HowtoRestoreaBackup.PNG)
 
 ## <a name="how-to-install-the-rear-tool-and-change-the-configuration"></a>如何安裝 ReaR 工具並變更設定？ 
 
@@ -99,4 +99,4 @@ EXCLUDE_VG=( vgHANA-data-HC2 vgHANA-data-HC3 vgHANA-log-HC2 vgHANA-log-HC3 vgHAN
 BACKUP_PROG_EXCLUDE=("${BACKUP_PROG_EXCLUDE[@]}" '/media' '/var/tmp/*' '/var/crash' '/hana' '/usr/sap'  ‘/proc’)
 ```
 
-下列螢幕擷取畫面顯示還原完整的備份： ![RearToolConfiguration.PNG](media/HowToHLI/OSBackupTypeIISKUs/RearToolConfiguration.PNG)
+下列螢幕擷取畫面顯示完整備份的還原： ![ 螢幕擷取畫面顯示 [命令提示字元] 視窗，並使用後端工具進行還原。](media/HowToHLI/OSBackupTypeIISKUs/RearToolConfiguration.PNG)

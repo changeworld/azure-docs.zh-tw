@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/20/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f9db8a50e670e3c6af7adce0a8efcf3ce569ac89
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: b1206d9e4d6eec7b2bf029310360f563849d61d6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89009622"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268295"
 ---
 # <a name="analyzers-for-text-processing-in-azure-cognitive-search"></a>Azure 認知搜尋中的文字處理分析器
 
@@ -147,7 +147,7 @@ Azure 認知搜尋可讓您指定不同的分析器來編制索引，並透過�
 * 在此情況下，自訂分析器是 "my_analyzer"，會依次使用自訂的標準權杖化工具 "my_standard_tokenizer" 和兩個權杖篩選條件：小寫和自訂的 asciifolding 篩選條件 "my_asciifolding"。
 * 此外，其中也會定義 2 個自訂 char 篩選條件「map_dash」和「remove_whitespace」。 第一個會以底線取代所有的連字號，而第二個則會移除所有空格。 空間必須在對應規則中以 UTF-8 編碼。 權杖化之前會套用 Char 篩選條件，而且Char 篩選條件會影響所產生的權杖 (標準權杖化工具會在虛線和空格中斷，而不會在底線中斷)。
 
-~~~~
+```json
   {
      "name":"myindex",
      "fields":[
@@ -206,7 +206,7 @@ Azure 認知搜尋可讓您指定不同的分析器來編制索引，並透過�
         }
      ]
   }
-~~~~
+```
 
 <a name="Per-field-analyzer-assignment-example"></a>
 
@@ -216,7 +216,7 @@ Azure 認知搜尋可讓您指定不同的分析器來編制索引，並透過�
 
 「分析器」元素會以各欄位方式來覆寫標準分析器。 沒有通用的覆寫。 在此範例中，`text1` 會使用模式分析器和 `text2` (其中並未指定分析器) 來使用預設值。
 
-~~~~
+```json
   {
      "name":"myindex",
      "fields":[
@@ -239,7 +239,7 @@ Azure 認知搜尋可讓您指定不同的分析器來編制索引，並透過�
         }
      ]
   }
-~~~~
+```
 
 <a name="Mixing-analyzers-for-indexing-and-search-operations"></a>
 
@@ -248,7 +248,7 @@ Azure 認知搜尋可讓您指定不同的分析器來編制索引，並透過�
 API 包含其他的索引屬性，可針對索引和搜尋指定不同的分析器。 必須將 **searchAnalyzer** 和 **indexAnalyzer** 屬性指定為一組，從而取代單一 **analyzer** 屬性。
 
 
-~~~~
+```json
   {
      "name":"myindex",
      "fields":[
@@ -267,7 +267,7 @@ API 包含其他的索引屬性，可針對索引和搜尋指定不同的分析�
         },
      ],
   }
-~~~~
+```
 
 <a name="Language-analyzer-example"></a>
 
@@ -275,7 +275,7 @@ API 包含其他的索引屬性，可針對索引和搜尋指定不同的分析�
 
 包含不同語言之字串的欄位可以使用語言分析器，而其他欄位則是保留預設值 (或使用一些其他的預先定義或自訂分析器)。 如果您是使用語言分析器，就必須將它用於索引和搜尋作業。 使用語言分析器的欄位不能具有索引和搜尋的不同分析器。
 
-~~~~
+```json
   {
      "name":"myindex",
      "fields":[
@@ -300,7 +300,7 @@ API 包含其他的索引屬性，可針對索引和搜尋指定不同的分析�
         }
      ],
   }
-~~~~
+```
 
 ## <a name="c-examples"></a>C # 範例
 

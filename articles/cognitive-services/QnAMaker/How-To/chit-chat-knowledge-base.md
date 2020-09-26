@@ -9,37 +9,37 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0aca072a9e659d242dec9dd45a12f9568d419599
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 3d5c47d3e3e9485c3a6de8f93782c654fb34a516
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87124420"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330633"
 ---
 # <a name="add-chit-chat-to-a-knowledge-base"></a>在知識庫中新增閒聊
 
 將閒聊新增至您的 Bot，讓它變得更健談且吸引人。 QnA Maker 中的閒聊功能可讓您輕鬆地將預先填入的一組最常見閒聊，新增至您的資料庫 (KB)。 這可以是您 Bot 的特質起始點，並將節省您從頭撰寫它們的時間和成本。
 
-此資料集有大約100個閒聊的案例，也就是多個角色的語音，例如專業、易記和詼諧。 選擇最類似您 Bot 聲音的角色。 假設有使用者查詢，QnA Maker 會嘗試將它與最接近的已知閒聊 QnA 比對。
+這個資料集有大約100個閒聊的案例，像是專業、易記和機智等多個角色的語音。 選擇最類似您 Bot 聲音的角色。 假設有使用者查詢，QnA Maker 會嘗試將它與最接近的已知閒聊 QnA 比對。
 
-以下是不同特質的一些範例。 您可以看到所有的個人化[資料集](https://github.com/Microsoft/BotBuilder-PersonalityChat/tree/master/CSharp/Datasets)，以及特質的詳細資訊。
+以下是不同特質的一些範例。 您可以看到所有的個人化 [資料集](https://github.com/Microsoft/BotBuilder-PersonalityChat/tree/master/CSharp/Datasets) ，以及特質的詳細資料。
 
-對於的使用者查詢 `When is your birthday?` ，每個特性都有一個樣式的回應：
+針對的使用者查詢 `When is your birthday?` ，每個特性都有一個具樣式的回應：
 
 <!-- added quotes so acrolinx doesn't score these sentences -->
 |特質|範例|
 |--|--|
-|Professional|年齡並不是真的適用于我。|
-|易記|我的年齡並不太長。|
-|詼諧|我是免費使用的。|
-|管也|我沒有年齡。|
-|熱心|我是 bot，所以沒有時間。|
+|Professional|年齡不是真的適用于我。|
+|易記|我真的沒有年齡。|
+|機智|我的年齡沒有。|
+|關心|我沒有年齡。|
+|熱情|我是 bot，所以沒有年齡。|
 ||
 
 
 ## <a name="language-support"></a>語言支援
 
-閒聊-支援下列語言的交談資料集：
+閒聊-支援下列語言的聊天資料集：
 
 |Language|
 |--|
@@ -67,12 +67,12 @@ ms.locfileid: "87124420"
 
 ![編輯閒聊 QnA](../media/qnamaker-how-to-chit-chat/edit-chit-chat.png)
 
-若要查看中繼資料，請選取工具列中的 [**查看選項**]，然後選取 [**顯示中繼資料**]。
+若要查看中繼資料，請選取工具列中的 [ **視圖選項** ]，然後選取 [ **顯示中繼資料**]。
 
 ## <a name="add-additional-chit-chat-questions-and-answers"></a>新增其他閒聊問題和回答
-您可以新增不在預先定義之資料集中的閒聊-chat QnA 配對。 確保您不會複製閒聊集已經涵蓋的 QnA 配對。 當您新增任何新的閒聊 QnA 時，它會新增到您的**編輯**來源。 若要確保 ranker 瞭解這是閒聊交談，請新增中繼資料索引鍵/值組 "chitchat"，如下圖所示：
+您可以新增不在預先定義的資料集中的新閒聊聊天 QnA 配對。 確保您不會複製閒聊集已經涵蓋的 QnA 配對。 當您新增任何新的閒聊 QnA 時，它會新增到您的**編輯**來源。 為確保 ranker 瞭解這是閒聊的聊天，請新增中繼資料索引鍵/值組 "聊天"，如下圖所示：
 
-![![新增閒聊-交談 Qna](../media/qnamaker-how-to-chit-chat/add-new-chit-chat.png）](../media/qnamaker-how-to-chit-chat/add-new-chit-chat.png#lightbox)
+:::image type="content" source="../media/qnamaker-how-to-chit-chat/add-new-chit-chat.png" alt-text="新增閒聊 QnA" lightbox="../media/qnamaker-how-to-chit-chat/add-new-chit-chat.png":::
 
 ## <a name="delete-chit-chat-from-an-existing-kb"></a>從現有知識庫中刪除閒聊
 選取您的知識庫，並瀏覽至 [設定]**** 頁面。 您的特定閒聊來源會以檔案列示，內含選取的特質名稱。 您可以將此當作原始程式檔刪除。
@@ -84,6 +84,6 @@ ms.locfileid: "87124420"
 > [!div class="nextstepaction"]
 > [匯入知識庫](../Tutorials/migrate-knowledge-base.md)
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 [QnA Maker 概觀](../Overview/overview.md)

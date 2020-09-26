@@ -4,12 +4,12 @@ description: 摘要說明使用 Azure 備份服務來備份 Azure VM 時的支�
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.custom: references_regions
-ms.openlocfilehash: c50a19acceeb68ead4d86a59bbe8275ae97ecb5f
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: b576b5e15461f34468bd7c2d512ac7a636b73ac9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019584"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332724"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM 備份的支援矩陣
 
@@ -155,7 +155,7 @@ VM 大小 |至少有 2 個 CPU 核心和 1 GB RAM 的任何 Azure VM 大小。<b
 
 **元件** | **支援**
 --- | ---
-Azure VM 資料磁碟 | 在所有區域中，支援最多32個磁片的 Azure Vm 備份都處於公開預覽狀態。<br><br> 使用非受控磁碟的 Azure VM 或傳統 VM 僅支援備份最多 16 個磁碟。
+Azure VM 資料磁碟 | 支援最多32個磁片的 Azure Vm 備份。<br><br> 使用非受控磁碟的 Azure VM 或傳統 VM 僅支援備份最多 16 個磁碟。
 資料磁碟大小 | 個別磁碟大小最高可達 32 TB，單一 VM 中所有磁碟大小最高可達 256 TB。
 儲存體類型 | 標準 HDD、標準 SSD、進階 SSD。
 受控磁碟 | 支援。
