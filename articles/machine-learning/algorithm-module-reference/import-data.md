@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: 85a54ce7c8b3beea102fad7c3adb58f92c8574dd
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 5fe1c3e344705b6cde9791f889b22be53a9e8c76
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90907936"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372590"
 ---
 # <a name="import-data-module"></a>匯入資料模組
 
@@ -56,7 +56,7 @@ ms.locfileid: "90907936"
 
 1. 選取 [ **資料來源**]，然後選擇資料來源類型。 它可以是 HTTP 或資料存放區。
 
-    如果您選擇資料存放區，您可以選取已向 Azure Machine Learning 工作區註冊的現有資料存放區，或建立新的資料存放區。 然後，在資料存放區中定義要匯入的資料路徑。 您可以按一下 **[流覽路徑**匯 ![ 入-資料路徑]，輕鬆地流覽路徑](media/module/import-data-path.png)
+    如果您選擇資料存放區，您可以選取已向 Azure Machine Learning 工作區註冊的現有資料存放區，或建立新的資料存放區。 然後，在資料存放區中定義要匯入的資料路徑。 您可以輕鬆地流覽路徑，方法是按一下 [ **流覽路徑** ![ 螢幕擷取畫面]，即可顯示 [流覽路徑] 連結，以開啟 [路徑選取] 對話方塊。](media/module/import-data-path.png)
 
 1. 選取預覽架構，以篩選您想要包含的資料行。 您也可以在剖析選項中定義諸如分隔符號的 advanced 設定。
 

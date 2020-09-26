@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/08/2020
 ms.author: Zhchia
-ms.openlocfilehash: a6543c56f7170f674a227421575ba7f842fb29a8
-ms.sourcegitcommit: 4ce82b6df65ebd81157b6168d3aa4e7323355022
+ms.openlocfilehash: 221039ad1dc30e645d98ba6dd7e79c7b81ba3430
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/17/2020
-ms.locfileid: "90761474"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91313054"
 ---
 # <a name="tutorial-configure-apple-school-manager-for-automatic-user-provisioning"></a>教學課程：設定 Apple School Manager 來自動布建使用者
 
@@ -103,7 +103,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
     ![通知電子郵件](common/provisioning-notification-email.png)
 
-7. 按一下 [儲存]。
+7. 按一下 [檔案]  。
 
 8. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 使用者到 Apple School Manager**]。
 
@@ -146,7 +146,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
 1. 使用[佈建記錄](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) \(部分機器翻譯\) 來判斷哪些使用者已佈建成功或失敗
 2. 檢查[進度列](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user) \(部分機器翻譯\) 來查看佈建週期的狀態，以及其接近完成的程度
-3. 如果佈建設定似乎處於狀況不良的狀態，應用程式將會進入隔離狀態。 [在此](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status) \(部分機器翻譯\) 深入了解隔離狀態。  
+3. 如果佈建設定似乎處於狀況不良的狀態，應用程式將會進入隔離狀態。 [在此](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)深入了解隔離狀態。  
 
 ## <a name="additional-resources"></a>其他資源
 
@@ -159,7 +159,8 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 * [刪除出現在 Apple School Manager 中 Azure AD 帳戶](URL=https://support.apple.com/guide/apple-school-manager/apdaa5798fbe)
 * [在 Apple School Manager 中查看 SCIM 活動](URL=https://support.apple.com/guide/apple-school-manager/apd1bfd8dfde)
 * [在 Apple School Manager 中管理現有的 SCIM token 和連接](URL=https://support.apple.com/guide/apple-school-manager/apdc9a823611)
-* [中斷 Apple School manager 中的 SCIM 連線，](URL=https://support.apple.com/guide/apple-school-manager/apd609be3a61)在[apple school manager 中管理現有的 SCIM token 和](URL=https://support.apple.com/guide/apple-school-manager/apdc9a8236e9)連線
+* [中斷 Apple School Manager 中的 SCIM 連接](URL=https://support.apple.com/guide/apple-school-manager/apd609be3a61)
+* [在 Apple School Manager 中管理現有的 SCIM token 和連接](URL=https://support.apple.com/guide/apple-school-manager/apdc9a8236e9)
 * [在 Apple School Manager 中針對 SCIM 連接進行疑難排解](URL=https://support.apple.com/guide/apple-school-manager/apd403a0f3bd)
 
 ## <a name="next-steps"></a>後續步驟

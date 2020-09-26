@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: jehollan
 ms.custom: references_regions
-ms.openlocfilehash: 4f6e2008cad66ce7cd68016d3873ecbc18b1961c
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: a650c6d5aeea28e800b1a4ce9db325a52d60d5cc
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89145739"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372216"
 ---
 # <a name="azure-functions-premium-plan"></a>Azure Functions Premium 方案
 
@@ -141,13 +141,15 @@ az resource update -g <resource_group> -n <premium_plan_name> --set sku.capacity
 
 |區域| Windows | Linux |
 |--| -- | -- |
-|澳大利亞中部| 20 | 無法使用 |
-|澳大利亞中部 2| 20 | 無法使用 |
+|澳大利亞中部| 100 | 無法使用 |
+|澳大利亞中部 2| 100 | 無法使用 |
 |澳大利亞東部| 100 | 20 |
 |澳大利亞東南部 | 100 | 20 |
-|巴西南部| 60 | 20 |
+|巴西南部| 100 | 20 |
 |加拿大中部| 100 | 20 |
 |美國中部| 100 | 20 |
+|中國東部 2| 100 | 20 |
+|中國北部 2| 100 | 20 |
 |東亞| 100 | 20 |
 |美國東部 | 100 | 20 |
 |美國東部 2| 100 | 20 |
@@ -156,17 +158,24 @@ az resource update -g <resource_group> -n <premium_plan_name> --set sku.capacity
 |日本東部| 100 | 20 |
 |日本西部| 100 | 20 |
 |南韓中部| 100 | 20 |
+|南韓南部| 無法使用 | 20 |
 |美國中北部| 100 | 20 |
 |北歐| 100 | 20 |
-|挪威東部| 20 | 20 |
+|挪威東部| 100 | 20 |
 |美國中南部| 100 | 20 |
 |印度南部 | 100 | 無法使用 |
 |東南亞| 100 | 20 |
+|瑞士北部| 100 | 無法使用 |
+|瑞士西部| 100 | 無法使用 |
 |英國南部| 100 | 20 |
 |英國西部| 100 | 20 |
+|USGov 亞歷桑那| 100 | 20 |
+|USGov 維吉尼亞| 100 | 20 |
+|USNat 東部| 100 | 無法使用 |
+|USNat 西部| 100 | 無法使用 |
 |西歐| 100 | 20 |
 |印度西部| 100 | 20 |
-|美國中西部| 20 | 20 |
+|美國中西部| 100 | 20 |
 |美國西部| 100 | 20 |
 |美國西部 2| 100 | 20 |
 

@@ -3,12 +3,12 @@ title: 將資源部署至管理群組
 description: 說明如何在 Azure Resource Manager 範本的管理群組範圍中部署資源。
 ms.topic: conceptual
 ms.date: 09/24/2020
-ms.openlocfilehash: 0c5ed8d2427a9e0329db6ebd7f0aa48aa4912a48
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 23f86d7d0b7e1f882cf3fb74adc484e0fe47db87
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91284817"
+ms.locfileid: "91372420"
 ---
 # <a name="create-resources-at-the-management-group-level"></a>在管理群組層級建立資源
 
@@ -32,7 +32,7 @@ ms.locfileid: "91284817"
 * [policySetDefinitions](/azure/templates/microsoft.authorization/policysetdefinitions)
 * [remediations](/azure/templates/microsoft.policyinsights/remediations)
 
-針對角色型存取控制，請使用：
+若要 (azure RBAC) 的 Azure 角色型存取控制，請使用：
 
 * [roleAssignments](/azure/templates/microsoft.authorization/roleassignments)
 * [roleDefinitions](/azure/templates/microsoft.authorization/roledefinitions)

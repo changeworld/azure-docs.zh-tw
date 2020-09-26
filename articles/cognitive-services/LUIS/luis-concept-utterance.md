@@ -1,18 +1,20 @@
 ---
 title: 良好的範例語句-LUIS
-description: 語句是應用程式需要解譯的使用者輸入。 收集您認為使用者會輸入的片語。 納入意義相同但以不同單字長度和單字位置建構的語句。
+description: 表達是應用程式需要解譯的使用者輸入。 收集您認為使用者會輸入的片語。 納入意義相同但以不同單字長度和單字位置建構的語句。
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 6a17416183762893432841c27124ec6a0f8a289d
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 4c3b5674fe039a89eb97b915d13b5d472a6a0568
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83685264"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316387"
 ---
 # <a name="understand-what-good-utterances-are-for-your-luis-app"></a>了解適合您 LUIS 應用程式的語句
 
-**語句**是應用程式需要解譯的使用者輸入。 若要將 LUIS 定型以從中擷取意圖和實體，務必要針對每個意圖擷取各種不同的範例語句。 主動式學習或繼續訓練新語句的程式，對於 LUIS 提供的機器學習智慧而言，是不可或缺的。
+**語句**是應用程式需要解譯的使用者輸入。 若要將 LUIS 定型以從中擷取意圖和實體，務必要針對每個意圖擷取各種不同的範例語句。 主動學習或繼續訓練新語句的程式，對於 LUIS 所提供的機器學習智慧而言是不可或缺的。
 
 收集您認為使用者會輸入的語句。 包括意義相同但結構不同的語句：
 
@@ -23,7 +25,7 @@ ms.locfileid: "83685264"
 * 複數表示
 * 詞幹分析
 * 名詞和動詞的選擇
-* [標點符號](luis-reference-application-settings.md#punctuation-normalization)-使用正確、不正確和無文法的絕佳種類
+* [標點符號](luis-reference-application-settings.md#punctuation-normalization) -使用正確、不正確和無文法的絕佳種類
 
 ## <a name="how-to-choose-varied-utterances"></a>如何選擇各種語句
 
@@ -52,11 +54,11 @@ ms.locfileid: "83685264"
 |我想要取得電腦，如何著手呢？|
 |我何時可擁有電腦？|
 
-這裡的核心詞彙「電腦」並不會有任何不同。 可使用桌上型電腦、膝上型電腦、工作站，甚至只稱為機器來替代。 LUIS 可以智慧地從內容推斷同義字，但當您建立定型的語句時，一定會改變它們。
+這裡的核心詞彙「電腦」並不不同。 可使用桌上型電腦、膝上型電腦、工作站，甚至只稱為機器來替代。 LUIS 可讓您以智慧的方式從內容推斷同義字，但當您建立定型的語句時，最好隨時變更它們。
 
 ## <a name="example-utterances-in-each-intent"></a>每個意圖的範例語句
 
-每個意圖都必須至少要有 15 個範例語句。 如果是沒有任何範例語句的意圖，則無法將 LUIS 定型。 如果您有一或多個範例語句的意圖，LUIS 可能無法精確預測意圖。
+每個意圖都必須至少要有 15 個範例語句。 如果是沒有任何範例語句的意圖，則無法將 LUIS 定型。 如果您有一個或少數範例語句的意圖，LUIS 可能無法精確預測意圖。
 
 ## <a name="add-small-groups-of-15-utterances-for-each-authoring-iteration"></a>對每個製作反覆項目新增多個 15 個語句構成的群組
 
@@ -68,52 +70,52 @@ LUIS 會利用由 LUIS 模型建立者精挑細選的語句來建置有效的模
 
 ## <a name="utterance-normalization"></a>語句正規化
 
-語句正規化是在定型和預測期間忽略文字類型的效果，例如標點符號和變音符號的過程。
+語句正規化是在定型和預測期間忽略文字類型（例如標點符號和變音符號）效果的程式。
 
-預設會關閉語句正規化設定。 這些設定包括：
+語句正規化設定預設為關閉。 這些設定包括：
 
 * Word 表單
-* 音調
+* 調
 * 標點符號
 
-如果您開啟正規化設定，則該正規化設定的所有語句的 [**測試**] 窗格、[批次測試] 和 [端點] 查詢的分數將會變更。
+如果您開啟正規化設定，則會針對該正規化設定的所有語句變更 [ **測試** ] 窗格中的分數、批次測試和端點查詢。
 
-當您在 LUIS 入口網站中複製版本時，版本設定會繼續到新複製的版本。
+當您在 LUIS 入口網站中複製版本時，版本設定會繼續使用新複製的版本。
 
-在 [**管理**] 區段的 [**應用程式設定**] 頁面上，或[更新版本設定 API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings)，透過 LUIS 入口網站設定版本設定。 若要深入瞭解這些正規化變更，請[參閱參考](luis-reference-application-settings.md)。
+在 [ **管理** ] 區段的 [ **應用程式設定** ] 頁面或 [更新版本設定 API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings)上，透過 LUIS 入口網站設定版本設定。 在 [參考](luis-reference-application-settings.md)中深入瞭解這些正規化變更。
 
 ### <a name="word-forms"></a>Word 表單
 
-正規化**word forms**會忽略擴充到根外之單字的差異。
+將 **word forms** 正規化會忽略在根以外擴充的單字差異。
 
 <a name="utterance-normalization-for-diacritics-and-punctuation"></a>
 
-### <a name="diacritics"></a>音調
+### <a name="diacritics"></a>調
 
-變音符號是文字中的標記或符號，例如：
+文字內的符號標記或正負號，例如：
 
 ```
 İ ı Ş Ğ ş ğ ö ü
 ```
 
 ### <a name="punctuation-marks"></a>標點符號
-正規化**標點符號**表示在您的模型經過定型之前，在您的端點查詢預測之前，會從語句中移除標點符號。
+正規化 **標點符號** 表示在您的模型定型之前，以及在您的端點查詢獲得預測之前，將會從語句中移除標點符號。
 
-標點符號在 LUIS 中是個別的語彙基元。 在結尾處包含句號的語句，以及在結尾不包含句號的語句是兩個不同的語句，而且可能會得到兩個不同的預測。
+標點符號在 LUIS 中是個別的語彙基元。 在結尾包含句號的語句，與結尾不包含句點的語句是兩個不同的語句，而且可能會得到兩個不同的預測。
 
-如果標點符號不正規化，LUIS 預設不會忽略標點符號，因為有些用戶端應用程式可能會對這些標記有重要性。 請確定您的範例語句應有使用標點符號和不使用標點符號兩種版本，讓這兩種樣式傳回相同的相對分數。
+如果標點符號未正規化，LUIS 預設不會忽略標點符號，因為某些用戶端應用程式可能會對這些標記進行重要性。 請確定您的範例語句應有使用標點符號和不使用標點符號兩種版本，讓這兩種樣式傳回相同的相對分數。
 
 請確定模型會在範例語句 (含標點符號和不含標點符號) 或在更容易使用特殊語法來忽略標點符號的[模式](luis-concept-patterns.md)中處理標點符號：`I am applying for the {Job} position[.]`
 
-如果標點符號在您的用戶端應用程式中沒有特定意義，請考慮以正規化標點符號來[忽略標點符號](#utterance-normalization)。
+如果標點符號在您的用戶端應用程式中沒有特定意義，請考慮將標點符號正規化以 [忽略標點符號](#utterance-normalization) 。
 
 ### <a name="ignoring-words-and-punctuation"></a>忽略單字和標點符號
 
-如果您想要忽略模式中的特定單字或標點符號，請搭配使用[模式](luis-concept-patterns.md#pattern-syntax)與_略_過方括弧的語法 `[]` 。
+如果您想要忽略模式中的特定單字或標點符號，請使用具有方括弧_忽略_語法的[模式](luis-concept-patterns.md#pattern-syntax) `[]` 。
 
 <a name="training-utterances"></a>
 
-## <a name="training-with-all-utterances"></a>所有語句的訓練
+## <a name="training-with-all-utterances"></a>使用所有語句進行訓練
 
 定型通常不具確定性：版本或應用程式間的語句預測會稍微不同。
 您可以更新[版本設定](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) API，以 `UseAllTrainingData`名稱/值配對來使用所有定型資料，藉此移除非確定性的定型。

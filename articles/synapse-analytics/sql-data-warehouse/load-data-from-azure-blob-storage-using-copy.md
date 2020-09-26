@@ -11,12 +11,12 @@ ms.date: 05/31/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 67392f965b3fddec7fc7a03bd328a224dad42208
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: d2c2673e6863725e064f3ad8561ab77eb1b051eb
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442976"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371519"
 ---
 # <a name="tutorial-load-the-new-york-taxicab-dataset"></a>教學課程：載入紐約計程車資料集
 
@@ -56,7 +56,7 @@ SQL 集區會使用一組已定義的[計算資源](memory-concurrency-limits.md
 
 3. 在表單中填寫以下資訊：
 
-   | 設定            | 建議的值       | 描述                                                  |
+   | 設定            | 建議的值       | 說明                                                  |
    | ------------------ | --------------------- | ------------------------------------------------------------ |
    | *名稱**            | mySampleDataWarehouse | 如需有效的資料庫名稱，請參閱[資料庫識別碼](/sql/relational-databases/databases/database-identifiers?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。 |
    | **訂用帳戶**   | 您的訂用帳戶     | 如需訂用帳戶的詳細資訊，請參閱[訂用帳戶](https://account.windowsazure.com/Subscriptions)。 |
@@ -91,7 +91,7 @@ SQL 集區會使用一組已定義的[計算資源](memory-concurrency-limits.md
 
 11. 在工具列上選取 [通知]，以監視部署程序。
   
-     ![通知](./media/load-data-from-azure-blob-storage-using-polybase/notification.png)
+     ![螢幕擷取畫面顯示 [通知] 窗格已開啟且正在進行部署的 Azure 入口網站。](./media/load-data-from-azure-blob-storage-using-polybase/notification.png)
 
 ## <a name="create-a-server-level-firewall-rule"></a>建立伺服器層級防火牆規則
 
@@ -141,7 +141,7 @@ SQL 集區會使用一組已定義的[計算資源](memory-concurrency-limits.md
 
 1. 開啟 SQL Server Management Studio。
 
-2. 在 [連線至伺服器]  對話方塊中，輸入下列資訊：
+2. 在 [連線至伺服器] 對話方塊中，輸入下列資訊：
 
     | 設定        | 建議的值                            | 描述                                                  |
     | -------------- | ------------------------------------------ | ------------------------------------------------------------ |

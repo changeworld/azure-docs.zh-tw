@@ -3,12 +3,12 @@ title: 控制平面和資料平面作業
 description: 描述控制平面和資料平面作業之間的差異。 控制平面作業是由 Azure Resource Manager 處理。 資料平面作業是由服務處理。
 ms.topic: conceptual
 ms.date: 09/10/2020
-ms.openlocfilehash: a0575c37c80417d9859ef36366dc9f26cdb4dbe4
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: f478037c3e83c1d28cc900d64512a41619628dd7
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90038997"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371264"
 ---
 # <a name="azure-control-plane-and-data-plane"></a>Azure 控制平面和資料平面
 
@@ -41,7 +41,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 Azure Resource Manager 會處理所有的控制平面要求。 它會自動套用您為了管理資源所實行的 Azure 功能，例如：
 
-* [Azure 角色型存取控制 (RBAC) ](../../role-based-access-control/overview.md)
+* [Azure 角色型存取控制 (Azure RBAC)](../../role-based-access-control/overview.md)
 * [Azure 原則](../../governance/policy/overview.md)
 * [管理鎖定](lock-resources.md)
 * [活動記錄](view-activity-logs.md)
@@ -64,7 +64,7 @@ POST {Endpoint}/text/analytics/v2.0/languages
 
 您可以使用某些原則來管理資料平面作業。 如需詳細資訊，請參閱 [Azure 原則中 (預覽版) 的資源提供者模式](../../governance/policy/concepts/definition-structure.md#resource-provider-modes)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 如需 Azure Resource Manager 的總覽，請參閱 [Azure Resource Manager 是什麼？](overview.md)
 

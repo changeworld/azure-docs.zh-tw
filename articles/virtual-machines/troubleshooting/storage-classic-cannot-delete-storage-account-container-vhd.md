@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 01/11/2019
 ms.author: annayak
-ms.openlocfilehash: 3e7469f0d53a154f605480b811d36937e3d4ad6c
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: c74f2ef9eed25719e722970671406c850b6a59b2
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88649834"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361852"
 ---
 # <a name="troubleshoot-classic-storage-resource-deletion-errors"></a>針對傳統儲存體資源刪除錯誤進行疑難排解
 本文章提供疑難排解指引，協助您排解在嘗試刪除 Azure 傳統儲存體帳戶、容器或 *.vhd 分頁 Blob 檔案時發生的以下任一錯誤。 
@@ -36,7 +36,7 @@ ms.locfileid: "88649834"
 
 1. 刪除傳統虛擬機器。
 2. 如果已選取 [磁碟] 核取方塊，則與分頁 Blob *.vhd 相關聯的**磁碟租用** (如上圖所示) 已中斷。 實際分頁 Blob *.vhd 檔案仍會存在於儲存體帳戶中。
-![開啟虛擬機器 (傳統)「刪除」錯誤窗格的入口網站螢幕擷取畫面](./media/storage-classic-cannot-delete-storage-account-container-vhd/steps_while_deleting_classic_vm.jpg) 
+![螢幕擷取畫面顯示確認刪除虛擬機器的對話方塊。](./media/storage-classic-cannot-delete-storage-account-container-vhd/steps_while_deleting_classic_vm.jpg) 
 
 3. 磁碟租用中斷之後，就可以刪除分頁 Blobb 本身。 在刪除儲存體帳戶或容器上的所有「磁碟」資源之後，即可刪除儲存體帳戶或容器。
 
@@ -52,7 +52,7 @@ ms.locfileid: "88649834"
 
 使用「附加」到虛擬機器的磁碟
 
-![開啟虛擬機器 (傳統)「刪除」錯誤窗格的入口網站螢幕擷取畫面](./media/storage-classic-cannot-delete-storage-account-container-vhd/unable_to_delete_storage_account_disks_attached_portal.jpg) 
+![螢幕擷取畫面會顯示一則訊息，說明無法刪除儲存體帳戶的原因。](./media/storage-classic-cannot-delete-storage-account-container-vhd/unable_to_delete_storage_account_disks_attached_portal.jpg) 
 
 
 使用「未附加」到虛擬機器的磁碟
@@ -93,12 +93,12 @@ ms.locfileid: "88649834"
 在入口網站上，根據選擇要刪除的 Blob 清單，可能會有兩種體驗。
 
 1. 如果只選取 [已租用] Blob，則不會顯示 [刪除] 按鈕。
-![開啟容器 Blob「清單」窗格的入口網站螢幕擷取畫面](./media/storage-classic-cannot-delete-storage-account-container-vhd/unable_to_delete_vhd_leased_portal.jpg)
+![入口網站的螢幕擷取畫面，其中已開啟 [容器 blob 清單] 窗格，而且只選取了租用的 blob。](./media/storage-classic-cannot-delete-storage-account-container-vhd/unable_to_delete_vhd_leased_portal.jpg)
 
 
 2. 如果混合選取了 [已租用] 和 [可用] Blob，則會顯示 [刪除] 按鈕。 但是 [刪除] 作業會留下其上具有磁碟租用的分頁 Blob。 
-![開啟容器 Blob「清單」窗格的入口網站螢幕擷取畫面](./media/storage-classic-cannot-delete-storage-account-container-vhd/unable_to_delete_vhd_leased_and_unleased_portal_1.jpg)
-![開啟選擇的 Blob「刪除」窗格的入口網站螢幕擷取畫面](./media/storage-classic-cannot-delete-storage-account-container-vhd/unable_to_delete_vhd_leased_and_unleased_portal_2.jpg)
+![入口網站的螢幕擷取畫面，其中已開啟 [容器 blob 清單] 窗格，並已選取租用和可用的 blob。 ](./media/storage-classic-cannot-delete-storage-account-container-vhd/unable_to_delete_vhd_leased_and_unleased_portal_1.jpg)
+ ![入口網站的螢幕擷取畫面，其中已開啟選取的 blob [刪除] 窗格](./media/storage-classic-cannot-delete-storage-account-container-vhd/unable_to_delete_vhd_leased_and_unleased_portal_2.jpg)
 
 #### <a name="azure-powershell"></a>Azure PowerShell 
 如果使用者選擇使用 PowerShell 進行刪除，則會導致下列錯誤。 
@@ -114,10 +114,10 @@ ms.locfileid: "88649834"
 在 Azure 入口網站中遵循下列步驟：
 1.  瀏覽至 [Azure 入口網站](https://portal.azure.com)。
 2.  瀏覽至磁碟 (傳統)。 
-3.  按一下 [磁片] 索引標籤。 ![入口網站的螢幕擷取畫面，其中已開啟容器 blob 「清單」窗格](./media/storage-classic-cannot-delete-storage-account-container-vhd/resolution_click_disks_tab.jpg)
+3.  按一下 [磁片] 索引標籤。 ![螢幕擷取畫面顯示已選取 (傳統) 的磁片，以及傳統磁片名稱和儲存體帳戶的 Azure 入口網站。](./media/storage-classic-cannot-delete-storage-account-container-vhd/resolution_click_disks_tab.jpg)
  
 4.  選取資料磁碟，然後按一下 [刪除磁碟]。
- ![開啟容器 Blob「清單」窗格的入口網站螢幕擷取畫面](./media/storage-classic-cannot-delete-storage-account-container-vhd/resolution_click_delete_disk.jpg)
+ ![螢幕擷取畫面顯示已選取磁片 (傳統) 的 Azure 入口網站，以及選取的資料磁片和刪除的選項。](./media/storage-classic-cannot-delete-storage-account-container-vhd/resolution_click_delete_disk.jpg)
  
 5.  重試先前失敗的刪除作業。
 6.  只要儲存體帳戶或容器具有單一磁碟，就無法加以刪除。

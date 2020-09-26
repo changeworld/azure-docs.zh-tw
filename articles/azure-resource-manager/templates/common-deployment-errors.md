@@ -4,12 +4,12 @@ description: 說明如何解決使用 Azure Resource Manager 將資源部署至 
 tags: top-support-issue
 ms.topic: troubleshooting
 ms.date: 09/09/2020
-ms.openlocfilehash: a24a95bbf3b3a338102d42fcee06b5e4bd59dd83
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: fb7e476a5b4416282546d321a5e9a0127b7a4364
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89650942"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372233"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>使用 Azure Resource Manager 針對常見的 Azure 部署錯誤進行疑難排解
 
@@ -34,6 +34,7 @@ ms.locfileid: "89650942"
 | DeploymentNameLengthLimitExceeded | 部署名稱的限制為64個字元。  | |
 | DeploymentFailed | DeploymentFailed 錯誤是一般錯誤，不會提供您解決錯誤所需的詳細資料。 尋找錯誤碼的錯誤詳細資料，以提供更多資訊。 | [尋找錯誤碼](#find-error-code) |
 | DeploymentQuotaExceeded | 如果每個資源群組的部署達到 800 個數量限制，請從歷程記錄中刪除不再需要的部署。 | [解決部署計數超過800時的錯誤](deployment-quota-exceeded.md) |
+| DeploymentSizeExceeded | 簡化您的範本以縮減大小。 | [解決範本大小錯誤](error-job-size-exceeded.md) |
 | DnsRecordInUse | DNS 記錄名稱必須是唯一的。 輸入不同的名稱。 | |
 | ImageNotFound | 檢查 VM 映像設定。 |  |
 | InUseSubnetCannotBeDeleted | 當您嘗試更新資源時，可能會收到此錯誤，並藉由刪除和建立資源來處理要求。 請務必指定所有不變的值。 | [更新資源](/azure/architecture/building-blocks/extending-templates/update-resource) |
@@ -49,6 +50,7 @@ ms.locfileid: "89650942"
 | InvalidSubscriptionRegistrationState | 向資源提供者註冊訂用帳戶。 | [解析註冊](error-register-resource-provider.md) |
 | InvalidTemplate | 請檢查錯誤的範本語法。 | [解析無效的範本](error-invalid-template.md) |
 | InvalidTemplateCircularDependency | 移除不必要的相依性。 | [解析循環相依性](error-invalid-template.md#circular-dependency) |
+| JobSizeExceeded | 簡化您的範本以縮減大小。 | [解決範本大小錯誤](error-job-size-exceeded.md) |
 | LinkedAuthorizationFailed | 檢查您的帳戶是否屬於與您要部署的資源群組相同的租使用者。 | |
 | LinkedInvalidPropertyId | 資源的資源識別碼未正確地解析。 請檢查您為資源識別碼提供所有必要值，包含訂用帳戶識別碼、資源群組名稱、資源類型、父代資源名稱 (如有需要) 和資源名稱。 | |
 | LocationRequired | 提供資源的位置。 | [設定位置](resource-location.md) |
@@ -88,7 +90,7 @@ ms.locfileid: "89650942"
 
 驗證錯誤來自可在部署之前判斷的情況。 其中包含您範本中的語法錯誤，或者嘗試部署會超出您訂用帳戶配額的資源。 部署程序期間出現的情況下會發生驗證錯誤。 其中包括嘗試存取以平行方式部署的資源。
 
-這兩種錯誤類型都會傳回錯誤碼，以供您針對部署進行疑難排解。 這兩種類型的錯誤都會出現在 [活動記錄](../management/view-activity-logs.md)中。 不過，驗證錯誤不會出現在部署歷程記錄中，因為部署永遠不會啟動。
+這兩種錯誤類型都會傳回錯誤碼，以供您針對部署進行疑難排解。 這兩種錯誤類型都會出現在[活動記錄](../management/view-activity-logs.md)中。 不過，驗證錯誤不會出現在部署歷程記錄中，因為部署永遠不會啟動。
 
 ### <a name="validation-errors"></a>驗證錯誤
 
@@ -245,7 +247,7 @@ az deployment operation group list \
 
 或者，假設您收到的是您認為與不正確設定相依性相關的部署錯誤。 將其細分為簡化範本以測試您的範本。 首先，建立可部署單一資源 (例如 SQL Server) 的範本。 當您確定已正確定義該資源時，請新增相依于它的資源 (例如 SQL Database) 。 當您正確定義這兩個資源時，加入其他相依的資源 (例如稽核原則)。 在每個測試部署之間，刪除資源群組以確保您充分測試相依性。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 若要進行疑難排解教學課程，請參閱 [教學課程：針對 Resource Manager 範本部署進行疑難排解](template-tutorial-troubleshoot.md)
 * 若要了解稽核動作，請參閱 [使用 Resource Manager 來稽核作業](../management/view-activity-logs.md)。

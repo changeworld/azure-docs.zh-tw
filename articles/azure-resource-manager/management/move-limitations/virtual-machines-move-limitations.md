@@ -2,13 +2,13 @@
 title: 將 Azure Vm 移至新的訂用帳戶或資源群組
 description: 使用 Azure Resource Manager 將虛擬機器移至新的資源群組或訂用帳戶。
 ms.topic: conceptual
-ms.date: 08/31/2020
-ms.openlocfilehash: 3878113f6874c40953bec87518a89519bdc6cb1a
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.date: 09/21/2020
+ms.openlocfilehash: 219a8b438d2715f6e97085a527b386e51759ec2c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230954"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317101"
 ---
 # <a name="move-guidance-for-virtual-machines"></a>虛擬機器的移動指引
 
@@ -50,7 +50,7 @@ Disable-AzVMDiskEncryption -ResourceGroupName demoRG -VMName myVm1
    1. 尋找虛擬機器的位置。
    2. 尋找具有下列命名模式的資源群組： `AzureBackupRG_<VM location>_1` 。 例如，名稱的格式為 *AzureBackupRG_westus2_1*。
    3. 在 [Azure 入口網站中，選取 [ **顯示隱藏的類型**]。
-   4. 尋找具有命名模式的 **restorePointCollections** 類型的資源 `AzureBackup_<name of your VM that you're trying to move>_###########` 。
+   4. 尋找具有命名模式的 **restorePointCollections** 類型的資源 `AzureBackup_<VM name>_###########` 。
    5. 刪除此資源。 此作業只會刪除立即復原點，而不會刪除保存庫中備份的資料。
    6. 刪除作業完成之後，您就可以移動虛擬機器。
 
@@ -63,16 +63,31 @@ Disable-AzVMDiskEncryption -ResourceGroupName demoRG -VMName myVm1
 
 1. 尋找具有命名模式的資源群組- `AzureBackupRG_<VM location>_1` 。 例如，名稱可能是 `AzureBackupRG_westus2_1` 。
 
-1. 使用下列命令來取得還原點集合。
+1. 如果您只移動一部虛擬機器，請取得該虛擬機器的還原點集合。
 
-   ```azurepowershell
-   $RestorePointCollection = Get-AzResource -ResourceGroupName AzureBackupRG_<VM location>_1 -ResourceType Microsoft.Compute/restorePointCollections
+   ```azurepowershell-interactive
+   $restorePointCollection = Get-AzResource -ResourceGroupName AzureBackupRG_<VM location>_1 -name AzureBackup_<VM name>* -ResourceType Microsoft.Compute/restorePointCollections
    ```
 
-1. 刪除此資源。 此作業只會刪除立即復原點，而不會刪除保存庫中備份的資料。
+   刪除此資源。 此作業只會刪除立即復原點，而不會刪除保存庫中備份的資料。
 
-   ```azurepowershell
-   Remove-AzResource -ResourceId $RestorePointCollection.ResourceId -Force
+   ```azurepowershell-interactive
+   Remove-AzResource -ResourceId $restorePointCollection.ResourceId -Force
+   ```
+
+1. 如果您要將所有虛擬機器移至此位置的備份，請取得這些虛擬機器的還原點集合。
+
+   ```azurepowershell-interactive
+   $restorePointCollection = Get-AzResource -ResourceGroupName AzureBackupRG_<VM location>_1 -ResourceType Microsoft.Compute/restorePointCollections
+   ```
+
+   刪除每個資源。 此作業只會刪除立即復原點，而不會刪除保存庫中備份的資料。
+
+   ```azurepowershell-interactive
+   foreach ($restorePoint in $restorePointCollection)
+   {
+     Remove-AzResource -ResourceId $restorePoint.ResourceId -Force
+   }
    ```
 
 ### <a name="azure-cli"></a>Azure CLI
@@ -81,18 +96,28 @@ Disable-AzVMDiskEncryption -ResourceGroupName demoRG -VMName myVm1
 
 1. 尋找具有命名模式的資源群組- `AzureBackupRG_<VM location>_1` 。 例如，名稱可能是 `AzureBackupRG_westus2_1` 。
 
-1. 使用下列命令來取得還原點集合。
+1. 如果您只移動一部虛擬機器，請取得該虛擬機器的還原點集合。
 
-   ```azurecli
-   az resource list -g AzureBackupRG_<VM location>_1 --resource-type Microsoft.Compute/restorePointCollections
+   ```azurecli-interactive
+   RESTOREPOINTCOL=$(az resource list -g AzureBackupRG_<VM location>_1 --resource-type Microsoft.Compute/restorePointCollections --query "[?starts_with(name, 'AzureBackup_<VM name>')].id" --output tsv)
    ```
 
-1. 使用命名模式尋找資源的資源識別碼 `AzureBackup_<VM name>_###########`
+   刪除此資源。 此作業只會刪除立即復原點，而不會刪除保存庫中備份的資料。
 
-1. 刪除此資源。 此作業只會刪除立即復原點，而不會刪除保存庫中備份的資料。
+   ```azurecli-interactive
+   az resource delete --ids $RESTOREPOINTCOL
+   ```
 
-   ```azurecli
-   az resource delete --ids /subscriptions/<sub-id>/resourceGroups/<resource-group>/providers/Microsoft.Compute/restorePointCollections/<name>
+1. 如果您要將所有虛擬機器移至此位置的備份，請取得這些虛擬機器的還原點集合。
+
+   ```azurecli-interactive
+   RESTOREPOINTCOL=$(az resource list -g AzureBackupRG_<VM location>_1 --resource-type Microsoft.Compute/restorePointCollections)
+   ```
+
+   刪除每個資源。 此作業只會刪除立即復原點，而不會刪除保存庫中備份的資料。
+
+   ```azurecli-interactive
+   az resource delete --ids $RESTOREPOINTCOL
    ```
 
 ## <a name="next-steps"></a>後續步驟

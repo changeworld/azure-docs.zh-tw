@@ -1,6 +1,6 @@
 ---
 title: SAP NetWeaver 的 Azure 虛擬機器高可用性
-description: Azure 虛擬機器上的 SAP NetWeaver 高可用性指南
+description: 在本文中，瞭解適用于 SAP NetWeaver 的高可用性 Azure 虛擬機器。
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: rdeltcheva
@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: dbdbae3d310d6e4c3224663dd523cb124744dfbd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3a330fc18f39ffd7007e2a41a28016df69a2b739
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080177"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91314652"
 ---
 # <a name="high-availability-azure-virtual-machines-for-sap-netweaver"></a>適用于 SAP NetWeaver 的高可用性 Azure 虛擬機器
 
@@ -320,7 +320,7 @@ _**圖 4：** 高可用性的 SAP 應用程式伺服器_
 * 所有虛擬機器都是相同升級網域的一部分。 例如，升級網域可確保虛擬機器不會在計劃性維護停機期間同時更新。
 * 所有虛擬機器都是相同容錯網域的一部分。 例如，容錯網域可確保部署虛擬機器，以便不會有任何單一失敗點影響所有虛擬機器的可用性。
 
-深入瞭解如何 [管理虛擬機器的可用性] [。/manage-availability.md]。
+深入瞭解如何 [管理虛擬機器的可用性] [.。。/manage-availability.md]。
 
 僅限非受控的磁碟：由於 Azure 儲存體帳戶是潛在的單一失敗點，因此您務必擁有至少兩個 Azure 儲存體帳戶，且至少要將兩個虛擬機器分散到其中。 在理想的設定中，執行 SAP 對話方塊執行個體的每一個虛擬機器磁碟會部署在不同的儲存體帳戶中。
 
@@ -591,7 +591,7 @@ ASCS/SCS 範本會部署兩部虛擬機器，可讓您用來建立裝載多個 A
 2. 根據您擁有的網路類型選取設定。 如需詳細資訊，請參閱下列資源：
    * 新增內部部署 DNS 伺服器的 IP 位址。  
    您可以將內部部署 DNS 伺服器擴充至 Azure 中執行的虛擬機器。 在這種情況下，您可以加入執行 DNS 服務之 Azure 虛擬機器的 IP 位址。
-   * 針對 Azure 中隔離的 VM 部署：在做為 DNS 伺服器的相同虛擬網路實例中部署額外的虛擬機器。 新增您已設定執行 DNS 服務之 Azure 虛擬機器的 IP 位址。
+   * 針對 Azure 中隔離的 VM 部署：在做為 DNS 伺服器的相同虛擬網路實例中，部署其他虛擬機器。 新增您已設定執行 DNS 服務之 Azure 虛擬機器的 IP 位址。
 
    ![圖 12︰設定 Azure 虛擬網路的 DNS 伺服器][sap-ha-guide-figure-3001]
 

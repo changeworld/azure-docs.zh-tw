@@ -3,12 +3,12 @@ title: 使用 Azure CLI 和範本部署資源
 description: 使用 Azure Resource Manager 和 Azure CLI 將資源部署到 Azure。 資源會定義在 Resource Manager 範本中。
 ms.topic: conceptual
 ms.date: 09/08/2020
-ms.openlocfilehash: 7e8ae7e8c568f5f0ebb85f434e33f142b5fe94e8
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 8d033bb9ad1c841614ee1e48aa7edc6b8fe18550
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89566155"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372165"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-cli"></a>使用 ARM 範本與 Azure CLI 來部署資源
 
@@ -130,7 +130,7 @@ az deployment group create \
 
 ## <a name="deploy-template-spec"></a>部署範本規格
 
-您可以建立 [範本規格](template-specs.md)，而不是部署本機或遠端範本。範本規格是您的 Azure 訂用帳戶中包含 ARM 範本的資源。 這可讓您輕鬆安全地與組織中的使用者共用範本。 您可以使用角色型存取控制 (RBAC) 來授與範本規格的存取權。這項功能目前為預覽狀態。
+您可以建立 [範本規格](template-specs.md)，而不是部署本機或遠端範本。範本規格是您的 Azure 訂用帳戶中包含 ARM 範本的資源。 這可讓您輕鬆安全地與組織中的使用者共用範本。 您可以使用 Azure 角色型存取控制 (Azure RBAC) 來授與範本規格的存取權。這項功能目前為預覽狀態。
 
 下列範例示範如何建立和部署範本規格。只有當您已 [註冊預覽版](https://aka.ms/templateSpecOnboarding)時，才能使用這些命令。
 

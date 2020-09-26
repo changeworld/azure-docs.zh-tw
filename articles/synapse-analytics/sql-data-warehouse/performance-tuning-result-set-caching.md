@@ -11,12 +11,12 @@ ms.date: 10/10/2019
 ms.author: xiaoyul
 ms.reviewer: nidejaco;
 ms.custom: azure-synapse
-ms.openlocfilehash: 2c29ad48e8dc626617786e519e84c92875bc6170
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: aeeca38afb82e2dcd86e111d1ae5dcb2e7499f42
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378520"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362260"
 ---
 # <a name="performance-tuning-with-result-set-caching"></a>使用結果集快取進行效能微調
 
@@ -56,11 +56,11 @@ WHERE request_id  = <'request_id'>;
 
 以下是在已停用結果集快取情況下所執行查詢的範例輸出。
 
-![Query-steps-with-rsc-disabled](./media/performance-tuning-result-set-caching/query-steps-with-rsc-disabled.png)
+![螢幕擷取畫面會顯示查詢結果，包括位置類型和命令。](./media/performance-tuning-result-set-caching/query-steps-with-rsc-disabled.png)
 
 以下是在已啟用結果集快取情況下所執行查詢的範例輸出。
 
-![Query-steps-with-rsc-enabled](./media/performance-tuning-result-set-caching/query-steps-with-rsc-enabled.png)
+![螢幕擷取畫面顯示已選取命令的查詢結果 * from [D W ResultCache D b] 點 D b o 稱為 out。](./media/performance-tuning-result-set-caching/query-steps-with-rsc-enabled.png)
 
 ## <a name="when-cached-results-are-used"></a>使用快取的結果時
 

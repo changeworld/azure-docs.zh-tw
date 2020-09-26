@@ -5,12 +5,12 @@ author: mumian
 ms.topic: conceptual
 ms.date: 09/21/2020
 ms.author: jgao
-ms.openlocfilehash: a6925ef8f72615cc3868c8b5cd4ea030ed3c3c40
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 63879350eba897cfe5a793309e5129323fe8bbde
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91278053"
+ms.locfileid: "91372369"
 ---
 # <a name="introduce-health-integration-rollout-to-azure-deployment-manager-public-preview"></a>介紹將健康情況整合推出至 Azure Deployment Manager (公開預覽) 
 
@@ -41,7 +41,7 @@ Azure Deployment Manager 中的新 *healthCheck* 步驟可讓您宣告指出狀�
     1. 驗證資訊。 目前只支援 API 金鑰樣式驗證。 針對 Azure 監視器，驗證類型應設定為– "RolloutIdentity"，因為用於 Azure Deployment Manager 推出的使用者指派受控識別可針對 Azure 監視器進行擴充。
     1. 定義狀況良好回應的[HTTP 狀態碼](https://www.wikipedia.org/wiki/List_of_HTTP_status_codes)或正則運算式。 請注意，您可以提供正則運算式，這些運算式全都必須符合，才能讓回應被視為狀況良好，或您可以提供運算式，讓回應被視為狀況良好時必須符合。 這兩種方法都受到支援。
 
-    下列 Json 是整合 Azure 監視器與 Azure Deployment Manager 的範例，它會利用 RolloutIdentity 並建立在沒有警示的情況下推出的健康情況檢查。 唯一支援的 Azure 監視器 API： [Alerts –取得全部](/rest/api/monitor/alertsmanagement/alerts/getall.md)。
+    下列 Json 是整合 Azure 監視器與 Azure Deployment Manager 的範例，它會利用 RolloutIdentity 並建立在沒有警示的情況下推出的健康情況檢查。 唯一支援的 Azure 監視器 API： [Alerts –取得全部](/rest/api/monitor/alertsmanagement/alerts/getall)。
 
     ```json
     {

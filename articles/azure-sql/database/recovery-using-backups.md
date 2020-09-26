@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein, danil
 ms.date: 09/26/2019
-ms.openlocfilehash: 069387b5c761d502d960d0284d156b4ee6431a55
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: d95bf9ed50f819c5a92c7945827ee82a2c6ecdc9
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91357007"
+ms.locfileid: "91371770"
 ---
 # <a name="recover-using-automated-database-backups---azure-sql-database--sql-managed-instance"></a>使用自動資料庫備份復原-Azure SQL Database & SQL 受控執行個體
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -196,7 +196,7 @@ ms.locfileid: "91357007"
 您無法在異地次要資料庫上執行還原時間點。 您只能在主資料庫上這麼做。 如需使用異地還原從中斷復原的詳細資訊，請參閱 [從中斷復原](../../key-vault/general/disaster-recovery-guidance.md)。
 
 > [!IMPORTANT]
-> 異地還原是 SQL Database 和 SQL 受控執行個體中最基本的災難復原解決方案。 它依賴自動建立的異地複寫備份，其復原點目標 (RPO) 等於1小時，而估計的復原時間最多可達12小時。 這並不保證目的地區域在區域性中斷之後可還原您的資料庫，因為可能會有明顯增加的需求。 如果您的應用程式使用相對較小的資料庫，而且對企業而言並不重要，則異地還原就是適當的災難復原解決方案。 
+> 異地還原是 SQL Database 和 SQL 受控執行個體中最基本的災難復原解決方案。 它依賴自動建立的異地複寫備份，其復原點目標 (RPO) 最多1小時，而估計的復原時間最多可達12小時。 這並不保證目的地區域在區域性中斷之後可還原您的資料庫，因為可能會有明顯增加的需求。 如果您的應用程式使用相對較小的資料庫，而且對企業而言並不重要，則異地還原就是適當的災難復原解決方案。 
 >
 > 對於需要大型資料庫且必須確保商務持續性的商務關鍵應用程式，請使用 [自動容錯移轉群組](auto-failover-group-overview.md)。 它提供了更低的 RPO 和復原時間目標，並一律保證容量。 
 >

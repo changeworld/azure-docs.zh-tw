@@ -7,12 +7,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
 ms.date: 08/12/2020
-ms.openlocfilehash: 51d9880c654a6ecabbbab294016293113bffb655
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 4a78e966d420591ebe7a9607777158cf17ddf698
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89434226"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91370873"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>對應資料流的效能和調整指南
 
@@ -53,7 +53,7 @@ Azure Data Factory 中的對應資料流程可提供無程式碼介面，以大�
 
 [ **優化** ] 索引標籤包含設定 Spark 叢集之資料分割配置的設定。 此索引標籤存在於資料流程的每個轉換中，並指定您是否要在轉換完成 **之後** 重新分割資料。 調整資料分割可讓您控制跨計算節點的資料分佈，以及對整體資料流程效能都有正面和負面影響的資料位置優化。
 
-![最佳化](media/data-flow/optimize.png "最佳化")
+![螢幕擷取畫面顯示 [優化] 索引標籤，其中包含資料分割選項、資料分割類型和資料分割數目。](media/data-flow/optimize.png)
 
 預設會選取 [ *使用目前* 的資料分割]，這會指示 Azure Data Factory 保留轉換的目前輸出資料分割。 當重新分割資料需要時間時，在大部分的情況下建議 *使用目前* 的資料分割。 您可能會想要重新分割資料的案例包括：大幅扭曲資料的匯總和聯結之後，或在 SQL DB 上使用來源資料分割。
 
@@ -109,7 +109,7 @@ Spark 叢集的類型有三個可用的選項： [一般用途]、[記憶體優�
 
 預設叢集大小為四個驅動程式節點和四個背景工作節點。  當您處理更多資料時，建議使用較大的群集。 以下是可能的調整大小選項：
 
-| 背景工作核心 | 驅動程式核心 | 核心總數 | 備註 |
+| 背景工作核心 | 驅動程式核心 | 核心總數 | 注意 |
 | ------------ | ------------ | ----------- | ----- |
 | 4 | 4 | 8 | 適用于計算優化 |
 | 8 | 8 | 16 | |

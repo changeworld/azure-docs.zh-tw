@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/07/2020
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: 65f6c239f34775efff6a2ea2e399064a7702606a
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 8882625d28871135223dd30e3fd96a385a13e8fe
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89663876"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91377481"
 ---
 ![Dsv3 檔](media/vm-disk-performance/dsv3-documentation.jpg)
 
@@ -83,5 +83,11 @@ ms.locfileid: "89663876"
 協助診斷磁片 IO 上限的計量：
 - **資料磁片 Iops 耗用百分比** -透過布建的資料磁片 iops 完成的資料磁片 iops 所計算的百分比。 如果此數量為100%，則您的應用程式執行將會從您的資料磁片的 IOPS 限制，以 IO 為上限。
 - **使用的資料磁片頻寬百分比** -透過布建的資料磁片輸送量完成的資料磁片輸送量所計算的百分比。 如果此數量為100%，則您的應用程式執行將會從您的資料磁片的頻寬限制，以 IO 為上限。
-- **作業系統磁片 Iops 耗用百分比** -透過布建的 Os 磁片 iops 完成的 Os 磁片 iops 所計算的百分比。 如果此數量為100%，則您的應用程式將會從您的 OS 磁片的 IOPS 限制，以 IO 為上限。
+- **作業系統磁片 Iops 耗用百分比** -透過布建的 OS 磁片 iops 完成的 OS 磁片 iops 所計算的百分比。 如果此數量為100%，則您的應用程式將會從您的 OS 磁片的 IOPS 限制，以 IO 為上限。
 - **作業系統磁片頻寬耗用百分比** -透過布建的 os 磁片輸送量完成的 os 磁片輸送量所計算的百分比。 如果此數量為100%，則您的應用程式執行將會是作業系統磁片的頻寬限制的 IO。
+
+協助診斷 VM IO 上限的計量：
+- VM 快取的**Iops 耗用百分比**-以已完成的 iops 總數計算的百分比，超過最大快取的虛擬機器 iops 限制。 如果此數量為100%，則執行中的應用程式將會是 VM 的快取 IOPs 限制的 IO。
+- VM 快取的**頻寬使用量百分比**-以最大快取的虛擬機器輸送量完成的總磁片輸送量所計算的百分比。 如果此數量為100%，則您的應用程式執行將會是 VM 的快取頻寬限制的 IO。
+- VM 未快取的已**耗用 IOPS 百分比**-虛擬機器上的總 IOPS 所計算的百分比，以超過最大未快取的虛擬機器 iops 限制來完成。 如果此數量為100%，則您的應用程式執行將會是 VM 未快取的 IOPs 限制的 IO。
+- VM 未快取的**頻寬百分比**-在虛擬機器上的總磁片輸送量所計算的百分比（以已布建的虛擬機器輸送量上限完成）。 如果此數量為100%，則您的應用程式執行將會是 VM 未快取頻寬限制的 IO。

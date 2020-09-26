@@ -3,12 +3,12 @@ title: 建立及部署 Visual Studio 資源群組專案
 description: 使用 Visual Studio 建立 Azure 資源群組專案，並將資源部署至 Azure。
 ms.topic: conceptual
 ms.date: 10/16/2019
-ms.openlocfilehash: eacab3e1919b68661dd24eb78e3b0eca51cf4972
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 479dbed1f288148c24fc8464f7895cd3e2b182f9
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90985246"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372641"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>透過 Visual Studio 建立與部署 Azure 資源群組
 
@@ -370,7 +370,7 @@ ms.locfileid: "90985246"
 
    ![自訂儀表板](./media/create-visual-studio-deployment-project/Ops-DemoSiteGroup-dashboard.png)
 
-您可以使用 RBAC 群組來管理對儀表板的存取權。 部署之後，您也可以自訂儀表板的外觀。 不過，如果您重新部署資源群組，則儀表板會重設回範本中的預設狀態。 如需建立儀表板的詳細資訊，請參閱[以程式設計方式建立 Azure 儀表板](../../azure-portal/azure-portal-dashboards-create-programmatically.md)。
+您可以使用 Azure 角色型存取控制 (Azure RBAC) 來管理儀表板的存取權。 部署之後，您也可以自訂儀表板的外觀。 不過，如果您重新部署資源群組，則儀表板會重設回範本中的預設狀態。 如需建立儀表板的詳細資訊，請參閱[以程式設計方式建立 Azure 儀表板](../../azure-portal/azure-portal-dashboards-create-programmatically.md)。
 
 ## <a name="clean-up-resources"></a>清除資源
 
