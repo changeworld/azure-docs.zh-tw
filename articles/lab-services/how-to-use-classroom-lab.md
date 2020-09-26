@@ -1,14 +1,14 @@
 ---
 title: 如何存取 Azure 實驗室服務中的教室實驗室 | Microsoft Docs
-description: 在本教學課程中，您會在由教師設定的教室實驗室中存取虛擬機器。
+description: 瞭解如何註冊至教室實驗室、查看您可以存取的所有實驗室、啟動/停止實驗室中的 VM，以及連線至 VM。
 ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 34b61be1ca3fc938032b75358842f2067e5c011c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cd06bfc2dff27f1ef1bc84f01b001b8dbd282cf4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85443565"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334050"
 ---
 # <a name="how-to-access-a-classroom-lab-in-azure-lab-services"></a>如何存取 Azure 實驗室服務中的教室實驗室
 本文說明如何向教室實驗室註冊、檢視您可以存取的所有實驗室、啟動/停止實驗室中的 VM，以及連線至 VM。 

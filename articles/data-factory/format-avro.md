@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/15/2020
 ms.author: jingwang
-ms.openlocfilehash: 7be92289d293798393ead3562c39721d46ce561b
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 7d61121b4c80b7b89ec29ade4ab1bfab91a660d9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90531843"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334339"
 ---
 # <a name="avro-format-in-azure-data-factory"></a>Azure Data Factory 中的 Avro 格式
 
@@ -28,7 +28,7 @@ ms.locfileid: "90531843"
 
 如需可用來定義資料集的區段和屬性完整清單，請參閱[資料集](concepts-datasets-linked-services.md)一文。 本節提供 Avro 資料集所支援的屬性清單。
 
-| 屬性         | 描述                                                  | 必要 |
+| 屬性         | 說明                                                  | 必要 |
 | ---------------- | ------------------------------------------------------------ | -------- |
 | type             | 資料集的 type 屬性必須設定為 **Avro**。 | 是      |
 | location         | 檔案 (s) 的位置設定。 每個以檔案為基礎的連接器都有自己的位置類型和支援的屬性 `location` 。 **請參閱連接器文章中的詳細資料-> 資料集屬性一節**。 | 是      |
@@ -69,7 +69,7 @@ ms.locfileid: "90531843"
 
 [複製活動*** \* 來源 \* *** ] 區段支援下列屬性。
 
-| 屬性      | 描述                                                  | 必要 |
+| 屬性      | 說明                                                  | 必要 |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | 複製活動來源的 type 屬性必須設為 **AvroSource**。 | 是      |
 | storeSettings | 一組屬性，說明如何從資料存放區讀取資料。 每個以檔案為基礎的連接器在下都有自己支援的讀取設定 `storeSettings` 。 **請參閱連接器文章中的詳細資料-> 複製活動屬性一節**。 | 否       |
@@ -78,7 +78,7 @@ ms.locfileid: "90531843"
 
 複製活動*** \* 接收 \* ***區段支援下列屬性。
 
-| 屬性      | 描述                                                  | 必要 |
+| 屬性      | 說明                                                  | 必要 |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | 複製活動來源的 type 屬性必須設為 **AvroSink**。 | 是      |
 | formatSettings          | 屬性的群組。 請參閱下方的 **Avro write settings** 表格。| 否      |
@@ -86,7 +86,7 @@ ms.locfileid: "90531843"
 
 支援的 **Avro 寫入設定** `formatSettings` ：
 
-| 屬性      | 描述                                                  | 必要                                              |
+| 屬性      | 說明                                                  | 必要                                              |
 | ------------- | ------------------------------------------------------------ | ----------------------------------------------------- |
 | type          | FormatSettings 的類型必須設定為 **AvroWriteSettings**。 | 是                                                   |
 | maxRowsPerFile | 將資料寫入資料夾時，您可以選擇寫入多個檔案，並指定每個檔案的最大資料列數。  | 否 |
@@ -100,7 +100,7 @@ ms.locfileid: "90531843"
 
 下表列出 avro 來源所支援的屬性。 您可以在 [ **來源選項** ] 索引標籤中編輯這些屬性。
 
-| 名稱 | 描述 | 必要 | 允許的值 | 資料流程腳本屬性 |
+| 名稱 | 說明 | 必要 | 允許的值 | 資料流程腳本屬性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | 萬用字元路徑 | 將會處理所有符合萬用字元路徑的檔案。 覆寫資料集中設定的資料夾和檔案路徑。 | 否 | String[] | wildcardPaths |
 | 分割區根路徑 | 針對已分割的檔案資料，您可以輸入磁碟分割根路徑，以便將分割的資料夾讀取為數據行 | 否 | String | partitionRootPath |
@@ -108,12 +108,13 @@ ms.locfileid: "90531843"
 | 儲存檔案名稱的資料行 | 使用來原始檔案名和路徑建立新的資料行 | 否 | String | rowUrlColumn |
 | 完成後 | 在處理之後刪除或移動檔案。 從容器根目錄開始的檔案路徑 | 否 | Delete： `true` 或 `false` <br> 移動： `['<from>', '<to>']` | purgeFiles <br> moveFiles |
 | 依上次修改篩選 | 選擇根據上次修改檔案的時間進行篩選 | 否 | 時間戳記 | modifiedAfter <br> modifiedBefore |
+| 不允許找到任何檔案 | 若為 true，如果找不到任何檔案，就不會擲回錯誤 | 否 | `true` 或 `false` | ignoreNoFilesFound |
 
 ### <a name="sink-properties"></a>接收屬性
 
 下表列出 avro 接收所支援的屬性。 您可以在 [ **設定** ] 索引標籤中編輯這些屬性。
 
-| 名稱 | 描述 | 必要 | 允許的值 | 資料流程腳本屬性 |
+| 名稱 | 說明 | 必要 | 允許的值 | 資料流程腳本屬性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | 清除資料夾 | 如果在寫入之前清除目的資料夾 | 否 | `true` 或 `false` | truncate |
 | [檔案名] 選項 | 寫入之資料的命名格式。 依預設，每個資料分割的一個檔案格式為 `part-#####-tid-<guid>` | 否 | 模式：字串 <br> 每個分割區：字串 [] <br> 做為資料行中的資料：字串 <br> 輸出至單一檔案： `['<fileName>']`  | filePattern <br> partitionFileNames <br> rowUrlColumn <br> partitionFileNames |

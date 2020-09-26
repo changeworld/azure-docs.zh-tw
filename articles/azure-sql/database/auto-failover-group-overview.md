@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 08/28/2020
-ms.openlocfilehash: 7b4a85077c8e0147f926f9a86fc8a003591ec8ac
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 469620456fecb7c0cb398988c4a4fc25da97f863
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91277728"
+ms.locfileid: "91357704"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>使用自動容錯移轉群組可以啟用多個資料庫透明且協調的容錯移轉
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -153,7 +153,7 @@ ms.locfileid: "91277728"
 
 您必須在主伺服器上設定自動容錯移轉群組，並將其連接到不同 Azure 區域中的次要伺服器。 群組可以包含這些伺服器中的所有或部分資料庫。 下圖說明使用多個資料庫和自動容錯移轉群組之異地備援雲端應用程式的一般設定。
 
-![自動容錯移轉](./media/auto-failover-group-overview/auto-failover-group.png)
+![此圖顯示使用多個資料庫和自動容錯移轉群組之異地重複雲端應用程式的一般設定。](./media/auto-failover-group-overview/auto-failover-group.png)
 
 > [!NOTE]
 > 請參閱 [將 SQL Database 新增至容錯移轉群組](failover-group-add-single-database-tutorial.md) ，以取得詳細的逐步教學課程，將 SQL Database 中的資料庫新增至容錯移轉群組。

@@ -3,24 +3,33 @@ title: '啟動和停止 Azure Kubernetes Service (AKS) '
 description: 瞭解如何停止或啟動 Azure Kubernetes Service (AKS) 叢集。
 services: container-service
 ms.topic: article
-ms.date: 09/18/2020
+ms.date: 09/24/2020
 author: palma21
-ms.openlocfilehash: 44c33aa018971cc2b2f5eb215597a63e8b55c853
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 460b592924a19449d77ce8d45f470f3e3129f4a6
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91278561"
+ms.locfileid: "91357942"
 ---
 # <a name="stop-and-start-an-azure-kubernetes-service-aks-cluster-preview"></a>停止並啟動 Azure Kubernetes Service (AKS) 叢集 (預覽) 
 
-您的 AKS 工作負載可能不需要持續執行，例如只在上班時間使用的開發叢集。 這會導致您的 Azure Kubernetes Service (AKS) 叢集可能閒置，執行的時間不超過系統元件。 您可以將所有節點集區[調整 `User` 為 0](scale-cluster.md#scale-user-node-pools-to-0)，以降低叢集的使用量，但在叢集執行時，仍需要您的[ `System` 集](use-system-pools.md)區來執行系統元件。 若要在這段期間內進一步將成本優化，您可以完全關閉 (停止) 叢集。 此動作會完全停止您的控制平面和代理程式節點，讓您可以儲存所有計算成本，同時維持您在重新開機時儲存的所有物件和叢集狀態。 如此一來，您就可以在週末之後挑選，或只在執行 batch 作業時才執行您的叢集。
+您的 AKS 工作負載可能不需要持續執行，例如只在上班時間使用的開發叢集。 這會導致您的 Azure Kubernetes Service (AKS) 叢集可能閒置，執行的時間不超過系統元件。 您可以將所有節點集區[調整 `User` 為 0](scale-cluster.md#scale-user-node-pools-to-0)，以降低叢集的使用量，但在叢集執行時，仍需要您的[ `System` 集](use-system-pools.md)區來執行系統元件。 若要在這段期間內進一步將成本優化，您可以完全關閉 (停止) 叢集。 此動作會完全停止您的控制平面和代理程式節點，讓您可以儲存所有計算成本，同時維持您在重新開機時儲存的所有物件和叢集狀態。 然後，您可以在週末之後挑選，或只有在執行 batch 作業時才執行您的叢集。
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
 ## <a name="before-you-begin"></a>開始之前
 
 此文章假設您目前具有 AKS 叢集。 如果您需要 AKS 叢集，請參閱[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 入口網站][aks-quickstart-portal]的 AKS 快速入門。
+
+
+### <a name="limitations"></a>限制
+
+使用叢集啟動/停止功能時，適用下列限制：
+
+- 只有虛擬機器擴展集支援的叢集才支援這項功能。
+- 已停止 AKS 叢集的叢集狀態最多會保留12個月。 如果您的叢集已停止超過12個月，則無法復原叢集狀態。 如需詳細資訊，請參閱 [AKS 支援原則](support-policies.md)。
+- 您只能啟動或刪除已停止的 AKS 叢集。 若要執行任何作業（例如調整規模或升級），請先啟動您的叢集。
 
 ### <a name="install-the-aks-preview-azure-cli"></a>安裝 `aks-preview` Azure CLI 
 
@@ -33,11 +42,6 @@ az extension add --name aks-preview
 # Update the extension to make sure you have the latest version installed
 az extension update --name aks-preview
 ``` 
-
-> [!WARNING]
-> 已停止 AKS 叢集的叢集狀態最多會保留12個月。 如果您的叢集已停止超過12個月，則無法復原叢集狀態。 如需詳細資訊，請參閱 [AKS 支援原則](support-policies.md)。
-> 您只能啟動或刪除已停止的 AKS 叢集。 若要執行任何作業（例如調整規模或升級），請先啟動您的叢集。
-
 
 ### <a name="register-the-startstoppreview-preview-feature"></a>註冊 `StartStopPreview` 預覽功能
 

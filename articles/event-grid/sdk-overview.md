@@ -3,12 +3,12 @@ title: Azure Event Grid SDK
 description: 說明 Azure Event Grid 的 SDK。 這些 SDK 提供管理、發佈和使用。
 ms.topic: reference
 ms.date: 07/07/2019
-ms.openlocfilehash: 2b21d8bf2c393b096e9046765e6cfadc76baffbf
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 5e93448ef703be88583cd59ae5eee9d1993c4054
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119101"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322524"
 ---
 # <a name="event-grid-sdks-for-management-and-publishing"></a>用來管理及發佈的 Event Grid SDK
 
@@ -29,12 +29,15 @@ Event Grid 提供可讓您以程式設計方式管理資源和張貼事件的 SD
 
 資料平面 SDK 可讓您將事件張貼到主題，方法是利用驗證、形成事件，並以非同步方式張貼到指定的端點。 此外也可讓您使用第一方事件。 目前有下列可用的 SDK：
 
-* [.NET](https://www.nuget.org/packages/Microsoft.Azure.EventGrid)
-* [Go](https://github.com/Azure/azure-sdk-for-go)
-* [Java](https://mvnrepository.com/artifact/com.microsoft.azure/azure-eventgrid)
-* [節點](https://www.npmjs.com/package/azure-eventgrid)
-* [Python](https://pypi.python.org/pypi/azure-eventgrid)
-* [Ruby](https://rubygems.org/gems/azure_event_grid)
+| 程式設計語言 | SDK | 
+| -------------------- | ---------- | ---------- | 
+| .NET | 穩定 SDK： [EventGrid](https://www.nuget.org/packages/Microsoft.Azure.EventGrid)<p>預覽 SDK： [Azure EventGrid](https://www.nuget.org/packages/Azure.Messaging.EventGrid/) |
+| Java | 穩定 SDK： [azure-eventgrid](https://mvnrepository.com/artifact/com.microsoft.azure/azure-eventgrid)<p>預覽 SDK： [azure-訊息-eventgrid](https://search.maven.org/artifact/com.azure/azure-messaging-eventgrid/)</p> |  
+| Python | [azure eventgrid](https://pypi.org/project/azure-eventgrid/#history) (在 [ **發行歷程記錄** ] 頁面上查看最新的穩定版本和發行前版本)  |
+| JavaScript | [@azure/eventgrid](https://www.npmjs.com/package/@azure/eventgrid/) (切換至 [ **版本** ] 索引標籤，以查看最新的穩定和搶鮮版（Beta）套件) 。 | 
+| Go | [Azure SDK for Go](https://github.com/Azure/azure-sdk-for-go) | | 
+| Ruby | [azure_event_grid](https://rubygems.org/gems/azure_event_grid) | | 
+
 
 ## <a name="next-steps"></a>後續步驟
 

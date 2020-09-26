@@ -1,14 +1,14 @@
 ---
 title: 將 Azure 事件中樞與 Azure Private Link 服務整合
 description: 了解如何將 Azure 事件中樞與 Azure Private Link 服務整合
-ms.date: 07/29/2020
+ms.date: 08/22/2020
 ms.topic: article
-ms.openlocfilehash: 817ec7b9256829ace61a0d1dad98f1f34683c95e
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 59167635cfc0d8c1123a47410c87d6b9151f6f62
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88716786"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334237"
 ---
 # <a name="allow-access-to-azure-event-hubs-namespaces-via-private-endpoints"></a>允許透過私人端點存取 Azure 事件中樞命名空間 
 Azure Private Link 服務可讓您透過虛擬網路中的**私人端點**存取各 Azure 服務 (例如 Azure 事件中樞、Azure 儲存體和 Azure Cosmos DB)，以及 Azure 裝載的客戶/合作夥伴服務。
@@ -24,10 +24,9 @@ Azure Private Link 服務可讓您透過虛擬網路中的**私人端點**存取
 > 
 > 以下是啟用私人端點時，無法存取事件中樞資源的一些服務。 請注意，清單並 **不** 完整。
 >
-> - Azure 串流分析
 > - Azure IoT 中樞路由
 > - Azure IoT Device Explorer
-> - Azure Event Grid
+> - Azure 事件方格
 > - Azure 監視器 (診斷設定) 
 >
 > 例外狀況是，即使啟用私人端點，您還是可以允許從某些受信任的服務存取事件中樞資源。 如需信任的服務清單，請參閱 [信任的服務](#trusted-microsoft-services)。

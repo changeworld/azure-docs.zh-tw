@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: e267a30d6f73b48f825c4b61b3bc1106133b8cdf
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: df0620308fab2e813fe3802dc7effb9dc1ce226c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934031"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91285378"
 ---
 # <a name="scale-out-your-azure-arc-enabled-postgresql-hyperscale-server-group-by-adding-more-worker-nodes"></a>藉由新增更多背景工作節點來向外擴充您的 Azure Arc 啟用的于 postgresql 超大規模伺服器群組
 本檔說明如何向外擴充 Azure Arc 啟用的于 postgresql 超大規模伺服器群組。 它會引導您完成案例。 **如果您不想要執行此案例，而且想要瞭解如何向外延展，請跳至段落 [scale out](#scale-out)**。
@@ -151,7 +151,11 @@ SELECT COUNT(*) FROM github_events;
 azdata arc postgres server edit -n <server group name> -w <target number of worker nodes>
 ```
 
-例如，執行下列命令，以將背景工作節點數目從2增加為4：
+> [!CAUTION]
+> 預覽版本不支援相應縮小。 例如，您尚無法減少背景工作節點的數目。 如果您需要這樣做，您需要解壓縮/備份資料、卸載伺服器群組、使用較少的背景工作節點建立新的伺服器群組，然後再匯入資料。
+
+在此範例中，我們會執行下列命令，以將背景工作節點數目從2增加為4：
+
 ```console
 azdata arc postgres server edit -n postgres01 -w 4
 ```
@@ -196,7 +200,8 @@ kubectl get postgresql-12
 NAME         STATE   READY-PODS   EXTERNAL-ENDPOINT   AGE
 postgres01   Ready   4/4          10.0.0.4:31066      4d20h
 ```
-> **注意：** 如果您建立了11于 postgresql 版的伺服器群組，而不是12，請改為執行下列命令： _kubectl get 于 postgresql-11_
+> [!NOTE]
+> 如果您建立了11于 postgresql 版的伺服器群組，而不是12，請改為執行下列命令： _kubectl get 于 postgresql-11_
 
 #### <a name="with-a-sql-query"></a>使用 SQL 查詢：
 使用您選擇的用戶端工具連接到您的伺服器群組，然後執行下列查詢：
@@ -230,9 +235,8 @@ SELECT COUNT(*) FROM github_events;
 >* [使用 Azure 于 postgresql 超大規模 (Citus) 的高效能 HTAP ](https://www.youtube.com/watch?v=W_3e07nGFxY)
 >* [使用 Python 建立 HTAP 應用程式 & Azure 于 postgresql 超大規模 (Citus) ](https://www.youtube.com/watch?v=YDT8_riLLs0)
 
-> 預覽版本不支援相應縮小。 例如，您尚無法減少背景工作節點的數目。 如果您需要這樣做，您需要解壓縮/備份資料、卸載伺服器群組、使用較少的背景工作節點建立新的伺服器群組，然後再匯入資料。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 瞭解如何 [擴大和縮小 (記憶體、虛擬核心) Azure Arc 啟用的于 postgresql 超大規模伺服器群組](scale-up-down-postgresql-hyperscale-server-group-using-cli.md)
 - 瞭解如何在已啟用 Azure Arc 的于 postgresql 超大規模伺服器群組中設定伺服器參數

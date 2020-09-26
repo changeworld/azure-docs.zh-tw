@@ -1,6 +1,6 @@
 ---
 title: 新增自助式註冊使用者流程 - Azure AD
-description: 與 Facebook 同盟，以允許外部使用者 (來賓) 使用自己的 Facebook 帳戶登入您的 Azure AD 應用程式。
+description: 為您的組織所建立的應用程式建立使用者流程。 然後，流覽該應用程式的使用者就可以使用在使用者流程中設定的選項，來得到來賓帳戶。
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e9fa9d9e23de9a4ec93cbef6d2696d7bec70d41d
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: ffb1d5eb756c7bc316a6d8e1de30a95eb1ac5194
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87908157"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91287044"
 ---
 # <a name="add-a-self-service-sign-up-user-flow-to-an-app-preview"></a>將自助式註冊使用者流程新增至應用程式 (預覽)
 > [!NOTE]
@@ -106,5 +106,5 @@ Azure AD 是自助式註冊的預設識別提供者。 這表示使用者依預�
 
 - [將 Google 新增至您的社交識別提供者清單](google-federation.md)
 - [將 Facebook 新增至您的社交識別提供者清單](facebook-federation.md)
-- [使用 API 連接器，透過 web Api 自訂和擴充您的使用者流程](api-connectors-overview.md)
+- [使用 API 連接器透過 web Api 自訂和擴充您的使用者流程](api-connectors-overview.md)
 - [將自訂核准工作流程新增至您的使用者流程](self-service-sign-up-add-approvals.md)

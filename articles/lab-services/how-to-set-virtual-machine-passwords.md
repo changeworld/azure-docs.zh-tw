@@ -3,12 +3,12 @@ title: 在 Azure 實驗室服務中設定 VM 的密碼 | Microsoft Docs
 description: 了解如何在 Azure 實驗室服務的教室實驗室中設定和重設虛擬機器 (VM) 的密碼。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 6012123b729bd1be6b4ff0fdb00d71aca56cfa09
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 49615b37875b8340f46ed900a1e7144256c7cb7d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85443769"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334067"
 ---
 # <a name="set-up-and-manage-virtual-machine-pool"></a>設定和管理虛擬機器集區 
 本文示範如何執行下列工作：
@@ -24,7 +24,7 @@ ms.locfileid: "85443769"
 2. 輸入您要在實驗室中擁有的新**VM 數目**。 此數目必須大於或等於實驗室中所註冊的使用者數目。 
 3. 然後選取 [儲存]。 
 
-    ![[全部啟動] 按鈕](./media/how-to-set-virtual-machine-passwords/number-of-vms-in-lab.png)
+    ![顯示 [實驗室容量] 視窗的螢幕擷取畫面，其中已選取 [實驗室中的最大電腦] 和 [儲存] 按鈕。](./media/how-to-set-virtual-machine-passwords/number-of-vms-in-lab.png)
 4. 如果您增加了容量，便可以看到一或多個 VM 正在建立中。 如果您未在清單中看到新的 VM，請重新整理頁面。 
 
     ![正在建立 VM](./media/how-to-set-virtual-machine-passwords/vm-being-created.png)

@@ -6,15 +6,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 08/03/2020
+ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: f8127b485d8fea5aedccd472e209a448e3076b5b
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 6115ca375c3e5bf2be3335fe2231628ec7bf309f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89400070"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91267732"
 ---
 # <a name="scenario-any-to-any"></a>案例：任何對任意
 
@@ -24,7 +24,7 @@ ms.locfileid: "89400070"
 
 為了瞭解虛擬 WAN 案例中需要多少個路由表，您可以建立一個連接矩陣，其中每個資料格都代表來源 (資料列) 是否可以與目的地 (資料行) 進行通訊。 此案例中的連線矩陣很簡單，但我們已將其加入，以便與其他案例保持一致。
 
-| 寄件者 |   收件者 |  *Vnet* | *分支* |
+| 從 |   收件者 |  *Vnet* | *分支* |
 | -------------- | -------- | ---------- | ---|
 | VNets     | &#8594;|      X     |     X    |
 | 分支   | &#8594;|    X     |     X    |

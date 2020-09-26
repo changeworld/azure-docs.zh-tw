@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 10/02/2019
 ms.author: Zhchia
-ms.openlocfilehash: ab2fd7f78373f9fee349e59c374088f67f165339
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 123f35154c3b87ff1ed479084f5e9dfa35043b9a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554191"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91287197"
 ---
 # <a name="tutorial-configure-officespace-software-for-automatic-user-provisioning"></a>教學課程：設定 Officespace software 軟體以自動布建使用者
 
@@ -103,13 +103,13 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
 3. 選取 [佈建] 索引標籤。
 
-    ![佈建索引標籤](common/provisioning.png)
+    ![已呼叫 [布建] 選項的 [管理選項] 螢幕擷取畫面。](common/provisioning.png)
 
 4. 將 [佈建模式] 設定為 [自動]。
 
-    ![佈建索引標籤](common/provisioning-automatic.png)
+    ![[布建模式] 下拉式清單的螢幕擷取畫面，其中已呼叫 [自動] 選項。](common/provisioning-automatic.png)
 
-5. 在 [系統 **管理員認證** ] 區段下的 [ `https://<subdomain>.officespacesoftware.com/api/scim/v2/` 租使用者 **url**] 中輸入 url 格式。 例如 `https://contoso.officespacesoftware.com/api/scim/v2/`。 輸入稍早在**秘密權杖**中取出的**SCIM Authentication 權杖**值。 按一下 [ **測試連接** ] 以確保 Azure AD 可以連線至 officespace software Software。 如果連接失敗，請確定您的 Officespace software Software 帳戶具有系統管理員許可權，然後再試一次。
+5. 在 [系統 **管理員認證** ] 區段下的 [ `https://<subdomain>.officespacesoftware.com/api/scim/v2/` 租使用者 **url**] 中輸入 url 格式。 例如 `https://contoso.officespacesoftware.com/api/scim/v2/` 。 輸入稍早在**秘密權杖**中取出的**SCIM Authentication 權杖**值。 按一下 [ **測試連接** ] 以確保 Azure AD 可以連線至 officespace software Software。 如果連接失敗，請確定您的 Officespace software Software 帳戶具有系統管理員許可權，然後再試一次。
 
     ![租用戶 URL + 權杖](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -117,7 +117,7 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
     ![通知電子郵件](common/provisioning-notification-email.png)
 
-7. 按一下 [檔案] 。
+7. 按一下 [檔案]  。
 
 8. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 使用者以 officespace software 軟體**]。
 

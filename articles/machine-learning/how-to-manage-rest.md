@@ -10,18 +10,18 @@ ms.subservice: core
 ms.date: 01/31/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 39000a34d1d19026ce406eeb996f89d1acc7ea04
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: b733fbc44deefe46e3496e288ebad525346ef005
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90897356"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322303"
 ---
 # <a name="create-run-and-delete-azure-ml-resources-using-rest"></a>使用 REST 建立、執行及刪除 Azure ML 資源
 
 
 
-有數種方式可管理您的 Azure ML 資源。 您可以使用 [入口網站](https://portal.azure.com/)、 [命令列介面](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)或 [Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)。 或者，您可以選擇 REST API。 REST API 會以標準方式使用 HTTP 動詞命令來建立、取出、更新和刪除資源。 REST API 適用于任何可發出 HTTP 要求的語言或工具。 REST 的簡單結構通常會讓它成為腳本環境及 MLOps 自動化的理想選擇。 
+有數種方式可管理您的 Azure ML 資源。 您可以使用 [入口網站](https://portal.azure.com/)、 [命令列介面](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest&preserve-view=true)或 [Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)。 或者，您可以選擇 REST API。 REST API 會以標準方式使用 HTTP 動詞命令來建立、取出、更新和刪除資源。 REST API 適用于任何可發出 HTTP 要求的語言或工具。 REST 的簡單結構通常會讓它成為腳本環境及 MLOps 自動化的理想選擇。 
 
 在本文中，您將學會如何：
 
@@ -33,7 +33,7 @@ ms.locfileid: "90897356"
 > * 使用刪除要求來清除資源 
 > * 使用以金鑰為基礎的授權來評分已部署的模型
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 您擁有系統管理許可權的 **Azure 訂** 用帳戶。 如果您沒有這類訂用帳戶，請試用[免費或付費的個人訂](https://aka.ms/AMLFree)用帳戶
 - [Azure Machine Learning 工作區](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace)

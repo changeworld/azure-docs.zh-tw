@@ -10,12 +10,12 @@ ms.tgt_pltfrm: arduino
 ms.date: 03/07/2018
 ms.author: liydu
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f0aa71b34818cf373d1bb58531ee5c68c8d3d5ec
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 187e44a40228adb62a1d97f4e0df8a7ad3a7e2d3
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89004307"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91356062"
 ---
 # <a name="shake-shake-for-a-tweet----retrieve-a-twitter-message-with-azure-functions"></a>搖一搖以獲取推文 -- 使用 Azure Functions 擷取 Twitter 訊息
 
@@ -61,7 +61,7 @@ ms.locfileid: "89004307"
 
 VS Code 終端機中會有互動式命令列來引導您佈建所需的 Azure 服務：
 
-![cloud-provision](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/cloud-provision.png)
+![螢幕擷取畫面顯示 Visual Studio Code 終端互動命令列。](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/cloud-provision.png)
 
 > [!NOTE]
 > 如果頁面在嘗試登入 Azure 時停滯於載入中狀態，請參閱 [IoT DevKit 常見問題集中的「登入頁面停止回應」步驟](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#page-hangs-when-log-in-azure)。
@@ -80,7 +80,7 @@ static const char* iot_event = "{\"topic\":\"iot\"}";
 
 使用 `Ctrl+P` (macOS：`Cmd+P`) 來執行 `task cloud-deploy`，以便開始部署 Azure Functions 程式碼：
 
-![cloud-deploy](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/cloud-deploy.png)
+![螢幕擷取畫面顯示 Visual Studio Code，您可以在其中執行工作雲端部署以部署 Azure Functions 程式碼。](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/cloud-deploy.png)
 
 > [!NOTE]
 > 有時候，Azure Functions 可能無法正常運作。 若要在此問題發生時加以解決，請查看[ IoT DevKit 常見問題集的「編譯錯誤」一節](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#compilation-error-for-azure-function)。
@@ -115,7 +115,7 @@ static const char* iot_event = "{\"topic\":\"iot\"}";
 
 1. VS Code 會開始驗證 Arduino 草稿碼，並將其上傳至您的 DevKit：
 
-   ![device-upload](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/device-upload.png)
+   ![螢幕擷取畫面顯示 Visual Studio Code 驗證和上傳 Arduino 草圖。](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/device-upload.png)
 
 2. DevKit 會重新開機並開始執行程式碼。
 
@@ -154,7 +154,7 @@ static const char* iot_event = "{\"topic\":\"iot\"}";
 
 ## <a name="how-it-works"></a>運作方式
 
-![圖表](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/diagram.png)
+![圖表顯示將事件傳送至 Azure I o T 中樞的行動裝置，此裝置會觸發 Azure 函式應用程式來要求推文，然後將其傳回給應用程式，並轉送至中樞和行動裝置。](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/diagram.png)
 
 Arduino 草圖會將事件傳送至 Azure IoT 中樞。 此事件會觸發 Azure Functions 應用程式。 Azure Functions 應用程式所包含的邏輯可用來連線至 Twitter 的 API 並擷取推文。 接著，它會將推文的文字包裝成 C2D (雲端到裝置) 訊息，並將該訊息傳回給裝置。
 
@@ -170,7 +170,7 @@ Arduino 草圖會將事件傳送至 Azure IoT 中樞。 此事件會觸發 Azure
 
 4. 在 [Azure 入口網站](https://portal.azure.com/){:target="_blank"} 中，進入 [資源群組]**** 並找出您 "Shake, Shake" 專案的 Azure Functions (類型：App Service)。 此名稱一律會包含 'shake...' 字串。
 
-   ![azure-function](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/azure-function.png)
+   ![Azure 入口網站的螢幕擷取畫面顯示專案的 app service。](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/azure-function.png)
 
 5. 使用您自己的權杖在 [Functions > shakeshake-cs]**** 內更新 `run.csx` 的程式碼：
 
@@ -178,7 +178,7 @@ Arduino 草圖會將事件傳送至 Azure IoT 中樞。 此事件會觸發 Azure
    string authHeader = "Bearer " + "[your own token]";
    ```
   
-   ![twitter-token](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/twitter-token.png)
+   ![螢幕擷取畫面會顯示函式的 c # 程式碼，您可以在此輸入權杖。](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/twitter-token.png)
 
 6. 儲存檔案，然後按一下 [執行]****。
 
@@ -196,7 +196,7 @@ Arduino 草圖會將事件傳送至 Azure IoT 中樞。 此事件會觸發 Azure
 
 2. 在 [Azure 入口網站](https://portal.azure.com/)中，尋找您所建立的 Azure Functions 應用程式，然後將它重新啟動：
 
-   ![azure-function-restart](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/azure-function-restart.png)
+   ![螢幕擷取畫面顯示 Azure Functions 應用程式和 [重新開機] 按鈕的 Azure 入口網站。](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/azure-function-restart.png)
 
 如果發生其他問題，請參閱 [IoT DevKit 常見問題集](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/)，或使用下列管道與我們連絡：
 

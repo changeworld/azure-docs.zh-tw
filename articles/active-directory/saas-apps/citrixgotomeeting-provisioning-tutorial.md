@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 23af7ff9e4740b88d3d1f8cffb3d79a46c8d0d61
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 6cb2c90658a69f3e63e9ebe08db41eea0a9bc7fa
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544446"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91299692"
 ---
 # <a name="tutorial-configure-gotomeeting-for-automatic-user-provisioning"></a>教學課程︰設定 GoToMeeting 來自動佈建使用者
 
@@ -60,7 +60,7 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 1. **將布建模式設定**為 [**自動**]。 
 
-    ![佈建](./media/citrixgotomeeting-provisioning-tutorial/provisioning.png)
+    ![Azure 入口網站中 GoToMeeting [布建] 索引標籤的螢幕擷取畫面。 布建模式設定為 [自動] 和 [管理員使用者名稱]、[密碼] 和 [測試連接]。](./media/citrixgotomeeting-provisioning-tutorial/provisioning.png)
 
 1. 在 [管理員認證] 區段底下，執行下列步驟：
    

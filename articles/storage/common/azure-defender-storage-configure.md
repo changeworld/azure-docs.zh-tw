@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: tamram
 ms.reviewer: ozgun
-ms.openlocfilehash: d2ad302042b277cf29b3a7b22af88b662686b3fd
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: c7e0c9aee1ce6b4a2524ac756673784b63be3b31
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90994393"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289764"
 ---
 # <a name="configure-azure-defender-for-storage"></a>設定適用于儲存體的 Azure Defender
 
@@ -23,11 +23,11 @@ ms.locfileid: "90994393"
 
 出現異常活動時，就會觸發安全性警示。 這些安全性警示會與 [Azure 資訊安全中心](https://azure.microsoft.com/services/security-center/)整合，也會透過電子郵件傳送給訂用帳戶系統管理員，並提供可疑活動的詳細資料，以及如何調查和修復威脅的建議。
 
-服務會內嵌對 Blob 儲存體的讀取、寫入和刪除要求的資源記錄，以及 Azure 檔案儲存體 (預覽) 以進行威脅偵測。 若要調查 Azure Defender 的警示，您可以使用儲存體分析記錄來查看相關的儲存體活動。 如需詳細資訊，請參閱 Azure 入口網站中的**設定記錄**[監視儲存體帳戶](storage-monitor-storage-account.md#configure-logging)。
+服務會內嵌對 Blob 儲存體的讀取、寫入和刪除要求的資源記錄，以及針對威脅偵測 Azure 檔案儲存體的資源記錄。 若要調查 Azure Defender 的警示，您可以使用儲存體分析記錄來查看相關的儲存體活動。 如需詳細資訊，請參閱 Azure 入口網站中的**設定記錄**[監視儲存體帳戶](storage-monitor-storage-account.md#configure-logging)。
 
 ## <a name="availability"></a>可用性
 
-適用于儲存體的 Azure Defender 目前適用于 Blob 儲存體、Azure 檔案儲存體 (preview) ，以及 Azure Data Lake Storage Gen2 (preview) 。 支援 Azure Defender 的帳戶類型包括一般用途 v2、區塊 blob 和 Blob 儲存體帳戶。 適用于儲存體的 Azure Defender 適用于所有公用雲端和美國政府雲端，但不適用於其他主權或 Azure Government 雲端區域。
+適用于儲存體的 Azure Defender 目前適用于 Blob 儲存體、Azure 檔案儲存體和 Azure Data Lake Storage Gen2。 支援 Azure Defender 的帳戶類型包括一般用途 v2、區塊 blob 和 Blob 儲存體帳戶。 適用于儲存體的 Azure Defender 適用于所有公用雲端和美國政府雲端，但不適用於其他主權或 Azure Government 雲端區域。
 
 啟用階層命名空間的帳戶，Data Lake Storage 使用 Azure Blob 儲存體 Api 和 Data Lake Storage Api 來支援交易。 Azure 檔案共用支援透過 SMB 的交易。
 
@@ -37,8 +37,8 @@ ms.locfileid: "90994393"
 
 - 釋放狀態：
   - [Blob 儲存體](https://azure.microsoft.com/services/storage/blobs/) (公開上市) 
-  - [Azure 檔案儲存體](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) (PREVIEW 支援 SMB 和 REST 交易) 
-  - Azure Data Lake Storage Gen2 (預覽)
+  - [Azure 檔案儲存體](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) (正式推出) 
+  - Azure Data Lake Storage Gen2 (正式推出) 
 - 雲端：<br>
     ✔ 商用雲端<br>
     ✔ US Gov<br>
@@ -57,7 +57,7 @@ ms.locfileid: "90994393"
 1. 選取您要啟用或停用 Azure Defender 的訂用帳戶。
 1. 選取 [ **Azure defender 開啟** ] 以啟用訂用帳戶的 azure defender。
 1. 在 [**依資源類型選取 Azure Defender 方案**] 底下，找出 [**儲存體**] 資料列，然後在 [**方案**] 資料行中選取 [**啟用**]
-1. 儲存您的變更。
+1. 儲存變更。
 
     :::image type="content" source="media/azure-defender-storage-configure/enable-azure-defender-security-center.png" alt-text="顯示如何在安全中心啟用 Azure Defender 儲存的螢幕擷取畫面":::
 
@@ -135,7 +135,7 @@ ms.locfileid: "90994393"
 
 警示是因為以不尋常且有危害意圖的方式嘗試存取或惡意探索儲存體帳戶而產生的。 如需 Azure 儲存體的警示清單，請參閱 [Azure 儲存體的警示](../../security-center/alerts-reference.md#alerts-azurestorage)。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 深入瞭解 [Azure 儲存體帳戶中的記錄](/rest/api/storageservices/About-Storage-Analytics-Logging)
 - 深入了解 [Azure 資訊安全中心](../../security-center/security-center-intro.md)

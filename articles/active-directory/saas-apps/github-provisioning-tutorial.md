@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 03/27/2019
 ms.author: arvinh
-ms.openlocfilehash: 7408d7609cbceb4ac39298680b6d3854a2d71306
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: b88408480bb0822a061e97336eee5c6b3ccfc8e0
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589209"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358316"
 ---
 # <a name="tutorial-configure-github-for-automatic-user-provisioning"></a>教學課程︰設定 GitHub 來自動佈建使用者
 
@@ -71,15 +71,15 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 6. 在新視窗中，使用您的管理帳戶登入 GitHub。 在產生的授權對話方塊中，選取您想要啟用佈建的 GitHub 小組，然後選取 [授權]****。 一旦完成後，回到 Azure 入口網站以完成佈建組態。
 
-    ![授權對話方塊](./media/github-provisioning-tutorial/GitHub2.png)
+    ![螢幕擷取畫面顯示 GitHub 的登入頁面。](./media/github-provisioning-tutorial/GitHub2.png)
 
 7. 在 Azure 入口網站中，輸入 [租用戶 URL]****，然後按一下 [測試連線]****，以確保 Azure AD 可以連線至您的 GitHub 應用程式。 如果連線失敗，請確定您的 GitHub 帳戶具有系統管理員權限，並且已正確輸入**租用戶 URl**，然後再試一次「授權」步驟 (您可以依照下列規則來組成**租用戶 URL**：`https://api.github.com/scim/v2/organizations/<Organization_name>`，您可以在 GitHub 帳戶下找到您的組織：[Settings]**** \(設定\) > [Organizations]**** \(組織\))。
 
-    ![授權對話方塊](./media/github-provisioning-tutorial/GitHub3.png)
+    ![螢幕擷取畫面顯示 GitHub 中的組織頁面。](./media/github-provisioning-tutorial/GitHub3.png)
 
 8. 在 [通知電子郵件]**** 欄位中，輸入應收到佈建錯誤通知的個人或群組之電子郵件地址，然後勾選 [發生失敗時傳送電子郵件通知] 核取方塊。
 
-9. 按一下 [檔案] 。
+9. 按一下 [檔案]  。
 
 10. 在 [對應] 區段下，選取 [同步處理 Azure Active Directory 使用者至 GitHub]****。
 
@@ -87,7 +87,7 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 12. 若要對 GitHub 啟用 Azure AD 佈建服務，請在 [設定]**** 區段中，將 [佈建狀態]**** 變更為 [開啟]****
 
-13. 按一下 [檔案] 。
+13. 按一下 [檔案]  。
 
 此作業會對 [使用者和群組] 區段中指派給 GitHub 的任何使用者和/或群組，啟動首次同步處理。 初始同步處理會比後續同步處理花費更多時間執行，只要服務正在執行，這大約每 40 分鐘便會發生一次。 您可以使用 [同步處理詳細資料]**** 區段來監視進度，並依循連結前往佈建活動記錄，此記錄會描述佈建服務所執行的所有動作。
 

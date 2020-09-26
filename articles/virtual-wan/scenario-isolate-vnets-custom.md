@@ -6,14 +6,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 08/03/2020
+ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: 0a3665f1719c7a5f8ed9bd6acf518b642e06320d
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 12bc99d24472780f87a6b2a83befdbbf12944860
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89400053"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91267715"
 ---
 # <a name="scenario-custom-isolation-for-vnets"></a>案例： Vnet 的自訂隔離
 
@@ -23,7 +23,7 @@ ms.locfileid: "89400053"
 
 為了找出需要多少個路由表，您可以建立連接矩陣。 在此案例中，它看起來會如下所示，其中每個資料格都代表來源 (資料列) 是否可以與目的地 (資料行) ：
 
-| 寄件者 | 變更為：| *藍色 Vnet* | *Red Vnet* | *分支*|
+| 從 | 變更為：| *藍色 Vnet* | *Red Vnet* | *分支*|
 |---|---|---|---|---|
 | **藍色 Vnet** |   &#8594;|      X        |               |       X      |
 | **Red Vnet**  |   &#8594;|              |       X       |       X      |

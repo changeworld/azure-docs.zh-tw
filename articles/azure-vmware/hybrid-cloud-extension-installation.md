@@ -3,12 +3,12 @@ title: 安裝 VMware HCX
 description: 為您的 Azure VMware 解決方案私人雲端設定 VMware HCX 解決方案
 ms.topic: how-to
 ms.date: 09/24/2020
-ms.openlocfilehash: 76a7432b78ec2141039dcdc5dd1d7572335b18e1
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a101712f2d80e0d8e70d37bd5b7b08931f62ba3d
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91263195"
+ms.locfileid: "91356548"
 ---
 # <a name="install-hcx-for-azure-vmware-solution"></a>安裝適用於 Azure VMware 解決方案的 HCX
 
@@ -40,7 +40,7 @@ HCX Advanced （預設安裝）最多支援三個網站連線 (內部部署或�
 
 當您準備使用 Azure VMware 解決方案私用雲端 HCX 解決方案時，調整工作負載與計算和儲存體資源的大小是個基本的規劃步驟。 在初始私用雲端環境規劃中解決調整大小步驟。 
 
-您也可以在 Azure Migrate 入口網站中完成 [Azure VMware 解決方案評估](https://docs.microsoft.com/azure/migrate/how-to-create-azure-vmware-solution-assessment) ，以調整工作負載的大小。
+您也可以在 Azure Migrate 入口網站中完成 [Azure VMware 解決方案評估](../migrate/how-to-create-azure-vmware-solution-assessment.md) ，以調整工作負載的大小。
 
 ## <a name="software-version-requirements"></a>軟體版本需求
 

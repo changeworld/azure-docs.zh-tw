@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/05/2020
 ms.author: memildin
-ms.openlocfilehash: b12b5199beba8550f7d74d55fce54af326bc5976
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: db45449b3af45491367ebb901b660d7ef7cd4552
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905558"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289814"
 ---
 # <a name="security-recommendations---a-reference-guide"></a>安全性建議 - 參考指南
 
@@ -34,7 +34,7 @@ ms.locfileid: "90905558"
 
 ## <a name="network-recommendations"></a><a name="recs-network"></a>網路建議
 
-|建議|描述與相關原則|Severity|是否啟用快速修正？([深入了解](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations#recommendations-with-quick-fix-remediation))|資源類型|
+|建議|描述與相關原則|Severity|是否啟用快速修正？([深入了解](security-center-remediate-recommendations.md#quick-fix-remediation))|資源類型|
 |----|----|----|----|----|
 |**應在網際網路對應虛擬機器中套用自適性網路強化建議**|Azure 資訊安全中心已分析下表所列之虛擬機器的網際網路流量通訊模式，並判斷與它們相關聯之 Nsg 中的現有規則過於寬鬆，因而造成潛在的攻擊面增加。<br>當此 IP 位址未定期與此資源通訊時，就會發生這種情況。 或者，也有可能是資訊安全中心的威脅情報來源已將 IP 位址標示為惡意。<br>(相關原則：應在網際網路對應的虛擬機器上套用自適性網路強化建議)|高|N|虛擬機器|
 |**在與您 VM 建立關聯的 NSG 上應限制所有網路連接埠**|藉由限制現有允許規則的存取，強化網際網路對應 VM 的網路安全性群組。<br>當任何連接埠對所有來源開放時 (除了連接埠 22、3389、5985、5986、80 和 1443 以外)，會觸發此建議。<br>(相關原則：應限制透過網際網路對應端點進行存取)|高|N|虛擬機器|
@@ -53,7 +53,7 @@ ms.locfileid: "90905558"
 
 ## <a name="container-recommendations"></a><a name="recs-containers"></a>容器建議
 
-|建議|描述與相關原則|Severity|是否啟用快速修正？([深入了解](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations#recommendations-with-quick-fix-remediation))|資源類型|
+|建議|描述與相關原則|Severity|是否啟用快速修正？([深入了解](security-center-remediate-recommendations.md#quick-fix-remediation))|資源類型|
 |----|----|----|----|----|
 |**應在 Azure Container Registry 登錄上啟用進階威脅防護**|若要建立安全的容器化工作負載，請確保其所依據的映射不會有已知的弱點。 資訊安全中心會掃描您的登錄是否有每個推送容器映射的安全性弱點，並公開每個映射的詳細結果。<br>重要：補救這項建議將會產生保護您 ACR 登錄的費用。 如果您在此訂用帳戶中沒有任何 ACR 登錄，將不會產生任何費用。 如果您未來在此訂用帳戶上建立任何 ACR 登錄，系統會自動將其受保護，並會在該時間開始收費。<br> (相關原則： [Azure Container Registry 登錄上應啟用「Advanced 威脅防護](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fc25d9a16-bc35-4e15-a7e5-9db606bf9ed4) 」) |高|**Y**|訂用帳戶|
 |**應在 Azure Kubernetes Service 叢集上啟用進階威脅防護**|資訊安全中心可為您的容器化環境提供即時威脅防護，並產生可疑活動的警示。 您可以使用這項資訊來快速修復安全性問題，並改善您容器的安全性。<br>重要：修復這項建議將會產生保護 AKS 叢集的費用。 如果您在此訂用帳戶中沒有任何 AKS 叢集，則不會產生任何費用。 如果您日後在此訂用帳戶上建立任何 AKS 叢集，這些叢集將會自動受到保護，並會在該時間開始收費。<br> (相關原則： [應在 Azure Kubernetes Service 叢集上啟用「Advanced 威脅防護](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f523b5cd1-3e23-492f-a539-13118b6d1e3a) 」) |高|**Y**|訂用帳戶|
@@ -62,7 +62,7 @@ ms.locfileid: "90905558"
 |**應 (預覽版來強制執行容器 CPU 和記憶體限制) **|強制 CPU 和記憶體限制可防止資源耗盡攻擊， (一種拒絕服務攻擊) 的形式。<br>建議您設定容器的限制，以確保執行時間能防止容器使用超過設定的資源限制。<br> (相關原則： [預覽]：確定容器的 CPU 和記憶體資源限制未超過 Kubernetes 叢集中指定的限制) |中|N|Kubernetes Service|
 |**容器映射只能從受信任的登錄部署 (預覽版) **|在 Kubernetes 叢集上執行的映射應該來自已知和受監視的容器映射登錄。<br>受信任的登錄會藉由限制引入未知弱點、安全性問題和惡意映射的可能性，減少您的叢集暴露風險。<br> (相關原則： [預覽]：確定 Kubernetes 叢集中只有允許的容器映射) |高|N|Kubernetes Service|
 |**應避免 (預覽版的容器具有許可權擴大) **|在您的 Kubernetes 叢集中，容器不應以許可權提升至根目錄來執行。<br>AllowPrivilegeEscalation 屬性可控制進程是否可以取得比父進程更多的許可權。 <br> (相關原則： [預覽]： Kubernetes 叢集不應允許容器許可權擴大) |中|N|Kubernetes Service|
-|**共用機密主機命名空間的容器應避免 (預覽) **|若要防止在容器外部的許可權擴大，請避免 pod 存取敏感性主機命名空間 (主機處理序識別碼，以及 Kubernetes 叢集中的主機 IPC) 。 <br> (相關原則： [預覽]： Kubernetes 叢集容器不應共用主機處理序識別碼或主機 IPC 命名空間) |中| No|Kubernetes 叢集|
+|**共用機密主機命名空間的容器應避免 (預覽) **|若要防止在容器外部的許可權擴大，請避免 pod 存取敏感性主機命名空間 (主機處理序識別碼，以及 Kubernetes 叢集中的主機 IPC) 。 <br> (相關原則： [預覽]： Kubernetes 叢集容器不應共用主機處理序識別碼或主機 IPC 命名空間) |中型| 否|Kubernetes 叢集|
 |**容器應該只在允許的埠上接聽 (預覽) **|若要減少 Kubernetes 叢集的受攻擊面，請限制容器存取設定的埠，以限制對叢集的存取。 <br> (相關原則： [預覽]：確定容器只在 Kubernetes 叢集中允許的埠上接聽) |中|N|Kubernetes Service|
 |**不可變的 (唯讀) 根目錄檔案系統應針對容器強制執行 (預覽) **|容器應使用 Kubernetes 叢集中的唯讀根檔案系統來執行。<br>不可變的檔案系統會在執行時間保護容器的變更，並將惡意二進位檔新增至路徑。<br> (相關原則： [預覽]： Kubernetes 叢集容器應以唯讀根檔案系統執行) |中|N|Kubernetes Service|
 |** (預覽的容器應強制執行最低許可權 Linux 功能) **|若要減少容器的受攻擊面，請限制 Linux 功能，並將特定許可權授與容器，而不授與根使用者的擁有權限。<br>建議您卸載所有的功能，然後新增所需的功能。<br> (相關原則： [預覽]： Kubernetes 叢集容器應僅使用允許的功能) |中|N|Kubernetes Service|
@@ -80,7 +80,7 @@ ms.locfileid: "90905558"
 
 ## <a name="app-service-recommendations"></a><a name="recs-appservice"></a>App Service 建議
 
-| 建議                                                              | 描述與相關原則                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | Severity | 是否啟用快速修正？([深入了解](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations#recommendations-with-quick-fix-remediation)) | 資源類型 |
+| 建議                                                              | 描述與相關原則                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | Severity | 是否啟用快速修正？([深入了解](security-center-remediate-recommendations.md#quick-fix-remediation)) | 資源類型 |
 |-----------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|
 | **應在 Azure App Service 方案上啟用進階威脅防護** | 「安全性中心」會利用雲端的規模，以及 Azure 作為雲端提供者的可見度，來監視常見的 web 應用程式攻擊。<br>重要：修復這項建議將會產生保護您 App Service 方案的費用。 如果您在此訂用帳戶中沒有任何 App Service 方案，則不會產生任何費用。 如果您在未來建立此訂用帳戶的任何 App Service 方案，這些方案將會自動受到保護，並會在該時間開始收費。<br> (相關原則： [Azure App Service 方案上應啟用「Advanced 威脅防護](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f2913021d-f2fd-4f3d-b958-22354e2bdbcb) 」)  | 高     | **Y**                                                                                                                                                                   | 訂用帳戶  |
 | **Web 應用程式應只可經由 HTTPS 存取**                    | 啟用 Web 應用程式的「僅限 HTTPS」存取。 使用 HTTPS 可確保伺服器/服務驗證，並保護傳輸中的資料不受網路層的竊聽攻擊。<br>(相關原則：Web 應用程式應只可經由 HTTPS 存取)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | 中   | **Y**                                                                                                                                                                   | App Service   |
@@ -98,7 +98,7 @@ ms.locfileid: "90905558"
 
 ## <a name="compute-and-app-recommendations"></a><a name="recs-computeapp"></a>計算和應用程式建議
 
-| 建議                                                                                            | 描述與相關原則                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | Severity | 是否啟用快速修正？([深入了解](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations#recommendations-with-quick-fix-remediation)) | 資源類型                          |
+| 建議                                                                                            | 描述與相關原則                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | Severity | 是否啟用快速修正？([深入了解](security-center-remediate-recommendations.md#quick-fix-remediation)) | 資源類型                          |
 |-----------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------|
 | **應在虛擬機器上啟用 Advanced 威脅防護**                                      | 資訊安全中心會為您的虛擬機器工作負載提供即時威脅防護，並產生強化建議以及有關可疑活動的警示。<br>您可以使用這項資訊來快速修復安全性問題，並提升虛擬機器的安全性。<br>重要：修復這項建議將會產生保護虛擬機器的費用。 如果您在此訂用帳戶中沒有任何虛擬機器，將不會產生任何費用。 如果您日後在此訂用帳戶上建立任何虛擬機器，系統會自動保護這些虛擬機器，並會在該時間開始收費。<br> (相關原則： [應該在虛擬機器上啟用 Advanced 威脅防護](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f4da35fc9-c9e7-4960-aec9-797fe7d9051d))                                                                                                          | 高     | **Y**                                                                                                                                                                   | 訂用帳戶                           |
 | **應啟用 Azure 串流分析中的診斷記錄**                                           | 啟用記錄並保留最多一年。 這可讓您在發生安全性事件或網路遭到損害時，重新建立活動線索供調查之用。<br>(相關原則：應啟用 Azure 串流分析中的診斷記錄)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | 低      | **Y**                                                                                                                                                                   | 計算資源 (串流分析)   |
@@ -141,7 +141,7 @@ ms.locfileid: "90905558"
 
 ## <a name="virtual-machine-scale-set-recommendations"></a><a name="recs-vmscalesets"></a>虛擬機器擴展集建議
 
-|建議|描述與相關原則|Severity|是否啟用快速修正？([深入了解](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations#recommendations-with-quick-fix-remediation))|資源類型|
+|建議|描述與相關原則|Severity|是否啟用快速修正？([深入了解](security-center-remediate-recommendations.md#quick-fix-remediation))|資源類型|
 |----|----|----|----|----|
 |**應在虛擬機器擴展集中啟用診斷記錄**|啟用記錄並保留記錄最長一年。 這可讓您重新建立活動線索來進行調查。 當發生安全性事件或您的網路遭到入侵時，這非常有用。<br>(相關原則：應在虛擬機器擴展集中啟用診斷記錄)|低|N|虛擬機器擴展集|
 |**應補救虛擬機器擴展集上失敗的端點保護健康情況**|修復虛擬機器擴展集的端點保護健康狀態失敗，避免其遭受威脅與弱點的傷害。<br>(無相關原則 - 取決於「應在虛擬機器擴展集上安裝端點保護解決方案」)|低|N|虛擬機器擴展集|
@@ -154,7 +154,7 @@ ms.locfileid: "90905558"
 
 ## <a name="data-and-storage-recommendations"></a><a name="recs-datastorage"></a>資料和儲存體建議
 
-|建議|描述與相關原則|Severity|是否啟用快速修正？([深入了解](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations#recommendations-with-quick-fix-remediation))|資源類型|
+|建議|描述與相關原則|Severity|是否啟用快速修正？([深入了解](security-center-remediate-recommendations.md#quick-fix-remediation))|資源類型|
 |----|----|----|----|----|
 |**Azure SQL Database 伺服器應啟用進階資料安全性**|Advanced data security 是統一的封裝，可提供先進的 SQL 安全性功能。 它包含用來呈現和緩和潛在資料庫弱點的功能、偵測可能表示對資料庫有威脅的異常活動，以及探索和分類敏感性資料。 <br>重要：修復這項建議將會產生保護您 Azure SQL Database 伺服器的費用。 如果您在此訂用帳戶中沒有任何 Azure SQL Database 伺服器，將不會產生任何費用。 如果您在未來建立此訂用帳戶上的任何 Azure SQL Database 伺服器，這些伺服器將會自動受到保護，並會在該時間開始收費。<br> (相關原則： [應在 Azure SQL Database 伺服器上啟用 Advanced data security](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f7fe3b40f-802b-4cdd-8bd4-fd799c948cc2)) |高|**Y**|訂用帳戶|
 |**應在機器上的 SQL 伺服器啟用進階資料安全性**|Advanced data security 是統一的封裝，可提供先進的 SQL 安全性功能。 它包含用來呈現和緩和潛在資料庫弱點的功能、偵測可能表示對資料庫有威脅的異常活動，以及探索和分類敏感性資料。 <br>重要：修復這項建議將會導致在電腦上保護 SQL server 的費用。 如果您在此訂用帳戶中的電腦上沒有任何 SQL server，則不會產生任何費用。 如果您未來在此訂用帳戶上的電腦上建立任何 SQL server，這些伺服器將會自動受到保護，並會在該時間開始收費。<br> (相關原則： [應在電腦上的 SQL server 上啟用 Advanced data security](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f6581d072-105e-4418-827f-bd446d56421b)) |高|**Y**|訂用帳戶|
@@ -170,7 +170,7 @@ ms.locfileid: "90905558"
 |**應啟用儲存體帳戶的安全傳輸**|安全傳輸這個選項會強制您的儲存體帳戶僅接受來自安全連線 (HTTPS) 的要求。 HTTPS 可確保伺服器與服務之間的驗證，避免傳輸中的資料遭受網路層的攻擊，例如中間人攻擊、竊聽及工作階段劫持。<br>(相關原則：應啟用儲存體帳戶的安全傳輸)|高|N|儲存體帳戶|
 |**應分類 SQL 資料庫中的敏感性資料**|Azure SQL Database 資料探索 & 分類提供探索、分類、標記和保護資料庫中敏感性資料的功能。 一旦將您的資料分類之後，您就可以使用 Azure SQL Database 審核來審核存取和監視機密資料。 Azure SQL Database 也會啟用先進的威脅防護功能，以根據敏感性資料的存取模式變更來建立智慧型警示。<br>(相關原則：[預覽]：應分類 SQL 資料庫中的敏感性資料)|高|N|SQL|
 |**儲存體帳戶應移轉至新的 Azure Resource Manager 資源**|在您的儲存體帳戶使用新的 Azure Resource Manager 以加強安全性，除了增強存取控制 (RBAC)、改善稽核、提供以 Resource Manager 為基礎的部署及治理、受控身分識別的存取、金鑰保存庫的祕密存取，以及以 Azure AD 為基礎的驗證，還支援標記和資源群組，讓安全性管理更加輕鬆。<br>(相關原則：儲存體帳戶應移轉至新的 Azure Resource Manager 資源)|低|N|儲存體帳戶|
-|**應禁止儲存體帳戶公用存取**|Azure 儲存體中容器和 blob 的匿名公用讀取權限，是共用資料的便利方式，但可能會帶來安全性風險。 為了避免不想要匿名存取所造成的資料缺口，除非您的案例需要，否則 Microsoft 建議防止公開存取儲存體帳戶。<br> (相關原則：不允許儲存體帳戶公用存取) |中|Y|儲存體帳戶|
+|**應禁止儲存體帳戶公用存取**|Azure 儲存體中容器和 blob 的匿名公用讀取權限，是共用資料的便利方式，但可能會帶來安全性風險。 為了避免不想要匿名存取所造成的資料缺口，除非您的案例需要，否則 Microsoft 建議防止公開存取儲存體帳戶。<br> (相關原則：不允許儲存體帳戶公用存取) |中型|Y|儲存體帳戶|
 |**應在 SQL 資料庫上啟用透明資料加密**|啟用透明資料加密，以保護待用資料及符合合規要求。<br>(相關原則：應在 SQL 資料庫上啟用透明資料加密)|低|**Y**|SQL|
 |**SQL Database 上應啟用弱點評定**|弱點評估可發現、追蹤並協助您補救資料庫的潛在弱點。<br>(相關原則：弱點評估應於您的 SQL 伺服器上啟用)|高|**Y**|SQL|
 |**應在 SQL 受控執行個體上啟用弱點評定**|弱點評估可發現、追蹤並協助您補救資料庫的潛在弱點。<br> (相關原則： SQL 受控執行個體上應啟用弱點評定) |高|**Y**|SQL|
@@ -181,7 +181,7 @@ ms.locfileid: "90905558"
 
 ## <a name="identity-and-access-recommendations"></a><a name="recs-identity"></a>身分識別與存取建議
 
-|建議|描述與相關原則|Severity|是否啟用快速修正？([深入了解](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations#recommendations-with-quick-fix-remediation))|資源類型|
+|建議|描述與相關原則|Severity|是否啟用快速修正？([深入了解](security-center-remediate-recommendations.md#quick-fix-remediation))|資源類型|
 |----|----|----|----|----|
 |**應在您訂用帳戶上具有讀取權限的帳戶上啟用 MFA**|為具有讀取權限的所有訂用帳戶啟用 Multi-Factor Authentication (MFA)，以避免發生帳戶或資源資料外洩。<br>(相關原則：應在您訂閱上具有讀取權限的帳戶上啟用 MFA)|高|N|訂用帳戶|
 |**應在您訂閱上具有寫入權限的帳戶上啟用 MFA**|為具有寫入權限的所有訂用帳戶啟用 Multi-Factor Authentication (MFA)，以避免發生帳戶或資源資料外洩。<br>(相關原則：應在您訂閱上具有寫入權限的帳戶上啟用 MFA)|高|N|訂用帳戶|
@@ -195,7 +195,7 @@ ms.locfileid: "90905558"
 |**應針對您的訂用帳戶指定最多 3 位擁有者**|指定少於三位的訂閱擁有者，以降低遭入侵擁有者導致資料外洩的可能。<br>(相關原則：應針對您的訂閱指定最多 3 位擁有者)|高|N|訂用帳戶|
 |**應在 Azure Key Vault 保存庫上啟用進階威脅防護**|Azure 資訊安全中心包含適用於 Azure Key Vault 的 Azure 原生進階威脅防護，可額外提供多一層的安全情報。<br>重要：修復這項建議會導致保護 AKV 保存庫的費用。 如果您在此訂用帳戶中沒有任何 AKV 保存庫，將不會產生任何費用。 如果您未來在此訂用帳戶上建立任何 AKV 保存庫，系統會自動將其受保護，並會在該時間開始收費。<br> (相關原則： [應在 Azure Key Vault 保存庫上啟用「Advanced 威脅防護](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f0e6763cc-5078-4e64-889d-ff4d9a839047) 」) |高|**Y**|訂用帳戶|
 |**應啟用 Key Vault 中的診斷記錄**|啟用記錄並保留最多一年。 這可讓您在發生安全性事件或網路遭到損害時，重新建立活動線索供調查之用。<br>(相關原則：應啟用 Key Vault 中的診斷記錄)|低|**Y**|Key Vault|
-|**應使用服務主體來保護您的訂用帳戶，而不是管理憑證**|管理憑證可讓使用這些憑證進行驗證的任何人，來管理與其相關聯的訂用帳戶。 若要更安全地管理訂用帳戶，建議使用具有 Resource Manager 的服務主體，以在憑證洩漏的情況下限制群發半徑。 它也會自動進行資源管理。|中|No|訂用帳戶|
+|**應使用服務主體來保護您的訂用帳戶，而不是管理憑證**|管理憑證可讓使用這些憑證進行驗證的任何人，來管理與其相關聯的訂用帳戶。 若要更安全地管理訂用帳戶，建議使用具有 Resource Manager 的服務主體，以在憑證洩漏的情況下限制群發半徑。 它也會自動進行資源管理。|中型|否|訂用帳戶|
 ||||||
 
 
@@ -203,7 +203,7 @@ ms.locfileid: "90905558"
 
 ## <a name="deprecated-recommendations"></a>遭取代的建議
 
-|建議|描述與相關原則|Severity|是否啟用快速修正？([深入了解](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations#recommendations-with-quick-fix-remediation))|資源類型|
+|建議|描述與相關原則|Severity|是否啟用快速修正？([深入了解](security-center-remediate-recommendations.md#quick-fix-remediation))|資源類型|
 |----|----|----|----|----|
 |**應限制對應用程式服務的存取**|藉由變更網路設定，限制對應用程式服務的存取，以拒絕範圍太廣的輸入流量。<br>(相關原則：[預覽]：應限制對應用程式服務的存取)|高|N|App Service|
 |**應強化 IaaS NSG 上 Web 應用程式的規則**|若在您的虛擬機器上，執行的 Web 應用程式 NSG 規則就 Web 應用程式連接埠來說過於寬鬆，請強化虛擬機器的網路安全性群組 (NSG)。<br>(相關原則：應在 IaaS 上強化 Web 應用程式的 NSG 規則)|高|N|虛擬機器|

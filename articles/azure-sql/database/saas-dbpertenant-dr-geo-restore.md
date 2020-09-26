@@ -11,19 +11,19 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/14/2019
-ms.openlocfilehash: 44ed9c0d19b6e0034b49e36448765d098d575273
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: f3c7c166b72a43b6b11dc1830643332b032abad2
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91325312"
+ms.locfileid: "91356863"
 ---
 # <a name="use-geo-restore-to-recover-a-multitenant-saas-application-from-database-backups"></a>使用異地還原從資料庫備份復原多租用戶 SaaS 應用程式
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 本教學課程會針對使用每一租用戶一個資料庫模型實作的多租用戶 SaaS 應用程式，探索其完整的災害復原案例。 您可使用[異地還原](recovery-using-backups.md)，將目錄和租用戶資料庫從自動維護的異地備援備份復原到替代的復原區域。 在中斷問題解決之後，您可使用[地理複寫](active-geo-replication-overview.md)將變更的資料庫回復到其原始區域。
 
-![Geo-restore-architecture](./media/saas-dbpertenant-dr-geo-restore/geo-restore-architecture.png)
+![下圖顯示原始和復原區域，兩者都有應用程式、目錄、伺服器和集區的原始或鏡像映射、自動備份至儲存體，以及復原區域接受備份的異地複寫以及新租使用者的伺服器和集區。](./media/saas-dbpertenant-dr-geo-restore/geo-restore-architecture.png)
 
 異地還原是 Azure SQL Database 成本最低的災害復原解決方案。 不過，從異地備援備份還原可能會導致資料遺失最多一小時。 這可能需要相當長的時間，端視每個資料庫的大小而定。 
 
