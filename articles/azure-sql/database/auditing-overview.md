@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 04/28/2020
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: de41d9c1dc69726f5f7f031616462b2d1d330476
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a7edbbb50777cc2d91332260c9ebe72be042874b
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91333183"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91396241"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL Database 和 Azure Synapse Analytics 的審核
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -86,7 +86,7 @@ Azure SQL Database 和 Azure Synapse Audit 會針對審核記錄中的字元欄�
 2. 在 [ **sql database** ] 或 **[sql server** ] 窗格的 [安全性] 標題下，流覽至 [**審核**]。
 3. 如果您想要設定伺服器稽核原則，可以選取資料庫稽核頁面上的 [檢視伺服器設定]**** 連結。 然後，您可以檢視或修改伺服器稽核設定。 伺服器稽核原則適用于這部伺服器上所有現有和新建立的資料庫。
 
-    ![瀏覽窗格](./media/auditing-overview/2_auditing_get_started_server_inherit.png)
+    ![顯示 [資料庫審核] 頁面上醒目提示 [View server settings] 連結的螢幕擷取畫面。](./media/auditing-overview/2_auditing_get_started_server_inherit.png)
 
 4. 如果您偏向在資料庫層級啟用稽核，請將 [稽核]**** 切換到 [開啟]****。 如果已啟用伺服器稽核，資料庫設定的稽核將會與伺服器稽核並存。
 
@@ -163,7 +163,7 @@ Azure SQL Database 和 Azure Synapse Audit 會針對審核記錄中的字元欄�
 
 - 使用 [Azure 入口網站](https://portal.azure.com)。  開啟相關的資料庫。 在資料庫的 [稽核]**** 頁面頂端，按一下 [檢視稽核記錄]****。
 
-    ![瀏覽窗格](./media/auditing-overview/7_auditing_get_started_blob_view_audit_logs.png)
+    ![顯示 [資料庫審核] 頁面上醒目提示 [View audit logs] 按鈕的螢幕擷取畫面。](./media/auditing-overview/7_auditing_get_started_blob_view_audit_logs.png)
 
     隨即開啟 [稽核記錄]****，您可以在其中檢視記錄。
 
@@ -171,14 +171,14 @@ Azure SQL Database 和 Azure Synapse Audit 會針對審核記錄中的字元欄�
   - 切換 [稽核來源]****，即可在由「伺服器稽核原則」** 和「資料庫稽核原則」** 建立的稽核記錄之間切換。
   - 如果勾選 [只顯示 SQL 插入的稽核記錄]**** 核取方塊，只可以檢視 SQL 插入相關的稽核記錄。
 
-       ![瀏覽窗格]( ./media/auditing-overview/8_auditing_get_started_blob_audit_records.png)
+       ![顯示用來查看審核記錄之選項的螢幕擷取畫面。]( ./media/auditing-overview/8_auditing_get_started_blob_audit_records.png)
 
 - 使用系統函數 **sys.fn_get_audit_file** (T-SQL) 以表格格式傳回稽核記錄資料。 如需使用此函式的詳細資訊，請參閱 [sys.fn_get_audit_file](/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql)。
 
 - 使用 SQL Server Management Studio (SSMS 17 或更新版本) 中的 [合併稽核檔案]****：
     1. 從 SSMS 功能表中 **，選取 [** 檔案  >  **開啟**  >  **合併審核**檔案]。
 
-        ![瀏覽窗格](./media/auditing-overview/9_auditing_get_started_ssms_1.png)
+        ![顯示 [合併審核檔案] 功能表選項的螢幕擷取畫面。](./media/auditing-overview/9_auditing_get_started_ssms_1.png)
     2. 隨即開啟 [新增稽核檔案]**** 對話方塊。 選取其中一個 [新增]**** 選項以選擇是否要從本機磁碟合併稽核檔案，或從 Azure 儲存體匯入稽核檔案。 您將需要提供您的 Azure 儲存體詳細資料和帳戶金鑰。
 
     3. 已新增要合併的所有檔案之後，請按一下 [確定]**** 以完成合併作業。
@@ -218,7 +218,7 @@ Azure SQL Database 和 Azure Synapse Audit 會針對審核記錄中的字元欄�
 
 1. 開啟 [儲存體詳細資料]****。 在 [儲存體存取金鑰]**** 方塊中，選取 [次要]****，然後按一下 [確定]****。 然後按一下稽核設定頁面頂端的 [儲存]****。
 
-    ![瀏覽窗格](./media/auditing-overview/5_auditing_get_started_storage_key_regeneration.png)
+    ![顯示選取次要儲存體存取金鑰之程式的螢幕擷取畫面。](./media/auditing-overview/5_auditing_get_started_storage_key_regeneration.png)
 2. 移至儲存體設定頁面，並重新產生主要存取金鑰。
 
     ![瀏覽窗格](./media/auditing-overview/6_auditing_get_started_regenerate_key.png)

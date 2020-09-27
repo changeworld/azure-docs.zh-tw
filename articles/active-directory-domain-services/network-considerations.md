@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: ec38f16c5a658848eab505794ed1a2d072f22aea
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 6e2b3badcda872db3ddb1d237b813615a1332ad0
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88749618"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91396326"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services 的虛擬網路設計考慮和設定選項
 
@@ -115,6 +115,8 @@ Azure Active Directory Domain Services (Azure AD DS) 提供驗證和管理服務
 | 5986        | TCP      | AzureActiveDirectoryDomainServices | 任意         | Allow  | 是      | 管理您的網域。 |
 
 已建立的 Azure 標準負載平衡器需要執行這些規則。 此網路安全性群組會保護 Azure AD DS，而且能讓受控網域正確運作。 請勿刪除此網路安全性群組。 如果沒有它，負載平衡器將無法正常運作。
+
+如有需要，您可以 [使用 Azure PowerShell 建立必要的網路安全性群組和規則](powershell-create-instance.md#create-a-network-security-group)。
 
 > [!WARNING]
 > 請勿手動編輯這些網路資源和設定。 當您將設定錯誤的網路安全性群組或使用者定義的路由表與部署受控網域的子網產生關聯時，您可能會中斷 Microsoft 服務及管理網域的能力。 您 Azure AD 租使用者與受控網域之間的同步處理也會中斷。

@@ -3,12 +3,12 @@ title: 讓客戶在 Azure Lighthouse 上線
 description: 瞭解如何將客戶上架到 Azure Lighthouse，讓其資源可透過您自己的租使用者使用 Azure 委派的資源管理來存取及管理。
 ms.date: 09/24/2020
 ms.topic: how-to
-ms.openlocfilehash: 0b941c82c2ba0e98f524587f5ef4c4ecf86249eb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 2e404c471990575460ccda3a26e7cdcb3ec1cf1d
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91336542"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91396666"
 ---
 # <a name="onboard-a-customer-to-azure-lighthouse"></a>讓客戶在 Azure Lighthouse 上線
 
@@ -69,7 +69,7 @@ az account show
 定義您的授權時，請務必遵循最低許可權原則，讓使用者只具備完成其工作所需的許可權。 如需有關支援的角色的指導方針和資訊，請參閱 [Azure Lighthouse 案例中的租使用者、使用者和角色](../concepts/tenants-users-roles.md)。
 
 > [!IMPORTANT]
-> 若要新增 Azure AD 群組的許可權，[群組類型] 必須是 [安全性]，而不是 [Office 365]。 建立群組時，會選取此選項。 如需詳細資訊，請參閱[使用 Azure Active Directory 建立基本群組並新增成員](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)。
+> 為了新增 Azure AD 群組的許可權， **群組類型** 必須設定為 [ **安全性**]。 建立群組時，會選取此選項。 如需詳細資訊，請參閱[使用 Azure Active Directory 建立基本群組並新增成員](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)。
 
 若要定義授權，您必須知道您想要授與存取權之服務提供者租使用者中每個使用者、使用者群組或服務主體的識別碼值。 您也會需要所要指派每個內建角色的角色定義識別碼。 如果還沒有識別碼值，您可從服務提供者租用戶內，執行下列命令來擷取。
 

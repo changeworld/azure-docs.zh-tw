@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/27/2019
-ms.openlocfilehash: 71c1306d1516d8af3fb16c0ba353ab8144de2562
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 03c783b5a475f0a49fe94d33aa866654e9c9f5f1
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86202590"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397822"
 ---
 # <a name="configure-apache-hive-policies-in-hdinsight-with-enterprise-security-package"></a>在具有企業安全性套件的 HDInsight 中設定 Apache Hive 原則
 
@@ -22,12 +22,12 @@ ms.locfileid: "86202590"
 ## <a name="prerequisites"></a>必要條件
 
 * 具有企業安全性套件的 HDInsight 叢集。 請參閱[設定具有 ESP 的 HDInsight 叢集](apache-domain-joined-configure.md)。
-* 安裝 Office 2016、Office 2013 Professional Plus、Office 365 Pro Plus、Excel 2013 Standalone 或 Office 2010 Professional Plus 的工作站。
+* 具有適用于企業、Office 2016、Office 2013 專業增強版、Excel 2013 獨立版或 Office 2010 Professional Plus 的 Microsoft 365 應用程式的工作站。
 
 ## <a name="connect-to-apache-ranger-admin-ui"></a>連線到 Apache Ranger 系統管理 UI
 **到 Ranger 系統管理 UI**
 
-1. 從瀏覽器流覽至 Ranger 管理 UI， `https://CLUSTERNAME.azurehdinsight.net/Ranger/` 其中 CLUSTERNAME 是您的叢集名稱。
+1. 從瀏覽器流覽至 Ranger 系統管理 UI， `https://CLUSTERNAME.azurehdinsight.net/Ranger/` 其中 CLUSTERNAME 是您的叢集名稱。
 
    > [!NOTE]  
    > Ranger 會使用與 Apache Hadoop 叢集不同的認證。 若要避免瀏覽器使用快取的 Hadoop 認證，請使用新的 InPrivate 瀏覽器視窗連線至 Ranger 系統管理 UI。
@@ -40,7 +40,7 @@ ms.locfileid: "86202590"
 
 ## <a name="create-domain-users"></a>建立網域使用者
 
-如需如何建立 hiveruser1 與 hiveuser2 的相關資訊，請參閱[建立具有 ESP 的 HDInsight 叢集](apache-domain-joined-configure-using-azure-adds.md#create-an-hdinsight-cluster-with-esp)。 在本文中，您會使用兩個使用者帳戶。
+如需如何建立 hiveruser1 與 hiveuser2 的相關資訊，請參閱[建立具有 ESP 的 HDInsight 叢集](apache-domain-joined-configure-using-azure-adds.md#create-an-hdinsight-cluster-with-esp)。 您會在本文中使用這兩個使用者帳戶。
 
 ## <a name="create-ranger-policies"></a>建立 Ranger 原則
 
@@ -49,13 +49,13 @@ ms.locfileid: "86202590"
 **建立 Ranger 原則**
 
 1. 開啟 Ranger 系統管理 UI。 請參閱連接到 Apache Ranger 系統管理 UI。
-2. 選取 [ **Hive**] 底下的 [ **CLUSTERNAME_Hive**]。 您會看到兩個預先設定的原則。
-3. 選取 [**新增原則**]，然後輸入下列值：
+2. 選取 [ **Hive**] 下的**CLUSTERNAME_Hive**。 您會看到兩個預先設定的原則。
+3. 選取 [ **新增原則**]，然後輸入下列值：
 
     |屬性 |值 |
     |---|---|
-    |原則名稱|hivesampletable-全部|
-    |Hive 資料庫|default|
+    |原則名稱|read-hivesampletable-all|
+    |Hive 資料庫|預設|
     |table|hivesampletable|
     |Hive 資料行|*|
     |選取使用者|hiveuser1|
@@ -72,8 +72,8 @@ ms.locfileid: "86202590"
 
     |屬性 |值 |
     |---|---|
-    |原則名稱|hivesampletable-devicemake|
-    |Hive 資料庫|default|
+    |原則名稱|read-hivesampletable-devicemake|
+    |Hive 資料庫|預設|
     |table|hivesampletable|
     |Hive 資料行|clientid、devicemake|
     |選取使用者|hiveuser2|
@@ -87,19 +87,19 @@ ms.locfileid: "86202590"
  | --- | --- |
  | 資料來源名稱 | 為資料來源指定名稱 |
  | 主機 | 輸入 CLUSTERNAME.azurehdinsight.net。 例如，myHDICluster.azurehdinsight.net |
- | 連接埠 | 使用 **443** (此連接埠已從 563 變更為 443)。 |
- | 資料庫 | 使用**預設值**。 |
+ | Port | 使用 **443** (此連接埠已從 563 變更為 443)。 |
+ | 資料庫 | 使用 **預設值**。 |
  | Hive 伺服器類型 | 選取 [Hive Server 2]**** |
  | 機制 | 選取 [Azure HDInsight 服務]**** |
  | HTTP 路徑 | 保留為空白。 |
- | 使用者名稱 | 輸入 hiveuser1@contoso158.onmicrosoft.com。 更新功能變數名稱（如果不同的話）。 |
+ | 使用者名稱 | 輸入 hiveuser1@contoso158.onmicrosoft.com。 如果功能變數名稱不同，請更新該功能變數名稱。 |
  | 密碼 | 輸入 hiveuser1 的密碼。 |
 
 請務必先按一下 [測試]****，再儲存資料來源。
 
 ## <a name="import-data-into-excel-from-hdinsight"></a>從 HDInsight 將資料匯入 Excel 中
 
-在最後一節中，您已設定兩個原則。  hiveuser1 具有所有資料行的選取權限，而 hiveuser2 具有兩個資料行的選取權限。 本節中，您可以模擬兩位使用者將資料匯入 Excel 中。
+在上一節中，您已設定兩個原則。  hiveuser1 具有所有資料行的選取權限，而 hiveuser2 具有兩個資料行的選取權限。 本節中，您可以模擬兩位使用者將資料匯入 Excel 中。
 
 1. 在 Excel 中開啟新的或現有的活頁簿。
 
@@ -109,17 +109,17 @@ ms.locfileid: "86202590"
 
 1. 從下拉式清單中，選取您在上一節中建立的資料來源名稱，然後選取 **[確定]**。
 
-1. 第一次使用時，會開啟 [ **ODBC 驅動程式**] 對話方塊。 從左側功能表中選取 [ **Windows** ]。 然後選取 **[連線]** 以開啟 [導覽**器**] 視窗。
+1. 第一次使用時，會開啟 [ **ODBC 驅動程式** ] 對話方塊。 從左側功能表中選取 [ **Windows** ]。 然後選取 **[** 連線] 以開啟 [導覽 **器** ] 視窗。
 
 1. 等待 [選取資料庫及資料表] **** 對話方塊開啟。 這可能需要幾秒鐘的時間。
 
 1. 選取 [ **Hivesampletable**]，然後選取 **[下一步]**。
 
-1. 選取 [完成]。
+1. 選取 [完成]  。
 
-1. 在 [匯入資料] **** 對話方塊中，您可以變更或指定查詢。 若要這麼做，請選取 [**屬性**]。 這可能需要幾秒鐘的時間。
+1. 在 [匯入資料] **** 對話方塊中，您可以變更或指定查詢。 若要這樣做，請選取 [ **屬性**]。 這可能需要幾秒鐘的時間。
 
-1. 選取 [**定義**] 索引標籤。命令文字為：
+1. 選取 [ **定義** ] 索引標籤。命令文字為：
 
     ```sql
     SELECT * FROM "HIVE"."default"."hivesampletable"`
@@ -129,7 +129,7 @@ ms.locfileid: "86202590"
 
 1. 選取 **[確定]** 以關閉 [連接屬性] 對話方塊。
 
-1. 選取 **[確定]** 以關閉 [匯**入資料**] 對話方塊。  
+1. 選取 **[確定** ] 以關閉 [匯 **入資料** ] 對話方塊。  
 
 1. 重新輸入 hiveuser1 的密碼，然後按一下 [確定]****。 經過數秒後，資料即會匯入至 Excel。 完成時，您應該會看到11個數據行。
 

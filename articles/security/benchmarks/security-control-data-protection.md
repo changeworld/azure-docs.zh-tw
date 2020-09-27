@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 2622d7a2e54dac710ac09d61dee639ab1d104f02
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: f2162ee6df551e1bc64741229aec99d5e697fd29
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89078991"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91395986"
 ---
 # <a name="security-control-data-protection"></a>安全性控制：資料保護
 
@@ -74,7 +74,7 @@ ms.locfileid: "89078991"
 
 當您在 Azure 中的特定服務沒有任何可用的功能時，請使用協力廠商主動式探索工具來識別組織技術系統儲存、處理或傳輸的所有機密資訊，包括位於現場或遠端服務提供者的機密資訊，以及更新組織的機密資訊清查。
 
-使用 Azure 資訊保護來識別 Office 365 檔中的機密資訊。
+使用 Azure 資訊保護來識別 Microsoft 365 檔中的機密資訊。
 
 使用 Azure SQL 資訊保護來協助分類和標記儲存在 Azure SQL Database 中的資訊。
 

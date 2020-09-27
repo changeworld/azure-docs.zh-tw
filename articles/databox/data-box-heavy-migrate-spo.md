@@ -8,12 +8,12 @@ ms.subservice: heavy
 ms.topic: how-to
 ms.date: 07/18/2019
 ms.author: alkohli
-ms.openlocfilehash: a6cb3392aa83b2c02df621449a73f7cb68691ec6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: HT
+ms.openlocfilehash: a87181e7d1c776648781a2672dfd73ac2eaab1b2
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84608599"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91396853"
 ---
 # <a name="use-the-azure-data-box-heavy-to-migrate-your-file-share-content-to-sharepoint-online"></a>使用 Azure Data Box Heavy 將檔案共用內容遷移至 SharePoint Online
 
@@ -82,7 +82,7 @@ Microsoft Azure 資料箱服務可讓您從 Microsoft Azure 入口網站訂購�
 1. 登入 Azure 入口網站，然後[建立虛擬機器](../virtual-machines/windows/quick-create-portal.md)。
 2. [將 Azure 檔案共用掛接到 VM 上](../storage/files/storage-how-to-use-files-windows.md#mount-the-azure-file-share-with-file-explorer)。
 3. [下載 SharePoint 移轉工具](https://spmtreleasescus.blob.core.windows.net/install/default.htm)並將其安裝在 Azure VM 上。
-4. 啟動 SharePoint 移轉工具。 按一下 [登入]  ，然後輸入您的 Office 365 使用者名稱和密碼。
+4. 啟動 SharePoint 移轉工具。 按一下 [登 **入** ]，然後輸入您的工作或學校帳戶的使用者名稱和密碼。
 5. 出現**您的資料在哪？** 提示時，選取 [檔案共用]  。 輸入資料所在 Azure 檔案共用的路徑。
 6. 和平常一樣遵循其餘的提示來進行，包括您的目標位置。 如需詳細資訊，請移至[如何使用 SharePoint 移轉工具](https://docs.microsoft.com/sharepointmigration/how-to-use-the-sharepoint-migration-tool)。
 

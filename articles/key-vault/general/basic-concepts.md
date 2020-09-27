@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: mbaldwin
-ms.openlocfilehash: e0bb3c3f3a6a1a38f974acf361937928ad4e2cfd
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: b537fecefd0b8b00967894daa94881a084d5c8f2
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90983290"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91398505"
 ---
 # <a name="azure-key-vault-basic-concepts"></a>Azure Key Vault 基本概念
 
@@ -23,7 +23,7 @@ Azure Key Vault 是可安全儲存及存取秘密的雲端服務。 秘密是您
 
 以下是其他重要詞彙：
 
-- **租用戶**：租用戶是擁有並且可管理特定 Microsoft 雲端服務執行個體的組織。 它最常用來參考組織的 Azure 和 Office 365 服務集合。
+- **租用戶**：租用戶是擁有並且可管理特定 Microsoft 雲端服務執行個體的組織。 它最常用來參考組織的一組 Azure 和 Microsoft 365 服務。
 
 - **保存庫擁有者**：保存庫擁有者可建立金鑰保存庫，並取得其完整存取權和控制權。 保存庫擁有者也可以設定稽核，以記錄存取祕密和金鑰的人員。 系統管理員可控制金鑰的生命週期。 他們可將金鑰變換為新版本、備份金鑰，以及執行相關工作。
 
@@ -81,7 +81,7 @@ Azure Key Vault 是可安全儲存及存取秘密的雲端服務。 秘密是您
 
 開發人員也可透過使用 API 直接管理金鑰。 如需詳細資訊，請參閱 [《 Key Vault 開發人員指南》](developers-guide.md)。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 瞭解如何 [保護您](secure-your-key-vault.md)的保存庫。
 - 瞭解如何[保護受管理的 HSM](../managed-hsm/access-control.md)集區

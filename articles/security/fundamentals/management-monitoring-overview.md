@@ -1,5 +1,5 @@
 ---
-title: 管理和監視安全性功能-Microsoft Azure |Microsoft Docs
+title: 管理與監視安全性功能-Microsoft Azure |Microsoft Docs
 description: 本文涵蓋 Azure 提供來協助管理和監視 Azure 雲端服務和虛擬機器的安全性功能和服務概觀。
 services: security
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 7e6fe4f0db31687d402f960f2752fe021d3ec9d3
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: c5525fc43f23ecd1760c5a869d8171aee0e9415d
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448346"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91395765"
 ---
 # <a name="azure-security-management-and-monitoring-overview"></a>Azure 安全性管理和監視概觀
 本文涵蓋 Azure 提供來協助管理和監視 Azure 雲端服務和虛擬機器的安全性功能和服務概觀。
@@ -32,7 +32,7 @@ ms.locfileid: "87448346"
 深入了解：
 
 * [有關 RBAC 的 Active Directory 小組部落格](https://cloudblogs.microsoft.com/enterprisemobility/?product=azure-active-directory)
-* [Azure 角色型存取控制（Azure RBAC）](../../role-based-access-control/role-assignments-portal.md)
+* [Azure 角色型存取控制 (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md)
 
 ## <a name="antimalware"></a>反惡意程式碼
 
@@ -40,7 +40,7 @@ ms.locfileid: "87448346"
 
 適用於 Azure 雲端服務和虛擬機器的 Microsoft Antimalware 可讓您針對 PaaS 角色和虛擬機器安裝反惡意程式碼代理程式。 根據 System Center Endpoint Protection，這項功能會將經證實的內部部署安全性技術帶入雲端。
 
-我們也會在 Azure 平臺中提供趨勢[深度安全性](https://www.trendmicro.com/us/enterprise/cloud-solutions/deep-security/)和[securecloud 則](https://www.trendmicro.com/us/enterprise/cloud-solutions/secure-cloud/)產品的深層整合。 Deep Security 是一種防毒解決方案，而 SecureCloud 則是一種加密解決方案。 Deep Security 是透過延伸模組模型部署於 VM 內的。 透過使用 Azure 入口網站 UI 和 PowerShell，您可以選擇在所啟動的新 VM 內或已部署的現有 VM 內使用 Deep Security。
+我們也會在 Azure 平臺中提供趨勢的 [深度安全性](https://www.trendmicro.com/us/enterprise/cloud-solutions/deep-security/) 與 [>securecloud](https://www.trendmicro.com/us/enterprise/cloud-solutions/secure-cloud/) 產品的深度整合。 Deep Security 是一種防毒解決方案，而 SecureCloud 則是一種加密解決方案。 Deep Security 是透過延伸模組模型部署於 VM 內的。 透過使用 Azure 入口網站 UI 和 PowerShell，您可以選擇在所啟動的新 VM 內或已部署的現有 VM 內使用 Deep Security。
 
 Azure 也支援 Symantec Endpoint Protection (SEP)。 透過入口網站整合，您可以指定想要在 VM 上使用 SEP。 SEP 可以透過 Azure 入口網站安裝在新的 VM 上，或透過 PowerShell 安裝在現有的 VM 上。
 
@@ -52,7 +52,7 @@ Azure 也支援 Symantec Endpoint Protection (SEP)。 透過入口網站整合�
 * [如何在 Windows VM 上安裝和設定 Symantec Endpoint Protection](/azure/virtual-machines/windows/classic/install-symantec)
 * [可用於保護 Azure 虛擬機器的新反惡意程式碼選項](https://azure.microsoft.com/blog/new-antimalware-options-for-protecting-azure-virtual-machines/) \(英文\)
 
-## <a name="multi-factor-authentication"></a>多重要素驗證
+## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
 
 Azure Multi-Factor Authentication 是一種驗證方法，其需要使用一個以上的驗證方法。 它可以為使用者登入和交易新增重要的第二層安全性。
 
@@ -66,7 +66,7 @@ Multi-Factor Authentication 有助於保護對資料與應用程式的存取，�
 
 ## <a name="expressroute"></a>ExpressRoute
 
-您可以使用 Azure ExpressRoute，透過連線提供者所提供的專用私人連線，將內部部署網路延伸到 Microsoft Cloud。 使用 ExpressRoute 時，您可以建立與 Microsoft 雲端服務 (例如 Azure、Office 365 和 CRM Online) 的連線。 連線可以來自：
+您可以使用 Azure ExpressRoute，透過連線提供者所提供的專用私人連線，將內部部署網路延伸到 Microsoft Cloud。 使用 ExpressRoute，您可以建立與 Microsoft 雲端服務（例如 Azure、Microsoft 365 和 CRM Online）的連線。 連線可以來自：
 
 * 任意點對任意點 (IP VPN) 網路。
 * 點對點乙太網路。
@@ -139,6 +139,6 @@ Intelligent Security Graph 能在 Microsoft 產品及服務中提供即時威脅
 * [Intelligent Security Graph](https://www.microsoft.com/security/intelligence)
 
 ## <a name="next-steps"></a>後續步驟
-瞭解[共用責任模型](shared-responsibility.md)，以及由 Microsoft 處理哪些安全性工作，以及由您處理哪些工作。
+瞭解共用的 [責任模型](shared-responsibility.md) ，以及由 Microsoft 處理哪些安全性工作，以及由您處理哪些工作。
 
 如需安全性管理的詳細資訊，請參閱 [Azure 的安全性管理](management.md)。

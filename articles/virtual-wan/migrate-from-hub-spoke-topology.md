@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: 4c39a24664d36e4a69a44b7fe06835572e0cfe75
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b07ed4589a54948ef87f516ac4bb97ef8492283e
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91329239"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91398830"
 ---
 # <a name="migrate-to-azure-virtual-wan"></a>移轉移至 Azure 虛擬 WAN
 
@@ -72,7 +72,7 @@ Contoso 是一家遍及歐洲和亞洲辦公室的全球財務組織。 他們�
 - 中樞也會為使用全球網狀網路的 OpenVPN 連線能力，針對跨多個用戶端類型的漫遊使用者提供 VPN 終止點，讓您不僅可以存取移轉至 Azure 的應用程式，也能存取內部部署中剩餘的任何資源。
 - Azure 虛擬 WAN 會提供虛擬網路內資源的網際網路連線能力。
 
-Azure 虛擬 WAN 也會提供遠端網站的網際網路連線能力。 透過合作夥伴整合支援本地網際網路分組，以將存取 SaaS 服務 (例如 Office 365) 最佳化。
+Azure 虛擬 WAN 也會提供遠端網站的網際網路連線能力。 透過合作夥伴整合支援的本機網際網路分類，可對 SaaS 服務（例如 Microsoft 365）進行優化存取。
 
 ## <a name="migrate-to-virtual-wan"></a>遷移至虛擬 WAN
 

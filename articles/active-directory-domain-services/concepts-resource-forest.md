@@ -10,16 +10,16 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 62a2ffeea1d15a16c4ec4aa6a2b88c8e34763064
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 88069c6ac90fce7e33cac6ed3c30accb18ded8bf
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87480402"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91396394"
 ---
 # <a name="resource-forest-concepts-and-features-for-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services 的資源樹系概念及功能
 
-Azure Active Directory Domain Services （Azure AD DS）提供舊版、內部部署、企業營運應用程式的登入體驗。 內部部署和雲端使用者的使用者、群組和密碼雜湊都會同步處理到 Azure AD DS 受控網域。 這些已同步處理的密碼雜湊會提供使用者一組認證，其可用於內部部署 AD DS、Office 365 和 Azure Active Directory。
+Azure Active Directory Domain Services (Azure AD DS) 提供適用于舊版、內部部署、企業營運應用程式的登入體驗。 內部部署和雲端使用者的使用者、群組和密碼雜湊都會同步處理到 Azure AD DS 受控網域。 這些已同步處理的密碼雜湊可為使用者提供一組可用於內部部署 AD DS、Microsoft 365 和 Azure Active Directory 的認證。
 
 雖然這些使用者密碼雜湊能夠保護並提供額外的安全性優勢，但有些組織卻無法將其同步處理至 Azure AD 或 Azure AD DS。 組織中的使用者因為只使用智慧卡驗證，所以不知道自己的密碼。 這些限制讓有些組織無法使用 Azure AD DS 將內部部署傳統應用程式隨即轉移至 Azure。
 
@@ -31,9 +31,9 @@ Azure Active Directory Domain Services （Azure AD DS）提供舊版、內部部
 
 在 Azure AD DS 受控網域中，樹系只會包含一個網域。 但內部部署 AD DS 樹系通常會包含許多網域。 在大型組織中，特別是併購後，會有多個內部部署樹系，每個樹系又包含多個網域。
 
-根據預設，受控網域會建立為*使用者*樹系。 這種類型的樹系會同步 Azure AD 中的所有物件，包括在內部部署 AD DS 環境中建立的任何使用者帳戶。 使用者帳戶可以直接對受控網域進行驗證，例如登入已加入網域的 VM。 當可同步處理密碼雜湊，但使用者不使用獨佔式登入方法 (例如智慧卡驗證) 時，使用者樹系即可發揮功能。
+依預設，受控網域會建立為 *使用者* 樹系。 這種類型的樹系會同步 Azure AD 中的所有物件，包括在內部部署 AD DS 環境中建立的任何使用者帳戶。 使用者帳戶可以直接對受控網域進行驗證，例如登入已加入網域的 VM。 當可同步處理密碼雜湊，但使用者不使用獨佔式登入方法 (例如智慧卡驗證) 時，使用者樹系即可發揮功能。
 
-在受控網域*資源*樹系中，使用者會從其內部部署 AD DS 進行單向樹系*信任*的驗證。 使用此方法時，使用者物件和密碼雜湊不會同步處理至受控網域。 使用者物件和認證僅存在於內部部署 AD DS。 這種方法可讓企業裝載 Azure 中依賴 LDAPS、Kerberos 或 NTLM 等傳統驗證的資源和應用程式平台，但會移除所有驗證問題或顧慮。
+在受控網域 *資源* 樹系中，使用者會透過其內部部署 AD DS 的單向樹系 *信任* 進行驗證。 使用這個方法時，使用者物件和密碼雜湊不會同步處理至受控網域。 使用者物件和認證僅存在於內部部署 AD DS。 這種方法可讓企業裝載 Azure 中依賴 LDAPS、Kerberos 或 NTLM 等傳統驗證的資源和應用程式平台，但會移除所有驗證問題或顧慮。
 
 資源樹系也提供一次隨即轉移一個應用程式元件的功能。 許多舊版內部部署應用程式都是多層式的，通常使用網頁伺服器或前端加上許多與資料庫相關的元件。 這些層級使得難以使用一個步驟來將整個應用程式隨即轉移到雲端。 利用資源樹系，您可分階段將應用程式提升至雲端，其可供輕鬆地將應用程式移至 Azure。
 
@@ -53,7 +53,7 @@ Azure Active Directory Domain Services （Azure AD DS）提供舊版、內部部
 * **不可轉移**：信任只存在於兩個信任夥伴的網域之間。
 * **可轉移**：信任會自動擴展至任一夥伴信任的任何其他網域。
 
-在某些情況下，建立網域時即會自動建立信任關係。 其他時候，您必須選擇一種信任類型，並明確建立適當的關聯性。 使用的特定信任類型以及這些信任關係的結構，取決於如何組織 AD DS 目錄，以及是否在網路上共存不同版本的 Windows。
+在某些情況下，建立網域時即會自動建立信任關係。 其他時候，您必須選擇一種信任類型，並明確建立適當的關聯性。 使用的特定信任類型以及這些信任關係的結構，取決於 AD DS 目錄的組織方式，以及是否在網路上並存不同版本的 Windows。
 
 ## <a name="trusts-between-two-forests"></a>兩個樹系之間的信任
 
@@ -70,7 +70,7 @@ Azure Active Directory Domain Services （Azure AD DS）提供舊版、內部部
 
 ## <a name="supporting-technology-for-trusts"></a>支援信任的技術
 
-信任會使用各種服務和功能，例如使用 DNS 來尋找合作樹系中的網域控制站。 信任也取決於 NTLM 和 Kerberos 驗證通訊協定，以及 Windows 型授權和存取控制機制，以協助在 AD DS 網域和樹系之間提供安全的通訊基礎結構。 下列服務和功能協助支援成功的信任關係。
+信任會使用各種服務和功能，例如使用 DNS 來尋找合作樹系中的網域控制站。 信任也取決於 NTLM 和 Kerberos 驗證通訊協定，以及以 Windows 為基礎的授權和存取控制機制，可協助在 AD DS 網域和樹系之間提供安全的通訊基礎結構。 下列服務和功能協助支援成功的信任關係。
 
 ### <a name="dns"></a>DNS
 
@@ -79,31 +79,31 @@ AD DS 需要使用 DNS 定位和命名網域控制站 (DC)。 DNS 提供下列�
 * 名稱解析服務，其可讓網路主機和服務找到 DC。
 * 命名結構，其可讓企業在目錄服務網域的名稱中反映組織結構。
 
-通常會部署的 DNS 網域命名空間，其可鏡像 AD DS 網域命名空間。 如果 AD DS 部署之前有現有的 DNS 命名空間，則 DNS 命名空間通常會針對 AD DS 進行分割，並建立 AD DS 樹系根目錄的 DNS 子域和委派。 接著，會為每個 AD DS 子域新增額外的 DNS 功能變數名稱。
+通常會部署的 DNS 網域命名空間，其可鏡像 AD DS 網域命名空間。 如果 AD DS 部署之前有現有的 DNS 命名空間，則 DNS 命名空間通常會針對 AD DS 進行分割，而且會建立 AD DS 樹系根的 DNS 子域和委派。 接著會針對每個 AD DS 子域新增額外的 DNS 功能變數名稱。
 
 DNS 也用來支援 AD DS Dc 的位置。 DNS 區域會填入 DNS 資源記錄，讓網路主機和服務找出 AD DS Dc。
 
 ### <a name="applications-and-net-logon"></a>應用程式和 Net Logon
 
-應用程式和 Net Logon 服務都是 Windows 分散式安全性通道模型的元件。 與 Windows Server 和 AD DS 整合的應用程式會使用驗證通訊協定與 Net Logon 服務進行通訊，因此可以建立安全的路徑來進行驗證。
+應用程式和 Net Logon 服務都是 Windows 分散式安全性通道模型的元件。 與 Windows Server 整合的應用程式和 AD DS 會使用驗證通訊協定與 Net Logon 服務進行通訊，如此就可以建立安全的路徑來進行驗證。
 
 ### <a name="authentication-protocols"></a>驗證通訊協定
 
 AD DS Dc 會使用下列其中一種通訊協定來驗證使用者和應用程式：
 
 * **Kerberos 第 5 版驗證通訊協定**
-    * Kerberos 第5版通訊協定是執行 Windows 及支援協力廠商作業系統的內部部署電腦所使用預設驗證通訊協定。 此通訊協定是在 RFC 1510 中指定，並且與 AD DS、伺服器訊息區（SMB）、HTTP 和遠端程序呼叫（RPC），以及使用這些通訊協定的用戶端和伺服器應用程式完全整合。
+    * Kerberos 第5版通訊協定是執行 Windows 及支援協力廠商作業系統的內部部署電腦所使用預設驗證通訊協定。 此通訊協定是在 RFC 1510 中指定，並與 AD DS、server message block (SMB) 、HTTP 和遠端程序呼叫 (RPC) 以及使用這些通訊協定的用戶端和伺服器應用程式完全整合。
     * 使用 Kerberos 通訊協定時，伺服器不必連絡 DC。 而是由用戶端向伺服器帳戶網域中 DC 提出要求來取得伺服器的票證。 然後，伺服器會驗證票證，而不用諮詢任何其他授權單位。
     * 如有任何一部交易相關電腦不支援 Kerberos 第 5 版通訊協定，則使用 NTLM 通訊協定。
 
 * **NTLM 驗證通訊協定**
-    * NTLM 通訊協定是舊版作業系統使用的傳統網路驗證通訊協定。 基於相容性的理由，AD DS 網域會使用它來處理來自針對舊版 Windows 用戶端和伺服器和協力廠商作業系統所設計之應用程式的網路驗證要求。
+    * NTLM 通訊協定是舊版作業系統使用的傳統網路驗證通訊協定。 基於相容性的理由，AD DS 網域使用它來處理來自針對舊版 Windows 用戶端和伺服器所設計的應用程式以及協力廠商作業系統的網路驗證要求。
     * 在用戶端與伺服器之間使用 NTLM 通訊協定時，伺服器必須連絡 DC 上的網域驗證服務，以驗證用戶端認證。 伺服器會將用戶端認證轉送至用戶端帳戶網域中的 DC，以驗證用戶端。
-    * 當兩個 AD DS 網域或樹系由信任連接時，會路由使用這些通訊協定所提出的驗證要求，以提供這兩個樹系中資源的存取權。
+    * 當兩個 AD DS 網域或樹系由信任連線時，可以路由使用這些通訊協定提出的驗證要求，以提供這兩個樹系中資源的存取權。
 
 ## <a name="authorization-and-access-control"></a>授權和存取控制
 
-授權和信任技術共同合作，在 AD DS 網域或樹系之間提供安全的通訊基礎結構。 授權會決定使用者對網域中資源所擁有的存取層級。 信任會提供一個路徑來驗證其他網域中的使用者，使其對這些網域中的共用資源要求可獲得授權，藉此促進跨網域的使用者授權。
+授權和信任技術會一起運作，以在 AD DS 網域或樹系之間提供安全的通訊基礎結構。 授權會決定使用者對網域中資源所擁有的存取層級。 信任會提供一個路徑來驗證其他網域中的使用者，使其對這些網域中的共用資源要求可獲得授權，藉此促進跨網域的使用者授權。
 
 當信任網域要驗證信任網域所提出的驗證要求時，此要求會被傳遞至目標資源。 然後，目標資源會根據其存取控制設定來決定是否授權由信任網域的使用者、服務或電腦所提出特定要求。
 
@@ -113,7 +113,7 @@ AD DS Dc 會使用下列其中一種通訊協定來驗證使用者和應用程�
 
 若要深入了解信任，請參閱[樹系信任如何在 Azure AD DS 中工作？][concepts-trust]
 
-若要開始建立具有資源樹系的受控網域，請參閱[建立和設定 AZURE AD DS 受控網域][tutorial-create-advanced]。 接著，您可以[建立內部部署網域的輸出樹系信任][create-forest-trust]。
+若要開始使用資源樹系建立受控網域，請參閱 [建立及設定 AZURE AD DS 受控網域][tutorial-create-advanced]。 然後，您可以 [建立內部部署網域的輸出樹系信任][create-forest-trust]。
 
 <!-- LINKS - INTERNAL -->
 [concepts-trust]: concepts-forest-trust.md

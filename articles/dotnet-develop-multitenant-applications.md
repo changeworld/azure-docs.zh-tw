@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 06/05/2015
 ms.author: wpickett
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: ad77278d593e4b2165708e0c9110a9ffff19a255
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 71114b6663d010437e5778d288eacf4e120b3da5
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017697"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91395969"
 ---
 # <a name="multitenant-applications-in-azure"></a>Azure 中的多租用戶應用程式
-多租使用者應用程式是一種共用資源，可讓「個別租使用者中的使用者」看到應用程式，就好像它本身一樣。 適用于多租使用者應用程式的一般案例之一，是來自不同租使用者的應用程式的所有使用者都可能會想要自訂使用者經驗，但也有相同的基本商務需求。 舉例來說，Office 365、Outlook.com 和 visualstudio.com 都屬於大型多租用戶應用程式。
+多租使用者應用程式是一種共用資源，可讓「個別租使用者中的使用者」看到應用程式，就好像它本身一樣。 適用于多租使用者應用程式的一般案例之一，是來自不同租使用者的應用程式的所有使用者都可能會想要自訂使用者經驗，但也有相同的基本商務需求。 大型多租使用者應用程式的範例包括 Microsoft 365、Outlook.com 和 visualstudio.com。
 
 就應用程式提供者的觀點而言，多租用戶的好處大多與營運和成本效益有關。 您的某個應用程式版本可能符合許多租用戶/客戶的需求，而促使監視、效能調整、軟體維護和資料備份等系統管理工作得以整合。
 
@@ -55,7 +55,7 @@ Azure 有多項功能可讓您處理在設計多租用戶系統時遇到的重�
   * 通常會在應用程式後端處理資料的背景工作角色。
   * 通常作為應用程式前端的 Web 角色。
 
-**Storage**
+**儲存體**
 
 資料管理（例如 Azure SQL Database 或 Azure 儲存體服務）（例如資料表服務）可提供儲存大量非結構化資料和 Blob 服務的服務，以提供服務來儲存大量非結構化文字或二進位資料，例如影片、音訊和影像。
 

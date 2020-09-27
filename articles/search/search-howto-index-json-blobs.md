@@ -8,13 +8,13 @@ ms.author: heidist
 ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 07/11/2020
-ms.openlocfilehash: 6a5a3634f1d5ddc7af2af2e27c2b1d7c8ce9a2af
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/25/2020
+ms.openlocfilehash: c3aa813c671e9755b6ab65ba1e2967876bd170ca
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88917987"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91398335"
 ---
 # <a name="how-to-index-json-blobs-using-a-blob-indexer-in-azure-cognitive-search"></a>如何在 Azure 認知搜尋中使用 Blob 索引子編制 JSON blob 的索引
 
@@ -45,7 +45,7 @@ Azure Blob 儲存體中的 JSON blob 通常是單一 JSON 檔， (剖析模式 `
 
 在搜尋服務的 [總覽] 頁面中，您可以從命令列 [啟動精靈](search-import-data-portal.md) 。
 
-   ![入口網站中的匯入資料命令](./media/search-import-data-portal/import-data-cmd2.png "啟動匯入資料精靈")
+   :::image type="content" source="media/search-import-data-portal/import-data-cmd2.png" alt-text="入口網站中的匯入資料命令" border="false":::
 
 ### <a name="3---set-the-data-source"></a>3 - 設定資料來源
 
@@ -63,7 +63,7 @@ Azure Blob 儲存體中的 JSON blob 通常是單一 JSON 檔， (剖析模式 `
    
 + [儲存體容器]**** 必須指定儲存體帳戶和容器，或是會解析為容器的連接字串。 您可以在 Blob 服務的入口網站頁面上取得連接字串。
 
-   ![Blob 資料來源定義](media/search-howto-index-json/import-wizard-json-data-source.png)
+   :::image type="content" source="media/search-howto-index-json/import-wizard-json-data-source.png" alt-text="Blob 資料來源定義" border="false":::
 
 ### <a name="4---skip-the-enrich-content-page-in-the-wizard"></a>4-略過 wizard 中的 [豐富內容] 頁面
 
@@ -81,7 +81,7 @@ Azure Blob 儲存體中的 JSON blob 通常是單一 JSON 檔， (剖析模式 `
 
 請花一點時間檢閱您的選擇。 一旦執行精靈，就會建立實體的資料結構，而且除非您捨棄並重新建立所有物件，否則將無法編輯這些欄位。
 
-   ![Blob 索引定義](media/search-howto-index-json/import-wizard-json-index.png)
+   :::image type="content" source="media/search-howto-index-json/import-wizard-json-index.png" alt-text="Blob 索引定義" border="false":::
 
 ### <a name="6---create-indexer"></a>6 - 建立索引子
 
@@ -89,7 +89,7 @@ Azure Blob 儲存體中的 JSON blob 通常是單一 JSON 檔， (剖析模式 `
 
 如果您不熟悉索引子， *索引子* 是 Azure 認知搜尋中的資源，可將外部資料源編目以取得可搜尋的內容。 匯 **入資料** wizard 的輸出是一個索引子，可編目您的 JSON 資料來源、解壓縮可搜尋的內容，並將它匯入 Azure 認知搜尋的索引中。
 
-   ![Blob 索引子定義](media/search-howto-index-json/import-wizard-json-indexer.png)
+   :::image type="content" source="media/search-howto-index-json/import-wizard-json-indexer.png" alt-text="Blob 索引子定義" border="false":::
 
 按一下 [確定]**** 來執行精靈並建立所有物件。 編製索引的程序會立即開始。
 
@@ -293,7 +293,7 @@ JSON blob 可採用多種形式。 JSON 索引子上的 **parsingMode** 參數�
 
 | parsingMode | 描述 |
 |-------------|-------------|
-| `json`  | 將每個 blob 的索引編制為單一檔。 這是預設值。 |
+| `json`  | 將每個 blob 的索引編制為單一檔。 此為預設值。 |
 | `jsonArray` | 如果您的 blob 包含 JSON 陣列，且您需要陣列的每個元素成為 Azure 認知搜尋中的個別檔，請選擇此模式。 |
 |`jsonLines` | 如果您的 blob 包含以新行分隔的多個 JSON 實體，而且您需要每個實體成為 Azure 認知搜尋中的個別檔，請選擇此模式。 |
 
@@ -453,7 +453,7 @@ Azure 認知搜尋目前無法直接編制任意 JSON 檔的索引，因為它�
 >
 >
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 + [Azure 認知搜尋中的索引子](search-indexer-overview.md)
 + [使用 Azure 認知搜尋編制索引 Azure Blob 儲存體](search-howto-index-json-blobs.md)

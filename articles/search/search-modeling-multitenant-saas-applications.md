@@ -7,13 +7,13 @@ author: LiamCavanagh
 ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: ea0dac74d4f995e41513b3451dd28d177040e672
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/25/2020
+ms.openlocfilehash: cd21197d6d1559b681ae622b974f6eb7ba95ad3d
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935019"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397363"
 ---
 # <a name="design-patterns-for-multitenant-saas-applications-and-azure-cognitive-search"></a>多租使用者 SaaS 應用程式和 Azure 認知搜尋的設計模式
 
@@ -76,7 +76,8 @@ Azure 認知搜尋提供一些可用於隔離租使用者資料和工作負載�
 3. *兩者混合︰* 針對較大且較活躍的租用戶會指派專用服務，而針對較小的租用戶則會在共用服務內指派個別的索引。
 
 ## <a name="1-index-per-tenant"></a>1. 每個租使用者的索引
-![「每個租用戶都使用專屬索引」模型的圖解](./media/search-modeling-multitenant-saas-applications/azure-search-index-per-tenant.png)
+
+:::image type="content" source="media/search-modeling-multitenant-saas-applications/azure-search-index-per-tenant.png" alt-text="「每個租用戶都使用專屬索引」模型的圖解" border="false":::
 
 在每一租使用者一個索引的模型中，多個租使用者會佔用單一 Azure 認知搜尋服務，其中每個租使用者都有自己的索引。
 
@@ -93,7 +94,8 @@ Azure 認知搜尋可讓個別索引和索引總數成長的比例。 如果選�
 如果單一服務的索引總數成長得太大，則必須佈建另一個服務來容納新的租用戶。 如果在加入新的服務時，必須在搜尋服務之間移動索引，則必須以手動方式將索引中的資料複製到另一個索引，因為 Azure 認知搜尋不允許移動索引。
 
 ## <a name="2-service-per-tenant"></a>2. 每個租使用者的服務
-![「每個租用戶都使用專屬服務」模型的圖解](./media/search-modeling-multitenant-saas-applications/azure-search-service-per-tenant.png)
+
+:::image type="content" source="media/search-modeling-multitenant-saas-applications/azure-search-service-per-tenant.png" alt-text="「每個租用戶都使用專屬服務」模型的圖解" border="false":::
 
 在「每個租用戶都使用專屬服務」架構中，每個租用戶都有自己的搜尋服務。
 

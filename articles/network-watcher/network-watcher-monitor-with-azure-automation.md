@@ -1,5 +1,5 @@
 ---
-title: 疑難排解和監視 VPN 閘道-Azure 自動化
+title: 針對 VPN 閘道進行疑難排解和監視-Azure 自動化
 titleSuffix: Azure Network Watcher
 description: 本文說明如何使用 Azure 自動化和網路監看員診斷內部部署連線
 services: network-watcher
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: d833a4cf26ee8ab69d16cbd1d776ca49a2df4bc4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 273e9f7ce65cdd15000b1cc4ac7c19cde5992992
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84738210"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91396768"
 ---
 # <a name="monitor-vpn-gateways-with-network-watcher-troubleshooting"></a>使用網路監看員疑難排解來監視 VPN 閘道
 
@@ -42,7 +42,7 @@ Runbook 會使用資源疑難排解 API 檢查連線狀態，利用指令碼檢�
 
 - 在 Azure 中使用 Azure 自動化帳戶。 確認自動化帳戶有最新模組，並且也有 AzureRM.Network 模組。 如果您需要將 AzureRM.Network 模組新增至自動化帳戶，可從模組庫取得。
 - 您必須在 Azure 自動化中設定一組認證。 在 [Azure 自動化安全性](../automation/automation-security-overview.md)深入了解
-- 有效的 SMTP 伺服器 (Office 365、您的內部部署電子郵件或其他) 和 Azure 自動化中定義的認證
+- 有效的 SMTP 伺服器 (Microsoft 365、您的內部部署電子郵件或其他) 以及 Azure 自動化中定義的認證
 - 在 Azure 中已設定的虛擬網路閘道。
 - 具有現有容器的儲存體帳戶，用於儲存記錄。
 
@@ -79,13 +79,13 @@ Runbook 會使用資源疑難排解 API 檢查連線狀態，利用指令碼檢�
 
 ### <a name="step-5"></a>步驟 5
 
-runbook 會在此步驟中建立，下列程式碼範例會提供範例所需的所有程式碼。 程式碼中包含的專案，必須 \<value\> 以您的訂用帳戶中的值取代。
+runbook 會在此步驟中建立，下列程式碼範例會提供範例所需的所有程式碼。 包含在程式碼中的專案必須 \<value\> 以您的訂用帳戶中的值取代。
 
 按一下 [儲存]**** 使用下列程式碼
 
 ```powershell
 # Set these variables to the proper values for your environment
-$o365AutomationCredential = "<Office 365 account>"
+$automationCredential = "<work or school account>"
 $fromEmail = "<from email address>"
 $toEmail = "<to email address>"
 $smtpServer = "<smtp.office365.com>"
@@ -99,8 +99,8 @@ $storageAccountName = "<storage account name>"
 $storageAccountResourceGroup = "<resource group name>"
 $storageAccountContainer = "<container name>"
 
-# Get credentials for Office 365 account
-$cred = Get-AutomationPSCredential -Name $o365AutomationCredential
+# Get credentials for work or school account
+$cred = Get-AutomationPSCredential -Name $automationCredential
 
 # Get the connection "AzureRunAsConnection "
 $servicePrincipalConnection=Get-AutomationConnection -Name $runAsConnectionName

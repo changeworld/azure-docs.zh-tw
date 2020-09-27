@@ -9,18 +9,18 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 9c5a2aa6ca75e352a824716c19af923c8628efde
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 087b021f088e344926a44f7e009f273d265dd82b
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91342013"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397618"
 ---
 # <a name="create-azure-arc-data-controller-using-kubernetes-tools"></a>使用 Kubernetes 工具建立 Azure Arc 資料控制器
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 請參閱 [建立 Azure Arc 資料控制器](create-data-controller.md) 的主題，以取得總覽資訊。
 
@@ -30,6 +30,20 @@ ms.locfileid: "91342013"
 
 > [!NOTE]
 > 建立如下所示 Azure Arc 資料控制器的部分步驟需要 Kubernetes 叢集系統管理員許可權。  如果您不是 Kubernetes 叢集系統管理員，就必須讓 Kubernetes 叢集系統管理員代表您執行這些步驟。
+
+#### <a name="cleanup-from-past-installations"></a>從過去安裝清除
+
+如果您已在相同的叢集上安裝 Azure Arc 資料控制器，並使用命令刪除 Azure Arc 的資料控制器 `azdata arc dc delete` ，則可能會有一些可能仍需要刪除的叢集層級物件。 執行下列命令，以刪除 Azure Arc 資料控制器叢集層級物件：
+
+```
+# Cleanup azure arc data service artifacts
+kubectl delete crd datacontrollers.arcdata.microsoft.com 
+kubectl delete sqlmanagedinstances.sql.arcdata.microsoft.com 
+kubectl delete postgresql-11s.arcdata.microsoft.com 
+kubectl delete postgresql-12s.arcdata.microsoft.com
+kubectl delete clusterroles azure-arc-data:cr-arc-metricsdc-reader
+kubectl delete clusterrolebindings azure-arc-data:crb-arc-metricsdc-reader
+```
 
 ## <a name="overview"></a>概觀
 

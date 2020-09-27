@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 7dbb1b4a8b85350b8bf8a6df0c9035a19055444c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3af8a7de7dad3ce20d4f0247892bca83f06c9d22
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79409014"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397295"
 ---
 # <a name="azure-data-catalog-frequently-asked-questions"></a>Azure 資料目錄的常見問題集
 這篇文章提供與 Azure 資料目錄服務相關的常見問題集解答。
@@ -53,13 +53,13 @@ ms.locfileid: "79409014"
 ## <a name="how-do-i-request-support-for-another-data-source"></a>如何要求另一個資料來源的支援？
 若要提交功能要求與其他意見，請前往 [Azure 意見論壇 - 資料目錄](https://feedback.azure.com/forums/906052-data-catalog/category/320788-data-sources)。
 
-## <a name="why-do-i-get-an-error-catalog-already-exists-when-i-try-to-create-a-new-catalog"></a>當我嘗試建立新的類別目錄時，為什麼會收到錯誤*目錄*？
+## <a name="why-do-i-get-an-error-catalog-already-exists-when-i-try-to-create-a-new-catalog"></a>當我嘗試建立新的類別目錄時，為什麼會出現錯誤 *目錄* ？
 
-當您購買具有 Power BI Pro 授權的 Office 365 E5 時，Microsoft 會自動在訂用帳戶的區域中建立預設目錄。 此目錄使用免費的 SKU。 Office 365/Power BI 使用者授權是在 Office 365 管理頁面中進行管理。 
+當您使用 Power BI Pro 授權購買 Office 365 E5 時，Microsoft 會自動在訂用帳戶的區域中建立預設目錄。 此目錄使用免費的 SKU。 Office 365/Power BI 使用者授權是在 [管理] 頁面中進行管理。 
 
-不過，這種類型的資料目錄並沒有**系統管理員選項**，而且在**Azure 入口網站**中看不到。 您無法刪除這種類型的資料目錄。 同樣地，您不能重新命名資料目錄，也無法將它移至另一個區域。 
+不過，這種類型的資料目錄沒有 **系統管理員選項** ，在 **Azure 入口網站**中看不到。 您無法刪除這種類型的資料目錄。 同樣地，您也不能將資料目錄重新命名，也無法將它移到另一個區域。 
 
-指派 Power BI Pro 授權的使用者帳戶，會在使用 Power BI Pro 授權註冊 Office 365 E5 時，自動擁有資料目錄的存取權。 這種類型的使用者在沒有系統管理許可權的情況下，具有資料目錄資產的完整存取權。 這種類型的使用者*不*是 Azure 資料目錄中**目錄使用者**角色的一部分。
+獲指派 Power BI Pro 授權的使用者帳戶，會在使用者以 Power BI Pro 授權註冊 Office 365 E5 時，自動擁有資料目錄的存取權。 這種類型的使用者在沒有系統管理許可權的情況下，擁有資料目錄資產的完整存取權。 這種類型的使用者 *不* 是 Azure 資料目錄中 **目錄使用者** 角色的一部分。
 
 
 ## <a name="how-do-i-get-started-with-data-catalog"></a>如何開始使用資料目錄？
@@ -87,7 +87,7 @@ ms.locfileid: "79409014"
 >
 
 > [!NOTE]
-> 若資料來源 (例如 SQL Server Analysis Services) 具有第一級的 **Description** 屬性，資料目錄的資料來源註冊工具就會擷取該屬性值。 若為*內部部署*SQL Server 缺少第一類**Description**屬性的關係資料庫，資料目錄資料來源註冊工具會從物件和資料行的**ms_description**擴充屬性中，解壓縮值。 SQL Azure 不支援這個屬性。 如需詳細資訊，請參閱[使用資料庫物件的擴充屬性](https://technet.microsoft.com/library/ms190243%28v=sql.105%29.aspx)。
+> 若資料來源 (例如 SQL Server Analysis Services) 具有第一級的 **Description** 屬性，資料目錄的資料來源註冊工具就會擷取該屬性值。 若為 *內部部署* SQL Server 缺少第一級 **Description** 屬性的關係資料庫，資料目錄資料源註冊工具會從物件和資料行的 **ms_description** 擴充屬性中，解壓縮出值。 SQL Azure 不支援這個屬性。 如需詳細資訊，請參閱[使用資料庫物件的擴充屬性](https://technet.microsoft.com/library/ms190243%28v=sql.105%29.aspx)。
 >
 >
 

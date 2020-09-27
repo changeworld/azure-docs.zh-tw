@@ -7,12 +7,12 @@ ms.author: jpalma
 ms.date: 06/29/2020
 ms.custom: fasttrack-edit
 author: palma21
-ms.openlocfilehash: 236b69b1e10eb80b9c0a5e27b213eb3972209346
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 67eeb181f64f5924a90fd2c03e39e1be9887dd2e
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91361036"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397159"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>控制 Azure Kubernetes Service (AKS) 中叢集節點的連出流量
 
@@ -205,10 +205,7 @@ AKS 叢集需要下列網路和 FQDN/應用程式規則，如果您想要設定 
 | `storage.googleapis.com` | **`HTTPS:443`** | 此位址是用來提取 helm/tiller 映像 |
 
 
-### <a name="azure-policy-preview"></a>Azure 原則 (preview) 
-
-> [!CAUTION]
-> 下列部分功能目前為預覽狀態。  隨著功能移至公開預覽階段和未來發行階段，此文章中的建議可能會有所變更。
+### <a name="azure-policy"></a>Azure 原則
 
 #### <a name="required-fqdn--application-rules"></a>必要的 FQDN/應用程式規則 
 
@@ -219,7 +216,6 @@ AKS 叢集需要下列網路和 FQDN/應用程式規則，如果您想要設定 
 | **`gov-prod-policy-data.trafficmanager.net`** | **`HTTPS:443`** | 此位址是用來確保 Azure 原則的正確運作。 (目前在 AKS 中為預覽狀態) |
 | **`raw.githubusercontent.com`**               | **`HTTPS:443`** | 此位址是用來從 GitHub 提取內建原則，以確保 Azure 原則的正確運作。 (目前在 AKS 中為預覽狀態) |
 | **`dc.services.visualstudio.com`**            | **`HTTPS:443`** | Azure 原則附加元件，其會將遙測資料傳送至 Application Insights 端點。 |
-
 
 ## <a name="restrict-egress-traffic-using-azure-firewall"></a>使用 Azure 防火牆限制輸出流量
 

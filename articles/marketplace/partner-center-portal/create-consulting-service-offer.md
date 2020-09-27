@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 06/17/2020
-ms.openlocfilehash: 6ca03e56d49d26fcd34a25ce1e3734db65b19b65
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 7b42c12499977b5f7bc1704c57904e90be2e8466
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89646842"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91398009"
 ---
 # <a name="create-a-consulting-service-offer"></a>建立諮詢服務供應項目
 
@@ -25,7 +25,7 @@ ms.locfileid: "89646842"
 發佈至商業市集的優點：
 
 - 使用 Microsoft 品牌來推廣您的公司。
-- 可能接觸到 AppSource 上超過 100 萬個 Office 365 和 Dynamics 365 使用者，且透過 Azure Marketplace 接觸 200,000 個以上的組織。
+- 透過 Azure Marketplace，有可能觸及超過 100000000 Microsoft 365 和 Dynamics 365 使用者 AppSource 及超過200000個組織。
 - 從這些市集獲得高品質潛在客戶。
 - 讓 Microsoft 現場和電話銷售團隊推廣您的服務
 

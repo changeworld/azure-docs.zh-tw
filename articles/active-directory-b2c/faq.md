@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 85ce79644ead939eaeffa5cfffeb495da15e7fe5
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: e701ac8cee15a338c363ec2697e02e82bb4f4e68
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88270660"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91396428"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C：常見問題集 (FAQ)
 
@@ -29,9 +29,9 @@ Azure AD 擴充功能無法運作有兩個常見原因。 Azure AD B2C 要求您
 
 Azure AD 和 Azure AD B2C 為個別的產品供應項目，無法共存於同一個租用戶。 一個 Azure AD 租用戶代表一個組織。 一個 Azure AD B2C 租用戶代表一組要用於信賴憑證者應用程式的身分識別。 藉由在**Azure AD B2C > 識別提供者**或自訂原則下加入**新的 OpenID Connect 提供者**，Azure AD B2C 可以同盟至 Azure AD 允許組織中的員工進行驗證。
 
-### <a name="can-i-use-azure-ad-b2c-to-provide-social-login-facebook-and-google-into-office-365"></a>我可以使用 Azure AD B2C 來提供 Office 365 的社交登入 (Facebook 和 Google+) 嗎？
+### <a name="can-i-use-azure-ad-b2c-to-provide-social-login-facebook-and-google-into-microsoft-365"></a>我可以使用 Azure AD B2C 將 (Facebook 和 Google +) 的社交登入提供給 Microsoft 365 嗎？
 
-Azure AD B2C 無法用來驗證 Microsoft Office 365 的使用者。 Azure AD 是 Microsoft 的解決方案，可讓您管理員工對 SaaS 應用程式的存取，而且它具有專為此用途而設計的功能，例如授權和條件式存取。 Azure AD B2C 提供身分識別和存取管理平台來建置 web 和行動應用程式。 當 Azure AD B2C 設定為與 Azure AD 租用戶結成同盟時，Azure AD 租用戶會管理員工如何存取依賴 Azure AD B2C 的應用程式。
+Azure AD B2C 不能用來驗證 Microsoft 365 的使用者。 Azure AD 是 Microsoft 的解決方案，可讓您管理員工對 SaaS 應用程式的存取，而且它具有專為此用途而設計的功能，例如授權和條件式存取。 Azure AD B2C 提供身分識別和存取管理平台來建置 web 和行動應用程式。 當 Azure AD B2C 設定為與 Azure AD 租用戶結成同盟時，Azure AD 租用戶會管理員工如何存取依賴 Azure AD B2C 的應用程式。
 
 ### <a name="what-are-local-accounts-in-azure-ad-b2c-how-are-they-different-from-work-or-school-accounts-in-azure-ad"></a>Azure AD B2C 中的本機帳戶是什麼？ 與 Azure AD 中的工作或學校帳戶有何不同？
 
@@ -166,7 +166,7 @@ Azure AD B2C 不適用於 SharePoint 外部夥伴共用的情節。請改以參�
 1. 選取左側功能表上的 **Azure Active Directory** 。
 1. 在 [管理] 底下選取 [使用者]。
 1. 依次選取每個使用者 (將您目前登入的 *訂用帳戶系統管理員* 使用者排除為) 。 選取頁面底部的 [ **刪除** ]，然後在出現提示時選取 **[是]** 。
-1. 在 [管理]  底下選取 [應用程式註冊]  。
+1. 在 [管理] 底下，選取 [應用程式註冊]。
 1. 選取 [ **View all applications** ]
 1. 選取名為 **b2c-extensions-app**的應用程式，選取 [ **刪除**]，然後在出現提示時選取 **[是]** 。
 1. 在 [ **管理**] 底下，選取 [ **使用者設定**]。

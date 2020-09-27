@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/03/2020
 ms.author: aahi
 ms.custom: seodec18
-ms.openlocfilehash: a2469768c2207210e17035a67d4b05fb0cc6bb6c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 28116a373b66aa5bfa6d3ebbf027c2db6d24ba5d
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91254171"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397125"
 ---
 # <a name="configure-computer-vision-docker-containers"></a>設定電腦視覺 Docker 容器
 
@@ -33,10 +33,12 @@ ms.locfileid: "91254171"
 
 |必要|設定|目的|
 |--|--|--|
-|否|ReadEngineConfig:ResultExpirationPeriod|結果到期期間（以小時為單位）。 預設值為 48 小時。 設定會指定系統應該清除辨識結果的時間。 例如，如果為 `resultExpirationPeriod=1` ，則系統會在處理常式之後清除辨識結果1小時。 如果為 `resultExpirationPeriod=0` ，則系統會在取出結果之後清除辨識結果。|
-|否|Cache： Redis|啟用 Redis 儲存體以儲存結果。 如果有多個讀取容器放在負載平衡器後方，就 *需要* 快取。|
-|否|佇列： RabbitMQ|啟用 RabbitMQ 來分派工作。 當有多個讀取容器放在負載平衡器後方時，此設定會很有用。|
-|否|儲存體：:D ocumentStore：： MongoDB|啟用 MongoDB 以永久儲存結果。|
+|否|ReadEngineConfig:ResultExpirationPeriod| 僅限 v2.0 容器。 結果到期期間（以小時為單位）。 預設值為 48 小時。 設定會指定系統應該清除辨識結果的時間。 例如，如果為 `resultExpirationPeriod=1` ，則系統會在處理常式之後清除辨識結果1小時。 如果為 `resultExpirationPeriod=0` ，則系統會在取出結果之後清除辨識結果。|
+|否|Cache： Redis| 僅限 v2.0 容器。 啟用 Redis 儲存體以儲存結果。 如果有多個讀取容器放在負載平衡器後方，就 *需要* 快取。|
+|否|佇列： RabbitMQ|僅限 v2.0 容器。 啟用 RabbitMQ 來分派工作。 當有多個讀取容器放在負載平衡器後方時，此設定會很有用。|
+|否|佇列： Azure： QueueVisibilityTimeoutInMilliseconds | 僅限 v3. x 容器。 當另一個背景工作正在處理訊息時，該訊息會顯示為不可見的時間。 |
+|否|儲存體：:D ocumentStore：： MongoDB|僅限 v2.0 容器。 啟用 MongoDB 以永久儲存結果。 |
+|否|儲存體： Objectstore 會： AzureBlob： ConnectionString| 僅限 v3. x 容器。 Azure blob 儲存體連接字串。 |
 
 ## <a name="apikey-configuration-setting"></a>ApiKey 組態設定
 
@@ -118,6 +120,30 @@ ms.locfileid: "91254171"
 下列 Docker 範例適用于讀取容器。
 
 
+# <a name="version-31-preview"></a>[版本 3.1-預覽](#tab/version-3-1)
+
+### <a name="basic-example"></a>基本範例
+
+```bash
+docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
+mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview \
+Eula=accept \
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY}
+
+```
+
+### <a name="logging-example"></a>記錄範例 
+
+```bash
+docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
+mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview \
+Eula=accept \
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY}
+Logging:Console:LogLevel:Default=Information
+```
+
 # <a name="version-30-preview"></a>[3.0-preview 版](#tab/version-3)
 
 ### <a name="basic-example"></a>基本範例
@@ -141,13 +167,13 @@ ApiKey={API_KEY}
 Logging:Console:LogLevel:Default=Information
 ```
 
-# <a name="version-31-preview"></a>[版本 3.1-預覽](#tab/version-3-1)
+# <a name="version-20-preview"></a>[版本 2.0-預覽](#tab/version-2)
 
 ### <a name="basic-example"></a>基本範例
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
-mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview \
+mcr.microsoft.com/azure-cognitive-services/vision/read:2.0-preview \
 Eula=accept \
 Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}
@@ -158,7 +184,7 @@ ApiKey={API_KEY}
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
-mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview \
+mcr.microsoft.com/azure-cognitive-services/vision/read:2.0-preview \
 Eula=accept \
 Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}

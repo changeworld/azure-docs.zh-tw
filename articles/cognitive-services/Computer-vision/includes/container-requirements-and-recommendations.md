@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: bffdb7b33fc7da38b6985edc3948b848f417a497
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 3ab5462cc2b368bd1518606b03c8ec1027bc31c3
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90982074"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397178"
 ---
 > [!NOTE]
 > 需求和建議是以每秒單一要求的基準測試為基礎，使用已掃描之商務信件的 8 MB 影像（包含29行，共803個字元）。
@@ -22,6 +22,7 @@ ms.locfileid: "90982074"
 
 | 容器 | 最小值 | 建議 |
 |-----------|---------|-------------|
+| 閱讀 2.0-預覽 | 1核心，8 GB 記憶體 |  8核心，16 GB 記憶體 |
 | 閱讀 3.0-預覽 | 8核心，16 GB 記憶體 | 8核心，24 GB 記憶體 |
 | 閱讀 3.1-預覽 | 8核心，16 GB 記憶體 | 8核心，24 GB 記憶體 |
 

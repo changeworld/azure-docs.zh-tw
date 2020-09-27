@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 09/25/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 3f3c53d412105489a814f082bbc0fd209476ecf9
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 7f6be959bf09cbe20bb37dfa3d17d64467758bd6
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90971386"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397890"
 ---
 # <a name="indexers-in-azure-cognitive-search"></a>Azure 認知搜尋中的索引子
 
@@ -60,7 +60,7 @@ Azure 認知搜尋中的 *索引子* 是一種編目程式，可從外部 Azure 
 
 針對它內嵌的每個檔，索引子會從檔抓取執行多個步驟，從檔抓取到最終搜尋引擎「提交」以進行編制索引。 （選擇性）索引子也有助於駕駛技能集執行和輸出（假設技能集已定義）。
 
-![索引子階段](./media/search-indexer-overview/indexer-stages.png "索引子階段")
+:::image type="content" source="media/search-indexer-overview/indexer-stages.png" alt-text="索引子階段" border="false":::
 
 ### <a name="stage-1-document-cracking"></a>階段1：檔破解
 
@@ -167,7 +167,7 @@ api-key: [Search service admin key]
 
 執行歷程記錄包含多達 50 個最近完成的執行，以倒序的方式進行儲存 (因此最新的執行會排在回應中的第一位)。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 既然您已瞭解基本概念，下一個步驟是檢閱需求和每個資料來源類型特有的工作。
 
 * [Azure 虛擬機器上的 Azure SQL Database、SQL 受控執行個體或 SQL Server](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)

@@ -1,6 +1,6 @@
 ---
 title: 將 StorSimple 5000-7000 系列的資料移轉到 8000 系列裝置| Microsoft Docs
-description: 瞭解如何將 StorSimple 5000-7000 系列的資料移轉至8000系列裝置，以及遷移程式的必要條件。
+description: 瞭解如何將 StorSimple 5000-7000 系列的資料移轉至8000系列裝置，以及如何在遷移過程中提供必要條件。
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -11,14 +11,14 @@ ms.devlang: NA
 ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/23/2018
+ms.date: 09/25/2020
 ms.author: alkohli
-ms.openlocfilehash: 0fc18c6d67935889b0ba0c306dc326eca3b888f5
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: f6fffadd3c53f67af2e4c833a6a1d442c18efa0b
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88184290"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91398181"
 ---
 # <a name="migrate-data-from-storsimple-5000-7000-series-to-8000-series-device"></a>將 StorSimple 5000-7000 系列的資料移轉到 8000 系列裝置
 
@@ -80,8 +80,8 @@ ms.locfileid: "88184290"
 
     ![請檢查繼承裝置上的軟體版本](media/storsimple-8000-migrate-from-5000-7000/check-version-legacy-device1.png)
 
-    * 如果您使用中的裝置並非執行 v2.1.1.518 或更新版本，請將系統升級到所要求的最低版本。 如需詳細說明，請參閱[將系統升級至 v2.1.1.518](http://onlinehelp.storsimple.com/111_Appliance/6_System_Upgrade_Guides/Current_(v2.1.1)/000_Software_Patch_Upgrade_Guide_v2.1.1.518)。
-    * 如果您執行的是 v2.1.1.518，請移至 Web UI，查看是否有任何登錄還原失敗的通知。 如果登錄還原失敗，請執行登錄還原。 如需詳細資訊，請移至[執行登錄還原](http://onlinehelp.storsimple.com/111_Appliance/2_User_Guides/1_Current_(v2.1.1)/1_Web_UI_User_Guide_WIP/2_Configuration/4_Cloud_Accounts/1_Cloud_Credentials#Restoring_Backup_Registry)。
+    * 如果您使用中的裝置並非執行 v2.1.1.518 或更新版本，請將系統升級到所要求的最低版本。 您可能需要使用 Microsoft 支援服務來協助您執行升級。
+    * 如果您執行的是 v2.1.1.518，請移至 Web UI，查看是否有任何登錄還原失敗的通知。 如果登錄還原失敗，請執行登錄還原。 您可能需要使用 Microsoft 支援服務協助您還原登錄。
     * 如果關閉的裝置並非執行 v2.1.1.518，請容錯移轉至執行 v2.1.1.518 的備用裝置。 如需詳細說明，請參閱 5000/7000 系列 StorSimple 裝置的 DR。
     * 製作雲端快照集來備份裝置的資料。
     * 檢查來源裝置上是否在執行其他任何進行中的備份作業。 StorSimple 資料保護主控台主機上的作業也包括在內。 請等候目前的工作完成。

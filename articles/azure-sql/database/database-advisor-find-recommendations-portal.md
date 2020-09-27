@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, sstein
 ms.date: 12/19/2018
-ms.openlocfilehash: 0e13d69b8d821267a993cd2ca9a3b6d0d686ccf9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e96db18993dbb18ebf51d0b30e9172901d10df5b
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91284528"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91398266"
 ---
 # <a name="find-and-apply-performance-recommendations"></a>尋找和套用效能建議
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -39,7 +39,7 @@ ms.locfileid: "91284528"
 
 依照可能帶來的效能影響排序，建議分成下列類別：
 
-| 影響 | 說明 |
+| 影響 | 描述 |
 |:--- |:--- |
 | 高 |高影響建議提供最明顯的效能影響。 |
 | 中型 |中度影響建議會改善效能，但不顯著。 |
@@ -103,7 +103,7 @@ Azure SQL Database 可讓您使用下列 3 個選項的其中任一選項來控�
    ![建議程式設定](./media/database-advisor-find-recommendations-portal/settings.png)
 2. 選取要自動執行的動作：
 
-   ![建議的索引](./media/database-advisor-find-recommendations-portal/server.png)
+   ![螢幕擷取畫面，顯示要在哪裡選取要自動執行的動作。](./media/database-advisor-find-recommendations-portal/server.png)
 
 > [!NOTE]
 > 請注意，**DROP_INDEX** 選項目前與使用分割區切換和索引提示的應用程式並不相容。
@@ -139,7 +139,7 @@ Azure SQL Database 可讓您使用下列 3 個選項的其中任一選項來控�
 
 按一下清單中正在處理的建議以查看其詳細資訊：
 
-![建議的索引](./media/database-advisor-find-recommendations-portal/operations.png)
+![顯示同進程建議清單的螢幕擷取畫面。](./media/database-advisor-find-recommendations-portal/operations.png)
 
 ### <a name="reverting-a-recommendation"></a>還原建議
 

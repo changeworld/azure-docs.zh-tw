@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 09/15/2020
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8dc229b366a7816c861da665c73d6421e67545c6
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 06900483598e1c03bd56cd8ac8c905f885012f08
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90985911"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91395884"
 ---
 # <a name="identity-data-storage-for-european-customers-in-azure-active-directory"></a>Azure Active Directory 中歐洲客戶的身分識別資料儲存體
 在訂閱 Microsoft 線上服務（例如 Microsoft 365 和 Azure）時，會根據組織提供的位址，在地理位置 Azure AD 儲存身分識別資料。 如需識別資料儲存位置的資訊，您可以使用 Microsoft 信任中心的 [ [資料的所在位置？](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located) ] 區段。
@@ -35,6 +35,10 @@ ms.locfileid: "90985911"
 * 使用來自 EU 資料中心之 OATH 代碼的多重要素驗證要求，會在歐盟進行驗證。
 
 如需 Azure Multi-Factor Authentication Server (MFA Server) 和雲端式 Azure MFA 收集哪些使用者資訊的詳細資訊，請參閱 [azure Multi-Factor Authentication 使用者資料收集](../authentication/howto-mfa-reporting-datacollection.md)。
+
+## <a name="password-based-single-sign-on-for-enterprise-applications"></a>企業應用程式以密碼為基礎的單一登入
+ 
+如果客戶建立新的企業應用程式 (Azure AD 資源庫或非資源庫) ，並啟用密碼型 SSO，則應用程式登入 URL 和自訂捕獲登入欄位會儲存在美國。 如需這項功能的詳細資訊，請參閱 [設定密碼型單一登入](../manage-apps/configure-password-single-sign-on-non-gallery-applications.md)
 
 ## <a name="microsoft-azure-active-directory-b2c-azure-ad-b2c"></a>Microsoft Azure Active Directory B2C (Azure AD B2C)
 
@@ -63,7 +67,7 @@ Azure AD DS 會將使用者資料儲存在與客戶選取的 Azure 虛擬網路�
 
 若想進一步了解 Microsoft 服務的資料存放處，請參閱 Microsoft 信任中心的 [您的資料所在位置](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located) 區段。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 如需前述任何特性和功能的詳細資訊，請參閱下列文章：
 - [何謂 Multi-Factor Authentication？](../authentication/concept-mfa-howitworks.md)
 

@@ -5,18 +5,18 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 09/10/2019
-author: luisbosquez
-ms.author: lbosq
-ms.openlocfilehash: a0feac9bbd98dc4c67464e84e9a3204bd9730355
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+author: SnehaGunda
+ms.author: sngun
+ms.openlocfilehash: c03e4db30d590df21a8ceb3c483ece4b59e548d8
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85390341"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397312"
 ---
 # <a name="system-document-properties"></a>系統文件屬性
 
-Azure Cosmos DB 在每份檔上都有[系統屬性](/rest/api/cosmos-db/databases) ```_ts``` ，例如、 ```_self``` 、 ```_attachments``` 、 ```_rid``` 和 ```_etag``` 。 此外，Gremlin 引擎會在邊緣上新增 ```inVPartition``` 和 ```outVPartition``` 屬性。 根據預設，這些屬性都可以周遊。 不過，可以在 Gremlin 周遊中納入特定屬性或所有屬性。
+Azure Cosmos DB [system properties](/rest/api/cosmos-db/databases) ```_ts``` ```_self``` ```_attachments``` ```_rid``` ```_etag``` 在每個檔上都有系統屬性，例如、、、和。 此外，Gremlin 引擎會在邊緣上新增 ```inVPartition``` 和 ```outVPartition``` 屬性。 根據預設，這些屬性都可以周遊。 不過，可以在 Gremlin 周遊中納入特定屬性或所有屬性。
 
 ```
 g.withStrategies(ProjectionStrategy.build().IncludeSystemProperties('_ts').create())

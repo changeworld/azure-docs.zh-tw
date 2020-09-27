@@ -7,12 +7,12 @@ author: danimir
 ms.author: danil
 ms.date: 09/19/2020
 ms.reviewer: carlrab
-ms.openlocfilehash: 663c852574667e45a39241575d6b50038495c33d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 0015138f4da9f66e2f9148e468dd1b5543ae0c4b
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91319583"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397074"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>使用 Azure SQL 分析來監視 Azure SQL Database (預覽)
 
@@ -43,7 +43,7 @@ Azure SQL 分析是僅限雲端的監視解決方案，支援所有 Azure SQL �
 
 下表概述 Azure SQL 分析儀表板的兩個版本支援的選項，一個適用于 Azure SQL Database，另一個適用于 Azure SQL 受控執行個體資料庫。
 
-| Azure SQL 分析選項 | 說明 | SQL Database 支援 | SQL 受控執行個體支援 |
+| Azure SQL 分析選項 | 描述 | SQL Database 支援 | SQL 受控執行個體支援 |
 | --- | ------- | ----- | ----- |
 | 資源 (依類型) | 可計算所有受監視資源的檢視方塊。 | 是 | 是 |
 | 深入解析 | 可透過階層的方式，向下鑽研至 Intelligent Insights 乃至效能。 | 是 | 是 |
@@ -90,11 +90,11 @@ Azure SQL 分析提供兩個不同的視圖，一個用於監視 SQL Database，
 
 選取適用於資料庫的 [Azure SQL 分析] 圖格後，便會顯示監視儀表板。
 
-![Azure SQL 分析概觀](./media/azure-sql/azure-sql-sol-overview.png)
+![顯示監視儀表板的螢幕擷取畫面。](./media/azure-sql/azure-sql-sol-overview.png)
 
 選取任何磚，以便在特定的檢視方塊中開啟向下鑽研報表。 一旦選取檢視方塊，向下鑽研報表隨即開啟。
 
-![Azure SQL 分析逾時](./media/azure-sql/azure-sql-sol-metrics.png)
+![顯示向下切入至特定觀點之報表的螢幕擷取畫面。](./media/azure-sql/azure-sql-sol-metrics.png)
 
 此視圖中的每個觀點都會提供訂用帳戶、伺服器、彈性集區和資料庫層級的摘要。 此外，每個檢視方塊都會在右側顯示檢視方塊專屬的報表。 從清單中選取訂用帳戶、伺服器、集區或資料庫可繼續往下鑽研。
 

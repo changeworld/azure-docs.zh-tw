@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: cynthn
-ms.openlocfilehash: 321f6bd6324613967001139e365d96521217d50b
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: fdde7613627c9fec0694f3985f78cf10e52f59c2
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87267246"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397091"
 ---
 # <a name="install-and-configure-postgresql-on-azure"></a>安裝和設定 Azure 上的 PostgreSQL
 PostgreSQL 是與 Oracle 和 DB2 類似的進階開放原始碼資料庫。 它包含企業用功能，例如完整的 ACID 的相容性、可靠的交易式程序，以及多版本的並行控制。 它也支援標準，例如 ANSI SQL 和 SQL/MED (包括 Oracle、MySQL、MongoDB 和許多其他項目的外部資料包裝函式)。 其高度可擴充性支援超過 12 種程序性語言、GIN 和 GiST 索引、空間資料支援和多個類似 NoSQL 的功能，適用於 JSON 或以索引鍵-值為基礎的應用程式。
@@ -76,7 +76,7 @@ PostgreSQL 是與 Oracle 和 DB2 類似的進階開放原始碼資料庫。 它�
     # ./configure --prefix=/opt/postgresql-9.3.5
     ```
 
-5. 如果您想要建立可建立的所有專案，包括檔（HTML 和 man 頁面）和其他模組（ `contrib` ），請改為執行下列命令：
+5. 如果您想要建立可建立的所有專案，包括 (HTML 和 man 頁面的檔) 和其他 () 的模組 `contrib` ，請改為執行下列命令：
 
     ```console
     # gmake install-world
@@ -164,7 +164,7 @@ PostgreSQL 是與 Oracle 和 DB2 類似的進階開放原始碼資料庫。 它�
 
     您應該會收到下列輸出：
 
-![image](./media/postgresql-install/no1.png)
+![顯示初始化資料庫之後輸出的螢幕擷取畫面。](./media/postgresql-install/no1.png)
 
 ## <a name="set-up-postgresql"></a>設定 PostgreSQL
 <!--    [postgres@ test ~]$ exit -->
@@ -185,7 +185,7 @@ PostgreSQL 是與 Oracle 和 DB2 類似的進階開放原始碼資料庫。 它�
 # sed -i '35s#usr/local/pgsql/data#opt/pgsql_data#' /etc/init.d/postgresql
 ```
 
-![image](./media/postgresql-install/no2.png)
+![顯示安裝前置詞和資料目錄的螢幕擷取畫面。](./media/postgresql-install/no2.png)
 
 變更檔案，使其可執行：
 
@@ -207,7 +207,7 @@ PostgreSQL 是與 Oracle 和 DB2 類似的進階開放原始碼資料庫。 它�
 
 您應該會看見下列輸出：
 
-![image](./media/postgresql-install/no3.png)
+![顯示于 postgresql 端點的螢幕擷取畫面。](./media/postgresql-install/no3.png)
 
 ## <a name="connect-to-the-postgres-database"></a>連接到 Postgres 資料庫
 再一次切換到 postgres 使用者：
@@ -246,11 +246,11 @@ CREATE TABLE potluck (name VARCHAR(20),    food VARCHAR(30),    confirmed CHAR(1
 
 如果您成功建立資料表，您會看到下列內容：
 
-![image](./media/postgresql-install/no4.png)
+![顯示成功建立資料表時所顯示之訊息的螢幕擷取畫面。](./media/postgresql-install/no4.png)
 
 您也可以利用下列命令檢查資料表結構：
 
-![image](./media/postgresql-install/no5.png)
+![顯示檢查資料表結構之命令的螢幕擷取畫面。](./media/postgresql-install/no5.png)
 
 ### <a name="add-data-to-a-table"></a>將資料新增至資料表
 首先，將資料插入資料列：
@@ -259,9 +259,9 @@ CREATE TABLE potluck (name VARCHAR(20),    food VARCHAR(30),    confirmed CHAR(1
 INSERT INTO potluck (name, food, confirmed, signup_date) VALUES('John', 'Casserole', 'Y', '2012-04-11');
 ```
 
-您應該會看見此輸出：
+您應該會看見下列輸出：
 
-![image](./media/postgresql-install/no6.png)
+![顯示您所加入之資料列資訊的螢幕擷取畫面。](./media/postgresql-install/no6.png)
 
 您也可以將更多人員新增至資料表。 以下是一些選項，或者您可以建立自己的選項：
 
@@ -282,7 +282,7 @@ select * from potluck;
 
 輸出如下：
 
-![image](./media/postgresql-install/no7.png)
+![顯示命令輸出的螢幕擷取畫面，可顯示資料表。](./media/postgresql-install/no7.png)
 
 ### <a name="delete-data-in-a-table"></a>刪除資料表中的資料
 使用下列命令刪除資料表中的資料：
@@ -296,7 +296,7 @@ delete from potluck where name=’John’;
 ![image](./media/postgresql-install/no8.png)
 
 ### <a name="update-data-in-a-table"></a>更新資料表中的資料
-使用下列命令更新資料表中的資料。 在此情況下，Sandy 已確認他們正在參與，所以我們會將 RSVP 從 "N" 變更為 "Y"：
+使用下列命令更新資料表中的資料。 針對此一，Sandy 確認他們正在參與，因此我們會將回復從 "N" 變更為 "Y"：
 
 ```sql
 UPDATE potluck set confirmed = 'Y' WHERE name = 'Sandy';

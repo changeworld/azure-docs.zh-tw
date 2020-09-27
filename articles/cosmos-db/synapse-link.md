@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 4226676ed7fbaf5b2998306fa5240316c327d59c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 89282b0cc07f210e7bbf80503c9dbef5f97b13a2
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90891482"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397329"
 ---
 # <a name="what-is-azure-synapse-link-for-azure-cosmos-db-preview"></a>什麼是適用於 Azure Cosmos DB 的 Azure Synapse Analytics (預覽)？
 
@@ -116,7 +116,7 @@ Azure Cosmos DB 分析存放區是 Azure Cosmos DB 中操作資料的資料行�
 
 ## <a name="limitations"></a>限制
 
-* Azure Cosmos DB SQL (Core) API 和適用于 MongoDB 的 Azure Cosmos DB API 都支援 Azure Synapse 連結。 Cassandra API 的支援目前位於閘道預覽下。 若要要求存取有限預覽，請寄電子郵件至 [Azure Cosmos DB 小組](mailto:cosmosdbsynapselink@microsoft.com)。
+* Azure Cosmos DB SQL (Core) API 和適用于 MongoDB 的 Azure Cosmos DB API 都支援 Azure Synapse 連結。
 
 * 目前，只能針對新的容器啟用分析存放區。 若要使用現有容器的分析存放區，請使用 [Azure Cosmos DB 遷移工具](cosmosdb-migrationchoices.md)，將資料從現有容器遷移至新的容器。 您可以在新的和現有的 Azure Cosmos DB 帳戶上啟用 Synapse 連結。
 
