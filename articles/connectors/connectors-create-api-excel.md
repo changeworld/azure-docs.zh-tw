@@ -1,22 +1,22 @@
 ---
-title: 在 Excel Online 中管理資料、工作表和資料表
-description: 使用 Azure Logic Apps，在商務用 Excel Online 或適用于 OneDrive 的 Excel online 中管理工作表和資料表中的資料
+title: 管理 Excel Online 中的資料、工作表和資料表
+description: 使用 Azure Logic Apps 管理 Excel Online for Business 或 Excel Online 中的工作表和資料表中的資料
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 08/23/2018
 tags: connectors
-ms.openlocfilehash: b1df1219590aa94331a4404b1315eb7231c59699
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 097db6683127b410e713be53e6de838cf7734ddc
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75445874"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400718"
 ---
 # <a name="manage-excel-online-data-with-azure-logic-apps"></a>使用 Azure Logic Apps 來管理 Excel Online 資料
 
-您可以使用[Azure Logic Apps](../logic-apps/logic-apps-overview.md)和[商務](/connectors/excelonlinebusiness/)用 Onedrive 連接器或[excel online for onedrive](/connectors/excelonline/)連接器，根據您在商務用 excel online 或 onedrive 中的資料，建立自動化的工作和工作流程。 此連接器所提供的動作，可協助您處理資料和管理試算表，例如：
+使用 [Azure Logic Apps](../logic-apps/logic-apps-overview.md) 和 [Excel online](/connectors/excelonlinebusiness/) For Business connector 或 [excel online for onedrive](/connectors/excelonline/) 連接器，您可以根據您在 Excel online for business 或 onedrive 中的資料，建立自動化的工作和工作流程。 此連接器所提供的動作，可協助您處理資料和管理試算表，例如：
 
 * 建立新的工作表和資料表。
 * 取得及管理工作表、資料表和資料列。
@@ -33,7 +33,7 @@ ms.locfileid: "75445874"
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先[註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
 
-* 適用於您的工作帳戶或個人 Microsoft 帳戶的 [Office 365 帳戶](https://www.office.com/)
+* 公司帳戶或個人 Microsoft 帳戶的[公司或學校帳戶](https://www.office.com/)
 
   您的 Excel 資料可以是儲存體資料夾中 (例如在 OneDrive 中) 的逗號分隔值 (CSV) 檔案。 
   您也可以使用此相同的 CSV 檔案，與[一般檔案連接器](../logic-apps/logic-apps-enterprise-integration-flatfile.md)搭配使用。
@@ -53,7 +53,7 @@ ms.locfileid: "75445874"
    > [!NOTE]
    > 邏輯應用程式設計工具無法載入具有100或更多資料行的資料表。 可能的話，請減少所選資料表中的資料行數目，讓設計工具可以載入資料表。
 
-1. 若出現提示，請登入您的 Office 365 帳戶。
+1. 如果出現提示，請登入您的公司或學校帳戶。
 
    您的認證會授權邏輯應用程式建立與 Excel Online 的連線，並存取資料。
 
@@ -61,7 +61,7 @@ ms.locfileid: "75445874"
 
 ## <a name="connector-reference"></a>連接器參考
 
-如需如連接器的 OpenAPI （先前為 Swagger）檔案所述的技術詳細資料（例如觸發程式、動作和限制），請參閱下列連接器參考頁面：
+如需如連接器的)  (OpenAPI 所述的技術詳細資料（例如觸發程式、動作和限制），請參閱下列連接器參考頁面：
 
 * [商務用 Excel Online](/connectors/excelonlinebusiness/)
 * [適用於 OneDrive 的 Excel Online](/connectors/excelonline/)

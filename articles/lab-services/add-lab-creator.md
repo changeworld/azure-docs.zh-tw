@@ -3,15 +3,15 @@ title: 將使用者新增為 Azure 實驗室服務中的實驗室建立者
 description: 本文說明如何在 Azure 實驗室服務中，將使用者新增至實驗室帳戶的實驗室建立者角色。 實驗室建立者可以在此實驗室帳戶中建立實驗室。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 34fbf9085f36d008607b648825585d3435cc2895
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5fdeb33dab60a2fb9f1680295c355e2c7c0e775a
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85444279"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399477"
 ---
 # <a name="add-lab-creators-to-a-lab-account-in-azure-lab-services"></a>將實驗室建立者新增至 Azure 實驗室服務中的實驗室帳戶
-本文說明如何將使用者當做實驗室建立者新增至 Azure 實驗室服務中的實驗室帳戶。 然後這些用途可以在實驗室帳戶中建立教室實驗室。 
+本文說明如何在 Azure 實驗室服務中，將使用者以實驗室建立者的形式新增至實驗室帳戶。 這些用途接著可在實驗室帳戶中建立教室實驗室。 
 
 ## <a name="add-microsoft-user-account-to-lab-creator-role"></a>將 Microsoft 使用者帳戶新增至實驗室建立者角色
 若要在實驗室帳戶中設定教室實驗室，使用者必須是實驗室帳戶中的 [實驗室建立者] 角色的成員。 您用來建立實驗室帳戶的帳戶會自動新增至此角色。 如果您打算使用相同的使用者帳戶建立教室實驗室，您可以略過此步驟。 若要使用其他使用者帳戶來建立教室實驗室，請執行下列步驟： 
@@ -26,22 +26,22 @@ ms.locfileid: "85444279"
     ![新增實驗室建立者](./media/tutorial-setup-lab-account/add-lab-creator.png)
 
     > [!NOTE]
-    > 如果您要將非 Microsoft 帳戶的使用者新增為實驗室建立者，請參閱[將非 Microsoft 帳戶的使用者新增為實驗室建立者](#add-a-non-microsoft-account-user-as-a-lab-creator)一節。 
+    > 如果您要將非 Microsoft 帳戶使用者新增為實驗室建立者，請參閱將 [非 Microsoft 帳戶使用者新增為實驗室建立者](#add-a-non-microsoft-account-user-as-a-lab-creator) 一節。 
 
-## <a name="add-a-non-microsoft-account-user-as-a-lab-creator"></a>將非 Microsoft 帳戶的使用者新增為實驗室建立者
+## <a name="add-a-non-microsoft-account-user-as-a-lab-creator"></a>將非 Microsoft 帳戶使用者新增為實驗室建立者
 若要將使用者新增為實驗室建立者，請使用其電子郵件帳戶。 可能會使用下列類型的電子郵件帳戶：
 
-- 您的大學 Office 365 Azure Active Directory （AAD）所提供的電子郵件帳戶。 
-- Microsoft 電子郵件帳戶，例如 `@outlook.com` 、 `@hotmail.com` 、 `@msn.com` 或 `@live.com` 。
+- 由您的大學 Azure Active Directory (AAD) 提供的電子郵件帳戶。
+- Microsoft 電子郵件帳戶，例如 `@outlook.com` 、、 `@hotmail.com` `@msn.com` 或 `@live.com` 。
 - 非 Microsoft 的電子郵件帳戶，例如 Yahoo 或 Google 提供的帳戶。 不過，這些類型的帳戶必須與 Microsoft 帳戶連結。
 - GitHub 帳戶。 此帳戶必須與 Microsoft 帳戶連結。
 
 ### <a name="using-a-non-microsoft-email-account"></a>使用非 Microsoft 電子郵件帳戶
-實驗室建立者/講師可以使用非 Microsoft 的電子郵件帳戶來註冊並登入教室實驗室。  不過，登入實驗室服務入口網站時，講師必須先建立連結到其非 Microsoft 電子郵件地址的 Microsoft 帳戶。
+實驗室建立者/講師可以使用非 Microsoft 電子郵件帳戶來註冊並登入教室實驗室。  不過，登入實驗室服務入口網站需要講師先建立連結至其非 Microsoft 電子郵件地址的 Microsoft 帳戶。
 
-許多講師可能已經有 Microsoft 帳戶連結到其非 Microsoft 的電子郵件地址。 例如，如果講師已將其電子郵件地址與 Microsoft 的其他產品或服務（例如 Office、Skype、OneDrive 或 Windows）搭配使用，則會有 Microsoft 帳戶。  
+許多講師可能已經有 Microsoft 帳戶連結至其非 Microsoft 電子郵件地址。 例如，如果講師將電子郵件地址與 Microsoft 的其他產品或服務（例如 Office、Skype、OneDrive 或 Windows）搭配使用，則已有 Microsoft 帳戶。  
 
-當講師登入實驗室服務入口網站時，系統會提示他們輸入其電子郵件地址和密碼。 如果講師嘗試使用未連結 Microsoft 帳戶的非 Microsoft 帳戶進行登入，講師將會收到下列錯誤訊息： 
+當講師登入實驗室服務入口網站時，系統會提示他們輸入其電子郵件地址和密碼。 如果講師嘗試以未連結 Microsoft 帳戶的非 Microsoft 帳戶進行登入，講師將會收到下列錯誤訊息： 
 
 ![錯誤訊息](./media/how-to-configure-student-usage/cant-find-account.png)
 
@@ -49,15 +49,15 @@ ms.locfileid: "85444279"
 
 
 ### <a name="using-a-github-account"></a>使用 GitHub 帳戶
-講師也可以使用現有的 GitHub 帳戶來註冊並登入教室實驗室。 如果講師已連結至其 GitHub 帳戶的 Microsoft 帳戶，則他們可以登入並提供其密碼，如上一節所示。 如果他們尚未將其 GitHub 帳戶連結到 Microsoft 帳戶，他們應該選取 [登**入選項**]：
+講師也可以使用現有的 GitHub 帳戶註冊並登入教室實驗室。 如果講師已經有 Microsoft 帳戶連結到其 GitHub 帳戶，他們就可以登入並提供其密碼，如上一節所示。 如果尚未將其 GitHub 帳戶連結至 Microsoft 帳戶，則應選取 [登 **入選項**]：
 
 ![登入選項連結](./media/how-to-configure-student-usage/signin-options.png)
 
-在 [登**入選項**] 頁面上，選取 [**使用 GitHub 登入**]。
+在 [登 **入選項** ] 頁面上，選取 [ **使用 GitHub 登入**]。
 
-![使用 GitHub 連結進行登入](./media/how-to-configure-student-usage/signin-github.png)
+![使用 GitHub 連結登入](./media/how-to-configure-student-usage/signin-github.png)
 
-最後，系統會提示他們建立連結至其 GitHub 帳戶的 Microsoft 帳戶。 當講師選取 **[下一步]** 時，就會自動發生。  然後，講師會立即登入並聯機到教室實驗室。
+最後，系統會提示他們建立連結至其 GitHub 帳戶的 Microsoft 帳戶。 當講師選取 **[下一步]** 時，就會自動進行。  講師接著會立即登入並聯機到教室實驗室。
 
 
 ## <a name="next-steps"></a>後續步驟

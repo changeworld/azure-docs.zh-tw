@@ -4,21 +4,21 @@ description: 瞭解如何使用 .NET 用戶端程式庫，來設定和取出系�
 services: storage
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 08/12/2020
+ms.date: 09/25/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b1501b61e930b7554063356335b967583c0a3ff5
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 19d20a208672667e5a4354fd1b7d185d0c00f8d9
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89008432"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399120"
 ---
 # <a name="manage-blob-properties-and-metadata-with-net"></a>使用 .NET 管理 blob 屬性和中繼資料
 
-除了所包含的資料之外，blob 還支援系統屬性和使用者定義的中繼資料。 本文說明如何使用 [適用于 .net 的 Azure 儲存體用戶端程式庫](/dotnet/api/overview/azure/storage?view=azure-dotnet)，管理系統屬性和使用者定義的中繼資料。
+除了所包含的資料之外，blob 還支援系統屬性和使用者定義的中繼資料。 本文說明如何使用 [適用于 .net 的 Azure 儲存體用戶端程式庫](/dotnet/api/overview/azure/storage)，管理系統屬性和使用者定義的中繼資料。
 
 ## <a name="about-properties-and-metadata"></a>關於屬性和中繼資料
 
@@ -168,7 +168,7 @@ public static async Task AddBlobMetadataAsync(CloudBlob blob)
 
 # <a name="net-v12"></a>[.NET v12](#tab/dotnet)
 
-若要取得中繼資料，請在 blob 或容器上呼叫 [GetProperties](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.getproperties) 或 [GetPropertiesAsync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.getpropertiesasync) 方法來填入 [中繼資料](/dotnet/api/azure.storage.blobs.models.blobproperties.metadata) 集合，然後讀取這些值，如下列範例所示。
+若要取得中繼資料，請在 blob 或容器上呼叫 [GetProperties](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.getproperties) 或 [GetPropertiesAsync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.getpropertiesasync) 方法來填入 [中繼資料](/dotnet/api/azure.storage.blobs.models.blobproperties.metadata) 集合，然後讀取這些值，如下列範例所示。 **GetProperties**方法會在單一呼叫中取出 blob 屬性和中繼資料。 這不同于需要個別呼叫來 [取得 Blob 屬性](/rest/api/storageservices/get-blob-properties) 和 [取得 blob 中繼資料](/rest/api/storageservices/get-blob-metadata)的 REST api。
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Metadata.cs" id="Snippet_ReadBlobMetadata":::
 

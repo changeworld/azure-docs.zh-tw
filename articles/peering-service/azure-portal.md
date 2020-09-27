@@ -1,6 +1,6 @@
 ---
-title: 註冊 Azure 對等服務-Azure 入口網站
-description: 瞭解如何使用 Azure 入口網站來註冊 Azure 對等服務
+title: 註冊 Azure 對等互連服務-Azure 入口網站
+description: 瞭解如何使用 Azure 入口網站來註冊 Azure 對等互連服務
 services: peering-service
 author: derekolo
 ms.service: peering-service
@@ -10,16 +10,16 @@ ms.tgt_pltfrm: na
 ms.workload: Infrastructure-services
 ms.date: 05/18/2020
 ms.author: derekol
-ms.openlocfilehash: 6646016a4529f46431ecb622c7546140a93a5d88
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 596f06d6dc3ad33f2794dfe0e3ed7822a4820adb
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84871478"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399010"
 ---
 # <a name="register-peering-service-by-using-the-azure-portal"></a>使用 Azure 入口網站註冊對等互連服務
 
-Azure 對等互連服務是一項網路服務，可增強客戶對 Microsoft 雲端服務，例如 Office 365、Dynamics 365、軟體即服務 (SaaS) 服務、Azure，或可透過公用網際網路存取的任何 Microsoft 服務的連線能力。
+Azure 對等互連服務是一種網路服務，可加強客戶與 Microsoft 雲端服務的連線能力，例如 Microsoft 365、Dynamics 365、軟體即服務 (SaaS) services、Azure，或任何可透過公用網際網路存取的 Microsoft 服務。
 
 在本文中，您將瞭解如何使用 Azure 入口網站來註冊對等互連服務連接。
 
@@ -39,7 +39,7 @@ Azure 對等互連服務是一項網路服務，可增強客戶對 Microsoft 雲
 
 您可以使用網際網路服務提供者或網際網路交換合作夥伴來取得對等互連服務，以將您的網路與 Microsoft 網路連線。
 
-請確定連線[提供者](location-partners.md)已與 Microsoft 合作。
+請確定連線 [提供者](location-partners.md) 已與 Microsoft 合作。
 
 
 
@@ -57,7 +57,7 @@ Azure 對等互連服務是一項網路服務，可增強客戶對 Microsoft 雲
  
 1. 選取訂用帳戶和與訂用帳戶相關聯的資源群組。
 
-   ![註冊對等互連基本索引標籤](./media/peering-service-portal/peering-servicebasics.png)
+   ![註冊對等基本索引標籤](./media/peering-service-portal/peering-servicebasics.png)
 
 1. 輸入應註冊對等互連服務執行個體的**名稱**。
  
@@ -86,10 +86,10 @@ Azure 對等互連服務是一項網路服務，可增強客戶對 Microsoft 雲
 
    - 對等互連服務字首無效，字首應該是有效的格式，僅支援 IPv4 字首。
    - 未收到來自對等互連服務提供者的字首。
-   - 前置詞公告沒有有效的 BGP 社區，請聯絡對等互連服務提供者。
-   - 找不到備份路由，請聯絡對等服務提供者。
-   - 接收到的前置詞具有較長的路徑，請聯絡對等互連服務提供者。
-   - 在路徑中以私用形式接收的前置詞，與對等互連服務提供者。
+   - 前置詞宣告沒有有效的 BGP 團體、contact 對等互連服務提供者。
+   - 找不到備份路由，請聯絡對等互連服務提供者。
+   - 收到的首碼會以較長的路徑、連絡人對等互連服務提供者。
+   - 以私用形式收到的首碼，如同路徑中的，請聯絡對等互連服務提供者。
 
 ### <a name="add-or-remove-a-prefix"></a>新增或移除字首
 

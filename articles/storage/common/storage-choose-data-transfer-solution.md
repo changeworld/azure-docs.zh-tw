@@ -1,19 +1,19 @@
 ---
 title: 選擇適合資料轉送的 Azure 解決方案 | Microsoft Docs
-description: 瞭解如何根據您環境中的資料大小和可用的網路頻寬，選擇用於資料傳輸的 Azure 解決方案。
+description: 瞭解如何根據您環境中的資料大小和可用的網路頻寬，選擇可進行資料傳輸的 Azure 解決方案。
 services: storage
 author: alkohli
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
-ms.date: 06/03/2019
+ms.date: 09/25/2020
 ms.author: alkohli
-ms.openlocfilehash: 123fa86714ae3cefe7de5bebda9e0fccd385ecb4
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 0e0bcde44ba28751761b7db3f6d6fcae8f7bd49c
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836593"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400534"
 ---
 # <a name="choose-an-azure-solution-for-data-transfer"></a>選擇適合資料轉送的 Azure 解決方案
 
@@ -35,7 +35,7 @@ ms.locfileid: "87836593"
 
     - **圖形化介面**：如果您偶爾轉送幾個檔案，且不需要將資料轉送自動化，您可以選擇圖形化介面工具，例如 Azure 儲存體總管或 Azure 入口網站中的 Web 型瀏覽工具。
     - **以指令碼或程式設計方式轉送**：您可以使用我們所提供已最佳化的軟體工具，或是直接呼叫 REST API/SDK。 可用的指令碼工具為 AzCopy、Azure PowerShell 和 Azure CLI。 針對程式設計介面，使用 .NET、Java、Python、Node/JS、C++、Go、PHP 或 Ruby 的 SDK。
-    - **內部部署裝置**：我們提供位於您資料中心內部的實體或虛擬裝置，並將透過網路的資料轉送最佳化。 這些裝置也提供常用檔案的本機快取。 實體裝置是 Azure Stack 的邊緣，而虛擬裝置則是資料箱閘道。 兩者都可在您的內部部署中永久執行，並透過網路連線到 Azure。
+    - **內部部署裝置**：我們提供位於您資料中心內部的實體或虛擬裝置，並將透過網路的資料轉送最佳化。 這些裝置也提供常用檔案的本機快取。 實體裝置是 Azure Stack Edge，而虛擬裝置是資料箱閘道。 兩者都可在您的內部部署中永久執行，並透過網路連線到 Azure。
     - **受控資料管線**：您可以設定雲端管線，定期在數個 Azure 服務、內部部署或兩者的結合之間轉送檔案。 使用 Azure Data Factory 設定和管理資料管線，並移動和轉換資料以供分析。
 
 下圖說明根據可用來轉送的網路頻寬、要轉送的資料大小和轉送頻率，選擇各種 Azure 資料轉送工具的指導方針。
@@ -50,23 +50,23 @@ ms.locfileid: "87836593"
 
 - 您的可用網路頻寬有限 (或無頻寬)，而您想要轉送大型資料集？
   
-    如果是，請參閱：[案例1：傳輸沒有或低網路頻寬的大型資料集](storage-solution-large-dataset-low-network.md)。
+    如果是，請參閱： [案例1：傳輸沒有或低網路頻寬的大型資料集](storage-solution-large-dataset-low-network.md)。
 - 您想要透過網路轉送大型資料集，且您有中速至高速的網路頻寬？
 
-    如果是，請參閱：[案例2：使用適中到高網路頻寬傳輸大型資料集](storage-solution-large-dataset-moderate-high-network.md)。
+    如果是，請參閱： [案例2：使用中等到高網路頻寬傳輸大型資料集](storage-solution-large-dataset-moderate-high-network.md)。
 - 您想偶爾透過網路轉送幾個檔案？
 
-    如果是，請參閱[案例3：使用限制為適中的網路頻寬來傳輸小型資料集](storage-solution-small-dataset-low-moderate-network.md)。
+    如果是，請參閱 [案例3：使用限制為適中的網路頻寬傳輸小型資料集](storage-solution-small-dataset-low-moderate-network.md)。
 - 您需要以定期間隔的時間點進行資料轉送嗎？
 
-    如果是，請使用[案例4：定期資料傳輸](storage-solution-periodic-data-transfer.md)中所述的腳本/程式設計選項。
+    如果是，請使用 [案例4：定期資料傳輸](storage-solution-periodic-data-transfer.md)中所述的腳本/程式設計選項。
 - 您需要持續不斷進行資料轉送嗎？
 
-    如果是，請使用[案例4：定期資料傳輸](storage-solution-periodic-data-transfer.md)中的選項。
+    如果是，請使用 [案例4：定期資料傳輸](storage-solution-periodic-data-transfer.md)中的選項。
 
 ## <a name="data-transfer-feature-in-azure-portal"></a>Azure 入口網站中的資料傳輸功能
 
-您也可以在 Azure 入口網站中移至您的 Azure 儲存體帳戶，然後選取 [**資料傳輸**] 功能。 提供您環境中的網路頻寬、您想要傳輸的資料大小，以及資料傳輸的頻率。 您會看到與您所提供之資訊對應的最佳資料傳輸解決方案。 
+您也可以在 Azure 入口網站中移至您的 Azure 儲存體帳戶，然後選取 **資料傳輸** 功能。 在您的環境中提供網路頻寬、您要傳輸的資料大小，以及資料傳輸的頻率。 您將會看到對應至您所提供之資訊的最佳資料傳輸解決方案。 
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -74,10 +74,10 @@ ms.locfileid: "87836593"
 - [閱讀 AzCopy 的概觀](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10)。
 - [快速入門：使用 PowerShell 上傳、下載及列出 Blob](../blobs/storage-quickstart-blobs-powershell.md)
 - [快速入門：使用 Azure CLI 建立、下載及列出 Blob](../blobs/storage-quickstart-blobs-cli.md)
-- 深入了解：
+- 了解：
 
     - [適用於離線轉送的 Azure 資料箱、Azure 資料箱磁碟和 Azure Data Box Heavy ](https://docs.microsoft.com/azure/databox/)。
-    - [Azure 資料箱閘道和 Azure Stack Edge 進行線上傳輸](https://docs.microsoft.com/azure/databox-online/)。
+    - [Azure 資料箱閘道和 Azure Stack Edge 以進行線上傳送](https://docs.microsoft.com/azure/databox-online/)。
 - [了解 Azure Data Factory 是什麼](https://docs.microsoft.com/azure/data-factory/copy-activity-overview)。
 - 使用 REST API 轉送資料
 

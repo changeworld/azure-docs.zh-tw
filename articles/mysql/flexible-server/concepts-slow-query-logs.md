@@ -6,20 +6,17 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/21/2020
-ms.openlocfilehash: 8b413b82ceb148374bd89fd2baec7d4db13f54d5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 512a103f5ac116f1f4eb18631cdc8e4a8b9380c9
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91329543"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399205"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mysql-flexible-server-preview"></a>適用於 MySQL 的 Azure 資料庫彈性的伺服器 (預覽) 的查詢記錄緩慢
 
 > [!IMPORTANT] 
 > 適用於 MySQL 的 Azure 資料庫 - 彈性伺服器目前處於公開預覽狀態。
-
-> [!NOTE]
-> Azure 監視器診斷設定與存取記錄的整合正在進行部署，而且很快就會提供完整功能。
 
 在適用於 MySQL 的 Azure 資料庫彈性的伺服器中，慢速查詢記錄檔可供使用者設定和存取。 預設會停用慢速查詢記錄，並可加以啟用，以協助找出疑難排解期間的效能瓶頸。
 
@@ -42,10 +39,7 @@ ms.locfileid: "91329543"
 
 ## <a name="access-slow-query-logs"></a>存取慢速查詢記錄
 
-> [!NOTE]
-> Azure 監視器診斷設定與存取記錄的整合正在進行部署，而且很快就會提供完整功能。
-
-慢速查詢記錄會與 Azure 監視器診斷設定整合。 當您在 MySQL 彈性伺服器上啟用 audit 記錄之後，您可以將它們發出至 Azure 監視器記錄、事件中樞或 Azure 儲存體。 若要深入瞭解診斷設定，請參閱 [診斷記錄檔](../../azure-monitor/platform/platform-logs-overview.md)。 若要深入瞭解如何啟用 Azure 入口網站中的診斷設定，請參閱 [慢速查詢記錄入口網站文章](how-to-configure-slow-query-logs-portal.md#set-up-diagnostics)。
+慢速查詢記錄會與 Azure 監視器診斷設定整合。 在 MySQL 彈性伺服器上啟用慢速查詢記錄之後，您可以將它們發出至 Azure 監視器記錄、事件中樞或 Azure 儲存體。 若要深入瞭解診斷設定，請參閱 [診斷記錄檔](../../azure-monitor/platform/platform-logs-overview.md)。 若要深入瞭解如何啟用 Azure 入口網站中的診斷設定，請參閱 [慢速查詢記錄入口網站文章](how-to-configure-slow-query-logs-portal.md#set-up-diagnostics)。
 
 下表描述慢速查詢記錄的輸出。 視輸出方法而定，包含的欄位及其出現的順序可能有所不同。
 

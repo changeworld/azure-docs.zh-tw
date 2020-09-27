@@ -7,16 +7,16 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: sukishen
-ms.openlocfilehash: d95330c14e0d088bdee03c0edbc2eb9d1deb12cb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 83cc7757f31a631af755155b49c7c26753618426
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91329222"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399103"
 ---
 # <a name="interconnect-with-china-using-azure-virtual-wan-and-secure-hub"></a>使用 Azure 虛擬 WAN 和安全中樞與中國互相連線
 
-在查看一般汽車業、製造業、物流業或其他機構 (例如大使館) 時，通常會有如何改善與中國互相連線的問題。 這些改良功能大多與使用如 Office 365、Azure 全球服務等雲端服務，或與在中國內部的分公司要和客戶骨幹互相連線等有關。
+在查看一般汽車業、製造業、物流業或其他機構 (例如大使館) 時，通常會有如何改善與中國互相連線的問題。 這些改進大部分都與使用雲端服務（例如 Microsoft 365、Azure 全域服務或中國內的互連分支）搭配客戶骨幹。
 
 在大部分的情況下，客戶會面臨延遲高、頻寬低、連線不穩定，以及連線到中國之外 (例如歐洲或北美洲) 成本高等問題。
 
@@ -95,7 +95,7 @@ ExpressRoute Global Reach 在某些區域無法使用。 例如，如果您需�
 
 ![Global Reach](./media/interconnect-china/global.png)
 
-## <a name="secure-internet-breakout-for-office-365"></a><a name="secure"></a>Office 365 的安全網際網路突破點
+## <a name="secure-internet-breakout-for-microsoft-365"></a><a name="secure"></a>Microsoft 365 的網際網路分組安全
 
 另一個考慮是網路安全性，與記錄中國與虛擬 WAN 所建立骨幹元件之間的進入點及客戶骨幹。 在大部分情況下，需要有對香港網際網路的突破點，以直接觸及 Microsoft Edge 網路，並藉此觸及用於 Microsoft 365 服務的 Azure 前端伺服器。
 
@@ -109,7 +109,7 @@ ExpressRoute Global Reach 在某些區域無法使用。 例如，如果您需�
 
 根據您對於香港選擇的連線而定，整體架構可能會稍微改變。 本節顯示三種適用於 VPN 或 SDWAN 和/或 ExpressRoute 不同組合的可用架構。
 
-這些選項全都是使用 Azure 虛擬 WAN 保護的中樞，以直接與香港的 M365 連線。 這些架構也支援 [Office 365 多地理位置](https://docs.microsoft.com/office365/enterprise/office-365-multi-geo)的合規性需求，並將該流量保持接近下個 Office 365 Front Door 的位置。 因此，這也能夠改善中國境外的 Microsoft 365 使用狀況。
+所有這些選項都會使用 Azure 虛擬 WAN 安全中樞，在香港中進行直接 Microsoft 365 連線。 這些架構也支援 [Microsoft 365 多地理](/microsoft-365/enterprise/microsoft-365-multi-geo) 位置的合規性需求，並讓該流量保持在下一個 Azure Front Door 位置附近。 因此，這也能夠改善中國境外的 Microsoft 365 使用狀況。
 
 將 Azure 虛擬 WAN 與網際網路連線搭配使用時，每個連線都可以受益於其他服務，例如 [Microsoft Azure 對等互連服務 (MAPS)](https://docs.microsoft.com/azure/peering-service/about)。 建立 MAPS 的目的在於將協力網際網路服務供應廠商至 Microsoft 全球網路的流量最佳化。
 

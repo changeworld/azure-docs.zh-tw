@@ -4,12 +4,12 @@ description: 此文章說明如何在 Azure 自動化中，使用 Azure AD 作�
 services: automation
 ms.date: 03/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: c17c9cdc02c87037a39b8d6029bc4506afa8ad28
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bbd1f977b548c2b8e7980709ea125c07e22b1fa2
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87064393"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400667"
 ---
 # <a name="use-azure-ad-to-authenticate-to-azure"></a>使用 Azure AD 向 Azure 進行驗證
 
@@ -21,7 +21,7 @@ ms.locfileid: "87064393"
 
 * 適用於 Graph (AzureRM 和 Az 模組) 的 Azure Active Directory PowerShell。 Azure 自動化隨附 AzureRM 模組及其最近的升級 (Az 模組)。 功能包括使用 Azure AD 使用者 (OrgId) 認證型驗證，對 Azure 進行非互動式驗證。 請參閱 [Azure AD 2.0.2.76](https://www.powershellgallery.com/packages/AzureAD/2.0.2.76) \(英文\)。
 
-* 適用於 Windows PowerShell 的 Microsoft Azure Active Directory (MSOnline 模組)。 此模組可與 Microsoft Online 互動 (包括 Office 365)。
+* 適用於 Windows PowerShell 的 Microsoft Azure Active Directory (MSOnline 模組)。 此課程模組可讓您與 Microsoft Online 互動，包括 Microsoft 365。
 
 >[!NOTE]
 >PowerShell Core 不支援 MSOnline 模組。 若要使用模組 Cmdlet，您必須從 Windows PowerShell 加以執行。 建議您使用較新的適用於 Graph 的 Azure Active Directory PowerShell 模組，而不是使用 MSOnline 模組。 
@@ -46,7 +46,7 @@ ms.locfileid: "87064393"
 ### <a name="install-the-msonline-module"></a>安裝 MSOnline 模組
 
 >[!NOTE]
->若要安裝 MSOnline 模組，您必須是 Office 365 系統管理員角色的成員。 請參閱[關於系統管理員角色](/microsoft-365/admin/add-users/about-admin-roles?view=o365-worldwide)。
+>若要安裝 MSOnline 模組，您必須是系統管理員角色的成員。 請參閱[關於系統管理員角色](/microsoft-365/admin/add-users/about-admin-roles)。
 
 1. 確定已在您的電腦上啟用 Microsoft .NET Framework 3.5.x 功能。 您的電腦可能已安裝較新的版本，但可以啟用或停用與舊版 .NET Framework 的回溯相容性。 
 

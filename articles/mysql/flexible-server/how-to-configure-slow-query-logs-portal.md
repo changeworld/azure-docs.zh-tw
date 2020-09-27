@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
-ms.openlocfilehash: 1a829f4e5f45394d9c5bbed0db9289727b816917
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a73a2bc82c7f4e77808f751bb8ba24adcacd2e31
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91315026"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400378"
 ---
 # <a name="configure-and-access-slow-query-logs-for-azure-database-for-mysql---flexible-server-using-the-azure-portal"></a>使用 Azure 入口網站設定和存取適用於 MySQL 的 Azure 資料庫彈性伺服器的慢速查詢記錄
 
@@ -20,7 +20,7 @@ ms.locfileid: "91315026"
 
 您可以從 Azure 入口網站設定、列出和下載適用於 MySQL 的 Azure 資料庫具彈性的伺服器 [慢速查詢記錄](concepts-slow-query-logs.md) 。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 本文中的步驟需要您擁有有 [彈性的伺服器](quickstart-create-server-portal.md)。
 
 ## <a name="configure-logging"></a>設定記錄
@@ -45,9 +45,6 @@ ms.locfileid: "91315026"
 
 ## <a name="set-up-diagnostics"></a>設定診斷
 
-> [!NOTE]
-> Azure 監視器診斷設定與存取記錄的整合正在進行部署，而且很快就會提供完整功能。
-
 慢速查詢記錄會與 Azure 監視器診斷設定整合，讓您可以使用管線將記錄傳送至 Azure 監視器記錄、事件中樞或 Azure 儲存體。
 
 1. 在提要欄位的 [**監視**] 區段下，選取 [**診斷設定**  >  **新增診斷設定**]。
@@ -66,7 +63,7 @@ ms.locfileid: "91315026"
 
 1. 存取慢速查詢記錄，方法是在您設定的資料接收器中加以探索。 記錄最多可能需要10分鐘的時間才會出現。
 
-如果您使用管線將記錄傳送至 Azure 監視器記錄 (Log Analytics) ，請參閱您可以用來進行分析的一些 [範例查詢](concepts-audit-logs.md#analyze-logs-in-azure-monitor-logs) 。 
+如果您使用管線將記錄傳送至 Azure 監視器記錄 (Log Analytics) ，請參閱您可以用來進行分析的一些 [範例查詢](concepts-slow-query-logs.md#analyze-logs-in-azure-monitor-logs) 。 
 
 ## <a name="next-steps"></a>後續步驟
 <!-- - See [Access slow query Logs in CLI](howto-configure-server-logs-in-cli.md) to learn how to download slow query logs programmatically.-->

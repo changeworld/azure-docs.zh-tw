@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 06/11/2020
-ms.openlocfilehash: 4876c5cb0490a96d5a77da9ced83e1650e98379a
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 23e6834f4850cc8f44f563a12f4704fec2e13ef7
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89488825"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400803"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>適用於 Azure Logic Apps 的連接器
 
@@ -136,7 +136,7 @@ Logic Apps 提供這些常用的標準連接器，可讓您使用這些服務或
 | [![Azure 服務匯流排受控連接器 ][azure-service-bus-icon]<br> **Azure 服務匯流排**][azure-service-bus-doc] | 利用 Logic Apps 中最常用的連接器，管理非同步訊息、工作階段和主題訂用帳戶。 |
 | [![SQL Server 受控連接器 ][sql-server-icon]<br> **SQL Server**][sql-server-doc] | 連接到您的 SQL Server 內部部署或雲端中的 Azure SQL Database，讓您可以記錄管理、執行預存程式或執行查詢。 |
 | [![Azure Blob 儲存體受控連接器 ][azure-blob-storage-icon]<br> **Azure Blob <br> 儲存體**][azure-blob-storage-doc] | 連接到您的儲存體帳戶，以便建立和管理 blob 內容。 |
-| [![Office 365 Outlook managed connector ][office-365-outlook-icon]<br> **office 365 <br> outlook**][office-365-outlook-doc] | 連接到您的 Office 365 電子郵件帳戶，讓您可以建立和管理電子郵件、工作、行事曆事件和會議、連絡人、要求等等。 |
+| [![Office 365 Outlook managed connector ][office-365-outlook-icon]<br> **office 365 <br> outlook**][office-365-outlook-doc] | 連接到您的公司或學校電子郵件帳戶，讓您可以建立和管理電子郵件、工作、行事曆事件和會議、連絡人、要求等等。 |
 | [![SFTP-SSH 管理的連接器 ][sftp-ssh-icon]<br> **SFTP-ssh**][sftp-ssh-doc] | 使用 SSH 連線到可從網際網路存取的 SFTP 伺服器，以便使用您的檔案和資料夾。 |
 | [![SharePoint Online 管理的連接器 ][sharepoint-online-icon]<br> **sharepoint <br> online**][sharepoint-online-doc] | 連接至 SharePoint Online，讓您可以管理檔案、附件、資料夾等。 |
 | [![Azure 佇列受控連接器 ][azure-queues-icon]<br> **azure <br> 佇列**][azure-queues-doc] | 連接到您的 Azure 儲存體帳戶，讓您可以建立和管理佇列和訊息。 |
@@ -412,7 +412,7 @@ Logic Apps 提供這些企業連接器來存取企業系統，例如 SAP 和 IBM
 
 雖然您會從邏輯應用程式內建立連線，但連線是個別的 Azure 資源與其本身的資源定義。 若要檢查這些連線資源定義，請將 [您的邏輯應用程式從 Azure 下載至 Visual Studio](../logic-apps/manage-logic-apps-with-visual-studio.md)，這是最簡單的方法，可讓您輕鬆地建立可供部署的有效參數化邏輯應用程式範本。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 查看 [完整的連接器清單](/connectors)
 * [建立第一個邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)
@@ -588,7 +588,7 @@ Logic Apps 提供這些企業連接器來存取企業系統，例如 SAP 和 IBM
 [instagram-doc]: ./connectors-create-api-instagram.md "連接到 Instagram。觸發或對事件採取動作"
 [mandrill-doc]: ./connectors-create-api-mandrill.md "連線至 Mandrill 進行通訊"
 [mysql-doc]: /connectors/mysql/ "連接到您的內部部署 MySQL 資料庫，讓您可以讀取和寫入資料"
-[office-365-outlook-doc]: ./connectors-create-api-office365-outlook.md "連接到您的 Office 365 帳戶，讓您可以傳送和接收電子郵件、管理行事曆和連絡人等等"
+[office-365-outlook-doc]: ./connectors-create-api-office365-outlook.md "連接到您的公司或學校帳戶，讓您可以傳送和接收電子郵件、管理行事曆和連絡人等等"
 [onedrive-doc]: ./connectors-create-api-onedrive.md "連接到您的個人 Microsoft OneDrive，讓您可以上傳、刪除、列出檔案等等"
 [onedrive-for-business-doc]: ./connectors-create-api-onedriveforbusiness.md "連接到您的商務 Microsoft OneDrive，讓您可以上傳、刪除、列出您的檔案等等"
 [oracle-db-doc]: ./connectors-create-api-oracledatabase.md "連接到 Oracle 資料庫，讓您可以新增、插入、刪除資料列等"

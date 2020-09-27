@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: f3a41fbd3cbd5b7c8eccfbea8833fdfedee97510
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 08c105bd8ae9b5e0667ef5279e6c9484c631bd48
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85512402"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399035"
 ---
 # <a name="azure-importexport-service-frequently-asked-questions"></a>Azure 匯入/匯出服務：常見問題集
 
@@ -29,19 +29,19 @@ ms.locfileid: "85512402"
 
 ### <a name="can-i-copy-azure-file-storage-using-the-azure-importexport-service"></a>我可以使用 Azure 匯入/匯出服務複製 Azure 檔案儲存體嗎？
 
-是。 Azure 匯入/匯出服務支援匯入至 Azure 檔案儲存體。 目前不支援 Azure 檔案匯出。
+可以。 Azure 匯入/匯出服務支援匯入至 Azure 檔案儲存體。 目前不支援 Azure 檔案匯出。
 
 ### <a name="is-the-azure-importexport-service-available-for-csp-subscriptions"></a>Azure 匯入/匯出服務可用於 CSP 訂用帳戶嗎？
 
-是。 Azure 匯入/匯出服務支援雲端解決方案提供者 (CSP) 的訂用帳戶。
+可以。 Azure 匯入/匯出服務支援雲端解決方案提供者 (CSP) 的訂用帳戶。
 
-### <a name="can-i-use-the-azure-importexport-service-to-copy-pst-mailboxes-and-sharepoint-data-to-o365"></a>我可以使用 Azure 匯入/匯出服務將 PST 信箱及 SharePoint 資料複製到 O365 嗎？
+### <a name="can-i-use-the-azure-importexport-service-to-copy-pst-mailboxes-and-sharepoint-data-to-microsoft-365"></a>我可以使用 Azure 匯入/匯出服務，將 PST 信箱及 SharePoint 資料複製到 Microsoft 365 嗎？
 
-是。 如需詳細資訊，請移至[將 PST 檔案或 SharePoint 資料匯入至 Office 365](https://technet.microsoft.com/library/ms.o365.cc.ingestionhelp.aspx)。
+可以。 如需詳細資訊，請參閱匯 [入組織的 PST 檔案的總覽](/microsoft-365/compliance/importing-pst-files-to-office-365)。
 
 ### <a name="can-i-use-the-azure-importexport-service-to-copy-my-backups-offline-to-the-azure-backup-service"></a>可以使用 Azure 匯入/匯出服務，將我的離線備份複製到 Azure 備份服務嗎？
 
-是。 如需詳細資訊，請移至 [Azure 備份中的離線備份工作流程](../../backup/backup-azure-backup-import-export.md)。
+可以。 如需詳細資訊，請移至 [Azure 備份中的離線備份工作流程](../../backup/backup-azure-backup-import-export.md)。
 
 ### <a name="can-i-purchase-drives-for-importexport-jobs-from-microsoft"></a>我可以為了匯入/匯出作業向 Microsoft 購買磁碟機嗎？
 
@@ -61,7 +61,7 @@ ms.locfileid: "85512402"
 
 ### <a name="can-i-cancel-my-job"></a>我可以取消作業嗎？
 
-是。 您可以在作業狀態為 [建立中]**** 或 [運送中]**** 時取消作業。 如果在這些階段以外，即無法取消作業，而且作業會繼續進行到最後一個階段。
+可以。 您可以在作業狀態為 [建立中]**** 或 [運送中]**** 時取消作業。 如果在這些階段以外，即無法取消作業，而且作業會繼續進行到最後一個階段。
 
 ### <a name="how-long-can-i-view-the-status-of-completed-jobs-in-the-azure-portal"></a>我可以在 Azure 入口網站中檢視已完成作業的狀態多久？
 
@@ -97,20 +97,20 @@ ms.locfileid: "85512402"
 - 亞洲和澳洲地區的 DHL 帳戶號碼。
 
 > [!NOTE]
-> 印度的資料中心在您的信頭上需要宣告字母（傳遞 challan）以傳回磁片磁碟機。 若要安排所需的進入階段，您也必須預訂您選取的貨運公司，並與資料中心分享詳細資訊。
+> 印度的資料中心需要您的信頭 (傳遞 challan) 的宣告字母，才能傳回磁片磁碟機。 若要排列所需的進入階段，您也必須預訂您所選取的貨運公司，並與資料中心分享詳細資料。
 
-### <a name="are-there-any-restrictions-with-shipping-and-returning-my-drive-internationally"></a>運送和傳回我的磁片磁碟機是否有任何限制？
+### <a name="are-there-any-restrictions-with-shipping-and-returning-my-drive-internationally"></a>寄送和退回我的磁片磁碟機有任何限制嗎？
 
 請注意，您寄送的實體媒體可能需要跨國界。 您必須確定實體媒體和資料的匯入和/或匯出符合相關管轄法律。 在寄出實體媒體之前，請洽詢顧問來確認您的媒體和資料可以合法地寄到所識別的資料中心。 這有助於確保及時送達 Microsoft。
 
-上傳完成之後，將磁片磁碟機傳回國際位址的程式，可能會比本機運送所需的標準2-3 天長。 在 Azure 入口網站列為封裝的階段中，資料箱小組會確保提供正確的檔，以確保出貨符合各種國際匯入和匯出需求。
+上傳完成之後，將磁片磁碟機 (s) 送至國際位址的程式，可能會比本機送出的一般2-3 天還長。 在 Azure 入口網站中列為封裝的階段期間，資料箱小組會確保提供正確的檔，以確保出貨符合各種國際匯入和匯出需求。
 
-### <a name="are-there-any-special-requirements-for-delivering-my-disks-to-a-datacenter"></a>將磁片傳遞至資料中心是否有任何特殊需求？
+### <a name="are-there-any-special-requirements-for-delivering-my-disks-to-a-datacenter"></a>將磁片傳遞給資料中心是否有任何特殊需求？
 
-這些需求取決於特定的 Azure 資料中心限制。
+需求取決於特定的 Azure 資料中心限制。
 
-- 有幾個網站（例如澳大利亞、德國和英國南部）需要在包裹上寫入 Microsoft datacenter 輸入識別碼，以確保安全的理由。 將您的磁片磁碟機或磁片寄送到資料中心之前，請洽詢 Azure DataBox 作業（ adbops@microsoft.com ）以取得此號碼。 若沒有此數位，將會拒絕封裝。
-- 印度的資料中心需要驅動程式的個人詳細資料，例如政府識別碼卡或證明否。 （例如，[PAN]、[AADHAR]、[DL]、[名稱]、[連絡人] 和 [汽車] 盤子編號，以取得閘道進入階段。 為避免傳遞延遲，請告知您的電訊廠商有關這些需求的資訊。
+- 有幾個網站（例如澳大利亞、德國和英國南部）需要基於安全性理由，在包裹上撰寫 Microsoft 資料中心的輸入識別碼號碼。 將磁片磁碟機或磁片寄送到資料中心之前，請洽詢 Azure 資料箱 Operations (adbops@microsoft.com) 取得此號碼。 若沒有此號碼，將會拒絕封裝。
+- 印度的資料中心需要驅動程式的個人詳細資料，例如政府識別碼卡或證明否。  (例如，平移、AADHAR、DL) 、名稱、連絡人和車輛板號，以取得閘道專案通過。 若要避免傳遞延遲，請通知您的貨運公司這些需求。
 
 ### <a name="when-creating-a-job-the-shipping-address-is-a-location-that-is-different-from-my-storage-account-location-what-should-i-do"></a>建立作業時，寄送地址是與我儲存體帳戶位置不同的位置。 我該怎麼辦？
 
@@ -132,7 +132,7 @@ Azure 資料中心會將不符支援需求的磁碟機退回給您。 如果包�
 
 ### <a name="how-can-i-access-data-that-is-imported-by-this-service"></a>如何存取這個服務所匯入的資料？
 
-使用 Azure 入口網站或[儲存體總管](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)來存取 Azure 儲存體帳戶下的資料。  
+使用 Azure 入口網站或 [儲存體總管](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer) 來存取 Azure 儲存體帳戶下的資料。  
 
 ### <a name="after-the-import-is-complete-what-does-my-data-look-like-in-the-storage-account-is-my-directory-hierarchy-preserved"></a>匯入作業完成後，我的資料在儲存體帳戶中會是什麼樣子？ 我的目錄階層會保留嗎？
 
@@ -149,11 +149,11 @@ Azure 資料中心會將不符支援需求的磁碟機退回給您。 如果包�
 ### <a name="what-is-the-maximum-block-blob-and-page-blob-size-supported-by-azure-importexport"></a>Azure 匯入/匯出所支援的最大區塊 Blob 和分頁 Blob 大小是多少？
 
 - 最大區塊 Blob 大小大約是 4.768 TB 或 5,000,000 MB。
-- 分頁 Blob 大小的最大值為8TB。
+- 分頁 Blob 大小上限為8TB。
 
 ### <a name="does-azure-importexport-support-aes-256-encryption"></a>Azure 匯入/匯出是否支援 AES-256 加密？
 
-是。 Azure 匯入/匯出服務會使用 AES-256 BitLocker 加密。
+可以。 Azure 匯入/匯出服務使用 AES-256 BitLocker 加密。
 
 ## <a name="next-steps"></a>後續步驟
 

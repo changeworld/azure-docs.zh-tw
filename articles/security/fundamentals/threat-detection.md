@@ -1,6 +1,6 @@
 ---
 title: Azure 進階威脅偵測 | Microsoft Docs
-description: 瞭解 Azure 的內建先進威脅偵測功能，例如 Azure AD Identity Protection 服務。
+description: 瞭解 Azure 的內建 advanced 威脅偵測功能，例如 Azure AD Identity Protection 服務。
 services: security
 documentationcenter: na
 author: UnifyCloud
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 1522d143f2837a57481a4d678911e7a3c44d084d
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 78043e3d95a94d0e9be810164b31ef031234d620
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87541017"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399596"
 ---
 # <a name="azure-advanced-threat-detection"></a>Azure 進階威脅偵測
 
@@ -64,13 +64,13 @@ Azure Identity Protection 可用以協助保護您的帳戶和身分識別的一
 
 ### <a name="azure-ad-privileged-identity-management"></a>Azure AD 特殊權限身分識別管理
 
-您可以使用 [Azure Active Directory Privileged Identity Management (PIM)](../../active-directory/privileged-identity-management/pim-configure.md) 來管理、控制和監視組織內的存取。 此功能包括存取 Azure AD 中的資源和其他 Microsoft 線上服務 (例如 Office 365 或 Microsoft Intune)。
+您可以使用 [Azure Active Directory Privileged Identity Management (PIM)](../../active-directory/privileged-identity-management/pim-configure.md) 來管理、控制和監視組織內的存取。 這項功能包括存取 Azure AD 及其他 Microsoft 線上服務中的資源，例如 Microsoft 365 或 Microsoft Intune。
 
 ![Azure AD Privileged Identity Management 圖表](./media/threat-detection/azure-threat-detection-fig2.png)
 
 PIM 可協助您：
 
--   針對 Azure AD 系統管理員以及 Office 365 和 Intune 這類 Microsoft 線上服務的 Just-In-Time (JIT) 系統取得管理存取權的警示和報告。
+-   取得有關 Azure AD 系統管理員的警示和報告，以及即時 (JIT) Microsoft 線上服務的系統管理存取權，例如 Microsoft 365 和 Intune。
 
 -   取得有關系統管理員存取記錄與系統管理員指派變更的報告。
 
@@ -155,7 +155,7 @@ Microsoft 資訊安全研究人員會持續監視威脅。 他們可以存取從
 
 Microsoft 可以存取大量的全域威脅情報。
 
-遙測會從多個來源流入，例如 Azure、Office 365、Microsoft CRM Online、Microsoft Dynamics AX、outlook.com、MSN.com、Microsoft 數位犯罪防治中心 (DCU) 和 Microsoft 安全性回應中心 (MSRC)。
+遙測會從多個來源（例如 Azure、Microsoft 365、Microsoft CRM online、Microsoft Dynamics AX、outlook.com、MSN.com、Microsoft 數位犯罪單位 (DCU) 和 Microsoft 安全性回應中心 (MSRC) ）流入。
 
 ![威脅情報結果](./media/threat-detection/azure-threat-detection-fig10.jpg)
 
@@ -190,7 +190,7 @@ Microsoft 可以存取大量的全域威脅情報。
 
 -   **惡意 PowerShell 指令碼**︰攻擊者會針對各種目的，使用 PowerShell 在目標虛擬機器上執行惡意程式碼。 資訊安全中心會檢查 PowerShell 活動，以找到可疑活動的證明。
 
--   **傳出攻擊**︰攻擊者通常會以雲端資源為目標，目的在於使用這些資源來掛載其他攻擊。 例如，遭入侵的虛擬機器可用來對其他虛擬機器發動暴力密碼破解攻擊、傳送垃圾郵件，或掃描開啟的連接埠和網際網路上的其他裝置。 藉由將機器學習服務套用到網路流量，資訊安全中心可以偵測輸出網路通訊何時超出規範。 偵測到垃圾郵件時，資訊安全中心也會讓不尋常的電子郵件流量與 Office 365 提供的情報相互關聯，以判斷郵件是否可能有惡意或合法電子郵件行銷活動的結果。
+-   **傳出攻擊**︰攻擊者通常會以雲端資源為目標，目的在於使用這些資源來掛載其他攻擊。 例如，遭入侵的虛擬機器可用來對其他虛擬機器發動暴力密碼破解攻擊、傳送垃圾郵件，或掃描開啟的連接埠和網際網路上的其他裝置。 藉由將機器學習服務套用到網路流量，資訊安全中心可以偵測輸出網路通訊何時超出規範。 偵測到垃圾郵件時，安全性中心也會將不尋常的電子郵件流量與 Microsoft 365 中的情報相互關聯，以判斷郵件是否可能惡意或合法電子郵件行銷活動的結果。
 
 ### <a name="anomaly-detection"></a>異常偵測
 

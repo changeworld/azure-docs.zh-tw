@@ -7,16 +7,16 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: b7cf0d35ae610c3f9fe477267e28e5449459148b
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 334cbef7460306ef2954881a1cab918573e1e371
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87924575"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400633"
 ---
 # <a name="set-up-vmware-disaster-recovery-in-a-multi-tenancy-environment-with-the-cloud-solution-provider-csp-program"></a>使用雲端解決方案提供者 (CSP) 方案在多租用戶環境中設定 VMware 災害復原
 
-[CSP 計畫](https://partner.microsoft.com/cloud-solution-provider)會針對 Microsoft 雲端服務 (包括 Office 365、Enterprise Mobility Suite 和 Microsoft Azure) 樹立雙贏的案例。 藉由 CSP，合作夥伴全面掌握與客戶的端對端關係，並且成為主要的關係連絡窗口。 合作夥伴可以為客戶部署 Azure 訂用帳戶，並將這些訂用帳戶與他們自己的加值自訂供應項目結合。
+[CSP 計畫](https://partner.microsoft.com/cloud-solution-provider)為 Microsoft 雲端服務促進了更好的案例，包括 Microsoft 365、企業行動力套件，以及 Microsoft Azure。 藉由 CSP，合作夥伴全面掌握與客戶的端對端關係，並且成為主要的關係連絡窗口。 合作夥伴可以為客戶部署 Azure 訂用帳戶，並將這些訂用帳戶與他們自己的加值自訂供應項目結合。
 
 使用 [Azure Site Recovery](site-recovery-overview.md)，身為合作夥伴的您可以直接透過 CSP 管理客戶的災害復原。 或者，您可以使用 CSP 設定 Site Recovery 環境，並讓客戶藉由自助服務的方式管理自己的災害復原需求。 在這兩種情況下，合作夥伴是 Site Recovery 與客戶之間的連絡窗口。 合作夥伴負責維護客戶關係，以及向客戶收取 Site Recovery 使用量的費用。
 
@@ -65,7 +65,7 @@ ms.locfileid: "87924575"
 ## <a name="assign-tenant-access-to-the-subscription"></a>為租用戶指派訂用帳戶的存取權
 
 1. 確定已設定災害復原基礎結構。 無論災害復原類型是受控或自助，合作夥伴都必須透過 CSP 入口網站存取租用戶訂用帳戶。 設定保存庫，並且向租用戶訂用帳戶註冊基礎結構。
-2. 為租[使用者提供您建立的帳戶](#create-a-tenant-account)。
+2. 為租 [使用者提供您所建立的帳戶](#create-a-tenant-account)。
 3. 您可以透過 CSP 入口網站將新的使用者新增至租用戶訂用帳戶，方法如下：
 
     a) 移至租用戶的 CSP 訂用帳戶頁面，然後選取 [使用者與授權]**** 選項。
@@ -98,7 +98,7 @@ ms.locfileid: "87924575"
 依照本文所述，透過設定租用戶訂用帳戶，您可以快速開始在任何相關的多租用戶模型中啟用客戶。 您可以在[這裡](vmware-azure-multi-tenant-overview.md)進一步了解不同的多租用戶模型，和啟用內部部署存取控制的資訊。
 
 ## <a name="next-steps"></a>後續步驟
-- 深入瞭解[azure 角色型存取控制 (AZURE RBAC) ](site-recovery-role-based-linked-access-control.md)來管理 Azure Site Recovery 部署。
-- 深入瞭解 VMware 至 Azure 複寫[架構](vmware-azure-architecture.md)。
+- 深入瞭解 [azure 角色型存取控制 (AZURE RBAC) ](site-recovery-role-based-linked-access-control.md) 管理 Azure Site Recovery 部署。
+- 深入瞭解 VMware 至 Azure 的複寫 [架構](vmware-azure-architecture.md)。
 - 針對將 VMware VM 複寫到 Azure [檢閱教學課程](vmware-azure-tutorial.md)。
 深入了解[多租用戶環境](vmware-azure-multi-tenant-overview.md)，以將 VMware VM 複寫至 Azure。

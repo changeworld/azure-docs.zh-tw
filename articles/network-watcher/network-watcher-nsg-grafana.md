@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/15/2017
 ms.author: damendo
-ms.openlocfilehash: 4d07feb54a689c32e119d997275416a5dd8f0aad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5ec4b9343efab9ae501b2b3dcc606e6e3f5fe826
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84725081"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399681"
 ---
 # <a name="manage-and-analyze-network-security-group-flow-logs-using-network-watcher-and-grafana"></a>使用網路監看員和 Grafana 來管理和分析網路安全性群組流量記錄
 
@@ -37,7 +37,7 @@ NSG 流量記錄可使用網路監看員來啟用，並且會儲存在 Azure Blo
 
 ### <a name="enable-network-security-group-flow-logging"></a>啟用網路安全性群組流量記錄
 
-在此案例中，您必須在您的帳戶中至少一個網路安全性群組上啟用「網路安全性群組流量記錄」。 如需有關啟用網路安全性流程記錄的指示，請參閱下列文章：[網路安全性群組的流量記錄簡介](network-watcher-nsg-flow-logging-overview.md)。
+在此案例中，您必須在您的帳戶中至少一個網路安全性群組上啟用「網路安全性群組流量記錄」。 如需有關啟用網路安全性流程記錄的指示，請參閱下列文章： [網路安全性群組的流量記錄簡介](network-watcher-nsg-flow-logging-overview.md)。
 
 ### <a name="setup-considerations"></a>設定考量
 
@@ -199,7 +199,7 @@ sudo service grafana-server start
 
 下列螢幕擷取畫面會描繪圖形和圖表來顯示最大的幾個流量及其頻率。 流量也會依 NSG 規則來顯示，以及依決策來顯示。 Grafana 具有高度自訂能力，因此建議您建立儀表板以符合您的特定監視需求。 下列範例顯示一般的儀表板：
 
-![儀表板圖形](./media/network-watcher-nsg-grafana/network-watcher-nsg-grafana-fig4.png)
+![顯示範例圖表設定的螢幕擷取畫面，其中包含依 NSG 規則分割的流程。](./media/network-watcher-nsg-grafana/network-watcher-nsg-grafana-fig4.png)
 
 ## <a name="conclusion"></a>結論
 

@@ -7,14 +7,14 @@ ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: d6222c9275dfe022e897bb6324df5bb30e1a8905
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 3f882375197fa45cfbc74ff7a80ed33fd33f33a3
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91276810"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400293"
 ---
-# <a name="high-availability-with-azure-cosmos-db"></a>Azure Cosmos DB 的高可用性
+# <a name="how-does-azure-cosmos-db-provide-high-availability"></a>Azure Cosmos DB 如何提供高可用性？ 
 
 Azure Cosmos DB 會以透明方式將您的資料複寫到與 Azure Cosmos 帳戶相關聯的所有 Azure 區域。 Azure Cosmos DB 針對您的資料採用多層冗余，如下圖所示：
 
@@ -79,7 +79,7 @@ Azure Cosmos DB 會以透明方式將您的資料複寫到與 Azure Cosmos 帳�
 
 為您的 Azure Cosmos 帳戶設定多區域寫入時，您可以加入宣告區域冗余，而不需要額外費用。 否則，請參閱以下關于區域冗余支援定價的附注。 您可以藉由移除區域並將其新增回已啟用區域冗余的方式，在 Azure Cosmos 帳戶的現有區域上啟用區域冗余。
 
-這項功能適用于： *英國南部、東南亞、美國東部、美國東部2、美國中部、西歐、美國西部2、日本東部、北歐、法國中部、澳大利亞東部* 區域。
+這項功能適用于： *英國南部、東南亞、美國東部、美國東部2、美國中部、西歐、美國西部2、日本東部、北歐、法國中部、澳大利亞東部、美國東部 2 EUAP* 區域。
 
 > [!NOTE]
 > 啟用單一區域 Azure Cosmos 帳戶的可用性區域將會產生相當於將額外區域新增至您帳戶的費用。 如需定價的詳細資訊，請參閱 Azure Cosmos DB 文章中的 [定價頁面](https://azure.microsoft.com/pricing/details/cosmos-db/) 和 [多區域成本](optimize-cost-regions.md) 。

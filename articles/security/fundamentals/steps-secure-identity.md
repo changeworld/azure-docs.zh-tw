@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 01/29/2020
 ms.author: martinco
-ms.openlocfilehash: d05670d55d8a4f9ad7ab691da3f05f1c3e0cd177
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: a8fa14999c75528171fbe811ee64f65b913ed820
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386141"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399800"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>可保護身分識別基礎結構的五個步驟
 
@@ -35,7 +35,7 @@ ms.locfileid: "87386141"
 在閱讀這份檢查清單時，請務必記錄下您已完成的功能和步驟。
 
 > [!NOTE]
-> 這份文件中有諸多建議，僅對設定為以 Azure Active Directory 作為其識別提供者的應用程式有效。 為應用程式設定單一登入，可確保應用程式會享有認證原則、威脅偵測、稽核、記錄，以及其他已新增至這些應用程式的功能。 [Azure AD 應用程式管理](../../active-directory/manage-apps/what-is-application-management.md)是所有這些建議所依據的基礎。
+> 這份文件中有諸多建議，僅對設定為以 Azure Active Directory 作為其識別提供者的應用程式有效。 為應用程式設定單一登入，可確保應用程式會享有認證原則、威脅偵測、稽核、記錄，以及其他已新增至這些應用程式的功能。 [Azure AD 應用程式管理](../../active-directory/manage-apps/what-is-application-management.md) 是所有這些建議所依據的基礎。
 
 本文件中的建議事項是與[身分識別安全分數](../../active-directory/fundamentals/identity-secure-score.md)相互搭配，其能針對您 Azure AD 租用戶的身分識別安全設定進行自動化評估。 組織可以使用 Azure AD 入口網站中的 [身分識別安全分數] 頁面，來尋找其目前安全性設定中的缺口，以確實遵循最新的 Microsoft 安全性[最佳做法](identity-management-best-practices.md)。 實作 [安全分數] 頁面中的每個建議，將能提升您的分數並允許您追蹤自己的進度，並能協助您與業界其他類似規模的組織比較彼此的實作情況。
 
@@ -82,7 +82,7 @@ Microsoft 建議採用下列根據 [NIST 指導方針](https://pages.nist.gov/80
 如果您的組織使用搭配傳遞驗證或同盟的混合式身分識別解決方案，則基於下列兩個原因，您應該啟用密碼雜湊同步處理：
 
 * Azure AD 管理中的[認證外洩的使用者](../../active-directory/reports-monitoring/concept-risk-events.md)報告會就「暗網 (Dark Web)」上已公開的使用者名稱和密碼組向您發出警告。 數量驚人的密碼是透過網路釣魚、惡意程式碼，以及在第三方網站上重複使用密碼並於之後遭到入侵而外洩的。 Microsoft 已發現許多這樣的外洩認證，並會在此報告中告訴您它們是否與您組織的認證相符，但前提是您必須[啟用密碼雜湊同步處理](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md)！
-* 發生內部部署中斷 (例如遭遇勒索軟體攻擊) 時，您可以切換成使用[採用密碼雜湊同步處理的雲端驗證](choose-ad-authn.md)。此備用驗證方法可讓您繼續存取已設定為使用 Azure Active Directory 進行驗證的應用程式，包括 Office 365。 在此情況下，在解決內部部署中斷之前，IT 員工將不需要被迫使用個人電子郵件帳戶來共用資料。
+* 如果發生內部部署中斷 (例如，在勒索軟體攻擊中) 您可以 [使用密碼雜湊同步](choose-ad-authn.md)處理來切換到使用雲端驗證。這種備份驗證方法可讓您繼續存取設定為使用 Azure Active Directory 進行驗證的應用程式，包括 Microsoft 365。 在此情況下，在解決內部部署中斷之前，IT 員工將不需要被迫使用個人電子郵件帳戶來共用資料。
 
 深入了解[密碼雜湊同步處理](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md)的運作方式。
 
@@ -117,7 +117,7 @@ Microsoft 建議採用下列根據 [NIST 指導方針](https://pages.nist.gov/80
 
 請務必了解各種 [Azure AD 應用程式同意體驗](../../active-directory/develop/application-consent-experience.md)、[權限和同意的類型](../../active-directory/develop/v2-permissions-and-consent.md)，以及其對組織安全性狀態的影響。 根據預設，Azure AD 中的所有使用者都可以授與應用程式，以利用 Microsoft 身分識別平台來存取組織的資料。 雖然允許使用者自行同意確實可以讓使用者輕鬆地取得與 Microsoft 365、Azure 及其他服務整合的實用應用程式，但如果沒有小心地使用和監視，這麼做也可能代表風險。
 
-Microsoft 建議限制使用者同意，以協助降低您的介面區並降低此風險。 您也可以使用[應用程式同意原則（預覽）](../../active-directory/manage-apps/configure-user-consent.md) ，將終端使用者同意限制為僅限已驗證的發行者，以及您所選取的許可權。 若使用者同意受到限制，則仍會接受先前的同意授與，但所有未來的同意作業都必須由系統管理員執行。 在受限制的情況下，使用者可以透過整合式[管理員同意要求工作流程](../../active-directory/manage-apps/configure-admin-consent-workflow.md)或您自己的支援流程來要求系統管理員同意。 在限制使用者同意之前，請使用我們的[建議](../../active-directory/manage-apps/manage-consent-requests.md)，在您的組織中規劃這項變更。 對於您想要允許所有使用者存取的應用程式，請考慮[代表所有使用者授與同意](../../active-directory/develop/v2-admin-consent.md)，以確定尚未個別同意的使用者能夠存取應用程式。 如果您不想讓這些應用程式可在所有案例中供所有使用者使用，請使用[應用程式指派](../../active-directory/manage-apps/assign-user-or-group-access-portal.md)和條件式存取，以限制使用者對[特定應用程式](../../active-directory/conditional-access/concept-conditional-access-cloud-apps.md)的存取。
+Microsoft 建議限制使用者同意，以協助降低您的介面區並降低此風險。 您也可以使用 [應用程式同意原則 (預覽) ](../../active-directory/manage-apps/configure-user-consent.md) 將終端使用者同意限制為僅限已驗證的發行者，以及僅針對您選取的許可權。 如果限制使用者同意，則仍會接受先前的同意授與，但所有未來的同意作業都必須由系統管理員執行。 在受限的情況下，使用者可以透過整合式 [管理員同意要求工作流程](../../active-directory/manage-apps/configure-admin-consent-workflow.md) 或透過您自己的支援程式要求系統管理員同意。 在限制使用者同意之前，請使用我們的 [建議](../../active-directory/manage-apps/manage-consent-requests.md) 在您的組織中規劃這項變更。 對於您想要允許所有使用者存取的應用程式，請考慮[代表所有使用者授與同意](../../active-directory/develop/v2-admin-consent.md)，以確定尚未個別同意的使用者能夠存取應用程式。 如果您不想讓這些應用程式可在所有案例中供所有使用者使用，請使用[應用程式指派](../../active-directory/manage-apps/assign-user-or-group-access-portal.md)和條件式存取，以限制使用者對[特定應用程式](../../active-directory/conditional-access/concept-conditional-access-cloud-apps.md)的存取。
 
 請確定使用者可以要求管理員核准其使用新的應用程式，以減少使用者摩擦、將支援量降到最低，以及防止使用者使用非 Azure AD 認證來註冊應用程式。 一旦您規範同意作業，管理員就應該定期稽核應用程式和已同意的權限。
 
@@ -193,7 +193,7 @@ Azure AD 的[自助密碼重設 (SSPR)](../../active-directory/authentication/qu
 
 ### <a name="implement-self-service-group-and-application-access"></a>實作自助式的群組和應用程式存取
 
-Azure AD 可讓非管理員使用安全性群組、Office 365 群組、應用程式角色和存取套件目錄來管理資源的存取。  [自助群組管理](../../active-directory/users-groups-roles/groups-self-service-management.md)可讓群組擁有者管理自己的群組，而不需要指派系統管理角色。 使用者也可以建立及管理 Office 365 群組，而不需要依賴管理員來處理其要求，而且未使用的群組會自動到期。  [Azure AD 權利管理](../../active-directory/governance/entitlement-management-overview.md)可透過完整的存取要求工作流程和自動到期功能，進一步實現委派和可見度。  您可以向非管理員委派能力，讓其能夠為所擁有的群組、小組、應用程式和 SharePoint Online 網站設定自己的存取套件，方法是為需要核准存取權的人員自訂原則，包括將員工的經理和商業夥伴贊助商設定為核准者。
+Azure AD 可讓非系統管理員使用安全性群組、Microsoft 365 群組、應用程式角色和存取套件目錄來管理資源的存取權。  [自助群組管理](../../active-directory/users-groups-roles/groups-self-service-management.md)可讓群組擁有者管理自己的群組，而不需要指派系統管理角色。 使用者也可以建立和管理 Microsoft 365 群組，而不需要依賴系統管理員來處理其要求，且未使用的群組會自動到期。  [Azure AD 權利管理](../../active-directory/governance/entitlement-management-overview.md)可透過完整的存取要求工作流程和自動到期功能，進一步實現委派和可見度。  您可以向非管理員委派能力，讓其能夠為所擁有的群組、小組、應用程式和 SharePoint Online 網站設定自己的存取套件，方法是為需要核准存取權的人員自訂原則，包括將員工的經理和商業夥伴贊助商設定為核准者。
 
 ### <a name="implement-azure-ad-access-reviews"></a>實作 Azure AD 存取權檢閱
 

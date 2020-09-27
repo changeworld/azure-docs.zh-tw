@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: b354fda4d23d13b8defed4381335ab147bbece5d
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 69aac7dff80b7c85212602f1c03957a117628737
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835896"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400327"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure 身分識別管理和存取控制安全性最佳作法
 
@@ -189,13 +189,13 @@ ms.locfileid: "87835896"
 這個方法使用 Azure AD Identity Protection 風險評估，根據所有雲端應用程式的使用者和登入風險來判斷是否需要雙步驟驗證。 這個方法需要 Azure Active Directory P2 授權。 您可以在 [Azure Active Directory Identity Protection](/azure/active-directory/identity-protection/overview) 中找到這個方法的詳細資訊。
 
 > [!Note]
-> 選項2：藉由變更使用者狀態來啟用多重要素驗證，會覆寫條件式存取原則。 因為選項3和4使用條件式存取原則，所以您無法對其使用選項2。
+> 選項2，藉由變更使用者狀態來啟用 Multi-Factor Authentication，會覆寫條件式存取原則。 因為選項3和4使用條件式存取原則，所以您無法搭配使用選項2與它們。
 
 未新增額外身分識別保護層 (例如雙步驟驗證) 的組織比較容易遭受認證竊取攻擊。 認證竊取攻擊可能會導致資料洩漏。
 
 ## <a name="use-role-based-access-control"></a>使用角色型存取控制
 
-對於使用雲端的任何組織而言，管理雲端資源的存取是一件非常重要的事。 Azure[角色型存取控制 (AZURE RBAC) ](/azure/role-based-access-control/overview)可協助您管理可存取 azure 資源的人員、如何使用這些資源，以及他們有權存取的區域。
+對於使用雲端的任何組織而言，管理雲端資源的存取是一件非常重要的事。 [Azure 角色型存取控制 (AZURE RBAC) ](/azure/role-based-access-control/overview)可協助您管理可存取 azure 資源的人員、這些資源的用途，以及他們有權存取的區域。
 
 指定群組或個別角色來負責處理 Azure 中的特定功能，可避免因為責任混亂而導致會產生安全性風險的人為和自動化錯誤。 對於想要強制執行資料存取安全性原則的組織，根據[需要知道](https://en.wikipedia.org/wiki/Need_to_know)和[最低權限](https://en.wikipedia.org/wiki/Principle_of_least_privilege)安全性原則限制存取權限是必須做的事。
 
@@ -204,7 +204,7 @@ ms.locfileid: "87835896"
 您可以使用 [RBAC](/azure/role-based-access-control/overview) 來將權限指派給特定範圍的使用者、群組及應用程式。 角色指派的範圍可以是訂用帳戶、資源群組或單一資源。
 
 **最佳做法**：請區隔小組內的職責，而僅授與使用者執行作業所需的存取權。 不要授與每個人 Azure 訂用帳戶或資源中無限制的權限，而是只允許在特定範圍執行特定的動作。
-**詳細資料**：在 azure 中使用[azure 內建角色](/azure/role-based-access-control/built-in-roles)，將許可權指派給使用者。
+**詳細資料**：使用 azure 中的 [內建角色](/azure/role-based-access-control/built-in-roles) ，將許可權指派給使用者。
 
 > [!Note]
 > 特定的權限會造成不必要的複雜性和混淆，從而累積成「舊版」設定，令人難以進行修正而不害怕造成破壞。 避免資源特定的許可權。 相反地，請針對整個企業的權限使用管理群組，並針對訂用帳戶內的權限使用資源群組。 請避免使用者特定的權限。 相反地，請將存取權指派給 Azure AD 中的群組。
@@ -216,7 +216,7 @@ ms.locfileid: "87835896"
 * **區段管理群組**適用於範圍有限的小組 (通常是因為法規或其他組織界限)
 
 **最佳做法**：向具有直接營運責任的安全性小組授與適當權限。
-**詳細資料**：請檢閱 RBAC 內建角色以進行適當的角色指派。 如果內建角色不符合您組織的特定需求，您可以建立[Azure 自訂角色](/azure/role-based-access-control/custom-roles)。 和內建角色一樣，您也可以將自訂角色指派給訂用帳戶、資源群組和資源範圍的使用者、群組和服務主體。
+**詳細資料**：請檢閱 RBAC 內建角色以進行適當的角色指派。 如果內建角色不符合您組織的特定需求，您可以建立 [Azure 自訂角色](/azure/role-based-access-control/custom-roles)。 和內建角色一樣，您也可以將自訂角色指派給訂用帳戶、資源群組和資源範圍的使用者、群組和服務主體。
 
 **最佳做法**：向需要 Azure 資訊安全中心存取權的安全性角色授與此存取權。 資訊安全中心可讓安全性小組快速找出並補救風險。
 **詳細資料**：將具有這些需求的安全性小組新增至 RBAC [安全性管理員](/azure/role-based-access-control/built-in-roles#security-admin)角色，使其可以檢視安全性原則、檢視安全性狀態、編輯安全性原則、檢視警示和建議，以及解除警示和建議。 視責任範圍而定，您可以使用根管理群組或區段管理群組來執行這項操作。
@@ -229,7 +229,7 @@ ms.locfileid: "87835896"
 
 特殊權限帳戶是可管理 IT 系統的帳戶。 網路攻擊者會以這些帳戶為目標，來取得組織資料和系統的存取權。 為了保護特殊權限存取，您應該讓帳戶和系統遠離遭遇惡意使用者的風險。
 
-我們建議您擬定並遵循適當計劃以保護特殊權限存取，使網路攻擊者無法取得。 如需有關如何擬定詳細的藍圖，以保護 Azure AD、Microsoft Azure、Office 365 和其他雲端服務所管理或報告的身分識別和存取權，請檢閱[在 Azure AD 中保護混合式部署和雲端部署的特殊權限存取](/azure/active-directory/users-groups-roles/directory-admin-roles-secure)。
+我們建議您擬定並遵循適當計劃以保護特殊權限存取，使網路攻擊者無法取得。 如需有關如何建立詳細的藍圖，以保護 Azure AD、Microsoft Azure、Microsoft 365 及其他雲端服務中所管理或報告的身分識別和存取，請參閱 [Azure AD 中的保護混合式部署和雲端部署的](/azure/active-directory/users-groups-roles/directory-admin-roles-secure)特殊許可權存取。
 
 以下摘要說明[在 Azure AD 中保護混合式部署和雲端部署的特殊權限存取](/azure/active-directory/users-groups-roles/directory-admin-roles-secure)中找到的最佳做法：
 
@@ -240,7 +240,7 @@ ms.locfileid: "87835896"
 **詳細資料**：從重要的系統管理員角色移除任何取用者帳戶 (例如，hotmail.com、live.com 和 outlook.com 等 Microsoft 帳戶)。
 
 **最佳做法**：確定所有重要的系統管理員角色都使用個別的帳戶來進行系統管理工作，以免網路釣魚等攻擊危害系統管理權限。
-**詳細資料**：建立另一個系統管理員帳戶，並為其指派要執行系統管理工作所需的權限。 禁止使用這些系統管理帳戶來存取日常生產力工具，例如 Microsoft Office 365 電子郵件或任意網頁瀏覽活動。
+**詳細資料**：建立另一個系統管理員帳戶，並為其指派要執行系統管理工作所需的權限。 封鎖使用這些系統管理帳戶來取得每日生產力工具，例如 Microsoft 365 電子郵件或任意網頁流覽。
 
 **最佳做法**：識別及分類具備高特殊權限角色的帳戶。   
 **詳細資料**：在開啟 Azure AD Privileged Identity Management 之後，檢視具備全域管理員、特殊權限角色管理員和其他較高特殊權限角色的使用者。 請移除這些角色中不再需要的任何帳戶，並將指派給管理員角色的其餘帳戶分類：
@@ -281,7 +281,7 @@ ms.locfileid: "87835896"
 **詳細資料**：備妥流程以在員工不再於組織中任職時停用或刪除系統管理員帳戶。
 
 **最佳做法**：定期使用目前的攻擊技術來測試系統管理員帳戶。
-**詳細資料**：使用 Office 365 攻擊模擬器或第三方供應項目，在組織中執行實際的攻擊案例。 這可協助您在發生真正的攻擊之前就先找出易受攻擊的使用者。
+**詳細資料**：使用 Microsoft 365 攻擊模擬器或協力廠商服務，在您的組織中執行真實的攻擊案例。 這可協助您在發生真正的攻擊之前就先找出易受攻擊的使用者。
 
 **最佳做法**：採取步驟來減輕由最常被使用的攻擊技巧所造成的損害。  
 **詳細資料**：[識別系統管理角色中需要切換至公司或學校帳戶的 Microsoft 帳戶](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#identify-microsoft-accounts-in-administrative-roles-that-need-to-be-switched-to-work-or-school-accounts)  
@@ -294,11 +294,11 @@ ms.locfileid: "87835896"
 
 [所有具有特殊權限角色的使用者和公開的使用者，都必須進行多重要素驗證](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#require-multi-factor-authentication-mfa-for-users-in-all-privileged-roles-as-well-as-exposed-users)  
 
-[取得您的 Office 365 安全分數 (如果使用 Office 365)](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#obtain-your-office-365-secure-score-if-using-office-365)  
+[如果使用 Microsoft 365，請 (取得 Microsoft 365 的安全分數) ](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#obtain-your-office-365-secure-score-if-using-office-365)  
 
-[檢閱 Office 365 安全性與合規性指引 (如果使用 Office 365)](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#review-the-office-365-security-and-compliance-guidance-if-using-office-365)  
+[如果使用 Microsoft 365，請參閱 Microsoft 365 的安全性指引 () ](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#review-the-office-365-security-and-compliance-guidance-if-using-office-365)  
 
-[設定 Office 365 活動監視 (如果使用 Office 365)](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#configure-office-365-activity-monitoring-if-using-office-365)  
+[如果使用 Microsoft 365) ，請設定 Microsoft 365 活動監視 (](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#configure-office-365-activity-monitoring-if-using-office-365)  
 
 [建立事件/緊急回應計劃擁有者](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#establish-incidentemergency-response-plan-owners)  
 

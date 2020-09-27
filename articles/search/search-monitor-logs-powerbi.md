@@ -6,13 +6,13 @@ author: MarkHeff
 ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/24/2020
-ms.openlocfilehash: 2caf4c66cdbb11ed42c4131ef1584c372ec10332
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/25/2020
+ms.openlocfilehash: 90691fda7b0bf58768c7e9be6a78fb27a7807186
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935104"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400361"
 ---
 # <a name="visualize-azure-cognitive-search-logs-and-metrics-with-power-bi"></a>使用 Power BI 將 Azure 認知搜尋記錄和計量視覺化
 [Azure 認知搜尋](./search-what-is-azure-search.md) 可讓您將搜尋服務的作業記錄和服務計量儲存在 Azure 儲存體帳戶中。 此頁面提供如何透過 Power BI 範本應用程式來將該資訊視覺化的指示。 應用程式會提供搜尋服務的詳細資訊，包括搜尋、索引、作業和服務計量的相關資訊。
@@ -27,13 +27,13 @@ ms.locfileid: "88935104"
     1. 流覽至您在 Azure 入口網站中的 Azure 認知搜尋服務
     1. 在左側資料行的 [監視] 區段下，選取 [**診斷設定**]。
 
-        ![顯示如何在 Azure 認知搜尋服務的 [監視] 區段中選取診斷設定的螢幕擷取畫面。](media/search-monitor-logs-powerbi/diagnostic-settings.png)
+        :::image type="content" source="media/search-monitor-logs-powerbi/diagnostic-settings.png" alt-text="顯示如何在 Azure 認知搜尋服務的 [監視] 區段中選取診斷設定的螢幕擷取畫面。" border="false":::
 
     1. 選取 [ **+ 新增診斷設定**]
     1. 查看封存 **至儲存體帳戶**、提供您的儲存體帳戶資訊，以及檢查 **insight-logs-operationlogs** 和 **AllMetrics**
 
-        ![螢幕擷取畫面，顯示如何在 [診斷設定] 頁面中進行計量和資源記錄的選取專案。](media/search-monitor-logs-powerbi/add-diagnostic-setting.png)
-    1. 選取 [儲存]
+        :::image type="content" source="media/search-monitor-logs-powerbi/add-diagnostic-setting.png" alt-text="螢幕擷取畫面，顯示如何在 [診斷設定] 頁面中進行計量和資源記錄的選取專案。":::
+    1. 選取 [儲存]。
 
 1. 啟用記錄之後，請使用您的搜尋服務來開始產生記錄和計量。 最多需要一個小時的時間，容器才會出現在含有這些記錄的 Blob 儲存體中。 您會看到搜尋流量記錄的 **insight-logs-operationlogs** 容器，以及適用于度量的 **見解-計量 pt1m** 容器。
 
@@ -41,48 +41,48 @@ ms.locfileid: "88935104"
 
 1. 安裝應用程式之後，請從 Power BI 的應用程式清單中選取應用程式。
 
-    ![螢幕擷取畫面，顯示要從應用程式清單中選取的 Azure 認知搜尋應用程式。](media/search-monitor-logs-powerbi/azure-search-app-tile.png)
+    :::image type="content" source="media/search-monitor-logs-powerbi/azure-search-app-tile.png" alt-text="螢幕擷取畫面，顯示要從應用程式清單中選取的 Azure 認知搜尋應用程式。":::
 
 1. 選取 **[** 連線] 以連接您的資料
 
-    ![顯示如何連接至 Azure 認知搜尋應用程式中資料的螢幕擷取畫面。](media/search-monitor-logs-powerbi/get-started-with-your-new-app.png)
+    :::image type="content" source="media/search-monitor-logs-powerbi/get-started-with-your-new-app.png" alt-text="顯示如何連接至 Azure 認知搜尋應用程式中資料的螢幕擷取畫面。":::
 
 1. 輸入包含記錄和計量的儲存體帳戶名稱。 根據預設，應用程式會查看過去10天的資料，但可使用 **days** 參數變更此值。
 
-    ![螢幕擷取畫面，顯示如何在 [連接到 Azure 認知搜尋] 頁面中輸入儲存體帳戶名稱和要查詢的天數。](media/search-monitor-logs-powerbi/connect-to-storage-account.png)
+    :::image type="content" source="media/search-monitor-logs-powerbi/connect-to-storage-account.png" alt-text="螢幕擷取畫面，顯示如何在 [連接到 Azure 認知搜尋] 頁面中輸入儲存體帳戶名稱和要查詢的天數。":::
 
 1. 選取 [ **金鑰** ] 作為驗證方法，並提供您的儲存體帳戶金鑰。 選取 [ **私** 用] 作為 [隱私權等級]。 按一下 [登入]  開始載入程序。
 
-    ![顯示如何在 [連接到 Azure 認知搜尋] 頁面中輸入驗證方法、帳戶金鑰和隱私權層級的螢幕擷取畫面。](media/search-monitor-logs-powerbi/connect-to-storage-account-step-two.png)
+    :::image type="content" source="media/search-monitor-logs-powerbi/connect-to-storage-account-step-two.png" alt-text="顯示如何在 [連接到 Azure 認知搜尋] 頁面中輸入驗證方法、帳戶金鑰和隱私權層級的螢幕擷取畫面。":::
 
 1. 等候資料重新整理。 這可能需要一些時間，視您擁有的資料量而定。 您可以根據下列指標，查看資料是否仍在重新整理中。
 
-    ![顯示如何讀取 [資料重新整理] 頁面上資訊的螢幕擷取畫面。](media/search-monitor-logs-powerbi/workspace-view-refreshing.png)
+    :::image type="content" source="media/search-monitor-logs-powerbi/workspace-view-refreshing.png" alt-text="顯示如何讀取 [資料重新整理] 頁面上資訊的螢幕擷取畫面。":::
 
 1. 當資料重新整理完成之後，請選取 **Azure 認知搜尋報表** 來查看報表。
 
-    ![顯示如何在 [資料重新整理] 頁面上選取 Azure 認知搜尋報表的螢幕擷取畫面。](media/search-monitor-logs-powerbi/workspace-view-select-report.png)
+    :::image type="content" source="media/search-monitor-logs-powerbi/workspace-view-select-report.png" alt-text="顯示如何在 [資料重新整理] 頁面上選取 Azure 認知搜尋報表的螢幕擷取畫面。":::![]()
 
 1. 開啟報表之後，請務必重新整理頁面，以便與您的資料一起開啟。
 
-    ![Azure 認知搜尋 Power BI 報表的螢幕擷取畫面。](media/search-monitor-logs-powerbi/powerbi-search.png)
+    :::image type="content" source="media/search-monitor-logs-powerbi/powerbi-search.png" alt-text="Azure 認知搜尋 Power BI 報表的螢幕擷取畫面。":::
 
 ## <a name="how-to-change-the-app-parameters"></a>如何變更應用程式參數
 如果您想要將不同儲存體帳戶的資料視覺化，或變更要查詢的資料天數，請遵循下列步驟來變更 **days** 和 **StorageAccount** 參數。
 
 1. 流覽至您的 Power BI 應用程式，尋找您的 Azure 認知搜尋應用程式，然後選取 [ **編輯應用程式** ] 按鈕以查看工作區。
 
-    ![顯示如何為 Azure 認知搜尋應用程式選取 [編輯應用程式] 按鈕的螢幕擷取畫面。](media/search-monitor-logs-powerbi/azure-search-app-tile-edit.png)
+    :::image type="content" source="media/search-monitor-logs-powerbi/azure-search-app-tile-edit.png" alt-text="顯示如何為 Azure 認知搜尋應用程式選取 [編輯應用程式] 按鈕的螢幕擷取畫面。":::
 
 1. 從資料集選項中選取 [ **設定** ]。
 
-    ![顯示如何從 Azure 認知搜尋資料集選項中選取設定的螢幕擷取畫面。](media/search-monitor-logs-powerbi/workspace-view-select-settings.png)
+    :::image type="content" source="media/search-monitor-logs-powerbi/workspace-view-select-settings.png" alt-text="顯示如何從 Azure 認知搜尋資料集選項中選取設定的螢幕擷取畫面。":::
 
 1. 在 [資料集] 索引標籤中，變更參數值 **並選取 [** 套用]。 如果連接發生問題，請更新相同頁面上的資料來源認證。
 
 1. 流覽回工作區，然後從資料集選項中選取 [ **立即** 重新整理]。
 
-    ![顯示如何從 Azure 認知搜尋資料集選項中選取 [立即重新整理] 的螢幕擷取畫面。](media/search-monitor-logs-powerbi/workspace-view-select-refresh-now.png)
+    :::image type="content" source="media/search-monitor-logs-powerbi/workspace-view-select-refresh-now.png" alt-text="顯示如何從 Azure 認知搜尋資料集選項中選取 [立即重新整理] 的螢幕擷取畫面。":::
 
 1. 開啟報表以查看更新的資料。 您可能也需要重新整理報表，以查看最新的資料。
 

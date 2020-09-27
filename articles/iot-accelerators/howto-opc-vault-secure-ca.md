@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: d702a3cca6a24819d2d184dc6df09153c9dcc860
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 01213cd4d04783d0d877b4565493f06fa3718f8d
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91281876"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399630"
 ---
 # <a name="run-the-opc-vault-certificate-management-service-securely"></a>安全地執行 OPC 保存庫憑證管理服務
 
@@ -94,7 +94,7 @@ OPC 保存庫微服務會定義下列角色：
 
 ### <a name="security-monitoring"></a>安全性監控
 
-訂閱或實施適當的安全性監視。 例如，訂閱中央監視解決方案 (例如 Azure 資訊安全中心或 Office 365 監視解決方案) ，並適當地進行設定，以確保安全性事件會傳輸到監視解決方案。
+訂閱或實施適當的安全性監視。 例如，訂閱中央監視解決方案 (例如 Azure 資訊安全中心或 Microsoft 365 監視解決方案) ，並適當地進行設定，以確保安全性事件會傳輸到監視解決方案。
 
 > [!IMPORTANT]
 > 根據預設，OPC 保存庫服務會以 [Azure 應用程式見解](https://docs.microsoft.com/azure/azure-monitor/app/devops) 作為監視解決方案來部署。 強烈建議您新增安全性解決方案（例如 [Azure 資訊安全中心](https://azure.microsoft.com/services/security-center/) ）。

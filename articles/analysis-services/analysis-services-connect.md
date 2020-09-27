@@ -8,12 +8,12 @@ ms.date: 09/04/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: 71caad8ce650b86f4350b32974bb8d980538b223
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 10e091ed58146d992d7b9c1f65b8b64f881a41b9
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89489012"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400276"
 ---
 # <a name="connecting-to-servers"></a>連線至伺服器
 
@@ -23,7 +23,7 @@ ms.locfileid: "89489012"
 
 [取得最新的用戶端程式庫](https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current)
 
-所有連到伺服器的連線 (不論是哪一種類型) 都需要已更新的 AMO、ADOMD.NET 及 OLEDB 用戶端程式庫，才能連接到 Analysis Services 伺服器並與其銜接。 針對 SSMS、Visual Studio、Excel 2016 和更新版本，以及 Power BI，最新的用戶端程式庫會隨著每月版本安裝或更新。 不過，在某些情況下，應用程式的版本可能不會是最新的。 例如，當原則延遲更新，或 Office 365 更新是在「順延通道」上時。
+所有連到伺服器的連線 (不論是哪一種類型) 都需要已更新的 AMO、ADOMD.NET 及 OLEDB 用戶端程式庫，才能連接到 Analysis Services 伺服器並與其銜接。 針對 SSMS、Visual Studio、Excel 2016 和更新版本，以及 Power BI，最新的用戶端程式庫會隨著每月版本安裝或更新。 不過，在某些情況下，應用程式的版本可能不會是最新的。 例如，當原則延遲更新，或 Microsoft 365 更新在延遲通道上時。
 
 > [!NOTE]
 > 用戶端程式庫無法透過需要使用者名稱和密碼的 proxy 伺服器連線到 Azure Analysis Services。 
@@ -96,7 +96,7 @@ Cannot initialize the data source object of OLE DB provider "MSOLAP" for linked 
 
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 [使用 Excel 連接](analysis-services-connect-excel.md)    
 [使用 Power BI 連接](analysis-services-connect-pbi.md)   

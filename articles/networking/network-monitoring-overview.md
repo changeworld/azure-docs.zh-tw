@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: agummadi
-ms.openlocfilehash: 2912488286745bf8d2e567d09e445b0a44dc7c39
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5e2d3f0b5abcd7a9dcd4f49c120353adacffcb31
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67672185"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399647"
 ---
 # <a name="network-monitoring-solutions"></a>網路監視解決方案 
 
@@ -65,7 +65,7 @@ Expressroute 的 NPM 提供對於 Azure 私用對等連線和 Microsoft 對等�
 * 偵測從內部部署至雲端應用程式的網路拓撲
 * 容量規劃、頻寬使用率分析
 * 監視主要和次要路徑並且提出警示
-* 透過 ExpressRoute 監視與 Azure 服務 (例如 Office 365、Dynamics 365 等) 的連線
+* 監視 Azure 服務的連線能力，例如 Microsoft 365、Dynamics 365、.。。透過 ExpressRoute
 * 偵測 VNet 連線能力的降低
 
 ![顯示跨區域流量的地理資訊地圖](./media/network-monitoring-overview/expressroute-topology-map.png) 
@@ -73,7 +73,7 @@ Expressroute 的 NPM 提供對於 Azure 私用對等連線和 Microsoft 對等�
 如需詳細資訊，請參閱下列文章：
 
 * [設定 ExpressRoute 的網路效能監控](../expressroute/how-to-npm.md)
-* [部落格文章](https://aka.ms/NPMExRmonitorGA)
+* [Blog 文章](https://aka.ms/NPMExRmonitorGA)
 
 ## <a name="service-connectivity-monitor"></a>服務連線能力監視
 
@@ -84,12 +84,12 @@ Expressroute 的 NPM 提供對於 Azure 私用對等連線和 Microsoft 對等�
 * 從全球多個使用者位置測試應用程式連線能力
 * 確定企業營運與 SaaS 應用程式的網路延遲和封包遺失
 * 確定網路上可能會造成應用程式效能不佳的作用點
-* 使用針對 Microsoft Office 365、Dynamics 365、商務用 Skype 和其他 Microsoft 服務所內建的測試，監視對 Office 365 應用程式的連線能力
+* 使用適用于 Microsoft 365、Dynamics 365、商務用 Skype 和其他 Microsoft 服務的內建測試，監視 Microsoft 365 應用程式的連線能力
 
 如需詳細資訊，請參閱下列文章：
 
 * [設定網路效能監控來監視服務端點](../azure-monitor/insights/network-performance-monitor-service-connectivity.md#configuration)
-* [部落格文章](https://aka.ms/svcendptmonitor)
+* [Blog 文章](https://aka.ms/svcendptmonitor)
 
 ## <a name="traffic-analytics"></a>流量分析
 流量分析是一項雲端式解決方案，可顯示雲端網路上的使用者和應用程式活動。 系統會分析 NSG 流量記錄，讓您深入了解：

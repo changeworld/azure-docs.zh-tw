@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 11/25/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 2149fd68cdf5f2991d6035f245f70515e920045c
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 4fcd3d143cf2dbb529a8c9c78a769165621e2e89
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187195"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400412"
 ---
 # <a name="troubleshoot-hybrid-runbook-worker-issues"></a>針對混合式 Runbook 背景工作角色問題進行疑難排解
 
@@ -234,11 +234,11 @@ Windows 混合式 Runbook 背景工作角色仰賴[適用於 Windows 的 Log Ana
 
 混合式背景工作角色會將 [Runbook 輸出和訊息](../automation-runbook-output-and-messages.md)傳送至 Azure 自動化，其方式與在雲端中執行 Runbook 作業傳送輸出和訊息的方式相同。 您可透過如同在 Runbook 中所執行的步驟來啟用 [詳細資訊] 和 [進度] 資料流。
 
-### <a name="scenario-orchestratorsandboxexe-cant-connect-to-office-365-through-proxy"></a><a name="no-orchestrator-sandbox-connect-O365"></a>案例：Orchestrator.Sandbox.exe 無法透過 Proxy 連線到 Office 365
+### <a name="scenario-orchestratorsandboxexe-cant-connect-to-microsoft-365-through-proxy"></a>案例： Orchestrator.Sandbox.exe 無法透過 proxy 連接到 Microsoft 365
 
 #### <a name="issue"></a>問題
 
-在 Windows 混合式 Runbook 背景工作角色上執行的指令碼無法如預期般連線到 Orchestrator 沙箱上的 Office 365。 此指令碼會使用 [Connect-MsolService](/powershell/module/msonline/connect-msolservice?view=azureadps-1.0) 來進行連線。 
+在 Windows 混合式 Runbook 背景工作角色上執行的腳本無法如預期般連接到 Orchestrator 沙箱上的 Microsoft 365。 此指令碼會使用 [Connect-MsolService](/powershell/module/msonline/connect-msolservice?view=azureadps-1.0) 來進行連線。 
 
 如果調整 **Orchestrator.Sandbox.exe.config** 來設定 Proxy 和略過清單，則仍然無法正確連線到沙箱。 具有相同 Proxy 和略過清單設定的 **Powershell_ise.exe.config** 檔案或許能提供協助。 Service Management Automation (SMA) 記錄檔和 PowerShell 記錄檔不會提供關於 Proxy 的任何資訊。
 

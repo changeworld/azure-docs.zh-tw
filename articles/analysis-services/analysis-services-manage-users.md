@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 15ae1ca6902c27732812a591f492430150c84ecb
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: c44ac820349973240328fbb92dea14668b019a12
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926173"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400786"
 ---
 # <a name="authentication-and-user-permissions"></a>驗證和使用者權限
 
@@ -28,13 +28,13 @@ Azure Analysis Services 支援 [Azure AD B2B 共同作業](../active-directory/a
 
 這三個用戶端程式庫全都支援 Azure AD 互動式流程和非互動式驗證方法。 兩種非互動式方法 (Active Directory 密碼和 Active Directory 整合式驗證) 可以在利用 AMOMD 和 MSOLAP 的應用程式中使用。 這兩種方法絕對不會產生快顯對話方塊。
 
-Excel 和 Power BI Desktop 等用戶端應用程式，以及 SSMS 和適用於 Visual Studio 的 Analysis Services 專案延伸模組等工具會在更新至最新版本時，安裝最新版的程式庫。 Power BI Desktop、SSMS 和 Analysis Services 專案延伸模組每月均會更新一次。 Excel 會[與 Office 365 一起更新](https://support.office.com/article/When-do-I-get-the-newest-features-in-Office-2016-for-Office-365-da36192c-58b9-4bc9-8d51-bb6eed468516)。 Office 365 更新較不頻繁，而且有些組織會使用延遲的通道，這表示更新會延遲多達三個月。
+Excel 和 Power BI Desktop 等用戶端應用程式，以及 SSMS 和適用於 Visual Studio 的 Analysis Services 專案延伸模組等工具會在更新至最新版本時，安裝最新版的程式庫。 Power BI Desktop、SSMS 和 Analysis Services 專案延伸模組每月均會更新一次。 Excel 會 [以 Microsoft 365 更新](https://support.microsoft.com/office/when-do-i-get-the-newest-features-for-microsoft-365-da36192c-58b9-4bc9-8d51-bb6eed468516)。 Microsoft 365 更新較不頻繁，有些組織會使用延後通道，這表示更新會延後到三個月。
 
 視您使用的用戶端應用程式或工具而定，驗證類型和登入方式可能會不同。 每個應用程式支援使用不同的功能來連線到 Azure Analysis Services 等雲端服務。
 
 Power BI Desktop、Visual Studio 和 SSMS 均支援 Active Directory 通用驗證，這是一種也支援 Azure Multi-Factor Authentication (MFA) 的互動式方法。 Azure MFA 有助於保護對資料與應用程式的存取，同時提供簡單的登入程序。 MFA 也提供具有數種驗證選項 (電話、簡訊、具有 PIN 的智慧卡或行動應用程式通知) 的強式驗證功能。 搭配 Azure AD 使用互動式 MFA 時，會出現快顯對話方塊以進行驗證。 **建議使用通用驗證**。
 
-如果使用 Windows 帳戶登入 Azure，但未選取或無法使用通用驗證 (Excel)，就需要 [Active Directory 同盟服務 (AD FS)](../active-directory/hybrid/how-to-connect-fed-azure-adfs.md)。 透過同盟，Azure AD 和 Office 365 使用者就可以使用內部部署認證進行驗證，而且可以存取 Azure 資源。
+如果使用 Windows 帳戶登入 Azure，但未選取或無法使用通用驗證 (Excel)，就需要 [Active Directory 同盟服務 (AD FS)](../active-directory/hybrid/how-to-connect-fed-azure-adfs.md)。 使用同盟，Azure AD 和 Microsoft 365 使用者會使用內部部署認證進行驗證，而且可以存取 Azure 資源。
 
 ### <a name="sql-server-management-studio-ssms"></a>SQL Server Management Studio (SSMS)
 
@@ -68,7 +68,7 @@ Excel 使用者可以使用 Windows 帳戶、組織識別碼 (電子郵件地址
 
 ![Azure 入口網站中的存取控制](./media/analysis-services-manage-users/aas-manage-users-rbac.png)
 
-此層級的角色會套用到使用者或帳戶，讓他們可在入口網站或使用 Azure Resource Manager 範本完成需要執行的工作。 若要深入瞭解，請參閱[azure 角色型存取控制 (AZURE RBAC) ](../role-based-access-control/overview.md)。 
+此層級的角色會套用到使用者或帳戶，讓他們可在入口網站或使用 Azure Resource Manager 範本完成需要執行的工作。 若要深入瞭解，請參閱 [azure 角色型存取控制 (AZURE RBAC) ](../role-based-access-control/overview.md)。 
 
 ## <a name="database-roles"></a>資料庫角色
 
@@ -81,4 +81,4 @@ Excel 使用者可以使用 Windows 帳戶、組織識別碼 (電子郵件地址
 [使用 Azure Active Directory 群組來管理資源的存取權](../active-directory/fundamentals/active-directory-manage-groups.md)   
 [管理資料庫角色和使用者](analysis-services-database-users.md)  
 [管理伺服器管理員](analysis-services-server-admins.md)  
-[Azure 角色型存取控制 (Azure RBAC) ](../role-based-access-control/overview.md)  
+[Azure 角色型存取控制 (Azure RBAC)](../role-based-access-control/overview.md)  

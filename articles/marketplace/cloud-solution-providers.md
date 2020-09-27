@@ -7,18 +7,18 @@ ms.topic: article
 author: keferna
 ms.author: keferna
 ms.date: 07/14/2020
-ms.openlocfilehash: 51f4c9a5748896eff9e9f3ae9719b2e7e7cdd4e7
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 247a5c89b52c6b58f2e1d04723f4f73b85aeb153
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607490"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400735"
 ---
 # <a name="cloud-solution-provider-program"></a>雲端解決方案提供者計畫
 
 本文說明如何將您的供應項目設定為適用於雲端解決方案提供者 (CSP) 計畫。 除了透過 [商業 marketplace 線上商店](comparing-appsource-azure-marketplace.md)發佈您的供應專案，您也可以透過 CSP 方案銷售，以觸及方案所提供的數百萬個合格 Microsoft 客戶。
 
-您可以設定新的或現有的供應項目來選擇讓供應項目加入 CSP 計畫，這可讓 CSP 合作夥伴銷售您的產品，並為客戶建立配套的解決方案。
+您可以選擇是否要在 CSP 方案中設定新的或現有供應專案以供使用，這可讓 CSP 合作夥伴銷售您的產品，並為客戶建立配套的解決方案。
 
 發行者要負責為終端客戶提供協助修正支援，並為 CSP 計畫中的合作夥伴和/或客戶提供一套機制，使其可與您連絡以取得支援。 最佳做法是為 CSP 計畫中的合作夥伴提供使用者文件、訓練及服務健康狀態/中斷通知 (如適用)，讓 CSP 計畫中的合作夥伴有能力處理來自客戶的第 1 層支援要求。  
 

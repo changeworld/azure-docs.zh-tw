@@ -9,12 +9,12 @@ author: rolyon
 ms.author: rolyon
 ms.date: 09/22/2020
 ms.custom: generated
-ms.openlocfilehash: 973426c6d9d3a4c642e5f37aebe60acce54d581b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ade4a6b791a8aca963a056800bd8c58767aeb766
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91326400"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400089"
 ---
 # <a name="azure-resource-provider-operations"></a>Azure 資源提供者作業
 
@@ -40,7 +40,7 @@ ms.locfileid: "91326400"
 | [Microsoft.Cdn](#microsoftcdn) |
 | [Microsoft.ClassicNetwork](#microsoftclassicnetwork) |
 | [Microsoft.Network](#microsoftnetwork) |
-| **Storage** |
+| **儲存體** |
 | [Microsoft.ClassicStorage](#microsoftclassicstorage) |
 | [Microsoft.DataBox](#microsoftdatabox) |
 | [Microsoft.ImportExport](#microsoftimportexport) |
@@ -5098,7 +5098,7 @@ Azure 服務： [認知服務](../cognitive-services/index.yml)
 
 ### <a name="microsoftmachinelearning"></a>Microsoft.MachineLearning
 
-Azure 服務： [Machine Learning Studio (傳統) ](../machine-learning/studio/index.yml)
+Azure 服務： [Machine Learning Studio (傳統) ](../machine-learning/classic/index.yml)
 
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
@@ -5242,36 +5242,6 @@ Azure 服務： [Machine Learning 服務](../machine-learning/index.yml)
 > | MachineLearningServices/workspace/services/aks/listkeys/action | 列出 Machine Learning Services 工作區中 AKS 服務的金鑰 (s)  |
 > | MachineLearningServices/workspace/services/aks/delete | 在 Machine Learning Services 工作區 (s 中刪除 AKS 服務)  |
 > | MachineLearningServices/workspace/services/aks/計分/動作 | Machine Learning Services 工作區中的分數 AKS 服務 (s)  |
-
-
-### <a name="microsoftmachinelearning"></a>Microsoft.MachineLearning
-
-Azure 服務： [Machine Learning Studio (傳統) ](../machine-learning/classic/index.yml)
-
-> [!div class="mx-tableFixed"]
-> | 動作 | 描述 |
-> | --- | --- |
-> | Microsoft.MachineLearning/register/action | 針對 Machine Learning Web 服務資源提供者註冊訂用帳戶，並讓您能夠建立 Web 服務。 |
-> | Microsoft.MachineLearning/webServices/action | 建立所支援區域的區域性 Web 服務屬性 |
-> | Microsoft.MachineLearning/commitmentPlans/read | 讀取任何 Machine Learning 承諾用量方案 |
-> | Microsoft.MachineLearning/commitmentPlans/write | 建立或更新任何 Machine Learning 承諾用量方案 |
-> | Microsoft.MachineLearning/commitmentPlans/delete | 刪除任何 Machine Learning 承諾用量方案 |
-> | Microsoft.MachineLearning/commitmentPlans/join/action | 加入任何 Machine Learning 承諾用量方案 |
-> | Microsoft.MachineLearning/commitmentPlans/commitmentAssociations/read | 讀取任何 Machine Learning 承諾用量方案關聯 |
-> | Microsoft.MachineLearning/commitmentPlans/commitmentAssociations/move/action | 移動任何 Machine Learning 承諾用量方案關聯 |
-> | Microsoft.MachineLearning/locations/operationresults/read | 取得 Machine Learning 作業的結果 |
-> | Microsoft.MachineLearning/locations/operationsstatus/read | 取得執行中 Machine Learning 作業的狀態 |
-> | Microsoft.MachineLearning/operations/read | 取得 Machine Learning 作業 |
-> | Microsoft.MachineLearning/skus/read | 取得 Machine Learning 承諾用量方案 SKU |
-> | Microsoft.MachineLearning/webServices/read | 讀取任何 Machine Learning Web 服務 |
-> | Microsoft.MachineLearning/webServices/write | 建立或更新任何 Machine Learning Web 服務 |
-> | Microsoft.MachineLearning/webServices/delete | 刪除任何 Machine Learning Web 服務 |
-> | Microsoft.MachineLearning/webServices/listkeys/read | 取得 Machine Learning Web 服務的金鑰 |
-> | Microsoft.MachineLearning/Workspaces/read | 讀取任何 Machine Learning 工作區 |
-> | Microsoft.MachineLearning/Workspaces/write | 建立或更新任何 Machine Learning 工作區 |
-> | Microsoft.MachineLearning/Workspaces/delete | 刪除任何 Machine Learning 工作區 |
-> | Microsoft.MachineLearning/Workspaces/listworkspacekeys/action | 列出 Machine Learning 工作區的金鑰 |
-> | Microsoft.MachineLearning/Workspaces/resyncstoragekeys/action | 重新同步處理針對 Machine Learning 工作區所設定之儲存體帳戶的金鑰 |
 
 ## <a name="internet-of-things"></a>Internet of things
 
@@ -8239,7 +8209,7 @@ Azure 服務： [Azure 原則](../governance/policy/overview.md)、 [azure RBAC]
 > | 動作 | 描述 |
 > | --- | --- |
 > | Microsoft.Authorization/elevateAccess/action | 授與呼叫者租用戶範圍的使用者存取管理員存取 |
-> | Microsoft.Authorization/classicAdministrators/read | 讀取訂用帳戶的系統管理員。 |
+> | Microsoft.Authorization/classicAdministrators/read | 讀取訂用帳戶的系統管理員。 在自訂角色中當做 NotAction 使用時，不會有作用。 |
 > | Microsoft.Authorization/classicAdministrators/write | 對訂用帳戶新增或修改系統管理員。 |
 > | Microsoft.Authorization/classicAdministrators/delete | 從訂用帳戶中移除系統管理員。 |
 > | Microsoft.Authorization/classicAdministrators/operationstatuses/read | 取得訂用帳戶的系統管理員作業狀態。 |

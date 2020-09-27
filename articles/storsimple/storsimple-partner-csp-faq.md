@@ -1,5 +1,5 @@
 ---
-title: 合作夥伴的常見問題： StorSimple for Cloud 解決方案提供者方案
+title: 合作夥伴常見問題：適用于雲端解決方案提供者的 StorSimple 方案
 description: 針對適用於合作夥伴的 StorSimple 和 CSP 的一些常見問題，尋找解答。
 services: storsimple
 documentationcenter: NA
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
-ms.openlocfilehash: a6e5ae96d097dab9c416f7e1f737cf4fe8a62aea
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 2f606a2ff036c6bc3b4e3c508632d48ae8d40f15
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87279214"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400038"
 ---
 # <a name="storsimple-for-cloud-solutions-provider-program-frequently-asked-questions"></a>適用於雲端解決方案提供者的 StorSimple 方案︰常見問題集
 
@@ -40,17 +40,17 @@ ms.locfileid: "87279214"
 
 如需詳細資訊，請移至 [StorSimple in CSP 方案](https://www.microsoft.com/en-us/server-cloud/products/storsimple/)。 
 
-### <a name="is-storsimple-a-usage-based-or-based-on-seat-licenses-like-office-365-and-enterprise-mobility-suite-ems"></a>StorSimple 是依使用量計算授權，還是採用基座授權，就像 Office 365 和 Enterprise Mobility Suite (EMS) 一樣？
+### <a name="is-storsimple-a-usage-based-or-based-on-seat-licenses-like-microsoft-365-and-enterprise-mobility-suite-ems"></a>StorSimple 是以使用量為基礎或根據基座授權（例如 Microsoft 365 和企業行動套件 (EMS) ）？
 StorSimple 是依使用量計算的服務。 透過 CSP 途徑採購 StorSimple Virtual Array 的客戶需要支付虛擬陣列和 Azure 使用量，CSP 帳單上會以個別明細項計費。 
 
-### <a name="is-the-storsimple-business-model-similar-to-that-of-other-services-such-as-the-office-365-and-the-enterprise-mobility-suite"></a>StorSimple 商業模型類似於其他服務的商業模型嗎？例如 Office 365 和 Enterprise Mobility Suite。 
-是。 此模型是批發折扣模型，就像 Azure 中其他依使用量計算的服務。 StorSimple 的批發折扣類似於其他 Azure 服務的批發折扣。 此模型讓我們的 CSP 合作夥伴透過 StorSimple Virtual Array，有機會提高銷售量和 Azure 使用量。  
+### <a name="is-the-storsimple-business-model-similar-to-that-of-other-services-such-as-the-microsoft-365-and-the-enterprise-mobility-suite"></a>StorSimple 商務模型是否類似于其他服務，例如 Microsoft 365 和企業行動套件？ 
+可以。 此模型是批發折扣模型，就像 Azure 中其他依使用量計算的服務。 StorSimple 的批發折扣類似於其他 Azure 服務的批發折扣。 此模型讓我們的 CSP 合作夥伴透過 StorSimple Virtual Array，有機會提高銷售量和 Azure 使用量。  
 
 ### <a name="which-storsimple-skus-are-available-at-launch"></a>推出時有哪些 StorSimple SKU 可用？
 與獨立 StorSimple 服務提供的 SKU 相同。 
 
 ### <a name="is-there-any-difference-between-the-storsimple-directly-purchased-from-microsoft-under-ea-and-storsimple-as-a-part-of-csp"></a>依據 EA 直接向 Microsoft 購買的 StorSimple 和 CSP 中的 StorSimple 有任何差別嗎？
-不可以。 在 CSP 下，客戶也可以購買 CSP 合作夥伴提供的其他服務，還有 StorSimple Virtual Array (SVA)，而且只用一張發票一次購足。 請注意，如果要採購 StorSimple 8000 系列實體裝置，客戶仍必須經過 EA 途徑。 
+否。 在 CSP 下，客戶也可以購買 CSP 合作夥伴提供的其他服務，還有 StorSimple Virtual Array (SVA)，而且只用一張發票一次購足。 請注意，如果要採購 StorSimple 8000 系列實體裝置，客戶仍必須經過 EA 途徑。 
 
 ### <a name="in-which-markets-is-storsimple-available-for-csp-at-launch"></a>StorSimple for CSP 推出時可在哪些市場買到？
 在目前可取得 StorSimple 的所有市場中都可買到 StorSimple Virtual Array for CSP。 如需詳細資訊，請移至 [StorSimple 上市的區域清單](https://azure.microsoft.com/regions/services/)。
@@ -63,7 +63,7 @@ StorSimple 是依使用量計算的服務。 透過 CSP 途徑採購 StorSimple 
 - 他們在提供受控服務時，也能發現新的商業模型。
 
 ### <a name="what-are-the-incentives-available-for-storsimple-csp-partners-do-i-qualify-for-any-csp-program-incentives"></a>StorSimple CSP 合作夥伴可以獲得什麼獎勵？ 我有資格獲得任何 CSP 方案的獎勵嗎？
-如需獎勵的相關資訊，請移至[CSP 方案獎勵](https://partner.microsoft.com/cloud-solution-provider/program-details)。
+如需獎勵的詳細資訊，請前往 [CSP 計畫獎勵](https://partner.microsoft.com/cloud-solution-provider/program-details)。
 
 
 ## <a name="deploy-and-manage-storsimple-as-a-partner"></a>合作夥伴部署和管理 StorSimple
@@ -72,16 +72,16 @@ StorSimple 是依使用量計算的服務。 透過 CSP 途徑採購 StorSimple 
 您可以透過合作夥伴中心，將 StorSimple Virtual Array 訂用帳戶新增至客戶的帳戶。 此外，您還可以使用 Azure 入口網站將使用者新增至訂用帳戶。
 
 ### <a name="is-the-azure-portal-approach-the-same-as-other-services-for-csp"></a>Azure 入口網站方法與 CSP 的其他服務相同嗎？ 
-是。 使用 StorSimple Virtual Array for CSP 時，合作夥伴存取 Azure 入口網站的最佳方式就是透過[合作夥伴中心](https://partnercenter.microsoft.com/)，他們可以在其中管理客戶和訂用帳戶。 若要管理 StorSimple 訂用帳戶，合作夥伴或客戶 (取決於授與的權限) 應該登入 Azure 入口網站。 
+可以。 使用 StorSimple Virtual Array for CSP 時，合作夥伴存取 Azure 入口網站的最佳方式就是透過[合作夥伴中心](https://partnercenter.microsoft.com/)，他們可以在其中管理客戶和訂用帳戶。 若要管理 StorSimple 訂用帳戶，合作夥伴或客戶 (取決於授與的權限) 應該登入 Azure 入口網站。 
 
 ### <a name="is-microsoft-shipping-a-new-portal-for-storsimple-for-csp"></a>Microsoft 有替 StorSimple for CSP 提供新的入口網站嗎？ 
-不可以。 您可以透過 Azure 入口網站，管理 CSP 中的 StorSimple Virtual Array。
+否。 您可以透過 Azure 入口網站，管理 CSP 中的 StorSimple Virtual Array。
 
 ### <a name="i-have-provisioned-a-standalone-storsimple-subscription-for-my-customer-do-i-have-to-use-the-azure-portal-to-administer-my-device"></a>我已經為客戶佈建獨立 StorSimple 訂用帳戶。 我必須使用 Azure 入口網站來管理我的裝置嗎？ 
-是。 
+可以。 
 
 ### <a name="is-the-microsoft-account-team-compensated-as-a-result-of-sales-of-storsimple-through-csp"></a>Microsoft 帳戶小組是否會因為透過 CSP 銷售 StorSimple 而獲得報酬？
-是。 合作夥伴銷售經理和一般客戶的客戶服務團隊會獲得 CSP 銷售的報酬。 合作夥伴會隨著銷售出眾的價值和供應項目而領先群倫。
+可以。 合作夥伴銷售經理和一般客戶的客戶服務團隊會獲得 CSP 銷售的報酬。 合作夥伴會隨著銷售出眾的價值和供應項目而領先群倫。
 
 ## <a name="support-for-storsimple-and-csp"></a>支援 StorSimple 和 CSP
 

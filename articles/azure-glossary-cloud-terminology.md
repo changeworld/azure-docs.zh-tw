@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: monicar
-ms.openlocfilehash: 8a06435d4b5a4c11f74073e67e3f48fd2ed0779d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 63adb5d6898fd467a0557aa147e54f814c167e72
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079565"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400124"
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Microsoft Azure 詞彙︰Azure 平台上的雲端術語字典
 
@@ -30,8 +30,8 @@ Microsoft Azure 詞彙是 Azure 平台上簡短的雲端術語字典。 另請�
 * [雲端運算詞彙](https://azure.microsoft.com/overview/cloud-computing-dictionary/) - 一般產業雲端詞彙。
 
 ## <a name="account"></a>account
-用來存取和管理 Azure 訂用帳戶的帳戶。 通常稱為 Azure 帳戶，雖然帳戶可以是以下任何一項：現有公司、學校或個人 Microsoft 帳戶，或 Office 365 使用者名稱和密碼。 當您註冊[免費試用版](https://azure.microsoft.com)時，也可以建立帳戶來管理 Azure 訂用帳戶。  
-請參閱使用您的 Microsoft 365 帳戶和[可用來登入的帳戶](active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)來[註冊 Azure 訂用帳戶](cost-management-billing/manage/microsoft-365-account-for-azure-subscription.md)。
+用來存取和管理 Azure 訂用帳戶的帳戶。 雖然帳戶可以是現有的工作、學校或個人 Microsoft 帳戶，但通常稱為 Azure 帳戶。 當您註冊[免費試用版](https://azure.microsoft.com)時，也可以建立帳戶來管理 Azure 訂用帳戶。  
+請參閱使用 [您的 Microsoft 365 帳戶註冊 Azure 訂用帳戶](cost-management-billing/manage/microsoft-365-account-for-azure-subscription.md) ，以及 [您可以用來登入的帳戶](active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)。
 
 ## <a name="api-app"></a>API 應用程式
 [App Service 應用程式](#app-service-app)的另一個名稱。
@@ -46,12 +46,12 @@ Microsoft Azure 詞彙是 Azure 平台上簡短的雲端術語字典。 另請�
 ## <a name="azure-classic-deployment-model"></a><a name="classic-model"></a>Azure 傳統部署模型
 您可以使用兩個 [部署模型](resource-manager-deployment-model.md) 之一來部署 Azure 中的資源 (新模型是 Azure Resource Manager)。 有些 Azure 服務僅支援 Resource Manager 部署模型、有些僅支援傳統部署模型，而有些則可支援兩個模型。 每個 Azure 服務的文件指定其支援的模型。
 
-## <a name="azure-command-line-interface-cli"></a><a name="cli"></a>Azure 命令列介面（CLI）
+## <a name="azure-command-line-interface-cli"></a><a name="cli"></a>Azure 命令列介面 (CLI) 
 命令列介面，可用來從 Windows、macOS 和 Linux 電腦管理 Azure 服務。  某些服務或服務功能可以只透過 PowerShell 或 CLI 進行管理。 請參閱 [Azure CLI](/cli/azure)
 
 ## <a name="azure-powershell"></a><a name="powershell"></a>Azure PowerShell
 命令列介面，可透過命令列從 Windows 電腦管理 Azure 服務。 某些服務或服務功能可以只透過 PowerShell 或 CLI 進行管理。
-請參閱[如何安裝和設定 Azure PowerShell](/powershell/azure/)
+瞭解 [如何安裝和設定 Azure PowerShell](/powershell/azure/)
 
 ## <a name="azure-resource-manager-deployment-model"></a><a name="arm-model"></a>Azure Resource Manager 部署模型
 您可以使用兩個 [部署模型](resource-manager-deployment-model.md) 之一來部署 Microsoft Azure 中的資源 (另一個是傳統部署模型)。 有些 Azure 服務僅支援 Resource Manager 部署模型、有些僅支援傳統部署模型，而有些則可支援兩個模型。 每個 Azure 服務的文件指定其支援的模型。
@@ -75,7 +75,7 @@ Microsoft Azure 詞彙是 Azure 平台上簡短的雲端術語字典。 另請�
 
 ## <a name="limits"></a>限制
 您可以建立的資源數目或可達到的效能評定。 限制通常會與訂用帳戶、服務和供應項目相關聯。  
-請參閱[Azure 訂用帳戶和服務限制、配額和條件約束](azure-resource-manager/management/azure-subscription-service-limits.md)
+查看 [Azure 訂用帳戶和服務限制、配額和條件約束](azure-resource-manager/management/azure-subscription-service-limits.md)
 
 ## <a name="load-balancer"></a>負載平衡器
 網路上電腦之間分散連入流量的資源。 在 Azure 中，負載平衡器會將流量分散到定義於內部負載平衡器集中的虛擬機器。 [負載平衡器](load-balancer/load-balancer-overview.md) 可以是面向網際網路的，也可以是內部的。  
@@ -114,16 +114,16 @@ Azure 方案一部分的項目。 每個 Azure 服務可讓您部署不同類型
 用於控制可指派給使用者、群組和服務的存取權的方式。 角色能夠在 Azure 資源上執行建立、管理及讀取之類的動作。  
 請參閱 [RBAC：內建角色](role-based-access-control/built-in-roles.md)
 
-## <a name="service-level-agreement-sla"></a><a name="sla"></a>服務等級協定（SLA）
+## <a name="service-level-agreement-sla"></a><a name="sla"></a>服務等級協定 (SLA) 
 此協定會描述 Microsoft 對執行時間與連線能力的承諾。 每個 Azure 服務都有特定的 SLA。  
 請參閱[服務等級協定](https://azure.microsoft.com/support/legal/sla/)
 
-## <a name="shared-access-signature-sas"></a><a name="sas"></a>共用存取簽章（SAS）
+## <a name="shared-access-signature-sas"></a><a name="sas"></a> (SAS) 的共用存取簽章
 不需公開帳戶金鑰，即可讓您授與有限資源存取權的簽章。 例如，[Azure 儲存體使用 SAS](storage/common/storage-dotnet-shared-access-signature-part-1.md) 授與 blob 等物件的用戶端存取權。 [IoT 中樞會使用 SAS](iot-hub/iot-hub-devguide-security.md#security-tokens) 授與裝置權限以傳送遙測。
 
 ## <a name="storage-account"></a>storage account
 可讓您存取 Azure 儲存體中 Azure Blob、佇列、資料表和檔案服務的帳戶。 儲存體帳戶名稱可定義 Azure 儲存體資料物件的唯一命名空間。  
-請參閱[關於 Azure 儲存體帳戶](storage/common/storage-create-storage-account.md)
+查看 [Azure 儲存體帳戶](storage/common/storage-create-storage-account.md)
 
 ## <a name="subscription"></a>訂用帳戶
 客戶與 Microsoft 的合約，可讓他們取得 Azure 服務。 訂用帳戶定價及相關條款是由針對訂用帳戶所選擇的供應項目來控管。
@@ -147,7 +147,7 @@ Azure 方案一部分的項目。 每個 Azure 服務可讓您部署不同類型
 請參閱[關於虛擬機器擴充功能和功能 (Windows)](virtual-machines/windows/extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 或[關於虛擬機器擴充功能和功能 (Linux)](virtual-machines/linux/extensions-features.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ## <a name="virtual-network"></a><a name="vnet"></a>虛擬網路
-一種網路，可提供與所有其他 Azure 租用戶隔離之 Azure 資源間的連線能力。 [Azure VPN 閘道](vpn-gateway/vpn-gateway-about-vpngateways.md)可讓您建立虛擬網路與虛擬網路與內部部署網路之間的連線。 您可以完全控制虛擬網路內的 IP 位址區塊、DNS 設定、安全性原則和路由表。  
+一種網路，可提供與所有其他 Azure 租用戶隔離之 Azure 資源間的連線能力。 [AZURE VPN 閘道](vpn-gateway/vpn-gateway-about-vpngateways.md)可讓您建立虛擬網路之間的連線，以及虛擬網路與內部部署網路之間的連線。 您可以完全控制虛擬網路內的 IP 位址區塊、DNS 設定、安全性原則和路由表。  
 請參閱[虛擬網路概觀](virtual-network/virtual-networks-overview.md)  
 
 ## <a name="web-app"></a>Web 應用程式
