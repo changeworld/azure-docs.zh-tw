@@ -9,18 +9,18 @@ ms.date: 01/22/2020
 ms.custom: include file
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: d899db8b5f6f3b7c0ccef4e44c814f1e126c626a
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e1119cf5c40cdcb1fd598b85410ea9149a7cc146
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326661"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400996"
 ---
-Microsoft 為商業 marketplace 提供標準合約範本。
+Microsoft 為商業市場提供標準合約範本。
 
 - **是否使用 Microsoft 商業市集的標準合約？**
 
-為了簡化客戶的採購程序，並降低軟體廠商的法律複雜度，Microsoft 會提供為 Microsoft 商業市集的標準合約，以利市集的交易順利進行。 您不必以商業市集發行者的身分製作自訂條款及條件，而可選擇依據標準合約來提供軟體，如此客戶只需審閱並接受一次即可。 您可以在以下位置找到標準合約： https://go.microsoft.com/fwlink/?linkid=2041178 。
+為了簡化客戶的採購程序，並降低軟體廠商的法律複雜度，Microsoft 會提供為 Microsoft 商業市集的標準合約，以利市集的交易順利進行。 您不必以商業市集發行者的身分製作自訂條款及條件，而可選擇依據標準合約來提供軟體，如此客戶只需審閱並接受一次即可。 您可以在這裡找到標準合約： https://go.microsoft.com/fwlink/?linkid=2041178 。
 
 您可以勾選 [使用商業市集的標準合約] 核取方塊選擇使用標準合約，而不是提供您自己的自訂條款及條件。
 
@@ -41,13 +41,13 @@ Microsoft 為商業 marketplace 提供標準合約範本。
 >[!NOTE]
 > 這兩種類型的增修條款會彼此堆疊。 自訂增修條款的目標客戶，在購買時也會取得標準合約的通用增修條款。
 
-**Microsoft 商業 Marketplace 標準合約的通用修訂條款**：請在此方塊中輸入通用修訂條款。 您可以為每個供應項目提供一份通用增修條款。 您可以在此方塊中輸入不限數目的字元。 客戶在探索和購買流程期間，會於 AppSource、Azure Marketplace 和/或 Azure 入口網站看到這些條款。
+**Microsoft 商業 marketplace 標準合約的通用修訂條款**：請在此方塊中輸入通用修訂條款。 您可以為每個供應項目提供一份通用增修條款。 您可以在此方塊中輸入不限數目的字元。 客戶在探索和購買流程期間，會於 AppSource、Azure Marketplace 和/或 Azure 入口網站看到這些條款。
 
-**Microsoft 商業 Marketplace 標準合約的自訂修訂條款**：從選取 [**新增自訂修訂條款**] 開始。 您可以為每個供應項目最多提供 10 份自訂增修條款。
+**Microsoft 商業 marketplace 標準合約的自訂修訂條款**：從選取 [ **新增自訂修訂條款**] 開始。 您可以為每個供應項目最多提供 10 份自訂增修條款。
 
-- **自訂修訂條款**：在 [自訂修訂條款] 方塊中輸入您的自訂修訂條款。 您可以在此方塊中輸入不限數目的字元。 只有來自您為這些自訂條款指定之租用戶識別碼的客戶，這些條款以及自訂增修條款才會在 Azure 入口網站的供應項目購買流程中顯示。  
-- **租使用者識別碼**（必要）：每個自訂修訂的目標最多可達20個租使用者識別碼。 如果您新增自訂的增修條款，必須至少提供一個租用戶識別碼。 租用戶識別碼會識別 Azure 中的客戶。 您可以向客戶要求提供此識別碼，客戶瀏覽至 portal.azure.com > [Azure Active Directory] > [內容] 即可找到此識別碼。 目錄識別碼值是租用戶識別碼 (例如 50c464d3-4930-494c-963c-1e951d15360e)。 您也可以在[我的 Microsoft Azure 和 Office 365 租用戶識別碼是什麼？](https://www.whatismytenantid.com) (英文) 中，使用其網域名稱 URL 來查詢客戶的組織租用戶識別碼。
-- **描述**（選擇性）：選擇性地提供租使用者識別碼的易記描述，以協助您識別目標為修訂的客戶。
+- **自訂修訂詞彙**：在 [自訂修訂條款] 方塊中輸入您的自訂修訂條款。 您可以在此方塊中輸入不限數目的字元。 只有來自您為這些自訂條款指定之租用戶識別碼的客戶，這些條款以及自訂增修條款才會在 Azure 入口網站的供應項目購買流程中顯示。  
+-  (需要) 的**租使用者識別碼**：每個自訂修訂最多可有20個租使用者識別碼。 如果您新增自訂的增修條款，必須至少提供一個租用戶識別碼。 租用戶識別碼會識別 Azure 中的客戶。 您可以向客戶要求提供此識別碼，客戶瀏覽至 portal.azure.com > [Azure Active Directory] > [內容] 即可找到此識別碼。 目錄識別碼值是租用戶識別碼 (例如 50c464d3-4930-494c-963c-1e951d15360e)。 您也可以使用 [ [我的 Microsoft Azure] 和 [Microsoft 365 租使用者識別碼](https://www.whatismytenantid.com)] 的功能變數名稱 URL，來查閱客戶的組織租使用者識別碼。
+- **描述** (選擇性) ：選擇性地提供租使用者識別碼的易記描述，可協助您識別您以修訂為目標的客戶。
 
 **條款及條件**
 
