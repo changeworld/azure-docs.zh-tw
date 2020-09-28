@@ -118,6 +118,8 @@
           href: ./security-controls-policy.md
         - name: 保護索引子資源
           href: search-indexer-securing-resources.md
+        - name: 安全性基準
+          href: security-baseline.md
 - name: 操作指南
   items:
     - name: 建立索引和建構
