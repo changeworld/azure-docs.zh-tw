@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/28/2020
-ms.openlocfilehash: 255fa9e058fdbb3b7edb73e75fd53f4a2490bfca
-ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
+ms.openlocfilehash: 5bb5599c6ab6e630e0f26c6d4a13e9c9af8a15a7
+ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90023851"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91405168"
 ---
 # <a name="copy-and-transform-data-in-snowflake-by-using-azure-data-factory"></a>使用 Azure Data Factory 在雪花中複製和轉換資料
 
@@ -153,7 +153,7 @@ ms.locfileid: "90023851"
 | 查詢          | 指定從雪花讀取資料的 SQL 查詢。 如果架構、資料表和資料行的名稱包含小寫，請在查詢中以引號括住物件識別碼，例如 `select * from "schema"."myTable"` 。<br>不支援執行預存程式。 | 否       |
 | exportSettings | 用來從雪花式取出資料的 Advanced 設定。 您可以設定「複製到」命令所支援的專案，當您叫用語句時，Data Factory 將會通過此命令。 | 否       |
 | ***在 `exportSettings` 下列情況下：*** |  |  |
-| type | 匯出命令的類型，設定為 **SnowflakeExportCopyCommand**。 | 是 |
+| 類型 | 匯出命令的類型，設定為 **SnowflakeExportCopyCommand**。 | 是 |
 | additionalCopyOptions | 額外的複製選項，以索引鍵/值組的字典形式提供。 範例： MAX_FILE_SIZE、覆寫。 如需詳細資訊，請參閱 [雪花式複製選項](https://docs.snowflake.com/en/sql-reference/sql/copy-into-location.html#copy-options-copyoptions)。 | 否 |
 | additionalFormatOptions | 提供用來複製命令做為機碼值組字典的其他檔案格式選項。 範例： DATE_FORMAT、TIME_FORMAT TIMESTAMP_FORMAT。 如需詳細資訊，請參閱 [雪花式格式類型選項](https://docs.snowflake.com/en/sql-reference/sql/copy-into-location.html#format-type-options-formattypeoptions)。 | 否 |
 
@@ -284,7 +284,7 @@ ms.locfileid: "90023851"
 | preCopyScript     | 針對複製活動指定一個 SQL 查詢，在每次執行時將資料寫入雪花之前執行。 使用此屬性來清除預先載入的資料。 | 否                                            |
 | importSettings | 用來將資料寫入雪花的 Advanced 設定。 您可以設定「複製到」命令所支援的專案，當您叫用語句時，Data Factory 將會通過此命令。 | 否 |
 | ***在 `importSettings` 下列情況下：*** |                                                              |  |
-| type | 匯入命令的類型，設定為 **SnowflakeImportCopyCommand**。 | 是 |
+| 類型 | 匯入命令的類型，設定為 **SnowflakeImportCopyCommand**。 | 是 |
 | additionalCopyOptions | 額外的複製選項，以索引鍵/值組的字典形式提供。 範例： ON_ERROR、FORCE、LOAD_UNCERTAIN_FILES。 如需詳細資訊，請參閱 [雪花式複製選項](https://docs.snowflake.com/en/sql-reference/sql/copy-into-table.html#copy-options-copyoptions)。 | 否 |
 | additionalFormatOptions | 提供給 COPY 命令的其他檔案格式選項，提供做為索引鍵/值組的字典。 範例： DATE_FORMAT、TIME_FORMAT TIMESTAMP_FORMAT。 如需詳細資訊，請參閱 [雪花式格式類型選項](https://docs.snowflake.com/en/sql-reference/sql/copy-into-table.html#format-type-options-formattypeoptions)。 | 否 |
 
@@ -357,7 +357,7 @@ ms.locfileid: "90023851"
 
 #### <a name="staged-copy-to-snowflake"></a>分階段複製到雪花
 
-當您的接收資料存放區或格式與雪花式複製命令原生相容時（如最後一節所述），請使用暫時的 Azure Blob 儲存體實例來啟用內建的分段複製。 分段複製功能也能提供更好的輸送量。 Data Factory 會自動轉換資料以符合雪花的資料格式需求。 然後，它會叫用複製命令以將資料載入雪花。 最後，它會清除 Blob 儲存體中的暫存資料。 如需使用暫存複製資料的詳細資訊，請參閱 [分段複製](copy-activity-performance-features.md#staged-copy) 。
+當您的來源資料存放區或格式與雪花式複製命令原生不相容時（如最後一節所述），請使用暫時的 Azure Blob 儲存體實例來啟用內建的分段複製。 分段複製功能也能提供更好的輸送量。 Data Factory 會自動轉換資料以符合雪花的資料格式需求。 然後，它會叫用複製命令以將資料載入雪花。 最後，它會清除 Blob 儲存體中的暫存資料。 如需使用暫存複製資料的詳細資訊，請參閱 [分段複製](copy-activity-performance-features.md#staged-copy) 。
 
 若要使用這項功能，請建立 [Azure Blob 儲存體連結服務](connector-azure-blob-storage.md#linked-service-properties) ，將 azure 儲存體帳戶稱為過渡暫存。 然後指定 `enableStaging` `stagingSettings` 複製活動中的和屬性。
 
@@ -411,7 +411,7 @@ ms.locfileid: "90023851"
 
 下表列出雪花來源所支援的屬性。 您可以在 [ **來源選項** ] 索引標籤中編輯這些屬性。連接器會利用雪花式 [內部資料傳輸](https://docs.snowflake.com/en/user-guide/spark-connector-overview.html#internal-data-transfer)。
 
-| Name | 描述 | 必要 | 允許的值 | 資料流程腳本屬性 |
+| 名稱 | 描述 | 必要 | 允許的值 | 資料流程腳本屬性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | Table | 如果您選取 [資料表] 做為輸入，則在使用內嵌資料集時，資料流程將會從雪花式資料集或來源選項中指定的資料表提取所有資料。 | 否 | String | * 僅適用于內嵌資料集的 () *<br>tableName<br>schemaName |
 | 查詢 | 如果您選取 [查詢為輸入]，請輸入查詢以從雪花提取資料。 這項設定會覆寫您在資料集中選擇的任何資料表。<br>如果架構、資料表和資料行的名稱包含小寫，請在查詢中以引號括住物件識別碼，例如 `select * from "schema"."myTable"` 。 | 否 | String | 查詢 |
@@ -441,7 +441,7 @@ source(allowSchemaDrift: true,
 
 下表列出雪花式接收所支援的屬性。 您可以在 [ **設定** ] 索引標籤中編輯這些屬性。使用內嵌資料集時，您將會看到其他設定，這與 [ [資料集屬性](#dataset-properties) ] 區段中所述的屬性相同。 連接器會利用雪花式 [內部資料傳輸](https://docs.snowflake.com/en/user-guide/spark-connector-overview.html#internal-data-transfer)。
 
-| Name | 描述 | 必要 | 允許的值 | 資料流程腳本屬性 |
+| 名稱 | 描述 | 必要 | 允許的值 | 資料流程腳本屬性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | Update 方法 | 指定雪花式目的地上允許的作業。<br>若要更新、upsert 或刪除資料列，則需要 [Alter row 轉換](data-flow-alter-row.md) 來標記這些動作的資料列。 | 是 | `true` 或 `false` | 刪除 <br/>插入 <br/>更新 <br/>upsertable |
 | 索引鍵資料行 | 對於更新、更新插入和刪除，必須設定索引鍵資料行，以決定要改變哪一個資料列。 | 否 | Array | 金鑰 |
@@ -485,6 +485,6 @@ IncomingStream sink(allowSchemaDrift: true,
 
 如需屬性的詳細資訊，請參閱 [查閱活動](control-flow-lookup-activity.md)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如需 Data Factory 中複製活動所支援作為來源和接收器的資料存放區清單，請參閱 [支援的資料存放區和格式](copy-activity-overview.md#supported-data-stores-and-formats)。

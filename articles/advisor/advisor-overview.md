@@ -2,13 +2,13 @@
 title: Azure 建議程式簡介
 description: 使用 Azure 建議程式將 Azure 部署最佳化。
 ms.topic: article
-ms.date: 02/01/2019
-ms.openlocfilehash: 27e49fa28e7b02b873ca145d514920784689b407
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.date: 09/27/2020
+ms.openlocfilehash: 12e56bf44a29a32b2149bca14f7c99f319c9c4ea
+ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654016"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91405202"
 ---
 # <a name="introduction-to-azure-advisor"></a>Azure 建議程式簡介
 
@@ -24,7 +24,7 @@ Advisor 是個人化的雲端顧問，可協助您依最佳做法來最佳化您
 
 您可以透過 [Azure 入口網站](https://aka.ms/azureadvisordashboard)存取建議程式。 登入[入口網站](https://portal.azure.com)，在導覽功能表中找出 [Advisor]****，或在 [所有服務]**** 功能表中搜尋它。
 
-Advisor 儀表板會顯示您所有訂用帳戶的個人化建議。  您可以套用篩選來顯示適用於特定訂用帳戶和資源類型的建議。  這些建議分為五個類別： 
+Advisor 儀表板會顯示您所有訂用帳戶的個人化建議。  您可以套用篩選來顯示適用於特定訂用帳戶和資源類型的建議。  這些建議可分為五類： 
 
 * **可靠性 (先前稱為高可用性) **：確保和改善業務關鍵應用程式的持續性。 如需詳細資訊，請參閱 [Advisor 可靠性建議](advisor-high-availability-recommendations.md)。
 * **安全性**：偵測可能導致安全性漏洞的威脅和弱點。 如需詳細資訊，請參閱[建議程式安全性建議](advisor-security-recommendations.md)。
@@ -68,7 +68,9 @@ Azure Advisor 也包含來自 [Azure 資訊安全中心](../security-center/secu
 若要深入了解 Advisor 建議，請參閱：
 
 * [開始使用 Advisor](advisor-get-started.md)
+* [Advisor 分數](azure-advisor-score.md)
 * [Advisor 可靠性建議](advisor-high-availability-recommendations.md)
 * [Advisor 安全性建議](advisor-security-recommendations.md)
 * [建議程式效能建議](advisor-performance-recommendations.md)
 * [Advisor 成本建議](advisor-cost-recommendations.md)
+* [Advisor 操作卓越建議](advisor-operational-excellence-recommendations.md)

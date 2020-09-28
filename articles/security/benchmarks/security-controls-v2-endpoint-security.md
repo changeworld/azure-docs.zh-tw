@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 3eab0080f80b26fc7074d8a64885148c0568d8b1
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 452b1a33520309ae696ab318c034f0186c993fdc
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91280611"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91402917"
 ---
 # <a name="security-control-v2-endpoint-security"></a>安全性控制 V2：端點安全性
 
@@ -98,3 +98,4 @@ Azure 資訊安全中心可以自動識別您的虛擬機器使用許多常用�
 
 - [狀態管理](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)
 
+- [Azure 資訊安全中心中的 Endpoint protection 評定和建議](../../security-center/security-center-endpoint-protection.md)

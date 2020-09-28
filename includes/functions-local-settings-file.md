@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 04/14/2019
 ms.author: glenga
-ms.openlocfilehash: 47e1c509e8b7b60e889e1202b49b1a145c68162c
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: aae89e1c6f8db2fb657ac2a43c4bce0396ab3ddd
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88929480"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91376976"
 ---
 ## <a name="local-settings-file"></a>本機設定檔
 
@@ -40,7 +40,7 @@ local.settings.json 檔案會儲存本機開發工具所使用的應用程式設
 
 | 設定      | 描述                            |
 | ------------ | -------------------------------------- |
-| **`IsEncrypted`** | 當此設定設為 `true` 時，所有的值都會以本機電腦金鑰加密。 需搭配 `func settings` 命令使用。 預設值為 `false`。 |
+| **`IsEncrypted`** | 當此設定設為 `true` 時，所有的值都會以本機電腦金鑰加密。 需搭配 `func settings` 命令使用。 預設值為 `false`。 當本機電腦中包含秘密 (例如服務連接字串) 時，您可能想要對其進行加密。 主機會在執行時自動解密設定。 請先使用 `func settings decrypt` 命令，然後再嘗試讀取本機加密的設定。 |
 | **`Values`** | 在本機執行專案時使用的應用程式設定與連接字串陣列。 這些索引鍵/值 (字串-字串) 組會對應至 Azure 中函式應用程式的應用程式設定，例如 [`AzureWebJobsStorage`]。 許多觸發程序和繫結都有參考連結字串應用程式設定的屬性，例如 [Blob 儲存體觸發程序](../articles/azure-functions/functions-bindings-storage-blob-trigger.md#configuration)的 `Connection` 屬性。 對於這類屬性，您需要在 `Values` 陣列中定義的應用程式設定。 如需常用的設定清單，請參閱後續表格。 <br/>值必須是字串，而不是 JSON 物件或陣列。 設定名稱不能包含冒號 (`:`) 或雙底線 (`__`)。 執行階段會保留雙底線字元，並且會保留冒號以支援[相依性插入](../articles/azure-functions/functions-dotnet-dependency-injection.md#working-with-options-and-settings)。 |
 | **`Host`** | 當您在本機執行專案時，本節中的設定會自訂 Functions 主機程序。 這些設定與 host.json 設定不同，也適用於您在 Azure 中執行專案時。 |
 | **`LocalHttpPort`** | 設定於執行本機 Functions 主機 (`func host start` 和 `func run`) 時所使用的預設連接埠。 `--port` 命令列選項的優先順序高於此設定。 |

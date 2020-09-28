@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, sstein
 ms.date: 06/03/2019
-ms.openlocfilehash: 01daf0af039a00f6a81b850b07cfcf6d901a7732
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 606d3c78e96491a92b2e09aa74801247369ba0ab
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91284630"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403274"
 ---
 # <a name="email-notifications-for-automatic-tuning"></a>針對自動調整的電子郵件通知
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -187,7 +187,7 @@ Write-Output $table
 
 - 「**Azure 自動化建立作業**」–用來執行 PowerShell 腳本，以取得 Azure 自動化 runbook 內的自動調整建議。
 - 「**Azure 自動化-取得工作輸出**」–用來從已執行的 PowerShell 腳本中取出輸出。
-- 「**Office 365 Outlook –傳送電子郵件**」–用來送出電子郵件。 電子郵件會使用建立流程之人員的 Office 365 帳戶傳送。
+- 「**Office 365 Outlook –傳送電子郵件**」–用來送出電子郵件。 電子郵件會使用建立流程之人員的公司或學校帳戶來傳送。
 
 若要深入了解 Microsoft Flow 功能，請參閱[開始使用 Microsoft Flow](https://docs.microsoft.com/flow/getting-started)。
 

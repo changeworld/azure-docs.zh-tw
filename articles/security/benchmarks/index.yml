@@ -13,12 +13,12 @@ metadata:
   ms.author: mbaldwin
   manager: rkarlin
   ms.date: 12/23/2019
-  ms.openlocfilehash: addc6aab30d23ab1aaca691e5d1ee1f0b9d12c39
-  ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
+  ms.openlocfilehash: a9b7b40c3f79751a9d67750e428ca14cc024a47b
+  ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 09/13/2020
-  ms.locfileid: "90058660"
+  ms.lasthandoff: 09/25/2020
+  ms.locfileid: "91328270"
 landingContent:
 - title: 關於 Azure 安全性效能評定
   linkLists:
@@ -28,12 +28,8 @@ landingContent:
       url: introduction.md
     - text: Azure 資訊安全性控制概觀
       url: overview.md
-    - text: 雲端中共同承擔的責任
-      url: ../fundamentals/shared-responsibility.md
-    - text: Azure 資訊安全中心
-      url: ../../security-center/index.yml
-    - text: Azure 安全性基本概念
-      url: ../fundamentals/index.yml
+    - text: Azure 安全性基準概觀
+      url: security-baselines-overview.md
 - title: Azure 安全性效能評定 V2 控制項
   linkLists:
   - linkListType: overview
@@ -50,95 +46,147 @@ landingContent:
       url: security-controls-v2-asset-management.md
     - text: 查看更多
       url: security-controls-v2-logging-threat-detection.md
+- title: 其他 Azure 安全性資源
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: Azure 安全性基本概念
+      url: ../fundamentals/index.yml
+    - text: 雲端中共同承擔的責任
+      url: ../fundamentals/shared-responsibility.md
+    - text: Azure 資訊安全中心
+      url: ../../security-center/index.yml
+- title: AI + Machine Learning 安全性基準
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Databricks
+      url: ../../azure-databricks/security-baseline.md
+    - text: Azure Machine Learning
+      url: ../../machine-learning/security-baseline.md
+    - text: 認知服務
+      url: ../../cognitive-services/security-baseline.md
+- title: 分析安全性基準
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure 資料總管安全性基準
+      url: /azure/data-explorer/security-baseline
+    - text: Azure Data Factory 安全性基準
+      url: ../../data-factory/security-baseline.md
+    - text: Data Lake Analytics 安全性基準
+      url: ../../data-lake-analytics/security-baseline.md
+    - text: 事件中樞安全性基準
+      url: ../../event-hubs/security-baseline.md
+    - text: HDInsight 安全性基準
+      url: ../../hdinsight/security-baseline.md
+    - text: 串流分析基準
+      url: ../../stream-analytics/security-baseline.md
+    - text: Synapse Analytics 安全性基準
+      url: ../../synapse-analytics/security-baseline.md
 - title: 計算安全性基準
   linkLists:
   - linkListType: overview
     links:
-    - text: Linux 虛擬機器
-      url: ../../virtual-machines/linux/security-baseline.md
-    - text: Windows 虛擬機器
-      url: ../../virtual-machines/windows/security-baseline.md
-    - text: 虛擬機器擴展集
-      url: ../../virtual-machine-scale-sets/security-baseline.md
-    - text: Batch
-      url: ../../batch/security-baseline.md
     - text: Azure Functions
       url: ../../azure-functions/security-baseline.md
-- title: 容器安全性基準
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: 容器執行個體
+    - text: Batch
+      url: ../../batch/security-baseline.md
+    - text: Container Instances
       url: ../../container-instances/security-baseline.md
     - text: Container Registry
       url: ../../container-registry/security-baseline.md
     - text: Service Fabric
       url: ../../service-fabric/security-baseline.md
-- title: 分析安全性基準
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: 資料總管
-      url: /azure/data-explorer/security-baseline
-    - text: 資料湖分析
-      url: ../../data-lake-analytics/security-baseline.md
-    - text: Databricks
-      url: ../../azure-databricks/security-baseline.md
-    - text: Data Factory
-      url: ../../data-factory/security-baseline.md
-    - text: HDInsight
-      url: ../../hdinsight/security-baseline.md
+    - text: Azure 儲存體
+      url: ../../storage/common/security-baseline.md
+    - text: 虛擬機器擴展集
+      url: ../../virtual-machine-scale-sets/security-baseline.md
+    - text: 虛擬機器 Linux
+      url: ../../virtual-machines/linux/security-baseline.md
+    - text: 虛擬機器 Windows
+      url: ../../virtual-machines/windows/security-baseline.md
 - title: 資料庫安全性基準
   linkLists:
   - linkListType: overview
     links:
     - text: Azure Cache for Redis
       url: ../../azure-cache-for-redis/security-baseline.md
-    - text: 適用於 MariaDB 的 Azure 資料庫
-      url: ../../mariadb/security-baseline.md
     - text: 適用於 MySQL 的 Azure 資料庫
       url: ../../mysql/security-baseline.md
-    - text: 適用於 PostgreDQL 的 Azure 資料庫
+    - text: 適用於 MariaDB 的 Azure 資料庫
+      url: ../../mariadb/security-baseline.md
+    - text: 適用於 PostgreSQL 的 Azure 資料庫 - 單一伺服器
       url: ../../postgresql/security-baseline.md
+    - text: 適用於 PostgreSQL 的 Azure 資料庫 - 超大規模資料庫
+      url: ../../postgresql/postgresql-hyperscale-security-baseline.md
     - text: Azure SQL Database
       url: ../../sql-database/security-baseline.md
+    - text: Cosmos DB
+      url: ../../cosmos-db/security-baseline.md
+- title: 整合安全性基準
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: API 管理
+      url: ../../api-management/security-baseline.md
+    - text: 事件方格
+      url: ../../event-grid/security-baseline.md
+    - text: Logic Apps
+      url: ../../logic-apps/security-baseline.md
+- title: 管理和治理安全性基準
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 自動化
+      url: ../../automation/security-baseline.md
+    - text: Azure 備份
+      url: ../../backup/security-baseline.md
+    - text: Azure 監視器
+      url: ../../azure-monitor/security-baseline.md
+    - text: Azure 原則
+      url: ../../governance/policy/concepts/azure-security-benchmark-baseline.md
+    - text: Azure Resource Graph
+      url: ../../governance/resource-graph/concepts/azure-security-benchmark-baseline.md
 - title: 網路安全性基準
   linkLists:
   - linkListType: overview
     links:
     - text: 應用程式閘道
       url: ../../application-gateway/security-baseline.md
-    - text: DDOS 保護
-      url: ../fundamentals/ddos-protection-security-baseline.md
-    - text: Azure ExpressRoute
-      url: ../../expressroute/security-baseline.md
+    - text: Azure DNS
+      url: ../../dns/security-baseline.md
     - text: Azure 防火牆
       url: ../../firewall/security-baseline.md
+    - text: Azure Private Link
+      url: ../../private-link/security-baseline.md
+    - text: Azure 公用 IP
+      url: ../../virtual-network/public-ip-security-baseline.md
+    - text: DDOS 保護
+      url: ../fundamentals/ddos-protection-security-baseline.md
+    - text: ExpressRoute
+      url: ../../expressroute/security-baseline.md
     - text: 網路監看員
       url: ../../network-watcher/security-baseline.md
-- title: 安全性基準
+- title: 安全性服務基準
   linkLists:
   - linkListType: overview
     links:
+    - text: Azure Sentinel
+      url: ../../sentinel/security-baseline.md
+    - text: 客戶加密箱
+      url: ../fundamentals/customer-lockbox-security-baseline.md
     - text: Key Vault
       url: ../../key-vault/security-baseline.md
     - text: 資訊安全中心
       url: ../../security-center/security-baseline.md
-    - text: 客戶加密箱
-      url: ../fundamentals/customer-lockbox-security-baseline.md
-    - text: Azure 原則
-      url: ../../governance/policy/concepts/azure-security-benchmark-baseline.md
-- title: 管理與整合
+- title: 其他安全性基準
   linkLists:
   - linkListType: overview
     links:
-    - text: 自動化
-      url: ../../automation/security-baseline.md
-    - text: Backup
-      url: ../../backup/security-baseline.md
-    - text: API 管理
-      url: ../../api-management/security-baseline.md
-    - text: 事件方格
-      url: ../../event-hubs/security-baseline.md
-    - text: Logic Apps
-      url: ../../logic-apps/security-baseline.md
+    - text: Azure 資料箱
+      url: ../../databox/security-baseline.md
+    - text: Azure DevTest Labs
+      url: ../../devtest-labs/security-baseline.md
+    - text: Azure IoT 中樞
+      url: ../../iot-hub/security-baseline.md

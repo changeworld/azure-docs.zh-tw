@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 8347ca5a33790d0b35176be47a0fa4811a19e3f1
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 1ab366cddbabf7e6d574189892e779ab49f6fad8
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935461"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403376"
 ---
 # <a name="tips-for-ai-enrichment-in-azure-cognitive-search"></a>Azure 認知搜尋的 AI 擴充秘訣
 
@@ -110,12 +110,11 @@ https://docs.microsoft.com/azure/search/search-howto-indexing-azure-blob-storage
 ## <a name="tip-8-increase-indexing-throughput"></a>秘訣8：提高索引輸送量
 
 對於[平行索引編製](search-howto-large-index.md)，請將您的資料放入多個容器中，或是相同容器內的多個虛擬資料夾中。 接著，請建立多個資料來源和索引子配對。 所有索引子將可使用相同的技能集，並寫入至相同的目標搜尋索引，而讓您的搜尋應用程式無須辨識此分割。
-如需詳細資訊，請參閱[為大型資料集編製索引](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets)。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
+
 + [快速入門：在入口網站中建立 AI 擴充管線](cognitive-search-quickstart-blob.md)
 + [教學課程：瞭解 AI 擴充 REST Api](cognitive-search-tutorial-blob.md)
 + [指定資料來源認證](search-howto-indexing-azure-blob-storage.md#how-to-specify-credentials)
-+ [為大型資料集編製索引](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets)
 + [如何定義技能集](cognitive-search-defining-skillset.md) (英文)
 + [如何將擴充的欄位對應至索引](cognitive-search-output-field-mapping.md)

@@ -7,12 +7,12 @@ ms.date: 9/23/2020
 ms.topic: conceptual
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: d0e75ab8a2e4d853fa2edc66174502dd3a7930e9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 5e4244c0526dbac3bb8e9b2d3856eb01e1b2a2b7
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91301664"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403482"
 ---
 # <a name="introduction-to-azure-defender-for-servers"></a>適用于伺服器的 Azure Defender 簡介
 
@@ -41,7 +41,7 @@ ms.locfileid: "91301664"
 
 - 自動調整**應用程式控制 (AAC) **自我調整應用程式控制項，是一種智慧型和自動化的解決方案，可為您的機器定義已知安全應用程式的允許清單。
 
-    當您已啟用並設定彈性應用程式控制之後，如果任何應用程式執行的應用程式不是您定義為安全的應用程式，您將會收到安全性警示。 [深入了解](security-center-adaptive-network-hardening.md)。
+    當您已啟用並設定彈性應用程式控制之後，如果任何應用程式執行的應用程式不是您定義為安全的應用程式，您將會收到安全性警示。 [深入了解](security-center-adaptive-application.md)。
 
 - 自動調整**網路強化 (ANH) ** -套用網路安全性群組 (NSG) ，以篩選進出資源的流量，進而改善您的網路安全性狀態。 不過，在某些情況下，實際流經 NSG 的流量是所定義 NSG 規則的子集。 在這些情況下，您可以根據實際的流量模式強化 NSG 規則，以進一步改善安全性狀態。
 
@@ -58,7 +58,7 @@ ms.locfileid: "91301664"
 
 - **無檔案攻擊偵測 (僅限 Windows) ** 無檔案攻擊將惡意承載插入記憶體中，以避免以磁片為基礎的掃描技術偵測。 攻擊者的承載接著會在遭入侵的進程記憶體中保存，並執行各式各樣的惡意活動。
 
-  透過無檔案攻擊偵測，自動化記憶體鑑識技術可識別無檔案攻擊的工具組、技術和行為。 此解決方案會在執行時間定期掃描您的機器，並直接從進程的記憶體中將見解解壓縮。 Linux 的特定深入解析包含下列各項的識別： 
+  透過無檔案攻擊偵測，自動化記憶體鑑識技術可識別無檔案攻擊的工具組、技術和行為。 此解決方案會在執行時間定期掃描您的機器，並直接從進程的記憶體中將見解解壓縮。 特定深入解析包含下列各項的識別： 
 
   - 知名的工具組和加密的挖掘軟體 
 

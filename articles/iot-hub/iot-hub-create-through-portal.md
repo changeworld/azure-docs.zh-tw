@@ -9,12 +9,12 @@ ms.date: 09/06/2018
 ms.author: robinsh
 ms.custom:
 - 'Role: Cloud Development'
-ms.openlocfilehash: 8f7555129f5f514d1954ac56cf87872a85ca91d0
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: c7414728ab65258f73f80ee7fb303c7e6b961052
+ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326727"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91404952"
 ---
 # <a name="create-an-iot-hub-using-the-azure-portal"></a>使用 Azure 入口網站建立 IoT 中樞
 
@@ -54,13 +54,13 @@ ms.locfileid: "87326727"
 
 * [登錄讀取]**** 和 [登錄寫入]**** 原則會授與讀取和寫入存取權給身分識別登錄。 後端雲端服務會使用這些許可權來管理裝置身分識別。 選擇寫入選項就會自動選擇讀取選項。
 
-* **服務連接**原則會授與存取服務端點的許可權。 後端雲端服務會使用此許可權來傳送和接收裝置的訊息，以及更新和讀取裝置對應項和模組對應項資料。
+* **服務連接**原則會授與存取服務端點的許可權。 後端雲端服務會使用此許可權來傳送和接收來自裝置的訊息，以及更新和讀取裝置對應項和模組對應項資料。
 
 * [裝置連線]**** 原則會授與使用 IoT 中樞裝置端端點傳送和接收訊息的權限。 裝置會使用此許可權來傳送和接收來自 IoT 中樞的訊息、更新和讀取裝置對應項和模組對應項資料，以及執行檔案上傳。
 
 按一下 [建立] **** 將此新建立的原則新增至現有的清單。
 
-如需特定許可權所授與之存取權的詳細資訊，請參閱[IoT 中樞許可權](./iot-hub-devguide-security.md#iot-hub-permissions)。
+如需特定許可權所授與之存取權的詳細資訊，請參閱 [IoT 中樞許可權](./iot-hub-devguide-security.md#iot-hub-permissions)。
 
 ## <a name="register-a-new-device-in-the-iot-hub"></a>在 IoT 中樞註冊新的裝置
 
@@ -78,7 +78,7 @@ ms.locfileid: "87326727"
 
 ![顯示新增路由的螢幕擷取畫面](./media/iot-hub-create-through-portal/iot-hub-add-route-storage-endpoint.png)
 
-為您的中樞命名。 該名稱在該中樞的路由清單中必須是唯一的。 
+命名您的路由。 路由名稱在該中樞的路由清單中必須是唯一的。 
 
 針對 [端點]****，您可以從下拉式清單中選取一個端點，或新增一個新端點。 在此範例中，儲存體帳戶與容器已可用。 若要將它們新增為端點，請按一下端點下拉式清單旁邊的 [+新增]****，然後選取 [Blob 儲存體]****。 下列畫面顯示指定儲存體帳戶與容器的位置。
 
@@ -96,7 +96,7 @@ ms.locfileid: "87326727"
 
 ### <a name="custom-endpoints"></a>自訂端點
 
-按一下 [**自訂端點**] 索引標籤。您會看到已建立的任何自訂端點。 從這裡，您可以新增新端點，或刪除現有的端點。 
+按一下 [ **自訂端點** ] 索引標籤。您會看到任何已建立的自訂端點。 從這裡，您可以新增新端點，或刪除現有的端點。 
 
 > [!NOTE]
 > 如果您刪除路由，不會刪除指派給該路由的端點。 若要刪除端點，請按一下 [自訂端點] 索引標籤，選取您要刪除的端點，然後按一下 [刪除]。

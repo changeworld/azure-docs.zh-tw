@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/15/2020
+ms.date: 09/28/2020
 ms.author: jingwang
-ms.openlocfilehash: 3aa42d6060ecdd93dd97438a025c4f5e4f05ac52
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 9e6b8511164cd7e9a855a70d9edba4ce6492c3a3
+ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90531724"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91404711"
 ---
 # <a name="orc-format-in-azure-data-factory"></a>Azure Data Factory 中的 ORC 格式
 
@@ -32,12 +32,13 @@ ms.locfileid: "90531724"
 | ---------------- | ------------------------------------------------------------ | -------- |
 | type             | 資料集的 type 屬性必須設為 **Orc**。 | 是      |
 | location         | 檔案 (s) 的位置設定。 每個以檔案為基礎的連接器都有自己的位置類型和支援的屬性 `location` 。 **請參閱連接器文章中的詳細資料-> 資料集屬性一節**。 | 是      |
+| compressionCodec         | 寫入 ORC 檔案時要使用的壓縮編解碼器。 從 ORC 檔讀取時，Data factory 會自動根據檔案中繼資料來判斷壓縮編解碼器。<br>支援的類型為 **none**、 **zlib**、 **snappy** (預設) 和 **lzo**。 注意：當讀取/寫入 ORC 檔時，目前的複製活動不支援 LZO。 | 否      |
 
 以下是 Azure Blob 儲存體上的 ORC 資料集範例：
 
 ```json
 {
-    "name": "ORCDataset",
+    "name": "OrcDataset",
     "properties": {
         "type": "Orc",
         "linkedServiceName": {
@@ -60,7 +61,6 @@ ms.locfileid: "90531724"
 
 * 不支援複雜資料類型 (STRUCT、MAP、LIST、UNION)。
 * 不支援資料行名稱中的空白字元。
-* ORC 檔案有 3 種 [壓縮相關選項](https://hortonworks.com/blog/orcfile-in-hdp-2-better-compression-better-performance/)︰NONE、ZLIB、SNAPPY。 Data Factory 支援以這些壓縮格式的任一項從 ORC 檔案讀取資料。 它會使用中繼資料裡的壓縮轉碼器來讀取資料。 不過，寫入 ORC 檔案時，Data Factory 會選擇 ZLIB，這是 ORC 的預設值。 目前沒有任何選項可覆寫這個行為。
 
 ## <a name="copy-activity-properties"></a>複製活動屬性
 
@@ -81,7 +81,7 @@ ms.locfileid: "90531724"
 
 | 屬性      | 描述                                                  | 必要 |
 | ------------- | ------------------------------------------------------------ | -------- |
-| type          | 複製活動來源的 type 屬性必須設為 **OrcSink**。 | 是      |
+| type          | 複製活動接收的 type 屬性必須設為 **OrcSink**。 | 是      |
 | formatSettings | 屬性的群組。 請參閱下方的 **ORC 寫入設定** 表格。 |    否      |
 | storeSettings | 一組屬性，說明如何將資料寫入資料存放區。 每個以檔案為基礎的連接器在下都有自己支援的寫入設定 `storeSettings` 。 **請參閱連接器文章中的詳細資料-> 複製活動屬性一節**。 | 否       |
 
@@ -92,6 +92,67 @@ ms.locfileid: "90531724"
 | type          | FormatSettings 的類型必須設定為 **OrcWriteSettings**。 | 是                                                   |
 | maxRowsPerFile | 將資料寫入資料夾時，您可以選擇寫入多個檔案，並指定每個檔案的最大資料列數。  | 否 |
 | fileNamePrefix | 適用于 `maxRowsPerFile` 設定時。<br> 將資料寫入多個檔案時，請指定檔案名前置詞，而導致此模式： `<fileNamePrefix>_00000.<fileExtension>` 。 如果未指定，則會自動產生檔案名前置詞。 當來源是以檔案為基礎的存放區或分割區 [選項的資料存放區](copy-activity-performance-features.md)時，此屬性不適用。  | 否 |
+
+## <a name="mapping-data-flow-properties"></a>對應資料流程屬性
+
+在對應資料流程中，您可以在下列資料存放區中讀取和寫入 ORC 格式： [Azure Blob 儲存體](connector-azure-blob-storage.md#mapping-data-flow-properties)、 [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties)和 [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties)。
+
+您可以使用 ORC 資料集或使用 [內嵌資料集](data-flow-source.md#inline-datasets)，指向 ORC 檔案。
+
+### <a name="source-properties"></a>來源屬性
+
+下表列出 ORC 來源所支援的屬性。 您可以在 [ **來源選項** ] 索引標籤中編輯這些屬性。
+
+使用內嵌資料集時，您將會看到其他檔案設定，這與 [ [資料集屬性](#dataset-properties) ] 區段中所述的屬性相同。
+
+| 名稱 | 描述 | 必要 | 允許的值 | 資料流程腳本屬性 |
+| ---- | ----------- | -------- | -------------- | ---------------- |
+| 格式 | 格式必須是 `orc` | 是 | `orc` | format |
+| 萬用字元路徑 | 將會處理所有符合萬用字元路徑的檔案。 覆寫資料集中設定的資料夾和檔案路徑。 | 否 | String[] | wildcardPaths |
+| 分割區根路徑 | 針對已分割的檔案資料，您可以輸入磁碟分割根路徑，以便將分割的資料夾讀取為數據行 | 否 | String | partitionRootPath |
+| 檔案清單 | 您的來源是否指向列出要處理之檔案的文字檔 | 否 | `true` 或 `false` | fileList |
+| 儲存檔案名稱的資料行 | 使用來原始檔案名和路徑建立新的資料行 | 否 | String | rowUrlColumn |
+| 完成後 | 在處理之後刪除或移動檔案。 從容器根目錄開始的檔案路徑 | 否 | Delete： `true` 或 `false` <br> 移動： `[<from>, <to>]` | purgeFiles <br> moveFiles |
+| 依上次修改篩選 | 選擇根據上次修改檔案的時間進行篩選 | 否 | 時間戳記 | modifiedAfter <br> modifiedBefore |
+| 不允許找到任何檔案 | 若為 true，如果找不到任何檔案，就不會擲回錯誤 | 否 | `true` 或 `false` | ignoreNoFilesFound |
+
+### <a name="source-example"></a>來源範例
+
+ORC 來源設定的關聯資料流程腳本如下：
+
+```
+source(allowSchemaDrift: true,
+    validateSchema: false,
+    rowUrlColumn: 'fileName',
+    format: 'orc') ~> OrcSource
+```
+
+### <a name="sink-properties"></a>接收屬性
+
+下表列出 ORC 接收所支援的屬性。 您可以在 [ **設定** ] 索引標籤中編輯這些屬性。
+
+使用內嵌資料集時，您將會看到其他檔案設定，這與 [ [資料集屬性](#dataset-properties) ] 區段中所述的屬性相同。
+
+| 名稱 | 描述 | 必要 | 允許的值 | 資料流程腳本屬性 |
+| ---- | ----------- | -------- | -------------- | ---------------- |
+| 格式 | 格式必須是 `orc` | 是 | `orc` | format |
+| 清除資料夾 | 如果在寫入之前清除目的資料夾 | 否 | `true` 或 `false` | truncate |
+| [檔案名] 選項 | 寫入之資料的命名格式。 依預設，每個資料分割的一個檔案格式為 `part-#####-tid-<guid>` | 否 | 模式：字串 <br> 每個分割區：字串 [] <br> 做為資料行中的資料：字串 <br> 輸出至單一檔案： `['<fileName>']` | filePattern <br> partitionFileNames <br> rowUrlColumn <br> partitionFileNames |
+
+### <a name="sink-example"></a>接收器範例
+
+ORC 接收設定的關聯資料流程腳本如下：
+
+```
+OrcSource sink(
+    format: 'orc',
+    filePattern:'output[n].orc',
+    truncate: true,
+    allowSchemaDrift: true,
+    validateSchema: false,
+    skipDuplicateMapInputs: true,
+    skipDuplicateMapOutputs: true) ~> OrcSink
+```
 
 ## <a name="using-self-hosted-integration-runtime"></a>使用自我裝載的 Integration Runtime
 

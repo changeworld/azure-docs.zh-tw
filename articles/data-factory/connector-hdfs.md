@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/28/2020
+ms.date: 09/28/2020
 ms.author: jingwang
-ms.openlocfilehash: 2a0093ebb6e3214553cf5603151831d6ae53d862
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 96603de7014419b142cc35714b891f9e4b15ec99
+ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91332044"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91405078"
 ---
 # <a name="copy-data-from-the-hdfs-server-by-using-azure-data-factory"></a>使用 Azure Data Factory 從 HDFS 伺服器複製資料
 
@@ -59,7 +59,7 @@ ms.locfileid: "91332044"
 
 以下是針對 HDFS 已連結服務支援的屬性：
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | *Type*屬性必須設定為*Hdfs*。 | 是 |
 | url |HDFS 的 URL |是 |
@@ -120,7 +120,7 @@ ms.locfileid: "91332044"
 
 以下是針對 `location` 以格式為基礎的資料集設定中的 HDFS 支援的屬性：
 
-| 屬性   | 說明                                                  | 必要 |
+| 屬性   | 描述                                                  | 必要 |
 | ---------- | ------------------------------------------------------------ | -------- |
 | type       | 資料集內的 *type* 屬性 `location` 必須設定為 *HdfsLocation*。 | 是      |
 | folderPath | 資料夾的路徑。 如果您想要使用萬用字元來篩選資料夾，請略過此設定，並在 [活動來源設定] 中指定路徑。 | 否       |
@@ -162,7 +162,7 @@ ms.locfileid: "91332044"
 
 以下是針對 `storeSettings` 以格式為基礎的複製來源設定下的 HDFS 支援的屬性：
 
-| 屬性                 | 說明                                                  | 必要                                      |
+| 屬性                 | 描述                                                  | 必要                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
 | type                     | 下的 *類型* 屬性 `storeSettings` 必須設為 **HdfsReadSettings**。 | 是                                           |
 | ***找出要複製的檔案*** |  |  |
@@ -279,6 +279,34 @@ ms.locfileid: "91332044"
 * 選項1： [加入 Kerberos 領域中的自我裝載整合執行時間電腦](#kerberos-join-realm)
 * 選項 2：[啟用 Windows 網域和 Kerberos 領域之間的相互信任](#kerberos-mutual-trust)
 
+針對任一個選項，請務必開啟 Hadoop 叢集的 webhdfs：
+
+1. 建立 webhdfs 的 HTTP 主體和 keytab。
+
+    > [!IMPORTANT]
+    > HTTP Kerberos 主體的開頭必須是 "**HTTP/**"，根據 KERBEROS HTTP SPNEGO 規格。
+
+    ```bash
+    Kadmin> addprinc -randkey HTTP/<namenode hostname>@<REALM.COM>
+    Kadmin> ktadd -k /etc/security/keytab/spnego.service.keytab HTTP/<namenode hostname>@<REALM.COM>
+    ```
+
+2. HDFS 設定選項：在中新增下列三個屬性 `hdfs-site.xml` 。
+    ```xml
+    <property>
+        <name>dfs.webhdfs.enabled</name>
+        <value>true</value>
+    </property>
+    <property>
+        <name>dfs.web.authentication.kerberos.principal</name>
+        <value>HTTP/_HOST@<REALM.COM></value>
+    </property>
+    <property>
+        <name>dfs.web.authentication.kerberos.keytab</name>
+        <value>/etc/security/keytab/spnego.service.keytab</value>
+    </property>
+    ```
+
 ### <a name="option-1-join-a-self-hosted-integration-runtime-machine-in-the-kerberos-realm"></a><a name="kerberos-join-realm"></a>選項1：加入 Kerberos 領域中的自我裝載整合執行時間電腦
 
 #### <a name="requirements"></a>需求
@@ -287,13 +315,24 @@ ms.locfileid: "91332044"
 
 #### <a name="how-to-configure"></a>如何設定
 
+**在 KDC 伺服器上：**
+
+建立 Azure Data Factory 要使用的主體，並指定密碼。
+
+> [!IMPORTANT]
+> 使用者名稱不應包含主機名稱。
+
+```bash
+Kadmin> addprinc <username>@<REALM.COM>
+```
+
 **在自我裝載整合執行時間電腦上：**
 
 1.  執行 Ksetup 公用程式來設定 Kerberos 金鑰發佈中心 (KDC) 伺服器和領域。
 
     電腦必須設定為工作組成員，因為 Kerberos 領域與 Windows 網域不同。 您可以藉由執行下列命令來設定 Kerberos 領域並新增 KDC 伺服器，以達到此設定。 將 *REALM.COM* 取代為您自己的領域名稱。
 
-    ```console
+    ```cmd
     C:> Ksetup /setdomain REALM.COM
     C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
     ```
@@ -302,7 +341,7 @@ ms.locfileid: "91332044"
 
 2.  使用命令驗證設定 `Ksetup` 。 輸出應該會像這樣：
 
-    ```output
+    ```cmd
     C:> Ksetup
     default realm = REALM.COM (external)
     REALM.com:
@@ -446,7 +485,7 @@ ms.locfileid: "91332044"
 
 ### <a name="legacy-dataset-model"></a>舊版資料集模型
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | 資料集的 *類型* 屬性必須設定為檔案 *共用* |是 |
 | folderPath | 資料夾的路徑。 支援萬用字元篩選。 允許的萬用字元 `*` (符合零或多個字元) 和 `?` (符合零或單一字元) ; `^` 如果您的實際檔案名包含萬用字元或此 escape 字元，請使用來進行 escape。 <br/><br/>範例：rootfolder/subfolder/，如需更多範例，請參閱[資料夾和檔案篩選範例](#folder-and-file-filter-examples)。 |是 |
@@ -491,7 +530,7 @@ ms.locfileid: "91332044"
 
 ### <a name="legacy-copy-activity-source-model"></a>舊版複製活動來源模型
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | 複製活動來源的 *type* 屬性必須設為 *>hdfssource*。 |是 |
 | 遞迴 | 指出是否從子資料夾、或只有從指定的資料夾，以遞迴方式讀取資料。 當遞迴設定為 *true* 且接收是檔案型存放區時，將不會在接收時複製或建立空的資料夾或子資料夾。<br/>允許的值為 *true* (預設值) 和 *false*。 | 否 |

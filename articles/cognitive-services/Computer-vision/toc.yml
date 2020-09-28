@@ -114,17 +114,17 @@
     - name: 透明度注意事項
       items:
         - name: 空間分析簡介
-          href: 'https://docs.microsoft.com/legal/cognitive-services/computer-vision/intro-to-spatial-analysis-public-preview'
+          href: 'https://docs.microsoft.com/legal/cognitive-services/computer-vision/intro-to-spatial-analysis-public-preview?context=/azure/cognitive-services/Computer-vision/context/context'
         - name: 特性和限制
-          href: 'https://docs.microsoft.com/legal/cognitive-services/computer-vision/accuracy-and-limitations'
+          href: 'https://docs.microsoft.com/legal/cognitive-services/computer-vision/accuracy-and-limitations?context=/azure/cognitive-services/Computer-vision/context/context'
     - name: 合規性、隱私權和安全性
-      href: 'https://docs.microsoft.com/legal/cognitive-services/computer-vision/compliance-privacy-security-2'
+      href: 'https://docs.microsoft.com/legal/cognitive-services/computer-vision/compliance-privacy-security-2?context=/azure/cognitive-services/Computer-vision/context/context'
     - name: 在 AI 部署中負責任地使用
-      href: 'https://docs.microsoft.com/legal/cognitive-services/computer-vision/responsible-use-deployment'
+      href: 'https://docs.microsoft.com/legal/cognitive-services/computer-vision/responsible-use-deployment?context=/azure/cognitive-services/Computer-vision/context/context'
     - name: 公開設計指引
-      href: 'https://docs.microsoft.com/legal/cognitive-services/computer-vision/disclosure-design'
+      href: 'https://docs.microsoft.com/legal/cognitive-services/computer-vision/disclosure-design?context=/azure/cognitive-services/Computer-vision/context/context'
     - name: 研究深入解析
-      href: 'https://docs.microsoft.com/legal/cognitive-services/computer-vision/research-insights'
+      href: 'https://docs.microsoft.com/legal/cognitive-services/computer-vision/research-insights?context=/azure/cognitive-services/Computer-vision/context/context'
 - name: 容器
   items:
     - name: 讀取 API 容器
@@ -134,6 +134,8 @@
           displayName: 'docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now, import, pull, on-premises'
         - name: 設定容器
           href: computer-vision-resource-container-config.md
+        - name: 遷移至讀取容器 v3
+          href: read-container-migration-guide.md
           displayName: 'docker, container, billing, apikey, pull, logging, on-premises'
         - name: 使用 Kubernetes 搭配 Helm
           href: deploy-computer-vision-on-premises.md
@@ -207,7 +209,7 @@
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/computer-vision'
     - name: UserVoice
       href: 'https://cognitive.uservoice.com/forums/430309-computer-vision-api'
-    - name: Stack Overflow
+    - name: 堆疊溢位
       href: 'https://stackoverflow.com/questions/tagged/microsoft-cognitive'
     - name: Azure 藍圖
       href: 'https://azure.microsoft.com/updates/?product=cognitive-services'

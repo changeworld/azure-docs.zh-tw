@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: cece53544bfc8287f6ef542575d92b05032991f0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: f5be0b43de8265b2b337c024117ae8f424e4a3bc
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91318036"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403479"
 ---
 # <a name="feature-coverage-for-machines"></a>機器的功能涵蓋範圍
 
@@ -42,12 +42,12 @@ ms.locfileid: "91318036"
 |[自適性網路強化](security-center-adaptive-network-hardening.md)|✔|-|-|是|
 |[法規合規性儀表板 & 報表](security-center-compliance-dashboard.md)|✔|✔|✔|是|
 |Docker 託管 IaaS 容器上的建議和威脅防護|-|-|-|是|
-|遺漏 OS 修補程式評估|✔|✔|✔|Azure：免費<br><br>非 Azure：是|
+|遺漏 OS 修補程式評估|✔|✔|✔|Azure：否<br><br>非 Azure：是|
 |安全性錯誤配置評估|✔|✔|✔|Azure：否<br><br>非 Azure：是|
 |[Endpoint protection 評定](security-center-services.md#supported-endpoint-protection-solutions-)|✔|✔|✔|Azure：否<br><br>非 Azure：是|
-|磁片加密評估|✔</br>適用于 [支援案例](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios) 的 () |✔|-|免費|
-|協力廠商弱點評定|✔|-|-|免費|
-|[網路安全性評定](security-center-network-recommendations.md)|✔|✔|-|免費|
+|磁片加密評估|✔</br>適用于 [支援案例](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios) 的 () |✔|-|否|
+|協力廠商弱點評定|✔|-|-|否|
+|[網路安全性評定](security-center-network-recommendations.md)|✔|✔|-|否|
 
 
 ### <a name="linux-machines"></a>[**Linux 機器**](#tab/features-linux)
@@ -66,12 +66,12 @@ ms.locfileid: "91318036"
 |[自適性網路強化](security-center-adaptive-network-hardening.md)|✔|-|-|是|
 |[法規合規性儀表板 & 報表](security-center-compliance-dashboard.md)|✔|✔|✔|是|
 |Docker 託管 IaaS 容器上的建議和威脅防護|✔|✔|✔|是|
-|遺漏 OS 修補程式評估|✔|✔|✔|Azure：免費<br><br>非 Azure：是|
-|安全性錯誤配置評估|✔|✔|✔|Azure：免費<br><br>非 Azure：是|
-|[Endpoint protection 評定](security-center-services.md#supported-endpoint-protection-solutions-)|-|-|-|免費|
-|磁片加密評估|✔</br>適用于 [支援案例](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios) 的 () |✔|-|免費|
-|協力廠商弱點評定|✔|-|-|免費|
-|[網路安全性評定](security-center-network-recommendations.md)|✔|✔|-|免費|
+|遺漏 OS 修補程式評估|✔|✔|✔|Azure：否<br><br>非 Azure：是|
+|安全性錯誤配置評估|✔|✔|✔|Azure：否<br><br>非 Azure：是|
+|[Endpoint protection 評定](security-center-services.md#supported-endpoint-protection-solutions-)|-|-|-|否|
+|磁片加密評估|✔</br>適用于 [支援案例](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios) 的 () |✔|-|否|
+|協力廠商弱點評定|✔|-|-|否|
+|[網路安全性評定](security-center-network-recommendations.md)|✔|✔|-|否|
 
 --- 
 

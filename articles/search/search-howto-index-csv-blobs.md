@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/11/2020
-ms.openlocfilehash: 14846761535a77f28adbd0147d244817cb799d86
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: f9c01e8e31e78c277a7a3ec1e5d8d0c32b58f8bc
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935835"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403648"
 ---
 # <a name="how-to-index-csv-blobs-using-delimitedtext-parsing-mode-and-blob-indexers-in-azure-cognitive-search"></a>如何在 Azure 認知搜尋中使用 delimitedText 剖析模式和 Blob 索引子來編制 CSV blob 的索引
 
@@ -97,4 +97,4 @@ id, datePublished, tags
 ```
 
 ## <a name="help-us-make-azure-cognitive-search-better"></a>協助我們改善 Azure 認知搜尋
-如果您有功能要求或改進的想法，請在 [UserVoice](https://feedback.azure.com/forums/263029-azure-search/) 提供。
+如果您有功能要求或改進的想法，請在 [UserVoice](https://feedback.azure.com/forums/263029-azure-search/) 提供。 如果您需要使用現有功能的協助，請將您的問題張貼在 [Stack Overflow](https://stackoverflow.microsoft.com/questions/tagged/18870)上。

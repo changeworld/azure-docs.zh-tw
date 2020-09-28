@@ -135,7 +135,7 @@
                       href: partner-center-portal/common-sas-uri-issues.md
         - name: 諮詢服務
           items:
-            - name: 必要條件
+            - name: Prerequisites
               href: partner-center-portal/consulting-service-prerequisites.md
             - name: 建立諮詢服務供應項目
               href: partner-center-portal/create-consulting-service-offer.md
@@ -277,24 +277,24 @@
     - name: 取得付款
       items:
         - name: 取得付款
-          href: partner-center-portal/get-paid.md
+          href: /partner-center/marketplace-get-paid?context=/azure/marketplace/context/context
         - name: 設定支出帳戶和稅賦形式
-          href: partner-center-portal/set-up-your-payout-account-tax-forms.md
-        - name: 付款閾值、方法和時間範圍
-          href: partner-center-portal/payment-thresholds-methods-timeframes.md
-        - name: 支出摘要概觀
-          href: partner-center-portal/payout-summary-overview.md
-        - name: 支出摘要
-          href: partner-center-portal/payout-summary.md
+          href: /partner-center/set-up-your-payout-account?context=/azure/marketplace/context/context
+        - name: 付款閾值和時間範圍
+          href: /partner-center/payment-thresholds-methods-timeframes?context=/azure/marketplace/context/context
+        - name: 支付明細表
+          href: /partner-center/payout-statement?context=/azure/marketplace/context/context
         - name: 支出原則詳細資料
-          href: partner-center-portal/payout-policy-details.md
+          href: /partner-center/payout-policy-details?context=/azure/marketplace/context/context
         - name: 稅賦詳細資訊
-          href: partner-center-portal/tax-details-paid-transactions.md
+          href: /partner-center/tax-details-marketplace?context=/azure/marketplace/context/context
+        - name: 支付常見問題
+          href: /partner-center/payout-faq?context=/azure/marketplace/context/context
     - name: CPP API 參考
       items:
         - name: 概觀
           href: cloud-partner-portal-api-overview.md
-        - name: 必要條件
+        - name: Prerequisites
           href: cloud-partner-portal-api-prerequisites.md
         - name: 考量
           href: cloud-partner-portal-api-considerations.md

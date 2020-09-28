@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/26/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 88f0891e9bd67da094240b059750226402da0244
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 9fe4d5cfb4b0b31a257dfecdeeb191a9c7920772
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91396226"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403157"
 ---
 # <a name="a-web-api-that-calls-web-apis-code-configuration"></a>呼叫 web Api 的 web API：程式碼設定
 
@@ -166,7 +166,7 @@ public class Startup
 
 下圖顯示 Startup.cs 檔案的各種可能性 *，以及其*對*Startup.cs*檔案的影響：
 
-:::image type="content" source="media/scenarios/microsoft-identity-web-startup-cs.png" alt-text="建立 web api 時，您可以選擇呼叫下游 api 和權杖快取執行。":::
+:::image type="content" source="media/scenarios/microsoft-identity-web-startup-cs.svg" alt-text="顯示啟動點 C S 中的服務設定選項以呼叫 web API 和指定權杖快取執行的區塊圖":::
 
 > [!NOTE]
 > 若要完全了解此處的程式碼範例，則需要熟悉 [ASP.NET Core 基本概念](/aspnet/core/fundamentals) (機器翻譯)，特別是[相依性插入](/aspnet/core/fundamentals/dependency-injection)和[選項](/aspnet/core/fundamentals/configuration/options)。

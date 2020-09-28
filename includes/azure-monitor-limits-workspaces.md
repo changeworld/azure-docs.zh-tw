@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: 91adafedfc8f4e6b4948b0dcfe541e2754b47556
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: a25f28b19e0f00830fd0290ff0296c317b9a5ed9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88226263"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371710"
 ---
 **資料收集磁碟區和保留** 
 
@@ -66,24 +66,34 @@ ms.locfileid: "88226263"
 
 **<a name="data-ingestion-volume-rate">資料擷取磁碟區速率</a>**
 
-Azure 監視器是一種大規模的資料服務，服務對象為每月需傳送數 TB 資料 (且不斷成長) 的上千名客戶。 磁碟區速率限制旨在保護 Azure 監視器客戶，避免其受到多租用戶環境中突然激增的尖峰所影響。 適用於工作區的預設擷取磁碟區速率閾值為 500 MB (已壓縮) ，解壓縮大約 **6 GB/分鐘** -- 根據記錄長度和其壓縮率的不同，實際大小在資料類型之間可能會有所不同。 不論是使用[診斷設定](../articles/azure-monitor/platform/diagnostic-settings.md)、[資料收集器 API](../articles/azure-monitor/platform/data-collector-api.md) 或代理程式，從 Azure 資源傳送的所有內嵌資料皆適用此閾值。
+Azure 監視器是一種大規模的資料服務，服務對象為每月需傳送數 TB 資料 (且不斷成長) 的上千名客戶。 磁碟區速率限制旨在將 Azure 監視器客戶隔離，避免其受到多租用戶環境中突然激增的尖峰所影響。 定義於工作區的預設擷取磁碟區速率閾值為 500 MB (已壓縮)，解壓縮大約 **6 GB/分鐘** -- 根據記錄長度和其壓縮率的不同，實際大小在資料類型之間可能會有所不同。 不論是使用[診斷設定](../articles/azure-monitor/platform/diagnostic-settings.md)、[資料收集器 API](../articles/azure-monitor/platform/data-collector-api.md) 或代理程式，從 Azure 資源傳送的所有內嵌資料皆適用磁碟區速率限制。
 
-如果您以高於工作區中所設定閾值的 80% 速率將資料傳送至工作區時，則每隔 6 小時會將事件傳送至工作區中的 [作業] 資料表，同時會持續超過閾值。 當內嵌的磁碟區速率高於閾值時，則系統會卸除某些資料，且每隔 6 小時會將事件傳送至工作區中的 [作業] 資料表，同時會持續超過閾值。 如果您的擷取磁碟區速率持續超過閾值，或您希望很快能達到某個閾值，則可以透過開啟支援要求，要求將其加入工作區。 
+如果您以高於工作區中所設定閾值的 80% 速率將資料傳送至工作區時，則每隔 6 小時會將事件傳送至工作區中的 [作業] 資料表，同時會持續超過閾值。 當內嵌的磁碟區速率高於閾值時，則系統會卸除某些資料，且每隔 6 小時會將事件傳送至工作區中的 [作業] 資料表，同時會持續超過閾值。 如果您的擷取磁碟區速率持續超過閾值，或您希望很快能達到某個閾值，則可以透過開啟支援要求，要求增加速率。 
 
-若要在工作區中收到這類事件的通知，請使用下列查詢建立[記錄警示規則](../articles/azure-monitor/platform/alerts-log.md)，該查詢具有警示邏輯基於結果數目大於零、評估期間為 5 分鐘且頻率為 5 分鐘的情況。
+若希望在接近或達到擷取磁碟區速率限制時，能夠在工作區中收到通知，請使用下列查詢建立[記錄警示規則](../articles/azure-monitor/platform/alerts-log.md)，該查詢具有警示邏輯基於結果數目大於零、評估期間為 5 分鐘且頻率為 5 分鐘的情況。
 
-已達 80% 閾值的擷取磁碟區速率：
+超過閾值的擷取磁碟區速率
 ```Kusto
 Operation
-|where OperationCategory == "Ingestion"
-|where Detail startswith "The data ingestion volume rate crossed 80% of the threshold"
+| where Category == "Ingestion"
+| where OperationKey == "Ingestion rate limit"
+| where Level == "Error"
 ```
 
-已達閾值的擷取磁碟區速率：
+超過 80% 閾值的擷取磁碟區速率
 ```Kusto
 Operation
-|where OperationCategory == "Ingestion"
-|where Detail startswith "The data ingestion volume rate crossed the threshold"
+| where Category == "Ingestion"
+| where OperationKey == "Ingestion rate limit"
+| where Level == "Warning"
+```
+
+超過 70% 閾值的擷取磁碟區速率
+```Kusto
+Operation
+| where Category == "Ingestion"
+| where OperationKey == "Ingestion rate limit"
+| where Level == "Info"
 ```
 
 >[!NOTE]

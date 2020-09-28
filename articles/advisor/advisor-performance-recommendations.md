@@ -2,13 +2,13 @@
 title: 使用 Advisor 改善 Azure 應用程式的效能
 description: 使用 Azure Advisor 中的效能建議來改善業務關鍵應用程式的速度和回應能力。
 ms.topic: article
-ms.date: 01/29/2019
-ms.openlocfilehash: 9a8499e85a264488c756a3d497565398f2e1c229
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.date: 07/29/2020
+ms.openlocfilehash: 9625bb3b063234e9cadb20aacfcc5ca8a28b35cc
+ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651583"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91405151"
 ---
 # <a name="improve-the-performance-of-azure-applications-by-using-azure-advisor"></a>使用 Azure Advisor 來改善 Azure 應用程式的效能
 
@@ -63,8 +63,6 @@ Advisor 會識別沒有最新 [資料表統計資料](../synapse-analytics/sql-d
 
 Advisor 分析可指出連接至 MySQL 伺服器的應用程式可能無法有效率地管理連接。 這種情況可能會導致不必要的資源耗用量和整體的應用程式延遲。 若要改善連線管理，建議您減少短期連線的數目，並排除不必要的閒置連線。 您可以藉由設定伺服器端連接共用器（例如 ProxySQL）來進行這些改進。
 
-## <a name="update-your-current-compute-management-sdk-version-to-the-most-recent-version"></a>將您目前的計算管理 SDK 版本更新為最新版本
-Advisor 會識別具有使用過期計算管理 SDK 版本之作業的訂閱。 這可能會影響工作負載的安全性和效能，因此 Advisor 建議您切換至最新版本的計算管理 SDK。 
 
 ## <a name="scale-up-to-optimize-cache-utilization-on-your-azure-synapse-analytics-tables-to-increase-query-performance"></a>擴大以優化 Azure Synapse Analytics 資料表的快取使用率，以提升查詢效能
 
@@ -74,7 +72,7 @@ Azure Advisor 會偵測您的 Azure Synapse Analytics 資料表是否有較高�
 
 Advisor 會識別不是複寫資料表的資料表，但可以從轉換中獲益。 建議您轉換這些資料表。 建議的依據：
 - 複寫資料表的大小。 
-- 資料行數目。 
+- 行數。 
 - 資料表散發類型。 
 - Azure Synapse Analytics 資料表上的資料分割數目。 
 
@@ -170,18 +168,27 @@ Advisor 分析指出由於臨時表參數設定不足，您的 MySQL 伺服器�
 ## <a name="distribute-data-in-server-group-to-distribute-workload-among-nodes"></a>分配伺服器群組中的資料以在節點間分配工作負載
 Advisor 會識別未散發資料，但仍留在協調器上的伺服器群組。 根據這一點，Advisor 建議您針對完整超大規模 (Citus) 權益將資料散發至您伺服器群組的背景工作節點。 這會利用伺服器群組中每個節點的資源來改善查詢效能。 [深入了解](https://go.microsoft.com/fwlink/?linkid=2135201) 
 
+## <a name="improve-user-experience-and-connectivity-by-deploying-vms-closer-to-windows-virtual-desktop-deployment-location"></a>藉由部署更接近 Windows 虛擬桌面部署位置的 Vm，來改善使用者體驗和連線能力
+使用 Windows 虛擬桌面 (WVD)，我們判斷您的 VM 位置與使用者連線的區域不同或更遠。 這可能會導致連線回應時間變長，並會影響 WVD 的整體使用者體驗。 建立主機集區的 VM 時，您應該嘗試使用更接近使用者的區域。 較近的鄰近性可讓維持使用者對 WVD 服務的滿意度，同時獲得更好的整體體驗品質。 若[要深入瞭解連接延遲](https://docs.microsoft.com/azure/virtual-desktop/connection-latency)，請參閱。
+
+## <a name="upgrade-to-the-latest-version-of-the-immersive-reader-sdk"></a>升級到最新版本的沈浸式閱讀程式 SDK
+我們發現此訂用帳戶下的資源使用過時的沈浸式閱讀程式 SDK 版本。 使用最新版本的沈浸式閱讀程式 SDK 可為您提供更新的安全性、效能和擴充的功能集，以便自訂及增強您的整合體驗。
+深入瞭解 [沉浸式讀取器 SDK](https://aka.ms/ImmersiveReaderAzureAdvisorSDKLearnMore)。
+
+
 ## <a name="how-to-access-performance-recommendations-in-advisor"></a>如何存取 Advisor 中的效能建議
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)，然後開啟 [Advisor](https://aka.ms/azureadvisordashboard)。
 
 2.  在 Advisor 儀表板上，選取 [ **效能** ] 索引標籤。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 若要深入了解 Advisor 建議，請參閱：
 
 * [Advisor 簡介](advisor-overview.md)
 * [開始使用 Advisor](advisor-get-started.md)
+* [Advisor 分數](azure-advisor-score.md)
 * [Advisor 成本建議](advisor-cost-recommendations.md)
 * [Advisor 可靠性建議](advisor-high-availability-recommendations.md)
 * [Advisor 安全性建議](advisor-security-recommendations.md)

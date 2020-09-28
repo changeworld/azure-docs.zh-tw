@@ -250,7 +250,7 @@
           href: control-kubeconfig-access.md
         - name: 透過網路原則保護 Pod 流量
           href: use-network-policies.md
-        - name: 使用 Azure 原則保護 Pod (預覽)
+        - name: 使用 Azure 原則保護 Pod
           href: use-pod-security-on-azure-policy.md
         - name: 使用 Pod 安全性原則 (預覽)
           href: use-pod-security-policies.md

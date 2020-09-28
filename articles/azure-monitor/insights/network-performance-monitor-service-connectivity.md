@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: abshamsft
 ms.author: absha
 ms.date: 02/20/2018
-ms.openlocfilehash: dd8dcbe136558e997ca16a2d9754cbf1c4e7620b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: b7b6a7202392e083aaaa5cdc8adcf0c81cfb0e0d
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326098"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403699"
 ---
 # <a name="service-connectivity-monitor"></a>服務連線能力監視
 
@@ -19,8 +19,8 @@ ms.locfileid: "87326098"
 
 您可以使用服務連線能力監視來執行下列功能： 
 
-- 監視多個分公司或位置與您的應用程式和網路服務的網路連線。 應用程式和網路服務包括 Office 365、Dynamics CRM、內部企業營運系統應用程式及 SQL 資料庫。
-- 使用內建測試來監視 Office365 和 Dynamics365 端點的網路連線。 
+- 監視多個分公司或位置與您的應用程式和網路服務的網路連線。 應用程式和網路服務包含 Microsoft 365、Dynamics CRM、內部企業營運應用程式和 SQL 資料庫。
+- 使用內建測試來監視 Microsoft 365 和 Dynamics 365 端點的網路連線能力。 
 - 判斷連線至端點時的回應時間、網路延遲及封包遺失。
 - 判斷應用程式效能低落是因為網路還是因為應用程式提供者端的某些問題所造成。
 - 檢視拓撲地圖上每個躍點所提供的延遲，識別可能導致應用程式效能低落的作用點。
@@ -30,7 +30,7 @@ ms.locfileid: "87326098"
 
 
 ## <a name="configuration"></a>設定 
-若要開啟網路效能監控的設定，請開啟[網路效能監控解決方案](network-performance-monitor.md)，然後選取 [**設定**]。
+若要開啟網路效能監控的設定，請開啟 [網路效能監控方案](network-performance-monitor.md) ，然後選取 [ **設定**]。
 
 ![設定網路效能監控](media/network-performance-monitor-service-endpoint/npm-configure-button.png)
 
@@ -57,19 +57,19 @@ netsh advfirewall firewall add rule name="NPMDICMPV6TimeExceeded" protocol="icmp
 
     * 選取 [Web]**** 以監視回應 HTTP/S 要求之服務的連線，例如 outlook.office365.com 或 bing.com。<br>
     * 選取 [網路]**** 以監視回應 TCP 要求但不會回應 HTTP/S 要求之服務的連線，例如 SQL 伺服器、FTP 伺服器或 SSH 連接埠。 
-    * 例如：若要建立 blob 儲存體帳戶的 web 測試，請選取 [ **web** ]，然後輸入 target as *yourstorageaccount*. blob.core.windows.net。 同樣地，您可以使用[此連結](../../storage/common/storage-account-overview.md#storage-account-endpoints)來建立其他資料表儲存體、佇列儲存體和 Azure 檔案儲存體的測試。
+    * 例如：若要建立 web 測試至 blob 儲存體帳戶，請選取 [ **web** ]，並以 *yourstorageaccount*. blob.core.windows.net 的形式輸入目標。 同樣地，您可以使用[此連結](../../storage/common/storage-account-overview.md#storage-account-endpoints)來建立其他資料表儲存體、佇列儲存體和 Azure 檔案儲存體的測試。
 4. 如果您不想要執行網路量測，例如網路延遲、封包遺失和拓撲探索，請清除 [執行網路量測]**** 核取方塊。 保持選取狀態可充分發揮功能。 
 5. 在 [目標]**** 中，輸入您要監視網路連線的 URL/FQDN/IP 位址。
 6. 在 [連接埠號碼]**** 中，輸入目標服務的連接埠號碼。 
 7. 在 [測試頻率]**** 中，輸入您想要執行測試的頻率值。 
-8. 選取您要監視服務網路連線的來源節點。 請確定每個測試新增的代理程式數目小於150。 任何代理程式都可以測試150端點/代理程式的上限。
+8. 選取您要監視服務網路連線的來源節點。 確定每個測試新增的代理程式數目小於150。 任何代理程式都可以測試最多150端點/代理程式。
 
     >[!NOTE]
     > 對於以 Windows Server 為基礎的節點，功能會使用以 TCP 為基礎的要求來執行網路測量。 對於以 Windows 用戶端為基礎的節點，功能會使用以 ICMP 為基礎的要求來執行網路測量。 在某些情況下，目標應用程式會在節點是以 Windows 用戶端為基礎時，封鎖以連入 ICMP 為基礎的要求。 此解決方案無法執行網路量測。 建議您在此情況下使用以 Windows Server 為基礎的節點。 
 
 9. 如果您不想要建立所選項目的健康情況事件，則清除 [在此測試所涵蓋的目標上啟用健康情況監視]****。 
 10. 選擇監視條件。 您可以輸入閾值，以設定健康情況事件產生的自訂閾值。 只要條件的值高於針對所選網路或子網路配對選取的閾值時，就會產生健康情況事件。 
-11. 選取 [**儲存**] 以儲存設定。 
+11. 選取 [ **儲存** ] 以儲存設定。 
 
     ![服務連線能力監視測試組態](media/network-performance-monitor-service-endpoint/service-endpoint-configuration.png)
 
@@ -122,7 +122,7 @@ netsh advfirewall firewall add rule name="NPMDICMPV6TimeExceeded" protocol="icmp
 * 如果應用程式執行緩慢，請判斷應用程式效能低落是因為網路還是應用程式提供者端的某些問題所造成。
 
 ## <a name="gcc-office-urls-for-us-government-customers"></a>適用于美國政府客戶的 GCC Office Url
-針對美國政府弗吉尼亞州地區，只有 DOD Url 是內建的 NPM。 使用 GCC Url 的客戶需要建立自訂測試，並個別新增每個 URL。
+針對美國政府的弗吉尼亞州區域，只有 DOD Url 是內建的 NPM。 使用 GCC Url 的客戶必須建立自訂測試，並個別新增每個 URL。
 
 | 欄位 | GCC |
 |:---   |:--- |
@@ -130,7 +130,7 @@ netsh advfirewall firewall add rule name="NPMDICMPV6TimeExceeded" protocol="icmp
 | Office 365 驗證和身分識別 | * login.microsoftonline.us <br> * api.login.microsoftonline.com <br> * clientconfig.microsoftonline-p.net <br> * login.microsoftonline.com <br> * login.microsoftonline-p.com <br> * login.windows.net <br> * loginex.microsoftonline.com <br> * login-us.microsoftonline.com <br> * nexus.microsoftonline-p.com <br> * mscrl.microsoft.com <br> * secure.aadcdn.microsoftonline-p.com |
 | Office Online | * adminwebservice.gov.us.microsoftonline.com <br>  * adminwebservice-s1-bn1a.microsoftonline.com <br> * adminwebservice-s1-dm2a.microsoftonline.com <br> * becws.gov.us.microsoftonline.com <br> * provisioningapi.gov.us.microsoftonline.com <br> * officehome.msocdn.us <br> * prod.msocdn.us <br> * portal.office365.us <br> * webshell.suite.office365.us <br> * www. office365.us <br> * activation.sls.microsoft.com <br> * crl.microsoft.com <br> * go.microsoft.com <br> * insertmedia.bing.office.net <br> * ocsa.officeapps.live.com <br> * ocsredir.officeapps.live.com <br> * ocws.officeapps.live.com <br> * office15client.microsoft.com <br>* officecdn.microsoft.com <br> * officecdn.microsoft.com.edgesuite.net <br> * officepreviewredir.microsoft.com <br> * officeredir.microsoft.com <br> * ols.officeapps.live.com  <br> * r.office.microsoft.com <br> * cdn.odc.officeapps.live.com <br> * odc.officeapps.live.com <br> * officeclient.microsoft.com |
 | Exchange Online | * outlook.office365.us <br> * attachments.office365-net.us <br> * autodiscover-s.office365.us <br> * manage.office365.us <br> * scc.office365.us |
-| MS 團隊 | gov.teams.microsoft.us | 
+| MS 小組 | gov.teams.microsoft.us | 
 
 ## <a name="next-steps"></a>後續步驟
 [搜尋記錄](../log-query/log-query-overview.md)以檢視詳細的網路效能資料記錄。

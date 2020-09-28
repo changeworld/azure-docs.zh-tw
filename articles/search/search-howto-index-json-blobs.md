@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/25/2020
-ms.openlocfilehash: c3aa813c671e9755b6ab65ba1e2967876bd170ca
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: fd9117af49de9fe59ed614a9dfa730644f02cd8c
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91398335"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403631"
 ---
 # <a name="how-to-index-json-blobs-using-a-blob-indexer-in-azure-cognitive-search"></a>如何在 Azure 認知搜尋中使用 Blob 索引子編制 JSON blob 的索引
 
@@ -280,10 +280,10 @@ Azure Blob 儲存體中的 JSON blob 通常是單一 JSON 檔或 JSON 「陣列�
 
 .NET SDK 與 REST API 有完整的同位檢查。 建議您檢閱先前的 REST API 章節，以了解其概念、工作流程和需求。 然後，您可以參閱下列 .NET API 參考文件，以在受控程式碼中實作 JSON 索引子。
 
-+ [microsoft.azure.search.models.datasource](/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet)
-+ [microsoft.azure.search.models.datasourcetype](/dotnet/api/microsoft.azure.search.models.datasourcetype?view=azure-dotnet) 
-+ [microsoft.azure.search.models.index](/dotnet/api/microsoft.azure.search.models.index?view=azure-dotnet) 
-+ [microsoft.azure.search.models.indexer](/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet)
++ [microsoft.azure.search.models.datasource](/dotnet/api/microsoft.azure.search.models.datasource)
++ [microsoft.azure.search.models.datasourcetype](/dotnet/api/microsoft.azure.search.models.datasourcetype) 
++ [microsoft.azure.search.models.index](/dotnet/api/microsoft.azure.search.models.index) 
++ [microsoft.azure.search.models.indexer](/dotnet/api/microsoft.azure.search.models.indexer)
 
 <a name="parsing-modes"></a>
 
@@ -451,7 +451,9 @@ Azure 認知搜尋目前無法直接編制任意 JSON 檔的索引，因為它�
 > [!NOTE]
 > 如果欄位對應路徑中的來源欄位名稱參考在 JSON 中不存在的屬性，則會略過該對應且不會產生錯誤。 這麼做是為了讓我們可支援具有不同結構描述 (這是常見的使用案例) 的文件。 因為沒有任何驗證，您必須小心避免在欄位對應規格中出現錯字。
 >
->
+
+## <a name="help-us-make-azure-cognitive-search-better"></a>協助我們改善 Azure 認知搜尋
+如果您有功能要求或改進的想法，請在 [UserVoice](https://feedback.azure.com/forums/263029-azure-search/) 提供。 如果您需要使用現有功能的協助，請將您的問題張貼在 [Stack Overflow](https://stackoverflow.microsoft.com/questions/tagged/18870)上。
 
 ## <a name="see-also"></a>另請參閱
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/23/2020
 ms.author: memildin
-ms.openlocfilehash: faa61dc351bebd3d2a85ad229036e5b9fba9256e
-ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
+ms.openlocfilehash: c0494fe39f8ae64ba65db4e3cd728069aa4a5052
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89514606"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403206"
 ---
 # <a name="prevent-dangling-dns-entries-and-avoid-subdomain-takeover"></a>防止無關聯的 DNS 專案，並避免子域接管
 
@@ -86,7 +86,7 @@ ms.locfileid: "89514606"
 此工具支援下表所列的 Azure 資源。 此工具會將所有租使用者的 Cname 解壓縮或做為輸入。
 
 
-| 服務                   | 類型                                        | FQDNproperty                               | 範例                         |
+| Service                   | 類型                                        | FQDNproperty                               | 範例                         |
 |---------------------------|---------------------------------------------|--------------------------------------------|---------------------------------|
 | Azure Front Door          | microsoft.network/frontdoors                | 屬性 cName                           | `abc.azurefd.net`               |
 | Azure Blob 儲存體        | microsoft.storage/storageaccounts           | >primaryendpoints.blob blob           | `abc. blob.core.windows.net`    |
@@ -100,7 +100,7 @@ ms.locfileid: "89514606"
 
 
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>Prerequisites
 
 以具有下列許可權的使用者身分執行查詢：
 
@@ -117,14 +117,7 @@ ms.locfileid: "89514606"
 
 ### <a name="run-the-script"></a>執行指令碼
 
-腳本有兩個版本，兩者都有相同的輸入參數，而且會產生類似的輸出：
-
-|指令碼  |資訊  |
-|---------|---------|
-|**Get-DanglingDnsRecordsPsCore.ps1**    |只有 PowerShell 版本7和更新版本才支援平行模式，否則會執行序列模式。|
-|**Get-DanglingDnsRecordsPsDesktop.ps1** |因為此腳本使用 [Windows Workflow](https://docs.microsoft.com/dotnet/framework/windows-workflow-foundation/overview)，所以僅支援在低於6的 PowerShell desktop/版本。|
-
-深入瞭解並從 GitHub 下載 PowerShell 腳本： https://aka.ms/DanglingDNSDomains 。
+深入瞭解 PowerShell 腳本、 **Get-DanglingDnsRecords.ps1**，並從 GitHub 下載： https://aka.ms/DanglingDNSDomains 。
 
 ## <a name="remediate-dangling-dns-entries"></a>補救無關聯的 DNS 專案 
 
@@ -203,7 +196,7 @@ Azure DNS 的 [別名記錄](https://docs.microsoft.com/azure/dns/dns-alias#scen
     - 請刪除不再使用的 DNS 記錄，或將其指向您的組織所擁有的正確 Azure 資源 (FQDN) 。
  
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 若要深入瞭解您可以用來防禦子域接管的相關服務和 Azure 功能，請參閱下列頁面。
 

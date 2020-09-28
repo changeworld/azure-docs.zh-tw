@@ -40,6 +40,10 @@
           href: costs/understand-work-scopes.md
         - name: 群組和篩選選項
           href: costs/group-filter.md
+        - name: 規劃管理成本
+          href: understand/plan-manage-costs.md
+        - name: 避免非預期成本
+          href: understand/analyze-unexpected-charges.md
         - name: 使用自動化管理成本
           href: costs/manage-automation.md
         - name: 適用於合作夥伴的成本管理
@@ -114,6 +118,8 @@
           href: understand/mca-overview.md
         - name: Microsoft 合作夥伴合約的計費帳戶
           href: understand/mpa-overview.md
+        - name: 關於傳輸訂用帳戶
+          href: understand/subscription-transfer.md
         - name: 在合作夥伴之間轉移訂閱 (預覽)
           href: manage/azure-plan-subscription-transfer-partners.md
 - name: 操作指南
@@ -124,7 +130,7 @@
           items:
             - name: 帳戶管理員工作
               href: manage/account-admin-tasks.md
-            - name: 編輯設定檔
+            - name: 編輯帳單連絡資訊
               href: manage/change-azure-account-profile.md
             - name: 解析逾期資產負債
               href: manage/resolve-past-due-balance.md
@@ -246,8 +252,6 @@
               href: manage/upgrade-azure-subscription.md
     - name: 執行重要的成本管理工作
       items:
-        - name: 避免非預期成本
-          href: manage/getting-started.md
         - name: 計算價格
           href: 'https://azure.microsoft.com/pricing/calculator/'
         - name: 對一般工作使用成本分析

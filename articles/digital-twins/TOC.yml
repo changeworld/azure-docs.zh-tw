@@ -1,4 +1,4 @@
-- name: Azure Digital Twins
+- name: Azure Digital Twins 文件
   href: index.yml
 - name: 概觀
   items:
@@ -7,6 +7,7 @@
     - name: 與先前版本之間的差異
       href: overview-differences.md
 - name: 快速入門
+  expanded: true
   items:
     - name: 探索範例案例
       href: quickstart-adt-explorer.md
@@ -162,6 +163,8 @@
               href: 'https://www.npmjs.com/package/@azure/digital-twins/v/1.0.0-preview.1'
             - name: JavaScript SDK - 參考
               href: 'https://docs.microsoft.com/javascript/api/@azure/digital-twins/?view=azure-node-latest&preserve-view=true'
+            - name: Java SDK - Maven
+              href: 'https://search.maven.org/artifact/com.azure/azure-digitaltwins-core/1.0.0-beta.1/jar'
     - name: Digital Twins CLI
       items:
         - name: Digital Twins CLI 參考
@@ -222,31 +225,3 @@
           href: 'https://azure.microsoft.com/pricing/details/digital-twins'
         - name: 區域和可用性
           href: 'https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins'
-- name: 相關參考
-  items:
-    - name: 方案
-      items:
-        - name: IoT 解決方案加速器
-          href: /azure/iot-suite
-        - name: IoT 中心
-          href: /azure/iot-central/core/overview-iot-central
-    - name: 平台服務
-      items:
-        - name: IoT 中樞
-          href: /azure/iot-hub
-        - name: IoT 隨插即用
-          href: /azure/iot-pnp
-        - name: IoT 中樞裝置佈建服務
-          href: /azure/iot-dps
-        - name: 地圖
-          href: /azure/azure-maps
-        - name: 服務 SDK
-          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
-        - name: 時間序列深入解析
-          href: /azure/time-series-insights
-    - name: Edge 解決方案
-      items:
-        - name: IoT Edge
-          href: /azure/iot-edge
-        - name: IoT 裝置 SDK
-          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks

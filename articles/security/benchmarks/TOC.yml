@@ -145,6 +145,8 @@
       href: ../../network-watcher/security-baseline.md
     - name: 資訊安全中心基準
       href: ../../security-center/security-baseline.md
+    - name: 服務匯流排基準
+      href: ../../service-bus-messaging/security-baseline.md
     - name: Service Fabric 基準
       href: ../../service-fabric/security-baseline.md
     - name: 串流分析基準

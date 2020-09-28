@@ -197,6 +197,8 @@
       items:
         - name: 設定或編輯原則
           href: set-edit-policies.md
+        - name: 偵錯原則
+          href: api-management-debug-policies.md
         - name: 原則運算式
           href: api-management-policy-expressions.md
         - name: 自訂快取
@@ -221,6 +223,8 @@
           href: api-management-cross-domain-policies.md
         - name: 轉換原則
           href: api-management-transformation-policies.md
+        - name: 分散式應用程式執行階段 (Dapr) 整合原則
+          href: api-management-dapr-policies.md
     - name: 生產管理
       items:
         - name: 將 API 匯出至 Power Platform

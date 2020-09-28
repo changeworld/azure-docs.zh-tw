@@ -7,13 +7,13 @@ author: dereklegenzoff
 ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 05/05/2020
-ms.openlocfilehash: 80307c97464e61d7b7d338703de90d1199adc819
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/25/2020
+ms.openlocfilehash: 081f073fa4933d67604173d2169a7abdc3ac7c3f
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88927012"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403563"
 ---
 # <a name="how-to-index-large-data-sets-in-azure-cognitive-search"></a>如何在 Azure 認知搜尋中為大型資料集編制索引
 
@@ -25,34 +25,37 @@ Azure 認知搜尋支援[兩種基本方法](search-what-is-data-import.md)以�
 
 下列各節將探索使用推送 API 和索引子來編制大量資料索引的技術。
 
-## <a name="push-api"></a>推送 API
+## <a name="use-the-push-api"></a>使用推送 API
 
-將資料推送至索引時，有幾個主要考慮會影響推送 API 的索引速度。 下一節將概述這些因素。 
+使用 [ [新增檔 REST API](/rest/api/searchservice/addupdate-or-delete-documents) 或 [索引方法](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.index)將資料推送至索引時，有幾個主要考慮會影響索引速度。 下一節將概述這些因素，範圍從將服務容量設定為程式碼優化。
 
-除了本文中的資訊之外，您還可以利用「 [優化索引編制速度」教學](tutorial-optimize-indexing-push-api.md) 課程中的程式碼範例來深入瞭解。
+如需說明推播模型索引的詳細資訊和程式碼範例，請參閱 [教學課程：優化編制索引速度](tutorial-optimize-indexing-push-api.md)。
 
-### <a name="service-tier-and-number-of-partitionsreplicas"></a>服務層和資料分割/複本的數目
+### <a name="capacity-of-your-service"></a>服務的容量
 
-新增資料分割或增加搜尋服務的層級，將會增加索引速度。
+在第一個步驟中，請檢查您布建服務的層級特性和 [限制](search-limits-quotas-capacity.md) 。 定價層中的其中一個重要區別因素是資料分割的大小和速度，這對編制索引速度有直接的影響。 如果您在工作負載不足的層級上布建您的搜尋服務，升級至新的層級可能是增加索引輸送量最簡單且最有效的解決方案。
 
-新增額外複本也可能會增加索引速度，但不保證。 另一方面，其他複本會增加搜尋服務可以處理的查詢量。 複本也是取得 [SLA](https://azure.microsoft.com/support/legal/sla/search/v1_0/)的重要元件。
+當您對階層感到滿意後，下一個步驟可能是增加分割區數目。 在初始編制索引執行之後，可以向下重新調整資料分割配置，以降低執行服務的整體成本。
 
-新增資料分割/複本或升級至較高的階層之前，請考慮貨幣成本和配置時間。 新增資料分割可能會大幅增加編制索引速度，但新增/移除它們可能需要15分鐘到數小時的時間。 如需詳細資訊，請參閱 [調整容量](search-capacity-planning.md)的相關檔。
+> [!NOTE]
+> 新增額外複本也可能會增加索引速度，但不保證。 另一方面，其他複本會增加搜尋服務可以處理的查詢量。 複本也是取得 [SLA](https://azure.microsoft.com/support/legal/sla/search/v1_0/)的重要元件。
+>
+> 新增資料分割/複本或升級至較高的階層之前，請考慮貨幣成本和配置時間。 新增資料分割可能會大幅增加編制索引速度，但新增/移除它們可能需要15分鐘到數小時的時間。 如需詳細資訊，請參閱 [調整容量](search-capacity-planning.md)的相關檔。
+>
 
-### <a name="index-schema"></a>索引架構
+### <a name="review-index-schema"></a>審核索引架構
 
-索引的架構在索引資料方面扮演著重要的角色。 將欄位加入欄位，並將其他屬性新增至這些欄位 (例如可搜尋、*可 facet*或可*篩選*) 兩者都會減少編制*索引的速度*。
-
-一般來說，如果您想要使用欄位，建議您只將其他屬性加入欄位。
+索引的架構在索引資料方面扮演著重要的角色。 您擁有的欄位愈多，而且您所設定的屬性越多* (例如可搜尋、**可 facet*或可*篩選*) 全都有助於增加索引編制時間。 一般而言，您應該只在搜尋索引中建立並指定實際需要的欄位。
 
 > [!NOTE]
 > 若要保持檔案大小，請避免將不可查詢的資料新增至索引。 影像和其他二進位資料無法直接搜尋，而且不應該儲存於索引中。 若要將不可查詢的資料整合到搜尋結果，請定義不可搜尋的欄位，以儲存資源的 URL 參考。
 
-### <a name="batch-size"></a>批次大小
+### <a name="check-the-batch-size"></a>檢查批次大小
 
-若要為較大型的資料集編製索引，其中一個最簡單的機制是在單一要求中提交多個文件或記錄。 只要整個承載的大小在 16 MB 以內，要求便可以在大量上傳作業中處理多達 1000 個文件。 無論您是在 .NET SDK 中使用 [ [新增檔] REST API](/rest/api/searchservice/addupdate-or-delete-documents) 或 [索引方法](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.index?view=azure-dotnet) ，都適用這些限制。 針對任一個 API，您會將1000檔封裝在每個要求的主體中。
+若要為較大型的資料集編製索引，其中一個最簡單的機制是在單一要求中提交多個文件或記錄。 只要整個承載的大小在 16 MB 以內，要求便可以在大量上傳作業中處理多達 1000 個文件。 無論您是在 .NET SDK 中使用 [ [新增檔] REST API](/rest/api/searchservice/addupdate-or-delete-documents) 或 [索引方法](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.index) ，都適用這些限制。 針對任一個 API，您會將1000檔封裝在每個要求的主體中。
 
 使用批次來編制檔索引，可大幅改善索引效能。 為您的資料決定最佳批次大小是將索引編製速度最佳化的關鍵要素。 影響最佳批次大小的兩個主要因素如下：
+
 + 索引的結構描述
 + 資料的大小
 
@@ -79,7 +82,7 @@ Azure 認知搜尋支援[兩種基本方法](search-what-is-data-import.md)以�
 + **503 服務無法使用** - 此錯誤表示系統負載過重，因此目前無法處理要求。
 + **207多重狀態** - 此錯誤表示有些文件成功，但至少有一個文件失敗。
 
-### <a name="retry-strategy"></a>重試策略 
+### <a name="retry-strategy"></a>重試策略
 
 如果發生失敗，系統應該就會使用[指數輪詢重試策略](/dotnet/architecture/microservices/implement-resilient-applications/implement-retries-exponential-backoff)來重試要求。
 
@@ -89,7 +92,7 @@ Azure 認知搜尋的 .NET SDK 會自動重試 503 和其他失敗的要求，�
 
 在編制資料索引時，網路資料傳送速率可能是限制因素。 從 Azure 環境內編制資料索引是加速編制索引的簡單方法。
 
-## <a name="indexers"></a>索引子
+## <a name="use-indexers-pull-api"></a>使用索引子 (提取 API) 
 
 [索引子](search-indexer-overview.md) 可用來編目支援的 Azure 資料來源，以取得可搜尋的內容。 有幾個索引子功能雖然不是專門用於大規模的索引編製作業，但特別適用於因應較大型的資料集：
 
@@ -100,7 +103,7 @@ Azure 認知搜尋的 .NET SDK 會自動重試 503 和其他失敗的要求，�
 > [!NOTE]
 > 索引子是資料來源特有的，因此使用索引子方法只適用于 Azure 上的選取資料來源： [SQL Database](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)、 [Blob 儲存體](search-howto-indexing-azure-blob-storage.md)、 [資料表儲存體](search-howto-indexing-azure-tables.md)、 [Cosmos DB](search-howto-index-cosmosdb.md)。
 
-### <a name="batch-size"></a>批次大小
+### <a name="check-the-batchsize-argument-on-create-indexer"></a>檢查 Create 索引子上的 batchSize 引數
 
 如同推送 API，索引子可讓您設定每個批次的專案數目。 針對以[建立索引子 REST API](/rest/api/searchservice/Create-Indexer) 為基礎的索引子，您可以設定 `batchSize` 引數以自訂此設定，以便更加符合資料的特性。 
 
@@ -112,7 +115,7 @@ Azure 認知搜尋的 .NET SDK 會自動重試 503 和其他失敗的要求，�
 
 根據設計，排程的索引編製會在特定間隔啟動，且作業通常會在繼續執行下一個排程的間隔之前完成。 不過，如果處理未在間隔內完成，索引子就會停止 (因為其時間已用盡)。 在下一個間隔中，將會從上次中斷之處繼續進行處理，而系統會追蹤該發生點。 
 
-實際上，對於跨數天的索引負載，您可以將索引子安排在 24 小時的排程上。 繼續在下一個 24 小時的週期內進行索引編製時，作業會從最後一個已知的正常文件重新開始。 如此，索引子將可順利在數天內處理待處理項目，直到所有未處理的文件都完成處理為止。 如需此方法的詳細資訊，請參閱[在 Azure Blob 儲存體中為大型資料集編製索引](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets)。 如需有關一般設定排程的詳細資訊，請參閱 [建立索引子 REST API](/rest/api/searchservice/Create-Indexer) 或查看 [如何排程 Azure 認知搜尋的索引子](search-howto-schedule-indexers.md)。
+實際上，對於跨數天的索引負載，您可以將索引子安排在 24 小時的排程上。 繼續在下一個 24 小時的週期內進行索引編製時，作業會從最後一個已知的正常文件重新開始。 如此，索引子將可順利在數天內處理待處理項目，直到所有未處理的文件都完成處理為止。 如需有關一般設定排程的詳細資訊，請參閱 [建立索引子 REST API](/rest/api/searchservice/Create-Indexer) 或查看 [如何排程 Azure 認知搜尋的索引子](search-howto-schedule-indexers.md)。
 
 <a name="parallel-indexing"></a>
 
@@ -156,7 +159,7 @@ Azure 認知搜尋的 .NET SDK 會自動重試 503 和其他失敗的要求，�
 > [!Note]
 > 增加複本時，如果預計索引大小會大幅增加，請考慮增加分割區計數。 分割區會儲存配量的索引內容；您的分割區愈多，每個分割區所須儲存的配量就愈少。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 + [索引子概觀](search-indexer-overview.md)
 + [在入口網站中編製索引](search-import-data-portal.md)

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 02/20/2018
-ms.openlocfilehash: 34e81076c27086ad838cca23de0e150a3c1b076c
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: c5a442a3d3711b85c0bad30218cb1ffab92558d9
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798902"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403716"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Azure 中的網路效能監控解決方案
 
@@ -28,7 +28,7 @@ ms.locfileid: "88798902"
 
 * [服務連線能力監視](network-performance-monitor-service-connectivity.md)：您可以監視從使用者到所關心服務的連線、判斷路徑中有哪些基礎結構，以及識別發生網路瓶頸之處。 您可以搶先在使用者之前得知中斷情況，並查看網路路徑上發生問題的確切位置。 
 
-    此功能可協助您執行以 HTTP、HTTPS、TCP 與 ICMP 為基礎的測試，以近乎即時或記錄的方式監視服務的可用性與回應時間。 您也可以監視因網路而造成封包遺失與延遲問題的比重。 透過網路拓撲地圖，您可以解析網速變慢的問題。 您可以利用每個躍點的延遲資料，識別從節點到服務的網路路徑沿途所發生的問題點。 透過內建測試，您完全不需任何預先設定，即可監視 Office365 和 Dynamics CRM 的網路連線。 使用此功能，您可以監視任何支援 TCP 端點的網路連線，例如網站、SaaS 應用程式、PaaS 應用程式和 SQL 資料庫。
+    此功能可協助您執行以 HTTP、HTTPS、TCP 與 ICMP 為基礎的測試，以近乎即時或記錄的方式監視服務的可用性與回應時間。 您也可以監視因網路而造成封包遺失與延遲問題的比重。 透過網路拓撲地圖，您可以解析網速變慢的問題。 您可以利用每個躍點的延遲資料，識別從節點到服務的網路路徑沿途所發生的問題點。 使用內建測試，您可以監視 Microsoft 365 和 Dynamics CRM 的網路連線能力，而不需要進行任何預先管理。 使用此功能，您可以監視任何支援 TCP 端點的網路連線，例如網站、SaaS 應用程式、PaaS 應用程式和 SQL 資料庫。
 
 * [ExpressRoute 監視器](network-performance-monitor-expressroute.md)：透過 Azure ExpressRoute 監視分公司與 Azure 之間的端對端連線與效能。  
 
@@ -82,7 +82,7 @@ ExpressRoute 監視器的支援區域清單提供於[文件](../../expressroute/
 
     若要監視網路連結，請在該連結的兩個端點上安裝代理程式。 如果您不確定您的網路拓撲，請在具有重要工作負載、且您想要監視其間網路效能的伺服器上安裝代理程式。 例如，如果您想要監視 Web 伺服器和執行 SQL 的伺服器 之間的網路連線，請在這兩部伺服器上安裝代理程式。 代理程式會監視主機之間的網路連線 (連結)，而不是主機本身。 
 
-* **服務連線能力監視**：在您想要的每個節點上安裝 Log Analytics 代理程式，監視它與服務端點之間的網路連線。 舉例來說，如果您想要監視辦公室網站 O1、O2 和 O3 對 Office 365 的網路連線。 請分別在 O1、O2 和 O3 中的至少一個節點上安裝 Log Analytics 代理程式。 
+* **服務連線能力監視**：在您想要的每個節點上安裝 Log Analytics 代理程式，監視它與服務端點之間的網路連線。 例如，如果您想要監視從您的 office 網站（標示為 O1、O2 和 O3） Microsoft 365 的網路連線能力。 請分別在 O1、O2 和 O3 中的至少一個節點上安裝 Log Analytics 代理程式。 
 
 * **ExpressRoute 監視器**：在您的 Azure 虛擬網路中安裝至少一個 Log Analytics 代理程式。 此外，也在透過 ExpressRoute 私人對等互連進行連線的內部部署子網路中至少安裝一個代理程式。  
 
@@ -128,7 +128,7 @@ ExpressRoute 監視器的支援區域清單提供於[文件](../../expressroute/
 
    ![效能監視器檢視](media/network-performance-monitor/npm-synthetic-transactions.png)
     
-   **服務連線能力監視**：此功能提供內建的預先設定測試，可從代理程式監視 Office 365 和 Dynamics 365 的網路連線。 請選取您要監視的 Office 365 和 Dynamics 365 服務旁邊的核取方塊，以選擇這些服務。 若要選擇您要用來監視的代理程式，請選取 [新增代理程式]****。 如果您不想要使用此功能，或想要稍後再設定，請不要選擇任何項目，而直接選取 [儲存並繼續]****。
+   **服務連線監視器**：此功能提供內建的預先設定測試，可從代理程式監視 Microsoft 365 和 Dynamics 365 的網路連線能力。 選取您要監視的 Microsoft 365 和 Dynamics 365 服務，方法是選取旁邊的核取方塊。 若要選擇您要用來監視的代理程式，請選取 [新增代理程式]****。 如果您不想要使用此功能，或想要稍後再設定，請不要選擇任何項目，而直接選取 [儲存並繼續]****。
 
    ![服務連線監視器視圖](media/network-performance-monitor/npm-service-endpoint-monitor.png)
 
@@ -161,7 +161,7 @@ ExpressRoute 監視器的支援區域清單提供於[文件](../../expressroute/
 
 1. 選取或清除您要監視或停止監視的節點。 
 2. 視需要選取 [用於監視]****，或加以清除。 
-3. 選取 [儲存]  。 
+3. 選取 [儲存]。 
 
 
 設定您想要的功能：

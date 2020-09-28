@@ -144,7 +144,7 @@
           href: search-howto-complex-data-types.md
         - name: 模型關聯式資料
           href: index-sql-relational-data.md
-    - name: 擷取任何資料
+    - name: 匯入任何資料
       items:
         - name: 資料匯入概觀
           href: search-what-is-data-import.md
@@ -156,44 +156,18 @@
           href: search-howto-large-index.md
         - name: 處理並行更新
           href: search-howto-concurrency.md
-    - name: 擷取僅限 Azure 的資料
+    - name: 匯入 Azure 資料 (索引子)
       items:
-        - name: 設定索引子
-          href: search-indexer-overview.md
-        - name: 監視索引器
-          href: search-howto-monitor-indexers.md
-        - name: 排程索引器
-          href: search-howto-schedule-indexers.md
-        - name: 對應欄位
-          href: search-indexer-field-mappings.md
-        - name: 資料來源
+        - name: 使用索引子
           items:
-            - name: Azure Blob
-              items:
-                - name: 在 Blob 上搜尋
-                  href: search-blob-storage-integration.md
-                - name: 透過 AI 了解 Blob
-                  href: search-blob-ai-integration.md
-                - name: 設定 Blob 索引子
-                  href: search-howto-indexing-azure-blob-storage.md
-                - name: 針對一對多個 Bolb 編製索引
-                  href: search-howto-index-one-to-many-blobs.md
-                - name: 索引 CSV Blob
-                  href: search-howto-index-csv-blobs.md
-                - name: 索引 JSON Blob
-                  href: search-howto-index-json-blobs.md
-            - name: Azure 資料表
-              href: search-howto-indexing-azure-tables.md
-            - name: Azure Cosmos DB
-              href: search-howto-index-cosmosdb.md
-            - name: Azure Data Lake Storage Gen2
-              href: search-howto-index-azure-data-lake-storage.md
-            - name: SQL Database
-              href: search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md
-            - name: SQL 受控執行個體
-              href: search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md
-            - name: SQL Server VM
-              href: search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md
+            - name: 設定索引子
+              href: search-indexer-overview.md
+            - name: 監視索引器
+              href: search-howto-monitor-indexers.md
+            - name: 排程索引器
+              href: search-howto-schedule-indexers.md
+            - name: 對應欄位
+              href: search-indexer-field-mappings.md
         - name: 使用受控識別進行連線
           items:
             - name: 受控識別概觀
@@ -204,6 +178,32 @@
               href: search-howto-managed-identities-cosmos-db.md
             - name: SQL Database
               href: search-howto-managed-identities-sql.md
+        - name: Azure Blob
+          items:
+            - name: 在 Blob 上搜尋
+              href: search-blob-storage-integration.md
+            - name: 透過 AI 了解 Blob
+              href: search-blob-ai-integration.md
+            - name: 設定 Blob 索引子
+              href: search-howto-indexing-azure-blob-storage.md
+            - name: 針對一對多個 Bolb 編製索引
+              href: search-howto-index-one-to-many-blobs.md
+            - name: 索引 CSV Blob
+              href: search-howto-index-csv-blobs.md
+            - name: 索引 JSON Blob
+              href: search-howto-index-json-blobs.md
+        - name: Azure 資料表
+          href: search-howto-indexing-azure-tables.md
+        - name: Azure Cosmos DB
+          href: search-howto-index-cosmosdb.md
+        - name: Azure Data Lake Storage Gen2
+          href: search-howto-index-azure-data-lake-storage.md
+        - name: Azure SQL Database
+          href: search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md
+        - name: Azure SQL 受管理的執行個體
+          href: search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md
+        - name: Azure SQL Server VM
+          href: search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md
     - name: 使用技能 (AI)
       items:
         - name: 附加認知服務資源

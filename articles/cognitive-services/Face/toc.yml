@@ -13,7 +13,7 @@
       items:
         - name: 偵測影像中的人臉
           items:
-            - name: 'C#'
+            - name: C#
               href: QuickStarts/CSharp.md
             - name: cURL
               href: QuickStarts/curl.md
@@ -35,7 +35,7 @@
   items:
     - name: 使用用戶端 SDK
       items:
-        - name: 'C#'
+        - name: C#
           href: Tutorials/FaceAPIinCSharpTutorial.md
 - name: 概念
   items:
@@ -47,9 +47,7 @@
   items:
     - name: 偵測臉部
       href: Face-API-How-to-Topics/HowtoDetectFacesinImage.md
-    - name: 識別人臉
-      href: Face-API-How-to-Topics/HowtoIdentifyFacesinImage.md
-    - name: 新增人臉
+    - name: 將臉部新增至群組
       href: Face-API-How-to-Topics/how-to-add-faces.md
     - name: 使用 HeadPose 屬性
       href: Face-API-How-to-Topics/how-to-use-headpose.md
@@ -99,7 +97,7 @@
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/face-api'
     - name: UserVoice
       href: 'https://cognitive.uservoice.com/forums/430315-face-api'
-    - name: Stack Overflow
+    - name: 堆疊溢位
       href: 'https://stackoverflow.com/questions/tagged/microsoft-cognitive'
     - name: Azure 藍圖
       href: 'https://azure.microsoft.com/updates/?product=cognitive-services'

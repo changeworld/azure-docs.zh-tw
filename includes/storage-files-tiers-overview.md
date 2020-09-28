@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/28/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: e75cb7d13fb74d32191ab7f076d73ad66976503d
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 7d0286b63703c165dda6cd12bb625fc64272aac1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90606236"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91377260"
 ---
 Azure 檔案儲存體提供了四種不同的儲存體，分別是進階、交易最佳化、經常性存取和非經常性存取，使您可以根據案例的效能和價格需求來量身打造檔案共用：
 
@@ -26,4 +26,5 @@ Azure 檔案儲存體提供了四種不同的儲存體，分別是進階、交�
 
 經常性存取和非經常性存取檔案共用適用於所有的 Azure 公用區域和 Azure Government 區域。 交易最佳化檔案共用適用於所有 Azure 區域，包括 Azure 中國和 Azure 德國區域。
 
-若要部署經常性存取或非經常性存取檔案共用，請參閱[建立經常性存取或非經常性存取檔案共用](../articles/storage/files/storage-how-to-create-file-share.md#create-a-hot-or-cool-file-share)。 
+> [!Important]  
+> 您可以在 GPv2 儲存體帳戶類型中的各層之間移動檔案共用 (交易最佳化、經常性存取和非經常性存取)。 各層之間的共用移動會產生交易：從經常性存取層移至非經常性存取層，會對共用中的每個檔案產生非經常性存取層的寫入交易費用，而從非經常性存取層移至經常性存取層，則會對共用的每個檔案產生非經常性存取層的讀取交易費用。

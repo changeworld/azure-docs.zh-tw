@@ -10,12 +10,12 @@ metadata:
   author: keferna
   ms.author: keferna
   ms.date: 09/02/2020
-  ms.openlocfilehash: 39d0f00bd59663da8ec5529e9a7be185d93e4de0
-  ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+  ms.openlocfilehash: 16c122bd0efafce395be3ff931ef5324c0b757d1
+  ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 09/03/2020
-  ms.locfileid: "89421674"
+  ms.lasthandoff: 09/25/2020
+  ms.locfileid: "91371468"
 landingContent:
 - title: 使用商業市集
   linkLists:
@@ -97,14 +97,14 @@ landingContent:
   linkLists:
   - linkListType: concept
     links:
-    - text: 付款報告
-      url: ./partner-center-portal/payout-summary-overview.md
+    - text: 支付明細表
+      url: /partner-center/payout-statement?context=/azure/marketplace/context/context
     - text: 付款閾值、方法和時間範圍
-      url: ./partner-center-portal/payment-thresholds-methods-timeframes.md
+      url: /partner-center/payment-thresholds-methods-timeframes?context=/azure/marketplace/context/context
     - text: 設定支出帳戶和稅賦形式
-      url: ./partner-center-portal/set-up-your-payout-account-tax-forms.md
+      url: /partner-center/set-up-your-payout-account?context=/azure/marketplace/context/context
     - text: 稅賦詳細資訊
-      url: ./partner-center-portal/tax-details-paid-transactions.md
+      url: /partner-center/tax-details-marketplace?context=/azure/marketplace/context/context
     - text: 商業市集計費
       url: ./partner-center-portal/billing-details.md
 - title: API 參考資料

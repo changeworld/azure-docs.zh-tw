@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: ac0b04db783571b6ef31161adaf18b4220244c6a
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 7d7e7e883d9b92b7a9e700f66a54ed48ba5296b1
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90969816"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91402934"
 ---
 # <a name="preview-features-in-azure-cognitive-search"></a>Azure 認知搜尋中的預覽功能
 
@@ -26,7 +26,7 @@ ms.locfileid: "90969816"
 | [**Azure Machine Learning (AML) 技能**](cognitive-search-aml-skill.md) | AI 擴充| 新的技能類型，可將推斷端點與 Azure Machine Learning 整合。 開始使用[本教學課程](cognitive-search-tutorial-aml-custom-skill.md)。 | 使用 [搜尋 REST API 2020-06-30-preview](https://docs.microsoft.com/rest/api/searchservice/) 或 2019-05-06-preview。 也可在入口網站中的技能集設計中使用，假設認知搜尋和 Azure ML 服務都部署在相同的訂用帳戶中。 |
 | [**featuresMode 參數**](https://docs.microsoft.com/rest/api/searchservice/search-documents#featuresmode) | 相關性 (評分)  | 相關性分數擴充以包含詳細資料：每個欄位的相似性分數、每個欄位詞彙頻率，以及符合之唯一權杖的每個欄位數目。 您可以在 [自訂評分解決方案](https://github.com/Azure-Samples/search-ranking-tutorial)中使用這些資料點。 | 使用 [ (REST) ](https://docs.microsoft.com/rest/api/searchservice/search-documents) （api 版本 = 2020-06-30-Preview-preview 或 2019-05-06-preview）的搜尋檔，來新增此查詢參數。 |
 | [**Debug 會話**](cognitive-search-debug-session.md) | 入口網站、AI 擴充 (技能集)  | 會話內的技能集編輯器，用來調查和解決技能集的問題。 在 debug 會話期間套用的修正可以儲存至服務中的技能集。 | 僅限入口網站，在 [總覽] 頁面上使用中頁面連結來開啟 debug 會話。 |
-| [**原生 blob 虛刪除**](search-howto-indexing-azure-blob-storage.md#incremental-indexing-and-deletion-detection) | 索引子，Azure blob| Azure 認知搜尋中的 Azure Blob 儲存體索引子會辨識處於虛刪除狀態的 blob，並在編制索引期間移除對應的搜尋檔。 | 使用 [建立索引子 (REST) ](/rest/api/searchservice/create-indexer) （api 版本 = 2020-06-30-Preview-preview 或 api 版本 = 2019-05-06-Preview-preview）來新增此設定設定。 |
+| [**原生 blob 虛刪除**](search-howto-index-changed-deleted-blobs.md) | 索引子，Azure blob| Azure 認知搜尋中的 Azure Blob 儲存體索引子會辨識處於虛刪除狀態的 blob，並在編制索引期間移除對應的搜尋檔。 | 使用 [建立索引子 (REST) ](/rest/api/searchservice/create-indexer) （api 版本 = 2020-06-30-Preview-preview 或 api 版本 = 2019-05-06-Preview-preview）來新增此設定設定。 |
 | [**自訂實體查閱技能**](cognitive-search-skill-custom-entity-lookup.md ) | AI 擴充 (技能集)  | 一種認知技能，可從自訂、使用者定義的單字和片語清單中尋找文字。 使用這份清單，其會以任何相符的實體標記所有文件。 此技能也支援某種程度的模糊比對，可加以套用以尋找類似但不完全精確的相符項目。 | 在入口網站中使用技能集編輯器來參考此預覽技能，或使用 api 版本 = 2020-06-30-preview-Preview 或 api 版本 = 2019-05-06-preview-Preview [建立技能集 (REST) ](/rest/api/searchservice/create-skillset) 。 |
 | [**PII 偵測技能**](cognitive-search-skill-pii-detection.md) | AI 擴充 (技能集)  | 在編制索引期間使用的認知技能，可從輸入文字中取出個人識別資訊，並可讓您選擇以各種方式遮罩該文字。 | 在入口網站中使用技能集編輯器來參考此預覽技能，或使用 api 版本 = 2020-06-30-preview-Preview 或 api 版本 = 2019-05-06-preview-Preview [建立技能集 (REST) ](/rest/api/searchservice/create-skillset) 。 |
 | [**累加擴充**](cognitive-search-incremental-indexing-conceptual.md) | 索引子設定| 將快取新增至擴充管線，可讓您在目標修改（例如技能集或另一個物件的更新）不會變更內容時重複使用現有的輸出。 快取只適用于技能集所產生的擴充檔。| 使用 [建立索引子 (REST) ](/rest/api/searchservice/create-indexer) （api 版本 = 2020-06-30-Preview-preview 或 api 版本 = 2019-05-06-Preview-preview）來新增此設定設定。 |
@@ -58,7 +58,7 @@ POST https://[service name].search.windows.net/indexes/hotels-idx/docs/search?ap
 
 Azure 認知搜尋服務可在多個版本中使用。 如需詳細資訊，請參閱 [API 版本](search-api-versions.md)。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 請參閱搜尋 REST 預覽 API 參考檔。 如果您遇到問題，請向我們尋求 [Stack Overflow](https://stackoverflow.com/) 或 [連絡人支援](https://azure.microsoft.com/support/community/?product=search)的協助。
 

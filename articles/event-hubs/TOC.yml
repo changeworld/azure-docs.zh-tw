@@ -10,6 +10,8 @@
       href: event-hubs-capture-overview.md
     - name: 專用的事件中樞
       href: event-hubs-dedicated-overview.md
+    - name: 事件中樞中的 Azure 結構描述登錄 (預覽)
+      href: schema-registry-overview.md
 - name: 快速入門
   expanded: true
   items:
@@ -125,6 +127,8 @@
       maintainContext: true
 - name: 操作指南
   items:
+    - name: 建立結構描述登錄
+      href: create-schema-registry.md
     - name: 移動
       items:
         - name: 將命名空間移至另一個區域
@@ -219,6 +223,8 @@
           href: troubleshoot-authentication-authorization.md
         - name: 事件中樞的 Kafka 疑難排解指南
           href: apache-kafka-troubleshooting-guide.md
+        - name: EventHubsException
+          href: exceptions-dotnet.md
         - name: .NET 例外狀況
           href: event-hubs-messaging-exceptions.md
         - name: 資源管理員例外狀況
@@ -308,7 +314,7 @@
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: 服務更新
       href: 'https://azure.microsoft.com/updates/?product=event-hubs'
-    - name: Stack Overflow
+    - name: 堆疊溢位
       href: 'https://stackoverflow.com/questions/tagged/azure-eventhub'
     - name: 影片
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=event-hubs'

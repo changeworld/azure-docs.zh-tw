@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 255e5533dc19036624042a0b82116c4dc107d762
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 420ab87591e230592ec8f728c6acb155266b5912
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91336219"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403521"
 ---
 # <a name="security-control-v2-governance-and-strategy"></a>安全性控制 V2：治理和策略
 
@@ -28,21 +28,21 @@ ms.locfileid: "91336219"
 
 此策略應該包含已記載的指導方針、原則，以及下列元素的標準： 
 
--   以商務風險為依據的資料分類標準
+- 以商務風險為依據的資料分類標準
 
--   安全性組織風險和資產清查的可見度 
+- 安全性組織風險和資產清查的可見度 
 
--   安全性組織核准 Azure 服務以供使用 
+- 安全性組織核准 Azure 服務以供使用 
 
--   資產在其生命週期內的安全性
+- 資產在其生命週期內的安全性
 
--   根據組織資料分類所需的存取控制策略
+- 根據組織資料分類所需的存取控制策略
 
--   使用 Azure 原生和協力廠商資料保護功能
+- 使用 Azure 原生和協力廠商資料保護功能
 
--   傳輸中和待用使用案例的資料加密需求
+- 傳輸中和待用使用案例的資料加密需求
 
--   適當的密碼編譯標準
+- 適當的密碼編譯標準
 
 如需詳細資訊，請參閱下列參考資料：
 - [Azure 安全性架構建議-儲存體、資料和加密](https://docs.microsoft.com/azure/architecture/framework/security/storage-data-encryption?toc=/security/compass/toc.json&amp;bc=/security/compass/breadcrumb/toc.json)
@@ -51,9 +51,9 @@ ms.locfileid: "91336219"
 
 - [雲端採用架構-Azure 資料安全性和加密最佳作法](https://docs.microsoft.com/azure/security/fundamentals/data-encryption-best-practices?toc=/azure/cloud-adoption-framework/toc.json&amp;bc=/azure/cloud-adoption-framework/_bread/toc.json)
 
-- [Azure 安全性基準測試-資產管理](/azure/security/benchmarks/security-benchmark-v2-asset-management)
+- [Azure 安全性基準測試-資產管理](security-controls-v2-asset-management.md)
 
-- [Azure 安全性基準測試-資料保護](/azure/security/benchmarks/security-benchmark-v2-data-protection)
+- [Azure 安全性基準測試-資料保護](security-controls-v2-data-protection.md)
 
 **責任**：客戶
 
@@ -93,7 +93,7 @@ ms.locfileid: "91336219"
 
 持續測量並減輕個別資產及其託管環境的風險。 設定高價值資產的優先順序以及高度公開的攻擊面，例如已發佈的應用程式、網路輸入和輸出點、使用者和系統管理員端點等等。
 
-- [Azure 安全性基準測試-狀態與弱點管理](/azure/security/benchmarks/security-benchmark-v2-posture-vulnerability-management)
+- [Azure 安全性基準測試-狀態與弱點管理](security-controls-v2-posture-vulnerability-management.md)
 
 **責任**：客戶
 
@@ -131,23 +131,23 @@ ms.locfileid: "91336219"
 
 此策略應該包含已記載的指導方針、原則，以及下列元素的標準： 
 
--   集中式網路管理和安全性責任
+- 集中式網路管理和安全性責任
 
--   虛擬網路分割模型與企業分割策略一致
+- 虛擬網路分割模型與企業分割策略一致
 
--   不同威脅和攻擊案例中的補救策略
+- 不同威脅和攻擊案例中的補救策略
 
--   網際網路邊緣與輸入和輸出策略
+- 網際網路邊緣與輸入和輸出策略
 
--   混合式雲端和內部部署互連能力策略
+- 混合式雲端和內部部署互連能力策略
 
--   最新的網路安全性構件 (例如網狀圖、參考網路架構) 
+- 最新的網路安全性構件 (例如網狀圖、參考網路架構) 
 
 如需詳細資訊，請參閱下列參考資料：
 
 - [Azure 安全性最佳做法 11-架構。單一整合的安全性策略](https://aka.ms/AzSec11)
 
-- [Azure 安全性基準測試-網路安全性](/azure/security/benchmarks/security-benchmark-v2-network-security)
+- [Azure 安全性基準測試-網路安全性](security-controls-v2-network-security.md)
 
 - [Azure 網路安全性概觀](../fundamentals/network-overview.md)
 
@@ -169,25 +169,25 @@ ms.locfileid: "91336219"
 
 此策略應該包含已記載的指導方針、原則，以及下列元素的標準： 
 
--   集中式身分識別和驗證系統，以及其與其他內部和外部身分識別系統的互連能力
+- 集中式身分識別和驗證系統，以及其與其他內部和外部身分識別系統的互連能力
 
--   不同使用案例和條件中的強式驗證方法
+- 不同使用案例和條件中的強式驗證方法
 
--   保護高許可權的使用者
+- 保護高許可權的使用者
 
--   異常使用者活動監視和處理  
+- 異常使用者活動監視和處理  
 
--   使用者身分識別和存取權檢查和協調流程
+- 使用者身分識別和存取權檢查和協調流程
 
 如需詳細資訊，請參閱下列參考資料：
 
-- [Azure 安全性基準測試-身分識別管理](/azure/security/benchmarks/security-benchmark-v2-identity-management)
+- [Azure 安全性基準測試-身分識別管理](security-controls-v2-identity-management.md)
 
-- [Azure 安全性基準測試-特殊許可權存取](/azure/security/benchmarks/security-benchmark-v2-privileged-access)
+- [Azure 安全性基準測試-特殊許可權存取](security-controls-v2-privileged-access.md)
 
 - [Azure 安全性最佳做法 11-架構。單一整合的安全性策略](https://aka.ms/AzSec11)
 
-- [Azure 身分識別管理安全性概觀](../fundamentals/identity-management-overview.md) 
+- [Azure 身分識別管理安全性概觀](../fundamentals/identity-management-overview.md)
 
 **責任**：客戶
 
@@ -205,26 +205,26 @@ ms.locfileid: "91336219"
 
 此策略應該包含已記載的指導方針、原則，以及下列元素的標準： 
 
--   安全性作業 (SecOps) 組織的角色和責任 
+- 安全性作業 (SecOps) 組織的角色和責任 
 
--   妥善定義的事件回應程式，與 NIST 或其他產業架構一致 
+- 妥善定義的事件回應程式，與 NIST 或其他產業架構一致 
 
--   記錄檔捕捉和保留，以支援威脅偵測、事件回應和合規性需求
+- 記錄檔捕捉和保留，以支援威脅偵測、事件回應和合規性需求
 
--   使用 SIEM、原生 Azure 功能和其他來源，集中查看威脅的相關資訊以及相關資訊 
+- 使用 SIEM、原生 Azure 功能和其他來源，集中查看威脅的相關資訊以及相關資訊 
 
--   與您的客戶、供應商和感興趣的公開方相關的通訊和通知計畫
+- 與您的客戶、供應商和感興趣的公開方相關的通訊和通知計畫
 
--   使用 Azure 原生和協力廠商平臺進行事件處理，例如記錄和威脅偵測、取證和攻擊補救和根除
+- 使用 Azure 原生和協力廠商平臺進行事件處理，例如記錄和威脅偵測、取證和攻擊補救和根除
 
--   處理事件和事件後活動的流程，例如經驗教訓和辨識項保留
+- 處理事件和事件後活動的流程，例如經驗教訓和辨識項保留
 
 如需詳細資訊，請參閱下列參考資料：
-- [Azure 安全性基準測試-記錄和威脅偵測](/azure/security/benchmarks/security-benchmark-v2-logging-threat-detection)
+- [Azure 安全性基準測試-記錄和威脅偵測](security-controls-v2-logging-threat-detection.md)
 
-- [Azure 安全性基準測試-事件回應](/azure/security/benchmarks/security-benchmark-v2-incident-response)
+- [Azure 安全性基準測試-事件回應](security-controls-v2-incident-response.md)
 
-- [Azure 安全性最佳作法 4-處理。更新雲端的事件回應程式](https://aka.ms/AzSec11)
+- [Azure 安全性最佳作法 4-處理。更新雲端的事件回應程式](https://aka.ms/AzSec4)
 
 - [Azure 採用架構、記錄和報告決策指南](/azure/cloud-adoption-framework/decision-guides/logging-and-reporting/)
 
@@ -246,14 +246,14 @@ ms.locfileid: "91336219"
 
 此策略應該包含已記載的指導方針、原則，以及下列元素的標準： 
 
--   復原時間目標 (RTO) 和復原點目標 (RPO) 定義符合您的企業復原目標
+- 復原時間目標 (RTO) 和復原點目標 (RPO) 定義符合您的企業復原目標
 
--   應用程式和基礎結構設定中的冗余設計
+- 應用程式和基礎結構設定中的冗余設計
 
--   使用存取控制和資料加密來保護備份
+- 使用存取控制和資料加密來保護備份
 
 如需詳細資訊，請參閱下列參考資料：
-- [Azure 安全性基準測試-備份和復原](/azure/security/benchmarks/security-benchmark-v2-backup-recovery)
+- [Azure 安全性基準測試-備份和復原](security-controls-v2-backup-recovery.md)
 
 - [Azure 架構完善的架構-Azure 應用程式的備份和災難復原](/azure/architecture/framework/resiliency/backup-and-recovery)
 

@@ -13,6 +13,8 @@
       href: create-member.md
     - name: 使用 CLI 建立成員
       href: create-member-cli.md
+    - name: 使用 Azure PowerShell 建立成員
+      href: create-member-powershell.md
     - name: 使用 ARM 範本建立成員
       displayName: Resource Manager
       href: create-member-template.md
@@ -81,7 +83,7 @@
     - name: 社群支援
       href: 'https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain'
     - name: 堆疊溢位支援
-      href: 'https://stackoverflow.com/questions/tagged/AzureBlockchainService'
+      href: 'https://stackoverflow.com/questions/tagged/azure-blockchain-service'
     - name: 產品意見反應
       href: 'https://feedback.azure.com/forums/921130-azure-blockchain-service'
     - name: 定價

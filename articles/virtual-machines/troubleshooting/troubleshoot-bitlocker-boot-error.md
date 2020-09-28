@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 08/23/2019
 ms.author: genli
 ms.custom: has-adal-ref
-ms.openlocfilehash: 23523a3618ad31e34a81152e48d4ee0f606e5aac
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ac1105f1fce2ac04abfa8a809161580104952917
+ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87088524"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91404896"
 ---
 # <a name="bitlocker-boot-errors-on-an-azure-vm"></a>Azure VM 上的 BitLocker 開機錯誤
 
@@ -43,12 +43,12 @@ ms.locfileid: "87088524"
 
 ## <a name="solution"></a>解決方案
 
-若要解決此問題，請先將 VM 停止並解除配置，再加以重新啟動。 此作業會強制讓 VM 從 Azure Key Vault 擷取 BEK 檔案，然後放到加密的磁碟中。 
+若要解決此問題，請停止並解除配置 VM，然後啟動 VM。 此作業會強制讓 VM 從 Azure Key Vault 擷取 BEK 檔案，然後放到加密的磁碟中。 
 
 如果此方法未解決問題，請遵循下列步驟來手動還原 BEK 檔案：
 
 1. 擷取受影響虛擬機器系統磁碟的快照集作為備份。 如需詳細資訊，請參閱[擷取磁碟快照集](../windows/snapshot-copy-managed-disk.md)。
-2. [將系統磁碟連結至復原 VM](troubleshoot-recovery-disks-portal-windows.md)。 若要在步驟7中執行[manage-bde 命令，](/windows-server/administration/windows-commands/manage-bde)必須在復原 VM 中啟用**BitLocker 磁碟機加密**功能。
+2. [將系統磁碟連結至復原 VM](troubleshoot-recovery-disks-portal-windows.md)。 若要在步驟7中執行 [manage-bde](/windows-server/administration/windows-commands/manage-bde) 命令，必須在復原 VM 中啟用 **BitLocker 磁碟機加密** 功能。
 
     當您連結至受控磁碟時，可能會收到「包含加密設定，因此無法作為資料磁碟」的錯誤訊息。 在此情況下，請執行下列程式碼以重新試著連結磁碟：
 
@@ -120,14 +120,14 @@ ms.locfileid: "87088524"
     [System.IO.File]::WriteAllBytes($path,$bekFileBytes)
     ```
 
-7.  若要使用 BEK 檔案來解除鎖定已連接的磁片，請執行下列命令。
+7.  若要使用 BEK 檔案來解除鎖定連接的磁片，請執行下列命令。
 
     ```powershell
     manage-bde -unlock F: -RecoveryKey "C:\BEK\EF7B2F5A-50C6-4637-9F13-7F599C12F85C.BEK
     ```
     在此範例中，連結的 OS 磁碟是磁碟機 F。請確定您使用的是正確的磁碟機代號。 
 
-8. 使用 BEK 金鑰成功解除鎖定磁片之後，請從復原 VM 卸離磁片，然後使用這個新的 OS 磁片重新建立 VM。
+8. 使用 BEK 機碼成功解除鎖定磁片之後，請從復原 VM 卸離磁片，然後使用這個新的 OS 磁片來重新建立 VM。
 
     > [!NOTE]
     > 使用磁片加密的 Vm 不支援交換 OS 磁片。
@@ -237,13 +237,13 @@ ms.locfileid: "87088524"
     $bekFileBytes = [System.Convert]::FromBase64String($base64Bek);
     [System.IO.File]::WriteAllBytes($bekFilePath,$bekFileBytes)
     ```
-3. 設定參數。 此指令碼會處理 KEK 祕密以建立 BEK 金鑰，再將它儲存到復原 VM 上的本機資料夾。 如果您在執行腳本時收到錯誤，請參閱[腳本疑難排解](#script-troubleshooting)一節。
+3. 設定參數。 此指令碼會處理 KEK 祕密以建立 BEK 金鑰，再將它儲存到復原 VM 上的本機資料夾。 如果您在執行腳本時收到錯誤，請參閱 [腳本疑難排解](#script-troubleshooting) 一節。
 
 4. 指令碼開始時，您會看到下列輸出：
 
     GAC 版本位置                                                                              
     ---    -------        --------                                                                              
-    False v 4.0.30319 C:\Program Files\WindowsPowerShell\Modules\Az.Accounts \. .。 False v 4.0.30319 C:\Program Files\WindowsPowerShell\Modules\Az.Accounts \. .。
+    False v 4.0.30319 C:\Program Files\WindowsPowerShell\Modules\Az.Accounts \. .。。 False v 4.0.30319 C:\Program Files\WindowsPowerShell\Modules\Az.Accounts \. .。。
 
     指令碼完成時，您會看到下列輸出︰
 
@@ -260,7 +260,7 @@ ms.locfileid: "87088524"
     ```
     在此範例中，連結的 OS 磁碟是磁碟機 F。請確定您使用的是正確的磁碟機代號。 
 
-6. 使用 BEK 金鑰成功解除鎖定磁片之後，請從復原 VM 卸離磁片，然後使用這個新的 OS 磁片重新建立 VM。 
+6. 使用 BEK 機碼成功解除鎖定磁片之後，請從復原 VM 卸離磁片，然後使用這個新的 OS 磁片來重新建立 VM。 
 
     > [!NOTE]
     > 使用磁片加密的 Vm 不支援交換 OS 磁片。
@@ -283,20 +283,20 @@ ms.locfileid: "87088524"
 
 **錯誤：無法載入檔案或元件**
 
-之所以發生此錯誤，是因為 ADAL 元件的路徑錯誤。 如果僅針對目前的使用者安裝 AZ 模組，ADAL 元件將位於 `C:\Users\<username>\Documents\WindowsPowerShell\Modules\Az.Accounts\<version>` 。
+發生此錯誤的原因是 ADAL 元件的路徑錯誤。 如果僅針對目前的使用者安裝 AZ 模組，ADAL 元件將會位於 `C:\Users\<username>\Documents\WindowsPowerShell\Modules\Az.Accounts\<version>` 。
 
 您也可以搜尋 `Az.Accounts` 資料夾來尋找正確的路徑。
 
-**錯誤： AzKeyVaultSecret 或 Get-AzKeyVaultSecret 無法辨識為 Cmdlet 的名稱**
+**錯誤：無法將 AzKeyVaultSecret 或 AzKeyVaultSecret 辨識為 Cmdlet 的名稱**
 
-如果您使用舊的 AZ PowerShell 模組，您必須將這兩個命令變更為 `Get-AzureKeyVaultSecret` 和 `Get-AzureKeyVaultSecret` 。
+如果您使用舊的 AZ PowerShell 模組，您必須將兩個命令變更為 `Get-AzureKeyVaultSecret` 和 `Get-AzureKeyVaultSecret` 。
 
 **參數範例**
 
 | 參數  | 值範例  |註解   |
 |---|---|---|
-|  $keyVaultName | myKeyVault2112852926  | 金鑰保存庫的名稱，用來儲存金鑰 |
+|  $keyVaultName | myKeyVault2112852926  | 儲存金鑰的金鑰保存庫名稱 |
 |$kekName   |mykey   | 用來加密 VM 的金鑰名稱|
-|$secretName   |7EB4F531-5FBA-4970-8E2D-C11FD6B0C69D  | VM 金鑰的密碼名稱|
-|$bekFilePath   |c:\bek\7EB4F531-5FBA-4970-8E2D-C11FD6B0C69D.BEK |用來寫入 BEK 檔的路徑。|
-|$adTenant  |contoso.onmicrosoft.com   | 裝載金鑰保存庫之 Azure Active Directory 的 FQDN 或 GUID |
+|$secretName   |7EB4F531-5FBA-4970-8E2D-C11FD6B0C69D  | VM 金鑰的秘密名稱|
+|$bekFilePath   |c:\bek\7EB4F531-5FBA-4970-8E2D-C11FD6B0C69D.BEK |寫入 BEK 檔案的路徑。|
+|$adTenant  |contoso.onmicrosoft.com   | 裝載金鑰保存庫 Azure Active Directory 的 FQDN 或 GUID |

@@ -11,13 +11,13 @@ ms.author: sawinark
 manager: mflasko
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
-ms.date: 09/15/2020
-ms.openlocfilehash: ff56ef55066fd0f56b5b8dc7507bfb63b8b8baa0
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.date: 09/28/2020
+ms.openlocfilehash: 4ef569864b27eff7f57aa2b0a922034fa28f587c
+ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90090579"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91405236"
 ---
 # <a name="customize-the-setup-for-an-azure-ssis-integration-runtime"></a>自訂 Azure-SSIS Integration Runtime 的安裝
 
@@ -154,6 +154,10 @@ ms.locfileid: "90090579"
    * 如果您選取 **Theobald 軟體的 XTRACT 是** 元件，您可以安裝 [Xtract 為](https://theobald-software.com/en/xtract-is/) SAP 系統的連接器套件， (ERP、s/4HANA、BW) 從 Azure-SSIS IR 的 Theobald 軟體。 若要這樣做，請將您事先購買的產品授權檔案拖曳至 [ **授權檔案** ] 輸入方塊中，然後將其拖放 &。 目前的整合版本是 **6.1.1.3**。
 
    * 如果您選取 **AecorSoft 的整合服務** 元件，您可以在 Azure-SSIS IR 上，從 AecorSoft 安裝適用于 SAP 和 Salesforce 系統的連接器 [整合服務](https://www.aecorsoft.com/en/products/integrationservice) 套件。 若要這樣做，請在 [ **授權金鑰** ] 文字方塊中，輸入您事先購買的產品授權金鑰。 目前的整合版本是 **3.0.00**。
+
+   * 如果您選取 **cdata 的 Ssis 標準封裝** 元件，您可以在 Azure-SSIS IR 上安裝 cdata 的最熱門元件的 [SSIS 標準封裝](https://www.cdata.com/kb/entries/ssis-adf-packages.rst#standard) 套件，例如 Microsoft SharePoint 連接器。 若要這樣做，請在 [ **授權金鑰** ] 文字方塊中，輸入您事先購買的產品授權金鑰。 目前的整合版本為 **19.7354**。
+
+   * 如果您選取 **cdata 的 Ssis 擴充套件** 元件，您可以在 Azure-SSIS IR 上安裝 cdata 的所有元件的 [ssis 擴充](https://www.cdata.com/kb/entries/ssis-adf-packages.rst#extended) 套件套件，例如 Microsoft Dynamics 365 Business Central 連接器和其 **ssis 標準套件**中的其他元件。 若要這樣做，請在 [ **授權金鑰** ] 文字方塊中，輸入您事先購買的產品授權金鑰。 目前的整合版本為 **19.7354**。 因為它的大小很大，所以若要避免安裝超時，請確定您的 Azure-SSIS IR 的每個節點至少有4個 CPU 核心。
 
 您新增的快速自訂設定將會出現在 [ **Advanced settings** ] 頁面上。 若要將其移除，請選取其核取方塊，然後選取 [刪除]。
 

@@ -2,13 +2,13 @@
 title: 使用 Azure Advisor 降低服務成本
 description: 使用 Azure Advisor 程式將 Azure 部署的成本最佳化。
 ms.topic: article
-ms.date: 01/29/2019
-ms.openlocfilehash: 89bc72bcf3a19867341675f89cbc0a734d7996d5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 09/27/2020
+ms.openlocfilehash: 7576ccb478a4f221ae7d7f68b14787f6f8bf7e88
+ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91325839"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91405219"
 ---
 # <a name="reduce-service-costs-by-using-azure-advisor"></a>使用 Azure Advisor 降低服務成本
 
@@ -111,6 +111,7 @@ Advisor 會識別減少資料表快取原則的資源，以釋出具有低 CPU �
 
 若要深入了解 Advisor 建議，請參閱：
 * [Advisor 簡介](advisor-overview.md)
+* [Advisor 分數](azure-advisor-score.md)
 * [開始使用 Advisor](advisor-get-started.md)
 * [Advisor 效能建議](advisor-performance-recommendations.md)
 * [Advisor 高可用性建議](advisor-high-availability-recommendations.md)
