@@ -354,6 +354,9 @@
           href: ../../bastion/bastion-overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: 狀態和生命週期
       href: ../states-lifecycle.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+    - name: 建立或更新作業的 PUT 呼叫
+      href: ../put-calls-create-or-update.md
+      maintainContext: true
     - name: 監視
       href: ../../azure-monitor/insights/monitor-vm-azure.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: 開機診斷
@@ -373,7 +376,7 @@
             - name: PowerShell
               href: dedicated-hosts-powershell.md
             - name: 入口網站
-              href: dedicated-hosts-portal.md
+              href: ../dedicated-hosts-portal.md
         - name: 部署 Spot VM
           items:
             - name: 入口網站
@@ -499,7 +502,7 @@
                 - name: 從映像版本建立 VM
                   href: 'https://azure.microsoft.com/resources/templates/101-vm-from-sig/'
             - name: 針對共用映像進行疑難排解
-              href: troubleshooting-shared-images.md
+              href: ../troubleshooting-shared-images.md
             - name: 使用客戶管理的金鑰
               displayName: 'SSE, CMK, encrypt'
               href: ../image-version-encryption.md
@@ -510,7 +513,7 @@
             - name: 使用 Image Builder
               items:
                 - name: CLI
-                  href: ../linux/image-builder.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                  href: image-builder.md
                 - name: PowerShell
                   href: image-builder-powershell.md
             - name: 使用 VNET
@@ -525,8 +528,8 @@
                   href: ../linux/image-builder-permissions-powershell.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: DevOps 工作
               href: ../linux/image-builder-devops-task.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-            - name: ARM 範本參考
-              displayName: Azure Resource Manager
+            - name: Image Builder 範本參考
+              displayName: json
               href: ../linux/image-builder-json.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: 建置供映像資源庫使用
               href: image-builder-gallery.md
@@ -535,7 +538,7 @@
             - name: 儲存指令碼
               href: ../linux/image-builder-user-assigned-identity.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: 疑難排解
-              href: 'https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md'
+              href: ../linux/image-builder-troubleshoot.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: 尋找及使用映像
           href: cli-ps-findimage.md
         - name: 購買方案資訊
@@ -818,8 +821,9 @@
         - name: 虛擬機器擴展集
           href: ../../virtual-machine-scale-sets/overview.md?bc=/azure/virtual-machines/windows/breadcrumb/toc.json&toc=/azure/virtual-machines/windows/toc.json
         - name: 高可用性
-          href: manage-availability.md
+          href: ../manage-availability.md
         - name: 建立鄰近放置群組
+          displayName: ppg aligned colocation co-location
           items:
             - name: 入口網站
               href: proximity-placement-groups-portal.md
@@ -1090,7 +1094,7 @@
       href: 'https://azure.microsoft.com/pricing/details/#Windows'
     - name: 區域可用性
       href: 'https://azure.microsoft.com/regions/services/'
-    - name: Stack Overflow
+    - name: 堆疊溢位
       href: 'https://stackoverflow.com/questions/tagged/azure-virtual-machine'
     - name: 影片
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines'

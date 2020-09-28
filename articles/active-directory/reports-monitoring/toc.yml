@@ -31,6 +31,8 @@
       href: plan-monitoring-and-reporting.md
     - name: 稽核記錄
       href: concept-audit-logs.md
+    - name: 新增登入記錄 - 預覽
+      href: concept-all-sign-ins.md
     - name: 登入記錄
       href: concept-sign-ins.md
     - name: 使用量和深入解析報告

@@ -115,6 +115,8 @@
           href: windows-stop-error-bad-system-config-info.md
         - name: Windows 停止錯誤 - 狀態無記憶體
           href: troubleshoot-windows-stop-error.md
+        - name: Windows 停止錯誤 - 系統流程已終止
+          href: windows-stop-error-system-process-terminated.md
 - name: 無法連接到我的 VM
   items:
     - name: RDP

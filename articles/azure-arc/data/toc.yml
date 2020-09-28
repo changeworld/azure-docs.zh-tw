@@ -16,6 +16,8 @@
       href: connectivity.md
     - name: 儲存體組態
       href: storage-configuration.md
+    - name: 調整大小指引
+      href: sizing-guidance.md
 - name: 操作指南
   items:
     - name: 安裝工具
@@ -47,7 +49,7 @@
         - name: 建立資料控制器 (azdata)
           href: create-data-controller-using-azdata.md
         - name: 使用 Kubernetes 建立資料控制器
-          href: create-data-controller-using-k8s-native-tools.md
+          href: create-data-controller-using-kubernetes-native-tools.md
     - name: 已啟用 Azure Arc 的資料服務常見體驗
       items:
         - name: 使用儀表板來監視 (Azure Data Studio)
@@ -90,6 +92,8 @@
           href: create-postgresql-hyperscale-server-group.md
         - name: 建立 Postgres 超大規模資料庫伺服器群組 (Azure Data Studio)
           href: create-postgresql-hyperscale-server-group-azure-data-studio.md
+        - name: 建立 Postgres 超大規模資料庫伺服器群組 - Kubernetes 原生工具
+          href: create-postgresql-hyperscale-server-group-kubernetes-native-tools.md
         - name: 連線
           href: get-connection-endpoints-and-connection-strings-postgres-hyperscale.md
     - name: 概念
@@ -148,6 +152,8 @@
           href: create-sql-managed-instance.md
         - name: 建立 SQL 受控執行個體 (Azure Data Studio)
           href: create-sql-managed-instance-azure-data-studio.md
+        - name: 使用 Kubernetes 工具建立
+          href: create-sql-managed-instance-using-kubernetes-native-tools.md
         - name: 連線
           href: connect-managed-instance.md
     - name: 使用方法

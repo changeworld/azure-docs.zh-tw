@@ -10,13 +10,13 @@ metadata:
   ms.topic: landing-page
   author: PatrickFarley
   ms.author: pafarley
-  ms.date: 10/01/2019
-  ms.openlocfilehash: 45515fc865d989394c465a25b5474153f8370bd0
-  ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+  ms.date: 09/22/2020
+  ms.openlocfilehash: 3a11be023df31fc4f6babe44d869ae89862ae501
+  ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 09/15/2020
-  ms.locfileid: "90530211"
+  ms.lasthandoff: 09/25/2020
+  ms.locfileid: "91277235"
 landingContent:
 - title: 關於電腦視覺
   linkLists:
@@ -86,11 +86,11 @@ landingContent:
       url: quickstarts-sdk/client-library.md?pivots=programming-language-javascript
     - text: 使用 Go SDK
       url: quickstarts-sdk/client-library.md?pivots=programming-language-go
-- title: 使用容器
+- title: 使用讀取容器
   linkLists:
   - linkListType: get-started
     links:
-    - text: 安裝及執行容器
+    - text: 安裝並執行容器
       url: computer-vision-how-to-install-containers.md
   - linkListType: how-to-guide
     links:
@@ -102,6 +102,26 @@ landingContent:
       url: deploy-computer-vision-on-container-instances.md
     - text: 使用 Kubernetes 搭配 Helm
       url: deploy-computer-vision-on-premises.md
+- title: 使用空間分析容器
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: 安裝並執行容器
+      url: spatial-analysis-container.md
+    - text: 設定作業
+      url: spatial-analysis-operations.md
+  - linkListType: deploy
+    links:
+    - text: 部署人數計算應用程式
+      url: spatial-analysis-web-app.md
+  - linkListType: concept
+    links:
+    - text: 區域和行的位置
+      url: spatial-analysis-zone-line-placement.md
+    - text: 相機位置
+      url: spatial-analysis-camera-placement.md
+    - text: 記錄和疑難排解
+      url: spatial-analysis-logging.md
 - title: 偵測影像中的人臉
   linkLists:
   - linkListType: concept
@@ -150,5 +170,5 @@ landingContent:
     links:
     - text: UserVoice
       url: https://cognitive.uservoice.com/forums/430309-computer-vision-api
-    - text: Stack Overflow
+    - text: 堆疊溢位
       url: https://stackoverflow.com/questions/tagged/microsoft-cognitive

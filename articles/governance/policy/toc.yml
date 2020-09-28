@@ -17,6 +17,9 @@
     - name: 指派原則 - Azure PowerShell
       displayName: 'assign, compliance'
       href: ./assign-policy-powershell.md
+    - name: 指派原則 - JavaScript
+      displayName: 'assign, compliance'
+      href: ./assign-policy-javascript.md
     - name: 指派原則 - Python
       displayName: 'assign, compliance'
       href: ./assign-policy-python.md
@@ -112,10 +115,10 @@
       href: ./concepts/policy-as-code.md
     - name: Kubernetes 整合
       items:
-        - name: 適用於 Kubernetes 的 Azure 原則 (預覽)
+        - name: 適用於 Kubernetes 的 Azure 原則
           displayName: 'aks, engine, k8s, rego, opa, open policy agent, gatekeeper, v3, crd, constraints, arc'
           href: ./concepts/policy-for-kubernetes.md
-        - name: 使用 Azure 原則保護 Pod (預覽)
+        - name: 使用 Azure 原則保護 Pod
           displayName: 'aks, psp, rego, opa'
           href: ../../aks/use-pod-security-on-azure-policy.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json
     - name: 使用來賓設定稽核 VM

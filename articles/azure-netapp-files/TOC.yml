@@ -4,7 +4,7 @@
   items:
     - name: 什麼是 Azure NetApp Files
       href: azure-netapp-files-introduction.md
-    - name: 了解儲存體階層
+    - name: Azure NetApp Files 的儲存體階層
       href: azure-netapp-files-understand-storage-hierarchy.md
 - name: 快速入門
   expanded: true
@@ -61,6 +61,8 @@
       href: azure-netapp-files-create-netapp-account.md
     - name: 設定容量集區
       href: azure-netapp-files-set-up-capacity-pool.md
+    - name: 管理手動 QoS 容量集區
+      href: manage-manual-qos-capacity-pool.md
     - name: 將子網路委派至 Azure NetApp Files
       href: azure-netapp-files-delegate-subnet.md
     - name: 建立及管理 NFS 磁碟區
@@ -109,8 +111,12 @@
           href: azure-netapp-files-troubleshoot-resource-provider-errors.md
     - name: 疑難排解
       items:
+        - name: 針對容量集區進行疑難排解
+          href: troubleshoot-capacity-pools.md
         - name: 針對跨區域複寫進行疑難排解
           href: troubleshoot-cross-region-replication.md
+        - name: 針對快照集原則進行疑難排解
+          href: troubleshoot-snapshot-policies.md
 - name: 參考
   items:
     - name: REST
