@@ -5,18 +5,18 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 06/18/2020
+ms.date: 09/28/2020
 ms.author: victorh
-ms.openlocfilehash: eb7cf1899b24ed225941f0a02040206504e6486b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 16e128fd61c8b0aeae017e5298ae1d8aed6e97e9
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85095543"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91408502"
 ---
 # <a name="azure-firewall-features"></a>Azure 防火牆功能
 
-[Azure 防火牆](overview.md)是受控的雲端式網路安全性服務，可保護您的 Azure 虛擬網路資源。
+[Azure 防火牆](overview.md) 是受控的雲端式網路安全性服務，可保護您的 Azure 虛擬網路資源。
 
 ![防火牆概觀](media/overview/firewall-threat.png)
 
@@ -24,7 +24,7 @@ Azure 防火牆包含下列功能：
 
 - [內建高可用性](#built-in-high-availability)
 - [可用性區域](#availability-zones)
-- [不受限制的雲端延展性](#unrestricted-cloud-scalability)
+- [不受限制的雲端擴充性](#unrestricted-cloud-scalability)
 - [應用程式 FQDN 篩選規則](#application-fqdn-filtering-rules)
 - [網路流量篩選規則](#network-traffic-filtering-rules)
 - [FQDN 標記](#fqdn-tags)
@@ -62,7 +62,7 @@ Azure 防火牆可以隨著您的需求擴大，以容納多變的網路流量�
 
 ## <a name="application-fqdn-filtering-rules"></a>應用程式 FQDN 篩選規則
 
-您可以將輸出 HTTP/S 流量或 Azure SQL 流量 (預覽) 限制為包含萬用字元的特殊完整網域名稱 (FQDN) 清單。 這項功能不需要 TLS 終止。
+您可以將輸出 HTTP/S 流量或 Azure SQL 流量限制為指定的完整功能變數名稱清單 (FQDN) 包含萬用字元。 這項功能不需要 TLS 終止。
 
 ## <a name="network-traffic-filtering-rules"></a>網路流量篩選規則
 

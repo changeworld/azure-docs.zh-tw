@@ -10,12 +10,12 @@ ms.custom: how-to
 ms.author: mithigpe
 author: minthigpen
 ms.date: 07/09/2020
-ms.openlocfilehash: 7cb40df6a4619e11694e65020bfcb560cf695795
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 35bf66549cedba22ec14999c4fea62a2c449416e
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90897446"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91408010"
 ---
 # <a name="interpretability-model-explanations-in-automated-machine-learning-preview"></a>可解譯性：自動化機器學習中的模型說明 (預覽) 
 
@@ -31,9 +31,9 @@ ms.locfileid: "90897446"
 - 啟用視覺效果，以協助您查看資料中的模式和說明。
 - 在推斷或評分期間執行可解譯性。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-- 可解譯性功能。 執行 `pip install azureml-interpret azureml-contrib-interpret` 以取得必要的套件。
+- 可解譯性功能。 執行 `pip install azureml-interpret` 以取得必要的套件。
 - 建立自動化 ML 實驗的知識。 如需有關如何使用 Azure Machine Learning SDK 的詳細資訊，請完成此 [回歸模型教學](tutorial-auto-train-models.md) 課程，或瞭解如何 [設定自動化 ML 實驗](how-to-configure-auto-train.md)。
 
 ## <a name="interpretability-during-training-for-the-best-model"></a>在訓練期間可解譯性最佳模型
@@ -43,7 +43,7 @@ ms.locfileid: "90897446"
 > [!Warning]
 > 可解譯性，最佳模型說明無法用於建議下列演算法做為最佳模型的自動 ML 預測實驗： 
 > * ForecastTCN
-> * 平均 
+> * Average 
 > * 貝氏
 > * 季節性平均 
 > * 季節性貝氏
@@ -53,7 +53,7 @@ ms.locfileid: "90897446"
 您可以使用 `ExplanationClient` 從的成品存放區下載設計的功能說明 `best_run` 。 
 
 ```python
-from azureml.explain.model._internal.explanation_client import ExplanationClient
+from azureml.interpret import ExplanationClient
 
 client = ExplanationClient.from_run(best_run)
 engineered_explanations = client.download_model_explanation(raw=False)
@@ -99,7 +99,7 @@ automl_explainer_setup_obj = automl_setup_model_explanations(fitted_model, X=X_t
 MimicWrapper 也會採用將 `automl_run` 上傳設計說明的物件。
 
 ```python
-from azureml.explain.model.mimic_wrapper import MimicWrapper
+from azureml.interpret import MimicWrapper
 
 # Initialize the Mimic Explainer
 explainer = MimicWrapper(ws, automl_explainer_setup_obj.automl_estimator,
@@ -221,6 +221,6 @@ if service.state == 'Healthy':
 
 [![Machine Learning 可解譯性架構](./media/how-to-machine-learning-interpretability-automl/automl-explainability.png)](./media/how-to-machine-learning-interpretability-automl/automl-explainability.png#lightbox)
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 如需如何在自動化機器學習以外的 Azure Machine Learning SDK 區域中啟用模型說明和功能重要性的詳細資訊，請參閱 [可解譯性上的概念文章](how-to-machine-learning-interpretability.md)。

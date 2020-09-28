@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/27/2020
 ms.author: vinigam
 ms.custom: mvc
-ms.openlocfilehash: f331c62060b2d8a39a87bab95b00225f363b4a56
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 31733abc945fe7c751f786649fb05b753a7c243d
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91400242"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91408802"
 ---
 # <a name="network-connectivity-monitoring-with-connection-monitor-preview"></a>使用連線監視器 (預覽) 的網路連線能力監視
 
@@ -34,7 +34,7 @@ ms.locfileid: "91400242"
 - 混合式應用程式需要連線到 Azure 儲存體端點。 您的內部部署網站和 Azure 應用程式會連接到相同的 Azure 儲存體端點。 您想要比較內部部署網站的延遲與 Azure 應用程式的延遲。
 - 您想要檢查內部部署環境與裝載雲端應用程式的 Azure Vm 之間的連線能力。
 
-在其預覽階段中，連線監視器結合了兩項功能的最大：網路監看員連線 [監視器](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#monitor-communication-between-a-virtual-machine-and-an-endpoint) 功能和網路效能監控 (NPM) [服務連線監視器](https://docs.microsoft.com/azure/azure-monitor/insights/network-performance-monitor-service-connectivity) 功能。
+在其預覽階段中，連線監視器結合了兩項功能的最大功能：網路監看員連線 [監視器](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#monitor-communication-between-a-virtual-machine-and-an-endpoint) 功能和網路效能監控 (NPM) [服務連線監視器](https://docs.microsoft.com/azure/azure-monitor/insights/network-performance-monitor-service-connectivity)、 [ExpressRoute 監視](https://docs.microsoft.com/azure/expressroute/how-to-npm)和 [效能監視](https://docs.microsoft.com/azure/azure-monitor/insights/network-performance-monitor-performance-monitor) 功能。
 
 以下是連接監視器 (Preview) 的一些優點：
 
@@ -94,9 +94,8 @@ ms.locfileid: "91400242"
 1. 在 Azure 入口網站首頁上，移至 **網路**監看員。
 1. 在左側的 [ **監視** ] 區段中，選取 [連線 **監視器 (預覽]) **。
 1. 您會看到在連線監視器中建立的所有連線監視器 (Preview) 。 若要查看在連線監視器的傳統體驗中建立的連線監視器，請移至 [連線 **監視器** ] 索引標籤。
-
-    ![螢幕擷取畫面，顯示連線監視器 (預覽版中建立的連線監視器) ](./media/connection-monitor-2-preview/cm-resource-view.png)
-
+    
+  :::image type="content" source="./media/connection-monitor-2-preview/cm-resource-view.png" alt-text="螢幕擷取畫面，顯示連線監視器 (預覽版中建立的連線監視器) " lightbox="./media/connection-monitor-2-preview/cm-resource-view.png":::
 
 ### <a name="create-a-connection-monitor"></a>建立連線監視
 
@@ -156,7 +155,7 @@ ms.locfileid: "91400242"
 
 根據您在測試設定中選擇的通訊協定， (Preview) 的連線監視器會針對來源-目的地配對執行一系列檢查。 檢查會根據您所選擇的測試頻率執行。
 
-如果您使用 HTTP，此服務會計算傳迴響應碼的 HTTP 回應數目。 結果會決定失敗檢查的百分比。 為了計算 RTT，服務會測量 HTTP 呼叫和回應之間的時間。
+如果您使用 HTTP，此服務會計算傳回有效回應碼的 HTTP 回應數目。 您可以使用 PowerShell 和 CLI 來設定有效的回應碼。 結果會決定失敗檢查的百分比。 為了計算 RTT，服務會測量 HTTP 呼叫和回應之間的時間。
 
 如果您使用 TCP 或 ICMP，此服務會計算封包遺失百分比，以判斷失敗的檢查百分比。 為了計算 RTT，此服務會測量收到所傳送封包的通知 (ACK) 所花的時間。 如果您已啟用網路測試的追蹤路由資料，您可以看到內部部署網路的逐躍點遺失和延遲。
 
@@ -166,7 +165,11 @@ ms.locfileid: "91400242"
 
 * **Pass** –失敗檢查的百分比實際值，而 RTT 在指定的閾值內。
 * **失敗** –失敗的檢查或 RTT 百分比的實際值超過指定的閾值。 如果未指定任何臨界值，當失敗檢查的百分比為100時，測試便會進入失敗狀態。
-* **警告** –未針對失敗的檢查百分比指定任何準則。 如果沒有指定的準則，連接監視器 (預覽) 會自動指派閾值。 當超過該臨界值時，測試狀態會變更為 [警告]。
+* **警告** – 
+     * 如果指定了臨界值，且連線監視器 (預覽) 觀察到的閾值超過80% 的閾值，則測試會標示為「警告」。
+     * 如果沒有指定的閾值，連接監視器 (預覽) 會自動指派閾值。 當超過該臨界值時，測試狀態會變更為 [警告]。若為 TCP 或 ICMP 測試中的往返時間，則會750msec 臨界值。 針對檢查失敗的百分比，閾值為10%。 
+* **不定**  – Log Analytics 工作區中沒有任何資料。檢查計量。 
+* **未執行**  –停用測試群組  
 
 ### <a name="data-collection-analysis-and-alerts"></a>資料收集、分析和警示
 
@@ -192,77 +195,71 @@ Azure 監視器計量也提供監視資料。 您可以使用 Log Analytics 來�
 
 您可以根據下列條件篩選清單：
 
-* **最上層篩選準則** –選擇訂用帳戶、區域、時間戳記來源和目的地類型。 請參閱下圖中的 box 2。
-* 以**狀態為基礎的篩選**條件–依連線監視器、測試群組或測試的狀態進行篩選。 請參閱下圖中的箭號3。
-* **自訂篩選** -選擇 [ **全選** ] 以進行一般搜尋。 若要依特定的實體進行搜尋，請從下拉式清單中選取。 請參閱下圖中的箭號4。
+* **最上層篩選** -依文字、實體類型 (連接監視器、測試群組或測試) 時間戳記和範圍搜尋清單。 範圍包括訂用帳戶、區域、來源和目的地類型。 請參閱下圖中的 box 1。
+* 以**狀態為基礎的篩選**條件–依連線監視器、測試群組或測試的狀態進行篩選。 請參閱下圖中的 box 2。
+* **警示型篩選** 器-依連線監視器資源上引發的警示進行篩選。 請參閱下圖中的 box 3。
 
-![螢幕擷取畫面，顯示如何在連線監視器中篩選連線監視器、測試群組和測試的視圖 (預覽) ](./media/connection-monitor-2-preview/cm-view.png)
-
+  :::image type="content" source="./media/connection-monitor-2-preview/cm-view.png" alt-text="螢幕擷取畫面，顯示如何在連線監視器中篩選連線監視器、測試群組和測試的視圖 (預覽) " lightbox="./media/connection-monitor-2-preview/cm-view.png":::
+    
 例如，若要查看連線監視器中的所有測試 (預覽版) 10.192.64.56 來源 IP：
 1. 變更要 **測試**的視圖。
 1. 在 [搜尋] 欄位中，輸入 *10.192.64.56*
-1. 在下拉式清單中，選取 [ **來源**]。
+1. 在 [最上層篩選的 **範圍** ] 中，選取 [ **來源**]。
 
 若只要在連線監視器中顯示失敗的測試 (預覽) 10.192.64.56 來源 IP 的來源 IP：
 1. 變更要 **測試**的視圖。
 1. 如果是以狀態為基礎的篩選準則，請選取 [ **失敗**]。
 1. 在 [搜尋] 欄位中，輸入 *10.192.64.56*
-1. 在下拉式清單中，選取 [ **來源**]。
+1. 在 [最上層篩選的 **範圍** ] 中，選取 [ **來源**]。
 
 若只要在連線監視器中顯示失敗的測試 (預覽) 目的地為 outlook.office365.com：
 1. 將 view 變更為 **Test**。
 1. 如果是以狀態為基礎的篩選準則，請選取 [ **失敗**]。
 1. 在 [搜尋] 欄位中，輸入 *outlook.office365.com*
-1. 在下拉式清單中，選取 [ **目的地**]。
+1. 在 [最上層篩選的 **範圍** ] 中，選取 [ **目的地**]。
+  
+  :::image type="content" source="./media/connection-monitor-2-preview/tests-view.png" alt-text="螢幕擷取畫面，顯示已篩選成隻顯示 Outlook.Office365.com 目的地失敗測試的視圖" lightbox="./media/connection-monitor-2-preview/tests-view.png":::
 
-   ![螢幕擷取畫面，顯示已篩選成隻顯示 Outlook.Office365.com 目的地失敗測試的視圖](./media/connection-monitor-2-preview/tests-view.png)
-
+若要知道連線監視或測試群組或測試失敗的原因，請按一下名為 [原因] 的資料行。  這會指出 ( 檢查失敗的閾值% 或 RTT) 被入侵，以及相關的診斷訊息
+  
+  :::image type="content" source="./media/connection-monitor-2-preview/cm-reason-of-failure.png" alt-text="顯示連接監視器、測試或測試群組失敗原因的螢幕擷取畫面" lightbox="./media/connection-monitor-2-preview/cm-reason-of-failure.png":::
+    
 若要查看 RTT 的趨勢，以及連線監視器的失敗檢查百分比：
-1. 選取您要調查的連接監視器。 依預設，監視資料會依測試群組進行組織。
+1. 選取您要調查的連接監視器。
 
-   ![顯示連線監視器計量的螢幕擷取畫面，由測試群組顯示](./media/connection-monitor-2-preview/cm-drill-landing.png)
+    :::image type="content" source="./media/connection-monitor-2-preview/cm-drill-landing.png" alt-text="顯示連線監視器計量的螢幕擷取畫面，由測試群組顯示" lightbox="./media/connection-monitor-2-preview/cm-drill-landing.png":::
 
-1. 選擇您要調查的測試群組。
+1. 您將會看到下列區段  
+    1. Essentials-所選連線監視器的資源特定屬性 
+    1. 小結 
+        1. 連接監視器中所有測試的 RTT 匯總趨勢線和失敗檢查百分比。 您可以設定特定時間來查看詳細資料。
+        1. 測試群組中的前5個、來源和目的地，以失敗檢查的 RTT 或百分比為基礎。 
+    1. 測試群組、來源、目的地和測試設定的索引標籤-列出連接監視器中的測試群組、來源或目的地。 檢查測試失敗、匯總 RTT 和檢查失敗的% 值。  您也可以回頭返回以查看資料。 
+    1. 問題-連接監視器中每個測試的躍點層級問題。 
 
-   ![顯示選取測試群組之位置的螢幕擷取畫面](./media/connection-monitor-2-preview/cm-drill-select-tg.png)
+    :::image type="content" source="./media/connection-monitor-2-preview/cm-drill-landing-2.png" alt-text="顯示連接監視器計量的螢幕擷取畫面，由測試群組第2部分顯示" lightbox="./media/connection-monitor-2-preview/cm-drill-landing-2.png":::
 
-    您會看到您的測試群組前五個失敗的測試，以失敗的檢查的 RTT 或百分比為基礎。 針對每個測試，您會看到 RTT 和趨勢線，以找出失敗的檢查百分比。
-1. 從清單中選取測試，或選擇另一個要調查的測試。 針對您的時間間隔和失敗檢查的百分比，您會看到臨界值和實際值。 針對 RTT，您會看到閾值、平均、最小值和最大值的值。
+1. 您可以
+    * 按一下 [查看所有測試] 以查看連接監視器中的所有測試
+    * 按一下 [View all test groups]、[測試設定]、[來源] 和 [目的地]，即可查看每個測試群組的特定 
+    * 選擇 [測試群組]、[測試設定]、[來源] 或 [目的地]，以查看實體中的所有測試。
 
-   ![螢幕擷取畫面，顯示測試的 RTT 結果和失敗的檢查百分比](./media/connection-monitor-2-preview/cm-drill-charts.png)
-
-1. 變更時間間隔以查看更多資料。
-1. 變更視圖以查看來源、目的地或測試設定。 
-1. 選擇以失敗的測試為基礎的來源，並調查前五個失敗的測試。 例如，選擇 [**依**  >  **來源**視圖] 和 [**依**  >  **目的地**查看]，以調查連接監視器中的相關測試。
-
-   ![顯示前五個失敗測試效能計量的螢幕擷取畫面](./media/connection-monitor-2-preview/cm-drill-select-source.png)
+1. 從 [所有測試] 視圖中，您可以：
+    * 選取 [測試]，然後按一下 [比較]。
+    
+    :::image type="content" source="./media/connection-monitor-2-preview/cm-compare-test.png" alt-text="顯示2個測試比較的螢幕擷取畫面" lightbox="./media/connection-monitor-2-preview/cm-compare-test.png":::
+    
+    * 使用叢集將 VNET、子網等複合資源展開至其子資源
+    * 按一下 [拓撲] 以查看任何測試的拓撲。
 
 若要查看 RTT 的趨勢，以及測試群組的失敗檢查百分比：
-
 1. 選取您要調查的測試群組。 
-
-    根據預設，監視資料會依照來源、目的地和測試設定來排列， (測試) 。 稍後，您可以將視圖從測試群組變更為來源、目的地或測試設定。 然後選擇實體來調查前五個失敗的測試。 例如，將 [view] 變更為 [來源] 和 [目的地]，以調查所選連線監視器中的相關測試。
-1. 選擇您要調查的測試。
-
-   ![顯示要在哪裡選取測試的螢幕擷取畫面](./media/connection-monitor-2-preview/tg-drill.png)
-
-    針對您的時間間隔和失敗檢查的百分比，您會看到臨界值和實際值。 針對 RTT，您會看到閾值、平均、最小值和最大值的值。 您也會看到所選取測試的引發警示。
-1. 變更時間間隔以查看更多資料。
+1. 您將會看到類似于連線監視器-基本、摘要、適用于測試群組、來源、目的地和測試設定的資料表。 如同您針對連線監視所做的一樣地流覽
 
 若要查看 RTT 的趨勢，以及測試的失敗檢查百分比：
-1. 選取您要調查的來源、目的地和測試設定。
+1. 選取您要調查的測試。 您會看到網路拓撲，以及檢查失敗% 和來回行程時間的端對端趨勢圖。 若要查看已識別的問題，請在拓撲中選取路徑中的任何躍點。  (這些躍點都是 Azure 資源。 ) 這項功能目前不適用於內部部署網路
 
-    針對您的時間間隔和失敗檢查的百分比，您會看到臨界值和實際值。 針對 RTT，您會看到閾值、平均、最小值和最大值的值。 您也會看到所選取測試的引發警示。
-
-   ![顯示測試計量的螢幕擷取畫面](./media/connection-monitor-2-preview/test-drill.png)
-
-1. 若要查看網路拓撲，請選取 [ **拓撲**]。
-
-   ![顯示 [網路拓撲] 索引標籤的螢幕擷取畫面](./media/connection-monitor-2-preview/test-topo.png)
-
-1. 若要查看已識別的問題，請在拓撲中選取路徑中的任何躍點。  (這些躍點都是 Azure 資源。 ) 這項功能目前不適用於內部部署網路。
-
-   ![螢幕擷取畫面，顯示 [拓撲] 索引標籤上所選取的躍點連結](./media/connection-monitor-2-preview/test-topo-hop.png)
+  :::image type="content" source="./media/connection-monitor-2-preview/cm-test-topology.png" alt-text="顯示測試拓撲視圖的螢幕擷取畫面" lightbox="./media/connection-monitor-2-preview/cm-test-topology.png":::
 
 #### <a name="log-queries-in-log-analytics"></a>Log Analytics 中的記錄查詢
 
@@ -272,7 +269,7 @@ Azure 監視器計量也提供監視資料。 您可以使用 Log Analytics 來�
 
 在連線監視器之前建立的連線監視器 (預覽版) 體驗中，總共提供四個度量：% 探查失敗、AverageRoundtripMs、ChecksFailedPercent (Preview) 和 RoundTripTimeMs (Preview) 。 在連線監視器中建立的連線監視器 (預覽) 體驗中，資料僅適用于以 * (Preview) *標記的度量。
 
-![顯示連線監視器 (預覽) 中計量的螢幕擷取畫面](./media/connection-monitor-2-preview/monitor-metrics.png)
+  :::image type="content" source="./media/connection-monitor-2-preview/monitor-metrics.png" alt-text="顯示連線監視器 (預覽) 中計量的螢幕擷取畫面 " lightbox="./media/connection-monitor-2-preview/monitor-metrics.png":::
 
 當您使用計量時，請將資源類型設為 Microsoft. Network/networkWatchers/connectionMonitors
 
@@ -283,24 +280,27 @@ Azure 監視器計量也提供監視資料。 您可以使用 Log Analytics 來�
 | ChecksFailedPercent (Preview)  | % 檢查失敗 (預覽)  | 百分比 | Average | 測試失敗檢查的百分比。 | ConnectionMonitorResourceId <br>SourceAddress <br>SourceName <br>SourceResourceId <br>SourceType <br>通訊協定 <br>DestinationAddress <br>DestinationName <br>DestinationResourceId <br>DestinationType <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>區域 |
 | RoundTripTimeMs (Preview)  | 來回時間 (ms)  (Preview)  | 毫秒 | Average | 在來源與目的地之間傳送檢查的 RTT。 此值不是平均值。 | ConnectionMonitorResourceId <br>SourceAddress <br>SourceName <br>SourceResourceId <br>SourceType <br>通訊協定 <br>DestinationAddress <br>DestinationName <br>DestinationResourceId <br>DestinationType <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>區域 |
 
-#### <a name="metric-alerts-in-azure-monitor"></a>Azure 監視器中的計量警示
+#### <a name="metric-based-alerts-for-connection-monitor"></a>連接監視的計量型警示
 
-若要在 Azure 監視器中建立警示：
+您可以使用下列方法，在連線監視器上建立計量警示 
 
-1. 選擇您在連線監視器中建立的連線監視器資源 (Preview) 。
-1. 確定計量 **顯示為連線監視的信號** 類型。
-1. 在 [ **新增條件**] 的 [ **信號名稱**] 中，選取 [ **ChecksFailedPercent (Preview]) ** 或 [ **RoundTripTimeMs (預覽]) **。
-1. 針對 [ **信號類型**]，選擇 [ **計量**]。 例如，選取 [ **ChecksFailedPercent (預覽]) **。
-1. 系統會列出度量的所有維度。 選擇維度名稱和維度值。 例如，選取 [ **來源位址** ]，然後輸入連線監視器中任何來源的 IP 位址。
-1. 在 **警示邏輯**中，填寫下列詳細資料：
-   * **條件類型**： **靜態**。
-   * **條件** 和 **臨界值**。
-   * **匯總的資料細微性和評估頻率**：連線監視器 (預覽) 每分鐘更新資料。
-1. 在 [ **動作**] 中，選擇您的動作群組。
-1. 提供警示詳細資料。
-1. 建立警示規則。
+1. 從連線監視器 (預覽) 在[使用 Azure 入口網站](connection-monitor-preview-create-using-portal.md#)建立連線監視器期間 
+1. 從連線監視器 (預覽) ，在儀表板中使用 [設定警示] 
+1. 從 Azure 監視器-在 Azure 監視器中建立警示： 
+    1. 選擇您在連線監視器中建立的連線監視器資源 (Preview) 。
+    1. 確定計量 **顯示為連線監視的信號** 類型。
+    1. 在 [ **新增條件**] 的 [ **信號名稱**] 中，選取 [ **ChecksFailedPercent (Preview]) ** 或 [ **RoundTripTimeMs (預覽]) **。
+    1. 針對 [ **信號類型**]，選擇 [ **計量**]。 例如，選取 [ **ChecksFailedPercent (預覽]) **。
+    1. 系統會列出度量的所有維度。 選擇維度名稱和維度值。 例如，選取 [ **來源位址** ]，然後輸入連線監視器中任何來源的 IP 位址。
+    1. 在 **警示邏輯**中，填寫下列詳細資料：
+        * **條件類型**： **靜態**。
+        * **條件** 和 **臨界值**。
+        * **匯總的資料細微性和評估頻率**：連線監視器 (預覽) 每分鐘更新資料。
+    1. 在 [ **動作**] 中，選擇您的動作群組。
+    1. 提供警示詳細資料。
+    1. 建立警示規則。
 
-   ![顯示 Azure 監視器中建立規則區域的螢幕擷取畫面;[來源位址] 和 [來源端點名稱] 已反白顯示](./media/connection-monitor-2-preview/mdm-alerts.jpg)
+  :::image type="content" source="./media/connection-monitor-2-preview/mdm-alerts.jpg" alt-text="顯示 Azure 監視器中建立規則區域的螢幕擷取畫面。來源位址和來源端點名稱會反白顯示" lightbox="./media/connection-monitor-2-preview/mdm-alerts.jpg":::
 
 ## <a name="diagnose-issues-in-your-network"></a>診斷網路中的問題
 
@@ -347,3 +347,8 @@ Azure 監視器計量也提供監視資料。 您可以使用 Log Analytics 來�
 * 流量因為系統路由或 UDR 而停止。
 * 閘道連線上未啟用 BGP。
 * 負載平衡器已關閉 DIP 探查。
+
+## <a name="next-steps"></a>後續步驟
+    
+   * 瞭解 [如何使用 Azure 入口網站建立連線監視器 (預覽版) ](connection-monitor-preview-create-using-portal.md)  
+   * 瞭解 [如何使用 ARMClient 建立連線監視器 (預覽版) ](connection-monitor-preview-create-using-arm-client.md)  

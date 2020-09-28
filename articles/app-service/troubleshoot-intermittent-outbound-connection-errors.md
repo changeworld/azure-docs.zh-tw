@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 07/24/2020
 ms.author: ramakoni
 ms.custom: security-recommendations,fasttrack-edit
-ms.openlocfilehash: b38ba59b3efc7e5869eecbc84879a6c0a4ce7369
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: ee1b4da6f02623346d078b9812c99e5093dc2691
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91360203"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91408210"
 ---
 # <a name="troubleshooting-intermittent-outbound-connection-errors-in-azure-app-service"></a>針對 Azure App Service 中間歇性的輸出連線錯誤進行疑難排解
 
@@ -93,16 +93,6 @@ HTTP 連接共用
 
    * [PHP 連接管理](https://www.php.net/manual/en/pdo.connections.php)
 
-#### <a name="python"></a>Python
-
-* [MySQL](https://github.com/mysqljs/mysql#pooling-connections)
-* [MongoDB](https://blog.mlab.com/2017/05/mongodb-connection-pooling-for-express-applications/)
-* [PostgreSQL](https://node-postgres.com/features/pooling)
-* [SQL Server](https://github.com/tediousjs/node-mssql#connection-pools) (附注： SQLAlchemy 可與 MicrosoftSQL 伺服器以外的其他資料庫搭配使用) 
-* 使用會話[會話物件](https://requests.readthedocs.io/en/master/user/advanced/#keep-alive)) 時， [HTTP 保持](https://requests.readthedocs.io/en/master/user/advanced/#keep-alive)運作 (保持運作狀態。
-
-針對其他環境，請參閱提供者或驅動程式特定檔，以在您的應用程式中執行連接共用。
-
 ### <a name="modify-the-application-to-reuse-connections"></a>將應用程式修改成重複使用連線
 
 *  如需在 Azure 函式中管理連線的其他指標和範例，請參閱 [Azure Functions 中的管理連接](../azure-functions/manage-connections.md)。
@@ -124,7 +114,7 @@ HTTP 連接共用
 
 避免輸出 TCP 限制比較容易解決，因為限制是由背景工作的大小所設定。 您可以看到沙箱中的限制 [跨 VM 的數值限制-TCP 連接](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#cross-vm-numerical-limits)
 
-|限制名稱|說明|Small (A1) |中型 (A2) |大型 (A3) | (ASE 的隔離層) |
+|限制名稱|描述|Small (A1) |中型 (A2) |大型 (A3) | (ASE 的隔離層) |
 |---|---|---|---|---|---|
 |連接|整個 VM 的連接數目|1920|3968|8064|16,000|
 
@@ -156,7 +146,7 @@ TCP 連接和 SNAT 埠不會直接相關。 TCP 連接使用偵測器包含在�
 * TCP 連接限制發生在背景工作角色實例層級。 Azure 網路輸出負載平衡不會使用適用于 SNAT 埠限制的 TCP 連接度量。
 * TCP 連接限制會以沙箱的[跨 VM 數值限制（tcp 連線）](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#cross-vm-numerical-limits)說明
 
-|限制名稱|說明|Small (A1) |中型 (A2) |大型 (A3) | (ASE 的隔離層) |
+|限制名稱|描述|Small (A1) |中型 (A2) |大型 (A3) | (ASE 的隔離層) |
 |---|---|---|---|---|---|
 |連接|整個 VM 的連接數目|1920|3968|8064|16,000|
 

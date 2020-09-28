@@ -1,18 +1,18 @@
 ---
 title: 升級 Azure Cosmos DB 適用于 MongoDB 的 API 帳戶的 Mongo 版本
 description: 如何順暢地升級現有 Azure Cosmos DB 適用于 MongoDB 帳戶之 API 的 MongoDB 通訊協定版本
-author: LuisBosquez
+author: jasonwhowell
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: guide
 ms.date: 09/22/2020
-ms.author: lbosq
-ms.openlocfilehash: 795b7641ac22373b02ab23126055c080af5e851d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.author: jasonh
+ms.openlocfilehash: c6369be39d0a964f07c64083e3269bb1c0c49c7f
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90933925"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91409658"
 ---
 # <a name="upgrade-the-mongodb-wire-protocol-version-of-your-azure-cosmos-dbs-api-for-mongodb-account"></a>升級 Azure Cosmos DB 適用于 MongoDB 的 API 帳戶的 MongoDB 有線通訊協定版本
 
@@ -84,7 +84,7 @@ ms.locfileid: "90933925"
 
     :::image type="content" source="./media/mongodb-version-upgrade/7.png" alt-text="新的總覽分頁。" border="false":::
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 瞭解 [MongoDB 版本 3.6](mongodb-feature-support-36.md)支援和不支援的功能。
 - 如需詳細資訊，請參閱 [Mongo 3.6 版功能](https://devblogs.microsoft.com/cosmosdb/azure-cosmos-dbs-api-for-mongodb-now-supports-server-version-3-6/)

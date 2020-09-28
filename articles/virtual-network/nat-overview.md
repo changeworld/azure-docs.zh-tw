@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/25/2020
+ms.date: 09/28/2020
 ms.author: allensu
-ms.openlocfilehash: 3180fa34b85c3ec5f7cb1d2d9da8c2e1b528bd69
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 5efcf944f5d22759f9d448da5862bcf1f19e2efe
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855800"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91409556"
 ---
 # <a name="what-is-virtual-network-nat"></a>什麼是虛擬網路 NAT？
 
@@ -32,7 +32,7 @@ ms.locfileid: "88855800"
 -->
 
 <p align="center">
-  <img src="./media/nat-overview/flow-map.svg" alt="Figure depicts a NAT receiving traffic from internal subnets and directing it to a public IP and an IP prefix." width="256" title="虛擬網路 NAT">
+  <img src="./media/nat-overview/flow-map.svg" alt="Figure depicts a NAT receiving traffic from internal subnets and directing it to a public IP (PIP) and an IP prefix." width="256" title="虛擬網路 NAT">
 </p>
 
 
@@ -51,11 +51,11 @@ NAT 與標準 SKU 公用 IP 位址資源、公用 IP 前置詞資源或兩者的
 
 NAT 會使用「連接埠網路位址轉譯」(PNAT 或 PAT)，而且建議用於大部分的工作負載。 動態或分歧的工作負載可透過隨選輸出流量配置輕鬆地適應。 避免輸出資源的廣泛預先規劃、預先配置和最終過度佈建。 SNAT 連接埠資源可透過特定 NAT 閘道資源在所有子網路上共用和取得，並可在需要時提供。
 
-連結至 NAT 的公用 IP 位址最多可為 UDP 和 TCP 提供 64000 個並行流量。 您可以從單一 IP 位址開始，並擴大至 16 個公用 IP 位址。
+附加至 NAT 的公用 IP 位址會分別為 UDP 和 TCP 提供最多64000的並行流程。 您可以從單一 IP 位址開始，並使用公用 IP 位址或公用 IP 首碼或兩者來擴大至16個 IP 位址。  NAT 閘道資源會使用與資源相關聯的所有 IP 位址，從使用相同 NAT 閘道資源設定的所有子網進行輸出連線。
 
 NAT 可讓您建立從虛擬網路到網際網路的流量。 只有在回應作用中流量時，才允許從網際網路傳回流量。
 
-不同於負載平衡器輸出 SNAT，NAT 不會限制虛擬機器執行個體的哪個私人 IP 可以進行輸出連線。  次要 IP 組態可以建立與 NAT 的輸出網際網路連線。
+不同於負載平衡器輸出 SNAT，NAT 不會限制虛擬機器執行個體的哪個私人 IP 可以進行輸出連線。  主要與次要 IP 設定可以使用 NAT 建立輸出網際網路連線。
 
 ## <a name="coexistence-of-inbound-and-outbound"></a>輸入和輸出共存
 

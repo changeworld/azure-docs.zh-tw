@@ -8,18 +8,18 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 05/07/2020
-ms.openlocfilehash: f8411176e0979bdb894983bcf866abd0e1109e21
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 999be38e413288d2eb2f6342874e692972f300ad
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89291662"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91409709"
 ---
 # <a name="requesting-quota-increases-for-azure-hdinsight"></a>要求增加 Azure HDInsight 的配額
 
 CPU 核心配額有助於確保特定 Azure 區域中的所有客戶之間能夠均等使用資源。 但在某些情況下，您有可能因業務而需要比目前配額所允許更多的叢集資源。 在這類情況下，您可以要求增加 CPU 核心配額，以部署符合資料處理需求的叢集。
 
-在達到配額限制後，您即無法部署新的叢集，或藉由新增更多背景工作節點將現有的叢集擴增。 唯一的配額限制是 CPU 核心配額，其存在於每個訂用帳戶區域層級。 例如，您的訂用帳戶在美國東部區域可能有 30 個 CPU 核心的限制，而「美國東部 2」也同樣允許 30 個 CPU 核心。
+在達到配額限制後，您即無法部署新的叢集，或藉由新增更多背景工作節點將現有的叢集擴增。 唯一的配額限制是 CPU 核心配額，其存在於每個訂用帳戶區域層級。 例如，您的訂用帳戶在美國東部區域可能有30個 CPU 核心限制，而美國東部允許有另一個30個 CPU 核心。
 
 ## <a name="gather-required-information"></a>收集必要資訊
 

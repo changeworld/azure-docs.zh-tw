@@ -1,22 +1,22 @@
 ---
 title: 使用 Azure Cosmos DB 適用于 MongoDB 的 API 的遷移後優化步驟
 description: 本檔提供從 MongoDB 到 Azure Cosmos DB 的 Mongo DB APi 的遷移後優化技術。
-author: LuisBosquez
+author: jasonwhowell
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: how-to
 ms.date: 03/20/2020
-ms.author: lbosq
-ms.openlocfilehash: 93a9058dec66ffe2e1c7ad4b15d9bf4eba12c647
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.author: jasonh
+ms.openlocfilehash: f21aa30de2b2dfcf85e45c7ed4d5c485fe45eed7
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91358520"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91409692"
 ---
 # <a name="post-migration-optimization-steps-when-using-azure-cosmos-dbs-api-for-mongodb"></a>使用 Azure Cosmos DB 適用于 MongoDB 的 API 時的遷移後優化步驟
 
-將儲存在 MongoDB 資料庫中的資料移轉至 Azure Cosmos DB 適用于 MongoDB 的 API 之後，您可以連接到 Azure Cosmos DB 並管理資料。 本指南提供遷移後應考慮的步驟。 如需遷移步驟，請參閱將 [Mongodb 遷移至 Azure Cosmos DB 適用于 mongodb 的 API 教學](../dms/tutorial-mongodb-cosmos-db.md) 課程。
+將 MongoDB 資料庫中儲存的資料遷移至 Azure Cosmos DB 的 MongoDB 版 API 之後，您就可以連線到 Azure Cosmos DB 並管理這些資料。 本指南提供您在移轉後應考慮進行的步驟。 如需遷移步驟，請參閱將 [Mongodb 遷移至 Azure Cosmos DB 適用于 mongodb 的 API 教學](../dms/tutorial-mongodb-cosmos-db.md) 課程。
 
 在本指南中，您將了解如何：
 

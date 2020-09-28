@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB Gremlin API 的圖表資料模型
 description: 了解如何使用 Azure Cosmos DB Gremlin API 建立圖形資料庫的模型。 本文將說明使用圖形資料庫的時機和建立實體及關聯性模型的最佳做法。
-author: LuisBosquez
+author: jasonwhowell
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 12/02/2019
-ms.author: lbosq
-ms.openlocfilehash: ea3aab76c8d7eaad46ae1c20f6ddb4547b25b5b7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: jasonh
+ms.openlocfilehash: 6526119a8b20a7c60879fe690aefe96159b062a7
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85261812"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91409760"
 ---
 # <a name="graph-data-modeling-for-azure-cosmos-db-gremlin-api"></a>Azure Cosmos DB Gremlin API 的圖表資料模型
 
@@ -45,14 +45,14 @@ ms.locfileid: "85261812"
 
 以下是圖表物件中各屬性的最佳做法︰
 
-| Object | 屬性 | 類型 | 注意 |
+| 物件 | 屬性 | 類型 | 注意 |
 | --- | --- | --- |  --- |
 | 頂點 | 識別碼 | String | 每個分割區唯一強制執行。 如果沒有在插入時提供值，將會儲存自動產生的 GUID。 |
-| 頂點 | 標籤 | String | 這個屬性是用來定義頂點所代表的實體類型。 如果未提供值，將會使用預設值「頂點」。 |
+| 頂點 | label | String | 這個屬性是用來定義頂點所代表的實體類型。 如果未提供值，將會使用預設值「頂點」。 |
 | 頂點 | properties | 字串、布林值、數值 | 個別屬性的清單會以索引鍵/值組的方式儲存在每個頂點中。 |
 | 頂點 | 分割區索引鍵 | 字串、布林值、數值 | 這個屬性會定義頂點和其傳出邊緣的儲存位置。 深入了解[資料分割](graph-partitioning.md)。 |
 | Edge | 識別碼 | String | 每個分割區唯一強制執行。 預設會自動產生。 邊緣通常不需要透過識別碼進行唯一擷取。 |
-| Edge | 標籤 | String | 這個屬性是用來定義兩個頂點之間的關聯性類型。 |
+| Edge | label | String | 這個屬性是用來定義兩個頂點之間的關聯性類型。 |
 | Edge | properties | 字串、布林值、數值 | 個別屬性的清單會以索引鍵/值組的方式儲存在每個邊緣中。 |
 
 > [!NOTE]
@@ -71,11 +71,11 @@ ms.locfileid: "85261812"
 
 一個常見的陷阱是將單一實體的多個屬性作為個別的頂點來對應。 請考量下方的範例，範例中將同一個實體以兩種不同的方式表示：
 
-* 以**頂點為基礎的屬性**：在此方法中，實體會使用三個不同的頂點和兩個邊緣來描述其屬性。 雖然這種方法可能會減少冗餘，但會增加模型複雜度。 模型複雜度增加可能會導致增加延遲增加、提升查詢複雜度，以及增加計算成本。 此模型也代表在進行資料分割時將面臨挑戰。
+* **頂點型屬性**：在此方法中，實體會使用三個不同的頂點和兩個邊緣來描述其屬性。 雖然這種方法可能會減少冗餘，但會增加模型複雜度。 模型複雜度增加可能會導致增加延遲增加、提升查詢複雜度，以及增加計算成本。 此模型也代表在進行資料分割時將面臨挑戰。
 
 :::image type="content" source="./media/graph-modeling/graph-modeling-1.png" alt-text="使用頂點作為屬性的實體模型。" border="false":::
 
-* **屬性內嵌的頂點**：這個方法會利用索引鍵/值組清單來代表頂點內實體的所有屬性。 此方法可降低模型的複雜度，但將會導致只能執行較簡單的查詢和更符合成本效益的周遊。
+* **屬性內嵌頂點**：此方法會利用索引鍵/值組清單來代表頂點內實體的所有屬性。 此方法可降低模型的複雜度，但將會導致只能執行較簡單的查詢和更符合成本效益的周遊。
 
 :::image type="content" source="./media/graph-modeling/graph-modeling-2.png" alt-text="使用頂點作為屬性的實體模型。" border="false":::
 

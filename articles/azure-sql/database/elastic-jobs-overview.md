@@ -1,6 +1,6 @@
 ---
 title: 彈性資料庫作業 (預覽)
-description: 設定彈性資料庫作業（預覽），以在中的一或多個資料庫之間執行 Transact-sql （T-sql）腳本 Azure SQL Database
+description: 設定彈性資料庫工作 (預覽) 在一或多個資料庫中的一或多個資料庫上執行 Transact-sql (T-sql) 腳本 Azure SQL Database
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
@@ -11,14 +11,14 @@ author: srinia
 ms.author: srinia
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: 62202946193c111921c97dc95a7ec7955a63804f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2aa2c0c8cbd8b826444dc5420685aaa9731cddab
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85251156"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91409575"
 ---
-# <a name="create-configure-and-manage-elastic-jobs"></a>建立、設定及管理彈性作業
+# <a name="create-configure-and-manage-elastic-jobs-preview"></a> (預覽版建立、設定和管理彈性作業) 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 在本文中，您將了解如何建立、設定和管理彈性作業。
@@ -28,19 +28,19 @@ ms.locfileid: "85251156"
 ## <a name="create-and-configure-the-agent"></a>建立和設定代理程式
 
 1. 建立或識別空的 S0 或更高的資料庫。 此資料庫將在彈性作業代理程式建立期間作為「作業資料庫」**。
-2. 在[入口網站](https://portal.azure.com/#create/Microsoft.SQLElasticJobAgent)中或使用[PowerShell](elastic-jobs-powershell-create.md#create-the-elastic-job-agent)建立彈性作業代理程式。
+2. 在 [入口網站](https://portal.azure.com/#create/Microsoft.SQLElasticJobAgent) 中或使用 [PowerShell](elastic-jobs-powershell-create.md#create-the-elastic-job-agent)建立彈性作業代理程式。
 
    ![建立彈性作業代理程式](./media/elastic-jobs-overview/create-elastic-job-agent.png)
 
 ## <a name="create-run-and-manage-jobs"></a>建立、執行和管理作業
 
-1. 使用[PowerShell](elastic-jobs-powershell-create.md)或[T-sql](elastic-jobs-tsql-create-manage.md#create-a-credential-for-job-execution)，在*作業資料庫*中建立作業執行的認證。
-2. 使用[PowerShell](elastic-jobs-powershell-create.md)或[t-sql](elastic-jobs-tsql-create-manage.md#create-a-target-group-servers)定義目標群組（您想要對其執行作業的資料庫）。
+1. 使用[PowerShell](elastic-jobs-powershell-create.md)或[t-sql](elastic-jobs-tsql-create-manage.md#create-a-credential-for-job-execution)在*作業資料庫*中建立作業執行的認證。
+2. 使用 [PowerShell](elastic-jobs-powershell-create.md) 或 [t-sql](elastic-jobs-tsql-create-manage.md#create-a-target-group-servers)， (您想要對) 執行作業的資料庫定義目標群組。
 3. 在將要執行作業的每個資料庫中建立作業代理程式認證 [(將使用者 (或角色) 新增至群組中的每個資料庫)](logins-create-manage.md)。 如需範例，請參閱 [PowerShell 教學課程](elastic-jobs-powershell-create.md)。
-4. 使用[PowerShell](elastic-jobs-powershell-create.md)或[t-sql](elastic-jobs-tsql-create-manage.md#deploy-new-schema-to-many-databases)建立作業。
+4. 使用 [PowerShell](elastic-jobs-powershell-create.md) 或 [t-sql](elastic-jobs-tsql-create-manage.md#deploy-new-schema-to-many-databases)建立作業。
 5. 使用 [PowerShell](elastic-jobs-powershell-create.md) 或 [T-SQL](elastic-jobs-tsql-create-manage.md#deploy-new-schema-to-many-databases) 新增作業步驟。
-6. 使用[PowerShell](elastic-jobs-powershell-create.md#run-the-job)或[t-sql](elastic-jobs-tsql-create-manage.md#begin-unplanned-execution-of-a-job)執行作業。
-7. 使用入口網站、 [PowerShell](elastic-jobs-powershell-create.md#monitor-status-of-job-executions)或[t-sql](elastic-jobs-tsql-create-manage.md#monitor-job-execution-status)監視作業執行狀態。
+6. 使用 [PowerShell](elastic-jobs-powershell-create.md#run-the-job) 或 [t-sql](elastic-jobs-tsql-create-manage.md#begin-unplanned-execution-of-a-job)執行作業。
+7. 使用入口網站、 [PowerShell](elastic-jobs-powershell-create.md#monitor-status-of-job-executions) 或 [t-sql](elastic-jobs-tsql-create-manage.md#monitor-job-execution-status)監視作業執行狀態。
 
    ![入口網站](./media/elastic-jobs-overview/elastic-job-executions-overview.png)
 
@@ -50,7 +50,7 @@ ms.locfileid: "85251156"
 
 設定適當的認證來執行作業，可能會有點混淆，因此請牢記下列要點：
 
-- 必須在*作業資料庫*中建立資料庫範圍認證。
+- 您必須在 *作業資料庫*中建立資料庫範圍認證。
 - **所有目標資料庫都必須具有登入，而且有[足夠的權限](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine)，才能順利完成作業** (下圖中的 `jobuser`)。
 - 認證可跨作業重複使用，而認證密碼會經過加密並受到保護，以免具有作業物件唯讀權限的使用者加以使用。
 
@@ -63,7 +63,7 @@ ms.locfileid: "85251156"
 處理彈性作業有幾個最佳做法考量：
 
 - 將 API 的使用限制為受信任的個人。
-- 認證應該具有執行作業步驟所需的最低權限。 如需詳細資訊，請參閱[授權和許可權](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/authorization-and-permissions-in-sql-server)。
+- 認證應該具有執行作業步驟所需的最低權限。 如需詳細資訊，請參閱 [授權和許可權](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/authorization-and-permissions-in-sql-server)。
 - 使用伺服器和/或集區目標群組的成員時，強烈建議建立個別的認證，而該認證須具有 master 資料庫的權限，可在作業執行前檢視/列出用來擴充伺服器和/或集區的資料庫清單。
 
 ## <a name="agent-performance-capacity-and-limitations"></a>代理程式效能、容量和限制

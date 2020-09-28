@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure Data Factory 在 Oracle 之間複製資料
+title: 使用 Azure Data Factory 將資料複製到 Oracle 或從中複製資料
 description: 瞭解如何使用 Data Factory，將資料從支援的來源存放區複製到 Oracle 資料庫，或從 Oracle 複製到支援的接收存放區。
 services: data-factory
 documentationcenter: ''
@@ -9,23 +9,24 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 07/24/2020
+ms.date: 09/28/2020
 ms.author: jingwang
-ms.openlocfilehash: bac673f5c8c8d6a4e2b368938a0c08c893518022
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: b4d2b277eea85fb8a5c9eb733e5bfd64d66f392c
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87171262"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91407821"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>使用 Azure Data Factory 從 Oracle 複製資料及將資料複製到該處
+
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
 > * [第 1 版](v1/data-factory-onprem-oracle-connector.md)
 > * [目前的版本](connector-oracle.md)
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-本文概述如何使用 Azure Data Factory 中的「複製活動」，將資料從 Oracle 資料庫複製到其中。 它是以[複製活動總覽](copy-activity-overview.md)為基礎。
+本文概述如何使用 Azure Data Factory 中的「複製活動」，從 Oracle 資料庫複製資料及將資料複製到其中。 它是以 [複製活動總覽](copy-activity-overview.md)為基礎。
 
 ## <a name="supported-capabilities"></a>支援的功能
 
@@ -38,21 +39,21 @@ ms.locfileid: "87171262"
 
 具體而言，這個 Oracle 連接器支援：
 
-- 下列 Oracle 資料庫版本：
-    - Oracle 19c R1 （19.1）和更高版本
-    - Oracle 18c R1 （18.1）和更高版本
-    - Oracle 12c R1 （12.1）和更高版本
-    - Oracle 11g R1 （11.1）和更高版本
-    - Oracle 10g R1 （10.1）和更高版本
-    - Oracle 9i R2 （9.2）和更高版本
-    - Oracle 8i R3 （8.1.7）和更高版本
-    - Oracle Database Cloud Exadata 服務
-- 從 Oracle 來源平行複製。 如需詳細資訊，請參閱[從 Oracle 平行複製](#parallel-copy-from-oracle)一節。
+- 下列版本的 Oracle 資料庫：
+    - Oracle 19c R1 (19.1) 和更高版本
+    - Oracle 18c R1 (18.1) 和更高版本
+    - Oracle 12c R1 (12.1) 和更高版本
+    - Oracle 11g R1 (11.1) 和更高版本
+    - Oracle 10g R1 (10.1) 和更高版本
+    - Oracle 9i R2 (9.2) 和更高版本
+    - Oracle 8i R3 (8.1.7) 和更高版本
+    - Oracle Database Cloud Exadata Service
+- 從 Oracle 來源進行平行複製。 如需詳細資料，請參閱 [從 Oracle 平行複製](#parallel-copy-from-oracle) 一節。
 
 > [!Note]
 > 不支援 Oracle Proxy 伺服器。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)] 
 
@@ -68,36 +69,36 @@ ms.locfileid: "87171262"
 
 Oracle 連結服務支援下列屬性：
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| type | Type 屬性必須設定為**Oracle**。 | 是 |
-| connectionString | 指定連線到 Oracle 資料庫執行個體所需的資訊。 <br/>您也可以將密碼放在 Azure Key Vault 中，並 `password` 從連接字串中提取設定。 請參閱下列範例，並[在 Azure Key Vault 中儲存認證](store-credentials-in-key-vault.md)，並提供更多詳細資料。 <br><br>**支援的連線類型**：您可以使用 [Oracle SID]**** 或 [Oracle 服務名稱]**** 來識別您的資料庫：<br>- 如果您使用 SID：`Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;`<br>- 如果您使用服務名稱：`Host=<host>;Port=<port>;ServiceName=<servicename>;User Id=<username>;Password=<password>;`<br>針對 [先進的 Oracle 原生連接選項]，您可以選擇在 Tnsnames.ora 中新增專案[。TNSNAMES.ORA](http://www.orafaq.com/wiki/Tnsnames.ora)檔案在 oracle 伺服器和 ADF oracle 連結服務中，選擇使用 [Oracle 服務名稱] 連線類型，並設定對應的服務名稱。 | 是 |
+| type | Type 屬性必須設定為 **Oracle**。 | 是 |
+| connectionString | 指定連線到 Oracle 資料庫執行個體所需的資訊。 <br/>您也可以將密碼放在 Azure Key Vault 中，並 `password` 從連接字串中提取設定。 請參閱下列範例，並 [在 Azure Key Vault 中儲存認證](store-credentials-in-key-vault.md) ，並提供更多詳細資料。 <br><br>**支援的連線類型**：您可以使用 [Oracle SID]**** 或 [Oracle 服務名稱]**** 來識別您的資料庫：<br>- 如果您使用 SID：`Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;`<br>- 如果您使用服務名稱：`Host=<host>;Port=<port>;ServiceName=<servicename>;User Id=<username>;Password=<password>;`<br>您可以選擇在 [Tnsnames.ora] 中新增專案 [。](http://www.orafaq.com/wiki/Tnsnames.ora) 在 oracle 伺服器上的 tnsnames.ora 檔案，以及在 ADF Oracle 連結服務中，選擇使用 Oracle 服務名稱連線類型，並設定對應的服務名稱。 | 是 |
 | connectVia | 用來連線到資料存放區的[整合執行階段](concepts-integration-runtime.md)。 深入了解[必要條件](#prerequisites)一節。 如果未指定，則會使用預設的 Azure Integration Runtime。 |否 |
 
 >[!TIP]
->如果您收到錯誤「TNSNAMES.ORA-01025： UPI 參數超出範圍」，而您的 Oracle 版本為8i，請將新增 `WireProtocolMode=1` 至您的連接字串。 然後再試一次。
+>如果您收到「TNSNAMES.ORA-01025： UPI 參數超出範圍」的錯誤，而且您的 Oracle 版本為8i，請將加入 `WireProtocolMode=1` 您的連接字串。 然後再試一次。
 
-如果您有多個 Oracle 實例來進行容錯移轉案例，您可以建立 Oracle 連結服務，並填入主要主機、埠、使用者名稱、密碼等，然後加入新的「**其他連接屬性**」，其屬性名稱為 `AlternateServers` ，而值為 `(HostName=<secondary host>:PortNumber=<secondary port>:ServiceName=<secondary service name>)` -不會遺漏括弧，並請注意冒號（ `:` ）做為分隔符號。 例如，下列替代伺服器的值會定義兩個用於連線容錯移轉的替代資料庫伺服器： `(HostName=AccountingOracleServer:PortNumber=1521:SID=Accounting,HostName=255.201.11.24:PortNumber=1522:ServiceName=ABackup.NA.MyCompany)` 。
+如果您有多個 Oracle 實例以進行容錯移轉案例，您可以建立 Oracle 連結服務，並填入主要主機、埠、使用者名稱、密碼等，然後加入新的 [**其他連接屬性**]，其屬性名稱為，而 [值] 則是 [其他連接屬性]，並將)  ([屬性名稱] `AlternateServers` 和 [值] 改為 [值] `(HostName=<secondary host>:PortNumber=<secondary port>:ServiceName=<secondary service name>)` `:` 。 例如，下列替代伺服器值會定義兩個用於連接容錯移轉的替代資料庫伺服器： `(HostName=AccountingOracleServer:PortNumber=1521:SID=Accounting,HostName=255.201.11.24:PortNumber=1522:ServiceName=ABackup.NA.MyCompany)` 。
 
-您可以在連接字串中，根據您的案例設定更多的連接屬性：
+您可以根據您的案例，在連接字串中設定更多的連接屬性：
 
 | 屬性 | 描述 | 允許的值 |
 |:--- |:--- |:--- |
-| ArraySize |連接器可以在單一網路來回行程中提取的位元組數目。 例如， `ArraySize=‭10485760‬` 。<br/><br/>較大的值會藉由減少透過網路提取資料的次數來增加輸送量。 較小的值會增加回應時間，因為等待伺服器傳輸資料的延遲較少。 | 從1到4294967296（4 GB）的整數。 預設值為 `60000`。 值1不會定義位元組數目，而是表示只為一個資料列配置空間。 |
+| ArraySize |連接器可以在單一網路往返中提取的位元組數目。 例如， `ArraySize=‭10485760‬` 。<br/><br/>較大的值會藉由減少透過網路提取資料的次數來增加輸送量。 較小的值會增加回應時間，因為等待伺服器傳輸資料的延遲較少。 | 從1到 4294967296 (4 GB) 的整數。 預設值為 `60000`。 值1不會定義位元組數目，但表示只為一個資料列配置空間。 |
 
 若要啟用 Oracle 連線加密，您有兩個選項：
 
--   若要使用**三重 DES 加密（3des）和進階加密標準（AES）**，請在 oracle 伺服器端，移至 Oracle Advanced SECURITY （OAS）並設定加密設定。 如需詳細資訊，請參閱此[Oracle 檔](https://docs.oracle.com/cd/E11882_01/network.112/e40393/asointro.htm#i1008759)集。 Oracle 應用程式開發架構（ADF）連接器會在建立與 Oracle 的連線時，自動協商加密方法，以使用您在 OAS 中設定的方法。
+-   若要使用 **三重 DES 加密 (3des) 和進階加密標準 (AES) **，請在 oracle 伺服器端，移至 Oracle Advanced SECURITY (OAS) 並設定加密設定。 如需詳細資訊，請參閱此 [Oracle 檔](https://docs.oracle.com/cd/E11882_01/network.112/e40393/asointro.htm#i1008759)。 Oracle 應用程式開發架構 (ADF) 連接器會自動協調加密方法，以在建立與 Oracle 的連接時使用您在 OAS 中設定的方法。
 
--   若要使用**TLS**：
+-   使用 **TLS**：
 
-    1.  取得 TLS/SSL 憑證資訊。 取得 TLS/SSL 憑證的可辨別編碼規則（DER）編碼憑證資訊，並儲存輸出（-----開始憑證 .。。 End Certificate -----) 儲存為文字檔。
+    1.  取得 TLS/SSL 憑證資訊。 取得 TLS/SSL 憑證的可辨別編碼規則 (DER) 編碼的憑證資訊，然後儲存輸出 (-----開始憑證 .。。 End Certificate -----) 儲存為文字檔。
 
         ```
         openssl x509 -inform DER -in [Full Path to the DER Certificate including the name of the DER Certificate] -text
         ```
 
-        **範例：** 從 DERcert 解壓縮 cert 資訊，然後將輸出儲存到 cert.txt。
+        **範例：** 從 DERcert 解壓縮 cert 資訊，然後將輸出儲存至 cert.txt。
 
         ```
         openssl x509 -inform DER -in DERcert.cer -text
@@ -173,11 +174,11 @@ Oracle 連結服務支援下列屬性：
 
 本節提供 Oracle 資料集所支援的屬性清單。 如需定義資料集的區段和屬性完整清單，請參閱[資料集](concepts-datasets-linked-services.md)。 
 
-若要將資料從和複製到 Oracle，請將資料集的 type 屬性設定為 `OracleTable` 。 以下是支援的屬性。
+若要從 Oracle 複製資料或將資料複製到該處，請將資料集的類型屬性設定為 `OracleTable` 。 以下是支援的屬性。
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| type | 資料集的類型屬性必須設定為 `OracleTable` 。 | 是 |
+| type | 資料集的 type 屬性必須設定為 `OracleTable` 。 | 是 |
 | 結構描述 | 結構描述的名稱。 |否 (來源)；是 (接收)  |
 | 資料表 | 資料表/檢視的名稱。 |否 (來源)；是 (接收)  |
 | tableName | 具有結構描述的資料表/檢視名稱。 支援此屬性是基於回溯相容性。 對於新的工作負載，請使用 `schema` 和 `table`。 | 否 (來源)；是 (接收) |
@@ -210,22 +211,22 @@ Oracle 連結服務支援下列屬性：
 ### <a name="oracle-as-source"></a>Oracle 作為來源
 
 >[!TIP]
->若要使用資料分割有效率地從 Oracle 載入資料，請從[oracle 的平行複製](#parallel-copy-from-oracle)深入瞭解。
+>若要使用資料分割有效率地從 Oracle 載入資料，請從 [Oracle 平行複製](#parallel-copy-from-oracle)深入瞭解。
 
 若要從 Oracle 複製資料，請將複製活動中的來源類型設定為 `OracleSource` 。 複製活動的 [來源] 區段支援下列屬性。
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| type | 複製活動來源的類型屬性必須設定為 `OracleSource` 。 | 是 |
-| oracleReaderQuery | 使用自訂 SQL 查詢來讀取資料。 例如 `"SELECT * FROM MyTable"`。<br>當您啟用資料分割載入時，您必須在查詢中攔截任何對應的內建資料分割參數。 如需範例，請參閱[從 Oracle 平行複製](#parallel-copy-from-oracle)一節。 | 否 |
-| partitionOptions | 指定用來從 Oracle 載入資料的資料分割選項。 <br>允許的值為： **None** （預設值）、 **PhysicalPartitionsOfTable**和**DynamicRange**。<br>當分割區選項已啟用（也就是不是 `None` ）時，從 Oracle 資料庫並行載入資料的平行處理原則程度，是由 [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) 複製活動上的設定所控制。 | 否 |
-| partitionSettings | 指定資料分割的設定群組。 <br>當分割區選項不適用時套用 `None` 。 | 否 |
-| partitionNames | 需要複製的實體分割區清單。 <br>當分割選項是 `PhysicalPartitionsOfTable` 時套用。 如果您使用查詢來取出來源資料，請在 WHERE 子句中加上 `?AdfTabularPartitionName`。 如需範例，請參閱[從 Oracle 平行複製](#parallel-copy-from-oracle)一節。 | 否 |
-| partitionColumnName | 指定**整數類型**來源資料行的名稱，供平行複製的範圍分割使用。 如果未指定，則會自動偵測資料表的主鍵，並使用該索引鍵做為資料分割資料行。 <br>當分割選項是 `DynamicRange` 時套用。 如果您使用查詢來抓取來源資料，請 `?AdfRangePartitionColumnName` 在 WHERE 子句中掛上。 如需範例，請參閱[從 Oracle 平行複製](#parallel-copy-from-oracle)一節。 | 否 |
-| partitionUpperBound | 從分割資料行複製出資料時的最大值。 <br>當分割選項是 `DynamicRange` 時套用。 如果您使用查詢來取出來源資料，請在 WHERE 子句中加上 `?AdfRangePartitionUpbound`。 如需範例，請參閱[從 Oracle 平行複製](#parallel-copy-from-oracle)一節。 | 否 |
-| partitionLowerBound | 從分割資料行複製出資料時的最小值。 <br>當分割選項是 `DynamicRange` 時套用。 如果您使用查詢來取出來源資料，請在 WHERE 子句中加上 `?AdfRangePartitionLowbound`。 如需範例，請參閱[從 Oracle 平行複製](#parallel-copy-from-oracle)一節。 | 否 |
+| type | 複製活動來源的 type 屬性必須設定為 `OracleSource` 。 | 是 |
+| oracleReaderQuery | 使用自訂 SQL 查詢來讀取資料。 例如 `"SELECT * FROM MyTable"`。<br>當您啟用分割區載入時，您必須在查詢中攔截任何對應的內建資料分割參數。 如需範例，請參閱 [從 Oracle 平行複製](#parallel-copy-from-oracle) 一節。 | 否 |
+| partitionOptions | 指定用來從 Oracle 載入資料的資料分割選項。 <br>允許的值為： **無** (預設值) 、 **PhysicalPartitionsOfTable**和 **DynamicRange**。<br>當您啟用分割區選項時 (也就是不 `None`) ，從 Oracle 資料庫並行載入資料的平行處理原則程度，是由 [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) 複製活動上的設定所控制。 | 否 |
+| partitionSettings | 指定資料分割的設定群組。 <br>當資料分割選項不適用時套用 `None` 。 | 否 |
+| partitionNames | 需要複製的實體分割區清單。 <br>當分割選項是 `PhysicalPartitionsOfTable` 時套用。 如果您使用查詢來取出來源資料，請在 WHERE 子句中加上 `?AdfTabularPartitionName`。 如需範例，請參閱 [從 Oracle 平行複製](#parallel-copy-from-oracle) 一節。 | 否 |
+| partitionColumnName | 指定**整數類型**來源資料行的名稱，供平行複製的範圍分割使用。 如果未指定，則會自動偵測資料表的主鍵，並將其當做資料分割資料行使用。 <br>當分割選項是 `DynamicRange` 時套用。 如果您使用查詢來取出來源資料，請  `?AdfRangePartitionColumnName` 在 WHERE 子句中掛上。 如需範例，請參閱 [從 Oracle 平行複製](#parallel-copy-from-oracle) 一節。 | 否 |
+| partitionUpperBound | 從分割資料行複製出資料時的最大值。 <br>當分割選項是 `DynamicRange` 時套用。 如果您使用查詢來取出來源資料，請在 WHERE 子句中加上 `?AdfRangePartitionUpbound`。 如需範例，請參閱 [從 Oracle 平行複製](#parallel-copy-from-oracle) 一節。 | 否 |
+| partitionLowerBound | 從分割資料行複製出資料時的最小值。 <br>當分割選項是 `DynamicRange` 時套用。 如果您使用查詢來取出來源資料，請在 WHERE 子句中加上 `?AdfRangePartitionLowbound`。 如需範例，請參閱 [從 Oracle 平行複製](#parallel-copy-from-oracle) 一節。 | 否 |
 
-**範例：使用沒有分割區的基本查詢來複製資料**
+**範例：使用沒有資料分割的基本查詢來複製資料**
 
 ```json
 "activities":[
@@ -261,12 +262,12 @@ Oracle 連結服務支援下列屬性：
 
 若要將資料複製到 Oracle，請將複製活動中的接收類型設定為 `OracleSink` 。 複製活動的 [接收] 區段支援下列屬性。
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| type | 複製活動接收器的類型屬性必須設定為 `OracleSink` 。 | 是 |
+| type | 複製活動接收的 type 屬性必須設定為 `OracleSink` 。 | 是 |
 | writeBatchSize | 當緩衝區大小達到時，將資料插入 SQL 資料表中 `writeBatchSize` 。<br/>允許的值為整數 (資料列數目)。 |否 (預設值為 10000) |
 | writeBatchTimeout | 在逾時前等待批次插入作業完成的時間。<br/>允許的值為時間範圍。 範例是 00:30:00 (30 分鐘)。 | 否 |
-| preCopyScript | 指定在每次執行時將資料寫入 Oracle 之前，要執行之複製活動的 SQL 查詢。 您可以使用此屬性來清除預先載入的資料。 | 否 |
+| preCopyScript | 針對每次執行時將資料寫入 Oracle 之前，指定要執行之複製活動的 SQL 查詢。 您可以使用此屬性來清除預先載入的資料。 | 否 |
 
 **範例︰**
 
@@ -299,24 +300,27 @@ Oracle 連結服務支援下列屬性：
 ]
 ```
 
-## <a name="parallel-copy-from-oracle"></a>從 Oracle 進行平行複製
+## <a name="parallel-copy-from-oracle"></a>從 Oracle 平行複製
 
-Data Factory Oracle 連接器會提供內建的資料分割，以平行方式從 Oracle 複製資料。 您可以在複製活動的 [**來源**] 索引標籤上找到資料分割選項。
+Data Factory Oracle 連接器提供內建的資料分割，以平行方式從 Oracle 複製資料。 您可以在複製活動的 [ **來源** ] 索引標籤上找到資料分割選項。
 
 ![分割選項的螢幕擷取畫面](./media/connector-oracle/connector-oracle-partition-options.png)
 
-當您啟用資料分割複本時，Data Factory 會針對您的 Oracle 來源執行平行查詢，以依分割區載入資料。 平行程度由複製活動的 [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) 設定所控制。 例如，如果您將設定 `parallelCopies` 為四，Data Factory 會根據您指定的資料分割選項和設定，同時產生並執行四個查詢，而且每個查詢都會從您的 Oracle 資料庫中取得部分資料。
+當您啟用分割區複製時，Data Factory 會針對您的 Oracle 來源執行平行查詢，以依分割區載入資料。 平行程度由複製活動的 [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) 設定所控制。 例如，如果您設定 `parallelCopies` 為四，Data Factory 會同時產生並執行四個以指定的資料分割選項和設定為基礎的查詢，而每個查詢都會從您的 Oracle 資料庫中取出部分資料。
 
-建議您啟用具有資料分割的平行複製，特別是當您從 Oracle 資料庫載入大量資料時。 以下針對各種情節的建議設定。 將資料複製到以檔案為基礎的資料存放區時，建議分成多個檔案來寫入資料夾 (僅指定資料夾名稱)，這樣效能會比寫入單一檔案更好。
+當您從 Oracle 資料庫載入大量資料時，建議您啟用資料分割的平行複製。 以下針對各種情節的建議設定。 將資料複製到以檔案為基礎的資料存放區時，建議分成多個檔案來寫入資料夾 (僅指定資料夾名稱)，這樣效能會比寫入單一檔案更好。
 
 | 狀況                                                     | 建議的設定                                           |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 具有實體分割區的大型資料表完整載入。          | 資料**分割選項**：資料表的實體分割區。 <br><br/>在執行期間，Data Factory 會自動偵測實體分割區，並依分割區複製資料。 |
-| 從大型資料表（不含實體分割區）進行完整載入，同時使用資料磁碟分割的整數資料行。 | **分割選項**：動態範圍分割。<br>**分割資料行**：指定用來分割資料的資料行。 如果未指定，則會使用主鍵資料行。 |
-| 使用包含實體分割區的自訂查詢來載入大量資料。 | 資料**分割選項**：資料表的實體分割區。<br>**查詢**：`SELECT * FROM <TABLENAME> PARTITION("?AdfTabularPartitionName") WHERE <your_additional_where_clause>`。<br>**分割區名稱**：指定要從中複製資料的分割區名稱。 如果未指定，Data Factory 會自動偵測您在 Oracle 資料集中指定之資料表上的實體分割區。<br><br>在執行期間，Data Factory 會將取代為 `?AdfTabularPartitionName` 實際的分割區名稱，並傳送至 Oracle。 |
-| 使用自訂查詢（不含實體分割區）載入大量資料，而使用資料磁碟分割的整數資料行。 | **分割選項**：動態範圍分割。<br>**查詢**：`SELECT * FROM <TABLENAME> WHERE ?AdfRangePartitionColumnName <= ?AdfRangePartitionUpbound AND ?AdfRangePartitionColumnName >= ?AdfRangePartitionLowbound AND <your_additional_where_clause>`。<br>**分割資料行**：指定用來分割資料的資料行。 您可以按照整數資料類型的資料行來分割。<br>**分割區上限**和資料**分割下限**：指定您是否要針對資料分割資料行進行篩選，以便只在範圍下限和上限之間取得資料。<br><br>在執行期間，Data Factory `?AdfRangePartitionColumnName` 會 `?AdfRangePartitionUpbound` 將、和取代為 `?AdfRangePartitionLowbound` 每個資料分割的實際資料行名稱和值範圍，並傳送至 Oracle。 <br>例如，如果您的資料分割資料行 "ID" 已設定為下限為1，而上限為80，且 parallel copy 設為4，則 Data Factory 會依4個分割區來抓取資料。 識別碼的範圍分別為 [1,20]、[21, 40]、[41, 60] 和 [61, 80]。 |
+| 具有實體資料分割之大型資料表的完整載入。          | **分割區選項**：資料表的實體分割區。 <br><br/>在執行期間，Data Factory 會自動偵測實體分割區，並依分割區複製資料。 |
+| 從大型資料表完整載入（沒有實體資料分割），同時使用整數資料行進行資料分割。 | **分割選項**：動態範圍分割。<br>**分割資料行**：指定用來分割資料的資料行。 如果未指定，則會使用主要索引鍵資料行。 |
+| 使用自訂查詢（具有實體分割區）載入大量資料。 | **分割區選項**：資料表的實體分割區。<br>**查詢**：`SELECT * FROM <TABLENAME> PARTITION("?AdfTabularPartitionName") WHERE <your_additional_where_clause>`。<br>**磁碟分割名稱**：指定要從中複製資料的資料分割名稱 (s) 。 如果未指定，Data Factory 會自動偵測您在 Oracle 資料集中指定之資料表上的實體分割區。<br><br>在執行期間，Data Factory 會 `?AdfTabularPartitionName` 以實際的資料分割名稱取代，並傳送到 Oracle。 |
+| 使用自訂查詢（沒有實體資料分割）載入大量資料，並使用資料分割的整數資料行。 | **分割選項**：動態範圍分割。<br>**查詢**：`SELECT * FROM <TABLENAME> WHERE ?AdfRangePartitionColumnName <= ?AdfRangePartitionUpbound AND ?AdfRangePartitionColumnName >= ?AdfRangePartitionLowbound AND <your_additional_where_clause>`。<br>**分割資料行**：指定用來分割資料的資料行。 您可以按照整數資料類型的資料行來分割。<br>**分割區上限** 和資料 **分割下限**：指定是否要針對資料分割資料行進行篩選，以便只在下限和上限之間取得資料。<br><br>在執行期間，Data Factory 會以 `?AdfRangePartitionColumnName` `?AdfRangePartitionUpbound` `?AdfRangePartitionLowbound` 每個資料分割的實際資料行名稱和值範圍取代、和，並傳送到 Oracle。 <br>例如，如果您將資料分割資料行 "ID" 的下限設為1，並將上限設為80，並將平行複本設定為4，Data Factory 會依4個數據分割抓取資料。 識別碼的範圍分別為 [1,20]、[21, 40]、[41, 60] 和 [61, 80]。 |
 
-**範例：使用實體資料分割進行查詢**
+> [!TIP]
+> 從非資料分割資料表複製資料時，您可以使用「動態範圍」資料分割選項來分割整數資料行。 如果您的來源資料沒有這類資料行類型，您可以利用來源查詢中的 [ORA_HASH]( https://docs.oracle.com/database/121/SQLRF/functions136.htm) 函數來產生資料行，並使用它作為資料分割資料行。
+
+**範例：使用實體分割區查詢**
 
 ```json
 "source": {
@@ -349,7 +353,7 @@ Data Factory Oracle 連接器會提供內建的資料分割，以平行方式從
 
 ## <a name="data-type-mapping-for-oracle"></a>Oracle 的資料類型對應
 
-當您將資料從和複製到 Oracle 時，會套用下列對應。 若要了解複製活動如何將來源結構描述和資料類型對應至接收，請參閱[結構描述和資料類型對應](copy-activity-schema-and-type-mapping.md)。
+當您從 Oracle 複製資料或將資料複製到該處時，會套用下列對應。 若要了解複製活動如何將來源結構描述和資料類型對應至接收，請參閱[結構描述和資料類型對應](copy-activity-schema-and-type-mapping.md)。
 
 | Oracle 資料類型 | Data Factory 過渡期資料類型 |
 |:--- |:--- |
@@ -371,7 +375,7 @@ Data Factory Oracle 連接器會提供內建的資料分割，以平行方式從
 | timestamp |Datetime |
 | TIMESTAMP WITH LOCAL TIME ZONE |String |
 | TIMESTAMP WITH TIME ZONE |String |
-| 不帶正負號的整數 |Number |
+| 不帶正負號的整數 |數字 |
 | VARCHAR2 |String |
 | XML |String |
 
