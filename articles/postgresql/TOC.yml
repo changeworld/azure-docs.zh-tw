@@ -552,10 +552,6 @@
               href: concepts-hyperscale-choose-distribution-column.md
             - name: 資料表共置
               href: concepts-hyperscale-colocation.md
-            - name: 設定選項
-              href: concepts-hyperscale-configuration-options.md
-            - name: 預付保留容量
-              href: concepts-hyperscale-reserved-pricing.md
         - name: 安全性
           items:
             - name: 防火牆規則
@@ -577,6 +573,10 @@
           items:
             - name: 監視與微調
               href: concepts-hyperscale-monitoring.md
+        - name: 設定選項
+          href: concepts-hyperscale-configuration-options.md
+        - name: 預付保留容量
+          href: concepts-hyperscale-reserved-pricing.md
         - name: PostgreSQL 擴充功能
           href: concepts-hyperscale-extensions.md
     - name: 應用程式開發介面參考
