@@ -10,23 +10,23 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/21/2019
+ms.date: 09/28/2020
 ms.author: duau
 ms.reviewer: tyao
-ms.openlocfilehash: 558d1c098f07f8e09a6a68a065cac9b7b38cfbf3
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 42697a57d39f4a34eee4866b67e2cde947db1ff5
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89399645"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449256"
 ---
 # <a name="geo-filtering-on-a-domain-for-azure-front-door"></a>針對 Azure Front Door 的網域進行地區篩選
 
-根據預設，不論使用者是在什麼位置提出要求，Azure Front Door 都會回應使用者的要求。 不過，在某些情況下，您可以依國家/地區來限制 Web 應用程式的存取。 Front Door 上的 Web 應用程式防火牆 (WAF) 服務可讓您定義原則，針對端點上的特定路徑使用自訂存取規則來允許或封鎖來自指定國家/地區的存取。 
+根據預設，Azure Front Door 會回應所有使用者要求，而不論要求的來源位置為何。 在某些情況下，您可能會想要依國家/地區限制對您 web 應用程式的存取。 Front Door 中 (WAF) service 的 Web 應用程式防火牆可讓您使用自訂存取規則，針對端點上的特定路徑來定義原則，以允許或封鎖來自指定國家/地區的存取。 
 
-WAF 原則通常包含一組自訂規則。 規則會由比對條件、動作及優先順序組成。 在比對條件中，您可以定義比對變數、運算子和比對值。  對地區篩選規則來說，比對變數是 REMOTE_ADDR、運算子是 GeoMatch，值則是相關的兩個字母國家/地區碼。 您可以結合 GeoMatch 條件和 REQUEST_URI 字串比對條件，來建立以路徑為基礎的地區篩選規則。
+WAF 原則包含一組自訂規則。 這項規則包含比對條件、動作和優先順序。 在比對條件中，您可以定義比對變數、運算子和 match 值。 若為地區篩選規則，則會 REMOTE_ADDR 比對變數、運算子為 GeoMatch，而值為感興趣的兩個字母國家/地區代碼。 您可以結合 GeoMatch 條件和 REQUEST_URI 字串比對條件，來建立以路徑為基礎的地區篩選規則。
 
-您可以藉由使用 [Azure PowerShell](front-door-tutorial-geo-filtering.md) 或[快速入門範本](https://github.com/Azure/azure-quickstart-templates/tree/master/101-front-door-geo-filtering)，來針對 Front Door 設定地區篩選原則。
+您可以使用 [Azure PowerShell](front-door-tutorial-geo-filtering.md) 或使用 [快速入門範本](https://github.com/Azure/azure-quickstart-templates/tree/master/101-front-door-geo-filtering)，為您的 Front Door 設定地區篩選原則。
 
 ## <a name="countryregion-code-reference"></a>國家/地區碼參考
 
@@ -212,5 +212,5 @@ WAF 原則通常包含一組自訂規則。 規則會由比對條件、動作及
 
 ## <a name="next-steps"></a>後續步驟
 
-- 了解 [Front Door 的應用程式層安全性](front-door-application-security.md)。
 - 了解如何[建立 Front Door](quickstart-create-front-door.md)。
+- 深入瞭解如何 [設定地區篩選 WAF 原則](front-door-tutorial-geo-filtering.md)。

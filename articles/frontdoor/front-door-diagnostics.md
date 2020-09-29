@@ -9,20 +9,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/18/2018
+ms.date: 09/28/2020
 ms.author: duau
-ms.openlocfilehash: 6f5051dd7dedcc49320557f17148bcdc9bf539ab
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: a1e77b5f669d1b492f2d71063a6c77bec1178696
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89399747"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449279"
 ---
 # <a name="monitoring-metrics-and-logs-in-azure-front-door"></a>監視 Azure Front Door 中的計量和記錄
 
 藉由使用 Azure Front Door，您可以透過下列方式監視資源：
 
-- **計量**。 Azure Front Door 目前有七個計量可查看效能計數器。
+- **計量**。 Azure Front Door 目前有八個度量可查看效能計數器。
 - **記錄**。 活動和診斷記錄可讓您從資源儲存或取用效能、存取和其他資料，以供監視之用。
 
 ### <a name="metrics"></a>計量
@@ -52,16 +52,16 @@ ms.locfileid: "89399747"
 1. 選取您的 Front Door 實例。
 2. 選取 [活動記錄]。
 
-    ![活動記錄檔](./media/front-door-diagnostics/activity-log.png)
+    :::image type="content" source="./media/front-door-diagnostics/activity-log.png" alt-text="活動記錄檔":::
 
 3. 選擇篩選範圍，然後選取 [套用 **]。**
 
 ## <a name="diagnostic-logs"></a><a name="diagnostic-logging"></a>診斷記錄
 診斷記錄會提供有關作業和錯誤的豐富資訊，這些資訊對於審核和疑難排解而言很重要。 診斷記錄與活動記錄不同。
 
-活動記錄可讓您深入瞭解在 Azure 資源上執行的作業。 診斷記錄可讓您深入瞭解您的資源所執行的作業。 如需詳細資訊，請參閱 [Azure 監視器診斷記錄](../azure-monitor/platform/platform-logs-overview.md)。
+活動記錄可讓您深入瞭解在 Azure 資源上執行的作業。 診斷記錄可讓您深入瞭解資源已完成的作業。 如需詳細資訊，請參閱 [Azure 監視器診斷記錄](../azure-monitor/platform/platform-logs-overview.md)。
 
-![診斷記錄](./media/front-door-diagnostics/diagnostic-log.png)
+:::image type="content" source="./media/front-door-diagnostics/diagnostic-log.png" alt-text="活動記錄檔":::
 
 若要為您的 Front Door 設定診斷記錄：
 
@@ -100,12 +100,11 @@ Front Door 目前提供 (批次處理) 的診斷記錄。 診斷記錄會提供�
 | 案例 | 記錄專案計數 | POP | BackendHostname | SentToOriginShield | CacheStatus |
 | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
 | 未啟用快取的路由規則 | 1 | Edge POP 碼 | 轉寄要求的後端 | 否 | CONFIG_NOCACHE |
-| 啟用快取的路由規則。 邊緣 POP 上的快取點擊 | 1 | Edge POP 碼 | 空白 | 否 | 打 |
+| 啟用快取的路由規則。 邊緣 POP 上的快取點擊 | 1 | Edge POP 碼 | Empty | 否 | 打 |
 | 啟用快取的路由規則。 邊緣 POP 快取遺漏，但在父快取 POP 快取點擊 | 2 | 1. Edge POP 碼</br>2. 父快取 POP 碼 | 1. 父快取 POP 主機名稱</br>2. 空白 | 1. True</br>2. False | 1. 遺漏</br>2. PARTIAL_HIT |
 | 啟用快取的路由規則。 邊緣和父快取 POP 上的快取遺漏 | 2 | 1. Edge POP 碼</br>2. 父快取 POP 碼 | 1. 父快取 POP 主機名稱</br>2. 可協助填入快取的後端 | 1. True</br>2. False | 1. 遺漏</br>2. 遺漏 |
 
-
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [建立 Front Door 設定檔](quickstart-create-front-door.md)
 - [Front Door 的運作方式](front-door-routing-architecture.md)

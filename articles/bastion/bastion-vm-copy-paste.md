@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: how-to
 ms.date: 05/04/2020
 ms.author: charwen
-ms.openlocfilehash: ad1476847874f7cea53c6e9c0c3d9f142c949dac
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 6835c5e1ecbf0fc99a14754d17bb6e6380eda6c8
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90987723"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91445342"
 ---
 # <a name="copy-and-paste-to-a-virtual-machine-azure-bastion"></a>複製並貼上至虛擬機器： Azure 防禦
 
@@ -35,13 +35,13 @@ ms.locfileid: "90987723"
 1. 將文字/內容從本機裝置複製到本機剪貼簿。
 1. 在遠端會話期間，選取兩個箭號來啟動 [防禦剪貼簿存取工具] 選項區。 箭號位於會話的左邊。
 
-   ![工具元件](./media/bastion-vm-manage/left.png)
+   ![螢幕擷取畫面，顯示視窗左側醒目提示之工具選擇區的啟動箭號。](./media/bastion-vm-manage/left.png)
 
    ![螢幕擷取畫面顯示在防禦中複製的文字剪貼簿。](./media/bastion-vm-manage/clipboard.png)
 1. 通常複製的文字會自動顯示在 [防禦複製貼上] 調色板上。 如果您的文字不存在，請將文字貼到 [調色板] 上的文字區域中。
 1. 文字出現在文字區域之後，您就可以將它貼到遠端會話。
 
-   ![貼上](./media/bastion-vm-manage/local.png)
+   ![顯示反白顯示覆制/貼上按鈕的螢幕擷取畫面，以及複製到遠端會話的範例文字字串。](./media/bastion-vm-manage/local.png)
 
 ## <a name="copy-from-a-remote-session"></a><a name="from"></a>從遠端會話複製
 

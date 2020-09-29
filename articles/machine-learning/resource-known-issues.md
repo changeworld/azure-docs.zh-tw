@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: troubleshooting, contperfq4
 ms.date: 08/13/2020
-ms.openlocfilehash: 67ab15a6b890bc5f28cd18fca8a35adbc7437778
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 3a1d5c70913f7e2a56eaf04be333a931c1adbc3d
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91280975"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91450054"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Azure Machine Learning 的已知問題與疑難排解
 
@@ -61,7 +61,7 @@ ms.locfileid: "91280975"
      
 * **安裝 azureml-automl 用戶端時，不保證會安裝說明套件：** 
    
-   執行已啟用模型說明的遠端 AutoML 執行時，您會看到錯誤訊息「請安裝 azureml-說明模型套件以進行模型說明」。 這是已知的問題。 解決方法是遵循下列其中一個步驟：
+   執行已啟用模型說明的遠端 AutoML 執行時，您會看到錯誤訊息「請安裝 azureml-說明模型套件以進行模型說明」。 這是已知問題。 解決方法是遵循下列其中一個步驟：
   
   1. 在本機安裝 azureml-說明模型。
    ```
@@ -209,6 +209,9 @@ ms.locfileid: "91280975"
     ```
 
     如果您未包含前置正斜線 '/'，則必須在工作目錄前面加上前置詞，例如 `/mnt/batch/.../tmp/dataset` 在計算目標上，以指出您要裝載資料集的位置。
+
+### <a name="mount-dataset"></a>裝載資料集
+* **資料集初始化失敗：等候掛接點就緒已超時**：已新增重試邏輯 `azureml-sdk >=1.12.0` 以減輕問題。 如果您是在舊版的 azureml sdk 版本上，請升級至最新版本。 如果您已經開啟 `azureml-sdk>=1.12.0` ，請重新建立您的環境，讓您有最新的修補程式。
 
 ### <a name="data-labeling-projects"></a>資料標記專案
 
@@ -407,7 +410,7 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
 
 針對下列錯誤採取下列動作：
 
-|錯誤  | 解決方案  |
+|Error  | 解決方案  |
 |---------|---------|
 |部署 web 服務時映射建立失敗     |  新增 "pynacl = = 1.2.1" 作為映射設定 Conda 檔案的 pip 相依性       |
 |`['DaskOnBatch:context_managers.DaskOnBatch', 'setup.py']' died with <Signals.SIGKILL: 9>`     |   將部署中所使用 Vm 的 SKU 變更為具有更多記憶體的 Vm。 |

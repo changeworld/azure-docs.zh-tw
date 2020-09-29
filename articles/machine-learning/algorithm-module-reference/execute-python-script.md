@@ -9,13 +9,13 @@ ms.topic: reference
 ms.custom: devx-track-python
 author: likebupt
 ms.author: keli19
-ms.date: 07/27/2020
-ms.openlocfilehash: 3a02581ab898fad0440f45626676ec6bdd7227eb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 09/29/2020
+ms.openlocfilehash: de372b9800f4b76b42624b30f05848bc570ae6e7
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91318257"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91450119"
 ---
 # <a name="execute-python-script-module"></a>執行 Python 腳本模組
 
@@ -56,6 +56,9 @@ if spec is None:
 
 > [!NOTE]
 > 如果您的管線包含多個執行 Python 腳本模組，而這些模組需要的套件不在預先安裝的清單中，請在每個模組中安裝套件。
+
+> [!WARNING]
+> Excute Python 腳本模組不支援安裝相依于額外原生程式庫的套件，其具有像是 "apt-get" 的命令，例如 JAVA、PyODBC 等等。這是因為此模組是在只預先安裝 Python 且具有非系統管理員許可權的簡單環境中執行。  
 
 ## <a name="upload-files"></a>上傳檔案
 [執行 Python 腳本] 模組支援使用 [Azure Machine Learning PYTHON SDK](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py&preserve-view=true#upload-file-name--path-or-stream-)上傳檔案。
@@ -140,7 +143,10 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
 
     您可以將兩個資料集傳回給設計工具，這必須是型別的序列 `pandas.DataFrame` 。 您可以在 Python 程式碼中建立其他輸出，並將它們直接寫入 Azure 儲存體。
 
-6. 提交管線，或選取模組並選取 [ **執行選取** ]，只執行 Python 腳本。
+    > [!WARNING]
+    > **不**建議您在**執行 Python 腳本模組**中連接到資料庫或其他外部儲存體。 您可以使用匯 [入資料模組](./import-data.md) 和 [匯出資料模組](./export-data.md)     
+
+6. 提交管線。
 
     所有的資料和程式碼都會載入至虛擬機器，並使用指定的 Python 環境執行。
 

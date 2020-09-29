@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/13/2019
-ms.openlocfilehash: 80e87d6fdab6ecf15c241581f8c19d36b30d7e30
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 09485d3279e4ca4fff5b6492bab432d8034d7e42
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327101"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449416"
 ---
 # <a name="application-insights-connector-management-solution-deprecated"></a>Application Insights Connector 管理解決方案 (取代)
 
@@ -55,7 +55,7 @@ Applications Insights Connector 解決方案可協助您診斷效能問題，以
 - 您必須至少有一個已設定的 Application Insights 資源。
 - 您必須是 Application Insights 資源的擁有者或參與者。
 
-## <a name="configuration"></a>組態
+## <a name="configuration"></a>設定
 
 1. 從 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AppInsights?tab=Overview) 或使用[從方案庫新增 Log Analytics 方案](../insights/solutions.md)中所述的程序，啟用 Azure Web Apps 分析解決方案。
 2. 瀏覽至 [Azure 入口網站](https://portal.azure.com)。 選取 [所有服務]**** 來開啟 Application Insights。 然後，搜尋 Application Insights。 
@@ -83,9 +83,9 @@ Applications Insights Connector 解決方案可協助您診斷效能問題，以
 
 按一下 [Application Insights]**** 圖格，以開啟 [Application Insights]**** 儀表板，請參閱下列刀鋒視窗。
 
-![Application Insights 儀表板](./media/app-insights-connector/app-insights-dash01.png)
+![Application Insights 儀表板的螢幕擷取畫面，其中顯示應用程式、資料量和可用性的 blade。](./media/app-insights-connector/app-insights-dash01.png)
 
-![Application Insights 儀表板](./media/app-insights-connector/app-insights-dash02.png)
+![Application Insights 儀表板的螢幕擷取畫面，其中顯示伺服器要求、失敗和例外狀況的 blade。](./media/app-insights-connector/app-insights-dash02.png)
 
 此儀表板包含下表所示的刀鋒視窗。 每個刀鋒視窗最多會列出 10 個與該刀鋒視窗中指定範圍和時間範圍的準則相符的項目。 當您按一下刀鋒視窗底部的 [查看全部]****，或按一下刀鋒視窗標頭時，您可以執行記錄搜尋來傳回所有記錄。
 
@@ -185,9 +185,9 @@ ApplicationInsights | summarize AggregatedValue = sum(SampledCount) by Telemetry
 | DeviceType | 用戶端裝置 |
 | ScreenResolution |   |
 | Continent | 要求的起源洲 |
-| 國家/地區 | 要求的來源國家/地區 |
+| 國家/地區 | 發出要求的國家/地區 |
 | Province | 要求的起源省、州或地區設定 |
-| 城市 | 要求的起源城市或鄉鎮 |
+| City | 要求的起源城市或鄉鎮 |
 | isSynthetic | 指出要求是由使用者或自動化方法建立。 True = 自動化方法或 false = 使用者產生 |
 | SamplingRate | 由傳送至入口網站之 SDK 所產生的遙測百分比。 範圍 0.0-100.0。 |
 | SampledCount | 100/(SamplingRate)。 例如，4 =&gt; 25% |
@@ -200,7 +200,7 @@ ApplicationInsights | summarize AggregatedValue = sum(SampledCount) by Telemetry
 
 ### <a name="availability-specific-fields"></a>可用性專屬欄位
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 | --- | --- |
 | TelemetryType | 可用性 |
 | AvailabilityTestName | Web 測試的名稱 |

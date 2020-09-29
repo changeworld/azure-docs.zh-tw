@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: troubleshooting
 ms.date: 09/04/2020
 ms.author: deanwe
-ms.openlocfilehash: fa24c0db398c4c799d218ff5e8ec8e3d3e321742
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 348106c405e6e096f7bfd9a225fc783c4454b1ad
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91311541"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449776"
 ---
 # <a name="frequently-asked-questions-for-azure-automanage-for-vms"></a>適用于 Vm 的 Azure Automanage 的常見問題
 
@@ -33,12 +33,13 @@ ms.locfileid: "91311541"
 - 使用者必須有正確的許可權
 - 僅限非擴展集 Vm
 - Vm 不得連結至不同訂用帳戶中的 log analytics 工作區
+- Automanage 目前不支援沙箱訂閱
 
 **啟用 Automanage 需要何種 RBAC 許可權？**
 
-如果您要在具有現有 Automanage 帳戶的 VM 上啟用 Automanage，您需要有 VM 所在資源群組的「參與者」角色。 
+如果您要在具有現有 Automanage 帳戶的 VM 上啟用 Automanage，您需要有 VM 所在資源群組的「參與者」角色。
 
-如果您在啟用時使用新的 Automanage 帳戶，使用者必須擁有「擁有者」角色，或具有訂用帳戶的「參與者」和「使用者存取系統管理員」角色。
+如果您在啟用時使用新的 Automanage 帳戶，您必須擁有「擁有者」角色，或具有訂用帳戶的「參與者」和「使用者存取系統管理員」角色。
 
 
 **支援哪些區域？**
@@ -50,6 +51,9 @@ ms.locfileid: "91311541"
 
 Automanage 會在 VM 的整個生命週期中註冊、設定及監視 [此處](virtual-machines-best-practices.md)所列的服務。
 
+**Azure Automanage 是否適用于已啟用 Azure Arc 的 Vm？**
+
+Automanage 目前不支援已啟用 Arc 的 Vm。
 
 **我可以自訂 Azure Automanage 上的設定嗎？**
 
@@ -88,7 +92,7 @@ Automanage 帳戶是 MSI (受控服務識別) ，可提供安全性內容或執�
 
 **啟用 Automanage 時，除了選取的 VM () 之外，是否會影響任何額外的 Vm？**
 
-如果您的 VM 已連結至現有的 Log Analytics 工作區，我們將會重複使用該工作區來套用這些解決方案：變更追蹤、清查和更新管理。 所有連線到該工作區的 Vm 都會啟用這些解決方案。 
+如果您的 VM 已連結至現有的 Log Analytics 工作區，我們將會重複使用該工作區來套用這些解決方案：變更追蹤、清查和更新管理。 所有連線到該工作區的 Vm 都會啟用這些解決方案。
 
 
 **我可以變更 VM 的設定檔嗎？**

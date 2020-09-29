@@ -16,12 +16,12 @@ ms.date: 09/16/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 160137ca2d14e0012a524ee0818b7fb269fa7984
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: b7b70e8a408c22be0331bfd0dcbe01830b072ab8
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90980270"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449975"
 ---
 # <a name="change-request-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>在 Azure AD 權利管理中變更存取套件的要求設定
 
@@ -125,8 +125,8 @@ ms.locfileid: "90980270"
     |  |  |
     | --- | --- |
     | **特定的已連線組織** | 如果您想要從系統管理員先前新增的組織清單中選取此選項，請選擇此選項。 所選組織中的所有使用者都可以要求此存取套件。 |
-    | **所有已連線的組織** | 如果所有已連線組織中的所有使用者都可以要求此存取套件，請選擇此選項。 |
-    | **所有已連線組織 (的所有使用者，以及任何新的外部使用者) ** | 如果所有已連線組織中的所有使用者都可以要求此存取套件，且 B2B 允許或拒絕清單設定應優先于任何新的外部使用者，請選擇此選項。 |
+    | **所有設定的已連線組織** | 如果所有設定的已連線組織中的所有使用者都可以要求此存取套件，請選擇此選項。 只有已設定的已連線組織使用者可以要求從所有已設定組織對使用者顯示的存取套件。 |
+    | **所有已連線組織 (的所有使用者，以及任何新的外部使用者) ** | 如果網際網路上的任何使用者都應該能夠要求此存取套件，請選擇此選項。  如果它們不屬於您目錄中的已連線組織，則會在要求套件時自動建立已連線的組織。 自動建立的已連線組織將會處於 [已 **提議** ] 狀態。 如需有關提議狀態的詳細資訊，請參閱 [已連線組織的狀態屬性](entitlement-management-organization.md#state-properties-of-connected-organizations)。 |
 
     已連線的組織是與您關聯的外部 Azure AD 目錄或網域。
 
@@ -204,7 +204,7 @@ ms.locfileid: "90980270"
 
 1. 如果您正在編輯原則，請按一下 [ **更新**]。 如果您要新增原則，請按一下 [ **建立**]。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [變更存取套件的核准設定](entitlement-management-access-package-approval-policy.md)
 - [變更存取套件的生命週期設定](entitlement-management-access-package-lifecycle-policy.md)

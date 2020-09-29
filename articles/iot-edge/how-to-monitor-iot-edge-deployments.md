@@ -10,12 +10,12 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: bc01c283fd4e2b6e3494c18c1908152aecee2c5f
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 4ff4d5a810eb79fb11e66591cd0b695062b1c9f6
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489107"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91450175"
 ---
 # <a name="monitor-iot-edge-deployments"></a>監視 IoT Edge 部署
 
@@ -63,12 +63,11 @@ IoT 中樞服務可讓您在 Azure 入口網站和 Azure CLI 中監視此資料�
 
    ![檢視用於部署的計量](./media/how-to-monitor-iot-edge-deployments/deployment-metrics-tab.png)
 
-
 若要對您的部署進行變更，請參閱[修改部署](how-to-deploy-at-scale.md#modify-a-deployment)。
 
 ## <a name="monitor-a-deployment-with-azure-cli"></a>使用 Azure CLI 監視部署
 
-使用 [az IoT Edge deployment show](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/edge/deployment?view=azure-cli-latest#ext-azure-iot-az-iot-edge-deployment-show) 命令顯示單一部署的詳細資料：
+使用 [az IoT Edge deployment show](/cli/azure/ext/azure-iot/iot/edge/deployment#ext-azure-iot-az-iot-edge-deployment-show) 命令顯示單一部署的詳細資料：
 
 ```cli
 az iot edge deployment show --deployment-id [deployment id] --hub-name [hub name]
@@ -86,7 +85,7 @@ deployment show 命令接受下列參數︰
 * **reportedSuccessfulCount** - 裝置計量，指定從 IoT Edge 用戶端執行階段回報成功之部署中的 IoT Edge 裝置數目。
 * **reportedFailedCount** - 裝置計量，指定從 IoT Edge 用戶端執行階段回報失敗之部署中的 IoT Edge 裝置數目。
 
-您可以使用 [az IoT Edge deployment show-metric](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/edge/deployment?view=azure-cli-latest#ext-azure-iot-az-iot-edge-deployment-show-metric) 命令，顯示每個計量的裝置識別碼或物件的清單：
+您可以使用 [az IoT Edge deployment show-metric](/cli/azure/ext/azure-iot/iot/edge/deployment#ext-azure-iot-az-iot-edge-deployment-show-metric) 命令，顯示每個計量的裝置識別碼或物件的清單：
 
 ```cli
 az iot edge deployment show-metric --deployment-id [deployment id] --metric-id [metric id] --hub-name [hub name]
@@ -102,4 +101,4 @@ deployment show-metric 命令接受下列參數︰
 
 ## <a name="next-steps"></a>後續步驟
 
-瞭解如何[監視模組 twins](how-to-monitor-module-twins.md)，主要是 IoT Edge 代理程式和 IoT Edge 中樞執行時間模組，以取得 IoT Edge 部署的連線和健康狀態。
+瞭解如何針對 IoT Edge 部署的連線能力和健康情況， [監視模組 twins](how-to-monitor-module-twins.md)，主要是 IoT Edge 代理程式和 IoT Edge 中樞執行時間模組。

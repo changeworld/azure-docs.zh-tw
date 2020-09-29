@@ -3,12 +3,12 @@ title: Azure Migrate 設備
 description: 提供 Azure Migrate 設備支援的摘要。
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: e2bd3f2fa40bbf31713393f18a04624d70cbd244
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: ac3c90f1c09d290d5112a0e0d7abc5218788caf7
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90084765"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91450047"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate 設備
 
@@ -47,12 +47,12 @@ ms.locfileid: "90084765"
 **支援的部署** | 使用 OVA 範本部署為 VMware VM。<br/><br/> 使用 PowerShell 安裝指令碼部署為 VMware VM 或實體機器。
 **專案支援** |  設備可以與單一專案相關聯。 <br/> 任意數目的設備可以與單一專案相關聯。<br/> 
 **探索限制** | 設備可以在 vCenter Server 上探索最多 10,000 個 VMware VM。<br/> 設備可以連線到單一 vCenter Server。
-**OVA 範本** | 從入口網站或從[這裡](https://go.microsoft.com/fwlink/?linkid=2140333)下載<br/><br/> 下載大小為 11.6 GB。<br/><br/> 下載的設備範本隨附 Windows Server 2016 評估授權，其有效期為 180 天。 如果評估期接近到期日，建議您下載並部署新的設備，或啟用設備 VM 的作業系統授權。
+**OVA 範本** | 從入口網站或從[這裡](https://go.microsoft.com/fwlink/?linkid=2140333)下載<br/><br/> 下載大小為 11.9 GB。<br/><br/> 下載的設備範本隨附 Windows Server 2016 評估授權，其有效期為 180 天。 如果評估期接近到期日，建議您下載並部署新的設備，或啟用設備 VM 的作業系統授權。
 **PowerShell 指令碼** | 請參閱這 [篇文章](./deploy-appliance-script.md#set-up-the-appliance-for-vmware)。<br/><br/> 
 **軟體/硬體** |  設備應該在具有 Windows Server 2016、32 GB RAM、8 個 vCPU、約 80 GB 磁碟儲存體和外部虛擬交換器的機器上執行。<br/> 設備需要存取網際網路 (直接或透過 Proxy)。<br/><br/> 如果您在 VMware VM 上執行設備，您需要 vCenter Server 的足夠資源，才能配置符合需求的 VM。<br/><br/> 如果您在實體機器上執行設備，請確定其正在執行 Windows Server 2016，且符合硬體需求。
 **VMware 需求** | 如果您將設備部署為 VMware VM，則必須將其部署在執行 5.5 版或更新版本的 ESXi 主機上。<br/><br/> 執行 5.5、6.0、6.5 或 6.7 的 vCenter Server。
 **VDDK (無代理程式移轉)** | 如果您將設備部署為 VMware VM，而且您正在執行無代理程式移轉，則必須在設備 VM 上安裝 VMware vSphere VDDK。
-**雜湊值 OVA** | [驗證](tutorial-assess-vmware.md#verify-security) OVA 範本雜湊值。
+**雜湊值 OVA** | [驗證](tutorial-discover-vmware.md#verify-security) OVA 範本雜湊值。
 **雜湊值 PowerShell 指令碼** | [驗證](deploy-appliance-script.md#verify-file-security) PowerShell 指令碼雜湊值。
 
 
@@ -67,11 +67,11 @@ ms.locfileid: "90084765"
 **支援的部署** | 使用 VHD 範本部署為 Hyper-V VM。<br/><br/> 使用 PowerShell 安裝指令碼部署為 Hyper-V VM 或實體機器。
 **專案支援** |  設備可以與單一專案相關聯。 <br/> 任意數目的設備可以與單一專案相關聯。<br/> 
 **探索限制** | 設備可以探索最多 5000 部 Hyper-V VM。<br/> 設備最多可以連線到 300 部 Hyper-V 主機。
-**VHD 範本** | 包含 VHD 的 ZIP 資料夾。 從入口網站或從 [這裡](https://go.microsoft.com/fwlink/?linkid=2140422)下載。<br/><br/> 下載大小為 10.4 GB。<br/><br/> 下載的設備範本隨附 Windows Server 2016 評估授權，其有效期為 180 天。 如果評估期接近到期日，建議您下載並部署新的設備，或啟用設備 VM 的作業系統授權。
+**VHD 範本** | 包含 VHD 的 ZIP 資料夾。 從入口網站或從 [這裡](https://go.microsoft.com/fwlink/?linkid=2140422)下載。<br/><br/> 下載大小為 8.91 GB。<br/><br/> 下載的設備範本隨附 Windows Server 2016 評估授權，其有效期為 180 天。 如果評估期接近到期日，建議您下載並部署新的設備，或啟用設備 VM 的作業系統授權。
 **PowerShell 指令碼** | 請參閱這 [篇文章](./deploy-appliance-script.md#set-up-the-appliance-for-hyper-v)。<br/><br/> 
-**軟體/硬體***   |  設備應該在具有 Windows Server 2016、16 GB RAM、8個 vcpu、大約 80 GB 磁片儲存體和外部虛擬交換器的電腦上執行。<br/> 設備需要靜態或動態 IP 位址，且需要存取網際網路 (直接或透過 Proxy)。<br/><br/> 如果您以 Hyper-V VM 的身分執行設備，則在 Hyper-V 主機上需要足夠的資源來配置 16 GB RAM、8 個 vCPU，大約 80 GB 的儲存空間，以及適用於設備 VM 的外部交換器。<br/><br/> 如果您在實體機器上執行設備，請確定其正在執行 Windows Server 2016，且符合硬體需求。 
+**軟體/硬體***   |  設備應該在具有 Windows Server 2016、16 GB RAM、8個 vcpu、大約 80 GB 磁片儲存體和外部虛擬交換器的電腦上執行。<br/> 設備需要靜態或動態 IP 位址，且需要存取網際網路 (直接或透過 Proxy)。<br/><br/> 如果您執行設備作為 Hyper-v VM，您需要 Hyper-v 主機上的足夠資源來配置硬體需求。<br/><br/> 如果您在實體機器上執行設備，請確定其正在執行 Windows Server 2016，且符合硬體需求。 
 **Hyper-V 需求** | 部署如果您使用 VHD 範本來部署設備，Azure Migrate 提供的設備 VM 就是 Hyper-V VM 5.0 版。<br/><br/> Hyper-V 主機必須執行 Windows Server 2012 R2 或更新版本。 
-**雜湊值 VHD** | VHD 範本雜湊值。
+**雜湊值 VHD** | [確認](tutorial-discover-hyper-v.md#verify-security) VHD 範本雜湊值。
 **雜湊值 PowerShell 指令碼** | [驗證](deploy-appliance-script.md#verify-file-security) PowerShell 指令碼雜湊值。
 
 
@@ -84,9 +84,9 @@ ms.locfileid: "90084765"
 **支援的部署** | 使用 PowerShell 安裝指令碼，部署為專用的實體機器或 VM。 您可以從入口網站下載此指令碼。
 **專案支援** |  設備可以與單一專案相關聯。 <br/> 任意數目的設備可以與單一專案相關聯。<br/> 
 **探索限制** | 設備最多可探索1000部實體伺服器。
-**PowerShell 指令碼** | 從入口網站或從 [這裡](https://go.microsoft.com/fwlink/?linkid=2140334)下載腳本 ( # A0) 壓縮資料夾中。 [深入了解](tutorial-discover-physical.md)。<br/><br/> 下載大小為 85 MB。
-**軟體/硬體** |  設備應該在具有 Windows Server 2016、16 GB RAM、8個 vcpu、大約 80 GB 磁片儲存體和外部虛擬交換器的電腦上執行。<br/> 設備需要靜態或動態 IP 位址，且需要存取網際網路 (直接或透過 Proxy)。<br/><br/> 如果您在實體機器上執行設備，請確定其正在執行 Windows Server 2016，且符合硬體需求。<br/> 不支援在使用 Windows Server 2019 的電腦上執行設備。
-**雜湊值** | [驗證](deploy-appliance-script.md#verify-file-security) PowerShell 指令碼雜湊值。
+**PowerShell 指令碼** | 從入口網站或從 [這裡](https://go.microsoft.com/fwlink/?linkid=2140334)下載腳本 ( # A0) 壓縮資料夾中。 [深入了解](tutorial-discover-physical.md)。<br/><br/> 下載大小為 85.8 MB。
+**軟體/硬體** |  設備應該在具有 Windows Server 2016、16 GB RAM、8個 vcpu 的電腦上執行，大約是 80 GB 的磁片儲存體。<br/> 設備需要靜態或動態 IP 位址，且需要存取網際網路 (直接或透過 Proxy)。<br/><br/> 如果您在實體機器上執行設備，請確定其正在執行 Windows Server 2016，且符合硬體需求。<br/>_ (目前只有 Windows Server 2016 支援設備的部署。 ) _
+**雜湊值** | [驗證](tutorial-discover-physical.md#verify-security) PowerShell 指令碼雜湊值。
 
 ## <a name="url-access"></a>URL 存取
 
@@ -256,7 +256,7 @@ Service Pack  | HKLM： \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceN
 
 以下是設備從每個啟用應用程式探索的 VM 收集到的已安裝應用程式資料。 根據 VM 的作業系統，會執行一或多個命令。 此資料會傳送至 Azure。
 
-資料  | Command
+資料  | 命令
 --- | --- 
 名稱 | rpm、dpkg-查詢、貼齊
 版本 | rpm、dpkg-查詢、貼齊

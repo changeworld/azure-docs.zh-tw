@@ -8,19 +8,24 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 05/26/2020
-ms.openlocfilehash: 69c18c24ae9a8eb4c1fd54c1f8530e126a40b004
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/26/2020
+ms.openlocfilehash: d64933f7b2c8ebc8597b93cbd16b34158f936f96
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90898520"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91450094"
 ---
 # <a name="densenet"></a>DenseNet
 
 本文描述如何在 Azure Machine Learning 設計工具中使用 **densenet-121** 模組，以使用 densenet-121 演算法建立影像分類模型。  
 
-此分類演算法是受監督的學習方法，而且需要已加上標籤的資料集。 如需如何取得已標記之影像目錄的詳細指示，請參閱 [轉換為影像目錄](convert-to-image-directory.md) 模組。 您可以提供模型和標示的影像目錄作為 [定型 Pytorch 模型](train-pytorch-model.md)的輸入，來定型模型。 然後，您可以使用定型的模型，利用 [計分影像模型](score-image-model.md)來預測新輸入範例的值。
+此分類演算法是受監督的學習方法，而且需要已加上標籤的影像目錄。 
+
+> [!NOTE]
+> 此模組不支援從 studio 中的 *資料標記* 所產生的標記資料集，但僅支援從 [轉換成映射目錄](convert-to-image-directory.md) 模組所產生的標記影像目錄。 
+
+您可以提供模型和標示的影像目錄作為 [定型 Pytorch 模型](train-pytorch-model.md)的輸入，來定型模型。 然後，您可以使用定型的模型，利用 [計分影像模型](score-image-model.md)來預測新輸入範例的值。
 
 ### <a name="more-about-densenet"></a>深入瞭解 Densenet-121
 
@@ -49,7 +54,7 @@ ms.locfileid: "90898520"
 
 ###  <a name="module-parameters"></a>模組參數  
 
-| Name             | 範圍 | 類型    | 預設     | 描述                              |
+| 名稱             | 範圍 | 類型    | 預設     | 描述                              |
 | ---------------- | ----- | ------- | ----------- | ---------------------------------------- |
 | 模型名稱       | 任意   | 模式    | densenet201 | 特定 densenet-121 結構的名稱     |
 | 預先定型       | 任意   | 布林值 | True        | 是否要在 ImageNet 上使用預先定型的模型 |

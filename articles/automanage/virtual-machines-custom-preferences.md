@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 09/04/2020
 ms.author: jushiman
-ms.openlocfilehash: cf8e7340ce3554bf27364335457a5b7eadcdc049
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 7a716ed9bca6d34ad4dbcd2566837a839f71153b
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90933956"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91450309"
 ---
 # <a name="create-a-custom-preference-in-azure-automanage-for-vms"></a>在適用于 Vm 的 Azure Automanage 中建立自訂喜好設定
 
@@ -42,26 +42,26 @@ ms.locfileid: "90933956"
 登入 [Azure 入口網站](https://portal.azure.com/)。
 
 
-## <a name="enable-automanage-for-vms-on-an-existing-vm"></a>針對現有 VM 上的 Vm 啟用 Automanage
+## <a name="enable-automanage-for-vms-on-an-existing-vm"></a>在現有 VM 上啟用 VM 的 Automanage
 
-1. 在搜尋列中，搜尋並選取 [ **Automanage-Azure 虛擬機器最佳作法**]。
+1. 在搜尋列中，搜尋並選取 [Automanage – Azure 虛擬機器最佳做法]。
 
-2. 選取 [ **在現有的 VM 上啟用**]。
+2. 選取 [在現有 VM 上啟用]。
 
-3. 在 [ **選取機器** ] 分頁上：
-    1. 依 **訂** 用帳戶和 **資源群組**篩選 vm 清單。
-    1. 核取您想要上架之每部虛擬機器的核取方塊。
+3. 在 [選取機器] 刀鋒視窗上：
+    1. 依 [訂用帳戶] 和 [資源群組] 來篩選 VM 清單。
+    1. 核取每部欲上線虛擬機器的核取方塊。
     1. 按一下 [選取]**** 按鈕。
 
-    :::image type="content" source="media\virtual-machine-custom-preferences\existing-vm-select-machine.png" alt-text="從可用的 Vm 清單中選取現有的 VM。":::
+    :::image type="content" source="media\virtual-machine-custom-preferences\existing-vm-select-machine.png" alt-text="從可用 VM 清單中選取現有 VM。":::
 
-4. 在 [設定 **設定檔**] 底下，按一下 **[流覽] 並變更設定檔和喜好**設定。
+4. 在 [組態設定檔] 底下，按一下 [瀏覽並變更設定檔及喜好設定]。
 
-    :::image type="content" source="media\virtual-machine-custom-preferences\existing-vm-quick-create.png" alt-text="流覽及變更設定檔和喜好設定。":::
+    :::image type="content" source="media\virtual-machine-custom-preferences\existing-vm-quick-create.png" alt-text="從可用 VM 清單中選取現有 VM。":::
 
 5. 在 [ **選取設定設定檔 + 喜好** 設定] 分頁上，選取左側的設定檔：用於測試的 *開發/測試* *、生產環境的生產環境* 。
 
-    :::image type="content" source="media\virtual-machine-custom-preferences\browse-production-profile.png" alt-text="流覽生產設定設定檔。":::
+    :::image type="content" source="media\virtual-machine-custom-preferences\browse-production-profile.png" alt-text="從可用 VM 清單中選取現有 VM。":::
 
 6. 在選擇的設定檔中，您可以在 [設定 **喜好** 設定] 下，針對特定服務進行調整。
     1. 按一下 [ **建立新的喜好**設定]。
@@ -71,7 +71,7 @@ ms.locfileid: "90933956"
         1. 喜好設定名稱
         1. 區域
 
-    :::image type="content" source="media\virtual-machine-custom-preferences\create-preference.png" alt-text="填寫 configuration 喜好設定。":::
+    :::image type="content" source="media\virtual-machine-custom-preferences\create-preference.png" alt-text="從可用 VM 清單中選取現有 VM。":::
 
 7. 移至 [喜好設定] 索引標籤，並調整您想要的設定喜好設定。
         
@@ -84,27 +84,27 @@ ms.locfileid: "90933956"
 10. 按一下 [啟用]**** 按鈕。
 
 
-## <a name="disable-automanage-for-vms"></a>停用 Vm 的 Automanage
+## <a name="disable-automanage-for-vms"></a>停用 VM 的 Automanage
 
-藉由停用 automanagement，快速停止使用虛擬機器的 Azure Automanage。
+停用自動管理即可快速停止使用虛擬機器的 Azure Automanage。
 
-:::image type="content" source="media\virtual-machine-custom-preferences\disable-step-1.png" alt-text="正在停用虛擬機器上的 Automanage。":::
+:::image type="content" source="media\virtual-machine-custom-preferences\disable-step-1.png" alt-text="從可用 VM 清單中選取現有 VM。":::
 
-1. 移至 [ **Automanage-Azure 虛擬機器最佳作法** ] 頁面，其中會列出所有自動管理的 vm。
-1. 選取您要停用之虛擬機器旁的核取方塊。
-1. 按一下 [ **停用 automanagent** ] 按鈕。
-1. 請仔細閱讀產生的快顯視窗中的訊息，再同意 **停**用。
+1. 移至 [Automanage – Azure 虛擬機器最佳做法] 頁面，其中會列出所有自動管理的 VM。
+1. 選取所要停用虛擬機器旁的核取方塊。
+1. 按一下 [停用自動管理] 按鈕。
+1. 先仔細閱讀所產生快顯視窗中的訊息，然後同意 [停用]。
 
 
 ## <a name="clean-up-resources"></a>清除資源
 
-如果您建立了新的資源群組來嘗試 Azure Automanage 的虛擬機器，而不再需要它，您可以刪除資源群組。 刪除群組也會刪除 VM 和資源群組中的所有資源。
+如果您之前建立了新資源群組來試用虛擬機器的 Azure Automanage，但已不再需要使用，則可以刪除該資源群組。 刪除群組也會刪除 VM 和資源群組中的所有資源。
 
-Azure Automanage 會建立用來儲存資源的預設資源群組。 檢查具有命名慣例 "DefaultResourceGroupRegionName" 和 "AzureBackupRGRegionName" 的資源群組，以清除所有資源。
+Azure Automanage 會建立用來儲存資源的預設資源群組。 檢查具有「DefaultResourceGroupRegionName」和「AzureBackupRGRegionName」命名慣例的資源群組，以清除所有資源。
 
 1. 選取 [資源群組]。
 1. 在資源群組的頁面上，選取 [刪除]。
-1. 出現提示時，請確認資源群組的名稱，然後選取 [ **刪除**]。
+1. 出現提示時，請確認資源群組的名稱，然後選取 [刪除]。
 
 
 ## <a name="next-steps"></a>下一步 

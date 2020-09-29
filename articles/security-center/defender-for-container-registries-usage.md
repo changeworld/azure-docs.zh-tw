@@ -4,15 +4,15 @@ description: 瞭解如何使用適用于容器登錄的 Azure Defender 來掃描
 author: memildin
 ms.author: memildin
 ms.date: 9/22/2020
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 04a7b7f40e1591a919668e940a883dde9a6f4689
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1ff28b13d9adc120f8ee40bcd0119bf9b6883d6a
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91302004"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449131"
 ---
 # <a name="use-azure-defender-for-container-registries-to-scan-your-images-for-vulnerabilities"></a>使用適用于容器登錄的 Azure Defender 來掃描映射是否有弱點
 
@@ -150,7 +150,7 @@ ms.locfileid: "91302004"
 1. 若要查看、覆寫或刪除規則： 
     1. 選取 [ **停用規則**]。
     1. 從範圍清單中，使用作用中規則的訂閱會顯示為已套用的 **規則**。
-        :::image type="content" source="./media/remediate-vulnerability-findings-vm/modify-rule.png" alt-text="修改或刪除現有的規則":::
+        :::image type="content" source="./media/remediate-vulnerability-findings-vm/modify-rule.png" alt-text="針對登錄上的 VA 結果建立停用規則":::
     1. 若要查看或刪除規則，請選取省略號功能表 ( ) ]。
 
 

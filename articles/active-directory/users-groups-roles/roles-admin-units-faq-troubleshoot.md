@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 22992f66d45b9bdb76383301cccff645c98a74d9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 7f9af8ee3bf87cfd5d2e74adfce618c7cf8c7e63
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91264774"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91450328"
 ---
 # <a name="azure-ad-administrative-units-troubleshooting-and-faq"></a>Azure AD 管理單位：疑難排解和常見問題
 
@@ -67,9 +67,9 @@ ms.locfileid: "91264774"
 
 **問： PowerShell 和圖形 API 是否支援管理單位？**
 
-**答：** 是。 您可以在 [PowerShell Cmdlet 檔](/powershell/module/Azuread/?view=azureadps-2.0-preview&preserve-view=true) 和 [範例腳本](/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0-preview&preserve-view=true)中找到管理單位的支援。
+**答：** 是。 您可以在 [PowerShell Cmdlet 檔](/powershell/module/Azuread/?view=azureadps-2.0&preserve-view=true) 和 [範例腳本](/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0&preserve-view=true)中找到管理單位的支援。
 
-在 Microsoft Graph 中尋找 [>administrativeunit 資源類型](/graph/api/resources/administrativeunit?view=graph-rest-beta&preserve-view=true) 的支援。
+在 Microsoft Graph 中尋找 [>administrativeunit 資源類型](/graph/api/resources/administrativeunit?view=graph-rest-1.0&preserve-view=true) 的支援。
 
 ## <a name="next-steps"></a>後續步驟
 

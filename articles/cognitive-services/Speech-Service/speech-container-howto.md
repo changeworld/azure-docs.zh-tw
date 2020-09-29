@@ -1,23 +1,25 @@
 ---
-title: 安裝語音容器-語音服務
+title: 安裝和執行適用于語音服務 Api 的 Docker 容器
 titleSuffix: Azure Cognitive Services
-description: 安裝和執行語音容器。 語音轉文字會即時地將音訊串流轉譯成文字，以便您的應用程式、工具或裝置使用或顯示。 文字轉語音會將輸入文字轉換為仿真人的合成語音。
+description: 使用適用于語音服務的 Docker 容器來執行語音辨識、轉譯、產生及更多內部部署。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 09/24/2020
+ms.date: 09/28/2020
 ms.author: aahi
-ms.openlocfilehash: be4b7f6a0f8afae9188b1f969956424041e77d9e
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.custom: cog-serv-seo-aug-2020
+keywords: 內部部署、Docker、容器
+ms.openlocfilehash: 45edd1b13d4fe6f78eb127e7aad8feb611bce1d1
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371672"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91460045"
 ---
-# <a name="install-and-run-speech-service-containers"></a>安裝和執行語音服務容器 
+# <a name="install-and-run-docker-containers-for-the-speech-service-apis"></a>安裝和執行適用于語音服務 Api 的 Docker 容器 
 
 容器可讓您在自己的環境中執行某些語音服務 API。 容器非常適合用於特定的安全性和資料控管需求。 在本文中，您將了解如何下載、安裝及執行語音容器。
 
@@ -37,7 +39,7 @@ ms.locfileid: "91371672"
 >
 > 若要使用語音容器，您必須提交線上要求並核准。 如需詳細資訊，請參閱下一節 **執行容器的要求核准** 。
 
-| 容器 | 特性 | Latest |
+| 容器 | 功能 | Latest |
 |--|--|--|
 | 語音轉文字 | 使用中繼結果分析情感和轉譯連續即時語音或批次音訊錄製。  | 2.5.0 |
 | 自訂語音轉換文字 | 從 [自訂語音入口網站](https://speech.microsoft.com/customspeech)使用自訂模型，以中繼結果轉譯連續的即時語音或批次音訊錄製至文字。 | 2.5.0 |
@@ -48,7 +50,7 @@ ms.locfileid: "91371672"
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/cognitive-services/)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 使用語音容器之前的必要條件如下：
 
@@ -358,7 +360,7 @@ CloudAI:SentimentAnalysisSettings:SentimentAnalysisApiKey={SENTIMENT_APIKEY}
 
 下表表示各種 `docker run` 參數及其對應的描述：
 
-| 參數 | 說明 |
+| 參數 | 描述 |
 |---------|---------|
 | `{VOLUME_MOUNT}` | 主機電腦 [磁片區掛接](https://docs.docker.com/storage/volumes/)，docker 會使用它來保存自訂模型。 例如， *C:\CustomSpeech* ，其中 *C 磁片磁碟機* 位於主機電腦上。 |
 | `{MODEL_ID}` | 自訂語音入口網站的 [**定型**] 頁面中的自訂語音**模型識別碼**。 |
@@ -439,7 +441,7 @@ ApiKey={API_KEY}
 
 下表表示各種 `docker run` 參數及其對應的描述：
 
-| 參數 | 說明 |
+| 參數 | 描述 |
 |---------|---------|
 | `{VOLUME_MOUNT}` | 主機電腦 [磁片區掛接](https://docs.docker.com/storage/volumes/)，docker 會使用它來保存自訂模型。 例如， *C:\CustomSpeech* ，其中 *C 磁片磁碟機* 位於主機電腦上。 |
 | `{MODEL_ID}` | 自訂語音入口網站的 [**定型**] 頁面中的自訂語音**模型識別碼**。 |
@@ -482,7 +484,7 @@ ApiKey={API_KEY}
 
 此命令： 
 
-* 從容器映射執行語音語言偵測容器。 目前，您不需要支付執行此映射的費用。 
+* 從容器映射執行語音語言偵測容器。 目前，您不需要支付執行此映射的費用。
 * 配置1個 CPU 核心和 1 gb (GB) 的記憶體。
 * 公開 TCP 通訊埠5003，並為容器配置虛擬 TTY。
 * 在容器結束之後自動將其移除。 容器映像仍可在主機電腦上使用。

@@ -9,18 +9,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/10/2018
+ms.date: 09/28/2020
 ms.author: duau
-ms.openlocfilehash: 9593a6c4fa45d9810aabb2bbb3123428930c5891
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 67940db973f494cd4a12c2f16db528e0b113d656
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401566"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449201"
 ---
-# <a name="how-front-door-matches-requests-to-a-routing-rule"></a>Front Door 比對要求與路由規則的方式
+# <a name="how-requests-are-matched-to-a-routing-rule"></a>如何將要求與路由規則進行比對
 
-建立連線並進行 TLS 信號交換之後，當要求進入 Front Door 環境時，其中一項 Front Door 所做的第一件事，就是從所有的設定中判斷出，這是要比對要求的特定路由規則，然後採取定義的動作。 下列文件說明 Front Door 在處理 HTTP 要求時，如何判斷要使用的路由設定。
+建立連線並完成 TLS 信號交換之後，當要求進入 Front Door 環境時，其中一項 Front Door 所做的第一件事，就是判斷要將要求與之相符的特定路由規則，然後在設定中採取定義的動作。 下列文件說明 Front Door 在處理 HTTP 要求時，如何判斷要使用的路由設定。
 
 ## <a name="structure-of-a-front-door-route-configuration"></a>Front Door 路由設定的結構
 Front Door 路由規則設定主要由兩個部分組成：「左邊」與「右邊」。 我們會比對連入要求與左邊的路由，而右邊則定義處理要求的方式。
@@ -41,14 +41,14 @@ Front Door 路由規則設定主要由兩個部分組成：「左邊」與「右
 此節著重在如何我們比對指定的 Front Door 路由規則。 基本概念是我們只查看「左邊」，一律**先比對最明確的相符項目**。  我們首先會根據 HTTP 通訊協定來比對，然後比對前端主機、路徑。
 
 ### <a name="frontend-host-matching"></a>前端主機比對
-比對前端主機時，我們會使用如下所示的邏輯：
+當比對前端主機時，我們會使用以下定義的邏輯：
 
 1. 尋找主機上完全相符的任何路由。
 2. 如果沒有完全相符的前端主機項目，則拒絕要求，並傳送「400 不正確的要求」錯誤。
 
 為了進一步說明此程序，讓我們看看 Front Door 路由 (僅左邊) 的範例設定：
 
-| 路由規則 | 前端主機 | Path |
+| 路由規則 | 前端主機 | 路徑 |
 |-------|--------------------|-------|
 | A | foo.contoso.com | /\* |
 | B | foo.contoso.com | /users/\* |
@@ -78,7 +78,7 @@ Front Door 路由規則設定主要由兩個部分組成：「左邊」與「右
 
 為了進一步說明，讓我們看看另一組範例：
 
-| 路由規則 | 前端主機    | Path     |
+| 路由規則 | 前端主機    | 路徑     |
 |-------|---------|----------|
 | A     | www\.contoso.com | /        |
 | B     | www\.contoso.com | /\*      |
@@ -112,7 +112,7 @@ Front Door 路由規則設定主要由兩個部分組成：「左邊」與「右
 >
 > 範例設定：
 >
-> | 路由 | 主機             | Path    |
+> | 路由 | 主機             | 路徑    |
 > |-------|------------------|---------|
 > | A     | profile.contoso.com | /api/\* |
 >

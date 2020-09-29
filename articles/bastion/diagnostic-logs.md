@@ -7,29 +7,29 @@ ms.service: bastion
 ms.topic: how-to
 ms.date: 02/03/2020
 ms.author: charwen
-ms.openlocfilehash: 82f92a6dc33173918102015c8cedea1755d77805
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1e76fffd17ee565d4103ca8a7bf1523bbd16209d
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84744199"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91445380"
 ---
-# <a name="enable-and-work-with-bastion-resource-logs"></a>啟用和使用防禦資源記錄
+# <a name="enable-and-work-with-bastion-resource-logs"></a>啟用和使用 Bastion 資源記錄
 
-當使用者使用 Azure 防禦連線到工作負載時，防禦可以記錄遠端會話的診斷。 接著，您可以使用診斷，來查看哪些使用者連線到哪些工作負載、從何處，以及其他這類相關的記錄資訊。 若要使用診斷，您必須在 Azure 防禦上啟用診斷記錄。 本文可協助您啟用診斷記錄，然後再查看記錄。
+當使用者使用 Azure 防禦連接到工作負載時，防禦可以記錄遠端會話的診斷。 然後，您可以使用診斷來查看哪些使用者連接到哪些工作負載、哪些時間、從何處，以及其他這類相關的記錄資訊。 您必須啟用 Azure 防禦的診斷記錄，才能使用診斷。 本文可協助您啟用診斷記錄，然後再查看記錄。
 
-## <a name="enable-the-resource-log"></a><a name="enable"></a>啟用資源記錄
+## <a name="enable-the-resource-log"></a><a name="enable"></a>啟用資源記錄檔
 
-1. 在 [ [Azure 入口網站](https://portal.azure.com)中，流覽至您的 azure 防禦資源，然後從 Azure 防禦頁面選取 [**診斷設定**]。
+1. 在 [Azure 入口網站](https://portal.azure.com)中，流覽至您的 azure 防禦資源，然後從 Azure 防禦頁面選取 [ **診斷設定** ]。
 
-   ![診斷設定](./media/diagnostic-logs/1diagnostics-settings.png)
-2. 選取 [**診斷設定**]，然後選取 [ **+ 新增診斷設定**] 以新增記錄的目的地。
+   ![顯示 [診斷設定] 頁面的螢幕擷取畫面。](./media/diagnostic-logs/1diagnostics-settings.png)
+2. 選取 [ **診斷設定**]，然後選取 [ **+ 新增診斷設定** ] 以新增記錄的目的地。
 
-   ![新增診斷設定](./media/diagnostic-logs/2add-diagnostic-setting.png)
-3. 在 [**診斷設定**] 頁面上，選取要用來儲存診斷記錄的儲存體帳戶類型。
+   ![顯示 [診斷設定] 頁面的螢幕擷取畫面，其中已選取 [新增診斷設定] 按鈕。](./media/diagnostic-logs/2add-diagnostic-setting.png)
+3. 在 [ **診斷設定** ] 頁面上，選取要用於儲存診斷記錄的儲存體帳戶類型。
 
-   ![選取儲存位置](./media/diagnostic-logs/3add-storage-account.png)
-4. 當您完成設定時，它看起來會類似下列範例：
+   ![[診斷設定] 頁面的螢幕擷取畫面，其中包含用來選取醒目提示之儲存位置的區段。](./media/diagnostic-logs/3add-storage-account.png)
+4. 當您完成設定時，它看起來會像這個範例：
 
    ![範例設定](./media/diagnostic-logs/4example-settings.png)
 
@@ -37,18 +37,18 @@ ms.locfileid: "84744199"
 
 若要存取您的診斷記錄，您可以直接使用您在啟用診斷設定時所指定的儲存體帳戶。
 
-1. 導覽至您的儲存體帳戶資源，然後流覽至 [**容器**]。 您會看到在儲存體帳戶 blob 容器中建立的**insights-logs-bastionauditlogs** blob。
+1. 流覽至您的儲存體帳戶資源，然後流覽至 **容器**。 您會看到在儲存體帳戶 blob 容器中建立的 **bastionauditlogs blob 記錄** 。
 
    ![診斷設定](./media/diagnostic-logs/1-navigate-to-logs.png)
-2. 當您在容器內流覽至時，您會在您的 blog 中看到各種不同的資料夾。 這些資料夾會指出您的 Azure 防禦資源的資源階層。
+2. 當您在容器內流覽至時，您會在您的 blog 中看到不同的資料夾。 這些資料夾指出 Azure 防禦資源的資源階層。
 
    ![新增診斷設定](./media/diagnostic-logs/2-resource-h.png)
-3. 流覽至您想要存取/查看其診斷記錄的 Azure 防禦資源的完整階層。 「Y =」、「等於」、「d =」、「h =」和「=」分別指出資源記錄的年、月、日、小時和分鐘。
+3. 流覽至您想要存取/查看其診斷記錄的 Azure 堡壘資源的完整階層。 ' Y = '、' = '、' = '、' h = ' 和 ' m = ' 分別指出資源記錄檔的年、月、日、小時和分鐘。
 
    ![選取儲存位置](./media/diagnostic-logs/3-resource-location.png)
-4. 找出 Azure 防禦所建立的 json 檔案，其中包含所流覽之時間週期的診斷記錄資料。
+4. 找出 Azure 防禦所建立的 json 檔案，其中包含流覽至的時間週期的診斷記錄資料。
 
-5. 從您的儲存體 blob 容器下載 json 檔案。 Json 檔案中的範例專案如下所示，供您參考：
+5. 從儲存體 blob 容器下載 json 檔案。 以下顯示 json 檔案中的範例專案，以供參考：
 
    ```json
    { 

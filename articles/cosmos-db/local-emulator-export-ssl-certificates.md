@@ -6,13 +6,13 @@ ms.topic: how-to
 ms.date: 09/17/2020
 author: deborahc
 ms.author: dech
-ms.custom: devx-track-python, devx-track-java
-ms.openlocfilehash: 8f2714c7c49aa5e02747ce726da29a98485b5fbd
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.custom: devx-track-python, devx-track-java, contperfq1
+ms.openlocfilehash: 068b316eaa92a1e781df0b9945133a26fa0b88a2
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90988232"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91445278"
 ---
 # <a name="export-the-azure-cosmos-db-emulator-certificates-for-use-with-java-python-and-nodejs-apps"></a>匯出 Azure Cosmos DB 模擬器憑證以與 JAVA、Python 和 Node.js 應用程式搭配使用
 
@@ -36,31 +36,31 @@ Azure Cosmos DB 模擬器提供了一個模擬 Azure Cosmos DB 服務的本機�
 
 1. 按一下 [詳細資料]****，然後按一下 [確定]****。
 
-    :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-2.png" alt-text="Azure Cosmos DB 本機模擬器的匯出步驟 2":::
+    :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-2.png" alt-text="Azure Cosmos DB 本機模擬器的匯出步驟 1":::
 
 1. 按一下 [複製到檔案...]****。
 
-    :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-3.png" alt-text="Azure Cosmos DB 本機模擬器的匯出步驟 3":::
+    :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-3.png" alt-text="Azure Cosmos DB 本機模擬器的匯出步驟 1":::
 
 1. 按 [下一步]  。
 
-    :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-4.png" alt-text="Azure Cosmos DB 本機模擬器的匯出步驟 4":::
+    :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-4.png" alt-text="Azure Cosmos DB 本機模擬器的匯出步驟 1":::
 
 1. 按一下 [否，不要匯出私密金鑰 ]****，然後按 [下一步]****。
 
-    :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-5.png" alt-text="Azure Cosmos DB 本機模擬器的匯出步驟 5":::
+    :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-5.png" alt-text="Azure Cosmos DB 本機模擬器的匯出步驟 1":::
 
 1. 按一下 [Base-64 編碼的 X.509 (.CER)]****，然後按 [下一步]****。
 
-    :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-6.png" alt-text="Azure Cosmos DB 本機模擬器的匯出步驟 6":::
+    :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-6.png" alt-text="Azure Cosmos DB 本機模擬器的匯出步驟 1":::
 
 1. 指定憑證的名稱。 此案例中為 **documentdbemulatorcert**，然後按 [下一步]****。
 
-    :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-7.png" alt-text="Azure Cosmos DB 本機模擬器的匯出步驟 7":::
+    :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-7.png" alt-text="Azure Cosmos DB 本機模擬器的匯出步驟 1":::
 
 1. 按一下 [完成] 。
 
-    :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-8.png" alt-text="Azure Cosmos DB 本機模擬器的匯出步驟 8":::
+    :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-8.png" alt-text="Azure Cosmos DB 本機模擬器的匯出步驟 1":::
 
 ## <a name="use-the-certificate-with-java-apps"></a>搭配使用憑證與 JAVA 應用程式
 
@@ -98,11 +98,11 @@ sudo $JAVA_HOME/bin/keytool -cacerts -importcert -alias cosmos_emulator -file $E
 
 您可以從 Windows 系統匣中執行的 Azure Cosmos DB 模擬器中選取 [ **重設資料** ]，以強制重新產生模擬器憑證。 請注意，此動作也會清除模擬器儲存在本機的所有資料。
 
-:::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-reset-data.png" alt-text="Azure Cosmos DB 本機模擬器的重設資料":::
+:::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-reset-data.png" alt-text="Azure Cosmos DB 本機模擬器的匯出步驟 1":::
 
 如果您已將憑證安裝到 JAVA 憑證存放區或在其他位置使用，則需要使用目前的憑證重新匯入。 在您更新憑證之前，您的應用程式無法連接到本機模擬器。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [使用命令列參數和 PowerShell 命令來控制模擬器](emulator-command-line-parameters.md)
 * [模擬器的偵錯工具問題](troubleshoot-local-emulator.md)

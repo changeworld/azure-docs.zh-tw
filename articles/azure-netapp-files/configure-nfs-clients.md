@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 08/19/2020
+ms.date: 09/28/2020
 ms.author: b-juche
-ms.openlocfilehash: 20cbc9b33e567ffe306aae694bb835d95c2d861e
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: b2e597ff8fc761b66de6228063c471933a364144
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88704972"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449647"
 ---
 # <a name="configure-an-nfs-client-for-azure-netapp-files"></a>設定 Azure NetApp Files 的 NFS 用戶端
 
@@ -46,6 +46,9 @@ ms.locfileid: "88704972"
     `sudo realm join $DOMAIN.NAME -U $SERVICEACCOUNT --computer-ou= OU=$YOUROU,DC=$DOMAIN,DC=TLD`
 
 ## <a name="ubuntu-configuration"></a>Ubuntu 設定 
+本節說明 NFS 用戶端的 Ubuntu 設定。  
+
+### <a name="if-you-are-using-nfsv41-kerberos-encryption"></a>如果您使用 Nfsv4.1 4.1 Kerberos 加密 
 
 1. 安裝套件：  
     `sudo yum -y install realmd packagekit sssd adcli samba-common krb5-workstation chrony`
@@ -55,6 +58,26 @@ ms.locfileid: "88704972"
 
 3. 加入 Active Directory 網域：  
     `sudo realm join $DOMAIN.NAME -U $SERVICEACCOUNT --computer-ou= OU=$YOUROU,DC=$DOMAIN,DC=TLD`
+
+### <a name="if-you-are-using-dual-protocol"></a>如果您使用雙重通訊協定  
+
+1. 執行下列命令以升級已安裝的套件：  
+    `sudo apt update && sudo apt install libnss-ldap libpam-ldap ldap-utils nscd`
+
+    範例：   
+
+    `base dc=hariscus,dc=com` `uri ldap://10.20.0.4:389/`
+    `ldap_version 3`
+    `rootbinddn cn=admin,cn=Users,dc=hariscus,dc=com`
+    `pam_password ad`
+ 
+2. 執行下列命令以重新開機並啟用服務：   
+    `sudo systemctl restart nscd && sudo systemctl enable nscd`
+
+下列範例會從適用于 LDAP 使用者的 Ubuntu LDAP 用戶端查詢 AD LDAP 伺服器 `ldapu1` ：   
+
+`root@cbs-k8s-varun4-04:/home/cbs# getent passwd hari1`   
+`hari1:*:1237:1237:hari1:/home/hari1:/bin/bash`   
 
 ## <a name="next-steps"></a>後續步驟  
 

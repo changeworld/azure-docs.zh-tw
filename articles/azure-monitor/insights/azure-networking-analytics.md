@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/21/2018
-ms.openlocfilehash: ccdf5885dd1199ff8ed8000e5feaf80662aae42a
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 4dc5b84ff127aef173deecfd2be705004d92ee0c
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318057"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449929"
 ---
 # <a name="azure-networking-monitoring-solutions-in-azure-monitor"></a>Azure 監視器中的 Azure 網路監視解決方案
 
@@ -87,10 +87,10 @@ Azure 應用程式閘道分析和網路安全性群組分析管理解決方案�
 1. 在 Azure 入口網站中，巡覽至要監視的應用程式閘道資源。
 2. 選取 [診斷記錄] 以開啟下列頁面。
 
-   ![Azure 應用程式閘道資源的影像](media/azure-networking-analytics/log-analytics-appgateway-enable-diagnostics01.png)
+   ![應用程式閘道資源 [診斷記錄] 頁面的螢幕擷取畫面，其中顯示開啟診斷的選項。](media/azure-networking-analytics/log-analytics-appgateway-enable-diagnostics01.png)
 3. 按一下 [開啟診斷] 以開啟下列頁面。
 
-   ![Azure 應用程式閘道資源的影像](media/azure-networking-analytics/log-analytics-appgateway-enable-diagnostics02.png)
+   ![設定診斷設定頁面的螢幕擷取畫面。 [傳送至 Log Analytics] 的選項已選取為三種記錄類型和度量。](media/azure-networking-analytics/log-analytics-appgateway-enable-diagnostics02.png)
 4. 若要開啟診斷，請按一下 [狀態] 下的 [開啟]。
 5. 按一下 [傳送到 Log Analytics] 核取方塊。
 6. 選取現有的 Log Analytics 工作區，或建立工作區。
@@ -123,9 +123,9 @@ Set-AzDiagnosticSetting -ResourceId $gateway.ResourceId  -WorkspaceId $workspace
   * 應用程式閘道的主機健康狀態
   * 應用程式閘道失敗要求的最大和第 95 個百分位數
 
-![Azure 應用程式閘道分析儀表板的影像](media/azure-networking-analytics/log-analytics-appgateway01.png)
+![[應用程式閘道存取記錄] 儀表板的螢幕擷取畫面，其中顯示具有閘道錯誤、要求和失敗要求資料的磚。](media/azure-networking-analytics/log-analytics-appgateway01.png)
 
-![Azure 應用程式閘道分析儀表板的影像](media/azure-networking-analytics/log-analytics-appgateway02.png)
+![[應用程式閘道存取記錄] 儀表板的螢幕擷取畫面，其中顯示依使用者代理程式、主機健全狀況和失敗的要求而出現錯誤資料的磚。](media/azure-networking-analytics/log-analytics-appgateway02.png)
 
 在 [Azure 應用程式閘道分析] 儀表板上，檢閱其中一個刀鋒視窗中的摘要資訊，然後按一下其中一個以在記錄搜尋頁面中檢視詳細資訊。
 
@@ -158,10 +158,10 @@ Set-AzDiagnosticSetting -ResourceId $gateway.ResourceId  -WorkspaceId $workspace
 1. 在 Azure 入口網站中，瀏覽至要監視的網路安全性群組資源
 2. 選取 [診斷記錄] 以開啟下列頁面
 
-   ![Azure 網路安全性群組資源的影像](media/azure-networking-analytics/log-analytics-nsg-enable-diagnostics01.png)
+   ![網路安全性群組資源 [診斷記錄] 頁面的螢幕擷取畫面，其中顯示開啟診斷的選項。](media/azure-networking-analytics/log-analytics-nsg-enable-diagnostics01.png)
 3. 按一下 [開啟診斷] 以開啟下列頁面
 
-   ![Azure 網路安全性群組資源的影像](media/azure-networking-analytics/log-analytics-nsg-enable-diagnostics02.png)
+   ![設定診斷設定頁面的螢幕擷取畫面。 [狀態] 設為 [開啟]，並選取 [傳送至 Log Analytics]，並選取兩個記錄類型。](media/azure-networking-analytics/log-analytics-nsg-enable-diagnostics02.png)
 4. 若要開啟診斷，請按一下 [狀態] 下的 [開啟]
 5. 按一下 [傳送到 Log Analytics] 核取方塊
 6. 選取現有的 Log Analytics 工作區，或建立工作區
@@ -189,9 +189,9 @@ Set-AzDiagnosticSetting -ResourceId $nsg.ResourceId  -WorkspaceId $workspaceId -
   * 網路安全性群組規則與允許流量
   * MAC 位址與允許流量
 
-![Azure 網路安全性群組分析儀表板的影像](media/azure-networking-analytics/log-analytics-nsg01.png)
+![螢幕擷取畫面，其中包含網路安全性群組封鎖流程的資料，包括已封鎖流程的規則，以及封鎖流程的 MAC 位址。](media/azure-networking-analytics/log-analytics-nsg01.png)
 
-![Azure 網路安全性群組分析儀表板的影像](media/azure-networking-analytics/log-analytics-nsg02.png)
+![圖格的螢幕擷取畫面，其中包含網路安全性群組允許流程的資料，包括具有允許流程的規則，以及允許的流程的 MAC 位址。](media/azure-networking-analytics/log-analytics-nsg02.png)
 
 在 [Azure 網路安全性群組分析] 儀表板上，檢閱其中一個刀鋒視窗中的摘要資訊，然後按一下其中一個以在記錄搜尋頁面中檢視詳細資訊。
 

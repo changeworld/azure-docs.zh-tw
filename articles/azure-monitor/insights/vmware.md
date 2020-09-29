@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/04/2018
-ms.openlocfilehash: dccd953d2a31b306994c06ae644959e18332f5da
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: be50deb836082354db899e84ef24d75c4d403432
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90090171"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91450394"
 ---
 # <a name="vmware-monitoring-deprecated-solution-in-azure-monitor"></a>Azure 監視器中 VMware 監控 (已淘汰的) 解決方案
 
@@ -133,16 +133,16 @@ VMware 監視解決方案會使用您已啟用的 Log Analytics Linux 代理程�
 
 當您按一下的 ESXi 主機名稱時，可以檢視該 ESXi 主機的資訊。 如果想要限縮事件類型的結果，在搜尋查詢中新增 `“ProcessName_s=EVENT TYPE”`。 您可以在搜尋篩選中選取 **ProcessName**。 這會為您限縮資訊。
 
-![電鑽](./media/vmware/eventhostdrilldown.png)
+![VMware 監控儀表板視圖中，每個事件計數和每個事件種類之分葉的 ESXi 主機螢幕擷取畫面。](./media/vmware/eventhostdrilldown.png)
 
 #### <a name="find-high-vm-activities"></a>尋找高 VM 活動
 在任何 ESXi 主機上皆可以建立及刪除虛擬機器。 能識別 ESXi 主機建立多少個 VM，對系統管理員很有幫助， 進而幫助了解效能和容量規劃。 管理您的環境時，持續追蹤 VM 活動事件極為重要。
 
-![電鑽](./media/vmware/vmactivities1.png)
+![VMware 監控儀表板中 [虛擬機器活動] 分頁的螢幕擷取畫面，其中顯示 ESXi 主機建立和刪除 VM 的圖形。](./media/vmware/vmactivities1.png)
 
 如果您想要查看其他 ESXi 主機 VM 建立資料，按一下 ESXi 主機名稱。
 
-![電鑽](./media/vmware/createvm.png)
+![VMware 監控儀表板中窗格的螢幕擷取畫面，其中顯示一個資料表，其中包含 ESXi 主機建立之每個虛擬機器的資料列。](./media/vmware/createvm.png)
 
 #### <a name="common-log-queries"></a>一般記錄查詢
 這個解決方案包含其他實用的查詢，可協助您管理您的 ESXi 主機，例如高儲存量空間、儲存體延遲、路徑失敗。
@@ -163,7 +163,7 @@ VMware 監視解決方案會使用您已啟用的 Log Analytics Linux 代理程�
 解決方案會使用原生 ESXi 主機 Syslog 轉送機制。 您在 ESXi 主機上不需要任何額外的 Microsoft 軟體就可以擷取記錄。 它對您現有的環境影響不大。 但是，您需要設定 syslog 轉送，這是 ESXI 功能。
 
 ### <a name="do-i-need-to-restart-my-esxi-host"></a>我需要重新啟動 ESXi 主機嗎？
-不會。 此處理序不需要重新啟動。 有時候，vSphere 不會正確更新 syslog。 在這種情況下，請登入 ESXi 主機並重新載入 syslog。 同樣地，您不需要重新啟動主機，所以此處理序不會干擾到您的環境。
+否。 此處理序不需要重新啟動。 有時候，vSphere 不會正確更新 syslog。 在這種情況下，請登入 ESXi 主機並重新載入 syslog。 同樣地，您不需要重新啟動主機，所以此處理序不會干擾到您的環境。
 
 ### <a name="can-i-increase-or-decrease-the-volume-of-log-data-sent-to-log-analytics"></a>可以增加或減少傳送至 Log Analytics 的記錄資料量嗎？
 是，您可以這麼做。 您可以使用 vSphere 中的 ESXi 主機記錄層級設定。 記錄集合是以 *info* 層級為基礎。 所以，如果您想要稽核 VM 建立或刪除，您需要在 Hostd 上維持 *info* 層級。 如需詳細資訊，請參閱 [VMware 知識庫](https://kb.vmware.com/selfservice/microsites/search.do?&cmd=displayKC&externalId=1017658)。
@@ -172,7 +172,7 @@ VMware 監視解決方案會使用您已啟用的 Log Analytics Linux 代理程�
 syslog 時間戳記有一個 ESXi 主機錯誤。 如需詳細資訊，請參閱 [VMware 知識庫](https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2111202)。 在您套用因應措施之後，Hostd 應該就能正常運作。
 
 ### <a name="can-i-have-multiple-esxi-hosts-forwarding-syslog-data-to-a-single-vm-with-omsagent"></a>我可以使用 OMS 代理程式讓多部 ESXi 主機轉送 syslog 資料至單一 VM 嗎？
-可以。 您可以使用 OMS 代理程式讓多部 ESXi 主機轉送資料至單一 VM。
+是。 您可以使用 OMS 代理程式讓多部 ESXi 主機轉送資料至單一 VM。
 
 ### <a name="why-dont-i-see-data-flowing-into-log-analytics"></a>為什麼我沒有看到資料流入 Log Analytics？
 這有幾個原因：

@@ -12,18 +12,16 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 05/18/2019
-ms.openlocfilehash: c4c19850cda158afdb888188d3f99b7d93195aa5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 83d3bb78ef27af377b0a8c5edf75f658a0ca93e7
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91334849"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91450236"
 ---
 # <a name="long-term-retention---azure-sql-database-and-azure-sql-managed-instance"></a>長期保留-Azure SQL Database 和 Azure SQL 受控執行個體
 
-許多應用程式具有法規、合規性或其他商務用途，需要您保留超過7-35 天的資料庫備份，Azure SQL Database 和 Azure SQL 受控執行個體 [自動備份](automated-backups-overview.md)所提供的備份。 藉由使用長期保留 (LTR) 功能，您可以在 Azure Blob 儲存體中儲存指定的 SQL Database 和 SQL 受控執行個體完整備份，且具有最多10年的讀取權限異地多餘儲存體。 之後您可以將任何備份還原為新的資料庫。
-
-此外，SQL 受控執行個體引進了可設定的 [備份儲存體冗余](automated-backups-overview.md#backup-storage-redundancy) ，可讓您彈性地在本機冗余的 (LRS) 、區域冗余 (ZRS) 或異地冗余 (GRS) [儲存體 blob](../../storage/common/storage-redundancy.md)之間進行選擇。 此選項目前僅在建立受控實例進程期間提供，無法在布建資源之後變更。
+許多應用程式具有法規、合規性或其他商務用途，需要您保留超過7-35 天的資料庫備份，Azure SQL Database 和 Azure SQL 受控執行個體 [自動備份](automated-backups-overview.md)所提供的備份。 藉由使用長期保留 (LTR) 功能，您可以在 Azure Blob 儲存體中儲存指定的 SQL Database 和 SQL 受控執行個體完整備份，並設定最多10年的 [冗余](automated-backups-overview.md#backup-storage-redundancy) 。 之後您可以將任何備份還原為新的資料庫。
 
 您可以針對 Azure SQL Database 啟用長期保留，且在 Azure SQL 受控執行個體的有限公開預覽中。 本文提供長期保留的概念性總覽。 若要設定長期保留，請參閱 [設定 AZURE SQL DATABASE ltr](long-term-backup-retention-configure.md) 並 [設定 AZURE SQL 受控執行個體 ltr](../managed-instance/long-term-backup-retention-configure.md)。 
 

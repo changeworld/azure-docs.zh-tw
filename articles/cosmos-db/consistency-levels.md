@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: 8f482c4fe6817c75079ceb98e981c846c395ad13
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: aa09b1ec1e3f73547d211fab0907c9e3388c008b
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91396020"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91445334"
 ---
 # <a name="what-are-consistency-levels-in-azure-cosmos-db"></a>Azure Cosmos DB 中的一致性層級為何？
 
@@ -43,7 +43,7 @@ Azure Cosmos DB 會提供全方位 SLA，保證 100% 的讀取要求都將符合
 
   下圖說明與音樂附注的強式一致性。 將資料寫入「美國西部2」區域之後，當您從其他區域讀取資料時，您會取得最新的值：
 
-  :::image type="content" source="media/consistency-levels/strong-consistency.gif" alt-text="影片":::
+  :::image type="content" source="media/consistency-levels/strong-consistency.gif" alt-text="以頻譜形式顯示的一致性":::
 
 - **限定過期**：保證讀取會遵守一致前置詞的保證。 讀取可能會落後寫入最多 *"K"* 個版本 (也就是「更新」 ) 的專案，或「 *T* 」時間間隔（以先達到者為准）。 換句話說，當您選擇限定過期時，可以透過兩種方式來設定「過期」：
 
@@ -61,7 +61,7 @@ Azure Cosmos DB 會提供全方位 SLA，保證 100% 的讀取要求都將符合
 
   限定過期通常是由預期低寫入延遲，但需要總全域訂單保證的全域散發應用程式所選擇。 限定過期適用于具有群組共同作業和共用、股票行情指示器、發佈-訂閱/佇列等的應用程式。下圖說明使用音樂附注的限定過期一致性。 將資料寫入「美國西部2」區域之後，「美國東部2」和「澳大利亞東部」區域會根據設定的最大延隔時間或最大作業數目，讀取寫入的值：
 
-  :::image type="content" source="media/consistency-levels/bounded-staleness-consistency.gif" alt-text="影片":::
+  :::image type="content" source="media/consistency-levels/bounded-staleness-consistency.gif" alt-text="以頻譜形式顯示的一致性":::
 
 - **會話**：在單一用戶端會話讀取中，保證可以接受一致前置詞、單純讀取、單純寫入、讀取您的寫入，以及寫入後續讀取的保證。 這會假設單一「寫入器」會話或共用多個寫入器的會話權杖。
 
@@ -74,7 +74,7 @@ Azure Cosmos DB 會提供全方位 SLA，保證 100% 的讀取要求都將符合
 
   會話一致性是單一區域和全域分散式應用程式最普遍使用的一致性層級。 它提供寫入延遲、可用性及讀取輸送量，相當於最終一致性，但也提供一致的保證，可符合撰寫的應用程式在使用者的內容中運作的需求。 下圖說明與音樂筆記的會話一致性。 「美國西部2寫入器」和「美國西部2讀者」會使用相同的會話 (會話 A) 讓它們同時讀取相同的資料。 雖然「澳大利亞東部」區域使用「會話 B」，但它會在稍後接收資料，但其順序與寫入相同。
 
-  :::image type="content" source="media/consistency-levels/session-consistency.gif" alt-text="影片":::
+  :::image type="content" source="media/consistency-levels/session-consistency.gif" alt-text="以頻譜形式顯示的一致性":::
 
 - **一致前置**詞：傳回的更新會包含所有更新的部分前置詞，而且沒有間距。 一致的前置詞一致性層級可保證讀取永遠不會看到不是順序的寫入。
 
@@ -89,12 +89,12 @@ Azure Cosmos DB 會提供全方位 SLA，保證 100% 的讀取要求都將符合
 
 下圖說明與音樂附注一致的前置詞一致性。 在所有區域中，讀取永遠不會看到沒有順序的寫入：
 
-  :::image type="content" source="media/consistency-levels/consistent-prefix.gif" alt-text="影片":::
+  :::image type="content" source="media/consistency-levels/consistent-prefix.gif" alt-text="以頻譜形式顯示的一致性":::
 
 - **最終**：讀取沒有排序保證。 如果沒有任何進一步的寫入，則複本最終會趨於一致。  
 最終一致性是最弱的一致性形式，因為用戶端可能會讀取比之前讀取的值還舊的值。 最終一致性是應用程式不需要任何順序保證的理想選擇。 範例包括收藏數、贊或非執行緒批註的計數。 下圖說明與音樂附注的最終一致性。
 
-  :::image type="content" source="media/consistency-levels/eventual-consistency.gif" alt-text="影片":::
+  :::image type="content" source="media/consistency-levels/eventual-consistency.gif" alt-text="以頻譜形式顯示的一致性":::
 
 ## <a name="additional-reading"></a>延伸閱讀
 

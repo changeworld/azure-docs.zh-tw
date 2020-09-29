@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8b55d8bcc2f2042dc36c6875750893a345deb552
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.openlocfilehash: 000bc150b1a4addb4b68bd86b8d72524ec1015fc
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89468601"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91450408"
 ---
 # <a name="what-is-a-primary-refresh-token"></a>什麼是主要重新整理權杖？
 
@@ -199,6 +199,9 @@ Windows 10 會針對每個認證維護一個 PRT 的資料分割清單。 因此
 | D | CloudAP 外掛程式會建立 PRT Cookie，並使用與 TPM 繫結的工作階段金鑰登入，然後將其傳回給原生用戶端主機。 由於 Cookie 是由工作階段金鑰所簽署，因此無法遭到篡改。 |
 | E | 原生用戶端主機會將此 PRT Cookie 傳回給瀏覽器，瀏覽器會將其包含在稱為 x-ms-RefreshTokenCredential 的要求標頭中，然後從 Azure AD 要求權杖。 |
 | F | Azure AD 會驗證 PRT Cookie 上的工作階段金鑰簽章、驗證 nonce，並驗證裝置在租用戶中有效，然後發出網頁的識別碼權杖和瀏覽器的加密工作階段 Cookie。 |
+
+> [!NOTE]
+> 上述步驟中所述的瀏覽器 SSO 流程不適用於私用模式中的會話，例如 Microsoft Edge 中的 InPrivate，或使用 Microsoft 帳戶延伸模組) 時，Google Chrome (中的 Incognito。
 
 ## <a name="next-steps"></a>後續步驟
 

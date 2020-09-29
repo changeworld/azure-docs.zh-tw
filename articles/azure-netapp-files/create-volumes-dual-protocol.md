@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 09/24/2020
+ms.date: 09/28/2020
 ms.author: b-juche
-ms.openlocfilehash: 972f9b1ac96ca180aa6eaeead7cde51b60ec0e93
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ce65d6f1806965a55a91117725d2232d4d6460bd
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91278478"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449638"
 ---
 # <a name="create-a-dual-protocol-nfsv3-and-smb-volume-for-azure-netapp-files"></a>建立適用于 Azure NetApp Files 的雙重通訊協定 (NFSv3 和 SMB) 磁片區
 
@@ -38,6 +38,8 @@ Azure NetApp Files 支援使用 NFS (NFSv3 和 Nfsv4.1 4.1) 、SMBv3 或雙協�
 * 確定您符合 [Active Directory 連接的需求](azure-netapp-files-create-volumes-smb.md#requirements-for-active-directory-connections)。 
 * 在 DNS 伺服器上建立反向對應區域，然後在該反向對應區域中新增 AD 主機電腦的指標 (PTR) 記錄。 否則，建立雙重通訊協定磁片區將會失敗。
 * 確定 NFS 用戶端為最新狀態，並執行作業系統的最新更新。
+* 確定 ad) 的 Active Directory (AD LDAP 伺服器已啟動且正在執行。 這是藉由安裝和設定 AD 機器上的 [Active Directory 輕量型目錄服務 (AD LDS) ](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/hh831593(v=ws.11)) 角色來完成。
+* 請確定使用 [Active Directory 憑證服務 (AD CS) ](https://docs.microsoft.com/windows-server/networking/core-network-guide/cncg/server-certs/install-the-certification-authority) 角色來產生和匯出自我簽署的根 CA 憑證，以在 AD 上建立 (CA) 的憑證授權單位單位。   
 
 ## <a name="create-a-dual-protocol-volume"></a>建立雙重通訊協定磁碟區
 
@@ -136,6 +138,11 @@ Azure NetApp Files 支援使用 NFS (NFSv3 和 Nfsv4.1 4.1) 、SMBv3 或雙協�
 
 ![Active Directory 屬性編輯器](../media/azure-netapp-files/active-directory-attribute-editor.png) 
 
+您必須為 LDAP 使用者和 LDAP 群組設定下列屬性： 
+* LDAP 使用者的必要屬性：   
+    `uid`： Alice、 `uidNumber` ：139、 `gidNumber` ：555、 `objectClass` ： posixAccount
+* LDAP 群組的必要屬性：   
+    `objectClass`： "posixGroup"、 `gidNumber` ：555
 
 ## <a name="configure-the-nfs-client"></a>設定 NFS 用戶端 
 

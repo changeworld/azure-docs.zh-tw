@@ -1,22 +1,22 @@
 ---
 title: Azure ExpressRoute：設定 ExpressRoute Direct
-description: 瞭解如何使用 Azure PowerShell 將 Azure ExpressRoute Direct 設定為直接連接到全球對等互連位置的 Microsoft 全球網路。
+description: 瞭解如何使用 Azure PowerShell 將 Azure ExpressRoute Direct 設定為直接連接至 Microsoft 全球網路。
 services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 01/22/2020
+ms.date: 09/28/2020
 ms.author: duau
-ms.openlocfilehash: c4ce764f50f85ef9979d5a14235759c16228f6b7
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 1748db76aa2d1f65ea21046bcff2fff43ca732b0
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89396024"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91450192"
 ---
 # <a name="how-to-configure-expressroute-direct"></a>如何設定 ExpressRoute Direct
 
-ExpressRoute Direct 可讓您在策略性分散於世界各地的對等互連位置，直接連線至 Microsoft 的全球網路。 如需詳細資訊，請參閱[關於 ExpressRoute Direct](expressroute-erdirect-about.md)。
+ExpressRoute Direct 可讓您透過策略性分散在世界各地的對等互連位置，直接連線到 Microsoft 的全球網路。 如需詳細資訊，請參閱[關於 ExpressRoute Direct](expressroute-erdirect-about.md)。
 
 ## <a name="create-the-resource"></a><a name="resources"></a>建立資源
 
@@ -155,10 +155,20 @@ ExpressRoute Direct 可讓您在策略性分散於世界各地的對等互連位
    Circuits                   : []
    ```
 
-## <a name="change-admin-state-of-links"></a><a name="state"></a>變更連結的系統管理狀態
+## <a name="generate-the-letter-of-authorization-loa"></a><a name="authorization"></a>產生 (LOA 的授權信件) 
 
-  此程序應用於進行第 1 層測試，確保每個交叉連線都已在每個主要和次要路由器中正確修補。
-1. 取得 ExpressRoute Direct 詳細資料。
+參考最近建立的 ExpressRoute Direct 資源、輸入客戶名稱以寫入 LOA， (選擇性地) 定義要儲存檔的檔案位置。 如果未參考檔案路徑，檔會下載到目前的目錄。
+
+  ```powershell 
+   New-AzExpressRoutePortLOA -ExpressRoutePort $ERDirect -CustomerName TestCustomerName -Destination "C:\Users\SampleUser\Downloads" 
+   ```
+ **範例輸出**
+
+   ```powershell
+   Written Letter of Authorization To: C:\Users\SampleUser\Downloads\LOA.pdf
+
+  This process should be used to conduct a Layer 1 test, ensuring that each cross-connection is properly patched into each router for primary and secondary.
+1. Get ExpressRoute Direct details.
 
    ```powershell
    $ERDirect = Get-AzExpressRoutePort -Name $Name -ResourceGroupName $ResourceGroupName
@@ -227,13 +237,13 @@ ExpressRoute Direct 可讓您在策略性分散於世界各地的對等互連位
 
 ## <a name="create-a-circuit"></a><a name="circuit"></a>建立線路
 
-根據預設，您可以在 ExpressRoute Direct 資源所在的訂用帳戶中建立 10 個線路。 支援人員可以增加此數目。 您則負責追蹤已佈建和已使用的頻寬。 已佈建的頻寬是 ExpressRoute Direct 資源上所有線路的頻寬總和，而已使用的頻寬則是基礎實體介面的實際使用量。
+根據預設，您可以在 ExpressRoute Direct 資源所在的訂用帳戶中建立 10 個線路。 這項限制可透過支援人員來增加。 您則負責追蹤已佈建和已使用的頻寬。 已佈建的頻寬是 ExpressRoute Direct 資源上所有線路的頻寬總和，而已使用的頻寬則是基礎實體介面的實際使用量。
 
-ExpressRoute Direct 上有只可用於支援以上所述案例的額外線路頻寬。 這些是：40Gbps 和 100Gbps。
+ExpressRoute Direct 可以使用額外的線路頻寬來支援上述案例。 這些頻寬是 40 Gbps 和 100 Gbps。
 
 **SkuTier** 可以是 Local、Standard 或 Premium。
 
-只有在 ExpressRoute Direct 不支援無限制時， **SkuFamily**必須是 [metereddata。
+**SkuFamily** 只能 [metereddata。 ExpressRoute Direct 不支援無限制。
 
 在 ExpressRoute Direct 資源上建立線路。
 
@@ -275,6 +285,6 @@ ExpressRoute Direct 上有只可用於支援以上所述案例的額外線路頻
   GatewayManagerEtag     
   ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如需 ExpressRoute Direct 的詳細資訊，請參閱 [總覽](expressroute-erdirect-about.md)。

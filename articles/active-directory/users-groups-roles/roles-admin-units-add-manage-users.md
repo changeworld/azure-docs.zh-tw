@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 37e1ac36df35fabb9709cfecadcfb0e7330df5da
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 75e518a66ae2eedd952f521e0a67769b6e08de87
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91265094"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91450433"
 ---
 # <a name="add-and-manage-users-in-an-administrative-unit-in-azure-active-directory"></a>在 Azure Active Directory 的管理單位中新增和管理使用者
 
@@ -52,9 +52,9 @@ ms.locfileid: "91265094"
 ### <a name="powershell"></a>PowerShell
 
 ```powershell
-$administrativeunitObj = Get-AzureADAdministrativeUnit -Filter "displayname eq 'Test administrative unit 2'"
+$administrativeunitObj = Get-AzureADMSAdministrativeUnit -Filter "displayname eq 'Test administrative unit 2'"
 $UserObj = Get-AzureADUser -Filter "UserPrincipalName eq 'billjohn@fabidentity.onmicrosoft.com'"
-Add-AzureADAdministrativeUnitMember -ObjectId $administrativeunitObj.ObjectId -RefObjectId $UserObj.ObjectId
+Add-AzureADMSAdministrativeUnitMember -Id $administrativeunitObj.ObjectId -RefObjectId $UserObj.ObjectId
 ```
 
 在上述範例中，會使用 AzureADAdministrativeUnitMember Cmdlet 將使用者新增至管理單位。 要加入使用者之管理單位的物件識別碼，以及要加入之使用者的物件識別碼，將會被視為引數。 反白顯示的區段可能會視特定環境的需要而變更。
@@ -66,7 +66,7 @@ Http request
 POST /administrativeUnits/{Admin Unit id}/members/$ref
 Request body
 {
-  "@odata.id":"https://graph.microsoft.com/beta/users/{id}"
+  "@odata.id":"https://graph.microsoft.com/v1.0/users/{id}"
 }
 ```
 
@@ -74,7 +74,7 @@ Request body
 
 ```http
 {
-  "@odata.id":"https://graph.microsoft.com/beta/users/johndoe@fabidentity.com"
+  "@odata.id":"https://graph.microsoft.com/v1.0/users/johndoe@fabidentity.com"
 }
 ```
 
@@ -95,13 +95,13 @@ Request body
 ### <a name="powershell"></a>PowerShell
 
 ```powershell
-Get-AzureADAdministrativeUnit | where { Get-AzureADAdministrativeUnitMember -ObjectId $_.ObjectId | where {$_.ObjectId -eq $userObjId} }
+Get-AzureADMSAdministrativeUnit | where { Get-AzureADMSAdministrativeUnitMember -Id $_.ObjectId | where {$_.RefObjectId -eq $userObjId} }
 ```
 
 ### <a name="microsoft-graph"></a>Microsoft Graph
 
 ```http
-https://graph.microsoft.com/beta/users//memberOf/$/Microsoft.Graph.AdministrativeUnit
+https://graph.microsoft.com/v1.0/users/{id}/memberOf/$/Microsoft.Graph.AdministrativeUnit
 ```
 
 ## <a name="remove-a-single-user-from-an-au"></a>從 AU 移除單一使用者
@@ -119,12 +119,12 @@ https://graph.microsoft.com/beta/users//memberOf/$/Microsoft.Graph.Administrativ
 ### <a name="powershell"></a>PowerShell
 
 ```powershell
-Remove-AzureADAdministrativeUnitMember -ObjectId $auId -MemberId $memberUserObjId
+Remove-AzureADMSAdministrativeUnitMember -Id $auId -MemberId $memberUserObjId
 ```
 
 ### <a name="microsoft-graph"></a>Microsoft Graph
 
-   https://graph.microsoft.com/beta/administrativeUnits/<adminunit-id>/members/<user-id>/$ref
+   https://graph.microsoft.com/v1.0/directory/administrativeUnits/{adminunit-id}/members/{user-id}/$ref
 
 ## <a name="bulk-remove-more-than-one-user"></a>大量移除一個以上的使用者
 

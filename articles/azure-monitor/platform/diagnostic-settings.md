@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.subservice: logs
-ms.openlocfilehash: c0fdf256409608c2eb3c6490dc25342d9d324832
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: 48d2a657059908417bc81fd8cc2a132d2d131530
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89614034"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449328"
 ---
 # <a name="create-diagnostic-settings-to-send-platform-logs-and-metrics-to-different-destinations"></a>建立診斷設定以將平台記錄和計量傳送至不同目的地
 Azure 中的[平臺記錄](platform-logs-overview.md)，包括 azure 活動記錄和資源記錄，可針對 azure 資源及其相依的 azure 平臺提供詳細的診斷和審核資訊。 預設會收集[平臺計量](data-platform-metrics.md)，並通常儲存在 Azure 監視器計量資料庫中。 本文提供有關建立及設定診斷設定，以將平臺計量和平臺記錄傳送至不同目的地的詳細資料。
@@ -73,15 +73,15 @@ Azure 中的[平臺記錄](platform-logs-overview.md)，包括 azure 活動記�
 
    - 針對單一資源，在資源功能表中，按一下 [**監視**] 底下的 [**診斷設定**]。
 
-        ![診斷設定](media/diagnostic-settings/menu-resource.png)
+        ![醒目提示診斷設定 Azure 入口網站中資源功能表 [監視] 區段的螢幕擷取畫面。](media/diagnostic-settings/menu-resource.png)
 
    - 針對一或多個資源，按一下 [Azure 監視器] 功能表中 [**設定**] 下的 [**診斷設定**]，然後按一下資源。
 
-      ![診斷設定](media/diagnostic-settings/menu-monitor.png)
+        ![醒目提示 [診斷設定] 的 [Azure 監視器] 功能表中 [設定] 區段的螢幕擷取畫面。](media/diagnostic-settings/menu-monitor.png)
 
    - 針對 [活動記錄檔]，按一下 [ **Azure 監視器**] 功能表中的 [**活動記錄**]，然後按一下 [**診斷設定**]。 請務必停用活動記錄的任何舊版設定。 如需詳細資料，請參閱 [停用現有的設定](./activity-log.md#legacy-collection-methods) 。
 
-        ![診斷設定](media/diagnostic-settings/menu-activity-log.png)
+        ![在 [監視-活動記錄] 功能表列中，已選取 [活動記錄] 和 [診斷設定] 的 [Azure 監視器] 功能表的螢幕擷取畫面。](media/diagnostic-settings/menu-activity-log.png)
 
 2. 如果您選取的資源上沒有任何設定，系統會提示您建立設定。 按一下「新增診斷設定」****。
 
@@ -175,6 +175,6 @@ az monitor diagnostic-settings create  \
 因為每個 Azure 資源都需要建立診斷設定，所以 Azure 原則可以用來在每個資源建立時自動建立診斷設定。 如需詳細資訊，請參閱 [使用 Azure 原則大規模部署 Azure 監視器](../deploy-scale.md) 。
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [深入瞭解 Azure 平臺記錄](platform-logs-overview.md)

@@ -7,20 +7,20 @@ author: msjuergent
 manager: bburns
 editor: ''
 tags: azure-resource-manager
-keywords: ''
+keywords: SAP，Azure HANA，儲存體 Ultra 磁片，Premium 儲存體
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/03/2020
+ms.date: 09/28/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 60947a8138972834f30274715226648d1b2360a1
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 62faec3fd9ee36cb7a2b5da7e6bae07c6c8e06af
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89440689"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449372"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA Azure 虛擬機器儲存體設定
 
@@ -266,65 +266,9 @@ Ultra 磁碟可讓您定義滿足大小、IOPS 和磁碟輸送量範圍的單一
 
 
 ## <a name="nfs-v41-volumes-on-azure-netapp-files"></a>Azure NetApp Files 上的 NFS v4.1 磁碟區
-Azure NetApp Files 提供可用於 **/hana/shared**、 **/hana/data**和 **/hana/log** 磁片區的原生 NFS 共用。 針對 **/hana/data** 和 **/hana/log** 磁片區使用以 ANF 為基礎的 nfs 共用需要使用 4.1 NFS 通訊協定。 在 ANF 上以共用為基礎時，不支援使用 **/hana/data** 和 **/hana/log** 磁片區的 NFS 通訊協定 v3。 
-
-> [!IMPORTANT]
-> Azure NetApp Files 上所執行的 NFS v3 通訊協定 **不** 支援用於 **/hana/data** 和 **/hana/log**。 從功能的觀點來看， **/hana/data** 和 **/hana/log** 磁片區必須使用 NFS 4.1。 但是針對 **/hana/shared** 磁片區，可以從功能的觀點來使用 nfs V3 或 nfs 4.1 通訊協定。
-
-### <a name="important-considerations"></a>重要考量︰
-考慮到適用於 SAP Netweaver 和 SAP Hana 的 Azure NetApp Files 時，請注意下列重要考量：
-
-- 最小容量集區為 4 TiB。  
-- 最小磁碟區大小為 100 GiB
-- Azure NetApp Files 和所有虛擬機器 (將裝載 Azure NetApp Files 磁碟區的位置) 必須位於相同的 Azure 虛擬網路，或位於相同區域的[對等互連虛擬網路](../../../virtual-network/virtual-network-peering-overview.md)中。  
-- 選取的虛擬網路必須有委派給 Azure NetApp Files 的子網路。
-- Azure NetApp 磁碟區的輸送量是磁碟區配額的功能和服務等級，如 [Azure NetApp Files 的服務等級](../../../azure-netapp-files/azure-netapp-files-service-levels.md)中所述。 調整 HANA Azure NetApp 磁碟區的大小時，請確定產生的輸送量符合 HANA 系統需求。  
-- Azure NetApp Files 提供[匯出原則](../../../azure-netapp-files/azure-netapp-files-configure-export-policy.md)：您可以控制允許的用戶端、存取類型 (讀取及寫入、唯讀等等)。 
-- Azure NetApp Files 功能尚無法感知區域。 Azure NetApp Files 功能目前不會部署在 Azure 區域中的所有可用性區域。 請留意某些 Azure 區域中可能出現的延遲情形。  
-- 請務必將虛擬機器部署在 Azure NetApp 儲存體附近，以降低延遲。 
-- <b>sid</b>adm 的使用者識別碼，以及虛擬機器上 `sapsys` 的群組識別碼，都必須符合 Azure NetApp Files 中的設定。 
-
-> [!IMPORTANT]
-> 針對 SAP Hana 工作負載，低延遲很重要。 請與您的 Microsoft 代表合作，以確保虛擬機器和 Azure NetApp Files 磁碟區已部署在附近。  
-
-> [!IMPORTANT]
-> 如果 <b>sid</b>adm 的使用者識別碼與虛擬機器和 Azure NetApp 設定之間的 `sapsys` 群組識別碼不符，則 Azure NetApp 磁碟區 (裝載於虛擬機器) 上的檔案權限將會顯示為 `nobody`。 [將新系統上線](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxjSlHBUxkJBjmARn57skvdUQlJaV0ZBOE1PUkhOVk40WjZZQVJXRzI2RC4u)至 Azure NetApp Files 時，請務必為 <b>sid</b>adm 指定正確的使用者識別碼，以及為 `sapsys` 指定群組識別碼。
-
-### <a name="sizing-for-hana-database-on-azure-netapp-files"></a>針對 Azure NetApp Files 上的 HANA 資料庫進行大小調整
-
-Azure NetApp 磁碟區的輸送量是磁碟區大小的功能和服務等級，如 [Azure NetApp Files 的服務等級](../../../azure-netapp-files/azure-netapp-files-service-levels.md)中所述。 
-
-當您在 Azure 中設計 SAP 的基礎結構時，您應該注意 SAP 的一些最低儲存體輸送量需求，這會轉譯成下列項目的最低輸送量特性：
-
-- 在 **/hana/log** 上啟用 250MB/秒及 1 MB I/O 大小的讀取/寫入  
-- 針對 **/hana/data** 啟用至少 400MB/秒、16MB 和 64MB I/O 大小的讀取活動  
-- 針對 **/hana/data** 啟用至少 250MB/秒、16MB 和 64MB I/O 大小的寫入活動  
-
-每 1 TiB 磁碟區配額的 [Azure NetApp Files 輸送量限制](../../../azure-netapp-files/azure-netapp-files-service-levels.md)如下：
-- Premium 儲存層-64 MiB/秒  
-- Ultra 儲存層 - 128 MiB/秒  
-
-> [!IMPORTANT]
-> 與您在單一 NFS 磁碟區上部署的容量不同，取用者在虛擬機器中所用的輸送量峰值預期會出現在 1.2-1.4 GB/秒的頻寬範圍內。 這必須搭配 ANF 供應項目的基礎結構和 NFS 周圍相關的 Linux 工作階段限制。 [適用於Azure NetApp Files 的效能基準測試](../../../azure-netapp-files/performance-benchmarks-linux.md)一文所述的效能和輸送量數目是針對一個具有多個用戶端 VM 的共用 NFS 磁碟區進行，因此有多個工作階段。 這種情況與我們在 SAP 中測量的案例不同。 我們會從單一 VM 中對 NFS 磁碟區測量輸送量。 裝載於 ANF 上。
-
-為了符合資料和記錄的 SAP 最低輸送量需求，以及遵循 `/hana/shared` 的指導方針，建議的大小如下：
-
-| 磁碟區 | 大小<br /> 進階儲存層 | 大小<br /> Ultra 儲存層 | 支援的 NFS 通訊協定 |
-| --- | --- | --- |
-| /hana/log/ | 4 TiB | 2 TiB | v4.1 |
-| /hana/data | 6.3 TiB | 3.2 TiB | v4.1 |
-| HANA/shared | 每 4 個背景工作節點最大值 (512 GB、1xRAM) | 每 4 個背景工作節點最大值 (512 GB、1xRAM) | v3 或 4.1 版 |
+如需 ANF for HANA 的詳細資訊，請閱讀 [Azure NetApp Files 上的檔 NFS 4.1 磁片區以取得 SAP Hana](./hana-vm-operations-netapp.md)
 
 
-> [!NOTE]
-> 此處所述的 Azure NetApp Files 大小建議是為了符合 SAP 向其基礎結構提供者表示的最低需求。 在實際的客戶部署和工作負載案例中，這可能不夠。 請將這些建議當作起點，並且根據特定工作負載的需求來調整。  
-
-因此，您可以考慮為已針對 Ultra 磁碟儲存體列出的 ANF 磁碟區，部署類似的輸送量。 針對大小，也請考慮 Ultra 磁碟資料表中已針對不同 VM SKU 列出的磁碟區大小。
-
-> [!TIP]
-> 您可以動態地重新調整 Azure NetApp Files 磁碟區大小，而不需要 `unmount` 磁碟區、停止虛擬機器或停止 SAP Hana。 這可讓您彈性地滿足應用程式上預期和未預期的輸送量需求。
-
-[使用SUSE Linux Enterprise Server 上的 Azure NetApp Files，在 Azure VM 上使用待命節點來擴展 SAP Hana](./sap-hana-scale-out-standby-netapp-files-suse.md) 中，已發佈如何使用 ANF 中所裝載的 NFS v4.1 磁碟區，搭配待命節點來部署 SAP Hana 延展設定的方法。
 
 
 ## <a name="cost-conscious-solution-with-azure-premium-storage"></a>使用 Azure premium 儲存體的成本意識解決方案

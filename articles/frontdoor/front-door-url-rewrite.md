@@ -9,36 +9,36 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/10/2018
+ms.date: 09/28/2020
 ms.author: duau
-ms.openlocfilehash: 8f4a6283f762d9792f50651b9caee17795df6d55
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: eb5b4ab8a23a374aec54d65dd5390ab3fec3e905
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89398932"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91445492"
 ---
 # <a name="url-rewrite-custom-forwarding-path"></a>URL 重寫 (自訂轉送路徑)
-Azure Front Door 支援 URL 重寫，可讓您設定選擇性的 **自訂轉送路徑** ，以在建立轉送至後端的要求時使用。 根據預設，若沒有提供自訂轉送路徑，Front Door 會將傳入的 URL 路徑複製到用於轉送要求的 URL。 用於轉送要求中的主機標頭，與針對所選後端設定的標頭相同。 請參閱[後端主機標頭](front-door-backend-pool.md#hostheader)以了解其功用與設定方式。
+Azure Front Door 藉由設定選擇性的 **自訂轉送路徑** ，以在建立轉送至後端的要求時使用，藉以支援 URL 重寫。 根據預設，如果未提供自訂轉送路徑，Front Door 會將傳入的 URL 路徑複製到轉送要求中使用的 URL。 用於轉送要求中的主機標頭，與針對所選後端設定的標頭相同。 請參閱[後端主機標頭](front-door-backend-pool.md#hostheader)以了解其功用與設定方式。
 
-URL 重寫使用自訂轉送路徑的強大之處，在於它會複製傳入路徑中符合針對轉送路徑之萬用字元路徑 (這些路徑區段為下列範例中的**綠色**區段) 的所有部分：
+URL 重寫的強大部分是，自訂轉送路徑會將符合萬用字元路徑的傳入路徑的任何部分複製到轉送路徑 (這些路徑區段是下列範例中的 **綠色** 區段) ：
 </br>
-![Azure Front Door URL 重寫][1]
+
+:::image type="content" source="./media/front-door-url-rewrite/front-door-url-rewrite-example.jpg" alt-text="Azure Front Door URL 重寫":::
 
 ## <a name="url-rewrite-example"></a>URL 重寫範例
-以已設定下列前端主機與路徑的路由規則為例：
+請考慮使用下列前端主機和設定路徑組合的路由規則：
 
 | 主機      | 路徑       |
 |------------|-------------|
-| www\.contoso.com | /\*         |
+| www\.contoso.com | /\*   |
 |            | /foo        |
 |            | /foo/\*     |
 |            | /foo/bar/\* |
 
-下表的第一欄顯示傳入要求的範例，而第二欄則顯示「最明確」的相符路由「路徑」。  表格第一列的第三欄與後續的欄為已設定的**自訂轉送路徑**範例，而那些欄中其餘的列，則代表轉送路徑在符合該列之要求時的模樣。
+下表的第一欄顯示傳入要求的範例，而第二欄則顯示「最明確」的相符路由「路徑」。  資料表的第三個和後續的資料行是設定的 **自訂轉送路徑**範例。
 
 例如，如果我們閱讀第二列的內容，便能知道針對傳入要求 `www.contoso.com/sub`，如果自訂轉送路徑為 `/`，則轉送路徑將會是 `/sub`。 如果自訂轉送路徑為 `/fwd/`，則轉送路徑將會是 `/fwd/sub`。 針對其餘的欄也依此類推。 下列路徑中的**粗體**部分，則代表符合萬用字元的部分。
-
 
 | 傳入要求       | 最明確的相符路徑 | /          | /fwd/          | /foo/          | /foo/bar/          |
 |------------------------|--------------------------|------------|----------------|----------------|--------------------|
@@ -49,18 +49,12 @@ URL 重寫使用自訂轉送路徑的強大之處，在於它會複製傳入路�
 | www \. contoso.com/foo/        | /foo/\*                  | /          | /fwd/          | /foo/          | /foo/bar/          |
 | www \. contoso.com/foo/**bar** | /foo/\*                  | /**酒吧**   | /fwd/**bar**   | /foo/**bar**   | /foo/bar/**bar**   |
 
-
 ## <a name="optional-settings"></a>選擇性設定
 還有其他選擇性設定可供您針對任何指定的路由規則設定進行指定：
 
-* **快取設定**：若停用或未指定，則符合此路由規則的要求將不會嘗試使用快取內容，而一律會從後端擷取。 深入閱讀[搭配 Front Door 進行快取](front-door-caching.md)。
-
-
+* 快取設定-如果已停用或未指定，與此路由規則**相符的要求**就不會嘗試使用快取的內容，而且一律會從後端提取。 深入閱讀[搭配 Front Door 進行快取](front-door-caching.md)。
 
 ## <a name="next-steps"></a>後續步驟
 
 - 了解如何[建立 Front Door](quickstart-create-front-door.md)。
 - 了解 [Front Door 的運作方式](front-door-routing-architecture.md)。
-
-<!--Image references-->
-[1]: ./media/front-door-url-rewrite/front-door-url-rewrite-example.jpg

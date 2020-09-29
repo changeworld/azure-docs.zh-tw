@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 08/25/2020
-ms.openlocfilehash: fd0412459e7d6e51b6abdccbc8782d157acee6b9
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.date: 09/27/2020
+ms.openlocfilehash: f6527a0c5712d68756310b699d214013e89f38e1
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89319792"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449587"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Azure HDInsight 版本資訊
 
@@ -23,56 +23,43 @@ ms.locfileid: "89319792"
 
 Azure HDInsight 是最受企業客戶歡迎的其中一項服務，可供 Azure 上的開放原始碼分析使用。
 
-## <a name="release-date-08092020"></a>發行日期：08/09/2020
+## <a name="release-date-09282020"></a>發行日期：09/28/2020
 
-此版本僅適用于 HDInsight 4.0。 在數天內，所有區域都可以使用 HDInsight 發行版本。 此處的發行日期為第一個區域發行日期。 如果您沒有看到以下變更，請在數天內等待發行在您的區域中。
+此版本適用于 HDInsight 3.6 和 HDInsight 4.0。 在數天內，所有區域都可以使用 HDInsight 發行版本。 此處的發行日期為第一個區域發行日期。 如果您沒有看到以下變更，請在數天內等待發行在您的區域中。
 
 ## <a name="new-features"></a>新功能
-### <a name="support-for-sparkcruise"></a>對 SparkCruise 的支援
-SparkCruise 是適用于 Spark 的自動計算重複使用系統。 它會根據過去的查詢工作負載，選取要具體化的一般子運算式。 SparkCruise 會具體化這些子運算式作為查詢處理的一部分，而計算重複使用會自動套用到背景中。 您可以從 SparkCruise 受益，而不需要對 Spark 程式碼進行任何修改。
- 
-### <a name="support-hive-view-for-hdinsight-40"></a>支援 HDInsight 4.0 的 Hive 視圖
-Apache Ambari Hive View 的設計目的是協助您從網頁瀏覽器撰寫、優化和執行 Hive 查詢。 從這個版本開始，HDInsight 4.0 叢集原本就支援 Hive View。 不適用於現有的叢集。 您需要卸載再重新建立叢集，才能取得內建的 Hive 視圖。
- 
-### <a name="support-tez-view-for-hdinsight-40"></a>支援 HDInsight 4.0 的 Tez View
-Apache Tez View 可用來追蹤和偵測 Hive Tez 作業的執行。 從這個版本開始，HDInsight 4.0 原本就支援 Tez View。 不適用於現有的叢集。 您必須卸載並重新建立叢集，才能取得內建的 Tez 視圖。
+### <a name="llap-cluster-auto-scale-general-available"></a>LLAP 叢集自動調整規模一般可用
+LLAP 叢集類型的自動調整現已正式推出 (GA) 。 2020年8月27日之後建立的所有 LLAP 叢集都將具有自動調整的 GA 支援。
+
+### <a name="hbase-cluster-supports-premium-adls-gen2"></a>HBase 叢集支援 Premium ADLS Gen2
+HDInsight 現在支援 Premium ADLS Gen2 作為 HDInsight HBase 3.6 和4.0 叢集的主要儲存體帳戶。 搭配 [加速寫入](./hbase/apache-hbase-accelerated-writes.md)，您可以為您的 HBase 叢集取得較佳的效能。
+
+### <a name="kafka-partition-distribution-on-azure-fault-domains"></a>Azure 容錯網域上的 Kafka 資料分割分佈
+容錯網域是 Azure 資料中心內基礎硬體的邏輯群組。 每個容錯網域會共用通用電源和網路交換器。 HDInsight Kafka 可能會將所有磁碟分割複本儲存在相同的容錯網域中。 從這個版本開始，HDInsight 現在支援根據 Azure 容錯網域自動散發 Kafka 分割區。 
+
+### <a name="encryption-in-transit"></a>傳輸中加密
+客戶可以使用 IPSec 加密與平臺管理的金鑰，在叢集節點之間啟用傳輸加密。 您可以在建立叢集時啟用這個選項。 查看更多有關 [如何啟用傳輸中加密的](./domain-joined/encryption-in-transit.md)詳細資料。
+
+### <a name="encryption-at-host"></a>主機上的加密
+當您在主機上啟用加密時，儲存在 VM 主機上的資料會在待用時加密，並將流量加密至儲存體服務。 在此版本中，您可以在建立叢集時，于 **暫存資料磁片上的主機啟用加密** 。 只有 [有限區域中的特定 VM sku](https://docs.microsoft.com/azure/virtual-machines/linux/disks-enable-host-based-encryption-portal)才支援在主機上進行加密。 HDInsight 支援 [下列節點設定和 sku](./hdinsight-supported-node-configuration.md)。 請參閱有關 [如何在主機上啟用加密的](https://docs.microsoft.com/azure/hdinsight/disk-encryption#encryption-at-host-using-platform-managed-keys)詳細資料。
+
+### <a name="moving-to-azure-virtual-machine-scale-sets"></a>移至 Azure 虛擬機器擴展集
+HDInsight 現在會使用 Azure 虛擬機器來佈建叢集。 從這個版本開始，服務會逐漸遷移至 [Azure 虛擬機器擴展集](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview)。 整個過程可能需要數個月的時間。 遷移您的區域和訂用帳戶之後，新建立的 HDInsight 叢集將會在沒有客戶動作的虛擬機器擴展集上執行。 不需要中斷變更。
 
 ## <a name="deprecation"></a>淘汰
-### <a name="deprecation-of-spark-21-and-22-in-hdinsight-36-spark-cluster"></a>淘汰 HDInsight 3.6 Spark 叢集中的 Spark 2.1 和 2.2
-從 1 2020 年7月開始，客戶無法使用 Spark 2.1 和 2.2 on HDInsight 3.6 建立新的 Spark 叢集。 現有的叢集將會以現狀執行，不再有 Microsoft 支援。 請考慮在 2020 年 6 月 30 日前於 HDInsight 3.6 上移至 Spark 2.3，以避免潛在的系統/支援中斷。
- 
-### <a name="deprecation-of-spark-23-in-hdinsight-40-spark-cluster"></a>淘汰 HDInsight 4.0 Spark 叢集中的 Spark 2.3
-從 1 2020 年7月開始，客戶無法使用 Spark 2.3 on HDInsight 4.0 來建立新的 Spark 叢集。 現有的叢集將會以現狀執行，不再有 Microsoft 支援。 請考慮在 2020 年 6 月 30 日前於 HDInsight 4.0 上移至 Spark 2.4，以避免潛在的系統/支援中斷。
- 
-### <a name="deprecation-of-kafka-11-in-hdinsight-40-kafka-cluster"></a>淘汰 HDInsight 4.0 Kafka 叢集中的 Kafka 1.1
-自 2020 年 7 月 1 日開始，客戶將無法在 HDInsight 4.0 上使用 Kafka 1.1 建立新的 Kafka 叢集。 現有的叢集將會以現狀執行，不再有 Microsoft 支援。 請考慮在 2020 年 6 月 30 日前於 HDInsight 4.0 上移至 Kafka 2.1，以避免潛在的系統/支援中斷。
+此版本沒有淘汰。
 
 ## <a name="behavior-changes"></a>行為變更
-### <a name="ambari-stack-version-change"></a>Ambari stack 版本變更
-在此版本中，Ambari 版本會從 2.x. x 變更為4.1。 您可以在 Ambari： Ambari > 使用者 > 版本中，確認 stack 版本 (HDInsight 4.1) 。
+此版本沒有任何行為變更。
 
 ## <a name="upcoming-changes"></a>即將推出的變更
-不需要注意任何即將推出的重大變更。
+即將發行的版本中將會發生下列變更。
+
+### <a name="ability-to-select-different-zookeeper-sku-for-spark-hadoop-and-ml-services"></a>能夠為 Spark、Hadoop 和 ML 服務選取不同的 Zookeeper SKU
+HDInsight 今日不支援變更 Spark、Hadoop 和 ML 服務叢集類型的 Zookeeper SKU。 它使用適用于 Zookeeper 節點 A2_v2/A2 SKU，而不會向客戶收取費用。 在即將推出的版本中，客戶可以視需要變更 Spark、Hadoop 和 ML 服務的 Zookeeper SKU。 具有 A2_v2/A2 以外 SKU 的 Zookeeper 節點將會收取費用。 預設 SKU 仍會 A2_V2/A2，而且不會收費。
 
 ## <a name="bug-fixes"></a>錯誤修正
 HDInsight 會持續改善叢集的可靠性和效能。 
 
-以下是 Hive 的 JIRAs：
-* [HIVE-23619](https://issues.apache.org/jira/browse/HIVE-23619)
-* [HIVE-21223](https://issues.apache.org/jira/browse/HIVE-21223)
-* [HIVE-22599](https://issues.apache.org/jira/browse/HIVE-22599)
-* [HIVE-22121](https://issues.apache.org/jira/browse/HIVE-22121)
-* [HIVE-22136](https://issues.apache.org/jira/browse/HIVE-22136)
-* [HIVE-18786](https://issues.apache.org/jira/browse/HIVE-18786)
-
-以下是適用于 HBase 的 JIRAs：
-* [HBASE-21458](https://issues.apache.org/jira/browse/HBASE-21458)
-* [HBASE-24208](https://issues.apache.org/jira/browse/HBASE-24208)
-* [HBASE-24205](https://issues.apache.org/jira/browse/HBASE-24205)
-
 ## <a name="component-version-change"></a>元件版本變更
 此發行版本沒有任何元件版本變更。 您可以在 [本](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#apache-hadoop-components-available-with-different-hdinsight-versions)檔中找到 hdinsight 4.0 和 hdinsight 3.6 目前的元件版本。
-
-## <a name="known-issues"></a>已知問題
-
-已修正 Azure 入口網站中的問題，在此問題中，使用者在使用 SSH 驗證類型的公開金鑰建立 Azure HDInsight 叢集時會遇到錯誤。 當使用者按一下 [檢閱 + 建立] 時，會收到「不得包含來自 SSH 使用者名稱的任何三個連續字元」錯誤。 已修正此問題，但您可能需要按下 CTRL + F5 來載入更正的檢視，以重新整理瀏覽器快取。 此問題的因應措施是使用 ARM 範本建立叢集。 

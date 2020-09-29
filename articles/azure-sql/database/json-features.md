@@ -1,27 +1,27 @@
 ---
 title: 使用 JSON 資料
-description: Azure SQL Database 和 Azure SQL 受控執行個體可讓您以 JavaScript 物件標記法（JSON）標記法來剖析、查詢和格式化資料。
+description: Azure SQL Database 和 Azure SQL 受控執行個體可讓您以 JavaScript 物件標記法 (JSON) 標記法來剖析、查詢及格式化資料。
 services: sql-database
 ms.service: sql-db-mi
 ms.subservice: development
 ms.custom: sqldbrb=2
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 04/19/2020
-ms.openlocfilehash: b138263ff48d5be24d9453b82eef4a3e9fb0d31b
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 53428a542bb8d8d546e68f63aaf80ee40f2b0874
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85986305"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91450238"
 ---
-# <a name="getting-started-with-json-features-in-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL Database 和 Azure SQL 受控執行個體中的 JSON 功能使用者入門
+# <a name="getting-started-with-json-features-in-azure-sql-database-and-azure-sql-managed-instance"></a>開始使用 Azure SQL Database 和 Azure SQL 受控執行個體中的 JSON 功能
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Azure SQL Database 和 Azure SQL 受控執行個體可讓您剖析並查詢以 JavaScript 物件標記法[（JSON）](https://www.json.org/)格式表示的資料，並將您的關聯式資料匯出為 JSON 文字。 可用的 JSON 案例如下：
+Azure SQL Database 和 Azure SQL 受控執行個體可讓您剖析和查詢以 JavaScript 物件標記法 [ (json) ](https://www.json.org/) 格式表示的資料，並將您的關聯式資料匯出為 JSON 文字。 可用的 JSON 案例如下：
 
 - 使用 `FOR JSON` 子句[以 JSON 格式將關聯式資料格式化](#formatting-relational-data-in-json-format)。
 - [使用 JSON 資料](#working-with-json-data)
@@ -30,7 +30,7 @@ Azure SQL Database 和 Azure SQL 受控執行個體可讓您剖析並查詢以 J
 
 ## <a name="formatting-relational-data-in-json-format"></a>以 JSON 格式將關聯式資料格式化
 
-如果您有會從資料庫層擷取資料並以 JSON 格式提供回應的 Web 服務，或是有會接受以 JSON 格式化之資料的用戶端 JavaScript 架構或程式庫，您就可以直接在 SQL 查詢中將資料庫內容格式化為 JSON。 您不再需要撰寫應用程式程式碼，將來自 Azure SQL Database 或 Azure SQL 受控執行個體的結果格式化為 JSON，或包含一些 JSON 序列化程式庫來轉換表格式查詢結果，然後將物件序列化為 JSON 格式。 相反地，您可以使用 FOR JSON 子句來將 SQL 查詢結果格式化為 JSON，並直接在您的應用程式中使用它。
+如果您有會從資料庫層擷取資料並以 JSON 格式提供回應的 Web 服務，或是有會接受以 JSON 格式化之資料的用戶端 JavaScript 架構或程式庫，您就可以直接在 SQL 查詢中將資料庫內容格式化為 JSON。 您不再需要撰寫應用程式程式碼，以將 Azure SQL Database 或 Azure SQL 受控執行個體的結果格式化為 JSON，或包含一些 JSON 序列化程式庫來轉換表格式查詢結果，然後將物件序列化為 JSON 格式。 相反地，您可以使用 FOR JSON 子句將 SQL 查詢結果格式化為 JSON，並直接在您的應用程式中使用。
 
 在下列範例中，會透過使用 FOR JSON 子句，將來自 Sales.Customer 資料表的資料列格式化為 JSON：
 
@@ -106,7 +106,7 @@ FOR JSON AUTO, WITHOUT_ARRAY_WRAPPER
 
 如果您沒有嚴格結構化的資料，如果您有複雜的子物件、陣列或階層式資料，或如果您的資料結構會隨時間演變，則 JSON 格式可協助您表現任何複雜的資料結構。
 
-JSON 是一種文字格式，可以像 Azure SQL Database 和 Azure SQL 受控執行個體中的任何其他字串類型一樣使用。 您可以用標準 NVARCHAR 形式來傳送或儲存 JSON 資料：
+JSON 是文字格式，可以像 Azure SQL Database 和 Azure SQL 受控執行個體中的任何其他字串類型一樣使用。 您可以用標準 NVARCHAR 形式來傳送或儲存 JSON 資料：
 
 ```sql
 CREATE TABLE Products (
@@ -128,13 +128,13 @@ END
 EXEC InsertProduct 'Toy car', '{"Price":50,"Color":"White","tags":["toy","children","games"]}'
 ```
 
-在 Azure SQL Database 和 Azure SQL 受控執行個體中使用字串資料的任何用戶端語言或程式庫也會使用 JSON 資料。 JSON 可以儲存在任何支援 NVARCHAR 類型的資料表中，例如記憶體最佳化資料表或由系統控制版本的資料表。 JSON 不會導入任何條件約束，不論是用戶端程式碼中還是在資料庫層中的條件約束。
+任何適用于 Azure SQL Database 和 Azure SQL 受控執行個體中字串資料的用戶端語言或程式庫也會使用 JSON 資料。 JSON 可以儲存在任何支援 NVARCHAR 類型的資料表中，例如記憶體最佳化資料表或由系統控制版本的資料表。 JSON 不會導入任何條件約束，不論是用戶端程式碼中還是在資料庫層中的條件約束。
 
 ## <a name="querying-json-data"></a>查詢 JSON 資料
 
 如果您有格式化為 JSON 的資料儲存在 Azure SQL 資料表中，JSON 函數可讓您在任何 SQL 查詢中使用此資料。
 
-Azure SQL Database 和 Azure SQL 受控執行個體中提供的 JSON 函式可讓您將格式化為 JSON 的資料視為任何其他 SQL 資料類型。 您可以輕鬆地從 JSON 文字中擷取值，然後在任何查詢中使用 JSON 資料︰
+Azure SQL Database 和 Azure SQL 受控執行個體中提供的 JSON 函數可讓您將格式化為 JSON 的資料視為任何其他 SQL 資料類型。 您可以輕鬆地從 JSON 文字中擷取值，然後在任何查詢中使用 JSON 資料︰
 
 ```sql
 select Id, Title, JSON_VALUE(Data, '$.Color'), JSON_QUERY(Data, '$.tags')
@@ -164,7 +164,7 @@ ALTER TABLE Products
 
 ## <a name="transforming-json-into-tabular-format"></a>將 JSON 轉換成表格式格式
 
-Azure SQL Database 和 Azure SQL 受控執行個體也可讓您將 JSON 集合轉換成表格式格式，並載入或查詢 JSON 資料。
+Azure SQL Database 和 Azure SQL 受控執行個體也可讓您將 JSON 集合轉換成表格格式，以及載入或查詢 JSON 資料。
 
 OPENJSON 是一個資料表值函數，可剖析 JSON 文字、找出 JSON 物件陣列、逐一查看陣列的元素，然後在輸出結果中為每個陣列元素傳回一個資料列。
 

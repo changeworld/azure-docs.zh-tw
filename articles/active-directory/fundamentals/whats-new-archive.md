@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/31/2020
+ms.date: 09/28/2020
 ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d89a75c0d917fc1416fcb5d54b7c7df5ef5f5dea
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: b1ef7d587cd8bec636f42673941edb69647ee8cb
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89319197"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449998"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Azure Active Directory 新增功能的封存檔
 
@@ -33,7 +33,161 @@ ms.locfileid: "89319197"
 - 方案變更
 
 ---
- ## <a name="february-2020"></a>2020 年 2 月
+
+ ## <a name="march-2020"></a>2020 年 3 月
+
+### <a name="unmanaged-azure-active-directory-accounts-in-b2b-update-for-march--2021"></a>2021年3月 B2B 更新中的非受控 Azure Active Directory 帳戶
+
+**類型：** 方案變更  
+**服務類別：** B2B  
+**產品功能：** B2B/B2C
+ 
+自**2021 年3月31日起**，Microsoft 將不再支援在 B2B 共同作業案例中建立非受控 Azure Active Directory (Azure AD) 帳戶和租使用者來兌換邀請。 為此，我們建議您選擇以電子郵件傳送單次 [密碼驗證](../external-identities/one-time-passcode.md)。
+
+---
+
+### <a name="users-with-the-default-access-role-will-be-in-scope-for-provisioning"></a>具有預設存取角色的使用者將在布建範圍內
+
+**類型：** 方案變更  
+**服務類別：** 應用程式佈建  
+**產品功能：** 身分識別生命週期管理
+ 
+在過去，具有預設存取角色的使用者已超出布建的範圍。 我們聽說客戶希望具有此角色的使用者可以在布建範圍內的意見反應。 我們正致力於部署變更，讓所有新的布建設定都能允許布建預設存取角色的使用者。 我們會逐漸變更現有布建設定的行為，以支援使用此角色來布建使用者。 不需要客戶動作。 當這項變更準備就緒之後，我們就會將更新張貼到我們的 [檔](../app-provisioning/application-provisioning-config-problem-no-users-provisioned.md) 。
+
+---
+
+### <a name="azure-ad-b2b-collaboration-will-be-available-in-microsoft-azure-operated-by-21vianet-azure-china-21vianet-tenants"></a>Azure AD 的 B2B 共同作業將可在由世紀 (Azure 中國世紀) 租使用者的 Microsoft Azure 運作
+
+**類型：** 方案變更  
+**服務類別：** B2B  
+**產品功能：** B2B/B2C
+ 
+Azure AD 的 B2B 共同作業功能將會提供給由世紀 (Azure 中國世紀) 租使用者的 Microsoft Azure 營運，讓 Azure 中國世紀租使用者中的使用者能與其他 Azure 中國世紀租使用者中的使用者順暢地共同作業。 [深入瞭解 AZURE AD B2B 協同](/azure/active-directory/b2b/)作業。
+
+---
+ 
+### <a name="azure-ad-b2b-collaboration-invitation-email-redesign"></a>Azure AD B2B 共同作業邀請電子郵件重新設計
+
+**類型：** 方案變更  
+**服務類別：** B2B  
+**產品功能：** B2B/B2C
+ 
+Azure AD B2B 共同作業邀請服務所傳送的 [電子郵件](../external-identities/invitation-email-elements.md) 邀請使用者加入目錄，將會重新設計，讓邀請資訊和使用者的後續步驟更清楚。
+
+---
+
+### <a name="homerealmdiscovery-policy-changes-will-appear-in-the-audit-logs"></a>HomeRealmDiscovery 原則變更將會出現在 audit 記錄檔中
+
+**類型：** 固定  
+**服務類別：** 審計  
+**產品功能：** 監視和報告
+ 
+修正了 [HomeRealmDiscovery 原則](../manage-apps/configure-authentication-for-federated-users-portal.md) 的變更未包含在 audit 記錄檔中的錯誤（bug）。 您現在將能夠看到原則的變更時間和方式，以及由誰變更。 
+
+---
+
+### <a name="new-federated-apps-available-in-azure-ad-app-gallery---march-2020"></a>Azure AD App 資源庫中可用的新同盟應用程式-2020 年3月
+
+**類型：** 新功能  
+**服務類別：** 企業應用程式  
+**產品功能：** 協力廠商整合
+ 
+在2020年3月，我們已將下列具有同盟支援的51新應用程式新增至應用程式庫： 
+
+[Cisco AnyConnect](../saas-apps/cisco-anyconnect.md)， [Zoho 一中國](../saas-apps/zoho-one-china-tutorial.md)， [PlusPlus](https://test.plusplus.app/auth/login/azuread-outlook/)、 [Profit.co SAML APP](../saas-apps/profitco-saml-app-tutorial.md)、 [iPoint Service Provider](../saas-apps/ipoint-service-provider-tutorial.md)、 [contexxt.ai 球體](https://contexxt-sphere.com/login)、 [Invictus](../saas-apps/wisdom-by-invictus-tutorial.md)[的](../saas-apps/logzio-cloud-observability-for-engineers-tutorial.md)[智慧、Logz.io、可檢視性](https://spark-dev.pixelnebula.com/login) [、SpectrumU、](../saas-apps/spectrumu-tutorial.md) [BizzContact SSO](../saas-apps/elqano-sso-tutorial.md) [、Elqano](http://www.signshare.com/)、 [MarketSignShare Learning Suite](../saas-apps/crossknowledge-learning-suite-tutorial.md) [、CrossKnowledge](https://bizzcontact.app/) [Netvision](../saas-apps/netvision-compas-tutorial.md)、Compas [HUB](../saas-apps/fcm-hub-tutorial.md)、[筋 A/S FCM Mobile](https://apps.apple.com/us/app/docia/id529058757)、 [Byggeweb](../saas-apps/golinks-tutorial.md)、 [GoLinks](../saas-apps/datadog-tutorial.md)、Datadog [B2B 使用者入口網站](../saas-apps/zscaler-b2b-user-portal-tutorial.md) [、增益、](../saas-apps/lift-tutorial.md) [Planview Enterprise One](../saas-apps/planview-enterprise-one-tutorial.md)、 [Zscaler](https://www.devfinition.com/) [、WatchTeams、](https://demo.asterapp.io/login)[技能工作流程](../saas-apps/skills-workflow-tutorial.md)、[節點深入](https://admin.nodeinsight.com/AADLogin.aspx)解析、 [IP Platform](../saas-apps/ip-platform-tutorial.md)、 [InVision](../saas-apps/invision-tutorial.md)、 [Pipedrive](../saas-apps/pipedrive-tutorial.md)、[展示研討會](https://app.showcaseworkshop.com/)、 [Greenlight 整合平臺](../saas-apps/greenlight-integration-platform-tutorial.md)、 [Greenlight 相容的存取管理](../saas-apps/greenlight-compliant-access-management-tutorial.md)、 [Grok 學習](../saas-apps/grok-learning-tutorial.md)、 [Miradore Online](https://login.online.miradore.com/)、 [khoros care 護理](../saas-apps/khoros-care-tutorial.md)、 [AskYourTeam](../saas-apps/askyourteam-tutorial.md)、 [TruNarrative](../saas-apps/trunarrative-tutorial.md)、 [Smartwaiver](https://www.smartwaiver.com/m/user/sw_login.php?wms_login)、 [Bizagi Studio （數位程式自動化](../saas-apps/bizagi-studio-for-digital-process-automation-tutorial.md)）、 [insuiteX](https://www.insuite.jp/)、 [sybo](https://www.systexsoftware.com.tw/)、 [Britive](../saas-apps/britive-tutorial.md) [、WhosOffice、](../saas-apps/whosoffice-tutorial.md) [E 天](../saas-apps/e-days-tutorial.md)、 [Kollective SDN](https://portal.kollective.app/login)、 [Witivio](https://app.witivio.com/) [、Playvox、Korn](https://my.playvox.com/login) [Ferry 360](../saas-apps/korn-ferry-360-tutorial.md)、[校園咖啡館](../saas-apps/campus-cafe-tutorial.md)、 [Catchpoint](../saas-apps/catchpoint-tutorial.md)、 [Code42](../saas-apps/code42-tutorial.md)
+
+如需應用程式的詳細資訊，請參閱[與 Azure Active Directory 整合的 SaaS 應用程式](https://aka.ms/appstutorial)。 如需在 Azure AD 應用程式庫中列出應用程式的詳細資訊，請參閱[在 Azure Active Directory 應用程式庫中列出您的應用程式](https://aka.ms/azureadapprequest)。
+
+---
+
+### <a name="azure-ad-b2b-collaboration-available-in-azure-government-tenants"></a>Azure Government 租使用者中可用的 Azure AD B2B 共同作業
+
+**類型：** 新功能  
+**服務類別：** B2B  
+**產品功能：** B2B/B2C
+ 
+Azure AD 的 B2B 共同作業功能現在可在某些 Azure Government 租使用者之間取得。  若要瞭解您的租使用者是否能夠使用這些功能，請遵循指示 [如何判斷我的 AZURE 美國政府租使用者中是否有可用的 B2B 共同作業？](../external-identities/current-limitations.md#how-can-i-tell-if-b2b-collaboration-is-available-in-my-azure-us-government-tenant)。
+
+---
+
+### <a name="azure-monitor-integration-for-azure-logs-is-now-available-in-azure-government"></a>Azure 記錄的 Azure 監視器整合現在可在 Azure Government 中取得
+
+**類型：** 新功能  
+**服務類別：** 報告  
+**產品功能：** 監視和報告
+ 
+Azure 監視器與 Azure AD 記錄的整合現在已可在 Azure Government 中取得。 您可以將 Azure AD 記錄 () 至儲存體帳戶、事件中樞和 Log Analytics 的「審核」和「登入」記錄傳送。 請參閱詳細的 [檔](https://aka.ms/aadlogsinamd) ，以及 [用於報告和監視](../reports-monitoring/plan-monitoring-and-reporting.md) Azure AD 案例的部署計畫。
+
+---
+
+### <a name="identity-protection-refresh-in-azure-government"></a>Azure Government 中的身分識別保護重新整理
+
+**類型：** 新功能  
+**服務類別：** 身分識別保護  
+**產品功能：** 身分識別安全性 & 保護
+
+我們很高興能分享我們現在已[Azure AD Identity Protection](https://aka.ms/IdentityProtectionDocs)   在[Microsoft Azure Government 入口網站](https://portal.azure.us/)中推出重新整理的 Azure AD Identity Protection 體驗。 如需詳細資訊，請參閱我們的 [公告 blog 文章](https://techcommunity.microsoft.com/t5/public-sector-blog/identity-protection-refresh-in-microsoft-azure-government/ba-p/1223667)。
+
+---
+
+### <a name="disaster-recovery-download-and-store-your-provisioning-configuration"></a>嚴重損壞修復：下載並儲存您的布建設定
+
+**類型：** 新功能  
+**服務類別：** 應用程式佈建  
+**產品功能：** 身分識別生命週期管理
+ 
+Azure AD 布建服務提供一組豐富的設定功能。 客戶必須能夠儲存其設定，讓他們可以稍後參考，或回復為已知的良好版本。 我們已新增將布建設定下載為 JSON 檔案的功能，並在需要時將其上傳。 [深入了解](../app-provisioning/export-import-provisioning-configuration.md)。
+
+---
+ 
+### <a name="sspr-self-service-password-reset-now-requires-two-gates-for-admins-in-microsoft-azure-operated-by-21vianet-azure-china-21vianet"></a>SSPR (自助式密碼重設) 現在需要兩個由世紀 Microsoft Azure 營運的系統管理員的閘道 (Azure 中國世紀)  
+
+**類型：** 已變更的功能  
+**服務類別：** 自助式密碼重設  
+**產品功能：** 身分識別安全性 & 保護
+ 
+先前在 Microsoft Azure 由世紀 (Azure 中國的世紀) ，使用自助式密碼重設的系統管理員 (SSPR) 重設自己的密碼，只需要一個「閘道」 (挑戰) 證明其身分識別。 在公用和其他國家雲端中，系統管理員通常必須在使用 SSPR 時使用兩個閘道來證明其身分識別。 但由於我們不支援 Azure 中國世紀的 SMS 或通話，因此我們允許系統管理員進行一次閘道密碼重設。
+
+我們正在建立 Azure 中國的世紀和公用雲端之間的 SSPR 功能同位檢查。 接下來，系統管理員必須在使用 SSPR 時使用兩個閘道。 系統將支援 SMS、通話和驗證器代理程式更新和代碼。 [深入了解](../authentication/concept-sspr-policy.md#administrator-reset-policy-differences)。
+
+---
+
+### <a name="password-length-is-limited-to-256-characters"></a>密碼長度限制為256個字元
+
+**類型：** 已變更的功能  
+**服務類別：** 驗證 (登入)  
+**產品功能：** 使用者驗證
+ 
+為確保 Azure AD 服務的可靠性，使用者密碼現在的長度限制為256個字元。 密碼超過此密碼的使用者將被要求在後續登入時變更其密碼，方法是聯絡其系統管理員或使用自助式密碼重設功能。
+
+這項變更已在2020年3月13日、10AM PST (18:00 UTC) 上啟用，而錯誤為 AADSTS 50052、InvalidPasswordExceedsMaxLength。 如需詳細資訊，請參閱 [重大變更通知](../develop/reference-breaking-changes.md#user-passwords-will-be-restricted-to-256-characters) 。
+
+---
+
+### <a name="azure-ad-sign-in-logs-are-now-available-for-all-free-tenants-through-the-azure-portal"></a>所有免費租使用者現在都可以透過 Azure 入口網站 Azure AD 登入記錄
+
+**類型：** 已變更的功能  
+**服務類別：** 報告  
+**產品功能：** 監視和報告
+ 
+從現在開始，具有免費租使用者的客戶可以 [從 Azure 入口網站存取 Azure AD 登入記錄](../reports-monitoring/concept-sign-ins.md) ，最多7天。 先前，登入記錄僅適用于具有 Azure Active Directory Premium 授權的客戶。 透過這項變更，所有租使用者都可以透過入口網站存取這些記錄。
+
+> [!NOTE]
+> 客戶仍然需要 (Azure Active Directory Premium P1 或 P2) 的 premium 授權，才能透過 Microsoft Graph API 和 Azure 監視器存取登入記錄。
+
+---
+
+### <a name="deprecation-of-directory-wide-groups-option-from-groups-general-settings-on-azure-portal"></a>Azure 入口網站上群組一般設定中的整個目錄群組選項
+
+**類型：** 已被取代  
+**服務類別：** 群組管理  
+**產品功能：** 共同作業
+
+為了提供更有彈性的方式，讓客戶建立最符合其需求的全目錄群組，我們已從 Azure 入口網站中的 [**群組**一般設定] 取代 [**全目錄群組**] 選項，  >  **General**並提供[動態群組檔](../users-groups-roles/groups-dynamic-membership.md)的連結。 我們已改善檔以包含更多指示，讓系統管理員可以建立包含或排除來賓使用者的所有使用者群組。
+
+---
+
+## <a name="february-2020"></a>2020 年 2 月
 
 ### <a name="upcoming-changes-to-custom-controls"></a>自訂控制項即將進行的變更
 
@@ -175,7 +329,7 @@ ms.locfileid: "89319197"
 **服務類別：** B2C - 取用者身分識別管理  
 **產品功能：** B2B/B2C
  
-透過電話號碼註冊和登入，開發人員和企業可讓客戶使用透過 SMS 傳送給使用者電話號碼的一次性密碼來註冊和登入。 這項功能也可讓客戶在無法存取電話時變更其電話號碼。 透過自訂原則的強大功能，電話註冊與登入可讓開發人員和企業透過網頁自訂來傳達其品牌。 瞭解如何 [使用 Azure AD B2C 中的自訂原則來設定電話註冊和登入](../../active-directory-b2c/phone-authentication.md)。
+透過電話號碼註冊和登入，開發人員和企業可讓客戶使用透過 SMS 傳送給使用者電話號碼的一次性密碼來註冊和登入。 這項功能也可讓客戶在無法存取電話時變更其電話號碼。 透過自訂原則及電話註冊與登入的強大功能，可讓開發人員和企業透過網頁自訂來傳達其品牌。 瞭解如何 [使用 Azure AD B2C 中的自訂原則來設定電話註冊和登入](../../active-directory-b2c/phone-authentication.md)。
  
 ---
  

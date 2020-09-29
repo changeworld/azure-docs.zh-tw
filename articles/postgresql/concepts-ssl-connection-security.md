@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: 872daf3a208452e8b7ec27b2326e394b416a1c5f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: e54b8bc51817d2a56153dcc0c14f45e76b9ae88b
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90902040"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91444944"
 ---
 # <a name="configure-tls-connectivity-in-azure-database-for-postgresql---single-server"></a>在適用於 PostgreSQL 的 Azure 資料庫-單一伺服器中設定 TLS 連線能力
 
@@ -93,7 +93,18 @@ psql "sslmode=verify-full sslrootcert=BaltimoreCyberTrustRoot.crt host=mydemoser
 
 若要瞭解如何設定適用於 PostgreSQL 的 Azure 資料庫單一伺服器的 TLS 設定，請參閱如何設定 [tls 設定](howto-tls-configurations.md)。
 
-## <a name="next-steps"></a>下一步
+## <a name="cipher-support-by-azure-database-for-postgresql-single-server"></a>適用於 PostgreSQL 的 Azure 資料庫單一伺服器的加密支援
+
+做為 SSL/TLS 通訊的一部分，系統會驗證加密套件，而且只允許支援加密，以與資料庫 serer 通訊。 加密套件驗證是在 [閘道層](concepts-connectivity-architecture.md#connectivity-architecture) 級進行控制，而不是在節點本身上明確控制。 如果加密套件不符合下列其中一個套件，則會拒絕傳入用戶端連接。
+
+### <a name="cipher-suite-supported"></a>支援的密碼套件
+
+*   TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+*   TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+*   TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
+*   TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
+
+## <a name="next-steps"></a>後續步驟
 
 [針對適用於 PostgreSQL 的 Azure 資料庫查看連接程式庫中的](concepts-connection-libraries.md)各種應用程式連線選項。
 

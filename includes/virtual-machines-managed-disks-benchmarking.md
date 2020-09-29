@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/11/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: da5811abec889bcc47d08878a0950df7f0983663
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5fea0cb8c6ac3f706cfef5e4a153fbbf4ff465b8
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87010815"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91451408"
 ---
 *準備快取*  
 設有「唯讀」主機快取的磁碟能夠提供高於磁碟限制的 IOPS。 若要從主機快取獲得這種最高的讀取效能，您必須先準備此磁碟的快取。 如此可確保效能評定工具在 CacheReads 磁碟區上推動的讀取 IO 實際上是命中快取，而非直接觸及磁碟。 快取命中會讓已啟用快取的單一磁碟產生更多 IOPS。
@@ -25,7 +25,7 @@ ms.locfileid: "87010815"
 
 ### <a name="iometer"></a>Iometer
 
-[下載 Iometer 工具](https://sourceforge.net/projects/iometer/files/iometer-stable/2006-07-27/iometer-2006.07.27.win32.i386-setup.exe/download) 。
+[下載 Iometer 工具](http://sourceforge.net/projects/iometer/files/iometer-stable/1.1.0/iometer-1.1.0-win64.x86_64-bin.zip/download) 。
 
 #### <a name="test-file"></a>測試檔案
 
@@ -68,12 +68,12 @@ ms.locfileid: "87010815"
    | RandomReads\_1MB |1 MB |100 |100 |
 1. 執行 Iometer 測試，使用下列參數初始化快取磁碟。 對目標磁碟區使用三個背景工作執行緒，佇列深度為 128。 在 [測試安裝程式] 索引標籤上，將測試的 [執行階段] 期間設為 2 小時。
 
-   | 案例 | 目標磁碟區 | 名稱 | Duration |
+   | 狀況 | 目標磁碟區 | 名稱 | 持續時間 |
    | --- | --- | --- | --- |
    | 初始化快取磁碟 |CacheReads |RandomWrites\_1MB |2 小時 |
 1. 執行 Iometer 測試，使用下列參數來準備快取。 對目標磁碟區使用三個背景工作執行緒，佇列深度為 128。 在 [測試安裝程式] 索引標籤上，將測試的 [執行階段] 期間設為 2 小時。
 
-   | 案例 | 目標磁碟區 | 名稱 | Duration |
+   | 狀況 | 目標磁碟區 | 名稱 | 持續時間 |
    | --- | --- | --- | --- |
    | 準備快取磁碟 |CacheReads |RandomReads\_1MB |2 小時 |
 
@@ -153,7 +153,7 @@ sudo fio --runtime 30 fiowrite.ini
 ```
 
 當測試執行時，您能夠看到 VM 和高階磁碟產生的寫入 IOPS 數目。 如下列範例所示，DS14 VM 產生最大寫入 IOPS 限制 50,000 IOPS。  
-    ![提供的寫入 IOPS VM 和 Premium 磁片數目。](../articles/virtual-machines/linux/media/premium-storage-performance/image11.png)
+    ![傳遞的寫入 IOP VM 和 Premium 磁片數目。](../articles/virtual-machines/linux/media/premium-storage-performance/image11.png)
 
 #### <a name="maximum-read-iops"></a>最大讀取 IOPS
 

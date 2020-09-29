@@ -4,14 +4,14 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: 31f7e348a805c86964a8856fb81b83831c611de5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 7ca15baffd3fac4a1f3635ac7377bac620673446
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91377607"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91451377"
 ---
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
 - 已部署通訊服務資源。 [建立通訊服務資源](../../create-communication-resource.md)。
@@ -41,7 +41,7 @@ ms.locfileid: "91377607"
 5. 開啟專案設定編輯器的 [建置設定] 索引標籤，並瀏覽至 [搜尋路徑] 區段。 針對包含 **AzureCommunicationCalling** 的目錄，新增新的**架構搜尋路徑**項目。
     1. 新增另一個「架構搜尋路徑」項目，指向包含相依性的資料夾。
 
-:::image type="content" source="../media/ios/xcode-framework-search-paths.png" alt-text="顯示 XCode 中更新架構搜尋路徑的螢幕擷取畫面。":::
+:::image type="content" source="../media/ios/xcode-framework-search-paths.png" alt-text="顯示 Xcode 內建立新的 [新增專案] 視窗的螢幕擷取畫面。":::
 
 ### <a name="request-access-to-the-microphone"></a>要求存取麥克風
 
@@ -113,7 +113,7 @@ public func fetchTokenSync(then onCompletion: TokenRefreshOnCompletion) {
 callClient = ACSCallClient()
 callClient?.createCallAgent(userCredential!,
     withCompletionHandler: { (callAgent, error) in
-        if error != nil {
+        if error == nil {
             print("Create agent succeeded")
             self.callAgent = callAgent
         } else {
@@ -186,7 +186,7 @@ let call = self.callAgent?.join(with: groupCallContext, joinCallOptions: ACSJoin
 - 步驟2： Xcode > 簽署 & 功能-> 新增功能-> 「背景模式」
 - 步驟3：「背景模式」-> 選取「語音 over IP」和「遠端通知」
 
-:::image type="content" source="../media/ios/xcode-push-notification.png" alt-text="顯示如何在 Xcode 中新增功能的螢幕擷取畫面。" lightbox="../media/ios/xcode-push-notification.png":::
+:::image type="content" source="../media/ios/xcode-push-notification.png" alt-text="顯示 Xcode 內建立新的 [新增專案] 視窗的螢幕擷取畫面。" lightbox="../media/ios/xcode-push-notification.png":::
 
 #### <a name="register-for-push-notifications"></a>註冊推播通知
 

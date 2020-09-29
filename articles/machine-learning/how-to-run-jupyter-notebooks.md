@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 06/27/2020
-ms.openlocfilehash: b310f195477f4cba83ef30c6fb5ea2fd24c4df9a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 46435ef773e90234538bb755e20035990bbf1066
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90897382"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91460028"
 ---
 # <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>如何在工作區中執行 Jupyter Notebook
 
@@ -80,15 +80,20 @@ ms.locfileid: "90897382"
 1. 選取 **計算** 目標，或建立一個新的，並等候它正在執行。
 1. 選取**開啟終端機**圖示。
 
-    :::image type="content" source="media/how-to-run-jupyter-notebooks/open-terminal.png" alt-text="開啟終端機":::
+    :::image type="content" source="media/how-to-run-jupyter-notebooks/open-terminal.png" alt-text="建立新檔案":::
 
 1. 如果您沒有看到此圖示，請選取計算目標右邊的 **...** ，然後選取 [ **開啟終端**機]。
 
-    :::image type="content" source="media/how-to-run-jupyter-notebooks/alt-open-terminal.png" alt-text="從 ... 開啟終端機":::
+    :::image type="content" source="media/how-to-run-jupyter-notebooks/alt-open-terminal.png" alt-text="建立新檔案":::
 
 
 瞭解如何[將 Git 存放庫複製到您的工作區檔案系統](concept-train-model-git-integration.md#clone-git-repositories-into-your-workspace-file-system)。
 
+### <a name="copy-and-paste-in-terminal"></a>在終端機中複製並貼上
+
+> * Windows： `Ctrl-Insert` 複製並使用 `Ctrl-Shift-v` 或 `Shift-Insert` 貼上。
+> * Mac 作業系統：`Cmd-c` 進行複製，`Cmd-v` 即可貼上。
+> * FireFox/IE 可能無法正確支援剪貼簿權限。
 
 ### <a name="share-notebooks-and-other-files"></a>共用筆記本和其他檔案
 
@@ -121,7 +126,7 @@ ms.locfileid: "90897382"
 1. 執行您所有的筆記本儲存格。
 1. 選取包含您想要新筆記本執行之程式碼的資料格。 例如，提交實驗的程式碼，或可能註冊模型的程式碼。
 1. 選取出現在資料格工具列上的 **收集** 圖示。
-    :::image type="content" source="media/how-to-run-jupyter-notebooks/gather.png" alt-text="螢幕擷取畫面：選取收集圖示":::
+    :::image type="content" source="media/how-to-run-jupyter-notebooks/gather.png" alt-text="建立新檔案":::
 1. 輸入新「收集的」筆記本的名稱。  
 
 新的筆記本只會包含程式碼儲存格，而且所有儲存格都需要產生與您選取要收集的資料格相同的結果。
@@ -132,7 +137,7 @@ ms.locfileid: "90897382"
 
 在筆記本工具列中，選取功能表，然後選取 **[ &gt; 儲存和檢查點** ] 以手動方式儲存筆記本，它會新增與筆記本相關聯的檢查點檔案。
 
-:::image type="content" source="media/how-to-run-jupyter-notebooks/file-save.png" alt-text="筆記本工具列中 [儲存] 工具的螢幕擷取畫面":::
+:::image type="content" source="media/how-to-run-jupyter-notebooks/file-save.png" alt-text="建立新檔案":::
 
 每隔30秒會自動儲存每個筆記本。[自動儲存] 只會更新初始 *.ipynb*檔   ，而不會更新檢查點檔案。
  

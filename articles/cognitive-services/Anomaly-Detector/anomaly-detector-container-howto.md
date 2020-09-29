@@ -1,33 +1,38 @@
 ---
-title: 如何安裝及執行使用異常偵測器 API 的容器
+title: 安裝並執行異常偵測器 API 的 Docker 容器
 titleSuffix: Azure Cognitive Services
-description: 瞭解如何安裝和使用容器，以使用異常偵測器 API 的 advanced 演算法。
+description: 使用異常偵測器 API 的演算法，在內部部署中使用 Docker 容器來尋找資料中的異常。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: conceptual
-ms.date: 09/10/2020
+ms.date: 09/28/2020
 ms.author: aahi
-ms.openlocfilehash: 2a4ff7da16524e0706601e43dff39325952990ff
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.custom: cog-serv-seo-aug-2020
+keywords: 內部部署、Docker、容器、串流、演算法
+ms.openlocfilehash: ff4d15b33cb261e71ea883c0245afe5781005e38
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90903556"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91459995"
 ---
-# <a name="install-and-run-anomaly-detector-containers"></a>安裝和執行異常偵測器容器 
+# <a name="install-and-run-docker-containers-for-the-anomaly-detector-api"></a>安裝並執行異常偵測器 API 的 Docker 容器 
 
 [!INCLUDE [container image location note](../containers/includes/image-location-note.md)]
 
-異常偵測器具有下列容器特徵功能：
+容器可讓您在自己的環境中使用異常偵測器 API。 容器非常適合用於特定的安全性和資料控管需求。 在本文中，您將瞭解如何下載、安裝及執行異常偵測器容器。
 
-| 功能 | 功能 |
-|--|--|
-| 異常偵測器 | <li> 偵測即時發生的異常狀況。 <li> 以批次方式偵測整個資料集的異常狀況。 <li> 以批次方式偵測資料集中的趨勢變更點。<li> 推斷資料的預期標準範圍。 <li> 支援異常偵測敏感度調整，使其更符合您的資料。 |
+異常偵測器提供單一的 Docker 容器，可供在內部部署使用 API。 使用容器來：
+* 在您的資料上使用異常偵測器的演算法
+* 監視串流資料，並即時偵測發生異常狀況。
+* 以批次方式偵測整個資料集的異常狀況。 
+* 以批次方式偵測資料集中的趨勢變更點。
+* 調整異常偵測演算法的敏感度，使其更符合您的資料。
 
-如需 Api 的詳細資訊，請參閱：
+如需 API 的詳細資訊，請參閱：
 * [深入瞭解異常偵測器 API 服務](https://go.microsoft.com/fwlink/?linkid=2080698&clcid=0x409)
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/cognitive-services/)。
@@ -36,7 +41,7 @@ ms.locfileid: "90903556"
 
 使用異常偵測器容器之前，您必須符合下列必要條件：
 
-|必要|用途|
+|必要|目的|
 |--|--|
 |Docker 引擎| 您必須在[主機電腦](#the-host-computer)上安裝 Docker 引擎。 Docker 提供可在 [macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上設定 Docker 環境的套件。 如需 Docker 和容器基本概念的入門，請參閱 [Docker 概觀](https://docs.docker.com/engine/docker-overview/) \(英文\)。<br><br> Docker 必須設定為允許容器與 Azure 連線，以及傳送帳單資料至 Azure。 <br><br> **在 Windows 上**，也必須將 Docker 設定為支援 Linux 容器。<br><br>|
 |熟悉 Docker | 您應具備對 Docker 概念 (例如登錄、存放庫、容器和容器映像等) 的基本了解，以及基本 `docker` 命令的知識。|
@@ -187,7 +192,7 @@ ApiKey={API_KEY}
 > [!IMPORTANT]
 > 認知服務容器在未連線至 Azure 以進行計量的情況下，將無法被授權以執行。 客戶必須啟用容器以持續與計量服務進行帳單資訊的通訊。 認知服務容器不會將客戶資料 (例如，正在分析) 的時間序列資料傳送給 Microsoft。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * 檢閱[設定容器](anomaly-detector-container-configuration.md)以了解組態設定
 * [將異常偵測器容器部署至 Azure 容器實例](how-to/deploy-anomaly-detection-on-container-instances.md)

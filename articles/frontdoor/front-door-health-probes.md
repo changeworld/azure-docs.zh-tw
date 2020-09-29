@@ -9,21 +9,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/10/2018
+ms.date: 09/28/2020
 ms.author: duau
-ms.openlocfilehash: c96dac55df2cdc15b7d3699e947c851a9fe69b02
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 4cbeea8ad20d41daff3d4ad086a36df5e988991f
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89399628"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449250"
 ---
 # <a name="health-probes"></a>健康狀態探查
 
-為了從給定的 Front Door 環境判斷每個後端的健全狀況和鄰近性，每個 Front Door 環境都會定期將綜合 HTTP/HTTPS 要求傳送至每個已設定的後端。 接著，Front Door 會使用來自這些探查的回應，來判斷它應該要路由傳送實際用戶端要求的「最佳」後端。 
+為了判斷特定 Front Door 環境的每個後端的健全狀況和鄰近性，每個 Front Door 環境都會定期將綜合 HTTP/HTTPS 要求傳送至每個已設定的後端。 Front Door 接著會使用探查中的這些回應，來判斷用來路由傳送用戶端要求的「最佳」後端資源。 
 
 > [!WARNING]
-> 由於 Front Door 有全球許多邊緣環境，因此根據設定的健康情況探查頻率而定，健康情況探查要求磁片區的後端數量可能相當高，從每分鐘25個要求到每分鐘最高可達1200要求。 如果預設探查頻率為30秒，則您後端的探查磁片區應大約每分鐘200個要求。
+> 由於 Front Door 有全球許多邊緣環境，因此後端的健康情況探查磁片區可能相當高-範圍從25個要求，每分鐘最高可達每分鐘1200個要求，視設定的健康情況探查頻率而定。 如果預設探查頻率為30秒，則您後端的探查磁片區應大約每分鐘200個要求。
 
 ## <a name="supported-protocols"></a>支援的通訊協定
 
@@ -43,8 +43,8 @@ Front Door 支援下列 HTTP 方法來傳送健康情況探查：
 
 | 回應  | 描述 | 
 | ------------- | ------------- |
-| 判斷健全狀況  |  200 OK 狀態碼表示後端狀況良好。 所有其他項目會視為失敗。 如果基於任何原因 (包括網路失敗) 未收到有效的 HTTP 探查回應，則探查將會視為失敗。|
-| 測量延遲  | 延遲是從目前我們傳送探查要求的那一刻起，到我們收到回應的最後一個位元組之前測量的時鐘時間。 我們針對每個要求使用新的 TCP 連線，因此該度量不會偏向使用現有連線的後端。  |
+| 判斷健全狀況  |  200 OK 狀態碼表示後端狀況良好。 所有其他項目會視為失敗。 如果基於任何原因 (包括網路失敗) 不會收到探查的有效 HTTP 回應，則會將探查視為失敗。|
+| 測量延遲  | 延遲是從目前我們傳送探查要求的那一刻起，到我們收到回應的最後一個位元組之前測量的時鐘時間。 我們會針對每個要求使用新的 TCP 連線，因此這項測量不會因為現有的暖連線而偏向後端。  |
 
 ## <a name="how-front-door-determines-backend-health"></a>Front Door 如何判斷後端的健康狀態
 
@@ -59,7 +59,7 @@ Azure Front Door 在所有演算法中使用相同的三步驟程式來判斷健
 
     * _x_ 的設定方式是變更負載平衡設定中的 SuccessfulSamplesRequired 屬性。
 
-3. 在後端集區中狀況良好的集合中，Front Door 還會測量並維護每個後端的延遲 (來回時間)。
+3. 針對後端集區中狀況良好的後端集，Front Door 額外的量值，並維護每個後端 (來回時間) 的延遲。
 
 
 ## <a name="complete-health-probe-failure"></a>完整的健全狀況探查失敗

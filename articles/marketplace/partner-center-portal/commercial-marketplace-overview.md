@@ -1,22 +1,22 @@
 ---
-title: 合作夥伴中心的商業 marketplace 入口網站總覽
-description: 在合作夥伴中心深入瞭解 Microsoft 商業 marketplace 入口網站，以及如何在 Azure Marketplace、AppSource 及透過雲端解決方案提供者 (CSP) 方案中，列出及銷售優惠。
+title: 合作夥伴中心中的商用 marketplace 入口網站總覽
+description: 在合作夥伴中心中深入瞭解 Microsoft 商用 marketplace 入口網站，以及如何在 Azure Marketplace、AppSource 和雲端解決方案提供者 (CSP) 計畫中列出及銷售優惠。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 05/19/2020
-ms.openlocfilehash: 4c91e6396171511fa3b11b0295504f0ca0d75d15
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 0824275bcf53409764e3d3062e456d2e56590f4f
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88030856"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91445362"
 ---
-# <a name="overview-of-the-commercial-marketplace-portal-in-partner-center"></a>合作夥伴中心的商業 marketplace 入口網站總覽
+# <a name="overview-of-the-commercial-marketplace-portal-in-partner-center"></a>合作夥伴中心中的商用 marketplace 入口網站總覽
 
-歡迎使用合作夥伴中心的商業 marketplace 入口網站。 [商業市集入口網站](https://partner.microsoft.com/dashboard/commercial-marketplace/)可協助您銷售自己的產品及服務、觸及客戶，並拓展您的業務。
+歡迎使用合作夥伴中心中的商用 marketplace 入口網站。 [商業市集入口網站](https://partner.microsoft.com/dashboard/commercial-marketplace/)可協助您銷售自己的產品及服務、觸及客戶，並拓展您的業務。
 
 這些文章會涵蓋建立及使用合作夥伴中心帳戶的基本概念。 這包括建立可以刊登於 [Azure Marketplace](https://azuremarketplace.microsoft.com/) 或 [AppSource](https://appsource.microsoft.com/) 上的新供應項目、管理移轉自 Cloud Partner 入口網站的現有供應項目，以及提供能協助回答問題及收集您意見反應的資源。
 
@@ -28,9 +28,9 @@ ms.locfileid: "88030856"
 
 ## <a name="migration-from-the-cloud-partner-portal"></a>從 Cloud Partner 入口網站移轉
 
-合作夥伴中心正在持續演進，以更佳整合我們與軟體發行者在所有層面上的關係。 在此演進過程中，我們已將所有的商用 marketplace 供應專案管理從 Cloud Partner 入口網站 (CPP) 遷移至合作夥伴中心。
+合作夥伴中心正在持續演進，以更佳整合我們與軟體發行者在所有層面上的關係。 在此演進中，我們已將所有商業 marketplace 供應專案管理從 Cloud Partner 入口網站 (CPP) 遷移至合作夥伴中心。
 
-先前使用 CPP 的現有發行者會發現熟悉但改良且直覺的合作夥伴中心使用者體驗。 系統會順暢地將使用者引導到適當的位置。 客戶將不會受到此合作夥伴體驗升級的影響。
+先前使用 CPP 的現有發行者將會發現合作夥伴中心的熟悉但改良的使用者體驗。 系統會順暢地將使用者引導到適當的位置。 客戶將不會受到此合作夥伴體驗升級的影響。
 
 ### <a name="improvements-on-publishing-and-offer-management-user-experience"></a>針對發佈及供應項目管理使用者體驗的改善
 

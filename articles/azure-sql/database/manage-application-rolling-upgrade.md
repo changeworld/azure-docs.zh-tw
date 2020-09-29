@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: high-availability
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: 44005dafb1e3eee60f163f80ad2e4282147233e4
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 659a8a3b38a79cc9dcc97f6f1e9c4395426ef7a8
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91355613"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91450265"
 ---
 # <a name="manage-rolling-upgrades-of-cloud-applications-by-using-sql-database-active-geo-replication"></a>使用 SQL Database 主動式異地複寫管理雲端應用程式的輪流升級
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -110,7 +110,7 @@ ALTER DATABASE <Prod_DB>
 SET (ALLOW_CONNECTIONS = NO)
 ```
 
-2. 中斷次要 (11) 的連線，以終止異地複寫。 此動作會建立獨立但完全同步的生產資料庫複本。 此資料庫將會升級。 下列範例使用 Transact-sql，但 [PowerShell](/powershell/module/az.sql/remove-azsqldatabasesecondary?view=azps-1.5.0) 也可供使用。 
+2. 中斷次要 (11) 的連線，以終止異地複寫。 此動作會建立獨立但完全同步的生產資料庫複本。 此資料庫將會升級。 下列範例使用 Transact-sql，但 [PowerShell](/powershell/module/az.sql/remove-azsqldatabasesecondary?view=azps-1.5.0&preserve-view=true) 也可供使用。 
 
 ```sql
 -- Disconnect the secondary, terminating geo-replication
