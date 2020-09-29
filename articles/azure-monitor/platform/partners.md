@@ -4,12 +4,12 @@ description: 了解 Azure Monitor 的監視合作夥伴以及如何存取與合�
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: 80b60e9f93720d0e06c1df1576834c5f462e7358
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: b56b2386422d9f7f2fa598ff804a2206bf4b4d83
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 09/29/2020
-ms.locfileid: "91449455"
+ms.locfileid: "91460081"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure 監視器合作夥伴整合
 
@@ -211,6 +211,17 @@ Promitor 是一種 Azure 監視器 scraper，可讓您在 Atlassian Statuspage�
 ![QRadar 標誌](./media/partners/qradar.png)
 
 Microsoft Azure DSM 與 Microsoft Azure 事件中樞通訊協定均可從 [IBM 支援網站](https://www.ibm.com/support)下載。 您可以在 [QRadar 檔](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0)中深入瞭解與 Azure 的整合。
+
+
+## <a name="rsa"></a>RSA
+
+![RSA 標誌](./media/partners/rsa.png)
+
+RSA NetWitness Platform 是領先的威脅偵測和回應平臺，可結合演進的 SIEM 和擴充的偵測和回應解決方案。 解決方案提供無與倫比的可見度、分析和自動化的回應功能。 這些結合的功能可協助安全性小組更有效率且更有效地工作、擴大其威脅搜尋技能，讓他們能夠更快速地跨組織的整個基礎結構（無論是在雲端、內部部署或虛擬），對威脅進行調查和回應。 
+
+RSA NetWitness Platform 與 Azure 監視器的整合提供了現成的功能，可透過直覺的 UI 和強大的原生剖析功能，將事件資料和記錄從 Azure 監視器原生內嵌至 RSA NetWitness 平臺。 在完整的威脅偵測和回應解決方案中，快速掌握活動、診斷、Active Directory 事件和其他事件中樞資料，並將此資料與其他企業安全性資訊一起查看。
+
+[深入了解。](https://community.rsa.com/docs/DOC-101239)
 
 
 ## <a name="sciencelogic"></a>ScienceLogic

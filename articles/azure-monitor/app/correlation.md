@@ -7,12 +7,12 @@ ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
 ms.custom: devx-track-python, devx-track-csharp
-ms.openlocfilehash: b48b02d20ed3d0b731f04d2c6568274bc0262e2e
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: fd9299d49f42eb021d64ae25447fd13e7378ff3f
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88933353"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447873"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Application Insights 中的遙測相互關聯
 
@@ -55,7 +55,7 @@ Application Insights 會定義分散遙測相互關聯的[資料模型](../../az
 
 對 `GET /api/stock/value` 外部服務進行呼叫時，您必須知道該伺服器的身分識別，才能 `dependency.target` 適當地設定欄位。 當外部服務不支援監視時，`target` 會設定為服務的主機名稱 (例如 `stock-prices-api.com`)。 但是，如果服務藉由傳回預先定義的 HTTP 標頭來識別其本身， `target` 就會包含可讓 Application Insights 藉由從該服務查詢遙測資料來建立分散式追蹤的服務識別。
 
-## <a name="correlation-headers"></a>相互關聯標頭
+## <a name="correlation-headers-using-w3c-tracecontext"></a>使用 W3C TraceCoNtext 的相互關聯標頭
 
 Application Insights 正在轉換成 [W3C 追蹤內容](https://w3c.github.io/trace-context/)，它會定義：
 
@@ -70,6 +70,18 @@ Application Insights 正在轉換成 [W3C 追蹤內容](https://w3c.github.io/tr
 - `Correlation-Context`：攜帶分散式追蹤屬性的名稱/值組集合。
 
 Application Insights 也會定義相互關聯 HTTP 通訊協定的 [延伸](https://github.com/lmolkova/correlation/blob/master/http_protocol_proposal_v2.md) 。 它會使用 `Request-Context` 名稱值組，來傳播立即呼叫端或被呼叫端所使用的屬性集合。 Application Insights SDK 會使用此標頭來設定 `dependency.target` 和 `request.source` 欄位。
+
+[W3C 追蹤內容](https://w3c.github.io/trace-context/)和 Application Insights 資料模型的對應方式如下：
+
+| Application Insights                   | W3C TraceCoNtext                                      |
+|------------------------------------    |-------------------------------------------------    |
+| `Request`, `PageView`                  | `SpanKind` 如果是同步，則為伺服器; `SpanKind` 是否為非同步取用者                    |
+| `Dependency`                           | `SpanKind` 如果是同步，則為用戶端; `SpanKind` 是否為非同步生產者                   |
+| `Request` 和 `Dependency` 的 `Id`     | `SpanId`                                            |
+| `Operation_Id`                         | `TraceId`                                           |
+| `Operation_ParentId`                   | `SpanId` 此範圍的父範圍。 如果這是根範圍，則此欄位必須是空的。     |
+
+如需詳細資訊，請參閱 [Application Insights 遙測資料模型](../../azure-monitor/app/data-model.md)。
 
 ### <a name="enable-w3c-distributed-tracing-support-for-classic-aspnet-apps"></a>啟用傳統 ASP.NET 應用程式的 W3C 分散式追蹤支援
  
@@ -204,25 +216,11 @@ public void ConfigureServices(IServiceCollection services)
   </script>
   ```
 
-## <a name="opentracing-and-application-insights"></a>OpenTracing 與 Application Insights
-
-[OpenTracing 資料模型規格](https://opentracing.io/)與 Application Insights 資料模型的對應方式如下：
-
-| Application Insights                   | OpenTracing                                        |
-|------------------------------------    |-------------------------------------------------    |
-| `Request`, `PageView`                  | `span.kind = server` 的 `Span`                    |
-| `Dependency`                           | `span.kind = client` 的 `Span`                    |
-| `Request` 和 `Dependency` 的 `Id`     | `SpanId`                                            |
-| `Operation_Id`                         | `TraceId`                                           |
-| `Operation_ParentId`                   | 類型 `ChildOf` 的 `Reference` (父代範圍)     |
-
-如需詳細資訊，請參閱 [Application Insights 遙測資料模型](../../azure-monitor/app/data-model.md)。
-
-如需 OpenTracing 概念的定義，請參閱 OpenTracing [規格](https://github.com/opentracing/specification/blob/master/specification.md) 和 [語義慣例](https://github.com/opentracing/specification/blob/master/semantic_conventions.md)。
-
 ## <a name="telemetry-correlation-in-opencensus-python"></a>OpenCensus Python 中的遙測相互關聯
 
-OpenCensus Python 會遵循稍 `OpenTracing` 早所述的資料模型規格。 它也支援 [W3C 追蹤內容](https://w3c.github.io/trace-context/) ，而不需要任何設定。
+OpenCensus Python 支援 [W3C 追蹤內容](https://w3c.github.io/trace-context/) ，而不需要額外的設定。
+
+您可以在 [這裡](https://github.com/census-instrumentation/opencensus-specs/tree/master/trace)找到 OpenCensus 資料模型作為參考。
 
 ### <a name="incoming-request-correlation"></a>傳入要求相互關聯
 

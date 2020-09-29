@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: b24514ed477d1acd31dbc4ef0daa3aa89b8739f9
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 2e27b168087966701fb53cc8df19d264861257d6
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90530823"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448096"
 ---
 # <a name="multiple-frontends-for-azure-load-balancer"></a>Azure Load Balancer 的多個前端
 
@@ -64,8 +64,8 @@ DIP 是輸入流量的目的地。 在後端集區中，每個 VM 會公開 DIP 
 
 | 規則 | 對應前端 | 至後端集區 |
 | --- | --- | --- |
-| 1 |![綠色前端](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 前端1:80 |![後端](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) DIP1:80, ![後端](./media/load-balancer-multivip-overview/load-balancer-rule-green.png)  DIP2:80 |
-| 2 |![VIP](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 前端2:80 |![後端](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) DIP1:81, ![後端](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png)  DIP2:81 |
+| 1 |![綠色前端](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 前端1:80 |![綠色後端](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) DIP1:80, ![綠色後端](./media/load-balancer-multivip-overview/load-balancer-rule-green.png)  DIP2:80 |
+| 2 |![VIP](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 前端2:80 |![紫色後端](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) DIP1:81, ![紫色後端](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png)  DIP2:81 |
 
 現在 Azure Load Balancer 的完整對應如下︰
 
@@ -143,8 +143,8 @@ netsh interface ipv4 set interface “interfacename” weakhostsend=enabled
 
 | 規則 | 前端 | 對應至後端集區 |
 | --- | --- | --- |
-| 1 |![rule (規則)](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 前端1:80 |![後端](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 前端1:80 (在 VM1 和 VM2 中) |
-| 2 |![rule (規則)](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 前端2:80 |![後端](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 前端2:80 (在 VM1 和 VM2 中) |
+| 1 |![綠色規則](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 前端1:80 |![綠色後端](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 前端1:80 (在 VM1 和 VM2 中) |
+| 2 |![紫色規則](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 前端2:80 |![紫色後端](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 前端2:80 (在 VM1 和 VM2 中) |
 
 下表顯示負載平衡器的完整對應︰
 

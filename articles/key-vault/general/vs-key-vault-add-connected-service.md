@@ -9,12 +9,12 @@ ms.custom: vs-azure, devx-track-csharp
 ms.topic: how-to
 ms.date: 08/07/2019
 ms.author: ghogen
-ms.openlocfilehash: d0d0465e2e60945649958911c508e06aee877ac9
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: addccf337f82b1695c76ae975c4a33f44ba50f8a
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378860"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448138"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>使用 Visual Studio 連線服務在 Web 應用程式中新增 Key Vault
 
@@ -190,6 +190,9 @@ ms.locfileid: "89378860"
 | .NET; NuGet | KeyVault 金鑰 |
 | .NET; NuGet | KeyVault 秘密 |
 
+> [!IMPORTANT] 
+> 預設會安裝 Azure. 身分識別1.1.1，不支援 Visual Studio 認證。 您可以手動將套件參考更新為 1.2 + 使用 Visual Studio 認證。
+
 ### <a name="added-files-for-aspnet-framework"></a>已新增 ASP.NET 架構的檔案
 
 - `ConnectedService.json` 已新增，它會記錄有關已連線服務提供者、版本和檔連結的一些資訊。
@@ -199,7 +202,7 @@ ms.locfileid: "89378860"
 - 已新增連線服務 ItemGroup 和 ConnectedServices.json 檔案。
 - 對[新增的參考](#added-references-for-aspnet-framework)一節中所述 .NET 組件的參考。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如果您遵循本教學課程的指示，您的 Key Vault 許可權會設定為與您自己的 Azure 訂用帳戶一起執行，但在生產環境中可能不需要。 您可以建立受控識別，以管理應用程式的 Key Vault 存取權。 瞭解 [如何驗證 Key Vault](/azure/key-vault/general/authentication) 並 [指派 Key Vault 存取原則](/azure/key-vault/general/assign-access-policy-portal)。
 

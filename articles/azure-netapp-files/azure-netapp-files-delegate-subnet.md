@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 07/28/2020
+ms.date: 09/28/2020
 ms.author: b-juche
-ms.openlocfilehash: da7aa0889940c560df705e3c47f5ccb1960aee2c
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: bed1375631c017d23ed53b6102c424533237099e
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91361019"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447552"
 ---
 # <a name="delegate-a-subnet-to-azure-netapp-files"></a>將子網路委派至 Azure NetApp Files 
 
@@ -33,7 +33,8 @@ ms.locfileid: "91361019"
    VNet 中只能有一個委派的子網。 NetApp 帳戶可將磁片區部署到多個 Vnet，每個都有自己的委派子網。  
 * 您無法在已委派的子網路中指定網路安全性群組或服務端點。 這樣做會導致子網路委派失敗。
 * 目前不支援從全域對等互連的虛擬網路存取磁片區。
-* 不支援在已委派至 Azure NetApp Files 的子網中，于具有位址首碼 (目的地) 的 VM 子網上建立 [使用者定義的自訂路由](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#custom-routes) 。 這麼做會影響 VM 連線能力。 Azure NetApp Files 會對委派的子網建立系統路由。 如果您需要路由表以進行疑難排解，則路由會顯示在路由表的 **有效路由** 中。
+* Azure NetApp Files 的委派子網不支援 (Udr) 和網路安全性群組 (Nsg) 的[使用者定義路由](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#custom-routes)。 不過，您可將 UDR 和 NSG 套用至其他子網路，即使在與委派給 Azure NetApp Files 的子網路相同 VNet 中也一樣。  
+   Azure NetApp Files 會對委派的子網建立系統路由。 如果您需要路由表以進行疑難排解，則路由會顯示在路由表的 **有效路由** 中。
 
 ## <a name="steps"></a>步驟
 

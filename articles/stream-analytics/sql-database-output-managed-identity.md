@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 05/08/2020
-ms.openlocfilehash: 906311452598d592b73a263ce25d0c8c51cc1cc7
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 26644d42e0e51d59c6c28daaba5447a65a43b6a5
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88870182"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91460636"
 ---
 # <a name="use-managed-identities-to-access-azure-sql-database-from-an-azure-stream-analytics-job-preview"></a>使用受控識別從 Azure 串流分析作業 (預覽) 存取 Azure SQL Database
 
@@ -60,15 +60,15 @@ Azure 串流分析支援 Azure SQL Database 輸出接收的[受控識別驗證](
 
    ![新增 Active Directory 管理員](./media/sql-db-output-managed-identity/add-admin.png)
 
-   [Active Directory 系統管理員] 頁面會顯示您 Active Directory 的所有成員和群組。 呈現灰色的使用者或群組無法選取，因為不支援他們成為 Azure AD 系統管理員。 請參閱 [使用 Azure Active Directory 驗證向 SQL Database 或 Azure Synapse 驗證](../sql-database/sql-database-aad-authentication.md#azure-ad-features-and-limitations)的  **Azure AD 功能和限制** 一節中支援的系統管理員清單。 以角色為基礎的存取控制 (RBAC) 只會套用至入口網站，並且不會傳播至 SQL Server。 此外，選取的使用者或群組就是在下一節中能夠建立**自主資料庫使用者**的使用者。
+   [Active Directory 系統管理員] 頁面會顯示您 Active Directory 的所有成員和群組。 無法選取灰色的使用者或群組，因為這些使用者或群組不受 Azure Active Directory 系統管理員的支援。 請參閱 **Azure Active Directory Features and Limitations**    [使用 Azure Active Directory 驗證 SQL Database 或 Azure Synapse 的驗證](../sql-database/sql-database-aad-authentication.md#azure-ad-features-and-limitations)Azure Active Directory 功能和限制一節中支援的系統管理員清單。 以角色為基礎的存取控制 (RBAC) 只會套用至入口網站，並且不會傳播至 SQL Server。 此外，選取的使用者或群組就是在下一節中能夠建立**自主資料庫使用者**的使用者。
 
 1. 在 [Active Directory 管理員] 頁面上選取 [儲存]。 變更管理員的程序需要幾分鐘的時間。
 
-   設定 Azure AD 系統管理員時，新的系統管理員名稱 (使用者或群組) 不可以存在於虛擬主要資料庫中作為 SQL Server 驗證使用者。 如果存在，Azure AD 系統管理員設定將會失敗並復原其建立，表示系統管理員 (名稱) 已經存在。 由於 SQL Server 驗證使用者並非 Azure AD 的成員，因此使用 Azure AD 驗證做為該使用者來連線到伺服器的一切努力都會失敗。 
+   當您設定 Azure Active Directory 管理員時，新的系統管理員名稱 (使用者或群組) 不能以 SQL Server authentication 使用者的身分存在於虛擬主資料庫中。 如果有的話，Azure Active Directory 管理員安裝程式將會失敗，並復原其建立，表示) 的系統管理員 (名稱已存在。 由於 SQL Server authentication 使用者不是 Azure Active Directory 的一部分，因此在使用者失敗時使用 Azure Active Directory 驗證連接到伺服器的工作。 
 
 ## <a name="create-a-contained-database-user"></a>建立自主資料庫使用者
 
-接下來，您會在 SQL Database 中建立對應至 Azure Active Directory 身分識別的自主資料庫使用者。 自主資料庫使用者沒有 master 資料庫的登入，但是會對應至目錄中與資料庫相關聯的身分識別。 Azure Active Directory 身分識別可以是個別的使用者帳戶或群組。 在此情況下，您想要為串流分析作業建立自主資料庫使用者。 
+接下來，您會在 SQL Database 中建立對應至 Azure Active Directory 身分識別的自主資料庫使用者。 自主資料庫使用者沒有主資料庫的登入，但它會對應到與資料庫相關聯的目錄中的身分識別。 Azure Active Directory 身分識別可以是個別的使用者帳戶或群組。 在此情況下，您想要為串流分析作業建立自主資料庫使用者。 
 
 1. 使用 SQL Server Management Studio 連接到 SQL Database。 [使用者名稱] 是具有 [改變任何使用者] 權限的 Azure Active Directory 使用者。 您在 SQL Server 上設定的管理員即為範例。 使用 [Azure Active Directory - MFA 通用] 驗證。 
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 09/16/2020
-ms.openlocfilehash: e5ab3800e2d20bec34f321e0992240be8624404c
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 4ad3aa7169fcf7eeda6e56a2eab6669b8783d77d
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91400844"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91461456"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Azure 監視器記錄專用叢集
 
@@ -30,7 +30,7 @@ Azure 監視器記錄專用叢集是一個可讓大量客戶更妥善服務的�
 > [!IMPORTANT]
 > 專用叢集已獲得核准，而且可在生產環境部署中完全支援。 不過，由於暫時的容量限制，我們需要預先註冊才能使用此功能。 請透過 Microsoft 連絡人提供訂用帳戶識別碼。
 
-## <a name="management"></a>管理性 
+## <a name="management"></a>管理 
 
 專用叢集是透過代表 Azure 監視器記錄叢集的 Azure 資源來管理。 所有作業都是使用 PowerShell 或 REST API 在此資源上完成。
 
@@ -70,11 +70,10 @@ Azure 監視器記錄專用叢集是一個可讓大量客戶更妥善服務的�
 **PowerShell**
 
 ```powershell
-invoke-command -scriptblock { New-AzOperationalInsightsCluster -ResourceGroupName {resource-group-name} -ClusterName {cluster-name} -Location {region-name} -SkuCapacity {daily-ingestion-gigabyte} } -asjob
+New-AzOperationalInsightsCluster -ResourceGroupName {resource-group-name} -ClusterName {cluster-name} -Location {region-name} -SkuCapacity {daily-ingestion-gigabyte} -AsJob
 
 # Check when the job is done
-Get-Job
-
+Get-Job -Command "New-AzOperationalInsightsCluster*" | Format-List -Property *
 ```
 
 **REST**
@@ -106,13 +105,16 @@ Content-type: application/json
 
 ### <a name="check-provisioning-status"></a>查看佈建狀態
 
-布建 Log Analytics 叢集需要一些時間才能完成。 您可以透過兩種方式來檢查布建狀態：
+布建 Log Analytics 叢集需要一些時間才能完成。 您可以透過數種方式來檢查布建狀態：
 
-1. 從回應複製 Azure-AsyncOperation URL 值，並遵循非同步作業狀態檢查。
+- 使用資源組名執行 AzOperationalInsightsCluster PowerShell 命令，並檢查 ProvisioningState 屬性。 此值在布建時 *ProvisioningAccount* ，而且會在完成時 *成功* 。
+  ```powershell
+  New-AzOperationalInsightsCluster -ResourceGroupName {resource-group-name} 
+  ```
 
-   或者
+- 從回應複製 Azure-AsyncOperation URL 值，並遵循非同步作業狀態檢查。
 
-1. 傳送「叢集」資源的 GET 要求，並查看 *provisioningState* 值。 此值在布建時 *ProvisioningAccount* ，而且會在完成時 *成功* 。
+- 傳送「叢集」資源的 GET 要求，並查看 *provisioningState* 值。 此值在布建時 *ProvisioningAccount* ，而且會在完成時 *成功* 。
 
    ```rst
    GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
@@ -275,10 +277,10 @@ Content-type: application/json
 $clusterResourceId = (Get-AzOperationalInsightsCluster -ResourceGroupName {resource-group-name} -ClusterName {cluster-name}).id
 
 # Link the workspace to the cluster
-invoke-command -scriptblock { Set-AzOperationalInsightsLinkedService -ResourceGroupName {resource-group-name} -WorkspaceName {workspace-name} -LinkedServiceName cluster -WriteAccessResourceId $clusterResourceId } -asjob
+Set-AzOperationalInsightsLinkedService -ResourceGroupName {resource-group-name} -WorkspaceName {workspace-name} -LinkedServiceName cluster -WriteAccessResourceId $clusterResourceId -AsJob
 
 # Check when the job is done
-Get-Job
+Get-Job -Command "Set-AzOperationalInsightsLinkedService" | Format-List -Property *
 ```
 
 

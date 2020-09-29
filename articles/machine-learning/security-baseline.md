@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: ffd374f650140b5b65988578756b25f5d0fb21cc
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: d29bef20bef6de576b9b531952c48173819a5fa1
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89657349"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91461014"
 ---
 # <a name="azure-security-baseline-for-azure-machine-learning"></a>適用于 Azure Machine Learning 的 Azure 安全性基準
 
@@ -718,7 +718,7 @@ Azure Machine Learning 在不同的計算資源，甚至是您自己的計算資
 
 當不再需要 Azure 資源時，請將其移除。
 
-- [如何使用檔案完整性監視](../security-center/security-center-file-integrity-monitoring.md#using-file-integrity-monitoring)
+- [如何使用檔案完整性監視](../security-center/security-center-file-integrity-monitoring.md)
 
 - [瞭解 Azure 自動化變更追蹤和清查](../automation/change-tracking.md)
 

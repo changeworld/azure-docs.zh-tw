@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/04/2020
 ms.author: deanwe
 ms.custom: references_regions
-ms.openlocfilehash: 089cf07854f1f29eda7028db614edb1028e5d66a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 54a81ac36fb0b99f6931b372543dc3e4bca6a12c
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91311558"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447924"
 ---
 # <a name="azure-automanage-for-virtual-machines"></a>適用于虛擬機器的 Azure Automanage
 
@@ -37,7 +37,7 @@ ms.locfileid: "91311558"
 最後，經驗很簡單。
 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 在您嘗試啟用虛擬機器上的 Azure Automanage 之前，必須考慮幾個必要條件。
 
@@ -46,6 +46,7 @@ ms.locfileid: "91311558"
 - Vm 必須位於支援的區域
 - 使用者必須有正確的許可權
 - Vm 不得連結至不同訂用帳戶中的 log analytics 工作區
+- Automanage 目前不支援沙箱訂閱
 
 您必須具有 **參與者** 角色，才能使用現有的 Automanage 帳戶啟用 Automanage。 如果您要使用新的 Automanage 帳戶啟用 Automanage，您需要下列許可權： **擁有** 者角色或 **參與者** ，以及 **使用者存取系統管理員** 角色。
 
@@ -111,7 +112,7 @@ Automanage 帳戶是安全性內容或執行自動化作業所用的身分識別
 
 在 Azure 入口網站中，移至 [ **Automanage – Azure 虛擬機器最佳作法** ] 頁面，其中會列出所有自動管理的 vm。 在這裡，您將會看到每部虛擬機器的整體狀態。
 
-:::image type="content" source="media\automanage-virtual-machines\configured-status.png" alt-text="已設定的虛擬機器清單。":::
+:::image type="content" source="media\automanage-virtual-machines\configured-status.png" alt-text="以智慧方式將服務上架。":::
 
 針對每個列出的 VM，會顯示下列詳細資料：名稱、設定檔、設定喜好設定、狀態、帳戶、訂用帳戶和資源群組。
 
@@ -129,7 +130,7 @@ Automanage 帳戶是安全性內容或執行自動化作業所用的身分識別
 
 若要在 Azure 入口網站中執行這項操作，請移至 [ **Automanage – Azure 虛擬機器最佳作法** ] 頁面，其中會列出所有自動管理的 vm。 選取您要從 Automanage 停用的虛擬機器旁的核取方塊，然後按一下 [ **停用 automanagment** ] 按鈕。
 
-:::image type="content" source="media\automanage-virtual-machines\disable-step-1.png" alt-text="在虛擬機器上停用 Automanage。":::
+:::image type="content" source="media\automanage-virtual-machines\disable-step-1.png" alt-text="以智慧方式將服務上架。":::
 
 先仔細閱讀所產生快顯視窗中的訊息，然後同意 [停用]。
 

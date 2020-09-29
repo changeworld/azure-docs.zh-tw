@@ -4,15 +4,15 @@ description: 瞭解如何使用 Azure 監視器、儲存體同步服務和 Windo
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 08/05/2019
+ms.date: 09/28/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 9db8a0397c836e8cbc45404d9c4f149255fc76fa
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 1ef24522f688c5ae1176630a2f370cd7ee7c3cd7
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88271051"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448057"
 ---
 # <a name="monitor-azure-file-sync"></a>監視 Azure 檔案同步
 
@@ -35,8 +35,10 @@ ms.locfileid: "88271051"
 依預設會啟用 Azure 檔案同步的計量，並且每 15 分鐘傳送至 Azure 監視器一次。
 
 **如何在 Azure 監視器中查看 Azure 檔案同步計量**
-- 移至**Azure 入口網站**中的**儲存體同步服務**，然後按一下 [**計量**]。
-- 按一下 [計量] 下拉式清單，然後選取您想要查看**的度量。**
+1. 移至**Azure 入口網站**中的**儲存體同步服務**，然後按一下 [**計量**]。
+2. 按一下 [計量] 下拉式清單，然後選取您想要查看**的度量。**
+
+![Azure 檔案同步計量的螢幕擷取畫面](media/storage-sync-files-troubleshoot/file-sync-metrics.png)
 
 以下是 Azure 監視器中提供的 Azure 檔案同步計量：
 
@@ -58,19 +60,19 @@ ms.locfileid: "88271051"
 
 **如何建立 Azure 檔案同步的警示**
 
-- 在**Azure 入口網站**中，移至您的**儲存體同步服務**。 
-- 按一下 [監視] 區段中的 [ **警示** ]，然後按一下 [ **+ 新增警示規則**]。
-- 按一下 [ **選取條件** ]，並為警示提供下列資訊： 
+1. 在**Azure 入口網站**中，移至您的**儲存體同步服務**。 
+2. 按一下 [監視] 區段中的 [ **警示** ]，然後按一下 [ **+ 新增警示規則**]。
+3. 按一下 [ **選取條件** ]，並為警示提供下列資訊： 
     - **計量**
     - **維度名稱**
     - **警示邏輯**
-- 按一下 [ **選取動作群組** ]，然後透過選取現有的動作群組或建立新的動作群組，將動作群組 (電子郵件、SMS 等 ) 至警示。
-- 填入警示 **詳細資料** ，例如 **警示規則名稱**、 **描述** 和 **嚴重性**。
-- 按一下 [ **建立警示規則** ] 以建立警示。  
+4. 按一下 [ **選取動作群組** ]，然後透過選取現有的動作群組或建立新的動作群組，將動作群組 (電子郵件、SMS 等 ) 至警示。
+5. 填入警示 **詳細資料** ，例如 **警示規則名稱**、 **描述** 和 **嚴重性**。
+6. 按一下 [ **建立警示規則** ] 以建立警示。  
 
 下表列出一些要監視的範例案例，以及要用於警示的適當計量：
 
-| 案例 | 用於警示的度量 |
+| 狀況 | 用於警示的度量 |
 |-|-|
 | 伺服器端點健全狀況會在入口網站中顯示錯誤 | 同步工作階段結果 |
 | 檔案無法同步至伺服器或雲端端點 | 檔案無法同步 |
@@ -96,6 +98,8 @@ ms.locfileid: "88271051"
 
 若要在入口網站中查看**已註冊的伺服器健全狀況**，請流覽至**儲存體同步服務**的 [**已註冊的伺服器**] 區段。
 
+![已註冊伺服器健全狀況的螢幕擷取畫面](media/storage-sync-files-troubleshoot/file-sync-registered-servers.png)
+
 - 如果 **已註冊的伺服器** 狀態為 **線上**，則伺服器會成功與服務通訊。
 - 如果 **已註冊的伺服器** 狀態為 **[離線**]，則儲存體同步監視器進程 ( # A0) 並未執行，或伺服器無法存取 Azure 檔案同步服務。 請參閱 [疑難排解檔](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#server-endpoint-noactivity) 以取得指導方針。
 
@@ -103,7 +107,9 @@ ms.locfileid: "88271051"
 
 若要在入口網站中查看**伺服器端點**的健康情況，請流覽至**儲存體同步服務**的 [**同步處理群組**] 區段，然後選取 [同步處理**群組**]。
 
-- 入口網站中的 **伺服器端點健全狀況** 和 **同步活動** 是根據記錄在伺服器上的遙測事件記錄檔中的同步事件 (識別碼9102和 9302) 。 如果同步處理會話因為暫時性錯誤（例如錯誤）而失敗，則只要目前的同步會話正在進行中，同步仍會在入口網站中顯示為狀況良好， (檔案會套用) 。 事件識別碼9302是同步處理進度事件，而在同步處理會話完成後，會記錄事件識別碼9102。  如需詳細資訊，請參閱 [同步健康](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#broken-sync) 情況與 [同步處理進度](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-monitor-the-progress-of-a-current-sync-session)。 如果入口網站因為同步處理未進行而顯示錯誤，請參閱 [疑難排解檔](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#common-sync-errors) 以取得指導方針。
+![伺服器端點健全狀況的螢幕擷取畫面](media/storage-sync-files-troubleshoot/file-sync-server-endpoint-health.png)
+
+- 入口網站中的 **伺服器端點健全狀況** 和 **同步活動** 是根據記錄在伺服器上的遙測事件記錄檔中的同步事件 (識別碼9102和 9302) 。 如果同步處理會話因為暫時性錯誤（例如錯誤取消）而失敗，只要目前的同步會話正在進行中，伺服器端點仍會在入口網站中顯示為 **狀況良好** ， (檔案會套用) 。 事件識別碼9302是同步處理進度事件，而在同步處理會話完成後，會記錄事件識別碼9102。  如需詳細資訊，請參閱 [同步健康](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#broken-sync) 情況與 [同步處理進度](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-monitor-the-progress-of-a-current-sync-session)。 如果伺服器端點健全狀況顯示 **錯誤** 或 **沒有任何活動**，請參閱 [疑難排解檔](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#common-sync-errors) 以取得指導方針。
 - 入口網站中的 [檔案 **未同步** 計數] 是根據記錄在伺服器上的遙測事件記錄檔中的事件識別碼9121。 當同步會話完成時，每個專案的錯誤都會記錄此事件。 若要解決每個專案的錯誤，請參閱 [如何? 查看是否有特定的檔案或資料夾未同步？](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing)。
 - 若要在入口網站中查看雲端階層處理 **效率** ，請移至 **伺服器端點屬性** ，然後流覽至 [ **雲端** 階層處理] 區段。 針對雲端階層處理效率所提供的資料，是根據記錄在伺服器上遙測事件記錄檔中的事件識別碼9071。 若要深入了解，請參閱[雲端階層處理概觀](https://docs.microsoft.com/azure/storage/files/storage-sync-cloud-tiering)。
 - 若要在入口網站中查看 **無法分層** 處理和重新 **叫用錯誤** 的檔案，請移至 **伺服器端點屬性** ，然後流覽至 [ **雲端** 階層處理] 區段。 **未** 進行階層處理的檔案是根據記錄在伺服器上的遙測事件記錄檔中的事件識別碼9003，而重新 **叫用錯誤** 是以事件識別碼9006為基礎。 若要調查無法分層或召回的檔案，請參閱 [如何疑難排解無法階層式](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#how-to-troubleshoot-files-that-fail-to-tier) 檔案，以及如何針對無法重新叫 [用的檔案進行疑難排解](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#how-to-troubleshoot-files-that-fail-to-be-recalled)。
@@ -142,7 +148,7 @@ ms.locfileid: "88271051"
 
 - 當同步會話完成時，每個專案的錯誤都會記錄事件識別碼9121。 您可以使用此事件來判斷與此錯誤 (**PersistentCount** 和 **TransientCount**) 同步處理失敗的檔案數目。 應調查持續性的每個專案錯誤，請參閱 [如何? 查看是否有特定的檔案或資料夾未同步？](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing)。
 
-- 如果有使用中的同步工作階段，則會每隔 5 到 10 分鐘記錄事件識別碼 9302 一次。 您可以使用此事件來判斷目前的同步會話是否正在進行 (**AppliedItemCount > 0**) 。 如果同步處理未進行，同步會話最後應該會失敗，並且會記錄事件識別碼9102並出現錯誤。 如需詳細資訊，請參閱 [同步處理進度檔](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-monitor-the-progress-of-a-current-sync-session)。
+- 如果有使用中的同步工作階段，則會每隔 5 到 10 分鐘記錄事件識別碼 9302 一次。 您可以使用此事件來判斷要同步處理的專案數目 (**TotalItemCount**) 、已同步至目前為止的專案數目 (**AppliedItemCount**) 和由於每個專案的錯誤而無法同步的專案數目 (**PerItemErrorCount**) 。 如果同步處理沒有進度 (**AppliedItemCount = 0**) ，同步處理會話最終將會失敗，而且將會記錄事件識別碼9102與錯誤。 如需詳細資訊，請參閱 [同步處理進度檔](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-monitor-the-progress-of-a-current-sync-session)。
 
 已註冊的伺服器健全狀況
 
@@ -248,6 +254,7 @@ ms.locfileid: "88271051"
      - 匯總類型： **最大值**  
      - 臨界值 (位元組) ： **1** 
      - 評估依據：匯總細微性 = **1 小時** |評估頻率 = **每30分鐘** 
+        - 請注意，計量會每隔15到20分鐘傳送給 Azure 監視器。 請勿將 **評估頻率** 設定為小於30分鐘 (將產生錯誤警示) 。
      - 按一下 [ **完成]。** 
 8. 按一下 [ **選取動作群組** ]，透過選取現有的動作群組或建立新的動作群組，將動作群組新增 (電子郵件、SMS 等 ) 至警示。
 9. 填入警示 **詳細資料** ，例如 **警示規則名稱**、 **描述** 和 **嚴重性**。

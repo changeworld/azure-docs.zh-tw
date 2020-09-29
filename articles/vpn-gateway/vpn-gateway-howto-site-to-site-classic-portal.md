@@ -7,17 +7,17 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 02/11/2020
 ms.author: cherylmc
-ms.openlocfilehash: 1f096993645aca6999667af88c91d3f55f79d914
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: de3ef63600b36e1bcee8a2f5db8a1c1248524173
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84983048"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91445921"
 ---
 # <a name="create-a-site-to-site-connection-using-the-azure-portal-classic"></a>使用 Azure 入口網站建立站對站連線 (傳統)
 
 
-本文說明如何使用 Azure 入口網站來建立從內部部署網路到 VNet 的站對站 VPN 閘道連線。 本文中的步驟適用于傳統部署模型，而且不適用於目前的部署模型 Resource Manager。 您也可從下列清單中選取不同的選項，以使用不同的部署工具或部署模型來建立此組態：
+本文說明如何使用 Azure 入口網站來建立從內部部署網路到 VNet 的站對站 VPN 閘道連線。 本文中的步驟適用于傳統部署模型，不適用於目前的部署模型，Resource Manager。 您也可從下列清單中選取不同的選項，以使用不同的部署工具或部署模型來建立此組態：
 
 > [!div class="op_single_selector"]
 > * [Azure 入口網站](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
@@ -39,7 +39,7 @@ ms.locfileid: "84983048"
 * 確定您有相容的 VPN 裝置以及能夠對其進行設定的人員。 如需相容 VPN 裝置和裝置組態的詳細資訊，請參閱[關於 VPN 裝置](vpn-gateway-about-vpn-devices.md)。
 * 確認您的 VPN 裝置有對外開放的公用 IPv4 位址。
 * 如果您不熟悉位於內部部署網路組態的 IP 位址範圍，您需要與能夠提供那些詳細資料的人協調。 當您建立此組態時，您必須指定 IP 位址範圍的首碼，以供 Azure 路由傳送至您的內部部署位置。 內部部署網路的子網路皆不得與您所要連線的虛擬網路子網路重疊。
-* 需要 PowerShell，才能指定共用金鑰及建立 VPN 閘道連線。 [!INCLUDE [vpn-gateway-classic-powershell](../../includes/vpn-gateway-powershell-classic-locally.md)]
+* 需要 PowerShell 才能指定共用金鑰並建立 VPN 閘道連線。 [!INCLUDE [vpn-gateway-classic-powershell](../../includes/vpn-gateway-powershell-classic-locally.md)]
 
 ### <a name="sample-configuration-values-for-this-exercise"></a><a name="values"></a>此練習的範例組態值
 
@@ -69,10 +69,10 @@ ms.locfileid: "84983048"
 
 ### <a name="to-create-a-virtual-network"></a>建立虛擬網路
 
-1. 從瀏覽器流覽至[Azure 入口網站](https://portal.azure.com)，並視需要使用您的 Azure 帳戶登入。
-2. 按一下 [*+ 建立資源*]。 在 [搜尋 Marketplace]**** 欄位中，輸入「虛擬網路」。 從傳回的清單中找出**虛擬網路**，然後按一下以開啟 [**虛擬網路**] 頁面。
-3. 按一下 **[（變更為傳統）**]，然後按一下 [**建立**]。
-4. 在 [建立虛擬網路 (傳統)]**** 頁面上進行 VNet 設定。 在此頁面上，您會新增您的第一個位址空間和單一子網路位址範圍。 建立 VNet 之後，您可以返回並新增額外的子網和位址空間。
+1. 從瀏覽器流覽至 [Azure 入口網站](https://portal.azure.com) ，如有必要，請使用您的 Azure 帳戶登入。
+2. 按一下 **+ 建立資源*。 在 [搜尋 Marketplace]**** 欄位中，輸入「虛擬網路」。 從傳回的清單中找出 **虛擬網路** ，然後按一下以開啟 [ **虛擬網路** ] 頁面。
+3. 按一下 [ ** (變更為傳統) **]，然後按一下 [ **建立**]。
+4. 在 [建立虛擬網路 (傳統)]**** 頁面上進行 VNet 設定。 在此頁面上，您會新增您的第一個位址空間和單一子網路位址範圍。 建立 VNet 之後，您可以返回並新增其他子網和位址空間。
 
    ![建立虛擬網路頁面](./media/vpn-gateway-howto-site-to-site-classic-portal/createvnet.png "建立虛擬網路頁面")
 5. 確認 [訂用帳戶] **** 正確無誤。 您可以使用下拉式清單變更訂用帳戶。
@@ -104,15 +104,15 @@ DNS 設定不是 S2S 組態的必要部分，但如果您想要名稱解析，�
 
 本機網站通常是指您的內部部署位置。 它包含您要建立連線之 VPN 裝置的 IP 位址，以及將透過 VPN 閘道路由傳送至 VPN 裝置的 IP 位址範圍。
 
-1. 在您的 VNet 頁面上，按一下 [**設定**] 底下的 [**圖表**]。
-1. 在 [ **VPN**連線] 頁面上，按一下 [**您沒有任何現有的 VPN 連線]。按一下這裡開始**使用。
-1. 針對 [連線**類型**]，保持選取 [**站對站**]。
+1. 在 VNet 的頁面上，按一下 [ **設定**] 下的 [ **圖表**]。
+1. 在 [ **VPN** 連線] 頁面上，按一下 **您沒有任何現有的 VPN 連線。按一下這裡開始**使用。
+1. 針對 [連線 **類型**]，讓 [ **站對站** ] 保持選取狀態。
 4. 按一下 [本機網路 - 進行必要設定]**** 以開啟 [本機網路]**** 頁面。 進行設定，然後按一下 [確定]**** 以儲存設定。
    - **名稱︰** 建立可讓您輕鬆識別您的本機網站的名稱。
-   - **VPN 閘道 IP 位址：** 這是您內部部署網路之 VPN 裝置的公用 IP 位址。 VPN 裝置需要 IPv4 公用 IP 位址。 為您要連線的 VPN 裝置指定有效的公用 IP 位址。 它必須可由 Azure 觸達。 如果您不知道 VPN 裝置的 IP 位址，您可以一律放入預留位置值 (只要其為有效的公用 IP 位址格式即可)，然後稍後加以變更。
+   - **VPN 閘道 IP 位址：** 這是您內部部署網路之 VPN 裝置的公用 IP 位址。 VPN 裝置需要 IPv4 公用 IP 位址。 為您要連線的 VPN 裝置指定有效的公用 IP 位址。 它必須可由 Azure 存取。 如果您不知道 VPN 裝置的 IP 位址，您可以一律放入預留位置值 (只要其為有效的公用 IP 位址格式即可)，然後稍後加以變更。
    - **用戶端位址空間︰** 列出您要透過此閘道路由傳送至本機內部部署網路的 IP 位址範圍。 您可以加入多個位址空間範圍。 確定您在此指定的範圍，不會與虛擬網路要連接的其他網路範圍重疊，或與虛擬網路本身的位址範圍重疊。
 
-   ![本機網站](./media/vpn-gateway-howto-site-to-site-classic-portal/localnetworksite.png "設定本機網站")
+   ![顯示 [新增 VPN 連線] 和 [本機網站] 視窗的螢幕擷取畫面。](./media/vpn-gateway-howto-site-to-site-classic-portal/localnetworksite.png)
 
 按一下 **[確定]** 以關閉 [本機網站] 頁面。 **請勿按一下 [確定] 以關閉 [新增 VPN 連線] 頁面**。
 
@@ -127,7 +127,7 @@ DNS 設定不是 S2S 組態的必要部分，但如果您想要名稱解析，�
 2. 若要開啟 [閘道組態]**** 頁面，請按一下 [選擇性閘道組態 - 子網路、大小和路由類型]****。
 3. 在 [閘道組態]**** 頁面上，按一下 [子網路 - 進行必要設定]**** 以開啟 [新增子網路]**** 頁面。 完成這些設定之後，請按一下 **[確定]**。
 
-   ![閘道設定-閘道子網](./media/vpn-gateway-howto-site-to-site-classic-portal/subnetrequired.png "閘道設定-閘道子網")
+   ![閘道配置-閘道子網](./media/vpn-gateway-howto-site-to-site-classic-portal/subnetrequired.png "閘道配置-閘道子網")
 4. 在 [新增子網路]**** 頁面上，新增閘道子網路。 您所要建立的 VPN 閘道組態會決定您需要為閘道子網路指定的大小。 雖然可以建立像 /29 這麼小的閘道子網路，但建議您使用 /27 或 /28。 這可建立包含更多位址的較大子網路。 使用較大的閘道子網路可讓您擁有足夠的 IP 位址，以因應未來可能的組態。
 
    ![新增閘道子網路](./media/vpn-gateway-howto-site-to-site-classic-portal/addgwsubnet.png "新增閘道子網路")
@@ -137,11 +137,11 @@ DNS 設定不是 S2S 組態的必要部分，但如果您想要名稱解析，�
 1. 選取閘道**大小**。 這是您會用來建立虛擬網路閘道的閘道 SKU。 傳統 VPN 閘道會使用舊式 (舊版) 閘道 SKU。 如需舊版閘道 SKU 的詳細資訊，請參閱[使用虛擬網路閘道 SKU (舊式 SKU)](vpn-gateway-about-skus-legacy.md)。
 
    ![選取 SKUL 和 VPN 類型](./media/vpn-gateway-howto-site-to-site-classic-portal/sku.png "選取 SKU 和 VPN 類型")
-2. 選取閘道的 [路由類型]****。 這也稱為 VPN 類型。 請務必選取正確的類型，因為您無法將閘道從一種類型轉換成另一種。 您的 VPN 裝置必須與您所選取的路由類型相容。 如需路由類型的詳細資訊，請參閱[關於 VPN 閘道設定](vpn-gateway-about-vpn-gateway-settings.md#vpntype)。 您可能會看到參考 'RouteBased' 和 'PolicyBased' VPN 類型的文章。 'Dynamic' 對應到 'RouteBased'，而 'Static' 對應到 'PolicyBased'。
+2. 選取閘道的 [路由類型]****。 這也稱為 VPN 類型。 請務必選取正確的類型，因為您無法將閘道從某個類型轉換成另一個類型。 您的 VPN 裝置必須與您所選取的路由類型相容。 如需路由類型的詳細資訊，請參閱 [關於 VPN 閘道設定](vpn-gateway-about-vpn-gateway-settings.md#vpntype)。 您可能會看到參考 'RouteBased' 和 'PolicyBased' VPN 類型的文章。 'Dynamic' 對應到 'RouteBased'，而 'Static' 對應到 'PolicyBased'。
 3. 按一下 [確定] **** 來儲存設定。
-4. 在 [**新增 VPN**連線] 頁面上，按一下頁面底部的 **[確定]** ，開始部署您的虛擬網路閘道。 視您選取的 SKU 而定，建立虛擬網路閘道可能需要 45 分鐘的時間。
+4. 在 [ **新增 VPN** 連線] 頁面上，按一下頁面底部的 **[確定]** ，開始部署您的虛擬網路閘道。 視您選取的 SKU 而定，建立虛擬網路閘道可能需要 45 分鐘的時間。
 
-## <a name="7-configure-your-vpn-device"></a><a name="vpndevice"></a>7. 設定 VPN 裝置
+## <a name="7-configure-your-vpn-device"></a><a name="vpndevice"></a>7. 設定您的 VPN 裝置
 
 內部部署網路的站對站連線需要 VPN 裝置。 在此步驟中，設定 VPN 裝置。 在設定 VPN 裝置時，您需要下列項目：
 
@@ -154,14 +154,14 @@ DNS 設定不是 S2S 組態的必要部分，但如果您想要名稱解析，�
 在此步驟中，您可以設定共用的金鑰及建立連線。 您設定的金鑰必須是 VPN 裝置組態中使用的相同金鑰。
 
 > [!NOTE]
-> 此步驟目前無法不適用於 Azure 入口網站。 您必須使用 Azure PowerShell Cmdlet 的服務管理 (SM) 版本。 如需安裝這些 Cmdlet 的相關資訊，請參閱[開始之前](#before)。
+> 此步驟目前無法不適用於 Azure 入口網站。 您必須使用 Azure PowerShell Cmdlet 的服務管理 (SM) 版本。 [在開始之前](#before)，請參閱，以取得安裝這些 Cmdlet 的相關資訊。
 >
 
 ### <a name="step-1-connect-to-your-azure-account"></a>步驟 1： 連線至您的 Azure 帳戶
 
-您必須使用 PowerShell 服務管理模組，在本機執行這些命令。 
+您必須使用 PowerShell 服務管理模組在本機執行這些命令。 
 
-1. 以更高的許可權開啟 PowerShell 主控台。 若要切換至服務管理，請使用下列命令：
+1. 以較高的許可權開啟 PowerShell 主控台。 若要切換到服務管理，請使用此命令：
 
    ```powershell
    azure config mode asm
@@ -184,7 +184,7 @@ DNS 設定不是 S2S 組態的必要部分，但如果您想要名稱解析，�
 
 ### <a name="step-2-set-the-shared-key-and-create-the-connection"></a>步驟 2： 設定共用金鑰及建立連線
 
-當您在入口網站中建立傳統 VNet （不使用 PowerShell）時，Azure 會將資源組名新增至簡短名稱。 例如，根據 Azure，您為此練習建立的 VNet 名稱是 "Group TestRG1 TestVNet1"，而不是 "TestVNet1"。 PowerShell 需要虛擬網路的完整名稱，而不是出現在入口網站中的簡短名稱。 在入口網站中看不到完整名稱。 下列步驟可協助您匯出網路設定檔，以取得虛擬網路名稱的確切值。 
+當您在入口網站中建立傳統 VNet 時 (不使用 PowerShell) ，Azure 會將資源組名新增至簡短名稱。 例如，根據 Azure，您為此練習建立的 VNet 名稱為 "Group TestRG1 TestVNet1"，而非 "TestVNet1"。 PowerShell 需要虛擬網路的完整名稱，而不是出現在入口網站中的簡短名稱。 在入口網站中看不到完整名稱。 下列步驟可協助您匯出網路設定檔，以取得虛擬網路名稱的確切值。 
 
 1. 在您的電腦上建立目錄，然後將網路組態檔匯出到該目錄。 在此範例中，會將網路組態檔匯出到 C:\AzureNet。
 
@@ -201,7 +201,7 @@ DNS 設定不是 S2S 組態的必要部分，但如果您想要名稱解析，�
    ```
    建立連線後，結果是︰**狀態︰成功**。
 
-## <a name="9-verify-your-connection"></a><a name="verify"></a>9. 確認您的連線
+## <a name="9-verify-your-connection"></a><a name="verify"></a>9. 驗證您的連接
 
 [!INCLUDE [vpn-gateway-verify-connection-azureportal-classic](../../includes/vpn-gateway-verify-connection-azureportal-classic-include.md)]
 
@@ -218,4 +218,4 @@ DNS 設定不是 S2S 組態的必要部分，但如果您想要名稱解析，�
 ## <a name="next-steps"></a>後續步驟
 
 * 一旦完成您的連接，就可以將虛擬機器加入您的虛擬網路。 如需詳細資訊，請參閱[虛擬機器](https://docs.microsoft.com/azure/)。
-* 如需強制通道的相關資訊，請參閱[關於強制通道](vpn-gateway-about-forced-tunneling.md)。
+* 如需強制通道的相關資訊，請參閱 [關於強制通道](vpn-gateway-about-forced-tunneling.md)。

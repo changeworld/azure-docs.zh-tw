@@ -11,17 +11,17 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
-ms.date: 09/06/2020
-ms.openlocfilehash: 84a7a205e52ba37eb6fcb3b624e0f71a9b9bbc10
-ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
+ms.date: 09/29/2020
+ms.openlocfilehash: 158adb6b35b488c310bd2912d4076b86579383a4
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/07/2020
-ms.locfileid: "89505483"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91446396"
 ---
 # <a name="manage-packages-with-azure-ssis-integration-runtime-package-store"></a>使用 Azure-SSIS Integration Runtime 套件存放區管理套件
 
-[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 為了增益 & 將您的內部部署 SQL Server Integration Services (SSIS) 工作負載移至雲端，您可以在 Azure-SSIS Integration Runtime (ADF) 中布建 Azure Data Factory (IR) 。 如需詳細資訊，請參閱布建 [Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure)。 Azure-SSIS IR 可支援：
 
@@ -148,7 +148,7 @@ for %f in (*.dtsx) do dtutil.exe /FILE %f /ENCRYPT FILE;Z:\%f;2;YourEncryptionPa
 
 若要在批次檔中執行上述命令，請將取代 `%f` 為 `%%f` 。
 
-若要將多個封裝從檔案系統上的舊版 SSIS 封裝存放區部署到 Azure 檔案儲存體並同時切換其保護層級，您可以使用相同的命令，但將取代 `YourLocalDrive:\...\YourPackageFolder` 為舊版 SSIS 封裝存放區所使用的本機資料夾： `YourLocalDrive:\Program Files\Microsoft SQL Server\YourSQLServerDefaultCompatibilityLevel\DTS\Packages\YourPackageFolder` 。 例如，如果您的舊版 SSIS 封裝存放區系結至 SQL Server 2016，請移至 `YourLocalDrive:\Program Files\Microsoft SQL Server\130\DTS\Packages\YourPackageFolder` 。  您可以 `YourSQLServerDefaultCompatibilityLevel` 從 [SQL Server 預設相容性層級的清單](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-compatibility-level?view=sql-server-ver15#arguments)中找到的值。
+若要將多個封裝從檔案系統上的舊版 SSIS 封裝存放區部署到 Azure 檔案儲存體並同時切換其保護層級，您可以使用相同的命令，但將取代 `YourLocalDrive:\...\YourPackageFolder` 為舊版 SSIS 封裝存放區所使用的本機資料夾： `YourLocalDrive:\Program Files\Microsoft SQL Server\YourSQLServerDefaultCompatibilityLevel\DTS\Packages\YourPackageFolder` 。 例如，如果您的舊版 SSIS 封裝存放區系結至 SQL Server 2016，請移至 `YourLocalDrive:\Program Files\Microsoft SQL Server\130\DTS\Packages\YourPackageFolder` 。  您可以從 [SQL Server 預設相容性層級清單](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-compatibility-level?view=sql-server-ver15#arguments)中尋找 `YourSQLServerDefaultCompatibilityLevel` 的值。
 
 如果您已在 Azure 檔案儲存體上設定 Azure-SSIS IR 套件存放區，當您連線到 SSMS 2019 或更新版本上的 Azure-SSIS IR 時，您已部署的套件將會出現在這些存放區中。
 
@@ -209,6 +209,6 @@ dtutil /SQL YourFolder\YourPackage3 /ENCRYPT FILE;Z:\YourFolder\YourPackage3.dts
 
 如果您已在 Azure 檔案儲存體上設定 Azure-SSIS IR 套件存放區，當您連線到 SSMS 2019 或更新版本上的 Azure-SSIS IR 時，您已部署的套件將會出現在這些存放區中。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 您可以使用執行 SSIS 套件活動來重新執行/編輯自動產生的 ADF 管線，或在 ADF 入口網站上建立新的 ADF 管線。 如需詳細資訊，請參閱 [在 ADF 管線中將 ssis 套件執行為執行 Ssis 套件活動](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)。

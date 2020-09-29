@@ -1,22 +1,23 @@
 ---
-title: 安裝及執行容器-文字分析
+title: 安裝和執行文字分析 API 的 Docker 容器
 titleSuffix: Azure Cognitive Services
-description: 本逐步解說教學課程的內容包含如何下載、安裝及執行適用於文字分析的容器。
+description: 使用文字分析 API 的 Docker 容器來執行自然語言處理，例如內部部署的情感分析。
 services: cognitive-services
 author: aahill
 manager: nitinme
-ms.custom: seodec18
+ms.custom: seodec18, cog-serv-seo-aug-2020
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 09/28/2020
 ms.author: aahi
-ms.openlocfilehash: 27881d6271fbedfb5763b293d5145e2f87cd1c13
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+keywords: 內部部署、Docker、容器、情感分析、自然語言處理
+ms.openlocfilehash: 42b22c94f8f2eed0514906422fe9f1d5e7cd12e2
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91309299"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91461490"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>安裝並執行文字分析容器
 
@@ -33,7 +34,7 @@ ms.locfileid: "91309299"
 > [!IMPORTANT]
 > 免費帳戶的限制為每月5000筆交易，而只有**免費**和**標準**<a href="https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics" target="_blank">定價層 <span class="docon docon-navigate-external x-hidden-focus"></span> </a>適用于容器。 如需交易要求速率的詳細資訊，請參閱 [資料限制](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview#data-limits)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要執行任何文字分析容器，您必須擁有主機電腦和容器環境。
 

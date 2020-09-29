@@ -8,12 +8,12 @@ ms.date: 4/3/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: b8a31f2739e497d8e203a9806d25b21608e5701f
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: c010fa4ea0289ed91f439a250f0b63703517f5bc
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90531469"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447781"
 ---
 # <a name="create-and-provision-a-simulated-iot-edge-device-with-a-virtual-tpm-on-windows"></a>使用虛擬 TPM 在 Windows 上建立及布建模擬的 IoT Edge 裝置
 
@@ -61,7 +61,7 @@ DPS 支援個別註冊和群組註冊中 IoT Edge 裝置的對稱金鑰證明。
 當您建立個別註冊時，請選取 [ **True** ] 以宣告 Windows 開發電腦上的模擬 TPM 裝置是 **IoT Edge 裝置**。
 
 > [!TIP]
-> 在 Azure CLI 中，您可以建立 [註冊](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment) 或 [註冊群組](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment-group) ，並使用 **啟用 edge** 的旗標來指定裝置或裝置群組是 IoT Edge 裝置。
+> 在 Azure CLI 中，您可以建立 [註冊](/cli/azure/ext/azure-iot/iot/dps/enrollment) 或 [註冊群組](/cli/azure/ext/azure-iot/iot/dps/enrollment-group) ，並使用 **啟用 edge** 的旗標來指定裝置或裝置群組是 IoT Edge 裝置。
 
 模擬裝置和個別註冊指南：
 

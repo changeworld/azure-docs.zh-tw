@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 09/15/2020
+ms.date: 09/28/2020
 ms.custom: seodec18
-ms.openlocfilehash: d8e3c7258a70902fe362ee73c2f366146484ce54
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b186c2d2c4b5efc8e1e052a63505549e860b5619
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91287524"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91460823"
 ---
 # <a name="data-storage"></a>資料儲存體
 
@@ -26,15 +26,14 @@ ms.locfileid: "91287524"
 當您建立 Azure 時間序列深入解析 Gen2 環境時，您有下列選項：
 
 * 冷資料存放區：
-   * 在您為環境選擇的訂用帳戶和區域中，建立新的 Azure 儲存體資源。
-   * 附加既有的 Azure 儲存體帳戶。 此選項僅適用于從 Azure Resource Manager [範本](https://docs.microsoft.com/azure/templates/microsoft.timeseriesinsights/allversions)進行部署，且不會顯示在 Azure 入口網站中。
+  * 在您為環境選擇的訂用帳戶和區域中，建立新的 Azure 儲存體資源。
+  * 附加既有的 Azure 儲存體帳戶。 此選項僅適用于從 Azure Resource Manager [範本](https://docs.microsoft.com/azure/templates/microsoft.timeseriesinsights/allversions)進行部署，且不會顯示在 Azure 入口網站中。
 * 暖資料存放區：
-   * 暖存放區是選擇性的，可以在布建期間或之後啟用或停用。 如果您決定稍後啟用暖存放區，而且您的冷存放區中已經有資料， [請參閱下面](concepts-storage.md#warm-store-behavior) 的小節以瞭解預期的行為。 暖存放區資料保留時間可以設定為7到31天，也可以視需要調整。
+  * 暖存放區是選擇性的，可以在布建期間或之後啟用或停用。 如果您決定稍後啟用暖存放區，而且您的冷存放區中已經有資料， [請參閱下面](concepts-storage.md#warm-store-behavior) 的小節以瞭解預期的行為。 暖存放區資料保留時間可以設定為7到31天，也可以視需要調整。
 
 當事件內嵌時，如果已啟用) 和冷存放區，則會在暖存放區 (中建立索引。
 
 [![儲存體總覽](media/concepts-storage/pipeline-to-storage.png)](media/concepts-storage/pipeline-to-storage.png#lightbox)
-
 
 > [!WARNING]
 > 身為冷存放區資料所在 Azure Blob 儲存體帳戶的擁有者，您可以完整存取帳戶中的所有資料。 此存取權包括寫入和刪除權限。 請勿編輯或刪除 Azure 時間序列深入解析 Gen2 寫入的資料，因為這可能會導致資料遺失。
@@ -50,11 +49,11 @@ Azure 時間序列深入解析 Gen2 資料分割和索引資料，以獲得最�
 
 您可以透過 [時間序列查詢 api](./time-series-insights-update-tsq.md)、 [Azure 時間序列深入解析 TSI Explorer](./time-series-insights-update-explorer.md)或 [Power BI 連接器](./how-to-connect-power-bi.md)，取得暖存放區中的資料。 暖存放區查詢是免費的，而且沒有配額，但有 [30 個](https://docs.microsoft.com/rest/api/time-series-insights/reference-api-limits#query-apis---limits) 並行要求的限制。
 
-### <a name="warm-store-behavior"></a>暖存放區行為 
+### <a name="warm-store-behavior"></a>暖存放區行為
 
 * 啟用時，串流至您環境的所有資料都會路由傳送至您的暖存放區，而不論事件時間戳記為何。 請注意，串流內嵌管線是針對近乎即時的串流處理所建立，且 [不支援](./concepts-streaming-ingestion-event-sources.md#historical-data-ingestion)擷取歷程記錄事件。
 * 保留期限是根據事件在暖存放區中編制索引的時間來計算，而不是事件時間戳記。 這表示在保留期限過了之後，暖存放區中的資料將無法再使用，即使事件時間戳記適用于未來。
-  - 範例：具有10天天氣預報的事件會在設定為7天保留期間的暖儲存體容器中內嵌並編制索引。 在7天后，將無法再于暖存放區中存取預測，但可以從冷查詢進行查詢。 
+  * 範例：具有10天天氣預報的事件會在設定7天保留期間的暖儲存體容器中內嵌並編制索引。 在7天后，將無法再于暖存放區中存取預測，但可以從冷查詢進行查詢。
 * 如果您在現有的環境中啟用暖存放區，而該環境已經在冷儲存體中建立最新的資料，請注意，您的暖存放區將不會再填滿此資料。
 * 如果您剛剛啟用暖存放區，並在瀏覽器中看到您最近的資料時遇到問題，您可以暫時切換暖存放區查詢：
 

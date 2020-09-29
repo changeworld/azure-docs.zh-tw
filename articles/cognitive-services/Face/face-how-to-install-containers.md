@@ -1,29 +1,30 @@
 ---
-title: 安裝及執行容器-臉部
+title: 安裝和執行臉部 API 的 Docker 容器
 titleSuffix: Azure Cognitive Services
-description: 本文說明如何在此逐步解說教學課程中下載、安裝及執行臉部的容器。
+description: 使用臉部 API 的 Docker 容器來偵測及識別影像中的人臉。
 services: cognitive-services
 author: aahill
 manager: nitinme
-ms.custom: seodec18
+ms.custom: seodec18, cog-serv-seo-aug-2020
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 07/16/2020
 ms.author: aahi
-ms.openlocfilehash: 766af570c959ff2c49256058dfbfffdd1021295f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+keywords: 內部部署、Docker、容器、識別
+ms.openlocfilehash: 0f6807f771510f85c5a20cfb2a160cfe1e8726a3
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548458"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91461507"
 ---
 # <a name="install-and-run-face-containers-preview"></a>安裝並執行臉部容器 (預覽) 
 
 > [!IMPORTANT]
 > 已達到臉部容器使用者的限制。 我們目前不接受臉部容器的新應用程式。
 
-Azure 認知服務臉部提供適用于 Docker 的標準化 Linux 容器，可偵測影像中的人臉。 它也會識別屬性，包括臉部地標，例如鼻子和眼睛、性別、年齡及其他機器預測的臉部特徵。 除了偵測之外，臉部也可以使用信賴分數來檢查相同影像或不同影像中的兩個臉部是否相同。 臉部也可以比較臉部與資料庫，以查看是否已有類似外觀或相同的臉部。 也可以使用共用視覺特性，將類似的臉部組織成群組。
+Azure 認知服務臉部 API 提供 Linux Docker 容器，可偵測並分析影像中的人臉。 它也會識別屬性，包括臉部地標，例如鼻子和眼睛、性別、年齡及其他機器預測的臉部特徵。 除了偵測之外，臉部也可以使用信賴分數來檢查相同影像或不同影像中的兩個臉部是否相同。 臉部也可以比較臉部與資料庫，以查看是否已有類似外觀或相同的臉部。 也可以使用共用視覺特性，將類似的臉部組織成群組。
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/cognitive-services/)。
 
@@ -153,7 +154,7 @@ ApiKey={API_KEY}
 > [!IMPORTANT]
 > 認知服務容器未獲得授權，無法在未連線至 Azure 的情況下執行以進行計量。 客戶必須讓容器隨時都能與計量服務通訊帳單資訊。 認知服務容器不會將客戶資料 (例如正在分析的影像或文字) 傳送至 Microsoft。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 如需設定的設定，請參閱 [設定容器](face-resource-container-config.md)。
 * 若要深入瞭解如何偵測和識別臉部，請參閱 [臉部總覽](Overview.md)。

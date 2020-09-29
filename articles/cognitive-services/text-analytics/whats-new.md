@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 08/26/2020
+ms.date: 09/29/2020
 ms.author: aahi
-ms.openlocfilehash: 436d64583184ca2cd59b4ddf33056922c746fb34
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 12f3ce506d8b4588dc9c670e49cabd3bc7767566
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91271166"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91460266"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>文字分析 API 有哪些新功能？
 
@@ -34,7 +34,7 @@ ms.locfileid: "91271166"
     * v3.0-preview。1
     
 > [!div class="nextstepaction"]
-> [深入瞭解文字分析 API 3.1-Preview。2](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-2/operations/Languages)
+> [深入瞭解文字分析 API 3.1-Preview。2](quickstarts/text-analytics-sdk.md)
 
 ### <a name="text-analytics-for-health-container-updates"></a>健全狀況容器更新的文字分析
 
@@ -165,7 +165,7 @@ JSON 回應中的下列屬性名稱已變更，適用于：
 
 * 下列一般實體類型的辨識僅 (英文) ：
     * PersonType
-    * Products
+    * 產品
     * 事件
     * 地緣政治 Entity (GPE) 作為位置下的子類型
     * 技能
@@ -175,7 +175,7 @@ JSON 回應中的下列屬性名稱已變更，適用于：
     * 組織
     * 作為 [數量] 下的子類型的年齡
     * 日期為 DateTime 下的子類型
-    * 電子郵件 
+    * Email 
     * 電話號碼僅 (US) 
     * URL
     * IP 位址

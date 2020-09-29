@@ -7,18 +7,18 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 09/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: a3603c7a4b704327f829588f0fc5827d97288be0
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 1e88afd91c0e0b344cc0eb8d82b637a88d5a1656
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89440808"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447969"
 ---
 # <a name="about-point-to-site-vpn-routing"></a>關於點對站 VPN 路由
 
 本文將協助您了解 Azure 點對站 VPN 路由如何運作。 P2S VPN 路由行為取決於用戶端 OS、用於 VPN 連線的通訊協定，以及虛擬網路 (VNet) 彼此連線的方式。
 
-Azure 目前支援兩種遠端存取通訊協定，即 IKEv2 和 SSTP。 許多用戶端作業系統都支援 IKEv2，包括 Windows、Linux、MacOS、Android 及 iOS。 SSTP 則只在 Windows 上才有支援。 如果您對網路拓撲進行變更並擁有 Windows VPN 用戶端，則必須重新下載並安裝 Windows 用戶端的 VPN 用戶端套件，才能將變更套用至用戶端。
+Azure 目前支援兩種遠端存取通訊協定，即 IKEv2 和 SSTP。 許多用戶端作業系統都支援 IKEv2，包括 Windows、Linux、macOS、Android 和 iOS。 SSTP 則只在 Windows 上才有支援。 如果您對網路拓撲進行變更並擁有 Windows VPN 用戶端，則必須重新下載並安裝 Windows 用戶端的 VPN 用戶端套件，才能將變更套用至用戶端。
 
 > [!NOTE]
 > 本文僅適用於 IKEv2。
@@ -195,7 +195,7 @@ Windows 用戶端可以存取 VNet 和分公司 (Site1)，但必須手動將 Sit
 
 所有用戶端都只能存取 VNet1。
 
-![多 VNet S2S 和分公司](./media/vpn-gateway-about-point-to-site-routing/7.jpg "多 VNet S2S 和分公司")
+![顯示多 VNet S2S 和分公司的圖表。](./media/vpn-gateway-about-point-to-site-routing/7.jpg "多 VNet S2S 和分公司")
 
 ### <a name="address-space"></a>位址空間
 
@@ -249,6 +249,6 @@ Windows 用戶端可以存取 VNet 和分公司 (Site1)，但必須手動將 Sit
 
 * 非 Windows 用戶端可以存取 VNet1、VNet2、VNet3 及 Site1。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 請參閱[使用 Azure 入口網站來建立 P2S VPN](vpn-gateway-howto-point-to-site-resource-manager-portal.md) 以開始建立 P2S VPN。

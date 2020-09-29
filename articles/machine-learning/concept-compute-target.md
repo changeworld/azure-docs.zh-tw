@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 07/27/2020
-ms.openlocfilehash: f75853a66c43c69ec191f28951f8f6ffc4353f93
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 6b166e46c8ebb640e15c005e2ddae3161e141f10
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91330157"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91446784"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Azure Machine Learning 中的計算目標是什麼？ 
 
@@ -101,6 +101,20 @@ Azure Machine Learning 在不同的計算資源之間有不同的支援。  您�
 
 
 雖然 Azure Machine Learning 支援這些 VM 系列，但它們可能無法在所有 Azure 區域中使用。 您可以在這裡查看可用的 VM 系列： [依區域提供的產品](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines)。
+
+### <a name="compute-isolation"></a>計算隔離
+
+Azure Machine Learning 計算提供隔離于特定硬體類型的虛擬機器大小，並專用於單一客戶。 隔離的虛擬機器大小最適合需要與其他客戶工作負載高度隔離的工作負載，原因包括符合規範和法規需求。 使用隔離大小可確保只有您的虛擬機器會在該特定伺服器執行個體上執行。
+
+目前的隔離虛擬機器供應項目包括：
+* Standard_M128ms
+* Standard_F72s_v2
+* Standard_NC24s_v3
+* Standard_NC24rs_v3*
+
+*支援 RDMA
+
+請參閱這裡以深入瞭解 [Azure 公用雲端中的隔離](https://docs.microsoft.com/azure/security/fundamentals/isolation-choices)。
 
 ## <a name="unmanaged-compute"></a>非受控計算
 

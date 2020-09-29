@@ -9,12 +9,12 @@ ms.date: 04/09/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: dbd4a80c0f480e51ce7ec248c3b5d3dc523e9d74
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 13c15eeb98b13d0fe9a5b7797ec942209d403cc6
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90530738"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447752"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-x509-certificates"></a>使用 x.509 憑證來建立和布建 IoT Edge 裝置
 
@@ -83,7 +83,7 @@ Windows：
 如需裝置布建服務中註冊的詳細資訊，請參閱 [如何管理裝置註冊](../iot-dps/how-to-manage-enrollments.md)。
 
    > [!TIP]
-   > 在 Azure CLI 中，您可以建立 [註冊](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment) 或 [註冊群組](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment-group) ，並使用 **啟用 edge** 的旗標來指定裝置或裝置群組是 IoT Edge 裝置。
+   > 在 Azure CLI 中，您可以建立 [註冊](/cli/azure/ext/azure-iot/iot/dps/enrollment) 或 [註冊群組](/cli/azure/ext/azure-iot/iot/dps/enrollment-group) ，並使用 **啟用 edge** 的旗標來指定裝置或裝置群組是 IoT Edge 裝置。
 
 1. 在 [Azure 入口網站](https://portal.azure.com)中，流覽至您的 IoT 中樞裝置布建服務實例。
 

@@ -9,12 +9,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: 69ed934e97d2726995a7a5cd122fadbd4a791942
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: fd5848eb44ecd32612943662b5a4fd0a5091cd9d
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320522"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91461286"
 ---
 # <a name="application-insights-telemetry-data-model"></a>Application Insights 遙測資料模型
 
@@ -38,7 +38,7 @@ Application Insights 針對自訂遙測提供三種其他資料類型：
 * [事件](data-model-event-telemetry.md)：通常用於擷取使用者與您服務的互動，藉以分析使用模式。
 * [計量](data-model-metric-telemetry.md)：用於報告定期的純量測量。
 
-每個遙測專案都可以定義[內容資訊](data-model-context.md)，例如應用程式版本或使用者會話識別碼。「內容」（CoNtext）是一組強型別字段，會解除封鎖某些案例。 正確初始化應用程式版本之後，Application Insights 可以偵測與重新部署相互關聯的應用程式行為中是否有新模式。 工作階段識別碼可用來計算中斷或某個問題對使用者造成的影響。 計算特定失敗相依性、錯誤追蹤或重大例外狀況之工作階段識別碼值的相異計數，即可充分了解影響。
+每個遙測專案都可以定義 [內容資訊](data-model-context.md) ，例如應用程式版本或使用者會話識別碼。內容是一組強型別字段，會解除封鎖某些案例。 正確初始化應用程式版本之後，Application Insights 可以偵測與重新部署相互關聯的應用程式行為中是否有新模式。 工作階段識別碼可用來計算中斷或某個問題對使用者造成的影響。 計算特定失敗相依性、錯誤追蹤或重大例外狀況之工作階段識別碼值的相異計數，即可充分了解影響。
 
 Application Insights 遙測模型會定義將遙測與其所屬作業[相互關聯](./correlation.md)的方式。 例如，要求會發出 SQL Database 呼叫，並記錄診斷資訊。 針對會往回繫結至要求遙測的遙測項目，您可以設定這些遙測項目的相互關聯內容。
 
@@ -46,7 +46,7 @@ Application Insights 遙測模型會定義將遙測與其所屬作業[相互關�
 
 Application Insights 資料模型是簡單且基本但功能強大的方式，可建立您應用程式遙測的模型。 我們盡量保持模型可簡單且輕鬆地支援重要的案例，並擴充結構描述以供進階使用。
 
-若要報告資料模型或結構描述的問題及建議，請使用 GitHub [ApplicationInsights-Home](https://github.com/Microsoft/ApplicationInsights-Home/issues) 存放庫。
+[若要報告資料模型或架構問題和建議，請使用我們的 GitHub 存放庫](https://github.com/microsoft/ApplicationInsights-dotnet/issues/new/choose)。
 
 ## <a name="next-steps"></a>後續步驟
 

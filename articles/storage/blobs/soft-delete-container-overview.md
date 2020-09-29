@@ -10,12 +10,12 @@ ms.date: 08/25/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: references_regions
-ms.openlocfilehash: f41caf61ac23b05ba0ff95d785be2e7449adf75d
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 3c6aa408ab3e89c367fca0701773b35fb9b41bb8
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89228625"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91460793"
 ---
 # <a name="soft-delete-for-containers-preview"></a>適用于容器的虛刪除 (預覽) 
 
@@ -42,11 +42,7 @@ ms.locfileid: "89228625"
 
 ## <a name="about-the-preview"></a>關於預覽
 
-容器虛刪除于下欄區域提供預覽：
-
-- 法國中部
-- 加拿大東部
-- 加拿大中部
+容器虛刪除在所有公用 Azure 區域中都可供預覽。
 
 > [!IMPORTANT]
 > 容器虛刪除預覽版僅供非生產環境使用。 生產環境的服務等級協定 (SLA) 目前無法使用。

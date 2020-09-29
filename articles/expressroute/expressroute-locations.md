@@ -6,14 +6,14 @@ author: duongau
 ms.service: expressroute
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 08/26/2020
+ms.date: 09/28/2020
 ms.author: duau
-ms.openlocfilehash: 2177b37fe5723be64896fd5ee4e90c0137dc9be0
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 1721c2a9ede949bb6183c60e65f540869bb95e43
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91370499"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91446151"
 ---
 # <a name="expressroute-connectivity-partners-and-peering-locations"></a>ExpressRoute 連線合作夥伴和對等互連位置
 
@@ -86,10 +86,10 @@ ExpressRoute 位置 (有時稱為對等互連位置或 meet-me-locations) 是 Mi
 | **[BBIX](https://www.bbix.net/en/service/ix/)** | 支援 | 支援 | 東京 |
 | **[BCX](https://www.bcx.co.za/solutions/connectivity/data-networks)** |支援 |支援 |開普敦、約翰尼斯堡|
 | **[Bell Canada](https://business.bell.ca/shop/enterprise/cloud-connect-access-to-cloud-partner-services)** |支援 |支援 |蒙特婁、多倫多、魁北克市 |
-| **[British Telecom](https://www.globalservices.bt.com/en/solutions/products/cloud-connect-azure)** |支援 |支援 |阿姆斯特丹、阿姆斯特丹2、香港特別行政區、約翰尼斯堡、倫敦、紐波特 (威爾士) 、聖保羅、矽谷、新加坡、悉尼、東京、華盛頓特區 |
+| **[British Telecom](https://www.globalservices.bt.com/en/solutions/products/cloud-connect-azure)** |支援 |支援 |阿姆斯特丹、阿姆斯特丹2、香港特別行政區、約翰尼斯堡、倫敦、紐波特 (威爾士) 、巴黎、聖保羅、矽谷、新加坡、悉尼、東京、華盛頓特區 |
 | **[C3ntro](https://www.c3ntro.com/data1/express-route1.php)** |支援 |支援 |邁阿密 |
 | **CDC** | 支援 | 支援 | 坎培拉、坎培拉 2 |
-| **[CenturyLink Cloud Connect](https://www.centurylink.com/cloudconnect)** |支援 |支援 |阿姆斯特丹 2、芝加哥、法蘭克福、香港、拉斯維加斯、倫敦 2、紐約、巴黎、聖安東尼奧、矽谷、東京、多倫多、華盛頓特區、華盛頓特區 2 |
+| **[CenturyLink Cloud Connect](https://www.centurylink.com/cloudconnect)** |支援 |支援 |阿姆斯特丹2、芝加哥、都柏林、法蘭克福、香港、內華達州、倫敦2、紐約、巴黎、San Antonio、矽谷、東京、多倫多、華盛頓特區、華盛頓特區 |
 | **[Chief Telecom](https://www.chief.com.tw/dispPageBox/ct.aspx?ddsPageID=ENCLOUDSERVICE&dbid=4852937342)** |支援 |支援 |香港、台北 |
 | **China Mobile International** |支援 |支援 | 香港特別行政區，香港 Kong2，新加坡 |
 | **China Telecom Global** |支援 |支援 |香港、香港 2 |
@@ -161,7 +161,7 @@ ExpressRoute 位置 (有時稱為對等互連位置或 meet-me-locations) 是 Mi
 | **[Telia Carrier](https://www.teliacarrier.com/)** | 支援 | 支援 |阿姆斯特丹、芝加哥、達拉斯、法蘭克福、香港、倫敦、奧斯陸、巴黎、矽谷、斯德哥爾摩、華盛頓特區 |
 | **Telmex Uninet**| 支援 | 支援 | 達拉斯 |
 | **[Telstra Corporation](https://www.telstra.com.au/business-enterprise/network-services/networks/cloud-direct-connect/)** |支援 |支援 |墨爾本、新加坡、雪梨 |
-| **[Telus](https://www.telus.com)** |支援 |支援 |蒙特婁、西雅圖、多倫多 |
+| **[Telus](https://www.telus.com)** |支援 |支援 |蒙特利爾、西雅圖、多倫多、范 |
 | **[Teraco](https://www.teraco.co.za/services/africa-cloud-exchange/)** |支援 |支援 |開普敦、約翰尼斯堡 |
 | **[TIME dotCom](https://www.time.com.my/enterprise/connectivity/direct-cloud)** | 支援 | 支援 | 吉隆坡 |
 | **[Transtelco](https://transtelco.net/enterprise-services/)** |支援 |支援 |達拉斯，Queretaro (墨西哥) |

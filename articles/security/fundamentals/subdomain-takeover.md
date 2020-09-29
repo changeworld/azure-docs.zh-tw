@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/23/2020
+ms.date: 09/29/2020
 ms.author: memildin
-ms.openlocfilehash: c0494fe39f8ae64ba65db4e3cd728069aa4a5052
-ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
+ms.openlocfilehash: bde4b21f9dfff62ef43afc9c9d8e5a858631d304
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91403206"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447367"
 ---
 # <a name="prevent-dangling-dns-entries-and-avoid-subdomain-takeover"></a>防止無關聯的 DNS 專案，並避免子域接管
 
@@ -86,7 +86,7 @@ ms.locfileid: "91403206"
 此工具支援下表所列的 Azure 資源。 此工具會將所有租使用者的 Cname 解壓縮或做為輸入。
 
 
-| Service                   | 類型                                        | FQDNproperty                               | 範例                         |
+| 服務                   | 類型                                        | FQDNproperty                               | 範例                         |
 |---------------------------|---------------------------------------------|--------------------------------------------|---------------------------------|
 | Azure Front Door          | microsoft.network/frontdoors                | 屬性 cName                           | `abc.azurefd.net`               |
 | Azure Blob 儲存體        | microsoft.storage/storageaccounts           | >primaryendpoints.blob blob           | `abc. blob.core.windows.net`    |
@@ -100,18 +100,20 @@ ms.locfileid: "91403206"
 
 
 
-### <a name="prerequisites"></a>Prerequisites
+### <a name="prerequisites"></a>必要條件
 
 以具有下列許可權的使用者身分執行查詢：
 
 - 至少讀者層級的 Azure 訂用帳戶存取權
 - Azure resource graph 的讀取權限
 
-如果您是組織租使用者的全域管理員，請使用提高 [存取權以管理所有 Azure 訂用帳戶和管理群組](https://docs.microsoft.com/azure/role-based-access-control/elevate-access-global-admin)的指引，來提升您的帳戶以存取您組織的所有訂用帳戶。
+如果您是組織租使用者的全域管理員，請使用提高 [存取權以管理所有 Azure 訂用帳戶和管理群組](../../role-based-access-control/elevate-access-global-admin.md)的指引，來提升您的帳戶以存取您組織的所有訂用帳戶。
 
 
 > [!TIP]
-> 如果您有大型的 Azure 環境，Azure Resource Graph 有節流和分頁限制。 [深入瞭解](https://docs.microsoft.com/azure/governance/resource-graph/concepts/work-with-data) 如何使用大型的 Azure 資源資料集。 
+> 如果您有大型的 Azure 環境，Azure Resource Graph 有節流和分頁限制。 
+> 
+> [深入瞭解如何使用大型的 Azure 資源資料集](../../governance/resource-graph/concepts/work-with-data.md)。
 > 
 > 此工具會使用訂用帳戶批次處理來避免這些限制。
 
@@ -145,7 +147,7 @@ ms.locfileid: "91403206"
 
 ### <a name="use-azure-dns-alias-records"></a>使用 Azure DNS 別名記錄
 
-Azure DNS 的 [別名記錄](https://docs.microsoft.com/azure/dns/dns-alias#scenarios) 可讓 DNS 記錄的生命週期與 Azure 資源結合，以防止無關聯的參考。 例如，限定為別名記錄以指向公用 IP 位址或流量管理員設定檔的 DNS 記錄。 如果您刪除這些基礎資源，則 DNS 別名記錄會變成空的記錄集。 它不再參考已刪除的資源。 請務必注意，您可以使用別名記錄來保護它的限制。 目前，此清單僅限於：
+Azure DNS 的 [別名記錄](../../dns/dns-alias.md#scenarios) 可讓 DNS 記錄的生命週期與 Azure 資源結合，以防止無關聯的參考。 例如，限定為別名記錄以指向公用 IP 位址或流量管理員設定檔的 DNS 記錄。 如果您刪除這些基礎資源，則 DNS 別名記錄會變成空的記錄集。 它不再參考已刪除的資源。 請務必注意，您可以使用別名記錄來保護它的限制。 目前，此清單僅限於：
 
 - Azure Front Door
 - 流量管理員設定檔
@@ -154,7 +156,7 @@ Azure DNS 的 [別名記錄](https://docs.microsoft.com/azure/dns/dns-alias#scen
 
 雖然現今的服務供應專案有限，但建議您盡可能使用別名記錄來防止子域接管。
 
-[深入瞭解](https://docs.microsoft.com/azure/dns/dns-alias#capabilities) Azure DNS 別名記錄的功能。
+[深入瞭解 Azure DNS 別名記錄的功能](../../dns/dns-alias.md#capabilities)。
 
 
 
@@ -164,7 +166,7 @@ Azure DNS 的 [別名記錄](https://docs.microsoft.com/azure/dns/dns-alias#scen
 
 這些記錄不會防止他人以您的 CNAME 專案中的相同名稱建立 Azure App Service。 如果沒有能夠證明功能變數名稱的擁有權，威脅執行者就無法接收流量或控制內容。
 
-[深入瞭解](https://docs.microsoft.com/Azure/app-service/app-service-web-tutorial-custom-domain) 如何將現有的自訂 DNS 名稱對應至 Azure App Service。
+[深入瞭解如何將現有的自訂 DNS 名稱對應至 Azure App Service](../../app-service/app-service-web-tutorial-custom-domain.md)。
 
 
 
@@ -178,13 +180,13 @@ Azure DNS 的 [別名記錄](https://docs.microsoft.com/azure/dns/dns-alias#scen
 
     - 在解除委任服務時，將 [移除 DNS 專案] 放在必要的檢查清單上。
 
-    - 將 [刪除鎖定](https://docs.microsoft.com/azure/azure-resource-manager/management/lock-resources) 放置在具有自訂 DNS 專案的任何資源上。 刪除鎖定可作為指標，在取消布建資源之前，必須先移除對應。 這類量值僅適用于結合內部教育計畫時。
+    - 將 [刪除鎖定](../../azure-resource-manager/management/lock-resources.md) 放置在具有自訂 DNS 專案的任何資源上。 刪除鎖定可作為指標，在取消布建資源之前，必須先移除對應。 這類量值僅適用于結合內部教育計畫時。
 
 - **建立探索的程式：**
 
     - 定期檢查您的 DNS 記錄，以確保您的子域都已對應至 Azure 資源：
 
-        - 存在-查詢指向 Azure 子域（例如 *. azurewebsites.net 或 *. cloudapp.azure.com）之資源的 DNS 區域， (查看 [此參考清單](azure-domains.md)) 。
+        - 存在-查詢指向 Azure 子域（例如 *. azurewebsites.net 或 *. cloudapp.azure.com）之資源的 DNS 區域， (查看) [的 azure 網域參考清單](azure-domains.md) 。
         - 您會擁有-確認您擁有 DNS 子域設為目標的所有資源。
 
     - 維護 Azure 完整功能變數名稱的服務類別目錄， (FQDN) 端點和應用程式擁有者。 若要建立您的服務類別目錄，請執行下列 Azure Resource Graph 查詢腳本。 此腳本會投射您有權存取之資源的 FQDN 端點資訊，並將其輸出于 CSV 檔案中。 如果您可以存取租使用者的所有訂用帳戶，腳本會考慮所有這些訂用帳戶，如下列範例腳本所示。 若要將結果限制為一組特定的訂用帳戶，請編輯腳本，如下所示。
@@ -200,8 +202,8 @@ Azure DNS 的 [別名記錄](https://docs.microsoft.com/azure/dns/dns-alias#scen
 
 若要深入瞭解您可以用來防禦子域接管的相關服務和 Azure 功能，請參閱下列頁面。
 
-- [Azure DNS 支援使用自訂網域的別名記錄](https://docs.microsoft.com/azure/dns/dns-alias#prevent-dangling-dns-records)
+- [防止使用 Azure DNS 的無關聯 DNS 記錄](../../dns/dns-alias.md#prevent-dangling-dns-records)
 
-- [在 Azure App Service 中新增自訂網域時，請使用網域驗證識別碼](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-domain#get-domain-verification-id) 
+- [在 Azure App Service 中新增自訂網域時，請使用網域驗證識別碼](../../app-service/app-service-web-tutorial-custom-domain.md#get-a-domain-verification-id)
 
-- [快速入門：使用 Azure PowerShell 執行您的第一個 Resource Graph 查詢](https://docs.microsoft.com/azure/governance/resource-graph/first-query-powershell)
+- [快速入門：使用 Azure PowerShell 執行您的第一個 Resource Graph 查詢](../../governance/resource-graph/first-query-powershell.md)

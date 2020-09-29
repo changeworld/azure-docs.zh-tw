@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 05/26/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: e26f2ed498b8bfcf6b1518ea34815efb75a8eabe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 939d78fb75dc69af91cbc920fadce69945a24e39
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392449"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447728"
 ---
 # <a name="add-azure-role-assignments-using-azure-resource-manager-templates"></a>使用 Azure Resource Manager 範本新增 Azure 角色指派
 
@@ -68,7 +68,7 @@ objectid=$(az ad sp list --display-name "{name}" --query [].objectId --output ts
 
 在 Azure RBAC 中，若要授與存取權，您可以新增角色指派。
 
-### <a name="resource-group-scope-without-parameters"></a>資源群組範圍（不含參數）
+### <a name="resource-group-scope-without-parameters"></a>資源群組範圍 (沒有參數) 
 
 下列範本顯示新增角色指派的基本方式。 某些值是在範本內指定。 下列範本會示範：
 
@@ -365,7 +365,7 @@ az group deployment create --resource-group ExampleGroup2 --template-file rbac-t
 
 - [Azure 入口網站](role-assignments-portal.md#remove-a-role-assignment)
 - [Azure PowerShell](role-assignments-powershell.md#remove-a-role-assignment)
-- [Azure CLI](role-assignments-cli.md#remove-a-role-assignment)
+- [Azure CLI](role-assignments-cli.md#remove-role-assignment)
 - [REST API](role-assignments-rest.md#remove-a-role-assignment)
 
 ## <a name="next-steps"></a>後續步驟

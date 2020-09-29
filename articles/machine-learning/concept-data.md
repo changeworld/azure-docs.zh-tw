@@ -11,12 +11,12 @@ author: nibaccam
 ms.author: nibaccam
 ms.date: 08/31/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: ac0b3c151b379096ffb60e049d18b8f6219b1445
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: a36c7076de0c4db64b67f4eba38de4daf4213bca
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91359676"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91446696"
 ---
 # <a name="secure-data-access-in-azure-machine-learning"></a>Azure Machine Learning 中的安全資料存取
 
@@ -67,7 +67,7 @@ Azure 中支援的雲端式儲存體服務可註冊為數據存放區：
 
 ## <a name="datasets"></a>資料集
 
-Azure Machine Learning 資料集是指向儲存體服務中資料的參考。 它們不是 dataBy 建立 Azure Machine Learning 資料集的複本，您可以建立資料來源位置的參考，以及其中繼資料的複本。 
+Azure Machine Learning 資料集不是您的資料複本。 藉由建立資料集，您可以在其儲存體服務中建立資料的參考，以及其中繼資料的複本。 
 
 因為資料集會進行延遲的評估，且資料會保留在現有的位置，所以您
 

@@ -3,12 +3,12 @@ title: 設定 Hyper-v 的 Azure Migrate 設備
 description: 瞭解如何設定 Azure Migrate 設備來評定和遷移 Hyper-v Vm。
 ms.topic: article
 ms.date: 03/23/2020
-ms.openlocfilehash: c53f82268bd1a5d94659a8b749a14fd026f91ce1
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 8841f934ba21fda6cc36b856ea773ed0f53cfe32
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90087145"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448091"
 ---
 # <a name="set-up-an-appliance-for-hyper-v-vms"></a>為 Hyper-v Vm 設定設備
 
@@ -58,7 +58,7 @@ ms.locfileid: "90087145"
 1. 在存放下載檔案的目標電腦上，開啟系統管理員命令視窗。
 2. 執行下列命令以產生 VHD 的雜湊
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - 使用方式範例：```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.vhd SHA256```
+    - 使用方式範例：```C:\>Get-FileHash -Path ./AzureMigrateAppliance_v3.20.09.25.zip -Algorithm SHA256```
 
 
 
@@ -77,8 +77,8 @@ ms.locfileid: "90087145"
 3. 在 [尋找資料夾]**** 中，指定已解壓縮的 VHD 所在的資料夾。 然後按一下 [下一步]  。
 1. 在 [選取虛擬機器] 中，按 [下一步]。
 2. 在 [選擇匯入類型] 中，按一下 [複製虛擬機器 (建立新的唯一識別碼)]。 然後按一下 [下一步]  。
-3. 在 [選擇目的地] 中，保留預設設定。 按 [下一步] 。
-4. 在 [儲存資料夾] 中，保留預設設定。 按 [下一步] 。
+3. 在 [選擇目的地] 中，保留預設設定。 按 [下一步]  。
+4. 在 [儲存資料夾] 中，保留預設設定。 按 [下一步]  。
 5. 在 [選擇網路] 中，指定 VM 會使用的虛擬交換器。 此交換器必須能夠連線到網際網路，以將資料傳送至 Azure。
 6. 在 [摘要] 中檢閱設定。 然後按一下 [ **完成**]。
 7. 在 [Hyper-V 管理員] > [虛擬機器] 中，啟動 VM。
@@ -130,7 +130,7 @@ ms.locfileid: "90087145"
 1. 在設備 VM 上，執行此命令。 HyperVHost1/HyperVHost2 是主機名稱範例。
 
     ```
-    Enable-WSManCredSSP -Role Client -DelegateComputer HyperVHost1.contoso.com HyperVHost2.contoso.com -Force
+    Enable-WSManCredSSP -Role Client -DelegateComputer HyperVHost1.contoso.com, HyperVHost2.contoso.com, HyperVHost1, HyperVHost2 -Force
     ```
 
 2. 或者，也可以在設備上的本機群組原則編輯器中執行此動作：

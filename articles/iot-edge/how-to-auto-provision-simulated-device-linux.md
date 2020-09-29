@@ -8,12 +8,12 @@ ms.date: 6/30/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 9bd597bbff54687af1ba8536dddd6f0d8dfc621e
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 0583852f0be590eb1c6a4b53047f94b3ea0fbaa4
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90531486"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447819"
 ---
 # <a name="create-and-provision-an-iot-edge-device-with-a-tpm-on-linux"></a>在 Linux 上建立和布建具有 TPM 的 IoT Edge 裝置
 
@@ -147,7 +147,7 @@ ms.locfileid: "90531486"
 在 DPS 中建立註冊時，您就有機會宣告**初始裝置對應項狀態**。 在裝置對應項中，您可以根據解決方案中需要的任何計量 (例如區域、環境、位置或裝置類型) 來設定標記，進而將裝置分組。 這些標記會用來建立[自動部署](how-to-deploy-at-scale.md)。
 
 > [!TIP]
-> 在 Azure CLI 中，您可以建立 [註冊](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment) 並使用 **啟用 edge** 的旗標來指定裝置為 IoT Edge 裝置。
+> 在 Azure CLI 中，您可以建立 [註冊](/cli/azure/ext/azure-iot/iot/dps/enrollment) 並使用 **啟用 edge** 的旗標來指定裝置為 IoT Edge 裝置。
 
 1. 在 [Azure 入口網站](https://portal.azure.com)中，流覽至您的 IoT 中樞裝置布建服務實例。
 

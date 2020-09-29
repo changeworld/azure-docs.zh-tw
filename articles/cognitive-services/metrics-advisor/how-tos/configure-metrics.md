@@ -10,12 +10,12 @@ ms.subservice: metrics-advisor
 ms.topic: conceptual
 ms.date: 09/10/2020
 ms.author: aahi
-ms.openlocfilehash: 80e6ffb79aae5ffc0fe1fd8c9d73d97cc3bdde1e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 93fdf2884ca6593cfdb4fb2878ba0dd21246266d
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934043"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91446349"
 ---
 # <a name="how-to-configure-metrics-and-fine-tune-detecting-configuration"></a>如何：設定計量並微調偵測設定
 
@@ -45,7 +45,7 @@ ms.locfileid: "90934043"
 
 還有其他參數（例如 **方向**）和 **有效的異常** ，可用來進一步微調設定。 您也可以合併不同的偵測方法。 
 
-:::image type="content" source="../media/configuration-combination.png" alt-text="設定組合" lightbox="../media/configuration-combination.png":::
+:::image type="content" source="../media/configuration-combination.png" alt-text="選取計量" lightbox="../media/configuration-combination.png":::
 
 ### <a name="tune-the-configuration-for-a-specific-series-or-group"></a>調整特定系列或群組的設定
 
@@ -53,7 +53,7 @@ ms.locfileid: "90934043"
 
 這項設定會套用到數列或特定系列的群組，而非計量層級設定。 設定此群組的條件之後，請加以儲存。
 
-:::image type="content" source="../media/advanced-configuration.png" alt-text="進階組態" lightbox="../media/advanced-configuration.png":::
+:::image type="content" source="../media/advanced-configuration.png" alt-text="選取計量" lightbox="../media/advanced-configuration.png":::
 
 ### <a name="anomaly-detection-methods"></a>異常偵測方法
 
@@ -68,11 +68,11 @@ ms.locfileid: "90934043"
 
 敏感度可能會影響每個點的預期值範圍寬度。 增加時，預期的值範圍將會更緊密，而且會回報更多異常：
 
-:::image type="content" source="../media/metrics/smart-detection-high-sensitivity.png" alt-text="具有高敏感度的智慧型偵測":::
+:::image type="content" source="../media/metrics/smart-detection-high-sensitivity.png" alt-text="選取計量":::
 
 當敏感度關閉時，預期的值範圍將會變寬，而且會回報較少的異常：
 
-:::image type="content" source="../media/metrics/smart-detection-low-sensitivity.png" alt-text="低敏感度的智慧型偵測":::
+:::image type="content" source="../media/metrics/smart-detection-low-sensitivity.png" alt-text="選取計量":::
 
 **變更閾值** 
 
@@ -85,23 +85,23 @@ ms.locfileid: "90934043"
 
 1. 當您針對計量或時間序列設定異常偵測設定時，請選取 [ **變更閾值** ] 作為異常偵測方法。
     
-    :::image type="content" source="../media/metrics/change-threshold.png" alt-text="變更閾值":::
+    :::image type="content" source="../media/metrics/change-threshold.png" alt-text="選取計量":::
 
 2. 根據您的案例，選取 **超出範圍** 或 **範圍參數中** 的。
 
     如果您想要偵測波動，請選取 **[超出範圍**]。 例如，在下列設定中，相較于前一個值，任何變更超過10% 的資料點都會被偵測為極端值。
-    :::image type="content" source="../media/metrics/out-of-the-range.png" alt-text="超出範圍參數":::
+    :::image type="content" source="../media/metrics/out-of-the-range.png" alt-text="選取計量":::
 
     如果您想要偵測資料中的平條線，請選取 **範圍中的**。 例如，在下列設定中，相較于前一項，在0.01% 內變更的任何資料點都會被偵測為極端值。 因為臨界值很小 (0.01% ) ，所以它會在資料中偵測到一般的行。
 
-    :::image type="content" source="../media/metrics/in-the-range.png" alt-text="In 範圍參數":::
+    :::image type="content" source="../media/metrics/in-the-range.png" alt-text="選取計量":::
 
 3. 設定將計為異常的變更百分比，並將使用先前捕獲的資料點進行比較。 這項比較一律會介於目前的資料點和前 N 個資料點之間。
     
     只有當您使用**超出範圍**模式時，**方向**才有效：
     
-    * 將偵測**設定**為只在 (目前的資料點)  (比較資料點) > **+** 臨界值% 時偵測異常。
-    * **向下** 設定偵測，只在 (目前的資料點時偵測異常) - (比較資料點) < **-** 臨界值%。
+    * 當 (目前的資料點時，會將偵測**設定**為只偵測異常狀況)  (比較資料點) > **+** 臨界值百分比。
+    * **向下** 設定偵測只在 (目前的資料點時偵測異常) - (比較資料點) < **-** 臨界值百分比。
  
 **硬性閾值**
 
@@ -117,7 +117,7 @@ ms.locfileid: "90934043"
 
 在每個 [計量詳細資料] 頁面上，按一下 [計量] 下拉式清單旁的 [設定預設 **事件** ] 按鈕。
  
-:::image type="content" source="../media/metrics/preset-event-button.png" alt-text="預設事件按鈕":::
+:::image type="content" source="../media/metrics/preset-event-button.png" alt-text="選取計量":::
 
 在出現的視窗中，根據您的使用量來設定選項。 請確定已選取 [ **啟用假日事件** ] 以使用設定。 
 
@@ -161,7 +161,7 @@ X-無法使用。
 
 迴圈事件會用來減少因迴圈模式的異常情況，但如果有多個資料點未遵循此模式，則會報告異常。 如果即使一個資料點未遵循模式，則會使用**Strict 模式**來啟用異常報告。 
 
-:::image type="content" source="../media/metrics/preset-events.png" alt-text="預設事件設定":::
+:::image type="content" source="../media/metrics/preset-events.png" alt-text="選取計量":::
 
 ## <a name="view-recent-incidents"></a>查看最近的事件
 
@@ -174,7 +174,7 @@ X-無法使用。
 如果您想要在每次偵測到異常時收到通知，您可以使用攔截來訂閱度量的警示。 如需詳細資訊，請參閱 [使用攔截設定警示和取得通知](alerts.md) 。
 
 
-## <a name="next-steps"></a>下一步 
+## <a name="next-steps"></a>後續步驟 
 - [使用掛勾來設定警示並取得通知](alerts.md)
 - [使用意見反應來調整異常偵測](anomaly-feedback.md)
 - [診斷事件](diagnose-incident.md)。

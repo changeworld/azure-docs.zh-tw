@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 72ed8fede56385248415caf0438b190d5c191bbc
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 9ff683c7c3214be6ae60b5d00d4cd1c2becc32e2
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89460859"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447082"
 ---
 # <a name="govern-access-for-external-users-in-azure-ad-entitlement-management"></a>在 Azure AD 權利管理中管理外部使用者的存取權
 
@@ -83,7 +83,7 @@ Azure AD 權利管理會利用 [Azure AD 的企業對企業 (B2B) ](../external-
 
 - 允許來賓邀請其他來賓前往您的目錄，表示來賓邀請可能會在權利管理之外進行。 建議您將 **來賓** 設定為 [ **否** ]，只允許適當控管的邀請。
 - 如果您使用 B2B 允許清單，您必須確定您想要與使用權利管理合作的任何網域都已新增至清單中。 或者，如果您使用 B2B 拒絕清單，則必須確定您要加入的任何網域都未新增至清單中。
-- 如果您為所有已連線組織 (的 **所有使用者** 建立權利管理原則) ，您所擁有的任何 B2B 允許或拒絕清單設定將會優先執行。 因此，如果您使用，請務必將您想要包含在此原則中的網域包含在允許清單中，如果您使用拒絕清單，請將其從拒絕清單中排除。
+- 如果您為所有已連線組織 (的 **所有使用者** 建立權利管理原則，) 的任何新外部使用者，且使用者不屬於您目錄中的已連線組織，則會在要求套件時自動建立已連線的組織。 您所擁有的任何 B2B 允許或拒絕清單設定將會優先執行。 因此，如果您使用，請務必將您想要包含在此原則中的網域包含在允許清單中，如果您使用拒絕清單，請將其從拒絕清單中排除。
 - 如果您想要建立包含所有 **使用者** (所有已連線組織的權利管理原則 +) 的任何新外部使用者，您必須先針對您的目錄啟用電子郵件單次密碼驗證。 如需詳細資訊，請參閱 [電子郵件單次密碼驗證 (預覽) ](../external-identities/one-time-passcode.md#opting-in-to-the-preview)。
 - 如需有關 Azure AD B2B 外部共同作業設定的詳細資訊，請參閱 [啟用 b2b 外部共同作業及管理可邀請來賓的人員](../external-identities/delegate-invitations.md)。
 

@@ -6,25 +6,25 @@ ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 932d138a4b594aa51b73c365cc3e753f49f886f6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1bf204cb1eddb86daee604f791601bbf44884d50
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91328959"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91460062"
 ---
 # <a name="azure-cache-for-redis-with-azure-private-link-public-preview"></a>Azure Cache for Redis 與 Azure Private Link (公開預覽) 
 在本文中，您將瞭解如何使用 Azure 入口網站來建立虛擬網路和具有私人端點的 Azure Cache for Redis 實例。 您也將瞭解如何將私人端點新增至現有的 Azure Cache for Redis 實例。
 
 Azure 私人端點是一種網路介面，可讓您以私人且安全的方式連接到 Azure Cache for Redis，Azure Private Link。 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 * Azure 訂用帳戶- [免費建立一個](https://azure.microsoft.com/free/)訂用帳戶
 
 > [!NOTE]
 > 這項功能目前處於有限區域的公開預覽狀態。 如果您沒有建立私人端點的選項，請 [洽詢我們](mailto:azurecache@microsoft.com)。 若要使用私人端點，您的 Azure Cache for Redis 實例必須在2020年7月28日之後建立。
 >
-> 目前有公開預覽存取權的區域：美國中西部、美國中北部、美國西部、美國東部2、挪威東部、歐洲北部、東亞、日本東部和印度中部。
+> 目前有公開預覽存取權的區域：美國中西部、美國中北部、美國西部、美國西部2、美國東部、美國東部2、挪威東部、挪威西部、歐洲北部、歐洲西部、東亞、日本東部、瑞士北部、印度中部、阿拉伯聯合大公國中部、韓國中部、英國南部、南非北部、法國南部、法國中部、加拿大中部、德國北部、澳大利亞中部、印度西部、澳大利亞東部和巴西南部。
 >
 
 ## <a name="create-a-private-endpoint-with-a-new-azure-cache-for-redis-instance"></a>使用新的 Azure Cache for Redis 實例來建立私人端點 
@@ -43,7 +43,7 @@ Azure 私人端點是一種網路介面，可讓您以私人且安全的方式�
 
 4. 在 [建立虛擬網路]  中，在 [基本]  索引標籤中輸入或選取這項資訊：
 
-   | 設定      | 建議的值  | 說明 |
+   | 設定      | 建議的值  | 描述 |
    | ------------ |  ------- | -------------------------------------------------- |
    | **訂用帳戶** | 下拉並選取您的訂用帳戶。 | 用來建立此虛擬網路的訂用帳戶。 | 
    | **資源群組** | 下拉並選取資源群組，或選取 [新建]  並輸入新的資源群組名稱。 | 要在其中建立虛擬網路和其他資源的資源組名。 將所有的應用程式資源放在一個資源群組中，您將可輕鬆地一併管理或刪除這些資源。 | 
@@ -71,7 +71,7 @@ Azure 私人端點是一種網路介面，可讓您以私人且安全的方式�
    
 1. 在 [新增]  頁面上選取 [資料庫]  ，然後選取 [Azure Cache for Redis]  。
 
-    :::image type="content" source="media/cache-private-link/2-select-cache.png" alt-text="選取 Azure Cache for Redis。":::
+    :::image type="content" source="media/cache-private-link/2-select-cache.png" alt-text="選取 [建立資源]。":::
    
 1. 在 [新的 Redis 快取]  頁面上，設定新快取的設定。
    
@@ -89,7 +89,7 @@ Azure 私人端點是一種網路介面，可讓您以私人且安全的方式�
 
 1. 按一下 [ **新增** ] 按鈕以建立私人端點。
 
-    :::image type="content" source="media/cache-private-link/3-add-private-endpoint.png" alt-text="在 [網路功能] 中，新增私人端點。":::
+    :::image type="content" source="media/cache-private-link/3-add-private-endpoint.png" alt-text="選取 [建立資源]。":::
 
 1. 在 [ **建立私人端點** ] 頁面上，使用您在上一節中建立的虛擬網路和子網來設定私人端點的設定，然後選取 **[確定]**。 
 
@@ -126,7 +126,7 @@ Azure 私人端點是一種網路介面，可讓您以私人且安全的方式�
 
 4. 在 [建立虛擬網路]  中，在 [基本]  索引標籤中輸入或選取這項資訊：
 
-   | 設定      | 建議的值  | 說明 |
+   | 設定      | 建議的值  | 描述 |
    | ------------ |  ------- | -------------------------------------------------- |
    | **訂用帳戶** | 下拉並選取您的訂用帳戶。 | 用來建立此虛擬網路的訂用帳戶。 | 
    | **資源群組** | 下拉並選取資源群組，或選取 [新建]  並輸入新的資源群組名稱。 | 要在其中建立虛擬網路和其他資源的資源組名。 將所有的應用程式資源放在一個資源群組中，您將可輕鬆地一併管理或刪除這些資源。 | 
@@ -153,7 +153,7 @@ Azure 私人端點是一種網路介面，可讓您以私人且安全的方式�
 
 1. 在 Azure 入口網站中，搜尋 **Azure Cache for Redis** ，然後按 enter 鍵或從搜尋建議中選取。
 
-    :::image type="content" source="media/cache-private-link/4-search-for-cache.png" alt-text="搜尋 Azure Cache for Redis。":::
+    :::image type="content" source="media/cache-private-link/4-search-for-cache.png" alt-text="選取 [建立資源]。":::
 
 2. 選取您要新增私人端點的快取實例。
 
@@ -161,11 +161,11 @@ Azure 私人端點是一種網路介面，可讓您以私人且安全的方式�
 
 4. 按一下 [ **私人端點** ] 按鈕以建立私人端點。
 
-    :::image type="content" source="media/cache-private-link/5-add-private-endpoint.png" alt-text="新增私人端點。":::
+    :::image type="content" source="media/cache-private-link/5-add-private-endpoint.png" alt-text="選取 [建立資源]。":::
 
 5. 在 [ **建立私人端點] 頁面**上，設定私人端點的設定。
 
-   | 設定      | 建議的值  | 說明 |
+   | 設定      | 建議的值  | 描述 |
    | ------------ |  ------- | -------------------------------------------------- |
    | **訂用帳戶** | 下拉並選取您的訂用帳戶。 | 用來建立此私人端點的訂用帳戶。 | 
    | **資源群組** | 下拉並選取資源群組，或選取 [新建]  並輸入新的資源群組名稱。 | 要在其中建立私人端點和其他資源的資源組名。 將所有的應用程式資源放在一個資源群組中，您將可輕鬆地一併管理或刪除這些資源。 | 

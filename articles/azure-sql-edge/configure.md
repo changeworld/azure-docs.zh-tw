@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: b2c52457972d94b2e999c137d19d3a434ff17a7d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 6284e85d8c4e9ad9f9896081f04c6b7669b8e1c0
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90888410"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91446956"
 ---
 # <a name="configure-azure-sql-edge"></a>設定 Azure SQL Edge
 
@@ -33,7 +33,8 @@ Azure SQL Edge 會公開數個不同的環境變數，其可用於設定 SQL Edg
 已將下列新的環境變數新增至 Azure SQL Edge。 
 
 | 環境變數 | 描述 | 值 |     
-|-----|-----| ---------- |   
+|-----|-----| ---------- | 
+| **PlanId** | 指定要在初始化期間使用的 Azure SQL Edge SKU。 只有使用 Azure IoT Edge 部署 Azure SQL Edge 時，才需要此環境變數。 | **asde-開發人員-iot-邊緣**或**asde-premium** ------邊緣 | 
 | **MSSQL_TELEMETRY_ENABLED** | 啟用或停用使用方式和診斷資料收集。 | TRUE 或 FALSE |  
 | **MSSQL_TELEMETRY_DIR** | 設定使用方式和診斷資料收集審核檔案的目標目錄。 | SQL Edge 容器內的資料夾位置。 您可以使用掛接點或資料磁片區，將此資料夾對應至主機磁片區。 | 
 | **MSSQL_PACKAGE** | 指定要部署的 dacpac 或 bacpac 封裝的位置。 | 包含 dacpac 或 bacpac 封裝的資料夾、檔案或 SAS URL。 如需詳細資訊，請參閱 [在 SQL Edge 中部署 SQL DATABASE DACPAC 和 BACPAC 套件](deploy-dacpac.md)。 |
@@ -229,7 +230,7 @@ docker volume ls
 > 如果您刪除資料磁片區容器，容器中的任何 Azure SQL Edge 資料都會 *永久* 刪除。
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [連線到 Azure SQL Edge](connect.md)
 - [使用 SQL Edge 建立端對端 IoT 解決方案](tutorial-deploy-azure-resources.md)

@@ -6,12 +6,13 @@ ms.topic: troubleshooting
 author: markjbrown
 ms.author: mjbrown
 ms.date: 09/17/2020
-ms.openlocfilehash: 49c03b506441c93be57b24505b09524d72c2c8fb
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.custom: contperfq1
+ms.openlocfilehash: af9122aaa0233fe5248f31ffe805e01a98831eae
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90994566"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447425"
 ---
 # <a name="troubleshoot-issues-when-using-the-azure-cosmos-emulator"></a>針對使用 Azure Cosmos 模擬器時的問題進行疑難排解
 
@@ -79,7 +80,7 @@ Azure Cosmos 模擬器提供一個模擬 Azure Cosmos DB 服務的本機環境�
 
 1. 在 [Azure 入口網站](https://portal.azure.com)中開啟支援票證，並納入 .etl 檔案與重現步驟。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 在本文中，您已瞭解如何使用本機模擬器來偵測問題。 您現在可以繼續進行下一篇文章：
 

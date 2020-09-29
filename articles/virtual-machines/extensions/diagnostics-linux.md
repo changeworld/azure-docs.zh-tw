@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: akjosh
-ms.openlocfilehash: 2ce2b7dab3e9eb4c9635ce4abc2933fd954844d5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a01f5d2d000ef6e177000828500ef2ab0e26c4ca
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91325998"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448181"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>使用 Linux 診斷擴充功能監視計量與記錄
 
@@ -219,7 +219,7 @@ sinksConfig | (選擇性) 可將計量與事件傳遞至的替代目的地詳細
 1. 依前述設定適當的區段
 1. 按一下 [產生 SAS] 按鈕。
 
-![image](./media/diagnostics-linux/make_sas.png)
+![螢幕擷取畫面顯示 [共用存取簽章] 頁面，其中包含 [產生 S]。](./media/diagnostics-linux/make_sas.png)
 
 將產生的 SAS 複製到 [storageAccountSasToken] 欄位；移除前置問號 ("?")。
 
@@ -777,7 +777,7 @@ Set-AzVMExtension -ResourceGroupName <resource_group_name> -VMName <vm_name> -Lo
 
 使用 Azure 入口網站檢視效能資料或集合警示：
 
-![image](./media/diagnostics-linux/graph_metrics.png)
+![螢幕擷取畫面顯示選取的計量上已使用的磁碟空間和產生的圖表的 Azure 入口網站。](./media/diagnostics-linux/graph_metrics.png)
 
 `performanceCounters` 資料一律儲存在 Azure 儲存體資料表中。 Azure 儲存體 API 適用於許多語言與平台。
 
@@ -786,7 +786,7 @@ Set-AzVMExtension -ResourceGroupName <resource_group_name> -VMName <vm_name> -Lo
 此外，您可以使用這些 UI 工具存取 Azure 儲存體中的資料：
 
 * Visual Studio 伺服器總管。
-* [Microsoft Azure 儲存體總管](https://azurestorageexplorer.codeplex.com/ "Azure 儲存體總管")。
+* [螢幕擷取畫面顯示 Azure 儲存體總管中的容器和資料表](https://azurestorageexplorer.codeplex.com/ "Azure 儲存體總管")。
 
 Microsoft Azure 儲存體總管工作階段的這個快照顯示從測試 VM 上正確設定的 LAD 3.0 擴充功能產生的 Azure 儲存體資料表及容器。 影像不完全符合[範例 LAD 3.0 組態](#an-example-lad-30-configuration)。
 

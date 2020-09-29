@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/03/2020
+ms.date: 09/28/2020
 ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ff942cdad74c3b8b71a8f1658f13faae021b983
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: f9bcc356835fcfc080bd381043552d6e8868cc7f
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89567447"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91446622"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory 的新增功能？
 
@@ -37,6 +37,169 @@ Azure AD 會持續不斷進行改進。 為了讓您隨時掌握最新的開發�
 
 此頁面會每月更新，因此請定期瀏覽。 如果您要尋找早于六個月的專案，您可以在封存中找到 [Azure Active Directory 的新功能](whats-new-archive.md)。
 
+---
+
+## <a name="september-2020"></a>2020 年 9 月
+
+### <a name="new-provisioning-connectors-in-the-azure-ad-application-gallery---september-2020"></a>Azure AD 應用程式資源庫中的新布建連接器-2020 年9月
+
+**類型：** 新功能  
+**服務類別：** 應用程式佈建  
+**產品功能：** 協力廠商整合
+ 
+您現在可以為這些新整合的應用程式，自動建立、更新和刪除使用者帳戶：
+
+- [Coda](../saas-apps/coda-provisioning-tutorial.md)
+- [Cofense Recipient Sync](../saas-apps/cofense-provision-tutorial.md)
+- [InVision](../saas-apps/invision-provisioning-tutorial.md)
+- [myday](../saas-apps/myday-provision-tutorial.md)
+- [SAP Analytics Cloud](../saas-apps/sap-analytics-cloud-provisioning-tutorial.md)
+- [Webroot 安全性意識](../saas-apps/webroot-security-awareness-training-provisioning-tutorial.md)
+
+如需如何使用自動化使用者帳戶佈建來加強組織安全性的詳細資訊，請參閱[使用 Azure AD 自動將使用者佈建至 SaaS 應用程式](../app-provisioning/user-provisioning.md)。
+ 
+---
+
+### <a name="audited-bitlocker-recovery-in-azure-ad---public-preview"></a>Azure AD 中的已審核 BitLocker 修復-公開預覽
+
+**類型：** 新功能  
+**服務類別：** 裝置存取管理  
+**產品功能：** 裝置生命週期管理
+ 
+當 IT 系統管理員或使用者讀取 () s 的 BitLocker 修復金鑰時，Azure Active Directory 現在會產生審核記錄，以捕獲存取修復金鑰的人員。 相同的審核會提供與 BitLocker 金鑰相關聯之裝置的詳細資料。
+
+終端使用者可以透過 [我的帳戶存取其修復金鑰](../user-help/my-account-portal-devices-page.md#view-a-bitlocker-key)。 IT 系統管理員可以透過 [Beta 版中的 BitLocker 修復金鑰 API](https://docs.microsoft.com/graph/api/resources/bitlockerrecoverykey?view=graph-rest-beta,) 或透過 Azure AD 入口網站來存取修復金鑰。 若要深入瞭解，請參閱 [在 Azure AD 入口網站中查看或複製 BitLocker 金鑰](../devices/device-management-azure-portal.md#view-or-copy-bitlocker-keys)。
+
+---
+
+### <a name="teams-devices-administrator-built-in-role"></a>團隊裝置系統管理員內建角色
+
+**類型：** 新功能  
+**服務類別：** Rbac  
+**產品功能：** 存取控制
+ 
+具有 [小組裝置系統管理員](../users-groups-roles/directory-assign-admin-roles.md#teams-devices-administrator) 角色的使用者可以從小組系統管理中心管理 [經過團隊認證的裝置](https://www.microsoft.com/microsoft-365/microsoft-teams/across-devices/devices) 。 
+
+此角色可讓使用者透過搜尋和篩選裝置的能力，一眼就能查看所有裝置。 使用者也可以檢查每個裝置的詳細資料，包括登入帳戶和裝置的製作和型號。 使用者可以變更裝置上的設定，並更新軟體版本。 此角色不會授與檢查小組活動和呼叫裝置品質的許可權。
+ 
+---
+
+### <a name="advanced-query-capabilities-for-directory-objects"></a>適用于目錄物件的 Advanced query 功能
+
+**類型：** 新功能  
+**服務類別：** MS 圖形  
+**產品功能：** 開發人員體驗
+ 
+針對 Azure AD Api 中的目錄物件引進的所有新查詢功能，現在已可在 v1.0 端點和生產環境就緒中使用。 開發人員可以使用標準 OData 運算子來計算、搜尋、篩選和排序目錄物件以及相關的連結。
+
+若要深入瞭解，請參閱 [此處](https://aka.ms/BlogPostMezzoGA)的檔，您也可以使用這 [份簡短問卷](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR_yN8EPoGo5OpR1hgmCp1XxUMENJRkNQTk5RQkpWTE44NEk2U0RIV0VZRy4u)傳送意見反應。
+ 
+---
+
+### <a name="public-preview-continuous-access-evaluation-for-tenants-who-configured-conditional-access-policies"></a>公開預覽：設定條件式存取原則的租使用者的連續存取評估
+
+**類型：** 新功能  
+**服務類別：** 驗證 (登入)  
+**產品功能：** 身分識別安全性 & 保護
+ 
+使用條件式存取原則的 Azure AD 租使用者， (CAE) 的持續存取評估現在可供公開預覽。 使用 CAE 時，會即時評估關鍵安全性事件和原則。 這包括帳戶停用、密碼重設和位置變更。 若要深入瞭解，請參閱 [持續存取評估](../conditional-access/concept-continuous-access-evaluation.md)。
+
+---
+
+### <a name="ask-users-requesting-an-access-package-additional-questions-to-improve-approval-decisions"></a>要求使用者要求存取套件其他問題，以改善核准決策
+
+**類型：** 新功能  
+**服務類別：** 使用者存取管理  
+**產品功能：** 權利管理
+ 
+系統管理員現在可以要求要求存取套件的使用者回答其他問題，而不只是 Azure AD 權利管理的我的存取權入口網站中的業務理由。 使用者的答案接著會向核准者顯示，以協助他們做出更精確的存取核准決策。 若要深入瞭解，請參閱 [ (預覽) 收集其他要求者資訊以進行核准 ](../governance/entitlement-management-access-package-approval-policy.md#collect-additional-requestor-information-for-approval-preview)。
+ 
+---
+
+### <a name="public-preview-enhanced-user-management"></a>公開預覽：增強的使用者管理
+
+**類型：** 新功能  
+**服務類別：** 使用者管理  
+**產品功能：** 使用者管理
+ 
+
+Azure AD 的入口網站已更新，可讓您更輕鬆地在 [所有使用者] 和 [已刪除的使用者] 頁面中尋找使用者。 預覽版中的變更包括： 
+- 更多可見的使用者屬性，包括物件識別碼、目錄同步處理狀態、建立類型和身分識別簽發者。
+- 搜尋現在允許合併搜尋名稱、電子郵件和物件識別碼。
+- 依使用者類型的增強篩選 (成員、來賓和無) 、目錄同步狀態、建立類型、公司名稱和功能變數名稱。
+- 屬性的新排序功能，例如名稱、使用者主體名稱和刪除日期。
+- 新的總使用者計數會以任何搜尋或篩選進行更新。
+
+如需詳細資訊，請參閱 [Azure Active Directory 中的使用者管理增強功能 (預覽) ](../users-groups-roles/users-search-enhanced.md)。
+
+---
+
+### <a name="new-notes-field-for-enterprise-applications"></a>企業應用程式的新 notes 欄位
+
+**類型：** 新功能  
+**服務類別：** 企業應用程式 **產品功能：** SSO
+
+您可以在企業應用程式中新增免費的文字筆記。 您可以新增任何可協助您在企業應用程式下管理應用程式的相關資訊。 如需詳細資訊，請參閱 [快速入門：設定 Azure Active Directory (Azure AD) 租使用者中的應用程式屬性](../manage-apps/add-application-portal-configure.md)。 
+
+---
+
+### <a name="new-federated-apps-available-in-azure-ad-application-gallery---september-2020"></a>Azure AD 應用程式庫中可用的新同盟應用程式-2020 年9月
+
+**類型：** 新功能  
+**服務類別：** 企業應用程式  
+**產品功能：** 協力廠商整合
+
+在2020年9月，我們已在具有同盟支援的應用程式庫中新增下列34個新應用程式：
+
+[VMware 範圍-統一存取閘道]()、 [脈衝安全電腦](../saas-apps/vmware-horizon-unified-access-gateway-tutorial.md)、 [Inventory360](../saas-apps/pulse-secure-pcs-tutorial.md)、 [Frontitude](https://services.enteksystems.de/sso/microsoft/signup)、 [BookWidgets](https://www.bookwidgets.com/sso/office365)、 [ZVD_SERVER](https://zaas.zenmutech.com/user/signin)、 [HashData for Business](https://hashdata.app/login.xhtml)、 [SecureLogin](https://securelogin.securelogin.nu/sso/azure/login)、 [CyberSolutions MAILBASEΣ/Cms](../saas-apps/cybersolutions-mailbase-tutorial.md)、 [CyberSolutions CYBERMAILΣ](../saas-apps/cybersolutions-cybermail-tutorial.md)、 [LimbleCMMS](https://auth.limblecmms.com/)、 [Glint inc.](../saas-apps/glint-inc-tutorial.md)、 [zeroheight](../saas-apps/zeroheight-tutorial.md)、 [性別適用性](https://app.genderfitness.com/)、 [Coeo 入口網站](https://my.coeo.com/)、 [Grammarly](../saas-apps/grammarly-tutorial.md)、 [Fivetran](../saas-apps/fivetran-tutorial.md)、 [Kumolus](../saas-apps/kumolus-tutorial.md)、 [RSA Archer Suite](../saas-apps/rsa-archer-suite-tutorial.md)、 [TeamzSkill](../saas-apps/teamzskill-tutorial.md)、 [raumfürraum](../saas-apps/raumfurraum-tutorial.md)、 [Saviynt](../saas-apps/saviynt-tutorial.md)、 [BIZMERLINHR](https://marketplace.bizmerlin.net/bmone/signup)、行動 [保險箱](../saas-apps/mobile-locker-tutorial.md)、 [Zengine](../saas-apps/zengine-tutorial.md)、 [CloudCADI](https://app.cloudcadi.com/login)、Simfoni [Analytics](https://simfonianalytics.com/accounts/microsoft/login/)、 [Priva Identity & Access Management](https://my.priva.com/)、 [Nitro Pro](https://www.gonitro.com/nps/product-details/downloads)、 [Eventfinity](../saas-apps/eventfinity-tutorial.md)、 [Fexa](../saas-apps/fexa-tutorial.md)、 [安全簽署企業版入口網站](https://www.securedsigning.com/aad/Auth/ExternalLogin/AdminPortal)、 [安全簽署企業版入口網站 AAD 設定](https://www.securedsigning.com/aad/Auth/ExternalLogin/AdminPortal)、 [Wistec Online](https://wisteconline.com/auth/oidc)、 [Oracle PeopleSoft-由 F5 BIG IP APM 保護](../saas-apps/oracle-peoplesoft-protected-by-f5-big-ip-apm-tutorial.md)
+
+您也可以從這裡找到所有應用程式的檔： https://aka.ms/AppsTutorial 。
+
+若要在 Azure AD 應用程式資源庫中列出您的應用程式，請閱讀此處的詳細資訊： https://aka.ms/AzureADAppRequest 。
+
+---
+
+### <a name="new-delegation-role-in-azure-ad-entitlement-management-access-package-assignment-manager"></a>Azure AD 權利管理中的新委派角色：存取套件指派管理員
+
+**類型：** 新功能  
+**服務類別：** 使用者存取管理  
+**產品功能：** 權利管理
+ 
+Azure AD 權利管理中新增了新的「存取套件指派管理員」角色，以提供更細微的許可權來管理指派。 您現在可以將工作委派給此角色中的使用者，該使用者可以將存取套件的指派管理委派給商務擁有者。 不過，存取套件指派管理員無法改變系統管理員所設定的存取套件原則或其他屬性。 
+
+有了這個新的角色，您就可以從委派管理指派和維護所有其他存取套件設定之系統管理控制所需的最低許可權獲益。 若要深入瞭解，請參閱 [權利管理角色](../governance/entitlement-management-delegate.md#entitlement-management-roles)。
+ 
+---
+
+### <a name="changes-to-privileged-identity-managements-onboarding-flow"></a>Privileged Identity Management 上架流程的變更
+
+**類型：** 已變更的功能  
+**服務類別：** Privileged Identity Management  
+**產品功能：** Privileged Identity Management
+ 
+先前，上線至 Privileged Identity Management (PIM) 要求使用者同意，並在 PIM 的分頁中加入 Azure MFA 中包含註冊的上架流程。 在最近將 PIM 體驗整合到 Azure AD 角色和系統管理員] 分頁中，我們將會移除此體驗。 任何具有有效 P2 授權的租使用者都將自動上線至 PIM。
+
+上架至 PIM 沒有任何對您租使用者的直接負面影響。 您可以預期下列變更：
+- 當您在 PIM 或 Azure AD 角色和系統管理員] 分頁中進行指派時，其他指派選項，例如 [作用中] 和 [符合資格的開始和結束時間]。 
+- 其他範圍機制（例如系統管理單位和自訂角色）直接引進指派體驗。 
+- 如果您是全域管理員或特殊許可權角色管理員，您可以開始取得一些額外的電子郵件，例如 PIM 的每週摘要。 
+- 您也可能會在與角色指派相關的 audit 記錄檔中看到 ms pim 服務主體。 預期的變更不會影響您的一般工作流程。
+
+ 如需詳細資訊，請參閱 [開始使用 Privileged Identity Management](../privileged-identity-management/pim-getting-started.md)。
+
+---
+
+### <a name="azure-ad-entitlement-management-the-select-pane-of-access-package-resources-now-shows-by-default-the-resources-currently-in-the-selected-catalog"></a>Azure AD 權利管理： [存取套件資源] 的 [選取] 窗格現在預設會顯示目前在所選目錄中的資源
+
+**類型：** 已變更的功能  
+**服務類別：** 使用者存取管理  
+**產品功能：** 權利管理
+ 
+
+在存取套件建立流程的 [資源角色] 索引標籤下，[選取] 窗格的行為會變更。 目前，預設行為是顯示使用者所擁有的所有資源，以及新增至所選目錄的資源。 
+
+此體驗將會變更為只顯示目前在目錄中新增的資源，讓使用者可以輕鬆地從目錄中選取資源。 此更新將有助於探索要新增至存取套件的資源，並降低不慎新增不屬於目錄的使用者所擁有之資源的風險。 若要深入瞭解，請參閱 [在 Azure AD 權利管理中建立新的存取套件](../governance/entitlement-management-access-package-create.md#resource-roles)。
+ 
 ---
 
 ## <a name="august-2020"></a>2020 年 8 月 
@@ -147,7 +310,7 @@ Azure AD Domain Services 中資源樹系的功能現已正式推出。 您現在
 **服務類別：** 驗證 (登入)  
 **產品功能：** 終端使用者體驗
  
-Azure AD 我的登入是一項新功能，可讓企業使用者檢查其登入歷程記錄，以檢查是否有任何不尋常的活動。 此外，這項功能可讓使用者在可疑活動上報告「這不是我」或「這是我」。 若要深入瞭解如何使用這項功能，請參閱 [從 [我的登入] 頁面查看並搜尋最近的登入活動](../user-help/my-account-portal-sign-ins-page.md#confirm-unusual-activity)。
+Azure AD 我的登入是一項新功能，可讓企業使用者檢查其登入歷程記錄，以檢查是否有任何不尋常的活動。 此外，這項功能可讓終端使用者在可疑活動上報告「這不是我」或「這是我」。 若要深入瞭解如何使用這項功能，請參閱 [從 [我的登入] 頁面查看並搜尋最近的登入活動](../user-help/my-account-portal-sign-ins-page.md#confirm-unusual-activity)。
  
 ---
 
@@ -279,7 +442,7 @@ Azure AD 布建服務會利用 SCIM 標準來與應用程式整合。 我們的 
 **服務類別：** 報告  
 **產品功能：** 監視和報告
  
-Windows Hello 企業版可讓終端使用者使用手勢登入 Windows 電腦 (例如 PIN 或生物識別) 。 Azure AD 系統管理員可能會想要區分 Windows Hello 企業版從其他 Windows 登入的登入，作為組織無密碼驗證的旅程。 
+Windows Hello 企業版可讓終端使用者使用手勢登入 Windows 電腦 (例如 PIN 或生物特徵辨識) 。 Azure AD 系統管理員可能會想要區分 Windows Hello 企業版從其他 Windows 登入的登入，作為組織無密碼驗證的旅程。 
 
 系統管理員現在可以在 Azure 入口網站的 Azure AD 登入] 分頁中，檢查 Windows 登入事件的 [驗證詳細資料] 索引標籤，以查看 Windows 驗證是否使用 Windows Hello 企業版。 Windows Hello 企業版驗證會在 [驗證方法] 欄位中包含 "WindowsHelloForBusiness"。 如需有關解讀登入記錄的詳細資訊，請參閱 [登入記錄檔](../reports-monitoring/concept-sign-ins.md)。
  
@@ -809,7 +972,7 @@ Microsoft Graph Directory 物件 Api、啟用計數、搜尋、篩選和排序�
 **服務類別：** 其他  
 **產品功能：** 開發人員體驗
  
-發行者驗證 (預覽版) 可協助系統管理員和終端使用者瞭解應用程式開發人員與 Microsoft 身分識別平臺整合的真實性。 如需詳細資訊，請參閱 [發行者驗證 (預覽) ](../develop/publisher-verification-overview.md)。
+發行者驗證 (預覽) 可協助系統管理員和終端使用者了解與 Microsoft 身分識別平台整合的應用程式開發人員是否真實。 如需詳細資訊，請參閱 [發行者驗證 (預覽) ](../develop/publisher-verification-overview.md)。
  
 ---
 
@@ -1203,158 +1366,5 @@ Azure Active Directory (Azure AD) 現在提供驗證動態群組規則的方法�
 - 系統管理角色需要 MFA
 
 這些新的改進動作需要為您的使用者或系統管理員註冊多因素驗證 (MFA) 在您的目錄中，並建立符合您組織需求的正確原則組。 主要的目標是要有彈性，同時確保所有的使用者和系統管理員都可以使用多個因素或以風險為基礎的身分識別驗證提示進行驗證。 這樣做的形式可能會有多個原則套用範圍決策，或設定安全性預設值 (從3月) 16 日開始，讓 Microsoft 決定何時要挑戰使用者進行 MFA。 [深入瞭解 Microsoft 安全分數的新功能](/microsoft-365/security/mtp/microsoft-secure-score?view=o365-worldwide#whats-new)。
-
----
-
-## <a name="march-2020"></a>2020 年 3 月
-
-### <a name="unmanaged-azure-active-directory-accounts-in-b2b-update-for-march-2021"></a>2021年3月 B2B 更新中的非受控 Azure Active Directory 帳戶
-
-**類型：** 方案變更  
-**服務類別：** B2B  
-**產品功能：** B2B/B2C
- 
-自**2021 年3月31日起**，Microsoft 將不再支援在 B2B 共同作業案例中建立非受控 Azure Active Directory (Azure AD) 帳戶和租使用者來兌換邀請。 為此，我們建議您選擇以電子郵件傳送單次 [密碼驗證](../external-identities/one-time-passcode.md)。
-
----
-
-### <a name="users-with-the-default-access-role-will-be-in-scope-for-provisioning"></a>具有預設存取角色的使用者將在布建範圍內
-
-**類型：** 方案變更  
-**服務類別：** 應用程式佈建  
-**產品功能：** 身分識別生命週期管理
- 
-在過去，具有預設存取角色的使用者已超出布建的範圍。 我們聽說客戶希望具有此角色的使用者可以在布建範圍內的意見反應。 我們正致力於部署變更，讓所有新的布建設定都能允許布建預設存取角色的使用者。 我們會逐漸變更現有布建設定的行為，以支援使用此角色來布建使用者。 不需要客戶動作。 當這項變更準備就緒之後，我們就會將更新張貼到我們的 [檔](../app-provisioning/application-provisioning-config-problem-no-users-provisioned.md) 。
-
----
-
-### <a name="azure-ad-b2b-collaboration-will-be-available-in-microsoft-azure-operated-by-21vianet-azure-china-21vianet-tenants"></a>Azure AD 的 B2B 共同作業將可在由世紀 (Azure 中國世紀) 租使用者的 Microsoft Azure 運作
-
-**類型：** 方案變更  
-**服務類別：** B2B  
-**產品功能：** B2B/B2C
- 
-Azure AD 的 B2B 共同作業功能將會提供給由世紀 (Azure 中國世紀) 租使用者的 Microsoft Azure 營運，讓 Azure 中國世紀租使用者中的使用者能與其他 Azure 中國世紀租使用者中的使用者順暢地共同作業。 [深入瞭解 AZURE AD B2B 協同](/azure/active-directory/b2b/)作業。
-
----
- 
-### <a name="azure-ad-b2b-collaboration-invitation-email-redesign"></a>Azure AD B2B 共同作業邀請電子郵件重新設計
-
-**類型：** 方案變更  
-**服務類別：** B2B  
-**產品功能：** B2B/B2C
- 
-Azure AD B2B 共同作業邀請服務所傳送的 [電子郵件](../external-identities/invitation-email-elements.md) 邀請使用者加入目錄，將會重新設計，讓邀請資訊和使用者的後續步驟更清楚。
-
----
-
-### <a name="homerealmdiscovery-policy-changes-will-appear-in-the-audit-logs"></a>HomeRealmDiscovery 原則變更將會出現在 audit 記錄檔中
-
-**類型：** 固定  
-**服務類別：** 審計  
-**產品功能：** 監視和報告
- 
-修正了 [HomeRealmDiscovery 原則](../manage-apps/configure-authentication-for-federated-users-portal.md) 的變更未包含在 audit 記錄檔中的錯誤（bug）。 您現在將能夠看到原則的變更時間和方式，以及由誰變更。 
-
----
-
-### <a name="new-federated-apps-available-in-azure-ad-app-gallery---march-2020"></a>Azure AD App 資源庫中可用的新同盟應用程式-2020 年3月
-
-**類型：** 新功能  
-**服務類別：** 企業應用程式  
-**產品功能：** 協力廠商整合
- 
-在2020年3月，我們已將下列具有同盟支援的51新應用程式新增至應用程式庫： 
-
-[Cisco AnyConnect](../saas-apps/cisco-anyconnect.md)， [Zoho 一中國](../saas-apps/zoho-one-china-tutorial.md)， [PlusPlus](https://test.plusplus.app/auth/login/azuread-outlook/)、 [Profit.co SAML APP](../saas-apps/profitco-saml-app-tutorial.md)、 [iPoint Service Provider](../saas-apps/ipoint-service-provider-tutorial.md)、 [contexxt.ai 球體](https://contexxt-sphere.com/login)、 [Invictus](../saas-apps/wisdom-by-invictus-tutorial.md)[的](../saas-apps/logzio-cloud-observability-for-engineers-tutorial.md)[智慧、Logz.io、可檢視性](https://spark-dev.pixelnebula.com/login) [、SpectrumU、](../saas-apps/spectrumu-tutorial.md) [BizzContact SSO](../saas-apps/elqano-sso-tutorial.md) [、Elqano](http://www.signshare.com/)、 [MarketSignShare Learning Suite](../saas-apps/crossknowledge-learning-suite-tutorial.md) [、CrossKnowledge](https://bizzcontact.app/) [Netvision](../saas-apps/netvision-compas-tutorial.md)、Compas [HUB](../saas-apps/fcm-hub-tutorial.md)、[筋 A/S FCM Mobile](https://apps.apple.com/us/app/docia/id529058757)、 [Byggeweb](../saas-apps/golinks-tutorial.md)、 [GoLinks](../saas-apps/datadog-tutorial.md)、Datadog [B2B 使用者入口網站](../saas-apps/zscaler-b2b-user-portal-tutorial.md) [、增益、](../saas-apps/lift-tutorial.md) [Planview Enterprise One](../saas-apps/planview-enterprise-one-tutorial.md)、 [Zscaler](https://www.devfinition.com/) [、WatchTeams、](https://demo.asterapp.io/login)[技能工作流程](../saas-apps/skills-workflow-tutorial.md)、[節點深入](https://admin.nodeinsight.com/AADLogin.aspx)解析、 [IP Platform](../saas-apps/ip-platform-tutorial.md)、 [InVision](../saas-apps/invision-tutorial.md)、 [Pipedrive](../saas-apps/pipedrive-tutorial.md)、[展示研討會](https://app.showcaseworkshop.com/)、 [Greenlight 整合平臺](../saas-apps/greenlight-integration-platform-tutorial.md)、 [Greenlight 相容的存取管理](../saas-apps/greenlight-compliant-access-management-tutorial.md)、 [Grok 學習](../saas-apps/grok-learning-tutorial.md)、 [Miradore Online](https://login.online.miradore.com/)、 [khoros care 護理](../saas-apps/khoros-care-tutorial.md)、 [AskYourTeam](../saas-apps/askyourteam-tutorial.md)、 [TruNarrative](../saas-apps/trunarrative-tutorial.md)、 [Smartwaiver](https://www.smartwaiver.com/m/user/sw_login.php?wms_login)、 [Bizagi Studio （數位程式自動化](../saas-apps/bizagi-studio-for-digital-process-automation-tutorial.md)）、 [insuiteX](https://www.insuite.jp/)、 [sybo](https://www.systexsoftware.com.tw/)、 [Britive](../saas-apps/britive-tutorial.md) [、WhosOffice、](../saas-apps/whosoffice-tutorial.md) [E 天](../saas-apps/e-days-tutorial.md)、 [Kollective SDN](https://portal.kollective.app/login)、 [Witivio](https://app.witivio.com/) [、Playvox、Korn](https://my.playvox.com/login) [Ferry 360](../saas-apps/korn-ferry-360-tutorial.md)、[校園咖啡館](../saas-apps/campus-cafe-tutorial.md)、 [Catchpoint](../saas-apps/catchpoint-tutorial.md)、 [Code42](../saas-apps/code42-tutorial.md)
-
-如需應用程式的詳細資訊，請參閱[與 Azure Active Directory 整合的 SaaS 應用程式](https://aka.ms/appstutorial)。 如需在 Azure AD 應用程式庫中列出應用程式的詳細資訊，請參閱[在 Azure Active Directory 應用程式庫中列出您的應用程式](https://aka.ms/azureadapprequest)。
-
----
-
-### <a name="azure-ad-b2b-collaboration-available-in-azure-government-tenants"></a>Azure Government 租使用者中可用的 Azure AD B2B 共同作業
-
-**類型：** 新功能  
-**服務類別：** B2B  
-**產品功能：** B2B/B2C
- 
-Azure AD 的 B2B 共同作業功能現在可在某些 Azure Government 租使用者之間取得。  若要瞭解您的租使用者是否能夠使用這些功能，請遵循指示 [如何判斷我的 AZURE 美國政府租使用者中是否有可用的 B2B 共同作業？](../external-identities/current-limitations.md#how-can-i-tell-if-b2b-collaboration-is-available-in-my-azure-us-government-tenant)。
-
----
-
-### <a name="azure-monitor-integration-for-azure-logs-is-now-available-in-azure-government"></a>Azure 記錄的 Azure 監視器整合現在可在 Azure Government 中取得
-
-**類型：** 新功能  
-**服務類別：** 報告  
-**產品功能：** 監視和報告
- 
-Azure 監視器與 Azure AD 記錄的整合現在已可在 Azure Government 中取得。 您可以將 Azure AD 記錄 () 至儲存體帳戶、事件中樞和 Log Analytics 的「審核」和「登入」記錄傳送。 請參閱詳細的 [檔](https://aka.ms/aadlogsinamd) ，以及 [用於報告和監視](../reports-monitoring/plan-monitoring-and-reporting.md) Azure AD 案例的部署計畫。
-
----
-
-### <a name="identity-protection-refresh-in-azure-government"></a>Azure Government 中的身分識別保護重新整理
-
-**類型：** 新功能  
-**服務類別：** 身分識別保護  
-**產品功能：** 身分識別安全性 & 保護
-
-我們很高興能分享我們現在已[Azure AD Identity Protection](https://aka.ms/IdentityProtectionDocs)   在[Microsoft Azure Government 入口網站](https://portal.azure.us/)中推出重新整理的 Azure AD Identity Protection 體驗。 如需詳細資訊，請參閱我們的 [公告 blog 文章](https://techcommunity.microsoft.com/t5/public-sector-blog/identity-protection-refresh-in-microsoft-azure-government/ba-p/1223667)。
-
----
-
-### <a name="disaster-recovery-download-and-store-your-provisioning-configuration"></a>嚴重損壞修復：下載並儲存您的布建設定
-
-**類型：** 新功能  
-**服務類別：** 應用程式佈建  
-**產品功能：** 身分識別生命週期管理
- 
-Azure AD 布建服務提供一組豐富的設定功能。 客戶必須能夠儲存其設定，讓他們可以稍後參考，或回復為已知的良好版本。 我們已新增將布建設定下載為 JSON 檔案的功能，並在需要時將其上傳。 [深入了解](../app-provisioning/export-import-provisioning-configuration.md)。
-
----
- 
-### <a name="sspr-self-service-password-reset-now-requires-two-gates-for-admins-in-microsoft-azure-operated-by-21vianet-azure-china-21vianet"></a>SSPR (自助式密碼重設) 現在需要兩個由世紀 Microsoft Azure 營運的系統管理員的閘道 (Azure 中國世紀)  
-
-**類型：** 已變更的功能  
-**服務類別：** 自助式密碼重設  
-**產品功能：** 身分識別安全性 & 保護
- 
-先前在 Microsoft Azure 由世紀 (Azure 中國的世紀) ，使用自助式密碼重設的系統管理員 (SSPR) 重設自己的密碼，只需要一個「閘道」 (挑戰) 證明其身分識別。 在公用和其他國家雲端中，系統管理員通常必須在使用 SSPR 時使用兩個閘道來證明其身分識別。 但由於我們不支援 Azure 中國世紀的 SMS 或通話，因此我們允許系統管理員進行一次閘道密碼重設。
-
-我們正在建立 Azure 中國的世紀和公用雲端之間的 SSPR 功能同位檢查。 接下來，系統管理員必須在使用 SSPR 時使用兩個閘道。 系統將支援 SMS、通話和驗證器代理程式更新和代碼。 [深入了解](../authentication/concept-sspr-policy.md#administrator-reset-policy-differences)。
-
----
-
-### <a name="password-length-is-limited-to-256-characters"></a>密碼長度限制為256個字元
-
-**類型：** 已變更的功能  
-**服務類別：** 驗證 (登入)  
-**產品功能：** 使用者驗證
- 
-為確保 Azure AD 服務的可靠性，使用者密碼現在的長度限制為256個字元。 密碼超過此密碼的使用者將被要求在後續登入時變更其密碼，方法是聯絡其系統管理員或使用自助式密碼重設功能。
-
-這項變更已在2020年3月13日、10AM PST (18:00 UTC) 上啟用，而錯誤為 AADSTS 50052、InvalidPasswordExceedsMaxLength。 如需詳細資訊，請參閱 [重大變更通知](../develop/reference-breaking-changes.md#user-passwords-will-be-restricted-to-256-characters) 。
-
----
-
-### <a name="azure-ad-sign-in-logs-are-now-available-for-all-free-tenants-through-the-azure-portal"></a>所有免費租使用者現在都可以透過 Azure 入口網站 Azure AD 登入記錄
-
-**類型：** 已變更的功能  
-**服務類別：** 報告  
-**產品功能：** 監視和報告
- 
-從現在開始，具有免費租使用者的客戶可以 [從 Azure 入口網站存取 Azure AD 登入記錄](../reports-monitoring/concept-sign-ins.md) ，最多7天。 先前，登入記錄僅適用于具有 Azure Active Directory Premium 授權的客戶。 透過這項變更，所有租使用者都可以透過入口網站存取這些記錄。
-
-> [!NOTE]
-> 客戶仍然需要 (Azure Active Directory Premium P1 或 P2) 的 premium 授權，才能透過 Microsoft Graph API 和 Azure 監視器存取登入記錄。
-
----
-
-### <a name="deprecation-of-directory-wide-groups-option-from-groups-general-settings-on-azure-portal"></a>Azure 入口網站上群組一般設定中的整個目錄群組選項
-
-**類型：** 已被取代  
-**服務類別：** 群組管理  
-**產品功能：** 共同作業
-
-為了提供更有彈性的方式，讓客戶建立最符合其需求的全目錄群組，我們已從 Azure 入口網站中的 [**群組**一般設定] 取代 [**全目錄群組**] 選項，  >  **General**並提供[動態群組檔](../users-groups-roles/groups-dynamic-membership.md)的連結。 我們已改善檔以包含更多指示，讓系統管理員可以建立包含或排除來賓使用者的所有使用者群組。
 
 ---

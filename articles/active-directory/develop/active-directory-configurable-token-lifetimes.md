@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/17/2020
+ms.date: 09/25/2020
 ms.author: ryanwi
-ms.custom: aaddev, identityplatformtop40
+ms.custom: aaddev, identityplatformtop40, content-perf, FY21Q1
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: 2f6ade3a01022bf3bcc4d6b522e45ae98fe29b33
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c5866ddfee049499a4179505e0c1a206b1c68945
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91258403"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447312"
 ---
 # <a name="configurable-token-lifetimes-in-microsoft-identity-platform-preview"></a>Microsoft 身分識別平臺中可設定的權杖存留期 (預覽版) 
 
@@ -46,11 +46,11 @@ ms.locfileid: "91258403"
 
 ### <a name="saml-tokens"></a>SAML 權杖
 
-許多以 web 為基礎的 SAAS 應用程式都會使用 SAML 權杖，並使用 Azure Active Directory 的 SAML2 通訊協定端點來取得這些權杖。 使用 WS-同盟的應用程式也會使用它們。 權杖的預設存留期為1小時。 從應用程式的觀點來看，權杖的有效期間是由權杖中元素的 NotOnOrAfter 值所指定 `<conditions …>` 。 在權杖的有效期間結束之後，用戶端必須起始新的驗證要求，這通常會在沒有互動式登入的情況下滿足，因為單一登入 (SSO) 會話權杖的結果。
+許多 web 架構 SAAS 應用程式都會使用 SAML 權杖，並使用 Azure Active Directory 的 SAML2 通訊協定端點取得。 使用 WS-同盟的應用程式也會使用它們。 權杖的預設存留期為1小時。 從應用程式的觀點來看，權杖的有效期間是由權杖中元素的 NotOnOrAfter 值所指定 `<conditions …>` 。 在權杖的有效期間結束之後，用戶端必須起始新的驗證要求，這通常會在沒有互動式登入的情況下滿足，因為單一登入 (SSO) 會話權杖的結果。
 
 您可以使用中的參數來變更 NotOnOrAfter 的值 `AccessTokenLifetime` `TokenLifetimePolicy` 。 它會設定為原則中所設定的存留期（如果有的話），加上五分鐘的時鐘誤差因數。
 
-請注意，在元素中指定的主旨確認 NotOnOrAfter `<SubjectConfirmationData>` 不會受到權杖存留期設定的影響。 
+在元素中指定的主旨確認 NotOnOrAfter `<SubjectConfirmationData>` 不會受到權杖存留期設定的影響。 
 
 ### <a name="refresh-tokens"></a>重新整理權杖
 
@@ -103,7 +103,7 @@ Microsoft 身分識別平臺會使用兩種 SSO 會話權杖：持續性和非�
 | 重新整理權杖最大閒置時間 (針對機密用戶端簽發) |重新整理權杖 (針對機密用戶端簽發) |90 天 |
 | 重新整理權杖最大壽命 (針對機密用戶端簽發) |重新整理權杖 (針對機密用戶端簽發) |直到撤銷為止 |
 
-* <sup>1</sup> 個沒有足夠撤銷資訊的同盟使用者，包括沒有同步 "LastPasswordChangeTimestamp" 屬性的使用者。 這些使用者只有這個很短的「最大壽命」，因為 AAD 無法確認何時該撤銷繫結至舊認證的權杖 (例如已變更的密碼)，所以必須更頻繁地回頭檢查，以確定使用者和相關聯的權杖仍然有效。 若要改善此體驗，租使用者管理員必須確定它們正在同步 "LastPasswordChangeTimestamp" 屬性 (您可以使用 PowerShell 或透過 AADSync) ，在使用者物件上設定此屬性。
+* <sup>1</sup> 個沒有足夠撤銷資訊的同盟使用者，包括沒有同步 "LastPasswordChangeTimestamp" 屬性的使用者。 這些使用者會獲得這個短暫的最大存留期，因為 Azure Active Directory 無法驗證何時要撤銷系結至舊認證的權杖 (例如已變更) 的密碼，而且必須更頻繁地回來檢查，以確保使用者和相關聯的權杖仍處於良好的地位。 若要改善此體驗，租使用者管理員必須確定它們正在同步 "LastPasswordChangeTimestamp" 屬性 (您可以使用 PowerShell 或透過 AADSync) ，在使用者物件上設定此屬性。
 
 ### <a name="policy-evaluation-and-prioritization"></a>原則評估及優先順序
 您可以建立權杖存留期原則然後將其指派給特定的應用程式、您的組織和服務主體。 多個原則可以套用至特定應用程式。 生效的權杖存留期原則會遵循下列規則：
@@ -209,7 +209,7 @@ Microsoft 身分識別平臺會使用兩種 SSO 會話權杖：持續性和非�
 * 針對呼叫 Web API 的原生應用程式建立原則
 * 管理進階原則
 
-### <a name="prerequisites"></a>Prerequisites
+### <a name="prerequisites"></a>必要條件
 在下列範例中，您建立、更新連結，並刪除應用程式、服務主體和您整體組織的原則。 如果您不熟悉 Azure AD，建議您先瞭解 [如何取得 Azure AD 租](quickstart-create-new-tenant.md) 使用者，然後再繼續進行這些範例。  
 
 若要開始使用，請執行下列步驟：
@@ -382,170 +382,37 @@ Microsoft 身分識別平臺會使用兩種 SSO 會話權杖：持續性和非�
 
 ## <a name="cmdlet-reference"></a>Cmdlet 參考
 
+這些是 [Azure Active Directory PowerShell For Graph Preview 模組](/powershell/module/azuread/?view=azureadps-2.0-preview#service-principals&preserve-view=true&preserve-view=true)中的 Cmdlet。
+
 ### <a name="manage-policies"></a>管理原則
 
 您可以使用下列 Cmdlet 來管理原則。
 
-#### <a name="new-azureadpolicy"></a>New-AzureADPolicy
-
-建立新的原則。
-
-```powershell
-New-AzureADPolicy -Definition <Array of Rules> -DisplayName <Name of Policy> -IsOrganizationDefault <boolean> -Type <Policy Type>
-```
-
-| 參數 | 說明 | 範例 |
-| --- | --- | --- |
-| <code>&#8209;Definition</code> |字串化 JSON 的陣列，包含所有原則的規則。 | `-Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxInactiveTime":"20:00:00"}}')` |
-| <code>&#8209;DisplayName</code> |原則名稱的字串。 |`-DisplayName "MyTokenPolicy"` |
-| <code>&#8209;IsOrganizationDefault</code> |如果為 true，就會將原則設定為組織的預設原則。 如果為 false，則不會執行任何動作。 |`-IsOrganizationDefault $true` |
-| <code>&#8209;Type</code> |原則類型。 針對權杖存留期，請一律使用 "TokenLifetimePolicy"。 | `-Type "TokenLifetimePolicy"` |
-| <code>&#8209;AlternativeIdentifier</code> [選用] |設定原則的替代識別碼。 |`-AlternativeIdentifier "myAltId"` |
-
-</br></br>
-
-#### <a name="get-azureadpolicy"></a>Get-AzureADPolicy
-取得所有 Azure AD 原則或指定的原則。
-
-```powershell
-Get-AzureADPolicy
-```
-
-| 參數 | 說明 | 範例 |
-| --- | --- | --- |
-| <code>&#8209;Id</code> [選用] |您想要之原則的**ObjectId (識別碼) ** 。 |`-Id <ObjectId of Policy>` |
-
-</br></br>
-
-#### <a name="get-azureadpolicyappliedobject"></a>Get-AzureADPolicyAppliedObject
-取得與原則連結的所有應用程式和服務主體。
-
-```powershell
-Get-AzureADPolicyAppliedObject -Id <ObjectId of Policy>
-```
-
-| 參數 | 說明 | 範例 |
-| --- | --- | --- |
-| <code>&#8209;Id</code> |您想要之原則的**ObjectId (識別碼) ** 。 |`-Id <ObjectId of Policy>` |
-
-</br></br>
-
-#### <a name="set-azureadpolicy"></a>Set-AzureADPolicy
-更新現有的原則。
-
-```powershell
-Set-AzureADPolicy -Id <ObjectId of Policy> -DisplayName <string>
-```
-
-| 參數 | 說明 | 範例 |
-| --- | --- | --- |
-| <code>&#8209;Id</code> |您想要之原則的**ObjectId (識別碼) ** 。 |`-Id <ObjectId of Policy>` |
-| <code>&#8209;DisplayName</code> |原則名稱的字串。 |`-DisplayName "MyTokenPolicy"` |
-| <code>&#8209;Definition</code> [選用] |字串化 JSON 的陣列，包含所有原則的規則。 |`-Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxInactiveTime":"20:00:00"}}')` |
-| <code>&#8209;IsOrganizationDefault</code> [選用] |如果為 true，就會將原則設定為組織的預設原則。 如果為 false，則不會執行任何動作。 |`-IsOrganizationDefault $true` |
-| <code>&#8209;Type</code> [選用] |原則類型。 針對權杖存留期，請一律使用 "TokenLifetimePolicy"。 |`-Type "TokenLifetimePolicy"` |
-| <code>&#8209;AlternativeIdentifier</code> [選用] |設定原則的替代識別碼。 |`-AlternativeIdentifier "myAltId"` |
-
-</br></br>
-
-#### <a name="remove-azureadpolicy"></a>Remove-AzureADPolicy
-刪除指定的原則。
-
-```powershell
- Remove-AzureADPolicy -Id <ObjectId of Policy>
-```
-
-| 參數 | 說明 | 範例 |
-| --- | --- | --- |
-| <code>&#8209;Id</code> |您想要之原則的**ObjectId (識別碼) ** 。 | `-Id <ObjectId of Policy>` |
-
-</br></br>
+| Cmdlet | 描述 | 
+| --- | --- |
+| [New-AzureADPolicy](/powershell/module/azuread/new-azureadpolicy?view=azureadps-2.0-preview&preserve-view=true) | 建立新的原則。 |
+| [Get-AzureADPolicy](/powershell/module/azuread/get-azureadpolicy?view=azureadps-2.0-preview&preserve-view=true) | 取得所有 Azure AD 原則或指定的原則。 |
+| [Get-AzureADPolicyAppliedObject](/powershell/module/azuread/get-azureadpolicyappliedobject?view=azureadps-2.0-preview&preserve-view=true) | 取得與原則連結的所有應用程式和服務主體。 |
+| [Set-AzureADPolicy](/powershell/module/azuread/set-azureadpolicy?view=azureadps-2.0-preview&preserve-view=true) | 更新現有的原則。 |
+| [Remove-AzureADPolicy](/powershell/module/azuread/remove-azureadpolicy?view=azureadps-2.0-preview&preserve-view=true) | 刪除指定的原則。 |
 
 ### <a name="application-policies"></a>應用程式原則
 您可以針對應用程式原則使用下列 Cmdlet。</br></br>
 
-#### <a name="add-azureadapplicationpolicy"></a>Add-AzureADApplicationPolicy
-將指定的原則連結至應用程式。
-
-```powershell
-Add-AzureADApplicationPolicy -Id <ObjectId of Application> -RefObjectId <ObjectId of Policy>
-```
-
-| 參數 | 說明 | 範例 |
-| --- | --- | --- |
-| <code>&#8209;Id</code> |應用程式的**ObjectId (識別碼) ** 。 | `-Id <ObjectId of Application>` |
-| <code>&#8209;RefObjectId</code> |原則的 **ObjectId**。 | `-RefObjectId <ObjectId of Policy>` |
-
-</br></br>
-
-#### <a name="get-azureadapplicationpolicy"></a>Get-AzureADApplicationPolicy
-取得指派給應用程式的原則。
-
-```powershell
-Get-AzureADApplicationPolicy -Id <ObjectId of Application>
-```
-
-| 參數 | 說明 | 範例 |
-| --- | --- | --- |
-| <code>&#8209;Id</code> |應用程式的**ObjectId (識別碼) ** 。 | `-Id <ObjectId of Application>` |
-
-</br></br>
-
-#### <a name="remove-azureadapplicationpolicy"></a>Remove-AzureADApplicationPolicy
-從應用程式移除原則。
-
-```powershell
-Remove-AzureADApplicationPolicy -Id <ObjectId of Application> -PolicyId <ObjectId of Policy>
-```
-
-| 參數 | 說明 | 範例 |
-| --- | --- | --- |
-| <code>&#8209;Id</code> |應用程式的**ObjectId (識別碼) ** 。 | `-Id <ObjectId of Application>` |
-| <code>&#8209;PolicyId</code> |原則的 **ObjectId**。 | `-PolicyId <ObjectId of Policy>` |
-
-</br></br>
+| Cmdlet | 描述 | 
+| --- | --- |
+| [Add-AzureADApplicationPolicy](/powershell/module/azuread/add-azureadapplicationpolicy?view=azureadps-2.0-preview&preserve-view=true) | 將指定的原則連結至應用程式。 |
+| [Get-AzureADApplicationPolicy](/powershell/module/azuread/get-azureadapplicationpolicy?view=azureadps-2.0-preview&preserve-view=true) | 取得指派給應用程式的原則。 |
+| [Remove-AzureADApplicationPolicy](/powershell/module/azuread/remove-azureadapplicationpolicy?view=azureadps-2.0-preview&preserve-view=true) | 從應用程式移除原則。 |
 
 ### <a name="service-principal-policies"></a>服務主體原則
 您可以針對服務主體原則使用下列 Cmdlet。
 
-#### <a name="add-azureadserviceprincipalpolicy"></a>Add-AzureADServicePrincipalPolicy
-將指定的原則連結至服務主體。
-
-```powershell
-Add-AzureADServicePrincipalPolicy -Id <ObjectId of ServicePrincipal> -RefObjectId <ObjectId of Policy>
-```
-
-| 參數 | 說明 | 範例 |
-| --- | --- | --- |
-| <code>&#8209;Id</code> |應用程式的**ObjectId (識別碼) ** 。 | `-Id <ObjectId of Application>` |
-| <code>&#8209;RefObjectId</code> |原則的 **ObjectId**。 | `-RefObjectId <ObjectId of Policy>` |
-
-</br></br>
-
-#### <a name="get-azureadserviceprincipalpolicy"></a>Get-AzureADServicePrincipalPolicy
-取得與指定的服務主體連結的任何原則。
-
-```powershell
-Get-AzureADServicePrincipalPolicy -Id <ObjectId of ServicePrincipal>
-```
-
-| 參數 | 說明 | 範例 |
-| --- | --- | --- |
-| <code>&#8209;Id</code> |應用程式的**ObjectId (識別碼) ** 。 | `-Id <ObjectId of Application>` |
-
-</br></br>
-
-#### <a name="remove-azureadserviceprincipalpolicy"></a>Remove-AzureADServicePrincipalPolicy
-從指定的服務主體移除原則。
-
-```powershell
-Remove-AzureADServicePrincipalPolicy -Id <ObjectId of ServicePrincipal>  -PolicyId <ObjectId of Policy>
-```
-
-| 參數 | 說明 | 範例 |
-| --- | --- | --- |
-| <code>&#8209;Id</code> |應用程式的**ObjectId (識別碼) ** 。 | `-Id <ObjectId of Application>` |
-| <code>&#8209;PolicyId</code> |原則的 **ObjectId**。 | `-PolicyId <ObjectId of Policy>` |
+| Cmdlet | 描述 | 
+| --- | --- |
+| [Add-AzureADServicePrincipalPolicy](/powershell/module/azuread/add-azureadserviceprincipalpolicy?view=azureadps-2.0-preview&preserve-view=true) | 將指定的原則連結至服務主體。 |
+| [Get-AzureADServicePrincipalPolicy](/powershell/module/azuread/get-azureadserviceprincipalpolicy?view=azureadps-2.0-preview&preserve-view=true) | 取得與指定的服務主體連結的任何原則。|
+| [Remove-AzureADServicePrincipalPolicy](/powershell/module/azuread/remove-azureadserviceprincipalpolicy?view=azureadps-2.0-preview&preserve-view=true) | 從指定的服務主體移除原則。|
 
 ## <a name="license-requirements"></a>授權需求
 

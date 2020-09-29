@@ -7,17 +7,17 @@ ms.service: sql-db-mi
 ms.subservice: data-movement
 ms.custom: sqldbrb=2
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein
 ms.date: 06/25/2019
-ms.openlocfilehash: 9e7d2d08c7041b23f0eb02328367d07e72fe35eb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 0b78419f4fb37bb96e2c71c89f740a35914ccede
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91333062"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91446383"
 ---
 # <a name="move-resources-to-new-region---azure-sql-database--azure-sql-managed-instance"></a>將資源移至新的區域-Azure SQL Database & Azure SQL 受控執行個體
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -170,7 +170,7 @@ ms.locfileid: "91333062"
 
 ### <a name="monitor-the-preparation-process"></a>監視準備程式
 
-您可以定期呼叫 [AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup?view=azps-2.3.2) ，以監視從來源到目標的資料庫複寫。 的輸出物件 `Get-AzSqlDatabaseFailoverGroup` 包括 **ReplicationState**的屬性：
+您可以定期呼叫 [AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) ，以監視從來源到目標的資料庫複寫。 的輸出物件 `Get-AzSqlDatabaseFailoverGroup` 包括 **ReplicationState**的屬性：
 
 - **ReplicationState = 2** (CATCH_UP) 表示資料庫已同步處理，而且可以安全地進行容錯移轉。
 - **ReplicationState = 0** (植入) 表示資料庫尚未植入，嘗試容錯移轉將會失敗。
@@ -182,7 +182,7 @@ ms.locfileid: "91333062"
 ### <a name="initiate-the-move"></a>起始移動
 
 1. 使用次要端點連接到目標受控實例 `<fog-name>.secondary.database.windows.net` 。
-1. 使用 [切換 AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup?view=azps-2.3.2) ，將次要受控實例切換為具有完整同步處理的主要複本。 此作業將會成功，或將會回復。
+1. 使用 [切換 AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup) ，將次要受控實例切換為具有完整同步處理的主要複本。 此作業將會成功，或將會回復。
 1. 使用確認命令已順利完成， `nslook up <fog-name>.secondary.database.windows.net` 以確定 DNS CNAME 專案指向目的地區域 IP 位址。 如果交換器命令失敗，則不會更新 CNAME。
 
 ### <a name="remove-the-source-managed-instances"></a>移除來源受控實例

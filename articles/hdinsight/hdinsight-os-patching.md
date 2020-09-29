@@ -8,17 +8,17 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/21/2020
-ms.openlocfilehash: bf22e20a6c6187677f000e0c50ac64582233c3cd
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 005bfd4b7e7d062640a79896ccd3d7f76e3d6fb3
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90019660"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447204"
 ---
 # <a name="configure-the-os-patching-schedule-for-linux-based-hdinsight-clusters"></a>針對以 Linux 為基礎的 HDInsight 叢集設定作業系統修補排程
 
 > [!IMPORTANT]
-> 在發佈的三個月內，Ubuntu 映射可供新的 Azure HDInsight 叢集建立。 自2019年1月起，將不會自動修補執行中的叢集。 客戶必須使用指令碼動作或其他機制修補執行中的叢集。 新建立的叢集一律會有最新可用的更新，包括最新的安全性修補程式。
+> 在發佈的三個月內，Ubuntu 映射可供新的 Azure HDInsight 叢集建立。 執行中的叢集不會自動修補。 客戶必須使用指令碼動作或其他機制修補執行中的叢集。 最佳做法是，您可以在叢集建立後立即執行這些腳本動作並套用安全性更新。
 
 HDInsight 提供可讓您在叢集上執行一般工作的支援，例如安裝 OS 修補程式、安全性更新和重新開機節點。 您可以使用下列兩個腳本來執行這些工作：以 [腳本動作](hdinsight-hadoop-customize-cluster-linux.md)的形式執行，並使用參數設定：
 
@@ -73,7 +73,7 @@ Welcome to Spark on HDInsight.
 > [!NOTE]
 > 排程重新開機選項會自動輪流在12到24小時內重新開機已修補的叢集節點，並考慮高可用性、更新網域和容錯網域的考慮。 排定的重新開機不會終止執行中的工作負載，但當節點無法使用時，可能會在過渡期間捨棄叢集容量，進而導致處理時間變長。 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如需使用腳本動作的特定步驟，請參閱下列各節，以 [使用腳本動作自訂以 Linux 為基礎的 HDInsight](hdinsight-hadoop-customize-cluster-linux.md)叢集：
 

@@ -16,12 +16,12 @@ ms.date: 06/17/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 296aabdd79e1cd5c37248a0a44d57ebf17a4ea44
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 4ba90724f75635ea9fd5f72f75de6a46d7b6d288
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90979410"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91446997"
 ---
 # <a name="troubleshoot-azure-ad-entitlement-management"></a>針對 Azure AD 權利管理進行疑難排解
 
@@ -146,11 +146,11 @@ ms.locfileid: "90979410"
     | P1 | 您目錄中的特定使用者和群組，或特定的已連線組織 |
     | P2 | 目錄中的所有成員 (不包括來賓)  |
     | P3 | 您目錄中的所有使用者 (包括來賓) 或特定的已連線組織 |
-    | P4 | 所有已連線的組織或所有使用者 (所有已連線的組織，以及任何新的外部使用者)  |
+    | P4 | 所有已設定的已連線組織或所有使用者 (所有已連線的組織，以及任何新的外部使用者)  |
     
     如果有任何原則的優先順序較高，則會忽略較低優先順序的類別。 如需對要求者顯示多個具有相同優先順序之原則的範例，請參閱 [選取原則](entitlement-management-request-access.md#select-a-policy)。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [管控外部使用者的存取](entitlement-management-external-users.md)
 - [查看使用者在權利管理中如何獲得存取權的報告](entitlement-management-reports.md)

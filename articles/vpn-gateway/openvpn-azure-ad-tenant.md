@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/03/2020
 ms.author: alzam
-ms.openlocfilehash: 74df878baa6ed4e2ba902a73a7830c0b075c58ce
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 1905db8f28bde41dadbe619894cb76830efca992
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90981521"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91445828"
 ---
 # <a name="create-an-azure-active-directory-tenant-for-p2s-openvpn-protocol-connections"></a>建立 Azure Active Directory 租用戶以進行 P2S OpenVPN 通訊協定連線
 
@@ -47,7 +47,7 @@ ms.locfileid: "90981521"
 
 1. 找出目錄 (您要用於驗證) 的目錄識別碼。 會列在 Active Directory 頁面的屬性區段中。
 
-    ![目錄識別碼](./media/openvpn-create-azure-ad-tenant/directory-id.png)
+    ![顯示 [目錄屬性] 頁面的螢幕擷取畫面，其中已醒目提示 [目錄識別碼]。](./media/openvpn-create-azure-ad-tenant/directory-id.png)
 
 2. 複製目錄識別碼。
 
@@ -89,7 +89,7 @@ ms.locfileid: "90981521"
 
 7. 在您的 Azure AD 下，您會在 **企業應用程式**中看到列出的 **Azure VPN** 。
 
-    ![Azure VPN](./media/openvpn-create-azure-ad-tenant/azurevpn.png)
+    ![顯示 [所有應用程式] 頁面的螢幕擷取畫面。](./media/openvpn-create-azure-ad-tenant/azurevpn.png)
     
 8. 如果您還沒有正常運作的點對站台環境，請依照指示來建立一個。 請參閱 [建立點對站 vpn](vpn-gateway-howto-point-to-site-resource-manager-portal.md) ，以建立和設定點對站 vpn 閘道。 
 
@@ -112,6 +112,6 @@ ms.locfileid: "90981521"
 
 13. 記下 "azurevpnconfig.xml" 檔案的位置。 azurevpnconfig.xml 包含 VPN 連接的設定，而且可以直接匯入 Azure VPN Client 應用程式中。 您也可以將這個檔案散發給所有需要透過電子郵件或其他方式連接的使用者。 使用者將需要有效的 Azure AD 認證才能成功連線。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 若要連接到您的虛擬網路，您必須建立並設定 VPN 用戶端設定檔。 請參閱 [設定 vpn 用戶端以進行 P2S vpn](openvpn-azure-ad-client.md)連線。

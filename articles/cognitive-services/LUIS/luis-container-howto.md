@@ -1,27 +1,29 @@
 ---
-title: Docker 容器-LUIS
+title: 安裝和執行適用于 LUIS 的 Docker 容器
 titleSuffix: Azure Cognitive Services
-description: LUIS 容器會將您已定型或發佈的應用程式載入 Docker 容器中，並提供從容器的 API 端點存取查詢預測的權限。
+description: 使用 LUIS 容器來載入已定型或已發佈的應用程式，並在內部部署環境中取得其預測的存取權。
 services: cognitive-services
 author: aahill
 manager: nitinme
-ms.custom: seodec18
+ms.custom: seodec18, cog-serv-seo-aug-2020
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 09/28/2020
 ms.author: aahi
-ms.openlocfilehash: bec96f45de69ab2698f3f0cf26f08222e4595ea5
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+keywords: 內部部署、Docker、容器
+ms.openlocfilehash: c65a81d9daed85b5bf056d24949e36ec227c19c6
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90889496"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91460980"
 ---
-# <a name="install-and-run-luis-docker-containers"></a>安裝和執行 LUIS Docker 容器
+# <a name="install-and-run-docker-containers-for-luis"></a>安裝和執行適用于 LUIS 的 Docker 容器
 
 [!INCLUDE [container image location note](../containers/includes/image-location-note.md)]
 
+容器可讓您在自己的環境中使用 LUIS。 容器非常適合用於特定的安全性和資料控管需求。 在本文中，您將瞭解如何下載、安裝及執行 LUIS 容器。
 
 Language Understanding (LUIS) 容器會載入您已定型或已發佈的 Language Understanding 模型。 Docker 容器是 [LUIS 應用程式](https://www.luis.ai)，可讓您從容器的 API 端點存取查詢預測。 您可以從容器收集查詢記錄，並將其上傳回 Language Understanding 應用程式，以改善應用程式的預測精確度。
 
@@ -35,7 +37,7 @@ Language Understanding (LUIS) 容器會載入您已定型或已發佈的 Languag
 
 若要執行 LUIS 容器，請注意下列必要條件：
 
-|必要|用途|
+|必要|目的|
 |--|--|
 |Docker 引擎| 您必須在[主機電腦](#the-host-computer)上安裝 Docker 引擎。 Docker 提供可在 [macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上設定 Docker 環境的套件。 如需 Docker 和容器基本概念的入門，請參閱 [Docker 概觀](https://docs.docker.com/engine/docker-overview/) \(英文\)。<br><br> Docker 必須設定為允許容器與 Azure 連線，以及傳送帳單資料至 Azure。 <br><br> **在 Windows 上**，也必須將 Docker 設定為支援 Linux 容器。<br><br>|
 |熟悉 Docker | 您應具備對 Docker 概念 (例如登錄、存放庫、容器和容器映像等) 的基本了解，以及基本 `docker` 命令的知識。|
@@ -258,9 +260,9 @@ API 的 V2 和 [V3](luis-migration-api-v3.md) 版本都可供容器使用。
 |查詢參數|類型|目的|
 |--|--|--|
 |`query`|字串|使用者的語句。|
-|`verbose`|boolean|布林值，指出是否傳回預測模型的所有中繼資料。 預設為 false。|
-|`log`|boolean|記錄查詢，可供後續的[主動式學習](luis-how-to-review-endpoint-utterances.md)使用。 預設為 false。|
-|`show-all-intents`|boolean|布林值，指出是否只傳回所有意圖或最高評分意圖。 預設為 false。|
+|`verbose`|boolean|布林值，指出是否傳回預測模型的所有中繼資料。 預設值為 false。|
+|`log`|boolean|記錄查詢，可供後續的[主動式學習](luis-how-to-review-endpoint-utterances.md)使用。 預設值為 false。|
+|`show-all-intents`|boolean|布林值，指出是否只傳回所有意圖或最高評分意圖。 預設值為 false。|
 
 # <a name="v2-prediction-endpoint"></a>[V2 預測端點](#tab/v2)
 
@@ -388,7 +390,7 @@ LUIS 容器會使用您 Azure 帳戶上的 _認知服務_ 資源，將計費資�
 > [!IMPORTANT]
 > 認知服務容器在未連線至 Azure 以進行計量的情況下，將無法被授權以執行。 客戶必須啟用容器以持續與計量服務進行帳單資訊的通訊。 認知服務容器不會將客戶資料 (例如正在分析的影像或文字) 傳送至 Microsoft。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * 請參閱 [設定容器](luis-container-configuration.md) 以進行設定。
 * 如需已知功能限制，請參閱 [LUIS 容器限制](luis-container-limitations.md) 。

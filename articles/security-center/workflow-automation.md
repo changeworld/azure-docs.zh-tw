@@ -5,15 +5,15 @@ services: security-center
 author: memildin
 manager: rkarlin
 ms.service: security-center
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: f3a1dc716e4db51d9d8b488bd98fc254f8dad842
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 3b87f25f9424e8afebe601d2ff15330881d2173b
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91322150"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447721"
 ---
 # <a name="create-automatic-responses-to-alerts-and-recommendations-with-workflow-automation"></a>使用工作流程自動化來建立警示和建議的自動回應
 
@@ -42,7 +42,7 @@ ms.locfileid: "91322150"
 
 1. 從 [安全性中心] 提要欄位，選取 [ **工作流程自動化**]。
 
-    :::image type="content" source="./media/workflow-automation/list-of-workflow-automations.png" alt-text="工作流程自動化清單":::
+    :::image type="content" source="./media/workflow-automation/list-of-workflow-automations.png" alt-text="工作流程自動化清單&quot;:::
 
     從這個頁面，您可以建立新的自動化規則，以及啟用、停用或刪除現有的規則。
 
@@ -50,10 +50,18 @@ ms.locfileid: "91322150"
 
     窗格隨即出現，並提供新自動化的選項。 您可以在這裡輸入：
     1. 自動化的名稱和描述。
-    1. 將起始此自動工作流程的觸發程式。 例如，您可能想要在產生包含 "SQL" 的安全性警示時執行邏輯應用程式。
+    1. 將起始此自動工作流程的觸發程式。 例如，您可能想要在產生包含 &quot;SQL" 的安全性警示時執行邏輯應用程式。
     1. 符合觸發條件時將執行的邏輯應用程式。 
 
-        :::image type="content" source="./media/workflow-automation/add-workflow.png" alt-text="[新增工作流程自動化] 窗格":::
+        :::image type="content" source="./media/workflow-automation/add-workflow.png" alt-text="工作流程自動化清單&quot;:::
+
+    從這個頁面，您可以建立新的自動化規則，以及啟用、停用或刪除現有的規則。
+
+1. 若要定義新的工作流程，請按一下 [ **新增工作流程自動化**]。 
+
+    窗格隨即出現，並提供新自動化的選項。 您可以在這裡輸入：
+    1. 自動化的名稱和描述。
+    1. 將起始此自動工作流程的觸發程式。 例如，您可能想要在產生包含 &quot;SQL":::
 
 1. 從 [動作] 區段中，按一下 [ **建立新** 的] 以開始建立邏輯應用程式。
 

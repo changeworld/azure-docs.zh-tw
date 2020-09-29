@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: b50f6c4b2ed86b950e68cf8c55b63af687ff9ead
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e0d6694d44fdac9958acdf70be067348fadde57f
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91298044"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91461235"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>語音服務的語言和語音支援
 
@@ -41,13 +41,11 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | `ar-AE` | 阿拉伯文 (阿拉伯酋長國)      | 語言模型                                    |
 | `ar-BH` | 阿拉伯文 (巴林)，現代標準 | 語言模型                                    |
 | `ar-EG` | 阿拉伯文 (埃及)                    | 語言模型                                    |
-| `ar-IL` | 阿拉伯文 (以色列)                   | 否                                                |
 | `ar-IQ` | 阿拉伯文 (伊拉克)                     | 語言模型                                    |
 | `ar-JO` | 阿拉伯文 (約旦)                   | 語言模型                                    |
 | `ar-KW` | 阿拉伯文 (科威特)                   | 語言模型                                    |
 | `ar-LB` | 阿拉伯文 (黎巴嫩)                  | 語言模型                                    |
 | `ar-OM` | 阿拉伯文 (阿曼)                     | 語言模型                                    |
-| `ar-PS` | 巴勒斯坦) 的阿拉伯文 (狀態       | 否                                                |
 | `ar-QA` | 阿拉伯文 (卡達)                    | 語言模型                                    |
 | `ar-SA` | 阿拉伯文 (沙烏地阿拉伯)             | 語言模型                                    |
 | `ar-SY` | 阿拉伯文 (敘利亞)                    | 語言模型                                    |
@@ -182,7 +180,7 @@ Microsoft Speech SDK 和 REST API 均支援這些語音，且各支援依地區�
 | `it-IT`<sup>新增</sup> | 義大利文 (義大利) | Male | `it-IT-DiegoNeural` | 一般 |
 | `ja-JP` | 日本 (日本)  | Female | `ja-JP-NanamiNeural` | 一般 |
 | `ja-JP`<sup>新增</sup> | 日文 (日本) | Male | `ja-JP-KeitaNeural` | 一般 |
-| `ko-KR` | 韓文 (南韓國)  | Female | `ko-KR-SunHiNeural` | 一般 |
+| `ko-KR` | 韓文 (韓國)  | Female | `ko-KR-SunHiNeural` | 一般 |
 | `ko-KR`<sup>新增</sup> | 韓文 (韓國) | Male | `ko-KR-InJoonNeural` | 一般 |
 | `ms-MY`<sup>新增</sup> | 馬來文 (馬來西亞) | Female | `ms-MY-YasminNeural` | 一般 |
 | `nb-NO` | 挪威文、博克 (挪威)  | Female | `nb-NO-IselinNeural` | 一般 |
@@ -273,7 +271,7 @@ Microsoft Speech SDK 和 REST API 均支援這些語音，且各支援依地區�
 | `ja-JP` | 日文 (日本) | Female | `ja-JP-Ayumi` |
 | `ja-JP` | 日文 (日本) | Female | `ja-JP-HarukaRUS` |
 | `ja-JP` | 日文 (日本) | Male | `ja-JP-Ichiro` |
-| `ko-KR` | 韓文 (南韓國)  | Female | `ko-KR-HeamiRUS` |
+| `ko-KR` | 韓文 (韓國) | Female | `ko-KR-HeamiRUS` |
 | `ms-MY` | 馬來文 (馬來西亞) | Male | `ms-MY-Rizwan` |
 | `nb-NO` | 挪威文，巴克摩 (挪威) | Female | `nb-NO-HuldaRUS` |
 | `nl-NL` | 荷蘭文 (荷蘭) | Female | `nl-NL-HannaRUS` |

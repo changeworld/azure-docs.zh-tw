@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 08/24/2020
 ms.author: v-miegge
-ms.openlocfilehash: 071b5786127af31a2ad3266c128dbfb7cacad656
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 4f2b338b8629209363acb7bbe0533831a089fe6f
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88942080"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447314"
 ---
 # <a name="windows-stop-error---0x00000074-bad-system-config-info"></a>Windows 停止錯誤-0x00000074 錯誤的系統組態資訊
 
@@ -61,10 +61,10 @@ ms.locfileid: "88942080"
 1. 使用 [VM 修復命令](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) \(部分機器翻譯\) 的步驟 1-3 準備修復 VM。
 1. 檢查 hive 是否損毀。
 1. 使用遠端桌面連線連接到修復 VM。
-1. 複製 `\windows\system32\config` 資料夾，並將它儲存在您狀況良好的磁碟分割或另一個安全的位置。 因為您將編輯重要的登錄檔，所以請將此資料夾備份為預防措施。
+1. 複製 `<VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config` 資料夾，並將它儲存在您狀況良好的磁碟分割或另一個安全的位置。 因為您將編輯重要的登錄檔，所以請將此資料夾備份為預防措施。 
 
 > [!NOTE]
-> `\windows\system32\config`如果您需要復原您對登錄所做的任何變更，請複製資料夾的複本作為備份。
+> `<VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config`如果您需要復原您對登錄所做的任何變更，請複製資料夾的複本作為備份。
 
 ### <a name="check-for-hive-corruption"></a>檢查 hive 損毀
 
@@ -72,7 +72,7 @@ ms.locfileid: "88942080"
 
 1. 在修復 VM 上，開啟 [ **登錄編輯程式** ] 應用程式。 在 Windows 搜尋列中輸入 "REGEDIT" 來尋找它。
 1. 在 [登錄編輯程式] 中，選取**HKEY_LOCAL_MACHINE**將其反白顯示，然後選取 [檔案] **> [載入 Hive ...** ]。 。
-1. 流覽 `\windows\system32\config\SYSTEM` 並選取 [ **開啟**]。
+1. 流覽 `<VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config\SYSTEM` 並選取 [ **開啟**]。
 1. 當系統提示您輸入名稱時，請輸入 **BROKENSYSTEM**。
 
    1. 如果 hive 無法開啟，或如果是空的，則 hive 已損毀。 如果 hive 已損毀，請 [開啟支援票證](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。

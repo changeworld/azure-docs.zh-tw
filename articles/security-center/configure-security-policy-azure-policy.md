@@ -5,15 +5,15 @@ services: security-center
 author: memildin
 manager: rkarlin
 ms.service: security-center
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 7a81b3016f86c6fd7de646ccbdbf533685471ac3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 6fcfed585aece4fd57c085e0c9f6fdcd6cbeae74
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90894798"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448357"
 ---
 # <a name="configure-a-security-policy-in-azure-policy-using-the-rest-api"></a>使用 REST API 在 Azure 原則中設定安全性原則
 
@@ -134,7 +134,7 @@ Azure 原則中的重要概念：
 |新一代防火牆 |在 Azure 資訊安全中心中監視未保護的網路端點| |
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 如需其他相關資料，請參閱下列文章： 
 
