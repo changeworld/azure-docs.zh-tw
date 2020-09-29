@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: 1b1cd0adb8581c7aa94f0de85a9f8beab38da112
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: edd9f9f3127178f168f6c768b092a7ec6311e7bf
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89398557"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91440932"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-powershell"></a>使用 PowerShell 設定 VNet 對 VNet 的 VPN 閘道連線
 
@@ -67,7 +67,7 @@ VNet 的連線方法有很多種。 下列各節說明不同的虛擬網路連�
 
 * [位於相同訂用帳戶中的 VNet：](#samesub)此組態的步驟會使用 TestVNet1 和 TestVNet4。
 
-  ![v2v 圖表](./media/vpn-gateway-vnet-vnet-rm-ps/v2vrmps.png)
+  ![此圖顯示位於相同訂用帳戶中 V 神經網路的 V Net to V Net 步驟。](./media/vpn-gateway-vnet-vnet-rm-ps/v2vrmps.png)
 
 * [位於不同訂用帳戶中的 VNet：](#difsub)此組態的步驟會使用 TestVNet1 和 TestVNet5。
 
@@ -203,7 +203,7 @@ VNet 的連線方法有很多種。 下列各節說明不同的虛擬網路連�
    -VpnType RouteBased -GatewaySku VpnGw1
    ```
 
-在您完成命令之後，將需要 45 分鐘的時間來建立此閘道。 如果您使用的是 Azure Cloud Shell，您可以重新啟動 CloudShell 工作階段，做法是按一下 Cloud Shell 終端機的左上角，然後設定 TestVNet4。 您不需要一直等到 TestVNet1 閘道完成。
+在您完成命令之後，將需要 45 分鐘的時間來建立此閘道。 如果您使用 Azure Cloud Shell，您可以在 Cloud Shell 終端機的左上角按一下，然後設定 TestVNet4，以重新開機 Cloud Shell 會話。 您不需要一直等到 TestVNet1 閘道完成。
 
 ### <a name="step-3---create-and-configure-testvnet4"></a>步驟 3 - 建立及設定 TestVNet4
 
@@ -448,7 +448,7 @@ VNet 的連線方法有很多種。 下列各節說明不同的虛擬網路連�
    PS C:\> $vnet5gw.Id
    /subscriptions/66c8e4f1-ecd6-47ed-9de7-7e530de23994/resourceGroups/TestRG5/providers/Microsoft.Network/virtualNetworkGateways/VNet5GW
    ```
-3. **[訂用帳戶 1]** 建立 TestVNet1 至 TestVNet5 的連線。 在此步驟中，您會從 TestVNet1 建立連線至 TestVNet5。 此處的差別為直接取得 $vnet5gw，因為其位於不同的訂用帳戶中。 您必須使用上述步驟中從訂用帳戶 1 通訊的值來建立新的 PowerShell 物件。 請使用下方的範例。 以您自己的值來取代名稱、識別碼和共用金鑰。 但請務必確認該共用金鑰必須適用於這兩個連線。 建立連線可能需要一段時間才能完成。
+3. **[訂用帳戶 1]** 建立 TestVNet1 至 TestVNet5 的連線。 在此步驟中，您會從 TestVNet1 建立連線至 TestVNet5。 此處的差別為直接取得 $vnet5gw，因為其位於不同的訂用帳戶中。 您必須使用上述步驟中從訂用帳戶 1 通訊的值來建立新的 PowerShell 物件。 請使用下方的範例。 以您自己的值取代名稱、識別碼和共用金鑰。 但請務必確認該共用金鑰必須適用於這兩個連線。 建立連線可能需要一段時間才能完成。
 
    先連線至訂用帳戶 1，再執行下列範例︰
 
@@ -475,13 +475,13 @@ VNet 的連線方法有很多種。 下列各節說明不同的虛擬網路連�
 
 [!INCLUDE [vpn-gateway-no-nsg-include](../../includes/vpn-gateway-no-nsg-include.md)]
 
-[!INCLUDE [verify connections powershell](../../includes/vpn-gateway-verify-connection-ps-rm-include.md)]
+[!INCLUDE [verify connections PowerShell](../../includes/vpn-gateway-verify-connection-ps-rm-include.md)]
 
 ## <a name="vnet-to-vnet-faq"></a><a name="faq"></a>VNet 對 VNet 常見問題集
 
 [!INCLUDE [vpn-gateway-vnet-vnet-faq](../../includes/vpn-gateway-faq-vnet-vnet-include.md)]
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 一旦完成您的連接，就可以將虛擬機器加入您的虛擬網路。 如需詳細資訊，請參閱 [虛擬機器文件](https://docs.microsoft.com/azure/) 。
 * 如需 BGP 的相關資訊，請參閱 [BGP 概觀](vpn-gateway-bgp-overview.md)和[如何設定 BGP](vpn-gateway-bgp-resource-manager-ps.md)。

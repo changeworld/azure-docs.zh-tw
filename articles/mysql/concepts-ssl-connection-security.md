@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 07/09/2020
-ms.openlocfilehash: 641ff13ec440bb8267e546c54b684ab4453f91a7
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 6807f3d4ef0596b4dbb51f6bc8c0348901e78d0e
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90052931"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91439936"
 ---
 # <a name="ssltls-connectivity-in-azure-database-for-mysql"></a>適用於 MySQL 的 Azure 資料庫中的 SSL/TLS 連線能力
 
@@ -62,7 +62,18 @@ Azure 入口網站中會顯示多種程式設計語言的連接字串。 這些�
 
 若要瞭解如何設定適用於 MySQL 的 Azure 資料庫的 TLS 設定，請參閱如何設定 [tls 設定](howto-tls-configurations.md)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="cipher-support-by-azure-database-for-mysql-single-server"></a>適用於 MySQL 的 Azure 資料庫單一伺服器的加密支援
+
+做為 SSL/TLS 通訊的一部分，系統會驗證加密套件，而且只允許支援加密，以與資料庫 serer 通訊。 加密套件驗證是在 [閘道層](concepts-connectivity-architecture.md#connectivity-architecture) 級進行控制，而不是在節點本身上明確控制。 如果加密套件不符合下列其中一個套件，則會拒絕傳入用戶端連接。
+
+### <a name="cipher-suite-supported"></a>支援的密碼套件
+
+*   TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+*   TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+*   TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
+*   TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
+
+## <a name="next-steps"></a>後續步驟
 
 - [適用於 MySQL 的 Azure 資料庫的連線庫](concepts-connection-libraries.md)
 - 瞭解如何 [設定 SSL](howto-configure-ssl.md)

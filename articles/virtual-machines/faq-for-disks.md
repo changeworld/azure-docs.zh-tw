@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/15/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: c2589b47c1619dd528ab843dcf4befd0da227d16
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b8ee222b7d65fe9b6b9a605bf055e127aef58ff9
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91331483"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91439304"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>關於 Azure IaaS VM 磁碟及受控和非受控進階磁碟的常見問題集
 
@@ -398,7 +398,7 @@ Azure 公用雲端中的所有區域目前都支援這些新磁碟大小，主�
 
 **作業系統和資料磁碟支援的最大受控磁碟大小是多少？**
 
-Azure 針對作業系統磁碟所支援的磁碟分割類型是主開機記錄 (MBR)。 MBR 格式支援的磁碟大小上限為 2 TiB。 Azure 針對作業系統磁片支援的最大大小為 4 TiB。 Azure 支援最大 32 TiB 的受控資料磁碟。
+Azure 針對作業系統磁片所支援的磁碟分割類型為主開機記錄 (MBR) 和 GUID 磁碟分割表格 (GPT) 適用于 Gen 1 和 Gen 2 Vm。 MBR 格式支援的磁碟大小上限為 2 TiB。 針對 Gen 1 Vm，雖然您可以配置最多4個 TiB，但您最多隻能為作業系統使用此磁碟空間的 2 TiB。 針對第2代 Vm，您可以為作業系統磁片配置和使用的最大大小為 4 TiB。 Azure 支援最大 32 TiB 的受控資料磁碟。
 
 **作業系統和資料磁碟支援的最大非受控磁碟大小是多少？**
 
@@ -483,7 +483,7 @@ Azure 備份支援的最大磁碟大小為 32 TiB (4 TiB 用於加密磁碟)。 
 
 **我可以使用磁片/快照集的 SAS URI，將 VM 的基礎 VHD 下載為與該磁片相關聯之私人端點的子網嗎？**
 
-可以。
+是。
 
 **我可以使用磁片/快照集的 SAS URI，將不在相同子網中的 VM 基礎 VHD 下載為與該磁片沒有關聯之私人端點的子網嗎？**
 

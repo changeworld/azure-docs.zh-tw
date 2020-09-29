@@ -7,12 +7,12 @@ ms.date: 11/22/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: e929463c33603c650bec2e9a49a13dde6965e39f
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: bf8b8554aa2ea1d6d06f58f726ca65f77499ec5f
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926649"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91440046"
 ---
 # <a name="understand-extended-offline-capabilities-for-iot-edge-devices-modules-and-child-devices"></a>了解 IoT Edge 裝置、模組及子裝置的延伸離線功能
 
@@ -68,7 +68,7 @@ IoT Edge 裝置及其受指派的子裝置可在一開始的首次同步處理�
 
 #### <a name="option-2-use-the-az-command-line-tool"></a>選項 2：使用 `az` 命令列工具
 
-使用 [Azure 命令列介面](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)搭配 [IoT 延伸模組](https://github.com/azure/azure-iot-cli-extension) (v0.7.0 或更新版本) 時，您可以使用 [device-identity](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub/device-identity?view=azure-cli-latest) 子命令管理父子關聯性。 下列範例會使用查詢，將中樞內的所有非 IoT Edge 裝置指派為 IoT Edge 裝置的子裝置。
+使用 [Azure 命令列介面](/cli/azure/)搭配 [IoT 延伸模組](https://github.com/azure/azure-iot-cli-extension) (v0.7.0 或更新版本) 時，您可以使用 [device-identity](/cli/azure/ext/azure-iot/iot/hub/device-identity) 子命令管理父子關聯性。 下列範例會使用查詢，將中樞內的所有非 IoT Edge 裝置指派為 IoT Edge 裝置的子裝置。
 
 ```azurecli
 # Set IoT Edge parent device

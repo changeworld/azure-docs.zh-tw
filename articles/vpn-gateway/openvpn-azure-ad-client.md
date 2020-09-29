@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 09/03/2020
 ms.author: alzam
-ms.openlocfilehash: a1e2804b45efe95ee1f67c3aadbefccd805d1aa2
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 279c66fa16ac82335a074da60bce35325d4b4499
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90981879"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91439460"
 ---
 # <a name="azure-active-directory-authentication-configure-a-vpn-client-for-p2s-openvpn-protocol-connections"></a>Azure Active Directory authentication：為 P2S OpenVPN 通訊協定連線設定 VPN 用戶端
 
@@ -58,7 +58,7 @@ ms.locfileid: "90981879"
 
 1. 反白顯示您要匯出的 VPN 用戶端設定檔，選取 [ **...**]，然後選取 [ **匯出**]。
 
-    ![匯出](./media/openvpn-azure-ad-client/export/export1.jpg)
+    ![顯示 [Azure VPN Client] 頁面的螢幕擷取畫面，其中已選取省略號並反白顯示 [匯出]。](./media/openvpn-azure-ad-client/export/export1.jpg)
 
 2. 選取您要儲存此設定檔的位置，將檔案名保持原狀，然後選取 [ **儲存** ] 以儲存 xml 檔案。
 
@@ -68,19 +68,19 @@ ms.locfileid: "90981879"
 
 1. 在頁面上，選取 [匯入]****。
 
-    ![import](./media/openvpn-azure-ad-client/import/import1.jpg)
+    ![顯示選取 [新增] 按鈕的螢幕擷取畫面，並反白顯示視窗左下角的 [匯入] 動作。](./media/openvpn-azure-ad-client/import/import1.jpg)
 
 2. 瀏覽至設定檔 xml 檔案，並加以選取。 選取檔案後，請選取 [開啟]****。
 
-    ![import](./media/openvpn-azure-ad-client/import/import2.jpg)
+    ![顯示已選取設定檔 x m l 檔案的螢幕擷取畫面。](./media/openvpn-azure-ad-client/import/import2.jpg)
 
 3. 指定設定檔的名稱，然後選取 [儲存]****。
 
-    ![import](./media/openvpn-azure-ad-client/import/import3.jpg)
+    ![顯示已醒目提示 [連線名稱] 並選取 [儲存] 按鈕的螢幕擷取畫面。](./media/openvpn-azure-ad-client/import/import3.jpg)
 
 4. 選取 [連線]**** 以連線至 VPN。
 
-    ![import](./media/openvpn-azure-ad-client/import/import4.jpg)
+    ![顯示已選取 [VPN] 和 [連線] 按鈕的螢幕擷取畫面。](./media/openvpn-azure-ad-client/import/import4.jpg)
 
 5. 連線之後，圖示將會變成綠色，並顯示為 [已連線]****。
 
@@ -90,7 +90,7 @@ ms.locfileid: "90981879"
 
 1. 選取您要刪除之用戶端設定檔旁的省略號。 然後，選取 [移除]****。
 
-    ![delete](./media/openvpn-azure-ad-client/delete/delete1.jpg)
+    ![顯示已選取省略號和 [移除] 選項的螢幕擷取畫面。](./media/openvpn-azure-ad-client/delete/delete1.jpg)
 
 2. 選取 [移除]**** 以刪除。
 
@@ -100,19 +100,19 @@ ms.locfileid: "90981879"
 
 1. 在頁面上，選取 [] **+** ，然後選取 [ **+ 新增**]。
 
-    ![連接](./media/openvpn-azure-ad-client/create/create1.jpg)
+    ![顯示已選取 [新增] 按鈕的螢幕擷取畫面。](./media/openvpn-azure-ad-client/create/create1.jpg)
 
 2. 填寫連接資訊。 如果您不確定其值，請洽詢您的系統管理員。 填妥值之後，請選取 [ **儲存**]。
 
-    ![連接](./media/openvpn-azure-ad-client/create/create2.jpg)
+    ![顯示反白顯示的 VPN 連接屬性和選取 [儲存] 按鈕的螢幕擷取畫面。](./media/openvpn-azure-ad-client/create/create2.jpg)
 
 3. 選取 [連線]**** 以連線至 VPN。
 
-    ![連接](./media/openvpn-azure-ad-client/create/create3.jpg)
+    ![顯示已選取 [連接] 按鈕的螢幕擷取畫面。](./media/openvpn-azure-ad-client/create/create3.jpg)
 
 4. 選取適當的認證，然後選取 [ **繼續**]。
 
-    ![連接](./media/openvpn-azure-ad-client/create/create4.jpg)
+    ![顯示反白顯示範例認證和選取 [繼續] 按鈕的螢幕擷取畫面。](./media/openvpn-azure-ad-client/create/create4.jpg)
 
 5. 成功連線後，圖示將會變成綠色，並說出 **已連線**。
 
@@ -124,15 +124,15 @@ ms.locfileid: "90981879"
 
 1. 在 VPN 用戶端的首頁上，選取 [ **Vpn 設定**]。
 
-    ![自動](./media/openvpn-azure-ad-client/auto/auto1.jpg)
+    ![已選取 [VPN 設定] 之 VPN 首頁的螢幕擷取畫面。](./media/openvpn-azure-ad-client/auto/auto1.jpg)
 
 2. 在 [切換應用程式] 對話方塊中選取 **[是]** 。
 
-    ![自動](./media/openvpn-azure-ad-client/auto/auto2.jpg)
+    ![「您要切換應用程式的意思是什麼？」的螢幕擷取畫面 已選取 [是] 按鈕的對話方塊。](./media/openvpn-azure-ad-client/auto/auto2.jpg)
 
 3. 確定您要設定的連接尚未連接，然後反白顯示設定檔，然後選取 [自動連線 **]** 核取方塊。
 
-    ![自動](./media/openvpn-azure-ad-client/auto/auto3.jpg)
+    ![[設定] 視窗的螢幕擷取畫面，其中已核取 [自動連線] 方塊。](./media/openvpn-azure-ad-client/auto/auto3.jpg)
 
 4. 選取 **[連線]** 以起始 VPN 連線。
 
@@ -142,15 +142,15 @@ ms.locfileid: "90981879"
 
 1. 若要診斷連線問題，您可以使用**診斷**工具。 選取您要診斷的 VPN 連線旁的 **...** 以顯示功能表。 然後，選取 [診斷]****。
 
-    ![diagnose](./media/openvpn-azure-ad-client/diagnose/diagnose1.jpg)
+    ![省略號和 [診斷選取] 的螢幕擷取畫面。](./media/openvpn-azure-ad-client/diagnose/diagnose1.jpg)
 
 2. 在 [連線屬性]**** 頁面上，選取 [執行診斷]****。
 
-    ![diagnose](./media/openvpn-azure-ad-client/diagnose/diagnose2.jpg)
+    ![螢幕擷取畫面，顯示已選取 [執行診斷] 的 [連接屬性] 頁面。](./media/openvpn-azure-ad-client/diagnose/diagnose2.jpg)
 
 3. 使用您的認證登入。
 
-    ![diagnose](./media/openvpn-azure-ad-client/diagnose/diagnose3.jpg)
+    ![顯示已選取 [公司或學校帳戶] 對話方塊的 [讓我們讓您登入] 對話方塊的螢幕擷取畫面。](./media/openvpn-azure-ad-client/diagnose/diagnose3.jpg)
 
 4. 檢視診斷結果。
 
@@ -243,6 +243,6 @@ azurevpn -i azurevpnconfig.xml
 若要強制匯入，也請使用 **-f** 參數
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 如需詳細資訊，請參閱 [為使用 Azure AD 驗證的 P2S 開放式 VPN 連線建立 Azure Active Directory 的租](openvpn-azure-ad-tenant.md)使用者。

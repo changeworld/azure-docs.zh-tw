@@ -6,18 +6,18 @@ ms.author: allensu
 ms.service: load-balancer
 ms.topic: how-to
 ms.date: 03/25/2020
-ms.openlocfilehash: e12532107ed554385ccf38531bb95b7b70298934
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: cb7bfb9ac4b10b807ac186d087b0037953abd559
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91333880"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91439520"
 ---
 # <a name="configure-a-virtual-machine-scale-set-with-an-existing-azure-load-balancer-using-the-azure-portal"></a>使用 Azure 入口網站來設定現有 Azure Load Balancer 的虛擬機器擴展集
 
 在本文中，您將瞭解如何使用現有的 Azure Load Balancer 來設定虛擬機器擴展集。 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - Azure 訂用帳戶。
 - 訂用帳戶中的現有標準 sku 負載平衡器，將在其中部署虛擬機器擴展集。
@@ -62,7 +62,7 @@ ms.locfileid: "91333880"
     | 確認密碼               | 重新輸入您的管理員密碼 |
 
 
-    :::image type="content" source="./media/vm-scale-sets/create-vm-scale-set-01.png" alt-text="建立虛擬機器擴展集。" border="true":::
+    :::image type="content" source="./media/vm-scale-sets/create-vm-scale-set-01.png" alt-text="螢幕擷取畫面顯示 [建立虛擬機器擴展集基本] 索引標籤。" border="true":::
 
 4. 選取 [網路] 索引標籤。
 
@@ -79,7 +79,7 @@ ms.locfileid: "91333880"
     | 選取負載平衡器            | 選取 **myLoadBalancer** 或現有的負載平衡器 |
     | 選取後端集區             | 選取 **myBackendPool** 或您現有的後端集區。  |
 
-    :::image type="content" source="./media/vm-scale-sets/create-vm-scale-set-02.png" alt-text="建立虛擬機器擴展集。" border="true":::
+    :::image type="content" source="./media/vm-scale-sets/create-vm-scale-set-02.png" alt-text="螢幕擷取畫面顯示 [建立虛擬機器擴展集基本] 索引標籤。" border="true":::
 
 6. 選取 [ **管理** ] 索引標籤。
 

@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: 6dac922f1a50dd54973f7eefff7011aab3b49994
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 29f5b549bd5f5dbc421487739bb1eb8c7f120bb0
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90983746"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91441024"
 ---
 # <a name="connect-a-vpn-gateway-virtual-network-gateway-to-virtual-wan"></a>將 VPN 閘道 (虛擬網路閘道) 連線到虛擬 WAN
 
@@ -83,7 +83,7 @@ Azure 虛擬網路
 
 1. 在 [虛擬 WAN **VPN 網站** ] 頁面的頂端，選取 [ **網站**]，然後選取 [ **下載站對站 VPN**設定]。 Azure 會建立含有設定的設定檔。
 
-   ![下載設定檔](./media/connect-virtual-network-gateway-vwan/download.png "下載這篇文章")
+   ![顯示 [VPN 網站] 頁面的螢幕擷取畫面，其中已選取 [下載站對站 VPN 設定] 動作。](./media/connect-virtual-network-gateway-vwan/download.png "下載這篇文章")
 2. 下載並開啟設定檔。
 3. 針對第二個網站重複這些步驟。 當您開啟這兩個設定檔之後，您可以繼續進行下一節。
 
@@ -98,7 +98,7 @@ Azure 虛擬網路
    * **訂用帳戶、資源群組和位置** 與虛擬 WAN 中樞的訂用帳戶、資源群組和位置相同。
 2. 檢查和建立局域網路閘道。 您的局域網路閘道看起來應該類似此範例。
 
-   ![下載設定檔](./media/connect-virtual-network-gateway-vwan/lng1.png "instance0")
+   ![顯示 [設定] 頁面的螢幕擷取畫面，其中已反白顯示 IP 位址，並已選取 [設定 BGP 設定]。](./media/connect-virtual-network-gateway-vwan/lng1.png "instance0")
 3. 重複這些步驟來建立另一個局域網路閘道，但這次請使用 ' Instance1 ' 值，而不是設定檔中的 ' Instance0 ' 值。
 
    ![下載設定檔](./media/connect-virtual-network-gateway-vwan/lng2.png "instance1")
@@ -138,7 +138,7 @@ Azure 虛擬網路
 4. 按一下 [確定] 以建立虛擬網路連線。
 5. Vm 之間現在已設定連線。 除非有任何防火牆或其他原則封鎖通訊，否則您應該能夠 ping 另一部 VM。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 如需設定自訂 IPsec 原則的步驟，請參閱 [設定虛擬 WAN 的自訂 ipsec 原則](virtual-wan-custom-ipsec-portal.md)。
 如需虛擬 WAN 的詳細資訊，請參閱[關於 Azure 虛擬 WAN](virtual-wan-about.md) 和 [Azure 虛擬 WAN 常見問題集](virtual-wan-faq.md)。

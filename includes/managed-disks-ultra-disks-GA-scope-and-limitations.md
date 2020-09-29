@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 06/25/2020
+ms.date: 09/28/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: db377a933507f9a25b377ba52ebd956416a1dfd2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 7b41105bafedb8eeaffe5f266f5dd824957c57e0
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91328191"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91441177"
 ---
 目前，ultra 磁片有額外的限制，如下所示：
 
@@ -35,7 +35,9 @@ Ultra 磁片目前唯一可用的基礎結構冗余選項是可用性區域。 �
 |US Gov 亞利桑那州     |不支援單一 Vm (可用性設定組和虛擬機器擴展集) |
 |US Gov 維吉尼亞州     |不支援單一 Vm (可用性設定組和虛擬機器擴展集) |
 |美國西部     |不支援單一 Vm (可用性設定組和虛擬機器擴展集)         |
+|澳大利亞中部    |不支援單一 Vm (可用性設定組和虛擬機器擴展集) |
 |澳大利亞東部     |三個可用性區域         |
+|東南亞    |三個可用性區域        |
 |加拿大中部 *     |三個可用性區域          |
 |美國中部     |三個可用性區域          |
 |美國東部     |三個可用性區域          |

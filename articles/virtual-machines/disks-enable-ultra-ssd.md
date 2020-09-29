@@ -4,16 +4,16 @@ description: 瞭解 Azure Vm 的 ultra 磁片
 author: roygara
 ms.service: virtual-machines
 ms.topic: how-to
-ms.date: 09/22/2020
+ms.date: 09/28/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 681804eadc1f710eb5fbf6980fabca4beaaf5439
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e57317dce64b58e5c92684152d840955a30df660
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91328193"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91441200"
 ---
 # <a name="using-azure-ultra-disks"></a>使用 Azure ultra 磁片
 
@@ -155,7 +155,7 @@ UltraSSDAvailable                            True
 - 將 **自訂磁片大小的值 (GiB) **、 **磁片 IOPS**和 **磁片輸送量** 變更為您選擇的選項。
 - 在兩個 blade 中選取 **[確定]** 。
 
-    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/ultra-disk-select-new-disk.png" alt-text="[選取磁片大小] 分頁的螢幕擷取畫面、為儲存體類型選取的 ultra 磁片、反白顯示的其他值。":::
+    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/ultra-disk-select-new-disk.png" alt-text="[建立新的磁片] 分頁的螢幕擷取畫面，已反白顯示變更大小。":::
 
 - 繼續進行 VM 部署，它會與您部署任何其他 VM 相同。
 
@@ -250,7 +250,7 @@ Update-AzVM -VM $vm -ResourceGroupName $resourceGroup
 - 將 **帳戶類型** 變更為 **Ultra 磁片**。
 - 將 **自訂磁片大小的值 (GiB) **、 **磁片 IOPS**和 **磁片輸送量** 變更為您選擇的選項。
 
-    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/ultra-disk-select-new-disk.png" alt-text="[選取磁片大小] 分頁的螢幕擷取畫面、為儲存體類型選取的 ultra 磁片、反白顯示的其他值。":::
+    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/ultra-disk-select-new-disk.png" alt-text="[建立新的磁片] 分頁的螢幕擷取畫面，已反白顯示變更大小。":::
 
 - 選取 **[確定]** ，然後選取 [ **建立**]。
 - 回到磁片的分頁之後，請選取 [ **儲存**]。
@@ -409,4 +409,5 @@ Update-AzDisk -ResourceGroupName $resourceGroup -DiskName $diskName -DiskUpdate 
 
 ## <a name="next-steps"></a>後續步驟
 
-請參閱 [Azure Kubernetes Service (preview) 上使用 Azure ultra 磁片 ](../aks/use-ultra-disks.md)。
+- [在 Azure Kubernetes Service (preview) 上使用 Azure ultra 磁片 ](../aks/use-ultra-disks.md)。
+- [將記錄磁片遷移至 ultra 磁片](../azure-sql/virtual-machines/windows/storage-migrate-to-ultradisk.md)。

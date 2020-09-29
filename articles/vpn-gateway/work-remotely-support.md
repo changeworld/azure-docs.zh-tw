@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 09/03/2020
 ms.author: alzam
-ms.openlocfilehash: a70f7ccd1c3ca078bab0ff473283b505c0ded316
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 028250e25f4d67628c08970e25b4621e78526b6a
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89441556"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91440835"
 ---
 # <a name="remote-work-using-azure-vpn-gateway-point-to-site"></a>使用 Azure VPN 閘道點對站的遠端工作
 
@@ -30,13 +30,13 @@ Azure 點對站解決方案是以雲端為基礎，而且可以快速布建，�
 
 下表顯示用戶端作業系統和這些系統可用的驗證選項。 根據已在使用中的用戶端作業系統，選取驗證方法會很有説明。 例如，如果您有混合的用戶端作業系統需要連線，請選取 [使用憑證型驗證的 OpenVPN]。 此外，請注意，點對站 VPN 僅支援路由式 VPN 閘道。
 
-![點對站](./media/working-remotely-support/ostable.png "OS")
+![顯示用戶端作業系統和可用驗證選項的螢幕擷取畫面。](./media/working-remotely-support/ostable.png "OS")
 
 ## <a name="scenario-1---users-need-access-to-resources-in-azure-only"></a><a name="scenario1"></a>案例 1-使用者只需要存取 Azure 中的資源
 
 在此案例中，遠端使用者只需要存取 Azure 中的資源。
 
-![點對站](./media/working-remotely-support/scenario1.png "案例 1")
+![此圖顯示僅需要存取 Azure 資源的使用者的點對站案例。](./media/working-remotely-support/scenario1.png "案例 1")
 
 概括而言，您必須執行下列步驟，才能讓使用者安全地連線至 Azure 資源：
 
@@ -55,7 +55,7 @@ Azure 點對站解決方案是以雲端為基礎，而且可以快速布建，�
 
 在此案例中，遠端使用者需要存取 Azure 中的資源，以及內部部署資料中心 (s) 的資源。
 
-![點對站](./media/working-remotely-support/scenario2.png "案例 2")
+![針對需要存取 Azure 資源的使用者，顯示點對站案例的圖表。](./media/working-remotely-support/scenario2.png "案例 2")
 
 概括而言，您必須執行下列步驟，才能讓使用者安全地連線至 Azure 資源：
 

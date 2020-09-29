@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 05/26/2020
-ms.openlocfilehash: 0ba603dad7d48be725f308f3a3296676c5f4f108
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/26/2020
+ms.openlocfilehash: 9127df2805a7eef5b119a64fd8d8ccdab52f22f8
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90883243"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91439090"
 ---
 # <a name="train-pytorch-model"></a>將 PyTorch 模型定型
 
@@ -49,7 +49,7 @@ ms.locfileid: "90883243"
 
 8.  若為 **耐心等候**，請指定如果驗證遺失未連續減少，要提早停止定型的 epoch 數目。 預設為3。
 
-9.  提交管線。 如果資料集的大小較大，則需要一些時間。
+9.  提交管線。 如果您的資料集大小較大，則需要一些時間，而且建議使用 GPU 計算。
 
 ## <a name="results"></a>結果
 
@@ -66,7 +66,7 @@ ms.locfileid: "90883243"
 
 ###  <a name="module-parameters"></a>模組參數  
 
-| Name          | 範圍            | 類型    | 預設 | 描述                              |
+| 名稱          | 範圍            | 類型    | 預設 | 描述                              |
 | ------------- | ---------------- | ------- | ------- | ---------------------------------------- |
 | 時代        | >0               | 整數 | 5       | 選取包含標籤或結果資料行的資料行 |
 | 批次大小    | >0               | 整數 | 16      | 批次中定型的實例數目   |

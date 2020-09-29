@@ -6,13 +6,13 @@ ms.topic: how-to
 author: markjbrown
 ms.author: mjbrown
 ms.date: 09/22/2020
-ms.custom: devx-track-csharp
-ms.openlocfilehash: 07a38e106b765fd28a8c3c1115e5fe84744ade62
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.custom: devx-track-csharp, contperfq1
+ms.openlocfilehash: eb148801011b2d1c8c1f975edb870ba594b085a7
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91303084"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91440696"
 ---
 # <a name="install-and-use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>安裝和使用 Azure Cosmos 模擬器進行本機開發和測試
 
@@ -80,13 +80,9 @@ Azure Cosmos 模擬器提供 Azure Cosmos DB 服務的高精確度模擬。 它�
 
 模擬器啟動時，您會在 Windows 工作列通知區域中看到一個圖示。 它會在您的瀏覽器中自動開啟 Azure Cosmos data explorer，網址是 url `https://localhost:8081/_explorer/index.html` 。
 
-:::image type="content" source="./media/local-emulator/database-local-emulator-taskbar.png" alt-text="Azure Cosmos DB 本機模擬器的工作列通知":::
+:::image type="content" source="./media/local-emulator/database-local-emulator-taskbar.png" alt-text="選取 [開始] 按鈕或按 Windows 鍵，開始鍵入 Azure Cosmos 模擬器，然後從應用程式清單中選取模擬器" ) 接聽埠8081。 位址會顯示為 `https://localhost:8081/_explorer/index.html`。 如果您關閉瀏覽器，並想要稍後重新開啟它，您可以在瀏覽器中開啟 URL，或從 Windows 系統匣圖示中的 Azure Cosmos 模擬器啟動該 URL，如下所示。
 
-您也可以從命令列或 PowerShell 命令啟動和停止模擬器。 如需詳細資訊，請參閱 [命令列工具參考](emulator-command-line-parameters.md) 文章。
-
-Azure Cosmos 模擬器預設會在本機電腦上執行 ( "localhost" ) 接聽埠8081。 位址會顯示為 `https://localhost:8081/_explorer/index.html`。 如果您關閉瀏覽器，並想要稍後重新開啟它，您可以在瀏覽器中開啟 URL，或從 Windows 系統匣圖示中的 Azure Cosmos 模擬器啟動該 URL，如下所示。
-
-:::image type="content" source="./media/local-emulator/database-local-emulator-data-explorer-launcher.png" alt-text="Azure Cosmos 本機模擬器的資料總管啟動程式":::
+:::image type="content" source="./media/local-emulator/database-local-emulator-data-explorer-launcher.png" alt-text="選取 [開始] 按鈕或按 Windows 鍵，開始鍵入 Azure Cosmos 模擬器，然後從應用程式清單中選取模擬器":::
 
 ## <a name="use-the-emulator-on-docker-for-windows"></a><a id="run-on-windows-docker"></a>在適用於 Windows 的 Docker 上使用模擬器
 
@@ -289,7 +285,7 @@ services:
 
 1. 開啟該特定項目的捷徑功能表，選取 [取得項目]，然後在 [信任] > [使用此憑證時] 選項底下，選取 [永遠信任]。 
 
-   :::image type="content" source="./media/local-emulator/mac-trust-certificate.png" alt-text="開啟該特定項目的捷徑功能表，選取 [取得項目]，然後在 [信任 - 使用此憑證時] 選項底下，選取 [永遠信任]":::
+   :::image type="content" source="./media/local-emulator/mac-trust-certificate.png" alt-text="選取 [開始] 按鈕或按 Windows 鍵，開始鍵入 Azure Cosmos 模擬器，然後從應用程式清單中選取模擬器":::
   
 ### <a name="option-2-disable-the-ssl-validation-in-the-application"></a><a id="disable-ssl-validation"></a>選項2：停用應用程式中的 SSL 驗證
 

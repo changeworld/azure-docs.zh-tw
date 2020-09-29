@@ -8,17 +8,17 @@ manager: rkarlin
 ms.assetid: 09d62d23-ab32-41f0-a5cf-8d80578181dd
 ms.service: security-center
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/11/2020
 ms.author: memildin
-ms.openlocfilehash: e8aea9b8abb5926fdb73df7c140ecfec1114f7a0
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 4b47646e2f051a8fbfefbc36aa879bb80e9eca68
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90894771"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91439029"
 ---
 # <a name="adaptive-network-hardening-in-azure-security-center"></a>Azure 資訊安全中心中的適應性網路強化
 瞭解如何在 Azure 資訊安全中心中設定適應性網路強化。
@@ -29,7 +29,7 @@ ms.locfileid: "90894771"
 |釋放狀態：|正式上市 (GA)|
 |定價：|需要 [適用于伺服器的 Azure Defender](defender-for-servers-introduction.md)|
 |必要的角色和許可權：|電腦 Nsg 上的寫入權限|
-|雲端：|![Yes](./media/icons/yes-icon.png) 商業雲端<br>![No](./media/icons/no-icon.png) 全國/主權 (US Gov、中國 Gov、其他 Gov) |
+|雲端：|![是](./media/icons/yes-icon.png) 商業雲端<br>![否](./media/icons/no-icon.png) 全國/主權 (US Gov、中國 Gov、其他 Gov) |
 |||
 
 ## <a name="what-is-adaptive-network-hardening"></a>什麼是適應性網路強化？

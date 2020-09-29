@@ -1,23 +1,23 @@
 ---
 title: Azure ExpressRoute：設定 ExpressRoute Direct： CLI
-description: 瞭解如何使用 Azure CLI 將 Azure ExpressRoute Direct 設定為直接連接到全球對等互連位置的 Microsoft 全球網路。
+description: 瞭解如何使用 Azure CLI 將 Azure ExpressRoute Direct 設定為直接連接至 Microsoft 全球網路。
 services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 05/20/2019
+ms.date: 09/28/2020
 ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 4eea79d6166ef4beae3b2d61e47e7df0bc82624c
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: e8c305da074f3090ced0dfc16b4a3faa4c757699
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89395956"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91440216"
 ---
 # <a name="configure-expressroute-direct-by-using-the-azure-cli"></a>使用 Azure CLI 設定 ExpressRoute Direct
 
-您可以使用 Azure ExpressRoute Direct 在策略性分散於世界各地的對等互連位置，直接連線至 Microsoft 全球網路。 如需詳細資訊，請參閱[關於 ExpressRoute Direct Connect](expressroute-erdirect-about.md)。
+ExpressRoute Direct 可讓您透過策略性分散在世界各地的對等互連位置，直接連線到 Microsoft 的全球網路。 如需詳細資訊，請參閱[關於 ExpressRoute Direct Connect](expressroute-erdirect-about.md)。
 
 ## <a name="create-the-resource"></a><a name="resources"></a>建立資源
 
@@ -209,7 +209,13 @@ ms.locfileid: "89395956"
    }  
    ```
 
-## <a name="change-adminstate-for-links"></a><a name="state"></a>變更連結的 AdminState
+## <a name="generate-the-letter-of-authorization-loa"></a><a name="authorization"></a>產生 (LOA 的授權信件) 
+
+輸入最近建立的 ExpressRoute Direct 資源名稱、資源組名和客戶名稱，以寫入 LOA 並 (選擇性地) 定義要儲存檔的檔案位置。 如果未參考檔案路徑，檔會下載到目前的目錄。
+
+```azurecli
+az network express-route port generate-loa -n Contoso-Direct -g Contoso-Direct-rg --customer-name Contoso --destination C:\Users\SampleUser\Downloads\LOA.pdf
+```
 
 使用此程序來進行第 1 層測試。 確保每個交叉連線都已在主要和次要連接埠的每個路由器中正確修補。
 
@@ -287,7 +293,8 @@ ms.locfileid: "89395956"
 
 **SkuTier** 可以是 Local、Standard 或 Premium。
 
-只有在 ExpressRoute Direct 不支援無限制時， **SkuFamily**必須是 [metereddata。
+**SkuFamily** 只能 [metereddata。 ExpressRoute Direct 不支援無限制。
+
 在 ExpressRoute Direct 資源上建立線路：
 
   ```azurecli
@@ -332,6 +339,6 @@ ms.locfileid: "89395956"
   }  
   ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如需有關 ExpressRoute Direct 的詳細資訊，請參閱[概觀](expressroute-erdirect-about.md)。

@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: cherylmc
-ms.openlocfilehash: f0ff647581447ad4436daf6c8b1d2ecbf817f7f8
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 78165e9c14d4a83dbc20cbccd2f31dc8ac4c79ed
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90983641"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91440863"
 ---
 # <a name="azure-virtual-wan-logs-and-metrics"></a>Azure 虛擬 WAN 記錄和計量
 
@@ -66,7 +66,7 @@ Azure 監視器中的計量是數值，可描述系統在特定時間的某個�
 
 4. 在 [ **度量** ] 頁面上，您可以查看您感興趣的度量。
 
-   :::image type="content" source="./media/logs-metrics/metrics-page.png" alt-text="計量頁面":::
+   :::image type="content" source="./media/logs-metrics/metrics-page.png" alt-text="螢幕擷取畫面顯示已選取 Azure 監視器中 View 的站對站 V P N 窗格。":::
 
 ## <a name="diagnostic-logs"></a><a name="diagnostic"></a>診斷記錄
 
@@ -93,15 +93,15 @@ Azure 監視器中的計量是數值，可描述系統在特定時間的某個�
 
 1. 在入口網站中，流覽至您的虛擬 WAN 資源。 在入口網站中，于 [虛擬 WAN] 頁面的 [ **總覽** ] 區段中，選取 [ **基本** ] 以展開視圖並取得資源群組資訊。 複製資源群組資訊。
 
-   :::image type="content" source="./media/logs-metrics/3.png" alt-text="計量頁面":::
+   :::image type="content" source="./media/logs-metrics/3.png" alt-text="螢幕擷取畫面顯示已選取 Azure 監視器中 View 的站對站 V P N 窗格。":::
 
 2. 在 [監視] 區段中，流覽至資源群組。 選取 [ **診斷設定**]，然後輸入資源資訊。 這是您在步驟2中從本文稍早的 [ [View gateway 計量](#metrics-steps) ] 區段中複製的資源資訊。
 
-   :::image type="content" source="./media/logs-metrics/4.png" alt-text="計量頁面":::
+   :::image type="content" source="./media/logs-metrics/4.png" alt-text="螢幕擷取畫面顯示已選取 Azure 監視器中 View 的站對站 V P N 窗格。":::
 
 3. 在 [結果] 頁面上，選取 [ **+ 新增診斷設定**]，然後選取一個選項。 您可以選擇傳送至 Log Analytics、串流至事件中樞，或只封存至儲存體帳戶。
 
-   :::image type="content" source="./media/logs-metrics/5.png" alt-text="計量頁面":::
+   :::image type="content" source="./media/logs-metrics/5.png" alt-text="螢幕擷取畫面顯示已選取 Azure 監視器中 View 的站對站 V P N 窗格。":::
 
 ### <a name="log-analytics-sample-query"></a><a name="sample-query"></a>Log Analytics 範例查詢
 
@@ -121,7 +121,7 @@ Azure 監視器中的計量是數值，可描述系統在特定時間的某個�
 
 預設會收集**活動記錄**專案，而且可以在 Azure 入口網站中查看。 您可以使用 Azure 活動記錄 (之前稱為「作業 *記錄* 」和「 *審核記錄* 」) 來查看提交至您 Azure 訂用帳戶的所有作業。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * 若要了解如何監視 Azure 防火牆記錄和計量，請參閱[教學課程：監視 Azure 防火牆記錄](../firewall/tutorial-diagnostics.md)。
 * 若要深入瞭解 Azure 監視器中的計量，請參閱 [Azure 監視器中的計量](../azure-monitor/platform/data-platform-metrics.md)。
