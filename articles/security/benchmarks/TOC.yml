@@ -69,6 +69,8 @@
       href: ../../backup/security-baseline.md
     - name: Azure Cache for Redis 安全性基準
       href: ../../azure-cache-for-redis/security-baseline.md
+    - name: Azure 認知搜尋安全性基準
+      href: ../../search/security-baseline.md
     - name: Azure 資料箱安全性基準
       href: ../../databox/security-baseline.md
     - name: Azure 資料總管安全性基準

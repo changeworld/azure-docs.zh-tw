@@ -4,16 +4,16 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 73ba78eca710f0b98b2a209494519cb8003e554b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: fd635d4c0563c35979f8d85c33dfbde35f05f9e6
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75468560"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400985"
 ---
 可用性群組接聽程式是一個 IP 位址及網路名稱，可供 SQL Server 可用性群組接聽。 若要建立可用性群組接聽程式，請執行下列步驟：
 
-1. <a name="getnet"></a>取得叢集網路資源的名稱。
+1. <a name="getnet"></a>取得叢集網路資源名稱。
 
     a. 使用 RDP 連接到裝載主要複本的 Azure 虛擬機器。 
 
@@ -28,9 +28,9 @@ ms.locfileid: "75468560"
 
     a. 展開叢集名稱，然後按一下 [角色]****。
 
-    b. 在 [**角色**] 窗格中，以滑鼠右鍵按一下可用性組名，然後選取 [**新增資源**] [  >  **用戶端存取點**]。
+    b. 在 [角色] 窗格中，以滑鼠右鍵按一下可用性群組名稱，然後選取 [新增資源] > [用戶端存取點]。
 
-   ![用戶端存取點](./media/virtual-machines-ag-listener-configure/92-addclientaccesspoint.png)
+   ![顯示 [用戶端存取點] 功能表選項的螢幕擷取畫面。](./media/virtual-machines-ag-listener-configure/92-addclientaccesspoint.png)
 
     c. 在 [名稱]**** 方塊中，建立新接聽程式的名稱。 
    新接聽程式的名稱是應用程式將用來連線到 SQL Server 可用性群組中資料庫的網路名稱。
@@ -39,7 +39,7 @@ ms.locfileid: "75468560"
 
 1. 讓可用性群組的叢集角色離線。 在 [容錯移轉叢集管理員]**** 的 [角色]**** 下方，以滑鼠右鍵按一下角色，然後選取 [停止角色]****。
 
-1. <a name="congroup"></a>設定可用性群組的 IP 資源。
+1. <a name="congroup"></a>為可用性群組設定 IP 資源。
 
     a. 按一下 [資源]**** 索引標籤，然後展開您建立的用戶端存取點。  
     用戶端存取點離線。
@@ -50,13 +50,13 @@ ms.locfileid: "75468560"
 
     c. 在 [IP 地址]**** 下，按一下 [靜態 IP 位址]****。 將 [IP 位址] 設為與您在 Azure 入口網站中設定負載平衡器的相同地址。
 
-   ![IP 資源](./media/virtual-machines-ag-listener-configure/96-ipresource.png) 
+   ![顯示設定 IP 位址所在的螢幕擷取畫面。](./media/virtual-machines-ag-listener-configure/96-ipresource.png) 
 
     <!-----------------------I don't see this option on server 2016
     1. Disable NetBIOS for this address and click **OK**. Repeat this step for each IP resource if your solution spans multiple Azure VNets. 
     ------------------------->
 
-1. <a name = "dependencyGroup"></a>使 SQL Server 可用性群組資源依存于用戶端存取點。
+1. <a name = "dependencyGroup"></a>讓 SQL Server 可用性群組資源依存於用戶端存取點。
 
     a. 在 [容錯移轉叢集管理員] 中，按一下 [角色]****，然後按一下您的 [可用性群組]。
 
@@ -64,19 +64,19 @@ ms.locfileid: "75468560"
 
     c. 在 [相依性] 索引標籤上，新增用戶端存取點 (接聽程式) 資源的名稱。
 
-   ![IP 資源](./media/virtual-machines-ag-listener-configure/97-propertiesdependencies.png) 
+   ![顯示要在 [相依性] 索引標籤上新增名稱之位置的螢幕擷取畫面。](./media/virtual-machines-ag-listener-configure/97-propertiesdependencies.png) 
 
     d. 按一下 [確定]  。
 
-1. <a name="listname"></a>讓用戶端存取點資源依存于 IP 位址。
+1. <a name="listname"></a>讓用戶端存取點資源依存於 IP 位址。
 
     a. 在 [容錯移轉叢集管理員] 中，按一下 [角色]****，然後按一下您的 [可用性群組]。 
 
     b. 在 [資源]**** 索引標籤中，以滑鼠右鍵按一下 [伺服器名稱]**** 下的用戶端存取點資源，然後按一下 [屬性]****。 
 
-   ![IP 資源](./media/virtual-machines-ag-listener-configure/98-dependencies.png) 
+   ![顯示伺服器名稱的 [屬性] 功能表選項的螢幕擷取畫面。](./media/virtual-machines-ag-listener-configure/98-dependencies.png) 
 
-    c. 按一下 [相依**性] 索引**標籤。請確認 IP 位址是相依性。 如果不是，請在 IP 位址上設定相依性。 如果列出多個資源，請確認 IP 位址具有 OR 相依性，而非 AND。 按一下 [確定]。 
+    c. 按一下 [相依性]  索引標籤。確認 IP 位址是相依性。 如果不是，請在 IP 位址上設定相依性。 如果列出多個資源，請確認 IP 位址具有 OR 相依性，而非 AND。 按一下 [確定]。 
 
    ![IP 資源](./media/virtual-machines-ag-listener-configure/98-propertiesdependencies.png) 
 
@@ -112,11 +112,11 @@ ms.locfileid: "75468560"
 
 如有必要，請重複上述步驟，來設定 WSFC 叢集 IP 位址的叢集參數。
 
-1. 取得 WSFC 叢集 IP 位址的 IP 位址名稱。 在 [叢集**核心資源**] 底下的**容錯移轉叢集管理員**中，找出 [**伺服器名稱**]。
+1. 取得 WSFC 叢集 IP 位址的 IP 位址名稱。 在 [叢集核心資源] 底下的 [容錯移轉叢集管理員] 中，找出 [伺服器名稱]。
 
 1. 以滑鼠右鍵按一下 [IP 位址]****，然後選取 [屬性]****。
 
-1. 複製 IP 位址的 [名稱]****。 它可能是 `Cluster IP Address`。 
+1. 複製 IP 位址的 [名稱]****。 可以是 `Cluster IP Address`。 
 
 1. <a name="setwsfcparam"></a>在 PowerShell 中設定叢集參數。
   
@@ -140,4 +140,4 @@ ms.locfileid: "75468560"
    b. 在其中一個叢集節點中執行 PowerShell 指令碼，以設定叢集參數。  
 
 >[!WARNING]
->可用性群組接聽程式健康情況探查連接埠必須與叢集核心 IP 位址健康情況探查連接埠不同。 在這些範例中，接聽程式埠是59999，而叢集核心 IP 位址健康情況探查埠是58888。 這兩個連接埠都需要允許輸入防火牆規則。
+>可用性群組接聽程式健康情況探查連接埠必須與叢集核心 IP 位址健康情況探查連接埠不同。 在這些範例中，接聽程式連接埠是 59999，叢集核心 IP 位址健全狀態探查連接埠則是 58888。 這兩個連接埠都需要允許輸入防火牆規則。

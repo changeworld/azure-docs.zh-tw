@@ -292,7 +292,7 @@
               href: log-query/query-optimization.md
             - name: 剖析文字資料
               href: log-query/parse-text.md
-        - name: 工作區
+        - name: 工作區和叢集
           items:
             - name: 設計工作區部署
               href: platform/design-logs-deployment.md
@@ -312,6 +312,8 @@
               href: platform/service-providers.md
             - name: 管理存取權
               href: platform/manage-access.md
+            - name: 專用叢集
+              href: log-query/logs-dedicated-clusters.md
     - name: 計量瀏覽器
       items:
         - name: 開始使用計量瀏覽器

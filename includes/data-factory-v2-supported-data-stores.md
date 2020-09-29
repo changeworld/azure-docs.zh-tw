@@ -5,15 +5,15 @@ services: data-factory
 author: linda33wj
 ms.service: data-factory
 ms.topic: include
-ms.date: 06/28/2020
+ms.date: 09/24/2020
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: b0c7f88004564a5f479c0917919ca14e0d048e8b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: dd1d10247a349c33a30eb2ccd1d5858005506ab8
+ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85516851"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91421987"
 ---
 | 類別 | 資料存放區 | 支援作為來源 | 支援作為接收器 | 受 [Azure IR](../articles/data-factory/concepts-integration-runtime.md#azure-integration-runtime) 支援 | 受[自我裝載 IR](../articles/data-factory/concepts-integration-runtime.md#self-hosted-integration-runtime) 支援 |
 |:--- |:--- |:--- |:--- |:--- |:--- |
@@ -27,6 +27,7 @@ ms.locfileid: "85516851"
 | &nbsp; |[適用於 MariaDB 的 Azure 資料庫](../articles/data-factory/connector-azure-database-for-mariadb.md) |✓ | |✓ |✓  |
 | &nbsp; |[適用於 MySQL 的 Azure 資料庫](../articles/data-factory/connector-azure-database-for-mysql.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[適用於 PostgreSQL 的 Azure 資料庫](../articles/data-factory/connector-azure-database-for-postgresql.md) |✓ |✓ |✓ |✓  |
+| &nbsp; |[Azure Databricks Delta Lake](../articles/data-factory/connector-azure-databricks-delta-lake.md) |✓ |✓ |✓ |✓ |
 | &nbsp; |[Azure 檔案儲存體](../articles/data-factory/connector-azure-file-storage.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[Azure SQL Database](../articles/data-factory/connector-azure-sql-database.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[Azure SQL 受控執行個體](../articles/azure-sql/managed-instance/sql-managed-instance-paas-overview.md) |✓ |✓ |✓ |✓  |
