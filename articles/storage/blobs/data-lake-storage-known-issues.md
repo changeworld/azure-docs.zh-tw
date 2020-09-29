@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/26/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: fd500b80f0c564fc0f4c7e311483790a83a4101a
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: c1e9e3d63e8a4f7fe461e2d33603da91d3d9bec6
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88923733"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91441773"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 的已知問題
 
@@ -113,11 +113,9 @@ Set-AzStorageServiceLoggingProperty -ServiceType Blob -LoggingOperations read,wr
 
 ### <a name="lifecycle-management-policies"></a>生命週期管理原則
 
-- 進階 BlockBlobStorage 儲存體帳戶尚不支援生命週期管理原則。 
+- 只有一般用途 v2 帳戶才支援生命週期管理原則。 Premium BlockBlobStorage 儲存體帳戶尚不支援這些功能。
+- 資料無法從進階層移至較低階層。
 
-- 資料無法從進階層移至較低階層。 
-
-- 目前尚不支援**刪除 Blob** 這項動作。 
 
 ### <a name="hdinsight-support"></a>HDInsight 支援
 

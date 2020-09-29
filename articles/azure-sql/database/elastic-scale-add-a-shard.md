@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: scale-out
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/03/2019
-ms.openlocfilehash: 62f7f93b4baeeb4132e867a90e4f911187967f42
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 50e7e597a4fb02919739633529abdbf772bcecea
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84034749"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91443056"
 ---
 # <a name="adding-a-shard-using-elastic-database-tools"></a>使用彈性資料庫工具加入分區
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -29,7 +29,7 @@ ms.locfileid: "84034749"
 
 ### <a name="example--adding-a-shard-and-its-range-to-an-existing-shard-map"></a>範例：將分區及其範圍加入至現有的分區對應
 
-這個範例會使用 TryGetShard （[java](/java/api/com.microsoft.azure.elasticdb.shard.map.shardmap.trygetshard)、 [.net](https://docs.microsoft.com/previous-versions/azure/dn823929(v=azure.100))）[CreateShard （JAVA、](/java/api/com.microsoft.azure.elasticdb.shard.map.shardmap.createshard) [.Net](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.createshard)）、CreateRangeMapping （[java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap.createrangemapping)、 [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1)方法），並建立 ShardLocation （[java](/java/api/com.microsoft.azure.elasticdb.shard.base.shardlocation)、 [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardlocation)）類別的實例。 在下列範例中，已建立名為 **sample_shard_2** 的資料庫及其中的所有必要結構描述物件，以保存範圍 [300, 400)。  
+此範例會使用 TryGetShard ([java](/java/api/com.microsoft.azure.elasticdb.shard.map.shardmap.trygetshard)、 [.net](https://docs.microsoft.com/previous-versions/azure/dn823929(v=azure.100))) >createshard ([JAVA](/java/api/com.microsoft.azure.elasticdb.shard.map.shardmap.createshard)、 [.Net](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.createshard)) 、CreateRangeMapping ([JAVA](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap.createrangemapping)、 [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1) 方法，並建立 ShardLocation ([java](/java/api/com.microsoft.azure.elasticdb.shard.base.shardlocation)、 [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardlocation)) 類別的實例。 在下列範例中，已建立名為 **sample_shard_2** 的資料庫及其中的所有必要結構描述物件，以保存範圍 [300, 400)。  
 
 ```csharp
 // sm is a RangeShardMap object.

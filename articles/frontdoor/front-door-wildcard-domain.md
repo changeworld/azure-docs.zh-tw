@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/10/2020
 ms.author: duau
-ms.openlocfilehash: 349c00b312ba7c3f18bab04fb059199732b4f1b3
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: edeaaf97c818831aa1eda5823ea491110f784549
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89398744"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91442358"
 ---
 # <a name="wildcard-domains"></a>萬用字元網域
 
@@ -72,9 +72,9 @@ WAF 原則可以附加至萬用字元網域，類似于其他網域。 不同的
 設定路由規則時，您可以選取萬用字元網域作為前端主機。 萬用字元網域和子域也可以有不同的路由行為。 如 [Azure Front Door 如何進行路由](front-door-route-matching.md)比對的方式所述，在執行時間會選擇跨不同路由規則之定義域的最特定相符項。
 
 > [!IMPORTANT]
-> 您必須在路由規則之間擁有相符的路徑模式，否則您的用戶端將會看到失敗。 例如，您有兩個路由規則（例如路由1） (`*.foo.com/*` 對應至後端集區 A) ，而路由 2 (`bar.foo.com/somePath/*` 對應至後端集區 B) 。 然後，要求送達 `bar.foo.com/anotherPath/*` 。 Azure Front Door 會根據更明確的定義域比對來選取路由2，而只會找出路由之間沒有相符的路徑模式。
+> 您必須在路由規則之間擁有相符的路徑模式，否則您的用戶端將會看到失敗。 例如，您有兩個路由規則（例如路由1） (`*.foo.com/*` 對應至後端集區 A) ，而路由 2 (`/bar.foo.com/somePath/*` 對應至後端集區 B) 。 然後，要求送達 `bar.foo.com/anotherPath/*` 。 Azure Front Door 會根據更明確的定義域比對來選取路由2，而只會找出路由之間沒有相符的路徑模式。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 瞭解如何 [建立 Azure Front Door 設定檔](quickstart-create-front-door.md)。
 - 瞭解如何 [在 Azure Front Door 上新增自訂網域](front-door-custom-domain.md)。

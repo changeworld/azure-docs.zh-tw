@@ -1,24 +1,24 @@
 ---
-title: '使用 Transact-sql 建立和管理彈性資料庫作業 (preview)  (T-sql) '
+title: '使用 Transact-sql (T-sql) ，建立和管理彈性資料庫工作 (preview) '
 description: 使用 Transact-SQL (T-SQL) 透過彈性資料庫作業代理程式跨多個資料庫執行指令碼。
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
 ms.custom: seo-lt-2019, sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: jaredmoo
 author: jaredmoo
 ms.reviewer: sstein
 ms.date: 02/07/2020
-ms.openlocfilehash: 339b66310d75e228bc6107635ac39b8d27d774c1
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 5c05db4d6e0c98935fc13325b5656f8023c6228e
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88119108"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91443350"
 ---
-# <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs-preview"></a>使用 Transact-sql (T-sql) 來建立和管理 (預覽的彈性資料庫作業) 
+# <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs-preview"></a>使用 Transact-sql (T-sql) 來建立和管理彈性資料庫工作 (preview) 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 本文提供許多範例案例，說明如何透過 T-SQL 開始使用彈性作業。
@@ -29,7 +29,7 @@ Transact-SQL (T-SQL) 可用來建立、設定、執行和管理作業。 目前�
 
 ## <a name="create-a-credential-for-job-execution"></a>建立執行作業所需的認證
 
-認證可用來連線至執行指令碼的目標資料庫。 認證必須具有適當權限 (對於目標群組所指定的資料庫)，才能成功執行指令碼。 使用[邏輯 SQL server](logical-servers.md)和/或集區目標群組成員時，強烈建議您建立主要認證，以便在作業執行時，于擴充伺服器和/或集區之前，用來重新整理認證。 資料庫範圍認證會建立在作業代理程式資料庫中。 相同的認證必須用來在目標資料庫上*建立登入*和*從登入建立要授與登入資料庫權限的使用者*。
+認證可用來連線至執行指令碼的目標資料庫。 認證必須具有適當權限 (對於目標群組所指定的資料庫)，才能成功執行指令碼。 使用 [邏輯 SQL server](logical-servers.md) 和/或集區目標群組成員時，強烈建議您建立主要認證，以便在執行作業時，在伺服器和/或集區展開之前重新整理認證。 資料庫範圍認證會建立在作業代理程式資料庫中。 相同的認證必須用來在目標資料庫上*建立登入*和*從登入建立要授與登入資料庫權限的使用者*。
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -73,7 +73,7 @@ SELECT * FROM jobs.target_group_members WHERE target_group_name='ServerGroup1';
 
 ## <a name="exclude-an-individual-database"></a>排除個別資料庫
 
-下列範例顯示如何針對伺服器中的所有資料庫執行作業，但名為* (mappingdb*的資料庫除外。  
+下列範例顯示如何對伺服器中的所有資料庫執行作業，但名為 *>mappingdb*的資料庫除外。  
 連線至[*作業資料庫*](job-automation-overview.md#job-database)，然後執行下列命令：
 
 ```sql
@@ -179,13 +179,13 @@ CREATE TABLE [dbo].[Test]([TestId] [int] NOT NULL);',
 
 下列範例會建立從多個資料庫收集效能資料的新作業。
 
-根據預設，作業代理程式會建立輸出資料表來儲存傳回的結果。 因此，與輸出認證相關聯的資料庫主體至少必須具有下列許可權： `CREATE TABLE` 在資料庫、 `ALTER` 、 `SELECT` 、、 `INSERT` `DELETE` 輸出資料表或其架構上，以及 `SELECT` 在[sys.databases](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-indexes-transact-sql)目錄檢視上。
+根據預設，作業代理程式會建立輸出資料表來儲存傳回的結果。 因此，與輸出認證相關聯的資料庫主體至少必須具有下列許可權： `CREATE TABLE` 在資料庫、 `ALTER` 、、 `SELECT` `INSERT` 、 `DELETE` 輸出資料表或其架構上，以及 `SELECT` [sys. 索引](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-indexes-transact-sql) 目錄檢視上。
 
-如果您想要在一段時間之前手動建立資料表，它必須具有下列屬性：
+如果您想要事先手動建立資料表，則必須具有下列屬性：
 
 1. 結果集使用正確名稱和資料類型的資料行。
 2. internal_execution_id 的其他資料行 (資料類型為 uniqueidentifier)。
-3. 在 internal_execution_id 資料行上名為的非叢集索引 `IX_<TableName>_Internal_Execution_ID` 。
+3. 在 internal_execution_id 資料行上命名的非叢集索引 `IX_<TableName>_Internal_Execution_ID` 。
 4. 上列擁有權限，但 `CREATE TABLE` 資料庫的許可權除外。
 
 連線至[*作業資料庫*](job-automation-overview.md#job-database)，然後執行下列命令：
@@ -275,7 +275,7 @@ JOIN jobs.jobs j
 select * from jobs.jobsteps
 ```
 
-## <a name="begin-unplanned-execution-of-a-job"></a>開始執行工作的未計畫執行
+## <a name="begin-unplanned-execution-of-a-job"></a>開始未計畫的作業執行
 
 下列範例說明如何立即啟動作業。  
 連線至[*作業資料庫*](job-automation-overview.md#job-database)，然後執行下列命令：
@@ -427,10 +427,10 @@ EXEC jobs.sp_delete_job @job_name='ResultsPoolsJob'
 [ ** \@ job_name =** ] ' job_name '  
 作業的名稱。 名稱必須是唯一的，且不可包含百分比 (%) 字元。 job_name 是 nvarchar(128)，沒有預設值。
 
-[ ** \@ 描述 =** ] ' 描述 '  
+[ ** \@ description =** ] ' description '  
 這是作業的描述。 description 是 nvarchar (512)，預設值為 NULL。 如果省略 description，則會使用空字串。
 
-[ ** \@ enabled =** ] 已啟用  
+已啟用 [ ** \@ 啟用 =** ]  
 指定是否啟用作業的排程。 Enabled 是位元，預設值是 0 (停用)。 如果為 0，則不會啟用作業，且不會依據排程執行作業；但您可以手動執行作業。 如果為 1，則會依據排程執行作業，且您可以手動執行作業。
 
 [ ** \@ schedule_interval_type =**] schedule_interval_type  
@@ -497,10 +497,10 @@ sp_add_job 必須從建立作業代理程式時所指定的作業代理程式資
 [ ** \@ new_name =** ] ' new_name '  
 作業的新名稱。 new_name 是 nvarchar(128)。
 
-[ ** \@ 描述 =** ] ' 描述 '  
+[ ** \@ description =** ] ' description '  
 這是作業的描述。 description 是 nvarchar(512)。
 
-[ ** \@ enabled =** ] 已啟用  
+已啟用 [ ** \@ 啟用 =** ]  
 指定要啟用 (1) 還是不啟用 (0) 作業的排程。 Enabled 是位元。
 
 [ ** \@ schedule_interval_type =** ] schedule_interval_type  
@@ -611,10 +611,10 @@ sp_add_job 必須從建立作業代理程式時所指定的作業代理程式資
 這是加入步驟的作業名稱。 job_name 是 nvarchar(128)。
 
 [ ** \@ step_id =** ] step_id  
-作業步驟的順序識別碼。 步驟識別碼從 1 開始，並漸次遞增而不會跳號。 如果現有的步驟已經有此識別碼，則該步驟和所有下列步驟將會遞增其識別碼，以便將這個新步驟插入順序中。 若未指定，則會將 step_id 自動指派給步驟序列中的最後一個項目。 step_id 是 int。
+作業步驟的順序識別碼。 步驟識別碼從 1 開始，並漸次遞增而不會跳號。 如果現有的步驟已經有此識別碼，則該步驟和所有的後續步驟都會遞增其識別碼，以便將這個新步驟插入序列中。 若未指定，則會將 step_id 自動指派給步驟序列中的最後一個項目。 step_id 是 int。
 
 [ ** \@ step_name =** ] step_name  
-步驟的名稱。 必須指定，但作業的第一個步驟 (為了方便) ，其預設名稱為 ' JobStep '。 step_name 是 nvarchar(128)。
+步驟的名稱。 必須指定，但 (為方便) 的作業的第一個步驟除外，其預設名稱為 ' JobStep '。 step_name 是 nvarchar(128)。
 
 [ ** \@ command_type =** ] ' command_type '  
 此作業步驟所執行的命令類型。 command_type 是 nvarchar(50)，預設值為 TSql，表示 @command_type 參數的值為 T-SQL 指令碼。
@@ -626,13 +626,13 @@ sp_add_job 必須從建立作業代理程式時所指定的作業代理程式資
 
 如果指定，則值必須是內嵌。
 
-[ ** \@ command =** ] ' 命令 '  
+[ ** \@ command =** ] ' command '  
 command 必須是有效的 T-SQL 指令碼，且後續會由此作業步驟執行。 command 是 nvarchar(max)，預設值為 NULL。
 
 [ ** \@ credential_name =** ] ' credential_name '  
 存放在此作業控制資料庫中的資料庫範圍認證名稱，在此步驟執行時用來連線至目標群組內的每個目標資料庫。 credential_name 是 nvarchar(128)。
 
-[ ** \@ target_group_name =** ] ' 目標 group_name '  
+[ ** \@ target_group_name =** ] ' target-group_name '  
 將執行作業步驟的目標資料庫所屬的目標群組名稱。 target_group_name 是 nvarchar(128)。
 
 [ ** \@ initial_retry_interval_seconds =** ] initial_retry_interval_seconds  
@@ -757,13 +757,13 @@ command 必須是有效的 T-SQL 指令碼，且後續會由此作業步驟執�
 
 如果指定，則值必須是內嵌。
 
-[ ** \@ command =** ] ' 命令 '  
+[ ** \@ command =** ] ' command '  
 command 必須是有效的 T-SQL 指令碼，且後續會由此作業步驟執行。 command 是 nvarchar(max)，預設值為 NULL。
 
 [ ** \@ credential_name =** ] ' credential_name '  
 存放在此作業控制資料庫中的資料庫範圍認證名稱，在此步驟執行時用來連線至目標群組內的每個目標資料庫。 credential_name 是 nvarchar(128)。
 
-[ ** \@ target_group_name =** ] ' 目標 group_name '  
+[ ** \@ target_group_name =** ] ' target-group_name '  
 將執行作業步驟的目標資料庫所屬的目標群組名稱。 target_group_name 是 nvarchar(128)。
 
 [ ** \@ initial_retry_interval_seconds =** ] initial_retry_interval_seconds  
@@ -885,7 +885,7 @@ command 必須是有效的 T-SQL 指令碼，且後續會由此作業步驟執�
 將從中移除步驟之作業的名稱。 job_name 是 nvarchar(128)，沒有預設值。
 
 [ ** \@ job_execution_id =** ] job_execution_id 輸出  
-將指派作業執行識別碼的輸出參數。 job_version 是 uniqueidentifier。
+將指派作業執行識別碼的輸出參數。 job_version 為 uniqueidentifier。
 
 #### <a name="return-code-values"></a>傳回碼值
 
@@ -950,7 +950,7 @@ command 必須是有效的 T-SQL 指令碼，且後續會由此作業步驟執�
 [ ** \@ target_group_name =** ] ' target_group_name '  
 要建立的目標群組名稱。 target_group_name 是 nvarchar(128)，沒有預設值。
 
-[ ** \@ target_group_id =** ] target_group_id 如果成功建立，則輸出指派給作業的目標群組識別編號。 target_group_id 是 uniqueidentifier 類型的輸出變數，預設值為 NULL。
+[ ** \@ target_group_id =** ] target_group_id 在建立成功時，輸出指派給作業的目標群組識別碼。 target_group_id 是 uniqueidentifier 類型的輸出變數，預設值為 NULL。
 
 #### <a name="return-code-values"></a>傳回碼值
 
@@ -1049,7 +1049,7 @@ command 必須是有效的 T-SQL 指令碼，且後續會由此作業步驟執�
 
 #### <a name="remarks"></a>備註
 
-當目標群組中包含伺服器或彈性集區時，就會在執行時，在伺服器或彈性集區中的所有單一資料庫上執行作業。
+當伺服器或彈性集區包含在目標群組中時，在伺服器或彈性集區中的所有單一資料庫上執行作業。
 
 #### <a name="permissions"></a>權限
 
@@ -1207,7 +1207,7 @@ GO
 |檢視  |描述  |
 |---------|---------|
 |[job_executions](#job_executions-view)     |  顯示作業執行歷程記錄。      |
-|[作業](#jobs-view)     |   顯示所有作業。      |
+|[工作](#jobs-view)     |   顯示所有作業。      |
 |[job_versions](#job_versions-view)     |   顯示所有作業版本。      |
 |[jobsteps](#jobsteps-view)     |     顯示每項作業的目前版本中包含的所有步驟。    |
 |[jobstep_versions](#jobstep_versions-view)     |     顯示每項作業的所有版本中包含的所有步驟。    |
@@ -1228,7 +1228,7 @@ GO
 |**job_version** | int | 作業的版本 (每次修改作業時，都會自動更新)。
 |**step_id** |int | 步驟的唯一 (針對這項作業) 識別碼。 NULL 表示這是父作業執行。
 |**is_active** | bit | 表示資訊是使用中還是非使用中。 1 表示使用中的作業，0 表示非使用中。
-|**內** | nvarchar(50) | 表示作業狀態的值：‘Created’、‘In Progress’、‘Failed’、‘Succeeded’、‘Skipped’、'SucceededWithSkipped’|
+|**生命 週期** | nvarchar(50) | 表示作業狀態的值：‘Created’、‘In Progress’、‘Failed’、‘Succeeded’、‘Skipped’、'SucceededWithSkipped’|
 |**create_time**| datetime2(7) | 建立作業的日期和時間。
 |**start_time** | datetime2(7) | 作業開始執行的日期和時間。 如果作業尚未執行，則為 NULL。
 |**end_time** | datetime2(7) | 作業執行完成的日期和時間。 如果作業尚未執行或尚未完成執行，則為 NULL。
@@ -1238,7 +1238,7 @@ GO
 |**target_type** | nvarchar(128) | 包含伺服器中的所有資料庫、彈性集區中的所有資料庫或個別資料庫的目標資料庫或資料庫集合的類型。 Target_type 的有效值為 'SqlServer'、'SqlElasticPool' 或 'SqlDatabase'。 NULL 表示這是父作業執行。
 |**target_id** | UNIQUEIDENTIFIER | 目標群組成員的唯一識別碼。  NULL 表示這是父作業執行。
 |**target_group_name** | nvarchar(128) | 目標群組的名稱。 NULL 表示這是父作業執行。
-|**target_server_name** | nvarchar(256)  | 包含在目標群組中的伺服器名稱。 只有在 target_type 為 ‘SqlServer’ 時才須指定。 NULL 表示這是父作業執行。
+|**target_server_name** | nvarchar(256)  | 目標群組中包含的伺服器名稱。 只有在 target_type 為 ‘SqlServer’ 時才須指定。 NULL 表示這是父作業執行。
 |**target_database_name** | nvarchar(128) | 目標群組中包含的資料庫名稱。 只有在 target_type 為 ‘SqlDatabase’ 時才須指定。 NULL 表示這是父作業執行。
 
 ### <a name="jobs-view"></a>作業檢視
@@ -1252,7 +1252,7 @@ GO
 |**job_name** | nvarchar(128) | 作業的名稱。|
 |**job_id**| UNIQUEIDENTIFIER |作業的唯一識別碼。|
 |**job_version** |int |作業的版本 (每次修改作業時，都會自動更新)。|
-|**description** |nvarchar(512)| 作業的描述。 啟用的位：指出作業已啟用或停用。 1 表示啟用的作業，0 表示停用的作業。|
+|**description** |nvarchar(512)| 作業的描述。 Enabled bit：表示作業已啟用或停用。 1 表示啟用的作業，0 表示停用的作業。|
 |**schedule_interval_type**|nvarchar(50) |指出何時要執行作業的值：「單次、「分鐘」、「小時」、「天」、「週」、「月」
 |**schedule_interval_count**|int|每次執行作業之間所發生的 schedule_interval_type 期間數目。|
 |**schedule_start_time**|datetime2(7)|作業上次開始執行的日期和時間。|
@@ -1337,7 +1337,7 @@ GO
 |**refresh_credential_name**|nvarchar(128)|用來連線至目標群組成員的資料庫範圍認證的名稱。|
 |**subscription_id**|UNIQUEIDENTIFIER|訂用帳戶的唯一識別碼。|
 |**resource_group_name**|nvarchar(128)|目標群組成員所在的資源群組名稱。|
-|**server_name**|nvarchar(128)|包含在目標群組中的伺服器名稱。 只有在 target_type 為 ‘SqlServer’ 時才須指定。 |
+|**server_name**|nvarchar(128)|目標群組中包含的伺服器名稱。 只有在 target_type 為 ‘SqlServer’ 時才須指定。 |
 |**database_name**|nvarchar(128)|目標群組中包含的資料庫名稱。 只有在 target_type 為 ‘SqlDatabase’ 時才須指定。|
 |**elastic_pool_name**|nvarchar(128)|目標群組中包含的彈性集區名稱。 只有在 target_type 為 ‘SqlElasticPool’ 時才須指定。|
 |**shard_map_name**|nvarchar(128)|目標群組中包含的分區對應名稱。 只有在 target_type 為 ‘SqlShardMap’ 時才須指定。|

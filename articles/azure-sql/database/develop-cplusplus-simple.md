@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: development
 ms.custom: sqldbrb=1
 ms.devlang: cpp
-ms.topic: conceptual
+ms.topic: how-to
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/12/2018
-ms.openlocfilehash: 610e21064c26734461ba8fd6639868dc930f926c
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 38e4839a41ad8e58e575e552e877303a5105ff36
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85963932"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91443670"
 ---
 # <a name="connect-to-sql-database-using-c-and-c"></a>使用 C 和 C++ 連接到 SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -33,23 +33,23 @@ ms.locfileid: "85963932"
 
 ## <a name="azure-sql-database-and-sql-server-on-virtual-machines"></a><a id="AzureSQL"></a>虛擬機器上的 Azure SQL Database 和 SQL Server
 
-Azure SQL Database 是以 Microsoft SQL Server 為基礎，其設計目的是要提供高可用性、高效能且可調整的服務。 在內部部署執行的專屬資料庫上使用 Azure SQL 有許多好處。 使用 Azure SQL 時，您不需要安裝、設定、維護或管理您的資料庫，而只是資料庫的內容和結構。 我們所擔心像容錯和冗餘等資料庫的一般項目皆已內建。
+Azure SQL Database 是以 Microsoft SQL Server 為基礎，其設計目的是要提供高可用性、高效能且可擴充的服務。 在內部部署執行的專屬資料庫上使用 Azure SQL 有許多優點。 使用 Azure SQL 時，您不需要安裝、設定、維護或管理您的資料庫，而只需要安裝內容和資料庫的結構。 我們所擔心像容錯和冗餘等資料庫的一般項目皆已內建。
 
-Azure 目前有兩個選項可裝載 SQL server 工作負載： Azure SQL Database、資料庫即服務和虛擬機器（VM）上的 SQL server。 我們不會詳細說明這兩者之間的差異，不同之處在于，Azure SQL Database 是新雲端應用程式的最佳選擇，可充分利用雲端服務所提供的成本節約和效能優化。 如果您考慮將您的內部應用程式移轉或擴充至雲端，Azure 虛擬機器上的 SQL Server 可能較合適您。 為了讓本文簡單明瞭，讓我們來建立一個 Azure SQL Database。
+Azure 目前有兩個選項可裝載 SQL server 工作負載： Azure SQL Database、資料庫即服務，以及虛擬機器上的 SQL server (VM) 。 除了這兩者之間的差異外，我們也不會詳細說明這兩者之間的差異，但 Azure SQL Database 是您最適合新的雲端應用程式，以充分利用雲端服務所提供的成本節省和效能優化。 如果您考慮將您的內部應用程式移轉或擴充至雲端，Azure 虛擬機器上的 SQL Server 可能較合適您。 為了讓本文保持簡單，讓我們建立一個 Azure SQL Database。
 
 ## <a name="data-access-technologies-odbc-and-ole-db"></a><a id="ODBC"></a>資料存取技術︰ODBC 和 OLE DB
 
-連接到 Azure SQL Database 並無不同，目前有兩種方式可以連接到資料庫： ODBC （開放式資料庫連接）和 OLE DB （物件連結和內嵌資料庫）。 近年來，Microsoft 已配合 [ODBC 進行原生關聯式資料存取](https://blogs.msdn.microsoft.com/sqlnativeclient/20../../microsoft-is-aligning-with-odbc-for-native-relational-data-access/)。 ODBC 相當簡單，而且也比 OLE DB 更快速。 唯一必須注意的是 ODBC 會使用舊的 C 樣式 API。
+連接到 Azure SQL Database 並無不同，目前有兩種方式可以連接到資料庫： ODBC (開放式資料庫連接) 以及 OLE DB (物件連結和內嵌資料庫) 。 近年來，Microsoft 已配合 [ODBC 進行原生關聯式資料存取](https://blogs.msdn.microsoft.com/sqlnativeclient/20../../microsoft-is-aligning-with-odbc-for-native-relational-data-access/)。 ODBC 相當簡單，而且也比 OLE DB 更快速。 唯一必須注意的是 ODBC 會使用舊的 C 樣式 API。
 
 ## <a name="step-1--creating-your-azure-sql-database"></a><a id="Create"></a>步驟 1：建立 Azure SQL Database
 
-請參閱 [快速入門頁面](single-database-create-quickstart.md) ，以了解如何建立範例資料庫。  或者，您可以遵循這[段簡短的兩分鐘影片](https://azure.microsoft.com/documentation/videos/azure-sql-database-create-dbs-in-seconds/)，使用 Azure 入口網站來建立 Azure SQL Database。
+請參閱 [快速入門頁面](single-database-create-quickstart.md) ，以了解如何建立範例資料庫。  或者，您可以遵循這 [段簡短的兩分鐘影片](https://azure.microsoft.com/documentation/videos/azure-sql-database-create-dbs-in-seconds/) ，使用 Azure 入口網站來建立 Azure SQL Database。
 
 ## <a name="step-2--get-connection-string"></a><a id="ConnectionString"></a>步驟 2：取得連接字串
 
 布建您的 Azure SQL Database 之後，您必須執行下列步驟來判斷連線資訊，並新增您的用戶端 IP 以進行防火牆存取。
 
-在[Azure 入口網站](https://portal.azure.com/)中，使用在資料庫的 [總覽] 區段中列出的 [**顯示資料庫連接字串**]，移至您的 Azure SQL Database ODBC 連接字串：
+在 [Azure 入口網站](https://portal.azure.com/)中，移至您的 Azure SQL Database ODBC 連接字串，方法是使用在資料庫的 [總覽] 區段中列出的 [ **顯示資料庫連接字串** ]：
 
 ![ODBCConnectionString](./media/develop-cplusplus-simple/azureportal.png)
 
@@ -59,15 +59,15 @@ Azure 目前有兩個選項可裝載 SQL server 工作負載： Azure SQL Databa
 
 ## <a name="step-3--add-your-ip-to-the-firewall"></a><a id="Firewall"></a>步驟 3︰將您的 IP 新增至防火牆
 
-移至您伺服器的防火牆區段，並[使用下列步驟將您的用戶端 IP 新增至防火牆](firewall-configure.md)，以確保我們可以建立成功的連線：
+移至您伺服器的 [防火牆] 區段，並 [使用下列步驟將用戶端 IP 新增至防火牆](firewall-configure.md) ，以確定我們可以建立成功的連接：
 
 ![AddyourIPWindow](./media/develop-cplusplus-simple/ip.png)
 
-此時，您已設定您的 Azure SQL Database，並準備好從您的 c + + 程式碼進行連接。
+至此，您已設定 Azure SQL Database，並已準備好從您的 c + + 程式碼進行連接。
 
 ## <a name="step-4-connecting-from-a-windows-cc-application"></a><a id="Windows"></a>步驟 4：從 Windows C/C++ 應用程式連接
 
-您可以使用以 Visual Studio 建立的範例，輕鬆地[在 Windows 上使用 ODBC](https://github.com/Microsoft/VCSamples/tree/master/VC2015Samples/ODBC%20database%20sample%20%28windows%29)連接到您的 Azure SQL Database。 此範例會執行 ODBC 命令列解譯器，以用來連接到我們的 Azure SQL Database。 這個範例會採用資料庫來源名稱 (DSN) 檔案做為命令列引數，或是我們稍早從 Azure 入口網站複製的詳細資訊連接字串。 開啟此專案的屬性頁，然後貼上連接字串做為命令引數，如下所示︰
+您可以使用以 Visual Studio 建立的這個範例，輕鬆地 [使用 Windows 上的 ODBC](https://github.com/Microsoft/VCSamples/tree/master/VC2015Samples/ODBC%20database%20sample%20%28windows%29) 連接到您的 Azure SQL Database。 此範例會執行 ODBC 命令列解譯器，以用來連接到我們的 Azure SQL Database。 這個範例會採用資料庫來源名稱 (DSN) 檔案做為命令列引數，或是我們稍早從 Azure 入口網站複製的詳細資訊連接字串。 開啟此專案的屬性頁，然後貼上連接字串做為命令引數，如下所示︰
 
 ![DSN Propsfile](./media/develop-cplusplus-simple/props.png)
 
@@ -85,7 +85,7 @@ Azure 目前有兩個選項可裝載 SQL server 工作負載： Azure SQL Databa
 
 ## <a name="step-5-connecting-from-a-linux-cc-application"></a><a id="Linux"></a>步驟 5：從 Linux C/C++ 應用程式連接
 
-如果您還沒聽過這些新聞，Visual Studio 現在也可以讓您開發 c + + Linux 應用程式。 您可以在 [Linux 開發的 Visual C++](https://blogs.msdn.microsoft.com/vcblog/20../../visual-c-for-linux-development/) 部落格中閱讀這個新的案例。 若要針對 Linux 建置，您需要正在執行您 Linux 散發版本的遠端電腦。 如果您沒有可用的帳戶，您可以使用[Linux Azure 虛擬機器](../../virtual-machines/linux/quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)來快速設定其中一個。
+如果您還沒聽說過新聞，Visual Studio 現在也可讓您開發 c + + Linux 應用程式。 您可以在 [Linux 開發的 Visual C++](https://blogs.msdn.microsoft.com/vcblog/20../../visual-c-for-linux-development/) 部落格中閱讀這個新的案例。 若要針對 Linux 建置，您需要正在執行您 Linux 散發版本的遠端電腦。 如果您沒有可用的帳戶，您可以使用 [Linux Azure 虛擬機器](../../virtual-machines/linux/quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)快速設定一個。
 
 針對本教學課程，讓我們假設您已設定 Ubuntu 16.04 Linux 散發套件。 以下步驟應該也適用於 Ubuntu 15.10、Red Hat 6 和 Red Hat 7。
 
@@ -142,7 +142,7 @@ Azure 目前有兩個選項可裝載 SQL server 工作負載： Azure SQL Databa
 
 ## <a name="next-steps"></a>後續步驟
 
-* 查看[SQL Database 開發總覽](develop-overview.md)
+* 複習 [SQL Database 開發總覽](develop-overview.md)
 * 更多 [ODBC API 參考](https://docs.microsoft.com/sql/odbc/reference/syntax/odbc-api-reference/)的相關資訊
 
 ## <a name="additional-resources"></a>其他資源

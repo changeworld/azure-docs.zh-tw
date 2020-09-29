@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: cherylmc
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 8ffad738a8f10816f26760fa34c5ce686fac5bad
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 428c24236aad9a57a9d52eb0a6ff3a7aeb9fe541
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401141"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91442157"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-azure-cli"></a>使用 Azure CLI 設定 VNet 對 VNet 的 VPN 閘道連線
 
@@ -70,7 +70,7 @@ VNet 的連線方法有很多種。 下列各節說明不同的虛擬網路連�
 
 * [位於相同訂用帳戶中的 vnet：](#samesub) 這種設定的步驟會使用 TestVNet1 和 TestVNet4。
 
-  ![v2v 圖表](./media/vpn-gateway-howto-vnet-vnet-cli/v2vrmps.png)
+  ![此圖顯示位於相同訂用帳戶中 V 神經網路的 V Net to V Net 步驟。](./media/vpn-gateway-howto-vnet-vnet-cli/v2vrmps.png)
 
 * [位於不同訂用帳戶中的 vnet：](#difsub) 這種設定的步驟會使用 TestVNet1 和 TestVNet5。
 
@@ -376,7 +376,7 @@ VNet 的連線方法有很多種。 下列各節說明不同的虛擬網路連�
 ## <a name="vnet-to-vnet-faq"></a><a name="faq"></a>VNet 對 VNet 常見問題集
 [!INCLUDE [vpn-gateway-vnet-vnet-faq](../../includes/vpn-gateway-faq-vnet-vnet-include.md)]
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 一旦完成您的連接，就可以將虛擬機器加入您的虛擬網路。 如需詳細資訊，請參閱[虛擬機器文件](https://docs.microsoft.com/azure/)。
 * 如需 BGP 的相關資訊，請參閱 [BGP 概觀](vpn-gateway-bgp-overview.md)和[如何設定 BGP](vpn-gateway-bgp-resource-manager-ps.md)。

@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: scale-out
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: anumjs
 ms.author: anjangsh
 ms.reviewer: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: 8a7efdee772c3a871fb8f26655dfc1160c275959
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 46eee878ba8cf1d12edf262241d5df8ef8ccc82f
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84029879"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91442936"
 ---
 # <a name="get-started-with-elastic-database-tools"></a>開始使用彈性資料庫工具
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -83,11 +83,11 @@ ms.locfileid: "84029879"
 
 若要下載及執行範例，請遵循下列步驟：
 
-1. 下載[適用于 AZURE SQL 的彈性 DB 工具-消費者入門範例](https://github.com/Azure/elastic-db-tools)。 將範例解壓縮至您選擇的位置。
+1. 下載 [適用于 AZURE SQL 的彈性 DB 工具-消費者入門範例](https://github.com/Azure/elastic-db-tools)。 將範例解壓縮至您選擇的位置。
 
 2. 若要建立專案，從 *C#* 目錄開啟 *ElasticScaleStarterKit.sln* 方案。
 
-3. 在範例專案的方案中，開啟 *app.config* 檔案。 然後依照檔案中的指示，來新增您的伺服器名稱和登入資訊（使用者名稱和密碼）。
+3. 在範例專案的方案中，開啟 *app.config* 檔案。 然後依照檔案中的指示，將您的伺服器名稱和登入資訊 (使用者名稱和密碼) 。
 
 4. 建置並執行應用程式。 出現提示時，允許 Visual Studio 還原解決方案的 NuGet 套件。 此動作會從 NuGet 下載最新版的彈性資料庫用戶端程式庫。
 
@@ -116,13 +116,13 @@ ms.locfileid: "84029879"
 
 * **合併現有的分區**：分區合併也可使用分割合併工具來執行。 如需詳細資訊，請參閱[在向外延展的雲端資料庫之間移動資料](elastic-scale-overview-split-and-merge.md)。
 
-## <a name="cost"></a>成本
+## <a name="cost"></a>Cost
 
 彈性資料庫工具程式庫是免費的。 當您使用彈性資料庫工具時，不會衍生除了您的 Azure 使用成本以外的任何額外費用。
 
 例如，範例應用程式會建立新資料庫。 此容量的費用取決於您選擇的 SQL Database 版本，以及您應用程式的 Azure 使用量。
 
-如需定價資訊，請參閱[SQL Database 定價詳細資料](https://azure.microsoft.com/pricing/details/sql-database/)。
+如需定價資訊，請參閱 [SQL Database 定價詳細資料](https://azure.microsoft.com/pricing/details/sql-database/)。
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -134,7 +134,7 @@ ms.locfileid: "84029879"
   * [指令碼中心的分區彈性](https://gallery.technet.microsoft.com/scriptcenter/Elastic-Scale-Shard-c9530cbe)
 * 部落格：[Elastic Scale 公告 (英文)](https://azure.microsoft.com/blog/20../../introducing-elastic-scale-preview-for-azure-sql-database/)
 * 第 9 頻道：[Elastic Scale 概觀影片 (英文)](https://channel9.msdn.com/Shows/Data-Exposed/Azure-SQL-Database-Elastic-Scale)
-* 討論論壇： [Microsoft Q&Azure SQL Database 的問題頁面](https://docs.microsoft.com/answers/topics/azure-sql-database.html)
+* 討論論壇： [Microsoft 問&Azure SQL Database 的問題頁面](https://docs.microsoft.com/answers/topics/azure-sql-database.html)
 * 若要測量效能︰ [分區對應管理員的效能計數器](elastic-database-client-library.md)
 
 <!--Anchors-->

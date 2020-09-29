@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: scale-out
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: 95964064200064dcc43449e1d939c1cdfd78cdb8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: daa1bbbace55281f81e04c4639b083b3e934b9f8
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84035979"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91443094"
 ---
 # <a name="query-across-cloud-databases-with-different-schemas-preview"></a>對不同結構描述的雲端資料庫執行查詢 (預覽)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -30,13 +30,13 @@ ms.locfileid: "84035979"
 * 使用者必須擁有 ALTER ANY EXTERNAL DATA SOURCE 權限。 這個權限包含在 ALTER DATABASE 權限中。
 * 需有 ALTER ANY EXTERNAL DATA SOURCE 權限，才能參考基礎資料來源。
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 > [!NOTE]
 > 與水平資料分割不同，這些 DDL 陳述式並不倚賴透過彈性資料庫用戶端程式庫來定義帶有分區對應的資料層。
 >
 
-1. [建立主要金鑰](https://msdn.microsoft.com/library/ms174382.aspx)
+1. [CREATE MASTER KEY](https://msdn.microsoft.com/library/ms174382.aspx)
 2. [CREATE DATABASE SCOPED CREDENTIAL](https://msdn.microsoft.com/library/mt270260.aspx)
 3. [CREATE EXTERNAL DATA SOURCE](https://msdn.microsoft.com/library/dn935022.aspx)
 4. [CREATE EXTERNAL TABLE](https://msdn.microsoft.com/library/dn935021.aspx)
@@ -59,8 +59,8 @@ SECRET = '<password>'
 
 語法：
 
-<External_Data_Source>：： = 建立外部資料源 <data_source_name> （類型 = RDBMS，LOCATION = ' <fully_qualified_server_name> '，DATABASE_NAME = ' <remote_database_name> '，  
-    CREDENTIAL = <credential_name>） [;]
+<External_Data_Source>：： = CREATE EXTERNAL DATA SOURCE <data_source_name> WITH (TYPE = RDBMS，LOCATION = ' <fully_qualified_server_name> '，DATABASE_NAME = ' <remote_database_name> '，  
+    CREDENTIAL = <credential_name> ) [;]
 
 > [!IMPORTANT]
 > TYPE 參數必須設定為 **RDBMS**。
@@ -90,8 +90,8 @@ select * from sys.external_data_sources;
 
 語法：
 
-建立外部資料表 [database_name。 [ schema_name ] . |schema_name。 ] table_name  
-    （{<column_definition>} [,.。。n]） {WITH （<rdbms_external_table_options>）}） [;]
+CREATE EXTERNAL TABLE [database_name。 [ schema_name ] . |schema_name。 ] table_name  
+     ( {<column_definition>} [,.。。n] ) {WITH ( <rdbms_external_table_options> ) } ) [;]
 
 <rdbms_external_table_options>：： = DATA_SOURCE = <External_Data_Source>，[SCHEMA_NAME = N ' nonescaped_schema_name '，] [OBJECT_NAME = N ' nonescaped_object_name '，]
 
@@ -121,7 +121,7 @@ select * from sys.external_tables;
 彈性的查詢會延伸現有的外部資料表語法來定義使用 RDBMS 類型外部資料來源的外部資料表。 垂直資料分割的外部資料表定義包含下列各方面：
 
 * **結構描述**：外部資料表 DDL 會定義您的查詢可以使用的結構描述。 外部資料表定義中提供的結構描述必須符合實際資料儲存所在之遠端資料庫中資料表的結構描述。
-* **遠端資料庫參考**：外部資料表 DDL 指的是外部資料來源。 外部資料源會指定實際資料表資料儲存所在之遠端資料庫的伺服器名稱和資料庫名稱。
+* **遠端資料庫參考**：外部資料表 DDL 指的是外部資料來源。 外部資料源會指定儲存實際資料表資料之遠端資料庫的伺服器名稱和資料庫名稱。
 
 如上一節所述使用外部資料來源，建立外部資料表的語法如下：
 
@@ -182,11 +182,11 @@ sp\_execute\_remote 會使用叫用參數中提供的外部資料來源，在遠
 
 ## <a name="connectivity-for-tools"></a>工具的連線能力
 
-您可以使用一般 SQL Server 連接字串，將您的 BI 和資料整合工具連接到已啟用彈性查詢和定義外部資料表之伺服器上的資料庫。 請確定 SQL Server 可支援做為您的工具的資料來源。 然後參考彈性查詢資料庫和其外部資料表，就如同您會使用您的工具連接的任何其他 SQL Server 資料庫。
+您可以使用一般 SQL Server 連接字串，將您的 BI 和資料整合工具連接到伺服器上已啟用彈性查詢和定義外部資料表的資料庫。 請確定 SQL Server 可支援做為您的工具的資料來源。 然後參考彈性查詢資料庫和其外部資料表，就如同您會使用您的工具連接的任何其他 SQL Server 資料庫。
 
 ## <a name="best-practices"></a>最佳作法
 
-* 藉由在其 Azure SQL Database 防火牆設定中啟用 Azure 服務的存取權，確保彈性查詢端點資料庫已獲得遠端資料庫的存取權。 也請確定外部資料來源定義中提供的認證可以成功登入遠端資料庫，而且具有存取遠端資料表的權限。  
+* 藉由在 Azure SQL Database 防火牆設定中啟用 Azure 服務的存取權，以確定彈性查詢端點資料庫已獲得遠端資料庫的存取權。 也請確定外部資料來源定義中提供的認證可以成功登入遠端資料庫，而且具有存取遠端資料表的權限。  
 * 彈性查詢最適合可在遠端資料庫上完成大部分運算的查詢。 使用可在遠端資料庫上評估的選擇性篩選述詞，或可在遠端資料庫上完全執行的聯結，通常可以獲得最佳查詢效能。 其他查詢模式可能需要從遠端資料庫載入大量的資料，而且執行效能可能會很差。
 
 ## <a name="next-steps"></a>後續步驟

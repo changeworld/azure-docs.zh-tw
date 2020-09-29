@@ -1,22 +1,22 @@
 ---
-title: '遷移至新的彈性資料庫作業 (預覽) '
+title: '遷移至新的彈性資料庫工作 (預覽版) '
 description: 移轉至新的彈性資料庫作業。
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
 ms.custom: seo-lt-2019, sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: johnpaulkee
 ms.author: joke
 ms.reviewer: sstein
 ms.date: 03/13/2019
-ms.openlocfilehash: a1f9e392ddb7b5a79b01459925fe711707db97b5
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: e8c222d7cdcdb203cd323cde38818e5b51643159
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121182"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91443381"
 ---
 # <a name="migrate-to-the-new-elastic-database-jobs-preview"></a>遷移至新的彈性資料庫工作 (preview) 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -32,7 +32,7 @@ ms.locfileid: "88121182"
 
 ### <a name="install-the-latest-elastic-jobs-cmdlets"></a>安裝最新的彈性作業 Cmdlet
 
-如果您還沒有 Azure 訂用帳戶，請在開始前[建立免費帳戶](https://azure.microsoft.com/free/)。
+如果您還沒有 Azure 訂用帳戶，請在開始前 [建立免費帳戶](https://azure.microsoft.com/free/) 。
 
 安裝 **Az.Sql** 1.1.1 預覽模組，以取得最新的彈性作業 Cmdlet。 在 PowerShell 中以系統管理存取權執行下列命令。
 
@@ -369,7 +369,7 @@ function Setup-TargetGroup ($tgName, $agent) {
 
 若要將目標 (伺服器、資料庫及自訂集合) 移轉至新的作業資料庫，請執行 **Migrate-TargetGroups** Cmdlet 以執行下列動作：
 
-- 屬於伺服器和資料庫的根層級目標會遷移至名為 " (，) " 的新目標群組 \<serverName\> ， \<databaseName\> 其中僅包含根層級目標。
+- 伺服器和資料庫的根層級目標將會遷移至名為 " (，) " 的新目標群組 \<serverName\> ， \<databaseName\> 其中只包含根層級目標。
 - 自訂集合會移轉至新的目標群組，其中包含所有子系目標。
 
 ```powershell
@@ -565,7 +565,7 @@ function Setup-JobStep ($newJob, $job) {
 
 若要將作業、作業內容、作業觸發程序和作業排程移轉至新的彈性作業代理程式資料庫，請執行傳遞至代理程式的 **Migrate-Jobs** Cmdlet。
 
-- 具有多個具有不同排程之觸發程式的作業會分成多個具有命名配置的工作： " \<jobName\> (\<scheduleName\>) "。
+- 具有具有不同排程之多個觸發程式的作業會分成多個具有命名配置的作業：「 \<jobName\> (\<scheduleName\>) 」。
 - 系統會新增具有相關聯命令文字、名為 JobStep 的預設作業步驟，將作業內容移轉至作業。
 - 作業預設為停用，讓您可以在啟用之前進行驗證。
 

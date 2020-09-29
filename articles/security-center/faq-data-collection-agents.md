@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 78668eaadca872d7c25ab909fad5b9838bbc01d3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 0a368e54c940ff580b7e8f49dd108fafddde5b17
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90894822"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91441468"
 ---
 # <a name="faq---questions-about-data-collection-agents-and-workspaces"></a>常見問題集 - 資料收集、代理程式和工作區的相關問題
 
@@ -166,7 +166,7 @@ ms.locfileid: "90894822"
 
 1. 如果您的訂用帳戶已啟用 Azure Defender，請開啟該訂用帳戶的安全性原則，並選取 [ **關閉 Azure defender**]。
 
-   ![定價層][1]
+    :::image type="content" source="./media/security-center-platform-migration-faq/pricing-tier.png" alt-text="啟用或停用 Azure Defender":::
 
 1. 接下來，請選取 [安全性原則 – 資料收集] 頁面上的 [關閉]，來停用自動佈建。
    ![資料收集][2]
@@ -200,7 +200,7 @@ ms.locfileid: "90894822"
 
 您可以將代理程式連線到任何現有的自訂工作區，或資訊安全中心建立的工作區。 如果自訂工作區並沒有啟用的 'Security' 或 'SecurityCenterFree' 解決方案，則您必須套用解決方案。 若要套用，請選取自訂工作區或訂用帳戶，並透過 [安全性原則 - 定價層] 頁面來套用定價層。
 
-   ![定價層][1]
+:::image type="content" source="./media/security-center-platform-migration-faq/pricing-tier.png" alt-text="啟用或停用 Azure Defender":::
 
 資訊安全中心會根據選取的定價層，在工作區上啟用正確的解決方案。
 
@@ -271,7 +271,6 @@ ms.locfileid: "90894822"
 
 
 <!--Image references-->
-[1]: ./media/security-center-platform-migration-faq/pricing-tier.png
 [2]: ./media/security-center-platform-migration-faq/data-collection.png
 [3]: ./media/security-center-platform-migration-faq/remove-the-agent.png
 [4]: ./media/security-center-platform-migration-faq/use-another-workspace.png

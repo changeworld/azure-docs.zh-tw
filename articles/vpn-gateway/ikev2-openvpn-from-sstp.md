@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/03/2020
 ms.author: alzam
-ms.openlocfilehash: aec5a08bf56cd9a9ba18159ffc28a129163571b0
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.openlocfilehash: c7f71d24ab516044a0ce48ad40f78bc659268866
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89426277"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91442173"
 ---
 # <a name="transition-to-openvpn-protocol-or-ikev2-from-sstp"></a>從 SSTP 轉換至 OpenVPN 通訊協定或 IKEv2
 
@@ -47,7 +47,7 @@ ms.locfileid: "89426277"
 
 若要將 IKEv2 新增至現有的閘道，只要移至入口網站中虛擬網路閘道底下的 [點對站設定] 索引標籤，然後從下拉式方塊中選取 [ **IKEv2 和 SSTP (SSL) ** 。
 
-![點對站](./media/ikev2-openvpn-from-sstp/sstptoikev2.png "IKEv2")
+![顯示 [點對站設定] 頁面的螢幕擷取畫面，其中已選取 [通道類型] 下拉式清單，並已選取 [IKEv2 和 SSTP (SSL) ]。](./media/ikev2-openvpn-from-sstp/sstptoikev2.png "IKEv2")
 
 
 ### <a name="option-2---remove-sstp-and-enable-openvpn-on-the-gateway"></a>選項 2-移除 SSTP 並在閘道上啟用 OpenVPN
@@ -160,7 +160,7 @@ P2S 設定需要相當多的特定步驟。 下列文章包含的步驟可引導
 
 * [設定 OpenVPN](vpn-gateway-howto-openvpn.md)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [設定 P2S 連線 - RADIUS 驗證](point-to-site-how-to-radius-ps.md)
 

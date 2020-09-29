@@ -13,19 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/11/2020
+ms.date: 09/28/2020
 ms.author: allensu
-ms.openlocfilehash: ef1f8966497492f5a4969aca594c43abdf80945c
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: 62c1b323899f03a043904f4b10d5fe3bb551e0f4
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89612901"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91441759"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources"></a>使用 NAT 閘道資源設計虛擬網路
 
-NAT 閘道資源是[虛擬網路 NAT](nat-overview.md) 的一部分，可為虛擬網路的一或多個子網提供輸出網際網路連線能力。 虛擬網路的子網路會指出將使用哪個 NAT 閘道。 NAT 會為子網路提供來源網路位址轉譯 (SNAT)。  NAT 閘道資源會指定虛擬機器在建立輸出流量時所使用的靜態 IP 位址。 靜態 IP 位址來自公用 IP 位址資源、公用 IP 前置詞資源或兩者。 如果使用公用 IP 首碼資源，則 NAT 閘道資源會使用整個公用 IP 首碼資源的所有 IP 位址。 NAT 閘道資源最多可以使用來自任一資源的 16 個靜態 IP 位址。
-
+NAT 閘道資源是[虛擬網路 NAT](nat-overview.md) 的一部分，可為虛擬網路的一或多個子網提供輸出網際網路連線能力。 虛擬網路的子網路會指出將使用哪個 NAT 閘道。 NAT 會為子網路提供來源網路位址轉譯 (SNAT)。  NAT 閘道資源會指定虛擬機器在建立輸出流量時所使用的靜態 IP 位址。 靜態 IP 位址來自公用 IP 位址資源 (PIP) 、公用 IP 首碼資源或兩者。 如果使用公用 IP 首碼資源，則 NAT 閘道資源會使用整個公用 IP 首碼資源的所有 IP 位址。 NAT 閘道資源最多可以使用來自任一資源的 16 個靜態 IP 位址。
 
 <p align="center">
   <img src="media/nat-overview/flow-direction1.svg" alt="Figure depicts a NAT gateway resource that consumes all IP addresses for a public IP prefix and directs that traffic to and from two subnets of virtual machines and a virtual machine scale set." width="256" title="可供輸出到網際網路的虛擬網路 NAT">
@@ -231,7 +230,7 @@ NAT 閘道的優先順序高於子網路的輸出案例。 基本負載平衡器
 
 每個 NAT 閘道資源最多可提供 50 Gbps 的輸送量。 您可以將部署分割成多個子網路，並為每個子網路或子網路群組分派 NAT 閘道以進行擴增。
 
-每個 NAT 閘道都可為每個指派的輸出 IP 位址支援 64,000 個連線。  如需詳細資訊，請參閱下一節的來源網路位址轉譯 (SNAT)，以及參閱[疑難排解文章](https://docs.microsoft.com/azure/virtual-network/troubleshoot-nat)來了解特定問題的解決指導方針。
+每個 NAT 閘道都可以針對每個指派的輸出 IP 位址，分別支援 TCP 和 UDP 的64000流程。  如需詳細資訊，請參閱下一節的來源網路位址轉譯 (SNAT)，以及參閱[疑難排解文章](https://docs.microsoft.com/azure/virtual-network/troubleshoot-nat)來了解特定問題的解決指導方針。
 
 ## <a name="source-network-address-translation"></a>來源網路位址轉譯
 
@@ -239,27 +238,39 @@ NAT 閘道的優先順序高於子網路的輸出案例。 基本負載平衡器
 
 ### <a name="fundamentals"></a>基礎
 
-讓我們看一下四個流量的範例，以說明基本概念。  NAT 閘道正在使用公用 IP 位址資源 65.52.0.2。
+讓我們看一下四個流量的範例，以說明基本概念。  NAT 閘道正在使用公用 IP 位址資源65.52.1.1，且 VM 正在建立65.52.0.1 的連線。
 
 | Flow | 來源元組 | 目的地元組 |
 |:---:|:---:|:---:|
 | 1 | 192.168.0.16:4283 | 65.52.0.1:80 |
 | 2 | 192.168.0.16:4284 | 65.52.0.1:80 |
 | 3 | 192.168.0.17.5768 | 65.52.0.1:80 |
-| 4 | 192.168.0.16:4285 | 65.52.0.2:80 |
 
 進行 PAT 之後，這些流量可能如下所示：
 
 | Flow | 來源元組 | 已進行 SNAT 的來源元組 | 目的地元組 | 
 |:---:|:---:|:---:|:---:|
-| 1 | 192.168.0.16:4283 | 65.52.0.2:234 | 65.52.0.1:80 |
-| 2 | 192.168.0.16:4284 | 65.52.0.2:235 | 65.52.0.1:80 |
-| 3 | 192.168.0.17.5768 | 65.52.0.2:236 | 65.52.0.1:80 |
-| 4 | 192.168.0.16:4285 | 65.52.0.2:237 | 65.52.0.2:80 |
+| 1 | 192.168.0.16:4283 | **65.52.1.1：1234** | 65.52.0.1:80 |
+| 2 | 192.168.0.16:4284 | **65.52.1.1：1235** | 65.52.0.1:80 |
+| 3 | 192.168.0.17.5768 | **65.52.1.1：1236** | 65.52.0.1:80 |
 
-目的地會看到流量的來源為 65.52.0.2 (SNAT 來源元組)，並顯示指派的連接埠。  上表所示的 PAT 也稱為連接埠偽裝 SNAT。  有多個私人來源會偽裝在 IP 和連接埠後面。
+目的地會看到流程的來源 65.52.0.1 (SNAT 來源元組) 並顯示指派的埠。  上表所示的 PAT 也稱為連接埠偽裝 SNAT。  有多個私人來源會偽裝在 IP 和連接埠後面。  
 
-請勿依賴於特定指派來源連接埠的方式。  上述只是基本概念的說明。
+#### <a name="source-snat-port-reuse"></a>來源 (SNAT) 埠重複使用
+
+NAT 閘道伺機重複使用 (SNAT) 埠的來源。  以下說明此概念，做為前一組流程的額外流程。  範例中的 VM 是要65.52.0.2 的流程。
+
+| Flow | 來源元組 | 目的地元組 |
+|:---:|:---:|:---:|
+| 4 | 192.168.0.16:4285 | 65.52.0.2:80 |
+
+NAT 閘道可能會將 flow 4 轉譯為可能也會用於其他目的地的埠。  如需有關正確調整 IP 位址布建大小的詳細討論，請參閱 [調整規模](https://docs.microsoft.com/azure/virtual-network/nat-gateway-resource#scaling) 。
+
+| Flow | 來源元組 | 已進行 SNAT 的來源元組 | 目的地元組 | 
+|:---:|:---:|:---:|:---:|
+| 4 | 192.168.0.16:4285 | 65.52.1.1：**1234** | 65.52.0.2:80 |
+
+請勿相依于上述範例中指派來源埠的特定方式。  上述只是基本概念的說明。
 
 NAT 所提供的 SNAT 不同於數個層面的 [Load Balancer](../load-balancer/load-balancer-outbound-connections.md)。
 
@@ -292,7 +303,12 @@ SNAT 連接埠一旦發行，即可供透過 NAT 設定的子網路上的任何�
 
 SNAT 會將私人位址對應至一或多個公用 IP 位址，並重寫流程中的來源位址和來源連接埠。 NAT 閘道資源會針對此轉譯，針對每個設定的公用 IP 位址使用 64,000 個連接埠 (SNAT 連接埠)。 NAT 閘道資源可以擴大至 16 個 IP 位址和 1 百萬個 SNAT 連接埠。 如果提供了公用 IP 前置詞資源，則前置詞中的每個 IP 位址都會提供 SNAT 連接埠庫存。 新增更多公用 IP 位址會增加可用的庫存 SNAT 連接埠。 TCP 和 UDP 是不同的 SNAT 連接埠清查而且不相關。
 
-NAT 閘道資源會伺機重複使用來源連接埠。 基於調整目的，您應該假設每個流量都需要新的 SNAT 連接埠，並調整輸出流量的可用 IP 位址總數。
+NAT 閘道資源伺機重複使用 (SNAT) 埠的來源。 作為調整用途的設計指引，您應該假設每個流程都需要新的 SNAT 埠，並調整輸出流量的可用 IP 位址總數。  您應該仔細考慮您所設計的規模，並據以布建 IP 位址數量。
+
+可能的話，最有可能會重複使用 SNAT 埠至不同目的地。 和 SNAT 埠耗盡方法一樣，流程可能不會成功。  
+
+如需範例，請參閱 [SNAT 基本](https://docs.microsoft.com/azure/virtual-network/nat-gateway-resource#source-network-address-translation) 概念。
+
 
 ### <a name="protocols"></a>通訊協定
 
@@ -344,11 +360,9 @@ NAT 閘道資源會與 UDP 和 TCP 流量的 IP 和 IP 傳輸標頭互動，而�
   - [範本](./quickstart-create-nat-gateway-template.md)
 * 了解 NAT 閘道資源 API
   - [REST API](https://docs.microsoft.com/rest/api/virtualnetwork/natgateways)
-  - [Azure CLI](https://docs.microsoft.com/cli/azure/network/nat/gateway?view=azure-cli-latest)
+  - [Azure CLI](https://docs.microsoft.com/cli/azure/network/nat/gateway)
   - [PowerShell](https://docs.microsoft.com/powershell/module/az.network/new-aznatgateway)
 * 了解[可用性區域](../availability-zones/az-overview.md)。
 * 了解[標準負載平衡器](../load-balancer/load-balancer-standard-overview.md)。
 * 了解[可用性區域和標準負載平衡器](../load-balancer/load-balancer-standard-availability-zones.md)。
 * [在 UserVoice 中告訴我們可為虛擬網路 NAT 打造的下一項功能](https://aka.ms/natuservoice)。
-
-

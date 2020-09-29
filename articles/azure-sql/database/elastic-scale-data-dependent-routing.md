@@ -1,29 +1,29 @@
 ---
 title: 資料相依路由
-description: 如何在 .NET 應用程式中使用 ShardMapManager 類別來進行資料相依路由（在 Azure SQL Database 中分區化資料庫的功能）
+description: 如何在 .NET 應用程式中將 ShardMapManager 類別用於資料相依路由，這是在 Azure SQL Database 中分區化資料庫的一項功能。
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 57e1ff0303bcb9dbb1fbf79319a2740f40384e13
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2e6efc08cb7d38a856098395aff363d9d7ec2bab
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84029939"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91442985"
 ---
 # <a name="use-data-dependent-routing-to-route-a-query-to-an-appropriate-database"></a>使用資料相依路由將查詢路由至適當的資料庫
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-**資料相依路由**是可使用查詢中的資料，將要求路由至適當的資料庫。 資料相依路由是使用分區化資料庫時的一種基本模式。 要求內容也可能會用於路由要求，特別是如果分區化索引鍵不是查詢的一部分。 在使用資料相依路由的應用程式中，每個特定的查詢或交易會限制每個要求只能存取一個資料庫。 針對 Azure SQL Database 的彈性工具，此路由會透過**ShardMapManager** （[JAVA](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager)、 [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager)）類別來完成。
+**資料相依路由**是可使用查詢中的資料，將要求路由至適當的資料庫。 使用分區化資料庫時，資料相依路由是一種基本模式。 要求內容也可能會用於路由要求，特別是如果分區化索引鍵不是查詢的一部分。 在使用資料相依路由的應用程式中，每個特定的查詢或交易會限制每個要求只能存取一個資料庫。 針對 Azure SQL Database 彈性工具，此路由會使用 **ShardMapManager** ([JAVA](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager)、 [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager)) 類別來完成。
 
-應用程式不需要在分區化環境中追蹤不同的連接字串或與不同資料片段相關聯的 DB 位置。 相反地， [分區對應管理員](elastic-scale-shard-map-management.md) 會根據分區對應中的資料和分區化索引鍵的值 (應用程式要求的目標)，在必要時開啟正確資料庫的連接。 索引鍵通常是*customer_id*、 *tenant_id*、 *date_key*或一些其他特定的識別碼，也就是資料庫要求的基礎參數。
+應用程式不需要在分區化環境中追蹤不同的連接字串或與不同資料片段相關聯的 DB 位置。 相反地， [分區對應管理員](elastic-scale-shard-map-management.md) 會根據分區對應中的資料和分區化索引鍵的值 (應用程式要求的目標)，在必要時開啟正確資料庫的連接。 此索引鍵通常是 *customer_id*、 *tenant_id*、 *date_key*或其他特定識別碼，也就是資料庫要求的基本參數。
 
 如需詳細資訊，請參閱 [Scaling Out SQL Server with Data Dependent Routing (使用資料相依路由相應放大 SQL Server)](https://technet.microsoft.com/library/cc966448.aspx)。
 
@@ -32,7 +32,7 @@ ms.locfileid: "84029939"
 若要下載：
 
 * Java 版本的程式庫，請參閱 [Maven 中央存放庫](https://search.maven.org/#search%7Cga%7C1%7Celastic-db-tools)。
-* .NET 版本的程式庫，請參閱[NuGet](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/)。
+* .NET 版本的程式庫，請參閱 [NuGet](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/)。
 
 ## <a name="using-a-shardmapmanager-in-a-data-dependent-routing-application"></a>在資料相依路由應用程式中使用 ShardMapManager
 
@@ -177,6 +177,6 @@ Configuration.SqlRetryPolicy.ExecuteAction(() -> {
 
 ## <a name="next-steps"></a>後續步驟
 
-若要卸離分區，或重新附加分區，請參閱[使用 RecoveryManager 類別來修正分區對應問題](elastic-database-recovery-manager.md)。
+若要卸離分區或重新附加分區，請參閱 [使用 RecoveryManager 類別來修正分區對應問題](elastic-database-recovery-manager.md)。
 
 [!INCLUDE [elastic-scale-include](../../../includes/elastic-scale-include.md)]

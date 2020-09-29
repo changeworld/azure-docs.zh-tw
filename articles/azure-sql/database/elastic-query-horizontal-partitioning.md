@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: scale-out
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 01/03/2019
-ms.openlocfilehash: 8dcaecb1e4eb91ee01e3ccb39000e087b3455ba2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ced546f8f4375433d9fcd59f7ce46f9604f72921
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85832350"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91443125"
 ---
 # <a name="reporting-across-scaled-out-cloud-databases-preview"></a>跨相應放大的雲端資料庫報告 (預覽)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -25,7 +25,7 @@ ms.locfileid: "85832350"
 
 分區化資料庫跨相應放大的資料層發佈資料列。 所有參與的資料庫都有相同的結構描述，也稱為水平資料分割。 使用彈性查詢，您可以建立跨越分區化資料庫中所有資料庫的報告。
 
-如需快速入門，請參閱[跨相應放大的雲端資料庫報告](elastic-query-getting-started.md)。
+如需快速入門，請參閱 [跨相應放大雲端資料庫的報告](elastic-query-getting-started.md)。
 
 如需非分區化資料庫，請參閱 [對不同結構描述的雲端資料庫執行查詢](elastic-query-vertical-partitioning.md)。
 
@@ -36,11 +36,11 @@ ms.locfileid: "85832350"
 * 使用者必須擁有 ALTER ANY EXTERNAL DATA SOURCE 權限。 這個權限包含在 ALTER DATABASE 權限中。
 * 需有 ALTER ANY EXTERNAL DATA SOURCE 權限，才能參考基礎資料來源。
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 這些陳述式可在彈性查詢資料庫中建立分區化資料層的中繼資料表示法。
 
-1. [建立主要金鑰](https://msdn.microsoft.com/library/ms174382.aspx)
+1. [CREATE MASTER KEY](https://msdn.microsoft.com/library/ms174382.aspx)
 2. [CREATE DATABASE SCOPED CREDENTIAL](https://msdn.microsoft.com/library/mt270260.aspx)
 3. [CREATE EXTERNAL DATA SOURCE](https://msdn.microsoft.com/library/dn935022.aspx)
 4. [CREATE EXTERNAL TABLE](https://msdn.microsoft.com/library/dn935021.aspx)
@@ -159,21 +159,21 @@ SCHEMA\_NAME 和 OBJECT\_NAME 子句會將外部資料表定義對應至不同�
 
 DISTRIBUTION 子句會指定用於此資料表的資料散發。 查詢處理器會利用 DISTRIBUTION 子句中提供的資訊來建置最有效率的查詢計劃。
 
-1. **分區化**表示資料會在資料庫之間水準分割。 用於資料散發的分割索引鍵是 **<sharding_column_name>** 參數。
-2. **已**複寫表示資料表的相同複本會存在於每個資料庫上。 您必須負責確保複本在所有資料庫上都相同。
-3. **ROUND \_**「配置資源」表示資料表是使用應用程式相依的散發方法來水準分割。
+1. **分區化** 表示資料會在資料庫之間水準分割。 用於資料散發的分割索引鍵是 **<sharding_column_name>** 參數。
+2. 「**已**複寫」表示資料表的相同複本存在於每個資料庫上。 您必須負責確保複本在所有資料庫上都相同。
+3. **四捨五入 \_** 配置資源表示使用應用程式相依的散發方法，以水準方式分割資料表。
 
-**資料層參考**：外部資料表 DDL 指的是外部資料來源。 外部資料源會指定分區對應，提供外部資料表，其中包含在資料層中尋找所有資料庫所需的資訊。
+**資料層參考**：外部資料表 DDL 指的是外部資料來源。 外部資料源會指定分區對應，以提供外部資料表，以找出您資料層中的所有資料庫所需的資訊。
 
 ### <a name="security-considerations"></a>安全性考量
 
-可存取外部資料表的使用者可以在外部資料來源定義中所提供的認證下，自動取得基礎遠端資料表的存取權。 避免透過外部資料來源認證提高不想提高的權限。 針對外部資料表使用 GRANT 或 REVOKE，如同它是一般資料表一樣。  
+可存取外部資料表的使用者可以在外部資料來源定義中所提供的認證下，自動取得基礎遠端資料表的存取權。 避免透過外部資料來源認證提高不想提高的權限。 針對外部資料表使用 GRANT 或 REVOKE，如同一般資料表一般。  
 
 一旦您已定義外部資料來源和外部資料表，現在您可以對外部資料表使用完整的 T-SQL。
 
 ## <a name="example-querying-horizontal-partitioned-databases"></a>範例︰查詢水平資料分割的資料庫
 
-下列查詢會在倉儲、訂單和訂單行之間執行三向聯結，並使用數個匯總和選擇性篩選。 它假設（1）水準資料分割（分區化）和（2）倉儲、訂單和訂單行是由倉儲識別碼資料行所分區化，而彈性查詢可以在分區上共置聯結，並以平行方式處理分區上查詢的昂貴部分。
+下列查詢會在倉儲、訂單和訂單行之間執行三向聯結，並使用數個匯總和選擇性篩選。 它會假設 (1) 水準資料分割 (分區化) 和 (2) 倉儲識別碼資料行分區化倉儲、訂單和訂單行，且彈性查詢可以在分區上共置聯結，並以平行方式處理分區上查詢的昂貴部分。
 
 ```sql
     select  
@@ -213,11 +213,11 @@ sp\_execute\_remote 會使用叫用參數中提供的外部資料來源，在遠
 
 ## <a name="connectivity-for-tools"></a>工具的連線能力
 
-使用一般 SQL Server 連接字串，將您的應用程式、BI 和資料整合工具連接到具有外部資料表定義的資料庫。 請確定 SQL Server 可支援做為您的工具的資料來源。 然後像任何其他連接到工具的 SQL Server 資料庫一樣，參考彈性查詢資料庫，並如同本機資料表一樣，從您的工具或應用程式使用外部資料表。
+使用一般 SQL Server 連接字串，將您的應用程式、BI 和資料整合工具連接到資料庫，並使用您的外部資料表定義。 請確定 SQL Server 可支援做為您的工具的資料來源。 然後像任何其他連接到工具的 SQL Server 資料庫一樣，參考彈性查詢資料庫，並如同本機資料表一樣，從您的工具或應用程式使用外部資料表。
 
 ## <a name="best-practices"></a>最佳作法
 
-* 請確定彈性查詢端點資料庫已獲得 shardmap 資料庫的存取權，以及透過 SQL Database 防火牆的所有分區。  
+* 確定已將彈性查詢端點資料庫授與 shardmap 資料庫的存取權，並透過 SQL Database 防火牆取得所有分區。  
 * 驗證或強制執行外部資料表所定義的資料分佈。 如果您的實際資料分佈與資料表定義中指定的散發不同，您的查詢可能會產生非預期的結果。
 * 彈性查詢目前不會執行分區刪除，因為分區化索引鍵的述詞允許安全地排除處理某些分區。
 * 彈性查詢最適合可在分區完成大部分運算的查詢。 使用可在分區上評估的選擇性篩選述詞，或在所有分區上以資料分割對齊方式來聯結資料分割索引鍵，通常可以獲得最佳查詢效能。 其他查詢模式可能需要從分區載入大量資料至前端節點，但效能可能不佳。

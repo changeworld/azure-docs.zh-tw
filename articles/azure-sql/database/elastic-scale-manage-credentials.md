@@ -1,22 +1,22 @@
 ---
-title: 管理彈性資料庫用戶端程式庫中的認證
+title: 在彈性資料庫用戶端程式庫中管理認證
 description: 如何設定彈性資料庫應用程式的正確認證層級 (管理員到唯讀)
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/03/2019
-ms.openlocfilehash: cd33e202a76a5ae55a68d902bb4812dcaaf348aa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 51439edd1d8c7094a5b857821f632ace9e2dea53
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84034669"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91442764"
 ---
 # <a name="credentials-used-to-access-the-elastic-database-client-library"></a>用來存取彈性資料庫用戶端程式庫的認證
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]

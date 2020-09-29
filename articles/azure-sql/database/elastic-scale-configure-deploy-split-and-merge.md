@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: scale-out
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
-ms.openlocfilehash: 1cd03814e1590abebb74db490a2692d492a9207d
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 02ec24677519902c299babb72e089f75dcf8b34b
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88064939"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91443045"
 ---
 # <a name="deploy-a-split-merge-service-to-move-data-between-sharded-databases"></a>部署分割合併服務以在分區化資料庫之間移動資料
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -35,13 +35,13 @@ ms.locfileid: "88064939"
    nuget install Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge
    ```  
 
-檔案會放在名為 **Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge.x.x.xxx.x** 的目錄中，其中 *x.x.xxx.x* 反映版本號碼。 在**content\splitmerge\powershell 子目錄**子目錄中尋找分割合併服務檔案，並在**content\splitmerge\powershell**子目錄中 (和必要的用戶端 dll) 分割合併的 PowerShell 腳本。
+檔案會放在名為 **Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge.x.x.xxx.x** 的目錄中，其中 *x.x.xxx.x* 反映版本號碼。 在 **content\splitmerge\service** 子目錄中找出分割合併服務檔案，而分割合併 PowerShell 腳本 (和必要的用戶端 dll) 在 **content\splitmerge\powershell** 子目錄中。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
-1. 建立將用來做為分割合併狀態資料庫的 Azure SQL Database 資料庫。 前往 [Azure 入口網站](https://portal.azure.com)。 建立新的 **SQL Database**。 提供資料庫名稱，並建立新的系統管理員和密碼。 請務必記錄名稱和密碼，以供稍後使用。
+1. 建立將用作分割合併狀態資料庫的 Azure SQL Database 資料庫。 前往 [Azure 入口網站](https://portal.azure.com)。 建立新的 **SQL Database**。 提供資料庫名稱，並建立新的系統管理員和密碼。 請務必記錄名稱和密碼，以供稍後使用。
 
-1. 請確定您的伺服器允許 Azure 服務連線。 在入口網站的 [防火牆設定]**** 中，確定 [允許存取 Azure 服務]**** 設定設為 [開啟]****。 按一下儲存圖示。
+1. 確定您的伺服器允許 Azure 服務與其連線。 在入口網站的 [防火牆設定]**** 中，確定 [允許存取 Azure 服務]**** 設定設為 [開啟]****。 按一下儲存圖示。
 
 1. 建立適用於診斷輸出的 Azure 儲存體帳戶。
 
@@ -60,11 +60,11 @@ ms.locfileid: "88064939"
    > [!IMPORTANT]
    > 目前，狀態資料庫必須使用拉丁文定序 (SQL\_Latin1\_General\_CP1\_CI\_AS)。 如需詳細資訊，請參閱 [Windows 定序名稱 (Transact-SQL)](https://msdn.microsoft.com/library/ms188046.aspx)。
 
-   使用 Azure SQL Database，連接字串的格式通常如下：
+   使用 Azure SQL Database 時，連接字串的格式通常為：
 
       `Server=<serverName>.database.windows.net; Database=<databaseName>;User ID=<userId>; Password=<password>; Encrypt=True; Connection Timeout=30`
 
-1. 在 [ElasticScaleMetadata] 設定的 [ **SplitMergeWeb** ] 和 [ **SplitMergeWorker**角色] 區段中，于 *.cscfg*檔案中輸入此連接字串。
+1. 在 [ElasticScaleMetadata] 設定的**SplitMergeWeb**和 **>splitmergeworker**角色區段中，在 .cscfg 檔案中輸入此連接字串 *。*
 
 1. 針對 **SplitMergeWorker** 角色，在 **WorkerRoleSynchronizationStorageAccountConnectionString** 設定中輸入有效的連接字串以連接至 Azure 儲存體。
 
@@ -151,18 +151,18 @@ Web 角色：
 
 ## <a name="troubleshoot-the-deployment"></a>疑難排解部署
 
-如果 Web 角色無法上線，安全性設定可能有問題。 檢查是否已設定 TLS/SSL，如上所述。
+如果 Web 角色無法上線，安全性設定可能有問題。 檢查 TLS/SSL 是否已如上面所述設定。
 
 如果背景工作角色無法上線，但 Web 角色成功上線，很可能是無法連接至您稍早建立的狀態資料庫。
 
 - 請確定您的 cscfg 中的連接字串正確無誤。
 - 請檢查伺服器和資料庫均存在，而且使用者識別碼與密碼皆正確無誤。
-- 若為 Azure SQL Database，連接字串的格式應為：
+- 針對 Azure SQL Database，連接字串的格式應為：
 
    `Server=<serverName>.database.windows.net; Database=<databaseName>;User ID=<user>; Password=<password>; Encrypt=True; Connection Timeout=30`
 
 - 確定伺服器名稱不是以 **https://** 開頭。
-- 請確定您的伺服器允許 Azure 服務連線。 若要這樣做，請在入口網站中開啟資料庫，並確定 [允許存取 Azure 服務]**** 設定已設為 [開啟]。
+- 確定您的伺服器允許 Azure 服務與其連線。 若要這樣做，請在入口網站中開啟資料庫，並確定 [允許存取 Azure 服務]**** 設定已設為 [開啟]。
 
 ## <a name="test-the-service-deployment"></a>測試服務部署
 
@@ -183,7 +183,7 @@ Web 角色：
 2. *ExecuteSampleSplitMerge.ps1* - 在測試資料層執行測試作業 (請參閱下表中的詳細說明)
 3. *GetMappings.ps1* - 可印出目前分區對應狀態的最上層範例指令碼。
 4. *ShardManagement.psm1* - 包裝 ShardManagement API 的協助程式指令碼
-5. *Sqldatabasehelpers.psm1. .psm1* -在 SQL Database 中用來建立和管理資料庫的 helper 腳本
+5. *Sqldatabasehelpers.psm1. .psm1* -在 SQL Database 中建立和管理資料庫的 helper 腳本
 
    <table style="width:100%">
      <tr>
@@ -234,13 +234,13 @@ Web 角色：
 2. 建立伺服器 (或選擇現有的伺服器) ，其中將會建立分區對應管理員和分區。
 
    > [!NOTE]
-   > 根據預設， *SetupSampleSplitMergeEnvironment.ps1*腳本會在相同伺服器上建立所有這些資料庫，讓腳本保持簡單。 這不是分割合併服務本身的限制。
+   > *SetupSampleSplitMergeEnvironment.ps1*腳本預設會在相同的伺服器上建立所有這些資料庫，以保持腳本的簡單。 這不是分割合併服務本身的限制。
 
    需要有具備 DB 讀取/寫入存取權的 SQL 驗證登入，分割合併服務才能移動資料和更新分區對應。 因為分割合併服務是在雲端執行，目前不支援整合式驗證。
 
-   請確定伺服器已設定為允許從執行這些腳本之電腦的 IP 位址進行存取。 您可以在 [SQL server/防火牆] 和 [虛擬網路/用戶端 IP 位址] 下找到此設定。
+   請確定伺服器已設定為允許從執行這些腳本之電腦的 IP 位址進行存取。 您可以在 [SQL server/防火牆] 和 [虛擬網路/用戶端 IP 位址] 底下找到此設定。
 
-3. 執行*SetupSampleSplitMergeEnvironment.ps1*腳本來建立範例環境。
+3. 執行 *SetupSampleSplitMergeEnvironment.ps1* 腳本來建立範例環境。
 
    執行這個指令碼將會從分區對應管理員資料庫和分區上，清除任何現有的分區對應管理資料結構。 如果您想要重新初始化分區對應或分區，最好重新執行此指令碼。
 
@@ -258,7 +258,7 @@ Web 角色：
     -UserName 'mysqluser' -Password 'MySqlPassw0rd' -ShardMapManagerServerName 'abcdefghij.database.windows.net'
    ```
 
-5. 執行*ExecuteSampleSplitMerge.ps1*腳本來執行分割作業 (將第一個分區上的一半資料移至第二個分區) 然後合併作業 (將資料移回第一個分區) 。 如果您已設定 TLS 並將 HTTP 端點停用，請確定您使用的是 HTTPs://端點。
+5. 執行 *ExecuteSampleSplitMerge.ps1* 腳本來執行分割作業 (將第一個分區上的一半資料移動到第二個分區) 然後合併作業 (將資料移回第一個分區) 。 如果您已將 TLS 設定為停用 HTTP 端點，請確定您使用的是 HTTPs://端點。
 
     範例命令列：
 
@@ -337,7 +337,7 @@ Web 角色：
 
    `Invoke-WebRequest : The underlying connection was closed: Could not establish trust relationship for the SSL/TLS secure channel.`
 
-此錯誤表示您的 TLS/SSL 憑證未正確設定。 請遵循＜使用網頁瀏覽器連接＞一節的指示。
+此錯誤表示您的 TLS/SSL 憑證設定不正確。 請遵循＜使用網頁瀏覽器連接＞一節的指示。
 
 若無法提交要求，您可能會看到：
 

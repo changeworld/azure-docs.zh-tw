@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 50f7af3bb1ad543dea0263304b82287225500a21
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 29187ef99ce6628359819739ab5e4b34213eeb8a
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526879"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91441632"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>設定 Azure Multi-Factor Authentication 設定
 
@@ -25,7 +25,7 @@ ms.locfileid: "90526879"
 
 下列 Azure Multi-Factor Authentication 設定可在 Azure 入口網站中取得：
 
-| 功能 | 描述 |
+| 特徵 | 描述 |
 | ------- | ----------- |
 | [帳戶鎖定](#account-lockout) | 如果資料列中有太多拒絕的驗證嘗試，則暫時鎖定帳戶以使用 Azure Multi-Factor Authentication。 這項功能僅適用於輸入 PIN 以進行驗證的使用者。 (MFA 伺服器) |
 | [封鎖/解除封鎖使用者](#block-and-unblock-users) | 封鎖特定使用者無法接收 Azure Multi-Factor Authentication 要求。 系統會自動拒絕已封鎖使用者的任何驗證嘗試。 使用者在封鎖或手動解除封鎖時，會持續封鎖90天。 |
@@ -57,7 +57,7 @@ ms.locfileid: "90526879"
 
 ## <a name="block-and-unblock-users"></a>封鎖及解除封鎖使用者
 
-如果使用者的裝置遺失或遭竊，您可以封鎖相關帳戶的驗證嘗試。 系統會自動拒絕已封鎖使用者的任何驗證嘗試。 使用者自封鎖的時刻起，將持續封鎖 90 天。
+如果使用者的裝置遺失或遭竊，您可以封鎖相關聯帳戶的 Azure Multi-Factor Authentication 嘗試。 系統會自動拒絕已封鎖使用者的任何 Azure Multi-Factor Authentication 嘗試。 使用者自封鎖的時刻起，將持續封鎖 90 天。
 
 ### <a name="block-a-user"></a>封鎖使用者
 
@@ -85,7 +85,7 @@ ms.locfileid: "90526879"
 
 有下列詐騙警示設定選項可供使用：
 
-* **自動封鎖報告詐騙的使用者**：如果使用者回報詐騙，他們的帳戶會被封鎖90天，或直到系統管理員解除封鎖其帳戶為止。 系統管理員可以使用登入報告來檢閱登入，並採取適當的動作以避免未來的詐騙。 系統管理員接著可以[解除封鎖](#unblock-a-user)使用者的帳戶。
+* **自動封鎖回報詐騙的使用者**：如果使用者回報詐騙，使用者帳戶的 Azure MFA 驗證嘗試會封鎖90天，或直到系統管理員解除封鎖其帳戶為止。 系統管理員可以使用登入報告來檢閱登入，並採取適當的動作以避免未來的詐騙。 系統管理員接著可以[解除封鎖](#unblock-a-user)使用者的帳戶。
 * **在初始問候語期間回報詐騙**的程式碼：當使用者收到電話以執行多重要素驗證時，通常會按下 **#** 確認其登入。 若要報告詐騙，則需要在按 **#** 之前輸入代碼。 根據預設，此代碼是 **0**，但您可以自訂。
 
    > [!NOTE]
@@ -244,7 +244,7 @@ Azure Multi-Factor Authentication 的「 _信任的 ip_ 」功能可略過從已
 
 | Azure AD 租用戶類型 | 信任的 IP 功能選項 |
 |:--- |:--- |
-| 受控 |**特定範圍的 ip 位址**：系統管理員會指定 ip 位址範圍，以針對從公司內部網路登入的使用者略過多重要素驗證。 最多可設定50個信任的 IP 範圍。|
+| 受管理 |**特定範圍的 ip 位址**：系統管理員會指定 ip 位址範圍，以針對從公司內部網路登入的使用者略過多重要素驗證。 最多可設定50個信任的 IP 範圍。|
 | 同盟 |**所有同盟使用者**：從組織內部登入的所有同盟使用者都可以略過多重要素驗證。 使用者可使用 Active Directory Federation Services (AD FS) 所發出的宣告來略過驗證。<br/>**特定範圍的 ip 位址**：系統管理員會指定 ip 位址範圍，以針對從公司內部網路登入的使用者略過多重要素驗證。 |
 
 受信任的 IP 略過只能從公司內部網路內部運作。 如果您選取 [ **所有同盟使用者** ] 選項，且使用者從公司內部網路外部登入，則使用者必須使用多重要素驗證進行驗證。 即使使用者提供 AD FS 宣告，程序還是相同的。

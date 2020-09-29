@@ -7,24 +7,24 @@ ms.service: sql-database
 ms.subservice: development
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
-ms.openlocfilehash: e0a413847142ee516a06f924dd058578047fb3a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 304ad51bc40c8165c2dc11bb70287491e3d6dfb9
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84267506"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91444042"
 ---
 # <a name="connect-excel-to-a-database-in-azure-sql-database-or-azure-sql-managed-instance-and-create-a-report"></a>將 Excel 連接到 Azure SQL Database 或 Azure SQL 受控執行個體中的資料庫，並建立報表
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-您可以將 Excel 連接到資料庫，然後匯入資料，並根據資料庫中的值來建立資料表和圖表。 在本教學課程中，您將設定 Excel 與資料庫資料表之間的連接、儲存可存放 Excel 資料和連接資訊的檔案，然後根據資料庫值建立樞紐分析圖。
+您可以將 Excel 連接到資料庫，然後根據資料庫中的值匯入資料及建立資料表和圖表。 在本教學課程中，您將設定 Excel 與資料庫資料表之間的連接、儲存可存放 Excel 資料和連接資訊的檔案，然後根據資料庫值建立樞紐分析圖。
 
-在開始之前，您必須先建立資料庫。 如果您沒有帳戶，請參閱[在 Azure SQL Database 中建立資料庫](single-database-create-quickstart.md)和[建立伺服器層級 IP 防火牆](firewall-create-server-level-portal-quickstart.md)，以在幾分鐘內取得包含範例資料的資料庫並執行。
+開始之前，您必須先建立資料庫。 如果您沒有帳戶，請參閱在 [Azure SQL Database 中建立資料庫](single-database-create-quickstart.md) ，並 [建立伺服器層級 IP 防火牆](firewall-create-server-level-portal-quickstart.md) ，以在幾分鐘內讓範例資料啟動並執行。
 
 在本文中，您會將該文章中的範例資料匯入 Excel 中，但是您可以依照類似的步驟並使用您自己的資料來執行。
 
@@ -37,16 +37,16 @@ ms.locfileid: "84267506"
 
    ![選取資料來源：將 Excel 連接到 SQL Database。](./media/connect-excel/excel_data_source.png)
 
-3. 在 [ **SQL Server 資料庫**] 對話方塊中，輸入您想要連接的**伺服器名稱**，格式為 <*servername* > **. database.windows.net**。 例如，**msftestserver.database.windows.net**。 選擇性地輸入您的資料庫名稱。 選取 [確定]**** 以開啟認證視窗。
+3. 在 [ **SQL Server 資料庫**] 對話方塊的 [伺服器名稱] 中，輸入您要連接的**伺服器名稱**<*servername* > **. database.windows.net**。 例如，**msftestserver.database.windows.net**。 選擇性地輸入您的資料庫名稱。 選取 [確定]**** 以開啟認證視窗。
 
-   ![[連接到資料庫伺服器] 對話方塊](./media/connect-excel/server-name.png)
+   ![連接到資料庫伺服器對話方塊](./media/connect-excel/server-name.png)
 
-4. 在 [ **SQL Server 資料庫**] 對話方塊中，選取左側的 [**資料庫**]，然後針對您想要連接的伺服器，輸入您的**使用者名稱**和**密碼**。 選取 [連線]**** 以開啟 [導覽器]****。
+4. 在 [ **SQL Server 資料庫** ] 對話方塊中，選取左側的 [ **資料庫** ]，然後輸入您要連接之伺服器的 **使用者名稱** 和 **密碼** 。 選取 [連線]**** 以開啟 [導覽器]****。
 
    ![輸入伺服器名稱和登入認證](./media/connect-excel/connect-to-server.png)
 
    > [!TIP]
-   > 根據您的網路環境而定，您可能無法連線，或如果伺服器不允許來自您用戶端 IP 位址的流量，您可能會失去連線。 移至 [Azure 入口網站](https://portal.azure.com/)，按一下 SQL Server，按一下您的伺服器中，按一下設定下的防火牆並新增您的用戶端 IP 位址。 如需詳細資訊，請參閱 [如何設定防火牆設定](firewall-configure.md) 。
+   > 視您的網路環境而定，您可能無法連線，如果伺服器不允許來自您用戶端 IP 位址的流量，您可能會失去連線。 移至 [Azure 入口網站](https://portal.azure.com/)，按一下 SQL Server，按一下您的伺服器中，按一下設定下的防火牆並新增您的用戶端 IP 位址。 如需詳細資訊，請參閱 [如何設定防火牆設定](firewall-configure.md) 。
 
 5. 在 [導覽器]**** 中，從清單選取所要使用的資料庫，選取所要使用的資料表或檢視 (我們選擇 **vGetAllCategories**)，然後選取 [載入]**** 以將資料從您的資料庫移至 Excel 試算表。
 
@@ -54,7 +54,7 @@ ms.locfileid: "84267506"
 
 ## <a name="import-the-data-into-excel-and-create-a-pivot-chart"></a>將資料匯入 Excel 中並建立樞紐分析圖
 
-建立連線之後，您有數種資料載入選項可選擇。 例如，下列步驟會根據您在 SQL Database 的資料庫中找到的資料來建立樞紐分析表。
+建立連線之後，您有數種資料載入選項可選擇。 例如，下列步驟會根據在 SQL Database 的資料庫中找到的資料來建立樞紐分析表。
 
 1. 遵循上一節的步驟，但這次不選取 [載入]****，而是改為選取 [載入]**** 下拉式清單的 [載入至]****。
 2. 接下來，選取您要如何在活頁簿中檢視此資料。 我們選擇 [樞紐分析圖]****。 您也可以選擇建立**新工作表** 或**將此資料加入至資料模型**。 如需資料模型的詳細資訊，請參閱[在 Excel 中建立資料模型](https://support.office.com/article/Create-a-Data-Model-in-Excel-87E7A54C-87DC-488E-9410-5C75DBCB0F7B)。
@@ -80,10 +80,10 @@ ms.locfileid: "84267506"
 
       ![新增連接對話方塊](./media/connect-excel/new-connection.png)
 
-2. 在 [資料連線精靈]**** 中，輸入您的伺服器名稱和 SQL Database 認證。 選取 [下一步]。
+2. 在 [資料連線精靈]**** 中，輸入您的伺服器名稱和 SQL Database 認證。 選取 [下一步] 。
    1. 從下拉式清單中選取包含您資料的資料庫。
    2. 選取您感興趣的資料表或檢視。 我們選擇 vGetAllCategories。
-   3. 選取 [下一步]。
+   3. 選取 [下一步] 。
 
       ![資料連線精靈](./media/connect-excel/data-connection-wizard.png)
 
@@ -101,6 +101,6 @@ ms.locfileid: "84267506"
 
 ## <a name="next-steps"></a>後續步驟
 
-* 瞭解如何[使用 SQL Server Management Studio 進行連接和查詢](connect-query-ssms.md)，以進行先進的查詢和分析。
+* 瞭解如何 [使用 SQL Server Management Studio 進行連接和查詢](connect-query-ssms.md) ，以進行先進的查詢和分析。
 * 了解 [彈性集區](elastic-pool-overview.md)的優點。
-* 瞭解如何[建立 web 應用程式，以連接到後端的 Azure SQL Database](../../app-service/app-service-web-tutorial-dotnet-sqldatabase.md)。
+* 瞭解如何 [建立 web 應用程式，以連接到後端的 Azure SQL Database](../../app-service/app-service-web-tutorial-dotnet-sqldatabase.md)。

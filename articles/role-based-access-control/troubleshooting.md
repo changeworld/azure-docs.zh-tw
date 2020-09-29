@@ -15,12 +15,12 @@ ms.date: 09/18/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: e504a3ed2d9193bdc85fc08b3ea91c4f4f2c160c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 2f96e48d0c7b14178185f751b8c708e75ab3f322
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91329499"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91441839"
 ---
 # <a name="troubleshoot-azure-rbac"></a>針對 Azure RBAC 進行疑難排解
 
@@ -63,7 +63,7 @@ $ras.Count
 
     有兩種方式可以解決此錯誤。 第一種方式是將 [目錄讀取](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers) 者角色指派給服務主體，讓它可以讀取目錄中的資料。
 
-    解決這個錯誤的第二個方法是使用參數而非來建立角色指派 `--assignee-object-id` `--assignee` 。 藉由使用 `--assignee-object-id` ，Azure CLI 將會略過 Azure AD 查閱。 您將需要取得您想要指派角色之使用者、群組或應用程式的物件識別碼。 如需詳細資訊，請參閱 [使用 Azure CLI 新增或移除 Azure 角色指派](role-assignments-cli.md#new-service-principal)。
+    解決這個錯誤的第二個方法是使用參數而非來建立角色指派 `--assignee-object-id` `--assignee` 。 藉由使用 `--assignee-object-id` ，Azure CLI 將會略過 Azure AD 查閱。 您將需要取得您想要指派角色之使用者、群組或應用程式的物件識別碼。 如需詳細資訊，請參閱 [使用 Azure CLI 新增或移除 Azure 角色指派](role-assignments-cli.md#add-role-assignment-for-a-new-service-principal-at-a-resource-group-scope)。
 
     ```azurecli
     az role assignment create --assignee-object-id 11111111-1111-1111-1111-111111111111  --role "Contributor" --scope "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}"
@@ -150,7 +150,7 @@ CanDelegate        : False
 }
 ```
 
-離開安全性主體已刪除的角色指派並不會造成問題。 如果您想要的話，可以使用與其他角色指派類似的步驟來移除這些角色指派。 如需有關如何移除角色指派的詳細資訊，請參閱 [Azure 入口網站](role-assignments-portal.md#remove-a-role-assignment)、 [Azure PowerShell](role-assignments-powershell.md#remove-a-role-assignment)或 [Azure CLI](role-assignments-cli.md#remove-a-role-assignment)
+離開安全性主體已刪除的角色指派並不會造成問題。 如果您想要的話，可以使用與其他角色指派類似的步驟來移除這些角色指派。 如需有關如何移除角色指派的詳細資訊，請參閱 [Azure 入口網站](role-assignments-portal.md#remove-a-role-assignment)、 [Azure PowerShell](role-assignments-powershell.md#remove-a-role-assignment)或 [Azure CLI](role-assignments-cli.md#remove-role-assignment)
 
 在 PowerShell 中，如果您嘗試使用物件識別碼和角色定義名稱移除角色指派，且有一個以上的角色指派符合您的參數，您將會收到錯誤訊息：「提供的資訊未對應至角色指派」。 下列輸出顯示錯誤訊息的範例：
 

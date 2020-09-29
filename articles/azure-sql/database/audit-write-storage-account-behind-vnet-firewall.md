@@ -1,77 +1,77 @@
 ---
-title: VNet 和防火牆後方的儲存體帳戶審核
+title: 對 VNet 和防火牆後方的儲存體帳戶進行審核
 description: 設定在虛擬網路和防火牆後方的儲存體帳戶上寫入資料庫事件的審核
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: how-to
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 06/17/2020
 ms.custom: azure-synapse
-ms.openlocfilehash: 6ba0a599bcb0b058ce4902882df9459b177fb6b5
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 74926411b659cf5973b03b2caca58d7666803f9c
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87530367"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91444531"
 ---
-# <a name="write-audit-to-a-storage-account-behind-vnet-and-firewall"></a>將 audit 寫入 VNet 和防火牆後方的儲存體帳戶
+# <a name="write-audit-to-a-storage-account-behind-vnet-and-firewall"></a>將 audit 寫入至 VNet 和防火牆後方的儲存體帳戶
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
 
-[Azure SQL Database](sql-database-paas-overview.md)和[Azure Synapse 分析](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)的審核支援將資料庫事件寫入虛擬網路和防火牆背後的[Azure 儲存體帳戶](../../storage/common/storage-account-overview.md)。
+[Azure SQL Database](sql-database-paas-overview.md)和[Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)的審核支援將資料庫事件寫入虛擬網路和防火牆後方的[Azure 儲存體帳戶](../../storage/common/storage-account-overview.md)。
 
-本文說明兩種設定 Azure SQL Database 和 Azure 儲存體帳戶以用於此選項的方法。 第一個使用 Azure 入口網站，第二個使用 REST。
+本文說明兩種設定此選項 Azure SQL Database 和 Azure 儲存體帳戶的方式。 第一個使用 Azure 入口網站，第二個使用 REST。
 
 ## <a name="background"></a>背景
 
-[Azure 虛擬網路（VNet）](../../virtual-network/virtual-networks-overview.md)是您在 Azure 中私人網路的基本組建區塊。 VNet 可讓多種類型的 Azure 資源 (例如 Azure 虛擬機器 (VM)) 安全地彼此通訊，以及與網際網路和內部部署網路通訊。 VNet 與您自己的資料中心內的傳統網路類似，但帶來了 it 額外的 Azure 基礎結構優點，例如調整、可用性和隔離。
+[Azure 虛擬網路 (VNet) ](../../virtual-network/virtual-networks-overview.md) 是 azure 中私人網路的基本組建區塊。 VNet 可讓多種類型的 Azure 資源 (例如 Azure 虛擬機器 (VM)) 安全地彼此通訊，以及與網際網路和內部部署網路通訊。 VNet 與您自己的資料中心中的傳統網路類似，但帶來了 Azure 基礎結構的額外優點，例如調整規模、可用性和隔離。
 
-若要深入瞭解 VNet 概念、最佳作法及其他許多，請參閱[什麼是 Azure 虛擬網路](../../virtual-network/virtual-networks-overview.md)。
+若要深入瞭解 VNet 概念、最佳做法和其他更多，請參閱 [什麼是 Azure 虛擬網路](../../virtual-network/virtual-networks-overview.md)。
 
-若要深入瞭解如何建立虛擬網路，請參閱[快速入門：使用 Azure 入口網站建立虛擬網路](../../virtual-network/quick-create-portal.md)。
+若要深入瞭解如何建立虛擬網路，請參閱 [快速入門：使用 Azure 入口網站建立虛擬網路](../../virtual-network/quick-create-portal.md)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 若要讓 audit 寫入 VNet 或防火牆後方的儲存體帳戶，需要下列必要條件：
 
 > [!div class="checklist"]
 >
-> * 一般用途 v2 儲存體帳戶。 如果您有一般用途 v1 或 blob 儲存體帳戶，請[升級至一般用途 v2 儲存體帳戶](../../storage/common/storage-account-upgrade.md)。 如需詳細資訊，請參閱[儲存體帳戶類型](../../storage/common/storage-account-overview.md#types-of-storage-accounts)。
-> * 儲存體帳戶必須位於與[邏輯 SQL server](logical-servers.md)相同的訂用帳戶和相同的位置。
-> * Azure 儲存體帳戶需要 `Allow trusted Microsoft services to access this storage account` 。 在儲存體帳戶的**防火牆和虛擬網路**上設定此資訊。
+> * 一般用途 v2 儲存體帳戶。 如果您有一般用途 v1 或 blob 儲存體帳戶，請 [升級至一般用途 v2 儲存體帳戶](../../storage/common/storage-account-upgrade.md)。 如需詳細資訊，請參閱[儲存體帳戶類型](../../storage/common/storage-account-overview.md#types-of-storage-accounts)。
+> * 儲存體帳戶必須位於相同的訂用帳戶和 [邏輯 SQL 伺服器](logical-servers.md)的相同位置。
+> * Azure 儲存體帳戶需要 `Allow trusted Microsoft services to access this storage account` 。 在儲存體帳戶 **防火牆和虛擬網路**上設定此設定。
 > * 您必須具有 `Microsoft.Authorization/roleAssignments/write` 所選儲存體帳戶的許可權。 如需詳細資訊，請參閱 [Azure 內建角色](../../role-based-access-control/built-in-roles.md)。
 
 ## <a name="configure-in-azure-portal"></a>在 Azure 入口網站中設定
 
-使用您的訂用帳戶連接到[Azure 入口網站](https://portal.azure.com)。 流覽至資源群組和伺服器。
+使用您的訂用帳戶連接到 [Azure 入口網站](https://portal.azure.com) 。 流覽至資源群組和伺服器。
 
-1. 按一下 [安全性] 標題底下的 [**審核**]。 選取 [**開啟**]。
+1. 按一下 [安全性] 標題下的 [ **審核** ]。 選取 [ **開啟**]。
 
-2. 選取 [儲存體] 。 選取將儲存記錄檔的儲存體帳戶。 儲存體帳戶必須符合[必要條件](#prerequisites)中所列的需求。
+2. 選取 [儲存體] 。 選取將儲存記錄的儲存體帳戶。 儲存體帳戶必須符合 [必要條件](#prerequisites)中所列的需求。
 
-3. 開啟**儲存體詳細資料**
+3. 開啟 **儲存體詳細資料**
 
   > [!NOTE]
-  > 如果選取的儲存體帳戶位於 VNet 後方，您會看到下列訊息：
+  > 如果選取的儲存體帳戶位於 VNet 後方，您將會看到下列訊息：
   >
   >`You have selected a storage account that is behind a firewall or in a virtual network. Using this storage requires to enable 'Allow trusted Microsoft services to access this storage account' on the storage account and creates a server managed identity with 'storage blob data contributor' RBAC.`
   >
-  >如果您看不到此訊息，則儲存體帳戶不在 VNet 後方。
+  >如果您看不到此訊息，表示儲存體帳戶不在 VNet 後方。
 
-4. 選取保留週期的天數。 然後按一下 [確定]。 早于保留期限的記錄會遭到刪除。
+4. 選取保留期限的天數。 然後按一下 [確定] 。 比保留期間舊的記錄會遭到刪除。
 
-5. 在您的 [審核設定] 上選取 [**儲存**]。
+5. 在您的 [審核設定] 上選取 [ **儲存** ]。
 
 您已成功設定 audit，以寫入 VNet 或防火牆後方的儲存體帳戶。
 
-## <a name="configure-with-rest-commands"></a>使用 REST 命令進行設定
+## <a name="configure-with-rest-commands"></a>使用 REST 命令設定
 
-除了使用 Azure 入口網站以外，您還可以使用 REST 命令來設定 audit，以在 VNet 和防火牆後方的儲存體帳戶上寫入資料庫事件。
+除了使用 Azure 入口網站之外，您還可以使用 REST 命令來設定 audit，以在 VNet 和防火牆後方的儲存體帳戶上寫入資料庫事件。
 
-本節中的範例腳本會要求您在執行腳本之前先更新它。 取代指令碼中的下列值：
+本節中的範例腳本需要您先更新腳本，再執行腳本。 取代指令碼中的下列值：
 
 |範例值|範例描述|
 |:-----|:-----|
@@ -83,7 +83,7 @@ ms.locfileid: "87530367"
 
 若要設定 SQL Audit 以將事件寫入 VNet 或防火牆後方的儲存體帳戶：
 
-1. 向 Azure Active Directory （Azure AD）註冊您的伺服器。 請使用 PowerShell 或 REST API。
+1. 向 Azure Active Directory (Azure AD) 註冊您的伺服器。 請使用 PowerShell 或 REST API。
 
    **PowerShell**
 
@@ -117,12 +117,12 @@ ms.locfileid: "87530367"
    }
    ```
 
-2. 開啟 [Azure 入口網站](https://portal.azure.com)。 瀏覽至儲存體帳戶。 找出 **[存取控制（IAM）**]，然後按一下 [**新增角色指派**]。 將**儲存體 Blob 資料參與者**Azure 角色指派給裝載您向 Azure Active Directory （Azure AD）註冊之資料庫的伺服器，如同上一個步驟所示。
+2. 開啟 [Azure 入口網站](https://portal.azure.com)。 瀏覽至儲存體帳戶。 找出 ** (IAM) 的存取控制 **，然後按一下 [ **新增角色指派**]。 將 **儲存體 Blob 資料參與者** Azure 角色指派給裝載您向 Azure Active Directory (Azure AD) 註冊之資料庫的伺服器，如同上一個步驟中所述。
 
    > [!NOTE]
-   > 僅有具備「擁有者」權限的成員才能執行此步驟。 針對各種 Azure 內建角色，請參閱[Azure 內建角色](../../role-based-access-control/built-in-roles.md)。
+   > 僅有具備「擁有者」權限的成員才能執行此步驟。 針對各種 Azure 內建角色，請參閱 [azure 內建角色](../../role-based-access-control/built-in-roles.md)。
 
-3. 設定[伺服器的 blob 稽核原則](/rest/api/sql/server%20auditing%20settings/createorupdate)，而不指定*storageAccountAccessKey*：
+3. 設定 [伺服器的 blob 稽核原則](/rest/api/sql/server%20auditing%20settings/createorupdate)，而不指定 *storageAccountAccessKey*：
 
    範例要求
 
@@ -143,23 +143,23 @@ ms.locfileid: "87530367"
 
 ## <a name="using-azure-powershell"></a>使用 Azure PowerShell
 
-- [建立或更新資料庫稽核原則（設定-AzSqlDatabaseAudit）](/powershell/module/az.sql/set-azsqldatabaseaudit)
-- [建立或補救伺服器稽核原則（設定-AzSqlServerAudit）](/powershell/module/az.sql/set-azsqlserveraudit)
+- [建立或更新資料庫稽核原則 (設定 AzSqlDatabaseAudit) ](/powershell/module/az.sql/set-azsqldatabaseaudit)
+- [建立或補救伺服器稽核原則 (設定 AzSqlServerAudit) ](/powershell/module/az.sql/set-azsqlserveraudit)
 
 ## <a name="using-azure-resource-manager-template"></a>使用 Azure Resource Manager 範本
 
-您可以使用[Azure Resource Manager](../../azure-resource-manager/management/overview.md)範本，設定在虛擬網路和防火牆後方的儲存體帳戶上寫入資料庫事件的審核，如下列範例所示：
+您可以設定使用 [Azure Resource Manager](../../azure-resource-manager/management/overview.md) 範本將審核功能寫入虛擬網路和防火牆後方的儲存體帳戶，如下列範例所示：
 
 > [!IMPORTANT]
-> 若要在虛擬網路和防火牆後方使用儲存體帳戶，您必須將**isStorageBehindVnet**參數設定為 true
+> 若要使用虛擬網路和防火牆後方的儲存體帳戶，您必須將 **isStorageBehindVnet** 參數設定為 true
 
-- [部署已啟用審核的 Azure SQL server，以將 audit 記錄寫入 blob 儲存體](https://azure.microsoft.com/resources/templates/201-sql-auditing-server-policy-to-blob-storage)
+- [部署啟用審核的 Azure SQL server，以將 audit 記錄寫入至 blob 儲存體](https://azure.microsoft.com/resources/templates/201-sql-auditing-server-policy-to-blob-storage)
 
 > [!NOTE]
-> 連結的範例位於外部公用存放庫，並以「原樣」提供，不含擔保，而且在任何 Microsoft 支援方案/服務下不受支援。
+> 連結的範例位於外部公用存放庫，並提供「原樣」且沒有擔保，且不受任何 Microsoft 支援方案/服務的支援。
 
 ## <a name="next-steps"></a>後續步驟
 
-* [使用 PowerShell 建立虛擬網路服務端點，然後用 Azure SQL Database 的虛擬網路規則。](scripts/vnet-service-endpoint-rule-powershell-create.md)
+* [使用 PowerShell 來建立虛擬網路服務端點，然後使用 Azure SQL Database 的虛擬網路規則。](scripts/vnet-service-endpoint-rule-powershell-create.md)
 * [虛擬網路規則：使用 REST Api 的作業](/rest/api/sql/virtualnetworkrules)
-* [使用伺服器的虛擬網路服務端點和規則](vnet-service-endpoint-rule-overview.md)
+* [針對伺服器使用虛擬網路服務端點和規則](vnet-service-endpoint-rule-overview.md)

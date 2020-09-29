@@ -8,18 +8,18 @@ ms.topic: how-to
 ms.date: 09/17/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 75d8b63328f71df2f8de22a95c106c5cc18dc28f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d9f7778d1dda159f3ab0c4548912370c85f94eff
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91275198"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91441881"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>使用 Azure 匯入/匯出服務匯出 Azure Blob 儲存體中的資料
 
 本文提供的逐步指示會說明如何使用 Azure 匯入/匯出服務，安全地從 Azure Blob 儲存體匯出大量資料。 此服務需要您將空磁碟機寄送至 Azure 資料中心。 此服務會將您儲存體帳戶的資料匯出至磁碟機，然後將磁碟機寄回給您。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 在建立匯出作業來轉送 Azure Blob 儲存體中的資料之前，請仔細檢閱並完成此服務的下列必要條件清單。
 您必須：
@@ -119,7 +119,7 @@ ms.locfileid: "91275198"
 1. 當您收到具有匯出資料的磁碟機之後，您需要取得 BitLocker 金鑰才能對磁碟機解除鎖定。 移至 Azure 入口網站中的匯出作業。 按一下 [匯入/匯出]**** 索引標籤。
 2. 從清單中選取並按一下您的匯出作業。 移至 [ **加密** ] 並複製金鑰。
 
-   ![檢視匯出工作的 BitLocker 金鑰](./media/storage-import-export-data-from-blobs/export-from-blob7.png)
+   ![檢視匯出工作的 BitLocker 金鑰](./media/storage-import-export-data-from-blobs/export-from-blob-7.png)
 
 3. 使用 BitLocker 金鑰來對磁碟機解除鎖定。
 
@@ -153,7 +153,7 @@ ms.locfileid: "91275198"
 
     下表會說明這些參數：
 
-    |命令列參數|說明|  
+    |命令列參數|描述|  
     |--------------------------|-----------------|  
     |**/logdir**|選擇性。 記錄檔目錄。 詳細資訊記錄檔會寫入至這個目錄。 如未指定，將使用目前的目錄做為記錄目錄。|  
     |**/sn**|必要。 匯出作業的儲存體帳戶名稱。|  
@@ -207,7 +207,7 @@ Number of drives needed:        3
 
 下表顯示有效 Blob 路徑範例：
 
-   | 選取器 | Blob 路徑 | 說明 |
+   | 選取器 | Blob 路徑 | 描述 |
    | --- | --- | --- |
    | 開頭為 |/ |匯出儲存體帳戶中的所有 Blob |
    | 開頭為 |/$root/ |匯出根容器中的所有 Blob |

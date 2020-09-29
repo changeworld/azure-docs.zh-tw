@@ -7,17 +7,17 @@ ms.service: sql-db-mi
 ms.subservice: high-availability
 ms.custom: sqldbrb=2
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein
 ms.date: 08/14/2019
-ms.openlocfilehash: a154f9a75a70ed46155424d676d2b2cd8c6df3bf
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 42326247117c0710c93b45c896bb6e7cb3a8120f
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91277966"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91444382"
 ---
 # <a name="configure-a-failover-group-for-azure-sql-database"></a>設定 Azure SQL Database 的容錯移轉群組
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -28,7 +28,7 @@ ms.locfileid: "91277966"
 
 使用 Azure 入口網站或 PowerShell 建立容錯移轉群組，並在其中新增單一資料庫。
 
-### <a name="prerequisites"></a>Prerequisites
+### <a name="prerequisites"></a>必要條件
 
 請考慮下列必要條件：
 
@@ -196,7 +196,7 @@ ms.locfileid: "91277966"
 
 建立容錯移轉群組，並使用 Azure 入口網站或 PowerShell 將彈性集區新增至該群組。  
 
-### <a name="prerequisites"></a>Prerequisites
+### <a name="prerequisites"></a>必要條件
 
 請考慮下列必要條件：
 
@@ -348,7 +348,7 @@ ms.locfileid: "91277966"
 
 您必須為每個 SQL 受控執行個體的虛擬網路設定 [ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md) 或建立閘道、連接兩個閘道，然後建立容錯移轉群組。
 
-### <a name="prerequisites"></a>Prerequisites
+### <a name="prerequisites"></a>必要條件
 
 請考慮下列必要條件：
 

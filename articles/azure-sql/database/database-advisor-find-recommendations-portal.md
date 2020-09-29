@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: performance
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, sstein
 ms.date: 12/19/2018
-ms.openlocfilehash: e96db18993dbb18ebf51d0b30e9172901d10df5b
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 0b7aab13871f1450a3c6907b30b446869b2fefa7
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91398266"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91443886"
 ---
 # <a name="find-and-apply-performance-recommendations"></a>尋找和套用效能建議
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -42,7 +42,7 @@ ms.locfileid: "91398266"
 | 影響 | 描述 |
 |:--- |:--- |
 | 高 |高影響建議提供最明顯的效能影響。 |
-| 中型 |中度影響建議會改善效能，但不顯著。 |
+| 中 |中度影響建議會改善效能，但不顯著。 |
 | 低 |低影響建議比沒有建議時提供更好的效能，但改善可能不顯著。 |
 
 > [!NOTE]
@@ -133,7 +133,7 @@ Azure SQL Database 可讓您使用下列 3 個選項的其中任一選項來控�
 | 執行中 |正在套用建議。 |
 | Validating |成功套用建議，而服務正在衡量益處。 |
 | Success |已成功套用建議，並證實有益處。 |
-| 錯誤 |套用建議程序期間發生錯誤。 這可能是暫時性問題，也可能是資料表的結構描述變更，造成指令碼不再有效。 |
+| Error |套用建議程序期間發生錯誤。 這可能是暫時性問題，也可能是資料表的結構描述變更，造成指令碼不再有效。 |
 | 還原 |已套用建立但被認為無助於效能，正在自動還原。 |
 | 已還原 |已還原建議。 |
 

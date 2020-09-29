@@ -1,27 +1,27 @@
 ---
-title: 追蹤分區對應管理員的效能計數器
+title: 用來追蹤分區對應管理員的效能計數器
 description: ShardMapManager 類別與資料相依路由效能計數器
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
 ms.custom: seoapril2019, seo-lt-2019, sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 02/07/2019
-ms.openlocfilehash: c4fddcaf786801e13e962c888a154adfdffae9f8
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 6038ec1d83957f20ca6e2759eeb5a88e66c2f77f
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85961824"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91443419"
 ---
-# <a name="create-performance-counters-to-track-performance-of-shard-map-manager"></a>建立效能計數器以追蹤分區對應管理員的效能
+# <a name="create-performance-counters-to-track-performance-of-shard-map-manager"></a>建立效能計數器來追蹤分區對應管理員的效能
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-效能計數器是用來追蹤[資料相依路由](elastic-scale-data-dependent-routing.md)作業的效能。 這些計數器可在「彈性資料庫：分區管理」類別下的「效能監視器」中存取。
+效能計數器可用來追蹤 [資料相依路由](elastic-scale-data-dependent-routing.md) 作業的效能。 這些計數器可在「彈性資料庫：分區管理」類別下的「效能監視器」中存取。
 
 您可以擷取[分區對應管理員](elastic-scale-shard-map-management.md)的效能，特別是在使用[資料相依路由](elastic-scale-data-dependent-routing.md)時。 計數器是使用 Microsoft.Azure.SqlDatabase.ElasticScale.Client 類別的方法建立。  
 

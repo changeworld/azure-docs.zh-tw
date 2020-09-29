@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 09/22/2020
+ms.date: 09/28/2020
 ms.author: b-juche
-ms.openlocfilehash: 1bbd6ad9e33aab8d3564865b86485d70df5a108f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d2abb66684738e97ade2a2e67309a4e7b53c4734
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91342026"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91442090"
 ---
 # <a name="manage-a-manual-qos-capacity-pool"></a>管理手動 QoS 容量集區
 
@@ -90,3 +90,12 @@ ms.locfileid: "91342026"
 * [Azure NetApp Files 的計量](azure-netapp-files-metrics.md)
 * [適用於 Azure NetApp Files 的效能考量](azure-netapp-files-performance-considerations.md)
 * [針對容量集區問題進行疑難排解](troubleshoot-capacity-pools.md)
+* [Azure NetApp Files 的儲存體階層](azure-netapp-files-understand-storage-hierarchy.md)
+* [Azure NetApp Files 的服務等級](azure-netapp-files-service-levels.md)
+* [適用於Azure NetApp Files 的成本模型](azure-netapp-files-cost-model.md)
+* [Azure NetApp Files 的資源限制](azure-netapp-files-resource-limits.md)
+* [建立 NFS 磁碟區](azure-netapp-files-create-volumes.md)
+* [建立 SMB 磁碟區](azure-netapp-files-create-volumes-smb.md)
+* [建立雙重通訊協定磁碟區](create-volumes-dual-protocol.md)
+
+

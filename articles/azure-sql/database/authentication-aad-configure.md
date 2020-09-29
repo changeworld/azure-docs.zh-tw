@@ -7,17 +7,17 @@ ms.service: sql-db-mi
 ms.subservice: security
 ms.custom: azure-synapse, has-adal-ref, sqldbrb=2
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, sstein
 ms.date: 08/17/2020
-ms.openlocfilehash: f354cb25c93826b50c0094e75ef7a1756f7625b7
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d7b0f2bb479154fa10a18cd07a65b9f7287fc97c
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91278170"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91444475"
 ---
 # <a name="configure-and-manage-azure-ad-authentication-with-azure-sql"></a>使用 Azure SQL 設定和管理 Azure AD 驗證
 
@@ -190,7 +190,7 @@ else {
 
 下表列出用來布建和管理 SQL 受控執行個體 Azure AD 系統管理員的 Cmdlet：
 
-| Cmdlet 名稱 | 說明 |
+| Cmdlet 名稱 | 描述 |
 | --- | --- |
 | [設定-AzSqlInstanceActiveDirectoryAdministrator](/powershell/module/az.sql/set-azsqlinstanceactivedirectoryadministrator) |為目前訂用帳戶中的 SQL 受控執行個體布建 Azure AD 系統管理員。  (必須來自目前的訂用帳戶) |
 | [移除-AzSqlInstanceActiveDirectoryAdministrator](/powershell/module/az.sql/remove-azsqlinstanceactivedirectoryadministrator) |移除目前訂用帳戶中 SQL 受控執行個體的 Azure AD 系統管理員。 |
@@ -218,7 +218,7 @@ Remove-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName "ResourceGro
 
 您也可以藉由呼叫下列 CLI 命令，為 SQL 受控執行個體布建 Azure AD 管理員：
 
-| 命令 | 說明 |
+| 命令 | 描述 |
 | --- | --- |
 |[az sql mi ad-admin create](/cli/azure/sql/mi/ad-admin#az-sql-mi-ad-admin-create) | 布建 SQL 受控執行個體 (的 Azure Active Directory 系統管理員必須來自目前的訂用帳戶) 。 |
 |[az sql mi ad-admin delete](/cli/azure/sql/mi/ad-admin#az-sql-mi-ad-admin-delete) | 移除 SQL 受控執行個體的 Azure Active Directory 系統管理員。 |
@@ -279,7 +279,7 @@ Remove-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName "ResourceGro
 
 用來布建和管理 SQL Database 和 Azure Synapse Azure AD 管理員的 Cmdlet：
 
-| Cmdlet 名稱 | 說明 |
+| Cmdlet 名稱 | 描述 |
 | --- | --- |
 | [設定-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/set-azsqlserveractivedirectoryadministrator) |為裝載 SQL Database 或 Azure Synapse 的伺服器布建 Azure Active Directory 系統管理員。  (必須來自目前的訂用帳戶)  |
 | [移除-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/remove-azsqlserveractivedirectoryadministrator) |移除裝載 SQL Database 或 Azure Synapse 之伺服器的 Azure Active Directory 系統管理員。|
@@ -293,7 +293,7 @@ Remove-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName "ResourceGro
 Set-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -ServerName "demo_server" -DisplayName "DBA_Group"
 ```
 
-**DisplayName** 輸入參數可接受 Azure AD 顯示名稱或「使用者主體名稱」。 例如，``DisplayName="John Smith"`` 與 ``DisplayName="johns@contoso.com"``。 Azure AD 群組只支援 Azure AD 顯示名稱。
+**DisplayName** 輸入參數可接受 Azure AD 顯示名稱或「使用者主體名稱」。 例如 ``DisplayName="John Smith"`` 和 ``DisplayName="johns@contoso.com"``。 Azure AD 群組只支援 Azure AD 顯示名稱。
 
 > [!NOTE]
 > Azure PowerShell 命令 ```Set-AzSqlServerActiveDirectoryAdministrator``` 不會阻止您為不支援的使用者佈建 Azure AD 系統管理員。 您可以佈建不支援的使用者，但是該使用者無法連線到資料庫。
@@ -324,7 +324,7 @@ Remove-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -Se
 
 您可以藉由呼叫下列 CLI 命令來布建 Azure AD 管理員：
 
-| 命令 | 說明 |
+| 命令 | 描述 |
 | --- | --- |
 |[az sql server ad-admin create](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-create) | 為裝載 SQL Database 或 Azure Synapse 的伺服器布建 Azure Active Directory 系統管理員。  (必須來自目前的訂用帳戶)  |
 |[az sql server ad-admin delete](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-delete) | 移除裝載 SQL Database 或 Azure Synapse 之伺服器的 Azure Active Directory 系統管理員。 |

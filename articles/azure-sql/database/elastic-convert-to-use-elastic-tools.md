@@ -1,29 +1,29 @@
 ---
 title: 將現有的資料庫移轉到相應放大的資料庫
-description: 藉由建立分區對應管理員，將分區化資料庫轉換成使用彈性資料庫工具
+description: 藉由建立分區對應管理員，將分區化資料庫轉換為使用彈性資料庫工具
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 42a2d571c04d08b5ec868bbd06cd521bfcda24bc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 95afd0b9117caca4b531c453417217d8a8de7c7f
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84038479"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91443465"
 ---
 # <a name="migrate-existing-databases-to-scale-out"></a>將現有的資料庫移轉到相應放大的資料庫
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-使用工具（例如[彈性資料庫用戶端程式庫](elastic-database-client-library.md)），輕鬆管理您現有的相應放大分區化資料庫。 請先轉換現有的資料庫，才能使用[分區對應管理員](elastic-scale-shard-map-management.md)。
+使用工具 (（例如 [彈性資料庫用戶端程式庫](elastic-database-client-library.md)) ）輕鬆地管理現有的相應放大分區化資料庫。 請先轉換現有的資料庫，才能使用[分區對應管理員](elastic-scale-shard-map-management.md)。
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 若要移轉現有的分區化資料庫︰
 
@@ -32,9 +32,9 @@ ms.locfileid: "84038479"
 3. 準備個別分區。  
 4. 將對應新增至分區對應。
 
-這些技術可以使用[.NET Framework 用戶端程式庫](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/)，或在[Azure SQL Database 彈性資料庫工具腳本](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db)中找到的 PowerShell 腳本來執行。 以下範例會使用 PowerShell 指令碼。
+您可以使用 [.NET Framework 用戶端程式庫](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/)或 [Azure SQL Database 彈性資料庫工具腳本](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db)中找到的 PowerShell 腳本來執行這些技術。 以下範例會使用 PowerShell 指令碼。
 
-如需 ShardMapManager 的詳細資訊，請參閱 [分區對應管理](elastic-scale-shard-map-management.md)。 如需彈性資料庫工具的總覽，請參閱[彈性資料庫功能總覽](elastic-scale-introduction.md)。
+如需 ShardMapManager 的詳細資訊，請參閱 [分區對應管理](elastic-scale-shard-map-management.md)。 如需彈性資料庫工具的總覽，請參閱 [彈性資料庫功能總覽](elastic-scale-introduction.md)。
 
 ## <a name="prepare-the-shard-map-manager-database"></a>準備分區對應管理員資料庫
 
@@ -156,7 +156,7 @@ Get-Mappings -ShardMap $ShardMap
 
 ## <a name="next-steps"></a>後續步驟
 
-從[Azure SQL Database 彈性資料庫工具腳本](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db)取得 PowerShell 腳本。
+從 [Azure SQL Database 彈性資料庫工具腳本](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db)取得 PowerShell 腳本。
 
 這些工具也會在 GitHub 上︰ [Azure/elastic-db-tools](https://github.com/Azure/elastic-db-tools)。
 
@@ -168,7 +168,7 @@ Get-Mappings -ShardMap $ShardMap
 
 ## <a name="questions-and-feature-requests"></a>問題和功能要求
 
-如有任何問題，請使用[Microsoft Q&SQL Database 的問題頁面](https://docs.microsoft.com/answers/topics/azure-sql-database.html)和功能要求，將其新增至[SQL Database 意見反應論壇](https://feedback.azure.com/forums/217321-sql-database/)。
+針對問題，請使用 [Microsoft 問&SQL Database 的問題頁面](https://docs.microsoft.com/answers/topics/azure-sql-database.html) ，並針對功能要求將其新增至 [SQL Database 意見反應論壇](https://feedback.azure.com/forums/217321-sql-database/)。
 
 <!--Image references-->
 [1]: ./media/elastic-convert-to-use-elastic-tools/listmapping.png
