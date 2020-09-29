@@ -4,12 +4,12 @@ description: 瞭解如何設定 Azure Migrate 設備以進行實體伺服器評�
 ms.service: azure-migrate
 ms.topic: article
 ms.date: 04/15/2020
-ms.openlocfilehash: bace4ab03051a9febfe14cc30143bd4a5cfa7c84
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 348c12e08a9bed98016ac825921b67836b32b9e9
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90085967"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448077"
 ---
 # <a name="set-up-an-appliance-for-physical-servers"></a>設定實體伺服器的設備
 
@@ -59,7 +59,7 @@ Azure Migrate 設備是輕量設備，可供 Azure Migrate 伺服器評估用來
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - 公用雲端的使用範例：```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-Public.zip SHA256 ```
     - 政府雲端的使用範例：```  C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-USGov.zip MD5 ```
-3.  確認設備的最新版本，以及雜湊值設定。
+3.  確認設備的最新版本，以及 [雜湊值](tutorial-discover-physical.md#verify-security) 設定。
  
 
 ## <a name="run-the-azure-migrate-installer-script"></a>執行 Azure Migrate 安裝程式指令碼

@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein, danil
 ms.date: 09/26/2019
-ms.openlocfilehash: d95bf9ed50f819c5a92c7945827ee82a2c6ecdc9
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 23fdc69b59cc1415d06bd394fd9ef729b7ef4ce0
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371770"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448806"
 ---
 # <a name="recover-using-automated-database-backups---azure-sql-database--sql-managed-instance"></a>使用自動資料庫備份復原-Azure SQL Database & SQL 受控執行個體
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -33,11 +33,6 @@ ms.locfileid: "91371770"
 
 > [!IMPORTANT]
 > 還原期間無法覆寫現有的資料庫。
-
-根據預設，Azure SQL Database 和 Azure SQL 受控執行個體備份會儲存在異地複寫的 blob 儲存體中， (GRS 儲存體類型) 。 此外，SQL 受控執行個體也支援本機冗余的 (LRS) 和區域冗余 (ZRS) 備份儲存體。 冗余可確保您的資料受到規劃與未規劃的事件保護，包括暫時性硬體故障、網路或電源中斷，以及大量的自然災害。 區域冗余儲存體 (ZRS) 只能在 [特定區域](../../storage/common/storage-redundancy.md#zone-redundant-storage)中使用。
-
-> [!IMPORTANT]
-> 設定備份的儲存體冗余僅適用于受控實例，並在建立過程中允許。 布建資源之後，您就無法變更備份儲存體的冗余選項。
 
 當您使用標準或高階服務層級時，您的資料庫還原可能會產生額外的儲存體成本。 當還原的資料庫大小上限大於目標資料庫的服務層級和效能層級所包含的儲存空間時，就會產生額外的成本。 如需有關額外儲存體的價格詳細資訊，請參閱 [SQL Database 價格頁面](https://azure.microsoft.com/pricing/details/sql-database/)。 如果實際使用的空間量小於所含的儲存空間量，您可以將資料庫大小上限設定為包含的數量，以避免此額外成本。
 
@@ -143,7 +138,7 @@ ms.locfileid: "91371770"
 ## <a name="geo-restore"></a>異地復原
 
 > [!IMPORTANT]
-> 異地還原僅適用于以地理位置多餘 (GRS) 備份儲存體類型設定的受控實例。 使用本機冗余或區域冗余備份儲存體類型設定的受控實例不支援異地還原。
+> 異地還原僅適用于使用地理位置冗余 [備份儲存體](automated-backups-overview.md#backup-storage-redundancy)設定的 SQL 資料庫或受控實例。
 
 您可以從最新的異地複寫備份，在任何 Azure 區域中的任何受控實例上，還原任何 SQL Database 伺服器或實例資料庫上的資料庫。 異地還原使用異地複寫的備份作為其來源。 即使因為中斷而無法存取資料庫或資料中心，也可以要求異地還原。
 
@@ -240,7 +235,7 @@ ms.locfileid: "91371770"
 
 若要使用 REST API 來還原資料庫：
 
-| API | 說明 |
+| API | 描述 |
 | --- | --- |
 | [REST (createMode=Recovery)](https://docs.microsoft.com/rest/api/sql/databases) |還原資料庫。 |
 | [取得建立或更新資料庫狀態](https://docs.microsoft.com/rest/api/sql/operations) |在還原作業期間傳回狀態。 |

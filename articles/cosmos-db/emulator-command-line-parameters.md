@@ -6,12 +6,13 @@ ms.topic: how-to
 author: markjbrown
 ms.author: mjbrown
 ms.date: 09/17/2020
-ms.openlocfilehash: 70e68c566ccb0fe08ce3b8d2dc11fc3c141c16bc
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.custom: contperfq1
+ms.openlocfilehash: f8bcadf25ac8e001657f2be012f99ddb507e672d
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90994838"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91445175"
 ---
 # <a name="command-line-and-powershell-reference-for-azure-cosmos-db-emulator"></a>Azure Cosmos DB 模擬器的命令列和 PowerShell 參考
 
@@ -144,7 +145,7 @@ Cmdlet 可確保在解除安裝之前停止模擬器。
 
 1. 啟動具有 PartitionCount 旗標的模擬器，方法是設定值 <= 250。 例如： `C:\Program Files\Azure Cosmos DB Emulator> Microsoft.Azure.Cosmos.Emulator.exe /PartitionCount=100` 。
  
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [匯出 Azure Cosmos 模擬器憑證以與 JAVA、Python 和 Node.js apps 搭配使用](local-emulator-export-ssl-certificates.md)
 * [模擬器的偵錯工具問題](troubleshoot-local-emulator.md)

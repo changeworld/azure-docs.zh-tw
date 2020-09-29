@@ -3,12 +3,12 @@ title: 使用 Azure Advisor 降低服務成本
 description: 使用 Azure Advisor 程式將 Azure 部署的成本最佳化。
 ms.topic: article
 ms.date: 09/27/2020
-ms.openlocfilehash: 7576ccb478a4f221ae7d7f68b14787f6f8bf7e88
-ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
+ms.openlocfilehash: 3b7e57aa178380ff4cf0561718c292dc1e6c6aa9
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91405219"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448169"
 ---
 # <a name="reduce-service-costs-by-using-azure-advisor"></a>使用 Azure Advisor 降低服務成本
 
@@ -59,8 +59,8 @@ Advisor 會針對下列資源分析過去30天的使用模式，並建議可將�
 ### <a name="azure-cosmos-db-reserved-capacity"></a>Azure Cosmos DB 保留容量
 Advisor 會分析您過去30天的 Azure Cosmos DB 使用模式，並建議保留容量購買以將成本優化。 使用保留容量，您可以預先購買 Azure Cosmos DB 的每小時使用量，並節省隨用隨付費用。 保留容量是帳單權益，並會自動套用至新的和現有的部署。 Advisor 會使用3年期的保留定價，並推斷過去30天內觀察到的使用模式，計算個別訂用帳戶的節省金額。 共用範圍建議適用于保留容量購買，並可提高節省成本。
 
-### <a name="sql-paas-reserved-capacity"></a>SQL PaaS 保留容量
-Advisor 會分析 SQL PaaS 彈性資料庫集區，以及過去30天內的 SQL 受控執行個體使用模式。 然後建議可將成本優化的保留容量購買。 使用保留容量時，您可以預先購買 SQL DB 每小時使用量，並節省您的 SQL 計算成本。 您的 SQL 授權會分開計費，而且不會被保留折扣。 保留容量是帳單權益，並會自動套用至新的和現有的部署。 Advisor 會使用3年期的保留定價，並推斷過去30天內觀察到的使用模式，計算個別訂用帳戶的節省金額。 共用範圍建議適用于保留容量購買，並可提高節省成本。
+### <a name="sql-database-and-sql-managed-instance-reserved-capacity"></a>SQL Database 和 SQL 受控執行個體保留容量
+Advisor 會分析過去30天內 SQL Database 和 SQL 受控執行個體使用模式。 然後建議可將成本優化的保留容量購買。 使用保留容量時，您可以預先購買 SQL DB 每小時使用量，並節省您的 SQL 計算成本。 您的 SQL 授權會分開計費，而且不會被保留折扣。 保留容量是帳單權益，並會自動套用至新的和現有的部署。 Advisor 會使用3年期的保留定價，並推斷過去30天內觀察到的使用模式，計算個別訂用帳戶的節省金額。 共用範圍建議適用于保留容量購買，並可提高節省成本。 如需詳細資訊，請參閱 [Azure SQL Database & SQL 受控執行個體保留容量](https://docs.microsoft.com/azure/azure-sql/database/reserved-capacity-overview)。
 
 ### <a name="app-service-stamp-fee-reserved-capacity"></a>App Service 戳記費用保留容量
 Advisor 會分析過去30天內 Azure App Service 隔離環境的戳記費用使用模式，並建議可將成本優化的保留容量購買。 使用保留容量時，您可以預先購買隔離環境戳記費用的每小時使用量，並節省隨用隨付費用。 請注意，保留容量僅適用于戳記費用，無法 App Service 實例。 保留容量是帳單權益，並會自動套用至新的和現有的部署。 建議程式會根據過去30天的使用量模式，使用3年期的保留定價來計算個別訂用帳戶的儲存估價。

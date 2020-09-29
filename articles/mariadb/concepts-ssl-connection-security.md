@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 07/09/2020
-ms.openlocfilehash: a108459985f235f0280354ef7b4fa0cb181f5dda
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: b23783080e976f70ba8c5e02f67dcee36bbc9c34
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90054240"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91444955"
 ---
 # <a name="ssltls-connectivity-in-azure-database-for-mariadb"></a>適用於 MariaDB 的 Azure 資料庫中的 SSL/TLS 連線能力
 適用於 MariaDB 的 Azure 資料庫支援使用安全通訊端層 (SSL)，將資料庫伺服器連接至用戶端應用程式。 在您的資料庫伺服器和用戶端應用程式之間強制使用 SSL 連線，可將兩者之間的資料流加密，有助於抵禦「中間人」攻擊。
@@ -57,7 +57,18 @@ Azure 入口網站中會顯示多種程式設計語言的連接字串。 這些�
 
 若要瞭解如何設定適用於 MariaDB 的 Azure 資料庫的 TLS 設定，請參閱如何設定 [tls 設定](howto-tls-configurations.md)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="cipher-support-by-azure-database-for-mariadb"></a>適用於 MariaDB 的 Azure 資料庫的加密支援
+
+做為 SSL/TLS 通訊的一部分，系統會驗證加密套件，而且只允許支援加密，以與資料庫 serer 通訊。 加密套件驗證是在 [閘道層](concepts-connectivity-architecture.md#connectivity-architecture) 級進行控制，而不是在節點本身上明確控制。 如果加密套件不符合下列其中一個套件，則會拒絕傳入用戶端連接。
+
+### <a name="cipher-suite-supported"></a>支援的密碼套件
+
+*   TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+*   TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+*   TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
+*   TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
+
+## <a name="next-steps"></a>後續步驟
 - 深入了解[伺服器防火牆規則](concepts-firewall-rules.md)
 - 瞭解如何 [設定 SSL](howto-configure-ssl.md)
 - 瞭解如何 [設定 TLS](howto-tls-configurations.md)

@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 05/26/2020
-ms.openlocfilehash: 49c2d2c24cc8acd8468f660189212a8ae71a1d6e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 09/26/2020
+ms.openlocfilehash: fe5ba25904298fe1a394a4b01d6bdacc72d599c9
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91268922"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448674"
 ---
 # <a name="split-image-directory"></a>分割映像目錄
 
@@ -28,14 +28,14 @@ ms.locfileid: "91268922"
 
 2. 將它連接到輸出為影像目錄的模組。
 
-3. **第一個輸出中的影像**輸入比例，以指定要放入左方分割中的資料百分比，預設為0.9。
+3. **第一個輸出中的影像**輸入比例，以指定要放入左方分割中的資料百分比，預設為0.9。 如果小數結果不是整數，模組會使用較小的接近整數。
 
 
 ## <a name="technical-notes"></a>技術說明
 
 ### <a name="expected-inputs"></a>預期的輸入
 
-| 名稱                  | 類型           | 說明              |
+| 名稱                  | 類型           | 描述              |
 | --------------------- | -------------- | ------------------------ |
 | 輸入影像目錄 | ImageDirectory | 要分割的映射目錄 |
 
@@ -47,7 +47,7 @@ ms.locfileid: "91268922"
 
 ### <a name="outputs"></a>輸出
 
-| 名稱                    | 類型           | 說明                              |
+| 名稱                    | 類型           | 描述                              |
 | ----------------------- | -------------- | ---------------------------------------- |
 | 輸出影像 directory1 | ImageDirectory | 包含所選映射的映射目錄 |
 | 輸出影像 directory2 | ImageDirectory | 包含所有其他映射的映射目錄 |

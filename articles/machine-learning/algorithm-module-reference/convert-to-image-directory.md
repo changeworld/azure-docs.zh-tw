@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 05/26/2020
-ms.openlocfilehash: 677cf60ff3e614fd1486445786154fbf026b7cd9
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/28/2020
+ms.openlocfilehash: 9f5f4b2b069ebc65430fba4bc31a9891ed61fedf
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90898692"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91450102"
 ---
 # <a name="convert-to-image-directory"></a>轉換至映像目錄
 
@@ -22,9 +22,10 @@ ms.locfileid: "90898692"
 
 ## <a name="how-to-use-convert-to-image-directory"></a>如何使用轉換成影像目錄  
 
-1.  將 [ **轉換成映射目錄** ] 模組新增至您的實驗。 您可以在模組清單中的「電腦視覺/影像資料轉換」類別中找到此模組。 
+1.  將 [ **轉換成映射目錄** ] 模組新增至畫布。 您可以在模組清單中的「電腦視覺/影像資料轉換」類別中找到此模組。 
 
-2.  [註冊映射資料集](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets) ，並將它連接到模組輸入埠。 請確認輸入資料集中有影像。 
+2.  [ **轉換成映射目錄** ] 模組的輸入必須是檔案資料集。 [註冊映射資料集](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets) ，並將它連接到模組輸入埠。 請確認輸入資料集中有影像。 目前的設計工具不支援將影像資料集視覺化。
+ 
     支援下列資料集格式：
 
     - 這些延伸模組中的壓縮檔案： ' .zip '、' tar '、'. gz '、'. bz2 '。
@@ -35,20 +36,24 @@ ms.locfileid: "90898692"
     
 
     > [!NOTE]
-    > 如果在受監督的學習中使用影像資料集，則需要標籤。
-    > 若為影像分類工作，如果此影像資料集是以 torchvision ImageFolder 格式組織，則標籤會在模組輸出中產生為影像「類別」。 否則，只會儲存沒有標籤的影像。 以下範例說明如何組織影像資料集以取得標籤、使用影像類別目錄做為子資料夾名稱。 如需詳細資訊，請參閱 [torchvision 資料集](https://pytorch.org/docs/stable/torchvision/datasets.html#imagefolder) 。
+    > - 如果在受監督的學習中使用影像資料集，您必須指定訓練資料集的標籤。
+    > - 若為影像分類工作，如果此影像資料集是以 torchvision ImageFolder 格式組織，則標籤會在模組輸出中產生為影像「類別」。 否則，只會儲存沒有標籤的影像。 以下是如何組織影像資料集以取得標籤的範例，使用影像類別目錄做為子資料夾名稱。 
+    > - 您不需要在每個類別目錄資料夾上傳相同數量的影像。
+    > - 支援以小寫)  (的影像： ' .jpg '、' jpeg '、' .png '、' ppm '、' .bmp '、' pgm '、' .tif '、' tiff '、'. webp '。 您也可以在一個資料夾中有多個類型的影像。    
+    > - 如需詳細資訊，請參閱 [torchvision 資料集](https://pytorch.org/docs/stable/torchvision/datasets.html#imagefolder) 。
     >
     > ```
-    > root/dog/xxx.png
-    > root/dog/xxy.png
-    > root/dog/xxz.png
+    > Your_image_folder_name/Category_1/xxx.png
+    > Your_image_folder_name/Category_1/xxy.jpg
+    > Your_image_folder_name/Category_1/xxz.jpeg
     >
-    > root/cat/123.png
-    > root/cat/nsdf3.png
-    > root/cat/asd932_.png
+    > Your_image_folder_name/Category_2/123.png
+    > Your_image_folder_name/Category_2/nsdf3.png
+    > Your_image_folder_name/Category_2/asd932_.png
     > ```
-
-3.  提交管線。
+    > - 如果使用影像資料集進行計分，則此模組的輸入檔案資料集會包含未分類的影像。
+    
+3.  提交管線。 此模組可在 GPU 或 CPU 上執行。
 
 ## <a name="results"></a>結果
 

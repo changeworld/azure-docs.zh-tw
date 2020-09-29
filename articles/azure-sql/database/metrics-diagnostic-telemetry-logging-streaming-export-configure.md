@@ -6,17 +6,17 @@ ms.service: sql-db-mi
 ms.subservice: performance
 ms.custom: seoapril2019
 ms.devlang: sqldbrb=2
-ms.topic: conceptual
+ms.topic: how-to
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, sstein
 ms.date: 04/06/2020
-ms.openlocfilehash: 2c8c31219f014935c14371cf4dd30b61ba35819b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1442ca7957a458e1458c4815033bf5e79c67c32a
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91319498"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448918"
 ---
 # <a name="configure-streaming-export-of-azure-sql-database-and-sql-managed-instance-diagnostic-telemetry"></a>設定 Azure SQL Database 和 SQL 受控執行個體診斷遙測的串流匯出
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -471,7 +471,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 #### <a name="resource-usage-stats-for-managed-instances"></a>受控實例的資源使用量統計資料
 
-|屬性|說明|
+|屬性|描述|
 |---|---|
 |TenantId|您的租用戶識別碼 |
 |SourceSystem|一律：Azure|
@@ -496,7 +496,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 #### <a name="query-store-runtime-statistics"></a>查詢存放區執行階段統計資料
 
-|屬性|說明|
+|屬性|描述|
 |---|---|
 |TenantId|您的租用戶識別碼 |
 |SourceSystem|一律：Azure |
@@ -547,7 +547,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 #### <a name="query-store-wait-statistics"></a>查詢存放區等候統計資料
 
-|屬性|說明|
+|屬性|描述|
 |---|---|
 |TenantId|您的租用戶識別碼 |
 |SourceSystem|一律：Azure |
@@ -585,7 +585,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 #### <a name="errors-dataset"></a>錯誤資料集
 
-|屬性|說明|
+|屬性|描述|
 |---|---|
 |TenantId|您的租用戶識別碼 |
 |SourceSystem|一律：Azure |
@@ -610,11 +610,11 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |query_hash_s|失敗查詢的查詢雜湊 (如果有) |
 |query_plan_hash_s|失敗查詢的查詢計劃雜湊 (如果有) |
 
-深入瞭解 [SQL 錯誤訊息](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors?view=sql-server-ver15)。
+深入瞭解 [SQL 錯誤訊息](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors)。
 
 #### <a name="database-wait-statistics-dataset"></a>資料庫等候統計資料資料集
 
-|屬性|說明|
+|屬性|描述|
 |---|---|
 |TenantId|您的租用戶識別碼 |
 |SourceSystem|一律：Azure |
@@ -643,7 +643,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 #### <a name="time-outs-dataset"></a>逾時資料集
 
-|屬性|說明|
+|屬性|描述|
 |---|---|
 |TenantId|您的租用戶識別碼 |
 |SourceSystem|一律：Azure |
@@ -666,7 +666,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 #### <a name="blockings-dataset"></a>封鎖資料集
 
-|屬性|說明|
+|屬性|描述|
 |---|---|
 |TenantId|您的租用戶識別碼 |
 |SourceSystem|一律：Azure |
@@ -690,7 +690,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 #### <a name="deadlocks-dataset"></a>死結 (Deadlock) 資料集
 
-|屬性|說明|
+|屬性|描述|
 |---|---|
 |TenantId|您的租用戶識別碼 |
 |SourceSystem|一律：Azure |
@@ -711,7 +711,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 #### <a name="automatic-tuning-dataset"></a>自動調整資料集
 
-|屬性|說明|
+|屬性|描述|
 |---|---|
 |TenantId|您的租用戶識別碼 |
 |SourceSystem|一律：Azure |

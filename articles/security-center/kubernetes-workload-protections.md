@@ -5,15 +5,15 @@ services: security-center
 author: memildin
 manager: rkarlin
 ms.service: security-center
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/12/2020
 ms.author: memildin
-ms.openlocfilehash: 138b3b35633b432193a1972421f05d0a8e52b90a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8a387adde6c74b8eb1ff950c5e6b5183e43d1f4f
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91301349"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448667"
 ---
 # <a name="protect-your-kubernetes-workloads"></a>保護 Kubernetes 工作負載
 
@@ -58,7 +58,7 @@ Azure 資訊安全中心包含安裝 **適用于 Kubernetes 的 Azure 原則附�
 
     1. 從任何安全性控制項中，選取建議以查看您可以在其上安裝新增的資源，然後選取 [ **修復**]。 
 
-        :::image type="content" source="./media/defender-for-kubernetes-usage/recommendation-to-install-policy-add-on-for-kubernetes-details.png" alt-text="您應在您的叢集上安裝並啟用適用于 Kubernetes 的 Azure 原則附加元件的 [建議詳細資料] 頁面 * *":::
+        :::image type="content" source="./media/defender-for-kubernetes-usage/recommendation-to-install-policy-add-on-for-kubernetes-details.png" alt-text="建議 * * 應在您的叢集上安裝並啟用 Kubernetes 的 Azure 原則附加元件 * *":::
 
 1. 附加元件安裝完成後約30分鐘，資訊安全中心會針對下列建議顯示叢集的健全狀況狀態，每個都出現在相關的安全性控制中，如下所示：
 
@@ -99,7 +99,7 @@ Azure 資訊安全中心包含安裝 **適用于 Kubernetes 的 Azure 原則附�
 
     1. 開啟 [建議詳細資料] 頁面，然後選取 [ **拒絕**：
 
-        :::image type="content" source="./media/defender-for-kubernetes-usage/enforce-workload-protection-example.png" alt-text="Azure 原則參數的 Deny 選項":::
+        :::image type="content" source="./media/defender-for-kubernetes-usage/enforce-workload-protection-example.png" alt-text="建議 * * 應在您的叢集上安裝並啟用 Kubernetes 的 Azure 原則附加元件 * *":::
 
         這會開啟您設定範圍的窗格。 
 
@@ -113,7 +113,7 @@ Azure 資訊安全中心包含安裝 **適用于 Kubernetes 的 Azure 原則附�
 
 1. 從工作負載保護集查看建議時，您會看到受影響的 pod 數目 ( 「Kubernetes 元件」 ) 與叢集一起列出。 如需特定 pod 的清單，請選取叢集，然後選取 [ **採取動作**]。
 
-    :::image type="content" source="./media/defender-for-kubernetes-usage/view-affected-pods-for-recommendation.gif" alt-text="查看受影響的 pod 以取得 K8s 建議"::: 
+    :::image type="content" source="./media/defender-for-kubernetes-usage/view-affected-pods-for-recommendation.gif" alt-text="建議 * * 應在您的叢集上安裝並啟用 Kubernetes 的 Azure 原則附加元件 * *"::: 
 
 1. 若要測試強制，請使用下列兩個 Kubernetes 部署：
 

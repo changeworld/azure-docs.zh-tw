@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: 47e9b616a2a686a7ce82a592ee81966041371048
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 052fd0ea7619d566e78806580ee7b39e49cc85d2
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91327998"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448618"
 ---
 # <a name="azure-monitor-insights-for-virtual-wan-preview"></a>適用于虛擬 WAN (Preview 的 Azure 監視器見解) 
 
@@ -37,7 +37,7 @@ ms.locfileid: "91327998"
 
 **圖1：監視器 > 見解功能表**
 
-:::image type="content" source="./media/azure-monitor-insights/monitor-menu.png" alt-text="顯示 [見解] 功能表選項的螢幕擷取畫面。" lightbox="./media/azure-monitor-insights/monitor-menu.png":::
+:::image type="content" source="./media/azure-monitor-insights/monitor-menu.png" alt-text="顯示見解 (預覽) 視圖的螢幕擷取畫面。" lightbox="./media/azure-monitor-insights/monitor-menu.png":::
 
 在 **深入** 解析視圖中，您可以查看 AUTODISCOVERED 虛擬 WAN 資源。 這些資源包括中樞、閘道、防火牆、連接和輪輻虛擬網路、協力廠商 Nva，以及端對端虛擬 WAN 中的分支。 如需範例，請參閱 **圖 2**。
 
@@ -45,7 +45,7 @@ ms.locfileid: "91327998"
 
 **圖2：見解視圖**
 
-:::image type="content" source="./media/azure-monitor-insights/insights-view.png" alt-text="顯示見解視圖的螢幕擷取畫面。" lightbox="./media/azure-monitor-insights/insights-view.png":::
+:::image type="content" source="./media/azure-monitor-insights/insights-view.png" alt-text="顯示見解 (預覽) 視圖的螢幕擷取畫面。" lightbox="./media/azure-monitor-insights/insights-view.png":::
 
 ## <a name="dependency-view"></a><a name="dependency"></a>相依性視圖
 
@@ -53,7 +53,7 @@ ms.locfileid: "91327998"
 
 **圖3： VWAN 相依性視圖**
 
-:::image type="content" source="./media/azure-monitor-insights/dependency-map.png" alt-text="顯示相依性視圖的螢幕擷取畫面。" lightbox="./media/azure-monitor-insights/dependency-map.png":::
+:::image type="content" source="./media/azure-monitor-insights/dependency-map.png" alt-text="顯示見解 (預覽) 視圖的螢幕擷取畫面。" lightbox="./media/azure-monitor-insights/dependency-map.png":::
 
 [相依 **性視圖] 地圖會將下列** 資源顯示為連接的圖形：
 
@@ -69,13 +69,13 @@ ms.locfileid: "91327998"
 
 **圖4：流覽至資源特定資訊**
 
-:::image type="content" source="./media/azure-monitor-insights/resource-information.png" alt-text="顯示如何流覽至資源特定資訊的螢幕擷取畫面。":::
+:::image type="content" source="./media/azure-monitor-insights/resource-information.png" alt-text="顯示見解 (預覽) 視圖的螢幕擷取畫面。":::
 
 相依 **性視圖中的搜尋** 和篩選列可提供簡單的方式來搜尋圖形。 各種篩選器可讓您將搜尋範圍縮小到特定的路徑和狀態。
 
 **圖5：搜尋和篩選**
 
-:::image type="content" source="./media/azure-monitor-insights/search-filter.png" alt-text="顯示搜尋和篩選列的螢幕擷取畫面。" lightbox="./media/azure-monitor-insights/search-filter.png":::
+:::image type="content" source="./media/azure-monitor-insights/search-filter.png" alt-text="顯示見解 (預覽) 視圖的螢幕擷取畫面。" lightbox="./media/azure-monitor-insights/search-filter.png":::
 
 ## <a name="detailed-metrics"></a><a name="detailed"></a>詳細計量
 
@@ -83,7 +83,7 @@ ms.locfileid: "91327998"
 
 **圖6：詳細計量儀表板**
 
-:::image type="content" source="./media/azure-monitor-insights/detailed-metrics.png" alt-text="顯示詳細計量儀表板的螢幕擷取畫面。" lightbox="./media/azure-monitor-insights/detailed-metrics.png":::
+:::image type="content" source="./media/azure-monitor-insights/detailed-metrics.png" alt-text="顯示見解 (預覽) 視圖的螢幕擷取畫面。" lightbox="./media/azure-monitor-insights/detailed-metrics.png":::
 
 ## <a name="next-steps"></a>後續步驟
 

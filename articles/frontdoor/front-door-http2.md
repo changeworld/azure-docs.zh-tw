@@ -9,20 +9,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/10/2018
+ms.date: 09/28/2020
 ms.author: duau
-ms.openlocfilehash: 7cdcef80ef2433d34b32589d2539089fb9801eb1
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 20d45f5966aca3df89e17e03aa6120a4ddf5c5b9
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89399424"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448702"
 ---
 # <a name="http2-support-in-azure-front-door"></a>Azure Front Door 中的 HTTP/2 支援
 
 目前，所有 Azure Front Door 設定的 HTTP/2 支援皆為使用中狀態。 客戶不需要採取任何動作。
 
-HTTP/2 是 HTTP/1.1 的重大修訂版。 它提供更快的 Web 效能、更短的回應時間和改善的使用者體驗，但保留常用的 HTTP 方法、狀態碼和語意。 雖然 HTTP/2 是設計來搭配 HTTP 與 HTTPS 使用，但許多用戶端 Web 瀏覽器僅支援透過傳輸層安全性 (TLS) 使用 HTTP/2。
+HTTP/2 是 HTTP/1.1 的主要修訂，可縮短回應時間以提供更快的 web 效能。 HTTP/2 是藉由維護熟悉的 HTTP 方法、狀態碼和語義來完成，以改善使用者體驗。 雖然 HTTP/2 是設計用來搭配 HTTP 和 HTTPS，但許多用戶端網頁瀏覽器僅支援透過傳輸層安全性 (TLS) 的 HTTP/2。
 
 > [!NOTE]
 > HTTP/2 通訊協定支援僅適用于從用戶端到 Front Door 的要求。 在後端集區中，從 Front Door 到後端的通訊會透過 HTTP/1.1 進行。 
@@ -46,7 +46,7 @@ HTTP/2 的優點包括︰
 
 ## <a name="http2-browser-support"></a>HTTP/2 瀏覽器支援
 
-所有主要瀏覽器都已在其目前的版本中實作 HTTP/2 支援。 不支援的瀏覽器會自動降回 HTTP/1.1。
+所有主要瀏覽器都已在其目前的版本中實作 HTTP/2 支援。 不支援的瀏覽器會自動切換回 HTTP/1.1。
 
 |瀏覽器|最低版本|
 |-------------|------------|

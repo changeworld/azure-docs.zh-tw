@@ -9,29 +9,29 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/10/2018
+ms.date: 09/28/2020
 ms.author: duau
-ms.openlocfilehash: 6864a854215d899043607b3d01cffbd343ee7751
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: e72443e33d1b6f097f61f4c027b5f547b43ee2a9
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89399509"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449231"
 ---
 # <a name="protocol-support-for-http-headers-in-azure-front-door"></a>Azure Front Door 中 HTTP 標頭的通訊協定支援
 本文將概述 Front Door 支援的通訊協定與部分的呼叫路徑 (請參閱影像) 。 下列各節提供 Front Door 所支援之 HTTP 標頭的詳細資訊。
 
-![Azure Front Door HTTP 標頭通訊協定][1]
+:::image type="content" source="./media/front-door-http-headers-protocol/front-door-protocol-summary.png" alt-text="Azure Front Door HTTP 標頭通訊協定":::
 
 >[!IMPORTANT]
 >Front Door 不會認證此處未記載的任何 HTTP 標頭。
 
 ## <a name="client-to-front-door"></a>用戶端至 Front Door
-Front Door 接受來自傳入要求的大部分標頭，而不加以修改。 某些保留的標頭會從傳入要求中移除（如果已傳送），包括具有 X-FD-* 首碼的標頭。
+Front Door 接受連入要求的大部分標頭，而不加以修改。 某些保留的標頭會從傳入要求中移除（如果已傳送），包括具有 X-FD-* 首碼的標頭。
 
 ## <a name="front-door-to-backend"></a>Front Door 至後端
 
-Front Door 包含來自傳入要求的標頭，除非有限制，否則會移除。 Front Door 也會新增下列標頭：
+Front Door 包含連入要求的標頭，除非這些標頭是因為限制而移除。 Front Door 也會新增下列標頭：
 
 | 標頭  | 範例和描述 |
 | ------------- | ------------- |
@@ -52,12 +52,9 @@ Front Door 包含來自傳入要求的標頭，除非有限制，否則會移除
 
 | 標頭  | 範例 |
 | ------------- | ------------- |
-| X-Azure-Ref |  *X-Azure-Ref： 0zxV + XAAAAABKMMOjBv2NT4TY6SQVjC0zV1NURURHRTA2MTkANDM3YzgyY2QtMzYwYS00YTU0LTk0YzMtNWZmNzA3NjQ3Nzgz* </br> 這是唯一的參考字串，可識別由 Front Door 提供服務的要求。 這對於進行疑難排解是很重要的，因為它是用來搜尋存取記錄。|
+| X-Azure-Ref |  *X-Azure-Ref： 0zxV + XAAAAABKMMOjBv2NT4TY6SQVjC0zV1NURURHRTA2MTkANDM3YzgyY2QtMzYwYS00YTU0LTk0YzMtNWZmNzA3NjQ3Nzgz* </br> 這是唯一的參考字串，用來識別 Front Door 所服務的要求，對於進行疑難排解是很重要的，因為它是用來搜尋存取記錄。|
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
-- [建立前端服務](quickstart-create-front-door.md)
+- [建立 Front Door](quickstart-create-front-door.md)
 - [Front Door 的運作方式](front-door-routing-architecture.md)
-
-<!--Image references-->
-[1]: ./media/front-door-http-headers-protocol/front-door-protocol-summary.png

@@ -1,6 +1,6 @@
 ---
-title: Azure 資訊安全中心的檔案完整性監視 | Microsoft Docs
-description: 了解如何利用此逐步解說，在 Azure 資訊安全中心設定檔案完整性監視 (FIM)。
+title: Azure 資訊安全中心中的檔案完整性監視 |Microsoft Docs
+description: 瞭解如何使用本逐步解說，在 Azure 資訊安全中心中設定檔案完整性監視 (FIM) 。
 services: security-center
 documentationcenter: na
 author: memildin
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 6390180052cb21bb0d2230a066b9f10d4eb99ca1
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: da0eeafc9d92bf08a2475d7676f1da8a4fa30da5
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 09/29/2020
-ms.locfileid: "91447343"
+ms.locfileid: "91461379"
 ---
-# <a name="file-integrity-monitoring-in-azure-security-center"></a>Azure 資訊安全中心的檔案完整性監視
-了解如何利用此逐步解說，在 Azure 資訊安全中心設定檔案完整性監視 (FIM)。
+# <a name="file-integrity-monitoring-in-azure-security-center"></a>Azure 資訊安全中心中的檔案完整性監視
+瞭解如何使用本逐步解說，在 Azure 資訊安全中心中設定檔案完整性監視 (FIM) 。
 
 
 ## <a name="availability"></a>可用性
@@ -31,7 +31,7 @@ ms.locfileid: "91447343"
 |釋放狀態：|正式上市 (GA)|
 |定價：|需要 [適用于伺服器的 Azure Defender](defender-for-servers-introduction.md)|
 |必要的角色和許可權：|**工作區擁有** 者可以啟用/停用 FIM (如需詳細資訊，請參閱 [適用于 Log Analytics 的 Azure 角色](https://docs.microsoft.com/services-hub/health/azure-roles#azure-roles)) 。<br>**讀者** 可以看到結果。|
-|雲端：|![是](./media/icons/yes-icon.png) 商業雲端<br>![是](./media/icons/yes-icon.png) US Gov<br>![否](./media/icons/no-icon.png) 中國 Gov，其他 Gov|
+|雲端：|![是 ](./media/icons/yes-icon.png) 商用雲端<br>![是 ](./media/icons/yes-icon.png) US Gov<br>![沒有 ](./media/icons/no-icon.png) 中國 Gov，其他 Gov<br>只有在 Azure 自動化的變更追蹤解決方案可用的區域中才支援。<br>請參閱 [連結的 Log Analytics 工作區支援的區域](../automation/how-to/region-mappings.md)。<br>[深入瞭解變更追蹤](../automation/change-tracking.md) |
 |||
 
 
@@ -39,9 +39,9 @@ ms.locfileid: "91447343"
 
 
 ## <a name="what-is-fim-in-security-center"></a>何謂資訊安全中心的 FIM？
-檔案完整性監視 (FIM) 也稱為變更監視，它會檢查作業系統、應用程式軟體等檔案和登錄中是否有可能表示攻擊的變更。 它使用比較方法來判斷檔案的目前狀態是否不同於上次掃描的檔案。 您可以利用這項比較，來判斷對您的檔案所做的修改為有效或可疑。
+檔案完整性監視 (FIM) （也稱為變更監視）會檢查作業系統、應用程式軟體和其他專案的檔案和登錄是否有可能表示攻擊的變更。 它使用比較方法來判斷檔案的目前狀態是否不同於上次掃描的檔案。 您可以利用這項比較，來判斷對您的檔案所做的修改為有效或可疑。
 
-資訊安全中心的檔案完整性監視會驗證 Windows 檔案、Windows 登錄和 Linux 檔案的完整性。 您可以啟用 FIM 來選取要監視的檔案。 資訊安全中心會監視啟用 FIM 的檔案中是否有類似如下的活動：
+安全中心的檔案完整性監視會驗證 Windows 檔案、Windows 登錄和 Linux 檔案的完整性。 您可以啟用 FIM 來選取要監視的檔案。 資訊安全中心會監視啟用 FIM 的檔案中是否有類似如下的活動：
 
 - 檔案和登錄建立和移除
 - 檔案修改 (檔案大小、存取控制清單和內容雜湊的變更)
@@ -95,45 +95,43 @@ FIM 使用 Azure 變更追蹤解決方案來追蹤及識別您環境中的變更
 |||HKLM\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\StandardProfile|
 
 
-## <a name="using-file-integrity-monitoring"></a>使用檔案完整性監視
+## <a name="enable-file-integrity-monitoring"></a>啟用檔案完整性監視 
 
-1. 開啟 **Azure Defender** 儀表板。
+1. 從 **Azure Defender** 儀表板的 [ **先進保護** ] 區域中，選取 [檔案 **完整性監視**]。
 
-1. 從 [ **Advanced protection** ] 區域中，選取 [檔案 **完整性監視**]。
+   :::image type="content" source="./media/security-center-file-integrity-monitoring/open-file-integrity-monitoring.png" alt-text="啟動 FIM" lightbox="./media/security-center-file-integrity-monitoring/open-file-integrity-monitoring.png":::
 
-    :::image type="content" source="./media/security-center-file-integrity-monitoring/open-file-integrity-monitoring.png" alt-text="啟動 FIM" lightbox="./media/security-center-file-integrity-monitoring/open-file-integrity-monitoring.png":::
+    [檔案 **完整性監視** 設定] 頁面隨即開啟。
+
+    每個工作區會提供下列資訊：
+
+    - 過去一週發生的變更總數 (如果工作區上未啟用 FIM，您可能會看到虛線 "-")
+    - 向工作區報告的電腦和 VM 總數
+    - 工作區的地理位置
+    - 工作區依據的 Azure 訂用帳戶
+
+1. 使用此頁面可：
+
+    - 存取和查看每個工作區的狀態和設定
+
+    - ![升級計畫圖示將 ][4] 工作區升級為使用 Azure Defender。 此圖示表示工作區或訂用帳戶未受 Azure Defender 保護。 若要使用 FIM 功能，您的訂用帳戶必須受到 Azure Defender 的保護。 [深入了解](security-center-pricing.md)。
+
+    - ![啟用圖示][3] 在工作區下的所有機器上啟用 FIM，並設定 FIM 選項。 此圖示表示未啟用工作區的 FIM-使用此按鈕可：
+
+        :::image type="content" source="./media/security-center-file-integrity-monitoring/workspace-list-fim.png" alt-text="啟動 FIM":::
 
 
-    [檔案完整性監視]**** 會隨即開啟。
-    ![資訊安全中心儀表板][2]
+    > [!TIP]
+    > 如果沒有 [啟用] 或 [升級] 按鈕，而且空間是空白的，則表示已在工作區上啟用 FIM。
 
-每個工作區會提供下列資訊：
 
-- 過去一週發生的變更總數 (如果工作區上未啟用 FIM，您可能會看到虛線 "-")
-- 向工作區報告的電腦和 VM 總數
-- 工作區的地理位置
-- 工作區依據的 Azure 訂用帳戶
+1. 選取 [ **啟用**]。 將會顯示工作區的詳細資料，包括工作區下的 Windows 和 Linux 電腦數目。
 
-工作區也可能會顯示下列按鈕：
-
-- ![啟用圖示][3] 表示工作區未啟用 FIM。 選取工作區可讓您啟用該工作區下所有電腦的 FIM。
-- ![升級計畫圖示][4] 表示工作區或訂用帳戶未受 Azure Defender 保護。 若要使用 FIM 功能，您的訂用帳戶必須受到 Azure Defender 的保護。  選取工作區可讓您升級。
-- 空白 (沒有任何按鈕) 表示已啟用工作區上的 FIM。
-
-在 [檔案 **完整性監視**] 下，您可以選取要為該工作區啟用 FIM 的工作區、查看該工作區的 [檔案完整性監視] 儀表板，或將工作區 [升級](security-center-pricing.md) 為使用 Azure Defender。
-
-## <a name="enable-fim"></a>啟用 FIM
-啟用工作區上的 FIM：
-
-1. 在 [檔案完整性監視]**** 下，選取具有 [啟用]**** 按鈕的工作區。
-
-1. [啟用檔案完整性監視]**** 會隨即開啟並顯示工作區下的 Windows 和 Linux 電腦數目。
-
-   ![啟用檔案完整性監視][5]
+    :::image type="content" source="./media/security-center-file-integrity-monitoring/workspace-fim-status.png" alt-text="啟動 FIM":::
 
    也會列出 Windows 和 Linux 的建議設定。  展開 [Windows 檔案]****、[登錄]**** 和 [Linux 檔案]****，以查看完整的建議項目清單。
 
-1. 取消核取您不想要套用 FIM 的任何建議實體。
+1. 清除任何您不想要由 FIM 監視之建議實體的核取方塊。
 
 1. 選取 [Apply file integrity monitoring] \(套用檔案完整性監視\)**** 以啟用 FIM。
 
@@ -141,10 +139,12 @@ FIM 使用 Azure 變更追蹤解決方案來追蹤及識別您環境中的變更
 > 您可以隨時變更設定。 請參閱下面的[編輯受監視的實體](#edit-monitored-entities)以深入了解。
 
 
-## <a name="view-the-fim-dashboard"></a>檢視 FIM 儀表板
-啟用 FIM 的工作區會顯示 [檔案完整性監視]**** 儀表板。 當您啟用工作區上的 FIM 之後，或在 [檔案完整性監視]**** 視窗中選取已啟用 FIM 的工作區時，FIM 儀表板會隨即開啟。
 
-![[檔案完整性監視] 儀表板][6]
+## <a name="audit-monitored-workspaces"></a>Audit 受監視的工作區 
+
+啟用 FIM 的工作區會顯示 [檔案完整性監視]**** 儀表板。 當您在工作區上啟用 FIM，或在 [檔案 **完整性監視** ] 視窗中選取已啟用 fim 的工作區之後，就會開啟 fim 儀表板。
+
+:::image type="content" source="./media/security-center-file-integrity-monitoring/fim-dashboard.png" alt-text="啟動 FIM":::
 
 工作區的 FIM 儀表板會顯示下列詳細資料：
 
@@ -153,11 +153,11 @@ FIM 使用 Azure 變更追蹤解決方案來追蹤及識別您環境中的變更
 - 變更類型的細目 (檔案、登錄)
 - 變更類別的細目 (已修改、已新增、已移除)
 
-選取儀表板頂端的 [篩選] 可讓您套用要查看變更的時段。
+選取儀表板頂端的 [ **篩選** ]，以變更顯示變更的時間週期。
 
-![時段篩選][7]
+:::image type="content" source="./media/security-center-file-integrity-monitoring/dashboard-filter.png" alt-text="啟動 FIM":::
 
-[電腦]**** 索引標籤 (如上所示) 會列出向此工作區報告的所有電腦。 針對每部電腦，儀表板會列出：
+[ **伺服器** ] 索引標籤會列出向此工作區報告的機器。 針對每部電腦，儀表板會列出：
 
 - 所選時段內發生的變更總計
 - 檔案變更或登錄變更時的變更總計細目
@@ -181,7 +181,7 @@ FIM 使用 Azure 變更追蹤解決方案來追蹤及識別您環境中的變更
 
 ## <a name="edit-monitored-entities"></a>編輯受監視的實體
 
-1. 返回 [檔案完整性監視]**** 儀表板，然後選取 [設定]****。
+1. 返回 [檔案 **完整性監視] 儀表板** ，然後選取 [ **設定**]。
 
    ![設定][11]
 
@@ -213,12 +213,12 @@ FIM 使用 Azure 變更追蹤解決方案來追蹤及識別您環境中的變更
 4. 在 [新增]**** 頁面上，鍵入所要求的資訊，然後選取 [儲存]****。
 
 ## <a name="disable-monitored-entities"></a>停用受監視的實體
-1. 返回 [檔案完整性監視]**** 儀表板。
+1. 返回 [檔案 **完整性監視** ] 儀表板。
 2. 選取目前啟用 FIM 的工作區。 如果缺少 [啟用] 按鈕或 [升級計劃] 按鈕，則工作區已啟用 FIM。
 
    ![選取啟用 FIM 的工作區][16]
 
-3. 在 [檔案完整性監視] 下，選取 [設定]****。
+3. 在 [檔案完整性監視] 底下，選取 [ **設定**]。
 
    ![選取 [設定]][17]
 
@@ -243,9 +243,9 @@ FIM 使用 Azure 變更追蹤解決方案來追蹤及識別您環境中的變更
 ## <a name="disable-fim"></a>停用 FIM
 您可以停用 FIM。 FIM 使用 Azure 變更追蹤解決方案來追蹤及識別您環境中的變更。 您可以停用 FIM，從所選工作區移除變更追蹤解決方案。
 
-1. 若要停用 FIM，請返回 [檔案完整性監視]**** 儀表板。
+1. 若要停用 FIM，請返回 [檔案 **完整性監視** ] 儀表板。
 2. 選取工作區。
-3. 在 [檔案完整性監視]**** 下，選取 [停用]****。
+3. 在 [檔案 **完整性監視**] 底下，選取 [ **停**用]。
 
    ![停用 FIM][20]
 
@@ -260,11 +260,9 @@ FIM 使用 Azure 變更追蹤解決方案來追蹤及識別您環境中的變更
 
 <!--Image references-->
 [1]: ./media/security-center-file-integrity-monitoring/security-center-dashboard.png
-[2]: ./media/security-center-file-integrity-monitoring/file-integrity-monitoring.png
 [3]: ./media/security-center-file-integrity-monitoring/enable.png
 [4]: ./media/security-center-file-integrity-monitoring/upgrade-plan.png
 [5]: ./media/security-center-file-integrity-monitoring/enable-fim.png
-[6]: ./media/security-center-file-integrity-monitoring/fim-dashboard.png
 [7]: ./media/security-center-file-integrity-monitoring/filter.png
 [8]: ./media/security-center-file-integrity-monitoring/log-search.png
 [9]: ./media/security-center-file-integrity-monitoring/changes-tab.png

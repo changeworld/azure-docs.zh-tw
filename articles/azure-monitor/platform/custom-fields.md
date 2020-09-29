@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/23/2019
-ms.openlocfilehash: ffe3d457d4827250418c9c2d838df35c11e01af7
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 496dab24f636c97e1c7b27b871e1fded9216277d
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90974710"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448571"
 ---
 # <a name="create-custom-fields-in-a-log-analytics-workspace-in-azure-monitor-preview"></a>在 Azure 監視器 (Preview 的 Log Analytics 工作區中建立自訂欄位) 
 
@@ -101,7 +101,7 @@ Azure 監視器的 **自訂欄位** 功能，可讓您新增自己的可搜尋�
 
 我們看到某些記錄已正確識別服務名稱，但某些記錄則未如此。   [搜尋結果]**** 顯示 **WMI Performance Adapter** 有部分名稱未能選取到。  **摘要**顯示一個記錄識別**模組安裝程式**，而不是**Windows 模組安裝程式**。  
 
-![搜尋結果](media/custom-fields/search-results-01.png)
+![螢幕擷取畫面，顯示 [搜尋結果] 窗格中反白顯示的服務名稱部分，以及摘要中反白顯示的錯誤服務名稱。](media/custom-fields/search-results-01.png)
 
 我們先處理 **WMI Performance Adapter** 記錄。  我們按一下它的編輯圖示，然後 [修改此醒目提示] ****。  
 
@@ -113,7 +113,7 @@ Azure 監視器的 **自訂欄位** 功能，可讓您新增自己的可搜尋�
 
 我們可以看到 **WMI Performance Adapter** 的項目已修正，而且 Log Analytics 也已使用該資訊來更正 **Windows Module Installer** 的記錄。
 
-![搜尋結果](media/custom-fields/search-results-02.png)
+![螢幕擷取畫面，顯示 [搜尋結果] 窗格中反白顯示的完整服務名稱，以及摘要中醒目提示的正確服務名稱。](media/custom-fields/search-results-02.png)
 
 我們現在可以執行查詢來確認已建立 **Service_CF** ，但尚未加入任何記錄。 這是因為自訂欄位不適用於現有的記錄，因此我們需要等待收集新的記錄。
 
@@ -127,7 +127,7 @@ Azure 監視器的 **自訂欄位** 功能，可讓您新增自己的可搜尋�
 
 ![以查詢分組](media/custom-fields/query-group.png)
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 * 瞭解 [記錄查詢](../log-query/log-query-overview.md) ，以使用自訂欄位來建立查詢，以進行準則。
 * 監視可利用自訂欄位來剖析的[自訂記錄檔](data-sources-custom-logs.md)。
 

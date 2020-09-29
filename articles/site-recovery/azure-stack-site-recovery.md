@@ -3,12 +3,12 @@ title: 使用 Azure Site Recovery 將 Azure Stack VM 複寫至 Azure | Microsoft
 description: 了解如何使用 Azure Site Recovery 服務設定將 Azure Stack VM 進行災害復原至 Azure。
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: 5bc78dc5b01bb4790190268b303cb894de2b6f71
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a7e58f5b24786169c9d0c989b79a14c4115acca8
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91333710"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448972"
 ---
 # <a name="replicate-azure-stack-vms-to-azure"></a>將 Azure Stack VM 複寫至 Azure
 
@@ -56,7 +56,7 @@ Site Recovery 有助於商務持續性和災害復原 (BCDR) 策略的進行。 
 7. 複寫機器與組態伺服器通訊 (透過連接埠 HTTPS 443 輸入，以管理複寫)。 機器將複寫資料傳送到處理序伺服器 (透過連接埠 HTTPS 9443 輸入 - 可修改)。
 8. 流量透過網際網路複寫到 Azure 儲存體的公用端點。 或者，您可以使用 Azure ExpressRoute 公用對等互連。 不支援從內部部署網站透過站台對站台 VPN 將流量複寫至 Azure。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 以下是設定此情節時所需的項目。
 
@@ -314,26 +314,7 @@ Site Recovery 有助於商務持續性和災害復原 (BCDR) 策略的進行。 
 
 ### <a name="fail-back-to-azure-stack"></a>容錯回復至 Azure Stack
 
-當主要網站再次啟動並執行時，您可以從 Azure 容錯回復至 Azure Stack。 做法是，您必須下載 Azure VM VHD，然後上傳到 Azure Stack。
-
-1. 將 Azure VM 關機，讓您可以下載 VHD。
-2. 若要開始下載 VHD，請安裝 [Azure 儲存體總管](https://azure.microsoft.com/features/storage-explorer/)。
-3. 瀏覽至 Azure 入口網站中的 VM (使用 VM 名稱)。
-4. 在 [磁碟]**** 中，按一下磁碟名稱，然後收集設定。
-
-    - 例如，用於我們測試：`https://502055westcentralus.blob.core.windows.net/wahv9b8d2ceb284fb59287/copied-3676553984.vhd` 中的 VHD URI 可加以細分，以取得用於下載 VHD 的輸入參數。
-        - 儲存體帳戶：502055westcentralus
-        - 容器：wahv9b8d2ceb284fb59287
-        - VHD 名稱： copied-3676553984.vhd
-
-5. 現在，使用 Azure 儲存體總管下載 VHD。
-6. 使用[這些步驟](/azure-stack/user/azure-stack-manage-vm-disks#use-powershell-to-add-multiple-disks-to-a-vm)將 VHD 上傳到 Azure Stack。
-7. 在現有的 VM 或新 VM 中，附加已上傳的 VHD。
-8. 檢查確認作業系統磁碟正確，然後啟動 VM。
-
-
-容錯回復在這個階段完成。
-
+當主要網站再次啟動並執行時，您可以從 Azure 容錯回復至 Azure Stack。 若要這樣做，請遵循 [此處](https://docs.microsoft.com/azure-stack/operator/site-recovery-failback?view=azs-2005)所列的步驟。
 
 ## <a name="conclusion"></a>結論
 

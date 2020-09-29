@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/08/2018
 ms.author: allensu
-ms.openlocfilehash: 745b12e2278c487ed49a9d2d726a760a7df8f276
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9e06e4079a5118e0aa9dedb1fca719f0b28e5716
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84703162"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448638"
 ---
 # <a name="create-a-virtual-machine-with-a-static-public-ip-address-using-the-azure-portal"></a>使用 Azure 入口網站建立具有靜態公用 IP 位址的虛擬機器
 
@@ -60,13 +60,13 @@ ms.locfileid: "84703162"
 9. 部署虛擬機器後，請在入口網站頂端的搜尋方塊中輸入 *myPublicIpAddress*。 當 **myPublicIpAddress** 出現於搜尋結果時，請選取它。
 10. 您可以檢視已指派的公用 IP 位址，並將此位址指派給 **myVM** 虛擬機器，如下圖所示：
 
-    ![檢視公用 IP 位址](./media/virtual-network-deploy-static-pip-arm-portal/public-ip-overview.png)
+    ![螢幕擷取畫面顯示 [公用 I P 位址] 窗格，其中的 I P 位址和名稱已被呼叫。 ](./media/virtual-network-deploy-static-pip-arm-portal/public-ip-overview.png)
 
     Azure 已從您建立虛擬機器所在區域使用的位址中指派公用 IP 位址。 您可以針對 Azure [公開](https://www.microsoft.com/download/details.aspx?id=56519)、[US Gov](https://www.microsoft.com/download/details.aspx?id=57063)、[中國](https://www.microsoft.com/download/details.aspx?id=57062)及[德國](https://www.microsoft.com/download/details.aspx?id=57064)雲端，下載範圍 (前置詞) 清單。
 
 11. 選取 [組態]**** 以確認指派為 [靜態]****。
 
-    ![檢視公用 IP 位址](./media/virtual-network-deploy-static-pip-arm-portal/public-ip-configuration.png)
+    ![螢幕擷取畫面顯示已選取設定專案的公用 I P 位址窗格。](./media/virtual-network-deploy-static-pip-arm-portal/public-ip-configuration.png)
 
 > [!WARNING]
 > 請勿修改虛擬機器的作業系統內的 IP 位址設定。 作業系統不會察覺 Azure 公用 IP 位址。 雖然您可以將私人 IP 位址設定新增至作業系統，但是建議不要這麼做 (除非有需要)，而且在閱讀[將私人 IP 位址新增至作業系統](virtual-network-network-interface-addresses.md#private)之後才能這麼做。
@@ -82,6 +82,6 @@ ms.locfileid: "84703162"
 ## <a name="next-steps"></a>後續步驟
 
 - 深入瞭解 Azure 中的[公用 IP 位址](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)
-- 深入瞭解所有[公用 IP 位址設定](virtual-network-public-ip-address.md#create-a-public-ip-address)
+- 深入瞭解所有 [公用 IP 位址設定](virtual-network-public-ip-address.md#create-a-public-ip-address)
 - 深入了解[私人 IP 位址](virtual-network-ip-addresses-overview-arm.md#private-ip-addresses)，並將[靜態私人 IP 位址](virtual-network-network-interface-addresses.md#add-ip-addresses)指派給 Azure 虛擬機器
 - 深入了解如何建立 [Linux](../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 和 [Windows](../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 虛擬機器

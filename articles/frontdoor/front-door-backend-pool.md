@@ -9,22 +9,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/10/2018
+ms.date: 09/28/2020
 ms.author: duau
-ms.openlocfilehash: 66767d4329a0a757de99308e1f586b56b327a515
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 4beba141fec7a819df52e4c3a669312a4ad76998
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89399917"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449292"
 ---
 # <a name="backends-and-backend-pools-in-azure-front-door"></a>Azure Front Door 中的後端和後端集區
-本文說明如何將您的應用程式部署對應至 Azure Front Door 的概念。 此外也會說明在應用程式後端方面 Front Door 設定的不同詞彙。
+本文說明如何將 web 應用程式部署對應至 Azure Front Door 的概念。 它也會說明應用程式後端的 Front Door 設定中所使用的不同術語。
 
 ## <a name="backends"></a>後端
-後端等於區域中的應用程式部署實例。 Front Door 支援 Azure 和非 Azure 後端，因此區域不只限於 Azure 區域。 此外，它可以是您的內部部署資料中心或另一個雲端中的應用程式實例。
+後端是指區域中的 web 應用程式部署。 Front Door 支援後端集區中的 Azure 和非 Azure 資源。 應用程式可以位於您的內部部署資料中心，或位於另一個雲端提供者。
 
-Front Door 後端指的是應用程式的主機名稱或公用 IP，可提供用戶端要求。 後端不應該與您的資料庫層、儲存層等混淆。 後端應該視為應用程式後端的公用端點。 當您在 Front Door 後端集區中新增後端時，您也必須新增下列各項：
+Front Door 後端指的是應用程式的主機名稱或公用 IP，可服務用戶端要求。 後端不應該與您的資料庫層、儲存層等混淆。 後端應該視為應用程式後端的公用端點。 當您將後端新增至 Front Door 後端集區時，您也必須新增下列各項：
 
 - **後端主機類型**。 您要新增的資源類型。 Front Door 支援從 app service、雲端服務或儲存體後端應用程式的自動探索。 如果您想要在 Azure 或甚至非 Azure 後端中使用不同的資源，請選取 [ **自訂主機**]。
 
@@ -41,13 +41,13 @@ Front Door 後端指的是應用程式的主機名稱或公用 IP，可提供用
 
 ### <a name="backend-host-header"></a><a name = "hostheader"></a>後端主機標頭
 
-Front Door 轉送至後端的要求包含主機標頭欄位，後端會使用該欄位來取得目標資源。 此欄位的值通常來自後端 URI，並且具有主機和連接埠。
+Front Door 轉送至後端的要求包含主機標頭欄位，後端會使用該欄位來取得目標資源。 此欄位的值通常來自具有主機標頭和埠的後端 URI。
 
 例如，對提出的要求 `www.contoso.com` 將會有主機標頭 www.contoso.com。 如果您使用 Azure 入口網站設定您的後端，此欄位的預設值是後端的主機名稱。 如果您的後端是 contoso-westus.azurewebsites.net，則在 Azure 入口網站中，後端主機標頭的自動填入值將會是 contoso-westus.azurewebsites.net。 但是，如果您使用 Azure Resource Manager 範本或其他方法，但未明確設定此欄位，Front Door 會將傳入的主機名稱傳送為主機標頭的值。 如果對 www contoso.com 提出要求 \. ，而您的後端是具有空白標頭欄位的 contoso-westus.azurewebsites.net，Front Door 會將主機標頭設定為 www \. contoso.com。
 
 大部分的應用程式後端 (Azure Web Apps、Blob 儲存體及雲端服務) 需要主機標頭以符合後端的網域。 不過，路由至後端的前端主機會使用不同的主機名稱，例如 www.contoso.net。
 
-如果您的後端需要主機標頭符合後端主機名稱，請確定後端主機標頭包含主機名稱後端。
+如果您的後端需要主機標頭符合後端主機名稱，請確定後端主機標頭包含後端的主機名稱。
 
 #### <a name="configuring-the-backend-host-header-for-the-backend"></a>設定後端的後端主機標頭
 
@@ -93,7 +93,7 @@ Front Door 將定期 HTTP/HTTPS 探查要求傳送至每個已設定的後端。
 
 如需詳細資訊，請參閱 [最低延遲型路由方法](front-door-routing-methods.md#latency)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [建立 Front Door 設定檔](quickstart-create-front-door.md)
 - [Front Door 的運作方式](front-door-routing-architecture.md)

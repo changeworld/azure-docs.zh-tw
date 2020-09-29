@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 08/27/2020
-ms.openlocfilehash: 3526510e4cbd77ffe1f468512e1128dcebe9b1da
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 33ad1deff4d543564db1b52bce986b11758042c9
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91330837"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91445070"
 ---
 # <a name="creating-and-using-active-geo-replication---azure-sql-database"></a>建立和使用主動式異地複寫-Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -118,7 +118,7 @@ ms.locfileid: "91330837"
 
 ## <a name="configuring-secondary-database"></a>正在設定次要資料庫
 
-主要和次要資料庫必須有相同的服務層級。 此外，強烈建議您建立的次要資料庫具有與主資料庫相同的計算大小 (Dtu 或虛擬核心) 。 如果主資料庫發生大量寫入工作負載，則計算大小較低的次要資料庫可能無法跟上。 這會導致次要複本上的重做延遲，而且可能無法使用次要複本。 為了減輕這些風險，主動式異地複寫會在必要時節流處理主要的交易記錄檔速率，以允許其次要資料庫趕上。
+主要和次要資料庫必須有相同的服務層級。 此外，強烈建議使用相同的備份儲存體冗余和計算大小 (Dtu 或虛擬核心) 作為主要資料庫來建立次要資料庫。 如果主資料庫發生大量寫入工作負載，則計算大小較低的次要資料庫可能無法跟上。 這會導致次要複本上的重做延遲，而且可能無法使用次要複本。 為了減輕這些風險，主動式異地複寫會在必要時節流處理主要的交易記錄檔速率，以允許其次要資料庫趕上。
 
 不平衡次要設定的另一個結果是在容錯移轉之後，應用程式效能可能會因為新主資料庫的計算容量不足而受到影響。 在此情況下，必須將資料庫服務目標擴大至必要的層級，這可能會花費大量時間和計算資源，而且在擴大程式結束時需要 [高可用性](high-availability-sla.md) 容錯移轉。
 
@@ -126,8 +126,13 @@ ms.locfileid: "91330837"
 
 由於次要複本上較低的計算大小，會使用 HADR_THROTTLE_LOG_RATE_MISMATCHED_SLO 等候類型（可在 [sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) 和 [sys.dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql) 資料庫檢視中看見）來回報主要複本上的交易記錄檔速率節流。
 
+根據預設，次要複本的備份儲存體複本與主資料庫的備份儲存體重複。 您可以選擇使用不同的備份儲存體冗余設定次要資料庫。 備份一律會在主資料庫上執行。 如果已使用不同的備份儲存體冗余設定次要資料庫，則在容錯移轉之後，當次要複本升級為主要複本時，備份將會根據在新的主要 (先前的次要) 上選取的儲存體冗余進行計費。 
+
 > [!NOTE]
 > 主要複本上的交易記錄速率可能會因為與次要複本上較低計算大小無關的原因而受到節流。 即使次要資料庫具有與主資料庫相同或更高的計算大小，也可能會發生這種節流。 如需詳細資料，包括不同類型記錄速率節流的等候類型，請參閱 [交易記錄速率管理](resource-limits-logical-server.md#transaction-log-rate-governance)。
+
+> [!NOTE]
+> Azure SQL Database 可設定的備份儲存體冗余目前僅適用于東南亞 Azure 區域中的公開預覽。 在預覽中，如果源資料庫是以本機冗余或區域冗余備份冗余建立，則不支援在不同的 Azure 區域中建立次要資料庫。 
 
 如需 SQL Database 計算大小的詳細資訊，請參閱 [SQL Database 服務層是什麼](purchasing-models.md)。
 
@@ -246,7 +251,7 @@ ms.locfileid: "91330837"
 > [!IMPORTANT]
 > 這些 Transact-SQL 命令僅適用於作用中異地複寫，不適用於容錯移轉群組。 因此，它們也不會套用至 SQL 受控執行個體的實例，因為它們只支援容錯移轉群組。
 
-| 命令 | 說明 |
+| 命令 | 描述 |
 | --- | --- |
 | [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current&preserve-view=true) |使用 ADD SECONDARY ON SERVER 引數，針對現有資料庫建立次要資料庫並開始資料複寫 |
 | [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current&preserve-view=true) |使用 FAILOVER 或 FORCE_FAILOVER_ALLOW_DATA_LOSS，將次要資料庫切換為主要資料庫以便開始容錯移轉 |
@@ -277,7 +282,7 @@ ms.locfileid: "91330837"
 
 ### <a name="rest-api-manage-failover-of-single-and-pooled-databases"></a>REST API：管理單一和集區資料庫的容錯移轉
 
-| API | 說明 |
+| API | 描述 |
 | --- | --- |
 | [Create or Update Database (createMode=Restore)](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) |建立、更新或還原主要或次要資料庫。 |
 | [取得建立或更新資料庫狀態](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) |在建立作業期間傳回狀態。 |

@@ -5,12 +5,12 @@ author: chrisreddington
 ms.author: chredd
 ms.date: 03/28/2019
 ms.topic: how-to
-ms.openlocfilehash: 9612c61945a41b30fb5d4768e1eb0909a07911d3
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: d125427a3b2e519e909aad9e6f9cf08a963d2d46
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89229390"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91461524"
 ---
 # <a name="use-azure-pipelines-to-build-and-deploy-hpc-solutions"></a>使用 Azure Pipelines 來建置和部署 HPC 解決方案
 
@@ -43,7 +43,7 @@ Azure Pipelines 提供各種新式 CI/CD 程序來建置、部署、測試及監
 
 * **arm-templates** 資料夾，其中包含數個 Azure Resource Manager 範本。 本文會說明這些範本。
 * **client-application** 資料夾，這是[使用 ffmpeg 進行 Azure Batch .NET 檔案處理](https://github.com/Azure-Samples/batch-dotnet-ffmpeg-tutorial)範例的複本。 這不是本文所需的項目。
-* **hpc-application** 資料夾，這是 [ffmpeg 3.4](https://ffmpeg.zeranoe.com/builds/win64/static/ffmpeg-3.4-win64-static.zip) 的 Windows 64 位元版本。
+* **Hpc 應用程式**資料夾，也就是 Windows 64 位版本的[ffmpeg 4.3.1](https://www.gyan.dev/ffmpeg/builds/packages/ffmpeg-4.3.1-2020-09-21-full_build.zip)。
 * **pipelines** 資料夾。 其中包含一個概述建置程序的 YAML 檔案。 這將在文件中討論。
 
 本節假設您已熟悉版本控制和設計 Resource Manager 範本。 如果您不熟悉這些概念，請參閱下列頁面以取得詳細資訊。
