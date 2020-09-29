@@ -1,36 +1,36 @@
 ---
 title: 取得應用程式驗證的值
-description: 建立服務主體，以從程式碼存取 Azure SQL Database。
+description: 建立用來從程式碼存取 Azure SQL Database 的服務主體。
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 5aba4c690f91b515424eb866d387652ca9f40e7e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d88fa0e096557169a956a2ba33f72448676785e1
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84344606"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91444678"
 ---
 # <a name="get-the-required-values-for-authenticating-an-application-to-access-azure-sql-database-from-code"></a>取得驗證應用程式以從程式碼存取 Azure SQL Database 所需的值
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-若要從程式碼建立和管理 Azure SQL Database，您必須在建立 Azure 資源的訂用帳戶中，于 Azure Active Directory （Azure AD）網域中註冊您的應用程式。
+若要從程式碼建立和管理 Azure SQL Database，您必須在已建立 Azure 資源的訂用帳戶中的 Azure Active Directory (Azure AD) 網域中註冊您的應用程式。
 
 ## <a name="create-a-service-principal-to-access-resources-from-an-application"></a>從應用程式建立用來存取資源的服務主體
 
-下列範例會建立驗證 c # 應用程式所需的 Active Directory （AD）應用程式和服務主體。 指令碼會輸出先前 C# 範例所需的值。 如需詳細資訊，請參閱 [使用 Azure PowerShell 建立用來存取資源的服務主體](../../active-directory/develop/howto-authenticate-service-principal-powershell.md)。
+下列範例會建立 Active Directory (AD) 應用程式，以及我們需要用來驗證 c # 應用程式的服務主體。 指令碼會輸出先前 C# 範例所需的值。 如需詳細資訊，請參閱 [使用 Azure PowerShell 建立用來存取資源的服務主體](../../active-directory/develop/howto-authenticate-service-principal-powershell.md)。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 > [!IMPORTANT]
-> SQL Database 仍然支援 PowerShell Azure Resource Manager （RM）模組，但所有未來的開發都是針對 Az .Sql 模組。 AzureRM 模組會繼續收到錯誤修正，直到2020年12月為止。  Az 模組和 AzureRm 模組中命令的引數本質上完全相同。 如需其相容性的詳細資訊，請參閱[新的 Azure PowerShell Az 模組簡介](/powershell/azure/new-azureps-module-az)。
+> SQL Database 仍支援 PowerShell Azure Resource Manager (RM) 模組，但未來所有的開發都是針對 Az. Sql 模組。 AzureRM 模組將持續收到錯誤修正，直到2020年12月為止。  Az 模組和 AzureRm 模組中命令的引數本質上相同。 如需相容性的詳細資訊，請參閱 [新的 Azure PowerShell Az 模組簡介](/powershell/azure/new-azureps-module-az)。
 
 ```powershell
 # sign in to Azure
@@ -103,4 +103,4 @@ Write-Output "_applicationSecret:" $secret
 ## <a name="see-also"></a>另請參閱
 
 [使用 C 在 Azure SQL Database 中建立資料庫#](design-first-database-csharp-tutorial.md)  
-[使用 Azure Active Directory Authentication 連接到 Azure SQL Database](authentication-aad-overview.md)
+[使用 Azure Active Directory 驗證連接到 Azure SQL Database](authentication-aad-overview.md)
