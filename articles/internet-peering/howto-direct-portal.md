@@ -8,12 +8,12 @@ ms.service: internet-peering
 ms.topic: how-to
 ms.date: 5/19/2020
 ms.author: derekol
-ms.openlocfilehash: e49462612b58163c2ac51b78584761d0d8b8bd06
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1a89ce873c53e94036aa4f8ac2c2870365924187
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84700560"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91537203"
 ---
 # <a name="create-or-modify-a-direct-peering-by-using-the-azure-portal"></a>使用 Azure 入口網站站建立或修改直接對等互連
 
@@ -37,7 +37,7 @@ ms.locfileid: "84700560"
 1. 在 [建立對等互連] 頁面的 [基本] 索引標籤上，填寫各方塊，如下所示：
 
 
-    ![註冊對等互連服務](./media/setup-basics-tab.png)
+    ![螢幕擷取畫面顯示 [建立對等互連頁面基本] 索引標籤，其中顯示 [建立新的連結]。](./media/setup-basics-tab.png)
 
 2. 選取您的 Azure 訂用帳戶。
 
@@ -59,7 +59,7 @@ ms.locfileid: "84700560"
 
 
 
-    ![註冊對等互連服務](./media/setup-direct-basics-filled-tab.png)
+    ![螢幕擷取畫面顯示 [建立對等互連頁面基本] 索引標籤，其中包含所有輸入的值。](./media/setup-direct-basics-filled-tab.png)
 
 
 #### <a name="configure-connections-and-submit"></a>設定連線並提交

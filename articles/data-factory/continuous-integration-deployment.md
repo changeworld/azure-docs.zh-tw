@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: a5856d85b6a967f49fd651942ca6e4596bf15e7d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e1b9aacf96249c3e102c6a3dbf87d8ac1ff20be6
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91320966"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91533310"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Azure Data Factory 中的持續整合和傳遞
 
@@ -30,10 +30,6 @@ ms.locfileid: "91320966"
 
 -    使用 Data Factory 與 [Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/get-started/what-is-azure-pipelines?view=azure-devops) 的整合進行自動化部署
 -    使用 Data Factory UX 與 Azure Resource Manager 的整合，手動上傳 Resource Manager 範本。
-
-如需這項功能的 9 分鐘簡介和示範，請觀看這段影片：
-
-> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Continuous-integration-and-deployment-using-Azure-Data-Factory/player]
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

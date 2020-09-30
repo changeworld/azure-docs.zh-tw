@@ -3,26 +3,24 @@ title: 訓練應用程式-LUIS
 titleSuffix: Azure Cognitive Services
 description: 訓練程序會教導您的 Language Understanding (LUIS) 應用程式版本，以改善其自然語言理解。 在模型的更新之後訓練 LUIS 應用程式，例如新增、編輯、加上標籤或刪除實體、意圖或語調。
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 11/15/2019
-ms.author: diberry
-ms.openlocfilehash: 7511d7379e7b51b19e3436ed7cef53fb914b80ac
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: a53857061110d5a77ac3d166277e7076f4f7f9c6
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84343066"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541368"
 ---
 # <a name="train-your-active-version-of-the-luis-app"></a>訓練您 LUIS 應用程式的作用中版本
 
 訓練程序會教導您的 Language Understanding (LUIS) 應用程式，以改善其自然語言理解。 在模型的更新之後訓練 LUIS 應用程式，例如新增、編輯、加上標籤或刪除實體、意圖或語調。
 
-訓練和[測試](luis-concept-test.md)應用程式是一種反覆程序。 在您訓練 LUIS 應用程式之後，請使用範例語調來測試它，查看是否正確地辨識意圖和實體。 若為否，請更新 LUIS 應用程式、訓練，並重新測試。
+定型和 [測試](luis-concept-test.md) 應用程式是一種反復的流程。 在您訓練 LUIS 應用程式之後，請使用範例語調來測試它，查看是否正確地辨識意圖和實體。 若為否，請更新 LUIS 應用程式、訓練，並重新測試。
 
 定型會套用至 LUIS 入口網站中的作用中版本。
 
@@ -34,19 +32,19 @@ ms.locfileid: "84343066"
 
 1. 在應用程式中，選取上方面板中的 [訓練]****。
 
-1. 訓練完成時，瀏覽器頂端會出現通知。
+1. 定型完成時，瀏覽器頂端會出現通知。
 
 ## <a name="training-date-and-time"></a>訓練日期和時間
 
-訓練日期和時間為 GMT + 2。
+定型日期和時間為 GMT + 2。
 
 ## <a name="train-with-all-data"></a>以所有資料進行訓練
 
-訓練會使用一小部分的負面取樣。 如果您想要使用所有資料，而不是小型的負面取樣，請使用[API](#version-settings-api-use-of-usealltrainingdata)。
+訓練會使用一小部分的負面取樣。 如果您想要使用所有資料，而不是使用小規模的負取樣，請使用 [API](#version-settings-api-use-of-usealltrainingdata)。
 
 ### <a name="version-settings-api-use-of-usealltrainingdata"></a>版本設定 API 使用 UseAllTrainingData
 
-使用[版本設定 API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) ，並將 `UseAllTrainingData` 設定為 true 以關閉這項功能。
+使用 [版本設定 API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) 並將 `UseAllTrainingData` 設定為 true，以關閉這項功能。
 
 ## <a name="unnecessary-training"></a>不必要的定型
 

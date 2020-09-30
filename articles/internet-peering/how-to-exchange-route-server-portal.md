@@ -1,5 +1,5 @@
 ---
-title: 使用入口網站的 Exchange 合作夥伴與路由伺服器的對等互連連線
+title: 透過入口網站使用路由伺服器的 Exchange 合作夥伴對等互連連線
 titleSuffix: Azure
 description: 使用 Azure 入口網站建立或修改與路由伺服器的交換對等互連
 services: internet-peering
@@ -8,16 +8,16 @@ ms.service: internet-peering
 ms.topic: how-to
 ms.date: 5/19/2020
 ms.author: derekol
-ms.openlocfilehash: 1eaf7413b01bceacbcbf3640bfe654fdad026672
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7e10cd91eadd338217845b1504e8e9160bccfc98
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84700656"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91537186"
 ---
-# <a name="create-or-modify-an-exchange-peering-with-route-server-in-azure-portal"></a>在 Azure 入口網站中建立或修改與路由伺服器的 Exchange 對等互連
+# <a name="create-or-modify-an-exchange-peering-with-route-server-in-azure-portal"></a>在 Azure 入口網站中使用路由伺服器建立或修改 Exchange 對等互連
 
-本文說明如何使用 Azure 入口網站，透過路由伺服器建立 Microsoft Exchange 對等互連。 此文章也會示範如何檢查資源的狀態、加以更新，或是加以刪除並取消佈建。
+本文說明如何使用 Azure 入口網站建立與路由伺服器的 Microsoft Exchange 對等互連。 此文章也會示範如何檢查資源的狀態、加以更新，或是加以刪除並取消佈建。
 
 
 ## <a name="before-you-begin"></a>開始之前
@@ -29,7 +29,7 @@ ms.locfileid: "84700656"
 ### <a name="sign-in-to-the-portal-and-select-your-subscription"></a>登入入口網站並選取您的訂用帳戶
 [!INCLUDE [Account](./includes/account-portal.md)]
 
-### <a name="create-an-exchange-peering-with-route-server"></a><a name=create></a>使用路由伺服器建立 Exchange 對等互連
+### <a name="create-an-exchange-peering-with-route-server"></a><a name=create></a>建立與路由伺服器的交換對等互連
 
 
 身為網際網路交換服務提供者，您可以透過[建立對等互連]( https://go.microsoft.com/fwlink/?linkid=2129593)，建立 Exchange 對等互連要求。
@@ -64,54 +64,54 @@ ms.locfileid: "84700656"
     > [!div class="mx-imgBorder"]
     > ![設定路由伺服器](./media/setup-exchange-conf-tab-routeserver.png)
  
-    * 針對 [對等互連類型]，選取 [**直接**]
-    * 針對 [Microsoft 網路]，選取 [ **AS8075 與 exchange 路由伺服器**]。 
-    * 選取 [SKU] 作為 [基本] [**免費**]。 請不要選取 [premium free]，因為它已保留給特殊應用程式。
-    * 選取您想要設定對等互連的**Metro**位置。
+    * 針對對等互連類型，選取 [**直接**]
+    * 針對 Microsoft network，請選取 [ **AS8075 with exchange route server**]。 
+    * 選取 [ **基本] 免費**的 SKU。 請勿選取 [premium free]，因為它已保留給特殊應用程式。
+    * 選取您要設定對等互連的 **Metro** 位置。
 
-1. 在 [對**等連接**] 底下 **，選取 [新建]**
+1. 在 [對 **等互連**連線] 下 **，選取 [新建]**
 
-1.  在 [**直接對等互連**連線] 底下，填入下列 BGP 會話詳細資料：
+1.  在 [ **直接對等互連**連線] 下，填寫下列 BGP 會話詳細資料：
 
     > [!div class="mx-imgBorder"]
-    > ![設定直接對等路由伺服器](./media/setup-exchange-conf-tab-direct-route.png)
+    > ![螢幕擷取畫面顯示已新增詳細資料的 [直接對等互連連線] 窗格。](./media/setup-exchange-conf-tab-direct-route.png)
 
 
-     * 對等互連設備，選取適當的實體位置以進行對等互連
+     * 對等互連設備，選取適用于對等互連的適當實體位置
      * 會話位址提供者，選取對等
-     * 會話 IPv4 首碼將由 exchange 提供者對等體提供
-     * 點對點工作階段 IPv4 位址，會由路由伺服器的 exchange 對等體從其 IP 首碼範圍選取。
-     * Microsoft 會話 IPv4 位址，將是從 IP 首碼範圍配置的路由器 IP。
-     * 會話 IPv6 此時是選擇性的。
-     * 已公告的 IPv4 首碼上限可達20000。 
-     * 預設會停用對等互連服務的使用。 一旦 exchange 提供者已簽署與 Microsoft 的對等互連服務合約，即可啟用此功能。
+     * 會話 IPv4 首碼將由 exchange 提供者對等提供
+     * 點對點工作階段 IPv4 位址，路由伺服器的 exchange 對等端會從其 IP 首碼範圍選取。
+     * Microsoft 會話 IPv4 位址會是從 IP 首碼範圍配置的路由器 IP。
+     * 會話 IPv6 目前是選擇性的。
+     * 最大公告的 IPv4 首碼最多可達20000。 
+     * 預設會停用 [對等互連服務]。 一旦 exchange 提供者已簽署與 Microsoft 的對等互連服務合約，就可以啟用此功能。
 
-1. 完成時，按一下 [**儲存**]。 
+1. 完成時，按一下 [ **儲存**]。 
 
-1. 在 [建立對等互連] 底下，您會看到通過驗證。 通過驗證之後，按一下 [**建立**]
+1. 在 [建立對等互連] 下，您會看到通過驗證。 通過驗證之後，按一下 [**建立**]
 
     > [!div class="mx-imgBorder"]
     > ![設定的驗證](./media/setup-exchange-conf-tab-validation.png)
 
     >[!NOTE]
-    >對於身為 Microsoft 對等服務合作夥伴的一般網際網路服務提供者（ISP），需要註冊客戶 IP 首碼。 不過，在具有路由伺服器的 exchange 合作夥伴案例中，必須註冊客戶 Asn 而不是首碼。 相同的 ASN 金鑰適用于客戶的前置詞註冊。
+    >若為一般網際網路服務提供者 (ISP) 身為 Microsoft 對等互連服務夥伴，則需要註冊客戶 IP 首碼。 不過，在具有路由伺服器的 exchange 合作夥伴案例中，必須註冊客戶 Asn，而不是註冊首碼。 相同的 ASN 金鑰組客戶的首碼註冊有效。
 
-1. 在 [設定] 區段下選取 [**已註冊的 asn** ]。
-
-    > [!div class="mx-imgBorder"]
-    > ![設定直接對等路由伺服器](./media/setup-exchange-registered-asn.png)
-
-1. 選取 [**新增已註冊的 asn** ]，在您的 exchange 訂閱下建立新的客戶 ASN。
+1. 在 [設定] 區段下，選取 [ **已註冊的 asn** ]。
 
     > [!div class="mx-imgBorder"]
-    > ![設定直接對等路由伺服器](./media/setup-exchange-register-new-asn.png)
+    > ![螢幕擷取畫面顯示已註冊 S Ns 功能表項目的 [對等] 窗格已被呼叫。](./media/setup-exchange-registered-asn.png)
 
-1. 在 [註冊 ASN] 底下，選取名稱、填入客戶 ASN，然後按一下 [儲存]。
-
-1. 在 [已註冊] Asn 下，會有一個相關聯的首碼金鑰指派給每個 ASN。 作為交換提供者，您必須為客戶提供此首碼金鑰，讓他們可以在其訂用帳戶下註冊對等服務。
+1. 選取 [ **新增已註冊的 asn** ]，在您的 exchange 訂用帳戶下建立新的客戶 ASN。
 
     > [!div class="mx-imgBorder"]
-    > ![設定直接對等路由伺服器](./media/setup-exchange-register-asn-prefixkey.png)
+    > ![螢幕擷取畫面顯示 [註冊 A N] 窗格，其中包含 [名稱] 和 [N] 文字方塊。](./media/setup-exchange-register-new-asn.png)
+
+1. 在 [註冊 ASN] 下，選取名稱、填入客戶 ASN，然後按一下 [儲存]。
+
+1. 在 [已註冊] Asn 下，會有指派給每個 ASN 的關聯首碼金鑰。 作為 exchange 提供者，您必須提供此首碼金鑰給客戶，讓他們可以在其訂用帳戶下註冊對等互連服務。
+
+    > [!div class="mx-imgBorder"]
+    > ![螢幕擷取畫面顯示已註冊的 [Ns] 窗格，其中包含首碼金鑰。](./media/setup-exchange-register-asn-prefixkey.png)
 
 
 

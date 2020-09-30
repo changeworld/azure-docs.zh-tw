@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/23/2018
 ms.author: genli
-ms.openlocfilehash: 7caeba0e88f63106eae80f7142b5d65463f8d7a7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2a27161ca9a218b1f7c0e3fb51c9935438d9778e
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77019395"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91533412"
 ---
 # <a name="connectivity-and-networking-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure 雲端服務之連線能力和網路服務問題：常見問題集 (FAQ)
 
@@ -43,7 +43,7 @@ ms.locfileid: "77019395"
 如需詳細資訊，請參閱[使用連接埠偵測而非 ICMP 來測試 Azure VM 連線能力](https://blogs.msdn.microsoft.com/mast/2014/06/22/use-port-pings-instead-of-icmp-to-test-azure-vm-connectivity/)。
 
 ## <a name="how-do-i-prevent-receiving-thousands-of-hits-from-unknown-ip-addresses-that-might-indicate-a-malicious-attack-to-the-cloud-service"></a>如何避免接收來自未知 IP 位址的成千上萬個叫用，其可能表示對雲端服務的惡意攻擊？
-Azure 會實作多層的網路安全性，可保護其平台服務免於遭受分散式阻斷服務 (DDoS) 攻擊。 Azure DDoS 防禦系統是屬於 Azure 的連續監視流程，會透過滲透測試持續進行改良。 此 DDoS 防禦系統的設計，不僅可承受來自外部的攻擊，還能承受來自其他 Azure 租用戶的攻擊。 如需詳細資訊，請參閱[Azure 網路安全性](https://download.microsoft.com/download/C/A/3/CA3FC5C0-ECE0-4F87-BF4B-D74064A00846/AzureNetworkSecurity_v3_Feb2015.pdf)。
+Azure 會實作多層的網路安全性，可保護其平台服務免於遭受分散式阻斷服務 (DDoS) 攻擊。 Azure DDoS 防禦系統是屬於 Azure 的連續監視流程，會透過滲透測試持續進行改良。 此 DDoS 防禦系統的設計，不僅可承受來自外部的攻擊，還能承受來自其他 Azure 租用戶的攻擊。 如需詳細資訊，請參閱 [Azure 網路安全性](https://download.microsoft.com/download/C/A/3/CA3FC5C0-ECE0-4F87-BF4B-D74064A00846/AzureNetworkSecurity_v3_Feb2015.pdf)。
 
 您也可以建立啟動工作，選擇性地封鎖一些特定的 IP 位址。 如需詳細資訊，請參閱[封鎖特定 IP 位址](cloud-services-startup-tasks-common.md#block-a-specific-ip-address)。
 
@@ -65,14 +65,14 @@ Azure 會實作多層的網路安全性，可保護其平台服務免於遭受�
 
 ## <a name="how-can-i-redirect-incoming-traffic-to-the-default-url-of-my-cloud-service-to-a-custom-url"></a>如何將我雲端服務預設 URL 的傳入流量重新導向自訂的 URL？
 
-IIS 的 URL Rewrite 模組可用來將流向雲端服務 (例如，\*.cloudapp.net) 預設 URL 的流量重新導向至某些自訂名稱/URL。 由於預設會在 web 角色上啟用 URL 重寫模組，且其規則是在應用程式的 web.config 中進行設定，因此不論重新開機/重新安裝，它一律會在 VM 上使用。如需詳細資訊，請參閱：
+IIS 的 URL Rewrite 模組可用來將流向雲端服務 (例如，\*.cloudapp.net) 預設 URL 的流量重新導向至某些自訂名稱/URL。 由於預設會在 web 角色上啟用 URL 重寫模組，且其規則是在應用程式的 web.config 中進行設定，因此無論重新開機/映射為何，都一律可在 VM 上使用。如需詳細資訊，請參閱：
 
 - [建立 URL Rewrite 模組的重寫規則](https://docs.microsoft.com/iis/extensions/url-rewrite-module/creating-rewrite-rules-for-the-url-rewrite-module)
 - [移除預設的連結](https://stackoverflow.com/questions/32286487/azure-website-how-to-remove-default-link?answertab=votes#tab-top)
 
 ## <a name="how-can-i-blockdisable-incoming-traffic-to-the-default-url-of-my-cloud-service"></a>如何封鎖/停用我雲端服務的預設 URL 傳入流量？
 
-您可以阻止傳向您雲端服務 (例如 \*.cloudapp.net) 預設 URL/名稱的傳入流量。 在雲端服務定義（*）檔案的 [網站系結設定] 底下，將主機標頭設為自訂 DNS 名稱（例如，www \. MyCloudService.com），如下所示：
+您可以阻止傳向您雲端服務 (例如 \*.cloudapp.net) 預設 URL/名稱的傳入流量。 將主機標頭設定為自訂 DNS 名稱 (例如， \. 雲端服務定義中的 [網站系結設定] 下的 [www MyCloudService.com) ] ( *.) .：
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -99,7 +99,7 @@ IIS 的 URL Rewrite 模組可用來將流向雲端服務 (例如，\*.cloudapp.n
 
 ## <a name="how-can-i-make-sure-the-public-facing-ip-address-of-a-cloud-service-never-changes"></a>如何確定雲端服務的公眾對應 IP 位址永遠不會變更？
 
-若要確定您雲端服務 (也稱為 VIP) 的公眾對應 IP 位址永遠不會變更，以便幾個特定用戶端可常態地將它設為允許清單，我們建議您使用與它相關聯的保留 IP。 否則，如果您刪除部署，Azure 提供的虛擬 IP 會從您的訂用帳戶中解除配置。 若要成功地進行 VIP 交換作業，您需要有生產位置和預備位置的個別保留 IP。 如果沒有這些 IP，交換作業將會失敗。 若要保留 IP 位址，並將它與您的雲端服務相關聯，請參閱下列文章：
+若要確定雲端服務的公開 IP 位址 (也稱為 VIP) 永遠都不會變更，因此只有少數特定用戶端可以核准它，我們建議您具有與其相關聯的保留 IP。 否則，如果您刪除部署，Azure 提供的虛擬 IP 會從您的訂用帳戶中解除配置。 若要成功地進行 VIP 交換作業，您需要有生產位置和預備位置的個別保留 IP。 如果沒有這些 IP，交換作業將會失敗。 若要保留 IP 位址，並將它與您的雲端服務相關聯，請參閱下列文章：
 
 - [保留現有雲端服務的 IP 位址](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip#reserve-the-ip-address-of-an-existing-cloud-service)
 - [使用服務組態檔建立保留的 IP 至雲端服務的關聯](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip#associate-a-reserved-ip-to-a-cloud-service-by-using-a-service-configuration-file)

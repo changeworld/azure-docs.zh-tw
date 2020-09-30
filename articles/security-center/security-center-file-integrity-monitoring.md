@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: da0eeafc9d92bf08a2475d7676f1da8a4fa30da5
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.openlocfilehash: b64ff51836f8d291acf57b1cd9ca100c4f87ebed
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 09/29/2020
-ms.locfileid: "91461379"
+ms.locfileid: "91541164"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Azure 資訊安全中心中的檔案完整性監視
 瞭解如何使用本逐步解說，在 Azure 資訊安全中心中設定檔案完整性監視 (FIM) 。
@@ -116,7 +116,7 @@ FIM 使用 Azure 變更追蹤解決方案來追蹤及識別您環境中的變更
 
     - ![升級計畫圖示將 ][4] 工作區升級為使用 Azure Defender。 此圖示表示工作區或訂用帳戶未受 Azure Defender 保護。 若要使用 FIM 功能，您的訂用帳戶必須受到 Azure Defender 的保護。 [深入了解](security-center-pricing.md)。
 
-    - ![啟用圖示][3] 在工作區下的所有機器上啟用 FIM，並設定 FIM 選項。 此圖示表示未啟用工作區的 FIM-使用此按鈕可：
+    - ![啟用圖示][3] 在工作區下的所有機器上啟用 FIM，並設定 FIM 選項。 此圖示表示工作區未啟用 FIM。
 
         :::image type="content" source="./media/security-center-file-integrity-monitoring/workspace-list-fim.png" alt-text="啟動 FIM":::
 

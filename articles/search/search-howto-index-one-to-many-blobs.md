@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/11/2020
-ms.openlocfilehash: 76086dd7cccb042fdde3722b68b654343f2df012
-ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
+ms.openlocfilehash: e5a69525c4bd0717c0561bc61ee3c52aa68e1c9d
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91403580"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91533956"
 ---
 # <a name="indexing-blobs-to-produce-multiple-search-documents"></a>編制 blob 的索引以產生多個搜尋檔
 根據預設，blob 索引子會將 blob 的內容視為單一搜尋檔。 某些 **parsingMode** 值支援個別 blob 可能會導致多個搜尋檔的案例。 不同類型的 **parsingMode** 可讓索引子從 blob 中解壓縮一個以上的搜尋檔，如下所示：
@@ -66,7 +66,7 @@ _Blob2.js開啟_
 
 此安裝程式會產生包含下列資訊的 Azure 認知搜尋索引， (以 base64 編碼的識別碼縮寫以求簡潔) 
 
-| id | 溫度 | 壓力 | timestamp |
+| 識別碼 | 溫度 | 壓力 | timestamp |
 |----|-------------|----------|-----------|
 | aHR0 ...YjEuanNvbjsx | 100 | 100 | 2019-02-13T00：00：00Z |
 | aHR0 ...YjEuanNvbjsy | 33 | 30 | 2019-02-14T00：00：00Z |

@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: addimitu
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 97a8f372a90d3add99390220d89214c6ad205db6
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: bf8eeb2d1f19ca0848ae5c608ba9f0d8e9526e05
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90056297"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541249"
 ---
 # <a name="delete-a-tenant-in-azure-active-directory"></a>在 Azure Active Directory 中刪除租用戶
 
@@ -123,19 +123,19 @@ Deleted | 資料已刪除 | 使用者無法存取自助式註冊產品、檔案�
 
 2. 選取 [授權]，然後選取 [自助式註冊產品]。 您可以個別查看所有自助式註冊產品與以基座為基礎的訂用帳戶。 選擇您想要永久刪除的產品。 以下是 Microsoft Power BI 中的範例：
 
-    ![使用者名稱輸入錯誤或是找不到](./media/directory-delete-howto/licenses-page.png)
+    ![顯示 [授權-自助式註冊產品] 頁面的螢幕擷取畫面。](./media/directory-delete-howto/licenses-page.png)
 
 3. 選取 [刪除] 以刪除產品，並接受立即刪除資料且無法復原的條款。 此刪除動作將會移除所有使用者，並移除對該產品的組織存取權。 按一下 [是] 以繼續刪除。  
 
-    ![使用者名稱輸入錯誤或是找不到](./media/directory-delete-howto/delete-product.png)
+    ![顯示 [授權-自助式註冊產品] 頁面的螢幕擷取畫面，其中已開啟 [刪除自助式註冊產品]。](./media/directory-delete-howto/delete-product.png)
 
 4. 當您選取 [是] 時，將會起始自助式產品的刪除作業。 有通知會告知您正在進行刪除。  
 
-    ![使用者名稱輸入錯誤或是找不到](./media/directory-delete-howto/progress-message.png)
+    ![顯示 [授權-自助式註冊產品] 頁面的螢幕擷取畫面，其中顯示 [正在刪除] 通知。](./media/directory-delete-howto/progress-message.png)
 
 5. 現在，自助式註冊產品狀態已變更為**已刪除**。 當您重新整理頁面時，產品應該會從 [自助式註冊產品] 頁面中移除。  
 
-    ![使用者名稱輸入錯誤或是找不到](./media/directory-delete-howto/product-deleted.png)
+    ![顯示 [授權-自助式註冊產品] 頁面的螢幕擷取畫面，其右側會顯示 [已刪除自助式註冊產品] 窗格。](./media/directory-delete-howto/product-deleted.png)
 
 6. 在您刪除所有產品之後，您就可以再次登入 Azure AD 系統管理中心，這時理應沒有要採取的動作，也不會有產品使您無法刪除組織。 您應能夠成功刪除 Azure AD 組織。
 

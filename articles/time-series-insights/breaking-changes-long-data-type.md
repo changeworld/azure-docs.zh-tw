@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.custom: dpalled
-ms.openlocfilehash: 43d3e80c66d54e3f7518246f7d75c5661995578c
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 4d4e7f4433171e593f5e61ab6f48afc640857d9b
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89489029"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91536574"
 ---
 # <a name="adding-support-for-long-data-type-in-azure-time-series-insights-gen2"></a>在 Azure 時間序列深入解析 Gen2 中加入 long 資料類型的支援
 
@@ -72,11 +72,11 @@ ms.locfileid: "89489029"
 
 *先前的變數定義：*
 
-[![先前的變數定義](media/time-series-insights-long-data-type/var-def-previous.png)](media/time-series-insights-long-data-type/var-def-previous.png#lightbox)
+[![螢幕擷取畫面顯示 [為 PropertyValue 變數（數值）加入新的變數] 對話方塊。](media/time-series-insights-long-data-type/var-def-previous.png)](media/time-series-insights-long-data-type/var-def-previous.png#lightbox)
 
 *新變數定義：*
 
-[![新增變數定義](media/time-series-insights-long-data-type/var-def.png)](media/time-series-insights-long-data-type/var-def.png#lightbox)
+[![螢幕擷取畫面顯示 [加入新的變數] 對話方塊，其中包含自訂值 [數值] 的 [PropertyValue] 變數。](media/time-series-insights-long-data-type/var-def.png)](media/time-series-insights-long-data-type/var-def.png#lightbox)
 
 您也可以使用 **聯合 ($event. Double、toDouble ($event. Long) # B3 ** 作為自訂 [時間序列運算式](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax)。
 
@@ -139,11 +139,11 @@ ms.locfileid: "89489029"
 
 *先前的變數定義：*
 
-[![先前的變數定義](media/time-series-insights-long-data-type/var-def-cat-previous.png)](media/time-series-insights-long-data-type/var-def-cat-previous.png#lightbox)
+[![螢幕擷取畫面顯示 [為 PropertyValue 變數新增變數] 對話方塊的 [類別目錄]。](media/time-series-insights-long-data-type/var-def-cat-previous.png)](media/time-series-insights-long-data-type/var-def-cat-previous.png#lightbox)
 
 *新變數定義：*
 
-[![新增變數定義](media/time-series-insights-long-data-type/var-def-cat.png)](media/time-series-insights-long-data-type/var-def-cat.png#lightbox)
+[![螢幕擷取畫面顯示 [加入新的變數] 對話方塊，其中包含自訂值 [類別] 的 [PropertyValue] 變數。](media/time-series-insights-long-data-type/var-def-cat.png)](media/time-series-insights-long-data-type/var-def-cat.png#lightbox)
 
 您也可以使用 **聯合 ($event. Double、toDouble ($event. Long) # B3 ** 作為自訂 [時間序列運算式](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax)。
 
@@ -240,6 +240,6 @@ ms.locfileid: "89489029"
 
 如果您是具有大量屬性的暖存放區使用者，且認為這項變更會將您的環境推送至1000暖存放區屬性名稱限制，請透過 Azure 入口網站提交支援票證，並提及此通訊。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 查看 [支援的資料類型](concepts-supported-data-types.md)的完整清單。

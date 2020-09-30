@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/22/2020
-ms.openlocfilehash: 018c3fb08c7fa0ad35fa567bffbeae48b6fbbce9
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: bae4cb72201bbc1653db5bb549d67531bda71d50
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88928831"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91537713"
 ---
 # <a name="query-types-and-composition-in-azure-cognitive-search"></a>Azure 認知搜尋中的查詢類型和組合
 
@@ -88,11 +88,11 @@ ms.locfileid: "88928831"
 
 下表列出使用 API 和工具來提交查詢的方法。
 
-| 方法 | 描述 |
+| 方法 | 說明 |
 |-------------|-------------|
 | [搜尋 explorer (入口網站) ](search-explorer.md) | 提供搜尋列以及選取索引和 API 版本的選項。 結果會以 JSON 文件的形式傳回。 建議進行探索、測試和驗證。 <br/>[深入了解。](search-get-started-portal.md#query-index) | 
 | [Postman 或其他 REST 工具](search-get-started-postman.md) | Web 測試工具是擬定 REST 呼叫的絕佳選擇。 REST API 支援 Azure 認知搜尋中的每個可能的作業。 在本文中，您將瞭解如何設定 HTTP 要求標頭和主體，以將要求傳送至 Azure 認知搜尋。  |
-| [SearchIndexClient (.NET)](/dotnet/api/microsoft.azure.search.searchindexclient?view=azure-dotnet) | 可以用來查詢 Azure 認知搜尋索引的用戶端。  <br/>[深入了解。](search-howto-dotnet-sdk.md#core-scenarios)  |
+| [SearchIndexClient (.NET)](/dotnet/api/microsoft.azure.search.searchindexclient) | 可以用來查詢 Azure 認知搜尋索引的用戶端。  <br/>[深入了解。](search-howto-dotnet-sdk.md#core-scenarios)  |
 | [搜尋文件 (REST API)](/rest/api/searchservice/search-documents) | 索引的 GET 或 POST 方法，使用查詢參數作為額外輸入。  |
 
 ## <a name="choose-a-parser-simple--full"></a>選擇剖析器：簡單 | 完整
@@ -165,7 +165,7 @@ Azure 認知搜尋可讓您輕鬆地執行搜尋結果分頁。 藉由使用 **`
 ### <a name="hit-highlighting"></a>搜尋結果醒目提示
 在 Azure 認知搜尋中，使用 **`highlight`** 、和參數強調符合搜尋查詢的搜尋結果確切部分，會變得很容易 **`highlightPreTag`** **`highlightPostTag`** 。 您可以指定哪些可搜尋的欄位要強調其 *相符的文字* ，以及指定要附加至 Azure 認知搜尋傳回之相符文字的開頭和結尾的精確字串標記。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 + [全文檢索搜尋在 Azure 認知搜尋 (查詢剖析架構中的運作方式) ](search-lucene-query-architecture.md)
 + [搜尋總管](search-explorer.md)

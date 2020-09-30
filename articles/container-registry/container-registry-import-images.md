@@ -2,13 +2,13 @@
 title: 匯入容器映像
 description: 藉由使用 Azure API 將容器映像匯入到 Azure 容器登錄，不需要執行 Docker 命令。
 ms.topic: article
-ms.date: 08/17/2020
-ms.openlocfilehash: 66c3a8b19e2288c1f8720dd4fe79f348a11f052e
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.date: 09/18/2020
+ms.openlocfilehash: 2c99d3c32bf6dad3a1950da56b29f47d2a988161
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88660490"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541572"
 ---
 # <a name="import-container-images-to-a-container-registry"></a>將容器映像匯入到容器登錄
 
@@ -18,7 +18,7 @@ Azure Container Registry 會處理一些從現有登錄複製映像的常見案�
 
 * 從公用登錄匯入
 
-* 從在相同或不同 Azure 訂用帳戶中的另一個 Azure 容器登錄匯入
+* 從相同或不同 Azure 訂用帳戶或租使用者中的另一個 Azure container registry 匯入
 
 * 從非 Azure 私人容器登錄匯入
 
@@ -28,7 +28,7 @@ Azure Container Registry 會處理一些從現有登錄複製映像的常見案�
 
 * 當您匯入多架構映像 (例如，官方 Docker 映像) 時，會複製資訊清單中指定和所有架構與平台的映像。
 
-* 存取來源和目標登錄不需要使用登錄的公用端點。
+* 存取目標登錄不需要使用登錄的公用端點。
 
 為了匯入容器映像，本文會要求您在 Azure Cloud Shell 或在本機執行 Azure CLI (建議使用 2.0.55 版或更新版本)。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI][azure-cli]。
 
@@ -36,7 +36,7 @@ Azure Container Registry 會處理一些從現有登錄複製映像的常見案�
 > 如果您需要將相同的容器映像散佈到多個 Azure 區域，Azure Container Registry 也支援[異地複寫](container-registry-geo-replication.md)。 藉由異地複寫登錄 (Premium 服務層級) ，您可以使用單一登入的相同映射和標籤名稱來提供多個區域。
 >
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 如果您還沒有 Azure 容器登錄，請建立登錄。 如需相關步驟，請參閱 [快速入門：使用 Azure CLI 建立私用容器](container-registry-get-started-azure-cli.md)登錄。
 
@@ -83,9 +83,9 @@ az acr import \
 --image servercore:ltsc2019
 ```
 
-## <a name="import-from-another-azure-container-registry"></a>從其他 Azure 容器登錄匯入
+## <a name="import-from-an-azure-container-registry-in-the-same-ad-tenant"></a>從相同 AD 租使用者中的 Azure container registry 匯入
 
-您可以使用整合的 Azure Active Directory 權限，從 Azure 容器登錄匯入映像。
+您可以使用整合式 Azure Active Directory 許可權，從相同 AD 租使用者中的 Azure container registry 匯入映射。
 
 * 您的身分識別必須有 Azure Active Directory 許可權，才能從來源登錄 (讀取者角色) ，以及匯入目標登錄 (參與者角色，或允許 importImage 動作) 的 [自訂角色](container-registry-roles.md#custom-roles) 。
 
@@ -136,7 +136,20 @@ az acr import \
 
 ### <a name="import-from-a-registry-using-service-principal-credentials"></a>使用服務主體認證從登錄匯入
 
-若要從您無法使用 Active Directory 權限存取的登錄匯入，您可以使用服務主體認證 (如果有的話)。 提供 Active Directory [服務主體](container-registry-auth-service-principal.md)的 appID 和密碼，該服務主體具有來源登錄的 ACRPull 存取權。 在建置系統和其他必須將映像匯入到登錄的自動化系統時，使用服務主體將有其效用。
+若要從無法使用整合式 Active Directory 許可權來存取的登錄匯入，您可以使用服務主體認證 (如果來源登錄可用) 。 提供 Active Directory [服務主體](container-registry-auth-service-principal.md)的 appID 和密碼，該服務主體具有來源登錄的 ACRPull 存取權。 在建置系統和其他必須將映像匯入到登錄的自動化系統時，使用服務主體將有其效用。
+
+```azurecli
+az acr import \
+  --name myregistry \
+  --source sourceregistry.azurecr.io/sourcerrepo:tag \
+  --image targetimage:tag \
+  --username <SP_App_ID> \
+  –-password <SP_Passwd>
+```
+
+## <a name="import-from-an-azure-container-registry-in-a-different-ad-tenant"></a>從不同 AD 租使用者中的 Azure container registry 匯入
+
+若要從不同 Azure Active Directory 租使用者中的 Azure container registry 匯入，請以登入伺服器名稱指定來源登錄，並提供可讓您存取登錄的使用者名稱和密碼認證。 例如，使用存放 [庫範圍的權杖](container-registry-repository-scoped-permissions.md) 和密碼，或是具有來源登錄 ACRPull 存取權之 Active Directory [服務主體](container-registry-auth-service-principal.md) 的 appID 和密碼。 
 
 ```azurecli
 az acr import \
@@ -149,7 +162,7 @@ az acr import \
 
 ## <a name="import-from-a-non-azure-private-container-registry"></a>從非 Azure 私人容器登錄匯入
 
-藉由指定可以啟用登錄提取存取權的認證，從私人登錄匯入映像。 例如，從私人 Docker 登錄提取映像： 
+藉由指定啟用登錄存取權的認證，從非 Azure 私人登錄匯入映射。 例如，從私人 Docker 登錄提取映像： 
 
 ```azurecli
 az acr import \

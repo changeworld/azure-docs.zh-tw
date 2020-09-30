@@ -8,12 +8,12 @@ ms.author: magottei
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/25/2020
-ms.openlocfilehash: 2b01b9a3782d25660462d0cc2bf3aec87baf0023
-ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
+ms.openlocfilehash: 417bdacc3ce8b619d5ec9618e6060ac071882471
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91403773"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91533920"
 ---
 # <a name="how-to-index-plain-text-blobs-in-azure-cognitive-search"></a>如何在 Azure 認知搜尋中為純文字 blob 編制索引
 
@@ -61,9 +61,10 @@ ms.locfileid: "91403773"
 ```
 
 ## <a name="help-us-make-azure-cognitive-search-better"></a>協助我們改善 Azure 認知搜尋
+
 如果您有功能要求或改進的想法，請在 [UserVoice](https://feedback.azure.com/forums/263029-azure-search/) 提供。 如果您需要使用現有功能的協助，請將您的問題張貼在 [Stack Overflow](https://stackoverflow.microsoft.com/questions/tagged/18870)上。
 
-## <a name="see-also"></a>另請參閱
+## <a name="next-steps"></a>後續步驟
 
 * [Azure 認知搜尋中的索引子](search-indexer-overview.md)
 * [如何設定 blob 索引子](search-howto-indexing-azure-blob-storage.md)

@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: larryfr
-ms.author: aashishb
-author: aashishb
+ms.author: peterlu
+author: peterclu
 ms.date: 09/25/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python, references_regions
-ms.openlocfilehash: 1690d4b236fce53e033f08fa6825eefe6359d9e9
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.custom: how-to, devx-track-python, references_regions, contperfq1
+ms.openlocfilehash: c1d351cf7a3d66f6051bf5c9d17672b054c2d862
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91362209"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91538377"
 ---
 # <a name="virtual-network-isolation-and-privacy-overview"></a>虛擬網路隔離和隱私權總覽
 
@@ -28,7 +28,7 @@ ms.locfileid: "91362209"
 
 **1. VNet 總覽**  >  [2。保護工作區](how-to-secure-workspace-vnet.md)  >  [3。保護定型環境](how-to-secure-training-vnet.md)  >  [4。保護推斷環境](how-to-secure-inferencing-vnet.md)  >  [5。啟用 studio 功能](how-to-enable-studio-virtual-network.md)
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 本文假設您已熟悉下列主題：
 + [Azure 虛擬網路](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)

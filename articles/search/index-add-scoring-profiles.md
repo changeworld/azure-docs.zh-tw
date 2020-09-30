@@ -8,12 +8,12 @@ ms.author: ramero
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/06/2020
-ms.openlocfilehash: c32e1bc6e219ff645223cc34cf78991e229b86f0
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 97797e309c32c6ea996d5ae1901b9a266a683173
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935920"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91537628"
 ---
 # <a name="add-scoring-profiles-to-an-azure-cognitive-search-index"></a>將評分設定檔新增至 Azure 認知搜尋服務索引
 
@@ -254,7 +254,7 @@ GET /indexes/hotels/docs?search=inn&scoringProfile=geo&scoringParameter=currentL
 ##  <a name="set-interpolations"></a><a name="bkmk_interpolation"></a> 設定插補  
  插補可讓您設定用於評分的斜率圖形。 因為評分會由高至低排序，因此斜率一律為遞減，但插補可決定向下斜率的曲線。 可用的內插補點如下：  
 
-| 插 值 | 描述 |  
+| 插 值 | 說明 |  
 |-|-|  
 |`linear`|對於在最大和最小範圍內的項目，套用至項目的提升將會已持續遞減的量執行。 線性是評分設定檔的預設插補。|  
 |`constant`|對於在開始和結束範圍內的項目，將會對排名結果套用常數提升。|  
@@ -270,7 +270,7 @@ GET /indexes/hotels/docs?search=inn&scoringProfile=geo&scoringParameter=currentL
 
  下表提供數個範例。  
 
-|Duration|boostingDuration|  
+|持續時間|boostingDuration|  
 |--------------|----------------------|  
 |1 日|"P1D"|  
 |2 天又 12 個小時|"P2DT12H"|  
@@ -279,8 +279,8 @@ GET /indexes/hotels/docs?search=inn&scoringProfile=geo&scoringParameter=currentL
 
  如需更多範例，請參閱 [XML 結構描述：資料類型 (W3.org 網站)](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration)。  
 
-## <a name="see-also"></a>請參閱  
+## <a name="see-also"></a>另請參閱  
 
-+ [REST API 參考](/rest/api/searchservice/)   
-+ [建立索引 API](/rest/api/searchservice/create-index)   
-+ [Azure 認知搜尋 .NET SDK](/dotnet/api/overview/azure/search?view=azure-dotnet)
++ [REST API 參考](/rest/api/searchservice/)
++ [建立索引 API](/rest/api/searchservice/create-index)
++ [Azure 認知搜尋 .NET SDK](/dotnet/api/overview/azure/search?)

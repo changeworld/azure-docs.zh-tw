@@ -14,12 +14,12 @@ ms.date: 03/05/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 98af7725e1929637228c6cadd7ee2dc856bd4e8b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 706770db4309d1a909bc1161ab9d6657b6c5310a
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91331283"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91533543"
 ---
 # <a name="configure-security-alerts-for-azure-ad-roles-in-privileged-identity-management"></a>在 Privileged Identity Management 中設定 Azure AD 角色的安全性警示
 
@@ -38,7 +38,7 @@ ms.locfileid: "91331283"
 
 # <a name="new-version"></a>[新版本](#tab/new)
 
-![Azure AD 角色-列出警示和嚴重性的警示窗格](./media/pim-how-to-configure-security-alerts/view-alerts.png)
+![顯示 [警示] 頁面的螢幕擷取畫面，其中包含警示清單及其嚴重性。](./media/pim-how-to-configure-security-alerts/view-alerts.png)
 
 ## <a name="security-alerts"></a>安全性警示
 
@@ -82,7 +82,7 @@ ms.locfileid: "91331283"
 
 | | |
 | --- | --- |
-| **嚴重性** | 中型 |
+| **嚴重性** | 中 |
 | **為什麼會收到此警示？** | 具有特殊許可權角色的帳戶在過去90天內未變更其密碼。 這些帳戶可能是未受到維護且容易遭到攻擊的服務或共用帳戶。 |
 | **如何修正？** | 檢閱清單中的帳戶。 如果他們不再需要存取，請將它們從其特殊權限角色中移除。 |
 | **防範** | 確定共用帳戶會在知道密碼的使用者有所變更時，輪替使用強式密碼。 </br>使用 [存取權審核](pim-how-to-start-security-review.md) 和移除不再需要的角色指派，定期審核具有特殊許可權角色的帳戶。 |
@@ -181,7 +181,7 @@ ms.locfileid: "91331283"
 
 | | |
 | --- | --- |
-| **嚴重性** | 中型 |
+| **嚴重性** | 中 |
 | **為什麼會收到此警示？** | 具有特殊許可權角色的帳戶在過去90天內未變更其密碼。 這些帳戶可能是未受到維護且容易遭到攻擊的服務或共用帳戶。 |
 | **如何修正？** | 檢閱清單中的帳戶。 如果他們不再需要存取，請將它們從其特殊權限角色中移除。 |
 | **防範** | 確定共用帳戶會在知道密碼的使用者有所變更時，輪替使用強式密碼。 </br>使用 [存取權審核](pim-how-to-start-security-review.md) 和移除不再需要的角色指派，定期審核具有特殊許可權角色的帳戶。 |

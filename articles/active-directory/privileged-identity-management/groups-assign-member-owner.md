@@ -15,12 +15,12 @@ ms.date: 08/18/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 06e61bb966313265f7e3772dbbf6017a03a42386
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 48c4473cfafce1215219251c47bce1d5730645fc
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88869627"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91534415"
 ---
 # <a name="assign-eligibility-for-a-privileged-access-group-preview-in-privileged-identity-management"></a>在 Privileged Identity Management 中指派特殊許可權存取群組 (預覽) 的資格
 
@@ -48,7 +48,7 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 可協助
 
 1. 選取您要提供給特殊許可權存取群組的成員或擁有者。
 
-    ![選取成員或群組窗格](./media/groups-assign-member-owner/add-assignments.png)
+    ![顯示 [新增指派] 頁面的螢幕擷取畫面，其中會開啟 [選取成員或群組] 窗格，並反白顯示 [選取] 按鈕。](./media/groups-assign-member-owner/add-assignments.png)
 
 1. 選取 **[下一步]** 以設定成員資格或擁有權的持續時間。
 

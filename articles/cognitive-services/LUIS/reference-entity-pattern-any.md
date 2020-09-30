@@ -1,21 +1,19 @@
 ---
-title: Pattern. 任何實體類型-LUIS
+title: Pattern：任何實體類型-LUIS
 titleSuffix: Azure Cognitive Services
 description: Pattern.any 是僅用於模式範本語句的可變長度預留位置，用來標記實體開始及結束的位置。
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 09/29/2019
-ms.author: diberry
-ms.openlocfilehash: 5164bf55ef8233cf34a470524da3bc852678d79a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ec23be3709cebc534c059a21c52452abff683b18
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75979168"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91542201"
 ---
 # <a name="patternany-entity"></a>Pattern.any 實體
 
@@ -31,14 +29,14 @@ Pattern.any 實體需要在[模式](luis-how-to-model-intent-pattern.md)範本�
 
 如果用戶端應用程式要根據書名來搜尋書籍，pattern.any 會擷取完整的書名。 為搜尋此書而使用 pattern.any 的範本語句是 `Was {BookTitle} written by an American this year[?]`。
 
-下表中，每個資料列都有兩個版本的語句。 最上層的語句是 LUIS 最初看到語句的方式。 這並不清楚書籍標題開始和結束的位置。 底部的語句會使用模式。任何實體都會標記實體的開頭和結尾。
+下表中，每個資料列都有兩個版本的語句。 最上層的語句是 LUIS 一開始如何看到語句。 本書標題的開頭和結尾並不清楚。 底部的語句會使用模式。任何實體都可標示實體的開頭和結尾。
 
-|語句搭配以粗體顯示的實體|
+|具有粗體實體的語句|
 |--|
 |`Was The Man Who Mistook His Wife for a Hat and Other Clinical Tales written by an American this year?`<br><br>Was **The Man Who Mistook His Wife for a Hat and Other Clinical Tales** written by an American this year?|
 |`Was Half Asleep in Frog Pajamas written by an American this year?`<br><br>Was **Half Asleep in Frog Pajamas** written by an American this year?|
-|`Was The Particular Sadness of Lemon Cake: A Novel written by an American this year?`<br><br>這是**檸檬蛋糕的特定悲傷：** 今年美國的 Novel 寫了嗎？|
-|`Was There's A Wocket In My Pocket! written by an American this year?`<br><br>**我的口袋中有 Wocket！** written by an American this year?|
+|`Was The Particular Sadness of Lemon Cake: A Novel written by an American this year?`<br><br>這是 **檸檬蛋糕的特殊悲傷：今年今年所撰寫的新穎** 嗎？|
+|`Was There's A Wocket In My Pocket! written by an American this year?`<br><br>**我的 Pocket 有 Wocket！** written by an American this year?|
 ||
 
 
@@ -49,7 +47,7 @@ Pattern.any 實體需要在[模式](luis-how-to-model-intent-pattern.md)範本�
 
 `where is the form Understand your responsibilities as a member of the community and who needs to sign it after I read it?`
 
-使用內嵌的表單名稱，將其解壓縮為模式。任何：
+將內嵌表單名稱解壓縮為模式。任何：
 
 `Understand your responsibilities as a member of the community`
 
@@ -69,7 +67,7 @@ Pattern.any 實體需要在[模式](luis-how-to-model-intent-pattern.md)範本�
 
 #### <a name="v3-prediction-endpoint-response"></a>[V3 預測端點回應](#tab/V3)
 
-如果`verbose=false`是在查詢字串中設定，則這是 JSON：
+如果在 `verbose=false` 查詢字串中設定，則這是 JSON：
 
 ```json
 "entities": {
@@ -79,7 +77,7 @@ Pattern.any 實體需要在[模式](luis-how-to-model-intent-pattern.md)範本�
 }
 ```
 
-如果`verbose=true`是在查詢字串中設定，則這是 JSON：
+如果在 `verbose=true` 查詢字串中設定，則這是 JSON：
 
 ```json
 "entities": {
@@ -108,4 +106,4 @@ Pattern.any 實體需要在[模式](luis-how-to-model-intent-pattern.md)範本�
 
 ## <a name="next-steps"></a>後續步驟
 
-在本[教學](luis-tutorial-pattern.md)課程中，使用**模式。任何**實體都會從語句中解壓縮資料，其中語句的格式正確，而資料的結尾可能會與語句的其餘單字輕鬆混淆。
+在本 [教學](luis-tutorial-pattern.md)課程中，使用 **模式。任何** 實體都會從語句中將資料解壓縮，其中語句的格式正確，而且資料的結尾可能會與語句的其餘單字很容易混淆。

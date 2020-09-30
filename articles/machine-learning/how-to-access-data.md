@@ -11,12 +11,12 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 07/22/2020
 ms.custom: how-to, contperfq1, devx-track-python
-ms.openlocfilehash: 639e4cde82fd8496c90f8ebf263dd42661a75748
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e118c22829bc55e8baafb87db20817ab043ef4df
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91296802"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540773"
 ---
 # <a name="connect-to-azure-storage-services"></a>連線至 Azure 儲存體服務
 
@@ -266,5 +266,5 @@ Azure Data Factory 免費提供超過 80 個預先建置的連接器，可讓您
 ## <a name="next-steps"></a>後續步驟
 
 * [建立 Azure Machine Learning 資料集](how-to-create-register-datasets.md)
-* [將模型定型](how-to-train-ml-models.md)
+* [將模型定型](how-to-set-up-training-targets.md)
 * [部署模型](how-to-deploy-and-where.md)

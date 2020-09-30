@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/21/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4889e73e851e285c84d5d4429298e9a7cdacc140
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: e439f7d2b0232a2e1c36517f24723e4e16f7e6bb
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89014382"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91537594"
 ---
 # <a name="create-a-suggester-to-enable-autocomplete-and-suggested-results-in-a-query"></a>建立建議工具，以在查詢中啟用自動完成和建議的結果
 
@@ -26,7 +26,7 @@ ms.locfileid: "89014382"
 
 您可以單獨或一起使用這些功能。 若要在 Azure 認知搜尋中執行這些行為，有一個索引和查詢元件。 
 
-+ 在索引中，將建議工具加入至索引。 您可以使用入口網站、 [REST API](/rest/api/searchservice/create-index)或 [.net SDK](/dotnet/api/microsoft.azure.search.models.suggester?view=azure-dotnet)。 本文的其餘部分著重于建立建議工具。
++ 在索引中，將建議工具加入至索引。 您可以使用入口網站、 [REST API](/rest/api/searchservice/create-index)或 [.net SDK](/dotnet/api/microsoft.azure.search.models.suggester)。 本文的其餘部分著重于建立建議工具。
 
 + 在查詢要求中，呼叫下列其中一個 [api](#how-to-use-a-suggester)。
 
@@ -111,7 +111,7 @@ ms.locfileid: "89014382"
 
 ## <a name="create-using-net"></a>使用 .NET 建立
 
-在 c # 中，定義 [建議工具物件](/dotnet/api/microsoft.azure.search.models.suggester?view=azure-dotnet)。 `Suggesters` 是集合，但只能採用一個專案。 
+在 c # 中，定義 [建議工具物件](/dotnet/api/microsoft.azure.search.models.suggester)。 `Suggesters` 是集合，但只能採用一個專案。 
 
 ```csharp
 private static void CreateHotelsIndex(SearchServiceClient serviceClient)
@@ -134,11 +134,11 @@ private static void CreateHotelsIndex(SearchServiceClient serviceClient)
 
 ## <a name="property-reference"></a>屬性參考
 
-|屬性      |描述      |
+|屬性      |說明      |
 |--------------|-----------------|
 |`name`        |建議工具的名稱。|
 |`searchMode`  |用來搜尋候選片語的策略。 目前唯一支援的模式是 `analyzingInfixMatching` ，目前與詞彙的開頭相符。|
-|`sourceFields`|建議之內容來源的一或多個欄位清單。 欄位的類型必須是 `Edm.String` 和 `Collection(Edm.String)` 。 如果在欄位上指定了分析器，它必須是 [此清單](/dotnet/api/microsoft.azure.search.models.analyzername?view=azure-dotnet) 中的命名分析器， (不是自訂分析器) 。<p/> 最佳做法是只指定讓自己成為預期和適當回應的欄位，無論是搜尋列或下拉式清單中的完整字串。<p/>旅館名稱是很好的候選項，因為它有精確度。 詳細資訊欄位（例如描述和批註）過於密集。 同樣地，重複的欄位（例如，類別和標記）則較不有效。 在範例中，我們仍然會包含 "category"，以示範您可以包含多個欄位。 |
+|`sourceFields`|建議之內容來源的一或多個欄位清單。 欄位的類型必須是 `Edm.String` 和 `Collection(Edm.String)` 。 如果在欄位上指定了分析器，它必須是 [此清單](/dotnet/api/microsoft.azure.search.models.analyzername) 中的命名分析器， (不是自訂分析器) 。<p/> 最佳做法是只指定讓自己成為預期和適當回應的欄位，無論是搜尋列或下拉式清單中的完整字串。<p/>旅館名稱是很好的候選項，因為它有精確度。 詳細資訊欄位（例如描述和批註）過於密集。 同樣地，重複的欄位（例如，類別和標記）則較不有效。 在範例中，我們仍然會包含 "category"，以示範您可以包含多個欄位。 |
 
 <a name="how-to-use-a-suggester"></a>
 
@@ -148,8 +148,8 @@ private static void CreateHotelsIndex(SearchServiceClient serviceClient)
 
 + [建議 REST API](/rest/api/searchservice/suggestions) 
 + [自動完成 REST API](/rest/api/searchservice/autocomplete) 
-+ [SuggestWithHttpMessagesAsync 方法](/dotnet/api/microsoft.azure.search.idocumentsoperations.suggestwithhttpmessagesasync?view=azure-dotnet)
-+ [AutocompleteWithHttpMessagesAsync 方法](/dotnet/api/microsoft.azure.search.idocumentsoperations.autocompletewithhttpmessagesasync?view=azure-dotnet&viewFallbackFrom=azure-dotnet)
++ [SuggestWithHttpMessagesAsync 方法] (/dotnet/api/microsoft.azure.search.idocumentsoperations.suggestwithHTTPmessagesasync？
++ [AutocompleteWithHttpMessagesAsync 方法](/dotnet/api/microsoft.azure.search.idocumentsoperations.autocompletewithhttpmessagesasync)
 
 在搜尋應用程式中，用戶端程式代碼應該利用程式庫（例如 [JQUERY UI 自動完成](https://jqueryui.com/autocomplete/) ）來收集部分查詢並提供相符的結果。 如需這項工作的詳細資訊，請參閱 [將自動完成或建議的結果新增至用戶端程式代碼](search-autocomplete-tutorial.md)。
 

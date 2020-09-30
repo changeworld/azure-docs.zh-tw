@@ -11,12 +11,12 @@ author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 09/22/2020
 ms.custom: how-to
-ms.openlocfilehash: feb79a2a077f819cce22925f23f5ed640d05e8d3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 5ddfa2adbc9ec39949d7352903445407ff8e8881
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91296666"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91542150"
 ---
 # <a name="connect-to-data-with-the-azure-machine-learning-studio"></a>使用 Azure Machine Learning studio 連接到資料
 
@@ -35,7 +35,7 @@ ms.locfileid: "91296666"
 * [使用資料存放區連接到 Azure 儲存體服務](how-to-access-data.md)。 
 * [建立 Azure Machine Learning 資料集](how-to-create-register-datasets.md)。 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前先建立免費帳戶。 試用[免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)。
 
@@ -170,6 +170,6 @@ ms.locfileid: "91296666"
 
 * [使用 TabularDatasets 和自動化機器學習訓練的逐步範例](tutorial-first-experiment-automated-ml.md)。
 
-* [定型模型](how-to-train-ml-models.md)。
+* [定型模型](how-to-set-up-training-targets.md)。
 
 * 如需更多資料集定型範例，請參閱 [範例筆記本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/work-with-data/)。

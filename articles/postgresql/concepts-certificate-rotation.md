@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 576ff4eb3a189b27a4c7743966ced0676ec67a9d
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 976b423822fa667df713382b34d7208cb0e3b002
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90978909"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540654"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-postgresql-single-server"></a>瞭解適用於 PostgreSQL 的 Azure 資料庫單一伺服器的根 CA 變更變更
 
@@ -109,7 +109,7 @@ ms.locfileid: "90978909"
 針對使用自我裝載 Integration Runtime 的連接器，您可以在連接字串中明確包含 SSL 憑證檔案的路徑，您必須下載 [新的憑證](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem) ，並更新連接字串以使用它。
 
 ### <a name="7-do-i-need-to-plan-a-database-server-maintenance-downtime-for-this-change"></a>7. 我是否需要為此變更規劃資料庫伺服器維護停機時間？
-不可以。 因為這裡的變更只在用戶端連接到資料庫伺服器，所以資料庫伺服器不需要維護停機時間來進行這項變更。
+否。 因為這裡的變更只在用戶端連接到資料庫伺服器，所以資料庫伺服器不需要維護停機時間來進行這項變更。
 
 ### <a name="8--what-if-i-cannot-get-a-scheduled-downtime-for-this-change-before-october-26-2020-10262020"></a>8. 如果我無法在2020年10月26日之前取得此變更的排程停機時間， (10/26/2020) ？
 由於用來連接到伺服器的用戶端必須更新憑證資訊，如 [此處](./concepts-certificate-rotation.md#what-do-i-need-to-do-to-maintain-connectivity)的修正一節所述，在此情況下，伺服器不需要停機。
@@ -120,14 +120,14 @@ ms.locfileid: "90978909"
 ### <a name="10-how-often-does-microsoft-update-their-certificates-or-what-is-the-expiry-policy"></a>10. Microsoft 更新其憑證的頻率，或到期原則是什麼？
 適用於 PostgreSQL 的 Azure 資料庫所使用的憑證是由受信任的憑證授權單位單位 (CA) 提供。 因此，這些憑證在適用於 PostgreSQL 的 Azure 資料庫上的支援系結至 CA 支援這些憑證。 不過，在這種情況下，這些預先定義的憑證可能會有未預期的錯誤，這些都必須儘早修正。
 
-### <a name="11-if-i-am-using-read-replicas-do-i-need-to-perform-this-update-only-on-master-server-or-the-read-replicas"></a>11. 如果我使用讀取複本，我只需要在主伺服器或讀取複本上執行此更新嗎？
+### <a name="11-if-i-am-using-read-replicas-do-i-need-to-perform-this-update-only-on-the-primary-server-or-the-read-replicas"></a>11. 如果我使用讀取複本，我只需要在主伺服器或讀取複本上執行此更新嗎？
 由於這項更新是用戶端的變更，如果用戶端用來從複本伺服器讀取資料，您也必須套用這些用戶端的變更。 
 
 ### <a name="12-do-we-have-server-side-query-to-verify-if-ssl-is-being-used"></a>12. 我們是否有伺服器端查詢，以確認是否正在使用 SSL？
 若要確認您是否使用 SSL 連線來連線到伺服器，請參閱 [ssl 驗證](concepts-ssl-connection-security.md#applications-that-require-certificate-verification-for-tls-connectivity)。
 
 ### <a name="13-is-there-an-action-needed-if-i-already-have-the-digicertglobalrootg2-in-my-certificate-file"></a>13. 如果我的憑證檔案中已經有 DigiCertGlobalRootG2，是否需要採取動作？
-不可以。 如果您的憑證檔案已經有 **DigiCertGlobalRootG2**，就不需要採取任何動作。
+否。 如果您的憑證檔案已經有 **DigiCertGlobalRootG2**，就不需要採取任何動作。
 
 ### <a name="14-what-if-i-have-further-questions"></a>14. 如果我有其他問題，該怎麼辦？
 如果您有任何疑問，請從 [Microsoft Q&中的](mailto:AzureDatabaseforPostgreSQL@service.microsoft.com)「社區專家」獲得解答。 如果您有支援方案，且需要技術協助，請  [與我們聯絡](mailto:AzureDatabaseforPostgreSQL@service.microsoft.com)

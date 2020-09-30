@@ -5,12 +5,12 @@ ms.assetid: 6223b6bd-84ec-48df-943f-461d84605694
 ms.topic: article
 ms.date: 10/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0aa0393544f5744c6aaf428ca4b4c27922a0c287
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: f239122f7178dbc244c8dc23f3f7e7647f7330da
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90987839"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91539073"
 ---
 # <a name="back-up-your-app-in-azure"></a>在 Azure 中備份應用程式
 [Azure App Service](overview.md) 中的「備份與還原」功能可讓您以手動或透過排程方式，輕鬆建立應用程式備份。 您可以將備份設定為無限期保留。 您可以透過覆寫現有的應用程式或還原到另一個應用程式，將應用程式還原到先前狀態的快照。
@@ -70,13 +70,13 @@ App Service 可以將下列資訊備份到您已設定讓應用程式使用的 A
 
 3. 在 [備份設定] 頁面中，按一下 [未設定儲存體] 以設定儲存體帳戶。
 
-    :::image type="content" source="./media/manage-backup/configure-storage.png" alt-text="[備份儲存體] 區段的螢幕擷取畫面，其中已選取 [儲存體未設定] 設定。":::
+    :::image type="content" source="./media/manage-backup/configure-storage.png" alt-text="橫幅的螢幕擷取畫面，其中包含可升級 App Service 計畫以存取備份與還原功能的訊息。":::
 
 4. 選取 [儲存體帳戶] 和 [容器]，以選擇您的備份目的地。 此儲存體帳戶必須與您要備份之應用程式隸屬於相同的訂用帳戶。 如果您希望的話，也可以在個別頁面中，建立新的儲存體帳戶或新的容器。 完成後，按一下 [選取] 。
 
 5. 在仍保持開啟狀態的 [ **備份** 設定] 頁面上，您可以設定 [ **備份資料庫**]，然後選取要包含在備份中的資料庫 (SQL Database 或 MySQL) ，然後按一下 **[確定]**。
 
-    :::image type="content" source="./media/manage-backup/configure-database.png" alt-text="[備份資料庫] 區段的螢幕擷取畫面，其中顯示 [包含在備份選取範圍] 區段。":::
+    :::image type="content" source="./media/manage-backup/configure-database.png" alt-text="橫幅的螢幕擷取畫面，其中包含可升級 App Service 計畫以存取備份與還原功能的訊息。":::
 
     > [!NOTE]
     > 若要讓資料庫出現在此清單中，其連接字串必須存在於您應用程式之 [應用程式設定] 頁面的 [連接字串] 區段中。 
@@ -141,7 +141,7 @@ App Service 可以將下列資訊備份到您已設定讓應用程式使用的 A
 > [!NOTE]
 > 您還原站台部分備份的方式會與[還原一般備份](web-sites-restore.md)的方式相同。 還原程序會執行正確的作業。
 > 
-> 還原完整備份時，網站上的所有內容都會取代為備份中的內容。 如果檔案在網站上，而不在備份中，系統就會將它刪除。 但是，還原部分備份時，位於其中一個封鎖清單目錄或任何封鎖清單檔案中的任何內容都會保持原狀。
+> 還原完整備份時，網站上的所有內容都會取代為備份中的內容。 如果檔案在網站上，而不在備份中，系統就會將它刪除。 但在還原部份備份時，位於其中一個受限制的目錄或任何受限制檔案中的任何內容都會保持原樣。
 > 
 
 

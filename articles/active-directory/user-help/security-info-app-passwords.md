@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 02/13/2018
 ms.author: curtand
-ms.openlocfilehash: 9de054162a59b10fbd02bed9b3e84634ee12125b
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 84588130788e9be8d3be52a8ea0f3988dce7b952
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799191"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91536999"
 ---
 # <a name="create-app-passwords-from-the-security-info-preview-page"></a>從安全性資訊 (預覽) 頁面建立應用程式密碼
 
@@ -59,7 +59,7 @@ ms.locfileid: "88799191"
 
 4. 輸入需要應用程式密碼的應用程式名稱，然後選取 [下一步]。
 
-    ![上有應用程式名稱的 [應用程式密碼] 頁面](media/security-info/securityinfo-myprofile-password-appname.png)
+    ![顯示 [應用程式密碼] 頁面的螢幕擷取畫面，其中包含所輸入的應用程式名稱。](media/security-info/securityinfo-myprofile-password-appname.png)
 
 5. 複製 [密碼] 欄位的文字，在應用程式的密碼區域貼上密碼 (本範例為 Outlook 2010)，然後選取 [完成]。
 

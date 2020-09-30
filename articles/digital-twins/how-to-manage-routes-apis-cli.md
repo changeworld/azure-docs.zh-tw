@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 6/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 2cde352738c1aa545c77cbcf5d974030cd75b1e8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 7365e4904bb8e1920e7d4c57c165e489f2ff302e
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91326519"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540586"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>管理 Azure 數位 Twins 中的端點和路由 (Api 和 CLI) 
 
@@ -24,7 +24,7 @@ ms.locfileid: "91326519"
 
 您也可以透過 [Azure 入口網站](https://portal.azure.com)來管理它們。 如需使用入口網站的文章版本，請參閱 [*如何： (入口網站) 管理端點和路由 *](how-to-manage-routes-portal.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * 您將需要 **Azure 帳戶** (您可以在 [這裡](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 免費設定一個帳戶) 
 * 您將需要 azure 訂用帳戶中的 **Azure 數位 Twins 實例** 。 如果您還沒有實例，可以使用 how [*to：設定實例和驗證*](how-to-set-up-instance-portal.md)中的步驟來建立一個實例。 設定中的下列值可方便用於本文稍後：
@@ -58,7 +58,7 @@ az eventgrid topic create -g <your-resource-group-name> --name <your-topic-name>
 > az account list-locations -o table
 > ```
 
-建立主題之後，您可以使用下列命令將它連結至 Azure 數位 Twins：
+建立主題之後，您可以使用下列 [Azure 數位 TWINS CLI 命令](how-to-use-cli.md)將它連結至 Azure 數位 Twins：
 
 ```azurecli
 az dt endpoint create eventgrid --endpoint-name <Event-Grid-endpoint-name> --eventgrid-resource-group <Event-Grid-resource-group-name> --eventgrid-topic <your-Event-Grid-topic-name> -n <your-Azure-Digital-Twins-instance-name>
@@ -90,7 +90,7 @@ az dt endpoint create eventhub --endpoint-name <Event-Hub-endpoint-name> --event
 
 若要實際將資料從 Azure 數位 Twins 傳送至端點，您必須定義 **事件路由**。 Azure 數位 Twins **EventRoutes api** 可讓開發人員連接整個系統和下游服務的事件流程。 深入瞭解事件路由的 [*概念：路由傳送 Azure 數位 Twins 事件*](concepts-route-events.md)。
 
-本節中的範例會使用 c # SDK。
+本章節中的範例會使用 [.net (c # ) SDK](https://www.nuget.org/packages/Azure.DigitalTwins.Core)。
 
 必要條件 **：您**必須如本文稍早所述建立端點，才能繼續建立路由。 當您的端點完成設定之後，您可以繼續建立事件路由。
 
@@ -101,7 +101,7 @@ az dt endpoint create eventhub --endpoint-name <Event-Hub-endpoint-name> --event
 
 ### <a name="create-an-event-route"></a>建立事件路由
 
-事件路由是使用資料平面 Api 定義。 
+事件路由是使用 [資料平面 api](how-to-use-apis-sdks.md#overview-data-plane-apis)定義。 
 
 路由定義可以包含下列元素：
 * 您要使用的路由名稱

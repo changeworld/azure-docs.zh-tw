@@ -1,22 +1,20 @@
 ---
-title: 模式協助預測-LUIS
+title: 模式有助於預測-LUIS
 titleSuffix: Azure Cognitive Services
 description: 模式可讓您取得更精確的意圖，而不需提供更多的語句。
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/11/2019
-ms.author: diberry
-ms.openlocfilehash: 1ecdbaa28cad633817497f4af2091b9e38ba7db2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 44a7a89740be3d6d502c5d22c79b46582034d88a
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538049"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91535948"
 ---
 # <a name="patterns-improve-prediction-accuracy"></a>模式可改善預測精確度
 模式設計用來改善數個語句非常類似時的精確度。  模式可讓您取得更精確的意圖，而不需提供更多的語句。
@@ -35,7 +33,7 @@ ms.locfileid: "86538049"
 
 模式可解決下列狀況：
 
-* 意圖分數偏低
+* 意圖分數很低
 * 正確的意圖不是最高分，但太接近最高分。
 
 ## <a name="patterns-are-not-a-guarantee-of-intent"></a>模式不是意圖保證
@@ -45,9 +43,9 @@ ms.locfileid: "86538049"
 
 ## <a name="patterns-do-not-improve-machine-learning-entity-detection"></a>模式不會改善機器學習實體偵測
 
-模式主要是用來協助預測意圖和角色。 _模式。任何_實體都是用來將自由格式的實體解壓縮。 當模式使用實體時，模式不會協助偵測機器學習實體。
+模式主要是用來協助預測意圖和角色。 _模式。任何_實體都會用來將自由格式的實體解壓縮。 當模式使用實體時，模式不會協助偵測機器學習實體。
 
-如果將多個語句摺疊成單一模式，則不要期望看到改善的實體預測。 若要引發簡單實體，您需要新增語句或使用清單實體，否則將不會引發您的模式。
+如果將多個語句摺疊成單一模式，則不要期望看到改善的實體預測。 若要引發簡單的實體，您需要新增語句或使用清單實體，否則您的模式不會引發。
 
 ## <a name="patterns-use-entity-roles"></a>模式可使用實體角色
 如果模式中有兩個以上的實體與內容相關，則模式會使用實體[角色](luis-concept-roles.md)來擷取關於實體的內容資訊。
@@ -59,7 +57,7 @@ ms.locfileid: "86538049"
 模式比對會先偵測模式內的實體，然後驗證其餘字組和模式的字組順序。 模式中必須要有實體，才能比對模式。 模式會套用到權杖層級，不是字元層級。
 
 ## <a name="pattern-only-apps"></a>僅限模式的應用程式
-只要有每個意圖的模式，您就可以使用沒有範例語句的意圖來建立應用程式。 針對僅限模式的應用程式，模式不應包含機器學習實體，因為這需要範例語句。
+只要每個意圖都有一個模式，您就可以使用沒有範例語句的意圖來建立應用程式。 針對僅限模式的應用程式，模式不應包含機器學習實體，因為這些實體需要範例語句。
 
 ## <a name="patternany-entity"></a>Pattern.any 實體
 
@@ -70,7 +68,7 @@ ms.locfileid: "86538049"
 
 ## <a name="pattern-syntax"></a>模式語法
 
-從[模式語法參考](reference-pattern-syntax.md)學習模式語法。
+從 [模式語法參考](reference-pattern-syntax.md)學習模式語法。
 
 ## <a name="next-steps"></a>後續步驟
 

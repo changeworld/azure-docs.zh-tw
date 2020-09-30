@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b297ee3d03d61b654e2b7fffa17141a1fd5268f3
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 93c97055c6e31050dbc545445ec144ba37abc865
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90971179"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91539889"
 ---
 # <a name="assign-a-role-to-a-group-using-privileged-identity-management"></a>使用 Privileged Identity Management 將角色指派給群組
 
@@ -35,7 +35,7 @@ ms.locfileid: "90971179"
 
 1. 選取角色，然後選取群組。 只會顯示符合角色指派資格 (角色可指派群組) 的群組，而不會顯示所有群組。
 
-    ![選取您要為其指派角色的使用者](./media/roles-groups-pim-eligible/select-member.png)
+    ![顯示 [新增指派] 頁面的螢幕擷取畫面，其中已醒目提示 [選取角色] 和 [Select member (s) ] 區段。](./media/roles-groups-pim-eligible/select-member.png)
 
 1. 選取所需的成員資格設定。 若為需要啟用的角色，請選擇 [ **符合資格**]。 依預設，使用者會永久符合資格，但您也可以設定使用者資格的開始和結束時間。 完成之後，請按 [儲存並加入] 以完成角色指派。
 
@@ -101,7 +101,7 @@ https://graph.microsoft.com/beta/privilegedAccess/aadroles/roleAssignmentRequest
 }
 ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [使用雲端群組來管理角色指派](roles-groups-concept.md)
 - [對指派給雲端群組的角色進行疑難排解](roles-groups-faq-troubleshooting.md)

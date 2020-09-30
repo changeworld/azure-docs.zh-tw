@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: fd35f297e88c37aec39938b0bfd60288e591a62c
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: ddfca965ea32ca726df39f894ba45f9580225d9d
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936073"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91542456"
 ---
 #    <a name="entity-recognition-cognitive-skill"></a>實體辨識認知技能
 
@@ -47,7 +47,7 @@ Microsoft.Skills.Text.EntityRecognitionSkill
 
 | 輸入名稱      | 描述                   |
 |---------------|-------------------------------|
-| `languageCode`    | 選擇性。 預設值為 `"en"`。  |
+| `languageCode`    | 選擇性。 預設為 `"en"`。  |
 | `text`          | 要分析的文字。          |
 
 ## <a name="skill-outputs"></a>技能輸出
@@ -55,7 +55,7 @@ Microsoft.Skills.Text.EntityRecognitionSkill
 > [!NOTE]
 > 並非所有的實體類別都支援所有語言。 `"Person"` `"Location"` `"Organization"` 上述語言的完整清單支援、和實體類別目錄類型。 只有 _de_、 _en_、 _es_、 _fr_和 _zh-hans_ 支援解壓縮 `"Quantity"` 、 `"Datetime"` 、 `"URL"` 和 `"Email"` 類型。 如需詳細資訊，請參閱 [文字分析 API 的語言和區域支援](../cognitive-services/text-analytics/language-support.md)。  
 
-| 輸出名稱      | 描述                   |
+| 輸出名稱      | 說明                   |
 |---------------|-------------------------------|
 | `persons`       | 字串陣列，其中每個字串代表人員名稱。 |
 | `locations`  | 字串陣列，其中每個字串代表位置。 |
@@ -187,7 +187,7 @@ Microsoft.Skills.Text.EntityRecognitionSkill
 }
 ```
 
-請注意，在這項技能的輸出中，針對實體所傳回的位移會直接從 [文字分析 API](../cognitive-services/text-analytics/overview.md)傳回，這表示如果您要使用它們來編制原始字串的索引，您應該使用 .net 中的 [system.globalization.stringinfo>](/dotnet/api/system.globalization.stringinfo?view=netframework-4.8) 類別，以便將正確的內容解壓縮。  [您可以在這裡找到更多詳細資料。](../cognitive-services/text-analytics/concepts/text-offsets.md)
+請注意，在這項技能的輸出中，針對實體所傳回的位移會直接從 [文字分析 API](../cognitive-services/text-analytics/overview.md)傳回，這表示如果您要使用它們來編制原始字串的索引，您應該使用 .net 中的 [system.globalization.stringinfo>](/dotnet/api/system.globalization.stringinfo) 類別，以便將正確的內容解壓縮。  [您可以在這裡找到更多詳細資料。](../cognitive-services/text-analytics/concepts/text-offsets.md)
 
 ## <a name="error-cases"></a>錯誤案例
 如果文件的語言程式碼不受支援，則會傳回錯誤，且不會擷取任何實體。

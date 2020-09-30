@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1c3143dac79b37ff6dac04856311394440dec9a1
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c6c39fd6ceb9e5623d2b857ce8196ef29e73d78a
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91317407"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91542303"
 ---
 # <a name="use-cloud-groups-to-manage-role-assignments-in-azure-active-directory-preview"></a>使用雲端群組來管理 Azure Active Directory (預覽中的角色指派) 
 
@@ -58,7 +58,6 @@ Azure AD 可讓您使用名為 isAssignableToRole 的新屬性（稱為群組）
 
 ## <a name="known-issues"></a>已知問題
 
-- 透過群組指派角色時，您無法建立或修改動態群組。
 - **啟用受管理使用者登入功能的分段推出**不支援透過群組進行指派。
 - *僅 Azure AD P2 授權客戶*：不要透過 Azure AD 和 PRIVILEGED IDENTITY MANAGEMENT (PIM) ，將群組指派為使用中角色。 具體而言，在建立角色時，請勿將角色指派給角色可指派的群組， *並* 在稍後使用 PIM 將角色指派給群組。 這會導致使用者無法在 PIM 中看到其作用中角色指派，以及無法移除該 PIM 指派的問題。 符合資格的指派在此案例中不會受到影響。 如果您嘗試進行此指派，您可能會看到非預期的行為，例如：
   - 角色指派的結束時間可能會不正確地顯示。

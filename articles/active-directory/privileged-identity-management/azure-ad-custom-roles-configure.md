@@ -1,5 +1,5 @@
 ---
-title: 設定 Azure AD 自訂角色 Privileged Identity Management （PIM）
+title: '設定 Azure AD 自訂角色-Privileged Identity Management (PIM) '
 description: 如何在 Privileged Identity Management (PIM) 中設定 Azure AD 自訂角色
 services: active-directory
 documentationcenter: ''
@@ -16,19 +16,19 @@ ms.date: 08/06/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64a8cab82511a495ed2eef444b05dc534c0f1891
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 8745482ed551108044bbe5e2b2f191ad46d7a441
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422040"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91538442"
 ---
 # <a name="configure-azure-ad-custom-roles-in-privileged-identity-management"></a>在 Privileged Identity Management 中設定 Azure AD 自訂角色
 
 特殊許可權角色管理員可變更在使用者啟用對自訂角色的指派時所套用的角色設定，並且可為指派自訂角色的其他應用程式管理員變更此設定。
 
 > [!NOTE]
-> 在預覽期間，Azure AD 自訂角色不會與內建目錄角色整合。 在功能正式推出後，角色管理就會在內建角色體驗中進行。 如果您看到下列橫幅，這些角色應該[以內建角色的體驗](pim-how-to-activate-role.md)進行管理，本文並不適用：
+> 在預覽期間，Azure AD 自訂角色不會與內建目錄角色整合。 在功能正式推出後，角色管理就會在內建角色體驗中進行。 如果您看到下列橫幅，這些角色應該 [在內建角色體驗中](pim-how-to-activate-role.md) 進行管理，而本文並不適用：
 >
 > [![選取 Azure AD > Privileged Identity Management](media/pim-how-to-add-role-to-user/pim-new-version.png)](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
 
@@ -44,7 +44,7 @@ ms.locfileid: "87422040"
 1. 選取 [設定]**** 以開啟 [設定]**** 頁面。 選取您要設定其設定的角色。
 1. 選取 [編輯]**** 以開啟 [角色設定]**** 頁面。
 
-    ![開啟 Azure AD 自訂角色以編輯設定](./media/azure-ad-custom-roles-configure/edit-settings.png)
+    ![顯示 [角色設定詳細資料] 頁面的螢幕擷取畫面，其中已選取 [編輯] 動作。](./media/azure-ad-custom-roles-configure/edit-settings.png)
 
 ## <a name="role-settings"></a>角色設定
 
@@ -56,13 +56,13 @@ ms.locfileid: "87422040"
 
 您可以從下列*合格*指派持續時間選項中選擇一個。
 
-- **允許永久合格的指派**：系統管理員可以指派永久的合格成員資格。
-- **合格指派的到期**時間：系統管理員可以要求所有合格指派都具有指定的開始和結束日期。
+- **允許永久合格的指派**：系統管理員可以指派永久符合資格的成員資格。
+- **符合合格指派之後的期限**：系統管理員可以要求所有符合資格的指派都有指定的開始和結束日期。
 
 此外，您可以從下列*有效*指派持續時間選項中選擇一個：
 
-- **允許永久有效的指派**：系統管理員可以指派永久有效的成員資格。
-- 作用中**指派的到期**時間：系統管理員可以要求所有作用中的指派都具有指定的開始和結束日期。
+- **允許永久有效的指派**：系統管理員可以指派永久的有效成員資格。
+- **有效指派的到期**時間：系統管理員可以要求所有使用中的指派都有指定的開始和結束日期。
 
 ### <a name="require-azure-multi-factor-authentication"></a>要求使用 Azure Multi-Factor Authentication
 

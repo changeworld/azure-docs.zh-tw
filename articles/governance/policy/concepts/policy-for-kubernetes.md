@@ -1,14 +1,14 @@
 ---
 title: 瞭解 Kubernetes 的 Azure 原則
 description: 了解 Azure 原則如何使用 Rego 和 Open Policy Agent 來管理在 Azure 或內部部署中執行 Kubernetes 的叢集。
-ms.date: 09/22/2020
+ms.date: 09/29/2020
 ms.topic: conceptual
-ms.openlocfilehash: bb4345426eddb8b0b5250980eb46cf0509a22cff
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 67c6af4842ea1f404468497930b08c36ecd1abb9
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91369989"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540246"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters"></a>了解適用於 Kubernetes 叢集的 Azure 原則 \(部分機器翻譯\)
 
@@ -56,7 +56,7 @@ Azure 原則會延伸 [Gatekeeper](https://github.com/open-policy-agent/gatekeep
 - 每一訂用帳戶不符合規範的記錄數目上限： **1000000**
 - 不支援在 Azure 原則附加元件之外安裝閘道管理員。 先卸載先前的閘道管理員安裝所安裝的任何元件，再啟用 Azure 原則附加元件。
 - [不符合規範的原因](../how-to/determine-non-compliance.md#compliance-reasons)不適用於 `Microsoft.Kubernetes.Data` 
-   [資源提供者模式](./definition-structure.md#resource-provider-modes)
+   [資源提供者模式](./definition-structure.md#resource-provider-modes)。 使用 [元件詳細資料](../how-to/determine-non-compliance.md#component-details-for-resource-provider-modes)。
 
 下列限制僅適用于 AKS 的 Azure 原則附加元件：
 
@@ -379,7 +379,7 @@ kubectl get pods -n gatekeeper-system
 
 ## <a name="assign-a-built-in-policy-definition"></a>指派內建原則定義
 
-若要將原則定義指派給您的 Kubernetes 叢集，必須獲指派適當的角色型存取控制 (RBAC) 原則指派作業。 Azure 內建角色的 **資源原則參與者** 和 **擁有** 者具有這些作業。 若要深入了解，請參閱 [Azure 原則中的 RBAC 權限](../overview.md#rbac-permissions-in-azure-policy)。
+若要將原則定義指派給您的 Kubernetes 叢集，您必須將適當的 Azure 角色型存取控制指派給您 (Azure RBAC) 原則指派作業。 Azure 內建角色的 **資源原則參與者** 和 **擁有** 者具有這些作業。 若要深入瞭解，請參閱 [Azure 原則中的 AZURE RBAC 許可權](../overview.md#azure-rbac-permissions-in-azure-policy)。
 
 使用 Azure 入口網站搭配下列步驟，尋找用於管理叢集的內建原則定義：
 
@@ -430,7 +430,7 @@ kubectl get pods -n gatekeeper-system
 > [!NOTE]
 > 雖然叢集管理員可能具備建立和更新 Azure 原則附加元件所安裝之條件約束範本和條件約束資源的權限，但這些不是支援的案例，因為手動更新會遭到覆寫。 Gatekeeper 會繼續評估安裝附加元件並指派 Azure 原則的原則定義之前已存在的原則。
 
-每隔 15 分鐘，附加元件就會呼叫叢集的完整掃描。 在收集完整掃描的詳細資料以及嘗試變更叢集的任何即時評估 (由 Gatekeeper 執行) 之後，此附加元件會將結果回報給 Azure 原則以納入[合規性詳細資料](../how-to/get-compliance-data.md)，例如任何 Azure 原則指派。 在稽核週期期間，只會傳回作用中原則指派的結果。 稽核結果也可以視為失敗條件約束 [狀態] 欄位中所列的[違規](https://github.com/open-policy-agent/gatekeeper#audit)。 如需 _不符合規範_ 之資源的詳細資訊，請參閱 [資源提供者模式的合規性詳細資料](../how-to/determine-non-compliance.md#compliance-details-for-resource-provider-modes)。
+每隔 15 分鐘，附加元件就會呼叫叢集的完整掃描。 在收集完整掃描的詳細資料以及嘗試變更叢集的任何即時評估 (由 Gatekeeper 執行) 之後，此附加元件會將結果回報給 Azure 原則以納入[合規性詳細資料](../how-to/get-compliance-data.md)，例如任何 Azure 原則指派。 在稽核週期期間，只會傳回作用中原則指派的結果。 稽核結果也可以視為失敗條件約束 [狀態] 欄位中所列的[違規](https://github.com/open-policy-agent/gatekeeper#audit)。 如需 _不符合規範_ 之資源的詳細資訊，請參閱 [資源提供者模式的元件詳細資料](../how-to/determine-non-compliance.md#component-details-for-resource-provider-modes)。
 
 > [!NOTE]
 > 在 Kubernetes 叢集 Azure 原則中，每個合規性報告都包含過去 45 分鐘內的所有違規。 時間戳記會指出違規發生的時間。

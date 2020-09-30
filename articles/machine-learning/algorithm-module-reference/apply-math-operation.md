@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: 654b10a283c4dcf5a1a1866ec51799aad45a8893
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 04ce45f428604275696d83938708bcee0c6c023f
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90898889"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91536761"
 ---
 # <a name="apply-math-operation"></a>套用數學運算
 
@@ -22,11 +22,11 @@ ms.locfileid: "90898889"
 
 使用「套用數學運算」來建立在輸入資料集中套用至數值資料行的計算。 
 
-支援的數學運算包括一般算術函式，例如乘法和除法、三角函數、各種四捨五入函數，以及資料科學中使用的特殊函式，例如 gamma 和 error 函數。  
+數學運算包括算術函式、三角函數、舍入函式，以及在資料科學中使用的特殊函式，例如 gamma 和 error 函數。  
 
 在您定義作業並執行管線之後，這些值會加入至您的資料集。 根據您設定模組的方式，您可以：
 
-+ 將結果附加至資料集。 當您驗證作業的結果時，這會特別有用。
++ 將結果附加至您的資料集 (在確認作業) 的結果時很有用。
 + 將資料行值取代為新的計算值。
 + 為結果產生新的資料行，而不顯示原始資料。 
 
@@ -55,7 +55,7 @@ ms.locfileid: "90898889"
 -   [三角](#trigonometric-functions)  
   
      **三角**分類包含所有標準三角函數。 例如，您可以將弧度轉換為度數，或計算函數，例如弧度或度數的正切函數。
-     這些函式是一元的，也就是說，它們會採用單一資料行的值做為輸入、套用三角函數，然後將值的資料行傳回做為結果。  因此，您必須確定輸入資料行是適當的類型，且包含指定作業的正確類型值。   
+     這些函式是一元的，也就是說，它們會採用單一資料行的值做為輸入、套用三角函數，然後將值的資料行傳回做為結果。 請確定輸入資料行是適當的類型，且包含指定作業的正確數值型別。   
 
 ## <a name="how-to-configure-apply-math-operation"></a>如何設定套用數學運算  
 
@@ -74,7 +74,7 @@ ms.locfileid: "90898889"
     - 您選擇的任何資料行都必須是數值資料類型。 
     - 資料的範圍必須適用于所選的數學運算。 否則可能會發生錯誤或 NaN (不是數字) 結果。 例如，Ln (-1.0) 是不正確作業，而且會產生值 `NaN` 。
   
-1.  按一下 [ **類別** ]，選取要執行的數學運算 **類型** 。
+1.  選取 [ **類別** ]，以選取要執行的數學運算 **類型** 。
     
 1. 從該類別的清單中選擇特定的作業。
   
@@ -95,7 +95,7 @@ ms.locfileid: "90898889"
 -   **等於 (Col2_Col1) **，表示您已針對 Col1 測試 Col2。  
 -   **等於 (Col2_ $ 10) **，表示您比較資料行2與常數10。  
 
-即使您使用 [ **就地** ] 選項，也不會刪除或變更來源資料。原始資料集中的資料行仍然可在設計工具中使用。 若要查看原始資料，您可以連接 [ [加入資料行](add-columns.md) ] 模組，並將它聯結至 [套用 **數學運算**] 的輸出。  
+即使您使用 **就地** 選項，也不會刪除或變更來源資料。原始資料集中的資料行仍然可在設計工具中使用。 若要查看原始資料，您可以連接 [ [加入資料行](add-columns.md) ] 模組，並將它聯結至 [套用 **數學運算**] 的輸出。  
     
 ## <a name="basic-math-operations"></a>基本數學運算 
 
@@ -113,7 +113,7 @@ ms.locfileid: "90898889"
 
 選取包含點座標的資料行。 針對對應至 x 座標的第二個引數，您也可以指定常數。  
 
-對應至 Matlab 中的 ATAN2 函數。  
+對應至 MATLAB 中的 ATAN2 函數。  
 
 ### <a name="conj"></a>Conj
 
@@ -124,15 +124,15 @@ ms.locfileid: "90898889"
 針對所選資料行中的值計算 cube 根。  
 
 ### <a name="doublefactorial"></a>DoubleFactorial  
- 針對所選資料行中的值計算雙階乘。 雙階乘是一般階乘函數的延伸，表示為 x!!。  
+ 針對所選資料行中的值計算雙階乘。 雙階乘是一般階乘函數的延伸，表示為 `x!!`。  
 
 ### <a name="eps"></a>Eps
 
-傳回目前的值與次高雙精度數字之間的差距大小。 對應至 Matlab 中的 EPS 函數。  
+傳回目前的值與次高雙精度數字之間的差距大小。 對應至 MATLAB 中的 EPS 函數。  
   
 ### <a name="exp"></a>Exp
 
-傳回所選資料行中值的乘冪。 這與 Excel EXP 函數相同。  
+傳回所選資料行中值的乘冪。 此函數與 Excel EXP 函數相同。  
 
 ### <a name="exp2"></a>Exp2
 
@@ -170,11 +170,11 @@ ms.locfileid: "90898889"
 
 ### <a name="log10"></a>Log10
 
-傳回所選資料行的以10為底數的對數值。  
+傳回所選資料行以10為底數的值。  
 
 ### <a name="log2"></a>Log2
 
-傳回所選資料行的基底2對數值。  
+傳回所選資料行的底數（以2為底數）值。  
 
 ### <a name="nthroot"></a>NthRoot
 使用您指定的 n，傳回值的第 n 個根。  
@@ -360,7 +360,7 @@ Azure Machine Learning 設計工具支援各種舍入作業。 對於許多作�
 
 傳回互補誤差函數的值。  
 
-Erfc 定義為1– erf (x) 。  
+`Erfc` 定義為1– erf (x) 。  
 
 ### <a name="erfscaled"></a>ErfScaled
 
@@ -370,7 +370,7 @@ Erfc 定義為1– erf (x) 。
 
 ### <a name="erfinverse"></a>ErfInverse
 
-傳回反向 erf 函數的值。  
+傳回反向函數的值 `erf` 。  
 
 ### <a name="exponentialintegralein"></a>ExponentialIntegralEin
 

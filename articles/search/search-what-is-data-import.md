@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 50c95dc9d045711cb6968b98957d255b4ca73d2c
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 148310419ad4f760219003514dbc078b7c675be6
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88932758"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91538782"
 ---
 # <a name="data-import-overview---azure-cognitive-search"></a>資料匯入總覽-Azure 認知搜尋
 
@@ -35,7 +35,7 @@ ms.locfileid: "88932758"
 您可以使用下列 API，將單一或多份文件載入索引中：
 
 + [新增、更新或刪除文件 (REST API)](/rest/api/searchservice/AddUpdate-or-Delete-Documents)
-+ [indexAction class](/dotnet/api/microsoft.azure.search.models.indexaction?view=azure-dotnet) 或 [indexBatch class](/dotnet/api/microsoft.azure.search.models.indexbatch?view=azure-dotnet) 
++ [indexAction class](/dotnet/api/microsoft.azure.search.models.indexaction) 或 [indexBatch class](/dotnet/api/microsoft.azure.search.models.indexbatch) 
 
 目前沒有工具可支援透過入口網站推送資料。
 
@@ -52,7 +52,7 @@ ms.locfileid: "88932758"
 在 .NET SDK 中，將您的資料封裝到 `IndexBatch` 物件中。 `IndexBatch`會封裝物件的集合 `IndexAction` ，其中每個物件都包含一份檔和一個屬性，告訴 Azure 認知搜尋該檔要執行什麼動作。 如需程式碼範例，請參閱 [c # 快速入門](search-get-started-dotnet.md)。
 
 
-| @search.action | 描述 | 每個文件的必要欄位 | 備註 |
+| @search.action | 說明 | 每個文件的必要欄位 | 備註 |
 | -------------- | ----------- | ---------------------------------- | ----- |
 | `upload` |`upload` 動作類似「upsert」，如果是新文件，就會插入該文件，如果文件已經存在，就會更新/取代它。 |索引鍵以及其他任何您想要定義的欄位 |在更新/取代現有文件時，要求中未指定的欄位會將其欄位設定為 `null`。 即使先前已將欄位設定為非 null 值也是一樣。 |
 | `merge` |使用指定的欄位更新現有文件。 如果文件不存在於索引中，合併就會失敗。 |索引鍵以及其他任何您想要定義的欄位 |您在合併中指定的任何欄位將取代文件中現有的欄位。 在 .NET SDK 中，這包括類型的欄位 `DataType.Collection(DataType.String)` 。 在 REST API 中，這包括類型的欄位 `Collection(Edm.String)` 。 例如，如果文件包含欄位 `tags` 且值為 `["budget"]`，而您使用值 `["economy", "pool"]` 針對 `tags` 執行合併，則 `tags` 欄位最後的值會是 `["economy", "pool"]`。 而不會是 `["budget", "economy", "pool"]`。 |
@@ -98,7 +98,7 @@ POST 的格式相同，但 `api-version` 在查詢字串參數中。
 > [!TIP]
 > 許多 [Azure 認知搜尋程式碼範例](https://github.com/Azure-Samples/?utf8=%E2%9C%93&query=search) 都包含內嵌或立即可用的資料集，並提供簡單的方法來開始著手。 入口網站也會提供範例索引子和資料來源 (由稱為 "realestate-us-sample" 的小型不動產資料集所組成)。 當您在範例資料來源上執行預先設定的索引子時，系統會建立索引並隨著文件載入，而後即可在 [搜尋總管] 中或由您撰寫的程式碼查詢索引。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 + [索引子概觀](search-indexer-overview.md)
 + [入口網站逐步解說：建立、載入、查詢索引](search-get-started-portal.md)

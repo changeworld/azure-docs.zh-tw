@@ -3,20 +3,18 @@ title: 使用 Node.js 匯入語句 - LUIS
 titleSuffix: Azure Cognitive Services
 description: 了解如何使用「LUIS 撰寫 API」，從 CSV 格式的既有資料，以程式設計方式建置 LUIS 應用程式。
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18, devx-track-js
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 09/05/2019
-ms.author: diberry
-ms.openlocfilehash: 13e18e024c2200459e58474f53bed2431e3375a7
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 58eb92f4d0bc3de4671ca2ece14a178a876e4a6b
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91298216"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541031"
 ---
 # <a name="build-a-luis-app-programmatically-using-nodejs"></a>使用 Node.js 以程式設計方式建置 LUIS 應用程式
 
@@ -24,7 +22,7 @@ LUIS 提供一個具備 [LUIS](luis-reference-regions.md) 網站所有功能的�
 
 [!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * 登入 [LUIS](luis-reference-regions.md) 網站，然後在 [帳戶設定] 中尋找您的[撰寫金鑰](luis-how-to-azure-subscription.md#authoring-key)。 您可以使用此金鑰來呼叫「撰寫 API」。
 * 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/cognitive-services/)。
