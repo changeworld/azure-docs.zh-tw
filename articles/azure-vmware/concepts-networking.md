@@ -3,16 +3,16 @@ title: 概念-網路互連能力
 description: 瞭解 Azure VMware 解決方案中網路和互連能力的重要層面和使用案例。
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: 4ffcdd8ea42df127ee1480927f4fdf2eb8f137b8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: f8e9ed143d53afe2f7a24c832c69390c6ffcb36b
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91316883"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91575753"
 ---
 # <a name="azure-vmware-solution-networking-and-interconnectivity-concepts"></a>Azure VMware 解決方案網路和互連能力概念
 
-[!INCLUDE [avs-networking-description](includes/avs-networking-description.md)]
+[!INCLUDE [avs-networking-description](includes/azure-vmware-solution-networking-description.md)]
 
 互連能力的實用觀點是考慮兩種類型的 Azure VMware 解決方案私用雲端實施：
 
@@ -53,7 +53,7 @@ Azure VMware 解決方案私人雲端的使用案例包括：
 * 經常性/冷跨 vCenter vMotion
 * 內部部署至 Azure VMware 解決方案私人雲端管理存取
 
-:::image type="content" source="media/concepts/adjacency-overview-drawing-double.png" alt-text="虛擬網路和內部部署的完整私人雲端連線能力" border="false":::
+:::image type="content" source="media/concepts/adjacency-overview-drawing-double.png" alt-text="基本虛擬網路對私人雲端的連線能力" border="false":::
 
 若要完整互連能力至您的私人雲端，請啟用 ExpressRoute 全球存取範圍，然後要求授權金鑰和私用對等互連識別碼，以在 Azure 入口網站的全球存取範圍內。 授權金鑰和對等互連識別碼是用來在您的訂用帳戶中的 ExpressRoute 線路和新私人雲端的 ExpressRoute 線路之間建立全球存取範圍。 一旦連結之後，這兩個 ExpressRoute 線路會將內部部署環境之間的網路流量路由傳送至私人雲端。  請參閱教學課程，以針對要求和使用授權金鑰和對等互連識別碼的程式， [建立 ExpressRoute 全球存取範圍對等互連至私人雲端](tutorial-expressroute-global-reach-private-cloud.md) 。
 

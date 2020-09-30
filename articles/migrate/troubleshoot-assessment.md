@@ -7,12 +7,12 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/02/2020
-ms.openlocfilehash: afc7e6c1ed41661c835a811a7cbcaa6f7771328e
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: a7b463394a6919dee56e0448997dbd6c59ac9cc6
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89645638"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91576586"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>評量/相依性視覺效果疑難排解
 
@@ -52,7 +52,7 @@ ms.locfileid: "89645638"
 
 ## <a name="suggested-migration-tool-in-import-based-avs-assessment-marked-as-unknown"></a>以匯入為基礎的 AVS 評定中的建議遷移工具標示為未知
 
-針對透過 CSV 檔案匯入的電腦，和 AVS 評量中的預設遷移工具不明。 不過，對於 VMware 機器，建議使用 VMware 混合式雲端擴充功能 (HCX) 解決方案。 [深入了解](../azure-vmware/hybrid-cloud-extension-installation.md)。
+針對透過 CSV 檔案匯入的電腦，和 AVS 評量中的預設遷移工具不明。 不過，對於 VMware 機器，建議使用 VMware 混合式雲端擴充功能 (HCX) 解決方案。 [深入了解](../azure-vmware/tutorial-deploy-vmware-hcx.md)。
 
 ## <a name="linux-vms-are-conditionally-ready-in-an-azure-vm-assessment"></a>Azure VM 評量中的 Linux Vm 「有條件地就緒」
 
@@ -222,6 +222,6 @@ Azure Migrate 目前支援在「美國東部」、「東南亞」和「西歐」
 - 針對 Hyper-v Vm，系統會從 Hyper-v 主機收集作業系統資料
 - 若為實體伺服器，則會從伺服器提取。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 [建立](how-to-create-assessment.md) 或 [自訂](how-to-modify-assessment.md) 評量。

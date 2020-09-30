@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 03a32b37f5ca29c6a0dd6b810b4e097379c6c32e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9dc195f98310e63cbde06885effe86ea3c239249
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515156"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91576093"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>使用 Azure Active Directory 向 Azure Data Lake Storage Gen1 進行服務對服務驗證
 > [!div class="op_single_selector"]
@@ -63,14 +63,14 @@ Azure Data Lake Storage Gen1 使用 Azure Active Directory 進行驗證。 撰�
 5. 按一下 [新增]**** 圖示，以開啟 [新增自訂存取]**** 刀鋒視窗。 在此刀鋒視窗中，按一下 [選取使用者或群組]****，然後在 [選取使用者或群組]**** 刀鋒視窗中，尋找您稍早建立的 Azure Active Directory 應用程式。 若您需要搜尋大量的群組，請使用頂端的文字方塊來篩選群組名稱。 按一下您要新增的群組，然後按一下 [選取] ****。
    
     ![新增群組](./media/data-lake-store-authenticate-using-active-directory/adl.acl.3.png "新增群組")
-6. 按一下 [選取權限]****，選取權限及權限的指派方式 (例如預設 ACL、存取 ACL 或兩者並用)。 按一下 [確定]。
+6. 按一下 [選取權限]****，選取權限及權限的指派方式 (例如預設 ACL、存取 ACL 或兩者並用)。 按一下 [確定]  。
    
-    ![將權限指派至群組](./media/data-lake-store-authenticate-using-active-directory/adl.acl.4.png "將權限指派至群組")
+    ![[新增自訂存取] 分頁的螢幕擷取畫面，其中已叫用 [選取許可權] 選項，以及已呼叫 [確定] 選項的 [選取許可權] 分頁。](./media/data-lake-store-authenticate-using-active-directory/adl.acl.4.png "將權限指派至群組")
    
     如需 Data Lake Storage Gen1 中權限及預設/存取 ACL 的詳細資訊，請參閱 [Data Lake Storage Gen1 中的存取控制](data-lake-store-access-control.md)。
-7. 在 [新增自訂存取]**** 刀鋒視窗中，按一下 [確定]****。 新加入的群組（具有相關聯的許可權）會列在 [**存取**] 分頁中。
+7. 在 [新增自訂存取]**** 刀鋒視窗中，按一下 [確定]****。 新增的群組（具有相關聯的許可權）會列在 [ **存取** ] 分頁中。
    
-    ![將權限指派至群組](./media/data-lake-store-authenticate-using-active-directory/adl.acl.5.png "將權限指派至群組")
+    ![[存取] 分頁的螢幕擷取畫面，其中新增的群組已在 [自訂存取] 區段中呼叫。](./media/data-lake-store-authenticate-using-active-directory/adl.acl.5.png "將權限指派至群組")
 
 > [!NOTE]
 > 如果您打算將 Azure Active Directory 應用程式限制在特定資料夾中，則還需要提供根與 Azure Active Directory 應用程式相同的**執行**權限，才能透過 .NET SDK 進行檔案建立存取。
@@ -88,14 +88,14 @@ Azure Data Lake Storage Gen1 使用 Azure Active Directory 進行驗證。 撰�
 
 3. 從 [應用程式註冊] 刀鋒視窗頂端，按一下 [端點]****。
 
-    ![OAuth 權杖端點](./media/data-lake-store-authenticate-using-active-directory/oauth-token-endpoint.png "OAuth 權杖端點")
+    ![Active Directory 的螢幕擷取畫面，其中已呼叫應用程式註冊選項和 [端點] 選項。](./media/data-lake-store-authenticate-using-active-directory/oauth-token-endpoint.png "OAuth 權杖端點")
 
 4. 從端點清單，複製 OAuth 2.0 權杖端點。
 
-    ![OAuth 權杖端點](./media/data-lake-store-authenticate-using-active-directory/oauth-token-endpoint-1.png "OAuth 權杖端點")   
+    ![端點的螢幕擷取畫面，其中包含 O AUTH 2 點 O TOKEN 端點複製圖示（稱為 out）。](./media/data-lake-store-authenticate-using-active-directory/oauth-token-endpoint-1.png "OAuth 權杖端點")   
 
 ## <a name="next-steps"></a>後續步驟
-在本文中，您已建立一個 Azure AD web 應用程式，並在您使用 .NET SDK、JAVA、Python、REST API 等撰寫的用戶端應用程式中，收集您所需的資訊。您現在可以繼續進行下列文章，瞭解如何使用 Azure AD 原生應用程式先向 Data Lake Storage Gen1 進行驗證，然後再于存放區上執行其他作業。
+在本文中，您已建立 Azure AD web 應用程式，並在您使用 .NET SDK、JAVA、Python、REST API 等撰寫的用戶端應用程式中收集您需要的資訊。您現在可以繼續進行下列文章，這些文章會討論如何使用 Azure AD 原生應用程式，先向 Data Lake Storage Gen1 進行驗證，然後再于存放區上執行其他作業。
 
 * [使用 Java 向 Data Lake Storage Gen1 進行服務對服務驗證](data-lake-store-service-to-service-authenticate-java.md)
 * [使用 .NET SDK 向 Data Lake Storage Gen1 進行服務對服務驗證](data-lake-store-service-to-service-authenticate-net-sdk.md)

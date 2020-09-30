@@ -3,14 +3,14 @@ title: Azure 上的 Kubernetes 教學課程 - 更新應用程式
 description: 在本 Azure Kubernetes Service (AKS) 教學課程中，您將了解如何使用新版的應用程式程式碼來更新對 AKS 的現有應用程式部署。
 services: container-service
 ms.topic: tutorial
-ms.date: 12/19/2018
+ms.date: 09/30/2020
 ms.custom: mvc
-ms.openlocfilehash: e9981f9df31f6de21262aedc9790dbf1a7725fc7
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 6619d7c9f7d2b0cd78f3941ce431e80342b6f563
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90985354"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91576433"
 ---
 # <a name="tutorial-update-an-application-in-azure-kubernetes-service-aks"></a>教學課程：更新 Azure Kubernetes Service (AKS) 中的應用程式
 
@@ -79,7 +79,7 @@ az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginSe
 使用 [docker tag][docker-tag] 來標記映像。 將 `<acrLoginServer>` 取代為您的 ACR 登入伺服器名稱或公用登錄主機名稱，並將映像版本更新為 *:v2*，如下所示：
 
 ```console
-docker tag azure-vote-front <acrLoginServer>/azure-vote-front:v2
+docker tag mcr.microsoft.com/azuredocs/azure-vote-front:v1 <acrLoginServer>/azure-vote-front:v2
 ```
 
 現在，使用 [docker push][docker-push] 將映像上傳至您的登錄。 將 `<acrLoginServer>` 取代為您的 ACR 登入伺服器名稱。

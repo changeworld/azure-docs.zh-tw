@@ -1,5 +1,5 @@
 ---
-title: 調整 Synapse SQL 集區的計算 (Azure 入口網站)
+title: 快速入門：調整 Synapse SQL 集區的計算 (Azure 入口網站)
 description: 您可以使用 Azure 入口網站來調整 Synapse SQL 集區 (資料倉儲) 的計算。
 services: synapse-analytics
 author: Antvgski
@@ -11,12 +11,12 @@ ms.date: 04/28/2020
 ms.author: anvang
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: d944ff86cdc11c30142792c6fd15d03e3cfd4fa9
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: b8a39220bda788cf6dac0be5151c2cdf5385e342
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85212933"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570270"
 ---
 # <a name="quickstart-scale-compute-for-synapse-sql-pool-with-the-azure-portal"></a>快速入門：使用 Azure 入口網站調整 Synapse SQL 集區的計算
 

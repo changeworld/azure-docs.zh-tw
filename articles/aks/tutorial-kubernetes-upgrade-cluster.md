@@ -3,14 +3,14 @@ title: Azure 上的 Kubernetes 教學課程 - 升級叢集
 description: 在本 Azure Kubernetes Service (AKS) 教學課程中，您將了解如何將現有的 AKS 叢集升級至最新的可用 Kubernetes 版本。
 services: container-service
 ms.topic: tutorial
-ms.date: 02/25/2020
+ms.date: 09/30/2020
 ms.custom: mvc
-ms.openlocfilehash: a89e8bb42bec4323d2189ca93dfe73171c4a128c
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: 9a36e0903945a974f73187e4799e978c32f2d961
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84887989"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91576263"
 ---
 # <a name="tutorial-upgrade-kubernetes-in-azure-kubernetes-service-aks"></a>教學課程：在 Azure Kubernetes Service (AKS) 中升級 Kubernetes
 

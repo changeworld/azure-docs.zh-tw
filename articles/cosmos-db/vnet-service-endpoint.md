@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: d264ead87e7fa638830bf25fdb07983b164334b7
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 10f2b44d00361885778a523109a8fcb05dabe9dd
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83698675"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91574342"
 ---
 # <a name="access-azure-cosmos-db-from-virtual-networks-vnet"></a>從虛擬網路 (VNet) 存取 Azure Cosmos DB
 
@@ -24,9 +24,9 @@ ms.locfileid: "83698675"
 
 以下是與從虛擬網路設定存取權的一些常見問答集：
 
-### <a name="are-notebooks-and-mongo-shell-currently-compatible-with-virtual-network-enabled-accounts"></a>Notebook 和 Mongo 殼層目前是否與已啟用虛擬網路的帳戶相容？
+### <a name="are-notebooks-and-mongocassandra-shell-currently-compatible-with-virtual-network-enabled-accounts"></a>筆記本和 Mongo/Cassandra Shell 目前是否與已啟用虛擬網路的帳戶相容？
 
-VNET 存取目前不支援 [Cosmos DB 資料總管中的 Mongo 殼層整合](https://devblogs.microsoft.com/cosmosdb/preview-native-mongo-shell/) \(英文\) 和 [Jupyter Notebook 服務](https://docs.microsoft.com/azure/cosmos-db/cosmosdb-jupyter-notebooks)。 目前正在積極開發此功能。
+目前，VNET 存取不支援在 Cosmos DB 資料總管中的 [Mongo shell](https://devblogs.microsoft.com/cosmosdb/preview-native-mongo-shell/) 和 [Cassandra shell](https://devblogs.microsoft.com/cosmosdb/announcing-native-cassandra-shell-preview/) 整合，以及 [Jupyter 筆記本服務](https://docs.microsoft.com/azure/cosmos-db/cosmosdb-jupyter-notebooks)。 目前正在積極開發此功能。
 
 ### <a name="can-i-specify-both-virtual-network-service-endpoint-and-ip-access-control-policy-on-an-azure-cosmos-account"></a>是否可以在 Azure Cosmos 帳戶中同時指定虛擬網路服務端點和 IP 存取控制原則？ 
 

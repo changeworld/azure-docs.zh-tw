@@ -5,12 +5,12 @@ author: malcolmtyrrell
 ms.author: matyrr
 ms.date: 03/05/2020
 ms.topic: how-to
-ms.openlocfilehash: 529bfb61b3af7040f3656c04071683841f5abe86
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 89ec0ad40822785457e988cf9e0f9bd6d00ed81f
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88870284"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91576620"
 ---
 # <a name="get-information-about-conversions"></a>取得轉換的相關資訊
 
@@ -65,6 +65,10 @@ ms.locfileid: "88870284"
         "numMeshUsagesInScene": 236,
         "maxNodeDepth": 3
     },
+    "materialOverrides": {
+        "numOverrides": 4,
+        "numOverriddenMaterials": 4
+    },
     "outputInfo": {
         "conversionToolVersion": "3b28d840de9916f9d628342f474d38c3ab949590",
         "conversionHash": "CCDB1F7A4C09F565"
@@ -115,6 +119,13 @@ ms.locfileid: "88870284"
 * `sourceAssetFormatVersion`：來源檔案格式的版本。
 * `sourceAssetGenerator`：產生原始程式檔的工具名稱（如果有的話）。
 
+### <a name="the-materialoverrides-section"></a>*MaterialOverrides*區段
+
+本節提供將材質覆寫檔案提供給轉換服務時， [材質覆寫](override-materials.md) 的相關資訊。
+其包含下列資訊：
+* `numOverrides`：從材質覆寫檔案讀取的覆寫專案數目。
+* `numOverriddenMaterials`：已覆寫的材質數目。
+
 ### <a name="the-inputstatistics-section"></a>*InputStatistics*區段
 
 本節提供來源場景的相關資訊。 此區段中的值與建立來源模型的工具中的對等值之間通常會有不一致的情況。 這類差異是預期的，因為模型會在匯出和轉換步驟期間進行修改。
@@ -145,7 +156,7 @@ ms.locfileid: "88870284"
 * `recenteringOffset`：當 `recenterToOrigin` [ConversionSettings](configure-model-conversion.md) 中的選項啟用時，此值是將轉換的模型移回其原始位置的轉譯。
 * `boundingBox`：模型的界限。
 
-## <a name="deprecated-features"></a>已淘汰的功能
+## <a name="deprecated-features"></a>即將淘汰的功能
 
 轉換服務會將檔案 `stdout.txt` 和 `stderr.txt` 輸出容器寫入，而這些檔案是唯一的警告和錯誤來源。
 這些檔案現在已被取代。 相反地，請將 [結果](#information-about-a-conversion-the-result-file) 檔用於此用途。

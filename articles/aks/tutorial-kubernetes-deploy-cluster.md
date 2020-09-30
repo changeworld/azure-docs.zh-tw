@@ -3,14 +3,14 @@ title: Azure 上的 Kubernetes 教學課程 - 部署叢集
 description: 在本 Azure Kubernetes Service (AKS) 教學課程中，您會建立 AKS 叢集，並使用 kubectl 連線至 Kubernetes 主要節點。
 services: container-service
 ms.topic: tutorial
-ms.date: 02/25/2020
+ms.date: 09/30/2020
 ms.custom: mvc
-ms.openlocfilehash: 72c2a664b3994d53fdd3602b432df1cabdaeb3ef
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: e78dcb3b7ba503011ec83058d9ad765815ef66a8
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88002962"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91576348"
 ---
 # <a name="tutorial-deploy-an-azure-kubernetes-service-aks-cluster"></a>教學課程：部署 Azure Kubernetes Service (AKS) 叢集
 

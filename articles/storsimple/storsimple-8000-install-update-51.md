@@ -12,12 +12,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 03/05/2020
 ms.author: alkohli
-ms.openlocfilehash: 1c9d4747b227c7ff83e4c43292badd65836edfef
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 5b9958f3dd497aa612a92947b8d968439ef9d0e4
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90052166"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91575957"
 ---
 # <a name="install-update-51-on-your-storsimple-device"></a>在 StorSimple 裝置上安裝更新5。1
 
@@ -60,15 +60,15 @@ ms.locfileid: "90052166"
 
 2. 流覽至**裝置設定**  >  **裝置更新**。
 
-    ![按一下 [裝置更新]](./media/storsimple-8000-install-update-51/update2.png)
+    ![[設定] 分頁的螢幕擷取畫面，其中已呼叫 [裝置更新] 選項。](./media/storsimple-8000-install-update-51/update2.png)
 
 3. 有新的更新可用時，會顯示通知。 或者，在 [裝置更新]**** 刀鋒視窗中，按一下 [掃描更新]****。 系統會建立用來掃描可用更新的作業。 當作業成功完成時，系統會通知您。
 
-    ![按一下 [裝置更新]](./media/storsimple-8000-install-update-51/update3.png)
+    ![[設定] 分頁的螢幕擷取畫面，其中已呼叫 [裝置更新] 選項，而 [裝置更新] 分頁具有新的定期更新。](./media/storsimple-8000-install-update-51/update3.png)
 
 4. 我們建議您先檢閱版本資訊，然後再於裝置上套用更新。 若要套用更新，請按一下 [安裝更新]****。 在 [確認定期更新]**** 刀鋒視窗中，檢閱要完成的必要條件後，才能套用更新。 選取核取方塊，指出您已準備好更新裝置，然後按一下 [安裝]****。
 
-    ![按一下 [裝置更新]](./media/storsimple-8000-install-update-51/update4.png)
+    ![[裝置更新] 分頁的螢幕擷取畫面，其中包含已呼叫的 [安裝更新] 選項，以及已呼叫 [同意選項與安裝] 選項的 [確認定期更新]。](./media/storsimple-8000-install-update-51/update4.png)
 
 5. 一組必要條件檢查會隨即開始。 這些檢查包括︰
    
@@ -80,17 +80,17 @@ ms.locfileid: "90052166"
 
 7. 前置檢查成功完成後，將會建立更新作業。 成功建立更新作業時，系統將會通知您。
    
-    ![建立更新工作](./media/storsimple-8000-install-update-51/update6.png)
+    ![通知的螢幕擷取畫面，顯示「正在啟動軟體更新作業」。](./media/storsimple-8000-install-update-51/update6.png)
    
     接著，更新會套用到您的裝置上。
 
 9. 更新需要幾個小時才能完成。 隨時可選取更新工作並按一下 [詳細資料] **** 來檢視工作的詳細資料。
 
-    ![建立更新工作](./media/storsimple-8000-install-update-51/update8.png)
+    ![[裝置更新] 分頁的螢幕擷取畫面，其中已將 [下載和安裝軟體更新正在進行中] 選項稱為 [安裝更新] 分頁。](./media/storsimple-8000-install-update-51/update8.png)
 
      您也可以從 [裝置設定] > [作業]**** 來監視更新作業的進度。 在 [作業]**** 刀鋒視窗中，您可以看到更新進度。
 
-     ![建立更新工作](./media/storsimple-8000-install-update-51/update7.png)
+     ![[設定] 分頁的螢幕擷取畫面，其中包含已叫用的作業，以及顯示更新進度的 [作業] 分頁。](./media/storsimple-8000-install-update-51/update7.png)
 
 10. 作業完成後，瀏覽至 [裝置設定] > [裝置更新]****。 現在應該已更新軟體版本。
 
@@ -166,6 +166,6 @@ Perform the following steps to download and install the hotfixes.
 [!INCLUDE [storsimple-8000-install-troubleshooting](../../includes/storsimple-8000-install-troubleshooting.md)]
 -->
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 深入瞭解 [更新5.1 版本](storsimple-update51-release-notes.md)。

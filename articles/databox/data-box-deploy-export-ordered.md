@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: how-to
 ms.date: 09/10/2020
 ms.author: alkohli
-ms.openlocfilehash: 5494c2dd57220888ad846aaf69fde2f7a59353e4
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 5c3f87620c8a2a2d2438d7a5630541c0f76f9f17
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90053002"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91575566"
 ---
 # <a name="tutorial-create-export-order-for-azure-data-box-preview"></a>教學課程：建立 Azure 資料箱 (Preview 的匯出順序) 
 
@@ -60,7 +60,7 @@ Azure 資料箱是一種混合式解決方案，可讓您將資料從 Azure 移�
 
    ![建立資源](media/data-box-deploy-export-ordered/azure-data-box-export-00b.png)
 
-3. 選取 [建立]。
+3. 選取 [建立]  。
 
    ![建立 Azure 資料箱](media/data-box-deploy-export-ordered/azure-data-box-export-00c.png)
 
@@ -119,12 +119,12 @@ Azure 資料箱是一種混合式解決方案，可讓您將資料從 Azure 移�
 
    ![聯絡詳細資料](media/data-box-deploy-export-ordered/azure-data-box-export-05.png)
 
-1. 在 [ **安全性**] 中，如果您想要啟用以軟體為基礎的雙重加密，請選取 **[啟用順序的雙重加密**]。 
+1. 在 [安全性] 中，如果您想要啟用以軟體為基礎的雙重加密，請選取 [為訂單啟用雙重加密]。 
 
-   除了資料箱上之資料的 AES-256 位加密之外，還會執行以軟體為基礎的加密。
+   除了資料箱上的 AES-256 位元加密以外，也會執行以軟體為基礎的加密。
 
    > [!NOTE]
-   > 啟用此選項可能會進行訂單處理，而資料複製需要較長的時間。 建立訂單之後，您就無法變更此選項。
+   > 啟用此選項可能會進行訂單處理，且資料複製會花費較長的時間。 建立訂單之後，您就無法變更此選項。
 
    ![資料箱匯入的安全性畫面，雙重加密](media/data-box-deploy-export-ordered/azure-data-box-export-05b.png)
 
@@ -159,34 +159,34 @@ Azure 資料箱是一種混合式解決方案，可讓您將資料從 Azure 移�
 如果您選取 [ **使用 XML**檔案]，可以指定特定的容器和 blob (頁面和您想要匯出的區塊) 。 您必須遵循 [範例 xml 檔表格](#sample-xml-file) 規格來格式化 XML。 下列步驟示範如何使用 XML 檔案來匯出資料：
 
 1. 針對 [ **匯出類型**]，選取 [ **使用 XML**檔案]。 這是您的 XML 檔案，可指定您想要匯出的特定 blob 和 Azure 檔案。 若要加入 XML 檔案，請選取 [ **按一下這裡選取 xml**檔案]。
-     ![XML 檔案](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-01.png)
+     ![選取 [匯出] 選項的螢幕擷取畫面，其中的 [按一下這裡] 可選取已呼叫的 X M L 檔案選項。](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-01.png)
 
 2. 選取 [ **+ 容器** ] 以建立容器。
-    ![XML 檔案](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-02.png)
+    ![[容器] 區段的螢幕擷取畫面。](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-02.png)
 
 3. 在從 Azure 入口網站右側彈出的 [ **新增容器** ] 索引標籤中，新增容器的名稱。 名稱必須是小寫，而且您可以包含數位和虛線 '-'。 然後從下拉式清單方塊中選取 [ **公用存取層級** ]。 我們建議您選擇 **私用 (非匿名存取) ** ，以防止其他人存取您的資料。 如需有關容器存取層級的詳細資訊，請參閱 [容器存取權限](../storage/blobs/storage-manage-access-to-resources.md#grant-anonymous-users-permissions-to-containers-and-blobs)。
 
-   ![XML 檔](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-04.png)
+   ![[新增容器] 索引標籤的螢幕擷取畫面，其中顯示 [私人 (沒有選取 [匿名存取]) 選項。](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-04.png)
 
-4. 選取 [建立]。
+4. 選取 [建立]  。
 
-   ![XML 檔](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-07.png)
+   ![新 [容器] 索引標籤的螢幕擷取畫面，其中包含已呼叫的建立選項。](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-07.png)
 
    如果您的容器建立成功，您將會收到下列訊息：
 
-   ![XML 檔](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-09.png)
+   ![訊息的螢幕擷取畫面，指出「已成功建立儲存體容器」。](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-09.png)
 
 5. 選取您所建立的容器，然後按兩下它。
 
-   ![XML 檔](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-08.png)
+   ![稱為「我的私人測試容器」容器的 [容器] 區段螢幕擷取畫面。](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-08.png)
 
 6. 按兩下容器將會顯示 [容器屬性] 視圖。 您現在想要附加 (或流覽至) 您的 XML 檔案，其中包含您要匯出的 blob 和/或 Azure 檔案的清單。 選取 [上傳]  。
 
-   ![XML 檔](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-10c.png)
+   ![已呼叫 [上傳] 選項之 [上傳 blob] 對話方塊的螢幕擷取畫面。](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-10c.png)
 
 7. 您已成功將 XML 檔案新增至容器。 只有您在此 XML 中指定的 blob 和 Azure 檔案會匯出。
 
-   ![XML 檔](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-12.png)
+   ![[下一步：安全性] 選項已被呼叫的 [訂單向導] 螢幕擷取畫面。](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-12.png)
 
 ## <a name="track-the-order"></a>追蹤訂單狀態
 

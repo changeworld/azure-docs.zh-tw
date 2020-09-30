@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 12/07/2016
 ms.author: tagore
-ms.openlocfilehash: 169b12ff4fbf2471270aa912d5d1f8242371036b
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 4f2b5716e253f2810ff953a10c879574c6a6c342
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223732"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91576654"
 ---
 # <a name="how-to-configure-cloud-services"></a>如何設定雲端服務
 
@@ -46,9 +46,9 @@ ms.locfileid: "86223732"
 
 ## <a name="monitoring"></a>監視
 
-您可以將警示新增至雲端服務。 按一下 [**設定**] [  >  **警示規則**] [  >  **新增警示**]。
+您可以將警示新增至雲端服務。 按一下 [**設定**  >  **警示規則**  >  **新增警示**]。
 
-![具有反白顯示的 [警示規則] 選項的 [設定] [流覽] 的螢幕擷取畫面，並以紅色概述，而 [新增警示] 選項以紅色標示](./media/cloud-services-how-to-configure-portal/cs-alerts.png)
+![醒目提示 [警示規則] 選項的 [設定] 的螢幕擷取畫面，其中反白顯示並以紅色標示，並以紅色顯示 [新增警示] 選項。](./media/cloud-services-how-to-configure-portal/cs-alerts.png)
 
 您可以從這裡設定警示。 您可以使用 [計量]**** 下拉式方塊，以設定下列資料類型的警示。
 
@@ -58,11 +58,11 @@ ms.locfileid: "86223732"
 * 網路輸出
 * CPU 百分比
 
-![[新增警示規則] 窗格的螢幕擷取畫面，其中包含所有設定選項組。](./media/cloud-services-how-to-configure-portal/cs-alert-item.png)
+![[新增警示規則] 窗格的螢幕擷取畫面，其中已設定所有設定選項。](./media/cloud-services-how-to-configure-portal/cs-alert-item.png)
 
 ### <a name="configure-monitoring-from-a-metric-tile"></a>從計量圖格設定監視
 
-**Settings**  >  您可以在雲端服務的 [**監視**] 區段中，按一下其中一個計量磚，而不是使用 [設定] [**警示規則**]。
+**Settings**  >  您可以在雲端服務的 [**監視**] 區段中，按一下其中一個計量圖格，而不是使用設定**警示規則**。
 
 ![雲端服務監視](./media/cloud-services-how-to-configure-portal/cs-monitoring.png)
 
@@ -101,9 +101,9 @@ ms.locfileid: "86223732"
 ## <a name="next-steps"></a>後續步驟
 
 * 了解如何 [部署雲端服務](cloud-services-how-to-create-deploy-portal.md)。
-* 設定[自訂功能變數名稱](cloud-services-custom-domain-name-portal.md)。
+* 設定 [自訂功能變數名稱](cloud-services-custom-domain-name-portal.md)。
 * [管理您的雲端服務](cloud-services-how-to-manage-portal.md)。
-* 設定[TLS/SSL 憑證](cloud-services-configure-ssl-certificate-portal.md)。
+* 設定 [TLS/SSL 憑證](cloud-services-configure-ssl-certificate-portal.md)。
 
 
 

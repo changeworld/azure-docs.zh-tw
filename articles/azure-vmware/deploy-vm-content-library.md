@@ -3,12 +3,12 @@ title: 建立內容庫以在 Azure VMware 解決方案中部署 Vm
 description: 建立內容庫，以在 Azure VMware 解決方案私人雲端中部署 VM。
 ms.topic: how-to
 ms.date: 09/21/2020
-ms.openlocfilehash: a8e2f1911899e659724760cff514a33c8f0740a5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 3a1b0a091dcdf9a225b4bf91ec83f542c2310285
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91342714"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91575816"
 ---
 # <a name="create-a-content-library-to-deploy-vms-in-azure-vmware-solution"></a>建立內容庫以在 Azure VMware 解決方案中部署 Vm
 
@@ -92,7 +92,7 @@ ms.locfileid: "91342714"
 
 ## <a name="next-steps"></a>後續步驟
 
-如果您打算使用混合式雲端擴充功能 (HCX) 將 VM 工作負載遷移至私人雲端，請使用[安裝適用於 Azure VMware Solution 的 HCX](hybrid-cloud-extension-installation.md)程序。
+如果您打算使用混合式雲端擴充功能 (HCX) 將 VM 工作負載遷移至私人雲端，請使用[安裝適用於 Azure VMware Solution 的 HCX](tutorial-deploy-vmware-hcx.md)程序。
 
 <!-- LINKS - external-->
 

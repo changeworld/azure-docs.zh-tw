@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: how-to
 ms.date: 05/20/2020
 ms.author: alkohli
-ms.openlocfilehash: 7b069d1bf16e8cbf4dfc245fbb3c66863cd0b994
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: c4b3479e5728c32e66bc40f950bc948bf61dce42
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90055561"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91575158"
 ---
 # <a name="use-self-managed-shipping-for-azure-data-box-disk-in-the-azure-portal"></a>在 Azure 入口網站中使用 Azure 資料箱磁碟的自我管理寄送
 
@@ -37,13 +37,13 @@ ms.locfileid: "90055561"
 
 1. 在您的 Azure 資料箱磁碟訂單中，於 [連絡人詳細資料] 下，選取 [+ 新增交貨地址]。
 
-   ![自我管理寄送](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-1.png)
+   ![訂單向導的螢幕擷取畫面，其中顯示已叫用 [新增送貨位址] 選項的 [連絡人詳細資料] 步驟。](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-1.png)
 
 2. 選擇出貨類型時，選取 [自我管理寄送] 選項。 只有您的所在區域支援時 (如必要條件中所述)，此選項才可供使用。
 
 3. 在您提供交貨地址之後，必須驗證該地址並完成您的訂單。
 
-   ![自我管理寄送](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-2.png)
+   ![[新增交貨位址] 對話方塊的螢幕擷取畫面，其中包含 [使用隨附選項] 和 [新增交貨位址] 選項。](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-2.png)
 
 4. 一旦裝置已備妥且您收到電子郵件通知，您就可以安排取貨。 在您的 Azure 資料箱磁碟訂單中，移至 [概觀]，然後選取 [排程取貨]。
 
@@ -55,7 +55,7 @@ ms.locfileid: "90055561"
 
 6. 排程裝置取貨時間後，您便能夠在 [安排 Azure 的取貨] 中檢視您的授權碼。
 
-   ![檢視您的授權碼](media\data-box-disk-portal-customer-managed-shipping\data-box-disk-authcode-01b.png)
+   ![[排程收取 Azure] 對話方塊的螢幕擷取畫面，其中包含已叫用之取貨文字方塊的授權碼。](media\data-box-disk-portal-customer-managed-shipping\data-box-disk-authcode-01b.png)
 
    請記下此 [授權碼]。
 
@@ -78,7 +78,7 @@ ms.locfileid: "90055561"
 
 9. 如果您已收到送貨預約，則現在訂單在 Azure 入口網站中應該是 [已就緒，可在 Azure 資料中心收貨] 狀態。
 
-   ![檢視您的授權碼](media\data-box-disk-portal-customer-managed-shipping\data-box-disk-authcode-dropoff-02b.png)
+   ![[新增交貨位址] 對話方塊的螢幕擷取畫面，其中包含 [使用選項出貨] 和 [新增寄送位址] 選項稱為 out。](media\data-box-disk-portal-customer-managed-shipping\data-box-disk-authcode-dropoff-02b.png)
 
 10. 在驗證您的識別碼和授權碼，並將裝置送貨至資料中心後，訂單狀態應為 [已收到]。
 

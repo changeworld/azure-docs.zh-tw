@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 08/28/2020
-ms.openlocfilehash: 469620456fecb7c0cb398988c4a4fc25da97f863
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 82a109dd5c2813861e21e11aa40774b6b868cfe3
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91357704"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91576178"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>使用自動容錯移轉群組可以啟用多個資料庫透明且協調的容錯移轉
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -76,9 +76,9 @@ ms.locfileid: "91357704"
   
 - **初始植入**
 
-  將資料庫、彈性集區或受控實例新增至容錯移轉群組時，會在資料複寫開始之前先進行初始植入階段。 初始植入階段是最長且最昂貴的作業。 初始植入完成之後，資料就會進行同步處理，然後只複寫後續的資料變更。 完成初始植入所需的時間取決於您的資料大小、複寫的資料庫數目，以及容錯移轉群組中的實體之間的連結速度。 在正常情況下，一般的植入速度為每小時 50-500 GB SQL Database，以及 18-35 GB （SQL 受控執行個體）。 所有資料庫都會以平行方式執行植入。 您可以使用指定的植入速度，以及資料庫數目和資料大小總計，以估計初始植入階段在資料複寫開始之前將花費多久時間。
+  將資料庫、彈性集區或受控實例新增至容錯移轉群組時，會在資料複寫開始之前先進行初始植入階段。 初始植入階段是最長且最昂貴的作業。 初始植入完成之後，資料就會進行同步處理，然後只複寫後續的資料變更。 完成初始植入所需的時間取決於您的資料大小、複寫的資料庫數目，以及容錯移轉群組中的實體之間的連結速度。 在正常情況下，可能的植入速度為每小時 500 GB （SQL Database），最多可達 360 GB （SQL 受控執行個體）。 所有資料庫都會以平行方式執行植入。
 
-  針對 SQL 受控執行個體，在評估初始植入階段的時間時，也必須考慮兩個實例之間的 Express Route 連結速度。 如果兩個實例之間的連結速度低於所需的速度，種子的時間可能會受到影響。 您可以使用所述的植入速度、資料庫數目、資料大小總計，以及在資料複寫開始之前估計初始植入階段所花費的時間長度的連結速度。 例如，針對單一 100 GB 的資料庫，如果連結可以每小時推送 35 GB，則初始植入階段將需要 2.8-5.5 小時的任何時間。 如果連結每小時只能傳送 10 GB，則植入 100 GB 的資料庫大約需要10小時。 如果有多個要複寫的資料庫，則會以平行方式執行植入，並在結合緩慢的連結速度時，初始植入階段可能需要更長的時間，特別是當平行植入所有資料庫中的資料超過可用的連結頻寬時。 如果兩個實例之間的網路頻寬受到限制，而您要將多個受控實例新增至容錯移轉群組，請考慮將多個受控實例依序逐一新增至容錯移轉群組。
+  針對 SQL 受控執行個體，請在預估初始植入階段的時間時，考慮兩個實例之間的快速路由連結速度。 如果兩個實例之間的連結速度低於所需的速度，種子的時間可能會受到影響。 您可以使用所述的植入速度、資料庫數目、資料大小總計，以及在資料複寫開始之前估計初始植入階段所花費的時間長度的連結速度。 例如，針對單一 100 GB 的資料庫，如果連結可以每小時推送 84 GB，且沒有植入其他資料庫，則初始植入階段大約需要1.2 小時的時間。 如果連結每小時只能傳送 10 GB，則植入 100 GB 的資料庫大約需要10小時。 如果有多個要複寫的資料庫，則會以平行方式執行植入，並在結合緩慢的連結速度時，初始植入階段可能需要更長的時間，特別是當平行植入所有資料庫中的資料超過可用的連結頻寬時。 如果兩個實例之間的網路頻寬受到限制，而您要將多個受控實例新增至容錯移轉群組，請考慮將多個受控實例依序逐一新增至容錯移轉群組。 如果兩個受管理的實例之間有適當大小的閘道 SKU，而且如果公司網路頻寬允許它，就可以達到最高達 360 GB 一小時的速度。  
 
 - **DNS 區域**
 
@@ -232,6 +232,10 @@ ms.locfileid: "91357704"
 > 在子網中建立的第一個受控實例會針對相同子網中的所有後續實例，決定 DNS 區域。 這表示來自相同子網的兩個實例不能屬於不同的 DNS 區域。
 
 如需有關在與主要實例相同的 DNS 區域中建立次要 SQL 受控執行個體的詳細資訊，請參閱 [建立次要受控實例](../managed-instance/failover-group-add-instance-tutorial.md#create-a-secondary-managed-instance)。
+
+### <a name="using-geo-paired-regions"></a>使用地理配對區域
+
+基於效能考慮，將兩個受控實例部署到 [配對的區域](../../best-practices-availability-paired-regions.md) 。 相較于未配對的區域，位於地理配對區域中的受控實例會有更好的效能。 
 
 ### <a name="enabling-replication-traffic-between-two-instances"></a>在兩個實例之間啟用複寫流量
 
@@ -415,7 +419,7 @@ CREATE LOGIN foo WITH PASSWORD = '<enterStrongPasswordHere>', SID = <login_sid>;
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-| 命令 | 說明 |
+| Command | 描述 |
 | --- | --- |
 | [az sql failover-group create](/cli/azure/sql/failover-group#az-sql-failover-group-create) |此命令會建立容錯移轉群組，並同時在主要和次要伺服器上註冊|
 | [az sql 容錯移轉-群組刪除](/cli/azure/sql/failover-group#az-sql-failover-group-delete) | 從伺服器移除容錯移轉群組 |
@@ -425,7 +429,7 @@ CREATE LOGIN foo WITH PASSWORD = '<enterStrongPasswordHere>', SID = <login_sid>;
 
 # <a name="rest-api"></a>[Rest API](#tab/rest-api)
 
-| API | 說明 |
+| API | 描述 |
 | --- | --- |
 | [建立或更新容錯移轉群組](https://docs.microsoft.com/rest/api/sql/failovergroups/createorupdate) | 建立或更新容錯移轉群組 |
 | [刪除容錯移轉群組](https://docs.microsoft.com/rest/api/sql/failovergroups/delete) | 從伺服器移除容錯移轉群組 |
@@ -453,7 +457,7 @@ CREATE LOGIN foo WITH PASSWORD = '<enterStrongPasswordHere>', SID = <login_sid>;
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-| 命令 | 說明 |
+| Command | 描述 |
 | --- | --- |
 | [az sql failover-group create](/cli/azure/sql/failover-group#az-sql-failover-group-create) |此命令會建立容錯移轉群組，並同時在主要和次要伺服器上註冊|
 | [az sql 容錯移轉-群組刪除](/cli/azure/sql/failover-group#az-sql-failover-group-delete) | 從伺服器移除容錯移轉群組 |
@@ -463,7 +467,7 @@ CREATE LOGIN foo WITH PASSWORD = '<enterStrongPasswordHere>', SID = <login_sid>;
 
 # <a name="rest-api"></a>[Rest API](#tab/rest-api)
 
-| API | 說明 |
+| API | 描述 |
 | --- | --- |
 | [建立或更新容錯移轉群組](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/createorupdate) | 建立或更新容錯移轉群組的設定 |
 | [刪除容錯移轉群組](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/delete) | 從實例移除容錯移轉群組 |

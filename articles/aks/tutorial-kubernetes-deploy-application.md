@@ -3,14 +3,14 @@ title: Azure 上的 Kubernertes 教學課程 - 部署應用程式
 description: 在本 Azure Kubernetes Service (AKS) 教學課程中，您會使用 Azure Container Registry 中儲存的自訂映像，將多容器應用程式部署至您的叢集。
 services: container-service
 ms.topic: tutorial
-ms.date: 12/19/2018
+ms.date: 09/30/2020
 ms.custom: mvc
-ms.openlocfilehash: 3b614fcb6692f35884af2fc4e19210267ab8ab04
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8114aa0b6c2483d543376727a44d14041ed02b37
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77593269"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91576484"
 ---
 # <a name="tutorial-run-applications-in-azure-kubernetes-service-aks"></a>教學課程：執行 Azure Kubernetes Service (AKS) 中的應用程式
 
@@ -54,7 +54,7 @@ vi azure-vote-all-in-one-redis.yaml
 ```yaml
 containers:
 - name: azure-vote-front
-  image: microsoft/azure-vote-front:v1
+  image: mcr.microsoft.com/azuredocs/azure-vote-front:v1
 ```
 
 提供您自己的 ACR 登入伺服器名稱，使您的資訊清單檔看起來類似於下列範例：

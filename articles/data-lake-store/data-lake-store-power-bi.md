@@ -1,17 +1,17 @@
 ---
 title: 分析 Azure Data Lake Storage Gen1 中的資料 - Power BI
-description: 瞭解如何使用 Power BI Desktop 來分析 Azure Data Lake Storage Gen1 中儲存的資料並加以視覺化。
+description: 瞭解如何使用 Power BI Desktop 來分析和視覺化儲存在 Azure Data Lake Storage Gen1 中的資料。
 author: twooley
 ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 282ac6f87d5ecff75e77b075ee1092f79b4923ad
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: bcc561cd5eea4372d798fff4580362ba0879c3a4
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192863"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91574186"
 ---
 # <a name="analyze-data-in-azure-data-lake-storage-gen1-by-using-power-bi"></a>使用 Power BI 分析 Azure Data Lake Storage Gen1 中的資料
 在本文中，您會了解如何使用 Power BI Desktop 分析儲存在 Azure Data Lake Storage Gen1 的資料並加以視覺化。
@@ -27,7 +27,7 @@ ms.locfileid: "88192863"
 1. 在您的電腦上啟動 Power BI Desktop。
 2. 從 [首頁] 功能區中，按一下 [取得資料]，然後按一下 [其他]。 在 [取得資料] 對話方塊中，依序按一下 [Azure]、[Azure Data Lake Store] 和 [連線]。
    
-    ![連線至 Data Lake Storage Gen1](./media/data-lake-store-power-bi/get-data-lake-store-account.png "連線至 Data Lake Storage Gen1")
+    ![[取得資料] 對話方塊的螢幕擷取畫面，其中已醒目提示 [Azure Data Lake 儲存區] 選項，並已呼叫 [連接] 選項。](./media/data-lake-store-power-bi/get-data-lake-store-account.png "連線至 Data Lake Storage Gen1")
 3. 如果您看到連接器處於開發階段的對話方塊，請選擇繼續。
 4. 在 [Azure Data Lake Store] 對話方塊中，提供 Data Lake Storage Gen1 帳戶的 URL，然後按一下 [確定]。
    
@@ -37,7 +37,7 @@ ms.locfileid: "88192863"
     ![登入 Data Lake Storage Gen1](./media/data-lake-store-power-bi/get-data-lake-store-account-signin.png "登入 Data Lake Storage Gen1")
 6. 順利登入之後，請按一下 [連線] 。
    
-    ![連線至 Data Lake Storage Gen1](./media/data-lake-store-power-bi/get-data-lake-store-account-connect.png "連線至 Data Lake Storage Gen1")
+    ![已呼叫 [連接] 選項的 [Azure Data Lake 存放區] 對話方塊的螢幕擷取畫面。](./media/data-lake-store-power-bi/get-data-lake-store-account-connect.png "連線至 Data Lake Storage Gen1")
 7. 下一個對話方塊會顯示您已上載至 Data Lake Storage Gen1 帳戶的檔案。 驗證資訊，然後按一下 [載入] 。
    
     ![從 Data Lake Storage Gen1 載入資料](./media/data-lake-store-power-bi/get-data-lake-store-account-load.png "從 Data Lake Storage Gen1 載入資料")
@@ -52,19 +52,19 @@ ms.locfileid: "88192863"
     在後續步驟中，我們將更新查詢，以轉換所需格式的已匯入資料。
 9. 從 [首頁] 功能區中，按一下 [編輯查詢]。
    
-    ![編輯查詢](./media/data-lake-store-power-bi/edit-queries.png "編輯查詢")
+    ![已呼叫 [編輯查詢] 選項的 [首頁] 功能區螢幕擷取畫面。](./media/data-lake-store-power-bi/edit-queries.png "編輯查詢")
 10. 在 [查詢編輯器] 的 [內容] 資料行下，按一下 [二進位]。
     
-    ![編輯查詢](./media/data-lake-store-power-bi/convert-query1.png "編輯查詢")
+    ![[查詢編輯器] 的螢幕擷取畫面，其中的 [內容] 資料行已被呼叫。](./media/data-lake-store-power-bi/convert-query1.png "編輯查詢")
 11. 您將會看到檔案圖示，其代表您已上傳的 **Drivers.txt** 檔案。 在檔案上按一下滑鼠右鍵，然後按一下 [CSV] 。    
     
-    ![編輯查詢](./media/data-lake-store-power-bi/convert-query2.png "編輯查詢")
+    ![已呼叫 CSV 選項的查詢編輯器螢幕擷取畫面。](./media/data-lake-store-power-bi/convert-query2.png "編輯查詢")
 12. 您應該會看到如下的輸出。 您的資料現在為可用來建立視覺效果的格式。
     
-    ![編輯查詢](./media/data-lake-store-power-bi/convert-query3.png "編輯查詢")
+    ![查詢編輯器的螢幕擷取畫面，其中顯示如預期般顯示的輸出。](./media/data-lake-store-power-bi/convert-query3.png "編輯查詢")
 13. 從 [首頁] 功能區中，按一下 [關閉並套用]，然後按一下 [關閉並套用]。
     
-    ![編輯查詢](./media/data-lake-store-power-bi/load-edited-query.png "編輯查詢")
+    ![稱為 [關閉] 和 [套用] 選項的 [首頁] 功能區螢幕擷取畫面。](./media/data-lake-store-power-bi/load-edited-query.png "編輯查詢")
 14. 更新查詢之後，[欄位]  索引標籤將會顯示可用於視覺效果的新欄位。
     
     ![更新的欄位](./media/data-lake-store-power-bi/updated-query-fields.png "更新的欄位")

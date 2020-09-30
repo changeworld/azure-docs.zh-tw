@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 03/06/2020
 ms.topic: how-to
-ms.openlocfilehash: dda2676f258705ed833068c966bcc57115434b0d
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 2134dde0fa0b92bec4519c0d6a24dcaad3792baa
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90967219"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91575175"
 ---
 # <a name="configure-the-model-conversion"></a>設定模型轉換
 
@@ -33,7 +33,6 @@ ms.locfileid: "90967219"
         "scaling" : { "type" : "number", "exclusiveMinimum" : 0, "default" : 1.0 },
         "recenterToOrigin" : { "type" : "boolean", "default" : false },
         "opaqueMaterialDefaultSidedness" : { "type" : "string", "enum" : [ "SingleSided", "DoubleSided" ], "default" : "DoubleSided" },
-        "material-override" : { "type" : "string", "default" : "" },
         "gammaToLinearMaterial" : { "type" : "boolean", "default" : false },
         "gammaToLinearVertex" : { "type" : "boolean", "default" : false },
         "sceneGraphMode": { "type" : "string", "enum" : [ "none", "static", "dynamic" ], "default" : "dynamic" },
@@ -85,10 +84,6 @@ ms.locfileid: "90967219"
 
 * `opaqueMaterialDefaultSidedness` - 轉譯引擎會假設不透明材質為雙面。
 如果特定模型的假設不成立，則此參數應設為 "SingleSided"。 如需詳細資訊， [ :::no-loc text="single sided"::: 請參閱轉譯](../../overview/features/single-sided-rendering.md)。
-
-### <a name="material-overrides"></a>材質覆寫
-
-* `material-override` - 此參數可[在轉換期間自訂](override-materials.md)材質處理。
 
 ### <a name="material-de-duplication"></a>材質重複資料刪除
 
@@ -305,6 +300,8 @@ ms.locfileid: "90967219"
 
 仍支援使用非模型專屬的檔案名提供設定 `conversionSettings.json` ，但已淘汰。
 請改用特定模型的檔案名 `<modelName>.ConversionSettings.json` 。
+
+`material-override`仍支援使用設定來識別轉換設定檔案中的[材質覆寫](override-materials.md)檔案，但已淘汰。 請改用特定模型的檔案名 `<modelName>.MaterialOverrides.json` 。
 
 ## <a name="next-steps"></a>後續步驟
 

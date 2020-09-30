@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure PowerShell 暫停和繼續 Synapse SQL 集區中的計算
+title: 快速入門：使用 Azure PowerShell 暫停和繼續 Synapse SQL 集區中的計算
 description: 您可以使用 Azure PowerShell 來暫停和繼續 Synapse SQL 集區 (資料倉儲)。 計算資源。
 services: synapse-analytics
 author: kevinvngo
@@ -11,12 +11,12 @@ ms.date: 03/20/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse, devx-track-azurepowershell
-ms.openlocfilehash: 9adc994ef9ac3f43f593da010b35ada4a83e424e
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 08ddb6077887043d798af9790a7b66f1b8ebb95c
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89078947"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570692"
 ---
 # <a name="quickstart-pause-and-resume-compute-in-synapse-sql-pool-with-azure-powershell"></a>快速入門：使用 Azure PowerShell 暫停和繼續 Synapse SQL 集區中的計算
 

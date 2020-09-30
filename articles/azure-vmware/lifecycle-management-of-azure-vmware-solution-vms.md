@@ -3,12 +3,12 @@ title: Azure VMware 解決方案 Vm 的生命週期管理
 description: 瞭解如何使用 Microsoft Azure 原生工具來管理 Azure VMware 解決方案 Vm 生命週期的所有層面。
 ms.topic: conceptual
 ms.date: 09/11/2020
-ms.openlocfilehash: 20948ec088d11468b5750ca89979050965246b58
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 10e721996b2e3186417a702d2d7473b36b11237f
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89663912"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91575466"
 ---
 # <a name="lifecycle-management-of-azure-vmware-solution-vms"></a>Azure VMware 解決方案 Vm 的生命週期管理
 
@@ -38,7 +38,7 @@ Microsoft Azure 原生工具可讓您監視和管理 Azure 環境中 (Vm) 的虛
 
 下圖顯示 Azure VMware 解決方案 Vm 的整合式監視架構。
 
-![整合式 Azure 監視架構](media/lifecycle-mgmt-avs-vms/integrated-azure-monitoring-architecture.png)
+![整合式 Azure 監視架構](media/lifecycle-management-azure-vmware-solutions-virtual-machines/integrated-azure-monitoring-architecture.png)
 
 ## <a name="integrating-and-deploying-azure-native-services"></a>整合和部署 Azure 原生服務
 

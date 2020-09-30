@@ -6,20 +6,20 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.date: 10/03/2018
 ms.topic: article
-ms.openlocfilehash: ef8862ebbcdd1ee79178af56b7c6cc81c7a68a43
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1ee8c7eabd33ad2d8773d55041fcdf54a7dd489b
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91269279"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91575005"
 ---
 # <a name="run-actions-based-on-group-status-by-using-scopes-in-azure-logic-apps"></a>在 Azure Logic Apps 中，根據群組狀態使用範圍執行動作
 
 若要在另一個群組成功或失敗之後才執行步驟，請將那些步驟群組在「範圍」中。 如果您想要將動作組織為邏輯群組、評估該群組的狀態，以及執行以範圍狀態為基礎的動作，此結構將會十分實用。 當範圍中的所有動作都執行完成之後，範圍也會取得自己的狀態。 例如，您可以在想要實作[例外狀況和錯誤處理](../logic-apps/logic-apps-exception-handling.md#scopes)時使用範圍。 
 
-若要檢查範圍的狀態，您可以使用您用來判斷邏輯應用程式執行狀態的相同準則，例如「成功」、「失敗」、「已取消」等等。 根據預設，當範圍的所有動作都成功時，範圍的狀態會標示為「Succeeded (成功)」。 但如果範圍中有任何動作失敗或取消，範圍的狀態會標示為「Failed (失敗)」。 如需範圍的限制，請參閱[限制和設定](../logic-apps/logic-apps-limits-and-config.md)。 
+若要檢查範圍的狀態，您可以使用您用來判斷邏輯應用程式執行狀態的相同準則，例如 [ **成功**]、[ **失敗**]、[已 **取消**] 等等。 根據預設，當範圍的所有動作都成功時，範圍的狀態會標示為 [ **成功**]。 但是，當範圍中的任何動作失敗或取消時，範圍的狀態會標示為 [ **失敗**]。 如需範圍的限制，請參閱[限制和設定](../logic-apps/logic-apps-limits-and-config.md)。 
 
-例如，以下高階邏輯應用程式會使用範圍來執行特定動作，以及使用條件來檢查範圍的狀態。 如果範圍內的任何動作失敗或非預期地結束，範圍會分別標示為「失敗」或「中止」，而邏輯應用程式會傳送「範圍失敗」的訊息。 如果範圍內的所有動作都成功，則邏輯應用程式會傳送「範圍成功」的訊息。
+例如，以下高階邏輯應用程式會使用範圍來執行特定動作，以及使用條件來檢查範圍的狀態。 如果範圍中的任何動作失敗或非預期地結束，則範圍會分別標示為「 **失敗** 」或「已 **中止** 」，而邏輯應用程式會傳送「範圍失敗」訊息。 如果範圍內的所有動作都成功，則邏輯應用程式會傳送「範圍成功」的訊息。
 
 ![此圖顯示邏輯應用程式範圍流程，其中包含「範圍失敗」和「範圍成功」的範例。](./media/logic-apps-control-flow-run-steps-group-scopes/scope-high-level.png)
 
@@ -192,7 +192,7 @@ ms.locfileid: "91269279"
    
       `result('Scope')[0]['status']`
 
-      ![顯示 [新增運算式] 視窗的螢幕擷取畫面，其中已反白顯示結果運算式。](./media/logic-apps-control-flow-run-steps-group-scopes/check-scope-status.png)
+      ![顯示 [運算式] 方塊的螢幕擷取畫面，其中已反白顯示結果運算式。](./media/logic-apps-control-flow-run-steps-group-scopes/check-scope-status.png)
 
    1. 針對這兩個資料列，選取 [等於] 作為運算子。 
    

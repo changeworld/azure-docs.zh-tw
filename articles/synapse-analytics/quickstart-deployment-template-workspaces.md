@@ -1,5 +1,5 @@
 ---
-title: 建立 Azure Synapse 工作區 Azure Resource Manager 範本
+title: 快速入門：建立 Azure Synapse 工作區 Azure Resource Manager 範本
 description: 了解如何使用 Azure Resource Manager 範本建立 Synapse 工作區。
 services: azure-resource-manager
 author: julieMSFT
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: jrasnick
 ms.date: 08/07/2020
-ms.openlocfilehash: c64f3d835eeede79f937bbaadb0a54992176438d
-ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
+ms.openlocfilehash: dc6d36f2316e0ae19ce8b813fa9eb127b1a9cf1f
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/06/2020
-ms.locfileid: "89500650"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91568998"
 ---
 # <a name="quickstart-create-an-azure-synapse-workspace-using-a-deployment-template"></a>快速入門：使用部署範本建立 Azure Synapse 工作區
 
@@ -33,7 +33,7 @@ ms.locfileid: "89500650"
 
 您可以選取**視覺化**連結來檢閱範本，如下所示：
 
-[![視覺化](../media/template-deployments/template-visualize-button.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2FSynapse%2Fmaster%2FManage%2FDeployWorkspace%2Fazuredeploy.json)
+[![視覺化](../media/template-deployments/template-visualize-button.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2FSynapse%2Fmaster%2FManage%2FDeployWorkspace%2Fazuredeploy.json)
 
 此範本會定義兩個資源：
 

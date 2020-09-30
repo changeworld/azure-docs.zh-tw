@@ -7,12 +7,12 @@ ms.service: databox
 ms.topic: article
 ms.date: 06/30/2020
 ms.author: alkohli
-ms.openlocfilehash: 1b3f0faa2b5f67a23317935f0ad868e3872cf86e
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 337c0c4434eb768ee45429d9b2d23536db4c3fc7
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90055958"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91575447"
 ---
 # <a name="update-your-azure-data-box-gateway"></a>更新您的 Azure 資料箱閘道
 
@@ -35,41 +35,41 @@ ms.locfileid: "90055958"
 
 1. 當您的裝置有可用的更新時，您會看到通知。 選取通知，或從頂端命令列 **更新裝置**。 這可讓您套用裝置軟體更新。
 
-    ![更新之後的軟體版本](./media/data-box-gateway-apply-updates/portal-apply-update-01a.png)
+    ![Azure Stack Edge 資料箱閘道首頁的螢幕擷取畫面，其中已呼叫 [總覽] 和 [更新裝置] 選項。](./media/data-box-gateway-apply-updates/portal-apply-update-01a.png)
 
 2. 在 [ **裝置更新** ] 分頁中，確認您已在版本資訊中檢查與新功能相關聯的授權條款。
 
     您可以選擇 **下載並安裝更新，** 或只 **下載** 更新。 然後可以選擇稍後再安裝這些更新。
 
-    ![更新之後的軟體版本](./media/data-box-gateway-apply-updates/portal-apply-update-02.png)
+    ![[裝置更新] 對話方塊的螢幕擷取畫面，其中包含 [接受] 和 [瞭解] 選項，以及已呼叫的 [下載並安裝] 選項。](./media/data-box-gateway-apply-updates/portal-apply-update-02.png)
 
     如果您想要下載並安裝更新，請在下載完成之後，選取 [自動安裝更新] 選項。
 
-    ![更新之後的軟體版本](./media/data-box-gateway-apply-updates/portal-apply-update-03.png)
+    ![[裝置更新] 對話方塊的螢幕擷取畫面，其中包含 [接受] 選項和 [下載] 選項已被呼叫。](./media/data-box-gateway-apply-updates/portal-apply-update-03.png)
 
 3. 更新的下載隨即開始。 您會看到下載正在進行中的通知。
 
-    ![更新之後的軟體版本](./media/data-box-gateway-apply-updates/portal-apply-update-05.png)
+    ![通知的螢幕擷取畫面，指出「下載並安裝更新正在進行中」。](./media/data-box-gateway-apply-updates/portal-apply-update-05.png)
 
     Azure 入口網站中也會顯示通知橫幅。 這表示下載進度。
 
-    ![更新之後的軟體版本](./media/data-box-gateway-apply-updates/portal-apply-update-08a.png)
+    ![Azure Stack Edge 資料箱閘道首頁的螢幕擷取畫面，其中包含總覽選項以及已呼叫的下載更新通知橫幅。](./media/data-box-gateway-apply-updates/portal-apply-update-08a.png)
 
     您可以選取此通知或選取 [ **更新裝置** ]，以查看更新的詳細狀態。
 
-    ![更新之後的軟體版本](./media/data-box-gateway-apply-updates/portal-apply-update-09.png)
+    ![[下載並安裝更新] 對話方塊的螢幕擷取畫面，其中顯示 [狀態：進行中] 訊息和 [下載更新] 訊息。](./media/data-box-gateway-apply-updates/portal-apply-update-09.png)
 
 4. 下載完成後，通知橫幅會更新以指出完成。 如果您選擇下載並安裝更新，則會自動開始安裝。
 
-    ![更新之後的軟體版本](./media/data-box-gateway-apply-updates/portal-apply-update-10a.png)
+    ![Azure Stack Edge 資料箱閘道首頁的螢幕擷取畫面，其中包含總覽選項和已下載的更新通知橫幅。](./media/data-box-gateway-apply-updates/portal-apply-update-10a.png)
 
     如果您選擇只下載更新，請選取通知以開啟 [ **裝置更新** ] 分頁。 選取 [安裝]。
   
-    ![更新之後的軟體版本](./media/data-box-gateway-apply-updates/portal-apply-update-11a.png)
+    ![[裝置更新] 對話方塊的螢幕擷取畫面，其中已呼叫 [安裝] 選項。](./media/data-box-gateway-apply-updates/portal-apply-update-11a.png)
 
 5. 您會看到安裝正在進行中的通知。
 
-    ![更新之後的軟體版本](./media/data-box-gateway-apply-updates/portal-apply-update-12a.png)
+    ![Azure Stack Edge 資料箱閘道首頁的螢幕擷取畫面，其中包含總覽選項以及已呼叫的下載與安裝進度訊息。](./media/data-box-gateway-apply-updates/portal-apply-update-12a.png)
 
     入口網站也會顯示資訊警示，指出正在進行安裝。 <!-- The device goes offline and is in maintenance mode.-->
 
@@ -77,19 +77,19 @@ ms.locfileid: "90055958"
 
 6. 由於這是1個節點的裝置，因此裝置會在安裝更新之後重新開機。 重新開機期間的重大警示會指出裝置的信號遺失。
 
-    ![更新之後的軟體版本](./media/data-box-gateway-apply-updates/portal-apply-update-19a.png)
+    ![Azure Stack Edge 資料箱閘道首頁的螢幕擷取畫面，其中包含總覽選項以及已呼叫的重大警示通知橫幅。](./media/data-box-gateway-apply-updates/portal-apply-update-19a.png)
 
     選取警示以查看對應的裝置事件。
 
-    ![更新之後的軟體版本](./media/data-box-gateway-apply-updates/portal-apply-update-20a.png)
+    ![裝置事件區段的螢幕擷取畫面，其中包含來自裝置事件的遺失信號。](./media/data-box-gateway-apply-updates/portal-apply-update-20a.png)
 
 7. 安裝更新之後，裝置狀態會更新為 [ **線上** ]。
 
-    ![更新之後的軟體版本](./media/data-box-gateway-apply-updates/portal-apply-update-23a.png)
+    ![Azure Stack Edge 資料箱閘道首頁的螢幕擷取畫面，其中包含總覽選項和已呼叫的線上狀態。](./media/data-box-gateway-apply-updates/portal-apply-update-23a.png)
 
     從頂端命令列選取 [ **裝置更新**]。 確認更新已成功安裝，且裝置軟體版本反映該更新。
 
-    ![更新之後的軟體版本](./media/data-box-gateway-apply-updates/portal-apply-update-24.png)
+    ![[裝置更新] 對話方塊的螢幕擷取畫面，其中已將 [安裝的軟體版本] 區段稱為 [已安裝]。](./media/data-box-gateway-apply-updates/portal-apply-update-24.png)
 
 ## <a name="use-the-local-web-ui"></a>使用本機 Web UI
 
@@ -108,17 +108,17 @@ ms.locfileid: "90055958"
 
 1. 啟動瀏覽器並流覽至 [https://catalog.update.microsoft.com](https://catalog.update.microsoft.com) 。
 
-   ![搜尋目錄](./media/data-box-gateway-apply-updates/download-update-1.png)
+   ![在 [搜尋] 文字方塊中輸入資料箱閘道的瀏覽器視窗中，Microsoft Update 目錄的螢幕擷取畫面。 同時呼叫瀏覽器的網址列和搜尋文字方塊。](./media/data-box-gateway-apply-updates/download-update-1.png)
 
 2. 在 [Microsoft Update 目錄] 的 [搜尋] 方塊中，輸入知識庫 (KB) 您要下載之更新的修正程式號碼或條款。 例如，輸入 **Azure 資料箱閘道**]，然後按一下 [ **搜尋**]。
 
    更新清單會顯示為 **Azure 資料箱閘道 1911**。
 
-   ![搜尋目錄](./media/data-box-gateway-apply-updates/download-update-2.png)
+   ![顯示和呼叫資料箱閘道搜尋結果的瀏覽器視窗中，Microsoft Update 目錄的螢幕擷取畫面。](./media/data-box-gateway-apply-updates/download-update-2.png)
 
 3. 選取 [下載]。 有一個可供下載的檔案，稱為 *SoftwareUpdatePackage.exe* ，其對應于裝置軟體更新。 將檔案下載到本機系統上的資料夾。 您也可以將資料夾複製到裝置可連線的網路共用位置。
 
-   ![搜尋目錄](./media/data-box-gateway-apply-updates/download-update-3.png)
+   ![[下載] 對話方塊的螢幕擷取畫面，其中包含已呼叫的軟體更新套件點 E X E 檔案的連結。](./media/data-box-gateway-apply-updates/download-update-3.png)
 
 ### <a name="install-the-update-or-the-hotfix"></a>安裝更新或 Hotfix
 
@@ -127,31 +127,31 @@ ms.locfileid: "90055958"
 - 已有更新檔，或 Hotfix 已下載至您主機的本機上，或是可透過網路共用存取。
 - 您的裝置狀態狀況良好，如本機 web UI 的 [ **總覽** ] 頁面所示。
 
-   ![更新裝置](./media/data-box-gateway-apply-updates/local-ui-update-1.png)
+   ![資料箱閘道本機網站的螢幕擷取畫面，其中包含儀表板選項和軟體狀態：狀況良好的訊息已被呼叫。](./media/data-box-gateway-apply-updates/local-ui-update-1.png)
 
 此程式大約需要20分鐘才能完成。 請執行下列步驟以安裝更新或 Hotfix。
 
 1. 在本機 web UI 中，移至 [**維護**  >  **軟體更新**]。 記下您在執行的軟體版本。
 
-   ![更新裝置](./media/data-box-gateway-apply-updates/local-ui-update-2.png)
+   ![資料箱閘道本機網站的螢幕擷取畫面，其中包含軟體更新選項和目前的軟體版本訊息（稱為 out）。](./media/data-box-gateway-apply-updates/local-ui-update-2.png)
 
 2. 提供更新檔案的路徑。 如果放置在網路共用上，您也可以流覽至更新安裝檔案。 選取具有 *SoftwareUpdatePackage.exe* 尾碼的軟體更新檔案。
 
-   ![更新裝置](./media/data-box-gateway-apply-updates/local-ui-update-3.png)
+   ![檔案總管的螢幕擷取畫面，其中包含已呼叫的軟體更新套件點 E X E 檔案。](./media/data-box-gateway-apply-updates/local-ui-update-3.png)
 
 3. 選取 [套用]。
 
-   ![更新裝置](./media/data-box-gateway-apply-updates/local-ui-update-4.png)
+   ![資料箱閘道本機網站的螢幕擷取畫面，其中包含 [軟體更新] 選項、[更新檔案路徑] 文字方塊和 [套用更新] 選項（稱為 out）。](./media/data-box-gateway-apply-updates/local-ui-update-4.png)
 
 4. 當系統提示您確認時，請選取 **[是]** 以繼續。 如果裝置是單一節點裝置，在套用更新後，裝置就會重新開機，而且會有停機時間。
-   ![更新裝置](./media/data-box-gateway-apply-updates/local-ui-update-5.png)
+   ![反白顯示 [是] 選項的 [軟體更新] 對話方塊螢幕擷取畫面。](./media/data-box-gateway-apply-updates/local-ui-update-5.png)
 
 5. 更新會開始進行。 成功更新裝置之後，裝置就會重新啟動。 在這段持續時間會無法存取本機 UI。
 
 6. 重新啟動完成後，您就會進入 [登入]**** 頁面。 若要確認裝置軟體是否已更新，請在本機 web UI 中，移至 [**維護**  >  **軟體更新**]。 此範例中顯示的軟體版本是 **1.6.1049.786**。
 
-   ![更新裝置](./media/data-box-gateway-apply-updates/local-ui-update-6.png)
+   ![資料箱閘道本機網站的螢幕擷取畫面，其中包含軟體更新選項和已更新的目前軟體版本訊息（稱為 out）。](./media/data-box-gateway-apply-updates/local-ui-update-6.png)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 深入瞭解如何 [管理您的 Azure 資料箱閘道](data-box-gateway-manage-users.md)。

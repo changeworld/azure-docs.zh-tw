@@ -1,32 +1,34 @@
 ---
-title: 教學課程：網路檢查清單
-description: 網路需求的必要條件和網路連線能力和網路連接埠的詳細資料
+title: 教學課程 - 網路規劃檢查清單
+description: 深入了解 Azure VMware 解決方案網路需求的必要條件，以及網路連線能力和網路連接埠的詳細資料。
 ms.topic: tutorial
-ms.date: 08/21/2020
-ms.openlocfilehash: aba5d7767e420b3ade6238621487884e44fbb6e2
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.date: 09/21/2020
+ms.openlocfilehash: 5538f9c5d6543ca312835f4ef6437e413dea231b
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88750422"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91576672"
 ---
-# <a name="networking-checklist-for-azure-vmware-solution"></a>Azure VMware 解決方案的網路檢查清單 
+# <a name="networking-planning-checklist-for-azure-vmware-solution"></a>Azure VMware 解決方案的網路規劃檢查清單 
 
 Azure VMware 解決方案提供 VMware 私人雲端環境，可讓使用者和應用程式從內部部署和 Azure 型環境或資源存取。 連線會透過網路服務 (例如 Azure ExpressRoute 和 VPN 連線) 來傳遞，而且需要一些特定的網路位址範圍和防火牆連接埠來啟用服務。 本文提供正確設定網路以與 Azure VMware 解決方案搭配運作所需的資訊。
 
-在本教學課程中，您會了解下列內容：
+在本教學課程中，您將了解：
 
 > [!div class="checklist"]
-> * 網路連線能力需求
-> * Azure VMware 解決方案中的 DHCP
+> * 虛擬網路與 ExpressRoute 線路考量
+> * 路由和子網路需求
+> * 與服務通訊所需的網路連接埠
+> * Azure VMware 解決方案中的 DHCP 和 DNS 考量
 
-## <a name="virtual--network-and-expressroute-circuit--considerations"></a>虛擬網路與 ExpressRoute 線路考量
-當您從訂用帳戶中的虛擬網路建立連線時，會透過對等互連建立 ExpressRoute 線路，並使在 Azure 入口網站中要求的授權金鑰和對等互連識別碼。 對等互連是私人雲端與虛擬網路之間的私人一對一連線。
+## <a name="virtual-network-and-expressroute-circuit-considerations"></a>虛擬網路與 ExpressRoute 線路考量
+當您在訂用帳戶中建立虛擬網路連線時，會透過對等互連建立 ExpressRoute 線路，並使用在 Azure 入口網站中要求的授權金鑰和對等互連識別碼。 對等互連是私人雲端與虛擬網路之間的私人一對一連線。
 
 > [!NOTE] 
 > ExpressRoute 線路不屬於私人雲端部署的一部分。 內部部署 ExpressRoute 線路已超出本文件的範圍。 如果您需要內部部署連線到私人雲端，則可以使用其中一個現有的 ExpressRoute 線路，或在 Azure 入口網站中購買線路。
 
-部署私人雲端時，您會收到 vCenter 和 NSX-T Manager 的 IP 位址。 若要存取這些管理介面，您必須在訂用帳戶的虛擬網路中建立額外的資源。 您可以在教學課程中找到建立這些資源及建立 ExpressRoute 私人對等互連的程序。
+部署私人雲端時，您會收到 vCenter 和 NSX-T Manager 的 IP 位址。 若要存取這些管理介面，您必須在訂用帳戶的虛擬網路中建立額外的資源。 您可以在教學課程中找到建立這些資源及建立 [ExpressRoute 私人對等互連](tutorial-expressroute-global-reach-private-cloud.md)的程序。
 
 私人雲端邏輯網路隨附於預先佈建的 NSX-T。 已為您預先佈建第 0 層閘道和第 1 層閘道。 您可以建立區段，並將其附加至現有的第 1 層閘道，或將其附加至您定義新的第 1 層閘道。 NSX-T 邏輯網路元件提供工作負載之間的東西向連線能力，並提供網際網路和 Azure 服務的南北向連線能力。
 
@@ -39,15 +41,15 @@ AVS 私人雲端會使用 Azure ExpressRoute 連線來連線到您的 Azure 虛�
 
 子網路：
 
-| 網路使用量             | 子網路 | 範例        |
-| ------------------------- | ------ | -------------- |
-| 私人雲端管理  | `/24`  | `10.10.0.0/24` |
-| vMotion 網路           | `/24`  | `10.10.1.0/24` |
-| VM 工作負載              | `/24`  | `10.10.2.0/24` |
-| ExpressRoute 對等互連      | `/24`  | `10.10.3.8/30` |
+| 網路使用量             | 子網路 | 範例          |
+| ------------------------- | ------ | ---------------- |
+| 私人雲端管理  | `/26`  | `10.10.0.0/26`   |
+| vMotion 網路           | `/25`  | `10.10.1.128/25` |
+| VM 工作負載              | `/24`  | `10.10.2.0/24`   |
+| ExpressRoute 對等互連      | `/29`  | `10.10.3.8/29`   |
 
 
-### <a name="network-ports-required-to-communicate-with-the-service"></a>與服務通訊所需的網路連接埠
+## <a name="required-network-ports"></a>必要的網路連接埠
 
 | 來源 | Destination | 通訊協定 | 連接埠 | 描述  | 
 | ------ | ----------- | :------: | :---:| ------------ | 
@@ -67,20 +69,17 @@ AVS 私人雲端會使用 Azure ExpressRoute 連線來連線到您的 Azure 虛�
 | 內部部署 vCenter 網域 | 私人雲端管理網路 | TCP | 8000 |  從內部部署 vCenter 到私人雲端 vCenter 的 VM 之 vMotion   |     
 
 ## <a name="dhcp-and-dns-resolution-considerations"></a>DHCP 和 DNS 解析考量
-在私人雲端環境中執行的應用程式和工作負載需要名稱解析和 DHCP 服務，才能進行查閱和 IP 位址指派。 必須要有適當的 DHCP 和 DNS 基礎結構，才能提供這些服務。 您可以設定虛擬機器，以在私人雲端環境中提供這些服務。  
+在私人雲端環境中執行的應用程式和工作負載需要名稱解析和 DHCP 服務，才能進行查閱和 IP 位址指派。 必須有適當的 DHCP 和 DNS 基礎結構，才能提供這些服務。 您可以設定虛擬機器，以在私人雲端環境中提供這些服務。  
 
-建議使用 NSX 內建的 DHCP 服務，或使用私人雲端中的本機 DHCP 伺服器，而不是透過 WAN 將廣播 DHCP 流量路由回內部部署。
+使用 NSX 內建的 DHCP 服務，或使用私人雲端中的本機 DHCP 伺服器，而不是透過 WAN 將廣播 DHCP 流量路由回內部部署。
 
 
 ## <a name="next-steps"></a>後續步驟
 
-在本教學課程中，您已了解：
+在本教學課程中，您已了解部署 Azure VMware 解決方案私人雲端的相關考量和需求。 
 
-> [!div class="checklist"]
-> * 網路連線能力需求
-> * Azure VMware 解決方案中的 DHCP
 
 準備好適當的網路功能後，請繼續進行下一個教學課程，以建立您的 Azure VMware 解決方案私人雲端。
 
 > [!div class="nextstepaction"]
-> [教學課程：建立 Azure VMware 解決方案私人雲端](tutorial-create-private-cloud.md)
+> [建立 Azure VMware 解決方案私人雲端](tutorial-create-private-cloud.md)

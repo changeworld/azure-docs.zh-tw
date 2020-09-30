@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 09/16/2020
-ms.openlocfilehash: 4ad3aa7169fcf7eeda6e56a2eab6669b8783d77d
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.openlocfilehash: 714a43ec197ac150488d4443c1eb6fe1be1da232
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91461456"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91575515"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Azure 監視器記錄專用叢集
 
@@ -19,7 +19,7 @@ Azure 監視器記錄專用叢集是一個可讓大量客戶更妥善服務的�
 
 除了對高容量的支援之外，使用專用叢集還有其他優點：
 
-- **速率限制** -客戶只能在專用叢集上擁有較高的內嵌費率限制。
+- **速率限制** -客戶只能在專用叢集上擁有較高的內嵌 [費率限制](../service-limits.md#data-ingestion-volume-rate) 。
 - **功能** ：某些企業功能僅適用于專用叢集，特別是客戶管理的金鑰 (CMK) 和加密箱支援。 
 - **一致性** -客戶擁有專屬的資源，因此不會影響在相同共用基礎結構上執行的其他客戶。
 - **成本效益** -使用專用叢集的方式可能更符合成本效益，因為指派的容量保留層會將所有叢集內嵌納入考慮，並套用至其所有的工作區，即使其中有些較小，而且不符合容量保留折扣的資格。
@@ -38,14 +38,23 @@ Azure 監視器記錄專用叢集是一個可讓大量客戶更妥善服務的�
 
 叢集層級上的所有作業都需要叢集的「 `Microsoft.OperationalInsights/clusters/write` 動作」許可權。 您可以透過包含動作的擁有者或參與者，或透過 `*/write` 包含動作的 Log Analytics 參與者角色，授與此許可權 `Microsoft.OperationalInsights/*` 。 如需有關 Log Analytics 許可權的詳細資訊，請參閱 [Azure 監視器中的記錄管理資料和工作區的存取](../platform/manage-access.md)。 
 
-## <a name="billing"></a>計費
 
-專用叢集僅支援使用每 GB 方案（具有或不含容量保留層）的工作區。 專用的叢集不需要額外付費，就能針對此類叢集認可內嵌超過 1 TB 的客戶。 「認可至內嵌」表示它們在叢集層級上指派的容量保留層至少為 1 TB/天。 雖然容量保留是在叢集層級上連接，但資料的實際收費有兩個選項：
+## <a name="cluster-pricing-model"></a>叢集定價模型
 
-- 叢集 (預設) -*叢集的容量*保留成本會對叢集資源*進行分類。*
-- *工作區* -叢集的容量保留成本會依比例分類至叢集中的工作區。 如果當天的總內嵌資料是在容量保留下 *，則會以叢集資源計費* 部分使用量。 若要深入瞭解叢集定價模型，請參閱 [Log Analytics 專用](../platform/manage-cost-storage.md#log-analytics-dedicated-clusters) 叢集。
+Log Analytics 專用叢集會使用至少 1000 GB/天的容量保留定價模型。 高於保留層級的使用量則會以隨用隨付費率計費。  容量保留定價資訊可在 [Azure 監視器定價] 頁面]( https://azure.microsoft.com/pricing/details/monitor/)取得。  
 
-如需專用叢集計費的詳細資訊，請參閱 [Log Analytics 專用叢集計費](../platform/manage-cost-storage.md#log-analytics-dedicated-clusters)。
+叢集容量保留層級是使用中的參數，以程式設計方式透過 Azure Resource Manager 來設定 `Capacity` `Sku` 。 `Capacity` 會以 GB 為單位來指定，而且可以有「1000 GB/天」以上、增量單位為「100 GB/天」的值。
+
+叢集上的使用量有兩種計費模式。 設定叢集時，參數可以指定這些 `billingType` 參數。 
+
+1. 叢集 **：在**此案例中 (是預設) ，內嵌資料的計費是在叢集層級進行。 與叢集相關聯的每個工作區所擷取的資料數量會彙總起來，以計算叢集的每日帳單。 
+
+2. **工作區**：您叢集的容量保留成本會依叢集內的工作區進行比例化， (在會計入每個工作區 [Azure 資訊安全中心](https://docs.microsoft.com/azure/security-center/) 的每個節點配置。 ) 
+
+請注意，如果您的工作區使用舊版的每個節點定價層，則在連結至叢集時，將會根據針對叢集容量保留所內嵌的資料進行計費，而且不再是每個節點的費用。 Azure 資訊安全中心的每個節點資料配置都將繼續套用。
+
+[這裡]( https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#log-analytics-dedicated-clusters)提供 Log Analytics 專用叢集的詳細資料。
+
 
 ## <a name="creating-a-cluster"></a>建立叢集
 
@@ -155,8 +164,8 @@ Content-type: application/json
 
 - **keyVaultProperties**：用來設定用來布 [建 Azure 監視器客戶管理金鑰](../platform/customer-managed-keys.md#cmk-provisioning-procedure)的 Azure Key Vault。 它包含下列參數：  *KeyVaultUri*、 *KeyName*、 *KeyVersion*。 
 - **billingType** - *billingType* 屬性會決定 *叢集資源和其資料的計費* 屬性：
-- 叢集 (預設) -*叢集的容量*保留成本會對叢集資源**進行分類。**
-- **工作區** -叢集的容量保留成本會依叢集中的工作區比例分類，而如果當天的總內嵌資料是在容量保留下 *，則會以叢集資源計費* 部分使用量。 若要深入瞭解叢集定價模型，請參閱 [Log Analytics 專用](../platform/manage-cost-storage.md#log-analytics-dedicated-clusters) 叢集。 
+  - 叢集 (預設) -*叢集的容量*保留成本會對叢集資源**進行分類。**
+  - **工作區** -叢集的容量保留成本會依叢集中的工作區比例分類，而如果當天的總內嵌資料是在容量保留下 *，則會以叢集資源計費* 部分使用量。 若要深入瞭解叢集定價模型，請參閱 [Log Analytics 專用](../platform/manage-cost-storage.md#log-analytics-dedicated-clusters) 叢集。 
 
 > [!NOTE]
 > PowerShell 不支援 *billingType* 屬性。
@@ -185,7 +194,7 @@ Content-type: application/json
 {
    "sku": {
      "name": "capacityReservation",
-     "capacity": 1000
+     "capacity": <capacity-reservation-amount-in-GB>
      },
    "properties": {
     "billingType": "cluster",
@@ -265,8 +274,6 @@ Content-type: application/json
 > [!WARNING]
 > 將工作區連結至叢集需要同步處理多個後端元件，並確保快取序列化。 此作業最多可能需要兩個小時才能完成。 建議您以非同步方式執行。
 
-
-### <a name="link-operations"></a>連結作業
 
 **PowerShell**
 
@@ -366,7 +373,36 @@ Authorization: Bearer <token>
 
 ## <a name="delete-a-dedicated-cluster"></a>刪除專用叢集
 
-可以刪除專用的叢集資源。 在刪除所有工作區之前，您必須先將其從叢集取消連結。 一旦刪除叢集資源之後，實體叢集就會進入清除和刪除流程。 刪除叢集會刪除儲存在叢集上的所有資料。 資料可能來自過去連結到叢集的工作區。
+可以刪除專用的叢集資源。 在刪除所有工作區之前，您必須先將其從叢集取消連結。 您需要「叢集」資源的「寫入」權限才能執行此作業。 
+
+一旦刪除叢集資源之後，實體叢集就會進入清除和刪除流程。 刪除叢集會刪除儲存在叢集上的所有資料。 資料可能來自過去連結到叢集的工作區。
+
+過去 14 天內遭到刪除的「叢集」資源處於虛刪除狀態，並可連同其資料一起復原。 由於 *所有的工作* 區都已從叢集資源刪除解除 *關聯，因此* 您必須在復原後重新建立工作區的關聯。 使用者無法執行復原作業，請聯絡您的 Microsoft 通道或支援復原要求。
+
+在刪除後的14天內，叢集資源名稱會保留，且無法供其他資源使用。
+
+**PowerShell**
+
+使用下列 PowerShell 命令來刪除叢集：
+
+  ```powershell
+  Remove-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name"
+  ```
+
+**REST**
+
+使用下列 REST 呼叫來刪除叢集：
+
+  ```rst
+  DELETE https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-08-01
+  Authorization: Bearer <token>
+  ```
+
+  **回應**
+
+  200 確定
+
+
 
 ## <a name="next-steps"></a>後續步驟
 
