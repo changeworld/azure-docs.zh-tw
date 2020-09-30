@@ -10,13 +10,13 @@ ms.subservice: bing-image-search
 ms.topic: tutorial
 ms.date: 12/06/2019
 ms.author: aahi
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 2b51fb8dcc456d895d5c4032bd16e1502ee86f0f
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-js
+ms.openlocfilehash: 5d455751dcabd67213566d605e83fda297e187d8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87407076"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316676"
 ---
 # <a name="tutorial-extract-image-details-using-the-bing-image-search-api-and-c"></a>教學課程：使用 Bing 影像搜尋 API 和 C# 來擷取影像詳細資料
 

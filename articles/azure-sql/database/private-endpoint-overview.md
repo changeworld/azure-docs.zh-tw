@@ -9,12 +9,12 @@ ms.topic: overview
 ms.custom: sqldbrb=1
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: f8c7e2cfb17ca48a67a009f532a9cbb6894cc05d
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: b0908aee6253a3be486f71c245ea1eee2ff8b9bb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442593"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319464"
 ---
 # <a name="azure-private-link-for-azure-sql-database-and-azure-synapse-analytics"></a>適用於 Azure SQL Database 和 Azure Synapse Analytics 的 Azure Private Link
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -23,28 +23,6 @@ Private Link 可讓您透過**私人端點**連線到 Azure 中的各種 PaaS �
 
 > [!IMPORTANT]
 > 本文適用於 Azure SQL Database 和 Azure Synapse Analytics (先前的 SQL 資料倉儲)。 簡單來說，「資料庫」一詞同時指稱 Azure SQL Database 和 Azure Synapse Analytics 中的資料庫。 同樣地，只要提到「伺服器」，也都是指裝載 Azure SQL Database 和 Azure Synapse Analytics 的[邏輯 SQL 伺服器](logical-servers.md)。 本文「不」適用於 **Azure SQL Database 受控執行個體**。
-
-## <a name="data-exfiltration-prevention"></a>預防資料外洩
-
-當授權使用者 (例如資料庫管理員) 可以從某個系統擷取資料，並將資料移至組織外部的另一個位置或系統時，Azure SQL Database 中就會發生資料外泄。 例如，使用者將資料移至第三方所擁有的儲存體帳戶。
-
-請考慮這樣的案例：使用者在連線到 SQL Database 資料庫的 Azure 虛擬機器內執行 SQL Server Management Studio (SSMS)。 此資料庫位於美國西部的資料中心。 下列範例示範如何使用網路存取控制，在 SQL Database 上限制公用端點的存取。
-
-1. 將 [允許 Azure 服務] 設為 [關閉]，即可阻止所有 Azure 服務流量透過公用端點流向 SQL Database。 請確定伺服器和資料庫層級防火牆規則中不允許任何 IP 位址。 如需詳細資訊，請參閱 [Azure SQL Database 和 Azure Synapse Analytics 網路存取控制](network-access-controls-overview.md)。
-1. 僅允許使用 VM 的私人 IP 位址對 SQL Database 資料庫傳送流量。 如需詳細資訊，請參閱有關[服務端點](vnet-service-endpoint-rule-overview.md)和[虛擬網路防火牆規則](firewall-configure.md)的文章。
-1. 在 Azure VM 上，請使用[網路安全性群組 (NSG)](../../virtual-network/manage-network-security-group.md) 和服務標籤來縮小傳出連線的範圍，如下所示
-    - 指定 NSG 規則，以允許服務標記 = SQL.WestUs 的流量 - 僅允許連線到位於美國西部的 SQL Database
-    - 指定 NSG 規則 (使用**較高的優先順序**) 以拒絕服務標籤 = SQL 的流量 - 拒絕連線到所有區域中的 SQL Database
-
-在此設定結束時，Azure VM 只能連線到美國西部區域的 SQL Database 資料庫。 不過，連線並不限於單一 SQL Database 資料庫。 VM 仍然可以連線到美國西部區域的任何資料庫，包括不屬於訂用帳戶的資料庫。 雖然在上述案例中，我們已將資料外泄範圍縮減到特定區域，但我們尚未完全消除此問題。
-
-透過 Private Link，客戶現在可以設定網路存取控制 (例如 NSG) 來限制私人端點的存取。 這麼一來，個別的 Azure PaaS 資源就會對應到特定的私人端點。 懷有惡意的測試人員只能存取對應的 PaaS 資源 (例如 SQL Database 資料庫)，不能存取其他資源。 
-
-## <a name="on-premises-connectivity-over-private-peering"></a>透過私人對等互連的內部部署連線
-
-當客戶從內部部署機器連線到公用端點時，他們的 IP 位址必須透過[伺服器層級防火牆規則](firewall-create-server-level-portal-quickstart.md)來新增至以 IP 為基礎的防火牆。 雖然此模型可針對開發或測試工作負載來允許個別機器的存取，但難以在生產環境中進行管理。
-
-透過 Private Link，客戶可以使用 [ExpressRoute](../../expressroute/expressroute-introduction.md)、私人對等互連或 VPN 通道來啟用私人端點的跨單位存取。 接著，客戶就可以停用所有透過公用端點的存取，而不使用以 IP 為基礎的防火牆來允許任何 IP 位址。
 
 ## <a name="how-to-set-up-private-link-for-azure-sql-database"></a>如何設定適用於 Azure SQL Database 的 Private Link 
 
@@ -71,6 +49,12 @@ Private Link 可讓您透過**私人端點**連線到 Azure 中的各種 PaaS �
 
 1. 核准或拒絕之後，清單會反映適當的狀態以及回應文字。
 ![核准後的所有 PEC 螢幕擷取畫面][5]
+
+## <a name="on-premises-connectivity-over-private-peering"></a>透過私人對等互連的內部部署連線
+
+當客戶從內部部署機器連線到公用端點時，他們的 IP 位址必須透過[伺服器層級防火牆規則](firewall-create-server-level-portal-quickstart.md)來新增至以 IP 為基礎的防火牆。 雖然此模型可針對開發或測試工作負載來允許個別機器的存取，但難以在生產環境中進行管理。
+
+透過 Private Link，客戶可以使用 [ExpressRoute](../../expressroute/expressroute-introduction.md)、私人對等互連或 VPN 通道來啟用私人端點的跨單位存取。 接著，客戶就可以停用所有透過公用端點的存取，而不使用以 IP 為基礎的防火牆來允許任何 IP 位址。
 
 ## <a name="use-cases-of-private-link-for-azure-sql-database"></a>適用於 Azure SQL Database 的 Private Link 使用案例 
 
@@ -154,6 +138,22 @@ Nmap done: 256 IP addresses (1 host up) scanned in 207.00 seconds
 select client_net_address from sys.dm_exec_connections 
 where session_id=@@SPID
 ````
+
+## <a name="data-exfiltration-prevention"></a>預防資料外洩
+
+當授權使用者 (例如資料庫管理員) 可以從某個系統擷取資料，並將資料移至組織外部的另一個位置或系統時，Azure SQL Database 中就會發生資料外泄。 例如，使用者將資料移至第三方所擁有的儲存體帳戶。
+
+請考慮這樣的案例：使用者在連線到 SQL Database 資料庫的 Azure 虛擬機器內執行 SQL Server Management Studio (SSMS)。 此資料庫位於美國西部的資料中心。 下列範例示範如何使用網路存取控制，在 SQL Database 上限制公用端點的存取。
+
+1. 將 [允許 Azure 服務] 設為 [關閉]，即可阻止所有 Azure 服務流量透過公用端點流向 SQL Database。 請確定伺服器和資料庫層級防火牆規則中不允許任何 IP 位址。 如需詳細資訊，請參閱 [Azure SQL Database 和 Azure Synapse Analytics 網路存取控制](network-access-controls-overview.md)。
+1. 僅允許使用 VM 的私人 IP 位址對 SQL Database 資料庫傳送流量。 如需詳細資訊，請參閱有關[服務端點](vnet-service-endpoint-rule-overview.md)和[虛擬網路防火牆規則](firewall-configure.md)的文章。
+1. 在 Azure VM 上，請使用[網路安全性群組 (NSG)](../../virtual-network/manage-network-security-group.md) 和服務標籤來縮小傳出連線的範圍，如下所示
+    - 指定 NSG 規則，以允許服務標記 = SQL.WestUs 的流量 - 僅允許連線到位於美國西部的 SQL Database
+    - 指定 NSG 規則 (使用**較高的優先順序**) 以拒絕服務標籤 = SQL 的流量 - 拒絕連線到所有區域中的 SQL Database
+
+在此設定結束時，Azure VM 只能連線到美國西部區域的 SQL Database 資料庫。 不過，連線並不限於單一 SQL Database 資料庫。 VM 仍然可以連線到美國西部區域的任何資料庫，包括不屬於訂用帳戶的資料庫。 雖然在上述案例中，我們已將資料外泄範圍縮減到特定區域，但我們尚未完全消除此問題。
+
+透過 Private Link，客戶現在可以設定網路存取控制 (例如 NSG) 來限制私人端點的存取。 這麼一來，個別的 Azure PaaS 資源就會對應到特定的私人端點。 懷有惡意的測試人員只能存取對應的 PaaS 資源 (例如 SQL Database 資料庫)，不能存取其他資源。 
 
 ## <a name="limitations"></a>限制 
 私人端點的連線僅支援 **Proxy** 作為[連線原則](connectivity-architecture.md#connection-policy)

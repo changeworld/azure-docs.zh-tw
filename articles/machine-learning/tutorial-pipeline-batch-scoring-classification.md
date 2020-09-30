@@ -11,12 +11,12 @@ ms.author: laobri
 ms.reviewer: laobri
 ms.date: 03/11/2020
 ms.custom: contperfq4, devx-track-python
-ms.openlocfilehash: b6b4be2eb2cd490d525046541f68a45d87a8e638
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: f02638acdc60bba710280dcbeba0717173ed8b83
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90906684"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320501"
 ---
 # <a name="tutorial-build-an-azure-machine-learning-pipeline-for-batch-scoring"></a>教學課程：建置 Azure Machine Learning 管線進行批次評分
 
@@ -388,7 +388,7 @@ published_pipeline
 
 若要使用服務主體驗證，必須在 *Azure Active Directory* 建立中*應用程式註冊*。 首先，您必須產生用戶端密碼，然後將您的服務主體*角色存取權*授與機器學習工作區。 請使用 [`ServicePrincipalAuthentication`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.serviceprincipalauthentication?view=azure-ml-py&preserve-view=true) 類別管理您的驗證流程。 
 
-[`InteractiveLoginAuthentication`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.interactiveloginauthentication?view=azure-ml-py&preserve-view=true) 和 `ServicePrincipalAuthentication` 都繼承自 `AbstractAuthentication`。 在這兩種情況下，均應以相同方式使用 [`get_authentication_header()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.abstractauthentication?view=azure-ml-py#&preserve-view=trueget-authentication-header--) 函式來擷取標頭：
+[`InteractiveLoginAuthentication`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.interactiveloginauthentication?view=azure-ml-py&preserve-view=true) 和 `ServicePrincipalAuthentication` 都繼承自 `AbstractAuthentication`。 在這兩種情況下，均應以相同方式使用 [`get_authentication_header()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.abstractauthentication?view=azure-ml-py&preserve-view=true#&preserve-view=trueget-authentication-header--) 函式來擷取標頭：
 
 ```python
 from azureml.core.authentication import InteractiveLoginAuthentication

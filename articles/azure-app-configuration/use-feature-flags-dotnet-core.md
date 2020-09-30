@@ -11,15 +11,15 @@ ms.service: azure-app-configuration
 ms.workload: tbd
 ms.devlang: csharp
 ms.topic: tutorial
-ms.date: 08/12/2020
+ms.date: 09/17/2020
 ms.author: lcozzens
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 3f8a43a1ff28206a4bcc5fd059f69492c83eb34d
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: f863ca855ca36603085ed96b5aa17d277ae00516
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88224708"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317305"
 ---
 # <a name="tutorial-use-feature-flags-in-an-aspnet-core-app"></a>教學課程：在 ASP.NET Core 應用程式中使用功能旗標
 
@@ -230,6 +230,12 @@ public IActionResult Index()
 當 MVC 控制器或動作因為控制功能旗標「關閉」  而遭到封鎖時，系統便會呼叫已註冊的 `IDisabledFeaturesHandler` 介面。 預設的 `IDisabledFeaturesHandler` 介面會對用戶端傳回沒有回應本文的 404 狀態碼。
 
 ## <a name="mvc-views"></a>MVC 檢視
+
+在 *Views* 目錄中開啟 _ViewImports.cshtml  ，並新增功能管理員標記協助程式：
+
+```html
+@addTagHelper *, Microsoft.FeatureManagement.AspNetCore
+```
 
 在 MVC 檢視中，您可以使用 `<feature>` 標記，根據功能旗標是否已啟用來呈現內容：
 

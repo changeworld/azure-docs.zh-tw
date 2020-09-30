@@ -10,12 +10,12 @@ ms.date: 07/28/2020
 ms.topic: include
 ms.custom: include file
 ms.author: dademath
-ms.openlocfilehash: b4e085a4c81b44f721ddc8385d2dcd0f4a56f42a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 7fc1225a37353e43f5fb17f3394df167fb795bf7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90943950"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91303300"
 ---
 藉由使用通訊服務 C# SMS 用戶端程式庫來傳送 SMS 訊息，以開始使用 Azure 通訊服務。
 
@@ -59,13 +59,14 @@ dotnet build
 若您仍在應用程式目錄中，請使用 `dotnet add package` 命令安裝適用於 .NET 套件的 Azure 通訊服務 SMS 用戶端程式庫。
 
 ```console
-dotnet add package Azure.Communication.Sms
+dotnet add package Azure.Communication.Sms --version 1.0.0-beta.1
 ```
 
 將 `using` 指示詞新增至 **Program.cs** 的頂端，以包含 `Azure.Communication` 命名空間。
 
 ```csharp
 
+using Azure.Communication;
 using Azure.Communication.Sms;
 
 ```

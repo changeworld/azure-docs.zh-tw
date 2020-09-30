@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 入口網站以累加方式複製資料表
-description: 在本教學課程中，您會建立 Azure Data Factory 管線，以累加方式將資料從 Azure SQL 資料庫複製到 Azure Blob 儲存體。
+description: 在本教學課程中，您會建立 Azure Data Factory 與管線，以將差異資料從 Azure SQL Database 中的資料表載入至 Azure Blob 儲存體。
 services: data-factory
 author: dearandyxu
 ms.author: yexu
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-dt-2019
 ms.date: 06/10/2020
-ms.openlocfilehash: 10253b435461d62a4176164ea2a929843283f414
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 6567651f76ff19a8105158b243de7582256e0375
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86082653"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320909"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-the-azure-portal"></a>使用 Azure 入口網站以累加方式將資料從 Azure SQL Database 載入至 Azure Blob 儲存體
 

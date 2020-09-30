@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: e1a66da52eea6d5da711fa6def58eba65d0960ed
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 6cca34774038156cfb01e872e751338c1c96efaa
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74976735"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91315995"
 ---
 # <a name="tutorial-provision-devices-across-load-balanced-iot-hubs"></a>教學課程：跨負載平衡 IoT 中樞來佈建裝置
 
@@ -67,8 +67,6 @@ ms.locfileid: "74976735"
 4. 在 [將連結新增至 IoT 中樞]  頁面中，使用選項按鈕來指定連結的 IoT 中樞是位於目前的訂用帳戶中，還是位於不同的訂用帳戶中。 然後，從 [IoT 中樞]  方塊選擇 IoT 中樞的名稱。
 5. 按一下 [檔案]  。
 
-## <a name="next-steps"></a>後續步驟
-
 在本教學課程中，您已了解如何：
 
 > [!div class="checklist"]
@@ -76,6 +74,8 @@ ms.locfileid: "74976735"
 > * 在第二個裝置中新增註冊清單項目
 > * 將裝置佈建服務的配置原則設定為**平均分佈**
 > * 將新的 IoT 中樞連結至裝置佈建服務
+
+## <a name="next-steps"></a>後續步驟
 
 <!-- Advance to the next tutorial to learn how to 
  Replace this .md

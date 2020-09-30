@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 03/01/2018
 ms.author: sbowles
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9de803789b7ec11a971cf9a79a5c4665ac372cb4
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: f9d9fa461291b2fe72e9d69928163bb54e9e1be0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88928134"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91303806"
 ---
 # <a name="example-how-to-analyze-videos-in-real-time"></a>範例：如何即時分析影片
 
@@ -221,5 +221,4 @@ namespace VideoFrameConsoleApplication
 歡迎您在 [GitHub 存放庫](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/) 中提供意見反應和建議。若要提供更廣泛的 API 意見反應，請到我們的  [UserVoice 網站](https://cognitive.uservoice.com/)。
 
 ## <a name="related-topics"></a>相關主題
-- [如何識別影像中的人臉](HowtoIdentifyFacesinImage.md)
 - [如何偵測影像中的人臉](HowtoDetectFacesinImage.md)

@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 入口網站以累加方式複製多個資料表
-description: 在本教學課程中，您將建立 Azure Data Factory 管線，並以累加方式，將差異資料從 SQL Server 資料庫中的多個資料表複製到 Azure SQL Database 中的資料庫。
+description: 在本教學課程中，您將建立 Azure Data Factory 與管線，以將差異資料從 SQL Server 資料庫中的多個資料表載入至 Azure SQL Database 中的資料庫。
 services: data-factory
 ms.author: yexu
 author: dearandyxu
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 06/10/2020
-ms.openlocfilehash: c215c2cb256ab37bcb096c018aefb3a410ab1e4f
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 83c29740bd535d9508e5458a66fc8592500ceaf3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85251143"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320960"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-a-database-in-azure-sql-database-using-the-azure-portal"></a>使用 Azure 入口網站，以累加方式將 SQL Server 中多個資料表的資料載入至 Azure SQL Database 中的資料庫
 

@@ -8,18 +8,25 @@ ms.author: mikben
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: a006ece278e4ec750040bde5bd4b7a6144c9e720
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 1c79ffb02df4a64b2c506ef0863d9bb2da06db53
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90944099"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91303364"
 ---
 # <a name="what-is-azure-communication-services"></a>什麼是 Azure 通訊服務？
 
 [!INCLUDE [Public Preview Notice](./includes/public-preview-include.md)]
 
 Azure 通訊服務可讓您輕鬆地將即時多媒體語音、影片、IP 電話通訊功能加入您的應用程式。 Azure 通訊服務的用戶端程式庫也可讓您在通訊解決方案中新增聊天和 SMS 功能。
+
+<br>
+
+> [!VIDEO https://www.youtube.com/embed/49oshhgY6UQ]
+
+<br>
+<br>
 
 您可以在各種情況下，使用 Azure 通訊服務來進行語音、影片、文字、資料通訊：
 

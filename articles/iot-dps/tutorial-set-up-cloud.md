@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 925d1178ad630699cfd3d9e48677c0f029fc75af
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f45c3def84c548ba12221efa59e9ebbd4699df71
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74976718"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316064"
 ---
 # <a name="tutorial-configure-cloud-resources-for-device-provisioning-with-the-iot-hub-device-provisioning-service"></a>教學課程：設定雲端資源以使用 IoT 中樞裝置佈建服務來佈建裝置
 
@@ -27,7 +27,7 @@ ms.locfileid: "74976718"
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 
-## <a name="sign-in-to-the-azure-portal"></a>登入 Azure 入口網站
+## <a name="prerequisites"></a>必要條件
 
 登入 [Azure 入口網站](https://portal.azure.com/)。
 

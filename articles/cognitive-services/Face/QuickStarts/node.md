@@ -10,13 +10,13 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 245cb90fa49e844b6e190f6acb8a44f339fd29dd
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.custom: devx-track-js
+ms.openlocfilehash: f9ba2decf051bc21f91058e67fea8677b24714a6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88539313"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322915"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-nodejs"></a>快速入門：使用 Face REST API 和 Node.js 偵測影像中的臉部
 

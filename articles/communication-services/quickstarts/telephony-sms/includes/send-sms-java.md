@@ -10,12 +10,12 @@ ms.date: 08/20/2020
 ms.topic: include
 ms.custom: include file
 ms.author: chrwhit
-ms.openlocfilehash: 72bb38b7d9d28366fb75c5656832a1f37c770fd2
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: c11c2098d30ed6f00d94124fd77c2ebdb6cd2c7a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90943947"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91303301"
 ---
 藉由使用通訊服務 Java SMS 用戶端程式庫來傳送 SMS 訊息，以開始使用 Azure 通訊服務。
 
@@ -30,7 +30,8 @@ ms.locfileid: "90943947"
 - 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - [Java Development Kit (JDK)](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable&preserve-view=true) 第 8 版或更新版本。
 - [Apache Maven](https://maven.apache.org/download.cgi)。
-- 已部署通訊服務資源。 [建立通訊服務資源](../../create-communication-resource.md)。
+- 作用中的 Azure 通訊服務資源和連接字串。 [建立通訊服務資源](../../create-communication-resource.md)。
+- 已啟用 SMS 的電話號碼。 [取得電話號碼](../get-phone-number.md)。
 
 ### <a name="prerequisite-check"></a>先決條件檢查
 

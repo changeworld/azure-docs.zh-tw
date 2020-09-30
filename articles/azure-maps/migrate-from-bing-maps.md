@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 643e49bdba76051c873ed549d5f6c21487f34056
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: b0c23955248a3468ee6bd624ebf7281bc6c3c961
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90107990"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319600"
 ---
 # <a name="migrate-from-bing-maps-to-azure-maps"></a>從 Bing 地圖服務遷移至 Azure 地圖服務
 
@@ -81,6 +81,15 @@ Bing 地圖服務提供基本的金鑰型驗證。 Azure 地圖服務同時提�
 4.  遷移應用程式的程式碼。
 5.  測試已遷移的應用程式。
 6.  將已遷移的應用程式部署至生產環境。
+
+## <a name="create-an-azure-maps-account"></a>建立 Azure 地圖服務帳戶
+
+若要建立 Azure 地圖服務帳戶並取得 Azure 地圖服務平台的存取權，請遵循下列步驟：
+
+1. 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
+2. 登入 [Azure 入口網站](https://portal.azure.com/)。
+3. 建立 [Azure 地圖服務帳戶](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys)。 
+4. [取得您 Azure 地圖服務的訂用帳戶金鑰](https://docs.microsoft.com/azure/azure-maps/how-to-manage-authentication#view-authentication-details)或設定 Azure Active Directory 驗證以增強安全性。
 
 ## <a name="azure-maps-technical-resources"></a>Azure 地圖服務技術資源
 

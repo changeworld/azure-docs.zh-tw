@@ -3,17 +3,17 @@ title: Azure 企業版註冊發票
 description: 本文將說明如何管理 Azure 企業發票，並採取相關行動。
 author: bandersmsft
 ms.author: banders
-ms.date: 09/03/2020
+ms.date: 09/18/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: ca7aaea1e0bac1c00a373c8847623606d629e800
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: fec013395af9aeb3d83f86ab47cc52b3fedd7a1f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442508"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316132"
 ---
 # <a name="azure-enterprise-enrollment-invoices"></a>Azure 企業版註冊發票
 
@@ -162,20 +162,6 @@ ms.locfileid: "89442508"
 ### <a name="enterprise-agreement-units-of-measure"></a>Enterprise 合約的測量單位
 
 Enterprise 合約的測量單位常會與我們其他方案 (例如 Microsoft Online Services 合約方案 (MOSA)) 中顯示的不同。 此差異的意思是，許多服務的測量單位都會進行彙總，以提供標準化的定價。 在 Azure 企業版入口網站中，[使用量摘要] 檢視中顯示的測量單位一律為企業量值。 [易記服務名稱](https://azurepricing.blob.core.windows.net/supplemental/Friendly_Service_Names.xlsx) Excel 檔案中提供了每項服務目前的測量單位和轉換的完整清單。
-
-### <a name="rounding-rules"></a>進位規則
-
-Azure 企業版入口網站會遵循 IEEE 標準銀行家進位法或高斯進位邏輯。 此邏輯會將半位數值進位至最接近的偶數位數值。 多數半進位的進位邏輯一律會將半位數值進位至下一個最高的數值。 相較於標準 Excel 邏輯，此 Azure 企業版入口網站方法實際上可提供比群組更精確的總和。
-
-說明：當第一個捨入的數位值為 5，且其後沒有任何數位值，或其後的數位值為零時，則捨入至最接近的偶數位數值。 例如：2.315 和 2.325 都會捨入到最接近的百分位，變成 2.32。
-
-下表供您參考，其中示範為用於進位和轉換的 Azure 企業版入口網站規則建立模型時，應使用的 Excel 公式：
-
-| 狀況 | 銀行家邏輯公式 |
-| --- | --- |
-| 進位用法 | =MROUND({_source_}, 0.0002) |
-| 進位定價 (2 個小數位數) | =MROUND({_source_}, 0.02) |
-| 進位定價 (0 個小數位數) | =MROUND({_source_}, 2) |
 
 ### <a name="conversion-between-usage-detail-report-and-the-usage-summary-page"></a>使用量詳細資料包表和使用量摘要頁面之間的轉換
 

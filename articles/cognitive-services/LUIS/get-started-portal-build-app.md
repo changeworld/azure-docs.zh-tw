@@ -1,14 +1,16 @@
 ---
 title: 快速入門：在 LUIS 入口網站中建立新的應用程式
 description: 在本快速入門中，您會建立應用程式、意圖和實體的基本部分，以及在 LUIS 入口網站中使用範例語句進行測試。
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 05/19/2020
-ms.openlocfilehash: 7cf55a7891b7e06c18c80d9d359b19e54f0413a9
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 38fffd7793e1f5bd59ac6dde4499b2eb25009b52
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83697239"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91303840"
 ---
 # <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>快速入門：在 LUIS 入口網站中建立新的應用程式
 
