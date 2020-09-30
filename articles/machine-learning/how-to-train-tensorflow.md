@@ -5,26 +5,25 @@ description: 瞭解如何使用 Azure Machine Learning 大規模執行 TensorFlo
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.author: maxluk
-author: maxluk
-ms.date: 08/20/2019
+ms.author: minxia
+author: mx-iao
+ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 840ccec1da6df0df1ccd710d83634b850d7370fa
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 618889f40816ec8ccc64487778bf1f6fbdd3b886
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90904916"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91536540"
 ---
-# <a name="build-a-tensorflow-deep-learning-model-at-scale-with-azure-machine-learning"></a>使用 Azure Machine Learning 大規模建立 TensorFlow 深度學習模型
+# <a name="train-tensorflow-models-at-scale-with-azure-machine-learning"></a>使用 Azure Machine Learning 大規模定型 TensorFlow 模型
 
+在本文中，您將瞭解如何使用 Azure Machine Learning 大規模地執行您的 [TensorFlow](https://www.tensorflow.org/overview) 訓練腳本。
 
-本文說明如何使用 Azure Machine Learning 的[TensorFlow 估算器](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py&preserve-view=true)類別，大規模地執行您的[TensorFlow](https://www.tensorflow.org/overview)訓練腳本。 此範例會定型並註冊 TensorFlow 模型，使用深度類神經網路將手寫數位分類 (DNN) 。
+此範例會定型並註冊 TensorFlow 模型，使用深度類神經網路將手寫數位分類 (DNN) 。
 
 無論您是從頭開始開發 TensorFlow 模型，或是將 [現有的模型](how-to-deploy-existing-model.md) 帶入雲端，您都可以使用 Azure Machine Learning 來向外延展開放原始碼訓練作業，以建立、部署、設定版本和監視生產等級的模型。
-
-深入瞭解 [與機器學習的深度學習](concept-deep-learning-vs-machine-learning.md)。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -33,19 +32,19 @@ ms.locfileid: "90904916"
  - Azure Machine Learning 計算執行個體 - 不需要下載或安裝
 
      - 完成[教學課程：設定環境和工作區](tutorial-1st-experiment-sdk-setup.md)，以建立預先載入 SDK 和範例存放庫的專用筆記本伺服器。
-    - 在筆記本伺服器的 [範例深度學習] 資料夾中，流覽至下列目錄以找出已完成和展開的筆記本： **如何使用 azureml > ml-架構 > tensorflow > 部署 > 訓練-超參數-tensorflow** 資料夾。 
+    - 在筆記本伺服器的 [範例深度學習] 資料夾中，流覽至下列目錄以找出已完成和展開的筆記本： **如何使用 azureml > ml-架構 > tensorflow > 超參數-tensorflow** 資料夾。 
  
  - 您自己的 Jupyter Notebook 伺服器
 
-    - [安裝 AZURE MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)。
+    - [安裝 AZURE MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true) ( # B0 = 1.15.0) 。
     - [建立工作區設定檔](how-to-configure-environment.md#workspace)。
-    - [下載範例指令檔](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/tensorflow/deployment/train-hyperparameter-tune-deploy-with-tensorflow) `mnist-tf.py` 和 `utils.py`
+    - [下載範例指令檔](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/tensorflow/train-hyperparameter-tune-deploy-with-tensorflow) `tf_mnist.py` 和 `utils.py`
      
-    您也可以在 GitHub 範例頁面上找到本指南的完整 [Jupyter Notebook 版本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks/tensorflow/deployment/train-hyperparameter-tune-deploy-with-tensorflow/train-hyperparameter-tune-deploy-with-tensorflow.ipynb) 。 筆記本包含擴充的章節，涵蓋智慧型超參數微調、模型部署和筆記本 widget。
+    您也可以在 GitHub 範例頁面上找到本指南的完整 [Jupyter Notebook 版本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks/tensorflow/train-hyperparameter-tune-deploy-with-tensorflow/train-hyperparameter-tune-deploy-with-tensorflow.ipynb) 。 筆記本包含擴充的章節，涵蓋智慧型超參數微調、模型部署和筆記本 widget。
 
 ## <a name="set-up-the-experiment"></a>設定實驗
 
-本節藉由載入所需的 Python 套件、初始化工作區、建立實驗，以及上傳定型資料和定型腳本，來設定定型實驗。
+本節會藉由載入所需的 Python 套件、初始化工作區、建立計算目標，以及定義定型環境，來設定定型實驗。
 
 ### <a name="import-packages"></a>匯入套件
 
@@ -62,7 +61,6 @@ from azureml.core import Workspace, Run
 
 from azureml.core.compute import ComputeTarget, AmlCompute
 from azureml.core.compute_target import ComputeTargetException
-from azureml.train.dnn import TensorFlow
 ```
 
 ### <a name="initialize-a-workspace"></a>初始化工作區
@@ -73,17 +71,6 @@ from azureml.train.dnn import TensorFlow
 
 ```Python
 ws = Workspace.from_config()
-```
-
-### <a name="create-a-deep-learning-experiment"></a>建立深度學習實驗
-
-建立實驗和資料夾來保存訓練腳本。 在此範例中，請建立名為 "tf-mnist" 的實驗。
-
-```Python
-script_folder = './tf-mnist'
-os.makedirs(script_folder, exist_ok=True)
-
-exp = Experiment(workspace=ws, name='tf-mnist')
 ```
 
 ### <a name="create-a-file-dataset"></a>建立檔案資料集
@@ -106,7 +93,7 @@ dataset = Dataset.File.from_files(path=web_paths)
 
 ```python
 dataset = dataset.register(workspace=ws,
-                           name='mnist dataset',
+                           name='mnist-dataset',
                            description='training and test dataset',
                            create_new_version=True)
 
@@ -114,12 +101,12 @@ dataset = dataset.register(workspace=ws,
 dataset.to_path()
 ```
 
-## <a name="create-a-compute-target"></a>建立計算目標
+### <a name="create-a-compute-target"></a>建立計算目標
 
 建立要在其上執行之 TensorFlow 作業的計算目標。 在此範例中，請建立已啟用 GPU 的 Azure Machine Learning 計算叢集。
 
 ```Python
-cluster_name = "gpucluster"
+cluster_name = "gpu-cluster"
 
 try:
     compute_target = ComputeTarget(workspace=ws, name=cluster_name)
@@ -138,187 +125,232 @@ except ComputeTargetException:
 
 如需計算目標的詳細資訊，請參閱「 [什麼是計算目標」一](concept-compute-target.md) 文。
 
-## <a name="create-a-tensorflow-estimator"></a>建立 TensorFlow 估算器
+### <a name="define-your-environment"></a>定義您的環境
 
-[TensorFlow 估算器](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py&preserve-view=true)提供簡單的方法，讓您在計算目標上啟動 TensorFlow 訓練作業。
+若要定義 Azure ML [環境](concept-environments.md) 以封裝定型腳本的相依性，您可以定義自訂環境，或使用和 Azure ml 策劃環境。
 
-TensorFlow 估算器是透過 [`estimator`](https://docs.microsoft.com//python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py&preserve-view=true) 可用於支援任何架構的泛型類別來執行。 如需如何使用泛型估算器來將模型定型的詳細資訊，請參閱[藉由估算器使用 Azure Machine Learning 將模型定型](how-to-train-ml-models.md)
+#### <a name="create-a-custom-environment"></a>建立自訂環境
 
-如果您的定型腳本需要額外的 pip 或 conda 封裝來執行，您可以透過 `pip_packages` 和引數傳遞這些封裝的名稱，將套件安裝在產生的 Docker 映射上 `conda_packages` 。
+定義封裝定型腳本相依性的 Azure ML 環境。
 
+首先，在 YAML 檔案中定義您的 conda 相依性;在此範例中，會將檔案命名為 `conda_dependencies.yml` 。
 
-> [!WARNING]
-> Azure Machine Learning 藉由複製整個來原始目錄來執行定型腳本。 如果您有不想要上傳的機密資料，請使用 [. ignore](how-to-save-write-experiment-files.md#storage-limits-of-experiment-snapshots) 檔案，或不要將它包含在來原始目錄中。 相反地， [使用資料存放](https://docs.microsoft.com/python/api/azureml-core/azureml.data?view=azure-ml-py&preserve-view=true)區存取您的資料。
+```yaml
+channels:
+- conda-forge
+dependencies:
+- python=3.6.2
+- pip:
+  - azureml-defaults
+  - tensorflow-gpu==2.2.0
+```
 
+從這個 conda 環境規格建立 Azure ML 環境。 環境會在執行時間封裝至 Docker 容器。
+
+依預設，如果未指定基底映射，Azure ML 會使用 CPU 映射 `azureml.core.runconfig.DEFAULT_CPU_IMAGE` 作為基底映射。 因為此範例會在 GPU 叢集上執行定型，所以您必須指定具有必要 GPU 驅動程式和相依性的 GPU 基礎映射。 Azure ML 會維護一組發佈于 Microsoft Container Registry (MCR) 可供您使用的基底映射，如需詳細資訊，請參閱 [Azure/AzureML 容器 GitHub 存放](https://github.com/Azure/AzureML-Containers) 庫。
 
 ```python
-script_params = {
-    '--data-folder': dataset.as_named_input('mnist').as_mount(),
-    '--batch-size': 50,
-    '--first-layer-neurons': 300,
-    '--second-layer-neurons': 100,
-    '--learning-rate': 0.01
-}
+from azureml.core import Environment
 
-est = TensorFlow(source_directory=script_folder,
-                 entry_script='tf_mnist.py',
-                 script_params=script_params,
-                 compute_target=compute_target,
-                 use_gpu=True,
-                 pip_packages=['azureml-dataprep[pandas,fuse]'])
+tf_env = Environment.from_conda_specification(name='tensorflow-2.2-gpu', file_path='./conda_dependencies.yml')
+
+# Specify a GPU base image
+tf_env.docker.enabled = True
+tf_env.docker.base_image = 'mcr.microsoft.com/azureml/openmpi3.1.2-cuda10.1-cudnn7-ubuntu18.04'
 ```
 
 > [!TIP]
-> **Tensorflow 2.0**的支援已新增至 Tensorflow 估算器類別。 如需詳細資訊，請參閱[部落格文章](https://azure.microsoft.com/blog/tensorflow-2-0-on-azure-fine-tuning-bert-for-question-tagging/) \(英文\)。
+> （選擇性）您可以直接在自訂 Docker 映射或 Dockerfile 中捕捉所有相依性，並從該映射建立您的環境。 如需詳細資訊，請參閱 [使用自訂映射定型](how-to-train-with-custom-image.md)。
 
-如需自訂 Python 環境的詳細資訊，請參閱[建立和管理用於訓練和部署的環境](how-to-use-environments.md)。 
+如需有關建立和使用環境的詳細資訊，請參閱 [在 Azure Machine Learning 中建立和使用軟體環境](how-to-use-environments.md)。
 
-## <a name="submit-a-run"></a>提交執行
+#### <a name="use-a-curated-environment"></a>使用策劃環境
+如果您不想要建立自己的映射，Azure ML 可選擇性地提供預建的策劃環境。 Azure ML 有數個 CPU 和 GPU 策劃環境，適用于 TensorFlow 的不同 TensorFlow 版本。 如需詳細資訊，請參閱 [這裡](resource-curated-environments.md)。
+
+如果您想要使用策劃環境，您可以改為執行下列命令：
+
+```python
+curated_env_name = 'AzureML-TensorFlow-2.2-GPU'
+tf_env = Environment.get(workspace=ws, name=curated_env_name)
+```
+
+若要查看策劃環境中包含的套件，您可以將 conda 相依性寫出至磁片：
+```python
+tf_env.save_to_directory(path=curated_env_name)
+```
+
+請確定策劃環境包含定型腳本所需的所有相依性。 如果沒有，您就必須修改環境以包含遺漏的相依性。 請注意，如果環境已修改，您必須為它指定新的名稱，因為 ' AzureML ' 首碼保留給策劃環境。 如果您修改了 conda 相依性 YAML 檔案，您可以使用新名稱來建立新的環境，例如：
+```python
+tf_env = Environment.from_conda_specification(name='tensorflow-2.2-gpu', file_path='./conda_dependencies.yml')
+```
+
+如果您改為直接修改策劃環境物件，您可以使用新的名稱來複製該環境：
+```python
+tf_env = tf_env.clone(new_name='tensorflow-2.2-gpu')
+```
+
+## <a name="configure-and-submit-your-training-run"></a>設定並提交定型回合
+
+### <a name="create-a-scriptrunconfig"></a>建立 ScriptRunConfig
+
+建立 [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true) 物件，以指定定型作業的設定詳細資料，包括您的訓練腳本、要使用的環境，以及要執行的計算目標。 如果您在參數中指定，將會透過命令列傳遞定型腳本的任何引數 `arguments` 。
+
+```python
+from azureml.core import ScriptRunConfig
+
+args = ['--data-folder', dataset.as_mount(),
+        '--batch-size', 64,
+        '--first-layer-neurons', 256,
+        '--second-layer-neurons', 128,
+        '--learning-rate', 0.01]
+
+src = ScriptRunConfig(source_directory=script_folder,
+                      script='tf_mnist.py',
+                      arguments=args,
+                      compute_target=compute_target,
+                      environment=tf_env)
+```
+
+> [!WARNING]
+> Azure Machine Learning 藉由複製整個來原始目錄來執行定型腳本。 如果您有不想要上傳的機密資料，請使用 [. ignore](how-to-save-write-experiment-files.md#storage-limits-of-experiment-snapshots) 檔案，或不要將它包含在來原始目錄中。 相反地，請使用 Azure ML [資料集](how-to-train-with-datasets.md)來存取您的資料。
+
+如需使用 ScriptRunConfig 設定作業的詳細資訊，請參閱 [設定和提交定型](how-to-set-up-training-targets.md)回合。
+
+> [!WARNING]
+> 如果您先前使用 TensorFlow 估算器來設定您的 TensorFlow 訓練作業，請注意，在未來的 Azure ML SDK 版本中，估算器將會被取代。 使用 Azure ML SDK >= 1.15.0，ScriptRunConfig 是設定定型作業（包括使用 DL 架構）的建議方式。
+
+### <a name="submit-a-run"></a>提交執行
 
 當作業正在執行時， [執行物件](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py&preserve-view=true) 會提供介面給執行歷程記錄，並在完成後提供。
 
 ```Python
-run = exp.submit(est)
+run = Experiment(workspace=ws, name='tf-mnist').submit(src)
 run.wait_for_completion(show_output=True)
 ```
-
+### <a name="what-happens-during-run-execution"></a>執行期間發生的情況
 執行執行時，它會經歷下列階段：
 
-- **準備**：根據 TensorFlow 估算器建立 Docker 映射。 映射上傳至工作區的容器登錄，並快取以供稍後執行。 記錄也會串流至執行歷程記錄，並可加以查看以監視進度。
+- **準備**：根據定義的環境建立 docker 映射。 映射上傳至工作區的容器登錄，並快取以供稍後執行。 記錄也會串流至執行歷程記錄，並可加以查看以監視進度。 如果改為指定策劃環境，則會使用支援該策劃環境的快取映射。
 
 - **調整**：如果 Batch AI 叢集需要更多節點來執行執行比目前可用的節點，則叢集會嘗試擴大規模。
 
-- **執行中：腳本**資料夾中的所有腳本都會上傳至計算目標、裝載或複製資料存放區，並執行 entry_script。 Stdout 和./logs 資料夾的輸出會串流處理至執行歷程記錄，並可用來監視執行。
+- 執行**中：腳本**資料夾中的所有腳本都會上傳至計算目標、裝載或複製資料存放區，並 `script` 執行。 Stdout 和 **./logs** 資料夾的輸出會串流處理至執行歷程記錄，並可用來監視執行。
 
-- **後續處理**：執行的./outputs 資料夾會複製到執行歷程記錄。
+- **後續處理**：執行的 **./outputs** 資料夾會複製到執行歷程記錄。
 
 ## <a name="register-or-download-a-model"></a>註冊或下載模型
 
-當您將模型定型之後，就可以將它註冊到您的工作區。 註冊模型可讓您在工作區中儲存模型並設定其版本，以簡化[模型管理和部署](concept-model-management-and-deployment.md)。 藉由指定參數 `model_framework` 、 `model_framework_version` 和 `resource_configuration` ，將無法使用任何程式碼模型部署。 這可讓您直接從註冊的模型將模型部署為 web 服務，而物件會 `ResourceConfiguration` 定義 web 服務的計算資源。
+當您將模型定型之後，就可以將它註冊到您的工作區。 註冊模型可讓您在工作區中儲存模型並設定其版本，以簡化[模型管理和部署](concept-model-management-and-deployment.md)。 選擇性：藉由指定參數 `model_framework` 、 `model_framework_version` 和 `resource_configuration` ，將無法使用任何程式碼模型部署。 這可讓您直接從註冊的模型將模型部署為 web 服務，而物件會 `ResourceConfiguration` 定義 web 服務的計算資源。
 
 ```Python
 from azureml.core import Model
 from azureml.core.resource_configuration import ResourceConfiguration
 
-model = run.register_model(model_name='tf-dnn-mnist', 
+model = run.register_model(model_name='tf-mnist', 
                            model_path='outputs/model',
                            model_framework=Model.Framework.TENSORFLOW,
-                           model_framework_version='1.13.0',
+                           model_framework_version='2.0',
                            resource_configuration=ResourceConfiguration(cpu=1, memory_in_gb=0.5))
 ```
 
-您也可以使用 Run 物件來下載模型的本機複本。 在定型腳本中 `mnist-tf.py` ，TensorFlow 保護物件會將模型保存到計算目標)  (本機的本機資料夾。 您可以使用 [執行] 物件下載複本。
+您也可以使用 Run 物件來下載模型的本機複本。 在定型腳本中 `tf_mnist.py` ，TensorFlow 保護物件會將模型保存到計算目標)  (本機的本機資料夾。 您可以使用 [執行] 物件下載複本。
 
 ```Python
 # Create a model folder in the current directory
 os.makedirs('./model', exist_ok=True)
-
-for f in run.get_file_names():
-    if f.startswith('outputs/model'):
-        output_file_path = os.path.join('./model', f.split('/')[-1])
-        print('Downloading from {} to {} ...'.format(f, output_file_path))
-        run.download_file(name=f, output_file_path=output_file_path)
+run.download_files(prefix='outputs/model', output_directory='./model', append_prefix=False)
 ```
 
 ## <a name="distributed-training"></a>分散式定型
 
-[`TensorFlow`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py&preserve-view=true)估算器也支援跨 CPU 和 GPU 叢集的分散式定型。 您可以輕鬆地執行分散式 TensorFlow 作業，Azure Machine Learning 將會為您管理協調流程。
+Azure Machine Learning 也支援多節點分散式 TensorFlow 作業，讓您可以調整定型工作負載。 您可以輕鬆地執行分散式 TensorFlow 作業，Azure ML 將會為您管理協調流程。
 
-Azure Machine Learning 支援 TensorFlow 中兩種分散式訓練方法：
-
-- 使用[Horovod](https://github.com/uber/horovod)架構的[MPI 型](https://www.open-mpi.org/)分散式訓練
-- 使用參數伺服器方法的原生[分散式 TensorFlow](https://www.tensorflow.org/deploy/distributed)
+Azure ML 支援使用 Horovod 和 TensorFlow 的內建分散式訓練 API 來執行分散式 TensorFlow 作業。
 
 ### <a name="horovod"></a>Horovod
+[Horovod](https://github.com/uber/horovod) 是一個開放原始碼，可針對 Uber 所開發的分散式訓練進行縮減架構。 它提供簡單的途徑來撰寫分散式 TensorFlow 程式碼以進行定型。
 
-[Horovod](https://github.com/uber/horovod) 是一種開放原始碼架構，適用于 Uber 所開發的分散式訓練。 它提供分散式 GPU TensorFlow 作業的簡單路徑。
+您的定型程式碼必須使用 Horovod 進行檢測，以進行分散式訓練。 如需搭配使用 Horovod 與 TensorFlow 的詳細資訊，請參閱 Horovod 檔：
 
-若要使用 Horovod，請 [`MpiConfiguration`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?view=azure-ml-py&preserve-view=true) 在 TensorFlow 的函式中指定參數的物件 `distributed_training` 。 此參數可確保已安裝 Horovod 程式庫，供您在定型腳本中使用。
+如需搭配使用 Horovod 與 TensorFlow 的詳細資訊，請參閱 Horovod 檔：
 
-```Python
+* [使用 TensorFlow 的 Horovod](https://github.com/horovod/horovod/blob/master/docs/tensorflow.rst)
+* [Horovod 與 TensorFlow 的 Keras API](https://github.com/horovod/horovod/blob/master/docs/keras.rst)
+
+此外，請確定您的訓練環境包含 **horovod** 套件。 如果您使用 TensorFlow 策劃環境，則 horovod 已包含為其中一個相依性。 如果您使用自己的環境，請確定已包含 horovod 相依性，例如：
+
+```yaml
+channels:
+- conda-forge
+dependencies:
+- python=3.6.2
+- pip:
+  - azureml-defaults
+  - tensorflow-gpu==2.2.0
+  - horovod==0.19.5
+```
+
+若要在 Azure ML 上使用 MPI/Horovod 執行分散式作業，您必須對 ScriptRunConfig 函式的參數指定 [MpiConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?view=azure-ml-py&preserve-view=true) `distributed_job_config` 。 下列程式碼會設定兩個節點的分散式作業，每個節點執行一個進程。 如果您也想要針對每個節點執行多個進程 (也就是，如果您的叢集 SKU) 有多個 Gpu，請另外 `process_count_per_node` 在 MpiConfiguration 中指定參數 (預設值為 `1`) 。
+
+```python
+from azureml.core import ScriptRunConfig
 from azureml.core.runconfig import MpiConfiguration
-from azureml.train.dnn import TensorFlow
 
-# Tensorflow constructor
-estimator= TensorFlow(source_directory=project_folder,
+src = ScriptRunConfig(source_directory=project_folder,
+                      script='tf_horovod_word2vec.py',
+                      arguments=['--input_data', dataset.as_mount()],
                       compute_target=compute_target,
-                      script_params=script_params,
-                      entry_script='script.py',
-                      node_count=2,
-                      process_count_per_node=1,
-                      distributed_training=MpiConfiguration(),
-                      framework_version='1.13',
-                      use_gpu=True,
-                      pip_packages=['azureml-dataprep[pandas,fuse]'])
+                      environment=tf_env,
+                      distributed_job_config=MpiConfiguration(node_count=2))
 ```
 
-### <a name="parameter-server"></a>參數伺服器
+如需在 Azure ML 上搭配 Horovod 執行分散式 TensorFlow 的完整教學課程，請參閱 [使用 Horovod 的分散式 TensorFlow](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks/tensorflow/distributed-tensorflow-with-horovod)。
 
-您也可以執行[原生分散式 TensorFlow](https://www.tensorflow.org/deploy/distributed)，其會使用參數伺服器模型。 在此方法中，您會在參數伺服器與工作者的整個叢集中進行訓練。 工作者會在訓練期間會計算升降度，而參數伺服器會彙總升降度。
+### <a name="tfdistribute"></a>tf. 散發
 
-若要使用參數伺服器方法，請 [`TensorflowConfiguration`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.tensorflowconfiguration?view=azure-ml-py&preserve-view=true) 在 TensorFlow 函式 `distributed_training` 中指定參數的物件。
+如果您在定型程式碼中使用 [原生分散式 TensorFlow](https://www.tensorflow.org/guide/distributed_training) ，例如 TensorFlow 2.X 的 `tf.distribute.Strategy` API，您也可以透過 Azure ML 啟動分散式作業。 
 
-```Python
-from azureml.train.dnn import TensorFlow
+若要這樣做，請將 [TensorflowConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.tensorflowconfiguration?view=azure-ml-py&preserve-view=true) 指定為 ScriptRunConfig 函式的 `distributed_job_config` 參數。 如果您使用 `tf.distribute.experimental.MultiWorkerMirroredStrategy` ，請 `worker_count` 在 TensorflowConfiguration 中指定對應于定型作業節點數目的。
 
-distributed_training = TensorflowConfiguration()
-distributed_training.worker_count = 2
+```python
+import os
+from azureml.core import ScriptRunConfig
+from azureml.core.runconfig import TensorflowConfiguration
 
-# Tensorflow constructor
-tf_est= TensorFlow(source_directory=project_folder,
+distr_config = TensorflowConfiguration(worker_count=2, parameter_server_count=0)
+
+model_path = os.path.join("./outputs", "keras-model")
+
+src = ScriptRunConfig(source_directory=source_dir,
+                      script='train.py',
+                      arguments=["--epochs", 30, "--model-dir", model_path],
                       compute_target=compute_target,
-                      script_params=script_params,
-                      entry_script='script.py',
-                      node_count=2,
-                      process_count_per_node=1,
-                      distributed_training=distributed_training,
-                      use_gpu=True,
-                      pip_packages=['azureml-dataprep[pandas,fuse]'])
-
-# submit the TensorFlow job
-run = exp.submit(tf_est)
+                      environment=tf_env,
+                      distributed_job_config=distr_config)
 ```
 
-#### <a name="define-cluster-specifications-in-tf_config"></a>在 ' TF_CONFIG ' 中定義叢集規格
+在 TensorFlow 中， `TF_CONFIG` 需要有環境變數，才能在多部電腦上進行定型。 Azure ML 會 `TF_CONFIG` 在執行定型腳本之前，為每個背景工作設定並適當地設定變數。 如果需要，您可以 `TF_CONFIG` 從訓練腳本進行存取 `os.environ['TF_CONFIG']` 。
 
-您也需要的群集的網路位址和埠 [`tf.train.ClusterSpec`](https://www.tensorflow.org/api_docs/python/tf/train/ClusterSpec) ，因此 Azure Machine Learning `TF_CONFIG` 為您設定環境變數。
-
-`TF_CONFIG` 環境變數為 JSON 字串。 以下為參數伺服器變數的範例：
-
+`TF_CONFIG`主要背景工作節點上設定的範例結構：
 ```JSON
 TF_CONFIG='{
     "cluster": {
-        "ps": ["host0:2222", "host1:2222"],
-        "worker": ["host2:2222", "host3:2222", "host4:2222"],
+        "worker": ["host0:2222", "host1:2222"]
     },
-    "task": {"type": "ps", "index": 0},
+    "task": {"type": "worker", "index": 0},
     "environment": "cloud"
 }'
 ```
 
-針對 TensorFlow 的高層級 [`tf.estimator`](https://www.tensorflow.org/api_docs/python/tf/estimator) API，TensorFlow 會剖析 `TF_CONFIG` 變數並為您建立叢集規格。
-
-針對用於定型的 TensorFlow 較低層級核心 Api，請剖析 `TF_CONFIG` 變數，並 `tf.train.ClusterSpec` 在您的定型程式碼中建立。
-
-```Python
-import os, json
-import tensorflow as tf
-
-tf_config = os.environ.get('TF_CONFIG')
-if not tf_config or tf_config == "":
-    raise ValueError("TF_CONFIG not found.")
-tf_config_json = json.loads(tf_config)
-cluster_spec = tf.train.ClusterSpec(cluster)
-
-```
+如果您的定型腳本使用參數伺服器策略進行分散式定型，也就是針對舊版 TensorFlow 1.x，您也必須指定要在作業中使用的參數伺服器數目，例如 `distr_config = TensorflowConfiguration(worker_count=2, parameter_server_count=1)` 。
 
 ## <a name="deploy-a-tensorflow-model"></a>部署 TensorFlow 模型
 
-您剛剛註冊的模型可以與 Azure Machine Learning 中的任何其他已註冊模型完全相同，無論您使用何種估算器來進行定型。 部署如何包含註冊模型的區段，但您可以直接跳到建立部署的 [計算目標](how-to-deploy-and-where.md#choose-a-compute-target) ，因為您已經有已註冊的模型。
+部署如何包含註冊模型的區段，但您可以直接跳到建立部署的 [計算目標](how-to-deploy-and-where.md#choose-a-compute-target) ，因為您已經有已註冊的模型。
 
-## <a name="preview-no-code-model-deployment"></a> (Preview) 無程式碼模型部署
+### <a name="preview-no-code-model-deployment"></a> (Preview) 無程式碼模型部署
 
-您也可以使用 Tensorflow 的「無程式碼部署」功能 (preview) ，而不是傳統的部署路由。 藉由使用、和參數來註冊您的模型（如上所示 `model_framework` `model_framework_version` `resource_configuration` ），您可以直接使用靜態函式 `deploy()` 來部署模型。
+您也可以使用 TensorFlow 的「無程式碼部署」功能 (preview) ，而不是傳統的部署路由。 藉由使用、和參數來註冊您的模型（如上所示 `model_framework` `model_framework_version` `resource_configuration` ），您可以直接使用靜態函式 `deploy()` 來部署模型。
 
 ```python
 service = Model.deploy(ws, "tensorflow-web-service", [model])
@@ -326,7 +358,7 @@ service = Model.deploy(ws, "tensorflow-web-service", [model])
 
 [完整的作法涵蓋了 Azure Machine Learning](how-to-deploy-and-where.md)更深入的部署。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 在本文中，您已訓練並註冊 TensorFlow 模型，並瞭解部署的選項。 若要深入瞭解 Azure Machine Learning，請參閱這些其他文章。
 

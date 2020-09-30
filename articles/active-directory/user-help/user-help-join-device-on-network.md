@@ -12,12 +12,12 @@ ms.topic: end-user-help
 ms.date: 08/03/2018
 ms.author: curtand
 ms.reviewer: jairoc
-ms.openlocfilehash: 146b867f1075a7eac1b6817f5fc8dbcd7ba04b02
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: efb3ee24add847baf8264eccdf71278be5ee9496
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91333404"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91536965"
 ---
 # <a name="join-your-work-device-to-your-organizations-network"></a>將您的工作裝置加入組織的網路
 將您工作用的 Windows 10 裝置加入組織的網路，如此就能存取可能受限的資源。
@@ -48,7 +48,7 @@ ms.locfileid: "91333404"
 
 4. 在您的行動裝置上，核准您的裝置，讓它可以存取您的帳戶。 
 
-    ![行動裝置通知畫面](./media/user-help-join-device-on-network/join-device-oobe-mobile.png)
+    ![顯示「輸入您的密碼」通知畫面的螢幕擷取畫面。](./media/user-help-join-device-on-network/join-device-oobe-mobile.png)
 
 5. 完成 OOBE 程序，包括設定隱私權設定，以及設定 Windows Hello (如有必要)。
 
@@ -63,7 +63,7 @@ ms.locfileid: "91333404"
 
 2. 選取 [ **存取公司或學校**]，並確定您看到的文字顯示為 [ **已連線到 *\<your_organization>* Azure AD**]。
 
-    ![具有已連線之 contoso 帳戶的 [存取公司或學校資源] 畫面](./media/user-help-join-device-on-network/join-device-oobe-verify.png)
+    ![螢幕擷取畫面，顯示已選取 [已連線到您組織的 () Azure AD] 帳戶的 [存取公司或學校] 視窗。](./media/user-help-join-device-on-network/join-device-oobe-verify.png)
 
 
 ## <a name="to-join-an-already-configured-windows-10-device"></a>加入已經設定的 Windows 10 裝置

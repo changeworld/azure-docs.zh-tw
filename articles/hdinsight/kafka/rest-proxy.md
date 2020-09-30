@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: has-adal-ref, devx-track-python
 ms.date: 04/03/2020
-ms.openlocfilehash: 508d054bc4eed88867bb6e3282edbafaae9a5247
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 97bd71dd5a70a867f45915a5a5f95f6513f2a824
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89298040"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541725"
 ---
 # <a name="interact-with-apache-kafka-clusters-in-azure-hdinsight-using-a-rest-proxy"></a>使用 REST Proxy 與 Azure HDInsight 中的 Apache Kafka 叢集互動
 
@@ -63,11 +63,11 @@ Kafka REST Proxy 的存取權會以 Azure Active Directory 安全性群組進行
 
 1. 在建立 Kafka 叢集的工作流程中，於 [安全性 + 網路] 索引標籤中，勾選 [啟用 Kafka REST Proxy] 選項。
 
-     ![啟用 Kafka REST Proxy 並選取安全性群組](./media/rest-proxy/azure-portal-cluster-security-networking-kafka-rest.png)
+     ![螢幕擷取畫面顯示 [建立 H D 深入解析叢集] 頁面，其中已選取 [安全性 + 網路]。](./media/rest-proxy/azure-portal-cluster-security-networking-kafka-rest.png)
 
 1. 按一下 [選取安全性群組]。 從安全性群組清單中，選取您想讓其存取 REST Proxy 的安全性群組。 您可以使用搜尋方塊來尋找適當的安全性群組。 按一下底部的 [選取] 按鈕。
 
-     ![啟用 Kafka REST Proxy 並選取安全性群組](./media/rest-proxy/azure-portal-cluster-security-networking-kafka-rest2.png)
+     ![螢幕擷取畫面顯示 [建立 H D 深入解析叢集] 頁面，其中包含選取安全性群組的選項。](./media/rest-proxy/azure-portal-cluster-security-networking-kafka-rest2.png)
 
 1. 完成剩餘步驟來建立您的叢集，如＜[使用 Azure 入口網站在 Azure HDInsight 中建立 Apache Kafka 叢集](https://docs.microsoft.com/azure/hdinsight/kafka/apache-kafka-get-started)＞中所述。
 

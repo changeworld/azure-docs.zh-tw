@@ -3,12 +3,12 @@ title: Azure 資源健康狀態常見問題集
 description: Azure 資源健康狀態的概觀
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: 345724a28441e5a6b20863da8d2fd47be0a8d6f9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c8089e907f555ac970fea06361a2ab1bbc944778
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518940"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91536489"
 ---
 # <a name="azure-resource-health-faq"></a>Azure 資源健康狀態常見問題集
 了解 Azure 資源健康狀態相關常見問題的答案。
@@ -37,7 +37,7 @@ ms.locfileid: "86518940"
 ## <a name="how-can-i-get-help-for-a-resource-that-is-unavailable"></a>如何取得無法使用的資源說明？
 您可以從 [資源健康狀態] 刀鋒視窗提交支援要求。 當資源因為平台事件而無法使用時，您無需 Microsoft 的支援合約即可將要求開啟。
 
-## <a name="does-resource-health-differentiate-between-unavailability-caused-by-platform-problems-versus-something-i-did"></a>資源健康狀態是否會區分因平臺問題而造成的無法使用情形與我所做的不同？
+## <a name="does-resource-health-differentiate-between-unavailability-caused-by-platform-problems-versus-something-i-did"></a>資源健康狀態是否會區分平臺問題所導致的無法使用，與我所做的不同之處？
 是，當資源無法使用時，資源健康狀態會在下列其中一種類別內識別出根本原因： 
 -   使用者啟動的動作
 -   規劃的事件 
@@ -46,12 +46,12 @@ ms.locfileid: "86518940"
 在入口網站中，會使用藍色通知圖示來顯示使用者啟動的動作，而規劃與未規劃的事件則會使用紅色警告圖示來顯示。 [資源健康狀態概觀](Resource-health-overview.md)中會提供更多詳細資料。  
 
 ## <a name="can-i-integrate-resource-health-with-my-monitoring-tools"></a>可以將資源健康狀態與我的監視工具進行整合嗎？
-資源健康狀態具有以活動記錄為基礎的警示[預覽支援](resource-health-alert-arm-template-guide.md)。 活動記錄警示使用[動作群組](../azure-monitor/platform/action-groups.md)來通知使用者已觸發警示。 動作群組支援各種通知通道，例如電子郵件、SMS、webhook 和 ITSM 動作。
+資源健康狀態 [支援](resource-health-alert-arm-template-guide.md) 以活動記錄為基礎的警示。 活動記錄警示會使用 [動作群組](../azure-monitor/platform/action-groups.md) 來通知使用者已觸發警示。 動作群組支援各種通知通道，例如電子郵件、SMS、webhook 和 ITSM 動作。
 
 ## <a name="where-do-i-find-resource-health"></a>哪裡可以找到資源健康狀態？
 登入 Azure 入口網站之後，您可以使用多種方式來存取資源健康狀態：
 - 瀏覽至您的資源。 在左側導覽中，選取 [資源健康狀態]****。
-- 移至 [Azure 服務健康狀態] 刀鋒視窗。  在左側導覽中，選取 [**資源健康狀態**]。
+- 移至 [Azure 服務健康狀態] 刀鋒視窗。  在左側導覽中，選取 [ **資源健康狀態**]。
 - 按一下入口網站右上角的問號，然後選取 [說明 + 支援]****，即可開啟 [說明 + 支援]**** 刀鋒視窗。 當刀鋒視窗開啟之後，選取 [資源健康狀態]****。
 
 您也可以使用資源健康狀態 API，來取得資源的健康狀態相關資訊。
@@ -63,7 +63,7 @@ ms.locfileid: "86518940"
 檢查資源的健康情況時，您可以在健全狀態下面按一下 [報告不正確的健全狀態]****。 提交報表之前，您可以選擇提供為何您認為目前健全狀態不正確的其他相關詳細資料。
 
 ## <a name="is-resource-health-available-for-all-azure-regions"></a>資源健康狀態是否適用於所有的 Azure 區域？ 
-資源健康狀態適用于所有 Azure 地區。
+所有 Azure 地區都有提供資源健康狀態。
 
 ## <a name="how-is-resource-health-different-from-azure-status-or-the-service-health-dashboard"></a>資源健康狀態和 Azure 狀態或服務健康狀態儀表板有何不同？
 資源健康狀態可提供比 Azure 狀態或服務健康狀態儀表板更明確的資訊。
@@ -88,4 +88,4 @@ ms.locfileid: "86518940"
 
 深入了解資源健康狀態：
 -  [Azure 資源健康狀態總覽](Resource-health-overview.md)
--  [可透過 Azure 資源健康狀態取得的資源類型和健康情況檢查](resource-health-checks-resource-types.md)
+-  [可透過 Azure 資源健康狀態使用的資源類型和健康情況檢查](resource-health-checks-resource-types.md)

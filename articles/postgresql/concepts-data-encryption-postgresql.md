@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 1be04c0617dc4ed235cc3f3bc29aa58f4c2cb1d2
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 7361355a81de019af90e908f11c4d283b7f16cc9
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90902137"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91542116"
 ---
 # <a name="azure-database-for-postgresql-single-server-data-encryption-with-a-customer-managed-key"></a>適用於 PostgreSQL 的 Azure 資料庫單一伺服器會使用客戶管理的金鑰進行資料加密
 
@@ -79,7 +79,7 @@ Key Vault 是雲端式外部金鑰管理系統。 其具有高可用性，並為
 * 請確定 Key Vault 和適用於 PostgreSQL 單一伺服器的 Azure 資料庫都位於相同的區域，以確保存取 DEK 包裝和解除包裝作業更有效率。
 * 鎖定 Azure KeyVault 為只限**私人端點和選取的網路**，並僅允許*信任的 Microsoft* 服務以保護資源。
 
-    :::image type="content" source="media/concepts-data-access-and-security-data-encryption/keyvault-trusted-service.png" alt-text="trusted-service-with-AKV":::
+    :::image type="content" source="media/concepts-data-access-and-security-data-encryption/keyvault-trusted-service.png" alt-text="顯示「攜帶您自己的金鑰」總覽圖表":::
 
 以下是設定客戶管理的金鑰的建議：
 
@@ -121,9 +121,9 @@ Key Vault 是雲端式外部金鑰管理系統。 其具有高可用性，並為
 
 在「適用於 PostgreSQL 單一伺服器的 Azure 資料庫」使用儲存於 Key Vault 的客戶管理金鑰加密之後，任何新建立的伺服器複本也會一併加密。 您可以透過本機或異地復原作業，或者是讀取複本來建立這個新複本。 不過，複本可能會變更以反映新的客戶管理加密金鑰。 客戶管理的金鑰變更時，伺服器的舊備份會開始使用最新的金鑰。
 
-若要避免在還原或讀取複本期間，設定客戶管理的資料加密時所發生的問題，請務必在主要和還原/複本伺服器上執行下列步驟：
+若要避免在還原或讀取複本建立期間設定客戶管理的資料加密時發生問題，請務必在主要和已還原/複本伺服器上執行下列步驟：
 
-* 從主要「適用於 PostgreSQL 單一伺服器的 Azure 資料庫」起始還原或讀取複本建立流程。
+* 從主要適用於 PostgreSQL 的 Azure 資料庫單一伺服器起始還原或讀取複本建立程式。
 * 將新建立的伺服器 (還原/複本) 保留在無法存取的狀態，因為它的唯一身分識別尚未授與 Key Vault 權限。
 * 在還原/複本伺服器上，重新驗證資料加密設定中客戶管理的金鑰。 這可確保新建立的伺服器會針對儲存於 Key Vault 的金鑰，提供包裝和解除包裝的權限。
 

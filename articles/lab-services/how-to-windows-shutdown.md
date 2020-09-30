@@ -2,13 +2,13 @@
 title: 在 Azure 實驗室服務中控制 Windows 關機行為的指南 |Microsoft Docs
 description: 自動關機閒置的 Windows 虛擬機器，並移除 Windows 關機命令的步驟。
 ms.topic: article
-ms.date: 06/26/2020
-ms.openlocfilehash: 3c20bc2bb79faf53c4f3fbd113c18c5c6d923e59
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 09/29/2020
+ms.openlocfilehash: c6021131787dde4fe23ec4caad107bda2e20158a
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91334016"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541555"
 ---
 # <a name="guide-to-controlling-windows-shutdown-behavior"></a>控制 Windows 關機行為的指南
 
@@ -31,50 +31,6 @@ Azure Lab Services 提供數個成本控制，以確保 Windows 虛擬機器 (Vm
 
 > [!NOTE]
 > 當學生啟動 VM 時，VM 也可能會意外地從配額中扣除，但永遠不會使用 RDP 來連線至 VM。  本指南目前 *無法* 解決這種情況。  相反地，學生應該在啟動後，使用 RDP 立即連線至其 VM;或者，它們應該會停止 VM。
-
-## <a name="automatic-rdp-disconnect-and-shutdown-for-idle-vm"></a>閒置 VM 的自動 RDP 中斷連線和關機
-
-Windows 提供 **本機群組原則** 設定，可讓您用來設定時間限制，以在 RDP 會話閒置時自動將其中斷連線。  當 *沒有任何 mouse\keyboard 輸入時，會話* 會被判斷為閒置。  任何不涉及 mouse\keyboard 輸入的長時間執行活動都會導致 VM 處於閒置狀態。  這包括執行長查詢、串流處理影片、編譯等等。 視您的類別需求而定，您可以選擇設定閒置時間限制，讓它夠長的時間可以處理這些類型的活動。  例如，您可以視需要將閒置時間限制設定為1或更多小時。
-
-以下是當您將 **閒置會話限制** 與中斷連線設定的 [**自動關機**](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-enable-shutdown-disconnect) 設定合併時的學生經驗：
- 1. 學生使用 RDP 連接到其 Windows VM。
- 2. 當學生將其 RDP 視窗保持在開啟狀態，且 VM 處於閒置狀態時，您所指定的 **閒置會話限制** (例如5分鐘) ，學生將會看到下列對話方塊：
-
-    ![閒置時間限制已過期對話方塊](./media/how-to-windows-shutdown/idle-time-expired.png)
-
-1. 如果學生 *未* 按一下 **[確定]**，其 RDP 會話將會在2分鐘後自動中斷連線。
-2. 在 RDP 會話中斷連線之後，一旦達到 [中斷連線時 **自動關機]** 設定的指定時間範圍，Azure 實驗室服務便會自動關閉 VM。
-
-### <a name="set-rdp-idle-session-time-limit-on-the-template-vm"></a>在範本 VM 上設定 RDP 閒置會話時間限制
-
-若要設定 RDP 會話閒置時間限制，您可以連線至範本 VM，然後執行下列 PowerShell 腳本。
-
-```powershell
-# The MaxIdleTime is in milliseconds; by default, this script sets MaxIdleTime to 15 minutes.
-$maxIdleTime = 15 * 60 * 1000
-
-Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" -Name "MaxIdleTime" -Value $maxIdleTime -Force
-```
-或者，您可以選擇使用範本 VM 來執行下列手動步驟：
-
-1. 按 Windows 鍵，輸入 **gpedit.msc**，然後選取 [ **編輯群組原則] (控制台]) **。
-
-1. 移至 [電腦設定] **> 系統管理範本 > Windows 元件] > 遠端桌面服務 > 遠端桌面工作階段主機會話時間限制**。  
-
-    ![顯示 [本機群組原則編輯器] 的螢幕擷取畫面，其中已選取 [會話時間限制]。](./media/how-to-windows-shutdown/group-policy-idle.png)
-   
-1. 以滑鼠右鍵按一下 [設定作用中 **但閒置遠端桌面服務會話的時間限制**]，然後按一下 [ **編輯**]。
-
-1. 輸入下列設定，然後按一下 **[確定]**：
-   1. 選取 [啟用] 。
-   1. 在 [ **選項**] 底下，指定 **閒置會話限制**。
-
-    ![閒置工作階段限制](./media/how-to-windows-shutdown/edit-idle-time-limit.png)
-
-1. 最後，若要將此行為與 [ **中斷連線時自動關機]** 設定結合，您應該依照操作說明文章中的步驟： [在中斷連接時啟用 vm 的自動關機](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-enable-shutdown-disconnect)。
-
-> [!WARNING]
-> 使用 PowerShell 來設定這項設定，以直接或使用群組原則編輯器手動修改登錄設定之後，您必須先重新開機 VM，設定才會生效。  此外，如果您使用登錄設定設定，群組原則編輯器不一定會重新整理以反映登錄設定的變更;但是，登錄設定仍會如預期般生效，而且當您指定的時間長度閒置時，會看到 RDP 會話已中斷連線。
 
 ## <a name="remove-windows-shutdown-command-from-start-menu"></a>從 [開始] 功能表移除 Windows 關機命令
 

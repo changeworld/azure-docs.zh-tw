@@ -3,32 +3,30 @@ title: 批次測試-LUIS
 titleSuffix: Azure Cognitive Services
 description: 使用批次測試持續調整您的應用程式，改良應用程式及其語言理解能力。
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/25/2019
-ms.author: diberry
-ms.openlocfilehash: a5ebd9b05b2dea9e04d4c9745c13d692ea88fcb8
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: f3a8f5ef8119d9895f67e07ea1b68c660be59f9b
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680418"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541861"
 ---
 # <a name="batch-testing-with-1000-utterances-in-luis-portal"></a>在 LUIS 入口網站使用 1000 個語句進行批次測試
 
-批次測試會驗證您的有效定型版本，以測量其預測準確度。 批次測試可協助您查看使用中版本中每個意圖和實體的精確度，並以圖表顯示結果。 請檢查批次測試結果，採取適當的動作來改善精確度，例如，如果您的應用程式經常無法識別正確意圖或標記語句中的實體，則將更多範例語句新增至意圖。
+批次測試會驗證您使用中的定型版本，以測量其預測精確度。 批次測試可協助您在使用中版本中查看每個意圖和實體的精確度，並以圖表顯示結果。 請參閱批次測試結果，以採取適當的動作來改善精確度，例如，如果您的應用程式經常無法識別正確意圖或標記語句中的實體，請將更多範例語句新增至意圖。
 
 ## <a name="group-data-for-batch-test"></a>批次測試的群組資料
 
-重點是用於批次測試的語句，必須是 LUIS 中所沒有的。 如果您有一組語句的資料，請將語句分成三個集合：新增至意圖的範例語句、從已發行的端點接收的語句，以及在定型後用來進行批次測試語句的 LUIS。
+重點是用於批次測試的語句，必須是 LUIS 中所沒有的。 如果您有一組語句資料，請將語句分割成三個集合：範例語句新增至意圖、從已發行的端點收到語句，以及語句在定型之後用來進行批次測試 LUIS。
 
 ## <a name="a-data-set-of-utterances"></a>語句的資料集
 
-提交語句的批次檔（稱為*資料集*）以進行批次測試。 資料集是 JSON 格式的檔案，包含最多1000標記為**非重複**的語句。 您可以在應用程式中測試最多10個資料集。 如果您需要測試更多項，請先刪除資料集，然後再新增一個。
+針對批次測試提交語句的批次檔（稱為 *資料集*）。 資料集是 JSON 格式的檔案，其中最多可包含1000標記為 **非重複** 的語句。 您可以在應用程式中測試最多10個資料集。 如果您需要測試更多，請刪除資料集，然後再新增一個。
 
 |**規則**|
 |--|
@@ -46,7 +44,7 @@ ms.locfileid: "83680418"
 
 ## <a name="batch-file-format"></a>批次檔格式
 
-批次檔由語句組成。 每個語句都必須有預期的意圖預測，以及您預期會偵測到的任何[機器學習實體](luis-concept-entity-types.md#types-of-entities)。
+批次檔由語句組成。 每個語句都必須有預期的意圖預測，以及您預期會偵測到的任何 [機器學習實體](luis-concept-entity-types.md#types-of-entities) 。
 
 ## <a name="batch-syntax-template-for-intents-with-entities"></a>使用實體的意圖批次語法範本
 
@@ -106,7 +104,7 @@ ms.locfileid: "83680418"
 
 ## <a name="batch-test-state"></a>批次測試狀態
 
-LUIS 會追蹤每個資料集最後一項測試的狀態。 這包括大小 (批次中的語句數目)、上次執行日期及最後結果 (成功預測的語句數目)。
+LUIS 會追蹤每個資料集上次測試的狀態。 這包括大小 (批次中的語句數目)、上次執行日期及最後結果 (成功預測的語句數目)。
 
 <a name="sections-of-the-results-chart"></a>
 
@@ -114,7 +112,7 @@ LUIS 會追蹤每個資料集最後一項測試的狀態。 這包括大小 (批
 
 批次測試結果會是散佈圖，也稱為錯誤矩陣。 此圖表是對於批次檔案中的語句以及目前模型的預測意圖和實體進行的 4 向比較。
 
-**誤判**和**漏判**區段的資料點表示錯誤，應該加以調查。 如果所有資料點都位於**真肯定**和**真否定**區段，則您的應用程式精確度在此資料集上是最佳的。
+**誤判**和**漏判**區段的資料點表示錯誤，應該加以調查。 如果所有資料點都是在 **真肯定** 和 **真負** 的區段上，則您的應用程式精確度會在此資料集上相當完美。
 
 ![圖表的 4 個區段](./media/luis-concept-batch-test/chart-sections.png)
 

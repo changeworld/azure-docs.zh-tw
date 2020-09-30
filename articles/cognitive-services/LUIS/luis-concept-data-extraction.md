@@ -3,15 +3,14 @@ title: 資料解壓縮-LUIS
 description: 使用意圖和實體從語句文字中提取資料。 瞭解可從 Language Understanding (LUIS) 解壓縮的資料類型。
 ms.service: cognitive-services
 ms.subservice: language-understanding
-author: diberry
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: c69971b36bf945086d1a8f398043444071acea5c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 9bcc3d08fa29109cf4178f8eb0c3efe661323ef0
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91324819"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541776"
 ---
 # <a name="extract-data-from-utterance-text-with-intents-and-entities"></a>使用意圖與實體從表達文字擷取資料
 LUIS 可讓您從使用者的自然語言語句取得資訊。 此資訊的擷取方式使得它可供程式、應用程式或 Chatbot 用來執行動作。 在下列各節中，您將透過 JSON 範例，了解從意圖和實體會傳回哪些資料。

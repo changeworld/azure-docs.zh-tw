@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/19/2020
-ms.openlocfilehash: 1c2aa9023a7081387d38b9f7c6cfe8323300ad6e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 5fad3e4862b0c40c9edd00a5b9d47b245e529396
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90898599"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91536727"
 ---
 # <a name="convert-word-to-vector-module"></a>將 Word 轉換成向量模組
 
@@ -27,9 +27,9 @@ ms.locfileid: "90898599"
 
 ### <a name="more-about-converting-words-to-vectors"></a>深入瞭解如何將單字轉換成向量
 
-一般來說，將單字轉換成向量或 word 向量化是一種自然語言處理， (NLP) 處理常式。 此程式會使用語言模型或技術將文字對應至向量空間，也就是以實數的向量來表示每個單字。 同時，它允許具有類似意義的單字具有類似的標記法。
+將單字轉換成向量或 word 向量化是一種自然語言處理， (NLP) 進程。 此程式會使用語言模型將文字對應至向量空間。 向量空間以實數向量表示每個單字。 它也可讓具有類似意義的單字具有類似的標記法。
 
-Word 內嵌可用來作為 NLP 下游工作（例如文字分類和情感分析）的初始輸入。
+使用 word 內嵌做為初始輸入，以 NLP 下游工作，例如文字分類和情感分析。
 
 在此課程模組的各種字組內嵌技術中，我們採用了三種廣泛使用的方法。 兩個 Word2Vec 和 FastText 是線上訓練模型。 另一個是預先定型模型手套-wiki-gigaword-100。 
 
@@ -37,9 +37,9 @@ Word 內嵌可用來作為 NLP 下游工作（例如文字分類和情感分析�
 
 以下是有關這些方法的一些資訊：
 
-+ Word2Vec 是使用淺層類神經網路學習 word 內嵌的最熱門技術之一。 這份檔中討論的理論如下：以 PDF 下載的形式提供： [在向量空間中以文字表示的有效估計，Mikolov、Tomas 等](https://arxiv.org/pdf/1301.3781.pdf)。此課程模組中的實作為 [以 Word2Vec 的 Gensim 程式庫為](https://radimrehurek.com/gensim/models/word2vec.html)基礎。
++ Word2Vec 是使用淺層類神經網路學習 word 內嵌的最熱門技術之一。 這份檔中討論的理論如下：以 PDF 下載形式提供： [在向量空間中有效估計文字表示](https://arxiv.org/pdf/1301.3781.pdf)。 此課程模組中的實作為 [以 Word2Vec 的 Gensim 程式庫為](https://radimrehurek.com/gensim/models/word2vec.html)基礎。
 
-+ 這份檔中會說明 FastText 理論，以 PDF 下載的形式提供： [使用部分字組資訊的文字向量（Bojanowski、Piotr 等）](https://arxiv.org/pdf/1607.04606.pdf)。此課程模組中的實作為 [以 FastText 的 Gensim 程式庫為](https://radimrehurek.com/gensim/models/fasttext.html)基礎。
++ 這份檔中會說明 FastText 理論，可透過 PDF 下載： [使用部分字組資訊來充實文字向量](https://arxiv.org/pdf/1607.04606.pdf)。 此課程模組中的實作為 [以 FastText 的 Gensim 程式庫為](https://radimrehurek.com/gensim/models/fasttext.html)基礎。
 
 + 手套預先定型模型為手套-wiki-gigaword-100。 它是預先定型向量的集合，以維琪百科文字主體為基礎，其中包含 5600000000 token 和 400000 uncased 詞彙字詞。 提供 PDF 下載： [手套：文字標記法的全域向量](https://nlp.stanford.edu/pubs/glove.pdf)。
 
@@ -71,13 +71,13 @@ Word 內嵌可用來作為 NLP 下游工作（例如文字分類和情感分析�
 
         預設視窗大小為5。
 
-    + 針對 [ **epoch 的數目**]，指定透過主體) 的 epoch (反覆運算數目。 此設定對應于 `iter` Gensim 中的參數。
+    + 針對 [ **epoch 的數目**]，指定透過主體) 的 epoch (反覆運算數目。 對應至 `iter` Gensim 中的參數。
 
         預設 epoch 數為5。
 
 6. 在 [ **詞彙大小上限**] 中，指定所產生詞彙中的單字最大數目。
 
-    如果有比這個更多的唯一字詞，請剪除不頻繁的字詞。
+    如果有比最大值更多的唯一單字，請剪除不頻繁的單字。
 
     預設詞彙大小為10000。
 
@@ -93,11 +93,11 @@ Word 內嵌可用來作為 NLP 下游工作（例如文字分類和情感分析�
 
 + **具有內嵌的詞彙**：包含產生的詞彙，以及每個單字的內嵌。 一個維度會佔用一個資料行。
 
-下列範例說明如何將 Word 轉換成 Vector 模組的運作方式。 它會將此模組與預設設定套用至 Azure Machine Learning 中提供的前置處理維琪百科 SP 500 資料集。
+下列範例顯示如何將 Word 轉換成 Vector 模組。 它會使用將 Word 轉換成向量，並將預設值設定為前置處理的維琪百科 SP 500 資料集。
 
 ### <a name="source-dataset"></a>來源資料集
 
-資料集包含類別目錄資料行，以及從維琪百科提取的完整文字。 下表僅顯示幾個代表性範例。
+資料集包含類別目錄資料行，以及從維琪百科提取的完整文字。 下表顯示一些代表性範例。
 
 |Text|
 |----------|
@@ -136,13 +136,13 @@ loop|-0.391421|0.52366|0.141503|-0.105423|0.084503|-0.018424|...|-0.0521
 
     在這將 Word 轉換成向量模組時，我們提供三種不同的策略：兩個線上訓練模型和一個預先定型模型。 線上訓練模型會使用您的輸入資料集作為定型資料，並在定型期間產生詞彙和文字向量。 預先定型模型已經過較大的文字主體（例如維琪百科或 Twitter 文字）進行定型。 預先定型模型實際上是文字/內嵌配對的集合。  
 
-    如果選擇手套預先定型的模型作為單字向量化策略，它會從輸入資料集摘要出詞彙，然後從預先定型模型產生每個單字的內嵌向量。 如果沒有線上訓練，使用預先定型模型可以節省定型時間。 它有更好的效能，特別是當輸入資料集的大小相對較大時。
+    手套預先定型的模型會從輸入資料集匯總詞彙，並從預先定型模型產生每個單字的內嵌向量。 如果沒有線上訓練，使用預先定型模型可以節省定型時間。 它有更好的效能，特別是當輸入資料集的大小相對較大時。
 
 + 內嵌大小：
 
-    一般而言，字組內嵌的長度會設定為幾百 (例如，100、200、300) ，以達到良好的效能。 原因是小型的內嵌大小表示小的向量空間，這可能會導致 word 內嵌衝突。  
+    一般情況下，word 內嵌的長度會設定為一百。 例如，100、200、300。 小型的內嵌大小表示較小的向量空間，這可能會造成字組內嵌衝突。  
 
-    針對預先定型模型，字組內嵌的長度是固定的。 在這個執行中，手套的內嵌大小-gigaword-100 是100。
+    預先定型模型的文字內嵌長度是固定的。 在此範例中，手套-wiki-gigaword-100 的內嵌大小是100。
 
 
 ## <a name="next-steps"></a>後續步驟
