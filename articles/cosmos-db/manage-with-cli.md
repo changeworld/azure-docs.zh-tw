@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 07/29/2020
 ms.author: mjbrown
-ms.openlocfilehash: 0ae29039702a6f73a33f73afc366532077aa4b71
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: c248755c1f32d41b6926d4492dcc3d0eea2869b8
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432831"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91566868"
 ---
 # <a name="manage-azure-cosmos-resources-using-azure-cli"></a>使用 Azure CLI 管理 Azure Cosmos 資源
 
@@ -19,7 +19,7 @@ ms.locfileid: "87432831"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果您選擇在本機安裝和使用 CLI，本主題會要求您執行 Azure CLI 版2.9.1 或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
+若選擇在本機安裝及使用 CLI，此主題需要您執行 Azure CLI 2.9.1 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
 
 ## <a name="azure-cosmos-accounts"></a>Azure Cosmos 帳戶
 
@@ -38,7 +38,7 @@ ms.locfileid: "87432831"
 
 ### <a name="create-an-azure-cosmos-db-account"></a>建立 Azure Cosmos DB 帳戶
 
-建立具有 SQL API 的 Azure Cosmos DB 帳戶、美國西部2和美國東部2區域中的會話一致性：
+使用 SQL API、美國西部2和美國東部2區域中的會話一致性建立 Azure Cosmos DB 帳戶：
 
 > [!IMPORTANT]
 > Azure Cosmos 帳戶名稱必須是小寫且小於44個字元。
@@ -62,7 +62,7 @@ az cosmosdb create \
 > [!NOTE]
 > 您不能同時新增或移除 `locations` 區域，以及變更 Azure Cosmos 帳戶的其他屬性。 修改區域必須與帳戶資源的任何其他變更分開作業。
 > [!NOTE]
-> 此命令可讓您新增及移除區域，但不允許您修改容錯移轉優先順序或觸發手動容錯移轉。 請參閱[設定容錯移轉優先順序](#set-failover-priority)和[觸發手動容錯移轉](#trigger-manual-failover)。
+> 此命令可讓您新增及移除區域，但不允許您修改容錯移轉優先順序或觸發手動容錯移轉。 請參閱 [設定容錯移轉優先順序](#set-failover-priority) 和 [觸發手動容錯移轉](#trigger-manual-failover)。
 
 ```azurecli-interactive
 resourceGroupName='myResourceGroup'
@@ -87,10 +87,10 @@ az cosmosdb update --name $accountName --resource-group $resourceGroupName \
 
 ### <a name="enable-multiple-write-regions"></a>啟用多個寫入區域
 
-啟用 Cosmos 帳戶的多宿主
+啟用 Cosmos 帳戶的多重區域寫入
 
 ```azurecli-interactive
-# Update an Azure Cosmos account from single to multi-master
+# Update an Azure Cosmos account from single write region to multiple write regions
 resourceGroupName='myResourceGroup'
 accountName='mycosmosaccount'
 
@@ -133,7 +133,7 @@ az cosmosdb update --ids $accountId --enable-automatic-failover true
 ### <a name="trigger-manual-failover"></a>觸發手動容錯移轉
 
 > [!CAUTION]
-> 變更優先順序 = 0 的區域將會觸發 Azure Cosmos 帳戶的手動容錯移轉。 變更其他優先順序則不會觸發容錯移轉。
+> 變更 priority = 0 的區域將會觸發 Azure Cosmos 帳戶的手動容錯移轉。 變更其他優先順序則不會觸發容錯移轉。
 
 ```azurecli-interactive
 # Assume region order is initially 'West US 2=0' 'East US 2=1' 'South Central US=2' for account
@@ -148,7 +148,7 @@ az cosmosdb failover-priority-change --ids $accountId \
     --failover-policies 'East US 2=0' 'South Central US=1' 'West US 2=2'
 ```
 
-### <a name="list-all-account-keys"></a><a id="list-account-keys"></a>列出所有帳戶金鑰
+### <a name="list-all-account-keys"></a><a id="list-account-keys"></a> 列出所有帳戶金鑰
 
 取得 Cosmos 帳戶的所有金鑰。
 
@@ -194,7 +194,7 @@ az cosmosdb keys list \
 
 ### <a name="regenerate-account-key"></a>重新產生帳戶金鑰
 
-為 Cosmos 帳戶重新產生新的金鑰。
+針對 Cosmos 帳戶重新產生新的金鑰。
 
 ```azurecli-interactive
 # Regenerate secondary account keys
@@ -212,7 +212,7 @@ az cosmosdb keys regenerate \
 * [建立資料庫](#create-a-database)
 * [建立具有共用輸送量的資料庫](#create-a-database-with-shared-throughput)
 * [變更資料庫輸送量](#change-database-throughput)
-* [管理資料庫上的鎖定](#manage-lock-on-a-database)
+* [管理資料庫的鎖定](#manage-lock-on-a-database)
 
 ### <a name="create-a-database"></a>建立資料庫
 
@@ -248,7 +248,7 @@ az cosmosdb sql database create \
 
 ### <a name="change-database-throughput"></a>變更資料庫輸送量
 
-增加 Cosmos 資料庫的輸送量（以 1000 RU/秒為單位）。
+以 1000 RU/秒為單位增加 Cosmos 資料庫的輸送量。
 
 ```azurecli-interactive
 resourceGroupName='MyResourceGroup'
@@ -272,9 +272,9 @@ az cosmosdb sql database throughput update \
     --throughput $newRU
 ```
 
-### <a name="manage-lock-on-a-database"></a>管理資料庫上的鎖定
+### <a name="manage-lock-on-a-database"></a>管理資料庫的鎖定
 
-將刪除鎖定放在資料庫上。 若要深入瞭解如何啟用，請參閱[防止 sdk 的變更](role-based-access-control.md#prevent-sdk-changes)。
+在資料庫上放置刪除鎖定。 若要深入瞭解如何啟用此資訊，請參閱， [防止 sdk 的變更](role-based-access-control.md#prevent-sdk-changes)。
 
 ```azurecli-interactive
 resourceGroupName='myResourceGroup'
@@ -308,7 +308,7 @@ az lock delete --ids $lockid
 下列各節會示範如何管理 Azure Cosmos DB 容器，包括：
 
 * [建立容器](#create-a-container)
-* [建立具有自動調整的容器](#create-a-container-with-autoscale)
+* [使用自動調整建立容器](#create-a-container-with-autoscale)
 * [建立已啟用 TTL 的容器](#create-a-container-with-ttl)
 * [建立含有自訂索引原則的容器](#create-a-container-with-a-custom-index-policy)
 * [變更容器輸送量](#change-container-throughput)
@@ -316,7 +316,7 @@ az lock delete --ids $lockid
 
 ### <a name="create-a-container"></a>建立容器
 
-使用預設索引原則、分割區索引鍵和 RU/秒400建立 Cosmos 容器。
+使用預設索引原則、分割區索引鍵和400的 RU/秒來建立 Cosmos 容器。
 
 ```azurecli-interactive
 # Create a SQL API container
@@ -333,9 +333,9 @@ az cosmosdb sql container create \
     -p $partitionKey --throughput $throughput
 ```
 
-### <a name="create-a-container-with-autoscale"></a>建立具有自動調整的容器
+### <a name="create-a-container-with-autoscale"></a>使用自動調整建立容器
 
-使用預設索引原則、分割區索引鍵和自動調整 RU/秒4000建立 Cosmos 容器。
+使用預設索引原則、資料分割索引鍵和4000的自動調整 RU/秒來建立 Cosmos 容器。
 
 ```azurecli-interactive
 # Create a SQL API container
@@ -371,9 +371,9 @@ az cosmosdb sql container update \
     --ttl=86400
 ```
 
-### <a name="create-a-container-with-a-custom-index-policy"></a>建立具有自訂索引原則的容器
+### <a name="create-a-container-with-a-custom-index-policy"></a>使用自訂索引原則建立容器
 
-建立 Cosmos 容器，其中包含自訂索引原則、空間索引、複合索引、分割區索引鍵，以及400的 RU/秒。
+使用自訂索引原則、空間索引、複合索引、分割區索引鍵和400的 RU/秒來建立 Cosmos 容器。
 
 ```azurecli-interactive
 # Create a SQL API container
@@ -425,7 +425,7 @@ rm -f "idxpolicy-$uniqueId.json"
 
 ### <a name="change-container-throughput"></a>變更容器輸送量
 
-增加 Cosmos 容器的輸送量（以 1000 RU/秒為單位）。
+將 Cosmos 容器的輸送量增加 1000 RU/秒。
 
 ```azurecli-interactive
 resourceGroupName='MyResourceGroup'
@@ -453,7 +453,7 @@ az cosmosdb sql container throughput update \
 
 ### <a name="manage-lock-on-a-container"></a>管理容器上的鎖定
 
-在容器上放置刪除鎖定。 若要深入瞭解如何啟用，請參閱[防止 sdk 的變更](role-based-access-control.md#prevent-sdk-changes)。
+在容器上放置刪除鎖定。 若要深入瞭解如何啟用此資訊，請參閱， [防止 sdk 的變更](role-based-access-control.md#prevent-sdk-changes)。
 
 ```azurecli-interactive
 resourceGroupName='myResourceGroup'

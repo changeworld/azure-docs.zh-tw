@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 373463ff9024ec3b657df6d141ed830142b23f2e
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: e4d2da56146a14b295e08a1093fe62a50f87ecfa
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91400055"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91567548"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB 服務配額
 
@@ -154,11 +154,11 @@ Azure Cosmos DB 支援針對容器、項目及資料庫等資源執行 [CRUD 和
 
 當查詢之類的作業達到執行逾時或回應大小限制之後，會將結果的頁面和接續權杖傳回給用戶端，以繼續執行。 單一查詢可跨頁面/接續執行的持續時間沒有實際限制。
 
-Cosmos DB 使用 HMAC 進行授權。 您可使用主要金鑰或[資源權杖](secure-access-to-data.md)，對容器、分割區索引鍵或項目等資源進行更細緻的存取控制。 下表列出 Cosmos DB 中的授權權杖限制。
+Cosmos DB 使用 HMAC 進行授權。 您可以使用主要金鑰或 [資源權杖](secure-access-to-data.md) ，以對容器、分割區索引鍵或專案等資源進行更細緻的存取控制。 下表列出 Cosmos DB 中的授權權杖限制。
 
 | 資源 | 預設限制 |
 | --- | --- |
-| 主要權杖到期時間上限 | 15 分鐘  |
+| 最大主要權杖到期時間 | 15 分鐘  |
 | 資源權杖到期時間下限 | 10 分鐘  |
 | 資源權杖到期時間上限 | 預設為 24 小時。 您可藉由[提出 Azure 支援票證](create-support-request-quota-increase.md)來增加此值|
 | 權杖授權的最大時鐘誤差| 15 分鐘 |
@@ -171,7 +171,7 @@ Azure Cosmos DB 會維護每個帳戶的系統中繼資料。 此中繼資料可
 
 | 資源 | 預設限制 |
 | --- | --- |
-|最大收集建立速率 rer 分鐘| 5|
+|每分鐘的集合建立速率上限| 5|
 |每分鐘資料庫建立速率上限|   5|
 |每分鐘布建的輸送量更新速率上限| 5|
 

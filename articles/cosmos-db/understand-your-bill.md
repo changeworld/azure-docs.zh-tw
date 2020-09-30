@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
 ms.reviewer: sngun
-ms.openlocfilehash: bf041163c6b2759b3d38e48ee98a0d528ec601db
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 0161c1599402fff25337549819f94b833142ba06
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88606899"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91567854"
 ---
 # <a name="understand-your-azure-cosmos-db-bill"></a>了解您的 Azure Cosmos DB 帳單
 
@@ -102,11 +102,11 @@ Azure Cosmos DB 是完全受控的雲端原生資料庫服務，只針對您的�
 
 * 在有 720 小時的月份中，若有 300 小時佈建的輸送量為 120-K RU/秒，而其餘 420 小時佈建的輸送量為 155-K RU/秒，您的每月帳單會顯示：300 x $9.60/小時 + 420 x $12.40/小時 = $2,880 + $5,208 = $8,088/月。 
 
-:::image type="content" source="./media/understand-your-bill/bill-example2.png" alt-text="共用輸送量帳單範例":::
+:::image type="content" source="./media/understand-your-bill/bill-example2.png" alt-text="專用輸送量帳單範例":::
 
-## <a name="billing-examples-with-geo-replication-and-multi-master"></a>使用異地複寫與多重主機的計費範例  
+## <a name="billing-examples-with-geo-replication-and-multi-region-writes"></a>具有異地複寫和多重區域寫入的計費範例  
 
-您可以隨時在 Azure Cosmos 資料庫帳戶中新增/移除世界各地的 Azure 區域。 您為各種 Azure Cosmos 資料庫與容器設定的輸送量，將會保留在與您 Azure Cosmos 資料庫帳戶相關的每個 Azure 區域中。 如果您的 Azure Cosmos 資料庫帳戶內所有資料庫與容器所設定的佈建輸送量 (RU/秒) 總和 (每小時佈建量) 為 T，而與您資料庫帳戶相關聯的 Azure 區域數目為 N，那麼您 Azure Cosmos 資料庫帳戶已知小時的總佈建輸送量分別為，(a) 設定為單一寫入區域等於T x N RU/秒，以及 (b) 設定為能夠處理寫入的所有區域等於 T x (N+1) RU/秒。 佈建的輸送量 (單一寫入區域) 費用為每 100 RU/秒 $0.008/小時，多個可寫入區域 (多重主機設定) 佈建的輸送量費用為每 100 RU/秒 $0.016/小時 (請參閱[定價頁面](https://azure.microsoft.com/pricing/details/cosmos-db/))。 不論您選擇單一寫入區域或多重寫入區域，Azure Cosmos DB 都能讓您從任何區域讀取資料。
+您可以隨時在 Azure Cosmos 資料庫帳戶中新增/移除世界各地的 Azure 區域。 您為各種 Azure Cosmos 資料庫與容器設定的輸送量，將會保留在與您 Azure Cosmos 資料庫帳戶相關的每個 Azure 區域中。 如果您的 Azure Cosmos 資料庫帳戶內所有資料庫與容器所設定的佈建輸送量 (RU/秒) 總和 (每小時佈建量) 為 T，而與您資料庫帳戶相關聯的 Azure 區域數目為 N，那麼您 Azure Cosmos 資料庫帳戶已知小時的總佈建輸送量分別為，(a) 設定為單一寫入區域等於T x N RU/秒，以及 (b) 設定為能夠處理寫入的所有區域等於 T x (N+1) RU/秒。 布建的輸送量 (單一寫入區域) 每秒 100 RU $ 0.008/小時的費用，以及具有多個可寫入區域的布建輸送量 (多重區域寫入設定) 成本 $ 0.016/每小時每 100 RU/秒 (請參閱 [定價頁面](https://azure.microsoft.com/pricing/details/cosmos-db/)) 。 不論您選擇單一寫入區域或多重寫入區域，Azure Cosmos DB 都能讓您從任何區域讀取資料。
 
 ### <a name="billing-example-multi-region-azure-cosmos-account-single-region-writes"></a>計費範例：多重區域 Azure Cosmos 帳戶，單一區域寫入
 
@@ -136,9 +136,9 @@ Azure Cosmos DB 是完全受控的雲端原生資料庫服務，只針對您的�
 
 *另假設您每月從美國西部容器輸出 100 GB 的資料，並將資料複寫至美國東部、北歐與東亞。您會按資料傳輸費率支付輸出費用。*
 
-### <a name="billing-example-azure-cosmos-account-with-multi-master-database-level-throughput-including-dedicated-throughput-mode-for-some-containers"></a>計費範例︰具備多重主機、資料庫層級輸送量 (包含某些容器的專用輸送量模式) 的 Azure Cosmos 帳戶
+### <a name="billing-example-azure-cosmos-account-with-multi-region-writes-database-level-throughput-including-dedicated-throughput-mode-for-some-containers"></a>計費範例：具有多重區域寫入的 Azure Cosmos 帳戶、資料庫層級輸送量，包括某些容器的專用輸送量模式
 
-請看一下下面的範例，假設我們有一個所有區域都可寫入 (多重主機設定) 的多重區域 Azure Cosmos 帳戶。 為了讓您容易了解，我們將假設儲存體大小維持不變，並在這裡略過它以便讓範例維持簡單易懂。 佈建的輸送量在整個月的變化 (假設為 30 天或 720 個小時) 為： 
+讓我們看看下列範例，其中有多區域 Azure Cosmos 帳戶，其中所有區域都可寫入 (多個寫入區域設定) 。 為了讓您容易了解，我們將假設儲存體大小維持不變，並在這裡略過它以便讓範例維持簡單易懂。 佈建的輸送量在整個月的變化 (假設為 30 天或 720 個小時) 為： 
 
 [0-100 小時]：  
 
@@ -192,7 +192,7 @@ Azure Cosmos DB 是完全受控的雲端原生資料庫服務，只針對您的�
 
 下圖以視覺化方式顯示整個月 720 個小時期間整體佈建輸送量的變化： 
 
-:::image type="content" source="./media/understand-your-bill/bill-example3.png" alt-text="真實範例":::
+:::image type="content" source="./media/understand-your-bill/bill-example3.png" alt-text="專用輸送量帳單範例":::
 
 每月帳單總計 (假設一個月 30 天/720 個小時) 計算方式如下：
 
@@ -215,7 +215,7 @@ Azure Cosmos DB 是完全受控的雲端原生資料庫服務，只針對您的�
 || |**每月總成本**  | |**$38,688**   |
 
 ## <a name="billing-examples-with-free-tier-accounts"></a>免費層帳戶的計費範例
-使用 Azure Cosmos DB 免費層，您將可在帳戶中免費取得前 400 RU/秒和 5 GB 的儲存體，套用於帳戶層級。 除了這 400 個 RU/秒和 5 GB 以外的任何 RU/秒和儲存體，將會依定價頁面的一般定價費率計費。 您在帳單上不會看到免費的 400 個 RU/秒和 5 GB 的收費或明細項目，只會看到免費層涵蓋範圍以外的 RU/秒和儲存體。 400 RU/秒適用於任何類型的 RU/秒 - 佈建輸送量、自動調整和多重主機。  
+使用 Azure Cosmos DB 免費層，您將可在帳戶中免費取得前 400 RU/秒和 5 GB 的儲存體，套用於帳戶層級。 除了這 400 個 RU/秒和 5 GB 以外的任何 RU/秒和儲存體，將會依定價頁面的一般定價費率計費。 您在帳單上不會看到免費的 400 個 RU/秒和 5 GB 的收費或明細項目，只會看到免費層涵蓋範圍以外的 RU/秒和儲存體。 400 RU/秒適用于任何類型的 RU/秒-布建的輸送量、自動調整和多重區域寫入。  
 
 ### <a name="billing-example---container-or-database-with-provisioned-throughput"></a>計費範例 - 具有已佈建輸送量的容器或資料庫
 - 假設我們在免費層帳戶中，建立具有 400 RU/秒和 5 GB 儲存體的資料庫或容器。
@@ -231,16 +231,16 @@ Azure Cosmos DB 是完全受控的雲端原生資料庫服務，只針對您的�
 - 超過前 5 GB 的任何儲存體將會以一般儲存體費率計費。 
 
 ### <a name="billing-example---multi-region-single-write-region-account"></a>計費範例 - 多重區域，單一寫入區域帳戶
-- 假設我們在免費層帳戶中，建立具有 1200 RU/秒和 10 GB 儲存體的資料庫或容器。 我們會將帳戶複寫到 3 個區域，而我們有單一主機 (單一寫入區域) 帳戶。
+- 假設我們在免費層帳戶中，建立具有 1200 RU/秒和 10 GB 儲存體的資料庫或容器。 我們會將帳戶複寫至3個區域，而我們擁有單一寫入區域帳戶。
 - 總之，在沒有免費層的情況下，我們會以 3 * 1200 RU/秒 = 3600 RU/秒和 3 * 10 GB = 30 GB 的儲存體來計費。
 - 有了免費層折扣，在移除 400 RU/秒和 5 GB 儲存體之後，會以單一寫入區域費率和 25 GB 儲存體，對實際的 3200 RU/秒 (32 單位) 佈建輸送量計費。
 - RU/秒的每月成本是：32 單位 * $0.008 * 24 小時 * 31 天 = $190.46。 儲存體的每月成本是：25 GB * 0.25 / GB = $6.25。 成本總計是 $190.46 + $6.25 = $196.71。
 - 注意：如果各區域的 RU/秒或儲存體單價不同，免費層 400 RU/秒和 5 GB 會反映帳戶建立所在區域的費率。
 
-### <a name="billing-example---multi-region-multi-master-multiple-write-region-account"></a>計費範例 - 多重區域、多重主機 (多重寫入區域) 帳戶
+### <a name="billing-example---multi-region-account-with-multiple-write-regions"></a>帳單範例-多區域、具有多個寫入區域的帳戶
 
-此範例針對 2019 年 12 月 1 日之後建立的帳戶，反映[多重主機價格](https://azure.microsoft.com/pricing/details/cosmos-db/)。 
-- 假設我們在免費層帳戶中，建立具有 1200 RU/秒和 10 GB 儲存體的資料庫或容器。 我們會將帳戶複寫到 3 個區域，而我們有多重主機 (多重寫入區域) 帳戶。 
+此範例會針對在2019年12月1日之後建立的帳戶，反映 [多重區域寫入的定價](https://azure.microsoft.com/pricing/details/cosmos-db/) 。 
+- 假設我們在免費層帳戶中，建立具有 1200 RU/秒和 10 GB 儲存體的資料庫或容器。 我們會將帳戶複寫至3個區域，而我們有多個寫入區域帳戶。 
 - 總之，在沒有免費層的情況下，我們會以 3 * 1200 RU/秒 = 3600 RU/秒和 3 * 10 GB = 30 GB 的儲存體來計費。
 - 有了免費層折扣，移除 400 RU/秒和 5 GB 儲存體之後，會以多個寫入區域費率和 25 GB 儲存體，對實際的 3200 RU/秒 (32 單位) 佈建輸送量計費。
 - RU/秒的每月成本是：32 單位 * $0.016 * 24 小時 * 31 天 = $380.93。 儲存體的每月成本是：25 GB * 0.25 / GB = $6.25。 成本總計是 $380.93 + $6.25 = $387.18。

@@ -3,16 +3,16 @@ title: Media graph 概念-Azure
 description: Media graph 可讓您定義媒體的捕獲來源、處理方式，以及應該傳遞結果的位置。 本文提供 media graph 概念的詳細描述。
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: 1e280d6fe8303a85bee41adf83ac54e7c96df304
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 7def82160547b759c7ab4c40c681052747261920
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89567925"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91567073"
 ---
 # <a name="media-graph"></a>媒體圖表
 
-## <a name="suggested-pre-reading"></a>建議的閱讀準備事項
+## <a name="suggested-pre-reading"></a>建議的預先閱讀
 
 * [IoT Edge 上的 Live Video Analytics 概觀](overview.md)
 * [IoT Edge 上的 Live Video Analytics 術語](terminology.md)
@@ -41,7 +41,7 @@ IoT Edge 上的即時影片分析可讓您透過兩個概念（「圖形拓撲�
 圖形拓撲和圖形實例的生命週期會顯示在下列狀態圖中。
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/media-graph/graph-topology-lifecycle.svg" alt-text="圖形拓撲和圖形實例生命週期":::
+> :::image type="content" source="./media/media-graph/graph-topology-lifecycle.svg" alt-text="媒體圖表":::
 
 開始 [建立圖形拓撲](direct-methods.md#graphtopologyset)。 然後，針對您想要使用此拓撲處理的每個即時影片摘要，您會 [建立一個圖形實例](direct-methods.md#graphinstanceset)。 
 
@@ -70,7 +70,7 @@ IoT Edge 上的即時影片分析支援媒體圖形中的下列節點類型：
 
 #### <a name="rtsp-source"></a>RTSP 來源 
 
-RTSP 來源節點可讓您從 [RTSP] (伺服器內嵌媒體 https://tools.ietf.org/html/rfc2326 。 監視和以 IP 為基礎的攝影機會以稱為 RTSP (即時串流通訊協定) 的通訊協定來傳輸其資料，這與其他類型的裝置（例如手機和攝影機）不同。 此通訊協定是用來建立及控制伺服器 (相機) 和用戶端之間的媒體會話。 媒體圖形中的 RTSP 來源節點可作為用戶端，而且可以與 RTSP 伺服器建立會話。 許多裝置，例如大部分的 [IP 攝影機](https://en.wikipedia.org/wiki/IP_camera) 都有內建的 RTSP 伺服器。 [ONVIF](https://www.onvif.org/) 會在其 [設定檔 G、S &](https://www.onvif.org/wp-content/uploads/2019/12/ONVIF_Profile_Feature_overview_v2-3.pdf) 與相容裝置的定義中支援 RTSP。 RTSP 來源節點需要您指定 RTSP URL，以及用來啟用已驗證連線的認證。
+RTSP 來源節點可讓您從 [RTSP](https://tools.ietf.org/html/rfc2326 server)內嵌媒體。 監視和以 IP 為基礎的攝影機會以稱為 RTSP (即時串流通訊協定) 的通訊協定來傳輸其資料，這與其他類型的裝置（例如手機和攝影機）不同。 此通訊協定是用來建立及控制伺服器 (相機) 和用戶端之間的媒體會話。 媒體圖形中的 RTSP 來源節點可作為用戶端，而且可以與 RTSP 伺服器建立會話。 許多裝置，例如大部分的 [IP 攝影機](https://en.wikipedia.org/wiki/IP_camera) 都有內建的 RTSP 伺服器。 [ONVIF](https://www.onvif.org/) 會在其 [設定檔 G、S &](https://www.onvif.org/wp-content/uploads/2019/12/ONVIF_Profile_Feature_overview_v2-3.pdf) 與相容裝置的定義中支援 RTSP。 RTSP 來源節點需要您指定 RTSP URL，以及用來啟用已驗證連線的認證。
 
 #### <a name="iot-hub-message-source"></a>IoT 中樞訊息來源 
 

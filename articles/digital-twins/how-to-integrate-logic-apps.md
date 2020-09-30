@@ -54,11 +54,11 @@ Azure 數位 Twins 目前沒有認證 (預先建立的) 連接器可供 Logic Ap
 
 輸入您想要用於描述和到期的任何值，然後按 [ *新增*]。
 
-:::image type="content" source="media/how-to-integrate-logic-apps/add-client-secret.png" alt-text="新增用戶端密碼":::
+:::image type="content" source="media/how-to-integrate-logic-apps/add-client-secret.png" alt-text="Azure AD 應用程式註冊的入口網站觀看。[資源] 功能表中的 [憑證和秘密] 周圍有一個醒目提示，並在 [新用戶端密碼] 周圍的頁面上醒目提示。":::
 
 現在，請在 [ _憑證 & 秘密_ ] 頁面上確認用戶端密碼顯示為 [ _到期_ ] 和 [ _值_ ] 欄位。 記下其 _值_ 以供稍後使用 (您也可以使用複製圖示將它複製到剪貼簿) 
 
-:::image type="content" source="media/how-to-integrate-logic-apps/client-secret-value.png" alt-text="複製用戶端秘密值":::
+:::image type="content" source="media/how-to-integrate-logic-apps/client-secret-value.png" alt-text="Azure AD 應用程式註冊的入口網站觀看。[資源] 功能表中的 [憑證和秘密] 周圍有一個醒目提示，並在 [新用戶端密碼] 周圍的頁面上醒目提示。":::
 
 ### <a name="add-a-digital-twin"></a>新增數位對應項
 
@@ -74,15 +74,15 @@ Azure 數位 Twins 目前沒有認證 (預先建立的) 連接器可供 Logic Ap
 
 流覽至 Azure 入口網站中的 [ [Logic Apps 自訂連接器](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Web%2FcustomApis) ] 頁面 (您可以使用此連結，或是在入口網站的搜尋列中搜尋) 。 按 *+ 新增*。
 
-:::image type="content" source="media/how-to-integrate-logic-apps/logic-apps-custom-connector.png" alt-text="Azure 入口網站中的 [Logic Apps 自訂連接器] 頁面。在 [新增] 按鈕周圍反白顯示":::
+:::image type="content" source="media/how-to-integrate-logic-apps/logic-apps-custom-connector.png" alt-text="Azure AD 應用程式註冊的入口網站觀看。[資源] 功能表中的 [憑證和秘密] 周圍有一個醒目提示，並在 [新用戶端密碼] 周圍的頁面上醒目提示。":::
 
 在接下來的 [ *建立 Logic Apps 自訂連接器* ] 頁面中，選取您的訂用帳戶和資源群組，以及新連接器的名稱和部署位置。 點擊 *檢查 + 建立*。 
 
-:::image type="content" source="media/how-to-integrate-logic-apps/create-logic-apps-custom-connector.png" alt-text="Azure 入口網站中的 [建立 Logic Apps 自訂連接器] 頁面。":::
+:::image type="content" source="media/how-to-integrate-logic-apps/create-logic-apps-custom-connector.png" alt-text="Azure AD 應用程式註冊的入口網站觀看。[資源] 功能表中的 [憑證和秘密] 周圍有一個醒目提示，並在 [新用戶端密碼] 周圍的頁面上醒目提示。":::
 
 這會將您帶到 [ *審核 + 建立* ] 索引標籤，您可以在底部點擊 [ *建立* ] 以建立您的資源。
 
-:::image type="content" source="media/how-to-integrate-logic-apps/review-logic-apps-custom-connector.png" alt-text="Azure 入口網站中 [審核 Logic Apps 自訂連接器] 頁面的 [審核 + 建立] 索引標籤。在 [建立] 按鈕周圍反白顯示":::
+:::image type="content" source="media/how-to-integrate-logic-apps/review-logic-apps-custom-connector.png" alt-text="Azure AD 應用程式註冊的入口網站觀看。[資源] 功能表中的 [憑證和秘密] 周圍有一個醒目提示，並在 [新用戶端密碼] 周圍的頁面上醒目提示。":::
 
 您將會進入連接器的 [部署] 頁面。 完成部署後，請按 [ *移至資源* ] 按鈕，以在入口網站中查看連接器的詳細資料。
 
@@ -94,7 +94,7 @@ Azure 數位 Twins 目前沒有認證 (預先建立的) 連接器可供 Logic Ap
 
 然後，移至 [ [Azure 入口網站](https://portal.azure.com) 中您連接器的 [總覽] 頁面，然後按 [ *編輯*]。
 
-:::image type="content" source="media/how-to-integrate-logic-apps/edit-connector.png" alt-text="在上一個步驟中建立之連接器的 [總覽] 頁面。在 [編輯] 按鈕周圍反白顯示":::
+:::image type="content" source="media/how-to-integrate-logic-apps/edit-connector.png" alt-text="Azure AD 應用程式註冊的入口網站觀看。[資源] 功能表中的 [憑證和秘密] 周圍有一個醒目提示，並在 [新用戶端密碼] 周圍的頁面上醒目提示。":::
 
 在接下來的 [ *編輯 Logic Apps 自訂連接器* ] 頁面中，設定下列資訊：
 * **自訂連接器**
@@ -111,7 +111,7 @@ Azure 數位 Twins 目前沒有認證 (預先建立的) 連接器可供 Logic Ap
 
 然後，按下視窗底部的 [ *安全性* ] 按鈕，以繼續進行下一個設定步驟。
 
-:::image type="content" source="media/how-to-integrate-logic-apps/configure-next.png" alt-text="[編輯 Logic Apps 自訂連接器] 頁面底部的螢幕擷取畫面。醒目提示按鈕以繼續進行安全性":::
+:::image type="content" source="media/how-to-integrate-logic-apps/configure-next.png" alt-text="Azure AD 應用程式註冊的入口網站觀看。[資源] 功能表中的 [憑證和秘密] 周圍有一個醒目提示，並在 [新用戶端密碼] 周圍的頁面上醒目提示。":::
 
 在 [安全性] 步驟中，按 [ *編輯* ] 並設定這項資訊：
 * **驗證類型**： OAuth 2。0
@@ -127,13 +127,13 @@ Azure 數位 Twins 目前沒有認證 (預先建立的) 連接器可供 Logic Ap
 
 請注意，[重新導向 URL] 欄位會顯示 [ *儲存自訂連接器] 以產生重新導向 URL*。 現在請在窗格頂端點擊 *Update 連接器* ，確認您的連接器設定。
 
-:::image type="content" source="media/how-to-integrate-logic-apps/update-connector.png" alt-text="[編輯 Logic Apps 自訂連接器] 頁面頂端的螢幕擷取畫面。在 [更新連接器] 按鈕周圍醒目提示":::
+:::image type="content" source="media/how-to-integrate-logic-apps/update-connector.png" alt-text="Azure AD 應用程式註冊的入口網站觀看。[資源] 功能表中的 [憑證和秘密] 周圍有一個醒目提示，並在 [新用戶端密碼] 周圍的頁面上醒目提示。":::
 
 <!-- Success message? didn't see one -->
 
 返回 [重新導向 URL] 欄位，然後複製已產生的值。 您將會在下一個步驟中使用它。
 
-:::image type="content" source="media/how-to-integrate-logic-apps/copy-redirect-url.png" alt-text="[編輯 Logic Apps 自訂連接器] 頁面中的 [重新導向 URL] 欄位現在有 ' https://logic-apis-westus2.consent.azure-apim.net/redirect ' 的值。要複製值的按鈕會反白顯示。":::
+:::image type="content" source="media/how-to-integrate-logic-apps/copy-redirect-url.png" alt-text="Azure AD 應用程式註冊的入口網站觀看。[資源] 功能表中的 [憑證和秘密] 周圍有一個醒目提示，並在 [新用戶端密碼] 周圍的頁面上醒目提示。":::
 
 這是建立連接器所需的所有資訊 (不需要繼續) 定義步驟的安全性。 您可以關閉 [ *編輯 Logic Apps 自訂連接器* ] 窗格。
 
@@ -148,11 +148,11 @@ Azure 數位 Twins 目前沒有認證 (預先建立的) 連接器可供 Logic Ap
 
 在註冊功能表的 [ *驗證* ] 底下，新增 URI。
 
-:::image type="content" source="media/how-to-integrate-logic-apps/add-uri.png" alt-text="Azure 入口網站中應用程式註冊的 [驗證] 頁面。功能表中的 [驗證] 已反白顯示，而在頁面上，[新增 URI] 按鈕會反白顯示。"::: 
+:::image type="content" source="media/how-to-integrate-logic-apps/add-uri.png" alt-text="Azure AD 應用程式註冊的入口網站觀看。[資源] 功能表中的 [憑證和秘密] 周圍有一個醒目提示，並在 [新用戶端密碼] 周圍的頁面上醒目提示。"::: 
 
 在新欄位中輸入自訂連接器的重新 *導向 URL* ，然後按下 [ *儲存* ] 圖示。
 
-:::image type="content" source="media/how-to-integrate-logic-apps/save-uri.png" alt-text="Azure 入口網站中應用程式註冊的 [驗證] 頁面。新的重新導向 URL 會反白顯示，並顯示頁面的 [儲存] 按鈕。":::
+:::image type="content" source="media/how-to-integrate-logic-apps/save-uri.png" alt-text="Azure AD 應用程式註冊的入口網站觀看。[資源] 功能表中的 [憑證和秘密] 周圍有一個醒目提示，並在 [新用戶端密碼] 周圍的頁面上醒目提示。":::
 
 您現在已完成設定可存取 Azure 數位 Twins Api 的自訂連接器。 
 
@@ -162,7 +162,7 @@ Azure 數位 Twins 目前沒有認證 (預先建立的) 連接器可供 Logic Ap
 
 在 [Azure 入口網站](https://portal.azure.com)中，于入口網站的搜尋列中搜尋 *邏輯應用程式* 。 選取它應該會帶您前往 [ *邏輯應用程式* ] 頁面。 點擊 [ *建立邏輯應用程式* ] 按鈕，以建立新的邏輯應用程式。
 
-:::image type="content" source="media/how-to-integrate-logic-apps/create-logic-app.png" alt-text="Azure 入口網站中的 [Logic Apps] 頁面。點擊 [新增] 按鈕":::
+:::image type="content" source="media/how-to-integrate-logic-apps/create-logic-app.png" alt-text="Azure AD 應用程式註冊的入口網站觀看。[資源] 功能表中的 [憑證和秘密] 周圍有一個醒目提示，並在 [新用戶端密碼] 周圍的頁面上醒目提示。":::
 
 在接下來的 [ *邏輯應用程式* ] 頁面中，輸入您的訂用帳戶和資源群組。 此外，請選擇邏輯應用程式的名稱，然後選取部署位置。
 
@@ -176,7 +176,7 @@ Azure 數位 Twins 目前沒有認證 (預先建立的) 連接器可供 Logic Ap
 
 在 [ *Logic Apps] 設計*工具的 [ *開始使用一般觸發*程式] 下，選取 _**[週期**_]。
 
-:::image type="content" source="media/how-to-integrate-logic-apps/logic-apps-designer-recurrence.png" alt-text="Azure 入口網站中的 [Logic Apps 設計工具] 頁面。在「週期」常見觸發程式周圍醒目提示":::
+:::image type="content" source="media/how-to-integrate-logic-apps/logic-apps-designer-recurrence.png" alt-text="Azure AD 應用程式註冊的入口網站觀看。[資源] 功能表中的 [憑證和秘密] 周圍有一個醒目提示，並在 [新用戶端密碼] 周圍的頁面上醒目提示。":::
 
 在接下來的 *Logic Apps 設計* 工具] 頁面中，將 **週期** 頻率變更為 *第二個*，讓事件每3秒觸發一次。 這可讓您在稍後輕鬆查看結果，而不需要等待很長的時間。
 
@@ -184,7 +184,7 @@ Azure 數位 Twins 目前沒有認證 (預先建立的) 連接器可供 Logic Ap
 
 這會開啟 *[選擇動作* ] 方塊。 切換至 [ *自訂* ] 索引標籤。您應該會在頂端的方塊中看到您先前的自訂連接器。
 
-:::image type="content" source="media/how-to-integrate-logic-apps/custom-action.png" alt-text="在 Azure 入口網站的 Logic Apps 設計工具中建立流程。在 [選擇動作] 方塊中，已選取 [自訂] 索引標籤。上述的使用者自訂連接器會顯示在方塊中，並在其周圍醒目提示。":::
+:::image type="content" source="media/how-to-integrate-logic-apps/custom-action.png" alt-text="Azure AD 應用程式註冊的入口網站觀看。[資源] 功能表中的 [憑證和秘密] 周圍有一個醒目提示，並在 [新用戶端密碼] 周圍的頁面上醒目提示。":::
 
 選取它以顯示該連接器所包含的 Api 清單。 使用搜尋列或在清單中滾動，以選取 **DigitalTwins_Add**。  (這是本文中使用的 API，但您也可以選取任何其他 API，作為 Logic Apps 連線) 的有效選擇。
 
@@ -199,7 +199,7 @@ Azure 數位 Twins 目前沒有認證 (預先建立的) 連接器可供 Logic Ap
 
 您可以在同一個視窗中選取 [ _+ 新增步驟_ ] 來選擇其他作業。
 
-:::image type="content" source="media/how-to-integrate-logic-apps/save-logic-app.png" alt-text="已完成邏輯應用程式連接器中的應用程式視圖。[DigitalTwinsAdd] 方塊會填入上面所述的值，包括範例 JSON 修補程式主體。視窗的 [儲存] 按鈕會反白顯示。":::
+:::image type="content" source="media/how-to-integrate-logic-apps/save-logic-app.png" alt-text="Azure AD 應用程式註冊的入口網站觀看。[資源] 功能表中的 [憑證和秘密] 周圍有一個醒目提示，並在 [新用戶端密碼] 周圍的頁面上醒目提示。":::
 
 ## <a name="query-twin-to-see-the-update"></a>查詢對應項以查看更新
 

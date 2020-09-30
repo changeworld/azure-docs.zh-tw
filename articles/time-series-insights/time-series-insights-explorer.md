@@ -10,16 +10,19 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 09/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1bcf8ec2395dbc94154072c1c4d839bf45125a3e
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 49a763af8d936ec9fd15c59c908ba9015f803930
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89487295"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91568650"
 ---
 # <a name="azure-time-series-insights-gen1-explorer"></a>Azure 時間序列深入解析 Gen1 Explorer
+
+> [!CAUTION]
+> 這是 Gen1 文章。
 
 本文說明 Azure 時間序列深入解析 Gen1 [Explorer web 應用程式](https://insights.timeseries.azure.com/)的功能和選項。 Azure 時間序列深入解析 Explorer 會示範服務提供的強大資料視覺效果功能，並可在您自己的環境中存取。
 
@@ -71,7 +74,7 @@ Azure 時間序列深入解析是完全受控的分析、儲存體及視覺效�
 
       - 述**詞：使用**述詞來快速篩選您的事件，方法是使用下表所列的一組運算元。 如果您選取或按一下來進行搜尋，述詞會根據該搜尋自動進行更新。 支援的運算元類型包括：
 
-         |作業  |支援的類型  |備註  |
+         |作業  |支援的類型  |注意  |
          |---------|---------|---------|
          |**<**, **>**, **<=**, **>=**    |  **Double**、 **DateTime**、 **TimeSpan**       |         |
          |**=**, **!=**, **<>**     | **String**、 **Bool**、 **Double**、 **DateTime**、 **TimeSpan**、 **Null**        |         |
@@ -108,7 +111,7 @@ Azure 時間序列深入解析是完全受控的分析、儲存體及視覺效�
 
 1. 使用 **熱度圖** 快速找出指定查詢中的唯一或異常資料數列。 只有一個搜尋字詞可視覺化為熱度圖。
 
-    [![時間序列深入解析瀏覽器熱度圖圖表 ](media/time-series-insights-explorer/tsi-ga-example-heatmap-charting.png)](media/time-series-insights-explorer/tsi-ga-example-heatmap-charting.png#lightbox)
+    [時間序列深入解析瀏覽器熱度圖圖表](media/time-series-insights-explorer/tsi-ga-example-heatmap-charting.png)] (媒體/時間序列-insights-explorer/tsi-ga-example-heatmap-charting.png # lightbox) 
 
 1. 當您選取或以滑鼠右鍵按一下來探索事件時，[ **事件** ] 面板就會成為可用。 您可以在這裡查看所有原始事件，並將事件匯出為 JSON 或 CSV 檔案。 Azure 時間序列深入解析儲存所有原始資料。
 
@@ -123,7 +126,7 @@ Azure 時間序列深入解析是完全受控的分析、儲存體及視覺效�
 
 現在您已瞭解 Azure 時間序列深入解析 explorer web 應用程式中可用的主要功能、設定設定和顯示選項。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 瞭解如何 [診斷和解決](time-series-insights-diagnose-and-solve-problems.md) Azure 時間序列深入解析環境中的問題。
 

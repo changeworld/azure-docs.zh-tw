@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 09/23/2020
-ms.openlocfilehash: 8f1e0a6aecc9702552a3dd66acc8dc7eb5bf1d85
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 24f15b8a4d5a5afd3a2794fe686d3acb0036cdd8
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91529916"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91565321"
 ---
 # <a name="azure-hdinsight-id-broker-preview"></a>Azure HDInsight ID Broker (preview) 
 
@@ -28,16 +28,6 @@ HIB 可簡化下列案例中的複雜驗證：
 
 HIB 提供的驗證基礎結構可讓您從 OAuth (新式) 至 Kerberos (舊版的) ，而不需要將密碼雜湊同步至 AAD DS。 此基礎結構包含在 Windows Server VM 上執行的元件， (識別碼代理程式節點) ，以及叢集閘道節點。
 
-下圖顯示啟用識別碼訊息代理程式之後，所有使用者的新式 OAuth 型驗證流程，包括同盟使用者：
-
-:::image type="content" source="media/identity-broker/identity-broker-architecture.png" alt-text="具有識別碼 Broker 的驗證流程":::
-
-在此圖中，用戶端 (也就是瀏覽器或應用程式) 必須先取得 OAuth 權杖，然後在 HTTP 要求中向閘道出示權杖。 如果您已經登入其他 Azure 服務（例如 Azure 入口網站），您可以使用單一登入 (SSO) 體驗登入 HDInsight 叢集。
-
-還是有許多繼承應用程式只支援基本驗證 (也就是使用者名稱/密碼) 。 在這些情況下，您仍然可以使用 HTTP 基本驗證來連接到叢集閘道。 在此設定中，您必須確保從閘道節點到同盟端點 (ADFS 端點) 的網路連線，以確保可直接從閘道節點看見。
-
-:::image type="content" source="media/identity-broker/basic-authentication.png" alt-text="具有識別碼 Broker 的驗證流程":::
-
 根據您的組織需求，使用下表來決定最佳的驗證選項：
 
 |驗證選項 |HDInsight 設定 | 要考慮的因素 |
@@ -45,6 +35,18 @@ HIB 提供的驗證基礎結構可讓您從 OAuth (新式) 至 Kerberos (舊版�
 | 完全 OAuth | ESP + HIB | 1. 支援 MFA (的最安全選項) 2。    不需要傳遞雜湊同步處理。 3.  在 AAD DS 中沒有密碼雜湊的內部內部部署帳戶沒有 ssh/kinit/keytab 存取權。 4.   僅限雲端的帳戶仍可以 ssh/kinit/keytab。 5. 透過 Oauth 6 對 Ambari 進行 Web 存取。  需要更新 (JDBC/ODBC 等 ) 的繼承應用程式，才能支援 OAuth。|
 | OAuth + 基本驗證 | ESP + HIB | 1. 透過 Oauth 2 存取 Ambari 的 Web 型存取。 繼承應用程式會繼續使用基本驗證。3。 必須停用 MFA，才能進行基本驗證存取。 4. 不需要傳遞雜湊同步處理。 5. 在 AAD DS 中沒有密碼雜湊的內部內部部署帳戶沒有 ssh/kinit/keytab 存取權。 6. 僅限雲端的帳戶仍可以 ssh/kinit。 |
 | 完整的基本驗證 | ESP | 1. 最類似于內部內部部署的設置。 2. 需要密碼雜湊同步處理至 AAD-DS。 3. 內部部署帳戶可以使用 ssh/kinit 或使用 keytab。 4. 如果支援儲存體 ADLS Gen2，則必須停用 MFA |
+
+下圖顯示啟用識別碼訊息代理程式之後，所有使用者的新式 OAuth 型驗證流程，包括同盟使用者：
+
+:::image type="content" source="media/identity-broker/identity-broker-architecture.png" alt-text="具有識別碼 Broker 的驗證流程":::
+
+在此圖中，用戶端 (也就是瀏覽器或應用程式) 必須先取得 OAuth 權杖，然後在 HTTP 要求中向閘道出示權杖。 如果您已經登入其他 Azure 服務（例如 Azure 入口網站），您可以使用單一登入 (SSO) 體驗登入 HDInsight 叢集。
+
+還是有許多繼承應用程式只支援基本驗證 (也就是使用者名稱/密碼) 。 在這些情況下，您仍然可以使用 HTTP 基本驗證來連接到叢集閘道。 在這項設定中，您必須確保從閘道節點到同盟端點的網路連線 (AD FS 端點) ，以確保能直接從閘道節點看見。 
+
+下圖顯示同盟使用者的基本驗證流程。 首先，閘道會嘗試使用 [ROPC 流程](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth-ropc) 來完成驗證，如果沒有任何密碼雜湊同步處理至 Azure AD，則會切換回以探索 AD FS 端點，並藉由存取 AD FS 端點來完成驗證。
+
+:::image type="content" source="media/identity-broker/basic-authentication.png" alt-text="具有識別碼 Broker 的驗證流程":::
 
 
 ## <a name="enable-hdinsight-id-broker"></a>啟用 HDInsight 識別碼代理程式

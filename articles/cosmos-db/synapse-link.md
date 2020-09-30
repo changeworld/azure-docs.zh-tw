@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 89282b0cc07f210e7bbf80503c9dbef5f97b13a2
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 0e02f0bf1bb9646a644a40279a8bae930de34c0b
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91397329"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91567990"
 ---
 # <a name="what-is-azure-synapse-link-for-azure-cosmos-db-preview"></a>什麼是適用於 Azure Cosmos DB 的 Azure Synapse Analytics (預覽)？
 
@@ -56,7 +56,7 @@ Azure Cosmos DB 分析存放區已最佳化，可提供分析工作負載的可�
 Azure Cosmos DB 分析存放區遵循耗用量定價模型，此模型是以資料儲存、分析讀取/寫入作業、執行的查詢為基礎。 您不需要佈建任何輸送量，如同您今天為交易工作負載所做的一樣。 使用 Azure Synapse Analytics 的高彈性計算引擎來存取資料，可讓執行儲存和計算的整體成本變得非常有效率。
 
 
-### <a name="analytics-for-locally-available-globally-distributed-multi-master-data"></a>本機可用、全域散發、多重主機資料的分析
+### <a name="analytics-for-locally-available-globally-distributed-multi-region-writes"></a>適用于本地可用、全域散發、多重區域寫入的分析
 
 您可以對 Azure Cosmos DB 中最近區域的資料複本，有效地執行分析查詢。 Azure Cosmos DB 提供最先進的功能，以主動-主動的方式執行全域散發的分析工作負載以及交易工作負載。
 

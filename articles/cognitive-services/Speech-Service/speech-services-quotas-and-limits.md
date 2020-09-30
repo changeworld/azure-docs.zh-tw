@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 09/30/2020
 ms.author: alexeyo
-ms.openlocfilehash: 554dd0967979bc2457c3a9c8371152e09535381f
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 7e22b772ec35ff9b63c99acd81ad6bb5abe328a0
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690131"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91567157"
 ---
 # <a name="speech-services-quotas-and-limits"></a>語音服務配額和限制
 
@@ -23,7 +23,7 @@ ms.locfileid: "88690131"
 
 ## <a name="quotas-and-limits-quick-reference"></a>配額和限制快速參考
 跳至 [文字轉換語音的配額和限制](#text-to-speech-quotas-and-limits-per-speech-resource)
-### <a name="speech-to-text-quotas-and-limits-per-speech-resource"></a>語音轉換文字配額和每個語音資源的限制
+### <a name="speech-to-text-quotas-and-limits-per-speech-resource"></a>每個語音資源的語音轉換文字配額和限制
 在下表中，沒有「可調」資料列的參數 **無法** 針對所有定價層進行調整。
 
 | Quota | 免費 (F0) <sup>1</sup> | 標準 (S0) |
@@ -36,6 +36,7 @@ ms.locfileid: "88690131"
 | **批次轉譯的輸入 blob 大小上限** | N/A | 2.5 GB |
 | **批次轉譯的 blob 容器大小上限** | N/A | 5 GB |
 | **批次轉譯的每個容器的 blob 數目上限** | N/A | 10000 |
+| **使用多個內容 Url 做為) 輸入時，每次轉譯要求的檔案數目上限 (** | N/A | 1000  |
 | **批次轉譯同時執行的作業數目上限** | N/A | 2000  |
 
 <sup>1</sup> 代表 **免費 (F0) ** 定價層另請參閱 [定價頁面](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)上的每月額度額度。<br/>

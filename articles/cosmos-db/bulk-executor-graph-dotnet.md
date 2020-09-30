@@ -9,12 +9,12 @@ ms.date: 05/28/2019
 ms.author: jasonh
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: dbb2ce5c7765e9b2784e5a60f94919b3ee855a39
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.openlocfilehash: 53c770bb8cc9d7a80ae7d11b6b1c089fcc9355da
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91408059"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91565627"
 ---
 # <a name="using-the-graph-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db-gremlin-api"></a>在 Azure Cosmos DB Gremlin API 中使用圖形大量執行程式 .NET 程式庫執行大量作業
 
@@ -24,12 +24,12 @@ ms.locfileid: "91408059"
 
 ## <a name="bulk-operations-with-graph-data"></a>圖形資料的大量作業
 
-[大量執行程式程式庫](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.graph?view=azure-dotnet)包含 `Microsoft.Azure.CosmosDB.BulkExecutor.Graph` 命名空間，可提供建立和匯入圖形物件的功能。 
+[大量執行程式程式庫](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.graph?view=azure-dotnet&preserve-view=true)包含 `Microsoft.Azure.CosmosDB.BulkExecutor.Graph` 命名空間，可提供建立和匯入圖形物件的功能。 
 
 下列程序概述如何將資料移轉用於 Gremlin API 容器：
 1. 從資料來源擷取記錄。
 2. 從取得的記錄建構 `GremlinVertex` 和 `GremlinEdge`物件，並將其新增至 `IEnumerable` 資料結構中。 在應用程式的這個部分中，如果資料來源不是圖形資料庫，則應實作偵測和新增關聯性的邏輯。
-3. 使用 [Graph BulkImportAsync 方法](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.graph.graphbulkexecutor.bulkimportasync?view=azure-dotnet)，將圖形物件插入集合中。
+3. 使用 [Graph BulkImportAsync 方法](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.graph.graphbulkexecutor.bulkimportasync?view=azure-dotnet&preserve-view=true)，將圖形物件插入集合中。
 
 相較於使用 Gremlin 用戶端，這項機制可改善資料移轉效率。 之所以有此改善，是因為使用 Gremlin 插入資料時，應用程式必須要逐一傳送查詢，且此查詢將必須受到驗證、評估繼而執行，以建立資料。 大量執行程式程式庫會在應用程式中處理驗證，並同時為每個網路要求傳送多個圖形物件。
 
@@ -140,7 +140,7 @@ git clone https://github.com/Azure-Samples/azure-cosmosdb-graph-bulkexecutor-dot
 設定|描述
 ---|---
 `EndPointUrl`|這是 **您的 .NET SDK 端點** (位於您 Azure Cosmos DB Gremlin API 資料庫帳戶中的 [概觀] 刀鋒視窗中)。 其格式為 `https://your-graph-database-account.documents.azure.com:443/`
-`AuthorizationKey`|這是您的 Azure Cosmos DB 帳戶下所列的主要或次要金鑰。 請深入了解[保護 Azure Cosmos DB 資料的存取](https://docs.microsoft.com/azure/cosmos-db/secure-access-to-data#master-keys)
+`AuthorizationKey`|這是您的 Azure Cosmos DB 帳戶下所列的主要或次要金鑰。 請深入了解[保護 Azure Cosmos DB 資料的存取](https://docs.microsoft.com/azure/cosmos-db/secure-access-to-data#primary-keys)
 `DatabaseName`, `CollectionName`|這些是**目標資料庫和集合名稱**。 當 `ShouldCleanupOnStart` 設定為 `true` 時，這些值將連同 `CollectionThroughput` 用來卸除資料庫和集合，並建立新的資料庫和集合。 同樣地，如果 `ShouldCleanupOnFinish` 設定為 `true`，則會在擷取結束時用這些值來刪除資料庫。 請注意，目標集合必須是**無限制集合**。
 `CollectionThroughput`|如果 `ShouldCleanupOnStart` 選項設定為 `true`，則會使用此值建立新的集合。
 `ShouldCleanupOnStart`|這將會在程式執行前卸除資料庫帳戶和集合，然後使用 `DatabaseName`、`CollectionName` 和 `CollectionThroughput` 值建立新的帳戶和集合。
@@ -159,4 +159,4 @@ git clone https://github.com/Azure-Samples/azure-cosmosdb-graph-bulkexecutor-dot
 
 * 若要深入瞭解 NuGet 套件詳細資料和大量執行程式 .NET 程式庫的版本資訊，請參閱 [大量執行程式 SDK 詳細資料](sql-api-sdk-bulk-executor-dot-net.md)。 
 * 參考[效能祕訣](https://docs.microsoft.com/azure/cosmos-db/bulk-executor-dot-net#performance-tips)以進一步最佳化大量執行程式的使用方式。
-* 檢閱 [BulkExecutor.Graph 參考文章](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.graph?view=azure-dotnet)，以取得與此命名空間中定義的類別和方法有關的詳細資訊。
+* 檢閱 [BulkExecutor.Graph 參考文章](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.graph?view=azure-dotnet&preserve-view=true)，以取得與此命名空間中定義的類別和方法有關的詳細資訊。

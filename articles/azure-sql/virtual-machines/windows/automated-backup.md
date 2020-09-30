@@ -13,21 +13,21 @@ ms.workload: iaas-sql-server
 ms.date: 05/03/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 0aa6a9114635ddc7935f7923a1552ad1583625ac
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 7cc28aef76158f039f1174fc76d0ed29e8f67aea
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91299063"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91565134"
 ---
 # <a name="automated-backup-v2-for-azure-virtual-machines-resource-manager"></a>Azure 虛擬機器的自動備份 v2 (Resource Manager)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 > [!div class="op_single_selector"]
 > * [SQL Server 2014](automated-backup-sql-2014.md)
-> * [SQL Server 2016/2017](automated-backup.md)
+> * [SQL Server 2016 +](automated-backup.md)
 
-「自動備份 v2」會針對執行 SQL Server 2016/2017 Standard、Enterprise 或 Developer 版本之 Azure VM 上所有現有和新的資料庫，自動設定[受控備份至 Microsoft Azure](https://msdn.microsoft.com/library/dn449496.aspx)。 這可讓您設定採用持久性 Azure Blob 儲存體的一般資料庫備份。 自動備份 v2 相依於 [SQL Server 基礎結構即服務 (IaaS) 代理程式延伸模組](sql-server-iaas-agent-extension-automate-management.md)。
+「自動備份 v2」會針對執行 SQL Server 2016 或更新版本 Standard、Enterprise 或 Developer edition 的 Azure VM 上所有現有和新的資料庫，自動設定 [受管理的備份，以 Microsoft Azure](https://msdn.microsoft.com/library/dn449496.aspx) 。 這可讓您設定採用持久性 Azure Blob 儲存體的一般資料庫備份。 自動備份 v2 相依於 [SQL Server 基礎結構即服務 (IaaS) 代理程式延伸模組](sql-server-iaas-agent-extension-automate-management.md)。
 
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-rm-include.md)]
 
@@ -42,17 +42,14 @@ ms.locfileid: "91299063"
 
 - SQL Server 2016 或更新版本：Developer、Standard 或 Enterprise
 
-> [!IMPORTANT]
-> 自動備份 v2 可與 SQL Server 2016 或更新版本搭配運作。 如果您使用的是 SQL Server 2014，則可以使用「自動備份 v1」來備份您的資料庫。 如需詳細資訊，請參閱 [SQL Server 2014 Azure 虛擬機器 (VM) 的自動備份](automated-backup-sql-2014.md)。
+> [!NOTE]
+> 如 SQL Server 2014，請參閱 [SQL Server 2014 的自動備份](automated-backup-sql-2014.md)。
 
 **資料庫組態**：
 
-- 目標資料庫必須使用完整復原模型。 如需完整復原模型對備份所造成影響的詳細資訊，請參閱[在完整復原模式下備份](https://technet.microsoft.com/library/ms190217.aspx)。
-- 系統資料庫不一定要使用完整復原模式。 不過，如果要求針對模型或 MSDB 進行記錄備份，就必須使用完整復原模式。
-- 目標資料庫必須位於預設的 SQL Server 執行個體或[正確安裝的](frequently-asked-questions-faq.md#administration)具名執行個體上。 
-
-> [!NOTE]
-> 「自動備份」依存於「SQL Server IaaS 代理程式擴充功能」。 目前的 SQL 虛擬機器資源庫映像預設會新增這項擴充。 如需詳細資訊，請參閱 [SQL Server IaaS 代理程式擴充](sql-server-iaas-agent-extension-automate-management.md)。
+- 目標 _使用者_ 資料庫必須使用完整復原模式。 系統資料庫不一定要使用完整復原模式。 不過，如果要求針對模型或 MSDB 進行記錄備份，就必須使用完整復原模式。 如需完整復原模型對備份所造成影響的詳細資訊，請參閱[在完整復原模式下備份](https://technet.microsoft.com/library/ms190217.aspx)。 
+- 已在 [完整管理模式](sql-vm-resource-provider-register.md#upgrade-to-full)中向 SQL vm 資源提供者註冊 SQL Server VM。 
+-  自動備份會依賴完整 [SQL Server IaaS 代理程式擴充](sql-server-iaas-agent-extension-automate-management.md)功能。 如此一來，只有預設實例的目標資料庫或單一命名實例才支援自動備份。 如果沒有預設實例和多個命名實例，SQL IaaS 擴充功能就會失敗，而且自動備份將無法運作。 
 
 ## <a name="settings"></a>設定
 下表說明可以為「自動備份 v2」設定的選項。 實際的設定步驟會依據您是使用 Azure 入口網站或 Azure Windows PowerShell 命令而有所不同。
@@ -159,9 +156,9 @@ $resourcegroupname = "resourcegroupname"
 (Get-AzVM -Name $vmname -ResourceGroupName $resourcegroupname).Extensions 
 ```
 
-如果已安裝 SQL Server IaaS 代理程式延伸模組，則應該會看到其以 "SqlIaaSAgent" 或 "SQLIaaSExtension" 的形式列出。 該延伸模組的 **ProvisioningState** 應該也顯示為 "Succeeded"。 
+如果已安裝 SQL Server IaaS 代理程式擴充功能，您應該會看到它以「SqlIaaSAgent」或「SQLIaaSExtension」的形式列出。 該擴充功能的 **ProvisioningState** 應該也顯示為「已成功」。 
 
-如果未安裝或無法佈建該延伸模組，則可使用下列命令加以安裝。 除了 VM 名稱和資源群組之外，您還必須指定 VM 所在的區域 ( **$region**)。
+如果未安裝或無法佈建擴充功能，您可以使用下列命令來安裝。 除了 VM 名稱和資源群組之外，您還必須指定 VM 所在的區域 ( **$region**)。
 
 ```powershell
 $region = "EASTUS2"

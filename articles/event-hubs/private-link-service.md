@@ -64,7 +64,7 @@ Azure Private Link 服務可讓您透過虛擬網路中的**私人端點**存取
 1. 選取頁面頂端的 [私人端點連線] 索引標籤。 
 1. 選取頁面頂端的 [+ 私人端點] 按鈕。
 
-    :::image type="content" source="./media/private-link-service/private-link-service-3.png" alt-text="網路頁面-私人端點連線索引標籤-新增私人端點連結":::
+    :::image type="content" source="./media/private-link-service/private-link-service-3.png" alt-text="[網路] 索引標籤-選取的網路選項":::
 7. 在 [基本] 頁面上，遵循下列步驟： 
     1. 選取您要在其中建立私人端點的 **Azure 訂閱**。 
     2. 選取私人端點資源的**資源群組**。

@@ -52,7 +52,7 @@ ms.locfileid: "91295731"
 
 2. 輸入角色名稱和密碼。 按一下 [檔案]  。
 
-   :::image type="content" source="media/howto-hyperscale-create-users/2-add-user-fields.png" alt-text="新增角色":::
+   :::image type="content" source="media/howto-hyperscale-create-users/2-add-user-fields.png" alt-text="角色頁面":::
 
 系統會在伺服器群組的協調器節點上建立使用者，並傳播至所有背景工作節點。 透過 Azure 入口網站建立的角色具有 `LOGIN` 屬性，這表示它們是可登入資料庫的真實使用者。
 
@@ -77,7 +77,7 @@ GRANT SELECT ON ALL TABLES IN SCHEMA public TO db_user;
 
 若要更新使用者，請造訪超大規模 (Citus) server 群組的 [**角色**] 頁面，然後按一下使用者旁邊的省略號 **。** 省略號會開啟功能表以刪除使用者，或重設其密碼。
 
-   :::image type="content" source="media/howto-hyperscale-create-users/edit-role.png" alt-text="編輯角色":::
+   :::image type="content" source="media/howto-hyperscale-create-users/edit-role.png" alt-text="角色頁面":::
 
 `citus`角色具有特殊許可權，無法刪除。
 

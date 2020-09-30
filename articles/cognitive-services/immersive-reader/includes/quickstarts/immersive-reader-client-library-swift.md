@@ -7,23 +7,22 @@ author: nitinme
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 05/20/2020
+ms.date: 09/14/2020
 ms.author: nitinme
-ms.openlocfilehash: 2455297cd9dd77d2b5f605bf36ed46b6240b3f4d
-ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
+ms.openlocfilehash: 7a298de40264a06e18aa4b7c77abfd622be4bb75
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/07/2020
-ms.locfileid: "89505370"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90978306"
 ---
-[沈浸式閱讀程式](https://www.onenote.com/learningtools)是經過全面設計的工具，可實作經實證的技術以改善閱讀理解程度。
+[沈浸式閱讀程式](https://www.onenote.com/learningtools)是經過全面設計的工具，可實作經實證的技術並針對入門讀者、語言學習者及存在學習差異 (例如讀寫障礙) 的人士改善其閱讀理解程度。 您可以在應用程式中使用沈浸式閱讀程式來隔離文字，以改善焦點、顯示常用單字的圖片、醒目提示語音的部分、朗讀選取的文字、即時轉譯單字和片語等等。
 
 在本快速入門中，您將從頭開始建置 iOS 應用程式，並且整合沈浸式閱讀程式。 本快速入門的完整工作範例可以在[這裡](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/ios)取得。
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/cognitive-services/)。
-
 ## <a name="prerequisites"></a>必要條件
 
+* Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/cognitive-services)
 * [Xcode](https://apps.apple.com/us/app/xcode/id497799835?mt=12)
 * 為 Azure Active Directory 驗證所設定的沈浸式閱讀程式資源。 遵循[這些指引](../../how-to-create-immersive-reader.md)來設定。 設定範例專案屬性時，您需要這裡建立的一些值。 將工作階段的輸出儲存到文字檔中，以供日後參考。
 
@@ -31,21 +30,21 @@ ms.locfileid: "89505370"
 
 在 Xcode 中建立新的專案。
 
-![新增專案](../../media/ios/xcode-create-project.png)
+![新增專案 - Swift](../../media/ios/xcode-create-project.png)
 
 選擇 [單一檢視應用程式]。
 
-![新的單一檢視應用程式](../../media/ios/xcode-single-view-app.png)
+![新的單一檢視應用程式 - Swift](../../media/ios/xcode-single-view-app.png)
 
 ## <a name="set-up-authentication"></a>設定驗證
 
 在頂端功能表中，按一下 [產品] > [配置] > [編輯配置...]。
 
-![編輯配置](../../media/ios/quickstart-ios-edit-scheme.png)
+![編輯配置 - Swift](../../media/ios/quickstart-ios-edit-scheme.png)
 
 在 [執行] 檢視中，按一下 [引數] 索引標籤。
 
-![編輯配置](../../media/ios/quickstart-ios-env-vars.png)
+![編輯配置環境變數 - Swift](../../media/ios/quickstart-ios-env-vars.png)
 
 在 [環境變數] 區段中，新增下列名稱和值，並使用您在建立沈浸式閱讀程式資源時提供的值。
 
@@ -557,19 +556,19 @@ function sendContentToReader(message) {
 
 藉由選取模擬器或裝置目標，在 Xcode 中設定封存配置。
 
-![封存配置](../../media/ios/xcode-archive-scheme.png)
+![封存配置 - Swift](../../media/ios/xcode-archive-scheme.png)
 
-![選取目標](../../media/ios/xcode-select-target.png)
+![選取目標 - Swift](../../media/ios/xcode-select-target.png)
 
 在 Xcode 中，按 **Ctrl + R**，或按一下 [播放] 按鈕以執行專案。 應用程式應該會在指定的模擬器或裝置上啟動。
 
 在您的應用程式中，您應該會看到：
 
-![範例應用程式](../../media/ios/sample-app-ipad.png)
+![範例應用程式 - Swift](../../media/ios/sample-app-ipad.png)
 
 當您按一下 [沈浸式閱讀程式] 按鈕時，您會看到沈浸式閱讀程式啟動，並顯示應用程式上的內容。
 
-![沈浸式閱讀程式](../../media/ios/immersive-reader-ipad.png)
+![沈浸式閱讀程式 - Swift](../../media/ios/immersive-reader-ipad.png)
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -51,7 +51,7 @@ Azure Service Bus Explorer 會將入口網站功能延伸到管理作業之外�
 
 從左側導覽功能表中，選取 [Service Bus Explorer (預覽)]
 
-:::image type="content" source="./media/service-bus-explorer/left-navigation-menu-selected.png" alt-text="SB Explorer 左側導覽功能表":::
+:::image type="content" source="./media/service-bus-explorer/left-navigation-menu-selected.png" alt-text="實體選取":::
 
 ### <a name="sending-a-message-to-a-queue-or-topic"></a>將訊息傳送至佇列或主題
 
@@ -66,17 +66,17 @@ Azure Service Bus Explorer 會將入口網站功能延伸到管理作業之外�
 
 一旦撰寫訊息之後，請點擊 [傳送]。
 
-:::image type="content" source="./media/service-bus-explorer/send-experience.png" alt-text="撰寫訊息":::
+:::image type="content" source="./media/service-bus-explorer/send-experience.png" alt-text="實體選取":::
 
 當傳送作業成功完成時， 
 
 * 如果傳送至佇列，[作用中訊息] 計量計數器會遞增。
 
-    :::image type="content" source="./media/service-bus-explorer/queue-after-send-metrics.png" alt-text="QueueAfterSendMetrics":::
+    :::image type="content" source="./media/service-bus-explorer/queue-after-send-metrics.png" alt-text="實體選取":::
 
 * 如果傳送至主題，在訊息路由傳送至的訂閱上，[作用中訊息] 計量計數器會遞增。
 
-    :::image type="content" source="./media/service-bus-explorer/topic-after-send-metrics.png" alt-text="TopicAfterSendMetrics":::
+    :::image type="content" source="./media/service-bus-explorer/topic-after-send-metrics.png" alt-text="實體選取":::
 
 ### <a name="receiving-a-message-from-a-queue"></a>從佇列接收訊息
 
@@ -93,18 +93,18 @@ Service Bus Explorer 上的接收函式允許一次接收單一訊息。 接收�
 1. 按一下 Service Bus Explorer 上的 [接收] 索引標籤。
 2. 檢查計量以查看是否有可以接收的 [作用中訊息] 或 [無效訊息]。
 
-    :::image type="content" source="./media/service-bus-explorer/queue-after-send-metrics.png" alt-text="QueueAfterSendMetrics":::
+    :::image type="content" source="./media/service-bus-explorer/queue-after-send-metrics.png" alt-text="實體選取":::
 
 3. 在 [佇列] 或 [DeadLetter] 子佇列之間挑選。
 
-    :::image type="content" source="./media/service-bus-explorer/queue-or-deadletter.png" alt-text="QueueOrDeadletter":::
+    :::image type="content" source="./media/service-bus-explorer/queue-or-deadletter.png" alt-text="實體選取":::
 
 4. 按一下 [接收] 按鈕，接著按一下 [是]，以確認「接收並刪除」作業。
 
 
 當接收作業成功時，訊息詳細資料會顯示在格線中，如下所示。 您可以從格線中選取訊息，以顯示其詳細資料。
 
-:::image type="content" source="./media/service-bus-explorer/receive-message-from-queue-2.png" alt-text="Azure 服務匯流排 Explorer 中 [佇列] 視窗的螢幕擷取畫面，其中顯示佇列中所選取之作用中訊息的訊息詳細資料。":::
+:::image type="content" source="./media/service-bus-explorer/receive-message-from-queue-2.png" alt-text="實體選取":::
 
 
 ### <a name="peeking-a-message-from-a-queue"></a>預覽來自佇列的訊息
@@ -113,21 +113,21 @@ Service Bus Explorer 上的接收函式允許一次接收單一訊息。 接收�
 
 1. 若要預覽佇列上的訊息，請按一下 [Service Bus Explorer] 上的 [預覽] 索引標籤。
 
-    :::image type="content" source="./media/service-bus-explorer/peek-tab-selected.png" alt-text="PeekTab":::
+    :::image type="content" source="./media/service-bus-explorer/peek-tab-selected.png" alt-text="實體選取":::
 
 2. 檢查計量以查看是否有可以預覽的 [作用中訊息] 或 [無效訊息]。
 
-    :::image type="content" source="./media/service-bus-explorer/queue-after-send-metrics.png" alt-text="QueueAfterSendMetrics":::
+    :::image type="content" source="./media/service-bus-explorer/queue-after-send-metrics.png" alt-text="實體選取":::
 
 3. 然後，在 [佇列] 或 [DeadLetter] 子佇列之間挑選。
 
-    :::image type="content" source="./media/service-bus-explorer/queue-or-deadletter.png" alt-text="QueueOrDeadletter":::
+    :::image type="content" source="./media/service-bus-explorer/queue-or-deadletter.png" alt-text="實體選取":::
 
 4. 按一下 [預覽] 按鈕。 
 
 一旦預覽作業完成，格線上最多會顯示 32 個訊息，如下所示。 若要檢視特定訊息的詳細資料，請從方格中加以選取。 
 
-:::image type="content" source="./media/service-bus-explorer/peek-message-from-queue-2.png" alt-text="PeekMessageFromQueue":::
+:::image type="content" source="./media/service-bus-explorer/peek-message-from-queue-2.png" alt-text="實體選取":::
 
 > [!NOTE]
 >
@@ -146,17 +146,17 @@ Service Bus Explorer 上的接收函式允許一次接收單一訊息。 接收�
 
 1. 按一下 [接收] 索引標籤，然後從下拉式清單選取器中選取特定的「訂閱」。
 
-    :::image type="content" source="./media/service-bus-explorer/receive-subscription-tab-selected.png" alt-text="ReceiveTabSelected":::
+    :::image type="content" source="./media/service-bus-explorer/receive-subscription-tab-selected.png" alt-text="實體選取":::
 
 2. 在 [訂閱] 或 [DeadLetter] 子實體之間挑選。
 
-    :::image type="content" source="./media/service-bus-explorer/subscription-or-deadletter.png" alt-text="SubscriptionOrDeadletter":::
+    :::image type="content" source="./media/service-bus-explorer/subscription-or-deadletter.png" alt-text="實體選取":::
 
 3. 按一下 [接收] 按鈕，接著按一下 [是]，以確認「接收並刪除」作業。
 
 當接收作業成功時，已接收訊息會顯示在格線中，如下所示。 若要檢視訊息的詳細資料，請按一下該訊息。
 
-:::image type="content" source="./media/service-bus-explorer/receive-message-from-subscription.png" alt-text="Azure 服務匯流排 Explorer 中 [接收] 索引標籤的螢幕擷取畫面，其中顯示已接收之作用中訊息的訊息詳細資料。":::
+:::image type="content" source="./media/service-bus-explorer/receive-message-from-subscription.png" alt-text="實體選取":::
 
 ### <a name="peeking-a-message-from-a-subscription"></a>預覽來自訂閱的訊息
 
@@ -164,17 +164,17 @@ Service Bus Explorer 上的接收函式允許一次接收單一訊息。 接收�
 
 1. 按一下 [預覽] 索引標籤，然後從下拉式清單選取器中選取特定的「訂閱」。
 
-    :::image type="content" source="./media/service-bus-explorer/peek-subscription-tab-selected.png" alt-text="PeekTabSelected":::
+    :::image type="content" source="./media/service-bus-explorer/peek-subscription-tab-selected.png" alt-text="實體選取":::
 
 2. 在 [訂閱] 或 [DeadLetter] 子實體之間挑選。
 
-    :::image type="content" source="./media/service-bus-explorer/subscription-or-deadletter.png" alt-text="SubscriptionOrDeadletter":::
+    :::image type="content" source="./media/service-bus-explorer/subscription-or-deadletter.png" alt-text="實體選取":::
 
 3. 按一下 [預覽] 按鈕。
 
 一旦預覽作業完成，格線上最多會顯示 32 個訊息，如下所示。 若要檢視特定訊息的詳細資料，請從方格中加以選取。 
 
-:::image type="content" source="./media/service-bus-explorer/peek-message-from-subscription.png" alt-text="PeekMessageFromSubscription":::
+:::image type="content" source="./media/service-bus-explorer/peek-message-from-subscription.png" alt-text="實體選取":::
 
 > [!NOTE]
 >

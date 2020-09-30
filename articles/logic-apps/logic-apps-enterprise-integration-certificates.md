@@ -1,6 +1,6 @@
 ---
 title: 使用憑證保護 B2B 訊息
-description: 使用企業整合套件新增憑證以協助保護 Azure Logic Apps 中的 B2B 訊息
+description: 使用企業整合套件新增憑證，以協助保護 Azure Logic Apps 中的 B2B 訊息
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
@@ -8,16 +8,16 @@ ms.author: divswa
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 08/17/2018
-ms.openlocfilehash: 7d57536eee62c415058dd454f3da6ee5f3d04898
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 03fc17c0d071cef4c8de92c6b50d60d961d18aef
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090320"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91565254"
 ---
 # <a name="improve-security-for-b2b-messages-by-using-certificates"></a>使用憑證來改善 B2B 訊息的安全性
 
-當您需要保持 B2B 通訊機密時，您可以藉由將憑證新增至您的整合帳戶，來提高企業整合應用程式（特別是邏輯應用程式）中 B2B 通訊的安全性。 憑證是數位文件，可檢查電子通訊參與者的身分識別，還能協助您透過下列方式保護通訊：
+當您需要將 B2B 通訊保持機密時，您可以藉由將憑證新增至整合帳戶，來提高企業整合應用程式（特別是邏輯應用程式）中 B2B 通訊的安全性。 憑證是數位文件，可檢查電子通訊參與者的身分識別，還能協助您透過下列方式保護通訊：
 
 * 將訊息內容加密。
 * 以數位方式簽署訊息。
@@ -51,11 +51,11 @@ ms.locfileid: "87090320"
    | **[MSSQLSERVER 的通訊協定內容]** | <*憑證-檔案名*> | 若要尋找及選取要上傳的憑證檔案，請選擇 [憑證]**** 方塊旁的資料夾圖示。 |
    ||||
 
-   ![選擇 [新增]，並提供憑證的詳細資料](media/logic-apps-enterprise-integration-certificates/public-certificate-details.png)
+   ![螢幕擷取畫面：顯示要在哪裡選取 [新增] 以提供憑證詳細資料。](media/logic-apps-enterprise-integration-certificates/public-certificate-details.png)
 
    Azure 會在驗證您的選取項目之後，將憑證上傳。
 
-   ![Azure 會顯示新的憑證](media/logic-apps-enterprise-integration-certificates/new-public-certificate.png) 
+   ![顯示 Azure 顯示新憑證之位置的螢幕擷取畫面。](media/logic-apps-enterprise-integration-certificates/new-public-certificate.png) 
 
 ## <a name="upload-a-private-certificate"></a>上傳私人憑證
 
@@ -86,11 +86,11 @@ ms.locfileid: "87090320"
    | 屬性 | 值 | 描述 | 
    |----------|-------|-------------|
    | **名稱** | <*憑證名稱*> | 您的憑證名稱，在本例中為 "privateCert" | 
-   | **憑證類型** | 私人 | 您的憑證類型 |
-   | **[MSSQLSERVER 的通訊協定內容]** | <*憑證-檔案名*> | 若要尋找及選取要上傳的憑證檔案，請選擇 [憑證]**** 方塊旁的資料夾圖示。 使用金鑰保存庫作為私密金鑰時，上傳的檔案將會是公開憑證。 | 
+   | **憑證類型** | Private | 您的憑證類型 |
+   | **[MSSQLSERVER 的通訊協定內容]** | <*憑證-檔案名*> | 若要尋找及選取要上傳的憑證檔案，請選擇 [憑證]**** 方塊旁的資料夾圖示。 使用金鑰保存庫做為私密金鑰時，上傳的檔案會是公開憑證。 | 
    | **資源群組** | <*整合-帳戶-資源群組*> | 整合帳戶的資源群組，在本例中為 "MyResourceGroup" | 
-   | **金鑰保存庫** | <*金鑰-保存庫-名稱*> | Azure 金鑰保存庫的名稱 |
-   | **索引鍵名稱** | <*索引鍵名稱*> | 金鑰名稱 |
+   | **金鑰保存庫** | <*金鑰保存庫-名稱*> | Azure 金鑰保存庫的名稱 |
+   | **索引鍵名稱** | <*機碼名稱*> | 金鑰名稱 |
    ||||
 
    ![選擇 [新增]，並提供憑證的詳細資料](media/logic-apps-enterprise-integration-certificates/private-certificate-details.png)

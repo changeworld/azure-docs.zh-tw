@@ -6,14 +6,14 @@ author: duongau
 ms.service: expressroute
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 09/28/2020
+ms.date: 09/29/2020
 ms.author: duau
-ms.openlocfilehash: 1721c2a9ede949bb6183c60e65f540869bb95e43
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 706a16eaaab113aab879b828e851191b4d3954dc
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91446151"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91566154"
 ---
 # <a name="expressroute-connectivity-partners-and-peering-locations"></a>ExpressRoute 連線合作夥伴和對等互連位置
 
@@ -121,7 +121,7 @@ ExpressRoute 位置 (有時稱為對等互連位置或 meet-me-locations) 是 Mi
 | **[Interxion](https://www.interxion.com/why-interxion/colocate-with-the-clouds/Microsoft-Azure/)** |支援 |支援 |阿姆斯特丹、阿姆斯特丹 2、哥本哈根、都柏林、法蘭克福、倫敦、馬賽、巴黎、蘇黎世 |
 | **[IX Reach](https://www.ixreach.com/partners/cloud-partners/microsoft-azure/)**|支援 |支援 | 阿姆斯特丹、倫敦 2、矽谷、多倫多、華盛頓特區 |
 | **Jaguar Network** |支援 |支援 |馬賽|
-| **[Jisc](https://www.jisc.ac.uk/microsoft-azure-expressroute)** |支援 |支援 |London |
+| **[Jisc](https://www.jisc.ac.uk/microsoft-azure-expressroute)** |支援 |支援 |倫敦，紐波特 (威爾士)  |
 | **[KINX](https://www.kinx.net/service/network/cloudhub/ms-expressroute/?lang=en)** |支援 |支援 |首爾 |
 | **[Kordia](https://www.kordia.co.nz/cloudconnect)** | 支援 |支援 |奧克蘭、雪梨 |
 | **[KPN](https://www.kpn.com/zakelijk/cloud/connect.htm)** | 支援 | 支援 | 阿姆斯特丹 |

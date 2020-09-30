@@ -8,12 +8,12 @@ ms.topic: conceptual
 author: djpmsft
 ms.author: daperlov
 ms.date: 08/31/2020
-ms.openlocfilehash: 96fba5c27115dab65f26be80ce03bef35abcdb92
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: a936fbec23a38c5b96c678b38b92eed9346b88bf
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230820"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91567531"
 ---
 # <a name="global-parameters-in-azure-data-factory"></a>Azure Data Factory 中的全域參數
 
@@ -25,11 +25,11 @@ ms.locfileid: "89230820"
 
 若要建立全域參數，請移至 [*管理*] 區段中的 [*全域參數*] 索引標籤。 選取 [ **新增** ] 以開啟建立的側邊導覽。
 
-![建立全域參數](media/author-global-parameters/create-global-parameter-1.png)
+![反白顯示您選取用來建立全域參數的 [新增] 按鈕的螢幕擷取畫面。](media/author-global-parameters/create-global-parameter-1.png)
 
 在側邊導覽中，輸入名稱、選取資料類型，然後指定參數的值。
 
-![建立全域參數](media/author-global-parameters/create-global-parameter-2.png)
+![螢幕擷取畫面，顯示您為新的全域參數新增名稱、資料類型和值的位置。](media/author-global-parameters/create-global-parameter-2.png)
 
 建立全域參數之後，您可以按一下參數的名稱來編輯它。 若要一次修改多個參數，請選取 [ **全部編輯**]。
 

@@ -5,14 +5,14 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 08/06/2020
+ms.date: 09/29/2020
 ms.author: duau
-ms.openlocfilehash: 52aba71ba289a1b5479a6a9eaef7e07418b563fd
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: c4021fbf87cc7cff8dde8e759423eb52c705cf97
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90986370"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91568330"
 ---
 # <a name="create-expressroute-direct-using-the-azure-portal"></a>使用 Azure 入口網站建立 ExpressRoute Direct
 
@@ -26,7 +26,7 @@ ExpressRoute Direct 可讓您在策略性分散于世界各地的對等互連位
 1. 存取您的訂用帳戶設定 [，如 Azure 資源提供者和類型](../azure-resource-manager/management/resource-providers-and-types.md)中所述。
 1. 在您的訂用帳戶中，針對 **資源提供者**，確認 **Microsoft** 的提供者顯示 **已註冊** 的狀態。 如果已註冊的提供者清單中沒有 Microsoft 網路資源提供者，請新增它。
 
-## <a name="1-create-expressroute-direct"></a><a name="create-erdir"></a>1. 建立 ExpressRoute Direct
+## <a name="create-expressroute-direct"></a><a name="create-erdir"></a>建立 ExpressRoute Direct
 
 1. 在 [ [Azure 入口網站](https://portal.azure.com) ] 功能表中，或從 **首頁** 選取 [ **建立資源**]。
 
@@ -47,7 +47,7 @@ ExpressRoute Direct 可讓您在策略性分散于世界各地的對等互連位
 
 1. 接下來，完成 [設定] **頁面上的欄位** 。
 
-    :::image type="content" source="./media/how-to-expressroute-direct-portal/configuration.png" alt-text="設定頁面":::
+    :::image type="content" source="./media/how-to-expressroute-direct-portal/configuration.png" alt-text="基本資料頁面":::
 
     * 對**等互連位置**：您將連接到 ExpressRoute Direct 資源的對等互連位置。 如需對等互連位置的詳細資訊，請參閱 [ExpressRoute 位置](expressroute-locations-providers.md)。
    * **頻寬**：您要保留的埠配對頻寬。 ExpressRoute Direct 支援 10 Gb 和 100 Gb 的頻寬選項。 如果您所需的頻寬不適用於指定的對等互連位置，請 [在 Azure 入口網站中開啟支援要求](https://aka.ms/azsupt)。
@@ -61,21 +61,25 @@ ExpressRoute Direct 可讓您在策略性分散于世界各地的對等互連位
 
 1. 指定任何資源標記，然後選取 [ **審核 + 建立** ] 以驗證 ExpressRoute Direct 資源設定。
 
-    :::image type="content" source="./media/how-to-expressroute-direct-portal/validate.png" alt-text="檢閱並建立":::
+    :::image type="content" source="./media/how-to-expressroute-direct-portal/validate.png" alt-text="基本資料頁面":::
 
-1. 選取 [建立]。 您會看到一則訊息，讓您知道您的部署正在進行中。 當建立資源時，狀態將會顯示在此頁面上。 
+1. 選取 [建立]  。 您會看到一則訊息，讓您知道您的部署正在進行中。 當建立資源時，狀態將會顯示在此頁面上。 
 
-## <a name="2-change-admin-state-of-links"></a><a name="state"></a>2. 變更連結的管理狀態
+## <a name="generate-the-letter-of-authorization-loa"></a><a name="authorization"></a>產生 (LOA 的授權信件) 
+
+目前無法從入口網站產生授權信件。 使用 **[Azure PowerShell](expressroute-howto-erdirect.md#authorization)** 或 **[Azure CLI](expressroute-howto-expressroute-direct-cli.md#authorization)** 來取得授權信件。
+
+## <a name="change-admin-state-of-links"></a><a name="state"></a>變更連結的系統管理狀態
 
 此程序應用於進行第 1 層測試，確保每個交叉連線都已在每個主要和次要路由器中正確修補。
 
 1. 在 [ExpressRoute Direct 資源 **總覽** ] 頁面的 [ **連結** ] 區段中，選取 [ **link1**]。
 
-    :::image type="content" source="./media/how-to-expressroute-direct-portal/link.png" alt-text="連結 1" lightbox="./media/how-to-expressroute-direct-portal/link-expand.png":::
+    :::image type="content" source="./media/how-to-expressroute-direct-portal/link.png" alt-text="基本資料頁面" lightbox="./media/how-to-expressroute-direct-portal/link-expand.png":::
 
 1. 將 [ **管理狀態** ] 設定切換為 [ **已啟用**]，然後選取 [ **儲存**]。
 
-    :::image type="content" source="./media/how-to-expressroute-direct-portal/state.png" alt-text="系統管理員狀態":::
+    :::image type="content" source="./media/how-to-expressroute-direct-portal/state.png" alt-text="基本資料頁面":::
 
     >[!IMPORTANT]
     >在任一連結上啟用管理狀態時，就會開始計費。
@@ -83,7 +87,7 @@ ExpressRoute Direct 可讓您在策略性分散于世界各地的對等互連位
 
 1. 針對 **link2**重複相同的程式。
 
-## <a name="3-create-a-circuit"></a><a name="circuit"></a>3. 建立電路
+## <a name="create-a-circuit"></a><a name="circuit"></a>建立線路
 
 根據預設，您可以在 ExpressRoute Direct 資源所在的訂用帳戶中建立 10 個線路。 此數位可透過支援增加。 您則負責追蹤已佈建和已使用的頻寬。 布建的頻寬是 ExpressRoute Direct 資源上所有線路的頻寬總和。 已使用的頻寬則是基礎實體介面的實際使用量。
 
@@ -97,18 +101,18 @@ ExpressRoute Direct 可讓您在策略性分散于世界各地的對等互連位
 
 1. 在 [ExpressRoute Direct **設定** ] 區段中，選取 [ **線路**]，然後選取 [ **+ 新增**]。 
 
-    :::image type="content" source="./media/how-to-expressroute-direct-portal/add.png" alt-text="螢幕擷取畫面顯示已選取線路的 ExpressRoute 設定，並醒目提示 [新增]。" lightbox="./media/how-to-expressroute-direct-portal/add-expand.png":::
+    :::image type="content" source="./media/how-to-expressroute-direct-portal/add.png" alt-text="基本資料頁面" lightbox="./media/how-to-expressroute-direct-portal/add-expand.png":::
 
 1. 設定 [設定 **] 頁面中的設定** 。
 
-   :::image type="content" source="./media/how-to-expressroute-direct-portal/configuration2.png" alt-text="設定頁面":::
+   :::image type="content" source="./media/how-to-expressroute-direct-portal/configuration2.png" alt-text="基本資料頁面":::
 
 1. 指定任何資源標記、選取 **審核 + 建立** ，以便在建立資源之前驗證值。
 
-   :::image type="content" source="./media/how-to-expressroute-direct-portal/review.png" alt-text="檢閱並建立":::
+   :::image type="content" source="./media/how-to-expressroute-direct-portal/review.png" alt-text="基本資料頁面":::
 
-1. 選取 [建立]。 您會看到一則訊息，讓您知道您的部署正在進行中。 當建立資源時，狀態將會顯示在此頁面上。 
+1. 選取 [建立]  。 您會看到一則訊息，讓您知道您的部署正在進行中。 當建立資源時，狀態將會顯示在此頁面上。 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 如需 ExpressRoute Direct 的詳細資訊，請參閱 [總覽](expressroute-erdirect-about.md)。

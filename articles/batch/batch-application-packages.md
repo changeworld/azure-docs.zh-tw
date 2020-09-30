@@ -77,7 +77,7 @@ Batch 服務會使用 Azure 儲存體將應用程式套件儲存為區塊 Blob�
 
 若要查看 Batch 帳戶中的應用程式，請在左側導覽功能表中選取 [ **應用程式** ]。
 
-:::image type="content" source="media/batch-application-packages/app_pkg_02.png" alt-text="Azure 入口網站中 [應用程式] 功能表項目的螢幕擷取畫面。":::
+:::image type="content" source="media/batch-application-packages/app_pkg_02.png" alt-text="此圖顯示應用程式和應用程式封裝的高階觀點。":::
 
 選取此功能表選項會開啟 [ **應用程式** ] 視窗。 此視窗會顯示帳戶中每個應用程式的識別碼，以及下列屬性︰
 
@@ -101,7 +101,7 @@ Batch 服務會使用 Azure 儲存體將應用程式套件儲存為區塊 Blob�
 
 在 Batch 帳戶中，選取 [ **應用程式** ]，然後選取 [ **新增**]。
 
-:::image type="content" source="media/batch-application-packages/app_pkg_05.png" alt-text="Azure 入口網站中新應用程式建立流程的螢幕擷取畫面。":::
+:::image type="content" source="media/batch-application-packages/app_pkg_05.png" alt-text="此圖顯示應用程式和應用程式封裝的高階觀點。":::
 
 輸入下列資訊：
 
@@ -128,7 +128,7 @@ Batch 服務會使用 Azure 儲存體將應用程式套件儲存為區塊 Blob�
 
 若要更新或刪除現有的應用程式封裝，請在 Batch 帳戶的 [ **應用程式** ] 區段中選取應用程式。 選取您要修改之應用程式封裝的資料列中的省略號，然後選取您要執行的動作。
 
-:::image type="content" source="media/batch-application-packages/app_pkg_07.png" alt-text="顯示 Azure 入口網站中應用程式封裝的更新和刪除選項螢幕擷取畫面。":::
+:::image type="content" source="media/batch-application-packages/app_pkg_07.png" alt-text="此圖顯示應用程式和應用程式封裝的高階觀點。":::
 
 如果您選取 [ **更新**]，就可以上傳新的 .zip 檔案。 這會取代您針對該版本上傳的先前 .zip 檔案。
 

@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 09/22/2020
+ms.date: 09/30/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 11901e0b68fed9a6a83287d50896bf2afc51fa37
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 9aa8857ab10423f460874870a3663929e8e5a5c5
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91279550"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91566938"
 ---
 啟用共用磁片只適用于磁片類型的子集。 目前只有 ultra 磁片和 premium Ssd 可以啟用共用磁片。 啟用共用磁片的每個受控磁片受限於下列限制，並依磁片類型組織：
 
@@ -30,7 +30,6 @@ Ultra 磁片有各自不同的限制清單，與共享磁片無關。 如需 ult
 
 ### <a name="premium-ssds"></a>進階 SSD
 
-- 目前只有在 [區域子集](#regional-availability)中才支援。
 - 目前僅限 Azure Resource Manager 或 SDK 支援。 
 - 只能在資料磁片（而不是 OS 磁片）上啟用。
 - 的 premium Ssd 無法使用**ReadOnly**主機快取 `maxShares>1` 。
@@ -42,24 +41,4 @@ Ultra 磁片有各自不同的限制清單，與共享磁片無關。 如需 ult
 
 #### <a name="regional-availability"></a>區域可用性
 
-只有下欄區域支援共用 premium Ssd：
-
-- 美國東部
-- 美國東部 2
-- 美國西部
-- 美國西部 2
-- 美國中西部
-- 美國中南部
-- 美國中北部
-- 美國中部
-- 西歐
-- 北歐
-- 南韓中部
-- 加拿大中部
-- 加拿大東部
-- 日本東部
-- 日本西部
-- 東南亞
-- 東亞
-- US Gov 維吉尼亞州
-- US Gov 亞利桑那州
+共用 premium Ssd 適用于受控磁片可供使用的所有區域。

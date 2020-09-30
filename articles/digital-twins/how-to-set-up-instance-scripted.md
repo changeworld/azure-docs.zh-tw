@@ -53,7 +53,7 @@ ms.locfileid: "91328626"
 
 1. 選取 [上傳/下載檔案] 圖示，然後選擇 [上傳]。
 
-    :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-upload.png" alt-text="顯示所選上傳圖示的 Cloud Shell 視窗":::
+    :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-upload.png" alt-text="顯示所選 PowerShell 版本的 Cloud Shell 視窗":::
 
     流覽至您電腦上的_**deploy.ps1**_ 檔案 (_Azure_Digital_Twins_samples > 腳本 > **deploy.ps1** _) 並點擊 [開啟]。 這會將檔案上傳至 Cloud Shell，以便您可以在 [Cloud Shell] 視窗中執行該檔案。
 
@@ -82,7 +82,7 @@ ms.locfileid: "91328626"
 
 以下是來自腳本的輸出記錄摘要：
 
-:::image type="content" source="media/how-to-set-up-instance/cloud-shell/deployment-script-output.png" alt-text="顯示透過執行部署腳本的輸入和輸出記錄的 Cloud Shell 視窗" lightbox="media/how-to-set-up-instance/cloud-shell/deployment-script-output.png":::
+:::image type="content" source="media/how-to-set-up-instance/cloud-shell/deployment-script-output.png" alt-text="顯示所選 PowerShell 版本的 Cloud Shell 視窗" lightbox="media/how-to-set-up-instance/cloud-shell/deployment-script-output.png":::
 
 如果腳本順利完成，最後的列印結果將會顯示 `Deployment completed successfully` 。 否則，請解決錯誤訊息，然後重新執行腳本。 它會略過您已完成的步驟，並在您離開的那一點開始再次要求輸入。
 
@@ -103,7 +103,7 @@ ms.locfileid: "91328626"
 
 選取它將會開啟實例的 *[總覽* ] 頁面。 請記下其 *名稱*、 *資源群組*和 *主機名稱*。 您稍後可能會需要這些以識別並連接到您的實例。
 
-:::image type="content" source="media/how-to-set-up-instance/portal/instance-important-values.png" alt-text="從實例的總覽頁面中反白顯示重要值":::
+:::image type="content" source="media/how-to-set-up-instance/portal/instance-important-values.png" alt-text="顯示所選 PowerShell 版本的 Cloud Shell 視窗":::
 
 ### <a name="collect-app-registration-values"></a>收集應用程式註冊值 
 
@@ -113,7 +113,7 @@ ms.locfileid: "91328626"
 
 您應該會在此清單中看到您剛才建立的應用程式註冊。 請選取它以開啟其詳細資料：
 
-:::image type="content" source="media/how-to-set-up-instance/portal/app-important-values.png" alt-text="入口網站查看應用程式註冊的重要值":::
+:::image type="content" source="media/how-to-set-up-instance/portal/app-important-values.png" alt-text="顯示所選 PowerShell 版本的 Cloud Shell 視窗":::
 
 記下**您**頁面上顯示的*應用程式 (用戶端) 識別碼*和*目錄 (租使用者) 識別碼*。 如果您不是要為用戶端應用程式撰寫程式碼的人員，則必須與將會與之人員共用這些值。
 

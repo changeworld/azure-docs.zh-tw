@@ -3,12 +3,12 @@ title: 私人端點
 description: 瞭解建立 Azure 備份私用端點的程式，以及使用私人端點來協助維護資源安全性的案例。
 ms.topic: conceptual
 ms.date: 05/07/2020
-ms.openlocfilehash: 0a875dfedbf7a3b76b479fd4f23b74a7ced47252
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: e1121f1d1217ebd48c744135c976587545323f44
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89179227"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91565153"
 ---
 # <a name="private-endpoints-for-azure-backup"></a>Azure 備份的私人端點
 
@@ -62,75 +62,13 @@ Azure 備份可讓您使用 [私人端點](../private-link/private-endpoint-over
     >[!NOTE]
     >啟用之後，就 **不** 能 (停用受控識別，即使暫時) 也是如此。 停用受控身分識別可能會導致不一致的行為。
 
-## <a name="dns-changes"></a>DNS 變更
-
-使用私人端點需要私人 DNS 區域，才能讓備份擴充功能將私人連結 Fqdn 解析為私人 Ip。 全部都需要三個私人 DNS 區域。 雖然這兩個區域都必須建立與，但第三個可以選擇要與私人端點整合 (建立私人端點) 或可個別建立。
-
-您也可以使用自訂的 DNS 伺服器。 如需使用自訂 DNS 伺服器的詳細資訊，請參閱 [自訂 dns 伺服器的 DNS 變更](#dns-changes-for-custom-dns-servers) 。
-
-### <a name="creating-mandatory-dns-zones"></a>建立強制 DNS 區域
-
-必須建立兩個必要的 DNS 區域：
-
-- `privatelink.blob.core.windows.net` 備份/還原資料的 () 
-- `privatelink.queue.core.windows.net` 服務通訊) 的 (
-
-1. 在 [**所有服務**] 搜尋列中搜尋**私人 dns 區域**，然後從下拉式清單中選取 [**私人 dns 區域**]。
-
-    ![選取私人 DNS 區域](./media/private-endpoints/private-dns-zone.png)
-
-1. 在 [ **私人 DNS 區域** ] 窗格中，選取 [ **+ 新增** ] 按鈕以開始建立新的區域。
-
-1. 在 [ **建立私人 DNS 區域** ] 窗格中，填入所需的詳細資料。 訂用帳戶必須與私人端點建立所在的訂用帳戶相同。
-
-    區域必須命名為：
-
-    - `privatelink.blob.core.windows.net`
-    - `privatelink.queue.core.windows.net`
-
-    | **區域**                           | **服務** | **訂用帳戶和資源群組 (RG) 詳細資料**                  |
-    | ---------------------------------- | ----------- | ------------------------------------------------------------ |
-    | `privatelink.blob.core.windows.net`  | Blob        | **訂**用帳戶：與  **需要建立私人**端點的位置相同：可能是 VNET 的 rg 或私人端點的 rg |
-    | `privatelink.queue.core.windows.net` | 佇列       | **Rg**： VNET 的 Rg 或私人端點的 rg |
-
-    ![建立私人 DNS 區域](./media/private-endpoints/create-private-dns-zone.png)
-
-1. 完成之後，請繼續檢查並建立 DNS 區域。
-
-### <a name="optional-dns-zone"></a>選用的 DNS 區域
-
-您可以選擇將私人端點與私人 DNS 區域整合，以進行 Azure 備份 (在 [建立和使用私人端點以進行](#creating-and-using-private-endpoints-for-backup) 服務通訊的備份) 一節中所討論。 如果您不想要與私人 DNS 區域整合，可以選擇使用您自己的 DNS 伺服器，或分別建立私人 DNS 區域。 這是前一節所討論的兩個強制私人 DNS 區域的補充。
-
-如果您想要在 Azure 中建立個別的私人 DNS 區域，您可以使用建立強制 DNS 區域所用的相同步驟來執行相同動作。 命名與訂用帳戶的詳細資料會在下面共用：
-
-| **區域**                                                     | **服務** | **訂用帳戶和資源群組詳細資料**                  |
-| ------------------------------------------------------------ | ----------- | ------------------------------------------------------------ |
-| `privatelink.<geo>.backup.windowsazure.com`  <br><br>   **注意**：此處的 *地理* 位置是指區域程式碼。 例如， *wcus* 和 *ne* 分別用於美國中西部和北歐。 | 備份      | **訂**用  **帳戶：與需要建立私人**端點的位置相同：訂用帳戶內的任何 rg |
-
-請參閱 [這份清單](https://download.microsoft.com/download/1/2/6/126a410b-0e06-45ed-b2df-84f353034fa1/AzureRegionCodesList.docx) 中的區功能變數代碼。
-
-適用于國家地區的 URL 命名慣例：
-
-- [中國](/azure/china/resources-developer-guide#check-endpoints-in-azure)
-- [德國](../germany/germany-developer-guide.md#endpoint-mapping)
-- [US Gov](../azure-government/documentation-government-developer-guide.md)
-
-### <a name="linking-private-dns-zones-with-your-virtual-network"></a>將私人 DNS 區域連結至您的虛擬網路
-
-上述建立的 DNS 區域現在必須連結到您要備份的伺服器所在的虛擬網路。 這必須針對您建立的所有 DNS 區域完成。
-
-1. 移至您在上一個步驟中建立的 DNS 區域 () ，然後流覽至左側列上的 [ **虛擬網路] 連結** 。 一旦出現，請選取 [ **+ 新增** ] 按鈕
-1. 填寫必要的詳細資料。 [ **訂** 用帳戶] 和 [ **虛擬網路** ] 欄位必須填入伺服器所在之虛擬網路的對應詳細資料。 其他欄位必須保持原樣。
-
-    ![新增虛擬網路連結](./media/private-endpoints/add-virtual-network-link.png)
-
 ## <a name="grant-permissions-to-the-vault-to-create-required-private-endpoints"></a>授與保存庫的許可權以建立必要的私人端點
 
 若要建立 Azure 備份所需的私人端點，保存庫 (受控識別的保存庫) 必須具有下列資源群組的許可權：
 
 - 包含目標 VNet 的資源群組
 - 要在其中建立私人端點的資源群組
-- 包含私人 DNS 區域的資源群組
+- 包含私人 DNS 區域的資源群組，如[這裡](#creating-private-endpoints-for-backup)所討論的詳細資訊
 
 建議您將這三個資源群組的「 **參與者** 」角色授與保存庫 (受控識別) 。 下列步驟說明如何針對特定的資源群組進行這項作業 (這需要針對三個資源群組) 執行這項作業：
 
@@ -173,6 +111,8 @@ Azure 備份可讓您使用 [私人端點](../private-link/private-endpoint-over
 
         ![[填入設定] 索引標籤](./media/private-endpoints/configuration-tab.png)
 
+        如果您想要使用自訂的 DNS 伺服器，而不是與 Azure 私人 DNS 區域整合，請參閱 [這一節](#dns-changes-for-custom-dns-servers) 。  
+
     1. （選擇性）您可以新增私人端點的 **標記** 。
 
     1. 完成輸入詳細資料後，繼續進行 **檢查 + 建立** 。 驗證完成時，請選取 [ **建立** ] 以建立私人端點。
@@ -189,51 +129,6 @@ Azure 備份可讓您使用 [私人端點](../private-link/private-endpoint-over
 
     ![核准私人端點](./media/private-endpoints/approve-private-endpoints.png)
 
-## <a name="adding-dns-records"></a>新增 DNS 記錄
-
->[!NOTE]
-> 如果您使用的是整合式 DNS 區域，則不需要執行此步驟。 不過，如果您已建立自己的 Azure 私人 DNS 區域，或使用自訂的私人 DNS 區域，請確定已依照本節所述的專案進行。
-
-在您為保存庫建立了選用的私人 DNS 區域和私人端點之後，您必須將 DNS 記錄新增到您的 DNS 區域。 您可以手動或使用 PowerShell 腳本來進行這項作業。 這只需要針對您的備份 DNS 區域完成，Blob 和佇列的更新就會自動更新。
-
-### <a name="add-records-manually"></a>手動新增記錄
-
-這會要求您將私人端點中每個 FQDN 的專案，放入私人 DNS 區域。
-
-1. 移至您的 **私人 DNS 區域** ，並流覽至左方列上的 **總覽** 選項。 然後選取 [ **+ 記錄集** ] 以開始新增記錄。
-
-    ![選取 [+ 記錄集] 以新增記錄](./media/private-endpoints/select-record-set.png)
-
-1. 在開啟的 [ **新增記錄集** ] 窗格中，為每個 FQDN 和私人 IP 新增一個專案做為 **類型** 記錄。 您可以從私人端點取得 Fqdn 和 Ip 清單， (在 **[總覽** ]) 下。 如下列範例所示，私人端點的第一個 FQDN 會新增至私人 DNS 區域中的記錄集。
-
-    ![Fqdn 和 Ip 的清單](./media/private-endpoints/list-of-fqdn-and-ip.png)
-
-    ![新增記錄集](./media/private-endpoints/add-record-set.png)
-
-### <a name="add-records-using-powershell-script"></a>使用 PowerShell 腳本新增記錄
-
-1. 在 Azure 入口網站中啟動 **Cloud Shell** ，然後在 PowerShell 視窗中選取 **[上傳** 檔案]。
-
-    ![在 PowerShell 視窗中選取上傳檔案](./media/private-endpoints/upload-file-in-powershell.png)
-
-1. 上傳此腳本： [DnsZoneCreation](https://download.microsoft.com/download/1/2/6/126a410b-0e06-45ed-b2df-84f353034fa1/dnszonerecordcreation.ps1)
-
-1. 移至您的主資料夾 (例如： `cd /home/user`) 
-
-1. 執行下列指令碼：
-
-    ```azurepowershell
-    ./dnszonerecordcreation.ps1 -Subscription <SubscriptionId> -VaultPEName <VaultPE Name> -VaultPEResourceGroup <Vault PE RG> -DNSResourceGroup <Private DNS RG> -Privatezone <privatednszone>
-    ```
-
-    這些是參數：
-
-    - **訂**用帳戶：資源 (保存庫的私人端點和私人 DNS 區域) 所在的訂用帳戶
-    - **vaultPEName**：為保存庫建立的私人端點名稱
-    - **vaultPEResourceGroup**：包含保存庫私人端點的資源群組
-    - **dnsResourceGroup**：包含私人 DNS 區域的資源群組
-    - **Privatezone**：私人 DNS 區域的名稱
-
 ## <a name="using-private-endpoints-for-backup"></a>使用私人端點進行備份
 
 一旦為您 VNet 中的保存庫建立的私人端點經過核准，您就可以開始使用它們來執行備份和還原。
@@ -243,12 +138,9 @@ Azure 備份可讓您使用 [私人端點](../private-link/private-endpoint-over
 >
 >1. 已建立 (新的) 復原服務保存庫
 >1. 已啟用保存庫以使用系統指派的受控識別
->1. 若使用整合式 DNS 區域進行備份，則建立三個私人 DNS 區域 (兩個) 
->1. 將私人 DNS 區域連結至您的 Azure 虛擬網路
 >1. 已將相關許可權指派給保存庫的受控識別
 >1. 為您的保存庫建立私人端點
 >1. 核准私人端點 (如果未自動核准) 
->1. 將必要的 DNS 記錄新增到您的私人 DNS 區域以進行備份 (僅適用于未使用整合式私人 DNS 區域的情況) 
 
 ### <a name="backup-and-restore-of-workloads-in-azure-vm-sql-sap-hana"></a>備份和還原 Azure VM 中的工作負載 (SQL、SAP Hana) 
 
@@ -497,14 +389,18 @@ $privateEndpoint = New-AzPrivateEndpoint `
 
 | **區域**                                                     | **服務** |
 | ------------------------------------------------------------ | ----------- |
-| `privatelink.<geo>.backup.windowsazure.com`      | 備份      |
+| `privatelink.<geo>.backup.windowsazure.com`      | Backup      |
 | `privatelink.blob.core.windows.net`                            | Blob        |
 | `privatelink.queue.core.windows.net`                           | 佇列       |
 
 >[!NOTE]
 >在上圖中， *geo* 指的是區域程式碼。 例如， *wcus* 和 *ne* 分別用於美國中西部和北歐。
 
-請參閱 [這份清單](https://download.microsoft.com/download/1/2/6/126a410b-0e06-45ed-b2df-84f353034fa1/AzureRegionCodesList.docx) 中的區功能變數代碼。
+請參閱 [這份清單](https://download.microsoft.com/download/1/2/6/126a410b-0e06-45ed-b2df-84f353034fa1/AzureRegionCodesList.docx) 中的區功能變數代碼。 請參閱下列連結以取得國家地區的 URL 命名慣例：
+
+- [中國](https://docs.microsoft.com/azure/china/resources-developer-guide#check-endpoints-in-azure)
+- [德國](https://docs.microsoft.com/azure/germany/germany-developer-guide#endpoint-mapping)
+- [US Gov](https://docs.microsoft.com/azure/azure-government/documentation-government-developer-guide)
 
 #### <a name="adding-dns-records-for-custom-dns-servers"></a>新增自訂 DNS 伺服器的 DNS 記錄
 

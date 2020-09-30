@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: troubleshooting
-ms.date: 08/28/2020
+ms.date: 09/29/2020
 ms.author: alkohli
-ms.openlocfilehash: a0918c6cebd50231a9664811bb467e04d2d2bfd9
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: f0f9dfa6e3d6ae02f66ac71f62586953cb21517e
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90891321"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91568347"
 ---
 # <a name="troubleshooting-certificate-errors"></a>針對憑證錯誤進行疑難排解
 
@@ -30,7 +30,6 @@ ms.locfileid: "90891321"
 |---|---|
 | CertificateManagement_UntrustedCertificate | 具有主體名稱的憑證 {0} 違反了憑證鏈。 上傳此憑證之前，請先上傳簽署鏈憑證。|
 | CertificateManagement_DeviceNotRegistered| 您的裝置未啟用。 您只能在啟用之後上傳支援憑證。|
-| CertificateManagement_EmptySAN | 具有主體名稱的憑證沒有 {0} 主體替代名稱。 檢查您的憑證屬性並帶入新的憑證。|
 | CertificateManagement_ExpiredCertificate | 具有類型的憑證 {0} 已過期或即將到期。 檢查憑證到期日，並在需要時帶入新的憑證。|
 | CertificateManagement_FormatMismatch | 不支援憑證格式。 檢查憑證格式，如有需要，請帶入新的憑證。  預期 {0} ，找到 {1} 。 |
 | CertificateManagement_GenericError | 無法執行憑證管理操作。 請在幾分鐘內重試此操作。 如果問題持續發生，請連絡 Microsoft 支援服務。 |
@@ -42,7 +41,6 @@ ms.locfileid: "90891321"
 | CertificateManagement_KeySizeNotSufficient | 具有主體名稱的憑證 {0} 的金鑰大小不足 {1} 。 最小金鑰大小為4096。|
 | CertificateManagement_MissingClientOid | 具有主體名稱的憑證沒有 {0} 用戶端驗證 OID。 檢查您的憑證屬性，並在需要時帶入新的憑證。|
 | CertificateManagement_MissingDigitalSignatureKeyUsage | 具有主體名稱的憑證沒有 {0} 金鑰使用方式的數位簽章。 檢查您的憑證屬性，並在需要時帶入新的憑證。 |
-| CertificateManagement_MissingEntryInSAN | 主體名稱的憑證 {0} 在主體的別名中沒有主體名稱專案。 檢查您的憑證屬性並帶入新的憑證。 |
 | CertificateManagement_MissingKeyCertSignKeyUsage | 具有主體名稱的憑證 {0} 未在金鑰使用方式中簽署憑證。 檢查您的憑證屬性，並在需要時帶入新的憑證。|
 | CertificateManagement_MissingKeyEnciphermentKeyUsage | 具有主體名稱的憑證沒有金鑰 {0} 使用方式的金鑰加密。 檢查您的憑證屬性，並在需要時帶入新的憑證。 |
 | CertificateManagement_MissingServerOid | 具有主體名稱的憑證沒有 {0} 伺服器驗證 OID。 檢查您的憑證屬性，並在需要時帶入新的憑證。|
@@ -55,7 +53,11 @@ ms.locfileid: "90891321"
 | CertificateManagement_SubjectNamesInvalid | 具有主體名稱的憑證沒有 {0} 憑證的正確主體名稱或主體別名 {1} 。 檢查您已上傳的憑證，並視需要帶出新的憑證。 您也應該檢查 DNS 名稱，以符合 SAN 名稱。|
 | CertificateManagement_UnreadableCertificate | 無法讀取類型的憑證 {0} 。 當憑證無法讀取或損毀時，就會發生此錯誤。 帶入新的憑證。|
 | CertificateSubjectNotFound | 找不到具有主體名稱的憑證 {0} 。 帶入新的憑證。|
+| CertificateRotationGenericFailure | 一或多個憑證輪替失敗。 請在幾分鐘後重試。 如果問題持續發生，請連絡 Microsoft 支援服務。|
+| CertificateImportFailure | {0}未在節點上匯入具有指紋的憑證 {1} 。 如果問題持續發生，請連絡 Microsoft 支援服務。 |
+| CertificateApplyFailure | 具有指紋的憑證 {0} 未套用於節點 {1} 。 如果問題持續發生，請連絡 Microsoft 支援服務。|
+| NodeNotReachable | 無法驗證的憑證 {0} 。 檢查系統硬體和軟體健康情況。|
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 [憑證需求](azure-stack-edge-j-series-certificate-requirements.md)

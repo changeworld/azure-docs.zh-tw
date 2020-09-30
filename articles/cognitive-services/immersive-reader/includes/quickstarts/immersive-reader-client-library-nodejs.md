@@ -7,24 +7,23 @@ author: nitinme
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 05/20/2020
+ms.date: 09/14/2020
 ms.author: nitinme
 ms.custom: devx-track-javascript
-ms.openlocfilehash: bbef435bc7cf0bf146009859044bcabe3c0f55ee
-ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
+ms.openlocfilehash: d485e95e0f41b323d1297c669c13fb1fe5886619
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/07/2020
-ms.locfileid: "89505372"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90978313"
 ---
-[沈浸式閱讀程式](https://www.onenote.com/learningtools)是經過全面設計的工具，可實作經實證的技術以改善閱讀理解程度。
+[沈浸式閱讀程式](https://www.onenote.com/learningtools)是經過全面設計的工具，可實作經實證的技術並針對入門讀者、語言學習者及存在學習差異 (例如讀寫障礙) 的人士改善其閱讀理解程度。 您可以在應用程式中使用沈浸式閱讀程式來隔離文字，以改善焦點、顯示常用單字的圖片、醒目提示語音的部分、朗讀選取的文字、即時轉譯單字和片語等等。
 
-在本快速入門中，您會從頭開始建置 Web 應用程式，並使用沈浸式閱讀程式用戶端程式庫來整合沈浸式閱讀程式。 本快速入門的完整工作範例可以在[這裡](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-nodejs)取得。
-
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/cognitive-services/)。
+在本快速入門中，您會從頭開始建置 Web 應用程式，並使用沈浸式閱讀程式用戶端程式庫來整合沈浸式閱讀程式。 本快速入門的完整工作範例可以在 [GitHub](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-nodejs) 取得。
 
 ## <a name="prerequisites"></a>必要條件
 
+* Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/cognitive-services)
 * 為 Azure Active Directory 驗證所設定的沈浸式閱讀程式資源。 遵循[這些指引](../../how-to-create-immersive-reader.md)來設定。 設定環境屬性時，您需要這裡建立的一些值。 將工作階段的輸出儲存到文字檔中，以供日後參考。
 * [Node.js](https://nodejs.org/) 和 [Yarn](https://yarnpkg.com)
 * 整合式開發環境，例如 [Visual Studio Code](https://code.visualstudio.com/)
@@ -246,13 +245,13 @@ npm start
 
 開啟瀏覽器並巡覽至 _http://localhost:3000_ 。 您應該會看見下列內容：
 
-![範例應用程式](../../media/quickstart-nodejs/1-buildapp.png)
+![範例應用程式 - Node.js](../../media/quickstart-nodejs/1-buildapp.png)
 
 ## <a name="launch-the-immersive-reader"></a>啟動沈浸式閱讀程式
 
 當您按一下 [沈浸式閱讀程式] 按鈕時，您會看到沈浸式閱讀程式啟動且其內容顯示在頁面上。
 
-![沈浸式閱讀程式](../../media/quickstart-nodejs/2-viewimmersivereader.png)
+![沈浸式閱讀程式 - Node.js](../../media/quickstart-nodejs/2-viewimmersivereader.png)
 
 ## <a name="next-steps"></a>後續步驟
 

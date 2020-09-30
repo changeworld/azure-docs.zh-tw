@@ -4,12 +4,16 @@
   items:
     - name: 什麼是 Service Fabric？
       href: service-fabric-overview.md
+    - name: Service Fabric 受控叢集
+      href: overview-managed-cluster.md
 - name: 快速入門
   expanded: true
   items:
     - name: ARM 範本
       displayName: Resource Manager
       href: quickstart-cluster-template.md
+    - name: 受控叢集
+      href: quickstart-managed-cluster-template.md
     - name: 建立 .NET 應用程式
       href: service-fabric-quickstart-dotnet.md
     - name: 部署 Linux 容器應用程式
@@ -64,6 +68,16 @@
           href: service-fabric-tutorial-package-containers.md
         - name: 3 - 容錯移轉和調整
           href: service-fabric-tutorial-containers-failover.md
+    - name: 建立 Service Fabric 受控叢集
+      items:
+        - name: 1- 部署 Service Fabric 受控叢集
+          href: tutorial-managed-cluster-deploy.md
+        - name: 2- 擴增受控叢集節點類型
+          href: tutorial-managed-cluster-scale.md
+        - name: 3- 新增並移除受控叢集節點類型
+          href: tutorial-managed-cluster-add-remove-node-type.md
+        - name: 4- 連接到受控叢集並部署應用程式
+          href: tutorial-managed-cluster-deploy-app.md
     - name: 建立和管理叢集
       items:
         - name: 1 - 在 Azure 上建立叢集
@@ -155,7 +169,7 @@
           items:
             - name: 容器概觀
               href: service-fabric-containers-overview.md
-            - name: Docker Compose (預覽)
+            - name: Docker Compose
               href: service-fabric-docker-compose.md
             - name: 探查
               href: probes-codepackage.md
@@ -430,7 +444,7 @@
               href: service-fabric-deploy-existing-app.md
         - name: 建置容器服務
           items:
-            - name: Docker Compose (預覽)
+            - name: Docker Compose
               href: service-fabric-docker-compose.md
             - name: 磁碟區與記錄驅動程式
               href: service-fabric-containers-volume-logging-drivers.md
@@ -509,7 +523,7 @@
                   href: service-fabric-application-secret-management-windows.md
                 - name: 設定加密憑證，並在 Linux 上將祕密加密
                   href: service-fabric-application-secret-management-linux.md
-                - name: 使用 KeyVaultReference 安全地儲存祕密 (預覽)
+                - name: 使用 KeyVaultReference 安全地儲存祕密
                   href: service-fabric-keyvault-references.md
             - name: 設定安全通訊的反向 proxy
               href: service-fabric-reverseproxy-configure-secure-communication.md
@@ -675,6 +689,8 @@
                   href: service-fabric-how-to-remove-node-type.md
             - name: 升級
               items:
+                - name: 將 VM 擴展集延伸模組新增至受控叢集節點類型
+                  href: how-to-managed-cluster-vmss-extension.md
                 - name: 升級 Service Fabric 版本
                   href: service-fabric-cluster-upgrade-version-azure.md
                 - name: 升級叢集組態
@@ -901,6 +917,8 @@
       href: 'https://azure.microsoft.com/roadmap/'
     - name: 常見問題
       href: service-fabric-common-questions.md
+    - name: Service Fabric 受控叢集常見問題
+      href: faq-managed-cluster.md
     - name: Microsoft 問與答頁面
       href: /answers/topics/azure-service-fabric.html
     - name: Azure Resource Manager 部署限制

@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: swmachan
-ms.openlocfilehash: e8feb4f2012d323d954ba000323824bc157bcf87
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: a913756c0348622ec0d885c50b55d5cecf6dd91d
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91534055"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91568092"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>文字和語音翻譯的語言和區域支援
 
@@ -38,6 +38,7 @@ Translator 支援下列適用于文字到文字翻譯的語言。
 |:-----|:-----:|
 |南非荷蘭文| `af`|
 |阿拉伯文|    `ar`    |
+|阿薩姆文|  `as`    |
 |孟加拉文|    `bn`    |
 |波士尼亞文 (拉丁文)|   `bs`    |
 |保加利亞文| `bg`    |

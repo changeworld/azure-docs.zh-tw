@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: rosouz
-ms.openlocfilehash: 75ad602eb6b9a0ce52b2b4c4115f351668327c43
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d27eb4dc6c4e4bd8f0a744ad925d91aee0faa8d0
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91253185"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91567140"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store-preview"></a>什麼是 Azure Cosmos DB 分析存放區 (預覽)？
 
@@ -52,7 +52,7 @@ Azure Cosmos DB 分析存放區可解決傳統 ETL 管線所發生的複雜性�
 
 下圖顯示 Azure Cosmos DB 中的交易資料列存放區與分析資料行存放區：
 
-:::image type="content" source="./media/analytical-store-introduction/transactional-analytical-data-stores.png" alt-text="Azure Cosmos DB 中的交易資料列存放區與分析資料行存放區" border="false":::
+:::image type="content" source="./media/analytical-store-introduction/transactional-analytical-data-stores.png" alt-text="範例操作表格" border="false":::
 
 ### <a name="decoupled-performance-for-analytical-workloads"></a>分析工作負載的低耦合效能
 
@@ -91,7 +91,7 @@ Azure Cosmos DB 交易存放區無從驗證結構描述，可讓您逐一查看�
 
 ##### <a name="schema-representation"></a>架構標記法
 
-分析存放區中的架構表示有兩種模式。 這些模式在使用單欄式標記法、處理多型架構和簡單的查詢體驗之間有取捨：
+分析存放區中有兩種模式的結構描述標記法。 這些模式會在分欄式標記法的簡單性 (處理多型結構描述) 及查詢體驗的簡單性之間進行取捨：
 
 * 妥善定義的架構標記法
 * 完整精確度架構標記法

@@ -1,24 +1,24 @@
 ---
-title: 教學課程：從 Google 地圖遷移至 Azure 地圖服務 | Microsoft Azure 地圖服務
-description: 從 Google 地圖遷移至 Microsoft Azure 地圖服務的教學課程。 此指引會引導您切換至 Azure 地圖服務 API 和 SDK。
+title: 從 Google 地圖遷移至 Azure 地圖服務 | Microsoft Azure 地圖服務
+description: 如何從 Google Maps 遷移至 Microsoft Azure 地圖服務。 此指引會引導您切換至 Azure 地圖服務 API 和 SDK。
 author: rbrundritt
 ms.author: richbrun
-ms.date: 12/17/2019
-ms.topic: tutorial
+ms.date: 09/23/2020
+ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 2422204a809e0b13f4e337d49b851a0338681853
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: c60890b301ba650c95584e33b5326217086c08c4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86249201"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91264162"
 ---
 # <a name="migrate-from-google-maps-to-azure-maps"></a>從 Google 地圖遷移至 Azure 地圖服務
 
-本教學課程將深入解析如何將 Web、行動裝置和伺服器應用程式從 Google 地圖遷移至 Microsoft Azure 地圖服務平台。 本教學課程包含比較程式碼範例、移轉建議，以及遷移至 Azure 地圖服務的最佳做法。
+本文將深入解析如何將 Web、行動裝置和伺服器應用程式從 Google Maps 遷移至 Microsoft Azure 地圖服務平台。 本教學課程包含比較程式碼範例、移轉建議，以及遷移至 Azure 地圖服務的最佳做法。
 
 ## <a name="azure-maps-platform-overview"></a>Azure 地圖服務平台概觀
 
@@ -80,6 +80,15 @@ Google 地圖提供基本的金鑰型驗證。 Azure 地圖服務同時提供基
 5. 測試已遷移的應用程式。
 6. 將已遷移的應用程式部署至生產環境。
 
+## <a name="create-an-azure-maps-account"></a>建立 Azure 地圖服務帳戶
+
+若要建立 Azure 地圖服務帳戶並取得 Azure 地圖服務平台的存取權，請遵循下列步驟：
+
+1. 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
+2. 登入 [Azure 入口網站](https://portal.azure.com/)。
+3. 建立 [Azure 地圖服務帳戶](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys)。 
+4. [取得您 Azure 地圖服務的訂用帳戶金鑰](https://docs.microsoft.com/azure/azure-maps/how-to-manage-authentication#view-authentication-details)或設定 Azure Active Directory 驗證以增強安全性。
+
 ## <a name="azure-maps-technical-resources"></a>Azure 地圖服務技術資源
 
 以下列出 Azure 地圖服務的實用技術資源。
@@ -98,15 +107,10 @@ Google 地圖提供基本的金鑰型驗證。 Azure 地圖服務同時提供基
 
 開發人員可透過[論壇](https://aka.ms/AzureMapsForums)或透過眾多 Azure 支援選項之一尋求移轉支援：[https://azure.microsoft.com/support/options](https://azure.microsoft.com/support/options)
 
-## <a name="next-steps"></a>後續步驟
+您可以使用下列方式了解如何遷移您的 Google Maps 應用程式： 
 
-參考下列文章以詳細了解如何遷移您的 Google Maps 應用程式：
+[遷移 Android 應用程式](migrate-from-google-maps-android-app.md) 
 
-> [!div class="nextstepaction"]
-> [遷移 Web 應用程式](migrate-from-google-maps-web-app.md)
+[遷移 Web 服務](migrate-from-google-maps-web-services.md) 
 
-> [!div class="nextstepaction"]
-> [遷移 Android 應用程式](migrate-from-google-maps-android-app.md)
-
-> [!div class="nextstepaction"]
-> [遷移 Web 服務](migrate-from-google-maps-web-services.md)
+[遷移 Web 應用程式](migrate-from-google-maps-web-app.md)

@@ -4,12 +4,12 @@ description: 在本文中，您將瞭解如何使用 REST API 來更新保存庫
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.assetid: 9aafa5a0-1e57-4644-bf79-97124db27aa2
-ms.openlocfilehash: 8890cb541e38f8bc8b680fbcfeb821f29723e8c0
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 19a335d17ee0aa5ff9f989556656f5cf20d2b1a9
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89007106"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91567820"
 ---
 # <a name="update-azure-recovery-services-vault-configurations-using-rest-api"></a>使用 REST API 更新 Azure 復原服務保存庫設定
 
@@ -30,13 +30,13 @@ ms.locfileid: "89007106"
 若要針對保存庫提取虛刪除的目前狀態，請使用下列 *GET* 作業
 
 ```http
-GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupconfig/vaultconfig?api-version=2019-05-13
+GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupconfig/vaultconfig?api-version=2019-06-15
 ```
 
 GET URI 具有 `{subscriptionId}` 、 `{vaultName}` 、 `{vaultresourceGroupName}` 參數。 在此範例中， `{vaultName}` 是 "testVault"，而且 `{vaultresourceGroupName}` 是 "testVaultRG"。 因為 URI 中提供所有必要的參數，所以不需要個別的要求主體。
 
 ```http
-GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupconfig/vaultconfig?api-version=2019-05-13
+GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupconfig/vaultconfig?api-version=2019-06-15
 ```
 
 #### <a name="responses"></a>回應
@@ -65,16 +65,16 @@ GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 
 ### <a name="update-soft-delete-state-using-rest-api"></a>使用 REST API 更新虛刪除狀態
 
-若要使用 REST API 更新復原服務保存庫的虛刪除狀態，請使用下列 *PATCH* 操作
+若要使用 REST API 來更新復原服務保存庫的虛刪除狀態，請使用下列 *PUT* 操作
 
 ```http
-PATCH https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupconfig/vaultconfig?api-version=2019-05-13
+PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupconfig/vaultconfig?api-version=2019-06-15
 ```
 
-PATCH URI 具有 `{subscriptionId}` 、 `{vaultName}` 和 `{vaultresourceGroupName}` 參數。 在此範例中， `{vaultName}` 是 "testVault"，而且 `{vaultresourceGroupName}` 是 "testVaultRG"。 如果我們將 URI 取代為上述值，URI 將會如下所示。
+PUT URI 具有 `{subscriptionId}` 、 `{vaultName}` 、 `{vaultresourceGroupName}` 參數。 在此範例中， `{vaultName}` 是 "testVault"，而且 `{vaultresourceGroupName}` 是 "testVaultRG"。 如果我們將 URI 取代為上述值，URI 將會如下所示。
 
 ```http
-PATCH https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupconfig/vaultconfig?api-version=2019-05-13
+PUT https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupconfig/vaultconfig?api-version=2019-06-15
 ```
 
 #### <a name="create-the-request-body"></a>建立要求本文
@@ -85,10 +85,10 @@ PATCH https://management.azure.com/Subscriptions/00000000-0000-0000-0000-0000000
 
 |名稱  |必要  |類型  |描述  |
 |---------|---------|---------|---------|
-|etag     |         |   字串      |  選擇性 eTag       |
-|location     |  true       |字串         |   資源位置      |
+|etag     |         |   String      |  選擇性 eTag       |
+|location     |  true       |String         |   資源位置      |
 |properties     |         | [VaultProperties](/rest/api/recoveryservices/vaults/createorupdate#vaultproperties)        |  保存庫的屬性       |
-|tags     |         | Object        |     資源標籤    |
+|tags     |         | 物件        |     資源標籤    |
 
 #### <a name="example-request-body"></a>要求本文範例
 

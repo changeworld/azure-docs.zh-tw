@@ -119,7 +119,7 @@ Start-ClusterResource -Name dnn-demo
    :::image type="content" source="media/hadr-distributed-network-name-dnn-configure/fci-dnn-properties.png" alt-text="DNN 資源的快捷方式功能表，其中已反白顯示 [屬性] 命令。":::
 1. 清除任何未參與容錯移轉叢集實例之節點的核取方塊。 DNN 資源的可能擁有者清單應符合 SQL Server 實例資源的可能擁有者清單。 例如，假設 Data3 並未參與 FCI，下圖是從 DNN 資源的可能擁有者清單中移除 Data3 的範例： 
 
-   :::image type="content" source="media/hadr-distributed-network-name-dnn-configure/clear-check-for-nodes-not-in-fci.png" alt-text="清除未參與 FCI 的節點旁的核取方塊，以找出 DNN 資源的可能擁有者":::
+   :::image type="content" source="media/hadr-distributed-network-name-dnn-configure/clear-check-for-nodes-not-in-fci.png" alt-text="DNN 資源的快捷方式功能表，其中已反白顯示 [屬性] 命令。":::
 
 1. 選取 [確定]**** 儲存設定。 
 

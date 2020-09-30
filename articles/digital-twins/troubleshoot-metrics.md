@@ -34,12 +34,12 @@ ms.locfileid: "91322626"
     
 3. 您可以選擇將計量資料傳送到事件中樞端點或 Azure 儲存體帳戶，方法是從功能表選取 [ **診斷設定** ]，然後 **新增診斷設定**。
 
-    :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings.png" alt-text="顯示診斷設定頁面和要新增之按鈕的螢幕擷取畫面":::
+    :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings.png" alt-text="顯示 Azure 數位 Twins 計量頁面的螢幕擷取畫面":::
 
     如需此程式的詳細資訊，請參閱 [*疑難排解：設定診斷*](troubleshoot-diagnostics.md)。
 
 4. 您可以選擇從功能表選取 [ **警示** ]，然後選取 [ **+ 新增警示規則**]，以設定計量資料的警示。
-    :::image type="content" source="media/troubleshoot-alerts/alerts-pre.png" alt-text="顯示 [警示] 頁面和要新增之按鈕的螢幕擷取畫面":::
+    :::image type="content" source="media/troubleshoot-alerts/alerts-pre.png" alt-text="顯示 Azure 數位 Twins 計量頁面的螢幕擷取畫面":::
 
     如需此程式的詳細資訊，請參閱 [*疑難排解：設定警示*](troubleshoot-alerts.md)。
 

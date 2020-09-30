@@ -6,14 +6,38 @@ metadata:
   ms.topic: landing-page
   author: erikadoyle
   ms.author: edoyle
-  ms.date: 12/04/2019
-  ms.openlocfilehash: a2651387a425439d09ad68b0e763ff0c6c3f7f27
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.date: 07/31/2020
+  ms.openlocfilehash: 9bce6570cef2703bf1ad63d92c55bb3794927a8b
+  ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "75452215"
+  ms.lasthandoff: 09/28/2020
+  ms.locfileid: "91408696"
 landingContent:
+- title: 試用 Service Fabric 受控叢集 (預覽)
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: 什麼是 Service Fabric 受控叢集 (預覽)
+      url: overview-managed-cluster.md
+    - text: 部署受控叢集 (預覽)
+      url: quickstart-managed-cluster-template.md
+  - linkListType: tutorial
+    links:
+    - text: 建立受控叢集 (預覽)
+      url: tutorial-managed-cluster-deploy.md
+    - text: 擴增受控叢集節點類型 (預覽)
+      url: tutorial-managed-cluster-scale.md
+    - text: 新增並移除受控叢集節點類型 (預覽)
+      url: tutorial-managed-cluster-add-remove-node-type.md
+    - text: 將應用程式部署至受控叢集 (預覽)
+      url: tutorial-managed-cluster-deploy-app.md
+    - text: 將 VM 擴展集延伸模組新增至受控叢集節點類型 (預覽)
+      url: how-to-managed-cluster-vmss-extension.md
+  - linkListType: whats-new
+    links:
+    - text: Service Fabric 受控叢集常見問題集
+      url: faq-managed-cluster.md
 - title: 關於 Service Fabric
   linkLists:
   - linkListType: overview
@@ -138,7 +162,7 @@ landingContent:
       url: samples-cli.md
   - linkListType: whats-new
     links:
-    - text: Service Fabric 的常見問題
+    - text: Service Fabric 常見問題集
       url: service-fabric-common-questions.md
 - title: 使用內部部署 Service Fabric
   linkLists:

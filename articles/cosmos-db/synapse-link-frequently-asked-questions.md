@@ -6,12 +6,12 @@ ms.author: rosouz
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/09/2020
-ms.openlocfilehash: b2fc13158d197aaa2e870d1b772386628ee3f9bc
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 34bc8e3775c2334b0cdbb22c8cad8f8d1dd5c732
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91398796"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91568611"
 ---
 # <a name="frequently-asked-questions-about-azure-synapse-link-for-azure-cosmos-db"></a>關於適用於 Azure Cosmos DB 的 Azure Synapse Link 常見問題
 
@@ -25,7 +25,7 @@ ms.locfileid: "91398796"
 
 ### <a name="is-synapse-link-supported-for-multi-region-azure-cosmos-accounts"></a>多區域 Azure Cosmos 帳戶是否支援 Synapse Link？
 
-是，在多區域 Azure Cosmos 帳戶中，儲存在分析存放區中的資料也會全域散發。 不論是單一寫入區域 (單一主機) 或多個寫入區域 (也稱為多重主機)，從 Azure Synapse Analytics 執行的分析查詢都可以從最接近的本地區域提供服務。
+是，在多區域 Azure Cosmos 帳戶中，儲存在分析存放區中的資料也會全域散發。 不論是單一寫入區域或多個寫入區域，從 Azure Synapse Analytics 執行的分析查詢都可以從最接近的本地區域提供服務。
 
 規劃設定具有分析存放區支援的多區域 Azure Cosmos 帳戶時，建議您在建立帳戶時新增所有必要的區域。
 
@@ -150,7 +150,7 @@ Azure Cosmos DB 保證會將交易和分析的工作負載效能隔離。 在容
 
 交易存放區容器將會以下列圖示表示：
 
-:::image type="content" source="./media/synapse-link-frequently-asked-questions/transactional-store-icon.png" alt-text="啟用交易存放區的 Azure Cosmos DB 容器圖示":::
+:::image type="content" source="./media/synapse-link-frequently-asked-questions/transactional-store-icon.png" alt-text="啟用分析存放區的 Azure Cosmos DB 容器圖示":::
  
 ### <a name="how-do-you-pass-azure-cosmos-db-credentials-from-synapse-studio"></a>如何從 Synapse Studio 傳遞 Azure Cosmos DB 認證？
 

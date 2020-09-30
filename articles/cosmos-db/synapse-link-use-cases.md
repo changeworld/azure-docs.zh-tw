@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: ramkris
-ms.openlocfilehash: d6039ac3bead535fd9c7de64a8e92a0d7a58f390
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 2f7ef27ea5cc19c60e05fddfe4d00cd4ff234bc2
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89319231"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91568041"
 ---
 # <a name="azure-synapse-link-for-azure-cosmos-db-near-real-time-analytics-use-cases"></a>適用於 Azure Cosmos DB 的 Synapse Link：近即時分析的使用案例
 
@@ -70,7 +70,7 @@ ms.locfileid: "89319231"
 
 現在的零售商會建置安全且可調整的電子商務解決方案，以滿足客戶與業務的需求。 這些電子商務解決方案需要透過自訂的產品和供應項目與客戶互動、快速且安全地處理交易，並專注於履行和客戶服務。 Azure Cosmos DB 以及適用於 Azure Cosmos DB 的最新 Synapse Link 可讓零售商即時為客戶產生個人化建議。 其使用低延遲可調整的一致性設定來取得立即的深入解析，如下列架構所示：
 
-:::image type="content" source="./media/synapse-link-use-cases/real-time-personalization.png" alt-text="即時個人化中適用於 Azure Cosmos DB 的 Azure Synapse Link" border="false":::
+:::image type="content" source="./media/synapse-link-use-cases/real-time-personalization.png" alt-text="供應鏈分析中 Azure Cosmos DB 的 Azure Synapse 連結 " border="false":::
 
 適用於 Azure Cosmos DB 的 Synapse Analytics 使用案例：
 
@@ -82,7 +82,7 @@ ms.locfileid: "89319231"
 
 以下是 IoT 預測性維護中適用於 Azure Cosmos DB 的 Azure Synapse Link 的雲端原生 HTAP 功能的架構：
 
-:::image type="content" source="./media/synapse-link-use-cases/iot-predictive-maintenance.png" alt-text="IoT 預測性維護中適用於 Azure Cosmos DB 的 Azure Synapse Link" border="false" :::
+:::image type="content" source="./media/synapse-link-use-cases/iot-predictive-maintenance.png" alt-text="供應鏈分析中 Azure Cosmos DB 的 Azure Synapse 連結 " border="false" :::
 
 適用於 Azure Cosmos DB 的 Synapse Analytics 使用案例：
 
@@ -92,7 +92,7 @@ ms.locfileid: "89319231"
 
 ## <a name="sample-scenario-htap-for-azure-cosmos-db"></a>範例案例：Azure Cosmos DB 的 HTAP
 
-將近十年來，數以千計的客戶將 Azure Cosmos DB 用於任務關鍵性的應用程式，這種應用程式需要彈性縮放、周全的全域散發、多重主機主複寫，以便在其交易工作負載中提供兼具低延遲和高可用性的讀取和寫入。
+將近十年來，有上千名客戶使用 Azure Cosmos DB，用於需要彈性延展、全包式全域散發、多重區域寫入複寫以達到低延遲和高可用性的要徑任務應用程式，都是在其交易工作負載中讀取 & 寫入。
  
 下列清單概述使用 Azure Cosmos DB 操作資料支援的各種工作負載模式：
 
@@ -104,17 +104,17 @@ ms.locfileid: "89319231"
 
 Azure Synapse Link 可讓 Azure Cosmos DB 不只支援交易工作負載，也能對歷史操作資料執行近即時分析工作負載。 不需要 ETL，且保證會與交易工作負載效能隔離。
 
-下圖顯示使用 Azure Cosmos DB 的工作負載模式：:::image type="content" source="./media/synapse-link-use-cases/synapse-link-workload-patterns.png" alt-text="適用於 Azure Cosmos DB 的 Azure Synapse Link 工作負載模式" border="false":::
+下圖顯示使用 Azure Cosmos DB 的工作負載模式：:::image type="content" source="./media/synapse-link-use-cases/synapse-link-workload-patterns.png" alt-text="供應鏈分析中 Azure Cosmos DB 的 Azure Synapse 連結 " border="false":::
 
 我們以一家營運橫跨全球 20 個國家/地區的電子商務公司 CompanyXYZ 為範例，說明選擇 Azure Cosmos DB 作為單一即時資料庫，同時滿足庫存管理平台的交易和分析需求的優點。
 
 * CompanyXYZ 的核心業務取決於庫存管理系統，因此可用性和可靠性是核心要件需求。 使用 Azure Cosmos DB 的優點：
 
-  * 藉著與 Azure 基礎結構深度整合以及透明的多重主機全域複寫，Azure Cosmos DB 提供了領先業界的 [99.999% 高可用性](high-availability.md) 來因應區域中斷。
+  * 藉由與 Azure 基礎結構的深度整合，以及透明的多重區域寫入、全域複寫，Azure Cosmos DB 可針對區域中斷提供領先業界的 [99.999% 高可用性](high-availability.md) 。
 
 * CompanyXYZ 的供應鏈合作夥伴可能位於不同的地理位置，但他們可能必須查看全球的產品庫存單一檢視，以支援其本地營運。 這包括需要能夠即時讀取其他供應鏈合作夥伴所做的更新。 以及能夠進行更新，而不必擔心在高輸送量時與其他合作夥伴衝突。 使用 Azure Cosmos DB 的優點：
 
-  * 因其獨一無二的多重主機複寫通訊協定和不需閂鎖、寫入最佳化的交易存放區，Azure Cosmos DB 保證在全球百分之 99 的索引讀取和寫入的延遲小於 10 毫秒。
+  * 具有唯一的多重區域寫入複寫通訊協定和無閂鎖、寫入優化的交易式存放區，Azure Cosmos DB 可保證全球第99個百分位數的索引讀取和寫入小於10毫秒的延遲。
 
   * 交易存放區中[即時索引](index-policy.md)的批次和串流資料摘要的高輸送量內嵌。
 

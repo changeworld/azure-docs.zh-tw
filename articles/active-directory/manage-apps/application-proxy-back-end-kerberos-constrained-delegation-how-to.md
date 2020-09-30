@@ -2,26 +2,21 @@
 title: 針對 Kerberos 限制委派進行疑難排解-應用程式 Proxy
 description: 針對應用程式 Proxy 的 Kerberos 限制委派設定進行疑難排解
 services: active-directory
-documentationcenter: ''
 author: kenwith
 manager: celestedg
-ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 04/23/2019
 ms.author: kenwith
-ms.reviewer: asteen
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d086d816be17699989aafda144493d80837188b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.reviewer: asteen, japere
+ms.openlocfilehash: 3ca3df010426347846b29734426edfad4536516b
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84760434"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91568722"
 ---
 # <a name="troubleshoot-kerberos-constrained-delegation-configurations-for-application-proxy"></a>針對應用程式 Proxy 的 Kerberos 限制委派設定進行疑難排解
 
@@ -129,7 +124,7 @@ Azure AD 應用程式 Proxy 可以部署到許多類型的基礎結構或環境�
 
      「因為後端伺服器以 HTTP 401 錯誤回應 Kerberos 驗證嘗試，Microsoft AAD 應用程式 Proxy 連接器便無法驗證使用者。」**
 
-      ![顯示 HTTP 401 禁止錯誤](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic8.png)
+      ![顯示 HTTP 401 禁止的錯誤](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic8.png)
 
    - 檢查 IIS 應用程式。 請確定所設定的應用程式集區和 SPN 已設定為使用 Azure AD 中的相同帳戶。 依下圖所示的方式在 IIS 中瀏覽：
 
@@ -165,8 +160,8 @@ Azure AD 應用程式 Proxy 可以部署到許多類型的基礎結構或環境�
 
 ## <a name="other-scenarios"></a>其他案例
 
-- Azure 應用程式 Proxy 會在將要求傳送至應用程式之前要求 Kerberos 票證。 有些協力廠商應用程式不喜歡這種驗證方法。 這些應用程式預期發生的是更傳統的交涉。 第一個要求是匿名要求，這可讓應用程式透過 401 回應其支援的驗證類型。
-- 雙躍點驗證通常適用於具有後端與前端且兩者都需要驗證的分層應用程式，例如 SQL Reporting Services。 若要設定多重躍點案例，請參閱支援文章： [Kerberos 限制委派在多重躍點案例中可能需要通訊協定轉換](https://support.microsoft.com/help/2005838/kerberos-constrained-delegation-may-require-protocol-transition-in-mul)。
+- Azure 應用程式 Proxy 會在將要求傳送至應用程式之前要求 Kerberos 票證。 某些協力廠商應用程式不喜歡這種驗證方法。 這些應用程式預期發生的是更傳統的交涉。 第一個要求是匿名要求，這可讓應用程式透過 401 回應其支援的驗證類型。 您可以使用本檔中所述的步驟來啟用這種類型的 Kerberos 協商： [適用于單一登入的 Kerberos 限制委派](application-proxy-configure-single-sign-on-with-kcd.md)。
+- 雙躍點驗證通常適用於具有後端與前端且兩者都需要驗證的分層應用程式，例如 SQL Reporting Services。 若要設定多重躍點案例，請參閱支援文章 [Kerberos 限制委派可能需要在多重躍點案例中進行通訊協定轉換](https://support.microsoft.com/help/2005838/kerberos-constrained-delegation-may-require-protocol-transition-in-mul)。
 
 ## <a name="next-steps"></a>後續步驟
 

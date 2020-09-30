@@ -199,7 +199,7 @@ Azure 監視器計量也提供監視資料。 您可以使用 Log Analytics 來�
 * 以**狀態為基礎的篩選**條件–依連線監視器、測試群組或測試的狀態進行篩選。 請參閱下圖中的 box 2。
 * **警示型篩選** 器-依連線監視器資源上引發的警示進行篩選。 請參閱下圖中的 box 3。
 
-  :::image type="content" source="./media/connection-monitor-2-preview/cm-view.png" alt-text="螢幕擷取畫面，顯示如何在連線監視器中篩選連線監視器、測試群組和測試的視圖 (預覽) " lightbox="./media/connection-monitor-2-preview/cm-view.png":::
+  :::image type="content" source="./media/connection-monitor-2-preview/cm-view.png" alt-text="螢幕擷取畫面，顯示連線監視器 (預覽版中建立的連線監視器) " lightbox="./media/connection-monitor-2-preview/cm-view.png":::
     
 例如，若要查看連線監視器中的所有測試 (預覽版) 10.192.64.56 來源 IP：
 1. 變更要 **測試**的視圖。
@@ -218,16 +218,16 @@ Azure 監視器計量也提供監視資料。 您可以使用 Log Analytics 來�
 1. 在 [搜尋] 欄位中，輸入 *outlook.office365.com*
 1. 在 [最上層篩選的 **範圍** ] 中，選取 [ **目的地**]。
   
-  :::image type="content" source="./media/connection-monitor-2-preview/tests-view.png" alt-text="螢幕擷取畫面，顯示已篩選成隻顯示 Outlook.Office365.com 目的地失敗測試的視圖" lightbox="./media/connection-monitor-2-preview/tests-view.png":::
+  :::image type="content" source="./media/connection-monitor-2-preview/tests-view.png" alt-text="螢幕擷取畫面，顯示連線監視器 (預覽版中建立的連線監視器) " lightbox="./media/connection-monitor-2-preview/tests-view.png":::
 
 若要知道連線監視或測試群組或測試失敗的原因，請按一下名為 [原因] 的資料行。  這會指出 ( 檢查失敗的閾值% 或 RTT) 被入侵，以及相關的診斷訊息
   
-  :::image type="content" source="./media/connection-monitor-2-preview/cm-reason-of-failure.png" alt-text="顯示連接監視器、測試或測試群組失敗原因的螢幕擷取畫面" lightbox="./media/connection-monitor-2-preview/cm-reason-of-failure.png":::
+  :::image type="content" source="./media/connection-monitor-2-preview/cm-reason-of-failure.png" alt-text="螢幕擷取畫面，顯示連線監視器 (預覽版中建立的連線監視器) " lightbox="./media/connection-monitor-2-preview/cm-reason-of-failure.png":::
     
 若要查看 RTT 的趨勢，以及連線監視器的失敗檢查百分比：
 1. 選取您要調查的連接監視器。
 
-    :::image type="content" source="./media/connection-monitor-2-preview/cm-drill-landing.png" alt-text="顯示連線監視器計量的螢幕擷取畫面，由測試群組顯示" lightbox="./media/connection-monitor-2-preview/cm-drill-landing.png":::
+    :::image type="content" source="./media/connection-monitor-2-preview/cm-drill-landing.png" alt-text="螢幕擷取畫面，顯示連線監視器 (預覽版中建立的連線監視器) " lightbox="./media/connection-monitor-2-preview/cm-drill-landing.png":::
 
 1. 您將會看到下列區段  
     1. Essentials-所選連線監視器的資源特定屬性 
@@ -237,7 +237,7 @@ Azure 監視器計量也提供監視資料。 您可以使用 Log Analytics 來�
     1. 測試群組、來源、目的地和測試設定的索引標籤-列出連接監視器中的測試群組、來源或目的地。 檢查測試失敗、匯總 RTT 和檢查失敗的% 值。  您也可以回頭返回以查看資料。 
     1. 問題-連接監視器中每個測試的躍點層級問題。 
 
-    :::image type="content" source="./media/connection-monitor-2-preview/cm-drill-landing-2.png" alt-text="顯示連接監視器計量的螢幕擷取畫面，由測試群組第2部分顯示" lightbox="./media/connection-monitor-2-preview/cm-drill-landing-2.png":::
+    :::image type="content" source="./media/connection-monitor-2-preview/cm-drill-landing-2.png" alt-text="螢幕擷取畫面，顯示連線監視器 (預覽版中建立的連線監視器) " lightbox="./media/connection-monitor-2-preview/cm-drill-landing-2.png":::
 
 1. 您可以
     * 按一下 [查看所有測試] 以查看連接監視器中的所有測試
@@ -247,7 +247,7 @@ Azure 監視器計量也提供監視資料。 您可以使用 Log Analytics 來�
 1. 從 [所有測試] 視圖中，您可以：
     * 選取 [測試]，然後按一下 [比較]。
     
-    :::image type="content" source="./media/connection-monitor-2-preview/cm-compare-test.png" alt-text="顯示2個測試比較的螢幕擷取畫面" lightbox="./media/connection-monitor-2-preview/cm-compare-test.png":::
+    :::image type="content" source="./media/connection-monitor-2-preview/cm-compare-test.png" alt-text="螢幕擷取畫面，顯示連線監視器 (預覽版中建立的連線監視器) " lightbox="./media/connection-monitor-2-preview/cm-compare-test.png":::
     
     * 使用叢集將 VNET、子網等複合資源展開至其子資源
     * 按一下 [拓撲] 以查看任何測試的拓撲。
@@ -259,7 +259,7 @@ Azure 監視器計量也提供監視資料。 您可以使用 Log Analytics 來�
 若要查看 RTT 的趨勢，以及測試的失敗檢查百分比：
 1. 選取您要調查的測試。 您會看到網路拓撲，以及檢查失敗% 和來回行程時間的端對端趨勢圖。 若要查看已識別的問題，請在拓撲中選取路徑中的任何躍點。  (這些躍點都是 Azure 資源。 ) 這項功能目前不適用於內部部署網路
 
-  :::image type="content" source="./media/connection-monitor-2-preview/cm-test-topology.png" alt-text="顯示測試拓撲視圖的螢幕擷取畫面" lightbox="./media/connection-monitor-2-preview/cm-test-topology.png":::
+  :::image type="content" source="./media/connection-monitor-2-preview/cm-test-topology.png" alt-text="螢幕擷取畫面，顯示連線監視器 (預覽版中建立的連線監視器) " lightbox="./media/connection-monitor-2-preview/cm-test-topology.png":::
 
 #### <a name="log-queries-in-log-analytics"></a>Log Analytics 中的記錄查詢
 
@@ -269,7 +269,7 @@ Azure 監視器計量也提供監視資料。 您可以使用 Log Analytics 來�
 
 在連線監視器之前建立的連線監視器 (預覽版) 體驗中，總共提供四個度量：% 探查失敗、AverageRoundtripMs、ChecksFailedPercent (Preview) 和 RoundTripTimeMs (Preview) 。 在連線監視器中建立的連線監視器 (預覽) 體驗中，資料僅適用于以 * (Preview) *標記的度量。
 
-  :::image type="content" source="./media/connection-monitor-2-preview/monitor-metrics.png" alt-text="顯示連線監視器 (預覽) 中計量的螢幕擷取畫面 " lightbox="./media/connection-monitor-2-preview/monitor-metrics.png":::
+  :::image type="content" source="./media/connection-monitor-2-preview/monitor-metrics.png" alt-text="螢幕擷取畫面，顯示連線監視器 (預覽版中建立的連線監視器) " lightbox="./media/connection-monitor-2-preview/monitor-metrics.png":::
 
 當您使用計量時，請將資源類型設為 Microsoft. Network/networkWatchers/connectionMonitors
 
@@ -300,7 +300,7 @@ Azure 監視器計量也提供監視資料。 您可以使用 Log Analytics 來�
     1. 提供警示詳細資料。
     1. 建立警示規則。
 
-  :::image type="content" source="./media/connection-monitor-2-preview/mdm-alerts.jpg" alt-text="顯示 Azure 監視器中建立規則區域的螢幕擷取畫面。來源位址和來源端點名稱會反白顯示" lightbox="./media/connection-monitor-2-preview/mdm-alerts.jpg":::
+  :::image type="content" source="./media/connection-monitor-2-preview/mdm-alerts.jpg" alt-text="螢幕擷取畫面，顯示連線監視器 (預覽版中建立的連線監視器) " lightbox="./media/connection-monitor-2-preview/mdm-alerts.jpg":::
 
 ## <a name="diagnose-issues-in-your-network"></a>診斷網路中的問題
 

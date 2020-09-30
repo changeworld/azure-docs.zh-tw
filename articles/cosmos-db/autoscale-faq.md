@@ -6,12 +6,12 @@ ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/10/2020
-ms.openlocfilehash: 0e6a502ae7ed71beaeefe603e0810264e62187ba
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: bc8e5baa92f507c9abb9bc6b5305773010803f01
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90707997"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91567582"
 ---
 # <a name="frequently-asked-questions-about-autoscale-provisioned-throughput-in-azure-cosmos-db"></a>關於 Azure Cosmos DB 中自動調整佈建輸送量的常見問題集
 
@@ -37,14 +37,14 @@ ms.locfileid: "90707997"
 每小時，系統會收取在一小時內擴充到最高輸送量 `T` 的費用。 如果您的資源在一小時內沒有任何要求，或調整未超過 `0.1 * Tmax`，則會向您收取最少 `0.1 * Tmax` 的費用。 請參閱 Azure Cosmos DB [定價頁面](https://azure.microsoft.com/pricing/details/cosmos-db/)，以取得詳細資料。 
 
 ### <a name="how-does-autoscale-show-up-on-my-bill"></a>我的帳單上會如何顯示自動調整？
-在單一主機帳戶中，每 100 RU/秒的自動調整費率是標準 (手動) 佈建輸送量的 1.5 倍。 您會在帳單上看到現有的標準佈建輸送量計量。 此計量的數量將會乘以1.5。 例如，如果系統在一小時內擴充到的最高 RU/秒是 6000 RU/秒，則對於該小時的計量，會向您收取 60 * 1.5 = 90 個單位。
+在單一寫入區域帳戶中，每 100 RU/秒的自動調整速度為 1.5 x 標準 (手動) 布建輸送量的速率。 您會在帳單上看到現有的標準佈建輸送量計量。 此計量的數量將會乘以1.5。 例如，如果系統在一小時內擴充到的最高 RU/秒是 6000 RU/秒，則對於該小時的計量，會向您收取 60 * 1.5 = 90 個單位。
 
-在多重主機帳戶中，每 100 RU/秒的自動調整費率與標準 (手動) 佈建多重主機輸送量相同。 您會在帳單上看到現有的多重主機計量。 由於費率相同，如果您使用自動調整，則會看到與標準輸送量相同的數量。
+在具有多個寫入區域的帳戶中，每 100 RU/秒的自動調整費率與標準 (手動) 布建多個寫入區域輸送量的費率相同。 在您的帳單上，您將會看到現有的多個寫入區域計量。 由於費率相同，如果您使用自動調整，則會看到與標準輸送量相同的數量。
 
 ### <a name="does-autoscale-work-with-reserved-capacity"></a>自動調整是否會使用保留容量？
-是。 當您購買單一主機保留容量時，自動調整資源的保留折扣會依照 1.5 * [特定區域的比例](../cost-management-billing/reservations/understand-cosmosdb-reservation-charges.md#reservation-discount-per-region)，套用至您的計量使用量。 
+是。 當您為具有多個寫入區域的帳戶購買保留容量時，自動調整資源的保留折扣會套用至您的計量使用量，比率為 1.5 * [特定區域的比率](../cost-management-billing/reservations/understand-cosmosdb-reservation-charges.md#reservation-discount-per-region)。 
 
-多重主機保留容量的運作方式與自動調整和標準 (手動) 佈建輸送量相同。 請參閱 [Azure Cosmos DB 保留容量](cosmos-db-reserved-capacity.md)
+針對自動調整和標準 (手動) 布建的輸送量，多重寫入區域保留容量的運作方式相同。 請參閱 [Azure Cosmos DB 保留容量](cosmos-db-reserved-capacity.md)
 
 ### <a name="does-autoscale-work-with-free-tier"></a>自動調整是否會使用免費層？
 是。 在免費層中，您可以在容器上使用自動調整輸送量。 尚未提供具有自訂最大 RU/秒的自動調整共用輸送量資料庫。 請參閱[免費層如何與自動調整搭配運作](understand-your-bill.md#billing-examples-with-free-tier-accounts)。
@@ -52,7 +52,7 @@ ms.locfileid: "90707997"
 ### <a name="is-autoscale-supported-for-all-apis"></a>所有 API 是否皆支援自動調整？
 是，所有 API 皆支援自動調整：核心 (SQL)、Gremlin、資料表、Cassandra，以及適用於 MongoDB 的 API。
 
-### <a name="is-autoscale-supported-for-multi-master-accounts"></a>多重主機帳戶是否支援自動調整？
+### <a name="is-autoscale-supported-for-multi-region-write-accounts"></a>多區域寫入帳戶是否支援自動調整？
 是。 在新增至 Azure Cosmos DB 帳戶的每個區域中，都可以使用最大 RU/秒。 
 
 ### <a name="how-do-i-enable-autoscale-on-new-databases-or-containers"></a>如何在新資料庫或容器上啟用自動調整？

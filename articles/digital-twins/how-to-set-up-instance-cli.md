@@ -78,7 +78,7 @@ az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --ass
 >
 > 使用 [Azure Active Directory 使用者](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers) 的 [Azure 入口網站] 頁面，即可選取使用者帳戶並開啟其詳細資料。 複製使用者的 *ObjectID*：
 >
-> :::image type="content" source="media/includes/user-id.png" alt-text="Azure 入口網站反白顯示 [物件識別碼] 欄位中的 GUID 之使用者頁面的視圖" lightbox="media/includes/user-id.png":::
+> :::image type="content" source="media/includes/user-id.png" alt-text="成功建立資源群組和 Azure 數位 Twins 實例的命令視窗" lightbox="media/includes/user-id.png":::
 >
 > 然後，針對上面的參數使用使用者的 *物件識別碼* ，重複執行角色指派清單命令 `assignee` 。
 
@@ -115,7 +115,7 @@ az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --ass
 
 接下來，您會將此檔案上傳至 Cloud Shell。 在 Cloud Shell 視窗中，按一下 [上傳/下載檔案] 圖示，然後選擇 [上傳]。
 
-:::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-upload.png" alt-text="顯示所選上傳選項的 Cloud Shell 視窗":::
+:::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-upload.png" alt-text="成功建立資源群組和 Azure 數位 Twins 實例的命令視窗":::
 流覽至您剛剛建立的 *manifest.js* ，然後按 [開啟]。
 
 接下來，執行下列命令以建立應用程式註冊，並使用 *公用用戶端/原生 (mobile & desktop) * 的回復 URL `http://localhost` 。 視需要取代預留位置：
@@ -126,7 +126,7 @@ az ad app create --display-name <name-for-your-app-registration> --native-app --
 
 以下是此命令的輸出摘要，顯示您已建立之註冊的相關資訊：
 
-:::image type="content" source="media/how-to-set-up-instance/cloud-shell/new-app-registration.png" alt-text="Cloud Shell 新 Azure AD 應用程式註冊的輸出":::
+:::image type="content" source="media/how-to-set-up-instance/cloud-shell/new-app-registration.png" alt-text="成功建立資源群組和 Azure 數位 Twins 實例的命令視窗":::
 
 ### <a name="verify-success"></a>確認是否成功
 
@@ -140,7 +140,7 @@ az ad app create --display-name <name-for-your-app-registration> --native-app --
 
 接下來，從功能表列選取 [ *總覽* ]，以查看應用程式註冊的詳細資料：
 
-:::image type="content" source="media/how-to-set-up-instance/portal/app-important-values.png" alt-text="入口網站查看應用程式註冊的重要值":::
+:::image type="content" source="media/how-to-set-up-instance/portal/app-important-values.png" alt-text="成功建立資源群組和 Azure 數位 Twins 實例的命令視窗":::
 
 記下**您**頁面上顯示的*應用程式 (用戶端) 識別碼*和*目錄 (租使用者) 識別碼*。 稍後將需要這些值，以 [針對 Azure 數位 Twins api 驗證用戶端應用程式](how-to-authenticate-client.md)。 如果您不是要為這類應用程式撰寫程式碼的人員，則必須與將會與人共用這些值。
 

@@ -50,11 +50,11 @@ Azure 資訊安全中心識別裝載于 IaaS Linux Vm 上的非受控容器，�
     > [!TIP]
     > 如果您在 [資產清查] 頁面上啟動，並從該處到達此建議，請 select 建議頁面上的 [ **採取動作** ] 按鈕。
     >
-    > :::image type="content" source="./media/monitor-container-security/host-security-take-action-button.png" alt-text="[採取動作] 按鈕以啟動 Log Analytics":::
+    > :::image type="content" source="./media/monitor-container-security/host-security-take-action-button.png" alt-text="補救容器安全性設定中弱點的建議 ":::
 
     Log Analytics 隨即開啟，並已準備好執行自訂作業。 預設的自訂查詢包含已評估之所有失敗規則的清單，以及協助您解決問題的指導方針。
 
-    :::image type="content" source="./media/monitor-container-security/docker-host-vulnerabilities-in-query.png" alt-text="具有查詢的 Log Analytics 頁面，其中顯示所有失敗的 CIS 控制項":::
+    :::image type="content" source="./media/monitor-container-security/docker-host-vulnerabilities-in-query.png" alt-text="補救容器安全性設定中弱點的建議 ":::
 
 1. 必要時，請調整查詢參數。
 

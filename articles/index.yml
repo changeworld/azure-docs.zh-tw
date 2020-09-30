@@ -10,15 +10,15 @@ metadata:
   ms.topic: hub-page
   author: rolyon
   ms.author: rolyon
-  ms.date: 09/10/2020
+  ms.date: 09/25/2020
   featureFlags:
   - clicktale
-  ms.openlocfilehash: 07d167ca046bb4c4a5e5e50cec43c7685fcec8fb
-  ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+  ms.openlocfilehash: 07d038aef43594550e81b640a8dfd98452804143
+  ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 09/25/2020
-  ms.locfileid: "91262003"
+  ms.lasthandoff: 09/28/2020
+  ms.locfileid: "91409781"
 highlightedContent:
   items:
   - title: Azure 開發人員開始使用指南
@@ -32,7 +32,7 @@ highlightedContent:
     url: https://docs.microsoft.com/azure/cloud-adoption-framework/
   - title: 透過 Microsoft Learn 增進您的技巧
     itemType: learn
-    url: https://docs.microsoft.com/learn/browse/?products=azure&resource_type=learning+path
+    url: https://docs.microsoft.com/learn/browse/?products=azure&resource_type=learning%20path
 productDirectory:
   title: 瀏覽 Azure 產品
   items:
@@ -963,8 +963,8 @@ productDirectory:
     azureCategories:
     - management-and-governance
     url: azure-resource-manager/index.yml
-  - title: Azure Resource Mover
-    summary: 在 Azure 區域之間移動資源。
+  - title: Azure Resource Mover (預覽)
+    summary: 簡化 Azure 區域之間移動多種資源的方式
     imageSrc: https://static.docs.com/ui/media/product/azure/resource-mover.svg
     azureCategories:
     - management-and-governance
@@ -1110,6 +1110,19 @@ productDirectory:
     azureCategories:
     - networking
     url: bastion/index.yml
+  - title: Azure Defender
+    summary: 保護混合式雲端工作負載
+    imageSrc: ./media/index/defender.svg
+    azureCategories:
+    - security
+    url: security-center/azure-defender.md
+  - title: 適用於 IoT 的 Azure Defender (預覽)
+    summary: 非受控和受控 IoT/OT 裝置的連續資產管理和威脅偵測
+    imageSrc: ./media/index/defender-iot.svg
+    azureCategories:
+    - security
+    - iot
+    url: security-center/defender-for-iot-introduction.md
   - title: Azure DDoS 保護
     summary: 保護您的應用程式免於遭遇分散式阻斷服務 (DDoS) 攻擊
     imageSrc: https://static.docs.com/ui/media/product/azure/ddos-protection.svg

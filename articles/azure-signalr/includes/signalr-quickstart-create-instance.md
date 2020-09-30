@@ -7,12 +7,12 @@ ms.topic: include
 ms.date: 09/14/2018
 ms.author: antchu
 ms.custom: include file
-ms.openlocfilehash: 0a228f6d8b4f72acd3783f27bf192fe6bd13f988
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: f738daab7ddcf0403f546e7c9ffeaeccb66bc6b7
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75392127"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91355633"
 ---
 ## <a name="create-an-azure-signalr-service-instance"></a>建立 Azure SignalR 服務執行個體
 
@@ -20,7 +20,7 @@ ms.locfileid: "75392127"
 
 1. 選取 Azure 入口網站左上角的 [新增] 按鈕。 在 [新增] 畫面的搜尋方塊中輸入 *SignalR 服務*並按 Enter。
 
-    ![搜尋 SignalR 服務](../media/signalr-quickstart-azure-functions-javascript/signalr-quickstart-new.png)
+    ![螢幕擷取畫面會顯示 Azure 入口網站中的 SignalR Service 搜尋結果。](../media/signalr-quickstart-azure-functions-javascript/signalr-quickstart-new.png)
 
 1. 從搜尋結果中選取 [SignalR 服務]  ，然後選取 [建立]  。
 
@@ -36,7 +36,7 @@ ms.locfileid: "75392127"
     | **單位計數** |  不適用 | 單位計數會指出您的 SignalR 服務執行個體可接受的連線數目。 它只能在標準層中設定。 |
     | **服務模式** |  無伺服器 | 用於 Azure Functions 或 REST API。 |
 
-    ![建立 SignalR 服務](../media/signalr-quickstart-azure-functions-javascript/signalr-quickstart-create.png)
+    ![螢幕擷取畫面會顯示具有值的 [SignalR Basics] 索引標籤。](../media/signalr-quickstart-azure-functions-javascript/signalr-quickstart-create.png)
 
 1. 選取 [建立]  以開始部署 SignalR 服務執行個體。
 

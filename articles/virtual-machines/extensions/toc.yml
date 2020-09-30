@@ -52,12 +52,14 @@
           href: vmsnapshot-linux.md
         - name: Windows
           href: vmsnapshot-windows.md
-    - name: 網路監看員代理程式
+    - name: 網路監看員擴充功能
       items:
         - name: Linux
           href: network-watcher-linux.md
         - name: Windows
           href: network-watcher-windows.md
+        - name: 更新為最新版本
+          href: network-watcher-update.md
     - name: InfiniBand 驅動程式
       items:
         - name: Linux

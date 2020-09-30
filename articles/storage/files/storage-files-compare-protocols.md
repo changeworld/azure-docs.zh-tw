@@ -1,6 +1,6 @@
 ---
-title: 可用 Azure 檔案儲存體通訊協定
-description: 在建立 Azure 檔案共用之前，請先瞭解可用的通訊協定。
+title: 可用 Azure 檔案儲存體通訊協定-NFS 和 SMB
+description: 在建立 Azure 檔案共用之前，請先瞭解可用的通訊協定，包括伺服器訊息區 (SMB) 和網路檔案系統 (NFS) 。
 author: roygara
 ms.service: storage
 ms.topic: conceptual
@@ -8,12 +8,12 @@ ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 8082e694c4282759c9c38560c14eb3659fcd55ec
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 5149024f8621754451520e0ae249ed61f0b07f99
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90708133"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91568466"
 ---
 # <a name="azure-file-share-protocols"></a>Azure 檔案共用通訊協定
 
@@ -21,12 +21,12 @@ Azure 檔案儲存體提供兩種通訊協定來連線及掛接您的 Azure 檔�
 
 ## <a name="differences-at-a-glance"></a>差異一覽
 
-|功能  |NFS (預覽)   |SMB  |
+|特徵  |NFS (預覽)   |SMB  |
 |---------|---------|---------|
 |存取通訊協定     |NFS 4。1         |SMB 2.1、SMB 3。0         |
 |支援的 OS     |Linux 核心4.3 版 +         |Windows 2008 R2 +、Linux 核心版本 4.11 +         |
-|可用層     |進階儲存體         |Premium 儲存體、標準儲存體、經常性存取、非經常性存取         |
-|複寫     |LRS         |LRS、ZRS、GRS         |
+|[可用層](storage-files-planning.md#storage-tiers)     |進階儲存體         |Premium 儲存體、交易優化、經常性存取、非經常性存取         |
+|[備援性](storage-files-planning.md#redundancy)     |LRS         |LRS、ZRS、GRS         |
 |驗證     |僅限以主機為基礎的驗證        |以身分識別為基礎的驗證，以使用者為基礎的驗證         |
 |權限     |UNIX 樣式許可權         |NTFS 樣式許可權         |
 |檔案系統語義     |POSIX 相容         |不符合 POSIX 規範         |
@@ -74,7 +74,7 @@ Azure 檔案儲存體提供兩種通訊協定來連線及掛接您的 Azure 檔�
 
 使用 SMB 掛接的 Azure 檔案共用提供更 Azure 檔案儲存體的功能，且沒有 Azure 檔案儲存體功能限制，因為它已正式推出。
 
-### <a name="features"></a>特性
+### <a name="features"></a>功能
 
 - Azure 檔案同步
 - 以身分識別為基礎的驗證

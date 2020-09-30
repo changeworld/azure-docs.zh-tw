@@ -88,7 +88,7 @@ ms.locfileid: "91328488"
 
 若要確認連接，您可以按 [ *執行查詢* ] 按鈕來執行預設查詢，以在 graph *EXPLORER* 方塊中顯示圖形中的所有 twins 和關聯性。
 
-:::image type="content" source="media/how-to-move-regions/run-query.png" alt-text="醒目提示靠近視窗頂端的 [執行查詢] 按鈕" lightbox="media/how-to-move-regions/run-query.png":::
+:::image type="content" source="media/how-to-move-regions/run-query.png" alt-text="顯示應用程式在 localhost:3000 上執行的瀏覽器視窗。此應用程式稱為 ADT Explorer，且包含查詢總管、模型檢視、圖形檢視和屬性總管的方塊。目前尚無任何螢幕資料。" lightbox="media/how-to-move-regions/run-query.png":::
 
 您可以讓 ADT Explorer 執行，因為您稍後會在本文稍後再次使用它，將這些專案重新上傳至目的地區域中的新實例。
 
@@ -100,7 +100,7 @@ ms.locfileid: "91328488"
  
 然後，按下 [*圖形] 視圖*框中的 [*匯出圖形]* 圖示。
 
-:::image type="content" source="media/how-to-move-regions/export-graph.png" alt-text="在 [圖形] 視圖框中，會反白顯示圖示。它會顯示從雲端向下指向的箭號。" lightbox="media/how-to-move-regions/export-graph.png":::
+:::image type="content" source="media/how-to-move-regions/export-graph.png" alt-text="顯示應用程式在 localhost:3000 上執行的瀏覽器視窗。此應用程式稱為 ADT Explorer，且包含查詢總管、模型檢視、圖形檢視和屬性總管的方塊。目前尚無任何螢幕資料。" lightbox="media/how-to-move-regions/export-graph.png":::
 
 這會啟用*圖形視圖*中的*下載*連結。 選取它來下載以 JSON 為基礎的查詢結果標記法，包括您的模型、twins 和關聯性。 這應該會將 *json* 檔案下載至您的電腦。
 
@@ -136,7 +136,7 @@ ms.locfileid: "91328488"
 
 ADT Explorer 目前已連線到您的原始 Azure 數位 Twins 實例。 藉由叫用視窗頂端的 [登 *入* ] 按鈕，切換連接以指向新的實例。 
 
-:::image type="content" source="media/how-to-move-regions/sign-in.png" alt-text="醒目提示視窗頂端旁 [登入] 圖示的 ADT Explorer。圖示會顯示簡易人像剪影，並在上方覆疊鑰匙剪影。" lightbox="media/how-to-move-regions/sign-in.png":::
+:::image type="content" source="media/how-to-move-regions/sign-in.png" alt-text="顯示應用程式在 localhost:3000 上執行的瀏覽器視窗。此應用程式稱為 ADT Explorer，且包含查詢總管、模型檢視、圖形檢視和屬性總管的方塊。目前尚無任何螢幕資料。" lightbox="media/how-to-move-regions/sign-in.png":::
 
 由於您要重複使用應用程式註冊，因此您只需要取代 *ADT URL*。 將此值變更為讀取 *HTTPs：//{new instance hostname}*。
 
@@ -148,7 +148,7 @@ ADT Explorer 目前已連線到您的原始 Azure 數位 Twins 實例。 藉由�
 
 若要上傳您的**模型、twins 和圖形**，請點擊 [*圖形] 視圖*框中的 [匯*入圖形]* 圖示。 此選項會一次上傳上述三個元件 (即使是目前未在圖形) 中使用的模型。
 
-:::image type="content" source="media/how-to-move-regions/import-graph.png" alt-text="在 [圖形檢視] 方塊中醒目提示圖示。其會顯示指向雲端的箭號。" lightbox="media/how-to-move-regions/import-graph.png":::
+:::image type="content" source="media/how-to-move-regions/import-graph.png" alt-text="顯示應用程式在 localhost:3000 上執行的瀏覽器視窗。此應用程式稱為 ADT Explorer，且包含查詢總管、模型檢視、圖形檢視和屬性總管的方塊。目前尚無任何螢幕資料。" lightbox="media/how-to-move-regions/import-graph.png":::
 
 在 [檔案選取器] 方塊中，流覽至您下載的圖形。 選取 *[graph]* 檔案，然後按 [ *開啟*]。
 
@@ -158,7 +158,7 @@ ADT Explorer 目前已連線到您的原始 Azure 數位 Twins 實例。 藉由�
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/how-to-move-regions/graph-preview-save.png" alt-text="醒目提示圖形預覽窗格中的儲存圖示" lightbox="media/how-to-move-regions/graph-preview-save.png":::
+        :::image type="content" source="media/how-to-move-regions/graph-preview-save.png" alt-text="顯示應用程式在 localhost:3000 上執行的瀏覽器視窗。此應用程式稱為 ADT Explorer，且包含查詢總管、模型檢視、圖形檢視和屬性總管的方塊。目前尚無任何螢幕資料。" lightbox="media/how-to-move-regions/graph-preview-save.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -168,7 +168,7 @@ ADT Explorer 現在會將您的模型和圖形 (（包括 twins 和) 關聯性�
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/how-to-move-regions/import-success.png" alt-text="表示圖形匯入成功的對話方塊。它會讀取「匯入成功。已匯入2個模型。4 twins 已匯入。已匯入2個關聯性。" lightbox="media/how-to-move-regions/import-success.png":::
+        :::image type="content" source="media/how-to-move-regions/import-success.png" alt-text="顯示應用程式在 localhost:3000 上執行的瀏覽器視窗。此應用程式稱為 ADT Explorer，且包含查詢總管、模型檢視、圖形檢視和屬性總管的方塊。目前尚無任何螢幕資料。" lightbox="media/how-to-move-regions/import-success.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -178,11 +178,11 @@ ADT Explorer 現在會將您的模型和圖形 (（包括 twins 和) 關聯性�
 
 若要確認所有專案都已成功上傳，請按 [ *GRAPH EXPLORER]* 方塊中的 [*執行查詢*] 按鈕，以執行顯示圖形中所有 twins 和關聯性的預設查詢。 這也會重新整理 *模型視圖*中的模型清單。
 
-:::image type="content" source="media/how-to-move-regions/run-query.png" alt-text="在靠近視窗頂端的相同 [執行查詢] 按鈕周圍醒目提示" lightbox="media/how-to-move-regions/run-query.png":::
+:::image type="content" source="media/how-to-move-regions/run-query.png" alt-text="顯示應用程式在 localhost:3000 上執行的瀏覽器視窗。此應用程式稱為 ADT Explorer，且包含查詢總管、模型檢視、圖形檢視和屬性總管的方塊。目前尚無任何螢幕資料。" lightbox="media/how-to-move-regions/run-query.png":::
 
 您應該會看到圖形及其所有的 twins 和關聯性顯示在 [ *GRAPH EXPLORER]* 方塊中。 您也應該會在 [ *模型] 視圖* 框中看到您的模型。
 
-:::image type="content" source="media/how-to-move-regions/post-upload.png" alt-text="ADT Explorer 的視圖顯示 [模型視圖] 方塊中醒目提示的2個模型，以及在 [圖形 Explorer] 方塊中反白顯示的圖形" lightbox="media/how-to-move-regions/post-upload.png":::
+:::image type="content" source="media/how-to-move-regions/post-upload.png" alt-text="顯示應用程式在 localhost:3000 上執行的瀏覽器視窗。此應用程式稱為 ADT Explorer，且包含查詢總管、模型檢視、圖形檢視和屬性總管的方塊。目前尚無任何螢幕資料。" lightbox="media/how-to-move-regions/post-upload.png":::
 
 這會確認您的模型、twins 和圖表已重新上傳至目的地區域中的新實例。
 
@@ -234,4 +234,4 @@ ADT Explorer 現在會將您的模型和圖形 (（包括 twins 和) 關聯性�
 
 按下 [ *刪除* ] 按鈕，然後遵循提示來完成刪除。
 
-:::image type="content" source="media/how-to-move-regions/delete-instance.png" alt-text="在 [總覽] 索引標籤上的 Azure 入口網站中，查看 Azure 數位 Twins 實例詳細資料。[刪除] 按鈕會反白顯示":::
+:::image type="content" source="media/how-to-move-regions/delete-instance.png" alt-text="顯示應用程式在 localhost:3000 上執行的瀏覽器視窗。此應用程式稱為 ADT Explorer，且包含查詢總管、模型檢視、圖形檢視和屬性總管的方塊。目前尚無任何螢幕資料。":::

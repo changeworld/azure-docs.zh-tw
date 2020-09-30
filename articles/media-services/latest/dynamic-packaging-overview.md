@@ -2,7 +2,7 @@
 title: Azure 媒體服務 v3 中的動態封裝
 titleSuffix: Azure Media Services
 description: 本文能提供 Azure 媒體服務中動態封裝的概觀。
-author: IngridAtMicrosoft
+author: myoungerman
 manager: femila
 editor: ''
 services: media-services
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/31/2020
-ms.author: inhenkel
-ms.openlocfilehash: dfa87921bc6a5a6c34b4dec33f4aae1907507730
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.author: v-myoung
+ms.openlocfilehash: 3607ecb7d1ef01b968b67c704e12136cc1888b69
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89291614"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91296224"
 ---
 # <a name="dynamic-packaging-in-media-services-v3"></a>媒體服務 v3 中的動態封裝
 
@@ -27,7 +27,7 @@ ms.locfileid: "89291614"
 
 Microsoft Azure 媒體服務可以用來為許多媒體來源檔案格式編碼。 它會透過不同的串流通訊協定 (不論是否有內容保護) 來傳遞這些格式，以聯繫所有主要裝置 (例如 iOS 和 Android 裝置)。 這些用戶端了解不同的通訊協定。 例如，iOS 需要以 HTTP 即時串流 (HLS) 格式傳遞串流，而 Android 裝置則支援 HLS 和 MPEG DASH。
 
-在媒體服務中，[串流端點](streaming-endpoint-concept.md) (原點) 代表動態 (Just-In-Time) 封裝及原始服務，其可將即時且隨選的內容直接傳遞至用戶端播放應用程式。 它會使用下節中所述的其中一種常見串流媒體通訊協定。 「動態封裝」是隨附於所有串流端點 (標準或進階) 的標準功能。
+在媒體服務中，[串流端點](streaming-endpoint-concept.md) (原點) 代表動態 (Just-In-Time) 封裝及原始服務，其可將即時且隨選的內容直接傳遞至用戶端播放應用程式。 它會使用下節中所述的其中一種常見串流媒體通訊協定。 「動態封裝」是隨附於所有串流端點的標準功能。
 
 > [!NOTE]
 > 您可以使用 [Azure 入口網站](https://portal.azure.com/)來管理 v3 [即時活動](live-events-outputs-concept.md)、檢視 v3 [資產](assets-concept.md)、取得存取 API 的相關資訊。 針對所有其他管理工作 (例如，轉換和作業)，請使用 [REST API](/rest/api/media/)、[CLI](https://aka.ms/ams-v3-cli-ref) 或其中一個支援的 [SDK](media-services-apis-overview.md#sdks)。
@@ -132,7 +132,7 @@ Azure 媒體服務動態封裝僅支援 MP4 容器格式的影片和音訊檔案
 動態封裝支援的影片檔案格式為 MP4 的容器檔案格式，並包含以 [H.264](https://en.m.wikipedia.org/wiki/H.264/MPEG-4_AVC) (MPEG-4 AVC or AVC1) 或 [H.265](https://en.m.wikipedia.org/wiki/High_Efficiency_Video_Coding) (HEVC、hev1 或 hvc1) 編碼的影片。
 
 > [!NOTE]
-> 最多可達 4K 的解析度，以及最多每秒 60 個畫面的畫面播放速率，皆已透過「動態封裝」進行測試。 [進階編碼器](../previous/media-services-encode-asset.md#media-encoder-premium-workflow)支援透過舊版 v2 API 編碼成 H.265。
+> 最多可達 4K 的解析度，以及最多每秒 60 個畫面的畫面播放速率，皆已透過「動態封裝」進行測試。
 
 ## <a name="audio-codecs-supported-by-dynamic-packaging"></a>動態封裝支援的音訊轉碼器
 

@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
-ms.openlocfilehash: a73a2bc82c7f4e77808f751bb8ba24adcacd2e31
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: e2046673cda17c58153ceb12eee31edb83365092
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91400378"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91565675"
 ---
 # <a name="configure-and-access-slow-query-logs-for-azure-database-for-mysql---flexible-server-using-the-azure-portal"></a>使用 Azure 入口網站設定和存取適用於 MySQL 的 Azure 資料庫彈性伺服器的慢速查詢記錄
 
@@ -20,7 +20,7 @@ ms.locfileid: "91400378"
 
 您可以從 Azure 入口網站設定、列出和下載適用於 MySQL 的 Azure 資料庫具彈性的伺服器 [慢速查詢記錄](concepts-slow-query-logs.md) 。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 本文中的步驟需要您擁有有 [彈性的伺服器](quickstart-create-server-portal.md)。
 
 ## <a name="configure-logging"></a>設定記錄
@@ -31,15 +31,16 @@ ms.locfileid: "91400378"
 1. 選取您的彈性伺服器。
 
 1. 在 [ **設定** ] 區段的側邊欄中，選取 [ **伺服器參數**]。
-   <!-- :::image type="content" source="./media/howto-configure-server-logs-in-portal/1-select-server-logs-configure.png" alt-text="Screenshot of Server logs options":::-->
+   :::image type="content" source="./media/how-to-configure-slow-query-logs-portal/server-parameters.png" alt-text="[伺服器參數] 頁面。":::
 
 1. 將 **slow_query_log** 參數更新為 **ON**。
+   :::image type="content" source="./media/how-to-configure-slow-query-logs-portal/slow-query-log-enable.png" alt-text="[伺服器參數] 頁面。":::
 
 1. 變更所需的任何其他參數 (例如 `long_query_time`, `log_slow_admin_statements`). 如需更多參數，請參閱 [慢速查詢記錄](./concepts-slow-query-logs.md#configure-slow-query-logging) 檔。  
+   :::image type="content" source="./media/how-to-configure-slow-query-logs-portal/long-query-time.png" alt-text="[伺服器參數] 頁面。":::
 
-1. 選取 [儲存]。 
-
-   <!-- :::image type="content" source="./media/howto-configure-server-logs-in-portal/3-save-discard.png" alt-text="Screenshot of slow query log parameters and save."::: -->
+1. 選取 [儲存]  。 
+   :::image type="content" source="./media/how-to-configure-slow-query-logs-portal/save-parameters.png" alt-text="[伺服器參數] 頁面。":::
 
 在 [ **伺服器參數** ] 頁面上，您可以藉由關閉頁面來返回記錄清單。
 
@@ -49,17 +50,17 @@ ms.locfileid: "91400378"
 
 1. 在提要欄位的 [**監視**] 區段下，選取 [**診斷設定**  >  **新增診斷設定**]。
 
-   <!--:::image type="content" source="./media/howto-configure-server-logs-in-portal/add-diagnostic-setting.png" alt-text="Screenshot of Diagnostic settings options":::-->
+   :::image type="content" source="./media/how-to-configure-slow-query-logs-portal/add-diagnostic-setting.png" alt-text="[伺服器參數] 頁面。":::
 
 1. 提供診斷設定名稱。
 
 1. 指定要將慢速查詢記錄傳送 (儲存體帳戶、事件中樞或 Log Analytics 工作區) 的目的地。
 
 1. 選取 [ **MySqlSlowLogs** ] 做為記錄類型。
-    <!--:::image type="content" source="./media/howto-configure-server-logs-in-portal/configure-diagnostic-setting.png" alt-text="Screenshot of Diagnostic settings configuration options":::-->
+    :::image type="content" source="./media/how-to-configure-slow-query-logs-portal/configure-diagnostic-setting.png" alt-text="[伺服器參數] 頁面。":::
 
 1. 設定好將慢速查詢記錄輸送至的資料接收器之後，請選取 [ **儲存**]。
-    <!--:::image type="content" source="./media/howto-configure-server-logs-in-portal/save-diagnostic-setting.png" alt-text="Screenshot of Diagnostic settings configuration options, with Save highlighted":::-->
+    :::image type="content" source="./media/how-to-configure-slow-query-logs-portal/save-diagnostic-setting.png" alt-text="[伺服器參數] 頁面。":::
 
 1. 存取慢速查詢記錄，方法是在您設定的資料接收器中加以探索。 記錄最多可能需要10分鐘的時間才會出現。
 

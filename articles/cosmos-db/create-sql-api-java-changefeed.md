@@ -78,7 +78,7 @@ mvn clean package
     * **InventoryContainer-pktype** - 清查記錄的具體化檢視，已針對項目 ```type``` 的查詢最佳化
     * **InventoryContainer-leases** - 變更摘要一律需要租用容器；租用會追蹤應用程式讀取變更摘要的進度。
 
-    :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_account_resources_lease_empty.JPG" alt-text="空的容器":::
+    :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_account_resources_lease_empty.JPG" alt-text="Azure Cosmos DB 帳戶":::
 
 1. 在終端機中，您應該會看到提示
 
@@ -96,7 +96,7 @@ mvn clean package
 
     在瀏覽器中返回 Azure 入口網站資料總管。 在 **InventoryContainer-leases** 容器底下，按一下 **items** 以查看其內容。 您會看到變更摘要處理器已填入租用容器，也就是處理器已在 **InventoryContainer** 的某些分割區上將租用指派給 ```SampleHost_1``` 背景工作角色。
 
-    :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_leases.JPG" alt-text="租用":::
+    :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_leases.JPG" alt-text="Azure Cosmos DB 帳戶":::
 
 1. 在終端機中再次按 Enter 鍵。 這會觸發 10 份要插入 **InventoryContainer** 中的文件。 每次文件插入都會以 JSON 形式出現在變更摘要中。下列回呼程式碼會藉由將 JSON 文件鏡射到具體化建立中來處理這些事件：
 
@@ -106,15 +106,15 @@ mvn clean package
 
 1. 允許程式碼執行 5-10 秒。 然後返回 Azure 入口網站資料總管，並巡覽至 **InventoryContainer > items**。 您應會看到項目插入清查容器中；請記下資料分割索引鍵 (```id```)。
 
-    :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_items.JPG" alt-text="摘要容器":::
+    :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_items.JPG" alt-text="Azure Cosmos DB 帳戶":::
 
 1. 現在，在資料總管中導覽至 **InventoryContainer-pktype > items**。 這是具體化檢視 - 此容器鏡像 **InventoryContainer** 中的項目，因為其由變更摘要以程式設計方式插入。 請記下資料分割索引鍵 (```type```)。 所以此具體化檢視已針對篩選 ```type``` 的查詢最佳化，這在 **InventoryContainer** 上沒有效率，因為其依據 ```id``` 進行分割。
 
-    :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_materializedview2.JPG" alt-text="螢幕擷取畫面顯示 Azure Cosmos D B 帳戶的資料總管頁面，其中包含選取的專案。":::
+    :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_materializedview2.JPG" alt-text="Azure Cosmos DB 帳戶":::
 
 1. 我們只要使用單一 ```upsertItem()``` 呼叫，就會同時從 **InventoryContainer** 和 **InventoryContainer-pktype** 中刪除文件。 首先，請查看 Azure 入口網站資料總管。 我們會刪除 ```/type == "plums"```的文件；其在底下以紅色圍住
 
-    :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_materializedview-emph-todelete.JPG" alt-text="螢幕擷取畫面顯示已選取特定專案之 Azure Cosmos D B 帳戶的 [資料總管] 頁面。":::
+    :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_materializedview-emph-todelete.JPG" alt-text="Azure Cosmos DB 帳戶":::
 
     再次按 Enter 鍵，以呼叫範例程式碼中的 ```deleteDocument()``` 函式。 如下所示，此函式會使用 ```/ttl == 5``` 來 upsert 新版的文件，以將文件存留時間 (TTL) 設定為 5 秒。 
     

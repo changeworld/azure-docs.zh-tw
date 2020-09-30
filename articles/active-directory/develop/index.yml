@@ -3,18 +3,18 @@ title: Microsoft 身分識別平台文件
 summary: Microsoft 身分識別平台是驗證服務、開放原始碼程式庫和應用程式管理工具。 了解如何透過我們的快速入門、教學課程和程式碼範例，建立現代化的標準型驗證解決方案。 建置可供使用者和客戶使用其 Microsoft 身分識別或社交帳戶來登入的應用程式，並授權其存取您的 API 或 Microsoft API，例如 Microsoft Graph。
 metadata:
   ms.topic: landing-page
-  ms.date: 08/11/2020
+  ms.date: 09/26/2020
   author: mmacy
   ms.author: marsma
   ms.service: active-directory
   ms.subservice: develop
   ms.workload: identity
-  ms.openlocfilehash: c0f87da61b0fa2d4aed57eeef7ee9829a17d0f80
-  ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+  ms.openlocfilehash: d80d722594e717319bda473e2cb86551acc8d9f0
+  ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 09/25/2020
-  ms.locfileid: "91258365"
+  ms.lasthandoff: 09/28/2020
+  ms.locfileid: "91403138"
 landingContent:
 - title: 關於 Microsoft 身分識別平台
   linkLists:
@@ -64,8 +64,8 @@ landingContent:
       url: quickstart-v2-aspnet-webapp.md
     - text: ASP.NET Core
       url: quickstart-v2-aspnet-core-webapp.md
-    - text: Python
-      url: quickstart-v2-python-webapp.md
+    - text: Blazor 伺服器
+      url: tutorial-blazor-server.md
 - title: 行動/原生應用程式
   linkLists:
   - linkListType: get-started
@@ -120,6 +120,8 @@ landingContent:
   linkLists:
   - linkListType: whats-new
     links:
+    - text: 教學課程：Blazor Server
+      url: tutorial-blazor-server.md
     - text: 快速入門：保護 ASP.NET Core Web API
       url: quickstart-v2-aspnet-core-web-api.md
     - text: MSAL Python API 參考
@@ -136,5 +138,3 @@ landingContent:
       url: msal-android-handling-exceptions.md
     - text: 宣告中的目錄結構描述擴充屬性
       url: active-directory-schema-extensions.md
-    - text: MSAL.js 2.0 驗證碼 + PKCE & CORS
-      url: quickstart-v2-javascript-auth-code.md

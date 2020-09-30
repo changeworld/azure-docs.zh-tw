@@ -8,17 +8,17 @@ ms.topic: include
 ms.date: 11/04/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 105ab0c71d9e7e935842550ecdc4c8d2ff2a2d8c
-ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
+ms.openlocfilehash: 64470b42efeea49b7c778d6dffd88465b8445e36
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84977898"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90606451"
 ---
 1. 找出您所建立的虛擬 WAN。 在 [虛擬 WAN] 頁面的 [連線能力]**** 區段下，選取 [中樞]****。
 2. 在 [中樞] 頁面上，選取 [+ 新增中樞]**** 來開啟 [建立虛擬中樞]**** 頁面。
 
-    ![基本概念](./media/virtual-wan-tutorial-hub-include/basics.png "基本概念")
+    ![螢幕擷取畫面顯示 [建立虛擬中樞] 窗格，並選取 [基本] 索引標籤。](./media/virtual-wan-tutorial-hub-include/basics.png "基本概念")
 3. 在 [建立虛擬中樞]**** 頁面的 [基本]**** 索引標籤中，完成以下欄位：
 
     **專案詳細資料**
@@ -28,7 +28,7 @@ ms.locfileid: "84977898"
    * 中樞私人位址空間。 建立中樞的最小位址空間為 /24，這表示在建立期間從 /25 到 /32 的任何範圍都會產生錯誤。 Azure 虛擬 WAN 是由 Microsoft 管理的服務，可為不同的閘道/服務 (例如 VPN 閘道、ExpressRoute 閘道、使用者 VPN/點對站閘道、防火牆、路由等) 在虛擬中樞內建立適當的子網路。 使用者不需要明確規劃虛擬中樞所含服務的子網路位址空間，因為 Microsoft 會在服務中執行此動作。
 4. 完成時，選取 [下一步:**站對站]** 。
 
-    ![站對站](./media/virtual-wan-tutorial-hub-include/site-to-site.png "網站間")
+    ![螢幕擷取畫面顯示 [建立虛擬中樞] 窗格，並選取 [站對站]。](./media/virtual-wan-tutorial-hub-include/site-to-site.png "網站間")
 
 5. 在 [站對站]**** 索引標籤中，完成以下欄位：
 

@@ -46,7 +46,7 @@
         - name: 針對多組織用戶管理佈建
           href: how-to-provision-multitenant.md
         - name: 使用自訂配置原則
-          href: how-to-use-custom-allocation-policies.md
+          href: tutorial-custom-allocation-policies.md
 - name: 範例
   items:
     - name: 模擬 TPM 裝置證明樣本
@@ -109,6 +109,8 @@
   items:
     - name: 將 MXChip IoT DevKit 連線到 IoT 中樞
       href: how-to-connect-mxchip-iot-devkit.md
+    - name: 使用自訂配置原則佈建裝置
+      href: how-to-use-custom-allocation-policies.md
     - name: 管理裝置佈建服務
       items:
         - name: 管理註冊 - 入口網站
