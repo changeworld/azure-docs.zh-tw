@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/24/2020
 ms.author: mbaldwin
-ms.openlocfilehash: ec1d02cefcdb443a74fab52496cd9428a852139f
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 0a2c1b39f5688b4fc544e5456666ccb8b4801517
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84169962"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91281044"
 ---
 # <a name="quickstart-set-and-retrieve-a-certificate-from-azure-key-vault-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站從 Azure Key Vault 設定及擷取憑證
 
@@ -45,7 +45,7 @@ Azure Key Vault 是一項雲端服務，可為祕密提供安全的存放區。 
 請記下下列兩個屬性：
 
 * **保存庫名稱**：在此範例中，這是 **Example-Vault**。 您將在其他步驟中使用此名稱。
-* **保存庫 URI**：在此範例中是 https://example-vault.vault.azure.net/ 。 透過其 REST API 使用保存庫的應用程式必須使用此 URI。
+* **保存庫 URI**：在此範例中是 `https://example-vault.vault.azure.net/` 。 透過其 REST API 使用保存庫的應用程式必須使用此 URI。
 
 此時，您的 Azure 帳戶是唯一獲得授權在此新保存庫上執行作業的帳戶。
 

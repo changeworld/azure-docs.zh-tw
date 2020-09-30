@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/04/2019
 ms.author: jeedes
-ms.openlocfilehash: 80d444e9887a3aaa48262ccf59350b0108d7d709
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: f71a9fa1151a1df2ae04fe47afd6bf36861aa2e5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543630"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273712"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rstudio-connect"></a>教學課程：Azure Active Directory 與 RStudio Connect 整合
 
@@ -126,7 +126,7 @@ ms.locfileid: "88543630"
 
 ### <a name="configure-rstudio-connect-single-sign-on"></a>設定 RStudio Connect 單一登入
 
-若要針對 **RStudio Connect** 設定單一登入，您必須使用上面所使用的 [應用程式同盟中繼資料 URL]  和**伺服器位址**。 這能透過位於 `/etc/rstudio-connect.rstudio-connect.gcfg` 的 RStudio Connect 設定檔來完成。
+若要針對 **RStudio Connect** 設定單一登入，您必須使用上面所使用的 [應用程式同盟中繼資料 URL]  和**伺服器位址**。 這能透過位於 `/etc/rstudio-connect/rstudio-connect.gcfg` 的 RStudio Connect 設定檔來完成。
 
 這是範例的設定檔：
 

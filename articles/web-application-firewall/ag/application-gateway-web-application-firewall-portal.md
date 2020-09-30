@@ -5,14 +5,14 @@ services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: tutorial
-ms.date: 11/14/2019
+ms.date: 09/16/2020
 ms.author: victorh
-ms.openlocfilehash: 68a9f051bf3d59cbf32377cb503e9ded0a54d5e9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 58002140cd6ec0cd90eefc506dc743be05e7be7e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74049229"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91274464"
 ---
 # <a name="tutorial-create-an-application-gateway-with-a-web-application-firewall-using-the-azure-portal"></a>教學課程：使用 Azure 入口網站建立包含 Web 應用程式防火牆的應用程式閘道
 
@@ -31,6 +31,8 @@ ms.locfileid: "74049229"
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 <!---If you prefer, you can complete this tutorial using [Azure PowerShell](tutorial-restrict-web-traffic-powershell.md) or [Azure CLI](tutorial-restrict-web-traffic-cli.md).--->
+
+## <a name="prerequisites"></a>必要條件
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -52,7 +54,7 @@ Azure 需要虛擬網路才能在資源之間進行通訊。 您可以建立新�
 
    - **資源群組**：選取 **myResourceGroupAG** 作為資源群組。 如果資源群組不存在，請選取 [新建]  加以建立。
    - **應用程式閘道名稱**：輸入 myAppGateway  作為應用程式閘道的名稱。
-   - **階層**：選取 [WAF V2]  。
+   - **階層**：選取 [WAF V2]****。
 
      ![建立新的應用程式閘道：基本概念](../media/application-gateway-web-application-firewall-portal/application-gateway-create-basics.png)
 
@@ -114,9 +116,9 @@ Azure 需要虛擬網路才能在資源之間進行通訊。 您可以建立新�
 3. 路由規則需要接聽程式。 在 [新增路由規則]  視窗內的 [接聽程式]  索引標籤上，針對接聽程式輸入下列值：
 
     - **接聽程式名稱**：輸入 *myListener* 作為接聽程式的名稱。
-    - **前端 IP**：選取 [公用]  以選擇您針對前端所建立的公用 IP。
+    - **前端 IP**：選取 [公用] 以選擇您針對前端所建立的公用 IP。
   
-      接受 [接聽程式]  索引標籤上其他設定的預設值，然後選取 [後端目標]  索引標籤以設定其餘的路由規則。
+      接受 [接聽程式] 索引標籤上其他設定的預設值，然後選取 [後端目標] 索引標籤以設定其餘的路由規則。
 
    ![建立新的應用程式閘道：接聽程式](../media/application-gateway-web-application-firewall-portal/application-gateway-create-rule-listener.png)
 
@@ -157,7 +159,7 @@ Azure 需要虛擬網路才能在資源之間進行通訊。 您可以建立新�
     - **資源群組**：選取 **myResourceGroupAG** 作為資源群組名稱。
     - **虛擬機器名稱**：輸入 myVM  作為虛擬機器的名稱。
     - **使用者名稱**：輸入 azureuser  作為系統管理員使用者名稱。
-    - **密碼**：輸入Azure123456!  作為系統管理員密碼。
+    - **密碼**：輸入Azure123456! 作為系統管理員密碼。
 4. 接受其他預設值，然後選取 [下一步：  磁碟]。  
 5. 接受 [磁碟]  索引標籤的預設值，然後選取 [下一步：  網路功能]。
 6. 在 [網路]  索引標籤上，確認已選取 [myVNet]  作為[虛擬網路]  ，且 [子網路]  設為 [myBackendSubnet]  。 接受其他預設值，然後選取 [下一步：  管理]。<br>「應用程式閘道」可與其虛擬網路外的執行個體進行通訊，但您需要確保具有 IP 連線能力。
@@ -213,30 +215,30 @@ Azure 需要虛擬網路才能在資源之間進行通訊。 您可以建立新�
 
 在本文中，應用程式閘道會使用儲存體帳戶來儲存資料，以達到偵測與預防的目的。 您也可以使用 Azure 監視器記錄或事件中樞來記錄資料。
 
-1. 選取 Azure 入口網站左上角的 [建立資源]  。
-1. 選取 [儲存體]  ，然後選取 [儲存體帳戶]  。
-1. 針對 [資源群組]  ，選取 **myResourceGroupAG** 作為資源群組。
+1. 選取 Azure 入口網站左上角的 [建立資源]****。
+1. 選取 [儲存體]****，然後選取 [儲存體帳戶]****。
+1. 針對 [資源群組]**，選取 **myResourceGroupAG** 作為資源群組。
 1. 輸入 *myagstore1*作為儲存體帳戶的名稱。
-1. 接受其他設定的預設值，然後選取 [檢閱 + 建立]  。
-1. 檢閱設定，然後選取 [建立]  。
+1. 接受其他設定的預設值，然後選取 [檢閱 + 建立]****。
+1. 檢閱設定，然後選取 [建立]。
 
 ### <a name="configure-diagnostics"></a>設定診斷
 
 設定診斷以將資料記錄到 ApplicationGatewayAccessLog、ApplicationGatewayPerformanceLog 和 ApplicationGatewayFirewallLog 記錄。
 
-1. 在左側功能表中，選取 [所有資源]  ，然後選取 [myAppGateway]  。
-2. 在 [監視] 下方，選取 [診斷設定]  。
-3. 選取 [新增診斷設定]  。
-4. 輸入 myDiagnosticsSettings  作為診斷設定的名稱。
-5. 選取 [保存到儲存體帳戶]  ，然後選取 [設定]  以選取您先前建立的 myagstore1  儲存體帳戶，然後選取 [確定]  。
+1. 在左側功能表中，選取 [所有資源]****，然後選取 [myAppGateway]**。
+2. 在 [監視] 下方，選取 [診斷設定]。
+3. 選取 [新增診斷設定]****。
+4. 輸入 myDiagnosticsSettings** 作為診斷設定的名稱。
+5. 選取 [保存到儲存體帳戶]****，然後選取 [設定]**** 以選取您先前建立的 myagstore1** 儲存體帳戶，然後選取 [確定]****。
 6. 選取要收集及保留的應用程式閘道記錄。
-7. 選取 [儲存]  。
+7. 選取 [儲存]。
 
     ![設定診斷](../media/application-gateway-web-application-firewall-portal/application-gateway-diagnostics.png)
 
 ## <a name="create-and-link-a-web-application-firewall-policy"></a>建立並連結 Web 應用程式防火牆原則
 
-所有的 WAF 自訂和設定皆位在另一個名為「WAF 原則」的物件中。 該原則必須與您的應用程式閘道相關聯。 若要建立 WAF 原則，請參閱[建立 WAF 原則](create-waf-policy-ag.md)。 一旦建立後，您便可以在 [相關聯的應用程式閘道]  索引標籤中，將原則與 WAF 原則中的 WAF (或是個別的接聽程式) 相關聯。 
+所有的 WAF 自訂和設定皆位在另一個名為「WAF 原則」的物件中。 該原則必須與您的應用程式閘道相關聯。 若要建立 WAF 原則，請參閱[建立 WAF 原則](create-waf-policy-ag.md)。 一旦建立後，您便可以在 [相關聯的應用程式閘道]**** 索引標籤中，將原則與 WAF 原則中的 WAF (或是個別的接聽程式) 相關聯。 
 
 ![相關聯的應用程式閘道](../media/application-gateway-web-application-firewall-portal/associated-application-gateways.png)
 
@@ -244,9 +246,9 @@ Azure 需要虛擬網路才能在資源之間進行通訊。 您可以建立新�
 
 雖然不需要 IIS 即可建立應用程式閘道，但您仍會加以安裝，以確認 Azure 是否已成功建立應用程式閘道。 使用 IIS 測試應用程式閘道：
 
-1. 在 [概觀]  頁面上尋找應用程式閘道的公用 IP 位址。![記錄應用程式閘道公用 IP 位址](../media/application-gateway-web-application-firewall-portal/application-gateway-record-ag-address.png) 
+1. 在 [概觀]**** 頁面上尋找應用程式閘道的公用 IP 位址。![記錄應用程式閘道公用 IP 位址](../media/application-gateway-web-application-firewall-portal/application-gateway-record-ag-address.png) 
 
-   或者，您可以選取 [所有資源]  ，並在搜尋方塊中輸入 myAGPublicIPAddress  ，然後在搜尋結果中加以選取。 Azure 會在 [概觀]  頁面上顯示公用 IP 位址。
+   或者，您可以選取 [所有資源]****，並在搜尋方塊中輸入 myAGPublicIPAddress**，然後在搜尋結果中加以選取。 Azure 會在 [概觀] 頁面上顯示公用 IP 位址。
 1. 將公用 IP 位址複製並貼到您瀏覽器的網址列。
 1. 檢查回應。 有效的回應會確認應用程式閘道已成功建立，並可與後端順利連線。
 
@@ -261,7 +263,7 @@ Azure 需要虛擬網路才能在資源之間進行通訊。 您可以建立新�
 1. 在 Azure 入口網站的左側功能表上，選取 [資源群組]  。
 2. 在 [資源群組]  頁面上，在清單中搜尋 **myResourceGroupAG** 並加以選取。
 3. 在 [資源群組]  頁面上，選取 [刪除資源群組]  。
-4. 針對 [輸入資源群組名稱]  輸入 myResourceGroupAG  ，然後選取 [刪除]  。
+4. 針對 [輸入資源群組名稱] 輸入 myResourceGroupAG，然後選取 [刪除]。
 
 ## <a name="next-steps"></a>後續步驟
 

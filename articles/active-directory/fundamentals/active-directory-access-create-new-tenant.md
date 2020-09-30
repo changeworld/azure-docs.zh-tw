@@ -12,12 +12,12 @@ ms.date: 09/10/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5d6341aeb6db89d43ef887a3ae50c4439e3867e6
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 2c7225adcfe970d17f8f86afdd15e36e2ba76de3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89318602"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91287010"
 ---
 # <a name="quickstart-create-a-new-tenant-in-azure-active-directory"></a>快速入門：在 Azure Active Directory 中建立新的租用戶
 您可以使用 Azure Active Directory (Azure AD) 入口網站執行所有的系統管理工作，包括為您的組織建立新的租用戶。 
@@ -37,7 +37,7 @@ ms.locfileid: "89318602"
 
     ![Azure Active Directory 建立資源頁面](media/active-directory-access-create-new-tenant/azure-ad-portal.png)
 
-1. 選取 [身分識別]  ，然後選取 [Azure Active Directory]  。
+1. 搜尋並選取 [Azure Active Directory]  。
 
     [建立目錄]  頁面隨即出現。
 
