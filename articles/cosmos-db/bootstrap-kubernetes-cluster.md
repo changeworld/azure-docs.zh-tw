@@ -6,16 +6,16 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/06/2019
 ms.author: sngun
-ms.openlocfilehash: 31c3c02f2b32594e5b20450d0bb519f4cdf82807
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b9e6e1388465542e9fb3ac69540c981a1fd70d4b
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86497755"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570129"
 ---
 # <a name="how-to-use-azure-kubernetes-with-azure-cosmos-db-preview"></a>如何使用採用 Azure Cosmos DB 的 Azure Kubernetes (預覽)
 
-Azure Cosmos DB 中的 etcd API 可讓您使用 Azure Cosmos DB 作為 Azure Kubernetes 的後端存放區。 Azure Cosmos DB 會實作 etcd 有線通訊協定，讓主要節點的 API 伺服器使用 Azure Cosmos DB 就如同存取本機安裝的 etcd 一樣。 Azure Cosmos DB 中的 etcd API 目前為預覽狀態。 使用 Azure Cosmos etcd API 作為 Kubernetes 的備份存放區有下列優點： 
+Azure Cosmos DB 中的 etcd API 可讓您使用 Azure Cosmos DB 作為 Azure Kubernetes 的後端存放區。 Azure Cosmos DB 會實行 etcd 有線通訊協定，讓主要節點的 API 伺服器使用 Azure Cosmos DB，就像它會存取本機安裝的 etcd 一樣。 Azure Cosmos DB 中的 etcd API 目前為預覽狀態。 使用 Azure Cosmos etcd API 作為 Kubernetes 的備份存放區有下列優點： 
 
 * 不需要手動設定及管理 etcd。
 * 由 Cosmos 保證的 etcd 高可用性 (單一區域中有 99.99%，多區域中有 99.999%)。
@@ -25,11 +25,11 @@ Azure Cosmos DB 中的 etcd API 可讓您使用 Azure Cosmos DB 作為 Azure Kub
 
 若要深入了解 Azure Cosmos DB 中的 etcd API，請參閱[概觀](etcd-api-introduction.md)一文。 本文會示範如何使用 [Azure Kubernetes 引擎](https://github.com/Azure/aks-engine/blob/master/docs/tutorials/quickstart.md) (aks-engine) 在採用 [Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/) 的 Azure 上執行 Kubernetes 叢集的啟動程序，而不是使用本機安裝和設定的 etcd。 
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
-1. 安裝最新版的 [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。 您可以下載專屬於您作業系統的 Azure CLI，並加以安裝。
+1. 安裝最新版的 [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)。 您可以下載專屬於您作業系統的 Azure CLI，並加以安裝。
 
-1. 安裝[最新版的](https://github.com/Azure/aks-engine/releases) Azure Kubernetes 引擎。 您可以從 [Azure Kubernetes 引擎](https://github.com/Azure/aks-engine/blob/master/docs/tutorials/quickstart.md#install-aks-engine)頁面取得不同作業系統的安裝指示。 您只需要已連結檔之**安裝 AKS 引擎**一節中的步驟。下載之後，請將 zip 檔案解壓縮。
+1. 安裝[最新版的](https://github.com/Azure/aks-engine/releases) Azure Kubernetes 引擎。 您可以從 [Azure Kubernetes 引擎](https://github.com/Azure/aks-engine/blob/master/docs/tutorials/quickstart.md#install-aks-engine)頁面取得不同作業系統的安裝指示。 您只需要在連結的檔中 **安裝 AKS Engine** 區段的步驟。下載之後，請將 zip 檔案解壓縮。
 
    Azure Kubernetes 引擎 (**aks-engine**) 會針對 Azure 上的 Kubernetes 叢集產生 Azure Resource Manager 範本。 aks-engine 的輸入是叢集定義檔，其中描述所需的叢集，包括協調器、功能和代理程式。 輸入檔案的結構類似於 Azure Kubernetes Service 的公用 API。
 
@@ -143,7 +143,7 @@ Azure Cosmos DB 中的 etcd API 可讓您使用 Azure Cosmos DB 作為 Azure Kub
    * **用戶端識別碼：** 服務主體的 appId。 `appId` 已在步驟 4 中作為輸出傳回。
    * **用戶端密碼：** 服務主體的密碼或隨機產生的密碼。 此值已在步驟 4 中作為 'password' 參數的輸出傳回。 
    * **dnsPrefix：** 區域唯一的 DNS 名稱。 此值會形成主機名稱的一部分 (暫時的範例值是 - myprod1)。
-   * **位置：** 應部署叢集的位置，目前僅支援 "centralus"。
+   * **位置：**  應部署叢集的位置，目前僅支援 "centralus"。
 
    > [!Note]
    > Azure Cosmos etcd API 目前只能在 "centralus" 區域中部署。 

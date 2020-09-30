@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/21/2019
 ms.author: sngun
-ms.openlocfilehash: 3dcadd77866a6c57542a43657a1942791cc4d179
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: fc3ca5fdde464ba63671512a6ebecd2c314cb192
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027784"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570827"
 ---
 # <a name="visualize-azure-cosmos-db-data-by-using-the-power-bi-connector"></a>使用 Power BI 連接器將 Azure Cosmos DB 資料視覺化
 
@@ -25,18 +25,18 @@ ms.locfileid: "86027784"
 > [!NOTE]
 > 目前僅支援 Azure Cosmos DB SQL API 和 Gremlin API 帳戶的 Azure Cosmos DB 與 Power BI 連接器連線。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 在依照本 Power BI 教學課程中的指示進行之前，請先確定您可以存取下列資源：
 
 * [下載最新版的 Power BI Desktop](https://powerbi.microsoft.com/desktop)。
 
 * 從 GitHub 下載[範例火山資料](https://github.com/Azure-Samples/azure-cosmos-db-sample-data/blob/master/SampleData/VolcanoData.json)。
 
-* [建立 Azure Cosmos 資料庫帳戶](https://azure.microsoft.com/documentation/articles/create-account/)，並使用[Azure Cosmos DB 資料移轉工具](import-data.md)來匯入火山資料。 當匯入資料時，請考慮資料移轉工具中來源與目的地的下列設定：
+* [建立 Azure Cosmos 資料庫帳戶](https://azure.microsoft.com/documentation/articles/create-account/) ，並使用 [Azure Cosmos DB 資料移轉工具](import-data.md)來匯入火山資料。 當匯入資料時，請考慮資料移轉工具中來源與目的地的下列設定：
 
    * **來源參數** 
 
-       * 匯**入來源：** JSON 檔案
+       * 匯**入來源：** JSON 檔案 (s) 
 
    * **目標參數** 
 
@@ -82,7 +82,7 @@ ms.locfileid: "86027784"
 
 4. 按一下 [Azure]****、選取 [Azure Cosmos DB (搶鮮版 (Beta))]****，然後按一下 [連線]****。 
 
-   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbigetdata.png" alt-text="Power BI Desktop 取得資料 - Power BI 連接器":::
+   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbigetdata.png" alt-text="Power BI Desktop 報告檢視 - Power BI 連接器":::
 
 5. 在 [預覽版連接器]**** 頁面上，按一下 [繼續]****。 [Azure Cosmos DB]**** 視窗隨即出現。
 
@@ -90,7 +90,7 @@ ms.locfileid: "86027784"
    
 7. 如果是第一次連接到此端點，系統會提示您提供帳戶金鑰。 如果是您自己的帳戶，請從 Azure 入口網站 [**唯讀金鑰]** 刀鋒視窗的 [主要金鑰]**** 方塊中擷取金鑰。 輸入適當的金鑰，然後按一下 [連接]****。
    
-   建議您在建置報告時使用唯讀金鑰。 這樣可避免非必要地將主要金鑰暴露於潛在的安全性風險下。 您可以從 Azure 入口網站的 [**金鑰**] 刀鋒視窗取得唯讀金鑰。 
+   建議您在建置報告時使用唯讀金鑰。 這可避免不必要的主要金鑰暴露于潛在的安全性風險。 您可以從 Azure 入口網站的 [**金鑰**] 刀鋒視窗取得唯讀金鑰。 
     
 8. 順利連接帳戶後，會出現 [瀏覽器] **** 窗格。 [瀏覽器] **** 會顯示帳戶下的資料庫清單。
 
@@ -100,58 +100,58 @@ ms.locfileid: "86027784"
     
     [預覽] 窗格會顯示 [記錄] **** 項目的清單。  一份文件會顯示為 Power BI 中的 [記錄] **** 類型。 同樣地，文件內的巢狀 JSON 區塊也是 [記錄] ****。
     
-    :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbinavigator.png" alt-text="Azure Cosmos DB Power BI 連接器的 Power BI 教學課程 - 瀏覽器視窗":::
+    :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbinavigator.png" alt-text="Power BI Desktop 報告檢視 - Power BI 連接器":::
 
 12. 按一下 [編輯]**** 以在新視窗中啟動 [查詢編輯器] 來轉換資料。
 
 ## <a name="flattening-and-transforming-json-documents"></a>簡維化和轉換 JSON 文件
 1. 切換至 [Power BI 查詢編輯器] 視窗，中央窗格內會顯示 [文件]**** 資料行。
 
-   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbiqueryeditor.png" alt-text="Power BI Desktop 查詢編輯器":::
+   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbiqueryeditor.png" alt-text="Power BI Desktop 報告檢視 - Power BI 連接器":::
 
 1. 按一下位於 [文件] **** 資料行標頭右側的展開器。  此時會出現含有欄位清單的內容功能表。  選取您報告所需的欄位，例如火山名稱、國家、區域、位置、高度、類型、狀態和已知的上次爆發時間。 取消核取 [使用原始資料行名稱作為前置詞]**** 方塊，然後再按一下 [確定]****。
    
-   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbiqueryeditorexpander.png" alt-text="Azure Cosmos DB Power BI 連接器的 Power BI 教學課程 - 展開文件":::
+   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbiqueryeditorexpander.png" alt-text="Power BI Desktop 報告檢視 - Power BI 連接器":::
 
 1. 中央窗格會顯示所選欄位的結果預覽。
    
-   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbiresultflatten.png" alt-text="Azure Cosmos DB Power BI 連接器的 Power BI 教學課程 - 壓平合併結果":::
+   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbiresultflatten.png" alt-text="Power BI Desktop 報告檢視 - Power BI 連接器":::
 
 1. 在我們的範例中，[位置] 屬性是文件中的 GeoJSON 區塊。  如您所見，[位置] 顯示為 Power BI Desktop 中的 [記錄] **** 類型。  
 
 1. 按一下位於 [Document.Location] 資料行標頭右側的展開器。  此時會出現含有類型和座標欄位的內容功能表。  請選取座標欄位，並確定未選取 [使用原始資料行名稱作為前置詞]****，然後按一下 [確定]****。
    
-   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbilocationrecord.png" alt-text="Azure Cosmos DB Power BI 連接器的 Power BI 教學課程 - 位置記錄":::
+   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbilocationrecord.png" alt-text="Power BI Desktop 報告檢視 - Power BI 連接器":::
 
 1. 中央窗格現在會顯示 [清單] **** 類型的座標資料行。  如本教學課程一開始所說明，本教學課程中的 GeoJSON 資料屬於 Point 類型，具有座標陣列中所記錄的緯度和經度值。
    
    coordinates[0] 項目代表經度，coordinates[1] 則代表緯度。
 
-   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbiresultflattenlist.png" alt-text="Azure Cosmos DB Power BI 連接器的 Power BI 教學課程 - 座標清單":::
+   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbiresultflattenlist.png" alt-text="Power BI Desktop 報告檢視 - Power BI 連接器":::
 
 1. 為了將座標陣列壓平合併，請建立名為 LatLong 的 [自訂資料行]****。  選取 [新增資料行]**** 功能區，然後按一下 [自訂資料行]****。  [自訂資料行]**** 視窗會隨即出現。
 
 1. 提供新資料行的名稱，例如 LatLong。
 
-1. 接下來，指定新資料行的自訂公式。  在我們的範例中，我們將依照下列方式使用以下公式，串連以逗號分隔的緯度和經度值： `Text.From([coordinates]{1})&","&Text.From([coordinates]{0})`。 按一下 [確定]。
+1. 接下來，指定新資料行的自訂公式。  在我們的範例中，我們將依照下列方式使用以下公式，串連以逗號分隔的緯度和經度值： `Text.From([coordinates]{1})&","&Text.From([coordinates]{0})`。 按一下 [確定]  。
    
-   如需資料分析運算式（DAX）（包括 DAX 函數）的詳細資訊，請流覽[Power BI Desktop 中的 Dax 基本概念](https://docs.microsoft.com/power-bi/desktop-quickstart-learn-dax-basics)。
+   如需有關資料分析運算式 (DAX) 包括 DAX 函數的詳細資訊，請造訪 [Power BI Desktop 中的 Dax 基本概念](https://docs.microsoft.com/power-bi/desktop-quickstart-learn-dax-basics)。
    
-   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbicustomlatlong.png" alt-text="Azure Cosmos DB Power BI 連接器的 Power BI 教學課程 - 新增自訂資料行":::
+   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbicustomlatlong.png" alt-text="Power BI Desktop 報告檢視 - Power BI 連接器":::
 
 1. 現在，中央窗格會顯示已填入值的新 LatLong 資料行。
     
-    :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbicolumnlatlong.png" alt-text="Azure Cosmos DB Power BI 連接器的 Power BI 教學課程 - 自訂 LatLong 資料行":::
+    :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbicolumnlatlong.png" alt-text="Power BI Desktop 報告檢視 - Power BI 連接器":::
     
     如果您在新的資料行中收到錯誤，請確定在 [查詢設定] 下套用的步驟與下圖相同︰
     
-    :::image type="content" source="./media/powerbi-visualize/power-bi-applied-steps.png" alt-text="套用的步驟應該是來源、瀏覽、展開的文件、展開的 Document.Location、新增的自訂":::
+    :::image type="content" source="./media/powerbi-visualize/power-bi-applied-steps.png" alt-text="Power BI Desktop 報告檢視 - Power BI 連接器":::
     
     如果步驟不同，請刪除額外的步驟，然後再試一次新增自訂資料行。 
 
 1. 按一下 [關閉並套用] **** 以儲存資料模型。
 
-   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbicloseapply.png" alt-text="適用于 Azure Cosmos DB Power BI 連接器的 Power BI 教學課程-關閉 & 套用":::
+   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbicloseapply.png" alt-text="Power BI Desktop 報告檢視 - Power BI 連接器":::
 
 <a id="build-the-reports"></a>
 ## <a name="build-the-reports"></a>建置報告
@@ -182,22 +182,22 @@ ms.locfileid: "86027784"
 若要共用您的報告，您必須有 PowerBI.com 中的帳戶。
 
 1. 在 Power BI Desktop 中，按一下 [首頁] **** 功能區。
-1. 按一下 **[發行]**。  系統會提示您輸入 PowerBI.com 帳戶的使用者名稱和密碼。
+1. 按一下 [發佈] 。  系統會提示您輸入 PowerBI.com 帳戶的使用者名稱和密碼。
 1. 認證經過驗證後，報告即會發佈至您選取的目的地。
 1. 按一下 [開啟 Power BI 中的 'PowerBITutorial.pbix'] **** 在 PowerBI.com 上查看與共用您的報表。
    
-   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_open_in_powerbi.png" alt-text="發行至 Power BI 成功！在 Power BI 中開啟教學課程":::
+   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_open_in_powerbi.png" alt-text="Power BI Desktop 報告檢視 - Power BI 連接器":::
 
 ## <a name="create-a-dashboard-in-powerbicom"></a>在 PowerBI.com 中建立儀表板
 現在，您有一份報表可在 PowerBI.com 上共用。
 
 當您從 Power BI Desktop發佈報告至 PowerBI.com 時，在您的 PowerBI.com 租用戶中會產生 [報表]**** 和 [資料集]****。 例如，您將名為 **PowerBITutorial** 的報表發佈到 PowerBI.com，會在 PowerBI.com 的 [報表]**** 和 [資料集]**** 區段看到 PowerBITutorial。
 
-   :::image type="content" source="./media/powerbi-visualize/powerbi-reports-datasets.png" alt-text="PowerBI.com 中新報表和資料集的螢幕擷取畫面":::
+   :::image type="content" source="./media/powerbi-visualize/powerbi-reports-datasets.png" alt-text="Power BI Desktop 報告檢視 - Power BI 連接器":::
 
 若要建立可共用的儀表板，按一下 PowerBI.com 報表上的 [釘選即時頁面] **** 按鈕。
 
-   :::image type="content" source="./media/powerbi-visualize/power-bi-pin-live-tile.png" alt-text="PowerBI.com 中新報表和資料集的螢幕擷取畫面":::
+   :::image type="content" source="./media/powerbi-visualize/power-bi-pin-live-tile.png" alt-text="Power BI Desktop 報告檢視 - Power BI 連接器":::
 
 依照 [從報表釘選圖格](https://powerbi.microsoft.com/documentation/powerbi-service-pin-a-tile-to-a-dashboard-from-a-report/#pin-a-tile-from-a-report) 的指示建立新的儀表板。 
 
@@ -208,13 +208,13 @@ There are two ways to refresh data, ad hoc and scheduled.
 
 For an ad hoc refresh, simply click on the eclipses (…) by the **Dataset**, e.g. PowerBITutorial. You should see a list of actions including **Refresh Now**. Click **Refresh Now** to refresh the data.
 
-:::image type="content" source="./media/powerbi-visualize/power-bi-refresh-now.png" alt-text="Screenshot of Refresh Now in PowerBI.com":::
+:::image type="content" source="./media/powerbi-visualize/power-bi-refresh-now.png" alt-text="Power BI Desktop 報告檢視 - Power BI 連接器":::
 
 For a scheduled refresh, do the following.
 
 1. Click **Schedule Refresh** in the action list. 
 
-    :::image type="content" source="./media/powerbi-visualize/power-bi-schedule-refresh.png" alt-text="Screenshot of the Schedule Refresh in PowerBI.com":::
+    :::image type="content" source="./media/powerbi-visualize/power-bi-schedule-refresh.png" alt-text="Power BI Desktop 報告檢視 - Power BI 連接器":::
 2. In the **Settings** page, expand **Data source credentials**. 
 3. Click on **Edit credentials**. 
    

@@ -1,6 +1,6 @@
 ---
 title: 適用于 SAP 應用程式的 Azure 鄰近放置群組 |Microsoft Docs
-description: 說明使用 Azure 鄰近放置群組的 SAP 部署案例
+description: 描述 Azure 鄰近放置群組的 SAP 部署案例
 services: virtual-machines-linux,virtual-machines-windows
 documentationcenter: ''
 author: msjuergent
@@ -12,157 +12,164 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 01/17/2020
+ms.date: 09/29/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7aa71062c86d57cabe8579e13011956137804f74
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5b6e15ef1b9bf488ac18e41dc09eb71e6ea3da39
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079786"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569794"
 ---
-# <a name="azure-proximity-placement-groups-for-optimal-network-latency-with-sap-applications"></a>適用于 SAP 應用程式之最佳網路延遲的 Azure 鄰近性放置群組
-以 SAP NetWeaver 或 SAP S/4HANA 架構為基礎的 SAP 應用程式，對於 SAP 應用層與 SAP 資料庫層之間的網路延遲是敏感的。 此敏感度是在應用層中執行的大部分商務邏輯所產生的結果。 因為 SAP 應用層會執行商務邏輯，所以會以較高的頻率向資料庫層發出查詢，以每秒數千或數十個的速率。 在大部分情況下，這些查詢的本質很簡單。 它們通常可以在500毫秒或更少的資料庫層上執行。
+# <a name="azure-proximity-placement-groups-for-optimal-network-latency-with-sap-applications"></a>適用于 SAP 應用程式之最佳網路延遲的 Azure 鄰近放置群組
+以 SAP NetWeaver 或 SAP S/4HANA 架構為基礎的 SAP 應用程式，對 SAP 應用層與 SAP 資料庫層之間的網路延遲很敏感。 此敏感度是大部分在應用層中執行之商務邏輯的結果。 由於 SAP 應用層會執行商務邏輯，因此會以極高的頻率（每秒數以千計或數萬千）向資料庫層發出查詢。 在大部分的情況下，這些查詢的本質很簡單。 它們通常可以在資料庫層上以500微秒或更短的時間執行。
 
-在網路上將這類查詢從應用層傳送到資料庫層，並接收結果集的時間，對於執行商務程式所花費的時間有重大影響。 這是網路延遲的敏感性，這就是為什麼您需要在 SAP 部署專案中達到最佳的網路延遲。 如需如何分類網路延遲的指導方針，請參閱[SAP 附注 #1100926-常見問題：網路效能](https://launchpad.support.sap.com/#/notes/1100926/E)。
+在網路上將這類查詢從應用層傳送到資料庫層，並接收結果集的時間，對於執行商務程式所花費的時間有重大的影響。 這種對網路延遲的敏感度，是您可能想要在 SAP 部署專案中達到特定的網路延遲上限。 如需如何分類網路延遲的指導方針，請參閱 [SAP 附注 #1100926-常見問題：網路效能](https://launchpad.support.sap.com/#/notes/1100926/E) 。
 
-在許多 Azure 區域中，資料中心的數量已增加。 可用性區域的引進也會觸發這項成長。 同時，客戶（特別是高階 SAP 系統）在 M 系列系列或 HANA 大型實例中使用更特殊的 VM Sku。 在特定 Azure 區域中的所有資料中心都無法使用這些 Azure 虛擬機器類型。 由於這兩個喜好傾向，客戶的網路延遲不在最佳範圍內。 在某些情況下，此延遲會導致其 SAP 系統的效能不佳。
+在許多 Azure 區域中，資料中心的數目已增加。 同時，客戶（尤其是高階 SAP 系統）會使用更多的特殊 VM Sku （M 或 Mv2 系列）或 HANA 大型實例。 這些 Azure 虛擬機器類型在所有補充 Azure 區域的資料中心內都不一定都有提供。 這些事實可能會產生可將 SAP 應用層和 SAP DBMS 層之間的網路延遲優化的機會。
 
-為了避免這些問題，Azure 提供[鄰近的放置群組](../../linux/co-location.md)。 此新功能已用來部署各種 SAP 系統。 如需鄰近放置群組的限制，請參閱本段落開頭的參考文章。 本文涵蓋 Azure 鄰近性放置群組可以或應該使用的 SAP 案例。
+為了讓您有機會將網路延遲優化，Azure 提供 [鄰近的放置群組](../../linux/co-location.md)。 鄰近放置群組可用來將不同 VM 類型的群組強制分組到單一 Azure 資料中心，以便將這些不同 VM 類型之間的網路延遲優化到最可能。 在將第一個 VM 部署到這類鄰近放置群組的過程中，VM 會系結至特定的資料中心。 就像這個潛在客戶的音效一樣，結構的使用也會帶來一些限制：
+
+- 您無法假設所有 Azure VM 類型都可在每個 Azure 資料中心內使用。 如此一來，就可以限制一個鄰近放置群組中不同 VM 類型的組合。 發生這些限制的原因是執行特定 VM 類型所需的主機硬體，可能不會出現在部署放置群組的資料中心內。
+- 當您調整某個鄰近放置群組內 Vm 的部分大小時，您無法自動假設在所有情況下，新的 VM 類型都可在與鄰近放置群組一部分的其他 Vm 相同的資料中心內使用
+- 由於 Azure 解除硬體，它可能會將鄰近位置群組的特定 Vm 強制至另一個 Azure 資料中心。 如需涵蓋此案例的詳細資訊，請閱讀檔 [共置資源以改善延遲](https://docs.microsoft.com/azure/virtual-machines/linux/co-location#planned-maintenance-and-proximity-placement-groups)  
+
+> [!IMPORTANT]
+> 由於可能會有限制，因此應該使用鄰近放置群組：
+>
+> - 只有在必要時
+> - 僅限單一 SAP 系統的資料細微性，而不是整個系統內容或完整 SAP 環境的資料細微性
+> - 以將鄰近放置群組中的不同 VM 類型和 Vm 數目保持為最小值的方式
+
 
 ## <a name="what-are-proximity-placement-groups"></a>什麼是鄰近放置群組？ 
-Azure 鄰近性放置群組是邏輯結構。 當定義時，它會系結至 Azure 區域和 Azure 資源群組。 部署 Vm 時，會參考鄰近放置群組：
+Azure 鄰近放置群組是邏輯結構。 定義鄰近位置群組時，會將其系結至 Azure 區域和 Azure 資源群組。 部署 Vm 時，會參考鄰近放置群組：
 
-- 在資料中心內部署的第一個 Azure VM。 您可以將第一部虛擬機器視為「範圍 VM」，這是根據最終與特定可用性區域的使用者定義結合的 Azure 配置演算法，部署在資料中心內。
-- 所有後續部署的 Vm 都會參考鄰近性放置群組，以便將所有後續部署的 Azure Vm 放在與第一部虛擬機器相同的資料中心。
+- 第一個部署在資料中心的 Azure VM。 您可以將第一部虛擬機器視為「範圍 VM」，其部署在以 Azure 配置演算法為基礎的資料中心，而這些演算法最終會與特定可用性區域的使用者定義結合。
+- 所有後續部署的 Vm 都會參考鄰近放置群組，以將所有後續部署的 Azure Vm 放在與第一個虛擬機器相同的資料中心內。
 
 > [!NOTE]
-> 如果未部署可在第一個 VM 所在的資料中心內執行特定 VM 類型的主機硬體，則要求的 VM 類型部署將會失敗。 您會收到失敗訊息。
+> 如果沒有部署的主機硬體可在放置第一個 VM 的資料中心內執行特定的 VM 類型，則所要求的 VM 類型部署將不會成功。 您將會收到失敗訊息。
 
-單一[Azure 資源群組](../../../azure-resource-manager/management/manage-resources-portal.md)可以有多個指派的鄰近放置群組。 但是鄰近放置群組只能指派給一個 Azure 資源群組。
+單一 [Azure 資源群組](../../../azure-resource-manager/management/manage-resources-portal.md) 可以有多個指派的鄰近放置群組。 但鄰近放置群組只能指派給一個 Azure 資源群組。
 
-當您使用鄰近放置群組時，請記住下列考慮：
 
-- 當您針對 SAP 系統以最佳效能為目標，並使用鄰近放置群組將自己限制為系統的單一 Azure 資料中心時，您可能無法在放置群組內合併所有類型的 VM 系列。 之所以會發生這些限制，是因為執行特定 VM 類型所需的主機硬體可能不會出現在部署放置群組「已設定範圍的 VM」的資料中心內。
-- 在這類 SAP 系統的生命週期期間，您可能會被迫將系統移至另一個資料中心。 如果您決定向外延展 HANA DBMS 層（例如，從四個節點移至16個節點），而且沒有足夠的容量來取得您在資料中心內使用之類型的額外12個 Vm，則此移動可能是必要的。
-- 由於硬體解除委任，Microsoft 可能會針對您在不同資料中心內使用的 VM 類型（而不是您最初使用的）建立容量。 在這種情況下，您可能需要將所有鄰近位置群組的 Vm 移到另一個資料中心。
+## <a name="proximity-placement-groups-with-sap-systems-that-use-only-azure-vms"></a>使用只有 Azure Vm 的 SAP 系統的鄰近放置群組
+大部分在 Azure 上的 SAP NetWeaver 和 S/4HANA 系統部署都不會使用「 [HANA 大型實例](./hana-overview-architecture.md)」。 針對不使用 HANA 大型實例的部署，請務必提供 SAP 應用層與 DBMS 層之間的最佳效能。 若要這樣做，請定義僅適用于系統的 Azure 鄰近放置群組。
 
-## <a name="proximity-placement-groups-with-sap-systems-that-use-only-azure-vms"></a>具有僅使用 Azure Vm 之 SAP 系統的鄰近放置群組
-Azure 上大多數的 SAP NetWeaver 和 S/4HANA 系統部署都不會使用[HANA 大型實例](./hana-overview-architecture.md)。 針對不使用 HANA 大型實例的部署，請務必在 SAP 應用層與 DBMS 層之間提供最佳效能。 若要這麼做，請只針對系統定義 Azure 鄰近放置群組。
+在大部分的客戶部署中，客戶會為 SAP 系統建立單一 [Azure 資源群組](../../../azure-resource-manager/management/manage-resources-portal.md) 。 在此情況下，例如生產 ERP 系統資源群組及其鄰近位置群組之間的一對一關聯性。 在其他情況下，客戶會以水準方式組織其資源群組，並收集單一資源群組中的所有生產系統。 在此情況下，您的資源群組與生產 SAP 系統的資源群組之間會有一對多關聯性，而生產環境 sap ERP、SAP BW 等的數個鄰近放置群組之間會有一對多關聯性。
 
-在大部分的客戶部署中，客戶會為 SAP 系統建立單一的[Azure 資源群組](../../../azure-resource-manager/management/manage-resources-portal.md)。 在這種情況下，在生產 ERP 系統資源群組及其鄰近位置群組之間，會有一對一的關係。 在其他情況下，客戶會以水準方式組織其資源群組，並收集單一資源群組中的所有生產系統。 在此情況下，您在生產環境 SAP 系統的資源群組與生產環境 SAP ERP、SAP BW 等的數個鄰近放置群組之間，會有一對多關聯性。
+避免將多個 SAP 生產或非生產系統組合在單一鄰近放置群組中。 當少數的 SAP 系統或 SAP 系統以及某些周圍應用程式需要低延遲的網路通訊時，您可以考慮將這些系統移到一個鄰近放置群組。 避免系統組合，因為您在鄰近放置群組中分組的系統愈多，可能會有更高的機會：
 
-避免在單一的鄰近放置群組中，將數個 SAP 生產或非生產系統進行捆綁。 當少數的 SAP 系統或 SAP 系統，以及某些周圍的應用程式需要低延遲的網路通訊時，您可以考慮將這些系統移至一個鄰近放置群組。 您應該避免系統的配套，因為您在鄰近放置群組中群組的系統越多，機率就愈高：
+- 您需要的 VM 類型無法在鄰近放置群組所屬的特定資料中心內執行。
+- 由於您要在一段時間內將軟體新增至鄰近放置群組，因此當您需要更多資源時，可能會導致非主流 Vm （例如 M 系列 Vm）的資源無法完成。
 
-- 您需要的 VM 類型無法在鄰近放置群組的範圍內，于特定資料中心內執行。
-- 因為您在一段時間內將軟體新增至鄰近放置群組，所以當您需要更多時，這類非主流 Vm 的資源最後可能會無法使用。
+以下是理想設定的說明，如下所示：
 
-以下是理想的設定，如下所示：
+![只有 Azure Vm 的鄰近位置群組](./media/sap-proximity-placement-scenarios/ppg-for-all-azure-vms.png)
 
-![只有 Azure Vm 的鄰近放置群組](./media/sap-proximity-placement-scenarios/ppg-for-all-azure-vms.png)
-
-在此情況下，單一 SAP 系統會群組在每一個資源群組中，每個都有一個鄰近放置群組。 無論您使用的是 HANA 向外延展或 DBMS 相應增加設定，都不會有任何相關性。
+在此情況下，單一 SAP 系統會分組在一個資源群組中，每個資源群組都有一個鄰近放置群組。 無論您是使用 HANA 相應放大或 DBMS 相應增加設定，都不會有任何相依性。
 
 ## <a name="proximity-placement-groups-and-hana-large-instances"></a>鄰近放置群組和 HANA 大型實例
-如果您的某些 SAP 系統依賴應用層的[Hana 大型實例](./hana-overview-architecture.md)，當您使用部署在[修訂版4資料列或戳記](./hana-network-architecture.md#networking-architecture-for-hana-large-instance)中的 hana 大型實例單位時，您可以在 hana 大型實例單位與 Azure vm 之間體驗大量的網路延遲改善。 其中一項改進是 HANA 大型實例單位在部署時，會使用鄰近放置群組進行部署。 您可以使用該鄰近放置群組來部署您的應用層 Vm。 因此，這些 Vm 將會部署在裝載您的 HANA 大型實例單位的相同資料中心內。
+如果您的某些 SAP 系統依賴適用于應用層的 [Hana 大型實例](./hana-overview-architecture.md) ，當您使用以 [修訂4資料列或戳記](./hana-network-architecture.md#networking-architecture-for-hana-large-instance)部署的 hana 大型實例單位時，您可能會在 hana 大型實例單位與 Azure vm 之間遇到網路延遲的重大改進。 其中一個改進是在部署 HANA 大型實例單位時，使用鄰近放置群組進行部署。 您可以使用該鄰近位置群組來部署應用層 Vm。 如此一來，這些 Vm 將會部署在裝載 HANA 大型實例單位的相同資料中心內。
 
-若要判斷您的 HANA 大型實例單位是否部署在修訂4戳記或資料列中，請參閱[AZURE HANA 大型實例控制的 Azure 入口網站](./hana-li-portal.md#look-at-attributes-of-single-hli-unit)一文。 在您的 HANA 大型實例單位的屬性總覽中，您也可以判斷近接位置群組的名稱，因為它是在部署 HANA 大型實例單位時所建立的。 屬性總覽中出現的名稱是您應該將應用層 Vm 部署到的鄰近放置群組的名稱。
+若要判斷您的 HANA 大型實例單位是否部署在修訂4戳記或資料列中，請 [透過 Azure 入口網站查看 AZURE Hana 大型實例控制](./hana-li-portal.md#look-at-attributes-of-single-hli-unit)的文章。 在您的 HANA 大型實例單位的屬性總覽中，您也可以決定鄰近放置群組的名稱，因為它是在部署 HANA 大型實例單位時建立的。 出現在屬性總覽中的名稱是您應該將應用層 Vm 部署到鄰近放置群組的名稱。
 
-與僅使用 Azure 虛擬機器的 SAP 系統相較之下，當您使用 HANA 大型實例時，您在決定要使用多少個[Azure 資源群組](../../../azure-resource-manager/management/manage-resources-portal.md)時，會有較小的彈性。 [Hana 大型實例租](./hana-know-terms.md)使用者的所有「Hana 大型實例」單位都會分組在單一資源群組中，如[這篇文章](./hana-li-portal.md#display-of-hana-large-instance-units-in-the-azure-portal)所述。 除非您將部署到不同的租使用者，例如生產和非生產系統或其他系統，否則您所有的 HANA 大型實例單位都會部署在一個 HANA 大型實例租使用者中。 此租使用者與資源群組具有一對一的關聯性。 但是，每一個單位都會定義個別的鄰近放置群組。
+相較于僅使用 Azure 虛擬機器的 SAP 系統，當您使用 HANA 大型實例時，您在決定要使用多少個 [Azure 資源群組](../../../azure-resource-manager/management/manage-resources-portal.md) 時，會有較少的彈性。 [Hana 大型實例租](./hana-know-terms.md)使用者的所有 Hana 大型實例單位會分組在單一資源群組中，如[本文所述](./hana-li-portal.md#display-of-hana-large-instance-units-in-the-azure-portal)。 除非您部署至不同的租使用者以分開，例如生產和非生產系統或其他系統，否則您所有的 HANA 大型實例單位都會部署在一個 HANA 大型實例租使用者中。 此租使用者與資源群組有一對一的關聯性。 但系統會為每個單一單位定義個別的鄰近放置群組。
 
-因此，單一租使用者的 Azure 資源群組和鄰近放置群組之間的關聯性將如下所示：
+因此，單一租使用者的 Azure 資源群組和鄰近位置群組之間的關聯性如下所示：
 
 ![鄰近放置群組和 HANA 大型實例](./media/sap-proximity-placement-scenarios/ppg-for-hana-large-instance-units.png)
 
-## <a name="example-of-deployment-with-proximity-placement-groups"></a>使用鄰近放置群組進行部署的範例
-以下是一些 PowerShell 命令，可讓您使用 Azure 鄰近放置群組來部署 Vm。
+## <a name="example-of-deployment-with-proximity-placement-groups"></a>使用鄰近位置群組部署的範例
+以下是一些您可以用來透過 Azure 鄰近放置群組來部署 Vm 的 PowerShell 命令。
 
-在您登入[Azure Cloud Shell](https://azure.microsoft.com/features/cloud-shell/)之後，第一個步驟是檢查您是否位於想要用於部署的 Azure 訂用帳戶中：
+第一個步驟是在您登入 [Azure Cloud Shell](https://azure.microsoft.com/features/cloud-shell/)之後，請檢查您是否在要用於部署的 Azure 訂用帳戶中：
 
 <pre><code>
 Get-AzureRmContext
 </code></pre>
 
-如果您需要變更為不同的訂用帳戶，您可以執行下列命令來完成此動作：
+如果您需要變更為不同的訂用帳戶，您可以執行此命令來執行此動作：
 
 <pre><code>
 Set-AzureRmContext -Subscription "my PPG test subscription"
 </code></pre>
 
-執行下列命令來建立新的 Azure 資源群組：
+執行此命令以建立新的 Azure 資源群組：
 
 <pre><code>
 New-AzResourceGroup -Name "myfirstppgexercise" -Location "westus2"
 </code></pre>
 
-執行下列命令來建立新的鄰近放置群組：
+藉由執行此命令來建立新的鄰近位置群組：
 
 <pre><code>
 New-AzProximityPlacementGroup -ResourceGroupName "myfirstppgexercise" -Name "letsgetclose" -Location "westus2"
 </code></pre>
 
-使用如下所示的命令，將您的第一個 VM 部署到鄰近放置群組：
+使用類似下列的命令，將您的第一個 VM 部署到鄰近位置群組：
 
 <pre><code>
 New-AzVm -ResourceGroupName "myfirstppgexercise" -Name "myppganchorvm" -Location "westus2" -OpenPorts 80,3389 -ProximityPlacementGroup "letsgetclose" -Size "Standard_DS11_v2"
 </code></pre>
 
-上述命令會部署以 Windows 為基礎的 VM。 在此 VM 部署成功之後，鄰近位置群組的資料中心範圍會定義在 Azure 區域內。 所有參考鄰近位置群組的後續 VM 部署（如先前的命令所示）都會部署在相同的 Azure 資料中心，只要 VM 類型可以裝載于放在該資料中心的硬體上，而且該 VM 類型的容量可供使用。
+上述命令會部署以 Windows 為基礎的 VM。 在此 VM 部署成功之後，鄰近放置群組的資料中心範圍會定義在 Azure 區域內。 所有參考鄰近位置群組的後續 VM 部署（如先前的命令所示）都會部署在相同的 Azure 資料中心，只要 VM 類型可以裝載于放置於該資料中心的硬體上，且該 VM 類型的容量可供使用。
 
-## <a name="combine-availability-sets-and-availability-zones-with-proximity-placement-groups"></a>結合可用性設定組和可用性區域與鄰近性放置群組
-使用 SAP 系統部署可用性區域的缺點之一，就是您無法使用特定區域內的可用性設定組來部署 SAP 應用層。 您想要在與 DBMS 層相同的區域中部署 SAP 應用層。 不支援在部署單一 VM 時參考可用性區域和可用性設定組。 因此，在過去，您必須藉由參考區域來強制部署應用層。 您無法確定應用層 Vm 散佈在不同的更新和失敗網域。
+## <a name="combine-availability-sets-and-availability-zones-with-proximity-placement-groups"></a>結合可用性設定組和可用性區域與鄰近放置群組
+使用 SAP 系統部署可用性區域的其中一個缺點是，您無法使用特定區域內的可用性設定組來部署 SAP 應用層。 您想要將 SAP 應用層部署在與 DBMS 層相同的區域中。 不支援在部署單一 VM 時參考可用性區域和可用性設定組。 因此，先前強制您藉由參考區域來部署應用層。 您已失去可確保應用層 Vm 分散在不同更新和失敗網域的能力。
 
-藉由使用鄰近放置群組，您可以略過這項限制。 以下是部署順序：
+藉由使用鄰近位置群組，您可以略過這項限制。 以下是部署順序：
 
-- 建立鄰近放置群組。
-- 藉由參考可用性區域，部署您的錨點 VM，通常是 DBMS 伺服器。
-- 建立參考 Azure 鄰近性群組的可用性設定組。 （請參閱本文稍後的命令）。
-- 藉由參考可用性設定組和鄰近放置群組來部署應用層 Vm。
+- 建立鄰近位置群組。
+- 參考可用性區域，以部署您的錨點 VM （通常是 DBMS 伺服器）。
+- 建立參考 Azure 近接群組的可用性設定組。  (請參閱本文稍後的命令。 ) 
+- 參考可用性設定組和鄰近位置群組，以部署應用層 Vm。
 
-您不需要像上一節所示部署第一個 VM，而是在部署 VM 時參照可用性區域和鄰近放置群組：
+您可以在部署 VM 時參考可用性區域和鄰近位置群組，而不是依照上一節所示範的方式部署第一個 VM：
 
 <pre><code>
 New-AzVm -ResourceGroupName "myfirstppgexercise" -Name "myppganchorvm" -Location "westus2" -OpenPorts 80,3389 -Zone "1" -ProximityPlacementGroup "letsgetclose" -Size "Standard_E16_v3"
 </code></pre>
 
-此虛擬機器部署成功時，會將 SAP 系統的資料庫實例裝載在一個可用性區域中。 鄰近放置群組的範圍固定為其中一個資料中心，其中代表您所定義的可用性區域。
+成功部署此虛擬機器將會在一個可用性區域中裝載 SAP 系統的資料庫實例。 鄰近放置群組的範圍會固定到代表您所定義之可用性區域的其中一個資料中心。
 
-假設您以與 DBMS Vm 相同的方式部署中央服務 Vm，並參考相同的區域或區域和相同的鄰近放置群組。 在下一個步驟中，您必須建立要用於 SAP 系統之應用層的可用性設定組。
+假設您以與 DBMS Vm 相同的方式部署中央服務 Vm，參考相同的區域或區域，以及相同的鄰近放置群組。 在下一個步驟中，您必須建立要用於 SAP 系統應用層的可用性設定組。
 
-您必須定義並建立鄰近放置群組。 建立可用性設定組的命令需要對鄰近放置群組識別碼（而非名稱）進行額外的參考。 您可以使用下列命令來取得鄰近放置群組的識別碼：
+定義和建立鄰近位置群組。 用來建立可用性設定組的命令需要鄰近放置群組識別碼的額外參考 (不) 名稱。 您可以使用下列命令來取得鄰近位置群組的識別碼：
 
 <pre><code>
 Get-AzProximityPlacementGroup -ResourceGroupName "myfirstppgexercise" -Name "letsgetclose"
 </code></pre>
 
-當您建立可用性設定組時，如果您使用受控磁片，則需要考慮其他參數（除非另有指定，否則為預設值）和鄰近性放置群組：
+當您建立可用性設定組時，除非另有指定) 和鄰近位置群組，否則您在使用受控磁片時，必須考慮使用其他參數 (預設值：
 
 <pre><code>
 New-AzAvailabilitySet -ResourceGroupName "myfirstppgexercise" -Name "myppgavset" -Location "westus2" -ProximityPlacementGroupId "/subscriptions/my very long ppg id string" -sku "aligned" -PlatformUpdateDomainCount 3 -PlatformFaultDomainCount 2 
 </code></pre>
 
-在理想的情況下，您應該使用三個容錯網域。 但支援的容錯網域數目可能會因區域而異。 在此情況下，特定區域可能會有兩個容錯網域的最大數目。 若要部署您的應用層 Vm，您需要新增可用性設定組名稱和鄰近放置組名的參考，如下所示：
+在理想情況下，您應該使用三個容錯網域。 但支援的容錯網域數目可能會因區域而異。 在此情況下，特定區域最多可以有兩個容錯網域的數目。 若要部署應用層 Vm，您需要新增您的可用性設定組名稱和鄰近位置組名的參考，如下所示：
 
 <pre><code>
 New-AzVm -ResourceGroupName "myfirstppgexercise" -Name "myppgavsetappvm" -Location "westus2" -OpenPorts 80,3389 -AvailabilitySetName "myppgavset" -ProximityPlacementGroup "letsgetclose" -Size "Standard_DS11_v2"
 </code></pre>
 
 此部署的結果為：
-- 適用于您的 SAP 系統的 DBMS 層和中央服務，位於特定可用性區域或可用性區域。
-- SAP 應用層，其位於與 DBMS VM 或 Vm 相同的 Azure 資料中心內的可用性設定組。
+- 適用于 SAP 系統的 DBMS 層和中央服務，位於特定的可用性區域或可用性區域。
+- 在與 DBMS VM 或 Vm 位於相同 Azure 資料中心的可用性設定組中的 SAP 應用層。
 
 > [!NOTE]
-> 因為您會將一個 DBMS VM 部署到一個區域，而第二個 DBMS VM 放到另一個區域以建立高可用性設定，所以每個區域都需要不同的鄰近放置群組。 您所使用的任何可用性設定組也是如此。
+> 因為您將一個 DBMS VM 部署至一個區域，並將第二個 DBMS VM 部署到另一個區域，以建立高可用性設定，所以每個區域都需要不同的鄰近放置群組。 您所使用的任何可用性設定組也是如此。
 
 ## <a name="move-an-existing-system-into-proximity-placement-groups"></a>將現有的系統移至鄰近位置群組
-如果您已經部署 SAP 系統，您可能會想要將某些重要系統的網路延遲優化，並在相同的資料中心內找出應用層和 DBMS 層。 若要將完整 Azure 可用性設定組的 Vm 移至已設定範圍的現有近接位置群組，您必須關閉可用性設定組的所有 Vm，並透過 Azure 入口網站、PowerShell 或 CLI，將可用性設定組指派給現有的鄰近放置群組。 如果您想要將不屬於可用性設定組的 VM 移到現有的鄰近放置群組，您只需要關閉 VM，並將它指派給現有的鄰近放置群組。 
+如果您已經部署 SAP 系統，您可能會想要將某些重要系統的網路延遲優化，並在相同的資料中心找出應用層和 DBMS 層。 若要將完整 Azure 可用性設定組的 Vm 移至已設定範圍的現有鄰近位置群組，您需要關閉可用性設定組的所有 Vm，並透過 Azure 入口網站、PowerShell 或 CLI 將可用性設定組指派給現有的鄰近放置群組。 如果您想要將不屬於可用性設定組的 VM 移至現有的鄰近放置群組，則只需要關閉 VM，並將它指派給現有的鄰近放置群組。 
 
 
 ## <a name="next-steps"></a>後續步驟
-請參閱檔：
+請參閱下列檔：
 
 - [Azure 上的 SAP 工作負載：規劃和部署檢查清單](./sap-deployment-checklist.md)
-- [預覽：使用 Azure CLI 將 Vm 部署至鄰近放置群組](../../linux/proximity-placement-groups.md)
-- [預覽：使用 PowerShell 將 Vm 部署至鄰近放置群組](../../windows/proximity-placement-groups.md)
+- [預覽：使用 Azure CLI 將 Vm 部署到鄰近位置群組](../../linux/proximity-placement-groups.md)
+- [預覽：使用 PowerShell 將 Vm 部署至鄰近位置群組](../../windows/proximity-placement-groups.md)
 - [適用于 SAP 工作負載的 Azure 虛擬機器 DBMS 部署考慮](./dbms_guide_general.md)

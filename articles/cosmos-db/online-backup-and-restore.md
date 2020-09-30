@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/24/2020
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 6485df342bbe0b2378a67b90e448b2bd98c5e283
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 310fee91ed98409e5a724d1be8de7bc9ccb5601b
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91400395"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570919"
 ---
 # <a name="online-backup-and-on-demand-data-restore-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中進行線上備份及隨選資料還原
 
@@ -26,7 +26,7 @@ Azure Cosmos DB 會自動地定期備份您的資料。 自動備份的進行不
 
 * Azure Cosmos DB 會將這些備份儲存在 Azure Blob 儲存體中，而實際的資料會位於 Azure Cosmos DB 的本機。
 
-* 為了保證低延遲，系統會將備份的快照集儲存在 Azure Blob 儲存體中，此儲存體的所在區域和目前的寫入區域 (如果您有多重主機組態，則為其中**一個**寫入區域) 相同。 為了從區域性災害中復原，系統會再透過異地備援儲存體 (GRS)，將 Azure Blob 儲存體中的每個備份資料快照集複寫到另一個區域。 至於會將備份複寫到哪個區域，則取決於來源區域以及與來源區域相關聯的區域配對。 若要深入了解，請參閱 [Azure 區域的異地備援配對清單](../best-practices-availability-paired-regions.md)一文。 您無法直接存取此備份。 透過支援要求進行要求時，Azure Cosmos DB 小組會還原您的備份。
+* 為了保證低延遲，您的備份快照集會儲存在 Azure Blob 儲存體中，與目前寫入區域 (或 **其中一個** 寫入區域相同區域，以防您有多重區域寫入設定) 。 為了從區域性災害中復原，系統會再透過異地備援儲存體 (GRS)，將 Azure Blob 儲存體中的每個備份資料快照集複寫到另一個區域。 至於會將備份複寫到哪個區域，則取決於來源區域以及與來源區域相關聯的區域配對。 若要深入了解，請參閱 [Azure 區域的異地備援配對清單](../best-practices-availability-paired-regions.md)一文。 您無法直接存取此備份。 透過支援要求進行要求時，Azure Cosmos DB 小組會還原您的備份。
 
    下圖顯示三個主要實體分割區都在美國西部的 Azure Cosmos 容器，會備份到美國西部的遠端 Azure Blob 儲存體帳戶，然後再複寫到美國東部：
 
@@ -59,11 +59,11 @@ Azure Cosmos DB 會每隔4小時自動取得資料的完整備份，而且在任
 
    * **保留的資料副本** -根據預設，系統會免費提供兩份資料備份複本。 如果您需要兩個以上的複本，則會產生額外的費用。 請參閱[定價頁面](https://azure.microsoft.com/pricing/details/cosmos-db/)中的已使用儲存體一節，以了解額外複本的確切價格。
 
-   :::image type="content" source="./media/online-backup-and-restore/configure-backup-interval-retention.png" alt-text="設定現有 Azure Cosmos 帳戶的備份間隔和保留期" border="true":::
+   :::image type="content" source="./media/online-backup-and-restore/configure-backup-interval-retention.png" alt-text="GRS Azure 儲存體中所有 Cosmos DB 實體的定期完整備份" border="true":::
 
 如果您在帳戶建立期間設定備份選項，就可以設定 **備份原則**，也就是 **定期** 或 **連續**。 定期原則可讓您設定備份間隔和備份保留期。 持續的原則目前僅供註冊之用。 Azure Cosmos DB 團隊將會評估您的工作負載，並核准您的要求。
 
-:::image type="content" source="./media/online-backup-and-restore/configure-periodic-continuous-backup-policy.png" alt-text="針對新的 Azure Cosmos 帳戶設定定期或連續備份原則" border="true":::
+:::image type="content" source="./media/online-backup-and-restore/configure-periodic-continuous-backup-policy.png" alt-text="GRS Azure 儲存體中所有 Cosmos DB 實體的定期完整備份" border="true":::
 
 ## <a name="restore-data-from-an-online-backup"></a>從線上備份還原資料
 

@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 7/14/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: c6c5c9b00ec3309638a7c5618e5995c8c5f07b11
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: f64e959536b4abea4f2facb5ae3238b4843e4611
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90564351"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569947"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-time-series-insights"></a>整合 Azure 數位 Twins 與 Azure 時間序列深入解析
 
@@ -20,7 +20,7 @@ ms.locfileid: "90564351"
 
 本文所述的解決方案可讓您收集及分析 IoT 解決方案的歷程記錄資料。 Azure 數位 Twins 非常適合用來將資料摘要到時間序列深入解析，因為它可讓您將多個資料流程相互關聯，並在將資訊傳送到時間序列深入解析之前將資訊標準化。 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 您必須要有 **Azure 數位 Twins 實例**，才能設定與時間序列深入解析之間的關聯性。 此實例應設定為根據資料更新數位對應項資訊，因為您需要更新對應項資訊幾次，才能看到時間序列深入解析中所追蹤的資料。 
 
@@ -65,7 +65,7 @@ Azure 數位 Twins [*教學課程：連接端對端解決方案*](./tutorial-end
     az eventhubs eventhub authorization-rule create --rights Listen Send --resource-group <resource group name> --namespace-name <Event Hubs namespace from above> --eventhub-name <Twins event hub name from above> --name <name for your Twins auth rule>
     ```
 
-4. 建立 Azure 數位 Twins [端點](concepts-route-events.md#create-an-endpoint) ，以將您的事件方格主題連結至您的 Azure 數位 Twins 實例。
+4. 建立 Azure 數位 Twins [端點](concepts-route-events.md#create-an-endpoint) ，將您的事件中樞連結至您的 Azure 數位 Twins 實例。
 
     ```azurecli
     az dt endpoint create eventhub --endpoint-name <name for your Event Hubs endpoint> --eventhub-resource-group <resource group name> --eventhub-namespace <Event Hubs namespace from above> --eventhub <Twins event hub name from above> --eventhub-policy <Twins auth rule from above> -n <your Azure Digital Twins instance name>
@@ -203,11 +203,11 @@ namespace SampleFunctionsApp
     1. 選取 **PAYG (預覽版) ** 定價層。
     2. 您將需要為此環境選擇 **時間序列識別碼** 。 您的時間序列識別碼最多可以有三個值，您將在時間序列深入解析中用來搜尋資料。 在本教學課程中，您可以使用 **$dtId**。 在 [*選擇時間序列識別碼的最佳做法中，*](https://docs.microsoft.com/azure/time-series-insights/how-to-select-tsid)深入瞭解如何選取識別碼值。
     
-        :::image type="content" source="media/how-to-integrate-time-series-insights/create-twin-id.png" alt-text="時間序列深入解析環境的建立入口網站 UX。已選取 PAYG (預覽) 定價層，且時間序列識別碼屬性名稱為 $dtId":::
+        :::image type="content" source="media/how-to-integrate-time-series-insights/create-twin-id.png" alt-text="在端對端案例中，反白顯示時間序列深入解析的 Azure 服務視圖":::
 
 2. 選取 **[下一步：事件來源]** ，然後選取上述的事件中樞資訊。 您也需要建立新的事件中樞取用者群組。
     
-    :::image type="content" source="media/how-to-integrate-time-series-insights/event-source-twins.png" alt-text="時間序列深入解析環境事件來源的建立入口網站 UX。您正在使用上述的事件中樞資訊來建立事件來源。您也會建立新的取用者群組。":::
+    :::image type="content" source="media/how-to-integrate-time-series-insights/event-source-twins.png" alt-text="在端對端案例中，反白顯示時間序列深入解析的 Azure 服務視圖":::
 
 ## <a name="begin-sending-iot-data-to-azure-digital-twins"></a>開始將 IoT 資料傳送至 Azure 數位 Twins
 
@@ -223,19 +223,19 @@ namespace SampleFunctionsApp
 
 1. 在 [Azure 入口網站](https://portal.azure.com) 中開啟您的時間序列深入解析實例 (您可以在入口網站的搜尋列中搜尋您的實例名稱) 。 造訪實例總覽中所示的 *時間序列深入解析總管 URL* 。
     
-    :::image type="content" source="media/how-to-integrate-time-series-insights/view-environment.png" alt-text="在時間序列深入解析環境的 [總覽] 索引標籤中，選取時間序列深入解析 explorer URL":::
+    :::image type="content" source="media/how-to-integrate-time-series-insights/view-environment.png" alt-text="在端對端案例中，反白顯示時間序列深入解析的 Azure 服務視圖":::
 
 2. 在 [explorer] 中，您會看到來自 Azure 數位 Twins 的三個 twins 顯示于左邊。 選取 [ _**thermostat67**_]，選取 [ **溫度**]，然後按 [ **新增**]。
 
-    :::image type="content" source="media/how-to-integrate-time-series-insights/add-data.png" alt-text="選取 * * thermostat67 * *，選取 * * 溫度 * *，然後按 [新增] * *":::
+    :::image type="content" source="media/how-to-integrate-time-series-insights/add-data.png" alt-text="在端對端案例中，反白顯示時間序列深入解析的 Azure 服務視圖":::
 
 3. 您現在應該會看到來自控溫器的初始溫度讀數，如下所示。 系統會針對 *room21* 和 *floor1*更新相同的溫度讀數，而且您可以將這些資料流程一併呈現出來。
     
-    :::image type="content" source="media/how-to-integrate-time-series-insights/initial-data.png" alt-text="初始溫度資料會在 TSI explorer 中繪製圖形。這是介於68到85之間的隨機值行":::
+    :::image type="content" source="media/how-to-integrate-time-series-insights/initial-data.png" alt-text="在端對端案例中，反白顯示時間序列深入解析的 Azure 服務視圖":::
 
 4. 如果您讓模擬執行得更久，視覺效果看起來會像這樣：
     
-    :::image type="content" source="media/how-to-integrate-time-series-insights/day-data.png" alt-text="每個對應項的溫度資料會以不同色彩的三個平行線繪製。":::
+    :::image type="content" source="media/how-to-integrate-time-series-insights/day-data.png" alt-text="在端對端案例中，反白顯示時間序列深入解析的 Azure 服務視圖":::
 
 ## <a name="next-steps"></a>後續步驟
 

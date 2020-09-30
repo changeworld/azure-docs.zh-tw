@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 06/11/2020
 ms.author: anfeldma
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 2ebe4fbf776ffb3b4568f996f20ba721b0cc5fca
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c158bc176c329fb46d0acde64b043b1b3e669e18
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91330509"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570689"
 ---
 # <a name="manage-conflict-resolution-policies-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中管理衝突解決原則
 
@@ -513,9 +513,9 @@ while conflict:
 深入了解下列 Azure Cosmos DB 概念：
 
 - [全域散發 - 運作原理](global-dist-under-the-hood.md)
-- [如何在應用程式中設定多宿主](how-to-multi-master.md)
+- [如何在應用程式中設定多重區域寫入](how-to-multi-master.md)
 - [設定多路連接的用戶端](how-to-manage-database-account.md#configure-multiple-write-regions)
 - [從您的 Azure Cosmos 帳戶新增或移除區域](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
-- [如何在應用程式中設定多重主機](how-to-multi-master.md)。
+- [如何在您的應用程式中 configuremulti 區域寫入](how-to-multi-master.md)。
 - [資料分割和散佈](partition-data.md)
 - [Azure Cosmos DB 中的編製索引](indexing-policies.md)

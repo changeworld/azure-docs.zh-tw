@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/22/2020
-ms.openlocfilehash: dfe48a1348929bbe8d4af6793d94d52514df9d74
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b0df55e59bd519a816c4022f2434edfcd4460780
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87001531"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570768"
 ---
 # <a name="exchange-edifact-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>在具有 Enterprise Integration Pack 的 Azure Logic Apps 中交換適用於 B2B 企業整合的 EDIFACT 訊息
 
@@ -22,7 +22,7 @@ ms.locfileid: "87001531"
 > [!NOTE]
 > 本頁涵蓋 Azure Logic Apps 的 EDIFACT 功能。 如需詳細資訊，請參閱 [X12](logic-apps-enterprise-integration-x12.md)。
 
-## <a name="before-you-start"></a>開始之前
+## <a name="before-you-start"></a>在您開始使用 Intune 之前
 
 以下是您所需的項目︰
 
@@ -78,7 +78,7 @@ ms.locfileid: "87001531"
 您現在已經設定合約屬性，您可以設定此合約如何識別及處理您透過此合約從夥伴接收的內送訊息。
 
 > [!IMPORTANT]
-> EDIFACT 連接器僅支援 UTF-8 字元。
+> EDIFACT 連接器只支援 UTF-8 字元。
 > 如果您的輸出包含未預期的字元，請檢查您的 EDIFACT 訊息是否使用 UTF-8 字元集。
 
 1. 在 [新增] 之下，選取 [接收設定]。
@@ -247,11 +247,11 @@ ms.locfileid: "87001531"
 
 2.  您也可以在整合帳戶概觀中檢視您的合約。 在整合帳戶功能表上，選擇 [概觀]****，然後選取 [合約]**** 圖格。 
 
-    ![選擇 [合約] 圖格](./media/logic-apps-enterprise-integration-edifact/edifact-4.png)   
+    ![顯示 [合約] 圖格的螢幕擷取畫面。](./media/logic-apps-enterprise-integration-edifact/edifact-4.png)   
 
 ## <a name="connector-reference"></a>連接器參考
 
-如需此連接器的更多技術詳細資料，例如連接器的 Swagger 檔案所述的動作和限制，請參閱[連接器的參考頁面](/connectors/edifact/)。
+如需此連接器的更多技術詳細資料，例如連接器的 Swagger 檔案所描述的動作和限制，請參閱 [連接器的參考頁面](/connectors/edifact/)。
 
 > [!NOTE]
 > 針對[整合服務環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) 中的邏輯應用程式，此連接器其 ISE 標籤版本使用 [ISE 的 B2B 訊息限制](../logic-apps/logic-apps-limits-and-config.md#b2b-protocol-limits)。

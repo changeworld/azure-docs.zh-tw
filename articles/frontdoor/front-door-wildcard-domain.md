@@ -8,18 +8,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/10/2020
+ms.date: 09/29/2020
 ms.author: duau
-ms.openlocfilehash: edeaaf97c818831aa1eda5823ea491110f784549
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 5194e088ce2bd35208a92c5295457e6c34cd2cc1
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91442358"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570326"
 ---
 # <a name="wildcard-domains"></a>萬用字元網域
 
-除了頂點網域和子域以外，您也可以將萬用字元功能變數名稱對應到您的 Azure Front Door 設定檔中的前端主機或自訂網域清單。 在您的 Azure Front Door 設定中擁有萬用字元網域，可針對 API、應用程式或網站的相同路由規則，簡化多個子域的流量路由行為。 您不需要修改設定來個別新增或指定每個子域。 例如，您可以 `customer1.contoso.com` `customer2.contoso.com` `customerN.contoso.com` 使用相同的路由規則和新增萬用字元網域，來定義、和的路由 `*.contoso.com` 。
+除了頂點網域和子域，您也可以將萬用字元網域對應到您的 Azure Front Door 設定檔的前端主機或自訂網域。 在您的 Azure Front Door 設定中擁有萬用字元網域，可針對 API、應用程式或網站的相同路由規則，簡化多個子域的流量路由行為。 您不需要修改設定來個別新增或指定每個子域。 例如，您可以 `customer1.contoso.com` `customer2.contoso.com` `customerN.contoso.com` 使用相同的路由規則和新增萬用字元網域，來定義、和的路由 `*.contoso.com` 。
 
 以萬用字元網域支援改善的主要案例包括：
 
@@ -47,7 +47,7 @@ ms.locfileid: "91442358"
 - 如果將萬用字元網域新增至 Azure Front Door 設定檔：
   - 萬用字元網域無法新增至任何其他 Azure Front Door 設定檔。
   - 萬用字元網域的第一級子域無法新增至另一個 Azure Front Door 設定檔或 Azure 內容傳遞網路設定檔。
-- 如果萬用字元網域的子域已新增至 Azure Front Door 設定檔或 Azure 內容傳遞網路設定檔，則萬用字元網域無法新增至其他 Azure Front Door 設定檔。
+- 如果萬用字元網域的子域已新增至 Azure Front Door 設定檔或 Azure 內容傳遞網路設定檔中，則萬用字元網域不能用於其他 Azure Front Door 設定檔。
 - 如果 (Azure Front Door 或 Azure 內容傳遞網路的兩個設定檔) 具有根域的不同子域，則無法將萬用字元網域新增至其中一個設定檔。
 
 ## <a name="certificate-binding"></a>憑證系結
@@ -59,7 +59,7 @@ ms.locfileid: "91442358"
 
 您可以選擇使用 Azure Key Vault 中的相同萬用字元憑證，或是子域的 Azure Front Door 受控憑證。
 
-如果針對已有相關聯憑證的萬用字元網域新增子域，則無法停用子域的 HTTPS。 子域會使用萬用字元網域的憑證系結，除非不同的 Key Vault 或 Azure Front Door 受控憑證覆寫它。
+如果針對已有相關聯憑證的萬用字元網域新增子域，您就無法停用子域的 HTTPS。 子域會使用萬用字元網域的憑證系結，除非不同的 Key Vault 或 Azure Front Door 受控憑證覆寫它。
 
 ## <a name="waf-policies"></a>WAF 原則
 

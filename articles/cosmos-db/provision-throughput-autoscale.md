@@ -6,12 +6,12 @@ ms.author: kirillg
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.openlocfilehash: 20b0bcfe5043d4767199c36796fa1123ed779363
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 87112af870100859ae008f77eefc4b58eac1b0fb
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84791141"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570734"
 ---
 # <a name="create-azure-cosmos-containers-and-databases-with-autoscale-throughput"></a>使用自動調整輸送量來建立 Azure Cosmos 容器和資料庫
 
@@ -29,7 +29,7 @@ Azure Cosmos DB 可讓您在資料庫和容器上設定標準 (手動) 或自動
 
 * **可調整：** 資料庫和容器會視需要自動調整佈建輸送量。 用戶端連線、應用程式或對 Azure Cosmos DB SLA 的影響不會中斷。
 
-* **符合成本效益：** 自動調整會在不使用時相應減少，協助您最佳化 RU/秒使用量和成本使用量。 您只需以每小時為基礎，針對您工作負載所需的資源付費。 在一個月的所有時數中，如果您設定自動調整的最大 RU/秒（Tmax），並使用 Tmax 的完整金額（小時）或更少的66%，則會以自動調整來儲存。 若要深入瞭解，請參閱[如何選擇標準（手動）和自動調整布建輸送量](how-to-choose-offer.md)一文。
+* **符合成本效益：** 自動調整會在不使用時相應減少，協助您最佳化 RU/秒使用量和成本使用量。 您只需以每小時為基礎，針對您工作負載所需的資源付費。 在一個月中的所有時數，如果您將 [自動調整最大 RU/秒] (Tmax) 並使用 [全額 Tmax] （小時或更少）的66%，則會以自動調整儲存。 若要深入瞭解，請參閱 [如何在標準 (手動) 和自動](how-to-choose-offer.md) 調整布建的輸送量文章之間進行選擇。
 
 * **高可用性：** 使用自動調整的資料庫和容器會使用相同的全域分散式、容錯、高可用性 Azure Cosmos DB 後端，以確保資料持久性和高可用性。
 
@@ -77,7 +77,7 @@ Azure Cosmos DB 可讓您在資料庫和容器上設定標準 (手動) 或自動
 | **佈建的輸送量 (RU/秒)** | 手動佈建。 | 根據工作負載使用模式自動及立即調整。 |
 | **要求/作業的速率限制 (429)**  | 如果耗用量超過佈建的容量，則可能會發生。 | 如果您在已設定的自動調整輸送量範圍內使用 RU/秒，則不會發生這種情況。    |
 | **容量規劃** |  您必須進行容量規劃，並佈建所需的確切輸送量。 |    系統會自動負責容量規劃及容量管理。 |
-| **定價** | 您需支付每小時手動佈建的 RU/秒 (使用[標準 (手動) RU/秒的每小時費率](https://azure.microsoft.com/pricing/details/cosmos-db/))。 | 您每小時要支付系統在一小時內所相應增加的最高 RU/秒。 <br/><br/> 針對單一寫入區域帳戶，您需支付每小時使用的 RU/秒 (使用 [自動調整 RU/秒的每小時費率](https://azure.microsoft.com/pricing/details/cosmos-db/))。 <br/><br/>針對具有多個寫入區域的帳戶，自動調整不會額外收費。 您需支付每小時使用的輸送量 (使用相同的[多重主機 RU/秒的每小時費率](https://azure.microsoft.com/pricing/details/cosmos-db/))。 |
+| **定價** | 您需支付每小時手動佈建的 RU/秒 (使用[標準 (手動) RU/秒的每小時費率](https://azure.microsoft.com/pricing/details/cosmos-db/))。 | 您每小時要支付系統在一小時內所相應增加的最高 RU/秒。 <br/><br/> 針對單一寫入區域帳戶，您需支付每小時使用的 RU/秒 (使用 [自動調整 RU/秒的每小時費率](https://azure.microsoft.com/pricing/details/cosmos-db/))。 <br/><br/>針對具有多個寫入區域的帳戶，自動調整不會額外收費。 您需支付每小時使用的輸送量，並使用相同的 [多重區域每小時寫入 RU/秒費率](https://azure.microsoft.com/pricing/details/cosmos-db/)。 |
 | **最適合工作負載類型** |  可預測且穩定的工作負載|   無法預期和變動的工作負載  |
 
 ## <a name="next-steps"></a>後續步驟

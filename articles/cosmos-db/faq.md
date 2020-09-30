@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: f6b2d081b0dc475e0950b12de31bab83cbe7da8b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4bd29ce3bf2cc7cd69f86dbf172d3cd9a2044e79
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213086"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570366"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>關於 Azure Cosmos DB 內不同 API 的常見問題集
 
@@ -85,7 +85,7 @@ Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 當�
 
 下列條件適用於試用 Azure Cosmos DB 訂用帳戶：
 
-* 可以為個人 Microsoft 帳戶 (MSA) 授與帳戶存取。 請避免使用 Active Directory (AAD) 帳戶或屬於公司 AAD 租用戶的帳戶，其或許具有可能封鎖存取授與的限制。
+* 可以為個人 Microsoft 帳戶 (MSA) 授與帳戶存取。 避免使用 Azure Active Directory (Azure AD) 屬於公司 Azure AD 租使用者的帳戶或帳戶，他們可能會有可能封鎖存取權的限制。
 * SQL、Gremlin API 和資料表帳戶的每個訂用帳戶一個[輸送量佈建的容器](./set-throughput.md#set-throughput-on-a-container)。
 * MongoDB 帳戶的每個訂用帳戶最多三個[輸送量佈建的集合](./set-throughput.md#set-throughput-on-a-container)。
 * 每個訂用帳戶一個[輸送量佈建的資料庫](./set-throughput.md#set-throughput-on-a-database)。 輸送量佈建的資料庫可以包含任意數目的容器。
@@ -102,9 +102,9 @@ Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 當�
 
 Azure 入口網站中已提供 Azure Cosmos DB。 首先，請註冊 Azure 訂用帳戶。 當您註冊之後，就可以將 Azure Cosmos DB 帳戶新增至您的 Azure 訂用帳戶。
 
-### <a name="what-is-a-master-key"></a>什麼是主要金鑰？
+### <a name="what-is-a-primary-key"></a>什麼是主要金鑰？
 
-主要金鑰是可存取帳戶的所有資源的安全性權杖。 擁有此金鑰的人，對資料庫帳戶中的所有資源具有讀取和寫入存取權。 分配主要金鑰時，務必謹慎。 [Azure 入口網站][azure-portal]的 [金鑰] 刀鋒視窗提供主要金鑰和次要金鑰。 如需金鑰的詳細資訊，請參閱 [檢視、複製和重新產生存取金鑰](manage-with-cli.md#list-account-keys)。
+主要金鑰是用來存取帳戶所有資源的安全性權杖。 擁有此金鑰的人，對資料庫帳戶中的所有資源具有讀取和寫入存取權。 當您散發主鍵時，請特別小心。 主要主鍵和次要主要金鑰位於[Azure 入口網站][azure-portal]的 [**金鑰**] 分頁。 如需金鑰的詳細資訊，請參閱 [檢視、複製和重新產生存取金鑰](manage-with-cli.md#list-account-keys)。
 
 ### <a name="what-are-the-regions-that-preferredlocations-can-be-set-to"></a>設定 PreferredLocations 的目標區域有哪些？
 

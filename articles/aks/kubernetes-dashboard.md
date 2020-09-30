@@ -6,12 +6,12 @@ author: mlearned
 ms.topic: article
 ms.date: 06/03/2020
 ms.author: mlearned
-ms.openlocfilehash: 35424c0a9e566a9dfa780c524e23945348335040
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 8fda67bea75e973b42aa7f1a9f32be906b1d3e83
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88225983"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570821"
 ---
 # <a name="access-the-kubernetes-web-dashboard-in-azure-kubernetes-service-aks"></a>存取 Azure Kubernetes Service (AKS) 中的 Kubernetes Web 儀表板
 
@@ -20,29 +20,29 @@ Kubernetes 包含的 Web 儀表板可用來執行基本的管理作業。 此儀
 如需 Kubernetes 儀表板的詳細資訊，請參閱 [Kubernetes WEB UI 儀表板][kubernetes-dashboard]。 AKS 使用2.0 版和更高版本的開放原始碼儀表板。
 
 > [!WARNING]
-> **AKS 儀表板附加元件已設定為取代。請改用 [Azure 入口網站 (preview) 中的 [Kubernetes] 資源檢視 ][kubernetes-portal] 。** 
-> * 針對執行 Kubernetes 版本小於1.18 的叢集，預設會啟用 Kubernetes 儀表板。
-> * 針對在 Kubernetes 1.18 或更新版本上建立的所有新叢集，預設會停用儀表板附加元件。 
- > * 從 Kubernetes 1.19 預覽版開始，AKS 將不再支援安裝受管理的 kube 儀表板附件。 
- > * 已啟用附加元件的現有叢集將不會受到影響。 使用者會繼續以使用者安裝的軟體的形式，手動安裝 [開放原始碼] 儀表板。
+> **AKS 儀表板附加元件已設定為取代。請改 [為使用 Azure 入口網站 (預覽) 中的 Kubernetes 資源檢視 ][kubernetes-portal] 。** 
+> * Kubernetes 儀表板預設會針對執行低於1.18 之 Kubernetes 版本的叢集啟用。
+> * 預設會停用 Kubernetes 1.18 或更新版本上建立的所有新叢集的儀表板附加元件。 
+ > * 從 Kubernetes 1.19 預覽版開始，AKS 將不再支援安裝 managed kube 儀表板附件。 
+ > * 啟用附加元件的現有叢集不會受到影響。 使用者將繼續以手動方式將開放原始碼儀表板安裝為使用者安裝的軟體。
 
 ## <a name="before-you-begin"></a>開始之前
 
-本檔中詳述的步驟假設您已建立 AKS 叢集，並已建立與叢集的連線 `kubectl` 。 如果您需要建立 AKS 叢集，請參閱 [快速入門：使用 Azure CLI 部署 Azure Kubernetes Service][aks-quickstart]叢集。
+本檔中詳述的步驟假設您已建立 AKS 叢集，並已建立與叢集的 `kubectl` 連接。 如果您需要建立 AKS 叢集，請參閱 [快速入門：使用 Azure CLI 部署 Azure Kubernetes Service][aks-quickstart]叢集。
 
-您也需要安裝並設定 Azure CLI 版本2.6.0 或更新版本。 執行  `az --version`  以尋找版本。 如果您需要安裝或升級，請參閱 [安裝 Azure CLI][install-azure-cli]。
+您也需要安裝並設定 Azure CLI 2.6.0 版或更新版本。 執行  `az --version`  以尋找版本。 如果您需要安裝或升級，請參閱 [安裝 Azure CLI][install-azure-cli]。
 
 ## <a name="disable-the-kubernetes-dashboard"></a>停用 Kubernetes 儀表板
 
-在 **K8s 1.18 之前**的叢集上，預設會啟用 kube 儀表板附件。 您可以執行下列命令來停用此附加元件。
+Kube 儀表板附加元件 **預設會在 K8s 1.18 之前的叢集上啟用**。 您可以藉由執行下列命令來停用此附加元件。
 
-``` azure-cli
+``` azurecli
 az aks disable-addons -g myRG -n myAKScluster -a kube-dashboard
 ```
 
 ## <a name="start-the-kubernetes-dashboard"></a>啟動 Kubernetes 儀表板
 
-若要在叢集上啟動 Kubernetes 儀表板，請使用 [az aks browse][az-aks-browse] 命令。 此命令需要在叢集上安裝 kube-儀表板附加元件，此附加元件預設會包含在執行任何比 Kubernetes 1.18 舊版本的叢集上。
+若要在叢集上啟動 Kubernetes 儀表板，請使用 [az aks browse][az-aks-browse] 命令。 此命令需要在叢集上安裝 kube 儀表板附加元件，此附加元件預設會在執行任何版本超過 Kubernetes 1.18 的叢集上包含。
 
 下列範例會在名為 myResourceGroup** 的資源群組中，針對名為 myAKSCluster** 的叢集開啟儀表：
 
@@ -53,7 +53,7 @@ az aks browse --resource-group myResourceGroup --name myAKSCluster
 此命令會在您的開發系統與 Kubernetes API 之間建立 Proxy，並開啟 Kubernetes 儀表板的網頁瀏覽器。 如果 Web 瀏覽器未開啟至 Kubernetes 儀表板，請複製並貼上 Azure CLI 中所註明的 URL 位址，通常是 `http://127.0.0.1:8001`。
 
 > [!NOTE]
-> 如果您沒有看到 [儀表板]， `http://127.0.0.1:8001` 您可以手動路由傳送到下列位址。 1.16 或更高版本上的叢集使用 HTTPs，而且需要個別的端點。
+> 如果您在中看不到儀表板， `http://127.0.0.1:8001` 您可以手動路由傳送至下列位址。 1.16 或更高版本上的叢集使用 HTTPs，而且需要個別的端點。
 > * K8s 1.16 或更新版本： `http://127.0.0.1:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy`
 > * K8s 1.15 和以下： `http://127.0.0.1:8001/api/v1/namespaces/kube-system/services/kubernetes-dashboard:/proxy`
 
@@ -99,36 +99,36 @@ After you choose a method to sign in, the Kubernetes dashboard is displayed. If 
 > For more information on using the different authentication methods, see the Kubernetes dashboard wiki on [access controls][dashboard-authentication].
 -->
 
-## <a name="sign-in-to-the-dashboard-kubernetes-116"></a> (kubernetes 1.16 +) 登入儀表板
+## <a name="sign-in-to-the-dashboard-kubernetes-116"></a>登入 (kubernetes 1.16 +) 的儀表板
 
 > [!IMPORTANT]
-> [從 Kubernetes 儀表板](https://github.com/kubernetes/dashboard/releases/tag/v1.10.1)或 Kubernetes v 1.16 的 v 1.10.1 版，因為[該版本中的安全性修正，](https://github.com/kubernetes/dashboard/pull/3400)所以無法再使用服務帳戶「Kubernetes-儀表板」來抓取資源。 因此，沒有 auth 資訊的要求會傳回401未經授權的錯誤。 從服務帳戶抓取的持有人權杖仍可在此 [Kubernetes 儀表板範例](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/#accessing-the-dashboard-ui)中使用，但這會影響儀表板附加元件的登入流程（相較于舊版本）。
+> [從 Kubernetes 儀表板](https://github.com/kubernetes/dashboard/releases/tag/v1.10.1)或 Kubernetes v 1.16 + v 1.10.1 +，服務帳戶 "Kubernetes-儀表板" 無法再用來取得資源[，因為該版本中有安全性修正](https://github.com/kubernetes/dashboard/pull/3400)。 因此，沒有驗證資訊的要求會傳回401未授權錯誤。 從服務帳戶取出的持有人權杖仍然可以像在這個 [Kubernetes 儀表板範例](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/#accessing-the-dashboard-ui)中使用，但這會影響儀表板附加元件的登入流程（相較于較舊的版本）。
 >
->如果您仍然執行1.16 之前的版本，您仍然可以將許可權授與「kubernetes-儀表板」服務帳戶，但 **不建議**您這樣做：
+>如果您仍要執行1.16 之前的版本，您仍然可以將許可權授與「kubernetes 儀表板」服務帳戶，但 **不建議**您這樣做：
 > ```console
 > kubectl create clusterrolebinding kubernetes-dashboard --clusterrole=cluster-admin --serviceaccount=kube-system:kubernetes-dashboard
 > ```
 
-顯示的初始畫面需要 kubeconfig 或 token。 這兩個選項都需要資源許可權，才能在儀表板中顯示這些資源。
+所呈現的初始畫面需要 kubeconfig 或權杖。 這兩個選項都需要資源許可權，才能在儀表板中顯示這些資源。
 
 ![登入畫面](./media/kubernetes-dashboard/login.png)
 
 **使用 kubeconfig**
 
-Azure AD 啟用和非 Azure AD 啟用的叢集，可以傳入 kubeconfig。 請確認存取權杖有效，如果您的權杖已過期，您可以透過 kubectl 重新整理權杖。
+針對 Azure AD 啟用和未啟用 Azure AD 的叢集，可以傳入 kubeconfig。 請確定存取權杖有效，如果您的權杖已過期，您可以透過 kubectl 重新整理權杖。
 
-1. 將 admin kubeconfig 設定為 `az aks get-credentials -a --resource-group <RG_NAME> --name <CLUSTER_NAME>`
-1. 選取 `Kubeconfig` 並按一下 `Choose kubeconfig file` 以開啟 [檔案選取器]
+1. 設定 admin kubeconfig with `az aks get-credentials -a --resource-group <RG_NAME> --name <CLUSTER_NAME>`
+1. 選取 `Kubeconfig` 並按一下 `Choose kubeconfig file` 以開啟檔案選取器
 1. 選取您的 kubeconfig 檔案 (預設為 $HOME/.kube/config) 
 1. 按一下 `Sign In`
 
 **使用權杖**
 
-1. 針對 **未啟用 Azure AD**的叢集，請執行 `kubectl config view` 並複製與叢集的使用者帳戶相關聯的權杖。
-1. 在登入時，貼到 [權杖] 選項。    
+1. 針對 **未啟用 Azure AD**的叢集，請執行 `kubectl config view` 並複製與您叢集的使用者帳戶相關聯的權杖。
+1. 在登入時，貼到 token 選項中。    
 1. 按一下 `Sign In`
 
-對於已啟用 Azure AD 的叢集，請使用下列命令來取出 AAD 權杖。 驗證您已取代命令中的資源群組和叢集名稱。
+針對已啟用 Azure AD 的叢集，請使用下列命令來取出您的 AAD 權杖。 驗證您已在命令中取代資源群組和叢集名稱。
 
 ```
 ## Update <RESOURCE_GROUP and <AKS_NAME> with your input.
@@ -142,7 +142,7 @@ kubectl config view -o jsonpath='{.users[?(@.name == "clusterUser_<RESOURCE GROU
 
 ## <a name="create-an-application"></a>建立應用程式
 
-下列步驟需要使用者擁有個別資源的許可權。 
+下列步驟會要求使用者擁有個別資源的許可權。 
 
 為了了解 Kubernetes 儀表板如何降低管理工作的複雜性，我們將建立一個應用程式。 您可以從 Kubernetes 儀表板提供文字輸入、YAML 檔案或透過圖形化精靈來建立應用程式。
 

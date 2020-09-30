@@ -6,12 +6,12 @@ ms.author: nikiest
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.subservice: ''
-ms.openlocfilehash: 6045fa475b3bb112afee9ceacd8d6b136087feab
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2b94c782b5d7139fae7a01233bffd3b17cf43c7c
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077198"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570411"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>使用 Azure 私人連結將網路安全地連線到 Azure 監視器
 
@@ -72,17 +72,17 @@ Azure 監視器私人連結範圍是一種群組資源，可將一或多個私�
 
 ### <a name="consider-limits"></a>考慮限制
 
-在規劃私人連結設定時，您應該考慮幾個限制：
+規劃 Private Link 設定時，您應該考慮一些限制：
 
-* VNet 只能連接到1個 AMPLS 物件。 這表示 AMPLS 物件必須提供 VNet 可存取的所有 Azure 監視器資源的存取權。
-* Azure 監視器的資源（工作區或 Application Insights 元件）最多可以連接到5個 AMPLSs。
-* AMPLS 物件最多可以連接到20個 Azure 監視器資源。
-* AMPLS 物件最多可以連接到10個私人端點。
+* VNet 只能連接到1個 AMPLS 物件。 這表示 AMPLS 物件必須提供 VNet 應可存取之所有 Azure 監視器資源的存取權。
+* Azure 監視器資源 (工作區或 Application Insights 元件) 最多可連接至5個 AMPLSs。
+* AMPLS 物件最多可連接至 50 Azure 監視器資源。
+* AMPLS 物件最多可連接至10個私人端點。
 
 在下列拓撲中：
-* 每個 VNet 會連接到1個 AMPLS 物件，因此無法連線到其他 AMPLSs。
-* AMPLS B 會連接到2個 Vnet：使用其可能的私用端點連線2/10。
-* AMPLS 會連接到2個工作區和1個 Application insights 元件：使用3/20 可能的 Azure 監視器資源。
+* 每個 VNet 都會連接到1個 AMPLS 物件，因此無法連線到其他 AMPLSs。
+* AMPLS B 會連接到 2 Vnet：使用其可能的私人端點連接的2/10。
+* AMPLS 會連接到2個工作區和1個應用程式深入解析元件：使用3/50 的可能 Azure 監視器資源。
 * 工作區2會連接到 AMPLS A 和 AMPLS B：使用2/5 的可能 AMPLS 連接。
 
 ![AMPLS 限制的圖表](./media/private-link-security/ampls-limits.png)
@@ -93,14 +93,14 @@ Azure 監視器私人連結範圍是一種群組資源，可將一或多個私�
 
 1. 在 Azure 入口網站中移至 [建立資源]，搜尋 **Azure 監視器私人連結範圍**。
 
-   ![尋找 Azure 監視器私人連結範圍](./media/private-link-security/ampls-find-1c.png)
+   ![尋找 Azure 監視器 Private Link 範圍](./media/private-link-security/ampls-find-1c.png)
 
 2. 按一下 [建立]。
 3. 選取訂用帳戶和資源群組。
 4. 提供 AMPLS 的名稱。 名稱最好能夠清楚描述領域的用途和安全性界限，以免有人意外中斷網路安全性界限。 例如，AppServerProdTelem。
 5. 按一下 [檢閱 + 建立]。 
 
-   ![建立 Azure 監視器私人連結範圍](./media/private-link-security/ampls-create-1d.png)
+   ![建立 Azure 監視器 Private Link 範圍](./media/private-link-security/ampls-create-1d.png)
 
 6. 讓驗證通過，然後按一下 [建立]。
 
@@ -140,7 +140,7 @@ Azure 監視器私人連結範圍是一種群組資源，可將一或多個私�
 
    a.    選擇您想要連線到 Azure 監視器資源的 [虛擬網路] 和 [子網路]。 
  
-   b.    請在 [與私人 DNS 區域整合] 選擇 [是] ，讓它自動建立新的私人 DNS 區域。 實際的 DNS 區域可能與下列螢幕擷取畫面中所顯示的不同。 
+   b.    請在 [與私人 DNS 區域整合] 選擇 [是] ，讓它自動建立新的私人 DNS 區域。 實際的 DNS 區域可能與下列螢幕擷取畫面中顯示的不同。 
  
    c.    按一下 [檢閱 + 建立]。
  
@@ -154,18 +154,31 @@ Azure 監視器私人連結範圍是一種群組資源，可將一或多個私�
 
 ## <a name="configure-log-analytics"></a>設定 Log Analytics
 
-前往 Azure 入口網站。 在您的 Log Analytics 工作區資源中，左側有一個功能表項目 [**網路隔離**]。 您可以從這個功能表控制兩種不同的狀態。 
+移至 Azure 入口網站。 在您的 Log Analytics 工作區資源中，左側會有功能表項目 **網路隔離** 。 您可以從這個功能表控制兩種不同的狀態。 
 
 ![Log Analytics 網路隔離](./media/private-link-security/ampls-log-analytics-lan-network-isolation-6.png)
 
 首先，您可以將此 Log Analytics 資源連線到您可存取的任何 Azure 監視器私人連結範圍。 按一下 [新增]，然後選取 [Azure 監視器私人連結範圍]。  按一下 [套用] 以與之連線。 所有連線的範圍都會顯示在此畫面中。 進行此連線可以使連線的虛擬網路中的網路流量連線到此工作區。 建立連線的效果與從範圍進行連線相同，如同我們在[連線 Azure 監視器資源](#connect-azure-monitor-resources)中所做的。  
 
-然後，您可以控制如何從上方所列的私人連結範圍外部連線到此資源。 如果您將 [允許擷取的公用網路存取] 設為 [否]，則連線範圍以外的電腦就無法將資料上傳到此工作區。 如果您將 [允許查詢的公用網路存取] 設為 [否]，則範圍以外的電腦就無法存取此工作區中的資料。 該資料包括對活頁簿、儀表板、以查詢 API 為基礎的用戶端體驗、Azure 入口網站中的深入解析等等的存取。 在 Azure 入口網站外執行的體驗，以及查詢 Log Analytics 資料也必須在私人連結的 VNET 內執行。
+然後，您可以控制如何從上方所列的私人連結範圍外部連線到此資源。 如果您將 [允許擷取的公用網路存取] 設為 [否]，則連線範圍以外的電腦就無法將資料上傳到此工作區。 如果您將 [允許查詢的公用網路存取] 設為 [否]，則範圍以外的電腦就無法存取此工作區中的資料。 該資料包括對活頁簿、儀表板、以查詢 API 為基礎的用戶端體驗、Azure 入口網站中的深入解析等等的存取。 在 Azure 入口網站外執行的體驗，而且查詢 Log Analytics 資料也必須在私人連結的 VNET 內執行。
 
-以這種方式限制的存取僅適於工作區中的資料。 設定變更 (包括開啟或關閉這些存取設定) 是由 Azure Resource Manager 管理。 使用適當的角色、權限、網路控制、稽核，限制對 Resource Manager 的存取。 如需詳細資訊，請參閱 [Azure 監視器的角色、權限和安全性](roles-permissions-security.md)。
+以這種方式限制存取並不適用于 Azure Resource Manager，因此有下列限制：
+* 存取資料-雖然從公用網路封鎖查詢適用于大部分的 Log Analytics 體驗，但有些體驗會透過 Azure Resource Manager 來查詢資料，因此將無法查詢資料，除非將 Private Link 設定套用至 Resource Manager， (功能很快就會推出) 。 例如 Azure 監視器的解決方案、活頁簿和見解，以及 LogicApp 連接器。
+* 工作區管理-工作區設定和設定變更 (包括開啟或關閉這些存取設定) 是由 Azure Resource Manager 管理。 使用適當的角色、許可權、網路控制項和審核來限制對工作區管理的存取。 如需詳細資訊，請參閱 [Azure 監視器的角色、權限和安全性](roles-permissions-security.md)。
 
 > [!NOTE]
 > 經由[診斷設定](diagnostic-settings.md)上傳至工作區的記錄和計量，是透過安全的私人 Microsoft 通道，不受這些設定控制。
+
+### <a name="log-analytics-solution-packs-download"></a>Log Analytics 解決方案套件下載
+
+若要允許 Log Analytics 代理程式下載解決方案套件，請將適當的完整網域名稱新增至您的防火牆允許清單。 
+
+
+| 雲端環境 | 代理程式資源 | 連接埠 | 方向 |
+|:--|:--|:--|:--|
+|Azure 公用     | scadvisorcontent.blob.core.windows.net         | 443 | 輸出
+|Azure Government | usbn1oicore.blob.core.usgovcloudapi.net | 443 |  輸出
+|Azure China 21Vianet      | mceast2oicore.blob.core.chinacloudapi.cn| 443 | 輸出
 
 ## <a name="configure-application-insights"></a>設定 Application Insights
 
@@ -186,7 +199,7 @@ Azure 監視器私人連結範圍是一種群組資源，可將一或多個私�
 > [!NOTE]
 > 若要完整保護以工作區運作的 Application Insights，必須同時鎖定對 Application Insights 資源的存取，以及對其基礎 Log Analytics 工作區的存取。
 >
-> 程式碼層級診斷（profiler/偵錯工具）需要您提供自己的儲存體帳戶，才能支援私用連結。 以下是如何執行此動作的[檔](../app/profiler-bring-your-own-storage.md)。
+> 程式碼層級診斷 (分析工具/偵錯工具) 需要您提供自己的儲存體帳戶以支援 private link。 以下是如何進行此動作的 [檔](../app/profiler-bring-your-own-storage.md) 。
 
 ## <a name="use-apis-and-command-line"></a>使用 API 和命令列
 
@@ -196,7 +209,7 @@ Azure 監視器私人連結範圍是一種群組資源，可將一或多個私�
 
 若要管理網路存取，請在 [Log Analytics 工作區](/cli/azure/monitor/log-analytics/workspace?view=azure-cli-latest)或 [Application Insights 元件](/cli/azure/ext/application-insights/monitor/app-insights/component?view=azure-cli-latest)上使用 `[--ingestion-access {Disabled, Enabled}]` 和 `[--query-access {Disabled, Enabled}]` 旗標。
 
-## <a name="collect-custom-logs-over-private-link"></a>透過私人連結收集自訂記錄
+## <a name="collect-custom-logs-over-private-link"></a>收集自訂記錄檔 Private Link
 
 擷取自訂記錄的程序會使用儲存體帳戶。 根據預設，會使用服務管理的儲存體帳戶。 不過，若要在私人連結上擷取自訂記錄，您必須使用您自己的儲存體帳戶，並將其與 Log Analytics 工作區建立關聯。 請細看如需如何使用[命令列](/cli/azure/monitor/log-analytics/workspace/linked-storage?view=azure-cli-latest)設定這類帳戶。
 
@@ -206,7 +219,7 @@ Azure 監視器私人連結範圍是一種群組資源，可將一或多個私�
 
 ### <a name="agents"></a>代理程式
 
-您必須在私人網路上使用最新版的 Windows 和 Linux 代理程式，以啟用 Log Analytics 工作區的安全內嵌。 較舊的版本無法在私人網路中上傳監視資料。
+Windows 和 Linux 代理程式的最新版本必須用於私人網路，才能安全地內嵌至 Log Analytics 工作區。 較舊的版本無法在私人網路中上傳監視資料。
 
 **Log Analytics Windows 代理程式**
 
@@ -223,7 +236,7 @@ $ sudo /opt/microsoft/omsagent/bin/omsadmin.sh -w <workspace id> -s <workspace k
 
 ### <a name="azure-portal"></a>Azure 入口網站
 
-若要使用 Azure 監視器的入口網站體驗，例如 Application Insights 和 Log Analytics，您必須允許在私人網路上存取 Azure 入口網站和 Azure 監視器擴充功能。 將**AzureActiveDirectory**、 **AzureResourceManager**、 **AzureFrontDoor、FirstParty**和**AzureFrontDoor. 前端**[服務](../../firewall/service-tags.md)標籤新增至您的防火牆。
+若要使用 Azure 監視器的入口網站體驗，例如 Application Insights 和 Log Analytics，您必須允許在私人網路上存取 Azure 入口網站和 Azure 監視器擴充功能。 將**AzureActiveDirectory**、 **AzureResourceManager**、 **AzureFrontDoor. FirstParty**和**AzureFrontDoor. 前端**[服務標記](../../firewall/service-tags.md)新增至您的防火牆。
 
 ### <a name="programmatic-access"></a>以程式設計方式存取
 
@@ -235,21 +248,10 @@ $ sudo /opt/microsoft/omsagent/bin/omsadmin.sh -w <workspace id> -s <workspace k
 
 在您的指令碼中搭配 JavaScript 程式碼，讓瀏覽器不會嘗試從 CDN 下載程式碼。 [GitHub](https://github.com/microsoft/ApplicationInsights-JS#npm-setup-ignore-if-using-snippet-setup) 上有提供範例。
 
-### <a name="log-analytics-solution-download"></a>Log Analytics 解決方案下載
-
-若要允許 Log Analytics 代理程式下載解決方案套件，請將適當的完整網域名稱新增至您的防火牆允許清單。 
-
-
-| 雲端環境 | 代理程式資源 | 連接埠 | 方向 |
-|:--|:--|:--|:--|
-|Azure 公用     | scadvisorcontent.blob.core.windows.net         | 443 | 輸出
-|Azure Government | usbn1oicore.blob.core.usgovcloudapi.net | 443 |  輸出
-|Azure China 21Vianet      | mceast2oicore.blob.core.chinacloudapi.cn| 443 | 輸出
-
 ### <a name="browser-dns-settings"></a>瀏覽器 DNS 設定
 
-如果您透過私人連結連線到您的 Azure 監視器資源，則這些資源的流量必須通過您網路上所設定的私人端點。 若要啟用私用端點，請更新您的 DNS 設定，如[連接到私人端點](#connect-to-a-private-endpoint)中所述。 有些瀏覽器會使用自己的 DNS 設定，而不是您所設定的設定。 瀏覽器可能會嘗試連接到 Azure 監視器公用端點，並完全略過私用連結。 確認您的瀏覽器設定不會覆寫或快取舊的 DNS 設定。 
+如果您是透過 Private Link 連線到 Azure 監視器資源，則這些資源的流量必須通過您網路上設定的私人端點。 若要啟用私人端點，請更新您的 DNS 設定，如 [連接到私人端點](#connect-to-a-private-endpoint)中所述。 有些瀏覽器會使用自己的 DNS 設定，而不是您所設定的設定。 瀏覽器可能會嘗試連線到 Azure 監視器的公用端點，並完全略過 Private Link。 確認您的瀏覽器設定不會覆寫或快取舊的 DNS 設定。 
 
 ## <a name="next-steps"></a>後續步驟
 
-- 深入瞭解[私人儲存體](private-storage.md)
+- 深入瞭解 [私人儲存體](private-storage.md)

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 3f882375197fa45cfbc74ff7a80ed33fd33f33a3
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 1f2e90f9391654d10332b9f1a21c56fd22e2307b
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91400293"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570802"
 ---
 # <a name="how-does-azure-cosmos-db-provide-high-availability"></a>Azure Cosmos DB 如何提供高可用性？ 
 
@@ -30,7 +30,7 @@ Azure Cosmos DB 會以透明方式將您的資料複寫到與 Azure Cosmos 帳�
 
 ## <a name="slas-for-availability"></a>用於提供可用性的 SLA
 
-做為全域散發的資料庫，Azure Cosmos DB 提供涵蓋輸送量、第99個百分位數的延遲、一致性和高可用性的完整 Sla。 下表顯示單一和多重區域帳戶 Azure Cosmos DB 所提供的高可用性保證。 為了達到高可用性，請一律將您的 Azure Cosmos 帳戶設定為具有多個寫入區域 (也稱為多宿主) 。
+做為全域散發的資料庫，Azure Cosmos DB 提供涵蓋輸送量、第99個百分位數的延遲、一致性和高可用性的完整 Sla。 下表顯示單一和多重區域帳戶 Azure Cosmos DB 所提供的高可用性保證。 為了達到高可用性，請一律將您的 Azure Cosmos 帳戶設定為具有多個寫入區域。
 
 |作業類型  | 單一區域 |多重區域 (單一區域寫入)|多重區域 (多重區域寫入) |
 |---------|---------|---------|-------|
@@ -46,7 +46,7 @@ Azure Cosmos DB 會以透明方式將您的資料複寫到與 Azure Cosmos 帳�
 
 - 使用 Azure Cosmos DB，在將寫入作業認可至用戶端之前，資料會由接受寫入作業之區域內的複本仲裁進行永久認可。
 
-- 使用多個寫入區域/多宿主設定的多重區域帳戶，將會具有高可用性，可進行寫入和讀取。 區域性容錯移轉是即時的，不需要對應用程式進行任何變更。
+- 使用多重寫入區域設定的多重區域帳戶，將針對寫入和讀取維持高可用性。 區域性容錯移轉是即時的，不需要對應用程式進行任何變更。
 
 - 單一區域帳戶可能會在區域性中斷之後失去可用性。 一律建議至少設定 **兩個區域** (最好是至少兩個寫入區域) 使用您的 Azure Cosmos 帳戶，以確保隨時都有高可用性。
 
@@ -125,7 +125,7 @@ az cosmosdb create \
 
 建立 Azure Cosmos 帳戶時，您可以使用 Azure 入口網站來啟用可用性區域。 當您建立帳戶時，請務必啟用地理位置 **冗余**、 **多重區域寫入**，然後選擇支援可用性區域的區域：
 
-:::image type="content" source="./media/high-availability/enable-availability-zones-using-portal.png" alt-text="使用 Azure 入口網站啟用可用性區域"::: 
+:::image type="content" source="./media/high-availability/enable-availability-zones-using-portal.png" alt-text="實體資料分割"::: 
 
 ## <a name="building-highly-available-applications"></a>高度可用的應用程式
 

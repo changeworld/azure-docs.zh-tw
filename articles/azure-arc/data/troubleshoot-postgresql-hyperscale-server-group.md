@@ -9,15 +9,15 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 8d1c9027b6a9a7b295ce83e26281832beca1bc33
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 8e91a611084d201e6609f7e203eaa08c81e19a00
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91531950"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570009"
 ---
 # <a name="troubleshooting-postgresql-hyperscale-server-groups"></a>針對于 postgresql 超大規模伺服器群組進行疑難排解
-本文描述您可以用來疑難排解伺服器群組的一些技巧。 除了本文之外，您可能想要閱讀如何使用 [Kibana](monitor-grafana-kibana.md) 來搜尋記錄，或使用 [Grafana](monitor-grafana-kibana.md) 來視覺化伺服器群組的相關度量。 
+本文描述您可以用來疑難排解伺服器群組的一些技巧。 除了本文之外，您還需要閱讀如何使用 [Kibana](monitor-grafana-kibana.md) 來搜尋記錄，或使用 [Grafana](monitor-grafana-kibana.md) 來視覺化伺服器群組的相關度量。 
 
 ## <a name="getting-more-details-about-the-execution-of-an-azdata-command"></a>取得 azdata 命令執行的更多詳細資料
 您可以將參數 **--debug** 新增至您執行的任何 azdata 命令。 這麼做會對主控台顯示該命令執行的其他相關資訊。 您應該會發現有助於取得詳細資料，以協助您瞭解該命令的行為。

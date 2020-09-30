@@ -1,17 +1,17 @@
 ---
 title: 使用 Azure Cosmos DB 全域散發資料
-description: 了解如何從 Azure Cosmos DB (全域散發的多模型資料庫服務)，使用全域資料庫進行全球規模的異地複寫、多重主機、容錯移轉及資料復原。
+description: 使用全域散發的多模型資料庫服務，瞭解如何使用全球資料庫 Azure Cosmos DB 全球規模的異地複寫、多重區域寫入、容錯移轉及資料復原。
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: abd18132c7489153566042b0b7e3557662864f30
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 29917b0911fbab36fbb30a587ee7cac223b993f2
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91399460"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570189"
 ---
 # <a name="distribute-your-data-globally-with-azure-cosmos-db"></a>使用 Azure Cosmos DB 來全域散發資料
 
@@ -27,7 +27,7 @@ Azure Cosmos DB 是一個全域散發的資料庫服務，旨在提供低延遲�
 
 ## <a name="key-benefits-of-global-distribution"></a>全域散發的主要優點
 
-**建立全域主動-主動應用程式。** 透過其新穎的多重主要複寫通訊協定，每個區域都支援寫入和讀取。 多宿主功能也可啟用：
+**建立全域主動-主動應用程式。** 在其新穎多重區域寫入複寫通訊協定的情況下，每個區域都支援寫入和讀取。 多區域寫入功能也可啟用：
 
 - 無限制的彈性寫入和讀取的擴充性。 
 - 在世界各地具有 99.999% 的讀取和寫入可用性。
@@ -50,7 +50,7 @@ Azure Cosmos DB 是一個全域散發的資料庫服務，旨在提供低延遲�
 從下列文章中深入了解全域散發：
 
 * [全域散發 - 運作原理](global-dist-under-the-hood.md)
-* [如何在應用程式中設定多宿主](how-to-multi-master.md)
+* [如何在應用程式中設定多重區域寫入](how-to-multi-master.md)
 * [設定多路連接的用戶端](how-to-manage-database-account.md#configure-multiple-write-regions)
 * [從您的 Azure Cosmos 帳戶新增或移除區域](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
 * [建立 SQL API 帳戶的自訂衝突解決原則](how-to-manage-conflicts.md#create-a-custom-conflict-resolution-policy)

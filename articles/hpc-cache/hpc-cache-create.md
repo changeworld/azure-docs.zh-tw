@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 09/03/2020
 ms.author: v-erkel
-ms.openlocfilehash: 5b1062556f1f971690f835274be15c11b072eca9
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: 5e17c55f8321ba0ad9a9686ada41413d64879d6c
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89612070"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570887"
 ---
 # <a name="create-an-azure-hpc-cache"></a>建立 Azure HPC Cache
 
@@ -189,9 +189,100 @@ az hpc-cache create --resource-group doc-demo-rg --name my-cache-0619 \
 * 用戶端掛接位址：當您準備好要將用戶端連線至快取時，請使用這些 IP 位址。 若要深入瞭解，請參閱 [裝載 Azure HPC Cache](hpc-cache-mount.md) 。
 * 升級狀態-發行軟體更新時，此訊息將會變更。 您可以在方便的時間手動升級快取 [軟體](hpc-cache-manage.md#upgrade-cache-software) ，或者會在數天后自動套用。
 
+## <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+> [!CAUTION]
+> Az. HPCCache PowerShell 模組目前為公開預覽狀態。 此預覽版本是在沒有服務等級協定的情況下提供。 不建議用於生產工作負載。 某些功能可能不受支援，或可能具有受限的功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+
+## <a name="requirements"></a>需求
+
+如果您選擇在本機使用 PowerShell，本文會要求您安裝 Az PowerShell 模組，並使用 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) Cmdlet 連線到您的 Azure 帳戶。 如需安裝 Az PowerShell 模組的詳細資訊，請參閱[安裝 Azure PowerShell](/powershell/azure/install-az-ps)。 如果您選擇使用 Cloud Shell，請參閱 [Azure Cloud Shell 的總覽](https://docs.microsoft.com/azure/cloud-shell/overview) 以取得詳細資訊。
+
+> [!IMPORTANT]
+> **HPCCache** PowerShell 模組目前為預覽狀態，您必須使用指令程式個別進行安裝 `Install-Module` 。 在此 PowerShell 模組正式推出之後，它將會成為未來 Az PowerShell 模組版本的一部分，並以原生方式從 Azure Cloud Shell 內提供。
+
+```azurepowershell-interactive
+Install-Module -Name Az.HPCCache
+```
+
+## <a name="create-the-cache-with-azure-powershell"></a>使用 Azure PowerShell 建立快取
+
+> [!NOTE]
+> Azure PowerShell 目前不支援使用客戶管理的加密金鑰來建立快取。 使用 Azure 入口網站。
+
+使用 [AzHpcCache](/powershell/module/az.hpccache/new-azhpccache) Cmdlet 來建立新的 Azure HPC Cache。
+
+請提供下列值：
+
+* 快取資源組名
+* 快取名稱
+* Azure 區域
+* 快取子網，格式如下：
+
+  `-SubnetUri "/subscriptions/<subscription_id>/resourceGroups/<cache_resource_group>/providers/Microsoft.Network/virtualNetworks/<virtual_network_name>/sub
+nets/<cache_subnet_name>"`
+
+  快取子網需要至少64個 IP 位址 (/24) ，而且無法存放任何其他資源。
+
+* 快取容量。 有兩個值會設定 Azure HPC Cache 的最大輸送量：
+
+  * 快取大小 (GB) 
+  * 快取基礎結構中使用的虛擬機器 SKU
+
+  [AzHpcCacheSku](/powershell/module/az.hpccache/get-azhpccachesku) 會顯示可用的 sku，以及每一個 sku 的有效快取大小選項。 快取大小選項的範圍是從 3 TB 到 48 TB，但只支援部分值。
+
+  此圖表顯示 (2020 年7月) 時，哪些快取大小和 SKU 組合是有效的。
+
+  | 快取大小 | Standard_2G | Standard_4G | Standard_8G |
+  |------------|-------------|-------------|-------------|
+  | 3072 GB    | 是         | 否          | 否          |
+  | 6144 GB    | 是         | 是         | 否          |
+  | 12288 GB   | 是         | 是         | 是         |
+  | 24576 GB   | 否          | 是         | 是         |
+  | 49152 GB   | 否          | 否          | 是         |
+
+  請參閱入口網站指示索引標籤中的 [設定快取 **容量** ] 區段，以取得有關定價、輸送量和如何針對您的工作流程適當地調整快取大小的重要資訊。
+
+快取建立範例：
+
+```azurepowershell-interactive
+$cacheParams = @{
+  ResourceGroupName = 'doc-demo-rg'
+  CacheName = 'my-cache-0619'
+  Location = 'eastus'
+  cacheSize = '3072'
+  SubnetUri = "/subscriptions/<subscription-ID>/resourceGroups/doc-demo-rg/providers/Microsoft.Network/virtualNetworks/vnet-doc0619/subnets/default"
+  Sku = 'Standard_2G'
+}
+New-AzHpcCache @cacheParams
+```
+
+快取建立需要幾分鐘的時間。 成功時，create 命令會傳回下列輸出：
+
+```Output
+cacheSizeGb       : 3072
+health            : @{state=Healthy; statusDescription=The cache is in Running state}
+id                : /subscriptions/<subscription-ID>/resourceGroups/doc-demo-rg/providers/Microsoft.StorageCache/caches/my-cache-0619
+location          : eastus
+mountAddresses    : {10.3.0.17, 10.3.0.18, 10.3.0.19}
+name              : my-cache-0619
+provisioningState : Succeeded
+resourceGroup     : doc-demo-rg
+sku               : @{name=Standard_2G}
+subnet            : /subscriptions/<subscription-ID>/resourceGroups/doc-demo-rg/providers/Microsoft.Network/virtualNetworks/vnet-doc0619/subnets/default
+tags              :
+type              : Microsoft.StorageCache/caches
+upgradeStatus     : @{currentFirmwareVersion=5.3.42; firmwareUpdateDeadline=1/1/0001 12:00:00 AM; firmwareUpdateStatus=unavailable; lastFirmwareUpdate=4/1/2020 10:19:54 AM; pendingFirmwareVersion=}
+```
+
+此訊息包含一些實用的資訊，包括下列專案：
+
+* 用戶端掛接位址：當您準備好要將用戶端連線至快取時，請使用這些 IP 位址。 若要深入瞭解，請參閱 [裝載 Azure HPC Cache](hpc-cache-mount.md) 。
+* 升級狀態-發行軟體更新時，此訊息會變更。 您可以在方便的時間手動升級快取 [軟體](hpc-cache-manage.md#upgrade-cache-software) ，也可以在數天后自動套用。
+
 ---
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 當您的快取出現在 **資源清單** 之後，您就可以移至下一個步驟。
 

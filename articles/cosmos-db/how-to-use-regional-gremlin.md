@@ -8,15 +8,15 @@ ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 09/09/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3dd7df738f49b14a16be8a9741fb2c82ed3bf97c
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.openlocfilehash: 5537b70f9852f5b5a17362c13e2c9b8e8e9fc43c
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91409004"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570616"
 ---
 # <a name="regional-endpoints-for-azure-cosmos-db-graph-account"></a>Azure Cosmos DB 圖形帳戶的區域端點
-Azure Cosmos DB 圖形資料庫是[全域散發的](distribute-data-globally.md)，因此應用程式可以使用多個讀取端點。 需要在多個位置具有寫入存取權的應用程式應該啟用[多重主機](how-to-multi-master.md)功能。
+Azure Cosmos DB 圖形資料庫是[全域散發的](distribute-data-globally.md)，因此應用程式可以使用多個讀取端點。 需要在多個位置具有寫入存取權的應用程式，應該啟用 [多區域寫入](how-to-multi-master.md) 功能。
 
 選擇多個區域的原因：
 1. **水平讀取延展性** - 隨著應用程式負載增加，將讀取流量路由傳送至不同的 Azure 區域是較明智的做法。

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 08/28/2020
+ms.date: 09/29/2020
 ms.author: alkohli
-ms.openlocfilehash: 59924312fe0483d11d0f70ce83b8f6e4b0e198dc
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: e5c8a496c60d3bba81040716c74bca7b5cb6095e
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90890757"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569429"
 ---
 # <a name="use-certificates-with-azure-stack-edge-pro-gpu-device"></a>使用憑證搭配 Azure Stack Edge Pro GPU 裝置
 
@@ -61,7 +61,7 @@ ms.locfileid: "90890757"
 - 根憑證應簽署鏈證書。
 - 您可以用下列格式將根憑證上傳至您的裝置： 
     - **DER** –以副檔名的形式提供 `.cer` 。
-    - 以**64 為基礎的編碼或 PEM** –這些也是以延伸模組的形式提供 `.cer` 。
+    - 以**64 為基礎的編碼**-這些都是以 `.cer` 副檔名提供。
     - **P7b** –此格式僅用於包含根憑證和中繼憑證的簽署鏈憑證。
 - 簽署鏈憑證一律會上傳，然後再上傳任何其他憑證。
 
@@ -275,11 +275,11 @@ New-SelfSignedCertificate -Type Custom -DnsName "$AppName.$domain","$DeviceSeria
 
     1. 先上傳根憑證。 在本機 web UI 中，移至 [ **憑證 > + 新增憑證**]。
 
-        ![新增簽署鏈憑證](media/azure-stack-edge-series-manage-certificates/add-cert-1.png)
+        ![新增簽署鏈憑證1](media/azure-stack-edge-series-manage-certificates/add-cert-1.png)
 
     2. 接下來上傳端點憑證。 
 
-        ![新增簽署鏈憑證](media/azure-stack-edge-series-manage-certificates/add-cert-2.png)
+        ![新增簽署鏈憑證2](media/azure-stack-edge-series-manage-certificates/add-cert-2.png)
 
         選擇 *.pfx* 格式的憑證檔案，然後輸入您在匯出憑證時所提供的密碼。 Azure Resource Manager 憑證可能需要幾分鐘的時間才會套用。
 
@@ -324,7 +324,7 @@ New-SelfSignedCertificate -Type Custom -DnsName "$AppName.$domain","$DeviceSeria
         ![匯入憑證3](media/azure-stack-edge-series-manage-certificates/import-cert-3.png)
 
  
-4. 選取 [完成]。 顯示匯入成功的結果訊息。
+4. 選取 [完成]  。 顯示匯入成功的結果訊息。
 
 ### <a name="export-certificates-as-pfx-format-with-private-key"></a>使用私密金鑰將憑證匯出為 .pfx 格式
 
@@ -366,7 +366,7 @@ New-SelfSignedCertificate -Type Custom -DnsName "$AppName.$domain","$DeviceSeria
 
     ![匯出憑證7](media/azure-stack-edge-series-manage-certificates/export-cert-pfx-7.png)
   
-8. 選取 [完成]。
+8. 選取 [完成]  。
 
     ![匯出憑證8](media/azure-stack-edge-series-manage-certificates/export-cert-pfx-8.png)
 
@@ -383,20 +383,20 @@ New-SelfSignedCertificate -Type Custom -DnsName "$AppName.$domain","$DeviceSeria
 
 1. 在 [個人] 憑證存放區中，選取根憑證。 以滑鼠右鍵按一下並選取 [所有工作] **> 匯出 ...**
 
-    ![匯出憑證1](media/azure-stack-edge-series-manage-certificates/export-cert-cer-1.png)
+    ![匯出憑證 DER 1](media/azure-stack-edge-series-manage-certificates/export-cert-cer-1.png)
 
-2. 憑證嚮導隨即開啟。 選取格式為 **DER 編碼的二進位 x.509 ( .cer) **。 選取 [下一步]  。
+2. 憑證嚮導隨即開啟。 選取格式為 **DER 編碼的二進位 x.509 ( .cer) **。 選取 [下一步] 。
 
-    ![匯出憑證2](media/azure-stack-edge-series-manage-certificates/export-cert-cer-2.png)
+    ![匯出憑證 DER 2](media/azure-stack-edge-series-manage-certificates/export-cert-cer-2.png)
 
 3. 流覽並選取您要匯出 .cer 格式檔案的位置。
 
-    ![匯出憑證3](media/azure-stack-edge-series-manage-certificates/export-cert-cer-3.png)
+    ![匯出憑證 DER 3](media/azure-stack-edge-series-manage-certificates/export-cert-cer-3.png)
 
 
-4. 選取 [完成]。
+4. 選取 [完成]  。
 
-    ![匯出憑證4](media/azure-stack-edge-series-manage-certificates/export-cert-cer-4.png)
+    ![匯出憑證 DER 4](media/azure-stack-edge-series-manage-certificates/export-cert-cer-4.png)
 
 
 ## <a name="supported-certificate-algorithms"></a>支援的憑證演算法
@@ -410,12 +410,12 @@ New-SelfSignedCertificate -Type Custom -DnsName "$AppName.$domain","$DeviceSeria
 
 如果您攜帶自己的憑證，憑證通常會在1年或6個月內到期。 若要查看憑證的到期日，請移至裝置本機 web UI 中的 [ **憑證** ] 頁面。 如果您選取特定的憑證，您可以查看憑證的到期日。
 
-## <a name="rotate-certificates"></a>輪替憑證
+<!--## Rotate certificates
 
-在此版本中不會執行憑證的輪替。 您也不會在您的憑證上收到擱置到期日的通知。 
+Rotation of certificates is not implemented in this release. You are also not notified of the pending expiration date on your certificate. 
 
-在裝置本機 web UI 的 [ **憑證** ] 頁面上，查看憑證到期日。 憑證到期後，請根據 [建立和上傳憑證](azure-stack-edge-j-series-manage-certificates.md)中的詳細指示來建立和上傳新的憑證。
+View the certificate expiration date on the **Certificates** page in the local web UI of your device. Once the certificate expiration is approaching, create and upload new certificates as per the detailed instructions in [Create and upload certificates](azure-stack-edge-j-series-manage-certificates.md).-->
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 [部署 Azure Stack Edge Pro 裝置](azure-stack-edge-gpu-deploy-prep.md)

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 09/28/2020
 ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e8c305da074f3090ced0dfc16b4a3faa4c757699
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 0bdf2c4dda3e272ae04681f886f6e4da31dcebd8
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91440216"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569834"
 ---
 # <a name="configure-expressroute-direct-by-using-the-azure-cli"></a>使用 Azure CLI 設定 ExpressRoute Direct
 
@@ -216,6 +216,8 @@ ExpressRoute Direct 可讓您透過策略性分散在世界各地的對等互連
 ```azurecli
 az network express-route port generate-loa -n Contoso-Direct -g Contoso-Direct-rg --customer-name Contoso --destination C:\Users\SampleUser\Downloads\LOA.pdf
 ```
+
+## <a name="change-adminstate-for-links"></a><a name="state"></a>變更連結的 AdminState
 
 使用此程序來進行第 1 層測試。 確保每個交叉連線都已在主要和次要連接埠的每個路由器中正確修補。
 

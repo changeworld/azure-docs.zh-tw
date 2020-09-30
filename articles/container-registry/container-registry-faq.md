@@ -3,20 +3,20 @@ title: 常見問題集
 description: Azure Container Registry 服務相關常見問題的解答
 author: sajayantony
 ms.topic: article
-ms.date: 03/18/2020
+ms.date: 09/18/2020
 ms.author: sajaya
-ms.openlocfilehash: 02facedda206a5621cabe62a07520303635dc3ff
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: 499ef509fc9f8d9365d8db3f7058d12352db9bb2
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88245361"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570505"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>關於 Azure Container Registry 的常見問題集
 
 本文說明 Azure Container Registry 的常見問題和已知問題。
 
-如需登錄疑難排解指導方針，請參閱：
+如需登錄疑難排解指引，請參閱：
 * [針對登錄登入進行疑難排解](container-registry-troubleshoot-login.md)
 * [針對登錄的網路問題進行疑難排解](container-registry-troubleshoot-access.md)
 * [針對登錄效能進行疑難排解](container-registry-troubleshoot-performance.md)
@@ -225,7 +225,7 @@ ACR 支援提供不同權限層級的[自訂角色](container-registry-roles.md)
   az role assignment create --scope resource_id --role AcrPull --assignee user@example.com
   ```
 
-  或者，將角色指派給由其應用程式識別碼所識別的服務主體：
+  或者，將角色指派給以其應用程式識別碼識別的服務主體：
 
   ```azurecli
   az role assignment create --scope resource_id --role AcrPull --assignee 00000000-0000-0000-0000-000000000000
@@ -259,10 +259,10 @@ ACR 支援提供不同權限層級的[自訂角色](container-registry-roles.md)
 
 ### <a name="how-do-i-enable-anonymous-pull-access"></a>如何啟用匿名提取存取？
 
-設定匿名 (公用) 提取存取的 Azure 容器登錄目前為預覽功能。 如果您的登錄中有任何 [範圍對應 (使用者) 或權杖資源](https://aka.ms/acr/repo-permissions) ，請先將其刪除，再提出支援票證 (系統範圍對應可以忽略) 。 若要啟用公用存取，請在 https://aka.ms/acr/support/create-ticket 開啟支援票證。 如需詳細資訊，請參閱 [Azure 意見反應論壇](https://feedback.azure.com/forums/903958-azure-container-registry/suggestions/32517127-enable-anonymous-access-to-registries)。
+設定匿名 (公用) 提取存取的 Azure 容器登錄目前為預覽功能。 如果您在登錄中 [ (使用者) 或權杖資源的任何範圍對應](https://aka.ms/acr/repo-permissions) ，請先將其刪除再提出支援票證， (系統範圍對應可以忽略) 。 若要啟用公用存取，請在 https://aka.ms/acr/support/create-ticket 開啟支援票證。 如需詳細資訊，請參閱 [Azure 意見反應論壇](https://feedback.azure.com/forums/903958-azure-container-registry/suggestions/32517127-enable-anonymous-access-to-registries)。
 
-
-
+> [!NOTE]
+> 您只能以匿名方式存取提取已知映射所需的 Api。 您可以匿名存取標記清單或存放庫清單等作業的其他 Api。
 
 ## <a name="diagnostics-and-health-checks"></a>診斷和健康情況檢查
 
@@ -443,14 +443,14 @@ curl $redirect_url
 ### <a name="why-does-my-pull-or-push-request-fail-with-disallowed-operation"></a>為什麼我的提取或推送要求失敗，且不允許作業？
 
 以下是可能不允許作業的一些案例：
-* 已不再支援傳統登錄。 請使用 [az acr update](/cli/azure/acr?view=azure-cli-latest#az-acr-update) 或 Azure 入口網站升級至支援的[服務層級](https://aka.ms/acr/skus)。
+* 已不再支援傳統登錄。 請使用 [az acr update](/cli/azure/acr#az-acr-update) 或 Azure 入口網站升級至支援的[服務層級](https://aka.ms/acr/skus)。
 * 映像或存放庫可能已鎖定，所以無法刪除或更新。 您可以使用 [az acr show repository](./container-registry-image-lock.md) 命令來查看目前的屬性。
 * 如果映像處於隔離中，則不允許某些作業。 深入瞭解[隔離](https://github.com/Azure/acr/tree/master/docs/preview/quarantine)。
-* 您的登錄可能已達到其 [儲存空間限制](container-registry-skus.md#service-tier-features-and-limits)。
+* 您的登錄可能已達其 [儲存空間限制](container-registry-skus.md#service-tier-features-and-limits)。
 
 ### <a name="repository-format-is-invalid-or-unsupported"></a>存放庫格式無效或不受支援
 
-如果您在存放庫作業中指定存放庫名稱時看到「不支援的存放庫格式」、「不正確格式」或「要求的資料不存在」之類的錯誤，請檢查名稱的拼寫和大小寫。 有效的存放庫名稱只能包含小寫英數位元、句號、破折號、底線和正斜線。 
+如果您在存放庫作業中指定存放庫名稱時看到「不支援的存放庫格式」、「不正確格式」或「要求的資料不存在」之類的錯誤，請檢查名稱的拼寫和大小寫。 有效的存放庫名稱只能包含小寫英數位元、句號、連字號、底線和正斜線。 
 
 如需完整的存放庫命名規則，請參閱 [Open Container 方案散發規格](https://github.com/docker/distribution/blob/master/docs/spec/api.md#overview)。
 

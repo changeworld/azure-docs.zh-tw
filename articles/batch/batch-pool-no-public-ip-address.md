@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 09/28/2020
 ms.author: peshultz
 ms.custom: references_regions
-ms.openlocfilehash: 6c6207e7f52e49b88dc8dc99e0bd20a2c774339d
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: e6922abb48e19157e6905d9ceb71817cfbaff767
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91541895"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570869"
 ---
 # <a name="create-an-azure-batch-pool-without-public-ip-addresses"></a>建立不具公用 IP 位址的 Azure Batch 集區
 
@@ -34,8 +34,11 @@ ms.locfileid: "91541895"
 - **Azure VNet**。 如果您是在 [虛擬網路](batch-virtual-network.md)中建立集區，請遵循這些需求和設定。 若要事先準備具有一個或多個子網路的 VNet，您可以使用 Azure 入口網站、Azure PowerShell、Azure 命令列介面 (CLI) 或其他方法。
   - VNet 必須與您用來建立集區的 Batch 帳戶位於相同的訂用帳戶和區域中。
   - 針對集區指定的子網路必須有足夠的未指派 IP 位址，可容納目標設為集區的 VM 數目；也就是集區之 `targetDedicatedNodes` 和 `targetLowPriorityNodes` 屬性的總和。 如果子網路沒有足夠的未指派 IP 位址，集區會局部配置計算節點，並發生調整大小錯誤。
-  - 您必須停用 private link 服務和端點網路原則。 您可以使用 Azure CLI 來完成這項操作： ```az network vnet subnet update --vnet-name <vnetname> -n <subnetname> --disable-private-endpoint-network-policies --disable-private-link-service-network-policies```
-  
+  - 您必須停用 private link 服務和端點網路原則。 您可以使用 Azure CLI 來完成這項操作：
+    ```azurecli
+    az network vnet subnet update --vnet-name <vnetname> -n <subnetname> --disable-private-endpoint-network-policies --disable-private-link-service-network-policies
+    ```
+
 > [!IMPORTANT]
 > 針對每個100專用或低優先順序節點，Batch 會配置一個私用連結服務和一個負載平衡器。 這些資源會被訂用帳戶的[資源配額](../azure-resource-manager/management/azure-subscription-service-limits.md)所限制。 針對大型集區，您可能需要為一或多個這些資源 [要求增加配額](batch-quota-limit.md#increase-a-quota) 。 此外，您不應該將資源鎖定套用至 Batch 所建立的任何資源，因為這可避免因為使用者起始的動作（例如刪除集區或調整為零）而造成資源清除。
 

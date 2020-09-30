@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-python
-ms.openlocfilehash: e9f9daea2c0d570efb81603784ee730b11668426
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 03c8f5acfc10738401f61de099f946c33497d705
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88585979"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569812"
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>適用於 SQL API 的 Azure Cosmos DB Python SDK：版本資訊和資源
 
@@ -40,7 +40,7 @@ ms.locfileid: "88585979"
 | |  |
 |---|---|
 |**下載 SDK**|[PyPI](https://pypi.org/project/azure-cosmos)|
-|**API 文件**|[Python API 參考文件](https://docs.microsoft.com/python/api/azure-cosmos/?view=azure-python)|
+|**API 文件**|[Python API 參考文件](https://docs.microsoft.com/python/api/azure-cosmos/?view=azure-python&preserve-view=true)|
 |**SDK 安裝指示**|[SDK 安裝指示](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cosmos/azure-cosmos)|
 |**開始使用**|[開始使用 Python SDK](create-sql-api-python.md)|
 |**目前支援的平台**|[Python 2.7](https://www.python.org/downloads/) 和 [Python 3.5.3+](https://www.python.org/downloads/)|
@@ -54,7 +54,7 @@ ms.locfileid: "88585979"
 **新功能**
 - 已新增在建立新容器時設定分析儲存體 TTL 的功能。
 
-**錯誤修正**
+**Bug 修正**
 - 已將 dicts 的支援修正為 get_client Api 的輸入。
 - 修正查詢反覆運算器中的 Python 2/3 相容性。
 - Fixed type 提示錯誤 (#12570) 的問題。
@@ -126,7 +126,7 @@ ms.locfileid: "88585979"
 
 * 已更新 `CosmosClient` 的建構函式：
 
-  * `auth` 參數已重新命名為 `credential`，現在將直接採用驗證類型。 這表示主要金鑰值、資源權杖的字典，或可傳入的權限清單。 不過，仍然支援舊的字典格式。
+  * `auth` 參數已重新命名為 `credential`，現在將直接採用驗證類型。 這表示主鍵值、資源標記的字典，或可傳入的許可權清單。 不過，仍然支援舊的字典格式。
 
   * `connection_policy` 參數已設為僅限關鍵字的參數，但是在仍受支援時，原則的每個個別屬性現在可以當做明確關鍵字引數傳入：
 

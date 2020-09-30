@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/18/2020
 ms.author: mjbrown
-ms.openlocfilehash: 6b09c51c68586f6e55b4238b7420460f3f2b4ac3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 98210f26072504c129ba32f765cf6bab74fef604
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91330553"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570710"
 ---
 # <a name="manage-an-azure-cosmos-account"></a>管理 Azure Cosmos 帳戶
 
@@ -69,7 +69,7 @@ ms.locfileid: "91330553"
 
 開啟 [全域複寫資料]**** 索引標籤，並選取 [啟用]**** 以啟用多重區域寫入。 啟用多重區域寫入後，您目前在帳戶上擁有的所有讀取區域都將成為讀取和寫入區域。
 
-:::image type="content" source="./media/how-to-manage-database-account/single-to-multi-master.png" alt-text="Azure Cosmos 帳戶設定多重主機的螢幕擷取畫面":::
+:::image type="content" source="./media/how-to-manage-database-account/single-to-multi-master.png" alt-text="新增或移除區域功能表":::
 
 ### <a name="azure-cli"></a><a id="configure-multiple-write-regions-cli"></a>Azure CLI
 
@@ -77,11 +77,11 @@ ms.locfileid: "91330553"
 
 ### <a name="azure-powershell"></a><a id="configure-multiple-write-regions-ps"></a>Azure PowerShell
 
-請參閱 [使用 PowerShell 啟用多重寫入區域](manage-with-powershell.md#multi-master)
+請參閱 [使用 PowerShell 啟用多重寫入區域](manage-with-powershell.md#multi-region-writes)
 
 ### <a name="resource-manager-template"></a><a id="configure-multiple-write-regions-arm"></a>Resource Manager 範本
 
-帳戶可以從單一主機移轉至多重主機，只要部署用來建立帳戶的 Resource Manager 範本並設定 `enableMultipleWriteLocations: true` 即可。 下列 Azure Resource Manager 範本是一個最低限度範本，將會為已啟用兩個區域和多重寫入位置的 SQL API 部署 Azure Cosmos 帳戶。
+帳戶可以透過部署用來建立帳戶和設定的 Resource Manager 範本，從單一寫入區域遷移至多個寫入區域 `enableMultipleWriteLocations: true` 。 下列 Azure Resource Manager 範本是一個最低限度範本，將會為已啟用兩個區域和多重寫入位置的 SQL API 部署 Azure Cosmos 帳戶。
 
 ```json
 {
@@ -149,13 +149,13 @@ ms.locfileid: "91330553"
 
 2. 在窗格頂端，選取 [自動容錯移轉]****。
 
-   :::image type="content" source="./media/how-to-manage-database-account/replicate-data-globally.png" alt-text="全域複寫資料功能表":::
+   :::image type="content" source="./media/how-to-manage-database-account/replicate-data-globally.png" alt-text="新增或移除區域功能表":::
 
 3. 在 [自動容錯移轉]**** 窗格中，確定 [啟用自動容錯移轉]**** 設定為 [開啟]****。 
 
-4. 選取 [儲存]。
+4. 選取 [儲存]  。
 
-   :::image type="content" source="./media/how-to-manage-database-account/automatic-failover.png" alt-text="自動容錯移轉入口網站功能表":::
+   :::image type="content" source="./media/how-to-manage-database-account/automatic-failover.png" alt-text="新增或移除區域功能表":::
 
 ### <a name="azure-cli"></a><a id="enable-automatic-failover-via-cli"></a>Azure CLI
 
@@ -178,15 +178,15 @@ Cosmos 帳戶設定自動容錯移轉後，可以變更區域的容錯移轉優�
 
 2. 在窗格頂端，選取 [自動容錯移轉]****。
 
-   :::image type="content" source="./media/how-to-manage-database-account/replicate-data-globally.png" alt-text="全域複寫資料功能表":::
+   :::image type="content" source="./media/how-to-manage-database-account/replicate-data-globally.png" alt-text="新增或移除區域功能表":::
 
 3. 在 [自動容錯移轉]**** 窗格中，確定 [啟用自動容錯移轉]**** 設定為 [開啟]****。
 
 4. 若要修改容錯移轉優先順序，請透過當您暫留其上時出現在資料列左側的三個點拖曳讀取區域。
 
-5. 選取 [儲存]。
+5. 選取 [儲存]  。
 
-   :::image type="content" source="./media/how-to-manage-database-account/automatic-failover.png" alt-text="自動容錯移轉入口網站功能表":::
+   :::image type="content" source="./media/how-to-manage-database-account/automatic-failover.png" alt-text="新增或移除區域功能表":::
 
 ### <a name="azure-cli"></a><a id="set-failover-priorities-via-cli"></a>Azure CLI
 
@@ -204,7 +204,7 @@ Cosmos 帳戶設定自動容錯移轉後，可以變更區域的容錯移轉優�
 執行手動容錯移轉的程序，包括將帳戶的寫入區域 (容錯移轉優先順序 = 0) 變更為帳戶設定的另一個區域。
 
 > [!NOTE]
-> 多重主機帳戶無法以手動方式容錯移轉。 如果應用程式使用 Azure Cosmos SDK，此 SDK 將會偵測變得無法使用的區域，然後自動重新導向至下一個最接近的區域 (如果 SDK 中使用多路連接 API)。
+> 具有多個寫入區域的帳戶無法以手動方式進行容錯移轉。 如果應用程式使用 Azure Cosmos SDK，此 SDK 將會偵測變得無法使用的區域，然後自動重新導向至下一個最接近的區域 (如果 SDK 中使用多路連接 API)。
 
 ### <a name="azure-portal"></a><a id="enable-manual-failover-via-portal"></a>Azure 入口網站
 
@@ -212,13 +212,13 @@ Cosmos 帳戶設定自動容錯移轉後，可以變更區域的容錯移轉優�
 
 2. 在功能表的頂端，選取 [手動容錯移轉]****。
 
-   :::image type="content" source="./media/how-to-manage-database-account/replicate-data-globally.png" alt-text="全域複寫資料功能表":::
+   :::image type="content" source="./media/how-to-manage-database-account/replicate-data-globally.png" alt-text="新增或移除區域功能表":::
 
 3. 在 [手動容錯移轉]**** 功能表上，選取新的寫入區域。 選取核取方塊，表示您了解此選項會變更您的寫入區域。
 
 4. 若要觸發容錯移轉，請選取 [確定]****。
 
-   :::image type="content" source="./media/how-to-manage-database-account/manual-failover.png" alt-text="手動容錯移轉入口網站功能表":::
+   :::image type="content" source="./media/how-to-manage-database-account/manual-failover.png" alt-text="新增或移除區域功能表":::
 
 ### <a name="azure-cli"></a><a id="enable-manual-failover-via-cli"></a>Azure CLI
 

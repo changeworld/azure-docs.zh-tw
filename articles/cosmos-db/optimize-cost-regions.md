@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/31/2019
-ms.openlocfilehash: e0a24b52c12bce6a8e016a926dfa64a1e36a7cc6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8d98c9a7e58f08d9ad63183805cd6cd0d2ab3b3d
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "72753310"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570197"
 ---
 # <a name="optimize-multi-region-cost-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中最佳化多重區域成本
 
@@ -25,7 +25,7 @@ ms.locfileid: "72753310"
 
 ## <a name="costs-for-multiple-write-regions"></a>多個寫入區域的成本
 
-在多重主機系統中，寫入作業的淨可用 RU 會增加 `N` 次，其中 `N` 是寫入區域的數目。 不同於單一區域寫入，每個區域現在都是可寫入，且應該支援衝突解決。 寫入器的工作負載量增加。 從成本規劃的觀點來看，若要在 `M` 全球執行 RU/秒的寫入，您將需要在 `RUs` 容器或資料庫層級布建 M。 然後，您可以根據需要加入任意數目的區域，並將其用於寫入以執行 `M` RU 價值的全球寫入。 
+在多重區域寫入系統中，寫入作業的 net 可用 ru 會增加 `N` `N` 寫入區域數目的時間。 不同於單一區域寫入，每個區域現在都是可寫入，且應該支援衝突解決。 寫入器的工作負載量增加。 從成本規劃的觀點來看，若要執行 `M` 全球的 RU/秒的寫入，您必須 `RUs` 在容器或資料庫層級布建 M。 然後，您可以根據需要加入任意數目的區域，並將其用於寫入以執行 `M` RU 價值的全球寫入。 
 
 ### <a name="example"></a>範例
 
@@ -35,8 +35,8 @@ ms.locfileid: "72753310"
 |----|----|----|----|
 |美國西部容器的輸送量計費 (多個寫入區域) |10K RU/秒 * 24 * 31 |每小時 $0.016 (每 100 RU/秒) |$1,190.40 |
 |3 個新增區域 (美國東部、北歐和東亞) 的輸送量計費 (多個寫入區域) |(3 + 1) * 10K RU/秒 * 24 * 31 |每小時 $0.016 (每 100 RU/秒) |$4,761.60 |
-|美國西部容器的儲存體計費 |1 TB （或 1024 GB） |$0.25/GB |$256 |
-|其他 3 個區域的儲存體計費 - 美國東部、北歐與東亞 |3 * 1 TB （或 3072 GB） |$0.25/GB |$768 |
+|美國西部容器的儲存體計費 |1 TB (或 1024 GB)  |$0.25/GB |$256 |
+|其他 3 個區域的儲存體計費 - 美國東部、北歐與東亞 |3 * 1 TB (或 3072 GB)  |$0.25/GB |$768 |
 |**總計**|||**$6976** |
 
 ## <a name="improve-throughput-utilization-on-a-per-region-basis"></a>改善每個區域的輸送量使用率
