@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 06/27/2018
 ms.author: twooley
-ms.openlocfilehash: 7dac5976904263de40c7bc240bdb7deac1ec3df6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 428ed96c3223e644b0c78712723231a5fabbdc77
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85509195"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91578575"
 ---
 # <a name="get-started-with-azure-data-lake-storage-gen1-using-the-azure-portal"></a>使用 Azure 入口網站開始使用 Azure Data Lake Storage Gen1
 
@@ -24,7 +24,7 @@ ms.locfileid: "85509195"
 
 [!INCLUDE [data-lake-storage-gen1-rename-note.md](../../includes/data-lake-storage-gen1-rename-note.md)]
 
-瞭解如何使用 Azure 入口網站建立 Data Lake Storage Gen1 帳戶，並執行基本作業，例如建立資料夾、上傳和下載資料檔案、刪除您的帳戶等等。如需詳細資訊，請參閱[Azure Data Lake Storage Gen1 的總覽](data-lake-store-overview.md)。
+瞭解如何使用 Azure 入口網站建立 Data Lake Storage Gen1 帳戶並執行基本作業，例如建立資料夾、上傳和下載資料檔案、刪除您的帳戶等等。如需詳細資訊，請參閱 [Azure Data Lake Storage Gen1 的總覽](data-lake-store-overview.md)。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -34,14 +34,14 @@ ms.locfileid: "85509195"
 
 ## <a name="create-a-data-lake-storage-gen1-account"></a>建立 Data Lake Storage Gen1 帳戶
 
-1. 登入新的[Azure 入口網站](https://portal.azure.com)。
+1. 登入新的 [Azure 入口網站](https://portal.azure.com)。
 2. 按一下 [建立資源] > [儲存體] > [Data Lake Storage Gen1]****。
 3. 在 [新增 Data Lake Storage Gen1]**** 刀鋒視窗中，提供如以下螢幕擷取畫面所示的值：
 
     ![建立新的 Data Lake Storage Gen1 帳戶](./media/data-lake-store-get-started-portal/ADL.Create.New.Account.png "建立新的 Data Lake Storage Gen1 帳戶")
 
-   * [名稱]。 輸入 Data Lake Storage Gen1 帳戶的唯一名稱。
-   * **訂**用帳戶。 選取您想要建立新 Data Lake Storage Gen1 帳戶所在的訂用帳戶。
+   * **名稱**。 輸入 Data Lake Storage Gen1 帳戶的唯一名稱。
+   * **訂用帳戶**。 選取您想要建立新 Data Lake Storage Gen1 帳戶所在的訂用帳戶。
    * **資源群組**。 選取現有的資源群組，或選取 [建立新的]**** 選項來建立一個。 資源群組是保留應用程式相關資源的容器。 如需詳細資訊，請參閱 [Azure 中的資源群組](../azure-resource-manager/management/overview.md#resource-groups)。
    * **位置**：選取您要建立 Data Lake Storage Gen1 帳戶的位置。
    * **加密設定**。 選項有三個：
@@ -50,7 +50,7 @@ ms.locfileid: "85509195"
      * **使用由 Data Lake Storage Gen1 管理的金鑰**，前提是您想要 Data Lake Storage Gen1 管理加密金鑰。
      * **使用來自您自己金鑰保存庫的金鑰**。 您可以選取現有的 Azure Key Vault，或建立新的 Key Vault。 若要使用 Key Vault 中的金鑰，您必須為 Data Lake Storage Gen1 帳戶指派用來存取 Azure Key Vault 的權限。 如需相關指示，請參閱[指派 Azure Key Vault 的權限](#assign-permissions-to-azure-key-vault)。
 
-        ![Data Lake Storage Gen1 加密](./media/data-lake-store-get-started-portal/adls-encryption-2.png "Data Lake Storage Gen1 加密")
+        ![新的 Data Lake Storage Gen 1 分頁和加密設定分頁的螢幕擷取畫面。](./media/data-lake-store-get-started-portal/adls-encryption-2.png "Data Lake Storage Gen1 加密")
 
         按一下 [加密設定]**** 刀鋒視窗中的 [確定]****。
 
@@ -64,10 +64,10 @@ ms.locfileid: "85509195"
 
 1. 如果您使用 Azure 金鑰保存庫中的金鑰，Data Lake Storage Gen1 帳戶的刀鋒視窗上方會顯示警告。 按一下警告以開啟 [加密]****。
 
-    ![Data Lake Storage Gen1 加密](./media/data-lake-store-get-started-portal/adls-encryption-3.png "Data Lake Storage Gen1 加密")
+    ![Data Lake Storage Gen1 帳戶分頁的螢幕擷取畫面，其中顯示指出「需要金鑰保存庫許可權設定」的警告。按一下這裡以設定。](./media/data-lake-store-get-started-portal/adls-encryption-3.png "Data Lake Storage Gen1 加密")
 2. 刀鋒視窗中會顯示兩個用來設定存取權的選項。
 
-    ![Data Lake Storage Gen1 加密](./media/data-lake-store-get-started-portal/adls-encryption-4.png "Data Lake Storage Gen1 加密")
+    ![加密分頁的螢幕擷取畫面。](./media/data-lake-store-get-started-portal/adls-encryption-4.png "Data Lake Storage Gen1 加密")
 
    * 在第一個選項中，按一下 [授與權限]**** 以設定存取權。 只有當建立 Data Lake Storage Gen1 帳戶的使用者也是 Azure 金鑰保存庫的系統管理員時，才會啟用第一個選項。
    * 另一個選項是執行刀鋒視窗上顯示的 PowerShell Cmdlet。 您必須是 Azure 金鑰保存庫的擁有者，或擁有對 Azure 金鑰保存庫授與權限的能力。 執行此 Cmdlet 之後，請返回刀鋒視窗，然後按一下 [啟用]**** 以設定存取權。
@@ -84,13 +84,13 @@ ms.locfileid: "85509195"
 
 您可以在您的 Data Lake Storage Gen1 帳戶下建立資料夾，用於管理與存放資料。
 
-1. 開啟您建立的 Data Lake Storage Gen1 帳戶。 在左窗格中，按一下 [**所有資源**]，然後從 [**所有資源**] 分頁中，按一下您要在其下建立資料夾的帳戶名稱。 如果您將帳戶釘選到開始面板，請按一下該帳戶磚。
+1. 開啟您建立的 Data Lake Storage Gen1 帳戶。 從左窗格按一下 [ **所有資源**]，然後從 [ **所有資源** ] 分頁中，按一下您要在其下建立資料夾的帳戶名稱。 如果您將帳戶釘選到開始面板，請按一下該帳戶磚。
 2. 在您的 [Data Lake Storage Gen1 帳戶] 刀鋒視窗中，按一下 [資料總管]****。
 
-    ![在 Data Lake Storage Gen1 帳戶中建立資料夾](./media/data-lake-store-get-started-portal/ADL.Create.Folder.png "在 Data Lake Storage Gen1 帳戶中建立資料夾")
+    ![已呼叫 [資料瀏覽器] 選項的 Data Lake Storage Gen 1 帳戶] 分頁的螢幕擷取畫面。](./media/data-lake-store-get-started-portal/ADL.Create.Folder.png "在 Data Lake Storage Gen1 帳戶中建立資料夾")
 3. 在 [資料總管] 刀鋒視窗中，按一下 [新增資料夾]****，輸入新資料夾的名稱，然後按一下 [確定]****。
 
-    ![在 Data Lake Storage Gen1 帳戶中建立資料夾](./media/data-lake-store-get-started-portal/ADL.Folder.Name.png "在 Data Lake Storage Gen1 帳戶中建立資料夾")
+    ![[資料總管] 分頁的螢幕擷取畫面，其中包含 [新增資料夾] 選項和 [建立新資料夾] 文字方塊（稱為 out）。](./media/data-lake-store-get-started-portal/ADL.Folder.Name.png "在 Data Lake Storage Gen1 帳戶中建立資料夾")
 
     新建立的資料夾會列在 [資料總管]**** 刀鋒視窗中。 您可以建立任何層級的巢狀資料夾。
 

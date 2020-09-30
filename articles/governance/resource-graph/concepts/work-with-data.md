@@ -1,15 +1,15 @@
 ---
 title: 使用大型資料集
 description: 了解如何在使用 Azure Resource Graph 時取得、格式化、分頁及略過大型資料集中的記錄。
-ms.date: 08/10/2020
+ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5f3073986e424c641d884e1c2427d3d519658d37
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: ee552908696aa652931bf3555391adcfec0fc6d3
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89005933"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91578490"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>使用大型 Azure 資源資料集
 
@@ -48,7 +48,7 @@ Search-AzGraph -Query "Resources | project name | order by name asc" -First 200
 使用大型資料集的下一個選項是 **Skip** 控制項。 此控制項可讓查詢先跳過或略過所定義的記錄數目，然後再傳回結果。 **Skip** 適用於以有意義的方式排序結果的查詢，其目的是取得位於結果集中間某處的記錄。 如果所需的結果位於所傳回資料集的結尾處，則使用不同的排序設定，並改為從資料集頂端擷取結果會更有效率。
 
 > [!NOTE]
-> 使用 **Skip**時，建議至少依照一個具有 `asc` 或 `desc` 的資料行來排序結果。 若未排序，傳回的結果會是隨機的且不可重複。
+> 使用 **Skip**時，建議至少依照一個具有 `asc` 或 `desc` 的資料行來排序結果。 若未排序，傳回的結果會是隨機的且不可重複。 如果 `limit` `take` 在查詢中使用或，就會忽略 **Skip** 。
 
 下列範例示範如何略過查詢所產生的前 _10_ 筆記錄，改為從所傳回結果集的第 11 筆記錄開始：
 

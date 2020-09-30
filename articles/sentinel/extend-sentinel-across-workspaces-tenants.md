@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/11/2020
 ms.author: yelevin
-ms.openlocfilehash: b899069a03b39d068f2b4059cf26d3baf1f3beae
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 502b93b4459fba4da04207d9186f8c7ce6b298c2
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905414"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91578473"
 ---
 # <a name="extend-azure-sentinel-across-workspaces-and-tenants"></a>跨工作區和租用戶擴充 Azure Sentinel
 
@@ -27,23 +27,23 @@ ms.locfileid: "90905414"
 
 Azure Sentinel 是以 Log Analytics 工作區為基礎。 您將會注意到上架 Azure Sentinel 的第一個步驟是選取您想要用於該用途的 Log Analytics 工作區。
 
-使用單一工作區時，您可以獲得 Azure Sentinel 體驗的完整權益。 儘管如此，在某些情況下，您可能需要有多個工作區。 下表列出其中一些情況，而且可能的話，建議使用單一工作區來滿足需求的方式：
+使用單一工作區時，您可充分利用 Azure Sentinel 體驗。 儘管如此，在某些情況下，您可能需要有多個工作區。 下表列出其中一些情況，而且可能的話，建議使用單一工作區來滿足需求的方式：
 
 | 需求 | 描述 | 減少工作區計數的方法 |
 |-------------|-------------|--------------------------------|
-| 主權和法規合規性 | 工作區會系結至特定區域。 如果資料需要保存在不同的 [Azure 地理](https://azure.microsoft.com/global-infrastructure/geographies/) 位置以滿足法規需求，則必須將其分割成不同的工作區。 |  |
+| 主權和法規合規性 | 工作區會繫結至特定區域。 如果資料需要保存在不同的 [Azure 地理](https://azure.microsoft.com/global-infrastructure/geographies/) 位置以滿足法規需求，則必須將其分割成不同的工作區。 |  |
 | 資料擁有權 | 資料擁有權的界限（例如，分公司或附屬公司）更能使用不同的工作區來描繪。 |  |
-| 多個 Azure 租使用者 | Azure Sentinel 僅支援在自己的 Azure Active Directory (Azure AD) 租使用者界限內，從 Microsoft 和 Azure SaaS 資源收集資料。 因此，每個 Azure AD 租使用者都需要個別的工作區。 |  |
-| 細微資料存取控制 | 組織可能需要允許組織內部或外部的不同群組，以存取 Azure Sentinel 所收集的部分資料。 例如：<br><ul><li>資源擁有者對其資源相關資料的存取權</li><li>地區或子公司 SOCs 存取其組織部分的相關資料</li></ul> | 使用 [資源 rbac](https://techcommunity.microsoft.com/t5/azure-sentinel/controlling-access-to-azure-sentinel-data-resource-rbac/ba-p/1301463) 或 [資料表層級 rbac](https://techcommunity.microsoft.com/t5/azure-sentinel/table-level-rbac-in-azure-sentinel/ba-p/965043) |
+| 多個 Azure 租使用者 | Azure Sentinel 僅支援在自己的 Azure Active Directory (Azure AD) 租使用者界限內，從 Microsoft 和 Azure SaaS 資源收集資料。 因此，每個 Azure AD 租用戶都需要個別的工作區。 |  |
+| 細微的資料存取控制 | 組織可能需要允許組織內部或外部的不同群組，以存取 Azure Sentinel 所收集的部分資料。 例如：<br><ul><li>資源擁有者對其資源相關資料的存取權</li><li>地區或子公司 SOCs 存取其組織部分的相關資料</li></ul> | 使用 [資源 rbac](https://techcommunity.microsoft.com/t5/azure-sentinel/controlling-access-to-azure-sentinel-data-resource-rbac/ba-p/1301463) 或 [資料表層級 rbac](https://techcommunity.microsoft.com/t5/azure-sentinel/table-level-rbac-in-azure-sentinel/ba-p/965043) |
 | 細微保留設定 | 在過去，有多個工作區是針對不同的資料類型設定不同保留期限的唯一方式。 由於資料表層級保留設定的引入，在許多情況下，已不再需要這項功能。 | 使用 [資料表層級保留設定](https://techcommunity.microsoft.com/t5/azure-sentinel/new-per-data-type-retention-is-now-available-for-azure-sentinel/ba-p/917316) 或自動化 [資料刪除](../azure-monitor/platform/personal-data-mgmt.md#how-to-export-and-delete-private-data) |
-| 分割計費 | 藉由將工作區放在不同的訂用帳戶中，就可以向不同的合作物件收費。 | 使用方式報告和交叉收費 |
-| 舊版架構 | 使用多個工作區可能源自于考慮限制的歷程記錄設計，或是不再成立的最佳作法。 它也可能是任意的設計選擇，可進行修改以更妥善配合 Azure Sentinel。<br><br>範例包括：<br><ul><li>部署 Azure 資訊安全中心時使用每個訂用帳戶預設工作區</li><li>需要細微的存取控制或保留設定，這是相對較新的解決方案</li></ul> | 重新架構工作區 |
+| 分割帳單 | 藉由將工作區放在不同的訂用帳戶中，就可以向不同的合作物件收費。 | 使用方式報告和交叉收費 |
+| 舊版架構 | 使用多個工作區可能源自于考慮限制的歷程記錄設計，或是不再成立的最佳作法。 也可能是任意設計選擇，可加以修改以更符合 Azure Sentinel。<br><br>範例包括：<br><ul><li>部署 Azure 資訊安全中心時使用每個訂用帳戶預設工作區</li><li>需要細微的存取控制或保留設定，這是相對較新的解決方案</li></ul> | 重新建構工作區 |
 
 ### <a name="managed-security-service-provider-mssp"></a>受控安全性服務提供者 (MSSP) 
 
 要求多個工作區的特定使用案例是 MSSP Azure Sentinel 服務。 在此情況下，許多情況下都不適用上述所有需求，而是在租使用者中建立多個工作區，這是最佳作法。 MSSP 可以使用 [Azure Lighthouse](../lighthouse/overview.md) 來延伸跨租使用者的 Azure Sentinel 跨工作區功能。
 
-## <a name="azure-sentinel-multiple-workspace-architecture"></a>Azure Sentinel 多個工作區架構
+## <a name="azure-sentinel-multiple-workspace-architecture"></a>Azure Sentinel 的多個工作區架構
 
 如同上述需求所暗示，在某些情況下，可能會有多個 Azure Sentinel 工作區（可能跨 Azure Active Directory (Azure AD) 租使用者）必須由單一 SOC 進行集中監視和管理。
 
@@ -63,7 +63,7 @@ Azure Sentinel 是以 Log Analytics 工作區為基礎。 您將會注意到上�
 
 - 資料擁有權、資料隱私權和法規合規性方面的挑戰較少。
 
-- 減少網路延遲和費用。
+- 最少的網路延遲和費用。
 
 - 讓新的子公司或客戶輕鬆上架和脫離。
 
@@ -131,11 +131,11 @@ Azure Sentinel 提供預先載入的查詢範例，以協助您開始使用，�
 
 ## <a name="managing-workspaces-across-tenants-using-azure-lighthouse"></a>使用 Azure Lighthouse 管理跨租使用者的工作區
 
-如前所述，在許多情況下，不同的 Azure Sentinel 工作區可以位於不同的 Azure AD 租使用者中。 您可以使用 [Azure Lighthouse](../lighthouse/overview.md) 來跨租使用者界限延伸所有跨工作區活動，讓您管理租使用者中的使用者可以在所有租使用者的 Azure Sentinel 工作區上運作。 Azure Lighthouse [上線](../lighthouse/how-to/onboard-customer.md)之後，請使用 Azure 入口網站上的 [ [目錄 + 訂用帳戶選取器](./multiple-tenants-service-providers.md#how-to-access-azure-sentinel-from-other-tenants) ] 選取包含您想要管理之工作區的所有訂用帳戶，以確保所有訂用帳戶都能在入口網站中的不同工作區選取器中使用。
+如前所述，在許多情況下，不同的 Azure Sentinel 工作區可以位於不同的 Azure AD 租使用者中。 您可以使用 [Azure Lighthouse](../lighthouse/overview.md) 來跨租使用者界限延伸所有跨工作區活動，讓您管理租使用者中的使用者可以在所有租使用者的 Azure Sentinel 工作區上運作。 Azure Lighthouse [上線](../lighthouse/how-to/onboard-customer.md)之後，請使用 Azure 入口網站上的 [ [目錄 + 訂用帳戶選取器](./multiple-tenants-service-providers.md#how-to-access-azure-sentinel-in-managed-tenants) ] 選取包含您想要管理之工作區的所有訂用帳戶，以確保所有訂用帳戶都能在入口網站中的不同工作區選取器中使用。
 
 使用 Azure Lighthouse 時，建議您為每個 Azure Sentinel 角色建立群組，並將每個租使用者的許可權委派給這些群組。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 在本檔中，您已瞭解如何在多個工作區和租使用者之間擴充 Azure Sentinel 的功能。 如需有關實施 Azure Sentinel 的跨工作區架構的實用指導方針，請參閱下列文章：
 
 - 瞭解如何使用 Azure Lighthouse 在 Azure Sentinel 中使用 [多個](./multiple-tenants-service-providers.md) 租使用者。
