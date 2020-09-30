@@ -1,20 +1,20 @@
 ---
-title: 名詞解釋 - IoT 隨插即用預覽版 | Microsoft Docs
-description: 概念 - IoT 隨插即用預覽版相關常見術語詞彙。
+title: 詞彙詞彙-IoT 隨插即用 |Microsoft Docs
+description: 概念-與 IoT 隨插即用相關的常見詞彙術語。
 author: dominicbetts
 ms.author: dobett
 ms.date: 07/22/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 2320bed07f574c096be1883a9d82da7311e92fa7
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: d44866e2d04ab1bab5d2eca01374350a7d73a0ea
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88854222"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91577334"
 ---
-# <a name="glossary-of-terms-for-iot-plug-and-play-preview"></a>IoT 隨插即用預覽版的名詞解釋
+# <a name="glossary-of-terms-for-iot-plug-and-play"></a>IoT 隨插即用的詞彙
 
 IoT 隨插即用文章中使用的常見術語定義。
 
@@ -38,7 +38,7 @@ IoT 中樞是託管於雲端中的受控服務，可做為 IoT 應用程式與�
 
 ## <a name="azure-iot-device-sdk"></a>Azure IoT 裝置 SDK
 
-您可使用多種語言版本的裝置 SDK 來建置 IoT 隨插即用裝置用戶端應用程式。
+您可使用多種語言版本的裝置 SDK 來建置 IoT 隨插即用裝置用戶端應用程式。 針對裝置使用 **>deviceclient** ，並針對模組和 IoT Edge 模組使用 **ModuleClient** 。
 
 ## <a name="commands"></a>命令
 
@@ -55,13 +55,19 @@ IoT 中樞是託管於雲端中的受控服務，可做為 IoT 應用程式與�
 - 裝置連接字串可讓 [IoT 隨插即用裝置](#iot-plug-and-play-device)連線到 IoT 中樞上的裝置對向端點。 裝置上用戶端程式碼會使用連接字串來建立與 IoT 中樞的安全連線。
 - IoT 中樞連接字串可讓後端解決方案和工具安全地連線到 IoT 中樞上的服務對向端點。 這些解決方案和工具會管理 IoT 中樞和連線的裝置。
 
+## <a name="default-component"></a>預設元件
+
+所有 [裝置型號](#device-model) 都有預設元件。 簡單的裝置型號只有預設元件，這類模型也稱為「沒有元件裝置」。 更複雜的模型會在預設元件底下嵌套多個元件。
+
 ## <a name="device-certification"></a>裝置認證
 
-IoT 隨插即用裝置認證方案會確認裝置符合 IoT 隨插即用認證需求。 您可以將認證的裝置新增至 [Azure IoT 裝置目錄](https://aka.ms/devicecatalog)的公開認證。
+IoT 隨插即用裝置認證方案會驗證裝置是否符合 IoT 隨插即用認證需求。 您可以將已認證的裝置新增至 [Azure IoT 裝置目錄的公開認證](https://aka.ms/devicecatalog)。
 
 ## <a name="device-model"></a>裝置型號
 
-裝置模型會描述 [IoT 隨插即用裝置](#iot-plug-and-play-device) ，並定義組成裝置的 [元件](#component) 。 簡單的裝置模型沒有個別的元件，而且包含單一根層級介面的定義。 更複雜的裝置模型包含多個元件。 裝置型號通常會對應至實體裝置、產品或 SKU。 您可以使用 [數位 Twins 定義語言第2版](#digital-twins-definition-language) 來定義裝置型號。
+裝置模型會描述 [IoT 隨插即用裝置](#iot-plug-and-play-device) ，並定義組成裝置的 [元件](#component) 。 簡單的裝置模型沒有個別的元件，而且包含單一介面的定義。 Azure IoT explorer 工具會顯示簡單的模型，作為單一 [預設元件](#default-component)。
+
+更複雜的裝置模型包含多個元件。 裝置型號通常會對應至實體裝置、產品或 SKU。 您可以使用 [數位 Twins 定義語言第2版](#digital-twins-definition-language) 來定義裝置型號。
 
 ## <a name="device-builder"></a>Device builder
 
@@ -69,7 +75,7 @@ IoT 隨插即用裝置認證方案會確認裝置符合 IoT 隨插即用認證�
 
 ## <a name="device-modeling"></a>裝置模型
 
-[裝置](#device-builder)產生器會使用[數位 Twins 定義語言](#digital-twins-definition-language)來建立[IoT 隨插即用裝置](#iot-plug-and-play-device)的功能模型。 [解決方案](#solution-builder)產生器可以從模型設定 IoT 解決方案。
+[裝置](#device-builder)產生器或[模組](#module-builder)產生器會使用[數位 Twins 定義語言](#digital-twins-definition-language)來建立[IoT 隨插即用裝置](#iot-plug-and-play-device)的功能模型。 [解決方案](#solution-builder)產生器可以從模型設定 IoT 解決方案。
 
 ## <a name="digital-twin"></a>數位分身
 
@@ -89,15 +95,19 @@ IoT 隨插即用裝置認證方案會確認裝置符合 IoT 隨插即用認證�
 
 ## <a name="interface"></a>介面
 
-介面描述 [IoT 隨插即用裝置](#iot-plug-and-play-device)或[數位分身](#digital-twin)所實作的相關功能。 您可以跨不同的 [裝置模型](#device-model)重複使用介面。 在裝置模型中使用介面時，它會定義裝置的 [元件](#component) 。
+介面描述 [IoT 隨插即用裝置](#iot-plug-and-play-device)或[數位分身](#digital-twin)所實作的相關功能。 您可以跨不同的 [裝置模型](#device-model)重複使用介面。 在裝置模型中使用介面時，它會定義裝置的 [元件](#component) 。 簡單的裝置只包含預設介面。
 
 ## <a name="iot-hub-query-language"></a>IoT 中樞查詢語言
 
 IoT 中樞查詢語言可用於多種用途。 例如，您可使用語言來搜尋已向 IoT 中樞註冊的裝置，或調整[數位分身路由](#digital-twin-route)行為。
 
+## <a name="iot-plug-and-play-bridge"></a>IoT 隨插即用橋接器
+
+IoT 隨插即用橋接器是開放原始碼應用程式，可讓連接至 Windows 或 Linux 閘道的現有感應器和週邊設備以 [IoT 隨插即用裝置](#iot-plug-and-play-device)連線。
+
 ## <a name="iot-plug-and-play-device"></a>IoT 隨插即用裝置
 
-IoT 隨插即用裝置通常是小型的獨立計算裝置，可收集資料或控制其他裝置，以及執行軟體或可執行 [裝置型號](#device-model)的固件。  例如，IoT 隨插即用裝置可能是環境監視裝置，或智慧型農業灌溉系統的控制器。 您可撰寫雲端託管的 IoT 解決方案，從 IoT 隨插即用裝置下命令、控制和接收資料。
+IoT 隨插即用裝置通常是小型的獨立計算裝置，可收集資料或控制其他裝置，以及執行軟體或可執行 [裝置型號](#device-model)的固件。  例如，IoT 隨插即用裝置可能是環境監視裝置，或智慧型農業灌溉系統的控制器。 IoT 隨插即用的裝置可能會直接實作為 IoT Edge 模組。 您可撰寫雲端託管的 IoT 解決方案，從 IoT 隨插即用裝置下命令、控制和接收資料。
 
 ## <a name="iot-plug-and-play-conventions"></a>IoT 隨插即用慣例
 
@@ -114,6 +124,10 @@ IoT 隨插即用裝置通常是小型的獨立計算裝置，可收集資料或�
 ## <a name="model-repository-rest-api"></a>模型存放庫 REST API
 
 用來管理和與模型存放庫互動的 API。 例如，您可以使用 API 來新增和搜尋 [裝置型號](#device-model)。
+
+## <a name="module-builder"></a>模組產生器
+
+當執行程式碼以在[IoT 隨插即用裝置](#iot-plug-and-play-device)上執行時，模組產生器會使用[裝置模型](#device-model)和[介面](#interface)。 模組產生器會將程式碼實作為模組或 IoT Edge 模組，以部署至裝置上的 IoT Edge 執行時間。
 
 ## <a name="properties"></a>屬性
 

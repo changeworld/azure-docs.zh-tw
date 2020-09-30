@@ -12,19 +12,19 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein
 ms.date: 08/14/2019
-ms.openlocfilehash: 42326247117c0710c93b45c896bb6e7cb3a8120f
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: ab057e1328efbff294faa1d68f2a27c5a1f03ade
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91444382"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91577504"
 ---
 # <a name="configure-a-failover-group-for-azure-sql-database"></a>設定 Azure SQL Database 的容錯移轉群組
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 本主題將指導您如何設定 Azure SQL Database 和 Azure SQL 受控執行個體的 [自動容錯移轉群組](auto-failover-group-overview.md) 。
 
-## <a name="single-database-in-azure-sql-database"></a>Azure SQL Database 中的單一資料庫
+## <a name="single-database"></a>單一資料庫
 
 使用 Azure 入口網站或 PowerShell 建立容錯移轉群組，並在其中新增單一資料庫。
 
@@ -192,7 +192,7 @@ ms.locfileid: "91444382"
 > [!IMPORTANT]
 > 如果您需要刪除次要資料庫，請先將它從容錯移轉群組中移除，再加以刪除。 從容錯移轉群組中移除次要資料庫之前，先將它刪除，可能會導致無法預期的行為。
 
-## <a name="elastic-pools-in-azure-sql-database"></a>Azure SQL Database 中的彈性集區
+## <a name="elastic-pool"></a>彈性集區
 
 建立容錯移轉群組，並使用 Azure 入口網站或 PowerShell 將彈性集區新增至該群組。  
 
@@ -346,7 +346,9 @@ ms.locfileid: "91444382"
 
 使用 Azure 入口網站或 PowerShell，在 Azure SQL 受控執行個體的兩個受控實例之間建立容錯移轉群組。
 
-您必須為每個 SQL 受控執行個體的虛擬網路設定 [ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md) 或建立閘道、連接兩個閘道，然後建立容錯移轉群組。
+您必須為每個 SQL 受控執行個體的虛擬網路設定 [ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md) 或建立閘道、連接兩個閘道，然後建立容錯移轉群組。 
+
+基於效能考慮，將兩個受控實例部署到 [配對的區域](../../best-practices-availability-paired-regions.md) 。 相較于未配對的區域，位於地理配對區域中的受控實例會有更好的效能。 
 
 ### <a name="prerequisites"></a>必要條件
 
@@ -360,6 +362,9 @@ ms.locfileid: "91444382"
 ### <a name="create-primary-virtual-network-gateway"></a>建立主要虛擬網路閘道
 
 如果您尚未設定 [ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md)，您可以使用 Azure 入口網站或 PowerShell 來建立主要虛擬網路閘道。
+
+> [!NOTE]
+> 閘道的 SKU 會影響輸送量效能。 本文會部署具有最基本 SKU () 的閘道 `HwGw1` 。 部署較高的 SKU (範例： `VpnGw3`) 以達到更高的輸送量。 如需所有可用的選項，請參閱 [閘道 sku](../../vpn-gateway/vpn-gateway-about-vpngateways.md#benchmark) 
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 
@@ -381,7 +386,7 @@ ms.locfileid: "91444382"
     | **欄位** | 值 |
     | --- | --- |
     | **訂用帳戶** |  您的主要受控實例所在的訂用帳戶。 |
-    | **Name** | 虛擬網路閘道的名稱。 |
+    | **名稱** | 虛擬網路閘道的名稱。 |
     | **區域** | 主要受控實例所在的區域。 |
     | **閘道類型** | 選取 [VPN]。 |
     | **VPN 類型** | 選取以 **路由為基礎的** |
@@ -443,7 +448,7 @@ ms.locfileid: "91444382"
    | **欄位** | 值 |
    | --- | --- |
    | **訂用帳戶** |  次要受控實例所在的訂用帳戶。 |
-   | **Name** | 虛擬網路閘道的名稱，例如 `secondary-mi-gateway` 。 |
+   | **名稱** | 虛擬網路閘道的名稱，例如 `secondary-mi-gateway` 。 |
    | **區域** | 次要受控實例所在的區域。 |
    | **閘道類型** | 選取 [VPN]。 |
    | **VPN 類型** | 選取以 **路由為基礎的** |

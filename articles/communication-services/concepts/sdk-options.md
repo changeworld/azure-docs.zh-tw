@@ -9,18 +9,18 @@ ms.author: mikben
 ms.date: 03/18/2020
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 2d5637be547b28c231ef757b5dd4355692dab88f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d5aba3638ce19c24841fe5b49b19b1139327b790
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91318818"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91578082"
 ---
 # <a name="client-libraries-and-rest-apis"></a>用戶端程式庫和 REST API
 
 [!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
-Azure 通訊服務功能在概念上會組織成六個區域。 某些區域具有完全開放原始碼的用戶端程式庫。 呼叫的用戶端程式庫會使用專屬的網路介面，且目前為關閉的來源，而聊天庫則包含關閉來源的相依性。 所有 Sdk 和範例的連結都會保留在 [Azure 通訊服務 GitHub](https://github.com/Azure/communication)存放庫中。
+Azure 通訊服務功能在概念上會組織成六個區域。 某些區域具有完全開放原始碼的用戶端程式庫。 呼叫的用戶端程式庫會使用專屬的網路介面，且目前為關閉的來源，而聊天庫則包含關閉來源的相依性。 用戶端程式庫的範例和其他技術詳細資料會發佈在 [Azure 通訊服務 GitHub](https://github.com/Azure/communication)存放庫中。
 
 ## <a name="client-libraries"></a>用戶端程式庫
 
@@ -29,34 +29,26 @@ Azure 通訊服務功能在概念上會組織成六個區域。 某些區域具�
 | Azure Resource Manager | REST | 開啟            | Azure ResourceManager 通訊 | 布建和管理通訊服務資源             |
 | 通用                 | REST | 開啟               | Azure 通訊。 Common          | 提供其他用戶端程式庫的基底類型 |
 | 系統管理         | REST | 開啟               | Azure 通訊。管理  | 管理使用者、存取權杖及電話號碼、配置符合標準的 STUN 並開啟伺服器 |
-| 聊天                   | 具有專屬信的 REST | 開啟檔案關閉的來源信號套件    | Azure 通訊。聊天            | 在您的應用程式中新增即時以文字為基礎的聊天  |
+| 聊天                   | 具有專屬信號的 REST | 開啟檔案關閉的來源信號套件    | Azure 通訊。聊天            | 在您的應用程式中新增即時以文字為基礎的聊天  |
 | SMS                    | REST | 開啟              | Azure。 SMS             | 傳送和接收 SMS 訊息 |
 | 呼叫                | 專屬傳輸 | 封閉式 |Azure 通訊。呼叫         | 利用語音、影片、螢幕共用和其他即時資料通訊功能          |
 
-### <a name="client-library-language-support"></a>用戶端程式庫語言支援
+請注意，Azure Resource Manager、系統管理和 SMS 用戶端程式庫都是以服務整合為焦點，在許多情況下，如果您將這些功能整合到使用者應用程式中，就會發生安全性問題。 常見和聊天用戶端程式庫適用于服務和用戶端應用程式。 呼叫的用戶端程式庫是專為用戶端應用程式所設計。 著重于服務案例的用戶端程式庫正在開發中。
 
-個別用戶端程式庫套件的可用性指引和時程表詳述如下。 [Azure 藍圖](https://azure.microsoft.com/updates/)提供即將推出之功能的其他資訊。
+### <a name="languages-and-publishing-locations"></a>語言和發佈位置
+
+以下詳述個別用戶端程式庫套件的發佈位置。 
+
 
 | 區域           | JavaScript | .NET | Python | Java | Swift 或 Obj-C | Java (Android) | 其他                          |
 | -------------- | ---------- | ---- | ------ | ---- | -------------- | -------------- | ------------------------------ |
-| Azure Resource Manager | ✔️         | ✔️    | ✔️      | -    | -              | *尚不支援*  | GO 和 Azure CLI 尚 *不支援* |
-| 通用         | ✔️         | ✔️    | -      | ✔️   | ✔️            | ✔️             | -                              |
-| 系統管理 | ✔️         | ✔️    | ✔️      | ✔️   | -              | -              | CLI                            |
-| 聊天           | ✔️         | ✔️    | ✔️      | ✔️   | *尚不支援*  | *尚不支援*  | -                              |
-| SMS            | ✔️         | ✔️    | ✔️      | ✔️   | -              | -              | -                              |
-| 呼叫        | ✔️         | -      | -      | -     |  (Obj-C) ✔️     | ✔️            | -                              |
-
-### <a name="client-library-public-repository-support"></a>用戶端程式庫公用存放庫支援
-
-通訊服務會在數個公用存放庫中發佈內建的程式庫。
-
-| Language       | 已針對 .。。                       | 包裝 |
-| -------------- | ------------------------------------ | --------- |
-| .NET           | 跨平台                       | NuGet     |
-| Python         | Windows & Linux 伺服器              | Pypi      |
-| JAVA (J2EE)     | Windows 或 Linux 伺服器上的 JVM      | Maven     |
-| Java (Android) | Android 用戶端應用程式          | Maven     |
-| JavaScript     | 瀏覽器用戶端應用程式和節點 | Npm       |
+| Azure Resource Manager | -         | [NuGet](https://www.NuGet.org/packages/Azure.ResourceManager.Communication)    |   [PyPi](https://pypi.org/project/azure-mgmt-communication/)    |  -  | -              | -  | [透過 GitHub 進行](https://github.com/Azure/azure-sdk-for-go/releases/tag/v46.3.0) |
+| 通用         | [npm](https://www.npmjs.com/package/@azure/communication-common) \(英文\)         | [NuGet](https://www.NuGet.org/packages/Azure.Communication.Common/)    | N/A      | [Maven](https://search.maven.org/search?q=a:azure-communication-common)   | [透過 GitHub 的 Swift](https://github.com/Azure/azure-sdk-for-ios/releases/tag/1.0.0-beta.1)            | [Maven](https://search.maven.org/artifact/com.azure.android/azure-communication-common)             | -                              |
+| 系統管理 | [npm](https://www.npmjs.com/package/@azure/communication-administration) \(英文\)         | [NuGet](https://www.NuGet.org/packages/Azure.Communication.Administration)    | [PyPi](https://pypi.org/project/azure-communication-administration/)      | [Maven](https://search.maven.org/search?q=a:azure-communication-administration)   | -              | -              | -                            |
+| 聊天           | [npm](https://www.npmjs.com/package/@azure/communication-chat) \(英文\)        | [NuGet](https://www.NuGet.org/packages/Azure.Communication.Chat)     | [PyPi](https://pypi.org/project/azure-communication-chat/)     | [Maven](https://search.maven.org/search?q=a:azure-communication-chat)   | -  | -  | -                              |
+| SMS            | [npm](https://www.npmjs.com/package/@azure/communication-sms) \(英文\)         | [NuGet](https://www.NuGet.org/packages/Azure.Communication.Sms)    | [PyPi](https://pypi.org/project/azure-communication-sms/)       | [Maven](https://search.maven.org/artifact/com.azure/azure-communication-sms)   | -              | -              | -                              |
+| 呼叫        | [npm](https://www.npmjs.com/package/@azure/communication-calling) \(英文\)         | -      | -      | -     | [透過 GitHub 的 Obj-C](https://github.com/Azure/Communication/releases/tag/v1.0.0-beta.2)     | [Maven](https://search.maven.org/artifact/com.azure.android/azure-communication-calling/)            | -                              |
+| 參考文件     | [docs](https://azure.github.io/azure-sdk-for-js/communication.html)         | [docs](https://azure.github.io/azure-sdk-for-net/communication.html)      | -      | [docs](http://azure.github.io/azure-sdk-for-java/communication.html)     | 
 
 ## <a name="rest-apis"></a>REST API
 

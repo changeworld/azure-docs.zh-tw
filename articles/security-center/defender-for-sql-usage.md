@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: ea0df1fb68697ceee55614510cc0295c73fec00e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 6d19027cfd406f81d31696c5cd2c1a235574e400
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91301647"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91577827"
 ---
 # <a name="azure-defender-for-sql-servers-on-machines"></a>電腦上適用于 SQL server 的 Azure Defender 
 
@@ -48,7 +48,7 @@ ms.locfileid: "91301647"
 
 ### <a name="step-1-provision-the-log-analytics-agent-on-your-sql-servers-host"></a>步驟 1： 在您的 SQL server 主機上布建 Log Analytics 代理程式：
 
-- **AZURE vm 上的 SQL Server** -如果您的 SQL 機器裝載于 azure vm 上，您可以自動布建 [Log Analytics 代理程式](security-center-enable-data-collection.md#workspace-configuration)。 或者，您可以依照手動 [新增 Azure Stack 電腦](quickstart-onboard-machines.md#add-non-azure-computers)的程式進行操作。
+- **AZURE vm 上的 SQL Server** -如果您的 SQL 機器裝載于 azure vm 上，您可以自動布建 [Log Analytics 代理程式](security-center-enable-data-collection.md#workspace-configuration)。 或者，您也可以依照手動程式來將 [Azure Stack vm 上架](quickstart-onboard-machines.md#onboard-your-azure-stack-vms)。
 - **SQL Server Azure Arc** -如果您的 SQL Server 裝載于 [Azure Arc](https://docs.microsoft.com/azure/azure-arc/) 電腦上，您可以使用資訊安全中心建議的「log analytics 代理程式應該安裝在 Windows 架構的 Azure Arc 電腦 (Preview) 」上，以部署 Log analytics 代理程式。 或者，您可以依照 [Azure Arc 檔](https://docs.microsoft.com/azure/azure-arc/servers/manage-vm-extensions#enable-extensions-from-the-portal)中的手動程式進行操作。
 
 - **SQL Server 內部內部部署** -如果您的 SQL Server 裝載于內部部署 Windows 機器上，而沒有 Azure Arc，您有兩個選項可將其連接到 Azure：
@@ -97,7 +97,7 @@ ms.locfileid: "91301647"
 
     此建議的詳細觀點隨即出現。
 
-    :::image type="content" source="./media/security-center-advanced-iaas-data/all-servers-view.png" alt-text="建議的詳細觀點":::
+    :::image type="content" source="./media/security-center-advanced-iaas-data/all-servers-view.png" alt-text="您應補救電腦上 SQL server 的弱點評定結果 (預覽版) ":::
 
 1. 如需詳細資料，請向下切入：
 

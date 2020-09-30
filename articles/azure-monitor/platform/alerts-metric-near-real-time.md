@@ -5,14 +5,14 @@ author: harelbr
 ms.author: harelbr
 services: monitoring
 ms.topic: conceptual
-ms.date: 8/20/2020
+ms.date: 9/30/2020
 ms.subservice: alerts
-ms.openlocfilehash: 8a608e43ef41abfb7002811df5629eb789c3ae22
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: 96f0cda9bdf6a17adb4d8d50b63ef5588e52f700
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89595575"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91578099"
 ---
 # <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>Azure 監視器中計量警示所支援的資源
 
@@ -37,7 +37,9 @@ Azure 監視器現已可支援[新的計量警示類型](./alerts-overview.md)�
 |Microsoft.Automation/automationAccounts | 是| 否 | [自動化帳戶](./metrics-supported.md#microsoftautomationautomationaccounts) |
 |Microsoft AVS/privateClouds | 否 | 否 | |
 |Microsoft.Batch/batchAccounts | 是 | 否 | [批次帳戶](./metrics-supported.md#microsoftbatchbatchaccounts) |
-|Microsoft.Cache/Redis | 是 | 否 | [Azure Cache for Redis](./metrics-supported.md#microsoftcacheredis) |
+|Microsoft.Cache/Redis | 是 | 是 | [Azure Cache for Redis](./metrics-supported.md#microsoftcacheredis) |
+|Microsoft.ClassicCompute/domainNames/slots/roles | 否 | 否 | [傳統雲端服務](./metrics-supported.md#microsoftclassiccomputedomainnamesslotsroles) |
+|Microsoft.ClassicCompute/virtualMachines | 否 | 否 | [傳統虛擬機器](./metrics-supported.md#microsoftclassiccomputevirtualmachines) |
 |Microsoft.ClassicStorage/storageAccounts | 是 | 否 | [ (傳統) 的儲存體帳戶 ](./metrics-supported.md#microsoftclassicstoragestorageaccounts) |
 |Microsoft.ClassicStorage/storageAccounts/blobServices | 是 | 否 | |
 |Microsoft.ClassicStorage/storageAccounts/fileServices | 是 | 否 | |
@@ -55,7 +57,7 @@ Azure 監視器現已可支援[新的計量警示類型](./alerts-overview.md)�
 |Microsoft.DataShare/accounts | 是 | 否 | |
 |Microsoft.DBforMariaDB/servers | 否 | 否 | [適用于 mariadb 的 DB](./metrics-supported.md#microsoftdbformariadbservers) |
 |Microsoft.DBforMySQL/servers | 否 | 否 |[適用於 MySQL 的 DB](./metrics-supported.md#microsoftdbformysqlservers)|
-|DBforPostgreSQL/flexibleServers | 是 | 否 | |
+|Microsoft.DBforPostgreSQL/flexibleServers | 是 | 否 | |
 |Microsoft.DBforPostgreSQL/servers | 否 | 否 | [適用於 PostgreSQL 的 DB](./metrics-supported.md#microsoftdbforpostgresqlservers)|
 |Microsoft.DBforPostgreSQL/serversv2 | 否 | 否 | [適用于于 postgresql V2 的 DB](./metrics-supported.md#microsoftdbforpostgresqlserversv2)|
 |DBforPostgreSQL/singleservers | 否 | 否 | [適用于于 postgresql 的 DB (單一伺服器) ](./metrics-supported.md#microsoftdbforpostgresqlsingleservers)|
@@ -173,7 +175,7 @@ Azure 監視器現已可支援[新的計量警示類型](./alerts-overview.md)�
 }
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 深入了解新的[警示體驗](./alerts-overview.md)。
 * 了解 [Azure 中的記錄警示](./alerts-unified-log.md)。

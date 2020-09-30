@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sashan, sstein
 ms.date: 08/27/2019
-ms.openlocfilehash: 598bb30d21a17b2c39f69a845690c3c754ec2145
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 034940a0990fc97118e62caab051a5a9e2ffd3e7
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91325244"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91578558"
 ---
 # <a name="tutorial-add-sql-managed-instance-to-a-failover-group"></a>教學課程：將 SQL 受控執行個體新增至容錯移轉群組
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -35,7 +35,7 @@ ms.locfileid: "91325244"
   > - 參與容錯移轉群組的受控實例需要 [Azure ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md) 或兩個連線的 VPN 閘道。 目前不支援轉移的全域 VNet 對等互連。 本教學課程提供建立和連接 VPN 閘道的步驟。 如果您已設定 ExpressRoute，請略過這些步驟。 
 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 若要完成本教學課程，請確定您具有下列項目︰ 
@@ -55,6 +55,8 @@ ms.locfileid: "91325244"
 ## <a name="create-a-resource-group-and-primary-managed-instance"></a>建立資源群組和主要受控實例
 
 在此步驟中，您將使用 Azure 入口網站或 PowerShell 建立容錯移轉群組的資源群組和主要受控實例。 
+
+基於效能考慮，將兩個受控實例部署到 [配對的區域](../../best-practices-availability-paired-regions.md) 。 相較于未配對的區域，位於地理配對區域中的受控實例會有更好的效能。 
 
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal) 
@@ -740,6 +742,8 @@ ms.locfileid: "91325244"
 
 本文提供建立兩個 VPN 閘道並將它們連線的步驟，但如果您已設定 ExpressRoute，可以直接跳到建立容錯移轉群組。 
 
+> [!NOTE]
+> 閘道的 SKU 會影響輸送量效能。 本教學課程會部署具有最基本 SKU () 的閘道 `HwGw1` 。 部署較高的 SKU (範例： `VpnGw3`) 以達到更高的輸送量。 如需所有可用的選項，請參閱 [閘道 sku](../../vpn-gateway/vpn-gateway-about-vpngateways.md#benchmark)
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 
@@ -762,7 +766,7 @@ ms.locfileid: "91325244"
     | **欄位** | 值 |
     | --- | --- |
     | **訂用帳戶** |  您的主要受控實例所在的訂用帳戶。 |
-    | **Name** | 虛擬網路閘道的名稱，例如 `primary-mi-gateway` 。 | 
+    | **名稱** | 虛擬網路閘道的名稱，例如 `primary-mi-gateway` 。 | 
     | **區域** | 主要受控實例所在的區域。 |
     | **閘道類型** | 選取 [VPN]。 |
     | **VPN 類型** | 選取 [依路由]。 |
@@ -843,7 +847,7 @@ ms.locfileid: "91325244"
    | **欄位** | 值 |
    | --- | --- |
    | **訂用帳戶** |  次要受控實例所在的訂用帳戶。 |
-   | **Name** | 虛擬網路閘道的名稱，例如 `secondary-mi-gateway` 。 | 
+   | **名稱** | 虛擬網路閘道的名稱，例如 `secondary-mi-gateway` 。 | 
    | **區域** | 次要受控實例所在的區域。 |
    | **閘道類型** | 選取 [VPN]。 |
    | **VPN 類型** | 選取 [依路由]。 |

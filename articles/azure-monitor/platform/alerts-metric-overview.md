@@ -1,15 +1,15 @@
 ---
 title: 了解計量警示在 Azure 監視器中的運作方式。
 description: 取得計量警示有何用途以及其在 Azure 監視器中如何運作的概觀。
-ms.date: 08/16/2020
+ms.date: 09/30/2020
 ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: 8e57ec698f96826f493d048490ac053672e45895
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: 78ec5ff3fc87ef29d25e439b7d4c69bb3a10f3a7
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89595558"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91578065"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>了解計量警示在 Azure 監視器中的運作方式
 
@@ -143,6 +143,7 @@ Azure 監視器中的計量警示也支援以一個規則監視多個維度值�
 | NetApp files 容量集區 | **是** | **是** | **是** |
 | NetApp files 磁片區 | **是** | **是** | **是** |
 | 金鑰保存庫 | **是** | **是** | **是** |
+| Azure Cache for Redis | **是** | **是** | **是** |
 | Data box edge 裝置 | **是** | **是** | **是** |
 
 <sup>1</sup> 不支援虛擬機器網路計量 (網路總計、網路輸出、輸入流量、輸出流量、輸入流量最大建立速率、輸出流量最大建立速率) 。
@@ -172,7 +173,7 @@ Azure 監視器中的計量警示也支援以一個規則監視多個維度值�
 您可以在 [本文](./alerts-metric-near-real-time.md#metrics-and-dimensions-supported)中找到所支援資源類型的完整清單。
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [瞭解如何在 Azure 中建立、查看和管理計量警示](alerts-metric.md)
 - [了解如何使用 Azure Resource Manager 範本部署計量警示](./alerts-metric-create-templates.md)

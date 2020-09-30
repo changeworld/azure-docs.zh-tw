@@ -3,12 +3,12 @@ title: Azure Migrate 中探索、評量和相依性分析的相關問題
 description: 取得 Azure Migrate 中探索、評量和相依性分析的常見問題解答。
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: d4f833926541bafbae211caff37e5974b57e1047
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 074f58a2f6c24f106de6b2b5003ce2dfd428f356
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019006"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91577266"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>探索、評量和相依性分析-常見問題
 
@@ -124,7 +124,7 @@ Azure Migrate 設備會持續收集內部部署環境的相關資訊。  評量�
 
 ## <a name="why-is-the-suggested-migration-tool-in-import-based-avs-assessment-marked-as-unknown"></a>為什麼以匯入為基礎的 AVS 評定中的建議遷移工具標示為未知？
 
-對於透過 CSV 檔案匯入的機器，AVS 評量中的預設遷移工具不明。 不過，對於 VMware 機器，建議使用 VMware 混合式雲端擴充功能 (HCX) 解決方案。 [深入了解](../azure-vmware/hybrid-cloud-extension-installation.md)。
+對於透過 CSV 檔案匯入的機器，AVS 評量中的預設遷移工具不明。 不過，對於 VMware 機器，建議使用 VMware 混合式雲端擴充功能 (HCX) 解決方案。 [深入了解](../azure-vmware/tutorial-deploy-vmware-hcx.md)。
 
 
 ## <a name="what-is-dependency-visualization"></a>什麼是相依性視覺效果？
@@ -142,7 +142,7 @@ Azure Migrate 設備會持續收集內部部署環境的相關資訊。  評量�
 --- | --- | ---
 支援 | 此選項目前為預覽狀態，且僅適用于 VMware Vm。 [檢查](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless) 支援的作業系統。 | 公開上市 (GA) 。
 代理程式 | 不需要在您想要交叉檢查的機器上安裝代理程式。 | 要在每個您想要分析的內部部署機器上安裝的代理程式： [Microsoft Monitoring agent (MMA) ](../azure-monitor/platform/agent-windows.md)和 [Dependency agent](../azure-monitor/platform/agents-overview.md#dependency-agent)。 
-先決條件 | [檢查](concepts-dependency-visualization.md#agentless-analysis) 必要條件和部署需求。 | [檢查](concepts-dependency-visualization.md#agent-based-analysis) 必要條件和部署需求。
+必要條件 | [檢查](concepts-dependency-visualization.md#agentless-analysis) 必要條件和部署需求。 | [檢查](concepts-dependency-visualization.md#agent-based-analysis) 必要條件和部署需求。
 Log Analytics | 不需要。 | Azure Migrate 會使用 [Azure 監視器記錄](../azure-monitor/log-query/log-query-overview.md)中的[服務對應](../azure-monitor/insights/service-map.md)解決方案來實現相依性視覺效果。 [深入了解](concepts-dependency-visualization.md#agent-based-analysis)。
 運作方式 | 在啟用相依性視覺效果的電腦上捕獲 TCP 連接資料。 探索之後，會依五分鐘的間隔收集資料。 | 電腦上安裝的服務對應代理程式會收集有關每個處理常式的 TCP 程式和輸入/輸出連接的資料。
 資料 | 來源電腦伺服器名稱、進程、應用程式名稱。<br/><br/> 目的地電腦伺服器名稱、進程、應用程式名稱和埠。 | 來源電腦伺服器名稱、進程、應用程式名稱。<br/><br/> 目的地電腦伺服器名稱、進程、應用程式名稱和埠。<br/><br/> 系統會收集並提供 Log Analytics 查詢的連線、延遲和資料傳輸資訊的數目。 
@@ -156,7 +156,7 @@ Log Analytics | 不需要。 | Azure Migrate 會使用 [Azure 監視器記錄](.
 
 ## <a name="do-i-pay-for-dependency-visualization"></a>相依性視覺效果需要付費嗎？
 
-不知道。 深入瞭解 [Azure Migrate 定價](https://azure.microsoft.com/pricing/details/azure-migrate/)。
+否。 深入瞭解 [Azure Migrate 定價](https://azure.microsoft.com/pricing/details/azure-migrate/)。
 
 ## <a name="what-do-i-install-for-agent-based-dependency-visualization"></a>我要針對以代理程式為基礎的相依性視覺效果安裝什麼？
 

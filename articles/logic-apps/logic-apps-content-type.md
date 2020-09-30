@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 07/20/2018
-ms.openlocfilehash: 3a71c78dcbaa5fb02927e9a2cfdea40cd5b26130
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 04642e69adba82cf33b933829d72c51109ad2ee1
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91269092"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91578170"
 ---
 # <a name="handle-content-types-in-azure-logic-apps"></a>在 Azure 邏輯應用程式中處理內容類型
 
@@ -61,7 +61,7 @@ Logic Apps 可讓您產生方便使用的權杖來表示 JSON 內容中的屬性
   
   2. 在 [輸入或貼上範例 JSON 承載]**** 之下，提供範例承載，然後選擇 [完成]****。 例如： 
 
-     ![顯示具有範例 JSON 承載的 [收到 HTTP 要求時] 視窗的螢幕擷取畫面。](./media/logic-apps-content-type/request-trigger.png)
+     ![顯示範例 JSON 承載的 [收到 HTTP 要求時] 動作的螢幕擷取畫面。](./media/logic-apps-content-type/request-trigger.png)
 
      產生的結構描述現在會出現在觸發程序中。
 

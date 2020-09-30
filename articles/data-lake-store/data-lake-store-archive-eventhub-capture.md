@@ -1,17 +1,17 @@
 ---
-title: 從事件中樞捕獲資料至 Azure Data Lake Storage Gen1
-description: 了解如何使用 Azure Data Lake Storage Gen1 來擷取 Azure 事件中樞所收到的資料。 一開始請先確認必要條件。
+title: 從事件中樞將資料捕獲到 Azure Data Lake Storage Gen1
+description: 了解如何使用 Azure Data Lake Storage Gen1 來擷取 Azure 事件中樞所收到的資料。 先確認必要條件。
 author: twooley
 ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: c5254558c62499ed6864e809dbc93c26ebba94a9
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 8be242369ecae2c809a38428284c9ddcad440e3f
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88190270"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91578235"
 ---
 # <a name="use-azure-data-lake-storage-gen1-to-capture-data-from-event-hubs"></a>使用 Azure Data Lake Storage Gen1 從事件中樞擷取資料
 
@@ -36,46 +36,46 @@ ms.locfileid: "88190270"
 
 1.  按一下 [新增資料夾]****，然後輸入您要擷取資料的目的地資料夾名稱。
 
-    ![在 Data Lake Storage Gen1 中建立新的資料夾](./media/data-lake-store-archive-eventhub-capture/data-lake-store-create-new-folder.png "在 Data Lake Storage Gen1 中建立新的資料夾")
+    ![在 Data Lake Storage Gen1 中建立新資料夾](./media/data-lake-store-archive-eventhub-capture/data-lake-store-create-new-folder.png "在 Data Lake Storage Gen1 中建立新資料夾")
 
 1. 在 Data Lake Storage Gen1 根目錄指派權限。 
 
     a. 按一下**資料總管**，選取 Data Lake Storage Gen1 帳戶的根目錄，然後按一下 [存取]****。
 
-    ![指派 Data Lake Storage Gen1 根的許可權](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-permissions-to-root.png "指派 Data Lake Storage Gen1 根的許可權")
+    ![[資料瀏覽器] 的螢幕擷取畫面，其中包含帳戶的根目錄和稱為 [存取] 選項。](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-permissions-to-root.png "指派 Data Lake Storage Gen1 根目錄的許可權")
 
     b. 在 [存取]**** 下，依序按一下 [新增]**** 和 [選取使用者或群組]****，然後搜尋 `Microsoft.EventHubs`。 
 
-    ![指派 Data Lake Storage Gen1 根的許可權](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp.png "指派 Data Lake Storage Gen1 根的許可權")
+    ![[存取] 頁面的螢幕擷取畫面，其中包含 [加入] 選項、[選取使用者或群組] 選項，以及已呼叫的 Microsoft Eventhubs 選項。](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp.png "指派 Data Lake Storage Gen1 根目錄的許可權")
     
-    按一下 [選取]。
+    按一下 [選取]。 
 
     c. 在 [指派權限]**** 下，按一下 [選取權限]****。 將 [權限]**** 設定為 [執行]****。 將 [新增至]**** 設定為 [此資料夾及所有子系]****。 將 [新增為]**** 設定為 [存取權限項目及預設權限項目]****。
 
     > [!IMPORTANT]
     > 建立新的資料夾階層 (用來擷取 Azure 事件中樞所接收的資料) 時，這個簡單的方法可確保您能夠存取目的地資料夾。  不過，如果最上層資料夾有許多子檔案和資料夾，為其所有子系新增權限可能需要很長的時間。  如果根資料夾包含大量的檔案和資料夾，為最終目的地資料夾的路徑中的每個資料夾個別新增對 `Microsoft.EventHubs` 的 **Execute** 權限，可能更快。 
 
-    ![指派 Data Lake Storage Gen1 根的許可權](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp1.png "指派 Data Lake Storage Gen1 根的許可權")
+    ![[指派許可權] 區段的螢幕擷取畫面，其中已呼叫 [選取許可權] 選項。[選取許可權] 區段旁邊有 [執行選項]、[加入至] 選項，以及 [新增為] 選項（稱為 out）。](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp1.png "指派 Data Lake Storage Gen1 根目錄的許可權")
 
-    按一下 [確定]。
+    按一下 [確定]  。
 
 1. 為 Data Lake Storage Gen1 帳戶下要擷取資料的目的地資料夾指派權限。
 
     a. 按一下**資料總管**，選取 Data Lake Storage Gen1 帳戶中的資料夾，然後按一下 [存取]****。
 
-    ![指派 Data Lake Storage Gen1 資料夾的許可權](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-permissions-to-folder.png "指派 Data Lake Storage Gen1 資料夾的許可權")
+    ![資料瀏覽器的螢幕擷取畫面，其中包含帳戶中的資料夾和稱為 [存取] 選項。](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-permissions-to-folder.png "指派 Data Lake Storage Gen1 資料夾的許可權")
 
     b. 在 [存取]**** 下，依序按一下 [新增]**** 和 [選取使用者或群組]****，然後搜尋 `Microsoft.EventHubs`。 
 
-    ![指派 Data Lake Storage Gen1 資料夾的許可權](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp.png "指派 Data Lake Storage Gen1 資料夾的許可權")
+    ![[資料瀏覽器] 存取頁面的螢幕擷取畫面，其中包含 [加入] 選項、[選取使用者或群組] 選項，以及已呼叫的 Microsoft Eventhubs 選項。](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp.png "指派 Data Lake Storage Gen1 資料夾的許可權")
     
-    按一下 [選取]。
+    按一下 [選取]。 
 
     c. 在 [指派權限]**** 下，按一下 [選取權限]****。 將 [權限]**** 設定為 [讀取]、[寫入]**** 和 [執行]****。 將 [新增至]**** 設定為 [此資料夾及所有子系]****。 最後，將 [新增為]**** 設定為 [存取權限項目及預設權限項目]****。
 
-    ![指派 Data Lake Storage Gen1 資料夾的許可權](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp-folder.png "指派 Data Lake Storage Gen1 資料夾的許可權")
+    ![[指派許可權] 區段的螢幕擷取畫面，其中已呼叫 [選取許可權] 選項。[選取許可權] 區段旁邊有 [讀取]、[寫入] 和 [執行] 選項、[加入至] 選項，以及已呼叫的 [新增為] 選項。](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp-folder.png "指派 Data Lake Storage Gen1 資料夾的許可權")
     
-    按一下 [確定]。 
+    按一下 [確定]  。 
 
 ## <a name="configure-event-hubs-to-capture-data-to-data-lake-storage-gen1"></a>設定事件中樞，以將資料擷取到 Data Lake Storage Gen1
 
@@ -83,11 +83,11 @@ ms.locfileid: "88190270"
 
 1. 從事件中樞命名空間的 [概觀]**** 窗格，按一下 [+ 事件中樞]****。
 
-    ![建立事件中樞](./media/data-lake-store-archive-eventhub-capture/data-lake-store-create-event-hub.png "建立事件中樞")
+    ![已呼叫「事件中樞」選項的 [總覽] 窗格螢幕擷取畫面。](./media/data-lake-store-archive-eventhub-capture/data-lake-store-create-event-hub.png "建立事件中樞")
 
 1. 提供下列值來設定事件中樞，以將資料擷取到 Data Lake Storage Gen1。
 
-    ![建立事件中樞](./media/data-lake-store-archive-eventhub-capture/data-lake-store-configure-eventhub.png "建立事件中樞")
+    ![[建立事件中樞] 對話方塊的螢幕擷取畫面，其中包含 [名稱] 文字方塊、[Capture] 選項、[Capture 提供者] 選項、[選取 Data Lake Store] 選項，以及已呼叫的 [Data Lake 路徑] 選項。](./media/data-lake-store-archive-eventhub-capture/data-lake-store-configure-eventhub.png "建立事件中樞")
 
     a. 提供事件中樞的名稱。
     
@@ -117,6 +117,6 @@ ms.locfileid: "88190270"
 一旦資料位於 Data Lake Storage Gen1，您就可以執行分析作業來處理資料並進行大量運算。 請參閱 [USQL Avro 範例](https://github.com/Azure/usql/tree/master/Examples/AvroExamples)，以了解如何使用 Azure Data Lake Analytics 來執行此動作。
   
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 * [保護 Data Lake Storage Gen1 中的資料](data-lake-store-secure-data.md)
 * [將資料從 Azure 儲存體 Blob 複製到 Lake Storage Gen1](data-lake-store-copy-data-azure-storage-blob.md)

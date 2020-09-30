@@ -1,14 +1,14 @@
 ---
 title: 資源陣列屬性編寫原則
 description: 瞭解如何使用陣列參數和陣列語言運算式、評估 [*] 別名，以及附加具有 Azure 原則定義規則的元素。
-ms.date: 08/17/2020
+ms.date: 09/30/2020
 ms.topic: how-to
-ms.openlocfilehash: 5b9392a943e264ae5eca989ee87eb9ff09b36972
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: c67982197c0161d99f29747d6fd11166cba86079
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89048477"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91576892"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>對於 Azure 資源編寫陣列屬性的原則
 
@@ -194,12 +194,24 @@ Azure Resource Manager 屬性通常會定義為字串和布林值。 存在一�
 |`{<field>,"Equals":"127.0.0.1"}` |不執行任何動作 |全部相符 |一個陣列元素會評估為 true (127.0.0.1 == 127.0.0.1)，另一個為 false (127.0.0.1 == 192.168.1.1)，因此 **Equals** 條件是 _false_ 且不會觸發效果。 |
 |`{<field>,"Equals":"10.0.4.1"}` |不執行任何動作 |全部相符 |這兩個陣列元素都評估為 false (10.0.4.1 == 127.0.0.1 和 10.0.4.1 == 192.168.1.1)，因此 **Equals** 條件是 _false_ 且不會觸發效果。 |
 
-## <a name="the-append-effect-and-arrays"></a>附加效果和陣列
+## <a name="modifying-arrays"></a>修改陣列
 
-[附加效果](../concepts/effects.md#append)的行為會根據 **details.field** 是否為 **\[\*\]** 別名而有所不同。
+在建立或更新期間， [附加](../concepts/effects.md#append) 和 [修改](../concepts/effects.md#modify) 資源的 alter 屬性。 使用陣列屬性時，這些效果的行為取決於作業是否嘗試修改  **\[\*\]** 別名而定：
 
-- 不是 **\[\*\]** 別名時，append 會將整個陣列取代為**值**屬性
-- 是 **\[\*\]** 別名時，append 會將**值**屬性加入現有的陣列中，或建立新的陣列
+> [!NOTE]
+> 使用 `modify` 具有別名的效果目前為 **預覽**狀態。
+
+|Alias |效果 | 結果 |
+|-|-|-|
+| `Microsoft.Storage/storageAccounts/networkAcls.ipRules` | `append` | Azure 原則會將效果詳細資料中指定的整個陣列附加至遺失的情況。 |
+| `Microsoft.Storage/storageAccounts/networkAcls.ipRules` | `modify` 使用 `add` 作業 | Azure 原則會將效果詳細資料中指定的整個陣列附加至遺失的情況。 |
+| `Microsoft.Storage/storageAccounts/networkAcls.ipRules` | `modify` 使用 `addOrReplace` 作業 | 如果遺漏或取代現有的陣列，Azure 原則會附加效果詳細資料中指定的整個陣列。 |
+| `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]` | `append` | Azure 原則會附加在效果詳細資料中指定的陣列成員。 |
+| `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]` | `modify` 使用 `add` 作業 | Azure 原則會附加在效果詳細資料中指定的陣列成員。 |
+| `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]` | `modify` 使用 `addOrReplace` 作業 | Azure 原則移除所有現有的陣列成員，並附加在效果詳細資料中指定的陣列成員。 |
+| `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].action` | `append` | Azure 原則將值附加至 `action` 每個陣列成員的屬性。 |
+| `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].action` | `modify` 使用 `add` 作業 | Azure 原則將值附加至 `action` 每個陣列成員的屬性。 |
+| `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].action` | `modify` 使用 `addOrReplace` 作業 | Azure 原則會附加或取代 `action` 每個陣列成員的現有屬性。 |
 
 如需詳細資訊，請參閱[附加範例](../concepts/effects.md#append-examples)。
 
@@ -209,5 +221,5 @@ Azure Resource Manager 屬性通常會定義為字串和布林值。 存在一�
 - 檢閱 [Azure 原則定義結構](../concepts/definition-structure.md)。
 - 檢閱[了解原則效果](../concepts/effects.md)。
 - 了解如何[以程式設計方式建立原則](programmatically-create.md)。
-- 瞭解如何[補救不符合規範的資源](remediate-resources.md)。
+- 了解如何[補救不符合規範的資源](remediate-resources.md)。
 - 透過[使用 Azure 管理群組來組織資源](../../management-groups/overview.md)來檢閱何謂管理群組。

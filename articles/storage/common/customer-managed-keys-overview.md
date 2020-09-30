@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 993c0bdf1e8e29a7cff9bd1cad60bf78386b16a2
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: b7a6584b1566d1fa2e1e250938212a01d845e113
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90994382"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91578218"
 ---
 # <a name="customer-managed-keys-for-azure-storage-encryption"></a>Azure 儲存體加密的客戶管理金鑰
 
@@ -27,6 +27,8 @@ ms.locfileid: "90994382"
 
 > [!NOTE]
 > Azure Key Vault 和 Azure Key Vault 受控 HSM 支援相同的 Api 和管理介面進行設定。
+
+[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 ## <a name="about-customer-managed-keys"></a>關於客戶管理的金鑰
 
@@ -115,7 +117,7 @@ Azure 儲存體加密支援2048、3072和4096大小的 RSA 和 RSA HSM 金鑰。
 
 客戶管理的金鑰也可用於管理 Azure 受控磁片的加密。 客戶管理的金鑰在受控磁片上的行為會與 Azure 儲存體資源的行為不同。 如需詳細資訊，請參閱適用于 Windows 的 [azure 受控磁片的伺服器端加密](../../virtual-machines/windows/disk-encryption.md) ，或適用于 Linux [的 azure 受控磁片的伺服器端加密](../../virtual-machines/linux/disk-encryption.md) 。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [待用資料的 Azure 儲存體加密](storage-service-encryption.md)
 - [使用儲存在 Azure Key Vault 中客戶管理的金鑰來設定加密](customer-managed-keys-configure-key-vault.md)

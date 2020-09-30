@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: rajosh
-ms.openlocfilehash: 192780f1340b09cd2579e31f4023acb101d0e1f9
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 89dc962c73a6446afc79eec2a0fcfd5c0e32e84e
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91358078"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91576705"
 ---
 # <a name="create-an-azure-vmware-solution-avs-assessment"></a>建立 (AVS) 評量的 Azure VMware 解決方案
 
@@ -19,7 +19,7 @@ ms.locfileid: "91358078"
 
 [Azure Migrate](migrate-services-overview.md) 可協助您遷移至 Azure。 Azure Migrate 能提供集中式的中樞，以追蹤針對 Azure 的內部部署基礎結構、應用程式與資料的探索、評量及移轉。 該中樞能提供 Azure 工具以進行評量和移轉，也提供協力廠商獨立軟體廠商 (ISV) 供應項目。
 
-## <a name="before-you-start"></a>在您開始使用 Intune 之前
+## <a name="before-you-start"></a>開始之前
 
 - 請確定您已 [建立](how-to-add-tool-first-time.md) Azure Migrate 專案。
 - 如果您已建立專案，請確定您已 [新增](how-to-assess.md) Azure Migrate：伺服器評定工具。
@@ -110,8 +110,8 @@ ms.locfileid: "91358078"
     - **就緒狀態不明**： Azure Migrate 因為從內部部署環境收集的中繼資料不足，所以無法判斷電腦是否就緒。
 
 3. 複習建議的工具：
-    - **VMWARE HCX 或企業**：若為 vmware 機器，vmware 混合式雲端擴充 (HCX) 解決方案是建議的遷移工具，可將內部部署工作負載遷移至 Azure VMware 解決方案 (AVS) 私用雲端。 [深入了解](../azure-vmware/hybrid-cloud-extension-installation.md)。
-    - **未知**：針對透過 CSV 檔案匯入的電腦，預設的移轉工具是未知的。 針對 VMware 機器，建議使用 VMware 混合式雲端擴充功能 (HCX) 解決方案。 
+    - **VMWARE HCX 或企業**：若為 vmware 機器，vmware 混合式雲端擴充 (HCX) 解決方案是建議的遷移工具，可將內部部署工作負載遷移至 Azure VMware 解決方案 (AVS) 私用雲端。 [深入了解](../azure-vmware/tutorial-deploy-vmware-hcx.md)。
+    - **未知**：針對透過 CSV 檔案匯入的電腦，預設的移轉工具是未知的。 但對於 VMware 機器，建議使用 VMware 混合式雲端擴充功能 (HCX) 解決方案。 
 
 4. 按一下 [ **AVS 就緒** 狀態]。 您可以檢視 VM 的整備程度詳細資料，並向下切入以查看 VM 詳細資料，包括計算、儲存體和網路設定。
 
@@ -121,11 +121,11 @@ ms.locfileid: "91358078"
 
 此視圖會顯示在 Azure VMware Solution (AVS) 中執行 Vm 的預估成本。
 
-1. 查看每月總成本。 系統會針對評估群組中的所有 VM 匯總成本。 
+1. 檢閱每月總成本。 系統會針對評估群組中的所有 VM 匯總成本。 
 
     - 成本預估是根據所有 Vm 的資源需求總計所需的 AVS 節點數目。
     - 因為 Azure VMware 解決方案 (AVS) 的定價是每個節點，所以總成本沒有計算成本和儲存體成本分配。
-    - 成本估計適用于在 AVS 中執行內部部署 Vm。 Azure Migrate 伺服器評估不會考慮 PaaS 或 SaaS 的成本。
+    - 成本估計是用於執行 AVS 中的內部部署 VM。 Azure Migrate 伺服器評估不會考慮 PaaS 或 SaaS 的成本。
     
 2. 您可以檢閱每月的儲存體成本估計值。 此檢視會顯示評估群組的彙總儲存體成本，並分割為不同類型的儲存體磁碟。
 

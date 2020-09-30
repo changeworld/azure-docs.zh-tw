@@ -7,12 +7,12 @@ ms.date: 07/23/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 9752589c8863cc911369225d268035d9f61c0273
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 165f83e0f021d23c26333a294ffe992838bda6b0
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90032022"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91577708"
 ---
 # <a name="use-iot-plug-and-play-models-in-an-iot-solution"></a>在 IoT 解決方案中使用 IoT 隨插即用模型
 
@@ -26,7 +26,7 @@ IoT 解決方案有兩個廣泛的類別：
 
 若要使用 IoT 隨插即用模型，IoT 解決方案：
 
-1. 識別連接至方案的 IoT 隨插即用裝置所執行之模型的模型識別碼。
+1. 識別連接至方案之 IoT 隨插即用設備、模組或 IoT Edge 模組所執行模型的模型識別碼。
 
 1. 使用模型識別碼，從模型儲存機制或自訂存放區取出連接裝置的模型定義。
 
@@ -40,7 +40,10 @@ IoT 中樞會以裝置型號識別碼通知解決方案，作為裝置連接流�
 
 ### <a name="get-device-twin-api"></a>取得裝置對應項 API
 
-解決方案可以使用 [取得裝置](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.deviceclient.getdevicetwin?view=azure-java-stable) 對應項 API 來取出 IoT 隨插即用裝置的模型識別碼。
+解決方案可以使用 [取得裝置](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.deviceclient.getdevicetwin?view=azure-java-stable&preserve-view=true) 對應項 API 來取出 IoT 隨插即用裝置的模型識別碼。
+
+> [!TIP]
+> 針對模組和 IoT Edge 模組，請使用 [ModuleClient getTwin](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.moduleclient.gettwin?view=azure-java-stable&preserve-view=true)。
 
 在下列裝置對應項回應片段中， `modelId` 包含 IoT 隨插即用裝置的模型識別碼：
 
@@ -136,7 +139,7 @@ content-encoding:utf-8
 
 1. 您可以使用裝置的列舉功能，讓使用者 [與裝置互動](quickstart-service-node.md)。  
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 現在您已瞭解如何在 IoT 解決方案中整合 IoT 隨插即用模型，接下來的一些建議步驟如下：
 

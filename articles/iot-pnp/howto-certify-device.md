@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: bdb6bf166e84bb9134bbd14454899bcefbf0a887
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 6aa4273933190ccfe495bcaf243ee15a5ce823fb
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88949893"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91577640"
 ---
 # <a name="how-to-certify-iot-plug-and-play-devices"></a>如何認證 IoT 隨插即用裝置
 
@@ -42,18 +42,18 @@ IoT 隨插即用裝置認證方案包含可檢查裝置是否符合 IoT 隨插�
 - 遵循 IoT 隨插即用慣例來執行遙測、屬性或命令。
 - 描述與 [DTDL v2](https://aka.ms/dtdl) 模型的裝置互動。
 - 發佈[Azure IoT 公用模型存放庫](https://devicemodels.azureiotsolutions.com/)中的模型和所有必要的介面
-- 在 dps 布建承載的 [dps 註冊](concepts-developer-guide.md#dps-payload) 期間傳送模型識別碼。
-- 宣告 [MQTT 連接](concepts-developer-guide.md#model-id-announcement)期間的模型識別碼。
+- 在 dps 布建承載的 [dps 註冊](concepts-developer-guide-device-csharp.md#dps-payload) 期間傳送模型識別碼。
+- 宣告 [MQTT 連接](concepts-developer-guide-device-csharp.md#model-id-announcement)期間的模型識別碼。
 
 ## <a name="test-with-the-azure-iot-extension-cli"></a>使用 Azure IoT 擴充功能 CLI 進行測試
 
-[Azure IOT CLI 擴充](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/product?view=azure-cli-latest)功能可讓您在透過 Azure 認證裝置入口網站提交裝置以進行認證之前，驗證裝置的執行是否符合模型。
+[Azure IOT CLI 擴充](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/product?view=azure-cli-latest&preserve-view=true)功能可讓您在透過 Azure 認證裝置入口網站提交裝置以進行認證之前，驗證裝置的執行是否符合模型。
 
 下列步驟示範如何使用 CLI 來準備和執行認證測試：
 
 ### <a name="install-the-azure-iot-extension-for-the-azure-cli"></a>安裝適用于 Azure CLI 的 Azure IoT 擴充功能
 
-請參閱安裝指示，以在您的環境中設定 [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) 。
+請參閱安裝指示，以在您的環境中設定 [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest&preserve-view=true) 。
 
 若要安裝 Azure IoT 擴充功能，請執行下列命令：
 
@@ -61,7 +61,7 @@ IoT 隨插即用裝置認證方案包含可檢查裝置是否符合 IoT 隨插�
 az extension add --name azure-iot
 ```
 
-若要深入瞭解，請參閱 [適用于 Azure IoT 的 Azure CLI](https://docs.microsoft.com/cli/azure/azure-cli-reference-for-iot?view=azure-cli-latest)。
+若要深入瞭解，請參閱 [適用于 Azure IoT 的 Azure CLI](https://docs.microsoft.com/cli/azure/azure-cli-reference-for-iot?view=azure-cli-latest&preserve-view=true)。
 
 ### <a name="create-a-new-product-test"></a>建立新的產品測試
 
@@ -75,7 +75,7 @@ az iot product test create --badge-type Pnp --at SymmetricKey --device-type Fini
 ```
 
 > [!NOTE]
-> 當您使用 CLI 時，必須登 [入](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest) 您的訂用帳戶。
+> 當您使用 CLI 時，必須登 [入](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest&preserve-view=true) 您的訂用帳戶。
 
 命令的 JSON 輸出包含 `primaryKey` 、 `registrationId` 和，以在 `scopeID` 您連接裝置時使用。
 
@@ -93,7 +93,7 @@ az iot product test create --badge-type Pnp --at SymmetricKey --device-type Fini
 }
 ```
 
-### <a name="connect-your-device"></a>連接裝置
+### <a name="connect-your-device"></a>連接您的裝置
 
 使用上一個命令的 DPS 資訊輸出，將您的裝置連線到測試 IoT 中樞實例。
 
@@ -166,9 +166,6 @@ az iot product test task create --type QueueTestRun --test-id d45d53d9-656d-4be7
 
 下列步驟說明如何使用 [Azure 認證裝置入口網站](https://aka.ms/acdp) 來上架、註冊產品詳細資料、提交入門指南，以及執行認證測試。
 
-> [!NOTE]
-> 在撰寫本文時，入口網站不支援發佈至 [Azure IoT 認證裝置目錄](https://aka.ms/devicecatalog)。
-
 ### <a name="onboarding"></a>登入
 
 若要使用 [認證入口網站](https://aka.ms/acdp)，您必須使用工作或學校租使用者中的 Azure Active Directory。
@@ -204,6 +201,14 @@ az iot product test task create --type QueueTestRun --test-id d45d53d9-656d-4be7
 1. 查看介面。 請檢查介面，並確定每一個都有適合測試的承載輸入。
 1. 測試。 系統會測試每個裝置模型，以檢查模型中所述的遙測、屬性和命令是否遵循 IoT 隨插即用慣例。 測試完成時，請選取 [ **查看記錄** ] 連結，以查看裝置的遙測資料，以及傳送至 IoT 中樞裝置對應項屬性的原始資料。
 
-## <a name="next-steps"></a>接下來的步驟
+### <a name="submit-and-publish"></a>提交併發行
+
+最後一個必要階段是提交專案以供審查。 此步驟會通知 Azure 認證裝置團隊成員查看您的專案是否完整，包括裝置和行銷詳細資料，以及入門指南。 小組成員可能會在核准之前，先與您提出問題的公司電子郵件地址或編輯要求聯繫。
+
+如果您的裝置需要進一步的手動驗證作為認證的一部分，您此時將會收到通知。
+
+當裝置通過認證時，您可以選擇使用 [產品摘要] 頁面中的 [ **發佈至類別目錄** ] 功能，將您的產品詳細資料發佈至 Azure 認證裝置目錄。
+
+## <a name="next-steps"></a>後續步驟
 
 裝置提交完成後，您可以聯繫裝置認證小組， [iotcert@microsoft.com](mailto:iotcert@microsoft.com) 以繼續進行後續步驟，其中包括 Microsoft 合作夥伴網路成員資格驗證，以及使用者入門指南的評論。 滿足所有需求時，您可以選擇讓裝置包含在「 [Azure IoT 認證」裝置目錄](https://aka.ms/devicecatalog)中。

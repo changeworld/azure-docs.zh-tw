@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: Operations'
-ms.openlocfilehash: 4ded10d9475c363c3f44032c7aa8cc7db03ab37f
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 725fc422bc11a19bebcbb8895cc0a9bedd58afed
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90033637"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91577759"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>選擇適合您解決方案的 IoT 中樞層
 
@@ -52,7 +52,7 @@ Azure IoT 中樞提供基本和標準兩個層級，兩者所支援的功能數�
 | [裝置對應項](iot-hub-devguide-device-twins.md)、[模組對應項](iot-hub-devguide-module-twins.md)和[裝置管理](iot-hub-device-management-overview.md) |   | 是 |
 | [裝置串流 (預覽)](iot-hub-device-streams-overview.md) |   | 是 |
 | [Azure IoT Edge](../iot-edge/about-iot-edge.md) |   | 是 |
-| [IoT 隨插即用預覽版](../iot-pnp/overview-iot-plug-and-play.md) |   | 是 |
+| [IoT 隨插即用](../iot-pnp/overview-iot-plug-and-play.md) |   | 是 |
 
 IoT 中樞也會提供免費層供您測試和評估。 其具有標準層的所有功能，但允許的傳訊量有限。 您無法從免費層升級至基本或標準層。
 
