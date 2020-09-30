@@ -10,14 +10,14 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 8/17/2020
+ms.date: 9/29/2020
 ms.author: yohaddad
-ms.openlocfilehash: bb2b9da291bf75542c942d785d995018b597f742
-ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
+ms.openlocfilehash: bdcf9417aca6ece24e5ef577620734eeb48d9362
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90024293"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91531151"
 ---
 # <a name="azure-guest-os"></a>Azure 客體作業系統
 下表為適用於 Azure 客體作業系統的 Microsoft Security Response Center (MSRC) 更新。 請搜尋本文章以判斷特定更新是否適用於您使用的客體作業系統。 已引進更新的特定[系列][family-explain]會持續推出更新。
@@ -47,11 +47,9 @@ ms.locfileid: "90024293"
 |  Rel 20-09 |  [4569778]  |  NET Framework 4.5.2 安全性和品質匯總套件 | 2.102 | 2020年9月8日 |
 |  Rel 20-09 |  [4578013]  |  安全性更新 | 2.102 | 2020年9月8日 |
 |  Rel 20-09 |  [4576750]  |  服務堆疊更新 | 5.47 | 2020年9月8日 |
-|  Rel 20-09 |  [4576479]  |  NET Framework 4.8 安全性和品質匯總套件 | 5.47 | 2020年9月8日 |
 |  Rel 20-09 |  [4494175]  |  微碼 | 5.47 | 2020年9月8日 |
 |  Rel 20-09 |  [4570332]  |  服務堆疊更新 | 6.23 | 2020年9月8日 |
 |  Rel 20-09 |  [4570720]  |  .NET Framework 3.5 和4.7.2 累計更新 | 6.23 | 2020年9月8日 |
-|  Rel 20-09 |  [4576483]  |  .NET Framework 4.8 安全性和品質匯總套件 | 6.23 | 2020年9月8日 |
 |  Rel 20-09 |  [4494174]  |  微碼 | 6.23 | 2020年9月8日 |
 
 [4577010]: https://support.microsoft.com/kb/4577010
@@ -72,11 +70,9 @@ ms.locfileid: "90024293"
 [4569778]: https://support.microsoft.com/kb/4569778
 [4578013]: https://support.microsoft.com/kb/4578013
 [4576750]: https://support.microsoft.com/kb/4576750
-[4576479]: https://support.microsoft.com/kb/4576479
 [4494175]: https://support.microsoft.com/kb/4494175
 [4570332]: https://support.microsoft.com/kb/4570332
 [4570720]: https://support.microsoft.com/kb/4570720
-[4576483]: https://support.microsoft.com/kb/4576483
 [4494174]: https://support.microsoft.com/kb/4494174
 
 ## <a name="august-2020-guest-os"></a>2020年8月的來賓 OS
@@ -84,29 +80,26 @@ ms.locfileid: "90024293"
 
 | 產品類別 | 上層知識庫文章 | 弱點說明 | 客體作業系統 | 首次引進日期 |
 | --- | --- | --- | --- | --- |
-|  Rel 20-08 |  [4571687]  |  IE 累積更新 | 2.101、3.88、4.81 | 2020年8月11日 |
-|  Rel 20-08 |  [4561600]  |  Flash 更新 | 3.88、4.81、5.46、6.22 | 2020年6月9日 |
-|  Rel 20-08 |  [4571694]  |  最新的累積更新 | 6.22 | 2020年8月11日 |
-|  Rel 20-08 |  [4565349]  |  最新的累積更新 | 5.46 | 2020年8月11日 |
-|  Rel 20-08 |  [4570673]  |  服務堆疊更新 | 2.101 | 2020年8月11日 |
-|  Rel 20-08 |  [4571729]  |  每月彙總 | 2.101 | 2020年8月11日 |
-|  Rel 20-08 |  [4569767]  |  .NET Framework 3.5.1 安全性和品質匯總套件 | 2.101 | 2020年8月11日 |
-|  Rel 20-08 |  [4569780]  |  .NET Framework 4.5.2 安全性和品質匯總套件 | 2.101 | 2020年8月11日 |
-|  Rel 20-08 |  [4569765]  |  .NET Framework 3.5 安全性和品質匯總套件 | 3.88 | 2020年8月11日 |
-|  Rel 20-08 |  [4569779]  |  .NET Framework 4.5.2 安全性和品質匯總套件 | 3.88 | 2020年8月11日 |
-|  Rel 20-08 |  [4566426]  |  服務堆疊更新 | 3.88 | 2020年7月14日 |
-|  Rel 20-08 |  [4571736]  |  每月彙總 | 3.88 | 2020年8月11日 |
-|  Rel 20-08 |  [4566425]  |  服務堆疊更新 | 4.81 | 2020年7月14日 |
-|  Rel 20-08 |  [4571703]  |  每月彙總 | 4.81 | 2020年8月11日 |
-|  Rel 20-08 |  [4569768]  |  .NET Framework 3.5 安全性和品質匯總套件 | 4.81 | 2020年8月11日 |
-|  Rel 20-08 |  [4569778]  |  .NET Framework 4.5.2 安全性和品質匯總套件 | 4.81 | 2020年8月11日 |
-|  Rel 20-08 |  [4494175]  |  微碼 | 5.46 | 2020年2月25日 |
-|  Rel 20-08 |  [4565912]  |  服務堆疊更新 | 5.46 | 2020年7月14日 |
-|  Rel 20-08 |  [4569746]  |  .NET Framework 4.8 安全性和品質匯總套件 | 5.46 | 2020年8月11日 |
-|  Rel 20-08 |  [4569776]  |  .NET Framework 3.5 和4.7.2 累計更新 | 6.22 | 2020年8月11日 |
-|  Rel 20-08 |  [4569750]  |  .NET Framework 3.5 和4.8 累積更新 | 6.22 | 2020年8月11日 |
-|  Rel 20-08 |  [4566424]  |  服務堆疊更新 | 6.22 | 2020年8月11日 |
-
+|  Rel 20-08 |  [4571687]  |  IE 累積更新 | [2.101]、 [3.88]、 [4.81] | 2020年8月11日 |
+|  Rel 20-08 |  [4561600]  |  Flash 更新 | [3.88]、 [4.81]、 [5.46]、 [6.22] | 2020年6月9日 |
+|  Rel 20-08 |  [4571694]  |  最新的累積更新 | [6.22] | 2020年8月11日 |
+|  Rel 20-08 |  [4565349]  |  最新的累積更新 | [5.46] | 2020年8月11日 |
+|  Rel 20-08 |  [4570673]  |  服務堆疊更新 | [2.101] | 2020年8月11日 |
+|  Rel 20-08 |  [4571729]  |  每月彙總 | [2.101] | 2020年8月11日 |
+|  Rel 20-08 |  [4569767]  |  .NET Framework 3.5.1 安全性和品質匯總套件 | [2.101] | 2020年8月11日 |
+|  Rel 20-08 |  [4569780]  |  .NET Framework 4.5.2 安全性和品質匯總套件 | [2.101] | 2020年8月11日 |
+|  Rel 20-08 |  [4569765]  |  .NET Framework 3.5 安全性和品質匯總套件 | [3.88] | 2020年8月11日 |
+|  Rel 20-08 |  [4569779]  |  .NET Framework 4.5.2 安全性和品質匯總套件 | [3.88] | 2020年8月11日 |
+|  Rel 20-08 |  [4566426]  |  服務堆疊更新 | [3.88] | 2020年7月14日 |
+|  Rel 20-08 |  [4571736]  |  每月彙總 | [3.88] | 2020年8月11日 |
+|  Rel 20-08 |  [4566425]  |  服務堆疊更新 | [4.81] | 2020年7月14日 |
+|  Rel 20-08 |  [4571703]  |  每月彙總 | [4.81] | 2020年8月11日 |
+|  Rel 20-08 |  [4569768]  |  .NET Framework 3.5 安全性和品質匯總套件 | [4.81] | 2020年8月11日 |
+|  Rel 20-08 |  [4569778]  |  .NET Framework 4.5.2 安全性和品質匯總套件 | [4.81] | 2020年8月11日 |
+|  Rel 20-08 |  [4494175]  |  微碼 | [5.46] | 2020年2月25日 |
+|  Rel 20-08 |  [4565912]  |  服務堆疊更新 | [5.46] | 2020年7月14日 |
+|  Rel 20-08 |  [4569776]  |  .NET Framework 3.5 和4.7.2 累計更新 | [6.22] | 2020年8月11日 |
+|  Rel 20-08 |  [4566424]  |  服務堆疊更新 | [6.22] | 2020年8月11日 |
 
 
 [4571687]: https://support.microsoft.com/kb/4571687
@@ -127,10 +120,13 @@ ms.locfileid: "90024293"
 [4569778]: https://support.microsoft.com/kb/4569778
 [4494175]: https://support.microsoft.com/kb/4494175
 [4565912]: https://support.microsoft.com/kb/4565912
-[4569746]: https://support.microsoft.com/kb/4569746
 [4569776]: https://support.microsoft.com/kb/4569776
-[4569750]: https://support.microsoft.com/kb/4569750
 [4566424]: https://support.microsoft.com/kb/4566424
+[2.101]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
+[3.88]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
+[4.81]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
+[5.46]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
+[6.22]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
 
 
 ## <a name="july-2020-guest-os"></a>2020年7月的來賓 OS
@@ -740,8 +736,6 @@ ms.locfileid: "90024293"
 |  N/A  |  [4499151]  |  2019 年 5 月非安全性  |  4.67  |  2019 年 5 月 14 日  |
 |  N/A  |  [4495608]  |  2019 年 5 月 .NET 3.5 非安全性  |  4.67  |  2019 年 5 月 14 日  |
 |  N/A  |  [4495592]  |  2019 年 5 月 .NET 4.5.2 非安全性  |  4.67  |  2019 年 5 月 14 日  |
-|  N/A  |  [4495610]  |  2019 年 5 月 .NET 4.8 累計  |  6.8  |  2019 年 5 月 14 日  |
-|  N/A  |  [4495618]  |  2019 年 5 月 .NET 4.8 累計  |  6.8  |  2019 年 5 月 14 日  |
 |  N/A  |  [4501226]  |  摩洛哥和巴勒斯坦政府的 DST 時區更新  |  2.87、3.74、4.67  |  2019 年 5 月 23 日  |
 |  N/A  |  [4490128]  |  聖多美、普林西比和克孜勒奧爾達的 DST 時區更新  |  2.87、3.74、4.67  |  2019 年 4 月 17 日  |
 
@@ -763,8 +757,6 @@ ms.locfileid: "90024293"
 [4499151]: https://support.microsoft.com/kb/KB4499151
 [4495608]: https://support.microsoft.com/kb/KB4495608
 [4495592]: https://support.microsoft.com/kb/KB4495592
-[4495610]: https://support.microsoft.com/kb/KB4495610
-[4495618]: https://support.microsoft.com/kb/KB4495618
 [4501226]: https://support.microsoft.com/kb/KB4501226
 [4490128]: https://support.microsoft.com/kb/KB4490128
 

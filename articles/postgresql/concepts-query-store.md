@@ -1,21 +1,21 @@
 ---
 title: 查詢存放區-適用於 PostgreSQL 的 Azure 資料庫-單一伺服器
-description: 本文說明適用於 PostgreSQL 的 Azure 資料庫-單一伺服器中的查詢存放區功能。
+description: 本文說明適用於 PostgreSQL 的 Azure 資料庫單一伺服器中的查詢存放區功能。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/01/2020
-ms.openlocfilehash: 49eea969f987a72872cda58ae6a7c41e50a14c10
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2cda79e1b08e67e10d42acb5093230ce8450d67d
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85830276"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530913"
 ---
 # <a name="monitor-performance-with-the-query-store"></a>使用查詢存放區監視效能
 
-**適用物件：** 適用於 PostgreSQL 的 Azure 資料庫-單一伺服器9.6 版和更新版本
+**適用于：** 適用於 PostgreSQL 的 Azure 資料庫-單一伺服器版本9.6 和更新版本
 
 適用於 PostgreSQL 的 Azure 資料庫查詢存放區功能提供的方法可追蹤一段時間的查詢效能。 查詢存放區可協助您快速找到執行時間最長又最耗資源的查詢，簡化效能疑難排解。 查詢存放區會自動擷取查詢的歷程記錄和執行階段統計資料，並予以保留以供您檢閱。 依時間範圍區分資料，以便查看資料庫使用模式。 所有使用者、資料庫及查詢的資料都會儲存在適用於 PostgreSQL 的 Azure 資料庫執行個體中名為 **azure_sys** 的資料庫。
 
@@ -29,11 +29,11 @@ ms.locfileid: "85830276"
 1. 登入 Azure 入口網站，然後選取適用於 PostgreSQL 的 Azure 資料庫伺服器。
 2. 在功能表的 [設定] 區段中，選取 [伺服器參數]。
 3. 搜尋 `pg_qs.query_capture_mode` 參數。
-4. 將值設定為 `TOP` 並**儲存**。
+4. 將值設定為 `TOP` ，然後 **儲存**。
 
 若要啟用查詢存放區中的等候統計資料： 
 1. 搜尋 `pgms_wait_sampling.query_capture_mode` 參數。
-1. 將值設定為 `ALL` 並**儲存**。
+1. 將值設定為 `ALL` ，然後 **儲存**。
 
 
 或者，您可以使用 Azure CLI 來設定這些參數。
@@ -60,7 +60,7 @@ az postgres server configuration set --name pgms_wait_sampling.query_capture_mod
 
 ## <a name="access-query-store-information"></a>存取查詢存放區資訊
 
-查詢存放區的資料會儲存在 Postgres 伺服器上的 azure_sys 資料庫中。 
+查詢存放區的資料會儲存在 Postgres 伺服器的 azure_sys 資料庫中。 
 
 下列查詢會傳回查詢存放區中的相關資訊：
 ```sql
@@ -116,7 +116,7 @@ SELECT * FROM query_store.pgms_wait_sampling_view;
 ### <a name="query_storeqs_view"></a>query_store.qs_view
 此檢視會傳回查詢存放區中的所有資料。 不同的資料庫識別碼、使用者識別碼及查詢識別碼都會自成一資料列。 
 
-|**名稱**   |**型別** | **參考**  | **描述**|
+|**名稱**   |**型別** | **參考**  | **說明**|
 |---|---|---|---|
 |runtime_stats_entry_id |BIGINT | | 來自 runtime_stats_entries 資料表的識別碼|
 |user_id    |oid    |pg_authid.oid  |執行陳述式的使用者物件識別 (OID)|
@@ -157,7 +157,7 @@ SELECT * FROM query_store.pgms_wait_sampling_view;
 ### <a name="query_storepgms_wait_sampling_view"></a>query_store.pgms_wait_sampling_view
 此檢視會傳回查詢存放區中的等候事件資料。 不同的資料庫識別碼、使用者識別碼、查詢識別碼及事件都會自成一資料列。
 
-|**名稱**|  **型別**|   **參考**| **描述**|
+|**名稱**|  **型別**|   **參考**| **說明**|
 |---|---|---|---|
 |user_id    |oid    |pg_authid.oid  |執行陳述式的使用者物件識別 (OID)|
 |db_id  |oid    |pg_database.oid    |在其中執行陳述式的資料庫物件識別 (OID)|
@@ -178,30 +178,30 @@ Query_store.staging_data_reset() 傳回 void
 
 
 ## <a name="azure-monitor"></a>Azure 監視器
-適用於 PostgreSQL 的 Azure 資料庫已與[Azure 監視器診斷設定](../azure-monitor/platform/diagnostic-settings.md)整合。 診斷設定可讓您將 JSON 格式的 Postgres 記錄傳送至[Azure 監視器記錄](../azure-monitor/log-query/log-query-overview.md)，以進行分析和警示、事件中樞以進行串流處理，以及 Azure 儲存體進行封存。
+適用於 PostgreSQL 的 Azure 資料庫已與 [Azure 監視器診斷設定](../azure-monitor/platform/diagnostic-settings.md)整合。 診斷設定可讓您將 JSON 格式的 Postgres 記錄傳送至 [Azure 監視器記錄](../azure-monitor/log-query/log-query-overview.md) ，以進行分析和警示、串流的事件中樞，以及用於封存的 Azure 儲存體。
 
 >[!IMPORTANT]
-> 這項診斷功能僅適用于一般用途和記憶體優化定價層。
+> 的此診斷功能僅適用于一般用途和記憶體優化定價層。
 
 ### <a name="configure-diagnostic-settings"></a>設定診斷設定
-您可以使用 [Azure 入口網站]、[CLI]、[REST API] 和 [PowerShell] 來啟用 Postgres 伺服器的診斷設定。 要設定的記錄類別為**QueryStoreRuntimeStatistics**和**QueryStoreWaitStatistics**。 
+您可以使用 Azure 入口網站、CLI、REST API 和 PowerShell 來啟用 Postgres 伺服器的診斷設定。 要設定的記錄類別為 **QueryStoreRuntimeStatistics** 和 **QueryStoreWaitStatistics**。 
 
 若要使用 Azure 入口網站啟用資源記錄：
 
-1. 在入口網站中，移至 Postgres 伺服器導覽功能表中的 [診斷設定]。
+1. 在入口網站中，移至 Postgres 伺服器的導覽功能表中的 [診斷設定]。
 2. 選取 [新增診斷設定]。
-3. 將此設定命名為。
-4. 選取您慣用的端點（儲存體帳戶、事件中樞、log analytics）。
-5. 選取記錄類型**QueryStoreRuntimeStatistics**和**QueryStoreWaitStatistics**。
+3. 為此設定命名。
+4. 選取您慣用的端點 (儲存體帳戶、事件中樞、log analytics) 。
+5. 選取記錄類型 **QueryStoreRuntimeStatistics** 和 **QueryStoreWaitStatistics**。
 6. 儲存您的設定。
 
-若要使用 PowerShell、CLI 或 REST API 啟用這項設定，請造訪[診斷設定一文](../azure-monitor/platform/diagnostic-settings.md)。
+若要使用 PowerShell、CLI 或 REST API 來啟用這項設定，請造訪 [診斷設定文章](../azure-monitor/platform/diagnostic-settings.md)。
 
 ### <a name="json-log-format"></a>JSON 記錄格式
-下表描述兩種記錄類型的欄位。 視您選擇的輸出端點而定，所含欄位及其出現順序可能會有所不同。
+下表描述兩個記錄類型的欄位。 視您選擇的輸出端點而定，所含欄位及其出現順序可能會有所不同。
 
 #### <a name="querystoreruntimestatistics"></a>QueryStoreRuntimeStatistics
-|**欄位** | **描述** |
+|**欄位** | **說明** |
 |---|---|
 | TimeGenerated [UTC] | 以 UTC 記錄記錄時的時間戳記 |
 | ResourceId | Postgres 伺服器的 Azure 資源 URI |
@@ -212,7 +212,7 @@ Query_store.staging_data_reset() 傳回 void
 | user_id_s | 執行陳述式的使用者物件識別 (OID) |
 | db_id_s | 在其中執行陳述式的資料庫物件識別 (OID) |
 | query_id_s | 從陳述式的剖析樹狀結構計算的內部雜湊碼 |
-| end_time_s | 此專案的時間值區對應的結束時間 |
+| end_time_s | 對應到這個專案的時間值區的結束時間 |
 | calls_s | 查詢執行的次數 |
 | total_time_s | 查詢總執行時間 (以毫秒為單位) |
 | min_time_s | 查詢最短執行時間 (以毫秒為單位) |
@@ -226,7 +226,7 @@ Query_store.staging_data_reset() 傳回 void
 
 
 #### <a name="querystorewaitstatistics"></a>QueryStoreWaitStatistics
-|**欄位** | **描述** |
+|**欄位** | **說明** |
 |---|---|
 | TimeGenerated [UTC] | 以 UTC 記錄記錄時的時間戳記 |
 | ResourceId | Postgres 伺服器的 Azure 資源 URI |
@@ -237,7 +237,7 @@ Query_store.staging_data_reset() 傳回 void
 | query_id_s | 查詢的內部雜湊碼 |
 | calls_s | 擷取到相同事件的次數 |
 | event_type_s | 後端等候中事件的類型 |
-| event_s | 當後端目前正在等候時的等候事件名稱 |
+| event_s | 如果後端目前正在等候，則為等候事件名稱 |
 | start_time_t | 事件開始時間 |
 | end_time_s | 事件結束時間 | 
 | LogicalServerName_s | Postgres 伺服器名稱 | 
@@ -250,7 +250,7 @@ Query_store.staging_data_reset() 傳回 void
 ## <a name="limitations-and-known-issues"></a>限制與已知問題
 - 如果 PostgreSQL 伺服器開啟 default_transaction_read_only 參數，查詢存放區會無法擷取資料。
 - 如果遇到長時間的 Unicode 查詢 (> = 6000 個位元組)，查詢存放區功能可能會中斷。
-- [讀取複本](concepts-read-replicas.md)會從主伺服器複寫查詢存放區資料。 這表示讀取複本的查詢存放區不會提供有關讀取複本上執行之查詢的統計資料。
+- [讀取複本](concepts-read-replicas.md) 會從主伺服器複寫查詢存放區資料。 這表示讀取複本的查詢存放區不會提供有關在讀取複本上執行之查詢的統計資料。
 
 
 ## <a name="next-steps"></a>後續步驟

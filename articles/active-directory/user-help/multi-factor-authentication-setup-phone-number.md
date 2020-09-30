@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: end-user-help
 ms.date: 08/12/2019
 ms.author: curtand
-ms.openlocfilehash: 76809a41400502ec48c2dd674f8976bb168ec9f9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: HT
+ms.openlocfilehash: 40af9ac692a226b12f984db447db9635cba655e4
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83735985"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530250"
 ---
 # <a name="set-up-a-mobile-device-as-your-two-factor-verification-method"></a>將行動裝置設定為您的雙因素驗證方法
 
@@ -30,7 +30,7 @@ ms.locfileid: "83735985"
 
 2. 從 [方法]  區域中選取 [透過文字簡訊傳送代碼給我]  ，然後選取 [下一步]  。
 
-    ![包含驗證電話和文字簡訊的 [其他安全性驗證] 頁面](media/multi-factor-authentication-verification-methods/multi-factor-authentication-text-message.png)
+    ![顯示 [其他安全性驗證] 頁面的螢幕擷取畫面，其中已選取 [驗證電話] 和 [以文字訊息傳送程式碼]。](media/multi-factor-authentication-verification-methods/multi-factor-authentication-text-message.png)
 
 3. 將 Microsoft 所傳送文字簡訊中的驗證碼輸入 **[步驟 2：我們已將文字簡訊傳送到您的手機]** 區域，然後選取 [驗證]  。
 

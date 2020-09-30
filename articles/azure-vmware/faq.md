@@ -4,12 +4,12 @@ description: 提供有關 Azure VMware 解決方案的一些常見問題解答�
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: dikamath
-ms.openlocfilehash: 4bb713b3d50fa92728baf7b1fff1e6e65c48ed92
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: fd0c0158106a24ba12fec42e41df69f246e7f3f5
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91368731"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530471"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>關於 Azure VMware 解決方案的常見問題
 
@@ -45,7 +45,7 @@ Azure VMware 解決方案客戶將可使用所有 Azure 服務。 特定服務�
 
 #### <a name="can-i-migrate-vsphere-vms-from-on-premises-environments-to-azure-vmware-solution-private-clouds"></a>是否可將 vSphere Vm 從內部部署環境遷移至 Azure VMware 解決方案私人雲端？
 
-可以。 如果符合標準的跨 vCenter [vMotion 需求](https://kb.vmware.com/s/article/210695) ，則可以使用 VM 遷移和 VMotion 將 vm 移至私人雲端。
+是。 如果符合標準的跨 vCenter [vMotion 需求](https://kb.vmware.com/s/article/210695) ，則可以使用 VM 遷移和 VMotion 將 vm 移至私人雲端。
 
 #### <a name="is-a-specific-version-of-vsphere-required-in-on-premises-environments"></a>內部部署環境中是否需要特定版本的 vSphere？
 
@@ -67,7 +67,7 @@ Microsoft 和 Red Hat 共用一組整合式共置的支援小組，可針對在 
 
 VMware HCX Enterprise Edition (EE) 可透過 Azure VMware 解決方案作為 *預覽* 功能/服務。 雖然適用于 Azure VMware 的 VMware HCX EE 解決方案處於預覽狀態，但它是免費的函式/服務，並且受限於預覽服務條款及條件。 一旦 VMware HCX EE 服務正式推出，您將會收到30天的通知，指出計費將會切換。 您也可以選擇切換關閉/退出服務。
 
-## <a name="compute-network-and-storage"></a>計算、網路和儲存體
+## <a name="compute-network-storage-and-backup"></a>計算、網路、儲存體和備份
 
 #### <a name="is-there-more-than-one-type-of-host-available"></a>是否有一種以上的主機可供使用？
 
@@ -92,6 +92,14 @@ VMware HCX Enterprise Edition (EE) 可透過 Azure VMware 解決方案作為 *�
 #### <a name="is-data-stored-on-the-vsan-datastores-encrypted-at-rest"></a>資料會儲存在 vSAN 資料存放區上加密嗎？
 
 是，所有 vSAN 資料預設都會使用儲存在 Azure Key Vault 中的金鑰進行加密。
+
+#### <a name="you-document-that-commvault-veritas-and-veeam-have-extended-their-backup-solutions-to-work-with-azure-vmware-solution-what-about-other-independent-software-vendor-isv-backup-solutions"></a>您記載了 Commvault、Veritas 和 Veeam 已擴充其備份解決方案，以使用 Azure VMware 解決方案。 其他獨立軟體廠商 (ISV) 備份解決方案呢？
+
+在我們知道的情況下，使用 VMware VADP 搭配 HotAdd 傳輸模式的任何備份解決方案，都應該可以立即在 Azure VMware 解決方案中使用。
+
+#### <a name="what-about-support-for-isv-backup-solutions"></a>ISV 備份解決方案的支援？
+
+由於這些備份解決方案是由客戶安裝和管理，因此可以與各自的 ISV 聯繫以取得支援。 
 
 ## <a name="hosts-clusters-and-private-clouds"></a>主機、叢集和私人雲端
 

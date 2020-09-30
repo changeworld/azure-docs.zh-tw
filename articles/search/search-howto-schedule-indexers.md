@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/12/2020
-ms.openlocfilehash: b77eaec0440aa4fcd22d7b35e7a205b0276164f2
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: dffa8393dcfebf1cb73e3ab72890999cfa633b80
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935818"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91532562"
 ---
 # <a name="how-to-schedule-indexers-in-azure-cognitive-search"></a>如何排程 Azure 認知搜尋中的索引子
 
@@ -110,10 +110,10 @@ ms.locfileid: "88935818"
 
 **StartTime**參數可以設定為過去的時間。 在這種情況下，第一次執行的排程就像是在指定 **startTime**之後連續執行索引子一樣。
 
-排程會使用 [IndexingSchedule](/dotnet/api/microsoft.azure.search.models.indexingschedule?view=azure-dotnet) 類別來定義。 **IndexingSchedule**的函式需要使用**TimeSpan**物件指定的**間隔**參數。 允許的最小間隔值為5分鐘，而最大值為24小時。 第二個 **startTime** 參數（指定為 **DateTimeOffset** 物件）是選擇性的。
+排程會使用 [IndexingSchedule](/dotnet/api/microsoft.azure.search.models.indexingschedule) 類別來定義。 **IndexingSchedule**的函式需要使用**TimeSpan**物件指定的**間隔**參數。 允許的最小間隔值為5分鐘，而最大值為24小時。 第二個 **startTime** 參數（指定為 **DateTimeOffset** 物件）是選擇性的。
 
 .NET SDK 可讓您使用 [SearchServiceClient](/dotnet/api/microsoft.azure.search.searchserviceclient) 類別及其 [索引子](/dotnet/api/microsoft.azure.search.searchserviceclient.indexers) 屬性來控制索引子作業，該屬性會從 **IIndexersOperations** 介面中執行方法。 
 
 您可以使用其中一個 [run](/dotnet/api/microsoft.azure.search.indexersoperationsextensions.run)、 [RunAsync](/dotnet/api/microsoft.azure.search.indexersoperationsextensions.runasync)或 [RunWithHttpMessagesAsync](/dotnet/api/microsoft.azure.search.iindexersoperations.runwithhttpmessagesasync) 方法，隨時依需求執行索引子。
 
-如需有關建立、更新和執行索引子的詳細資訊，請參閱 [IIindexersOperations](/dotnet/api/microsoft.azure.search.iindexersoperations?view=azure-dotnet)。
+如需有關建立、更新和執行索引子的詳細資訊，請參閱 [IIindexersOperations](/dotnet/api/microsoft.azure.search.iindexersoperations)。

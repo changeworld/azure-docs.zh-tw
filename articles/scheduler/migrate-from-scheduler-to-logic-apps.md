@@ -9,12 +9,12 @@ ms.author: deli
 ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 02/29/2020
-ms.openlocfilehash: dd61ac9751010d57cbf5b742a5081beb3ac560e9
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 5d161b287f9706473c96d25684fa23a2c94b8c3e
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83826055"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91532141"
 ---
 # <a name="migrate-azure-scheduler-jobs-to-azure-logic-apps"></a>將 Azure 排程器作業移轉至 Azure Logic Apps
 
@@ -96,7 +96,7 @@ ms.locfileid: "83826055"
 
    例如，您可以包含將要求傳送至 URL 的 HTTP 動作，或使用儲存體佇列、服務匯流排佇列或服務匯流排主題的動作：
 
-   ![HTTP 動作](./media/migrate-from-scheduler-to-logic-apps/request-http-action.png)
+   ![螢幕擷取畫面顯示 [延遲到] 動作，後面接著 H T T P 動作與 POST 方法。](./media/migrate-from-scheduler-to-logic-apps/request-http-action.png)
 
 1. 完成後，儲存邏輯應用程式。
 
@@ -155,7 +155,7 @@ ms.locfileid: "83826055"
 
    例如，您可以包含將要求傳送至 URL 的 HTTP 動作，或使用儲存體佇列、服務匯流排佇列或服務匯流排主題的動作：
 
-   ![HTTP 動作](./media/migrate-from-scheduler-to-logic-apps/recurrence-http-action.png)
+   ![螢幕擷取畫面顯示具有 POST 方法的 H T T P 動作。](./media/migrate-from-scheduler-to-logic-apps/recurrence-http-action.png)
 
 1. 完成後，儲存邏輯應用程式。
 

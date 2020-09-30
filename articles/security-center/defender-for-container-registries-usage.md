@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 1ff28b13d9adc120f8ee40bcd0119bf9b6883d6a
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 79a0db3b9f81368fbdaace5be3fd94ad29649291
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 09/29/2020
-ms.locfileid: "91449131"
+ms.locfileid: "91532596"
 ---
 # <a name="use-azure-defender-for-container-registries-to-scan-your-images-for-vulnerabilities"></a>使用適用于容器登錄的 Azure Defender 來掃描映射是否有弱點
 
@@ -127,7 +127,7 @@ ms.locfileid: "91449131"
 > [!IMPORTANT]
 > 若要建立規則，您需要在 Azure 原則中編輯原則的許可權。
 >
-> 在 Azure 原則中深入瞭解 [RBAC 許可權](../governance/policy/overview.md#rbac-permissions-in-azure-policy)。
+> 在 Azure 原則中深入瞭解 [AZURE RBAC 許可權](../governance/policy/overview.md#azure-rbac-permissions-in-azure-policy)。
 
 您可以使用下列任一準則： 
 

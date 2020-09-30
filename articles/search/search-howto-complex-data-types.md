@@ -9,12 +9,12 @@ tags: complex data types; compound data types; aggregate data types
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/12/2020
-ms.openlocfilehash: 2b26a317f7338b3e87623b8312d9f7efd10dbed1
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 5b430d5a8f0c2702617b7f6b3935e1b169753552
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88917851"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530849"
 ---
 # <a name="how-to-model-complex-data-types-in-azure-cognitive-search"></a>如何在 Azure 認知搜尋中建立複雜資料類型的模型
 
@@ -62,7 +62,7 @@ Azure 認知搜尋原本就支援複雜類型和集合。 這些類型可讓您�
 
 ## <a name="creating-complex-fields"></a>建立複雜欄位
 
-如同任何索引定義，您可以使用入口網站、 [REST API](/rest/api/searchservice/create-index)或 [.net SDK](/dotnet/api/microsoft.azure.search.models.index?view=azure-dotnet) 來建立包含複雜類型的架構。 
+如同任何索引定義，您可以使用入口網站、 [REST API](/rest/api/searchservice/create-index)或 [.net SDK](/dotnet/api/microsoft.azure.search.models.index) 來建立包含複雜類型的架構。 
 
 下列範例顯示具有簡單欄位、集合和複雜類型的 JSON 索引架構。 請注意，在複雜型別中，每個子欄位都有一個型別，而且可以有屬性，就像最上層欄位一樣。 架構對應于上述的範例資料。 `Address` 是一種複雜欄位，不是 (旅館有一個位址) 的集合。 `Rooms` 是一個複雜的集合欄位， (飯店有許多房間) 。
 

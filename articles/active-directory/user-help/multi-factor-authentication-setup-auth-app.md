@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: end-user-help
 ms.date: 08/12/2019
 ms.author: curtand
-ms.openlocfilehash: 953f74a18ae7874c8772cdc8179e5e5bdd1a86d2
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
+ms.openlocfilehash: 10b6b788077eccda522c9e8c6e631939ca1819fc
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83738637"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530335"
 ---
 # <a name="set-up-an-authenticator-app-as-your-two-factor-verification-method"></a>將驗證器應用程式設定為雙因素驗證方法
 
@@ -33,7 +33,7 @@ ms.locfileid: "83738637"
 
 2. 在 [您要如何使用行動應用程式] 區域中，選取 [接收驗證通知]，然後選取 [設定]。
 
-    ![包含 [行動應用程式] 和 [通知] 選項的 [其他安全性驗證] 頁面](media/multi-factor-authentication-verification-methods/multi-factor-authentication-auth-app-notification.png)
+    ![顯示 [其他安全性驗證] 頁面的螢幕擷取畫面，其中已選取 [行動應用程式] 和 [接收驗證的通知]。](media/multi-factor-authentication-verification-methods/multi-factor-authentication-auth-app-notification.png)
 
     [設定行動應用程式] 頁面隨即出現。
 
@@ -48,7 +48,7 @@ ms.locfileid: "83738637"
 
 5. 返回您的電腦和 [其他安全性驗證] 頁面，確定您收到的訊息中指出設定已成功完成，然後選取 [下一步]。
 
-    ![包含成功訊息的 [其他安全性驗證] 頁面](media/multi-factor-authentication-verification-methods/multi-factor-authentication-auth-app-notification-confirm.png)
+    ![顯示 [其他安全性驗證] 頁面的螢幕擷取畫面，其中包含 [已設定行動裝置應用程式 ...]已反白顯示成功訊息。](media/multi-factor-authentication-verification-methods/multi-factor-authentication-auth-app-notification-confirm.png)
 
     驗證器應用程式會將通知傳送至您的行動裝置作為測試。
 

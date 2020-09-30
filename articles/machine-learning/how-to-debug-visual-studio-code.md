@@ -8,25 +8,83 @@ ms.subservice: core
 ms.topic: conceptual
 author: luisquintanilla
 ms.author: luquinta
-ms.date: 08/06/2020
-ms.openlocfilehash: a16a8432f61e39a3e36aeb748cabfa2c4b60d796
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 09/30/2020
+ms.openlocfilehash: 374cc79b42d2dcaed0312c0ec205073906ce1fc5
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91315349"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530669"
 ---
 # <a name="interactive-debugging-with-visual-studio-code"></a>使用 Visual Studio Code 的互動式調試
 
 
 
-瞭解如何使用 Visual Studio Code (VS Code) 和 [depugpy](https://github.com/microsoft/debugpy/)，以互動方式來偵測 Azure Machine Learning 管線和部署。
+瞭解如何使用 Visual Studio Code (VS Code) 和 [depugpy](https://github.com/microsoft/debugpy/)，以互動方式來偵測 Azure Machine Learning 實驗、管線和部署。
+
+## <a name="run-and-debug-experiments-locally"></a>在本機執行和調試實驗
+
+將您的機器學習實驗提交至雲端之前，請先使用 Azure Machine Learning 擴充功能來進行驗證、執行和偵測。
+
+### <a name="prerequisites"></a>必要條件
+
+* Azure Machine Learning VS Code 延伸模組 (預覽) 。 如需詳細資訊，請參閱 [設定 Azure Machine Learning VS Code 擴充](tutorial-setup-vscode-extension.md)功能。
+* [Docker](https://www.docker.com/get-started)
+  * 適用于 Mac 和 Windows 的 Docker Desktop
+  * 適用于 Linux 的 Docker 引擎。
+* [Python 3](https://www.python.org/downloads/) \(英文\)
+
+> [!NOTE]
+> 在 Windows 上，請務必將 [Docker 設定為使用 Linux 容器](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers)。
+
+> [!TIP]
+> 針對 Windows （雖然並非必要），強烈建議 [使用 Docker 搭配 Windows 子系統 Linux 版 (WSL) 2](https://docs.microsoft.com/windows/wsl/tutorials/wsl-containers#install-docker-desktop)。
+
+> [!IMPORTANT]
+> 在本機執行實驗之前，請確定 Docker 正在執行。
+
+### <a name="debug-experiment-locally"></a>在本機上調試實驗
+
+1. 在 VS Code 中，開啟 Azure Machine Learning 延伸模組視圖。
+1. 展開包含您工作區的訂用帳戶節點。 如果您還沒有帳戶，可以使用擴充功能 [建立 Azure Machine Learning 工作區](how-to-manage-resources-vscode.md#create-a-workspace) 。
+1. 展開您的工作區節點。
+1. 以滑鼠右鍵按一下 [ **實驗** ] 節點，然後選取 [ **建立實驗**]。 出現提示時，請提供您實驗的名稱。
+1. 展開 [ **實驗** ] 節點，以滑鼠右鍵按一下您想要執行的實驗，然後選取 [ **執行實驗**]。
+1. 從執行實驗的選項清單中，選取 [ **本機**]。
+1. **第一次只能在 Windows 上使用**。 當系統提示您允許檔案共用時，請選取 **[是]**。 當您啟用檔案共用時，它會允許 Docker 將包含您腳本的目錄掛接至容器。 此外，它也可讓 Docker 將您執行的記錄和輸出儲存在系統上的臨時目錄中。
+1. 選取 **[是]** 以偵測您的實驗。 否則，請選取 [否]。 選取 [否] 會在本機執行您的實驗，而不會附加至偵錯工具。
+1. 選取 [ **建立新** 的回合設定]，以建立您的執行設定。 回合設定會定義您想要執行的腳本、相依性及所使用的資料集。 或者，如果您已經有一個，請從下拉式清單中選取它。
+    1. 選擇您的環境。 您可以從任何 [Azure Machine Learning 策劃](resource-curated-environments.md) 中選擇，或建立您自己的。
+    1. 提供您要執行之腳本的名稱。 路徑是相對於 VS Code 中開啟的目錄。
+    1. 選擇您是否要使用 Azure Machine Learning 資料集。 您可以使用擴充功能建立 [Azure Machine Learning 資料集](how-to-manage-resources-vscode.md#create-dataset) 。
+    1. 需要 Debugpy，才能將偵錯工具附加至執行實驗的容器。 若要將 debugpy 新增為相依性，請選取 [ **新增 debugpy**]。 否則，請選取 [ **略過**]。 請勿將 debugpy 新增為相依性，而不需附加至偵錯工具即可執行實驗。
+    1. 系統會在編輯器中開啟包含回合設定設定的設定檔。 如果您對設定感到滿意，請選取 [ **提交實驗**]。 或者，您可以從功能表列開啟 [命令選擇區] (**View > 命令** 選擇區) ，並在文字方塊中輸入 `Azure ML: Submit experiment` 命令。
+1. 在您的實驗提交之後，會建立包含您腳本的 Docker 映射，以及執行設定中指定的設定。
+
+    當 Docker 映射建立程式開始時， `60_control_log.txt` VS Code 中輸出主控台的檔案資料流程內容。
+
+    > [!NOTE]
+    > 當您第一次建立 Docker 映射時，可能需要幾分鐘的時間。
+
+1. 建立映射之後，就會出現提示以啟動偵錯工具。 在腳本中設定中斷點，並在準備好開始進行偵錯工具時，選取 **[啟動偵錯工具** ]。 這麼做會將 VS Code 偵錯工具附加至執行實驗的容器。 或者，在 Azure Machine Learning 擴充功能中，將滑鼠停留在目前執行的節點上方，然後選取 [播放] 圖示以啟動偵錯工具。
+
+    > [!IMPORTANT]
+    > 單一實驗不能有多個 debug 會話。 但是，您可以使用多個 VS Code 實例來進行兩個或多個實驗的測試。
+
+此時，您應該能夠使用 VS Code 逐步進行和偵錯工具代碼。
+
+如果您想要取消執行，請在執行節點上按一下滑鼠右鍵，然後選取 [ **取消執行**]。
+
+類似于遠端實驗的執行，您可以展開 [執行] 節點來檢查記錄和輸出。
+
+> [!TIP]
+> 使用您環境中所定義之相同相依性的 Docker 映射，會在執行之間重複使用。 但是，如果您使用新的或不同的環境執行實驗，就會建立新的映射。 由於這些映射會儲存到您的本機儲存體，因此建議您移除舊的或未使用的 Docker 映射。 若要移除系統中的映射，請使用 [DOCKER CLI](https://docs.docker.com/engine/reference/commandline/rmi/) 或 [VS Code docker 延伸](https://code.visualstudio.com/docs/containers/overview)模組。
 
 ## <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>機器學習管線的偵錯和疑難排解
 
 在某些情況下，您可能需要以互動方式來偵測 ML 管線中使用的 Python 程式碼。 藉由使用 VS Code 和 debugpy，您可以在定型環境中執行時附加至程式碼。
 
-### <a name="prerequisites"></a>Prerequisites
+### <a name="prerequisites"></a>必要條件
 
 * 設定為使用__Azure 虛擬網路__的__Azure Machine Learning 工作區__。
 * 在管線步驟中使用 Python 腳本的 __Azure Machine Learning 管線__ 。 例如，PythonScriptStep。
@@ -416,7 +474,7 @@ ip_address: 10.3.0.5
 
 此時，VS Code 會連接到 Docker 容器內的 debugpy，並在您先前設定的中斷點停止。 您現在可以在程式碼執行時逐步執行、檢視變數等。
 
-如需使用 VS Code 來偵錯 Python 的詳細資訊，請參閱[偵錯您的 Python 程式碼](https://docs.microsoft.com/visualstudio/python/debugging-python-in-visual-studio?view=vs-2019&preserve-view=true)。
+如需使用 VS Code 來偵錯 Python 的詳細資訊，請參閱[偵錯您的 Python 程式碼](https://code.visualstudio.com/docs/python/debugging)。
 
 ### <a name="stop-the-container"></a>停止容器
 
@@ -428,6 +486,6 @@ docker stop debug
 
 ## <a name="next-steps"></a>後續步驟
 
-現在您已設定 Visual Studio Code 遠端，您可以使用計算實例作為 Visual Studio Code 的遠端計算，以互動方式進行程式碼的偵錯工具。 
+現在您已設定 VS Code 遠端，您可以使用計算實例作為 VS Code 的遠端計算，以互動方式進行程式碼的偵錯工具。 
 
 [教學課程：進行第一個 ML 模型的定型](tutorial-1st-experiment-sdk-train.md)會示範如何搭配使用計算執行個體與整合式筆記本。

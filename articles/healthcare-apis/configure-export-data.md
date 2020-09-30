@@ -7,12 +7,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 3/5/2020
 ms.author: matjazl
-ms.openlocfilehash: 7ed4e471764fbf8ecc9b82a7d614ae52b97360f1
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: e4adceea5c2cd2a36d7a867ca9b9d2ad7c33c155
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267253"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91529978"
 ---
 # <a name="configure-export-setting-and-set-up-the-storage-account"></a>設定匯出設定並設定儲存體帳戶
 
@@ -26,7 +26,7 @@ Azure API for FHIR 支援 $export 命令，可讓您將 Azure API for FHIR 帳�
 
 ## <a name="enabling-managed-identity-on-azure-api-for-fhir"></a>在 Azure API for FHIR 上啟用受控識別
 
-設定匯出 Azure API for FHIR 的第一步，是在服務上啟用系統廣泛的受控識別。 您可以在 [這裡](../active-directory/managed-identities-azure-resources/overview.md)閱讀 Azure 中受控識別的所有相關資訊。
+設定匯出 Azure API for FHIR 的第一個步驟，是在服務上啟用系統廣泛受控識別。 您可以在 [這裡](../active-directory/managed-identities-azure-resources/overview.md)閱讀 Azure 中受控識別的所有相關資訊。
 
 若要這樣做，請流覽至 Azure API for FHIR 服務，然後選取 [身分識別] 分頁。 將狀態變更為 [開啟] 會在 Azure API for FHIR 服務中啟用受控識別。
 
@@ -40,11 +40,11 @@ Azure API for FHIR 支援 $export 命令，可讓您將 Azure API for FHIR 帳�
 
 建立儲存體帳戶之後，請流覽至儲存體帳戶中的 [存取控制] (IAM) 分頁，然後選取 [新增角色指派]
 
-![啟用受控識別](media/export-data/fhir-export-role-assignment.png)
+![匯出角色指派](media/export-data/fhir-export-role-assignment.png)
 
 接著，我們會在服務名稱中新增角色儲存體 Blob 資料參與者。
 
-![啟用受控識別](media/export-data/fhir-export-role-add.png)
+![加入角色](media/export-data/fhir-export-role-add.png)
 
 現在我們已準備好進行下一個步驟，我們可以在 Azure API for FHIR 中選取儲存體帳戶，作為 $export 的預設儲存體帳戶。
 
@@ -52,7 +52,7 @@ Azure API for FHIR 支援 $export 命令，可讓您將 Azure API for FHIR 帳�
 
 最後一個步驟是指派 Azure API for FHIR 將用來匯出資料的 Azure 儲存體帳戶。 若要這樣做，請在 Azure 入口網站的 Azure API for FHIR 服務中流覽至 Integration blade，然後選取儲存體帳戶
 
-![啟用受控識別](media/export-data/fhir-export-storage.png)
+![FHIR 匯出儲存體](media/export-data/fhir-export-storage.png)
 
 之後，我們就可以使用 $export 命令來匯出資料。
 

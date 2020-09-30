@@ -8,12 +8,12 @@ ms.topic: conceptual
 author: likebupt
 ms.author: keli19
 ms.date: 04/25/2019
-ms.openlocfilehash: 59a0989157a87c7fb951c8b6d9c7b70474626f42
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 01c0b6610968c8eaa493a63aa9004d8ea4c36ca2
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91361869"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530761"
 ---
 # <a name="powershell-modules-for-azure-machine-learning-studio-classic"></a>適用于 Azure Machine Learning Studio (傳統) 的 PowerShell 模組
 
@@ -53,12 +53,12 @@ PowerShell 傳統可以隨 Az 或 AzureRM 一起安裝，以涵蓋「新」和�
 ## <a name="powershell-support-table"></a><a name="support-table"></a> PowerShell 支援表格
 
 
-|  **Az** |  **PowerShell 傳統** |
+| Task | **Az** |  **PowerShell 傳統** |
 | --- | --- | --- |
 | 建立/刪除工作區 | [Resource Manager 範本](https://docs.microsoft.com/azure/machine-learning/studio/deploy-with-resource-manager-template) |  |
 | 管理工作區承諾用量方案 | [New-AzMlCommitmentPlan](https://docs.microsoft.com/powershell/module/az.machinelearning/new-azmlcommitmentplan) | |
 | 管理工作區使用者 |  | [Add-AmlWorkspaceUsers](https://github.com/hning86/azuremlps#add-amlworkspaceusers)|
-| 管理 Web 服務 | [New-AzMlWebService](https://docs.microsoft.com/powershell/module/az.machinelearning/new-azmlwebservice) <br> ( 新的 web 服務) || [New-AmlWebService](https://github.com/hning86/azuremlps#manage-classic-web-service) <br> ( "傳統" web 服務)  |
+| 管理 Web 服務 | [New-AzMlWebService](https://docs.microsoft.com/powershell/module/az.machinelearning/new-azmlwebservice) <br> ( 新的 web 服務) | [New-AmlWebService](https://github.com/hning86/azuremlps#manage-classic-web-service) <br> ( "傳統" web 服務)  |
 | 管理 web 服務端點/金鑰 |  [AzMlWebServiceKey](https://docs.microsoft.com/powershell/module/az.machinelearning/get-azmlwebservicekey)|  [Add-AmlWebServiceEndpoint](https://github.com/hning86/azuremlps#manage-classic-web-servcie-endpoint)|
 | 管理使用者資料集/定型模型| | [Get-AmlDataset](https://github.com/hning86/azuremlps#manage-user-assets-dataset-trained-model-transform) |
 | 管理使用者實驗 |  | [Start-AmlExperiment](https://github.com/hning86/azuremlps#manage-experiment) |

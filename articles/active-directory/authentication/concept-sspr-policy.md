@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 4b729e975ddc9c184c1b0f39a6d3be548211cdfc
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 990d8ef275982b6d70c51819e47b33f543345023
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90052710"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91531270"
 ---
 # <a name="password-policies-and-account-restrictions-in-azure-active-directory"></a>Azure Active Directory 中的密碼原則和帳戶限制
 
@@ -61,7 +61,7 @@ ms.locfileid: "90052710"
 
 ## <a name="administrator-reset-policy-differences"></a>系統管理員重設原則差異
 
-Microsoft 會針對任何 Azure 管理員角色強制執行強 *式預設雙閘道* 密碼重設原則。 這項原則可能與您為使用者所定義的原則不同，且此原則無法變更。 請一律要以未指派任何 Azure 系統管理員角色的使用者身分測試密碼重設功能。
+根據預設，系統會針對自助式密碼重設啟用系統管理員帳戶，並強制執行強式預設 *雙閘道* 密碼重設原則。 這項原則可能與您為使用者所定義的原則不同，且此原則無法變更。 請一律要以未指派任何 Azure 系統管理員角色的使用者身分測試密碼重設功能。
 
 利用兩個閘道原則，系統管理員不需有能力使用安全性問題。
 
@@ -93,6 +93,8 @@ Microsoft 會針對任何 Azure 管理員角色強制執行強 *式預設雙閘�
 * 如果試用版訂用帳戶已經過 30 天；或
 * 已針對您的 Azure AD 租使用者設定自訂網域，例如 *contoso.com*;或
 * Azure AD Connect 正在同步處理內部部署目錄中的身分識別
+
+您可以使用 [Set-msolcompanysettings](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0) PowerShell Cmdlet 來停用 SSPR 的系統管理員帳戶。 參數會停用系統 `-SelfServePasswordResetEnabled $False` 管理員的 SSPR。
 
 ### <a name="exceptions"></a>例外狀況
 
@@ -173,7 +175,7 @@ Microsoft 會針對任何 Azure 管理員角色強制執行強 *式預設雙閘�
    > [!WARNING]
    > 設定為 `-PasswordPolicies DisablePasswordExpiration` 的密碼仍然會根據 `pwdLastSet` 屬性計算時效。 根據 `pwdLastSet` 屬性，如果您將到期變更為 `-PasswordPolicies None`，`pwdLastSet` 早於 90 天的所有密碼會要求使用者在下次登入時變更密碼。 這項變更可能會影響大量使用者。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 若要開始使用 SSPR，請參閱 [教學課程：讓使用者使用 Azure Active Directory 自助式密碼重設來解除鎖定其帳戶或重設密碼](tutorial-enable-sspr.md)。
 

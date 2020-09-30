@@ -6,17 +6,14 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/30/2020
-ms.openlocfilehash: a2f319f7bbd3fa0c6c4efb7e225bfc85a76002f2
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: c087d5eea88a3329d5486afdd2158e80f7ebf778
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88919704"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91531020"
 ---
 # <a name="azure-database-for-mysql-infrastructure-double-encryption"></a>適用於 MySQL 的 Azure 資料庫基礎結構雙重加密
-
-> [!NOTE]
-> 此時，您必須要求存取權限，才能使用此功能。 若要這樣做，請聯絡 AskAzureDBforMySQL@service.microsoft.com 。
 
 適用於 MySQL 的 Azure 資料庫針對使用 Microsoft 管理的金鑰的資料使用待用資料的儲存體 [加密](concepts-security.md#at-rest) 。 資料（包括備份）會在磁片上加密，且此加密一律為開啟狀態，且無法停用。 加密使用 FIPS 140-2 驗證的密碼編譯模組，以及適用于 Azure 儲存體加密的 AES 256 位加密。
 

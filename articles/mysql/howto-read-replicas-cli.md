@@ -7,32 +7,32 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 6/10/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 41c12dcb2e4c5e3b280bb349e81bcb58a0bafd01
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 74e62c39295d36132abdce0abc033162fa22cb64
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495756"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91531627"
 ---
-# <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-the-azure-cli-and-rest-api"></a>如何使用 Azure CLI 和 REST API 來建立和管理適用於 MySQL 的 Azure 資料庫中的讀取複本
+# <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-the-azure-cli-and-rest-api"></a>如何使用 Azure CLI 和 REST API，在適用於 MySQL 的 Azure 資料庫中建立及管理讀取複本
 
-在本文中，您將瞭解如何使用 Azure CLI 和 REST API 來建立和管理適用於 MySQL 的 Azure 資料庫服務中的讀取複本。 若要深入了解讀取複本，請參閱[概觀](concepts-read-replicas.md)。
+在本文中，您將瞭解如何使用 Azure CLI 和 REST API，在適用於 MySQL 的 Azure 資料庫服務中建立及管理讀取複本。 若要深入了解讀取複本，請參閱[概觀](concepts-read-replicas.md)。
 
 ## <a name="azure-cli"></a>Azure CLI
-您可以使用 Azure CLI 建立及管理讀取複本。
+您可以使用 Azure CLI 來建立及管理讀取複本。
 
-### <a name="prerequisites"></a>Prerequisites
+### <a name="prerequisites"></a>必要條件
 
 - [安裝 Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
-- [適用於 MySQL 的 Azure 資料庫伺服器](quickstart-create-mysql-server-database-using-azure-portal.md)，將作為主要伺服器。 
+- 將作為來源伺服器使用的 [適用於 MySQL 的 Azure 資料庫伺服器](quickstart-create-mysql-server-database-using-azure-portal.md) 。 
 
 > [!IMPORTANT]
-> 讀取複本功能僅供「適用於 MySQL 的 Azure 資料庫」伺服器用於一般用途或記憶體最佳化定價層。 請確定主要伺服器處於這些定價層中。
+> 讀取複本功能僅供「適用於 MySQL 的 Azure 資料庫」伺服器用於一般用途或記憶體最佳化定價層。 確定來源伺服器是在其中一個定價層。
 
 ### <a name="create-a-read-replica"></a>建立讀取複本
 
 > [!IMPORTANT]
-> 當您為沒有任何現有複本的主要伺服器建立複本時，主要伺服器首先將會重新啟動，以準備本身進行複寫。 請考慮這一點，並在離峰期間執行這些作業。
+> 當您為沒有現有複本的來源建立複本時，來源會先重新開機以準備複寫。 請考慮這一點，並在離峰期間執行這些作業。
 
 使用下列命令可以建立讀取複本伺服器︰
 
@@ -46,9 +46,9 @@ az mysql server replica create --name mydemoreplicaserver --source-server mydemo
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  複本伺服器會建立於其中的資源群組。  |
 | NAME | mydemoreplicaserver | 所建立的新複本伺服器名稱。 |
-| source-server | mydemoserver | 要從中複寫的現有主要伺服器的名稱或識別碼。 |
+| source-server | mydemoserver | 要從中複寫之現有來源伺服器的名稱或識別碼。 |
 
-若要建立跨區域讀取複本，請使用 `--location` 參數。 下列 CLI 範例會在美國西部建立複本。
+若要建立跨區域讀取複本，請使用 `--location` 參數。 以下的 CLI 範例會在美國西部建立複本。
 
 ```azurecli-interactive
 az mysql server replica create --name mydemoreplicaserver --source-server mydemoserver --resource-group myresourcegroup --location westus
@@ -58,12 +58,12 @@ az mysql server replica create --name mydemoreplicaserver --source-server mydemo
 > 若要深入瞭解您可以在哪些區域中建立複本，請造訪[參閱複本概念文章](concepts-read-replicas.md)。 
 
 > [!NOTE]
-> 系統會以與主要伺服器相同的伺服器設定建立讀取複本。 複本伺服器設定在建立後可以變更。 建議複本伺服器設定的值應保持等於或大於主要伺服器，以確保複本伺服器能保持與主要伺服器一致。
+> 系統會以與主要伺服器相同的伺服器設定建立讀取複本。 複本伺服器設定在建立後可以變更。 建議將複本伺服器的設定保留為等於或大於來源的值，以確保複本能夠跟上主伺服器。
 
 
-### <a name="list-replicas-for-a-master-server"></a>列出主要伺服器的複本
+### <a name="list-replicas-for-a-source-server"></a>列出來源伺服器的複本
 
-若要檢視指定主要伺服器的所有複本，請執行下列命令： 
+若要查看指定來源伺服器的所有複本，請執行下列命令： 
 
 ```azurecli-interactive
 az mysql server replica list --server-name mydemoserver --resource-group myresourcegroup
@@ -74,12 +74,12 @@ az mysql server replica list --server-name mydemoserver --resource-group myresou
 | 設定 | 範例值 | 描述  |
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  複本伺服器會建立於其中的資源群組。  |
-| server-name | mydemoserver | 主要伺服器的名稱或識別碼。 |
+| server-name | mydemoserver | 來源伺服器的名稱或識別碼。 |
 
 ### <a name="stop-replication-to-a-replica-server"></a>停止複寫至複本伺服器
 
 > [!IMPORTANT]
-> 停止複寫至伺服器是無法復原的。 一旦停止主要與複本伺服器之間進行複寫，便無法復原。 複本伺服器會變成獨立伺服器，進而支援讀取和寫入。 此伺服器無法再次設定為複本伺服器。
+> 停止複寫至伺服器是無法復原的。 一旦來源與複本之間的複寫停止，就無法復原。 複本伺服器會變成獨立伺服器，進而支援讀取和寫入。 此伺服器無法再次設定為複本伺服器。
 
 使用下列命令，可以停止複寫至讀取複本伺服器︰
 
@@ -102,12 +102,12 @@ az mysql server replica stop --name mydemoreplicaserver --resource-group myresou
 az mysql server delete --resource-group myresourcegroup --name mydemoreplicaserver
 ```
 
-### <a name="delete-a-master-server"></a>刪除主要複本
+### <a name="delete-a-source-server"></a>刪除來源伺服器
 
 > [!IMPORTANT]
-> 刪除主要伺服器會停止對所有複本伺服器複寫，並刪除主要伺服器本身。 複本伺服器會變成獨立伺服器，進而支援讀取和寫入。
+> 刪除來源伺服器會停止對所有複本伺服器複寫，並刪除來源伺服器本身。 複本伺服器會變成獨立伺服器，進而支援讀取和寫入。
 
-若要刪除主要伺服器，您可以執行 **[az mysql server delete](/cli/azure/mysql/server)** 命令。
+若要刪除來源伺服器，您可以執行 **[az mysql server delete](/cli/azure/mysql/server)** 命令。
 
 ```azurecli-interactive
 az mysql server delete --resource-group myresourcegroup --name mydemoserver
@@ -115,10 +115,10 @@ az mysql server delete --resource-group myresourcegroup --name mydemoserver
 
 
 ## <a name="rest-api"></a>REST API
-您可以使用[Azure REST API](/rest/api/azure/)來建立及管理讀取複本。
+您可以使用 [Azure REST API](/rest/api/azure/)來建立及管理讀取複本。
 
 ### <a name="create-a-read-replica"></a>建立讀取複本
-您可以使用[建立 API](/rest/api/mysql/servers/create)來建立讀取複本：
+您可以使用 [建立 API](/rest/api/mysql/servers/create)來建立讀取複本：
 
 ```http
 PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{replicaName}?api-version=2017-12-01
@@ -137,25 +137,25 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 > [!NOTE]
 > 若要深入瞭解您可以在哪些區域中建立複本，請造訪[參閱複本概念文章](concepts-read-replicas.md)。 
 
-如果您尚未在 `azure.replication_support` 一般用途或記憶體優化的主伺服器上，將參數設定為 [**複本**]，並重新啟動伺服器，就會收到錯誤。 建立複本之前，請先完成這兩個步驟。
+如果您尚未將參數設定 `azure.replication_support` 為一般用途或記憶體優化來源伺服器上的 **複本** ，並重新啟動伺服器，則會收到錯誤訊息。 建立複本之前，請先完成這兩個步驟。
 
-使用與主伺服器相同的計算和儲存設定來建立複本。 建立複本之後，以下設定可以個別地從主要伺服器進行變更：計算世代、虛擬核心、儲存體及備份保留期間。 定價層也可以個別變更，但不能變更為基本層，或從基本層變更為別的層。
+使用與主伺服器相同的計算和儲存體設定來建立複本。 建立複本之後，您可以從來源伺服器個別變更數個設定：計算世代、虛擬核心、儲存體及備份保留期限。 定價層也可以個別變更，但不能變更為基本層，或從基本層變更為別的層。
 
 
 > [!IMPORTANT]
-> 將主伺服器設定更新為新值之前，請將複本設定更新為相等或更大的值。 此動作可協助複本跟上對主伺服器所做的任何變更。
+> 將來源伺服器設定更新為新值之前，請將複本設定更新為相等或更大的值。 此動作可協助複本跟上對主伺服器所做的任何變更。
 
 ### <a name="list-replicas"></a>列出複本
-您可以使用[複本清單 API](/rest/api/mysql/replicas/listbyserver)來查看主伺服器的複本清單：
+您可以使用 [複本清單 API](/rest/api/mysql/replicas/listbyserver)來查看來源伺服器的複本清單：
 
 ```http
 GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{masterServerName}/Replicas?api-version=2017-12-01
 ```
 
 ### <a name="stop-replication-to-a-replica-server"></a>停止複寫至複本伺服器
-您可以使用[更新 API](/rest/api/mysql/servers/update)來停止主伺服器與讀取複本之間的複寫。
+您可以使用 [UPDATE API](/rest/api/mysql/servers/update)來停止來源伺服器和讀取複本之間的複寫。
 
-停止主要伺服器和讀取複本的複寫之後，即無法再復原。 讀取複本會變成支援讀取和寫入的獨立伺服器。 獨立伺服器無法再次設定為複本。
+停止複寫至來源伺服器和讀取複本之後，就無法復原。 讀取複本會變成支援讀取和寫入的獨立伺服器。 獨立伺服器無法再次設定為複本。
 
 ```http
 PATCH https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{masterServerName}?api-version=2017-12-01
@@ -169,10 +169,10 @@ PATCH https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups
 }
 ```
 
-### <a name="delete-a-master-or-replica-server"></a>刪除主要或複本伺服器
-若要刪除主要或複本伺服器，您可以使用[刪除 API](/rest/api/mysql/servers/delete)：
+### <a name="delete-a-source-or-replica-server"></a>刪除來源或複本伺服器
+若要刪除來源或複本伺服器，請使用 [刪除 API](/rest/api/mysql/servers/delete)：
 
-刪除主要伺服器時，所有讀取複本上的複寫都會停止。 讀取複本會變成獨立伺服器，進而支援讀取和寫入。
+當您刪除來源伺服器時，會停止複寫至所有讀取複本。 讀取複本會變成獨立伺服器，進而支援讀取和寫入。
 
 ```http
 DELETE https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}?api-version=2017-12-01

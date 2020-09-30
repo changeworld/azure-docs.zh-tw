@@ -10,13 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
-ms.date: 09/03/2020
-ms.openlocfilehash: abdd04f59ee820585d58817297d161f68bd952f0
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/30/2020
+ms.openlocfilehash: 1120a3636b7ce24dde0d33c213f9063f910123c4
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90897390"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530624"
 ---
 # <a name="manage-azure-machine-learning-resources-with-the-vs-code-extension-preview"></a>使用 VS Code 擴充功能 (預覽版來管理 Azure Machine Learning 資源) 
 
@@ -201,6 +201,7 @@ VS Code 擴充功能目前支援下列類型的資料存放區：
 1. 展開工作區中的 **實驗** 節點。
 1. 以滑鼠右鍵按一下您想要執行的實驗。
 1. 選取活動列中的 [ **執行實驗** ] 圖示。
+1. 選取您要在本機或遠端執行實驗。 如需在本機執行和偵錯工具的詳細資訊，請參閱 [偵錯工具指南](how-to-debug-visual-studio-code.md) 。
 1. 選擇您的訂用帳戶。
 1. 選擇要在其中執行實驗的 Azure ML 工作區。
 1. 選擇您的實驗。
@@ -320,7 +321,7 @@ VS Code 擴充功能目前支援下列類型的資料存放區：
 
 1. 展開包含您工作區的訂用帳戶節點。
 1. 展開工作區中的 [ **計算** 叢集] 節點。
-1. 以滑鼠右鍵按一下您想要在其下建立回合設定的計算目標，然後選取 [ **建立執行**設定]。
+1. 以滑鼠右鍵按一下您想要建立執行設定的計算目標，然後選取 [ **建立**回合設定]。
 1. 在提示字元中：
     1. 為您的計算目標提供名稱
     1. 選擇或建立新的環境。
@@ -380,7 +381,7 @@ VS Code 擴充功能目前支援下列類型的資料存放區：
 
 VS Code 擴充功能支援下列部署目標：
 
-- Azure Container Instances
+- Azure 容器執行個體
 - Azure Kubernetes Service
 
 如需詳細資訊，請參閱 [web 服務端點](concept-azure-machine-learning-architecture.md#web-service-endpoint)。
@@ -423,6 +424,6 @@ VS Code 擴充功能支援下列部署目標：
         - 您部署的設定檔會出現在編輯器中。 如果您對設定感到滿意，請選取 [ **儲存並繼續** ]，或開啟 VS Code 的命令選擇區 (**View > 命令** 選擇區) 並輸入 **Azure ML：儲存並繼續**。
     - 若要查看部署設定，請選取 [ **view service properties**]。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 使用 VS Code 擴充功能將[影像分類模型定型](tutorial-train-deploy-image-classification-model-vscode.md)。

@@ -14,12 +14,12 @@ ms.date: 01/02/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95b0b026b75b9b77c94451245ac4f18d487fc2e4
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: bb102c23d80095b8eb79fc25d1c1fd9d7f374fce
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783513"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91529689"
 ---
 # <a name="microsoft-graph-apis-for-privileged-identity-management-preview"></a>適用於 Privileged Identity Management 的 Microsoft Graph API (預覽)
 
@@ -51,7 +51,7 @@ ms.locfileid: "88783513"
 
 1. 按一下 [修改權限]。
 
-    ![Graph 總管 - 修改權限](./media/pim-apis/graph-explorer.png)
+    ![顯示 [Graph Explorer] 頁面的螢幕擷取畫面，其中已選取 [修改許可權] 動作。](./media/pim-apis/graph-explorer.png)
 
 1. 在您想要包含的權限旁選取核取方塊。 Graph 總管中尚無法使用 `PrivilegedAccess.ReadWrite.AzureAD`。
 

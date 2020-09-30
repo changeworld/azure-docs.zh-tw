@@ -6,37 +6,37 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/10/2020
-ms.openlocfilehash: f093d9b1a67d5e6836fc7f760b0336c9923f5186
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: d1fa99d0954177e2804039fc71c2ba010b94bd50
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90902077"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530935"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>讀取適用於 PostgreSQL 的 Azure 資料庫中的複本-單一伺服器
 
-讀取複本功能可讓您將資料從適用於 PostgreSQL 的 Azure 資料庫伺服器複寫到唯讀伺服器。 您可以從主要伺服器複寫到最多五個複本。 複本會使用 PostgreSQL 引擎的原生複寫技術以非同步方式更新。
+讀取複本功能可讓您將資料從適用於 PostgreSQL 的 Azure 資料庫伺服器複寫到唯讀伺服器。 您可以從主伺服器複寫到最多五個複本。 複本會使用 PostgreSQL 引擎的原生複寫技術以非同步方式更新。
 
 複本是新伺服器，管理方式類似於一般適用於 PostgreSQL 的 Azure 資料庫伺服器。 針對每個讀取複本，系統每月會針對在虛擬核心中所佈建的計算量，以及在儲存體中所佈建的容量 (以 GB 為單位) 向您收費。
 
 了解如何[建立及管理複本](howto-read-replicas-portal.md)。
 
 ## <a name="when-to-use-a-read-replica"></a>何時應該使用讀取複本
-讀取複本功能可針對需大量讀取的工作負載，協助改善效能及調整能力。 讀取工作負載可隔離到複本，而寫入工作負載可以導向到主要伺服器。
+讀取複本功能可針對需大量讀取的工作負載，協助改善效能及調整能力。 讀取工作負載可隔離到複本，而寫入工作負載可以導向至主要工作負載。
 
 常見的案例是讓 BI 與分析工作負載使用讀取複本做為報告的資料來源。
 
-由於複本是唯讀狀態，因此不會直接降低主要伺服器上的寫入容量負擔。 這項功能不是以寫入密集的工作負載為目標。
+由於複本是唯讀的，因此不會直接降低主要複本的寫入容量負擔。 這項功能不是以寫入密集的工作負載為目標。
 
-讀取複本功能會使用 PostgreSQL 非同步複寫。 此功能不適用於同步複寫案例。 主要伺服器和複本之間將會有顯著的延遲。 複本上的資料最終仍會與主要伺服器上的資料保持一致。 請針對可接受此延遲的工作負載使用此功能。
+讀取複本功能會使用 PostgreSQL 非同步複寫。 此功能不適用於同步複寫案例。 主要和複本之間會有可測量的延遲。 複本上的資料最終會與主資料庫上的資料一致。 請針對可接受此延遲的工作負載使用此功能。
 
 ## <a name="cross-region-replication"></a>跨區域複寫
-您可以從主要伺服器在不同的區域中建立讀取複本。 跨區域複寫有助於災害復原規劃或讓資料更接近使用者之類的案例。
+您可以在主伺服器的不同區域中建立讀取複本。 跨區域複寫有助於災害復原規劃或讓資料更接近使用者之類的案例。
 
 >[!NOTE]
 > 基本層伺服器僅支援相同區域的複寫。
 
-您可以在任何 [適用於 PostgreSQL 的 Azure 資料庫區域](https://azure.microsoft.com/global-infrastructure/services/?products=postgresql)中具有主伺服器。 主要伺服器可以在其配對區域或全球複本區域中擁有複本。 下圖顯示根據您的主要區域而可供使用的複本區域。
+您可以在任何 [適用於 PostgreSQL 的 Azure 資料庫區域](https://azure.microsoft.com/global-infrastructure/services/?products=postgresql)中具有主伺服器。 主伺服器的配對區域或通用複本區域中可以有複本。 下圖顯示根據您的主要區域可使用的複本區域。
 
 [:::image type="content" source="media/concepts-read-replica/read-replica-regions.png" alt-text="讀取複本區域":::](media/concepts-read-replica/read-replica-regions.png#lightbox)
 
@@ -46,7 +46,7 @@ ms.locfileid: "90902077"
 澳大利亞東部、澳大利亞東南部、美國中部、東亞、美國東部、美國東部2、日本東部、日本西部、韓國中部、南韓南部、美國中北部、歐洲北部、美國中南部、東南亞、英國南部、英國西部、西歐、美國西部、美國西部2、美國中西部。
 
 ### <a name="paired-regions"></a>配對的區域
-除了全球複本區域外，您還可以在主要伺服器的 Azure 配對區域中建立讀取複本。 如果您不知道所在區域的配對，則可以從 [Azure 配對區域](../best-practices-availability-paired-regions.md)一文深入了解。
+除了通用複本區域，您可以在主伺服器的 Azure 配對區域中建立讀取複本。 如果您不知道所在區域的配對，則可以從 [Azure 配對區域](../best-practices-availability-paired-regions.md)一文深入了解。
 
 如果您使用跨區域複本來規劃災害復原，建議您在配對區域中建立複本，而不要在其他區域之一建立。 配對區域可避免同時更新，並排定實體隔離和資料落地的優先順序。  
 
@@ -55,11 +55,11 @@ ms.locfileid: "90902077"
 * 區域可用性：法國中部、阿拉伯聯合大公國北部和德國中部都有提供適用於 PostgreSQL 的 Azure 資料庫。 不過，卻沒有提供其配對區域。
     
 * 單向配對：某些 Azure 區域只會單向配對。 這些區域包括印度西部、巴西南部。 
-   這表示位於印度西部的主要伺服器可以在印度南部建立複本。 但位於印度南部的主要伺服器無法在印度西部建立複本。 其原因是印度西部的次要區域是印度南部，但印度南部的次要區域卻不是印度西部。
+   這表示印度西部的主伺服器可以在印度南部中建立複本。 不過，印度南部中的主伺服器無法在印度西部建立複本。 其原因是印度西部的次要區域是印度南部，但印度南部的次要區域卻不是印度西部。
 
 
 ## <a name="create-a-replica"></a>建立複本
-當您開始建立複本的工作流程時，系統會建立空白的「適用於 PostgreSQL 的 Azure 資料庫」伺服器。 新的伺服器會具有主要伺服器上的資料。 建立時間取決於主要伺服器上的資料量，以及距離上次每週完整備份的時間。 時間的範圍可能介於數分鐘到數小時。
+當您開始建立複本的工作流程時，系統會建立空白的「適用於 PostgreSQL 的 Azure 資料庫」伺服器。 新伺服器會填入主伺服器上的資料。 建立時間取決於主資料庫上的資料量和自從上一周完整備份之後的時間。 時間的範圍可能介於數分鐘到數小時。
 
 每個複本都會啟用儲存體[自動成長](concepts-pricing-tiers.md#storage-auto-grow)。 自動成長功能可讓複本與複寫的資料保持同步，並防止因儲存體錯誤而導致的複寫中斷。
 
@@ -68,9 +68,9 @@ ms.locfileid: "90902077"
 了解如何[在 Azure 入口網站中建立讀取複本](howto-read-replicas-portal.md)。
 
 ## <a name="connect-to-a-replica"></a>連線到複本
-當您建立複本時，其不會繼承主要伺服器的防火牆規則或 VNet 服務端點。 您必須個別針對複本設定這些規則。
+當您建立複本時，它不會繼承主伺服器的防火牆規則或 VNet 服務端點。 您必須個別針對複本設定這些規則。
 
-複本會從主要伺服器繼承系統管理員帳戶。 系統會將主要伺服器上的所有使用者帳戶複寫到讀取複本。 您只能使用主要伺服器上可用的使用者帳戶來連線到讀取複本。
+複本會從主伺服器繼承系統管理員帳戶。 主伺服器上的所有使用者帳戶都會複寫到讀取複本。 您只能使用主伺服器上可用的使用者帳戶來連接到讀取複本。
 
 您可以使用複本的主機名稱和有效的使用者帳戶來連線到該複本，如同連線到一般適用於 PostgreSQL 的 Azure 資料庫伺服器一樣。 對於名為「 **我的複本** 」和「系統管理員使用者名稱 **myadmin**」的伺服器，您可以使用 psql 連接到該複本：
 
@@ -83,9 +83,9 @@ psql -h myreplica.postgres.database.azure.com -U myadmin@myreplica -d postgres
 ## <a name="monitor-replication"></a>監視複寫
 適用於 PostgreSQL 的 Azure 資料庫提供兩個計量來監視複寫。 這兩個計量是複本和**複本延遲****之間的最大延隔**時間。 若要瞭解如何查看這些計量，請參閱「[讀取複本操作說明](howto-read-replicas-portal.md)」一文中的「**監視複本**」一節。
 
-[ **複本之間的最大延隔** 時間] 計量會顯示主伺服器和最延遲複本之間的延遲（以位元組為單位）。 此計量僅適用於主要伺服器。
+[ **複本之間的最大延隔** 時間] 計量會顯示主要與最延遲複本之間的延遲（以位元組為單位）。 此計量僅適用于主伺服器。
 
-[ **複本延隔** 時間] 計量會顯示上次重新執行的交易之後的時間。 如果主要伺服器上沒有發生交易，計量會反映此時間延隔。 此計量僅適用于複本伺服器。 複本延隔時間是從 `pg_stat_wal_receiver` 視圖中計算：
+[ **複本延隔** 時間] 計量會顯示上次重新執行的交易之後的時間。 如果您的主伺服器上沒有發生交易，計量會反映此時間延隔時間。 此計量僅適用于複本伺服器。 複本延隔時間是從 `pg_stat_wal_receiver` 視圖中計算：
 
 ```SQL
 EXTRACT (EPOCH FROM now() - pg_last_xact_replay_timestamp());
@@ -93,7 +93,7 @@ EXTRACT (EPOCH FROM now() - pg_last_xact_replay_timestamp());
 
 請設定警示，以在複本延隔時間接近您工作負載無法接受的值時通知您。 
 
-如需其他見解，請直接查詢主要伺服器以取得所有複本的複本延隔時間 (以位元組為單位)。
+如需其他深入解析，請直接查詢主伺服器以取得所有複本的複寫延遲（以位元組為單位）。
 
 在 PostgreSQL 第 10 版中：
 
@@ -110,10 +110,10 @@ AS total_log_delay_in_bytes from pg_stat_replication;
 ```
 
 > [!NOTE]
-> 如果主要伺服器或讀取複本重新啟動，其重新啟動完畢並跟上進度所花費的時間將會反映在 [複本延隔時間] 計量中。
+> 如果主伺服器或讀取複本重新開機，則重新開機和趕上所需的時間會反映在複本延隔標準中。
 
 ## <a name="stop-replication"></a>停止複寫
-您可以停止主要伺服器與複本之間的複寫。 停止動作會導致複本重新啟動以移除其複寫設定。 當主要伺服器和讀取複本之間的複寫停止時，複本就會成為獨立伺服器。 獨立伺服器中的資料是起始「停止複寫」命令時，複本上所包含的可用資料。 獨立伺服器不會跟上主要伺服器。
+您可以停止主要複本與複本之間的複寫。 停止動作會導致複本重新啟動以移除其複寫設定。 當主伺服器和讀取複本之間的複寫停止時，複本會變成獨立伺服器。 獨立伺服器中的資料是起始「停止複寫」命令時，複本上所包含的可用資料。 獨立伺服器不會趕上主伺服器。
 
 > [!IMPORTANT]
 > 獨立伺服器無法再次設定為複本。
@@ -124,17 +124,17 @@ AS total_log_delay_in_bytes from pg_stat_replication;
 了解如何[停止複寫至複本](howto-read-replicas-portal.md)。
 
 ## <a name="failover"></a>容錯移轉
-在主伺服器與複本伺服器之間沒有自動容錯移轉。 
+主要和複本伺服器之間沒有自動容錯移轉。 
 
-由於複寫是非同步，因此主伺服器和複本之間會有延遲。 延遲數量可能會受到一些因素所影響，例如在主伺服器上執行工作負載的繁重程度，以及資料中心之間的延遲。 在大部分的情況下，複本延遲的範圍是幾秒鐘到幾分鐘。 您可以使用計量 *複本延遲*（可用於每個複本）來追蹤實際的複寫延遲。 此計量會顯示上次重新執行交易之後的時間。 我們建議您在一段時間內觀察您的複本延遲，以找出您的平均延遲。 您可以設定複本延遲的警示，如此一來，如果超出預期的範圍，您可以採取動作。
+由於複寫是非同步，因此主要和複本之間會有延遲。 延遲數量可能會受到一些因素所影響，例如，在主伺服器上執行工作負載的繁重程度，以及資料中心之間的延遲。 在大部分的情況下，複本延遲的範圍是幾秒鐘到幾分鐘。 您可以使用計量 *複本延遲*（可用於每個複本）來追蹤實際的複寫延遲。 此計量會顯示上次重新執行交易之後的時間。 我們建議您在一段時間內觀察您的複本延遲，以找出您的平均延遲。 您可以設定複本延遲的警示，如此一來，如果超出預期的範圍，您可以採取動作。
 
 > [!Tip]
-> 如果您容錯移轉至複本，當您從主伺服器取消複本時的延遲將會指出遺失的資料量。
+> 如果您容錯移轉至複本，從主要複本取消複本時的延遲將會指出遺失的資料量。
 
 一旦您決定要容錯移轉至複本， 
 
 1. 停止複寫至複本<br/>
-   您必須執行此步驟，讓複本伺服器能夠接受寫入。 在此過程中，複本伺服器將會重新開機，並從主伺服器 delinked。 當您起始停止複寫後，後端進程通常需要大約2分鐘才能完成。 請參閱本文的「 [停止](#stop-replication) 複寫」一節，以瞭解此動作的含意。
+   您必須執行此步驟，讓複本伺服器能夠接受寫入。 在此過程中，複本伺服器將會重新開機，並從主要複本 delinked。 當您起始停止複寫後，後端進程通常需要大約2分鐘才能完成。 請參閱本文的「 [停止](#stop-replication) 複寫」一節，以瞭解此動作的含意。
     
 2. 將您的應用程式指向 (之前的) 複本<br/>
    每一部伺服器都有唯一的連接字串。 更新您的應用程式，使其指向 (之前的) 複本，而不是主要複本。
@@ -161,11 +161,11 @@ AS total_log_delay_in_bytes from pg_stat_replication;
 讀取複本會建立為最新適用於 PostgreSQL 的 Azure 資料庫伺服器。 現有伺服器無法設定為複本。 您無法為另一個讀取複本建立複本。
 
 ### <a name="replica-configuration"></a>複本設定
-使用與主伺服器相同的計算和儲存體設定來建立複本。 建立複本之後，您可以變更數個設定，包括儲存體和備份保留期限。
+使用與主資料庫相同的計算和儲存體設定來建立複本。 建立複本之後，您可以變更數個設定，包括儲存體和備份保留期限。
 
 建立或之後建立複本時，防火牆規則、虛擬網路規則和參數設定都不會從主伺服器繼承至複本。
 
-### <a name="scaling"></a>調整大小
+### <a name="scaling"></a>擴縮
 調整虛擬核心或一般目的與記憶體優化：
 * 于 postgresql 需要 `max_connections` 次要伺服器上的設定 [大於或等於主伺服器上的設定](https://www.postgresql.org/docs/current/hot-standby.html)，否則次要伺服器將不會啟動。
 * 在適用於 PostgreSQL 的 Azure 資料庫中，每個伺服器允許的連線數上限會固定到計算 sku，因為連接會佔用記憶體。 您可以深入瞭解 [max_connections 與計算 sku 之間的對應](concepts-limits.md)。
@@ -181,14 +181,14 @@ AS total_log_delay_in_bytes from pg_stat_replication;
 基本層伺服器僅支援相同區域的複寫。
 
 ### <a name="max_prepared_transactions"></a>max_prepared_transactions
-[于 postgresql 要求](https://www.postgresql.org/docs/current/runtime-config-resource.html#GUC-MAX-PREPARED-TRANSACTIONS) `max_prepared_transactions` 讀取複本上的參數值必須大於或等於主要值，否則複本將不會啟動。 如果您想要 `max_prepared_transactions` 在主伺服器上變更，請先在複本上進行變更。
+[于 postgresql 要求](https://www.postgresql.org/docs/current/runtime-config-resource.html#GUC-MAX-PREPARED-TRANSACTIONS) `max_prepared_transactions` 讀取複本上的參數值必須大於或等於主要值，否則複本將不會啟動。 如果您想要 `max_prepared_transactions` 在主要複本上變更，請先在複本上進行變更。
 
 ### <a name="stopped-replicas"></a>已停止的複本
-如果您停止主要伺服器和讀取複本之間的複寫，複本將會重新啟動以套用變更。 停止的複本會變成支接受讀取和寫入的獨立伺服器。 獨立伺服器無法再次設定為複本。
+如果您停止主伺服器和讀取複本之間的複寫，複本將會重新開機以套用變更。 停止的複本會變成支接受讀取和寫入的獨立伺服器。 獨立伺服器無法再次設定為複本。
 
-### <a name="deleted-master-and-standalone-servers"></a>已刪除的主要和獨立伺服器
-刪除主要伺服器時，其所有讀取複本都會變成獨立伺服器。 這些複本將會重新啟動以反映此變更。
+### <a name="deleted-primary-and-standalone-servers"></a>已刪除主要和獨立伺服器
+刪除主伺服器時，其所有讀取複本都會變成獨立伺服器。 這些複本將會重新啟動以反映此變更。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 * 了解如何[在 Azure 入口網站中建立及管理讀取複本](howto-read-replicas-portal.md)。
 * 瞭解如何 [在 Azure CLI 和 REST API 中建立及管理讀取複本](howto-read-replicas-cli.md)。

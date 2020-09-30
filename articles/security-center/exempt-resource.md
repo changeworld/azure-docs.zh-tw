@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: f3ac2f82882dfd7eb1e15e9a5287cf1d6f5b32d2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 87c16207f312479dcfe083ad9494d75b3538e18c
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91301528"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91532545"
 ---
 # <a name="exempt-a-resource-from-recommendations-and-secure-score"></a>豁免建議和安全分數的資源
 
@@ -32,7 +32,7 @@ ms.locfileid: "91301528"
 |----|:----|
 |釋放狀態：|預覽|
 |定價：|這是免費提供給 Azure Defender 客戶的 Azure 原則功能，不需額外費用。 對於其他使用者，未來可能會收取費用。|
-|必要的角色和許可權：|建立豁免的訂用帳戶**擁有**者或**原則參與者**<br>若要建立規則，您需要在 Azure 原則中編輯原則的許可權。<br>在 Azure 原則中深入瞭解 [RBAC 許可權](../governance/policy/overview.md#rbac-permissions-in-azure-policy)。|
+|必要的角色和許可權：|建立豁免的訂用帳戶**擁有**者或**原則參與者**<br>若要建立規則，您需要在 Azure 原則中編輯原則的許可權。<br>在 Azure 原則中深入瞭解 [AZURE RBAC 許可權](../governance/policy/overview.md#azure-rbac-permissions-in-azure-policy)。|
 |雲端：|![是](./media/icons/yes-icon.png) 商業雲端<br>![否](./media/icons/no-icon.png) 全國/主權 (US Gov、中國 Gov、其他 Gov) |
 |||
 
@@ -45,7 +45,7 @@ ms.locfileid: "91301528"
 
     [建立豁免] 窗格隨即開啟。
 
-    :::image type="content" source="./media/exempt-resource/exemption-rule-options.png" alt-text="建立豁免窗格":::
+    :::image type="content" source="./media/exempt-resource/exemption-rule-options.png" alt-text="從內容功能表建立豁免選項":::
 
 1. 輸入您的準則，然後選取應豁免此資源的準則：
     - 緩和-此問題與**資源無關，** 因為它是由不同于所建議的工具或進程所處理。
@@ -56,15 +56,11 @@ ms.locfileid: "91301528"
     - 資源會列在 [建議詳細資料] 頁面的 [ **不適用** ] 索引標籤中
     - [建議詳細資料] 頁面頂端的資訊區域會列出豁免的資源數目：
         
-        :::image type="content" source="./media/exempt-resource/info-banner.png" alt-text="豁免的資源數目":::
+        :::image type="content" source="./media/exempt-resource/info-banner.png" alt-text="從內容功能表建立豁免選項":::
 
 1. 若要檢查豁免的資源，請開啟 [ **不適用** ] 索引標籤。
 
-    :::image type="content" source="./media/exempt-resource/modifying-exemption.png" alt-text="修改豁免":::
-
-    每項豁免的原因都包含在資料表 (1) 。
-
-    若要修改或刪除豁免，請選取省略號功能表 ( "..." ) 如 (2) 所示。
+    :::image type="content" source="./media/exempt-resource/modifying-exemption.png" alt-text="從內容功能表建立豁免選項" ) 如 (2) 所示。
 
 
 ## <a name="review-all-of-the-exemption-rules-on-your-subscription"></a>查看您訂用帳戶上的所有豁免規則
@@ -73,7 +69,7 @@ ms.locfileid: "91301528"
 
 您可以使用 Azure 原則來追蹤 **豁免** 頁面中的所有豁免：
 
-:::image type="content" source="./media/exempt-resource/policy-page-exemption.png" alt-text="Azure 原則的豁免頁面":::
+:::image type="content" source="./media/exempt-resource/policy-page-exemption.png" alt-text="從內容功能表建立豁免選項":::
 
 
 

@@ -7,16 +7,16 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
 ms.reviewer: larryfr
-ms.author: aashishb
-author: aashishb
+ms.author: peterlu
+author: peterclu
 ms.date: 09/24/2020
-ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: 07f5fef0103e674af1c5f73b3f09bdf759e592cb
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.custom: contperfq4, tracking-python, contperfq1
+ms.openlocfilehash: df3872f5675b55d845bc88e704b1dc4932091ac7
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91355970"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91532409"
 ---
 # <a name="secure-an-azure-machine-learning-inferencing-environment-with-virtual-networks"></a>使用虛擬網路保護 Azure Machine Learning 推斷環境
 
@@ -35,7 +35,7 @@ ms.locfileid: "91355970"
 > - Azure 容器執行個體 (ACI)
 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 + 閱讀 [網路安全性總覽](how-to-network-security-overview.md) 文章，以瞭解常見的虛擬網路案例和整體虛擬網路架構。
 

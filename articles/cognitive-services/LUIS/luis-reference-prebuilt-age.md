@@ -1,28 +1,26 @@
 ---
-title: 年齡預先建立的實體-LUIS
+title: Age 預建實體-LUIS
 titleSuffix: Azure Cognitive Services
 description: 本文包含 Language Understanding (LUIS) 中預先建置的 age 實體資訊。
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 10/04/2019
-ms.author: diberry
-ms.openlocfilehash: 1607b80276a9c35bf0ac2f0a00bd2226e2c07f97
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4e1a6b1b6fb99a2786de06e89960e8480a5e1338
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78270801"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91532919"
 ---
 # <a name="age-prebuilt-entity-for-a-luis-app"></a>LUIS 應用程式的年齡預先建置實體
 預先建置的 age 實體會以年數、月數、週數及天數的方式擷取年齡值。 因為此實體已經定型，所以您不需要將包含年齡的範例語句加入應用程式意圖。 [多種文化特色](luis-reference-prebuilt-entities.md)都支援 age 實體。
 
 ## <a name="types-of-age"></a>年齡類型
-年齡是從辨識器[文字](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-NumbersWithUnit.yaml#L3)的 GitHub 存放庫進行管理
+Age 可從辨識器 [-文字](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-NumbersWithUnit.yaml#L3) GitHub 存放庫進行管理
 
 ## <a name="resolution-for-prebuilt-age-entity"></a>解析預先建置的 age 實體
 
@@ -30,7 +28,7 @@ ms.locfileid: "78270801"
 
 #### <a name="v3-response"></a>[V3 回應](#tab/V3)
 
-下列 JSON 是將`verbose`參數設定為： `false`
+以下是將 `verbose` 參數設定為的 JSON `false` ：
 
 ```json
 "entities": {
@@ -42,8 +40,8 @@ ms.locfileid: "78270801"
     ]
 }
 ```
-#### <a name="v3-verbose-response"></a>[V3 詳細回應](#tab/V3-verbose)
-下列 JSON 是將`verbose`參數設定為： `true`
+#### <a name="v3-verbose-response"></a>[V3 詳細資訊回應](#tab/V3-verbose)
+以下是將 `verbose` 參數設定為的 JSON `true` ：
 
 ```json
 "entities": {

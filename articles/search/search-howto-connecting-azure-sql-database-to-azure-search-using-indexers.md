@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/12/2020
-ms.openlocfilehash: 631f5afbac4337cd0852f46ac4a336107f042397
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b1ad4ead83c9e07966f921a5b192f2791838e6ef
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91331636"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530556"
 ---
 # <a name="connect-to-and-index-azure-sql-content-using-an-azure-cognitive-search-indexer"></a>使用 Azure 認知搜尋索引子連接至 Azure SQL 內容並為其編制索引
 
@@ -39,7 +39,7 @@ ms.locfileid: "91331636"
 您可以使用下列方式安裝及設定 Azure SQL 索引子︰
 
 * [Azure 入口網站](https://portal.azure.com)中的匯入資料精靈
-* Azure 認知搜尋 [.NET SDK](/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet)
+* Azure 認知搜尋 [.NET SDK](/dotnet/api/microsoft.azure.search.models.indexer)
 * Azure 認知搜尋 [REST API](/rest/api/searchservice/indexer-operations)
 
 在本文中，我們將使用 REST API 來建立**索引子**與**資料來源**。
@@ -187,7 +187,7 @@ Azure 認知搜尋使用累加 **式索引編制** ，以避免每次索引子�
 + 在資料庫上，針對資料表[啟用變更追蹤](/sql/relational-databases/track-changes/enable-and-disable-change-tracking-sql-server)。 
 + 資料表上沒有複合主索引鍵 (主索引鍵包含一個以上的資料行)。  
 
-#### <a name="usage"></a>使用量
+#### <a name="usage"></a>使用方式
 
 若要使用此原則，請以下列方式建立或更新您的資料來源：
 
@@ -224,7 +224,7 @@ Azure 認知搜尋使用累加 **式索引編制** ，以避免每次索引子�
 > [!IMPORTANT] 
 > 我們強烈建議針對上限標記資料行使用 [rowversion](/sql/t-sql/data-types/rowversion-transact-sql) 資料類型。 如果使用其他任何資料類型，就無法保證變更追蹤會擷取與索引子查詢同時執行之交易中發生的所有變更。 在具備唯讀複本的設定中使用 **rowversion** 時，您必須指向主要複本上的索引子。 只有主要複本可用於資料同步處理案例。
 
-#### <a name="usage"></a>使用量
+#### <a name="usage"></a>使用方式
 
 若要使用高標原則，請以下列方式建立或更新您的資料來源：
 
@@ -316,7 +316,7 @@ Azure 認知搜尋使用累加 **式索引編制** ，以避免每次索引子�
 <a name="TypeMapping"></a>
 
 ## <a name="mapping-between-sql-and-azure-cognitive-search-data-types"></a>SQL 和 Azure 認知搜尋資料類型之間的對應
-| SQL 資料類型 | 允許的目標索引欄位類型 | 注意 |
+| SQL 資料類型 | 允許的目標索引欄位類型 | 備註 |
 | --- | --- | --- |
 | bit |Edm.Boolean、Edm.String | |
 | int、smallint、tinyint |Edm.Int32、Edm.Int64、Edm.String | |
@@ -352,7 +352,7 @@ SQL 索引子公開數個組態設定︰
 
 **問：我可以使用 Azure SQL 索引子搭配在 Azure 中 IaaS Vm 上執行的 SQL 資料庫嗎？**
 
-可以。 不過，您需要允許搜尋服務連接到資料庫。 如需詳細資訊，請參閱 [在 AZURE VM 上設定從 Azure 認知搜尋索引子到 SQL Server 的連接](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)。
+是。 不過，您需要允許搜尋服務連接到資料庫。 如需詳細資訊，請參閱 [在 AZURE VM 上設定從 Azure 認知搜尋索引子到 SQL Server 的連接](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)。
 
 **問：我可以使用 Azure SQL 索引子搭配在內部部署執行的 SQL 資料庫嗎？**
 
@@ -364,11 +364,11 @@ SQL 索引子公開數個組態設定︰
 
 **問：我可以建立多個依排程執行的索引子嗎？**
 
-可以。 但是一次只能在一個節點上執行一個索引子。 如果您需要多個同時執行的索引子，請考慮將搜尋服務調整大於一個搜尋單位。
+是。 但是一次只能在一個節點上執行一個索引子。 如果您需要多個同時執行的索引子，請考慮將搜尋服務調整大於一個搜尋單位。
 
 **問：執行索引子是否會影響我的查詢工作負載？**
 
-可以。 索引子會在您搜尋服務中的其中一個節點執行，且節點上的資源會在索引及服務查詢流量和其他 API 要求之間共用。 如果您執行大量的索引編制和查詢工作負載，而且遇到高比率的503錯誤或增加回應時間，請考慮 [相應增加您的搜尋服務](search-capacity-planning.md)。
+是。 索引子會在您搜尋服務中的其中一個節點執行，且節點上的資源會在索引及服務查詢流量和其他 API 要求之間共用。 如果您執行大量的索引編制和查詢工作負載，而且遇到高比率的503錯誤或增加回應時間，請考慮 [相應增加您的搜尋服務](search-capacity-planning.md)。
 
 **問：是否可以在[容錯移轉叢集](../azure-sql/database/auto-failover-group-overview.md)中使用次要複本作為資料來源？**
 

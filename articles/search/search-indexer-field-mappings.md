@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/11/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: fe4d42fd74b4efd67a01f32611bd170862ec84d0
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: a20b6509973c7dc7e54d2e4f702175ad61e88da8
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89007123"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91532495"
 ---
 # <a name="field-mappings-and-transformations-using-azure-cognitive-search-indexers"></a>使用 Azure 認知搜尋索引子的欄位對應和轉換
 
@@ -201,7 +201,7 @@ Azure 認知搜尋支援兩種不同的 Base64 編碼。 編碼和解碼相同�
 
 Azure 認知搜尋支援 URL 安全的 base64 編碼和一般 base64 編碼。 在編制索引期間以 base64 編碼的字串，稍後應使用相同的編碼選項進行解碼，否則結果不會與原始的結果相符。
 
-如果個別 `useHttpServerUtilityUrlTokenEncode` `useHttpServerUtilityUrlTokenDecode` 編碼和解碼的或參數設定為 `true` ，則行為會 `base64Encode` 像是 [HttpServerUtility. >HTTPserverutility.urltokenencode](/dotnet/api/system.web.httpserverutility.urltokenencode?view=netframework-4.8) ，其 `base64Decode` 行為就像 [HttpServerUtility. >HTTPserverutility.urltokendecode](/dotnet/api/system.web.httpserverutility.urltokendecode?view=netframework-4.8)。
+如果個別 `useHttpServerUtilityUrlTokenEncode` `useHttpServerUtilityUrlTokenDecode` 編碼和解碼的或參數設定為 `true` ，則行為會 `base64Encode` 像是 [HttpServerUtility. >HTTPserverutility.urltokenencode](/dotnet/api/system.web.httpserverutility.urltokenencode) ，其 `base64Decode` 行為就像 [HttpServerUtility. >HTTPserverutility.urltokendecode](/dotnet/api/system.web.httpserverutility.urltokendecode)。
 
 > [!WARNING]
 > 如果 `base64Encode` 用來產生索引鍵值，則 `useHttpServerUtilityUrlTokenEncode` 必須設定為 true。 只有 URL 安全的 base64 編碼可以用於索引鍵值。 請參閱 [命名規則 &#40;Azure 認知搜尋&#41;](/rest/api/searchservice/naming-rules) ，以取得金鑰值中字元的完整限制集。

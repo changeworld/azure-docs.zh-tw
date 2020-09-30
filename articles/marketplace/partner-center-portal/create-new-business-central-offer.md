@@ -7,12 +7,12 @@ ms.topic: how-to
 author: navits09
 ms.author: navits
 ms.date: 08/07/2020
-ms.openlocfilehash: 1e2af29779c93175ccc4c7f6964862b79febd8e6
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: d92dc562136ef20dac19e7ddfa4339c565793308
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90527083"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91531814"
 ---
 # <a name="create-a-dynamics-365-business-central-offer"></a>建立 Dynamics 365 Business Central 供應項目
 
@@ -56,18 +56,18 @@ ms.locfileid: "90527083"
 
 #### <a name="get-it-now-free"></a>立即取得 (免費)
 
-提供有效的 URL (網址開頭為 HTTP 或 HTTPS)，免費向客戶列出您的供應項目，使其能存取您的應用程式。  例如： `https://contoso.com/my-app` 。
+免費向客戶列出您的供應專案。
 
-#### <a name="free-trial-listing"></a>免費試用版 (清單)
+#### <a name="free-trial-listing"></a>免費試用 (清單)
 
-提供有效的 URL (開頭 `http` 或 `https`) 可取得試用版的有效 URL，向客戶列出您的供應專案。  例如： `https://contoso.com/trial/my-app` 。 供應項目清單免費試用版是由您的服務所建立、管理及設定，且沒有由 Microsoft 管理的訂閱。
+使用免費試用的連結向客戶列出您的供應專案。 供應項目清單免費試用版是由您的服務所建立、管理及設定，且沒有由 Microsoft 管理的訂閱。
 
 > [!NOTE]
 > 您的應用程式透過試用連結所接收的權杖，只能經由 Azure Active Directory (Azure AD) 取得使用者資訊，以便在應用程式中自動建立帳戶。 Microsoft 帳戶不支援使用此權杖進行驗證。
 
 #### <a name="contact-me"></a>與我連絡
 
-透過連接客戶關係管理 (CRM)系統收集客戶連絡人資訊。 系統會要求客戶提供權限，以分享客戶資訊。 這些客戶詳細資料，連同他們在您的供應項目中找到的供應項目名稱、識別碼和市集來源，都會傳送至您所設定的 CRM 系統。 如需設定 CRM 的詳細資訊，請參閱[潛在客戶管理](#customer-leads)一節。
+透過連接客戶關係管理 (CRM) 系統收集客戶連絡人資訊。 系統會要求客戶提供權限，以分享客戶資訊。 這些客戶詳細資料，連同他們在您的供應項目中找到的供應項目名稱、識別碼和市集來源，都會傳送至您所設定的 CRM 系統。 如需設定 CRM 的詳細資訊，請參閱[潛在客戶管理](#customer-leads)一節。
 
 ### <a name="test-drive"></a>試用產品
 
@@ -122,14 +122,14 @@ ms.locfileid: "90527083"
 #### <a name="call-out-descriptions"></a>撥出描述
 
 1. 標誌
-2. Products
+2. 產品
 3. 類別
 4. 支援位址 (連結) 
 5. 使用規定
 6. 隱私權原則
 7. 供應項目名稱
 8. 摘要
-9. 描述
+9. 說明
 10. 螢幕擷取畫面/影片
 
 ### <a name="name"></a>名稱

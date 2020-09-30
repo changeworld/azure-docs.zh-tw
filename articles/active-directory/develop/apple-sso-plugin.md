@@ -13,12 +13,12 @@ ms.date: 09/15/2020
 ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: e43ce318ca9e9b14ad059dd296799667653e0f95
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: ec0ab4601e15129ecd8917e0e750a3e1661dc558
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90561341"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530692"
 ---
 # <a name="microsoft-enterprise-sso-plug-in-for-apple-devices-preview"></a>適用于 Apple 裝置的 Microsoft 企業 SSO 外掛程式 (Preview) 
 
@@ -31,7 +31,7 @@ ms.locfileid: "90561341"
 
 在此公開預覽版本中，企業 SSO 外掛程式僅適用于 iOS 裝置，並在特定的 Microsoft 應用程式中散發。
 
-## <a name="features"></a>特性
+## <a name="features"></a>功能
 
 適用于 Apple 裝置的 Microsoft 企業 SSO 外掛程式提供下列優點：
 
@@ -93,7 +93,7 @@ MDM 系統管理員允許參與 SSO 的[同意應用程式](./application-consen
 
 根據預設，只有當 SSO 外掛程式已經有共用認證時，Microsoft 企業 SSO 外掛程式才會為已授權的應用程式提供 SSO。 當其他 ADAL 或 MSAL 架構的應用程式在權杖取得期間呼叫時，Microsoft 企業 SSO 外掛程式可以取得共用認證。 大部分的 Microsoft 應用程式都會使用 Microsoft Authenticator 或 SSO 外掛程式。 這表示，根據預設，原生應用程式流程外部的 SSO 是最好的工作。  
 
-啟用 `browser_sso_interaction_enabled` 旗標可讓非 MSAL 應用程式和 Safari 瀏覽器進行初始啟動載入，並取得共用認證。 如果 Microsoft 企業 SSO 外掛程式尚無共用認證，則會在每次從 Safari 瀏覽器、ASWebAuthenticationSession、SafariViewController 或另一個允許清單的原生應用程式中的 Azure AD URL 要求登入時，嘗試取得一個認證。  
+啟用 `browser_sso_interaction_enabled` 旗標可讓非 MSAL 應用程式和 Safari 瀏覽器進行初始啟動載入，並取得共用認證。 如果 Microsoft 企業 SSO 外掛程式尚無共用認證，則會在每次從 Safari 瀏覽器、ASWebAuthenticationSession、SafariViewController 或另一個允許的原生應用程式中的 Azure AD URL 要求登入時，嘗試取得一個認證。  
 
 - 機**碼**：`browser_sso_interaction_enabled`
 - **輸入**： `Integer`

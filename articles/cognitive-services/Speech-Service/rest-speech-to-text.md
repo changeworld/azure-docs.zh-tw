@@ -11,23 +11,26 @@ ms.topic: conceptual
 ms.date: 05/13/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 874978288a38ff56ce220dd13cb6f3dfec902b2d
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 98c42a61e65935446f948e35cb08ed2893dd0b7b
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88934577"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91532512"
 ---
 # <a name="speech-to-text-rest-api"></a>語音轉換文字 REST API
 
 語音服務可讓您使用 REST API 轉換語音轉換文字，作為 [語音 SDK](speech-sdk.md)的替代方案。 每個可存取的端點皆與區域相關聯。 您的應用程式需要您打算使用之端點的訂用帳戶金鑰。 REST API 非常有限，而且只應在 [語音 SDK](speech-sdk.md) 無法使用的情況下使用。
 
-使用語音轉換文字 REST API 之前，請先瞭解：
+使用語音轉換文字 REST API 之前，請考慮下列事項：
 
 * 使用 REST API 和直接傳輸音訊的要求最多隻能包含60秒的音訊。
 * 語音轉文字 REST API 只會傳回最終結果， 不提供部分的結果。
 
 如果您的應用程式需要傳送較長的音訊，請考慮使用 [語音 SDK](speech-sdk.md) 或以檔案為基礎的 REST API，例如 [批次](batch-transcription.md)轉譯。
+
+> [!TIP]
+> 請參閱政府雲端的 Azure 政府 [檔](https://docs.microsoft.com/azure/azure-government/compare-azure-government-global-azure) (FairFax) 端點。
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-rest-auth.md)]
 
@@ -50,7 +53,7 @@ https://<REGION_IDENTIFIER>.stt.speech.microsoft.com/speech/recognition/conversa
 
 REST 要求的查詢字串中可能包括這些參數。
 
-| 參數 | 描述 | 必要/選用 |
+| 參數 | 說明 | 必要/選用 |
 |-----------|-------------|---------------------|
 | `language` | 識別正在辨識的口說語言。 請參閱 [支援的語言](language-support.md#speech-to-text)。 | 必要 |
 | `format` | 指定結果格式。 接受的值為 `simple` 和 `detailed`。 簡單的結果包含 `RecognitionStatus`、`DisplayText`、`Offset` 和 `Duration`。 詳細的回應包括四種不同的顯示文字表示。 預設設定是 `simple`。 | 選擇性 |
@@ -61,7 +64,7 @@ REST 要求的查詢字串中可能包括這些參數。
 
 下表列出了語音轉文字要求的必要標頭和選用標頭。
 
-|標頭| 描述 | 必要/選用 |
+|標頭| 說明 | 必要/選用 |
 |------|-------------|---------------------|
 | `Ocp-Apim-Subscription-Key` | 您的語音服務訂用帳戶金鑰。 | 必須有此標頭或 `Authorization`。 |
 | `Authorization` | 前面加入 `Bearer` 這個字的授權權杖。 如需詳細資訊，請參閱[驗證](#authentication)。 | 必須有此標頭或 `Ocp-Apim-Subscription-Key`。 |
@@ -87,12 +90,12 @@ REST 要求的查詢字串中可能包括這些參數。
 
 下表列出發音評量的必要和選擇性參數。
 
-| 參數 | 描述 | 必要/選用 |
+| 參數 | 說明 | 必要/選用 |
 |-----------|-------------|---------------------|
 | ReferenceText | 用來評估發音的文字。 | 必要 |
 | GradingSystem | 評分校正的點系統。 接受的值為 `FivePoint` 和 `HundredMark`。 預設設定是 `FivePoint`。 | 選擇性 |
 | 細微度 | 評估細微性。 接受的值為，顯示全文檢索文字和 `Phoneme` 音素層級的分數，其中顯示全文檢索和單字層級的分數，其中 `Word` 只會 `FullText` 顯示全文檢索層級的分數。 預設設定是 `Phoneme`。 | 選擇性 |
-| 維度 | 定義輸出準則。 接受的值為 `Basic` （僅顯示精確度分數），會 `Comprehensive` 顯示更多維度的分數 (例如流暢度全文檢索層級的分數和完整性分數、word 層級的錯誤類型) 。 檢查 [回應參數](#response-parameters) ，以查看不同分數維度和文字錯誤類型的定義。 預設設定是 `Basic`。 | 選擇性 |
+| 尺寸 | 定義輸出準則。 接受的值為 `Basic` （僅顯示精確度分數），會 `Comprehensive` 顯示更多維度的分數 (例如流暢度全文檢索層級的分數和完整性分數、word 層級的錯誤類型) 。 檢查 [回應參數](#response-parameters) ，以查看不同分數維度和文字錯誤類型的定義。 預設設定是 `Basic`。 | 選擇性 |
 | EnableMiscue | 啟用 miscue 計算。 啟用此功能之後，會將發音的單字與參考文字進行比較，並根據比較來標示省略/插入。 接受的值為 `False` 和 `True`。 預設設定是 `False`。 | 選擇性 |
 | ScenarioId | 表示自訂點系統的 GUID。 | 選擇性 |
 
@@ -192,7 +195,7 @@ using (var fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 
 結果以 JSON 格式提供。 `simple` 格式包含以下的最上層欄位。
 
-| 參數 | 描述  |
+| 參數 | 說明  |
 |-----------|--------------|
 |`RecognitionStatus`|狀態，例如 `Success` 代表辨識成功。 請參閱下一個表格。|
 |`DisplayText`|在大小寫、標點符號、反向文字正規化之後的已辨識文字 (將語音文字轉換成較短的表單，例如 "200" 的200或 "scripto smith" 的 "scripto smith" ) ，以及不雅內容遮罩。 只會在成功時呈現。|
@@ -217,7 +220,7 @@ using (var fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 
 清單中的物件 `NBest` 可以包括：
 
-| 參數 | 描述 |
+| 參數 | 說明 |
 |-----------|-------------|
 | `Confidence` | 項目的信賴分數從 0.0 (不信賴) 到 1.0 (完全信賴) |
 | `Lexical` | 已辨識文字的語彙形式：已辨識的實際文字。 |

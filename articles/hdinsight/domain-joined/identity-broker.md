@@ -6,13 +6,13 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: how-to
-ms.date: 12/12/2019
-ms.openlocfilehash: 12d98406b21ed9a3ea27f9aa4abc0db6f536468d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 09/23/2020
+ms.openlocfilehash: 8f1e0a6aecc9702552a3dd66acc8dc7eb5bf1d85
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91251910"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91529916"
 ---
 # <a name="azure-hdinsight-id-broker-preview"></a>Azure HDInsight ID Broker (preview) 
 
@@ -30,11 +30,13 @@ HIB 提供的驗證基礎結構可讓您從 OAuth (新式) 至 Kerberos (舊版�
 
 下圖顯示啟用識別碼訊息代理程式之後，所有使用者的新式 OAuth 型驗證流程，包括同盟使用者：
 
-![具有識別碼 Broker 的驗證流程](./media/identity-broker/identity-broker-architecture.png)
+:::image type="content" source="media/identity-broker/identity-broker-architecture.png" alt-text="具有識別碼 Broker 的驗證流程":::
 
 在此圖中，用戶端 (也就是瀏覽器或應用程式) 必須先取得 OAuth 權杖，然後在 HTTP 要求中向閘道出示權杖。 如果您已經登入其他 Azure 服務（例如 Azure 入口網站），您可以使用單一登入 (SSO) 體驗登入 HDInsight 叢集。
 
 還是有許多繼承應用程式只支援基本驗證 (也就是使用者名稱/密碼) 。 在這些情況下，您仍然可以使用 HTTP 基本驗證來連接到叢集閘道。 在此設定中，您必須確保從閘道節點到同盟端點 (ADFS 端點) 的網路連線，以確保可直接從閘道節點看見。
+
+:::image type="content" source="media/identity-broker/basic-authentication.png" alt-text="具有識別碼 Broker 的驗證流程":::
 
 根據您的組織需求，使用下表來決定最佳的驗證選項：
 

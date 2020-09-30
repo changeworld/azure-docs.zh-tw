@@ -11,12 +11,12 @@ ms.topic: end-user-help
 ms.date: 06/03/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 3148f8ba84674c79764d0fc69acdbc02e7a12dc4
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: e7608196c962a6918a90b91457f856f3e11b04f0
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798987"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530896"
 ---
 # <a name="back-up-and-recover-account-credentials-using-the-microsoft-authenticator-app"></a>使用 Microsoft Authenticator 應用程式備份和復原帳戶認證
 
@@ -83,21 +83,21 @@ Microsoft Authenticator 應用程式會將您的帳戶認證和相關應用程�
 
 1. 在 Microsoft Authenticator 應用程式的 [ **帳戶** ] 畫面中，按一下您想要復原的帳戶，以開啟帳戶的全螢幕視圖。
 
-    :::image type="content" source="media/user-help-auth-app-backup-recovery/backup-and-recovery-arrow.png" alt-text="Microsoft Authenticator 應用程式，顯示可用的帳戶磚" border="true":::
+    :::image type="content" source="media/user-help-auth-app-backup-recovery/backup-and-recovery-arrow.png" alt-text="以可用帳戶磚顯示 Microsoft Authenticator 應用程式的螢幕擷取畫面。" border="true":::
 
 1. 按一下您要復原之帳戶的磚，然後按一下 [登入] 選項以進行復原。 輸入您的密碼，然後確認您的電子郵件地址或電話號碼，以做為額外的驗證。
 
-    :::image type="content" source="media/user-help-auth-app-backup-recovery/backup-and-recovery-codes.png" alt-text="驗證程式會將單次密碼顯示為驗證碼" border="true":::
+    :::image type="content" source="media/user-help-auth-app-backup-recovery/backup-and-recovery-codes.png" alt-text="以可用帳戶磚顯示 Microsoft Authenticator 應用程式的螢幕擷取畫面。" border="true":::
 
 ### <a name="to-provide-more-verification-for-work-or-school-accounts"></a>提供更多的工作或學校帳戶驗證
 
 1. 在 Microsoft Authenticator 應用程式的 [ **帳戶** ] 畫面中，按一下您想要復原的帳戶，以開啟帳戶的全螢幕視圖。
 
-    :::image type="content" source="media/user-help-auth-app-backup-recovery/work-or-school-recovery-arrow.png" alt-text="Microsoft Authenticator 應用程式，顯示可用的帳戶磚" border="true":::
+    :::image type="content" source="media/user-help-auth-app-backup-recovery/work-or-school-recovery-arrow.png" alt-text="以可用帳戶磚顯示 Microsoft Authenticator 應用程式的螢幕擷取畫面。" border="true":::
 
 1. 在全螢幕視圖中，請按一下選項來掃描 QR 代碼，以完整復原。
 
-    :::image type="content" source="media/user-help-auth-app-backup-recovery/work-or-school-recovery-qr-code.png" alt-text="驗證程式會將單次密碼顯示為驗證碼" border="true":::
+    :::image type="content" source="media/user-help-auth-app-backup-recovery/work-or-school-recovery-qr-code.png" alt-text="以可用帳戶磚顯示 Microsoft Authenticator 應用程式的螢幕擷取畫面。" border="true":::
 
 >[!NOTE]
 >如需進一步了解 QR 代碼及取得方式，請參閱[開始使用 Microsoft Authenticator 應用程式](./user-help-auth-app-download-install.md)或[將安全性資訊設定為使用驗證器應用程式](./security-info-setup-auth-app.md) (取決於系統管理員是否已開啟安全性資訊)。

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf57bea87fcb5e1d1f1bde4eada5a79d2fef52c8
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 555673d1496ac33642e04c09233ba554ee2cca95
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90706314"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91531236"
 ---
 # <a name="securing-cloud-resources-with-azure-multi-factor-authentication-and-ad-fs"></a>使用 Azure Multi-Factor Authentication 與 AD FS 保護雲端資源
 
@@ -38,12 +38,12 @@ ms.locfileid: "90706314"
 
 5. 在 [新增轉換宣告規則精靈] 上，從下拉式清單選取 [通過或篩選傳入宣告]，然後按 [下一步]。
 
-   ![新增轉換宣告規則精靈](./media/howto-mfa-adfs/trustedip3.png)
+   ![螢幕擷取畫面顯示 [新增轉換宣告規則] 嚮導，您可以在其中選取宣告規則範本。](./media/howto-mfa-adfs/trustedip3.png)
 
 6. 指定規則的名稱。 
 7. 選取 [驗證方法參考] 做為傳入宣告類型。
 8. 選取 [傳遞所有宣告值]。
-    ![新增轉換宣告規則精靈](./media/howto-mfa-adfs/configurewizard.png)
+    ![螢幕擷取畫面：顯示 [新增轉換宣告規則] 嚮導，您可以在其中選取 [傳遞所有宣告值]。](./media/howto-mfa-adfs/configurewizard.png)
 9. 按一下 [完成] 。 關閉 AD FS 管理主控台。
 
 ## <a name="trusted-ips-for-federated-users"></a>同盟使用者的可信任 IP
@@ -63,11 +63,11 @@ ms.locfileid: "90706314"
 4. 在 [發行轉換規則] 上，按一下 [**新增規則]。** 
     ![新增宣告規則](./media/howto-mfa-adfs/trustedip2.png)
 5. 在 [新增轉換宣告規則精靈] 上，從下拉式清單選取 [通過或篩選傳入宣告]，然後按 [下一步]。
-   ![新增轉換宣告規則精靈](./media/howto-mfa-adfs/trustedip3.png)
+   ![螢幕擷取畫面：顯示 [新增轉換宣告規則] 嚮導，您可以在其中選取 [傳遞或篩選傳入宣告]。](./media/howto-mfa-adfs/trustedip3.png)
 6. 在 [宣告規則名稱] 旁邊的方塊中，命名您的規則。 例如：InsideCorpNet。
 7. 從 [連入宣告類型] 旁邊的下拉式清單中，選取 [位於公司網路之內]****。
    ![在公司網路宣告內新增](./media/howto-mfa-adfs/trustedip4.png)
-8. 按一下 [完成]  。
+8. 按一下 [完成] 。
 9. 在 [發行轉換規則] 上，按一下 [ **新增規則**]。
 10. 在 [新增轉換宣告規則精靈] 上，從下拉式清單選取 [使用自訂規則傳送宣告]****，然後按 [下一步]****。
 11. 在 [宣告規則名稱] 下的方塊中：輸入「保持使用者登入」**。
@@ -79,7 +79,7 @@ ms.locfileid: "90706314"
     ![Create custom claim to keep users signed in](./media/howto-mfa-adfs/trustedip5.png)
 ```
 
-13. 按一下 [完成]  。
+13. 按一下 [完成] 。
 14. 按一下 [套用]。
 15. 按一下 [確定]  。
 16. 關閉 [AD FS 管理]。

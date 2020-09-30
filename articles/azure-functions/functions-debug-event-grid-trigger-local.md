@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: cshoe
-ms.openlocfilehash: d57b230ceecc8e676eea6a1ab0855761e78f723b
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: fdd046a855c4e2114e96e7911a928165f808710c
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86242741"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530539"
 ---
 # <a name="azure-function-event-grid-trigger-local-debugging"></a>Azure Functions 事件方格觸發程序本機偵錯
 
@@ -52,7 +52,7 @@ ngrok http -host-header=localhost 7071
 ```
 設定此公用程式時，命令視窗應如下列螢幕擷取畫面所示：
 
-![啟動 ngrok](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-ngrok.png)
+![在啟動 "ngrok" 公用程式之後顯示命令提示字元的螢幕擷取畫面。](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-ngrok.png)
 
 複製在執行 ngrok** 時所產生的 **HTTPS** URL。 在設定事件方格事件端點時會使用此值。
 
@@ -62,7 +62,7 @@ ngrok http -host-header=localhost 7071
 
 ![新增儲存體帳戶事件](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-add-event.png)
 
-在 [事件]** 視窗中，按一下 [事件訂用帳戶]**** 按鈕。 在 [*事件訂*用帳戶] 視窗中，按一下 [*端點類型*] 下拉式清單，然後選取 [**網頁**攔截]。
+在 [事件]** 視窗中，按一下 [事件訂用帳戶]**** 按鈕。 在 [ *事件訂* 用帳戶] 視窗中，按一下 [ *端點類型* ] 下拉式清單， **然後選取 [** webhook]。
 
 ![選取訂用帳戶類型](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-event-subscription-type.png)
 
@@ -91,7 +91,7 @@ ngrok http -host-header=localhost 7071
 - 以滑鼠右鍵按一下並選取 [建立 Blob 容器]****。
 - 將容器命名為 **test**。
 - 選取 test** 容器
-- 按一下 [**上傳**] 按鈕
+- 按一下 [ **上傳** ] 按鈕
 - 按一下 **[上傳**檔案]
 - 選取檔案並將它上傳至 Blob 容器。
 

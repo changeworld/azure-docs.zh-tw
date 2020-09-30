@@ -3,12 +3,12 @@ title: 如何使用您的管理群組 - Azure 治理
 description: 了解如何檢視、維護、更新及刪除您的管理群組階層。
 ms.date: 08/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: 765a3853bbd3ee21bfc2a4aca5d5adb03f413e30
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 82eeb2520815ddac69d27ddccd58c842c3e33deb
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89658773"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91531015"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>利用管理群組來管理您的資源
 
@@ -41,7 +41,7 @@ ms.locfileid: "89658773"
 
 1. 功能表開啟時，輸入您要顯示的新名稱。
 
-   :::image type="content" source="./media/rename_context.png" alt-text="重新命名群組視窗的螢幕擷取畫面，以及重新命名管理群組的選項。" border="false":::
+   :::image type="content" source="./media/rename_context.png" alt-text="[管理群組] 頁面上的動作列和 [重新命名群組] 按鈕的螢幕擷取畫面。" border="false":::
 
 1. 選取 [儲存]。
 
@@ -68,7 +68,7 @@ az account management-group update --name 'Contoso' --display-name 'Contoso Grou
 1. 管理群組下沒有任何子管理群組或訂用帳戶。 若要將訂用帳戶或管理群組移至另一個管理群組，請參閱在階層 [中移動管理群組和訂用](#moving-management-groups-and-subscriptions)帳戶。
 
 1. 您必須具備管理群組上的寫入權限 (「擁有者」、「參與者」或「管理群組參與者」)。 若要查看您有哪些權限，請選取管理群組，然後選取 **IAM**。 若要深入瞭解 Azure 角色，請參閱  
-   [使用 RBAC 管理存取權與權限](../../role-based-access-control/overview.md)。
+   [Azure 角色型存取控制 (AZURE RBAC) ](../../role-based-access-control/overview.md)。
 
 ### <a name="delete-in-the-portal"></a>在入口網站中刪除
 
@@ -82,14 +82,14 @@ az account management-group update --name 'Contoso' --display-name 'Contoso Grou
 
 1. 選取 [刪除]
 
-   :::image type="content" source="./media/delete.png" alt-text="[管理群組] 頁面的螢幕擷取畫面，其中反白顯示 [刪除] 按鈕。" border="false":::
+   :::image type="content" source="./media/delete.png" alt-text="[管理群組] 頁面上的動作列和 [重新命名群組] 按鈕的螢幕擷取畫面。" border="false":::
 
    > [!TIP]
    > 如果無法使用圖示，將您的滑鼠選取器停留在圖示上會顯示原因。
 
 1. 視窗隨即開啟，確認您是否要刪除管理群組。
 
-   :::image type="content" source="./media/delete_confirm.png" alt-text="刪除管理群組之 [刪除群組] 確認對話方塊的螢幕擷取畫面。" border="false":::
+   :::image type="content" source="./media/delete_confirm.png" alt-text="[管理群組] 頁面上的動作列和 [重新命名群組] 按鈕的螢幕擷取畫面。" border="false":::
 
 1. 選取 [是]。
 
@@ -123,7 +123,7 @@ az account management-group delete --name 'Contoso'
 
 1. 若要查看管理群組的詳細資訊，請選取管理群組標題旁的 **(詳細資料)** 連結。 如果此連結無法使用，表示您沒有檢視該管理群組的權限。
 
-   :::image type="content" source="./media/main.png" alt-text="顯示子管理群組和訂用帳戶的 [管理群組] 頁面螢幕擷取畫面。" border="false":::
+   :::image type="content" source="./media/main.png" alt-text="[管理群組] 頁面上的動作列和 [重新命名群組] 按鈕的螢幕擷取畫面。" border="false":::
 
 ### <a name="view-in-powershell"></a>在 PowerShell 中檢視
 
@@ -213,7 +213,7 @@ az account management-group show --name 'Contoso' -e -r
 
 如果訂用帳戶上的擁有者角色繼承自目前的管理群組，則您的移動目標會受到限制。 您只能將訂用帳戶移至具有擁有者角色的另一個管理群組。 因為您會失去訂用帳戶的擁有權，所以無法將其移至您是參與者的管理群組。 如果是直接為您指派訂用帳戶的擁有者角色 (而不是繼承自管理群組)，您可以將其移至您是參與者的任何管理群組。
 
-若要在 Azure 入口網站中查看您有哪些權限，請選取管理群組，然後選取 [IAM]。 若要深入瞭解 Azure 角色，請參閱 [使用 RBAC 管理存取權和許可權](../../role-based-access-control/overview.md)。
+若要在 Azure 入口網站中查看您有哪些權限，請選取管理群組，然後選取 [IAM]。 若要深入瞭解 Azure 角色，請參閱 azure [角色型存取控制 (AZURE RBAC) ](../../role-based-access-control/overview.md)。
 
 ## <a name="move-subscriptions"></a>移動訂用帳戶 
 
@@ -229,7 +229,7 @@ az account management-group show --name 'Contoso' -e -r
 
 1. 在清單中選取具有正確識別碼的訂用帳戶。
 
-   :::image type="content" source="./media/add_context_sub.png" alt-text="[新增訂用帳戶] 選項的螢幕擷取畫面，用來選取要新增至管理群組的現有訂用帳戶。" border="false":::
+   :::image type="content" source="./media/add_context_sub.png" alt-text="[管理群組] 頁面上的動作列和 [重新命名群組] 按鈕的螢幕擷取畫面。" border="false":::
 
 1. 選取 [儲存]。
 
@@ -243,13 +243,13 @@ az account management-group show --name 'Contoso' -e -r
 
 1. 針對清單中您需要移動的訂用帳戶資料列，選取資料列結尾省略符號。
 
-   :::image type="content" source="./media/move_small.png" alt-text="選取 [移動] 選項之訂用帳戶替代功能表的螢幕擷取畫面。" border="false":::
+   :::image type="content" source="./media/move_small.png" alt-text="[管理群組] 頁面上的動作列和 [重新命名群組] 按鈕的螢幕擷取畫面。" border="false":::
 
 1. 選取 [移動]。
 
 1. 在開啟的功能表上，選取**父管理群組**。
 
-   :::image type="content" source="./media/move_small_context.png" alt-text="[移動] 視窗的螢幕擷取畫面，以及將訂用帳戶移至不同管理群組的選項。" border="false":::
+   :::image type="content" source="./media/move_small_context.png" alt-text="[管理群組] 頁面上的動作列和 [重新命名群組] 按鈕的螢幕擷取畫面。" border="false":::
 
 1. 選取 [儲存]。
 
@@ -298,7 +298,7 @@ az account management-group subscription remove --name 'Contoso' --subscription 
    - 選取新項目即會建立新的管理群組。
    - 選取現有項目即會顯示您可移至此管理群組之所有管理群組的下拉式清單。  
 
-   :::image type="content" source="./media/add_context_MG.png" alt-text="[新增管理群組] 選項的螢幕擷取畫面，用來建立新的管理群組。" border="false":::
+   :::image type="content" source="./media/add_context_MG.png" alt-text="[管理群組] 頁面上的動作列和 [重新命名群組] 按鈕的螢幕擷取畫面。" border="false":::
 
 1. 選取 [儲存]。
 
@@ -323,7 +323,7 @@ az account management-group update --name 'Contoso' --parent ContosoIT
 
 [Azure 活動記錄](../../azure-monitor/platform/platform-logs-overview.md)中支援管理群組。 您可以在與其他 Azure 資源相同的中央位置，查詢在管理群組中發生的所有事件。 例如，您可以看到對特定的管理群組的所有角色指派或原則指派變更。
 
-:::image type="content" source="./media/al-mg.png" alt-text="與所選管理群組相關之活動記錄和作業的螢幕擷取畫面。" border="false":::
+:::image type="content" source="./media/al-mg.png" alt-text="[管理群組] 頁面上的動作列和 [重新命名群組] 按鈕的螢幕擷取畫面。" border="false":::
 
 在 Azure 入口網站外部查詢管理群組時，管理群組的目標範圍像是 **"/providers/Microsoft.Management/managementGroups/{yourMgID}"** 。
 
