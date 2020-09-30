@@ -10,22 +10,17 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 09/15/2020
 ms.author: trbye
-ms.custom: devx-track-python, devx-track-javascript, devx-track-csharp, cog-serv-seo-aug-2020
+ms.custom: devx-track-python, devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
 zone_pivot_groups: speech-full-stack-go
 keywords: 語音轉換文字、文字轉換語音軟體
-ms.openlocfilehash: 08c42c383e114d404e5b3728fc264a70932aa915
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 2e738222897b60e3a7578ca10bd7596be4fc4da6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90706721"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327014"
 ---
 # <a name="get-started-with-speech-to-text"></a>開始使用語音轉換文字
-
-語音服務的核心功能之一，就是能夠辨識並轉譯人類語音 (通常稱為語音轉文字)。 在本快速入門中，您將了解如何在您的應用程式和產品中使用語音 SDK，以執行高品質的語音轉換文字辨識。
-
-> [!TIP]
-> 如果要直接跳到範例程式碼，請參閱 GitHub 上的[快速入門範例](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart)。
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [C# Basics include](includes/how-to/speech-to-text-basics/speech-to-text-basics-csharp.md)]

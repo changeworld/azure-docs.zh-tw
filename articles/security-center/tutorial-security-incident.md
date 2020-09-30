@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/30/2018
 ms.author: memildin
-ms.openlocfilehash: c508591fe9909578dcc04b0922c0b76691898743
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 08e04749eae7158abb501f9a4d127cdd7a89a391
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90901079"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336270"
 ---
 # <a name="tutorial-respond-to-security-incidents"></a>教學課程：回應安全性事件
 資訊安全中心會使用進階的分析和威脅情報，持續分析混合式雲端工作負載，提醒您發生惡意活動。 此外，您可以將警示從其他的安全性產品和服務整合到資訊安全中心，並以您自己的指標或情報來源作為基礎建立自訂警示。 一旦有警示產生，您便需要迅速採取行動來進行調查並加以修復。 在本教學課程中，您將學會如何：
@@ -76,7 +76,7 @@ Sam 是安全性分析師，他們的職責包括︰
 
    ![事件的警示詳細資料](./media/tutorial-security-incident/tutorial-security-incident-fig3.png)
 
-   警示類型可能會有所不同，如需警示類型的詳細資訊及可能的補救步驟，請閱讀[了解 Azure 資訊安全中心的安全性警示](https://docs.microsoft.com/azure/security-center/security-center-alerts-type)。 對於可安全關閉的警示，您可以滑鼠右鍵按一下警示，並選取 [關閉]  選項：
+   警示類型可能會有所不同，如需警示類型的詳細資訊及可能的補救步驟，請閱讀[了解 Azure 資訊安全中心的安全性警示](security-center-alerts-type.md)。 對於可安全關閉的警示，您可以滑鼠右鍵按一下警示，並選取 [關閉]  選項：
 
    ![警示](./media/tutorial-security-incident/tutorial-security-incident-fig4.png)
 

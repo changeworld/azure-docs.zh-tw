@@ -8,12 +8,12 @@ ms.subservice: reservations
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: 699b3d9c9799b9d3a4ec148cbf395b212715f536
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: b7d7380114046fbeaaf4b6eb2660997d64168715
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686083"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91368561"
 ---
 # <a name="optimize-azure-databricks-costs-with-a-pre-purchase"></a>使用預先購買來最佳化 Azure Databricks 成本
 
@@ -63,7 +63,7 @@ Databricks 預先購買會套用至所有 Databricks 工作負載和層級。 �
 購買之後，您可以對保留進行下列類型的變更：
 
 - 更新保留範圍
-- 角色型存取
+- Azure 角色型存取控制 (Azure RBAC)
 
 您無法分割或合併 Databricks 認可單位預先購買。 如需如何管理保留的詳細資訊，請參閱[購買後管理保留](manage-reserved-vm-instance.md)。
 

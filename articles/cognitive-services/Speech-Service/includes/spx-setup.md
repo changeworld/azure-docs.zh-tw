@@ -5,17 +5,13 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/15/2020
 ms.author: v-demjoh
-ms.openlocfilehash: 2a0cb34c23ebee5ae16a8c0a272055880ceed388
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 3c176f103371bfb1b35231f222b2045f1f4a3ef9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89494267"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327011"
 ---
-## <a name="prerequisites"></a>Prerequisites
-
-唯一的先決條件是 Azure 語音訂用帳戶。 如果您還沒有訂用帳戶，請參閱[指南](../get-started.md#new-resource)來建立新的訂用帳戶。
-
 ## <a name="download-and-install"></a>下載並安裝
 
 #### <a name="windows-install"></a>[Windows 安裝](#tab/windowsinstall)

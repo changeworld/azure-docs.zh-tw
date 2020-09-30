@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: cd10421ddcf752625b8040e1afa4e7b15f142ce2
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 5892fd732a1e66b2b7dd4c1031cabfcbcc768c6d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90885691"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326145"
 ---
 # <a name="map-an-existing-custom-domain-to-azure-spring-cloud"></a>將現有的自訂網域對應至 Azure Spring Cloud
 
@@ -58,12 +58,12 @@ ms.locfileid: "90885691"
 
 透過下列命令取得物件識別碼。
 ```
-az ad sp show --id 03b39d0f-4213-4864-a245-b1476ec03169 --query objectId
+az ad sp show --id <service principal id> --query objectId
 ```
 
 向 Azure Spring Cloud 授與金鑰保存庫的讀取權限，並取代下列命令中的物件識別碼。
 ```
-az keyvault set-policy -g <key vault resource group> -n <key vault name>  --object-id <object id> --certificate-permissions get list --secret-permissions get list
+az keyvault set-policy -g <key vault resource group> -n <key vault name>  --object-id <object id> --certificate-permissions get list
 ``` 
 
 若要將憑證匯入至 Azure Spring Cloud：
@@ -93,7 +93,7 @@ az keyvault set-policy -g <key vault resource group> -n <key vault name>  --obje
 或者，您也可以使用 Azure CLI 來顯示憑證清單：
 
 ```
-az spring-cloud certificate list
+az spring-cloud certificate list --resource-group <resource group name> --service <service name>
 ```
 
 > [!IMPORTANT] 
@@ -128,7 +128,7 @@ az spring-cloud certificate list
 
 或者，您也可以使用 Azure CLI 來新增自訂網域：
 ```
-az spring-cloud app custom-domain bind --domain-name <domain name> --app <app name> 
+az spring-cloud app custom-domain bind --domain-name <domain name> --app <app name> --resource-group <resource group name> --service <service name>
 ```
 
 一個應用程式可以有多個網域，但一個網域只能對應到一個應用程式。 將自訂網域成功對應至應用程式時，您會在自訂網域資料表上看到該網域。
@@ -137,7 +137,7 @@ az spring-cloud app custom-domain bind --domain-name <domain name> --app <app na
 
 或者，您也可以使用 Azure CLI 來顯示自訂網域清單：
 ```
-az spring-cloud app custom-domain list --app <app name> 
+az spring-cloud app custom-domain list --app <app name> --resource-group <resource group name> --service <service name>
 ```
 
 > [!NOTE]
@@ -168,7 +168,7 @@ az spring-cloud app custom-domain update --domain-name <domain name> --certifica
 
 或者，您也可以使用 Azure CLI 來強制執行 HTTPS：
 ```
-az spring-cloud app update -name <app-name> --https-only <true|false> -g <resource group> --service <service-name>
+az spring-cloud app custom-domain update --domain-name <domain name> --certificate <cert name> --app <app name> --resource-group <resource group name> --service <service name>
 ```
 
 當作業完成時，瀏覽至指向您的應用程式的任何 HTTPS URL。 請注意，HTTP URL 沒有作用。

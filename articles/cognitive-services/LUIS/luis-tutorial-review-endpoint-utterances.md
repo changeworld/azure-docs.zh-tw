@@ -2,14 +2,16 @@
 title: 教學課程：檢閱端點語句 - LUIS
 description: 在本教學課程中，藉由驗證或更正透過 LUIS 不確定的 LUIS HTTP 端點所收到的語句來改善應用程式的預測。 有些語句可能會針對意圖進行驗證，而其他語句則可能需要針對實體進行驗證。
 services: cognitive-services
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 07/02/2020
-ms.openlocfilehash: 082e625efeeb4764aaa1ac5101eb2b0013348b19
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: b8f8fa2cd3c9c22187bb95c55d9de2abb2e8caec
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85959010"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324632"
 ---
 # <a name="tutorial-fix-unsure-predictions-by-reviewing-endpoint-utterances"></a>教學課程：檢閱端點語句以修正不確定的預測
 在本教學課程中，藉由驗證或更正透過 LUIS 不確定的 LUIS HTTPS 端點所收到的語句來改善應用程式的預測。 您應該在排定的 LUIS 維護中定期檢閱端點語句。
@@ -82,7 +84,7 @@ ms.locfileid: "85959010"
 
 1. 從入口網站的 [建置] 區段中，選取左側導覽中的 [檢閱端點語句]。 此清單已針對 **ApplyForJob** 意圖進行篩選。
 
-    :::image type="content" source="./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-entity-view.png" alt-text="[檢閱端點語句] 按鈕在左側導覽中的螢幕擷取畫面。":::
+    :::image type="content" source="./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-entity-view.png" alt-text="從 [版本] 頁面變更為 [意圖] 頁面。":::
 
     此語句 (`I'm looking for a job with Natural Language Processing`) 的意圖不正確，_GetJobInformation_。 因為這兩個意圖中的作業名稱和動詞的相似性，使其已錯估為 _ApplyForJob_。
 

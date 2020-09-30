@@ -5,12 +5,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 01/31/2019
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 98eff02dacb5b44839937f826cd676fe16670cbb
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 92990df3049f7fa1074d55fc34734e13d6673cd7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017466"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328814"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-the-cli"></a>使用 CLI 在 Azure 中備份虛擬機器
 
@@ -38,7 +38,7 @@ az backup vault create --resource-group myResourceGroup \
     --location eastus
 ```
 
-根據預設，已針對異地備援儲存體設定復原服務保存庫。 異地備援儲存體可確保您的備份資料會複寫到與主要區域距離數百英哩的次要 Azure 區域。 如果需要修改儲存體備援設定，請使用 [az backup vault backup-properties set](/cli/azure/backup/vault/backup-properties?view=azure-cli-latest#az-backup-vault-backup-properties-set) Cmdlet。
+根據預設，已針對異地備援儲存體設定復原服務保存庫。 異地備援儲存體可確保您的備份資料會複寫到與主要區域距離數百英哩的次要 Azure 區域。 如果需要修改儲存體備援設定，請使用 [az backup vault backup-properties set](/cli/azure/backup/vault/backup-properties#az-backup-vault-backup-properties-set) Cmdlet。
 
 ```azurecli
 az backup vault backup-properties set \
@@ -118,7 +118,7 @@ fe5d0414  ConfigureBackup  Completed   myvm         2017-09-19T03:03:57  0:00:31
 
 ## <a name="clean-up-deployment"></a>清除部署
 
-不再需要時，您可以停用 VM 的保護功能，移除還原點和復原服務保存庫，然後刪除資源群組和相關聯的 VM 資源。 如果您使用現有的 VM，可以略過最後的 [az group delete](/cli/azure/group?view=azure-cli-latest#az-group-delete) 命令，讓資源群組和 VM 留在原處。
+不再需要時，您可以停用 VM 的保護功能，移除還原點和復原服務保存庫，然後刪除資源群組和相關聯的 VM 資源。 如果您使用現有的 VM，可以略過最後的 [az group delete](/cli/azure/group#az-group-delete) 命令，讓資源群組和 VM 留在原處。
 
 如果您要嘗試說明如何為您的 VM 還原資料的備份教學課程，請前往[後續步驟](#next-steps)。
 

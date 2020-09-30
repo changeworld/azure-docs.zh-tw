@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 services: iot-fundamentals
 ms.topic: overview
 ms.date: 6/10/2020
-ms.openlocfilehash: b41e3d729fa6e5b0be9a55cc45de38f81bed494b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ea4ecbbeaa4ad016e32aa9301d6f6ac49a6d342e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87061117"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330174"
 ---
 # <a name="azure-iot-support-and-help-options"></a>Azure IoT 支援和協助選項
 
@@ -63,7 +63,7 @@ ms.locfileid: "87061117"
  - [Azure IoT SDK](https://stackoverflow.com/questions/tagged/azure-iot-sdk)
  - [Azure Digital Twins](https://stackoverflow.com/questions/tagged/azure-digital-twins)
  - [Azure RTOS](https://stackoverflow.com/questions/tagged/azure-rtos)
- - [Azure Sphere](https://stackoverflow.com/questions/tagged/azuresphere)
+ - [Azure Sphere](https://stackoverflow.com/questions/tagged/azure-sphere)
  - [Azure 時間序列深入解析](https://stackoverflow.com/questions/tagged/azure-timeseries-insights)
  - [Azure 地圖服務](https://stackoverflow.com/questions/tagged/azure-maps)
 

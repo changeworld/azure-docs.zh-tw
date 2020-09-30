@@ -2,14 +2,15 @@
 author: aahill
 ms.author: aahi
 ms.service: cognitive-services
+ms.subservice: ink-recognizer
 ms.topic: include
 ms.date: 06/20/2019
-ms.openlocfilehash: 9d46b304d598b4830cf325909f77eea6b68af757
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: ede1fb4bd2a9a6e6536959053e3ca4d8e4a82f87
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89303975"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327340"
 ---
 >[!NOTE]
 > 在 2019 年 7 月 1 日之後建立的資源端點使用下面顯示的自訂子網域格式。 如需詳細資訊和完整的區域端點清單，請參閱[認知服務的自訂子網域名稱](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains)。 

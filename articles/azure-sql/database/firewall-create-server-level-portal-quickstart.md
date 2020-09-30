@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: quickstart
 author: sachinpMSFT
 ms.author: sachinp
-ms.reviewer: vanto, carlrab
+ms.reviewer: vanto, sstein
 ms.date: 02/11/2019
-ms.openlocfilehash: 6a449c078b18b5bc9e005a873c51d92ad29417f6
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: d62d568b4924a2bfa67740b3e5f0cc1377519d47
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86084982"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335036"
 ---
 # <a name="quickstart-create-a-server-level-firewall-rule-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站建立伺服器層級的防火牆規則
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]

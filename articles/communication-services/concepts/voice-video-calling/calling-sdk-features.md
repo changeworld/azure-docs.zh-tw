@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 03/10/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 9cc00cfa9f44c69a5880d53c0b7ac623f60be16b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 6021bb4fa5d30de423ab56bfb5fdea6af2665a4a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90943890"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334475"
 ---
 # <a name="calling-client-library-overview"></a>通話用戶端程式庫概觀
 
@@ -55,8 +55,7 @@ ms.locfileid: "90943890"
 |                   | 與 PSTN 參與者進行群組通話                                                                           | ✔️   | ✔️            | ✔️
 |                   | 將與 PSTN 參與者的一對一通話提升為群組通話                                                 | ✔️   | ✔️            | ✔️
 |                   | 以 PSTN 參與者的身分從群組通話撥出                                                                    | ✔️   | ✔️            | ✔️   
-| 一般           | 參與包含最多 350 個參與者的群組通話                                                       |  ✔️  | ✔️            | ✔️    
-|                   | 使用音訊測試服務測試您的麥克風、喇叭和相機 (可以透過呼叫 8:echo123 取得)                   |  ✔️  | ✔️            | ✔️   
+| 一般           | 使用音訊測試服務測試您的麥克風、喇叭和相機 (可以透過呼叫 8:echo123 取得)                   |  ✔️  | ✔️            | ✔️   
 
 ## <a name="calling-client-library-browser-support"></a>通話用戶端程式庫瀏覽器支援
 

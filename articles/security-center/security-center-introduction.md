@@ -12,14 +12,14 @@ ms.topic: overview
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/06/2019
+ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 53fdea6a52cc02ddc9aaf22574a6bac5f5b7bca6
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 2eee46f99af247ffd0e11b262ace0a96453270d4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90943779"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323669"
 ---
 # <a name="what-is-azure-security-center"></a>什麼是 Azure 資訊安全中心？
 
@@ -67,7 +67,7 @@ Azure 資訊安全中心可讓您加強安全性狀態。 這表示其可協助�
 
 資訊安全中心可協助您**識別影子 IT 訂用帳戶**。 查看儀表板中標記為**未涵蓋**的訂用帳戶，即可在有新的訂用帳戶建立時立即得知，以及確保其涵蓋在原則中，並受到 Azure 資訊安全中心保護。
 
-:::image type="content" source="./media/security-center-intro/sc-policy-dashboard.png" alt-text="資訊安全中心原則儀表板":::
+:::image type="content" source="./media/security-center-intro/sc-policy-dashboard.png" alt-text="原則管理頁面":::
 
 ### <a name="continuous-assessments"></a>持續評量
 
@@ -75,13 +75,13 @@ Azure 資訊安全中心可讓您加強安全性狀態。 這表示其可協助�
 
 為了協助您了解每個建議對整體安全性狀態的重要性，資訊安全中心將建議分組為安全性控制，並將**安全分數**值新增至每項控制。 這對於讓您**排定安全性工作的順位**十分重要。
 
-:::image type="content" source="./media/security-center-intro/sc-secure-score.png" alt-text="資訊安全中心安全分數":::
+:::image type="content" source="./media/security-center-intro/sc-secure-score.png" alt-text="原則管理頁面":::
 
 ### <a name="network-map"></a>網路地圖
 
 資訊安全中心所提供，用來持續監視網路安全性狀態的最強大工具之一，就是**網路地圖**。 此地圖可讓您查看工作負載的拓撲，如此便可了解是否已正確設定每個節點。 您可以查看節點的連線方式，幫助您封鎖來路不明且可能讓攻擊者趁機沿著網路蔓延的連線。
 
-:::image type="content" source="./media/security-center-intro/sc-net-map.png" alt-text="資訊安全中心網路地圖":::
+:::image type="content" source="./media/security-center-intro/sc-net-map.png" alt-text="原則管理頁面":::
 
 
 ### <a name="optimize-and-improve-security-by-configuring-recommended-controls"></a>透過設定建議的控制項來最佳化和改善安全性
@@ -92,7 +92,7 @@ Azure 資訊安全中心的價值核心在於其建議。 建議是專為工作�
 
 建議可協助您減少每個資源的受攻擊面。 這包括 Azure 虛擬機器、非 Azure 伺服器及 Azure PaaS 服務 (如 SQL 和儲存體帳戶等等)，其中每種類型的資源都會以自己的標準分別評估。
 
-:::image type="content" source="./media/security-center-intro/sc-recommendation-example.png" alt-text="資訊安全中心的建議範例":::
+:::image type="content" source="./media/security-center-intro/sc-recommendation-example.png" alt-text="原則管理頁面":::
 
 ## <a name="protect-against-threats"></a>抵禦威脅
 
@@ -100,7 +100,7 @@ Azure 資訊安全中心的價值核心在於其建議。 建議是專為工作�
 
 資訊安全中心的威脅防護包括混合的狙殺鏈分析，其會根據網路狙殺鏈分析自動與環境中的警示相互關聯，協助您更了解攻擊活動全貌，知道攻擊在何處開始和對資源有何影響。
 
-:::image type="content" source="./media/security-center-intro/sc-alerts.png" alt-text="安全性警示":::
+:::image type="content" source="./media/security-center-intro/sc-alerts.png" alt-text="原則管理頁面":::
 
 ### <a name="integration-with-microsoft-defender-advanced-threat-protection"></a>與 Microsoft Defender 進階威脅防護整合
 

@@ -5,12 +5,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 05/12/2020
 ms.custom: mvc
-ms.openlocfilehash: b0060c0aff8293ca5748cf8c055ebb2bbfb596e2
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: cd0d4928d5cd0eb15f4f1372a0a3417fc85d13bb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017442"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328765"
 ---
 # <a name="back-up-a-virtual-machine-in-azure"></a>在 Azure 中備份虛擬機器
 
@@ -83,7 +83,7 @@ VM 的 [備份] 視窗中會顯示備份的狀態及已完成的還原點數目�
 6. 從清單中選擇您的資源群組。 如果您使用範例 VM 快速入門命令，資源群組就會命名為 myResourceGroup。
 7. 選取 [刪除資源群組]。 若要確認，請輸入資源群組名稱，然後選取 [刪除]。
 
-    ![從 Azure 入口網站刪除資源群組](./media/quick-backup-vm-portal/delete-resource-group.png)
+    ![從 Azure 入口網站刪除資源群組](./media/quick-backup-vm-portal/delete-resource-group-from-portal.png)
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -3,15 +3,17 @@ title: 快速入門：Language Understanding (LUIS) SDK 用戶端程式庫
 description: 搭配此快速入門使用 C#、Python 或 JavaScript，建立並查詢具有 LUIS SDK 用戶端程式庫的 LUIS 應用程式。
 ms.topic: quickstart
 ms.date: 09/14/2020
+ms.service: cognitive-services
+ms.subservice: language-understanding
 keywords: Azure, 人工智慧, ai, 自然語言處理, nlp, LUIS, azure luis, 自然語言理解, ai 聊天機器人, 聊天機器人製作者, 理解自然語言
-ms.custom: devx-track-python, devx-track-javascript, devx-track-csharp, cog-serv-seo-aug-2020
+ms.custom: devx-track-python, devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
 zone_pivot_groups: programming-languages-set-diberry-3core
-ms.openlocfilehash: 64288bbffa2d2c24e2f719477d98426f52da4070
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: c2bc607fb5a5b5b38249453a1d0fce833547191f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90972616"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327258"
 ---
 # <a name="quickstart-language-understanding-luis-sdk-client-libraries-to-create-and-query-your-luis-app"></a>快速入門：用於建立及查詢您 LUIS 應用程式的 Language Understanding (LUIS) SDK 用戶端程式庫
 
