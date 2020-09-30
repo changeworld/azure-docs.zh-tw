@@ -8,13 +8,13 @@ ms.subservice: cosmosdb-cassandra
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 05/18/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 1fa481911be8eb91db498350e57e2ba42e4aedb5
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: 19039f8b87145d6bbb1a6b3636ea0892b06ccfe8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421003"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91253423"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-nodejs-sdk-and-azure-cosmos-db"></a>快速入門：使用 Node.js SDK 和 Azure Cosmos DB 建置 Cassandra 應用程式
 
@@ -212,11 +212,11 @@ ms.locfileid: "87421003"
 > 
 > 按兩下 .crt 檔案，將其開啟到憑證顯示中。 
 >
-> :::image type="content" source="./media/create-cassandra-nodejs/crtcer1.gif" alt-text="檢視並確認輸出":::
+> :::image type="content" source="./media/create-cassandra-nodejs/crtcer1.gif" alt-text="從 Azure 入口網站的連接字串頁面檢視及複製 [連絡點]、[使用者名稱] 和 [密碼]":::
 >
 > 在 [憑證精靈] 上按 [下一步]。 選取 [Base-64 編碼的 x.509] (.CER)，然後按 [下一步]。
 >
-> :::image type="content" source="./media/create-cassandra-nodejs/crtcer2.gif" alt-text="檢視並確認輸出":::
+> :::image type="content" source="./media/create-cassandra-nodejs/crtcer2.gif" alt-text="從 Azure 入口網站的連接字串頁面檢視及複製 [連絡點]、[使用者名稱] 和 [密碼]":::
 >
 > 選取 [瀏覽] (尋找目的地) 並輸入檔案名稱。
 > 選取 [下一步] 後即可完成。
@@ -237,13 +237,13 @@ ms.locfileid: "87421003"
 
 4. 從命令列確認結果符合預期。
 
-    :::image type="content" source="./media/create-cassandra-nodejs/output.png" alt-text="檢視並確認輸出":::
+    :::image type="content" source="./media/create-cassandra-nodejs/output.png" alt-text="從 Azure 入口網站的連接字串頁面檢視及複製 [連絡點]、[使用者名稱] 和 [密碼]":::
 
     按 CTRL+C 來停止執行程式，並關閉主控台視窗。 
 
 5. 在 Azure 入口網站中，開啟 [資料總管] 以查詢、修改及使用這個新資料。 
 
-    :::image type="content" source="./media/create-cassandra-nodejs/data-explorer.png" alt-text="在資料總管中檢視資料"::: 
+    :::image type="content" source="./media/create-cassandra-nodejs/data-explorer.png" alt-text="從 Azure 入口網站的連接字串頁面檢視及複製 [連絡點]、[使用者名稱] 和 [密碼]"::: 
 
 ## <a name="review-slas-in-the-azure-portal"></a>在 Azure 入口網站中檢閱 SLA
 

@@ -8,13 +8,13 @@ ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 05/21/2019
-ms.custom: seo-javascript-september2019, seo-javascript-october2019, devx-track-javascript
-ms.openlocfilehash: 1603e2c0d76415b612e81f88990805b0bb1de732
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: seo-javascript-september2019, seo-javascript-october2019, devx-track-js
+ms.openlocfilehash: 5af929991e96d1307c32d219a9807c6e6a58387c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423672"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91253287"
 ---
 # <a name="quickstart-migrate-an-existing-mongodb-nodejs-web-app-to-azure-cosmos-db"></a>快速入門：將現有的 MongoDB Node.js Web 應用程式遷移至 Azure Cosmos DB 
 
@@ -212,7 +212,7 @@ Cosmos 資料庫中儲存的資料可在 Azure 入口網站中進行檢視和查
 
 在頂端的 [搜尋] 方塊中，輸入 **Azure Cosmos DB**。 當您的 Cosmos 帳戶刀鋒視窗開啟時，選取您的 Cosmos 帳戶。 在左側導覽中，選取 [資料總管]。 在 [集合] 窗格中展開您的集合，然後您可以檢視集合中的文件、查詢資料，甚至是建立及執行預存程序、觸發程序和 UDF。 
 
-:::image type="content" source="./media/create-mongodb-nodejs/cosmosdb-connect-mongodb-data-explorer.png" alt-text="Azure 入口網站中的資料總管":::
+:::image type="content" source="./media/create-mongodb-nodejs/cosmosdb-connect-mongodb-data-explorer.png" alt-text="MEAN.js 成功連線至 MongoDB":::
 
 
 ## <a name="deploy-the-nodejs-application-to-azure"></a>將 Node.js 應用程式部署至 Azure

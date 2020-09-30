@@ -7,13 +7,13 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
-ms.custom: devx-track-javascript
-ms.openlocfilehash: c689b31f73d732dda37b64793f988febc409e6da
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.custom: devx-track-js
+ms.openlocfilehash: 72b1bd4d46b0b04364b25a8460361d6a008d42a6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88797950"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91250125"
 ---
 # <a name="tutorial-publish-a-vuepress-site-to-azure-static-web-apps-preview"></a>教學課程：將 VuePress 網站發佈至 Azure 靜態 Web Apps 預覽版
 
@@ -127,7 +127,7 @@ ms.locfileid: "88797950"
 
 1. 針對 [SKU]，選取 [免費]。
 
-   :::image type="content" source="./media/publish-vuepress/basic-app-details.png" alt-text="已填寫的詳細資料":::
+   :::image type="content" source="./media/publish-vuepress/basic-app-details.png" alt-text="在入口網站中建立靜態 Web Apps (預覽)":::
 
 1. 按一下 [以 GitHub 登入] 按鈕。
 
@@ -137,7 +137,7 @@ ms.locfileid: "88797950"
 
 1. 針對 [分支]，選取 [主要]。
 
-   :::image type="content" source="./media/publish-vuepress/completed-github-info.png" alt-text="已完成的 GitHub 資訊":::
+   :::image type="content" source="./media/publish-vuepress/completed-github-info.png" alt-text="在入口網站中建立靜態 Web Apps (預覽)":::
 
 ### <a name="build"></a>Build
 
@@ -151,7 +151,7 @@ ms.locfileid: "88797950"
 
 [API 位置] 的值並非必要值，因為您此時不會部署 API。
 
-   :::image type="content" source="./media/publish-vuepress/build-details.png" alt-text="組建設定":::
+   :::image type="content" source="./media/publish-vuepress/build-details.png" alt-text="在入口網站中建立靜態 Web Apps (預覽)":::
 
 ### <a name="review-and-create"></a>檢閱並建立
 
@@ -163,7 +163,7 @@ ms.locfileid: "88797950"
 
 1. 在 [資源] 畫面上，按一下 [URL] 連結，以開啟已部署的應用程式。 您可能需要等候一或兩分鐘的時間，GitHub 動作才會完成。
 
-   :::image type="content" source="./media/publish-vuepress/deployed-app.png" alt-text="已部署的應用程式":::
+   :::image type="content" source="./media/publish-vuepress/deployed-app.png" alt-text="在入口網站中建立靜態 Web Apps (預覽)":::
 
 ### <a name="clean-up-resources"></a>清除資源
 

@@ -8,13 +8,13 @@ ms.topic: quickstart
 ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: jrasnick
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 0930b7cb7b98874e20f070763a7ec50a6b4f3ef0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.reviewer: jrasnick
+ms.openlocfilehash: ea32126e19c4520a6d5a40f38f60ec44e9a119cd
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87006070"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91260864"
 ---
 # <a name="quickstart-create-a-new-apache-spark-pool-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站建立新的 Apache Spark 集區
 

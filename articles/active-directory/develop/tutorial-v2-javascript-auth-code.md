@@ -11,13 +11,13 @@ ms.topic: tutorial
 ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
-ms.custom: aaddev, devx-track-javascript
-ms.openlocfilehash: 4613e22193de8dc374d1a9e1a293c317fb9c1b9b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: aaddev, devx-track-js
+ms.openlocfilehash: 7a136c03db6e27763a22d92d2c335f23c616856e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87311532"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91256801"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-app-spa-using-auth-code-flow"></a>教學課程：使用授權碼流程來登入使用者，並從 JavaScript 單頁應用程式 (SPA) 呼叫 Microsoft Graph API
 
@@ -619,23 +619,23 @@ function callMSGraph(endpoint, token, callback) {
 
 在瀏覽器載入您的 index.html 檔案之後，請選取 [登入]。 系統會提示您使用 Microsoft 身分識別平台端點登入：
 
-:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-01-signin-dialog.png" alt-text="顯示登入對話方塊的網頁瀏覽器":::
+:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-01-signin-dialog.png" alt-text="顯示單頁應用程式中授權碼流程的圖表":::
 
 ### <a name="provide-consent-for-application-access"></a>同意應用程式存取
 
 您第一次登入應用程式時，系統會提示您授與您設定檔的存取權，並且將您登入：
 
-:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-02-consent-dialog.png" alt-text="網頁瀏覽器中顯示的內容對話方塊":::
+:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-02-consent-dialog.png" alt-text="顯示單頁應用程式中授權碼流程的圖表":::
 
 如果您同意要求的權限，Web 應用程式便會顯示您的使用者名稱，以表示您已成功登入：
 
-:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-03-signed-in.png" alt-text="在網頁瀏覽器中成功登入的結果":::
+:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-03-signed-in.png" alt-text="顯示單頁應用程式中授權碼流程的圖表":::
 
 ### <a name="call-the-graph-api"></a>呼叫圖形 API
 
 登入之後，請選取 [查看設定檔]，以檢視呼叫 Microsoft Graph API 時的回應所傳回的使用者設定檔資訊：
 
-:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-04-see-profile.png" alt-text="瀏覽器中顯示來自 Microsoft Graph 的設定檔資訊":::
+:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-04-see-profile.png" alt-text="顯示單頁應用程式中授權碼流程的圖表":::
 
 ### <a name="more-information-about-scopes-and-delegated-permissions"></a>與範圍和委派的權限有關的詳細資訊
 

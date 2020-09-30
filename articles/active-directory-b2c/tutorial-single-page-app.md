@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.author: mimart
 ms.date: 04/04/2020
-ms.custom: mvc, seo-javascript-september2019, devx-track-javascript
+ms.custom: mvc, seo-javascript-september2019, devx-track-js
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: c8aca82567de0b564aadc355b198502450dd7a5c
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 42c2ca777a999a4d4387646110ed88af84631183
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87169798"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258893"
 ---
 # <a name="tutorial-enable-authentication-in-a-single-page-application-with-azure-ad-b2c"></a>教學課程：在單頁應用程式中透過 Azure AD B2C 啟用驗證
 
@@ -150,13 +150,13 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-
 
     請使用有效的電子郵件地址，並使用驗證碼進行驗證。 設定密碼。 輸入要求的屬性值。
 
-    :::image type="content" source="media/tutorial-single-page-app/user-flow-sign-up-workflow-01.png" alt-text="Azure AD B2C 使用者流程所顯示的註冊頁面":::
+    :::image type="content" source="media/tutorial-single-page-app/user-flow-sign-up-workflow-01.png" alt-text="網頁瀏覽器顯示在本機執行的單頁應用程式":::
 
 1. 選取 [建立]，在 Azure AD B2C 目錄中建立本機帳戶。
 
 當您選取 [建立] 時，應用程式會顯示已登入之使用者的名稱。
 
-:::image type="content" source="media/tutorial-single-page-app/web-app-spa-02-logged-in.png" alt-text="網頁瀏覽器顯示具有已登入使用者的單頁應用程式":::
+:::image type="content" source="media/tutorial-single-page-app/web-app-spa-02-logged-in.png" alt-text="網頁瀏覽器顯示在本機執行的單頁應用程式":::
 
 如果想測試登入，請選取 [登出] 按鈕，然後選取 [登入]，然後以您註冊時所輸入的電子郵件地址和密碼登入。
 

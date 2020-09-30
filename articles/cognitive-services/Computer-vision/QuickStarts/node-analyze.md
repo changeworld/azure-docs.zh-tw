@@ -10,13 +10,13 @@ ms.subservice: computer-vision
 ms.topic: quickstart
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.custom: seodec18, seo-javascript-september2018, seo-javascript-october2019, devx-track-javascript
-ms.openlocfilehash: d6962ae364c8f86d5069c9ec47eed6ffc5d2d419
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.custom: seodec18, seo-javascript-september2018, seo-javascript-october2019, devx-track-js
+ms.openlocfilehash: b6c24be8f1fc0b1d9ee40337df40c64e89a1c11f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87834995"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91262559"
 ---
 # <a name="quickstart-analyze-a-remote-image-using-the-computer-vision-rest-api-with-nodejs"></a>快速入門：使用電腦視覺 REST API 與 Node.js 分析遠端影像
 

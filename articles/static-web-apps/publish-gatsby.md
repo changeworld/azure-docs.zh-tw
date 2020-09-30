@@ -7,13 +7,13 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 03e9f99301444032d867bc1c2f854c807380844e
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.custom: devx-track-js
+ms.openlocfilehash: e24a2a19eb39e2c6c7612631ad98f95cb4c5b9ef
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88797729"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91250159"
 ---
 # <a name="tutorial-publish-a-gatsby-site-to-azure-static-web-apps-preview"></a>教學課程：將 Gatsby 網站發佈至 Azure 靜態 Web Apps 預覽版
 
@@ -102,7 +102,7 @@ ms.locfileid: "88797729"
 
 1. 針對 [SKU]，選取 [免費]。
 
-   :::image type="content" source="./media/publish-gatsby/basic-app-details.png" alt-text="已填寫的詳細資料":::
+   :::image type="content" source="./media/publish-gatsby/basic-app-details.png" alt-text="在入口網站中建立靜態 Web Apps (預覽)":::
 
 1. 按一下 [以 GitHub 登入] 按鈕。
 
@@ -112,7 +112,7 @@ ms.locfileid: "88797729"
 
 1. 針對 [分支]，選取 [主要]。
 
-   :::image type="content" source="./media/publish-gatsby/completed-github-info.png" alt-text="已完成的 GitHub 資訊":::
+   :::image type="content" source="./media/publish-gatsby/completed-github-info.png" alt-text="在入口網站中建立靜態 Web Apps (預覽)":::
 
 ### <a name="build"></a>Build
 
@@ -126,7 +126,7 @@ ms.locfileid: "88797729"
 
    [API 位置] 的值並非必要值，因為您此時不會部署 API。
 
-   :::image type="content" source="./media/publish-gatsby/build-details.png" alt-text="組建設定":::
+   :::image type="content" source="./media/publish-gatsby/build-details.png" alt-text="在入口網站中建立靜態 Web Apps (預覽)":::
 
 ### <a name="review-and-create"></a>檢閱並建立
 
@@ -138,7 +138,7 @@ ms.locfileid: "88797729"
 
 1. 在 [資源] 畫面上，按一下 [URL] 連結，以開啟已部署的應用程式。 您可能需要等候一或兩分鐘的時間，GitHub 動作才會完成。
 
-   :::image type="content" source="./media/publish-gatsby/deployed-app.png" alt-text="已部署的應用程式":::
+   :::image type="content" source="./media/publish-gatsby/deployed-app.png" alt-text="在入口網站中建立靜態 Web Apps (預覽)":::
 
 ## <a name="clean-up-resources"></a>清除資源
 
