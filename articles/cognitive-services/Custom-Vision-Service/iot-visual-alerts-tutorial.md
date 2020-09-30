@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: tutorial
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 5582056f1bae2dbeb69a7d05044f055ff1394bd5
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: ebc6ca630ea3cabb519805ae8505abf336a2a9ea
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88244664"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604286"
 ---
 # <a name="tutorial-use-custom-vision-with-an-iot-device-to-report-visual-states"></a>教學課程：搭配 IoT 裝置使用自訂視覺來回報視覺狀態。
 
@@ -52,7 +52,7 @@ IoT Visual Alerts 應用程式會以連續迴圈的方式執行，並視需要�
 * **Waiting For Trained Model** \(等候已定型的模型\)：在此狀態中，應用程式會於每秒呼叫自訂視覺 API，以檢查目標專案是否包含已定型的反覆項目。 當它找到時，便會將相對應的 ONNX 模型下載到本機檔案，並切換到 **Scoring** \(評分\) 狀態。
 * **Scoring** \(評分\)：在此狀態中，應用程式會使用 Windows ML 來將來自相機的單一畫面針對本機 ONNX 模型進行評估。 產生的影像分類會顯示在畫面上，並以訊息的形式傳送到 IoT 中樞。 應用程式接著會睡眠一秒鐘，然後再對新影像進行評分。
 
-## <a name="understand-the-code-structure"></a>了解程式碼結構
+## <a name="examine-the-code-structure"></a>檢查程式碼結構
 
 下列檔案會負責處理應用程式的主要功能。
 
@@ -98,13 +98,13 @@ IoT Visual Alerts 應用程式會以連續迴圈的方式執行，並視需要�
 
 ## <a name="train-the-custom-vision-model"></a>對自訂視覺模型進行定型
 
-在應用程式擷取完影像之後，它會上傳那些影像並切換到 **Waiting For Trained Model** \(等候已定型的模型\) 狀態。 此時，您必須移至[自訂視覺入口網站](https://www.customvision.ai/) \(英文\) 並根據新的定型影像建置模型。 下列動畫會顯示此程序的範例。
+在應用程式擷取完影像之後，它會上傳那些影像並切換到 **Waiting For Trained Model** \(等候已定型的模型\) 狀態。 此時，您必須移至[自訂視覺網站](https://www.customvision.ai/)，並根據新的定型影像建置模型。 下列動畫會顯示此程序的範例。
 
 ![動畫：標記數個香蕉影像](./media/iot-visual-alerts-tutorial/labeling.gif)
 
 若要以您自己的案例重複此程序：
 
-1. 登入[自訂視覺入口網站](http://customvision.ai) \(英文\)。
+1. 登入[自訂視覺網站](http://customvision.ai)。
 1. 尋找您的目標專案，它現在應該會具有應用程式上傳的所有定型影像。
 1. 針對您想要識別的每個視覺狀態，請選取適當的影像並手動套用標籤。
     * 例如，如果您的目標是要區分空的房間和有人的房間，我們建議標記五個或更多有人的影像作為新的類別 **People**，然後標記五個或更多沒有人的影像作為 **Negative** 標記。 這將能協助模型區分這兩種狀態。

@@ -6,18 +6,18 @@ author: JBCook
 ms.service: virtual-machines
 ms.subservice: workloads
 ms.topic: overview
-ms.date: 04/06/2020
+ms.date: 09/22/2020
 ms.author: JenCook
-ms.openlocfilehash: 4e92f974ce7d6c03143276808c4ca4d09d607a84
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 16f45c39a329998f4b4da4ea89315683a0fab790
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835811"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90967586"
 ---
 # <a name="confidential-computing-on-azure"></a>Azure 上的機密運算
 
-Azure 機密運算可讓您在雲端處理敏感性資料時加以隔離。 許多產業都使用機密運算來保護其資料。 這些工作負載包括：
+Azure 機密運算可讓您在雲端處理敏感性資料時加以隔離。 許多產業都使用機密運算來保護其資料，使用機密運算來：
 
 - 保護財務資料
 - 保護專利資訊
@@ -39,74 +39,58 @@ Azure 機密運算可讓您在雲端處理敏感性資料時加以隔離。 許�
 
 Microsoft Azure 可協助您將受攻擊面最小化，以獲得更強大的資料保護。 Azure 已提供許多工具，以透過用戶端加密和伺服器端加密等模型來保護[**待用資料**](../security/fundamentals/encryption-atrest.md)。 此外，Azure 還提供一些機制，以透過 TLS 和 HTTPS 等安全通訊協定來加密[**傳輸中的資料**](../security/fundamentals/data-encryption-best-practices.md#protect-data-in-transit)。 此頁面引進第三階段的資料加密 - 加密**使用中的資料**。
 
+## <a name="introduction-to-confidential-computing"></a>機密運算簡介  
 
-## <a name="introduction-to-confidential-computing"></a>機密運算簡介 <a id="intro to acc"></a>
+機密運算是由[機密運算聯盟](https://confidentialcomputing.io/) (CCC) 所定義的業界術語，這是專門用來定義和加速採用機密運算的基金會。 CCC 會將機密運算定義為：藉由在硬體型的受信任執行環境 (TEE) 中執行運算以保護使用中的資料。
 
-機密運算是由[機密運算聯盟](https://confidentialcomputing.io/) (CCC) 所定義的業界術語，這是專門用來定義和加速採用機密運算的基金會。 CCC 對於機密運算的定義是，藉由在硬體型的受信任執行環境 (TEE) 中執行運算以保護使用中的資料。
+TEE 是一種環境，其強制只能執行已獲授權的程式碼。 TEE 以外的任何程式碼，都無法讀取或竄改該環境中的任何資料。 
 
-TEE 是一種環境，其強制只能執行已獲授權的程式碼。 TEE 以外的任何程式碼，都無法讀取或竄改該環境中的任何資料。
+### <a name="lessen-the-need-for-trust"></a>減少信任的需求
+在雲端上執行工作負載需要信任。 您會將此信任授與不同的提供者，以啟用應用程式的不同元件。
 
-### <a name="enclaves"></a>記憶體保護區
 
-記憶體保護區是硬體處理器和記憶體的安全部分。 即使使用偵錯工具，也沒有辦法檢視記憶體保護區內的資料或程式碼。 如果不受信任的程式碼嘗試修改記憶體保護區記憶體中的內容，則會停用環境並拒絕作業。
+**應用程式軟體廠商**：在內部部署、使用開放原始碼或藉由建置內部應用程式軟體，以信任軟體。
 
-開發應用程式時，您可使用[軟體工具](#oe-sdk)來防護記憶體保護區內的部分程式碼和資料。 這些工具可確保受信任環境以外的任何人都無法檢視或修改您的程式碼和資料。 
+**硬體廠商**：使用內部部署硬體或內部硬體來信任硬體。 
 
-基本上，請將記憶體保護區視為一個安全箱。 您可將已加密的程式碼和資料放入這個箱子中。 從箱子外部，您看不到任何東西。 您可為記憶體保護區提供可解密資料的金鑰，然後在從記憶體保護區送出之前，再次處理和加密資料。
+**基礎結構提供者**：信任雲端提供者或管理您自己的內部部署資料中心。
 
-### <a name="attestation"></a>證明
 
-您會想要確認和驗證您信任的環境是安全的。 此種驗證就是證明程序。 
+Azure 機密運算藉由減少計算雲端基礎結構各方面的信任需求，讓您更輕鬆地信任雲端提供者。 Azure 機密運算可將對於主機 OS 核心、Hypervisor、VM 系統管理員和主機管理員的信任降至最低。
 
-證明可讓信賴憑證者對以下事項更有信心：(1) 其軟體是在記憶體保護區中執行，而且 (2) 記憶體保護區是最新且安全的。 例如，記憶體保護區會要求基礎硬體產生認證，其中包含記憶體保護區存在於平台上的證明。 然後可將報告提供給第二個記憶體保護區，以確認報告是在相同的平台上產生。
+### <a name="reducing-the-attack-surface"></a>減少受攻擊面
+信賴運算基礎 (TCB) 指的是可提供安全環境的系統所有硬體、韌體和軟體元件。 TCB 內的元件會被視為「重要」。 如果 TCB 內的某個元件遭到入侵，則整個系統的安全性可能會受到危害。 
 
-證明必須使用與系統軟體和晶片相容的安全證明服務來執行。 [Intel 的證明和佈建服務](https://software.intel.com/sgx/attestation-services)與 Azure 機密運算虛擬機器相容。
+較低的 TCB 表示較高的安全性。 暴露於各種弱點、惡意程式碼、攻擊和惡意人員的風險較低。 Azure 機密運算的目標是要藉由提供 TEE 來降低雲端工作負載的 TCB。 TEE 將您的 TCB 縮減為信任的執行階段二進位檔、程式碼和程式庫。 當您使用 Azure 基礎結構和服務進行機密運算時，您可以從 TCB 中移除所有的 Microsoft。
 
 
 ## <a name="using-azure-for-cloud-based-confidential-computing"></a>將 Azure 使用於雲端式機密運算<a id="cc-on-azure"></a>
 
-Azure 機密運算可讓您在虛擬化環境中運用機密運算功能。 您現在可以使用工具、軟體和雲端基礎結構，在安全的硬體之上進行建置。 
+Azure 機密運算可讓您在虛擬化環境中運用機密運算功能。 您現在可以使用工具、軟體和雲端基礎結構，在安全的硬體之上進行建置。  
 
-### <a name="virtual-machines"></a>虛擬機器
+**防止未經授權的存取**：在雲端中執行敏感性資料。 信任 Azure 能提供可行的最佳資料保護，幾乎不需要變更現今的作業。
 
-Azure 是在虛擬化環境中提供機密運算的第一個雲端提供者。 我們開發了虛擬機器，作為硬體與您應用程式之間的抽象層。 您可大規模執行工作負載，並可使用備援和可用性選項。  
+**法規遵循**：遷移至雲端並保有資料的完全控制權，以符合保護個人資訊及保護組織 IP 的政府法規。
 
-#### <a name="intel-sgx-enabled-virtual-machines"></a>已啟用 Intel SGX 的虛擬機器
+**保護不受信任的共同作業**：藉由合併組織間 (甚至是競爭者) 的資料以便解鎖廣泛的資料分析和更深入的深入解析，來解決整個產業的工作規模問題。
 
-在 Azure 機密運算虛擬機器中，CPU 硬體的一部分會保留給您應用程式中一部分的程式碼和資料使用。 此限制的部分就是記憶體保護區。 
+**隔離處理**：提供全新產品，卸除盲目處理私人資料的責任。 服務提供者甚至無法取出使用者資料。 
 
-![VM 模型](media/overview/hardware-backed-enclave.png)
+## <a name="get-started"></a>開始使用
+### <a name="azure-compute"></a>Azure 計算
+在 Azure 中的機密運算 IaaS 供應項目上建置應用程式。
+- 虛擬機器 (VM)：[DCsv2 系列](confidential-computing-enclaves.md)
+- Azure Kubernetes (AKS)：[協調機密容器](confidential-nodes-aks-overview.md)
 
-Azure 機密運算基礎結構目前由虛擬機器 (VM) 的專用 SKU 組成。 這些 VM 會在具有 Software Guard Extension (Intel SGX) 的 Intel 處理器上執行。 [Intel SGX](https://intel.com/sgx) 是一種元件，可讓我們以機密運算增加保護。 
+### <a name="azure-security"></a>Azure 安全性 
+透過驗證方法和硬體繫結金鑰管理，確保您的工作負載安全。 
+- 證明：[Microsoft Azure 證明 (預覽)](https://docs.microsoft.com/azure/attestation/overview)
+- 金鑰管理：受控 HSM (預覽)
 
-現今，Azure 提供以 Intel SGX 技術為基礎的 [DCsv2 系列](https://docs.microsoft.com/azure/virtual-machines/dcv2-series)，以便建立以硬體為基礎的記憶體保護區。 您可建置以安全記憶體保護區為基礎的應用程式，以在 DCsv2 系列的 VM 中執行，進而保護您的應用程式資料和使用中的程式碼。 
-
-您可以[深入了解](virtual-machine-solutions.md)如何使用以硬體為基礎的受信任記憶體保護區來部署 Azure 機密運算虛擬機器。
-
-## <a name="application-development"></a>應用程式開發 <a id="application-development"></a>
-
-若要利用記憶體保護區和隔離環境的強大功能，您必須使用可支援機密運算的工具。 有各種工具可支援記憶體保護區應用程式開發。 例如，您可使用下列開放原始碼的架構： 
-
-- [Open Enclave 軟體開發套件 (SDK)](https://github.com/openenclave/openenclave)
-- [機密聯盟架構 (CCF)](https://github.com/Microsoft/CCF)
-
-### <a name="overview"></a>概觀
-
-在記憶體保護區中建置的應用程式會以兩種方式進行分割：
-1. 「不受信任」的元件 (主機)
-1. 「受信任」的元件 (記憶體保護區)
-
-**主機**是記憶體保護區應用程式的執行基礎所在，而且是不受信任的環境。 主機無法存取部署在主機上的記憶體保護區程式碼。 
-
-**記憶體保護區**是應用程式程式碼及其快取的資料/記憶體執行所在的位置。 記憶體保護區中應該會進行安全運算，以確保秘密和敏感性資料受到保護。 
-
-在應用程式設計期間，請務必識別並判斷應用程式必須在記憶體保護區中執行的部分。 您選擇要放入受信任元件中的程式碼會與您應用程式的其餘部分隔離。 記憶體保護區完成初始化且程式碼載入至記憶體後，就無法從不受信任的元件讀取或變更該程式碼。 
-
-### <a name="open-enclave-software-development-kit-oe-sdk"></a>Open Enclave 軟體開發套件 (OE SDK) <a id="oe-sdk"></a>
-
-如果您想要撰寫在記憶體保護區中執行的程式碼，請使用您的提供者所支援的程式庫或架構。 [Open Enclave SDK](https://github.com/openenclave/openenclave) (OE SDK) 是一個開放原始碼 SDK，可讓您對已啟用機密運算的不同硬體進行抽象處理。 
-
-OE SDK 會建置為任何 CSP 上任何硬體的單一抽象層。 OE SDK 可在 Azure 機密運算虛擬機器上使用，以在記憶體保護區上建立和執行應用程式。
+### <a name="develop"></a>開發
+開始使用開發記憶體保護區感知應用程式，並使用機密推斷架構部署機密演算法。
+- 撰寫要在 DCsv2 VM 上執行的應用程式：[開啟記憶體保護區 SDK](https://github.com/openenclave/openenclave)
+- ONNX 執行階段中的機密 ML 模型：[機密推斷搶鮮版 (Beta)](https://aka.ms/confidentialinference)
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -1,14 +1,14 @@
 ---
-title: 澳大利亞政府 ISM 受保護藍圖範例概觀
-description: 澳大利亞政府 ISM 受保護藍圖範例概觀。 此藍圖範例可協助客戶評定特定 ISO 受保護控制措施。
-ms.date: 08/03/2020
+title: 澳大利亞政府 ISM 受保護藍圖範例控制項
+description: 澳大利亞政府 ISM 受保護藍圖範例控制措施對應。 每個控制措施都會對應至一或多個可協助評量的 Azure 原則定義。
+ms.date: 09/11/2020
 ms.topic: sample
-ms.openlocfilehash: 750cc5551f0bbf05e0da6ad41d46729231243f72
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 605e92b75da1e5363884fc6ef9457251cfbc6e4e
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87760425"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90030101"
 ---
 # <a name="control-mapping-of-the-australian-government-ism-protected-blueprint-sample"></a>澳大利亞政府 ISM 受保護藍圖範例控制措施對應
 
@@ -350,6 +350,10 @@ ms.locfileid: "87760425"
 ## <a name="next-steps"></a>後續步驟
 
 有關藍圖及其使用方式的其他文件：
+
+> [!div class="nextstepaction"]
+> [ISM 受保護藍圖 - 概觀](./index.md)
+> [ISM 受保護的藍圖 - 部署步驟](./deploy.md)
 
 - 了解[藍圖生命週期](../../concepts/lifecycle.md)。
 - 了解如何使用[靜態與動態參數](../../concepts/parameters.md)。

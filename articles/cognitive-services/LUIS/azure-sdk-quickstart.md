@@ -2,22 +2,22 @@
 title: 快速入門：Language Understanding (LUIS) SDK 用戶端程式庫
 description: 搭配此快速入門使用 C#、Python 或 JavaScript，建立並查詢具有 LUIS SDK 用戶端程式庫的 LUIS 應用程式。
 ms.topic: quickstart
-ms.date: 09/01/2020
-keywords: Azure, 人工智慧, ai, 自然語言處理, nlp, 自然語言理解, nlu, ai 對話, 對話式 ai, ai 聊天機器人, 聊天機器人製作者, LUIS, nlp ai, luis ai, azure luis, 理解自然語言
+ms.date: 09/14/2020
+keywords: Azure, 人工智慧, ai, 自然語言處理, nlp, LUIS, azure luis, 自然語言理解, ai 聊天機器人, 聊天機器人製作者, 理解自然語言
 ms.custom: devx-track-python, devx-track-javascript, devx-track-csharp, cog-serv-seo-aug-2020
 zone_pivot_groups: programming-languages-set-diberry-3core
-ms.openlocfilehash: 6bcdca85125d44475fadfd195c1dfda88f761f88
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 64288bbffa2d2c24e2f719477d98426f52da4070
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89323064"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90972616"
 ---
 # <a name="quickstart-language-understanding-luis-sdk-client-libraries-to-create-and-query-your-luis-app"></a>快速入門：用於建立及查詢您 LUIS 應用程式的 Language Understanding (LUIS) SDK 用戶端程式庫
 
-搭配此快速入門使用 C#、Python 或 JavaScript，建立並查詢具有 LUIS SDK 用戶端程式庫的 LUIS 應用程式。
+搭配此快速入門使用 C#、Python 或 JavaScript，建立並查詢具有 LUIS SDK 用戶端程式庫的 Azure LUIS 人工智慧 (AI) 應用程式。
 
-Language Understanding (LUIS) 可讓您將自訂機器學習智慧套用至使用者的對話、自然語言文字中，以預測整體意義，並找出相關的詳細資訊。
+Language Understanding (LUIS) 可讓您將自然語言處理 (NLP) 套用至使用者的對話、自然語言文字中，以預測整體意義，並找出相關的詳細資訊。
 
 * **撰寫 SDK** 用戶端程式庫可讓您建立、編輯、定型及發佈 LUIS 應用程式。 * **預測執行階段 SDK** 用戶端程式庫可讓您查詢已發佈的應用程式。
 
@@ -45,7 +45,7 @@ Language Understanding (LUIS) 可讓您將自訂機器學習智慧套用至使�
 * 定型 - 如果您收到定型錯誤，這通常表示應用程式是空的 (沒有包含範例語句的意圖)，或應用程式的意圖或實體格式不正確。
 * 雜項錯誤 - 由於程式碼會以文字和 JSON 物件呼叫用戶端程式庫，因此請確定您沒有變更程式碼。
 
-其他錯誤 - 如果您收到上述清單中未涵蓋的錯誤，請在此頁面底部提供意見反應來讓我們知道。 包含您所安裝用戶端程式庫的程式設計語言和版本。 
+其他錯誤 - 如果您收到上述清單中未涵蓋的錯誤，請在此頁面底部提供意見反應來讓我們知道。 包含您所安裝用戶端程式庫的程式設計語言和版本。
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -53,3 +53,5 @@ Language Understanding (LUIS) 可讓您將自訂機器學習智慧套用至使�
 * [新功能](whats-new.md)
 * [意圖](luis-concept-intent.md)、[實體](luis-concept-entity-types.md)、[範例語句](luis-concept-utterance.md)和[預建實體](luis-reference-prebuilt-entities.md)
 * 此範例的原始程式碼可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code) 上找到。
+* 理解自然語言：[自然語言理解 (NLU) 和自然語言處理 (NLP)](artificial-intelligence.md)
+* Bot：[AI 聊天機器人](luis-csharp-tutorial-bf-v4.md "聊天機器人製作者教學課程")

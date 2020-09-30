@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 9e954e9c1a7efa43a19849b1c5b40284ec84eeed
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: bdcfeeede8b16bf9a92a885364e4c8fef7ea5cbc
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77015995"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986562"
 ---
 # <a name="tutorial-create-and-walk-through-the-smart-meter-monitoring-app-template"></a>教學課程：建立和逐步執行智慧型電表監視應用程式範本 
 
@@ -104,8 +104,10 @@ Adatum 是一家虛構的能源公司，負責監控和管理智慧型電表。 
     > [!div class="mx-imgBorder"]
     > ![刪除應用程式](media/tutorial-iot-central-smart-meter/smart-meter-delete-app.png)
 
-
 ## <a name="next-steps"></a>後續步驟
-* 若要了解智慧型電表應用程式架構，請參考[概念文章](https://docs.microsoft.com/azure/iot-central/energy/concept-iot-central-smart-meter-app)
+
+若要了解智慧型電表應用程式架構，請參閱 
+> [!div class="nextstepaction"]
+> [概念文章](https://docs.microsoft.com/azure/iot-central/energy/concept-iot-central-smart-meter-app)
 * 免費建立智慧型電表應用程式範本：[智慧型電表應用程式](https://apps.azureiotcentral.com/build/new/smart-meter-monitoring)
 * 若要深入了解 IoT Central，請參閱 [IoT Central 概觀](https://docs.microsoft.com/azure/iot-central/)

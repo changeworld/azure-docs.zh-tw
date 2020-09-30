@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 06/11/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 24117e914afa0e443ce979ae71eb506156fa11b3
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 4fc8a0a4ea5063f52b6f9553018bddddd7bcf312
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87830405"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90974599"
 ---
 # <a name="tutorial-use-azure-security-center-to-monitor-linux-virtual-machines"></a>教學課程：使用 Azure 資訊安全中心來監視 Linux 虛擬機器
 
@@ -41,7 +41,7 @@ Azure 資訊安全中心可協助您了解 Azure 資源的安全性作法。 資
 
 資訊安全中心不只能探索資料，它還會提供建議以讓您解決所偵測到的問題。 例如，如果 VM 在部署時未連結網路安全性群組，資訊安全中心便會顯示建議，並指出可供採取的補救步驟。 您不需要離開資訊安全中心便能自動補救。  
 
-![建議](./media/tutorial-azure-security/recommendations.png)
+![螢幕擷取畫面顯示 [建議] 頁面，其中包含描述、資源、狀態和建議的嚴重性。](./media/tutorial-azure-security/recommendations.png)
 
 ## <a name="set-up-data-collection"></a>設定資料收集功能
 

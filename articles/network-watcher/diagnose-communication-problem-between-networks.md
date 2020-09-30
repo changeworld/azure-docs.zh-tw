@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 04/27/2018
 ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: 974e45b761fb45e4bc1c451fa6755e16cab49e11
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 25c58f99f56a4328527d1dd970e3ade21eb51819
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76834674"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987164"
 ---
 # <a name="tutorial-diagnose-a-communication-problem-between-networks-using-the-azure-portal"></a>教學課程：使用 Azure 入口網站診斷網路之間的通訊問題
 
@@ -73,12 +73,12 @@ ms.locfileid: "76834674"
 8. 執行測試時，[疑難排解狀態]  資料行會顯示 [執行中]  ，在上圖中這個資料行是顯示 [未啟動]  。 測試執行的時間可能需要幾分鐘。
 9. 檢視已完成測試的狀態。 下圖顯示已完成診斷測試的狀態結果：
 
-    ![狀態](./media/diagnose-communication-problem-between-networks/status.png)
+    ![螢幕擷取畫面顯示診斷測試的狀態結果 (在此範例中狀況不良)，包括摘要和詳細資料。](./media/diagnose-communication-problem-between-networks/status.png)
 
     您可以看到 [疑難排解狀態]  是 [狀況不良]  ，並且會在 [狀態]  索引標籤上看到問題的 [摘要]  和 [詳細資料]  。
 10. 當您選取 [動作]  索引標籤時，VPN 診斷會提供其他資訊。 在範例中，VPN 診斷會讓您知道應該要檢查每個連線的健康情況，如下圖所示：
 
-    ![動作](./media/diagnose-communication-problem-between-networks/action.png)
+    ![螢幕擷取畫面顯示 [動作] 索引標籤，可提供您額外的資訊。](./media/diagnose-communication-problem-between-networks/action.png)
 
 ## <a name="diagnose-a-gateway-connection"></a>診斷閘道連線
 
@@ -86,7 +86,7 @@ ms.locfileid: "76834674"
 
 1. 再次完成[診斷閘道](#diagnose-a-gateway)的步驟 7，但是這次選取連線。 在下列範例中，會測試名為 **VNet1toSite1** 的連線：
 
-    ![Connection](./media/diagnose-communication-problem-between-networks/connection.png)
+    ![螢幕擷取畫面顯示如何開始針對選取的連線進行疑難排解。](./media/diagnose-communication-problem-between-networks/connection.png)
 
     測試會執行數分鐘。
 2. 連線測試完成之後，您會收到類似下圖中 [狀態]  和 [動作]  索引標籤上所顯示的結果：

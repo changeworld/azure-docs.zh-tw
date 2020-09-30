@@ -6,12 +6,12 @@ ms.date: 09/09/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 7aaeb7af3876c2603208faaf46bead01199906cd
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 6a2c59a9cbaddc02159ee89497900509f33772c0
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89650072"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069538"
 ---
 # <a name="tutorial-use-exported-template-from-the-azure-portal"></a>教學課程：從 Azure 入口網站使用匯出的範本
 
@@ -111,7 +111,7 @@ az deployment group create \
 ---
 
 > [!NOTE]
-> 如果部署失敗，請使用 **debug** 與部署命令切換，以顯示偵錯記錄。  您也可以使用 **verbose** 切換來顯示完整的偵錯記錄。
+> 如果部署失敗，請使用 **verbose** 參數來取得所建立資源的相關資訊。 使用 **debug** 參數來取得更多資訊以進行偵錯。
 
 ## <a name="verify-deployment"></a>驗證部署
 

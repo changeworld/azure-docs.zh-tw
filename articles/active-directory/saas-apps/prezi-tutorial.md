@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/30/2020
+ms.date: 08/20/2020
 ms.author: jeedes
-ms.openlocfilehash: 994d427fb91f04ea0d2002a2c95e12366f4c6420
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 2f3e540174643f20c87396b8568f6e5b0a1ab16d
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88553558"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658939"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-prezi"></a>教學課程：Azure Active Directory 單一登入與 Prezi 整合
 
@@ -42,6 +42,9 @@ ms.locfileid: "88553558"
 * Prezi 支援由 SP 和 IDP 起始的 SSO。
 * Prezi 支援 Just-In-Time 使用者佈建。
 * 在設定 Prezi 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 如需詳細資訊，請參閱[了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+
+> [!NOTE]
+> 此應用程式的識別碼是固定的字串值，因此一個租用戶中只能設定一個執行個體。
 
 ## <a name="add-prezi-from-the-gallery"></a>從資源庫新增 Prezi
 
@@ -81,7 +84,7 @@ ms.locfileid: "88553558"
 
 1. 如果您想要以 **SP** 起始模式設定應用程式，請選取 [設定其他 URL]，然後執行下列步驟：
 
-    在 [登入 URL] 方塊中，輸入 URL `https://prezi.com/login/sso/`。
+    在 [登入 URL] 方塊中，輸入 URL：`https://prezi.com/login/sso/`。
 
 1. 選取 [儲存]。
 

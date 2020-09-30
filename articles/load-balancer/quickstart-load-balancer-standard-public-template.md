@@ -1,5 +1,5 @@
 ---
-title: 快速入門：建立負載平衡器 - Azure 範本
+title: 快速入門：建立公用負載平衡器 - Azure 範本
 titleSuffix: Azure Load Balancer
 description: 本快速入門說明如何使用 Azure Resource Manager 範本建立負載平衡器。
 services: load-balancer
@@ -15,16 +15,20 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2020
 ms.author: allensu
 ms.custom: mvc,subject-armqs
-ms.openlocfilehash: d83d58d608fc184f94ae70e60c56fe8fdc1e5eaa
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: 66d702846bac5825239e891ce47f8cca5bb857f0
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88706042"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90984423"
 ---
-# <a name="quickstart-create-a-load-balancer-to-load-balance-vms-by-using-an-arm-template"></a>快速入門：使用 ARM 範本建立負載平衡器以平衡 VM 的負載
+# <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-by-using-an-arm-template"></a>快速入門：使用 ARM 範本建立公用負載平衡器以平衡 VM 的負載
 
-負載平衡會將傳入要求分散於多部虛擬機器 (VM)，藉此提供高可用性和範圍。 本快速入門會示範如何部署 Azure Resource Manager 範本 (ARM 範本)，以建立標準負載平衡器來平衡 VM 的負載。 相較於其他部署方法，使用 ARM 範本所需的步驟比較少。
+負載平衡會將傳入要求分散於多部虛擬機器 (VM)，藉此提供高可用性和範圍。 
+
+本快速入門示範如何部署標準負載平衡器來平衡虛擬機器的負載。
+
+相較於其他部署方法，使用 ARM 範本所需的步驟比較少。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -40,7 +44,7 @@ ms.locfileid: "88706042"
 
 本快速入門中使用的範本是來自 [Azure 快速入門範本](https://azure.microsoft.com/resources/templates/101-load-balancer-standard-create/)。
 
-負載平衡器和公用 IP SKU 必須相符。 當您建立 Standard Load Balancer 時，您也必須建立新的標準公用 IP 位址，而該 IP 位址會設定為 Standard Load Balancer 的前端。 如果您想要建立基本負載平衡器，請使用[此範本](https://azure.microsoft.com/resources/templates/201-2-vms-loadbalancer-natrules/)。 Microsoft 建議對生產工作負載使用標準 SKU。
+負載平衡器和公用 IP SKU 必須相符。 當您建立標準負載平衡器時，您也必須建立新的標準公用 IP 位址，而該 IP 位址會設定為標準負載平衡器的前端。 如果您想要建立基本負載平衡器，請使用[此範本](https://azure.microsoft.com/resources/templates/201-2-vms-loadbalancer-natrules/)。 Microsoft 建議對生產工作負載使用標準 SKU。
 
 :::code language="json" source="~/quickstart-templates/101-load-balancer-standard-create/azuredeploy.json":::
 
@@ -52,7 +56,7 @@ ms.locfileid: "88706042"
 - [**Microsoft.Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks)
 - [**Microsoft.Compute/virutalMachines**](/azure/templates/microsoft.compute/virtualmachines) (其中 3 個)。
 - [**Microsoft.Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces) (其中 3 個)。
-- [**Microsoft.Compute/virtualMachine/extensions**](/azure/templates/microsoft.compute/virtualmachines/extensions) (其中 3 個)：用來設定 IIS 和網頁。
+- [**Microsoft.Compute/virtualMachine/extensions**](/azure/templates/microsoft.compute/virtualmachines/extensions) (其中 3 個)：用來設定 Internet Information Server (IIS) 和網頁。
 
 若要尋找更多有關 Azure Load Balancer 的範本，請參閱 [Azure 快速入門範本](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Network&pageNumber=1&sort=Popular)。
 
@@ -91,7 +95,7 @@ ms.locfileid: "88706042"
 
 ![Azure Standard Load Balancer Resource Manager 範本 PowerShell 部署輸出](./media/quickstart-load-balancer-standard-public-template/azure-standard-load-balancer-resource-manager-template-powershell-output.png)
 
-Azure PowerShell 用於部署範本。 除了 Azure PowerShell 以外，您也可以使用 Azure 入口網站、Azure CLI 和 REST API。 若要了解其他部署方法，請參閱[部署範本](../azure-resource-manager/templates/deploy-portal.md)。
+Azure PowerShell 用於部署範本。 您也可以使用 Azure 入口網站、Azure CLI 和 REST API。 若要了解其他部署方法，請參閱[部署範本](../azure-resource-manager/templates/deploy-portal.md)。
 
 ## <a name="review-deployed-resources"></a>檢閱已部署的資源
 
@@ -115,13 +119,23 @@ Azure PowerShell 用於部署範本。 除了 Azure PowerShell 以外，您也�
 
 ## <a name="clean-up-resources"></a>清除資源
 
-您可以刪除不再需要的資源群組、負載平衡器和所有相關資源。 若要這樣做，請移至 Azure 入口網站，選取包含負載平衡器的資源群組，然後選取 [刪除資源群組]。
+當您不再需要時，請將其刪除： 
+
+* 資源群組
+* 負載平衡器
+* 相關資源
+
+移至 Azure 入口網站，選取包含負載平衡器的資源群組，然後選取 [刪除資源群組]。
 
 ## <a name="next-steps"></a>後續步驟
 
-在本快速入門中，您已建立標準負載平衡器、將 VM 連線到標準負載平衡器、設定負載平衡器流量規則、進行健康情況探查，然後測試負載平衡器。
+在本快速入門中，您已：
 
-若要深入了解，請繼續進行 Load Balancer 的教學課程。
+* 建立標準負載平衡器，並且與 VM 連結。
+* 設定了負載平衡器流量規則和健全狀態探查。
+* 測試了負載平衡器。
+
+若要深入了解，請繼續進行 Azure Load Balancer 的教學課程。
 
 > [!div class="nextstepaction"]
 > [Azure Load Balancer 教學課程](tutorial-load-balancer-standard-public-zone-redundant-portal.md)

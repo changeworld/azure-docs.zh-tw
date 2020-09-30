@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/31/2020
+ms.date: 08/27/2020
 ms.author: jeedes
-ms.openlocfilehash: 512b96b6b785c0694bb41fab657f0a45c4321f10
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 4890ee7fe013aa4dba8cdc9740481874ccfc1430
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544327"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89657599"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-egnyte"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Egnyte 整合
 
@@ -42,18 +42,21 @@ ms.locfileid: "88544327"
 * Egnyte 支援 **SP** 起始的 SSO
 * 設定 Egnyte 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
+> [!NOTE]
+> 此應用程式的識別碼是固定的字串值，因此一個租用戶中只能設定一個執行個體。
+
 ## <a name="adding-egnyte-from-the-gallery"></a>從資源庫新增 Egnyte
 
 若要設定將 Egnyte 整合到 Azure AD 中，您需要從資源庫將 Egnyte 新增到受控 SaaS 應用程式清單。
 
 1. 使用公司或學校帳戶或個人的 Microsoft 帳戶登入 [Azure 入口網站](https://portal.azure.com)。
-1. 在左方瀏覽窗格上，選取 [Azure Active Directory]  服務。
-1. 巡覽至 [企業應用程式]  ，然後選取 [所有應用程式]  。
+1. 在左方瀏覽窗格上，選取 [Azure Active Directory] 服務。
+1. 巡覽至 [企業應用程式]，然後選取 [所有應用程式]。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]  區段的搜尋方塊中，輸入 **Egnyte**。
-1. 從結果面板中選取 [Egnyte]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
+1. 在 [從資源庫新增]**** 區段的搜尋方塊中，輸入 **Egnyte**。
+1. 從結果面板中選取 [Egnyte]****，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>設定和測試 Azure AD 單一登入
+## <a name="configure-and-test-azure-ad-sso"></a>設定並測試 Azure AD SSO
 
 在本節中，您會以名為 **Britta Simon** 的測試使用者身分，使用 Egnyte 設定及測試 Azure AD 單一登入。
 若要讓單一登入能夠運作，必須建立 Azure AD 使用者與 Egnyte 中相關使用者之間的連結關聯性。
@@ -71,36 +74,30 @@ ms.locfileid: "88544327"
 
 ### <a name="configure-azure-ad-sso"></a>設定 Azure AD SSO
 
-在本節中，您會在 Azure 入口網站中啟用 Azure AD 單一登入。
+依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
-若要設定與 Egnyte 搭配運作的 Azure AD 單一登入，請執行下列步驟：
+1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Egnyte] 應用程式整合頁面上，尋找 [管理] 區段並選取 [單一登入]。
+1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
+1. 在 [以 SAML 設定單一登入] 頁面上，按一下 [基本 SAML 設定] 的編輯/畫筆圖示，以編輯設定。
 
-1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Egnyte]  應用程式整合頁面上，選取 [單一登入]  。
-
-    ![設定單一登入連結](common/select-sso.png)
-
-2. 在 [選取單一登入方法]  對話方塊中，選取 [SAML/WS-Fed]  模式以啟用單一登入。
-
-    ![單一登入選取模式](common/select-saml-option.png)
-
-3. 在 [以 SAML 設定單一登入] 頁面上，按一下 [編輯] 圖示以開啟 [基本 SAML 設定] 對話方塊。   
-
-    ![編輯基本 SAML 組態](common/edit-urls.png)
+   ![編輯基本 SAML 組態](common/edit-urls.png)
 
 4. 在 [基本 SAML 組態]  區段上，執行下列步驟：
 
     ![Egnyte 網域與 URL 單一登入資訊](common/sp-signonurl.png)
 
-    在 [登入 URL]  文字方塊中，以下列模式輸入 URL︰`https://<companyname>.egnyte.com`
+    a. 在 [登入 URL] 文字方塊中，以下列模式輸入 URL︰`https://<companyname>.egnyte.com`
 
+    b. 在 [回覆 URL] 文字方塊中，使用下列模式來輸入 URL：`https://<companyname>.egnyte.com/samlconsumer/AzureAD`
+    
     > [!NOTE]
-    > 這不是真正的值。 請使用實際的「登入 URL」來更新此值。 請連絡 [Egnyte 用戶端支援小組](https://www.egnyte.com/corp/contact_egnyte.html)以取得此值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 這些都不是真正的值。 使用實際的「登入 URL」及「回覆 URL」來更新這些值。 請連絡 [Egnyte 用戶端支援小組](https://www.egnyte.com/corp/contact_egnyte.html)以取得此值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
 
-4. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，按一下 [下載]  ，以依據您的需求從指定選項下載 [憑證 (Base64)]  ，並儲存在您的電腦上。
+4. 在 [以 SAML 設定單一登入] 頁面的 [SAML 簽署憑證] 區段中，按一下 [下載]，以依據您的需求從指定選項下載 [憑證 (Base64)]，並儲存在您的電腦上。
 
     ![憑證下載連結](common/certificatebase64.png)
 
-5. 在 [設定 Egnyte]  區段上，依據您的需求複製適當的 URL。
+5. 在 [設定 Egnyte]**** 區段上，依據您的需求複製適當的 URL。
 
     ![複製組態 URL](common/copy-configuration-urls.png)
 
@@ -112,90 +109,69 @@ ms.locfileid: "88544327"
 
 ### <a name="create-an-azure-ad-test-user"></a>建立 Azure AD 測試使用者 
 
-本節的目標是要在 Azure 入口網站中建立一個名為 Britta Simon 的測試使用者。
+在本節中，您將在 Azure 入口網站中建立名為 B.Simon 的測試使用者。
 
 1. 在 Azure 入口網站的左窗格中，依序選取 [Azure Active Directory]  、[使用者]  和 [所有使用者]  。
-
-    ![[使用者和群組] 與 [所有使用者] 連結](common/users.png)
-
-2. 在畫面頂端選取 [新增使用者]  。
-
-    ![[新增使用者] 按鈕](common/new-user.png)
-
-3. 在 [使用者] 屬性中，執行下列步驟。
-
-    ![[使用者] 對話方塊](common/user-properties.png)
-
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
-  
-    b. 在 [使用者名稱]  欄位中，輸入 **brittasimon\@yourcompanydomain.extension**  
-    例如， BrittaSimon@contoso.com
-
-    c. 選取 [顯示密碼]  核取方塊，然後記下 [密碼] 方塊中顯示的值。
-
-    d. 按一下頁面底部的 [新增]  。
+1. 在畫面頂端選取 [新增使用者]  。
+1. 在 [使用者] 屬性中，執行下列步驟：
+   1. 在 [名稱] 欄位中，輸入 `B.Simon`。  
+   1. 在 [使用者名稱]  欄位中，輸入 username@companydomain.extension。 例如： `B.Simon@contoso.com` 。
+   1. 選取 [顯示密碼] 核取方塊，然後記下 [密碼] 方塊中顯示的值。
+   1. 按一下 [建立]。
 
 ### <a name="assign-the-azure-ad-test-user"></a>指派 Azure AD 測試使用者
 
-在本節中，您會將 Egnyte 的存取權授與 Britta Simon，讓她能夠使用 Azure 單一登入。
+在本節中，您會將 BambooHR 的存取權授與 B.Simon，讓其能夠使用 Azure 單一登入。
 
-1. 在 Azure 入口網站中，依序選取 [企業應用程式]  、[所有應用程式]  及 [Egnyte]  。
+1. 在 Azure 入口網站中，選取 [企業應用程式]  ，然後選取 [所有應用程式]  。
+1. 在應用程式清單中，選取 [BambooHR]****。
+1. 在應用程式的概觀頁面中尋找 [管理]  區段，然後選取 [使用者和群組]  。
 
-    ![企業應用程式刀鋒視窗](common/enterprise-applications.png)
+   ![[使用者和群組] 連結](common/users-groups-blade.png)
 
-2. 在應用程式清單中，選取 [Egnyte]  。
+1. 選取 [新增使用者]，然後在 [新增指派] 對話方塊中選取 [使用者和群組]。
 
-    ![應用程式清單中的 Egnyte 連結](common/all-applications.png)
+    ![[新增使用者] 連結](common/add-assign-user.png)
 
-3. 在左側功能表中，選取 [使用者和群組]  。
-
-    ![[使用者和群組] 連結](common/users-groups-blade.png)
-
-4. 按一下 [新增使用者]  按鈕，然後在 [新增指派]  對話方塊中，選取 [使用者和群組]  。
-
-    ![[新增指派] 窗格](common/add-assign-user.png)
-
-5. 在 [使用者和群組]  對話方塊的 [使用者] 清單中，選取 [Britta Simon]  ，然後按一下畫面底部的 [選取]  按鈕。
-
-6. 如果您預期使用 SAML 判斷提示中的任何角色值，請在 [選取角色]  對話方塊的清單中選取適當使用者角色，然後按一下畫面底部的 [選取]  按鈕。
-
-7. 在 [新增指派]  對話方塊中，按一下 [指派]  按鈕。
+1. 在 [使用者和群組] 對話方塊的 [使用者] 清單中選取 [B.Simon]，然後按一下畫面底部的 [選取] 按鈕。
+1. 如果您在 SAML 判斷提示中需要任何角色值，請在 [選取角色] 對話方塊的清單中為使用者選取適當的角色，然後按一下畫面底部的 [選取] 按鈕。
+1. 在 [新增指派] 對話方塊中，按一下 [指派] 按鈕。
 
 ## <a name="configure-egnyte-sso"></a>設定 Egnyte SSO
 
 1. 在不同的 Web 瀏覽器視窗中，以系統管理員身分登入您的 Egnyte 公司網站。
 
-2. 按一下 [設定]  。
+2. 按一下 [設定]。
    
-    ![設定](./media/egnyte-tutorial/ic787819.png "設定")
+    ![設定 1](./media/egnyte-tutorial/ic787819.png "設定")
 
-3. 在功能表中按一下 [設定]  。
+3. 在功能表中，按一下 [設定]****。
 
     ![設定](./media/egnyte-tutorial/ic787820.png "設定")
 
-4. 按一下 [組態]  索引標籤，然後按一下 [安全性]  。
+4. 按一下 [組態]**** 索引標籤，然後按一下 [安全性]****。
 
     ![安全性](./media/egnyte-tutorial/ic787821.png "安全性")
 
-5. 在 [單一登入驗證]  區段中，執行下列步驟：
+5. 在 [單一登入驗證]**** 區段中，執行下列步驟：
 
     ![單一登入驗證](./media/egnyte-tutorial/ic787822.png "單一登入驗證")   
     
-    a. 針對 [單一登入驗證]  ，選取 **SAML 2.0**。
+    a. 對於 [單一登入驗證]****，選取 [SAML 2.0]****。
    
-    b. 針對 [識別提供者]  ，選取 [AzureAD]  。
+    b. 在 [身分識別提供者]**** 中，請選取 [AzureAD]****。
    
-    c. 將從 Azure 入口網站複製的 [登入 URL]  貼到 [識別提供者登入 URL]  文字方塊中。
+    c. 將從 Azure 入口網站複製的 [登入 URL]**** 貼到 [識別提供者登入 URL]**** 文字方塊中。
    
-    d. 將從 Azure 入口網站複製的 [Azure AD 識別碼]  貼到 [識別提供者實體識別碼]  文字方塊中。
+    d. 將從 Azure 入口網站複製的 [Azure AD 識別碼]**** 貼到 [識別提供者實體識別碼]**** 文字方塊中。
       
-    e. 在從 Azure 入口網站下載的記事本中開啟您的 base-64 編碼的憑證，將它的內容複製到您的剪貼簿，然後在 [識別提供者憑證]  文字方塊貼上。
+    e. 在從 Azure 入口網站下載的記事本中開啟您的 base-64 編碼的憑證，將它的內容複製到您的剪貼簿，然後在 [識別提供者憑證]**** 文字方塊貼上。
    
-    f. 針對 [預設使用者對應]  ，選取 [電子郵件地址]  。
+    f. 對於 [預設使用者對應]****，請選取 [電子郵件地址]****。
    
-    g. 針對 [使用網域指定的簽發者值]  ，選取 [停用]  。
+    g. 對於 [使用網域特定簽發者值]****，請選取 [停用]****。
    
-    h. 按一下 [檔案]  。
+    h. 按一下 [檔案] 。
 
 ### <a name="create-egnyte-test-user"></a>建立 Egnyte 測試使用者
 
@@ -205,21 +181,21 @@ ms.locfileid: "88544327"
 
 1. 以系統管理員身分登入您的 **Egnyte** 公司網站。
 
-2. 移至 [設定] \> [使用者和群組]  。
+2. 移至 [設定] \> [使用者和群組]****。
 
-3. 按一下 [新增使用者]  ，然後選取您想要加入的使用者類型。
+3. 按一下 [新增使用者]****，然後選取要加入的使用者類型。
    
     ![使用者](./media/egnyte-tutorial/ic787824.png "使用者")
 
-4. 在 [新增強大使用者]  區段中，執行下列步驟：
+4. 在 [新增強大使用者] **** 區段中，執行下列步驟：
     
     ![新的標準使用者](./media/egnyte-tutorial/ic787825.png "新的標準使用者")   
 
-    a. 在 [電子郵件]  文字方塊中，輸入使用者的電子郵件地址，例如 **Brittasimon\@contoso.com**。
+    a. 在 [電子郵件]**** 文字方塊中，輸入使用者的電子郵件地址，例如 **Brittasimon\@contoso.com**。
 
-    b. 在 [使用者名稱]  文字方塊中，輸入使用者的使用者名稱，例如 **Brittasimon**。
+    b. 在 [使用者名稱]**** 文字方塊中，輸入使用者的使用者名稱，例如 **Brittasimon**。
 
-    c. 選取 [單一登入]  作為 [驗證類型]  。
+    c. 選取 [單一登入]**** 作為 [驗證類型]****。
    
     d. 按一下 [檔案]  。
     

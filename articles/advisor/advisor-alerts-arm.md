@@ -1,15 +1,15 @@
 ---
 title: 使用 Resource Manager 範本針對新的建議建立 Azure Advisor 警示
-description: 針對新的建議建立 Azure Advisor 警示
+description: 了解如何使用 Azure Resource Manager 範本 (ARM 範本) 從 Azure Advisor 設定新建議的警示。
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 06/29/2020
-ms.openlocfilehash: 2becfbbc63beb6451e5e877c5a60553d98650494
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a10ca5f0b4119fb65d6b0f717f5c212acb20f9cd
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87057821"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90973683"
 ---
 # <a name="quickstart-create-azure-advisor-alerts-on-new-recommendations-using-an-arm-template"></a>快速入門：使用 ARM 範本針對新的建議建立 Azure Advisor 警示
 

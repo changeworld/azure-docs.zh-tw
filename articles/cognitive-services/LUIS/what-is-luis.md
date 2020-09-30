@@ -1,24 +1,24 @@
 ---
 title: 何謂 Language Understanding Intelligent Service (LUIS)？
 description: Language Understanding (LUIS) - 雲端式 API 服務，使用機器學習來進行對話式自然語言以預測意義並擷取資訊。
-keywords: Azure, 人工智慧, ai, 自然語言處理, nlp, 自然語言理解, nlu, ai 對話, 對話式 ai, ai 聊天機器人, 聊天機器人製作者, LUIS, nlp ai, luis ai, azure luis, 理解自然語言
+keywords: Azure, 人工智慧, ai, 自然語言處理, nlp, 自然語言理解, nlu, LUIS, 交談式 AI, ai 聊天機器人, nlp ai, azure luis
 ms.topic: overview
 ms.date: 09/02/2020
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: ff9aa2652fe8a1e503b5e2c93ca149112770b081
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 3a8905ca1b9e7d7b4b1e4f5add000def9e91f9c6
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89400937"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985866"
 ---
 # <a name="what-is-language-understanding-luis"></a>何謂 Language Understanding Intelligent Service (LUIS)？
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-Language Understanding Intelligent Service (LUIS) 是一種 API 雲端式服務，可將自訂機器學習智慧套用至使用者的對話、自然語言文字中，以預測整體意義，並找出相關的詳細資訊。
+Language Understanding (LUIS) 是一種雲端式交談式 AI 服務，可將自訂機器學習智慧套用至使用者的對話、自然語言文字中，以預測整體意義，並找出相關的詳細資訊。
 
-LUIS 的用戶端應用程式是任何對話應用程式，可與使用者透過自然語言溝通以完成工作。 用戶端應用程式的例子包括社群媒體應用程式、聊天機器人，以及具備語音功能的桌面應用程式。
+LUIS 的用戶端應用程式是任何對話應用程式，可與使用者透過自然語言溝通以完成工作。 用戶端應用程式的例子包括社群媒體應用程式、AI 聊天機器人，以及啟用語音功能的桌面應用程式。
 
 ![3 個使用認知服務 Language Understanding (LUIS) 的用戶端應用程式概念影像](./media/luis-overview/luis-entry-point.png "3 個使用認知服務 Language Understanding (LUIS) 的用戶端應用程式概念影像")
 
@@ -26,7 +26,7 @@ LUIS 的用戶端應用程式是任何對話應用程式，可與使用者透過
 
 <a name="Accessing-LUIS"></a>
 
-LUIS 應用程式發佈後，用戶端應用程式會將語句 (文字) 傳送至 LUIS 自然語言處理端點 [API][endpoint-apis]，並以 JSON 回應的形式接收結果。 聊天機器人是 LUIS 的常見用戶端應用程式之一。
+Azure LUIS 應用程式發佈後，用戶端應用程式會將語句 (文字) 傳送至 LUIS 自然語言處理端點 [API][endpoint-apis]，並以 JSON 回應的形式接收結果。 聊天機器人是 LUIS 的常見用戶端應用程式之一。
 
 
 ![LUIS 使用聊天機器人來預測具有自然語言理解 (NLP) 的使用者文字概念影像](./media/luis-overview/LUIS-chat-bot-request-response.svg "LUIS 使用聊天機器人來預測具有自然語言理解 (NLP) 的使用者文字概念影像")
@@ -44,7 +44,7 @@ LUIS 應用程式會提供智慧，讓用戶端應用程式得以做出聰明的
 
 ## <a name="natural-language-understanding-nlu"></a>自然語言理解 (NLU)
 
-[LUIS 以 NLU 的形式提供人工智慧 (AI)](artificial-intelligence.md "LUIS 提供人工智慧 (AI)")，這是自然語言處理 (NLP) 的子集。
+[LUIS 以 NLU 的形式提供人工智慧 (AI)](artificial-intelligence.md "LUIS 提供人工智慧 (AI)")，這是自然語言處理 AI 的子集。
 
 您的 LUIS 應用程式包含領域特定自然語言模型。 您可以從預先建立的領域模型開始使用 LUIS 應用程式、自行建置模型，或以自己的自訂資訊融合預先建立的領域片段。
 
@@ -52,7 +52,7 @@ LUIS 應用程式會提供智慧，讓用戶端應用程式得以做出聰明的
 
 * **自訂模型** LUIS 提供您幾種方式來識別您自己的自訂模型，包括意圖和實體。 實體包括機器學習實體、特定或常值實體，以及機器學習和常值的組合。
 
-深入了解 [NLP](artificial-intelligence.md "NLP")，以及 NLU 的 LUIS 特定區域。
+深入了解 [NLP AI](artificial-intelligence.md "NLP")，以及 NLU 的 LUIS 特定區域。
 
 ## <a name="step-1-design-and-build-your-model"></a>步驟 1:設計和建置您的模型
 

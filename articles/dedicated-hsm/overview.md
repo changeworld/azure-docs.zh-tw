@@ -1,6 +1,6 @@
 ---
 title: 專用硬體安全模組 (HSM) 是什麼？ - Azure 專用硬體安全模組 (HSM) | Microsoft Docs
-description: Azure 專用硬體安全模組 (HSM) 可在 Azure 內提供符合 FIPS 140-2 等級 3 認證的金鑰儲存功能概觀
+description: 了解 Azure 專用硬體安全模組 (HSM) 是一種 Azure 服務，可在 Azure 中提供密碼編譯金鑰儲存功能。
 services: dedicated-hsm
 author: msmbaldwin
 manager: rkarlin
@@ -13,12 +13,12 @@ ms.topic: overview
 ms.custom: mvc, seodec18
 ms.date: 12/07/2018
 ms.author: mbaldwin
-ms.openlocfilehash: dd5ce117645ef2b368bbf8f0e441770d6e746b5b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6eb82400b2f598b4b54da4b238f4bce71d83de6b
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "70881086"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90970198"
 ---
 # <a name="what-is-azure-dedicated-hsm"></a>什麼是 Azure 專用硬體安全模組 (HSM)？
 
@@ -70,7 +70,7 @@ Azure 專用 HSM 是特製化服務，專為特定類型的大型組織處理獨
 
 Azure 專用 HSM 不適用於下列類型的案例：可使用客戶管理金鑰進行加密的 Microsoft 雲端服務不可與 Azure 專用 HSM 整合，這些服務包括 Azure 資訊保護、Azure 磁碟加密、Azure Data Lake Store、Azure 儲存體、Azure SQL Database 和 Office 365 客戶金鑰等。
 
-### <a name="it-depends"></a>視情況而定
+### <a name="it-depends"></a>看情況
 
 Azure 專用 HSM 是否適用於您，必須綜合考量您可能的需求和您所做的折衷。 例如，FIPS 140-2 等級 3 的需求。 這項需求很常見，而目前符合此需求的選項只有專用 HSM。 如果與這些明文規定的需求無關，則通常會從 Azure Key Vault 與專用 HSM 中擇一使用。 決定之前請先評估您的需求。
 
@@ -81,7 +81,7 @@ Azure 專用 HSM 是否適用於您，必須綜合考量您可能的需求和您
 - Azure 儲存體用戶端加密
 - SQL Server 和 Azure SQL DB Always Encrypted
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 這是高度特殊化的服務。 因此，我們建議您應充分了解此文件集所說明的重要概念，包括定價、支援和服務等級協定。 
 

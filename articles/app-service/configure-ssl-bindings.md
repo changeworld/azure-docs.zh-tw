@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 04/30/2020
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 6c3f4cfe7c896b317edc5897098a1c18c98dc826
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: f7301809b3befc41110a32062d6e478c412fa56e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962633"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90981118"
 ---
 # <a name="secure-a-custom-dns-name-with-a-tlsssl-binding-in-azure-app-service"></a>在 Azure App Service 中使用 TLS/SSL 繫結保護自訂 DNS 名稱
 
@@ -108,9 +108,9 @@ ms.locfileid: "88962633"
 
 在各種瀏覽器中瀏覽至 `https://<your.custom.domain>`，以確認它是否為您的應用程式提供服務。
 
-![入口網站瀏覽至 Azure 應用程式](./media/configure-ssl-bindings/app-with-custom-ssl.png)
+:::image type="content" source="./media/configure-ssl-bindings/app-with-custom-ssl.png" alt-text="顯示瀏覽至自訂網域 (已醒目提示 contoso.com URL) 範例的螢幕擷取畫面。&quot;:::
 
-您的應用程式程式碼可以透過 "x-appservice-proto" 標頭來檢查通訊協定。 標頭的值會是 `http` 或 `https`。 
+您的應用程式程式碼可以透過 &quot;x-appservice-proto" 標頭來檢查通訊協定。 標頭的值會是 `http` 或 `https`。 
 
 > [!NOTE]
 > 如果您的應用程式出現憑證驗證錯誤，您可能使用了自我簽署憑證。

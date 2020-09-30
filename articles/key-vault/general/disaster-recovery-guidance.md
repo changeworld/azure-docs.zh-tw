@@ -9,18 +9,22 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/28/2020
 ms.author: sudbalas
-ms.openlocfilehash: 35814f34550ac7bf4ad85a96d0838df62fe63be6
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 27d8d4de308fe7cf6e6f36dd33f33bb73c495073
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89073177"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983232"
 ---
 # <a name="azure-key-vault-availability-and-redundancy"></a>Azure 金鑰保存庫的可用性與備援
 
 Azure 金鑰保存庫具備多層備援功能，以確保您的金鑰和密碼會保持可供應用程式使用，甚至在服務的個別元件失敗時也是如此。
 
+> [!NOTE]
+> 本指南適用於保存庫。 受控 HSM 集區使用不同的高可用性和災害復原模型。 如需詳細資訊，請參閱[受控 HSM 災害復原指南](../managed-hsm/disaster-recovery-guide.md)。
+
 金鑰保存庫的內容會在區域內複寫，以及複寫到至少距離 150 英哩但位於相同地理位置內的次要區域，以便讓金鑰和祕密保有高持久性。 請參閱 [Azure 配對的區域](../../best-practices-availability-paired-regions.md)文件，以取得特定區域配對的詳細資料。
+
 
 如果金鑰保存庫服務內的個別元件失敗，則區域內的替代元件會接替來處理您的要求，以確保不會導致功能的效能降低。 您不需要採取任何動作來啟動此程序，其會以您無法察覺的方式自動發生。
 
@@ -45,6 +49,7 @@ Azure 金鑰保存庫具備多層備援功能，以確保您的金鑰和密碼�
   * Verify
   * 簽署
   * Backup
-* 在容錯移轉期間，您將無法對金鑰保存庫屬性進行變更。 您將無法變更存取原則或防火牆組態和設定。
-* 在容錯移轉進行容錯回復之後，所有要求類型 (包括讀取「和」  寫入要求) 都會可供使用。
 
+* 在容錯移轉期間，您將無法對金鑰保存庫屬性進行變更。 您將無法變更存取原則或防火牆組態和設定。
+
+* 在容錯移轉進行容錯回復之後，所有要求類型 (包括讀取「和」  寫入要求) 都會可供使用。

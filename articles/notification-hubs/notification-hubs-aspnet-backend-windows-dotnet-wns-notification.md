@@ -4,25 +4,23 @@ description: 了解如何使用通用 Windows 平台 (UWP) 應用程式將通知
 documentationcenter: windows
 author: sethmanheim
 manager: femila
-editor: jwargo
 services: notification-hubs
-ms.assetid: 012529f2-fdbc-43c4-8634-2698164b5880
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.custom: mvc, devx-track-csharp
-ms.date: 03/22/2019
+ms.custom: mvc
+ms.date: 08/17/2020
 ms.author: sethm
-ms.reviewer: jowargo
+ms.reviewer: thsomasu
 ms.lastreviewed: 03/22/2019
-ms.openlocfilehash: 865aaf748fd8fad5f10350cb5b57d31b3eadf7a0
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 97a6a45ab01fc113b79a48ba7fcb246d528684be
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018037"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090052"
 ---
 # <a name="tutorial-send-notifications-to-specific-users-by-using-azure-notification-hubs"></a>教學課程：使用 Azure 通知中樞將通知傳送給特定使用者
 
@@ -30,7 +28,7 @@ ms.locfileid: "89018037"
 
 ## <a name="overview"></a>概觀
 
-本教學課程將示範如何使用 Azure 通知中心，來將推播通知傳送到特定裝置上的特定應用程式使用者。 ASP.NET WebAPI 後端是用來驗證用戶端。 後端在驗證用戶端應用程式使用者時，會自動將標記新增至通知登錄。 後端會使用此標記將通知傳送給特定使用者。
+本教學課程說明如何使用 Azure 通知中樞，來將推播通知傳送到特定裝置上的特定應用程式使用者。 ASP.NET WebAPI 後端是用來驗證用戶端。 後端在驗證用戶端應用程式使用者時，會自動將標記新增至通知登錄。 後端會使用此標記將通知傳送給特定使用者。
 
 > [!NOTE]
 > 您可以在 [GitHub](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/NotifyUsers) 上找到本教學課程的完整程式碼。
@@ -66,7 +64,7 @@ ms.locfileid: "89018037"
 5. 在 [結果] 清單中按一下 **System.Net.Http**，然後按一下 [安裝]。 完成安裝。
 6. 回到 NuGet [搜尋] 方塊，輸入 **Json.net**。 安裝 **Newtonsoft.json** 套件，然後關閉 [NuGet 套件管理員] 視窗。
 7. 在方案總管的 **WindowsApp** 專案中按兩下 **MainPage.xaml**，在 Visual Studio 編輯器中開啟該檔案。
-8. 在 `MainPage.xaml` XML 程式碼中，使用下列程式碼取代 `<Grid>` 區段：此程式碼會新增使用者用來進行驗證的使用者名稱和密碼文字方塊。 它也會新增通知訊息的文字方塊，以及應接收通知的使用者名稱標記：
+8. 在 `MainPage.xaml` 檔案中，以下列程式碼取代 `<Grid>` 區段：此程式碼會新增使用者用來進行驗證的使用者名稱和密碼文字方塊。 它也會新增通知訊息的文字方塊，以及應接收通知的使用者名稱標記：
 
     ```xml
     <Grid>
@@ -118,6 +116,7 @@ ms.locfileid: "89018037"
         </StackPanel>
     </Grid>
     ```
+
 9. 在 [方案總管] 中，開啟 [(Windows 8.1)] 和 [(Windows Phone 8.1)] 專案的 `MainPage.xaml.cs` 檔案。 在這兩個檔案頂端加入下列 `using` 陳述式：
 
     ```csharp
@@ -128,11 +127,13 @@ ms.locfileid: "89018037"
     using Windows.UI.Popups;
     using System.Threading.Tasks;
     ```
+
 10. 在 **WindowsApp`MainPage` 專案的 `MainPage.xaml.cs` 中，將下列成員新增至**  類別。 請務必將 `<Enter Your Backend Endpoint>` 取代為您先前取得的實際後端端點。 例如： `http://mybackend.azurewebsites.net` 。
 
     ```csharp
     private static string BACKEND_ENDPOINT = "<Enter Your Backend Endpoint>";
     ```
+
 11. 將下面的程式碼新增到 [(Windows 8.1)] 和 [(Windows Phone 8.1)] 專案之 `MainPage.xaml.cs` 中的 MainPage 類別。
 
     `PushClick` 方法是 [傳送推播] 按鈕的 click 處理常式。 它會呼叫後端以觸發所有裝置的通知，而所有裝置都具有符合 `to_tag` 參數的使用者名稱標記。 通知訊息會以要求主體的 JSON 內容形式傳送。
@@ -215,13 +216,15 @@ ms.locfileid: "89018037"
         ApplicationData.Current.LocalSettings.Values["AuthenticationToken"] = token;
     }
     ```
-12. 開啟 `App.xaml.cs` 並且在 `OnLaunched()` 事件處理常式中尋找對 `InitNotificationsAsync()` 的呼叫。 取消註解或刪除對 `InitNotificationsAsync()`的呼叫。 此按鈕處理常式會初始化通知註冊。
+
+12. 開啟 `App.xaml.cs` 並且在 `OnLaunched()` 事件處理常式中尋找對 `InitNotificationsAsync()` 的呼叫。 取消註解或刪除對 `InitNotificationsAsync()`的呼叫。 此按鈕處理常式會初始化通知註冊：
 
     ```csharp
     protected override void OnLaunched(LaunchActivatedEventArgs e)
     {
         //InitNotificationsAsync();
     ```
+
 13. 以滑鼠右鍵按一下 **WindowsApp** 專案、按一下 [新增]，然後按一下 [類別]。 將類別命名為 `RegisterClient.cs`，然後按一下 [確定] 以產生類別。
 
     為了註冊推播通知，此類別會包裝連絡應用程式後端所需的 REST 呼叫。 它也會在本機儲存通知中心所建立的 *registrationIds* ，如 [從您的應用程式後端註冊](/previous-versions/azure/azure-services/dn743807(v=azure.100))中的詳細說明。 當您按一下 [登入並註冊] 按鈕時，系統會使用儲存在本機儲存體中的授權權杖。
@@ -236,7 +239,8 @@ ms.locfileid: "89018037"
     using System.Threading.Tasks;
     using System.Linq;
     ```
-15. 在 `RegisterClient` 類別定義中加入下列程式碼。
+
+15. 在 `RegisterClient` 類別定義中新增下列程式碼：
 
     ```csharp
     private string POST_URL;
@@ -323,6 +327,7 @@ ms.locfileid: "89018037"
 
     }
     ```
+
 16. 儲存您的所有變更。
 
 ## <a name="test-the-application"></a>測試應用程式
@@ -332,8 +337,8 @@ ms.locfileid: "89018037"
 3. 按一下 [登入並註冊]  ，並確認顯示您已登入的對話方塊。 此程式碼也會啟用 [傳送推播] 按鈕。
 
     ![顯示已填入使用者名稱和密碼的通知中樞應用程式螢幕擷取畫面。][14]
-5. 然後，在 [收件者使用者名稱標記] 欄位中，輸入已註冊的使用者名稱。 輸入通知訊息，然後按一下 [傳送推播] 。
-6. 只有已經使用相符使用者名稱標記所註冊的裝置才會收到通知訊息。
+4. 然後，在 [收件者使用者名稱標記] 欄位中，輸入已註冊的使用者名稱。 輸入通知訊息，然後按一下 [傳送推播] 。
+5. 只有已經使用相符使用者名稱標記所註冊的裝置才會收到通知訊息。
 
     ![顯示已推送訊息的通知中樞應用程式螢幕擷取畫面。][15]
 

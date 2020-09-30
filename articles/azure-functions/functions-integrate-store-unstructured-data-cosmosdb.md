@@ -4,12 +4,12 @@ description: 使用 Azure Functions 和 Cosmos DB 儲存非結構化資料
 ms.topic: quickstart
 ms.date: 04/14/2020
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: a242f1ffc0a7738ce7cdf33aeeef214fb4f63e61
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 2828bf14b6965e87ef9547020e870333c4e839af
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88210888"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987984"
 ---
 # <a name="store-unstructured-data-using-azure-functions-and-azure-cosmos-db"></a>使用 Azure Functions 和 Azure Cosmos DB 儲存非結構化資料
 
@@ -42,11 +42,11 @@ ms.locfileid: "88210888"
 
 1. 選取 [整合] 和 [+ 新增輸出]。
 
-     :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-add-output-binding.png" alt-text="新增 Azure Cosmos DB 輸出繫結。" border="true":::
+     :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-add-output-binding.png" alt-text="在 Azure 入口網站中選取您的 HTTP 函式。" border="true":::
 
 1. 使用表格中指定的 [建立輸出] 設定：
 
-     :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-configure-cosmosdb-binding.png" alt-text="設定 Azure Cosmos DB 輸出繫結。" border="true":::
+     :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-configure-cosmosdb-binding.png" alt-text="在 Azure 入口網站中選取您的 HTTP 函式。" border="true":::
 
     | 設定      | 建議的值  | 描述                                |
     | ------------ | ---------------- | ------------------------------------------ |
@@ -138,23 +138,23 @@ module.exports = async function (context, req) {
     + `task`
     + `duedate`
 
-    :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-test-function.png" alt-text="測試函式。" border="true":::
+    :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-test-function.png" alt-text="在 Azure 入口網站中選取您的 HTTP 函式。" border="true":::
 
 
 1. 選取 [執行] 並確認會傳回 200 狀態。
 
-    :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-test-function-output.png" alt-text="測試函式。" border="true":::
+    :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-test-function-output.png" alt-text="在 Azure 入口網站中選取您的 HTTP 函式。" border="true":::
 
 
 1. 在 Azure 入口網站中，搜尋並選取 **Azure Cosmos DB**。
 
-    :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-search-cosmos-db.png" alt-text="搜尋 Cosmos DB 服務。" border="true":::
+    :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-search-cosmos-db.png" alt-text="在 Azure 入口網站中選取您的 HTTP 函式。" border="true":::
 
 1. 選擇您的 Azure Cosmos DB 帳戶，然後選取 [資料總管]。
 
 1. 展開 **TaskCollection** 節點，選取新文件，並確認文件包含您的查詢字串值，以及一些額外的中繼資料。
 
-    :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-data-explorer-check-document.png" alt-text="驗證您文件中的字串值。" border="true":::
+    :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-data-explorer-check-document.png" alt-text="在 Azure 入口網站中選取您的 HTTP 函式。" border="true":::
 
 您已將繫結成功新增至可在 Azure Cosmos DB 中儲存非結構化資料的 HTTP 觸發程序。
 

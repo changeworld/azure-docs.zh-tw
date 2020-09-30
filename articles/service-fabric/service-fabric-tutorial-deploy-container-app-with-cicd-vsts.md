@@ -4,12 +4,12 @@ description: 在本教學課程中，您會了解如何使用 Visual Studio Azur
 ms.topic: tutorial
 ms.date: 08/29/2018
 ms.custom: mvc
-ms.openlocfilehash: 9cf619eddd07bbe55cd7aea5f27051a7d0415c24
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 498513d1e31108d633de8165b2684dffbebdf37d
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75614123"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563942"
 ---
 # <a name="tutorial-deploy-a-container-application-with-cicd-to-a-service-fabric-cluster"></a>教學課程：將具有 CI/CD 的容器應用程式部署到 Service Fabric 叢集
 
@@ -142,7 +142,7 @@ Azure DevOps 發行定義描述將應用程式封裝部署到叢集的工作流�
 
 將某些程式碼變更簽入到 Azure DevOps，以確認持續整合管線正常運作。
 
-您撰寫程式碼時，Visual Studio 會自動追蹤您的變更。 認可本機 Git 儲存機制的變更，方法是從右下方的狀態列選取暫止變更圖示 (![Pending][pending])。
+您撰寫程式碼時，Visual Studio 會自動追蹤您的變更。 認可本機 Git 儲存機制的變更，方法是從右下方的狀態列選取暫止變更圖示 (![暫止的變更圖示會顯示一個鉛筆和一個數字。][pending])。
 
 在 Team Explorer 的**變更**檢視中，加入描述更新的訊息，並認可變更。
 

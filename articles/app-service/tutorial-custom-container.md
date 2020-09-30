@@ -7,12 +7,12 @@ ms.author: msangapu
 keywords: azure app service, web 應用程式, linux, windows, docker, 容器
 ms.custom: devx-track-csharp, mvc, seodec18, devx-track-python
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: df46d61ddfba5f4da977b19db3158691c78168f8
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: fdc15ecd79a6672d2a46b4da284533965977d753
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88958451"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90982874"
 ---
 # <a name="migrate-custom-software-to-azure-app-service-using-a-custom-container"></a>使用自訂容器將自訂軟體遷移至 Azure App Service
 
@@ -56,7 +56,7 @@ ms.locfileid: "88958451"
 
 輸入 `Ctrl+F5` 以執行應用程式而不偵錯。 應用程式會在預設瀏覽器中顯示。 
 
-![[新增 ASP.NET 專案] 對話方塊](media/tutorial-custom-container/local-app-in-browser.png)
+:::image type="content" source="media/tutorial-custom-container/local-app-in-browser.png" alt-text="顯示預設瀏覽器中顯示之應用程式的螢幕擷取畫面。":::
 
 由於該應用程式是使用已安裝的字型，因此無法在 App Service 沙箱中執行。 但是，可以改為使用 Windows 容器部署它，因為可以在 Windows 容器中安裝字型。
 
@@ -64,7 +64,7 @@ ms.locfileid: "88958451"
 
 在 [方案總管] 中，以滑鼠右鍵按一下 **CustomFontSample** 專案，然後選取 [新增] > [容器協調流程支援]。
 
-![[新增 ASP.NET 專案] 對話方塊](media/tutorial-custom-container/enable-container-orchestration.png)
+:::image type="content" source="media/tutorial-custom-container/enable-container-orchestration.png" alt-text="顯示預設瀏覽器中顯示之應用程式的螢幕擷取畫面。":::
 
 選取 [Docker Compose] > [確定]。
 
@@ -98,13 +98,13 @@ RUN ${source:-obj/Docker/publish/InstallFont.ps1}
 
 在 [方案總管] 中，以滑鼠右鍵按一下 **CustomFontSample** 專案，然後選取 [發佈]。
 
-![[新增 ASP.NET 專案] 對話方塊](media/tutorial-custom-container/open-publish-wizard.png)
+:::image type="content" source="media/tutorial-custom-container/open-publish-wizard.png" alt-text="顯示預設瀏覽器中顯示之應用程式的螢幕擷取畫面。":::
 
 ### <a name="create-registry-and-publish"></a>建立登錄並發佈
 
 在 [發佈精靈] 中，選取 [容器登錄] > [建立新的 Azure Container Registry] > [發佈]。
 
-![[新增 ASP.NET 專案] 對話方塊](media/tutorial-custom-container/create-registry.png)
+:::image type="content" source="media/tutorial-custom-container/create-registry.png" alt-text="顯示預設瀏覽器中顯示之應用程式的螢幕擷取畫面。":::
 
 ### <a name="sign-in-with-azure-account"></a>使用 Azure 帳戶登入
 
@@ -211,7 +211,7 @@ https://<app-name>.scm.azurewebsites.net/api/logstream
 
 ::: zone pivot="container-linux"
 
-Azure App Service 會使用 Docker 容器技術，來裝載內建映像和自訂映像。 若要查看內建映像清單，請執行 Azure CLI 命令 ['az webapp list-runtimes --linux'](/cli/azure/webapp?view=azure-cli-latest#az-webapp-list-runtimes)。 如果這些映像無法滿足您的需求，可以建置和部署自訂映像。
+Azure App Service 會使用 Docker 容器技術，來裝載內建映像和自訂映像。 若要查看內建映像清單，請執行 Azure CLI 命令 ['az webapp list-runtimes --linux'](/cli/azure/webapp?view=azure-cli-latest&preserve-view=true#az-webapp-list-runtimes)。 如果這些映像無法滿足您的需求，可以建置和部署自訂映像。
 
 在本教學課程中，您會了解如何：
 
@@ -346,7 +346,7 @@ ENTRYPOINT ["init.sh"]
 
 在本節和接下來的各節中，您會在 Azure 中佈建資源，以將映像推送至其中，然後將容器部署至 Azure App Service。 一開始會先建立資源群組，以在其中收集所有這些資源。
 
-執行 [az group create](/cli/azure/group?view=azure-cli-latest#az-group-create) 命令以建立資源群組：
+執行 [az group create](/cli/azure/group?view=azure-cli-latest&preserve-view=true#az-group-create) 命令以建立資源群組：
 
 ```azurecli-interactive
 az group create --name AppSvc-DockerTutorial-rg --location westus2
@@ -358,7 +358,7 @@ az group create --name AppSvc-DockerTutorial-rg --location westus2
 
 在本節中，您會將映像推送至 App Service 可以從中部署的 Azure Container Registry。
 
-1. 執行 [`az acr create`](/cli/azure/acr?view=azure-cli-latest#az-acr-create) 命令以建立 Azure Container Registry：
+1. 執行 [`az acr create`](/cli/azure/acr?view=azure-cli-latest&preserve-view=true#az-acr-create) 命令以建立 Azure Container Registry：
 
     ```azurecli-interactive
     az acr create --name <registry-name> --resource-group AppSvc-DockerTutorial-rg --sku Basic --admin-enabled true
@@ -366,7 +366,7 @@ az group create --name AppSvc-DockerTutorial-rg --location westus2
     
     以適用的登錄名稱取代 `<registry-name>`。 名稱只能包含字母和數字，且必須是整個 Azure 中的唯一名稱。
 
-1. 執行 [`az acr show`](/cli/azure/acr?view=azure-cli-latest#az-acr-show) 命令以擷取登錄的認證：
+1. 執行 [`az acr show`](/cli/azure/acr?view=azure-cli-latest&preserve-view=true#az-acr-show) 命令以擷取登錄的認證：
 
     ```azurecli-interactive
     az acr credential show --resource-group AppSvc-DockerTutorial-rg --name <registry-name>
@@ -413,7 +413,7 @@ az group create --name AppSvc-DockerTutorial-rg --location westus2
 
 若要將容器部署至 Azure App Service，請先在 App Service 上建立 Web 應用程式，然後將 Web 應用程式連線至容器登錄。 啟動 Web 應用程式時，App Service 會自動從登錄中提取容器映像。
 
-1. 使用 [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) 命令來建立 App Service 方案：
+1. 使用 [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest&preserve-view=true#az-appservice-plan-create) 命令來建立 App Service 方案：
 
     ```azurecli-interactive
     az appservice plan create --name AppSvc-DockerTutorial-plan --resource-group AppSvc-DockerTutorial-rg --is-linux
@@ -421,7 +421,7 @@ az group create --name AppSvc-DockerTutorial-rg --location westus2
 
     App Service 方案會對應至裝載 Web 應用程式的虛擬機器。 根據預設，先前的命令會使用第一個月免費的低成本 [B1 定價層](https://azure.microsoft.com/pricing/details/app-service/linux/)。 您可以使用 `--sku` 參數來控制層級。
 
-1. 使用 [`az webpp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) 命令建立 Web 應用程式：
+1. 使用 [`az webpp create`](/cli/azure/webapp?view=azure-cli-latest&preserve-view=true#az-webapp-create) 命令建立 Web 應用程式：
 
     ```azurecli-interactive
     az webapp create --resource-group AppSvc-DockerTutorial-rg --plan AppSvc-DockerTutorial-plan --name <app-name> --deployment-container-image-name <registry-name>.azurecr.io/appsvc-tutorial-custom-image:latest
@@ -429,7 +429,7 @@ az group create --name AppSvc-DockerTutorial-rg --location westus2
     
     以 Web 應用程式的名稱取代 `<app-name>`，此名稱在所有 Azure 中必須是唯一的。 使用上一節的登錄名稱取代 `<registry-name>`。
 
-1. 使用 [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set)，以應用程式代碼所預期的內容設定 `WEBSITES_PORT` 環境變數： 
+1. 使用 [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest&preserve-view=true#az-webapp-config-appsettings-set)，以應用程式代碼所預期的內容設定 `WEBSITES_PORT` 環境變數： 
 
     ```azurecli-interactive
     az webapp config appsettings set --resource-group AppSvc-DockerTutorial-rg --name <app-name> --settings WEBSITES_PORT=8000
@@ -439,7 +439,7 @@ az group create --name AppSvc-DockerTutorial-rg --location westus2
     
     如需此環境變數的詳細資訊，請參閱[範例的 GitHub 存放庫中的讀我檔案](https://github.com/Azure-Samples/docker-django-webapp-linux)。
 
-1. 使用 [`az webapp identity assign`](/cli/azure/webapp/identity?view=azure-cli-latest#az-webapp-identity-assign) 命令，為 Web 應用程式啟用[受控識別](./overview-managed-identity.md)：
+1. 使用 [`az webapp identity assign`](/cli/azure/webapp/identity?view=azure-cli-latest&preserve-view=true#az-webapp-identity-assign) 命令，為 Web 應用程式啟用[受控識別](./overview-managed-identity.md)：
 
     ```azurecli-interactive
     az webapp identity assign --resource-group AppSvc-DockerTutorial-rg --name <app-name> --query principalId --output tsv
@@ -449,7 +449,7 @@ az group create --name AppSvc-DockerTutorial-rg --location westus2
 
     受控識別可讓您將權限授與 Web 應用程式，在不需要任何特定認證的情況下存取其他 Azure 資源。
 
-1. 使用 [`az account show`](/cli/azure/account?view=azure-cli-latest#az-account-show) 命令來擷取您的訂用帳戶識別碼，您在下一個步驟中會需要此資訊：
+1. 使用 [`az account show`](/cli/azure/account?view=azure-cli-latest&preserve-view=true#az-account-show) 命令來擷取您的訂用帳戶識別碼，您在下一個步驟中會需要此資訊：
 
     ```azurecli-interactive
     az account show --query id --output tsv
@@ -472,7 +472,7 @@ az group create --name AppSvc-DockerTutorial-rg --location westus2
 
 一旦映像推送至容器登錄，而且已完整佈建 App Service 後，您就可以完成這些步驟。
 
-1. 使用 [`az webapp config container set`](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set) 命令來指定容器登錄，以及要部署 Web 應用程式的映像：
+1. 使用 [`az webapp config container set`](/cli/azure/webapp/config/container?view=azure-cli-latest&preserve-view=true#az-webapp-config-container-set) 命令來指定容器登錄，以及要部署 Web 應用程式的映像：
 
     ```azurecli-interactive
     az webapp config container set --name <app-name> --resource-group AppSvc-DockerTutorial-rg --docker-custom-image-name <registry-name>.azurecr.io/appsvc-tutorial-custom-image:latest --docker-registry-server-url https://<registry-name>.azurecr.io

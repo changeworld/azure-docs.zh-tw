@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/20/2019
-ms.openlocfilehash: d9d2f29ffc34c203e5f3b3ebf094e73fb9cdfb75
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: c802fafa92ace2260002f7156b0df9841af8338c
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132393"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90029574"
 ---
 # <a name="tutorial-create-automated-approval-based-workflows-by-using-azure-logic-apps"></a>教學課程：使用 Azure Logic Apps 建立以核准為基礎的自動化工作流程
 
@@ -40,7 +40,7 @@ ms.locfileid: "87132393"
 
 * 包含 "test-members-ML" 清單的 MailChimp 帳戶，您的邏輯應用程式可以在其中為已核准的成員新增電子郵件地址。 如果您沒有帳戶，請[註冊一個免費帳戶](https://login.mailchimp.com/signup/)並了解[如何建立 MailChimp 清單](https://us17.admin.mailchimp.com/lists/#)。
 
-* Office 365 Outlook 或 Outlook.com 中的電子郵件帳戶，可支援核准工作流程。 本文使用 Office 365 Outlook。 如果您使用不同的電子郵件帳戶，整體步驟將維持不變，但您的 UI 外觀可能會略有不同。
+* Microsoft 365 Outlook 或 Outlook.com 中的電子郵件帳戶，可支援核准工作流程。 本文使用 Office 365 Outlook。 如果您使用不同的電子郵件帳戶，整體步驟將維持不變，但您的 UI 外觀可能會略有不同。
 
 ## <a name="create-your-logic-app"></a>建立邏輯應用程式
 

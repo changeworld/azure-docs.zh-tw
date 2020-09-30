@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/21/2020
+ms.date: 08/20/2020
 ms.author: jeedes
-ms.openlocfilehash: 280dda4d3864f2c659272ffb63d6ac2566524c45
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 64a95a14f6832e3f109335b5525b9a5dc1a9ec27
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549419"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662283"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-askspoke"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 askSpoke 整合
 
@@ -35,9 +35,6 @@ ms.locfileid: "88549419"
 * Azure AD 訂用帳戶。 如果沒有訂用帳戶，您可以取得[免費帳戶](https://azure.microsoft.com/free/)。
 * 已啟用 askSpoke 單一登入 (SSO) 的訂用帳戶。
 
-> [!NOTE]
-> 此應用程式的識別碼是固定的字串值，因此一個租用戶中只能設定一個執行個體。
-
 ## <a name="scenario-description"></a>案例描述
 
 在本教學課程中，您會在測試環境中設定和測試 Azure AD SSO。
@@ -45,6 +42,9 @@ ms.locfileid: "88549419"
 * askSpoke 支援 **SP 和 IDP** 起始的 SSO
 * askSpoke 支援 **Just In Time** 使用者佈建
 * 設定 askSpoke 後，您可以強制執行工作階段控制項，以即時防止貴組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+
+> [!NOTE]
+> 此應用程式的識別碼是固定的字串值，因此一個租用戶中只能設定一個執行個體。
 
 ## <a name="adding-askspoke-from-the-gallery"></a>從資源庫新增 askSpoke
 
@@ -57,7 +57,7 @@ ms.locfileid: "88549419"
 1. 在 [從資源庫新增] 區段的搜尋方塊中，輸入 **askSpoke**。
 1. 從結果面板選取 [askSpoke]，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-askspoke"></a>設定及測試 askSpoke 的 Azure AD 單一登入
+## <a name="configure-and-test-azure-ad-sso-for-askspoke"></a>設定和測試適用於 askSpoke 的 Azure AD SSO
 
 以名為 **B.Simon** 的測試使用者，設定及測試與 askSpoke 搭配運作的 Azure AD SSO。 若要讓 SSO 能夠運作，您必須建立 Azure AD 使用者與 askSpoke 中相關使用者之間的連結關聯性。
 
@@ -146,15 +146,15 @@ ms.locfileid: "88549419"
 
 1. 從左側瀏覽窗格中，按一下 [設定] 索引標籤。
 
-    ![askSpoke 設定](./media/askspoke-tutorial/configure1.png)
+    ![askSpoke [設定] 索引標籤](./media/askspoke-tutorial/configure1.png)
 
 1. 向下捲動至 **SSO**，然後按一下 [連線]。
 
-    ![askSpoke 設定](./media/askspoke-tutorial/configure2.png)
+    ![askSpoke 連線](./media/askspoke-tutorial/configure2.png)
 
 1. 在 [啟用 SAML 與 SCIM] 區段中，執行下列步驟：
 
-    ![askSpoke 設定](./media/askspoke-tutorial/configure3.png)
+    ![askSpoke 啟用 SAML & SCIM 區段](./media/askspoke-tutorial/configure3.png)
 
     1. 在 [登入 URL] 文字方塊中，貼上您從 Azure 入口網站複製的 [登入 URL] 值。
 
@@ -187,6 +187,3 @@ ms.locfileid: "88549419"
 - [嘗試搭配 Azure AD 使用 askSpoke](https://aad.portal.azure.com/)
 
 - [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-
-- [如何使用進階可見性和控制項保護 askSpoke](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-

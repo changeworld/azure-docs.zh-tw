@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: 992640424f6fdb632327866e132fdbb1c6244492
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 35a3f6d1e7894eec9baa4ea5432a8e3fec138a21
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89400325"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90085037"
 ---
 # <a name="tutorial-how-to-display-route-directions-using-azure-maps-route-service-and-map-control"></a>教學課程：如何使用 Azure 地圖服務路線規劃服務和地圖控制項顯示路線方向
 
@@ -143,7 +143,7 @@ ms.locfileid: "89400325"
 
     在地圖控制項的 `ready` 事件處理常式中，系統會建立資料來源以儲存路線起點和終點。 系統會建立線條圖層並將其附加至資料來源，以定義呈現路線的方式。  為了確保路線不會涵蓋道路標籤，我們傳遞了第二個參數，其值為 `'labels'`。
 
-    接下來系統會建立符號圖層，並將其附加至資料來源。 此圖層會指定起點和終點的呈現方式。 此案例中已新增運算式，用以從每個點物件的屬性中擷取圖示影像和文字標籤資訊。
+    接下來系統會建立符號圖層，並將其附加至資料來源。 此圖層會指定起點和終點的呈現方式，已新增運算式，用以從每個點物件的屬性中取出圖示影像和文字標籤資訊。 若要深入了解運算式，請參閱[資料驅動樣式運算式](data-driven-style-expressions-web-sdk.md)一文。
 
 2. 將起點設在 Microsoft，並將終點設在西雅圖的加油站。  在地圖控制項的 `ready` 事件處理常式中，附加下列程式碼。
 
@@ -168,17 +168,22 @@ ms.locfileid: "89400325"
     });
     ```
 
-    此程式碼會建立兩個 [GeoJSON 點物件](https://en.wikipedia.org/wiki/GeoJSON)，代表起點和終點，此資訊也會新增到資料來源。 最後一個程式碼區塊會使用起點和終點的經緯度設定相機檢視。 如需地圖控制項的 setCamera 屬性詳細資訊，請參閱 [setCamera(CameraOptions | CameraBoundsOptions & AnimationOptions)](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-maps-typescript-latest#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) 屬性。
+    此程式碼會建立兩個 [GeoJSON 點物件](https://en.wikipedia.org/wiki/GeoJSON)，代表起點和終點，此資訊也會新增到資料來源。 
+
+    最後一個程式碼區塊會使用起點和終點的經緯度設定相機檢視。 起點和終點會新增至資料來源。 系統會使用 `atlas.data.BoundingBox.fromData` 函式計算起點和終點的週框方塊。 此週框方塊會用來透過 `map.setCamera` 函式設定整個路線的地圖相機檢視。 系統會加入邊框間距，以補償符號圖示的像素維度。 如需地圖控制項的 setCamera 屬性詳細資訊，請參閱 [setCamera(CameraOptions | CameraBoundsOptions & AnimationOptions)](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-maps-typescript-latest#setcamera-cameraoptions---cameraboundsoptions---animationoptions-&preserve-view=false) 屬性。
 
 3. 儲存 **MapRoute.html** 並重新整理瀏覽器。 現在地圖會以西雅圖作為中心。 淚珠形藍色圖釘會標示起點。 圓形藍色圖釘會標示終點。
 
-    :::image type="content" source="./media/tutorial-route-location/map-pins.png" alt-text="在地圖上檢視路線的起點和終點":::
+    :::image type="content" source="./media/tutorial-route-location/map-pins.png" alt-text="地圖控制項的基本地圖呈現":::
 
 <a id="getroute"></a>
 
 ## <a name="get-route-directions"></a>取得路線方向
 
-本節說明如何使用 Azure 地圖服務路線規劃服務 API，取得從某個點到另一個點的方向。 此服務中有其他 API 可讓您規劃兩個位置之間「最快速」、「最短」、「最環保」或「刺激」的路線。 此服務也可讓使用者根據歷程記錄交通流量條件來規劃未來的路由。 使用者可以查看任何指定時間的路由持續期間預測。 如需詳細資訊，請參閱[取得路線方向 API](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)。
+本節說明如何使用 Azure 地圖服務路線指示 API 來取得路線指示，以及從某個點到達另一個點的預估時間。
+
+>[!TIP]
+>Azure 地圖服務路線服務提供 API 以根據不同的路線類型 (例如「最快速」、「最短」、「最環保」或「驚心動魄」*thrilling*的路線) 以及根據距離、交通流量條件和使用的運輸模式，來規劃路線。 服務也可讓使用者根據歷程記錄交通流量條件來規劃未來的路由。 使用者可以查看任何指定時間的路由持續期間預測。 如需詳細資訊，請參閱[取得路線方向 API](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)。
 
 1. 在 `GetMap` 函式之控制項的 `ready` 事件處理常式內，將下列內容新增至 JavaScript 程式碼。
 
@@ -193,7 +198,7 @@ ms.locfileid: "89400325"
     var routeURL = new atlas.service.RouteURL(pipeline);
     ```
 
-   `SubscriptionKeyCredential` 會建立 `SubscriptionKeyCredentialPolicy`，以使用訂用帳戶金鑰驗證對「Azure 地圖服務」的 HTTP 要求。 `atlas.service.MapsURL.newPipeline()` 會採用 `SubscriptionKeyCredential` 原則，並建立[管線](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-maps-typescript-latest)執行個體。 `routeURL` 代表 Azure 地圖服務[路線規劃](https://docs.microsoft.com/rest/api/maps/route)作業的 URL。
+   `SubscriptionKeyCredential` 會建立 `SubscriptionKeyCredentialPolicy`，以使用訂用帳戶金鑰驗證對「Azure 地圖服務」的 HTTP 要求。 `atlas.service.MapsURL.newPipeline()` 會採用 `SubscriptionKeyCredential` 原則，並建立[管線](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline)執行個體。 `routeURL` 代表 Azure 地圖服務[路線規劃](https://docs.microsoft.com/rest/api/maps/route)作業的 URL。
 
 2. 設定認證和 URL 後，請在控制項的 `ready` 事件處理常式中附加下列程式碼。 此程式碼會從起點到終點來建構路線。 `routeURL` 會要求 Azure 地圖服務路線規劃服務 API 計算路線方向。 接著，系統會使用 `geojson.getFeatures()` 方法擷取回應中的 GeoJSON 特性集合，並將其新增至資料來源。
 
@@ -211,7 +216,7 @@ ms.locfileid: "89400325"
 
 3. 儲存 **MapRoute.html** 檔案並重新整理網頁瀏覽器。 地圖現在應該會顯示從起點到終點的路線。
 
-     :::image type="content" source="./media/tutorial-route-location/map-route.png" alt-text="Azure 地圖控制項和路線規劃服務":::
+     :::image type="content" source="./media/tutorial-route-location/map-route.png" alt-text="地圖控制項的基本地圖呈現":::
 
     您可以在[這裡](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/route.html)取得範例的完整原始程式碼。 您可以在[這裡](https://azuremapscodesamples.azurewebsites.net/?sample=Route%20to%20a%20destination)找到即時範例。
 

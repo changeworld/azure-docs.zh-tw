@@ -69,8 +69,10 @@
       href: load-balancer-tcp-reset.md
     - name: 標準 Load Balancer 和可用性區域
       href: load-balancer-standard-availability-zones.md
-    - name: 內建安全性控制
-      href: load-balancer-security-controls.md
+    - name: 安全性
+      items:
+        - name: 安全性基準
+          href: security-baseline.md
     - name: 後端集區管理
       href: backend-pool-management.md
     - name: Standard Load Balancer 和虛擬機器擴展集

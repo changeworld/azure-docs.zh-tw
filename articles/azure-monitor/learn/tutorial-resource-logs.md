@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 12/15/2019
-ms.openlocfilehash: f2c780ffb7705575bf1bb5cabb6a09d9dabc0690
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b68d4779d33d2f8a1f1c2bae35f438ad2ccccabb
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505834"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090069"
 ---
 # <a name="tutorial-collect-and-analyze-resource-logs-from-an-azure-resource"></a>教學課程：從 Azure 資源收集資源記錄並加以分析
 
@@ -84,7 +84,7 @@ Azure 監視器中的 Log Analytics 工作區會從各種來源收集記錄資�
     > [!NOTE]
     > 如果您從 Azure 監視器功能表開啟記錄，則範圍會設定為 Log Analytics 工作區。 在此情況下，任何查詢都會包含工作區中的所有記錄。
    
-    ![記錄](media/tutorial-resource-logs/logs.png)
+    ![顯示邏輯應用程式記錄的螢幕擷取畫面，其中顯示新的查詢，並且醒目提示邏輯應用程式名稱。](media/tutorial-resource-logs/logs.png)
 
 4. 範例中顯示的服務會將資源記錄寫入 **AzureDiagnostics** 資料表，但其他服務可能會寫入其他資料表。 如需不同 Azure 服務所使用的資料表，請參閱 [Azure 資源記錄的支援服務、結構描述和類別](../platform/resource-logs-schema.md)。
 

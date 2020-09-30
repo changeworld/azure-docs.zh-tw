@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 06/25/2018
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 09a66f45fe3e20bedf5ff99ee924ac267b4fd869
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: a2b776ba64d96d092ad51ad2888b891e19e8b521
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89266794"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90968881"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-rest-api-calls"></a>使用 REST API 呼叫在虛擬機器擴展集上設定 Azure 資源受控識別
 
@@ -45,12 +45,9 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
     - [虛擬機器參與者](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)，可建立虛擬機器擴展集，並從虛擬機器擴展集啟用和移除系統和/或使用者指派的受控識別。
     - [受控識別參與者](../../role-based-access-control/built-in-roles.md#managed-identity-contributor)角色，可建立使用者指派的受控識別。
     - [受控識別操作員](../../role-based-access-control/built-in-roles.md#managed-identity-operator)角色，可為虛擬機器擴展集指派和移除使用者指派的識別。
-- 如果您使用的是 Windows，請安裝[適用於 Linux 的 Windows 子系統](/windows/wsl/about)，或使用 Azure 入口網站中的 [Azure Cloud Shell](../../cloud-shell/overview.md)。
-- 如果您使用的是[適用於 Linux 的 Windows 子系統](/windows/wsl/about)或 [Linux 散發作業系統](/cli/azure/install-azure-cli-apt?view=azure-cli-latest)，請[安裝 Azure CLI 本機主控台](/cli/azure/install-azure-cli)。
-- 如果您使用的是 Azure CLI 本機主控台，請登入 Azure ，登入時請使用與您想要用於管理系統或使用者指派受控識別的 Azure 訂用帳戶相關聯的帳戶，搭配使用 `az login` 登入。
-
-
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+- 您可以在雲端或本機上執行本文中的所有命令：
+    - 若要在雲端中執行，請使用 [Azure Cloud Shell](../../cloud-shell/overview.md)。
+    - 若要在本機執行，請安裝 [curl](https://curl.haxx.se/download.html) 和 [Azure CLI](/cli/azure/install-azure-cli)，然後登入 Azure，登入時請使用與您想要用於管理系統或使用者指派受控識別的 Azure 訂用帳戶相關聯的帳戶，搭配使用 [az login](/cli/azure/reference-index#az-login) 登入。
 
 ## <a name="system-assigned-managed-identity"></a>系統指派的受控識別
 

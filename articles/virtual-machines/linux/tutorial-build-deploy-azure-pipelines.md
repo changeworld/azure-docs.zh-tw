@@ -11,12 +11,12 @@ ms.workload: infrastructure
 ms.date: 1/3/2020
 ms.author: ushan
 ms.custom: devops, devx-track-javascript
-ms.openlocfilehash: c83a67f7d524a062485f2c68e0adb7fdd2855a84
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 6025e1c257ad7b94586ceb4f89c02c3a44c59c3e
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89462168"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090307"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-using-azure-devops-services-and-azure-pipelines"></a>教學課程：使用 Azure DevOps Services 和 Azure Pipelines 在 Azure 中將應用程式部署至 Linux 虛擬機器
 
@@ -147,6 +147,7 @@ https://github.com/azure-devops/fabrikam-node
 選取**入門**範本，並複製下列 YAML 程式碼片段，以使用 Apache Maven 建置您的 Java 專案並執行測試：
 
 ```YAML
+jobs:
 - job: Build
   displayName: Build Maven Project
   steps:
@@ -209,7 +210,7 @@ https://github.com/azure-devops/fabrikam-node
 
 ## <a name="define-cd-steps-to-deploy-to-the-linux-vm"></a>定義要部署至 Linux VM 的 CD 步驟
 
-1. 藉由參考您先前使用下列 YAML 語法取得的環境和 VM 資源，編輯上述管線並納入[部署作業](/azure/devops/pipelines/process/deployment-jobs)：
+1. 藉由參考您先前使用下列 YAML 語法取得的環境和 VM 資源，變更上述管線的 YAML 檔案以納入[部署作業](/azure/devops/pipelines/process/deployment-jobs)：
 
    ```YAML
    jobs:  
@@ -218,8 +219,7 @@ https://github.com/azure-devops/fabrikam-node
      environment:
        name:  <environment name>
        resourceType: VirtualMachine
-       tags: web1
-     strategy:
+       tags: web
    ```
 2. 您可以藉由指定您為環境中的每個虛擬機器定義的**標籤**，從環境中選取特定幾組虛擬機器來接收部署。
 [這裡](/azure/devops/pipelines/yaml-schema?view=azure-devops&tabs=schema#deployment-job)提供部署作業的完整 YAML 結構描述。

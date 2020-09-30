@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/15/2020
+ms.date: 08/20/2020
 ms.author: jeedes
-ms.openlocfilehash: 67016d930e2cc40ccf38e89c8dfc7700db7d3109
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7d249005e77328460a0e7152e0a3ff125857534b
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88536711"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89659480"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-datava-enterprise-service-platform"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Datava Enterprise Service Platform 整合
 
@@ -35,9 +35,6 @@ ms.locfileid: "88536711"
 * Azure AD 訂用帳戶。 如果沒有訂用帳戶，您可以取得[免費帳戶](https://azure.microsoft.com/free/)。
 * 已啟用 Datava Enterprise Service Platform 單一登入 (SSO) 的訂用帳戶。
 
-> [!NOTE]
-> 此應用程式的識別碼是固定的字串值，因此一個租用戶中只能設定一個執行個體。
-
 ## <a name="scenario-description"></a>案例描述
 
 在本教學課程中，您會在測試環境中設定和測試 Azure AD SSO。
@@ -45,6 +42,9 @@ ms.locfileid: "88536711"
 * Datava Enterprise Service Platform 支援 **SP** 起始的 SSO
 * Datava Enterprise Service Platform 支援 **Just In Time** 使用者佈建
 * 設定 Datava Enterprise Service Platform 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+
+> [!NOTE]
+> 此應用程式的識別碼是固定的字串值，因此一個租用戶中只能設定一個執行個體。
 
 ## <a name="adding-datava-enterprise-service-platform-from-the-gallery"></a>從資源庫新增 Datava Enterprise Service Platform
 
@@ -57,7 +57,7 @@ ms.locfileid: "88536711"
 1. 在 [從資源庫新增] 區段的搜尋方塊中，輸入 **Datava Enterprise Service Platform**。
 1. 從結果面板中選取 [Datava Enterprise Service Platform]，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-datava-enterprise-service-platform"></a>設定及測試適用於 Datava Enterprise Service Platform 的 Azure AD 單一登入
+## <a name="configure-and-test-azure-ad-sso-for-datava-enterprise-service-platform"></a>設定及測試適用於 Datava Enterprise Service Platform 的 Azure AD SSO
 
 以名為 **B.Simon** 的測試使用者，設定及測試與 Datava Enterprise Service Platform 搭配運作的 Azure AD SSO。 若要讓 SSO 能夠運作，您必須建立 Azure AD 使用者與 Datava Enterprise Service Platform 中相關使用者之間的連結關聯性。
 
@@ -84,7 +84,7 @@ ms.locfileid: "88536711"
 
     a. 在 [登入 URL] 文字方塊中，以下列模式輸入 URL︰`https://go.datava.com/<TENANT_NAME>`
 
-    b. 在 [回覆 URL] 文字方塊中輸入 URL：`https://go.datava.com/saml/module.php/saml/sp/saml2-acs.php/azure-sp`
+    b. 在 [回覆 URL] 文字方塊中，輸入 URL：`https://go.datava.com/saml/module.php/saml/sp/saml2-acs.php/azure-sp`
 
     > [!NOTE]
     > 這不是真正的值。 請使用實際的「登入 URL」來更新此值。 請連絡 [Datava Enterprise Service Platform 用戶端支援小組](mailto:support@datava.com)以取得此值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
@@ -148,5 +148,3 @@ ms.locfileid: "88536711"
 - [嘗試搭配 Azure AD 使用 Datava Enterprise Service Platform](https://aad.portal.azure.com/)
 
 - [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-
-- [如何使用進階可見度和控制項保護 Datava Enterprise Service Platform](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

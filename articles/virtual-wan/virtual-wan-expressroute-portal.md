@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 02/13/2019
+ms.date: 09/22/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my corporate on-premises network(s) to my VNets using Virtual WAN and ExpressRoute.
-ms.openlocfilehash: 35ca071cd8495611f0f350511ef9406f82c5be23
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b78c2b93a9427105ce2cc0ad8bd5d2b995c834ae
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77209421"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90976288"
 ---
 # <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan"></a>教學課程：使用 Azure 虛擬 WAN 來建立 ExpressRoute 關聯
 
@@ -122,7 +122,7 @@ ExpressRoute 閘道以 2 Gbps 為單位進行佈建。 1 個縮放單位 = 2 Gbp
 
 1. 在 [ExpressRoute] 頁面上，按一下 [+ 兌換授權金鑰] 
 
-   ![兌換](./media/virtual-wan-expressroute-portal/redeem.png "兌換")
+   ![螢幕擷取畫面顯示已選取兌換授權金鑰虛擬中樞的 ExpressRoute。](./media/virtual-wan-expressroute-portal/redeem.png "兌換")
 2. 在 [兌換授權金鑰] 頁面上，填入值。
 
    ![兌換索引鍵值](./media/virtual-wan-expressroute-portal/redeemkey2.png "兌換索引鍵值")

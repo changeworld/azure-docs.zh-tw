@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 05/30/2019
 ms.author: jeedes
 ms.custom: has-adal-ref
-ms.openlocfilehash: 1934b6256ecf4f35c54bbc2ac497c331b2c5ee89
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: f36c80b9d08f2fde07483c1dde3afe99ec9f92d7
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543919"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705617"
 ---
 # <a name="configure-an-openidoauth-application-from-the-azure-ad-app-gallery"></a>從 Azure AD 應用程式資源庫設定 OpenID/OAuth 應用程式
 
@@ -76,13 +76,13 @@ ms.locfileid: "88543919"
 ## <a name="consent-framework"></a>同意架構
 
 您可以使用 Azure AD 同意架構來開發多租用戶的 Web 應用程式和原生用戶端應用程式。 這些應用程式允許與應用程式註冊所在的租用戶不同之 Azure AD 租用戶的使用者帳戶登入。 應用程式可能也需要存取 Web API，例如：
-- Microsoft Graph API，以便存取 Azure AD、Intune 和 Office 365 中的服務。
+- Microsoft Graph API，以便存取 Azure AD、Intune 和 Microsoft 365 中的服務。
 - 其他 Microsoft 服務的 API。
 - 您自己的 Web API。
 
 此架構以使用者或系統管理員為根據，他們可同意讓應用程式在他們的目錄中註冊。 註冊可能包含存取目錄資料。 取得同意之後，用戶端應用程式將能代表使用者呼叫 Microsoft Graph API，並視需要使用資訊。
 
-[Microsoft Graph API](https://developer.microsoft.com/graph/) 會提供 Office 365 中資料的存取權，例如：
+[Microsoft Graph API](https://developer.microsoft.com/graph/) 會提供 Microsoft 365 中資料的存取權，例如：
 
 - Exchange 中的行事曆和訊息。
 - SharePoint 中的網站和清單。
@@ -121,7 +121,7 @@ Graph API 也會提供 Azure AD 中的使用者和群組存取權，以及多個
 
 3. 如果使用者尚未經過驗證，Azure AD /授權端點就會提示使用者登入。
 
-    ![驗證](./media/openidoauth-tutorial/authentication.png)
+    ![帳戶登入提示的螢幕擷取畫面](./media/openidoauth-tutorial/authentication.png)
 
 4. 使用者登入之後，Azure AD 會判斷是否需要向使用者顯示同意頁面。 此判斷根據使用者 (或其組織的系統管理員) 是否已經同意應用程式。
 

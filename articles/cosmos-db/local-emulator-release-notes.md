@@ -2,16 +2,16 @@
 title: Azure Cosmos 模擬器下載和版本資訊
 description: 取得不同版本的 Azure Cosmos 模擬器版本資訊和下載資訊。
 ms.service: cosmos-db
-ms.topic: tutorial
+ms.topic: conceptual
 author: milismsft
 ms.author: adrianmi
-ms.date: 06/20/2019
-ms.openlocfilehash: 12e1c79e610526dec11467cc08c753bf90daa095
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.date: 09/21/2020
+ms.openlocfilehash: da17cd1ea6dac52797162e3ac2d733ad1fd50ea1
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86083452"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90988173"
 ---
 # <a name="azure-cosmos-emulator---release-notes-and-download-information"></a>Azure Cosmos 模擬器 - 版本資訊和下載資訊
 
@@ -26,13 +26,20 @@ ms.locfileid: "86083452"
 
 ## <a name="release-notes"></a>版本資訊
 
-### <a name="2112-07072020"></a>2.11.2 (07/07/2020)
+### <a name="2115-23-august-2020"></a>2.11.5 (2020 年 8 月 23 日)
+
+此版本新增兩個新的 Cosmos 模擬器啟動選項： 
+
+* "/EnablePreview" - 啟用模擬器的預覽功能。 仍在開發中的預覽功能，可透過 CI 和範例撰寫來存取。
+* "/EnableAadAuthentication" - 啟用模擬器以接受自訂 Azure Active Directory 權杖作為 Azure Cosmos 主要金鑰的替代方案。 這項功能仍在開發中；目前不支援特定角色指派和其他權限相關設定。
+
+### <a name="2112-07-july-2020"></a>2.11.2 (2020 年 7 月 7 日)
 
 - 此版本會變更如何收集對 Cosmos 模擬器進行疑難排解時所需的 ETL 追蹤。 WPR (Windows 效能執行時間工具) 現在是用於擷取 ETL 型追蹤的預設工具，而舊的 LOGMAN 型擷取則已被取代。 這是必要的變更，部分原因是最新的 Windows 安全性更新在透過 Cosmos 模擬器執行時，會對 LOGMAN 的運作方式產生非預期的影響。
 
-### <a name="2111-06102020"></a>2.11.1 (06/10/2020)
+### <a name="2111-10-june-2020"></a>2.11.1 (2020 年 6 月 10 日)
 
-- 此版本修正了與模擬器資料總管相關的幾個錯誤 (bug)。 在某些情況下，若透過網頁瀏覽器使用模擬器資料總管，便無法連線至 Cosmos 模擬器端點，而且所有相關動作 (例如建立資料庫或容器) 都會發生錯誤。 已修正的第二個問題與使用資料總管上傳動作從 JSON 檔案建立項目有關。
+- 此版本修正了與模擬器資料總管相關的幾個錯誤 (bug)。 在某些情況下，若透過網頁瀏覽器使用模擬器資料總管，便無法連線至 Cosmos 模擬器端點，而且所有相關動作 (例如建立資料庫或容器) 都會導致錯誤。 已修正的第二個問題與使用資料總管上傳動作從 JSON 檔案建立項目有關。
 
 ### <a name="2110"></a>2.11.0
 

@@ -9,16 +9,16 @@ ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 6ff732888e416fcd51216070b3b30ed37b79e92c
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 4a017f4b71a91f580a5281468a3f2bcbf7ba31b1
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "84687101"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531520"
 ---
 # <a name="tutorial-set-up-a-device-to-provision-using-the-azure-iot-hub-device-provisioning-service"></a>教學課程：將裝置設定為使用 Azure IoT 中樞裝置佈建服務進行佈建
 
-在上一個教學課程中，您已了解如何將 Azure IoT 中樞裝置佈建服務設定為自動將裝置佈建到 IoT 中樞。 本教學課程示範如何在製造過程中設定您的裝置，讓它能透過 IoT 中樞自動佈建。 第一次開機並連線至佈建服務時，您的裝置會根據其[證明機制](concepts-device.md#attestation-mechanism)進行佈建。 本教學課程涵蓋下列工作：
+在上一個教學課程中，您已了解如何將 Azure IoT 中樞裝置佈建服務設定為自動將裝置佈建到 IoT 中樞。 本教學課程示範如何在製造過程中設定您的裝置，讓它能透過 IoT 中樞自動佈建。 第一次開機並連線至佈建服務時，您的裝置會根據其[證明機制](concepts-service.md#attestation-mechanism)進行佈建。 本教學課程涵蓋下列工作：
 
 > [!div class="checklist"]
 > * 建置平台特定裝置佈建服務用戶端 SDK
@@ -29,7 +29,7 @@ ms.locfileid: "84687101"
 
 本教學課程使用 [Azure IoT SDK 及適用於 C 存放庫的程式庫](https://github.com/Azure/azure-iot-sdk-c)，其中包含適用於 C 的裝置佈建服務用戶端 SDK。此 SDK 目前針對在 Windows 或 Ubuntu 實作上執行的裝置，提供 TPM 和 X.509 支援。 本教學課程將使用 Windows 開發用戶端，因此也會假設您熟悉 Visual Studio 的基本功能。 
 
-如果您不熟悉自動佈建程序，請務必先檢閱[自動佈建概念](concepts-auto-provisioning.md)才能繼續。 
+如果您不熟悉自動佈建程序，請先檢閱[佈建](about-iot-dps.md#provisioning-process)概觀，再繼續作業。 
 
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
@@ -38,7 +38,7 @@ ms.locfileid: "84687101"
 
 下列必要條件適用於 Windows 開發環境。 針對 Linux 或 macOS，請參閱 SDK 文件中[準備您的開發環境](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md)中的適當章節。
 
-* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019 並啟用[使用 C++ 的桌面開發](https://docs.microsoft.com/cpp/?view=vs-2019#pivot=workloads)工作負載。 也會支援 Visual Studio 2015 和 Visual Studio 2017。
+* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019 並啟用[使用 C++ 的桌面開發](https://docs.microsoft.com/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development)工作負載。 也會支援 Visual Studio 2015 和 Visual Studio 2017。
 
 * 已安裝最新版的 [Git](https://git-scm.com/download/)。
 
@@ -100,9 +100,9 @@ ms.locfileid: "84687101"
 
 - 針對 X.509 裝置，您必須取得核發給裝置的憑證。 佈建服務會公開兩種類型的註冊項目，用來對使用 X.509 證明機制的裝置進行存取控制。 所需的憑證取決於您要使用的註冊類型。
 
-    - 個別註冊：特定單一裝置的註冊。 此類型的註冊項目需要[終端實體「分葉」憑證](concepts-security.md#end-entity-leaf-certificate)。
+    - 個別註冊：特定單一裝置的註冊。 此類型的註冊項目需要[終端實體「分葉」憑證](concepts-x509-attestation.md#end-entity-leaf-certificate)。
     
-    - 註冊群組：此類型的註冊項目需要中繼或根憑證。 如需詳細資訊，請參閱[使用 X.509 憑證控制對於佈建服務的裝置存取](concepts-security.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates)。
+    - 註冊群組：此類型的註冊項目需要中繼或根憑證。 如需詳細資訊，請參閱[使用 X.509 憑證控制對於佈建服務的裝置存取](concepts-x509-attestation.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates)。
 
 ### <a name="simulated-devices"></a>模擬的裝置
 

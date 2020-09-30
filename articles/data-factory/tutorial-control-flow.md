@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 9/27/2019
-ms.openlocfilehash: 0330e72ad74726f97bfdfd78ef8d5f9b24a5d172
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 6eaf00679566aa8dfb7a90db95228349c81fcfec
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85513315"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983420"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>在 Data Factory 管道中將活動分支和鏈結
 
@@ -26,7 +26,7 @@ ms.locfileid: "85513315"
 
 下圖提供此案例的概觀：
 
-![概觀](media/tutorial-control-flow/overview.png)
+![圖表顯示 Azure Blob 儲存體，這是複本的目標，在成功時會傳送含有詳細資料的電子郵件，或者在失敗時會傳送含有錯誤詳細資料的電子郵件。](media/tutorial-control-flow/overview.png)
 
 本教學課程將說明如何執行下列工作：
 

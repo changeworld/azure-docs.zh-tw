@@ -14,16 +14,16 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ee5fa52f59ea2ef3332fe66c81c24ff44c64e81
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: cf911a240456871275abbd7f1e7313a1d2289b98
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582885"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90054598"
 ---
 # <a name="tutorial-add-or-remove-group-members-automatically"></a>教學課程：自動新增或移除群組成員
 
-在 Azure Active Directory (Azure AD) 中，您可以自動新增或移除安全性群組或 Office 365 群組的使用者，而無須一直以手動方式處理。 每當使用者或裝置的任何屬性有所變更時，Azure AD 就會評估您 Azure AD 組織中的所有動態群組規則，以查看變更是否會新增或移除成員。
+在 Azure Active Directory (Azure AD) 中，您可以自動新增或移除安全性群組或 Microsoft 365 群組的使用者，而無須一直以手動方式處理。 每當使用者或裝置的任何屬性有所變更時，Azure AD 就會評估您 Azure AD 組織中的所有動態群組規則，以查看變更是否會新增或移除成員。
 
 在本教學課程中，您會了解如何：
 > [!div class="checklist"]

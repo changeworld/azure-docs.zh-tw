@@ -6,12 +6,12 @@ ms.author: bwren
 ms.subservice: metrics
 ms.topic: tutorial
 ms.date: 03/09/2020
-ms.openlocfilehash: d8f72471dd3109bf584d18f032ec2f4d949a4993
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 72f90918afa275e56528016539ecb2eec93d5db0
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79082807"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090086"
 ---
 # <a name="tutorial-create-a-metrics-chart-in-azure-monitor"></a>教學課程：在 Azure 監視器中建立計量圖表
 計量瀏覽器是 Azure 入口網站中 Azure 監視器的功能之一，可讓您從計量值建立圖表、以視覺化方式將趨勢相互關聯，以及調查計量值的遽增和滑落。 使用計量瀏覽器可調查 Azure 資源的健康情況和使用量，或是從自訂計量繪製圖表。 
@@ -52,7 +52,7 @@ ms.locfileid: "79082807"
 
 4. 選擇性地變更計量**彙總**。 這會定義如何依據圖形的時間細微性來彙總計量值。 例如，如果時間細微性設定為 15 分鐘，而彙總設定為總和，則圖形中的每個點將是每個 15 分鐘的區段所收集到的所有值之總和。
 
-    ![圖表](media/tutorial-metrics-explorer/chart.png)
+    ![顯示 contosoretailweb 圖表 (標題為「總計輸入」) 的螢幕擷取畫面。](media/tutorial-metrics-explorer/chart.png)
 
 5. 如果您想要查看在相同圖表中繪製的多個計量，請使用 [新增計量]  按鈕，並重複前述步驟。 請針對單一檢視中的多個圖表，選取 [新增圖表]  按鈕。
 

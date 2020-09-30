@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: quickstart
 ms.date: 02/07/2019
 ms.author: matjazl
-ms.openlocfilehash: 7fa119db0c974c93aff667060d153b21b8de16bb
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 57ab6bca820c4c25a9a56e4a801aa7d917d317ec
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87843482"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90978563"
 ---
 # <a name="quickstart-deploy-open-source-fhir-server-using-azure-portal"></a>快速入門：使用 Azure 入口網站部署開放原始碼 FHIR 伺服器
 
@@ -25,17 +25,17 @@ ms.locfileid: "87843482"
 
 瀏覽至 [GitHub 部署頁面](https://github.com/Microsoft/fhir-server/blob/master/docs/DefaultDeployment.md)並找出 [部署至 Azure] 按鈕：
 
-![開放原始碼部署頁面](media/quickstart-oss-portal/deployment-page-oss.png)
+>[!div class="mx-imgBorder"]
+>![開放原始碼部署頁面](media/quickstart-oss-portal/deployment-page-oss.png)
 
 按一下部署按鈕，Azure 入口網站隨即開啟。
 
 ## <a name="fill-in-deployment-parameters"></a>填入部署參數
 
-選擇建立新的資源群組並賦予其名稱。 只有其他必要參數是服務的名稱。
+選擇建立新的資源群組並賦予其名稱。 其他必要參數是服務的名稱和 SQL 管理員密碼。
 
-![自訂部署參數](media/quickstart-oss-portal/deployment-custom-parameters.png)
-
-請注意，部署會直接從 GitHub 上的開放原始碼存放庫提取原始程式碼。 如果您已對存放庫進行分支處理，則可指向您自有和特定分支。
+>[!div class="mx-imgBorder"]
+>![自訂部署參數](media/quickstart-oss-portal/deployment-custom-parameters.png)
 
 填入詳細資料之後，您就可以開始部署。
 

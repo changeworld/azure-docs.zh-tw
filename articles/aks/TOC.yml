@@ -4,6 +4,8 @@
   items:
     - name: 關於 AKS
       href: intro-kubernetes.md
+    - name: 解決方案架構
+      href: /azure/architecture/reference-architectures/containers/aks-start-here?bc=%2fazure%2faks%2fbreadcrumb%2ftoc.json&toc=%2fazure%2faks%2ftoc.json
 - name: 快速入門
   expanded: true
   items:

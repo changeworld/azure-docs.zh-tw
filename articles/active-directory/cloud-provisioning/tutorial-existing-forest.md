@@ -1,6 +1,6 @@
 ---
 title: 教學課程 - 使用 Azure AD Connect 雲端佈建，將現有樹系和新樹系與單一 Azure AD 租用戶整合。
-description: 教學課程。
+description: 深入了解如何將雲端佈建新增至現有的混合式身分識別環境。 .
 services: active-directory
 author: billmath
 manager: daveba
@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eba35d6ffb4cbeb25d64d42adb2429636f1d56ce
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 25e70809becd59ceeb3c45867b9e35119df497a3
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89228462"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526913"
 ---
 # <a name="integrate-an-existing-forest-and-a-new-forest-with-a-single-azure-ad-tenant"></a>將現有及全新樹系與單一 Azure AD 租用戶整合
 
@@ -62,16 +62,16 @@ ms.locfileid: "89228462"
 6. 在啟動顯示畫面上**接受**授權條款，然後按一下 [安裝]  。</br>
 ![歡迎使用畫面](media/how-to-install/install1.png)</br>
 
-7. 此作業完成後，就會啟動組態精靈。  以 Azure AD 全域管理員帳戶登入。  請注意，如果您已啟用 IE 增強式安全性，則會封鎖登入。  在此情況下，請關閉安裝，在伺服器管理員中停用 [IE 增強式安全性]，然後按一下 [AAD Connect 佈建代理程式精靈]  以重新開始安裝。
-8. 在 [連接 Active Directory]  畫面上，按一下 [新增目錄]  ，然後以您的 Active Directory 網域系統管理員帳戶登入。  注意：網域系統管理員帳戶應該不會有密碼變更需求。 如果密碼過期或變更，您必須使用新的認證重新設定代理程式。 此作業將會新增您的內部部署目錄。  按 [下一步]  。</br>
+7. 此作業完成後，就會啟動組態精靈。  以 Azure AD 全域管理員帳戶登入。  請注意，如果您已啟用 IE 增強式安全性，則會封鎖登入。  在此情況下，請關閉安裝，在伺服器管理員中停用 [IE 增強式安全性]，然後按一下 [AAD Connect 佈建代理程式精靈] 以重新開始安裝。
+8. 在 [連接 Active Directory] 畫面上，按一下 [新增目錄]，然後以您的 Active Directory 網域系統管理員帳戶登入。  注意：網域系統管理員帳戶應該不會有密碼變更需求。 如果密碼過期或變更，您必須使用新的認證重新設定代理程式。 此作業將會新增您的內部部署目錄。  按 [下一步]  。</br>
 ![歡迎使用畫面](media/how-to-install/install3.png)</br>
 
-9. 在 [設定完成]  畫面上，按一下 [確認]  。  此作業將會註冊並重新啟動代理程式。</br>
+9. 在 [設定完成] 畫面上，按一下 [確認]。  此作業將會註冊並重新啟動代理程式。</br>
 ![歡迎使用畫面](media/how-to-install/install4.png)</br>
 
-10. 此作業完成後，您應該會看到一則通知：**已成功驗證您的代理程式設定。**  您可以按一下 [結束]  。</br>
+10. 此作業完成後，您應該會看到一則通知：**已成功驗證您的代理程式設定。**  您可以按一下 [結束]。</br>
 ![歡迎使用畫面](media/how-to-install/install5.png)</br>
-11. 如果您仍看到初始啟動顯示畫面，請按一下 [關閉]  。
+11. 如果您仍看到初始啟動顯示畫面，請按一下 [關閉]。
 
 
 ## <a name="verify-agent-installation"></a>驗證代理程式安裝
@@ -81,34 +81,34 @@ ms.locfileid: "89228462"
 若要確認 Azure 可看到代理程式，請遵循下列步驟：
 
 1. 登入 Azure 入口網站。
-2. 在左側選取 [Azure Active Directory]  ，按一下 [Azure AD Connect]  ，然後在中央選取 [管理佈建 (預覽)]  。</br>
+2. 在左側選取 [Azure Active Directory]，按一下 [Azure AD Connect]，然後在中央選取 [管理佈建 (預覽)]。</br>
 ![Azure 入口網站](media/how-to-install/install6.png)</br>
 
-3.  在 [Azure AD 佈建 (預覽)]  畫面上，按一下 [檢閱所有代理程式]  。
+3.  在 [Azure AD 佈建 (預覽)] 畫面上，按一下 [檢閱所有代理程式]。
 ![Azure AD 佈建](media/how-to-install/install7.png)</br>
  
-4. 在 [內部部署佈建代理程式]  畫面上，您會看到已安裝的代理程式。  確認相關代理程式位於該處，且已標示為 [作用中]  。
+4. 在 [內部部署佈建代理程式] 畫面上，您會看到已安裝的代理程式。  確認相關代理程式位於該處，且已標示為 [作用中]。
 ![佈建代理程式](media/how-to-install/verify1.png)</br>
 
 ### <a name="on-the-local-server"></a>在本機伺服器上
 若要確認代理程式正在執行中，請遵循下列步驟：
 
 1.  以系統管理員帳戶登入伺服器
-2.  瀏覽至 [服務] 或移至 [開始]/[執行]/[services.msc]，以開啟 [服務]  。
-3.  在 [服務]  底下，確定有 **Microsoft Azure AD Connect 代理程式更新程式**和 **Microsoft Azure AD Connect 佈建代理程式**存在，且狀態為 [執行中]  。
+2.  瀏覽至 [服務] 或移至 [開始]/[執行]/[services.msc]，以開啟 [服務]。
+3.  在 [服務] 底下，確定有 **Microsoft Azure AD Connect 代理程式更新程式**和 **Microsoft Azure AD Connect 佈建代理程式**存在，且狀態為 [執行中]。
 ![服務](media/how-to-troubleshoot/troubleshoot1.png)
 
 ## <a name="configure-azure-ad-connect-cloud-provisioning"></a>設定 Azure AD Connect 雲端佈建
  使用下列步驟來設定佈建
 
 1.  登入 AD Azure 入口網站。
-2.  按一下 [Azure Active Directory] 
-3.  按一下 [Azure AD Connect] 
+2.  按一下 [Azure Active Directory]
+3.  按一下 [Azure AD Connect]
 4.  選取 [管理佈建 (預覽)]
 ![螢幕擷取畫面顯示 [管理佈建 (預覽)] 連結。](media/how-to-configure/manage1.png)
 5.  按一下 [新增設定]
 ![[Azure AD 佈建 (預覽)] 畫面的螢幕擷取畫面，反白顯示了 [新增設定] 連結。](media/tutorial-single-forest/configure1.png)
-7.  在組態畫面上輸入 [通知電子郵件]  ，將選取器移至 [啟用]  ，然後按一下 [儲存]  。
+7.  在組態畫面上輸入 [通知電子郵件]，將選取器移至 [啟用]，然後按一下 [儲存]。
 ![[設定] 畫面的螢幕擷取畫面，其中已填入通知電子郵件並已選取啟用。](media/tutorial-single-forest/configure2.png)
 1.  設定狀態此時應顯示為 [狀況良好]。
 ![[Azure AD 佈建 (預覽)] 畫面的螢幕擷取畫面顯示狀況良好狀態。](media/how-to-configure/manage4.png)

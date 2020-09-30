@@ -4,14 +4,14 @@ description: 本文說明如何在 Azure 自動化中建立、測試及發佈簡
 keywords: runbook, runbook 範本, runbook 自動化, azure runbook
 services: automation
 ms.subservice: process-automation
-ms.date: 04/19/2020
+ms.date: 09/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: fa92cd4f4cba63eee09714813954af9fa9c9c4ea
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 81dc23c208ca9fb292c849bdf35d8b91311ed9ce
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290950"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987651"
 ---
 # <a name="tutorial-create-a-graphical-runbook"></a>教學課程：建立圖形化 Runbook
 
@@ -29,7 +29,7 @@ ms.locfileid: "87290950"
 
 若要完成此教學課程，您需要下列項目：
 
-* Azure 訂用帳戶。 如果您沒有這類帳戶，可以[啟用自己的 MSDN 訂戶權益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或註冊[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+* Azure 訂用帳戶。 如果您沒有這類帳戶，可以[啟用自己的 MSDN 訂戶權益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或註冊[免費帳戶](https://azure.microsoft.com/free)。
 * [自動化帳戶](../index.yml) ，用來保存 Runbook 以及向 Azure 資源驗證。 此帳戶必須擁有啟動和停止虛擬機器的權限。
 * Azure 虛擬機器。 您會停止並啟動這部電腦，因此其不該是生產 VM。
 * 如有必要，根據您所使用的 Cmdlet，[匯入 Azure 模組](../shared-resources/modules.md)或[更新模組](../automation-update-azure-modules.md)。
@@ -38,7 +38,7 @@ ms.locfileid: "87290950"
 
 由建立一個可輸出文字 `Hello World` 的簡單 Runbook 開始。
 
-1. 在 Azure 入口網站中，開啟您的自動化帳戶。 
+1. 在 Azure 入口網站中，開啟您的自動化帳戶。
 
     [自動化帳戶] 頁面提供這個帳戶中資源的快速檢視。 您應該已經有一些資產。 其中大部分資產是自動包含在新自動化帳戶的模組。 您也應該擁有與您的訂用帳戶相關聯的認證資產。
 
@@ -48,7 +48,9 @@ ms.locfileid: "87290950"
 
 4. 為 Runbook 提供名稱「MyFirstRunbook-Graphical」 。
 
-5. 在此情況下，您即將建立[圖形化 Runbook](../automation-graphical-authoring-intro.md)。 針對 [Runbook 類型] 選取 [圖形]。<br> ![新的 Runbook](../media/automation-tutorial-runbook-graphical/create-new-runbook.png)<br>
+5. 在此情況下，您即將建立[圖形化 Runbook](../automation-graphical-authoring-intro.md)。 針對 [Runbook 類型] 選取 [圖形]。
+
+    ![新的 Runbook](../media/automation-tutorial-runbook-graphical/create-new-runbook.png)
 
 6. 按一下 [建立]  來建立 Runbook 並開啟圖形化編輯器。
 
@@ -56,7 +58,9 @@ ms.locfileid: "87290950"
 
 編輯器左邊的 [程式庫] 控制項可讓您選取要加入到 Runbook 的活動。 您將會新增 `Write-Output` Cmdlet，以從 Runbook 輸出文字。
 
-1. 在 [程式庫] 控制項中，按一下搜尋欄位並輸入 `write-output`。 搜尋結果會顯示於下面的影像中。 <br> ![Microsoft.PowerShell.Utility](../media/automation-tutorial-runbook-graphical/search-powershell-cmdlet-writeoutput.png)
+1. 在 [程式庫] 控制項中，按一下搜尋欄位並輸入 `write-output`。 搜尋結果會顯示於下面的影像中。
+
+    ![Microsoft.PowerShell.Utility](../media/automation-tutorial-runbook-graphical/search-powershell-cmdlet-writeoutput.png)
 
 2. 向下捲動到清單底部。 以滑鼠右鍵按一下 **Write-Output** 並選取 [新增至畫布]。 或者，您可以按一下 Cmdlet 名稱旁的省略符號 (...)，然後選取 [新增至畫布]。
 
@@ -70,9 +74,9 @@ ms.locfileid: "87290950"
 
 6. 選取 `InputObject` 參數。 您會使用這個參數來指定要傳送至輸出資料流的文字。
 
-7. [資料來源]  下拉式功能表會提供您用來填入參數值的來源。 在此功能表中，選取 [PowerShell 運算式]。 
+7. [資料來源]  下拉式功能表會提供您用來填入參數值的來源。 在此功能表中，選取 [PowerShell 運算式]。
 
-   您可以使用來自這類來源的輸出，例如另一個活動、自動化資產或 PowerShell 運算式。 在此情況下，輸出就是 `Hello World`。 您可以使用 PowerShell 運算式，並指定字串。<br>
+   您可以使用來自這類來源的輸出，例如另一個活動、自動化資產或 PowerShell 運算式。 在此情況下，輸出就是 `Hello World`。 您可以使用 PowerShell 運算式，並指定字串。
 
 8. 在 [運算式] 欄位中，輸入 `Hello World`，然後按一下 [確定] 兩次以返回畫布。
 
@@ -92,7 +96,7 @@ ms.locfileid: "87290950"
 
 4. 當 Runbook 作業完成時，測試窗格會顯示其輸出。 在此情況下，您可看見 `Hello World`。
 
-    ![Hello World](../media/automation-tutorial-runbook-graphical/runbook-test-results.png)
+    ![Hello World Runbook 輸出](../media/automation-tutorial-runbook-graphical/runbook-test-results.png)
 
 5. 關閉 [測試] 窗格以返回畫布。
 
@@ -116,7 +120,7 @@ ms.locfileid: "87290950"
 
 7. 關閉 [輸出] 頁面。
 
-8. 按一下 [所有記錄]  以開啟 Runbook 作業的 [資料流] 窗格。 您應該只會在輸出資料流中看到 `Hello World`。 
+8. 按一下 [所有記錄]  以開啟 Runbook 作業的 [資料流] 窗格。 您應該只會在輸出資料流中看到 `Hello World`。
 
     請注意，[資料流] 窗格可顯示 Runbook 作業的其他資料流，例如 Runbook 寫入時出現的詳細資料和錯誤資料流。
 
@@ -139,7 +143,7 @@ ms.locfileid: "87290950"
 4. 在 [新增變數] 頁面上，在所提供的欄位中進行下列設定。
 
     * **名稱**：輸入 `AzureSubscriptionId`。
-    * **值**：輸入您的訂用帳戶 ID。 
+    * **值**：輸入您的訂用帳戶 ID。
     * **類型**：保留選取的字串。
     * **加密**：使用預設值。
 
@@ -147,7 +151,7 @@ ms.locfileid: "87290950"
 
 ## <a name="step-6---add-authentication"></a>步驟 6 - 新增驗證
 
-既然您已擁有用來保存訂用帳戶識別碼的變數，您可設定 Runbook，以使用執行身分認證來驗證您的訂用帳戶。 若要這麼做，請將 Azure 執行身分連線新增為資產。 您也必須將 [Connect-AzAccount](/powershell/module/az.accounts/Connect-AzAccount?view=azps-3.5.0) Cmdlet 和 [Set-AzContext](/powershell/module/az.accounts/Set-AzContext?view=azps-3.5.0) Cmdlet 新增至畫布。
+既然您已擁有用來保存訂用帳戶識別碼的變數，您可設定 Runbook，以使用執行身分認證來驗證您的訂用帳戶。 若要這麼做，請將 Azure 執行身分連線新增為資產。 您也必須將 [Connect-AzAccount](/powershell/module/az.accounts/Connect-AzAccount) Cmdlet 和 [Set-AzContext](/powershell/module/az.accounts/Set-AzContext) Cmdlet 新增至畫布。
 
 >[!NOTE]
 >針對 PowerShell Runbook，`Add-AzAccount` 和 `Add-AzureRMAccount` 是 `Connect-AzAccount` 的別名。 請注意，您的圖形化 Runbook 無法使用這些別名。 圖形化 Runbook 只能使用 `Connect-AzAccount` 本身。
@@ -164,7 +168,9 @@ ms.locfileid: "87290950"
 
 6. 將 `Connect-AzAccount` 新增至畫布。
 
-7. 將滑鼠停留在 `Get Run As Connection` 上，直到圖形底端出現圓形為止。 按一下圓形，然後將箭頭拖曳到 `Connect-AzAccount` 以形成連結。 Runbook 會從 `Get Run As Connection` 開始，然後執行 `Connect-AzAccount`。<br> ![建立活動之間的連結](../media/automation-tutorial-runbook-graphical/runbook-link-auth-activities.png)
+7. 將滑鼠停留在 `Get Run As Connection` 上，直到圖形底端出現圓形為止。 按一下圓形，然後將箭頭拖曳到 `Connect-AzAccount` 以形成連結。 Runbook 會從 `Get Run As Connection` 開始，然後執行 `Connect-AzAccount`。
+
+    ![建立活動之間的連結](../media/automation-tutorial-runbook-graphical/runbook-link-auth-activities.png)
 
 8. 在畫布上選取 `Connect-AzAccount`。 在 [設定控制項] 窗格的 [標籤] 欄位中，輸入 [登入 Azure]。
 
@@ -172,7 +178,9 @@ ms.locfileid: "87290950"
 
 10. `Connect-AzAccount` Cmdlet 有多個參數集，因此您必須先選取一個參數集，才能提供參數值。 按一下 [參數集]，然後選取 [ServicePrincipalCertificateWithSubscriptionId]。
 
-11. 此參數集的參數會顯示在 [活動參數設定] 頁面上。 按一下 [APPLICATIONID]。<br> ![新增 Azure 帳戶參數](../media/automation-tutorial-runbook-graphical/Add-AzureRmAccount-params.png)
+11. 此參數集的參數會顯示在 [活動參數設定] 頁面上。 按一下 [APPLICATIONID]。
+
+    ![新增 Azure 帳戶參數](../media/automation-tutorial-runbook-graphical/Add-AzureRmAccount-params.png)
 
 12. 在 [參數值] 頁面上，進行下列設定，然後按一下 [確定]。
 
@@ -186,13 +194,13 @@ ms.locfileid: "87290950"
     * 資料來源清單：選取 [取得自動化連線]。
     * **欄位路徑**：輸入 `CertificateThumbprint`。
 
-14. 按一下 [SERVICEPRINCIPAL]，並在 [參數值] 頁面中，針對 [資料來源] 欄位選取 [ConstantValue]，再按一下選項 [True]，然後按一下 [確定]。
+14. 按一下 [SERVICEPRINCIPAL]，並在 [參數值] 頁面中，針對 [資料來源] 欄位選取 [ConstantValue]。 按一下 [True] 選項，然後按一下 [確定]。
 
 15. 按一下 [TENANTID]，然後在 [參數值] 頁面上進行下列設定。 完成後，請按兩次 [確定]。
 
-    * **資料來源**：選取 [活動輸出]。 
+    * **資料來源**：選取 [活動輸出]。
     * 資料來源清單：選取 [取得自動化連線]。
-    * **欄位路徑**：輸入 `TenantId`。 
+    * **欄位路徑**：輸入 `TenantId`。
 
 16. 在 [程式庫] 控制項中，於搜尋欄位中輸入 `Set-AzContext`。
 
@@ -210,11 +218,11 @@ ms.locfileid: "87290950"
 
 23. 將滑鼠停留在 `Login to Azure` 上，直到圖形底端出現圓形為止。 按一下圓形，然後將箭頭拖曳到 `Specify Subscription Id`。 此時您的 Runbook 看起來應該像下面這樣。
 
-    ![Runbook 驗證組態](../media/automation-tutorial-runbook-graphical/runbook-auth-config.png)
+    :::image type="content" source="../media/automation-tutorial-runbook-graphical/runbook-auth-config.png" alt-text="Runbook 在將箭頭拖曳至 [指定訂用帳戶識別碼] 之後的螢幕擷取畫面。":::
 
 ## <a name="step-7---add-activity-to-start-a-virtual-machine"></a>步驟 7 - 加入活動以啟動虛擬機器
 
-您現在必須新增 `Start-AzVM` 活動以啟動虛擬機器。 您可以在您的 Azure 訂用帳戶中挑選任何 VM，而現在您會將其名稱硬式編碼到 [Start-AzVM](/powershell/module/az.compute/start-azvm?view=azps-3.5.0) Cmdlet 中。
+您現在必須新增 `Start-AzVM` 活動以啟動虛擬機器。 您可以在您的 Azure 訂用帳戶中挑選任何 VM，而現在您會將其名稱硬式編碼到 [Start-AzVM](/powershell/module/az.compute/start-azvm) Cmdlet 中。
 
 1. 在 [程式庫] 控制項中，於搜尋欄位中輸入 `Start-Az`。
 
@@ -226,15 +234,15 @@ ms.locfileid: "87290950"
 
 5. 選取參數集的 [ResourceGroupNameParameterSetName] 。 [ResourceGroupName] 和 [名稱] 欄位旁都有驚嘆號，表示其為必要參數。 請注意，這兩個欄位都需要有字串值。
 
-6. 選取 [Start-AzureRmVM] 。 針對 [資料來源] 欄位選擇 [PowerShell 運算式]。 針對您用來啟動此 Runbook 的 VM，請輸入以雙引號括住的電腦名稱。 按一下 [確定]。
+6. 選取 [Start-AzureRmVM] 。 針對 [資料來源] 欄位選擇 [PowerShell 運算式]。 針對您用來啟動此 Runbook 的 VM，請輸入以雙引號括住的電腦名稱。 按一下 [確定]  。
 
-7. 選取 [ResourceGroupName]。 針對 [資料來源] 欄位使用 [PowerShell 運算式] 值，然後輸入用雙引號括住的資源群組名稱。 按一下 [確定]。
+7. 選取 [ResourceGroupName]。 針對 [資料來源] 欄位使用 [PowerShell 運算式] 值，然後輸入用雙引號括住的資源群組名稱。 按一下 [確定]  。
 
 8. 按一下 [測試] 窗格，您便可測試 Runbook。
 
 9. 按一下 [開始] 以開始測試。 當測試完成後，請確定 VM 已啟動。 此時您的 Runbook 看起來應該像下面這樣。
 
-    ![Runbook 驗證組態](../media/automation-tutorial-runbook-graphical/runbook-startvm.png)
+    ![Runbook Start-AzVM 輸出](../media/automation-tutorial-runbook-graphical/runbook-startvm.png)
 
 ## <a name="step-8---add-additional-input-parameters"></a>步驟 8 -新增其他輸入參數
 
@@ -249,13 +257,17 @@ ms.locfileid: "87290950"
    * **類型**：保留字串設定。
    * **必要**：將值變更為 [是]。
 
-4. 建立稱為 `ResourceGroupName` 的第二個必要輸入參數，然後按一下 [確定] 來關閉 [輸入和輸出] 窗格。<br> ![Runbook 輸入參數](../media/automation-tutorial-runbook-graphical/start-azurermvm-params-outputs.png)
+4. 建立稱為 `ResourceGroupName` 的第二個必要輸入參數，然後按一下 [確定] 來關閉 [輸入和輸出] 窗格。
+
+    ![Runbook 輸入參數](../media/automation-tutorial-runbook-graphical/start-azurermvm-params-outputs.png)
 
 5. 選取 `Start-AzVM` 活動，然後按一下 [參數]。
 
 6. 將 [名稱] 的 [資料來源] 欄位變更為 [Runbook 輸入]。 然後選取 [VMName]。
 
-7. 將 [ResourceGroupName] 的 [資料來源] 欄位變更為 [Runbook 輸入]，然後選取 [ResourceGroupName]。<br> ![Start-AzVM 參數](../media/automation-tutorial-runbook-graphical/start-azurermvm-params-runbookinput.png)
+7. 將 [ResourceGroupName] 的 [資料來源] 欄位變更為 [Runbook 輸入]，然後選取 [ResourceGroupName]。
+
+    ![Start-AzVM 參數](../media/automation-tutorial-runbook-graphical/start-azurermvm-params-runbookinput.png)
 
 8. 儲存 Runbook 並開啟 [測試] 窗格。 您現在可以提供測試中使用的兩個輸入變數的值。
 
@@ -271,7 +283,7 @@ ms.locfileid: "87290950"
 
 ## <a name="step-9---create-a-conditional-link"></a>步驟 9 - 建立條件式連結
 
-您現在可以修改 Runbook，使其只會在 VM 尚未啟動時嘗試加以啟動。 若要這麼做，請新增 [Get-AzVM](/powershell/module/Az.Compute/Get-AzVM?view=azps-3.5.0) Cmdlet 以擷取 VM 的執行個體層級狀態。 然後您可新增名為 `Get Status` 的 PowerShell 工作流程程式碼模組與 PowerShell 程式碼片段，以判斷 VM 狀態為執行中還是已停止。 只有當目前執行中狀態為已停止時，`Get Status`模組中的條件式連結才會執行 `Start-AzVM`。 在此程序結束時，您的 Runbook 會使用 `Write-Output` Cmdlet 來輸出訊息，以通知您 VM 是否已成功啟動。
+您現在可以修改 Runbook，使其只會在 VM 尚未啟動時嘗試加以啟動。 若要這麼做，請新增 [Get-AzVM](/powershell/module/Az.Compute/Get-AzVM) Cmdlet 以擷取 VM 的執行個體層級狀態。 然後您可新增名為 `Get Status` 的 PowerShell 工作流程程式碼模組與 PowerShell 程式碼片段，以判斷 VM 狀態為執行中還是已停止。 只有當目前執行中狀態為已停止時，`Get Status`模組中的條件式連結才會執行 `Start-AzVM`。 在此程序結束時，您的 Runbook 會使用 `Write-Output` Cmdlet 來輸出訊息，以通知您 VM 是否已成功啟動。
 
 1. 在圖形化編輯器中開啟 **MyFirstRunbook-Graphical**。
 
@@ -281,15 +293,15 @@ ms.locfileid: "87290950"
 
 4. 將 `Get-AzVM` 新增至畫布。
 
-5. 選取 `Get-AzVM`，然後按一下 [參數集] 以檢視 Cmdlet 的集合。 
+5. 選取 `Get-AzVM`，然後按一下 [參數集] 以檢視 Cmdlet 的集合。
 
 6. 選取 [GetVirtualMachineInResourceGroupNameParamSet]  參數集。 [ResourceGroupName] 和 [名稱] 欄位旁都有驚嘆號，表示其指定必要的參數。 請注意，這兩個欄位都需要有字串值。
 
-7. 在 [名稱] 的 [資料來源] 底下，選取 [Runbook 輸入]，然後選取 [VMName]。 按一下 [確定]。
+7. 在 [名稱] 的 [資料來源] 底下，選取 [Runbook 輸入]，然後選取 [VMName]。 按一下 [確定]  。
 
-8. 在 [ResourceGroupName] 的 [資料來源] 底下，選取 [Runbook 輸入]，然後選取 [ResourceGroupName]。 按一下 [確定]。
+8. 在 [ResourceGroupName] 的 [資料來源] 底下，選取 [Runbook 輸入]，然後選取 [ResourceGroupName]。 按一下 [確定]  。
 
-9. 在 [狀態] 的 [資料來源] 底下，選取 [常數值]，然後選取 [True]。 按一下 [確定]。
+9. 在 [狀態] 的 [資料來源] 底下，選取 [常數值]，然後選取 [True]。 按一下 [確定]  。
 
 10. 建立從 `Specify Subscription Id` 到 `Get-AzVM` 的連結。
 
@@ -303,16 +315,17 @@ ms.locfileid: "87290950"
 
 15. 將以下程式碼片段貼到編輯器頁面中。
 
-    ```powershell-interactive
-     $StatusesJson = $ActivityOutput['Get-AzVM'].StatusesText
-     $Statuses = ConvertFrom-Json $StatusesJson
-     $StatusOut =""
-     foreach ($Status in $Statuses){
-     if($Status.Code -eq "Powerstate/running"){$StatusOut = "running"}
-     elseif ($Status.Code -eq "Powerstate/deallocated") {$StatusOut = "stopped"}
-     }
-     $StatusOut
-     ```
+    ```powershell
+    $Statuses = $ActivityOutput['Get-AzVM'].Statuses
+    $StatusOut = ""
+    foreach ($Status in $Statuses) {
+      if($Status.Code -eq "Powerstate/running")
+        {$StatusOut = "running"}
+      elseif ($Status.Code -eq "Powerstate/deallocated")
+        {$StatusOut = "stopped"}
+    }
+    $StatusOut
+    ```
 
 16. 建立從 `Get Status` 到 `Start-AzVM` 的連結。
 
@@ -355,4 +368,4 @@ ms.locfileid: "87290950"
 * 若要深入了解圖形化編寫，請參閱[在 Azure 自動化中製作圖形化 Runbook](../automation-graphical-authoring-intro.md)。
 * 若要開始使用 PowerShell Runbook，請參閱[建立 PowerShell Runbook](automation-tutorial-runbook-textual-powershell.md)。
 * 若要開始使用 PowerShell 工作流程 Runbook，請參閱[建立 PowerShell 工作流程 Runbook](automation-tutorial-runbook-textual.md)。
-* 如需 PowerShell Cmdlet 參考，請參閱 [Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation)。
+* 如需 PowerShell Cmdlet 參考，請參閱 [Az.Automation](/powershell/module/az.automation)。

@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 03/03/2018
 ms.author: stefsch
 ms.custom: mvc, seodec18
-ms.openlocfilehash: e40a42afc99d505dc48794d5ad919e4d682b7070
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 354568fa3ab3816b643a8f08305ab55868a9b0b6
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88961834"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90973701"
 ---
 # <a name="configuring-a-web-application-firewall-waf-for-app-service-environment"></a>設定 App Service 環境的 Web 應用程式防火牆 (WAF)
 ## <a name="overview"></a>概觀
@@ -26,7 +26,7 @@ Web 應用程式防火牆 (WAF) 會檢查輸入的 Web 流量以封鎖 SQL 插�
 ## <a name="setup"></a>安裝程式
 在本文中，我們會設定受多個 Barracuda WAF 負載平衡執行個體保護的 App Service 環境，只讓來自 WAF 的流量到達 App Service 環境，而且無法從 DMZ 存取。 在 Barracuda WAF 執行個體之前，我們也有「Azure 流量管理員」可在 Azure 資料中心和區域中進行負載平衡。 設定的概覽圖表看起來會如下圖所示：
 
-![架構][Architecture] 
+![圖表顯示一個選擇性的 Azure 流量管理員，連線到 Web 應用程式防火牆的執行個體、連線到網路 ACL，只允許來自包含兩個區域 Web、API 和行動應用程式的 App Service 環境中防火牆的流量。][Architecture] 
 
 > [!NOTE]
 > 透過引進 [App Service 環境的 ILB 支援](app-service-environment-with-internal-load-balancer.md)，您可以設定讓 ASE 無法從 DMZ 存取，且僅可供私人網路使用。 

@@ -1,5 +1,5 @@
 ---
-title: 在 Azure IoT Central 中定義新的閘道裝置類型 | Microsoft Docs
+title: 教學課程 - 在 Azure IoT Central 中定義新的閘道裝置類型 | Microsoft Docs
 description: 本教學課程將為建置者說明如何在 Azure IoT Central 應用程式中定義新的 IoT 閘道裝置類型。
 author: rangv
 ms.author: rangv
@@ -9,14 +9,14 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 2411eab50cc921a09ba55780b3c6620744a78f3f
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.openlocfilehash: 58e481e34d9f798b73b72b114b071cf035c3319f
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81758122"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90967907"
 ---
-# <a name="define-a-new-iot-gateway-device-type-in-your-azure-iot-central-application"></a>在 Azure IoT Central 應用程式中定義新的 IoT 閘道裝置類型
+# <a name="tutorial---define-a-new-iot-gateway-device-type-in-your-azure-iot-central-application"></a>教學課程 - 在 Azure IoT Central 應用程式中定義新的 IoT 閘道裝置類型
 
 *本文適用於解決方案建置人員和裝置開發人員。*
 
@@ -31,6 +31,9 @@ ms.locfileid: "81758122"
 * 傳送自己的遙測，例如溫度。
 * 回應由操作員所進行的可寫入屬性更新。 例如，操作員可能會變更遙測傳送間隔。
 * 回應命令，例如重新啟動裝置。
+
+> [!div class="checklist"]
+> 建立下游裝置範本建立閘道裝置範本發佈裝置範本建立模擬裝置
 
 ## <a name="prerequisites"></a>Prerequisites
 

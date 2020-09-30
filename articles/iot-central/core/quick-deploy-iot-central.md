@@ -1,6 +1,6 @@
 ---
-title: 建立 Azure IoT Central 應用程式 | Microsoft Docs
-description: 建立新的 Azure IoT Central 應用程式。 使用免費定價方案或其中一個標準定價方案來建立應用程式。
+title: 快速入門 - 建立 Azure IoT Central 應用程式 | Microsoft Docs
+description: 快速入門 - 建立新的 Azure IoT Central 應用程式。 使用免費定價方案或其中一個標準定價方案來建立應用程式。
 author: viv-liu
 ms.author: viviali
 ms.date: 07/30/2020
@@ -9,14 +9,14 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: corywink
-ms.openlocfilehash: 4b939505f807385f235def2606d0f29564f5d08f
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 477da41bab48ee49727ec2a8c029e748d6e7f863
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87552572"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987378"
 ---
-# <a name="create-an-azure-iot-central-application"></a>建立 Azure IoT Central 應用程式
+# <a name="quickstart---create-an-azure-iot-central-application"></a>快速入門 - 建立 Azure IoT Central 應用程式
 
 本快速入門說明如何建立 Azure IoT Central 應用程式。
 

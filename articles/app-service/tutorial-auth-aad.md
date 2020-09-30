@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 04/29/2020
 ms.custom: devx-track-csharp, seodec18
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: c1c3f52dafe63e3f829eb12d4fb872ed3ce85f36
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: abda26e359becb137d4c0c9f2965ebfbb5ee047c
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88211714"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90982905"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service"></a>教學課程：在 Azure App Service 中對使用者進行端對端驗證和授權
 
@@ -145,7 +145,7 @@ http://<back-end-app-name>.azurewebsites.net
 http://<front-end-app-name>.azurewebsites.net
 ```
 
-![在 Azure App Service 中執行的 ASP.NET Core API](./media/tutorial-auth-aad/azure-run.png)
+:::image type="content" source="./media/tutorial-auth-aad/azure-run.png" alt-text="瀏覽器視窗中 Azure App Service Rest API 範例的螢幕擷取畫面，其中顯示「待辦事項清單」應用程式。":::
 
 > [!NOTE]
 > 如果應用程式重新啟動，您可能會發現新的資料已被清除。 這是刻意設計的行為，因為範例 ASP.NET Core 應用程式會使用記憶體內部資料庫。
@@ -225,7 +225,7 @@ git push frontend master
 
 瀏覽至 `http://<back-end-app-name>.azurewebsites.net`，以查看從前端應用程式新增的項目。 此外，請新增一些項目 (例如 `from back end 1` 和 `from back end 2`)，然後重新整理前端應用程式，以查看它是否反映這些變更。
 
-![在 Azure App Service 中執行的 ASP.NET Core API](./media/tutorial-auth-aad/remote-api-call-run.png)
+:::image type="content" source="./media/tutorial-auth-aad/remote-api-call-run.png" alt-text="瀏覽器視窗中 Azure App Service Rest API 範例的螢幕擷取畫面，其中顯示「待辦事項清單」應用程式。":::
 
 ## <a name="configure-auth"></a>設定驗證
 
@@ -239,7 +239,7 @@ git push frontend master
 
 在 [資源群組]**** 中，尋找並選取資源群組。 在 [概觀]**** 中，選取後端應用程式的管理頁面。
 
-![在 Azure App Service 中執行的 ASP.NET Core API](./media/tutorial-auth-aad/portal-navigate-back-end.png)
+:::image type="content" source="./media/tutorial-auth-aad/portal-navigate-back-end.png" alt-text="瀏覽器視窗中 Azure App Service Rest API 範例的螢幕擷取畫面，其中顯示「待辦事項清單」應用程式。":::
 
 在後端應用程式的左側功能表中，按一下 [驗證/授權]****，然後選取 [開啟]**** 以啟用 App Service 驗證。
 
@@ -247,7 +247,7 @@ git push frontend master
 
 在 [驗證提供者]**** 底下，選取 [Azure Active Directory]****。
 
-![在 Azure App Service 中執行的 ASP.NET Core API](./media/tutorial-auth-aad/configure-auth-back-end.png)
+:::image type="content" source="./media/tutorial-auth-aad/configure-auth-back-end.png" alt-text="瀏覽器視窗中 Azure App Service Rest API 範例的螢幕擷取畫面，其中顯示「待辦事項清單」應用程式。":::
 
 選取 [快速]****，然後接受預設設定以建立新的 AD 應用程式，並選取 [確定]****。
 
@@ -259,7 +259,7 @@ git push frontend master
 
 將 Azure AD 應用程式的**用戶端識別碼**複製到記事本。 您後續會用到此值。
 
-![在 Azure App Service 中執行的 ASP.NET Core API](./media/tutorial-auth-aad/get-application-id-back-end.png)
+:::image type="content" source="./media/tutorial-auth-aad/get-application-id-back-end.png" alt-text="瀏覽器視窗中 Azure App Service Rest API 範例的螢幕擷取畫面，其中顯示「待辦事項清單」應用程式。":::
 
 如果您在這裡停止，您會有一個已受到 App Service 驗證和授權保護的獨立應用程式。 其餘各節將說明如何藉由讓已驗證的使用者從前端「流向」後端，以保護多應用程式解決方案。 
 
@@ -284,13 +284,13 @@ git push frontend master
 
 選取 [應用程式註冊]**** > [擁有的應用程式]**** > [檢視此目錄中的所有應用程式]****。 選取您的前端應用程式名稱，然後選取 [API 權限]****。
 
-![在 Azure App Service 中執行的 ASP.NET Core API](./media/tutorial-auth-aad/add-api-access-front-end.png)
+:::image type="content" source="./media/tutorial-auth-aad/add-api-access-front-end.png" alt-text="瀏覽器視窗中 Azure App Service Rest API 範例的螢幕擷取畫面，其中顯示「待辦事項清單」應用程式。":::
 
 選取 [新增權限]****，然後選取 [我的組織使用的 API]**** >  **\<back-end-app-name>** 。
 
 在後端應用程式的 [要求 API 權限]**** 頁面中，選取 [委派的權限]**** 和 [user_impersonation]****，然後選取 [新增權限]****。
 
-![在 Azure App Service 中執行的 ASP.NET Core API](./media/tutorial-auth-aad/select-permission-front-end.png)
+:::image type="content" source="./media/tutorial-auth-aad/select-permission-front-end.png" alt-text="瀏覽器視窗中 Azure App Service Rest API 範例的螢幕擷取畫面，其中顯示「待辦事項清單」應用程式。":::
 
 ### <a name="configure-app-service-to-return-a-usable-access-token"></a>設定 App Service，以傳回可使用的存取權杖
 
@@ -300,7 +300,7 @@ git push frontend master
 
 現在，在資源樹狀結構中選取您的前端應用程式，以開啟 [Azure 資源總管](https://resources.azure.com)。 在頁面頂端按一下 [讀取/寫入]****，以啟用 Azure 資源的編輯。
 
-![在 Azure App Service 中執行的 ASP.NET Core API](./media/tutorial-auth-aad/resources-enable-write.png)
+:::image type="content" source="./media/tutorial-auth-aad/resources-enable-write.png" alt-text="瀏覽器視窗中 Azure App Service Rest API 範例的螢幕擷取畫面，其中顯示「待辦事項清單」應用程式。":::
 
 在左側瀏覽器中，向下切入至 [config]**** > [authsettings]****。
 
@@ -310,7 +310,7 @@ git push frontend master
 "additionalLoginParams": ["response_type=code id_token","resource=<back-end-client-id>"],
 ```
 
-![在 Azure App Service 中執行的 ASP.NET Core API](./media/tutorial-auth-aad/additional-login-params-front-end.png)
+:::image type="content" source="./media/tutorial-auth-aad/additional-login-params-front-end.png" alt-text="瀏覽器視窗中 Azure App Service Rest API 範例的螢幕擷取畫面，其中顯示「待辦事項清單」應用程式。":::
 
 按一下 **PUT** 以儲存您的設定。
 

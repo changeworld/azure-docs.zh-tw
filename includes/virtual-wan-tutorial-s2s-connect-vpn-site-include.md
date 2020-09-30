@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 11/04/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 8b338f25e9771f5947fd494cfb00d0f6cb9ef67a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 897e36a6c5165549d7809512d0298fa2cfed2fa8
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75450849"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90606534"
 ---
 1. 選取 [連線到 VPN 網站]  ，以開啟 [連線網站]  頁面。
 
-    ![connect](./media/virtual-wan-tutorial-connect-vpn-site-include/connect.png "連線")
+    ![螢幕擷取畫面顯示虛擬中樞的 [已連線的網站] 窗格，適用於預先共用金鑰和相關聯的設定。](./media/virtual-wan-tutorial-connect-vpn-site-include/connect.png "連線")
 
    完成以下欄位：
 
@@ -28,7 +28,7 @@ ms.locfileid: "75450849"
 2. 選取 [連接]  。
 3. 幾分鐘後，網站將會顯示連線和連線狀態。
 
-   ![status](./media/virtual-wan-tutorial-connect-vpn-site-include/status.png "status")
+   ![螢幕擷取畫面顯示 VPN 站對站連線和連線能力狀態。](./media/virtual-wan-tutorial-connect-vpn-site-include/status.png "status")
 
    **連線狀態：** 這是針對 VPN 網站連線至 Azure 中樞 VPN 閘道的連線，在 Azure 資源的狀態。 一旦此控制平面作業成功，Azure VPN 閘道和內部部署 VPN 裝置將繼續建立連線。
 

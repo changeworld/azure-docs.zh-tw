@@ -1,6 +1,6 @@
 ---
 title: 使用 CSP 合作夥伴資訊向 Azure 中的 Cloudyn 註冊
-description: 本快速入門詳細說明建立 Cloudyn 試用訂用帳戶並登入 Cloudyn 入口網站所需的註冊程序。
+description: 了解建立 Cloudyn 試用訂用帳戶並登入 Cloudyn 入口網站所需註冊程序的詳細資料。
 author: bandersmsft
 ms.author: banders
 ms.date: 03/12/2020
@@ -10,12 +10,12 @@ ms.service: cost-management-billing
 ms.subservice: cloudyn
 ms.reviewer: benshy
 ROBOTS: NOINDEX
-ms.openlocfilehash: 518d4d0f672ae0e83748dbf7dc0a87097ca7bbf7
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 92d4c84cc73ea05f58912549674f76513e3faeb1
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88688159"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985504"
 ---
 # <a name="register-with-the-csp-partner-program-and-view-cost-data"></a>註冊 CSP 合作夥伴計劃並檢視成本資料
 

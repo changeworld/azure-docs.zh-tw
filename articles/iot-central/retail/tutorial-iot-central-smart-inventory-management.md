@@ -5,14 +5,14 @@ author: KishorIoT
 ms.author: nandab
 ms.service: iot-central
 ms.subservice: iot-central-retail
-ms.topic: overview
+ms.topic: tutorial
 ms.date: 10/20/2019
-ms.openlocfilehash: 430f477422e040e0e7e28fd69a1cbc18bce7d656
-ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+ms.openlocfilehash: 827d571a6545d0aaffb0f96134fcf094eaa5f26b
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "81001277"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90980610"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-smart-inventory-management-application-template"></a>教學課程：部署和逐步執行智慧庫存管理應用程式範本
 
@@ -36,7 +36,7 @@ ms.locfileid: "81001277"
 1. 瀏覽至 Azure IoT Central 應用程式管理員網站。 從左側導覽列選取 [建置]  ，然後按一下 [零售]  索引標籤。
 
     > [!div class="mx-imgBorder"]
-    > ![智慧庫存管理儀表板](./media/tutorial-iot-central-smart-inventory-management/iotc_retail_homepage.png)
+    > ![顯示如何選取智慧庫存管理應用程式範本的螢幕擷取畫面](./media/tutorial-iot-central-smart-inventory-management/iotc_retail_homepage.png)
 
 2. 選取 [零售]  索引標籤，然後選取 [智慧庫存管理]  底下的 [建立應用程式]  。
 
@@ -47,10 +47,10 @@ ms.locfileid: "81001277"
    **建立**：選取頁面底部的 [建立]，以部署您的應用程式。
 
     > [!div class="mx-imgBorder"]
-    > ![智慧庫存管理儀表板](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_app_create.png)
+    > ![顯示如何從智慧庫存管理應用程式範本建立應用程式的螢幕擷取畫面](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_app_create.png)
 
     > [!div class="mx-imgBorder"]
-    > ![智慧庫存管理計費資訊](./media/tutorial-iot-central-smart-inventory-management/smart-inventory-management-app-create-billinginfo.png)
+    > ![顯示當您建立應用程式時計費選項的螢幕擷取畫面](./media/tutorial-iot-central-smart-inventory-management/smart-inventory-management-app-create-billinginfo.png)
 
 ## <a name="walk-through-the-application"></a>逐步執行應用程式 
 
@@ -63,14 +63,14 @@ ms.locfileid: "81001277"
    * 檢視閘道位置、狀態及相關詳細資料 
 
 > [!div class="mx-imgBorder"]
-> ![智慧庫存管理儀表板](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_dashboard1.png)
+> ![顯示智慧庫存管理儀表板上半部的螢幕擷取畫面](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_dashboard1.png)
 
    * 您可以輕鬆地追蹤閘道、作用中和未知標籤的總數。
    * 您可以執行裝置管理操作，例如，更新韌體、停用感應器、啟用感應器、更新感應器閾值、更新遙測間隔，以及更新裝置服務合約。
    * 閘道裝置可以透過完整或增量掃描，依需求執行庫存管理。
 
 > [!div class="mx-imgBorder"]
-> ![智慧庫存管理儀表板](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_dashboard2.png)
+> ![顯示智慧庫存管理儀表板下半部的螢幕擷取畫面](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_dashboard2.png)
 
 ## <a name="device-template"></a>裝置範本
 按一下 [裝置範本] 索引標籤，您將看到閘道功能模型。 功能模型會以兩個不同的介面 [閘道遙測資料和屬性]  和 [閘道命令]  來結構化
@@ -78,13 +78,13 @@ ms.locfileid: "81001277"
 **閘道遙測資料和屬性**：此介面代表所有與感應器、位置和裝置資訊相關的遙測資料，以及裝置對應項屬性功能，例如，感應器閾值和更新間隔。
 
 > [!div class="mx-imgBorder"]
-> ![智慧庫存管理儀表板](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_devicetemplate1.png)
+> ![顯示應用程式中庫存閘道裝置範本的螢幕擷取畫面](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_devicetemplate1.png)
 
 
 **閘道命令**：此介面會組織所有閘道命令功能
 
 > [!div class="mx-imgBorder"]
-> ![智慧庫存管理儀表板](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_devicetemplate2.png)
+> ![顯示庫存閘道裝置範本中閘道命令介面的螢幕擷取畫面](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_devicetemplate2.png)
 
 ## <a name="rules"></a>規則
 選取 [規則] 索引標籤，以查看存在於此應用程式範本中的兩個不同規則。 這些規則會設定為向操作員傳送電子郵件通知，以供進一步調查。
@@ -94,7 +94,7 @@ ms.locfileid: "81001277"
 **未知的標籤**：追蹤每個與資產相關聯的 RFID 和 BLE 標籤非常重要。 如果閘道偵測到太多未知的標籤，這就表示要使用標籤來源應用程式進行同步處理挑戰。
 
 > [!div class="mx-imgBorder"]
-> ![智慧庫存管理儀表板](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_rules.png)
+> ![顯示智慧庫存管理應用程式中規則清單的螢幕擷取畫面](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_rules.png)
 
 ## <a name="jobs"></a>工作
 選取 [作業] 索引標籤，以查看存在於此應用程式範本中的五個不同作業：您可以使用作業功能來執行整個解決方案的操作。 在這裡，庫存管理作業會使用裝置命令和對應項功能來執行如下的工作：
@@ -103,16 +103,18 @@ ms.locfileid: "81001277"
    * 在整個解決方案中依需求執行庫存掃描。
 
 > [!div class="mx-imgBorder"]
-> ![智慧庫存管理儀表板](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_jobs.png)
+> ![顯示智慧庫存管理應用程式中作業清單的螢幕擷取畫面](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_jobs.png)
 
 ## <a name="clean-up-resources"></a>清除資源
 
 如果您不打算繼續使用此應用程式，請覽 [系統管理]   > [應用程式設定]  ，然後按一下 [刪除]  以刪除應用程式範本。
 
 > [!div class="mx-imgBorder"]
-> ![智慧庫存管理儀表板](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_cleanup.png)
+> ![顯示當您完成應用程式時如何將其刪除的螢幕擷取畫面](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_cleanup.png)
 
 ## <a name="next-steps"></a>後續步驟
-* 深入了解智慧庫存管理[智慧庫存管理概念](./architecture-smart-inventory-management.md)
+* 深入了解智慧庫存管理 
+> [!div class="nextstepaction"]
+> [智慧庫存管理概念](./architecture-smart-inventory-management.md)
 * 深入了解其他 [IoT Central 零售範本](./overview-iot-central-retail.md)
 * 若要深入了解 IoT Central，請參閱 [IoT Central 概觀](../core/overview-iot-central.md)

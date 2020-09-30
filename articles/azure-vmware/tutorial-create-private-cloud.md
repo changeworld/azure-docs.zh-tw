@@ -3,12 +3,12 @@ title: 教學課程 - 在 Azure 中部署 vSphere 叢集
 description: 了解如何使用 Azure VMWare 解決方案在 Azure 中部署 vSphere 叢集
 ms.topic: tutorial
 ms.date: 09/07/2020
-ms.openlocfilehash: 69a29a459ba283bb34169112ac2fa174ac6a14af
-ms.sourcegitcommit: 8791f69d44150767807d215cafc4076f3ed43f9f
+ms.openlocfilehash: 2aa9d64dfa143e77b0edcc0c32a853645803ef67
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89512352"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985944"
 ---
 # <a name="tutorial-deploy-an-azure-vmware-solution-private-cloud-in-azure"></a>教學課程：在 Azure 中部署 Azure VMware 解決方案私人雲端
 
@@ -76,14 +76,24 @@ azurecli-interactive
 az vmware private-cloud create -g myResourceGroup -n myPrivateCloudName --location eastus --cluster-size 3 --network-block xx.xx.xx.xx/22 --sku AV36
 ```
 
-## <a name="delete-a-private-cloud-azure-portal"></a>刪除私人雲端 (Azure 入口網站)
+## <a name="delete-an-azure-vmware-solution-private-cloud"></a>刪除 Azure VMware 解決方案私人雲端
 
-如果您有不再需要的 Azure VMware 解決方案私人雲端，可以將其刪除。 刪除私人雲端時，會刪除所有的叢集及其所有元件。
-
-若要這麼做，請瀏覽至 Azure 入口網站中的私人雲端，然後選取 [刪除]。 在確認頁面上，確認私人雲端的名稱，然後選取 [是]。
+如果您有不再需要的 Azure VMware 解決方案私人雲端，可以將其刪除。 Azure VMware 解決方案私人雲端包含一個隔離的網路網域、一個或多個佈建在專用伺服器節點上的 vSphere 叢集，且通常是許多虛擬機器。 刪除私人雲端時，會刪除所有的虛擬機器、其資料和叢集。 系統會安全地抹除專用的裸機節點，並將其傳回到可用的集區。 已刪除為客戶佈建的網路網域。  
 
 > [!CAUTION]
-> 刪除私人雲端是無法復原的作業。 一旦刪除私人雲端，就無法復原資料，因為此舉會終止所有執行中的工作負載和元件，並終結所有的私人雲端資料和組態設定，包括公用 IP 位址。 
+> 刪除私人雲端是無法復原的作業。 一旦刪除私人雲端，就無法復原資料，因為此舉會終止所有執行中的工作負載和元件，並終結所有的私人雲端資料和組態設定，包括公用 IP 位址。
+
+### <a name="prerequisites"></a>必要條件
+
+一旦刪除私人雲端之後，就無法復原虛擬機器和其資料。 如果稍後需要虛擬機器資料，則系統管理員必須先備份所有資料，然後再刪除私人雲端。
+
+### <a name="steps-to-delete-an-azure-vmware-solution-private-cloud"></a>刪除 Azure VMware 解決方案私人雲端的步驟
+
+1. 存取 Azure 入口網站中的 Azure VMware 解決方案頁面。
+
+2. 選取要刪除的私人雲端。
+ 
+3. 輸入私人雲端的名稱，然後選取 [是]。 在幾個小時內，刪除程序將會完成。  
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -91,7 +101,8 @@ az vmware private-cloud create -g myResourceGroup -n myPrivateCloudName --locati
 
 > [!div class="checklist"]
 > * 建立 Azure VMware 解決方案私人雲端
-> * 驗證已部署私人雲端
+> * 確認已部署私人雲端
+> * 刪除 Azure VMware 解決方案私人雲端
 
 繼續進行下一個教學課程，以了解如何在設定私人雲端叢集的本機管理時，建立虛擬網路以與私人雲端搭配使用。
 

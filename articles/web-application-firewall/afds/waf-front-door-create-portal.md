@@ -5,18 +5,18 @@ author: vhorne
 ms.service: web-application-firewall
 services: web-application-firewall
 ms.topic: tutorial
-ms.date: 03/10/2020
+ms.date: 09/15/2020
 ms.author: victorh
-ms.openlocfilehash: be66a93ea4a518b26d973d222caf58e73b6986a3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7c7ea5297276ed9a1d1f2ca8f4190997dcab57c3
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79475836"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90602212"
 ---
 # <a name="tutorial-create-a-web-application-firewall-policy-on-azure-front-door-using-the-azure-portal"></a>教學課程：使用 Azure 入口網站在 Azure Front Door 上建立 Web 應用程式防火牆原則
 
-此教學課程說明如何建立基本的 Azure Web 應用程式防火牆 (WAF) 原則，並將它套用至 Azure Front Door 的前端主機。
+此教學課程說明如何建立基本的 Azure Web 應用程式防火牆 (WAF) 原則，並將其套用至 Azure Front Door 的前端主機。
 
 在本教學課程中，您會了解如何：
 
@@ -68,7 +68,7 @@ ms.locfileid: "79475836"
 
 您可以選取 [自訂規則]  區段下的 [新增自訂規則]  來建立自訂規則。 這會啟動 [自訂規則設定] 頁面。 以下範例說明如何設定自訂規則，以在查詢字串包含 **blockme** 時封鎖要求。
 
-![變更 WAF 原則模式](../media/waf-front-door-create-portal/customquerystring2.png)
+![自訂規則](../media/waf-front-door-create-portal/customquerystring2.png)
 
 ### <a name="default-rule-set-drs"></a>預設規則集 (DRS)
 
@@ -76,8 +76,11 @@ ms.locfileid: "79475836"
 
  ![變更 WAF 規則集](../media/waf-front-door-create-portal/managed2.png)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="clean-up-resources"></a>清除資源
+
+當不再需要資源時，請移除資源群組及所有相關資源。
+
+## <a name="next-steps"></a>下一步
 
 > [!div class="nextstepaction"]
-> [深入了解 Azure Web 應用程式防火牆](../overview.md)
 > [深入了解 Azure Front Door](../../frontdoor/front-door-overview.md)

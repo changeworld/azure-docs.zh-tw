@@ -7,12 +7,12 @@ ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 274d725a0e7987c8cb15363ba276aec7ebc541d5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 53304f14286577bf0bc25b2a66442286527c5140
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77426355"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90972433"
 ---
 # <a name="tutorial-create-a-connected-waste-management-application-in-iot-central"></a>教學課程：在 IoT Central 中建立聯網廢棄物管理應用程式
 
@@ -131,13 +131,13 @@ Azure IoT Central 中的裝置範本會定義裝置的功能，例如遙測、�
 
 1. 在 IoT Central 中您應用程式的左窗格中，按一下 [裝置範本]  。 
 
-    ![裝置範本](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devicetemplate.png)
+    ![顯示應用程式中裝置範本清單的螢幕擷取畫面](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devicetemplate.png)
 
 2. 在裝置範本清單中，您會看到 [聯網垃圾桶]  。 按一下名稱來開啟。
 
 3. 熟悉裝置範本功能。 您可以看到其定義感應器，例如「填滿層級」  、「氣味計量」  、「重量」  、「位置」  等等。
 
-   ![裝置範本](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devicetemplate-connectedbin.png)
+   ![顯示已聯網垃圾桶裝置範本詳細資料的螢幕擷取畫面](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devicetemplate-connectedbin.png)
 
    
 
@@ -265,8 +265,9 @@ Azure IoT Central 中的裝置範本會定義裝置的功能，例如遙測、�
 1. 從 IoT Central 應用程式的左側窗格中，開啟 [系統管理] 索引標籤。
 2. 選取 [應用程式設定]，然後按一下頁面底部的 [刪除] 按鈕。
 
-  
-
 ## <a name="next-steps"></a>後續步驟
 
-* 深入了解[聯網廢棄物管理概念](./concepts-connectedwastemanagement-architecture.md)
+* 深入了解
+ 
+> [!div class="nextstepaction"]
+> [聯網廢棄物管理概念](./concepts-connectedwastemanagement-architecture.md)

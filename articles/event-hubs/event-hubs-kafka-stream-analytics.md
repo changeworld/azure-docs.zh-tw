@@ -3,12 +3,12 @@ title: Azure 事件中樞 - 處理 Apache Kafka 事件
 description: 教學課程：本文說明如何使用 Azure 串流分析，處理透過事件中樞擷取的 Kafka 事件。
 ms.topic: tutorial
 ms.date: 06/23/2020
-ms.openlocfilehash: 6dfca5b476dff1ee3367b5365c15869c8cff819b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1f0c7bf40b721a3f35fcf68c71cb38a4302a56f6
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074911"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531282"
 ---
 # <a name="tutorial-process-apache-kafka-for-event-hubs-events-using-stream-analytics"></a>教學課程：使用串流分析處理適用於事件中樞的 Apache Kafka 
 本文說明如何將資料串流至事件中樞，以及使用 Azure 串流分析處理該資料。 本文將逐步引導您完成下列步驟： 
@@ -136,7 +136,7 @@ ms.locfileid: "87074911"
 3. 以您稍早建立的輸入別名取代 `[YourInputAlias]`。 
 4. 在工具列上選取 [儲存]  。 
 
-    ![查詢](./media/event-hubs-kafka-stream-analytics/query.png)
+    ![顯示查詢視窗的螢幕擷取畫面，其中具有輸入和輸出變數。](./media/event-hubs-kafka-stream-analytics/query.png)
 
 
 ### <a name="run-the-stream-analytics-job"></a>執行串流分析作業

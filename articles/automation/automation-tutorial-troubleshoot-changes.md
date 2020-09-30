@@ -7,12 +7,12 @@ keywords: 變更, 追蹤, 變更追蹤, 清查, 自動化
 ms.date: 12/05/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 63fe36a51b69648039c3a16be4267fc0c72e8a58
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 05b99c7f010ad307956b70890ee45f649111b373
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86185801"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530534"
 ---
 # <a name="troubleshoot-changes-on-an-azure-vm"></a>針對 Azure VM 上的變更進行疑難排解
 
@@ -220,7 +220,7 @@ ConfigurationChange
 
 19. 針對 [建立規則]，選取 [電子郵件主旨]，然後選擇 [建立警示規則]。 警示會在更新部署成功時，告知您有哪些機器包含在該更新部署執行中。 下圖是 W3SVC 服務停止時所收到的電子郵件範例。
 
-    ![電子郵件](./media/automation-tutorial-troubleshoot-changes/email.png)
+    ![顯示當 W3SVC 服務停止時所收到電子郵件通知的螢幕擷取畫面。](./media/automation-tutorial-troubleshoot-changes/email.png)
 
 ## <a name="next-steps"></a>後續步驟
 

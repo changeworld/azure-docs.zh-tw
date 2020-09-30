@@ -1,6 +1,6 @@
 ---
-title: 將 Azure IoT Edge 裝置新增至 Azure IoT Central | Microsoft Docs
-description: 以操作員的身分將 Azure IoT Edge 裝置新增至 Azure IoT Central 應用程式
+title: 教學課程 - 將 Azure IoT Edge 裝置新增至 Azure IoT Central | Microsoft Docs
+description: 教學課程 - 以操作員的身分將 Azure IoT Edge 裝置新增至 Azure IoT Central 應用程式
 author: rangv
 ms.author: rangv
 ms.date: 05/29/2020
@@ -11,12 +11,12 @@ ms.custom:
 - mvc
 - device-developer
 - iot-edge
-ms.openlocfilehash: cc612d5dc21594da855799ed965effeb4b547d00
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 9b4bb462c94ab5a59dbd9d8fdd4cf619e311df56
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90018657"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987013"
 ---
 # <a name="tutorial-add-an-azure-iot-edge-device-to-your-azure-iot-central-application"></a>教學課程：將 Azure IoT Edge 裝置新增至 Azure IoT Central 應用程式
 
@@ -99,7 +99,7 @@ IoT Edge 資訊清單不會定義模組所傳送的遙測。 在 IoT Central 中
 
 [管理] 介面現在包含 [機器]、[環境] 和 [建立時間] 遙測類型：
 
-:::image type="content" source="media/tutorial-add-edge-as-leaf-device/manage-interface.png" alt-text="具有機器和環境遙測類型的介面":::
+:::image type="content" source="media/tutorial-add-edge-as-leaf-device/manage-interface.png" alt-text="從 IoT Edge 資訊清單建立的裝置範本":::
 
 ### <a name="add-views-to-template"></a>在範本中新增檢視
 
@@ -115,7 +115,7 @@ IoT Edge 資訊清單不會定義模組所傳送的遙測。 在 IoT Central 中
 
 1. 選取 [儲存] 以儲存 [檢視 IoT Edge 裝置遙測] 檢視。
 
-:::image type="content" source="media/tutorial-add-edge-as-leaf-device/template-telemetry-view.png" alt-text="具有遙測檢視的裝置範本":::
+:::image type="content" source="media/tutorial-add-edge-as-leaf-device/template-telemetry-view.png" alt-text="從 IoT Edge 資訊清單建立的裝置範本":::
 
 ### <a name="publish-the-template"></a>發佈範本
 
@@ -123,7 +123,7 @@ IoT Edge 資訊清單不會定義模組所傳送的遙測。 在 IoT Central 中
 
 瀏覽至 [環境感應器邊緣裝置] 範本，然後選取 [發佈]。 在 [將此裝置範本發佈至應用程式] 面板上，選取 [發佈] 以發佈範本：
 
-:::image type="content" source="media/tutorial-add-edge-as-leaf-device/publish-template.png" alt-text="發佈裝置範本":::
+:::image type="content" source="media/tutorial-add-edge-as-leaf-device/publish-template.png" alt-text="從 IoT Edge 資訊清單建立的裝置範本":::
 
 ## <a name="add-iot-edge-device"></a>新增 IoT Edge 裝置
 
@@ -135,7 +135,7 @@ IoT Edge 資訊清單不會定義模組所傳送的遙測。 在 IoT Central 中
 
 現在，您已擁有一個狀態為**已註冊**的新裝置：
 
-:::image type="content" source="media/tutorial-add-edge-as-leaf-device/new-device.png" alt-text="已註冊的新裝置":::
+:::image type="content" source="media/tutorial-add-edge-as-leaf-device/new-device.png" alt-text="從 IoT Edge 資訊清單建立的裝置範本":::
 
 ### <a name="get-the-device-credentials"></a>取得裝置認證
 
@@ -181,7 +181,7 @@ IoT Edge 資訊清單不會定義模組所傳送的遙測。 在 IoT Central 中
 
 1. 檢閱您的選擇，然後選取 [建立]：
 
-    :::image type="content" source="media/tutorial-add-edge-as-leaf-device/vm-deployment.png" alt-text="建立 IoT Edge VM":::
+    :::image type="content" source="media/tutorial-add-edge-as-leaf-device/vm-deployment.png" alt-text="從 IoT Edge 資訊清單建立的裝置範本":::
 
 部署需要幾分鐘的時間才能完成。 部署完成時，瀏覽至 Azure 入口網站中的 **central edge-rg** 資源群組。
 
@@ -269,15 +269,15 @@ IoT Edge 資訊清單不會定義模組所傳送的遙測。 在 IoT Central 中
 
 模擬的 IoT Edge 裝置現在正在 VM 中執行。 在 IoT Central 應用程式的 [裝置] 頁面上，裝置的狀態現在會是 [已佈建]：
 
-:::image type="content" source="media/tutorial-add-edge-as-leaf-device/provisioned-device.png" alt-text="已佈建的 IoT Edge 裝置":::
+:::image type="content" source="media/tutorial-add-edge-as-leaf-device/provisioned-device.png" alt-text="從 IoT Edge 資訊清單建立的裝置範本":::
 
 您可以在 [檢視 IoT Edge 裝置遙測] 頁面上看到來自裝置的遙測：
 
-:::image type="content" source="media/tutorial-add-edge-as-leaf-device/device-telemetry-view.png" alt-text="裝置遙測":::
+:::image type="content" source="media/tutorial-add-edge-as-leaf-device/device-telemetry-view.png" alt-text="從 IoT Edge 資訊清單建立的裝置範本":::
 
 [模組] 頁面會顯示裝置上 IoT Edge 模組的狀態：
 
-:::image type="content" source="media/tutorial-add-edge-as-leaf-device/edge-module-status.png" alt-text="裝置模組狀態":::
+:::image type="content" source="media/tutorial-add-edge-as-leaf-device/edge-module-status.png" alt-text="從 IoT Edge 資訊清單建立的裝置範本":::
 
 ## <a name="clean-up-resources"></a>清除資源
 
@@ -286,14 +286,14 @@ IoT Edge 資訊清單不會定義模組所傳送的遙測。 在 IoT Central 中
 * 若要刪除 IoT Edge VM 及其相關聯的資源，請刪除 Azure 入口網站中的 **contoso-edge-rg** 資源群組。
 * 若要刪除 IoT Central 應用程式，請瀏覽至應用程式的 [管理] 區段中的 [您的應用程式] 頁面，然後選取 [刪除]。
 
+身為解決方案開發人員或操作員，現在您已瞭解如何在 IoT Central 中使用和管理 IoT Edge 裝置，建議執行的下一個步驟是：
+
+> [!div class="nextstepaction"]
+> [使用裝置群組來分析裝置遙測](./tutorial-use-device-groups.md)
+
 ## <a name="next-steps"></a>後續步驟
 
 身為裝置開發人員，您現在已了解如何在 IoT Central 中使用和管理 IoT Edge 裝置，建議的後續步驟是閱讀：
 
 > [!div class="nextstepaction"]
 > [開發 IoT Edge 模組](../../iot-edge/tutorial-develop-for-linux.md)
-
-身為解決方案開發人員或操作員，現在您已瞭解如何在 IoT Central 中使用和管理 IoT Edge 裝置，建議執行的下一個步驟是：
-
-> [!div class="nextstepaction"]
-> [使用裝置群組來分析裝置遙測](./tutorial-use-device-groups.md)

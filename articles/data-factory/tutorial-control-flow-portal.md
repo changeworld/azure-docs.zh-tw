@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/11/2018
-ms.openlocfilehash: e12f0cd44143621d34096a6c1161a22a89d21d9b
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: c046d2e437004146b5ee4c53dd98942ca1781ad4
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86077641"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983736"
 ---
 # <a name="branching-and-chaining-activities-in-an-azure-data-factory-pipeline-using-the-azure-portal"></a>使用 Azure 入口網站在 Azure Data Factory 管線中為活動建立分支並進行鏈結
 
@@ -24,7 +24,7 @@ ms.locfileid: "86077641"
 
 在本教學課程中，您會建立 Data Factory 管道來展示部分的控制流程功能。 這個管道只是簡單地從 Azure Blob 儲存體中的一個容器複製到相同儲存體帳戶中的另一個容器。 如果複製活動成功，管線會在成功電子郵件中傳送成功複製作業的詳細資料 (例如寫入的資料量)。 如果複製活動失敗，管線會在失敗電子郵件中傳送複製失敗的詳細資料 (例如錯誤訊息)。 在整個教學課程中，您會看到如何傳遞參數。
 
-案例的高階概觀：![概觀](media/tutorial-control-flow-portal/overview.png)
+案例的高階概觀：![圖表顯示 Azure Blob 儲存體，這是複本的目標，在成功時會傳送含有詳細資料的電子郵件，或者在失敗時會傳送含有錯誤詳細資料的電子郵件。](media/tutorial-control-flow-portal/overview.png)
 
 您會在本教學課程中執行下列步驟：
 

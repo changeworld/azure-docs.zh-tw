@@ -4,12 +4,12 @@ description: 在本教學課程中，您會了解如何使用 Azure Pipelines �
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: 992d720d86fc2e7fedd8e7fd4b559220ff3c0512
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 302ad1dcfaa93564d70fab739726787ef09c79df
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260355"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563925"
 ---
 # <a name="tutorial-deploy-an-application-with-cicd-to-a-service-fabric-cluster"></a>教學課程：將搭配 CI/CD 的應用程式部署到 Service Fabric 叢集
 
@@ -139,7 +139,7 @@ Azure Pipelines 發行管線描述將應用程式封裝部署到叢集的工作�
 
 將某些程式碼變更簽入到 Azure DevOps，以確認持續整合管線正常運作。
 
-您撰寫程式碼時，Visual Studio 會自動追蹤您的變更。 認可本機 Git 儲存機制的變更，方法是從右下方的狀態列選取暫止變更圖示 (![Pending][pending])。
+您撰寫程式碼時，Visual Studio 會自動追蹤您的變更。 認可本機 Git 儲存機制的變更，方法是從右下方的狀態列選取暫止變更圖示 (![暫止的變更圖示會顯示一個鉛筆和一個數字。][pending])。
 
 在 Team Explorer 的**變更**檢視中，加入描述更新的訊息，並認可變更。
 

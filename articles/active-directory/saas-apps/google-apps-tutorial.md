@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: jeedes
-ms.openlocfilehash: d20d527c35eac422efdc3719f153b6d7e8f4ef07
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 7e6b4524523d0659126bcd6cbe1294d700e79ed9
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017498"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707810"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-google-cloud-g-suite-connector"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Google Cloud (G Suite) Connector 整合
 
@@ -72,9 +72,9 @@ ms.locfileid: "89017498"
 
     系統針對任何具備有效 Exchange 授權的使用者，自動填入電子郵件屬性。 如果使用者並未啟用電子郵件功能，則會收到此錯誤，因為應用程式需要取得此屬性才能授與存取權。
 
-    您可以使用系統管理員帳戶前往 portal.office.com，然後按一下系統管理中心、帳單、訂用帳戶，選取您的 Office 365 訂用帳戶，然後按一下 [指派使用者]，選取您要檢查其訂用帳戶的使用者，然後在右窗格中按一下編輯授權。
+    您可以使用系統管理員帳戶前往 portal.office.com，然後按一下系統管理中心、帳單、訂用帳戶，選取您的 Microsoft 365 訂用帳戶，然後按一下 [指派使用者]，選取您要檢查其訂用帳戶的使用者，然後在右窗格中按一下編輯授權。
 
-    指派 O365 授權後，可能需要幾分鐘的時間才會套用。 然後，系統會自動填入 user.mail 屬性，此問題應該就解決了。
+    指派 Microsoft 365 授權後，可能需要幾分鐘的時間才會套用。 然後，系統會自動填入 user.mail 屬性，此問題應該就解決了。
 
 ## <a name="scenario-description"></a>案例描述
 
@@ -240,7 +240,7 @@ ms.locfileid: "89017498"
 
 ### <a name="create-google-cloud-g-suite-connector-test-user"></a>建立 Google Cloud (G Suite) Connector 測試使用者
 
-本節的目標是要[在 Google Cloud (G Suite) Connector 中建立名為 B.Simon 的使用者](https://support.google.com/a/answer/33310?hl=en)。 在 Google Cloud (G Suite) Connector 中手動建立使用者之後，使用者現在就可以使用其 Office 365 登入認證進行登入。
+本節的目標是要[在 Google Cloud (G Suite) Connector 中建立名為 B.Simon 的使用者](https://support.google.com/a/answer/33310?hl=en)。 在 Google Cloud (G Suite) Connector 中手動建立使用者之後，使用者現在就可以使用其 Microsoft 365 登入認證進行登入。
 
 Google Cloud (G Suite) Connector 也支援自動使用者佈建。 若要設定自動使用者佈建，您必須先[設定 Google Cloud (G Suite) Connector 來自動佈建使用者](https://docs.microsoft.com/azure/active-directory/saas-apps/google-apps-provisioning-tutorial)。
 

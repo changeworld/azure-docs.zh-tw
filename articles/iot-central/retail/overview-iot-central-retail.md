@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
-ms.openlocfilehash: 3cae2902385eb82f65243c631745df5ca48825f3
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: c72825f4645919468f8b59bbc4b9d9498fe11009
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88719205"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979393"
 ---
 # <a name="building-retail-solutions-with-azure-iot-central"></a>使用 Azure IoT Central 建置零售解決方案
 
@@ -41,9 +41,9 @@ Azure IoT Central 是一個 IoT 應用程式平台，可降低與開發、管理
 
 下列螢幕擷取畫面顯示應用程式範本中的預設儀表板。 儀表板可進行全方位的自訂，以符合您特定的解決方案需求：
 
-:::image type="content" source="media/overview-iot-central-retail/connected-logistics-dashboard1.png" alt-text="聯網物流儀表板":::
+:::image type="content" source="media/overview-iot-central-retail/connected-logistics-dashboard1.png" alt-text="Azure IoT 零售概觀":::
 
-:::image type="content" source="media/overview-iot-central-retail/connected-logistics-dashboard2.png" alt-text="聯網物流儀表板":::
+:::image type="content" source="media/overview-iot-central-retail/connected-logistics-dashboard2.png" alt-text="Azure IoT 零售概觀":::
 
 若要深入了解，請參閱 [部署並逐步執行聯網物流應用程式範本](./tutorial-iot-central-connected-logistics.md)教學課程。
 
@@ -64,7 +64,7 @@ IoT 攝影機解決方案可以啟用數位回饋迴圈，藉此帶來轉型優�
 
 下列螢幕擷取畫面顯示應用程式範本中的預設儀表板。 儀表板可進行全方位的自訂，以符合您特定的解決方案需求： 
 
-:::image type="content" source="media/overview-iot-central-retail/digital-distribution-center-dashboard.png" alt-text="數位配送中心儀表板":::
+:::image type="content" source="media/overview-iot-central-retail/digital-distribution-center-dashboard.png" alt-text="Azure IoT 零售概觀":::
 
 若要深入了解，請參閱[部署並逐步執行數位配送中心應用程式範本](./tutorial-iot-central-digital-distribution-center.md)教學課程。
 
@@ -86,7 +86,7 @@ IoT 攝影機解決方案可以啟用數位回饋迴圈，藉此帶來轉型優�
 
 下列螢幕擷取畫面顯示應用程式範本中的預設儀表板。 儀表板可進行全方位的自訂，以符合您特定的解決方案需求： 
 
-:::image type="content" source="media/overview-iot-central-retail/in-store-analytics-condition-dashboard.png" alt-text="店內分析條件監視":::
+:::image type="content" source="media/overview-iot-central-retail/in-store-analytics-condition-dashboard.png" alt-text="Azure IoT 零售概觀":::
 
 若要深入了解，請參閱[在 Azure IoT Central 中建立店內分析應用程式](./tutorial-in-store-analytics-create-app.md)教學課程。
 
@@ -108,7 +108,7 @@ IoT 攝影機解決方案可以啟用數位回饋迴圈，藉此帶來轉型優�
 
 下列螢幕擷取畫面顯示應用程式範本中的預設儀表板。 儀表板可進行全方位的自訂，以符合您特定的解決方案需求： 
 
-:::image type="content" source="media/overview-iot-central-retail/In-Store-Analytics-Checkout-Dashboard.png" alt-text="店內分析結帳":::
+:::image type="content" source="media/overview-iot-central-retail/In-Store-Analytics-Checkout-Dashboard.png" alt-text="Azure IoT 零售概觀":::
 
 若要深入了解，請參閱[在 Azure IoT Central 中建立店內分析應用程式](./tutorial-in-store-analytics-create-app.md)教學課程。
 
@@ -128,7 +128,7 @@ IoT 攝影機解決方案可以啟用數位回饋迴圈，藉此帶來轉型優�
 
 下列螢幕擷取畫面顯示應用程式範本中的預設儀表板。 儀表板可進行全方位的自訂，以符合您特定的解決方案需求：
 
-:::image type="content" source="media/overview-iot-central-retail/smart-inventory-management-dashboard.png" alt-text="智慧庫存管理儀表板":::
+:::image type="content" source="media/overview-iot-central-retail/smart-inventory-management-dashboard.png" alt-text="Azure IoT 零售概觀":::
 
 若要深入了解，請參閱[部署和逐步執行智慧庫存管理應用程式範本](./tutorial-iot-central-smart-inventory-management.md)教學課程。
 
@@ -148,7 +148,7 @@ IoT Central 的微型物流中心應用程式範本可讓解決方案建置者�
 
 下列螢幕擷取畫面顯示應用程式範本中的預設儀表板。 儀表板可進行全方位的自訂，以符合您特定的解決方案需求：
 
-:::image type="content" source="media/overview-iot-central-retail/MFC-Dashboard.png" alt-text="微型物流中心":::
+:::image type="content" source="media/overview-iot-central-retail/MFC-Dashboard.png" alt-text="Azure IoT 零售概觀":::
 
 若要深入了解，請參閱[部署並逐步執行微型物流中心應用程式範本](./tutorial-micro-fulfillment-center.md)教學課程。
 
@@ -165,7 +165,7 @@ IoT Central 的微型物流中心應用程式範本可讓解決方案建置者�
 * **(範例) 真實相機管理**會使用模擬相機來示範如何從應用程式管理相機。
 * **(範例) 真實相機監視**會使用模擬相機來示範如何從應用程式監視相機。
 
-:::image type="content" source="media/overview-iot-central-retail/live-video-analytics.png" alt-text="影片分析 - 物件與動態偵測":::
+:::image type="content" source="media/overview-iot-central-retail/live-video-analytics.png" alt-text="Azure IoT 零售概觀":::
 
 若要深入了解解決方案的架構，請參閱[影片分析應用程式架構](architecture-video-analytics.md)。
 

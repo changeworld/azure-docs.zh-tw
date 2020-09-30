@@ -11,12 +11,12 @@ ms.date: 06/10/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: e7dca9224fd213178aa9cee3a284f1eba39fb4fc
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 8d11fada41d0152b44be6cb0cdef41e68808689b
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89001168"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90967519"
 ---
 # <a name="secure-access-to-application-data"></a>應用程式資料的安全存取
 
@@ -160,7 +160,7 @@ public static async Task<List<string>> GetThumbNailUrls(AzureStorageConfig _stor
 
 [Azure 儲存體加密](../common/storage-service-encryption.md)可藉由加密待用資料及處理加密和解密，協助您防護和保護您的資料。 所有資料都使用 256 位元 [AES 加密](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) (可用的最強區塊加密方式之一) 進行加密。
 
-您可以選擇讓 Microsoft 管理加密金鑰，也可以透過 Azure Key Vault 自備金鑰與客戶管理的金鑰。 如需詳細資訊，請參閱[使用客戶管理的金鑰搭配 Azure Key Vault 來管理 Azure 儲存體加密](../common/encryption-customer-managed-keys.md)。
+您可以選擇讓 Microsoft 管理加密金鑰，也可以透過 Azure Key Vault 或 Key Vault 受控硬體安全模組 (HSM) (預覽) 中儲存的客戶自控金鑰，自備金鑰。 如需詳細資訊，請參閱[適用於 Azure 儲存體加密的客戶自控金鑰](../common/customer-managed-keys-overview.md)。
 
 Azure 儲存體加密會自動將所有效能層 (標準和進階)、所有部署模型 (Azure Resource Manager 和傳統) 以及所有「Azure 儲存體」服務 (Blob、佇列、資料表和檔案) 中的資料加密。
 

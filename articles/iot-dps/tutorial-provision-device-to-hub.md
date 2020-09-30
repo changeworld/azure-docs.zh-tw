@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 3fe2fa8b094830e2d15c1cebce782381b4ca7bc7
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 93cccb1455f7a228cf40d4948cd8579610230db5
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74975035"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526437"
 ---
 # <a name="tutorial-provision-the-device-to-an-iot-hub-using-the-azure-iot-hub-device-provisioning-service"></a>教學課程：使用 Azure IoT 中樞裝置佈建服務將裝置佈建到 IoT 中樞
 
@@ -28,12 +28,12 @@ ms.locfileid: "74975035"
 
 在繼續之前，請務必依照[將裝置設定為使用 Azure IoT 中樞裝置佈建服務來進行佈建](./tutorial-set-up-device.md)教學課程所討論的方法來設定裝置。
 
-如果您不熟悉自動佈建程序，請務必先檢閱[自動佈建概念](concepts-auto-provisioning.md)才能繼續。
+如果您不熟悉自動佈建程序，請先檢閱[佈建](about-iot-dps.md#provisioning-process)概觀，再繼續作業。
 
 <a id="enrolldevice"></a>
 ## <a name="enroll-the-device"></a>註冊裝置
 
-此步驟涉及將裝置的唯一安全性構件新增至裝置佈建服務。 這些安全性成品是以裝置的[證明機制](concepts-device.md#attestation-mechanism)為基礎，如下所示：
+此步驟涉及將裝置的唯一安全性構件新增至裝置佈建服務。 這些安全性成品是以裝置的[證明機制](concepts-service.md#attestation-mechanism)為基礎，如下所示：
 
 - 對於以 TPM 為基礎的裝置，您需要：
     - 「簽署金鑰」  是每個 TPM 晶片或模擬從 TMP 晶片製造商取得唯一的簽署金鑰。  如需詳細資訊，請參閱[了解 TPM 簽署金鑰](https://technet.microsoft.com/library/cc770443.aspx)。
@@ -48,7 +48,7 @@ ms.locfileid: "74975035"
 
 有兩種方式可向裝置佈建服務註冊裝置：
 
-- **註冊群組** 這代表一組共用特定證明機制的裝置。 對於共用所需初始設定的大量裝置，或是全都要進入同一個租用戶的裝置，建議您使用註冊群組。 如需與註冊群組的身分識別證明有關的詳細資訊，請參閱[安全性](concepts-security.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates)。
+- **註冊群組** 這代表一組共用特定證明機制的裝置。 對於共用所需初始設定的大量裝置，或是全都要進入同一個租用戶的裝置，建議您使用註冊群組。 如需與註冊群組的身分識別證明有關的詳細資訊，請參閱[安全性](concepts-x509-attestation.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates)。
 
     [![在入口網站中新增 X.509 證明的群組註冊](./media/tutorial-provision-device-to-hub/group-enrollment.png)](./media/tutorial-provision-device-to-hub/group-enrollment.png#lightbox)
 

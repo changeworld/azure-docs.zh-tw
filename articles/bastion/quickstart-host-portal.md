@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: quickstart
 ms.date: 03/11/2020
 ms.author: charwen
-ms.openlocfilehash: 3c2780c8c99fd4568a7213b625ce785d3a99129c
-ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
+ms.openlocfilehash: b0155ae92e3179918273d6a19773aa15b67949ea
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84743978"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985595"
 ---
 # <a name="quickstart-connect-to-a-virtual-machine-using-a-private-ip-address-and-azure-bastion"></a>快速入門：使用私人 IP 位址和 Azure Bastion 連線至虛擬機器
 
@@ -72,7 +72,7 @@ ms.locfileid: "84743978"
 
 1. 輸入虛擬機器的使用者名稱和密碼。 然後，選取 [連線]****。
 
-   ![連線](./media/quickstart-host-portal/connect.png)
+   ![螢幕擷取畫面顯示 [使用 Azure Bastion 連線] 對話方塊，該對話方塊會提示您輸入使用者名稱和密碼。](./media/quickstart-host-portal/connect.png)
 1. 透過 Bastion 的這個虛擬機器 RDP 連線，會使用連接埠 443 和 Bastion 服務直接在 Azure 入口網站中開啟 (透過 HTML5)。
 
    ![RDP 連線](./media/quickstart-host-portal/443-rdp.png)

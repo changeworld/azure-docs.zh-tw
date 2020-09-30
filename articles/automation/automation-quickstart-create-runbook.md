@@ -6,12 +6,12 @@ ms.date: 02/05/2019
 ms.topic: quickstart
 ms.subservice: process-automation
 ms.custom: mvc
-ms.openlocfilehash: 0717a7ac3cc663ff68ba96864aa5d37732337ca5
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 948ca820347c7cdcd560ade46e850f66b25bc88e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836731"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987298"
 ---
 # <a name="create-an-azure-automation-runbook"></a>建立 Azure 自動化 Runbook
 
@@ -39,7 +39,7 @@ ms.locfileid: "83836731"
 
 1. 按一下頁面底部的 [新增] 。 隨即建立 Runbook，並隨即開啟 [編輯 PowerShell Runbook] 頁面。
 
-    ![在 Runbook 編輯器中撰寫 PowerShell 指令碼](./media/automation-quickstart-create-runbook/automation-edit-runbook-empty.png)
+    :::image type="content" source="./media/automation-quickstart-create-runbook/automation-edit-runbook-empty.png" alt-text="[編輯 PowerShell Runbook] 頁面的螢幕擷取畫面。":::
 
 1. 輸入或複製以下程式碼並貼到編輯窗格中。 其會建立稱為 `Name`的選擇性輸入參數，並包含預設值 `World`，並輸出使用此輸入值的字串：
 
@@ -55,7 +55,7 @@ ms.locfileid: "83836731"
 
 1. 按一下 [儲存] 可儲存 Runbook 草稿副本。
 
-    ![在 Runbook 編輯器中撰寫 PowerShell 指令碼](./media/automation-quickstart-create-runbook/automation-edit-runbook.png)
+    :::image type="content" source="./media/automation-quickstart-create-runbook/automation-edit-runbook.png" alt-text="[編輯 PowerShell Runbook] 頁面的螢幕擷取畫面。":::
 
 ## <a name="test-the-runbook"></a>測試 Runbook
 
@@ -65,13 +65,13 @@ ms.locfileid: "83836731"
 
 1. 輸入一個 [名稱] 的值，然後按一下 [啟動]。 隨即啟動測試作業，並顯示作業狀態和輸出。
 
-    ![Runbook 測試作業](./media/automation-quickstart-create-runbook/automation-test-runbook.png)
+    :::image type="content" source="./media/automation-quickstart-create-runbook/automation-test-runbook.png" alt-text="[編輯 PowerShell Runbook] 頁面的螢幕擷取畫面。":::
 
 1. 按一下右上角的 **X** 可關閉 [測試] 頁面。 在隨即出現的快顯視窗中選取 [確定]。
 
 1. 在 [編輯 PowerShell Runbook] 頁面上，按一下 [發佈]，可在帳戶中發佈 Runbook 作為官方版本的 Runbook。
 
-   ![Runbook 測試作業](./media/automation-quickstart-create-runbook/automation-hello-world-runbook-job.png)
+   :::image type="content" source="./media/automation-quickstart-create-runbook/automation-hello-world-runbook-job.png" alt-text="[編輯 PowerShell Runbook] 頁面的螢幕擷取畫面。":::
 
 ## <a name="run-the-runbook"></a>執行 Runbook
 
@@ -79,15 +79,15 @@ ms.locfileid: "83836731"
 
 1. 在 Runbook [概觀] 頁面中，按一下 [啟動] 可開啟這個 Runbook 的 [啟動 Runbook] 設定頁面。
 
-   ![Runbook 測試作業](./media/automation-quickstart-create-runbook/automation-hello-world-runbook-start.png)
+   :::image type="content" source="./media/automation-quickstart-create-runbook/automation-hello-world-runbook-start.png" alt-text="[編輯 PowerShell Runbook] 頁面的螢幕擷取畫面。":::
 
 1. 將 [名稱] 保留空白以便使用預設值，然後按一下 [確定]。 隨即提交 Runbook 作業，且隨即出現 [作業] 頁面。
 
-   ![Runbook 測試作業](./media/automation-quickstart-create-runbook/automation-job-page.png)
+   :::image type="content" source="./media/automation-quickstart-create-runbook/automation-job-page.png" alt-text="[編輯 PowerShell Runbook] 頁面的螢幕擷取畫面。":::
 
 1. 當作業狀態為 `Running` 或 `Completed` 時，按一下 [輸出] 可開啟 [輸出] 窗格並檢視 Runbook 輸出。
 
-   ![Runbook 測試作業](./media/automation-quickstart-create-runbook/automation-hello-world-runbook-job-output.png)
+   :::image type="content" source="./media/automation-quickstart-create-runbook/automation-hello-world-runbook-job-output.png" alt-text="[編輯 PowerShell Runbook] 頁面的螢幕擷取畫面。":::
 
 ## <a name="clean-up-resources"></a>清除資源
 

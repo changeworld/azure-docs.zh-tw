@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 0c7efc94bcde18e7b6ff43726602fa87641f3e76
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 61d596c4b3a65c54e1a70682adad5b7328c384f8
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "86130615"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90007361"
 ---
 # <a name="moving-azure-vms-to-another-azure-region"></a>將 Azure VM 移至另一個 Azure 區域
 
@@ -26,9 +26,21 @@ ms.locfileid: "86130615"
 - 您已經在某個區域中部署，而且已新增新區域的支援，且該區域較接近您應用程式或服務的使用者。 在此情況下，您就會想要將 VM 依原狀移至新區域，以降低延遲。 如果您想要合併訂用帳戶，或是有控管/組織規則要求您移動 VM，請使用相同的方法。
 - 您的 VM 已部署為單一執行個體 VM，或作為可用性設定組的一部分。 如果您想要增加可用性 SLA，則可將 VM 移至可用性區域。
 
-## <a name="steps-to-move-azure-vms"></a>移動 Azure VM 的步驟
+## <a name="move-vms-with-resource-mover"></a>使用 Resource Mover 移動 VM
 
-要移動 VM 必須執行下列步驟：
+您現在可以使用 [Azure Resource Mover](../resource-mover/tutorial-move-region-virtual-machines.md) 將 VM 移至其他區域。 Resource Mover 處於公開預覽狀態，並且提供：
+- 用於在區域之間移動資源的單一中樞。
+- 減少移動時間和複雜度。 您需要的所有項目都在單一位置。
+- 移動不同類型 Azure 資源的簡單且一致體驗。
+- 一個簡單的方法，可識別您想要移動的資源之間的相依性。 這可協助您將相關的資源一起移動，以便在移動之後，所有項目在目標區域中都能如預期般運作。
+- 自動清除來源區域中的資源 (如果您想要在移動之後將其刪除)。
+- 測試。 如果您不想要進行完整移動，您可以嘗試移動，然後將其捨棄。
+
+
+
+## <a name="move-vms-with-site-recovery"></a>使用 Site Recovery 移動 VM
+
+使用 Site Recovery 移動 VM 牽涉到下列步驟：
 
 1. 驗證必要條件。
 2. 準備來源 VM。
@@ -49,7 +61,7 @@ ms.locfileid: "86130615"
 
 * **單一執行個體 VM 部署於不同層**：一層中的每個 VM 都會設定為單一執行個體 VM，並透過負載平衡器彼此連線。 此為最容易採用的設定。
 
-     ![單一執行個體 VM 部署於不同層](media/move-vm-overview/regular-deployment.png)
+     ![在不同層之間移動單一執行個體 VM 部署的選項](media/move-vm-overview/regular-deployment.png)
 
 * **每層中的 VM 部署在可用性設定組間**：一層中的每個 VM 會設定於可用性設定組中。 [可用性設定組](../virtual-machines/windows/tutorial-availability-sets.md)可確保您在 Azure 上部署的 VM 會分散到叢集中多個各自獨立的硬體節點。 這可確保當 Azure 內發生硬體或軟體故障時，只有 VM 子集會受到影響，而您的整體解決方案則會維持可用且正常運作。
 
@@ -64,16 +76,8 @@ ms.locfileid: "86130615"
 根據前述的[架構](#typical-architectures-for-a-multi-tier-deployment)，以下將說明您執行依原狀移至目標區域的作業後，部署將呈現的樣貌。
 
 * **單一執行個體 VM 部署於不同層**
-
-     ![單一執行個體 VM 部署於不同層](media/move-vm-overview/single-zone.png)
-
 * **每層中的 VM 部署在可用性設定組間**
-
-     ![在區域可用性設定組間](media/move-vm-overview/crossregionaset.png)
-
 * **每層中的 VM 部署在可用性區域間**
-
-     ![可用性區域間的 VM 部署](media/move-vm-overview/azonecross.png)
 
 ## <a name="move-vms-to-increase-availability"></a>移動 VM 以提高可用性
 
@@ -85,7 +89,7 @@ ms.locfileid: "86130615"
 
      ![可用性設定組和可用性區域間的 VM 部署](media/move-vm-overview/aset-azone.png)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 > [!div class="nextstepaction"]
 > 

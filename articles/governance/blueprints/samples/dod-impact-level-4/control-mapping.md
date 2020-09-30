@@ -1,14 +1,14 @@
 ---
 title: DoD 影響等級 4 藍圖範例控制
 description: 控制 DoD 影響等級 4 藍圖範例的對應。 每個控制項都會對應至一或多個可協助評量的 Azure 原則。
-ms.date: 06/30/2020
+ms.date: 09/17/2020
 ms.topic: sample
-ms.openlocfilehash: a704731f4fe8e810235507fd84c90b17571a8442
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 9ee3214f8cdacd1d70a59bc5a23e4638cadb579d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87923283"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90978402"
 ---
 # <a name="control-mapping-of-the-dod-impact-level-4-blueprint-sample"></a>控制 DoD 影響等級 4 藍圖範例的對應
 
@@ -102,11 +102,11 @@ Azure 會實作 [Azure 角色型存取控制 (Azure RBAC)](../../../../role-base
 「Azure 監視器」所收集的記錄資料會儲存在 Log Analytics 工作區中，進而啟用集中化設定與管理。 此藍圖指派了 [Azure 原則](../../../policy/overview.md)定義，稽核和強制要求在 Azure 虛擬機器上部署 Log Analytics 代理程式，協助您確保會記錄事件。
 
 - \[預覽\]：稽核記錄分析代理程式部署 - 未列出的 VM 映像 (OS)
-- \[預覽\]：稽核 VMSS 中的記錄分析代理程式部署 - 未列出的 VM 映像 (OS)
+- 稽核虛擬機器擴展集中的 Log Analytics 代理程式部署 - 未列出的 VM 映像 (OS)
 - \[預覽\]：稽核適用於 VM 的 Log Analytics 工作區 - 報告不相符
-- \[預覽\]：為 Linux VM 擴展集 (VMSS) 部署 Log Analytics 代理程式
+- 為 Linux 虛擬機器擴展集部署 Log Analytics 代理程式
 - \[預覽\]：部署適用於 Linux VM 的 Log Analytics 代理程式
-- \[預覽\]：為 Windows VM 擴展集 (VMSS) 部署 Log Analytics 代理程式
+- 為 Windows 虛擬機器擴展集部署 Log Analytics 代理程式
 - \[預覽\]：部署適用於 Windows VM 的 Log Analytics 代理程式
 
 ## <a name="au-5-response-to-audit-processing-failures"></a>AU-5 稽核處理程序失敗時的回應
@@ -123,11 +123,11 @@ Azure 會實作 [Azure 角色型存取控制 (Azure RBAC)](../../../../role-base
 Azure 監視器所收集的記錄資料會儲存在 Log Analytics 工作區中，進而啟用集中化報告與分析。 此藍圖指派了 [Azure 原則](../../../policy/overview.md)定義，稽核和強制要求在 Azure 虛擬機器上部署 Log Analytics 代理程式，協助您確保會記錄事件。
 
 - \[預覽\]：稽核記錄分析代理程式部署 - 未列出的 VM 映像 (OS)
-- \[預覽\]：稽核 VMSS 中的記錄分析代理程式部署 - 未列出的 VM 映像 (OS)
+- 稽核虛擬機器擴展集中的 Log Analytics 代理程式部署 - 未列出的 VM 映像 (OS)
 - \[預覽\]：稽核適用於 VM 的 Log Analytics 工作區 - 報告不相符
-- \[預覽\]：為 Linux VM 擴展集 (VMSS) 部署 Log Analytics 代理程式
+- 為 Linux 虛擬機器擴展集部署 Log Analytics 代理程式
 - \[預覽\]：部署適用於 Linux VM 的 Log Analytics 代理程式
-- \[預覽\]：為 Windows VM 擴展集 (VMSS) 部署 Log Analytics 代理程式
+- 為 Windows 虛擬機器擴展集部署 Log Analytics 代理程式
 - \[預覽\]：部署適用於 Windows VM 的 Log Analytics 代理程式
 
 ## <a name="au-6-5-audit-review-analysis-and-reporting--integration--scanning-and-monitoring-capabilities"></a>AU-6 (5) 稽核檢閱、分析和報告 | 整合 / 掃描和監視功能
@@ -144,7 +144,7 @@ Azure 監視器所收集的記錄資料會儲存在 Log Analytics 工作區中�
 - 弱點評量解決方案應修復弱點
 - 應修復虛擬機器擴展集上安全性組態的弱點
 - \[預覽\]：稽核記錄分析代理程式部署 - 未列出的 VM 映像 (OS)
-- \[預覽\]：稽核 VMSS 中的記錄分析代理程式部署 - 未列出的 VM 映像 (OS)
+- 稽核虛擬機器擴展集中的 Log Analytics 代理程式部署 - 未列出的 VM 映像 (OS)
 
 ## <a name="au-12-audit-generation"></a>AU-12 稽核產生
 
@@ -152,11 +152,11 @@ Azure 監視器所收集的記錄資料會儲存在 Log Analytics 工作區中�
 這些原則定義也會稽核診斷記錄的設定，以深入解析 Azure 資源內所執行的作業。 此外，會在 SQL 伺服器上設定稽核與「進階資料安全性」。
 
 - \[預覽\]：稽核記錄分析代理程式部署 - 未列出的 VM 映像 (OS)
-- \[預覽\]：稽核 VMSS 中的記錄分析代理程式部署 - 未列出的 VM 映像 (OS)
+- 稽核虛擬機器擴展集中的 Log Analytics 代理程式部署 - 未列出的 VM 映像 (OS)
 - \[預覽\]：稽核適用於 VM 的 Log Analytics 工作區 - 報告不相符
-- \[預覽\]：為 Linux VM 擴展集 (VMSS) 部署 Log Analytics 代理程式
+- 為 Linux 虛擬機器擴展集部署 Log Analytics 代理程式
 - \[預覽\]：部署適用於 Linux VM 的 Log Analytics 代理程式
-- \[預覽\]：為 Windows VM 擴展集 (VMSS) 部署 Log Analytics 代理程式
+- 為 Windows 虛擬機器擴展集部署 Log Analytics 代理程式
 - \[預覽\]：部署適用於 Windows VM 的 Log Analytics 代理程式
 - 稽核診斷設定
 - 應該在 SQL Server 上的進階資料安全性設定上啟用稽核
@@ -336,11 +336,8 @@ Just-In-Time (JIT) 虛擬機器存取可鎖定 Azure 虛擬機器的連入流量
 
 ## <a name="si-02-06-flaw-remediation--removal-of-previous-versions-of-software--firmware"></a>SI-02 (06) 缺陷補救 | 移除舊版的軟體/韌體
 
-此藍圖會指派原則定義，以協助您確定應用程式會使用最新版的 .NET Framework、 Java、PHP、Python 和 TLS。 此藍圖也會指派原則定義以確保 Kubernetes 服務會升級為其不易受攻擊的版本。
+此藍圖會指派原則定義，以協助您確定應用程式會使用最新版的 HTTP、Java、PHP、Python 和 TLS。 此藍圖也會指派原則定義以確保 Kubernetes 服務會升級為其不易受攻擊的版本。
 
-- 確定 '.Net Framework' 在作為 API 應用程式的一部分時，版本是最新的
-- 確定 '.Net Framework' 在作為函式應用程式的一部分時，版本是最新的
-- 確定 '.Net Framework' 在作為 Web 應用程式的一部分時，版本是最新的
 - 確定 'HTTP' 在用來執行 API 應用程式時，版本是最新的
 - 確定 'HTTP' 在用來執行函式應用程式時，版本是最新的
 - 確定 'HTTP' 在用來執行 Web 應用程式時，版本是最新的
@@ -348,7 +345,6 @@ Just-In-Time (JIT) 虛擬機器存取可鎖定 Azure 虛擬機器的連入流量
 - 確定 'Java' 在作為函式應用程式的一部分時，版本是最新的
 - 確定 'Java' 在作為 Web 應用程式的一部分時，版本是最新的
 - 確定 'PHP' 在作為 API 應用程式的一部分時，版本是最新的
-- 確定 'PHP' 在作為函式應用程式的一部分時，版本是最新的
 - 確定 'PHP' 在作為 Web 應用程式的一部分時，版本是最新的
 - 確定 'Python' 在作為 API 應用程式的一部分時，版本是最新的
 - 確定 'Python' 在作為函式應用程式的一部分時，版本是最新的
@@ -356,7 +352,7 @@ Just-In-Time (JIT) 虛擬機器存取可鎖定 Azure 虛擬機器的連入流量
 - 您的 API 應用程式應使用最新的 TLS 版本
 - 您的函式應用程式應使用最新的 TLS 版本
 - 您的 Web 應用程式應使用最新的 TLS 版本
-- \[預覽\]：Kubernetes 服務應升級為不易受攻擊的 Kubernetes 版本
+- Kubernetes 服務應升級為不易受攻擊的 Kubernetes 版本
 
 ## <a name="si-3-malicious-code-protection"></a>SI-3 惡意程式碼防護
 
@@ -378,11 +374,11 @@ Just-In-Time (JIT) 虛擬機器存取可鎖定 Azure 虛擬機器的連入流量
 此藍圖可稽核並強制執行所有 Azure 資源的記錄和資料安全性，協助您監視系統。 具體來說，指派的原則會稽核並強制部署 Log Analytics 代理程式，以及 SQL 資料庫、儲存體帳戶與網路資源的增強式安全性設定。 這些功能可協助您偵測異常行為和攻擊的指標，以便採取適當動作。
 
 - \[預覽\]：稽核記錄分析代理程式部署 - 未列出的 VM 映像 (OS)
-- \[預覽\]：稽核 VMSS 中的記錄分析代理程式部署 - 未列出的 VM 映像 (OS)
+- 稽核虛擬機器擴展集中的 Log Analytics 代理程式部署 - 未列出的 VM 映像 (OS)
 - \[預覽\]：稽核適用於 VM 的 Log Analytics 工作區 - 報告不相符
-- \[預覽\]：為 Linux VM 擴展集 (VMSS) 部署 Log Analytics 代理程式
+- 為 Linux 虛擬機器擴展集部署 Log Analytics 代理程式
 - \[預覽\]：部署適用於 Linux VM 的 Log Analytics 代理程式
-- \[預覽\]：為 Windows VM 擴展集 (VMSS) 部署 Log Analytics 代理程式
+- 為 Windows 虛擬機器擴展集部署 Log Analytics 代理程式
 - \[預覽\]：部署適用於 Windows VM 的 Log Analytics 代理程式
 - 應在受控執行個體上啟用進階資料安全性
 - 應在 SQL 伺服器上啟用進階資料安全性

@@ -1,6 +1,6 @@
 ---
 title: 教學課程：Azure Active Directory 單一登入 (SSO) 與 Concur 整合 | Microsoft Docs
-description: 了解如何設定 Azure Active Directory 與 Concur 之間的單一登入。
+description: 了解如何設定 Azure Active Directory 與 Concur 之間的 SSO。
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/31/2020
+ms.date: 08/24/2020
 ms.author: jeedes
-ms.openlocfilehash: 71e6dc8bdb8bdccdaaf845498eebdbe75a8b35c4
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 38cc5458b2e62e071227a2372d56e4647e347338
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547177"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90055974"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-concur"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Concur 整合
 
@@ -54,7 +54,7 @@ ms.locfileid: "88547177"
 1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **Concur**。
 1. 從結果面板選取 [Concur]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-concur"></a>設定及測試 Concur 的 Azure AD 單一登入
+## <a name="configure-and-test-azure-ad-sso-for-concur"></a>設定和測試 Concur 的 Azure AD SSO
 
 以名為 **B.Simon** 的測試使用者，設定及測試與 Concur 搭配運作的 Azure AD SSO。 若要讓 SSO 能夠運作，您必須建立 Azure AD 使用者與 Concur 中相關使用者之間的連結關聯性。
 
@@ -82,15 +82,24 @@ ms.locfileid: "88547177"
     a. 在 [登入 URL]  文字方塊中，使用下列模式輸入 URL：`https://www.concursolutions.com/UI/SSO/<OrganizationId>`
 
     b. 在 [識別碼 (實體識別碼)]  文字方塊中，使用下列模式輸入 URL：`https://<customer-domain>.concursolutions.com`
+    
+    c. 針對 [回覆 URL]，輸入下列其中一個 URL 模式：
 
+    | 回覆 URL|
+    |----------|
+    | `https://www.concursolutions.com/SAMLRedirector/SAMLReceiver.ashx` |
+    | `https://<customer-domain>.concursolutions.com/<OrganizationId>` |
+    | `https://<customer-domain>.concur.com` |
+    | `https://<customer-domain>.concursolutions.com` | 
+    
     > [!NOTE]
-    > 這些都不是真正的值。 請使用實際的「登入 URL」及「識別碼」來更新這些值。 請連絡 [Concur 用戶端支援小組](https://www.concur.co.in/contact)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 這些都不是真正的值。 使用實際的「單一登入 URL」、「識別碼」及「回覆 URL」來更新這些值。 請連絡 [Concur 用戶端支援小組](https://www.concur.co.in/contact)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
 
 4. 在 [以 SAML 設定單一登入]  頁面上的 [SAML 簽署憑證]  區段中，尋找 [同盟中繼資料 XML]  ，然後選取 [下載]  來下載憑證，並將其儲存在電腦上。
 
     ![憑證下載連結](common/metadataxml.png)
 
-6. 在 [設定 Concur]  區段上，根據您的需求複製適當的 URL。
+6. 在 [設定 Concur]**** 區段上，根據您的需求複製適當的 URL。
 
     ![複製組態 URL](common/copy-configuration-urls.png)
 
@@ -99,34 +108,34 @@ ms.locfileid: "88547177"
 在本節中，您將在 Azure 入口網站中建立名為 B.Simon 的測試使用者。
 
 1. 在 Azure 入口網站的左窗格中，依序選取 [Azure Active Directory]  、[使用者]  和 [所有使用者]  。
-1. 在畫面頂端選取 [新增使用者]  。
-1. 在 [使用者]  屬性中，執行下列步驟：
-    1. 在 [名稱]  欄位中，輸入 `B.Simon`。  
+1. 在畫面頂端選取 [新增使用者]。
+1. 在 [使用者] 屬性中，執行下列步驟：
+    1. 在 [名稱] 欄位中，輸入 `B.Simon`。  
     1. 在 [使用者名稱]  欄位中，輸入 username@companydomain.extension。 例如： `B.Simon@contoso.com` 。
-    1. 選取 [顯示密碼]  核取方塊，然後記下 [密碼]  方塊中顯示的值。
-    1. 按一下頁面底部的 [新增]  。
+    1. 選取 [顯示密碼] 核取方塊，然後記下 [密碼] 方塊中顯示的值。
+    1. 按一下 [建立]。
 
 ### <a name="assign-the-azure-ad-test-user"></a>指派 Azure AD 測試使用者
 
 在本節中，您會將 Concur 的存取權授與 B.Simon，讓其能夠使用 Azure 單一登入。
 
 1. 在 Azure 入口網站中，選取 [企業應用程式]  ，然後選取 [所有應用程式]  。
-1. 在應用程式清單中，選取[Concur]  。
+1. 在應用程式清單中，選取[Concur]****。
 1. 在應用程式的概觀頁面中尋找 [管理]  區段，然後選取 [使用者和群組]  。
 
     ![[使用者和群組] 連結](common/users-groups-blade.png)
 
-1. 選取 [新增使用者]  ，然後在 [新增指派]  對話方塊中選取 [使用者和群組]  。
+1. 選取 [新增使用者]，然後在 [新增指派] 對話方塊中選取 [使用者和群組]。
 
     ![[新增使用者] 連結](common/add-assign-user.png)
 
-1. 在 [使用者和群組]  對話方塊的 [使用者] 清單中選取 [B.Simon]  ，然後按一下畫面底部的 [選取]  按鈕。
-1. 如果您在 SAML 判斷提示中需要任何角色值，請在 [選取角色]  對話方塊的清單中為使用者選取適當的角色，然後按一下畫面底部的 [選取]  按鈕。
-1. 在 [新增指派]  對話方塊中，按一下 [指派]  按鈕。
+1. 在 [使用者和群組] 對話方塊的 [使用者] 清單中選取 [B.Simon]，然後按一下畫面底部的 [選取] 按鈕。
+1. 如果您在 SAML 判斷提示中需要任何角色值，請在 [選取角色] 對話方塊的清單中為使用者選取適當的角色，然後按一下畫面底部的 [選取] 按鈕。
+1. 在 [新增指派] 對話方塊中，按一下 [指派] 按鈕。
 
 ## <a name="configure-concur-sso"></a>設定 Concur SSO
 
-若要在 **Concur** 端設定單一登入，您必須將從 Azure 入口網站下載的 [同盟中繼資料 XML]  和複製的適當 URL 傳送給 [Concur 支援小組](https://www.concur.co.in/contact)。 他們會進行此設定，讓兩端的 SAML SSO 連線都設定正確。
+若要在 **Concur** 端設定單一登入，您必須將從 Azure 入口網站下載的 [同盟中繼資料 XML]**** 和複製的適當 URL 傳送給 [Concur 支援小組](https://www.concur.co.in/contact)。 他們會進行此設定，讓兩端的 SAML SSO 連線都設定正確。
 
   > [!NOTE]
   > 設定 Concur 訂用帳戶以透過 SAML 進行同盟 SSO 是獨立的工作，您必須連絡 [Concur 用戶端支援小組](https://www.concur.co.in/contact)執行這項工作。

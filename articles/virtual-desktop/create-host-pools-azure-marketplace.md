@@ -3,15 +3,15 @@ title: Windows 虛擬桌面主機集區 Azure 入口網站 - Azure
 description: 如何使用 Azure 入口網站建立 Windows 虛擬桌面主機集區。
 author: Heidilohr
 ms.topic: tutorial
-ms.date: 09/01/2020
+ms.date: 09/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: b6d54c226dd3a156ff6164f87fc755aac3dd040c
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: da944f74fd6214e1b69a3ee7d230e72accd4e2e4
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89322580"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90084357"
 ---
 # <a name="tutorial-create-a-host-pool-with-the-azure-portal"></a>教學課程：透過 Azure 入口網站建立主機集區
 
@@ -188,6 +188,13 @@ ms.locfileid: "89322580"
      - Azure 資源管理範本的下載連結 (根據您的設定)。
 
 完成後，您就大功告成了！
+
+## <a name="run-the-azure-resource-manager-template-to-provision-a-new-host-pool"></a>執行 Azure Resource Manager 範本以佈建新的主機集區
+
+如果您想要使用自動化程序，請改為[下載我們的 Azure Resource Manager 範本](https://github.com/Azure/RDS-Templates/tree/master/ARM-wvd-templates)以佈建您的新主機集區。
+
+>[!NOTE]
+>如果您要使用自動化程序來建置您的環境，您需要最新版的設定 JSON 檔案。 您可以在[這裡](https://wvdportalstorageblob.blob.core.windows.net/galleryartifacts?restype=container&comp=list)找到 JSON 檔案。
 
 ## <a name="next-steps"></a>後續步驟
 

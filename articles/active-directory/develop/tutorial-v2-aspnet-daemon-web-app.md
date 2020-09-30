@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: b63aa2b2d98a12246d0dc2c35e015da872caff28
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 4b05bbf818676cc70f485dd94ece79141e8f01a4
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83641111"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90982844"
 ---
 # <a name="tutorial-build-a-multitenant-daemon-that-uses-the-microsoft-identity-platform-endpoint"></a>教學課程：建置會使用 Microsoft 身分識別平台端點的多租用戶精靈
 
@@ -41,7 +41,7 @@ ms.locfileid: "83641111"
 
 由於此應用程式是供 Microsoft 企業客戶使用的多租用戶應用程式，因此必須提供方法讓客戶可以「註冊」應用程式或將應用程式「連線」至其公司資料。 在連線過程中，公司管理員會先將「應用程式權限」直接授與應用程式，讓它能夠在沒有登入使用者的情況下，以非互動方式存取公司資料。 此範例中的邏輯主要將說明如何使用身分識別平台的[管理員同意](v2-permissions-and-consent.md#using-the-admin-consent-endpoint)端點來完成此連線流程。
 
-![拓撲](./media/tutorial-v2-aspnet-daemon-webapp/topology.png)
+![圖表顯示 UserSync 應用程式與三個連線至 Azure 的本機項目，開始點驗證是以互動方式取得權杖以連線至 Azure AD，AccountController 取得管理員同意以連線至 Azure AD，SyncController 讀取使用者以連線至 Microsoft Graph。](./media/tutorial-v2-aspnet-daemon-webapp/topology.png)
 
 若要進一步了解此範例中使用的概念，請閱讀[適用於身分識別平台端點的用戶端認證通訊協定文件](v2-oauth2-client-creds-grant-flow.md)。
 

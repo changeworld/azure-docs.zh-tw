@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 01/14/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 030f2b893cd429bfdb451d24e799689fdb8a3cf8
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: d26c7f544c9754f455b67aadf9e923344cda3fdf
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89255693"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90968685"
 ---
 # <a name="tutorial-use-a-user-assigned-managed-identity-on-a-windows-vm-to-access-azure-resource-manager"></a>教學課程：在 Windows VM 上利用使用者指派的受控識別來存取 Azure Resource Manager
 
@@ -48,19 +48,42 @@ ms.locfileid: "89255693"
 - [建立 Windows 虛擬機器](../../virtual-machines/windows/quick-create-portal.md)
 
 - 若要執行本教學課程中所需的資源建立和角色管理步驟，您的帳戶必須在適當的範圍 (您的訂用帳戶或資源群組) 上具備「擁有者」權限。 如果您需要角色指派的協助，請參閱[使用角色型存取控制來管理 Azure 訂用帳戶資源的存取權](../../role-based-access-control/role-assignments-portal.md)。
-- [安裝最新版的 Azure PowerShell 模組](/powershell/azure/install-az-ps)。 
-- 執行 `Connect-AzAccount` 來建立與 Azure 的連線。
-- 安裝[最新版的 PowerShellGet](/powershell/scripting/gallery/installing-psget#for-systems-with-powershell-50-or-newer-you-can-install-the-latest-powershellget)。
-- 執行 `Install-Module -Name PowerShellGet -AllowPrerelease` 以取得 `PowerShellGet` 模組的搶鮮版 (執行此命令以安裝 `Az.ManagedServiceIdentity` 模組後，您可能需要以 `Exit` 退出目前的 PowerShell 工作階段)。
-- 執行 `Install-Module -Name Az.ManagedServiceIdentity -AllowPrerelease` 以安裝 `Az.ManagedServiceIdentity` 模組的發行前版本，以執行本文中由使用者指派的身分識別作業。
 
+- 若要執行範例指令碼，您有兩個選項：
+    - 使用 [Azure Cloud Shell](../../cloud-shell/overview.md)，您可以使用程式碼區塊右上角的 [試用] 按鈕來開啟。
+    - 使用 Azure PowerShell 在本機執行指令碼，如下一節所述。
+
+### <a name="configure-azure-powershell-locally"></a>在本機設定 Azure PowerShell
+
+若要針對本文在本機使用 Azure PowerShell (而不是使用 Cloud Shell)，請完成下列步驟：
+
+1. 如果您尚未安裝[最新版的 Azure PowerShell](/powershell/azure/install-az-ps)，請先安裝。
+
+1. 登入 Azure：
+
+    ```azurepowershell
+    Connect-AzAccount
+    ```
+
+1. 安裝[最新版的 PowerShellGet](/powershell/scripting/gallery/installing-psget#for-systems-with-powershell-50-or-newer-you-can-install-the-latest-powershellget)。
+
+    ```azurepowershell
+    Install-Module -Name PowerShellGet -AllowPrerelease
+    ```
+
+    您必須在針對下一個步驟執行此命令之後，`Exit` 目前的 PowerShell 工作階段。
+
+1. 安裝 `Az.ManagedServiceIdentity` 模組的搶鮮版，以執行本文中由使用者指派的受控識別作業：
+
+    ```azurepowershell
+    Install-Module -Name Az.ManagedServiceIdentity -AllowPrerelease
+    ```
 
 ## <a name="enable"></a>啟用
 
 針對以使用者指派身分識別為基礎的案例，您需要執行下列步驟：
 
 - 建立身分識別
- 
 - 指派新建立的身分識別
 
 ### <a name="create-identity"></a>建立身分識別
@@ -131,7 +154,7 @@ CanDelegate: False
 
 1. 在 [https://portal.azure.com](https://portal.azure.com) 登入 Azure 入口網站
 
-2. 在入口網站中，瀏覽至 [虛擬機器]  ，並移至您的 Windows 虛擬機器，在 [概觀]  中按一下 [連線]  。
+2. 在入口網站中，瀏覽至 [虛擬機器]****，並移至您的 Windows 虛擬機器，在 [概觀]**** 中按一下 [連線]****。
 
 3. 輸入您建立 Windows VM 時使用的**使用者名稱**和**密碼**。
 
@@ -158,7 +181,7 @@ CanDelegate: False
 {"id":"/subscriptions/<SUBSCRIPTIONID>/resourceGroups/myResourceGroupVM","name":"myResourceGroupVM","location":"eastus","properties":{"provisioningState":"Succeeded"}}
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 在本教學課程中，您已了解如何建立使用者指派的身分識別，並將其連結至 Azure 虛擬機器以存取 Azure Resource Manager API。  若要深入了解 Azure Resource Manager，請參閱：
 

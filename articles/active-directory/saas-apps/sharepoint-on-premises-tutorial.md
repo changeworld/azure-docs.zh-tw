@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/15/2020
-ms.author: miguego
-ms.openlocfilehash: 996668751ee93d14b18e399035fd345f32c58fbe
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.date: 09/10/2020
+ms.author: jeedes
+ms.openlocfilehash: a3a5834cd63351b9bf61dc97c8d6e14d430b6284
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88552168"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979714"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-sharepoint-on-premises"></a>教學課程：Azure Active Directory 單一登入與 SharePoint 內部部署整合
 
@@ -25,8 +25,6 @@ ms.locfileid: "88552168"
 * 在 Azure AD 中控制可存取 SharePoint 內部部署的人員。
 * 讓使用者使用其 Azure AD 帳戶自動登入 SharePoint 內部部署。
 * 在 Azure 入口網站中管理您的帳戶。
-
-若要深入了解軟體即服務 (SaaS) 應用程式與 Azure AD 的整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -45,7 +43,7 @@ ms.locfileid: "88552168"
 
 若要從資源庫新增 SharePoint 內部部署：
 
-1. 在 [Azure 入口網站](https://portal.azure.com)最左邊的窗格中，選取 [Azure Active Directory]。
+1. 在 Azure 入口網站最左邊的窗格中，選取 [Azure Active Directory]。
 
    > [!NOTE]
    > 如果無法使用此元素，您也可以透過最左邊窗格頂端的 [所有服務] 連結來開啟該元速。 在下列概觀中，[Azure Active Directory] 連結位於 [身分識別] 區段中。 您也可以使用篩選方塊加以搜尋。
@@ -72,7 +70,7 @@ ms.locfileid: "88552168"
 
 若要使用 SharePoint 內部部署來設定並測試 Azure AD SSO，請完成下列建構元素：
 
-- [設定 Azure AD 單一登入](#configure-azure-ad-single-sign-on)，讓您的使用者能夠使用此功能。
+- [設定 Azure AD SSO](#configure-azure-ad-sso)，讓您的使用者能夠使用此功能。
 - [設定 SharePoint 內部部署](#configure-sharepoint-on-premises)，以在應用程式端設定 SSO 設定。
 - [在 Azure 入口網站中建立 Azure AD 測試使用者](#create-an-azure-ad-test-user-in-the-azure-portal)，以在 Azure AD 中建立新使用者進行 SSO。
 - [在 Azure 入口網站中建立 Azure AD 安全性群組](#create-an-azure-ad-security-group-in-the-azure-portal)，以在 Azure AD 中建立新的安全性群組進行 SSO。
@@ -81,13 +79,13 @@ ms.locfileid: "88552168"
 - [在 Azure 入口網站中對來賓帳戶授與 SharePoint 內部部署的存取權](#grant-access-to-a-guest-account-to-sharepoint-on-premises-in-the-azure-portal)，以將 SharePoint 內部部署的權限提供給 Azure AD 中的來賓帳戶。
 - [為多個 Web 應用程式設定信任的識別提供者](#configure-the-trusted-identity-provider-for-multiple-web-applications)，以對多個 Web 應用程式使用相同的受信任識別提供者。
 
-### <a name="configure-azure-ad-single-sign-on"></a>設定 Azure AD 單一登入
+### <a name="configure-azure-ad-sso"></a>設定 Azure AD SSO
 
 在本節中，您會在 Azure 入口網站中啟用 Azure AD SSO。
 
 若要設定與 SharePoint 內部部署搭配運作的 Azure AD SSO：
 
-1. 在 [Azure 入口網站](https://portal.azure.com/)中，選取 [Azure Active Directory] > [企業應用程式]。 選取先前建立的企業應用程式名稱，然後選取 [單一登入]。
+1. 在 Azure 入口網站中，選取 [Azure Active Directory] > [企業應用程式]。 選取先前建立的企業應用程式名稱，然後選取 [單一登入]。
 
 1. 在 [選取單一登入方法] 對話方塊中，選取 [SAML] 模式以啟用 SSO。
  
@@ -205,7 +203,7 @@ ms.locfileid: "88552168"
   > [!NOTE]
   > 若沒有 AzureCP，您可藉由新增 Azure AD 群組的識別碼來新增群組，但這不是使用者容易記得且可靠的名稱。 其外觀如下所示：
   > 
-  >![將 Azure AD 群組新增至 SharePoint 群組](./media/sharepoint-on-premises-tutorial/adding-group-by-id.png)
+  >![依識別碼將 Azure AD 群組新增至 SharePoint 群組](./media/sharepoint-on-premises-tutorial/adding-group-by-id.png)
   
 ### <a name="grant-permissions-to-an-azure-ad-group-in-sharepoint-on-premises"></a>在 SharePoint 內部部署中將權限授與 Azure AD 群組
 
@@ -244,7 +242,7 @@ ms.locfileid: "88552168"
 
 1. 將 [來源屬性] 屬性值變更為 **user.localuserprincipalname**，然後選取 [儲存]。
 
-    ![初始的使用者屬性與宣告](./media/sharepoint-on-premises-tutorial/manage-claim.png)
+    ![使用者屬性與宣告初始來源屬性](./media/sharepoint-on-premises-tutorial/manage-claim.png)
 
 1. 使用功能區，返回 [SAML 型登入]。 現在 [使用者屬性與宣告] 區段如下所示： 
 
@@ -287,9 +285,6 @@ ms.locfileid: "88552168"
 
 在其他案例中，您可能想要為內部使用者授與 SharePoint 內部部署執行個體的存取權。 在此案例中，您必須部署 Microsoft Azure Active Directory Connect，允許同步處理內部部署使用者與 Azure AD。 此設定會在另一篇文章中討論。
 
-## <a name="additional-resources"></a>其他資源
+## <a name="next-steps"></a>後續步驟
 
-- [如何整合 SaaS 應用程式與 Azure Active Directory 的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-- [什麼是 Azure Active Directory 的混合式身分識別？](https://docs.microsoft.com/azure/active-directory/hybrid/whatis-hybrid-identity)
+設定 SharePoint 內部部署後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)

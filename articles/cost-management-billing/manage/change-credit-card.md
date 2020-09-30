@@ -7,55 +7,49 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 09/15/2020
 ms.author: banders
-ms.openlocfilehash: c7622c4916b186a39aad9dafb54a1e2404458794
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 0f1b4751ae2448b519387d57e4dbfa1eecf8a576
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89569351"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90984298"
 ---
-# <a name="add-update-or-remove-a-credit-card-for-azure"></a>新增、更新或移除用於 Azure 的信用卡
+# <a name="add-or-update-a-credit-card-for-azure"></a>新增或更新用於 Azure 的信用卡
 
 本文件適用於使用信用卡註冊 Azure Online 的客戶。
 
-在 Azure 入口網站中，您可以將預設付款方式變更為新的信用卡、更新信用卡詳細資料，以及刪除您不使用的信用卡。 您必須是[帳戶管理員](billing-subscription-transfer.md#whoisaa)才能進行這些變更。
+在 Azure 入口網站中，您可以將預設付款方式變更為新的信用卡以及更新信用卡詳細資料。 您必須是[帳戶管理員](billing-subscription-transfer.md#whoisaa)才能進行這些變更。
+
+如果您想要刪除信用卡，請參閱[刪除 Azure 帳單付款方法](delete-azure-payment-method.md)。
 
 Microsoft Azure 支援的付款方法為信用卡和支票/電匯。 若要獲得以支票/電匯付款的核准，請參閱[按發票支付 Azure 訂用帳戶費用](pay-by-invoice.md)。
 
-如果您有 Microsoft 客戶合約，付款方式會與帳單設定檔相關聯。 了解如何[檢查 Microsoft 客戶合約的存取](#check-the-type-of-your-account)。 如果您有 MCA，請跳到[管理 Microsoft 客戶合約的信用卡](#manage-credit-cards-for-a-microsoft-customer-agreement)。
+使用 Microsoft 客戶合約，付款方式會與帳單設定檔相關聯。 了解如何[檢查 Microsoft 客戶合約的存取](#check-the-type-of-your-account)。 如果您有 MCA，請跳到[管理 Microsoft 客戶合約的信用卡](#manage-credit-cards-for-a-microsoft-customer-agreement)。
 
 <a id="addcard"></a>
 
 ## <a name="manage-credit-cards-for-an-azure-subscription"></a>管理 Azure 訂用帳戶的信用卡
 
-下列各節適用於擁有 Microsoft Online Services 方案計費帳戶的客戶。 了解如何[查看您的計費帳戶類型](#check-the-type-of-your-account)。 如果您的計費帳戶類型是 Microsoft Online Services 方案，付款方式會與個別 Azure 訂用帳戶相關聯。 如果在新增信用卡之後收到錯誤，請參閱[在 Azure 註冊時信用卡遭拒](../../billing/billing-credit-card-fails-during-azure-sign-up.md)。
+下列各節適用於擁有 Microsoft Online Services 方案計費帳戶的客戶。 了解如何[查看您的計費帳戶類型](#check-the-type-of-your-account)。 如果您的計費帳戶類型是 Microsoft Online Services 方案，付款方式會與個別 Azure 訂用帳戶相關聯。 如果在新增信用卡之後收到錯誤，請參閱[在 Azure 註冊時信用卡遭拒](/troubleshoot-declined-card.md)。
 
 ### <a name="change-credit-card-for-a-subscription-by-adding-a-new-credit-card"></a>新增新的信用卡以變更訂用帳戶的信用卡
 
-您可以將 Azure 訂用帳戶的預設信用額度變更到新的信用卡，或先前在 Azure 入口網站中儲存的信用卡。 您必須是帳戶管理員，才能變更信用卡。 如果您有一個以上的訂用帳戶具有相同的有效付款方式，則變更任一訂用帳戶的有效付款方式也會更新其他訂用帳戶的有效付款方式。
-
+您可以將 Azure 訂用帳戶的預設信用額度變更到新的信用卡，或先前在 Azure 入口網站中儲存的信用卡。 您必須是帳戶管理員，才能變更信用卡。 如果多個訂用帳戶具有相同的有效付款方式，則變更任一訂用帳戶的有效付款方式也會更新其他訂用帳戶的有效付款方式。
 
 您可以遵循下列步驟，將訂用帳戶的預設信用卡變更為新的信用卡：
 
 1. 以帳戶管理員身分登入 [Azure 入口網站](https://portal.azure.com)。
-1. 搜尋 [成本管理 + 帳單]。
-
+1. 搜尋 [成本管理 + 帳單]。  
     ![顯示搜尋的螢幕擷取畫面](./media/change-credit-card/search.png)
-
 1. 選取要新增信用卡的訂用帳戶。
-1. 選取 [**付款方式**]。
-
-    ![顯示已選取 [管理付款方式] 選項的螢幕擷取畫面。](./media/change-credit-card/payment-methods-blade-x.png)
-
+1. 選取 [**付款方式**]。  
+    ![顯示已選取 [管理付款方式] 選項的螢幕擷取畫面](./media/change-credit-card/payment-methods-blade-x.png)
 1. 在左上角選取 [+] 以新增卡片。 信用卡表單會出現在右側。
-1. 輸入信用卡詳細資料。
-
-    ![顯示新增卡片的螢幕擷取畫面。](./media/change-credit-card/sub-add-new-x.png)
-
+1. 輸入信用卡詳細資料。  
+    ![顯示新增卡片的螢幕擷取畫面](./media/change-credit-card/sub-add-new-x.png)
 1. 若要讓此卡片成為您的有效付款方式，請在表單上方勾選 [將此方式設定成我的有效付款方式] 旁的方塊。 對於所有與選取的訂用帳戶使用相同卡片的訂用帳戶，這張卡片都將成為使用中的付款方式。
-
 1. 選取 [下一步] 。
 
 ### <a name="change-credit-card-for-a-subscription-to-a-previously-saved-credit-card"></a>將訂用帳戶的信用卡變更為之前儲存的信用卡
@@ -63,18 +57,14 @@ Microsoft Azure 支援的付款方法為信用卡和支票/電匯。 若要獲�
 您也可以依照下列步驟，將訂用帳戶的預設信用卡變更為已儲存至帳戶的信用卡：
 
 1. 以帳戶管理員身分登入 [Azure 入口網站](https://portal.azure.com)。
-1. 搜尋 [成本管理 + 帳單]。
-
+1. 搜尋 [成本管理 + 帳單]。  
     ![顯示搜尋的螢幕擷取畫面](./media/change-credit-card/search.png)
-
 1. 選取要新增信用卡的訂用帳戶。
 1. 選取 [**付款方式**]。
-
-    ![顯示已選取 [管理付款方式] 選項的螢幕擷取畫面。](./media/change-credit-card/payment-methods-blade-x.png)
-
+    ![顯示已選取 [管理付款方式] 選項的螢幕擷取畫面](./media/change-credit-card/payment-methods-blade-x.png)
 1. 選取要設為有效付款方式的卡片旁邊的方塊。
-1. 按一下 [設為有效]。
-    ![顯示已選取信用卡和設為有效的螢幕擷取畫面。](./media/change-credit-card/sub-change-active-x.png)
+1. 選取 [設為有效]。
+    ![顯示已選取信用卡和設為有效的螢幕擷取畫面](./media/change-credit-card/sub-change-active-x.png)
 
 ### <a name="edit-credit-card-details"></a>編輯信用卡詳細資料
 
@@ -82,35 +72,13 @@ Microsoft Azure 支援的付款方法為信用卡和支票/電匯。 若要獲�
 
 1. 以帳戶管理員身分登入 [Azure 入口網站](https://portal.azure.com)。
 1. 搜尋 [成本管理 + 帳單]。
-
     ![顯示搜尋的螢幕擷取畫面](./media/change-credit-card/search.png)
-
 1. 選取 [**付款方式**]。
-
-    ![顯示已選取 [管理付款方式] 選項的螢幕擷取畫面。](./media/change-credit-card/payment-methods-blade-x.png)
-
-1. 按一下您要編輯的信用卡。 信用卡表單會出現在右側。
-
-    ![顯示已選取信用卡的螢幕擷取畫面。](./media/change-credit-card/edit-card-x.png)
-
+    ![顯示已選取 [管理付款方式] 選項的螢幕擷取畫面](./media/change-credit-card/payment-methods-blade-x.png)
+1. 選取您要編輯的信用卡。 信用卡表單會出現在右側。
+    ![顯示已選取信用卡的螢幕擷取畫面](./media/change-credit-card/edit-card-x.png)
 1. 更新信用卡詳細資料。
 1. 選取 [儲存]。
-
-### <a name="delete-a-credit-card-from-the-account"></a>從帳戶中刪除信用卡
-
-1. 以帳戶管理員身分登入 [Azure 入口網站](https://portal.azure.com)。
-1. 選取頁面左側的 [成本管理 + 帳單]。
-
-    ![顯示搜尋的螢幕擷取畫面](./media/change-credit-card/search.png)
-
-1. 在 [帳單] 下方選取 [付款方式]。
-
-    ![顯示已選取 [管理付款方式] 選項的螢幕擷取畫面。](./media/change-credit-card/payment-methods-blade-x.png)
-
-1. 選取要移除的卡片旁邊的方塊。
-1. 按一下 **[刪除]** 。
-
-如果您的信用卡是任何 Microsoft 訂用帳戶的有效付款方式，您就無法從 Azure 帳戶中將它移除。 請變更連結至此信用卡之所有訂用帳戶的有效付款方式，然後再試一次
 
 ## <a name="manage-credit-cards-for-a-microsoft-customer-agreement"></a>管理 Microsoft 客戶合約的信用卡
 
@@ -126,53 +94,38 @@ Microsoft Azure 支援的付款方法為信用卡和支票/電匯。 若要獲�
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 1. 針對 [成本管理 + 帳單] 進行搜尋。
-1. 在左側功能表中，按一下 [帳單設定檔]。
+1. 在左側功能表中，選取 [帳單設定檔]。
 1. 選取帳單設定檔。
-1. 在左側功能表中，選取 [付款方式]。
-
+1. 在左側功能表中，選取 [付款方式]。  
    ![在功能表中顯示付款方式的螢幕擷取畫面](./media/change-credit-card/payment-methods-tab-mca.png)
+1. 在 [預設付款方式] 區段中，選取 [取代]。  
+    :::image type="content" source="./media/change-credit-card/change-payment-method-mca.png" alt-text="顯示取代選項的螢幕擷取畫面" :::
+1. 在右側的新區域中，從下拉式選單選取現有的卡片，或選取藍色的 [新增付款方式] 連結來新增信用卡。
 
-1. 在 [預設付款方式] 區段上方，按一下 [變更]。
+### <a name="edit-a-credit-card"></a>編輯信用卡
 
-    ![顯示變更按鈕的螢幕擷取畫面](./media/change-credit-card/change-payment-method-mca.png)
+您可以在 Azure 入口網站中編輯信用卡詳細資料 (例如更新到期日)。 
 
-1. 在右側的新分頁中，從下拉式選單選取現有的卡片，或按一下藍色的 [新增付款方式] 連結來新增信用卡。
-
-### <a name="edit-or-delete-a-credit-card"></a>編輯或刪除信用卡
-
-您可以在 Azure 入口網站中編輯信用卡詳細資料 (例如更新到期日) 及刪除帳戶中的信用卡。 只有當信用卡未與任何 Azure 訂用帳戶或帳單設定檔相關聯時，您才能將其刪除。 如果信用卡與已停用的 Azure 訂用帳戶相關聯，您必須等到訂用帳戶刪除 (取消後的 30-90 天) 之後，才能刪除信用卡。
-
-若要編輯或刪除信用卡，請遵循下列步驟：
+若要編輯信用卡，請遵循下列步驟：
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 1. 針對 [成本管理 + 帳單] 進行搜尋。
-1. 在左側功能表中，按一下 [帳單設定檔]。
+1. 在左側功能表中，選取 [帳單設定檔]。
 1. 選取帳單設定檔。
-1. 在左側功能表中，選取 [付款方式]。
-
+1. 在左側功能表中，選取 [付款方式]。  
    ![在功能表中顯示付款方式的螢幕擷取畫面](./media/change-credit-card/payment-methods-tab-mca.png)
-
-1. 在 [您的信用卡] 區段中，尋找想要編輯或刪除的信用卡。
-1. 選取資料列結尾處的省略符號 (`...`)。
-
-    ![顯示省略符號的螢幕擷取畫面](./media/change-credit-card/edit-delete-credit-card-mca.png)
-
+1. 在 [您的信用卡] 區段中，尋找想要編輯的信用卡。
+1. 選取資料列結尾處的省略符號 (`...`)。  
+    :::image type="content" source="./media/change-credit-card/edit-delete-credit-card-mca.png" alt-text="顯示取代選項的螢幕擷取畫面" :::
 1. 若要編輯您的信用卡詳細資料，請從捷徑功能表中選取 [編輯]。
-1. 若要刪除您的信用卡，請從捷徑功能表中選取 [刪除]。
 
 ## <a name="troubleshooting"></a>疑難排解
 
-我們不支援虛擬或預付卡。 如果您在新增或更新有效信用卡時發生錯誤，請嘗試以私人模式開啟瀏覽器。
+Azure 不支援虛擬或預付卡。 如果您在新增或更新有效信用卡時發生錯誤，請嘗試以私人模式開啟瀏覽器。
 
 ## <a name="frequently-asked-questions"></a>常見問題集
 
 下列各節回答有關變更信用卡資訊的常見問題。
-
-### <a name="my-subscription-is-disabled-why-cant-i-remove-my-credit-card-now"></a>我的訂閱已停用。 為什麼無法立即移除信用卡？
-
-停用或取消訂閱後，需要 90 天系統才會將其永久刪除。 我們在保留期間會保留您的付款方式，以防您想重新啟用訂閱。 該期間過後，訂用帳戶就會永久刪除。
-
-如果您在 90 天的保留期結束前需要移除信用卡，請[重新啟用訂用帳戶](subscription-disabled.md)。 如需無法重新啟用，請[連絡 Azure 支援服務](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
 
 ### <a name="why-do-i-keep-getting-your-login-session-has-expired-please-click-here-to-log-back-in"></a>為什麼我一直收到「您的登入工作階段已過期。 請按一下這裡重新登入」錯誤訊息？
 
@@ -203,3 +156,4 @@ Microsoft Azure 支援的付款方法為信用卡和支票/電匯。 若要獲�
 ## <a name="next-steps"></a>後續步驟
 
 - 了解 [Azure 保留](../reservations/save-compute-costs-reservations.md)，以查看是否能為您節省費用。
+- 如果您想要刪除信用卡，請參閱[刪除 Azure 帳單付款方法](delete-azure-payment-method.md)。

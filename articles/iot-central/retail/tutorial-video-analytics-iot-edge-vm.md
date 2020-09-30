@@ -1,6 +1,6 @@
 ---
 title: 教學課程 - 在 Azure IoT Central 中建立影片分析 IoT Edge 執行個體 (Linux VM)
-description: 本教學課程說明如何建立影片分析 IoT Edge 執行個體，以搭配影片分析 - 物件和動作偵測應用程式範本使用。
+description: 本教學課程說明如何在 Linux VM 上建立影片分析 IoT Edge 執行個體，以搭配影片分析 - 物件和動作偵測應用程式範本使用。
 services: iot-central
 ms.service: iot-central
 ms.subservice: iot-central-retail
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: 69e5b757036a2d68fa779e3fc232cc42a034e33c
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 0b39ec9c8cb70adac1474b2647ac1c9591b9d5cd
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037915"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526386"
 ---
 # <a name="tutorial-create-an-iot-edge-instance-for-video-analytics-linux-vm"></a>教學課程：建立適用於影片分析的 IoT Edge 執行個體 (Linux VM)
 

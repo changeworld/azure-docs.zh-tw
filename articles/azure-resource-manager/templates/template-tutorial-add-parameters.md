@@ -6,12 +6,12 @@ ms.date: 03/31/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: b1454106c4498f4519972633df8a871585d254f1
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 9e860941c3d782498c12afa12f285f44e7e68f37
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497540"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069436"
 ---
 # <a name="tutorial-add-parameters-to-your-arm-template"></a>教學課程：將參數新增至 ARM 範本
 
@@ -114,7 +114,7 @@ az deployment group create \
 ---
 
 > [!NOTE]
-> 如果部署失敗，請使用 **debug** 與部署命令切換，以顯示偵錯記錄。  您也可以使用 **verbose** 切換來顯示完整的偵錯記錄。
+> 如果部署失敗，請使用 **verbose** 參數來取得所建立資源的相關資訊。 使用 **debug** 參數來取得更多資訊以進行偵錯。
 
 若要查看範本的彈性，讓我們再次進行部署。 這次將 SKU 參數設為 **Standard_GRS**。 您可以傳入新名稱來建立不同的儲存體帳戶，或使用相同名稱來更新現有的儲存體帳戶。 這兩個選項都可運作。
 

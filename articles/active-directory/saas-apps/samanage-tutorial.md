@@ -1,6 +1,6 @@
 ---
-title: 教學課程：Azure Active Directory 與 Samanage 整合 | Microsoft Docs
-description: 了解如何設定 Azure Active Directory 與 Samanage 之間的單一登入。
+title: 教學課程：Azure Active Directory 與 SolarWinds Service Desk (先前稱為 Samanage) 整合 | Microsoft Docs
+description: 了解如何設定 Azure Active Directory 與 SolarWinds Service Desk (先前稱為 Samanage) 之間的單一登入。
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -11,20 +11,20 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: jeedes
-ms.openlocfilehash: 56018ff0be07a48cf9448b9b92de5694ebac18bc
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 8d4c19e1ce10ed618cda167cd6fa7efedf4111d0
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543494"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707572"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-samanage"></a>教學課程：Azure Active Directory 與 Samanage 整合
+# <a name="tutorial-azure-active-directory-integration-with-solarwinds-service-desk-previously-samanage"></a>教學課程：Azure Active Directory 與 SolarWinds Service Desk (先前稱為 Samanage) 整合
 
-在本教學課程中，您會了解如何整合 Samanage 與 Azure Active Directory (Azure AD)。
-Samanage 與 Azure AD 整合提供下列優點：
+在本教學課程中，您會了解如何整合 SolarWinds 與 Azure Active Directory (Azure AD)。
+SolarWinds 與 Azure AD 整合提供下列優點：
 
-* 您可以在 Azure AD 中控制可存取 Samanage 的人員。
-* 您可以讓使用者使用其 Azure AD 帳戶自動登入 Samanage (單一登入)。
+* 您可以在 Azure AD 中控制可存取 SolarWinds 的人員。
+* 您可以讓使用者使用其 Azure AD 帳戶自動登入 SolarWinds (單一登入)。
 * 您可以在 Azure 入口網站中集中管理您的帳戶。
 
 若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
@@ -32,7 +32,7 @@ Samanage 與 Azure AD 整合提供下列優點：
 
 ## <a name="prerequisites"></a>Prerequisites
 
-若要設定 Azure AD 與 Samanage 的整合作業，您需要下列項目：
+若要設定 Azure AD 與 SolarWinds Service Desk (先前稱為 Samanage 的整合作業，您需要下列項目：
 
 * Azure AD 訂用帳戶。 如果您沒有 Azure AD 環境，您可以在[這裡](https://azure.microsoft.com/pricing/free-trial/)取得一個月的試用帳戶
 * 已啟用 Samanage 單一登入的訂用帳戶
@@ -41,15 +41,15 @@ Samanage 與 Azure AD 整合提供下列優點：
 
 在本教學課程中，您會在測試環境中設定和測試 Azure AD 單一登入。
 
-* Samanage 支援 **SP** 起始的 SSO
+* SolarWinds 支援由 **SP** 起始的 SSO
 
-## <a name="adding-samanage-from-the-gallery"></a>從資源庫新增 Samanage
+## <a name="adding-solarwinds-from-the-gallery"></a>從資源庫新增 SolarWinds
 
-若要設定 Samanage 與 Azure AD 的整合作業，您必須從資源庫將 Samanage 新增至受控 SaaS 應用程式清單。
+若要設定 SolarWinds 與 Azure AD 整合，您需要從資源庫將 SolarWinds 新增到受控 SaaS App 清單。
 
-**若要從資源庫新增 Samanage，請執行下列步驟：**
+**若要從資源庫新增 SolarWinds，請執行下列步驟：**
 
-1. 在 **[Azure 入口網站](https://portal.azure.com)** 的左方瀏覽窗格中，按一下 [Azure Active Directory]  圖示。
+1. 在 **[Azure 入口網站](https://portal.azure.com)** 的左方瀏覽窗格中，選取 [Azure Active Directory] 圖示。
 
     ![Azure Active Directory 按鈕](common/select-azuread.png)
 
@@ -61,31 +61,31 @@ Samanage 與 Azure AD 整合提供下列優點：
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **Samanage**，從結果面板中選取 **Samanage**，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中輸入 **SolarWinds**，並從結果面板中選取 [SolarWinds]，然後按一下 [新增] 按鈕以新增應用程式。
 
-     ![結果清單中的 Samanage](common/search-new-app.png)
+     ![結果清單中的 SolarWinds](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>設定和測試 Azure AD 單一登入
 
-在本節中，您會以名為 **Britta Simon** 的測試使用者身分，設定及測試與 Samanage 搭配運作的 Azure AD 單一登入。
-若要讓單一登入能夠運作，必須建立 Azure AD 使用者與 Samanage 中相關使用者之間的連結關聯性。
+在本節中，您會以名為 **Britta Simon** 的測試使用者為基礎，設定及測試與 SolarWinds 搭配運作的 Azure AD 單一登入。
+若要讓單一登入能夠運作，必須建立 Azure AD 使用者與 SolarWinds 中相關使用者之間的連結關聯性。
 
-若要使用 Samanage 來設定並測試 Azure AD 單一登入，您需要完成下列建置組塊：
+若要設定及測試與 SolarWinds 搭配運作的 Azure AD 單一登入，您需要完成下列建置組塊：
 
 1. **[設定 Azure AD 單一登入](#configure-azure-ad-single-sign-on)** - 讓您的使用者能夠使用此功能。
-2. **[設定 Samanage 單一登入](#configure-samanage-single-sign-on)** - 在應用程式端設定單一登入設定。
+2. **[設定 SolarWinds Service Desk 單一登入](#configure-solarwinds-single-sign-on)** - 在應用程式端設定單一登入設定。
 3. **[建立 Azure AD 測試使用者](#create-an-azure-ad-test-user)** - 使用 Britta Simon 測試 Azure AD 單一登入。
 4. **[指派 Azure AD 測試使用者](#assign-the-azure-ad-test-user)** - 讓 Britta Simon 能夠使用 Azure AD 單一登入。
-5. **[建立 Samanage 測試使用者](#create-samanage-test-user)** - 使 Samanage 中對應的 Britta Simon 連結到該使用者在 Azure AD 中的代表項目。
+5. **[建立 SolarWinds Service Desk 測試使用者](#create-solarwinds-test-user)** - 使 SolarWinds Service Desk 中 B.Simon 的對應使用者連結到該使用者在 Azure AD 中的代表身分。
 6. **[測試單一登入](#test-single-sign-on)** ，驗證組態是否能運作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>設定 Azure AD 單一登入
 
 在本節中，您會在 Azure 入口網站中啟用 Azure AD 單一登入。
 
-若要使用 Samanage 設定 Azure AD 單一登入功能，請執行下列步驟：
+若要設定與 SolarWinds 搭配運作的 Azure AD 單一登入，請執行下列步驟：
 
-1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Samanage] 應用程式整合頁面上，選取 [單一登入]。
+1. 在 [Azure 入口網站](https://portal.azure.com/)的 [SolarWinds] 應用程式整合頁面上，選取 [單一登入]。
 
     ![設定單一登入連結](common/select-sso.png)
 
@@ -112,7 +112,7 @@ Samanage 與 Azure AD 整合提供下列優點：
 
     ![憑證下載連結](common/certificatebase64.png)
 
-6. 在 [設定 Samanage]  區段上，依據您的需求複製適當的 URL。
+6. 在 [設定 SolarWinds] 區段上，依據您的需求複製適當的 URL。
 
     ![複製組態 URL](common/copy-configuration-urls.png)
 
@@ -122,9 +122,11 @@ Samanage 與 Azure AD 整合提供下列優點：
 
     c. 登出 URL
 
-### <a name="configure-samanage-single-sign-on"></a>設定 Samanage 單一登入
+<a name="configure-solarwinds-single-sign-on"></a>
 
-1. 在不同的 Web 瀏覽器視窗中，以系統管理員身分登入您的 Samanage 公司網站。
+### <a name="configure-solarwinds-service-desk-single-sign-on"></a>設定 SolarWinds Service Desk 單一登入
+
+1. 在不同的 Web 瀏覽器視窗中，以系統管理員身分登入您的 SolarWinds 公司網站。
 
 2. 按一下 [儀表板]  並選取左側導覽窗格中的 [安裝]  。
    
@@ -150,7 +152,7 @@ Samanage 與 Azure AD 整合提供下列優點：
  
     f. 在記事本中，開啟您從 Azure 入口網站下載的 base-64 編碼憑證，將其內容複製到剪貼簿，然後貼到 [在下面貼上識別提供者 x.509 憑證]  文字方塊中。
  
-    g. 按一下 [若 Samanage 中不存在使用者則加以建立]  。
+    g. 按一下 [若 SolarWinds 中不存在使用者則加以建立]。
  
     h. 按一下 [更新]  。
 
@@ -181,15 +183,13 @@ Samanage 與 Azure AD 整合提供下列優點：
 
 ### <a name="assign-the-azure-ad-test-user"></a>指派 Azure AD 測試使用者
 
-在本節中，您會將 Samanage 的存取權授與 Britta Simon，讓她能夠使用 Azure 單一登入。
+在本節中，您會把 SolarWinds 的存取權授與 Britta Simon，讓她能夠使用 Azure 單一登入。
 
-1. 在 Azure 入口網站中，依序選取 [企業應用程式]  、[所有應用程式]  及 [Samanage]  。
+1. 在 Azure 入口網站中，依序選取 [企業應用程式]、[所有應用程式] 及 [SolarWinds]。
 
     ![企業應用程式刀鋒視窗](common/enterprise-applications.png)
 
-2. 在應用程式清單中，選取 [Samanage]  。
-
-    ![應用程式清單中的 Samanage 連結](common/all-applications.png)
+2. 在應用程式清單中，選取 [SolarWinds]。
 
 3. 在左側功能表中，選取 [使用者和群組]  。
 
@@ -205,39 +205,39 @@ Samanage 與 Azure AD 整合提供下列優點：
 
 7. 在 [新增指派]  對話方塊中，按一下 [指派]  按鈕。
 
-### <a name="create-samanage-test-user"></a>建立 Samanage 測試使用者
+### <a name="create-solarwinds-test-user"></a>建立 SolarWinds 測試使用者
 
-若要讓 Azure AD 使用者能夠登入 Samanage，必須將他們佈建到 Samanage。  
-就 Samanage 而言，佈建是手動工作。
+若要讓 Azure AD 使用者能夠登入 SolarWinds，必須將他們佈建到 SolarWinds。  
+SolarWinds 需以手動的方式佈建。
 
 **若要佈建使用者帳戶，請執行下列步驟：**
 
-1. 以系統管理員身分登入您的 Samanage 公司網站。
+1. 以系統管理員身分登入您的 SolarWinds 公司網站。
 
-2. 按一下 [儀表板]  並選取左側導覽窗格中的 [安裝]  。
+2. 按一下 [儀表板]**** 並選取左側導覽窗格中的 [安裝]****。
    
     ![安裝程式](./media/samanage-tutorial/tutorial_samanage_001.png "安裝程式")
 
-3. 按一下 [使用者]  索引標籤
+3. 按一下 **[使用者]** 索引標籤
    
     ![使用者](./media/samanage-tutorial/tutorial_samanage_006.png "使用者")
 
-4. 按一下 [新使用者]  。
+4. 按一下 **[新增使用者]**。
    
     ![新增使用者](./media/samanage-tutorial/tutorial_samanage_007.png "新增使用者")
 
-5. 輸入您想要佈建之 Azure Active Directory 帳戶的 [名稱]  和 [電子郵件地址]  ，然後按一下 [建立使用者]  。
+5. 輸入您想要佈建之 Azure Active Directory 帳戶的 [名稱]**** 和 [電子郵件地址]****，然後按一下 [建立使用者]****。
    
     ![建立使用者](./media/samanage-tutorial/tutorial_samanage_008.png "建立使用者")
    
    >[!NOTE]
-   >Azure Active Directory 帳戶的持有者會收到一封電子郵件，並依照連結在啟用其帳戶前進行確認。 您可以使用任何其他的 Samanage 使用者帳戶建立工具，或 Samanage 提供的 API，以佈建 Azure Active Directory 使用者帳戶。
+   >Azure Active Directory 帳戶的持有者會收到一封電子郵件，並依照連結在啟用其帳戶前進行確認。 您可以使用任何其他的 SolarWinds 使用者帳戶建立工具，或 SolarWinds 提供的 API，以佈建 Azure Active Directory 使用者帳戶。
 
 ### <a name="test-single-sign-on"></a>測試單一登入 
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 [Samanage] 圖格時，應該會自動登入您設定 SSO 的 Samanage。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 SolarWinds 圖格時，應該會自動登入您設定 SSO 的 SolarWinds。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
 
 ## <a name="additional-resources"></a>其他資源
 

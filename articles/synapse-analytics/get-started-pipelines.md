@@ -9,12 +9,12 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: 5e32a6a9817f2a3176e96e39c5e261875e8f4ed1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 72eea7c46dd005cd16ae5b8f0022c1174dd28f27
+ms.sourcegitcommit: 0194a29a960e3615f96a2d9d8a7e681cf3e8f9ab
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87093286"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89667485"
 ---
 # <a name="orchestrate-with-pipelines"></a>使用管線進行協調
 
@@ -26,7 +26,7 @@ ms.locfileid: "87093286"
 
 1. 在 Synapse Studio 中，移至 [協調] 中樞。
 1. 選取 [+] > [管線]，以建立新的管線。
-1. 移至 [開發] 中樞，並尋找您先前建立的筆記本。
+1. 移至 [開發] 中樞，並選取您先前建立的其中一個筆記本。
 1. 將該筆記本拖曳到管線中。
 1. 在管線中，選取 [新增觸發程序] > [新增/編輯]。
 1. 在 [選擇觸發程序] 中，選取 [新增]，然後在 [週期] 中，將觸發程序設定為每隔 1 小時執行一次。

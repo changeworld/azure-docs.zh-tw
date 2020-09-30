@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 04/30/2018
 ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: da7d56a0fd8571e796567331a7543074f0bf1eda
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.openlocfilehash: 89258b05831170ff502cde80577f3a6851659bf2
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84808695"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90986328"
 ---
 # <a name="tutorial-log-network-traffic-to-and-from-a-virtual-machine-using-the-azure-portal"></a>教學課程：使用 Azure 入口網站記錄往返於虛擬機器的網路流量
 
@@ -101,7 +101,7 @@ NSG 流量記錄需要 **Microsoft.Insights** 提供者。 若要註冊提供者
 4. 在入口網站的左上角，選取 [所有服務]。 在 [篩選] 方塊中，輸入*網路監看員*。 當搜尋結果中出現**網路監看員**時，請加以選取。
 5. 在 [記錄] 下，選取 [NSG 流量記錄]，如下列圖所示：
 
-    ![NSG](./media/network-watcher-nsg-flow-logging-portal/nsgs.png)
+    ![螢幕擷取畫面顯示網路監看員 NSG 流量記錄。](./media/network-watcher-nsg-flow-logging-portal/nsgs.png)
 
 6. 從 NSG 清單中，選取名為 **myVm-nsg** 的 NSG。
 7. 在 [流量記錄設定] 下，選取 [開啟]。

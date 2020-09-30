@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 5a48ea0747a110720a29a9c34fa2dca0f5a74f16
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: c0f4c4deaa57b1414a3ef55226e4c451b53ba72c
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84309997"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90971306"
 ---
 # <a name="tutorial-create-and-walk-through-the-solar-panel-monitoring-app-template"></a>教學課程：建立和逐步執行太陽能板監視應用程式範本 
 
@@ -105,8 +105,9 @@ Adatum 是一家虛構的能源公司，負責監視和管理太陽能板。 在
     > [!div class="mx-imgBorder"]
     > ![刪除應用程式](media/tutorial-iot-central-solar-panel/solar-panel-delete-app.png)
 
-
 ## <a name="next-steps"></a>後續步驟
-* 若要了解太陽能板應用程式架構，請參考[概念文章](https://docs.microsoft.com/azure/iot-central/energy/concept-iot-central-solar-panel-app)
+* 若要了解太陽能板應用程式架構，請參考 
+> [!div class="nextstepaction"]
+> [概念文章](https://docs.microsoft.com/azure/iot-central/energy/concept-iot-central-solar-panel-app)
 * 免費建立太陽能板應用程式範本：[太陽能板應用程式](https://apps.azureiotcentral.com/build/new/solar-panel-monitoring)
 * 若要深入了解 IoT Central，請參閱 [IoT Central 概觀](https://docs.microsoft.com/azure/iot-central/)

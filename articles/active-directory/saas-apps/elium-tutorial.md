@@ -4,19 +4,19 @@ description: 了解如何設定 Azure Active Directory 與 Elium 之間的單一
 services: active-directory
 author: jeevansd
 manager: CelesteDG
-ms.reviewer: celested
+ms.reviewer: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/14/2019
+ms.date: 09/09/2020
 ms.author: jeedes
-ms.openlocfilehash: 756b8e8e06d393736b330c3ae3e9128de76bf5a0
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: e7fc8f68bf344b689d6d4ebb49fde8d43ebcaccd
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544208"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90053621"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-elium"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Elium 整合
 
@@ -26,14 +26,15 @@ ms.locfileid: "88544208"
 * 讓使用者使用其 Azure AD 帳戶自動登入 Elium。
 * 在 Azure 入口網站集中管理您的帳戶。
 
-若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
-
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要開始，您需要下列項目：
 
 * Azure AD 訂用帳戶。 如果沒有訂用帳戶，您可以取得[免費帳戶](https://azure.microsoft.com/free/)。
 * 已啟用 Elium 單一登入 (SSO) 的訂用帳戶。
+
+> [!NOTE]
+> 也可以在 Azure AD 美國政府雲端環境中使用此整合。 您可以在 Azure AD 美國政府雲端應用程式庫中找到此應用程式，並以與公用雲端相同的方式進行設定。
 
 ## <a name="scenario-description"></a>案例描述
 
@@ -46,14 +47,14 @@ ms.locfileid: "88544208"
 
 若要設定將 Elium 整合到 Azure AD 中，您需要從資源庫將 Elium 新增到受控 SaaS 應用程式清單。
 
-1. 使用公司或學校帳戶或個人的 Microsoft 帳戶登入 [Azure 入口網站](https://portal.azure.com)。
-1. 在左方瀏覽窗格上，選取 [Azure Active Directory]  服務。
-1. 巡覽至 [企業應用程式]  ，然後選取 [所有應用程式]  。
+1. 使用公司或學校帳戶或個人的 Microsoft 帳戶登入 Azure 入口網站。
+1. 在左方瀏覽窗格上，選取 [Azure Active Directory] 服務。
+1. 巡覽至 [企業應用程式]，然後選取 [所有應用程式]。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]  區段的搜尋方塊中，輸入 **Elium**。
-1. 從結果面板中選取 [Elium]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
+1. 在 [從資源庫新增]**** 區段的搜尋方塊中，輸入 **Elium**。
+1. 從結果面板中選取 [Elium]****，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-elium"></a>設定及測試 Elium 的 Azure AD 單一登入
+## <a name="configure-and-test-azure-ad-sso-for-elium"></a>設定和測試 Elium 的 Azure AD SSO
 
 以名為 **B.Simon** 的測試使用者，設定及測試與 Elium 搭配運作的 Azure AD SSO。 若要讓 SSO 能夠運作，您必須建立 Azure AD 使用者與 Elium 中相關使用者之間的連結關聯性。
 
@@ -70,21 +71,21 @@ ms.locfileid: "88544208"
 
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
-1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Elium]  應用程式整合頁面上，尋找 [管理]  區段並選取 [單一登入]  。
+1. 在 Azure 入口網站的 [Elium] 應用程式整合頁面上，尋找 [管理] 區段並選取 [單一登入]。
 1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
-1. 在 [以 SAML 設定單一登入]  頁面上，按一下 [基本 SAML 設定]  的編輯/畫筆圖示，以編輯設定。
+1. 在 [以 SAML 設定單一登入] 頁面上，按一下 [基本 SAML 設定] 的編輯/畫筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
 
-1. 在 [基本 SAML 設定]  區段上，如果您想要以 **IDP** 起始模式設定應用程式，請輸入下列欄位的值：
+1. 在 [基本 SAML 設定] 區段上，如果您想要以 **IDP** 起始模式設定應用程式，請輸入下列欄位的值：
 
-    a. 在 [識別碼]  文字方塊中，使用下列模式來輸入 URL：`https://<platform-domain>.elium.com/login/saml2/metadata`
+    a. 在 [識別碼] 文字方塊中，使用下列模式來輸入 URL：`https://<platform-domain>.elium.com/login/saml2/metadata`
 
-    b. 在 [回覆 URL]  文字方塊中，使用下列模式來輸入 URL：`https://<platform-domain>.elium.com/login/saml2/acs`
+    b. 在 [回覆 URL] 文字方塊中，使用下列模式來輸入 URL：`https://<platform-domain>.elium.com/login/saml2/acs`
 
-1. 如果您想要以 **SP** 起始模式設定應用程式，請按一下 [設定其他 URL]  ，然後執行下列步驟：
+1. 如果您想要以 **SP** 起始模式設定應用程式，請按一下 [設定其他 URL]，然後執行下列步驟：
 
-    在 [登入 URL]  文字方塊中，以下列模式輸入 URL︰`https://<platform-domain>.elium.com/login/saml2/login`
+    在 [登入 URL] 文字方塊中，以下列模式輸入 URL︰`https://<platform-domain>.elium.com/login/saml2/login`
 
     > [!NOTE]
     > 這些都不是真正的值。 您可以從 **SP 中繼資料檔案** (可於 `https://<platform-domain>.elium.com/login/saml2/metadata` 下載) 取得這些值，該檔案會在本教學課程稍後加以說明。
@@ -110,7 +111,7 @@ ms.locfileid: "88544208"
 
     ![憑證下載連結](common/metadataxml.png)
 
-1. 在 [設定 Elium]  區段上，根據您的需求複製適當的 URL。
+1. 在 [設定 Elium]**** 區段上，根據您的需求複製適當的 URL。
 
     ![複製組態 URL](common/copy-configuration-urls.png)
 
@@ -119,29 +120,23 @@ ms.locfileid: "88544208"
 在本節中，您將在 Azure 入口網站中建立名為 B.Simon 的測試使用者。
 
 1. 在 Azure 入口網站的左窗格中，依序選取 [Azure Active Directory]  、[使用者]  和 [所有使用者]  。
-1. 在畫面頂端選取 [新增使用者]  。
-1. 在 [使用者]  屬性中，執行下列步驟：
-   1. 在 [名稱]  欄位中，輸入 `B.Simon`。  
+1. 在畫面頂端選取 [新增使用者]。
+1. 在 [使用者] 屬性中，執行下列步驟：
+   1. 在 [名稱] 欄位中，輸入 `B.Simon`。  
    1. 在 [使用者名稱]  欄位中，輸入 username@companydomain.extension。 例如： `B.Simon@contoso.com` 。
-   1. 選取 [顯示密碼]  核取方塊，然後記下 [密碼]  方塊中顯示的值。
-   1. 按一下頁面底部的 [新增]  。
+   1. 選取 [顯示密碼] 核取方塊，然後記下 [密碼] 方塊中顯示的值。
+   1. 按一下 [建立]。
 
 ### <a name="assign-the-azure-ad-test-user"></a>指派 Azure AD 測試使用者
 
 在本節中，您會將 Elium 的存取權授與 B.Simon，讓她能夠使用 Azure 單一登入。
 
 1. 在 Azure 入口網站中，選取 [企業應用程式]  ，然後選取 [所有應用程式]  。
-1. 在應用程式清單中，選取 [Elium]  。
+1. 在應用程式清單中，選取 [Elium]****。
 1. 在應用程式的概觀頁面中尋找 [管理]  區段，然後選取 [使用者和群組]  。
-
-   ![[使用者和群組] 連結](common/users-groups-blade.png)
-
 1. 選取 [新增使用者]  ，然後在 [新增指派]  對話方塊中選取 [使用者和群組]  。
-
-    ![[新增使用者] 連結](common/add-assign-user.png)
-
-1. 在 [使用者和群組]  對話方塊的 [使用者] 清單中選取 [B.Simon]  ，然後按一下畫面底部的 [選取]  按鈕。
-1. 如果您在 SAML 判斷提示中需要任何角色值，請在 [選取角色]  對話方塊的清單中為使用者選取適當的角色，然後按一下畫面底部的 [選取]  按鈕。
+1. 在 [使用者和群組] 對話方塊的 [使用者] 清單中選取 [B.Simon]，然後按一下畫面底部的 [選取] 按鈕。
+1. 如果您需要將角色指派給使用者，您可以從 [選取角色] 下拉式清單中選取。 如果未設定此應用程式的角色，您會看到已選取 [預設存取] 角色。
 1. 在 [新增指派]  對話方塊中，按一下 [指派]  按鈕。
 
 ## <a name="configure-elium-sso"></a>設定 Elium SSO
@@ -156,17 +151,17 @@ ms.locfileid: "88544208"
 
 1. 如果您想要手動設定 Elium，請開啟新的網頁瀏覽器視窗，並以系統管理員身分登入 Elium 公司網站，然後執行下列步驟：
 
-1. 按一下右上角的 [使用者設定檔]  ，然後選取 [管理]  。
+1. 按一下右上角的 [使用者設定檔]，然後選取 [設定]。
 
-    ![設定單一登入](./media/elium-tutorial/user1.png)
+    ![設定單一登入 Elium 01](./media/elium-tutorial/elium-01.png)
 
-1. 選取 [安全性]  索引標籤。
+1. 選取 [進階] 底下的 [安全性]。
 
-    ![設定單一登入](./media/elium-tutorial/user2.png)
+    ![設定單一登入 Elium 02](./media/elium-tutorial/elium-02.png)
 
 1. 向下捲動至 [單一登入 (SSO)]  區段，然後執行下列步驟：
 
-    ![設定單一登入](./media/elium-tutorial/user3.png)
+    ![設定單一登入 Elium 03](./media/elium-tutorial/elium-03.png)
 
     a. 複製 [確認 SAML2 驗證適用於您的帳戶]  的值，並將該值貼到 Azure 入口網站中的 [基本 SAML 組態]  區段上的 [登入 URL]  文字方塊中。
 
@@ -181,11 +176,11 @@ ms.locfileid: "88544208"
 
     e. 在 **SP 中繼資料**檔案中搜尋 **entityID**，複製 **entityID** 值，並將其貼到 Azure 入口網站中的 [基本 SAML 組態]  區段上的 [識別碼]  文字方塊中。 
 
-    ![設定單一登入](./media/elium-tutorial/user4.png)
+    ![設定單一登入 Elium 04](./media/elium-tutorial/elium-04.png)
 
     f. 在 **SP 中繼資料**檔案中搜尋 **AssertionConsumerService**，複製 [位置]  值，並將其貼到 Azure 入口網站中的 [基本 SAML 組態]  區段上的 [回覆 URL]  文字方塊中。
 
-    ![設定單一登入](./media/elium-tutorial/user5.png)
+    ![設定單一登入 Elium 05](./media/elium-tutorial/elium-05.png)
 
     g. 在記事本中開啟從 Azure 入口網站下載的中繼資料檔案，複製內容並將其貼到 [IdP 中繼資料]  文字方塊中。
 
@@ -200,16 +195,20 @@ ms.locfileid: "88544208"
 
 ## <a name="test-sso"></a>測試 SSO 
 
-在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
+在本節中，您會使用下列選項來測試您的 Azure AD 單一登入組態。 
+ 
+#### <a name="sp-initiated"></a>SP 起始：
+ 
+* 在 Azure 入口網站中按一下 [測試此應用程式]。 這會重新導向您可以在其中起始登入流程的 Elium 登入 URL。  
+ 
+* 直接移至 Elium 登入 URL，然後從該處起始登入流程。
+ 
+#### <a name="idp-initiated"></a>IDP 起始：
+ 
+* 在 Azure 入口網站中按一下 [測試此應用程式]，您應該會自動登入您已設定 SSO 的 Elium 
+ 
+您也可以使用 Microsoft 存取面板，以任何模式測試應用程式。 當您按一下存取面板中的 Elium 圖格時，如果是在 SP 模式中設定，您會重新導向至 [應用程式登入] 頁面來起始登入流程，如果在 IDP 模式中設定，您應該會自動登入已設定 SSO 的 Elium。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
 
-當您在存取面板中按一下 [Elium] 圖格時，應該會自動登入您已設定 SSO 的 Elium。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+## <a name="next-steps"></a>後續步驟
 
-## <a name="additional-resources"></a>其他資源
-
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
-
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
-
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
-- [嘗試搭配 Azure AD 使用 Elium](https://aad.portal.azure.com/)
+設定 Glint Inc 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。

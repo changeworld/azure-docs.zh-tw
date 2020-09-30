@@ -4,12 +4,12 @@ description: 在本教學課程中，您將了解如何設定用來執行 Servic
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: 93a7e2507ab3a467ef83924479872694cae2dd5b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e9f62f944fff331bcf2dad1b380161e563614219
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75614004"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90561835"
 ---
 # <a name="tutorial-create-azure-vm-infrastructure-to-host-a-service-fabric-cluster"></a>教學課程：建立用來裝載 Service Fabric 叢集的 Azure VM 基礎結構
 
@@ -49,7 +49,7 @@ Service Fabric 獨立叢集讓您能夠選擇自己的環境，並且在 Service
 
 8. 接下來，將 [NIC 網路安全性群組]  設定為 [進階]  。 建立新的安全性群組，記下它的名稱，並且建立下列規則以允許來自任何來源的 TCP 流量：
 
-   ![sf 輸入][sf-inbound]
+   ![顯示建立允許輸入 TCP 流量規則的螢幕擷取畫面。][sf-inbound]
 
    * 連接埠 `3389`，適用於 RDP 和 ICMP (基本連線)。
    * 連接埠 `19000-19003`，適用於 Service Fabric。
@@ -61,7 +61,7 @@ Service Fabric 獨立叢集讓您能夠選擇自己的環境，並且在 Service
 
 9. 新增另一個規則。 將來源設定為 [服務標籤]  ，並且將來源服務標籤設定為 [VirtualNetwork]  。 Service Fabric 需要下列連接埠開啟，以便在叢集內進行通訊：135、137-139、445、20001-20031、20606-20861。
 
-   ![vnet 輸入][vnet-inbound]
+   ![顯示建立允許叢集 TCP 流量規則的螢幕擷取畫面。][vnet-inbound]
 
 10. 其他選項的預設狀態是可接受的。 如果您想要的話可以檢閱它們，然後啟動您的虛擬機器。
 

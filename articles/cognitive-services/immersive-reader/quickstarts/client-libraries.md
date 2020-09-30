@@ -1,7 +1,7 @@
 ---
-title: 快速入門：使用沈浸式閱讀程式用戶端程式庫
+title: 快速入門：沈浸式閱讀程式用戶端程式庫
 titleSuffix: Azure Cognitive Services
-description: 沈浸式閱讀程式 API 提供用戶端程式庫，可讓您輕鬆地將搜尋功能整合到您的應用程式中。 使用本快速入門，開始傳送搜尋要求並取得結果。
+description: 沉浸式讀取器用戶端程式庫可讓您輕鬆地將沈浸式閱讀程式服務整合到您的 web 應用程式，以改善閱讀理解。 在本快速入門中，您將了解如何使用沉浸式閱讀程式來進行文字選取、辨識語音的部分、朗讀選取的文字、翻譯等等。
 services: cognitive-services
 author: nitinme
 manager: nitinme
@@ -9,17 +9,18 @@ zone_pivot_groups: programming-languages-set-twenty
 ms.service: cognitive-services
 ms.subservice: immersive-reader
 ms.topic: quickstart
-ms.date: 05/20/2020
+ms.date: 09/14/2020
 ms.author: nitinme
-ms.custom: devx-track-csharp
-ms.openlocfilehash: c5f02c473fb4a44fb8c0235658d3c8f6e3279844
-ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
+ms.custom: cog-serv-seo-aug-2020
+keywords: 顯示圖片、詞性、閱讀選取的文字、翻譯單字、閱讀理解
+ms.openlocfilehash: 621be6293b4ac487cafafc14498524c97fdc6d82
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/07/2020
-ms.locfileid: "89505373"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90978333"
 ---
-# <a name="quickstart-use-the-immersive-reader-client-library"></a>快速入門：使用沈浸式閱讀程式用戶端程式庫
+# <a name="quickstart-get-started-with-immersive-reader"></a>快速入門：開始使用沈浸式閱讀程式
 
 ::: zone pivot="programming-language-csharp"
 

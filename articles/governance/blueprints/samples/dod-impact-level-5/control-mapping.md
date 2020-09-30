@@ -1,14 +1,14 @@
 ---
 title: DoD 影響等級 5 藍圖範例控制
 description: 控制 DoD 影響等級 5 藍圖範例的對應。 每個控制項都會對應至一或多個可協助評量的 Azure 原則。
-ms.date: 06/30/2020
+ms.date: 09/17/2020
 ms.topic: sample
-ms.openlocfilehash: a7d1439a73cf387cee773d558ced50ce1c07f6dc
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 456560a8042b239a4d53e1c309742650c00bfa6a
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87921311"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90978364"
 ---
 # <a name="control-mapping-of-the-dod-impact-level-5-blueprint-sample"></a>控制 DoD 影響等級 5 藍圖範例的對應
 
@@ -307,11 +307,8 @@ Just-In-Time (JIT) 虛擬機器存取可鎖定 Azure 虛擬機器的連入流量
 
 ## <a name="si-02-06-flaw-remediation--removal-of-previous-versions-of-software--firmware"></a>SI-02 (06) 缺陷補救 | 移除舊版的軟體/韌體
 
-此藍圖會指派原則定義，以協助您確定應用程式會使用最新版的 .NET Framework、 Java、PHP、Python 和 TLS。 此藍圖也會指派原則定義以確保 Kubernetes 服務會升級為其不易受攻擊的版本。
+此藍圖會指派原則定義，以協助您確定應用程式會使用最新版的 HTTP、Java、PHP、Python 和 TLS。 此藍圖也會指派原則定義以確保 Kubernetes 服務會升級為其不易受攻擊的版本。
 
-- 確定 '.NET Framework' 在作為 API 應用程式的一部分時，版本是最新的
-- 確定 '.NET Framework' 在作為函式應用程式的一部分時，版本是最新的
-- 確定 '.NET Framework' 在作為 Web 應用程式的一部分時，版本是最新的
 - 確定 'HTTP' 在用來執行 API 應用程式時，版本是最新的
 - 確定 'HTTP' 在用來執行函式應用程式時，版本是最新的
 - 確定 'HTTP' 在用來執行 Web 應用程式時，版本是最新的
@@ -319,7 +316,6 @@ Just-In-Time (JIT) 虛擬機器存取可鎖定 Azure 虛擬機器的連入流量
 - 確定 'Java' 在作為函式應用程式的一部分時，版本是最新的
 - 確定 'Java' 在作為 Web 應用程式的一部分時，版本是最新的
 - 確定 'PHP' 在作為 API 應用程式的一部分時，版本是最新的
-- 確定 'PHP' 在作為函式應用程式的一部分時，版本是最新的
 - 確定 'PHP' 在作為 Web 應用程式的一部分時，版本是最新的
 - 確定 'Python' 在作為 API 應用程式的一部分時，版本是最新的
 - 確定 'Python' 在作為函式應用程式的一部分時，版本是最新的

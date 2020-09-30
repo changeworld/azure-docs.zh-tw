@@ -4,12 +4,12 @@ description: 使用個人化工具迴圈自訂 C# .Net 聊天機器人，以根�
 ms.topic: tutorial
 ms.date: 07/17/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ee037632b068b0d8d2f3ed3b6ea7a83d157c5083
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 2d95a6999186b964e59ff8f287d917b1f93e1813
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935648"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90089882"
 ---
 # <a name="tutorial-use-personalizer-in-net-chat-bot"></a>教學課程：在 .NET 聊天機器人中使用個人化工具
 
@@ -21,7 +21,7 @@ ms.locfileid: "88935648"
 > [!div class="checklist"]
 > * 設定 Azure 資源
 > * 設定及執行聊天機器人
-> * 使用聊天機器人模擬器與聊天機器人互動
+> * 使用 Bot Framework Emulator 與 Bot 互動
 > * 了解聊天機器人會在哪裡以什麼方式使用個人化工具
 
 
@@ -174,20 +174,20 @@ git clone https://github.com/Azure-Samples/cognitive-services-personalizer-sampl
 
 ## <a name="set-up-the-bot-emulator"></a>設定聊天機器人模擬器
 
-1. 開啟聊天機器人模擬器，然後選取 [開啟聊天機器人]。
+1. 開啟 Bot Framework Emulator，然後選取 [開啟聊天機器人]。
 
-    :::image type="content" source="media/tutorial-chat-bot/bot-emulator-startup.png" alt-text="聊天機器人模擬器啟動畫面的螢幕擷取畫面。":::
+    :::image type="content" source="media/tutorial-chat-bot/bot-emulator-startup.png" alt-text="顯示聊天機器人網站的瀏覽器螢幕擷取畫面。":::
 
 
 1. 使用下列**聊天機器人 URL** 來設定聊天機器人，然後選取 [連線]：
 
     `http://localhost:3978/api/messages`
 
-    :::image type="content" source="media/tutorial-chat-bot/bot-emulator-open-bot-settings.png" alt-text="聊天機器人模擬器開啟聊天機器人設定的螢幕擷取畫面。":::
+    :::image type="content" source="media/tutorial-chat-bot/bot-emulator-open-bot-settings.png" alt-text="顯示聊天機器人網站的瀏覽器螢幕擷取畫面。":::
 
     模擬器會連線至聊天機器人，並顯示說明文字以及有助於進行本機開發的記錄和偵錯資訊。
 
-    :::image type="content" source="media/tutorial-chat-bot/bot-emulator-bot-conversation-first-turn.png" alt-text="第一回對話中聊天機器人模擬器的螢幕擷取畫面。":::
+    :::image type="content" source="media/tutorial-chat-bot/bot-emulator-bot-conversation-first-turn.png" alt-text="顯示聊天機器人網站的瀏覽器螢幕擷取畫面。":::
 
 ## <a name="use-the-bot-in-the-bot-emulator"></a>在聊天機器人模擬器中使用聊天機器人
 

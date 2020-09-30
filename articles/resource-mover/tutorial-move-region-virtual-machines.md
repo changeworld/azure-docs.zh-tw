@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 49b7a3700bf497ad868b7c4ab1f0802564b61bf3
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 3a5489241aa15ce105dbe4d89086aff00373ca55
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89652273"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90603963"
 ---
 # <a name="tutorial-move-azure-vms-across-regions"></a>教學課程：跨區域移動 Azure VM
 
@@ -68,6 +68,7 @@ ms.locfileid: "89652273"
 選取您要移動的資源。
 
 - 在所選來源區域內的資源群組中，會顯示所有支援的資源類型。
+- 不會顯示已新增來跨區域移動的資源。
 - 您可以將資源移至與來源區域位於相同訂用帳戶中的目標區域。 如果要變更訂用帳戶，可以在移動資源後執行此動作。
 
 1. 在 Azure 入口網站中，搜尋並選取 [資源移動器]。 然後，在**服務**底下，選取 [Azure Resource Mover]。
@@ -80,7 +81,6 @@ ms.locfileid: "89652273"
 
 3. 在**移動資源** > **來源 + 目的地**中，選取來源訂用帳戶和區域。
 4. 在**目的地**中，選取您要將 VM 移至哪一個區域。 然後按一下 [下一步]  。
-5. 在**中繼資料區域**中，選取您要在其中儲存所要移動之資源的相關中繼資料。 系統會特別針對此用途建立資源群組。 然後按一下 [下一步]  。
 
     ![選取來源和目標區域的頁面](./media/tutorial-move-region-virtual-machines/source-target.png)
 
@@ -90,7 +90,7 @@ ms.locfileid: "89652273"
     ![選取要移動之 VM 的頁面](./media/tutorial-move-region-virtual-machines/select-vm.png)
 
 8.  在要**移動的資源**中，按一下 [下一步]。
-9. 在**檢閱 + 新增**中，檢查來源和目的地設定。 請確認您了解有關移動的中繼資料將會儲存在中繼資料區域中針對此用途所建立的資源群組中。
+9. 在**檢閱 + 新增**中，檢查來源和目的地設定。 
 
     ![用來檢閱設定並繼續移動的頁面](./media/tutorial-move-region-virtual-machines/review.png)
 10. 按一下 [繼續]，開始新增資源。
@@ -235,7 +235,8 @@ ms.locfileid: "89652273"
 
 ## <a name="configure-settings-after-the-move"></a>移動後設定
 
-行動服務不會自動從 VM 解除安裝。 請手動解除安裝，如果您打算再次移動伺服器，請加以保留。
+- 行動服務不會自動從 VM 解除安裝。 請手動解除安裝，如果您打算再次移動伺服器，請加以保留。
+- 移動之後，修改 Azure 角色型存取控制 (Azure RBAC) 規則。
 
 ## <a name="delete-source-resources-after-commit"></a>認可後刪除來源資源
 

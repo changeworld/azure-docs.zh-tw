@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/28/2020
+ms.date: 08/24/2020
 ms.author: jeedes
-ms.openlocfilehash: fdea1f3b2d4cff0203951b6ec5ef6b86b62cdf9c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a631ab7190891ae3716a28615bcdbfe4d219ea27
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88527493"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90053424"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-slack"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Slack 整合
 
@@ -50,6 +50,9 @@ ms.locfileid: "88527493"
 * Slack 支援[**自動**使用者佈建](https://docs.microsoft.com/azure/active-directory/saas-apps/slack-provisioning-tutorial)
 * 設定 Slack 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
+> [!NOTE]
+> 此應用程式的識別碼是固定的字串值，因此一個租用戶中只能設定一個執行個體。
+
 ## <a name="adding-slack-from-the-gallery"></a>從資源庫新增 Slack
 
 若要設定將 Slack 整合到 Azure AD 中，您需要從資源庫將 Slack 新增到受控 SaaS 應用程式清單。
@@ -61,7 +64,7 @@ ms.locfileid: "88527493"
 1. 在 [從資源庫新增] 區段的搜尋方塊中輸入 **Slack**。
 1. 從結果面板選取 [Slack]，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-slack"></a>設定及測試 Slack 的 Azure AD 單一登入
+## <a name="configure-and-test-azure-ad-sso-for-slack"></a>設定和測試 Slack 的 Azure AD SSO
 
 以名為 **B.Simon** 的測試使用者，設定及測試與 Slack 搭配運作的 Azure AD SSO。 若要讓 SSO 能夠運作，您必須建立 Azure AD 使用者與 Slack 中相關使用者之間的連結關聯性。
 
@@ -86,13 +89,20 @@ ms.locfileid: "88527493"
 
 1. 在 [基本 SAML 組態] 區段上，輸入下列欄位的值：
 
-    a. 在 [登入 URL] 文字方塊中，使用下列模式輸入 URL：`https://< DOMAIN NAME>.slack.com/sso/saml/start`
+    a. 在 [登入 URL]  文字方塊中，使用下列模式輸入 URL：`https://<DOMAIN NAME>.slack.com/sso/saml/start`
 
     b. 在 [識別碼 (實體識別碼)] 文字方塊中，輸入 URL：`https://slack.com`
+    
+    c. 針對 [回覆 URL]，輸入下列其中一個 URL 模式：
+    
+    | 回覆 URL|
+    |----------|
+    | `https://<DOMAIN NAME>.slack.com/sso/saml` |
+    | `https://<DOMAIN NAME>.enterprise.slack.com/sso/saml` |
 
     > [!NOTE]
-    > [登入 URL] 的值不是真正的值。 使用實際的登入 URL 來更新此值。 請連絡 [Slack 用戶端支援小組](https://slack.com/help/contact)以取得此值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
-    
+    > 這些都不是真正的值。 您必須使用實際的「登入 URL」及「回覆 URL」來更新這些值。 請連絡 [Slack 用戶端支援小組](https://slack.com/help/contact)以取得此值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+
     > [!NOTE]
     > 如果您有多個 Slack 執行個體需要與租用戶整合，**識別碼 (實體識別碼)** 可以是變數。 使用模式 `https://<DOMAIN NAME>.slack.com`。 在此案例中，您也必須使用相同的值，與 Slack 中的另一個設定配對。
 
@@ -106,7 +116,6 @@ ms.locfileid: "88527493"
     | -----|---------|
     | emailaddress | user.userprincipalname |
     | 電子郵件 | user.userprincipalname |
-    | | |
 
    > [!NOTE]
    > 若要設定服務提供者 (SP) 組態，您必須按一下 SAML 設定頁面中 [進階選項] 旁的 [展開]。 在 [服務提供者簽發者] 方塊中，輸入工作區 URL。 預設值為 slack.com。 
@@ -123,11 +132,11 @@ ms.locfileid: "88527493"
 
 在本節中，您將在 Azure 入口網站中建立名為 B.Simon 的測試使用者。
 
-1. 在 Azure 入口網站的左窗格中，依序選取 [Azure Active Directory]、[使用者] 和 [所有使用者]。
+1. 在 Azure 入口網站的左窗格中，依序選取 [Azure Active Directory]  、[使用者]  和 [所有使用者]  。
 1. 在畫面頂端選取 [新增使用者]。
 1. 在 [使用者] 屬性中，執行下列步驟：
    1. 在 [名稱] 欄位中，輸入 `B.Simon`。  
-   1. 在 [使用者名稱] 欄位中，輸入 username@companydomain.extension。 例如： `B.Simon@contoso.com` 。
+   1. 在 [使用者名稱]  欄位中，輸入 username@companydomain.extension。 例如： `B.Simon@contoso.com` 。
    1. 選取 [顯示密碼] 核取方塊，然後記下 [密碼] 方塊中顯示的值。
    1. 按一下 [建立]。
 
@@ -155,15 +164,15 @@ ms.locfileid: "88527493"
 
 2. 瀏覽至 [Microsoft Azure AD]，然後移至 [小組設定]。
 
-     ![在應用程式端設定單一登入](./media/slack-tutorial/tutorial-slack-team-settings.png)
+     ![在 Microsoft Azure AD 上設定單一登入](./media/slack-tutorial/tutorial-slack-team-settings.png)
 
 3. 在 [小組設定] 區段中，按一下 [驗證] 索引標籤，然後按一下 [變更設定]。
 
-    ![在應用程式端設定單一登入](./media/slack-tutorial/tutorial-slack-authentication.png)
+    ![在小組設定上設定單一登入](./media/slack-tutorial/tutorial-slack-authentication.png)
 
 4. 在 [SAML 驗證設定]  對話方塊上，執行下列步驟：
 
-    ![在應用程式端設定單一登入](./media/slack-tutorial/tutorial-slack-save-authentication.png)
+    ![在 SAML 驗證設定上設定單一登入](./media/slack-tutorial/tutorial-slack-save-authentication.png)
 
     a.  在 [SAML 2.0 端點 (HTTP)] 文字方塊中，貼上您從 Azure 入口網站複製的 [登入 URL] 值。
 

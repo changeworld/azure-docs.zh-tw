@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 06/04/2020
+ms.date: 08/20/2020
 ms.author: jeedes
-ms.openlocfilehash: 1e1ec1dc4d6982194fc10a8701629adba2c8b24c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 31e8533da91fdab86313e21c20c2ebb107eef848
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544307"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89660596"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-edx-for-business-saml-integration"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 edX for Business SAML Integration 整合
 
@@ -43,6 +43,9 @@ ms.locfileid: "88544307"
 
 * 當您設定了 edX for Business SAML Integration 之後，就能施行工作階段控制，即時保護您組織的敏感性資料免遭外洩及滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
 
+> [!NOTE]
+> 此應用程式的識別碼是固定的字串值，因此一個租用戶中只能設定一個執行個體。
+
 ## <a name="adding-edx-for-business-saml-integration-from-the-gallery"></a>從資源庫新增 edX for Business SAML Integration
 
 若要設定 edX for Business SAML Integration 與 Azure AD 的整合，必須從資源庫將 edX for Business SAML Integration 新增到受控 SaaS 應用程式清單中。
@@ -55,7 +58,7 @@ ms.locfileid: "88544307"
 1. 從結果面板中選取 [edX for Business SAML Integration]，然後新增該應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-edx-for-business-saml-integration"></a>為 edX for Business SAML Integration 設定及測試 Azure AD 單一登入
+## <a name="configure-and-test-azure-ad-sso-for-edx-for-business-saml-integration"></a>為 edX for Business SAML Integration 設定及測試 Azure AD SSO
 
 以名為 **B.Simon** 的測試使用者的身分，設定及測試 Azure AD SSO與 edX for Business SAML Integration 的搭配組合。 SSO 要能夠運作，必須建立 Azure AD 使用者與 edX for Business SAML Integration 中相關使用者之間的連結關係。
 
@@ -102,11 +105,11 @@ ms.locfileid: "88544307"
 
 在本節中，您將在 Azure 入口網站中建立名為 B.Simon 的測試使用者。
 
-1. 在 Azure 入口網站的左窗格中，依序選取 [Azure Active Directory]、[使用者] 和 [所有使用者]。
+1. 在 Azure 入口網站的左窗格中，依序選取 [Azure Active Directory]  、[使用者]  和 [所有使用者]  。
 1. 在畫面頂端選取 [新增使用者]。
 1. 在 [使用者] 屬性中，執行下列步驟：
    1. 在 [名稱] 欄位中，輸入 `B.Simon`。  
-   1. 在 [使用者名稱] 欄位中，輸入 username@companydomain.extension。 例如： `B.Simon@contoso.com` 。
+   1. 在 [使用者名稱]  欄位中，輸入 username@companydomain.extension。 例如： `B.Simon@contoso.com` 。
    1. 選取 [顯示密碼] 核取方塊，然後記下 [密碼] 方塊中顯示的值。
    1. 按一下 [建立]。
 

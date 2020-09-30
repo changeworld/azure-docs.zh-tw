@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 7f00947504e5c6355379ce1e400fd2325016e05a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 400585d3e5908268708d93ceeefd26a4a5efdd49
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77122085"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90972400"
 ---
 # <a name="tutorial-create-a-water-consumption-monitoring-application-with-azure-iot-central"></a>教學課程：使用 Azure IoT Central 建立用水量監視應用程式
 
@@ -256,4 +256,7 @@ Azure IoT Central 中的裝置範本會定義裝置的功能，例如遙測、�
 
 ## <a name="next-steps"></a>後續步驟
 
-* 深入了解[用水量監視概念](./concepts-waterconsumptionmonitoring-architecture.md)。
+* 深入了解 
+
+> [!div class="nextstepaction"]
+> [用水量監視概念](./concepts-waterconsumptionmonitoring-architecture.md)。

@@ -5,14 +5,14 @@ author: KishorIoT
 ms.author: nandab
 ms.service: iot-central
 ms.subservice: iot-central-retail
-ms.topic: overview
+ms.topic: tutorial
 ms.date: 10/20/2019
-ms.openlocfilehash: cb40252460fe62deb94ce495bb41d38c326f10e2
-ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+ms.openlocfilehash: a76df67d1ef9d203d5e5d54cb95bb8fc90f70180
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "81001337"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90980742"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-digital-distribution-center-application-template"></a>教學課程：部署及逐步執行數位配送中心應用程式範本
 
@@ -35,7 +35,7 @@ ms.locfileid: "81001337"
 1. 瀏覽至 Azure IoT Central 應用程式管理員網站。 從左側導覽列選取 [建置]  ，然後按一下 [零售]  索引標籤。
 
     > [!div class="mx-imgBorder"]
-    > ![數位配送中心](./media/tutorial-iot-central-ddc/iotc-retail-homepage.png)
+    > ![顯示如何選取數位配送中心應用程式範本的螢幕擷取畫面](./media/tutorial-iot-central-ddc/iotc-retail-homepage.png)
 
 2. 選取 [零售]  索引標籤，並選取 [數位配送中心應用程式]  下的 [建立應用程式] 
 
@@ -46,10 +46,10 @@ ms.locfileid: "81001337"
    **建立**：選取頁面底部的 [建立]，以部署您的應用程式。
 
     > [!div class="mx-imgBorder"]
-    > ![數位配送中心](./media/tutorial-iot-central-ddc/ddc-create.png)
+    > ![顯示如何從數位配送中心應用程式範本建立應用程式的螢幕擷取畫面](./media/tutorial-iot-central-ddc/ddc-create.png)
 
     > [!div class="mx-imgBorder"]
-    > ![數位配送計費資訊](./media/tutorial-iot-central-ddc/ddc-create-billinginfo.png)
+    > ![顯示當您建立應用程式時計費選項的螢幕擷取畫面](./media/tutorial-iot-central-ddc/ddc-create-billinginfo.png)
 
 ## <a name="walk-through-the-application-dashboard"></a>逐步執行應用程式儀表板 
 
@@ -62,31 +62,31 @@ ms.locfileid: "81001337"
    * 管理屬於解決方案一部分的所有攝影機。 
 
 > [!div class="mx-imgBorder"]
-> ![數位配送中心](./media/tutorial-iot-central-ddc/ddc-dashboard.png)
+> ![顯示數位配送中心儀表板的螢幕擷取畫面](./media/tutorial-iot-central-ddc/ddc-dashboard.png)
 
 ## <a name="device-template"></a>裝置範本
 
 按一下 [裝置範本] 索引標籤，您將看到閘道功能模型。 功能模型建構在兩個不同的介面 (**攝影機**與**數位配送閘道**) 上
 
 > [!div class="mx-imgBorder"]
-> ![數位配送中心](./media/tutorial-iot-central-ddc/ddc-devicetemplate1.png)
+> ![顯示應用程式中數位配送閘道裝置範本的螢幕擷取畫面](./media/tutorial-iot-central-ddc/ddc-devicetemplate1.png)
 
 **相機**：此介面會組織所有相機特定命令功能 
 
 > [!div class="mx-imgBorder"]
-> ![數位配送中心](./media/tutorial-iot-central-ddc/ddc-camera.png)
+> ![顯示數位配送閘道裝置範本中相機介面的螢幕擷取畫面](./media/tutorial-iot-central-ddc/ddc-camera.png)
 
 **數位配送閘道**：此介面代表來自相機、雲端定義的裝置對應項屬性與閘道資訊的所有遙測。
 
 > [!div class="mx-imgBorder"]
-> ![數位配送中心](./media/tutorial-iot-central-ddc/ddc-devicetemplate1.png)
+> ![顯示數位配送閘道裝置範本中數位配送閘道介面的螢幕擷取畫面](./media/tutorial-iot-central-ddc/ddc-devicetemplate1.png)
 
 
 ## <a name="gateway-commands"></a>閘道命令
 此介面會組織所有閘道命令功能
 
 > [!div class="mx-imgBorder"]
-> ![數位配送中心](./media/tutorial-iot-central-ddc/ddc-camera.png)
+> ![顯示數位配送閘道裝置範本中閘道命令介面的螢幕擷取畫面](./media/tutorial-iot-central-ddc/ddc-camera.png)
 
 ## <a name="rules"></a>規則
 選取 [規則] 索引標籤，以查看存在於此應用程式範本中的兩個不同規則。 這些規則會設定為向操作員傳送電子郵件通知，以供進一步調查。
@@ -96,7 +96,7 @@ ms.locfileid: "81001337"
 **大型包裹**：若相機偵測到無法檢查品質的大型包裹，會觸發此規則。 
 
 > [!div class="mx-imgBorder"]
-> ![數位配送中心](./media/tutorial-iot-central-ddc/ddc-rules.png)
+> ![顯示數位配送中心應用程式中規則清單的螢幕擷取畫面](./media/tutorial-iot-central-ddc/ddc-rules.png)
 
 ## <a name="jobs"></a>工作
 選取 [作業] 索引標籤，以查看存在於此應用程式範本中的五個不同作業：您可以利用作業功能來執行整個解決方案的操作。 在這裡，數位配送中心作業會使用裝置命令和對應項功能來執行如下工作：
@@ -105,15 +105,17 @@ ms.locfileid: "81001337"
    * 修改遙測間隔以管理資料上傳
 
 > [!div class="mx-imgBorder"]
-> ![數位配送中心](./media/tutorial-iot-central-ddc/ddc-jobs.png)
+> ![顯示數位配送中心應用程式中作業清單的螢幕擷取畫面](./media/tutorial-iot-central-ddc/ddc-jobs.png)
 
 ## <a name="clean-up-resources"></a>清除資源
 如果您不打算繼續使用此應用程式，請覽 [系統管理]   > [應用程式設定]  ，然後按一下 [刪除]  以刪除應用程式範本。
 
 > [!div class="mx-imgBorder"]
-> ![數位配送中心](./media/tutorial-iot-central-ddc/ddc-cleanup.png)
+> ![顯示當您完成應用程式時如何將其刪除的螢幕擷取畫面](./media/tutorial-iot-central-ddc/ddc-cleanup.png)
 
 ## <a name="next-steps"></a>後續步驟
-* 深入了解數位配送中心解決方案架構[數位配送中心概念](./architecture-digital-distribution-center.md)
+* 深入了解數位配送中心解決方案架構 
+> [!div class="nextstepaction"]
+> [數位配送中心概念](./architecture-digital-distribution-center.md)
 * 深入了解其他 [IoT Central 零售範本](./overview-iot-central-retail.md)
 * 若要深入了解 IoT Central，請參閱 [IoT Central 概觀](../core/overview-iot-central.md)

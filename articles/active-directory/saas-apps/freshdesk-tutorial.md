@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/16/2020
+ms.date: 08/24/2020
 ms.author: jeedes
-ms.openlocfilehash: 71c1bea58f17b457f417a5b050640d04d44019d5
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 0bbfdc2463795770b52f5008fc633fe9e95244a0
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551042"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056501"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-freshdesk"></a>教學課程：Azure Active Directory 與 FreshDesk 整合
 
@@ -55,7 +55,7 @@ FreshDesk 與 Azure AD 整合提供下列優點：
 1. 在 [從資源庫新增] 區段的搜尋方塊中輸入 **FreshDesk**。
 1. 從結果面板選取 [FreshDesk]，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-freshdesk"></a>設定及測試 FreshDesk 的 Azure AD 單一登入
+## <a name="configure-and-test-azure-ad-sso-for-freshdesk"></a>設定和測試 FreshDesk 的 Azure AD SSO
 
 以名為 **B.Simon** 的測試使用者，設定及測試與 FreshDesk 搭配運作的 Azure AD SSO。 若要讓 SSO 能夠運作，您必須建立 Azure AD 使用者與 FreshDesk 中相關使用者之間的連結關聯性。
 
@@ -81,9 +81,11 @@ FreshDesk 與 Azure AD 整合提供下列優點：
     a. 在 [登入 URL] 文字方塊中，以下列模式輸入 URL：`https://<tenant-name>.freshdesk.com` 或 Freshdesk 所建議的任何其他值。
 
     b. 在 [識別碼 (實體識別碼)] 文字方塊中，以下列模式輸入 URL：`https://<tenant-name>.freshdesk.com` 或 Freshdesk 所建議的任何其他值。
-
+     
+    c. 在 [回覆 URL] 文字方塊中，使用下列模式來輸入 URL：`https://<tenant-name>.freshdesk.com/login/saml`
+    
     > [!NOTE]
-    > 這些都不是真正的值。 請使用實際的「登入 URL」及「識別碼」來更新這些值。 請連絡 [FreshDesk 用戶端支援小組](https://freshdesk.com/helpdesk-software?utm_source=Google-AdWords&utm_medium=Search-IND-Brand&utm_campaign=Search-IND-Brand&utm_term=freshdesk&device=c&gclid=COSH2_LH7NICFVUDvAodBPgBZg)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 這些都不是真正的值。 請使用實際的「登入 URL」、「識別碼」和「回覆 URL」來更新這些值。 請連絡 [FreshDesk 用戶端支援小組](https://freshdesk.com/helpdesk-software?utm_source=Google-AdWords&utm_medium=Search-IND-Brand&utm_campaign=Search-IND-Brand&utm_term=freshdesk&device=c&gclid=COSH2_LH7NICFVUDvAodBPgBZg)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
 
 1. FreshDesk 應用程式需要特定格式的 SAML 判斷提示，需要您加入自訂屬性對應到您的 SAML 權杖屬性設定。 下列螢幕擷取畫面顯示預設屬性的清單，而**唯一的使用者識別碼**與 **user.userprincipalname** 對應，但 FreshDesk 預期此宣告必須與 **user.mail** 對應，因此您必須按一下 [編輯] 圖示並變更屬性對應，以編輯屬性對應。
 
@@ -107,7 +109,7 @@ FreshDesk 與 Azure AD 整合提供下列優點：
 
 本節的目標是要在 Azure 入口網站中建立一個名為 Britta Simon 的測試使用者。
 
-1. 在 Azure 入口網站的左窗格中，依序選取 [Azure Active Directory]、[使用者] 和 [所有使用者]。
+1. 在 Azure 入口網站的左窗格中，依序選取 [Azure Active Directory]  、[使用者]  和 [所有使用者]  。
 
     ![[使用者和群組] 與 [所有使用者] 連結](common/users.png)
 
@@ -121,10 +123,10 @@ FreshDesk 與 Azure AD 整合提供下列優點：
 
     a. 在 [名稱] 欄位中，輸入 **BrittaSimon**。
   
-    b. 在 [使用者名稱] 欄位中，輸入 **brittasimon\@yourcompanydomain.extension**  
+    b. 在 [使用者名稱]  欄位中，輸入 **brittasimon\@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com
 
-    c. 選取 [顯示密碼] 核取方塊，然後記下 [密碼] 方塊中顯示的值。
+    c. 選取 [顯示密碼]  核取方塊，然後記下 [密碼] 方塊中顯示的值。
 
     d. 按一下 [建立]。
 
@@ -149,7 +151,7 @@ FreshDesk 與 Azure AD 整合提供下列優點：
 
     ![[新增指派] 窗格](common/add-assign-user.png)
 
-5. 在 [使用者和群組] 對話方塊的 [使用者] 清單中，選取 [Britta Simon]，然後按一下畫面底部的 [選取] 按鈕。
+5. 在 [使用者和群組]  對話方塊的 [使用者] 清單中，選取 [Britta Simon]  ，然後按一下畫面底部的 [選取]  按鈕。
 
 6. 如果您預期使用 SAML 判斷提示中的任何角色值，請在 [選取角色] 對話方塊的清單中選取適當使用者角色，然後按一下畫面底部的 [選取] 按鈕。
 

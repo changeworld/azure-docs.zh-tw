@@ -1,25 +1,37 @@
 ---
-title: 關於 Azure Key Vault 金鑰 - Azure Key Vault
+title: 關於金鑰 - Azure Key Vault
 description: 概述 Azure Key Vault REST 介面和開發人員在金鑰方面的詳細資料。
 services: key-vault
-author: msmbaldwin
-manager: rkarlin
+author: amitbapat
+manager: msmbaldwin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: keys
 ms.topic: overview
-ms.date: 09/04/2019
-ms.author: mbaldwin
-ms.openlocfilehash: b9803726bf3a54eb31d3c2ebaddce11fb96472be
-ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
+ms.date: 09/15/2020
+ms.author: ambapat
+ms.openlocfilehash: 29930a835297b0ddd3a91534dab9ccb6d74896e3
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85413718"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90967558"
 ---
-# <a name="about-azure-key-vault-keys"></a>關於 Azure Key Vault 金鑰
+# <a name="about-keys"></a>關於金鑰
 
-Azure Key Vault 支援多種金鑰類型和演算法，並可針對高價值金鑰使用硬體安全模組 (HSM)。
+Azure Key Vault 提供兩種資源類型，以儲存和管理密碼編譯金鑰：
+
+|資源類型|金鑰保護方法|資料平面端點基底 URL|
+|--|--|--|
+| **保存庫** | 受軟體保護<br/><br/>及<br/><br/>受 HSM 保護 (具有進階 SKU)</li></ul> | https://{vault-name}.vault.azure.net |
+| **受控 HSM 集區** | 受 HSM 保護 | https://{hsm-name}.managedhsm.azure.net |
+||||
+
+- **保存庫** - 保存庫提供低成本、易於部署、多租用戶、區域復原 (如果有的話)、高可用性金鑰管理解決方案，適用於最常見的雲端應用程式案例。
+- **受控 HSM**受控 HSM 提供單一租用戶、區域復原 (如果有的話)、高可用性 HSM 來儲存和管理您的密碼編譯金鑰。 最適合處理高價值金鑰的應用程式和使用案例。 也有助於符合最嚴格的安全性、合規性和法規需求。 
+
+> [!NOTE]
+> 除了密碼編譯金鑰之外，保存庫也可讓您儲存及管理數種類型的物件，例如祕密、憑證和儲存體帳戶金鑰。
 
 Key Vault 中的密碼編譯金鑰會表示為 JSON Web 金鑰 [JWK] 物件。 JavaScript 物件標記法 (JSON) 和 JavaScript 物件簽章與加密 (JOSE) 規格如下：
 
@@ -28,30 +40,49 @@ Key Vault 中的密碼編譯金鑰會表示為 JSON Web 金鑰 [JWK] 物件。 J
 -   [JSON Web 演算法 (JWA)](http://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms)  
 -   [JSON Web 簽章 (JWS)](https://tools.ietf.org/html/draft-ietf-jose-json-web-signature) 
 
-基底 JWK/JWA 規格也可延伸，讓 Key Vault 實作使用特有的金鑰類型。 例如，匯入使用 HSM 廠商特定封裝的金鑰，可安全地傳輸只能在 Key Vault HSM 中使用的金鑰。 
+基底 JWK/JWA 規格也可延伸，讓Azure Key Vault 和受控 HSM 實作使用特有的金鑰類型。 
 
-Azure Key Vault 支援受軟體保護和受 HSM 保護的金鑰：
+受 HSM 保護的金鑰 (也稱為 HSM 金鑰) 會在 HSM (硬體安全模組) 中進行處理，一律維持 HSM 保護界限。 
 
-- **受軟體保護的金鑰**：一種由 Key Vault 在軟體中進行處理，但會在待用期間使用 HSM 中的系統金鑰來加密的金鑰。 用戶端可以匯入現有的 RSA 或 EC 金鑰，或要求 Key Vault 產生此金鑰。
-- **受 HSM 保護的金鑰**：一種在 HSM (硬體安全模組) 中處理的金鑰。 這些金鑰會在其中一個 Key Vault HSM Security Worlds 中受到保護 (每個地理位置各有一個 Security World，以保有獨立性)。 用戶端可以匯入受軟體保護格式的 RSA 或 EC 金鑰，或是從相容的 HSM 裝置匯出金鑰。 用戶端也可以要求 Key Vault 產生金鑰。 此金鑰類型會將 key_hsm 屬性新增至為執行 HSM 金鑰內容而取得的 JWK。
+- 保存庫會使用 **FIPS 140-2 層級 2** 已驗證 HSM 來保護共用 HSM 後端基礎結構中的 HSM 金鑰。 
+- 受控 HSM 集區會使用 **FIPS 140-2 層級 3** 已驗證 HSM 模組來保護您的金鑰。 每個 HSM 集區都是一個隔離的單一租用戶執行個體，具有自己的[安全性網域](../managed-hsm/security-domain.md)，提供與共用相同硬體基礎結構的其他所有 HSM 集區的完整密碼編譯隔離。
 
-如需地理界限的詳細資訊，請參閱 [Microsoft Azure 信任中心](https://azure.microsoft.com/support/trust-center/privacy/)  
+這些金鑰會在單一租用戶 HSM 集區中受到保護。 您可以匯入軟體形式的 RSA、EC 和對稱金鑰，或從支援的 HSM 裝置匯出。 您也可以在 HSM 集區中產生金鑰。 當您使用以 [BYOK (攜帶您自己的金鑰) 規格](../keys/byok-specification.md)中所述方法產生的金鑰來匯入 HSM 金鑰時，會對受控 HSM 集區啟用安全傳輸金鑰材質。 
 
-## <a name="cryptographic-protection"></a>密碼編譯保護
+如需地理界限的詳細資訊，請參閱 [Microsoft Azure 信任中心](https://azure.microsoft.com/support/trust-center/privacy/)
 
-Key Vault 僅支援 RSA 和橢圓曲線金鑰。 
+## <a name="key-types-protection-methods-and-algorithms"></a>金鑰類型、保護方法和演算法
 
--   **EC**：受軟體保護的橢圓曲線金鑰。
--   **EC-HSM**：「硬式」橢圓曲線金鑰。
--   **RSA**：受軟體保護的 RSA 金鑰。
--   **RSA-HSM**：「硬式」RSA 金鑰。
+Key Vault 支援 RSA、EC 和對稱金鑰。 
 
-Key Vault 支援 2048、3072 和 4096 等大小的 RSA 金鑰。 Key Vault 支援 P-256、P-384、P-521 和 P-256K (SECP256K1) 等類型的橢圓曲線金鑰。
+### <a name="hsm-protected-keys"></a>受 HSM 保護的金鑰
 
-Key Vault 使用的密碼編譯模組 (HSM 或軟體) 皆經過 FIPS (聯邦資訊處理標準) 驗證。 您不需要在 FIPS 模式中執行任何特殊動作。 金鑰如果是以受 HSM 保護的形式**建立**或**匯入**的，會在以 FIPS 140-2 層級 2 驗證的 HSM 內進行處理。 金鑰如果是以受軟體保護的形式**建立**或**匯入**的，則會在以 FIPS 140-2 層級 1 驗證的密碼編譯模組內進行處理。
+|金鑰類型|保存庫 (僅限進階 SKU)|受控 HSM 集區|
+|--|--|--|--|
+**EC-HSM**：橢圓曲線金鑰|FIPS 140-2 層級 2 HSM|FIPS 140-2 層級 3 HSM
+**RSA-HSM**：RSA 金鑰|FIPS 140-2 層級 2 HSM|FIPS 140-2 層級 3 HSM
+**oct-HSM**：對稱|不支援|FIPS 140-2 層級 3 HSM
+||||
+
+### <a name="software-protected-keys"></a>受軟體保護的金鑰
+
+|金鑰類型|保存庫|受控 HSM 集區|
+|--|--|--|--|
+**RSA**：「受軟體保護」的 RSA 金鑰|FIPS 140-2 層級 1|不支援
+**EC**：「受軟體保護」的橢圓曲線金鑰|FIPS 140-2 層級 1|不支援
+||||
+
+### <a name="supported-algorithms"></a>支援的演算法
+
+|金鑰類型/大小/曲線| 加密/解密<br>(包裝/解除包裝) | 簽署/驗證 | 
+| --- | --- | --- |
+|EC-P256, EC-P256K, EC-P384, EC-521|NA|ES256<br>ES256K<br>ES384<br>ES512|
+|RSA 2K, 3K, 4K| RSA1_5<br>RSA-OAEP<br>RSA-OAEP-256|PS256<br>PS384<br>PS512<br>RS256<br>RS384<br>RS512<br>RSNULL| 
+|AES 128 位元、256 位元| AES-KW<br>AES-GCM<br>AES-CBC| NA| 
+|||
 
 ###  <a name="ec-algorithms"></a>EC 演算法
- Key Vault 中的 EC 與 EC-HSM 金鑰支援下列演算法識別碼。 
+ EC-HSM 金鑰支援下列演算法識別碼
 
 #### <a name="curve-types"></a>曲線類型
 
@@ -68,12 +99,13 @@ Key Vault 使用的密碼編譯模組 (HSM 或軟體) 皆經過 FIPS (聯邦資�
 -   **ES512** - 適用於 SHA-512 摘要的 ECDSA 與使用曲線 P-521 建立的金鑰。 此演算法說明於 [RFC7518](https://tools.ietf.org/html/rfc7518)。
 
 ###  <a name="rsa-algorithms"></a>RSA 演算法  
- Key Vault 中的 RSA 與 RSA-HSM 金鑰支援下列演算法識別碼。  
+ RSA 與 RSA-HSM 金鑰支援下列演算法識別碼  
 
 #### <a name="wrapkeyunwrapkey-encryptdecrypt"></a>包裝金鑰/解除包裝金鑰、加密/解密
 
 -   **RSA1_5** - RSAES-PKCS1-V1_5 [RFC3447] 金鑰加密  
 -   **RSA-OAEP** - RSAES 使用「最佳非對稱加密填補 (OAEP)」[RFC3447]，並利用 A.2.1 節中 RFC 3447 所指定的預設參數。 這些預設參數會使用 SHA-1 的雜湊函數及搭配 SHA-1 的 MGF1 遮罩產生函數。  
+-  **RSA-OAEP-256** – RSAES 使用最佳非對稱加密填補，具有 SHA-256 的雜湊函式及搭配 SHA-256 的 MGF1 遮罩產生函式
 
 #### <a name="signverify"></a>SIGN/VERIFY
 
@@ -83,11 +115,19 @@ Key Vault 使用的密碼編譯模組 (HSM 或軟體) 皆經過 FIPS (聯邦資�
 -   **RS256** - 使用 SHA-256 的 RSASSA-PKCS-v1_5。 提供摘要值的應用程式必須使用 SHA-256 計算，而且長度必須是 32 個位元組。  
 -   **RS384** - 使用 SHA-384 的 RSASSA-PKCS-v1_5。 提供摘要值的應用程式必須使用 SHA-384 計算，而且長度必須是 48 個位元組。  
 -   **RS512** - 使用 SHA-512 的 RSASSA-PKCS-v1_5。 提供摘要值的應用程式必須使用 SHA-512 計算，而且長度必須是 64 個位元組。  
--   **RSNULL** - 請參閱啟用特定 TLS 案例的特殊使用案例 [RFC2437]。  
+-   **RSNULL** - 請參閱啟用特定 TLS 案例的特殊使用案例 [RFC2437](https://tools.ietf.org/html/rfc2437)。  
+
+###  <a name="symmetric-key-algorithms"></a>對稱金鑰演算法
+- **AES-KW** - AES 金鑰包裝 ([RFC3394](https://tools.ietf.org/html/rfc3394))。
+- **AES-GCM** - Galois 計數器模式中的 AES 加密 ([NIST SP800-38d](https://csrc.nist.gov/publications/sp800))
+- **AES-CBC** - Cipher 區塊鏈結模式中的 AES 加密 ([NIST SP800-38a](https://csrc.nist.gov/publications/sp800))
+
+> [!NOTE] 
+> 目前的 AES-GCM 實作和對應的 API 都是實驗性的。 在未來的反覆項目中，實作和 API 可能會大幅變更。 
 
 ##  <a name="key-operations"></a>金鑰作業
 
-Key Vault 支援下列金鑰物件作業：  
+受控 HSM 支援下列金鑰物件作業：  
 
 -   **建立**：可讓用戶端在 Key Vault 中建立金鑰。 金鑰值會由 Key Vault 產生並儲存，但不會發行給用戶端。 在 Key Vault 中可建立非對稱金鑰。  
 -   **Import**：可讓用戶端將現有金鑰匯入至 Key Vault。 非對稱金鑰可使用 JWK 概念中的多種不同封裝方法來匯入至 Key Vault。 
@@ -119,7 +159,7 @@ Key Vault 不支援匯出作業。 在系統中佈建金鑰後，即無法加以
 
 除了金鑰內容，您可以指定下列屬性。 在 JSON 要求中，屬性關鍵字和括弧「{」「}」是必要的，即使沒有指定任何屬性。  
 
-- enabled：選擇性的布林值，預設值是 **true**。 指定金鑰是否已啟用，並可用於密碼編譯作業。 enabled 屬性會與 nbf 和 exp 一起使用。當作業發生於 nbf 和 exp 之間時，只有在 enabled 設定為 **true** 時，才能允許此作業。 發生於 nbf / exp 範圍外的作業將自動禁止，除了[特定條件](#date-time-controlled-operations)下的特定作業類型。
+- enabled  ：選擇性的布林值，預設值是 **true**。 指定金鑰是否已啟用，並可用於密碼編譯作業。 enabled 屬性會與 nbf 和 exp 一起使用。當作業發生於 nbf 和 exp 之間時，只有在 enabled 設定為 **true** 時，才能允許此作業。 發生於 nbf / exp 範圍外的作業將自動禁止，除了[特定條件](#date-time-controlled-operations)下的特定作業類型。
 - *nbf*：選擇性的 IntDate，預設值為現在 (now)。 nbf (不早於) 屬性會定義一個時間，而在此時間之前「絕不可」將金鑰用於密碼編譯作業，除了[特定條件](#date-time-controlled-operations)下的特定作業類型。 若要處理 nbf 屬性，目前的日期/時間「必須」晚於或等同 nbf 屬性中所列的「不早於」日期/時間。 考慮到時鐘誤差，Key Vault 可能會多提供一點時間 (通常都在幾分鐘內)。 其值必須是包含 IntDate 值的數字。  
 - *exp*：選擇性的 IntDate，預設值為永久 (forever)。 exp (到期時間) 屬性會定義到期時間，而在此時間點或之後「絕不可」將金鑰用於密碼編譯作業，除了[特定條件](#date-time-controlled-operations)下的特定作業類型。 若要處理 exp 屬性，目前的日期/時間「必須」早於 exp 屬性中所列的到期日期/時間。 考慮到時鐘誤差，Key Vault 可能會多提供一點時間 (通常都在幾分鐘內)。 其值必須是包含 IntDate 值的數字。  
 
@@ -142,8 +182,8 @@ nbf / exp 範圍外尚未生效和過期的金鑰，將會用於**解密**、**�
 
 您可以將其他應用程式專屬的中繼資料指定為標記形式。 Key Vault 支援最多 15 個標記，各標記可以有 256 個字元的名稱和 256 個字元的值。  
 
->[!Note]
->如果標記具有可對物件類型 (金鑰、秘密或憑證) 執行「列出」或「取得」的權限，則呼叫者可讀取這些標記。
+> [!NOTE] 
+> 如果呼叫者具有該金鑰的*列出*或*取得*權限，其便可讀取標籤。
 
 ##  <a name="key-access-control"></a>金鑰存取控制
 
@@ -176,10 +216,10 @@ nbf / exp 範圍外尚未生效和過期的金鑰，將會用於**解密**、**�
 如需使用金鑰的詳細資訊，請參閱 [Key Vault REST API 參考中的金鑰作業](/rest/api/keyvault)。 如需建立權限的相關資訊，請參閱[保存庫 - 建立或更新](/rest/api/keyvault/vaults/createorupdate)和[保存庫 - 更新存取原則](/rest/api/keyvault/vaults/updateaccesspolicy)。 
 
 ## <a name="next-steps"></a>後續步驟
-
 - [關於 Key Vault](../general/overview.md)
-- [關於金鑰、密碼與憑證](../general/about-keys-secrets-certificates.md)
+- [關於受控 HSM](../managed-hsm/overview.md)
 - [關於秘密](../secrets/about-secrets.md)
 - [關於憑證](../certificates/about-certificates.md)
+- [Key Vault REST API 概觀](../general/about-keys-secrets-certificates.md)
 - [驗證、要求和回應](../general/authentication-requests-and-responses.md)
 - [Key Vault 開發人員指南](../general/developers-guide.md)

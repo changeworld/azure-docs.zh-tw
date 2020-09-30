@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure Site Recovery 將 Azure IaaS VM 移至另一個區域
-description: 使用 Azure Site Recovery，將 Azure IaaS VM 從一個 Azure 區域移至另一個區域。
+title: 使用 Azure Site Recovery 將 Azure VM 移至不同的 Azure 區域
+description: 使用 Azure Site Recovery，將 Azure VM 從一個 Azure 區域移至另一個區域。
 services: site-recovery
 author: Sharmistha-Rai
 ms.service: site-recovery
@@ -8,20 +8,20 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: sharrai
 ms.custom: MVC
-ms.openlocfilehash: e8f14b86678f7d395f445438d7e869168b13e54b
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.openlocfilehash: f33d5ff37cbc9923262963b3e59b9266ea6760a6
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89425920"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90006409"
 ---
-# <a name="move-azure-vms-to-another-region"></a>將 Azure VM 移動到另一個區域
+# <a name="move-vms-to-another-azure-region"></a>將 VM 移至另一個 Azure 區域
 
-有許多情況會讓您想要將現有的 Azure IaaS 虛擬機器 (VM) 從某個區域移到另一個。 例如，您會想要提高現有 VM 的可靠性和可用性，以改善管理性，或基於治理原因而將它移動。 如需詳細資訊，請參閱 [Azure VM 移動概觀](azure-to-azure-move-overview.md)。 
+有一些情況會讓您想要將現有的 Azure IaaS 虛擬機器 (VM) 從某個區域移到另一個。 例如，您會想要提高現有 VM 的可靠性和可用性，以改善管理性，或基於治理原因而將它移動。 如需詳細資訊，請參閱 [Azure VM 移動概觀](azure-to-azure-move-overview.md)。 
 
-您可以針對商務持續性和災害復原 (BCDR)，使用 [Azure Site Recovery](site-recovery-overview.md) 服務來管理和協調內部部署電腦和 Azure VM 的災害復原。 也可以使用站台復原管理將 Azure VM 移動至次要地區的作業。
+您可以使用 [Azure Site Recovery](site-recovery-overview.md) 服務，將 Azure VM 移至次要地區。
 
-在本教學課程中，您將：
+在本教學課程中，您會了解如何：
 
 > [!div class="checklist"]
 > 
@@ -30,7 +30,19 @@ ms.locfileid: "89425920"
 > * 複製資料並啟用複寫
 > * 測試設定並執行移動
 > * 刪除來源區域中的資源
-> 
+
+
+> [!IMPORTANT]
+> 若要將 Azure VM 移至其他區域，我們現在建議使用 [Azure Resource Mover](../resource-mover/tutorial-move-region-virtual-machines.md)。 Resource Mover 處於公開預覽狀態，並且提供：
+> - 用於在區域之間移動資源的單一中樞。
+> - 減少移動時間和複雜度。 您需要的所有項目都在單一位置。
+> - 移動不同類型 Azure 資源的簡單且一致體驗。
+> - 一個簡單的方法，可識別您想要移動的資源之間的相依性。 這可協助您將相關的資源一起移動，以便在移動之後，所有項目在目標區域中都能如預期般運作。
+> - 自動清除來源區域中的資源 (如果您想要在移動之後將其刪除)。
+> - 測試。 如果您不想要進行完整移動，您可以嘗試移動，然後將其捨棄。
+
+
+
 > [!NOTE]
 > 本教學課程顯示如何將 Azure VM 原封不動移到另一個區域。 如果需要將可用性設定組中的 VM 移到不同區域中固定區域的 VM，藉此改善可用性，請參閱[將 Azure VM 移到可用性區域教學課程](move-azure-vms-avset-azone.md)。
 

@@ -598,12 +598,9 @@
         - name: 資料科學虛擬機器
           tocHref: /azure/machine-learning/data-science-virtual-machine
           topicHref: /azure/machine-learning/data-science-virtual-machine/
-    - name: Marketplace 取用者
-      tocHref: /azure/marketplace-consumer/
+    - name: 商務 Marketplace
+      tocHref: /azure/marketplace
       topicHref: /azure/marketplace/
-    - name: Marketplace 發佈
-      tocHref: /azure/marketplace-publishing/
-      topicHref: /azure/marketplace/marketplace-publishers-guide
     - name: 媒體服務
       tocHref: /azure/media-services/
       topicHref: /azure/media-services/

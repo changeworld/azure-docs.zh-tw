@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/19/2020
 ms.topic: tutorial
-ms.openlocfilehash: dd9aee01edf45f89feb6a6010c8d958511bc3904
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 613ce41820dc5f388af441836bdb4a93e43e5d07
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86185393"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987639"
 ---
 # <a name="tutorial-create-a-powershell-workflow-runbook"></a>教學課程：建立 PowerShell 工作流程 Runbook
 
@@ -109,17 +109,17 @@ ms.locfileid: "86185393"
 
 6. 請注意，作業狀態會顯示在 [作業摘要] 中。 此狀態會符合您在測試 Runbook 時看到的狀態。
 
-   ![工作摘要](../media/automation-tutorial-runbook-textual/job-pane-status-blade-jobsummary.png)
+   :::image type="content" source="../media/automation-tutorial-runbook-textual/job-pane-status-blade-jobsummary.png" alt-text="Runbook [作業] 窗格的螢幕擷取畫面，顯示已醒目提示 [作業摘要] 區段。":::
 
 7. 一旦 Runbook 狀態顯示 [已完成]，請按一下 [輸出]。 [輸出] 頁面隨即開啟，您可在其中看到 `Hello World` 訊息。
 
-   ![工作摘要](../media/automation-tutorial-runbook-textual/job-pane-status-blade-outputtile.png)
+   :::image type="content" source="../media/automation-tutorial-runbook-textual/job-pane-status-blade-outputtile.png" alt-text="Runbook [作業] 窗格的螢幕擷取畫面，顯示已醒目提示 [作業摘要] 區段。":::
 
 8. 關閉 [輸出] 頁面。
 
 9. 按一下 [所有記錄]  以開啟 Runbook 作業的 [資料流] 窗格。 您應該只會在輸出資料流中看到 `Hello World`。 請注意，[資料流] 窗格可顯示 Runbook 作業的其他資料流，例如 Runbook 寫入時出現的詳細資料和錯誤資料流。
 
-   ![工作摘要](../media/automation-tutorial-runbook-textual/job-pane-status-blade-alllogstile.png)
+   :::image type="content" source="../media/automation-tutorial-runbook-textual/job-pane-status-blade-alllogstile.png" alt-text="Runbook [作業] 窗格的螢幕擷取畫面，顯示已醒目提示 [作業摘要] 區段。":::
 
 10. 關閉 [資料流] 窗格和 [工作] 窗格，以返回 MyFirstRunbook 頁面。
 

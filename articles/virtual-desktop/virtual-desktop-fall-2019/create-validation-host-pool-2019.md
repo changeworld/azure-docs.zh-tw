@@ -6,21 +6,21 @@ ms.topic: tutorial
 ms.date: 05/27/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f5a8d925a9875187358dc96b1770916974d1c6bd
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 572b74347194070615efadca4ed6b1329b3f89c2
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88007126"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526794"
 ---
 # <a name="tutorial-create-a-host-pool-to-validate-service-updates-in-windows-virtual-desktop-classic"></a>教學課程：建立主機集區來驗證 Windows 虛擬桌面 (傳統) 中的服務更新
 
 >[!IMPORTANT]
 >此內容適用於不支援 Azure Resource Manager Windows 虛擬桌面物件的 Windows 虛擬桌面 (傳統)。 如果您嘗試管理 Azure Resource Manager Windows 虛擬桌面物件，請參閱[這篇文章](../create-validation-host-pool.md)。
 
-主機集區是 Windows 虛擬桌面租用戶環境中一或多個相同虛擬機器的集合。 將主機集區部署到生產環境之前，強烈建議您建立驗證主機集區。 更新會先套用到驗證主機集區，讓您先監視服務更新，再將其推展到生產環境。 若沒有驗證主機集區，您可能無法發現引入錯誤的變更，這可能會導致您生產環境中的使用者停機。
+主機集區是 Windows 虛擬桌面租用戶環境中一或多個相同虛擬機器的集合。 我們建議您建立驗證主機集區，服務更新會先在其中套用。 這可讓您在服務將服務更新套用至您的標準或非驗證環境之前，先進行監視。 若沒有驗證主機集區，您可能無法發現引入錯誤的變更，這可能會導致您生產環境中的使用者停機。
 
-為了確保您的應用程式可使用最新更新，驗證主機集區應盡可能類似於您生產環境中的主機集區。 使用者應該經常連線到驗證主機集區，就如同連線到生產主機集區一樣。 如果您已在主機集區上進行自動化測試，則應該在驗證主機集區上包含自動化測試。
+為了確保您的應用程式可使用最新更新，驗證主機集區應盡可能類似於您非驗證環境中的主機集區。 使用者應該經常連線到驗證主機集區，就如同連線到標準主機集區一樣。 如果您已在主機集區上進行自動化測試，則應該在驗證主機集區上包含自動化測試。
 
 您可以使用[診斷功能](diagnostics-role-service-2019.md)或 [Windows 虛擬桌面疑難排解文章](troubleshoot-set-up-overview-2019.md)，在驗證主機集區中進行問題偵錯。
 

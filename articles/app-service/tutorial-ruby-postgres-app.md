@@ -5,18 +5,18 @@ ms.devlang: ruby
 ms.topic: tutorial
 ms.date: 06/18/2020
 ms.custom: mvc, cli-validate, seodec18
-ms.openlocfilehash: 77892cc9a05c569e431fb9c66c2f6eb92068b3af
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: c3fd06e2ac399fa18b588b1db5e154eaf013753b
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88081949"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979492"
 ---
 # <a name="build-a-ruby-and-postgres-app-in-azure-app-service-on-linux"></a>在 Linux 上的 Azure App Service 中建置 Ruby 和 Postgres 應用程式
 
 [Azure App Service](overview.md) 可提供可高度擴充、自我修復的 Web 主控服務。 本教學課程示範如何建立 Ruby 應用程式，並將它連線至 PostgreSQL 資料庫。 完成後，Linux 上將有一個在 App Service 上執行的 [Ruby on Rails](https://rubyonrails.org/) 應用程式。
 
-![在 Azure App Service 中執行的 Ruby on Rails 應用程式](./media/tutorial-ruby-postgres-app/complete-checkbox-published.png)
+:::image type="content" source="./media/tutorial-ruby-postgres-app/complete-checkbox-published.png" alt-text="標題為工作的 Ruby on Rails 應用程式範例的螢幕擷取畫面。":::
 
 在本教學課程中，您會了解如何：
 
@@ -255,7 +255,7 @@ git commit -m "database.yml updates"
 
 ### <a name="configure-database-settings"></a>設定資料庫設定
 
-在 App Service 中，您可以在 Cloud Shell 中使用 [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) 命令將環境變數設定為「應用程式設定」__。
+在 App Service 中，您可以在 Cloud Shell 中使用 [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest&preserve-view=true#az-webapp-config-appsettings-set) 命令將環境變數設定為「應用程式設定」__。
 
 下列 Cloud Shell 命令會設定 `DB_HOST`、`DB_DATABASE`、`DB_USERNAME`和 `DB_PASSWORD` 應用程式設定。 取代預留位置 &lt;appname>__ 和 &lt;postgres-server-name>__。
 
@@ -316,7 +316,7 @@ remote: Running deployment command...
 
 瀏覽至 `http://<app-name>.azurewebsites.net` 並將幾項工作新增至清單。
 
-![在 Azure App Service 中執行的 Ruby on Rails 應用程式](./media/tutorial-ruby-postgres-app/ruby-postgres-in-azure.png)
+:::image type="content" source="./media/tutorial-ruby-postgres-app/ruby-postgres-in-azure.png" alt-text="標題為工作的 Ruby on Rails 應用程式範例的螢幕擷取畫面。":::
 
 恭喜，您正在 Azure App Service 中執行資料驅動的 Ruby on Rails 應用程式。
 

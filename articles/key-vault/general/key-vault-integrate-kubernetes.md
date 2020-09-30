@@ -6,12 +6,12 @@ ms.author: sudbalas
 ms.service: key-vault
 ms.topic: tutorial
 ms.date: 08/25/2020
-ms.openlocfilehash: bfcaf9d4b1d03457f2e4cddd2e0eaf9d9d58eee2
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: f77d197c30d00083b280a97079fe03146fcfeb82
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88869179"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90061796"
 ---
 # <a name="tutorial-configure-and-run-the-azure-key-vault-provider-for-the-secrets-store-csi-driver-on-kubernetes"></a>教學課程：在 Kubernetes 上，為祕密存放區 CSI 驅動程式設定及執行 Azure Key Vault 提供者
 
@@ -70,7 +70,7 @@ az ad sp create-for-rbac --name contosoServicePrincipal --skip-assignment
     ```azurecli
     kubectl version
     ```
-1. 確定您的 Kubernetes 版本是 1.16.0 或更新版本。 下列命令會同時升級 Kubernetes 叢集和節點集區。 命令可能需要幾分鐘的時間來執行。 在此範例中，資源群組為 *contosoResourceGroup*，Kubernetes 叢集為 *contosoAKSCluster*。
+1. 確定您的 Kubernetes 版本是 1.16.0 或更新版本。 若為 Windows 叢集，請確定您的 Kubernetes 版本是 1.18.0 或更新版本。 下列命令會同時升級 Kubernetes 叢集和節點集區。 命令可能需要幾分鐘的時間來執行。 在此範例中，資源群組為 *contosoResourceGroup*，Kubernetes 叢集為 *contosoAKSCluster*。
     ```azurecli
     az aks upgrade --kubernetes-version 1.16.9 --name contosoAKSCluster --resource-group contosoResourceGroup
     ```
@@ -110,18 +110,20 @@ az ad sp create-for-rbac --name contosoServicePrincipal --skip-assignment
 
 ## <a name="create-your-own-secretproviderclass-object"></a>建立您自己的 SecretProviderClass 物件
 
-若要使用祕密存放區 CSI 驅動程式的提供者專用參數來建立您自己的自訂 SecretProviderClass 物件，請[使用此範本](https://github.com/Azure/secrets-store-csi-driver-provider-azure/blob/master/test/bats/tests/azure_v1alpha1_secretproviderclass.yaml)。 此物件將提供存取您金鑰保存庫所需的身分識別。
+若要使用祕密存放區 CSI 驅動程式的提供者專用參數來建立您自己的自訂 SecretProviderClass 物件，請[使用此範本](https://github.com/Azure/secrets-store-csi-driver-provider-azure/blob/master/examples/v1alpha1_secretproviderclass_service_principal.yaml)。 此物件將提供存取您金鑰保存庫所需的身分識別。
 
 在範例 SecretProviderClass YAML 檔案中，填入遺漏的參數。 必要參數如下：
 
-* **userAssignedIdentityID**：服務主體的用戶端識別碼
+* **userAssignedIdentityID**：# [必要] 如果您要使用服務主體，請使用用戶端識別碼來指定要使用的使用者指派受控識別。 如果您是使用使用者指派的身分識別作為 VM 的受控識別，請指定身分識別的用戶端識別碼。如果值是空的，則預設為在 VM 上使用系統指派的身分識別 
 * **keyvaultName**：金鑰保存庫的名稱
 * **objects**：您想要掛接的所有秘密內容所屬的容器
     * **objectName**：秘密內容的名稱
     * **objectType**：物件類型 (祕密、金鑰、憑證)
-* **resourceGroup**：資源群組的名稱
-* **subscriptionId**：金鑰保存庫的訂用帳戶識別碼
+* **resourceGroup**：資源群組的名稱  # [版本 < 0.0.4 為必要] KeyVault 的資源群組
+* **subscriptionId**：金鑰保存庫的訂用帳戶識別碼 # [版本 < 0.0.4 為必要] KeyVault 的訂用帳戶識別碼
 * **tenantID**：金鑰保存庫的租用戶識別碼 (或目錄識別碼)
+
+所有必要欄位的文件可在這裡取得：[連結](https://github.com/Azure/secrets-store-csi-driver-provider-azure#create-a-new-azure-key-vault-resource-or-use-an-existing-one)
 
 已更新的範本會顯示在下列程式碼中。 請將其下載為 YAML 檔案，並填入必要欄位。 在此範例中，金鑰保存庫是 **contosoKeyVault5**。 其具有兩個秘密，分別是 **secret1** 和 **secret2**。
 
@@ -210,6 +212,11 @@ az ad sp credential reset --name contosoServicePrincipal --credential-descriptio
 1. 若要建立、列出或讀取使用者指派的受控識別，您必須為 AKS 叢集指派[受控識別操作員](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#managed-identity-operator)角色。 請確定 **$clientId** 是 Kubernetes 叢集的 clientId。 至於範圍，其會在您的 Azure 訂用帳戶服務下，特別是建立 AKS 叢集時所建立的節點資源群組。 此範圍會確保只有該群組內的資源會受到下列指派角色所影響。 
 
     ```azurecli
+    RESOURCE_GROUP=contosoResourceGroup
+    az role assignment create --role "Managed Identity Operator" --assignee $clientId --scope /subscriptions/$SUBID/resourcegroups/$RESOURCE_GROUP
+
+    az role assignment create --role "Virtual Machine Contributor" --assignee $clientId --scope /subscriptions/$SUBID/resourcegroups/$RESOURCE_GROUP
+    
     az role assignment create --role "Managed Identity Operator" --assignee $clientId --scope /subscriptions/$SUBID/resourcegroups/$NODE_RESOURCE_GROUP
     
     az role assignment create --role "Virtual Machine Contributor" --assignee $clientId --scope /subscriptions/$SUBID/resourcegroups/$NODE_RESOURCE_GROUP
@@ -304,6 +311,8 @@ spec:
         readOnly: true
         volumeAttributes:
           secretProviderClass: azure-kvname
+          nodePublishSecretRef:
+              name: secrets-store-creds 
 ```
 
 執行下列命令，以部署您的 Pod：

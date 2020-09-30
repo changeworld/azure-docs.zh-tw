@@ -9,16 +9,32 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: 4011cd93879d9203d8231f24bbf531d14e6e815a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 93ebc1c5e89e54f4813f270b9f8b7b13f672fbe3
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87093291"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90016107"
 ---
 # <a name="analyze-data-with-sql-on-demand"></a>使用隨選 SQL 來分析資料
 
 在本教學課程中，您將了解如何使用位於 Spark 資料庫中的資料，透過隨選 SQL 來分析資料。 
+
+## <a name="analyze-nyc-taxi-data-in-blob-storage--using-sql-on-demand"></a>使用隨選 SQL 分析 blob 儲存體中的 NYC 計程車資料
+
+1. 在 [連結] 下的 [資料] 中樞中，以滑鼠右鍵按一下 [Azure Blob 儲存體 > 範例資料集 > nyc_tlc_yellow] 並選取 [選取前 100 個資料列]
+1. 這會使用下列程式碼建立新的 SQL 指令碼：
+
+    ```
+    SELECT
+        TOP 100 *
+    FROM
+        OPENROWSET(
+            BULK     'https://azureopendatastorage.blob.core.windows.net/nyctlc/yellow/puYear=*/puMonth=*/*.parquet',
+            FORMAT = 'parquet'
+        ) AS [result];
+    ```
+1. 按一下 [執行] 
 
 ## <a name="analyze-nyc-taxi-data-in-spark-databases-using-sql-on-demand"></a>使用 SQL 隨選分析 Spark 資料庫中的 NYC 計程車資料
 

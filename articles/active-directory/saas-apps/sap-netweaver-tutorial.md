@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/14/2019
+ms.date: 09/10/2020
 ms.author: jeedes
-ms.openlocfilehash: 38ac4f1bf6a1dd4656b4e7d5783051f3b381940c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d91ada217d54f424803abfeb31dcad237b5fe05c
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88546809"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979920"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-netweaver"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 SAP NetWeaver 整合
 
@@ -26,9 +26,7 @@ ms.locfileid: "88546809"
 * 讓使用者使用其 Azure AD 帳戶自動登入 SAP NetWeaver。
 * 在 Azure 入口網站集中管理您的帳戶。
 
-若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
-
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要開始，您需要下列項目：
 
@@ -38,7 +36,10 @@ ms.locfileid: "88546809"
 
 ## <a name="scenario-description"></a>案例描述
 
-SAP NetWeaver 支援 **SAML** (**SP 起始的 SSO**) 和 **OAuth**。 在本教學課程中，您會在測試環境中設定和測試 Azure AD SSO。 
+* SAP NetWeaver 支援 **SAML** (**SP 起始的 SSO**) 和 **OAuth**。 在本教學課程中，您會在測試環境中設定和測試 Azure AD SSO。 
+
+> [!NOTE]
+> 此應用程式的識別碼是固定的字串值，因此一個租用戶中只能設定一個執行個體。
 
 > [!NOTE]
 > 依據您的組織需求，以 SAML 或 OAuth 設定應用程式。 
@@ -47,18 +48,18 @@ SAP NetWeaver 支援 **SAML** (**SP 起始的 SSO**) 和 **OAuth**。 在本教�
 
 若要設定 SAP NetWeaver 與 Azure AD 整合，您需要從資源庫將 SAP NetWeaver 新增到受控 SaaS 應用程式清單中。
 
-1. 使用公司或學校帳戶或個人的 Microsoft 帳戶登入 [Azure 入口網站](https://portal.azure.com)。
+1. 使用公司或學校帳戶或個人的 Microsoft 帳戶登入 Azure 入口網站。
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory]  服務。
 1. 巡覽至 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
 1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **SAP NetWeaver**。
 1. 從結果面板選取 [SAP NetWeaver]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-sap-netweaver"></a>設定及測試 SAP NetWeaver 的 Azure AD 單一登入
+## <a name="configure-and-test-azure-ad-sso-for-sap-netweaver"></a>設定和測試適用於 SAP NetWeaver 的 Azure AD SSO
 
 以名為 **B.Simon** 的測試使用者，設定及測試與 SAP NetWeaver 搭配運作的 Azure AD SSO。 若要讓 SSO 能夠運作，您必須建立 Azure AD 使用者與 SAP NetWeaver 中相關使用者之間的連結關聯性。
 
-若要設定及測試與 SAP NetWeaver 搭配運作的 Azure AD SSO，請完成下列建置組塊：
+若要設定及測試與 SAP NetWeaver 搭配運作的 Azure AD SSO，請執行下列步驟：
 
 1. **[設定 Azure AD SSO](#configure-azure-ad-sso)** ，讓您的使用者能夠使用此功能。
     1. **[建立 Azure AD 測試使用者](#create-an-azure-ad-test-user)** ，以使用 B.Simon 測試 Azure AD 單一登入。
@@ -99,7 +100,7 @@ SAP NetWeaver 支援 **SAML** (**SP 起始的 SSO**) 和 **OAuth**。 在本教�
 
     c. 在相關用戶端上按兩下，以啟用 HTTP 安全性工作階段。
 
-    ![憑證下載連結](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_profileparameter.png)
+    ![HTTP 安全性工作階段 ](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_profileparameter.png)
 
     d. 啟用以下 SICF 服務：
     ```
@@ -110,22 +111,22 @@ SAP NetWeaver 支援 **SAML** (**SP 起始的 SSO**) 和 **OAuth**。 在本教�
     ```
 1. 在 SAP 系統 [T01/122] 的商務用戶端中，移至交易代碼 **SAML2**。 它會在瀏覽器中開啟使用者介面。 在此範例中，我們假設 122 為 SAP 商務用戶端。
 
-    ![憑證下載連結](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_sapbusinessclient.png)
+    ![交易程式碼](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_sapbusinessclient.png)
 
 1. 提供您的使用者名稱和密碼以在使用者介面中輸入，然後按一下 [編輯]  。
 
-    ![憑證下載連結](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_userpwd.png)
+    ![使用者名稱和密碼](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_userpwd.png)
 
 1. 將 [提供者名稱]  從 T01122 取代為 `http://T01122`，然後按一下 [儲存]  。
 
     > [!NOTE]
     > 根據預設，提供者名稱格式為 `<sid><client>`，但 Azure AD 預期該名稱的格式為 `<protocol>://<name>`，因此建議將提供者名稱保持為 `https://<sid><client>`，以允許在 Azure AD 中設定多個 SAP NetWeaver ABAP 引擎。
 
-    ![憑證下載連結](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_providername.png)
+    ![多個 SAP NetWeaver ABAP 引擎](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_providername.png)
 
 1. **產生服務提供者中繼資料**：在 SAML 2.0 使用者介面上設定好 [本機提供者]  和 [信任的提供者]  設定後，下一個步驟是產生服務提供者的中繼資料檔案 (其中包含 SAP 中的所有設定、驗證內容和其他組態)。 產生這個檔案後，我們就需要在 Azure AD 中上傳此檔案。
 
-    ![憑證下載連結](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_generatesp.png)
+    ![產生服務提供者中繼資料](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_generatesp.png)
 
     a. 移至 [本機提供者]  索引標籤。
 
@@ -135,7 +136,7 @@ SAP NetWeaver 支援 **SAML** (**SP 起始的 SSO**) 和 **OAuth**。 在本教�
 
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
-1. 在 [Azure 入口網站](https://portal.azure.com/)的 [SAP NetWeaver]  應用程式整合頁面上，尋找 [管理]  區段並選取 [單一登入]  。
+1. 在 Azure 入口網站的 [SAP NetWeaver] 應用程式整合頁面上，尋找 [管理] 區段並選取 [單一登入]。
 1. 在 [選取單一登入方法]  頁面上，選取 [SAML]  。
 1. 在 [以 SAML 設定單一登入]  頁面上，按一下 [基本 SAML 設定]  的編輯/畫筆圖示，以編輯設定。
 
@@ -160,13 +161,13 @@ SAP NetWeaver 支援 **SAML** (**SP 起始的 SSO**) 和 **OAuth**。 在本教�
 
 1. SAP NetWeaver 應用程式需要特定格式的 SAML 判斷提示，因此您必須將自訂屬性對應加入 SAML 權杖屬性組態。 以下螢幕擷取畫面顯示預設屬性清單。 按一下 [編輯]  圖示以開啟 [使用者屬性] 對話方塊。
 
-    ![image](common/edit-attribute.png)
+    ![編輯屬性](common/edit-attribute.png)
 
 1. 在 [使用者屬性]  對話方塊的 [使用者宣告]  區段中，如上圖所示設定 SAML 權杖屬性，然後執行下列步驟：
 
     a. 按一下 [**編輯**] 圖示以開啟 [**管理使用者宣告**] 對話方塊。
 
-    ![image](./media/sapnetweaver-tutorial/nameidattribute.png)
+    ![編輯圖示](./media/sapnetweaver-tutorial/nameidattribute.png)
 
     ![image](./media/sapnetweaver-tutorial/nameidattribute1.png)
 
@@ -203,98 +204,92 @@ SAP NetWeaver 支援 **SAML** (**SP 起始的 SSO**) 和 **OAuth**。 在本教�
 1. 在 Azure 入口網站中，選取 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 在應用程式清單中，選取 [SAP NetWeaver]  。
 1. 在應用程式的概觀頁面中尋找 [管理]  區段，然後選取 [使用者和群組]  。
-
-    ![[使用者和群組] 連結](common/users-groups-blade.png)
-
-1. 選取 [新增使用者]  ，然後在 [新增指派]  對話方塊中選取 [使用者和群組]  。
-
-    ![[新增使用者] 連結](common/add-assign-user.png)
-
-1. 在 [使用者和群組]  對話方塊的 [使用者] 清單中選取 [B.Simon]  ，然後按一下畫面底部的 [選取]  按鈕。
-1. 如果您在 SAML 判斷提示中需要任何角色值，請在 [選取角色]  對話方塊的清單中為使用者選取適當的角色，然後按一下畫面底部的 [選取]  按鈕。
-1. 在 [新增指派]  對話方塊中，按一下 [指派]  按鈕。
+1. 選取 [新增使用者]，然後在 [新增指派] 對話方塊中選取 [使用者和群組]。
+1. 在 [使用者和群組] 對話方塊的 [使用者] 清單中選取 [B.Simon]，然後按一下畫面底部的 [選取] 按鈕。
+1. 如果您在 SAML 判斷提示中需要任何角色值，請在 [選取角色] 對話方塊的清單中為使用者選取適當的角色，然後按一下畫面底部的 [選取] 按鈕。
+1. 在 [新增指派] 對話方塊中，按一下 [指派] 按鈕。
 
 ## <a name="configure-sap-netweaver-using-saml"></a>使用 SAML 設定 SAP NetWeaver
 
 1. 登入 SAP 系統並移至交易程式碼 SAML2。 它會開啟包含 SAML 組態畫面的新瀏覽器視窗。
 
-2. 若要設定信任的識別提供者 (Azure AD) 的端點，請移至 [信任的提供者]  索引標籤。
+2. 若要設定信任的識別提供者 (Azure AD) 的端點，請移至 [信任的提供者]**** 索引標籤。
 
-    ![設定單一登入](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_samlconfig.png)
+    ![設定單一登入受信任的提供者](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_samlconfig.png)
 
-3. 按下 [新增]  ，然後從操作功能表中選取 [上傳中繼資料檔案]  。
+3. 按下 [新增]****，然後從操作功能表中選取 [上傳中繼資料檔案]****。
 
-    ![設定單一登入](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_uploadmetadata.png)
+    ![設定單一登入 2](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_uploadmetadata.png)
 
 4. 上傳您從 Azure 入口網站下載的中繼資料檔案。
 
-    ![設定單一登入](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_metadatafile.png)
+    ![設定單一登入 3](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_metadatafile.png)
 
-5. 在下一個畫面中輸入別名名稱。 例如 aadsts，然後按 [下一步]  繼續。
+5. 在下一個畫面中輸入別名名稱。 例如 aadsts，然後按 [下一步]**** 繼續。
 
-    ![設定單一登入](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_aliasname.png)
+    ![設定單一登入 4](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_aliasname.png)
 
-6. 確定 [摘要演算法]  應該是 **SHA-256**，而不需要任何變更，並且按 [下一步]  。
+6. 確定 [摘要演算法]**** 應該是 **SHA-256**，而不需要任何變更，並且按 [下一步]****。
 
-    ![設定單一登入](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_identityprovider.png)
+    ![設定單一登入 5](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_identityprovider.png)
 
-7. 在 [單一登入端點]  上，使用 [HTTP POST]  並且按 [下一步]  繼續。
+7. 在 [單一登入端點]**** 上，使用 [HTTP POST]**** 並且按 [下一步]**** 繼續。
 
-    ![設定單一登入](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_httpredirect.png)
+    ![設定單一登入 6](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_httpredirect.png)
 
-8. 在 [單一登入端點]  上，選取 [HTTPRedirect]  並且按 [下一步]  繼續。
+8. 在 [單一登入端點]**** 上，選取 [HTTPRedirect]**** 並且按 [下一步]**** 繼續。
 
-    ![設定單一登入](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_httpredirect1.png)
+    ![設定單一登入 7](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_httpredirect1.png)
 
-9. 在 [成品端點]  ，按 [下一步]  繼續。
+9. 在 [成品端點]****，按 [下一步]**** 繼續。
 
-    ![設定單一登入](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_artifactendpoint.png)
+    ![設定單一登入 8](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_artifactendpoint.png)
 
-10. 在 [驗證需求]  上，按一下 [完成]  。
+10. 在 [驗證需求]**** 上，按一下 [完成]****。
 
-    ![設定單一登入](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_authentication.png)
+    ![設定單一登入 9](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_authentication.png)
 
-11. 移至 [信任的提供者]  索引標籤 > [識別身分同盟]  (位於畫面底部)。 按一下 **[編輯]** 。
+11. 移至 [信任的提供者] 索引標籤 > [識別身分同盟] (位於畫面底部)。 按一下 **[編輯]** 。
 
-    ![設定單一登入](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_trustedprovider.png)
+    ![設定單一登入 10](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_trustedprovider.png)
 
-12. 按一下 [識別身分同盟]  索引標籤 (視窗底部) 之下的 [新增]  。
+12. 按一下 [識別身分同盟]**** 索引標籤 (視窗底部) 之下的 [新增]****。
 
-    ![設定單一登入](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_addidentityprovider.png)
+    ![設定單一登入 11](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_addidentityprovider.png)
 
-13. 在快顯視窗中，從 [支援的 NameID 格式]  中選取 [未指定]  ，然後按一下 [確定]。
+13. 在快顯視窗中，從 [支援的 NameID 格式]**** 中選取 [未指定]****，然後按一下 [確定]。
 
-    ![設定單一登入](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_nameid.png)
+    ![設定單一登入 12](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_nameid.png)
 
-14. 請注意，[使用者識別碼來源]  和 [使用者識別碼對應模式]  值會決定 SAP 使用者與 Azure AD 宣告之間的連結。  
+14. 請注意，[使用者識別碼來源]**** 和 [使用者識別碼對應模式]**** 值會決定 SAP 使用者與 Azure AD 宣告之間的連結。  
 
     #### <a name="scenario-sap-user-to-azure-ad-user-mapping"></a>案例：SAP 使用者與 Azure AD 使用者的對應。
 
     a. SAP 的 NameID 詳細資料螢幕擷取畫面。
 
-    ![設定單一登入](./media/sapnetweaver-tutorial/nameiddetails.png)
+    ![設定單一登入 13](./media/sapnetweaver-tutorial/nameiddetails.png)
 
     b. 提及 Azure AD 必要宣告的螢幕擷取畫面。
 
-    ![設定單一登入](./media/sapnetweaver-tutorial/claimsaad1.png)
+    ![設定單一登入 14](./media/sapnetweaver-tutorial/claimsaad1.png)
 
     #### <a name="scenario-select-sap-user-id-based-on-configured-email-address-in-su01-in-this-case-email-id-should-be-configured-in-su01-for-each-user-who-requires-sso"></a>案例：根據在 SU01 中設定的電子郵件地址選取 SAP 使用者識別碼。 在此情況下，應針對每位需要 SSO 的使用者在 su01 中設定電子郵件識別碼。
 
     a.  SAP 的 NameID 詳細資料螢幕擷取畫面。
 
-    ![設定單一登入](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_nameiddetails1.png)
+    ![設定單一登入 15](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_nameiddetails1.png)
 
     b. 提及 Azure AD 必要宣告的螢幕擷取畫面。
 
-    ![設定單一登入](./media/sapnetweaver-tutorial/claimsaad2.png)
+    ![設定單一登入 16](./media/sapnetweaver-tutorial/claimsaad2.png)
 
-15. 按一下 [儲存]  ，然後按一下 [啟用]  以啟用識別提供者。
+15. 按一下 [儲存]****，然後按一下 [啟用]**** 以啟用識別提供者。
 
-    ![設定單一登入](./media/sapnetweaver-tutorial/configuration1.png)
+    ![設定單一登入 17](./media/sapnetweaver-tutorial/configuration1.png)
 
-16. 出現提示時，按一下 [確定]  。
+16. 出現提示時，按一下 [確定]****。
 
-    ![設定單一登入](./media/sapnetweaver-tutorial/configuration2.png)
+    ![設定單一登入 18](./media/sapnetweaver-tutorial/configuration2.png)
 
     ### <a name="create-sap-netweaver-test-user"></a>建立 SAP NetWeaver 測試使用者
 
@@ -315,7 +310,7 @@ SAP NetWeaver 支援 **SAML** (**SP 起始的 SSO**) 和 **OAuth**。 在本教�
 
 2. 上述 URL 應會帶您前往以下所述的畫面。 如果您能夠連到以下頁面，就表示 Azure AD SSO 成功完成設定。
 
-    ![設定單一登入](./media/sapnetweaver-tutorial/testingsso.png)
+    ![測試單一登入](./media/sapnetweaver-tutorial/testingsso.png)
 
 3. 如果出現使用者名稱和密碼提示，請使用下面的 URL 來啟用追蹤，以診斷問題。
 
@@ -325,19 +320,19 @@ SAP NetWeaver 支援 **SAML** (**SP 起始的 SSO**) 和 **OAuth**。 在本教�
 
 1. 您可在下列位置取得 SAP 記載的程序：[NetWeaver 閘道服務啟用及 OAuth 2.0 範圍建立](https://wiki.scn.sap.com/wiki/display/Security/NetWeaver+Gateway+Service+Enabling+and+OAuth+2.0+Scope+Creation)
 
-2. 移至 SPRO，並尋找 [啟用和維護服務]  。
+2. 移至 SPRO，並尋找 [啟用和維護服務]****。
 
-    ![設定單一登入](./media/sapnetweaver-tutorial/oauth01.png)
+    ![啟用和維護服務](./media/sapnetweaver-tutorial/oauth01.png)
 
 3. 在此範例中，我們要使用 OAuth 將 OData 服務：`DAAG_MNGGRP` 連線到 Azure AD SSO。 使用技術服務名稱搜尋 `DAAG_MNGGRP` 服務，如果尚未啟動則加以啟動 (在 ICF 節點索引標籤底下查看 `green` 狀態)。 確定系統別名 (已連線的後端系統，也就是實際執行服務的位置) 是否正確。
 
-    ![設定單一登入](./media/sapnetweaver-tutorial/oauth02.png)
+    ![OData 服務](./media/sapnetweaver-tutorial/oauth02.png)
 
-    * 然後按一下頂端按鈕列上的 [OAuth]  按鈕，並指派 `scope` (保留所提供的預設名稱)。
+    * 然後按一下頂端按鈕列上的 [OAuth]**** 按鈕，並指派 `scope` (保留所提供的預設名稱)。
 
 4. 我們範例中的範圍是 `DAAG_MNGGRP_001`，這是從自動新增數字的服務名稱所產生。 `/IWFND/R_OAUTH_SCOPES` 報表可以用來變更範圍的名稱，或以手動方式建立。
 
-    ![設定單一登入](./media/sapnetweaver-tutorial/oauth03.png)
+    ![設定 OAuth](./media/sapnetweaver-tutorial/oauth03.png)
 
     > [!NOTE]
     > `soft state status is not supported` 訊息 – 可以忽略，並不會有問題。 如需詳細資訊，請參閱[這裡](https://help.sap.com/doc/saphelp_nw74/7.4.16/1e/c60c33be784846aad62716b4a1df39/content.htm?no_cache=true)
@@ -355,36 +350,30 @@ SAP NetWeaver 支援 **SAML** (**SP 起始的 SSO**) 和 **OAuth**。 在本教�
 
 ### <a name="register-the-new-oauth-20-client-id-with-the-creation-wizard"></a>使用建立精靈來註冊新的 OAuth 2.0 用戶端識別碼
 
-1. 若要註冊新的 **OAuth 2.0 用戶端**，請啟動 **SOAUTH2** 交易。 交易將會顯示已註冊的 OAuth 2.0 用戶端概觀。 選擇 [建立]  ，為新的 OAuth 用戶端 (在此範例中稱為 CLIENT1) 啟動精靈。
+1. 若要註冊新的 **OAuth 2.0 用戶端**，請啟動 **SOAUTH2** 交易。 交易將會顯示已註冊的 OAuth 2.0 用戶端概觀。 選擇 [建立]****，為新的 OAuth 用戶端 (在此範例中稱為 CLIENT1) 啟動精靈。
 
-2. 前往 T-Code：**SOAUTH2** 並提供描述，然後按 [下一步]  。
+2. 前往 T-Code：**SOAUTH2** 並提供描述，然後按 [下一步]。
 
-    ![設定單一登入](./media/sapnetweaver-tutorial/oauth04.png)
+    ![SOAUTH2](./media/sapnetweaver-tutorial/oauth04.png)
 
-    ![設定單一登入](./media/sapnetweaver-tutorial/oauth05.png)
+    ![OAuth 2.0 用戶端識別碼](./media/sapnetweaver-tutorial/oauth05.png)
 
 3. 從下拉式清單中選取已新增的 **SAML2 IdP – Azure AD**，然後儲存。
 
-    ![設定單一登入](./media/sapnetweaver-tutorial/oauth06.png)
+    ![SAML2 IdP – Azure AD 1](./media/sapnetweaver-tutorial/oauth06.png)
 
-    ![設定單一登入](./media/sapnetweaver-tutorial/oauth07.png)
+    ![SAML2 IdP – Azure AD 2](./media/sapnetweaver-tutorial/oauth07.png)
 
-    ![設定單一登入](./media/sapnetweaver-tutorial/oauth08.png)
+    ![SAML2 IdP – Azure AD 3](./media/sapnetweaver-tutorial/oauth08.png)
 
-4. 在範圍指派底下按一下 [新增]  ，以新增先前建立的範圍：`DAAG_MNGGRP_001`
+4. 在範圍指派底下按一下 [新增]****，以新增先前建立的範圍：`DAAG_MNGGRP_001`
 
-    ![設定單一登入](./media/sapnetweaver-tutorial/oauth09.png)
+    ![影響範圍](./media/sapnetweaver-tutorial/oauth09.png)
 
-    ![設定單一登入](./media/sapnetweaver-tutorial/oauth10.png)
+    ![範圍指派](./media/sapnetweaver-tutorial/oauth10.png)
 
-5. 按一下 [完成]  。
+5. 按一下 [完成]。
 
-## <a name="additional-resources"></a>其他資源
+## <a name="next-steps"></a>後續步驟
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
-
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
-
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
-- [試用搭配 Azure AD 的 SAP NetWeaver](https://aad.portal.azure.com/)
+設定 Azure AD SAP NetWeaver 後，您可以強制執行工作階段控制項，以即時防止組織的敏感性資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)

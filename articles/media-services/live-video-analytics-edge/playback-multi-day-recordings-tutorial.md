@@ -3,12 +3,12 @@ title: 播放多日錄製 - Azure
 description: 在本教學課程中，您將了解如何使用 Azure 媒體服務 API 來播放多日的持續影片錄製。
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: 19a42c61ef250fecce4503d3aed70b36d71ee3cf
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: e01c8603869f17ef2d68a39861f11818a4cea975
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88649086"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530568"
 ---
 # <a name="tutorial-playback-of-multi-day-recordings"></a>教學課程：播放多日錄製  
 
@@ -72,11 +72,11 @@ ms.locfileid: "88649086"
 
 在 Visual Studio Code 中，您可以按一下左側的 [執行] 圖示 (或 Ctrl+Shift+D)，以顯示可用的應用程式來執行：
 
-![執行](./media/playback-multi-day-recordings-tutorial/run.png)
+![螢幕擷取畫面會在 Visual Studio Code 中顯示已選取執行項目的功能表。](./media/playback-multi-day-recordings-tutorial/run.png)
  
 從下拉式方塊中選取 [AMS 資產播放器] 應用程式 (如下所示)，然後按 F5 開始偵錯。
 
-![偵錯](./media/playback-multi-day-recordings-tutorial/debug.png)
+![螢幕擷取畫面會在 Visual Studio Code 中顯示已選取 AMS 資產播放器的功能表。](./media/playback-multi-day-recordings-tutorial/debug.png)
 
 範例應用程式會建置並啟動您的預設瀏覽器應用程式，並開啟 [AMS 資產播放器] 頁面。
 

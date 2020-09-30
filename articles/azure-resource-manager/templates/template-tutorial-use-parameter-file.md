@@ -2,20 +2,20 @@
 title: 教學課程 - 使用參數檔案來部署範本
 description: 使用包含用來部署 Azure Resource Manager 範本之值的參數檔。
 author: mumian
-ms.date: 03/27/2020
+ms.date: 09/10/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: bd7917a96550d45b14eb5a5b5cae1ac957aa78b5
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: de72f9f32a3b08ad1742ee2055efce5b93cab899
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502795"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069504"
 ---
 # <a name="tutorial-use-parameter-files-to-deploy-your-arm-template"></a>教學課程：使用參數檔案部署您的 ARM 範本
 
-在此教學課程中，您將了解如何使用[參數檔案](parameter-files.md)來儲存您在部署期間傳入的值。 在先前的教學課程中，您已將內嵌參數與部署命令搭配使用。 這種方法可用來測試 Azure Resource Manager (ARM) 範本，但在將部署自動化時，可以更輕易地為您的環境傳遞一組值。 參數檔案可讓您更輕鬆地為特定環境封裝參數值。 在此教學課程中，您將建立適用於開發和實際執行環境的參數檔案。 完成此教學課程大約需要 **12 分鐘**。
+在此教學課程中，您將了解如何使用[參數檔案](parameter-files.md)來儲存您在部署期間傳入的值。 在先前的教學課程中，您已將內嵌參數與部署命令搭配使用。 這種方法可用來測試 Azure Resource Manager 範本 (ARM 範本)，但在將部署自動化時，可以更輕易地為您的環境傳遞一組值。 參數檔案可讓您更輕鬆地為特定環境封裝參數值。 在此教學課程中，您將建立適用於開發和實際執行環境的參數檔案。 完成此教學課程大約需要 **12 分鐘**。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -34,6 +34,12 @@ ms.locfileid: "87502795"
 ## <a name="add-parameter-files"></a>新增參數檔案
 
 參數檔案是 JSON 檔案，其結構類似於您的範本。 在檔案中，您會提供想要在部署期間傳入的參數值。
+
+在參數檔案中，您可以在範本中提供參數的值。 參數檔案中每個參數的名稱都必須符合範本中參數的名稱。 名稱不區分大小寫，但若要輕鬆查看相符的值，建議您比對範本中的大小寫。
+
+您不需要為每個參數提供值。 如果未指定的參數具有預設值，則會在部署期間使用該值。 如果參數沒有預設值，而且未在參數檔案中指定，系統就會提示您在部署期間提供值。
+
+您不能在參數檔案中指定與範本中參數名稱不相符的參數名稱。 當提供未知的參數時，您會收到錯誤。
 
 在 VS Code 中，建立含有下列內容的新檔案。 以 **azuredeploy.parameters.dev.json** 名稱來儲存檔案。
 
@@ -122,7 +128,7 @@ az deployment group create \
 ---
 
 > [!NOTE]
-> 如果部署失敗，請使用 **debug** 與部署命令切換，以顯示偵錯記錄。  您也可以使用 **verbose** 切換來顯示完整的偵錯記錄。
+> 如果部署失敗，請使用 **verbose** 參數來取得所建立資源的相關資訊。 使用 **debug** 參數來取得更多資訊以進行偵錯。
 
 ## <a name="verify-deployment"></a>驗證部署
 

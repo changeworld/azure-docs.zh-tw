@@ -5,14 +5,14 @@ author: avneet723
 ms.author: avneets
 ms.service: iot-central
 ms.subservice: iot-central-retail
-ms.topic: overview
+ms.topic: tutorial
 ms.date: 01/09/2020
-ms.openlocfilehash: 74deb4253a21445e21f7ef04f53f3bfe3f1fe0d0
-ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+ms.openlocfilehash: 880d8ee0e6e2b3984f6bea4b994642724085d512
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "81001267"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90980540"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-micro-fulfillment-center-application-template"></a>教學課程：部署並逐步執行微型物流中心應用程式範本
 
@@ -62,11 +62,11 @@ ms.locfileid: "81001267"
    * 檢視物流結構內機器人載具的平面圖和位置。
    * 觸發命令，例如重設控制系統、更新載具的韌體及重新設定網路等等。
 
-     ![Northwind Traders 微型物流中心儀表板的螢幕擷取畫面](./media/tutorial-micro-fulfillment-center-app/mfc-dashboard1.png)
+     ![Northwind Traders 微型物流中心儀表板上半部的螢幕擷取畫面](./media/tutorial-micro-fulfillment-center-app/mfc-dashboard1.png)
    * 請參閱操作員可用來監視物流中心內條件的儀表板範例。 
    * 監視在物流中心內閘道裝置上運行的承載健康情況。    
 
-     ![Northwind Traders 微型物流中心儀表板的螢幕擷取畫面](./media/tutorial-micro-fulfillment-center-app/mfc-dashboard2.png)
+     ![Northwind Traders 微型物流中心儀表板下半部的螢幕擷取畫面](./media/tutorial-micro-fulfillment-center-app/mfc-dashboard2.png)
 
 ## <a name="device-template"></a>裝置範本
 如果選取 [裝置範本] 索引標籤，您會看到範本中有兩種不同的裝置類型： 
@@ -91,6 +91,9 @@ ms.locfileid: "81001267"
 ![微型物流中心應用程式設定頁面的螢幕擷取畫面](./media/tutorial-micro-fulfillment-center-app/delete.png)
 
 ## <a name="next-steps"></a>後續步驟
-* 深入了解[微型物流中心解決方案架構](./architecture-micro-fulfillment-center.md)。
-* 深入了解其他 [Azure IoT Central 零售範本](./overview-iot-central-retail.md)。
-* 閱讀 [Azure IoT Central 概觀](../preview/overview-iot-central.md)。
+
+深入了解
+> [!div class="nextstepaction"]
+> [微型物流中心解決方案架構](./architecture-micro-fulfillment-center.md)
+* 深入了解 [Azure IoT Central 零售範本](./overview-iot-central-retail.md)
+* 深入了解其他 [Azure IoT Central 概觀](../preview/overview-iot-central.md)

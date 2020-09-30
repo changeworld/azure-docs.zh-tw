@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/19/2020
+ms.date: 08/20/2020
 ms.author: jeedes
-ms.openlocfilehash: 01a40e48f606c2e9c92d38b453a058d3ad5ba058
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: fe1f5f718ce54845dea2fc9da3ea2c9f4e18ce92
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88531278"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89659401"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-vyond"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Vyond 整合
 
@@ -35,9 +35,6 @@ ms.locfileid: "88531278"
 * Azure AD 訂用帳戶。 如果沒有訂用帳戶，您可以取得[免費帳戶](https://azure.microsoft.com/free/)。
 * 已啟用 Vyond 單一登入 (SSO) 的訂用帳戶。
 
-> [!NOTE]
-> 此應用程式的識別碼是固定的字串值，因此一個租用戶中只能設定一個執行個體。
-
 ## <a name="scenario-description"></a>案例描述
 
 在本教學課程中，您會在測試環境中設定和測試 Azure AD SSO。
@@ -45,6 +42,9 @@ ms.locfileid: "88531278"
 * Vyond 支援由 **SP 和 IDP** 起始的 SSO
 
 * 設定 Vyond 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+
+> [!NOTE]
+> 此應用程式的識別碼是固定的字串值，因此一個租用戶中只能設定一個執行個體。
 
 ## <a name="adding-vyond-from-the-gallery"></a>從資源庫新增 Vyond
 
@@ -58,7 +58,7 @@ ms.locfileid: "88531278"
 1. 從結果面板中選取 [Vyond]，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-vyond"></a>設定及測試 Vyond 的 Azure AD 單一登入
+## <a name="configure-and-test-azure-ad-sso-for-vyond"></a>設定和測試 Vyond 的 Azure AD SSO
 
 以名為 **B.Simon** 的測試使用者，設定及測試與 Vyond 搭配運作的 Azure AD SSO。 若要讓 SSO 能夠運作，您必須建立 Azure AD 使用者與 Vyond 中相關使用者之間的連結關聯性。
 

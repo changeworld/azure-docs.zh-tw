@@ -9,12 +9,12 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.date: 08/27/2020
-ms.openlocfilehash: 56292d3e8ba4c9ec89d73f10640264c178f8a9a7
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 78ec233e618511c748ed9f51b97161eddc5e8308
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89255013"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707521"
 ---
 # <a name="create-a-synapse-workspace"></a>建立 Synapse 工作區
 
@@ -24,18 +24,14 @@ ms.locfileid: "89255013"
 
 1. 開啟 [Azure 入口網站](https://portal.azure.com)，並在頂端搜尋 **Synapse**。
 1. 在 [服務] 底下的搜尋結果中，選取 [Azure Synapse Analytics (工作區預覽)]。
-1. 選取 [新增]，使用這些設定來建立工作區：
-
-    |索引標籤|設定 | 建議的值 | 描述 |
-    |---|---|---|---|
-    |基本概念|**工作區名稱**|您可以賦予其任何名稱。| 在本文件中，我們將使用 **myworkspace**。|
-    |基本概念|**區域**|比對儲存體帳戶的區域。|
-
+1. 選取 [新增] 以建立工作區。
+1. 在 [基本] 中，選擇工作區名稱。 在本教學課程中，我們將使用 **myworkspace**。
 1. 您需要 ADLSGEN2 帳戶來建立工作區。 最簡單的選擇是建立新的帳戶。 如果想要重複使用現有的帳戶，則必須執行一些額外的設定。 
 1. 選項 1 建立新的 ADLSGEN2 帳戶 
-    1. 在**選取 Data Lake Storage Gen 2** 中按一下 [建立新的] 並命名為 **contosolake**。
-    1. 在**選取 Data Lake Storage Gen 2** 中按一下 [檔案系統] 並命名為 **users**。
-1. 選項 2 請參閱本文件末尾的**準備儲存體帳戶**指示。
+    1. 瀏覽至 [選取 Data Lake Storage Gen 2]。 
+    1. 按一下 [新建]，並將其命名為 **contosolake**。
+    1. 按一下 [檔案系統]，並將其命名為 **users**。
+1. 選項 2 使用現有的 ADLSGEN2 帳戶。 請參閱本文件末尾的**準備 ADLSGEN2 儲存體帳戶**指示。
 1. 您的 Azure Synapse 工作區會使用此儲存體帳戶作為「主要」儲存體帳戶，以及用來儲存工作區資料的容器。 工作區會將資料儲存在 Apache Spark 資料表中。 其會將 Spark 應用程式記錄儲存在名為 **/synapse/workspacename** 的資料夾底下。
 1. 選取 [檢閱+建立] > [建立]。 您的工作區將會在幾分鐘內就緒。
 
@@ -94,29 +90,23 @@ SQL 集區只要在作用中，就會取用計費的資源。 您可於稍後暫
 * SQL 隨選有自己的 SQL 隨選資料庫，與任何 SQL 隨選集區分開存在。
 * 工作區一律只會有一個名為 **SQL 隨選**的 SQL 隨選集區。
 
-## <a name="prepare-a-storage-account"></a>準備儲存體帳戶
+## <a name="preparing-a-adlsgen2-storage-account"></a>準備 ADLSGEN2 儲存體帳戶
+
+### <a name="perform-the-following-steps-before-you-create-your-workspace"></a>建立工作區之前，請先執行下列步驟
 
 1. 開啟 [Azure 入口網站](https://portal.azure.com)。
-1. 建立具有下列設定的新儲存體帳戶：
-
-    |索引標籤|設定 | 建議的值 | 描述 |
-    |---|---|---|---|
-    |基本概念|**儲存體帳戶名稱**| 選擇任何名稱。| 在本文件中，我們將使用 **contosolake** 這個名稱。|
-    |基本概念|**帳戶類型**| **StorageV2** ||
-    |基本概念|**位置**|選擇任何位置。| 我們建議您將 Azure Synapse Analytics 工作區和 Azure Data Lake Storage Gen2 帳戶置於相同區域。|
-    |進階|**Data Lake Storage Gen2**|**已啟用**| Azure Synapse 僅適用於已啟用此設定的儲存體帳戶。|
-    |||||
-
-1. 建立儲存體帳戶之後，請選取左側窗格中的 [存取控制 (IAM)]。 然後指派下列角色，或確定其已指派：
+1. 瀏覽至現有的儲存體帳戶
+1. 在左窗格上選取 [存取控制 (IAM)]。 
+1. 指派下列角色，或確定其已指派：
     * 將您自己指派給**擁有者**角色。
     * 將您自己指派給**儲存體 Blob 資料擁有者**角色。
 1. 在左側窗格中，選取 [容器] 並建立容器。
-1. 您可以為容器提供任何名稱。 在本文件中，我們會將容器命名為 **users**。
+1. 您可以為容器提供名稱。 在本文件中，我們使用 **users**的名稱。
 1. 接受 [公用存取層級] 的預設設定，然後選取 [建立]。
 
-### <a name="configure-access-to-the-storage-account-from-your-workspace"></a>從您的工作區設定儲存體帳戶的存取權
+### <a name="perform-the-following-steps-after-you-create-your-workspace"></a>建立工作區之後，請執行下列步驟
 
-Azure Synapse 工作區的受控身分識別可能已經有儲存體帳戶的存取權。 請依照下列步驟來確認：
+從您的工作區設定儲存體帳戶的存取權。 Azure Synapse 工作區的受控身分識別可能已經有儲存體帳戶的存取權。 請依照下列步驟來確認：
 
 1. 開啟 [Azure 入口網站](https://portal.azure.com)，然後開啟為您工作區選擇的主要儲存體帳戶。
 1. 從左窗格中選取 [存取控制 (IAM)]。

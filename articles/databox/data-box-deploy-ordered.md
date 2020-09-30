@@ -2,18 +2,18 @@
 title: 訂購 Azure 資料箱的教學課程 | Microsoft Docs
 description: 在本教學課程中，了解 Azure 資料箱 (這是一種混合式解決方案，可讓您將內部部署資料匯入至 Azure)，以及如何訂購 Azure 資料箱。
 services: databox
-author: twooley
+author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 07/21/2020
-ms.author: twooley
-ms.openlocfilehash: 2000ecc84a92bef5ad6b80fecde4aee0157e4bc5
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.date: 09/15/2020
+ms.author: alkohli
+ms.openlocfilehash: c2d971c2c9375f58fd5f41a46716fac4bff29f88
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783564"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604303"
 ---
 # <a name="tutorial-order-azure-data-box"></a>教學課程：訂購 Azure 資料箱
 
@@ -268,8 +268,21 @@ PS C:\Windows\System32>
     ![受控磁碟的資料箱訂單](media/data-box-deploy-ordered/select-data-box-import-07b.png)
 
     針對受控磁碟指定的儲存體帳戶不能當成暫存的儲存體帳戶來使用。 資料箱服務會先將 VHD 以分頁 Blob 形式上傳至暫存的儲存體帳戶，然後再將它轉換為受控磁碟並移至資源群組。 如需詳細資訊，請參閱[確認資料上傳至 Azure](data-box-deploy-picked-up.md#verify-data-upload-to-azure)。
+   > [!NOTE]
+   > 如果分頁 Blob 未成功轉換為受控磁碟，其會保留在儲存體帳戶中，您需要支付儲存體費用。
 
-    完成時，選取 [下一步:連絡人詳細資料] 以繼續進行。
+    完成時，選取 [下一步:**安全性]** 以繼續作業。
+
+1. 在 [安全性] 中，如果您想要啟用以軟體為基礎的雙重加密，請選取 [為訂單啟用雙重加密]。 
+
+   除了資料箱上的 AES-256 位元加密以外，也會執行以軟體為基礎的加密。
+
+   > [!NOTE]
+   > 啟用此選項可能會進行訂單處理，且資料複製會花費較長的時間。 建立訂單之後，您就無法變更此選項。
+
+   ![資料箱匯入的安全性畫面，雙重加密](media/data-box-deploy-ordered/select-data-box-import-07c.png)
+
+   完成時，選取 [下一步:連絡人詳細資料] 以繼續進行。
 
 8. 在 [連絡人詳細資料] 中，選取 [+ 新增交貨位址]。
 

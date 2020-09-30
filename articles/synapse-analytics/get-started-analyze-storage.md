@@ -9,12 +9,12 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: 836e56884659c60c129eba0bb5505eddd9981283
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a0d5c758873413e549b31e3ec4cc41791fc8c371
+ms.sourcegitcommit: 0194a29a960e3615f96a2d9d8a7e681cf3e8f9ab
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87093322"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89667418"
 ---
 # <a name="analyze-data-in-a-storage-account"></a>分析儲存體帳戶中的資料
 
@@ -64,7 +64,7 @@ df.write.mode("overwrite").parquet("/NYCTaxi/PassengerCountStats.parquet")
     ) AS [r];
     ```
 
-     在指令碼中，[附加至] 欄位會設定為 [SQL 隨選]。
+    在指令碼視窗中，[連線至] 欄位會設定為 [隨選 SQL]。
 
 1. 執行指令碼。
 

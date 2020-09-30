@@ -10,17 +10,19 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 07/27/2020
 ms.author: sudbalas
-ms.openlocfilehash: c5509d6a284ab7afe827f67b79b7be027e76f66c
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: bf758a07cff248fc0da3f279e68a14e88797e382
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90068841"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90984605"
 ---
 # <a name="soft-delete-will-be-enabled-on-all-key-vaults"></a>所有金鑰保存庫都將會啟用虛刪除
 
 > [!WARNING]
 > **重大變更**：退出虛刪除的功能將會在年底淘汰，所有金鑰保存庫都將會自動開啟虛刪除保護。  Azure Key Vault 的使用者和管理員應該立即在其金鑰保存庫上啟用虛刪除。
+>
+> 針對受控 HSM，預設會啟用虛刪除，且無法停用。
 
 如果沒有虛刪除保護，從金鑰保存庫刪除祕密時，該祕密就會永久遭到刪除。 使用者目前可以在建立金鑰保存庫時退出虛刪除，但為了防止秘密遭到使用者意外或惡意地刪除，Microsoft 很快地將會在**所有**金鑰保存庫上啟用虛刪除保護，使用者將無法再選擇退出或關閉虛刪除。
 

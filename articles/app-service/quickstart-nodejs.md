@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.date: 08/01/2020
 ms.custom: mvc, devcenter, seodec18
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 4ce14b9d467e4badc833a1e1e4d8e1d08d232b1a
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: f88960207188779949560218b298fd36d6a8f25e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88083645"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985224"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>在 Azure 中建立 Node.js Web 應用程式
 
@@ -19,7 +19,7 @@ ms.locfileid: "88083645"
 
 使用 Visual Studio Code 在本機建立 Node.js/Express 應用程式，然後將應用程式部署至雲端，以開始使用 Azure App Service。 由於您是使用免費的 App Service 層，因此不需支付任何費用，就能完成本快速入門。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?utm_source=campaign&utm_campaign=vscode-tutorial-app-service-extension&mktingSource=vscode-tutorial-app-service-extension)。
 - [Node.js 和 npm](https://nodejs.org)。 執行命令 `node --version`，確認已安裝 Node.js。
@@ -69,7 +69,7 @@ ms.locfileid: "88083645"
 
 1. 在 VS Code 的 [AZURE APP SERVICE] 總管中，選取藍色的向上箭頭圖示，即可將您的應用程式部署至 Azure。 (您也可以從 [命令選擇區] \(**Ctrl**+**Shift**+**P**\) 叫用相同命令，只要輸入「部署到 Web 應用程式」並選擇 [Azure App Service:部署到 Web 應用程式])。
 
-    ![部署到 Web 應用程式](media/quickstart-nodejs/deploy.png)
+    :::image type="content" source="media/quickstart-nodejs/deploy.png" alt-text="VS Code 中 Azure App 服務的螢幕擷取畫面，其中顯示所選的藍色箭號圖示。&quot;:::
         
 1. 選擇 *nodejs-docs-hello-world* 資料夾。
 
@@ -95,7 +95,7 @@ ms.locfileid: "88083645"
 
     ![提示您要在目標 Linux 伺服器上更新組態](media/quickstart-nodejs/server-build.png)
 
-1. 請在出現 [一律將工作區 "nodejs-docs-hello-world" 部署至 \應用程式名稱\] 提示時，選取 [是]。 選取 [是] 會指示 VS Code 自動讓後續部署使用相同的 App Service Web 應用程式作為目標。
+1. 請在出現 [一律將工作區 &quot;nodejs-docs-hello-world" 部署至 \應用程式名稱\] 提示時，選取 [是]。 選取 [是] 會指示 VS Code 自動讓後續部署使用相同的 App Service Web 應用程式作為目標。
 
 1. 如果是部署至 Linux，請在部署完成時，選取提示中的 [瀏覽網站]，以檢視您剛才部署的 Web 應用程式。 瀏覽器應該會顯示「Hello World!」
 
@@ -141,7 +141,33 @@ export HTTP_PROXY=http://username:password@proxy:8080
 
 1. 出現提示時，請選擇啟用記錄，然後重新啟動應用程式。 重新啟動應用程式之後，VS Code 的輸出視窗會隨即開啟，並且連線至記錄串流。 
 
-    ![啟用記錄並重新啟動](media/quickstart-nodejs/enable-restart.png)
+    :::image type="content" source="media/quickstart-nodejs/enable-restart.png" alt-text="VS Code 中 Azure App 服務的螢幕擷取畫面，其中顯示所選的藍色箭號圖示。&quot;:::
+        
+1. 選擇 *nodejs-docs-hello-world* 資料夾。
+
+1. 根據您要部署的作業系統，選擇一個建立選項：
+
+    - Linux：選擇 [建立新的 Web 應用程式]
+    - Windows：選擇 [建立新的 Web 應用程式]...[進階]
+
+1. 輸入 Web 應用程式的全域唯一名稱，然後按 **Enter**。 該名稱在所有 Azure 中必須是唯一的，而且只能使用英數位元 ('A-z'、'a-z' 和 '0-9') 和連字號 ('-')。
+
+1. 如果以 Linux 為，請在出現提示時選取 Node.js 版本。 建議使用 **LTS** 版本。
+
+1. 如果以 Windows 為目標，請遵循其他提示：
+    1. 選取 [建立新的資源群組]，然後輸入資源群組的名稱，例如 `AppServiceQS-rg`。
+    1. 針對作業系統選取 [Windows]。
+    1. 選取 [建立新的 App Service 方案]，然後輸入方案的名稱 (例如 `AppServiceQS-plan`)，然後針對定價層選取 [F1 免費]。
+    1. 在出現 Application Insights 提示時，選擇 [暫時略過]。
+    1. 選擇您想要存取且接近您或接近資源的區域。
+
+1. 在您回應所有提示之後，VS Code 會顯示要為其通知快顯中應用程式建立的 Azure 資源。
+
+    在部署至 Linux 時，請於系統提示您要更新組態以在目標 Linux 伺服器上執行 `npm install` 時，選取 [是]。
+
+    ![提示您要在目標 Linux 伺服器上更新組態](media/quickstart-nodejs/server-build.png)
+
+1. 請在出現 [一律將工作區 &quot;nodejs-docs-hello-world":::
 
 1. 幾秒鐘之後，輸出視窗中會顯示您已連線至記錄串流服務的訊息。 您可以在瀏覽器中重新整理頁面，以產生更多的輸出活動。
 
@@ -263,7 +289,33 @@ code .
 
 在 [AZURE APP SERVICE]  總管中，選取藍色的向上箭頭圖示，即可將您的應用程式部署至 Azure。
 
-![部署到 Web 應用程式](./media/quickstart-nodejs/deploy.png)
+:::image type="content" source="./media/quickstart-nodejs/deploy.png" alt-text="VS Code 中 Azure App 服務的螢幕擷取畫面，其中顯示所選的藍色箭號圖示。&quot;:::
+        
+1. 選擇 *nodejs-docs-hello-world* 資料夾。
+
+1. 根據您要部署的作業系統，選擇一個建立選項：
+
+    - Linux：選擇 [建立新的 Web 應用程式]
+    - Windows：選擇 [建立新的 Web 應用程式]...[進階]
+
+1. 輸入 Web 應用程式的全域唯一名稱，然後按 **Enter**。 該名稱在所有 Azure 中必須是唯一的，而且只能使用英數位元 ('A-z'、'a-z' 和 '0-9') 和連字號 ('-')。
+
+1. 如果以 Linux 為，請在出現提示時選取 Node.js 版本。 建議使用 **LTS** 版本。
+
+1. 如果以 Windows 為目標，請遵循其他提示：
+    1. 選取 [建立新的資源群組]，然後輸入資源群組的名稱，例如 `AppServiceQS-rg`。
+    1. 針對作業系統選取 [Windows]。
+    1. 選取 [建立新的 App Service 方案]，然後輸入方案的名稱 (例如 `AppServiceQS-plan`)，然後針對定價層選取 [F1 免費]。
+    1. 在出現 Application Insights 提示時，選擇 [暫時略過]。
+    1. 選擇您想要存取且接近您或接近資源的區域。
+
+1. 在您回應所有提示之後，VS Code 會顯示要為其通知快顯中應用程式建立的 Azure 資源。
+
+    在部署至 Linux 時，請於系統提示您要更新組態以在目標 Linux 伺服器上執行 `npm install` 時，選取 [是]。
+
+    ![提示您要在目標 Linux 伺服器上更新組態](media/quickstart-nodejs/server-build.png)
+
+1. 請在出現 [一律將工作區 &quot;nodejs-docs-hello-world":::
 
 > [!TIP]
 > 您也可以從 [命令選擇區]  \(CTRL + SHIFT + P\) 進行部署，只要輸入 [部署到 Web 應用程式] 並執行 **Azure App Service:Deploy to Web App** 命令即可。
@@ -280,11 +332,63 @@ code .
 
 1. 出現要您更新設定的提示時，請選取 [是]  ，如此才能在目標伺服器上執行 `npm install`。 接著會開始部署您的應用程式。
 
-    ![已設定的部署](./media/quickstart-nodejs/server-build.png)
+    :::image type="content" source="./media/quickstart-nodejs/server-build.png" alt-text="VS Code 中 Azure App 服務的螢幕擷取畫面，其中顯示所選的藍色箭號圖示。&quot;:::
+        
+1. 選擇 *nodejs-docs-hello-world* 資料夾。
+
+1. 根據您要部署的作業系統，選擇一個建立選項：
+
+    - Linux：選擇 [建立新的 Web 應用程式]
+    - Windows：選擇 [建立新的 Web 應用程式]...[進階]
+
+1. 輸入 Web 應用程式的全域唯一名稱，然後按 **Enter**。 該名稱在所有 Azure 中必須是唯一的，而且只能使用英數位元 ('A-z'、'a-z' 和 '0-9') 和連字號 ('-')。
+
+1. 如果以 Linux 為，請在出現提示時選取 Node.js 版本。 建議使用 **LTS** 版本。
+
+1. 如果以 Windows 為目標，請遵循其他提示：
+    1. 選取 [建立新的資源群組]，然後輸入資源群組的名稱，例如 `AppServiceQS-rg`。
+    1. 針對作業系統選取 [Windows]。
+    1. 選取 [建立新的 App Service 方案]，然後輸入方案的名稱 (例如 `AppServiceQS-plan`)，然後針對定價層選取 [F1 免費]。
+    1. 在出現 Application Insights 提示時，選擇 [暫時略過]。
+    1. 選擇您想要存取且接近您或接近資源的區域。
+
+1. 在您回應所有提示之後，VS Code 會顯示要為其通知快顯中應用程式建立的 Azure 資源。
+
+    在部署至 Linux 時，請於系統提示您要更新組態以在目標 Linux 伺服器上執行 `npm install` 時，選取 [是]。
+
+    ![提示您要在目標 Linux 伺服器上更新組態](media/quickstart-nodejs/server-build.png)
+
+1. 請在出現 [一律將工作區 &quot;nodejs-docs-hello-world":::
 
 1. 當部署開始時，系統會提示您更新工作區，好讓之後的部署能自動鎖定相同的 App Service Web 應用程式。 請選擇 [是]  以確保您的變更會部署到正確的應用程式。
 
-    ![已設定的部署](./media/quickstart-nodejs/save-configuration.png)
+    :::image type="content" source="./media/quickstart-nodejs/save-configuration.png" alt-text="VS Code 中 Azure App 服務的螢幕擷取畫面，其中顯示所選的藍色箭號圖示。&quot;:::
+        
+1. 選擇 *nodejs-docs-hello-world* 資料夾。
+
+1. 根據您要部署的作業系統，選擇一個建立選項：
+
+    - Linux：選擇 [建立新的 Web 應用程式]
+    - Windows：選擇 [建立新的 Web 應用程式]...[進階]
+
+1. 輸入 Web 應用程式的全域唯一名稱，然後按 **Enter**。 該名稱在所有 Azure 中必須是唯一的，而且只能使用英數位元 ('A-z'、'a-z' 和 '0-9') 和連字號 ('-')。
+
+1. 如果以 Linux 為，請在出現提示時選取 Node.js 版本。 建議使用 **LTS** 版本。
+
+1. 如果以 Windows 為目標，請遵循其他提示：
+    1. 選取 [建立新的資源群組]，然後輸入資源群組的名稱，例如 `AppServiceQS-rg`。
+    1. 針對作業系統選取 [Windows]。
+    1. 選取 [建立新的 App Service 方案]，然後輸入方案的名稱 (例如 `AppServiceQS-plan`)，然後針對定價層選取 [F1 免費]。
+    1. 在出現 Application Insights 提示時，選擇 [暫時略過]。
+    1. 選擇您想要存取且接近您或接近資源的區域。
+
+1. 在您回應所有提示之後，VS Code 會顯示要為其通知快顯中應用程式建立的 Azure 資源。
+
+    在部署至 Linux 時，請於系統提示您要更新組態以在目標 Linux 伺服器上執行 `npm install` 時，選取 [是]。
+
+    ![提示您要在目標 Linux 伺服器上更新組態](media/quickstart-nodejs/server-build.png)
+
+1. 請在出現 [一律將工作區 &quot;nodejs-docs-hello-world":::
 
 > [!TIP]
 > 請確定您的應用程式正在 PORT 環境變數所提供的連接埠：`process.env.PORT` 上進行接聽。
@@ -314,7 +418,33 @@ VS Code 的輸出視窗會隨即開啟，並且連線至記錄串流。
 
 ![檢視串流記錄](./media/quickstart-nodejs/view-logs.png)
 
-![啟用記錄並重新啟動](./media/quickstart-nodejs/enable-restart.png)
+:::image type="content" source="./media/quickstart-nodejs/enable-restart.png" alt-text="VS Code 中 Azure App 服務的螢幕擷取畫面，其中顯示所選的藍色箭號圖示。&quot;:::
+        
+1. 選擇 *nodejs-docs-hello-world* 資料夾。
+
+1. 根據您要部署的作業系統，選擇一個建立選項：
+
+    - Linux：選擇 [建立新的 Web 應用程式]
+    - Windows：選擇 [建立新的 Web 應用程式]...[進階]
+
+1. 輸入 Web 應用程式的全域唯一名稱，然後按 **Enter**。 該名稱在所有 Azure 中必須是唯一的，而且只能使用英數位元 ('A-z'、'a-z' 和 '0-9') 和連字號 ('-')。
+
+1. 如果以 Linux 為，請在出現提示時選取 Node.js 版本。 建議使用 **LTS** 版本。
+
+1. 如果以 Windows 為目標，請遵循其他提示：
+    1. 選取 [建立新的資源群組]，然後輸入資源群組的名稱，例如 `AppServiceQS-rg`。
+    1. 針對作業系統選取 [Windows]。
+    1. 選取 [建立新的 App Service 方案]，然後輸入方案的名稱 (例如 `AppServiceQS-plan`)，然後針對定價層選取 [F1 免費]。
+    1. 在出現 Application Insights 提示時，選擇 [暫時略過]。
+    1. 選擇您想要存取且接近您或接近資源的區域。
+
+1. 在您回應所有提示之後，VS Code 會顯示要為其通知快顯中應用程式建立的 Azure 資源。
+
+    在部署至 Linux 時，請於系統提示您要更新組態以在目標 Linux 伺服器上執行 `npm install` 時，選取 [是]。
+
+    ![提示您要在目標 Linux 伺服器上更新組態](media/quickstart-nodejs/server-build.png)
+
+1. 請在出現 [一律將工作區 &quot;nodejs-docs-hello-world":::
 
 幾秒鐘之後，您會看到指出您已連線至記錄串流服務的訊息。 重新整理頁面數次以查看更多活動。
 
