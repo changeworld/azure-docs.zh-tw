@@ -9,18 +9,18 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 07/27/2020
-ms.openlocfilehash: d5ef8d6a9b0c0039b500ce9d0238609e8a8edc93
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 252ea54cf6be9dd381648d67e56a7a5ff2c7acc6
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90908004"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91542283"
 ---
 # <a name="execute-r-script-module"></a>執行 R 腳本模組
 
 本文說明如何使用 [執行 R 腳本] 模組，在您的 Azure Machine Learning 設計工具管線中執行 R 程式碼。
 
-使用 R 時，您可以執行現有模組目前不支援的工作，例如： 
+使用 R 時，您可以執行現有模組不支援的工作，例如： 
 - 建立自訂資料轉換
 - 使用您自己的度量來評估預測
 - 使用未在設計工具中實作為獨立模組的演算法來建立模型
@@ -137,7 +137,7 @@ azureml_main <- function(dataframe1, dataframe2){
 
 ## <a name="how-to-configure-execute-r-script"></a>如何設定執行 R 腳本
 
-[執行 R 腳本] 模組包含可作為起點的範例程式碼。 若要設定 [執行 R 腳本] 模組，請提供一組要執行的輸入和程式碼。
+[執行 R 腳本] 模組包含作為起點的範例程式碼。
 
 ![R 模組輸入的圖表](media/module/execute-r-script.png)
 
@@ -194,9 +194,12 @@ azureml_main <- function(dataframe1, dataframe2){
     > [!NOTE]
     > 現有的 R 程式碼可能需要在設計工具管線中執行較少的變更。 例如，您以 CSV 格式提供的輸入資料應該先明確轉換成資料集，您才能在程式碼中使用它。 在 R 語言中使用的資料和資料行類型，在設計工具中使用的資料和資料行類型的某些方式也不同。
 
-    如果您的腳本大於16KB，請使用 **腳本** 套件組合埠來避免像 *命令列一樣的錯誤超過16597個字元的限制*。 
+    如果您的腳本大於 16 KB，請使用 **腳本** 組合埠來避免像 *命令列一樣的錯誤超過16597個字元的限制*。 
     
-    將腳本和其他自訂資源組合成 zip 檔案，並將 zip 檔案以檔案 **資料集** 的形式上傳至 studio。 然後，您可以從 [設計師撰寫] 頁面的左模組窗格中的 [ *我的資料集* ] 清單，拖曳資料集模組。 將資料集模組連接至 [**執行 R 腳本**] 模組的**腳本**組合埠。
+    1. 將腳本和其他自訂資源組合成 zip 檔案。
+    1. 將 zip 檔案以檔案 **資料集** 的形式上傳至 studio。 
+    1. 從 [設計師撰寫] 頁面左側模組窗格中的 [ *我的資料集* ] 清單，拖曳資料集模組。 
+    1. 將資料集模組連接至 [**執行 R 腳本**] 模組的**腳本**組合埠。
     
     以下是在腳本套件組合中使用腳本的範例程式碼：
 
@@ -219,7 +222,7 @@ azureml_main <- function(dataframe1, dataframe2){
 
 ## <a name="results"></a>結果
 
-執行 R 腳本模組可以傳回多個輸出，但必須提供這些輸出作為 R 資料框架。 資料框架會自動轉換為設計工具中的資料集，以與其他模組相容。
+執行 R 腳本模組可以傳回多個輸出，但必須提供這些輸出作為 R 資料框架。 設計工具會自動將資料框架轉換成資料集，以與其他模組相容。
 
 標準訊息和 R 的錯誤會傳回至模組的記錄檔。
 
@@ -236,7 +239,7 @@ azureml_main <- function(dataframe1, dataframe2){
 
 1. 若要將包含 R 程式碼的 .zip 檔案上傳至您的工作區，請移至 [ **資料集** 資產] 頁面。 選取 [**建立資料集**]，然後**選取 [** **從本機**檔案] 和 [檔案資料集類型] 選項。  
 
-1. 在左側模組樹狀結構的 [**資料集**] 類別下，確認 [**我的資料集**] 清單中是否有 zip 壓縮檔案。
+1. 確認 zip 壓縮檔案出現在 [資料 **集** ] **類別的** 左側模組樹狀結構中。
 
 1.  將資料集連線至 **腳本** 套件組合輸入埠。
 

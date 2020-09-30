@@ -10,12 +10,12 @@ author: peterclu
 ms.date: 05/05/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: f4003f8cd78a20e2ed40c6d874d50ffcd49b704e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 6221b36263b55f54faef18d6596f97c5b3798d3d
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91302253"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541708"
 ---
 # <a name="reinforcement-learning-preview-with-azure-machine-learning"></a>具有 Azure Machine Learning 的增強式學習 (預覽)
 
@@ -215,7 +215,7 @@ else:
 
 在本節中，您將了解如何使用 [ReinforcementLearningEstimator](https://docs.microsoft.com/python/api/azureml-contrib-reinforcementlearning/azureml.contrib.train.rl.reinforcementlearningestimator?view=azure-ml-py&preserve-view=true)，將訓練作業提交至 Azure Machine Learning。
 
-Azure Machine Learning 會使用估算器類別來封裝回合組態資訊。 這可讓您輕鬆地指定如何設定指令碼執行。 如需 Azure Machine Learning 估算器模式的詳細資訊，請參閱[如何使用估算器來定型模型](how-to-train-ml-models.md)。
+Azure Machine Learning 會使用估算器類別來封裝回合組態資訊。 這可讓您輕鬆地指定如何設定指令碼執行。 
 
 ### <a name="define-a-worker-configuration"></a>定義背景工作組態
 

@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
-ms.openlocfilehash: 6fafb668ecc2ae36dbe5a6bbc3d1e1d501545b50
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: c7c43e02e6bdf75c9551ccdbb9dd8f75bf37a806
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056800"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91534976"
 ---
 # <a name="text-to-speech-rest-api"></a>文字轉換語音 REST API
 
-語音服務可讓您[將文字轉換成合成的語音](#convert-text-to-speech)，並使用一組 REST api 取得區域的[支援語音清單](#get-a-list-of-voices)。 每個可用的端點都會與某個區域相關聯。 您打算使用的端點/區域必須要有訂用帳戶金鑰。
+語音服務可讓您 [將文字轉換為合成語音](#convert-text-to-speech) ，並使用一組 REST api [取得區域支援](#get-a-list-of-voices) 的語音清單。 每個可用的端點都會與區域相關聯。 您打算使用之端點/區域的訂用帳戶金鑰是必要項。
 
 文字轉語音 API 支援類神經和標準文字轉語音，且各支援依地區設定所識別的特定語言和方言。
 
@@ -29,15 +29,18 @@ ms.locfileid: "88056800"
 > [!IMPORTANT]
 > 標準、自訂和神經語音的成本各不相同。 如需詳細資訊，請參閱[定價](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)。
 
-使用此 API 之前，請先瞭解：
+在使用此 API 之前，請先瞭解：
 
 * 文字轉語音 REST API 需要授權標頭。 這表示需要完成權杖交換，才能存取服務。 如需詳細資訊，請參閱[驗證](#authentication)。
+
+> [!TIP]
+> 請參閱政府雲端的 Azure 政府 [檔](https://docs.microsoft.com/azure/azure-government/compare-azure-government-global-azure) (FairFax) 端點。
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-rest-auth.md)]
 
 ## <a name="get-a-list-of-voices"></a>取得語音清單
 
-`voices/list`端點可讓您取得特定區域/端點的完整語音清單。
+此 `voices/list` 端點可讓您取得特定區域/端點的完整語音清單。
 
 ### <a name="regions-and-endpoints"></a>區域與端點
 
@@ -55,7 +58,7 @@ ms.locfileid: "88056800"
 | 日本東部 | `https://japaneast.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | 南韓中部 | `https://koreacentral.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | 美國中北部 | `https://northcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
-| 歐洲北部 | `https://northeurope.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| 北歐 | `https://northeurope.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | 美國中南部 | `https://southcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | 東南亞 | `https://southeastasia.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | 英國南部 | `https://uksouth.tts.speech.microsoft.com/cognitiveservices/voices/list` |
@@ -67,13 +70,13 @@ ms.locfileid: "88056800"
 
 下表列出文字轉換語音要求的必要和選擇性標頭。
 
-| 標頭 | 描述 | 必要/選用 |
+| 標頭 | 說明 | 必要/選用 |
 |--------|-------------|---------------------|
 | `Authorization` | 前面加入 `Bearer` 這個字的授權權杖。 如需詳細資訊，請參閱[驗證](#authentication)。 | 必要 |
 
 ### <a name="request-body"></a>Request body
 
-對於此端點的要求，不需要主體 `GET` 。
+`GET`對此端點的要求不需要主體。
 
 ### <a name="sample-request"></a>範例要求
 
@@ -88,10 +91,10 @@ Authorization: Bearer [Base64 access_token]
 
 ### <a name="sample-response"></a>範例回應
 
-此回應已被截斷，以說明回應的結構。
+此回應已截斷，以說明回應的結構。
 
 > [!NOTE]
-> 語音可用性因地區/端點而異。
+> 語音可用性會因區域/端點而異。
 
 ```json
 [
@@ -155,7 +158,7 @@ Authorization: Bearer [Base64 access_token]
 
 ## <a name="convert-text-to-speech"></a>將文字轉換成語音
 
-`v1`端點可讓您使用[語音合成標記語言 (SSML) ](speech-synthesis-markup.md)，將文字轉換為語音。
+此 `v1` 端點可讓您使用 [語音合成標記語言 (SSML) ](speech-synthesis-markup.md)將文字轉換成語音。
 
 ### <a name="regions-and-endpoints"></a>區域與端點
 
@@ -167,12 +170,12 @@ Authorization: Bearer [Base64 access_token]
 
 下表列出文字轉換語音要求的必要和選擇性標頭。
 
-| 標頭 | 描述 | 必要/選用 |
+| 標頭 | 說明 | 必要/選用 |
 |--------|-------------|---------------------|
 | `Authorization` | 前面加入 `Bearer` 這個字的授權權杖。 如需詳細資訊，請參閱[驗證](#authentication)。 | 必要 |
 | `Content-Type` | 指定所提供文字的內容類型。 接受的值為 `application/ssml+xml`。 | 必要 |
 | `X-Microsoft-OutputFormat` | 指定音訊輸出格式。 如需接受值的完整清單，請參閱[音訊輸出](#audio-outputs)。 | 必要 |
-| `User-Agent` | 應用程式名稱。 提供的值必須少於255個字元。 | 必要 |
+| `User-Agent` | 應用程式名稱。 提供的值必須小於255個字元。 | 必要 |
 
 ### <a name="audio-outputs"></a>音訊輸出
 
@@ -189,7 +192,7 @@ audio-24khz-48kbitrate-mono-mp3     ogg-24khz-16bit-mono-opus
 ```
 
 > [!NOTE]
-> 如果您選取的語音和輸出格式具有不同的位元速率，則會視需要重新進行音訊取樣。 ogg-24khz-dxil 16 位-mono-opus 可以使用[opus 編解碼器](https://opus-codec.org/downloads/)進行解碼
+> 如果您選取的語音和輸出格式具有不同的位元速率，則會視需要重新進行音訊取樣。 ogg-24khz-16bit-mono-opus 可以使用[opus 編解碼器](https://opus-codec.org/downloads/)解碼
 
 ### <a name="request-body"></a>Request body
 
@@ -200,7 +203,7 @@ audio-24khz-48kbitrate-mono-mp3     ogg-24khz-16bit-mono-opus
 
 ### <a name="sample-request"></a>範例要求
 
-此 HTTP 要求使用 SSML 指定語音與語言。 如果主體長度很長，而產生的音訊超過10分鐘，則會截斷為10分鐘。 換句話說，音訊長度不能超過10分鐘。
+此 HTTP 要求使用 SSML 指定語音與語言。 如果本文長度很長，且產生的音訊超過10分鐘，則會截斷為10分鐘。 換句話說，音訊長度不能超過10分鐘。
 
 ```http
 POST /cognitiveservices/v1 HTTP/1.1
@@ -217,7 +220,7 @@ Authorization: Bearer [Base64 access_token]
 </voice></speak>
 ```
 
-如需特定語言的範例，請參閱快速入門：
+請參閱我們的語言特定範例快速入門：
 
 * [.NET Core，C#](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-csharp&tabs=dotnetcore)
 * [Python](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-python)
@@ -233,7 +236,7 @@ Authorization: Bearer [Base64 access_token]
 | 400 | 不正確的要求 | 必要的參數遺失、為空白或 Null。 或者，傳遞至必要或選用參數的值無效。 常見的問題是標頭太長。 |
 | 401 | 未經授權 | 要求未經授權。 請檢查以確定您的訂用帳戶金鑰或權杖有效，並且位於正確的區域。 |
 | 413 | 要求實體太大 | SSML 輸入的長度大於 1024 個字元。 |
-| 415 | 不支援的媒體類型 | 可能是提供了錯誤的 `Content-Type` 。 `Content-Type`應設定為 `application/ssml+xml` 。 |
+| 415 | 不支援的媒體類型 | 提供錯誤的可能原因 `Content-Type` 。 `Content-Type` 應設定為 `application/ssml+xml` 。 |
 | 429 | 太多要求 | 您已超出訂用帳戶允許的配額或要求率。 |
 | 502 | 錯誤的閘道    | 網路或伺服器端問題。 也可能表示標頭無效。 |
 

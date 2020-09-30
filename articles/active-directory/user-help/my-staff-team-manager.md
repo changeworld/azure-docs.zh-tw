@@ -13,12 +13,12 @@ ms.date: 04/14/2020
 ms.author: curtand
 ms.reviewer: sahenry
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: d692302df1f5c03a7dce60858b31e0ca66de4c80
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 56ee7df52abf97c920dfe2fa4ba5d1d858975f7d
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744545"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91537085"
 ---
 # <a name="delegate-user-management-with-my-staff-preview"></a>使用 [我的員工] 來委派使用者管理 (預覽)
 
@@ -104,7 +104,7 @@ ms.locfileid: "83744545"
 
 1. 完成後，選取 [確定]。
 
-    ![在 [我的員工] 中移除員工成員電話號碼](media/my-staff-team-manager/enableforms2.png)
+    ![顯示 [允許登入的電話號碼] 的螢幕擷取畫面 已選取 [確定] 按鈕的視窗。](media/my-staff-team-manager/enableforms2.png)
 
 ### <a name="remove-a-phone-number"></a>移除電話號碼
 

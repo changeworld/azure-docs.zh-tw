@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 07/22/2020
 ms.author: apimpm
 ms.custom: references_regions
-ms.openlocfilehash: ee23b2bc58f8c1f15a7e51b05dee954c1e584293
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 5b96ac9cf43782764e88039d736ba61454d65911
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489617"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91539176"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>如何將 Azure API 管理與虛擬網路搭配使用
 「Azure 虛擬網路」(VNET) 可讓您將任何 Azure 資源，放在您控制存取權的非網際網路可路由網路中。 然後，可以使用各種 VPN 技術，將這些網路連線到您的內部部署網路。 若要深入了解「Azure 虛擬網路」，請從以下資訊著手：[Azure 虛擬網路概觀](../virtual-network/virtual-networks-overview.md)。
@@ -118,15 +118,15 @@ Azure API 管理可以部署在虛擬網路 (VNET) 內，因此它可以存取�
 | * / 1433                     | 輸出           | TCP                | VIRTUAL_NETWORK / SQL                 | **存取 Azure SQL 端點**                           | 外部和內部  |
 | * / 5671、5672、443          | 輸出           | TCP                | VIRTUAL_NETWORK / EventHub            | [記錄到事件中樞原則](api-management-howto-log-event-hubs.md)和監視代理程式的相依性 | 外部和內部  |
 | * / 445                      | 輸出           | TCP                | VIRTUAL_NETWORK / Storage             | 適用於 [GIT](api-management-configuration-repository-git.md) 之 Azure 檔案共用的相依性                      | 外部和內部  |
-| */443、12000                     | 輸出           | TCP                | VIRTUAL_NETWORK / AzureCloud            | 健全狀況與監視擴充功能         | 外部和內部  |
-| */1886、443                     | 輸出           | TCP                | VIRTUAL_NETWORK / AzureMonitor         | 發佈[診斷記錄和計量](api-management-howto-use-azure-monitor.md)、[資源健康狀態](../service-health/resource-health-overview.md)和[Application Insights](api-management-howto-app-insights.md)                   | 外部和內部  |
+| */443、12000                     | 輸出           | TCP                | VIRTUAL_NETWORK / AzureCloud            | 健康情況與監視延伸模組         | 外部和內部  |
+| */1886、443                     | 輸出           | TCP                | VIRTUAL_NETWORK / AzureMonitor         | 發佈 [診斷記錄和計量](api-management-howto-use-azure-monitor.md)、 [資源健康狀態](../service-health/resource-health-overview.md) 和 [Application Insights](api-management-howto-app-insights.md)                   | 外部和內部  |
 | */25、587、25028                       | 輸出           | TCP                | VIRTUAL_NETWORK / INTERNET            | 連線到 SMTP 轉送以便傳送電子郵件                    | 外部和內部  |
-| * / 6381 - 6383              | 輸入和輸出 | TCP                | VIRTUAL_NETWORK / VIRTUAL_NETWORK     | 存取電腦之間快[取原則的](api-management-caching-policies.md)Redis 服務         | 外部和內部  |
-| */4290              | 輸入和輸出 | UDP                | VIRTUAL_NETWORK / VIRTUAL_NETWORK     | 電腦之間[速率限制](api-management-access-restriction-policies.md#LimitCallRateByKey)原則的同步計數器         | 外部和內部  |
+| * / 6381 - 6383              | 輸入和輸出 | TCP                | VIRTUAL_NETWORK / VIRTUAL_NETWORK     | 在電腦之間存取快 [取原則的](api-management-caching-policies.md) Redis 服務         | 外部和內部  |
+| */4290              | 輸入和輸出 | UDP                | VIRTUAL_NETWORK / VIRTUAL_NETWORK     | 電腦之間的 [速率限制](api-management-access-restriction-policies.md#LimitCallRateByKey) 原則的同步計數器         | 外部和內部  |
 | * / *                        | 輸入            | TCP                | AZURE_LOAD_BALANCER / VIRTUAL_NETWORK | Azure 基礎結構負載平衡器                          | 外部和內部  |
 
 >[!IMPORTANT]
-> 要成功部署 API 管理服務，就必須有以**粗體**表示其「目的」的連接埠。 不過，封鎖其他埠會導致使用和監視執行中服務的能力**降低**，**並提供認可的 SLA**。
+> 要成功部署 API 管理服務，就必須有以**粗體**表示其「目的」的連接埠。 但封鎖其他埠會導致使用和監視執行中服務的能力 **降低** **，並提供已認可的 SLA**。
 
 + **TLS 功能**：若要啟用 TLS/SSL 憑證鏈結建置和驗證，API 管理服務需要 ocsp.msocsp.com、mscrl.microsoft.com 和 crl.microsoft.com 的輸出網路連線能力。 如果您上傳至 API 管理的任何憑證包含 CA 根的完整鏈結，則不需要此相依性。
 
@@ -153,7 +153,7 @@ Azure API 管理可以部署在虛擬網路 (VNET) 內，因此它可以存取�
 
 + **Azure Load Balancer**：`Developer` SKU 不需要允許來自服務標籤 `AZURE_LOAD_BALANCER` 的輸入要求，因為我們只會在其後面部署一個計算單位。 但是在調整為較高的 SKU (例如 `Premium`) 時，來自 [168.63.129.16](../virtual-network/what-is-ip-address-168-63-129-16.md) 的輸入會變得很重要，因為來自負載平衡器的健康情況探查失敗會導致部署失敗。
 
-+ **Application Insights**：如果已在 API 管理上啟用[Azure 應用程式 Insights](api-management-howto-app-insights.md)監視，則我們需要允許來自虛擬網路的[遙測端點](/azure/azure-monitor/app/ip-addresses#outgoing-ports)的輸出連線能力。 
++ **Application Insights**：如果已在 API 管理上啟用 [Azure 應用程式 Insights](api-management-howto-app-insights.md) 監視，則需要允許從虛擬網路到 [遙測端點](/azure/azure-monitor/app/ip-addresses#outgoing-ports) 的輸出連線。 
 
 + **使用 Express Route 或網路虛擬設備，以強制通道將流量傳送至內部部署防火牆**：常見的客戶設定是定義自己的預設路由 (0.0.0.0/0)，以強制所有來自 API 管理委派子網路的流量流經內部部署防火牆或網路虛擬設備。 此流量流程一定會中斷與 Azure API 管理的連線，因為已在內部部署封鎖輸出流量，或者 NAT 至無法再使用各種 Azure 端點的一組無法辨識位址。 解決方案會要求您執行幾項工作：
 
@@ -168,7 +168,7 @@ Azure API 管理可以部署在虛擬網路 (VNET) 內，因此它可以存取�
       - 開發人員入口網站 CAPTCHA
 
 ## <a name="troubleshooting"></a><a name="troubleshooting"> </a>疑難排解
-* **初始設定**：若未能成功地將 APIM 服務初始部署到子網路，建議您先將虛擬機器部署到相同的子網路。 下一次從遠端桌面連線到虛擬機器，並驗證您的 Azure 訂用帳戶中的下列其中一個資源的連線能力
+* **初始設定**：若未能成功地將 APIM 服務初始部署到子網路，建議您先將虛擬機器部署到相同的子網路。 下一次從遠端桌面連線到虛擬機器，並驗證您的 Azure 訂用帳戶中的每個資源都有連線能力
     * Azure 儲存體 Blob
     * Azure SQL Database
     * Azure 儲存體資料表
@@ -203,7 +203,7 @@ API 管理的每個額外縮放單位，都需要兩個額外的 IP 位址。
 
 ## <a name="control-plane-ip-addresses"></a><a name="control-plane-ips"> </a> 控制平面 IP 位址
 
-IP 位址是以 **Azure 環境**分割。 允許輸入要求時，標記為 [全域] 的 IP 位址必須與 [區域] 特定的 IP 位址一起列入白名單中。
+IP 位址是以 **Azure 環境**分割。 當允許輸入要求以 **Global** 標記的 ip 位址時，必須與 **區域** 特定的 ip 位址一起使用。
 
 | **Azure 環境**|   **區域**|  **IP 位址**|
 |-----------------|-------------------------|---------------|

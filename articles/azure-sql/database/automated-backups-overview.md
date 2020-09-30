@@ -7,16 +7,16 @@ ms.service: sql-db-mi
 ms.subservice: backup-restore
 ms.custom: references_regions
 ms.topic: conceptual
-author: anosov1960
-ms.author: sashan
-ms.reviewer: mathoma, carlrab, danil
+author: shkale-msft
+ms.author: shkale
+ms.reviewer: mathoma, stevestein, danil
 ms.date: 09/25/2020
-ms.openlocfilehash: b28c175656b0951980f861198c93ccd794605839
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 93370050b503875d670283b720088b0871377c09
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 09/29/2020
-ms.locfileid: "91444283"
+ms.locfileid: "91535063"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>自動備份-Azure SQL Database & SQL 受控執行個體
 
@@ -415,6 +415,9 @@ Set-AzSqlDatabase -ResourceGroupName "ResourceGroup01" -DatabaseName "Database01
 
 如需詳細資料，請造訪 [Set->set-azsqldatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase)
 
+> [!NOTE]
+> 若要使用-BackupStorageRedundancy 參數搭配資料庫還原、資料庫複製或建立次要作業，請使用 Azure PowerShell Az. Sql 2.11.0 版版本。 
+
 
 #### <a name="sql-managed-instance"></a>[SQL 受控執行個體](#tab/managed-instance)
 
@@ -425,6 +428,8 @@ New-AzSqlInstance -Name managedInstance2 -ResourceGroupName ResourceGroup01 -Loc
 ```
 
 如需詳細資訊，請造訪 [新的-new-azsqlinstance](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlinstance)。
+
+---
 
 ## <a name="use-azure-policy-to-enforce-backup-storage-redundancy"></a>使用 Azure 原則來強制執行備份儲存體冗余
 
@@ -440,11 +445,13 @@ New-AzSqlInstance -Name managedInstance2 -ResourceGroupName ResourceGroup01 -Loc
 
 您可以在 [這裡](https://docs.microsoft.com/azure/azure-sql/database/policy-reference)找到 SQL Database 和受控執行個體內建原則定義的完整清單。
 
-若要在組織層級強制執行資料落地需求，可以將這些原則指派給訂用帳戶。 在訂用帳戶層級指派這些許可權之後，指定訂用帳戶中的使用者將無法透過 Azure 入口網站或 Azure PowerShell，建立具有異地冗余備份儲存體的資料庫或受控實例。 請注意，透過 T-sql 建立資料庫時，不會強制執行 Azure 原則。 
+若要在組織層級強制執行資料落地需求，可以將這些原則指派給訂用帳戶。 在訂用帳戶層級指派這些許可權之後，指定訂用帳戶中的使用者將無法透過 Azure 入口網站或 Azure PowerShell，建立具有異地冗余備份儲存體的資料庫或受控實例。 
+
+> [!IMPORTANT]
+> 透過 T-sql 建立資料庫時，不會強制執行 Azure 原則。 若要在使用 T-sql 建立資料庫時強制執行資料存放區，請 [使用 ' LOCAL ' 或 ' ZONE ' 作為 CREATE database 語句中 BACKUP_STORAGE_REDUNDANCY 辨識的輸入](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current#create-database-using-zone-redundancy-for-backups)。
 
 瞭解如何使用[Azure 入口網站](https://docs.microsoft.com/azure/governance/policy/assign-policy-portal)或[Azure PowerShell](https://docs.microsoft.com/azure/governance/policy/assign-policy-powershell)指派原則
 
----
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4d1e120073e5bf4306c89628fc4e2e9c9f7ed2cf
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 6c46dfb3f36c3ef7f67ce2f3b52c2ffe4c805a61
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89002414"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91534789"
 ---
 # <a name="filters-in-azure-cognitive-search"></a>Azure 認知搜尋中的篩選 
 
@@ -138,7 +138,7 @@ POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-ve
 
 在 REST API 中，簡單欄位的可篩選預設為 *開啟* 。 可篩選的欄位會增加索引大小；請務必針對您不打算在篩選條件中實際使用的欄位設定 `"filterable": false`。 如需適用於欄位定義之設定的詳細資訊，請參閱[建立索引](/rest/api/searchservice/create-index) \(英文\)。
 
-在 .NET SDK 中，可篩選預設為 *off*。 您可以藉由將對應[欄位](/dotnet/api/microsoft.azure.search.models.field?view=azure-dotnet)物件的[IsFilterable 屬性](/dotnet/api/microsoft.azure.search.models.field.isfilterable?view=azure-dotnet)設定為，讓欄位可篩選 `true` 。 您也可以使用 [IsFilterable 屬性](/dotnet/api/microsoft.azure.search.isfilterableattribute)，以宣告方式進行這項作業。 在下列範例中，屬性是在 `BaseRate` 對應至索引定義的模型類別的屬性上進行設定。
+在 .NET SDK 中，可篩選預設為 *off*。 您可以藉由將對應[欄位](/dotnet/api/microsoft.azure.search.models.field)物件的[IsFilterable 屬性](/dotnet/api/microsoft.azure.search.models.field.isfilterable)設定為，讓欄位可篩選 `true` 。 您也可以使用 [IsFilterable 屬性](/dotnet/api/microsoft.azure.search.isfilterableattribute)，以宣告方式進行這項作業。 在下列範例中，屬性是在 `BaseRate` 對應至索引定義的模型類別的屬性上進行設定。
 
 ```csharp
     [IsFilterable, IsSortable, IsFacetable]

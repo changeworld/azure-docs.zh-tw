@@ -1,28 +1,26 @@
 ---
 title: 複合實體類型-LUIS
 titleSuffix: Azure Cognitive Services
-description: 複合實體是由其他實體所組成，例如預建實體、簡單、正則運算式和列出實體。 個別實體會構成一個完整的提體。
+description: 複合實體是由其他實體所組成，例如預建實體、簡單、正則運算式和清單實體。 個別實體會構成一個完整的提體。
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 04/14/2020
-ms.author: diberry
-ms.openlocfilehash: 81299751affe5f59e1132950ccb80844fcc1fae3
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 97bd079034a39f158e3ca438c484929cb6f00363
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681401"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91542252"
 ---
 # <a name="composite-entity"></a>複合實體
 
-複合實體是由其他實體所組成，例如預建實體、簡單、正則運算式和列出實體。 個別實體會構成一個完整的提體。
+複合實體是由其他實體所組成，例如預建實體、簡單、正則運算式和清單實體。 個別實體會構成一個完整的提體。
 
 > [!CAUTION]
-> 這個實體已被**取代**。 請遷移至[機器學習實體](reference-entity-machine-learned-entity.md)。
+> 此實體已被 **取代**。 請遷移至 [機器學習服務實體](reference-entity-machine-learned-entity.md)。
 
 **當資料有下列特性時，最適用此實體：**
 
@@ -94,7 +92,7 @@ ms.locfileid: "83681401"
 
 #### <a name="v3-prediction-endpoint-response"></a>[V3 預測端點回應](#tab/V3)
 
-如果 `verbose=false` 是在查詢字串中設定，則這是 JSON：
+如果在 `verbose=false` 查詢字串中設定，則這是 JSON：
 
 ```json
 "entities": {
@@ -111,7 +109,7 @@ ms.locfileid: "83681401"
 }
 ```
 
-如果 `verbose=true` 是在查詢字串中設定，則這是 JSON：
+如果在 `verbose=true` 查詢字串中設定，則這是 JSON：
 
 ```json
 "entities": {

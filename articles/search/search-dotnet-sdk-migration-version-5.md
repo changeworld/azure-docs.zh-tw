@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: ade326b7dda19478398de4ec3ab2be8996d98535
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 7f0e994cd41fc55824cf347a51ccfed25589a310
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88923206"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91539532"
 ---
 # <a name="upgrade-to-azure-search-net-sdk-version-5"></a>升級至 Azure 搜尋服務 .NET SDK 第5版
 
@@ -35,7 +35,7 @@ Azure 搜尋服務 .NET SDK 第 5 版包含了一些舊版所做的變更。 這
 Azure 搜尋服務 .NET SDK 第 5 版以最新推出的 Azure 搜尋服務 REST API 版本為目標，也就是 2017-11-11。 這可讓您從 .NET 應用程式中使用 Azure 搜尋服務的新功能，包括：
 
 * [同義字](search-synonyms.md)。
-* 您現在可以透過程式設計方式來存取索引子執行歷程記錄中的警告 (請參閱 [.NET 參考](/dotnet/api/microsoft.azure.search.models.indexerexecutionresult?view=azure-dotnet)中 `IndexerExecutionResult` 的 `Warning` 屬性，以了解詳細資料)。
+* 您現在可以透過程式設計方式來存取索引子執行歷程記錄中的警告 (請參閱 [.NET 參考](/dotnet/api/microsoft.azure.search.models.indexerexecutionresult)中 `IndexerExecutionResult` 的 `Warning` 屬性，以了解詳細資料)。
 * .NET Core 2 的支援。
 * 新的套件結構支援只使用所需的 SDK 組件 (請參閱[第 5 版的中斷性變更](#ListOfChanges)，以了解詳細資料)。
 

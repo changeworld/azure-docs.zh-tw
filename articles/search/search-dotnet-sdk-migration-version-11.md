@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5c943de87cbf53d4971e5cbf58768221bf2cf248
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: f6953f145621e11506a009fa59d67a5f40508a13
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89462253"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91539566"
 ---
 # <a name="upgrade-to-azure-cognitive-search-net-sdk-version-11"></a>升級至 Azure 認知搜尋 .NET SDK 11 版
 
@@ -39,7 +39,7 @@ ms.locfileid: "89462253"
 
 + [Azure.Search.Documents 套件](https://www.nuget.org/packages/Azure.Search.Documents/)
 
-+ [用戶端程式庫的 API 參考](/dotnet/api/overview/azure/search.documents-readme?view=azure-dotnet)
++ [用戶端程式庫的 API 參考](/dotnet/api/overview/azure/search.documents-readme)
 
 ## <a name="client-differences"></a>用戶端差異
 
@@ -90,7 +90,7 @@ ms.locfileid: "89462253"
 | 第10版 | 第11版對等專案 |
 |------------|-----------------------|
 | [索引編製程式](/dotnet/api/microsoft.azure.search.models.indexer) | [SearchIndexer](/dotnet/api/azure.search.documents.indexes.models.searchindexer) |
-| [資料來源](/dotnet/api/microsoft.azure.search.models.datasource) | [SearchIndexerDataSourceConnection](/dotnet/api/azure.search.documents.indexes.models.searchindexerdatasourceconnection) |
+| [DataSource](/dotnet/api/microsoft.azure.search.models.datasource) | [SearchIndexerDataSourceConnection](/dotnet/api/azure.search.documents.indexes.models.searchindexerdatasourceconnection) |
 | [技能](/dotnet/api/microsoft.azure.search.models.skill) | [SearchIndexerSkill](/dotnet/api/azure.search.documents.indexes.models.searchindexerskill) |
 | [技能集](/dotnet/api/microsoft.azure.search.models.skillset) | [SearchIndexerSkillset](/dotnet/api/azure.search.documents.indexes.models.searchindexerskill) |
 | [DataSourceType](/dotnet/api/microsoft.azure.search.models.datasourcetype) | [SearchIndexerDataSourceType](/dotnet/api/azure.search.documents.indexes.models.searchindexerdatasourcetype) |
@@ -192,8 +192,8 @@ Azure 認知搜尋用戶端程式庫的每個版本都是以對應的 REST API �
 
 + Null 值的[排序結果](search-query-odata-orderby.md)已在此版本中變更，如果排序是，則會先出現 null 值，如果 `asc` 排序是，則為最後一個 `desc` 。 如果您撰寫程式碼來處理 null 值的排序方式，您應該在不再需要時，檢查並可能移除該程式碼。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 + [Azure.Search.Documents 套件](https://www.nuget.org/packages/Azure.Search.Documents/)
 + [GitHub 範例](https://github.com/azure/azure-sdk-for-net/tree/Azure.Search.Documents_11.0.0/sdk/search/Azure.Search.Documents/samples)
-+ [Azure.Search.Doc>ument API 參考](/dotnet/api/overview/azure/search.documents-readme?view=azure-dotnet)
++ [Azure.Search.Doc>ument API 參考](/dotnet/api/overview/azure/search.documents-readme)

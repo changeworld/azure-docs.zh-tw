@@ -9,12 +9,12 @@ ms.date: 05/28/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e4d25637498bec223e294eecf2be6dc88fa2aa0d
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 1726f3a1ddc62cbb76a65f1d284793e57ea2f2a8
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88997161"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91538240"
 ---
 # <a name="authentication-and-authorization-to-azure-spatial-anchors"></a>Azure 空間錨點的驗證和授權
 
@@ -22,7 +22,7 @@ ms.locfileid: "88997161"
 
 ## <a name="overview"></a>概觀
 
-![Azure 空間錨點的驗證概觀](./media/spatial-anchors-authentication-overview.png)
+![此圖顯示 Azure 空間錨點驗證的總覽。](./media/spatial-anchors-authentication-overview.png)
 
 若要存取指定的 Azure 空間錨點帳戶，用戶端必須先從 Azure 混合實境 Security Token Service (STS) 取得存取權杖。 從 STS 取得的權杖可存留 24 小時，其中會包含讓空間錨點服務對帳戶進行授權決策的資訊，並確保只有授權的主體可以存取該帳戶。
 
@@ -39,7 +39,7 @@ ms.locfileid: "88997161"
 
 使用帳戶金鑰存取您的 Azure 空間錨點帳戶，是最簡單的入門方式。 您會在 Azure 入口網站上找到帳戶金鑰。 瀏覽至您的帳戶，然後選取 [金鑰] 索引標籤。
 
-![Azure 空間錨點的驗證概觀](../../../includes/media/spatial-anchors-get-started-create-resource/view-account-key.png)
+![顯示 [金鑰] 頁面的螢幕擷取畫面，其中反白顯示 [主要索引鍵] 的 [複製] 按鈕。](../../../includes/media/spatial-anchors-get-started-create-resource/view-account-key.png)
 
 有兩個金鑰可供使用，這兩個金鑰可同時用於存取空間錨點帳戶。 建議您定期更新用來存取帳戶的金鑰 (擁有兩個不同的有效金鑰，可在不停機的情況下啟用這類更新)，您只需要更新主要金鑰和次要金鑰。
 

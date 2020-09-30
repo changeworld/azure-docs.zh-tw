@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: c49e92cda89cfc1d72a0550c2a53430f3e6f2844
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 351503db52e4c62414cd5dcbae1f750032a37eb7
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87050336"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91542269"
 ---
 # <a name="azure-api-management-faqs"></a>Azure API 管理常見問題集
 得到 Azure API 管理常見問題、模式和最佳作法的答案。
@@ -38,7 +38,7 @@ ms.locfileid: "87050336"
 * [API 管理在部署到多個地理位置時使用何種路由方法？](#what-routing-method-does-api-management-use-in-deployments-to-multiple-geographic-locations)
 * [可以使用 Azure Resource Manager 範本建立 API 管理服務執行個體嗎？](#can-i-use-an-azure-resource-manager-template-to-create-an-api-management-service-instance)
 * [我可以對後端使用自我簽署的 TLS/SSL 憑證嗎？](#can-i-use-a-self-signed-tlsssl-certificate-for-a-back-end)
-* [為什麼我在嘗試複製 GIT 存放庫時收到驗證失敗？](#why-do-i-get-an-authentication-failure-when-i-try-to-clone-a-git-repository)
+* [為什麼我在嘗試複製 GIT 儲存機制時收到驗證失敗？](#why-do-i-get-an-authentication-failure-when-i-try-to-clone-a-git-repository)
 * [API 管理是否能搭配 Azure ExpressRoute 運作？](#does-api-management-work-with-azure-expressroute)
 * [為什麼將「API 管理」部署到 Resource Manager 樣式的 VNET 中時，我們需要在這些 VNET 中有一個專用子網路？](#why-do-we-require-a-dedicated-subnet-in-resource-manager-style-vnets-when-api-management-is-deployed-into-them)
 * [將「API 管理」部署到 VNET 中時，所需的子網路大小下限是多少？](#what-is-the-minimum-subnet-size-needed-when-deploying-api-management-into-a-vnet)
@@ -52,8 +52,8 @@ ms.locfileid: "87050336"
 您有幾個選項可以保護 API 管理閘道與後端服務之間的連線安全。 您可以：
 
 * 使用 HTTP 基本驗證。 如需詳細資訊，請參閱[匯入和發佈您的第一個 API](import-and-publish.md)。
-* 如[如何使用 AZURE API 管理中的用戶端憑證驗證來保護後端服務](api-management-howto-mutual-certificates.md)中所述，使用 TLS 相互驗證。
-* 在您的後端服務上使用 IP 允許清單。 在 API 管理的所有層中，除了使用層之外，閘道的 IP 位址會維持不變，並在[IP 檔一文](api-management-howto-ip-addresses.md)中說明一些值得注意的事項。
+* 如 [如何在 AZURE API 管理中使用用戶端憑證驗證來保護後端服務](api-management-howto-mutual-certificates.md)中所述，使用 TLS 相互驗證。
+* 在您的後端服務上使用 IP 篩選。 在 API 管理的所有層中（使用層除外），閘道的 IP 位址會維持不變，但有幾個 [關於 ip 檔文章](api-management-howto-ip-addresses.md)中所述的警告。
 * 將您的 API 管理執行個體連接至 Azure 虛擬網路。
 
 ### <a name="how-do-i-copy-my-api-management-service-instance-to-a-new-instance"></a>如何將我的 API 管理服務執行個體複製到新的執行個體？
@@ -75,7 +75,7 @@ ms.locfileid: "87050336"
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 2. 移至包含您要更新之 API 管理執行個體的資源群組。
-3. 在 [API 管理] 中，將 [ **Api 管理] 服務參與者**角色指派給使用者。
+3. 在 [API 管理] 中，將 **Api 管理服務參與者** 角色指派給使用者。
 
 新增的參與者現在即可使用 Azure PowerShell [Cmdlet](/powershell/azure/)。 以系統管理員身分登入的步驟如下︰
 
@@ -103,13 +103,13 @@ ms.locfileid: "87050336"
 API 管理會在部署到多個地理位置時，使用[效能流量路由方法](../traffic-manager/traffic-manager-routing-methods.md#performance)。 連入流量會傳送至最接近的 API 閘道。 如果一個區域離線，則連入流量會自動路由傳送至下一個最接近的閘道。 深入了解[流量管理員路由方法](../traffic-manager/traffic-manager-routing-methods.md)中的路由方法。
 
 ### <a name="can-i-use-an-azure-resource-manager-template-to-create-an-api-management-service-instance"></a>可以使用 Azure Resource Manager 範本建立 API 管理服務執行個體嗎？
-是。 請參閱[AZURE API 管理服務](https://aka.ms/apimtemplate)快速入門範本。
+是。 請參閱 [AZURE API 管理服務](https://aka.ms/apimtemplate) 快速入門範本。
 
 ### <a name="can-i-use-a-self-signed-tlsssl-certificate-for-a-back-end"></a>我可以對後端使用自我簽署的 TLS/SSL 憑證嗎？
 是。 這可以透過 PowerShell 或直接提交至 API 來完成。 這將會停用信任鏈結驗證，在從 API 管理對後端服務進行通訊時，還可讓您使用自我簽署或私人簽署的憑證。
 
 #### <a name="powershell-method"></a>Powershell 方法 ####
-使用 [`New-AzApiManagementBackend`](/powershell/module/az.apimanagement/new-azapimanagementbackend) （適用于新的後端）或 [`Set-AzApiManagementBackend`](/powershell/module/az.apimanagement/set-azapimanagementbackend) （適用于現有的後端） PowerShell Cmdlet，並將 `-SkipCertificateChainValidation` 參數設定為 `True` 。
+針對現有的後 [`New-AzApiManagementBackend`](/powershell/module/az.apimanagement/new-azapimanagementbackend) [`Set-AzApiManagementBackend`](/powershell/module/az.apimanagement/set-azapimanagementbackend) 端) PowerShell Cmdlet 使用 () 或 (，並將 `-SkipCertificateChainValidation` 參數設定為 `True` 。
 
 ```powershell
 $context = New-AzApiManagementContext -resourcegroup 'ContosoResourceGroup' -servicename 'ContosoAPIMService'

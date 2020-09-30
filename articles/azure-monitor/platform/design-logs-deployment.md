@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/20/2019
-ms.openlocfilehash: a4186909db3d784938ada4baaaf08aba02b31d30
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 6bdc7a087e60791ba3e3367aca3ea3a4500478ab
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91317118"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91534194"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>設計 Azure 監視器記錄部署
 
@@ -26,6 +26,8 @@ Log Analytics 工作區提供：
 * 資料存放區的地理位置。
 * 依建議的其中一個設計策略授與不同的使用者存取權限，來隔離資料。
 * 設定的範圍，例如 [定價層](./manage-cost-storage.md#changing-pricing-tier)、 [保留期](./manage-cost-storage.md#change-the-data-retention-period)和 [資料上限](./manage-cost-storage.md#manage-your-maximum-daily-data-volume)。
+
+工作區是裝載在實體叢集上。 根據預設，系統會建立和管理這些群集。 4TB/天以外的客戶必須為其工作區建立專屬的叢集，讓他們能夠更妥善控制和提高內嵌費率。
 
 本文詳細說明設計和遷移考慮、存取控制的總覽，以及對您的 IT 組織建議的設計實現。
 
@@ -125,37 +127,16 @@ Azure 監視器會根據您執行記錄搜尋的內容，自動決定正確的�
 
 若要瞭解如何使用 PowerShell 或 Resource Manager 範本來變更入口網站中的存取控制模式，請參閱 [設定存取控制模式](manage-access.md#configure-access-control-mode)。
 
-## <a name="ingestion-volume-rate-limit"></a>內嵌磁片區速率限制
+## <a name="scale-and-ingestion-volume-rate-limit"></a>調整和內嵌磁片區速率限制
 
-Azure 監視器是一種大規模的資料服務，服務對象為每月需傳送數 TB 資料 (且不斷成長) 的上千名客戶。 磁片區速率限制會將 Azure 監視器客戶與多組織使用者共用環境中的突然內嵌尖峰隔離。 預設的內嵌磁片區速率閾值 500 MB (壓縮的) 是在工作區中定義，這會轉譯為大約 **6 GB/最少** 壓縮--根據記錄長度和其壓縮比例而定，實際大小會隨著資料類型而異。 磁片區速率限制適用于所有的內嵌資料，無論是使用 [診斷設定](diagnostic-settings.md)、 [資料收集器 API](data-collector-api.md) 或代理程式從 Azure 資源傳送。
+Azure 監視器是一種大規模的資料服務，可提供數千個客戶每個月傳送數 pb 資料的速度。 工作區在其儲存空間中並無限制，而且可以成長至數 pb 的資料。 由於調整規模，因此不需要分割工作區。
 
-如果您以高於工作區中所設定閾值的 80% 速率將資料傳送至工作區時，則每隔 6 小時會將事件傳送至工作區中的 [作業] 資料表，同時會持續超過閾值。 當內嵌的磁碟區速率高於閾值時，則系統會卸除某些資料，且每隔 6 小時會將事件傳送至工作區中的 [作業] 資料表，同時會持續超過閾值。 如果您的內嵌磁片區速率持續超過閾值，或您很快就會到達該速率，您可以藉由開啟支援要求來要求在中增加。 
+為了保護和隔離 Azure 監視器的客戶與其後端基礎結構，有一個預設的內嵌速率限制，其設計目的是要防止尖峰和洪水的情況。 速率限制預設值約為 **6 GB/分鐘** ，其設計目的是為了啟用一般內嵌。 如需有關內嵌磁片區限制測量的詳細資訊，請參閱 [Azure 監視器服務限制](../service-limits.md#data-ingestion-volume-rate)。
 
-若要在您的工作區中收到接近或達到內嵌磁片區速率限制的通知，請使用下列查詢建立記錄警示規則，並根據大於零的結果數目、5分鐘的評估期和5分鐘的頻率來建立 [記錄警示規則](alerts-log.md) 。
+小於 4TB/天的客戶通常不會符合這些限制。 如果客戶內嵌了較高的磁片區，或在其正常作業中有尖峰的客戶，則應該考慮移至可能引發內嵌速率限制的 [專用](../log-query/logs-dedicated-clusters.md) 叢集。
 
-超過閾值的內嵌磁片區速率
-```Kusto
-Operation
-| where Category == "Ingestion"
-| where OperationKey == "Ingestion rate limit"
-| where Level == "Error"
-```
+當內建速率限制已啟用，或達到80% 的閾值時，就會將事件新增至工作區中的*作業資料表。* 建議您監視並建立警示。 請參閱資料內嵌 [大量速率](../service-limits.md#data-ingestion-volume-rate)中的詳細資料。
 
-超過閾值80% 的內嵌磁片區速率
-```Kusto
-Operation
-| where Category == "Ingestion"
-| where OperationKey == "Ingestion rate limit"
-| where Level == "Warning"
-```
-
-超過閾值70% 的內嵌磁片區速率
-```Kusto
-Operation
-| where Category == "Ingestion"
-| where OperationKey == "Ingestion rate limit"
-| where Level == "Info"
-```
 
 ## <a name="recommendations"></a>建議
 

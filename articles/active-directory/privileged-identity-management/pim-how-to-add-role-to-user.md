@@ -13,12 +13,12 @@ ms.subservice: pim
 ms.date: 09/16/2020
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 919585d557a668e44f229451ab202fb8bcab9079
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 9f4d1e0d43758645d43843417eadf0ce21d43cb7
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90985156"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91533837"
 ---
 # <a name="assign-azure-ad-roles-in-privileged-identity-management"></a>在 Privileged Identity Management 中指派 Azure AD 角色
 
@@ -51,7 +51,7 @@ Azure AD Privileged Identity Management (PIM) 服務也允許特殊許可權角�
 
 1. 選取 [ **角色** ] 以查看 Azure AD 許可權的角色清單。
 
-    ![Azure AD 角色](./media/pim-how-to-add-role-to-user/roles-list.png)
+    ![已選取 [新增指派] 動作的 [角色] 頁面螢幕擷取畫面。](./media/pim-how-to-add-role-to-user/roles-list.png)
 
 1. 選取 [ **新增指派** ] 以開啟 [ **新增指派** ] 頁面。
 
@@ -233,7 +233,7 @@ Azure AD Privileged Identity Management (PIM) 服務也允許特殊許可權角�
 
  ---
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [在 Privileged Identity Management 中設定 Azure AD 管理員角色設定](pim-how-to-change-default-settings.md)
 - [在 Privileged Identity Management 中指派 Azure 資源角色](pim-resource-roles-assign-roles.md)

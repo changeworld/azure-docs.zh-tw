@@ -5,15 +5,15 @@ services: virtual-machines
 author: albecker1
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 07/07/2020
+ms.date: 09/25/2020
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: 66380e0bab0a83d086ebebb5e595908cecd11643
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 9f5a1010959658e75dcc809b2ee1d6d9222af056
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89663873"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91539971"
 ---
 本文可協助您在結合 Azure 虛擬機器與 Azure 磁片時，瞭解磁片效能以及其運作方式。 它也會說明如何診斷磁片 IO 的瓶頸，以及您可以進行的變更，以優化效能。
 

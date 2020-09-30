@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 8/24/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c85af0f4078010fa5b6a1d116b3bfda942c0490c
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: e9c8ce7519c6e2c84ef47fc78897c4b67b89e56a
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816910"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540994"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-powershell"></a>如何使用 PowerShell 在適用於 MySQL 的 Azure 資料庫中建立及管理讀取複本
 
@@ -38,12 +38,12 @@ ms.locfileid: "88816910"
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 > [!IMPORTANT]
-> 讀取複本功能僅供「適用於 MySQL 的 Azure 資料庫」伺服器用於一般用途或記憶體最佳化定價層。 請確定主要伺服器處於這些定價層中。
+> 讀取複本功能僅供「適用於 MySQL 的 Azure 資料庫」伺服器用於一般用途或記憶體最佳化定價層。 確定來源伺服器是在其中一個定價層。
 
 ### <a name="create-a-read-replica"></a>建立讀取複本
 
 > [!IMPORTANT]
-> 當您為沒有任何現有複本的主要伺服器建立複本時，主要伺服器首先將會重新啟動，以準備本身進行複寫。 請考慮這一點，並在離峰期間執行這些作業。
+> 當您為沒有現有複本的來源建立複本時，來源會先重新開機以準備複寫。 請考慮這一點，並在離峰期間執行這些作業。
 
 使用下列命令可以建立讀取複本伺服器︰
 
@@ -68,14 +68,14 @@ Get-AzMySqlServer -Name mrdemoserver -ResourceGroupName myresourcegroup |
 
 若要深入瞭解您可以在哪些區域中建立複本，請造訪[參閱複本概念文章](concepts-read-replicas.md)。
 
-依預設，除非指定了 **Sku** 參數，否則會使用與主伺服器相同的伺服器設定來建立讀取複本。
+依預設，除非指定了 **Sku** 參數，否則會使用與來源相同的伺服器設定來建立讀取複本。
 
 > [!NOTE]
-> 建議複本伺服器設定的值應保持等於或大於主要伺服器，以確保複本伺服器能保持與主要伺服器一致。
+> 建議將複本伺服器的設定保留為等於或大於來源的值，以確保複本能夠跟上主伺服器。
 
-### <a name="list-replicas-for-a-master-server"></a>列出主要伺服器的複本
+### <a name="list-replicas-for-a-source-server"></a>列出來源伺服器的複本
 
-若要檢視指定主要伺服器的所有複本，請執行下列命令：
+若要查看指定來源伺服器的所有複本，請執行下列命令：
 
 ```azurepowershell-interactive
 Get-AzMySqlReplica -ResourceGroupName myresourcegroup -ServerName mydemoserver
@@ -86,7 +86,7 @@ Get-AzMySqlReplica -ResourceGroupName myresourcegroup -ServerName mydemoserver
 | 設定 | 範例值 | 描述  |
 | --- | --- | --- |
 | resourceGroupName |  myresourcegroup |  複本伺服器會建立於其中的資源群組。  |
-| ServerName | mydemoserver | 主要伺服器的名稱或識別碼。 |
+| ServerName | mydemoserver | 來源伺服器的名稱或識別碼。 |
 
 ### <a name="delete-a-replica-server"></a>刪除複本伺服器
 
@@ -96,12 +96,12 @@ Get-AzMySqlReplica -ResourceGroupName myresourcegroup -ServerName mydemoserver
 Remove-AzMySqlServer -Name mydemoreplicaserver -ResourceGroupName myresourcegroup
 ```
 
-### <a name="delete-a-master-server"></a>刪除主要複本
+### <a name="delete-a-source-server"></a>刪除來源伺服器
 
 > [!IMPORTANT]
-> 刪除主要伺服器會停止對所有複本伺服器複寫，並刪除主要伺服器本身。 複本伺服器會變成獨立伺服器，進而支援讀取和寫入。
+> 刪除來源伺服器會停止對所有複本伺服器複寫，並刪除來源伺服器本身。 複本伺服器會變成獨立伺服器，進而支援讀取和寫入。
 
-若要刪除主伺服器，您可以執行此 `Remove-AzMySqlServer` Cmdlet。
+若要刪除來源伺服器，您可以執行此 `Remove-AzMySqlServer` Cmdlet。
 
 ```azurepowershell-interactive
 Remove-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup

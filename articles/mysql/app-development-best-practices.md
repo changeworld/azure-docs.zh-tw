@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/11/2020
-ms.openlocfilehash: 93bd6972a89065832a20fbd66949cde5b7510534
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: dc9764ce68d54418578c293833c1fd38080ba0ef
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88794199"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91538903"
 ---
 # <a name="best-practices-for-building-an-application-with-azure-database-for-mysql"></a>使用適用於 MySQL 的 Azure 資料庫建立應用程式的最佳作法 
 
@@ -69,9 +69,9 @@ ms.locfileid: "88794199"
 理想的作法是在第一次重試前等待5秒。 然後以逐漸增加的等候次數（最多60秒），以每次重試的方式執行。 限制應用程式認為作業失敗的最大重試次數，讓您可以進一步調查。 若要深入瞭解，請參閱 [如何疑難排解連接錯誤](https://docs.microsoft.com/azure/mysql/howto-troubleshoot-common-connection-issues) 。 
 
 ### <a name="enable-read-replication-to-mitigate-failovers"></a>啟用讀取複寫以減少容錯移轉
-您可以使用容錯移轉案例的 [資料輸入複寫](https://docs.microsoft.com/azure/mysql/howto-data-in-replication) 。 當您使用讀取複本時，不會在主伺服器與複本伺服器之間進行自動容錯移轉。 
+您可以使用容錯移轉案例的 [資料輸入複寫](https://docs.microsoft.com/azure/mysql/howto-data-in-replication) 。 當您使用讀取複本時，不會發生來源與複本伺服器之間的自動容錯移轉。 
 
-因為複寫是非同步，所以您會發現主伺服器和複本之間的延遲時間。 網路延遲可能會受到許多因素影響，例如在主伺服器上執行的工作負載大小，以及資料中心之間的延遲。 在大部分的情況下，複本延遲範圍從幾秒鐘到幾分鐘。
+您會發現來源與複本之間的延遲，因為複寫是非同步。 網路延遲可能會受到許多因素影響，例如在來源伺服器上執行的工作負載大小，以及資料中心之間的延遲。 在大部分的情況下，複本延遲範圍從幾秒鐘到幾分鐘。
 
 ## <a name="database-deployment"></a>資料庫部署 
 

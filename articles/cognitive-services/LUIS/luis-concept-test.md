@@ -2,7 +2,6 @@
 title: 測試 LUIS 應用程式
 titleSuffix: Azure Cognitive Services
 description: 測試是一個程序，其中您會將範例語句提供給 LUIS，然後獲得 LUIS 所辨識意圖和實體的回應。
-author: diberry
 manager: nitinme
 services: cognitive-services
 ms.custom: seodec18
@@ -10,13 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/10/2019
-ms.author: diberry
-ms.openlocfilehash: ccd732c644cf0a5641099a9731f65dd7b03bf374
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ef63bf68fec592b768986a1329663508443c514b
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91316404"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91535843"
 ---
 # <a name="testing-example-utterances-in-luis"></a>在 LUIS 中測試範例語句
 

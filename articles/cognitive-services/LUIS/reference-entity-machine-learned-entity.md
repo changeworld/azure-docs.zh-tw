@@ -3,19 +3,17 @@ title: 機器學習實體類型-LUIS
 titleSuffix: Azure Cognitive Services
 description: 機器學習實體是用來建立 LUIS 應用程式的慣用實體。
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 04/30/2020
-ms.author: diberry
-ms.openlocfilehash: ddaf5c921f92aeaefd8a8b0cb13602bc70a4dd5d
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: f16f3ec445af777c3bde1cb2ab0735df4b6614f8
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684570"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91542235"
 ---
 # <a name="machine-learning-entity"></a>機器學習實體
 
@@ -24,7 +22,7 @@ ms.locfileid: "83684570"
 
 ## <a name="example-json"></a>範例 JSON
 
-假設應用程式接受比薩訂單，例如[分解 entity 教學](tutorial-machine-learned-entity.md)課程。 每個訂單都可以包含數個不同的比薩，包括不同的大小。
+假設應用程式會取得比薩訂單，例如 [可分解 entity 教學](tutorial-machine-learned-entity.md)課程。 每個訂單可包含數個不同的比薩，包括不同的大小。
 
 語句範例包括：
 
@@ -38,13 +36,13 @@ ms.locfileid: "83684570"
 
 #### <a name="v3-prediction-endpoint-response"></a>[V3 預測端點回應](#tab/V3)
 
-因為機器學習服務實體可以有許多具有必要功能的子實體，所以這只是一個範例。 應將其視為您的實體將傳回的內容指南。
+因為機器學習服務實體可以有許多具有必要功能的子實體，所以這只是一個範例。 您應該將它視為您的實體將會傳回的內容指南。
 
 請考慮下列查詢：
 
 `deliver 1 large cheese pizza on thin crust and 2 medium pepperoni pizzas on deep dish crust`
 
-如果 `verbose=false` 是在查詢字串中設定，則這是 JSON：
+如果在 `verbose=false` 查詢字串中設定，則這是 JSON：
 
 ```json
 "entities": {
@@ -102,7 +100,7 @@ ms.locfileid: "83684570"
 
 ```
 
-如果 `verbose=true` 是在查詢字串中設定，則這是 JSON：
+如果在 `verbose=true` 查詢字串中設定，則這是 JSON：
 
 ```json
 "entities": {
@@ -343,11 +341,11 @@ ms.locfileid: "83684570"
 ```
 #### <a name="v2-prediction-endpoint-response"></a>[V2 預測端點回應](#tab/V2)
 
-此實體在 V2 預測執行時間中無法使用。
+V2 預測執行時間中無法使用此實體。
 * * *
 
 ## <a name="next-steps"></a>後續步驟
 
-深入瞭解機器學習服務實體，包括[教學](tutorial-machine-learned-entity.md)課程、[概念](luis-concept-entity-types.md#design-entities-for-decomposition)和操作[指南](luis-how-to-add-entities.md#create-a-machine-learned-entity)。
+深入瞭解機器學習服務實體，包括 [教學](tutorial-machine-learned-entity.md)課程、 [概念](luis-concept-entity-types.md#design-entities-for-decomposition)和操作 [指南](luis-how-to-add-entities.md#create-a-machine-learned-entity)。
 
-瞭解[清單](reference-entity-list.md)實體和[正則運算式](reference-entity-regular-expression.md)實體。
+瞭解 [清單](reference-entity-list.md) 實體和 [正則運算式](reference-entity-regular-expression.md) 實體。

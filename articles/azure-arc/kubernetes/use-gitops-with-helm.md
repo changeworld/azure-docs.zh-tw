@@ -8,16 +8,16 @@ author: mlearned
 ms.author: mlearned
 description: 針對已啟用 Azure Arc 的叢集設定搭配使用 GitOps 與 Helm (預覽)
 keywords: GitOps, Kubernetes, K8s, Azure, Helm, Arc, AKS, Azure Kubernetes Service, 容器
-ms.openlocfilehash: cca48910b679ff8f72ee06f4ed990bd480fb2200
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: eea81d458ac6631c4a023134b3198e4cdb04526e
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723634"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541606"
 ---
 # <a name="deploy-helm-charts-using-gitops-on-arc-enabled-kubernetes-cluster-preview"></a>在啟用 Arc 的 Kubernetes 叢集上使用 Gitops) 將部署 Helm 圖 (預覽) 
 
-Helm 是開放原始碼的封裝工具，可協助您安裝和管理 Kubernetes 應用程式的生命週期。 Helm 類似於 APT 和 Yum 等 Linux 套件管理員，可用於管理 Kubernetes 圖表 (即預先設定的 Kubernetes 資源套件)。
+Helm 是開放原始碼的封裝工具，可協助您安裝和管理 Kubernetes 應用程式的生命週期。 與 Linux 套件管理員（例如 APT 和 Yum）類似，Helm 可用來管理 Kubernetes 圖表，也就是預先設定的 Kubernetes 資源套件。
 
 本文示範如何透過已啟用 Azure Arc 的 Kubernetes 來設定及使用 Helm。
 
@@ -25,33 +25,13 @@ Helm 是開放原始碼的封裝工具，可協助您安裝和管理 Kubernetes 
 
 本文假設您具有現有已啟用 Azure Arc 的 Kubernetes 已連線叢集。 如果您需要已連線的叢集，請參閱[連線叢集快速入門](./connect-cluster.md)。
 
-讓我們先設定環境變數，以便在整個教學課程中使用。 您將需要已連線叢集的資源群組名稱和叢集名稱。
-
-```bash
-export RESOURCE_GROUP=<Resource_Group_Name>
-export CLUSTER_NAME=<ClusterName>
-```
-
-## <a name="verify-your-cluster-is-enabled-with-arc"></a>確認您的叢集已啟用 Arc
-
-```bash
-az connectedk8s list -g $RESOURCE_GROUP -o table
-```
-
-輸出：
-```bash
-Name           Location    ResourceGroup
--------------  ----------  ---------------
-arc-helm-demo  eastus      k8s-clusters
-```
-
 ## <a name="overview-of-using-gitops-and-helm-with-azure-arc-enabled-kubernetes"></a>使用 Gitops) 將和 Helm 搭配 Azure Arc 啟用 Kubernetes 的總覽
 
  Helm 運算子提供 Flux 的延伸模組，可將 Helm 圖表版本自動化。 圖表版本是透過名為 HelmRelease 的 Kubernetes 自訂資源進行描述。 Flux 會將這些資源從 git 同步處理到叢集，而 Helm 運算子可確保如資源中所指定來釋放 Helm 圖表。
 
- 以下是我們將在本教學課程中使用的範例 git 存放庫結構：
+ 本檔中使用的 [範例存放庫](https://github.com/Azure/arc-helm-demo) 以下列方式結構化：
 
-```bash
+```console
 ├── charts
 │   └── azure-arc-sample
 │       ├── Chart.yaml
@@ -98,15 +78,8 @@ Helm 版本設定包含下列欄位：
 
 使用適用於 `k8sconfiguration` 的 Azure CLI 延伸模組，即可將已連線的叢集連結至範例 Git 存放庫。 我們會將此設定命名為 `azure-arc-sample`，並在 `arc-k8s-demo` 命名空間中部署 Flux 運算子。
 
-```bash
-az k8sconfiguration create --name azure-arc-sample \
-  --resource-group $RESOURCE_GROUP --cluster-name $CLUSTER_NAME \
-  --operator-instance-name flux --operator-namespace arc-k8s-demo \
-  --operator-params='--git-readonly --git-path=releases' \
-  --enable-helm-operator --helm-operator-version='0.6.0' \
-  --helm-operator-params='--set helm.versions=v3' \
-  --repository-url https://github.com/Azure/arc-helm-demo.git  \
-  --scope namespace --cluster-type connectedClusters
+```console
+az k8sconfiguration create --name azure-arc-sample --cluster-name AzureArcTest1 --resource-group AzureArcTest --operator-instance-name flux --operator-namespace arc-k8s-demo --operator-params='--git-readonly --git-path=releases' --enable-helm-operator --helm-operator-version='0.6.0' --helm-operator-params='--set helm.versions=v3' --repository-url https://github.com/Azure/arc-helm-demo.git --scope namespace --cluster-type connectedClusters
 ```
 
 ### <a name="configuration-parameters"></a>組態參數
@@ -118,7 +91,7 @@ az k8sconfiguration create --name azure-arc-sample \
 使用 Azure CLI 驗證是否已成功建立 `sourceControlConfiguration`。
 
 ```console
-az k8sconfiguration show --resource-group $RESOURCE_GROUP --name azure-arc-sample --cluster-name $CLUSTER_NAME --cluster-type connectedClusters
+az k8sconfiguration show --name azure-arc-sample --cluster-name AzureArcTest1 --resource-group AzureArcTest --cluster-type connectedClusters
 ```
 
 `sourceControlConfiguration`資源會以合規性狀態、訊息和偵錯工具資訊進行更新。
@@ -158,7 +131,7 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 
 執行下列命令，並 `localhost:8080` 在瀏覽器上流覽至，以確認應用程式正在執行。
 
-```bash
+```console
 kubectl port-forward -n arc-k8s-demo svc/arc-k8s-demo 8080:8080
 ```
 

@@ -2,7 +2,6 @@
 title: 增加端點配額-LUIS
 titleSuffix: Azure Cognitive Services
 description: Language Understanding (LUIS) 可讓您增加端點要求配額而超過單一金鑰的配額。 如果要這樣做，請在 [發佈]**** 頁面的 [資源和金鑰]**** 區段中，為 LUIS 建立多個金鑰，然後將它們加入 LUIS 應用程式。
-author: diberry
 manager: nitinme
 ms.custom: seodec18, devx-track-js, devx-track-azurepowershell
 services: cognitive-services
@@ -10,13 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 08/20/2019
-ms.author: diberry
-ms.openlocfilehash: 827dec47fa6ea3925513b2b3aadfb103a2b58c72
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e37b35e3473b2da397904d01be5e65cf8cafbbe5
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91298383"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541113"
 ---
 # <a name="use-microsoft-azure-traffic-manager-to-manage-endpoint-quota-across-keys"></a>使用 Microsoft Azure 流量管理員管理幾個金鑰之間的端點配額
 Language Understanding (LUIS) 可讓您增加端點要求配額而超過單一金鑰的配額。 如果要這樣做，請在 [發佈]**** 頁面的 [資源和金鑰]**** 區段中，為 LUIS 建立多個金鑰，然後將它們加入 LUIS 應用程式。

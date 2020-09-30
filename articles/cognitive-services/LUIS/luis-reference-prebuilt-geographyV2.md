@@ -1,22 +1,20 @@
 ---
-title: 地理 V2 預建實體-LUIS
+title: Geography V2 預建實體-LUIS
 titleSuffix: Azure Cognitive Services
 description: 此文章包含 Language Understanding (LUIS) 中的 geographyV2 預建實體資訊。
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 10/04/2019
-ms.author: diberry
-ms.openlocfilehash: b2b2b0781abce59628660b669f43110bf91b15e6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ad6fd62178ec8e987e1e3b6e05cc961bbe15e377
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78273500"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541949"
 ---
 # <a name="geographyv2-prebuilt-entity-for-a-luis-app"></a>LUIS 應用程式的 GeographyV2 預先建置實體
 預建 geographyV2 實體可偵測位置。 因為此實體已經定型，所以您不需要將包含 GeographyV2 的範例語句加入應用程式意圖。 英文[文化特性](luis-reference-prebuilt-entities.md)支援 GeographyV2 實體。
@@ -35,13 +33,13 @@ ms.locfileid: "78273500"
 
 ## <a name="resolution-for-geographyv2-entity"></a>GeographyV2 實體解析
 
-系統會針對查詢傳回下列實體物件：
+查詢會傳回下列實體物件：
 
 `Carol is visiting the sphinx in gizah egypt in africa before heading to texas.`
 
 #### <a name="v3-response"></a>[V3 回應](#tab/V3)
 
-下列 JSON 是將`verbose`參數設定為： `false`
+以下是將 `verbose` 參數設定為的 JSON `false` ：
 
 ```json
 "entities": {
@@ -70,11 +68,11 @@ ms.locfileid: "78273500"
 }
 ```
 
-在前面的 JSON 中`poi` ，是一**種感興趣點**的縮寫。
+在上述 JSON 中， `poi` 是 **感興趣點的**縮寫。
 
-#### <a name="v3-verbose-response"></a>[V3 詳細回應](#tab/V3-verbose)
+#### <a name="v3-verbose-response"></a>[V3 詳細資訊回應](#tab/V3-verbose)
 
-下列 JSON 是將`verbose`參數設定為： `true`
+以下是將 `verbose` 參數設定為的 JSON `true` ：
 
 ```json
 "entities": {

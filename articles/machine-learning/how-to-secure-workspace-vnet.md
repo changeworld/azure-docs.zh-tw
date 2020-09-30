@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: larryfr
-ms.author: aashishb
-author: aashishb
+ms.author: peterlu
+author: peterclu
 ms.date: 07/07/2020
 ms.topic: conceptual
-ms.custom: how-to, contperfq4, tracking-python
-ms.openlocfilehash: 92975251955b608d9dd888328b54a4b40f4592d5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.custom: how-to, contperfq4, tracking-python, contperfq1
+ms.openlocfilehash: e593cfa06b160539a0d830b9149c9aa9a069a984
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91275825"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91542065"
 ---
 # <a name="secure-an-azure-machine-learning-workspace-with-virtual-networks"></a>使用虛擬網路保護 Azure Machine Learning 工作區
 
@@ -37,7 +37,7 @@ ms.locfileid: "91275825"
 > - Azure 金鑰保存庫
 > - Azure Container Registry
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 + 閱讀 [網路安全性總覽](how-to-network-security-overview.md) 文章，以瞭解常見的虛擬網路案例和整體虛擬網路架構。
 
@@ -67,7 +67,7 @@ Azure Private Link 可讓您使用私人端點連接到工作區。 私人端點
 >
 > 建立工作區時便會自動佈建預設儲存體帳戶。
 >
-> 若為非預設儲存體帳戶，[`Workspace.create()` 函式](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace%28class%29?view=azure-ml-py&preserve-view=true#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) 中的 `storage_account` 參數可讓您依 Azure 資源識別碼來指定自訂儲存體帳戶。
+> 若為非預設儲存體帳戶，[`Workspace.create()` 函式](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace%28class%29?view=azure-ml-py&preserve-view=true#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-&preserve-view=true) 中的 `storage_account` 參數可讓您依 Azure 資源識別碼來指定自訂儲存體帳戶。
 
 若要在虛擬網路中針對工作區使用 Azure 儲存體帳戶作，請使用下列步驟：
 
@@ -217,7 +217,7 @@ Azure Machine Learning 會使用相關聯的 Key Vault 實例來儲存下列認�
     > [!IMPORTANT]
     > 您的儲存體帳戶、計算叢集和 Azure Container Registry 都必須位於虛擬網路的相同子網路中。
     
-    如需詳細資訊，請參閱 [update()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py&preserve-view=true#update-friendly-name-none--description-none--tags-none--image-build-compute-none--enable-data-actions-none-) 方法參考。
+    如需詳細資訊，請參閱 [update()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py&preserve-view=true#update-friendly-name-none--description-none--tags-none--image-build-compute-none--enable-data-actions-none-&preserve-view=true) 方法參考。
 
 1. 套用下列 Azure Resource Manager 範本。 此範本可讓您的工作區與 ACR 通訊。
 

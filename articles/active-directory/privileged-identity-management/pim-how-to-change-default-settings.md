@@ -14,12 +14,12 @@ ms.date: 02/28/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cedd6d019005a4c55bbabf6070c6d864da90f40a
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 4ab3ae459d5719e965be668c529eacf0ab86d19b
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90055481"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541130"
 ---
 # <a name="configure-azure-ad-role-settings-in-privileged-identity-management"></a>在 Privileged Identity Management 中設定 Azure AD 角色設定
 
@@ -196,7 +196,7 @@ Privileged Identity Management 可針對兩個不同的案例選擇性地強制�
 
 1. 將 [需要核准]**** 切換為 [啟用]****。 展開的窗格會有選取核准者的選項。
 
-    ![Azure AD 角色-設定-需要核准](./media/pim-how-to-change-default-settings/pim-directory-roles-settings-require-approval.png)
+    ![螢幕擷取畫面，顯示已選取 [啟用] 的 [需要核准] 參數。](./media/pim-how-to-change-default-settings/pim-directory-roles-settings-require-approval.png)
 
     如果您未指定任何核准者，特殊權限角色管理員會變成預設核准者，然後需要核准此角色的所有啟用要求。
 
@@ -210,7 +210,7 @@ Privileged Identity Management 可針對兩個不同的案例選擇性地強制�
 
 ---
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [在 Privileged Identity Management 中指派 Azure AD 角色](pim-how-to-add-role-to-user.md)
 - [在 Privileged Identity Management 中設定 Azure AD 角色的安全性警示](pim-how-to-configure-security-alerts.md)

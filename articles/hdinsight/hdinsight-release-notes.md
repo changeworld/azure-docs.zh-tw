@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 09/27/2020
-ms.openlocfilehash: f6527a0c5712d68756310b699d214013e89f38e1
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: feb186fbe216305039fcc0a23a10419c44fd0483
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 09/29/2020
-ms.locfileid: "91449587"
+ms.locfileid: "91535605"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Azure HDInsight 版本資訊
 
@@ -28,8 +28,8 @@ Azure HDInsight 是最受企業客戶歡迎的其中一項服務，可供 Azure 
 此版本適用于 HDInsight 3.6 和 HDInsight 4.0。 在數天內，所有區域都可以使用 HDInsight 發行版本。 此處的發行日期為第一個區域發行日期。 如果您沒有看到以下變更，請在數天內等待發行在您的區域中。
 
 ## <a name="new-features"></a>新功能
-### <a name="llap-cluster-auto-scale-general-available"></a>LLAP 叢集自動調整規模一般可用
-LLAP 叢集類型的自動調整現已正式推出 (GA) 。 2020年8月27日之後建立的所有 LLAP 叢集都將具有自動調整的 GA 支援。
+### <a name="autoscale-for-interactive-query-with-hdinsight-40-is-now-generally-available"></a>HDInsight 4.0 的 Interactive Query 自動調整現已正式推出
+適用于 Interactive Query 叢集類型的自動調整現已正式推出 (適用于 HDInsight 4.0 的 GA) 。 在2020年8月27日之後建立的所有 Interactive Query 4.0 叢集將擁有自動調整的 GA 支援。
 
 ### <a name="hbase-cluster-supports-premium-adls-gen2"></a>HBase 叢集支援 Premium ADLS Gen2
 HDInsight 現在支援 Premium ADLS Gen2 作為 HDInsight HBase 3.6 和4.0 叢集的主要儲存體帳戶。 搭配 [加速寫入](./hbase/apache-hbase-accelerated-writes.md)，您可以為您的 HBase 叢集取得較佳的效能。

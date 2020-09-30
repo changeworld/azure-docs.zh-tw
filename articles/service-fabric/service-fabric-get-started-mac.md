@@ -1,17 +1,15 @@
 ---
 title: 在 macOS 上設定開發環境
 description: 安裝執行階段、SDK 和工具，並建立本機開發叢集。 完成此設定之後，您就可以開始在 macOS 上建立應用程式。
-author: suhuruli
 ms.topic: conceptual
 ms.date: 11/17/2017
-ms.author: suhuruli
 ms.custom: devx-track-js
-ms.openlocfilehash: a0c9b552947f2a9dc0f3fee3d39829efdcea1b68
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 0d5a31f22fb0472882e3854488fbd1c3249879d7
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91249921"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91539855"
 ---
 # <a name="set-up-your-development-environment-on-mac-os-x"></a>在 Mac OS X 上設定開發環境
 > [!div class="op_single_selector"]
@@ -23,7 +21,7 @@ ms.locfileid: "91249921"
 
 您可以建置 Azure Service Fabric 應用程式，以使用 Mac OS X 在 Linux 叢集上執行。本文件涵蓋如何設定您的 Mac 進行開發。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 Azure Service Fabric 不會在 Mac OS X 上以原生方式執行。若要執行本機 Service Fabric 叢集，我們提供預先設定的 Docker 容器映像。 開始之前，您需要：
 
 * 至少 4 GB 的 RAM。

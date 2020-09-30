@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 09/24/2020
+ms.date: 09/29/2020
 ms.author: alkohli
-ms.openlocfilehash: 8b733d1e5eae9cae01233fda4be078bd188e07c9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 7a534f794f7ab5323ad46ebc555e42b2514e94e2
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91334356"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91542337"
 ---
 # <a name="update-your-azure-stack-edge-pro-gpu"></a>更新您的 Azure Stack Edge Pro GPU 
 
@@ -22,7 +22,7 @@ ms.locfileid: "91334356"
 本文中所述的程式是使用不同版本的軟體來執行，但程式對於目前的軟體版本會維持不變。
 
 > [!IMPORTANT]
-> - 更新 **2009** 對應于裝置上的 **2.1.1358.2075** 軟體版本。 如需此更新的詳細資訊，請參閱 [版本](azure-stack-edge-gpu-2009-release-notes.md)資訊。
+> - 更新 **2009** 對應于裝置上的 **2.1.1364.2110** 軟體版本。 如需此更新的詳細資訊，請參閱 [版本](azure-stack-edge-gpu-2009-release-notes.md)資訊。
 >
 > - 請記住，安裝更新或 Hotfix 會重新啟動您的裝置。 此更新需要您依序套用兩個更新。 首先，套用裝置軟體更新，然後 Kubernetes 更新。 假設 Azure Stack Edge Pro 是單一節點裝置，任何進行中的 i/o 都會中斷，而您的裝置會在裝置軟體更新時遇到最多30分鐘的停機時間。
 
@@ -84,7 +84,7 @@ ms.locfileid: "91334356"
 
     ![更新之後的軟體版本](./media/azure-stack-edge-gpu-install-update/portal-update-6.png)
 
-    如果您選擇只下載更新，請選取通知以開啟 [ **裝置更新** ] 分頁。 選取 [安裝]  。
+    如果您選擇只下載更新，請選取通知以開啟 [ **裝置更新** ] 分頁。 選取 [安裝]。
   
     ![更新之後的軟體版本](./media/azure-stack-edge-gpu-install-update/portal-update-7.png)
 

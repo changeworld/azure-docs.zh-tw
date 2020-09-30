@@ -5,13 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 04/14/2020
-ms.author: diberry
-ms.openlocfilehash: 533dc87e50abc5a689d1157b294070ece39dab9f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 3caccd6766226ce68b371856b081b052c1033f71
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91322813"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91542184"
 ---
 # <a name="pattern-syntax"></a>模式語法
 
@@ -24,7 +23,7 @@ ms.locfileid: "91322813"
 
 模式語法支援下列語法：
 
-|函式|語法|巢狀層級|範例|
+|函式|Syntax|巢狀層級|範例|
 |--|--|--|--|
 |實體| {} -大括弧|2|其中的形式為 {entity name}？|
 |選用|[]-方括弧<BR><BR>選擇性和群組任意組合的嵌套層級有3個限制 |2|問號是選擇性的 [？]|
@@ -34,7 +33,7 @@ ms.locfileid: "91322813"
 
 ## <a name="nesting-syntax-in-patterns"></a>在模式中嵌套語法
 
-**選用**的語法（以方括弧括住）可以是兩個層級的嵌套。 例如：`[[this]is] a new form`。 此範例允許下列語句：
+**選用**的語法（以方括弧括住）可以是兩個層級的嵌套。 例如： `[[this]is] a new form` 。 此範例允許下列語句：
 
 |嵌套選擇性語句範例|說明|
 |--|--|
@@ -42,7 +41,7 @@ ms.locfileid: "91322813"
 |是新表單|在模式中比對外部選擇性單字和非選擇性的單字|
 |新表單|僅符合所需的單字|
 
-**群組**語法（含括弧）可以嵌套兩個層級。 例如：`(({Entity1.RoleName1} | {Entity1.RoleName2} ) | {Entity2} )`。 這項功能允許比對三個實體中的任一個。
+**群組**語法（含括弧）可以嵌套兩個層級。 例如： `(({Entity1.RoleName1} | {Entity1.RoleName2} ) | {Entity2} )` 。 這項功能允許比對三個實體中的任一個。
 
 如果 Entity1 是具有來源 (西雅圖) 和目的地 () Cairo 的位置，而 Entity 2 是來自清單實體 (RedWest-C) 的已知大樓名稱，則下列語句會對應到此模式：
 

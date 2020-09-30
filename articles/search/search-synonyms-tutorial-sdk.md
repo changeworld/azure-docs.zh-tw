@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 51d6920d9ab52b907f2cb51e29d85f82dc74d45b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 842d43c82875a1a8e5e45ba14f47ceb6eac26727
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91250227"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91538801"
 ---
 # <a name="example-add-synonyms-for-azure-cognitive-search-in-c"></a>範例：在 C 中新增 Azure 認知搜尋的同義字#
 
@@ -23,8 +23,8 @@ ms.locfileid: "91250227"
 在 Azure 認知搜尋中，同義字定義于 *同義字對應*中，透過 *對應規則* 來建立對等詞彙的關聯。 此範例涵蓋使用現有的索引來新增和使用同義字的基本步驟。 您會了解如何：
 
 > [!div class="checklist"]
-> * 使用  [SynonymMap](/dotnet/api/microsoft.azure.search.models.synonymmap?view=azure-dotnet) 類別建立同義字地圖。 
-> * 在應支援透過同義字進行查詢擴充的欄位上設定 [SynonymMaps](/dotnet/api/microsoft.azure.search.models.field.synonymmaps?view=azure-dotnet) 屬性。
+> * 使用  [SynonymMap](/dotnet/api/microsoft.azure.search.models.synonymmap) 類別建立同義字地圖。 
+> * 在應支援透過同義字進行查詢擴充的欄位上設定 [SynonymMaps](/dotnet/api/microsoft.azure.search.models.field.synonymmaps) 屬性。
 
 您可以如往常般查詢啟用同義字的欄位。 存取同義字不需要額外的查詢語法。
 
@@ -33,7 +33,7 @@ ms.locfileid: "91250227"
 > [!NOTE]
 > 同義字可以用程式設計的方式建立，但不能在入口網站中建立。 如果 Azure 入口網站的同義字支援對您很有用，請在 [UserVoice](https://feedback.azure.com/forums/263029-azure-search) 上提供您的意見反應
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 教學課程包含下列需求︰
 

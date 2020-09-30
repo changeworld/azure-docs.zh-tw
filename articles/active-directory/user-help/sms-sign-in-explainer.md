@@ -12,12 +12,12 @@ ms.date: 04/14/2020
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: 864225238c10ab2fda96e95448790201cc8a16ae
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: a4dcb6774990c03ce3d55fb6c519b0600a1086f9
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422992"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91536880"
 ---
 # <a name="use-your-phone-number-as-a-user-name-preview"></a>使用您的電話號碼做為使用者名稱 (預覽)
 
@@ -52,11 +52,11 @@ ms.locfileid: "87422992"
 
 1. 當 SMS 登入可供使用時，會顯示橫幅，詢問您是否要啟用 SMS 登入的電話號碼：
 
-    [![允許 SMS 登入電話號碼的橫幅。](media/sms-sign-in-explainer/sms-sign-in-banner.png)](media/sms-sign-in-explainer/sms-sign-in-banner.png#lightbox)
+    :::image type="content" source="media/sms-sign-in-explainer/sms-sign-in-banner.png" alt-text="顯示旗標的螢幕擷取畫面，可針對已選取 [啟用] 動作的電話號碼啟用 SMS 登入。" lightbox="media/sms-sign-in-explainer/sms-sign-in-banner.png":::
 
 1. 此外，如果您在 [電話方法] 磚上選取插入號，就會出現 [啟用] 按鈕：
 
-    [![允許 SMS 登入電話號碼的橫幅。](media/sms-sign-in-explainer/sms-sign-in-phone-method.png)](media/sms-sign-in-explainer/sms-sign-in-phone-method.png#lightbox)
+    [![用來讓 SMS 登入電話號碼的橫幅。](media/sms-sign-in-explainer/sms-sign-in-phone-method.png)](media/sms-sign-in-explainer/sms-sign-in-phone-method.png#lightbox)
 
 1. 若要啟用方法，請選取 [啟用]。 系統會提示您確認此動作：
 
@@ -68,7 +68,7 @@ ms.locfileid: "87422992"
 
 1. 若要刪除電話號碼，請選取 [SMS 登入電話方法] 磚上的 [刪除] 按鈕。
 
-    [![用於刪除電話號碼之 SMS 登入的橫幅。](media/sms-sign-in-explainer/sms-sign-in-delete-method.png)](media/sms-sign-in-explainer/sms-sign-in-delete-method.png#lightbox)
+    [![橫幅可刪除電話號碼的 SMS 登入。](media/sms-sign-in-explainer/sms-sign-in-delete-method.png)](media/sms-sign-in-explainer/sms-sign-in-delete-method.png#lightbox)
 
 2. 出現確認動作的提示時，請選取 [確定]。
 

@@ -1,7 +1,7 @@
 ---
-title: 設定容器 - 電腦視覺
+title: 設定讀取 OCR 容器-電腦視覺
 titleSuffix: Azure Cognitive Services
-description: 本文說明如何在電腦視覺中設定辨識文字容器的必要和選擇性設定。
+description: 本文說明如何在電腦視覺中設定讀取 OCR 容器的必要和選擇性設定。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 09/03/2020
 ms.author: aahi
 ms.custom: seodec18
-ms.openlocfilehash: 28116a373b66aa5bfa6d3ebbf027c2db6d24ba5d
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 00c96333e612c7f92d7c53630eaa006b060986ad
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91397125"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91536234"
 ---
-# <a name="configure-computer-vision-docker-containers"></a>設定電腦視覺 Docker 容器
+# <a name="configure-read-ocr-docker-containers"></a>設定讀取 OCR Docker 容器
 
-您可以使用命令引數來設定電腦視覺容器的執行時間環境 `docker run` 。 此容器有數個必要的設定，和一些選擇性的設定。 命令有相關[範例](#example-docker-run-commands)可供參考。 容器專屬設定包括計費設定。 
+您可以使用命令引數來設定電腦視覺讀取 OCR 容器的執行時間環境 `docker run` 。 此容器有數個必要的設定，和一些選擇性的設定。 命令有相關[範例](#example-docker-run-commands)可供參考。 容器專屬設定包括計費設定。 
 
 ## <a name="configuration-settings"></a>組態設定
 

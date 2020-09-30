@@ -1,52 +1,50 @@
 ---
-title: 所有預先建立的實體-LUIS
+title: 所有預建實體-LUIS
 titleSuffix: Azure Cognitive Services
 description: 本文包含 Language Understanding (LUIS) 中所包含預先建置的實體清單。
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 07/20/2020
-ms.author: diberry
-ms.openlocfilehash: 7ec9cd8aade1edb7d2df2bab5cec8de445af7e44
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 7a4654b8f389ad18010bb4ad211103f2816a18ee
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337971"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541997"
 ---
 # <a name="entities-per-culture-in-your-luis-model"></a>在您 LUIS 模型中，每個文化特性的實體
 
 Language Understanding (LUIS) 提供預先建置的實體。
 
 ## <a name="entity-resolution"></a>實體解析
-當您的應用程式中包含預先建立的實體時，LUIS 會在端點回應中包含對應的實體解析。 所有範例語句也都會標示該實體。
+當預先建立的實體包含在您的應用程式中時，LUIS 會在端點回應中包含對應的實體解析。 所有範例語句也都會標示該實體。
 
-無法修改預建實體的行為，但是您可以藉由[將預建實體當做功能新增至機器學習實體或列](luis-concept-entity-types.md#effective-prebuilt-entities)來改善解決方式。
+預建實體的行為無法修改，但您可以藉由 [將預建實體新增為機器學習實體或列的功能](luis-concept-entity-types.md#effective-prebuilt-entities)，來改善解析度。
 
 ## <a name="availability"></a>可用性
 除非另有註明，否則預先建置的實體在所有 LUIS 應用程式地區設定 (文化特性) 中均適用。 下表列出支援各種文化特性的預先建置實體。
 
-|文化特性|次文化特性|注意|
+|文化特性|次文化特性|備註|
 |--|--|--|
 |中文|[zh-CN](#chinese-entity-support)||
 |荷蘭文|[nl-NL](#dutch-entity-support)||
 |英文|[en-US (美式)](#english-american-entity-support)||
 |法文|[fr-CA (加拿大)](#french-canadian-entity-support), [fr-FR (法國)](#french-france-entity-support), ||
-|德文|[de-DE](#german-entity-support)||
+|德文|[de 消除](#german-entity-support)||
 |義大利文|[it-IT](#italian-entity-support)||
 |日文|[ja-JP](#japanese-entity-support)||
 |韓文|[ko-KR](#korean-entity-support)||
 |葡萄牙文|[pt-BR (巴西)](#portuguese-brazil-entity-support)||
 |西班牙文|[es-ES (西班牙)](#spanish-spain-entity-support), [es-MX (墨西哥)](#spanish-mexico-entity-support)||
-|土耳其文|[土耳其文](#turkish-entity-support)|土耳其文中不支援預先建立的實體|
+|土耳其文|[土耳其文](#turkish-entity-support)|土耳其文中不支援任何預建實體|
 
 ## <a name="prediction-endpoint-runtime"></a>預測端點執行時間
 
-特定語言的預建實體可用性取決於預測端點執行階段版本。
+特定語言的預建實體可用性是由預測端點執行階段版本所決定。
 
 ## <a name="chinese-entity-support"></a>中文實體支援
 
@@ -62,7 +60,7 @@ Language Understanding (LUIS) 提供預先建置的實體。
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    -   |
 [Number](luis-reference-prebuilt-number.md)   |    V2、V3   |
-[序列](luis-reference-prebuilt-ordinal.md)   |    V2、V3   |
+[序數](luis-reference-prebuilt-ordinal.md)   |    V2、V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [百分比](luis-reference-prebuilt-percentage.md)   |    V2、V3   |
 [PersonName](luis-reference-prebuilt-person.md)   |    V2、V3   |
@@ -78,13 +76,13 @@ Language Understanding (LUIS) 提供預先建置的實體。
 | --------------- | :---: |
 [年齡](luis-reference-prebuilt-age.md)：<br>year<br>月<br>week<br>day   |    V2、V3   |
 [貨幣 (錢幣)](luis-reference-prebuilt-currency.md)：<br>貨幣單位<br>小數單位 (例如：貨幣單位)  |    V2、V3   |
-[從中](luis-reference-prebuilt-deprecated.md)   |    -   |
+[Datetime](luis-reference-prebuilt-deprecated.md)   |    -   |
 [維度](luis-reference-prebuilt-dimension.md)：<br>磁碟區<br>區域<br>重量<br>資訊 (例如：位元/位元組)<br>長度 (例如：公尺)<br>速度 (例如：英哩/小時)  |    V2、V3   |
 [電子郵件](luis-reference-prebuilt-email.md)   |    V2、V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2、V3   |
 [Number](luis-reference-prebuilt-number.md)   |    V2、V3   |
-[序列](luis-reference-prebuilt-ordinal.md)   |    V2、V3   |
+[序數](luis-reference-prebuilt-ordinal.md)   |    V2、V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [百分比](luis-reference-prebuilt-percentage.md)   |    V2、V3   |
 [PersonName](luis-reference-prebuilt-person.md)   |    -   |
@@ -106,7 +104,7 @@ Language Understanding (LUIS) 提供預先建置的實體。
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    V2、V3   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2、V3   |
 [Number](luis-reference-prebuilt-number.md)   |    V2、V3   |
-[序列](luis-reference-prebuilt-ordinal.md)   |    V2、V3   |
+[序數](luis-reference-prebuilt-ordinal.md)   |    V2、V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    V2、V3   |
 [百分比](luis-reference-prebuilt-percentage.md)   |    V2、V3   |
 [PersonName](luis-reference-prebuilt-person.md)   |    V2、V3   |
@@ -128,7 +126,7 @@ Language Understanding (LUIS) 提供預先建置的實體。
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2、V3   |
 [Number](luis-reference-prebuilt-number.md)   |    V2、V3   |
-[序列](luis-reference-prebuilt-ordinal.md)   |    V2、V3   |
+[序數](luis-reference-prebuilt-ordinal.md)   |    V2、V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [百分比](luis-reference-prebuilt-percentage.md)   |    V2、V3   |
 [PersonName](luis-reference-prebuilt-person.md)   |   -   |
@@ -150,7 +148,7 @@ Language Understanding (LUIS) 提供預先建置的實體。
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2、V3   |
 [Number](luis-reference-prebuilt-number.md)   |    V2、V3   |
-[序列](luis-reference-prebuilt-ordinal.md)   |    V2、V3   |
+[序數](luis-reference-prebuilt-ordinal.md)   |    V2、V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [百分比](luis-reference-prebuilt-percentage.md)   |    V2、V3   |
 [PersonName](luis-reference-prebuilt-person.md)   |    -   |
@@ -172,7 +170,7 @@ Language Understanding (LUIS) 提供預先建置的實體。
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2、V3   |
 [Number](luis-reference-prebuilt-number.md)   |    V2、V3   |
-[序列](luis-reference-prebuilt-ordinal.md)   |    V2、V3   |
+[序數](luis-reference-prebuilt-ordinal.md)   |    V2、V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [百分比](luis-reference-prebuilt-percentage.md)   |    V2、V3   |
 [PersonName](luis-reference-prebuilt-person.md)   |    -   |
@@ -182,7 +180,7 @@ Language Understanding (LUIS) 提供預先建置的實體。
 
 ## <a name="italian-entity-support"></a>義大利文實體支援
 
-義大利建的年齡、貨幣、維度、數位、百分比_解析_已從 V2 和 V3 preview 變更。
+義大利建年齡、貨幣、維度、數位、百分比 _解析_ 已從 V2 和 V3 preview 變更。
 
 支援下列實體：
 
@@ -190,13 +188,13 @@ Language Understanding (LUIS) 提供預先建置的實體。
 | --------------- | :---: |
 [年齡](luis-reference-prebuilt-age.md)：<br>year<br>月<br>week<br>day   |    V2、V3   |
 [貨幣 (錢幣)](luis-reference-prebuilt-currency.md)：<br>貨幣單位<br>小數單位 (例如：貨幣單位)  |    V2、V3   |
-[從中](luis-reference-prebuilt-deprecated.md)   |    -   |
+[Datetime](luis-reference-prebuilt-deprecated.md)   |    -   |
 [維度](luis-reference-prebuilt-dimension.md)：<br>磁碟區<br>區域<br>重量<br>資訊 (例如：位元/位元組)<br>長度 (例如：公尺)<br>速度 (例如：英哩/小時)  |    V2、V3   |
 [電子郵件](luis-reference-prebuilt-email.md)   |    V2、V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2、V3   |
 [Number](luis-reference-prebuilt-number.md)   |    V2、V3   |
-[序列](luis-reference-prebuilt-ordinal.md)   |    V2、V3   |
+[序數](luis-reference-prebuilt-ordinal.md)   |    V2、V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [百分比](luis-reference-prebuilt-percentage.md)   |    V2、V3   |
 [PersonName](luis-reference-prebuilt-person.md)   |    -   |
@@ -212,13 +210,13 @@ Language Understanding (LUIS) 提供預先建置的實體。
 | -------------- | :---: |
 [年齡](luis-reference-prebuilt-age.md)：<br>year<br>月<br>week<br>day   |    V2、-   |
 [貨幣 (錢幣)](luis-reference-prebuilt-currency.md)：<br>貨幣單位<br>小數單位 (例如：貨幣單位)  |    V2、-   |
-[從中](luis-reference-prebuilt-deprecated.md)   |    -   |
+[Datetime](luis-reference-prebuilt-deprecated.md)   |    -   |
 [維度](luis-reference-prebuilt-dimension.md)：<br>磁碟區<br>區域<br>重量<br>資訊 (例如：位元/位元組)<br>長度 (例如：公尺)<br>速度 (例如：英哩/小時)  |    V2、-   |
 [電子郵件](luis-reference-prebuilt-email.md)   |    V2、V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2、V3   |
 [Number](luis-reference-prebuilt-number.md)   |    V2、-   |
-[序列](luis-reference-prebuilt-ordinal.md)   |    V2、-   |
+[序數](luis-reference-prebuilt-ordinal.md)   |    V2、-   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [百分比](luis-reference-prebuilt-percentage.md)   |    V2、-   |
 [PersonName](luis-reference-prebuilt-person.md)   |    -   |
@@ -234,13 +232,13 @@ Language Understanding (LUIS) 提供預先建置的實體。
 | --------------- | :---: |
 [年齡](luis-reference-prebuilt-age.md)：<br>year<br>月<br>week<br>day   |    -   |
 [貨幣 (錢幣)](luis-reference-prebuilt-currency.md)：<br>貨幣單位<br>小數單位 (例如：貨幣單位)  |    -   |
-[從中](luis-reference-prebuilt-deprecated.md)   |    -   |
+[Datetime](luis-reference-prebuilt-deprecated.md)   |    -   |
 [維度](luis-reference-prebuilt-dimension.md)：<br>磁碟區<br>區域<br>重量<br>資訊 (例如：位元/位元組)<br>長度 (例如：公尺)<br>速度 (例如：英哩/小時)  |    -   |
 [電子郵件](luis-reference-prebuilt-email.md)   |    V2、V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2、V3   |
 [Number](luis-reference-prebuilt-number.md)   |    -   |
-[序列](luis-reference-prebuilt-ordinal.md)   |    -   |
+[序數](luis-reference-prebuilt-ordinal.md)   |    -   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [百分比](luis-reference-prebuilt-percentage.md)   |    -   |
 [PersonName](luis-reference-prebuilt-person.md)   |    -   |
@@ -262,7 +260,7 @@ Language Understanding (LUIS) 提供預先建置的實體。
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2、V3   |
 [Number](luis-reference-prebuilt-number.md)   |    V2、V3   |
-[序列](luis-reference-prebuilt-ordinal.md)   |    V2、V3   |
+[序數](luis-reference-prebuilt-ordinal.md)   |    V2、V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [百分比](luis-reference-prebuilt-percentage.md)   |    V2、V3   |
 [PersonName](luis-reference-prebuilt-person.md)   |    -   |
@@ -284,7 +282,7 @@ Language Understanding (LUIS) 提供預先建置的實體。
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2、V3   |
 [Number](luis-reference-prebuilt-number.md)   |    V2、V3   |
-[序列](luis-reference-prebuilt-ordinal.md)   |    V2、V3   |
+[序數](luis-reference-prebuilt-ordinal.md)   |    V2、V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [百分比](luis-reference-prebuilt-percentage.md)   |    V2、V3   |
 [PersonName](luis-reference-prebuilt-person.md)   |    -   |
@@ -306,7 +304,7 @@ Language Understanding (LUIS) 提供預先建置的實體。
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2、V3   |
 [Number](luis-reference-prebuilt-number.md)   |    V2、V3   |
-[序列](luis-reference-prebuilt-ordinal.md)   |    -   |
+[序數](luis-reference-prebuilt-ordinal.md)   |    -   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [百分比](luis-reference-prebuilt-percentage.md)   |    -   |
 [PersonName](luis-reference-prebuilt-person.md)   |    -   |
@@ -320,7 +318,7 @@ KeyPhrase 不適用於葡萄牙文 (巴西) 的所有子文化特性 - ```pt-BR`
 
 ## <a name="turkish-entity-support"></a>土耳其文實體支援
 
-**土耳其文中不支援預先建立的實體。**
+**土耳其文中不支援任何預建實體。**
 
 <!--
 

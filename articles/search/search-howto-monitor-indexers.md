@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/12/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 649611b2e378cd43286b193c6d40b03b743905cd
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 06a31e61583ac28218b34195dd6e5b7f92776dce
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89000068"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541232"
 ---
 # <a name="how-to-monitor-azure-cognitive-search-indexer-status-and-results"></a>如何監視 Azure 認知搜尋索引子狀態和結果
 
@@ -189,4 +189,4 @@ Latest run
 
 您可以藉由列舉清單和來抓取檔特定錯誤或警告的詳細資料 `IndexerExecutionResult.Errors` `IndexerExecutionResult.Warnings` 。
 
-如需用來監視索引子之 .NET SDK 類別的詳細資訊，請參閱 [IndexerExecutionInfo](/dotnet/api/microsoft.azure.search.models.indexerexecutioninfo?view=azure-dotnet) 和 [IndexerExecutionResult](/dotnet/api/microsoft.azure.search.models.indexerexecutionresult?view=azure-dotnet)。
+如需用來監視索引子之 .NET SDK 類別的詳細資訊，請參閱 [IndexerExecutionInfo](/dotnet/api/microsoft.azure.search.models.indexerexecutioninfo) 和 [IndexerExecutionResult](/dotnet/api/microsoft.azure.search.models.indexerexecutionresult)。
