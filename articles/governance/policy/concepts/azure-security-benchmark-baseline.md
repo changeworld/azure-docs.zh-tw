@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/02/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 6c6bd3ab87013aba04f43c95b3a986a64f2bc394
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 8b18da5e41e235b560918ad26117a0162078862c
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89231464"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540977"
 ---
 # <a name="azure-policy-security-baseline-for-azure-security-benchmark"></a>適用于 Azure 安全性基準測試的 Azure 原則安全性基準
 
@@ -76,7 +76,7 @@ Azure 原則使用詞彙的 _擁有權_ 來取代 _責任_。 如需 _擁有權_
 
 **指導**方針：使用 azure 角色型存取控制 (azure RBAC) 來控制 Azure 原則的存取權。
 
-* [Azure 原則中的 Azure RBAC 許可權](../overview.md#rbac-permissions-in-azure-policy)
+* [Azure 原則中的 Azure RBAC 許可權](../overview.md#azure-rbac-permissions-in-azure-policy)
 
 * [如何設定 Azure RBAC](../../../role-based-access-control/role-assignments-portal.md)
 

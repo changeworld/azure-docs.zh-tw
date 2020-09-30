@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 96da89fa8d7e4783afa11807534bbaeba52b79fe
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d41518b1fc0d8cdda3ded1e8036bd29e24e2b34a
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91334254"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541351"
 ---
 # <a name="route-events-within-and-outside-of-azure-digital-twins"></a>在 Azure 數位 Twins 內外路由傳送事件
 
@@ -55,7 +55,9 @@ Azure 數位 twins 會使用 **事件路由** 將資料傳送給服務外的取�
 * 事件中樞
 * 服務匯流排
 
-端點是使用 [Azure 數位 TWINS CLI](how-to-use-cli.md) (支援的控制平面 api，或透過 Azure 入口網站來設定。 端點定義提供：
+若要建立端點，您可以使用 Azure 數位 Twins [**控制平面 api**](how-to-manage-routes-apis-cli.md#create-an-endpoint-for-azure-digital-twins)、 [**CLI 命令**](how-to-manage-routes-apis-cli.md#manage-endpoints-and-routes-with-cli)或 [**Azure 入口網站**](how-to-manage-routes-portal.md#create-an-endpoint-for-azure-digital-twins)。 
+
+定義端點時，您必須提供：
 * 端點的名稱
 * 端點類型 (事件方格、事件中樞或服務匯流排) 
 * 要驗證的主要連接字串和次要連接字串 
@@ -69,7 +71,9 @@ Azure 數位 twins 會使用 **事件路由** 將資料傳送給服務外的取�
 
 ## <a name="create-an-event-route"></a>建立事件路由
  
-系統會在用戶端應用程式中建立事件路由。 執行這項作業的其中一種方式是使用 `CreateEventRoute` [.Net (c # ) SDK](how-to-use-apis-sdks.md) 呼叫： 
+若要建立事件路由，您可以使用 Azure 數位 Twins [**資料平面 api**](how-to-manage-routes-apis-cli.md#create-an-event-route)、 [**CLI 命令**](how-to-manage-routes-apis-cli.md#manage-endpoints-and-routes-with-cli)或 [**Azure 入口網站**](how-to-manage-routes-portal.md#create-an-event-route)。 
+
+以下範例示範如何使用 `CreateEventRoute` [.Net (c # ) SDK](how-to-use-apis-sdks.md) 呼叫，在用戶端應用程式中建立事件路由： 
 
 ```csharp
 EventRoute er = new EventRoute("endpointName");

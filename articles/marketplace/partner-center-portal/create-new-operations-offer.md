@@ -7,12 +7,12 @@ ms.topic: how-to
 author: navits09
 ms.author: navits
 ms.date: 06/17/2020
-ms.openlocfilehash: e5fb00eadaa8d1702b46a03c03b55bbd0ef693f6
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 10b5553bea1e275a3a3cc77380ed9e16898e903a
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89646697"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91533208"
 ---
 # <a name="create-a-dynamics-365-for-operations-offer"></a>建立 Dynamics 365 for Operations 供應項目
 
@@ -39,7 +39,8 @@ ms.locfileid: "89646697"
 輸入**供應項目識別碼**。 這是您帳戶中每個供應項目的唯一識別碼。
 
 - 客戶可以在市集供應項目和 Azure Resource Manager 範本 (如果適用) 的網址中看到此識別碼。
-- 請一律使用小寫字母和數字。 識別碼可以包含連字號和底線，但不能有空格，且限制為 50 個字元。 例如，如果您在此輸入 **test-offer-1**，供應項目網址將為 `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`。
+- 與發行者識別碼結合的供應專案識別碼長度必須低於40個字元。
+- 請一律使用小寫字母和數字。 它可以包括連字號和底線，但不能包含空格。 例如，如果您的發行者識別碼是 testpublisherid，而您在此輸入了 **測試供應專案-1** ，則供應專案的網址將會是 `https://appsource.microsoft.com/product/dynamics-365/testpublisherid.test-offer-1` 。
 - 選取 [建立] 之後，即無法變更供應項目識別碼。
 
 輸入**供應項目別名**。 這是用於合作夥伴中心內供應項目的名稱。
@@ -56,11 +57,11 @@ ms.locfileid: "89646697"
 
 #### <a name="get-it-now-free"></a>立即取得 (免費)
 
-提供有效的 URL (網址開頭為 HTTP 或 HTTPS)，免費向客戶列出您的供應項目，使其能存取您的應用程式。  例如， `https://contoso.com/my-app`
+免費向客戶列出您的供應專案。
 
-#### <a name="free-trial-listing"></a>免費試用版 (清單)
+#### <a name="free-trial-listing"></a>免費試用 (清單)
 
-提供有效的 URL (開頭 `http` 或 `https`) 可取得試用版的有效 URL，向客戶列出您的供應專案。 例如： `https://contoso.com/trial/my-app` 。 供應項目清單免費試用版是由您的服務所建立、管理及設定，且沒有由 Microsoft 管理的訂閱。
+使用免費試用的連結向客戶列出您的供應專案。 供應項目清單免費試用版是由您的服務所建立、管理及設定，且沒有由 Microsoft 管理的訂閱。
 
 > [!NOTE]
 > 您的應用程式透過試用連結所接收的權杖，只能經由 Azure Active Directory (Azure AD) 取得使用者資訊，以便在應用程式中自動建立帳戶。 Microsoft 帳戶不支援使用此權杖進行驗證。
@@ -134,7 +135,7 @@ ms.locfileid: "89646697"
 7. 隱私權原則
 8. 供應項目名稱
 9. 螢幕擷取畫面/影片
-10. 描述
+10. 說明
 
 ### <a name="name"></a>名稱
 

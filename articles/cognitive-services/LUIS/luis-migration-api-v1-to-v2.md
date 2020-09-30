@@ -1,25 +1,23 @@
 ---
 title: v1 至 v2 API 移轉
 titleSuffix: Azure Cognitive Services
-description: 第1版端點和撰寫 Language Understanding Api 已被取代。 使用本指南可了解如何遷移到第 2 版的端點和編寫 API。
+description: 第1版端點和撰寫 Language Understanding Api 已淘汰。 使用本指南可了解如何遷移到第 2 版的端點和編寫 API。
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 04/02/2019
-ms.author: diberry
-ms.openlocfilehash: c5880aac01e0611565afb825a61b682197baf5d6
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: e1e9ac4ceef843712cc2e39f26ff0aca5341e201
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344742"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541317"
 ---
 # <a name="api-v1-to-v2-migration-guide-for-luis-apps"></a>LUIS 應用程式 API v1 至 v2 的移轉指南
-第1版[端點](https://aka.ms/v1-endpoint-api-docs)和[編寫](https://aka.ms/v1-authoring-api-docs)api 已被取代。 使用本指南來瞭解如何遷移至第2版[端點](https://go.microsoft.com/fwlink/?linkid=2092356)和[編寫](https://go.microsoft.com/fwlink/?linkid=2092087)api。
+第1版 [端點](https://aka.ms/v1-endpoint-api-docs) 和 [撰寫](https://aka.ms/v1-authoring-api-docs) api 已被取代。 使用本指南來瞭解如何遷移至第2版 [端點](https://go.microsoft.com/fwlink/?linkid=2092356) 和 [撰寫](https://go.microsoft.com/fwlink/?linkid=2092087) api。
 
 ## <a name="new-azure-regions"></a>新的 Azure 區域
 LUIS 針對 LUIS API 提供新的[區域](https://aka.ms/LUIS-regions)。 LUIS 為區域群組提供不同的入口網站。 編寫應用程式的區域必須與您預期查詢的區域相同。 應用程式不會自動移轉區域。 您要從一個區域匯出應用程式，然後匯入至另一個區域，才能在新的區域中使用。
@@ -28,14 +26,14 @@ LUIS 針對 LUIS API 提供新的[區域](https://aka.ms/LUIS-regions)。 LUIS �
 編寫 API 路由從使用 **prog** 路由變更為使用 **api** 路由。
 
 
-| version | 路由 |
+| version | route |
 |--|--|
 |1|/luis/v1.0/**prog**/apps|
 |2|/luis/**api**/v2.0/apps|
 
 
 ## <a name="endpoint-route-changes"></a>端點路由變更
-端點 API 有新的查詢字串參數和不同的回應。 如果 verbose 旗標為 true，除了 topScoringIntent 之外，在名為 intents 的陣列中還會傳回所有意圖 (不論分數為何)。
+端點 API 具有新的查詢字串參數以及不同的回應。 如果 verbose 旗標為 true，除了 topScoringIntent 之外，在名為 intents 的陣列中還會傳回所有意圖 (不論分數為何)。
 
 | version | GET 路由 |
 |--|--|
@@ -107,7 +105,7 @@ v2 端點成功回應：
 ## <a name="key-management-no-longer-in-api"></a>API 中不再有金鑰管理
 訂用帳戶端點金鑰 API 已被取代，傳回 410 GONE。
 
-| version | 路由 |
+| version | route |
 |--|--|
 |1|/luis/v1.0/prog/subscriptions|
 |1|/luis/v1.0/prog/subscriptions/{subscriptionKey}|
@@ -117,7 +115,7 @@ Azure [端點金鑰](luis-how-to-azure-subscription.md)會在 Azure 入口網站
 ## <a name="new-versioning-route"></a>新的版本控制路由
 v2 模型現在包含在[版本](luis-how-to-manage-versions.md)中。 版本名稱是路由中的 10 個字元。 預設版本為 "0.1"。
 
-| version | 路由 |
+| version | route |
 |--|--|
 |1|/luis/v1.0/**prog**/apps/{appId}/entities|
 |2|/luis/**api**/v2.0/apps/{appId}/**versions**/{versionId}/entities|
@@ -136,7 +134,7 @@ v2 模型現在包含在[版本](luis-how-to-manage-versions.md)中。 版本名
 ## <a name="sample-renamed-to-suggest"></a>"Sample" 已重新命名為 "suggest"
 LUIS 建議使用現有[端點語句](luis-how-to-review-endpoint-utterances.md)中的語句來加強模型。 在舊版中，這名為 **sample**。 在新版中，名稱已從 sample 變更為 **suggest**。 這在 LUIS 網站中稱為**[檢閱端點語句](luis-how-to-review-endpoint-utterances.md)** \(英文\)。
 
-| version | 路由 |
+| version | route |
 |--|--|
 |1|/luis/v1.0/**prog**/apps/{appId}/entities/{entityId}/**sample**|
 |1|/luis/v1.0/**prog**/apps/{appId}/intents/{intentId}/**sample**|

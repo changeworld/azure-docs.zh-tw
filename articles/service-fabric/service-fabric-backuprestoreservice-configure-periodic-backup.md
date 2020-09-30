@@ -1,16 +1,14 @@
 ---
 title: 了解定期備份組態
 description: 使用 Service Fabric 的定期備份與還原功能，設定可靠具狀態服務或 Reliable Actors 的定期備份。
-author: hrushib
 ms.topic: article
 ms.date: 2/01/2019
-ms.author: hrushib
-ms.openlocfilehash: 53f63f341fe614f2287a09f37fafd2eedc614be7
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 852e430a9183d92e13536fd6499f3d1404985455
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90530908"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91538614"
 ---
 # <a name="understanding-periodic-backup-configuration-in-azure-service-fabric"></a>在 Azure Service Fabric 中了解定期備份設定
 

@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 937c5dbf3417e5914a0b4285c3bb114d7499e0fb
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: c7cc4065297c35164f1e37b187c6280b3d3546ee
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799055"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91538835"
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>使用群組來管理 Azure Active Directory 授權的案例、限制及已知問題
 
@@ -157,7 +157,7 @@ ms.locfileid: "88799055"
 
 下列範例顯示最近的群組授權變更，並提供詳細資料：
 
-![群組授權變更的螢幕擷取畫面](./media/licensing-group-advanced/audit-group-license-change.png)
+![顯示 [審核記錄] 頁面的螢幕擷取畫面，其中已選取清單專案並開啟 [活動詳細資料審核記錄] 窗格。](./media/licensing-group-advanced/audit-group-license-change.png)
 
 ### <a name="find-out-when-group-changes-started-and-finished-processing"></a>了解群組變更何時開始和完成處理
 

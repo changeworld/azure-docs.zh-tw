@@ -1,22 +1,20 @@
 ---
 title: 與其他人共同作業-LUIS
 titleSuffix: Azure Cognitive Services
-description: 應用程式擁有者可以將參與者新增至撰寫資源。 這些參與者可以修改模型、訓練及發佈應用程式。
+description: 應用程式擁有者可以將參與者新增至撰寫資源。 這些參與者可以修改模型、定型及發佈應用程式。
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 11/19/2019
-ms.author: diberry
-ms.openlocfilehash: d1f534b801ec3a71e891bf654628f9e49fc04b0d
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 30b4256b37dc3329801a730192e25f7c24a45594
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86055625"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540895"
 ---
 # <a name="add-contributors-to-your-app"></a>將參與者新增至您的應用程式
 
@@ -26,28 +24,28 @@ ms.locfileid: "86055625"
 
 ## <a name="add-contributor-to-azure-authoring-resource"></a>將參與者新增至 Azure 撰寫資源
 
-下列程式適用于已**遷移**為使用 Azure 撰寫資源的所有使用者。
+下列程式適用于已 **遷移** 為使用 Azure 撰寫資源的所有使用者。
 
-如果您的 LUIS 撰寫體驗已系結至 LUIS 入口網站中 [**管理-> 的 Azure 資源**] 頁面上的 [撰寫] 資源，則您已遷移。
+如果您的 LUIS 撰寫體驗系結至 LUIS 入口網站中 [ **管理-> Azure 資源** ] 頁面上的撰寫資源，則您已遷移。
 
-1. 在 [Azure 入口網站中，尋找 [Language Understanding （LUIS）撰寫資源]。 它具有類型 `LUIS.Authoring` 。
-1. 在此資源的 **[存取控制（IAM）** ] 頁面上，選取 [ **+ 新增**]，然後選取 [**新增角色指派**]。
+1. 在 Azure 入口網站中，尋找 Language Understanding (LUIS) 編寫資源。 它具有類型 `LUIS.Authoring` 。
+1. 在此資源的 **存取控制 (IAM) ** ] 頁面上，選取 [ **+ 新增** ]，然後選取 [ **新增角色指派**]。
 
-    ![在 Azure 入口網站中，為撰寫資源新增角色指派。](./media/luis-how-to-collaborate/authoring-resource-access-control-add-role.png)
+    ![在 Azure 入口網站中，新增撰寫資源的角色指派。](./media/luis-how-to-collaborate/authoring-resource-access-control-add-role.png)
 
-1. 在 [**新增角色指派**] 視窗中，選取 [參與者]**角色**。 在 [**指派存取**權] 選項中，選取 [ **Azure AD 使用者、群組或服務主體**]。 在 [**選取**] 選項中，輸入使用者的電子郵件地址。 如果相同網域的電子郵件地址有超過1名，請確定輸入_主要_電子郵件帳戶。
+1. 在 [ **新增角色指派** ] 視窗中，選取 [參與者] **角色** 。 在 [ **指派存取權** ] 選項中，選取 [ **使用者、群組或服務主體 Azure AD**]。 在 [ **選取** ] 選項中，輸入使用者的電子郵件地址。 如果相同網域的使用者超過1個電子郵件地址，請務必輸入 _主要_ 電子郵件帳戶。
 
     ![將使用者的電子郵件新增至 Azure AD 的參與者角色](./media/luis-how-to-collaborate/add-role-assignment-for-contributor.png)
 
-    當找到使用者的電子郵件時，請選取帳戶，然後選取 [**儲存**]。
+    找到使用者的電子郵件時，請選取帳戶，然後選取 [ **儲存**]。
 
-    如果您遇到此角色指派的問題，請參閱[azure 角色指派](../../role-based-access-control/role-assignments-portal.md)和[azure 存取控制疑難排解](../../role-based-access-control/troubleshooting.md#problems-with-azure-role-assignments)。
+    如果您有此角色指派的問題，請參閱 [azure 角色指派](../../role-based-access-control/role-assignments-portal.md) 和 [azure 存取控制疑難排解](../../role-based-access-control/troubleshooting.md#problems-with-azure-role-assignments)。
 
 ## <a name="add-collaborator-to-luis-app"></a>將共同作業者新增至 LUIS 應用程式
 
-下列程式適用于尚未**遷移**以使用 Azure 撰寫資源的所有使用者。
+下列程式適用于尚未 **遷移** 為使用 Azure 撰寫資源的所有使用者。
 
-如果您的 LUIS 撰寫體驗未系結至 LUIS 入口網站中 [**管理-> 的 Azure 資源**] 頁面上的 [撰寫] 資源，則尚未遷移。
+如果您的 LUIS 撰寫體驗未系結至 LUIS 入口網站中 [ **管理-> 的 Azure 資源** ] 頁面上的撰寫資源，則不會進行遷移。
 
 一個應用程式只有單一建立者 (擁有者)，但可以有許多共同作業者。 若要允許共同作業者編輯您的 LUIS 應用程式，您必須將他們用來存取 LUIS 入口網站的電子郵件新增至共同作業者清單。 新增之後，應用程式就會顯示在其 LUIS 入口網站中。
 
@@ -62,7 +60,7 @@ ms.locfileid: "86055625"
 
 ### <a name="users-with-multiple-emails"></a>具有多個電子郵件的使用者
 
-如果您將參與者/共同作業者新增至 LUIS 應用程式，您就會指定確切的電子郵件地址。 雖然 Azure Active Directory （Azure AD）可讓單一使用者擁有多個可交換使用的電子郵件帳戶，LUIS 會要求使用者使用新增參與者/共同作業者時所指定的電子郵件地址進行登入。
+如果您將參與者/共同作業者新增至 LUIS 應用程式，則會指定確切的電子郵件地址。 當 Azure Active Directory (Azure AD) 允許單一使用者以可交換方式使用多個電子郵件帳戶時，LUIS 會要求使用者以新增參與者/共同作業者時所指定的電子郵件地址登入。
 
 <a name="owner-and-collaborators"></a>
 
@@ -89,14 +87,14 @@ LUIS 使用標準 Azure Active Directory (Azure AD) 同意流程。
 
 如果租用戶系統管理員只希望特定使用者使用 LUIS，則有一些可能的解決方式：
 * 提供「管理員同意」(同意 Azure AD 的所有使用者)，然後將 [企業應用程式屬性] 之下的 [需要使用者指派] 設定為 [是]，最後只將想要的使用者指派/新增至應用程式。 使用此方法，系統管理員仍提供應用程式的「管理員同意」，不過，能夠控制可以存取該應用程式的使用者。
-* 第二個解決方案是使用[Microsoft Graph 中的 Azure AD 身分識別和存取管理 API](https://docs.microsoft.com/graph/azuread-identity-access-management-concept-overview) ，為每個特定使用者提供同意。
+* 第二個解決方案是 [在 Microsoft Graph 中使用 Azure AD 身分識別和存取管理 API](https://docs.microsoft.com/graph/azuread-identity-access-management-concept-overview) ，以提供每個特定使用者的同意。
 
 深入了解 Azure Active Directory 使用者和同意：
 * 將[您的應用程式限制](../../active-directory/develop/howto-restrict-your-app-to-a-set-of-users.md)為一組使用者
 
 ## <a name="next-steps"></a>後續步驟
 
-* 瞭解[如何使用版本](luis-how-to-manage-versions.md)來控制您的應用程式生命週期。
-* 瞭解這些概念，包括該資源的[撰寫資源](luis-how-to-azure-subscription.md#authoring-key)和[參與者](luis-how-to-azure-subscription.md#contributions-from-other-authors)。
-* 瞭解[如何建立](luis-how-to-azure-subscription.md)撰寫和執行時間資源
-* 遷移至新的[撰寫資源](luis-migration-authoring.md)
+* 瞭解 [如何使用版本](luis-how-to-manage-versions.md) 來控制您的應用程式生命週期。
+* 瞭解包括在該資源上 [撰寫資源](luis-how-to-azure-subscription.md#authoring-key) 和 [參與者](luis-how-to-azure-subscription.md#contributions-from-other-authors) 的概念。
+* 瞭解 [如何建立](luis-how-to-azure-subscription.md) 撰寫和執行時間資源
+* 遷移至新的 [撰寫資源](luis-migration-authoring.md)

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: chlound
 ms.custom: references_regions
-ms.openlocfilehash: fd5c4043d417a99c7ffa57534fd7808f1710190a
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: c4908373035b1a3148cd77db513f4e6bd23a50d7
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 09/29/2020
-ms.locfileid: "91448572"
+ms.locfileid: "91540722"
 ---
 # <a name="refresh-with-logic-apps"></a>使用 Logic Apps 重新整理
 
@@ -27,7 +27,7 @@ ms.locfileid: "91448572"
 ## <a name="design-the-logic-app"></a>設計邏輯應用程式
 
 > [!IMPORTANT]
-> 下列範例假設 Azure Analysis Services 防火牆已停用。 如果防火牆已啟用，則要求啟動器的公用 IP 位址必須在 Azure Analysis Services 防火牆的白名單中。 若要深入瞭解每個區域的 IP 範圍 Azure Logic Apps，請參閱 [Azure Logic Apps 的限制和設定資訊](../logic-apps/logic-apps-limits-and-config.md#configuration)。
+> 下列範例假設 Azure Analysis Services 防火牆已停用。 如果已啟用防火牆，則必須將要求啟動器的公用 IP 位址新增至 Azure Analysis Services 防火牆中的核准清單。 若要深入瞭解每個區域的 IP 範圍 Azure Logic Apps，請參閱 [Azure Logic Apps 的限制和設定資訊](../logic-apps/logic-apps-limits-and-config.md#configuration)。
 
 ### <a name="prerequisites"></a>必要條件
 

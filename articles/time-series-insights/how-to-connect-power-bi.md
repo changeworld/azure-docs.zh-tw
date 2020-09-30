@@ -8,12 +8,12 @@ services: time-series-insights
 ms.service: time-series-insights
 ms.topic: conceptual
 ms.date: 08/26/2020
-ms.openlocfilehash: f15686cf07bae4aee41095c970cd8a474724c2ed
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 6825627b77e3ea227cad88e347dbbabd5e6f5d0c
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230971"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540331"
 ---
 # <a name="visualize-data-from-azure-time-series-insights-in-power-bi"></a>從 Power BI 中的 Azure 時間序列深入解析將資料視覺化
 
@@ -29,7 +29,7 @@ Azure 時間序列深入解析是在雲端儲存、管理、查詢和視覺化�
 
 如果您還沒有訂用帳戶，請務必註冊 [免費的 Azure 訂](https://azure.microsoft.com/free/) 用帳戶。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 * 下載並安裝最新版本的 [Power BI Desktop](https://powerbi.microsoft.com/downloads/)
 * 擁有或建立 [Azure 時間序列深入解析 Gen2 環境](time-series-insights-update-how-to-manage.md)
@@ -110,13 +110,13 @@ Azure 時間序列深入解析是在雲端儲存、管理、查詢和視覺化�
 
 1. 在視窗的左側，確定您已選取 **報表** 視圖。
 
-    [![選取報表檢視](media/how-to-connect-power-bi/select-the-report-view.png)](media/how-to-connect-power-bi/select-the-report-view.png#lightbox)
+    [![螢幕擷取畫面：顯示報表檢視圖示。](media/how-to-connect-power-bi/select-the-report-view.png)](media/how-to-connect-power-bi/select-the-report-view.png#lightbox)
 
 1. 在 [ **視覺效果** ] 資料行中，選取您選擇的視覺效果。 例如，選取 [ **折線圖**]。 這會將空白折線圖新增至畫布。
 
 1. 在 [ **欄位** ] 清單中選取 **_Timestamp** ，然後將它拖曳到 [ **軸** ] 欄位，以顯示 X 軸上的專案。 請務必切換至 **_Timestamp** ，作為 **軸** 的值 (預設為 **日期** 階層) 。
 
-    [![選取報表檢視](media/how-to-connect-power-bi/select-timestamp.png)](media/how-to-connect-power-bi/select-timestamp.png#lightbox)
+    [![螢幕擷取畫面顯示已選取 _Timestamp 的時間戳記功能表。](media/how-to-connect-power-bi/select-timestamp.png)](media/how-to-connect-power-bi/select-timestamp.png#lightbox)
 
 1. 同樣地，在 [ **欄位** ] 清單中選取 [ **TimeSeriesId** ]，並將它拖曳至 [ **值** ] 欄位，以顯示 Y 軸上的專案。
 

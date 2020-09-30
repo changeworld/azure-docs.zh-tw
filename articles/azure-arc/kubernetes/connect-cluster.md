@@ -9,12 +9,12 @@ ms.author: mlearned
 description: 將已啟用 Azure Arc 的 Kubernetes 叢集與 Azure Arc 連線
 keywords: Kubernetes, Arc, Azure, K8s, 容器
 ms.custom: references_regions
-ms.openlocfilehash: eb3921d3ab2090b6bac54c9b68e9def3949ed4b5
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: 8f1d95db9c30e78e1ca697d5d7e5638988bc9965
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723736"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540620"
 ---
 # <a name="connect-an-azure-arc-enabled-kubernetes-cluster-preview"></a>連線已啟用 Azure Arc 的 Kubernetes 叢集 (預覽)
 
@@ -30,7 +30,7 @@ ms.locfileid: "88723736"
 * 您將需要 kubeconfig 檔案，才能存取叢集中的叢集和叢集管理員角色，以部署已啟用 Arc 的 Kubernetes 代理程式。
 * 搭配 `az login` 和 `az connectedk8s connect` 命令使用的使用者或服務主體，必須具有「Microsoft.Kubernetes/connectedclusters」資源類型的「讀取」和「寫入」權限。 「Kubernetes 叢集 Azure Arc 上線」角色具有這些許可權，可用於使用者或服務主體上的角色指派。
 * 使用 connectedk8s 擴充功能將叢集上架時，需要 Helm 3。 [安裝最新版本的 Helm 3](https://helm.sh/docs/intro/install) 以符合此需求。
-* 安裝 Azure Arc 的 Kubernetes CLI 擴充功能需要 Azure CLI 2.3 + 版。 [安裝 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) 或更新為最新版本，以確保您有 Azure CLI 2.3 + 版。
+* 安裝 Azure Arc 的 Kubernetes CLI 擴充功能需要 Azure CLI 2.3 + 版。 [安裝 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) 或更新為最新版本，以確保您有 Azure CLI 2.3 + 版。
 * 安裝啟用 Arc 的 Kubernetes CLI 延伸模組：
   
   安裝 `connectedk8s` 延伸模組，以協助您將 Kubernetes 叢集連線到 Azure：
@@ -179,27 +179,16 @@ AzureArcTest1  eastus      AzureArcTest
 
 1. `connectedk8s`執行下列命令，以檢查電腦上所安裝的延伸模組版本：
 
-    ```bash
+    ```console
     az -v
     ```
 
     您需要 `connectedk8s` 延伸模組版本 >= 0.2.3，才能使用輸出 proxy 來設定代理程式。 如果您的電腦上有 < 版的0.2.3，請遵循 [更新步驟](#before-you-begin) ，在您的電腦上取得最新版本的擴充功能。
 
-2. 設定 Azure CLI 所需的環境變數：
+2. 使用指定的 proxy 參數執行 connect 命令：
 
-    ```bash
-    export HTTP_PROXY=<proxy-server-ip-address>:<port>
-    export HTTPS_PROXY=<proxy-server-ip-address>:<port>
-    export NO_PROXY=<cluster-apiserver-ip-address>:<port>
-    ```
-
-3. 使用指定的 proxy 參數執行 connect 命令：
-
-    ```bash
-    az connectedk8s connect -n <cluster-name> -g <resource-group> \
-    --proxy-https https://<proxy-server-ip-address>:<port> \
-    --proxy-http http://<proxy-server-ip-address>:<port> \
-    --proxy-skip-range <excludedIP>,<excludedCIDR>
+    ```console
+    az connectedk8s connect -n <cluster-name> -g <resource-group> --proxy-https https://<proxy-server-ip-address>:<port> --proxy-http http://<proxy-server-ip-address>:<port> --proxy-skip-range <excludedIP>,<excludedCIDR>
     ```
 
 > [!NOTE]

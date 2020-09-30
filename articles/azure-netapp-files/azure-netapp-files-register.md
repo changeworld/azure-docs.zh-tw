@@ -1,6 +1,6 @@
 ---
 title: 註冊 Azure NetApp Files | Microsoft Docs
-description: 瞭解如何藉由提交等候清單要求和註冊 azure NetApp Files 的 Azure 資源提供者，來註冊 Azure NetApp Files。
+description: 瞭解如何藉由提交等候清單要求並註冊 azure NetApp Files 的 Azure 資源提供者，來註冊 Azure NetApp Files。
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -14,34 +14,34 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 06/09/2020
 ms.author: b-juche
-ms.openlocfilehash: b8707b6fb006a45d63f1b2b426530a7e25f5b497
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: e2838b759a611cb55b9fd3fadf834c84eb74210d
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87512919"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91533633"
 ---
 # <a name="register-for-azure-netapp-files"></a>註冊 Azure NetApp Files
 
 > [!IMPORTANT] 
-> 在註冊 Azure NetApp Files 資源提供者之前，您必須先從 Azure NetApp Files 小組收到一封電子郵件，確認您已獲得服務的存取權。 
+> 註冊 Azure NetApp Files 資源提供者之前，您必須已收到來自 Azure NetApp Files 小組的電子郵件，確認您已獲得該服務的存取權。 
 
 在本文中，您將瞭解如何註冊 Azure NetApp Files，讓您可以開始使用服務。
 
-## <a name="submit-a-waitlist-request-for-accessing-the-service"></a><a name="waitlist"></a>提交等候清單要求以存取服務
+## <a name="submit-a-waitlist-request-for-accessing-the-service"></a><a name="waitlist"></a>提交用來存取服務的等候清單要求
 
-1. 提交等候清單要求，以透過[Azure Netapp files 等候清單提交頁面](https://aka.ms/azurenetappfiles)來存取 Azure netapp files 服務。 
+1. 透過 [Azure Netapp files 等候清單提交頁面](https://aka.ms/azurenetappfiles)提交等候清單要求，以存取 Azure netapp files 服務。 
 
-    等候清單註冊不保證能夠立即存取服務。 
+    等候清單註冊無法保證立即存取服務。 
 
-2. 在繼續進行其他工作之前，請先從 Azure NetApp Files 小組等候官方的確認電子郵件。 
+2. 先等待來自 Azure NetApp Files 團隊的官方確認電子郵件，再繼續進行其他工作。 
 
 ## <a name="register-the-netapp-resource-provider"></a><a name="resource-provider"></a>註冊 NetApp 資源提供者
 
 若要使用服務，您必須註冊 Azure NetApp Files 的 Azure 資源提供者。
 
 > [!NOTE] 
-> 即使沒有授與服務的存取權，您仍然可以成功註冊 NetApp 資源提供者。 不過，若沒有存取授權，任何建立 NetApp 帳戶或任何其他 Azure NetApp Files 資源的 Azure 入口網站或 API 要求將會遭到拒絕，並出現下列錯誤：  
+> 即使沒有獲得服務的存取權，您也可以成功註冊 NetApp 資源提供者。 不過，若沒有存取授權，任何建立 NetApp 帳戶或任何其他 Azure NetApp Files 資源的 Azure 入口網站或 API 要求都會遭到拒絕，並出現下列錯誤：  
 >
 > `{"code":"DeploymentFailed","message":"At least one resource deployment operation failed. Please list deployment operations for details. Please see https://aka.ms/arm-debug for usage details.","details":[{"code":"NotFound","message":"{\r\n \"error\": {\r\n \"code\": \"InvalidResourceType\",\r\n \"message\": \"The resource type could not be found in the namespace 'Microsoft.NetApp' for api version '2017-08-15'.\"\r\n }\r\n}"}]}`
 
@@ -50,13 +50,13 @@ ms.locfileid: "87512919"
 
       ![Azure Cloud Shell 圖示](../media/azure-netapp-files/azure-netapp-files-azure-cloud-shell.png)
 
-2. 如果您的 Azure 帳戶中有多個訂用帳戶，請選取已列入 Azure NetApp Files 允許清單中的訂用帳戶：
+2. 如果您的 Azure 帳戶有多個訂用帳戶，請選取已針對 Azure NetApp Files 核准的訂用帳戶：
     
     ```azurepowershell
     az account set --subscription <subscriptionId>
     ```
 
-3. 在 Azure Cloud Shell 主控台中輸入下列命令，以驗證您的訂用帳戶已列入白清單中：
+3. 在 Azure Cloud Shell 主控台中，輸入下列命令以確認您的訂用帳戶已通過核准：
     
     ```azurepowershell
     az feature list | grep NetApp
@@ -71,7 +71,7 @@ ms.locfileid: "87512919"
        
    `<SubID>` 是您的訂用帳戶識別碼。
 
-    如果您看不到此功能名稱 `Microsoft.NetApp/ANFGA` ，表示您沒有服務的存取權。 在此步驟停止。 請遵循[提交用於存取服務的等候清單要求](#waitlist)中的指示來要求服務存取，然後再繼續。 
+    如果您沒有看到功能名稱 `Microsoft.NetApp/ANFGA` ，就不會有服務的存取權。 停止此步驟。 遵循 [提交等候清單要求](#waitlist) 來存取服務，以要求服務存取後再繼續進行的指示。 
 
 4. 在 Azure Cloud Shell 中輸入下列命令，以註冊 Azure 資源提供者： 
     

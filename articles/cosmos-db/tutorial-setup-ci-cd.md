@@ -8,12 +8,12 @@ ms.date: 01/28/2020
 ms.author: dech
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 605fba03e65d4200d0f1e18219e892ec6d207bc4
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: af3c8713b70911399b2382184dc9fd78d585e03a
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019312"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540280"
 ---
 # <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-azure-devops"></a>使用 Azure Cosmos DB 模擬器建置工作在 Azure DevOps 中設定 CI/CD 管線
 
@@ -34,7 +34,7 @@ Azure Cosmos DB 模擬器提供了一個模擬 Azure Cosmos DB 服務的本機�
 > [!NOTE]
 > 若要將擴充功能安裝到 Azure DevOps 組織，您必須是帳戶擁有者或專案集合管理員。 如果您沒有權限，但是您是帳戶成員，可以改為要求擴充功能。 [深入了解。](https://docs.microsoft.com/azure/devops/marketplace/faq-extensions?view=vsts)
 
-:::image type="content" source="./media/tutorial-setup-ci-cd/addExtension_2.png" alt-text="選擇要安裝擴充功能的 Azure DevOps 組織":::
+:::image type="content" source="./media/tutorial-setup-ci-cd/addExtension_2.png" alt-text="在 Azure DevOps Marketplace 中尋找 Azure Cosmos DB 模擬器建置工作並進行安裝":::
 
 ## <a name="create-a-build-definition"></a>建立組建定義
 
@@ -42,11 +42,11 @@ Azure Cosmos DB 模擬器提供了一個模擬 Azure Cosmos DB 服務的本機�
 
 1. 若要建立新的組建定義，請瀏覽至 Azure DevOps 中的 [**組建**] 索引標籤。 選取 [ **+新建**]。 \> [新增組建管線]
 
-   :::image type="content" source="./media/tutorial-setup-ci-cd/CreateNewBuildDef_1.png" alt-text="建立新的建置管線":::
+   :::image type="content" source="./media/tutorial-setup-ci-cd/CreateNewBuildDef_1.png" alt-text="在 Azure DevOps Marketplace 中尋找 Azure Cosmos DB 模擬器建置工作並進行安裝":::
 
 2. 依序選取所需的**來源**、[Team 專案]、[存放庫]、[手動和排程組建的預設分支]。 選擇所需的選項後，請選取 [繼續]
 
-   :::image type="content" source="./media/tutorial-setup-ci-cd/CreateNewBuildDef_2.png" alt-text="選取組建管線的 Team 專案、存放庫和分支":::
+   :::image type="content" source="./media/tutorial-setup-ci-cd/CreateNewBuildDef_2.png" alt-text="在 Azure DevOps Marketplace 中尋找 Azure Cosmos DB 模擬器建置工作並進行安裝":::
 
 3. 最後，選取所需的組建管線範本。 我們會在本教學課程中選取 **ASP.NET** 範本。 現在，您已有可設定成使用 Azure Cosmos DB 模擬器建置工作的組建管線。 
 
@@ -66,7 +66,7 @@ Start-CosmosDbEmulator
 
 1. 接著，選取代理程式作業旁的 **+** 符號，以新增模擬器組建工作。 在搜尋方塊中搜尋 **cosmos**，選取 [Azure Cosmos DB 模擬器]，並將其新增至代理程式作業。 建置工作會啟動已有 Cosmos DB 模擬器執行個體執行於其上的容器。 Azure Cosmos DB 模擬器工作應安排在預期模擬器處於執行中狀態的任何其他工作之前。
 
-   :::image type="content" source="./media/tutorial-setup-ci-cd/addExtension_3.png" alt-text="將模擬器建置工作新增至組建定義":::
+   :::image type="content" source="./media/tutorial-setup-ci-cd/addExtension_3.png" alt-text="在 Azure DevOps Marketplace 中尋找 Azure Cosmos DB 模擬器建置工作並進行安裝":::
 
 在本教學課程中，您會先新增工作，以在執行測試之前確定有可用的模擬器。
 
@@ -159,21 +159,21 @@ namespace todo.Tests
 
 巡覽至 Visual Studio 測試工作中的執行選項。 在 [設定檔] 選項中，請指定測試將使用 **.runsettings** 檔案進行設定。 在 [覆寫測試回合參數] 選項中，於 `-endpoint $(CosmosDbEmulator.Endpoint)` 中新增。 如此一來，就會設定測試工作參考模擬器建置工作的端點，而不是在 **.runsettings** 檔案中定義的端點。  
 
-:::image type="content" source="./media/tutorial-setup-ci-cd/addExtension_5.png" alt-text="使用模擬器建置工作端點來覆寫端點變數":::
+:::image type="content" source="./media/tutorial-setup-ci-cd/addExtension_5.png" alt-text="在 Azure DevOps Marketplace 中尋找 Azure Cosmos DB 模擬器建置工作並進行安裝":::
 
 ## <a name="run-the-build"></a>執行組建
 
 現在，請將組建**儲存並排入佇列中**。 
 
-:::image type="content" source="./media/tutorial-setup-ci-cd/runBuild_1.png" alt-text="儲存並執行組建":::
+:::image type="content" source="./media/tutorial-setup-ci-cd/runBuild_1.png" alt-text="在 Azure DevOps Marketplace 中尋找 Azure Cosmos DB 模擬器建置工作並進行安裝":::
 
 一旦開始建置，請觀察 Cosmos DB 模擬器工作是否開始使用安裝的模擬器下拉 Docker 映像。 
 
-:::image type="content" source="./media/tutorial-setup-ci-cd/runBuild_4.png" alt-text="儲存並執行組建":::
+:::image type="content" source="./media/tutorial-setup-ci-cd/runBuild_4.png" alt-text="在 Azure DevOps Marketplace 中尋找 Azure Cosmos DB 模擬器建置工作並進行安裝":::
 
 在建置完成之後，請觀察您的測試是否通過，所有測試都是針對來自建置工作的 Cosmos DB 模擬器而執行！
 
-:::image type="content" source="./media/tutorial-setup-ci-cd/buildComplete_1.png" alt-text="儲存並執行組建":::
+:::image type="content" source="./media/tutorial-setup-ci-cd/buildComplete_1.png" alt-text="在 Azure DevOps Marketplace 中尋找 Azure Cosmos DB 模擬器建置工作並進行安裝":::
 
 ## <a name="next-steps"></a>後續步驟
 

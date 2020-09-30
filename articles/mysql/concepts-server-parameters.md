@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/25/2020
-ms.openlocfilehash: e7ca86d0146f05d5171d5eae18aac81d75122bcc
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.openlocfilehash: bf87a61633706cb5db384e8a8ab957fa6a3f37f1
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88258551"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91533718"
 ---
 # <a name="server-parameters-in-azure-database-for-mysql"></a>適用於 MySQL 的 Azure 資料庫中的伺服器參數
 
@@ -19,21 +19,21 @@ ms.locfileid: "88258551"
 
 ## <a name="what-are-server-parameters"></a>什麼是伺服器參數？ 
 
-MySQL 引擎提供許多不同的伺服器變數/參數，可以用來設定和微調引擎行為。 有些參數可以在執行時間以動態方式設定，有些則是「靜態」，需要重新開機伺服器才能套用。
+MySQL 引擎提供許多不同的伺服器變數/參數，可用來設定和微調引擎行為。 某些參數可在執行時間期間動態設定，而其他參數則是「靜態」，需要重新開機伺服器才能套用。
 
-適用於 MySQL 的 Azure 資料庫會使用 [Azure 入口網站](./howto-server-parameters.md)、 [Azure CLI](./howto-configure-server-parameters-using-cli.md)和 [PowerShell](./howto-configure-server-parameters-using-powershell.md) 來公開變更各種 MySQL 伺服器參數值的功能，以符合您的工作負載需求。
+適用於 MySQL 的 Azure 資料庫公開使用 [Azure 入口網站](./howto-server-parameters.md)、 [Azure CLI](./howto-configure-server-parameters-using-cli.md)和 [PowerShell](./howto-configure-server-parameters-using-powershell.md) 來變更各種 MySQL 伺服器參數的值，以符合您的工作負載需求。
 
 ## <a name="configurable-server-parameters"></a>可設定的伺服器參數
 
-支援的伺服器參數清單會不斷成長。 使用 [Azure 入口網站中的 [伺服器參數] 索引標籤，即可查看完整清單並設定伺服器參數值。
+支援的伺服器參數清單會不斷成長。 使用 Azure 入口網站中的 [伺服器參數] 索引標籤，即可查看完整清單及設定伺服器參數值。
 
 請參閱下列各節，以深入瞭解數個經常更新之伺服器參數的限制。 這些限制取決於伺服器的定價層和虛擬核心。
 
 ### <a name="thread-pools"></a>執行緒集區
 
-MySQL 傳統上會為每個用戶端連接指派一個執行緒。 當並行使用者人數增加時，效能會有相對應的下降。 許多使用中線程可能會大幅影響效能，因為增加了內容切換、執行緒爭用，以及 CPU 快取的錯誤位置。
+MySQL 通常會為每個用戶端連接指派一個執行緒。 當並行使用者數目增加時，效能會有相對應的下降。 許多作用中線程可能會因為內容切換增加、執行緒爭用，以及 CPU 快取的錯誤位置而大幅影響效能。
 
-執行緒集區是伺服器端功能，與連接共用不同，它引進了背景工作執行緒的動態集區，可用來限制在伺服器上執行的使用中線程數目，並將執行緒流失降至最低，藉此將效能最大化。 這有助於確保連線的高載不會導致伺服器用盡資源或當機，發生記憶體不足的錯誤。 執行緒集區最有效率地用於短期查詢和 CPU 密集型工作負載，例如 OLTP 工作負載。
+執行緒集區是伺服器端功能，與連接共用不同，它會引進背景工作執行緒的動態集區，以限制伺服器上執行的使用中線程數目，並將執行緒變換降至最低。 這有助於確保連接的高載不會導致伺服器用盡資源或當機，並出現記憶體不足的錯誤。 執行緒集區最有效率，適用于簡短的查詢和需要大量 CPU 的工作負載，例如 OLTP 工作負載。
 
 若要深入瞭解執行緒集區，請參閱[適用於 MySQL 的 Azure 資料庫中的執行緒](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/introducing-thread-pools-in-azure-database-for-mysql-service/ba-p/1504173)集區簡介
 
@@ -43,23 +43,23 @@ MySQL 傳統上會為每個用戶端連接指派一個執行緒。 當並行使�
 ### <a name="configuring-the-thread-pool"></a>設定執行緒集區
 若要啟用執行緒集區，請將 `thread_handling` 伺服器參數更新為「執行緒集區」。 根據預設，此參數設定為 `one-thread-per-connection` ，這表示 MySQL 會為每個新的連接建立新的執行緒。 請注意，這是靜態參數，需要重新開機伺服器才能套用。
 
-您也可以藉由設定下列伺服器參數，來設定集區中的最大和最小線程數目： 
-- `thread_pool_max_threads`：此值可確保集區中不會有超過此數目的執行緒。
-- `thread_pool_min_threads`：這個值會設定即使在連接關閉後仍會保留的執行緒數目。
+您也可以藉由設定下列伺服器參數，設定集區中的執行緒數目上限和下限： 
+- `thread_pool_max_threads`：這個值可確保集區中不會有超過此數目的執行緒。
+- `thread_pool_min_threads`：這個值會設定即使在關閉連接之後仍會保留的執行緒數目。
 
-為了改善執行緒集區上簡短查詢的效能問題，適用於 MySQL 的 Azure 資料庫可讓您啟用批次執行，而不是在執行查詢之後立即回到執行緒集區，而執行緒會暫時保持作用中狀態，以等候下一個查詢通過此連接。 執行緒接著會快速執行查詢，完成後會等候下一個，直到此進程的整體耗用時間超過臨界值為止。 批次執行行為是使用下列伺服器參數來決定：  
+為了改善執行緒集區上的簡短查詢效能問題，適用於 MySQL 的 Azure 資料庫可讓您啟用批次執行，其中不會在執行查詢後立即返回執行緒集區，執行緒將會保持使用中的時間，以等候下一個查詢通過此連接。 執行緒接著會快速執行查詢，並在完成後等候下一個查詢，直到此進程的整體時間耗用量超過閾值為止。 批次執行行為是使用下列伺服器參數來決定：  
 
 -  `thread_pool_batch_wait_timeout`：這個值會指定執行緒等候另一個查詢處理的時間。
-- `thread_pool_batch_max_time`：這個值會決定執行緒重複執行查詢的迴圈，並等候下一個查詢的最大時間。
+- `thread_pool_batch_max_time`：此值會決定執行緒將重複執行查詢並等候下一個查詢的時間上限。
 
 > [!IMPORTANT]
-> 請先測試執行緒集區，然後再于生產環境中開啟它。 
+> 請先測試執行緒集區，再于生產環境中開啟它。 
 
 ### <a name="innodb_buffer_pool_size"></a>innodb_buffer_pool_size
 
 請檢閱 [MySQL 文件](https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html#sysvar_innodb_buffer_pool_size) \(英文\)，以深入了解此參數。
 
-#### <a name="servers-supporting-up-to-4-tb-storage"></a>最多可支援 4 TB 儲存空間的伺服器
+#### <a name="servers-supporting-up-to-4-tb-storage"></a>最多可支援 4 TB 儲存體的伺服器
 
 |定價層|**vCore(s)**|**預設值 (位元組) **|**最小值 (位元組) **|**最大值 (位元組) **|
 |---|---|---|---|---|
@@ -151,7 +151,7 @@ MySQL 會根據在建立資料表期間所提供的設定，將 InnoDB 資料表
 建立 MySQL 的新用戶端連線需要一段時間，且在建立之後，這些連線會佔用資料庫資源，即使閒置時也一樣。 大部分應用程式會要求許多短期連線，這會加重這種情況。 結果會減少實際工作負載的可用資源，因而導致效能降低。 減少閒置連線並重複使用現有連線的連接共用器，有助於避免這種情況。 若要了解如何設定 ProxySQL，請前往[部落格文章](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/load-balance-read-replicas-using-proxysql-in-azure-database-for/ba-p/880042) \(英文\)。
 
 >[!Note]
->ProxySQL 是一個開放原始碼的社區工具。 Microsoft 會盡最大的支援。 若要取得具有授權指引的生產環境支援，您可以評估並與 [ProxySQL 產品支援人員](https://proxysql.com/services/support/)聯繫。
+>ProxySQL 是開放原始碼的社區工具。 Microsoft 會以最大的努力來支援它。 為了取得具有授權指導的生產環境支援，您可以評估並與 [ProxySQL 產品支援人員](https://proxysql.com/services/support/)聯繫。
 
 ### <a name="max_heap_table_size"></a>max_heap_table_size
 
@@ -200,21 +200,21 @@ MySQL 會根據在建立資料表期間所提供的設定，將 InnoDB 資料表
 
 ### <a name="lower_case_table_names"></a>lower_case_table_names
 
-根據預設，lower_case_table_name 會設定為1，而您可以在 MySQL 5.6 和 MySQL 5.7 中更新此參數
+根據預設，lower_case_table_name 會設定為1，而您可以在 MySQL 5.6 和 MySQL 5.7 中更新此參數。
 
 請檢閱 [MySQL 文件](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_lower_case_table_names) \(英文\)，以深入了解此參數。
 
 > [!NOTE]
-> 在 MySQL 8.0 中，lower_case_table_name 預設會設定為1，而且您無法變更它。
+> 在 MySQL 8.0 中，預設會將 lower_case_table_name 設定為1，且您無法加以變更。
 
 ### <a name="innodb_strict_mode"></a>innodb_strict_mode
 
-如果您收到類似「資料列大小過大 ( # A0 8126) 」的錯誤，您可能會想要關閉參數 **innodb_strict_mode**。 不允許在伺服器層級全域修改伺服器參數 **innodb_strict_mode** ，因為如果資料列資料大小大於8k，資料將會被截斷，而不會造成資料遺失的錯誤。 我們建議您修改架構，使其符合頁面大小限制。 
+如果您收到類似「資料列大小太大 ( # A0 8126) 」的錯誤，則您可能會想要關閉參數 **innodb_strict_mode**。 不允許在伺服器層級全域修改伺服器參數 **innodb_strict_mode** ，因為如果資料列資料大小大於8k，資料將會被截斷而不會造成資料遺失的錯誤。 建議您修改架構，以符合頁面大小的限制。 
 
-您可以使用，在工作階段層級設定這個參數 `init_connect` 。 若要設定工作階段層級的 **innodb_strict_mode** ，請參閱 [未列出的設定參數](https://docs.microsoft.com/azure/mysql/howto-server-parameters#setting-parameters-not-listed)。
+您可以使用，在工作階段層級設定這個參數 `init_connect` 。 若要在工作階段層級設定 **innodb_strict_mode** ，請參閱 [未列出的設定參數](https://docs.microsoft.com/azure/mysql/howto-server-parameters#setting-parameters-not-listed)。
 
 > [!NOTE]
-> 如果您有讀取複本伺服器，在主伺服器的工作階段層級將 **innodb_strict_mode** 設定為 OFF，將會中斷複寫。 如果您有讀取複本，建議您將參數保持設定為 [關閉]。
+> 如果您有讀取複本伺服器，請在來源伺服器的工作階段層級將 **innodb_strict_mode** 設定為 OFF，將會中斷複寫。 如果您有讀取的複本，建議您將參數設定為 [關閉]。
 
 ### <a name="sort_buffer_size"></a>sort_buffer_size
 
@@ -258,7 +258,7 @@ MySQL 會根據在建立資料表期間所提供的設定，將 InnoDB 資料表
 
 ### <a name="time_zone"></a>time_zone
 
-在初始部署時，適用于 MySQL 伺服器的 Azure 會包含系統資料表的時區資訊，但不會填入這些資料表。 時區資料表可藉由從 MySQL 命令列或 MySQL Workbench 等工具呼叫 `mysql.az_load_timezone` 預存程序來填入。 請參閱 [Azure 入口網站](howto-server-parameters.md#working-with-the-time-zone-parameter)或 [Azure CLI](howto-configure-server-parameters-using-cli.md#working-with-the-time-zone-parameter) 文章，以了解如何呼叫預存程序，以及設定全域或工作階段層級的時區。
+在初始部署時，適用于 MySQL 的 Azure 伺服器會包含適用于時區資訊的系統資料表，但不會填入這些資料表。 時區資料表可藉由從 MySQL 命令列或 MySQL Workbench 等工具呼叫 `mysql.az_load_timezone` 預存程序來填入。 請參閱 [Azure 入口網站](howto-server-parameters.md#working-with-the-time-zone-parameter)或 [Azure CLI](howto-configure-server-parameters-using-cli.md#working-with-the-time-zone-parameter) 文章，以了解如何呼叫預存程序，以及設定全域或工作階段層級的時區。
 
 ## <a name="non-configurable-server-parameters"></a>無法設定的伺服器參數
 
@@ -272,7 +272,7 @@ MySQL 會根據在建立資料表期間所提供的設定，將 InnoDB 資料表
 |innodb_log_file_size|256MB|
 |innodb_log_files_in_group|2|
 
-此處未列出的其他變數會設定為預設的 MySQL 現成值。 如需預設值，請參閱適用于版本 [8.0](https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html)、 [5.7](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html)和 [5.6](https://dev.mysql.com/doc/refman/5.6/en/server-system-variables.html) 的 MySQL 檔。 
+此處未列出的其他變數會設定為預設 MySQL 現成的值。 如需預設值的 [8.0](https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html)、 [5.7](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html)和 [5.6](https://dev.mysql.com/doc/refman/5.6/en/server-system-variables.html) 版本，請參閱 MySQL 檔。 
 
 ## <a name="next-steps"></a>後續步驟
 

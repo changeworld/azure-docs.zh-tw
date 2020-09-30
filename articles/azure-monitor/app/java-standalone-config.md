@@ -4,12 +4,12 @@ description: 針對在任何環境中執行的 JAVA 應用程式無程式碼應�
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 93b0b89cff7e48ddc4eb9173c9423961f96ec4bb
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 9b90f8b9336111438b4b832d557d448470959255
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371298"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91537652"
 ---
 # <a name="configuration-options---java-standalone-agent-for-azure-monitor-application-insights"></a>設定選項-適用于 Azure 監視器 Application Insights 的 JAVA 獨立代理程式
 
@@ -154,9 +154,9 @@ Application Insights JAVA 3.0 Preview 會自動透過 Log4j、Logback 和 util �
           "display": "JVM uptime (millis)"
         },
         {
-          "objectName": "java.lang:type=MemoryPool,name=Code Cache",
+          "objectName": "java.lang:type=MemoryPool,name=Metaspace",
           "attribute": "Usage.used",
-          "display": "Code Cache Used"
+          "display": "MetaSpace Used"
         }
       ]
     }
@@ -166,7 +166,7 @@ Application Insights JAVA 3.0 Preview 會自動透過 Log4j、Logback 和 util �
 
 您也可以使用環境變數來設定 JMX 計量 `APPLICATIONINSIGHTS_JMX_METRICS` 。
 
-此環境變數內容必須是符合上述結構的 json 資料，例如 `[{"objectName": "java.lang:type=Runtime", "attribute": "Uptime", "display": "JVM uptime (millis)"}, {"objectName": "java.lang:type=MemoryPool,name=Code Cache", "attribute": "Usage.used", "display": "Code Cache Used"}]`
+此環境變數內容必須是符合上述結構的 json 資料，例如 `[{"objectName": "java.lang:type=Runtime", "attribute": "Uptime", "display": "JVM uptime (millis)"}, {"objectName": "java.lang:type=MemoryPool,name=Metaspace", "attribute": "Usage.used", "display": "MetaSpace Used"}]`
 
 ## <a name="micrometer-including-metrics-from-spring-boot-actuator"></a>Micrometer (包括來自彈簧開機傳動) 的計量
 

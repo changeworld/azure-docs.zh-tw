@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: how-to
 ms.date: 11/25/2019
 ms.author: guybo
-ms.openlocfilehash: 9097fb4aefe168ce36793d13f892fbbeab10ad56
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 90b29944315b8a72a4ef95adbfc681a0ab276b00
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372734"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91533053"
 ---
 # <a name="prepare-a-centos-based-virtual-machine-for-azure"></a>準備適用於 Azure 的 CentOS 型虛擬機器
 
@@ -21,7 +21,7 @@ ms.locfileid: "87372734"
 * [準備適用於 Azure 的 CentOS 7.0+ 虛擬機器](#centos-70)
 
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 本文假設您已將 CentOS (或類似的衍生物件) Linux 作業系統安裝到虛擬硬碟。 有多個工具可用來建立 .vhd 檔案，例如，像是 Hyper-V 的虛擬化解決方案。 如需指示，請參閱 [安裝 Hyper-V 角色及設定虛擬機器](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh846766(v=ws.11))。
 
@@ -29,7 +29,7 @@ ms.locfileid: "87372734"
 
 * 如需有關準備 Azure 之 Linux 的更多秘訣，另請參閱 [一般 Linux 安裝注意事項](create-upload-generic.md#general-linux-installation-notes) 。
 * Azure 不支援 VHDX 格式，只支援 **固定 VHD**。  您可以使用 Hyper-V 管理員或 convert-vhd Cmdlet，將磁碟轉換為 VHD 格式。 如果您是使用 VirtualBox，即會在建立磁碟時選取 [固定大小] **** 而不是預設的動態配置。
-* 安裝 Linux 系統時，*建議*您使用標準磁碟分割，而不是 LVM （通常是許多安裝的預設值）。 這可避免 LVM 與複製之 VM 的名稱衝突，特別是為了疑難排解而需要將作業系統磁碟連接至另一個相同的 VM 時。 如果願意，您可以在資料磁碟上使用 [LVM](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 或 [RAID](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+* 安裝 Linux 系統時， *建議* 您使用標準磁碟分割，而不是 LVM (通常是許多安裝) 的預設值。 這可避免 LVM 與複製之 VM 的名稱衝突，特別是為了疑難排解而需要將作業系統磁碟連接至另一個相同的 VM 時。 如果願意，您可以在資料磁碟上使用 [LVM](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 或 [RAID](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 * 需要掛接 UDF 檔案系統的核心支援。 在 Azure 上第一次開機時，佈建組態會透過連接客體的 UDF 格式媒體傳遞至 Linux VM。 Azure Linux 代理程式必須能夠掛接 UDF 檔案系統讀取其組態並佈建 VM。
 * Linux Kernel 2.6.37 以下的版本不支援較大 VM 大小 Hyper-V 上的NUMA。 這個問題主要會影響使用上游 Red Hat 2.6.32 kernel 的較舊散發套件，RHEL 6.6 (kernel-2.6.32-504) 已加以修正。 執行的自訂核心是 2.6.37 以前版本的系統，或 2.6.32-504 以前以 RHEL 為基礎的核心必須在 grub.conf 的核心命令列上設定開機參數 `numa=off`。 如需詳細資訊，請參閱 Red Hat [KB 436883](https://access.redhat.com/solutions/436883)。
 * 請勿在作業系統磁碟上設定交換磁碟分割。 您可以設定 Linux 代理程式在暫存資源磁碟上建立交換檔。  您可以在以下步驟中找到與此有關的詳細資訊。
@@ -163,7 +163,7 @@ ms.locfileid: "87372734"
     sudo yum install microsoft-hyper-v
     ```
 
-    或者，您可以依照 [LIS 下載頁面](https://www.microsoft.com/download/details.aspx?id=51612)上的手動安裝指示執行，以在您的 VM 上安裝該 RPM。
+    或者，您可以依照 [LIS 下載頁面](https://www.microsoft.com/download/details.aspx?id=55106)上的手動安裝指示執行，以在您的 VM 上安裝該 RPM。
 
 12. 安裝 Azure Linux 代理程式和相依性。 啟動並啟用 waagent 服務：
 
@@ -342,7 +342,7 @@ ms.locfileid: "87372734"
     sudo grub2-mkconfig -o /boot/grub2/grub.cfg
     ```
 
-10. 如果從**VMware、VirtualBox 或 KVM**建立映射：確定 initramfs 中包含 hyper-v 驅動程式：
+10. 如果是從 **VMware、VirtualBox 或 KVM** 建立映射：確定 initramfs 中包含 hyper-v 驅動程式：
 
     編輯 `/etc/dracut.conf`，新增內容：
 

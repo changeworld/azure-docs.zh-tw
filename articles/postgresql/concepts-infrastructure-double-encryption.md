@@ -6,17 +6,14 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 6/30/2020
-ms.openlocfilehash: d54bef277d80a178c45ce918290d46c11387b7d1
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 241c404eff1242c52520f94d5d955db7e260148c
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88918089"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91537900"
 ---
 # <a name="azure-database-for-postgresql-infrastructure-double-encryption"></a>適用於 PostgreSQL 的 Azure 資料庫基礎結構雙重加密
-
-> [!NOTE]
-> 此時，您必須要求存取權限，才能使用此功能。 若要這樣做，請聯絡 AskAzureDBforPostgreSQL@service.microsoft.com 。
 
 適用於 PostgreSQL 的 Azure 資料庫針對使用 Microsoft 管理的金鑰的資料使用待用資料的儲存體 [加密](concepts-security.md#at-rest) 。 資料（包括備份）會在磁片上加密，且此加密一律為開啟狀態，且無法停用。 加密使用 FIPS 140-2 驗證的密碼編譯模組，以及適用于 Azure 儲存體加密的 AES 256 位加密。
 

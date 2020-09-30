@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 7d7e7e883d9b92b7a9e700f66a54ed48ba5296b1
-ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
+ms.openlocfilehash: 90f91c56b2448e8455f3c22cf7ccae7b06b5be70
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91402934"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91539906"
 ---
 # <a name="preview-features-in-azure-cognitive-search"></a>Azure 認知搜尋中的預覽功能
 
@@ -28,7 +28,7 @@ ms.locfileid: "91402934"
 | [**Debug 會話**](cognitive-search-debug-session.md) | 入口網站、AI 擴充 (技能集)  | 會話內的技能集編輯器，用來調查和解決技能集的問題。 在 debug 會話期間套用的修正可以儲存至服務中的技能集。 | 僅限入口網站，在 [總覽] 頁面上使用中頁面連結來開啟 debug 會話。 |
 | [**原生 blob 虛刪除**](search-howto-index-changed-deleted-blobs.md) | 索引子，Azure blob| Azure 認知搜尋中的 Azure Blob 儲存體索引子會辨識處於虛刪除狀態的 blob，並在編制索引期間移除對應的搜尋檔。 | 使用 [建立索引子 (REST) ](/rest/api/searchservice/create-indexer) （api 版本 = 2020-06-30-Preview-preview 或 api 版本 = 2019-05-06-Preview-preview）來新增此設定設定。 |
 | [**自訂實體查閱技能**](cognitive-search-skill-custom-entity-lookup.md ) | AI 擴充 (技能集)  | 一種認知技能，可從自訂、使用者定義的單字和片語清單中尋找文字。 使用這份清單，其會以任何相符的實體標記所有文件。 此技能也支援某種程度的模糊比對，可加以套用以尋找類似但不完全精確的相符項目。 | 在入口網站中使用技能集編輯器來參考此預覽技能，或使用 api 版本 = 2020-06-30-preview-Preview 或 api 版本 = 2019-05-06-preview-Preview [建立技能集 (REST) ](/rest/api/searchservice/create-skillset) 。 |
-| [**PII 偵測技能**](cognitive-search-skill-pii-detection.md) | AI 擴充 (技能集)  | 在編制索引期間使用的認知技能，可從輸入文字中取出個人識別資訊，並可讓您選擇以各種方式遮罩該文字。 | 在入口網站中使用技能集編輯器來參考此預覽技能，或使用 api 版本 = 2020-06-30-preview-Preview 或 api 版本 = 2019-05-06-preview-Preview [建立技能集 (REST) ](/rest/api/searchservice/create-skillset) 。 |
+| [**PII 偵測技能**](cognitive-search-skill-pii-detection.md) | AI 擴充 (技能集)  | 在編制索引期間使用的認知技能，可從輸入文字中解壓縮個人資訊，並可讓您選擇以各種方式遮罩該文字。 | 在入口網站中使用技能集編輯器來參考此預覽技能，或使用 api 版本 = 2020-06-30-preview-Preview 或 api 版本 = 2019-05-06-preview-Preview [建立技能集 (REST) ](/rest/api/searchservice/create-skillset) 。 |
 | [**累加擴充**](cognitive-search-incremental-indexing-conceptual.md) | 索引子設定| 將快取新增至擴充管線，可讓您在目標修改（例如技能集或另一個物件的更新）不會變更內容時重複使用現有的輸出。 快取只適用于技能集所產生的擴充檔。| 使用 [建立索引子 (REST) ](/rest/api/searchservice/create-indexer) （api 版本 = 2020-06-30-Preview-preview 或 api 版本 = 2019-05-06-Preview-preview）來新增此設定設定。 |
 | [**Cosmos DB 索引子： MongoDB API、Gremlin API、Cassandra API**](search-howto-index-cosmosdb.md) | 索引子資料來源 | 針對 Cosmos DB，SQL API 已正式運作，但 MongoDB、Gremlin 和 Cassandra Api 目前為預覽狀態。 | 僅適用于 Gremlin 和 Cassandra，請 [先註冊](https://aka.ms/azure-cognitive-search/indexer-preview) ，才能在後端為您的訂用帳戶啟用支援。 您可以在入口網站中設定 MongoDB 資料來源。 否則，所有三個 Api 的資料來源設定都支援使用 [Create Data source (REST) ](/rest/api/searchservice/create-data-source) ，api 版本 = 2020-06-30-Preview-preview 或 api 版本 = 2019-05-06-Preview-preview。 |
 |  [**Azure Data Lake Storage Gen2 索引子**](search-howto-index-azure-data-lake-storage.md) | 索引子資料來源 | Data Lake Storage Gen2 中的索引內容和中繼資料。| 需要[註冊](https://aka.ms/azure-cognitive-search/indexer-preview)，才能在後端為您的訂用帳戶啟用支援。 使用 [Create Data source (REST) ](/rest/api/searchservice/create-data-source) （api 版本 = 2020-06-30-Preview-preview 或 api 版本 = 2019-05-06-Preview-preview）來存取此資料來源。 |

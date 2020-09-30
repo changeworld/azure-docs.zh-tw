@@ -14,12 +14,12 @@ ms.date: 09/01/2020
 ms.author: curtand
 ms.custom: pim ; H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b826c6a1fd5a60247f8c69cb10cd24e7e001fe71
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ff5d15ef66b597fdf56fefe90f35cbf122bb093f
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91335879"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91534432"
 ---
 # <a name="discovery-and-insights-preview-for-azure-ad-roles-formerly-security-wizard"></a>Azure AD 角色的探索和見解 (預覽)  (先前的安全性嚮導) 
 
@@ -45,7 +45,7 @@ ms.locfileid: "91335879"
 
 1. 選取 [ **減少全域管理員**]。
 
-    ![減少全域管理員-顯示所有成員的角色窗格](./media/pim-security-wizard/new-preview-page.png)
+    ![螢幕擷取畫面，顯示已選取「減少全域管理員」動作的「探索和見解 (預覽) 」。](./media/pim-security-wizard/new-preview-page.png)
 
 1. 檢查全域管理員角色指派的清單。
 

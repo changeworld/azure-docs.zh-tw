@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: swmachan
-ms.openlocfilehash: 9c745395026b8b7e8c58fcb4b7cc67971d971a7c
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: e8feb4f2012d323d954ba000323824bc157bcf87
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89300216"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91534055"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>文字和語音翻譯的語言和區域支援
 
@@ -71,7 +71,6 @@ Translator 支援下列適用于文字到文字翻譯的語言。
 |日文|  `ja`    |
 |坎那達文|`kn`|
 |哈薩克文|`kk`|
-|史瓦希里文| `sw`    |
 |克林貢文|   `tlh-Latn`  |
 |克林貢文 (plqaD)|   `tlh-Piqd`  |
 |韓文 |`ko`   |
@@ -102,6 +101,7 @@ Translator 支援下列適用于文字到文字翻譯的語言。
 |斯洛伐克文|    `sk`    |
 |斯洛維尼亞文| `sl`    |
 |西班牙文|   `es`    |
+|史瓦西里文|   `sw`    |
 |瑞典文|   `sv`    |
 |大溪地文|  `ty`    |
 |坦米爾文| `ta`    |
@@ -152,7 +152,6 @@ Translator 會偵測下列翻譯和音譯語言。
 |愛爾蘭文 | `ga`|
 |義大利文|   `it`    |
 |日文|  `ja`    |
-|史瓦希里文| `sw`    |
 |克林貢文|   `tlh-Latn`  |
 |韓文 |`ko`   |
 |庫爾德 (中部)   |`ku-Arab`  |
@@ -173,6 +172,7 @@ Translator 會偵測下列翻譯和音譯語言。
 |斯洛伐克文|    `sk`    |
 |斯洛維尼亞文| `sl`    |
 |西班牙文|   `es`    |
+|史瓦西里文|   `sw`    |
 |瑞典文|   `sv`    |
 |大溪地文|  `ty`    |
 |泰文|  `th`    |
@@ -246,7 +246,6 @@ Translator 會偵測下列翻譯和音譯語言。
 | 印尼文      | `id`          |
 | 義大利文      | `it`          |
 | 日文      | `ja`          |
-| 史瓦希里文      | `sw`          |
 | 克林貢文      | `tlh`          |
 | 韓文      | `ko`          |
 | 拉脫維亞文      | `lv`          |
@@ -263,6 +262,7 @@ Translator 會偵測下列翻譯和音譯語言。
 | 斯洛伐克文     | `sk`          |
 | 斯洛維尼亞文      | `sl`          |
 | 西班牙文      | `es`          |
+| 史瓦西里文      | `sw`          |
 | 瑞典文      | `sv`          |
 | 坦米爾文      | `ta`          |
 | 泰文      | `th`          |
@@ -314,7 +314,6 @@ Translator 會偵測下列翻譯和音譯語言。
 | 義大利文      | `it`          |
 | 日文      | `ja`          |
 |坎那達文|`kn`|
-| 史瓦希里文|    `sw`    |
 | 韓文      | `ko`          |
 | 拉脫維亞文      | `lv`          |
 | 立陶宛文      | `lt`          |
@@ -335,6 +334,7 @@ Translator 會偵測下列翻譯和音譯語言。
 | 斯洛伐克文     | `sk`          |
 | 斯洛維尼亞文      | `sl`          |
 | 西班牙文      | `es`          |
+| 史瓦西里文|  `sw`    |
 | 瑞典文      | `sv`          |
 |大溪地文|  `ty`    |
 | 泰文      | `th`          |

@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/13/2020
-ms.openlocfilehash: ee788125a5710e5a8b9861c28c4af8e6d83d5d80
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 651e0635f0b556cd47adfccdbac59ef587570128
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88924532"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91535724"
 ---
 # <a name="ranking-algorithm-in-azure-cognitive-search"></a>Azure 認知搜尋中的排名演算法
 
@@ -61,7 +61,7 @@ PUT https://[search service name].search.windows.net/indexes/[index name]?api-ve
 
 當兩個演算法都可供使用時，[ **相似性** ] 屬性在這段過渡期間很有用。 
 
-| 屬性 | 描述 |
+| 屬性 | 說明 |
 |----------|-------------|
 | 相似度 | 選擇性。 有效的值包括 *"#Microsoft. ClassicSimilarity"* 或 *#Microsoft "BM25Similarity"*。 <br/> 于 `api-version=2019-05-06-Preview` 2020 年7月15日前建立的搜尋服務需要或更新版本。 |
 
@@ -103,9 +103,9 @@ BM25 相似性會新增兩個使用者自訂的參數，以控制計算的相關
 PUT https://[search service name].search.windows.net/indexes/[index name]?api-version=[api-version]&allowIndexDowntime=true
 ```
 
-## <a name="see-also"></a>請參閱  
+## <a name="see-also"></a>另請參閱  
 
-+ [REST API 參考](/rest/api/searchservice/)   
-+ [將評分設定檔新增至索引](index-add-scoring-profiles.md)    
-+ [建立索引 API](/rest/api/searchservice/create-index)   
-+ [Azure 認知搜尋 .NET SDK](/dotnet/api/overview/azure/search?view=azure-dotnet)
++ [REST API 參考](/rest/api/searchservice/)
++ [將評分設定檔新增至索引](index-add-scoring-profiles.md)
++ [建立索引 API](/rest/api/searchservice/create-index)
++ [Azure 認知搜尋 .NET SDK](/dotnet/api/overview/azure/search)

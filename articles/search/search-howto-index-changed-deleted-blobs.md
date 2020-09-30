@@ -8,12 +8,12 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/25/2020
-ms.openlocfilehash: 210a4a352f5130bc67d70f47bdf6305c5a992282
-ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
+ms.openlocfilehash: 2e73039418233c97fc20242ed7af7df14c5b47ee
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91403770"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91534772"
 ---
 # <a name="how-to-set-up-change-and-deletion-detection-for-blobs-in-azure-cognitive-search-indexing"></a>如何在 Azure 認知搜尋索引中設定 blob 的變更和刪除偵測
 
@@ -100,7 +100,11 @@ ms.locfileid: "91403770"
 
 如果您想要將該檔重新編制索引，請變更該 blob 的， `"softDeleteMarkerValue" : "false"` 然後重新執行索引子。
 
-## <a name="see-also"></a>另請參閱
+## <a name="help-us-make-azure-cognitive-search-better"></a>協助我們改善 Azure 認知搜尋
+
+如果您有功能要求或改進的想法，請在 [UserVoice](https://feedback.azure.com/forums/263029-azure-search/) 提供。 如果您需要使用現有功能的協助，請將您的問題張貼在 [Stack Overflow](https://stackoverflow.microsoft.com/questions/tagged/18870)上。
+
+## <a name="next-steps"></a>後續步驟
 
 * [Azure 認知搜尋中的索引子](search-indexer-overview.md)
 * [如何設定 blob 索引子](search-howto-indexing-azure-blob-storage.md)

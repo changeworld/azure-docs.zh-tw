@@ -1,39 +1,37 @@
 ---
-title: 溫度預先建立的實體-LUIS
+title: 溫度預建實體-LUIS
 titleSuffix: Azure Cognitive Services
 description: 本文包含 Language Understanding (LUIS) 中預先建置的 temperature 實體資訊。
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 10/14/2019
-ms.author: diberry
-ms.openlocfilehash: 7e2b48c6353f56ab2269a8718146cb765797adba
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 46161a83d261ae23ca45b7293e48ff15e435f42d
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78270374"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91535333"
 ---
 # <a name="temperature-prebuilt-entity-for-a-luis-app"></a>LUIS 應用程式的溫度預先建置實體
 Temperature 實體會擷取各種溫度類型。 因為此實體已經定型，所以您不需要將包含溫度的範例語句加入應用程式。 [多種文化特色](luis-reference-prebuilt-entities.md)都支援 temperature 實體。
 
 ## <a name="types-of-temperature"></a>溫度類型
-從辨識器[文字](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-NumbersWithUnit.yaml#L819)GitHub 存放庫管理溫度
+溫度可從辨識器 [-文字](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-NumbersWithUnit.yaml#L819) GitHub 存放庫進行管理
 
 ## <a name="resolution-for-prebuilt-temperature-entity"></a>解析預先建置的 temperature 實體
 
-系統會針對查詢傳回下列實體物件：
+查詢會傳回下列實體物件：
 
 `set the temperature to 30 degrees`
 
 
 #### <a name="v3-response"></a>[V3 回應](#tab/V3)
 
-下列 JSON 是將`verbose`參數設定為： `false`
+以下是將 `verbose` 參數設定為的 JSON `false` ：
 
 ```json
 "entities": {
@@ -45,8 +43,8 @@ Temperature 實體會擷取各種溫度類型。 因為此實體已經定型，�
     ]
 }
 ```
-#### <a name="v3-verbose-response"></a>[V3 詳細回應](#tab/V3-verbose)
-下列 JSON 是將`verbose`參數設定為： `true`
+#### <a name="v3-verbose-response"></a>[V3 詳細資訊回應](#tab/V3-verbose)
+以下是將 `verbose` 參數設定為的 JSON `true` ：
 
 ```json
 "entities": {

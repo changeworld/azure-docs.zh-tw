@@ -15,20 +15,34 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/03/2018
 ms.author: apimpm
-ms.openlocfilehash: 7ef1c09b12d3c7e365f090391aa3fa8afa03749b
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: ad1ad622b354215e9837b1154a13bac148d54164
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88214005"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91537339"
 ---
 # <a name="advanced-request-throttling-with-azure-api-management"></a>以 Azure API 管理進行進階要求節流
 能夠節流傳入要求是 Azure API 管理的重要角色。 藉由控制要求的速率或傳輸的要求/資料總量，API 管理讓 API 提供者能夠保護其 API 不被濫用，並建立不同 API 產品層級的價值。
 
+## <a name="rate-limits-and-quotas"></a>速率限制和配額
+速率限制和配額用於不同用途。
+
+### <a name="rate-limits"></a>速率限制
+速率限制通常用來防止短期和密集的大量高載。 例如，如果您知道後端服務在其資料庫中具有高呼叫量的瓶頸，您可以 `rate-limit-by-key` 使用此設定，將原則設定為不允許高呼叫量。
+
+### <a name="quotas"></a>配額
+配額通常用來控制較長一段時間的呼叫率。 例如，他們可以設定特定訂閱者可以在指定月份內進行的呼叫總數。 若要價格化您的 API，您也可以針對以階層為基礎的訂用帳戶設定不同的配額。 例如，基本層訂用帳戶可讓每個月不超過10000的呼叫，但進階層每個月最多可達100000000個電話。
+
+在 Azure API 管理中，速率限制通常會在節點之間更快速地傳播，以防止尖峰。 相反地，使用量配額資訊會使用較長的時間，因此它的執行方式不同。
+
+> [!CAUTION]
+> 由於節流架構的分散本質，速率限制永遠不會完全正確。 已設定和實際允許的要求數目差異會根據要求數量和速率、後端延遲和其他因素而有所不同。
+
 ## <a name="product-based-throttling"></a>產品型節流
 到目前為止，速率節流功能都侷限於特定產品訂用帳戶的範圍內，定義於 Azure 入口網站。 這可協助 API 提供者將限制套用至註冊使用其 API 的開發人員，不過，舉例來說，它無法協助對 API 的個別使用者進行節流。 想讓開發人員的應用程式的單一使用者取用整個配額，並讓開發人員的其他客戶無法使用應用程式，是有可能的。 同樣的，數個產生大量要求的客戶可能會限制偶爾使用者的存取權。
 
-## <a name="custom-key-based-throttling"></a>依自訂索引鍵節流
+## <a name="custom-key-based-throttling"></a>自訂金鑰型節流
 
 > [!NOTE]
 > `rate-limit-by-key` `quota-by-key` 在 Azure API 管理的取用層中，無法使用和原則。 
@@ -80,4 +94,4 @@ ms.locfileid: "88214005"
 Azure API 管理提供速率和配額節流，不但能保護您的 API 服務，並為您的 API 服務增加價值。 新的節流原則與自訂範圍規則，可讓您更精細的控制這些原則，進而讓您的客戶建置更好的應用程式。 本文中的範例示範如何使用這些新原則，分別使用用戶端 IP 位址、使用者身分識別及用戶端產生值來製造速率限制索引鍵。 不過，訊息中還有許多其他部份可以利用，例如使用者代理程式、URL 路徑片段、訊息大小。
 
 ## <a name="next-steps"></a>後續步驟
-請將您的意見反應提供給我們，做為本主題的 GitHub 問題。 我們很想知道其他在您的案例中是合理選擇的可能索引鍵值。
+請將您的意見反應提供給本主題的 GitHub 問題。 我們很想知道其他在您的案例中是合理選擇的可能索引鍵值。

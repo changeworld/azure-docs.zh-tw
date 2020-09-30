@@ -3,12 +3,12 @@ title: 如何保護您的資源階層 - Azure 治理
 description: 了解如何使用包含設定預設管理群組的階層設定來保護您的資源階層。
 ms.date: 09/02/2020
 ms.topic: conceptual
-ms.openlocfilehash: 19d699b54a9979df1030c0f6e294d5a4492f2853
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.openlocfilehash: 8630562786da922a36baa3bec4863acbb21b197d
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89469774"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91533974"
 ---
 # <a name="how-to-protect-your-resource-hierarchy"></a>如何保護您的資源階層
 
@@ -16,9 +16,9 @@ ms.locfileid: "89469774"
 
 管理群組現在具有階層設定，可讓租用戶系統管理員控制這些行為。 本文涵蓋每一個可用的階層設定，以及如何加以設定。
 
-## <a name="rbac-permissions-for-hierarchy-settings"></a>階層設定的 RBAC 權限
+## <a name="azure-rbac-permissions-for-hierarchy-settings"></a>階層設定的 Azure RBAC 許可權
 
-設定任何階層設定需要在根管理群組上進行以下兩個 RBAC 作業：
+設定任何階層設定需要根管理群組上的下列兩個資源提供者作業：
 
 - `Microsoft.Management/managementgroups/settings/write`
 - `Microsoft.Management/managementgroups/settings/read`
@@ -27,7 +27,7 @@ ms.locfileid: "89469774"
 
 ## <a name="setting---default-management-group"></a>設定 - 預設管理群組
 
-根據預設，租用戶內所新增的新訂用帳戶會新增做為根管理群組的成員。 如果原則指派、角色型存取控制 (RBAC) 和其他治理建構已指派給根管理群組，則會立即影響這些新的訂用帳戶。 基於這個理由，許多組織都不會在根管理群組套用這些建構，即使這是所要指派的位置也一樣。 在其他情況下，新的訂用帳戶需要一組限制較嚴格的控制項，但不應指派給所有訂用帳戶。 這項設定支援兩種使用案例。
+根據預設，租用戶內所新增的新訂用帳戶會新增做為根管理群組的成員。 如果原則指派、Azure 角色型存取控制 (Azure RBAC) ，而其他治理結構指派給根管理群組，則會立即影響這些新的訂用帳戶。 基於這個理由，許多組織都不會在根管理群組套用這些建構，即使這是所要指派的位置也一樣。 在其他情況下，新的訂用帳戶需要一組限制較嚴格的控制項，但不應指派給所有訂用帳戶。 這項設定支援兩種使用案例。
 
 藉由允許定義新訂用帳戶的預設管理群組，可在根管理群組中套用整個組織的治理結構，而且可以定義更適合新訂用帳戶的個別管理群組和原則指派或 Azure 角色指派。
 

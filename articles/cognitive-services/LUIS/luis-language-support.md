@@ -3,20 +3,18 @@ title: 語言支援 - LUIS
 titleSuffix: Azure Cognitive Services
 description: LUIS 在服務內有各種不同的功能。 並非所有功能都有相同的語言地位。 請確定您有興趣的功能支援您所針對的語言文化特性。 LUIS 應用程式是特定文化特性，一旦設定就無法變更。
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 12/09/2019
-ms.author: diberry
-ms.openlocfilehash: b60a777960f3c6f8a2415ca551217d35b7f3497d
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: e377f910e1c1ddda864ea312b40fe3608c166376
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88588017"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541385"
 ---
 # <a name="language-and-region-support-for-luis"></a>LUIS 支援的語言與區域
 
@@ -30,7 +28,7 @@ LUIS 在服務內有各種不同的功能。 並非所有功能都有相同的�
 
 LUIS 可理解下列語言的語句：
 
-| 語言 |Locale  |  預建網域 | 預建實體 | 片語清單建議 | **[文字分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)<br>(情感和<br>關鍵字)|
+| 語言 |地區設定  |  預建網域 | 預建實體 | 片語清單建議 | **[文字分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)<br>(情感和<br>關鍵字)|
 |--|--|:--:|:--:|:--:|:--:|
 | 英文 (美國) |`en-US` | ✔ | ✔  |✔|✔|
 | 阿拉伯文 (preview-新式標準阿拉伯文)  |`ar-AR`|-|-|-|-|

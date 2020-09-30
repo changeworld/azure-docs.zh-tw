@@ -1,23 +1,23 @@
 ---
 title: 新增/移除 Azure 檔案同步伺服器端點 | Microsoft Docs
-description: 瞭解如何新增或移除具有 Azure 檔案同步的伺服器端點。伺服器端點是已註冊伺服器上的特定位置，例如伺服器磁片區上的資料夾。
+description: 瞭解如何使用 Azure 檔案同步來新增或移除伺服器端點。伺服器端點是已註冊伺服器上的特定位置，例如伺服器磁片區上的資料夾。
 author: roygara
 ms.service: storage
 ms.topic: how-to
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 9273ca66c0304afc5df58ace5dd584c20c90abfd
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: f75f0d1ae12db11590f8ce62f3c7b4c0f3e12817
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905052"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541487"
 ---
 # <a name="addremove-an-azure-file-sync-server-endpoint"></a>新增/移除 Azure 檔案同步伺服器端點
 Azure 檔案同步可讓您將組織的檔案共用集中在「Azure 檔案服務」中，而不需要犧牲內部部署檔案伺服器的靈活度、效能及相容性。 它會將您的 Windows Server 轉換成 Azure 檔案共用的快速快取來達到這個目的。 您可以使用 Windows Server 上可用的任何通訊協定來存取本機資料 (包括 SMB、NFS 和 FTPS)，並且可以在世界各地擁有任何所需數量的快取。
 
-*伺服器端點*代表*已註冊伺服器*上的特定位置，例如伺服器磁片區上的資料夾或磁片區的根目錄。 相同磁碟區中可以有多個伺服器端點，但前提是其命名空間未重疊 (例如 F:\sync1 和 F:\sync2)。 您可以為每個伺服器端點個別設定雲端階層原則。 如果您將內含一組現有檔案的伺服器位置當作伺服器端點新增至同步群組，那些檔案會與同步群組中其他端點上已存在的任何其他檔案合併。
+*伺服器端點*代表*已註冊的伺服器*上的特定位置，例如伺服器磁片區上的資料夾或磁片區的根目錄。 如果多個伺服器端點的命名空間不重迭 (（例如 F:\sync1 和 F:\sync2) ，而且每個端點正在同步處理至唯一的同步處理群組），則相同磁片區中可以存在多個伺服器端點。 您可以為每個伺服器端點個別設定雲端階層原則。 如果您將內含一組現有檔案的伺服器位置當作伺服器端點新增至同步群組，那些檔案會與同步群組中其他端點上已存在的任何其他檔案合併。
 
 如需如何從頭到尾部署 Azure 檔案同步的資訊，請參閱[如何部署 Azure 檔案同步](storage-sync-files-deployment-guide.md)。
 
@@ -55,10 +55,10 @@ Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.Se
 Invoke-StorageSyncFileRecall -Path <path-to-to-your-server-endpoint> -Order CloudTieringPolicy
 ```
 指定 `-Order CloudTieringPolicy` 將會先重新叫用最近修改過的檔案。
-其他選擇性但要考慮的實用參數包括：
-* `-ThreadCount`決定可平行重新叫用的檔案數目。
-* `-PerFileRetryCount`決定嘗試重新叫用目前已封鎖之檔案的頻率。
-* `-PerFileRetryDelaySeconds`決定重試重新叫用嘗試之間的時間（以秒為單位），且應一律與先前的參數搭配使用。
+其他選擇性但可考慮的實用參數如下：
+* `-ThreadCount` 決定可平行回收的檔案數目。
+* `-PerFileRetryCount`判斷嘗試重新叫用目前封鎖之檔案的頻率。
+* `-PerFileRetryDelaySeconds`判斷重試重新叫用嘗試之間的時間（以秒為單位），且應一律搭配先前的參數使用。
 
 > [!Note]  
 > 如果裝載伺服器的本機磁碟區沒有足以重新叫用所有已分層資料的可用空間，`Invoke-StorageSyncFileRecall` Cmdlet 將會失敗。  

@@ -3,20 +3,18 @@ title: 如何執行批次測試-LUIS
 titleSuffix: Azure Cognitive Services
 description: 使用 Language Understanding (LUIS) 批次測試集，找出具有錯誤意圖和實體的語句。
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/17/2020
-ms.author: diberry
-ms.openlocfilehash: ee15d08c820492cfa2c0701dfe3b682d57e00187
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 8b34005f2796403e32b41a93e4163c7da16d40bb
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344402"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540943"
 ---
 # <a name="batch-testing-with-a-set-of-example-utterances"></a>使用一組範例語句的批次測試
 
@@ -36,18 +34,18 @@ ms.locfileid: "84344402"
 
 3. 在 [ 資料集名稱]**** 欄位中，為資料集檔案輸入一個名稱。 資料集檔案包含**語句的陣列**，其中包括標記的意圖** 和實體**。 針對語法，請檢閱[範例批次檔](luis-concept-batch-test.md#batch-file-format)。
 
-4. 選取 [完成] 。 系統會新增資料集檔案。
+4. 選取 [完成]。 系統會新增資料集檔案。
 
 ## <a name="run-rename-export-or-delete-dataset"></a>執行、重新命名、匯出或刪除資料集
 
 若要執行、重新命名、匯出或刪除資料集，請使用位於資料集列尾端的省略符號 (***...***) 按鈕。
 
 > [!div class="mx-imgBorder"]
-> ![具有選項的批次測試清單的螢幕擷取畫面](./media/luis-how-to-batch-test/batch-testing-options.png)
+> ![選項的批次測試清單螢幕擷取畫面](./media/luis-how-to-batch-test/batch-testing-options.png)
 
 ## <a name="run-a-batch-test-on-your-trained-app"></a>對已定型的應用程式執行批次測試
 
-若要執行測試，請選取資料集名稱，然後從內容相關的工具列中選取 [**執行**]。 當測試完成時，此列會顯示該資料集的測試結果。
+若要執行測試，請選取資料集名稱，然後從內容工具列中選取 [ **執行** ]。 當測試完成時，此列會顯示該資料集的測試結果。
 
 可下載的資料集和針對批次測試所上傳的檔案相同。
 
