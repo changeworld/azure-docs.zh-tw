@@ -8,12 +8,12 @@ ms.subservice: enterprise
 ms.topic: conceptual
 ms.date: 09/03/2020
 ms.author: banders
-ms.openlocfilehash: 564acd6d6072a4308141942666cc0ebcc0ad0136
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 13b344d3f13993dc7b6acf7bfe9a0ccdea0c866b
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89433512"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371349"
 ---
 # <a name="managing-azure-enterprise-roles"></a>管理 Azure 企業角色
 
@@ -114,12 +114,12 @@ Azure EA 系統管理員建立部門之後，Azure 企業系統管理員就可�
 |帳戶擁有者或部門系統管理員|✘ 已停用 |無|沒有價格|
 |None|不適用 |擁有者|零售價格|
 
-您會在企業版入口網站中設定企業系統管理員角色和檢視費用原則。 Azure 角色可以在 Azure 入口網站中更新。 如需詳細資料，請參閱[使用 RBAC 和 Azure 入口網站來管理存取權](../../role-based-access-control/role-assignments-portal.md)。
+您會在企業版入口網站中設定企業系統管理員角色和檢視費用原則。 Azure 角色可以在 Azure 入口網站中更新。 如需詳細資訊，請參閱[使用 Azure 入口網站新增或移除 Azure 角色指派](../../role-based-access-control/role-assignments-portal.md)。
 
 
 
 ## <a name="next-steps"></a>後續步驟
 
 - [管理對 Azure 帳單資訊的存取](manage-billing-access.md)
-- [使用 RBAC 和 Azure 入口網站來管理存取權](../../role-based-access-control/role-assignments-portal.md)
+- [使用 Azure 入口網站新增或移除 Azure 角色指派](../../role-based-access-control/role-assignments-portal.md)
 - [Azure 內建角色](../../role-based-access-control/built-in-roles.md)

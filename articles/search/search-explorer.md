@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 06/07/2020
-ms.openlocfilehash: 8f004ff8118829ebf2d245a136cf22cdde23accc
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/25/2020
+ms.openlocfilehash: adcd07ad370ad9f1301caa41c494a33958743dd8
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88929783"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91398403"
 ---
 # <a name="quickstart-use-search-explorer-to-run-queries-in-the-portal"></a>快速入門：使用搜尋總管在入口網站中執行查詢
 
@@ -37,11 +37,11 @@ ms.locfileid: "88929783"
 
 1. 從命令列開啟搜尋總管：
 
-   ![入口網站中的搜尋總管命令](./media/search-explorer/search-explorer-cmd2.png "入口網站中的搜尋總管命令")
+   :::image type="content" source="media/search-explorer/search-explorer-cmd2.png" alt-text="入口網站中的搜尋總管命令" border="false":::
 
     或者，在開啟的索引上使用內嵌的 [搜尋總管] 索引標籤：
 
-   ![搜尋總管索引標籤](./media/search-explorer/search-explorer-tab.png "搜尋總管索引標籤")
+   :::image type="content" source="media/search-explorer/search-explorer-tab.png" alt-text="入口網站中的搜尋總管命令" border="false":::
 
 ## <a name="unspecified-query"></a>未指定的查詢
 
@@ -55,7 +55,7 @@ ms.locfileid: "88929783"
 
    **結果**
    
-   ![空的查詢範例](./media/search-explorer/search-explorer-example-empty.png "不合格或空的查詢範例")
+   :::image type="content" source="media/search-explorer/search-explorer-example-empty.png" alt-text="入口網站中的搜尋總管命令" border="false":::
 
 ## <a name="free-text-search"></a>任意文字搜尋
 
@@ -71,7 +71,7 @@ ms.locfileid: "88929783"
 
    您可以使用 Ctrl-F 來搜尋結果中感興趣的特定字詞。
 
-   ![任意文字查詢範例](./media/search-explorer/search-explorer-example-freetext.png "任意文字查詢範例")
+   :::image type="content" source="media/search-explorer/search-explorer-example-freetext.png" alt-text="入口網站中的搜尋總管命令" border="false":::
 
 ## <a name="count-of-matching-documents"></a>相符文件的計數 
 
@@ -83,7 +83,7 @@ ms.locfileid: "88929783"
 
    **結果**
 
-   ![文件計數範例](./media/search-explorer/search-explorer-example-count.png "索引中相符文件的計數")
+   :::image type="content" source="media/search-explorer/search-explorer-example-count.png" alt-text="入口網站中的搜尋總管命令" border="false":::
 
 ## <a name="limit-fields-in-search-results"></a>限制搜尋結果中的欄位
 
@@ -95,7 +95,7 @@ ms.locfileid: "88929783"
 
    **結果**
 
-   ![限制欄位範例](./media/search-explorer/search-explorer-example-selectfield.png "限制搜尋結果中的欄位")
+   :::image type="content" source="media/search-explorer/search-explorer-example-selectfield.png" alt-text="入口網站中的搜尋總管命令" border="false":::
 
 ## <a name="return-next-batch-of-results"></a>傳回下一個批次的結果
 
@@ -107,7 +107,7 @@ Azure 認知搜尋服務會根據搜尋排名傳回前 50 個相符項目。 若
 
    **結果**
 
-   ![批次搜尋結果](./media/search-explorer/search-explorer-example-topskip.png "傳回搜尋結果的下一個批次")
+   :::image type="content" source="media/search-explorer/search-explorer-example-topskip.png" alt-text="入口網站中的搜尋總管命令" border="false":::
 
 ## <a name="filter-expressions-greater-than-less-than-equal-to"></a>篩選條件運算式 (大於、小於、等於)
 
@@ -119,7 +119,7 @@ Azure 認知搜尋服務會根據搜尋排名傳回前 50 個相符項目。 若
    
    **結果**
 
-   ![篩選運算式](./media/search-explorer/search-explorer-example-filter.png "依準則篩選")
+   :::image type="content" source="media/search-explorer/search-explorer-example-filter.png" alt-text="入口網站中的搜尋總管命令" border="false":::
 
 ## <a name="order-by-expressions"></a>Order-by 運算式
 
@@ -131,7 +131,7 @@ Azure 認知搜尋服務會根據搜尋排名傳回前 50 個相符項目。 若
    
    **結果**
 
-   ![OrderBy 運算式](./media/search-explorer/search-explorer-example-ordery.png "變更排序次序")
+   :::image type="content" source="media/search-explorer/search-explorer-example-ordery.png" alt-text="入口網站中的搜尋總管命令" border="false":::
 
 **$filter** 和 **$orderby** 運算式都是 OData 建構。 如需詳細資訊，請參閱[篩選 OData 語法](/rest/api/searchservice/odata-expression-syntax-for-azure-search)。
 

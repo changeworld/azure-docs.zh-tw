@@ -9,12 +9,12 @@ ms.topic: troubleshooting
 ms.date: 08/20/2019
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: bd7f1ff20189b971ba32e5c4b40b380fc22611b2
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: bd0abadb624bced7f603fcbd112f7c422e88fc0c
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686848"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371842"
 ---
 # <a name="troubleshoot-enterprise-cost-views"></a>為企業成本檢視疑難排解
 
@@ -41,7 +41,7 @@ ms.locfileid: "88686848"
 
 ![顯示「資產無法使用」訊息的螢幕擷取畫面。](./media/enterprise-mgmt-grp-troubleshoot-cost-view/asset-not-found.png)
 
-向 Azure 訂用帳戶或管理群組系統管理員要求存取。 如需詳細資料，請參閱[使用 RBAC 和 Azure 入口網站來管理存取權](../../role-based-access-control/role-assignments-portal.md)。
+向 Azure 訂用帳戶或管理群組系統管理員要求存取。 如需詳細資訊，請參閱[使用 Azure 入口網站新增或移除 Azure 角色指派](../../role-based-access-control/role-assignments-portal.md)。
 
 ## <a name="next-steps"></a>後續步驟
 - 如果您有問題或需要協助，請[建立支援要求](https://go.microsoft.com/fwlink/?linkid=2083458)。

@@ -7,13 +7,13 @@ author: tchristiani
 ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 06/10/2020
-ms.openlocfilehash: a4e686fe7adcc7e990a26484bc5850de977e862a
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/25/2020
+ms.openlocfilehash: 3ecef629e38e2823bea101af47899f9b7d6845f0
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88924583"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399834"
 ---
 # <a name="tutorial-build-and-deploy-a-custom-skill-with-azure-machine-learning"></a>教學課程：使用 Azure Machine Learning 建置和部署自訂技能 
 
@@ -82,8 +82,7 @@ ms.locfileid: "88924583"
 
 在入口網站中，移至 [技能]，然後選取 [技能定義 (JSON)] 連結。 入口網站將會顯示在筆記本的第一個資料格中建立的技能 JSON。 在顯示的右側有一個下拉式功能表，您可以在其中選取技能定義範本。 選取 Azure Machine Learning (AML) 範本。 提供 Azure ML 工作區的名稱，以及部署至推斷叢集的模型端點。 隨即會以端點的 URI 和索引鍵更新範本。
 
-> [!div class="mx-imgBorder"]
-> ![技能定義範本](media/cognitive-search-aml-skill/portal-aml-skillset-definition.png)
+> :::image type="content" source="media/cognitive-search-aml-skill/portal-aml-skillset-definition.png" alt-text="技能定義範本":::
 
 從視窗複製技能範本，並將它貼上左側的技能定義中。 編輯範本以提供以下的遺漏值：
 

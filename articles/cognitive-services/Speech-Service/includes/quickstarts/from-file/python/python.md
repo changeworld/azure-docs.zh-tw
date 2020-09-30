@@ -4,19 +4,19 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/20/2020
 ms.author: trbye
-ms.openlocfilehash: 2e6be94a7fc83c6da8bf7a46fde6ea0f5ef7c764
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 9365b4bbf6e6fb37156b6e9f24b923591945ea52
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81400534"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91377345"
 ---
 ## <a name="prerequisites"></a>必要條件
 
 開始之前，請務必：
 
 > [!div class="checklist"]
-> * [建立 Azure 語音資源](../../../../get-started.md)
+> * [建立 Azure 語音資源](../../../../overview.md#try-the-speech-service-for-free)
 > * [建立 LUIS 應用程式並取得端點金鑰](../../../../quickstarts/create-luis.md)
 > * [設定您的開發環境並建立空白專案](../../../../quickstarts/setup-platform.md?pivots=programming-language-python)
 

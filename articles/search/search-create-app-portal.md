@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 07/01/2020
-ms.openlocfilehash: 6adbd83ddfbdb82d1054d4e74dd9492d08583ede
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.date: 09/25/2020
+ms.openlocfilehash: b69feec7249c80fc63d803a14f360614bcf880fa
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89292532"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399817"
 ---
 # <a name="quickstart-create-a-demo-app-in-the-portal-azure-cognitive-search"></a>快速入門：在入口網站中建立示範應用程式 (Azure 認知搜尋)
 
@@ -35,7 +35,7 @@ ms.locfileid: "89292532"
 
   本快速入門會使用內建的房地產資料和索引範例，因為其具有縮圖影像 (精靈可支援將影像新增至結果頁面)。 若要建立此練習中所用的索引，請執行**匯入資料**精靈，並選擇 realestate-us-sample 資料來源。
 
-  ![資料範例的資料來源頁面](media/search-create-app-portal/import-data-realestate.png)
+  :::image type="content" source="media/search-create-app-portal/import-data-realestate.png" alt-text="資料範例的資料來源頁面" border="false":::
 
 當索引已可供使用時，請繼續進行下一個步驟。
 
@@ -61,7 +61,7 @@ ms.locfileid: "89292532"
 
 1. 在 [描述] 中，請選擇會提供詳細資料的欄位，以便協助使用者決定是否要點選以獲得該特定文件。
 
-   ![設定範例資料的結果](media/search-create-app-portal/configure-results.png)
+   :::image type="content" source="media/search-create-app-portal/configure-results.png" alt-text="資料範例的資料來源頁面" border="false":::
 
 ## <a name="add-a-sidebar"></a>新增提要欄位
 
@@ -83,7 +83,7 @@ ms.locfileid: "89292532"
 
 下列螢幕擷取畫面顯示精靈中的選項，以及應用程式中所呈現的頁面。 您可以看到欄位選取項目的使用方式，以及「顯示欄位名稱」如何用來在建議內包含或排除標籤。
 
-![查詢建議設定](media/search-create-app-portal/suggestions.png)
+:::image type="content" source="media/search-create-app-portal/suggestions.png" alt-text="資料範例的資料來源頁面":::
 
 ## <a name="create-download-and-execute"></a>建立、下載和執行
 
@@ -95,7 +95,7 @@ ms.locfileid: "89292532"
 
 基礎索引會由所產生的虛構資料構成，這些資料已複製到各個文件，且描述有時會與影像不符。 當您建立以自己的索引為基礎的應用程式時，應該會有更完整的體驗。
 
-![執行應用程式](media/search-create-app-portal/run-app.png)
+:::image type="content" source="media/search-create-app-portal/run-app.png" alt-text="資料範例的資料來源頁面":::
 
 
 ## <a name="clean-up-resources"></a>清除資源

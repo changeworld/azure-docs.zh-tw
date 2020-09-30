@@ -7,13 +7,13 @@ ms.author: terrychr
 manager: nitinme
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 05/19/2020
-ms.openlocfilehash: b6164ef955ac92a7ef8776e560ea4d3a92abaf8d
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/25/2020
+ms.openlocfilehash: 8bbd0b1979da69e5d4d18009100a7caee5a3d722
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935971"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397397"
 ---
 # <a name="tutorial-diagnose-repair-and-commit-changes-to-your-skillset"></a>教學課程：診斷、修復及認可技能集的變更
 
@@ -59,7 +59,7 @@ REST 呼叫需要服務 URL 和每個要求的存取金鑰。 建立搜尋服務
 
 1. 在 [設定] >  [金鑰] 中，取得服務上完整權限的管理金鑰。 可互換的管理金鑰有兩個，可在您需要變換金鑰時提供商務持續性。 您可以在新增、修改及刪除物件的要求上使用主要或次要金鑰。
 
-![取得 HTTP 端點和存取金鑰](media/search-get-started-postman/get-url-key.png "取得 HTTP 端點和存取金鑰")
+:::image type="content" source="media/search-get-started-postman/get-url-key.png" alt-text="取得 HTTP 端點和存取金鑰" border="false":::
 
 所有要求均都需要在傳送至您服務上的每個要求上使用 API 金鑰。 擁有有效的金鑰就能為每個要求在傳送要求之應用程式與處理要求之服務間建立信任。
 
@@ -78,15 +78,13 @@ REST 呼叫需要服務 URL 和每個要求的存取金鑰。 建立搜尋服務
 1. 在 Azure 儲存體帳戶的金鑰頁面中，輸入 storageConnectionString。
 1. 輸入您在儲存體帳戶中建立之容器的 containerName。
 
-> [!div class="mx-imgBorder"]
-> ![在 Postman 中編輯變數](media/cognitive-search-debug/postman-enter-variables.png)
+> :::image type="content" source="media/cognitive-search-debug/postman-enter-variables.png" alt-text="取得 HTTP 端點和存取金鑰":::
 
 集合包含四個用來完成此區段的不同 REST 呼叫。
 
 第一個呼叫會建立資料來源。 第 1 課：建立 Windows Azure 儲存體物件`clinical-trials-ds`。 第二個呼叫會建立技能集 `clinical-trials-ss`。 第三個呼叫會建立索引 `clinical-trials`。 第四個、也就是最後一個呼叫，會建立索引子 `clinical-trials-idxr`。 在集合中的所有呼叫都完成之後，請關閉 Postman，並返回 Azure 入口網站。
 
-> [!div class="mx-imgBorder"]
-> ![使用 Postman 建立資料來源](media/cognitive-search-debug/postman-create-data-source.png)
+> :::image type="content" source="media/cognitive-search-debug/postman-create-data-source.png" alt-text="取得 HTTP 端點和存取金鑰":::
 
 ## <a name="check-the-results"></a>查看結果
 
@@ -109,8 +107,7 @@ REST 呼叫需要服務 URL 和每個要求的存取金鑰。 建立搜尋服務
 
 ## <a name="start-your-debug-session"></a>啟動您的偵錯工作階段
 
-> [!div class="mx-imgBorder"]
-> ![啟動新的偵錯工作階段](media/cognitive-search-debug/new-debug-session-screen-required.png)
+> :::image type="content" source="media/cognitive-search-debug/new-debug-session-screen-required.png" alt-text="取得 HTTP 端點和存取金鑰":::
 
 1. 按一下 [偵錯工作階段 (預覽) ] 索引標籤。
 1. 選取 +NewDebugSession
@@ -123,8 +120,7 @@ REST 呼叫需要服務 URL 和每個要求的存取金鑰。 建立搜尋服務
 > [!Important]
 > 偵錯工作階段僅適用於單一文件。 您可以選取資料集中的特定文件，否則工作階段將會預設為第一份文件。
 
-> [!div class="mx-imgBorder"]
-> ![啟動新的偵錯工作階段](media/cognitive-search-debug/debug-execution-complete1.png)
+> :::image type="content" source="media/cognitive-search-debug/debug-execution-complete1.png" alt-text="取得 HTTP 端點和存取金鑰":::
 
 偵錯工作階段執行完成後，工作階段會預設為 [AI 擴充] 索引標籤，並醒目提示技能圖表。
 
@@ -144,8 +140,7 @@ REST 呼叫需要服務 URL 和每個要求的存取金鑰。 建立搜尋服務
 1. 選取行首的 **</>** 符號，然後開啟運算式評估工具。
 1. 按一下 [評估] 按鈕，以確認此運算式會產生錯誤。 這會確認 "languageCode" 屬性不是有效的輸入。
 
-> [!div class="mx-imgBorder"]
-> ![運算式評估工具](media/cognitive-search-debug/expression-evaluator-language.png)
+> :::image type="content" source="media/cognitive-search-debug/expression-evaluator-language.png" alt-text="取得 HTTP 端點和存取金鑰":::
 
 有兩種方式可研究工作階段中的這項錯誤。 第一種方式是查看輸入來自何處 - 階層中的哪項技能最有可能產生此結果？ [技能詳細資料] 窗格中的 [執行] 索引標籤應該會顯示輸入的來源。 如果沒有來源，就表示有欄位對應錯誤。
 
@@ -153,80 +148,25 @@ REST 呼叫需要服務 URL 和每個要求的存取金鑰。 建立搜尋服務
 1. 查看 INPUTS 並尋找 "languageCode"。 此輸入的來源並未列出。 
 1. 切換至左窗格以顯示豐富型資料結構。 沒有任何對應的路徑對應至 "languageCode"。
 
-> [!div class="mx-imgBorder"]
-> ![豐富型資料結構](media/cognitive-search-debug/enriched-data-structure-language.png)
-
-"language" 有對應的路徑。 這表示技能設定中有錯字。 若要修正此問題，必須在具有運算式 '/document/language' 的 #1 技能中更新運算式。
-
-1. 對路徑 "language" 開啟運算式評估工具 **</>** 。
-1. 複製運算式。 關閉視窗。
-1. 移至 #1 技能的 [技能設定]，然後對輸入 "languageCode" 開啟運算式評估工具 **</>** 。
-1. 將新的值 '/document/language' 貼入 [運算式] 方塊中，然後按一下 [評估]。
-1. 此時應該會顯示正確的輸入 "en"。 按一下 [套用] 以更新運算式。
-1. 在右側的 [技能詳細資料] 窗格中，按一下 [儲存]。
-1. 在工作階段的視窗功能表中，按一下 [執行]。 如此即會使用文件再次執行技能集。 
-
-在偵錯工作階段執行完成後，按一下 [錯誤/警告] 索引標籤，此時會顯示標示為 "Enrichment.NerSkillV2.#1" 的錯誤已消失。 但仍有兩個警告，指出服務無法將組織和位置的輸出欄位對應至搜尋索引。 有遺漏的值：'/document/merged_content/organizations' 和 '/document/merged_content/locations'。
+> :::image type="content" source="media/cognitive-search-debug/enriched-data-structure-language.png" alt-text="取得 HTTP 端點和存取金鑰" 的錯誤已消失。 但仍有兩個警告，指出服務無法將組織和位置的輸出欄位對應至搜尋索引。 有遺漏的值：'/document/merged_content/organizations' 和 '/document/merged_content/locations'。
 
 ## <a name="fix-missing-skill-output-values"></a>修正遺漏的技能輸出值
 
-> [!div class="mx-imgBorder"]
-> ![錯誤和警告](media/cognitive-search-debug/warnings-missing-value-locations-organizations.png)
+> :::image type="content" source="media/cognitive-search-debug/warnings-missing-value-locations-organizations.png" alt-text="取得 HTTP 端點和存取金鑰":::
 
 技能有遺漏的輸出值。 若要識別發生錯誤的技能，請移至 [豐富型資料結構]，尋找值名稱，並查看其原始來源。 在遺漏組織和位置值的案例中，這些值是技能 #1 的輸出。 對每個路徑開啟運算式評估工具 </>，將會顯示分別列為 '/document/content/organizations' 和 '/document/content/locations' 的運算式。
 
-> [!div class="mx-imgBorder"]
-> ![運算式評估工具組織實體](media/cognitive-search-debug/expression-eval-missing-value-locations-organizations.png)
+> :::image type="content" source="media/cognitive-search-debug/expression-eval-missing-value-locations-organizations.png" alt-text="取得 HTTP 端點和存取金鑰" 開啟運算式評估工具 **</>** 。
 
-這些實體的輸出是空的，但預期不應空白。 哪些輸入產生了此結果？
+> :::image type="content" source="media/cognitive-search-debug/input-skill-missing-value-locations-organizations.png" alt-text="取得 HTTP 端點和存取金鑰" 開啟運算式評估工具 **</>** 。
 
-1. 移至 [技能圖表]，然後選取技能 #1。
-1. 在右側的 [技能詳細資料] 窗格中，選取 [執行] 索引標籤。
-1. 對 INPUT "text" 開啟運算式評估工具 **</>** 。
+> :::image type="content" source="media/cognitive-search-debug/merge-output-detail-missing-value-locations-organizations.png" alt-text="取得 HTTP 端點和存取金鑰" 實體開啟運算式評估工具 **</>** 。
 
-> [!div class="mx-imgBorder"]
-> ![文字技能的輸入](media/cognitive-search-debug/input-skill-missing-value-locations-organizations.png)
-
-此輸入的顯示結果看起來不像是文字輸入。 看起來像是以新行圍繞的影像。 缺少文字表示無法識別實體。 查看技能集的階層時，會發現內容先由 #6 (OCR) 技能處理，然後再傳至 #5 (合併) 技能。 
-
-1. 在 [技能圖表] 中選取 #5 (合併) 技能。
-1. 在右側的 [技能詳細資料] 窗格中選取 [執行] 索引標籤，然後對 OUTPUTS "mergedText" 開啟運算式評估工具 **</>** 。
-
-> [!div class="mx-imgBorder"]
-> ![合併技能的輸出](media/cognitive-search-debug/merge-output-detail-missing-value-locations-organizations.png)
-
-這裡的文字會與影像成對顯示。 查看運算式 '/document/merged_content' 時，可看到 #1 技能的 "organizations" 和 "locations" 路徑中的錯誤。 不應使用 '/document/content'，而應使用 '/document/merged_content' 作為 "text" 輸入。
-
-1. 複製 "mergedText" 輸出的運算式，然後關閉 [運算式評估工具] 視窗。
-1. 在 [技能圖表] 中選取技能 #1。
-1. 在右側的 [技能詳細資料] 窗格中，選取 [技能設定] 索引標籤。
-1. 對 "text" 輸入開啟運算式評估工具 **</>** 。
-1. 將新的運算式貼入方塊中。 按一下 [評估]。
-1. 此時應該會顯示正確的輸入，內含新增的文字。 按一下 [套用] 以更新技能設定。
+> :::image type="content" source="media/cognitive-search-debug/skill-output-detail-missing-value-locations-organizations.png" alt-text="取得 HTTP 端點和存取金鑰" 的設定並加以編輯，使其顯示為 '/document/merged_content'。
 1. 在右側的 [技能詳細資料] 窗格中，按一下 [儲存]。
 1. 在工作階段視窗功能表中，按一下 [執行]。 如此即會使用文件再次執行技能集。
 
-在索引子執行完成後，錯誤仍存在。 回到技能 #1 加以調查。 該技能的輸入已從 'content' 更正為 'merged_content'。 技能中的這些實體產生了哪些輸出？
-
-1. 選取 [AI 擴充] 索引標籤。
-1. 選取 [技能圖表]，然後按一下技能 #1。
-1. 瀏覽 [技能設定] 以尋找 "outputs"。
-1. 對 "organizations" 實體開啟運算式評估工具 **</>** 。
-
-> [!div class="mx-imgBorder"]
-> ![組織實體的輸出](media/cognitive-search-debug/skill-output-detail-missing-value-locations-organizations.png)
-
-評估運算式的結果後，得到了正確的結果。 技能有效識別出實體 "organizations" 的正確值。 不過，實體路徑中的輸出對應仍擲回錯誤。 將技能中的輸出路徑與錯誤中的輸出路徑進行比較時，作為輸出、組織和位置父代的技能位於 /document/content 節點下。 但輸出欄位對應預期結果會在 /document/merged_content 節點下成為父代。 在上一個步驟中，輸入已從 '/document/content' 變更為 '/document/merged_content'。 您必須變更技能設定中的內容，以確保輸出會以正確的內容產生。
-
-1. 選取 [AI 擴充] 索引標籤。
-1. 選取 [技能圖表]，然後按一下技能 #1。
-1. 瀏覽 [技能設定] 以尋找 "context"。
-1. 按兩下 "context" 的設定並加以編輯，使其顯示為 '/document/merged_content'。
-1. 在右側的 [技能詳細資料] 窗格中，按一下 [儲存]。
-1. 在工作階段視窗功能表中，按一下 [執行]。 如此即會使用文件再次執行技能集。
-
-> [!div class="mx-imgBorder"]
-> ![技能設定中的內容更正](media/cognitive-search-debug/skill-setting-context-correction-missing-value-locations-organizations.png)
+> :::image type="content" source="media/cognitive-search-debug/skill-setting-context-correction-missing-value-locations-organizations.png" alt-text="取得 HTTP 端點和存取金鑰":::
 
 所有的錯誤都已解決。
 

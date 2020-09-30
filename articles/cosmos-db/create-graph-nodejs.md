@@ -1,20 +1,20 @@
 ---
 title: 使用 Gremlin API 建置 Azure Cosmos DB Node.js 應用程式
 description: 提供可用來連線及查詢 Azure Cosmos DB 的 Node.js 程式碼範例。
-author: luisbosquez
+author: jasonwhowell
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 06/05/2019
-ms.author: lbosq
-ms.custom: devx-track-javascript
-ms.openlocfilehash: f1e619468ecbcd533c8cda725cb316d1e2a0e256
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.author: jasonh
+ms.custom: devx-track-js
+ms.openlocfilehash: c44f7218734af4bc3144137356b85e8845208f6f
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420425"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91409369"
 ---
 # <a name="quickstart-build-a-nodejs-application-by-using-azure-cosmos-db-gremlin-api-account"></a>快速入門：使用 Azure Cosmos DB Gremlin API 帳戶建置 Node.js 應用程式
 
@@ -161,7 +161,7 @@ ms.locfileid: "87420425"
 
     `config.primaryKey = "PRIMARYKEY";`
 
-   :::image type="content" source="./media/create-graph-nodejs/keys.png" alt-text="Azure 入口網站索引鍵刀鋒視窗":::
+   :::image type="content" source="./media/create-graph-nodejs/keys.png" alt-text="在 Azure 入口網站的 [概觀] 頁面中檢視並複製存取金鑰":::
 
 4. 針對 config.database 和 config.collection 的值，輸入資料庫名稱和圖形 (容器) 名稱。 
 

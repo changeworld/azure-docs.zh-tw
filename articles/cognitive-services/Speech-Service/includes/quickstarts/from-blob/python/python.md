@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/04/2020
 ms.author: trbye
-ms.openlocfilehash: 3ca50a9bad36e0174dc4ee0059c9d01fcc18a5f1
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: d69cb782b3be7035b7571653dcb434e44d22da93
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81400935"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91377592"
 ---
 ## <a name="prerequisites"></a>必要條件
 
@@ -17,7 +17,7 @@ ms.locfileid: "81400935"
 
 > [!div class="checklist"]
 > * [設定您的開發環境並建立空白專案](../../../../quickstarts/setup-platform.md?pivots=programming-language-python)
-> * [建立 Azure 語音資源](../../../../get-started.md)
+> * [建立 Azure 語音資源](../../../../overview.md#try-the-speech-service-for-free)
 > * [將原始程式檔上傳至 Azure Blob](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
 
 ## <a name="download-and-install-the-api-client-library"></a>下載並安裝 API 用戶端程式庫

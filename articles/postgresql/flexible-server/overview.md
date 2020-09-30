@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
 ms.date: 09/22/2020
-ms.openlocfilehash: 71cf11673756dcefb828ad1fad0412a791b43efd
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 268eedf6f9d64d52539e20006322b6b1dd9964e8
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90943814"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91439985"
 ---
 # <a name="azure-database-for-postgresql---flexible-server"></a>適用於 PostgreSQL 的 Azure 資料庫 - 彈性伺服器
 
@@ -49,15 +49,14 @@ ms.locfileid: "90943814"
 1. 佈建新的計算 Linux VM。
 2. 將具有資料檔案的儲存體對應到新的虛擬機器
 3. PostgreSQL 資料庫引擎會在新的虛擬機器上上線。
-4. 閘道服務可執行透明容錯移轉，以確保不需要變更應用程式端。
 
 下圖顯示 VM 和儲存體失敗的轉換。
 
- :::image type="content" source="./media/overview/overview-azure-postgres-flex-virtualmachine-storage-failure.png" alt-text="彈性伺服器 - VM 和儲存體失敗":::
+ :::image type="content" source="./media/overview/overview-azure-postgres-flex-virtualmachine.png" alt-text="彈性伺服器 - VM 和儲存體失敗":::
 
 如果已設定區域備援高可用性，服務會在相同 Azure 區域內的可用性區域佈建和維護熱待命伺服器。 來源伺服器上的資料變更會同步複寫到待命伺服器，以確保零資料遺失。 有了區域備援高可用性，一旦觸發計畫或未規劃的容錯移轉事件，待命伺服器就會立即上線，並可處理傳入的異動。 這可讓服務在支援多個可用性區域的 Azure 區域內復原可用性區域失敗，如下圖所示。
 
- :::image type="content" source="./media/business-continuity/concepts-zone-redundant-high-availability-architecture.png" alt-text="區域備援高可用性":::
+ :::image type="content" source="./media/business-continuity/concepts-zone-redundant-high-availability-architecture.png" alt-text="彈性伺服器 - VM 和儲存體失敗":::
 
  如需更多詳細資料，請參閱[高可用性文件](./concepts-high-availability.md)。
 

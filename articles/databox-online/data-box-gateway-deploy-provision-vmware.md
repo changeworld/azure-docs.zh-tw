@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: tutorial
-ms.date: 03/25/2019
+ms.date: 09/25/2020
 ms.author: alkohli
-ms.openlocfilehash: 6488871067416b2cee533561bae47874413d9012
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 4818755e48a4d497d70920a62a9505346176ed73
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892111"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371281"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-vmware"></a>教學課程：在 VMware 中佈建 Azure 資料箱閘道
 
@@ -194,7 +194,7 @@ ms.locfileid: "88892111"
 
    ![輸入虛擬裝置密碼](./media/data-box-gateway-deploy-provision-vmware/image23.png)
 
-6. 步驟 5 至 7 僅適用於在非 DHCP 環境中開機的情況。 如果您是在 DHCP 環境中，請略過這些步驟並前往步驟 8。 如果您是在非 DHCP 環境中讓裝置開機，您會看到此效果的訊息：**使用 Set-HcsIPAddress Cmdlet 設定網路**。 
+6. 步驟 6 至 8 僅適用於在非 DHCP 環境中開機的情況。 如果您是在 DHCP 環境中，請略過這些步驟並前往步驟 9。 如果您是在非 DHCP 環境中讓裝置開機，您會看到此效果的訊息：**使用 Set-HcsIPAddress Cmdlet 設定網路**。 
    
 7. 若要設定網路，請在命令提示字元中使用 `Get-HcsIpAddress` 命令來列出虛擬裝置上已啟用的網路介面。 如果您的裝置有已啟用的單一網路介面，系統指派給該介面的預設名稱會是 `Ethernet`。
 

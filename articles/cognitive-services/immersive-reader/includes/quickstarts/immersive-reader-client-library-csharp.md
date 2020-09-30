@@ -6,25 +6,25 @@ services: cognitive-services
 author: nitinme
 manager: nitinme
 ms.service: cognitive-services
+ms.subservice: immersive-reader
 ms.topic: include
-ms.date: 05/20/2020
+ms.date: 09/14/2020
 ms.author: nitinme
-ms.custom: devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: f3d694a1e1eb368a97d994ebe9885c279ff44463
-ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
+ms.custom: devx-track-js, devx-track-csharp
+ms.openlocfilehash: 08996d7343ccab4c5d6e688b580a8e6e1ca5bceb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/07/2020
-ms.locfileid: "89505371"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91376789"
 ---
-[沈浸式閱讀程式](https://www.onenote.com/learningtools)是經過全面設計的工具，可實作經實證的技術以改善閱讀理解程度。
+[沈浸式閱讀程式](https://www.onenote.com/learningtools)是經過全面設計的工具，可實作經實證的技術並針對入門讀者、語言學習者及存在學習差異 (例如讀寫障礙) 的人士改善其閱讀理解程度。 您可以在應用程式中使用沈浸式閱讀程式來隔離文字，以改善焦點、顯示常用單字的圖片、醒目提示語音的部分、朗讀選取的文字、即時轉譯單字和片語等等。
 
-在本快速入門中，您會從頭開始建置 Web 應用程式，並使用沈浸式閱讀程式用戶端程式庫來整合沈浸式閱讀程式。 本快速入門的完整工作範例可以在[這裡](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-csharp)取得。
-
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/cognitive-services/)。
+在本快速入門中，您會從頭開始建置 Web 應用程式，並使用沈浸式閱讀程式用戶端程式庫來整合沈浸式閱讀程式。 本快速入門的完整工作範例可以在 [GitHub](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-csharp) 取得。
 
 ## <a name="prerequisites"></a>必要條件
 
+* Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/cognitive-services)
 * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads)
 * 為 Azure Active Directory 驗證所設定的沈浸式閱讀程式資源。 遵循[這些指引](../../how-to-create-immersive-reader.md)來設定。 設定範例專案屬性時，您需要這裡建立的一些值。 將工作階段的輸出儲存到文字檔中，以供日後參考。
 
@@ -32,17 +32,17 @@ ms.locfileid: "89505371"
 
 在 Visual Studio 中，使用內建 Model-View-Controller 的 ASP.NET Core Web 應用程式範本和 ASP.NET Core 2.1 來建立新的專案。 將專案命名為 "QuickstartSampleWebApp"。
 
-![新增專案](../../media/quickstart-csharp/1-createproject.png)
+![新增專案 - C#](../../media/quickstart-csharp/1-createproject.png)
 
-![設定新的專案](../../media/quickstart-csharp/2-configureproject.png)
+![設定新的專案 - C#](../../media/quickstart-csharp/2-configureproject.png)
 
-![新的 ASP.NET Core Web 應用程式](../../media/quickstart-csharp/3-createmvc.png)
+![新的 ASP.NET Core Web 應用程式 - C#](../../media/quickstart-csharp/3-createmvc.png)
 
 ## <a name="set-up-authentication"></a>設定驗證
 
 ### <a name="configure-authentication-values"></a>設定驗證值
 
-以滑鼠右鍵按一下_方案總管_中的專案，然後選擇 [管理使用者密碼]。 這樣會開啟名稱為 _secrets.json_ 的檔案。 此檔案不會簽入原始檔控制。 [在此](https://docs.microsoft.com/aspnet/core/security/app-secrets?view=aspnetcore-3.1&tabs=windows)深入了解。 以下列內容取代 secrets.json 的內容，並使用您建立沈浸式閱讀程式資源時提供的值。
+以滑鼠右鍵按一下_方案總管_中的專案，然後選擇 [管理使用者密碼]。 這樣會開啟名稱為 _secrets.json_ 的檔案。 此檔案不會簽入原始檔控制。 [在此](https://docs.microsoft.com/aspnet/core/security/app-secrets?view=aspnetcore-3.1&tabs=windows&preserve-view=true)深入了解。 以下列內容取代 secrets.json 的內容，並使用您建立沈浸式閱讀程式資源時提供的值。
 
 ```json
 {
@@ -53,7 +53,7 @@ ms.locfileid: "89505371"
 }
 ```
 
-### <a name="add-the-microsoftidentitymodelclientsactivedirectory-nuget-package"></a>Add the Microsoft.IdentityModel.Clients.ActiveDirectory NuGet 套件
+### <a name="install-active-directory"></a>安裝 Active Directory
 
 下列程式碼使用 **Microsoft.IdentityModel.Clients.ActiveDirectory** NuGet 套件中的物件，所以您必須在專案中新增該套件的參考。
 
@@ -216,7 +216,7 @@ public async Task<JsonResult> GetTokenAndSubdomain()
 
 請注意，所有文字都會有一個 **lang** 屬性，用於描述文字的語言。 此屬性可協助沈浸式閱讀程式提供相關的語言和文法功能。
 
-## <a name="add-javascript-to-handle-launching-the-immersive-reader"></a>新增 JavaScript 以處理沈浸式閱讀程式的啟動
+## <a name="add-javascript-to-handle-launching-immersive-reader"></a>新增 JavaScript 以處理沈浸式閱讀程式的啟動
 
 「沈浸式閱讀程式」程式庫提供的功能包括啟動沈浸式閱讀程式，以及呈現沈浸式閱讀程式按鈕。 [在此](https://docs.microsoft.com/azure/cognitive-services/immersive-reader/reference)深入了解。
 
@@ -296,18 +296,14 @@ public async Task<JsonResult> GetTokenAndSubdomain()
 
 在瀏覽器中，您應該會看到：
 
-![範例應用程式](../../media/quickstart-csharp/4-buildapp.png)
+![範例應用程式 - C#](../../media/quickstart-csharp/4-buildapp.png)
 
 ## <a name="launch-the-immersive-reader"></a>啟動沈浸式閱讀程式
 
 當您按一下 [沈浸式閱讀程式] 按鈕時，您會看到沈浸式閱讀程式啟動且其內容顯示在頁面上。
 
-![沈浸式閱讀程式](../../media/quickstart-csharp/5-viewimmersivereader.png)
+![沈浸式閱讀程式 - C#](../../media/quickstart-csharp/5-viewimmersivereader.png)
 
 ## <a name="next-steps"></a>後續步驟
 
-* 檢視 [Node.js 快速入門](../../tutorial-nodejs.md)，以查看您還可以使用 Node.js 透過沈浸式閱讀程式執行哪些作業
-* 檢視 [Android 教學課程](../../tutorial-android.md)，以查看您還可以使用適用於 Android 的 Java 或 Kotlin 透過沈浸式閱讀程式 SDK 執行哪些作業
-* 檢視 [iOS 教學課程](../../tutorial-ios.md)，以查看您還可以使用適用於 iOS 的 Swift 透過沈浸式閱讀程式 SDK 執行哪些作業
-* 檢視 [Python 教學課程](../../tutorial-python.md)，以查看您還可以使用 Python 透過沈浸式閱讀程式用戶端程式庫執行哪些作業
 * 探索[沈浸式閱讀程式 SDK](https://github.com/microsoft/immersive-reader-sdk) 和[沈浸式閱讀程式 SDK 參考](../../reference.md)

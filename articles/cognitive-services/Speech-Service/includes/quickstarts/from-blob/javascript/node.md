@@ -4,13 +4,13 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/12/2020
 ms.author: trbye
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 5d1d7008151ae61a72368d3d8ecfaf545a2080fa
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-js
+ms.openlocfilehash: 4d3db2c10c3fd989ac9737e242e3d6eda517a55f
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406160"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91376832"
 ---
 ## <a name="prerequisites"></a>必要條件
 
@@ -18,7 +18,7 @@ ms.locfileid: "87406160"
 
 > [!div class="checklist"]
 > * [設定您的開發環境並建立空白專案](../../../../quickstarts/setup-platform.md?tabs=vs&pivots=programmming-language-javascript)
-> * [建立 Azure 語音資源](../../../../get-started.md)
+> * [建立 Azure 語音資源](../../../../overview.md#try-the-speech-service-for-free)
 > * [將原始程式檔上傳至 Azure Blob](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
 
 ## <a name="create-a-new-js-file"></a>建立新的 JS 檔案

@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 06/23/2020
+ms.date: 09/25/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9c8647e28701316ecd7305e206918c53281deb6b
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: e04c7da40719f77ca478f2ce577688af773f523d
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89004250"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399222"
 ---
 # <a name="tutorial-index-azure-sql-data-using-the-net-sdk"></a>教學課程：使用 .NET SDK 為 Azure SQL 資料編製索引
 
@@ -57,7 +57,7 @@ ms.locfileid: "89004250"
 
 1. 尋找或建立 **SQL Database**。 您可以使用預設值和最低層級的定價層。 建立伺服器的優點之一是您可以指定系統管理員使用者名稱和密碼，以便在稍後步驟中建立和載入資料表。
 
-   ![新增資料庫頁面](./media/search-indexer-tutorial/indexer-new-sqldb.png "新增資料庫頁面")
+   :::image type="content" source="media/search-indexer-tutorial/indexer-new-sqldb.png" alt-text="新增資料庫頁面" border="false":::
 
 1. 按一下 [檢閱 + 建立] 來部署新的伺服器和資料庫。 等候部署伺服器和資料庫。
 
@@ -69,7 +69,7 @@ ms.locfileid: "89004250"
 
 1. 選取檔案，然後按一下 [開啟]。 指令碼應該會看起來如下列螢幕擷取畫面所示：
 
-   ![SQL 指令碼](./media/search-indexer-tutorial/sql-script.png "SQL 指令碼")
+   :::image type="content" source="media/search-indexer-tutorial/sql-script.png" alt-text="新增資料庫頁面" border="false":::
 
 1. 按一下 [執行] 來執行查詢。 在 [結果] 窗格中，您應會看到查詢成功訊息 (3 個資料列)。
 
@@ -99,7 +99,7 @@ API 呼叫需要用到服務 URL 和存取金鑰。 建立搜尋服務時需要�
 
 1. 在 [設定] >  [金鑰] 中，取得服務上完整權限的管理金鑰。 可互換的管理金鑰有兩個，可在您需要變換金鑰時提供商務持續性。 您可以在新增、修改及刪除物件的要求上使用主要或次要金鑰。
 
-   ![取得 HTTP 端點和存取金鑰](media/search-get-started-postman/get-url-key.png "取得 HTTP 端點和存取金鑰")
+   :::image type="content" source="media/search-get-started-postman/get-url-key.png" alt-text="新增資料庫頁面" border="false":::
 
 ## <a name="2---set-up-your-environment"></a>2 - 設定您的環境
 
@@ -201,7 +201,7 @@ public string HotelName { get; set; }
 
 按 F5 以建置及執行解決方案。 此程式會在偵錯模式中執行。 主控台視窗會報告每項作業的狀態。
 
-   ![主控台輸出](./media/search-indexer-tutorial/console-output.png "主控台輸出")
+   :::image type="content" source="media/search-indexer-tutorial/console-output.png" alt-text="新增資料庫頁面" border="false":::
 
 您的程式碼會在 Visual Studio 本機執行，並連線到您在 Azure 上的搜尋服務，搜尋服務再連線到 Azure SQL Database 並擷取資料集。 由於要進行的作業很多，所以會有數個潛在的失敗點。 如果您收到錯誤，請先檢查下列條件：
 
@@ -217,7 +217,7 @@ public string HotelName { get; set; }
 
 1. [登入 Azure 入口網站](https://portal.azure.com/)，然後在搜尋服務的 [概觀] 頁面中，依序開啟每個清單以確認物件已完成建立。 [索引]、[索引子] 和 [資料來源] 分別會有 "hotels"、"azure-sql-indexer" 和 "azure-sql"。
 
-   ![索引子和資料來源圖格](./media/search-indexer-tutorial/tiles-portal.png)
+   :::image type="content" source="media/search-indexer-tutorial/tiles-portal.png" alt-text="新增資料庫頁面" border="false":::
 
 1. 選取 [hotels] 索引。 在 [hotels] 頁面上，第一個索引標籤是 [搜尋總管]。 
 
@@ -225,7 +225,7 @@ public string HotelName { get; set; }
 
    您的索引中的三個項目會以 JSON 文件形式傳回。 搜尋總管會以 JSON 傳回文件，以便您檢視整個結構。
 
-   ![查詢索引](./media/search-indexer-tutorial/portal-search.png "查詢索引")
+   :::image type="content" source="media/search-indexer-tutorial/portal-search.png" alt-text="新增資料庫頁面" border="false":::
    
 1. 接下來，輸入搜尋字串：`search=river&$count=true`。 
 

@@ -4,19 +4,19 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/25/2020
 ms.author: trrwilson
-ms.openlocfilehash: ee6b6c29c89c39c72144371af8268760da843170
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 59e862fe04e7bf715e6e44c783f2cf9c0ecbc7c3
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87375301"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91376341"
 ---
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 開始之前：
 
 > [!div class="checklist"]
-> * [建立 Azure 語音資源](../../../../get-started.md)
+> * [建立 Azure 語音資源](../../../../overview.md#try-the-speech-service-for-free)
 > * [設定您的開發環境並建立空白專案](../../../../quickstarts/setup-platform.md)
 > * 建立連線至 [Direct Line Speech 通道](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)的 Bot
 > * 確定您可以存取麥克風以擷取音訊

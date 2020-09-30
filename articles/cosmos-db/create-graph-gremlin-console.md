@@ -1,18 +1,18 @@
 ---
 title: 使用 TinkerPop Gremlin 主控台查詢 Azure Cosmos DB Gremlin API：教學課程
 description: Azure Cosmos DB 快速入門，說明如何使用 Azure Cosmos DB Gremlin API 建立頂點、邊緣和查詢。
-author: luisbosquez
+author: jasonwhowell
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: quickstart
 ms.date: 07/10/2020
-ms.author: lbosq
-ms.openlocfilehash: e1ce632a04269704b498a69e1a0dd4fe72e00c87
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.author: jasonh
+ms.openlocfilehash: ca1ca258296f5ac8f1fb7120d2965ccacf74b5d5
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543770"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91409386"
 ---
 # <a name="quickstart-create-query-and-traverse-an-azure-cosmos-db-graph-database-using-the-gremlin-console"></a>快速入門：使用 Gremlin 主控台建立、查詢和周遊 Azure Cosmos DB 圖形資料庫
 
@@ -65,11 +65,11 @@ Gremlin 主控台是以 Groovy/Java 為基礎並且在 Linux、Mac 和 Windows �
 
    對於主機值，從 [概觀] 頁面複製 [Gremlin URI] 值：
 
-   :::image type="content" source="./media/create-graph-gremlin-console/gremlin-uri.png" alt-text="在 Azure 入口網站的 [概觀] 頁面上檢視和複製 Gremlin URI 值":::
+   :::image type="content" source="./media/create-graph-gremlin-console/gremlin-uri.png" alt-text="Apache Gremlin 主控台中的 Azure Cosmos DB":::
 
    對於密碼值，從 [金鑰] 頁面複製 [主要金鑰]：
 
-   :::image type="content" source="./media/create-graph-gremlin-console/keys.png" alt-text="在 Azure 入口網站的 [金鑰] 頁面中檢視並複製主要金鑰":::
+   :::image type="content" source="./media/create-graph-gremlin-console/keys.png" alt-text="Apache Gremlin 主控台中的 Azure Cosmos DB":::
 
    remote-secure.yaml 檔案看起來應該像這樣：
 

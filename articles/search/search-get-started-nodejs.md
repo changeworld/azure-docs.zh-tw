@@ -8,14 +8,14 @@ ms.author: heidist
 ms.devlang: nodejs
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 06/23/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 2c97a770dc10168284bebbc038d8c48145c2a385
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/25/2020
+ms.custom: devx-track-js
+ms.openlocfilehash: ab3142426b12f86b9f8afa84ce0ea05fc1939eec
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88917885"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400599"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-nodejs-using-rest-apis"></a>快速入門：使用 REST API 在 Node.js 中建立 Azure 認知搜尋索引
 > [!div class="op_single_selector"]
@@ -60,7 +60,7 @@ ms.locfileid: "88917885"
 
     一併取得查詢金鑰。 最佳做法是發出具有唯讀存取權的查詢要求。
 
-![取得服務名稱及管理和查詢金鑰](media/search-get-started-nodejs/service-name-and-keys.png)
+:::image type="content" source="media/search-get-started-nodejs/service-name-and-keys.png" alt-text="取得服務名稱及管理和查詢金鑰" border="false":::
 
 在傳送至您服務的每個要求的標頭中都需要有 api-key。 有效的金鑰能為每個要求在傳送要求之應用程式與處理要求的服務間建立信任。
 
@@ -473,7 +473,7 @@ run();
 
 在 Azure 入口網站中開啟搜尋服務的**概觀**。 選取 [索引]  標籤。您應該會看到如下的內容：
 
-![Azure 入口網站、搜尋服務概觀、索引標籤的螢幕擷取畫面](media/search-get-started-nodejs/create-index-no-data.png)
+:::image type="content" source="media/search-get-started-nodejs/create-index-no-data.png" alt-text="取得服務名稱及管理和查詢金鑰" border="false":::
 
 在下一個步驟中，您會將資料新增至索引。 
 

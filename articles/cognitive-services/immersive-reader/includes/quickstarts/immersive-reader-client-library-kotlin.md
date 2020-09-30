@@ -6,25 +6,25 @@ services: cognitive-services
 author: dylankil
 manager: guillasi
 ms.service: cognitive-services
+ms.subservice: immersive-reader
 ms.topic: include
-ms.date: 06/10/2020
+ms.date: 09/14/2020
 ms.author: dylankil
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 0904694a461f57a1988444aea71ffe64bfa7e809
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.custom: devx-track-js
+ms.openlocfilehash: e29aff97d510dfed178e32aa319e5cb51ae9786c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88602285"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91377378"
 ---
-[沈浸式閱讀程式](https://www.onenote.com/learningtools)是經過全面設計的工具，可實作經實證的技術以改善閱讀理解程度。
+[沈浸式閱讀程式](https://www.onenote.com/learningtools)是經過全面設計的工具，可實作經實證的技術並針對入門讀者、語言學習者及存在學習差異 (例如讀寫障礙) 的人士改善其閱讀理解程度。 您可以在應用程式中使用沈浸式閱讀程式來隔離文字，以改善焦點、顯示常用單字的圖片、醒目提示語音的部分、朗讀選取的文字、即時轉譯單字和片語等等。
 
 在本快速入門中，您將從頭開始建置 Android 應用程式，並且整合沈浸式閱讀程式。 本快速入門的完整工作範例可以在 [GitHub](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-kotlin) 取得。
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/cognitive-services/)。
-
 ## <a name="prerequisites"></a>必要條件
 
+* Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/cognitive-services)
 * 為 Azure Active Directory 驗證所設定的沈浸式閱讀程式資源。 遵循[這些指引](../../how-to-create-immersive-reader.md)來設定。 設定環境屬性時，您需要用到在這裡建立的一些值。 將工作階段的輸出儲存到文字檔中，以供日後參考。
 * [Git](https://git-scm.com/)。
 * [沈浸式閱讀程式 SDK](https://github.com/microsoft/immersive-reader-sdk)。
@@ -34,27 +34,27 @@ ms.locfileid: "88602285"
 
 在 Android Studio 中開始新專案。 此範例的原始程式碼可作為[沈浸式閱讀程式 SDK](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-kotlin) 的一部分。
 
-![新增專案](../../media/android/kotlin/android-studio-create-project.png)
+![新增專案 - Kotlin](../../media/android/kotlin/android-studio-create-project.png)
 
 在 [選擇您的專案] 視窗凹，選取 [空的活動]，然後選取 [下一步]。
 
-![空的活動專案](../../media/android/kotlin/android-studio-empty-activity.png)
+![空的活動專案 - Kotlin](../../media/android/kotlin/android-studio-empty-activity.png)
 
 ## <a name="configure-the-project"></a>設定專案
 
 將專案命名為 **QuickstartKotlin**，然後選取要儲存的位置。 選取 **Kotlin** 作為程式設計語言，然後選取 [完成]。
 
-![設定專案](../../media/android/kotlin/android-studio-configure-project.png)
+![設定專案 - Kotlin](../../media/android/kotlin/android-studio-configure-project.png)
 
 ## <a name="set-up-assets-and-authentication"></a>設定資產和驗證
 
 建立新的 **/assets** 資料夾。
 
-![建立新的資產資料夾](../../media/android/kotlin/android-studio-assets-folder.png)
+![建立新的資產資料夾 - Kotlin](../../media/android/kotlin/android-studio-assets-folder.png)
 
  在資產資料夾內建立名為 **env** 的檔案。 新增下列名稱和值，並提供適當的值。 請勿將此 env 檔案認可到原始檔控制，因為其中包含不應公開的機密資料。
 
-![建立新的 env 檔案](../../media/android/kotlin/android-studio-create-env-file.png)
+![建立新的 env 檔案 - Kotlin](../../media/android/kotlin/android-studio-create-env-file.png)
 
 ```text
 TENANT_ID=<YOUR_TENANT_ID>
@@ -62,7 +62,7 @@ CLIENT_ID=<YOUR_CLIENT_ID>
 CLIENT_SECRET=<YOUR_CLIENT_SECRET>
 SUBDOMAIN=<YOUR_SUBDOMAIN>
 ```
-![Android Studio 中的環境變數](../../media/android/kotlin/android-studio-assets-and-env-file.png)
+![Android Studio 中的環境變數 - Kotlin](../../media/android/kotlin/android-studio-assets-and-env-file.png)
 
 ## <a name="add-dependencies"></a>新增相依性
 
@@ -85,13 +85,13 @@ dependencies {
 }
 ```
 
-![應用程式 Gradle 實作](../../media/android/kotlin/android-studio-build-gradle.png)
+![應用程式 Gradle 實作- Kotlin](../../media/android/kotlin/android-studio-build-gradle.png)
 
 ## <a name="update-app-strings-and-layout-resources"></a>更新應用程式字串和配置資源
 
 將 **res/strings/strings.xml** 中的內容取代為要在應用程式中使用的下列字串。
 
-![應用程式 strings.xml](../../media/android/kotlin/android-studio-strings.png)
+![應用程式 strings.xml - Kotlin](../../media/android/kotlin/android-studio-strings.png)
 
 ```strings.xml
 <resources>
@@ -101,7 +101,7 @@ dependencies {
 
     <string name="app_name">ImmersiveReaderSDK</string>
     <string name="geographyTitle">Geography</string>
-    <string name="geographyTextEn">The study of Earth’s landforms is called physical geography. Landforms can be mountains and valleys. They can also be glaciers, lakes or rivers. Landforms are sometimes called physical features. It is important for students to know about the physical geography of Earth. The seasons, the atmosphere and all the natural processes of Earth affect where people are able to live. Geography is one of a combination of factors that people use to decide where they want to live.The physical features of a region are often rich in resources. Within a nation, mountain ranges become natural borders for settlement areas. In the U.S., major mountain ranges are the Sierra Nevada, the Rocky Mountains, and the Appalachians.Fresh water sources also influence where people settle. People need water to drink. They also need it for washing. Throughout history, people have settled near fresh water. Living near a water source helps ensure that people have the water they need. There was an added bonus, too. Water could be used as a travel route for people and goods. Many Americans live near popular water sources, such as the Mississippi River, the Colorado River and the Great Lakes.Mountains and deserts have been settled by fewer people than the plains areas. However, they have valuable resources of their own.</string>
+    <string name="geographyTextEn">The study of Earth's landforms is called physical geography. Landforms can be mountains and valleys. They can also be glaciers, lakes or rivers. Landforms are sometimes called physical features. It is important for students to know about the physical geography of Earth. The seasons, the atmosphere and all the natural processes of Earth affect where people are able to live. Geography is one of a combination of factors that people use to decide where they want to live.The physical features of a region are often rich in resources. Within a nation, mountain ranges become natural borders for settlement areas. In the U.S., major mountain ranges are the Sierra Nevada, the Rocky Mountains, and the Appalachians. Fresh water sources also influence where people settle. People need water to drink. They also need it for washing. Throughout history, people have settled near fresh water. Living near a water source helps ensure that people have the water they need. There was an added bonus, too. Water could be used as a travel route for people and goods. Many Americans live near popular water sources, such as the Mississippi River, the Colorado River and the Great Lakes.Mountains and deserts have been settled by fewer people than the plains areas. However, they have valuable resources of their own.</string>
     <string name="geographyTextFr">L\'étude des reliefs de la Terre est appelée géographie physique. Les reliefs peuvent être des montagnes et des vallées. Il peut aussi s\'agira de glaciers, delacs ou de rivières. Les reliefs sont parfois appelés caractéristiques physiques. Il est important que les élèves connaissent la géographie physique de laTerre. Les saisons, l\'atmosphère et tous les processus naturels de la Terre affectent l\'endroit où les gens sont capables de vivre. La géographie est l\'un desfacteurs que les gens utilisent pour décider où ils veulent vivre. Les caractéristiques physiques d\'une région sont souvent riches en ressources. Àl\'intérieur d\'une nation, les chaînes de montagnes deviennent des frontières naturelles pour les zones de peuplement. Aux États-Unis, les principaleschaînes de montagnes sont la Sierra Nevada, les montagnes Rocheuses et les Appalaches.Les sources d\'eau douce influencent également l\'endroit où lesgens s\'installent. Les gens ont besoin d\'eau pour boire. Ils en ont aussi besoin pour se laver. Tout au long de l\'histoire, les gens se sont installés près del\'eau douce. Vivre près d\'une source d\'eau permet de s\'assurer que les gens ont l\'eau dont ils ont besoin. Il y avait un bonus supplémentaire, aussi. L\'eaupourrait être utilisée comme voie de voyage pour les personnes et les marchandises. Beaucoup d\'Américains vivent près des sources d\'eau populaires,telles que le fleuve Mississippi, le fleuve Colorado et les Grands Lacs.Mountains et les déserts ont été installés par moins de gens que les zones desplaines. Cependant, ils disposent de ressources précieuses.Les gens ont une réponse.</string>
     <string name="immersiveReaderButtonText">Immersive Reader</string>
 </resources>
@@ -109,7 +109,7 @@ dependencies {
 
 將 **res/layout/activity_main.xml** 中的內容取代為要在應用程式中使用的下列 XML。 此 XML 是應用程式的 UI 版面配置。
 
-![應用程式 activity_main.xml](../../media/android/kotlin/android-studio-activity-main-xml.png)
+![應用程式 activity_main.xml - Kotlin](../../media/android/kotlin/android-studio-activity-main-xml.png)
 
 ```activity_main.xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -210,9 +210,9 @@ dependencies {
 
 在 **/Java/com.example.quickstartkotlin** 資料夾中建立新的 Kotlin 類別，並且將其命名為 **WebAppInterface**， 然後將下列程式碼新增至其中。 此程式碼可讓應用程式與 HTML (會在稍後的步驟中新增) 中的 JavaScript 函式連結。
 
-![com.example.quickstartkotlin 資料夾](../../media/android/kotlin/android-studio-com-folder.png)
+![com.example.quickstartkotlin 資料夾 - Kotlin](../../media/android/kotlin/android-studio-com-folder.png)
 
-![WebAppInterface](../../media/android/kotlin/android-studio-web-app-interface.png)
+![WebAppInterface - Kotlin](../../media/android/kotlin/android-studio-web-app-interface.png)
 
 ```WebAppInterface.kt
 // Copyright (c) Microsoft Corporation. All rights reserved.
@@ -524,9 +524,9 @@ class MainActivity : AppCompatActivity() {
 
 Web 檢視實作需要 HTML 才能正常運作。 以滑鼠右鍵按一下 **/assets** 資料夾，建立新檔案並將其命名為 **immersiveReader.html**。
 
-![建立新的 HTML 檔案](../../media/android/kotlin/android-studio-immersive-reader-html.png)
+![建立新的 HTML 檔案 - Kotlin](../../media/android/kotlin/android-studio-immersive-reader-html.png)
 
-![HTML 資產位置](../../media/android/kotlin/android-studio-immersive-reader-html-assets.png)
+![HTML 資產位置 - Kotlin](../../media/android/kotlin/android-studio-immersive-reader-html-assets.png)
 
 新增下列 HTML 和 JavaScript。 此程式碼會將沈浸式閱讀程式 SDK 新增至應用程式，並將其用來透過我們所撰寫的應用程式程式碼來啟動沈浸式閱讀程式。
 
@@ -575,7 +575,7 @@ Licensed under the MIT License. -->
 
 ## <a name="set-up-app-permissions"></a>設定應用程式權限
 
-![AndroidManifest](../../media/android/kotlin/android-studio-android-manifest-xml.png)
+![AndroidManifest - Kotlin](../../media/android/kotlin/android-studio-android-manifest-xml.png)
 
 因為應用程式需要對沈浸式閱讀程式 SDK 進行網路呼叫才能運作，所以我們必須確保應用程式權限已設定為允許網路存取。 將 **/manifests/AndroidManifest.xml** 的內容取代為下列 XML：
 
@@ -609,7 +609,7 @@ Licensed under the MIT License. -->
 
 使用 Android Studio 在裝置模擬器上執行應用程式。 當您選取 [沈浸式閱讀程式] 時，會開啟具有應用程式內容的沈浸式閱讀程式。
 
-![沈浸式閱讀程式](../../media/android/kotlin/android-studio-device-emulator.png)
+![沈浸式閱讀程式 - Kotlin](../../media/android/kotlin/android-studio-device-emulator.png)
 
 ## <a name="next-steps"></a>後續步驟
 

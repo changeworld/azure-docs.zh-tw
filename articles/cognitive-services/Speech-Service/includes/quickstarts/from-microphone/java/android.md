@@ -10,19 +10,19 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 11/05/2019
 ms.author: wolfma
-ms.openlocfilehash: 5832920ec491ce9d99219a7a423fcf0e38ba62cc
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 3a3799fc1e931993c00ba497765f4cd3e60d3493
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88226495"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91377471"
 ---
 ## <a name="prerequisites"></a>必要條件
 
 開始之前：
 
 > [!div class="checklist"]
-> * [建立 Azure 語音資源](../../../../get-started.md)
+> * [建立 Azure 語音資源](../../../../overview.md#try-the-speech-service-for-free)
 > * [設定開發環境](../../../../quickstarts/setup-platform.md?tabs=android&pivots=programming-language-java)
 > * 確定您可以存取麥克風以擷取音訊
 
