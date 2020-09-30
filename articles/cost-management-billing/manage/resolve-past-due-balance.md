@@ -9,18 +9,18 @@ ms.subservice: billing
 ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 8c792ae1b6ac43ead15fd4f27d2468c517153354
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 3c42db58017dc3a692c227f6eb454cf7b597e77b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684808"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91297579"
 ---
 # <a name="resolve-past-due-balance-for-your-azure-subscription"></a>解決 Azure 訂用帳戶的逾期未付帳款
 
 本文適用於使用信用卡註冊線上 Azure 並擁有 Microsoft Online Services 方案計費帳戶的客戶。 了解如何[查看您的計費帳戶類型](#check-the-type-of-your-account)。 如果您有 Microsoft 客戶合約計費帳戶，請改為參閱[支付 Microsoft Azure 的帳單](../understand/pay-bill.md)。
 
-如果未收到您的付款或無法處理您的款項，您可能會收到電子郵件，並在 Azure 入口網站中看到警示，指出您的訂用帳戶有逾期未付帳款。 如果您的預設付款方式是信用卡，則[帳戶管理員](billing-subscription-transfer.md#whoisaa)可以在 Azure 入口網站中結算未付的費用。 如果您是按照發票付款 (支票/電匯)，請將您的款項匯至發票底部所列的位置。
+如果未收到您的付款或無法處理您的款項，您可能會收到電子郵件，並在 Azure 入口網站中看到警示，指出您的訂用帳戶有逾期未付帳款。 如果您的預設付款方式是信用卡，則[帳戶管理員](../understand/subscription-transfer.md#whoisaa)可以在 Azure 入口網站中結算未付的費用。 如果您是按照發票付款 (支票/電匯)，請將您的款項匯至發票底部所列的位置。
 
 > [!IMPORTANT]
 > * 如果您有多個訂用帳戶使用同張信用卡，而這些訂用帳戶全都逾期，您就必須一次支付整個未付餘額。

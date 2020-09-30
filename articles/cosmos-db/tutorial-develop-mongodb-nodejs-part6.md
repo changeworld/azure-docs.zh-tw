@@ -8,14 +8,14 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 12/26/2018
 ms.author: jopapa
-ms.custom: seodec18, devx-track-javascript
+ms.custom: seodec18, devx-track-js
 ms.reviewer: sngun
-ms.openlocfilehash: a5d697465f811f468fb0047284126deae0c455dd
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 3116038939a07084f13db22819726dcbb2622a10
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87424302"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91292416"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---add-crud-functions-to-the-app"></a>使用 Azure Cosmos DB 適用於 MongoDB 的 API 建立 Angular 應用程式 - 將 CRUD 函式新增至應用程式
 
@@ -88,11 +88,9 @@ ms.locfileid: "87424302"
 
 6. 現在返回您的網際網路瀏覽器，並且按 F12 (在大部分的機器上) 開啟開發人員工具 [網路] 索引標籤。 瀏覽至 `http://localhost:3000` 以監看透過網路撥打的電話。
 
-    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/add-new-hero.png" alt-text="Chrome 中的 [網路] 索引標籤會顯示網路活動":::
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/add-new-hero.png" alt-text="Visual Studio Code 中的 routes.js 和 hero.service.js" 和招呼語 "Hello"，然後選取 [儲存]。 您應會在 [網路] 索引標籤中看到您已針對新 Hero 傳送 POST 要求。 
 
-7. 選取 [新增主圖] 按鈕以新增主圖。 輸入識別碼 "999"、名稱 "Fred" 和招呼語 "Hello"，然後選取 [儲存]。 您應會在 [網路] 索引標籤中看到您已針對新 Hero 傳送 POST 要求。 
-
-    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/post-new-hero.png" alt-text="Chrome 中的 [網路] 索引標籤會顯示 Get 和 Post 函式的網路活動":::
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/post-new-hero.png" alt-text="Visual Studio Code 中的 routes.js 和 hero.service.js":::
 
     現在返回，並將 Post 和 Delete 函式新增至應用程式。
 
@@ -177,11 +175,9 @@ ms.locfileid: "87424302"
 
     您現在可以在 [網路] 索引標籤中選取識別碼來顯示承載。 您可以在承載中看到招呼語現在已設定為 "Bye"。
 
-    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/put-hero-function.png" alt-text="顯示承載的 Hero 應用程式和網路索引標籤"::: 
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/put-hero-function.png" alt-text="Visual Studio Code 中的 routes.js 和 hero.service.js" 的主圖選取 [刪除] 按鈕。
 
-    您也可以在 UI 中刪除其中一個 Hero，並查看完成刪除作業所需的時間。 試著針對名為 "Fred" 的主圖選取 [刪除] 按鈕。
-
-    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/times.png" alt-text="顯示完成函式所需時間的 Hero 應用程式和網路索引標籤"::: 
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/times.png" alt-text="Visual Studio Code 中的 routes.js 和 hero.service.js"::: 
 
     如果您重新整理頁面，[網路] 索引標籤會顯示取得 Hero 所需的時間。 雖然時間迅速，但大部分取決於您的資料所在的地理位置，以及在接近使用者的區域中異動複寫資料的能力。 您可以在接下來 (即將發行) 的教學課程中，進一步了解異地複寫。
 

@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: tutorial
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: a91f3781b490ee6f724e7d28a6be9a96c853426f
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 0c93375abd57ff5e96906ef7befbbb546a3a1caf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684621"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91270520"
 ---
 # <a name="tutorial-review-your-individual-azure-bill"></a>教學課程：檢閱個別 Azure 帳單
 
@@ -22,7 +22,7 @@ ms.locfileid: "88684621"
 
 本教學課程僅適用於具有個別訂用帳戶的 Azure 客戶。 一般個別訂用帳戶是指直接向 Azure 網站購買且採用隨用隨付費率的帳戶。
 
-如果您需要協助以了解非預期的費用，請參閱[分析非預期的費用](https://docs.microsoft.com/azure/cost-management-billing/manage/getting-started#analyze-unexpected-charges)。 或者，如果您需要取消 Azure 訂用帳戶，請參閱[取消您的 Azure 訂用帳戶](../manage/cancel-azure-subscription.md)。
+如果您需要協助以了解非預期的費用，請參閱[分析非預期的費用](analyze-unexpected-charges.md)。 或者，如果您需要取消 Azure 訂用帳戶，請參閱[取消您的 Azure 訂用帳戶](../manage/cancel-azure-subscription.md)。
 
 在本教學課程中，您會了解如何：
 
