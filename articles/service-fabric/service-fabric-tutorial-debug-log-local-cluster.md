@@ -1,17 +1,15 @@
 ---
 title: 在本機 Service Fabric 叢集上進行 Java 應用程式偵錯
 description: 在本教學課程中，了解如何偵錯並從在本機叢集上執行的 Service Fabric Java 應用程式取得記錄。
-author: suhuruli
 ms.topic: tutorial
 ms.date: 02/26/2018
-ms.author: suhuruli
 ms.custom: mvc, devx-track-java
-ms.openlocfilehash: 040eaeb3ef77dfd68feb2aebac71d945ef669d6d
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 801702d43bae6d925fa4f7fbc37cf44bf585fa6d
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372428"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91531985"
 ---
 # <a name="tutorial-debug-a-java-application-deployed-on-a-local-service-fabric-cluster"></a>教學課程：偵錯在本機 Service Fabric 叢集上部署的 Java 應用程式
 

@@ -4,15 +4,15 @@ description: 在本快速入門中，您將了解如何使用 Azure Cache for Re
 author: yegu-ms
 ms.service: cache
 ms.topic: quickstart
-ms.date: 06/18/2018
+ms.date: 09/29/2020
 ms.author: yegu
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 8bf301413abaa090682f14d1e7a6f9fa7096bd66
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 963021e26036969a51f77641376c693e94ac5061
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88209219"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91460335"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-an-aspnet-web-app"></a>快速入門：搭配使用 Azure Cache for Redis 與 ASP.NET Web 應用程式 
 
@@ -20,7 +20,7 @@ ms.locfileid: "88209219"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-- Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/)
+- Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/dotnet)
 - [Visual Studio 2019](https://www.visualstudio.com/downloads/)，包含 **ASP.NET 與 Web 開發**和 **Azure 開發**工作負載。
 
 ## <a name="create-the-visual-studio-project"></a>建立 Visual Studio 專案
@@ -134,52 +134,41 @@ ASP.NET 執行階段會將外部檔案的內容與 `<appSettings>` 元素的標�
     public ActionResult RedisCache()
     {
         ViewBag.Message = "A simple example with Azure Cache for Redis on ASP.NET.";
-
-        var lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
-        {
-            string cacheConnection = ConfigurationManager.AppSettings["CacheConnection"].ToString();
-            return ConnectionMultiplexer.Connect(cacheConnection);
-        });
-
-        // Connection refers to a property that returns a ConnectionMultiplexer
-        // as shown in the previous example.
             
-        using (ConnectionMultiplexer redis = lazyConnection.Value)
+        IDatabase cache = Connection.GetDatabase();
+
+        // Perform cache operations using the cache object...
+
+        // Simple PING command
+        ViewBag.command1 = "PING";
+        ViewBag.command1Result = cache.Execute(ViewBag.command1).ToString();
+
+        // Simple get and put of integral data types into the cache
+        ViewBag.command2 = "GET Message";
+        ViewBag.command2Result = cache.StringGet("Message").ToString();
+
+        ViewBag.command3 = "SET Message \"Hello! The cache is working from ASP.NET!\"";
+        ViewBag.command3Result = cache.StringSet("Message", "Hello! The cache is working from ASP.NET!").ToString();
+
+        // Demonstrate "SET Message" executed as expected...
+        ViewBag.command4 = "GET Message";
+        ViewBag.command4Result = cache.StringGet("Message").ToString();
+
+        // Get the client list, useful to see if connection list is growing...
+        ViewBag.command5 = "CLIENT LIST";
+        StringBuilder sb = new StringBuilder();
+
+        var endpoint = (System.Net.DnsEndPoint)Connection.GetEndPoints()[0];
+        var server = Connection.GetServer(endpoint.Host, endpoint.Port);
+        var clients = server.ClientList();
+
+        sb.AppendLine("Cache response :");
+        foreach (var client in clients)
         {
-            IDatabase cache = redis.GetDatabase();
+            sb.AppendLine(client.Raw);
+        }
 
-            // Perform cache operations using the cache object...
-
-            // Simple PING command
-            ViewBag.command1 = "PING";
-            ViewBag.command1Result = cache.Execute(ViewBag.command1).ToString();
-
-            // Simple get and put of integral data types into the cache
-            ViewBag.command2 = "GET Message";
-            ViewBag.command2Result = cache.StringGet("Message").ToString();
-
-            ViewBag.command3 = "SET Message \"Hello! The cache is working from ASP.NET!\"";
-            ViewBag.command3Result = cache.StringSet("Message", "Hello! The cache is working from ASP.NET!").ToString();
-
-            // Demonstrate "SET Message" executed as expected...
-            ViewBag.command4 = "GET Message";
-            ViewBag.command4Result = cache.StringGet("Message").ToString();
-
-            // Get the client list, useful to see if connection list is growing...
-            ViewBag.command5 = "CLIENT LIST";
-            StringBuilder sb = new StringBuilder();
-
-            var endpoint = (System.Net.DnsEndPoint)Connection.GetEndPoints()[0];
-            var server = Connection.GetServer(endpoint.Host, endpoint.Port);
-            var clients = server.ClientList();
-
-            sb.AppendLine("Cache response :");
-            foreach (var client in clients)
-            {
-                sb.AppendLine(client.Raw);
-            }
-
-            ViewBag.command5Result = sb.ToString();
+        ViewBag.command5Result = sb.ToString();
 
         return View();
     }

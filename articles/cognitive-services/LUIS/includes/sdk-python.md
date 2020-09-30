@@ -2,20 +2,18 @@
 title: 包含檔案
 description: 包含檔案
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.date: 09/01/2020
 ms.topic: include
 ms.custom: include file, cog-serv-seo-aug-2020
-ms.author: diberry
-ms.openlocfilehash: 0cb7378f818263ddf3b4c4b2d041649ffbaed4e2
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 4e7144c424fd2187436a05d135732532e95063a1
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89323061"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91545086"
 ---
 使用適用於 Python 的 Language Understanding (LUIS) 用戶端程式庫可以：
 
@@ -168,7 +166,7 @@ LUIS 應用程式模型中的主要物件為意圖。 意圖會與使用者語�
 
 藉由建立 [ExampleLabelObject](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.models.examplelabelobject?view=azure-python) 物件的清單來新增範例語句，每個範例語句各有一個物件。 每個範例都應以實體名稱和實體值的名稱/值配對字典來標示所有實體。 實體值應與範例語句的文字中所顯示的完全相同。
 
-:::image type="content" source="../media/quickstart-sdk/labeled-example-machine-learned-entity.png" alt-text="在入口網站中顯示標記範例語句的部分螢幕擷取畫面。":::
+:::image type="content" source="../media/quickstart-sdk/labeled-example-machine-learned-entity.png" alt-text="入口網站中顯示所建立實體的部分螢幕擷取畫面，這是一個機器學習實體，其中包含套用至 `Quantity` 子實體的子實體和功能。":::
 
 使用應用程式識別碼、版本識別碼和範例呼叫 [examples.add](https://docs.microsoft.com//python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.operations.examplesoperations?view=azure-python#add-app-id--version-id--example-label-object--enable-nested-children-false--custom-headers-none--raw-false----operation-config-)。
 

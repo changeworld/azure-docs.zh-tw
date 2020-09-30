@@ -8,14 +8,14 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.devlang: python
 ms.topic: tutorial
-ms.date: 06/12/2020
+ms.date: 09/25/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 39891b69cdb8e7f392657514d255f5f85b3eba60
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 34265552122c1f8d1bcbbcfe95948683a5750a71
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936022"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530998"
 ---
 # <a name="tutorial-use-python-and-ai-to-generate-searchable-content-from-azure-blobs"></a>教學課程：使用 Python 和 AI 從 Azure Blob 產生可搜尋的內容
 
@@ -59,7 +59,7 @@ ms.locfileid: "88936022"
 
 1. 搜尋「儲存體帳戶」**，然後選取 Microsoft 的儲存體帳戶供應項目。
 
-   ![建立儲存體帳戶](media/cognitive-search-tutorial-blob/storage-account.png "建立儲存體帳戶")
+   :::image type="content" source="media/cognitive-search-tutorial-blob/storage-account.png" alt-text="建立儲存體帳戶" border="false":::
 
 1. 在 [基本] 索引標籤中，需要下列項目。 接受所有其他項目的預設值。
 
@@ -81,7 +81,7 @@ ms.locfileid: "88936022"
 
 1. 選取 [cog-search-demo]**，然後按一下 [上傳]**** 以開啟其中儲存下載檔案的資料夾。 選取所有非影像檔案。 您應該會有 7 個檔案。 按一下 [確定]**** 來上傳。
 
-   ![上傳範例檔案](media/cognitive-search-tutorial-blob/sample-files.png "上傳範例檔案")
+   :::image type="content" source="media/cognitive-search-tutorial-blob/sample-files.png" alt-text="建立儲存體帳戶" border="false":::
 
 1. 在您離開 Azure 儲存體之前，請取得連接字串，以便在 Azure 認知搜尋中制定連線。 
 
@@ -117,7 +117,7 @@ AI 擴充以認知服務為後盾，包括用於自然語言和影像處理的�
 
    一併取得查詢金鑰。 最佳做法是發出具有唯讀存取權的查詢要求。
 
-   ![取得服務名稱及管理和查詢金鑰](media/search-get-started-nodejs/service-name-and-keys.png)
+   :::image type="content" source="media/search-get-started-nodejs/service-name-and-keys.png" alt-text="建立儲存體帳戶" border="false":::
 
 在傳送至您服務的每個要求的標頭中都需要有 api-key。 有效的金鑰能為每個要求在傳送要求之應用程式與處理要求的服務間建立信任。
 
@@ -190,7 +190,7 @@ print(r.status_code)
 
 在 Azure 入口網站的搜尋服務儀表板頁面上，確認 cogsrch-py-datasource 出現在 [資料來源]**** 清單中。 按一下 [重新整理]**** 來更新頁面。
 
-![入口網站中的資料來源圖格](./media/cognitive-search-tutorial-blob-python/py-data-source-tile.png "入口網站中的資料來源圖格")
+:::image type="content" source="media/cognitive-search-tutorial-blob-python/py-data-source-tile.png" alt-text="建立儲存體帳戶" border="false":::
 
 ### <a name="step-2-create-a-skillset"></a>步驟 2:建立技能集
 
@@ -303,7 +303,7 @@ print(r.status_code)
 
 以下顯示技能集的圖形化表示法。
 
-![了解技能集](media/cognitive-search-tutorial-blob/skillset.png "了解技能集")
+:::image type="content" source="media/cognitive-search-tutorial-blob/skillset.png" alt-text="建立儲存體帳戶" border="false":::
 
 輸出可以對應至索引、作為下游技能的輸入，或在使用語言代碼時同時作為對應和輸入。 在索引中，語言代碼可用於篩選。 作為輸入時，文字分析技能會使用語言代碼指出斷字方面的語言規則。
 
@@ -315,7 +315,7 @@ print(r.status_code)
 
 此練習會使用下列欄位和欄位類型：
 
-| 欄位名稱： | id         | content   | languageCode | keyPhrases         | 組織     |
+| 欄位名稱： | ID         | content   | languageCode | keyPhrases         | 組織     |
 |--------------|----------|-------|----------|--------------------|-------------------|
 | 欄位類型： | Edm.String|Edm.String| Edm.String| List<Edm.String>  | List<Edm.String>  |
 
@@ -472,11 +472,11 @@ pprint(json.dumps(r.json(), indent=1))
 
 在回應中，監視 `"lastResult"` 的 `"status"` 和 `"endTime"` 值。 定期執行指令碼以檢查狀態。 完成索引子之後，狀態將會設為 "success"、將會指定 "endTime"，而且回應將會包含擴充期間發生的所有錯誤和警告。
 
-![建立索引子](./media/cognitive-search-tutorial-blob-python/py-indexer-is-created.png "建立索引子")
+:::image type="content" source="media/cognitive-search-tutorial-blob-python/py-indexer-is-created.png" alt-text="建立儲存體帳戶" border="false":::
 
 某些來源檔案和技能的組合常會出現警告，這並不一定表示有問題。 許多警告都是良性的。 例如，如果您為不含文字的 JPEG 檔案編製索引，則會在此螢幕擷取畫面中看到警告。
 
-![範例索引子警告](./media/cognitive-search-tutorial-blob-python/py-indexer-warning-example.png "範例索引子警告")
+:::image type="content" source="media/cognitive-search-tutorial-blob-python/py-indexer-warning-example.png" alt-text="建立儲存體帳戶" border="false":::
 
 ## <a name="5---search"></a>5 - 搜尋
 
@@ -493,7 +493,7 @@ pprint(json.dumps(r.json(), indent=1))
 
 結果看起來應該會類似以下的範例。 螢幕擷取畫面只會顯示回應的一部分。
 
-![查詢所有欄位的索引](./media/cognitive-search-tutorial-blob-python/py-query-index-for-fields.png "查詢所有欄位的索引")
+:::image type="content" source="media/cognitive-search-tutorial-blob-python/py-query-index-for-fields.png" alt-text="建立儲存體帳戶" border="false":::
 
 輸出將是索引結構描述，附有每個欄位的名稱、類型和屬性。
 
@@ -508,7 +508,7 @@ pprint(json.dumps(r.json(), indent=1))
 
 結果看起來應該會類似以下的範例。 螢幕擷取畫面只會顯示回應的一部分。
 
-![查詢組織內容的索引](./media/cognitive-search-tutorial-blob-python/py-query-index-for-organizations.png "查詢索引以傳回組織的內容")
+:::image type="content" source="media/cognitive-search-tutorial-blob-python/py-query-index-for-organizations.png" alt-text="建立儲存體帳戶" border="false":::
 
 針對其他欄位重複執行：此練習中的 `content`、`languageCode`、`keyPhrases` 和 `organizations`。 您可以透過使用逗號分隔清單的 `$select` 傳回多個欄位。
 
@@ -522,7 +522,7 @@ pprint(json.dumps(r.json(), indent=1))
 
 您可以使用入口網站來刪除索引、索引子、資料來源和技能集。 當您刪除索引子時，您可以選擇性地同時刪除索引、技能集和資料來源。
 
-![刪除搜尋物件](./media/cognitive-search-tutorial-blob-python/py-delete-indexer-delete-all.png "刪除入口網站中的搜尋物件")
+:::image type="content" source="media/cognitive-search-tutorial-blob-python/py-delete-indexer-delete-all.png" alt-text="建立儲存體帳戶" border="false":::
 
 您也可以使用指令碼刪除它們。 下列指令碼說明如何刪除技能集。 
 

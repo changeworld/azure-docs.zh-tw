@@ -12,14 +12,14 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/3/2018
+ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: e51d0bfb79eab4db9bb571cc0f4ee70ada352d92
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: b583e3d86ba193a92080f2da9cc0b16d07c5a993
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90895755"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447162"
 ---
 # <a name="quickstart-setting-up-azure-security-center"></a>快速入門：設定 Azure 資訊安全中心
 
@@ -61,7 +61,7 @@ Azure 資訊安全中心為混合式雲端工作負載提供統一的安全性�
 
 1. 從資訊安全中心的側邊欄中，選取 [開始使用]。
 
-    :::image type="content" source="./media/security-center-get-started/get-started-upgrade-tab.png" alt-text="開始使用頁面的升級索引標籤"::: 
+    :::image type="content" source="./media/security-center-get-started/get-started-upgrade-tab.png" alt-text="資訊安全中心的概觀儀表板"::: 
 
     **升級**索引標籤會列出符合上線資格的訂用帳戶和工作區。
 
@@ -82,7 +82,7 @@ Azure 資訊安全中心為混合式雲端工作負載提供統一的安全性�
 1. 在**資料收集**頁面中，將 [自動佈建] 設定為 [開啟]。
 1. 選取 [儲存]。
 
-    :::image type="content" source="./media/security-center-enable-data-collection/enable-automatic-provisioning.png" alt-text="啟用 Log Analytics 代理程式的自動佈建功能":::
+    :::image type="content" source="./media/security-center-enable-data-collection/enable-automatic-provisioning.png" alt-text="資訊安全中心的概觀儀表板":::
 
 >[!TIP]
 > 如果需要佈建工作區，代理程式安裝最多可能需要 25 分鐘的時間。
@@ -109,7 +109,6 @@ Azure 資訊安全中心為混合式雲端工作負載提供統一的安全性�
 [2]: ./media/security-center-get-started/overview.png
 [4]: ./media/security-center-get-started/get-started.png
 [5]: ./media/security-center-get-started/pricing.png
-[6]: ./media/security-center-get-started/enable-automatic-provisioning.png
 [7]: ./media/security-center-get-started/security-alerts.png
 [8]: ./media/security-center-get-started/recommendations.png
 [9]: ./media/security-center-get-started/select-subscription.png

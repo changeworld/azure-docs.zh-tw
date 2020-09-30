@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 08/20/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 09273cf901830e850acca05c57c0b110ffd7e28a
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 13e3f5a7d86d2e9b705fbeb104ba4f8eb690cb3a
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89002857"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91534092"
 ---
 # <a name="tutorial-ai-generated-searchable-content-from-azure-blobs-using-the-net-sdk"></a>教學課程：使用 .NET SDK 以 AI 方式從 Azure Blob 產生可搜尋的內容
 
@@ -170,7 +170,7 @@ AI 擴充以認知服務為後盾，包括用於自然語言和影像處理的�
       "AzureBlobConnectionString": "Put your Azure Blob connection string here",
     }
     ```
-    
+
 新增您的搜尋服務與 Blob 儲存體帳戶資訊。 您應該記得，您可以從上一節所指示的服務佈建步驟中取得這項資訊。
 
 針對 **SearchServiceName**，請輸入簡短服務名稱，而不是完整 URL。
@@ -586,11 +586,11 @@ private static Skillset CreateOrUpdateDemoSkillSet(SearchServiceClient serviceCl
 
 | 欄位名稱 | 欄位類型 |
 | --- | --- |
-| id | Edm.String |
-| content | Edm.String |
-| languageCode | Edm.String |
-| keyPhrases | List<Edm.String> |
-| 組織 | List<Edm.String> |
+| `id` | Edm.String |
+| `content` | Edm.String |
+| `languageCode` | Edm.String |
+| `keyPhrases` | List<Edm.String> |
+| `organizations` | List<Edm.String> |
 
 #### <a name="create-demoindex-class"></a>建立 DemoIndex 類別
 
@@ -906,7 +906,7 @@ catch (Exception e)
 }
 ```
 
-對其他欄位重複前述步驟：此練習中的內容、語言程式碼、關鍵片語和組織。 您可以透過使用逗號分隔清單的 [Select](/dotnet/api/microsoft.azure.search.models.searchparameters.select?view=azure-dotnet) 屬性傳回多個欄位。
+對其他欄位重複前述步驟：此練習中的內容、語言程式碼、關鍵片語和組織。 您可以透過使用逗號分隔清單的 [Select](/dotnet/api/microsoft.azure.search.models.searchparameters.select) 屬性傳回多個欄位。
 
 <a name="reset"></a>
 

@@ -10,16 +10,16 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 08/05/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ffcb2c741838b1292eaf0793cd625c99d252068c
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: e1a52a15012e367dc902992f7f7b905fc6c6a5eb
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89462066"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541538"
 ---
 # <a name="quickstart-create-a-search-index-using-the-azuresearchdocuments-client-library"></a>快速入門：使用 Azure.Search.Documents 用戶端程式庫建立搜尋索引
 
-使用新的 [Azure.Search.Documents (第 11 版) 用戶端程式庫](/dotnet/api/overview/azure/search.documents-readme?view=azure-dotnet)在 C# 中建立 .NET Core 主控台應用程式，以建立、載入及查詢搜尋索引。
+使用新的 [Azure.Search.Documents (第 11 版) 用戶端程式庫](/dotnet/api/overview/azure/search.documents-readme)在 C# 中建立 .NET Core 主控台應用程式，以建立、載入及查詢搜尋索引。
 
 [下載原始程式碼](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/quickstart/v11)以使用已完成的專案來開始，或遵循本文中的步驟來建立您自己的程式碼。
 

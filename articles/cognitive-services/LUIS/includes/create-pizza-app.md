@@ -4,13 +4,12 @@ description: 建立 LUIS 披薩應用程式的步驟。
 ms.date: 05/05/2020
 ms.topic: include
 ms.custom: include file
-ms.author: diberry
-ms.openlocfilehash: 583394a31d220878eb403f702ba82b2f525d4dda
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 739a8d240f1e3c9928209dbd17e6468bc0921077
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83588923"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91545343"
 ---
 1. 使用 [https://www.luis.ai](https://www.luis.ai) 的 URL 登入 LUIS 入口網站。
 
