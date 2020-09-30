@@ -1,20 +1,20 @@
 ---
-title: 教學課程：從 Google Maps 遷移 Web 應用程式 | Microsoft Azure 地圖服務
+title: 從 Google Maps 遷移 Web 應用程式 | Microsoft Azure 地圖服務
 description: 如何將 Web 應用程式從 Google Maps 遷移至 Microsoft Azure 地圖服務。
 author: rbrundritt
 ms.author: richbrun
-ms.date: 12/17/2019
-ms.topic: tutorial
+ms.date: 08/18/2020
+ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.custom: devx-track-javascript
-ms.openlocfilehash: bc5f10e34b929110763b53fe1016334ce9bfddd6
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.custom: devx-track-js
+ms.openlocfilehash: 3414f50d6d0fc4983b7a05226a2f768e7ead81dd
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90090749"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319668"
 ---
 # <a name="migrate-a-web-app-from-google-maps"></a>從 Google Maps 遷移 Web 應用程式
 
@@ -32,6 +32,7 @@ ms.locfileid: "90090749"
 - [AzureMapsControl.Components](https://github.com/arnaudleclerc/AzureMapsControl.Components) - Azure 地圖服務 Blazor 元件。
 - [Azure 地圖服務 React 元件](https://github.com/WiredSolutions/react-azure-maps) - Azure 地圖服務控制項的反應包裝函式。
 - [Vue Azure 地圖服務](https://github.com/rickyruiz/vue-azure-maps) - Vue 應用程式的 Azure 地圖服務元件。
+
 
 ## <a name="key-features-support"></a>主要功能支援
 
@@ -112,7 +113,7 @@ ms.locfileid: "90090749"
 
 下列基本範例會使用 Google Maps 載入以紐約為座標中心的地圖。 經度：-73.985、緯度：40.747，而地圖的縮放層級為 12。
 
-**之前：Google 地圖**
+#### <a name="before-google-maps"></a>之前：Google 地圖
 
 顯示以某個位置作為中心點並進行縮放的 Google 地圖。
 
@@ -147,11 +148,9 @@ ms.locfileid: "90090749"
 
 在瀏覽器中執行此程式碼會顯示如下圖所示的地圖：
 
-<center>
+![簡單的 Google Maps](media/migrate-google-maps-web-app/simple-google-map.png)
 
-![簡單的 Google Maps](media/migrate-google-maps-web-app/simple-google-map.png)</center>
-
-**之後：Azure 地圖服務**
+#### <a name="after-azure-maps"></a>之後：Azure 地圖服務
 
 在 Azure 地圖服務中載入具有相同檢視的地圖，並且包含地圖的樣式控制項和縮放按鈕。
 
@@ -206,9 +205,7 @@ ms.locfileid: "90090749"
 
 在瀏覽器中執行此程式碼會顯示如下圖所示的地圖：
 
-<center>
-
-![簡單的 Azure 地圖服務](media/migrate-google-maps-web-app/simple-azure-maps.png)</center>
+![簡單的 Azure 地圖服務](media/migrate-google-maps-web-app/simple-azure-maps.png)
 
 如需如何在 Web 應用程式中設定及使用 Azure 地圖服務地圖控制項的詳細文件，請按一下[這裡](how-to-use-map-control.md)。
 
@@ -223,7 +220,7 @@ ms.locfileid: "90090749"
 
 如果您的受眾分散在多個國家/區域或使用不同語言，當地語系化便很重要。
 
-**之前：Google 地圖**
+#### <a name="before-google-maps"></a>之前：Google 地圖
 
 若要將 Google Maps 當地語系化，請新增語言和區域參數。
 
@@ -233,11 +230,9 @@ ms.locfileid: "90090749"
 
 以下是語言設定為 "fr-FR" 的 Google Maps 範例。
 
-<center>
+![Google Maps 當地語系化](media/migrate-google-maps-web-app/google-maps-localization.png)
 
-![Google Maps 當地語系化](media/migrate-google-maps-web-app/google-maps-localization.png)</center>
-
-**之後：Azure 地圖服務**
+#### <a name="after-azure-maps"></a>之後：Azure 地圖服務
 
 Azure 地圖服務提供兩種不同的方式供您設定地圖的語言和區域檢視。 第一個選項是將此資訊新增至全域 atlas 命名空間。 這會導致您應用程式中的所有地圖控制項執行個體皆以這些設定作為預設值。 以下範例會將語言設定為法文 ("fr-FR")，並將區域檢視設為「自動」：
 
@@ -267,9 +262,7 @@ map = new atlas.Map('myMap', {
 
 以下範例會示範語言設為 "fr" 且使用者區域設為 "fr-FR" 的 Azure 地圖服務。
 
-<center>
-
-![Azure 地圖服務當地語系化](media/migrate-google-maps-web-app/azure-maps-localization.png)</center>
+![Azure 地圖服務當地語系化](media/migrate-google-maps-web-app/azure-maps-localization.png)
 
 ### <a name="setting-the-map-view"></a>設定地圖檢視
 
@@ -278,7 +271,7 @@ map = new atlas.Map('myMap', {
 > [!NOTE]
 > Google 地圖所使用的地圖底圖維度為 256 像素，而 Azure 地圖服務則使用較大的 512 像素地圖底圖。 因此，在載入和 Google Maps 相同的地圖區域時，Azure 地圖服務需要較少的網路要求數目。 由於地圖底圖金字塔在地圖控制項中的運作方式所致，您在使用 Azure 地圖服務時，必須將 Google Maps 中所用的縮放層級減去數字 1。 此算數運算可確保 Azure 地圖服務中較大的地圖底圖能和 Google Maps 呈現相同的地圖區域。
 
-**之前：Google 地圖**
+#### <a name="before-google-maps"></a>之前：Google 地圖
 
 使用 `setOptions` 方法移動 Google Maps 地圖控制項。 此方法可讓您指定地圖的中心和縮放層級。
 
@@ -290,11 +283,9 @@ map.setOptions({
 });
 ```
 
-<center>
+![Google 地圖設定的檢視](media/migrate-google-maps-web-app/google-maps-set-view.png)
 
-![Google 地圖設定的檢視](media/migrate-google-maps-web-app/google-maps-set-view.png)</center>
-
-**之後：Azure 地圖服務**
+#### <a name="after-azure-maps"></a>之後：Azure 地圖服務
 
 在 Azure 地圖服務中，使用 `setCamera` 方法變更地圖位置，並使用 `setStyle` 方法變更地圖樣式。 Azure 地圖服務中的座標採用「經度,緯度」格式，而且縮放層級值會減一。
 
@@ -309,9 +300,7 @@ map.setStyle({
 });
 ```
 
-<center>
-
-![Azure 地圖服務設定的檢視](media/migrate-google-maps-web-app/azure-maps-set-view.jpeg)</center>
+![Azure 地圖服務設定的檢視](media/migrate-google-maps-web-app/azure-maps-set-view.jpeg)
 
 **其他資源：**
 
@@ -330,7 +319,7 @@ Azure 地圖服務有多種方式可在地圖上呈現位置點資料：
 
 讓我們在地圖上新增一個標記，並以數字 10 作為標籤重疊在上面。 使用經度：-0.2 和緯度：51.5。
 
-**之前：Google 地圖**
+#### <a name="before-google-maps"></a>之前：Google 地圖
 
 使用 Google Maps 時，可使用 `google.maps.Marker` 類別將標記新增至地圖，也可以將地圖指定為其中一個選項。
 
@@ -343,9 +332,7 @@ var marker = new google.maps.Marker({
 });
 ```
 
-<center>
-
-![Google 地圖標記](media/migrate-google-maps-web-app/google-maps-marker.png)</center>
+![Google 地圖標記](media/migrate-google-maps-web-app/google-maps-marker.png)
 
 **之後：使用 HTML 標記的 Azure 地圖服務**
 
@@ -359,9 +346,7 @@ map.markers.add(new atlas.HtmlMarker({
 }));
 ```
 
-<center>
-
-![Azure 地圖服務的 HTML 標記](media/migrate-google-maps-web-app/azure-maps-html-marker.png)</center>
+![Azure 地圖服務的 HTML 標記](media/migrate-google-maps-web-app/azure-maps-html-marker.png)
 
 **之後：使用符號圖層的 Azure 地圖服務**
 
@@ -425,9 +410,7 @@ map.markers.add(new atlas.HtmlMarker({
 </html>
 ```
 
-<center>
-
-![Azure 地圖服務的符號圖層](media/migrate-google-maps-web-app/azure-maps-symbol-layer.png)</center>
+![Azure 地圖服務的符號圖層](media/migrate-google-maps-web-app/azure-maps-symbol-layer.png)
 
 **其他資源：**
 
@@ -451,7 +434,8 @@ map.markers.add(new atlas.HtmlMarker({
 ![黃色圖釘影像](media/migrate-google-maps-web-app/yellow-pushpin.png)<br/>
 yellow-pushpin.png</center>
 
-**之前：Google 地圖**
+
+#### <a name="before-google-maps"></a>之前：Google 地圖
 
 藉由指定包含影像 `url` 的 `Icon` 物件來建立自訂標記。 指定 `anchor` 點，將圖釘影像的位置點與地圖上的座標對齊。 Google Maps 中的錨點值會相對於影像左上角。
 
@@ -466,9 +450,8 @@ var marker = new google.maps.Marker({
 });
 ```
 
-<center>
 
-![Google 地圖的自訂標記](media/migrate-google-maps-web-app/google-maps-custom-marker.png)</center>
+![Google 地圖的自訂標記](media/migrate-google-maps-web-app/google-maps-custom-marker.png)
 
 **之後：使用 HTML 標記的 Azure 地圖服務**
 
@@ -486,9 +469,7 @@ map.markers.add(new atlas.HtmlMarker({
 }));
 ```
 
-<center>
-
-![Azure 地圖服務的自訂 HTML 標記](media/migrate-google-maps-web-app/azure-maps-custom-html-marker.png)</center>
+![Azure 地圖服務的自訂 HTML 標記](media/migrate-google-maps-web-app/azure-maps-custom-html-marker.png)
 
 **之後：使用符號圖層的 Azure 地圖服務**
 
@@ -553,9 +534,7 @@ Azure 地圖服務中的符號圖層也支援自訂影像。 首先，將影像�
 </html>
 ```
 
-<center>
-
-![Azure 地圖服務的自訂圖示符號圖層](media/migrate-google-maps-web-app/azure-maps-custom-icon-symbol-layer.png)</center>
+![Azure 地圖服務的自訂圖示符號圖層](media/migrate-google-maps-web-app/azure-maps-custom-icon-symbol-layer.png)</
 
 > [!TIP]
 > 若要呈現進階的自訂位置點，請同時使用多個呈現圖層。 例如，假設您想要在不同顏色的圓圈上放置多個圖示相同的圖釘。 您不必為每個顏色重疊建立一堆影像，而是可以在泡泡圖層上方加入符號圖層。 讓圖釘參考相同的資料來源。 此方法會比建立及維護一堆不同影像來得有效率。
@@ -575,7 +554,7 @@ Azure 地圖服務中的符號圖層也支援自訂影像。 首先，將影像�
 
 使用聚合線條來代表地圖上的一條線或路徑。 讓我們在地圖上建立以虛線呈現的聚合線條。
 
-**之前：Google 地圖**
+#### <a name="before-google-maps"></a>之前：Google 地圖
 
 聚合線條類別會接受一組選項。 將座標陣列傳遞至聚合線條的 `path` 選項中。
 
@@ -611,11 +590,9 @@ var line = new google.maps.Polyline({
 line.setMap(map);
 ```
 
-<center>
+![Google 地圖的聚合線條](media/migrate-google-maps-web-app/google-maps-polyline.png)
 
-![Google 地圖的聚合線條](media/migrate-google-maps-web-app/google-maps-polyline.png)</center>
-
-**之後：Azure 地圖服務**
+#### <a name="after-azure-maps"></a>之後：Azure 地圖服務
 
 聚合線條稱為 `LineString` 或 `MultiLineString` 物件。 這些物件可新增至資料來源，並使用線條圖層來加以呈現。 將 `LineString` 新增至資料來源，然後將資料來源新增至 `LineLayer` 來加以呈現。
 
@@ -641,10 +618,7 @@ map.layers.add(new atlas.layer.LineLayer(datasource, null, {
     strokeDashArray: [3, 3]
 }));
 ```
-
-<center>
-
-![Azure 地圖服務的聚合線條](media/migrate-google-maps-web-app/azure-maps-polyline.png)</center>
+![Azure 地圖服務的聚合線條](media/migrate-google-maps-web-app/azure-maps-polyline.png)
 
 **其他資源：**
 
@@ -656,7 +630,7 @@ map.layers.add(new atlas.layer.LineLayer(datasource, null, {
 
 Azure 地圖服務和 Google Maps 針對多邊形提供了類似的支援。 多邊形可用來代表地圖上的區域。 下列範例說明如何根據地圖的中心座標，建立會形成三角形的多邊形。
 
-**之前：Google 地圖**
+#### <a name="before-google-maps"></a>之前：Google 地圖
 
 多邊形類別會接受一組選項。 將座標陣列傳遞至多邊形的 `paths` 選項中。
 
@@ -681,11 +655,9 @@ var polygon = new google.maps.Polygon({
 polygon.setMap(map);
 ```
 
-<center>
+![Google 地圖的多邊形](media/migrate-google-maps-web-app/google-maps-polygon.png)
 
-![Google 地圖的多邊形](media/migrate-google-maps-web-app/google-maps-polygon.png)</center>
-
-**之後：Azure 地圖服務**
+#### <a name="after-azure-maps"></a>之後：Azure 地圖服務
 
 將 `Polygon` 或 `MultiPolygon` 物件新增至資料來源。 使用圖層在地圖上呈現物件。 使用多邊形圖層呈現多邊形的區域。 此外，使用線條圖層來呈現多邊形的外框。
 
@@ -716,10 +688,7 @@ map.layers.add(new atlas.layer.LineLayer(datasource, null, {
     strokeWidth: 2
 }));
 ```
-
-<center>
-
-![Azure 地圖服務的多邊形](media/migrate-google-maps-web-app/azure-maps-polygon.png)</center>
+![Azure 地圖服務的多邊形](media/migrate-google-maps-web-app/azure-maps-polygon.png)
 
 **其他資源：**
 
@@ -733,7 +702,7 @@ map.layers.add(new atlas.layer.LineLayer(datasource, null, {
 
 在 Google Maps 中，實體的其他資訊可在地圖上以 `google.maps.InfoWindow` 類別顯示。 在 Azure 地圖服務中，此功能則可以使用 `atlas.Popup` 類別來實現。 下一個範例會將標記新增至地圖。 當您按一下標記時，資訊視窗或快顯視窗就會隨即顯示。
 
-**之前：Google 地圖**
+#### <a name="before-google-maps"></a>之前：Google 地圖
 
 使用 `google.maps.InfoWindow` 建構函式來具現化資訊視窗。
 
@@ -754,12 +723,9 @@ marker.addListener('click', function () {
     infowindow.open(map, marker);
 });
 ```
+![Google Maps 的快顯視窗](media/migrate-google-maps-web-app/google-maps-popup.png)
 
-<center>
-
-![Google Maps 的快顯視窗](media/migrate-google-maps-web-app/google-maps-popup.png)</center>
-
-**之後：Azure 地圖服務**
+#### <a name="after-azure-maps"></a>之後：Azure 地圖服務
 
 讓我們使用快顯來顯示位置的其他資訊。 將 HTML 的 `string` 或 `HTMLElement` 物件傳遞至快顯視窗的 `content` 選項。 如有需要，快顯視窗可獨立於任何圖形之外來顯示。 因此，快顯視窗需要指定 `position` 值。 指定 `position` 值。 若要顯示快顯視窗，請呼叫 `open` 方法，並傳入要在其中顯示快顯視窗的 `map`。
 
@@ -785,10 +751,7 @@ map.events.add('click', marker, function () {
     popup.open(map);
 });
 ```
-
-<center>
-
-![Azure 地圖服務的快顯視窗](media/migrate-google-maps-web-app/azure-maps-popup.png)</center>
+![Azure 地圖服務的快顯視窗](media/migrate-google-maps-web-app/azure-maps-popup.png)
 
 > [!NOTE]
 > 若要使用符號、泡泡、線條或多邊形圖層來進行相同操作，您可以將所選的圖層傳遞至地圖事件程式碼 (而不是標記)。
@@ -808,7 +771,7 @@ Google Maps 支援透過 `google.maps.Data` 類別來載入 GeoJSON 資料和動
 
 下列範例會從 USGS 載入過去七天內所有地震的 GeoJSON 摘要。 地震資料會在地圖上以經過縮放的圓形來呈現。 每個圓形的顏色和縮放大小取決於每個地震的規模，而規模的資料則會儲存在資料集內每項功能的 `"mag"` 屬性中。 如果規模大於或等於 5，則圓形會是紅色。 如果大於或等於 3，但小於5，則圓形會是橘色。 如果小於 3，則圓形會是綠色。 每個圓形的半徑會是規模的指數乘以 0.1。
 
-**之前：Google 地圖**
+#### <a name="before-google-maps"></a>之前：Google 地圖
 
 在 `map.data.setStyle` 方法中指定單一回呼函式。 在回呼函式內，將商務邏輯套用至每項功能。 使用 `map.data.loadGeoJson` 方法載入 GeoJSON 摘要。
 
@@ -877,11 +840,9 @@ Google Maps 支援透過 `google.maps.Data` 類別來載入 GeoJSON 資料和動
 </html>
 ```
 
-<center>
+![Google Maps 的 GeoJSON](media/migrate-google-maps-web-app/google-maps-geojson.png)
 
-![Google Maps 的 GeoJSON](media/migrate-google-maps-web-app/google-maps-geojson.png)</center>
-
-**之後：Azure 地圖服務**
+#### <a name="after-azure-maps"></a>之後：Azure 地圖服務
 
 GeoJSON 是 Azure 地圖服務中的基底資料類型。 使用 `datasource.importFromUrl` 方法將其匯入資料來源。 使用泡泡圖層。 泡泡圖層會提供根據資料來源中的功能屬性呈現已縮放圓形的功能。 商務邏輯不會使用回呼函數，而是會轉換成運算式，並傳遞至樣式選項。 運算式會定義商務邏輯的運作方式。 運算式可傳遞至另一個執行緒，並根據功能資料進行評估。 可以將多個資料來源和層級新增至 Azure 地圖服務，每個都有不同的商務邏輯。 這項功能可讓您以不同的方式在地圖上呈現多個資料集。
 
@@ -958,9 +919,9 @@ GeoJSON 是 Azure 地圖服務中的基底資料類型。 使用 `datasource.imp
 </html>
 ```
 
-<center>
 
-![Azure 地圖服務的 GeoJSON](media/migrate-google-maps-web-app/azure-maps-geojson.png)</center>
+
+![Azure 地圖服務的 GeoJSON](media/migrate-google-maps-web-app/azure-maps-geojson.png)
 
 **其他資源：**
 
@@ -978,7 +939,7 @@ GeoJSON 是 Azure 地圖服務中的基底資料類型。 使用 `datasource.imp
 > [!NOTE]
 > Google Maps 和 Azure 地圖服務會使用稍微不同的群集演算法。 因此，群集內的位置點分佈有時會不同。
 
-**之前：Google 地圖**
+#### <a name="before-google-maps"></a>之前：Google 地圖
 
 使用 MarkerCluster 程式庫來群集標記。 群集圖示僅限於影像，並以一到五的數字作為名稱。 並且裝載在相同的目錄中。
 
@@ -1035,11 +996,11 @@ GeoJSON 是 Azure 地圖服務中的基底資料類型。 使用 `datasource.imp
 </html>
 ```
 
-<center>
 
-![Google Maps 的群集](media/migrate-google-maps-web-app/google-maps-clustering.png)</center>
 
-**之後：Azure 地圖服務**
+![Google Maps 的群集](media/migrate-google-maps-web-app/google-maps-clustering.png)
+
+#### <a name="after-azure-maps"></a>之後：Azure 地圖服務
 
 新增和管理資料來源中的資料。 連結資料來源和層級，然後呈現資料。 Azure 地圖服務中的 `DataSource` 類別會提供數個群集選項。
 
@@ -1163,9 +1124,9 @@ GeoJSON 是 Azure 地圖服務中的基底資料類型。 使用 `datasource.imp
 </html>
 ```
 
-<center>
 
-![Azure 地圖服務的群集](media/migrate-google-maps-web-app/azure-maps-clustering.png)</center>
+
+![Azure 地圖服務的群集](media/migrate-google-maps-web-app/azure-maps-clustering.png)
 
 **其他資源：**
 
@@ -1180,7 +1141,7 @@ GeoJSON 是 Azure 地圖服務中的基底資料類型。 使用 `datasource.imp
 
 下列範例會從 USGS 載入過去一個月所有地震的 GeoJSON 摘要，並以經過加權的熱度圖來呈現。 `"mag"` 屬性會用來作為權數。
 
-**之前：Google 地圖**
+#### <a name="before-google-maps"></a>之前：Google 地圖
 
 若要建立熱度圖，可藉由將 `&libraries=visualization` 新增至 API 指令碼 URL 來載入「視覺效果」程式庫。 Google Maps 中的熱度圖圖層不會直接支援 GeoJSON 資料。 您必須先下載資料，並將其轉換成加權資料點的陣列：
 
@@ -1245,11 +1206,11 @@ GeoJSON 是 Azure 地圖服務中的基底資料類型。 使用 `datasource.imp
 </html>
 ```
 
-<center>
 
-![Google Maps 熱度圖](media/migrate-google-maps-web-app/google-maps-heatmap.png)</center>
 
-**之後：Azure 地圖服務**
+![Google Maps 熱度圖](media/migrate-google-maps-web-app/google-maps-heatmap.png)
+
+#### <a name="after-azure-maps"></a>之後：Azure 地圖服務
 
 將 GeoJSON 資料載入至資料來源，並將資料來源連線至熱度圖圖層。 將作為權數的屬性可使用運算式傳遞至 `weight` 選項。 您可以在 `DataSource` 類別上使用 `importDataFromUrl` 函式，直接將 GeoJSON 資料匯入 Azure 地圖服務。
 
@@ -1311,9 +1272,9 @@ GeoJSON 是 Azure 地圖服務中的基底資料類型。 使用 `datasource.imp
 </html>
 ```
 
-<center>
 
-![Azure 地圖服務的熱度圖](media/migrate-google-maps-web-app/azure-maps-heatmap.png)</center>
+
+![Azure 地圖服務的熱度圖](media/migrate-google-maps-web-app/azure-maps-heatmap.png)
 
 **其他資源：**
 
@@ -1328,7 +1289,7 @@ Azure 地圖服務中的地圖底圖圖層在 Google 地圖中稱為影像覆蓋
 
 下列範例會覆蓋來自愛荷華州立大學 Iowa Environmental Mesonet 的氣象雷達地圖底圖圖層。
 
-**之前：Google Maps**
+#### <a name="before-google-maps"></a>之前：Google Maps
 
 在 Google Maps 中，您可以使用 `google.maps.ImageMapType` 類別來建立地圖底圖圖層。
 
@@ -1342,11 +1303,11 @@ map.overlayMapTypes.insertAt(0, new google.maps.ImageMapType({
 }));
 ```
 
-<center>
 
-![Google Maps 的地圖底圖圖層](media/migrate-google-maps-web-app/google-maps-tile-layer.png)</center>
 
-**之後：Azure 地圖服務**
+![Google Maps 的地圖底圖圖層](media/migrate-google-maps-web-app/google-maps-tile-layer.png)
+
+#### <a name="after-azure-maps"></a>之後：Azure 地圖服務
 
 將地圖底圖圖層新增至地圖中，其方式與任何其他圖層大致相同。 使用具有 x、y、縮放預留位置 (`{x}`、`{y}`、`{z}`) 的格式化 URL 來讓圖層知道要於何處存取地圖底圖。 Azure 地圖服務的地圖底圖圖層也支援 `{quadkey}`、`{bbox-epsg-3857}` 和 `{subdomain}` 預留位置。
 
@@ -1362,9 +1323,9 @@ map.layers.add(new atlas.layer.TileLayer({
 }), 'labels');
 ```
 
-<center>
 
-![Azure 地圖服務的地圖底圖圖層](media/migrate-google-maps-web-app/azure-maps-tile-layer.png)</center>
+
+![Azure 地圖服務的地圖底圖圖層](media/migrate-google-maps-web-app/azure-maps-tile-layer.png)
 
 > [!TIP]
 > 您可以使用地圖的 `transformRequest` 選項來擷取地圖底圖要求。 這可讓您視需要在要求中修改或新增標頭。
@@ -1379,7 +1340,7 @@ map.layers.add(new atlas.layer.TileLayer({
 
 Azure 地圖服務和 Google 地圖都可以覆蓋交通資料。
 
-**之前：Google 地圖**
+#### <a name="before-google-maps"></a>之前：Google 地圖
 
 使用交通圖層來覆蓋地圖上的交通資料。
 
@@ -1388,11 +1349,11 @@ var trafficLayer = new google.maps.TrafficLayer();
 trafficLayer.setMap(map);
 ```
 
-<center>
 
-![Google 地圖的交通](media/migrate-google-maps-web-app/google-maps-traffic.png)</center>
 
-**之後：Azure 地圖服務**
+![Google 地圖的交通](media/migrate-google-maps-web-app/google-maps-traffic.png)
+
+#### <a name="after-azure-maps"></a>之後：Azure 地圖服務
 
 Azure 地圖服務提供數個不同的選項來顯示交通。 在地圖上將交通事件 (例如道路封閉和事故) 顯示為圖示。 覆蓋地圖上的交通流量並以色彩編碼道路。 色彩可以根據發佈的速度限制來修改，並且相對於正常預期的延遲或絕對延遲。 Azure 地圖服務中的事件資料會每分鐘更新一次，車流資料則會每兩分鐘更新一次。
 
@@ -1405,15 +1366,15 @@ map.setTraffic({
 });
 ```
 
-<center>
 
-![Azure 地圖服務的交通](media/migrate-google-maps-web-app/azure-maps-traffic.png)</center>
+
+![Azure 地圖服務的交通](media/migrate-google-maps-web-app/azure-maps-traffic.png)
 
 如果您在 Azure 地圖服務中按一下其中一個交通圖示，則會在快顯視窗中顯示其他資訊。
 
-<center>
 
-![Azure 地圖服務的交通事件](media/migrate-google-maps-web-app/azure-maps-traffic-incident.png)</center>
+
+![Azure 地圖服務的交通事件](media/migrate-google-maps-web-app/azure-maps-traffic-incident.png)
 
 **其他資源：**
 
@@ -1424,7 +1385,7 @@ map.setTraffic({
 
 Azure 地圖服務和 Google Maps 都支援在地圖上覆蓋有地理參考的影像。 有地理參考的影像可在您平移和縮放地圖時，隨之移動和縮放。 在 Google Maps 中，有地理參考的影像稱為地面覆蓋，而在 Azure 地圖服務中則稱為影像圖層。 這些項目非常適合用來建置樓層平面圖、覆蓋舊地圖或來自無人機的影像。
 
-**之前：Google 地圖**
+#### <a name="before-google-maps"></a>之前：Google 地圖
 
 指定您要覆蓋的影像 URL，以及用來繫結地圖上影像的周框方塊。 這個範例會在地圖上覆蓋 [1922 年紐澤西紐瓦克](https://www.lib.utexas.edu/maps/historical/newark_nj_1922.jpg)的地圖影像。
 
@@ -1471,11 +1432,9 @@ Azure 地圖服務和 Google Maps 都支援在地圖上覆蓋有地理參考的�
 
 在瀏覽器中執行此程式碼會顯示如下圖所示的地圖：
 
-<center>
+![Google Maps 的影像覆蓋](media/migrate-google-maps-web-app/google-maps-image-overlay.png)
 
-![Google Maps 的影像覆蓋](media/migrate-google-maps-web-app/google-maps-image-overlay.png)</center>
-
-**之後：Azure 地圖服務**
+#### <a name="after-azure-maps"></a>之後：Azure 地圖服務
 
 使用 `atlas.layer.ImageLayer` 類別來覆蓋有地理參考的影像。 此類別需要影像的 URL 和影像四個角落所組成的一組座標。 影像必須裝載於相同網域上或啟用 CORS。
 
@@ -1534,9 +1493,9 @@ Azure 地圖服務和 Google Maps 都支援在地圖上覆蓋有地理參考的�
 </html>
 ```
 
-<center>
 
-![Azure 地圖服務的影像覆蓋](media/migrate-google-maps-web-app/azure-maps-image-overlay.png)</center>
+
+![Azure 地圖服務的影像覆蓋](media/migrate-google-maps-web-app/azure-maps-image-overlay.png)
 
 **其他資源：**
 
@@ -1547,7 +1506,7 @@ Azure 地圖服務和 Google Maps 都支援在地圖上覆蓋有地理參考的�
 
 Azure 和 Google 地圖都可以在地圖上匯入和轉譯 KML、KMZ 和 GeoRSS 資料。 Azure 地圖服務也支援 GPX、GML、空間 CSV 檔案、GeoJSON、Well Known Text (WKT)、Web Mapping Services (WMS)、Web-Mapping Tile Services (WMTS) 和 Web Feature Services (WFS)。 Azure 地圖服務會在本機將檔案讀取到記憶體中，而且在大部分的情況下可以處理更大的 KML 檔案。 
 
-**之前：Google 地圖**
+#### <a name="before-google-maps"></a>之前：Google 地圖
 
 
 ```javascript
@@ -1586,11 +1545,9 @@ Azure 和 Google 地圖都可以在地圖上匯入和轉譯 KML、KMZ 和 GeoRSS
 
 在瀏覽器中執行此程式碼會顯示如下圖所示的地圖：
 
-<center>
+![Google Maps KML](media/migrate-google-maps-web-app/google-maps-kml.png)
 
-![Google Maps KML](media/migrate-google-maps-web-app/google-maps-kml.png)</center>
-
-**之後：Azure 地圖服務**
+#### <a name="after-azure-maps"></a>之後：Azure 地圖服務
 
 在 Azure 地圖服務中，GeoJSON 是 Web SDK 中使用的主要資料格式，您可使用[空間 IO 模組](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/)輕鬆地將其他空間資料格式整合在其中。 此模組具有可供讀取和寫入空間資料的函式，也包含可輕鬆地從這些空間資料格式轉譯資料的簡單資料層。 若要讀取空間資料檔案中的資料，以字串或 Blob 的形式將 URL 或原始資料傳入 `atlas.io.read` 函式。 這會從檔案傳回所有已剖析的資料，然後再將該檔案新增至地圖。 相較於大部分的空間資料格式，KML 稍微複雜一點，因為其包含更多樣式資訊。 `SpatialDataLayer` 類別支援轉譯大多數的樣式，不過，在載入特徵資料之前，必須先將圖示影像載入地圖中，且地面覆蓋必須分別新增為地圖的圖層。 透過 URL 載入資料時，應將其裝載於已啟用 COR 的端點上，或應將 Proxy 服務當作選項傳入讀取函式。 
 
@@ -1683,9 +1640,9 @@ Azure 和 Google 地圖都可以在地圖上匯入和轉譯 KML、KMZ 和 GeoRSS
 </html>
 ```
 
-<center>
 
 ![Azure 地圖服務 KML](media/migrate-google-maps-web-app/azure-maps-kml.png)</center>
+
 
 **其他資源：**
 
@@ -1763,21 +1720,9 @@ Azure 地圖服務 Web SDK 包含可以個別載入的服務模組。 此模組�
 | 幾何程式庫      | [atlas.math](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.math)   |
 | 視覺效果程式庫 | [熱度圖圖層](map-add-heat-map-layer.md) |
 
-## <a name="next-steps"></a>後續步驟
+深入了解如何遷移至 Google Maps：
 
-深入了解 Azure 地圖服務 Web SDK。
-
-> [!div class="nextstepaction"]
-> [如何使用地圖控制項](how-to-use-map-control.md)
-
-> [!div class="nextstepaction"]
-> [如何使用服務模組](how-to-use-services-module.md)
-
-> [!div class="nextstepaction"]
-> [如何使用繪圖工具模組](set-drawing-options.md)
-
-> [!div class="nextstepaction"]
-> [程式碼範例](https://docs.microsoft.com/samples/browse/?products=azure-maps)
-
-> [!div class="nextstepaction"]
-> [Azure 地圖服務 Web SDK 服務 API 參考文件](https://docs.microsoft.com/javascript/api/azure-maps-control/)
+* [如何使用服務模組](how-to-use-services-module.md) 
+* [如何使用繪圖工具模組](set-drawing-options.md)
+* [如何使用服務模組](how-to-use-services-module.md)
+* [如何使用地圖控制項](how-to-use-map-control.md)

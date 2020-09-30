@@ -1,20 +1,20 @@
 ---
-title: 教學課程：遷移 Android 應用程式 |Microsoft Azure 地圖服務
-description: 如何將 Android 應用程式從 Google 地圖遷移至 Microsoft Azure 地圖服務。
+title: 遷移 Android 應用程式 |Microsoft Azure 地圖服務
+description: 如何將 Android 應用程式從 Google Maps 遷移至 Microsoft Azure 地圖服務。
 author: rbrundritt
 ms.author: richbrun
-ms.date: 12/17/2019
-ms.topic: tutorial
+ms.date: 08/19/2020
+ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: fe67364ef51248d04cbc6095eb691ffe255fa02c
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 96f68bdf58d9cc98815e4ae76ae01da87c38dc88
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90085856"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319634"
 ---
 # <a name="migrate-an-android-app-from-google-maps"></a>從 Google 地圖遷移 Android 應用程式
 
@@ -30,35 +30,35 @@ Azure 地圖服務 Android SDK 支援的最低 Android 版本為 API 21：Androi
 
 使用 Google Maps 或 Azure 地圖服務在 Android 應用程式中載入地圖的步驟幾乎相同。 使用任一種 SDK 時，您都必須：
 
-- 取得 API 或訂用帳戶金鑰，以存取任一平台。
-- 將 XML 新增至活動，以指定應呈現地圖的位置，及其版面配置方式。
-- 將包含地圖檢視的活動中所有生命週期方法，覆寫為地圖類別中的對應方法。 特別是，您必須覆寫下列方法：
-    - `onCreate(Bundle)`
-    - `onStart()`
-    - `onResume()`
-    - `onPause()`
-    - `onStop()`
-    - `onDestroy()`
-    - `onSaveInstanceState(Bundle)`
-    - `onLowMemory()`
-- 等到地圖準備就緒後，再嘗試存取及進行程式設計。
+* 取得 API 或訂用帳戶金鑰，以存取任一平台。
+* 將 XML 新增至活動，以指定應呈現地圖的位置，及其版面配置方式。
+* 將包含地圖檢視的活動中所有生命週期方法，覆寫為地圖類別中的對應方法。 特別是，您必須覆寫下列方法：
+    * `onCreate(Bundle)`
+    * `onStart()`
+    * `onResume()`
+    * `onPause()`
+    * `onStop()`
+    * `onDestroy()`
+    * `onSaveInstanceState(Bundle)`
+    * `onLowMemory()`
+* 等到地圖準備就緒後，再嘗試存取及進行程式設計。
 
-**之前：Google 地圖**
+### <a name="before-google-maps"></a>之前：Google 地圖
 
 若要使用適用於 Android 的 Google 地圖 SDK 來顯示地圖，應執行下列步驟：
 
-1.  確定已安裝 Google Play 服務。
-2.  將 Google 地圖服務的相依性新增至模組的 **gradle.build** 檔案： 
+1. 確定已安裝 Google Play 服務。
+2. 將 Google Maps 服務的相依性新增至模組的 **gradle.build** 檔案：
 
     `implementation 'com.google.android.gms:play-services-maps:17.0.0'`
 
-1.  在 **google\_maps\_api.xml** 檔案的應用程式區段內，新增 Google 地圖 API 金鑰：
-    
+3. 在 **google\_maps\_api.xml** 檔案的應用程式區段內，新增 Google 地圖 API 金鑰：
+
     ```xml
     <meta-data android:name="com.google.android.geo.API_KEY" android:value="YOUR_GOOGLE_MAPS_KEY"/>
     ```
 
-1.  將地圖片段新增至主要活動：
+4. 將地圖片段新增至主要活動：
 
     ```xml
     <com.google.android.gms.maps.MapView
@@ -67,13 +67,13 @@ Azure 地圖服務 Android SDK 支援的最低 Android 版本為 API 21：Androi
             android:layout_height="match_parent"/>
     ```
 
-1.  在 **MainActivity.java** 檔案中，您必須匯入 Google Maps SDK。 將包含地圖檢視的活動中所有的生命週期方法，轉送至地圖類別中的對應方法。 使用 `getMapAsync(OnMapReadyCallback)` 方法，從地圖片段中擷取 `MapView` 執行個體。 `MapView` 會自動初始化地圖系統和檢視。 編輯 **MainActivity.java** 檔案，如下所示：
+5. 在 **MainActivity.java** 檔案中，您必須匯入 Google Maps SDK。 將包含地圖檢視的活動中所有的生命週期方法，轉送至地圖類別中的對應方法。 使用 `getMapAsync(OnMapReadyCallback)` 方法，從地圖片段中擷取 `MapView` 執行個體。 `MapView` 會自動初始化地圖系統和檢視。 編輯 **MainActivity.java** 檔案，如下所示：
 
     ```java
     import com.google.android.gms.maps.GoogleMap;
     import com.google.android.gms.maps.MapView;
     import com.google.android.gms.maps.OnMapReadyCallback;
-    
+ 
     import android.support.v7.app.AppCompatActivity;
     import android.os.Bundle;
     
@@ -144,11 +144,9 @@ Azure 地圖服務 Android SDK 支援的最低 Android 版本為 API 21：Androi
 
 當您執行應用程式時，地圖控制項會以下列影像形式載入。
 
-<center>
+![簡單的 Google 地圖](media/migrate-google-maps-android-app/simple-google-maps.png)
 
-![簡單的 Google 地圖](media/migrate-google-maps-android-app/simple-google-maps.png)</center>
-
-**之後：Azure 地圖服務**
+### <a name="after-azure-maps"></a>之後：Azure 地圖服務
 
 若要使用適用於 Android 的 Azure 地圖服務 SDK 來顯示地圖，必須執行下列步驟：
 
@@ -161,7 +159,7 @@ Azure 地圖服務 Android SDK 支援的最低 Android 版本為 API 21：Androi
     ```
 
 2. 更新 **app/build.gradle**，並於其中新增下列程式碼：
-    
+
     1. 確定專案的 **minSdkVersion** 是 API 21 或更新版本。
 
     2. 將下列程式碼新增至 Android 區段：
@@ -172,6 +170,7 @@ Azure 地圖服務 Android SDK 支援的最低 Android 版本為 API 21：Androi
             targetCompatibility JavaVersion.VERSION_1_8
         }
         ```
+
     3. 更新您的相依性區塊。 為最新的 Azure 地圖服務 Android SDK 新增實作相依性程式行：
 
         ```java
@@ -180,10 +179,11 @@ Azure 地圖服務 Android SDK 支援的最低 Android 版本為 API 21：Androi
 
         > [!Note]
         > Azure 地圖服務 Android SDK 會定期進行升級和強化。 您可以參閱[開始使用 Android 地圖控制項](how-to-use-android-map-control-library.md)，以取得最新的 Azure 地圖服務版本號碼。 此外，您也可以將版本號碼從 "0.2" 設定為 "0+"，使您的程式碼一律指向最新版本。
-    
+
     4. 移至工具列中 [檔案]，然後按一下 [同步處理專案與 Gradle 檔案]。
-3. 將地圖片段新增至主要活動 (resources \> layout \> activity\_main.xml)：
-    
+
+3. 將地圖片段新增至主要活動 (resources pwd\> layout \> activity\_main.xml)：
+
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
     <FrameLayout
@@ -202,7 +202,7 @@ Azure 地圖服務 Android SDK 支援的最低 Android 版本為 API 21：Androi
     ```
 
 4. 在 **MainActivity.java** 檔案中，您將必須：
-    
+
     * 匯入 Azure 地圖服務 SDK
     * 設定您的 Azure 地圖服務驗證資訊
     * 在 **onCreate** 方法中取得地圖控制項執行個體
@@ -221,7 +221,7 @@ Azure 地圖服務 Android SDK 支援的最低 Android 版本為 API 21：Androi
     * `onLowMemory()`
 
     編輯 **MainActivity.java** 檔案，如下所示：
-    
+
     ```java
     package com.example.myapplication;
 
@@ -234,7 +234,7 @@ Azure 地圖服務 Android SDK 支援的最低 Android 版本為 API 21：Androi
     import com.microsoft.azure.maps.mapcontrol.source.DataSource;
 
     public class MainActivity extends AppCompatActivity {
-        
+     
         static {
             AzureMaps.setSubscriptionKey("<Your Azure Maps subscription key>");
         }
@@ -303,9 +303,8 @@ Azure 地圖服務 Android SDK 支援的最低 Android 版本為 API 21：Androi
 
 執行應用程式時，地圖控制項會以下列影像的形式載入。
 
-<center>
 
-![簡單的 Azure 地圖服務](media/migrate-google-maps-android-app/simple-azure-maps.png)</center>
+![簡單的 Azure 地圖服務](media/migrate-google-maps-android-app/simple-azure-maps.png)
 
 請注意，Azure 地圖服務控制項支援更高倍數的縮小，而更能提供涵蓋全世界的檢視。
 
@@ -316,7 +315,7 @@ Azure 地圖服務 Android SDK 支援的最低 Android 版本為 API 21：Androi
 
 如果您的受眾分散在多個國家/區域或使用不同語言，當地語系化便很重要。
 
-**之前：Google 地圖**
+### <a name="before-google-maps"></a>之前：Google 地圖
 
 將下列程式碼新增至 `onCreate` 方法，以設定地圖語言。 您必須先加入程式碼，才能設定地圖的內容檢視。 "fr" 語言代碼會將語言限制為法文。
 
@@ -332,11 +331,9 @@ getBaseContext().getResources().updateConfiguration(config,
 
 以下是語言設定為 "fr" 的 Google 地圖範例。
 
-<center>
+![Google 地圖當地語系化](media/migrate-google-maps-android-app/google-maps-localization.png)
 
-![Google 地圖當地語系化](media/migrate-google-maps-android-app/google-maps-localization.png)</center>
-
-**之後：Azure 地圖服務**
+### <a name="after-azure-maps"></a>之後：Azure 地圖服務
 
 Azure 地圖服務提供三種不同的方式供您設定地圖的語言和區域檢視。 第一個選項是將語言和區域檢視資訊傳入 `AzureMaps` 類別中。 此選項會全域使用靜態 `setLanguage` 和 `setView` 方法。 也就是說，在應用程式中載入的所有 Azure 地圖服務控制項上，都會設定該預設語言和區域檢視。 此範例會使用 "fr-FR" 語言代碼來設定法文。
 
@@ -376,9 +373,7 @@ mapControl.onReady(map -> {
 
 以下是語言設定為 "fr-FR" 的 Azure 地圖服務範例。
 
-<center>
-
-![Azure 地圖服務當地語系化](media/migrate-google-maps-android-app/azure-maps-localization.png)</center>
+![Azure 地圖服務當地語系化](media/migrate-google-maps-android-app/azure-maps-localization.png)
 
 請參閱[支援語言](supported-languages.md)的完整清單。
 
@@ -386,7 +381,7 @@ mapControl.onReady(map -> {
 
 您可以藉由呼叫適當的方法，以程式設計方式將 Azure 地圖服務和 Google 地圖中的動態地圖移至新的地理位置。 我們現在要讓地圖顯示衛星空照圖影像，並將地圖置中於某個座標位置，以及變更縮放層級。 在此範例中，我們將使用緯度：35.0272、經度：-111.0225，並將縮放層級設為 15。
 
-**之前：Google 地圖**
+### <a name="before-google-maps"></a>之前：Google 地圖
 
 您可以使用 `moveCamera` 方法，以程式設計方式移動 Google Maps 的地圖控制項的相機。 `moveCamera` 方法可讓您指定地圖的中心和縮放層級。 `setMapType` 方法會將地圖的類型變更為 [顯示]。
 
@@ -400,14 +395,12 @@ public void onMapReady(GoogleMap googleMap) {
 }
 ```
 
-<center>
-
-![Google 地圖設定的檢視](media/migrate-google-maps-android-app/google-maps-set-view.png)</center>
+![Google 地圖設定的檢視](media/migrate-google-maps-android-app/google-maps-set-view.png)
 
 > [!NOTE]
-> Google 地圖所使用的地圖底圖維度為 256 像素，而 Azure 地圖服務則使用較大的 512 像素地圖底圖。 在載入和 Google 地圖相同的地圖區域時，這種設定會讓 Azure 地圖服務減少所需的網路要求數目。 若要達到與 Google Maps 中地圖相同的可檢視區域，您必須在使用 Azure 地圖服務時，將 Google Maps 中使用的縮放層級減一。 
+> Google 地圖所使用的地圖底圖維度為 256 像素，而 Azure 地圖服務則使用較大的 512 像素地圖底圖。 在載入和 Google 地圖相同的地圖區域時，這種設定會讓 Azure 地圖服務減少所需的網路要求數目。 若要達到與 Google Maps 中地圖相同的可檢視區域，您必須在使用 Azure 地圖服務時，將 Google Maps 中使用的縮放層級減一。
 
-**之後：Azure 地圖服務**
+### <a name="after-azure-maps"></a>之後：Azure 地圖服務
 
 如前所述，若要在 Azure 地圖服務中達到相同的可檢視區域，請將 Google 地圖中使用的縮放層級減一。 在此案例中，請使用縮放層級 14。
 
@@ -437,19 +430,17 @@ mapControl.onReady(map -> {
 });
 ```
 
-<center>
-
-![Azure 地圖服務設定的檢視](media/migrate-google-maps-android-app/azure-maps-set-view.png)</center>
+![Azure 地圖服務設定的檢視](media/migrate-google-maps-android-app/azure-maps-set-view.png)
 
 **其他資源：**
 
-- [支援的地圖樣式](supported-map-styles.md)
+* [支援的地圖樣式](supported-map-styles.md)
 
 ## <a name="adding-a-marker"></a>新增標記
 
 點資料常會使用地圖上的影像來呈現。 這些影像稱為標記、圖釘、釘選或符號。 下列範例會將點資料呈現為地圖上的標記，座標為緯度：51.5、經度：-0.2 上。
 
-**之前：Google 地圖**
+### <a name="before-google-maps"></a>之前：Google 地圖
 
 使用 Google 地圖時，會使用地圖 `addMarker` 方法來新增標記。
 
@@ -462,11 +453,9 @@ public void onMapReady(GoogleMap googleMap) {
 }
 ```
 
-<center>
+![Google 地圖標記](media/migrate-google-maps-android-app/google-maps-marker.png)
 
-![Google 地圖標記](media/migrate-google-maps-android-app/google-maps-marker.png)</center>
-
-**之後：Azure 地圖服務**
+### <a name="after-azure-maps"></a>之後：Azure 地圖服務
 
 在 Azure 地圖服務中，若要在地圖上呈現位置點資料，須先將點資料新增至資料來源。 然後，將該資料來源連接至符號圖層。 資料來源會在地圖控制項中最佳化空間資料的管理。 符號圖層會指定如何使用影像或文字來呈現位置點資料。
 
@@ -484,9 +473,7 @@ mapControl.onReady(map -> {
 });
 ```
 
-<center>
-
-![Azure 地圖服務的標記](media/migrate-google-maps-android-app/azure-maps-marker.png)</center>
+![Azure 地圖服務的標記](media/migrate-google-maps-android-app/azure-maps-marker.png)
 
 ## <a name="adding-a-custom-marker"></a>新增自訂標記
 
@@ -499,7 +486,7 @@ yellow-pushpin.png</center>
 
 在這兩個範例中，上述影像均新增至應用程式資源的可繪製資料夾。
 
-**之前：Google 地圖**
+### <a name="before-google-maps"></a>之前：Google 地圖
 
 使用 Google 地圖時，自訂影像可用來作為標記。 使用標記的 `icon` 選項載入自訂影像。 若要將影像點對齊座標，請使用 `anchor` 選項。 錨點會相對於影像的維度。 在此案例中，錨點為 0.2 個單位寬及 1 個單位高。
 
@@ -514,11 +501,9 @@ public void onMapReady(GoogleMap googleMap) {
 }
 ```
 
-<center>
+![Google 地圖的自訂標記](media/migrate-google-maps-android-app/google-maps-custom-marker.png)
 
-![Google 地圖的自訂標記](media/migrate-google-maps-android-app/google-maps-custom-marker.png)</center>
-
-**之後：Azure 地圖服務**
+### <a name="after-azure-maps"></a>之後：Azure 地圖服務
 
 Azure 地圖服務中的符號圖層支援自訂影像，但影像必須先載入至地圖資源，並獲派唯一識別碼。 接著，符號圖層必須參考此識別碼。 您可以使用 `iconOffset` 選項來位移符號，使其對齊影像上的正確位置點。 圖示位移以像素為單位。 根據預設，位移會相對於影像的底部中央，但您可以使用 `iconAnchor` 選項來調整此位移值。 此範例會將 `iconAnchor` 選項設定為 `"center"`。 並且使用圖示位移將影像向右移動五個像素，同時向上移動 15 個像素，以對齊圖釘影像的點。
 
@@ -542,15 +527,13 @@ mapControl.onReady(map -> {
 });
 ```
 
-<center>
-
-![Azure 地圖服務的自訂標記](media/migrate-google-maps-android-app/azure-maps-custom-marker.png)</center>
+![Azure 地圖服務的自訂標記](media/migrate-google-maps-android-app/azure-maps-custom-marker.png)
 
 ## <a name="adding-a-polyline"></a>新增聚合線條
 
 聚合線條可用來代表地圖上的一條線或路徑。 下列範例說明如何在地圖上建立虛線聚合線條。
 
-**之前：Google 地圖**
+### <a name="before-google-maps"></a>之前：Google 地圖
 
 使用 Google Maps 時，呈現聚合線條的方式是使用 `PolylineOptions` 類別。 使用 `addPolyline` 方法，將聚合線條新增至地圖。 使用 `color` 選項設定筆觸色彩。 使用 `width` 選項設定筆觸寬度。 使用 `pattern` 選項新增筆觸虛線陣列。
 
@@ -574,11 +557,9 @@ public void onMapReady(GoogleMap googleMap) {
 }
 ```
 
-<center>
+![Google 地圖的聚合線條](media/migrate-google-maps-android-app/google-maps-polyline.png)
 
-![Google 地圖的聚合線條](media/migrate-google-maps-android-app/google-maps-polyline.png)</center>
-
-**之後：Azure 地圖服務**
+### <a name="after-azure-maps"></a>之後：Azure 地圖服務
 
 在 Azure 地圖服務中，聚合線條稱為 `LineString` 或 `MultiLineString` 物件。 將這些物件新增至資料來源，並使用線條圖層來加以呈現。 使用 `strokeWidth` 選項設定筆觸寬度。 使用 `strokeDashArray` 選項新增筆觸虛線陣列。
 
@@ -607,15 +588,13 @@ mapControl.onReady(map -> {
 });
 ```
 
-<center>
-
-![Azure 地圖服務的聚合線條](media/migrate-google-maps-android-app/azure-maps-polyline.png)</center>
+![Azure 地圖服務的聚合線條](media/migrate-google-maps-android-app/azure-maps-polyline.png)
 
 ## <a name="adding-a-polygon"></a>新增多邊形
 
 多邊形可用來代表地圖上的區域。 下一個範例會示範如何建立多邊形。 此多邊形會根據地圖的中心座標來形成三角形。
 
-**之前：Google 地圖**
+### <a name="before-google-maps"></a>之前：Google 地圖
 
 使用 Google Maps 時，呈現多邊形的方式是使用 `PolygonOptions` 類別。 使用 `addPolygon` 方法，將多邊形新增至地圖。 分別使用 `fillColor` 和 `strokeColor` 選項來設定「填滿」和「筆觸」色彩。 使用 `strokeWidth` 選項設定筆觸寬度。
 
@@ -639,11 +618,9 @@ public void onMapReady(GoogleMap googleMap) {
 }
 ```
 
-<center>
+![Google 地圖的多邊形](media/migrate-google-maps-android-app/google-maps-polygon.png)
 
-![Google 地圖的多邊形](media/migrate-google-maps-android-app/google-maps-polygon.png)</center>
-
-**之後：Azure 地圖服務**
+### <a name="after-azure-maps"></a>之後：Azure 地圖服務
 
 在 Azure 地圖服務中，`Polygon` 和 `MultiPolygon` 物件會新增至資料來源，並以圖層在地圖上加以呈現。 在多邊形圖層中呈現多邊形的區域。 使用線條圖層來呈現多邊形的外框。 使用 `strokeColor` 和 `strokeWidth` 選項來設定筆觸色彩和寬度。
 
@@ -676,10 +653,7 @@ mapControl.onReady(map -> {
         strokeWidth(2f)));
 });
 ```
-
-<center>
-
-![Azure 地圖服務的多邊形](media/migrate-google-maps-android-app/azure-maps-polygon.png)</center>
+![Azure 地圖服務的多邊形](media/migrate-google-maps-android-app/azure-maps-polygon.png)
 
 ## <a name="overlay-a-tile-layer"></a>覆蓋地圖底圖圖層
 
@@ -687,7 +661,7 @@ mapControl.onReady(map -> {
 
 下列範例會覆蓋來自愛荷華州立大學 Iowa Environmental Mesonet 的氣象雷達地圖底圖圖層。 地圖底圖的大小為 256 像素。
 
-**之前：Google 地圖**
+### <a name="before-google-maps"></a>之前：Google 地圖
 
 使用 Google Maps 時，地圖底圖圖層可以重疊在地圖上方。 使用 `TileOverlayOptions` 類別。 使用 `addTileLauer` 方法，將地圖底圖圖層新增至地圖。 若要讓地圖底圖變成半透明狀，可將 `transparency` 選項設定為 0.2 或 20% 透明。
 
@@ -716,11 +690,9 @@ public void onMapReady(GoogleMap googleMap) {
 }
 ```
 
-<center>
+![Google 地圖的地圖底圖圖層](media/migrate-google-maps-android-app/google-maps-tile-layer.png)
 
-![Google 地圖的地圖底圖圖層](media/migrate-google-maps-android-app/google-maps-tile-layer.png)</center>
-
-**之後：Azure 地圖服務**
+### <a name="after-azure-maps"></a>之後：Azure 地圖服務
 
 您可以將地圖底圖圖層新增至地圖中，其方式與任何其他圖層大致相同。 具有 x、y、縮放預留位置 (分別為 `{x}`、`{y}`、`{z}`) 的格式化 URL 可用來讓圖層知道要於何處存取地圖底圖。 此外，Azure 地圖服務中的地圖底圖圖層也支援 `{quadkey}`、`{bbox-epsg-3857}` 和 `{subdomain}` 預留位置。 若要讓地圖底圖圖層變成半透明狀，可使用不透明度值 0.8。 不透明度和透明度雖然類似，但應使用倒數。 若要在這兩個選項之間轉換，將一減去其值即可。
 
@@ -738,15 +710,13 @@ mapControl.onReady(map -> {
 });
 ```
 
-<center>
-
-![Azure 地圖服務的地圖底圖圖層](media/migrate-google-maps-android-app/azure-maps-tile-layer.png)</center>
+![Azure 地圖服務的地圖底圖圖層](media/migrate-google-maps-android-app/azure-maps-tile-layer.png)
 
 ## <a name="show-traffic"></a>顯示流量
 
 Azure 地圖服務和 Google Maps 都具有重疊交通資料的選項。
 
-**之前：Google 地圖**
+### <a name="before-google-maps"></a>之前：Google 地圖
 
 使用 Google 地圖時，可以藉由將 true 傳入地圖的 `setTrafficEnabled` 方法中，將交通流量資料重疊在地圖之上。
 
@@ -759,11 +729,9 @@ public void onMapReady(GoogleMap googleMap) {
 }
 ```
 
-<center>
+![Google 地圖的交通](media/migrate-google-maps-android-app/google-maps-traffic.png)
 
-![Google 地圖的交通](media/migrate-google-maps-android-app/google-maps-traffic.png)</center>
-
-**之後：Azure 地圖服務**
+### <a name="after-azure-maps"></a>之後：Azure 地圖服務
 
 Azure 地圖服務提供數個不同的選項來顯示交通。 交通事件 (例如道路封閉和事故) 可在地圖上顯示為圖示。 交通流量和色彩編碼的道路可以在地圖上重疊。 色彩可以相對於正常預期的延遲或絕對延遲來修改，使其相對於發佈的速度限制來顯示。 Azure 地圖服務中的事件資料會每分鐘更新一次，車流資料則會每兩分鐘更新一次。
 
@@ -775,13 +743,8 @@ mapControl.onReady(map -> {
 });
 ```
 
-<center>
-
-![Azure 地圖服務的交通](media/migrate-google-maps-android-app/azure-maps-traffic.png)</center>
-
-## <a name="next-steps"></a>後續步驟
+![Azure 地圖服務的交通](media/migrate-google-maps-android-app/azure-maps-traffic.png)
 
 深入了解 Azure 地圖服務 Android SDK。
 
-> [!div class="nextstepaction"]
-> [如何使用 Android 的地圖控制項](how-to-use-android-map-control-library.md)
+[如何使用 Android 的地圖控制項](how-to-use-android-map-control-library.md)

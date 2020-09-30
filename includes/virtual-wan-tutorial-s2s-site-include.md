@@ -8,17 +8,17 @@ ms.topic: include
 ms.date: 06/23/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: bc94f31887526f387413f78fe3270784a4e3bd88
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ba69b94514a0c1b59001011a64a4fb28e5e4a827
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525144"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90606924"
 ---
 1. 在虛擬 WAN 的入口網站頁面的 [連線] 區段中，選取 [VPN 網站]，以開啟 [VPN 網站] 頁面。
 2. 在 [VPN 網站] 頁面上，按一下 [+ 建立網站]。
 
-   ![基本概念](./media/virtual-wan-tutorial-site-include/basics.png "基本概念")
+   ![螢幕擷取畫面顯示已開啟 [建立 VPN 網站] 窗格的 [VPN 站對站] 視窗。](./media/virtual-wan-tutorial-site-include/basics.png "基本概念")
 3. 在 [建立 VPN 網站] 頁面的 [基本] 索引標籤中，完成以下欄位：
 
     * **區域** - 先前稱為位置。 這是您要在其中建立此網站資源的位置。
@@ -29,7 +29,7 @@ ms.locfileid: "86525144"
     * **中樞** - 要讓網站連線到的中樞。 網站只能連線到具有 VPN 閘道的中樞。 如果您沒有看到中樞，請先在該中樞內建立 VPN 閘道。
 4. 請選取 [連結]，以新增分支上實體連結的相關資訊。 如果您有虛擬 WAN 夥伴 CPE 裝置，請查看這些裝置是否與 Azure 交換該資訊，作為從其系統設定之分支資訊上傳的一部分。
 
-   ![連結](./media/virtual-wan-tutorial-site-include/links.png "連結")
+   ![螢幕擷取畫面顯示 [建立 VPN 網站] 窗格，並選取 [連結] 索引標籤。](./media/virtual-wan-tutorial-site-include/links.png "連結")
 
     * **連結名稱** - 您想要為 VPN 網站實體連結提供的名稱。 範例：mylink1。
     * **提供者名稱** - VPN 網站的實體連結名稱。 範例：ATT、Verizon。

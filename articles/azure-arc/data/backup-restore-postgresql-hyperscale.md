@@ -1,6 +1,6 @@
 ---
-title: 適用於 PostgreSQL 的 Azure 資料庫超大規模伺服器群組的備份與還原
-description: 適用於 PostgreSQL 的 Azure 資料庫超大規模伺服器群組的備份與還原
+title: 備份與還原適用於 PostgreSQL 超大規模資料庫的 Azure 資料庫伺服器群組
+description: 備份與還原適用於 PostgreSQL 超大規模資料庫的 Azure 資料庫伺服器群組
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: d300f3e02d2a1a83410d5b7d981298a4743fb223
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: dde4db7f3eb476b7645e910504e48fea8bb6df0c
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934574"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569717"
 ---
 # <a name="backup-and-restore-for-azure-arc-enabled-postgresql-hyperscale-server-groups"></a>Azure Arc 啟用的于 postgresql 超大規模伺服器群組備份和還原
 
@@ -52,7 +52,7 @@ ms.locfileid: "90934574"
     }
 ...
 ```
-如果您看到「備份」一節，表示您的伺服器群組已設定為使用備份儲存類別，並已準備好讓您進行備份並進行還原。 如果您沒有看到「備份」一節，您必須刪除並重新建立您的伺服器群組，以設定備份儲存類別。 此時，在建立伺服器群組之後，還無法設定備份儲存類別。
+如果您在該命令的輸出的「備份」一節中看到儲存類別的名稱，表示您的伺服器群組已設定為使用備份儲存類別，並已準備好讓您進行備份並進行還原。 如果您沒有看到「備份」一節，您必須刪除並重新建立您的伺服器群組，以設定備份儲存類別。 此時，在建立伺服器群組之後，還無法設定備份儲存類別。
 
 >[!IMPORTANT]
 >如果您的伺服器群組已設定為使用備份儲存類別，請略過下一個步驟，並直接移至「進行手動完整備份」步驟。
@@ -134,10 +134,12 @@ azdata arc postgres backup list --server-name postgres01
 
 它會傳回輸出，如下所示：
 ```console
-ID                                Name                      State
---------------------------------  ------------------------  -------
-d134f51aa87f4044b5fb07cf95cf797f  MyBackup_Aug31_0730amPST  Done
+ID                                Name                      State    Timestamp
+--------------------------------  ------------------------  -------  ------------------------------
+d134f51aa87f4044b5fb07cf95cf797f  MyBackup_Aug31_0730amPST  Done     2020-08-31 14:30:00:00+00:00
 ```
+
+時間戳記表示取得備份的時間點（UTC 時間點）。
 
 ## <a name="restore-a-backup"></a>還原備份
 
@@ -215,6 +217,6 @@ ID                                Name                    State
 azdata arc postgres backup delete --help
 ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 - 瞭解如何相應放大 (在您的伺服器群組[) 新增背景工作節點](scale-out-postgresql-hyperscale-server-group.md)
 - 深入瞭解向上 [或向下延展 (增加/減少記憶體/虛擬核心) ](scale-up-down-postgresql-hyperscale-server-group-using-cli.md) 伺服器群組

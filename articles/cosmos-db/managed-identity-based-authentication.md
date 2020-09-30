@@ -8,12 +8,12 @@ ms.date: 03/20/2020
 ms.author: justipat
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 25ec74f3638ce857e4472d73a51e45f24c4df5ec
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 07bfaabf051a016ca9617245ba8628ef6c7e80c0
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88997722"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91566613"
 ---
 # <a name="use-system-assigned-managed-identities-to-access-azure-cosmos-db-data"></a>使用系統指派的受控識別來存取 Azure Cosmos DB 資料
 
@@ -35,7 +35,7 @@ ms.locfileid: "88997722"
 
 1. 在 [身分 **識別** ] 索引卷 **標上，** 開啟 [系統識別] **狀態** ，然後選取 [ **儲存**]。 [身分 **識別** ] 窗格看起來應該如下所示：  
 
-   :::image type="content" source="./media/managed-identity-based-authentication/identity-tab-system-managed-on.png" alt-text="顯示 [系統身分識別狀態] 設為 [開啟] 的螢幕擷取畫面。":::
+   :::image type="content" source="./media/managed-identity-based-authentication/identity-tab-system-managed-on.png" alt-text="顯示函數應用程式平臺功能和識別選項的螢幕擷取畫面。":::
 
 ## <a name="grant-access-to-your-azure-cosmos-account"></a>將存取權授與您的 Azure Cosmos 帳戶
 
@@ -58,19 +58,19 @@ ms.locfileid: "88997722"
 
 1. 登入 Azure 入口網站並移至您的 Azure Cosmos DB 帳戶。 開啟 [ **存取控制] (IAM) ** 窗格，然後開啟 [ **角色指派** ] 索引標籤：
 
-   :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab.png" alt-text="顯示 [存取控制] 窗格和 [角色指派] 索引標籤的螢幕擷取畫面。":::
+   :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab.png" alt-text="顯示函數應用程式平臺功能和識別選項的螢幕擷取畫面。":::
 
 1. 選取 [+新增] > [新增角色指派]。
 
 1. [ **新增角色指派** ] 面板會開啟至右側：
 
-   :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane.png" alt-text="顯示 [新增角色指派] 窗格的螢幕擷取畫面。":::
+   :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane.png" alt-text="顯示函數應用程式平臺功能和識別選項的螢幕擷取畫面。":::
 
    * **角色**：選取 **DocumentDB 帳戶參與者**
    * **將存取權指派給**：在 [ **選取系統指派的受控識別** ] 子區段下，選取 [ **函數應用程式**]。
    * **選取**：此窗格將會填入訂用帳戶中具有 **受控系統身分識別**的所有函式應用程式。 在此情況下，請選取 **FishTankTemperatureService** 函式應用程式： 
 
-      :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane-filled.png" alt-text="螢幕擷取畫面，其中顯示已填入範例的 [新增角色指派] 窗格。":::
+      :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane-filled.png" alt-text="顯示函數應用程式平臺功能和識別選項的螢幕擷取畫面。":::
 
 1. 當您選取函數應用程式之後，請選取 [ **儲存**]。
 

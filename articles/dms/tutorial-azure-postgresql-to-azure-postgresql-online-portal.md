@@ -1,7 +1,7 @@
 ---
-title: 教學課程：透過 Azure 入口網站將 Azure DB for 于 postgresql 遷移至 Azure DB for 于 postgresql online
+title: 教學課程：透過 Azure 入口網站將適用於 PostgreSQL 的 Azure DB 線上移轉至適用於 PostgreSQL 的 Azure DB
 titleSuffix: Azure Database Migration Service
-description: 瞭解如何透過 Azure 入口網站使用 Azure 資料庫移轉服務，執行從一個 Azure DB for 于 postgresql 到另一個適用於 PostgreSQL 的 Azure 資料庫的線上遷移。
+description: 了解如何透過 Azure 入口網站使用 Azure 資料庫移轉服務，執行從一個適用於 PostgreSQL 的 Azure DB 線上移轉至另一個適用於 PostgreSQL 的 Azure 資料庫。
 services: dms
 author: arunkumarthiags
 ms.author: arthiaga
@@ -10,60 +10,60 @@ ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
-ms.topic: article
+ms.topic: tutorial
 ms.date: 07/21/2020
-ms.openlocfilehash: 6a5415e12a5a063790077eeefdc9ea4d1487d68b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
-ms.translationtype: MT
+ms.openlocfilehash: 713b1698bff703507f46e1a8f76c6be385f41ec5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87097515"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91282455"
 ---
-# <a name="tutorial-migrate-azure-db-for-postgresql---single-server-to-azure-db-for-postgresql---single-server-or-hyperscale-citus-online-using-dms-via-the-azure-portal"></a>教學課程：透過 Azure 入口網站將 Azure DB for 于 postgresql-單一伺服器遷移至適用于于 postgresql 的 Azure DB-單一伺服器或超大規模資料庫（Citus）線上使用 DMS
+# <a name="tutorial-migrate-azure-db-for-postgresql---single-server-to-azure-db-for-postgresql---single-server-or-hyperscale-citus-online-using-dms-via-the-azure-portal"></a>教學課程：透過 Azure 入口網站使用 DMS 將適用於 PostgreSQL 的 Azure DB - 單一伺服器，線上移轉至適用於 PostgreSQL 的 Azure DB - 單一伺服器或超大規模 (Citus)
 
-您可以使用 Azure 資料庫移轉服務，以最短的停機時間，將[適用於 PostgreSQL 的 Azure 資料庫單一伺服器](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---single-server)實例中的資料庫移轉至[適用於 PostgreSQL 的 Azure 資料庫實例上的超大規模資料庫（Citus）](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---hyperscale-citus) 。 在本教學課程中，您會使用 Azure 資料庫移轉服務中的線上遷移活動，將**DVD 出租**範例資料庫從適用於 PostgreSQL 的 Azure 資料庫 v10 遷移至適用於 PostgreSQL 的 Azure 資料庫上的超大規模資料庫（Citus）。
+您可以使用 Azure 資料庫移轉服務，將來自[適用於 PostgreSQL 的 Azure 資料庫 - 單一伺服器](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---single-server)執行個體的資料庫移轉至[適用於 PostgreSQL 的 Azure 資料庫上的超大規模 (Citus)](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---hyperscale-citus) 執行個體，且停機時間最短。 在此教學課程中，您會在 Azure 資料庫移轉服務中使用線上移轉活動，將 **DVD Rental** 範例資料庫從適用於 PostgreSQL 的 Azure 資料庫 v10 移轉至適用於 PostgreSQL 的 Azure 資料庫上的超大規模 (Citus)。
 
 在本教學課程中，您會了解如何：
 > [!div class="checklist"]
 >
-> * 使用 pg_dump 公用程式來遷移範例架構。
+> * 使用 pg_dump 公用程式移轉範例結構描述。
 > * 建立 Azure 資料庫移轉服務的執行個體。
-> * 在 Azure 資料庫移轉服務中建立遷移專案。
+> * 在 Azure 資料庫移轉服務中建立移轉專案。
 > * 執行移轉。
 > * 監視移轉。
-> * 執行遷移切換。
+> * 執行完全移轉。
 
 > [!NOTE]
-> 若要使用「Azure 資料庫移轉服務」來執行線上移轉，必須根據「進階」定價層建立執行個體。 我們會將磁片加密，以防止在進行遷移的過程中竊取資料
+> 若要使用「Azure 資料庫移轉服務」來執行線上移轉，必須根據「進階」定價層建立執行個體。 我們會將磁碟加密，以防止在移轉期間使得資料遭竊
 
 > [!IMPORTANT]
 > 為了獲得最佳的移轉體驗，Microsoft 建議在目標資料庫所在的同一個 Azure 區域中，建立 Azure 資料庫移轉服務的執行個體。 跨區域或地理位置移動資料可能使移轉程序變慢，並產生錯誤。
 
 > [!IMPORTANT]
-> 于 postgresql 第10版和更新版本支援從適用於 PostgreSQL 的 Azure 資料庫遷移。 您也可以使用這個教學課程，從一個適用於 PostgreSQL 的 Azure 資料庫實例遷移至另一個適用於 PostgreSQL 的 Azure 資料庫實例或超大規模資料庫（Citus）實例。
+> PostgreSQL 版本 10 和更新版本支援從適用於 PostgreSQL 的 Azure 資料庫移轉。 您也可以使用此教學課程，從一個適用於 PostgreSQL 的 Azure 資料庫執行個體，移轉至另一個適用於 PostgreSQL 的 Azure 資料庫執行個體或超大規模 (Citus) 執行個體。
 
 ## <a name="prerequisites"></a>Prerequisites
 
 若要完成本教學課程，您需要：
 
-* 檢查[Azure 資料庫移轉服務支援的遷移案例狀態](https://docs.microsoft.com/azure/dms/resource-scenario-status)，以取得支援的遷移和版本組合。 
-* 具有**DVD 出租**資料庫的現有[適用於 PostgreSQL 的 Azure 資料庫](https://docs.microsoft.com/azure/postgresql/)版本10和更新的實例。 Azure 資料庫移轉服務不支援從適用于于 postgresql 9.5 或9.6 的 Azure DB 進行遷移。
+* 檢查 [Azure 資料庫移轉服務所支援的移轉案例狀態](https://docs.microsoft.com/azure/dms/resource-scenario-status)，以取得支援的移轉和版本組合。 
+* 現有的[適用於 PostgreSQL 的 Azure 資料庫](https://docs.microsoft.com/azure/postgresql/)版本 10 和更新版本執行個體，具有 **DVD Rental** 資料庫。 Azure 資料庫移轉服務不支援從適用於 PostgreSQL 的 Azure DB 9.5 或 9.6 進行移轉。
 
-    另請注意，目標適用於 PostgreSQL 的 Azure 資料庫版本必須等於或晚于內部部署于 postgresql 版本。 例如，于 postgresql 10 可以遷移至適用於 PostgreSQL 的 Azure 資料庫10或11，但不能適用於 PostgreSQL 的 Azure 資料庫9.6。
+    另請注意，目標「適用於 PostgreSQL 的 Azure 資料庫」版本必須等於或晚於內部部署 PostgreSQL 版本。 例如，PostgreSQL 10 可以移轉至適用於 PostgreSQL 的 Azure 資料庫 10 或 11，但無法移轉至適用於 PostgreSQL 的 Azure 資料庫 9.6。
 
-* [建立適用於 PostgreSQL 的 Azure 資料庫伺服器](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal)，或[建立適用於 PostgreSQL 的 Azure 資料庫超大規模資料庫（Citus）伺服器](https://docs.microsoft.com/azure/postgresql/quickstart-create-hyperscale-portal)做為要遷移資料的目標資料庫伺服器。
-* 使用 Azure Resource Manager 部署模型建立 Azure 資料庫移轉服務的 Microsoft Azure 虛擬網路。 如需有關建立虛擬網路的詳細資訊，請參閱[虛擬網路檔](https://docs.microsoft.com/azure/virtual-network/)，特別是快速入門文章，其中包含逐步解說的詳細資料。
+* [建立適用於 PostgreSQL 的 Azure 資料庫伺服器](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal)或[建立適用於 PostgreSQL 的 Azure 資料庫 - 超大規模 (Citus) 伺服器](https://docs.microsoft.com/azure/postgresql/quickstart-create-hyperscale-portal)做為要移轉資料的目標資料庫伺服器。
+* 使用 Azure Resource Manager 部署模型，為 Azure 資料庫移轉服務建立 Microsoft Azure 虛擬網路。 如需建立虛擬網路的詳細資訊，請參閱[虛擬網路文件](https://docs.microsoft.com/azure/virtual-network/)，特別是快速入門文章，裡面會提供逐步操作詳細資料。
 
-* 請確定您虛擬網路的網路安全性群組（NSG）規則不會對 Azure 資料庫移轉服務封鎖下列輸入通訊埠：443、53、9354、445、12000。 如需虛擬網路 NSG 流量篩選的詳細資訊，請參閱[使用網路安全性群組來篩選網路流量](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm)一文。
-* 建立適用於 PostgreSQL 的 Azure 資料庫來源的伺服器層級[防火牆規則](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure)，以允許 Azure 資料庫移轉服務存取源資料庫。 提供用於 Azure 資料庫移轉服務之虛擬網路的子網範圍。
-* 建立適用於 PostgreSQL 的 Azure 資料庫目標的伺服器層級[防火牆規則](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure)，以允許 Azure 資料庫移轉服務存取目標資料庫。 提供用於 Azure 資料庫移轉服務之虛擬網路的子網範圍。
-* 在當做來源使用的適用於 PostgreSQL 的 Azure 資料庫實例中，設定下列伺服器參數：
+* 確定您虛擬網路的網路安全性群組 (NSG) 規則不會對 Azure 資料庫移轉服務封鎖下列輸入通訊連接埠：443、53、9354、445、12000。 如需虛擬網路 NSG 流量篩選的詳細資訊，請參閱[使用網路安全性群組來篩選網路流量](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm)。
+* 為適用於 PostgreSQL 的 Azure 資料庫來源建立伺服器層級的[防火牆規則](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure)，以允許 Azure 資料庫移轉服務存取來源資料庫。 提供用於 Azure 資料庫移轉服務之虛擬網路的子網路範圍。
+* 為適用於 PostgreSQL 的 Azure 資料庫目標建立伺服器層級的[防火牆規則](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure)，以允許 Azure 資料庫移轉服務存取目標資料庫。 提供用於 Azure 資料庫移轉服務之虛擬網路的子網路範圍。
+* 在用作來源的適用於 PostgreSQL 的 Azure 資料庫執行個體中，設定下列伺服器參數：
 
   * max_replication_slots = [插槽數目]，建議設定為**五個插槽**
   * max_wal_senders =[並行工作數目] - max_wal_senders 參數設定可執行的並行工作數目，建議設定為 **10 個工作**
 
 > [!NOTE]
-> 上述伺服器參數是靜態的，而且需要重新開機您的適用於 PostgreSQL 的 Azure 資料庫實例，才會生效。 如需切換伺服器參數的詳細資訊，請參閱[設定適用於 PostgreSQL 的 Azure 資料庫伺服器參數](https://docs.microsoft.com/azure/postgresql/howto-configure-server-parameters-using-portal)。
+> 上述伺服器參數是靜態的，而且需要將您的適用於 PostgreSQL 的 Azure 資料庫執行個體重新啟動，才會生效。 如需切換伺服器參數的詳細資訊，請參閱[設定適用於 PostgreSQL 的 Azure 資料庫伺服器參數](https://docs.microsoft.com/azure/postgresql/howto-configure-server-parameters-using-portal)。
 
 > [!IMPORTANT]
 > 現有資料庫中的所有資料表都需要主要索引鍵，以確保變更可以同步處理至目標資料庫。
@@ -78,7 +78,7 @@ ms.locfileid: "87097515"
     pg_dump -o -h hostname -U db_username -d db_name -s > your_schema.sql
     ```
 
-    例如，若要建立**dvdrental**資料庫的架構傾印檔案：
+    例如，若要建立 **dvdrental** 資料庫的結構描述傾印檔案：
 
     ```
     pg_dump -o -h mypgserver-source.postgres.database.azure.com -U pguser@mypgserver-source -d dvdrental -s -O -x > dvdrentalSchema.sql
@@ -88,10 +88,10 @@ ms.locfileid: "87097515"
 
 2. 在您的目標環境中建立一個空的資料庫，即適用於 PostgreSQL 的 Azure 資料庫。
 
-    如需如何連接及建立資料庫的詳細資訊，請參閱在[Azure 入口網站中建立適用於 PostgreSQL 的 Azure 資料庫伺服器](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal)或在[Azure 入口網站中建立適用於 PostgreSQL 的 Azure 資料庫超大規模資料庫（Citus）伺服器](https://docs.microsoft.com/azure/postgresql/quickstart-create-hyperscale-portal)一文。
+    如需如何連接及建立資料庫的詳細資訊，請參閱[在 Azure 入口網站中建立適用於 PostgreSQL 的 Azure 資料庫伺服器](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal)或[在 Azure 入口網站中建立適用於 PostgreSQL 的 Azure 資料庫 - 超大規模 (Citus) 伺服器](https://docs.microsoft.com/azure/postgresql/quickstart-create-hyperscale-portal)文章。
 
     > [!NOTE]
-    > 適用於 PostgreSQL 的 Azure 資料庫超大規模資料庫（Citus）的實例只有單一資料庫： **Citus**。
+    > 適用於 PostgreSQL 的 Azure 資料庫 - 超大規模 (Citus) 的一個執行個體只有單一資料庫：**citus**。
 
 3. 透過還原結構描述傾印檔案，將結構描述匯入到您所建立的目標資料庫中。
 
@@ -99,16 +99,16 @@ ms.locfileid: "87097515"
     psql -h hostname -U db_username -d db_name < your_schema.sql
     ```
 
-    例如:
+    例如：
 
     ```
     psql -h mypgserver-source.postgres.database.azure.com  -U pguser@mypgserver-source -d dvdrental citus < dvdrentalSchema.sql
     ```
 
-4. 若要解壓縮 drop 外鍵腳本，並將它加入目的地（適用於 PostgreSQL 的 Azure 資料庫），請在 PgAdmin 或 psql 中執行下列腳本。
+4. 若要擷取 drop 外部索引鍵指令碼，並在目的地 (適用於 PostgreSQL 的 Azure 資料庫) 新增它，請在 PgAdmin 或 psql 中執行下列指令碼。
 
    > [!IMPORTANT]
-   > 架構中的外鍵會導致初始載入和持續同步處理失敗。
+   > 結構描述中的外部索引鍵會導致移轉的初始載入和持續同步失敗。
 
     ```
     SELECT Q.table_name
@@ -144,10 +144,10 @@ ms.locfileid: "87097515"
 
 5. 在查詢結果中執行卸除外部索引鍵 (這是第二個資料行)。
 
-6. 若要停用目標資料庫中的觸發程式，請執行下列腳本。
+6. 若要在目標資料庫中停用觸發程序，請執行下列指令碼。
 
    > [!IMPORTANT]
-   > 資料中的觸發程式（insert 或 update）會在目標中強制執行從來源複寫的資料之前的資料完整性。 因此，建議您在遷移期間停用**目標上**所有資料表中的觸發程式，然後在完成遷移之後重新啟用觸發程式。
+   > 資料中的觸發程序 (Insert 或 Update) 會在從來源複寫資料之前，於目標中強制執行資料完整性。 因此，建議您在移轉期間停用**目標上**所有資料表中的觸發程序，並在移轉完成後重新啟用觸發程序。
 
     ```
     SELECT DISTINCT CONCAT('ALTER TABLE ', event_object_schema, '.', event_object_table, ' DISABLE TRIGGER ', trigger_name, ';')
@@ -178,23 +178,23 @@ ms.locfileid: "87097515"
 
     ![建立 Azure 資料庫移轉服務執行個體](media/tutorial-azure-postgresql-to-azure-postgresql-online-portal/dms-create1.png)
   
-3. 在 [**建立遷移服務**] 畫面上，指定 [名稱]、[訂用帳戶]、新的或現有的資源群組，以及服務的 [位置]。
+3. 在 [建立移轉服務] 畫面上，指定名稱、訂用帳戶、現有的資源群組，以及服務的位置。
 
-4. 選取現有的虛擬網路，或建立一個新的。
+4. 選取現有的虛擬網路或建立新的虛擬網路。
 
-    虛擬網路會為 Azure 資料庫移轉服務提供來源於 postgresql 伺服器和目標適用於 PostgreSQL 的 Azure 資料庫實例的存取權。
+    虛擬網路會為 Azure 資料庫移轉服務提供來源 PostgreSQL 伺服器和目標適用於 PostgreSQL 的 Azure 資料庫執行個體的存取權。
 
-    如需有關如何在 Azure 入口網站中建立虛擬網路的詳細資訊，請參閱[使用 Azure 入口網站建立虛擬網路](https://aka.ms/DMSVnet)一文。
+    如需如何在 Azure 入口網站中建立虛擬網路的詳細資訊，請參閱[使用 Azure 入口網站建立虛擬網路](https://aka.ms/DMSVnet)一文。
 
 5. 選取定價層。
 
-    如需成本和定價層的詳細資訊，請參閱[定價頁面](https://aka.ms/dms-pricing)。
+    如需成本和定價層的詳細資訊，請參閱[定價分頁](https://aka.ms/dms-pricing)。
 
     ![設定 Azure 資料庫移轉服務執行個體設定](media/tutorial-azure-postgresql-to-azure-postgresql-online-portal/dms-settings4.png)
 
-6. 選取 [**審核] + [建立**] 以建立服務。
+6. 選取 [檢閱 + 建立] 以建立服務。
 
-   服務建立會在大約10到15分鐘內完成。
+   服務建立大約會在 10 到 15 分鐘內完成。
 
 ## <a name="create-a-migration-project"></a>建立移轉專案
 
@@ -204,40 +204,40 @@ ms.locfileid: "87097515"
 
       ![找出 Azure 資料庫移轉服務的所有執行個體](media/tutorial-azure-postgresql-to-azure-postgresql-online-portal/dms-search.png)
 
-2. 在 [ **Azure 資料庫移轉服務**] 畫面上，搜尋您建立的 Azure 資料庫移轉服務實例名稱，選取實例，然後選取 [+ 新增] [**遷移專案**]。
+2. 在 [Azure 資料庫移轉服務] 畫面上，搜尋您建立的 Azure 資料庫移轉服務執行個體名稱，選取該執行個體，然後選取 [新增移轉專案]。
 
-3. 在 [**新增遷移專案**] 畫面上，指定專案的名稱，在 [**來源伺服器類型**] 文字方塊中選取 [**于 postgresql**]，然後在 [**目標伺服器類型**] 文字方塊中選取 [**適用於 PostgreSQL 的 Azure 資料庫**]。
+3. 在 [新增移轉專案] 畫面上指定專案名稱，並在 [來源伺服器類型] 文字方塊中中選取 [PostgreSQL]，然後在 [目標伺服器類型] 文字方塊中選取 [適用於 PostgreSQL 的 Azure 資料庫]。
     > [!NOTE]
-    > 即使來源伺服器是**適用於 PostgreSQL 的 Azure 資料庫**實例，還是在**來源伺服器類型**中選擇 [**于 postgresql** ]。  
+    > 在 [來源伺服器] 類型中選擇 [PostgreSQL]，即使來源伺服器是**適用於 PostgreSQL 的 Azure 資料庫**執行個體也是一樣。  
 
-4. 在 [**選擇活動類型**] 區段中，選取 [**線上資料移轉**]。
+4. 在 [選擇活動類型] 區段中，選取 [線上資料移轉]。
 
     ![建立 Azure 資料庫移轉服務專案](media/tutorial-azure-postgresql-to-azure-postgresql-online-portal/dms-create-project.png)
 
     > [!NOTE]
     > 或者，您可以選擇 [僅建立專案]**** 以立即建立移轉專案，並於後續再執行移轉。
 
-5. 選取 [**儲存**]，記下成功使用 Azure 資料庫移轉服務來遷移資料的需求，然後選取 [**建立及執行活動**]。
+5. 選取 [儲存]，記下要成功使用 Azure 資料庫移轉服務來移轉資料的需求，然後選取 [建立及執行活動]。
 
 ## <a name="specify-source-details"></a>指定來源詳細資料
 
-1. 在 [**新增來源詳細資料**] 畫面上，指定來源於 postgresql 實例的連接詳細資料。
+1. 在 [新增來源詳細資料] 畫面上，指定來源 PostgreSQL 執行個體的連線詳細資料。
 
     ![新增來源詳細資料畫面](media/tutorial-azure-postgresql-to-azure-postgresql-online-portal/dms-add-source-details.png)
 
     > [!NOTE]
-    > 您可以在**適用於 PostgreSQL 的 Azure 資料庫**入口網站中找到詳細資料，例如「伺服器名稱」、「伺服器埠」、「資料庫名稱」等等。
+    > 您可以在**適用於 PostgreSQL 的 Azure 資料庫**入口網站中找到詳細資料，例如「伺服器名稱」、「伺服器連接埠」、「資料庫名稱」等等。
 
 2. 選取 [儲存]。
 
 ## <a name="specify-target-details"></a>指定目標詳細資料
 
-1. 在 [**目標詳細資料**] 畫面上，指定目標超大規模資料庫（Citus）伺服器的連線詳細資料，這是使用 Pg_dump 將**DVD 租用**架構部署到的預先布建超大規模資料庫（Citus）實例。
+1. 在 [目標詳細資料] 畫面上，指定目標超大規模 (Citus) 伺服器的連線詳細資料，這是使用 pg_dump 部署的 **DVD Rentals** 結構描述超大規模 (Citus) 的預先佈建執行個體。
 
     ![目標詳細資料畫面](media/tutorial-azure-postgresql-to-azure-postgresql-online-portal/dms-add-target-details.png)
 
     > [!NOTE]
-    > 您可以從適用於 PostgreSQL 的 Azure 資料庫實例遷移至另一個適用於 PostgreSQL 的 Azure 資料庫單一伺服器實例或超大規模資料庫（Citus）伺服器。
+    > 您可以從適用於 PostgreSQL 的 Azure 資料庫執行個體，移轉至另一個適用於 PostgreSQL 的 Azure 資料庫單一伺服器執行個體或超大規模 (Citus) 伺服器。
 
 2. 選取 [儲存]****，然後在 [對應到目標資料庫]**** 畫面上，對應要進行移轉的來源和目標資料庫。
 
@@ -245,27 +245,27 @@ ms.locfileid: "87097515"
 
     ![對應到目標資料庫畫面](media/tutorial-azure-postgresql-to-azure-postgresql-online-portal/dms-map-target-databases.png)
 
-3. 選取 [**儲存**]，然後在 [**遷移設定**] 畫面上，接受預設值。
+3. 選取 [儲存]，然後在 [移轉設定] 畫面上接受預設值。
 
-    ![[遷移設定] 畫面](media/tutorial-azure-postgresql-to-azure-postgresql-online-portal/dms-migration-settings.png)
+    ![移轉設定畫面](media/tutorial-azure-postgresql-to-azure-postgresql-online-portal/dms-migration-settings.png)
 
 4. 選取 [儲存]****，在 [移轉摘要]**** 畫面的 [活動名稱]**** 文字方塊中，指定移轉活動的名稱，然後檢閱摘要，以確定來源和目標詳細資料都與您先前的指定相符。
 
-    ![[遷移摘要] 畫面](media/tutorial-azure-postgresql-to-azure-postgresql-online-portal/dms-migration-summary.png)
+    ![移轉摘要畫面](media/tutorial-azure-postgresql-to-azure-postgresql-online-portal/dms-migration-summary.png)
 
 ## <a name="run-the-migration"></a>執行移轉
 
 * 選取 [執行移轉]****。
 
-    [遷移活動] 視窗隨即出現，而且活動的**狀態**應該會更新，以顯示為 [**備份進行中**]。
+    移轉活動視窗隨即出現，且活動的 [狀態] 應該會更新，以顯示為 [備份進行中]。
 
 ## <a name="monitor-the-migration"></a>監視移轉
 
 1. 在移轉活動畫面上，選取 [重新整理]**** 以更新顯示，直到移轉的 [狀態]**** 顯示為 [完成]**** 為止。
 
-     ![監視遷移程式](media/tutorial-azure-postgresql-to-azure-postgresql-online-portal/dms-monitor-migration.png)
+     ![監視移轉程序](media/tutorial-azure-postgresql-to-azure-postgresql-online-portal/dms-monitor-migration.png)
 
-2. 當遷移完成時，請在 [**資料庫名稱**] 下方選取特定資料庫，以取得 [**完整資料載入**] 和 [累加**式資料同步**] 作業的遷移狀態。
+2. 移轉完成時，於 [資料庫名稱] 下方選取特定資料庫，以取得 [載入完整資料] 和 [累加式資料同步] 作業的移轉狀態。
 
    > [!NOTE]
    > [載入完整資料]**** 會顯示初始載入移轉狀態，而 [累加式資料同步]**** 則會顯示異動資料擷取 (CDC) 狀態。
@@ -280,11 +280,11 @@ ms.locfileid: "87097515"
 
 1. 當您準備好要完成資料庫移轉後，請選取 [開始完全移轉]****。
 
-2. 等到 [暫止的**變更**] 計數器顯示為**0** ，以確保源資料庫的所有傳入交易都已停止，請選取 [**確認**] 核取方塊，然後選取 [套用 **]。**
+2. 等到 [暫止的變更] 計數器顯示 **0**，以確保對來源資料庫的所有傳入交易都已停止，選取 [確認] 核取方塊，然後選取 [套用]。
 
-    ![完成切換畫面](media/tutorial-azure-postgresql-to-azure-postgresql-online-portal/dms-complete-cutover.png)
+    ![完成完全移轉畫面](media/tutorial-azure-postgresql-to-azure-postgresql-online-portal/dms-complete-cutover.png)
 
-3. 當資料庫移轉狀態顯示為 [**已完成**] 時，將您的應用程式連接到適用於 PostgreSQL 的 Azure 資料庫的新目標實例。
+3. 當資料庫移轉狀態顯示為 [已完成] 時，請將應用程式連線至適用於 PostgreSQL 的 Azure 資料庫的新目標執行個體。
 
 ## <a name="next-steps"></a>後續步驟
 
