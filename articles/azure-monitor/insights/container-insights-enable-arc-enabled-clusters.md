@@ -2,13 +2,13 @@
 title: 使用適用于容器的 Azure 監視器設定 Azure Arc 啟用的 Kubernetes 叢集 |Microsoft Docs
 description: 本文說明如何針對已啟用 Azure Arc 的 Kubernetes 叢集上的容器，使用 Azure 監視器設定監視。
 ms.topic: conceptual
-ms.date: 06/23/2020
-ms.openlocfilehash: 44512acbd09df449dbba2177bb10f22f480b82d6
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.date: 09/23/2020
+ms.openlocfilehash: 79a534e4f37fb0154115e43402f031752a603ccb
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90977531"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91620285"
 ---
 # <a name="enable-monitoring-of-azure-arc-enabled-kubernetes-cluster"></a>啟用 Azure Arc 啟用的 Kubernetes 叢集監視
 
@@ -21,8 +21,6 @@ ms.locfileid: "90977531"
 針對容器 Azure 監視器支援監視 Azure Arc [啟用的 Kubernetes](container-insights-overview.md) (預覽) ，如下列功能所述：
 
 - 即時資料 (預覽) 
-
-- 從叢集節點和 pod[收集計量](container-insights-update-metrics.md)，並將其儲存在 Azure 監視器計量資料庫中
 
 下列為容器的 Azure 監視器正式支援：
 
@@ -106,7 +104,7 @@ ms.locfileid: "90977531"
 1. 使用下列命令，將腳本下載並儲存至本機資料夾，以使用監視附加元件來設定您的叢集：
 
     ```powershell
-    wget https://aka.ms/enable-monitoring-powershell-script -outfile enable-monitoring.ps1
+    Invoke-WebRequest https://aka.ms/enable-monitoring-powershell-script -OutFile enable-monitoring.ps1
     ```
 
 2. 設定的 `$azureArcClusterResourceId` 對應值來設定變數 `subscriptionId` ， `resourceGroupName` 並 `clusterName` 代表 Azure Arc 啟用 Kubernetes 叢集資源的資源識別碼。
@@ -264,7 +262,7 @@ Proxy 設定值具有下列語法： `[protocol://][user:password@]proxyhost[:po
 |proxyhost | Proxy 伺服器的位址或 FQDN |
 |連接埠 | Proxy 伺服器的選擇性埠號碼 |
 
-例如： `http://user01:password@proxy01.contoso.com:3128`
+例如：`http://user01:password@proxy01.contoso.com:3128`
 
 如果您將通訊協定指定為 **HTTP**，則會使用 SSL/TLS 安全連線來建立 HTTP 要求。 您的 proxy 伺服器必須支援 SSL/TLS 通訊協定。
 

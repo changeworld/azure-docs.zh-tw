@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: b1a228e9d15a349f032291fb0678bdd0ad9d95b3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 69cfe529f3d2b0f956bfbe9d002a5a220b37e19f
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87048857"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91619998"
 ---
 # <a name="use-azure-powershell-to-create-an-hdinsight-cluster-with-azure-data-lake-storage-gen1-as-additional-storage"></a>使用 Azure PowerShell 建立搭配 Azure Data Lake Storage Gen1 (作為附加儲存體) 的 HDInsight 叢集
 
@@ -53,7 +53,7 @@ ms.locfileid: "87048857"
 * **Azure 訂用帳戶**。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
 * **Azure PowerShell 1.0 或更新版本**。 請參閱 [如何安裝和設定 Azure PowerShell](/powershell/azure/)。
 * **Windows SDK**。 您可以從[這裡](https://dev.windows.com/en-us/downloads)安裝它。 您使用它來建立安全性憑證。
-* **Azure Active Directory 服務主體**。 本教學課程中的步驟提供有關如何在 Azure AD 中建立服務主體的指示。 不過，您必須是 Azure AD 系統管理員，才能建立服務主體。 如果您是 Azure AD 系統管理員，您就可以略過這項先決條件並繼續進行本教學課程。
+* **Azure Active Directory 的服務主體**。 本教學課程中的步驟提供有關如何在 Azure AD 中建立服務主體的指示。 不過，您必須是 Azure AD 系統管理員，才能建立服務主體。 如果您是 Azure AD 系統管理員，您就可以略過這項先決條件並繼續進行本教學課程。
 
     **如果您不是 Azure AD 系統管理員**，您將無法執行建立服務主體所需的步驟。 在這類情況下，您的 Azure AD 系統管理員必須先建立服務主體，您才能建立搭配 Data Lake Storage Gen1 的 HDInsight 叢集。 此外，必須使用憑證來建立服務主體，如[使用憑證來建立服務主體](../active-directory/develop/howto-authenticate-service-principal-powershell.md#create-service-principal-with-certificate-from-certificate-authority)所述。
 
@@ -77,7 +77,7 @@ ms.locfileid: "87048857"
     ```
 
    > [!NOTE]
-   > 如果您在註冊 Data Lake Storage Gen1 資源提供者時收到類似 `Register-AzResourceProvider : InvalidResourceNamespace: The resource namespace 'Microsoft.DataLakeStore' is invalid` 的錯誤，可能表示您的訂用帳戶不在 Data Lake Storage Gen1 的允許清單中。 請務必遵循這些[指示](data-lake-store-get-started-portal.md)，來為您的 Azure 訂用帳戶啟用使用 Data Lake Storage Gen1 的功能。
+   > 如果您在 `Register-AzResourceProvider : InvalidResourceNamespace: The resource namespace 'Microsoft.DataLakeStore' is invalid` 註冊 Data Lake Storage Gen1 資源提供者時收到類似的錯誤，可能是您的訂用帳戶未核准 Data Lake Storage Gen1。 請務必遵循這些[指示](data-lake-store-get-started-portal.md)，來為您的 Azure 訂用帳戶啟用使用 Data Lake Storage Gen1 的功能。
    >
    >
 2. Data Lake Storage Gen1 帳戶會與 Azure 資源群組相關聯。 從建立 Azure 資源群組開始。

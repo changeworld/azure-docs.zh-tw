@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 19b37472d7decb46825da4760511f1761493c246
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 9ae4970383802adad755fff4a6ce382db6ce32fe
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89441930"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91619911"
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Azure Data Factory - 資料移動的安全性考量
 
@@ -114,7 +114,7 @@ Salesforce 支援「Shield 平台加密」，可加密所有檔案、附件、�
 | 閘道版本 (建立時) | 認證儲存位置 | 認證加密/安全性 | 
 | --------------------------------- | ------------------ | --------- |  
 | 低於或等於 2.3.xxxx.x | 雲端 | 使用憑證 (與認證管理員應用程式所使用的不同) 進行加密 | 
-| 高於或等於 2.4.xxxx.x | 內部部署 | 透過 DPAPI 進行保護 | 
+| 高於或等於 2.4.xxxx.x | 在內部部署上 | 透過 DPAPI 進行保護 | 
   
 
 ### <a name="encryption-in-transit"></a>傳輸中加密
@@ -142,7 +142,7 @@ Salesforce 支援「Shield 平台加密」，可加密所有檔案、附件、�
 
 ![IPSec VPN 搭配閘道](media/data-factory-data-movement-security-considerations/ipsec-vpn-for-gateway.png)
 
-### <a name="firewall-configurations-and-whitelisting-ip-address-of-gateway"></a>防火牆組態及將閘道的 IP 位址加入允許清單
+### <a name="firewall-configurations-and-filtering-ip-address-of-gateway"></a>防火牆設定和篩選閘道的 IP 位址
 
 #### <a name="firewall-requirements-for-on-premisesprivate-network"></a>內部部署/私人網路的防火牆需求  
 在企業中，「公司防火牆」**** 會在組織的中央路由器上執行。 而「Windows 防火牆」**** 則是在安裝閘道的本機電腦上以精靈的形式執行。 
@@ -158,7 +158,7 @@ Salesforce 支援「Shield 平台加密」，可加密所有檔案、附件、�
 | `*.azuredatalakestore.net` | 443 | (選擇性) 當您的目的地是 Azure Data Lake Store 時，需要提供此資訊。 | 
 
 > [!NOTE] 
-> 您可能需要依個別資料來源所需，在公司防火牆層級管理連接埠/將網域加入允許清單。 此資料表只會使用 Azure SQL Database、Azure Synapse Analytics Azure Data Lake Store 作為範例。   
+> 您可能必須依照個別資料來源的需求，在公司防火牆層級管理埠/篩選網域。 此資料表只會使用 Azure SQL Database、Azure Synapse Analytics Azure Data Lake Store 作為範例。   
 
 下表提供「Windows 防火牆」**** 的「輸入連接埠」**** 需求。
 
@@ -168,10 +168,10 @@ Salesforce 支援「Shield 平台加密」，可加密所有檔案、附件、�
 
 ![閘道連接埠需求](media/data-factory-data-movement-security-considerations/gateway-port-requirements.png)
 
-#### <a name="ip-configurations-whitelisting-in-data-store"></a>資料存放區中的 IP 組態/允許清單設定
-有些雲端資料存放區也會要求必須將存取它們的電腦之 IP 位址加入允許清單。 請確定在防火牆中已將閘道電腦的 IP 位址正確地加入允許清單並進行設定。
+#### <a name="ip-configurationsfiltering-in-data-store"></a>資料存放區中的 IP 設定/篩選
+雲端中的某些資料存放區也需要核准存取它們的電腦 IP 位址。 確定閘道電腦的 IP 位址已在防火牆中適當地核准/設定。
 
-下列雲端資料存放區會要求必須將閘道電腦的 IP 位址加入允許清單。 在這些資料存放區中，有些可能預設不會要求將 IP 位址加入允許清單。 
+下列雲端資料存放區需要核准閘道電腦的 IP 位址。 根據預設，某些資料存放區可能不需要核准 IP 位址。 
 
 - [Azure SQL Database](../../azure-sql/database/firewall-configure.md) 
 - [Azure Synapse Analytics](../../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)
@@ -185,12 +185,10 @@ Salesforce 支援「Shield 平台加密」，可加密所有檔案、附件、�
 **答：** 我們尚未支援這項功能。 我們正積極處理這個問題。
 
 **問：** 閘道需要什麼連接埠才能運作？
-**答：** 閘道會建立 HTTP 型連線來開啟網際網路。 必須開啟**輸出連接埠 443 和 80**，閘道才能建立此連線。 針對「認證管理員」應用程式，請只在電腦層級 (而非公司防火牆層級) 開啟**輸入連接埠 8050**。 若 Azure SQL Database 或 Azure Synapse Analytics 作為來源/目的地，您也必須開啟 **1433** 埠。 如需詳細資訊，請參閱[防火牆組態及將 IP 位址加入允許清單](#firewall-configurations-and-whitelisting-ip-address-of gateway)一節。 
+**答：** 閘道會建立 HTTP 型連線來開啟網際網路。 必須開啟**輸出連接埠 443 和 80**，閘道才能建立此連線。 針對「認證管理員」應用程式，請只在電腦層級 (而非公司防火牆層級) 開啟**輸入連接埠 8050**。 若 Azure SQL Database 或 Azure Synapse Analytics 作為來源/目的地，您也必須開啟 **1433** 埠。 如需詳細資訊，請參閱 [防火牆設定和篩選 IP 位址](#firewall-configurations-and-filtering-ip-address-of gateway) 一節。 
 
 **問：** 閘道有什麼憑證需求？
 **答：** 目前閘道必須要有認證管理員應用程式用來安全地設定資料存放區認證的憑證。 此憑證是閘道安裝程式所建立並設定的自我簽署憑證。 您可以改為使用自己的 TLS/SSL 憑證。 如需詳細資訊，請參閱 [Click-Once 認證管理員應用程式](#click-once-credentials-manager-app)一節。 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 如需有關複製活動效能的資訊，請參閱[複製活動的效能及微調指南](data-factory-copy-activity-performance.md)。
-
- 

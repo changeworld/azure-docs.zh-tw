@@ -1,17 +1,17 @@
 ---
-title: PowerShell-具有 Data Lake Storage Gen1 的 HDInsight 叢集-Azure
-description: 使用 Azure PowerShell 來建立和使用 Azure HDInsight 叢集搭配 Azure Data Lake Storage Gen1。
+title: PowerShell-使用 Data Lake Storage Gen1 的 HDInsight 叢集-Azure
+description: 使用 Azure PowerShell 搭配 Azure Data Lake Storage Gen1 建立和使用 Azure HDInsight 叢集。
 author: twooley
 ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: f7c41dc11e7321d6fb9e6f8c030eb74b586a1b3e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d96718176c3cd7486c51e57942c4d12bf0d57992
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075024"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91619999"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-as-default-storage-by-using-powershell"></a>使用 PowerShell 建立以 Azure Data Lake Storage Gen1 作為預設儲存體的 HDInsight 叢集
 
@@ -31,7 +31,7 @@ ms.locfileid: "87075024"
 
 若要使用 PowerShell 來設定 HDInsight 搭配 Data Lake Storage Gen1 運作，請遵循接下來五個章節中的指示操作。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -67,7 +67,7 @@ ms.locfileid: "87075024"
     ```
 
     > [!NOTE]
-    > 如果您註冊 Data Lake Storage Gen1 資源提供者並收到類似 `Register-AzResourceProvider : InvalidResourceNamespace: The resource namespace 'Microsoft.DataLakeStore' is invalid` 的錯誤，您的訂用帳戶可能不在 Data Lake Storage Gen1 允許清單中。 若要針對 Data Lake Storage Gen1 公開預覽版來啟用 Azure 訂用帳戶，請遵循[透過 Azure 入口網站開始使用 Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md) 中的指示操作。
+    > 如果您註冊 Data Lake Storage Gen1 資源提供者並收到類似的錯誤 `Register-AzResourceProvider : InvalidResourceNamespace: The resource namespace 'Microsoft.DataLakeStore' is invalid` ，您的訂用帳戶可能無法核准 Data Lake Storage Gen1。 若要針對 Data Lake Storage Gen1 公開預覽版來啟用 Azure 訂用帳戶，請遵循[透過 Azure 入口網站開始使用 Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md) 中的指示操作。
     >
 
 2. Data Lake Storage Gen1 帳戶與 Azure 資源群組建立關聯。 從建立資源群組著手。
@@ -140,13 +140,13 @@ ms.locfileid: "87075024"
     ```
 
     系統會提示您輸入私密金鑰密碼。 命令成功執行之後，您應該會在您指定的憑證目錄中看到 **CertFile.cer** 和 **mykey.pvk**。
-2. 使用 [Pvk2Pfx][pvk2pfx] 公用程式將 MakeCert 建立的 .pvk 和 .cer 檔案轉換成 .pfx 檔案。 執行以下命令：
+2. 使用 [Pvk2Pfx][pvk2pfx] 公用程式將 MakeCert 建立的 .pvk 和 .cer 檔案轉換成 .pfx 檔案。 執行下列命令：
 
     ```azurepowershell
     pvk2pfx -pvk mykey.pvk -spc CertFile.cer -pfx CertFile.pfx -po <password>
     ```
 
-    系統提示您時，請輸入您稍早指定的私密金鑰密碼。 您針對 **-po** 參數指定的值是與 .pfx 檔案相關聯的密碼。 成功完成命令之後，您應該也會在所指定的憑證目錄中看到**CertFile。**
+    系統提示您時，請輸入您稍早指定的私密金鑰密碼。 您針對 **-po** 參數指定的值是與 .pfx 檔案相關聯的密碼。 順利完成命令之後，您應該也會在指定的憑證目錄中看到**CertFile .pfx。**
 
 ### <a name="create-an-azure-ad-and-a-service-principal"></a>建立 Azure AD 和服務主體
 在這一節中，您會建立 Azure AD 應用程式的服務主體、指派角色給服務主體，並藉由提供憑證驗證為服務主體。 若要在 Azure AD 中建立應用程式，請執行下列命令：
@@ -236,7 +236,7 @@ ms.locfileid: "87075024"
     Cmdlet 成功完成後，您應該會看到列出叢集詳細資料的輸出。
 
 ## <a name="run-test-jobs-on-the-hdinsight-cluster-to-use-data-lake-storage-gen1"></a>在 HDInsight 叢集上執行測試作業以使用 Data Lake Storage Gen1
-設定 HDInsight 叢集之後，您可以在叢集上執行測試工作，確保它可以存取 Data Lake Storage Gen1。 若要執行這項操作，請執行範例 Hive 作業來建立資料表，以使用 Data Lake Storage Gen1 在* \<cluster root> /example/data/sample.log*中已提供的範例資料。
+設定 HDInsight 叢集之後，您可以在叢集上執行測試工作，確保它可以存取 Data Lake Storage Gen1。 若要這樣做，請執行範例 Hive 作業來建立資料表，該資料表會使用 Data Lake Storage Gen1 在* \<cluster root> /example/data/sample.log*中提供的範例資料。
 
 在這一節中，您將透過安全殼層 (SSH) 連線到您所建立的 HDInsight Linux 叢集，然後執行範例 Hive 查詢。
 

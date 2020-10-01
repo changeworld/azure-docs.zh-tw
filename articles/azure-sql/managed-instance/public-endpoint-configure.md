@@ -5,17 +5,17 @@ services: sql-database
 ms.service: sql-managed-instance
 ms.subservice: security
 ms.custom: sqldbrb=1
-ms.topic: conceptual
+ms.topic: how-to
 author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: vanto, sstein
 ms.date: 05/07/2019
-ms.openlocfilehash: a9bf3fbf28d8ac525f2937812742e850a5427cc9
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: f3708885759a6a353742fe89b4454b39496aeeab
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91360815"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91619979"
 ---
 # <a name="configure-public-endpoint-in-azure-sql-managed-instance"></a>在 Azure SQL 受控執行個體中設定公用端點
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -94,7 +94,7 @@ Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
 
 1. 選取 [ **輸入安全性規則** ] 索引標籤，並使用下列設定 **新增** 優先順序高於 **deny_all_inbound** 規則的規則： </br> </br>
 
-    |設定  |建議的值  |說明  |
+    |設定  |建議的值  |描述  |
     |---------|---------|---------|
     |**Source**     |任何 IP 位址或服務標記         |<ul><li>針對 Power BI 之類的 Azure 服務，請選取 Azure 雲端服務標記</li> <li>針對您的電腦或 Azure 虛擬機器，請使用 NAT IP 位址</li></ul> |
     |**來源連接埠範圍**     |* |將此設為 * (任何) ，因為來源埠通常會動態配置，因此無法預測 |

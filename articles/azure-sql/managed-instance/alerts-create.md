@@ -6,17 +6,17 @@ ms.service: sql-managed-instance
 ms.subservice: performance
 ms.custom: ''
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, sstein
 ms.date: 05/04/2020
-ms.openlocfilehash: 48dfc456616fa4876b7053483f7377eda21aabde
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: dbf5c06adcddb5b3dfa3cdf2e0127f8a36c59885
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91283814"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91620098"
 ---
 # <a name="create-alerts-for-azure-sql-managed-instance-using-the-azure-portal"></a>使用 Azure 入口網站為 Azure SQL 受控執行個體建立警示
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]

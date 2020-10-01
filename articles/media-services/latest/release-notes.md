@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 5a22bd9508feac1348bcd8042fa6ac791864c261
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.openlocfilehash: 88b1eb70814c349d488933179a16c084a0af803c
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89425631"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91619962"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure 媒體服務 v3 版本資訊
 
@@ -42,7 +42,7 @@ ms.locfileid: "89425631"
 ## <a name="august-2020"></a>2020 年 8 月
 
 ### <a name="dynamic-encryption"></a>動態加密
-支援舊版 PlayReady 保護的可交互操作檔案格式 (PIFF 1.1) 加密現在可在動態封裝程式中使用。 這項支援可支援 Samsung 和 LG 的舊版智慧型電視組，這些設定會實作為 Microsoft 所發行之一般加密 standard (CENC) 的早期草稿。  PIFF 1.1 格式也稱為 Silverlight 用戶端程式庫先前支援的加密格式。 目前，此加密格式的唯一使用案例是將目標設為舊版智慧型電視市場，在某些區域中仍會有非一般的智慧型電視市場，但僅支援 PIFF 1.1 加密的 Smooth Streaming。 
+支援舊版 PlayReady 保護的可交互操作檔案格式 (PIFF 1.1) 加密現在可在動態封裝程式中使用。 這項支援可支援 Samsung 和 LG 的舊版智慧型電視組，這些設定會實作為 Microsoft 所發行之一般加密 standard (CENC) 的早期草稿。  PIFF 1.1 格式也稱為 Silverlight 用戶端程式庫先前支援的加密格式。 目前，此加密格式的唯一使用案例是將目標設為舊版智慧型電視市場，在某些區域中仍有非一般的智慧型電視，但僅支援 PIFF 1.1 加密的 Smooth Streaming。 
 
 若要使用新的 PIFF 1.1 加密支援，請將串流定位器 URL 路徑中的加密值變更為 ' PIFF '。 如需詳細資訊，請參閱 [內容保護總覽。](content-protection-overview.md)
 例如： `https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(encryption=piff)`|
@@ -60,7 +60,7 @@ Live 轉譯現在支援19種語言和8個區域。
 
 我們發佈了一個教學課程 [，稱為使用 Azure AD 的端對端內容保護](./azure-ad-content-protection.md)。
 
-### <a name="high-availablity"></a>高可用性
+### <a name="high-availability"></a>高可用性
 
 我們已透過媒體服務和隨選影片隨選發佈高可用性 (VOD) [總覽](./media-services-high-availability-encoding.md) 和 [範例](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/master/HighAvailabilityEncodingStreaming)。
 
@@ -135,13 +135,13 @@ Azure 媒體播放器文件已遷移至 [Azure 文件](../azure-media-player/azu
 ### <a name="file-encoding-enhancements"></a>檔案編碼增強功能
 
 - 現在提供新的「內容感知編碼」預設。 此預設使用內容感知編碼來產生一組符合 GOP 的 MP4。 針對任何輸入內容，此服務會對輸入內容執行初步簡單的分析。 然後根據這些結果，決定自適性串流傳遞時的最佳層數、適當位元速率及解析度設定。 此預設特別適用於中低複雜度的影片，雖然輸出檔案位元速率較低，但品質仍足以讓觀眾享受良好的體驗。 輸出會包含視訊和音訊交錯的 MP4 檔案。 如需詳細資訊，請參閱[開放式 API 規格](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01/Encoding.json)。
-- 標準編碼器中已改善大小調整器的效能和多執行緒。 在特定情況下，客戶應該會發現 VOD 編碼的效能提升 5-40%。 編碼為多個位元速率的低複雜度內容效能提升最明顯。 
-- 在 VOD 編碼期間，使用以時間為基礎的 GOP 設定時，針對可變畫面播放速率 (VFR) 內容，標準編碼現在會維持規律的 GOP 節奏。  這表示，如果客戶提交混合式畫面播放速率內容，例如在 15-30 fps 之間變化，現在應該會看到輸出到自適性位元速率串流 MP4 檔案時所計算的規律 GOP 距離。 這樣在透過 HLS 或 DASH 傳遞時能夠更順暢切換曲目。 
+- 改善標準編碼器中的調整程式效能和多執行緒處理。 在特定情況下，客戶應該會發現 VOD 編碼的效能提升 5-40%。 編碼為多個位元速率的低複雜度內容效能提升最明顯。 
+- 在 VOD 編碼期間，使用以時間為基礎的 GOP 設定時，針對可變畫面播放速率 (VFR) 內容，標準編碼現在會維持規律的 GOP 節奏。  這表示，如果客戶提交混合的畫面播放速率內容（在 15-30 fps 之間變化），現在應該會看到輸出到自動調整位元速率串流處理檔案的輸出上，所計算的一般 GOP 距離。 這樣在透過 HLS 或 DASH 傳遞時能夠更順暢切換曲目。 
 -  已改善可變畫面播放速率 (VFR) 來源內容的 AV 同步
 
 ### <a name="video-indexer-video-analytics"></a>影片索引器、影片分析
 
-- 使用 VideoAnalyzer 預設所擷取的主要畫面格，現在為影片的原始解析度，而不調整大小。 擷取高解析度主要畫面格可提供原始品質影像，還可讓您利用 Microsoft 電腦視覺和自訂視覺服務提供的影像人工智慧模型，從影片中獲得更多見解。
+- 使用 VideoAnalyzer 預設所擷取的主要畫面格，現在為影片的原始解析度，而不調整大小。 高解析度的主要畫面格可提供原始品質的影像，並可讓您利用 Microsoft 電腦視覺和自訂視覺服務所提供的影像型人工智慧模型，從影片中獲得更多見解。
 
 ## <a name="september-2019"></a>2019 年 9 月
 
@@ -155,7 +155,7 @@ Azure 媒體播放器文件已遷移至 [Azure 文件](../azure-media-player/azu
 
 #### <a name="deprecation-of-media-processors"></a>取代媒體處理器
 
-我們宣布取代「Azure 媒體索引器」和「Azure 媒體索引器 2 預覽版」。 關於淘汰日期，請參閱[舊版元件](../previous/legacy-components.md)主題。 [Azure 媒體服務影片索引器](../video-indexer/index.yml)取代這些舊版媒體處理器。
+我們宣布淘汰「Azure 媒體索引器」和「Azure 媒體索引器 2 預覽版」。 如需淘汰日期，請參閱  [舊版元件](../previous/legacy-components.md) 文章。 [Azure 媒體服務影片索引器](../video-indexer/index.yml)取代這些舊版媒體處理器。
 
 如需詳細資訊，請參閱[從 Azure 媒體索引器和 Azure 媒體索引器 2 遷移到 Azure 媒體服務影片索引器](../previous/migrate-indexer-v1-v2.md)。
 
@@ -173,7 +173,7 @@ Azure 媒體播放器文件已遷移至 [Azure 文件](../azure-media-player/azu
 
 #### <a name="deprecation-of-media-processors"></a>取代媒體處理器
 
-我們宣布取代逐漸淘汰的「Windows Azure 媒體編碼器」(WAME) 和「Azure 媒體編碼器」(AME) 媒體處理器。 關於淘汰日期，請參閱此[舊版元件](../previous/legacy-components.md)主題。
+我們宣布取代逐漸淘汰的「Windows Azure 媒體編碼器」(WAME) 和「Azure 媒體編碼器」(AME) 媒體處理器。 如需淘汰日期，請參閱這篇 [舊版元件](../previous/legacy-components.md) 文章。
 
 如需詳細資訊，請參閱[將 WAME 遷移到媒體編碼器標準](https://go.microsoft.com/fwlink/?LinkId=2101334)和[將 AME 遷移到媒體編碼器標準](https://go.microsoft.com/fwlink/?LinkId=2101335)。
  
@@ -223,8 +223,8 @@ Azure 媒體播放器文件已遷移至 [Azure 文件](../azure-media-player/azu
 
 已新增的更新包括媒體服務效能改進。
 
-* 已更新支援處理的檔案大小上限。 請參閱[配額和限制](limits-quotas-constraints.md)。
-* [編碼速度改進](media-reserved-units-cli-how-to.md#choosing-between-different-reserved-unit-types)。
+* 已更新支援處理的檔案大小上限。 請參閱、 [配額和限制](limits-quotas-constraints.md)。
+* [編碼速度改進](concept-media-reserved-units.md)。
 
 ## <a name="april-2019"></a>2019 年 4 月
 

@@ -1,21 +1,21 @@
 ---
-title: 記憶體內部 OLTP 改善 SQL txn 效能
+title: 記憶體內部 OLTP 改進了 SQL txn 效能
 description: 採用記憶體內部 OLTP 來改善 Azure SQL Database 和 Azure SQL 受控執行個體中現有資料庫的交易效能。
 services: sql-database
 ms.service: sql-database
 ms.custom: sqldbrb=2
 ms.subservice: development
-ms.topic: conceptual
+ms.topic: how-to
 author: stevestein
 ms.author: sstein
 ms.reviewer: MightyPen
 ms.date: 11/07/2018
-ms.openlocfilehash: d31fd8cca9df2ea21bf19beed26810568fc6481e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e17e98e784b7453c87814c5cce5c03568f66b1cb
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84345303"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91619741"
 ---
 # <a name="use-in-memory-oltp-to-improve-your-application-performance-in-azure-sql-database-and-azure-sql-managed-instance"></a>使用記憶體內部 OLTP 來改善 Azure SQL Database 和 Azure SQL 受控執行個體中的應用程式效能
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -23,7 +23,7 @@ ms.locfileid: "84345303"
 在[進階和業務關鍵層](database/service-tiers-vcore.md)資料庫中，[記憶體內部 OLTP](in-memory-oltp-overview.md) 可用來改善交易處理、資料擷取和暫時性資料案例的效能，而無須增加定價層。
 
 > [!NOTE]
-> 瞭解仲裁如何使[重要資料庫的工作負載加倍，同時使用 Azure SQL Database 降低70% 的 DTU](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database)
+> 瞭解仲裁如何將 [重要資料庫的工作負載加倍，同時降低70% 與 Azure SQL Database 的 DTU](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database)
 
 請依照下列步驟，在您現有的資料庫中採用 In-Memory OLTP。
 
@@ -44,7 +44,7 @@ SSMS 包含您可以對具有作用中工作負載的資料庫執行的 [交易�
 在 SSMS 中，若要產生報告︰
 
 * 在 [物件總管] **** 中，以滑鼠右鍵按一下您的資料庫節點。
-* 按一下 [**報表**]  >  [**標準報表**]  >  **[交易效能分析總覽**]。
+* 按一下 [**報表**  >  **標準報表**  >  **交易效能分析**]。
 
 如需詳細資訊，請參閱 [判斷資料表或預存程序是否應該移植到 In-Memory OLTP](/sql/relational-databases/in-memory-oltp/determining-if-a-table-or-stored-procedure-should-be-ported-to-in-memory-oltp)。
 
@@ -80,7 +80,7 @@ SSMS 包含您可以對具有作用中工作負載的資料庫執行的 [交易�
 2. 在 [物件總管]**** 中，以滑鼠右鍵按一下資料表，然後按一下 [記憶體最佳化建議程式]****。
 
    [資料表記憶體最佳化建議程式] **** 精靈隨即顯示。
-3. 在此精靈中按一下 [移轉驗證]**** \(或 [下一步]**** 按鈕)，以查看資料表是否有任何在記憶體最佳化資料表中不受支援的功能。 如需詳細資訊，請參閱：
+3. 在此精靈中按一下 [移轉驗證]**** \(或 [下一步]**** 按鈕)，以查看資料表是否有任何在記憶體最佳化資料表中不受支援的功能。 如需詳細資訊，請參閱
 
    * *記憶體最佳化建議程式* 中的 [記憶體最佳化檢查清單](/sql/relational-databases/in-memory-oltp/memory-optimization-advisor)。
    * [記憶體內部 OLTP 不支援 Transact-sql 結構](/sql/relational-databases/in-memory-oltp/transact-sql-constructs-not-supported-by-in-memory-oltp)。
@@ -95,7 +95,7 @@ SSMS 包含您可以對具有作用中工作負載的資料庫執行的 [交易�
 2. 為您的資料表及其索引取得完整 T-SQL 指令碼。
 
    * 在 SSMS 中，以滑鼠右鍵按一下資料表節點。
-   * 按一下 [**腳本資料表] 做**為 [  >  **建立**  >  **新的查詢視窗]**。
+   * 按一下 [**編寫資料表的腳本為**  >  **CREATE To**  >  **新的查詢視窗]**。
 3. 在指令碼視窗中，將 WITH (MEMORY_OPTIMIZED = ON) 新增至 CREATE TABLE 陳述式。
 4. 如果有 CLUSTERED 索引，請將其變更為 NONCLUSTERED。
 5. 使用 SP_RENAME 重新命名現有的資料表。
@@ -164,7 +164,7 @@ CREATE PROCEDURE schemaname.procedurename
 * 並行連線數目。
 * 讀取/寫入比率。
 
-若要量身打造並執行測試工作負載，請考慮使用方便的 `ostress.exe` 工具，如這篇[記憶體中](in-memory-oltp-overview.md)的文章所示。
+若要量身打造並執行測試工作負載，請考慮使用方便的 `ostress.exe` 工具，如這篇 [記憶體中](in-memory-oltp-overview.md) 的文章所示。
 
 為了盡可能減少網路延遲，請在資料庫所在的相同 Azure 地理區域中執行您的測試。
 

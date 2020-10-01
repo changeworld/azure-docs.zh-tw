@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: elastic-pools
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: reference
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein
 ms.date: 07/21/2020
-ms.openlocfilehash: 345fd0df5b56bac164e78a540f8b26221294eabe
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8ffa2a92dd33d16bf047035fb98a79a53b5f2246
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91325290"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91620166"
 ---
 # <a name="resource-limits-for-elastic-pools-using-the-vcore-purchasing-model"></a>使用 vCore 購買模型的彈性集區資源限制
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -449,7 +449,7 @@ ms.locfileid: "91325290"
 > [!NOTE]
 > 彈性集區中個別資料庫的資源限制通常與集區以外的單一資料庫相同，其計算大小 (服務目標) 。 例如，GP_Gen4_1 資料庫的並行背景工作上限是 200 個背景工作。 因此，GP_Gen4_1 集區中資料庫的並行背景工作上限也是 200 個背景工作。 請注意，GP_Gen4_1 集區中的並行背景工作總數為 210。
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 |:--- |:--- |
 | 每個資料庫的虛擬核心上限 |集區中任何資料庫可以使用的虛擬核心數目上限，是否可用則是根據集區中其他資料庫的使用量而定。 每個資料庫的虛擬核心數目上限不等於資料庫的資源保證。 這個設定是全域設定，會套用至集區中的所有資料庫。 將每個資料庫的虛擬核心設定為最上限，以處理資料庫使用率的尖峰。 某種程度的過量使用是可預期的情況，因為集區通常會假設資料庫的熱門和冷門使用模式；在這些模式中，所有資料庫不會同時處於尖峰期。|
 | 每個資料庫的虛擬核心下限 |集區中單一資料庫能夠保證的虛擬核心數下限。 這個設定是全域設定，會套用至集區中的所有資料庫。 每個資料庫最小虛擬核心建議設定為 0，同時也是預設值。 此屬性會設為 0 到每一資料庫的虛擬核心使用量平均值之間的任意數。 集區中資料庫數目和每個資料庫虛擬核心數目下限的乘積不能超過每個集區的虛擬核心。|

@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: scenario
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: a0ad71e870005ce1cbe0ffe0f56bcbd0104c3dd2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b9550f365eb11ffff87add041824504488c0de15
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84026839"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91619928"
 ---
 # <a name="multi-tenant-applications-with-elastic-database-tools-and-row-level-security"></a>使用彈性資料庫工具和資料列層級安全性的多租用戶應用程式
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -358,7 +358,7 @@ GO
 
 ## <a name="questions-and-feature-requests"></a>問題和功能要求
 
-如有任何問題，請與我們聯絡[Microsoft Q&SQL Database 的問題頁面](https://docs.microsoft.com/answers/topics/azure-sql-database.html)。 在 [SQL Database 意見反應論壇](https://feedback.azure.com/forums/217321-sql-database/) \(英文\) 中提出功能要求。
+如有疑問，請洽詢 [Microsoft 問&SQL Database 的問題頁面](https://docs.microsoft.com/answers/topics/azure-sql-database.html)。 在 [SQL Database 意見反應論壇](https://feedback.azure.com/forums/217321-sql-database/) \(英文\) 中提出功能要求。
 
 <!--Image references-->
 [1]: ./media/saas-tenancy-elastic-tools-multi-tenant-row-level-security/blogging-app.png

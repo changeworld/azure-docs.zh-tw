@@ -5,17 +5,17 @@ services: sql-database
 ms.service: sql-database
 ms.subservice: security
 ms.custom: seo-dt-2019, sqldbrb=1
-ms.topic: conceptual
+ms.topic: how-to
 author: rmatchoro
 ms.author: ronmat
 ms.reviewer: vanto
 ms.date: 09/21/2020
-ms.openlocfilehash: 19da4581ef44d7c7cc51eac839c7db018793e557
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 678de4354012dcea5b954980109fd71c1004aca4
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90885126"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91619282"
 ---
 # <a name="configure-advanced-threat-protection-for-azure-sql-database"></a>設定 Azure SQL Database 的 Advanced 威脅防護
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -39,7 +39,7 @@ Azure SQL Database 的[Advanced 威脅防護](threat-detection-overview.md)會�
 
 如需腳本範例，請參閱 [使用 PowerShell 設定審核和先進的威脅防護](scripts/auditing-threat-detection-powershell-configure.md)。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 深入瞭解 [先進的威脅防護](threat-detection-overview.md)。
 - 深入瞭解 [SQL 受控執行個體中的「先進威脅防護](../managed-instance/threat-detection-configure.md)」。  

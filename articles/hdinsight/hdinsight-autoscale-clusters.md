@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: contperfq1
 ms.date: 09/14/2020
-ms.openlocfilehash: 08b7fe2b3e959536589cfd425541ad36e3bd1e78
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 385e910befb79daafa532fa816b96d50a46b7d8c
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90532183"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91620081"
 ---
 # <a name="autoscale-azure-hdinsight-clusters"></a>自動調整 Azure HDInsight 叢集
 
@@ -68,11 +68,11 @@ Azure HDInsight 的免費自動調整功能可根據先前設定的準則，自�
 > [!Important]
 > Azure HDInsight 自動調整功能已於 2019 年 11 月 7 日正式發行，適用於 Spark 和 Hadoop 叢集，並包含功能預覽版本中未提供的改善項目。 如果您在 2019 年 11 月 7 日之前已建立 Spark 叢集，並想要在叢集上使用自動調整功能，建議的路徑是建立新叢集，並在新叢集上啟用自動調整。
 >
-> Interactive Query (LLAP) 的自動調整已于2020年8月27日正式推出。 HBase 叢集仍處於預覽狀態。 自動調整僅適用於 Spark、Hadoop、Interactive Query 以及 HBase 叢集。
+> Interactive Query (LLAP) 的自動調整已于2020年8月27日，于 HDI 4.0 正式推出。 HBase 叢集仍處於預覽狀態。 自動調整僅適用於 Spark、Hadoop、Interactive Query 以及 HBase 叢集。
 
 下表說明與自動調整功能相容的叢集類型和版本。
 
-| 版本 | Spark | Hive | LLAP | hbase | Kafka | Storm | ML |
+| 版本 | Spark | Hive | 互動式查詢 | hbase | Kafka | Storm | ML |
 |---|---|---|---|---|---|---|---|
 | 沒有 ESP 的 HDInsight 3。6 | 是 | 是 | 是 | 是* | 否 | 否 | 否 |
 | 沒有 ESP 的 HDInsight 4。0 | 是 | 是 | 是 | 是* | 否 | 否 | 否 |
@@ -231,7 +231,7 @@ Azure 入口網站中列出的叢集狀態可協助您監視自動調整活動�
 | 更新  | 正在更新叢集自動調整設定。  |
 | HDInsight 設定  | 叢集擴大或縮小作業正在進行中。  |
 | 更新錯誤  | HDInsight 在自動調整設定更新期間發生問題。 客戶可以選擇重試更新或停用自動調整。  |
-| 錯誤  | 叢集發生問題，因此無法使用。 刪除此叢集，並建立一個新叢集。  |
+| Error  | 叢集發生問題，因此無法使用。 刪除此叢集，並建立一個新叢集。  |
 
 若要查看叢集中目前的節點數目，請移至叢集的 [**總覽**] 頁面上的 [叢集**大小**] 圖表。 或選取 [**設定**] 下的 [叢集**大小**]。
 
@@ -251,7 +251,7 @@ Azure 入口網站中列出的叢集狀態可協助您監視自動調整活動�
 
 ### <a name="prepare-for-scaling-down"></a>準備相應減少
 
-在叢集相應減少進程期間，自動調整會解除節點以符合目標大小。 如果工作在這些節點上執行，自動調整會等候，直到工作完成為止。 因為每個背景工作節點也會在 HDFS 中擔任角色，所以暫存資料會移至其餘的節點。 請確定剩餘的節點有足夠的空間來裝載所有暫存資料。
+在叢集相應減少進程期間，自動調整會解除節點以符合目標大小。 如果工作在這些節點上執行，自動調整會等候，直到 Spark 和 Hadoop 叢集的工作完成為止。 因為每個背景工作節點也會在 HDFS 中擔任角色，所以暫存資料會移至其餘的節點。 請確定剩餘的節點有足夠的空間來裝載所有暫存資料。
 
 正在執行的作業將會繼續。 暫止的工作會等候排程的可用背景工作節點較少。
 
@@ -265,7 +265,7 @@ Hadoop 叢集的自動調整也會監視 HDFS 的使用量。 如果 HDFS 忙碌
 
 ### <a name="set-the-hive-configuration-maximum-total-concurrent-queries-for-the-peak-usage-scenario"></a>針對尖峰使用量案例，設定 Hive 設定的並行查詢總數上限
 
-自動調整事件不會在 Ambari 中變更 Hive 設定的 *並行查詢總數上限* 。 這表示在任何時間點，Hive Server 2 互動式服務只能處理指定數目的並行查詢，即使 LLAP 的守護程式計數是根據負載和排程相應增加和減少。 一般建議是針對尖峰使用量案例設定此設定，以避免手動介入。
+自動調整事件不會在 Ambari 中變更 Hive 設定的 *並行查詢總數上限* 。 這表示在任何時間點，Hive Server 2 互動式服務只能處理指定數目的並行查詢，即使 Interactive Query 的守護程式計數是根據負載和排程相應增加和減少。 一般建議是針對尖峰使用量案例設定此設定，以避免手動介入。
 
 但是，如果只有少量的背景工作節點，而且並行查詢總數的值設定太高，您可能會遇到 Hive Server 2 重新開機失敗。 您至少需要可以容納指定 Tez Ams 數量的背景工作節點數目下限， (等於最大並行查詢設定) 總數。 
 
@@ -275,11 +275,11 @@ Hadoop 叢集的自動調整也會監視 HDFS 的使用量。 如果 HDFS 忙碌
 
 HDInsight 自動調整會使用節點標籤檔案來判斷節點是否已準備好執行工作。 節點標籤檔案儲存在具有三個複本的 HDFS 上。 如果叢集大小大幅縮減，而且有大量的暫存資料，則可能會有很少的三個複本卸載。 如果發生這種情況，叢集會進入錯誤狀態。
 
-### <a name="llap-daemons-count"></a>LLAP 守護程式計數
+### <a name="interactive-query-daemons-count"></a>Interactive Query 的守護程式計數
 
-在啟用 autoscae 的 LLAP 叢集案例中，「自動調整/關閉」事件也會將 LLAP 的守護程式數目相應增加/減少為作用中背景工作節點的數目。 守護程式數目的變更不會保存在 Ambari 的設定中 `num_llap_nodes` 。 如果 Hive 服務是以手動方式重新開機，則會根據 Ambari 中的設定重設 LLAP 的守護程式數目。
+在啟用自動調整的 Interactive Query 叢集的情況下，自動調整/減少事件也會將 Interactive Query 的守護程式數目相應增加/減少為作用中背景工作節點的數目。 守護程式數目的變更不會保存在 Ambari 的設定中 `num_llap_nodes` 。 如果 Hive 服務是以手動方式重新開機，則會根據 Ambari 中的設定來重設 Interactive Query 的守護程式數目。
 
-如果以手動方式重新開機 LLAP 服務，您必須以手動方式變更設定 `num_llap_node` (節點 (的數目) 執行 [ *Advanced hive-interactive-env* ] 下的 [hive LLAP) daemon]，以符合目前作用中的背景工作節點計數。
+如果以手動方式重新開機 Interactive Query 服務，您需要以手動方式將設定變更 `num_llap_node` (在 *Advanced hive-Interactive-env* 下執行 Hive Interactive Query 背景工作角色，以符合目前作用中背景工作角色節點計數所需的節點 (數目) 。
 
 ## <a name="next-steps"></a>後續步驟
 

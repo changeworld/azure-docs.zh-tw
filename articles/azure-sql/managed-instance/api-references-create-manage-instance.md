@@ -6,17 +6,17 @@ ms.service: sql-managed-instance
 ms.subservice: operations
 ms.custom: devx-track-azurecli
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: reference
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 21239d868213df5d3208b8c790c67d675928d98a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 2b98b11d85bde8dd49b6bbde5d048493493b73f5
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91283763"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91620234"
 ---
 # <a name="managed-api-reference-for-azure-sql-managed-instance"></a>適用于 Azure SQL 受控執行個體的受控 API 參考
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -83,7 +83,7 @@ ms.locfileid: "91283763"
 > [!IMPORTANT]
 > 您無法使用 Transact-sql 建立或刪除受控實例。
 
-| 命令 | 說明 |
+| Command | 描述 |
 | --- | --- |
 |[CREATE DATABASE](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-mi-current&preserve-view=true)|在 SQL 受控執行個體中建立新的實例資料庫。 您必須連接到 master 資料庫才能建立新的資料庫。|
 | [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-mi-current&preserve-view=true) |修改 SQL 受控執行個體中的實例資料庫。|
@@ -92,7 +92,7 @@ ms.locfileid: "91283763"
 
 若要建立及設定受控實例，請使用這些 REST API 要求。
 
-| 命令 | 說明 |
+| Command | 描述 |
 | --- | --- |
 |[Managed Instances - Create Or Update](https://docs.microsoft.com/rest/api/sql/managedinstances/createorupdate)|建立或更新受控實例。|
 |[Managed Instances - Delete](https://docs.microsoft.com/rest/api/sql/managedinstances/delete)|刪除受控實例。|
