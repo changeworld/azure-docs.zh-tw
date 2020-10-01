@@ -4,12 +4,12 @@ ms.service: data-factory
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
-ms.openlocfilehash: 24bb7a1fcb1569922fb34034fb3c0d003cdd7061
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: 9447cec55c53861ca57d5416a91ffefd35fdd20b
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67174446"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91571860"
 ---
 ## <a name="repeatability-during-copy"></a>在複製期間的重複性
 從其他資料存放區複製資料到 Azure SQL/SQL Server 時，需要記住重複性以避免非預期的結果。 
@@ -74,7 +74,7 @@ ID    Product        Quantity    ModifiedDate
 
 ### <a name="mechanism-2"></a>機制 2
 > [!IMPORTANT]
-> 目前 Azure SQL 資料倉儲不支援 sliceIdentifierColumnName。 
+> 目前 Azure Synapse Analytics 不支援 sliceIdentifierColumnName。 time. 
 
 達成重複性的另一個機制是在目標資料表中使用專用資料行 (**sliceIdentifierColumnName**)。 Azure Data Factory 會使用這個資料行以確保來源和目的地保持同步。 當目的地 SQL 資料表結構描述可彈性變更或定義，就可以使用這種方法。 
 

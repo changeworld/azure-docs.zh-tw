@@ -26,7 +26,7 @@
       href: delete-application-portal.md
 - name: 教學課程
   items:
-    - name: 整合式資源庫應用程式 (例如 ServiceNow、Salesforce、Dropbox)
+    - name: 預先設定的應用程式清單
       href: /azure/active-directory/saas-apps/
     - name: 透過應用程式 Proxy 新增內部部署應用程式
       href: application-proxy-add-on-premises-application.md
@@ -142,7 +142,7 @@
       items:
         - name: 移轉資源
           href: migration-resources.md
-        - name: 將 ADFS 應用程式遷移至 Azure
+        - name: 將 AD FS 應用程式遷移至 Azure
           href: migrate-adfs-apps-to-azure.md
         - name: 使用 AD FS 應用程式活動報告 (預覽)
           href: migrate-adfs-application-activity.md

@@ -4,6 +4,8 @@
   items:
     - name: 什麼是適用於 PostgreSQL 的 Azure DB？
       href: overview.md
+    - name: 要選擇哪一個 PostgreSQL 部署選項？
+      href: overview-postgres-choose-server-options.md
     - name: 服務更新
       items:
         - name: SSL 根憑證即將到期

@@ -78,6 +78,8 @@
                   href: security-baseline.md
                 - name: 檢閱安全性
                   href: data-box-security.md
+            - name: 傳送 ACL 和中繼資料
+              href: data-box-file-acls-preservation.md
             - name: 常見問題集
               href: data-box-faq.md
         - name: 如何

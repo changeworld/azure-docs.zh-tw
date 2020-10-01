@@ -137,7 +137,7 @@
         - name: 資料處理
           href: concept-optimize-data-processing.md
     - name: 模型訓練
-      displayName: 'run config, estimator, machine learning pipeline, ml pipeline, train model'
+      displayName: 'run config, machine learning pipeline, ml pipeline, train model'
       href: concept-train-machine-learning-model.md
     - name: 分散式定型
       displayName: 'parallellization, deep learning, deep neural network, dnn'
@@ -319,16 +319,12 @@
               href: how-to-differential-privacy.md
     - name: 將模型定型
       items:
-        - name: 提交定型回合
-          displayName: 'run config, compute target, dsvm, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight'
+        - name: 設定和提交定型回合
+          displayName: 'run config, script run config, scriptrunconfig, compute target, dsvm, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight'
           href: how-to-set-up-training-targets.md
-        - name: 為 ML 使用估算器
-          items:
-            - name: 在訓練中建立估算器
-              href: how-to-train-ml-models.md
-            - name: 微調超參數
-              displayName: parameter
-              href: how-to-tune-hyperparameters.md
+        - name: 微調超參數
+          displayName: 'parameter, hyperparameter, hyperdrive'
+          href: how-to-tune-hyperparameters.md
         - name: 搭配使用 MLflow
           items:
             - name: 使用 MLflow 追蹤實驗

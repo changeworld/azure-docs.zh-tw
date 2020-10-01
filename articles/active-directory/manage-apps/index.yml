@@ -1,23 +1,23 @@
 ### YamlMime:Landing
 title: 應用程式管理文件
-summary: Azure Active Directory 能針對雲端和內部部署應用程式提供安全且順暢的存取。 此外，不需要管理密碼。 您的使用者只需登入一次，即可存取 Microsoft 365 和數千種其他應用程式。 了解如何使用快速入門、教學課程和指南來管理和部署應用程式。
+summary: Azure Active Directory 是身分識別與存取權管理 (IAM) 系統。 其提供單一位置來儲存數位身分識別的相關資訊。 您可以將軟體應用程式設定為使用 Azure AD 作為儲存使用者資訊的位置。
 metadata:
   title: 應用程式管理文件
-  description: Azure Active Directory 能針對雲端和內部部署應用程式提供安全且順暢的存取。 此外，不需要管理密碼。 您的使用者只需登入一次，即可存取 Microsoft 365 和數千種其他應用程式。 了解如何使用快速入門、教學課程和指南來管理和部署應用程式。
+  description: Azure AD 是身分識別與存取權管理 (IAM) 系統。 其提供單一位置來儲存數位身分識別的相關資訊。 您可以將軟體應用程式設定為使用 Azure AD 作為儲存使用者資訊的位置。
   ms.service: active-directory
   ms.subservice: app-mgmt
   ms.workload: identity
   ms.topic: landing-page
-  ms.date: 10/10/2019
+  ms.date: 09/28/2020
   author: kenwith
   ms.author: kenwith
   manager: celested
-  ms.openlocfilehash: dc056bbfb880b8cdfc2326edc3036657803f24d7
-  ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+  ms.openlocfilehash: e3232f319c14af6724bc5b844f71a5c6ff34bfa9
+  ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 08/14/2020
-  ms.locfileid: "88209118"
+  ms.lasthandoff: 09/29/2020
+  ms.locfileid: "91534993"
 landingContent:
 - title: 關於應用程式管理
   linkLists:
@@ -27,75 +27,91 @@ landingContent:
       url: what-is-application-management.md
     - text: 什麼是單一登入？
       url: what-is-single-sign-on.md
+- title: 開始使用
+  linkLists:
   - linkListType: quickstart
     links:
-    - text: 快速入門系列
+    - text: 檢視您的應用程式
       url: view-applications-portal.md
-- title: 管理雲端應用程式和單一登入
+    - text: 新增應用程式
+      url: add-application-portal.md
+- title: 新增和設定應用程式
   linkLists:
-  - linkListType: concept
+  - linkListType: learn
     links:
-    - text: 了解單一登入
+    - text: 新增應用程式
+      url: add-application-portal.md
+    - text: 設定應用程式
+      url: add-application-portal-configure.md
+- title: 管理應用程式
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: 最佳作法
+      url: application-management-fundamentals.md
+    - text: 常見的案例
+      url: common-scenarios.md
+- title: 了解單一登入
+  linkLists:
+  - linkListType: architecture
+    links:
+    - text: 單一登入概念
       url: what-is-single-sign-on.md
-    - text: 使用者體驗
-      url: end-user-experiences.md
-  - linkListType: how-to-guide
-    links:
-    - text: 設定單一登入
-      url: configure-saml-single-sign-on.md
-    - text: 將使用者或群組指派給應用程式
-      url: assign-user-or-group-access-portal.md
-- title: 將使用者和群組佈建到應用程式
+    - text: 單一登入選項
+      url: sso-options.md
+- title: 應用程式同意
   linkLists:
-  - linkListType: overview
+  - linkListType: learn
     links:
-    - text: 什麼是應用程式佈建？
-      url: /azure/active-directory/app-provisioning/user-provisioning?context=azure/active-directory/manage-apps/context/manage-apps-context
-  - linkListType: tutorial
-    links:
-    - text: SaaS 應用程式佈建教學課程
-      url: /azure/active-directory/saas-apps/
-  - linkListType: how-to-guide
-    links:
-    - text: 建置應用程式？ 使用 SCIM 進行佈建 (應用程式佈建文件)
-      url: /azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups
-    - text: 要新增資源庫應用程式？ 設定佈建 (應用程式佈建文件)
-      url: /azure/active-directory/app-provisioning/configure-automatic-user-provisioning-portal
-- title: 使用應用程式 Proxy 發佈內部部署應用程式
+    - text: 設定使用者同意
+      url: configure-user-consent.md
+    - text: 設定管理員同意
+      url: configure-admin-consent-workflow.md
+- title: 遷移應用程式
   linkLists:
-  - linkListType: overview
+  - linkListType: learn
     links:
-    - text: 什麼是應用程式 Proxy？
+    - text: 移轉資源
+      url: migration-resources.md
+    - text: 將 AD FS 應用程式遷移至 Azure
+      url: migrate-adfs-apps-to-azure.md
+- title: 使用內部部署應用程式
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: 什麼是 App Proxy？
       url: what-is-application-proxy.md
-  - linkListType: concept
-    links:
-    - text: 應用程式 Proxy 規劃
+    - text: App Proxy 部署
       url: application-proxy-deployment-plan.md
-  - linkListType: tutorial
-    links:
-    - text: 新增內部部署應用程式
-      url: application-proxy-add-on-premises-application.md
-  - linkListType: how-to-guide
-    links:
-    - text: 使用 Proxy 伺服器設定連接器
-      url: application-proxy-configure-connectors-with-proxy-servers.md
-    - text: 設定自訂首頁
-      url: application-proxy-configure-custom-home-page.md
-  - linkListType: deploy
-    links:
-    - text: 使用應用程式 Proxy 發佈遠端桌面
-      url: application-proxy-integrate-with-remote-desktop-services.md
-    - text: 使用 Azure AD 應用程式 Proxy 啟用 SharePoint 的遠端存取
-      url: application-proxy-integrate-with-sharepoint-server.md
-- title: 使用應用程式傳遞控制器和網路保護舊版應用程式
+- title: 安全的應用程式
   linkLists:
-  - linkListType: overview
+  - linkListType: learn
     links:
-    - text: 適用於舊版應用程式 (雲端和內部部署) 的安全混合式存取
-      url: secure-hybrid-access.md
-  - linkListType: how-to-guide
+    - text: 管理應用程式的存取權
+      url: what-is-access-management.md
+    - text: 管理租用戶限制
+      url: tenant-restrictions.md
+- title: 設定我的應用程式
+  linkLists:
+  - linkListType: learn
     links:
-    - text: 使用 F5 Big-IP APM 保護您的應用程式
-      url: https://aka.ms/f5-hybridaccessguide
-    - text: 使用 Zscaler ZPA 保護您的應用程式
-      url: https://aka.ms/zscaler-hybridaccessguide
+    - text: 規劃我的應用程式部署
+      url: access-panel-deployment-plan.md
+    - text: 建立集合
+      url: access-panel-collections.md
+- title: 開發新的應用程式
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: 開發人員指導方針
+      url: developer-guidance-for-integrating-applications.md
+    - text: 了解平台
+      url: ../develop/v2-overview.md
+- title: Docs 中的新功能
+  linkLists:
+  - linkListType: whats-new
+    links:
+    - text: 設定 SAML 型 SSO
+      url: add-application-portal-setup-sso.md
+    - text: 設定 OIDC 型 SSO
+      url: add-application-portal-setup-oidc-sso.md
