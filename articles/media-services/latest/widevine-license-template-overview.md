@@ -14,21 +14,22 @@ ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3d8cc24722832fac9b2d353a6d87772ffce6c0a4
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: abedbd60a82f280bcd983c05a43685524a3a24e7
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90527117"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91598153"
 ---
 # <a name="media-services-v3-with-widevine-license-template-overview"></a>具有 Widevine 授權範本的媒體服務 v3 總覽
 
 Azure 媒體服務可讓您使用 **Google Widevine** 來加密您的內容。 媒體服務也提供傳遞 Widevine 授權的服務。 您可以使用 Azure 媒體服務 API 來設定 Widevine 授權。 當播放程式嘗試播放以 Widevine 保護的內容時，會將要求傳送到授權傳遞服務來取得授權。 如果授權服務核准要求，服務就會發出授權。 授權會傳送至用戶端，並用來解密及播放指定內容。
 
+[!INCLUDE [Widevine is not available in the GovCloud region.](./includes/widevine-not-available-govcloud.md)]
+
 Widevine 授權要求會格式化為 JSON 訊息。  
 
->[!NOTE]
-> 您可以建立不包含值的空白訊息，也就是 "{}"。 授權範本會以預設值建立。 大部分案例的預設工作。 以 Microsoft 為基礎的授權傳遞案例應一律使用預設值。 若需要設定 "provider" 與 "content_id" 值，提供者必須符合 Widevine 認證。
+
 
 ```json
 {  
@@ -61,9 +62,12 @@ Widevine 授權要求會格式化為 JSON 訊息。
 }
 ```
 
+>[!NOTE]
+> 您可以建立不包含值的空白訊息，也就是 "{}"。 授權範本會以預設值建立。 大部分案例的預設工作。 以 Microsoft 為基礎的授權傳遞案例應一律使用預設值。 若需要設定 "provider" 與 "content_id" 值，提供者必須符合 Widevine 認證。
+
 ## <a name="json-message"></a>JSON 訊息
 
-| 名稱 | 值 | 描述 |
+| 名稱 | 值 | 說明 |
 | --- | --- | --- |
 | payload |Base64 編碼字串 |用戶端傳送的授權要求。 |
 | content_id |Base64 編碼字串 |用來針對每個 content_key_specs.track_type 衍生金鑰識別碼與內容金鑰的識別碼。 |
@@ -81,7 +85,7 @@ Widevine 授權要求會格式化為 JSON 訊息。
 
 必須對所有追蹤指定每個 content_key_specs 值，不論 use_policy_overrides_exclusively 選項為何。 
 
-| 名稱 | 值 | 描述 |
+| 名稱 | 值 | 說明 |
 | --- | --- | --- |
 | content_key_specs track_type |字串 |追蹤類型名稱。 如果授權要求中指定 content_key_specs，則請務必明確指定所有追蹤類型。 未這樣做會導致無法播放過去 10 秒。 |
 | content_key_specs  <br/> security_level |uint32 |定義用戶端對於播放的穩健性需求。 <br/> 以軟體為基礎白箱加密是必要的。 <br/> 軟體加密和模糊化的解碼器是必要的。 <br/> 金鑰資料和加密作業必須在支援硬體的受信任執行環境中執行。 <br/> 內容的加密和解密必須在支援硬體的受信任執行環境中執行。  <br/> 加密、解密和媒體 (壓縮和未壓縮) 的所有處理必須在支援硬體的受信任執行環境中處理。 |
@@ -90,11 +94,11 @@ Widevine 授權要求會格式化為 JSON 訊息。
 | content_key_specs.key_id |Base64 編碼的二進位字串，16 位元組 |金鑰的唯一識別碼。 |
 
 ## <a name="policy-overrides"></a>原則覆寫
-| 名稱 | 值 | 描述 |
+| 名稱 | 值 | 說明 |
 | --- | --- | --- |
-| policy_overrides&#46;can_play |布林值，true 或 false |表示允許播放內容。 預設為 false。 |
-| policy_overrides&#46;can_persist |布林值，true 或 false |表示可以將授權保存到非揮發性儲存體，供離線使用。 預設為 false。 |
-| policy_overrides&#46;can_renew |布林值，true 或 false |表示允許更新此授權。 如果為 true，則在授權期間可以透過活動訊號延長。 預設為 false。 |
+| policy_overrides&#46;can_play |布林值，true 或 false |表示允許播放內容。 預設值為 false。 |
+| policy_overrides&#46;can_persist |布林值，true 或 false |表示可以將授權保存到非揮發性儲存體，供離線使用。 預設值為 false。 |
+| policy_overrides&#46;can_renew |布林值，true 或 false |表示允許更新此授權。 如果為 true，則在授權期間可以透過活動訊號延長。 預設值為 false。 |
 | policy_overrides&#46;license_duration_seconds |int64 |指出此特定授權的期間。 值為 0 表示期間沒有限制。 預設值為 0。 |
 | policy_overrides&#46;rental_duration_seconds |int64 |指出允許播放的期間。 值為 0 表示期間沒有限制。 預設值為 0。 |
 | policy_overrides&#46;playback_duration_seconds |int64 |在授權期間內開始播放後的檢視時段。 值為 0 表示期間沒有限制。 預設值為 0。 |
@@ -105,7 +109,7 @@ Widevine 授權要求會格式化為 JSON 訊息。
 | policy_overrides&#46;renew_with_usage |布林值，true 或 false |表示開始使用時會傳送授權以進行更新。 只有在 can_renew 為 true 時才會使用這個欄位。 |
 
 ## <a name="session-initialization"></a>工作階段初始化
-| 名稱 | 值 | 描述 |
+| 名稱 | 值 | 說明 |
 | --- | --- | --- |
 | provider_session_token |Base64 編碼字串 |此工作階段權杖會傳回到授權，並且會在後續的更新作業中存在。 工作階段權杖不會在工作階段之外保存。 |
 | provider_client_token |Base64 編碼字串 |要在授權回應中傳回的用戶端權杖。 如果授權要求包含用戶端權杖，則會忽略此值。 用戶端權杖會在授權工作階段之外保存。 |

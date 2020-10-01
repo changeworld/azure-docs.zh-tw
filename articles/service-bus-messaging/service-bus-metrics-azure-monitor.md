@@ -2,13 +2,13 @@
 title: Azure 監視器中的 Azure 服務匯流排計量 | Microsoft Docs
 description: 本文說明如何使用 Azure 監視器來監視服務匯流排實體 (佇列、主題和訂閱)。
 ms.topic: article
-ms.date: 07/15/2020
-ms.openlocfilehash: 158662a5d0fc3489b2cac638b28a64aa218b888e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 09/30/2020
+ms.openlocfilehash: 169edb651a59302d0ea1245fd48787404dd3e555
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91320433"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91598129"
 ---
 # <a name="azure-service-bus-metrics-in-azure-monitor"></a>Azure 監視器中的 Azure 服務匯流排計量
 
@@ -93,7 +93,7 @@ Azure 監視器上的計量和警示會按每項警示計費。 當警示已設�
 
 | 標準名稱 | 描述 |
 | ------------------- | ----------------- |
-|作用中的連線|命名空間及實體上的作用中連線數目。<br/><br/> 單位：Count <br/> 彙總類型：總計 <br/> 維度：機構名稱|
+|作用中的連線|命名空間上的作用中連接數目，以及命名空間中的實體。 此度量的值是時間點值。 在該時間點之後處於作用中狀態的連線，可能不會反映在度量中。<br/><br/> 單位：Count <br/> 彙總類型：總計 <br/> 維度：機構名稱|
 |已開啟的連線 |已開啟的連線數目。<br/><br/> 單位：Count <br/> 彙總類型：總計 <br/> 維度：機構名稱|
 |已關閉的連線 |已關閉的連線數目。<br/><br/> 單位：Count <br/> 彙總類型：總計 <br/> 維度：機構名稱|
 

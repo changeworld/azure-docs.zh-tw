@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9d5ffaf996f51348334f4adeeae150db9eb0defa
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: ab36eb9d5c66f61fbb320c91087659cc811eca85
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90052659"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91595538"
 ---
 # <a name="optimize-reauthentication-prompts-and-understand-session-lifetime-for-azure-multi-factor-authentication"></a>優化重新驗證提示，並瞭解 Azure Multi-Factor Authentication 的會話存留期
 
@@ -121,7 +121,7 @@ Azure Active Directory (Azure AD) 有多個設定，可決定使用者需要重�
 1. 選取 [ **安全性**]，然後選取 [ **條件式存取**]。
 1. 使用本文詳述的建議會話管理選項來設定原則。
 
-若要檢查權杖存留期，請 [使用 Azure AD PowerShell 來查詢任何 Azure AD 原則](../develop/active-directory-configurable-token-lifetimes.md#prerequisites)。 停用任何您已備妥的原則。
+若要檢查權杖存留期，請 [使用 Azure AD PowerShell 來查詢任何 Azure AD 原則](../develop/configure-token-lifetimes.md#prerequisites)。 停用任何您已備妥的原則。
 
 如果您的租使用者中已啟用一個以上的設定，建議您根據可用的授權更新您的設定。 例如，如果您有 Azure AD premium 授權，您應該只使用登 *入頻率* 和 *持續性瀏覽器會話*的條件式存取原則。 如果您有 Microsoft 365 apps 或 Azure AD 免費授權，您應該使用 [ *保持登入？* ] 設定。
 
@@ -134,6 +134,6 @@ Azure Active Directory (Azure AD) 有多個設定，可決定使用者需要重�
 | **SSO**                      | 針對未受管理的裝置[Azure AD 聯結](../devices/concept-azure-ad-join.md)或[混合式 Azure AD 聯結](../devices/concept-azure-ad-join-hybrid.md)或[無縫 SSO](../hybrid/how-to-connect-sso.md) 。 | Azure AD Join<br />混合式 Azure AD Join |
 | **重新驗證設定** | 仍已登入                  | 使用條件式存取原則進行登入頻率和持續性瀏覽器會話 |
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 若要開始使用，請完成教學課程以 [使用 Azure Multi-Factor Authentication 保護使用者登入事件](tutorial-enable-azure-mfa.md) ，或 [使用風險偵測讓使用者登入觸發 Azure Multi-Factor Authentication](tutorial-risk-based-sspr-mfa.md)。

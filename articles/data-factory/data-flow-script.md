@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/29/2020
-ms.openlocfilehash: 6802e3f6c0892993f9ffe4373f43274362b8a003
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: 8310c34e06d52dc12af42f8bc33f4a4d7e99d68d
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 09/30/2020
-ms.locfileid: "91569672"
+ms.locfileid: "91598092"
 ---
 # <a name="data-flow-script-dfs"></a> (DFS) 的資料流程腳本
 
@@ -176,13 +176,13 @@ aggregate(groupBy(movie),
 在您的資料流程腳本中使用此程式碼，建立名為的新衍生資料行，此資料行會 ```DWhash``` 產生 ```sha1``` 三個數據行的雜湊。
 
 ```
-derive(DWhash = sha1(Name,ProductNumber,Color))
+derive(DWhash = sha1(Name,ProductNumber,Color)) ~> DWHash
 ```
 
 您也可以使用下列腳本，利用資料流程中出現的所有資料行來產生資料列雜湊，而不需要為每個資料行命名：
 
 ```
-derive(DWhash = sha1(columns()))
+derive(DWhash = sha1(columns())) ~> DWHash
 ```
 
 ### <a name="string_agg-equivalent"></a>String_agg 相等
@@ -191,7 +191,7 @@ derive(DWhash = sha1(columns()))
 ```
 source1 aggregate(groupBy(year),
     string_agg = collect(title)) ~> Aggregate1
-Aggregate1 derive(string_agg = toString(string_agg)) ~> DerivedColumn2
+Aggregate1 derive(string_agg = toString(string_agg)) ~> StringAgg
 ```
 
 ### <a name="count-number-of-updates-upserts-inserts-deletes"></a>更新次數、upsert、插入、刪除
@@ -216,7 +216,7 @@ aggregate(groupBy(mycols = sha2(256,columns())),
 這是您可以貼到資料流程中的程式碼片段，以一般檢查所有資料行的 Null 值。 這項技術會利用架構漂移來查看所有資料列中的所有資料行，並使用條件式分割，將資料列的資料列與沒有 Null 的資料列區隔開。 
 
 ```
-CreateColumnArray split(contains(array(columns()),isNull(#item)),
+split(contains(array(columns()),isNull(#item)),
     disjoint: false) ~> LookForNULLs@(hasNULLs, noNULLs)
 ```
 

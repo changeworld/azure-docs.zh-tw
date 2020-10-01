@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: deffa5c75cbde4f9d95be549844478d4de87a685
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: c64c376e8f283336573500e69ac31989b5947961
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90069623"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91598251"
 ---
 # <a name="deploy-azure-file-sync"></a>部署 Azure 檔案同步
 使用 Azure 檔案同步，將組織的檔案共用集中在 Azure 檔案服務中，同時保有內部部署檔案伺服器的彈性、效能及相容性。 Azure 檔案同步會將 Windows Server 轉換成 Azure 檔案共用的快速快取。 您可以使用 Windows Server 上可用的任何通訊協定來從本機存取資料，包括 SMB、NFS 和 FTPS。 您可以視需要存取多個散佈於世界各地的快取。
@@ -524,13 +524,12 @@ az storagesync sync-group server-endpoint create --resource-group myResourceGrou
 如果您沒有額外儲存體可供初始上架，而想要連結至現有的共用，您可以在 Azure 檔案共用中預先植入資料。 唯有您可接受停機時間，且絕對保證在初始上架程序期間，伺服器共用上的資料不會變更，才建議使用此方法。 
  
 1. 確定在上架程式期間，任何伺服器上的資料都不會變更。
-2. 透過 SMB 使用任何資料傳輸工具來預先植入 Azure 檔案共用，例如 Robocopy、直接 SMB 複製。 因為 AzCopy 不會透過 SMB 上傳資料，所以無法用於預先植入。
+2. 使用任何資料傳輸工具透過 SMB 預先植入 Azure 檔案共用與伺服器資料。 例如 Robocopy。 您也可以使用 AzCopy over REST。 請務必使用 AzCopy 搭配適當的參數，以保留 Acl 時間戳記和屬性。
 3. 使用指向現有共用的所需伺服器端點，建立 Azure 檔案同步拓撲。
 4. 讓同步服務在所有端點上完成調整程序。 
 5. 完成調整後，您可以開啟共用進行變更。
  
 目前，預先植入方法有幾個限制- 
-- 檔案不會保持完整不失真。 例如，檔案會失去 ACL 和時間戳記。
 - 在同步拓撲完全啟動並執行之前，伺服器上的資料變更會導致伺服器端點發生衝突。  
 - 建立雲端端點之後，Azure 檔案同步會在開始初始同步處理之前，先執行程式來偵測雲端中的檔案。完成此程式所需的時間會視各種因素而異，例如網路速度、可用的頻寬，以及檔案和資料夾的數目。 根據預覽版本中的粗略估計，偵測程序會以大約每秒 10 個檔案的速度執行。因此，即使預先植入的執行速度快，但若在雲端預先植入資料，則系統完整執行的整體時間可能會更長。
 

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: willzhan
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 609c06eedb5c28e31c19df1595c8e4b3b0a59956
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: b8c4bed81a73957cc80318064f2aa2a58b3cfe11
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90532217"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91597084"
 ---
 # <a name="offline-widevine-streaming-for-android-with-media-services-v3"></a>使用媒體服務 v3 進行 Android 的離線 Widevine 串流
 
@@ -30,6 +30,8 @@ ms.locfileid: "90532217"
 
 - 某些內容提供者可能不允許在國家/地區的邊界之外傳遞 DRM 授權。 如果使用者想要在出國旅行時觀賞內容，則需要離線下載。
 - 在某些國家/地區，網際網路可用性和/或頻寬有限。 使用者可能會選擇下載內容，以便能以較高的解析度觀賞，來獲得令人滿意的檢視體驗。
+
+[!INCLUDE [Widevine is not available in the GovCloud region.](./includes/widevine-not-available-govcloud.md)]
 
 本文討論如何針對 Android 裝置上受 Widevine 保護的 DASH 內容實作離線模式播放。 離線 DRM 可讓您為內容提供訂用帳戶、租賃及採購模式，讓服務的客戶能在和網際網路中斷連線時，輕鬆地隨身攜帶內容。
 

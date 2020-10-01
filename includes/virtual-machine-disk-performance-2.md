@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 09/25/2020
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: 7a546c06e990d7fdb0fa7865c176f39772136539
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: e5a6dae98e786bf55dc17d8fabe42f84e9927442
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91539972"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91606066"
 ---
 ![Dsv3 檔](media/vm-disk-performance/dsv3-documentation.jpg)
 
-最大未快取 **的磁片輸送量** 是虛擬機器能夠處理的預設儲存體上限。 當您啟用主機快取時， **最大快** 取儲存體輸送量限制是個別的限制。 主機快取的運作方式是讓儲存體更接近可供寫入或讀取的 VM。 適用于主機快取的 VM 可用的儲存體數量是在檔中。 例如，您可以看到 Standard_D8s_v3 隨附于200快取儲存體 GiB。 讓我們 
+最大未快取 **的磁片輸送量** 是虛擬機器能夠處理的預設儲存體上限。 當您啟用主機快取時， **最大快** 取儲存體輸送量限制是個別的限制。 主機快取的運作方式是讓儲存體更接近可供寫入或讀取的 VM。 適用于主機快取的 VM 可用的儲存體數量是在檔中。 例如，您可以看到 Standard_D8s_v3 隨附于200快取儲存體 GiB。
 
 建立虛擬機器並連接磁片時，可以完成啟用主機快取。 您也可以調整以開啟和關閉主機快取在現有 VM 上的磁片。
 
@@ -94,7 +94,7 @@ ms.locfileid: "91539972"
     - 主機快取：讀取/寫入
 - 2 P30 資料磁片 X 2
     - IOPS：5000
-    - 主機快取：讀取/寫入
+    - 主機快取：已停用
 
 ![使用遠端存放的主機快取範例](media/vm-disk-performance/host-caching-example-with-remote.jpg)
 

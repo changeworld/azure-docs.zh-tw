@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: jrasnick, sstein
-ms.date: 03/10/2020
-ms.openlocfilehash: 36a1be4f802292e62c98098508927b06a5851afa
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 09/30/2020
+ms.openlocfilehash: 6c8d048d43a16191cc7b1245ad2d686ba2ca22ab
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91333081"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91596973"
 ---
 # <a name="monitoring-and-performance-tuning-in-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL Database 和 Azure SQL 受控執行個體監視和效能微調
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -25,13 +25,16 @@ ms.locfileid: "91333081"
 
 Azure SQL Database 提供許多資料庫顧問，以提供智慧型效能微調建議和自動調整選項，以改善效能。 此外，查詢效能深入解析會顯示負責單一和集區資料庫之最多 CPU 和 IO 使用量的查詢詳細資料。
 
-Azure SQL Database 和 Azure SQL 受控執行個體提供人工智慧所支援的先進監視和微調功能，協助您進行疑難排解並將資料庫和解決方案的效能最大化。 您可以選擇將這些[Intelligent Insights](intelligent-insights-overview.md)和其他資料庫資源記錄和計量的[串流匯出](metrics-diagnostic-telemetry-logging-streaming-export-configure.md)，設定為用於取用和分析的數個目的地之一，特別是使用[SQL 分析](../../azure-monitor/insights/azure-sql.md)) 。 Azure SQL 分析是先進的雲端監視解決方案，可在單一視圖中大規模監視您所有資料庫的效能，並跨多個訂用帳戶進行監視。 如需可匯出的記錄和度量清單，請參閱匯出的 [診斷遙測](metrics-diagnostic-telemetry-logging-streaming-export-configure.md#diagnostic-telemetry-for-export)
+Azure SQL Database 和 Azure SQL 受控執行個體提供人工智慧所支援的先進監視和微調功能，協助您進行疑難排解並將資料庫和解決方案的效能最大化。 您可以選擇將這些[Intelligent Insights](intelligent-insights-overview.md)和其他資料庫資源記錄和計量的[串流匯出](metrics-diagnostic-telemetry-logging-streaming-export-configure.md)，設定為使用和分析的數個目的地之一（特別是使用[SQL 分析](../../azure-monitor/insights/azure-sql.md)）。 Azure SQL 分析是先進的雲端監視解決方案，可在單一視圖中大規模監視您所有資料庫的效能，並跨多個訂用帳戶進行監視。 如需可匯出的記錄和度量清單，請參閱匯出的 [診斷遙測](metrics-diagnostic-telemetry-logging-streaming-export-configure.md#diagnostic-telemetry-for-export)
 
-最後，SQL Server 有自己的監視和診斷功能，SQL Database 和 SQL 受控執行個體利用，例如 [查詢存放區](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store) 和 [動態管理檢視 (dmv) ](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views)。 請參閱 [使用 Dmv 監視](monitoring-with-dmvs.md) 腳本，以監視各種效能問題。
+SQL Server 有自己的監視和診斷功能，SQL Database 和 SQL 受控執行個體利用，例如 [查詢存放區](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store) 和 [動態管理檢視 (dmv) ](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views)。 請參閱 [使用 Dmv 監視](monitoring-with-dmvs.md) 腳本，以監視各種效能問題。
 
 ## <a name="monitoring-and-tuning-capabilities-in-the-azure-portal"></a>Azure 入口網站中的監視和微調功能
 
-在 Azure 入口網站中，Azure SQL Database 和 Azure SQL 受控執行個體提供資源計量的監視。 此外，Azure SQL Database 提供資料庫顧問和查詢效能深入解析提供查詢微調建議和查詢效能分析。 最後，在 Azure 入口網站中，您可以針對 [邏輯 SQL 伺服器](logical-servers.md) 和其單一和集區資料庫啟用自動功能。
+在 Azure 入口網站中，Azure SQL Database 和 Azure SQL 受控執行個體提供資源計量的監視。 Azure SQL Database 提供資料庫顧問，查詢效能深入解析提供查詢微調建議和查詢效能分析。 在 Azure 入口網站中，您可以針對 [邏輯 SQL 伺服器](logical-servers.md) 及其單一和集區資料庫啟用自動調整。
+
+> [!NOTE]
+> 使用極低使用量的資料庫可能會顯示在入口網站中，而不是實際的使用量。 由於將雙精度浮點數轉換為最接近的0.5 整數時，遙測的發出方式會舍入為0，這會導致發出的遙測資料細微性遺失。 如需詳細資訊，請參閱 [將資料庫和彈性集區計量四捨五入為零](#low-database-and-elastic-pool-metrics-rounding-to-zero)。
 
 ### <a name="azure-sql-database-and-azure-sql-managed-instance-resource-monitoring"></a>Azure SQL Database 和 Azure SQL 受控執行個體資源監視
 
@@ -46,6 +49,33 @@ Azure SQL Database 包括可針對單一和集區資料庫提供效能微調建�
 ### <a name="query-performance-insight-in-azure-sql-database"></a>Azure SQL Database 中的查詢效能深入解析
 
 [查詢效能深入解析](query-performance-insight-use.md) 針對單一和集區資料庫，顯示最常耗用且最長執行查詢的 Azure 入口網站效能。
+
+### <a name="low-database-and-elastic-pool-metrics-rounding-to-zero"></a>低資料庫和彈性集區計量四捨五入為零
+
+從2020年9月開始，具有極低使用量的資料庫可能會顯示在入口網站中，但實際使用不到。 由於將雙精度浮點數轉換為最接近的0.5 整數時，遙測的發出方式會舍入至0，這會導致發出的遙測資料細微性遺失。
+
+例如：假設有一個具有下列四個資料點的1分鐘時間範圍：0.1、0.1、0.1、0.1、這些低值會向下舍入為0、0、0、0，並顯示平均0。 如果有任何資料點大於0.5 （例如：0.1、0.1、0.9、0.1），它們會舍入為0、0、1、0，並顯示平均的0.25。
+
+受影響的資料庫計量：
+- cpu_percent
+- log_write_percent
+- workers_percent
+- sessions_percent
+- physical_data_read_percent
+- dtu_consumption_percent2
+- xtp_storage_percent
+
+受影響的彈性集區計量：
+- cpu_percent
+- physical_data_read_percent
+- log_write_percent
+- memory_usage_percent
+- data_storage_percent
+- peak_worker_percent
+- peak_session_percent
+- xtp_storage_percent
+- allocated_data_storage_percent
+
 
 ## <a name="generate-intelligent-assessments-of-performance-issues"></a>產生效能問題的智慧型評量
 

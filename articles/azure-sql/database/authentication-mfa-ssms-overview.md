@@ -13,12 +13,12 @@ ms.author: mireks
 ms.reviewer: vanto
 ms.date: 09/28/2020
 tags: azure-synapse
-ms.openlocfilehash: e526b8e2e4f31187bb958ec37c2ffa4d30f0265b
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.openlocfilehash: 2a3e1e7279e915c0c5992190ef0c8d1d83880dbb
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91461150"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91596116"
 ---
 # <a name="using-multi-factor-azure-active-directory-authentication"></a>使用多重要素 Azure Active Directory 驗證
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -27,14 +27,12 @@ Azure SQL Database、Azure SQL 受控執行個體和 Azure Synapse Analytics 支
 
 **下載最新的 SSMS** - 在用戶端電腦上，從[下載 SQL Server Management Studio (SSMS)](https://aka.ms/ssms) 下載最新版的 SSMS。 
 
-> [!Note]
-> 在2021年12月之前，在18.6 之前的 SSMS 版本將無法再透過 MFA Azure Active Directory 進行驗證。 若要繼續利用 MFA Azure Active Directory 驗證，請安裝或更新至 SSMS 18.6 或更新版本。
+[!INCLUDE[ssms-connect-azure-ad](../includes/ssms-connect-azure-ad.md)]
+
 
 對於本文討論的所有功能，請至少使用 2017 年 7 月的 17.2 版。 最近的連線對話方塊看起來應該會類似下圖：
 
   ![SQL Server Management Studio 中 [連接到伺服器] 對話方塊的螢幕擷取畫面，其中顯示伺服器類型、伺服器名稱和驗證的設定。](./media/authentication-mfa-ssms-overview/1mfa-universal-connect.png)
-  
-    
 
 ## <a name="authentication-options"></a>驗證選項
 

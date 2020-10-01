@@ -3,12 +3,12 @@ title: 取得原則合規性資料
 description: Azure 原則評估和效果會決定合規性。 了解如何取得 Azure 資源的合規性詳細資料。
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 5a308a23e84587eba69951081674d3525f083441
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 2b4db7daf75f153cadb03e5dd028084e311bb874
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91537945"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91596031"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>取得 Azure 資源的合規性資料
 
@@ -46,7 +46,37 @@ Azure 原則的其中一個最大優點，就是能夠針對訂用帳戶中的�
 
 ### <a name="on-demand-evaluation-scan"></a>隨選評估掃描
 
-訂用帳戶或資源群組的評估掃描可以使用 Azure CLI、Azure PowerShell 或 REST API 的呼叫來啟動。 這個掃描是一個非同步程序。
+訂用帳戶或資源群組的評估掃描可以使用 Azure CLI、Azure PowerShell、REST API 的呼叫，或使用 [Azure 原則合規性掃描 GitHub 動作](https://github.com/marketplace/actions/azure-policy-compliance-scan)來啟動。
+這個掃描是一個非同步程序。
+
+#### <a name="on-demand-evaluation-scan---github-action"></a>隨選評估掃描-GitHub 動作
+
+使用 [Azure 原則合規性掃描動作](https://github.com/marketplace/actions/azure-policy-compliance-scan) ，在一或多個資源、資源群組或訂用帳戶上，從您的 [GitHub 工作流程](https://docs.github.com/actions/configuring-and-managing-workflows/configuring-a-workflow#about-workflows) 觸發隨選評估掃描，並根據資源的合規性狀態將工作流程閘道。 您也可以將工作流程設定為在排程的時間執行，以便在方便的時間取得最新的合規性狀態。 （選擇性）此 GitHub 動作可以產生掃描的資源合規性狀態報表，以供進一步分析或封存。
+
+下列範例會執行訂用帳戶的合規性掃描。 
+
+```yaml
+on:
+  schedule:    
+    - cron:  '0 8 * * *'  # runs every morning 8am
+jobs:
+  assess-policy-compliance:    
+    runs-on: ubuntu-latest
+    steps:         
+    - name: Login to Azure
+      uses: azure/login@v1
+      with:
+        creds: ${{secrets.AZURE_CREDENTIALS}} 
+
+    
+    - name: Check for resource compliance
+      uses: azure/policy-compliance-scan@v0
+      with:
+        scopes: |
+          /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+```
+
+如需詳細資訊和工作流程範例，請參閱 [Azure 原則合規性掃描](https://github.com/Azure/policy-compliance-scan)存放庫的 GitHub 動作。
 
 #### <a name="on-demand-evaluation-scan---azure-cli"></a>隨選評估掃描-Azure CLI
 

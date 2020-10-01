@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 09/28/2020
+ms.date: 09/30/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1b636c1b01bb3b4a8a4ab285c812d04dedfcc966
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 450bd87c6dd1f55c58f4c8a620dbddcfdf42ec7f
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91536319"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91596540"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>使用 Azure 來裝載及執行 SAP 工作負載案例
 
@@ -82,6 +82,7 @@ SAP 應用層和 DBMS 的高可用性記載于從[適用于 Sap NetWeaver 的 Az
 
 ## <a name="change-log"></a>變更記錄檔
 
+- 09/30/2020： [SAP Hana 在 rhel 上的 Azure vm 上變更高可用性](./sap-hana-high-availability-rhel.md)，在 rhel 上 [使用 ANF 來 SAP Hana 相應增加](./sap-hana-high-availability-netapp-files-red-hat.md) ，並在 [Azure 中設定 rhel 上的 Pacemaker](./high-availability-guide-rhel-pacemaker.md) ，以配合 rhel 8.1 的指示進行調整
 - 09/28/2020：新增適用于 SAP Hana 的新儲存體操作指南：使用 Azure NetApp Files 搭配 [Azure Netapp files 上的檔 NFS 4.1 磁片區，以供 SAP Hana](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-netapp)
 - 09/23/2020：在您[的可用 sku](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-available-skus)中新增適用于紐約的新認證 sku 
 - 09/20/2020：適用于 [sap 工作負載的 Azure 虛擬機器 dbms 部署](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general)SQL Server、適用于 sap NetWeaver 的 azure 虛擬機器 [dbms 部署](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_sqlserver)、適用于 sap [工作](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_oracle)負載的 azure 虛擬機器 dbms 部署、適用于 Sap 工作負載的 [IBM Db2 Azure 虛擬機器 dbms 部署、適用于 Sap 工作負載的 IBM Db2 Azure 虛擬機器 dbms](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_ibm) 部署的檔考慮變更 此外，也會將 Ultra 磁片建議新增至不同的指南。

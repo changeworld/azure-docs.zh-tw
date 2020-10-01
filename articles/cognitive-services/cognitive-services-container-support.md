@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 09/28/2020
 ms.author: aahi
 keywords: 內部部署、Docker、容器、Kubernetes
-ms.openlocfilehash: 48bfad4b101556dfcc4e57cf684341bda8063202
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.openlocfilehash: ccba46c1e83f92b1f27c64cb4d9ca32039862bd1
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91461201"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91597455"
 ---
 # <a name="azure-cognitive-services-containers"></a>Azure 認知服務容器
 
@@ -58,9 +58,9 @@ Azure 認知服務容器能提供下列 Docker 容器集合，每個容器都包
 | 服務 | 支援的定價層 | 容器 | Description |
 |--|--|--|--|
 | [異常偵測器][ad-containers] | F0，S0 | **異常** 偵測器 ([映射](https://hub.docker.com/_/azure-cognitive-services-decision-anomaly-detector))   | Anomaly Detector API 可讓您透過機器學習，監視和偵測時間序列資料中的異常狀況。<br>[要求存取][request-access] |
-| [電腦視覺][cv-containers] | F0，S1 | **讀取** | 從具不同表面和背景之各種物件 (例如收據、海報和名片) 的影像擷取印刷文字。 讀取容器也會偵測影像中的 *手寫文字* ，並提供 PDF/TIFF/多重頁面支援。<br/><br/>**重要事項：** 讀取容器目前只適用于英文。 |
-| [臉部][fa-containers] | F0，S0 | **臉部** | 能偵測影像中的人臉並識別其特性，包括臉部特徵點 (例如鼻子和眼睛)、性別、年齡及其他機器預測的臉部容貌。 除了偵測以外，臉部也可以使用信賴分數檢查相同或不同影像中的兩張臉是否相同，或將臉部向資料庫進行比對，看看是否有樣貌相似或相同的臉部。 它也能夠使用共同視覺特徵，將相似臉部分組。<br>[要求存取][request-access] |
-| [表單辨識器][fr-containers] | F0，S0 | **表單辨識器** | 表單理解會套用機器學習技術來識別和解壓縮表單中的索引鍵/值組和資料表。<br>[要求存取][request-access] |
+| [電腦視覺][cv-containers] | F0，S1 | **讀取** OCR ([映射](https://hub.docker.com/_/microsoft-azure-cognitive-services-vision-read))  | 「讀取 OCR」容器可讓您從影像和檔中取出列印和手寫的文字，並支援 JPEG、PNG、BMP、PDF 和 TIFF 檔案格式。 如需詳細資訊，請參閱 [讀取 API 檔](./computer-vision/concept-recognizing-text.md)。<br>[要求存取][request-access] |
+| [臉部][fa-containers] | F0，S0 | **臉部** | 能偵測影像中的人臉並識別其特性，包括臉部特徵點 (例如鼻子和眼睛)、性別、年齡及其他機器預測的臉部容貌。 除了偵測以外，臉部也可以使用信賴分數檢查相同或不同影像中的兩張臉是否相同，或將臉部向資料庫進行比對，看看是否有樣貌相似或相同的臉部。 它也能夠使用共同視覺特徵，將相似臉部分組。 |
+| [表單辨識器][fr-containers] | F0，S0 | **表單辨識器** | 表單理解會套用機器學習技術來識別和解壓縮表單中的索引鍵/值組和資料表。 |
 | [LUIS][lu-containers] | F0，S0 | **LUIS** ([影像](https://go.microsoft.com/fwlink/?linkid=2043204&clcid=0x409)) | 將已定型或發佈的 Language Understanding 模型 (也稱為 LUIS 應用程式) 載入 Docker 容器中，並提供從容器的 API 端點存取查詢預測的權限。 您可以從容器收集查詢記錄，並將這些記錄重新上傳至 [LUIS 入口網站](https://www.luis.ai)，以改善應用程式的預測精確度。 |
 | [語音服務 API][sp-containers-stt] | F0，S0 | **語音轉換文字** ([映射](https://hub.docker.com/_/azure-cognitive-services-speechservices-speech-to-text))  | 連續的即時語音謄寫成文字。 |
 | [語音服務 API][sp-containers-cstt] | F0，S0 | **自訂語音轉換文字** ([映射](https://hub.docker.com/_/azure-cognitive-services-speechservices-custom-speech-to-text))  | 使用自訂模型，將即時語音轉譯為文字。 |

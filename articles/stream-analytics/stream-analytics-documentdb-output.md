@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/2/2020
 ms.custom: seodec18
-ms.openlocfilehash: dbeb1305a64fcace0be527708bc9122a4ffb931d
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 891cd651278906c6ff4b24d91342c612c67604de
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88870828"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91596558"
 ---
 # <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Azure 串流分析輸出至 Azure Cosmos DB  
 Azure 串流分析可以將 [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) 設定為 JSON 輸出的目標，讓您能夠針對非結構化的 JSON 資料進行資料封存和低延遲查詢。 本文件涵蓋實作這種組態的一些最佳作法。
@@ -72,7 +72,9 @@ Azure Cosmos DB 會根據您的工作負載自動調整分割區。 因此我們
 
 請務必選擇具有數個相異值的分割區索引鍵屬性，那能讓您將工作負載平均分散到這些值上。 作為資料分割的自然成品，涉及相同分割區索引鍵的要求會受到單一分割區的最大輸送量所限制。 
 
-屬於相同分割區索引鍵之文件的儲存體大小限制為 20 GB。 理想的分割區索引鍵是經常在您的查詢中作為篩選條件出現的索引鍵，並且還要具有足夠的基數，以確保您的解決方案可以調整。
+屬於相同資料分割索引鍵值之檔的儲存體大小限制為 20 GB ([實體分割區大小限制](../cosmos-db/partition-data.md) 為 50 gb) 。 理想的資料分割索引鍵是在查詢中經常出現做為篩選的資料 [分割索引鍵](../cosmos-db/partitioning-overview.md#choose-partitionkey) ，而且具有足夠的基數，以確保您的解決方案可進行調整。
+
+用於串流分析查詢和 Cosmos DB 的分割區索引鍵不需要相同的資料分割索引鍵。 完全平行拓朴建議使用 *輸入分割*區索引鍵， `PartitionId` 作為串流分析查詢的分割區索引鍵，但這可能不是 Cosmos DB 容器分割區索引鍵的建議選擇。
 
 分割區索引鍵也是 Azure Cosmos DB 的預存程序和觸發程序中交易的界限。 您應該選擇分割區索引鍵，使在交易中一起發生的文件會共用相同的分割區索引鍵值。 [Azure Cosmos DB 中的資料分割](../cosmos-db/partitioning-overview.md)能針對選擇分割區索引鍵提供更多詳細資料。
 

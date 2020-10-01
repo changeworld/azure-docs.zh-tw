@@ -1,14 +1,14 @@
 ---
 title: 設計原則即程式碼工作流程
 description: 了解如何設計將您的 Azure 原則定義部署為程式碼並自動驗證資源的工作流程。
-ms.date: 08/27/2020
+ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: bc7a6d72e344868a799638f724b5c225516b5a32
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 7fa8eb36283821527e16c1d97e326aa9dcde9dba
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651886"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91598215"
 ---
 # <a name="design-policy-as-code-workflows"></a>設計原則即程式碼工作流程
 
@@ -38,6 +38,8 @@ ms.locfileid: "89651886"
 
 - 原則定義： [將標記新增至資源](https://github.com/Azure/azure-policy/tree/master/samples/Tags/add-tag)
 - 方案定義： [計費標記](https://github.com/Azure/azure-policy/tree/master/samples/PolicyInitiatives/multiple-billing-tags)
+
+此外，請參閱 [匯出 Azure 原則資源](../how-to/export-resources.md) ，以將現有的定義和指派指派至原始程式碼管理環境 [GitHub](https://www.github.com)。
 
 ## <a name="workflow-overview"></a>工作流程概觀
 

@@ -10,14 +10,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 05/21/2020
+ms.date: 09/30/2020
 ms.author: radeltch
-ms.openlocfilehash: 2ce3a4116c12065bbaee8e11d5ada3b8c89b1a9d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2184a6e67b17f9fcaefc0a8e556ba81e839a2399
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87088218"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91598067"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux 上 Azure VM 的 SAP HANA 高可用性
 
@@ -108,7 +108,7 @@ Azure Marketplace 包含 Red Hat Enterprise Linux for SAP HANA 7.4 的映像，�
     * **SAP 系統大小**：輸入新系統要提供的 SAP 數量。 如果您不確定系統需要多少 SAP，請詢問您的 SAP 技術合作夥伴或系統整合者。
     * **系統可用性**：選取 **HA**。
     * **管理員使用者名稱、管理員密碼或 SSH 金鑰**：將建立可用來登入電腦的新使用者。
-    * **子網路識別碼**：如果您想將 VM 部署至現有的 VNet (其中具有定義 VM 應指派的目的子網路)，請說明該特定子網路的 ID。 此識別碼通常看起來像是 **/Subscriptions/ \<subscription ID> /resourceGroups/ \<resource group name> /providers/Microsoft.Network/virtualNetworks/ \<virtual network name> /subnets/ \<subnet name> **。 如果您想要建立新的虛擬網路，請保留空白
+    * **子網路識別碼**：如果您想將 VM 部署至現有的 VNet (其中具有定義 VM 應指派的目的子網路)，請說明該特定子網路的 ID。 識別碼通常看起來像是 **/Subscriptions/ \<subscription ID> /resourceGroups/ \<resource group name> /providers/Microsoft.Network/virtualNetworks/ \<virtual network name> /subnets/ \<subnet name> **。 如果您想要建立新的虛擬網路，請保留空白
 
 ### <a name="manual-deployment"></a>手動部署
 
@@ -222,7 +222,7 @@ Azure Marketplace 包含 Red Hat Enterprise Linux for SAP HANA 7.4 的映像，�
 如需 SAP Hana 所需連接埠的詳細資訊，請參閱 [SAP Hana 租用戶資料庫](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6)指南的[連線到租用戶資料庫](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6/latest/en-US/7a9343c9f2a2436faa3cfdb5ca00c052.html)一章，或 [SAP Note 2388694][2388694]。
 
 > [!IMPORTANT]
-> 請勿在位於 Azure Load Balancer 後方的 Azure VM 上啟用 TCP 時間戳記。 啟用 TCP 時間戳記會導致健康情況探查失敗。 將參數 **net.ipv4.tcp_timestamps** 設定為 **0**。 如需詳細資料，請參閱[負載平衡器健康情況探查](../../../load-balancer/load-balancer-custom-probe-overview.md)。
+> 請勿在位於 Azure Load Balancer 後方的 Azure VM 上啟用 TCP 時間戳記。 啟用 TCP 時間戳記會導致健康狀態探查失敗。 將參數 **net.ipv4.tcp_timestamps** 設定為 **0**。 如需詳細資料，請參閱[負載平衡器健康情況探查](../../../load-balancer/load-balancer-custom-probe-overview.md)。
 > 另請參閱 SAP Note [2382421](https://launchpad.support.sap.com/#/notes/2382421)。 
 
 ## <a name="install-sap-hana"></a>安裝 SAP HANA
@@ -342,7 +342,12 @@ Azure Marketplace 包含 Red Hat Enterprise Linux for SAP HANA 7.4 的映像，�
 
 1. **[A]** RHEL for HANA 設定
 
-   按照 SAP Note [2292690]、[2455582] 和 <https://access.redhat.com/solutions/2447641> 中的描述來設定 RHEL。
+   如 <https://access.redhat.com/solutions/2447641> 和下列 SAP 附注所述，設定 RHEL：  
+   - [2292690 - SAP HANA DB：適用於 RHEL 7 的建議作業系統設定](https://launchpad.support.sap.com/#/notes/2292690)
+   - [2777782-SAP Hana DB：適用于 RHEL 8 的建議作業系統設定](https://launchpad.support.sap.com/#/notes/2777782)
+   - [2455582-Linux：執行以 GCC 6.x 編譯的 SAP 應用程式](https://launchpad.support.sap.com/#/notes/2455582)
+   - [2593824-Linux：執行以 GCC 7.x 編譯的 SAP 應用程式](https://launchpad.support.sap.com/#/notes/2593824) 
+   - [2886607-Linux：執行以 GCC 6.x 編譯的 SAP 應用程式](https://launchpad.support.sap.com/#/notes/2886607)
 
 1. **[A]** 安裝 SAP HANA
 
@@ -551,7 +556,7 @@ Azure Marketplace 包含 Red Hat Enterprise Linux for SAP HANA 7.4 的映像，�
 
 ## <a name="create-sap-hana-cluster-resources"></a>建立 SAP HANA 叢集資源
 
-在**所有節點**上安裝 SAP HANA 資源代理程式。 請務必啟用包含套件的存放庫。
+在**所有節點**上安裝 SAP HANA 資源代理程式。 請務必啟用包含套件的存放庫。 如果您使用 RHEL 8.x 啟用 HA 的映射，則不需要啟用其他存放庫。  
 
 <pre><code># Enable repository that contains SAP HANA resource agents
 sudo subscription-manager repos --enable="rhel-sap-hana-for-rhel-7-server-rpms"
@@ -566,13 +571,18 @@ sudo yum install -y resource-agents-sap-hana
 # Replace the bold string with your instance number and HANA system ID
 sudo pcs resource create SAPHanaTopology_<b>HN1</b>_<b>03</b> SAPHanaTopology SID=<b>HN1</b> InstanceNumber=<b>03</b> \
 op start timeout=600 op stop timeout=300 op monitor interval=10 timeout=600 \
---clone clone-max=2 clone-node-max=1 interleave=true
+clone clone-max=2 clone-node-max=1 interleave=true
 </code></pre>
 
-接下來，建立 HANA 資源：
+接下來，建立 HANA 資源。
+
+> [!NOTE]
+> 本文包含詞彙 *從屬*的參考，這是 Microsoft 不再使用的詞彙。 從軟體移除字詞時，我們會將它從本文中移除。
+
+如果在 **RHEL**7.x 上建立叢集，請使用下列命令：  
 
 <pre><code># Replace the bold string with your instance number, HANA system ID, and the front-end IP address of the Azure load balancer.
-
+#
 sudo pcs resource create SAPHana_<b>HN1</b>_<b>03</b> SAPHana SID=<b>HN1</b> InstanceNumber=<b>03</b> PREFER_SITE_TAKEOVER=true DUPLICATE_PRIMARY_TIMEOUT=7200 AUTOMATED_REGISTER=false \
 op start timeout=3600 op stop timeout=3600 \
 op monitor interval=61 role="Slave" timeout=700 \
@@ -581,14 +591,32 @@ op promote timeout=3600 op demote timeout=3600 \
 master notify=true clone-max=2 clone-node-max=1 interleave=true
 
 sudo pcs resource create vip_<b>HN1</b>_<b>03</b> IPaddr2 ip="<b>10.0.0.13</b>"
-
 sudo pcs resource create nc_<b>HN1</b>_<b>03</b> azure-lb port=625<b>03</b>
-
 sudo pcs resource group add g_ip_<b>HN1</b>_<b>03</b> nc_<b>HN1</b>_<b>03</b> vip_<b>HN1</b>_<b>03</b>
 
 sudo pcs constraint order SAPHanaTopology_<b>HN1</b>_<b>03</b>-clone then SAPHana_<b>HN1</b>_<b>03</b>-master symmetrical=false
-
 sudo pcs constraint colocation add g_ip_<b>HN1</b>_<b>03</b> with master SAPHana_<b>HN1</b>_<b>03</b>-master 4000
+
+sudo pcs property set maintenance-mode=false
+</code></pre>
+
+如果在 **RHEL**8.x 上建立叢集，請使用下列命令：  
+
+<pre><code># Replace the bold string with your instance number, HANA system ID, and the front-end IP address of the Azure load balancer.
+#
+sudo pcs resource create SAPHana_<b>HN1</b>_<b>03</b> SAPHana SID=<b>HN1</b> InstanceNumber=<b>03</b> PREFER_SITE_TAKEOVER=true DUPLICATE_PRIMARY_TIMEOUT=7200 AUTOMATED_REGISTER=false \
+op start timeout=3600 op stop timeout=3600 \
+op monitor interval=61 role="Slave" timeout=700 \
+op monitor interval=59 role="Master" timeout=700 \
+op promote timeout=3600 op demote timeout=3600 \
+promotable meta notify=true clone-max=2 clone-node-max=1 interleave=true
+
+sudo pcs resource create vip_<b>HN1</b>_<b>03</b> IPaddr2 ip="<b>10.0.0.13</b>"
+sudo pcs resource create nc_<b>HN1</b>_<b>03</b> azure-lb port=625<b>03</b>
+sudo pcs resource group add g_ip_<b>HN1</b>_<b>03</b> nc_<b>HN1</b>_<b>03</b> vip_<b>HN1</b>_<b>03</b>
+
+sudo pcs constraint order SAPHanaTopology_<b>HN1</b>_<b>03</b>-clone then SAPHana_<b>HN1</b>_<b>03</b>-clone symmetrical=false
+sudo pcs constraint colocation add g_ip_<b>HN1</b>_<b>03</b> with master SAPHana_<b>HN1</b>_<b>03</b>-clone 4000
 
 sudo pcs property set maintenance-mode=false
 </code></pre>
@@ -638,7 +666,10 @@ Resource Group: g_ip_HN1_03
 
 您可以執行下列命令來移轉 SAP HANA 主要節點：
 
-<pre><code>[root@hn1-db-0 ~]# pcs resource move SAPHana_HN1_03-master
+<pre><code># On RHEL <b>7.x</b> 
+[root@hn1-db-0 ~]# pcs resource move SAPHana_HN1_03-master
+# On RHEL <b>8.x</b>
+[root@hn1-db-0 ~]# pcs resource move SAPHana_HN1_03-clone --master
 </code></pre>
 
 如果您設定 `AUTOMATED_REGISTER="false"`，此命令應該會將 SAP HANA 主要節點以及包含虛擬 IP 位址的群組移轉到 hn1-db-1。
@@ -686,6 +717,9 @@ Resource Group: g_ip_HN1_03
 
 ### <a name="test-the-azure-fencing-agent"></a>測試 Azure 隔離代理程式
 
+> [!NOTE]
+> 本文包含詞彙 *從屬*的參考，這是 Microsoft 不再使用的詞彙。 從軟體移除字詞時，我們會將它從本文中移除。  
+
 開始測試之前的資源狀態：
 
 <pre><code>Clone Set: SAPHanaTopology_HN1_03-clone [SAPHanaTopology_HN1_03]
@@ -717,7 +751,10 @@ hn1adm@hn1-db-1:/usr/sap/HN1/HDB03> hdbnsutil -sr_register --remoteHost=<b>hn1-d
 
 # Switch back to root and clean up the failed state
 exit
+# On RHEL <b>7.x</b>
 [root@hn1-db-1 ~]# pcs resource cleanup SAPHana_HN1_03-master
+# On RHEL <b>8.x</b>
+[root@hn1-db-1 ~]# pcs resource cleanup SAPHana_HN1_03 node=&lt;hostname on which the resource needs to be cleaned&gt;
 </code></pre>
 
 測試完成之後的資源狀態：
@@ -762,7 +799,10 @@ hn1adm@hn1-db-0:/usr/sap/HN1/HDB03> hdbnsutil -sr_register --remoteHost=<b>hn1-d
 
 # Switch back to root and clean up the failed state
 hn1adm@hn1-db-0:/usr/sap/HN1/HDB03> exit
+# On RHEL <b>7.x</b>
 [root@hn1-db-1 ~]# pcs resource cleanup SAPHana_HN1_03-master
+# On RHEL <b>8.x</b>
+[root@hn1-db-1 ~]# pcs resource cleanup SAPHana_HN1_03 node=&lt;hostname on which the resource needs to be cleaned&gt;
 </code></pre>
 
 測試完成之後的資源狀態：

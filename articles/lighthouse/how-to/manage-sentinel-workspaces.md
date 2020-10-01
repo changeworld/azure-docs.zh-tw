@@ -1,14 +1,14 @@
 ---
 title: 大規模管理 Azure Sentinel 工作區
 description: 瞭解如何有效管理委派客戶資源上的 Azure Sentinel。
-ms.date: 08/27/2020
+ms.date: 09/30/2020
 ms.topic: how-to
-ms.openlocfilehash: 78896d6458f6b1c40655bc36d2bf63e05ddb0a59
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: d1ab392ee946e09a5f9e32ddf01ec2cd1e8bd41f
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90019728"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91596934"
 ---
 # <a name="manage-azure-sentinel-workspaces-at-scale"></a>大規模管理 Azure Sentinel 工作區
 
@@ -35,6 +35,9 @@ Azure Sentinel 提供安全性分析和威脅情報，提供單一解決方案�
 - 與 Azure Sentinel (（例如 Azure AD 活動記錄、Office 365 記錄或 Microsoft 威脅防護) 警示）整合的所有資料來源和資料連線器的資料，都會保留在每個客戶租使用者內。
 - 減少網路延遲。
 - 輕鬆地新增或移除新的子公司或客戶。
+
+> [!NOTE]
+> 您可以管理位於不同 [區域](../../availability-zones/az-overview.md#regions)的委派資源。 但是，不支援跨 [全國雲端](../../active-directory/develop/authentication-national-cloud.md) 、Azure 公用雲端或跨兩個不同國家雲端的訂用帳戶委派。
 
 ## <a name="granular-role-based-access-control-rbac"></a>以角色為基礎的細微存取控制 (RBAC) 
 
@@ -85,7 +88,7 @@ MSSP 將管理的每個客戶訂用帳戶都必須 [上線至 Azure Lighthouse](
 
 設定 Office 365 資料連線器之後，您可以使用跨租使用者 Azure Sentinel 功能，例如在活頁簿中查看和分析資料、使用查詢建立自訂警示，以及設定腳本來回應威脅。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 瞭解 [Azure Sentinel](../../sentinel/overview.md)。
 - 請參閱 [Azure Sentinel 定價頁面](https://azure.microsoft.com/pricing/details/azure-sentinel/)。

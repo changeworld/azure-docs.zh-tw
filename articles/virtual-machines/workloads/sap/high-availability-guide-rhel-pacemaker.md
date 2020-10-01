@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 08/04/2020
+ms.date: 09/29/2020
 ms.author: radeltch
-ms.openlocfilehash: a1e097692eade956446b46782bca5ecf3a17de75
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 4c444cb84f215ba4f42c14eb64f1d2f441e4280d
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87800257"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91598302"
 ---
 # <a name="setting-up-pacemaker-on-red-hat-enterprise-linux-in-azure"></a>在 Azure 中的 Red Hat Enterprise Linux 上設定 Pacemaker
 
@@ -66,6 +66,7 @@ ms.locfileid: "87800257"
 * Azure 專用 RHEL 文件：
   * [RHEL 高可用性叢集的支援原則：以 Microsoft Azure 虛擬機器作為叢集成員](https://access.redhat.com/articles/3131341)
   * [在 Microsoft Azure 上安裝和設定 Red Hat Enterprise Linux 7.4 (和更新版本) 高可用性叢集](https://access.redhat.com/articles/3252491)
+  * [採用 RHEL 8-高可用性和群集的考慮](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/considerations_in_adopting_rhel_8/high-availability-and-clusters_considerations-in-adopting-rhel-8)
   * [在 RHEL 7.6 上的 Pacemaker 中使用 Standalone Enqueue Server 2 (ENSA2) 設定 SAP S/4HANA ASCS/ERS](https://access.redhat.com/articles/3974941)
 
 ## <a name="cluster-installation"></a>叢集安裝
@@ -78,7 +79,7 @@ ms.locfileid: "87800257"
 
 下列項目會加上下列其中一個前置詞： **[A]** - 適用於所有節點、 **[1]** - 僅適用於節點 1 或 **[2]** - 僅適用於節點 2。
 
-1. **[A]** 註冊
+1. **[A]** 註冊。 如果使用 RHEL 8.x 啟用 HA 的映射，則不需要此步驟。  
 
    註冊您的虛擬機器，並將其附加至含有適用於 RHEL 7 的存放庫集區。
 
@@ -88,9 +89,9 @@ ms.locfileid: "87800257"
    sudo subscription-manager attach --pool=&lt;pool id&gt;
    </code></pre>
 
-   請注意，藉由將集區附加至 Azure Marketplace PAYG RHEL 映像，您將能有效地以 RHEL 使用量重複計費：一次針對 PAYG 映像，另一次針對您所附加集區中的 RHEL 權利。 為了減輕此問題，Azure 現在提供 BYOS RHEL 映像。 更多資訊可以在[這裡](../redhat/byos.md)取得。
+   藉由將集區附加至 Azure Marketplace PAYG RHEL 映射，您將會有效地針對 RHEL 使用量進行雙重計費：一次用於 PAYG 映射，而針對您附加的集區中的 RHEL 權利。 為了減輕此問題，Azure 現在提供 BYOS RHEL 映像。 更多資訊可以在[這裡](../redhat/byos.md)取得。
 
-1. **[A]** 啟用 RHEL for SAP 存放庫
+1. **[A]** 啟用 RHEL for SAP 存放庫。 如果使用 RHEL 8.x 啟用 HA 的映射，則不需要此步驟。  
 
    若要安裝必要的封裝，請啟用下列存放庫。
 
@@ -108,6 +109,7 @@ ms.locfileid: "87800257"
 
    > [!IMPORTANT]
    > 我們建議使用下列 Azure 柵欄代理程式版本 (或更新版本)，在資源停止失敗或叢集節點無法再彼此通訊時，讓客戶從更快速的容錯移轉時間受益：  
+   > RHEL 7.7 或更高版本使用最新的可用隔離版本-代理程式套件  
    > RHEL 7.6.：fence-agents-4.2.1-11.el7_6.8  
    > RHEL 7.5：fence-agents-4.0.11-86.el7_5.8  
    > RHEL 7.4：fence-agents-4.0.11-66.el7_4.12  
@@ -128,7 +130,7 @@ ms.locfileid: "87800257"
    請取代下列命令中的 IP 位址和主機名稱。  
 
    >[!IMPORTANT]
-   > 如果在叢集設定中使用主機名稱，請務必要有可靠的主機名稱解析。 如果名稱無法使用，而且可能會導致叢集容錯移轉延遲，叢集通訊將會失敗。
+   > 如果在叢集設定中使用主機名稱，則必須有可靠的主機名稱解析。 如果名稱無法使用，而且可能會導致叢集容錯移轉延遲，則叢集通訊將會失敗。
    > 使用 /etc/hosts 的好處在於，您的叢集會變成不受 DNS 影響，而 DNS 也可能是單一失敗點。  
 
    <pre><code>sudo vi /etc/hosts
@@ -165,15 +167,23 @@ ms.locfileid: "87800257"
 
 1. **[1]** 建立 Pacemaker 叢集
 
-   執行下列命令以驗證節點，並建立叢集。 將權杖設為 30000，以允許記憶體保留維護。 如需詳細資訊，請參閱[這篇 Linux 文章][virtual-machines-linux-maintenance]。
-
+   執行下列命令以驗證節點，並建立叢集。 將權杖設為 30000，以允許記憶體保留維護。 如需詳細資訊，請參閱[這篇 Linux 文章][virtual-machines-linux-maintenance]。  
+   
+   如果在 **RHEL**7.x 上建立叢集，請使用下列命令：  
    <pre><code>sudo pcs cluster auth <b>prod-cl1-0</b> <b>prod-cl1-1</b> -u hacluster
    sudo pcs cluster setup --name <b>nw1-azr</b> <b>prod-cl1-0</b> <b>prod-cl1-1</b> --token 30000
    sudo pcs cluster start --all
+   </code></pre>
 
-   # Run the following command until the status of both nodes is online
+   如果在 **RHEL**8.x 上建立叢集，請使用下列命令：  
+   <pre><code>sudo pcs host auth <b>prod-cl1-0</b> <b>prod-cl1-1</b> -u hacluster
+   sudo pcs cluster setup <b>nw1-azr</b> <b>prod-cl1-0</b> <b>prod-cl1-1</b> totem token=30000
+   sudo pcs cluster start --all
+   </code></pre>
+
+   藉由執行下列命令來確認叢集狀態：  
+   <pre><code> # Run the following command until the status of both nodes is online
    sudo pcs status
-
    # Cluster name: nw1-azr
    # WARNING: no stonith devices and stonith-enabled is not false
    # Stack: corosync
@@ -188,19 +198,24 @@ ms.locfileid: "87800257"
    #
    # No resources
    #
-   #
    # Daemon Status:
    #   corosync: active/disabled
    #   pacemaker: active/disabled
    #   pcsd: active/enabled
    </code></pre>
 
-1. **[A]** 設定預期的投票
-
-   <pre><code>sudo pcs quorum expected-votes 2
+1. **[A]** 設定預期的投票。 
+   
+   <pre><code># Check the quorum votes 
+    pcs quorum status
+    # If the quorum votes are not set to 2, execute the next command
+    sudo pcs quorum expected-votes 2
    </code></pre>
 
-1. **[1]** 允許並行的防護動作
+   >[!TIP]
+   > 如果建立多節點叢集（這是具有兩個以上節點的叢集），請勿將投票設定為2。    
+
+1. **[1]** 允許並行的隔離動作
 
    <pre><code>sudo pcs property set concurrent-fencing=true
    </code></pre>
@@ -219,7 +234,7 @@ STONITH 裝置會使用服務主體來對 Microsoft Azure 授權。 請遵循下
    登入 URL 並未使用，而且可以是任何有效的 URL
 1. 選取 [憑證和祕密]，然後按一下 [新增用戶端秘密]
 1. 輸入新金鑰的說明、選取 [永不過期]，然後按一下 [新增]
-1. 記下值。 此值會用來做為服務主體的**密碼**
+1. 將節點設為值。 此值會用來做為服務主體的**密碼**
 1. 選取 [概觀]。 記下應用程式識別碼。 此識別碼會用來做為服務主體的使用者名稱 (以下步驟中的「登入識別碼」)
 
 ### <a name="1-create-a-custom-role-for-the-fence-agent"></a>**[1]** 為柵欄代理程式建立自訂角色
@@ -276,18 +291,23 @@ STONITH 裝置會使用服務主體來對 Microsoft Azure 授權。 請遵循下
 sudo pcs property set stonith-timeout=900
 </code></pre>
 
-使用下列命令來設定柵欄裝置。
-
 > [!NOTE]
 > 如果 RHEL 主機名稱和 Azure 節點名稱不相同，則命令中只需要選項「pcmk_host_map」。 請參閱命令中的粗體區段。
 
+針對 RHEL **7.x**，請使用下列命令來設定隔離裝置：    
 <pre><code>sudo pcs stonith create rsc_st_azure fence_azure_arm login="<b>login ID</b>" passwd="<b>password</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" subscriptionId="<b>subscription id</b>" <b>pcmk_host_map="prod-cl1-0:10.0.0.6;prod-cl1-1:10.0.0.7"</b> \
 power_timeout=240 pcmk_reboot_timeout=900 pcmk_monitor_timeout=120 pcmk_monitor_retries=4 pcmk_action_limit=3 \
 op monitor interval=3600
 </code></pre>
 
+針對 RHEL **8.x**，請使用下列命令來設定隔離裝置：  
+<pre><code>sudo pcs stonith create rsc_st_azure fence_azure_arm username="<b>login ID</b>" password="<b>password</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" subscriptionId="<b>subscription id</b>" <b>pcmk_host_map="prod-cl1-0:10.0.0.6;prod-cl1-1:10.0.0.7"</b> \
+power_timeout=240 pcmk_reboot_timeout=900 pcmk_monitor_timeout=120 pcmk_monitor_retries=4 pcmk_action_limit=3 \
+op monitor interval=3600
+</code></pre>
+
 > [!IMPORTANT]
-> 監視和隔離作業會解除序列化。 因此，如果有較長的執行中監視作業和同時隔離的事件，叢集容錯移轉就不會延遲，因為已經在執行監視作業。  
+> 監視和隔離作業會解除序列化。 如此一來，如果有較長的執行中監視作業和同時隔離事件，叢集容錯移轉就不會延遲，因為已有執行中的監視作業。  
 
 ### <a name="1-enable-the-use-of-a-stonith-device"></a>**[1]** 啟用 STONITH 裝置的使用
 

@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 06/30/2020
+ms.date: 09/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1788eba0ef9be781fb7cf23f1eb86b48c9c360e1
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: cb12777a6a4fa1e75cd65bc597c87442d592aad5
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91287404"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91598112"
 ---
 # <a name="plan-your-azure-time-series-insights-gen2-environment"></a>規劃 Azure 時間序列深入解析 Gen2 環境
 
@@ -36,7 +36,6 @@ Azure 時間序列深入解析採用隨用隨付的商務模型。 如需有關�
 ## <a name="the-gen2-environment"></a>Gen2 環境
 
 當您布建 Azure 時間序列深入解析 Gen2 環境時，您會建立兩個 Azure 資源：
-
 
 * Azure 時間序列深入解析 Gen2 環境
 * Azure 儲存體帳戶
@@ -94,8 +93,8 @@ Azure 時間序列深入解析採用隨用隨付的商務模型。 如需有關�
 
 ## <a name="next-steps"></a>後續步驟
 
-- 請參閱 [Azure Advisor](../advisor/advisor-overview.md) ，以規劃您的商務恢復設定選項。
-- 請參閱 [Azure Advisor](../advisor/advisor-overview.md) ，以規劃您的商務恢復設定選項。
-- 深入瞭解 Azure 時間序列深入解析 Gen2 中的 [資料](./concepts-ingestion-overview.md) 內嵌。
-- 請參閱 Azure 時間序列深入解析 Gen2 中有關 [資料儲存體](./concepts-storage.md) 的文章。
-- 瞭解 Azure 時間序列深入解析 Gen2 中的 [資料模型](./concepts-model-overview.md) 。
+* 請參閱 [Azure Advisor](../advisor/advisor-overview.md) ，以規劃您的商務恢復設定選項。
+* 請參閱 [Azure Advisor](../advisor/advisor-overview.md) ，以規劃您的商務恢復設定選項。
+* 深入瞭解 Azure 時間序列深入解析 Gen2 中的 [資料](./concepts-ingestion-overview.md) 內嵌。
+* 請參閱 Azure 時間序列深入解析 Gen2 中有關 [資料儲存體](./concepts-storage.md) 的文章。
+* 瞭解 Azure 時間序列深入解析 Gen2 中的 [資料模型](./concepts-model-overview.md) 。

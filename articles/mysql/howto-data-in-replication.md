@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
-ms.date: 8/7/2020
-ms.openlocfilehash: f745e5e8b611271be9dff2131a2079abc609cf91
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.date: 9/29/2020
+ms.openlocfilehash: c3a6f9b5831d4fed377d3f8702dbc0af0663b3a5
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91539056"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91596496"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>如何為適用於 MySQL 的 Azure 資料庫設定複寫中的資料
 
@@ -51,10 +51,41 @@ ms.locfileid: "91539056"
 
 1. 繼續之前，請先檢查 [主伺服器需求](concepts-data-in-replication.md#requirements) 。 
 
-   例如，請確定來源伺服器允許埠3306上的輸入和輸出流量，且來源伺服器具有 **公用 IP 位址**、可公開存取 DNS，或具有 (FQDN) 的完整功能變數名稱。 
+2. 請確定來源伺服器允許埠3306上的輸入和輸出流量，且來源伺服器具有 **公用 IP 位址**、可公開存取 DNS，或具有 (FQDN) 的完整功能變數名稱。 
    
    藉由嘗試從另一部電腦上裝載的 MySQL 命令列，或從 Azure 入口網站提供的 [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) ，來測試來源伺服器的連線能力。
 
+   如果您的組織具有嚴格的安全性原則，且不允許來源伺服器上的所有 IP 位址啟用從 Azure 到來源伺服器的通訊，您可能會使用下列命令來判斷 MySQL 伺服器的 IP 位址。
+
+   1. 使用 MySQL 命令列之類的工具來登入您的適用於 MySQL 的 Azure 資料庫。
+   2. 執行下列查詢。
+      ```bash
+      mysql> SELECT @@global.redirect_server_host;
+      ```
+      以下是一些範例輸出：
+      ```bash 
+      +-----------------------------------------------------------+
+      | @@global.redirect_server_host                             |
+      +-----------------------------------------------------------+
+      | e299ae56f000.tr1830.westus1-a.worker.database.windows.net |
+       +-----------------------------------------------------------+
+      ```
+   3. 從 MySQL 命令列結束。
+   4. 在 ping 公用程式中執行下列命令，以取得 IP 位址。
+      ```bash
+      ping <output of step 2b>
+      ``` 
+      例如： 
+      ```bash      
+      C:\Users\testuser> ping e299ae56f000.tr1830.westus1-a.worker.database.windows.net
+      Pinging tr1830.westus1-a.worker.database.windows.net (**11.11.111.111**) 56(84) bytes of data.
+      ```
+
+   5. 設定來源伺服器的防火牆規則，以在埠3306上包含上一個步驟的輸出 IP 位址。
+
+   > [!NOTE]
+   > 此 IP 位址可能會因為維護/部署作業而變更。 這種連線方法只適用于無法讓3306埠上的所有 IP 位址都能承受的客戶。
+   
 1. 開啟二進位記錄
 
    藉由執行下列命令來查看來源上是否已啟用二進位記錄： 
@@ -126,7 +157,7 @@ ms.locfileid: "91539056"
 
 1. 取得二進位記錄檔的檔案名稱和位移
 
-   執行 [` show master status`](https://dev.mysql.com/doc/refman/5.7/en/show-master-status.html) 命令以判斷目前的二進位記錄檔名稱和位移。
+   執行 [`show master status`](https://dev.mysql.com/doc/refman/5.7/en/show-master-status.html) 命令以判斷目前的二進位記錄檔名稱和位移。
     
    ```sql
     show master status;

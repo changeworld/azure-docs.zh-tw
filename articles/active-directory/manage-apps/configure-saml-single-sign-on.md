@@ -1,38 +1,38 @@
 ---
-title: '在 Azure AD 中為應用程式設定 SAML 型單一登入 (SSO) '
-description: '在 Azure AD 中為應用程式設定 SAML 型單一登入 (SSO) '
+title: '瞭解 Azure Active Directory 中適用于應用程式的 SAML 型單一登入 (SSO) '
+description: '瞭解 Azure Active Directory 中適用于應用程式的 SAML 型單一登入 (SSO) '
 services: active-directory
 author: kenwith
 manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
-ms.topic: how-to
+ms.topic: conceptual
 ms.workload: identity
 ms.date: 07/28/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: afa927f8faa1ac2bd9cd910b3e78b690c16259e5
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 28bf7e631c8693434d686022891bb2e45152f0ce
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90605136"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91597909"
 ---
-# <a name="configure-saml-based-single-sign-on"></a>設定 SAML 型單一登入
+# <a name="understand-saml-based-single-sign-on"></a>瞭解 SAML 型單一登入
 
 在應用程式管理的 [快速入門系列](view-applications-portal.md) 中，您已瞭解如何使用 Azure AD 作為應用程式 (IdP) 的身分識別提供者。 本文將詳細說明單一登入的 SAML 型選項。 
 
 
 ## <a name="before-you-begin"></a>開始之前
 
-使用 Azure AD 作為身分識別提供者 (IdP) 並設定單一登入 (SSO) 可以簡單或複雜，視所使用的應用程式而定。 有些應用程式只能透過幾個動作來設定。 其他則需要深入設定。 若要快速加速，請逐步完成應用程式管理的 [快速入門系列](view-applications-portal.md) 。 如果您要新增的應用程式很簡單，您可能不需要閱讀這篇文章。 如果您要新增的應用程式需要 SAML 型 SSO 的自訂設定，則這篇文章適用于您。
+使用 Azure AD 作為身分識別提供者 (IdP) 並設定單一登入 (SSO) 可以簡單或複雜，視所使用的應用程式而定。 有些應用程式只能透過幾個動作來設定。 其他則需要深入設定。 若要快速地快速增加知識，請逐步解說應用程式管理的 [快速入門系列](view-applications-portal.md) 。 如果您要新增的應用程式很簡單，您可能不需要閱讀這篇文章。 如果您要新增的應用程式需要 SAML 型 SSO 的自訂設定，則這篇文章適用于您。
 
 在 [快速入門系列](add-application-portal-setup-sso.md)中，有一篇文章說明如何設定單一登入。 在其中，您將瞭解如何存取應用程式的 SAML 設定頁面。 [SAML 設定] 頁面包含五個區段。 本文將詳細討論這些章節。
 
 > [!IMPORTANT] 
 > 在某些案例中，在**企業應用**程式中，應用程式的導覽中不會有**單一登入**選項。 
 >
-> 如果應用程式是使用 **應用程式註冊** 註冊，則單一登入功能預設會設定為使用 OIDC OAuth。 在此情況下， **單一登入** 選項不會顯示在 [ **企業應用程式**] 下的導覽中。 當您使用 **應用程式註冊** 新增自訂應用程式時，您可以在資訊清單檔中設定選項。 若要深入瞭解資訊清單檔，請參閱 [Azure Active Directory 應用程式資訊清單](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)。 若要深入瞭解 SSO 標準，請參閱 [使用 Microsoft 身分識別平臺的驗證與授權](https://docs.microsoft.com/azure/active-directory/develop/authentication-vs-authorization#authentication-and-authorization-using-microsoft-identity-platform)。 
+> 如果應用程式是使用 **應用程式註冊** 註冊，則單一登入功能預設會設定為使用 OIDC OAuth。 在此情況下，[ **單一登入** ] 選項不會顯示在 [ **企業應用程式**] 下的導覽中。 當您使用 **應用程式註冊** 新增自訂應用程式時，您可以在資訊清單檔中設定選項。 若要深入瞭解資訊清單檔，請參閱 [Azure Active Directory 應用程式資訊清單](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)。 若要深入瞭解 SSO 標準，請參閱 [使用 Microsoft 身分識別平臺的驗證與授權](https://docs.microsoft.com/azure/active-directory/develop/authentication-vs-authorization#authentication-and-authorization-using-microsoft-identity-platform)。 
 >
 > 當應用程式裝載于另一個租使用者時，或您的帳戶沒有必要許可權 (全域管理員、雲端應用程式系統管理員、應用程式系統管理員或服務主體的擁有者) 時，流覽中將遺失 **單一登入** 的情況。 許可權也可能會導致您無法開啟 **單一登入** ，但無法儲存的情況。 若要深入瞭解 Azure AD 系統管理角色，請參閱 (https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) 。
 
@@ -42,7 +42,7 @@ ms.locfileid: "90605136"
 您應該從應用程式廠商處取得這些值。 您可手動輸入值或上傳中繼資料檔案，以擷取欄位的值。
 
 > [!TIP]
-> 許多應用程式都已預先設定為搭配 Azure AD 使用。 這些應用程式會列在應用程式資源庫中，當您將應用程式新增至 Azure AD 租使用者時，您可以流覽這些應用程式。 [快速入門系列](add-application-portal-setup-sso.md)將引導您完成此程式。 針對資源庫中的應用程式，您將會找到詳細的逐步設定指示。 若要存取這些步驟，您可以按一下應用程式的 [SAML 設定] 頁面上的連結（如快速入門系列中所述），或者您可以在 [SaaS 應用](../saas-apps/tutorial-list.md)程式設定教學課程中流覽所有應用程式設定教學課程的清單。
+> 許多應用程式都已預先設定為搭配 Azure AD 使用。 這些應用程式會列在應用程式資源庫中，當您將應用程式新增至 Azure AD 租使用者時，您可以流覽這些應用程式。 [快速入門系列](add-application-portal-setup-sso.md)將引導您完成此程式。 針對資源庫中的應用程式，您將會找到詳細的逐步指示。 若要存取這些步驟，您可以按一下應用程式的 [SAML 設定] 頁面上的連結（如快速入門系列中所述），或者您可以在 [SaaS 應用](../saas-apps/tutorial-list.md)程式設定教學課程中流覽所有應用程式設定教學課程的清單。
 
 | 基本 SAML 組態設定 | SP 起始 | idP 起始 | 描述 |
 |:--|:--|:--|:--|
@@ -76,7 +76,7 @@ ms.locfileid: "90605136"
 
 ## <a name="saml-signing-certificate"></a>SAML 簽署憑證
 
-Azure AD 會使用憑證來簽署它傳送至應用程式的 SAML 權杖。 您需要此憑證才能設定 Azure AD 和應用程式之間的信任。 如需憑證格式的詳細資料，請參閱應用程式的 SAML 文件。 如需詳細資訊，請參閱[管理同盟單一登入的憑證](manage-certificates-for-federated-single-sign-on.md)和 [SAML 權杖中的進階憑證簽署選項](certificate-signing-options.md)。
+Azure AD 會使用憑證來簽署它傳送至應用程式的 SAML 權杖。 您需要此憑證來設定 Azure AD 和應用程式之間的信任。 如需憑證格式的詳細資料，請參閱應用程式的 SAML 文件。 如需詳細資訊，請參閱[管理同盟單一登入的憑證](manage-certificates-for-federated-single-sign-on.md)和 [SAML 權杖中的進階憑證簽署選項](certificate-signing-options.md)。
 
 > [!IMPORTANT]
 > 許多應用程式已預先設定，且在應用程式資源庫中，您不需要深入探索憑證。 [快速入門系列](add-application-portal.md)將逐步引導您新增和設定應用程式。
@@ -99,7 +99,7 @@ Azure AD 會使用憑證來簽署它傳送至應用程式的 SAML 權杖。 您�
 
 ## <a name="set-up-the-application-to-use-azure-ad"></a>將應用程式設定為使用 Azure AD
 
-[**設定 \<applicationName> ** ] 區段會列出必須在應用程式中設定的值，以便使用 Azure AD 作為 SAML 識別提供者。 您可以在 [應用程式] 網站上的 [設定] 頁面上設定這些值。 例如，如果您要設定 GitHub，則會移至 github.com 網站並設定值。 如果應用程式已預先設定，且在 Azure AD 資源庫中，您將會找到可供 **觀看逐步指示**的連結。 否則，您將需要尋找您正在設定之應用程式的檔。 
+[**設定 \<applicationName> ** ] 區段會列出必須在應用程式中設定的值，以便使用 Azure AD 作為 SAML 識別提供者。 您可以在 [應用程式] 網站上的 [設定] 頁面上設定這些值。 例如，如果您要設定 GitHub，則會移至 github.com 網站並設定值。 如果應用程式已預先設定，且在 Azure AD 資源庫中，您將會找到可供 **觀看逐步指示**的連結。 否則，您將需要尋找所要設定之應用程式的檔。 
 
 **登入 url**和**登出 url**值都會解析為相同的端點，也就是 AZURE AD 租使用者的 SAML 要求處理端點。 
 

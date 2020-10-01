@@ -11,42 +11,31 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/24/2020
+ms.date: 09/30/2020
 ms.author: allensu
-ms.openlocfilehash: 79399d0890f61d723f371528408d226f6a192ce4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d778b3ae0889ea0bf9cc38ca5813ac61fc5fcdbe
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91336491"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91595647"
 ---
 # <a name="outbound-connections"></a>輸出連線
 
 Azure Load Balancer 透過不同的機制提供輸出連線能力。 本文說明案例以及如何管理它們。 
 
-## <a name="outbound-connections-scenario-overview"></a><a name="scenarios"></a>輸出連接案例總覽
 
-在這些案例中使用的詞彙。 如需詳細資訊，請參閱 [術語](#terms)：
+## <a name="scenarios"></a>案例
 
-* [來源網路位址轉譯 (SNAT) ](#snat)
-* [埠偽裝 (PAT) ](#pat)
-* 傳輸控制通訊協定 (TCP)
-* 使用者資料包通訊協定 (UDP)
-* 網路位址轉譯
-* 網際網路控制訊息通訊協定
-* 封裝安全性通訊協定
+* 具有公用 IP 的虛擬機器。
+* 沒有公用 IP 的虛擬機器。
+* 沒有公用 IP 的虛擬機器，而且沒有標準負載平衡器。
 
-### <a name="scenarios"></a>案例
-
-* [案例 1](#scenario1) -具有公用 IP 的虛擬機器。
-* [案例 2](#scenario2) -沒有公用 IP 的虛擬機器。
-* [案例 3](#scenario3) -沒有公用 IP 的虛擬機器，且沒有標準負載平衡器。
-
-### <a name="scenario-1---virtual-machine-with-public-ip"></a><a name="scenario1"></a>案例 1-具有公用 IP 的虛擬機器
+### <a name="virtual-machine-with-public-ip"></a><a name="scenario1"></a>具有公用 IP 的虛擬機器
 
 | 關聯 | 方法 | IP 通訊協定 |
 | ---------- | ------ | ------------ |
-| 公用負載平衡器或獨立 | [SNAT](#snat) </br> 未使用[埠偽裝](#pat)。 | TCP </br> UDP </br> ICMP </br> ESP |
+| 公用負載平衡器或獨立 | [SNAT (來源網路位址轉譯) ](#snat) </br> [PAT (未使用埠偽裝) ](#pat) 。 | TCP (傳輸控制通訊協定)  </br> UDP (使用者資料包協定)  </br> ICMP (網際網路控制訊息通訊協定)  </br> ESP (封裝安全性承載)  |
 
 #### <a name="description"></a>說明
 
@@ -54,11 +43,11 @@ Azure 會使用指派給實例 NIC 之 IP 設定的公用 IP 來進行所有輸�
 
 指派給虛擬機器的公用 IP 是 1:1 關聯 (而非 1:多) 而且會實作為無狀態 1:1 NAT。
 
-### <a name="scenario-2---virtual-machine-without-public-ip"></a><a name="scenario2"></a>案例 2-沒有公用 IP 的虛擬機器
+### <a name="virtual-machine-without-public-ip"></a><a name="scenario2"></a>沒有公用 IP 的虛擬機器
 
 | 關聯 | 方法 | IP 通訊協定 |
 | ------------ | ------ | ------------ |
-| 公用 Load Balancer | 使用適用于 [SNAT](#snat) 的負載平衡器前端搭配 [埠偽裝 (PAT) ](#pat)。| TCP </br> UDP |
+| 公用 Load Balancer | 使用適用于 [SNAT](#snat) 的負載平衡器前端搭配 [PAT (埠偽裝) ](#pat)。| TCP </br> UDP |
 
 #### <a name="description"></a>說明
 
@@ -74,7 +63,7 @@ Azure 會使用指派給實例 NIC 之 IP 設定的公用 IP 來進行所有輸�
 
 在此情況下，用於 SNAT 的暫時連接埠稱為 SNAT 連接埠。 SNAT 埠會預先配置，如 [預設的 snat 埠配置表](#snatporttable)所述。
 
-### <a name="scenario-3---virtual-machine-without-public-ip-and-without-standard-load-balancer"></a><a name="scenario3"></a> 案例 3-沒有公用 IP 且沒有標準負載平衡器的虛擬機器
+### <a name="virtual-machine-without-public-ip-and-without-standard-load-balancer"></a><a name="scenario3"></a>沒有公用 IP 且沒有標準負載平衡器的虛擬機器
 
 | 關聯 | 方法 | IP 通訊協定 |
 | ------------ | ------ | ------------ |
@@ -82,7 +71,7 @@ Azure 會使用指派給實例 NIC 之 IP 設定的公用 IP 來進行所有輸�
 
 #### <a name="description"></a>說明
 
-當 VM 建立輸出流程時，Azure 會將輸出流量的來源 IP 位址轉譯為公用來源 IP 位址。 此公用 **IP 位址無法** 設定且無法保留。 此位址不會計入訂用帳戶的公用 IP 資源限制。 
+當 VM 建立輸出流程時，Azure 會將來源 IP 位址轉譯為公用來源 IP 位址。 此公用 **IP 位址無法** 設定且無法保留。 此位址不會計入訂用帳戶的公用 IP 資源限制。 
 
 如果您重新部署，將會釋出公用 IP 位址並要求新的公用 IP： 
 
@@ -136,7 +125,7 @@ Azure 會使用演算法來判斷可用的預先配置 [SNAT](#snat) 埠數目�
 > [!NOTE]
 > **Azure 虛擬網路 NAT** 可以為虛擬網路中的虛擬機器提供輸出連線能力。  如需詳細資訊，請參閱 [什麼是 Azure 虛擬網路 NAT？](../virtual-network/nat-overview.md) 。
 
-您對輸出連線具有完整的宣告式控制權，可調整並調整此能力以滿足您的需求。 本節將擴充案例2，如上所述。
+您對輸出連線具有完整的宣告式控制權，可調整並調整此能力以滿足您的需求。
 
 ![負載平衡器輸出規則](media/load-balancer-outbound-rules-overview/load-balancer-outbound-rules.png)
 
@@ -196,24 +185,20 @@ Azure 會使用演算法來判斷可用的預先配置 [SNAT](#snat) 埠數目�
 
 當您將 NSG 套用到經過負載平衡的虛擬機器時，請注意[服務標記](../virtual-network/security-overview.md#service-tags)和[預設安全性規則](../virtual-network/security-overview.md#default-security-rules)。 確定 VM 可以從 Azure Load Balancer 接收健康情況探查要求。
 
-如果 NSG 封鎖來自 AZURE_LOADBALANCER 預設標籤的健全狀況探查要求，您的 VM 健全狀況探查會失敗，且會將 VM 標示為離線。 負載平衡器會停止將新的流程傳送到該 VM。
+如果 NSG 封鎖來自 AZURE_LOADBALANCER 預設標記的健康情況探查要求，則您的 VM 健康情況探查會失敗，而且 VM 會標示為無法使用。 負載平衡器會停止將新的流程傳送到該 VM。
 
 ## <a name="scenarios-with-outbound-rules"></a>具有輸出規則的案例
 
 ### <a name="outbound-rules-scenarios"></a>輸出規則案例
 
-* [案例 1](#scenario1out) -設定對一組特定公用 ip 或首碼的輸出連線。
-* [案例 2](#scenario2out) -修改 [SNAT](#snat) 埠配置。
-* [案例 3](#scenario3out) -僅啟用輸出。
-* [案例 4](#scenario4out) -vm 的輸出 NAT 只 (沒有任何輸入) 。
-* [案例 5](#scenario5out) ：內部標準負載平衡器的輸出 NAT。
-* [案例 6](#scenario6out) -啟用輸出 NAT 的 TCP & UDP 通訊協定與公用標準負載平衡器。
+* 設定一組特定公用 Ip 或首碼的輸出連線。
+* 修改 [SNAT](#snat) 埠配置。
+* 僅啟用輸出。
+* Vm 的輸出 NAT 只 (沒有任何輸入) 。
+* 內部標準負載平衡器的輸出 NAT。
+* 使用公用標準負載平衡器啟用輸出 NAT 的 TCP & UDP 通訊協定。
 
-### <a name="scenario-1"></a><a name="scenario1out"></a>案例1
-
-| 狀況 |
-| -------- |
-| 設定一組特定公用 Ip 或首碼的輸出連接|
+### <a name="configure-outbound-connections-to-a-specific-set-of-public-ips-or-prefix"></a><a name="scenario1out"></a>設定一組特定公用 Ip 或首碼的輸出連接
 
 #### <a name="details"></a>詳細資料
 
@@ -229,11 +214,7 @@ Azure 會使用演算法來判斷可用的預先配置 [SNAT](#snat) 埠數目�
 4. 重複使用後端集區，或建立後端集區，並將 Vm 放入公用負載平衡器的後端集區
 5. 在公用負載平衡器上設定輸出規則，以使用前端為 Vm 啟用輸出 NAT。 如果您不想要將負載平衡規則用於輸出，請在負載平衡規則上停用輸出 SNAT。
 
-### <a name="scenario-2"></a><a name="scenario2out"></a>案例2
-
-| 狀況 |
-| -------- |
-| 修改 [SNAT](#snat) 埠配置 |
+### <a name="modify-snat-port-allocation"></a><a name="scenario2out"></a>修改 [SNAT](#snat) 埠配置
 
 #### <a name="details"></a>詳細資料
 
@@ -251,26 +232,18 @@ Azure 會使用演算法來判斷可用的預先配置 [SNAT](#snat) 埠數目�
 
 如果您為每個 VM 提供10000個埠，且後端集區中有七個 Vm 共用單一公用 IP，則會拒絕設定。 七乘以10000超過64000埠的限制。 將更多公用 IP 位址新增至輸出規則的前端以啟用此案例。 
 
-針對埠數目指定0，以還原為 [預設的埠配置](load-balancer-outbound-connections.md#preallocatedports) 。 第一個 50 VM 實例將會取得1024埠，51-100 VM 實例會取得512到最大實例。  如需預設 SNAT 埠配置的詳細資訊，請參閱 [上面](#snatporttable)的。
+針對埠數目指定0，以還原為 [預設的埠配置](load-balancer-outbound-connections.md#preallocatedports) 。 第一個 50 VM 實例將會取得1024埠，51-100 VM 實例會取得512到最大實例。  如需預設 SNAT 埠配置的詳細資訊，請參閱 [snat 埠配置表](#snatporttable)。
 
-### <a name="scenario-3"></a><a name="scenario3out"></a>案例 3
-
-| 狀況 |
-| -------- |
-|  僅啟用輸出 |
+### <a name="enable-outbound-only"></a><a name="scenario3out"></a>僅啟用輸出
 
 #### <a name="details"></a>詳細資料
 
-您可以使用公用標準負載平衡器，為一組 Vm 提供輸出 NAT。 在此案例中，您可以單獨使用輸出規則，而不需要任何額外的規則。
+使用公用標準負載平衡器，為一組 Vm 提供輸出 NAT。 在此案例中，您可以單獨使用輸出規則，而不需要任何額外的規則。
 
 > [!NOTE]
 > **Azure 虛擬網路 NAT** 可以為虛擬機器提供輸出連線能力，而不需要負載平衡器。  如需詳細資訊，請參閱 [什麼是 Azure 虛擬網路 NAT？](../virtual-network/nat-overview.md) 。
 
-### <a name="scenario-4"></a><a name="scenario4out"></a>案例 4
-
-| 狀況 |
-| -------- |
-| 僅 VM 的輸出 NAT (無輸入) |
+### <a name="outbound-nat-for-vms-only-no-inbound"></a><a name="scenario4out"></a>僅 VM 的輸出 NAT (無輸入)
 
 > [!NOTE]
 > **Azure 虛擬網路 NAT** 可以為虛擬機器提供輸出連線能力，而不需要負載平衡器。  如需詳細資訊，請參閱 [什麼是 Azure 虛擬網路 NAT？](../virtual-network/nat-overview.md) 。
@@ -288,11 +261,7 @@ Azure 會使用演算法來判斷可用的預先配置 [SNAT](#snat) 埠數目�
 
 使用前置詞或公用 IP 來調整 [SNAT](#snat) 埠。 將輸出連接的來源新增至允許或拒絕清單。
 
-### <a name="scenario-5"></a><a name="scenario5out"></a>案例 5
-
-| 狀況 |
-| -------- |
-| 內部標準負載平衡器的輸出 NAT |
+### <a name="outbound-nat-for-internal-standard-load-balancer"></a><a name="scenario5out"></a>內部標準負載平衡器的輸出 NAT
 
 > [!NOTE]
 > **Azure 虛擬網路 NAT** 可以為利用內部標準負載平衡器的虛擬機器提供輸出連線能力。  如需詳細資訊，請參閱 [什麼是 Azure 虛擬網路 NAT？](../virtual-network/nat-overview.md) 。
@@ -304,11 +273,7 @@ Azure 會使用演算法來判斷可用的預先配置 [SNAT](#snat) 埠數目�
 如需詳細資訊，請參閱 [僅限輸出的負載平衡器](https://docs.microsoft.com/azure/load-balancer/egress-only)設定。
 
 
-### <a name="scenario-6"></a><a name="scenario6out"></a>案例6
-
-| 狀況 |
-| -------- |
-| 使用公用標準負載平衡器啟用輸出 NAT 的 TCP & UDP 通訊協定 |
+### <a name="enable-both-tcp--udp-protocols-for-outbound-nat-with-a-public-standard-load-balancer"></a><a name="scenario6out"></a>使用公用標準負載平衡器啟用輸出 NAT 的 TCP & UDP 通訊協定
 
 #### <a name="details"></a>詳細資料
 
@@ -360,7 +325,7 @@ Azure 會使用 **來源網路位址轉譯 (SNAT) ** 來進行此功能。
 
 來源會從虛擬網路私人 IP 位址重新寫入至負載平衡器的前端公用 IP 位址。 
 
-在公用 IP 位址空間中，以下流程的五個元組必須是唯一的：
+在公用 IP 位址空間中，流程的五個元組必須是唯一的：
 
 * 來源 IP 位址
 * 來源連接埠

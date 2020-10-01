@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/25/2019
 ms.author: genli
-ms.openlocfilehash: 42d994a9cdd0e2718d8c2288b6cc0b9618202b41
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: c7e6772799d98cd2997a1fe6b48efe1c7632cfaa
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91447498"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91598374"
 ---
 # <a name="reset-local-windows-password-for-azure-vm-offline"></a>重設離線 Azure VM 的本機 Windows 密碼
 您可以使用 [Azure 入口網站或 Azure PowerShell](reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 在 Azure 中重設 VM 的本機 Windows 密碼 (假設已安裝 Azure 客體代理程式)。 這個方法是為 Azure VM 重設密碼的主要方式。 如果您遇到 Azure 客體代理程式沒有回應，或無法在上傳自訂映像後進行安裝等問題，您可以手動重設 Windows 密碼。 本文將詳細說明如何將來源 OS 虛擬磁碟連接至另一部 VM，以重設本機帳戶密碼。 本文中所述的步驟不適用於 Windows 網域控制站。 
@@ -59,9 +59,9 @@ ms.locfileid: "91447498"
      Version=1
      ```
      
-     ![建立 gpt.ini](./media/reset-local-password-without-agent/create-gpt-ini.png)
+     :::image type="content" source="./media/reset-local-password-without-agent/create-gpt-ini.png" alt-text="建立 gpt.ini":::
 
-4. 在 `\Windows\System32\GroupPolicy\Machine\Scripts\` 中建立 `scripts.ini`。 確定已顯示隱藏的資料夾。 如有需要，請建立 `Machine` 或 `Scripts` 資料夾。
+4. 在 `\Windows\System32\GroupPolicy\Machine\Scripts\` 中建立 `scripts.ini`。 確定已顯示隱藏的資料夾。 如有需要，請建立 `Machine` 或 `Scripts` 資料夾。 
    
    * 將下列幾行新增至您建立的 `scripts.ini` 檔案：
      
@@ -71,17 +71,10 @@ ms.locfileid: "91447498"
      0Parameters=
      ```
      
-     ![建立 scripts.ini](./media/reset-local-password-without-agent/create-scripts-ini-1.png)
-
-5. 使用下列內容在 `\Windows\System32\GroupPolicy\Machine\Scripts\Startup\` 中建立 `FixAzureVM.cmd`，並以您自己的值取代 `<username>` 和 `<newpassword>`：
-   
-    ```
-    net user <username> <newpassword> /add /Y
-    net localgroup administrators <username> /add
-    net localgroup "remote desktop users" <username> /add
+     :::image type="content" source="./media/reset-local-password-without-agent/create-scripts-ini-1.png" alt-text="建立 gpt.ini" <username> /add
     ```
 
-    ![建立 FixAzureVM.cmd](./media/reset-local-password-without-agent/create-fixazure-cmd-1.png)
+    :::image type="content" source="./media/reset-local-password-without-agent/create-fixazure-cmd-1.png" alt-text="建立 gpt.ini":::
    
     定義新的密碼時，必須符合針對 VM 設定的密碼複雜性需求。
 
@@ -113,31 +106,31 @@ ms.locfileid: "91447498"
    
    * 在 Azure 入口網站中選取 VM，然後按一下 [刪除]：
      
-     ![刪除現有的傳統 VM](./media/reset-local-password-without-agent/delete-vm-classic.png)
+     :::image type="content" source="./media/reset-local-password-without-agent/delete-vm-classic.png" alt-text="建立 gpt.ini":::
 
 2. 將來源 VM 的 OS 磁碟連接到疑難排解 VM。 疑難排解 VM 必須位於與來源 VM 的作業系統磁碟相同的區域 (例如 `West US`)：
    
    1. 在 Azure 入口網站中選取疑難排解 VM。 按一下 [磁碟] | [連接現有項目]：
      
-      ![連接現有磁片-傳統](./media/reset-local-password-without-agent/disks-attach-existing-classic.png)
+      :::image type="content" source="./media/reset-local-password-without-agent/disks-attach-existing-classic.png" alt-text="建立 gpt.ini":::
      
    2. 選取 [VHD 檔案]，然後選取包含來源 VM 的儲存體帳戶：
      
-      ![選取儲存體帳戶-傳統](./media/reset-local-password-without-agent/disks-select-storage-account-classic.png)
+      :::image type="content" source="./media/reset-local-password-without-agent/disks-select-storage-account-classic.png" alt-text="建立 gpt.ini":::
      
    3. 選取標示為 [顯示傳統儲存體帳戶] 的方塊，然後選取來源容器。 來源容器通常是 vhd：
      
-      ![選取儲存體容器-傳統](./media/reset-local-password-without-agent/disks-select-container-classic.png)
+      :::image type="content" source="./media/reset-local-password-without-agent/disks-select-container-classic.png" alt-text="建立 gpt.ini":::
 
-      ![選取儲存體容器-VHD-傳統](./media/reset-local-password-without-agent/disks-select-container-vhds-classic.png)
+      :::image type="content" source="./media/reset-local-password-without-agent/disks-select-container-vhds-classic.png" alt-text="建立 gpt.ini":::
      
    4. 選取要連接的 OS vhd。 按一下 [選取]，完成此程序：
      
-      ![選取來源虛擬磁片-傳統](./media/reset-local-password-without-agent/disks-select-source-vhd-classic.png)
+      :::image type="content" source="./media/reset-local-password-without-agent/disks-select-source-vhd-classic.png" alt-text="建立 gpt.ini":::
 
    5. 按一下 [確定] 以連結磁碟
 
-      ![附加現有磁片-確定對話方塊-傳統](./media/reset-local-password-without-agent/disks-attach-okay-classic.png)
+      :::image type="content" source="./media/reset-local-password-without-agent/disks-attach-okay-classic.png" alt-text="建立 gpt.ini":::
 
 3. 使用遠端桌面連接到疑難排解 VM，並確定看得見來源 VM 的 OS 磁碟︰
 
@@ -147,7 +140,7 @@ ms.locfileid: "91447498"
 
    3. 在檔案總管中，尋找您所連接的資料磁碟。 如果來源 VM 的 VHD 是連接到疑難排解 VM 的唯一資料磁碟，則應該是 F: 磁碟機︰
      
-      ![檢視連接的資料磁碟](./media/reset-local-password-without-agent/troubleshooting-vm-file-explorer-classic.png)
+      :::image type="content" source="./media/reset-local-password-without-agent/troubleshooting-vm-file-explorer-classic.png" alt-text="建立 gpt.ini":::
 
 4. 在來源 VM 磁碟機的 `\Windows\System32\GroupPolicy` 中建立 `gpt.ini` (如果 `gpt.ini` 存在，請將其重新命名為 `gpt.ini.bak`)︰
    
@@ -163,9 +156,9 @@ ms.locfileid: "91447498"
      Version=1
      ```
      
-     ![建立 gpt.ini-傳統](./media/reset-local-password-without-agent/create-gpt-ini-classic.png)
+     :::image type="content" source="./media/reset-local-password-without-agent/create-gpt-ini-classic.png" alt-text="建立 gpt.ini":::
 
-5. 在 `\Windows\System32\GroupPolicy\Machines\Scripts\` 中建立 `scripts.ini`。 確定已顯示隱藏的資料夾。 如有需要，請建立 `Machine` 或 `Scripts` 資料夾。
+5. 在 `\Windows\System32\GroupPolicy\Machine\Scripts\` 中建立 `scripts.ini`。 確定已顯示隱藏的資料夾。 如有需要，請建立 `Machine` 或 `Scripts` 資料夾。
    
    * 將下列幾行新增至您建立的 `scripts.ini` 檔案：
 
@@ -175,17 +168,10 @@ ms.locfileid: "91447498"
      0Parameters=
      ```
      
-     ![建立 scripts.ini-傳統](./media/reset-local-password-without-agent/create-scripts-ini-classic-1.png)
-
-6. 使用下列內容在 `\Windows\System32\GroupPolicy\Machine\Scripts\Startup\` 中建立 `FixAzureVM.cmd`，並以您自己的值取代 `<username>` 和 `<newpassword>`：
-   
-    ```
-    net user <username> <newpassword> /add /Y
-    net localgroup administrators <username> /add
-    net localgroup "remote desktop users" <username> /add
+     :::image type="content" source="./media/reset-local-password-without-agent/create-scripts-ini-classic-1.png" alt-text="建立 gpt.ini" <username> /add
     ```
 
-    ![建立 Fixazurevm.cmd .cmd-傳統](./media/reset-local-password-without-agent/create-fixazure-cmd-classic-1.png)
+    :::image type="content" source="./media/reset-local-password-without-agent/create-fixazure-cmd-1.png" alt-text="建立 gpt.ini":::
    
     定義新的密碼時，必須符合針對 VM 設定的密碼複雜性需求。
 
@@ -195,17 +181,17 @@ ms.locfileid: "91447498"
    
    2. 選取在步驟 2 中連結的資料磁碟、按一下 [中斷連結]，然後按一下 [確定]。
 
-     ![卸離磁片-疑難排解 VM-傳統](./media/reset-local-password-without-agent/data-disks-classic.png)
+     :::image type="content" source="./media/reset-local-password-without-agent/data-disks-classic.png" alt-text="建立 gpt.ini":::
      
-     ![卸離磁片-疑難排解 VM-確定對話方塊-傳統](./media/reset-local-password-without-agent/detach-disk-classic.png)
+     :::image type="content" source="./media/reset-local-password-without-agent/detach-disk-classic.png" alt-text="建立 gpt.ini":::
 
 8. 從來源 VM 的 OS 磁碟建立 VM：
    
-     ![從範本建立 VM-傳統](./media/reset-local-password-without-agent/create-new-vm-from-template-classic.png)
+     :::image type="content" source="./media/reset-local-password-without-agent/create-new-vm-from-template-classic.png" alt-text="建立 gpt.ini":::
 
-     ![從範本建立 VM-選擇訂用帳戶-傳統](./media/reset-local-password-without-agent/choose-subscription-classic.png)
+     :::image type="content" source="./media/reset-local-password-without-agent/choose-subscription-classic.png" alt-text="建立 gpt.ini":::
 
-     ![從範本建立 VM-建立 VM-傳統](./media/reset-local-password-without-agent/create-vm-classic.png)
+     :::image type="content" source="./media/reset-local-password-without-agent/create-vm-classic.png" alt-text="建立 gpt.ini":::
 
 ## <a name="complete-the-create-virtual-machine-experience"></a>完成建立虛擬機器體驗
 

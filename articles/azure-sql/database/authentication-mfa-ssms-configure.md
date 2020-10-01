@@ -12,12 +12,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/27/2019
-ms.openlocfilehash: 2aac6979839d630645b4a05a029ce4c32037547b
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 1fb90c106c334073cea18cf014edce491029edec
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91444220"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91596176"
 ---
 # <a name="configure-multi-factor-authentication-for-sql-server-management-studio-and-azure-ad"></a>設定適用於 SQL Server Management Studio 和 Azure AD 的多重要素驗證
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -37,6 +37,8 @@ ms.locfileid: "91444220"
 ## <a name="connecting-by-using-universal-authentication-with-ssms"></a>使用通用驗證搭配 SSMS 進行連線
 
 下列步驟說明如何使用最新的 SSMS 進行連接。
+
+[!INCLUDE[ssms-connect-azure-ad](../includes/ssms-connect-azure-ad.md)]
 
 1. 若要使用通用驗證進行連線，請在 [連線 **到伺服器** ] 對話方塊的 [SQL SERVER MANAGEMENT STUDIO (SSMS) 中選取 [ **具有 MFA 支援的 Active Directory-通用**]。 (如果您看到 **Active Directory 通用驗證**，則表示您不是使用最新的 SSMS 版本。)
 

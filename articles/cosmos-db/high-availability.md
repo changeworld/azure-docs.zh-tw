@@ -4,15 +4,15 @@ description: 這篇文章說明 Azure Cosmos DB 如何提供高可用性
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 06/29/2020
+ms.date: 09/30/2020
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 1f2e90f9391654d10332b9f1a21c56fd22e2307b
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: 4e1a2fdd772c7b318ba36b1aee623c663689526f
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 09/30/2020
-ms.locfileid: "91570802"
+ms.locfileid: "91597276"
 ---
 # <a name="how-does-azure-cosmos-db-provide-high-availability"></a>Azure Cosmos DB 如何提供高可用性？ 
 
@@ -81,9 +81,6 @@ Azure Cosmos DB 會以透明方式將您的資料複寫到與 Azure Cosmos 帳�
 
 這項功能適用于： *英國南部、東南亞、美國東部、美國東部2、美國中部、西歐、美國西部2、日本東部、北歐、法國中部、澳大利亞東部、美國東部 2 EUAP* 區域。
 
-> [!NOTE]
-> 啟用單一區域 Azure Cosmos 帳戶的可用性區域將會產生相當於將額外區域新增至您帳戶的費用。 如需定價的詳細資訊，請參閱 Azure Cosmos DB 文章中的 [定價頁面](https://azure.microsoft.com/pricing/details/cosmos-db/) 和 [多區域成本](optimize-cost-regions.md) 。
-
 下表摘要說明各種帳戶設定的高可用性功能：
 
 |KPI  |沒有可用性區域 (非 AZ) 的單一區域  |具有可用性區域 (AZ) 的單一區域  |使用可用性區域 (AZ、2個區域) 的多重區域寫入–最建議的設定 |
@@ -97,7 +94,7 @@ Azure Cosmos DB 會以透明方式將您的資料複寫到與 Azure Cosmos 帳�
 |寫入延遲 | 跨區域 | 跨區域 | 低 |
 |區域中斷-資料遺失 | 資料遺失 |  資料遺失 | 資料遺失 <br/><br/> 搭配多個寫入區域和多個區域使用限定過期一致性時，資料遺失會限制在您帳戶上設定的限定過期 <br /><br />您可以設定多個區域的強式一致性，以避免在區域性中斷期間發生資料遺失。 此選項會產生影響可用性和效能的取捨。 只能在針對單一區域寫入設定的帳戶上設定。 |
 |區域中斷-可用性 | 可用性損失 | 可用性損失 | 無可用性損失 |
-|Throughput | X RU/秒布建的輸送量 | X RU/秒布建的輸送量 | 2X RU/秒布建的輸送量 <br/><br/> 相較于具有可用性區域的單一區域，此設定模式需要兩倍的輸送量（因為有兩個區域）。 |
+|Throughput | X RU/秒布建的輸送量 | X RU/秒布建的輸送量 * 1.25 | 2X RU/秒布建的輸送量 <br/><br/> 相較于具有可用性區域的單一區域，此設定模式需要兩倍的輸送量（因為有兩個區域）。 |
 
 > [!NOTE]
 > 若要啟用多區域 Azure Cosmos 帳戶的可用性區域支援，帳戶必須啟用多區域寫入寫入。

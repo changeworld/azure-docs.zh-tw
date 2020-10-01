@@ -7,16 +7,16 @@ ms.topic: troubleshooting
 ms.date: 09/13/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: a899927166d7e1294ad89d48e5c646e6abb5ed76
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 9b0eeda443aefc105fb36d6075c717fafae4cb61
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90707606"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91598025"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows-smb"></a>針對 Windows (SMB) 中的 Azure 檔案儲存體問題進行疑難排解
 
-本文列出當您從 Windows 用戶端連線時，與 Microsoft Azure 檔案服務相關的常見問題。 文中也會提供這些問題的可能原因和解決方案。 除了本文中的疑難排解步驟之外，您也可以使用[AzFileDiagnostics](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Windows)   來確保 Windows 用戶端環境具備正確的必要條件。 AzFileDiagnostics 會自動偵測本文中提及的大部分徵兆，並協助設定您的環境以取得最佳效能。 您也可以在 [Azure 檔案共用疑難排解員](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares)中找到此資訊，當中有提供步驟來協助您解決連線/對應/掛接 Azure 檔案共用的問題。
+本文列出當您從 Windows 用戶端連線時，與 Microsoft Azure 檔案服務相關的常見問題。 文中也會提供這些問題的可能原因和解決方案。 除了本文中的疑難排解步驟之外，您也可以使用[AzFileDiagnostics](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Windows)   來確保 Windows 用戶端環境具備正確的必要條件。 AzFileDiagnostics 會自動偵測本文中提及的大部分徵兆，並協助設定您的環境以取得最佳效能。
 
 > [!IMPORTANT]
 > 本文內容僅適用于 SMB 共用。 如需 NFS 共用的詳細資訊，請參閱 [疑難排解 AZURE nfs 檔案共用](storage-troubleshooting-files-nfs.md)。
@@ -26,7 +26,7 @@ ms.locfileid: "90707606"
 
 您嘗試掛接檔案共用時，可能會收到下列錯誤：
 
-- 發生系統錯誤 5。 存取遭到拒絕。
+- 發生系統錯誤 5。 拒絕存取。
 
 ### <a name="cause-1-unencrypted-communication-channel"></a>原因 1：通訊通道未加密
 
@@ -145,7 +145,7 @@ Azure 檔案同步可以將您的內部部署 Windows Server 轉換成 Azure 檔
 
 當您達到 Azure 檔案共用上的檔案或目錄允許的並行開啟控制碼上限時，就會發生錯誤1816。 如需詳細資訊，請參閱 [Azure 檔案服務擴展目標](https://docs.microsoft.com/azure/storage/files/storage-files-scale-targets#azure-files-scale-targets)。
 
-### <a name="solution"></a>解決方法
+### <a name="solution"></a>解決方案
 
 關閉一些控制代碼以減少同時開啟的控制代碼數，然後再試一次。 如需詳細資訊，請參閱 [Microsoft Azure 儲存體效能和擴充性檢查清單](../common/storage-performance-checklist.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。
 
@@ -184,7 +184,7 @@ Azure 檔案同步可以將您的內部部署 Windows Server 轉換成 Azure 檔
 ### <a name="cause"></a>原因
 如果檔案或目錄具有開啟的控制碼，通常就會發生此問題。 
 
-### <a name="solution"></a>解決方法
+### <a name="solution"></a>解決方案
 
 如果 SMB 用戶端已關閉所有開啟的控制碼，且問題持續發生，請執行下列動作：
 
@@ -230,7 +230,7 @@ Azure 檔案同步可以將您的內部部署 Windows Server 轉換成 Azure 檔
 
 根據預設，Windows 檔案總管不會以系統管理員身分執行。 如果您從系統管理命令提示字元執行 net use，就是以系統管理員身分對應網路磁碟機。 因為對應的磁碟機是以使用者為中心，如果磁碟機掛接在不同的使用者帳戶下，登入的使用者帳戶不會顯示此磁碟機。
 
-### <a name="solution"></a>解決方法
+### <a name="solution"></a>解決方案
 從非系統管理員命令掛接共用。 或者，您也可以遵循 [本 TechNet 主題](https://technet.microsoft.com/library/ee844140.aspx) 來設定 **EnableLinkedConnections** 登錄值。
 
 <a id="netuse"></a>
@@ -240,7 +240,7 @@ Azure 檔案同步可以將您的內部部署 Windows Server 轉換成 Azure 檔
 
 Net use 命令會將斜線 (/) 解譯為命令列選項。 如果您的使用者帳戶名稱開頭為斜線，磁碟機對應將會失敗。
 
-### <a name="solution"></a>解決方法
+### <a name="solution"></a>解決方案
 
 您可以使用下列其中一種方式來解決這個問題：
 
@@ -261,7 +261,7 @@ Net use 命令會將斜線 (/) 解譯為命令列選項。 如果您的使用者
 
 磁碟機是按每個使用者掛接。 如果您的應用程式或服務正在與掛接磁碟機之帳戶不同的使用者帳戶下執行，應用程式將不會看到該磁碟機。
 
-### <a name="solution"></a>解決方法
+### <a name="solution"></a>解決方案
 
 使用下列其中一個解決方案：
 
@@ -302,7 +302,7 @@ Net use 命令會將斜線 (/) 解譯為命令列選項。 如果您的使用者
 
 如果用戶端機器上沒有足夠的快取可供大型目錄使用時，就會發生此問題。
 
-### <a name="solution"></a>解決方法
+### <a name="solution"></a>解決方案
 
 若要解決此問題，請調整 **DirectoryCacheEntrySizeMax** 登錄值，以允許在用戶端機器快取較大型的目錄清單：
 
@@ -319,7 +319,7 @@ Net use 命令會將斜線 (/) 解譯為命令列選項。 如果您的使用者
 
 當您嘗試在未于相關聯訂用帳戶的 Azure 檔案儲存體租使用者上建立[Azure AD 網域服務 (AZURE AD ds) ](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-overview)的儲存體帳戶上，于[Azure AD 上啟用 AZURE ACTIVE DIRECTORY DOMAIN SERVICES (Azure AD ds) 驗證](storage-files-identity-auth-active-directory-domain-service-enable.md)時，就會發生錯誤 AadDsTenantNotFound。  
 
-### <a name="solution"></a>解決方法
+### <a name="solution"></a>解決方案
 
 在您的儲存體帳戶部署所在訂用帳戶的 Azure AD 租使用者上，啟用 Azure AD DS。 您需要 Azure AD 租使用者的系統管理員許可權，才能建立受控網域。 如果您不是 Azure AD 租用戶的系統管理員，請連絡系統管理員，並遵循[使用 Azure 入口網站啟用 Azure Active Directory Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started) 的逐步指導。
 
@@ -343,7 +343,7 @@ Debug-AzStorageAccountAuth -StorageAccountName $StorageAccountName -ResourceGrou
 1. CheckADObjectPasswordIsCorrect：確定在代表儲存體帳戶的 AD 身分識別上設定的密碼，與儲存體帳戶 kerb1 或 kerb2 金鑰的設定相符。 如果密碼不正確，您可以執行 [更新 AzStorageAccountADObjectPassword](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-update-password) 以重設密碼。 
 2. CheckADObject：確認 Active Directory 中的物件代表儲存體帳戶，且具有正確的 SPN (服務主體名稱) 。 如果 SPN 未正確設定，請執行 debug Cmdlet 中傳回的 Set-AD Cmdlet 來設定 SPN。
 3. CheckDomainJoined：驗證用戶端電腦是否已加入 AD 網域。 如果您的電腦未加入 AD 的網域，請參閱這 [篇文章](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/join-a-computer-to-a-domain#:~:text=To%20join%20a%20computer%20to%20a%20domain&text=Navigate%20to%20System%20and%20Security,join%2C%20and%20then%20click%20OK) 以瞭解加入網域的指示。
-4. CheckPort445Connectivity：確認已針對 SMB 連線開啟埠445。 如果所需的埠未開啟，請參閱疑難排解工具 [AzFileDiagnostics.ps1](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5) ，以瞭解 Azure 檔案儲存體的連線能力問題。
+4. CheckPort445Connectivity：確認已針對 SMB 連線開啟埠445。 如果所需的埠未開啟，請參閱疑難排解工具 [AzFileDiagnostics.ps1](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Windows) ，以瞭解 Azure 檔案儲存體的連線能力問題。
 5. CheckSidHasAadUser：檢查登入的 AD 使用者是否已同步處理至 Azure AD。 如果您想要查閱特定 AD 使用者是否同步處理至 Azure AD，您可以在輸入參數中指定-UserName 和-Domain。 
 6. CheckGetKerberosTicket：嘗試取得 Kerberos 票證以連接至儲存體帳戶。 如果沒有有效的 Kerberos 權杖，請執行 klist 取得 cifs/儲存體---------net.tcp Cmdlet，並檢查錯誤碼的根本原因，使票證抓取失敗。
 7. CheckStorageAccountDomainJoined：檢查是否已啟用 AD 驗證，並已填入帳戶的 AD 屬性。 如果沒有，請參閱 [此處](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-enable) 的指示，在 Azure 檔案儲存體上啟用 AD DS 驗證。 
@@ -356,7 +356,7 @@ Debug-AzStorageAccountAuth -StorageAccountName $StorageAccountName -ResourceGrou
 - 按一下 [安全性] 索引標籤下的 [編輯] 許可權之後，就不會載入許可權嚮導。 
 - 當您嘗試選取新的使用者或群組時，網域位置不會顯示正確的 AD DS 網域。 
 
-### <a name="solution"></a>解決方法
+### <a name="solution"></a>解決方案
 
 建議您使用 [icacls 工具](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls) 來設定目錄/檔案層級許可權，以作為因應措施。 
 

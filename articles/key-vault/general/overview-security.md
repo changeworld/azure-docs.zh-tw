@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 4c0430f96934c16a26ca3ab908da6aa017810ad0
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: b6163ca0cb02670024fe95459f31ac81c4da756c
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89377568"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91596354"
 ---
 # <a name="azure-key-vault-security"></a>Azure Key Vault 安全性
 
@@ -75,6 +75,14 @@ Key Vault 存取原則可分別授與金鑰、祕密或憑證的權限。 您只
 防火牆規則生效後，使用者只能在其要求源自允許的虛擬網路或 IPv4 位址範圍時，才可以讀取 Key Vault 中的資料。 這也適用於從 Azure 入口網站存取 Key Vault。 雖然使用者可以從 Azure 入口網站瀏覽金鑰保存庫，但是如果其用戶端電腦不在允許的清單中，他們就無法列出金鑰、祕密或憑證。 這也會影響其他 Azure 服務的 [金鑰保存庫選擇器]。 使用者可以看到金鑰保存庫清單，但是如果防火牆規則阻止其用戶端電腦，則不會列出金鑰。
 
 如需有關 Azure Key Vault 網路位址的詳細資訊，請檢閱 [Azure Key Vault 的虛擬網路服務端點](overview-vnet-service-endpoints.md))
+
+### <a name="tls-and-https"></a>TLS 和 HTTPS
+
+*   Key Vault 前端 (資料平面) 是多租使用者伺服器。 這表示來自不同客戶的金鑰保存庫可以共用相同的公用 IP 位址。 為了達成隔離，每個 HTTP 要求都會與其他要求分開進行驗證和授權。
+*   您可以識別舊版的 TLS 來回報弱點，但因為公用 IP 位址是共用的，所以 key vault 服務小組無法針對傳輸層級的個別金鑰保存庫停用舊版 TLS。
+*   HTTPS 通訊協定可讓用戶端參與 TLS 協商。 **用戶端可以強制執行最新版本的 TLS**，而且每當用戶端執行此動作時，整個連接都會使用對應的層級保護。 Key Vault 仍然支援舊版 TLS 的事實不會影響使用較新 TLS 版本的連線安全性。
+*   儘管 TLS 通訊協定有已知的弱點，但在攻擊者使用具有弱點的 TLS 版本連線時，並沒有任何已知的攻擊可讓惡意代理程式從您的金鑰保存庫中解壓縮任何資訊。 攻擊者仍然需要自行驗證及授權，而且只要合法的用戶端一律與最新的 TLS 版本連線，就無法在舊版的 TLS 版本上洩漏認證。
+
 
 ## <a name="monitoring"></a>監視
 
