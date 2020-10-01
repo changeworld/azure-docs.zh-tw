@@ -3,12 +3,12 @@ title: 擷取串流事件 - Azure 事件中樞 | Microsoft Docs
 description: 本文將概述可讓您透過 Azure 事件中樞擷取事件串流的擷取功能。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 2302f31130b6179b187c17e2f44c5fa7cc50648b
-ms.sourcegitcommit: 0194a29a960e3615f96a2d9d8a7e681cf3e8f9ab
+ms.openlocfilehash: 1b79db7a7f8d0fe03b21e005ef696d5fe55ac0a1
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89667455"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613402"
 ---
 # <a name="capture-events-through-azure-event-hubs-in-azure-blob-storage-or-azure-data-lake-storage"></a>透過 Azure 事件中樞在 Azure Blob 儲存體或 Azure Data Lake Storage 中擷取事件
 Azure 事件中樞可讓您自動將事件中樞的串流資料擷取至您選擇的 [Azure Blob 儲存體](https://azure.microsoft.com/services/storage/blobs/)或 [Azure Data Lake Storage Gen 1 或 Gen 2](https://azure.microsoft.com/services/data-lake-store/) 帳戶，並另外增加了可指定時間或大小間隔的彈性。 設定擷取的作業很快，因此執行時不需要系統管理成本，而且它可以針對事件中樞的[輸送量單位](event-hubs-scalability.md#throughput-units)自動進行調整。 事件中樞擷取是將串流資料載入至 Azure 的最簡單方式，並可讓您專注於處理資料而非擷取資料。
@@ -18,6 +18,8 @@ Azure 事件中樞可讓您自動將事件中樞的串流資料擷取至您選�
 
 事件中樞擷取可讓您在相同資料流上處理即時和批次型的管線。 這表示您可以建置會隨時間配合需求成長的解決方案。 不論您現在是要建置著眼於未來即時處理的批次型系統，或想要為現有即時解決方案新增有效率的冷路徑，事件中樞擷取都可以讓使用串流資料變得更簡單。
 
+> [!IMPORTANT]
+> 目的地儲存體 (Azure 儲存體或 Azure Data Lake Storage) 帳戶必須與事件中樞位於相同的訂用帳戶中。 
 
 ## <a name="how-event-hubs-capture-works"></a>事件中樞擷取的運作方式
 

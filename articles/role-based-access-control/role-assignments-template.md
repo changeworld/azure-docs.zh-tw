@@ -10,15 +10,15 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/26/2020
+ms.date: 09/29/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 939d78fb75dc69af91cbc920fadce69945a24e39
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 400f0b1b55136f133c9ad01fd0ba4b5dbc5e6bcb
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91447728"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91612739"
 ---
 # <a name="add-azure-role-assignments-using-azure-resource-manager-templates"></a>使用 Azure Resource Manager 範本新增 Azure 角色指派
 
@@ -52,6 +52,18 @@ $objectid = (Get-AzADGroup -DisplayName "{name}").id
 objectid=$(az ad group show --group "{name}" --query objectId --output tsv)
 ```
 
+### <a name="managed-identities"></a>受控身分識別
+
+若要取得受控識別的識別碼，您可以使用 [>get-azadserviceprincipal](/powershell/module/az.resources/get-azadserviceprincipal) 或 [az ad sp](/cli/azure/ad/sp) 命令。
+
+```azurepowershell
+$objectid = (Get-AzADServicePrincipal -DisplayName <Azure resource name>).id
+```
+
+```azurecli
+objectid=$(az ad sp list --display-name <Azure resource name> --query [].objectId --output tsv)
+```
+
 ### <a name="application"></a>Application
 
 若要取得服務主體 (應用程式所使用的身分識別) 的識別碼，您可以使用 [Get-AzADServicePrincipal](/powershell/module/az.resources/get-azadserviceprincipal) 或 [az ad sp list](/cli/azure/ad/sp#az-ad-sp-list) 命令。 對於服務主體，請使用物件識別碼，而**不是**應用程式識別碼。
@@ -77,7 +89,7 @@ objectid=$(az ad sp list --display-name "{name}" --query [].objectId --output ts
 若要使用範本，您必須執行下列動作：
 
 - 建立新的 JSON 檔案並複製範本
-- 將 `<your-principal-id>` 取代為要獲指派角色的使用者、群組或應用程式識別碼
+- 取代為 `<your-principal-id>` 要指派角色的使用者、群組、受控識別或應用程式的識別碼
 
 ```json
 {
@@ -120,7 +132,7 @@ az group deployment create --resource-group ExampleGroup --template-file rbac-te
 
 若要使用範本，您必須指定下列輸入：
 
-- 要為其指派角色的使用者、群組或應用程式識別碼
+- 要指派角色的使用者、群組、受控識別或應用程式的識別碼
 - 將用於角色指派的唯一識別碼，或者您可以使用預設識別碼
 
 ```json
@@ -214,7 +226,7 @@ az deployment create --location centralus --template-file rbac-test.json --param
 
 若要使用範本，您必須指定下列輸入：
 
-- 要為其指派角色的使用者、群組或應用程式識別碼
+- 要指派角色的使用者、群組、受控識別或應用程式的識別碼
 
 ```json
 {

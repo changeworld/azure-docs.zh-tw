@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.date: 08/27/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 2e3cfd27d36558587ca35cc1c573999a48092b0d
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: e4a13fb22fd826f82252383587bc4a273c43099f
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89297656"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613504"
 ---
 # <a name="blob-versioning"></a>Blob 版本設定
 
@@ -79,11 +79,11 @@ Blob 版本設定適用于一般用途 v2、區塊 blob 和 Blob 儲存體帳戶
 
 下圖顯示針對已建立版本之 blob 的刪除作業效果：
 
-:::image type="content" source="media/versioning-overview/delete-versioned-base-blob.png" alt-text="顯示已建立版本 blob 之刪除的圖表。":::
+:::image type="content" source="media/versioning-overview/delete-versioned-base-blob.png" alt-text="此圖顯示寫入作業如何影響已建立版本的 blob。":::
 
 將新資料寫入 blob 會建立新版本的 blob。 任何現有版本都不會受到影響，如下圖所示。
 
-:::image type="content" source="media/versioning-overview/recreate-deleted-base-blob.png" alt-text="此圖顯示刪除後重新建立已建立版本的 blob。":::
+:::image type="content" source="media/versioning-overview/recreate-deleted-base-blob.png" alt-text="此圖顯示寫入作業如何影響已建立版本的 blob。":::
 
 ### <a name="blob-types"></a>Blob 類型
 
@@ -122,7 +122,7 @@ Blob 的所有版本都必須是相同的 blob 類型。 如果 blob 有舊版�
 
 下圖顯示停用版本設定之後修改 blob 的方式如何建立未建立版本的 blob。 任何與 blob 相關聯的現有版本都會保存。
 
-:::image type="content" source="media/versioning-overview/modify-base-blob-versioning-disabled.png" alt-text="顯示停用版本設定之後修改基底 blob 的圖表。":::
+:::image type="content" source="media/versioning-overview/modify-base-blob-versioning-disabled.png" alt-text="此圖顯示寫入作業如何影響已建立版本的 blob。":::
 
 ## <a name="blob-versioning-and-soft-delete"></a>Blob 版本設定和虛刪除
 
@@ -138,7 +138,7 @@ Blob 版本設定和 blob 虛刪除會一起運作，以提供您最佳的資料
 
 下圖顯示當您刪除 blob 或 blob 版本時，會發生什麼事。
 
-:::image type="content" source="media/versioning-overview/soft-delete-historical-version.png" alt-text="顯示刪除已啟用虛刪除之版本的圖表。":::
+:::image type="content" source="media/versioning-overview/soft-delete-historical-version.png" alt-text="此圖顯示寫入作業如何影響已建立版本的 blob。":::
 
 如果在儲存體帳戶上啟用版本控制和虛刪除，則修改或刪除 blob 或 blob 版本時，不會建立虛刪除的快照集。
 
@@ -150,7 +150,7 @@ Blob 版本設定和 blob 虛刪除會一起運作，以提供您最佳的資料
 
 下圖顯示如何使用「取消 **刪除 blob** 」作業來還原已虛刪除的 blob 版本，以及如何使用「 **複製 blob** 」作業來還原目前版本的 blob。
 
-:::image type="content" source="media/versioning-overview/undelete-version.png" alt-text="顯示如何還原虛刪除版本的圖表。":::
+:::image type="content" source="media/versioning-overview/undelete-version.png" alt-text="此圖顯示寫入作業如何影響已建立版本的 blob。":::
 
 經過虛刪除保留期限之後，任何虛刪除的 blob 版本都會永久刪除。
 
@@ -169,7 +169,7 @@ Blob 快照集是在特定時間點取得之 blob 的唯讀複本。 Blob 快照
 
 下圖顯示當您取得已建立版本之 blob 的快照時，會發生什麼事。 在圖表中，版本識別碼為2和3的 blob 版本與快照集包含相同的資料。
 
-:::image type="content" source="media/versioning-overview/snapshot-versioned-blob.png" alt-text="顯示已建立版本之 blob 快照集的圖表。":::
+:::image type="content" source="media/versioning-overview/snapshot-versioned-blob.png" alt-text="此圖顯示寫入作業如何影響已建立版本的 blob。":::
 
 ## <a name="authorize-operations-on-blob-versions"></a>在 blob 版本上授權作業
 
@@ -185,7 +185,7 @@ Blob 版本設定的設計是為了保護您的資料免于遭到意外或惡意
 
 下表顯示支援刪除 blob 或 blob 版本的 RBAC 動作。
 
-| 描述 | Blob 服務作業 | 需要 RBAC 資料動作 | RBAC 內建角色支援 |
+| 說明 | Blob 服務作業 | 需要 RBAC 資料動作 | RBAC 內建角色支援 |
 |----------------------------------------------|------------------------|---------------------------------------------------------------------------------------|-------------------------------|
 | 正在刪除 blob 的目前版本 | 刪除 Blob | **Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete** | 儲存體 Blob 資料參與者 |
 | 刪除版本 | 刪除 Blob | **Microsoft. Storage/storageAccounts/blobServices/container/blob/deleteBlobVersion/action** | 儲存體 Blob 資料擁有者 |
@@ -269,7 +269,7 @@ Blob 儲存體沒有方法可判斷兩個區塊是否包含相同的資料。 �
 
 下圖說明當已建立版本的 blob 移至不同的層級時，物件的計費方式。
 
-:::image type="content" source="media/versioning-overview/versioning-billing-tiers.png" alt-text="顯示如何在已建立版本的 blob 明確分層時計費物件的圖表。":::
+:::image type="content" source="media/versioning-overview/versioning-billing-tiers.png" alt-text="此圖顯示寫入作業如何影響已建立版本的 blob。":::
 
 明確設定 blob、版本或快照集的層級無法復原。 如果您將 blob 移至新的階層，然後再將它移回其原始階層，則會向您收取物件的完整內容長度，即使它與原始層中的其他物件共用區塊也一樣。
 

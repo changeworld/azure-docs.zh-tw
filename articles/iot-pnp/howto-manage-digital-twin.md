@@ -7,12 +7,12 @@ ms.date: 07/20/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: bfbfc6e5e4a0f5721d620c2936e5ea0aa685f8ad
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: a0fa8c1c3d897ce65c70b6097dd323139716b8c7
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91577589"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613385"
 ---
 # <a name="manage-iot-plug-and-play-digital-twins"></a>管理 IoT 隨插即用數位 twins
 
@@ -179,11 +179,11 @@ IoT 隨插即用裝置會執行 [數位 Twins 定義語言 v2 ](https://github.c
 
 ## <a name="troubleshoot-update-digital-twin-api-errors"></a>針對更新數位對應項 API 錯誤進行疑難排解
 
-在公開預覽期間，更新數位對應項 API 會擲回下列一般錯誤訊息：
+數位對應項 API 會擲回下列一般錯誤訊息：
 
 `ErrorCode:ArgumentInvalid;'{propertyName}' exists within the device twin and is not digital twin conformant property. Please refer to aka.ms/dtpatch to update this to be conformant.`
 
-請確定更新修補程式遵循 [設定數位對應項屬性所需值的規則](#rules-for-setting-the-desired-value-of-a-digital-twin-property)
+如果您看到此錯誤，請確定更新修補程式遵循 [設定數位對應項屬性所需值的規則](#rules-for-setting-the-desired-value-of-a-digital-twin-property)
 
 當您更新元件時，請確定已設定 [空的物件 $metadata 標記](#add-replace-or-remove-a-component) 。
 

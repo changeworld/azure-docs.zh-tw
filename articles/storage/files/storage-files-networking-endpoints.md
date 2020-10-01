@@ -7,13 +7,13 @@ ms.topic: how-to
 ms.date: 08/17/2020
 ms.author: rogarana
 ms.subservice: files
-ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 4e08c74e1fbc3da1ed11d6a2f7faeb26780d2a37
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: b494e7f7f99394c7337d663ea9a9c7e1f74dacf3
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91333540"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91612824"
 ---
 # <a name="configuring-azure-files-network-endpoints"></a>設定 Azure 檔案儲存體網路端點
 
@@ -32,7 +32,7 @@ Azure 檔案儲存體提供兩種主要的端點類型來存取 Azure 檔案共�
 - 本文會假設您已經建立 Azure 訂用帳戶。 如果您還沒有訂用帳戶，則先建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)，再開始操作。
 - 本文假設您已在儲存體帳戶中建立 Azure 檔案共用，而您想要從內部部署連接到該儲存體帳戶。 若要了解如何建立 Azure 檔案共用，請參閱[建立 Azure 檔案共用](storage-how-to-create-file-share.md)。
 - 如果您想要使用 Azure PowerShell，請[安裝最新版本](https://docs.microsoft.com/powershell/azure/install-az-ps)。
-- 如果您想要使用 Azure CLI，請[安裝最新版本](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
+- 如果您想要使用 Azure CLI，請[安裝最新版本](/cli/azure/install-azure-cli)。
 
 ## <a name="endpoint-configurations"></a>端點設定
 

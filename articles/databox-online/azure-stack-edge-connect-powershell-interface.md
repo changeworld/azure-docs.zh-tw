@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 06/25/2019
+ms.date: 09/30/2020
 ms.author: alkohli
-ms.openlocfilehash: b6b0fe7e9e096b252d33d25c4a70305e57d206b1
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 93678735237c25b19d04b7d901583ba785d7f594
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90894421"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613538"
 ---
-# <a name="manage-an-azure-stack-edge-pro-device-via-windows-powershell"></a>透過 Windows PowerShell 管理 Azure Stack Edge Pro 裝置
+# <a name="manage-an-azure-stack-edge-pro-fpga-device-via-windows-powershell"></a>透過 Windows PowerShell 管理 Azure Stack Edge Pro FPGA 裝置
 
 Azure Stack Edge Pro 解決方案可讓您處理資料，並透過網路傳送至 Azure。 本文說明 Azure Stack Edge Pro 裝置的一些設定和管理工作。 您可以使用 Azure 入口網站、本機 web UI 或 Windows PowerShell 介面來管理您的裝置。
 
@@ -43,16 +43,16 @@ Azure Stack Edge Pro 解決方案可讓您處理資料，並透過網路傳送�
 
 [!INCLUDE [Upload certificate](../../includes/data-box-edge-gateway-upload-certificate.md)]
 
-您也可以上傳 IoT Edge 憑證，以在您的 IoT Edge 裝置與可連線的下游裝置之間啟用安全連線。 您需要安裝三個 IoT Edge 憑證 (*pem* 格式) ：
+您也可以上傳 IoT Edge 憑證，以在您的 IoT Edge 裝置與可連線的下游裝置之間啟用安全連線。 有三個檔案 (*pem* 格式) 您需要安裝：
 
 - 根 CA 憑證或擁有者 CA
 - 裝置 CA 憑證
-- 裝置金鑰憑證
+- 裝置私密金鑰 
 
 下列範例顯示如何使用此 Cmdlet 來安裝 IoT Edge 憑證：
 
 ```
-Set-HcsCertificate -Scope IotEdge -RootCACertificateFilePath "\\hcfs\root-ca-cert.pem" -DeviceCertificateFilePath "\\hcfs\device-ca-cert.pem\" -DeviceKeyFilePath "\\hcfs\device-key-cert.pem" -Credential "username"
+Set-HcsCertificate -Scope IotEdge -RootCACertificateFilePath "\\hcfs\root-ca-cert.pem" -DeviceCertificateFilePath "\\hcfs\device-ca-cert.pem\" -DeviceKeyFilePath "\\hcfs\device-private-key.pem" -Credential "username"
 ```
 當您執行這個 Cmdlet 時，系統會提示您提供網路共用的密碼。
 
@@ -92,6 +92,6 @@ Set-HcsCertificate -Scope IotEdge -RootCACertificateFilePath "\\hcfs\root-ca-cer
 
 若要結束遠端 PowerShell 會話，請關閉 PowerShell 視窗。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 在 Azure 入口網站中部署 [Azure Stack Edge Pro](azure-stack-edge-deploy-prep.md)。

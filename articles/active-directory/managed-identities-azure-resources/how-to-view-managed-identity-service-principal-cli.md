@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/29/2018
+ms.date: 09/30/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: b8eec72666eadf90a401dc8f0adb77df77dbf782
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 1c0f167a36ceff6a9b62e2a3ccf24ca6e13e6294
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90969307"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91611906"
 ---
 # <a name="view-the-service-principal-of-a-managed-identity-using-azure-cli"></a>使用 PowerShell 檢視受控識別的服務主體如何使用 Azure CLI 檢視受控識別的服務主體
 
@@ -34,18 +34,18 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
 - 如果您不熟悉 Azure 資源的受控識別，請參閱[概觀一節](overview.md)。
 - 如果您還沒有 Azure 帳戶，請[註冊免費帳戶](https://azure.microsoft.com/free/)。
 - 啟用[虛擬機器](./qs-configure-portal-windows-vm.md#system-assigned-managed-identity)或[應用程式](../../app-service/overview-managed-identity.md#add-a-system-assigned-identity)上的系統指派身分識別。
-- 若要執行範例腳本，您有兩個選項：
-    - 使用您可以使用程式碼區塊右上角的 [**試試看**] 按鈕開啟的[Azure Cloud Shell](../../cloud-shell/overview.md)。
-    - 安裝最新版本的 [Azure CLI](/cli/azure/install-azure-cli)，然後使用 [az Login 登](/cli/azure/reference-index#az-login)入 Azure，以在本機執行腳本。 使用與您想要在其中建立資源的 Azure 訂用帳戶相關聯的帳戶。   
+- 若要執行範例指令碼，您有兩個選項：
+    - 使用 [Azure Cloud Shell](../../cloud-shell/overview.md)，您可以使用程式碼區塊右上角的 [試用] 按鈕來開啟。
+    - 藉由安裝最新版本的 [Azure CLI](/cli/azure/install-azure-cli)，在本機執行指令碼，然後使用 [az login](/cli/azure/reference-index#az-login) 來登入 Azure。 請使用您想用來建立資源，且已與 Azure 訂用帳戶建立關聯的帳戶。   
 
 ## <a name="view-the-service-principal"></a>檢視服務主體
 
-下列命令示範如何檢視已啟用受控識別的 VM 或應用程式所具有的服務主體。 以您自己的值取代 `<VM or application name>`。 
+下列命令示範如何檢視已啟用受控識別的 VM 或應用程式所具有的服務主體。 以您自己的值取代 `<Azure resource name>`。
 
 ```azurecli-interactive
-az ad sp list --display-name <VM or application name>
+az ad sp list --display-name <Azure resource name>
 ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 如需如何使用 Azure CLI 管理 Azure AD 服務主體的詳細資訊，請參閱 [az ad sp](/cli/azure/ad/sp)。

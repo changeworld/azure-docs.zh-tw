@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
-ms.openlocfilehash: 6d25eb2965e31211c0d30ec8d5e3e376176147c0
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: e4c2969db560ff20cae2ed7b9ffbe0cea206c7a1
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88590042"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91611566"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET 變更摘要處理器 SDK：下載和版本資訊
 
@@ -40,7 +40,7 @@ ms.locfileid: "88590042"
 |   |   |
 |---|---|
 |**SDK 下載**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.ChangeFeedProcessor/)|
-|**API 文件**|[變更摘要處理器程式庫 API 參考文件](/dotnet/api/microsoft.azure.documents.changefeedprocessor?view=azure-dotnet)|
+|**API 文件**|[變更摘要處理器程式庫 API 參考文件](/dotnet/api/microsoft.azure.documents.changefeedprocessor?view=azure-dotnet&preserve-view=true)|
 |**開始使用**|[開始使用變更摘要處理器 .NET SDK](change-feed.md)|
 |**目前支援的架構**| [Microsoft .NET Framework 4.5](https://www.microsoft.com/download/details.aspx?id=30653)</br> [Microsoft .NET Core](https://www.microsoft.com/net/download/core) |
 
@@ -51,18 +51,18 @@ ms.locfileid: "88590042"
 
 ### <a name="v2-builds"></a>v2 組建
 
-### <a name="232"></a><a name="2.3.2"/>2.3.2
-* 已新增使用 [V3 SDK](sql-api-sdk-dotnet-standard.md) 的租用存放區相容性，可啟用經常性遷移路徑。 應用程式可以遷移至 V3 SDK 並遷移回變更摘要處理器程式庫，而不會遺失任何狀態。
+### <a name="232"></a><a id="2.3.2"></a>2.3.2
+* 新增了租用存放區與 [V3 SDK，可啟用熱遷移路徑。 應用程式可以遷移至 V3 SDK 並遷移回變更摘要處理器程式庫，而不會遺失任何狀態。
 
-### <a name="231"></a><a name="2.3.1"/>2.3.1
+### <a name="231"></a><a id="2.3.1"></a>2.3.1
 * 已更正當 `FeedProcessing.ChangeFeedObserverCloseReason.Unknown` 找不到分割區， `FeedProcessing.IChangeFeedObserver.CloseAsync` 或目標複本與讀取會話不是最新狀態時，所傳送的關閉原因的案例。 在這些情況下 `FeedProcessing.ChangeFeedObserverCloseReason.ResourceGone` ， `FeedProcessing.ChangeFeedObserverCloseReason.ReadSessionNotAvailable` 現在會使用關閉原因。
 * 加入新的關閉原因 `FeedProcessing.ChangeFeedObserverCloseReason.ReadSessionNotAvailable` ，當目標複本與讀取會話不是最新狀態時，就會傳送此關閉原因以關閉變更摘要觀察者。
 
-### <a name="230"></a><a name="2.3.0"/>2.3.0
+### <a name="230"></a><a id="2.3.0"></a>2.3.0
 * 已新增新方法 `ChangeFeedProcessorBuilder.WithCheckpointPartitionProcessorFactory` 和對應的公用介面 `ICheckpointPartitionProcessorFactory`。 這可讓 `IPartitionProcessor` 介面進行實作，以使用內建的檢查點機制。 新的處理站與現有的 `IPartitionProcessorFactory` 類似，不同之處在於其 `Create` 方法還會採用 `ILeaseCheckpointer` 參數。
 * 只有這兩種方法 (`ChangeFeedProcessorBuilder.WithPartitionProcessorFactory` 或 `ChangeFeedProcessorBuilder.WithCheckpointPartitionProcessorFactory`) 可用於相同的 `ChangeFeedProcessorBuilder` 執行個體。
 
-### <a name="228"></a><a name="2.2.8"></a>2.2.8
+### <a name="228"></a><a id="2.2.8"></a>2.2.8
 * 穩定性和診斷能力的提升：
   * 已新增長時間讀取變更摘要的偵測支援。 其耗時超過 `ChangeFeedProcessorOptions.ChangeFeedTimeout` 屬性所指定的值時，將會採取下列步驟：
     * 中止對有問題的分割區讀取變更摘要的作業。
@@ -71,56 +71,56 @@ ms.locfileid: "88590042"
   * 已新增新的公用屬性：`ChangeFeedProcessorOptions.ChangeFeedTimeout`。 此屬性的預設值為 10 分鐘。
   * 已新增新的公用列舉值：`Monitoring.MonitoredOperation.ReadChangeFeed`。 當 `HealthMonitoringRecord.Operation` 的值設定為 `Monitoring.MonitoredOperation.ReadChangeFeed` 時，表示健康情況問題與讀取變更摘要有關。
 
-### <a name="227"></a><a name="2.2.7"></a>2.2.7
-* 已改善取得所有租用的耗時超過租用到期間隔 (例如，因網路問題) 的情況下所適用的負載平衡策略：
-  * 在此情況下，負載平衡演算法過去會誤將租用認定為過期，而導致現行擁有者的租用遭到竊用。 這可能會對大量租用觸發不必要的重新平衡。
-  * 此版本已修正此問題，方法是在取得擁有者並未變更的過期租用時，避免在發生衝突時重試，並取得過期租用的作業延遲到下一次負載平衡反覆運算。
+### <a name="227"></a><a id="2.2.7"></a>2.2.7
+* 針對取得所有租用所需的時間比租用到期間隔更長（例如，由於網路問題所致），改善了負載平衡策略的情況：
+  * 在此案例中，用來將租用視為過期的負載平衡演算法，會導致使用中擁有者竊取租用。 這可能會觸發不必要的重新平衡許多租用。
+  * 此版本已修正此問題，方法是避免在取得已過期的租用時重試，而不會變更擁有者，並將取得到期的租用延後至下一個負載平衡反復專案。
 
-### <a name="226"></a><a name="2.2.6"></a>2.2.6
+### <a name="226"></a><a id="2.2.6"></a>2.2.6
 * 改善觀察者例外狀況的處理。
 * 更豐富的觀察者錯誤資訊：
   * 觀察者因為觀察者的 ProcessChangesAsync 所擲回的例外狀況而關閉時，CloseAsync 現在會收到設為 ChangeFeedObserverCloseReason.ObserverError 的原因參數。
   * 新增的追蹤資訊，以識別觀察者中使用者程式碼內的錯誤。
 
-### <a name="225"></a><a name="2.2.5"></a>2.2.5
+### <a name="225"></a><a id="2.2.5"></a>2.2.5
 * 新增處理使用共用資料庫輸送量之分割集合的支援。
-  * 此版本會修正可能會在僅建立一個 (而非兩個) 子分割區索引鍵範圍之下，將結果分割為分割區重新平衡時，使用共用資料庫輸送量分割集合之期間發生的問題。 發生此情況時，變更摘要處理器可能會卡在刪除舊分割區索引鍵範圍的程序中，而無法建立新的租用。 此版本已經修正這個問題。
+  * 此版本修正了當分割結果分割為只建立一個子分割區索引鍵範圍（而不是兩個）的資料分割重新平衡時，在集合中分割時可能會發生的問題。 發生此情況時，變更摘要處理器可能會卡在刪除舊分割區索引鍵範圍的程序中，而無法建立新的租用。 此版本已經修正這個問題。
 
-### <a name="224"></a><a name="2.2.4"></a>2.2.4
+### <a name="224"></a><a id="2.2.4"></a>2.2.4
 * 已新增 ChangeFeedProcessorOptions.StartContinuation 屬性，以支援從要求接續 Token 啟動變更摘要。 只有在租用集合是空的或租用未設定 ContinuationToken 時，才會使用此屬性。 如果租用集合中的租用已設定 ContinuationToken，則會使用 ContinuationToken 並忽略 ChangeFeedProcessorOptions.StartContinuation。
 
-### <a name="223"></a><a name="2.2.3"></a>2.2.3
+### <a name="223"></a><a id="2.2.3"></a>2.2.3
 * 已新增使用自訂存放區來保存每個分割區之接續 Token 的支援。
   * 例如，自訂的租用存放區可以是利用任何自訂方式所分割的 Azure Cosmos DB 租用集合。
   * 自訂的租用存放區可以使用新的擴充點 ChangeFeedProcessorBuilder.WithLeaseStoreManager(ILeaseStoreManager) 和 ILeaseStoreManager 公用介面。
   * 已在多個角色介面中重構 ILeaseManager 介面。
 * 次要重大變更：已移除擴充點 ChangeFeedProcessorBuilder.WithLeaseManager(ILeaseManager)，改為使用 ChangeFeedProcessorBuilder.WithLeaseStoreManager(ILeaseStoreManager)。
 
-### <a name="222"></a><a name="2.2.2"></a>2.2.2
+### <a name="222"></a><a id="2.2.2"></a>2.2.2
 * 此版本會修正在處理受監視集合中的分割以及使用已分割之租用集合期間所發生的問題。 在處理已分割之分割區的租用時，可能不會刪除對應至該分割區的租用。 此版本已經修正這個問題。
 
-### <a name="221"></a><a name="2.2.1"></a>2.2.1
-* 固定式估算程式計算，適用於多重主機帳戶和新的工作階段權杖格式。
+### <a name="221"></a><a id="2.2.1"></a>2.2.1
+* 修正具有多個寫入區域和新的會話權杖格式的帳戶估算器計算。
 
-### <a name="220"></a><a name="2.2.0"></a>2.2.0
+### <a name="220"></a><a id="2.2.0"></a>2.2.0
 * 已新增對分割區租用集合的支援。 分割區索引鍵必須定義為 /id。
-* 次要重大變更：已變更 IChangeFeedDocumentClient 介面和 ChangeFeedDocumentClient 類別的方法，以包含 RequestOptions 和 CancellationToken 參數。 IChangeFeedDocumentClient 是一個進階擴充點，可讓您提供文件用戶端的自訂實作來與變更摘要處理器搭配使用，例如，裝飾 DocumentClient，並攔截所有對它的呼叫來進行額外追蹤、錯誤處理等等。使用此更新，將必須變更實作 IChangeFeedDocumentClient 的程式碼，以便在實作中包含新參數。
+* 次要重大變更：已變更 IChangeFeedDocumentClient 介面和 ChangeFeedDocumentClient 類別的方法，以包含 RequestOptions 和 CancellationToken 參數。 IChangeFeedDocumentClient 是先進的擴充點，可讓您提供檔用戶端的自訂執行，以搭配變更摘要處理器使用，例如，裝飾 DocumentClient 並攔截對它的所有呼叫，以執行額外的追蹤、錯誤處理等等。使用此更新時，必須變更執行 IChangeFeedDocumentClient 的程式碼，以在執行時包含新的參數。
 * 次要診斷改進。
 
-### <a name="210"></a><a name="2.1.0"></a>2.1.0
+### <a name="210"></a><a id="2.1.0"></a>2.1.0
 * 新增了 API：Task&lt;IReadOnlyList&lt;RemainingPartitionWork&gt;&gt; IRemainingWorkEstimator.GetEstimatedRemainingWorkPerPartitionAsync()。 這可用於取得每個資料分割的預估工作。
 * 支援 Microsoft.Azure.DocumentDB SDK 2.0。 需要 Microsoft.Azure.DocumentDB 2.0 或更新版本。
 
-### <a name="206"></a><a name="2.0.6"></a>2.0.6
+### <a name="206"></a><a id="2.0.6"></a>2.0.6
 * 已新增 ChangeFeedEventHost.HostName 公用屬性以與 v1 相容。
 
-### <a name="205"></a><a name="2.0.5"></a>2.0.5
+### <a name="205"></a><a id="2.0.5"></a>2.0.5
 * 已修正會在分割區進行分割期間發生的競爭條件。 競爭條件可能會導致在取得租用後立即於分割區進行分割期間失去它，並導致競爭情形。 競爭條件問題已在此版本中修正。
 
-### <a name="204"></a><a name="2.0.4"></a>2.0.4
+### <a name="204"></a><a id="2.0.4"></a>2.0.4
 * GA SDK
 
-### <a name="203-prerelease"></a><a name="2.0.3-prerelease"></a>2.0.3-prerelease
+### <a name="203-prerelease"></a><a id="2.0.3-prerelease"></a>2.0.3-prerelease
 * 修正下列問題：
   * 當分割區進行分割時，可能會重複處理分割前修改的文件。
   * 租用集合中沒有租用時，GetEstimatedRemainingWork API 傳回 0。
@@ -131,11 +131,11 @@ ms.locfileid: "88590042"
   * Microsoft.Azure.Documents.ChangeFeedProcessor.Exceptions.PartitionNotFoundException.
   * Microsoft.Azure.Documents.ChangeFeedProcessor.Exceptions.PartitionSplitException. 
 
-### <a name="202-prerelease"></a><a name="2.0.2-prerelease"></a>2.0.2 發行前版本
+### <a name="202-prerelease"></a><a id="2.0.2-prerelease"></a>2.0.2 發行前版本
 * 次要 API 變更：
   * 移除已標記為過時的 ChangeFeedProcessorOptions.IsAutoCheckpointEnabled。
 
-### <a name="201-prerelease"></a><a name="2.0.1-prerelease"></a>2.0.1 發行前版本
+### <a name="201-prerelease"></a><a id="2.0.1-prerelease"></a>2.0.1 發行前版本
 * 穩定性改進：
   * 改善租用存放區初始化的處理。 如果租用存放區是空的，則只有一個處理器的執行個體可以將它初始化，其他執行個體則須等候。
   * 更穩定/有效的租用更新/版本。 更新和釋放每一個分割區的租用會與其他租用的更新各自獨立。 在 V1 中，所有分割區會循序完成此動作。
@@ -156,33 +156,33 @@ ms.locfileid: "88590042"
 
 ### <a name="v1-builds"></a>v1 組建
 
-### <a name="133"></a><a name="1.3.3"></a>1.3.3
+### <a name="133"></a><a id="1.3.3"></a>1.3.3
 * 已新增更多記錄。
 * 已修正在多次呼叫擱置中工作估計時的 DocumentClient 流失。
 
-### <a name="132"></a><a name="1.3.2"></a>1.3.2
+### <a name="132"></a><a id="1.3.2"></a>1.3.2
 * 修正擱置的工作評估。
 
-### <a name="131"></a><a name="1.3.1"></a>1.3.1
+### <a name="131"></a><a id="1.3.1"></a>1.3.1
 * 穩定性改進。
   * 修正處理取消工作的問題，此問題可能會導致某些分割區上的觀察者停止運作。
 * 支援手動檢查點。
 * 與 [SQL .NET SDK](sql-api-sdk-dotnet.md) 1.21 版和更新版本相容。
 
-### <a name="120"></a><a name="1.2.0"></a>1.2.0
+### <a name="120"></a><a id="1.2.0"></a>1.2.0
 * 新增 .NET Standard 2.0 的支援。 套件現在支援 `netstandard2.0` 和 `net451` Framework Moniker。
 * 與 [SQL .NET SDK](sql-api-sdk-dotnet.md) 1.17.0 或以上版本相容。
 * 與 [SQL .NET Core SDK](sql-api-sdk-dotnet-core.md) 1.5.1 或以上版本相容。
 
-### <a name="111"></a><a name="1.1.1"></a>1.1.1
+### <a name="111"></a><a id="1.1.1"></a>1.1.1
 * 變更摘要為空白或沒有已暫止的工作時，會修正計算剩餘工作估計的問題。
 * 與 [SQL .NET SDK](sql-api-sdk-dotnet.md) 1.13.2 或以上版本相容。
 
-### <a name="110"></a><a name="1.1.0"></a>1.1.0
+### <a name="110"></a><a id="1.1.0"></a>1.1.0
 * 新增方法以取得要在變更摘要中處理之剩餘工作的估算。
 * 與 [SQL .NET SDK](sql-api-sdk-dotnet.md) 1.13.2 或以上版本相容。
 
-### <a name="100"></a><a name="1.0.0"></a>1.0.0
+### <a name="100"></a><a id="1.0.0"></a>1.0.0
 * GA SDK
 * 與 [SQL .NET SDK](sql-api-sdk-dotnet.md) 1.14.1 或以上版本相容。
 

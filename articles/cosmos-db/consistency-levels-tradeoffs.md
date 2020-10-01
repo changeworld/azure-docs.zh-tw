@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 3c82edd73921e11cd2f43a0d609624267af81575
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: b96902603deca4b7a184659e6274d65f02ac712d
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91570074"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613521"
 ---
 # <a name="latency-availability-and-performance-tradeoffs-with-different-azure-cosmos-db-consistency-levels"></a>不同 Azure Cosmos DB 一致性層級的延遲、可用性和效能權衡取捨
 
@@ -65,12 +65,12 @@ Azure Cosmos DB 會針對資料一致性提供選項頻譜。 這個方法所包
 
 |**區域 (s) **|**複寫模式**|**一致性層級**|**復原點目標 (RPO)**|**復原時間目標 (RTO)**|
 |---------|---------|---------|---------|---------|
-|1|單一或多重主機|任何一致性層級|< 240 分鐘|< 1 週|
-|> 1|單一主機|工作階段、開頭一致、最終|< 15 分鐘|< 15 分鐘|
-|> 1|單一主機|限定過期|*K*  & *T*|< 15 分鐘|
-|> 1|單一主機|強式|0|< 15 分鐘|
-|> 1|多重主機|工作階段、開頭一致、最終|< 15 分鐘|0|
-|> 1|多重主機|限定過期|*K*  & *T*|0|
+|1|單一或多個寫入區域|任何一致性層級|< 240 分鐘|< 1 週|
+|> 1|單一寫入區域|工作階段、開頭一致、最終|< 15 分鐘|< 15 分鐘|
+|> 1|單一寫入區域|限定過期|*K*  & *T*|< 15 分鐘|
+|> 1|單一寫入區域|強式|0|< 15 分鐘|
+|> 1|多個寫入區域|工作階段、開頭一致、最終|< 15 分鐘|0|
+|> 1|多個寫入區域|限定過期|*K*  & *T*|0|
 
 *K* = *"k"* 版本的數目 (亦即，更新專案) 。
 

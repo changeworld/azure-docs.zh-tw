@@ -4,14 +4,14 @@ description: 如何建立 Azure HPC Cache 執行個體
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 09/03/2020
+ms.date: 09/30/2020
 ms.author: v-erkel
-ms.openlocfilehash: 5e17c55f8321ba0ad9a9686ada41413d64879d6c
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: bed158fb99654bd48184073b1266ae630255558b
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91570887"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613164"
 ---
 # <a name="create-an-azure-hpc-cache"></a>建立 Azure HPC Cache
 
@@ -29,7 +29,7 @@ ms.locfileid: "91570887"
 
 ![Azure 入口網站中專案詳細資料頁面的螢幕擷取畫面](media/hpc-cache-create-basics.png)
 
-在 [專案詳細資料]**** 中，選取將要裝載快取的訂用帳戶和資源群組。<!-- Make sure the subscription is on the [access](hpc-cache-prerequisites.md#azure-subscription) list.  -->
+在 [專案詳細資料]**** 中，選取將要裝載快取的訂用帳戶和資源群組。
 
 在 [服務詳細資料]**** 中，設定快取名稱和其他屬性：
 

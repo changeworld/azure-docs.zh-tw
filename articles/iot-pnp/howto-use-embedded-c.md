@@ -7,12 +7,12 @@ ms.date: 09/23/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: a5b826bd76eb7e56620bcb5b5eec9464ebacffc6
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: edcfcda8de1fade605c409537155231d90d5849e
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91579952"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91610070"
 ---
 # <a name="implement-iot-plug-and-play-on-constrained-devices"></a>在受限制的裝置上執行 IoT 隨插即用
 
@@ -39,7 +39,7 @@ ms.locfileid: "91579952"
 
 ## <a name="using-azure-rtos"></a>使用 Azure RTO
 
-Azure RTO 包含可將原生連線能力新增至 Azure IoT 雲端服務的輕量層。 這一層提供簡單的機制，可讓您在使用 Azure RTO 的 advanced 功能時，將受限的裝置連線至 Azure IoT。
+Azure RTO 包含可將原生連線能力新增至 Azure IoT 雲端服務的輕量層。 這一層提供簡單的機制，可讓您在使用 Azure RTO 的 advanced 功能時，將受限的裝置連線至 Azure IoT。 若要深入瞭解，請參閱「 [什麼是 MICROSOFT AZURE rto](https://docs.microsoft.com/azure/rtos/overview-rtos)」。
 
 ### <a name="toolchains"></a>工具鏈
 

@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0a5411a8fba8456deb59a5c9ede4e9314876dbdb
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: d06ec62f2ef1438657a4406b0f9a5b2c85feee16
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91569579"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91611634"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>安全存取 Azure Cosmos DB 中的資料
 
@@ -22,21 +22,21 @@ Azure Cosmos DB 會使用兩種類型的金鑰來驗證使用者，以允許存�
 
 |金鑰類型|資源|
 |---|---|
-|[主要金鑰](#primary-keys) |用於系統管理資源︰資料庫帳戶、資料庫、使用者和權限|
+|[主索引鍵](#primary-keys) |用於系統管理資源︰資料庫帳戶、資料庫、使用者和權限|
 |[資源權杖](#resource-tokens)|用於應用程式資源︰容器、文件、附件、預存程序、觸發程序和 UDF|
 
 <a id="primary-keys"></a>
 
-## <a name="master-keys"></a>主要金鑰
+## <a name="primary-keys"></a>主索引鍵
 
-主要金鑰提供資料庫帳戶的所有管理資源的存取權。 主要金鑰：
+主鍵提供資料庫帳戶所有系統管理資源的存取權。 主鍵：
 
 - 允許存取帳戶、資料庫、使用者和權限。 
 - 無法用來提供容器和文件的更細微的存取權。
 - 在帳戶建立期間建立。
 - 可隨時重新產生。
 
-每個帳戶包含兩個主要金鑰︰主要金鑰和次要金鑰。 雙重金鑰的目的是讓您可以重新產生或輸替金鑰，以持續存取您的帳戶和資料。
+每個帳戶都是由兩個主要金鑰組成：主鍵和次要金鑰。 雙重金鑰的目的是讓您可以重新產生或輸替金鑰，以持續存取您的帳戶和資料。
 
 除了 Cosmos DB 帳戶的兩個主要金鑰，還有兩個唯讀金鑰。 這些唯讀金鑰只允許帳戶上的讀取作業。 唯讀金鑰不提供存取權來讀取權限資源。
 
@@ -168,7 +168,7 @@ CosmosClient client = new CosmosClient(accountEndpoint: "MyEndpoint", authKeyOrR
 4. 在 [ **指派存取權**] 方塊中，選取 [ **Azure AD 使用者、群組或應用程式**]。
 5. 選取目錄中您要為其授與存取權的使用者、群組或應用程式。  您可以依顯示名稱、電子郵件地址或物件識別碼來搜尋目錄。
     選取的使用者、群組或應用程式會出現在選取的成員清單中。
-6. 按一下 [檔案] 。
+6. 按一下 [儲存]。
 
 實體現在已可讀取 Azure Cosmos DB 資源。
 

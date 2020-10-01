@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 0197bb81fdba8bab20742d95aebaa2028bb90c18
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
-ms.translationtype: HT
+ms.openlocfilehash: 1b7b5e209329bd5dc4c95f81f61fecf48fb74e40
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027676"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362105"
 ---
 # <a name="set-up-web-endpoints"></a>設定 Web 端點
 
@@ -29,7 +29,7 @@ ms.locfileid: "86027676"
 ## <a name="prerequisites"></a>Prerequisites
 > [!div class = "checklist"]
 > * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
-> * 適用於語音服務的 Azure 訂用帳戶金鑰：[免費取得一個金鑰](get-started.md)或 [Azure 入口網站](https://portal.azure.com)上建立金要
+> * 適用於語音服務的 Azure 訂用帳戶金鑰：[免費取得一個金鑰](overview.md#try-the-speech-service-for-free)或 [Azure 入口網站](https://portal.azure.com)上建立金要
 > * 先前[建立的自訂命令應用程式](quickstart-custom-commands-application.md)
 > * 具有語音 SDK 功能的用戶端應用程式：[操作說明：將活動傳送至用戶端應用程式](./how-to-custom-commands-setup-speech-sdk.md)
 

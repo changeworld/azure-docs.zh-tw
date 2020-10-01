@@ -1,14 +1,14 @@
 ---
 title: 使用 PowerShell 進行 Azure Service Fabric 部署
-description: 瞭解如何在 Azure Service Fabric 中移除和部署應用程式，以及如何在 Powershell 中執行這些動作。
+description: 瞭解如何在 Azure Service Fabric 中移除及部署應用程式，以及如何在 Powershell 中執行這些動作。
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: e3fdd194f2949f1246e991968e02b3278f33f7db
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3a6f5411c30087e15d1164cd02d4e6eb66566388
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84699833"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91611447"
 ---
 # <a name="deploy-and-remove-applications-using-powershell"></a>使用 PowerShell 部署與移除應用程式
 
@@ -32,7 +32,7 @@ ms.locfileid: "84699833"
 2. 取消註冊不再需要的應用程式類型。
 3. 移除映像存放區中的應用程式封裝。
 
-如果您在本機開發叢集上使用 Visual Studio 來針對應用程式進行部署和偵錯，則先前所有步驟都會透過 PowerShell 指令碼自動處理。  此腳本可在應用程式專案的 [*腳本*] 資料夾中找到。 本文提供該指令碼的背景資料，讓您可以在 Visual Studio 之外執行相同的作業。 
+如果您在本機開發叢集上使用 Visual Studio 來針對應用程式進行部署和偵錯，則先前所有步驟都會透過 PowerShell 指令碼自動處理。  您可以在應用程式專案的 [ *腳本* ] 資料夾中找到此腳本。 本文提供該指令碼的背景資料，讓您可以在 Visual Studio 之外執行相同的作業。 
 
 部署應用程式的另一種方式是使用外部佈建。 應用程式封裝可以[封裝為 `sfpkg`](service-fabric-package-apps.md#create-an-sfpkg) 並上傳至外部存放區。 在此情況下，不需要上傳至映像存放區。 部署需要下列步驟：
 
@@ -64,7 +64,7 @@ Connect-ServiceFabricCluster
 
 [Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) 命令會將應用程式封裝上傳至叢集映像存放區。
 
-假設您在 Visual Studio 2015 中建置並封裝名為 *MyApplication* 的應用程式。 根據預設，ApplicationManifest.xml 中列出的應用程式類型名稱會是 "MyApplicationType"。  應用程式封裝（其中包含必要的應用程式資訊清單、服務資訊清單和程式碼/設定/資料封裝）位於*C:\Users \<username\> \Documents\Visual Studio 2015 \ Projects\MyApplication\MyApplication\pkg\Debug*。 
+假設您在 Visual Studio 2015 中建置並封裝名為 *MyApplication* 的應用程式。 根據預設，ApplicationManifest.xml 中列出的應用程式類型名稱會是 "MyApplicationType"。  應用程式封裝（其中包含必要的應用程式資訊清單、服務資訊清單和程式碼/設定/資料封裝）位於 *C:\Users \<username\> \Documents\Visual Studio 2015 \ Projects\MyApplication\MyApplication\pkg\Debug*。 
 
 下列命令會列出應用程式封裝的內容︰
 
@@ -135,7 +135,7 @@ C:\USERS\USER\DOCUMENTS\VISUAL STUDIO 2015\PROJECTS\MYAPPLICATION\MYAPPLICATION\
 |2048|1000|00:01:04.3775554|1231|
 |5012|100|00:02:45.2951288|3074|
 
-一旦壓縮封裝後，可以視需要將它上傳到一或多個 Service Fabric 叢集。 已壓縮及未壓縮套件的部署機制皆相同。 壓縮的封裝會以這類方式儲存在叢集映像存放區中。 封裝會在應用程式執行之前在節點上解壓縮。
+一旦壓縮封裝後，可以視需要將它上傳到一或多個 Service Fabric 叢集。 壓縮和未壓縮封裝的部署機制是相同的。 壓縮的封裝會以這類方式儲存在叢集映像存放區中。 封裝會在應用程式執行之前在節點上解壓縮。
 
 
 下列範例會將套件上傳至映像存放區中的 "MyApplicationV1" 資料夾︰
@@ -191,7 +191,7 @@ Register application type succeeded
 
 ### <a name="register-the-application-package-copied-to-an-external-store"></a>註冊複製到外部存放區的應用程式封裝
 
-從 Service Fabric 6.1 版開始，佈建支援從外部存放區下載封裝。 下載 URI 代表[ `sfpkg` 應用程式封裝](service-fabric-package-apps.md#create-an-sfpkg)的路徑，您可以從該處使用 HTTP 或 HTTPS 通訊協定下載應用程式封裝。 封裝必須先已上傳到這個外部位置。 URI 必須允許「讀取」權限，讓 Service Fabric 可以下載檔案。 `sfpkg` 檔案必須有 ".sfpkg" 副檔名。 佈建作業應該包含應用程式資訊清單中找到的應用程式類型資訊。
+從 Service Fabric 6.1 版開始，佈建支援從外部存放區下載封裝。 下載 URI 代表[ `sfpkg` 應用程式封裝](service-fabric-package-apps.md#create-an-sfpkg)的路徑，您可以使用 HTTP 或 HTTPS 通訊協定來下載應用程式封裝。 封裝必須先已上傳到這個外部位置。 URI 必須允許「讀取」權限，讓 Service Fabric 可以下載檔案。 `sfpkg` 檔案必須有 ".sfpkg" 副檔名。 佈建作業應該包含應用程式資訊清單中找到的應用程式類型資訊。
 
 ```powershell
 Register-ServiceFabricApplicationType -ApplicationPackageDownloadUri "https://sftestresources.blob.core.windows.net:443/sfpkgholder/MyAppPackage.sfpkg" -ApplicationTypeName MyApp -ApplicationTypeVersion V1 -Async
@@ -347,13 +347,13 @@ Import-Module "$ENV:ProgramFiles\Microsoft SDKs\Service Fabric\Tools\PSModule\Se
 ### <a name="deploy-large-application-package"></a>部署大型應用程式封裝
 
 問題︰大型應用程式封裝 (GB 的順序) 的 [Copy-servicefabricapplicationpackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) 逾時。
-請嘗試︰
+嘗試：
 - 使用`TimeoutSec`參數指定 [Copy-servicefabricapplicationpackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) 命令的較大逾時。 此逾時預設為 30 分鐘。
 - 檢查來源電腦與叢集之間的網路連線。 如果連線速度變慢，請考慮使用更佳網路連線的電腦。
 如果用戶端電腦與叢集在不同的區域中，請考慮使用與叢集接近或相同區域中的用戶端電腦。
 - 請檢查是否到達外部節流。 例如，當映像存放區設定為使用 Azure 儲存體時，上傳可能受到節流控制。
 
-問題：上傳封裝已順利完成，但[register-servicefabricapplicationtype 的](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps)時間已用盡。次
+問題：上傳封裝已順利完成，但登錄 [>get-servicefabricapplicationtype](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) 超時。嘗試：
 - 複製到映像存放區之前[壓縮封裝](service-fabric-package-apps.md#compress-a-package)。
 壓縮會減少檔案的大小和數目，而後者則可減少資料傳輸量和 Service Fabric 必須執行的工作。 上傳作業可能會變慢 (尤其是如果您包含壓縮時間)，但註冊和取消註冊應用程式類型會比較快。
 - 使用 `TimeoutSec` 參數指定 [Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) 的較大逾時。
@@ -373,7 +373,7 @@ DefaultParameters      : { "Stateless1_InstanceCount" = "-1" }
 ### <a name="deploy-application-package-with-many-files"></a>部署具有很多檔案的應用程式封裝
 
 問題︰具有很多檔案的應用程式封裝 (以千計的順序) [Register-servicefabricapplicationtype](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) 的逾時。
-請嘗試︰
+嘗試：
 - 複製到映像存放區之前[壓縮封裝](service-fabric-package-apps.md#compress-a-package)。 壓縮會減少檔案的數目。
 - 使用 `TimeoutSec` 參數指定 [Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) 的較大逾時。
 - 指定 [Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) 的 `Async` 參數。 當叢集接受命令時會傳回此命令，而且會繼續以非同步方式進行應用程式類型的註冊。

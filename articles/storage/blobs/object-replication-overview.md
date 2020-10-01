@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: ee76c1692049d5b25e85b6780fbcf78f7ebfdd2f
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 4105698198e6fb7f4e3d3526ff9590ebca4898f1
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90987052"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91612161"
 ---
 # <a name="object-replication-for-block-blobs"></a>區塊 blob 的物件複寫
 
@@ -72,7 +72,7 @@ ms.locfileid: "90987052"
 
 物件複寫會針對來源和目的地帳戶的讀取和寫入交易產生額外成本，以及將資料從來源帳戶複製到目的地帳戶的輸出費用，以及讀取處理變更摘要的費用。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [設定物件複寫](object-replication-configure.md)
 - [Azure Blob 儲存體中的變更摘要支援](storage-blob-change-feed.md)

@@ -1,5 +1,5 @@
 ---
-title: " (MSAL.NET) 的用戶端判斷提示 |Azure"
+title: 用戶端判斷提示 (MSAL.NET) |蔚藍
 titleSuffix: Microsoft identity platform
 description: 瞭解適用于 .NET 的 Microsoft 驗證程式庫中的機密用戶端應用程式的已簽署用戶端判斷提示支援 (MSAL.NET) 。
 services: active-directory
@@ -9,37 +9,37 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 11/18/2019
+ms.date: 9/30/2020
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: aeef0c4f139f9721449ba2c503f08fafa2c627d3
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: bb1ce0a8ba568dc651accdc5f8c84e9c2c980e73
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88166309"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91612807"
 ---
 # <a name="confidential-client-assertions"></a>機密用戶端判斷提示
 
-為了證明其身分識別，機密用戶端應用程式會以 Azure AD 交換秘密。 秘密可以是：
--  (應用程式密碼) 的用戶端秘密。
-- 憑證，用來建立包含標準宣告的帶正負號的判斷提示。
+為了證明其身分識別，機密用戶端應用程式會與 Azure AD 交換秘密。 密碼可以是：
+-  (應用程式密碼) 的用戶端密碼。
+- 憑證，用來建立包含標準宣告的帶正負號的宣告。
 
-這個秘密也可以是直接簽署的判斷提示。
+這個秘密也可以直接是帶正負號的判斷提示。
 
-MSAL.NET 有四種方法可將認證或判斷提示提供給機密用戶端應用程式：
+MSAL.NET 有四種方法可提供認證或判斷提示至機密用戶端應用程式：
 - `.WithClientSecret()`
 - `.WithCertificate()`
 - `.WithClientAssertion()`
 - `.WithClientClaims()`
 
 > [!NOTE]
-> 雖然您可以使用 `WithClientAssertion()` API 來取得機密用戶端的權杖，但我們不建議預設使用它，因為它更先進，而且是設計用來處理不常見的非常特定案例。 使用 `.WithCertificate()` API 可讓 MSAL.NET 為您處理這種情況。 此 api 可讓您在需要時自訂驗證要求，但所建立的預設判斷提示 `.WithCertificate()` 將足以滿足大部分的驗證案例。 在某些情況下，如果 MSAL.NET 無法在內部執行簽署作業，此 API 也可作為因應措施。
+> 雖然您可以使用 `WithClientAssertion()` API 來取得機密用戶端的權杖，但我們不建議您預設使用它，因為它較為先進，而且是設計來處理不常見的非常特定案例。 使用 `.WithCertificate()` API 可讓 MSAL.NET 為您處理這種情況。 此 api 可讓您視需要自訂驗證要求，但所建立的預設判斷提示 `.WithCertificate()` 將足以滿足大部分的驗證案例。 在某些情況下，此 API 也可用來做為因應措施，MSAL.NET 無法在內部執行簽署作業。
 
-### <a name="signed-assertions"></a>帶正負號的判斷提示
+### <a name="signed-assertions"></a>簽署的判斷提示
 
-已簽署的用戶端判斷提示會採用帶正負號的 JWT 格式，其承載包含 Azure AD，Base64 編碼的必要驗證宣告。 使用方式：
+帶正負號的用戶端判斷提示會採用已簽署的 JWT 格式，其中包含由 Azure AD （Base64 編碼）所規定的必要驗證宣告。 使用方式：
 
 ```csharp
 string signedClientAssertion = ComputeAssertion();
@@ -48,16 +48,16 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
                                           .Build();
 ```
 
-Azure AD 所需的宣告為：
+[Azure AD 所預期的宣告](active-directory-certificate-credentials.md)如下：
 
-宣告類型 | 值 | 描述
+宣告類型 | 值 | 說明
 ---------- | ---------- | ----------
-aud | `https://login.microsoftonline.com/{tenantId}/v2.0` | "Aud" (物件) 宣告識別 (JWT 用於此處的收件者 Azure AD) 請參閱 [RFC 7519，章節 4.1.3]
-exp | 星期四6月 27 2019 15:04:17 GMT + 0200 (浪漫日光節約時間)  | "exp" (到期時間) 宣告會識別到期時間，等於或晚於此時間都不得接受 JWT 以進行處理。 請參閱 [RFC 7519，第4.1.4 節]
-iss | ClientID | 「Iss」 (簽發者) 宣告會識別發出 JWT 的主體。 此宣告的處理是應用程式特有的。 「Iss」值是區分大小寫的字串，其中包含 StringOrURI 值。 [RFC 7519，區段 4.1.1]
-jti |  (Guid)  | "Jti" (JWT ID) 宣告會提供 JWT 的唯一識別碼。 識別碼值必須以確保不會意外地將相同值指派給不同資料物件的機率來指派：如果應用程式使用多個簽發者，則必須在不同簽發者所產生的值之間避免衝突。 "Jti" 宣告可以用來防止 JWT 重新執行。 "Jti" 值是區分大小寫的字串。 [RFC 7519，區段 4.1.7]
-nbf | 星期四6月 27 2019 14:54:17 GMT + 0200 (浪漫日光節約時間)  | "nbf" (生效時間) 宣告會識別生效時間，在此時間之前不得接受 JWT 以進行處理。 [RFC 7519，區段 4.1.5]
-sub | ClientID | "Sub" (subject) 宣告可識別 JWT 的主旨。 JWT 中的宣告通常是關於主體的陳述。 主旨值的範圍必須是在簽發者內容中為本地唯一的，或必須是全域唯一的。 請參閱 [RFC 7519，第4.1.2 節]
+aud | `https://login.microsoftonline.com/{tenantId}/v2.0` | 「Aud」 (物件) 宣告會識別 JWT 適用于此處 (的收件者 Azure AD) 請參閱 [RFC 7519，4.1.3 一節](https://tools.ietf.org/html/rfc7519#section-4.1.3)。  在此情況下，該收件者是 (login.microsoftonline.com) 的登入伺服器。
+exp | 1601519414 | "exp" (到期時間) 宣告會識別到期時間，等於或晚於此時間都不得接受 JWT 以進行處理。 請參閱 [RFC 7519，4.1.4 一節](https://tools.ietf.org/html/rfc7519#section-4.1.4)。  如此一來，就可以使用判斷提示，直到那次為止，因此最短為5-10 分鐘 `nbf` 。  Azure AD 不會限制 `exp` 目前的時間。 
+iss | ClientID | 「Iss」 (簽發者) 宣告可識別發出 JWT 的主體，在此案例中為您的用戶端應用程式。  使用 GUID 應用程式識別碼。
+jti |  (Guid)  | "Jti" (JWT ID) 宣告會提供 JWT 的唯一識別碼。 您必須指派識別碼值，以確保不會將相同的值不慎指派給不同的資料物件，因此會有一個明顯的可能性。如果應用程式使用多個簽發者，則在不同簽發者所產生的值之間也必須防止衝突。 "Jti" 值是區分大小寫的字串。 [RFC 7519，Section 4.1。7](https://tools.ietf.org/html/rfc7519#section-4.1.7)
+nbf | 1601519114 | "nbf" (生效時間) 宣告會識別生效時間，在此時間之前不得接受 JWT 以進行處理。 [RFC 7519，區段 4.1.5](https://tools.ietf.org/html/rfc7519#section-4.1.5)。  使用目前的時間是適當的。 
+sub | ClientID | 「子」 (主體) 宣告會識別 JWT 的主旨，在此案例中也是您的應用程式。 使用與相同的值 `iss` 。 
 
 以下是如何製作這些宣告的範例：
 
@@ -85,7 +85,7 @@ private static IDictionary<string, string> GetClaims()
 }
 ```
 
-以下說明如何製作已簽署的用戶端判斷提示：
+以下說明如何製作簽署的用戶端判斷提示：
 
 ```csharp
 string Encode(byte[] arg)
@@ -135,7 +135,7 @@ string GetSignedClientAssertion()
 
 ### <a name="alternative-method"></a>替代方法
 
-您也可以選擇使用[Microsoft.IdentityModel.JsonWebTokens](https://www.nuget.org/packages/Microsoft.IdentityModel.JsonWebTokens/)來為您建立判斷提示。 這段程式碼會更簡潔，如下列範例所示：
+您也可以選擇使用 [Microsoft.IdentityModel.JsonWebTokens](https://www.nuget.org/packages/Microsoft.IdentityModel.JsonWebTokens/) 來為您建立判斷提示。 程式碼會比較簡潔，如下列範例所示：
 
 ```csharp
         string GetSignedClientAssertion()
@@ -168,7 +168,7 @@ string GetSignedClientAssertion()
         }
 ```
 
-一旦您擁有已簽署的用戶端判斷提示之後，您就可以將它與 MSAL api 搭配使用，如下所示。
+當您有已簽署的用戶端判斷提示之後，您可以將它與 MSAL api 搭配使用，如下所示。
 
 ```csharp
             string signedClientAssertion = GetSignedClientAssertion();
@@ -181,7 +181,7 @@ string GetSignedClientAssertion()
 
 ### <a name="withclientclaims"></a>WithClientClaims
 
-`WithClientClaims(X509Certificate2 certificate, IDictionary<string, string> claimsToSign, bool mergeWithDefaultClaims = true)`根據預設，會產生一個帶正負號的判斷提示，其中包含 Azure AD 加上您想要傳送的其他用戶端宣告所預期的宣告。 以下是如何執行此動作的程式碼片段。
+`WithClientClaims(X509Certificate2 certificate, IDictionary<string, string> claimsToSign, bool mergeWithDefaultClaims = true)` 根據預設，會產生包含 Azure AD 所預期宣告的帶正負號的宣告，再加上您想要傳送的額外用戶端宣告。 以下是如何進行這項操作的程式碼片段。
 
 ```csharp
 string ipAddress = "192.168.1.2";
@@ -194,6 +194,6 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 
 ```
 
-如果您傳入字典中的其中一個宣告與其中一個強制宣告相同，則會將額外的宣告值納入考慮。 它會覆寫 MSAL.NET 所計算的宣告。
+如果您傳入的字典中的其中一個宣告與其中一個強制宣告相同，則會將額外的宣告值納入考慮。 它會覆寫 MSAL.NET 所計算的宣告。
 
-如果您想要提供自己的宣告，包括 Azure AD 所預期的必要宣告，請傳入 `false` `mergeWithDefaultClaims` 參數。
+如果您想要提供自己的宣告（包括 Azure AD 所預期的強制宣告），請傳入 `false` `mergeWithDefaultClaims` 參數。

@@ -10,13 +10,13 @@ ms.date: 06/11/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 74f4c30f7aa018502f3437fd4a577f8c2a9de491
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: e39548a923e76fc118dec4158398d02577ec20c5
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89077937"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91610053"
 ---
 # <a name="initiate-a-storage-account-failover"></a>起始儲存體帳戶容錯移轉
 
@@ -29,7 +29,7 @@ ms.locfileid: "89077937"
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 在您的儲存體帳戶上執行帳戶容錯移轉之前，請確定您的儲存體帳戶已設定為進行異地複寫。 您的儲存體帳戶可以使用下列任何一種冗余選項：
 
@@ -54,7 +54,7 @@ ms.locfileid: "89077937"
 1. 選取 [ **準備進行容錯移轉**]。
 1. 檢閱確認對話方塊。 在您準備就緒後，輸入**是**加以確認，並起始容錯移轉。
 
-    :::image type="content" source="media/storage-initiate-account-failover/portal-failover-confirm.png" alt-text="顯示帳戶容錯移轉的確認對話方塊的螢幕擷取畫面":::
+    :::image type="content" source="media/storage-initiate-account-failover/portal-failover-confirm.png" alt-text="顯示異地複寫和容錯移轉狀態的螢幕擷取畫面":::
 
 ## <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

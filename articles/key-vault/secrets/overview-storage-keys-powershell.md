@@ -8,12 +8,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/10/2019
-ms.openlocfilehash: dd54dd17e5a9a828935ad0d6ac3d713aaedd9535
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b667254ece93c083de95728abe0ddecd5cfed197
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91251587"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91612365"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-azure-powershell"></a>使用 Key Vault 和 Azure PowerShell 管理儲存體帳戶金鑰
 
@@ -26,7 +26,6 @@ Azure 儲存體帳戶會使用由帳戶名稱和金鑰組成的認證。 該金�
 - 系統永遠不會傳回金鑰值以回應呼叫者。
 - 只能允許 Key Vault 管理您的儲存體帳戶金鑰。 請勿自行管理金鑰，並避免干擾 Key Vault 程序。
 - 只有單一 Key Vault 物件方能管理儲存體帳戶金鑰。 不允許從多個物件進行金鑰管理。
-- 您可以要求 Key Vault 管理具有使用者主體的儲存體帳戶，而不是管理具有服務主體的儲存體帳戶。
 - 只能使用 Key Vault 重新產生金鑰。 不要手動重新產生儲存體帳戶金鑰。
 
 建議使用 Azure 儲存體與 Azure Active Directory (Azure AD) 整合，這是 Microsoft 的雲端式身分識別和存取管理服務。 Azure AD 整合適用於 [Azure Blob 和佇列](../../storage/common/storage-auth-aad.md)，並提供對 Azure 儲存體的 OAuth2 權杖型存取 (如同 Azure Key Vault)。

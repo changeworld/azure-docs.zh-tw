@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/11/2020
 ms.author: Zhchia
-ms.openlocfilehash: 53176114e8236ac8d8d38b1cf4c7472b0c18c08d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d5de8b8089f97696af8d05fd88989cbd1858193e
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91305591"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91611345"
 ---
 # <a name="tutorial-configure-cofense-recipient-sync-for-automatic-user-provisioning"></a>教學課程：設定自動使用者布建的 Cofense 收件者同步
 
@@ -53,7 +53,7 @@ ms.locfileid: "91305591"
 
     ![Recepient 同步 >tnc](media/cofense-provisioning-tutorial/recipient-sync-toc.png)
 
-3. 複製 [ **URL** ] 和 [ **權杖] 欄位**中的值。
+3. 複製 [ **URL** ] 和 [ **權杖** ] 欄位中的值。
 
     ![Recepient 同步處理](media/cofense-provisioning-tutorial/recipient-sync-getting-started.png)
 
@@ -116,23 +116,23 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
    |name.formatted|String|
    |name.givenName|String|
    |name.familyName|String|
-   |名稱. honorificSuffix|String|
-   |phoneNumbers [type eq "work"]。值|String|
-   |phoneNumbers [type eq "home"]. 值|String|
-   |phoneNumbers [type eq "other"]. 值|String|
-   |phoneNumbers [type eq "呼機"]. 值|String|
-   |phoneNumbers [type eq "mobile"]. 值|String|
-   |phoneNumbers [type eq "fax"]. 值|String|
-   |位址 [type eq "other"]。已格式化|String|
-   |位址 [type eq "work"]。已格式化|String|
-   |位址 [type eq "work"]。 streetAddress|String|
-   |位址 [type eq "work"]。位置|String|
-   |位址 [type eq "work"]. region|String|
-   |位址 [type eq "work"]。郵遞區號|String|
+   |名稱. honorificSuffix|字串|
+   |phoneNumbers [type eq "work"]。值|字串|
+   |phoneNumbers [type eq "home"]. 值|字串|
+   |phoneNumbers [type eq "other"]. 值|字串|
+   |phoneNumbers [type eq "呼機"]. 值|字串|
+   |phoneNumbers [type eq "mobile"]. 值|字串|
+   |phoneNumbers [type eq "fax"]. 值|字串|
+   |位址 [type eq "other"]。已格式化|字串|
+   |位址 [type eq "work"]。已格式化|字串|
+   |位址 [type eq "work"]。 streetAddress|字串|
+   |位址 [type eq "work"]。位置|字串|
+   |位址 [type eq "work"]. region|字串|
+   |位址 [type eq "work"]。郵遞區號|字串|
    |位址 [type eq "work"]。國家/地區|String|
    |title|String|
    |emails[type eq "work"].value|String|
-   |電子郵件 [type eq "home"]。值|String|
+   |電子郵件 [type eq "home"]。值|字串|
    |電子郵件 [type eq "other"]。值|String|
    |preferredLanguage|String|
    |nickName|String|

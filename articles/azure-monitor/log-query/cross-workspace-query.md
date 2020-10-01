@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/01/2020
-ms.openlocfilehash: e2f9430ae039cc54c3e6180eb8ea76791d17f67f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8eb163c95fb1426ebae8956d50f6d8f6aec6fd7f
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91285123"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91612077"
 ---
 # <a name="perform-log-query-in-azure-monitor-that-span-across-workspaces-and-apps"></a>在跨工作區和應用程式的 Azure 監視器中執行記錄查詢
 
@@ -143,5 +143,4 @@ applicationsScoping
 ## <a name="next-steps"></a>後續步驟
 
 - 檢閱[分析 Azure 監視器中的記錄資料](log-query-overview.md)，了解記錄查詢的簡短概觀，以及建置 Azure 監視器記錄資料結構的方式。
-- 檢閱 [Azure 監視器記錄查詢](query-language.md)，以檢視所有 Azure 監視器記錄查詢的資源。
 
