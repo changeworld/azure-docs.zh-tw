@@ -7,17 +7,17 @@ ms.service: sql-managed-instance
 ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: bonova
 ms.author: bonova
 ms.reviewer: sstein
 ms.date: 09/05/2019
-ms.openlocfilehash: c5ee1f1fbd55bfa44f78f2d1f0129b60be8ea34c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 5798220ad92a99f32f757ffa20f9233b8c79151b
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91325176"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91617429"
 ---
 # <a name="deploy-azure-sql-managed-instance-to-an-instance-pool"></a>將 Azure SQL 受控執行個體部署至實例集區
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -28,7 +28,7 @@ ms.locfileid: "91325176"
 
 下表顯示與實例集區相關的可用作業，以及它們在 Azure 入口網站和 PowerShell 中的可用性。
 
-|命令|Azure 入口網站|PowerShell|
+|Command|Azure 入口網站|PowerShell|
 |:---|:---|:---|
 |建立實例集區|否|是|
 |更新實例集區 (有限數目的屬性) |否 |是 |
@@ -256,8 +256,8 @@ $instanceOne | Set-AzSqlInstance -InstancePoolName "pool-mi-001" -PublicDataEndp
 ## <a name="next-steps"></a>後續步驟
 
 - 如需功能與比較清單，請參閱 [SQL 的一般功能](../database/features-comparison.md)。
-- 如需 VNet 設定的詳細資訊，請參閱 [SQL 受控執行個體 vnet](connectivity-architecture-overview.md)設定。
-- 如需建立受控實例，並從備份檔案還原資料庫的快速入門，請參閱 [建立受控實例](instance-create-quickstart.md)。
-- 如需使用 Azure 資料庫移轉服務進行遷移的教學課程，請參閱 [SQL 受控執行個體使用資料庫移轉服務進行遷移](../../dms/tutorial-sql-server-to-managed-instance.md)。
+- 如需 VNet 組態的詳細資訊，請參閱 [SQL 受控執行個體 VNet 組態](connectivity-architecture-overview.md)。
+- 如需建立受控執行個體，並從備份檔案還原資料庫的快速入門，請參閱[建立受控執行個體](instance-create-quickstart.md)。
+- 如需使用 Azure 資料庫移轉服務進行移轉的教學課程，請參閱[使用資料庫移轉服務的 SQL 受控執行個體移轉](../../dms/tutorial-sql-server-to-managed-instance.md)。
 - 若要使用內建的疑難排解智慧來進行 SQL 受控執行個體資料庫效能的 advanced monitoring，請參閱 [使用 Azure SQL 分析監視 AZURE SQL 受控執行個體](../../azure-monitor/insights/azure-sql.md)。
 - 如需定價資訊，請參閱 [SQL 受控執行個體定價](https://azure.microsoft.com/pricing/details/sql-database/managed/)。

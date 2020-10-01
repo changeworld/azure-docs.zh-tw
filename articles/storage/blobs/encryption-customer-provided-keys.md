@@ -10,16 +10,18 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 587a01f8b3d366f315813b70bb2ff83eeccd5be4
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: abdc83019205fc39e1e85a53da7e49f8a7d4f11c
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90994478"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91618721"
 ---
 # <a name="provide-an-encryption-key-on-a-request-to-blob-storage"></a>針對 Blob 儲存體的要求提供加密金鑰
 
 對 Azure Blob 儲存體提出要求的用戶端，可以選擇以每個要求為基礎提供加密金鑰。 在要求中包含加密金鑰可讓您更精確地控制 Blob 儲存體作業的加密設定。 客戶提供的金鑰可以儲存在 Azure Key Vault 或另一個金鑰存放區中。
+
+[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 ## <a name="encrypting-read-and-write-operations"></a>加密讀取和寫入作業
 
@@ -74,7 +76,7 @@ Azure 儲存體不會儲存或管理用戶端隨要求傳送的加密金鑰。 �
 >
 > 請務必保護您在安全金鑰存放區（例如 Azure Key Vault）的 Blob 儲存體要求中提供的加密金鑰。 如果您嘗試在沒有加密金鑰的容器或 blob 上進行寫入作業，此作業將會失敗，而且您將無法存取該物件。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [使用 .NET 在對 Blob 儲存體的要求上指定客戶提供的金鑰](storage-blob-customer-provided-key.md)
 - [待用資料的 Azure 儲存體加密](../common/storage-service-encryption.md)

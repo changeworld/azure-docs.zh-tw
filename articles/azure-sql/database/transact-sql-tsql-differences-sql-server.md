@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: single-database
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: reference
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/03/2018
-ms.openlocfilehash: fa10f97d0eb2f48e80d20f90a254c44c6e95a8e8
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 02b589eebb716f5a69b4db9f00faf12401b8de7f
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89436964"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91619000"
 ---
 # <a name="resolving-transact-sql-differences-during-migration-to-sql-database"></a>解決移轉至 SQL Database 期間的 Transact-SQL 差異
 
@@ -86,6 +86,6 @@ Transact-SQL 參考包括從 SQL Server 版本 2008 到目前版本的相關文�
 
 在某些情況下，文章的一般主旨可用於產品中，但產品之間會有些許差異。 依適當情況會在文章的中間點指出差異。 在某些情況下，文章的一般主旨可用於產品中，但產品之間會有些許差異。 依適當情況會在文章的中間點指出差異。 例如，SQL Database 中提供建立觸發程式文章。 但是伺服器層級觸發程式的 [ **所有伺服器** ] 選項，表示伺服器層級的觸發程式無法在 SQL Database 中使用。 請改用資料庫層級的觸發程序。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如需 SQL Database 所支援和不支援的功能清單，請參閱 [Azure SQL Database 功能比較](features-comparison.md)。 此頁面上的清單可補充該指引和功能文章，並將焦點放在 Transact-SQL 陳述式。

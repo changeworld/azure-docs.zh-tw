@@ -5,18 +5,18 @@ services: sql-database
 ms.service: sql-managed-instance
 ms.subservice: operations
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: reference
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, bonova, danil
 ms.date: 06/02/2020
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: 63aed3ce47a5499154041f067c292c656adcde6c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1298a1676d7a7ac0321ae768c3e596f481e80a8a
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91323170"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91617854"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>SQL Server & Azure SQL 受控執行個體之間的 t-sql 差異
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -188,7 +188,7 @@ SQL 受控執行個體無法存取檔案，所以無法建立密碼編譯提供�
 - SQL Database 服務) 所管理的 (不支援[服務主要金鑰備份](/sql/t-sql/statements/backup-service-master-key-transact-sql)。
 - SQL Database 服務) 管理的 (不支援[服務主要金鑰還原](/sql/t-sql/statements/restore-service-master-key-transact-sql)。
 
-## <a name="configuration"></a>設定
+## <a name="configuration"></a>組態
 
 ### <a name="buffer-pool-extension"></a>緩衝集區延伸
 
@@ -405,7 +405,7 @@ SQL 受控執行個體中連結的伺服器支援數量有限的目標：
 
 不支援參考 HDFS 或 Azure Blob 儲存體中檔案的外部資料表。 如需 PolyBase 的相關資訊，請參閱 [polybase](/sql/relational-databases/polybase/polybase-guide)。
 
-### <a name="replication"></a>複寫
+### <a name="replication"></a>Replication
 
 - 支援快照式和雙向複寫類型。 不支援合併式複寫、點對點複寫，以及可更新的訂閱。
 - [異動複寫](replication-transactional-overview.md) 適用于 SQL 受控執行個體上的公開預覽，但有一些限制：

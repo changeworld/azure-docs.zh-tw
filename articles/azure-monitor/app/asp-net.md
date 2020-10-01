@@ -1,150 +1,358 @@
 ---
-title: 使用 Azure Application Insights 設定 ASP.NET 的 Web 應用程式分析 | Microsoft Docs
+title: 使用 Azure 應用程式 Insights 設定 ASP.NET 監視 |Microsoft Docs
 description: 針對裝載在內部部署環境或 Azure 的 ASP.NET 網站，設定效能、可用性及使用者行為分析工具。
 ms.topic: conceptual
-ms.date: 05/08/2019
-ms.openlocfilehash: c07e7c8e7bd710cb591719fe8d53a3bad6ca2ee0
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.date: 09/30/2020
+ms.custom: contperfq1
+ms.openlocfilehash: 5f52f1febcc69723dae76e31d17b5a9a7e8c67bb
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90973783"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91616749"
 ---
-# <a name="set-up-application-insights-for-your-aspnet-website"></a>設定 ASP.NET 網站的 Application Insights
+# <a name="configure-application-insights-for-your-aspnet-website"></a>設定 ASP.NET 網站的 Application Insights
 
-此程序會設定 ASP.NET web 應用程式以將遙測傳送至 [Azure Application Insights](./app-insights-overview.md) 服務。 這適用於在您擁有的內部部署 IIS 伺服器或雲端中託管的 ASP.NET 應用程式。 取得圖表和功能強大的查詢語言可幫助您了解您應用程式的效能以及人員如何使用它，再加上發生失敗或效能問題時的自動警示。 許多開發人員發現這些功能本身就很棒，但是您也可以視需要擴充和自訂遙測。
-
-在 Visual Studio 中只需按幾下滑鼠即可進行安裝。 您可以選擇限制遙測的磁碟區來避免產生費用。 此功能可讓您實驗和偵錯，或監視沒有很多使用者的網站。 當您決定要繼續監視您的生產網站時，很容易在稍後提升限制。
+此程序會設定 ASP.NET web 應用程式以將遙測傳送至 [Azure Application Insights](./app-insights-overview.md) 服務。 它適用于在內部部署或雲端中裝載于您自己的 IIS 伺服器上的 ASP.NET 應用程式。 
 
 ## <a name="prerequisites"></a>Prerequisites
 若要將 Application Insights 新增至您的 ASP.NET 網站，您必須：
 
-- 使用下列工作負載，安裝 [Visual Studio 2019 for Windows](https://www.visualstudio.com/downloads/)：
-    - ASP.NET 和 Web 開發 (請不要取消核取選用元件)
+- 使用下列工作負載安裝 [適用于 Windows](https://www.visualstudio.com/downloads/) 的最新版本 Visual Studio 2019：
+    - ASP.NET 和 網頁程式開發。
     - Azure 開發
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 
-## <a name="step-1-add-the-application-insights-sdk"></a><a name="ide"></a> 步驟 1：新增 Application Insights SDK
+- 建立以 [工作區為基礎的 Application Insights 資源](create-workspace-resource.md)。
 
-> [!IMPORTANT]
-> 此範例中的螢幕擷取畫面是以 Visual Studio 2017 版本 15.9.9 版和更新版本為基礎。 新增 Application Insights 的體驗會因各種 Visual Studio 版本以及 ASP.NET 範本類型而有所不同。 舊版可能會有替代文字，例如「設定 Application Insights」。
+## <a name="create-a-basic-aspnet-web-app"></a>建立基本 ASP.NET web 應用程式
 
-在 [方案總管] 中以滑鼠右鍵按一下 Web 應用程式名稱，然後選擇 [新增] > [Application Insights 遙測]
+1. 啟動 Visual Studio 2019。
+2. 選取 [File] \(檔案\) >  [New] \(新增\) >  [Project] \(專案\)。
+3. 選取 [ **ASP.NET Web 應用程式 ( .NET Framework) c #**]。
+4. 輸入專案名稱 > **選取 [建立**]。
+5. 選取 [ **MVC**  >  **建立**]。 
 
-![醒目提示 [設定 Application Insights] 的 [方案總管] 螢幕擷取畫面](./media/asp-net/add-telemetry-new.png)
+## <a name="add-application-insights-automatically"></a>自動新增 Application Insights
 
-(根據您的 Application Insights SDK 版本，系統可能會提示您升級至最新的 SDK 版本。 如果出現提示，請選取 [更新 SDK]。)
+本節將引導您將 Application Insights 自動新增至以範本為基礎的 ASP.NET web 應用程式。 在 Visual Studio 中的 ASP.NET web 應用程式專案內：
 
-![螢幕擷取畫面：有新版的 Microsoft Application Insights SDK 可供使用。 醒目提示的更新 SDK](./media/asp-net/0002-update-sdk.png)
+1. 選取 [**新增 Application Insights 遙測**  >  **Application Insights Sdk (本機) **  >  **下一步**  >  **]**  >  **關閉**。
+2. 開啟 `ApplicationInsights.config` 檔案。 
+3. 在結束記號之前，請先 `</ApplicationInsights>` 加入一行，其中包含您 Application Insights 資源的檢測金鑰。  您可以在新建立的 Application Insights 資源的 [總覽] 窗格中，找到您在本文必要條件中所建立的檢測金鑰。
 
-Application Insights 設定畫面：
+    ```xml
+    <InstrumentationKey>your-instrumentation-key-goes-here</InstrumentationKey>
+    ```
+4. 選取 [**專案**  >  **管理 NuGet 套件**  >  **更新**] > 將每個 `Microsoft.ApplicationInsights` NuGet 套件更新為最新的穩定版本。   
+5. 選取 **IIS Express**，以執行您的應用程式。 將會啟動基本 ASP.NET 應用程式。 當您流覽網站遙測上的頁面時，將會傳送至 Application Insights。
 
-選取 **[馬上開始]** 。
+## <a name="add-application-insights-manually"></a>手動新增 Application Insights
 
-![螢幕擷取畫面顯示 [Application Insights] 頁面和 [開始] 按鈕。](./media/asp-net/00004-start-free.png)
+本節將引導您手動將 Application Insights 新增至以範本為基礎的 ASP.NET web 應用程式。 本節假設您使用以標準 ASP.NET Framework MVC web 應用程式範本為基礎的 web 應用程式。
 
-如果您想要設定資源群組，或資料的儲存位置，請按一下 [進行設定]。 資源群組用來控制資料的存取。 例如，如果您有數個應用程式組成相同系統時，您可能會將其 Application Insights 資料放在相同的資源群組中。
+1. 將下列 NuGet 套件及其相依性新增至專案：
 
- 選取 [註冊]。
+    - [`Microsoft.ApplicationInsights.WindowsServer`](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer)
+    - [`Microsoft.ApplicationInsights.Web`](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web)
+    - [`Microsoft.AspNet.TelemetryCorrelation`](https://www.nuget.org/packages/Microsoft.AspNet.TelemetryCorrelation)
 
-![[向 Application Insights 註冊您的應用程式] 頁面的螢幕擷取畫面](./media/asp-net/00005-register-ed.png)
+2. 在某些情況下， `ApplicationInsights.config` 系統會自動為您建立檔案。 如果檔案已存在，請跳至步驟 #4。 如果不是自動建立的，您就必須自行建立。 在專案的相同層級上 `Global.asax` ，建立名為的新檔案 `ApplicationInsights.config`
 
- 選取 [專案] > [管理 NuGet 套件] > [套件來源: nuget.org] > [確認]，以確認您有最新穩定版本的 Application Insights SDK。
+3. 將下列 XML 設定複製到新建立的檔案：
 
- 在偵錯期間和您發佈應用程式之後，遙測會傳送至 [Azure 入口網站](https://portal.azure.com)。
-> [!NOTE]
-> 如果您不想在您偵錯時將遙測傳送到入口網站，而只將 Application Insights SDK 新增至您的應用程式，但不在入口網站中設定資源。 您在偵錯時可在 Visual Studio 中檢視遙測。 稍後，您可以回到此設定頁面，或等到部署您的應用程式之後，[在執行階段開啟遙測](./status-monitor-v2-overview.md)。
+     ```xml
+     <?xml version="1.0" encoding="utf-8"?>
+    <ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings">
+      <TelemetryInitializers>
+        <Add Type="Microsoft.ApplicationInsights.DependencyCollector.HttpDependenciesParsingTelemetryInitializer, Microsoft.AI.DependencyCollector" />
+        <Add Type="Microsoft.ApplicationInsights.WindowsServer.AzureRoleEnvironmentTelemetryInitializer, Microsoft.AI.WindowsServer" />
+        <Add Type="Microsoft.ApplicationInsights.WindowsServer.BuildInfoConfigComponentVersionTelemetryInitializer, Microsoft.AI.WindowsServer" />
+        <Add Type="Microsoft.ApplicationInsights.Web.WebTestTelemetryInitializer, Microsoft.AI.Web" />
+        <Add Type="Microsoft.ApplicationInsights.Web.SyntheticUserAgentTelemetryInitializer, Microsoft.AI.Web">
+          <!-- Extended list of bots:
+                search|spider|crawl|Bot|Monitor|BrowserMob|BingPreview|PagePeeker|WebThumb|URL2PNG|ZooShot|GomezA|Google SketchUp|Read Later|KTXN|KHTE|Keynote|Pingdom|AlwaysOn|zao|borg|oegp|silk|Xenu|zeal|NING|htdig|lycos|slurp|teoma|voila|yahoo|Sogou|CiBra|Nutch|Java|JNLP|Daumoa|Genieo|ichiro|larbin|pompos|Scrapy|snappy|speedy|vortex|favicon|indexer|Riddler|scooter|scraper|scrubby|WhatWeb|WinHTTP|voyager|archiver|Icarus6j|mogimogi|Netvibes|altavista|charlotte|findlinks|Retreiver|TLSProber|WordPress|wsr-agent|http client|Python-urllib|AppEngine-Google|semanticdiscovery|facebookexternalhit|web/snippet|Google-HTTP-Java-Client-->
+          <Filters>search|spider|crawl|Bot|Monitor|AlwaysOn</Filters>
+        </Add>
+        <Add Type="Microsoft.ApplicationInsights.Web.ClientIpHeaderTelemetryInitializer, Microsoft.AI.Web" />
+        <Add Type="Microsoft.ApplicationInsights.Web.AzureAppServiceRoleNameFromHostNameHeaderInitializer, Microsoft.AI.Web" />
+        <Add Type="Microsoft.ApplicationInsights.Web.OperationNameTelemetryInitializer, Microsoft.AI.Web" />
+        <Add Type="Microsoft.ApplicationInsights.Web.OperationCorrelationTelemetryInitializer, Microsoft.AI.Web" />
+        <Add Type="Microsoft.ApplicationInsights.Web.UserTelemetryInitializer, Microsoft.AI.Web" />
+        <Add Type="Microsoft.ApplicationInsights.Web.AuthenticatedUserIdTelemetryInitializer, Microsoft.AI.Web" />
+        <Add Type="Microsoft.ApplicationInsights.Web.AccountIdTelemetryInitializer, Microsoft.AI.Web" />
+        <Add Type="Microsoft.ApplicationInsights.Web.SessionTelemetryInitializer, Microsoft.AI.Web" />
+      </TelemetryInitializers>
+      <TelemetryModules>
+        <Add Type="Microsoft.ApplicationInsights.DependencyCollector.DependencyTrackingTelemetryModule, Microsoft.AI.DependencyCollector">
+          <ExcludeComponentCorrelationHttpHeadersOnDomains>
+            <!-- 
+            Requests to the following hostnames will not be modified by adding correlation headers.         
+            Add entries here to exclude additional hostnames.
+            NOTE: this configuration will be lost upon NuGet upgrade.
+            -->
+            <Add>core.windows.net</Add>
+            <Add>core.chinacloudapi.cn</Add>
+            <Add>core.cloudapi.de</Add>
+            <Add>core.usgovcloudapi.net</Add>
+          </ExcludeComponentCorrelationHttpHeadersOnDomains>
+          <IncludeDiagnosticSourceActivities>
+            <Add>Microsoft.Azure.EventHubs</Add>
+            <Add>Microsoft.Azure.ServiceBus</Add>
+          </IncludeDiagnosticSourceActivities>
+        </Add>
+        <Add Type="Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.PerformanceCollectorModule, Microsoft.AI.PerfCounterCollector">
+          <!--
+          Use the following syntax here to collect additional performance counters:
+          
+          <Counters>
+            <Add PerformanceCounter="\Process(??APP_WIN32_PROC??)\Handle Count" ReportAs="Process handle count" />
+            ...
+          </Counters>
+          
+          PerformanceCounter must be either \CategoryName(InstanceName)\CounterName or \CategoryName\CounterName
+          
+          NOTE: performance counters configuration will be lost upon NuGet upgrade.
+          
+          The following placeholders are supported as InstanceName:
+            ??APP_WIN32_PROC?? - instance name of the application process  for Win32 counters.
+            ??APP_W3SVC_PROC?? - instance name of the application IIS worker process for IIS/ASP.NET counters.
+            ??APP_CLR_PROC?? - instance name of the application CLR process for .NET counters.
+          -->
+        </Add>
+        <Add Type="Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPulse.QuickPulseTelemetryModule, Microsoft.AI.PerfCounterCollector" />
+        <Add Type="Microsoft.ApplicationInsights.WindowsServer.AppServicesHeartbeatTelemetryModule, Microsoft.AI.WindowsServer" />
+        <Add Type="Microsoft.ApplicationInsights.WindowsServer.AzureInstanceMetadataTelemetryModule, Microsoft.AI.WindowsServer">
+          <!--
+          Remove individual fields collected here by adding them to the ApplicationInsighs.HeartbeatProvider 
+          with the following syntax:
+          
+          <Add Type="Microsoft.ApplicationInsights.Extensibility.Implementation.Tracing.DiagnosticsTelemetryModule, Microsoft.ApplicationInsights">
+            <ExcludedHeartbeatProperties>
+              <Add>osType</Add>
+              <Add>location</Add>
+              <Add>name</Add>
+              <Add>offer</Add>
+              <Add>platformFaultDomain</Add>
+              <Add>platformUpdateDomain</Add>
+              <Add>publisher</Add>
+              <Add>sku</Add>
+              <Add>version</Add>
+              <Add>vmId</Add>
+              <Add>vmSize</Add>
+              <Add>subscriptionId</Add>
+              <Add>resourceGroupName</Add>
+              <Add>placementGroupId</Add>
+              <Add>tags</Add>
+              <Add>vmScaleSetName</Add>
+            </ExcludedHeartbeatProperties>
+          </Add>
+                
+          NOTE: exclusions will be lost upon upgrade.
+          -->
+        </Add>
+        <Add Type="Microsoft.ApplicationInsights.WindowsServer.DeveloperModeWithDebuggerAttachedTelemetryModule, Microsoft.AI.WindowsServer" />
+        <Add Type="Microsoft.ApplicationInsights.WindowsServer.UnhandledExceptionTelemetryModule, Microsoft.AI.WindowsServer" />
+        <Add Type="Microsoft.ApplicationInsights.WindowsServer.UnobservedExceptionTelemetryModule, Microsoft.AI.WindowsServer">
+          <!--</Add>
+        <Add Type="Microsoft.ApplicationInsights.WindowsServer.FirstChanceExceptionStatisticsTelemetryModule, Microsoft.AI.WindowsServer">-->
+        </Add>
+        <Add Type="Microsoft.ApplicationInsights.Web.RequestTrackingTelemetryModule, Microsoft.AI.Web">
+          <Handlers>
+            <!-- 
+            Add entries here to filter out additional handlers: 
+            
+            NOTE: handler configuration will be lost upon NuGet upgrade.
+            -->
+            <Add>Microsoft.VisualStudio.Web.PageInspector.Runtime.Tracing.RequestDataHttpHandler</Add>
+            <Add>System.Web.StaticFileHandler</Add>
+            <Add>System.Web.Handlers.AssemblyResourceLoader</Add>
+            <Add>System.Web.Optimization.BundleHandler</Add>
+            <Add>System.Web.Script.Services.ScriptHandlerFactory</Add>
+            <Add>System.Web.Handlers.TraceHandler</Add>
+            <Add>System.Web.Services.Discovery.DiscoveryRequestHandler</Add>
+            <Add>System.Web.HttpDebugHandler</Add>
+          </Handlers>
+        </Add>
+        <Add Type="Microsoft.ApplicationInsights.Web.ExceptionTrackingTelemetryModule, Microsoft.AI.Web" />
+        <Add Type="Microsoft.ApplicationInsights.Web.AspNetDiagnosticTelemetryModule, Microsoft.AI.Web" />
+      </TelemetryModules>
+      <ApplicationIdProvider Type="Microsoft.ApplicationInsights.Extensibility.Implementation.ApplicationId.ApplicationInsightsApplicationIdProvider, Microsoft.ApplicationInsights" />
+      <TelemetrySinks>
+        <Add Name="default">
+          <TelemetryProcessors>
+            <Add Type="Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPulse.QuickPulseTelemetryProcessor, Microsoft.AI.PerfCounterCollector" />
+            <Add Type="Microsoft.ApplicationInsights.Extensibility.AutocollectedMetricsExtractor, Microsoft.ApplicationInsights" />
+            <Add Type="Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.AdaptiveSamplingTelemetryProcessor, Microsoft.AI.ServerTelemetryChannel">
+              <MaxTelemetryItemsPerSecond>5</MaxTelemetryItemsPerSecond>
+              <ExcludedTypes>Event</ExcludedTypes>
+            </Add>
+            <Add Type="Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.AdaptiveSamplingTelemetryProcessor, Microsoft.AI.ServerTelemetryChannel">
+              <MaxTelemetryItemsPerSecond>5</MaxTelemetryItemsPerSecond>
+              <IncludedTypes>Event</IncludedTypes>
+            </Add>
+          </TelemetryProcessors>
+          <TelemetryChannel Type="Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.ServerTelemetryChannel, Microsoft.AI.ServerTelemetryChannel" />
+        </Add>
+      </TelemetrySinks>
+      <!-- 
+        Learn more about Application Insights configuration with ApplicationInsights.config here: 
+        http://go.microsoft.com/fwlink/?LinkID=513840
+      -->
+      <InstrumentationKey>your-instrumentation-key-here</InstrumentationKey>
+    </ApplicationInsights>
+     ```
 
-## <a name="step-2-run-your-app"></a><a name="run"></a> 步驟 2：執行您的應用程式
-按 F5 執行您的應用程式。 開啟不同的頁面來產生一些遙測。
+4. 在結尾 `</ApplicationInsights>` 標記之前，新增您 Application Insights 資源的檢測金鑰。  您可以在新建立的 Application Insights 資源的 [總覽] 窗格中，找到您在本文必要條件中所建立的檢測金鑰。
 
-在 Visual Studio 中，您會看見已記錄的事件計數。
+    ```xml
+    <InstrumentationKey>your-instrumentation-key-goes-here</InstrumentationKey>
+    ```
 
-![Visual Studio 的螢幕擷取畫面。 偵錯期間會顯示 Application Insights 按鈕。](./media/asp-net/00006-Events.png)
+5. 在專案的相同層級上 `ApplicationInsights.config` ，使用名為的新 c # 檔案來建立名為的資料夾 `ErrorHandler` `AiHandleErrorAttribute.cs` 。 檔案的內容看起來會像這樣：
 
-## <a name="step-3-see-your-telemetry"></a>步驟 3：查看遙測
-您可以在 Visual Studio 或 Application Insights Web 入口網站中看到遙測。 在 Visual Studio 中搜尋遙測可協助您偵錯應用程式。 當系統作用中時監視效能及 web 入口網站的使用量。 
+    ```csharp
+    using System;
+    using System.Web.Mvc;
+    using Microsoft.ApplicationInsights;
+    
+    namespace WebApplication10.ErrorHandler //namespace will vary based on your project name
+    {
+        [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, Inherited = true, AllowMultiple = true)] 
+        public class AiHandleErrorAttribute : HandleErrorAttribute
+        {
+            public override void OnException(ExceptionContext filterContext)
+            {
+                if (filterContext != null && filterContext.HttpContext != null && filterContext.Exception != null)
+                {
+                    //If customError is Off, then AI HTTPModule will report the exception
+                    if (filterContext.HttpContext.IsCustomErrorEnabled)
+                    {   
+                        var ai = new TelemetryClient();
+                        ai.TrackException(filterContext.Exception);
+                    } 
+                }
+                base.OnException(filterContext);
+            }
+        }
+    }
+    
+    ```
 
-### <a name="see-your-telemetry-in-visual-studio"></a>在 Visual Studio 中查看遙測
+6. 在 `App_Start` 資料夾中開啟檔案， `FilterConfig.cs` 並將其變更為符合範例：
 
-在 Visual Studio 中，若要檢視 Application Insights 資料：  選取 [方案總管] > [已連線的服務] > 以滑鼠右鍵按一下 [Application Insights]，然後按一下 [搜尋即時遙測]。
+    ```csharp
+    using System.Web;
+    using System.Web.Mvc;
+    
+    namespace WebApplication10 //Namespace will vary based on project name
+    {
+        public class FilterConfig
+        {
+            public static void RegisterGlobalFilters(GlobalFilterCollection filters)
+            {
+                filters.Add(new ErrorHandler.AiHandleErrorAttribute());
+            }
+        }
+    }
+    ```
 
-在 Visual Studio 的 [Application Insights 搜尋] 視窗中，您可以在應用程式的資料中查看應用程式的伺服器端所產生的遙測。 試驗篩選器，然後按一下任何事件以查看更多詳細資料。
+7. 更新 Web.config 檔案，如下所示：
 
-![[Application Insights] 視窗中 [偵錯工作階段中的資料] 檢視的螢幕擷取畫面。](./media/asp-net/55.png)
+    ```xml
+    <?xml version="1.0" encoding="utf-8"?>
+    <!--
+      For more information on how to configure your ASP.NET application, please visit
+      https://go.microsoft.com/fwlink/?LinkId=301880
+      -->
+    <configuration>
+      <appSettings>
+        <add key="webpages:Version" value="3.0.0.0" />
+        <add key="webpages:Enabled" value="false" />
+        <add key="ClientValidationEnabled" value="true" />
+        <add key="UnobtrusiveJavaScriptEnabled" value="true" />
+      </appSettings>
+      <system.web>
+        <compilation debug="true" targetFramework="4.7.2" />
+        <httpRuntime targetFramework="4.7.2" />
+        <httpModules>
+          <add name="TelemetryCorrelationHttpModule" type="Microsoft.AspNet.TelemetryCorrelation.TelemetryCorrelationHttpModule, Microsoft.AspNet.TelemetryCorrelation" />
+          <add name="ApplicationInsightsWebTracking" type="Microsoft.ApplicationInsights.Web.ApplicationInsightsHttpModule, Microsoft.AI.Web" />
+        </httpModules>
+      </system.web>
+      <runtime>
+        <assemblyBinding xmlns="urn:schemas-microsoft-com:asm.v1">
+          <dependentAssembly>
+            <assemblyIdentity name="Antlr3.Runtime" publicKeyToken="eb42632606e9261f" />
+            <bindingRedirect oldVersion="0.0.0.0-3.5.0.2" newVersion="3.5.0.2" />
+          </dependentAssembly>
+          <dependentAssembly>
+            <assemblyIdentity name="Newtonsoft.Json" publicKeyToken="30ad4fe6b2a6aeed" />
+            <bindingRedirect oldVersion="0.0.0.0-12.0.0.0" newVersion="12.0.0.0" />
+          </dependentAssembly>
+          <dependentAssembly>
+            <assemblyIdentity name="System.Web.Optimization" publicKeyToken="31bf3856ad364e35" />
+            <bindingRedirect oldVersion="1.0.0.0-1.1.0.0" newVersion="1.1.0.0" />
+          </dependentAssembly>
+          <dependentAssembly>
+            <assemblyIdentity name="WebGrease" publicKeyToken="31bf3856ad364e35" />
+            <bindingRedirect oldVersion="0.0.0.0-1.6.5135.21930" newVersion="1.6.5135.21930" />
+          </dependentAssembly>
+          <dependentAssembly>
+            <assemblyIdentity name="System.Web.Helpers" publicKeyToken="31bf3856ad364e35" />
+            <bindingRedirect oldVersion="1.0.0.0-3.0.0.0" newVersion="3.0.0.0" />
+          </dependentAssembly>
+          <dependentAssembly>
+            <assemblyIdentity name="System.Web.WebPages" publicKeyToken="31bf3856ad364e35" />
+            <bindingRedirect oldVersion="1.0.0.0-3.0.0.0" newVersion="3.0.0.0" />
+          </dependentAssembly>
+          <dependentAssembly>
+            <assemblyIdentity name="System.Web.Mvc" publicKeyToken="31bf3856ad364e35" />
+            <bindingRedirect oldVersion="1.0.0.0-5.2.7.0" newVersion="5.2.7.0" />
+          </dependentAssembly>
+          <dependentAssembly>
+            <assemblyIdentity name="System.Memory" publicKeyToken="cc7b13ffcd2ddd51" culture="neutral" />
+            <bindingRedirect oldVersion="0.0.0.0-4.0.1.1" newVersion="4.0.1.1" />
+          </dependentAssembly>
+        </assemblyBinding>
+      </runtime>
+      <system.codedom>
+        <compilers>
+          <compiler language="c#;cs;csharp" extension=".cs" type="Microsoft.CodeDom.Providers.DotNetCompilerPlatform.CSharpCodeProvider, Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" warningLevel="4" compilerOptions="/langversion:default /nowarn:1659;1699;1701" />
+          <compiler language="vb;vbs;visualbasic;vbscript" extension=".vb" type="Microsoft.CodeDom.Providers.DotNetCompilerPlatform.VBCodeProvider, Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" warningLevel="4" compilerOptions="/langversion:default /nowarn:41008 /define:_MYTYPE=\&quot;Web\&quot; /optionInfer+" />
+        </compilers>
+      </system.codedom>
+      <system.webServer>
+        <validation validateIntegratedModeConfiguration="false" />
+        <modules>
+          <remove name="TelemetryCorrelationHttpModule" />
+          <add name="TelemetryCorrelationHttpModule" type="Microsoft.AspNet.TelemetryCorrelation.TelemetryCorrelationHttpModule, Microsoft.AspNet.TelemetryCorrelation" preCondition="managedHandler" />
+          <remove name="ApplicationInsightsWebTracking" />
+          <add name="ApplicationInsightsWebTracking" type="Microsoft.ApplicationInsights.Web.ApplicationInsightsHttpModule, Microsoft.AI.Web" preCondition="managedHandler" />
+        </modules>
+      </system.webServer>
+    </configuration>
+    
+    ```
 
-> [!Tip]
-> 如果您沒有看到任何資料，請確定時間範圍正確，然後按一下 [搜尋] 圖示。
+您現在已成功設定伺服器端應用程式監視。 如果您執行 web 應用程式，您將能夠看到遙測開始出現在 Application Insights 中。
 
-[深入了解 Visual Studio 中的 Application Insights 工具](./visual-studio.md)。
+## <a name="add-client-side-monitoring"></a>加入用戶端監視
 
-<a name="monitor"></a>
-### <a name="see-telemetry-in-web-portal"></a>請參閱 web 入口網站中的遙測
+上述各節提供自動和手動設定伺服器端監視的方法指引。 若要新增用戶端監視，您將需要使用用戶端 [JAVASCRIPT SDK](javascript.md)。 您可以藉由在頁面的 HTML 結束記號之前新增 [JavaScript 程式碼片段](javascript.md#snippet-based-setup) ，來監視任何網頁的用戶端交易 `</head>` 。 
 
-您也可以在 Application Insights Web 入口網站中看到遙測 (除非您選擇只安裝 SDK)。 此入口網站中的圖表、分析工具和跨元件檢視比 Visual Studio 還多。 此入口網站也提供警示。
+雖然可以手動將程式碼片段加入至每個 HTML 網頁的標頭中，但建議您改為將程式碼片段加入至主頁面，這會將程式碼片段插入至網站的所有頁面。 針對本文中以範本為基礎的 ASP.NET MVC 應用程式，系統會呼叫您需要編輯的檔案， `_Layout.cshtml` 並在 [共用的**視圖**] 下找到它  >  ** **。
 
-開啟 Application Insights 資源。 您可以登入 [Azure 入口網站](https://portal.azure.com/)加以尋找，或選取 [方案總管] > [已連線的服務] > 以滑鼠右鍵按一下 [Application Insights] > [開啟 Application Insights 入口網站]，而移至該處。
+若要新增用戶端監視，請開啟檔案 `_Layout.cshtml` ，並遵循用戶端 JAVASCRIPT SDK 設定文章中的 [程式碼片段型安裝指示](javascript.md#snippet-based-setup) 。
 
-入口網站會從您的應用程式開啟遙測檢視。
+## <a name="troubleshooting"></a>疑難排解
 
-![Application Insights 概觀頁面的螢幕擷取畫面](./media/asp-net/007.png)
-
-在入口網站中，按一下任何圖格或圖表以查看詳細資料。
-
-## <a name="step-4-publish-your-app"></a>步驟 4：發佈您的應用程式
-將您的應用程式發佈至 IIS 伺服器或 Azure。 監看 [即時計量串流](./live-stream.md) 以確定一切順利執行。
-
-您的遙測會累積在 Application Insights 入口網站，您可以在此監視計量，搜尋您的遙測。 您也可以使用功能強大的 [Kusto 查詢語言](/azure/kusto/query/)，分析使用狀況和效能或尋找特定事件。
-
-您也可以繼續在 [Visual Studio](./visual-studio.md) 中，以診斷搜尋和[趨勢](./visual-studio-trends.md)等工具來分析您的遙測。
-
-> [!NOTE]
-> 如果應用程式傳送足夠的遙測資料達到[節流限制](./pricing.md#limits-summary)，則會切換為自動[取樣](./sampling.md)。 取樣可減少從應用程式傳送的遙測數量，同時為供診斷之用保留相互關聯的資料。
->
->
-
-## <a name="youre-all-set"></a><a name="land"></a> 您全都準備好了
-
-恭喜！ 您在應用程式中安裝了 Application Insights 套件，並將其設定為將遙測傳送至 Azure 上的 Application Insights 服務。
-
-接收您應用程式遙測的 Azure 資源會由檢測金鑰識別。 您可以在 ApplicationInsights.config 檔案中找到此金鑰。
-
-
-## <a name="upgrade-to-future-sdk-versions"></a>升級至未來的 SDK 版本
-
-* [版本資訊](./release-notes.md)
-
-若要升級至新版本的 SDK，請開啟 **NuGet 套件管理員**，並篩選已安裝的套件。 選取 **Microsoft.ApplicationInsights.Web**，然後選擇 [升級]。
-
-如果您已對 ApplicationInsights.config 進行任何的自訂，請在升級前儲存複本。 然後，將您的變更合併至新版本中。
+目前的 Visual Studio 2019 版本中有一個已知問題，當您將檢測金鑰儲存在使用者密碼中時，會中斷以 .NET Framework 為基礎的應用程式，而金鑰最後必須硬式編碼到 applicationinsights.config 檔中，才能解決這個錯誤。 本文的設計目的是為了避免此問題，不使用使用者秘密。  
 
 ## <a name="next-steps"></a>後續步驟
 
-如果您對下列內容感興趣，請查看其他主題︰
+* 加入綜合交易以測試您的網站是否可透過 [可用性監視](monitor-web-app-availability.md)從全球各地取得。
+* [設定取樣](sampling.md) 以協助減少遙測流量和資料儲存體成本。
 
-* [在執行階段檢測 Web 應用程式](./monitor-performance-live-website-now.md)
-* [Azure 雲端服務](./cloudservices.md)
-
-### <a name="more-telemetry"></a>更多遙測
-
-* **[瀏覽器和頁面載入資料](./javascript.md)** - 在您的網頁中插入程式碼片段。
-* **[取得更詳細的相依性和例外狀況監視](./monitor-performance-live-website-now.md)** - 在您的伺服器上安裝狀態監視器。
-* **[撰寫自訂事件](./api-custom-events-metrics.md)** 以計數、計時或測量使用者動作。
-* **[取得記錄資料](./asp-net-trace-logs.md)** - 將記錄資料與您的遙測相互關聯。
-
-### <a name="analysis"></a>分析
-
-* **[在 Visual Studio 中使用 Application Insights](./visual-studio.md)**<br/>包括使用遙測來偵錯、診斷搜尋及鑽研程式碼的相關資訊。
-* **[分析 - ](../log-query/get-started-portal.md)** - 功能強大的查詢語言。
-
-### <a name="alerts"></a>警示
-
-* [可用性測試](./monitor-web-app-availability.md)：建立測試，以確保網路上看得見您的網站。
-* [智慧型診斷](./proactive-diagnostics.md)︰這些測試會自動執行，您不需要採取任何動作來設定它們。 它們會讓您知道應用程式是否有不尋常的失敗要求率。
-* [計量警示](../platform/alerts-log.md)：設定警示以在計量超出臨界值時警告您。 您可以在撰寫於程式碼中的自訂度量上設定它們。
-
-### <a name="automation"></a>自動化
-
-* [自動建立 Application Insights 資源](./powershell.md)
 

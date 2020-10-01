@@ -7,17 +7,17 @@ ms.service: sql-managed-instance
 ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: reference
 author: bonova
 ms.author: bonova
 ms.reviewer: sstein, jovanpop, sachinp
 ms.date: 09/14/2020
-ms.openlocfilehash: c563862c777dd9b5bf4c9f31155aa65c430acd1a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 71392b652f305f085e8eddbfe75e0585a756bc4a
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91323230"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91618109"
 ---
 # <a name="overview-of-azure-sql-managed-instance-resource-limits"></a>Azure SQL 受控執行個體資源限制總覽
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -110,7 +110,7 @@ SQL 受控執行個體有兩個服務層級： [一般用途](../database/servic
 
 此外，也有實例層級限制的最大記錄寫入輸送量 (這是 22 MB/s) ，因此您可能無法在整個記錄檔上到達最大檔案，因為您達到實例輸送量限制。
 
-## <a name="supported-regions"></a>支援區域
+## <a name="supported-regions"></a>支援的區域
 
 SQL 受控執行個體只能在 [支援的區域](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all)中建立。 若要在目前不支援的區域中建立 SQL 受控執行個體，您可以透過 [Azure 入口網站傳送支援要求](../database/quota-increase-request.md)。
 

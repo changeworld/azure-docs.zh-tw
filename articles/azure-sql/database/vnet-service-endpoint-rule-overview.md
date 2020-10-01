@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: security
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: 827d66b51aa2080c4fb10209439d7781ddf787a7
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 1e8810e8b0c02aec33f55fb8f0689eec3c5bad8f
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89436920"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91616698"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-servers-in-azure-sql-database"></a>在 Azure SQL Database 中使用伺服器的虛擬網路服務端點和規則
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -280,7 +280,7 @@ SQL VNet 動作的 PowerShell cmdlet 會在內部呼叫 REST API。 您可以直
 - [Azure 虛擬網路服務端點][vm-virtual-network-service-endpoints-overview-649d]
 - [伺服器層級和資料庫層級防火牆規則][sql-db-firewall-rules-config-715d]
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [使用 PowerShell 來建立虛擬網路服務端點，然後使用 Azure SQL Database 的虛擬網路規則。][sql-db-vnet-service-endpoint-rule-powershell-md-52d]
 - [虛擬網路規則：的作業][rest-api-virtual-network-rules-operations-862r] (使用 REST API)

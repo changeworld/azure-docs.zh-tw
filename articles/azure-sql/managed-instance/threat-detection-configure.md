@@ -7,17 +7,17 @@ ms.service: sql-managed-instance
 ms.subservice: security
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: rmatchoro
 ms.author: ronmat
 ms.reviewer: vanto
 ms.date: 09/21/2020
-ms.openlocfilehash: d81550f5c6906e409675002fde670db3734de883
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: d2ea14356bf85c795769f1d406f1571f36adaa38
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90885048"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91617891"
 ---
 # <a name="configure-advanced-threat-protection-in-azure-sql-managed-instance"></a>在 Azure SQL 受控執行個體中設定 Advanced 威脅防護
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -39,7 +39,7 @@ ms.locfileid: "90885048"
    - 選取您要設定的 **Advanced 威脅防護類型** 。 深入瞭解 [Advanced 威脅防護警示](../database/threat-detection-overview.md)。
 4. 按一下 [ **儲存** ]，以儲存新的或更新的 Azure DEFENDER for SQL 原則。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 深入瞭解 [先進的威脅防護](../database/threat-detection-overview.md)。
 - 若要瞭解受控實例，請參閱 [什麼是 AZURE SQL 受控執行個體](sql-managed-instance-paas-overview.md)。

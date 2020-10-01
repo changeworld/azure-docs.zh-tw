@@ -5,12 +5,12 @@ author: erscorms
 ms.author: erscor
 ms.date: 02/11/2020
 ms.topic: reference
-ms.openlocfilehash: e6b12c2bac4a9732f868f6a6ac3491ef993f54c3
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 61085a5d28fcd74bbf6a393ddc0731e36094a63f
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90976565"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91617493"
 ---
 # <a name="limitations"></a>限制
 
@@ -28,10 +28,12 @@ ms.locfileid: "90976565"
 
 ## <a name="geometry"></a>幾何形狀
 
-* 資產中允許的材質總計：65,535。 如需詳細資訊，請參閱 [資料消除重複](../how-tos/conversion/configure-model-conversion.md#material-de-duplication) 。
-* 單一材質的最大維度： 16384 x 16384。 較大的來源紋理將會由轉換程式縮小。
+* **動畫：** 動畫僅限用來製作遊戲物件的個別轉換動畫。 不支援具有外觀或頂點動畫的框架動畫。 不會保留來源資產檔案的動畫追蹤。 相反地，物件轉換動畫必須由用戶端程式代碼驅動。
+* **自訂著色器：** 不支援撰寫自訂著色器。 只能使用內建的 [色材質](../overview/features/color-materials.md) 或 [.pbr 材質](../overview/features/pbr-materials.md) 。
+* 資產中**的相異材質數目上限**：65535。 如需有關自動減少資料計數的詳細資訊，請參閱「 [資料重復資料](../how-tos/conversion/configure-model-conversion.md#material-de-duplication) 刪除」一章。
+* **單一材質的最大維度**： 16384 x 16384。 轉換程式會減少較大來源紋理的大小。
 
-## <a name="overall-number-of-polygons"></a>多邊形的整體數目
+### <a name="overall-number-of-polygons"></a>多邊形的整體數目
 
 所有已載入模型允許的多邊形數目取決於傳遞給[工作階段管理 REST API](../how-tos/session-rest-api.md#create-a-session) 的 VM 大小：
 
@@ -48,6 +50,6 @@ ms.locfileid: "90976565"
 
 * Win32/x64 是唯一支援的 Win32 平臺。 不支援 Win32/x86。
 
-**Hololens 2**
+**HoloLens 2**
 
 * 不支援[從 PV 相機轉譯](https://docs.microsoft.com/windows/mixed-reality/mixed-reality-capture-for-developers#render-from-the-pv-camera-opt-in)功能。

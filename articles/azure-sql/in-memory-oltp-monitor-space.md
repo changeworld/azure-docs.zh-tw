@@ -6,19 +6,19 @@ ms.service: sql-database
 ms.subservice: performance
 ms.custom: sqldbrb=2
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: juliemsft
 ms.author: jrasnick
 ms.reviewer: genemi
 ms.date: 01/25/2019
-ms.openlocfilehash: a4747fcd3a68c91e10d13a03adcbc4930bd9d759
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2134cf1fda5f0f1699feb46582813d198304f92e
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84345252"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91616375"
 ---
-# <a name="monitor-in-memory-oltp-storage-in-azure-sql-database-and-azure-sql-managed-instance"></a>監視 Azure SQL Database 和 Azure SQL 受控執行個體中的記憶體內部 OLTP 儲存體
+# <a name="monitor-in-memory-oltp-storage-in-azure-sql-database-and-azure-sql-managed-instance"></a>在 Azure SQL Database 和 Azure SQL 受控執行個體中監視記憶體內部 OLTP 儲存體
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
 
 使用 [記憶體內部 OLTP](in-memory-oltp-overview.md)時，記憶體最佳化資料表中的資料和資料表變數位於記憶體內部 OLTP 儲存體中。
@@ -30,14 +30,14 @@ ms.locfileid: "84345252"
 - [以 DTU 為基礎的資源限制-單一資料庫](database/resource-limits-dtu-single-databases.md)
 - [以 DTU 為基礎的資源限制-彈性集區](database/resource-limits-dtu-elastic-pools.md)
 - [以虛擬核心為基礎的資源限制 - 單一資料庫](database/resource-limits-vcore-single-databases.md)
-- [vCore 為基礎的資源限制-彈性集區](database/resource-limits-vcore-elastic-pools.md)
-- [vCore 為基礎的資源限制-受控實例](managed-instance/resource-limits.md)
+- [以 vCore 為基礎的資源限制-彈性集區](database/resource-limits-vcore-elastic-pools.md)
+- [以 vCore 為基礎的資源限制-受控實例](managed-instance/resource-limits.md)
 
-估計記憶體優化資料表的記憶體需求，其運作方式與在 Azure SQL Database 和 Azure SQL 受控執行個體中的 SQL Server 相同。 請花幾分鐘的時間來審查[估計的記憶體需求](/sql/relational-databases/in-memory-oltp/estimate-memory-requirements-for-memory-optimized-tables)。
+估計記憶體優化資料表的記憶體需求，其運作方式與 Azure SQL Database 和 Azure SQL 受控執行個體中的 SQL Server 相同。 請花幾分鐘的時間查看 [估計的記憶體需求](/sql/relational-databases/in-memory-oltp/estimate-memory-requirements-for-memory-optimized-tables)。
 
 資料表和資料表變數資料列以及索引，都會計入最大的使用者資料大小。 此外，ALTER TABLE 需要足夠的空間來建立新版的完整資料表及其索引。
 
-超過此限制之後，插入和更新作業可能會開始失敗，並在 Azure SQL 受控執行個體的 Azure SQL Database 和資料庫中的單一資料庫發生錯誤41823，而 Azure SQL Database 中的彈性集區錯誤41840。 屆時您需要將資料刪除以回收記憶體，或將資料庫的服務層級或計算大小升級。
+一旦超過此限制，在 Azure SQL 受控執行個體的 Azure SQL Database 和資料庫中的單一資料庫，插入和更新作業可能會開始失敗，並出現錯誤41823，Azure SQL Database 中的彈性集區的錯誤41840。 屆時您需要將資料刪除以回收記憶體，或將資料庫的服務層級或計算大小升級。
 
 ## <a name="monitoring-and-alerting"></a>監視和警示
 
@@ -69,4 +69,4 @@ ms.locfileid: "84345252"
 
 ## <a name="next-steps"></a>後續步驟
 
-如需監視指引，請參閱[使用動態管理檢視進行監視](database/monitoring-with-dmvs.md)。
+如需監視指引，請參閱 [使用動態管理檢視進行監視](database/monitoring-with-dmvs.md)。

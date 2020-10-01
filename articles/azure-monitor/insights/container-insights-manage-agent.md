@@ -3,12 +3,12 @@ title: 如何管理適用於容器的 Azure 監視器代理程式 | Microsoft Do
 description: 本文說明如何利用適用於容器的 Azure 監視器所使用的容器化 Log Analytics 代理程式來管理最常見的維護工作。
 ms.topic: conceptual
 ms.date: 07/21/2020
-ms.openlocfilehash: 1a397dbc5ebc4952b09c504b70df6ad99c00b216
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b656b0cc89e40dd732def4ebf56dceae69a033b0
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87041272"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91618432"
 ---
 # <a name="how-to-manage-the-azure-monitor-for-containers-agent"></a>如何管理適用於容器的 Azure 監視器代理程式
 
@@ -30,12 +30,12 @@ ms.locfileid: "87041272"
 
 若要安裝新版的代理程式，請依照[使用 Azure CLI 啟用監視](container-insights-enable-new-cluster.md#enable-using-azure-cli)一文中說明的步驟，使用 Azure CLI 完成此程序。  
 
-啟用監視之後，可能需要約 15 分鐘的時間才能檢視叢集的更新健康情況計量。 若要確認代理程式已成功升級，您可以執行下列其中一項：
+啟用監視之後，可能需要約 15 分鐘的時間才能檢視叢集的更新健康情況計量。 若要確認代理程式已順利升級，您可以執行下列其中一項：
 
-* 執行命令： `kubectl get pod <omsagent-pod-name> -n kube-system -o=jsonpath='{.spec.containers[0].image}'` 。 在傳回的狀態中，請注意輸出之 [*容器*] 區段中 [omsagent] 下的 [**影像**] 值。
-* 在 [**節點**] 索引標籤上，選取叢集節點，然後在右側的 [**屬性**] 窗格中，記下 [**代理程式映射標記**] 底下的值。
+* 執行命令： `kubectl get pod <omsagent-pod-name> -n kube-system -o=jsonpath='{.spec.containers[0].image}'` 。 在傳回的狀態中，記下輸出的*容器*區段中 omsagent 的 [**影像**] 底下的值。
+* 在 [ **節點** ] 索引標籤上，選取叢集節點，並在右邊的 [ **屬性** ] 窗格中，記下 [ **代理程式映射**標籤] 下的值。
 
-所顯示的代理程式版本應符合 [[發行歷程記錄](https://github.com/microsoft/docker-provider/tree/ci_feature_prod)] 頁面上所列的最新版本。
+所顯示的代理程式版本應該符合 [發行記錄](https://github.com/microsoft/docker-provider/tree/ci_feature_prod) 頁面上所列的最新版本。
 
 ### <a name="upgrade-agent-on-hybrid-kubernetes-cluster"></a>在混合式 Kubernetes 叢集上升級代理程式
 
@@ -52,7 +52,7 @@ $ helm upgrade --name myrelease-1 \
 --set omsagent.secret.wsid=<your_workspace_id>,omsagent.secret.key=<your_workspace_key>,omsagent.env.clusterName=<my_prod_cluster> incubator/azuremonitor-containers
 ```
 
-如果 Log Analytics 工作區位於 Azure 中國世紀，請執行下列命令：
+如果 Log Analytics 工作區位於 Azure 中國的世紀，請執行下列命令：
 
 ```console
 $ helm upgrade --name myrelease-1 \
@@ -75,23 +75,25 @@ $ helm upgrade --name myrelease-1 \
 >
 
 ```console
-$ helm upgrade --name myrelease-1 \
---set omsagent.secret.wsid=<your_workspace_id>,omsagent.secret.key=<your_workspace_key>,omsagent.env.clusterId=<azureAroV4ResourceId> incubator/azuremonitor-containers
+curl -o upgrade-monitoring.sh -L https://aka.ms/upgrade-monitoring-bash-script
+export azureAroV4ClusterResourceId="/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.RedHatOpenShift/OpenShiftClusters/<clusterName>"
+bash upgrade-monitoring.sh --resource-id $ azureAroV4ClusterResourceId
 ```
 
-### <a name="upgrade-agent-on-azure-arc-enabled-kubernetes"></a>已啟用 Azure Arc 的 Kubernetes 上的升級代理程式
+如需使用服務主體搭配此命令的詳細資訊，請參閱 **使用服務主體** 在 [啟用 Azure Arc 啟用 Kubernetes](container-insights-enable-arc-enabled-clusters.md#enable-using-bash-script) 叢集的監視。
 
-執行下列命令，以在沒有 proxy 端點的 Azure Arc 啟用 Kubernetes 叢集上升級代理程式。
+### <a name="upgrade-agent-on-azure-arc-enabled-kubernetes"></a>Azure Arc 啟用 Kubernetes 上的升級代理程式
+
+執行下列命令，在已啟用 Azure Arc 的 Kubernetes 叢集上升級代理程式。
 
 ```console
-$ helm upgrade --install azmon-containers-release-1  –set omsagent.secret.wsid=<your_workspace_id>,omsagent.secret.key=<your_workspace_key>,omsagent.env.clusterId=<resourceIdOfAzureArcK8sCluster>
+curl -o upgrade-monitoring.sh -L https://aka.ms/upgrade-monitoring-bash-script
+export azureArcClusterResourceId="/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Kubernetes/connectedClusters/<clusterName>"
+bash upgrade-monitoring.sh --resource-id $azureArcClusterResourceId
 ```
 
-當指定 proxy 端點時，請執行下列命令來升級代理程式。 如需 proxy 端點的詳細資訊，請參閱[設定 proxy 端點](container-insights-enable-arc-enabled-clusters.md#configure-proxy-endpoint)。
+如需使用服務主體搭配此命令的詳細資訊，請參閱 **使用服務主體** 在 [啟用 Azure Arc 啟用 Kubernetes](container-insights-enable-arc-enabled-clusters.md#enable-using-bash-script) 叢集的監視。
 
-```console
-$ helm upgrade –name azmon-containers-release-1 –set omsagent.proxy=<proxyEndpoint>,omsagent.secret.wsid=<your_workspace_id>,omsagent.secret.key=<your_workspace_key>,omsagent.env.clusterId=<resourceIdOfAzureArcK8sCluster>
-```
 
 ## <a name="how-to-disable-environment-variable-collection-on-a-container"></a>如何在容器上停用收集環境變數
 

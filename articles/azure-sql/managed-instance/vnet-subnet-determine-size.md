@@ -7,17 +7,17 @@ ms.service: sql-managed-instance
 ms.subservice: operations
 ms.custom: seo-lt-2019, sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova
 ms.date: 02/22/2019
-ms.openlocfilehash: 04f0fca06c2e50ef6d99d51c03e58b468a476e9d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 156a4c74eea24b20c28df88be85cb32c0ebe2981
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91323102"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91617633"
 ---
 # <a name="determine-required-subnet-size--range-for-azure-sql-managed-instance"></a>判斷 Azure SQL 受控執行個體所需的子網大小 & 範圍
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -28,7 +28,7 @@ Azure SQL 受控執行個體必須部署在 Azure [虛擬網路 (VNet) ](../../v
 
 當您建立受控實例時，Azure 會根據您在布建期間選取的層級，配置數部虛擬機器。 因為這些虛擬機器與您的子網路相關聯，所以它們需要 IP 位址。 為了確保正常作業和服務維護期間的高可用性，Azure 可能會配置額外的虛擬機器。 因此，子網中所需的 IP 位址數目大於該子網中的受控實例數目。
 
-根據設計，受控實例在子網中至少需要32個 IP 位址。 如此一來，當您定義子網 IP 範圍時，就可以使用最小的子網路遮罩/27。 建議您仔細規劃受控實例部署的子網大小。 在規劃期間應考慮的輸入如下：
+根據設計，受控執行個體在子網路中至少需要 32 個 IP 位址。 因此，在定義子網路 IP 範圍時，您可以使用最小子網路遮罩 /27。 建議您仔細規劃受控執行個體部署的子網路大小。 在規劃期間應考慮的輸入如下：
 
 - 受管理的實例數目，包括下列實例參數：
   - 服務層級

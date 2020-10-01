@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/28/2020
-ms.openlocfilehash: 76181f089511a6645a51707f9a8537c1589d82bf
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: a4d8d7eaed40b876adecb82f339be4a4c434325f
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89484947"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91616851"
 ---
 # <a name="data-access-strategies"></a>資料存取策略
 
@@ -38,10 +38,10 @@ ms.locfileid: "89484947"
 ## <a name="data-access-strategies-through-azure-data-factory"></a>透過 Azure Data Factory 的資料存取策略
 
 * **[Private Link](https://docs.microsoft.com/azure/private-link/private-link-overview)** -您可以在 Azure Data Factory 受控虛擬網路內建立 Azure Integration Runtime，它將利用私人端點安全地連線至支援的資料存放區。 受控虛擬網路與資料來源之間的流量會傳送 Microsoft 骨幹網路，而不會暴露在公用網路上。
-* **[信任的服務](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)** - Azure 儲存體 (Blob、ADLS Gen2) 支援防火牆設定，可以選取信任的 Azure 平台服務以安全地存取儲存體帳戶。 信任的服務會強制執行受控識別驗證，以確保沒有任何其他資料處理站可以連線到此儲存體，除非使用其受控識別允許這麼做。 如需更多詳細資料，請參閱 **[此部落格](https://techcommunity.microsoft.com/t5/azure-data-factory/data-factory-is-now-a-trusted-service-in-azure-storage-and-azure/ba-p/964993)** 。 因此，這是非常安全且建議的做法。 
+* **[信任的服務](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)** - Azure 儲存體 (Blob、ADLS Gen2) 支援防火牆設定，可以選取信任的 Azure 平台服務以安全地存取儲存體帳戶。 受信任的服務會強制執行受控識別驗證，以確保其他 data factory 無法連線到此儲存體，除非使用其受控識別進行核准。 如需更多詳細資料，請參閱 **[此部落格](https://techcommunity.microsoft.com/t5/azure-data-factory/data-factory-is-now-a-trusted-service-in-azure-storage-and-azure/ba-p/964993)** 。 因此，這是非常安全且建議的做法。 
 * **唯一的靜態 IP** - 您將需要設定自我裝載整合執行階段，以取得 Data Factory 連接器的靜態 IP。 此機制可確保您可以封鎖所有其他 IP 位址的存取。 
 * **[靜態 IP 範圍](https://docs.microsoft.com/azure/data-factory/azure-integration-runtime-ip-addresses)** - 您可以使用 Azure Integration Runtime 的 IP 位址，以允許在您的儲存體 (例如 S3、Salesforce 等等) 中將其列出。 確定會限制可以連線到資料存放區，但是也依賴驗證/授權規則的 IP 位址。
-* **[服務標籤](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)** - 服務標籤代表來自指定 Azure 服務 (例如 Azure Data Factory) 的一組 IP 位址前置詞。 Microsoft 會管理服務標籤包含的位址前置詞，並隨著位址變更自動更新服務標籤，而盡可能簡化網路安全性規則頻繁的更新。 當虛擬網路中的 IaaS 裝載資料存放區上允許資料存取時，這會很有用。
+* **[服務標籤](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)** - 服務標籤代表來自指定 Azure 服務 (例如 Azure Data Factory) 的一組 IP 位址前置詞。 Microsoft 會管理服務標籤包含的位址前置詞，並隨著位址變更自動更新服務標籤，而盡可能簡化網路安全性規則頻繁的更新。 篩選虛擬網路中 IaaS 裝載資料存放區的資料存取時，這非常有用。
 * **允許 Azure 服務** - 部分服務可讓您在選擇此選項時，允許所有 Azure 服務連線到該服務。 
 
 如需 Azure Integration Runtime 和自我裝載整合執行階段中資料存放區上支援網路安全性機制的詳細資訊，請參閱以下兩個資料表。  

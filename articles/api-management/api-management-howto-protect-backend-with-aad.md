@@ -8,12 +8,13 @@ ms.service: api-management
 ms.topic: article
 ms.date: 09/23/2020
 ms.author: apimpm
-ms.openlocfilehash: 285a99bd47fa94940187aa0a4406e773a254dcb4
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.custom: contperfq1
+ms.openlocfilehash: 9892c311651df39b882c3aa38596a905d22a42ec
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/01/2020
-ms.locfileid: "91612331"
+ms.locfileid: "91618772"
 ---
 # <a name="protect-a-web-api-backend-in-azure-api-management-by-using-oauth-20-authorization-with-azure-ad"></a>使用 OAuth 2.0 授權搭配 Azure AD 保護 Azure API 管理中的 web API 後端 
 
@@ -22,7 +23,7 @@ ms.locfileid: "91612331"
 > [!NOTE]
 > 這項功能適用于 API 管理的**開發人員**、**基本**、**標準****及高階**層次。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 若要依照本文中的步驟進行，您必須有：
 

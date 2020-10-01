@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 8/04/2019
-ms.openlocfilehash: 5de1ef97050f37bb44d87ebae1d95df365952ace
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 963a541835c5e45c5642f2d516da53fd165142b4
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90984893"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91616919"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-amazon-s3-to-azure-storage"></a>使用 Azure Data Factory 將資料從 Amazon S3 遷移到 Azure 儲存體 
 
@@ -74,7 +74,7 @@ ADF 提供無伺服器的架構，其可供以不同層級進行平行處理，�
 
 - 在此架構中，資料移轉是透過 AWS Direct Connect 和 Azure Express Route 之間的私人對等互連連結來執行，因此資料永遠都不會在公用網際網路上周遊。  其需要使用 AWS VPC 和 Azure 虛擬網路。 
 - 您需要在 Azure 虛擬網路內的 Windows VM 上安裝 ADF 自我裝載整合執行階段，才能達成此架構。  您可手動擴大自我裝載 IR VM，或擴增至多部 VM (最多 4 個節點) 來完整利用網路和儲存體 IOPS/頻寬。 
-- 如果可透過 HTTPS 傳輸資料，但是想要將對來源 S3 的網路存取鎖定在特定 IP 範圍，則可採用此架構的變化來移除 AWS VPC 並使用 HTTPS 取代私人連結。  建議將 Azure 虛擬和自我裝載 IR 保持在 Azure VM 上，即可擁有用於白名單的靜態公用可路由 IP。 
+- 如果可透過 HTTPS 傳輸資料，但是想要將對來源 S3 的網路存取鎖定在特定 IP 範圍，則可採用此架構的變化來移除 AWS VPC 並使用 HTTPS 取代私人連結。  您會想要將 Azure 虛擬和自我裝載的 IR 保留在 Azure VM 上，讓您可以有靜態可路由傳送的 IP 來進行篩選。 
 - 初始快照集的資料移轉和差異資料移轉都可使用此架構進行。 
 
 ## <a name="implementation-best-practices"></a>實作最佳做法 

@@ -1,41 +1,41 @@
 ---
 title: 如何使用批次處理來改善應用程式效能
-description: 本主題提供的證明可讓您批次處理資料庫作業，大幅提升 Azure SQL Database 和 Azure SQL 受控執行個體應用程式的速度和擴充性。 雖然這些批次處理技術適用于任何 SQL database，但本文的重點是在 Azure 上。
+description: 本主題提供的辨識項，可讓您大幅提升 Azure SQL Database 和 Azure SQL 受控執行個體應用程式的速度和擴充性。 雖然這些批次處理技術適用于任何 SQL 資料庫，但本文的重點是在 Azure 上。
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
 ms.custom: sqldbrb=2
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: stevestein
 ms.author: sstein
 ms.reviewer: genemi
 ms.date: 01/25/2019
-ms.openlocfilehash: 01e1c63a4cfea367a0f721ac33986abade8b5b35
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 94f54e02de1b61cb05b4e41bb4c40118299cf20f
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84343824"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91618636"
 ---
 # <a name="how-to-use-batching-to-improve-azure-sql-database-and-azure-sql-managed-instance-application-performance"></a>如何使用批次處理來改善 Azure SQL Database 和 Azure SQL 受控執行個體應用程式效能
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
 
-將作業批次處理到 Azure SQL Database 和 Azure SQL 受控執行個體大幅提升應用程式的效能和擴充性。 為了瞭解優點，本文的第一個部分涵蓋了一些範例測試結果，可比較 Azure SQL Database 或 Azure SQL 受控執行個體中的資料庫順序和批次要求。 本文其餘部分說明技術、案例和考量因素，協助您在 Azure 應用程式中順利使用批次處理。
+Azure SQL Database 和 Azure SQL 受控執行個體批次處理作業可大幅改善應用程式的效能和擴充性。 為了瞭解這些優點，本文的第一個部分會討論一些範例測試結果，以比較 Azure SQL Database 或 Azure SQL 受控執行個體中資料庫的順序和批次要求。 本文其餘部分說明技術、案例和考量因素，協助您在 Azure 應用程式中順利使用批次處理。
 
-## <a name="why-is-batching-important-for-azure-sql-database-and-azure-sql-managed-instance"></a>為什麼批次處理對 Azure SQL Database 和 Azure SQL 受控執行個體而言很重要？
+## <a name="why-is-batching-important-for-azure-sql-database-and-azure-sql-managed-instance"></a>為什麼批次處理對 Azure SQL Database 和 Azure SQL 受控執行個體很重要？
 
 眾所周知，批次處理遠端服務的呼叫是一項可提升效能和延展性的策略。 與遠端服務進行任何互動都有固定的成本，例如序列化、網路傳輸和還原序列化。 將許多個別交易包裝成單一批次可將這些成本降到最低。
 
-在本文中，我們想要檢查各種批次處理策略和案例。 雖然這些策略對使用 SQL Server 的內部部署應用程式也很重要，但有幾個原因會反白顯示 Azure SQL Database 和 Azure SQL 受控執行個體的批次使用：
+在本文中，我們想要檢查各種批次處理策略和案例。 雖然這些策略對使用 SQL Server 的內部部署應用程式也很重要，但有幾個原因會強調 Azure SQL Database 和 Azure SQL 受控執行個體的批次處理使用：
 
-* 存取 Azure SQL Database 和 Azure SQL 受控執行個體可能會有更大的網路延遲，特別是當您要從相同的 Microsoft Azure 資料中心外部存取 Azure SQL Database 或 Azure SQL 受控執行個體時。
-* Azure SQL Database 和 Azure SQL 受控執行個體的多租使用者特性表示資料存取層的效率與資料庫的整體擴充性相互關聯。 為了回應超出預先定義配額的使用量，Azure SQL Database 和 Azure SQL 受控執行個體可以降低輸送量或回應節流例外狀況。 效率（例如批次處理）可讓您在達到這些限制之前執行更多工作。
+* 存取 Azure SQL Database 和 Azure SQL 受控執行個體可能會有較高的網路延遲，特別是當您從相同 Microsoft Azure 資料中心以外的 Azure SQL Database 或 Azure SQL 受控執行個體存取時。
+* Azure SQL Database 和 Azure SQL 受控執行個體的多租使用者特性表示資料存取層的效率與資料庫的整體擴充性相關聯。 為了因應超過預先定義配額的使用量，Azure SQL Database 和 Azure SQL 受控執行個體可以減少輸送量或回應節流例外狀況。 提高效率（例如批次處理）可讓您在達到這些限制之前完成更多工作。
 * 在使用多個資料庫 (分區化) 的架構下，批次處理也很有效益。 就整體延展性而言，與每個資料庫單位的互動效率仍然是關鍵因素。
 
-使用 Azure SQL Database 或 Azure SQL 受控執行個體的其中一個優點，就是您不需要管理裝載資料庫的伺服器。 不過，這種受控基礎結構也表示您必須以不同角度來思考資料庫最佳化。 您不必再設法改善資料庫硬體或網路基礎結構。 Microsoft Azure 會控制那些環境。 您可以控制的主要區域是應用程式與 Azure SQL Database 和 Azure SQL 受控執行個體的互動方式。 批次處理屬於這些最佳化作法之一。
+使用 Azure SQL Database 或 Azure SQL 受控執行個體的優點之一，就是您不需要管理裝載資料庫的伺服器。 不過，這種受控基礎結構也表示您必須以不同角度來思考資料庫最佳化。 您不必再設法改善資料庫硬體或網路基礎結構。 Microsoft Azure 會控制那些環境。 您可以控制的主要區域是應用程式與 Azure SQL Database 和 Azure SQL 受控執行個體的互動方式。 批次處理屬於這些最佳化作法之一。
 
-本文的第一個部分會針對使用 Azure SQL Database 或 Azure SQL 受控執行個體的 .NET 應用程式，檢查各種批次處理技術。 最後兩節涵蓋批次處理方針和案例。
+本文的第一個部分會針對使用 Azure SQL Database 或 Azure SQL 受控執行個體的 .NET 應用程式，檢查各種批次處理技巧。 最後兩節涵蓋批次處理方針和案例。
 
 ## <a name="batching-strategies"></a>批次處理策略
 
@@ -95,11 +95,11 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 
 這兩個範例實際上都使用交易。 在第一個範例中，每個個別的呼叫就是隱含的交易。 在第二個範例中，明確的交易包裝所有的呼叫。 根據[預先寫入交易記錄](https://docs.microsoft.com/sql/relational-databases/sql-server-transaction-log-architecture-and-management-guide?view=sql-server-ver15#WAL)的文件，記錄檔記錄會在交易認可時排清到磁碟。 因此，交易中包含越多呼叫，就越可能延遲到認可交易時，才會寫入交易記錄檔。 事實上，您是對寫入伺服器交易記錄檔的動作啟用批次處理。
 
-下表顯示一些特定的測試結果。 這些測試分別以有交易和無交易，執行相同的循序插入。 為了進一步觀察，第一組測試是從遠端的膝上型電腦連到 Microsoft Azure 中的資料庫執行。 第二組測試是從位在相同 Microsoft Azure 資料中心 (美國西部) 內的雲端服務和資料庫執行。 下表分別以有交易和無交易，顯示循序插入的持續時間 (以毫秒為單位)。
+下表顯示一些特定測試結果。 這些測試分別以有交易和無交易，執行相同的循序插入。 為了進一步觀察，第一組測試是從遠端的膝上型電腦連到 Microsoft Azure 中的資料庫執行。 第二組測試是從位在相同 Microsoft Azure 資料中心 (美國西部) 內的雲端服務和資料庫執行。 下表分別以有交易和無交易，顯示循序插入的持續時間 (以毫秒為單位)。
 
 **內部部署至 Azure**：
 
-| Operations | 無交易（毫秒） | 交易 (毫秒) |
+| Operations | 沒有交易 (ms)  | 交易 (毫秒) |
 | --- | --- | --- |
 | 1 |130 |402 |
 | 10 |1208 |1226 |
@@ -108,7 +108,7 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 
 **Azure 至 Azure (相同資料中心)**：
 
-| Operations | 無交易（毫秒） | 交易 (毫秒) |
+| Operations | 沒有交易 (ms)  | 交易 (毫秒) |
 | --- | --- | --- |
 | 1 |21 |26 |
 | 10 |220 |56 |
@@ -118,7 +118,7 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 > [!NOTE]
 > 結果並不是基準。 請參閱[有關此文章中計時結果的注意事項](#note-about-timing-results-in-this-article)。
 
-根據先前的測試結果，將單一作業包裝在交易中確實會降低效能。 但隨著您增加單一交易內的作業數目，效能改善會變得越明顯。 當所有作業都在 Microsoft Azure 資料中心內發生時，效能差異也會更明顯。 從 Microsoft Azure 資料中心外使用 Azure SQL Database 或 Azure SQL 受控執行個體的延遲增加，會 overshadows 使用交易的效能提升。
+根據先前的測試結果，將單一作業包裝在交易中確實會降低效能。 但隨著您增加單一交易內的作業數目，效能改善會變得越明顯。 當所有作業都在 Microsoft Azure 資料中心內發生時，效能差異也會更明顯。 從 Microsoft Azure 資料中心外部使用 Azure SQL Database 或 Azure SQL 受控執行個體的延遲增加，減低交易所提升使用交易的效能提升。
 
 雖然使用交易可以提高效能，請繼續[遵守交易和連接的最佳做法](https://docs.microsoft.com/previous-versions/sql/sql-server-2008-r2/ms187484(v=sql.105))。 交易儘可能越短越好，並於工作完成後立即關閉資料庫連接。 使用上述範例中的陳述式可確保後續的程式碼區塊完成時關閉連接。
 
@@ -195,7 +195,7 @@ cmd.CommandType = CommandType.StoredProcedure;
 
 下表顯示使用資料表值參數的特定測試結果（以毫秒為單位）。
 
-| Operations | 內部部署至 Azure （毫秒） | Azure 相同資料中心 (毫秒) |
+| Operations | 內部部署至 Azure (ms)  | Azure 相同資料中心 (毫秒) |
 | --- | --- | --- |
 | 1 |124 |32 |
 | 10 |131 |25 |
@@ -212,7 +212,7 @@ cmd.CommandType = CommandType.StoredProcedure;
 
 ### <a name="sql-bulk-copy"></a>SQL 大量複製
 
-SQL 大量複製是另一種將大量資料插入至目標資料庫的方式。 .NET 應用程式可以使用 **SqlBulkCopy** 類別執行大量插入作業。 **SqlBulkCopy** 在功能上類似於命令列工具 **Bcp.exe**，或 Transact-SQL 陳述式 **BULK INSERT**。 下列程式碼範例顯示如何將來源**DataTable**資料表中的資料列大量複製到目的地資料表 MyTable。
+SQL 大量複製是另一種將大量資料插入至目標資料庫的方式。 .NET 應用程式可以使用 **SqlBulkCopy** 類別執行大量插入作業。 **SqlBulkCopy** 在功能上類似於命令列工具 **Bcp.exe**，或 Transact-SQL 陳述式 **BULK INSERT**。 下列程式碼範例示範如何將來源 **DataTable**資料表中的資料列大量複製到目的資料表 MyTable。
 
 ```csharp
 using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.GetSetting("Sql.ConnectionString")))
@@ -231,9 +231,9 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 
 在某些情況下，大量複製比資料表值參數更適合。 請參閱[資料表值參數](/sql/relational-databases/tables/use-table-valued-parameters-database-engine)一文中的資料表值參數與 BULK INSERT 作業的比較表。
 
-下列臨機操作測試結果顯示**SqlBulkCopy**的批次處理效能（以毫秒為單位）。
+下列臨機操作測試結果顯示使用 **SqlBulkCopy** 的批次處理效能（以毫秒為單位）。
 
-| Operations | 內部部署至 Azure （毫秒） | Azure 相同資料中心 (毫秒) |
+| Operations | 內部部署至 Azure (ms)  | Azure 相同資料中心 (毫秒) |
 | --- | --- | --- |
 | 1 |433 |57 |
 | 10 |441 |32 |
@@ -244,9 +244,9 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 > [!NOTE]
 > 結果並不是基準。 請參閱[有關此文章中計時結果的注意事項](#note-about-timing-results-in-this-article)。
 
-批次較小時，使用資料表值參數的效能勝過 **SqlBulkCopy** 類別。 不過， **SqlBulkCopy**的執行速度比資料表值參數快12-31%，以供1000和10000資料列的測試之用。 就像資料表值參數一樣， **SqlBulkCopy** 是批次插入的理想選擇，尤其與非批次作業的效能相比較。
+批次較小時，使用資料表值參數的效能勝過 **SqlBulkCopy** 類別。 不過， **SqlBulkCopy** 執行的速度比資料表值參數快12-31%，測試的1000和10000資料列。 就像資料表值參數一樣， **SqlBulkCopy** 是批次插入的理想選擇，尤其與非批次作業的效能相比較。
 
-如需 ADO.NET 中大量複製的詳細資訊，請參閱[大量複製作業](/dotnet/framework/data/adonet/sql/bulk-copy-operations-in-sql-server)。
+如需 ADO.NET 中大量複製的詳細資訊，請參閱 [大量複製作業](/dotnet/framework/data/adonet/sql/bulk-copy-operations-in-sql-server)。
 
 ### <a name="multiple-row-parameterized-insert-statements"></a>多列參數化 INSERT 語句
 
@@ -293,7 +293,7 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 
 ### <a name="entity-framework"></a>Entity Framework
 
-[Entity Framework 6](https://github.com/dotnet/ef6)現在支援批次處理。
+[Entity Framework 6](https://github.com/dotnet/ef6) 現在支援批次處理。
 
 ### <a name="xml"></a>XML
 
@@ -331,7 +331,7 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 > [!NOTE]
 > 結果並不是基準。 請參閱[有關此文章中計時結果的注意事項](#note-about-timing-results-in-this-article)。
 
-您可以看出，將 1000 個資料列一次全部提交，才能獲得最佳效能。 在其他測試中（這裡未顯示），將10000個數據列批次分成兩個5000的批次，會有一小部分的效能提升。 但是這些測試的資料表結構描述相當簡單，您應該針對您的特定資料和批次大小進行測試，以確認這些研究結果。
+您可以看出，將 1000 個資料列一次全部提交，才能獲得最佳效能。 在其他測試中 (沒有顯示) ，則將10000資料列的批次分成兩個5000批次，會有很小的效能提升。 但是這些測試的資料表結構描述相當簡單，您應該針對您的特定資料和批次大小進行測試，以確認這些研究結果。
 
 另一個要考慮的因素是，如果總批次變得太大，Azure SQL Database 或 Azure SQL 受控執行個體可能會節流並拒絕認可批次。 為了獲得最佳結果，請測試您的特定案例，以判斷是否有較理想的批次大小。 允許在執行階段設定批次大小，以根據效能或錯誤來快速調整。
 
@@ -649,7 +649,7 @@ WHEN NOT MATCHED THEN
 
 下列清單提供本文所討論批次處理建議的摘要：
 
-* 使用緩衝和批次處理來增加 Azure SQL Database 和 Azure SQL 受控執行個體應用程式的效能和擴充性。
+* 使用緩衝和批次處理來提高 Azure SQL Database 和 Azure SQL 受控執行個體應用程式的效能和擴充性。
 * 了解批次處理/緩衝處理和恢復功能之間的權衡取捨。 在角色失敗期間，可能遺失一批尚未處理的商務關鍵資料，這種風險超過批次處理帶來的效能優點。
 * 嘗試將所有資料庫呼叫納入單一資料中心以縮短延遲。
 * 如果選擇單一批次處理技術，資料表值參數可以發揮最佳的效能與彈性。
@@ -668,4 +668,4 @@ WHEN NOT MATCHED THEN
 
 ## <a name="next-steps"></a>後續步驟
 
-這篇文章著重於與批次處理相關的資料庫設計和程式碼撰寫技術，如何改善應用程式的效能和延展性。 但這只是整體策略中的一個因素。 如需更多改善效能和擴充性的方法，請參閱[資料庫效能指引](database/performance-guidance.md)和[彈性集區的價格和效能考慮](database/elastic-pool-overview.md)。
+這篇文章著重於與批次處理相關的資料庫設計和程式碼撰寫技術，如何改善應用程式的效能和延展性。 但這只是整體策略中的一個因素。 如需更多改善效能和擴充性的方法，請參閱 [資料庫效能指引](database/performance-guidance.md) 和 [彈性集區的價格和效能考慮](database/elastic-pool-overview.md)。

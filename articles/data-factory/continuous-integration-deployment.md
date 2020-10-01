@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: e1b9aacf96249c3e102c6a3dbf87d8ac1ff20be6
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 6b091406b15db036007ba6a11049ee63ffe99cf0
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91533310"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91616885"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Azure Data Factory 中的持續整合和傳遞
 
@@ -461,7 +461,13 @@ ms.locfileid: "91533310"
                 }
             }
         }
+    },
+    "Microsoft.DataFactory/factories/managedVirtualNetworks/managedPrivateEndpoints": {
+        "properties": {
+            "*": "="
+        }
     }
+}
 ```
 
 ### <a name="example-parameterizing-an-existing-azure-databricks-interactive-cluster-id"></a>範例：參數化現有的 Azure Databricks 互動式叢集識別碼
@@ -553,7 +559,7 @@ ms.locfileid: "91533310"
                     "database": "=",
                     "serviceEndpoint": "=",
                     "batchUri": "=",
-            "poolName": "=",
+                    "poolName": "=",
                     "databaseName": "=",
                     "systemNumber": "=",
                     "server": "=",
@@ -636,6 +642,8 @@ ms.locfileid: "91533310"
 -   **部署前後指令碼**。 在 CI/CD 的 Resource Manager 部署步驟之前，您必須先完成某些工作，例如停止並重新開機觸發程序以及執行清除作業。 我們建議您在部署工作前後使用 PowerShell 指令碼。 如需詳細資訊，請參閱[更新使用中的觸發程序](#updating-active-triggers)。 資料處理站小組已[提供可用的指令碼](#script) (位於此頁面的底部)。
 
 -   **整合執行階段和共用**。 整合執行階段不會經常變更，而且在 CI/CD 中的所有階段都很類似。 所以 Data Factory 預期在 CI/CD 的所有階段中，要有相同的名稱和相同類型的整合執行階段。 如果您想要在所有階段中共用整合執行階段，請考慮使用三元處理站，只包含共用的整合執行階段。 您可以在所有環境中，使用此共用處理站作為連結的整合執行階段類型。
+
+-   **受控私人端點部署**。 如果私人端點已經存在於 factory 中，而您嘗試部署的 ARM 範本包含具有相同名稱但具有已修改屬性的私人端點，則部署將會失敗。 換句話說，您可以成功部署私人端點，只要它的屬性與處理站中現有的相同。 如果環境之間有不同的屬性，您可以將該屬性參數化，並在部署期間提供個別的值來覆寫它。
 
 -   **Key Vault**。 當您使用連線資訊存放在 Azure Key Vault 中的連結服務時，建議您針對不同的環境保留個別的金鑰保存庫。 您也可以為每個金鑰保存庫設定不同的權限層級。 例如，您可能不希望小組成員具有生產秘密的權限。 如果您遵循此方法，我們建議您在所有階段中保留相同的秘密名稱。 如果您保留相同的秘密名稱，則不需要將所有 CI/CD 環境中的每個連接字串參數化，因為唯一的變更是金鑰保存庫名稱 (這是個別的參數)。
 

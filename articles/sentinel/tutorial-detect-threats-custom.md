@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure Sentinel 來建立自訂分析規則來偵測威脅 |Microsoft Docs
-description: 您可以使用本教學課程來瞭解如何建立自訂分析規則，以利用 Azure Sentinel 來偵測安全性威脅。
+description: 您可以使用本教學課程來瞭解如何建立自訂分析規則，以利用 Azure Sentinel 來偵測安全性威脅。 利用事件群組和警示群組，並瞭解自動停用。
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/06/2020
 ms.author: yelevin
-ms.openlocfilehash: 0e5989490603e22745a8bc972b16ed016c894893
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 55853cc6a3dc27df4c63e0a28ab079813040e45d
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88605891"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91617174"
 ---
 # <a name="tutorial-create-custom-analytics-rules-to-detect-threats"></a>教學課程：建立自訂分析規則來偵測威脅
 
@@ -53,13 +53,15 @@ ms.locfileid: "88605891"
 
       以下是在 Azure 活動中建立異常的資源數量時，會對您發出警示的範例查詢。
 
-      `AzureActivity
-     \| where OperationName == "Create or Update Virtual Machine" or OperationName =="Create Deployment"
-     \| where ActivityStatus == "Succeeded"
-     \| make-series dcount(ResourceId)  default=0 on EventSubmissionTimestamp in range(ago(7d), now(), 1d) by Caller`
+      ```kusto
+      AzureActivity
+      | where OperationName == "Create or Update Virtual Machine" or OperationName =="Create Deployment"
+      | where ActivityStatus == "Succeeded"
+      | make-series dcount(ResourceId)  default=0 on EventSubmissionTimestamp in range(ago(7d), now(), 1d) by Caller
+      ```
 
-      > [!NOTE]
-      > 查詢長度應該介於1到10000個字元之間，且不能包含 "search \* " 或 "union \* "。
+        > [!NOTE]
+        > 查詢長度應該介於1到10000個字元之間，且不能包含 "search \* " 或 "union \* "。
 
     1. 您可以使用 [ **對應實體** ] 區段，將查詢結果中的參數連結至 Azure Sentinel 辨識的實體。 這些實體會形成進一步分析的基礎，包括在 [ **事件設定** ] 索引標籤中將警示分組到事件中。
   
@@ -69,8 +71,12 @@ ms.locfileid: "88605891"
 
        1. 設定 **最後一個的查閱資料** 來判斷查詢所涵蓋資料的時間週期，例如，它可以查詢過去10分鐘的資料，或過去6小時的資料。
 
-       > [!NOTE]
-       > 這兩個設定彼此獨立，最多可達點。 您可以在一段短時間內執行查詢，此間隔涵蓋的時間長度超過間隔 (的效果會有重迭的查詢) ，但您無法以超過涵蓋範圍期間的間隔執行查詢，否則整體查詢涵蓋範圍中將會有間距。
+          > [!NOTE]
+          > **查詢間隔和回顧期限**
+          > - 這兩個設定彼此獨立，最多可達點。 您可以在一段短時間內執行查詢，此間隔涵蓋的時間長度超過間隔 (的效果會有重迭的查詢) ，但您無法以超過涵蓋範圍期間的間隔執行查詢，否則整體查詢涵蓋範圍中將會有間距。
+          >
+          > **內嵌延遲**
+          > - 為了考慮在來源產生事件和將其內嵌到 Azure Sentinel 之間可能發生的 **延遲** ，並確保完全涵蓋範圍而不重復資料，Azure Sentinel 會從排程的時間 **內五分鐘的延遲** 執行排程分析規則。
 
     1. 使用 [ **警示閾值** ] 區段來定義基準。 例如，如果您想要規則在每次執行時**Is greater than**傳回超過1000的結果，請設定 [當查詢**結果的數目大於時產生警示**]，然後輸入數位1000。 這是必要欄位，因此，如果您不想設定基準，也就是如果您想要讓警示註冊每個事件–請在 [數位] 欄位中輸入0。
     
@@ -134,6 +140,43 @@ ms.locfileid: "88605891"
 
 > [!NOTE]
 > Azure Sentinel 中產生的警示可透過 [Microsoft Graph 安全性](https://aka.ms/securitygraphdocs)來取得。 如需詳細資訊，請參閱 [Microsoft Graph 安全性警示檔](https://aka.ms/graphsecurityreferencebetadocs)。
+
+## <a name="troubleshooting"></a>疑難排解
+
+### <a name="a-scheduled-rule-failed-to-execute-or-appears-with-auto-disabled-added-to-the-name"></a>排程的規則無法執行，或以自動停用的方式（已新增至名稱）顯示
+
+排程查詢規則無法執行，但可能會發生這種情況。 Azure Sentinel 會根據失敗的特定類型和發生的情況，以暫時性或永久性的方式將失敗分類。
+
+#### <a name="transient-failure"></a>暫時性失敗
+
+暫時性失敗發生的原因是暫時性的，而且很快就會恢復正常，此時規則執行將會成功。 Azure Sentinel 分類為暫時性的一些失敗範例如下：
+
+- 規則查詢花費的時間太長，而無法執行。
+- 資料來源與 Log Analytics 之間，或 Log Analytics 與 Azure Sentinel 之間的連線能力問題。
+- 任何其他新的和未知的失敗都會被視為暫時性。
+
+如果發生暫時性失敗，Azure Sentinel 會繼續嘗試在預先決定且不斷增加的間隔之後再次執行此規則，直到某個點為止。 之後，規則只會在下次排程的時間執行。 因為暫時性失敗，所以永遠不會自動停用規則。
+
+#### <a name="permanent-failure---rule-auto-disabled"></a>永久失敗-規則自動停用
+
+因為允許執行規則的條件有變更，而不需要人為介入的情況下，將不會回復到先前的狀態，所以會發生永久失敗。 以下是分類為永久的一些失敗範例：
+
+- 已刪除規則查詢操作) 的目標工作區 (。
+- 已刪除規則查詢)  (的目標資料表。
+- 已從目標工作區移除 Azure Sentinel。
+- 規則查詢所使用的函式已不再有效;已修改或移除。
+- 規則查詢的其中一個資料來源的許可權已變更。
+- 規則查詢的其中一個資料來源已刪除或中斷連接。
+
+**在預先決定的連續永久失敗數目（相同類型和相同規則）的情況下** ，Azure Sentinel 停止嘗試執行規則，而且也會採取下列步驟：
+
+- 停用規則。
+- 將「 **自動停用** 」單字新增至規則名稱的開頭。
+- 新增失敗 (的原因和停用規則描述的) 。
+
+您可以藉由依名稱排序規則清單，輕鬆地判斷是否有任何自動停用的規則存在。 自動停用的規則會位於清單頂端或附近。
+
+SOC 管理員應務必定期檢查規則清單是否有自動停用的規則。
 
 ## <a name="next-steps"></a>後續步驟
 
