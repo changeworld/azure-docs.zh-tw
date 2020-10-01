@@ -3,20 +3,23 @@ title: 事件中樞-使用 Azure 入口網站來捕捉串流事件
 description: 本文說明如何才能使用 Azure 入口網站透過 Azure 事件中樞擷取事件串流。
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 103aa4e3da84e41275bec6310035c117fe780a18
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2381bfa627d00a78ed91af0ba81579588ee016ce
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85315732"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613572"
 ---
 # <a name="enable-capturing-of-events-streaming-through-azure-event-hubs"></a>允許透過 Azure 事件中樞擷取事件串流
 
-Azure[事件中樞 Capture][capture-overview]可讓您將事件中樞中的串流資料自動傳遞給您選擇的[azure Blob 儲存體](https://azure.microsoft.com/services/storage/blobs/)或[Azure Data Lake Storage Gen1 或 Gen 2](https://azure.microsoft.com/services/data-lake-store/)帳戶。
+Azure [事件中樞捕獲][capture-overview] 可讓您將事件中樞內的串流資料自動傳遞至 [azure Blob 儲存體](https://azure.microsoft.com/services/storage/blobs/) ，或您選擇的 [Azure Data Lake Storage Gen1 或 Gen 2](https://azure.microsoft.com/services/data-lake-store/) 帳戶。
 
-您可以使用 [Azure 入口網站](https://portal.azure.com)，在建立事件中樞時設定擷取功能。 您可以將資料捕獲到 Azure [Blob 儲存體](https://azure.microsoft.com/services/storage/blobs/)容器或[Azure Data Lake Storage Gen 1 或 gen 2](https://azure.microsoft.com/services/data-lake-store/)帳戶。
+您可以使用 [Azure 入口網站](https://portal.azure.com)，在建立事件中樞時設定擷取功能。 您可以將資料捕獲到 Azure [Blob 儲存體](https://azure.microsoft.com/services/storage/blobs/) 容器，或 [Azure Data Lake Storage Gen 1 或 gen 2](https://azure.microsoft.com/services/data-lake-store/) 帳戶。
 
 如需詳細資訊，請參閱[事件中樞擷取概觀][capture-overview]。
+
+> [!IMPORTANT]
+> 目的地儲存體 (Azure 儲存體或 Azure Data Lake Storage) 帳戶必須與事件中樞位於相同的訂用帳戶中。
 
 ## <a name="capture-data-to-azure-storage"></a>將資料捕獲到 Azure 儲存體
 
@@ -31,43 +34,43 @@ Azure[事件中樞 Capture][capture-overview]可讓您將事件中樞中的串�
 
 ## <a name="capture-data-to-azure-data-lake-storage-gen-2"></a>將資料捕獲到 Azure Data Lake Storage Gen 2 
 
-1. 遵循[建立儲存體帳戶一](../storage/common/storage-account-create.md?tabs=azure-portal#create-a-storage-account)文，以建立 Azure 儲存體帳戶。 將 [ **Advanced** ] 索引標籤上的 [**階層命名空間**] 設定為 [**啟用**]，使其成為 Azure Data Lake Storage Gen 2 帳戶
+1. 遵循 [建立儲存體帳戶一](../storage/common/storage-account-create.md?tabs=azure-portal#create-a-storage-account) 文來建立 Azure 儲存體帳戶。 將 [ **Advanced** ] 索引標籤上的**階層命名空間**設定為 [**已啟用**]，使其成為 Azure Data Lake Storage Gen 2 帳戶。
 2. 建立事件中樞時，請執行下列步驟： 
 
-    1. 針對 [ **Capture**] 選取 [ **On** ]。 
-    2. 選取 [ **Azure 儲存體**] 作為 [capture 提供者]。 您針對**Capture 提供者**所看到的**Azure Data Lake 存放區**選項，適用于 Azure Data Lake Storage 的 Gen 1。 若要使用 Azure Data Lake Storage 的 Gen 2，請選取 [ **Azure 儲存體**]。
-    2. 選取 [**選取容器**] 按鈕。 
+    1. 選取 **[** 用於 **捕獲**]。 
+    2. 選取 [ **Azure 儲存體** ] 作為 [捕獲提供者]。 您在「取得」**提供者**看到的**Azure Data Lake 存放區**選項，是針對 Azure Data Lake Storage 的 Gen 1。 若要使用 Azure Data Lake Storage 的 Gen 2，請選取 **Azure 儲存體**。
+    2. 選取 [ **選取容器** ] 按鈕。 
 
-        ![啟用 capture to Data Lake Storage Gen 2](./media/event-hubs-capture-enable-through-portal/data-lake-storage-gen2.png)
-3. 從清單中選取 [ **Azure Data Lake Storage Gen 2** ] 帳戶。 
+        ![啟用 capture 至 Data Lake Storage Gen 2](./media/event-hubs-capture-enable-through-portal/data-lake-storage-gen2.png)
+3. 從清單中選取 **Azure Data Lake Storage Gen 2** 帳戶。 
 
     ![選取 Data Lake Storage Gen 2](./media/event-hubs-capture-enable-through-portal/select-data-lake-storage-gen2.png)
-4. 選取**容器**（Data Lake Storage Gen 2 中的檔案系統）。
+4. 選取 Data Lake Storage Gen 2) 中 (檔案系統的 **容器** 。
 
     ![選取儲存體中的檔案系統](./media/event-hubs-capture-enable-through-portal/select-file-system-data-lake-storage.png)
-5. 在 [**建立事件中樞**] 頁面上，選取 [**建立**]。 
+5. 在 [ **建立事件中樞** ] 頁面上，選取 [ **建立**]。 
 
     ![選取 [建立] 按鈕](./media/event-hubs-capture-enable-through-portal/create-event-hub-data-lake-storage.png)
 
     > [!NOTE]
-    > 您在使用此使用者介面（UI）的 Azure Data Lake Storage Gen 2 中建立的容器，會顯示在**儲存體總管**的 [**檔案系統**] 之下。 同樣地，您在 Data Lake Storage Gen 2 帳戶中建立的檔案系統會顯示為此 UI 中的容器。 
+    > 您使用此使用者介面 (UI) 在 Azure Data Lake Storage Gen 2 中建立的容器，會顯示在 [ **檔案系統** ] 的 [ **儲存體總管**] 下。 同樣地，您在 Data Lake Storage Gen 2 帳戶中建立的檔案系統會顯示為此 UI 中的容器。 
 
 
 ## <a name="capture-data-to-azure-data-lake-storage-gen-1"></a>將資料捕獲到 Azure Data Lake Storage Gen 1 
 
-若要將資料捕獲到 Azure Data Lake Storage Gen 1，請建立 Data Lake Storage Gen 1 帳戶和事件中樞：
+若要將資料捕獲到 Azure Data Lake Storage Gen 1，您可以建立 Data Lake Storage Gen 1 帳戶和事件中樞：
 
 ### <a name="create-an-azure-data-lake-storage-gen-1-account-and-folders"></a>建立 Azure Data Lake Storage Gen 1 帳戶和資料夾
 
-1. [依照開始使用 Azure 入口網站的 Azure Data Lake Storage Gen 1](../data-lake-store/data-lake-store-get-started-portal.md)中的指示，建立 Data Lake Storage 帳戶。
-2. 依照 [[將許可權指派給事件中樞](../data-lake-store/data-lake-store-archive-eventhub-capture.md#assign-permissions-to-event-hubs)] 區段中的指示，在您想要從事件中樞中捕獲資料的 Data Lake Storage Gen 1 帳戶內建立資料夾，並將許可權指派給事件中樞，讓它可以將資料寫入您的 Data Lake Storage Gen 1 帳戶。  
+1. 遵循 [使用 Azure 入口網站開始使用 Azure Data Lake Storage Gen 1](../data-lake-store/data-lake-store-get-started-portal.md)中的指示，建立 Data Lake Storage 帳戶。
+2. 遵循 [ [將許可權指派給事件中樞](../data-lake-store/data-lake-store-archive-eventhub-capture.md#assign-permissions-to-event-hubs) ] 區段中的指示，在您要從事件中樞捕獲資料的 Data Lake Storage Gen 1 帳戶內建立資料夾，並將許可權指派給事件中樞，以便將資料寫入您的 Data Lake Storage Gen 1 帳戶。  
 
 
 ### <a name="create-an-event-hub"></a>建立事件中樞
 
 1. 事件中樞必須與您建立的 Azure Data Lake Storage Gen 1 帳戶位於相同的 Azure 訂用帳戶中。 按一下 [建立事件中樞]**** 入口網站頁面中 [擷取]**** 之下的 [開啟]**** 按鈕，以建立事件中樞。 
 2. 在 [建立事件中樞]**** 入口網站頁面中，從 [擷取提供者]**** 方塊選取 [Azure Data Lake Store]****。
-3. 在 [ **Data Lake Store** ] 下拉式清單旁邊的 [**選取存放區**] 中，指定您先前建立的 Data Lake Storage Gen 1 帳戶，然後在 [ **Data Lake 路徑**] 欄位中，輸入您所建立之資料檔案夾的路徑。
+3. 在 [ **Data Lake Store** ] 下拉式清單旁的 [**選取存放區**] 中，指定您先前建立的 Data Lake Storage Gen 1 帳戶，然後在 [ **Data Lake 路徑**] 欄位中，輸入您所建立之資料檔案夾的路徑。
 
     ![選取 Data Lake Storage 帳戶][3]
 

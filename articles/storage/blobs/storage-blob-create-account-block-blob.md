@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.date: 05/10/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 0e312cf49ee54020d0feb8d8e2f4c7a9bb77215a
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 0af98993cc4b3c7d19cdaa61cd7a35e3b444a3df
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89074520"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613793"
 ---
 # <a name="create-a-blockblobstorage-account"></a>建立 BlockBlobStorage 帳戶
 
@@ -25,7 +25,7 @@ BlockBlobStorage 帳戶種類可讓您建立具有 premium 效能特性的區塊
 
 如需 BlockBlobStorage 帳戶的詳細資訊，請參閱 [Azure 儲存體帳戶總覽](https://docs.microsoft.com/azure/storage/common/storage-account-overview)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 
@@ -111,7 +111,7 @@ az login
 
    |欄位     |值  |
    |---------|---------|
-   |**效能**    |  選取 [ **Premium**]。   |
+   |**效能**    |  選取 [Premium]。   |
    |**帳戶類型**    | 選取 [ **BlockBlobStorage**]。      |
    |**複寫**    |  保留 **本機冗余儲存體 (LRS) **的預設設定。      |
 

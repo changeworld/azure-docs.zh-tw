@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: 54c607ebac02a9d7e534d24656a8687e9ff39725
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: b97d36a5773eeb82a60330d0398ea19232f72b1e
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91533174"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613708"
 ---
 # <a name="set-up-a-development-environment-for-azure-machine-learning"></a>設定 Azure Machine Learning 的開發環境
 
@@ -37,7 +37,7 @@ ms.locfileid: "91533174"
 
 * Visual Studio Code：如果您使用 Visual Studio Code，則 [Azure Machine Learning 延伸](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai) 模組包含 Python 的廣泛語言支援，以及可讓您更方便且更有效率地使用 Azure Machine Learning 的功能。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 * Azure Machine Learning 工作區。 如果您沒有帳戶，可以透過 [Azure 入口網站](how-to-manage-workspace.md)、 [Azure CLI](how-to-manage-workspace-cli.md#create-a-workspace)和 [Azure Resource Manager 範本](how-to-create-workspace-template.md)建立 Azure Machine Learning 工作區。
 
@@ -228,7 +228,7 @@ Azure Databricks 如何與 Azure Machine Learning 搭配運作：
 | 設定 |適用於| 值 |
 |----|---|---|
 | 叢集名稱 |always| yourclustername |
-| Databricks 執行階段 |always|非 ML Runtime 6.5 (scala 2.11、spark 2.4.3)  |
+| Databricks 執行階段 |always|非 ML Runtime 7.1 (scala 2.21、spark 3.0.0)  |
 | Python 版本 |always| 3 |
 | 背景工作角色 |always| 2 個以上 |
 | 背景工作節點 VM 類型 <br> (決定並行反覆運算的最大數目)  |自動化 ML<br>向| 建議使用已記憶體最佳化的 VM |
@@ -238,19 +238,18 @@ Azure Databricks 如何與 Azure Machine Learning 搭配運作：
 
 ### <a name="install-the-correct-sdk-into-a-databricks-library"></a>在 Databricks 程式庫中安裝正確的 SDK
 
-叢集執行之後，請 [建立程式庫](https://docs.databricks.com/user-guide/libraries.html#create-a-library) 以將適當的 Azure Machine Learning SDK 套件附加至您的叢集。
+叢集執行之後，請 [建立程式庫](https://docs.databricks.com/user-guide/libraries.html#create-a-library) 以將適當的 Azure Machine Learning SDK 套件附加至您的叢集。 針對自動化 ML，請跳至 [具有自動化機器學習服務區段的 Databricks SDK](#sdk-for-databricks-with-automated-machine-learning)。
 
 1. 以滑鼠右鍵按一下您要儲存程式庫的目前工作區資料夾。 選取 [**建立**連結  >  **庫**]。
 
-1. 請 **只選擇一個** 選項 (不支援其他 SDK 安裝) 
+1. 選擇下列選項 (不支援其他 SDK 安裝) 
 
    |SDK &nbsp; 套件 &nbsp; 額外專案|來源|PyPi &nbsp; 名稱&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
    |----|---|---|
    |針對 Databricks| 上傳 Python Egg 或 PyPI | azureml-sdk[databricks]|
-   |針對 Databricks-with-<br> 自動化 ML 功能| 上傳 Python Egg 或 PyPI | `azureml-sdk[automl]`|
 
    > [!Warning]
-   > 不能安裝任何其他 SDK 額外專案。 請只選擇上述其中一個選項 [ `databricks` ] 或 [ `automl` ]。
+   > 不能安裝任何其他 SDK 額外專案。 只選擇 [ `databricks` ] 選項。
 
    * 請勿選取 [ **自動附加到所有**叢集]。
    * 選取叢集名稱旁邊的 [  **附加** ]。
@@ -270,9 +269,17 @@ Azure Databricks 如何與 Azure Machine Learning 搭配運作：
 
 如果安裝成功，匯入的程式庫看起來應該像這樣：
 
-適用于 Databricks 的 Databricks SDK （ **_不含_** 自動化機器學習服務 ![ Azure Machine Learning sdk）](./media/how-to-configure-environment/amlsdk-withoutautoml.jpg)
+#### <a name="sdk-for-databricks"></a>適用于 Databricks 的 SDK
+![適用于 Databricks 的 Azure Machine Learning SDK](./media/how-to-configure-environment/amlsdk-withoutautoml.jpg)
 
-**使用**自動化機器學習 Sdk 的 Databricks sdk， ![ 並在 Databricks 上安裝自動化機器學習服務](./media/how-to-configure-environment/automlonadb.png)
+#### <a name="sdk-for-databricks-with-automated-machine-learning"></a>使用自動化機器學習服務的 Databricks SDK
+如果使用 Databricks 非 ML runtime 7.1 或更高版本建立叢集，請在筆記本的第一個資料格中執行下列命令，以安裝 AML SDK。
+
+```
+%pip install -r https://aka.ms/automl_linux_requirements.txt
+```
+針對 Databricks 非 ML 執行時間7.0 和更低版本，請使用 [init 腳本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks/automl/README.md)來安裝 AML SDK。
+
 
 ### <a name="start-exploring"></a>開始探索
 

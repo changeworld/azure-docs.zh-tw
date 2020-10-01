@@ -3,12 +3,12 @@ title: 架構概觀
 description: 概略說明 Azure 備份服務所使用的架構、元件和程序。
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.openlocfilehash: e70fe13e895315763ae305b48a72d688f09931f0
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 6f95e8f6edaef61a7c5971a46ed4bff1a34e3dbe
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90986482"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613997"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Azure 備份的架構與元件
 
@@ -35,7 +35,7 @@ Azure 備份會備份在內部部署機器和 Azure 虛擬機器上執行的資�
 
 ## <a name="where-is-data-backed-up"></a>資料會備份至何處？
 
-Azure 備份會將備份的資料儲存在保存庫中-復原服務保存庫和備份保存庫。 保存庫是 Azure 中的線上儲存實體，用來保存備份複本、復原點和備份原則等資料。
+Azure 備份會將備份的資料儲存在保存庫-復原服務保存庫和備份保存庫中。 保存庫是 Azure 中的線上儲存實體，用來保存備份複本、復原點和備份原則等資料。
 
 保存庫有下列功能：
 
@@ -99,8 +99,8 @@ Azure 備份會根據要備份的機器類型，提供不同的備份代理程�
 **功能** | **使用 MARS 代理程式直接備份檔案和資料夾 () ** | **Azure VM 備份** | **使用 DPM/MABS 的電腦或應用程式**
 --- | --- | --- | ---
 備份至保存庫 | ![是][green] | ![是][green] | ![是][green]
-備份至 DPM/MABS 磁片，然後再備份至 Azure | | | ![Yes][green]
-壓縮要備份的傳輸資料 | ![Yes][green] | 傳輸資料時不使用壓縮。 儲存體會略為膨脹，但還原速度較快。  | ![Yes][green]
+備份至 DPM/MABS 磁片，然後再備份至 Azure | | | ![是][green]
+壓縮要備份的傳輸資料 | ![是][green] | 傳輸資料時不使用壓縮。 儲存體會略為膨脹，但還原速度較快。  | ![是][green]
 執行增量備份 |![是][green] |![是][green] |![是][green]
 備份已刪除重複資料的磁碟 | | | ![部分][yellow]<br/><br/> 僅用於內部部署的 DPM/MABS 伺服器。
 
@@ -224,7 +224,7 @@ Azure VM 會使用磁碟來儲存其作業系統、應用程式和資料。 每�
 - 在還原過程中，Azure 會處理受控磁片。 如果您使用 [儲存體帳戶] 選項，則會管理在還原程式期間所建立的儲存體帳戶。
 - 如果您還原已加密的受控 VM，請先確定 VM 的金鑰和秘密存在於金鑰保存庫中，然後再開始還原程式。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 請參閱支援矩陣，以 [瞭解備份案例的支援功能和限制](backup-support-matrix.md)。
 - 設定下列其中一個案例的備份：

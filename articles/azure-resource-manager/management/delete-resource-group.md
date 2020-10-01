@@ -1,21 +1,21 @@
 ---
 title: 刪除資源群組和資源
-description: 說明如何刪除資源群組和資源。 其中說明如何 Azure Resource Manager 在刪除資源群組時，對資源的刪除進行排序。 其會描述回應碼和資源管理員的處理方式，以判斷刪除作業是否成功。
+description: 說明如何刪除資源群組和資源。 它說明 Azure Resource Manager 如何在刪除資源群組時，對資源的刪除進行排序。 其會描述回應碼和資源管理員的處理方式，以判斷刪除作業是否成功。
 ms.topic: conceptual
 ms.date: 09/03/2019
-ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 2720a9ae8c0a67d8e6f9c1105b33c0a3c343cf47
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: seodec18
+ms.openlocfilehash: d6c38169916cc6c47d6f05c88645fa435bbdb146
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498492"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91614405"
 ---
 # <a name="azure-resource-manager-resource-group-and-resource-deletion"></a>Azure Resource Manager 資源群組和資源刪除
 
-本文說明如何刪除資源群組和資源。 其中說明當您刪除資源群組時，Azure Resource Manager 如何排序資源刪除。
+本文說明如何刪除資源群組和資源。 它描述當您刪除資源群組時，Azure Resource Manager 如何排序資源刪除。
 
-## <a name="how-order-of-deletion-is-determined"></a>如何判斷刪除的順序
+## <a name="how-order-of-deletion-is-determined"></a>如何決定刪除的順序
 
 當您刪除資源群組時，Resource Manager 會決定刪除資源的順序。 它使用下列順序：
 
@@ -75,19 +75,19 @@ az group delete --name ExampleResourceGroup
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 
-1. 在[入口網站](https://portal.azure.com)中，選取您想要刪除的資源群組。
+1. 在[入口網站](https://portal.azure.com)中選取要刪除的資源群組。
 
 1. 選取 [刪除資源群組]。
 
    ![刪除資源群組](./media/delete-resource-group/delete-group.png)
 
-1. 若要確認刪除，請輸入資源群組的名稱
+1. 輸入資源群組名稱以確認刪除
 
 ---
 
 ## <a name="delete-resource"></a>刪除資源
 
-使用下列其中一種方法來刪除資源。
+您可以使用下列其中一種方法來刪除資源。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -109,9 +109,9 @@ az resource delete \
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 
-1. 在[入口網站](https://portal.azure.com)中，選取您想要刪除的資源。
+1. 在 [入口網站](https://portal.azure.com)中，選取您要刪除的資源。
 
-1. 選取 [刪除]。 下列螢幕擷取畫面顯示虛擬機器的管理選項。
+1. 選取 [刪除]  。 下列螢幕擷取畫面顯示虛擬機器的管理選項。
 
    ![刪除資源](./media/delete-resource-group/delete-resource.png)
 
@@ -123,4 +123,4 @@ az resource delete \
 ## <a name="next-steps"></a>後續步驟
 
 * 若要了解 Resource Manager 概念，請參閱 [Azure Resource Manager 概觀](overview.md)。
-* 如需刪除命令，請參閱 [PowerShell](/powershell/module/az.resources/Remove-AzResourceGroup)、[Azure CLI](/cli/azure/group?view=azure-cli-latest#az-group-delete) 和 [REST API](/rest/api/resources/resourcegroups/delete)。
+* 如需刪除命令，請參閱 [PowerShell](/powershell/module/az.resources/Remove-AzResourceGroup)、[Azure CLI](/cli/azure/group#az-group-delete) 和 [REST API](/rest/api/resources/resourcegroups/delete)。

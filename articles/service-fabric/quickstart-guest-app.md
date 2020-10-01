@@ -4,18 +4,18 @@ description: 使用 Azure Service Fabric 叢集來裝載現有的 Node.js 應用
 ms.topic: conceptual
 ms.date: 12/06/2017
 ms.custom: devx-track-js
-ms.openlocfilehash: 29278faa80340d17e9ed9093dd5f432fd24a3a2d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: dfd1fe9db54925bc17a53a7686fa34d5ea53cd5a
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91314278"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91614099"
 ---
 # <a name="host-a-nodejs-application-on-azure-service-fabric"></a>在 Azure Service Fabric 上裝載 Node.js 應用程式
 
 本快速入門可協助您將現有的應用程式 (在此範例中為 Node.js) 部署到在 Azure 上執行的 Service Fabric 叢集。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 開始之前，請確定您已 [設定開發環境](service-fabric-get-started.md)。 其中包括安裝 Service Fabric SDK 和 Visual Studio 2019 或2015。
 
@@ -31,7 +31,7 @@ ms.locfileid: "91314278"
 
 在 [新增專案]  對話方塊中，選擇 [雲端] > [Service Fabric 應用程式]。
 
-將應用程式命名為 **MyGuestApp**，然後按 [確定]****。
+將應用程式命名為 **>myguestapp** ，然後按 [ **建立**]。
 
 >[!IMPORTANT]
 >Node.js 可以輕易打破 Windows 具有之路徑的 260 字元限制。 對專案本身使用短路徑，例如 **c:\code\svc1**。 選擇性地，您可以依照**[這些指示](https://stackoverflow.com/a/41687101/1664231)** 在 Windows 10 中啟用完整檔案路徑。

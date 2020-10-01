@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: da89bf6cb336087f97341ca57a9b2545c966a053
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 094a146f8e0e32667986a8e807955be1a5f66e39
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88533413"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613914"
 ---
 # <a name="tutorial-configure-tableau-online-for-automatic-user-provisioning"></a>教學課程︰設定 Tableau Online 來自動佈建使用者
 
@@ -133,7 +133,7 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
 11. 在 [ **屬性** 對應] 區段中，檢查從 Azure AD 同步到 Tableau 的使用者屬性。 選取為 [比對]**** 屬性的屬性會用來比對 Tableau Online 中的使用者帳戶以進行更新作業。 若要儲存任何變更，請選取 [儲存]。
 
-    ![Tableau Online 相符的使用者屬性](./media/tableau-online-provisioning-tutorial/UserAttributeMapping.png)
+    ![Tableau Online 相符的使用者屬性](./media/tableau-online-provisioning-tutorial/attribute.png)
 
 12. 在 [對應]**** 區段中，選取 [同步處理 Azure Active Directory 群組至 Tableau]****。
 
@@ -162,6 +162,9 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 您可以使用 [同步處理詳細資料] 區段來監視進度，並循著連結取得佈建活動報告。 此報告會描述 Tableau Online 上的 Azure AD 布建服務所執行的所有動作。
 
 如需如何讀取 Azure AD 佈建記錄的詳細資訊，請參閱[關於使用者帳戶自動佈建的報告](../app-provisioning/check-status-user-account-provisioning.md)。
+
+## <a name="change-log"></a>變更記錄
+* 09/30/2020-為使用者新增了屬性 "authSetting" 的支援。
 
 ## <a name="additional-resources"></a>其他資源
 

@@ -3,17 +3,17 @@ title: 範本資源位置
 description: 說明如何設定 Azure Resource Manager 範本中的資源位置。
 ms.topic: conceptual
 ms.date: 09/04/2019
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: e60fa9727ef899c3192c751614736cd1dda5b382
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: ''
+ms.openlocfilehash: e1310c81d7b726e9be2fe9f38a0bb8d701035ba4
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87504189"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613691"
 ---
 # <a name="set-resource-location-in-arm-template"></a>在 ARM 範本中設定資源位置
 
-部署 Azure Resource Manager （ARM）範本時，您必須提供每個資源的位置。 位置不一定要與資源群組位置相同的位置。
+部署 Azure Resource Manager (ARM) 範本時，您必須提供每個資源的位置。 位置不需要與資源群組位置相同的位置。
 
 ## <a name="get-available-locations"></a>取得可用的位置
 
@@ -37,9 +37,9 @@ az provider show \
 
 ---
 
-## <a name="use-location-parameter"></a>使用 location 參數
+## <a name="use-location-parameter"></a>使用位置參數
 
-若要在部署範本時允許彈性，請使用參數來指定資源的位置。 將參數的預設值設定為 `resourceGroup().location` 。
+若要在部署範本時提供彈性，請使用參數來指定資源的位置。 將參數的預設值設定為 `resourceGroup().location` 。
 
 下列範例顯示部署至某個 (已指定為參數) 位置的儲存體帳戶：
 
@@ -97,4 +97,4 @@ az provider show \
 ## <a name="next-steps"></a>後續步驟
 
 * 如需範本函數的完整清單，請參閱 [Azure 資源管理員範本函數](template-functions.md)。
-* 如需範本檔案的詳細資訊，請參閱[瞭解 ARM 範本的結構和語法](template-syntax.md)。
+* 如需範本檔案的詳細資訊，請參閱 [瞭解 ARM 範本的結構和語法](template-syntax.md)。

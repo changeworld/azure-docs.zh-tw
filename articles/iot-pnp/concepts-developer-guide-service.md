@@ -7,12 +7,12 @@ ms.date: 09/24/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: e7728af831b26bff19f347e5b85db6420e7966ed
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: f082e4d4c6c71e460842f80a5aa17130b6a41279
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91579988"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91614218"
 ---
 # <a name="iot-plug-and-play-service-developer-guide"></a>IoT 隨插即用 service 開發人員指南
 
@@ -28,19 +28,20 @@ IoT 隨插即用可讓您使用已向 IoT 中樞宣告其模型識別碼的裝�
 
 服務 Sdk 可讓您從解決方案存取裝置資訊，例如桌面或 web 應用程式。 服務 Sdk 包含兩個命名空間和物件模型，您可以使用這些命名空間和物件模型來取得模型識別碼：
 
-- Iot 中樞服務用戶端。
-- 數位 Twins 服務用戶端。
+- Iot 中樞服務用戶端。 這項服務會將模型識別碼公開為裝置對應項屬性。
 
-| 語言 | IoT 中樞服務用戶端 | 數位 Twins 服務用戶端 |
+- 數位 Twins 服務用戶端。 新的數位 Twins API 會在高階結構上運作，例如定義了數位 Twins 定義語言模型的元件、屬性和命令。 數位對應項 Api 可讓解決方案產生器更輕鬆地建立 IoT 隨插即用的解決方案。
+
+| 平台 | IoT 中樞服務用戶端 | 數位 Twins 服務用戶端 |
 | -------- | ---------------------- | ---------------------------- |
-| C#       | [文件集](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.shared.twin.modelid?view=azure-dotnet#Microsoft_Azure_Devices_Shared_Twin_ModelId&preserve-view=true) <br/> [範例](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/iot-hub/Samples/service/PnpServiceSamples/Thermostat/Program.cs)| [範例](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/iot-hub/Samples/service/DigitalTwinClientSamples) |
-| Java     | [文件集](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.service.devicetwin.devicetwindevice?view=azure-java-stable&preserve-view=true) <br/> [範例](https://github.com/Azure/azure-iot-sdk-java/blob/master/service/iot-service-samples/pnp-service-sample/thermostat-service-sample/src/main/java/samples/com/microsoft/azure/sdk/iot/service/Thermostat.java)| [範例](https://github.com/Azure/azure-iot-sdk-java/tree/master/service/iot-service-samples/digitaltwin-service-samples) |
-| Node.js  | [文件集](https://docs.microsoft.com/javascript/api/azure-iothub/twin?view=azure-node-latest&preserve-view=true) <br/> [範例](https://github.com/Azure/azure-iot-sdk-node/blob/master/service/samples/javascript/twin.js)| [文件集](https://docs.microsoft.com/javascript/api/azure-iot-digitaltwins-service/?view=azure-node-latest&preserve-view=true) |
-| Python   | [文件集](https://docs.microsoft.com/python/api/azure-iot-hub/azure.iot.hub.iothubregistrymanager?view=azure-python&preserve-view=true) <br/> [範例](https://github.com/Azure/azure-iot-sdk-python/blob/master/azure-iot-hub/samples/iothub_registry_manager_method_sample.py)| [文件集](https://docs.microsoft.com/python/api/azure-iot-hub/azure.iot.hub.iothubdigitaltwinmanager?view=azure-python&preserve-view=true) | 
+| .NET     | [文件集](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.shared.twin.modelid?view=azure-dotnet#Microsoft_Azure_Devices_Shared_Twin_ModelId&preserve-view=true) <br/> [範例](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/iot-hub/Samples/service/PnpServiceSamples)| [範例](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/iot-hub/Samples/service/DigitalTwinClientSamples) |
+| Java     | [文件集](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.service.devicetwin.devicetwindevice?view=azure-java-stable&preserve-view=true) <br/> [範例](https://github.com/Azure/azure-iot-sdk-java/blob/master/service/iot-service-samples/pnp-service-sample)| [範例](https://github.com/Azure/azure-iot-sdk-java/tree/master/service/iot-service-samples/digitaltwin-service-samples) |
+| Node.js  | [文件集](https://docs.microsoft.com/javascript/api/azure-iothub/twin?view=azure-node-latest&preserve-view=true) <br/> [範例](https://github.com/Azure/azure-iot-sdk-node/blob/master/service/samples/javascript/twin.js)| [文件集](https://docs.microsoft.com/javascript/api/azure-iot-digitaltwins-service/?view=azure-node-latest&preserve-view=true) <br/> [範例](https://github.com/Azure/azure-iot-sdk-node/blob/master/service/samples/javascript/get_digital_twin.js) |
+| Python   | [文件集](https://docs.microsoft.com/python/api/azure-iot-hub/azure.iot.hub.iothubregistrymanager?view=azure-python&preserve-view=true) <br/> [範例](https://github.com/Azure/azure-iot-sdk-python/blob/master/azure-iot-hub/samples/iothub_registry_manager_method_sample.py)| [文件集](https://docs.microsoft.com/python/api/azure-iot-hub/azure.iot.hub.iothubdigitaltwinmanager?view=azure-python&preserve-view=true) <br/> [範例](https://github.com/Azure/azure-iot-sdk-python/blob/master/azure-iot-hub/samples/get_digital_twin_sample.py) |
 
 ## <a name="rest-api"></a>REST API
 
-下列範例會使用 IoT 中樞 REST API 與連線的 IoT 隨插即用裝置互動。 目前的 API 版本為 `2020-09-30` 。 附加 `?api-version=2020-05-31` 至 REST PI 呼叫。
+下列範例會使用 IoT 中樞 REST API 與連線的 IoT 隨插即用裝置互動。 目前的 API 版本為 `2020-09-30` 。 附加 `?api-version=2020-09-30` 至 REST PI 呼叫。
 
 > [!NOTE]
 > API 目前不支援模組 twins `digitalTwins` 。

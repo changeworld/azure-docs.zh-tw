@@ -2,13 +2,13 @@
 title: 備份中心總覽
 description: 本文提供 Azure 備份中心的總覽。
 ms.topic: conceptual
-ms.date: 09/01/2020
-ms.openlocfilehash: e7577f302b9a137f5f3c257dc35d0fdf339f69a4
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.date: 09/30/2020
+ms.openlocfilehash: 2857433e00a678603e30c8e5fc276020c4658f2e
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90994574"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91614272"
 ---
 # <a name="overview-of-backup-center"></a>備份中心總覽
 
@@ -39,9 +39,13 @@ ms.locfileid: "90994574"
 
 在 [ **備份實例** ] 圖格中，您可以取得整個備份資產的所有備份實例的摘要查看。 例如，您可以查看處於虛刪除狀態的備份實例數目，相較于仍然設定保護的實例數目。 選取此磚中的任何數位，可讓您針對特定資料來源類型和保護狀態，查看有關備份實例的詳細資訊。
 
-請遵循下列步驟來瞭解備份中心提供的不同功能，以及您可以如何使用這些功能來有效率地管理您的備份資產。
+觀看下列影片以瞭解備份中心的功能：
 
-## <a name="next-steps"></a>下一步
+> [!VIDEO https://www.youtube.com/embed/pFRMBSXZcUk?t=497]
+
+遵循下列 [步驟](#next-steps) 來瞭解備份中心提供的不同功能，以及您可以如何使用這些功能來有效率地管理您的備份資產。
+
+## <a name="next-steps"></a>後續步驟
 
 * [監視和操作備份](backup-center-monitor-operate.md)
 * [管理您的備份資產](backup-center-govern-environment.md)

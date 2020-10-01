@@ -4,12 +4,12 @@ description: '瞭解如何使用 IP 位址範圍保護您的叢集，以存取 A
 services: container-service
 ms.topic: article
 ms.date: 09/21/2020
-ms.openlocfilehash: 5dbe5061253fb18222a476a88a1ec94a5ce4b0fa
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 99c6b173d96bbd54f12a0edc501d49e8c65caf01
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91299658"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613725"
 ---
 # <a name="secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>使用 Azure Kubernetes Service (AKS) 的授權 IP 位址範圍，安全地存取 API 伺服器
 
@@ -129,6 +129,32 @@ az aks update \
     --name myAKSCluster \
     --api-server-authorized-ip-ranges ""
 ```
+
+## <a name="how-to-find-my-ip-to-include-in---api-server-authorized-ip-ranges"></a>如何尋找我的 IP 以納入 `--api-server-authorized-ip-ranges` ？
+
+您必須將您的開發電腦、工具或自動化 IP 位址新增至已核准 IP 範圍的 AKS 叢集清單，才能從該處存取 API 伺服器。 
+
+另一個選項是在防火牆虛擬網路中的個別子網路內，使用所需的工具來設定 Jumpbox。 這假設您的環境具有個別網路的防火牆，且您已將防火牆 Ip 新增至授權的範圍。 同樣地，如果您已強制從 AKS 子網到防火牆子網的隧道，則在叢集子網中的 jumpbox 也不會有任何問題。
+
+使用下列命令，將另一個 IP 位址新增至核准的範圍。
+
+```bash
+# Retrieve your IP address
+CURRENT_IP=$(dig @resolver1.opendns.com ANY myip.opendns.com +short)
+# Add to AKS approved list
+az aks update -g $RG -n $AKSNAME --api-server-authorized-ip-ranges $CURRENT_IP/32
+```
+
+>> [!NOTE]
+> 上述範例會在叢集中附加 API 伺服器授權的 IP 範圍。 若要停用授權的 IP 範圍，請使用 az aks update 並指定空的範圍 ""。 
+
+另一個選項是在 Windows 系統上使用下列命令來取得公用 IPv4 位址，或您可以使用 [ [尋找您的 IP 位址](https://support.microsoft.com/en-gb/help/4026518/windows-10-find-your-ip-address)] 中的步驟。
+
+```azurepowershell-interactive
+Invoke-RestMethod http://ipinfo.io/json | Select -exp ip
+```
+
+您也可以在網際網路瀏覽器中搜尋「我的 IP 位址」來尋找此位址。
 
 ## <a name="next-steps"></a>後續步驟
 

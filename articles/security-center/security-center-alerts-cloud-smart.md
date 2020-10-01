@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/02/2019
 ms.author: memildin
-ms.openlocfilehash: 1d452406b05a3ad6b2be2e31bce1063f20e6c622
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: 742d7122c60b383e8ab7aa73f73b11b47843a9d5
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91575940"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613812"
 ---
 # <a name="cloud-smart-alert-correlation-in-azure-security-center-incidents"></a>Azure 資訊安全中心 (事件) 中的雲端智慧警示相互關聯
 
@@ -39,7 +39,8 @@ Azure 資訊安全中心持續分析混合式雲端工作負載，方法是使�
 > [!TIP]
 > 如需可由融合分析產生之安全性事件警示的清單，請參閱警示的 [參考資料表](alerts-reference.md#alerts-fusion)。
 
-![偵測到的安全性附隨報告的螢幕擷取畫面](./media/security-center-alerts-cloud-smart/security-incident.png)
+:::image type="content" source="./media/security-center-alerts-cloud-smart/security-incident.png" alt-text="偵測到的安全性附隨報告的螢幕擷取畫面":::
 
-若要進一步瞭解安全性事件，請參閱 [如何處理 Azure 資訊安全中心中的安全性事件](security-center-incident.md)。
+
+若要進一步瞭解安全性事件，請參閱 [如何在 Azure 資訊安全中心中管理安全性事件](security-center-incident.md)。
 

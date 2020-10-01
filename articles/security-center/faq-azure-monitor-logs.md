@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 0f4552d6488ecd083b6ee5d4cae2ef2bd660efc7
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: c4af0e8eda818fcb57ea9e050b760c3754c46e2c
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90906376"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613640"
 ---
 # <a name="faq-for-customers-already-using-azure-monitor-logs"></a>已使用 Azure 監視器記錄的客戶常見問題<a name="existingloganalyticscust"></a>
 
@@ -35,7 +35,6 @@ ms.locfileid: "90906376"
 當資訊安全中心發現 VM 已連線到您所建立的工作區時，資訊安全中心會根據您的定價設定，在此工作區上啟用解決方案。 這些解決方案會透過[方案目標設定](../operations-management-suite/operations-management-suite-solution-targeting.md)，只套用至相關的 Azure 虛擬機器，所以收費不會改變。
 
 - **Azure Defender 關閉** –資訊安全中心會在工作區上安裝 ' SecurityCenterFree ' 解決方案。 您將不會向您收費。
-- 
 - **Azure Defender on** –資訊安全中心會在工作區上安裝「安全性」解決方案。
 
    ![預設工作區的解決方案](./media/security-center-platform-migration-faq/solutions.png)
