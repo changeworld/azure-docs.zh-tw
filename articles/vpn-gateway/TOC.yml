@@ -42,8 +42,10 @@
       href: vpn-gateway-about-point-to-site-routing.md
     - name: 關於可用性區域的區域備援閘道
       href: about-zone-redundant-vnet-gateways.md
-    - name: 內建安全性控制
-      href: vpn-gateway-security-controls.md
+    - name: 安全性
+      items:
+        - name: 安全性基準
+          href: security-baseline.md
     - name: 後端連線能力互通性
       items:
         - name: 引用和測試設定

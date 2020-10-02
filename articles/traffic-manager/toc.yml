@@ -44,6 +44,10 @@
       items:
         - name: 流量管理員使用的國家/區域階層
           href: traffic-manager-geographic-regions.md
+    - name: 安全性
+      items:
+        - name: 安全性基準
+          href: security-baseline.md
     - name: 巢狀流量管理員設定檔
       href: traffic-manager-nested-profiles.md
     - name: 端點類型
