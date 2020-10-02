@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 10/25/2019
 ms.author: jafreebe
 ms.reviewer: ushan
-ms.openlocfilehash: 6808117728569ba6fd0b094c7330ce9a1baa24c4
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.openlocfilehash: 59bfdbf2d78497bc253f466e94fd69367a85070d
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/01/2020
-ms.locfileid: "91618602"
+ms.locfileid: "91631778"
 ---
 # <a name="deploy-a-custom-container-to-app-service-using-github-actions"></a>使用 GitHub Actions 將自訂容器部署到 App Service
 
@@ -23,7 +23,7 @@ ms.locfileid: "91618602"
 
 |區段  |工作  |
 |---------|---------|
-|**驗證** | 1. 服務主體或發行設定檔。 <br /> 2. 建立 GitHub 秘密。 |
+|**驗證** | 1. 取得服務主體或發行設定檔。 <br /> 2. 建立 GitHub 秘密。 |
 |**建置** | 1. 建立環境。 <br /> 2. 建立容器映射。 |
 |**部署** | 1. 部署容器映射。 |
 

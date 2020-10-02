@@ -10,12 +10,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 19b2ec283619df0cc8d3c880cb2df6f53f6fb332
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 58386786266c48c6e721094f9f2837709bb684e5
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934315"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631761"
 ---
 # <a name="use-postgresql-extensions-in-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>在啟用 Azure Arc 的于 postgresql 超大規模伺服器群組中使用於 postgresql 延伸模組
 
@@ -30,6 +30,7 @@ ms.locfileid: "90934315"
 - `pg_cron`，v：1。2
 - `plpgsql`，v：1。0
 - `postgis`，v：3.0。2
+- `plv8`，v：2.3.14
 
 這份清單會發展出加班時間，而且會在本檔中公佈更新。 您尚無法將擴充功能新增至上面所列的延伸模組。
 
@@ -240,3 +241,7 @@ SELECT * FROM the_best_coffee_shop;
 >[!NOTE]
 >不支援卸載 `citus` 延伸模組。 `citus`需要有此延伸模組，才能提供超大規模體驗。
 
+## <a name="next-steps"></a>後續步驟：
+- 閱讀有關[plv8](https://plv8.github.io/)的檔
+- 閱讀有關[PostGIS](https://postgis.net/)的檔
+- 閱讀檔 [`pg_cron`](https://github.com/citusdata/pg_cron)

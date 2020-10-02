@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, vanto
 ms.date: 11/09/2018
-ms.openlocfilehash: 9d58a8c1dc79c10ed42fd1675115eb14f2ad4d3e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a59e498435aab7b3e3e2ecf2e6096c044550a1b8
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91283704"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91628361"
 ---
 # <a name="connect-your-application-to-azure-sql-managed-instance"></a>將您的應用程式連線到 Azure SQL 受控執行個體
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -45,10 +45,10 @@ ms.locfileid: "91283704"
 - [Azure VNet 對等互連](../../virtual-network/virtual-network-peering-overview.md)
 - VNet 對 VNet VPN 閘道 ([Azure 入口網站](../../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)、[PowerShell](../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)、[Azure CLI](../../vpn-gateway/vpn-gateway-howto-vnet-vnet-cli.md))
 
-使用對等互連是因為它使用 Microsoft 骨幹網路，因此從連線的觀點來看，對等互連虛擬網路中的虛擬機器和相同虛擬網路之間的延遲並沒有明顯的差異。 虛擬網路對等互連僅限於相同區域中的網路。  
+使用對等互連是因為它使用 Microsoft 骨幹網路，因此從連線的觀點來看，對等互連虛擬網路中的虛擬機器和相同虛擬網路之間的延遲並沒有明顯的差異。 相同區域中的網路之間支援虛擬網路對等互連。 全域虛擬網路對等互連也支援下列注意事項中所述的限制。  
 
 > [!IMPORTANT]
-> SQL 受控執行個體的虛擬網路對等互連案例受限於相同區域中的網路，原因是 [全域虛擬網路對等互連的限制](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)。 另請參閱 [Azure 虛擬網路常見問題](https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) 文章中的相關章節，以取得詳細資料。 
+> [在9/22/2020 上，我們為新建立的虛擬叢集宣佈了全域虛擬網路對等互連](https://azure.microsoft.com/en-us/updates/global-virtual-network-peering-support-for-azure-sql-managed-instance-now-available/)。 這表示在公告日期之後于空白子網中建立的 SQL 受控實例，以及這些子網中建立的所有後續受控實例，都支援全域虛擬網路對等互連。 針對所有其他 SQL 受控實例對等互連支援，受限於相同區域中的網路，原因是 [全域虛擬網路對等互連的限制](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)。 另請參閱 [Azure 虛擬網路常見問題](https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) 文章中的相關章節，以取得詳細資料。 
 
 ## <a name="connect-from-on-premises"></a>從內部部署連接 
 

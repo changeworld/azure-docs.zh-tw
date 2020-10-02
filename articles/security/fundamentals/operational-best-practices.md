@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 13b3d483e271ac220ae254891fe362e932746e87
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 7c429ad04a4c1e881c84c3af9dfa9ee553963917
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279494"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91629789"
 ---
 # <a name="azure-operational-security-best-practices"></a>Azure 作業安全性最佳做法
 本文提供一組操作最佳做法，以保護您在 Azure 中的資料、應用程式和其他資產。
@@ -185,7 +185,7 @@ Azure 作業安全性是指使用者可在 Azure 中用來保護其資料、應�
 對於 [Azure 虛擬機器](../../virtual-machines/windows/overview.md)，確保 VM 架構包含多個 VM，而且每個 VM 都包含於[可用性設定組](../../virtual-machines/windows/tutorial-availability-sets.md)中。 建議您使用虛擬機器擴展集，自動調整功能。
 
 **最佳做法**：將應用程式中的安全性防禦分層，可降低成功攻擊的機會。 使用 Azure 平台的內建功能，為您的應用程式實作安全設計。  
-**詳細資料**：攻擊的風險會隨著應用程式大小 (介面區) 而提高。 您可以使用允許清單來關閉負載平衡器 ([Azure Load Balancer](/azure/load-balancer/load-balancer-get-started-internet-portal) 和 [Azure 應用程式閘道](/azure/application-gateway/application-gateway-create-probe-portal)) 上不需要的公開 IP 位址空間和接聽連接埠，來減少介面區。
+**詳細資料**：攻擊的風險會隨著應用程式大小 (介面區) 而提高。 您可以使用核准清單來關閉已公開的 IP 位址空間，以及負載平衡器 ([Azure Load Balancer](/azure/load-balancer/load-balancer-get-started-internet-portal) 和 [Azure 應用程式閘道](/azure/application-gateway/application-gateway-create-probe-portal)) 不需要的接聽埠，藉此減少介面區。
 
 [網路安全性群組](../../virtual-network/security-overview.md)是減少攻擊面的另一種方法。 您可以使用[服務標記](../../virtual-network/security-overview.md#service-tags)和[應用程式安全性群組](../../virtual-network/security-overview.md#application-security-groups)，將建立安全性規則與設定網路安全性的複雜性近可能降低，直到成為應用程式結構的自然延伸。
 
@@ -221,7 +221,7 @@ Azure 有兩個 DDoS [服務供應項目](../../virtual-network/ddos-protection-
 ## <a name="monitor-azure-ad-risk-reports"></a>監視 Azure AD 風險報告
 大部分的安全性缺口出現於當攻擊者藉由竊取使用者的身分識別來取得環境的存取權時。 探索遭入侵的身分識別並不容易。 Azure AD 會使用調適性機器學習服務演算法和啟發學習法，來偵測與您使用者帳戶相關的可疑動作。 每個偵測到的可疑動作都會儲存在稱為 [風險偵測](../../active-directory/reports-monitoring/concept-risk-events.md)的記錄中。 風險偵測會記錄在 Azure AD 的安全性報告中。 如需詳細資訊，請參閱具有 [風險的使用者安全性報告](../../active-directory/reports-monitoring/concept-user-at-risk.md) 和具風險的登 [入安全性報告](../../active-directory/reports-monitoring/concept-risky-sign-ins.md)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 如需更多安全性最佳做法，請參閱 [Azure 安全性最佳做法與模式](best-practices-and-patterns.md)，以便在使用 Azure 設計、部署和管理雲端解決方案時使用。
 
 下列資源可提供更多有關 Azure 安全性和相關 Microsoft 服務的一般資訊：

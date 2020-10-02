@@ -3,12 +3,12 @@ title: 作為 Azure 事件方格事件之事件處理常式的服務匯流排佇
 description: 說明如何使用作為 Azure 事件方格事件之事件處理常式的服務匯流排佇列和主題。
 ms.topic: conceptual
 ms.date: 09/03/2020
-ms.openlocfilehash: 00f937a66ff17c2d5f502fe976675c999ee02a58
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ab219f0dc6009dc01d5915995fc04094e72a88cf
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91270163"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91629500"
 ---
 # <a name="service-bus-queues-and-topics-as-event-handlers-for-azure-event-grid-events"></a>作為 Azure 事件方格事件之事件處理常式的服務匯流排佇列和主題
 事件處理常式是傳送事件的位置。 處理常式會採取一些進一步的動作來處理事件。 有幾項 Azure 服務已自動設定為會處理事件，**Azure 服務匯流排**是其中之一。 
@@ -156,9 +156,6 @@ az eventgrid event-subscription create \
     }
 }
 ```
-
-> [!NOTE]
-> 不支援將事件傳遞至 **另一個租** 使用者中的 Azure 用於匯流排佇列或主題。 
 
 ## <a name="next-steps"></a>後續步驟
 如需支援的事件處理常式清單，請參閱[事件處理常式](event-handlers.md)一文。 

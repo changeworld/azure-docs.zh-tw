@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: core
 ms.author: sgilley
 author: sdgilley
-ms.date: 09/22/2020
+ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, fasttrack-edit
-ms.openlocfilehash: 6462226436aa7976f5293a5c271258be8a340cd4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d2885c6cc259cba74ab991ecf5046856984824f1
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91322323"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631236"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces-in-the-azure-portal"></a>在 Azure 入口網站中建立和管理 Azure Machine Learning 工作區
 
@@ -64,17 +64,15 @@ ms.locfileid: "91322323"
 ### <a name="networking"></a>網路功能  
 
 > [!IMPORTANT]  
-> 如需搭配使用私人端點和虛擬網路與工作區的詳細資訊，請參閱 [網路隔離和隱私權](how-to-enable-virtual-network.md)。  
-1. 預設的網路設定是使用可在公用網際網路上存取的 __公用端點__。 若要將您的工作區存取限制為您所建立的 Azure 虛擬網路，您可以改為選取 __私人端點__ (預覽) 作為連線 __方法__，然後使用 [ __+ 新增__ ] 設定端點。   
-
-   > [!IMPORTANT]   
-   > 使用私人端點搭配 Azure Machine Learning 工作區目前處於公開預覽狀態。 此預覽版是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。  
-   > 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 
+> 如需搭配使用私人端點和虛擬網路與工作區的詳細資訊，請參閱 [網路隔離和隱私權](how-to-enable-virtual-network.md)。
+    
+1. 預設的網路設定是使用可在公用網際網路上存取的 __公用端點__。 若要將您工作區的存取許可權制為您所建立的 Azure 虛擬網路，您可以改為選取 __私人端點__ 作為連線 __方法__，然後使用 [ __+ 新增__ ] 來設定端點。 
+    
    :::image type="content" source="media/how-to-manage-workspace/select-private-endpoint.png" alt-text="私人端點選取":::  
 
 1. 在 [ __建立私人端點__ ] 表單上，設定要使用的位置、名稱和虛擬網路。 如果您想要使用端點搭配私人 DNS 區域，請選取 [ __與私人 dns 區域整合__ ]，然後使用 [ __私人 dns 區域__ ] 欄位選取區域。 選取 __[確定]__ 以建立端點。   
 
-   :::image type="content" source="media/how-to-manage-workspace/create-private-endpoint.png" alt-text="私人端點建立":::   
+   :::image type="content" source="media/how-to-manage-workspace/create-private-endpoint.png" alt-text="私人端點選取":::   
 
 1. 當您完成網路的設定時，您可以選取 [ __審核] + [建立__]，或前進至選擇性的 [ __Advanced__ configuration]。 
 
@@ -112,14 +110,15 @@ Azure 資訊安全中心為混合式雲端工作負載提供統一的安全性�
 >   
 >     您不需要手動建立 Azure Cosmos DB 實例，系統會在工作區建立期間為您建立一個實例。 此 Azure Cosmos DB 實例會根據此模式使用名稱，在個別的資源群組中建立： `<your-workspace-resource-name>_<GUID>` 。   
 >   
-> 建立工作區之後，就無法變更此設定。 如果您刪除工作區所使用的 Azure Cosmos DB，也必須刪除正在使用該工作區的工作區。   
+> 建立工作區之後，就無法變更此設定。 如果您刪除工作區所使用的 Azure Cosmos DB，也必須刪除正在使用該工作區的工作區。
+
 1. 選取 [ __客戶管理的金鑰__]，然後選取 [ __按一下以選取金鑰__]。   
 
-    :::image type="content" source="media/how-to-manage-workspace/advanced-workspace.png" alt-text="客戶管理的金鑰":::   
+    :::image type="content" source="media/how-to-manage-workspace/advanced-workspace.png" alt-text="私人端點選取":::   
 
 1. 在 [ __從 Azure Key Vault 選取金鑰__ ] 表單中，選取現有的 Azure Key Vault、其包含的金鑰，以及金鑰的版本。 此金鑰用來加密 Azure Cosmos DB 中儲存的資料。 最後，使用 [ __選取__ ] 按鈕來使用此索引鍵。 
 
-   :::image type="content" source="media/how-to-manage-workspace/select-key-vault.png" alt-text="選取金鑰":::
+   :::image type="content" source="media/how-to-manage-workspace/select-key-vault.png" alt-text="私人端點選取":::
 
 ### <a name="download-a-configuration-file"></a>下載設定檔
 
@@ -148,7 +147,7 @@ Azure 資訊安全中心為混合式雲端工作負載提供統一的安全性�
 
 在 [ [Azure 入口網站](https://portal.azure.com/)中，選取您要刪除的工作區頂端的 [ **刪除**  ]。
 
-:::image type="content" source="./media/how-to-manage-workspace/delete-workspace.png" alt-text="刪除工作區":::
+:::image type="content" source="./media/how-to-manage-workspace/delete-workspace.png" alt-text="私人端點選取":::
 
 ## <a name="clean-up-resources"></a>清除資源
 

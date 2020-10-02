@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 06/30/2020
-ms.openlocfilehash: 1dcc345260c6a0844344bb33dec94c40d1dd9a54
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 407160a5c315844003db4c5e371a03e6e25d2694
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89650862"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91630928"
 ---
 # <a name="configure-network-virtual-appliance-in-azure-hdinsight"></a>在 Azure HDInsight 中設定網路虛擬裝置
 
@@ -23,7 +23,7 @@ Azure 防火牆會自動設定為允許許多常見重要案例的流量。 使�
 
 * 具有服務端點功能的服務可以使用服務端點進行設定，這會導致略過 NVA，通常是針對成本或效能考慮。
 * IP 位址相依性適用于 (TCP 和 UDP 流量) 的非 HTTP/S 流量。
-* FQDN HTTP/HTTPS 端點可以在您的 NVA 裝置中列入允許清單。
+* FQDN HTTP/HTTPS 端點可以在您的 NVA 裝置中核准。
 * 將您建立的路由表指派給您的 HDInsight 子網。
 
 ## <a name="service-endpoint-capable-dependencies"></a>支援服務端點的相依性
@@ -57,7 +57,7 @@ Azure 防火牆會自動設定為允許許多常見重要案例的流量。 使�
 | ocsp.digicert.com:80                                                  |
 | microsoft.com:80                                                      |
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [使用防火牆限制輸出流量](./hdinsight-restrict-outbound-traffic.md)
 * [Azure HDInsight 虛擬網路架構](hdinsight-virtual-network-architecture.md)

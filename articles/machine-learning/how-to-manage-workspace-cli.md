@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: core
 ms.author: larryfr
 author: Blackmist
-ms.date: 07/28/2020
+ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 0919e2b0703d56c61bd9ee37cb70021de4deff45
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: cb6c49ce779fe8b1e764471c31b392e31d6572ce
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91322269"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631200"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>使用 Azure CLI 建立 Azure Machine Learning 的工作區
 
@@ -142,21 +142,7 @@ az ml workspace create -w <workspace-name> -g <resource-group-name>
 ### <a name="virtual-network-and-private-endpoint"></a>虛擬網路和私人端點
 
 > [!IMPORTANT]
-> 使用 Azure Private Link 搭配 Azure Machine Learning 工作區目前處於公開預覽狀態。 這項功能僅適用于下欄區域：
->
-> * 美國東部
-> * **美國中南部**
-> * **美國西部**
-> * **美國西部 2**
-> * **加拿大中部**
-> * **東南亞**
-> * **日本東部**
-> * **北歐**
-> * **澳大利亞東部**
-> * **英國南部**
->
-> 此預覽版是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 
-> 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> Azure Government 區域或 Azure 中國的世紀區域無法使用具有 private link 的 Azure Machine Learning 工作區。
 
 如果您想要將工作區的存取限制為虛擬網路，您可以使用下列參數：
 

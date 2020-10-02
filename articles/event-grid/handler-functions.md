@@ -3,12 +3,12 @@ title: 以 Azure 函式作為 Azure 事件方格事件的事件處理常式
 description: 說明如何使用 Azure 函式作為「事件方格」事件的事件處理常式。
 ms.topic: conceptual
 ms.date: 09/18/2020
-ms.openlocfilehash: 87aeb78729dcc7bec9f193fab389e5c0952e63d5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: db06962c020eb954bf0c595e5a4019b1df774898
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91270303"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91629683"
 ---
 # <a name="azure-function-as-an-event-handler-for-event-grid-events"></a>以 Azure 函式作為事件方格事件的事件處理常式
 
@@ -60,7 +60,7 @@ ms.locfileid: "91270303"
 
 您可以在**事件方格主題**頁面的 [**功能**] 索引標籤上，更新現有訂用帳戶的這些值。 
 
-:::image type="content" source="./media/custom-event-to-function/features-batch-settings.png" alt-text="在建立之後啟用批次處理":::
+:::image type="content" source="./media/custom-event-to-function/features-batch-settings.png" alt-text="在建立訂閱時啟用批次處理":::
 
 ### <a name="azure-resource-manager-template"></a>Azure Resource Manager 範本
 您可以在 Azure Resource Manager 範本中設定 **maxEventsPerBatch** 和 **preferredBatchSizeInKilobytes** 。 如需詳細資訊，請參閱 [EventGrid eventSubscriptions 範本參考](https://docs.microsoft.com/azure/templates/microsoft.eventgrid/eventsubscriptions)。
@@ -70,9 +70,6 @@ ms.locfileid: "91270303"
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 您可以使用 [AzEventGridSubscription](https://docs.microsoft.com/powershell/module/az.eventgrid/new-azeventgridsubscription) 或 [AzEventGridSubscription](https://docs.microsoft.com/powershell/module/az.eventgrid/update-azeventgridsubscription) Cmdlet，利用下列參數來設定批次相關設定： `-MaxEventsPerBatch` 或 `-PreferredBatchSizeInKiloBytes` 。
-
-> [!NOTE]
-> 不支援將事件傳遞至 **另一個租** 使用者中的 Azure 函數。 
 
 ## <a name="next-steps"></a>後續步驟
 如需支援的事件處理常式清單，請參閱[事件處理常式](event-handlers.md)一文。 

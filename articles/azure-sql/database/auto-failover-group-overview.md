@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 08/28/2020
-ms.openlocfilehash: 023d6512a13e1add1e9980d450a91ed2183e7793
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: 2035fa811ed6bb5760f2527f66e0f2ca48ccb2c9
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/01/2020
-ms.locfileid: "91614439"
+ms.locfileid: "91627220"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>使用自動容錯移轉群組可以啟用多個資料庫透明且協調的容錯移轉
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -359,7 +359,11 @@ CREATE LOGIN foo WITH PASSWORD = '<enterStrongPasswordHere>', SID = <login_sid>;
 - SQL 受控執行個體的兩個實例必須位於不同的 Azure 區域。
 - SQL 受控執行個體的兩個實例必須是相同的服務層級，而且具有相同的儲存體大小。
 - 您的 SQL 受控執行個體的次要實例必須是空的， (沒有任何使用者資料庫) 。
-- SQL 受控執行個體的實例所使用的虛擬網路必須透過 [VPN 閘道](../../vpn-gateway/vpn-gateway-about-vpngateways.md) 或 [Express Route](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md)進行連線。 當兩個虛擬網路透過內部部署網路連線時，請確定防火牆規則不會封鎖連接埠 5022 和 11000-11999。 目前不支援轉移的全域 VNet 對等互連。
+- SQL 受控執行個體的實例所使用的虛擬網路必須透過 [VPN 閘道](../../vpn-gateway/vpn-gateway-about-vpngateways.md) 或 [Express Route](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md)進行連線。 當兩個虛擬網路透過內部部署網路連線時，請確定防火牆規則不會封鎖連接埠 5022 和 11000-11999。 支援全域 VNet 對等互連，但有下列注意事項中所述的限制。
+
+   > [!IMPORTANT]
+   > [在9/22/2020 上，我們為新建立的虛擬叢集宣佈了全域虛擬網路對等互連](https://azure.microsoft.com/en-us/updates/global-virtual-network-peering-support-for-azure-sql-managed-instance-now-available/)。 這表示在公告日期之後于空白子網中建立的 SQL 受控實例，以及這些子網中建立的所有後續受控實例，都支援全域虛擬網路對等互連。 針對所有其他 SQL 受控實例對等互連支援，受限於相同區域中的網路，原因是 [全域虛擬網路對等互連的限制](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)。 另請參閱 [Azure 虛擬網路常見問題](https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) 文章中的相關章節，以取得詳細資料。 
+
 - 這兩個 SQL 受控執行個體 Vnet 不能有重迭的 IP 位址。
 - 您需要設定網路安全性群組 (NSG)，以便連接埠 5022 和範圍 11000 ~ 12000 開啟來自其他受控執行個體子網路的輸入和輸出連線。 這是為了允許執行個體之間的複寫流量。
 
@@ -419,7 +423,7 @@ CREATE LOGIN foo WITH PASSWORD = '<enterStrongPasswordHere>', SID = <login_sid>;
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-| Command | 說明 |
+| Command | 描述 |
 | --- | --- |
 | [az sql failover-group create](/cli/azure/sql/failover-group#az-sql-failover-group-create) |此命令會建立容錯移轉群組，並同時在主要和次要伺服器上註冊|
 | [az sql 容錯移轉-群組刪除](/cli/azure/sql/failover-group#az-sql-failover-group-delete) | 從伺服器移除容錯移轉群組 |
@@ -429,7 +433,7 @@ CREATE LOGIN foo WITH PASSWORD = '<enterStrongPasswordHere>', SID = <login_sid>;
 
 # <a name="rest-api"></a>[Rest API](#tab/rest-api)
 
-| API | 說明 |
+| API | 描述 |
 | --- | --- |
 | [建立或更新容錯移轉群組](https://docs.microsoft.com/rest/api/sql/failovergroups/createorupdate) | 建立或更新容錯移轉群組 |
 | [刪除容錯移轉群組](https://docs.microsoft.com/rest/api/sql/failovergroups/delete) | 從伺服器移除容錯移轉群組 |
@@ -457,7 +461,7 @@ CREATE LOGIN foo WITH PASSWORD = '<enterStrongPasswordHere>', SID = <login_sid>;
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-| Command | 說明 |
+| Command | 描述 |
 | --- | --- |
 | [az sql failover-group create](/cli/azure/sql/failover-group#az-sql-failover-group-create) |此命令會建立容錯移轉群組，並同時在主要和次要伺服器上註冊|
 | [az sql 容錯移轉-群組刪除](/cli/azure/sql/failover-group#az-sql-failover-group-delete) | 從伺服器移除容錯移轉群組 |
@@ -467,7 +471,7 @@ CREATE LOGIN foo WITH PASSWORD = '<enterStrongPasswordHere>', SID = <login_sid>;
 
 # <a name="rest-api"></a>[Rest API](#tab/rest-api)
 
-| API | 說明 |
+| API | 描述 |
 | --- | --- |
 | [建立或更新容錯移轉群組](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/createorupdate) | 建立或更新容錯移轉群組的設定 |
 | [刪除容錯移轉群組](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/delete) | 從實例移除容錯移轉群組 |

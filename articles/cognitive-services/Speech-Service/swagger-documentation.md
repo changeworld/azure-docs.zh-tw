@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: reference
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: e42d9713d1d61bb681c0ee51e46cc52eb0bcc807
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 30e8224b6cb757f044a5eac598d834cee838391e
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91363183"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91629976"
 ---
 # <a name="swagger-documentation"></a>Swagger 文件
 
@@ -26,21 +26,20 @@ ms.locfileid: "91363183"
 
 ## <a name="generating-code-from-the-swagger-specification"></a>從 Swagger 規格產生程式碼
 
-[Swagger 規格](https://cris.ai/swagger/ui/index)具有可讓您快速測試各種路徑的選項。 但是，有時需要為所有路徑產生程式碼，建立一個未來解決方案可以作為基礎的單一呼叫程式庫。 讓我們看看產生 Python 程式庫的流程。
+[Swagger 規格](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0)具有可讓您快速測試各種路徑的選項。 但是，有時需要為所有路徑產生程式碼，建立一個未來解決方案可以作為基礎的單一呼叫程式庫。 讓我們看看產生 Python 程式庫的流程。
 
 您必須將 Swagger 設定為與您的語音服務訂用帳戶相同的區域。 您可以在語音服務資源下的 Azure 入口網站中確認您的區域。 如需支援區域的完整清單，請參閱 [區域](regions.md)。
 
-1. 移至 https://editor.swagger.io 。
-2. 按一下 [檔案]****，然後按一下 [匯入]****
-3. 輸入 swagger URL，包括語音服務訂用帳戶的區域 `https://<your-region>.cris.ai/docs/v2.0/swagger`
-4. 按一下 [ **產生用戶端** ]，然後選取 [Python]
-5. 儲存用戶端程式庫
+1. 在瀏覽器中，移至您區域的 Swagger 規格 `https://<your-region>.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0` 。 在該頁面上，按一下 [ **API 定義**]，然後按一下 [ **Swagger**]。 複製所顯示頁面的 URL。
+1. 在新的瀏覽器中，移至 https://editor.swagger.io
+1. 按一下 [檔案] **，按一下 [** 匯 **入 url**]，貼上 Url，然後按一下 **[確定]**。
+1. 按一下 [ **產生用戶端** ]，然後選取 [ **python**]。 用戶端程式庫會下載到您的電腦。
 
 您可以使用您在 [GitHub 上以語音服務範例](https://aka.ms/csspeech/samples)產生的 Python 程式庫。
 
 ## <a name="reference-docs"></a>參考文件
 
-* [REST (Swagger) ：批次轉譯和自訂](https://westus.cris.ai/swagger/ui/index)
+* [REST (Swagger) ：批次轉譯和自訂](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0)
 * [REST API：語音轉文字](rest-speech-to-text.md)
 * [REST API：文字轉語音](rest-text-to-speech.md)
 

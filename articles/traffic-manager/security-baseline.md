@@ -4,25 +4,25 @@ description: Azure 流量管理員安全性基準提供的程式指引和資源�
 author: msmbaldwin
 ms.service: traffic-manager
 ms.topic: conceptual
-ms.date: 09/30/2020
+ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: a39d1a34a1a43c84c660a113fca8039a744482bb
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: 9ed6a57dadb70daed9cdf02421b91d310b4b0f07
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/01/2020
-ms.locfileid: "91614544"
+ms.locfileid: "91631455"
 ---
 # <a name="azure-security-baseline-for-azure-traffic-manager"></a>適用于 Azure 流量管理員的 Azure 安全性基準
 
-適用于 Microsoft Azure 流量管理員的 Azure 安全性基準包含可協助您改善部署安全性狀態的建議。 此服務的基準取自 [Azure 安全性效能評定 1.0 版](https://docs.microsoft.com/azure/security/benchmarks/overview)，其會提供如何在 Azure 上使用最佳做法指引來保護雲端解決方案的建議。 內容會依 Azure 安全性基準測試所定義的 **安全性控制** ，以及適用于 Azure 流量管理員的相關指引來分組。 已排除不適用 Azure 流量管理員的**控制項**。
+適用于 Microsoft Azure 流量管理員的 Azure 安全性基準包含可協助您改善部署安全性狀態的建議。 此服務的基準取自 [Azure 安全性效能評定 1.0 版](../security/benchmarks/overview-v1.md)，其會提供如何在 Azure 上使用最佳做法指引來保護雲端解決方案的建議。 內容會依 Azure 安全性基準測試所定義的 **安全性控制** ，以及適用于 Azure 流量管理員的相關指引來分組。 已排除不適用 Azure 流量管理員的**控制項**。
 
 若要查看 Azure 流量管理員如何完全對應至 Azure 安全性基準測試，請參閱 [完整的 Azure 流量管理員安全性基準對應](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)檔案。
 
 ## <a name="logging-and-monitoring"></a>記錄和監視
 
-*如需詳細資訊，請參閱 [Azure 安全性基準測試：記錄和監視](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring)。*
+*如需詳細資訊，請參閱 [Azure 安全性基準測試：記錄和監視](../security/benchmarks/security-control-logging-monitoring.md)。*
 
 ### <a name="22-configure-central-security-log-management"></a>2.2：設定中央安全性記錄管理
 
@@ -30,9 +30,9 @@ ms.locfileid: "91614544"
 
 透過 Azure 監視器內嵌記錄，以匯總端點裝置、網路資源和其他安全性系統所產生的安全性資料。 或者，您可以啟用和內部資料來 Azure Sentinel 或協力廠商 SIEM。
 
-- [如何使 Azure Sentinel 上線](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+- [如何使 Azure Sentinel 上線](../sentinel/quickstart-onboard.md)
 
-- [如何使用 Azure 監視器收集平臺記錄和計量](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings)
+- [如何使用 Azure 監視器收集平臺記錄和計量](../azure-monitor/platform/diagnostic-settings.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -44,13 +44,13 @@ ms.locfileid: "91614544"
 
 啟用 Azure 監視器內的診斷設定，以存取 audit、security 和診斷記錄。 活動記錄 (自動提供) 包含事件來源、日期、使用者、時間戳記、來源位址、目的地位址，以及其他有用的項目。
 
-- [如何啟用資源記錄](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-diagnostic-logs)
+- [如何啟用資源記錄](traffic-manager-diagnostic-logs.md)
 
-- [流量管理員的計量與警示](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-metrics-alerts)
+- [流量管理員的計量與警示](traffic-manager-metrics-alerts.md)
 
-- [如何使用 Azure 監視器收集平臺記錄和計量](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings)
+- [如何使用 Azure 監視器收集平臺記錄和計量](../azure-monitor/platform/diagnostic-settings.md)
 
-- [瞭解 Azure 中的記錄和不同的記錄類型](https://docs.microsoft.com/azure/azure-monitor/platform/platform-logs-overview)
+- [瞭解 Azure 中的記錄和不同的記錄類型](../azure-monitor/platform/platform-logs-overview.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -60,9 +60,9 @@ ms.locfileid: "91614544"
 
 **指導**方針：在 Azure 監視器中，根據您組織的合規性法規來設定 Log Analytics 工作區保留期限。 使用 Azure 儲存體帳戶來取得長期和封存儲存體。
 
-- [變更 Log Analytics 中的資料保留期限](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+- [變更 Log Analytics 中的資料保留期限](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
 
-- [如何設定 Azure 儲存體客戶紀錄的保留原則](https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account#configure-logging)
+- [如何設定 Azure 儲存體客戶紀錄的保留原則](../storage/common/storage-monitor-storage-account.md#configure-logging)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -74,11 +74,11 @@ ms.locfileid: "91614544"
 
 或者，您可以啟用和內部資料來 Azure Sentinel 或協力廠商 SIEM。 
 
-- [如何使 Azure Sentinel 上線](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+- [如何使 Azure Sentinel 上線](../sentinel/quickstart-onboard.md)
 
-- [開始使用 Log Analytics 查詢](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)
+- [開始使用 Log Analytics 查詢](../azure-monitor/log-query/get-started-portal.md)
 
-- [如何在 Azure 監視器中執行自訂查詢](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries)
+- [如何在 Azure 監視器中執行自訂查詢](../azure-monitor/log-query/get-started-queries.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -92,13 +92,13 @@ ms.locfileid: "91614544"
 
 或者，您可以啟用和內部資料以 Azure Sentinel。
 
-- [使用 Azure 監視器建立、檢視及管理計量警示](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-metrics-alerts)
+- [使用 Azure 監視器建立、檢視及管理計量警示](traffic-manager-metrics-alerts.md)
 
-- [如何在 Azure 資訊安全中心中管理警示](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts)
+- [如何在 Azure 資訊安全中心中管理警示](../security-center/security-center-managing-and-responding-alerts.md)
 
-- [如何對 log analytics 記錄資料發出警示](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-response)
+- [如何對 log analytics 記錄資料發出警示](../azure-monitor/learn/tutorial-response.md)
 
-- [如何使 Azure Sentinel 上線](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+- [如何使 Azure Sentinel 上線](../sentinel/quickstart-onboard.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -106,7 +106,7 @@ ms.locfileid: "91614544"
 
 ## <a name="identity-and-access-control"></a>身分識別與存取控制
 
-*如需詳細資訊，請參閱 [Azure 安全性基準測試：身分識別與存取控制](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control)。*
+*如需詳細資訊，請參閱 [Azure 安全性基準測試：身分識別與存取控制](../security/benchmarks/security-control-identity-access-control.md)。*
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1：維護系統管理帳戶的清查
 
@@ -114,7 +114,7 @@ ms.locfileid: "91614544"
 
 在 Resource Manager 中，來自任何訂用帳戶的端點都可以新增至流量管理員，只要設定流量管理員設定檔的人員具有端點的讀取權限即可。
 
-- [使用 Azure 入口網站新增或移除 Azure 角色指派](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
+- [使用 Azure 入口網站新增或移除 Azure 角色指派](../role-based-access-control/role-assignments-portal.md)
 
 - [如何使用 PowerShell 在 Azure AD 中取得目錄角色](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
 
@@ -136,9 +136,9 @@ ms.locfileid: "91614544"
 
 您也可以使用 Azure AD Privileged Identity Management 和 Azure Resource Manager 來啟用即時存取。 
 
-- [深入瞭解 Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/)
+- [深入瞭解 Privileged Identity Management](/azure/active-directory/privileged-identity-management/)
 
-- [如何使用 Azure 原則](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [如何使用 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -148,7 +148,7 @@ ms.locfileid: "91614544"
 
 **指導**方針： Azure 流量管理員支援 AZURE ACTIVE DIRECTORY 的 SSO 驗證。 藉由您組織的預先存在身分識別，為服務啟用 SSO，以減少使用者必須管理的身分識別與認證數目。
 
-- [瞭解 Azure AD 的 SSO](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [瞭解 Azure AD 的 SSO](../active-directory/manage-apps/what-is-single-sign-on.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -158,9 +158,9 @@ ms.locfileid: "91614544"
 
 **指導**方針：啟用 Azure Active Directory Multi-Factor Authentication，並遵循 Azure 資訊安全中心身分識別和存取管理建議。
 
-- [如何在 Azure 中啟用 MFA](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+- [如何在 Azure 中啟用 MFA](../active-directory/authentication/howto-mfa-getstarted.md)
 
-- [如何在 Azure 資訊安全中心監視身分識別和存取](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+- [如何在 Azure 資訊安全中心監視身分識別和存取](../security-center/security-center-identity-access.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -170,9 +170,9 @@ ms.locfileid: "91614544"
 
 **指導**方針：使用安全且受 Azure 管理的工作站 (也稱為「特殊許可權存取工作站」，或 PAW 需要較高許可權的系統管理工作) 。
 
-- [瞭解安全、受 Azure 管理的工作站](https://docs.microsoft.com/azure/active-directory/devices/concept-azure-managed-workstation)
+- [瞭解安全、受 Azure 管理的工作站](../active-directory/devices/concept-azure-managed-workstation.md)
 
-- [如何在 Azure 中啟用 MFA](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+- [如何在 Azure 中啟用 MFA](../active-directory/authentication/howto-mfa-getstarted.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -184,9 +184,9 @@ ms.locfileid: "91614544"
 
 此外，使用 Azure AD 風險偵測來查看警示和報告有風險的使用者行為。
 
-- [如何部署 Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan)
+- [如何部署 Privileged Identity Management](/azure/active-directory/privileged-identity-management/pim-deployment-plan)
 
-- [瞭解 Azure AD 風險偵測](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events)
+- [瞭解 Azure AD 風險偵測](/azure/active-directory/reports-monitoring/concept-risk-events)
 
 **Azure 資訊安全中心監視**：是
 
@@ -196,7 +196,7 @@ ms.locfileid: "91614544"
 
 **指導**方針：使用 Azure AD 命名位置，只允許來自 IP 位址範圍或國家/地區之特定邏輯群組的存取。
 
-- [如何設定 Azure AD 命名位置](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
+- [如何設定 Azure AD 命名位置](../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -206,7 +206,7 @@ ms.locfileid: "91614544"
 
 **指導**方針：使用 Azure Active Directory (Azure AD) 作為中央驗證和授權系統。 Azure AD 會對待用資料和傳輸中資料使用增強式加密，以保護資料安全。 Azure AD 也會對使用者認證進行 Salt 處理、雜湊處理並安全儲存資料。
 
-- [如何建立和設定 Azure AD 實例](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
+- [如何建立和設定 Azure AD 實例](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -216,9 +216,9 @@ ms.locfileid: "91614544"
 
 **指引**：Azure AD 會提供記錄來協助探索過時的帳戶。 此外，使用 Azure AD 身分識別和存取評論，有效率地管理群組成員資格、企業應用程式的存取權，以及角色指派。 您可以定期檢查使用者存取權，以確定只有適當的使用者可以繼續存取。 
 
-- [瞭解 Azure AD 報告](https://docs.microsoft.com/azure/active-directory/reports-monitoring/)
+- [瞭解 Azure AD 報告](/azure/active-directory/reports-monitoring/)
 
-- [如何使用 Azure AD 身分識別和存取權評論](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
+- [如何使用 Azure AD 身分識別和存取權評論](../active-directory/governance/access-reviews-overview.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -230,7 +230,7 @@ ms.locfileid: "91614544"
 
 您可以建立 Azure AD 使用者帳戶的診斷設定，並將審核記錄和登入記錄傳送至 Log Analytics 工作區，以簡化此程式。 您可以在 Log Analytics 工作區中設定所需的警示。
 
-- [如何整合 Azure 活動記錄與 Azure 監視器](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [如何整合 Azure 活動記錄與 Azure 監視器](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -240,11 +240,11 @@ ms.locfileid: "91614544"
 
 **指導**方針：使用 Azure AD Identity Protection 功能，對偵測到與使用者身分識別相關的可疑動作設定自動回應。 您也可將資料內嵌到 Azure Sentinel 中，以便進一步調查。
 
-- [如何檢視有風險的 Azure AD 登入](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+- [如何檢視有風險的 Azure AD 登入](/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
 
-- [如何設定和啟用身分識別保護風險原則](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies)
+- [如何設定和啟用身分識別保護風險原則](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
-- [如何使 Azure Sentinel 上線](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+- [如何使 Azure Sentinel 上線](../sentinel/quickstart-onboard.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -252,13 +252,13 @@ ms.locfileid: "91614544"
 
 ## <a name="data-protection"></a>資料保護
 
-*如需詳細資訊，請參閱 [Azure 安全性基準測試：資料保護](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection)。*
+*如需詳細資訊，請參閱 [Azure 安全性基準測試：資料保護](../security/benchmarks/security-control-data-protection.md)。*
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1：維護敏感性資訊的詳細目錄
 
 **指引**：使用標籤協助追蹤可儲存或處理敏感性資訊的 Azure 資源。
 
-- [如何建立和使用標籤](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [如何建立和使用標籤](/azure/azure-resource-manager/resource-group-using-tags)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -272,9 +272,9 @@ ms.locfileid: "91614544"
 
 Azure 流量管理員具有稱為「Azure 流量管理員參與者」的預先定義 Azure RBAC 角色，可指派給使用者。
 
-- [使用 Azure 入口網站新增或移除 Azure 角色指派](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
+- [使用 Azure 入口網站新增或移除 Azure 角色指派](../role-based-access-control/role-assignments-portal.md)
 
-- [流量管理員參與者角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#traffic-manager-contributor)
+- [流量管理員參與者角色](../role-based-access-control/built-in-roles.md#traffic-manager-contributor)
 
 - [如何使用 PowerShell 在 Azure AD 中取得目錄角色](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
 
@@ -288,7 +288,7 @@ Azure 流量管理員具有稱為「Azure 流量管理員參與者」的預先�
 
 **指導**方針：使用 Azure 監視器搭配 Azure 活動記錄檔，以建立 Azure 流量管理員和其他重要或相關資源發生變更時的警示。
 
-- [如何建立 Azure 活動記錄事件的警示](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+- [如何建立 Azure 活動記錄事件的警示](../azure-monitor/platform/alerts-activity-log.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -296,7 +296,7 @@ Azure 流量管理員具有稱為「Azure 流量管理員參與者」的預先�
 
 ## <a name="inventory-and-asset-management"></a>清查和資產管理
 
-*如需詳細資訊，請參閱 [Azure 安全性基準測試：清查和資產管理](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management)。*
+*如需詳細資訊，請參閱 [Azure 安全性基準測試：清查和資產管理](../security/benchmarks/security-control-inventory-asset-management.md)。*
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6.1：使用自動化資產探索解決方案
 
@@ -304,11 +304,11 @@ Azure 流量管理員具有稱為「Azure 流量管理員參與者」的預先�
 
 雖然可以透過 Azure Resource Graph Explorer 探索傳統的 Azure 資源，但強烈建議您建立並使用 Azure Resource Manager 的資源。
 
-- [如何使用 Azure Resource Graph Explorer 建立查詢](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+- [如何使用 Azure Resource Graph Explorer 建立查詢](../governance/resource-graph/first-query-portal.md)
 
 - [如何查看您的 Azure 訂用帳戶](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
 
-- [了解 Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)
+- [了解 Azure RBAC](../role-based-access-control/overview.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -335,11 +335,11 @@ Azure 流量管理員具有稱為「Azure 流量管理員參與者」的預先�
 
 您也可以建立自訂 Azure 原則定義來限制更細微的資源設定。
 
-- [如何建立額外的 Azure 訂閱](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+- [如何建立額外的 Azure 訂閱](/azure/billing/billing-create-subscription)
 
-- [如何建立管理群組](https://docs.microsoft.com/azure/governance/management-groups/create)
+- [如何建立管理群組](/azure/governance/management-groups/create)
 
-- [如何建立和使用標籤](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [如何建立和使用標籤](/azure/azure-resource-manager/resource-group-using-tags)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -359,9 +359,9 @@ Azure 流量管理員具有稱為「Azure 流量管理員參與者」的預先�
 
 使用 Azure Resource Graph 來查詢及探索其訂用帳戶內的資源。  確保已核准環境中的所有 Azure 資源。
 
-- [如何設定和管理 Azure 原則](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 
-- [如何使用 Azure Resource Graph 建立查詢](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+- [如何使用 Azure Resource Graph 建立查詢](../governance/resource-graph/first-query-portal.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -376,9 +376,9 @@ Azure 流量管理員具有稱為「Azure 流量管理員參與者」的預先�
 
 您也可以建立自訂 Azure 原則定義來限制更細微的資源設定。
 
-- [如何設定和管理 Azure 原則](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 
-- [如何使用 Azure 原則拒絕特定的資源類型](https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types)
+- [如何使用 Azure 原則拒絕特定的資源類型](/azure/governance/policy/samples/not-allowed-resource-types)
 
 **Azure 資訊安全中心監視**：是
 
@@ -388,7 +388,7 @@ Azure 流量管理員具有稱為「Azure 流量管理員參與者」的預先�
 
 **指引**：設定 Azure 條件式存取，以藉由對「Microsoft Azure 管理」應用程式設定「封鎖存取」，限制使用者與 Azure Resource Manager 互動的能力。
 
-- [如何設定條件式存取以封鎖 Azure Resource Manager 的存取](https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management)
+- [如何設定條件式存取以封鎖 Azure Resource Manager 的存取](../role-based-access-control/conditional-access-azure-management.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -396,7 +396,7 @@ Azure 流量管理員具有稱為「Azure 流量管理員參與者」的預先�
 
 ## <a name="secure-configuration"></a>安全設定
 
-*如需詳細資訊，請參閱 [Azure 安全性基準測試：安全](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration)設定。*
+*如需詳細資訊，請參閱 [Azure 安全性基準測試：安全](../security/benchmarks/security-control-secure-configuration.md)設定。*
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1：為所有 Azure 資源建立安全設定
 
@@ -404,7 +404,7 @@ Azure 流量管理員具有稱為「Azure 流量管理員參與者」的預先�
 
 - [如何查看可用 Azure 原則別名](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
-- [如何設定和管理 Azure 原則](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -414,9 +414,9 @@ Azure 流量管理員具有稱為「Azure 流量管理員參與者」的預先�
 
 **指引**：使用 Azure 原則 [拒絕] 和 [在不存在時部署]，以對 Azure 資源強制使用安全設定。
 
-- [如何設定和管理 Azure 原則](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 
-- [瞭解 Azure 原則效果](https://docs.microsoft.com/azure/governance/policy/concepts/effects)
+- [瞭解 Azure 原則效果](../governance/policy/concepts/effects.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -438,7 +438,7 @@ Azure 流量管理員具有稱為「Azure 流量管理員參與者」的預先�
 
 **指導**方針：使用內建的 Azure 原則定義以及 "Microsoft. Network" 命名空間中 Azure 原則的別名來建立自訂原則，以警示、審核和強制執行系統組態。 此外，開發流程和管線以管理原則例外狀況。
 
-- [如何設定和管理 Azure 原則](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -448,7 +448,7 @@ Azure 流量管理員具有稱為「Azure 流量管理員參與者」的預先�
 
 **指導**方針：使用內建的 Azure 原則定義以及 "Microsoft. Network" 命名空間中 Azure 原則的別名來建立自訂原則，以警示、審核和強制執行系統組態。 使用 Azure 原則 [audit]、[拒絕] 和 [部署（如果不存在）]，自動強制執行 Azure 資源的設定。
 
-- [如何設定和管理 Azure 原則](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -456,7 +456,7 @@ Azure 流量管理員具有稱為「Azure 流量管理員參與者」的預先�
 
 ## <a name="malware-defense"></a>惡意程式碼防禦
 
-*如需詳細資訊，請參閱 [Azure 安全性基準測試：惡意程式碼防護](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense)。*
+*如需詳細資訊，請參閱 [Azure 安全性基準測試：惡意程式碼防護](../security/benchmarks/security-control-malware-defense.md)。*
 
 ### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8.2：預先掃描要上傳至非計算 Azure 資源的檔案
 
@@ -470,7 +470,7 @@ Azure 流量管理員具有稱為「Azure 流量管理員參與者」的預先�
 
 ## <a name="incident-response"></a>事件回應
 
-*如需詳細資訊，請參閱 [Azure 安全性基準測試：事件回應](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response)。*
+*如需詳細資訊，請參閱 [Azure 安全性基準測試：事件回應](../security/benchmarks/security-control-incident-response.md)。*
 
 ### <a name="101-create-an-incident-response-guide"></a>10.1：建立事件回應指南
 
@@ -492,9 +492,9 @@ Azure 流量管理員具有稱為「Azure 流量管理員參與者」的預先�
 
 此外，使用標記標記訂用帳戶，並建立命名系統來識別和分類 Azure 資源，尤其是處理敏感性資料。  您必須負責根據發生事件的 Azure 資源和環境的重要性來排定補救警示的優先順序。
 
-- [Azure 資訊安全中心的安全性警示](https://docs.microsoft.com/azure/security-center/security-center-alerts-overview)
+- [Azure 資訊安全中心的安全性警示](../security-center/security-center-alerts-overview.md)
 
-- [使用標記來組織 Azure 資源](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [使用標記來組織 Azure 資源](/azure/azure-resource-manager/resource-group-using-tags)
 
 **Azure 資訊安全中心監視**：是
 
@@ -514,7 +514,7 @@ Azure 流量管理員具有稱為「Azure 流量管理員參與者」的預先�
 
 **指引**：如果 Microsoft 安全性回應中心 (MSRC) 發現您的資料遭到非法或未經授權的對象存取，Microsoft 將使用安全性事件連絡資訊來連絡您。 事後檢討事件，確保問題已解決。
 
-- [如何設定 Azure 資訊安全中心安全性連絡人](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details)
+- [如何設定 Azure 資訊安全中心安全性連絡人](../security-center/security-center-provide-security-contact-details.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -524,9 +524,9 @@ Azure 流量管理員具有稱為「Azure 流量管理員參與者」的預先�
 
 **指導**方針：使用連續匯出功能來匯出您的 Azure 資訊安全中心警示和建議，以協助找出 Azure 資源的風險。 「連續匯出」可讓您以手動方式或持續持續的方式來匯出警示和建議。 您可以使用 Azure 資訊安全中心資料連線器，將警示串流至 Azure Sentinel。
 
-- [如何設定連續匯出](https://docs.microsoft.com/azure/security-center/continuous-export)
+- [如何設定連續匯出](../security-center/continuous-export.md)
 
-- [如何將警示串流至 Azure Sentinel](https://docs.microsoft.com/azure/sentinel/connect-azure-security-center)
+- [如何將警示串流至 Azure Sentinel](../sentinel/connect-azure-security-center.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -536,7 +536,7 @@ Azure 流量管理員具有稱為「Azure 流量管理員參與者」的預先�
 
 **指導**方針：使用工作流程自動化功能 Azure 資訊安全中心自動觸發對安全性警示和建議的回應，以保護您的 Azure 資源。
 
-- [如何在安全性中心設定工作流程自動化](https://docs.microsoft.com/azure/security-center/workflow-automation)
+- [如何在安全性中心設定工作流程自動化](../security-center/workflow-automation.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -544,7 +544,7 @@ Azure 流量管理員具有稱為「Azure 流量管理員參與者」的預先�
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>滲透測試和 Red Team 練習
 
-*如需詳細資訊，請參閱 [Azure 安全性基準測試：滲透測試和 red team 練習](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises)。*
+*如需詳細資訊，請參閱 [Azure 安全性基準測試：滲透測試和 red team 練習](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md)。*
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11.1：進行 Azure 資源的定期滲透測試，並確保修復所有重要的安全性結果
 

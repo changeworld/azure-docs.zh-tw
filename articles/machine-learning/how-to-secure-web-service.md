@@ -11,12 +11,12 @@ author: aashishb
 ms.date: 03/05/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: ec92c5638266ee240e0385db098c0bf596935ad4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 5d0a86a966cacfdeac291c66fa245a613b383a85
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91328372"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91629518"
 ---
 # <a name="use-tls-to-secure-a-web-service-through-azure-machine-learning"></a>使用 TLS 來透過 Azure Machine Learning 保護 Web 服務
 
@@ -28,7 +28,7 @@ ms.locfileid: "91328372"
 > [!TIP]
 > Azure Machine Learning SDK 會針對與安全通訊相關的屬性使用「SSL」一詞。 這並不表示您的 web 服務不會使用 *TLS*。 SSL 只是較常辨識的詞彙。
 >
-> 具體而言，透過 Azure Machine Learning 部署的 web 服務只支援 TLS 1.1 版
+> 具體而言，透過 Azure Machine Learning 部署的 web 服務只支援適用于 ACI 的 TLS 1.1 版和 AKS 的 TLS 1.2 版。
 
 TLS 和 SSL 都依賴 *數位憑證*，可協助進行加密和身分識別驗證。 如需有關數位憑證運作方式的詳細資訊，請參閱維琪百科主題 [公開金鑰基礎結構](https://en.wikipedia.org/wiki/Public_key_infrastructure)。
 

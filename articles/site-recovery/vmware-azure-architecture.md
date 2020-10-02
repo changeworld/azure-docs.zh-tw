@@ -7,12 +7,12 @@ services: site-recovery
 ms.topic: conceptual
 ms.date: 11/06/2019
 ms.author: raynew
-ms.openlocfilehash: 217e3b9de7c9a46174c6ce6d1a3b151c904a7bf2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 45baee286fede0ab16da62b7c2e84008d58690b1
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91314108"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91626491"
 ---
 # <a name="vmware-to-azure-disaster-recovery-architecture"></a>VMware 至 Azure 災害復原架構
 
@@ -50,7 +50,7 @@ ms.locfileid: "91314108"
 | 複寫               | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`   | 允許 VM 與 Site Recovery 服務進行通訊。 |
 | 服務匯流排               | `*.servicebus.windows.net`                 | `*.servicebus.usgovcloudapi.net`             | 允許 VM 寫入 Site Recovery 監視和診斷資料。 |
 
-如需在內部部署 Azure Site Recovery 基礎結構和 Azure 服務之間進行通訊的詳盡 Url 清單，請參閱 [必要條件文章中的網路需求一節](vmware-azure-deploy-configuration-server.md#prerequisites)。
+如需要針對內部部署 Azure Site Recovery 基礎結構和 Azure 服務之間的通訊進行篩選的詳盡 Url 清單，請參閱 [必要條件文章中的網路需求一節](vmware-azure-deploy-configuration-server.md#prerequisites)。
 
 ## <a name="replication-process"></a>複寫程序
 

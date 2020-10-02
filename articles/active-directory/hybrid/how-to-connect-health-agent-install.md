@@ -17,12 +17,12 @@ ms.topic: how-to
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 3b2c89086688451b16a8a6e10c25be65ffd4d9dd
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 51f9043dcf329e4f3f23ddb930e53cfdfa2f107a
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91273852"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631642"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Azure AD Connect Health 代理程式安裝
 
@@ -30,13 +30,9 @@ ms.locfileid: "91273852"
 
 ## <a name="requirements"></a>需求
 
-
-> [!IMPORTANT]
-> 不支援在 Windows Server Core 上安裝 Azure AD Connect Health 代理程式。
-
 下表是使用 Azure AD Connect Health 的需求清單。
 
-| 需求 | 說明 |
+| 需求 | 描述 |
 | --- | --- |
 | Azure AD Premium |Azure AD Connect Health 是 Azure AD Premium 的一個功能，而且需要 Azure AD Premium。 <br /><br />如需詳細資訊，請參閱 [開始使用 Azure AD Premium](../fundamentals/active-directory-get-started-premium.md) <br />若要開始使用 30 天免費試用版，請參閱[開始使用試用版](https://azure.microsoft.com/trial/get-started-active-directory/)。 |
 | 您必須是 Azure AD 的全域系統管理員，才能開始使用 Azure AD Connect Health |依預設，只有全域系統管理員可以安裝和設定 Health 代理程式，以便開始使用、存取入口網站，以及在 Azure AD Connect Health 內執行任何作業。 如需詳細資訊，請參閱[管理您的 Azure AD 目錄](../fundamentals/active-directory-administer.md)。 <br /><br /> 使用 Azure 角色型存取控制 (Azure RBAC) 您可以允許 Azure AD Connect Health 存取您組織中的其他使用者。 如需詳細資訊，請參閱 [適用于 Azure AD Connect Health 的 azure (AZURE RBAC) 的 azure 角色型存取控制。](how-to-connect-health-operations.md#manage-access-with-azure-rbac) <br /><br />**重要：** 在安裝代理程式時使用的帳戶必須是工作或學校帳戶。 不能是 Microsoft 帳戶。 如需詳細資訊，請參閱[以組織身分註冊 Azure](../fundamentals/sign-up-organization.md) |
@@ -48,6 +44,9 @@ ms.locfileid: "91273852"
 | 如果啟用 IE 增強式安全性，則允許下列網站 |如果啟用 IE 增強式安全性，則在即將安裝代理程式的伺服器上必須允許下列網站。<br /><br /><li>https:\//login.microsoftonline.com</li><li>https:\//secure.aadcdn.microsoftonline-p.com</li><li>https:\//login.windows.net</li><li>HTTPs： \/ /aadcdn.msftauth.net</li><li>Azure Active Directory 所信任適用於您組織的同盟伺服器。 例如：https:\//sts.contoso.com</li> 深入瞭解 [如何設定 IE](https://support.microsoft.com/help/815141/internet-explorer-enhanced-security-configuration-changes-the-browsing)。 如果您的網路內有 proxy，請參閱下面的附注。|
 | 確定已安裝 PowerShell 4.0 版或更新版本 | <li>Windows Server 2008 R2 隨附了 PowerShell 2.0 版，它對代理程式來說並不足夠。 如以下的 [Windows Server 2008 R2 伺服器上的代理程式安裝](#agent-installation-on-windows-server-2008-r2-servers)中所述，更新 PowerShell。</li><li>Windows Server 2012 隨附了 PowerShell 3.0 版，它對代理程式來說並不足夠。</li><li>Windows Server 2012 R2 和更新版本隨附了足夠的 PowerShell 最新版本。</li>|
 |停用 FIPS|Azure AD Connect Health 代理程式不支援 FIPS。|
+
+> [!IMPORTANT]
+> 不支援在 Windows Server Core 上安裝 Azure AD Connect Health 代理程式。
 
 
 > [!NOTE]
@@ -144,7 +143,7 @@ ms.locfileid: "91273852"
 7. 在 [動作]**** 窗格中，按一下 [編輯 Federation Service 屬性]****。
 8. 在 [Federation Service 屬性]**** 對話方塊中，按一下 [事件]**** 索引標籤。
 9. 選取 [成功稽核]**** 和 [失敗稽核]**** 核取方塊。
-10. 按一下 [確定]。
+10. 按一下 [確定]  。
 
 #### <a name="to-enable-auditing-for-ad-fs-on-windows-server-2012-r2"></a>在 Windows Server 2012 R2 上啟用 AD FS 的稽核
 

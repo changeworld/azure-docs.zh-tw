@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 09/13/2020
 ms.author: rogarana
-ms.openlocfilehash: f64cad731998fefb2cfa694314e42f0dfb629eb4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: fd80f7b4a62380b62acb52543b49f5640cc5d365
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91322065"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91627970"
 ---
 # <a name="overview---on-premises-active-directory-domain-services-authentication-over-smb-for-azure-file-shares"></a>總覽-Azure 檔案共用的內部部署 Active Directory Domain Services 透過 SMB 進行驗證
 
@@ -38,7 +38,7 @@ ms.locfileid: "91322065"
 > - [使用 Azure 檔案儲存體 (來取代內部部署檔案伺服器，包括檔案和 AD 驗證的私用連結上的安裝程式) ](https://sec.ch9.ms/ch9/3358/0addac01-3606-4e30-ad7b-f195f3ab3358/ITOpsTalkAzureFiles_high.mp4)
 > - [使用 Azure 檔案儲存體作為 Windows 虛擬桌面的設定檔容器 (包括 AD 驗證和 FsLogix 設定上的設定) ](https://www.youtube.com/embed/9S5A1IJqfOQ)
 
-## <a name="prerequisites"></a>Prerequisites 
+## <a name="prerequisites"></a>必要條件 
 
 針對 Azure 檔案共用啟用 AD DS authentication 之前，請確定您已完成下列必要條件： 
 
@@ -54,7 +54,7 @@ ms.locfileid: "91322065"
 
     請確定尚未針對 Azure AD DS 驗證設定包含您檔案共用的儲存體帳戶。 如果已在儲存體帳戶上啟用 Azure 檔案儲存體的 Azure AD DS 驗證，則必須先將它停用，才能變更為使用內部部署 AD DS。 這表示在 Azure AD DS 環境中設定的現有 Acl 將需要重新設定，才能強制執行適當的許可權。
 
-    如果您在連接到 Azure 檔案儲存體時遇到問題，請參閱 [我們針對 Windows 上的 Azure 檔案儲存體掛接錯誤所發佈的疑難排解工具](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5)。 我們也會在埠445遭到封鎖時，提供解決案例的 [指引](https://docs.microsoft.com/azure/storage/files/storage-files-faq#on-premises-access) 。 
+    如果您在連接到 Azure 檔案儲存體時遇到問題，請參閱 [我們針對 Windows 上的 Azure 檔案儲存體掛接錯誤所發佈的疑難排解工具](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Windows)。 我們也會在埠445遭到封鎖時，提供解決案例的 [指引](https://docs.microsoft.com/azure/storage/files/storage-files-faq#on-premises-access) 。 
 
 - 在啟用和設定 Azure 檔案共用的 AD DS authentication 之前，請先進行任何相關的網路設定。 如需詳細資訊，請參閱 [Azure 檔案儲存體網路功能考慮](storage-files-networking-overview.md) 。
 

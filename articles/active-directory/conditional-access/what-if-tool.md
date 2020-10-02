@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: db76ec2bc2fc8640214f962a809fee559b4c4af3
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: bebd32d2773ca86638de221d305079bb262e3e5e
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88948193"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631421"
 ---
 # <a name="troubleshoot-using-the-what-if-tool-in-conditional-access"></a>在條件式存取中使用 What If 工具進行疑難排解
 
@@ -36,7 +36,7 @@ ms.locfileid: "88948193"
 
 - 您要測試的使用者 
 - 使用者會嘗試存取的雲端應用程式
-- 要在什麼樣的條件下執行雲端應用程式的存取
+- 執行已設定之雲端應用程式存取權的條件
      
 在下一個步驟中，您可以起始模擬執行來評估設定。 只有已啟用的原則才會參與評估執行。
 
@@ -102,7 +102,7 @@ IP 位址是用來模擬[位置條件](location-condition.md)的單一 IPv4 位�
 
 在未套用至使用者的原則清單中，您也可以找到未套用這些原則的原因。 每個所列出原則的原因各代表其第一個未符合的條件。 原則已停用是之所以未套用原則的可能原因之一，因為已停用的原則不會進行進一步的評估。   
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 有關條件式存取原則應用程式的詳細資訊，可以使用 [條件式存取深入解析和報告](howto-conditional-access-insights-reporting.md)來使用原則報告模式。
 - 如果您已準備好設定環境的條件式存取原則，請參閱 [條件式存取一般原則](concept-conditional-access-policy-common.md)。

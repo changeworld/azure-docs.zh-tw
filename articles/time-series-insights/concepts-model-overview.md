@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 08/31/2020
+ms.date: 10/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: 53db53f60166c3b5afa117a60a99e3429a14576d
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: a61dd6c17ad4d11c6dd7294c9a4f96270748c16a
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89488553"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91630656"
 ---
 # <a name="time-series-model-in-azure-time-series-insights-gen2"></a>Azure 時間序列深入解析 Gen2 中的時間序列模型
 
@@ -63,7 +63,7 @@ ms.locfileid: "89488553"
 * 定義父子式關聯性，以啟用導覽、搜尋和參考。
 * 定義與實例相關聯的屬性（定義為 *實例欄位*），並使用它們來建立階層。
 
-### <a name="components"></a>元件
+### <a name="components"></a>組件
 
 時間序列模型有三個核心元件：
 
@@ -101,7 +101,7 @@ ms.locfileid: "89488553"
 | --- | ---|
 | timeSeriesId | 與實例相關聯之時間序列的唯一識別碼。 在大部分情況下，實例是由 deviceId 或 assetId 之類的屬性來唯一識別。 在某些情況下，可以使用更明確的複合識別碼，最多可結合3個屬性。 |
 | typeId | 與實例相關聯的時間序列模型類型之區分大小寫的唯一字串識別碼。 依預設，所有探索到的新實例都會與預設型別建立關聯。
-| NAME | **Name**屬性是選擇性的，且區分大小寫。 如果 **名稱** 無法使用，則預設為 **timeSeriesId**。 如果有提供名稱， **timeSeriesId**仍可供[使用。](time-series-insights-update-explorer.md#4-time-series-well) |
+| name | **Name**屬性是選擇性的，且區分大小寫。 如果 **名稱** 無法使用，則預設為 **timeSeriesId**。 如果有提供名稱， **timeSeriesId**仍可供[使用。](time-series-insights-update-explorer.md#4-time-series-well) |
 | description | 實例的文字描述。 |
 | hierarchyIds | 定義實例所屬的階層。 |
 | instanceFields | 實例的屬性，以及定義實例的任何靜態資料。 它們定義階層或非階層的值，同時也支援建立索引以執行搜尋作業。 |
@@ -148,7 +148,7 @@ ms.locfileid: "89488553"
 | 屬性 | 描述 |
 | ---| ---|
 | id | 階層的唯一識別碼，如您定義實例時所使用的識別碼。 |
-| NAME | 用來提供階層名稱的字串。 |
+| name | 用來提供階層名稱的字串。 |
 | source | 指定組織階層或路徑，這是使用者想要建立之階層的由上而下父子式訂單。 父子式屬性會對應「執行個體欄位」。 |
 
 階層會以 JSON 表示為：
@@ -240,7 +240,7 @@ ms.locfileid: "89488553"
 | 屬性 | 描述 |
 | ---| ---|
 | id | 類型的區分大小寫唯一字串識別碼。 |
-| NAME | 用來提供類型名稱的字串。 |
+| name | 用來提供類型名稱的字串。 |
 | description | 類型的字串描述。 |
 | variables | 指定與類型相關聯的變數。 |
 
@@ -286,7 +286,7 @@ ms.locfileid: "89488553"
 
 時間序列模型類型可以有許多變數，以指定事件的公式和計算規則。 深入瞭解 [如何定義時間序列模型變數](./concepts-variables.md)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 如需有關如何透過 Api 編輯模型的詳細資訊，請參閱 [時間序列模型](https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis) 參考檔。
 

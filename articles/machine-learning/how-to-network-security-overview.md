@@ -8,15 +8,15 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.author: peterlu
 author: peterclu
-ms.date: 09/25/2020
+ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, references_regions, contperfq1
-ms.openlocfilehash: c1d351cf7a3d66f6051bf5c9d17672b054c2d862
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: d4690062dead8186022cc53ca47dbc7e17a9376f
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91538377"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631183"
 ---
 # <a name="virtual-network-isolation-and-privacy-overview"></a>虛擬網路隔離和隱私權總覽
 
@@ -43,7 +43,7 @@ ms.locfileid: "91538377"
 
 下表比較服務如何存取 Azure Machine Learning 網路的不同部分，以及 VNet 和沒有 VNet。
 
-| 狀況 | 工作區 | 相關聯的資源 | 訓練計算環境 | 推斷計算環境 |
+| 案例 | 工作區 | 相關聯的資源 | 訓練計算環境 | 推斷計算環境 |
 |-|-|-|-|-|-|
 |**沒有虛擬網路**| 公用 IP | 公用 IP | 公用 IP | 公用 IP |
 |**保護虛擬網路中的資源**| 私人 IP (私人端點)  | 公用 IP (服務端點)  <br> **等於** <br> 私人 IP (私人端點)  | 私人 IP | 私人 IP  | 
@@ -80,19 +80,7 @@ ms.locfileid: "91538377"
 ### <a name="limitations"></a>限制
 
 保護您的工作區和虛擬網路中的相關聯資源具有下列限制：
-- 工作區 Private Link 僅適用于下欄區域：
-    - 美國東部
-    - **美國中南部**
-    - **美國西部**
-    - **美國西部 2**
-    - **加拿大中部**
-    - **東南亞**
-    - **日本東部**
-    - **北歐**
-    - **澳大利亞東部**
-    - **英國南部**
-    
-    這項限制不適用於相關聯的資源。 例如，您可以在任何 Azure Machine Learning 區域中啟用 VNet 以進行儲存。
+- Azure Government 或 Azure 中國的世紀區域無法使用具有 private link 的 Azure Machine Learning 工作區。
 - 所有資源都必須位於相同的 VNet 後方。 不過，也允許相同 VNet 內的子網。
 
 ## <a name="secure-the-training-environment"></a>保護定型環境

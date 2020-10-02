@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 7/7/2020
-ms.openlocfilehash: 4550f1da0ac87a55bab64566a0035451dee8d225
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.date: 10/1/2020
+ms.openlocfilehash: b32ef80ad670e369315ec3ddb6972aef30bec27a
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91538257"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91627562"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>讀取「適用於 MySQL 的 Azure 資料庫」中的複本
 
@@ -36,6 +36,9 @@ ms.locfileid: "91538257"
 由於複本是唯讀狀態，因此不會直接降低主要伺服器上的寫入容量負擔。 這項功能不是以寫入密集的工作負載為目標。
 
 讀取複本功能會使用 MySQL 非同步複寫。 此功能不適用於同步複寫案例。 來源與複本之間會有可測量的延遲。 複本上的資料最終仍會與主要伺服器上的資料保持一致。 請針對可接受此延遲的工作負載使用此功能。
+
+> [!IMPORTANT]
+> 適用於 MySQL 的 Azure 資料庫使用以資料 **列** 為基礎的二進位記錄。 如果您的資料表缺少主鍵，則會掃描資料表中的所有資料列是否有 DML 作業。 這會導致複寫延遲增加。 為了確保複本能夠跟上來源的變更，我們通常會建議您在來源伺服器中的資料表上新增主鍵，然後再建立複本伺服器，或重新建立複本伺服器（如果您已經有的話）。
 
 ## <a name="cross-region-replication"></a>跨區域複寫
 您可以在來源伺服器的不同區域中建立讀取複本。 跨區域複寫有助於災害復原規劃或讓資料更接近使用者之類的案例。

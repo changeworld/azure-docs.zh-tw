@@ -7,16 +7,18 @@ ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: d98a794aaa2b91e1d095bcbd0301369f35de6c78
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 6242e593171bd8a01d01739b884ae8a1ca7beb4d
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91373077"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91629755"
 ---
 # <a name="azure-security-baseline-for-service-bus"></a>適用于服務匯流排的 Azure 安全性基準
 
-適用于服務匯流排的 Azure 安全性基準包含可協助您改善部署安全性狀態的建議。 此服務的基準取自 [Azure 安全性效能評定 1.0 版](../security/benchmarks/overview.md)，其會提供如何在 Azure 上使用最佳做法指引來保護雲端解決方案的建議。 如需詳細資訊，請參閱 [Azure 安全性基準概觀](../security/benchmarks/security-baselines-overview.md) (機器翻譯)。
+適用于服務匯流排的 Azure 安全性基準包含可協助您改善部署安全性狀態的建議。 此服務的基準取自 [Azure 安全性效能評定 1.0 版](../security/benchmarks/overview-v1.md)，其會提供如何在 Azure 上使用最佳做法指引來保護雲端解決方案的建議。 如需詳細資訊，請參閱 [Azure 安全性基準概觀](../security/benchmarks/security-baselines-overview.md) (機器翻譯)。
+
+若要查看服務匯流排如何完全對應至 Azure 安全性基準測試，請參閱 [完整的服務匯流排安全性基準對應](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)檔案。
 
 ## <a name="network-security"></a>網路安全性
 

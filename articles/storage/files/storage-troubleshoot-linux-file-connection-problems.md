@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 0be60208146681135c7502746a271e4e007dc0ea
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 40fb5a1623175445065f0546403661a1f6eb399f
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91249581"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91629432"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux-smb"></a>針對 Linux (SMB) 中的 Azure 檔案儲存體問題進行疑難排解
 
@@ -298,6 +298,32 @@ sudo mount -t cifs //<storage-account-name>.file.core.windows.net/<share-name> <
 
 ### <a name="solution"></a>解決方案
 可以忽略這個錯誤。
+
+
+### <a name="unable-to-access-folders-or-files-which-name-has-a-space-or-a-dot-at-the-end"></a>無法存取資料夾或名稱結尾有空格或點的檔案
+
+當您在 Linux 上掛接時，無法從 Azure 檔案共用存取資料夾或檔案，例如 du 和 ls 及/或協力廠商應用程式的命令可能會在存取共用時失敗，並出現「沒有這類檔案或目錄」錯誤，但您可以透過入口網站將檔案上傳到所說的資料夾。
+
+### <a name="cause"></a>原因
+
+從將名稱結尾的字元編碼至不同字元的系統上傳資料夾或檔案時，從 Macintosh 電腦上傳的檔案可能會有 "0xF028" 或 "0xF029" 字元，而不是 0x20 (空間) 或 0X2E (點) 。
+
+### <a name="solution"></a>解決方案
+
+在 Linux 上裝載共用時，請在共用上使用 mapchars 選項： 
+
+而不是：
+
+```bash
+sudo mount -t cifs $smbPath $mntPath -o vers=3.0,username=$storageAccountName,password=$storageAccountKey,serverino
+```
+
+使用：
+
+```bash
+sudo mount -t cifs $smbPath $mntPath -o vers=3.0,username=$storageAccountName,password=$storageAccountKey,serverino,mapchars
+```
+
 
 ## <a name="need-help-contact-support"></a>需要協助嗎？ 請連絡支援人員。
 

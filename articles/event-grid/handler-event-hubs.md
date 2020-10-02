@@ -3,12 +3,12 @@ title: 以事件中樞作為 Azure 事件方格事件的事件處理常式
 description: 說明如何使用事件中樞作為「Azure 事件方格」事件的事件處理常式。
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 5e6a84c1737c6b8a575f47576aeb1d3d9efae6eb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 4fb8027290831dbfed4b6d202d61d2d689274828
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91322558"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91629619"
 ---
 # <a name="event-hub-as-an-event-handler-for-azure-event-grid-events"></a>以事件中樞作為 Azure 事件方格事件的事件處理常式
 事件處理常式是傳送事件的位置。 處理常式會採取相關動作來處理事件。 有幾項 Azure 服務已自動設定為會處理事件，**Azure 事件中樞**是其中之一。 
@@ -81,9 +81,6 @@ ms.locfileid: "91322558"
     }
 }
 ```
-
-> [!NOTE]
-> 不支援將事件傳遞至 **另一個租** 使用者中的 Azure 事件中樞。 
 
 ## <a name="next-steps"></a>後續步驟
 如需支援的事件處理常式清單，請參閱[事件處理常式](event-handlers.md)一文。 

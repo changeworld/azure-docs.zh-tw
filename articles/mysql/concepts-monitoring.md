@@ -5,13 +5,14 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
+ms.custom: references_regions
 ms.date: 8/13/2020
-ms.openlocfilehash: 207693945c2fe916e99d55545d8a33c08067ba04
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 9e1bd3f555873503aa1f6ed9c804aced3620fb9e
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91538274"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91627511"
 ---
 # <a name="monitoring-in-azure-database-for-mysql"></a>在適用於 MySQL 的 Azure 資料庫中監視
 監視伺服器的相關資料，可協助您疑難排解並最佳化您的工作負載。 適用於 MySQL 的 Azure 資料庫提供多種計量，可讓您深入了解您伺服器的行為。
@@ -22,7 +23,7 @@ ms.locfileid: "91538274"
 ### <a name="list-of-metrics"></a>計量清單
 這些計量可供適用於 MySQL 的 Azure 資料庫使用：
 
-|計量|計量顯示名稱|單位|說明|
+|計量|計量顯示名稱|單位|描述|
 |---|---|---|---|
 |cpu_percent|CPU 百分比|百分比|使用中的 CPU 百分比。|
 |memory_percent|記憶體百分比|百分比|使用中記憶體的百分比。|
@@ -56,8 +57,10 @@ ms.locfileid: "91538274"
 
 **預定進行的維護通知** 可讓您收到即將進行的規劃維護至您適用於 MySQL 的 Azure 資料庫的警示。 這些通知會與 [服務健康狀態的](../service-health/overview.md) 規劃維護整合，並可讓您在單一位置查看訂用帳戶的所有排程維護。 它也有助於將通知擴充至不同資源群組的適當物件，因為您可能會有不同的連絡人負責不同的資源。 您將會收到關於活動即將進行之維護72小時的通知。
 
-> [!Note]
-> 我們會每次嘗試針對所有事件提供 **預定的維護通知** 72 小時通知。 不過，在重大或安全性修補程式的情況下，可能會在較接近事件的情況下傳送通知，或將其省略。
+在規劃的維護期間，您可能會預期伺服器會重新開機，而且可能發生 [暫時性錯誤](concepts-connectivity.md#transient-errors) 。 這些事件大多數都會由系統在 60 秒內自動解決。
+
+> [!IMPORTANT]
+> 規劃的維護通知目前可在所有區域的公開預覽中使用， **但** 美國中西部
 
 ### <a name="to-receive-planned-maintenance-notification"></a>若要接收預定的維修通知
 
@@ -72,8 +75,8 @@ ms.locfileid: "91538274"
 
 如需有關如何建立 **服務健康狀態警示**的詳細步驟，請參閱 [建立服務通知的活動記錄警示](../service-health/alerts-activity-log-service-notifications.md)。
 
-> [!IMPORTANT]
-> 規劃的維護通知目前在所有區域都可供預覽， **但** 美國中西部
+> [!Note]
+> 我們會每次嘗試針對所有事件提供 **預定的維護通知** 72 小時通知。 不過，在重大或安全性修補程式的情況下，可能會在較接近事件的情況下傳送通知，或將其省略。
 
 ## <a name="next-steps"></a>後續步驟
 - 請參閱[如何設定警示](howto-alert-on-metric.md)，取得根據計量來建立警示的指引。

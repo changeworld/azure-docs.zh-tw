@@ -2,13 +2,13 @@
 title: 針對登錄的網路問題進行疑難排解
 description: 存取虛擬網路或防火牆後方的 Azure container registry 時，常見問題的徵兆、原因和解決方式
 ms.topic: article
-ms.date: 08/11/2020
-ms.openlocfilehash: 06c5b65537fd7d256010260bb3a93888721f643b
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.date: 10/01/2020
+ms.openlocfilehash: c2ae8609dbd28a1a39a634e3c065030552aefb06
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91532443"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91630945"
 ---
 # <a name="troubleshoot-network-issues-with-registry"></a>針對登錄的網路問題進行疑難排解
 
@@ -22,6 +22,7 @@ ms.locfileid: "91532443"
 * 無法推送或提取映射，而且您收到 Azure CLI 錯誤 `Could not connect to the registry login server`
 * 無法將映射從登錄提取到 Azure Kubernetes Service 或另一個 Azure 服務
 * 無法存取 HTTPS proxy 後方的登錄，您收到錯誤 `Error response from daemon: login attempt failed with status: 403 Forbidden`
+* 無法設定虛擬網路設定，而且您收到錯誤 `Failed to save firewall and virtual network settings for container registry`
 * 無法存取或查看 Azure 入口網站中的登錄設定，或使用 Azure CLI 管理登錄
 * 無法新增或修改虛擬網路設定或公用存取規則
 * ACR 工作無法推送或提取映射
@@ -47,7 +48,7 @@ ms.locfileid: "91532443"
 
 ### <a name="configure-client-firewall-access"></a>設定用戶端防火牆存取
 
-若要從用戶端防火牆或 proxy 伺服器後方存取登錄，請設定防火牆規則來存取登錄的 REST 和資料端點。 如果已啟用 [專用資料端點](container-registry-firewall-access-rules.md#enable-dedicated-data-endpoints) ，您需要可存取的規則：
+若要從用戶端防火牆或 proxy 伺服器後方存取登錄，請設定防火牆規則來存取登錄的公用 REST 和資料端點。 如果已啟用 [專用資料端點](container-registry-firewall-access-rules.md#enable-dedicated-data-endpoints) ，您需要可存取的規則：
 
 * REST 端點： `<registryname>.azurecr.io`
 * Data endpoint (s) ： `<registry-name>.<region>.data.azurecr.io`
@@ -86,6 +87,8 @@ ContainerRegistryLoginEvents 資料表中的登錄資源記錄檔可協助診斷
 
 如果已設定登錄的服務端點，請確認已在登錄中新增網路規則，以允許從該網路子網進行存取。 服務端點僅支援從虛擬機器和網路中的 AKS 叢集進行存取。
 
+如果您想要使用不同 Azure 訂用帳戶中的虛擬網路來限制登錄存取，請確定您已 `Microsoft.ContainerRegistry` 在該訂用帳戶中註冊資源提供者。 使用 Azure 入口網站、Azure CLI 或其他 Azure 工具，為 Azure Container Registry[註冊資源提供者](../azure-resource-manager/management/resource-providers-and-types.md)。
+
 如果網路中已設定 Azure 防火牆或類似的解決方案，請檢查來自其他資源（例如 AKS 叢集）的輸出流量是否已啟用，以連接到登錄端點。
 
 相關連結：
@@ -101,7 +104,7 @@ ContainerRegistryLoginEvents 資料表中的登錄資源記錄檔可協助診斷
 目前，Azure 資訊安全中心無法在登錄中執行 [映射弱點掃描](../security-center/azure-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json) ，以限制對私人端點、選取的子網或 IP 位址的存取。 此外，下列服務的資源無法存取具有網路限制的容器登錄：
 
 * Azure DevOps Services 
-* Azure 容器執行個體
+* Azure Container Instances
 * Azure Container Registry 工作
 
 如果需要將這些 Azure 服務與您的容器登錄進行存取或整合，請移除網路限制。 例如，移除登錄的私人端點，或移除或修改登錄的公用存取規則。

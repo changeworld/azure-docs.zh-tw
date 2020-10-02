@@ -1,23 +1,23 @@
 ---
-title: Device Manager 中的 StorSimple 8000 Azure AD 驗證
+title: 裝置管理員中的 StorSimple 8000 Azure AD 驗證
 description: 說明如何針對您的服務使用 AAD 型驗證、產生新的註冊金鑰，以及執行裝置的手動註冊。
 author: alkohli
 ms.service: storsimple
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: alkohli
-ms.openlocfilehash: 92a9370ec866b6d2c14988871e3c742a40679885
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0e071a20051f047efbd040dfc01a30e3c1381367
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077806"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631319"
 ---
-# <a name="use-azuer-active-directory-ad-authentication-for-your-storsimple"></a>針對您的 StorSimple 使用 Azure Active Directory （AD）驗證
+# <a name="use-azuer-active-directory-ad-authentication-for-your-storsimple"></a>針對您的 StorSimple 使用 Azure Active Directory (AD) 驗證
 
 [!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 StorSimple 裝置管理員服務在 Microsoft Azure 中執行，並連接至多個 StorSimple 裝置。 到目前為止，StorSimple 裝置管理員服務一直都是使用存取控制服務 (ACS) 來驗證針對您 StorSimple 裝置的服務。 ACS 機制即將被 Azure Active Directory (AAD) 驗證取代。 如需詳細資訊，請參閱下列有關 ACS 的淘汰及使用 AAD 驗證的公告。
 
@@ -39,7 +39,7 @@ AAD 驗證會在執行 Update 5 或更新版本的 StorSimple 8000 系列裝置�
 
 如果使用的是 StorSimple 8000 系列，請務必在防火牆規則中包含下列 URL：
 
-| URL 模式                         | Cloud | 元件/功能         |
+| URL 模式                         | 雲端 | 元件/功能         |
 |------------------------------------|-------|----------------------------------|
 | `https://login.windows.net`        | Azure 公用 |AAD 驗證服務      |
 | `https://login.microsoftonline.us` | 美國政府 |AAD 驗證服務      |
@@ -54,9 +54,9 @@ AAD 驗證會在執行 Update 5 或更新版本的 StorSimple 8000 系列裝置�
 
 | 如果您的裝置正在執行| 請採取下列動作                                    |
 |--------------------------|------------------------|
-| Update 5 或更新版本，且裝置已離線。 <br> 您會看到表示 URL 未列入允許清單的警示。|1. 修改防火牆規則以包含驗證 URL。 請參閱[驗證 URL](#url-changes-for-aad-authentication)。<br>2.[從服務取得 AAD 註冊金鑰](#aad-based-registration-keys)。<br>3.[連接到 StorSimple 8000 系列裝置的 Windows PowerShell 介面](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console)。<br>4. 使用 `Redo-DeviceRegistration` Cmdlet 透過 Windows PowerShell 註冊裝置。 提供您在上一個步驟中取得的金鑰。|
+| Update 5 或更新版本，且裝置已離線。 <br> 您會看到未核准 URL 的警示。|1. 修改防火牆規則以包含驗證 URL。 請參閱[驗證 URL](#url-changes-for-aad-authentication)。<br>2. [從服務取得 AAD 註冊金鑰](#aad-based-registration-keys)。<br>3. [連接至 StorSimple 8000 系列裝置的 Windows PowerShell 介面](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console)。<br>4. 使用 `Redo-DeviceRegistration` Cmdlet 透過 Windows PowerShell 註冊裝置。 提供您在上一個步驟中取得的金鑰。|
 | Update 5 或更新版本，且裝置已上線。| 您不需要執行任何動作。                                       |
-| Update 4 或更早版本，且裝置已離線。 |1. 修改防火牆規則以包含驗證 URL。<br>2.[透過目錄伺服器下載 Update 5](storsimple-8000-install-update-5.md#download-updates-for-your-device)。<br>3.[透過此修補程式方法套用 Update 5](storsimple-8000-install-update-5.md#install-update-5-as-a-hotfix)。<br>4.[從服務取得 AAD 註冊金鑰](#aad-based-registration-keys)。<br>5.[連接到 StorSimple 8000 系列裝置的 Windows PowerShell 介面](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console)。 <br>6. 使用 `Redo-DeviceRegistration` Cmdlet 透過 Windows PowerShell 註冊裝置。 提供您在上一個步驟中取得的金鑰。|
+| Update 4 或更早版本，且裝置已離線。 |1. 修改防火牆規則以包含驗證 URL。<br>2. [透過目錄伺服器下載 Update 5](storsimple-8000-install-update-5.md#download-updates-for-your-device)。<br>3. [透過修復方法套用 Update 5](storsimple-8000-install-update-5.md#install-update-5-as-a-hotfix)。<br>4. [從服務取得 AAD 註冊金鑰](#aad-based-registration-keys)。<br>5. [連接至 StorSimple 8000 系列裝置的 Windows PowerShell 介面](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console)。 <br>6. 使用 `Redo-DeviceRegistration` Cmdlet 透過 Windows PowerShell 註冊裝置。 提供您在上一個步驟中取得的金鑰。|
 | Update 4 或更早版本，且裝置已上線。 |修改防火牆規則以包含驗證 URL。<br> 透過 Azure 入口網站安裝 Update 5。              |
 | 恢復出廠預設值以重設至 Update 5 之前的版本。      |入口網站顯示 AAD 型註冊金鑰，而裝置執行的是舊版軟體。 當裝置執行的是 Update 4 或更早版本時，請遵循上述案例中的步驟。              |
 
@@ -91,4 +91,3 @@ AAD 驗證會在執行 Update 5 或更新版本的 StorSimple 8000 系列裝置�
 ## <a name="next-steps"></a>後續步驟
 
 * 深入了解如何部署 [StorSimple 8000 系列裝置](storsimple-8000-deployment-walkthrough-u2.md)。
-

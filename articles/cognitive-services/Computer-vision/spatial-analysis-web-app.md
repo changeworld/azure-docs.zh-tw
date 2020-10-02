@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 06/10/2020
 ms.author: aahi
-ms.openlocfilehash: 5ffa5398143bff4e24d81a28a541e16c44700c99
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8032c3607dd74cddbaa5fd6690a95ebdf218809a
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91254018"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91628189"
 ---
 # <a name="how-to-deploy-a-people-counting-web-application"></a>How to：部署人員計數 web 應用程式
 
@@ -28,7 +28,7 @@ ms.locfileid: "91254018"
 * 在 Web 應用程式中設定 IoT 中樞連接
 * 部署和測試 Web 應用程式
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/cognitive-services/)
 * Azure IoT Edge 部署設定和[Azure IoT 中樞](https://docs.microsoft.com/azure/iot-hub/)的基本瞭解
@@ -127,14 +127,13 @@ IoT Edge 模組的大部分 **環境變數** 都已在上述連結之檔案的�
 ```azurecli
 az login
 az extension add --name azure-iot
-az iot edge deployment create --deployment-id "<deployment name>" --hub-name "<IoT Hub name>" --content DeploymentManifest.json --target-condition "deviceId='<IoT Edge device name>'"--subscription "<subscriptionId>"
+az iot edge set-modules --hub-name "<IoT Hub name>" --device-id "<IoT Edge device name>" --content DeploymentManifest.json -–subscription "<subscriptionId>"
 ```
 
 填寫必要的參數：
 
-* 部署名稱：選擇此部署的名稱
 * IoT 中樞名稱：您的 Azure IoT 中樞名稱
-* Deployment.json：部署檔的名稱
+* DeploymentManifest.json：部署檔的名稱
 * IoT Edge 裝置名稱：主機電腦的 IoT Edge 裝置名稱
 * 訂用帳戶：您的訂用帳戶識別碼或名稱
 

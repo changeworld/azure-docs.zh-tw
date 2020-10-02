@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2020
 author: shganesh-dev
 ms.author: shganesh
-ms.openlocfilehash: f0f14bf24bd867344ec72c86a6fd517085b66d1f
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: ed836e3df28c5e39aa7f9d21f020c0d37292dcfc
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87317547"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631795"
 ---
 # <a name="commercial-marketplace-analytics-terminology-and-common-questions"></a>商業市集分析的術語和常見問題
 
@@ -45,6 +45,7 @@ ms.locfileid: "87317547"
 | Azure 授權類型：Enterprise | 客戶、訂單 | 終端客戶透過 Enterprise 合約 (直接與 Microsoft 簽署) 取得 Azure 和您的 Marketplace 供應項目。|
 | Azure 授權類型：企業透過轉銷商  | 客戶、訂單 | 終端客戶透過協助他們與 Microsoft 簽署「Enterprise 合約」的轉銷商取得 Azure 和您的 Marketplace 供應項目。|
 | Azure 授權類型：隨用隨付| 客戶、訂單 | 終端客戶透過「隨用隨付」合約 (直接與 Microsoft 簽署) 取得 Azure 和您的 Marketplace 供應項目。|
+| 計費帳戶識別碼| 客戶、訂單、使用量| 產生帳單的帳戶識別碼。 使用這個屬性可將分析報表與付款交易報表連接。|
 | 雲端執行個體名稱| 單| 發生 VM 部署的 Microsoft Cloud。|
 | 雲端執行個體名稱：Azure 全域| 單| 公用的全域 Microsoft 雲端。|
 | 雲端執行個體名稱：Azure Government | 單| 政府特有的 Microsoft 雲端，適用於下列其中一種政府：中國、德國或美國地區。| |
@@ -89,7 +90,7 @@ ms.locfileid: "87317547"
 | 訂單狀態：已取消 | 單| 客戶先前已購買訂單，但之後又取消其訂單。|
 | 提供者電子郵件| 客戶| Microsoft 與終端客戶兩者關係的相關提供者的電子郵件地址。 如果客戶是透過轉銷商的企業，就會是轉銷商。 如果涉及雲端解決方案提供者 (CSP)，就會是 CSP。|
 | Provider Name| 客戶| Microsoft 與終端客戶兩者關係的相關提供者的名稱。 如果客戶是透過轉銷商的企業，就會是轉銷商。 如果涉及雲端解決方案提供者 (CSP)，就會是 CSP。|
-| SKU| 單| 發佈期間定義的 SKU （現在稱為方案）名稱。 供應專案可能有許多 Sku （方案），但每個都只能與單一供應專案相關聯。|
+| SKU| 單| SKU (現在稱為「計畫) 名稱，如發佈期間所定義。 供應專案可能會有許多 Sku (方案) ，但每個都只能與單一供應專案相關聯。|
 | 試用結束日期| 單| 此訂單將結束或已結束的日期。|
 |||
 
@@ -98,7 +99,7 @@ ms.locfileid: "87317547"
 - 如需合作夥伴中心商業市集中可用的分析報告概觀，請參閱[合作夥伴中心的商業市集分析](./analytics.md)。
 - 如需摘要說明供應項目市集活動的彙總資料圖表、趨勢和值，請參閱[商業市集分析中的摘要儀表板](./summary-dashboard.md)。
 - 如需圖形化和可下載格式的訂單資訊，請參閱[商業市集分析中的訂單儀表板](./orders-dashboard.md)。
-- 如需虛擬機器 (VM) 供應項目使用量和計量帳單計量，請參閱[商業市集分析中的使用量儀表板](./usage-dashboard.md)。
+- 針對虛擬機器 (VM) 供應項目使用量和計量帳單計量，請參閱[商業市集分析中的使用量儀表板](./usage-dashboard.md)。
 - 如需客戶的詳細資訊 (包括成長趨勢)，請參閱[商業市集分析中的客戶儀表板](./customer-dashboard.md)。
 - 如需過去 30 天內的下載要求清單，請參閱[商業市集分析中的下載儀表板](./downloads-dashboard.md)。
 - 若要查看 Azure Marketplace 和 AppSource 上客戶對於供應項目的意見反應彙總檢視，請參閱[商業市集分析中的評等和評論儀表板](./ratings-reviews.md)。

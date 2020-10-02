@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/25/2020
-ms.openlocfilehash: bf87a61633706cb5db384e8a8ab957fa6a3f37f1
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 5415446e0211618cfbee917d0df91213d68b7097
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91533718"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91627341"
 ---
 # <a name="server-parameters-in-azure-database-for-mysql"></a>適用於 MySQL 的 Azure 資料庫中的伺服器參數
 
@@ -54,6 +54,12 @@ MySQL 通常會為每個用戶端連接指派一個執行緒。 當並行使用�
 
 > [!IMPORTANT]
 > 請先測試執行緒集區，再于生產環境中開啟它。 
+
+### <a name="log_bin_trust_function_creators"></a>log_bin_trust_function_creators
+
+在適用於 MySQL 的 Azure 資料庫中，二進位記錄一律會啟用 (`log_bin` 也就是在) 上設定為。 如果您想要使用觸發程式，將會收到類似于 *您未啟用超級許可權和二進位記錄的錯誤 (您可能會想要使用較不安全的 `log_bin_trust_function_creators` 變數) *。 
+
+二進位記錄格式一律是 **row** ，而伺服器的所有連接 **一律** 會使用以資料列為基礎的二進位記錄。 使用以資料列為基礎的二進位記錄時，不會有安全性問題，而且二進位記錄無法中斷，因此您可以安全地設定 [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) 為 **TRUE**。
 
 ### <a name="innodb_buffer_pool_size"></a>innodb_buffer_pool_size
 

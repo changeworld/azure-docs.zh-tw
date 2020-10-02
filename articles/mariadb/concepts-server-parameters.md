@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 6/25/2020
-ms.openlocfilehash: 7d530180b499495e97cb635186fc6a0d5cbd9044
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b5064e3cef7def1aca5aa0c97d031d519fd610cf
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392721"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91626389"
 ---
 # <a name="server-parameters-in-azure-database-for-mariadb"></a>適用於 MariaDB 的 Azure 資料庫中的伺服器參數
 
@@ -19,23 +19,29 @@ ms.locfileid: "85392721"
 
 ## <a name="what-are-server-parameters"></a>什麼是伺服器參數？ 
 
-適用于 mariadb 引擎提供許多不同的伺服器變數/參數，可以用來設定和微調引擎行為。 有些參數可以在執行時間以動態方式設定，有些則是「靜態」，需要重新開機伺服器才能套用。
+適用于 mariadb 引擎提供許多不同的伺服器變數/參數，可用來設定和微調引擎行為。 某些參數可在執行時間期間動態設定，而其他參數則是「靜態」，需要重新開機伺服器才能套用。
 
-適用於 MariaDB 的 Azure 資料庫會使用[Azure 入口網站](./howto-server-parameters.md)、 [Azure CLI](./howto-configure-server-parameters-cli.md)和[PowerShell](./howto-configure-server-parameters-using-powershell.md)來公開變更各種適用于 mariadb 伺服器參數值的功能，以符合您的工作負載需求。
+適用於 MariaDB 的 Azure 資料庫公開使用 [Azure 入口網站](./howto-server-parameters.md)、 [Azure CLI](./howto-configure-server-parameters-cli.md)和 [PowerShell](./howto-configure-server-parameters-using-powershell.md) 來變更各種適用于 mariadb 伺服器參數的值，以符合您工作負載需求的能力。
 
 ## <a name="configurable-server-parameters"></a>可設定的伺服器參數
 
-支援的伺服器參數清單會不斷成長。 使用 [Azure 入口網站中的 [伺服器參數] 索引標籤，即可查看完整清單並設定伺服器參數值。
+支援的伺服器參數清單會不斷成長。 使用 Azure 入口網站中的 [伺服器參數] 索引標籤，即可查看完整清單及設定伺服器參數值。
 
 請參閱下列各節，以深入瞭解數個經常更新之伺服器參數的限制。 這些限制取決於伺服器的定價層和虛擬核心。
+
+### <a name="log_bin_trust_function_creators"></a>log_bin_trust_function_creators
+
+在適用於 MariaDB 的 Azure 資料庫中，二進位記錄一律會啟用 (`log_bin` 也就是在) 上設定為。 如果您想要使用觸發程式，將會收到類似于 *您未啟用超級許可權和二進位記錄的錯誤 (您可能會想要使用較不安全的 `log_bin_trust_function_creators` 變數) *。
+
+二進位記錄格式一律是 **row** ，而伺服器的所有連接 **一律** 會使用以資料列為基礎的二進位記錄。 使用以資料列為基礎的二進位記錄時，不會有安全性問題，而且二進位記錄無法中斷，因此您可以安全地設定 [`log_bin_trust_function_creators`](https://mariadb.com/docs/reference/mdb/system-variables/log_bin_trust_function_creators/) 為 **TRUE**。
 
 ### <a name="innodb_buffer_pool_size"></a>innodb_buffer_pool_size
 
 請參閱 [MariaDB 文件](https://mariadb.com/kb/en/innodb-system-variables/#innodb_buffer_pool_size)，進一步了解此參數。
 
-#### <a name="servers-supporting-up-to-4-tb-storage"></a>最多可支援 4 TB 儲存空間的伺服器
+#### <a name="servers-supporting-up-to-4-tb-storage"></a>最多可支援 4 TB 儲存體的伺服器
 
-|定價層|**vCore(s)**|**預設值（位元組）**|**最小值（位元組）**|**最大值（位元組）**|
+|定價層|**vCore(s)**|**預設值 (位元組) **|**最小值 (位元組) **|**最大值 (位元組) **|
 |---|---|---|---|---|
 |基本|1|872415232|134217728|872415232|
 |基本|2|2684354560|134217728|2684354560|
@@ -53,7 +59,7 @@ ms.locfileid: "85392721"
 
 #### <a name="servers-support-up-to-16-tb-storage"></a>伺服器最多支援 16 TB 的儲存體
 
-|定價層|**vCore(s)**|**預設值（位元組）**|**最小值（位元組）**|**最大值（位元組）**|
+|定價層|**vCore(s)**|**預設值 (位元組) **|**最小值 (位元組) **|**最大值 (位元組) **|
 |---|---|---|---|---|
 |基本|1|872415232|134217728|872415232|
 |基本|2|2684354560|134217728|2684354560|
@@ -72,7 +78,7 @@ ms.locfileid: "85392721"
 ### <a name="innodb_file_per_table"></a>innodb_file_per_table
 
 > [!NOTE]
-> `innodb_file_per_table`只能在一般用途和記憶體優化定價層中更新。
+> `innodb_file_per_table` 只能在一般用途和記憶體優化定價層中更新。
 
 MariaDB 會根據在建立資料表期間所提供的設定，將 InnoDB 資料表儲存在不同的資料表空間中。 [系統資料表空間](https://mariadb.com/kb/en/innodb-system-tablespaces/)是 InnoDB 資料字典的儲存區域。 [file-per-table 資料表空間](https://mariadb.com/kb/en/innodb-file-per-table-tablespaces/) \(英文\) 包含單一 InnoDB 資料表的資料和索引，且會獨自儲存在檔案系統的資料檔中。 這個行為是由 `innodb_file_per_table` 伺服器參數所控制。 將 `innodb_file_per_table` 設定為 `OFF` 會導致 InnoDB 在系統資料表空間中建立資料表。 否則，InnoDB 會在 file-per-table 資料表空間中建立資料表。
 
@@ -82,9 +88,9 @@ MariaDB 會根據在建立資料表期間所提供的設定，將 InnoDB 資料�
 
 請參閱 [MariaDB 文件](https://mariadb.com/kb/en/server-system-variables/#join_buffer_size)，進一步了解此參數。
 
-|定價層|**vCore(s)**|**預設值（位元組）**|**最小值（位元組）**|**最大值（位元組）**|
+|定價層|**vCore(s)**|**預設值 (位元組) **|**最小值 (位元組) **|**最大值 (位元組) **|
 |---|---|---|---|---|
-|基本|1|無法在基本層中設定|N/A|不適用|
+|基本|1|無法在基本層中設定|N/A|N/A|
 |基本|2|無法在基本層中設定|N/A|N/A|
 |一般用途|2|262144|128|268435455|
 |一般用途|4|262144|128|536870912|
@@ -125,15 +131,15 @@ MariaDB 會根據在建立資料表期間所提供的設定，將 InnoDB 資料�
 建立 MariaDB 的新用戶端連線需要一段時間，且在建立之後，這些連線會佔用資料庫資源，即使閒置時也一樣。 大部分應用程式會要求許多短期連線，這會加重這種情況。 結果會減少實際工作負載的可用資源，因而導致效能降低。 減少閒置連線並重複使用現有連線的連接共用器，有助於避免這種情況。 若要了解如何設定 ProxySQL，請前往[部落格文章](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/load-balance-read-replicas-using-proxysql-in-azure-database-for/ba-p/880042) \(英文\)。
 
 >[!Note]
->ProxySQL 是一個開放原始碼的社區工具。 Microsoft 會盡最大的支援。 若要取得具有授權指引的生產環境支援，您可以評估並與[ProxySQL 產品支援人員](https://proxysql.com/services/support/)聯繫。
+>ProxySQL 是開放原始碼的社區工具。 Microsoft 會以最大的努力來支援它。 為了取得具有授權指導的生產環境支援，您可以評估並與 [ProxySQL 產品支援人員](https://proxysql.com/services/support/)聯繫。
 
 ### <a name="max_heap_table_size"></a>max_heap_table_size
 
 請參閱 [MariaDB 文件](https://mariadb.com/kb/en/server-system-variables/#max_heap_table_size)，進一步了解此參數。
 
-|定價層|**vCore(s)**|**預設值（位元組）**|**最小值（位元組）**|**最大值（位元組）**|
+|定價層|**vCore(s)**|**預設值 (位元組) **|**最小值 (位元組) **|**最大值 (位元組) **|
 |---|---|---|---|---|
-|基本|1|無法在基本層中設定|N/A|不適用|
+|基本|1|無法在基本層中設定|N/A|N/A|
 |基本|2|無法在基本層中設定|N/A|N/A|
 |一般用途|2|16777216|16384|268435455|
 |一般用途|4|16777216|16384|536870912|
@@ -149,13 +155,13 @@ MariaDB 會根據在建立資料表期間所提供的設定，將 InnoDB 資料�
 
 ### <a name="query_cache_size"></a>query_cache_size
 
-在適用于 mariadb 中，預設會使用參數來啟用查詢快取 `have_query_cache` 。 
+使用參數，適用于 mariadb 中預設會啟用查詢快取 `have_query_cache` 。 
 
 請參閱 [MariaDB 文件](https://mariadb.com/kb/en/server-system-variables/#query_cache_size)，進一步了解此參數。
 
-|定價層|**vCore(s)**|**預設值（位元組）**|**最小值（位元組）**|* * 最大值 * *|
+|定價層|**vCore(s)**|**預設值 (位元組) **|**最小值 (位元組) **|* * 最大值 * *|
 |---|---|---|---|---|
-|基本|1|無法在基本層中設定|N/A|不適用|
+|基本|1|無法在基本層中設定|N/A|N/A|
 |基本|2|無法在基本層中設定|N/A|N/A|
 |一般用途|2|0|0|16777216|
 |一般用途|4|0|0|33554432|
@@ -173,9 +179,9 @@ MariaDB 會根據在建立資料表期間所提供的設定，將 InnoDB 資料�
 
 請參閱 [MariaDB 文件](https://mariadb.com/kb/en/server-system-variables/#sort_buffer_size)，進一步了解此參數。
 
-|定價層|**vCore(s)**|**預設值（位元組）**|**最小值（位元組）**|**最大值（位元組）**|
+|定價層|**vCore(s)**|**預設值 (位元組) **|**最小值 (位元組) **|**最大值 (位元組) **|
 |---|---|---|---|---|
-|基本|1|無法在基本層中設定|N/A|不適用|
+|基本|1|無法在基本層中設定|N/A|N/A|
 |基本|2|無法在基本層中設定|N/A|N/A|
 |一般用途|2|524288|32768|4194304|
 |一般用途|4|524288|32768|8388608|
@@ -193,9 +199,9 @@ MariaDB 會根據在建立資料表期間所提供的設定，將 InnoDB 資料�
 
 請參閱 [MariaDB 文件](https://mariadb.com/kb/en/server-system-variables/#tmp_table_size)，進一步了解此參數。
 
-|定價層|**vCore(s)**|**預設值（位元組）**|**最小值（位元組）**|**最大值（位元組）**|
+|定價層|**vCore(s)**|**預設值 (位元組) **|**最小值 (位元組) **|**最大值 (位元組) **|
 |---|---|---|---|---|
-|基本|1|無法在基本層中設定|N/A|不適用|
+|基本|1|無法在基本層中設定|N/A|N/A|
 |基本|2|無法在基本層中設定|N/A|N/A|
 |一般用途|2|16777216|1024|67108864|
 |一般用途|4|16777216|1024|134217728|
@@ -211,7 +217,7 @@ MariaDB 會根據在建立資料表期間所提供的設定，將 InnoDB 資料�
 
 ### <a name="time_zone"></a>time_zone
 
-在初始部署時，Azure for 適用于 mariadb 伺服器會包含時區資訊的系統資料表，但不會填入這些資料表。 時區資料表可藉由從 MySQL 命令列或 MySQL Workbench 等工具呼叫 `mysql.az_load_timezone` 預存程序來填入。 請參閱 [Azure 入口網站](howto-server-parameters.md#working-with-the-time-zone-parameter)或 [Azure CLI](howto-configure-server-parameters-cli.md#working-with-the-time-zone-parameter) 文章，以了解如何呼叫預存程序，以及設定全域或工作階段層級的時區。
+在初始部署時，Azure for 適用于 mariadb 伺服器包含時區資訊的系統資料表，但不會填入這些資料表。 時區資料表可藉由從 MySQL 命令列或 MySQL Workbench 等工具呼叫 `mysql.az_load_timezone` 預存程序來填入。 請參閱 [Azure 入口網站](howto-server-parameters.md#working-with-the-time-zone-parameter)或 [Azure CLI](howto-configure-server-parameters-cli.md#working-with-the-time-zone-parameter) 文章，以了解如何呼叫預存程序，以及設定全域或工作階段層級的時區。
 
 ## <a name="non-configurable-server-parameters"></a>無法設定的伺服器參數
 
@@ -229,6 +235,6 @@ MariaDB 會根據在建立資料表期間所提供的設定，將 InnoDB 資料�
 
 ## <a name="next-steps"></a>後續步驟
 
-- 瞭解如何[使用 Azure 入口網站設定伺服器參數](./howto-server-parameters.md)
-- 瞭解如何[使用 Azure CLI 設定伺服器參數](./howto-configure-server-parameters-cli.md)
-- 瞭解如何[使用 PowerShell 設定伺服器參數](./howto-configure-server-parameters-using-powershell.md)
+- 瞭解如何 [使用 Azure 入口網站設定伺服器參數](./howto-server-parameters.md)
+- 瞭解如何 [使用 Azure CLI 設定伺服器參數](./howto-configure-server-parameters-cli.md)
+- 瞭解如何 [使用 PowerShell 設定伺服器參數](./howto-configure-server-parameters-using-powershell.md)

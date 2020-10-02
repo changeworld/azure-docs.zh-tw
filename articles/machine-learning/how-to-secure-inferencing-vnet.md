@@ -11,12 +11,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 09/24/2020
 ms.custom: contperfq4, tracking-python, contperfq1
-ms.openlocfilehash: df3872f5675b55d845bc88e704b1dc4932091ac7
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 784a0acf139aa05179fd92afb4eab299c2669590
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91532409"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91630843"
 ---
 # <a name="secure-an-azure-machine-learning-inferencing-environment-with-virtual-networks"></a>使用虛擬網路保護 Azure Machine Learning 推斷環境
 
@@ -32,6 +32,7 @@ ms.locfileid: "91532409"
 > [!div class="checklist"]
 > - 預設 Azure Kubernetes Service (AKS) 叢集
 > - 私用 AKS 叢集
+> - 具有 private link 的 AKS 叢集
 > - Azure 容器執行個體 (ACI)
 
 

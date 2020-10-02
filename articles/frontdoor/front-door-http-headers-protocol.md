@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: duau
-ms.openlocfilehash: e72443e33d1b6f097f61f4c027b5f547b43ee2a9
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: cd721f13ffa128e83072819a20b17f305118b13c
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91449231"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91626287"
 ---
 # <a name="protocol-support-for-http-headers-in-azure-front-door"></a>Azure Front Door 中 HTTP 標頭的通訊協定支援
 本文將概述 Front Door 支援的通訊協定與部分的呼叫路徑 (請參閱影像) 。 下列各節提供 Front Door 所支援之 HTTP 標頭的詳細資訊。
@@ -40,11 +40,13 @@ Front Door 包含連入要求的標頭，除非這些標頭是因為限制而移
 | X-Azure-SocketIP |  X-Azure-SocketIP：127.0.0。1 </br> 表示與目前要求來源之 TCP 連接相關聯的通訊端 IP 位址。 要求的用戶端 IP 位址可能不等於其通訊端 IP 位址，因為使用者可以任意覆寫它。|
 | X-Azure-Ref |  X-Azure-Ref： 0zxV + XAAAAABKMMOjBv2NT4TY6SQVjC0zV1NURURHRTA2MTkANDM3YzgyY2QtMzYwYS00YTU0LTk0YzMtNWZmNzA3NjQ3Nzgz </br> 識別 Front Door 所服務之要求的唯一參考字串。 它是用來搜尋存取記錄，以及用來進行疑難排解的關鍵。|
 | X-Azure-RequestChain |  X-Azure-RequestChain：躍點 = 1 </br> Front Door 用來偵測要求迴圈的標頭，且使用者不應該依賴它。 |
+| X-Azure-FDID | X-Azure-FDID：55ce4ed1-4b06-4bf1-b40e-4638452104da<br/> 識別要求來自特定 Front Door 資源的參考字串。 您可以在 Azure 入口網站中看到此值，或使用管理 API 進行抓取。 您可以使用此標頭搭配 IP Acl 來鎖定您的端點，以只接受來自特定 Front Door 資源的要求。 如需[詳細資訊](front-door-faq.md#how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door)，請參閱常見問題 |
 | X-Forwarded-For | X 轉送-代表：127.0.0。1 </br> X 轉送的 (XFF) HTTP 標頭欄位通常會識別用戶端透過 HTTP proxy 或負載平衡器連接到 web 伺服器的原始 IP 位址。 如果有現有的 XFF 標頭，則 Front Door 會將用戶端通訊端 IP 附加至該標頭，或使用用戶端通訊端 IP 新增 XFF 標頭。 |
 | X-Forwarded-Host | X 轉送-主機： contoso.azurefd.net </br> [X 轉寄-主機 HTTP 標頭] 欄位是常見的方法，用來識別主機 HTTP 要求標頭中用戶端所要求的原始主機。 這是因為處理要求的後端伺服器可能會有不同 Front Door 的主機名稱。 |
 | X-Forwarded-Proto | X 轉送-Proto： HTTP </br> [X 轉寄-----------------------------------------Proto HTTP 標頭] Front Door 欄位 即使反向 proxy 的要求為 HTTP，也是如此。 |
 | X-FD-HealthProbe | HealthProbe HTTP 標頭欄位是用來識別來自 Front Door 的健康情況探查。 如果此標頭設定為1，則要求是健康情況探查。 當您想要利用 X 轉送的主機標頭欄位，從特定的 Front Door 嚴格存取時，可以使用。 |
 |X-Azure-FDID | X-Azure-FDID 標頭：437c82cd-360a-4a54-94c3-5ff707647783 </br> 此欄位包含的 frontdoorID 可用來識別連入要求的來源 Front Door。 Front Door 服務會填入此欄位。 | 
+
 
 ## <a name="front-door-to-client"></a>Front Door 至用戶端
 

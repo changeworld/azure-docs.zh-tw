@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: 5657741a1496084b55d2f76aef12c5e84c274feb
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 6e3d87d613db63e05ddee47d43aead779eca75c3
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88918123"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91628004"
 ---
 # <a name="azure-private-endpoint-dns-configuration"></a>Azure 私人端點 DNS 設定
 
@@ -74,7 +74,7 @@ Azure 服務會在公用 DNS 服務上建立正式名稱 DNS 記錄 (CNAME) ，�
 | Azure Machine Learning (MachineLearningServices/工作區) /工作區 | privatelink.api.azureml.ms | api.azureml.ms |
 | IoT 中樞 (Microsoft. Devices/IotHubs) /IotHub | privatelink.azure-devices.net | azure-devices.net |
 | SignalR (Microsoft. Microsoft.signalrservice/SignalR ) /signalR | privatelink.service.signalr.net | service.signalr.net |
-| Azure 監視器 (privateLinkScopes) /azuremonitor | privatelink.monitor.azure.com<br/> privatelink.oms.opinsights.azure.com <br/> privatelink.ods.opinsights.azure.com <br/> privatelink.agentsvc.azure-automation.com | monitor.azure.com<br/> oms.opinsights.azure.com<br/> ods.opinsights.azure.com<br/> agentsvc.azure-automation.com |
+| Azure 監視器 (privateLinkScopes) /azuremonitor | privatelink.monitor.azure.com<br/> privatelink.oms.opinsights.azure.com <br/> privatelink.ods.opinsights.azure.com <br/> privatelink.agentsvc.azure-automation.net | monitor.azure.com<br/> oms.opinsights.azure.com<br/> ods.opinsights.azure.com<br/> agentsvc.azure-automation.net |
 |  (Microsoft CognitiveServices/帳戶) /帳戶的認知服務 | privatelink.cognitiveservices.azure.com  | cognitiveservices.azure.com  |
 | Azure 檔案同步 (Microsoft.storagesync/storageSyncServices) /afs |  privatelink.afs.azure.net  |  afs.azure.net  |
 
@@ -121,7 +121,7 @@ DNS 是一個重要元件，可成功解析私人端點 IP 位址，讓應用程
 
 在此案例中，有一個 [中樞和輪輻](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) 網路拓撲，內含可共用共同私人端點的輪輻網路，而且所有輪輻虛擬網路都會連結到相同的私人 DNS 區域。 
 
-:::image type="content" source="media/private-endpoint-dns/hub-and-spoke-azure-dns.png" alt-text="具有 Azure 提供之 DNS 的中樞與輪輻":::
+:::image type="content" source="media/private-endpoint-dns/hub-and-spoke-azure-dns.png" alt-text="單一虛擬網路與 Azure 提供的 DNS":::
 
 ## <a name="on-premises-workloads-using-a-dns-forwarder"></a>使用 DNS 轉寄站的內部部署工作負載
 
@@ -142,7 +142,7 @@ DNS 是一個重要元件，可成功解析私人端點 IP 位址，讓應用程
 
 下圖說明使用部署在 Azure 中的 DNS 轉寄站之內部部署網路中的 DNS 解析順序，其中的解析是由 [連結至虛擬網路](../dns/private-dns-virtual-network-links.md)的私人 DNS 區域所建立：
 
-:::image type="content" source="media/private-endpoint-dns/on-premises-using-azure-dns.png" alt-text="使用 Azure DNS 的內部部署":::
+:::image type="content" source="media/private-endpoint-dns/on-premises-using-azure-dns.png" alt-text="單一虛擬網路與 Azure 提供的 DNS":::
 
 這項設定可以針對已經有 DNS 解決方案的內部部署網路進行擴充。 
 內部部署 DNS 解決方案必須設定為透過參考 Azure 中部署之 DNS 轉寄站的 [條件](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server) 轉寄站，將 DNS 流量轉送至 Azure DNS。
@@ -163,7 +163,7 @@ DNS 是一個重要元件，可成功解析私人端點 IP 位址，讓應用程
 > [!IMPORTANT]
 > 條件式轉送必須對建議的 [公用 DNS 區域](#azure-services-dns-zone-configuration)轉寄站進行。例如：  `database.windows.net`   而不是 **privatelink**. database.windows.net。
 
-:::image type="content" source="media/private-endpoint-dns/on-premises-forwarding-to-azure.png" alt-text="內部部署轉送至 Azure DNS":::
+:::image type="content" source="media/private-endpoint-dns/on-premises-forwarding-to-azure.png" alt-text="單一虛擬網路與 Azure 提供的 DNS":::
 
 ## <a name="virtual-network-and-on-premises-workloads-using-a-dns-forwarder"></a>使用 DNS 轉寄站的虛擬網路和內部部署工作負載
 
@@ -190,7 +190,7 @@ DNS 是一個重要元件，可成功解析私人端點 IP 位址，讓應用程
 
 下圖說明使用部署在 Azure 中的 DNS 轉寄站之內部部署和虛擬網路中的 DNS 解析順序，其中會透過 [連結至虛擬網路](../dns/private-dns-virtual-network-links.md)的私人 DNS 區域進行解析：
 
-:::image type="content" source="media/private-endpoint-dns/hybrid-scenario.png" alt-text="混合式案例":::
+:::image type="content" source="media/private-endpoint-dns/hybrid-scenario.png" alt-text="單一虛擬網路與 Azure 提供的 DNS":::
 
 ## <a name="next-steps"></a>後續步驟
 - [深入瞭解私人端點](private-endpoint-overview.md)
