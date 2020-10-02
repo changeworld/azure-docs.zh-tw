@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.custom: how-to, devx-track-azurecli, devx-track-azurepowershell
 ms.author: larryfr
 author: Blackmist
-ms.date: 09/21/2020
-ms.openlocfilehash: 0d8965fcbde799ff4f48c320fe796746545eeea7
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 09/30/2020
+ms.openlocfilehash: 20fa52febaa42850609f3f793d6f4aa4ae2704a6
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91315638"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91626321"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>使用 Azure Resource Manager 範本建立 Azure Machine Learning 的工作區
 
@@ -31,6 +31,13 @@ ms.locfileid: "91315638"
 * **Azure 訂用帳戶**。 如果您沒有訂用帳戶，則可[試用免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)。
 
 * 若要從 CLI 使用範本，您需要 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/?view=azps-1.2.0) 或 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)。
+
+* 某些案例需要您開啟支援票證。 這些案例為：
+
+    * __使用客戶管理的金鑰 Private Link 啟用的工作區 (CMK) __
+    * __虛擬網路背後工作區的 Azure Container Registry__
+
+    如需詳細資訊，請參閱 [管理和增加配額](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases)。
 
 * 某些案例需要您開啟支援票證。 這些案例為：
 
@@ -279,21 +286,7 @@ New-AzResourceGroupDeployment `
 如果相關聯的資源不在虛擬網路後方，您可以將 **privateEndpointType** 參數設定為 `AutoAproval` 或， `ManualApproval` 以將工作區部署到私人端點後方。 這可以針對新的和現有的工作區進行。 更新現有的工作區時，請使用現有工作區中的資訊填入範本參數。
 
 > [!IMPORTANT]
-> 使用 Azure Private Link 建立 Azure Machine Learning 工作區的私人端點目前處於公開預覽狀態。 這項功能僅適用于下欄區域：
->
-> * 美國東部
-> * **美國中南部**
-> * **美國西部**
-> * **美國西部 2**
-> * **加拿大中部**
-> * **東南亞**
-> * **日本東部**
-> * **北歐**
-> * **澳大利亞東部**
-> * **英國南部**
->
-> 此預覽版是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 
-> 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> Azure Government 區域或 Azure 中國的世紀區域無法使用具有 private link 的 Azure Machine Learning 工作區。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 

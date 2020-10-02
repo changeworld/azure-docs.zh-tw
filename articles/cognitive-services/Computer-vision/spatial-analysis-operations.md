@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 09/01/2020
 ms.author: aahi
-ms.openlocfilehash: f9df17afe8b6d25df3d9dcc5f4eec0b9a028404f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 80f0d29de6b3013ad02ed1a5d34bebdf81a8766b
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91254001"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91628208"
 ---
 # <a name="spatial-analysis-operations"></a>空間分析作業
 
@@ -23,7 +23,7 @@ ms.locfileid: "91254001"
 
 空間分析容器會執行下列作業：
 
-| 作業識別碼| 說明|
+| 作業識別碼| 描述|
 |---------|---------|
 | cognitiveservices，spatialanalysis-personcount | 在相機的視圖欄位中，計算指定區域內的人員。 <br> 發出初始 _personCountEvent_ 事件，然後在計數變更時 _personCountEvent_ 事件。  |
 | cognitiveservices，spatialanalysis-personcrossingline | 追蹤某位人員如何在相機的視圖欄位中，跨越指定的行。 <br>當人員跨越該行並提供方向資訊時，發出 _personLineEvent_ 事件。 
@@ -32,18 +32,18 @@ ms.locfileid: "91254001"
 
 您也可以在版本中使用上述所有作業 `.debug` ，這可讓您在處理影片框架時將其視覺化。 您必須 `xhost +` 在主機電腦上執行，才能啟用影片框架和事件的視覺效果。
 
-| 作業識別碼| 說明|
+| 作業識別碼| 描述|
 |---------|---------|
 | cognitiveservices spatialanalysis-personcount. debug | 在相機的視圖欄位中，計算指定區域內的人員。 <br> 發出初始 _personCountEvent_ 事件，然後在計數變更時 _personCountEvent_ 事件。  |
 | cognitiveservices spatialanalysis-personcrossingline. debug | 追蹤某位人員如何在相機的視圖欄位中，跨越指定的行。 <br>當人員跨越該行並提供方向資訊時，發出 _personLineEvent_ 事件。 
 | cognitiveservices spatialanalysis-personcrossingpolygon. debug | 追蹤某位人員如何在相機的視圖欄位中，跨越指定的行。 <br> 當人員跨越區域時發出 _personLineEvent_ 事件，並提供方向性資訊。 |
 | cognitiveservices spatialanalysis-persondistance. debug | 追蹤使用者何時違反距離規則。 <br> 使用每個距離違規的位置定期發出 _personDistanceEvent_ 。 |
 
-您也可以使用 [即時影片分析](https://azure.microsoft.com/services/media-services/live-video-analytics/) 作為影片 AI 模組來執行空間分析。 
+您也可以使用 [即時影片分析](https://aka.ms/lva-spatial-analysis) 作為影片 AI 模組來執行空間分析。 
 
 <!--more details on the setup can be found in the [LVA Setup page](LVA-Setup.md). Below is the list of the operations supported with Live Video Analytics. -->
 
-| 作業識別碼| 說明|
+| 作業識別碼| 描述|
 |---------|---------|
 | cognitiveservices，spatialanalysis-personcount. livevideoanalytics | 在相機的視圖欄位中，計算指定區域內的人員。 <br> 發出初始 _personCountEvent_ 事件，然後在計數變更時 _personCountEvent_ 事件。  |
 | cognitiveservices，spatialanalysis-personcrossingline. livevideoanalytics | 追蹤某位人員如何在相機的視圖欄位中，跨越指定的行。 <br>當人員跨越該行並提供方向資訊時，發出 _personLineEvent_ 事件。 
@@ -57,7 +57,7 @@ ms.locfileid: "91254001"
 
 這些是每個空間分析作業所需的參數。
 
-| 作業參數| 說明|
+| 作業參數| 描述|
 |---------|---------|
 | 作業識別碼 | 上表中的運算識別碼。|
 | 已啟用 | 布林值： true 或 false|
@@ -88,7 +88,7 @@ ms.locfileid: "91254001"
 }
 ```
 
-| 名稱 | 類型| 說明|
+| 名稱 | 類型| 描述|
 |---------|---------|---------|
 | `zones` | list| 區域清單。 |
 | `name` | 字串| 此區域的易記名稱。|
@@ -121,7 +121,7 @@ ms.locfileid: "91254001"
 }
 ```
 
-| 名稱 | 類型| 說明|
+| 名稱 | 類型| 描述|
 |---------|---------|---------|
 | `lines` | list| 行的清單。|
 | `name` | 字串| 這一行的易記名稱。|
@@ -152,7 +152,7 @@ ms.locfileid: "91254001"
 }
 ```
 
-| 名稱 | 類型| 說明|
+| 名稱 | 類型| 描述|
 |---------|---------|---------|
 | `zones` | list| 區域清單。 |
 | `name` | 字串| 此區域的易記名稱。|
@@ -184,7 +184,7 @@ ms.locfileid: "91254001"
 }
 ```
 
-| 名稱 | 類型| 說明|
+| 名稱 | 類型| 描述|
 |---------|---------|---------|
 | `zones` | list| 區域清單。 |
 | `name` | 字串| 此區域的易記名稱。|
@@ -725,7 +725,7 @@ ms.locfileid: "91254001"
       }
   }
   ```
-| 名稱 | 類型| 說明|
+| 名稱 | 類型| 描述|
 |---------|---------|---------|
 | `batch_size` | int | 指出將在作業中使用的相機數目。 |
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c6e3316afc09992d16e17d9d2e2afe6b92dcd22
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: a09c4513206bea3462577ecba49b5d77b655b0e0
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89049038"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91628259"
 ---
 # <a name="conditional-access-sign-in-risk-based-conditional-access"></a>條件式存取：以登入風險為基礎的條件式存取
 
@@ -32,12 +32,12 @@ ms.locfileid: "89049038"
 1. 瀏覽至 [Azure Active Directory] > [安全性] > [條件式存取]。
 1. 選取 [新增原則]。
 1. 為您的原則命名。 我們建議組織針對其原則的名稱建立有意義的標準。
-1. 在 [指派] 底下選取 [使用者和群組]。
+1. 在 [指派]  底下，選取 [使用者和群組]  。
    1. 在 [包含] 下，選取 [所有使用者]。
    1. 在 [排除] 底下選取 [使用者和群組]，然後選擇組織的緊急存取或急用帳戶。 
    1. 選取 [完成] 。
 1. 在 [**雲端應用程式] 或 [動作**] 下  >  ** **，選取 [**所有雲端應用程式**]。
-1. 在 [**條件**  >  **使用者風險**] **Configure**下，將 [設定為**是]**。 在 **[選取此原則將套用的登入風險層級**] 下 
+1. 在 [**條件**登  >  **入風險**] 下**Configure** ，將 [設定為] 設定為 **[是]**。 在 **[選取此原則將套用的登入風險層級**] 下 
    1. 選取 [ **高** ] 和 [ **中**]。
    1. 選取 [完成]。
 1. 在 [存取控制] > [授與] 底下選取 [授與存取權] 和 [需要多重要素驗證]，然後選取 [選取]。

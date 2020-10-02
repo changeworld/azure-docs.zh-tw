@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 5da00916a3f7a6a3685b1de1c56dd032355e28fa
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 2b69eb076c727a4383b7459ef914ac79dca31c84
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934174"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91628412"
 ---
 # <a name="azure-arc-enabled-postgresql-hyperscale-server-group-placement"></a>Azure Arc 啟用的于 postgresql 超大規模伺服器群組放置
 
@@ -22,7 +22,7 @@ ms.locfileid: "90934174"
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="configuration"></a>設定
+## <a name="configuration"></a>組態
 
 在此範例中，我們會使用具有四個實體節點的 Azure Kubernetes Service (AKS) 叢集。 
 
@@ -46,7 +46,7 @@ aks-agentpool-42715708-vmss000003   Ready    agent   11h   v1.17.9
 
 架構可以表示為：
 
-:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/2_logical_cluster.png" alt-text="Kubernetes 叢集中分組的4個節點的邏輯標記法":::
+:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/2_logical_cluster.png" alt-text="Azure 入口網站中的4個節點 AKS 叢集":::
 
 Kubernetes 叢集會裝載一個 Azure Arc 資料控制器和一個 Azure Arc 啟用的于 postgresql 超大規模伺服器群組。 此伺服器群組是三個于 postgresql 實例的構成：一個協調器和兩個背景工作角色。
 
@@ -129,7 +129,7 @@ Containers:
 
 此架構如下所示：
 
-:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/3_pod_placement.png" alt-text="每個 pod 都會放置在不同的節點上":::
+:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/3_pod_placement.png" alt-text="Azure 入口網站中的4個節點 AKS 叢集":::
 
 這表示，此時，每個于 postgresql 實例都會構成 Azure Arc 啟用的于 postgresql 超大規模伺服器群組裝載于 Kubernetes 容器內的特定實體主機上。 這是最佳的設定，可協助您在 Azure Arc 啟用的于 postgresql 超大規模伺服器群組中發揮最大效能，因為每個角色 (協調器和背景工作) 會使用每個實體節點的資源。 這些資源不會在數個于 postgresql 角色間共用。
 
@@ -207,7 +207,7 @@ Node:         aks-agentpool-42715708-vmss000000
 
 此架構如下所示：
 
-:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/4_pod_placement_.png" alt-text="與協調器位於相同節點上的第四個 pod":::
+:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/4_pod_placement_.png" alt-text="Azure 入口網站中的4個節點 AKS 叢集":::
 
 為什麼新的背景工作/pod 不是放置在 Kubernetes 叢集 aks-agentpool-42715708-vmss000003 的剩餘實體節點上？
 
@@ -217,25 +217,25 @@ Node:         aks-agentpool-42715708-vmss000000
 
 |其他 pod 名稱\* |使用方式|裝載 pod 的 Kubernetes 實體節點
 |----|----|----
-|啟動載入器-jh48b||aks-agentpool-42715708-vmss000003
+|啟動載入器-jh48b|這項服務會處理連入要求以建立、編輯和刪除自訂資源，例如 SQL 受控實例、于 postgresql 超大規模伺服器群組和資料控制器|aks-agentpool-42715708-vmss000003
 |控制-gwmbs||aks-agentpool-42715708-vmss000002
-|controldb-0||aks-agentpool-42715708-vmss000001
-|controlwd-zzjp7||aks-agentpool-42715708-vmss000000
-|logsdb-0|Elasticsearch，從 `Fluentbit` 每個 pod 的容器接收資料|aks-agentpool-42715708-vmss000003
-|logsui-5fzv5||aks-agentpool-42715708-vmss000003
-|metricsdb-0|InfluxDB，從 `Telegraf` 每個 pod 的容器接收資料|aks-agentpool-42715708-vmss000000
-|metricsdc-47d47||aks-agentpool-42715708-vmss000002
-|metricsdc-864kj||aks-agentpool-42715708-vmss000001
-|metricsdc-l8jkf||aks-agentpool-42715708-vmss000003
-|metricsdc-nxm4l||aks-agentpool-42715708-vmss000000
-|metricsui-4fb7l||aks-agentpool-42715708-vmss000003
-|mgmtproxy-4qppp||aks-agentpool-42715708-vmss000002
+|controldb-0|這是用來儲存資料控制器設定和狀態的控制器資料存放區。|aks-agentpool-42715708-vmss000001
+|controlwd-zzjp7|這是控制器的「監看狗」服務，可持續留意資料控制器的可用性。|aks-agentpool-42715708-vmss000000
+|logsdb-0|這是彈性搜尋實例，用來儲存所有 Arc 資料服務 pod 上收集的所有記錄。 Elasticsearch，從 `Fluentbit` 每個 pod 的容器接收資料|aks-agentpool-42715708-vmss000003
+|logsui-5fzv5|這是 Kibana 實例，位於彈性搜尋資料庫的上方以呈現 log analytics GUI。|aks-agentpool-42715708-vmss000003
+|metricsdb-0|這是 InfluxDB 實例，用來儲存所有 Arc 資料服務 pod 上收集的所有計量。 InfluxDB，從 `Telegraf` 每個 pod 的容器接收資料|aks-agentpool-42715708-vmss000000
+|metricsdc-47d47|這是在叢集中的所有 Kubernetes 節點上部署的 daemonset，用來收集節點的節點層級計量。|aks-agentpool-42715708-vmss000002
+|metricsdc-864kj|這是在叢集中的所有 Kubernetes 節點上部署的 daemonset，用來收集節點的節點層級計量。|aks-agentpool-42715708-vmss000001
+|metricsdc-l8jkf|這是在叢集中的所有 Kubernetes 節點上部署的 daemonset，用來收集節點的節點層級計量。|aks-agentpool-42715708-vmss000003
+|metricsdc-nxm4l|這是在叢集中的所有 Kubernetes 節點上部署的 daemonset，用來收集節點的節點層級計量。|aks-agentpool-42715708-vmss000000
+|metricsui-4fb7l|這是 Grafana 實例，位於 InfluxDB 資料庫的上方，以顯示監視儀表板 GUI。|aks-agentpool-42715708-vmss000003
+|mgmtproxy-4qppp|這是位於 Grafana 和 Kibana 實例前方的 web 應用程式 proxy 層。|aks-agentpool-42715708-vmss000002
 
 > \* Pod 名稱上的尾碼在其他部署上會有所不同。 此外，我們只會在此列出 Azure Arc 資料控制器的 Kubernetes 命名空間內所裝載的 pod。
 
 此架構如下所示：
 
-:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/5_full_list_of_pods.png" alt-text="不同節點上命名空間中的所有 pod":::
+:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/5_full_list_of_pods.png" alt-text="Azure 入口網站中的4個節點 AKS 叢集":::
 
 這表示 Azure Arc 啟用的 Postgres 超大規模伺服器群組 (Pod 1) 的協調器節點會與第三個背景工作節點共用相同的實體資源， (Pod 4) 的伺服器群組。 這是可接受的，因為協調器節點通常使用的資源與背景工作節點可能使用的資源比較少。 您可以從這裡推斷出您應謹慎選擇：
 - Kubernetes 叢集的大小和其每個實體節點的特性 (memory，vCore) 
@@ -259,16 +259,16 @@ Node:         aks-agentpool-42715708-vmss000000
 :::row-end:::
 :::row:::
     :::column:::
-        :::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/6_layout_before.png" alt-text="之前 Azure 入口網站版面配置":::
+        :::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/6_layout_before.png" alt-text="Azure 入口網站中的4個節點 AKS 叢集":::
     :::column-end:::
     :::column:::
-        :::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/7_layout_after.png" alt-text="Azure 入口網站的版面配置":::
+        :::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/7_layout_after.png" alt-text="Azure 入口網站中的4個節點 AKS 叢集":::
     :::column-end:::
 :::row-end:::
 
 此架構如下所示：
 
-:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/8_logical_layout_after.png" alt-text="更新後 Kubernetes 叢集上的邏輯配置":::
+:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/8_logical_layout_after.png" alt-text="Azure 入口網站中的4個節點 AKS 叢集":::
 
 讓我們來看看如何藉由執行下列命令，在新的 AKS 實體節點上裝載 Arc 資料控制器命名空間的 pod：
 
@@ -278,7 +278,7 @@ kubectl describe node aks-agentpool-42715708-vmss000004
 
 然後讓我們更新系統架構的標記法：
 
-:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/9_updated_list_of_pods.png" alt-text="叢集邏輯圖上的所有 pod":::
+:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/9_updated_list_of_pods.png" alt-text="Azure 入口網站中的4個節點 AKS 叢集":::
 
 我們可以觀察到 Kubernetes 叢集的新實體節點只裝載 Azure Arc 資料服務所需的計量 pod。 請注意，在此範例中，我們只會將焦點放在 Arc 資料控制器的命名空間，而不代表其他 pod。
 
@@ -353,7 +353,7 @@ kubectl describe pod postgres01-4 -n arc3
 
 架構看起來像這樣：
 
-:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/10_kubernetes_schedules_newest_pod.png" alt-text="Kubernetes 會以最低使用量排程節點中最新的 pod":::
+:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/10_kubernetes_schedules_newest_pod.png" alt-text="Azure 入口網站中的4個節點 AKS 叢集":::
 
 Kubernetes 已在 Kubernetes 叢集最少載入的實體節點中排程新的于 postgresql pod。
 
@@ -368,6 +368,6 @@ Kubernetes 已在 Kubernetes 叢集最少載入的實體節點中排程新的于
 - Scale out Azure Arc 啟用的 Postgres 超大規模，而不需向外延展 Kubernetes：設定正確的資源條件約束 (要求和限制記憶體和 vCore) 裝載于 Kubernetes (Azure Arc 啟用的于 postgresql 超大規模) 中，您將可在共置上啟用工作負載的 Kubernetes，並降低資源爭用的風險。 您必須確定 Kubernetes 叢集實體節點的實體特性可採用您所定義的資源限制。 您也應該確保均衡隨著時間而演進，或在 Kubernetes 叢集中新增更多工作負載。
 - 使用 Kubernetes 機制 (pod 選取器、親和性和反親和性) 來影響 pod 的放置。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 [藉由新增更多背景工作節點來向外擴充您的 Azure Arc 啟用的于 postgresql 超大規模伺服器群組](scale-out-postgresql-hyperscale-server-group.md)

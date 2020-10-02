@@ -3,12 +3,12 @@ title: 使用 Azure 實驗室服務設定道德入侵實驗室 |Microsoft Docs
 description: 瞭解如何使用 Azure 實驗室服務設定實驗室，以教授道德入侵。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 5134a7db824bad69f42a4051319479f712051446
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: ae0d57223edb68d1bed4ad64a005dd33da019dd0
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89297581"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631676"
 ---
 # <a name="set-up-a-lab-to-teach-ethical-hacking-class"></a>設定實驗室來教授道德入侵類別 
 本文說明如何設定著重于道德入侵之辯論的類別。 滲透測試 (由道德入侵社群所使用的作法) 會在有人嘗試取得系統或網路的存取權，以示範惡意攻擊者可能會利用的弱點時發生。 
@@ -70,26 +70,23 @@ Kali 是一種 Linux 發行版本，其中包含滲透測試和安全性審核�
 ## <a name="set-up-a-nested-vm-with-metasploitable-image"></a>使用 Metasploitable 映射設定嵌套 VM  
 Rapid7 Metasploitable 映射是刻意設定有安全性弱點的影像。 您將使用此映射來測試和尋找問題。 下列指示說明如何使用預先建立的 Metasploitable 映射。 但是，如果需要較新版本的 Metasploitable 映射，請參閱 [https://github.com/rapid7/metasploitable3](https://github.com/rapid7/metasploitable3) 。
 
-1. 瀏覽至 [https://information.rapid7.com/download-metasploitable-2017.html](https://information.rapid7.com/download-metasploitable-2017.html)。 填寫表單以下載影像，然後選取 [ **提交** ] 按鈕。
-1. 選取 [ **立即下載 Metasploitable** ] 按鈕。
-1. 下載 zip 檔案時，請將 zip 檔案解壓縮，並記住位置。
-1. 將解壓縮的 vmdk 檔案轉換成 vhdx 檔案，讓您可以使用 Hyper-v。 若要這樣做，請以系統管理許可權開啟 PowerShell，並流覽至 vmdk 檔案所在的資料夾，然後遵循下列指示：
-    1. 下載 [Microsoft 虛擬機器轉換器](https://download.microsoft.com/download/9/1/E/91E9F42C-3F1F-4AD9-92B7-8DD65DA3B0C2/mvmc_setup.msi)，並在出現提示時執行 mvmc_setup.msi 檔。
-    1. 匯入 PowerShell 模組。  安裝模組的預設位置是 C:\Program Files\Microsoft 虛擬機器轉換器 \
-
-        ```powershell
-        Import-Module 'C:\Program Files\Microsoft Virtual Machine Converter\MvmcCmdlet.psd1'
-        ```
-    1. 將 vmdk 轉換成可由 Hyper-v 使用的 vhd 檔案。 這項作業可能需要幾分鐘的時間。
-    
-        ```powershell
-        ConvertTo-MvmcVirtualHardDisk -SourceLiteralPath .\Metasploitable.vmdk -DestinationLiteralPath .\Metasploitable.vhdx -VhdType DynamicHardDisk -VhdFormat vhdx
-        ```
-    1. 將新建立的 metasploitable 複製到 C:\Users\Public\Documents\Hyper-V\Virtual Hard Disks\。 
+1. 下載 Metasploitable 映射。
+    1. 瀏覽至 [https://information.rapid7.com/download-metasploitable-2017.html](https://information.rapid7.com/download-metasploitable-2017.html)。 填寫表單以下載影像，然後選取 [ **提交** ] 按鈕。
+    2. 選取 [ **立即下載 Metasploitable** ] 按鈕。
+    3. 下載 zip 檔案時，請將 zip 檔案解壓縮，並記住 Metasploitable .vmdk 檔案的位置。
+1. 將解壓縮的 vmdk 檔案轉換成 vhdx 檔案，讓您可以將 vhdx 檔案與 Hyper-v 搭配使用。 有數個工具可用來將 VMware 映射轉換成 Hyper-v 映射，反之亦然。  我們將使用 [STARWIND V2V 轉換器](https://www.starwindsoftware.com/starwind-v2v-converter)。  若要下載，請參閱 [STARWIND V2V 轉換器下載頁面](https://www.starwindsoftware.com/starwind-v2v-converter#download)。
+    1. 開始 **STARWIND V2V 轉換器**。
+    1. 在 [ **選取要轉換之影像的位置** ] 頁面上，選擇 [ **本機**檔案]。  選取 [下一步] 。
+    1. 在 [ **來源映射** ] 頁面上，流覽至並選取在上一個步驟中解壓縮的 Metasploitable，以取得 [ **檔案名** ] 設定。  選取 [下一步] 。
+    1. 在 [ **選取目的地映射的位置**] 上，選擇 [ **本機**檔案]。  選取 [下一步] 。
+    1. 在 [ **選取目的地映射格式** ] 頁面上，選擇 [ **VHD/VHDX**]。  選取 [下一步] 。
+    1. 在 [ **選取 VHD/VHDX 映射格式的選項** ] 頁面上，選擇 [ **VHDX 可成長映射**]。  選取 [下一步] 。
+    1. 在 [ **選取目的地檔案名** ] 頁面上，接受預設的檔案名。  選取 [轉換]****。
+    1. 在 [ **轉換** ] 頁面上，等候影像轉換。  這可能需要幾分鐘的時間。  當轉換完成時，請選取 **[完成]** 。
 1. 建立新的 Hyper-v 虛擬機器。
     1. 開啟 [ **Hyper-v 管理員**]。
     1. 選擇**Action**[  ->  **新增**  ->  **虛擬機器**] 動作。
-    1. 在 [**新增虛擬機器] 嚮導**的 [在**您開始前**] 頁面上，按 **[下一步]**。
+    1. 在 [**新增虛擬機器] 嚮導**的 [在**您開始前**] 頁面上，選取 **[下一步**]。
     1. 在 [ **指定名稱和位置** ] 頁面上，輸入 **Metasploitable** 作為 **名稱**，然後選取 **[下一步]**。
 
         ![新增 VM 映射嚮導](./media/class-type-ethical-hacking/new-vm-wizard-1.png)

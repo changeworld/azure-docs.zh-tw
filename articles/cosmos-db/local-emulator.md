@@ -7,16 +7,22 @@ author: markjbrown
 ms.author: mjbrown
 ms.date: 09/22/2020
 ms.custom: devx-track-csharp, contperfq1
-ms.openlocfilehash: 2ee20035fbb7b417897290caba4500f2c3862fee
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: 64da8084ec8d40e17a0005f2e70486c7d51bf640
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/01/2020
-ms.locfileid: "91611804"
+ms.locfileid: "91627582"
 ---
 # <a name="install-and-use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>安裝和使用 Azure Cosmos 模擬器進行本機開發和測試
 
-Azure Cosmos 模擬器提供一個模擬 Azure Cosmos DB 服務的本機環境，以供開發之用。 您可以使用 Azure Cosmos 模擬器在本機開發及測試應用程式，而不需建立 Azure 訂用帳戶，也不會產生任何費用。 當您滿意應用程式在 Azure Cosmos 模擬器中的運作方式時，您可以切換到使用雲端中的 Azure Cosmos 帳戶。 若要開始使用，請在本機電腦上下載並安裝最新版本的 [Azure Cosmos 模擬器](https://aka.ms/cosmosdb-emulator) 。 本文說明如何在 Windows、Linux、macOS 和 Windows docker 環境上安裝和使用模擬器。
+Azure Cosmos 模擬器提供一個模擬 Azure Cosmos DB 服務的本機環境，以供開發之用。 您可以使用 Azure Cosmos 模擬器在本機開發及測試應用程式，而不需建立 Azure 訂用帳戶，也不會產生任何費用。 當您滿意應用程式在 Azure Cosmos 模擬器中的運作方式時，您可以切換到使用雲端中的 Azure Cosmos 帳戶。 本文說明如何在 Windows、Linux、macOS 和 Windows docker 環境上安裝和使用模擬器。
+
+## <a name="download-the-emulator"></a>下載模擬器
+
+若要開始使用，請在本機電腦上下載並安裝最新版本的 Azure Cosmos 模擬器。 [模擬器版本](local-emulator-release-notes.md)資訊文章會列出所有可用的版本，以及每個版本中所做的功能更新。
+
+:::image type="icon" source="media/local-emulator/download-icon.png" border="false":::**[下載 Azure Cosmos 模擬器](https://aka.ms/cosmosdb-emulator)**
 
 您可以使用 Azure Cosmos 模擬器搭配 [SQL](local-emulator.md#sql-api)、 [Cassandra](local-emulator.md#cassandra-api)、 [MongoDB](local-emulator.md#azure-cosmos-dbs-api-for-mongodb)、 [Gremlin](local-emulator.md#gremlin-api)和 [資料表](local-emulator.md#table-api) API 帳戶來開發應用程式。 目前模擬器中的資料瀏覽器完全僅支援查看 SQL 資料;使用 MongoDB、Gremlin/Graph 及 Cassandra 用戶端應用程式建立的資料目前無法查看。 若要深入瞭解，請參閱如何從不同 [的 api 連接至模擬器端點](#connect-with-emulator-apis) 。
 
@@ -38,7 +44,7 @@ Azure Cosmos 模擬器提供 Azure Cosmos DB 服務的高精確度模擬。 它�
 
 * 使用模擬器時，您只可以在布 [建的輸送量](set-throughput.md) 模式中建立 Azure Cosmos 帳戶;目前不支援 [無伺服器](serverless.md) 模式。
 
-* 模擬器不是可擴充的服務，也不支援大量的容器。 使用 Azure Cosmos 模擬器時，根據預設，您最多可以在 400 RU/秒上建立25個固定大小的容器 (僅支援使用 Azure Cosmos DB Sdk) 或5個無限制的容器。 如需如何變更此值的詳細資訊，請參閱 [設定 PartitionCount 值] 模擬器-命令列參數. md # Set-PartitionCount) 文章。
+* 模擬器不是可擴充的服務，也不支援大量的容器。 使用 Azure Cosmos 模擬器時，根據預設，您最多可以在 400 RU/秒上建立25個固定大小的容器 (僅支援使用 Azure Cosmos DB Sdk) 或5個無限制的容器。 如需如何變更此值的詳細資訊，請參閱 [設定 PartitionCount 值一](emulator-command-line-parameters.md#set-partitioncount) 文。
 
 * 模擬器不提供不同 Azure Cosmos DB 的 [一致性層級](consistency-levels.md) ，例如雲端服務。
 
@@ -64,7 +70,7 @@ Azure Cosmos 模擬器提供 Azure Cosmos DB 服務的高精確度模擬。 它�
 
 若要開始使用，請在本機電腦上下載並安裝最新版本的 [Azure Cosmos 模擬器](https://aka.ms/cosmosdb-emulator) 。 如果您在安裝模擬器時遇到任何問題，請參閱 [模擬器疑難排解](troubleshoot-local-emulator.md) 文章以進行 debug。
 
-視您的系統需求而定，您可以在 [Windows](#run-on-windows)、 [適用於 Windows 的 Docker](#run-on-windows-docker)、[Linux 或 [macOS](#run-on-linux-macos) 上執行模擬器，如下一節中所述。
+視您的系統需求而定，您可以在 [Windows](#run-on-windows)、 [適用於 Windows 的 Docker](#run-on-windows-docker)、 [Linux 或 macOS](#run-on-linux-macos) 上執行模擬器，如下一節的後續章節所述。
 
 ## <a name="check-for-emulator-updates"></a>檢查模擬器更新
 

@@ -11,12 +11,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 07/16/2020
 ms.custom: contperfq4, tracking-python, contperfq1
-ms.openlocfilehash: 7953573d5e82c6393a1dc1f0407835cb307638e5
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 6e7499d8402bf31d5ecc4d1b212c08b7064d0446
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91533072"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91629721"
 ---
 # <a name="secure-an-azure-machine-learning-training-environment-with-virtual-networks"></a>使用虛擬網路保護 Azure Machine Learning 定型環境
 
@@ -60,7 +60,7 @@ ms.locfileid: "91533072"
 > * 查看您對虛擬網路其訂用帳戶或資源群組的安全性原則或鎖定是否限制了管理虛擬網路的權限。 如果您打算透過限制流量來保護虛擬網路，請針對計算服務開放一些連接埠。 如需詳細資訊，請參閱[必要連接埠](#mlcports)一節。
 > * 如果您要將多個計算執行個體或叢集放在一個虛擬網路中，您可能必須要求一或多個資源的配額增加。
 > * 如果工作區的 Azure 儲存體帳戶也在虛擬網路中受到保護，則這些帳戶必須位於與 Azure Machine Learning 計算執行個體或叢集相同的虛擬網路中。 
-> * 若要讓計算執行個體 Jupyter 功能能夠運作，請確定您並未停用 Web 通訊端通訊。
+> * 若要讓計算執行個體 Jupyter 功能能夠運作，請確定您並未停用 Web 通訊端通訊。 請確定您的網路允許 websocket 連接到 *. instances.azureml.net 和 *. instances.azureml.ms。
 
 > [!TIP]
 > Machine Learning 計算執行個體或叢集會自動將額外的網路資源配置__在包含虛擬網路的資源群組中__。 針對每個計算執行個體或叢集，服務會配置下列資源：

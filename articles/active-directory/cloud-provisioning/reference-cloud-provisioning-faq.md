@@ -11,12 +11,12 @@ ms.date: 06/25/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 622d38e09f65d05d7cba7a34f30a070c27d3fd37
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 28fb9da04c9c9d3e98b5226e1aee4cf5dde7183b
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89658372"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91628667"
 ---
 # <a name="azure-active-directory-connect-cloud-provisioning-faq"></a>Azure Active Directory Connect 雲端布建常見問題
 
@@ -83,6 +83,18 @@ Exchange 混合式部署功能可讓您同時存在內部部署和 Microsoft 365
 **問：是否可以搭配使用預備伺服器與雲端布建代理程式？**
 
 否，不支援暫存伺服器。
+
+**問：我可以同步處理來賓使用者帳戶嗎？**
+
+否，不支援同步處理來賓使用者帳戶。
+
+**問：如果我將使用者從雲端布建範圍內的 OU 移至範圍為 Azure AD Connect 的 OU，會發生什麼事？**
+
+使用者將會被刪除並重新建立。  從雲端布建範圍的 OU 移動使用者，將會被視為刪除操作。  如果使用者移至受 Azure AD Connect 管理的 OU，則會重新布建至 Azure AD，並建立新的使用者。
+
+**問：如果我重新命名或移動雲端布建篩選範圍內的 OU，在 Azure AD 中建立的使用者會發生什麼事？**
+
+不做任何動作。  如果重新命名或移動 OU，則不會刪除使用者。
 
 ## <a name="next-steps"></a>後續步驟 
 

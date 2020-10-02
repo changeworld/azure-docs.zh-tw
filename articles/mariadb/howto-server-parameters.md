@@ -1,21 +1,24 @@
 ---
-title: 設定伺服器參數-Azure 入口網站適用於 MariaDB 的 Azure 資料庫
+title: 設定伺服器參數-Azure 入口網站-適用於 MariaDB 的 Azure 資料庫
 description: 此文章說明如何使用 Azure 入口網站，在適用於 MariaDB 的 Azure 資料庫中設定 MariaDB 伺服器參數。
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: how-to
-ms.date: 6/11/2020
-ms.openlocfilehash: 53ba3c71679ebda1e8e2bf0a59a6ef69d051df4f
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 10/1/2020
+ms.openlocfilehash: 9d0b6865c7fb5b59f379568d15bd9b96883202e9
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120410"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91626423"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-mariadb-using-the-azure-portal"></a>使用 Azure 入口網站在適用於 MariaDB 的 Azure 資料庫中設定伺服器參數
 
 適用於 MariaDB 的 Azure 資料庫支援某些伺服器參數的組態。 本文說明如何使用 Azure 入口網站來設定這些參數。 並非所有伺服器參數皆可調整。
+
+>[!Note]
+> 伺服器參數可以在伺服器層級全域更新、使用 [Azure CLI](./howto-configure-server-parameters-cli.md)、 [PowerShell](./howto-configure-server-parameters-using-powershell.md)或 [Azure 入口網站](./howto-server-parameters.md)。
 
 ## <a name="configure-server-parameters"></a>設定伺服器參數
 
@@ -24,20 +27,20 @@ ms.locfileid: "86120410"
 ![Azure 入口網站伺服器參數頁面](./media/howto-server-parameters/azure-portal-server-parameters.png)
 3. 找出您需要調整的任何設定。 檢閱 [描述]**** 資料行，以了解用途和允許的值。
 ![列舉下拉按鈕](./media/howto-server-parameters/3-toggle_parameter.png)
-4. 按一下 [**儲存**] 以儲存變更。
+4. 按一下 [  **儲存** ] 以儲存您的變更。
 ![儲存或捨棄變更](./media/howto-server-parameters/4-save_parameters.png)
 5. 儲存新的參數值後，隨時可以選取 [全部重設為預設值]**** 回復為所有參數的預設值。
 ![全部重設為預設值](./media/howto-server-parameters/5-reset_parameters.png)
 
-## <a name="setting-parameters-not-listed"></a>設定未列出的參數
+## <a name="setting-parameters-not-listed"></a>未列出設定參數
 
-如果 Azure 入口網站中未列出您要更新的伺服器參數，您可以選擇性地使用，在連接層級設定參數 `init_connect` 。 這會為每個連接到伺服器的用戶端設定伺服器參數。 
+如果您要更新的伺服器參數未列在 Azure 入口網站中，您可以選擇性地使用在連接層級設定參數 `init_connect` 。 這會為每個連接到伺服器的用戶端設定伺服器參數。 
 
 1. 在 [設定]**** 區段下方，按一下 [伺服器參數]**** 以開啟適用於 MariaDB 的 Azure 資料庫伺服器的 [伺服器參數] 頁面。
-2. 搜尋`init_connect`
-3. 以下列格式加入伺服器參數：中的 [值] 資料 `SET parameter_name=YOUR_DESIRED_VALUE` 行。
+2. 搜尋 `init_connect`
+3. 以下列格式加入伺服器參數： [值] 資料 `SET parameter_name=YOUR_DESIRED_VALUE` 行。
 
-    例如，您可以將設定為，以變更伺服器的字元集。 `init_connect``SET character_set_client=utf8;SET character_set_database=utf8mb4;SET character_set_connection=latin1;SET character_set_results=latin1;`
+    例如，您可以藉由將設定為，來變更伺服器的字元集 `init_connect``SET character_set_client=utf8;SET character_set_database=utf8mb4;SET character_set_connection=latin1;SET character_set_results=latin1;`
 4. 按一下 [確定] 儲存變更。
 
 ## <a name="working-with-the-time-zone-parameter"></a>使用時區參數
@@ -79,4 +82,4 @@ SET time_zone = 'US/Pacific';
 
 ## <a name="next-steps"></a>後續步驟
 
-- 深入瞭解[伺服器參數](concepts-server-parameters.md)
+- 深入瞭解 [伺服器參數](concepts-server-parameters.md)

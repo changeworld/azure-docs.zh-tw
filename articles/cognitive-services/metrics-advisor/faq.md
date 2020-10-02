@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: conceptual
-ms.date: 09/10/2020
+ms.date: 09/30/2020
 ms.author: aahi
-ms.openlocfilehash: 0fde9a0f46073a2f3a24962ea58431581455f474
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: e4a75bdd6147ee2189660c37062c5bec9d55d512
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934294"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631729"
 ---
 # <a name="metrics-advisor-frequently-asked-questions"></a>計量顧問常見問題
 
@@ -74,9 +74,26 @@ ms.locfileid: "90934294"
 
 ### <a name="more-concepts-and-technical-terms"></a>更多概念和技術術語
 
-請移至 [詞彙](glossary.md) 以閱讀詳細資訊。
+另請參閱 [詞彙](glossary.md) 以取得詳細資訊。
 
-## <a name="how-do-i-detect-such-kinds-of-anomalies"></a>如何? 偵測到這類異常狀況？ 
+###  <a name="how-do-i-write-a-valid-query-for-ingesting-my-data"></a>如何? 撰寫有效的查詢來擷取我的資料嗎？  
+
+若要讓計量建議程式內嵌您的資料，您必須建立查詢，以在單一時間戳傳回資料的維度。 計量顧問會多次執行此查詢，以取得每個時間戳記的資料。 
+
+請注意，在指定的時間戳記中，查詢最多隻能針對每個維度組合傳回一筆記錄。 傳回的所有記錄都必須具有相同的時間戳記。 查詢不應傳回重複的記錄。
+
+例如，假設您針對每日度量建立以下查詢： 
+ 
+`select timestamp, city, category, revenue from sampledata where Timestamp >= @StartTime and Timestamp < dateadd(DAY, 1, @StartTime)`
+
+請務必針對您的時間序列使用正確的資料細微性。 針對每小時計量，您可以使用： 
+
+`select timestamp, city, category, revenue from sampledata where Timestamp >= @StartTime and Timestamp < dateadd(hour, 1, @StartTime)`
+
+請注意，這些查詢只會傳回單一時間戳的資料，並包含計量建議程式要內嵌的所有維度組合。 
+
+:::image type="content" source="media/query-result.png" alt-text="F0 資源已存在時的訊息" lightbox="media/query-result.png":::
+
 
 ### <a name="how-do-i-detect-spikes--dips-as-anomalies"></a>如何? 偵測到尖峰 & dip？
 

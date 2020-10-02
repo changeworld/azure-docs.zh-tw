@@ -4,12 +4,12 @@ description: 摘要說明 Azure Migrate 服務的支援設定和限制。
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.author: raynew
-ms.openlocfilehash: 6137201f8accb901ffe1892d9876b172411cfe6b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ee45d2f489b23289e4f92a544590a510e77ece13
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91329585"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91627945"
 ---
 # <a name="azure-migrate-support-matrix"></a>Azure Migrate 支援矩陣
 
@@ -97,7 +97,7 @@ United Kingdom | 英國南部或英國西部
 美國 | 美國中部或美國西部 2
 
 > [!NOTE]
-> 針對瑞士地理位置，瑞士西部僅適用于 REST API 使用者，且需要允許清單的訂用帳戶。
+> 針對瑞士地理位置，瑞士西部僅適用于 REST API 使用者，且需要核准的訂用帳戶。
 
 ## <a name="supported-geographies-azure-government"></a>支援的地理位置 (Azure Government)
 

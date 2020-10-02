@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: a11573da29cead49bfb17c2c5df3951229182959
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: c592055be1987786b94623bde5352e2a3cc0e092
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91360645"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91630146"
 ---
 # <a name="speech-service-for-telephony-data"></a>語音服務的電話語音資料
 
@@ -121,7 +121,7 @@ ms.locfileid: "91360645"
 
  語音服務可與內建模型搭配使用。 不過，您可能會想要進一步自訂及調整產品或環境的體驗。 從原音模型調整到專屬於自身品牌的獨特聲音音調，都是自訂選項的範圍。 建立自訂模型之後，您可以在即時或批次模式中，搭配任何語音服務功能使用它。
 
-| 語音服務 | 型號 | 說明 |
+| 語音服務 | 型號 | 描述 |
 | -------------- | ----- | ----------- |
 | 語音轉文字 | [原音模型](how-to-customize-acoustic-models.md) | 針對用於特定環境 (例如汽車或工廠) 的應用程式、工具或裝置建立自訂原音模型，而這每一個的錄音條件都較特殊。 例如，帶有口音的語音、特定背景雜音或使用特定麥克風來錄音。 |
 |                | [語言模型](how-to-customize-language-model.md) | 建立自訂語言模型來提升特定產業的詞彙和文法轉譯，例如醫療術語或 IT 專業術語。 |
@@ -142,7 +142,7 @@ ms.locfileid: "91360645"
 - [語音裝置 SDK](speech-devices-sdk.md)
 - [REST API：語音轉文字](rest-speech-to-text.md)
 - [REST API：文字轉語音](rest-text-to-speech.md)
-- [REST API：批次轉譯與自訂](https://westus.cris.ai/swagger/ui/index)
+- [REST API：批次轉譯與自訂](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0)
 
 ## <a name="next-steps"></a>後續步驟
 

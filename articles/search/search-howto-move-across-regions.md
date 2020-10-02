@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 09/10/2020
-ms.openlocfilehash: 7383d9f95435775448f7322d9eb7707f676e9952
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: 774b605859df41e0b71ee82c38a6b08bdf5b9c49
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90007038"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91629806"
 ---
 # <a name="move-your-azure-cognitive-search-service-to-another-azure-region"></a>將您的 Azure 認知搜尋服務移至另一個 Azure 區域
 
@@ -27,7 +27,7 @@ ms.locfileid: "90007038"
 
 + 確定目的地區域中支援您帳戶所使用的服務和功能。
 
-+ 對於預覽功能，確定您的訂用帳戶已列入目標區域的允許清單中。
++ 針對預覽功能，請確定您的訂用帳戶已針對目的地區域核准。
 
 ## <a name="prepare-and-move"></a>準備及移動
 
@@ -51,7 +51,7 @@ ms.locfileid: "90007038"
 
 在新服務經過完整測試和運作之後，刪除舊的服務。 刪除服務會自動刪除與服務相關聯的所有內容。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 下列連結可協助您在完成上述步驟時找出詳細資訊。
 

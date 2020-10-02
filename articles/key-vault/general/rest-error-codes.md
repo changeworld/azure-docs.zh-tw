@@ -10,12 +10,12 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: reference
 ms.date: 12/16/2019
-ms.openlocfilehash: b6e4845ca626dc8805b9bec6ca50076371d35b55
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 30b7e34f2a791cfd8dec1a6d8e81d706fa07939f
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89419124"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631217"
 ---
 # <a name="azure-key-vault-rest-api-error-codes"></a>Azure Key Vault REST API 錯誤碼
  
@@ -128,7 +128,7 @@ resource=https%3A%2F%2Fvault.azure.net&client_id=<registered-app-ID>&client_secr
 HTTP 403 表示要求已經過驗證 (它知道要求的身分識別) 但身分識別沒有存取所要求資源的許可權。 原因有兩種：
 
 - 沒有身分識別的存取原則。
-- 要求資源的 IP 位址不會在金鑰保存庫的防火牆設定中列入允許清單。
+- 在金鑰保存庫的防火牆設定中，未核准要求資源的 IP 位址。
 
 當客戶的應用程式未使用客戶所認為的用戶端識別碼時，通常會發生 HTTP 403。 這通常表示未正確設定實際呼叫身分識別的存取原則。
 
@@ -166,5 +166,3 @@ HTTP 403 表示要求已經過驗證 (它知道要求的身分識別) 但身分�
 - 如果快取無法減少要求數目，且計時輪詢無法運作，請考慮將金鑰分割成多個金鑰保存庫。 單一訂用帳戶的服務限制是個別 Key Vault 限制的5倍。 如果使用5個以上的金鑰保存庫，請考慮使用多個訂用帳戶。 
 
 您可以在這裡找到詳細的指引，包括增加限制的要求： [Key Vault 節流指導](overview-throttling.md)方針
-
-

@@ -12,17 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/26/2019
+ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: cd84a4b50ba32ee3f562ace9b2583cf5e561be84
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d63893ab219854a270652da38c474e3ccad83abc
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91320382"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91630503"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>使用常見事件格式連接您的外部解決方案
-
 
 當您連線到傳送 CEF 訊息的外部解決方案時，有三個步驟可以連接 Azure Sentinel：
 
@@ -43,29 +42,28 @@ ms.locfileid: "91320382"
 
  ![內部部署的 CEF](./media/connect-cef/cef-syslog-onprem.png)
 
-
 ## <a name="security-considerations"></a>安全性考量
 
 請務必根據您組織的安全性原則來設定電腦的安全性。 例如，您可以設定您的網路，使其符合您的公司網路安全性原則，並變更 daemon 中的埠和通訊協定，以符合您的需求。 您可以使用下列指示來改進您的電腦安全性性設定：  [Azure 中的安全 VM](../virtual-machines/security-policy.md)、 [網路安全性的最佳做法](../security/fundamentals/network-best-practices.md)。
 
 若要使用 Syslog 來源與 Syslog 轉寄站之間的 TLS 通訊，您必須設定 Syslog daemon (rsyslog 或 syslog-ng) 在 TLS 中進行通訊： [使用 tls Rsyslog 加密 Syslog 流量](https://www.rsyslog.com/doc/v8-stable/tutorials/tls_cert_summary.html)、 [使用 tls 加密記錄訊息– Syslog-ng](https://support.oneidentity.com/technical-documents/syslog-ng-open-source-edition/3.22/administration-guide/60#TOPIC-1209298)。
-
  
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
+
 請確定您用來作為 proxy 的 Linux 機器正在執行下列其中一個作業系統：
 
 - 64 位元
-  - CentOS 6 和 7
+  - CentOS 7 和子版本，以及較高的 (不是 6) 
   - Amazon Linux 2017.09
   - Oracle Linux 6 和 7
-  - Red Hat Enterprise Linux Server 6 和 7
+  - Red Hat Enterprise Linux (RHEL) Server 7 和次要版本，以及較高的 (不是 6) 
   - Debian GNU/Linux 8 和 9
   - Ubuntu Linux 14.04 LTS、16.04 LTS 和 18.04 LTS
   - SUSE Linux Enterprise Server 12
 - 32 位元
-   - CentOS 6
+   - CentOS 7
    - Oracle Linux 6
-   - Red Hat Enterprise Linux Server 6
+   - Red Hat Enterprise Linux Server 7
    - Debian GNU/Linux 8 和 9
    - Ubuntu Linux 14.04 LTS 和 16.04 LTS
  
@@ -81,11 +79,10 @@ ms.locfileid: "91320382"
 - 權限
     - 您必須在電腦上擁有較高的許可權 (sudo) 。 
 - 軟體需求
-    - 確定您的電腦上正在執行 Python
-
-
+    - 確定您的電腦上正在執行 Python (2.7 或更高版本) 
 
 ## <a name="next-steps"></a>後續步驟
+
 在本檔中，您已瞭解如何將 CEF 設備連線至 Azure Sentinel。 若要深入了解 Azure Sentinel，請參閱下列文章：
 - 深入了解如何[取得資料的可見度以及潛在威脅](quickstart-get-visibility.md)。
 - 開始[使用 Azure Sentinel 偵測威脅](tutorial-detect-threats.md)。

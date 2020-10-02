@@ -1,5 +1,6 @@
 ---
-title: 如何與 Microsoft 身分識別平臺整合
+title: 如何與 Microsoft 身分識別平臺整合 |蔚藍
+titleSuffix: Microsoft identity platform
 description: 瞭解將您的應用程式與 Microsoft 身分識別平臺整合的優點，並取得簡化登入、身分識別管理、多重要素驗證和存取控制等功能的資源。
 services: active-directory
 author: rwike77
@@ -8,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 04/08/2019
+ms.date: 10/01/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, seoapril2019
-ms.openlocfilehash: bdeb27f9e761fefc52c9c97b28d15770e22221f4
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: e9724bb2e5377f84904dc77c33375c39f3077dd4
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90706161"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631404"
 ---
 # <a name="integrating-with-microsoft-identity-platform"></a>與 Microsoft 身分識別平臺整合
 
@@ -47,7 +48,7 @@ ms.locfileid: "90706161"
 
 ### <a name="get-access-to-users-profile-calendar-email-contacts-files-and-more"></a>取得使用者設定檔、行事曆、電子郵件、連絡人、檔案等的存取權
 
-**Microsoft 身分識別平臺是 Microsoft 365 及其他 Microsoft 商務服務的授權伺服器。**  如果您支援 Microsoft 身分識別平臺來登入您的應用程式，或支援將目前的使用者帳戶連結至使用 OAuth 2.0 Azure AD 使用者帳戶，您可以要求使用者設定檔、行事曆、電子郵件、連絡人、檔案及其他資訊的讀取和寫入存取權。 您可以順利地將事件寫入使用者的行事曆，並讀取檔案或將檔案寫入使用者的 OneDrive。 深入瞭解如何 [存取 Microsoft 365 api](/previous-versions/office/office-365-api/)。
+**Microsoft 身分識別平臺是 Microsoft 365 及其他 Microsoft 商務服務的授權伺服器。**  如果您支援 Microsoft 身分識別平臺來登入您的應用程式，或支援將目前的使用者帳戶連結至使用 OAuth 2.0 Azure AD 使用者帳戶，您可以要求使用者設定檔、行事曆、電子郵件、連絡人、檔案及其他資訊的讀取和寫入存取權。 您可以順利地將事件寫入使用者的行事曆，並讀取檔案或將檔案寫入使用者的 OneDrive。 深入瞭解 [Microsoft 365 api](/graph/overview)。
 
 ### <a name="promote-your-application-in-the-azure-and-microsoft-365-marketplaces"></a>在 Azure 和 Microsoft 365 marketplace 中推廣您的應用程式
 

@@ -5,12 +5,12 @@ author: chrpap
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: chrpap
-ms.openlocfilehash: 0f25627c852befb03c2c32d741b8fe9b64cd4dc2
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: b8db69792b31fd82646757423e669e39e8539d06
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88948958"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91630697"
 ---
 # <a name="networking"></a>網路功能
 
@@ -59,20 +59,20 @@ Azure 虛擬機器系列 Sku 支援加速網路： D/DSv2、D/DSv3、E/ESv3、F/
 
 ## <a name="network-security-rules"></a>網路安全性規則
 
-此處的基本規則是 Azure 受控 Service Fabric 叢集安全性鎖定的最小值。 無法開啟下列埠或允許清單 IP/URL 將會導致叢集無法正常運作，因此可能不受支援。 使用此規則集時，絕對必須使用 [自動 OS 映射升級](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md)，否則將需要開啟其他埠。
+此處的基本規則是 Azure 受控 Service Fabric 叢集安全性鎖定的最小值。 若無法開啟下列埠或核准 IP/URL，將會導致叢集無法正常運作，而且可能不受支援。 使用此規則集時，絕對必須使用 [自動 OS 映射升級](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md)，否則將需要開啟其他埠。
 
 ### <a name="inbound"></a>輸入 
 |優先順序   |名稱               |連接埠        |通訊協定  |來源             |Destination       |動作   
 |---        |---                |---         |---       |---                |---               |---
-|3900       |Azure              |19080       |TCP       |網際網路           |VirtualNetwork    |Allow
-|3910       |Client             |19000       |TCP       |網際網路           |VirtualNetwork    |Allow
-|3920       |叢集            |1025-1027   |TCP       |VirtualNetwork     |VirtualNetwork    |Allow
-|3930       |短暫          |49152-65534 |TCP       |VirtualNetwork     |VirtualNetwork    |Allow
-|3940       |Application        |20000-30000 |TCP       |VirtualNetwork     |VirtualNetwork    |Allow
-|3950       |SMB                |445         |TCP       |VirtualNetwork     |VirtualNetwork    |Allow
-|3960       |RDP                |3389-3488   |TCP       |網際網路           |VirtualNetwork    |Deny
-|3970       |SSH                |22          |TCP       |網際網路           |VirtualNetwork    |Deny
-|3980       |自訂端點    |80          |TCP       |網際網路           |VirtualNetwork    |Allow
+|3900       |Azure              |19080       |TCP       |Internet           |VirtualNetwork    |允許
+|3910       |用戶端             |19000       |TCP       |Internet           |VirtualNetwork    |允許
+|3920       |叢集            |1025-1027   |TCP       |VirtualNetwork     |VirtualNetwork    |允許
+|3930       |短暫          |49152-65534 |TCP       |VirtualNetwork     |VirtualNetwork    |允許
+|3940       |應用程式        |20000-30000 |TCP       |VirtualNetwork     |VirtualNetwork    |允許
+|3950       |SMB                |445         |TCP       |VirtualNetwork     |VirtualNetwork    |允許
+|3960       |RDP                |3389-3488   |TCP       |Internet           |VirtualNetwork    |拒絕
+|3970       |SSH                |22          |TCP       |Internet           |VirtualNetwork    |拒絕
+|3980       |自訂端點    |80          |TCP       |Internet           |VirtualNetwork    |允許
 |4100       |封鎖輸入      |443         |任意       |任意                |任意               |Allow
 
 輸入安全性規則的詳細資訊：
@@ -99,10 +99,10 @@ Azure 虛擬機器系列 Sku 支援加速網路： D/DSv2、D/DSv3、E/ESv3、F/
 
 |優先順序   |名稱               |連接埠        |通訊協定  |來源             |Destination       |動作   
 |---        |---                |---         |---       |---                |---               |---
-|3900       |網路            |任意         |TCP       |VirtualNetwork     |VirtualNetwork    |Allow
-|3910       |資源提供者  |443         |TCP       |VirtualNetwork     |ServiceFabric     |Allow
-|3920       |升級            |443         |TCP       |VirtualNetwork     |Internet          |Allow
-|3950       |封鎖輸出     |任意         |任意       |任意                |任意               |Deny
+|3900       |網路            |任意         |TCP       |VirtualNetwork     |VirtualNetwork    |允許
+|3910       |資源提供者  |443         |TCP       |VirtualNetwork     |ServiceFabric     |允許
+|3920       |升級            |443         |TCP       |VirtualNetwork     |Internet          |允許
+|3950       |封鎖輸出     |任意         |任意       |任意                |任意               |拒絕
 
 輸出安全性規則的詳細資訊：
 
@@ -123,7 +123,7 @@ Azure 虛擬機器系列 Sku 支援加速網路： D/DSv2、D/DSv3、E/ESv3、F/
 
 * 針對在無法從 Azure 雲端儲存體提取基礎層的空調電腦上裝載的 Windows 容器，請使用 Docker daemon 中的 [--allow-nondistributable-構件](/virtualization/windowscontainers/about/faq#how-do-i-make-my-container-images-available-on-air-gapped-machines) 旗標來覆寫外部層行為。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 在執行 Windows Server 的 VM 或電腦上建立叢集： [建立適用於 Windows Server 的 Service Fabric 叢集](service-fabric-cluster-creation-for-windows-server.md)
 * 在 VM 或執行 Linux 的電腦上建立叢集：[建立 Linux 叢集](service-fabric-cluster-creation-via-portal.md)

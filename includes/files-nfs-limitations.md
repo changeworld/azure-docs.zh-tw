@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/15/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 8901f54c4802766eb3f12830d98d29fb47337ae5
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 866640d90c66dd82e8be61d221bc903907575454
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90705209"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91641609"
 ---
 在預覽期間，NFS 有下列限制：
 
@@ -22,7 +22,7 @@ ms.locfileid: "90705209"
 - 必須建立新的儲存體帳戶，才能建立 NFS 共用。
 - 僅支援管理平面 REST Api。 資料平面 REST Api 無法使用，這表示像儲存體 explorer 這樣的工具無法與 NFS 共用搭配使用，也無法流覽 Azure 入口網站中的 NFS 共用資料。
 - 僅適用于 premium 層。
-- 目前僅適用于本機的多餘儲存體。
+- 目前僅適用于本機冗余儲存體 (LRS) 。
 
 ### <a name="azure-storage-features-not-yet-supported"></a>尚不支援 Azure 儲存體功能
 

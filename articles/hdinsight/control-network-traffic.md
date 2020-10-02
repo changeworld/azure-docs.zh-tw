@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: a33bc5816ded7cdca75737b02add0a6ca8821700
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 929956d6f439df2a2e7cb8d1b950f5e68cdeab68
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89400189"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631710"
 ---
 # <a name="control-network-traffic-in-azure-hdinsight"></a>控制 Azure HDInsight 中的網路流量
 
@@ -58,7 +58,7 @@ HDInsight 為受控服務，需要不受限制地存取 HDInsight 健康情況�
 
 ## <a name="required-ports"></a>所需連接埠
 
-如果您打算使用**防火牆**並從從外部透過特定連接埠存取叢集，則可能需要在您案例所需的連接埠上允許流量。 根據預設，只要允許上一節所述的 Azure 管理流量透過連接埠 443 到達叢集，就不需要設定任何特殊的連接埠允許清單。
+如果您打算使用**防火牆**並從從外部透過特定連接埠存取叢集，則可能需要在您案例所需的連接埠上允許流量。 根據預設，只要上一節中所述的 Azure 管理流量允許在埠443上連線到叢集，就不需要特殊的埠篩選。
 
 如需特定服務的連接埠清單，請參閱 [HDInsight 上 Apache Hadoop 服務所使用的連接埠](hdinsight-hadoop-port-settings-for-services.md)文件。
 

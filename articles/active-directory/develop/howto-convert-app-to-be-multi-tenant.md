@@ -13,12 +13,12 @@ ms.date: 03/17/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, lenalepa, sureshja, kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: 7ff1e6e3b422f55da332e206aea184ca1b5902a6
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 3578562839069eb4b9c99b16d938efe48821fcec
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90705889"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631302"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>操作說明：讓任何 Azure Active Directory (AD) 使用者以多租用戶應用程式的模式登入
 
@@ -97,7 +97,7 @@ Web 應用程式和 web Api 會接收並驗證來自 Microsoft 身分識別平�
     https://sts.windows.net/{tenantid}/
 ```
 
-因此，多租用戶應用程式無法僅透過將中繼資料中的簽發者值與權杖中的 `issuer` 值做比對來驗證權杖。 多租用戶應用程式需要一種邏輯，以根據簽發者值的租用戶識別碼部分，來決定哪些簽發者值有效、哪些簽發者值無效。 
+因此，多租用戶應用程式無法僅透過將中繼資料中的簽發者值與權杖中的 `issuer` 值做比對來驗證權杖。 多租用戶應用程式需要一種邏輯，以根據簽發者值的租用戶識別碼部分，來決定哪些簽發者值有效、哪些簽發者值無效。
 
 例如，如果多租用戶應用程式只允許從已註冊服務的特定租用戶登入，它就必須檢查權杖中的簽發者值或 `tid` 宣告值，以確認該租用戶在其訂閱者清單中。 如果多租用戶應用程式只處理個人而不根據租用戶做出任何存取決策，則它可以完全忽略簽發者值。
 
@@ -116,7 +116,7 @@ Web 應用程式和 web Api 會接收並驗證來自 Microsoft 身分識別平�
 * 委派的權限可讓應用程式能夠充當登入的使用者來執行該使用者所能執行的一部分操作。 例如，您可以授與應用程式委派的權限來讀取登入之使用者的行事曆。
 * 僅限應用程式的權限會直接授與應用程式的識別身分。 例如，您可以將僅限應用程式的權限授與應用程式來讀取租用戶中的使用者清單，而且不論是誰登入此應用程式。
 
-有些權限可以由一般使用者同意，有些則需要租用戶系統管理員的同意。 
+有些權限可以由一般使用者同意，有些則需要租用戶系統管理員的同意。
 
 ### <a name="admin-consent"></a>系統管理員同意
 
@@ -179,10 +179,6 @@ Web 應用程式和 web Api 會接收並驗證來自 Microsoft 身分識別平�
 
 多租用戶應用程式也可以取得存取權杖來呼叫受 Azure AD 保護的 API。 大多數人在使用多租用戶應用程式和 Active Directory Authentication Library (ADAL) 時容易犯的一個錯誤是：一開始即使用 /common 為使用者要求權杖、接收回應，然後也使用 /common 來為該相同使用者要求後續的權杖。 由於從 Azure AD 傳回的回應是來自租用戶而非 /common，因此 ADAL 在快取權杖時會將它視為來自租用戶。 後續為了為使用者取得存取權杖而進行的 /common 呼叫會遺漏快取項目，因此系統會再次提示使用者登入。 為了避免遺漏快取，請確定後續為已登入之使用者進行的呼叫是對租用戶的端點發出。
 
-## <a name="next-steps"></a>後續步驟
-
-在本文中，您已了解如何建置可讓使用者從任何 Azure AD 租用戶登入的應用程式。 啟用單一登入 (您的應用程式和 Azure AD 之間的 SSO) 之後，您也可以更新應用程式，以存取 Microsoft 資源（例如 Microsoft 365）所公開的 Api。 這樣一來，您即可在應用程式中提供個人化的體驗；例如，向使用者顯示其設定檔圖片或下一個行事曆約會等內容資訊。 若要深入瞭解如何對 Azure AD 和 Microsoft 365 服務（例如 Exchange、SharePoint、OneDrive、OneNote 等等）進行 API 呼叫，請造訪 [MICROSOFT GRAPH API][MSFT-Graph-overview]。
-
 ## <a name="related-content"></a>相關內容
 
 * [多租使用者應用程式範例](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/master/2-WebApp-graph-user/2-3-Multi-Tenant/README.md)
@@ -191,6 +187,10 @@ Web 應用程式和 web Api 會接收並驗證來自 Microsoft 身分識別平�
 * [整合應用程式與 Azure Active Directory][AAD-Integrating-Apps]
 * [同意架構的總覽][AAD-Consent-Overview]
 * [Microsoft Graph API 權限範圍][MSFT-Graph-permission-scopes]
+
+## <a name="next-steps"></a>後續步驟
+
+在本文中，您已了解如何建置可讓使用者從任何 Azure AD 租用戶登入的應用程式。 啟用單一登入 (您的應用程式和 Azure AD 之間的 SSO) 之後，您也可以更新應用程式，以存取 Microsoft 資源（例如 Microsoft 365）所公開的 Api。 這樣一來，您即可在應用程式中提供個人化的體驗；例如，向使用者顯示其設定檔圖片或下一個行事曆約會等內容資訊。 若要深入瞭解如何對 Azure AD 和 Microsoft 365 服務（例如 Exchange、SharePoint、OneDrive、OneNote 等等）進行 API 呼叫，請造訪 [MICROSOFT GRAPH API][MSFT-Graph-overview]。
 
 <!--Reference style links IN USE -->
 [AAD-Access-Panel]:  https://myapps.microsoft.com
@@ -228,8 +228,7 @@ Web 應用程式和 web Api 會接收並驗證來自 Microsoft 身分識別平�
 [JWT]: https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32
 [O365-Perm-Ref]: /graph/permissions-reference
 [OAuth2-Access-Token-Scopes]: https://tools.ietf.org/html/rfc6749#section-3.3
-[OAuth2-AuthZ-Code-Grant-Flow]: /previous-versions/azure/dn645542(v=azure.100)
-[OAuth2-AuthZ-Grant-Types]: https://tools.ietf.org/html/rfc6749#section-1.3 
+[OAuth2-AuthZ-Grant-Types]: https://tools.ietf.org/html/rfc6749#section-1.3
 [OAuth2-Client-Types]: https://tools.ietf.org/html/rfc6749#section-2.1
 [OAuth2-Role-Def]: https://tools.ietf.org/html/rfc6749#page-6
 [OpenIDConnect]: https://openid.net/specs/openid-connect-core-1_0.html

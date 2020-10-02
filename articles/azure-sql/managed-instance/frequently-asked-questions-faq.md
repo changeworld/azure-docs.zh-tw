@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 09/21/2020
-ms.openlocfilehash: 74c603576016b72edddb4c0fe7aa970bd8626a4a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: fedbcf00512e2eb671656ca1c585df83560a8c02
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91325210"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91627613"
 ---
 # <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Azure SQL 受控執行個體常見問題集 (FAQ)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -277,7 +277,7 @@ SQL 受控執行個體負責設定管理埠的規則。 這是透過名為 [服�
 
 **如果沒有足夠的 IP 位址可執行實例更新作業，該怎麼辦？**
 
-如果您的受控實例布建所在的子網中沒有足夠的 [IP 位址](connectivity-architecture-overview.md#network-requirements) ，您就必須在其中建立新的子網和新的受控實例。 此外，我們也建議您建立新的子網，並配置更多 IP 位址，讓未來的更新作業可以避免類似的情況。 布建新的實例之後，您可以在舊的和新的實例之間手動備份和還原資料，或執行跨實例的 [時間點還原](point-in-time-restore.md?tabs=azure-powershell)。
+如果您的受控實例布建所在的子網中沒有足夠的 [IP 位址](connectivity-architecture-overview.md#network-requirements) ，您就必須在其中建立新的子網和新的受控實例。 此外也建議您建立配置更多 IP 位址的新子網路，以免日後的更新作業又碰到類似情況。 布建新的實例之後，您可以在舊的和新的實例之間手動備份和還原資料，或執行跨實例的 [時間點還原](point-in-time-restore.md?tabs=azure-powershell)。
 
 **需要空白的子網才能建立受控執行個體嗎？**
 
@@ -334,9 +334,12 @@ SQL 受控執行個體負責設定管理埠的規則。 這是透過名為 [服�
 
 **將受管理的實例連接到位於不同區域的建議方式為何？**
 
-Express Route 線路對等互連是最好的做法。 這不會與跨區域的虛擬網路對等互連混合，因為與內部負載平衡器相關的 [條件約束](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)不受支援。
+Express Route 線路對等互連是最好的做法。 支援全域虛擬網路對等互連，但有下列注意事項中所述的限制。  
 
-如果無法進行 Express Route 線路對等互連，則唯一的另一個選項是建立站對站 VPN 連線 ([Azure 入口網站](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal)、 [PowerShell](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell) [Azure CLI](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli)) 。
+> [!IMPORTANT]
+> [在9/22/2020 上，我們為新建立的虛擬叢集宣佈了全域虛擬網路對等互連](https://azure.microsoft.com/en-us/updates/global-virtual-network-peering-support-for-azure-sql-managed-instance-now-available/)。 這表示在公告日期之後于空白子網中建立的 SQL 受控實例，以及這些子網中建立的所有後續受控實例，都支援全域虛擬網路對等互連。 針對所有其他 SQL 受控實例對等互連支援，受限於相同區域中的網路，原因是 [全域虛擬網路對等互連的限制](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)。 另請參閱 [Azure 虛擬網路常見問題](https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) 文章中的相關章節，以取得詳細資料。 
+
+如果不可能有 Express Route 線路對等互連和全域虛擬網路對等互連，唯一的選項是建立站對站 VPN 連線 ([Azure 入口網站](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal)、 [PowerShell](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell) [Azure CLI](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli)) 。
 
 ## <a name="mitigate-data-exfiltration-risks"></a>緩和資料遭到外泄風險  
 

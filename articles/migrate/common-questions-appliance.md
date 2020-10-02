@@ -3,12 +3,12 @@ title: Azure Migrate 設備常見問題
 description: 取得 Azure Migrate 設備的常見問題解答。
 ms.topic: conceptual
 ms.date: 09/15/2020
-ms.openlocfilehash: 6c1e5099f208788919d27ba3d2b1de296f0d91a6
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 7839c2678152837cc9217e6afe13f7cca36ab4b0
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526556"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91630486"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Azure Migrate 設備：常見問題
 
@@ -42,7 +42,7 @@ Azure Migrate 設備是一種輕量設備，Azure Migrate：伺服器評估工�
 
 ## <a name="how-does-the-appliance-connect-to-azure"></a>設備如何連接至 Azure？
 
-設備可透過網際網路或使用 Azure ExpressRoute 進行連線。 請確定這些 [url](https://docs.microsoft.com/azure/migrate/migrate-appliance#url-access) 已列入允許清單，以供設備連接至 Azure。
+設備可透過網際網路或使用 Azure ExpressRoute 進行連線。 請確定已針對設備核准這些 [url](https://docs.microsoft.com/azure/migrate/migrate-appliance#url-access) ，以連接至 Azure。
 
 - 若要將 Azure ExpressRoute 用於 Azure Migrate 複寫流量，必須有 Microsoft 對等互連或現有的公用對等互連 (公用對等互連已針對新的 ER 建立) 淘汰。
 - 不支援透過 Azure ExpressRoute (（僅限已啟用) 私人對等互連）進行複寫。

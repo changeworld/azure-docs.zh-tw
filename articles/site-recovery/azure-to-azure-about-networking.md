@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 3/13/2020
 ms.author: harshacs
-ms.openlocfilehash: db4c3be7c79448e4cf0df39688959ae09a671dbd
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: f0a3ac0c81291a1231ef660481d8e31b38c0e212
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91361410"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631336"
 ---
 # <a name="about-networking-in-azure-vm-disaster-recovery"></a>關於 Azure VM 災難修復中的網路功能
 
@@ -21,7 +21,7 @@ ms.locfileid: "91361410"
 
 本文提供您使用 [Azure Site Recovery](site-recovery-overview.md)，將 Azure VM 從一個區域複寫和復原到另一個區域時的網路功能指引。
 
-## <a name="before-you-start"></a>在您開始使用 Intune 之前
+## <a name="before-you-start"></a>開始之前
 
 了解 Site Recovery 如何針對[這種情況](azure-to-azure-architecture.md)提供災害復原。
 
@@ -46,7 +46,7 @@ ms.locfileid: "91361410"
 如果您使用以 URL 為基礎的防火牆 Proxy 來控制輸出連線能力，請允許這些 Site Recovery URL：
 
 >[!NOTE]
-> 不應執行以 IP 位址為基礎的允許清單來控制輸出連線能力。
+> 不應執行以 IP 位址為基礎的篩選，以控制輸出連線能力。
 
 **URL** | **詳細資料**
 --- | ---

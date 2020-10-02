@@ -6,17 +6,20 @@ ms.author: andrela
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: how-to
-ms.date: 6/11/2020
+ms.date: 10/1/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 11af10b6ce42a7ed3633a814396da3ac6d836aa0
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: ce9fc7a7af18a163207f8fc497149d885423607b
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87493800"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91626440"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-mariadb-using-the-azure-cli"></a>使用 Azure CLI 在適用於 MariaDB 的 Azure 資料庫中設定伺服器參數
 您可以使用 Azure CLI (Azure 命令列公用程式)，來列出、顯示和更新適用於 MariaDB 的 Azure 資料庫伺服器的設定參數。 有一部分的引擎設定會在伺服器層級公開而且可供修改。
+
+>[!Note]
+> 伺服器參數可以在伺服器層級全域更新、使用 [Azure CLI](./howto-configure-server-parameters-cli.md)、 [PowerShell](./howto-configure-server-parameters-using-powershell.md)或 [Azure 入口網站](./howto-server-parameters.md)。
 
 ## <a name="prerequisites"></a>必要條件
 若要逐步執行本作法指南，您需要︰
@@ -56,10 +59,10 @@ az mariadb server configuration set --name slow_query_log --resource-group myres
 
 此程式碼會將 **slow\_query\_log** 設定重設為預設值 **OFF**。 
 
-## <a name="setting-parameters-not-listed"></a>設定未列出的參數
-如果 Azure 入口網站中未列出您要更新的伺服器參數，您可以選擇性地使用，在連接層級設定參數 `init_connect` 。 這會為每個連接到伺服器的用戶端設定伺服器參數。 
+## <a name="setting-parameters-not-listed"></a>未列出設定參數
+如果您要更新的伺服器參數未列在 Azure 入口網站中，您可以選擇性地使用在連接層級設定參數 `init_connect` 。 這會為每個連接到伺服器的用戶端設定伺服器參數。 
 
-更新資源群組**myresourcegroup**下 [伺服器**mydemoserver.mariadb.database.azure.com** **] 的 init \_ connect**伺服器設定參數，以設定 [字元集] 之類的值。
+更新 [資源群組**myresourcegroup** ] 下 [伺服器**mydemoserver.mariadb.database.azure.com** ] 的 [ **init \_ connect**伺服器設定] 參數，以設定值，例如 [字元集]。
 ```azurecli-interactive
 az mariadb server configuration set --name init_connect --resource-group myresourcegroup --server mydemoserver --value "SET character_set_client=utf8;SET character_set_database=utf8mb4;SET character_set_connection=latin1;SET character_set_results=latin1;"
 ```
