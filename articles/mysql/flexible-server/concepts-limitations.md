@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 9/21/2020
-ms.openlocfilehash: 64f4b6e87f038b265fbd2c3e13f3779fb4c24f74
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 10/1/2020
+ms.openlocfilehash: 6fff7f22e7d265eb9b15bcec8604eeab692ac1c0
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934395"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91650284"
 ---
 # <a name="limitations-in-azure-database-for-mysql---flexible-server-preview"></a>適用於 MySQL 的 Azure 資料庫彈性的伺服器 (預覽) 的限制
 
@@ -26,6 +26,8 @@ ms.locfileid: "90934395"
 > 如果您要尋找伺服器參數的最小值/最大值（例如 `max_connections` 和 `innodb_buffer_pool_size` ），此資訊已移至伺服器參數概念 <!-- **[server parameters](./concepts-server-parameters.md)** --> 一文。
 
 適用於 MySQL 的 Azure 資料庫支援調整伺服器參數的值。 某些參數的最小值和最大值 (例如。 `max_connections`、 `join_buffer_size` `query_cache_size`) 是由伺服器的計算層和計算大小所決定。 請參閱伺服器參數概念 <!-- [server parameters](./concepts-server-parameters.md)--> 以取得這些限制的詳細資訊。
+
+服務不支援密碼外掛程式，例如 "validate_password" 和 "caching_sha2_password"。
 
 ## <a name="storage-engines"></a>儲存引擎
 
@@ -65,7 +67,7 @@ MySQL 服務不允許直接存取基礎檔案系統。 不支援某些資料操�
 - 此設定只能在伺服器建立期間設定。
 - 在高載計算層級中不支援。
 
-### <a name="networking"></a>網路
+### <a name="networking"></a>網路功能
 - 建立伺服器之後，就無法變更連接方法。 如果伺服器是利用 *私人存取 (VNet 整合) *所建立，則在建立之後，就無法將它變更為 *公用存取 (允許的 IP 位址) * ，反之亦然
 - 預設會啟用 TLS/SSL，且無法停用。
 - 伺服器支援的最低 TLS 版本為 TLS 1.2。 若要深入瞭解，請參閱 [使用 TLS/SSL 連線](./how-to-connect-tls-ssl.md) 。
@@ -87,7 +89,7 @@ MySQL 服務不允許直接存取基礎檔案系統。 不支援某些資料操�
 - 使用時間點還原時，會建立新的伺服器，其計算和儲存體設定與它所依據的來源伺服器相同。 您可以在建立伺服器之後調整新還原的伺服器計算。
 - 不支援還原已刪除的伺服器。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 瞭解 [計算和儲存選項的可用功能](concepts-compute-storage.md)
 - 深入瞭解 [支援的 MySQL 版本](concepts-supported-versions.md)

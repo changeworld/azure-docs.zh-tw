@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: v-erkel
-ms.openlocfilehash: e29d031bc3461c4adab87b1d784ef19c89c7c12d
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: 7f1d8d34d6351fc344fdb101ac8e9a96678df9d5
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91612996"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91651423"
 ---
 # <a name="mount-the-azure-hpc-cache"></a>掛接 Azure HPC Cache
 
@@ -79,7 +79,7 @@ Azure 入口網站中的 [ [掛接指示](#use-the-mount-instructions-utility) ]
 
 1. 選擇要用於用戶端的 **虛擬命名空間路徑** 。 這些路徑會連結至後端儲存體系統上的匯出。
 
-   ![[命名空間路徑] 欄位的螢幕擷取畫面，其中開啟選取器](media/mount-select-target.png)
+   ![顯示 [虛擬命名空間路徑] 欄位的螢幕擷取畫面，其中已開啟選取器。](media/mount-select-target.png)
 
    您可以在 **命名空間** 入口網站頁面上，查看及變更虛擬命名空間路徑。 請參閱 [設定匯總的命名空間](add-namespace-paths.md) ，以瞭解做法。
 
@@ -115,7 +115,7 @@ root@test-client:/tmp#
 
 > 掛接-o hard、proto = tcp、mountproto = tcp、retry = 30 $ {CACHE_IP_ADDRESS}:/$ {NAMESPACE_PATH} $ {LOCAL_FILESYSTEM_MOUNT_POINT}
 
-| 建議的掛接命令設定 | 說明 |
+| 建議的掛接命令設定 | 描述 |
 --- | ---
 ``hard`` | 軟掛接至 Azure HPC Cache 會與應用程式失敗和可能的資料遺失相關聯。
 ``proto=tcp`` | 此選項支援適當處理 NFS 網路錯誤的功能。

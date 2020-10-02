@@ -9,12 +9,12 @@ ms.date: 07/22/2020
 ms.author: euang
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: b815dd9218ac395786e7ab7ed3a02ba440fe2807
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ad3231652056244fdfc814251e6caad025db77e5
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91260167"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91649893"
 ---
 # <a name="manage-libraries-for-apache-spark-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中管理 Apache Spark 的程式庫
 
@@ -85,7 +85,7 @@ alabaster==0.7.10
 
  4. 使用檔案選取器上傳環境設定檔。
 
-![新增 Python 程式庫](./media/apache-spark-azure-portal-add-libraries/apache-spark-add-library-azure.png "新增 Python 程式庫")
+![醒目顯示 [上傳環境設定檔] 按鈕的螢幕擷取畫面。](./media/apache-spark-azure-portal-add-libraries/apache-spark-add-library-azure.png "新增 Python 程式庫")
 
 ### <a name="verify-installed-libraries"></a>確認已安裝的程式庫
 

@@ -7,12 +7,12 @@ ms.topic: article
 author: emuench
 ms.author: navits
 ms.date: 07/17/2020
-ms.openlocfilehash: e512c233ccfd793b87f203f837b11e97966d8102
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 10137e59e0ea06fa785fccc215c867b6d8c0cb76
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90016237"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91651151"
 ---
 # <a name="appsource-dynamics-365-finance-and-operations-functional-validation"></a>AppSource Dynamics 365 財務和作業功能驗證
 
@@ -58,7 +58,7 @@ Microsoft 認證小組會審核影片和檔案，然後核准解決方案或您�
 
     | 欄位 | 映像 <img src="" width="400px">|
     | --- | --- |
-    | 套件概觀 | [![封裝總覽畫面](media/dynamics-365-finance-operations/package-overview-45.png)](media/dynamics-365-finance-operations/package-overview.png#lightbox) |
+    | 套件概觀 | [![顯示 [套件總覽] 視窗的螢幕擷取畫面。](media/dynamics-365-finance-operations/package-overview-45.png)](media/dynamics-365-finance-operations/package-overview.png#lightbox) |
     | <ul><li>解決方案核准者</li></ul> | [![封裝總覽畫面](media/dynamics-365-finance-operations/solution-approvers-45.png)](media/dynamics-365-finance-operations/solution-approvers.png#lightbox) |
     | 封裝內容<ul><li>型號</li><li>軟體可部署套件</li></ul> | [![封裝內容畫面1](media/dynamics-365-finance-operations/package-contents-1-45.png)](media/dynamics-365-finance-operations/package-contents-1.png#lightbox) |
     | <ul><li>GER 設定</li><li>資料庫備份</li></ul><br>**GER**設定區段中不需要成品。 | [![封裝內容畫面二](media/dynamics-365-finance-operations/package-contents-2-45.png)](media/dynamics-365-finance-operations/package-contents-2.png#lightbox) |
@@ -74,6 +74,6 @@ Microsoft 認證小組會審核影片和檔案，然後核准解決方案或您�
 
     [![顯示專案程式庫視窗](media/dynamics-365-finance-operations/supplemental-content.png)](media/dynamics-365-finance-operations/supplemental-content.png#lightbox)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 若要瞭解如何建立供應專案，請參閱： [建立 Dynamics 365 For Operations 供應](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-operations-offer)專案。

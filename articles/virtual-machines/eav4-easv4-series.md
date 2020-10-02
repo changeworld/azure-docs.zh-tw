@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 775b296185f9f0f0e967ada2688e24158f36360e
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: f95ffb662d830c432d3286eca8c935e2737f8043
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88648355"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91649536"
 ---
 # <a name="eav4-and-easv4-series"></a>Eav4 和 Easv4 系列
 
@@ -20,15 +20,13 @@ Eav4 系列和 Easv4 系列在多執行緒設定中使用 AMD 的採用 2.35 Ghz
 
 ## <a name="eav4-series"></a>Eav4 系列
 
-ACU： 230-260
-
-進階儲存體：不支援
-
-進階儲存體快取：不支援
-
-即時移轉：支援
-
-記憶體保留更新：支援
+[ACU](acu.md)： 230-260<br>
+[進階儲存體](premium-storage-performance.md)：不支援<br>
+[進階儲存體](premium-storage-performance.md)快取：不支援<br>
+[即時移轉](maintenance-and-updates.md)：支援<br>
+[記憶體保留更新](maintenance-and-updates.md)：支援<br>
+[VM 世代支援](generation-2.md)：第1代<br>
+<br>
 
 Eav4 系列大小以採用 2.35 Ghz AMD EPYC<sup>TM</sup> 7452 處理器為基礎，可達到最大的 3.35 ghz 頻率，並使用 premium SSD。 Eav4 系列大小適合記憶體密集型企業應用程式。 資料磁碟儲存體與虛擬機器分開計費。 若要使用 premium SSD，請使用 Easv4 系列大小。 Easv4 大小的定價和計費方式與 Eav3 系列相同。
 
@@ -46,15 +44,13 @@ Eav4 系列大小以採用 2.35 Ghz AMD EPYC<sup>TM</sup> 7452 處理器為基�
 
 ## <a name="easv4-series"></a>Easv4 系列
 
-ACU： 230-260
-
-進階儲存體：支援
-
-進階儲存體快取：支援
-
-即時移轉：支援
-
-記憶體保留更新：支援
+[ACU](acu.md)： 230-260<br>
+[進階儲存體](premium-storage-performance.md)：支援<br>
+[進階儲存體](premium-storage-performance.md)快取：支援<br>
+[即時移轉](maintenance-and-updates.md)：支援<br>
+[記憶體保留更新](maintenance-and-updates.md)：支援<br>
+[VM 世代支援](generation-2.md)：第1代<br>
+<br>
 
 Easv4 系列大小以採用 2.35 Ghz AMD EPYC<sup>TM</sup> 7452 處理器為基礎，可達到最大的 3.35 ghz 頻率，並使用 premium SSD。 Easv4 系列大小適合記憶體密集型企業應用程式。
 

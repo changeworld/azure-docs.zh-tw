@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/01/2019
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 37f8903adbc676ae2e48e2ef5841d8f5b122842c
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 468c7a0113a4603f4f47bb529145261ff50d96d4
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89566240"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91650539"
 ---
 # <a name="configure-route-filters-for-microsoft-peering-azure-portal"></a>針對 Microsoft 對等互連設定路由篩選：Azure 入口網站
 > [!div class="op_single_selector"]
@@ -88,33 +88,33 @@ Microsoft 365 的服務（例如 Exchange Online、SharePoint Online 和商務�
 ### <a name="1-create-a-route-filter"></a>1. 建立路由篩選
 您可以選取建立新資源的選項來建立路由篩選。 按一下 [**建立資源**  >  **網路**]  >  **RouteFilter**，如下圖所示：
 
-![建立路由篩選](./media/how-to-routefilter-portal/CreateRouteFilter1.png)
+![顯示 [路由篩選] 頁面的螢幕擷取畫面。](./media/how-to-routefilter-portal/CreateRouteFilter1.png)
 
 您必須在資源群組中放置路由篩選。 
 
-![建立路由篩選](./media/how-to-routefilter-portal/CreateRouteFilter.png)
+![顯示 [建立路由篩選] 頁面並輸入範例值的螢幕擷取畫面。](./media/how-to-routefilter-portal/CreateRouteFilter.png)
 
 ### <a name="2-create-a-filter-rule"></a>2. 建立篩選規則
 
 您可以為路由篩選選取管理規則索引標籤，以新增及更新規則。
 
-![建立路由篩選](./media/how-to-routefilter-portal/ManageRouteFilter.png)
+![顯示 [總覽] 頁面的螢幕擷取畫面，其中反白顯示 [管理規則] 動作。](./media/how-to-routefilter-portal/ManageRouteFilter.png)
 
 
 您可以從下拉式清單選取您想要連接的服務，並在完成時儲存規則。
 
-![建立路由篩選](./media/how-to-routefilter-portal/AddRouteFilterRule.png)
+![顯示 [管理規則] 視窗的螢幕擷取畫面，其中已在 [允許的服務群體] 下拉式清單中選取服務。](./media/how-to-routefilter-portal/AddRouteFilterRule.png)
 
 
 ## <a name="step-3-attach-the-route-filter-to-an-expressroute-circuit"></a><a name="attach"></a>步驟 3：將路由篩選連接到 ExpressRoute 線路
 
 您可以選取 [新增線路] 按鈕，然後從下拉式清單中選取 ExpressRoute 線路，以將路由篩選附加至線路。
 
-![建立路由篩選](./media/how-to-routefilter-portal/AddCktToRouteFilter.png)
+![螢幕擷取畫面，顯示已選取 [新增線路] 動作的 [總覽] 頁面。](./media/how-to-routefilter-portal/AddCktToRouteFilter.png)
 
 如果連線提供者為您的 ExpressRoute 線路設定對等互連，請先重新整理 ExpressRoute 線路刀鋒視窗的線路，再選取 [新增線路] 按鈕。
 
-![建立路由篩選](./media/how-to-routefilter-portal/RefreshExpressRouteCircuit.png)
+![顯示 [總覽] 頁面的螢幕擷取畫面，其中已選取 [重新整理] 動作。](./media/how-to-routefilter-portal/RefreshExpressRouteCircuit.png)
 
 ## <a name="common-tasks"></a><a name="tasks"></a>常見工作
 
@@ -122,7 +122,7 @@ Microsoft 365 的服務（例如 Exchange Online、SharePoint Online 和商務�
 
 當您在入口網站中開啟資源時，可以檢視路由篩選的屬性。
 
-![建立路由篩選](./media/how-to-routefilter-portal/ViewRouteFilter.png)
+![顯示 [總覽] 頁面的螢幕擷取畫面。](./media/how-to-routefilter-portal/ViewRouteFilter.png)
 
 
 ### <a name="to-update-the-properties-of-a-route-filter"></a><a name="updateproperties"></a>若要更新路由篩選的屬性
@@ -130,16 +130,16 @@ Microsoft 365 的服務（例如 Exchange Online、SharePoint Online 和商務�
 可以藉由選取 [管理規則] 按鈕，更新附加至線路之 BGP 社群值的清單。
 
 
-![建立路由篩選](./media/how-to-routefilter-portal/ManageRouteFilter.png)
+![顯示 [總覽] 頁面的螢幕擷取畫面，其中反白顯示 [管理規則] 動作。](./media/how-to-routefilter-portal/ManageRouteFilter.png)
 
-![建立路由篩選](./media/how-to-routefilter-portal/AddRouteFilterRule.png) 
+![顯示已選取服務之 [管理規則] 視窗的螢幕擷取畫面。](./media/how-to-routefilter-portal/AddRouteFilterRule.png) 
 
 
 ### <a name="to-detach-a-route-filter-from-an-expressroute-circuit"></a><a name="detach"></a>若要從 ExpressRoute 線路取消連結路由篩選
 
 若要從路由篩選卸離電路，請在電路上按一下滑鼠右鍵，然後按一下 [取消關聯]。
 
-![建立路由篩選](./media/how-to-routefilter-portal/DetachRouteFilter.png) 
+![顯示 [總覽] 頁面的螢幕擷取畫面，其中反白顯示 [中斷關聯] 動作。](./media/how-to-routefilter-portal/DetachRouteFilter.png) 
 
 
 ### <a name="to-delete-a-route-filter"></a><a name="delete"></a>若要刪除路由篩選

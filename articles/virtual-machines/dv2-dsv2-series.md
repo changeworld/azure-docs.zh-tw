@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: ede5b84620217e472d930d86eaebfaad2397ca6b
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 785e72a47d68bf368e160b1f3bf2a6d762d1f100
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88648423"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91649689"
 ---
 # <a name="dv2-and-dsv2-series"></a>Dv2 和 DSv2 系列
 
@@ -22,15 +22,13 @@ Dv2 和 Dsv2 系列（原始 D 系列的後續操作）提供功能更強大的 
 
 Dv2 系列大小是在 Intel®) ®白金級 8272CL (串聯 Lake、Intel®® 8171M 2.1 GHz (Skylake) 或 Intel®® E5-2673 v4 2.3 GHz (Broadwell) 或 Intel®® E5-2673 v3 2.4 GHz (Haswell) 處理器搭配 Intel Turbo 加速技術2.0。
 
-ACU：210 - 250
-
-進階儲存體：不支援
-
-進階儲存體快取：不支援
-
-即時移轉：支援
-
-記憶體保留更新：支援
+[ACU](acu.md)：210-250<br>
+[進階儲存體](premium-storage-performance.md)：不支援<br>
+[進階儲存體](premium-storage-performance.md)快取：不支援<br>
+[即時移轉](maintenance-and-updates.md)：支援<br>
+[記憶體保留更新](maintenance-and-updates.md)：支援<br>
+[VM 世代支援](generation-2.md)：第1代<br>
+<br>
 
 | 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大暫存儲存體輸送量： IOPS/讀取 MBps/寫入 MBps | 最大資料磁碟 | 輸送量：IOPS | 最大 NIC | 預期的網路頻寬 (Mbps)  |
 |---|---|---|---|---|---|---|---|---|
@@ -44,15 +42,13 @@ ACU：210 - 250
 
 DSv2 系列大小是在 Intel®) ®白金級 8272CL (串聯 Lake、Intel®® 8171M 2.1 GHz (Skylake) 或 Intel®最高® E5-2673 v4 2.3 GHz (Broadwell) 或 Intel®® E5-2673 v3 2.4 GHz (Haswell) 處理器搭配 Intel Turbo 加速技術2.0 和使用 premium 儲存體。
 
-ACU：210 - 250
-
-進階儲存體：支援
-
-進階儲存體快取：支援
-
-即時移轉：支援
-
-記憶體保留更新：支援
+[ACU](acu.md)：210-250<br>
+[進階儲存體](premium-storage-performance.md)：支援<br>
+[進階儲存體](premium-storage-performance.md)快取：支援<br>
+[即時移轉](maintenance-and-updates.md)：支援<br>
+[記憶體保留更新](maintenance-and-updates.md)：支援<br>
+[VM 世代支援](generation-2.md)：第1代和第2代<br>
+<br>
 
 | 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大資料磁碟 | 最大快取和暫存儲存體輸送量： IOPS/MBps (GiB 中的快取大小)  | 最大取消快取的磁碟輸送量：IOPS/MBps | 最大 NIC|預期的網路頻寬 (Mbps)  |
 |---|---|---|---|---|---|---|---|---|

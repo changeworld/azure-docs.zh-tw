@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: lahugh
-ms.openlocfilehash: 2fe09d785d282b0f3954e2285b15458c867a9401
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 698b95dc5b38e1d365a80878a5057dee357d81af
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90906179"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91649570"
 ---
 # <a name="ev3-and-esv3-series"></a>Ev3 和 Esv3 系列
 
@@ -26,15 +26,13 @@ Ev3 系列實例是在 Intel®) ®白金級 8272CL (串聯 Lake、Intel®® 8171
 
 Ev3 系列 VM 的功能 Intel®超執行緒技術。
 
-ACU：160 - 190
-
-進階儲存體：不支援
-
-進階儲存體快取：不支援
-
-即時移轉：支援
-
-記憶體保留更新：支援
+[ACU](acu.md)： 160-190<br>
+[進階儲存體](premium-storage-performance.md)：不支援<br>
+[進階儲存體](premium-storage-performance.md)快取：不支援<br>
+[即時移轉](maintenance-and-updates.md)：支援<br>
+[記憶體保留更新](maintenance-and-updates.md)：支援<br>
+[VM 世代支援](generation-2.md)：第1代<br>
+<br>
 
 | 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大資料磁碟 | 最大暫存儲存體輸送量：IOPS / 讀取 MBps / 寫入 MBps | 最大 NIC / 網路頻寬 |
 |---|---|---|---|---|---|---|
@@ -58,15 +56,13 @@ Esv3 系列實例是在 Intel®) ®白金級 8272CL (串聯 Lake、Intel®® 817
 
 Esv3 系列 VM 的功能 Intel®超執行緒技術。
 
-ACU：160-190
-
-進階儲存體：支援
-
-進階儲存體快取：支援
-
-即時移轉：支援
-
-記憶體保留更新：支援
+[ACU](acu.md)：160-190<br>
+[進階儲存體](premium-storage-performance.md)：支援<br>
+[進階儲存體](premium-storage-performance.md)快取：支援<br>
+[即時移轉](maintenance-and-updates.md)：支援<br>
+[記憶體保留更新](maintenance-and-updates.md)：支援<br>
+[VM 世代支援](generation-2.md)：第1代和第2代<br>
+<br>
 
 | 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大資料磁碟 | 最大快取和暫存儲存體輸送量： IOPS/MBps (GiB 中的快取大小)  | 高載快取和暫存儲存體輸送量： IOPS/MBps<sup>3</sup> | 最大取消快取的磁碟輸送量：IOPS/MBps |  高載未快取的磁片輸送量： IOPS/MBps<sup>3</sup>| 最大 Nic/預期的網路頻寬 (Mbps)  |
 |---|---|---|---|---|---|---|---|---|---|

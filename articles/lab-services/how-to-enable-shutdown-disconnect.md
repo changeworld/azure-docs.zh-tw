@@ -2,13 +2,13 @@
 title: 在 Azure 實驗室服務中設定實驗室的 Vm 自動關機
 description: 了解如何在遠端桌面連線已中斷時，啟用或停用 VM 的自動關機。
 ms.topic: article
-ms.date: 08/17/2020
-ms.openlocfilehash: 0df3fdcaea99c00461caac37a3b655d152a0e527
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.date: 10/01/2020
+ms.openlocfilehash: 67b51941207fdd4913df9a92362959bbd468d336
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798477"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91649876"
 ---
 # <a name="configure-automatic-shutdown-of-vms-for-a-lab"></a>設定實驗室的 Vm 自動關機
 
@@ -16,8 +16,8 @@ ms.locfileid: "88798477"
 
 您可以啟用數個自動關機成本控制功能，以在虛擬機器未主動使用時主動預防額外的成本。 下列三個自動關機和中斷連線功能的組合，會攔截使用者不小心讓虛擬機器執行的大部分情況：
  
-* 自動中斷使用者與 OS 認為閒置 (Windows) 的虛擬機器連線。
-* 當使用者中斷 (Windows & Linux) 的連線時，自動關閉虛擬機器。
+* 自動中斷使用者與作業系統認為閒置的虛擬機器的連線。
+* 當使用者中斷連線時，自動關閉虛擬機器。
 * 自動關閉已啟動但使用者未連接的虛擬機器。
 
 在 [ [使用自動關機設定的最大化成本控制](cost-management-guide.md#automatic-shutdown-settings-for-cost-control) ] 區段中，查看自動關機功能的更多詳細資料。
@@ -37,8 +37,7 @@ ms.locfileid: "88798477"
 請務必在 [ [使用自動關機設定的最大化成本控制](cost-management-guide.md#automatic-shutdown-settings-for-cost-control) ] 區段中，查看自動關機的詳細資料。
 
 > [!WARNING]
-> 如果您在中斷 RDP 工作階段與 VM 的連線之前，就先關閉 VM 上的 Windows 作業系統 (OS)，自動關機功能將無法正常運作。  
-
+> 如果您在將 RDP 會話中斷連線至 VM 之前，關閉了 Linux 或 Windows 作業系統 (OS) VM，自動關機功能將無法正常運作。  
 ## <a name="next-steps"></a>後續步驟
 
 [教室實驗室的儀表板](use-dashboard.md)

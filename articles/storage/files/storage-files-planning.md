@@ -8,12 +8,12 @@ ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: bf982b313c99034065aad5f246a69caf665a2657
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 85264eae325d9ed7049daac47a124cf1efb806e0
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90563424"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91649944"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>規劃 Azure 檔案服務部署
 [Azure 檔案儲存體](storage-files-introduction.md) 可以用兩種主要方式進行部署：直接裝載無伺服器的 azure 檔案共用，或使用 Azure 檔案同步快取內部部署的 azure 檔案共用。您所選擇的部署選項會變更您規劃部署時需要考慮的事項。 
@@ -98,7 +98,7 @@ Azure 檔案儲存體具有多層式的方法，可確保您的資料已備份�
 
 如需虛刪除的詳細資訊，請參閱 [防止意外刪除資料](https://docs.microsoft.com/azure/storage/files/storage-files-prevent-file-share-deletion)。
 
-### <a name="backup"></a>Backup
+### <a name="backup"></a>備份
 您可以透過 [共用快照](https://docs.microsoft.com/azure/storage/files/storage-snapshots-files)集來備份 Azure 檔案共用，這是共用的唯讀、時間點複本。 快照集是累加的，這表示它們只包含自從上一個快照集以來已變更的資料量。 每個檔案共用最多可以有200個快照集，並保留最多10年的快照。 您可以透過 PowerShell 或命令列介面（ (CLI) ）手動取得這些 Azure 入口網站快照集，也可以使用 [Azure 備份](https://docs.microsoft.com/azure/backup/azure-file-share-backup-overview?toc=/azure/storage/files/toc.json)。 快照集會儲存在您的檔案共用中，這表示如果您刪除檔案共用，您的快照集也會一併刪除。 若要保護您的快照集備份不會遭到意外刪除，請確定已為您的共用啟用虛刪除。
 
 [適用于 Azure 檔案共用的 Azure 備份](https://docs.microsoft.com/azure/backup/azure-file-share-backup-overview?toc=/azure/storage/files/toc.json) 會處理快照集的排程和保留期。 它的祖父-父親 (GFS) 功能意味著您可以每日、每週、每月和每年快照集，每個快照集都有自己的相異保留期限。 Azure 備份也會協調啟用虛刪除，並在其內的任何檔案共用設定為備份時，立即在儲存體帳戶上進行刪除鎖定。 最後，Azure 備份提供某些重要的監視和警示功能，可讓客戶取得其備份資產的匯總。
@@ -117,7 +117,7 @@ Azure 檔案儲存體具有多層式的方法，可確保您的資料已備份�
 
 一般而言，高階檔案共用和標準檔案共用之間的 Azure 檔案儲存體功能和互通性， (包括交易優化、經常性存取和非經常性存取檔案) 共用，但有幾個重要的差異：
 - **計費模型**
-    - Premium 檔案共用會使用已布建的計費模型來計費，這表示您需支付所布建的儲存體數量，而不是您實際要求的儲存體數量。 
+    - Premium 檔案共用會使用已布建的計費模型來計費，這表示您可以支付所布建的儲存體數量，而非您所使用的儲存體數量。 待用交易和中繼資料不會有額外的成本。
     - 標準檔案共用會使用隨用隨付模型計費，其中包括您實際耗用的儲存體的基本成本，然後根據您使用共用的方式產生額外的交易成本。 使用標準檔案共用時，如果您使用 (讀取/寫入/掛接) Azure 檔案共用，則您的帳單將會增加。
 - **冗余選項**
     - Premium 檔案共用僅適用于本機冗余 (LRS) 和區域多餘的 (ZRS) 儲存體。
@@ -126,7 +126,7 @@ Azure 檔案儲存體具有多層式的方法，可確保您的資料已備份�
     - 您可以布建高達 100 TiB 的 Premium 檔案共用，而不需要任何額外的工作。
     - 根據預設，標準檔案共用最多可以跨越5個 TiB，不過您可以選擇 [ *大型檔案共用* 儲存體帳戶] 功能旗標，將共用限制增加至 100 TiB。 標準檔案共用最多隻會跨越最多 100 TiB，以供本機冗余或區域多餘的儲存體帳戶。 如需增加檔案共用大小的詳細資訊，請參閱 [啟用和建立大型](https://docs.microsoft.com/azure/storage/files/storage-files-how-to-create-large-file-share)檔案共用。
 - **區域可用性**
-    - 在每個區域中都無法使用 Premium 檔案共用，而且區域有較小的區域支援。 若要瞭解您的區域中目前是否有 premium 檔案共用，請參閱 Azure 的 [依區域提供的產品](https://azure.microsoft.com/global-infrastructure/services/?products=storage) 頁面。 若要瞭解哪些區域支援 ZRS，請參閱 [依區域的 Azure 可用性區域支援](../../availability-zones/az-region.md)。 若要協助我們設定新區域和進階層功能的優先順序，請填寫這 [份問卷](https://aka.ms/pfsfeedback)。
+    - Premium 檔案共用可在大部分的 Azure 區域中使用，但有幾個區域除外。 區域的子集提供區域冗余支援。 若要瞭解您的區域中目前是否有 premium 檔案共用，請參閱 Azure 的 [依區域提供的產品](https://azure.microsoft.com/global-infrastructure/services/?products=storage) 頁面。 若要瞭解哪些區域支援 ZRS，請參閱 [區域-多餘的儲存體](../common/storage-redundancy.md#zone-redundant-storage)。 若要協助我們設定新區域和進階層功能的優先順序，請填寫這 [份問卷](https://aka.ms/pfsfeedback)。
     - 每個 Azure 區域都可使用標準檔案共用。
 - Azure Kubernetes Service (AKS) 支援1.13 版和更新版本中的 premium 檔案共用。
 

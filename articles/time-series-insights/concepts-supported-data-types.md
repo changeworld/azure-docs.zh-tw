@@ -8,13 +8,13 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 08/31/2020
-ms.openlocfilehash: 9dbc66e3331325e9b79d0434fb452d01d69d550a
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.date: 10/01/2020
+ms.openlocfilehash: 11199e5a283459d7d97f649322f9d41fc7b3e11d
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89482584"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91650789"
 ---
 # <a name="supported-data-types"></a>支援的資料類型
 
@@ -51,7 +51,7 @@ Azure 時間序列深入解析 Explorer 提供了一種方式，可自動合併�
 
 您可以將物件和陣列等複雜類型傳送為事件裝載的一部分。 嵌套物件將會壓平合併，而陣列將儲存為 `dynamic` 或壓平合併，以根據您的環境設定和 JSON 圖形來產生多個事件。 深入瞭解 JSON 簡維 [和轉義規則](./concepts-json-flattening-escaping-rules.md)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 閱讀 JSON 簡維 [和轉義規則](./concepts-json-flattening-escaping-rules.md) ，以瞭解事件的儲存方式。
 

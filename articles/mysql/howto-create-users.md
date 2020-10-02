@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
-ms.date: 4/2/2020
-ms.openlocfilehash: 9b79a0f21135e91ab72a4c8a9e604b84b67df0a9
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 10/1/2020
+ms.openlocfilehash: ed653ffb6fc24a75170d51d345c0c64724ff90f1
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90902826"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91651016"
 ---
 # <a name="create-databases-and-users-in-azure-database-for-mysql-server"></a>在適用於 MySQL 的 Azure 資料庫伺服器中建立資料庫和使用者
 
@@ -35,7 +35,8 @@ ms.locfileid: "90902826"
 建立「適用於 MySQL 的 Azure 資料庫」伺服器之後，您可以使用第一個伺服器管理員使用者帳戶，建立其他使用者並授與系統管理員存取權。 此外，伺服器管理員帳戶可以用來建立較低權限的使用者，以存取個別資料庫結構描述。
 
 > [!NOTE]
-> 不支援超級許可權和 DBA 角色。 請參閱限制文章中的 [許可權](concepts-limits.md#privilege-support) ，以瞭解服務中不支援的功能。
+> 不支援超級許可權和 DBA 角色。 請參閱限制文章中的 [許可權](concepts-limits.md#privileges--data-manipulation-support) ，以瞭解服務中不支援的功能。<br><br>
+> 服務不支援密碼外掛程式，例如 "validate_password" 和 "caching_sha2_password"。
 
 ## <a name="how-to-create-database-with-non-admin-user-in-azure-database-for-mysql"></a>如何在適用於 MySQL 的 Azure 資料庫中使用非系統管理使用者建立資料庫
 
@@ -74,7 +75,7 @@ ms.locfileid: "90902826"
    ```azurecli-interactive
    mysql --host mydemoserver.mysql.database.azure.com --database testdb --user db_user@mydemoserver -p
    ```
-# <a name="flexible-server"></a>[彈性的伺服器](#tab/flexible-server)
+# <a name="flexible-server"></a>[彈性伺服器](#tab/flexible-server)
 
    ```azurecli-interactive
    mysql --host mydemoserver.mysql.database.azure.com --database testdb --user db_user -p
@@ -107,7 +108,11 @@ ms.locfileid: "90902826"
    SHOW GRANTS FOR 'new_master_user'@'%';
    ```
 
-## <a name="next-steps"></a>下一步
+## <a name="azure_superuser"></a>azure_superuser
+
+所有適用於 MySQL 的 Azure 資料庫伺服器都會以名為 "azure_superuser" 的使用者建立。 這是 Microsoft 所建立的系統帳戶，用來管理伺服器以進行監視、備份和其他定期維護。 待命工程師也可以使用此帳戶在具有憑證驗證的事件期間存取伺服器，而且必須使用即時 (JIT) 處理常式來要求存取權。
+
+## <a name="next-steps"></a>後續步驟
 
 針對新使用者電腦的 IP 位址開啟防火牆，讓使用者能夠連線：
 - [在單一伺服器上建立和管理防火牆規則](howto-manage-firewall-using-portal.md) 

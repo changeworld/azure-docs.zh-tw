@@ -5,57 +5,61 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 06/24/2020
+ms.date: 10/01/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
-ms.reviewer: scottsta
-ms.openlocfilehash: 084c50a67fe332751a3679da4c97f67d414ebb94
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.reviewer: calui
+ms.openlocfilehash: 9b9617b4109318257895587cc0d8e75054a7f729
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87419524"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91650301"
 ---
-# <a name="sign-in-to-azure-active-directory-using-email-as-an-alternate-login-id-preview"></a>使用電子郵件作為替代登入識別碼（預覽）來登入 Azure Active Directory
+# <a name="sign-in-to-azure-active-directory-using-email-as-an-alternate-login-id-preview"></a>使用電子郵件作為替代登入識別碼 (預覽版來登入 Azure Active Directory) 
 
-許多組織都想要讓使用者使用與內部部署目錄環境相同的認證來登入 Azure Active Directory （Azure AD）。 使用這種稱為混合式驗證的方法，使用者只需要記住一組認證。
+許多組織想要讓使用者使用與其內部部署目錄環境相同的認證，來登入 Azure Active Directory (Azure AD) 。 使用這種稱為混合式驗證的方法，使用者只需要記住一組認證。
 
 有些組織尚未移至混合式驗證，其原因如下：
 
-* 根據預設，Azure AD 的使用者主體名稱（UPN）會設定為與內部部署目錄相同的 UPN。
-* 變更 Azure AD UPN 會在內部部署和 Azure AD 環境之間建立不相符的情況，這可能會造成特定應用程式和服務發生問題。
-* 由於商務或合規性的緣故，組織不會想要使用內部部署 UPN 來登入 Azure AD。
+* 根據預設，Azure AD 的使用者主體名稱 (UPN) 會設定為與內部部署目錄相同的 UPN。
+* 變更 Azure AD UPN 會在內部部署和 Azure AD 環境之間建立不相符的情況，這可能會導致某些應用程式和服務發生問題。
+* 由於商務或合規性的理由，組織不會想要使用內部部署 UPN 來登入 Azure AD。
 
-為了協助您移至混合式驗證，您現在可以設定 Azure AD，讓使用者使用您已驗證的網域中的電子郵件來登入，以作為替代登入識別碼。 例如，若將 *Contoso* 改為 *Fabrikam*，現在可以使用替代登入識別碼的電子郵件登入，不用繼續使用舊的 `balas@contoso.com` UPN 登入。 若要存取應用程式或服務，使用者可以使用其指派的電子郵件（例如）登入 Azure AD `balas@fabrikam.com` 。
+若要協助移至混合式驗證，您現在可以設定 Azure AD，讓使用者以您的已驗證網域中的電子郵件登入，作為替代登入識別碼。 例如，若將 *Contoso* 改為 *Fabrikam*，現在可以使用替代登入識別碼的電子郵件登入，不用繼續使用舊的 `balas@contoso.com` UPN 登入。 若要存取應用程式或服務，使用者會使用其指派的電子郵件（例如）登入 Azure AD `balas@fabrikam.com` 。
+
+本文說明如何啟用和使用電子郵件作為替代登入識別碼。 這項功能可在 Azure AD Free 版和更新版本中使用。
 
 > [!NOTE]
 > 使用替代登入識別碼的電子郵件登入 Azure AD，是 Azure Active Directory 的公開預覽功能。 如需有關預覽版的詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="overview-of-azure-ad-sign-in-approaches"></a>Azure AD 登入方法概觀
 
-若要登入 Azure AD，使用者需輸入可唯一識別其帳戶的名稱。 在過去，您只能使用 Azure AD UPN 做為登入名稱。
+若要登入 Azure AD，使用者可以輸入可唯一識別其帳戶的名稱。 在過去，您只能使用 Azure AD UPN 做為登入名稱。
 
-對於內部部署 UPN 是使用者慣用登入電子郵件的組織而言，這種方法很好用。 這些組織會將 Azure AD UPN 設定為與內部部署 UPN 完全相同的值，而且使用者會擁有一致的登入體驗。
+對於內部部署 UPN 是使用者慣用登入電子郵件的組織來說，這種方法很好用。 這些組織會將 Azure AD UPN 設定為與內部部署 UPN 完全相同的值，而且使用者會有一致的登入體驗。
 
-不過，在某些組織中，內部部署 UPN 不會用來作為登入名稱。 在內部部署環境中，您會將本機 AD DS 設定為允許使用替代登入識別碼進行登入。 將 Azure AD UPN 設定為與內部部署 UPN 相同的值不是選項，因為 Azure AD 接著會要求使用者以該值登入。
+不過，在某些組織中，不會使用內部部署 UPN 做為登入名稱。 在內部部署環境中，您可以將本機 AD DS 設定為允許使用替代登入識別碼進行登入。 將 Azure AD UPN 設定為與內部部署 UPN 相同的值並無法選擇，因為 Azure AD 接著會要求使用者以該值登入。
 
-此問題的一般因應措施是將 Azure AD UPN 設定為使用者預期用來登入的電子郵件地址。 這種方法的運作方式是，在內部部署 AD 和 Azure AD 之間產生不同的 Upn，而此設定與所有 Microsoft 365 的工作負載並不相容。
+此問題的常見因應措施是將 Azure AD UPN 設定為使用者預期用來登入的電子郵件地址。 這種方法的運作方式，雖然會導致內部部署 AD 與 Azure AD 之間的不同 Upn，但此設定與所有 Microsoft 365 工作負載不相容。
 
-另一種方法是將 Azure AD 和內部部署 Upn 同步處理至相同的值，然後設定 Azure AD 以允許使用者使用已驗證的電子郵件登入 Azure AD。 若要提供這項功能，請在內部部署目錄的使用者*ProxyAddresses*屬性中定義一或多個電子郵件地址。 然後， *ProxyAddresses*會使用 Azure AD Connect 自動同步處理 Azure AD。
+另一種方法是將 Azure AD 和內部部署 Upn 同步處理為相同的值，然後將 Azure AD 設定為允許使用者使用已驗證的電子郵件登入 Azure AD。 若要提供這項功能，請在內部部署目錄中的使用者 *ProxyAddresses* 屬性定義一或多個電子郵件地址。 然後， *ProxyAddresses*會使用 Azure AD Connect 自動同步處理 Azure AD。
 
 ## <a name="preview-limitations"></a>預覽限制
 
-在目前的預覽狀態中，當使用者以非 UPN 電子郵件登入做為替代登入識別碼時，適用下列限制：
+使用電子郵件登入 Azure AD，因為 Azure AD Free edition 和更新版本提供替代登入識別碼。
 
-* 使用者可能會看到其 UPN，即使使用其非 UPN 電子郵件登入也一樣。 可能會出現下列範例行為：
-    * 將使用者導向至 Azure AD 使用登入時，系統會提示使用者登入 UPN `login_hint=<non-UPN email>` 。
-    * 當使用者使用非 UPN 電子郵件登入並輸入不正確的密碼時，[*輸入您的密碼]* 頁面會變更以顯示 UPN。
-    * 在某些 Microsoft 網站和應用程式（例如 [https://portal.azure.com](https://portal.azure.com) 和 Microsoft Office）上，**帳戶管理員**控制項通常會顯示在右上方，而不是用來登入的非 UPN 電子郵件。
+在目前的預覽狀態中，當使用者以非 UPN 電子郵件登入作為替代登入識別碼時，適用下列限制：
+
+* 即使使用非 UPN 電子郵件登入，使用者仍可看到其 UPN。 可能會看到下列範例行為：
+    * 當系統將使用者導向 Azure AD 登入時，系統會提示使用者使用 UPN 進行登入 `login_hint=<non-UPN email>` 。
+    * 當使用者以非 UPN 電子郵件登入，並輸入不正確的密碼時，[ *輸入您的密碼]* 頁面會變更以顯示 UPN。
+    * 在某些 Microsoft 網站和應用程式（例如 [https://portal.azure.com](https://portal.azure.com) 和 Microsoft Office）上，[ **帳戶管理員** ] 控制項通常會顯示在右上角，而不是用來登入的非 UPN 電子郵件。
 
 * 某些流程目前與非 UPN 電子郵件不相容，如下所示：
-    * 身分識別保護目前不符合具有*洩露認證*風險偵測的電子郵件替代登入識別碼。 這項風險偵測會使用 UPN 來比對已流失的認證。 如需詳細資訊，請參閱[Azure AD Identity Protection 風險偵測和補救][identity-protection]。
-    * 未完全支援傳送至替代登入識別碼電子郵件的 B2B 邀請。 接受以替代登入識別碼傳送至電子郵件的邀請之後，使用替代電子郵件進行登入可能無法在租使用者端點上的使用者使用。
+    * Identity protection 目前不符合電子郵件替代登入識別碼與 *洩漏的認證* 風險偵測。 此風險偵測會使用 UPN 來比對已洩漏的認證。 如需詳細資訊，請參閱 [Azure AD Identity Protection 風險偵測和補救][identity-protection]。
+    * 未完全支援傳送給替代登入識別碼電子郵件的 B2B 邀請。 接受以替代登入識別碼形式傳送至電子郵件的邀請之後，請使用替代電子郵件登入，但租使用者端點上的使用者可能無法使用。
 
 ## <a name="synchronize-sign-in-email-addresses-to-azure-ad"></a>將登入電子郵件地址同步至 Azure AD
 
@@ -159,7 +163,7 @@ Azure AD Connect 自動同步的其中一個使用者屬性是 *ProxyAddresses*�
     Get-AzureADPolicy | where-object {$_.Type -eq "HomeRealmDiscoveryPolicy"} | fl *
     ```
 
-套用原則之後，最多可能需要一小時的時間才能傳播，讓使用者能夠使用他們的替代登入識別碼來登入。
+套用原則之後，最多可能需要一小時的時間來傳播，讓使用者能夠使用他們的替代登入識別碼進行登入。
 
 ## <a name="test-user-sign-in-with-email"></a>使用電子郵件測試使用者登入
 

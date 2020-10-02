@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 6/25/2020
-ms.openlocfilehash: 51aff856aa5bdeb042493d47f100be0ca32dfbbb
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.date: 10/2/2020
+ms.openlocfilehash: c3bef7a368c6c0f2a08acdfd8da9236899a51a27
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88032674"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91650981"
 ---
 # <a name="limitations-in-azure-database-for-mariadb"></a>適用於 MariaDB 的 Azure 資料庫相關限制
 下列各節說明資料庫服務中的容量、儲存引擎支援、權限支援、資料操作陳述式支援，以及功能限制。
@@ -19,11 +19,13 @@ ms.locfileid: "88032674"
 ## <a name="server-parameters"></a>伺服器參數
 
 > [!NOTE]
-> 如果您要尋找伺服器參數（如和）的最小/最大值 `max_connections` `innodb_buffer_pool_size` ，這項資訊已移至**[伺服器參數](./concepts-server-parameters.md)** 文章。
+> 如果您要尋找伺服器參數的最小值/最大值（如 `max_connections` 和 `innodb_buffer_pool_size` ），這些資訊已移至 **[伺服器參數](./concepts-server-parameters.md)** 文章。
 
-適用於 MariaDB 的 Azure 資料庫支援微調伺服器參數的值。 某些參數的最小和最大值， (例如。 `max_connections`、 `join_buffer_size` `query_cache_size`) 是由伺服器的定價層和虛擬核心所決定。 如需這些限制的詳細資訊，請參閱[伺服器參數](./concepts-server-parameters.md)。
+適用於 MariaDB 的 Azure 資料庫支援調整伺服器參數的值。 某些參數的最小值和最大值 (例如。 `max_connections`、 `join_buffer_size` `query_cache_size`) 是由伺服器的定價層和虛擬核心所決定。 如需這些限制的詳細資訊，請參閱 [伺服器參數](./concepts-server-parameters.md) 。
 
-在初始部署時，Azure for 適用于 mariadb 伺服器會包含時區資訊的系統資料表，但不會填入這些資料表。 時區資料表可藉由從 MySQL 命令列或 MySQL Workbench 等工具呼叫 `mysql.az_load_timezone` 預存程序來填入。 請參閱 [Azure 入口網站](howto-server-parameters.md#working-with-the-time-zone-parameter)或 [Azure CLI](howto-configure-server-parameters-cli.md#working-with-the-time-zone-parameter) 文章，以了解如何呼叫預存程序，以及設定全域或工作階段層級的時區。
+在初始部署時，Azure for 適用于 mariadb 伺服器包含時區資訊的系統資料表，但不會填入這些資料表。 時區資料表可藉由從 MySQL 命令列或 MySQL Workbench 等工具呼叫 `mysql.az_load_timezone` 預存程序來填入。 請參閱 [Azure 入口網站](howto-server-parameters.md#working-with-the-time-zone-parameter)或 [Azure CLI](howto-configure-server-parameters-cli.md#working-with-the-time-zone-parameter) 文章，以了解如何呼叫預存程序，以及設定全域或工作階段層級的時區。
+
+服務不支援密碼外掛程式，例如 "validate_password" 和 "caching_sha2_password"。
 
 ## <a name="storage-engine-support"></a>儲存引擎支援
 
@@ -36,21 +38,25 @@ ms.locfileid: "88032674"
 - [BLACKHOLE](https://mariadb.com/kb/en/library/blackhole/) \(英文\)
 - [ARCHIVE](https://mariadb.com/kb/en/library/archive/) \(英文\)
 
+## <a name="privileges--data-manipulation-support"></a>& 資料操作支援的許可權
+
+許多伺服器參數與設定可能會不慎降低伺服器效能，或否定適用于 mariadb 伺服器的 ACID 屬性。 為了維護產品層級的服務完整性與 SLA，此服務不會公開多個角色。 
+
+適用于 mariadb 服務不允許直接存取基礎檔案系統。 不支援某些資料操作命令。 
+
 ## <a name="privilege-support"></a>權限支援
 
 ### <a name="unsupported"></a>不支援
-- DBA 角色：許多伺服器參數與設定可能會在無意中造成伺服器效能降級，或是取消 DBMS 的 ACID 屬性。 因此，為了維護產品層級的服務完整性與 SLA，此服務並不會公開 DBA 角色。 在建立新資料庫行個體時所建構的預設使用者帳戶，可讓使用者在受管理的資料庫執行個體中執行大部分的 DDL 與 DML 陳述式。
-- SUPER 權限：同樣地，[SUPER 權限](https://mariadb.com/kb/en/library/grant/#global-privileges)也受到限制。
-- 定義：需要進階的權限才能建立，而且受限制。 如果使用備份匯入資料，執行 mysqldump 時以手動方式或使用 `--skip-definer` 命令移除 `CREATE DEFINER` 命令。
-- 系統資料庫：在適用於 MariaDB 的 Azure 資料庫中， [mysql 系統資料庫](https://mariadb.com/kb/en/the-mysql-database-tables/)是唯讀的，因為它是用來支援各種 PaaS 服務功能。 請注意，您無法變更系統資料庫中的任何專案 `mysql` 。
 
-## <a name="data-manipulation-statement-support"></a>資料操作陳述式支援
+以下是不支援的：
+- DBA 角色：受限制。 或者，您可以使用在新的伺服器建立期間建立的系統管理員使用者 () ，讓您可以執行大部分的 DDL 和 DML 語句。 
+- 超級許可權：同樣地，也會限制 [超級許可權](https://mariadb.com/kb/en/library/grant/#global-privileges) 。
+- 定義：需要進階的權限才能建立，而且受限制。 如果使用備份匯入資料，執行 mysqldump 時以手動方式或使用 `--skip-definer` 命令移除 `CREATE DEFINER` 命令。
+- 系統資料庫： [mysql 系統資料庫](https://mariadb.com/kb/en/the-mysql-database-tables/) 是唯讀的，用來支援各種 PaaS 功能。 您無法對 `mysql` 系統資料庫進行變更。
+- `SELECT ... INTO OUTFILE`：服務中不支援。
 
 ### <a name="supported"></a>支援
 - 支援 `LOAD DATA INFILE`，但必須指定 `[LOCAL]` 參數並導向至 UNC 路徑 (透過 SMB 掛接的 Azure 儲存體)。
-
-### <a name="unsupported"></a>不支援
-- `SELECT ... INTO OUTFILE`
 
 ## <a name="functional-limitations"></a>功能限制：
 

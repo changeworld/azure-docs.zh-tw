@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 09/29/2020
 ms.author: duau
-ms.openlocfilehash: c4021fbf87cc7cff8dde8e759423eb52c705cf97
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: dac9df23209fa93b8060ad80d58fd66f7a356ecd
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91568330"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91651474"
 ---
 # <a name="create-expressroute-direct-using-the-azure-portal"></a>使用 Azure 入口網站建立 ExpressRoute Direct
 
@@ -63,7 +63,7 @@ ExpressRoute Direct 可讓您在策略性分散于世界各地的對等互連位
 
     :::image type="content" source="./media/how-to-expressroute-direct-portal/validate.png" alt-text="基本資料頁面":::
 
-1. 選取 [建立]  。 您會看到一則訊息，讓您知道您的部署正在進行中。 當建立資源時，狀態將會顯示在此頁面上。 
+1. 選取 [建立]。 您會看到一則訊息，讓您知道您的部署正在進行中。 當建立資源時，狀態將會顯示在此頁面上。 
 
 ## <a name="generate-the-letter-of-authorization-loa"></a><a name="authorization"></a>產生 (LOA 的授權信件) 
 
@@ -111,7 +111,7 @@ ExpressRoute Direct 可讓您在策略性分散于世界各地的對等互連位
 
    :::image type="content" source="./media/how-to-expressroute-direct-portal/review.png" alt-text="基本資料頁面":::
 
-1. 選取 [建立]  。 您會看到一則訊息，讓您知道您的部署正在進行中。 當建立資源時，狀態將會顯示在此頁面上。 
+1. 選取 [建立]。 您會看到一則訊息，讓您知道您的部署正在進行中。 當建立資源時，狀態將會顯示在此頁面上。 
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -3,19 +3,19 @@ title: 在 Azure 實驗室服務中設定 VM 的自動關機
 description: 本文說明如何在實驗室帳戶中設定 VM 的自動關機。
 ms.topic: article
 ms.date: 08/17/2020
-ms.openlocfilehash: 8647aed0e66993b8a7b8e5c0a42c8ceabbb1fb9e
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: c0a147a81aaed88313a1b9aa4b0754d9a3badcb5
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798443"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91650029"
 ---
 # <a name="configure-automatic-shutdown-of-vms-for-a-lab-account"></a>設定實驗室帳戶的 Vm 自動關機
 
 您可以啟用數個自動關機成本控制功能，以在虛擬機器未主動使用時主動預防額外的成本。 下列三個自動關機和中斷連線功能的組合，會攔截使用者不小心讓虛擬機器執行的大部分情況：
  
-- 自動中斷使用者與 OS 認為閒置 (Windows) 的虛擬機器連線。
-- 當使用者中斷 (Windows & Linux) 的連線時，自動關閉虛擬機器。
+- 自動中斷使用者與作業系統認為閒置的虛擬機器的連線。
+- 當使用者中斷連線時，自動關閉虛擬機器。
 - 自動關閉已啟動但使用者未連接的虛擬機器。
 
 在 [ [使用自動關機設定的最大化成本控制](cost-management-guide.md#automatic-shutdown-settings-for-cost-control) ] 區段中，查看自動關機功能的更多詳細資料。

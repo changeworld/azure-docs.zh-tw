@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: jushiman
-ms.openlocfilehash: db85774dd1cf1e7dd5a284182faf354004671618
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: eff3ff3d8fa2ab3025ca8b8d4f974d6944c88433
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90891778"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91649638"
 ---
 # <a name="dv3-and-dsv3-series"></a>Dv3 和 Dsv3 系列
 
@@ -28,15 +28,13 @@ Dv3 系列大小是在 Intel®) ®白金級 8272CL (串聯 Lake、Intel®® 8171
 
 Dv3 系列 Vm 具備 Intel®超執行緒技術的功能。
 
-ACU：160-190
-
-進階儲存體：不支援
-
-進階儲存體快取：不支援
-
-即時移轉：支援
-
-記憶體保留更新：支援
+[ACU](acu.md)：160-190<br>
+[進階儲存體](premium-storage-performance.md)：不支援<br>
+[進階儲存體](premium-storage-performance.md)快取：不支援<br>
+[即時移轉](maintenance-and-updates.md)：支援<br>
+[記憶體保留更新](maintenance-and-updates.md)：支援<br>
+[VM 世代支援](generation-2.md)：第1代<br>
+<br>
 
 | 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大資料磁碟 | 最大暫存儲存體輸送量： IOPS/讀取 MBps/寫入 MBps | 最大 Nic/網路頻寬 |
 |---|---|---|---|---|---|---|
@@ -54,15 +52,13 @@ Dsv3 系列大小是在 Intel®) ®白金級 8272CL (串聯 Lake、Intel®® 817
 
 Dsv3 系列 Vm 具備 Intel®超執行緒技術的功能。
 
-ACU：160-190
-
-進階儲存體：支援
-
-進階儲存體快取：支援
-
-即時移轉：支援
-
-記憶體保留更新：支援
+[ACU](acu.md)：160-190<br>
+[進階儲存體](premium-storage-performance.md)：支援<br>
+[進階儲存體](premium-storage-performance.md)快取：支援<br>
+[即時移轉](maintenance-and-updates.md)：支援<br>
+[記憶體保留更新](maintenance-and-updates.md)：支援<br>
+[VM 世代支援](generation-2.md)：第1代和第2代<br>
+<br>
 
 | 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大資料磁碟 | 最大快取和暫存儲存體輸送量： IOPS/MBps (GiB 中的快取大小)  | 最大高載快取和暫存儲存體輸送量： IOPS/MBps<sup>1</sup> | 最大取消快取的磁碟輸送量：IOPS/MBps | 最大高載未快取磁片輸送量： IOPS/MBps<sup>1</sup> | 最大 Nic/預期的網路頻寬 (Mbps)  |
 |---|---|---|---|---|---|---|---|---|---|
