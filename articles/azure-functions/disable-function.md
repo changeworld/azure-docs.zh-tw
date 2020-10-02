@@ -4,18 +4,18 @@ description: 了解如何停用和啟用 Azure Functions 中的函式。
 ms.topic: conceptual
 ms.date: 04/08/2020
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 761a78f050aa25a62075dd7a53836afb48f89cd7
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 4d93f728103aabdd1bd5557033a8bd36ffac2d42
+ms.sourcegitcommit: 487a9f5272300d60df2622c3d13e794d54680f90
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213156"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91661018"
 ---
 # <a name="how-to-disable-functions-in-azure-functions"></a>如何停用 Azure Functions 中的函式
 
 本文說明如何停用 Azure Functions 中的函式。 「停用」函式表示讓執行階段忽略為此函式定義的自動觸發程序。 這可讓您防止特定函式執行，而不需停止整個函式應用程式。
 
-停用函式的建議方式是使用 `AzureWebJobs.<FUNCTION_NAME>.Disabled` 格式的應用程式設定。 您可透過數種方式來建立和修改此應用程式設定，包括使用 [Azure CLI](/cli/azure/)，以及從 [Azure 入口網站](https://portal.azure.com)中函式的 [管理] 索引標籤進行。 
+停用函式的建議方式是使用設定為的格式的應用程式設定 `AzureWebJobs.<FUNCTION_NAME>.Disabled` `true` 。 您可透過數種方式來建立和修改此應用程式設定，包括使用 [Azure CLI](/cli/azure/)，以及從 [Azure 入口網站](https://portal.azure.com)中函式的 [管理] 索引標籤進行。 
 
 > [!NOTE]  
 > 當您使用本文所述的方法來停用 HTTP 觸發的函式時，仍可存取正在本機電腦上執行的端點。  
@@ -40,7 +40,7 @@ az functionapp config appsettings set --name <myFunctionApp> \
 
 ## <a name="use-the-portal"></a>使用入口網站
 
-您也可使用函式 [概觀] 頁面上的 [啟用] 和 [停用] 按鈕。 這些按鈕可藉由建立和刪除 `AzureWebJobs.<FUNCTION_NAME>.Disabled` 應用程式設定來產生作用。
+您也可使用函式 [概觀] 頁面上的 [啟用] 和 [停用] 按鈕。 這些按鈕的運作方式是變更 `AzureWebJobs.<FUNCTION_NAME>.Disabled` 應用程式設定的值。 這個函式特定的設定是在第一次停用時建立。
 
 ![函式狀態切換](media/disable-function/function-state-switch.png)
 
@@ -49,7 +49,7 @@ az functionapp config appsettings set --name <myFunctionApp> \
 
 ## <a name="localsettingsjson"></a>local.settings.json
 
-在本機執行時，可以用相同方式來停用函式。 若要停用名為的函 `HttpExample` 式，請將專案新增至檔案中 local.settings.js的值集合，如下所示：
+在本機執行時，可以用相同的方式停用函式。 若要停用名為的函 `HttpExample` 式，請將專案加入至 local.settings.json 檔案中的 Values 集合，如下所示：
 
 ```json
 {

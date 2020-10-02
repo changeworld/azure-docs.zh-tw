@@ -3,16 +3,16 @@ title: 針對 Azure 映射產生器服務進行疑難排解
 description: 針對使用 Azure VM Image Builder 服務時的常見問題和錯誤進行疑難排解
 author: cynthn
 ms.author: danis
-ms.date: 09/03/2020
+ms.date: 10/02/2020
 ms.topic: troubleshooting
 ms.service: virtual-machines
 ms.subservice: imaging
-ms.openlocfilehash: ee65cd1605e23dfd5699f92a900bdb5e7952fe13
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: dd17057a56e8dfb269a22458b9aa20fefaab68bc
+ms.sourcegitcommit: 487a9f5272300d60df2622c3d13e794d54680f90
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89459924"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91661103"
 ---
 # <a name="troubleshoot-azure-image-builder-service"></a>針對 Azure 映射產生器服務進行疑難排解
 
@@ -591,6 +591,18 @@ template name:  t_1556938436xxx
 #### <a name="solution"></a>解決方案
 
 您可以裝載自己的 DevOps 代理程式，或查看以縮短組建的時間。 例如，如果您要散發至共用映射庫，請複製到一個區域。 如果您想要以非同步方式複寫。 
+
+### <a name="slow-windows-logon-please-wait-for-the-windows-modules-installer"></a>Windows 登入緩慢：「請稍候 Windows 模組安裝程式」
+
+#### <a name="error"></a>錯誤
+使用 Image Builder 建立 Windows 10 映射之後，請從映射建立 VM、使用 RDP，並且在第一次登入時必須等待幾分鐘的時間，才會看到含有下列訊息的藍色畫面：
+```text
+Please wait for the Windows Modules Installer
+```
+
+#### <a name="solution"></a>解決方案
+首先，在映射組建中，將 Windows 重新開機自訂程式新增為最後一次自訂，並完成所有的軟體安裝，以確認沒有任何未完成的重新開機。 最後，將 [/mode： vm](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep-command-line-options) 選項新增至 AIB 使用的預設 sysprep，如下所示：「從 AIB 映射建立的 vm 未成功建立」 > ' 覆寫命令」  
+
  
 ## <a name="vms-created-from-aib-images-do-not-create-successfully"></a>無法成功建立從 AIB 映射建立的 Vm
 
@@ -660,6 +672,6 @@ Support Topic: Azure Features
 Support Subtopic: Azure Image Builder
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如需詳細資訊，請參閱 [Azure 映射](image-builder-overview.md)建立器總覽。

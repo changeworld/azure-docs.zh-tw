@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 22f35d88f3bb36d63d533941d27f72336714077c
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: f3e223dd46806551fbba05127b70a9119a5d9c75
+ms.sourcegitcommit: 487a9f5272300d60df2622c3d13e794d54680f90
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91630273"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91661137"
 ---
 # <a name="add-and-manage-users-in-an-administrative-unit-in-azure-active-directory"></a>在 Azure Active Directory 的管理單位中新增和管理使用者
 
@@ -97,7 +97,7 @@ Request body
 ```powershell
 Get-AzureADMSAdministrativeUnit | where { Get-AzureADMSAdministrativeUnitMember -Id $_.ObjectId | where {$_.RefObjectId -eq $userObjId} }
 ```
-注意： AzureADAdministrativeUnitMember 只會傳回100的成員。
+注意：根據預設，AzureADAdministrativeUnitMember 只會傳回100成員，您可以新增 "-All $true" 以抓取更多成員。
 
 ### <a name="microsoft-graph"></a>Microsoft Graph
 

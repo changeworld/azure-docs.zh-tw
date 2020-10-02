@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/12/2020
-ms.openlocfilehash: d31d6553e4b18cbd99960af582175ab89236fa5b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: fc20d59ca016e7c6be8dae9f50a84e4927449467
+ms.sourcegitcommit: 487a9f5272300d60df2622c3d13e794d54680f90
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91315264"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91660729"
 ---
 # <a name="deploy-a-model-to-azure-container-instances"></a>將模型部署到 Azure 容器執行個體
 
@@ -50,6 +50,13 @@ ms.locfileid: "91315264"
     如需有關設定這些變數的詳細資訊，請參閱 [部署模型的方式和位置](how-to-deploy-and-where.md)。
 
 - 本文中的 __CLI__ 程式碼片段假設您已建立 `inferenceconfig.json` 檔。 如需有關建立這份檔的詳細資訊，請參閱 [部署模型的方式和位置](how-to-deploy-and-where.md)。
+
+## <a name="limitations"></a>限制
+
+* 使用虛擬網路中的 Azure 容器實例時，虛擬網路必須位於與您的 Azure Machine Learning 工作區相同的資源群組中。
+* 使用虛擬網路內的 Azure 容器實例時，您工作區的 Azure Container Registry (ACR) 也不能在虛擬網路中。
+
+如需詳細資訊，請參閱 [如何使用虛擬網路保護推斷](how-to-secure-inferencing-vnet.md#enable-azure-container-instances-aci)。
 
 ## <a name="deploy-to-aci"></a>部署到 ACI
 

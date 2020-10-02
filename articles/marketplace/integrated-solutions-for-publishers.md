@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: vikrambmsft
 ms.author: vikramb
 ms.date: 04/16/2020
-ms.openlocfilehash: a1fcaced7783d09f1733fbee8744ba725b639a02
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 2e976b895c6aa63b73c55b458668c00b64c6f960
+ms.sourcegitcommit: 487a9f5272300d60df2622c3d13e794d54680f90
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119526"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91660899"
 ---
 # <a name="publish-an-integrated-solution"></a>發佈整合式解決方案
 
@@ -52,7 +52,7 @@ ms.locfileid: "86119526"
 
 ## <a name="submit-a-nomination"></a>提交提名
 
-想要參與計畫的合作夥伴應該找出其想要作為合作對象的其他合作夥伴。 其應該填妥[整合式解決方案提名表單](https://aka.ms/AA5qicu)。 整合式解決方案計畫小組會檢閱提名，並在 10 個工作天內採取後續動作。 小組會提供核准和後續步驟。
+想要參與計畫的合作夥伴應該找出其想要作為合作對象的其他合作夥伴。 他們應該完成 [整合式解決方案提名表單](https://aka.ms/AA5qicu)。 整合式解決方案計畫小組會檢閱提名，並在 10 個工作天內採取後續動作。 小組會提供核准和後續步驟。
 
 ## <a name="develop-an-integrated-solution"></a>開發整合式解決方案
 
@@ -114,4 +114,4 @@ ms.locfileid: "86119526"
 
 ## <a name="next-steps"></a>後續步驟
 
-如需如何在市集中購買整合式解決方案的相關資訊，請參閱[整合式解決方案](./integrated-solutions.md)。
+- [整合式解決方案提名表單](https://aka.ms/AA5qicu)

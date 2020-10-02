@@ -10,20 +10,24 @@ author: gvashishtha
 ms.date: 07/31/2020
 ms.topic: conceptual
 zone_pivot_groups: aml-control-methods
-ms.openlocfilehash: a3aed23441df225316f52eb3acb1387cbba6d807
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: aac5fba68c43892216cbd16dd99b0c6a9bf70217
+ms.sourcegitcommit: 487a9f5272300d60df2622c3d13e794d54680f90
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935580"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91660984"
 ---
 # <a name="profile-your-model-to-determine-resource-utilization"></a>分析您的模型以判斷資源使用率
 
 本文說明如何分析機器學習模型，以判斷當您將模型部署為 web 服務時，需要配置多少 CPU 和記憶體。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 本文假設您已使用 Azure Machine Learning 來定型和註冊模型。 請參閱 [這裡的範例教學](how-to-train-scikit-learn.md) 課程，以取得使用 Azure Machine Learning 定型和註冊 scikit-learn 學習模型的範例。
+
+## <a name="limitations"></a>限制
+
+* 當工作區的 Azure Container Registry (ACR) 位於虛擬網路後方時，分析將無法運作。
 
 ## <a name="run-the-profiler"></a>執行分析工具
 
