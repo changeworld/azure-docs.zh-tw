@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 06/30/2020
+ms.date: 10/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: 106600b608586175cbab1098cf0eb7ac6fad94fa
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: b994e8ce34319da4827d389b49e23ed6e5bcde95
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91540297"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653752"
 ---
 # <a name="diagnose-and-troubleshoot-an-azure-time-series-insights-gen2-environment"></a>針對 Azure 時間序列深入解析 Gen2 環境進行診斷和疑難排解
 
@@ -43,17 +43,17 @@ ms.locfileid: "91540297"
 
 - 事件來源索引鍵遺漏必要的權限。
 
-  * 針對 IoT 中樞，您必須提供具有「服務連接」**** 權限的索引鍵。
+  - 針對 IoT 中樞，您必須提供具有「服務連接」**** 權限的索引鍵。
 
     [![驗證 IoT 中樞許可權。](media/preview-troubleshoot/verify-correct-permissions.png)](media/preview-troubleshoot/verify-correct-permissions.png#lightbox)
 
-    * 原則 **iothubowner** 和 **服務** 都可以運作，因為它們具有 **服務連接** 許可權。
+    - 原則 **iothubowner** 和 **服務** 都可以運作，因為它們具有 **服務連接** 許可權。
 
-  * 針對事件中樞，您必須提供具有「接聽」**** 權限的索引鍵。
+  - 針對事件中樞，您必須提供具有「接聽」**** 權限的索引鍵。
   
     [![檢查事件中樞許可權。](media/preview-troubleshoot/verify-eh-permissions.png)](media/preview-troubleshoot/verify-eh-permissions.png#lightbox)
 
-    * 「 **讀取** 」和「 **管理** 」原則都可運作，因為它們具有「 **接聽** 」許可權。
+    - 「 **讀取** 」和「 **管理** 」原則都可運作，因為它們具有「 **接聽** 」許可權。
 
 - 您提供的取用者群組不是時間序列深入解析專用的。
 
@@ -77,9 +77,9 @@ ms.locfileid: "91540297"
 
 - 您的事件來源金鑰可能已重新產生，而您的 Gen2 環境需要新的事件來源金鑰。
 
-當您建立事件來源時所提供的金鑰已不再有效時，就會發生此問題。 您會看到中樞內的遙測，但在時間序列深入解析中沒有輸入接收的訊息。 如果您不確定是否已重新產生金鑰，您可以在事件中樞的活動記錄檔中搜尋「建立或更新命名空間授權規則」，或搜尋「建立或更新 IotHub 資源」作為 IoT 中樞。 
+當您建立事件來源時所提供的金鑰已不再有效時，就會發生此問題。 您會看到中樞內的遙測，但在時間序列深入解析中沒有輸入接收的訊息。 如果您不確定是否已重新產生金鑰，您可以在事件中樞的活動記錄檔中搜尋「建立或更新命名空間授權規則」，或搜尋「建立或更新 IotHub 資源」作為 IoT 中樞。
 
-若要使用新的金鑰來更新您的時間序列深入解析 Gen2 環境，請在 Azure 入口網站中開啟中樞資源，並複製新的金鑰。 流覽至 TSI 資源，然後按一下 [事件來源]。 
+若要使用新的金鑰來更新您的時間序列深入解析 Gen2 環境，請在 Azure 入口網站中開啟中樞資源，並複製新的金鑰。 流覽至 TSI 資源，然後按一下 [事件來源]。
 
    [![螢幕擷取畫面顯示已呼叫 [事件來源] 功能表項目的 [T I 資源]。](media/preview-troubleshoot/update-hub-key-step-1.png)](media/preview-troubleshoot/update-hub-key-step-1.png#lightbox)
 
@@ -91,14 +91,14 @@ ms.locfileid: "91540297"
 
 請確定名稱和值符合下列規則︰
 
-* 時間戳記屬性名稱區分大小寫。
-* 以 JSON 字串形式來自事件來源的時間戳記屬性值具有格式 `yyyy-MM-ddTHH:mm:ss.FFFFFFFK` 。 此類型字串的其中一個範例為 `"2008-04-12T12:53Z"`。
+- 時間戳記屬性名稱區分大小寫。
+- 以 JSON 字串形式來自事件來源的時間戳記屬性值具有格式 `yyyy-MM-ddTHH:mm:ss.FFFFFFFK` 。 此類型字串的其中一個範例為 `"2008-04-12T12:53Z"`。
 
 若要確保您的時間戳記屬性名稱已被捕捉並正常運作，最簡單的方式就是使用時間序列深入解析 Gen2 Explorer。 在時間序列深入解析 Gen2 Explorer 內，使用圖表來選取您提供時間戳記屬性名稱之後的一段時間。 以滑鼠右鍵按一下選取範圍，然後選取 [探索事件]**** 選項。 第一個資料行標頭就是您的時間戳記屬性名稱。 它的字組 `Timestamp` 旁邊應該有 `($ts)`，而非：
 
-* `(abc)`，這表示時間序列深入解析將資料值讀取為字串。
-* 行事 **曆** 圖示，表示時間序列深入解析將資料值讀取為 datetime。
-* `#`，這表示時間序列深入解析將資料值讀取為整數。
+- `(abc)`，這表示時間序列深入解析將資料值讀取為字串。
+- 行事 **曆** 圖示，表示時間序列深入解析將資料值讀取為 datetime。
+- `#`，這表示時間序列深入解析將資料值讀取為整數。
 
 如果未明確指定時間戳記屬性，就會使用事件的 IoT 中樞或事件中樞排入佇列時間作為預設時間戳記。
 
@@ -131,7 +131,7 @@ ms.locfileid: "91540297"
 
 [![螢幕擷取畫面顯示 [無法連接] 對話方塊。](media/preview-troubleshoot/power-bi-unable-to-connect.png)](media/preview-troubleshoot/power-bi-unable-to-connect.png#lightbox)
 
-* 檢查您 Power BI Desktop 的版本，並確定您使用的是2020年7月版本。 如果沒有，請更新您的 Power BI Desktop，然後再次執行連接器。 
+- 檢查您 Power BI Desktop 的版本，並確定您使用的是2020年7月版本。 如果沒有，請更新您的 Power BI Desktop，然後再次執行連接器。
 
 ## <a name="next-steps"></a>後續步驟
 

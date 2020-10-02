@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 78d707c0b5afd745ae805c9513243f3791d47c60
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: dd755e1bc220d61aa540a0e7da9e3f174bde9d76
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654747"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91652919"
 ---
 # <a name="lsv2-series"></a>Lsv2 系列
 
@@ -25,17 +25,14 @@ Lsv2 系列以在全核心加速為 2.55GHz 且最大加速為 3.0GHz 之 [AMD E
 >
 > 若要深入瞭解，請參閱在適用于 [Windows](../virtual-machines/windows/storage-performance.md) 或 [Linux](../virtual-machines/linux/storage-performance.md)的 Lsv2 系列虛擬機器上優化效能。  
 
-ACU：150-175
-
-高載：支援
-
-進階儲存體：支援
-
-進階儲存體快取：不支援
-
-即時移轉：不支援
-
-記憶體保留更新：不支援
+[ACU](acu.md)：150-175<br>
+[進階儲存體](premium-storage-performance.md)：支援<br>
+[進階儲存體](premium-storage-performance.md)快取：不支援<br>
+[即時移轉](maintenance-and-updates.md)：不支援<br>
+[記憶體保留更新](maintenance-and-updates.md)：不支援<br>
+[VM 世代支援](generation-2.md)：第1代和第2代<br>
+高載：支援<br>
+<br>
 
 | 大小 | vCPU | 記憶體 (GiB) | 暫存磁碟<sup>1</sup> (GiB) | NVMe 磁碟<sup>2</sup> | NVMe 磁片輸送量<sup>3</sup> (讀取 IOPS/MBps)  | 未快取的資料磁片輸送量 (IOPs/MBps) <sup>4</sup> | 最大高載未快取的資料磁片輸送量 (IOPs/MBps) <sup>5</sup>| 資料磁碟數上限 | 最大 NIC | 預期的網路頻寬 (Mbps)  |
 |---|---|---|---|---|---|---|---|---|---|---|

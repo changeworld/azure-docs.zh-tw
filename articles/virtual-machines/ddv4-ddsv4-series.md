@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.openlocfilehash: 3c51a00e5760a2dac1648cc938416625bd52ddb7
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 5f09ed7aeb6e8b60093681abb16923ec23fd7f57
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88649902"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91652987"
 ---
 # <a name="ddv4-and-ddsv4-series"></a>Ddv4 和 Ddsv4 系列
 
@@ -28,15 +28,13 @@ Ddv4 系列大小是在 Intel&reg; Xeon&reg; Platinum 8272CL (Cascade Lake) 上�
 
 新的 Ddv4 VM 大小包括快速、更大的本機 SSD 儲存體 (最多 2,400 GiB)，專為需要快速讀取/寫入暫存儲存體，或需要暫存儲存體以用於快取和暫存檔案等等，可受益於低延遲、高速本機儲存體的應用程式而設計。 您可以將標準 SSD 與標準 HDD 儲存體連結至 Ddv4 VM。 遠端資料磁碟儲存體與虛擬機器分開計費。
 
-ACU：195-210
-
-進階儲存體：不支援
-
-進階儲存體快取：不支援
-
-即時移轉：支援
-
-記憶體保留更新：支援
+[ACU](acu.md)：195-210<br>
+[進階儲存體](premium-storage-performance.md)：不支援<br>
+[進階儲存體](premium-storage-performance.md)快取：不支援<br>
+[即時移轉](maintenance-and-updates.md)：支援<br>
+[記憶體保留更新](maintenance-and-updates.md)：支援<br>
+[VM 世代支援](generation-2.md)：第1代<br>
+<br> 
 
 | 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大資料磁碟 | 最大快取和暫存儲存體輸送量IOPS/MBps | 最大 NIC|預期的網路頻寬 (Mbps)  |
 |---|---|---|---|---|---|---|---|
@@ -57,15 +55,13 @@ Ddv4 系列是在 Intel&reg; Xeon&reg; Platinum 8272CL (Cascade Lake) 上執行�
  > [!NOTE]
  >Ddsv4 大小的定價和計費方式與 Ddv4 系列相同。
 
-ACU：195-210
-
-進階儲存體：支援
-
-進階儲存體快取：支援
-
-即時移轉：支援
-
-記憶體保留更新：支援
+[ACU](acu.md)：195-210<br>
+[進階儲存體](premium-storage-performance.md)：支援<br>
+[進階儲存體](premium-storage-performance.md)快取：支援<br>
+[即時移轉](maintenance-and-updates.md)：支援<br>
+[記憶體保留更新](maintenance-and-updates.md)：支援<br>
+[VM 世代支援](generation-2.md)：第1代和第2代<br>
+<br> 
 
 | 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大資料磁碟 | 最大快取和暫存儲存體輸送量： IOPS/MBps (GiB 中的快取大小)  | 最大取消快取的磁碟輸送量：IOPS/MBps | 最大 NIC|預期的網路頻寬 (Mbps)  |
 |---|---|---|---|---|---|---|---|---|

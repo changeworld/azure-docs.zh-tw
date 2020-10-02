@@ -7,13 +7,13 @@ manager: diviso
 services: time-series-insights
 ms.service: time-series-insights
 ms.topic: conceptual
-ms.date: 08/26/2020
-ms.openlocfilehash: 6825627b77e3ea227cad88e347dbbabd5e6f5d0c
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.date: 10/01/2020
+ms.openlocfilehash: 105faf796583eb0f272eea7a316648993fdafd0d
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91540331"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653769"
 ---
 # <a name="visualize-data-from-azure-time-series-insights-in-power-bi"></a>從 Power BI 中的 Azure 時間序列深入解析將資料視覺化
 
@@ -29,7 +29,7 @@ Azure 時間序列深入解析是在雲端儲存、管理、查詢和視覺化�
 
 如果您還沒有訂用帳戶，請務必註冊 [免費的 Azure 訂](https://azure.microsoft.com/free/) 用帳戶。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 下載並安裝最新版本的 [Power BI Desktop](https://powerbi.microsoft.com/downloads/)
 * 擁有或建立 [Azure 時間序列深入解析 Gen2 環境](time-series-insights-update-how-to-manage.md)
@@ -69,7 +69,7 @@ Azure 時間序列深入解析是在雲端儲存、管理、查詢和視覺化�
        > [!NOTE]
        > 原始事件層級資料有250000的事件計數限制。
 
-       [![連線](media/how-to-connect-power-bi/connect-to-power-bi.png)](media/how-to-connect-power-bi/connect-to-power-bi.png#lightbox)
+       [![連接](media/how-to-connect-power-bi/connect-to-power-bi.png)](media/how-to-connect-power-bi/connect-to-power-bi.png#lightbox)
 
    1. 如果您尚未設定具有 **暖存放區**的 Azure 時間序列深入解析環境，您將會收到警告。
 

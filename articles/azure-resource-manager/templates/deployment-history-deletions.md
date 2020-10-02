@@ -2,13 +2,13 @@
 title: 部署歷程記錄刪除
 description: 描述 Azure Resource Manager 如何自動從部署歷程記錄中刪除部署。 當歷程記錄接近超過800的限制時，就會刪除部署。
 ms.topic: conceptual
-ms.date: 09/15/2020
-ms.openlocfilehash: 0c5d972eea9bc9cf2bf8716b26cd0e07d0a07b82
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 10/01/2020
+ms.openlocfilehash: 13c65f3311e308708034bb5befb7e3c3ee158d38
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91284728"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91652477"
 ---
 # <a name="automatic-deletions-from-deployment-history"></a>從部署歷程記錄自動刪除
 
@@ -23,7 +23,7 @@ ms.locfileid: "91284728"
 
 ## <a name="when-deployments-are-deleted"></a>刪除部署時
 
-當您到達775或更多部署時，會從您的歷程記錄中刪除部署。 Azure Resource Manager 會在歷程記錄降至750之前刪除部署。 系統一律會先刪除最舊的部署。
+當您超過775部署時，會從歷程記錄中刪除部署。 Azure Resource Manager 會在歷程記錄降至750之前刪除部署。 系統一律會先刪除最舊的部署。
 
 :::image type="content" border="false" source="./media/deployment-history-deletions/deployment-history.svg" alt-text="從部署歷程記錄中刪除":::
 

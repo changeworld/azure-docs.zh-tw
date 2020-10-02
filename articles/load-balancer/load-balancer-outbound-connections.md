@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/30/2020
 ms.author: allensu
-ms.openlocfilehash: d778b3ae0889ea0bf9cc38ca5813ac61fc5fcdbe
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.openlocfilehash: 6b9f454c75a10644e86931dc86ebd9514e5431d3
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91595647"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91649791"
 ---
 # <a name="outbound-connections"></a>輸出連線
 
@@ -37,7 +37,7 @@ Azure Load Balancer 透過不同的機制提供輸出連線能力。 本文說�
 | ---------- | ------ | ------------ |
 | 公用負載平衡器或獨立 | [SNAT (來源網路位址轉譯) ](#snat) </br> [PAT (未使用埠偽裝) ](#pat) 。 | TCP (傳輸控制通訊協定)  </br> UDP (使用者資料包協定)  </br> ICMP (網際網路控制訊息通訊協定)  </br> ESP (封裝安全性承載)  |
 
-#### <a name="description"></a>說明
+#### <a name="description"></a>描述
 
 Azure 會使用指派給實例 NIC 之 IP 設定的公用 IP 來進行所有輸出流程。 執行個體有所有可用的暫時連接埠。 VM 是否負載平衡並不重要。 此案例的優先順序高於其他案例。 
 
@@ -49,7 +49,7 @@ Azure 會使用指派給實例 NIC 之 IP 設定的公用 IP 來進行所有輸�
 | ------------ | ------ | ------------ |
 | 公用 Load Balancer | 使用適用于 [SNAT](#snat) 的負載平衡器前端搭配 [PAT (埠偽裝) ](#pat)。| TCP </br> UDP |
 
-#### <a name="description"></a>說明
+#### <a name="description"></a>描述
 
 負載平衡器資源會設定負載平衡器規則。 此規則可用來建立公用 IP 前端與後端集區之間的連結。 
 
@@ -69,7 +69,7 @@ Azure 會使用指派給實例 NIC 之 IP 設定的公用 IP 來進行所有輸�
 | ------------ | ------ | ------------ |
 |無 </br> 基本負載平衡器 | [SNAT](#snat) 與 [埠偽裝 (PAT) ](#pat)| TCP </br> UDP | 
 
-#### <a name="description"></a>說明
+#### <a name="description"></a>描述
 
 當 VM 建立輸出流程時，Azure 會將來源 IP 位址轉譯為公用來源 IP 位址。 此公用 **IP 位址無法** 設定且無法保留。 此位址不會計入訂用帳戶的公用 IP 資源限制。 
 
@@ -160,7 +160,7 @@ Azure 會使用演算法來判斷可用的預先配置 [SNAT](#snat) 埠數目�
 
 ### <a name="outbound-flow-idle-timeout-and-tcp-reset"></a><a name="idletimeout"></a> 輸出流量閒置超時和 TCP 重設
 
-輸出規則提供設定參數來控制輸出流程閒置逾時，並使其符合您應用程式的需求。 輸出閒置逾時預設為 4 分鐘。 如需詳細資訊，請參閱 [設定閒置的超時](load-balancer-tcp-idle-timeout.md#tcp-idle-timeout)時間。 
+輸出規則提供設定參數來控制輸出流程閒置逾時，並使其符合您應用程式的需求。 輸出閒置逾時預設為 4 分鐘。 如需詳細資訊，請參閱 [設定閒置的超時](load-balancer-tcp-idle-timeout.md)時間。 
 
 負載平衡器的預設行為是在達到輸出閒置超時時，以無訊息方式卸載流程。 `enableTCPReset`參數會啟用可預測的應用程式行為和控制項。 此參數會指定是否要在輸出閒置超時時間的超時時，傳送雙向 TCP 重設 (TCP RST) 。 
 

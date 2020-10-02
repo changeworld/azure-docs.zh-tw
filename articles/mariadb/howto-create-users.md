@@ -5,21 +5,21 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: how-to
-ms.date: 4/2/2020
-ms.openlocfilehash: 34fcb8d28ae8deda88a6ce91261301ab5d08a743
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 10/1/2020
+ms.openlocfilehash: 7a3515850027963dcabbf2cef4efd8bf43802cbe
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86104549"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653055"
 ---
 # <a name="create-users-in-azure-database-for-mariadb"></a>在適用於 MariaDB 的 Azure 資料庫中建立使用者 
 本文描述如何在適用於 MariaDB 的 Azure 資料庫中建立使用者。
 
 > [!NOTE]
-> 偏差-免費通訊
+> 無偏差通訊
 >
-> Microsoft 支援多樣化和 inclusionary 的環境。 本文包含對_一詞的_參考。 [適用于無偏差通訊的 Microsoft 樣式指南](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md)可辨識此為 exclusionary 單字。 本文中會使用這個字來進行一致性，因為它目前是出現在軟體中的單字。 當軟體更新為移除此單字時，此文章將會更新為對齊。
+> Microsoft 支援多樣化且 inclusionary 的環境。 本文包含單字 _從屬_的參考。 [適用于無偏差通訊的 Microsoft 樣式指南](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md)會將此視為排他性行為單字。 本文中會使用這個字來保持一致性，因為它目前是出現在軟體中的單字。 當軟體更新為移除該字時，將會更新本文以進行調整。
 >
 
 當您第一次建立適用於 MariaDB 的 Azure 資料庫時，您提供了伺服器管理員登入使用者名稱和密碼。 如需詳細資訊，您可以遵循[快速入門](quickstart-create-mariadb-server-database-using-azure-portal.md)。 您可以從 Azure 入口網站找出您的伺服器管理員登入使用者名稱。
@@ -29,7 +29,8 @@ ms.locfileid: "86104549"
 建立適用於 MariaDB 的 Azure 資料庫伺服器之後，您可以使用第一個伺服器管理員使用者帳戶，建立其他使用者並授與其管理員存取權。 此外，伺服器管理員帳戶可以用來建立較低權限的使用者，以存取個別資料庫結構描述。
 
 > [!NOTE]
-> 不支援超級許可權和 DBA 角色。 請參閱限制一文中的[許可權](concepts-limits.md#privilege-support)，以瞭解服務中不支援的專案。
+> 不支援超級許可權和 DBA 角色。 請參閱限制文章中的 [許可權](concepts-limits.md#privileges--data-manipulation-support) ，以瞭解服務中不支援的功能。<br><br>
+> 服務不支援密碼外掛程式，例如 "validate_password" 和 "caching_sha2_password"。
 
 ## <a name="create-additional-admin-users"></a>建立其他管理使用者
 1. 取得連線資訊和管理員使用者名稱。
@@ -90,6 +91,10 @@ ms.locfileid: "86104549"
    mysql --host mydemoserver.mariadb.database.azure.com --database testdb --user db_user@mydemoserver -p
    ```
    如需使用者帳戶管理的詳細資訊，請參閱 MariaDB 文件中的[使用者帳戶管理](https://mariadb.com/kb/en/library/user-account-management/)、[GRANT 語法](https://mariadb.com/kb/en/library/grant/)和[權限](https://mariadb.com/kb/en/library/grant/#privilege-levels)。
+
+## <a name="azure_superuser"></a>azure_superuser
+
+所有適用於 MySQL 的 Azure 資料庫伺服器都會以名為 "azure_superuser" 的使用者建立。 這是 Microsoft 所建立的系統帳戶，用來管理伺服器以進行監視、備份和其他定期維護。 待命工程師也可以使用此帳戶在具有憑證驗證的事件期間存取伺服器，而且必須使用即時 (JIT) 處理常式來要求存取權。
 
 ## <a name="next-steps"></a>後續步驟
 針對新使用者電腦的 IP 位址開啟防火牆，讓使用者能夠連線：[使用 Azure 入口網站建立及管理適用於 MariaDB 的 Azure 資料庫防火牆規則](howto-manage-firewall-portal.md)  

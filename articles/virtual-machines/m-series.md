@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: jushiman
-ms.openlocfilehash: 2dea6ea292b4ed69d89a6e5e03c58f437446561d
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: fe63f9d5a9d215a31a56d7214170d86f46a4e4a2
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654781"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653650"
 ---
 # <a name="m-series"></a>M 系列
 
@@ -20,17 +20,14 @@ M 系列提供高 vCPU 計數 (最多 128 個 vCPU) 與大量記憶體 (最多 3
 
 M 系列 VM 的功能 Intel &reg; 超執行緒技術。
 
-ACU：160-180
-
-進階儲存體：支援
-
-進階儲存體快取：支援
-
-即時移轉：不支援
-
-記憶體保留更新：不支援
-
-寫入加速器：[支援](./how-to-enable-write-accelerator.md)
+[ACU](acu.md)：160-180<br>
+[進階儲存體](premium-storage-performance.md)：支援<br>
+[進階儲存體](premium-storage-performance.md)快取：支援<br>
+[即時移轉](maintenance-and-updates.md)：不支援<br>
+[記憶體保留更新](maintenance-and-updates.md)：不支援<br>
+[VM 世代支援](generation-2.md)：第1代和第2代<br>
+[寫入加速器](./how-to-enable-write-accelerator.md)：支援<br>
+<br>
 
 | 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大資料磁碟 | 最大快取和暫存儲存體輸送量： IOPS/MBps (GiB 中的快取大小)  | 最大取消快取的磁碟輸送量：IOPS/MBps | 最大 NIC|預期的網路頻寬 (Mbps)  |
 |---|---|---|---|---|---|---|---|---|

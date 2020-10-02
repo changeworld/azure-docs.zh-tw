@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 author: keferna
 ms.author: keferna
-ms.date: 03/30/2020
-ms.openlocfilehash: 9ee433f226b37c8ffd6ad466cca7cbd844d53524
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 10/01/2020
+ms.openlocfilehash: 5627d6afab22defebeebd3f04695ef95390f1163
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86535972"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653310"
 ---
 # <a name="customer-leads-from-your-commercial-marketplace-offer"></a>來自您的商業市集供應項目的潛在客戶
 
@@ -44,7 +44,7 @@ ms.locfileid: "86535972"
 
 ## <a name="connect-to-your-crm-system"></a>連線到您的 CRM 系統
 
-[!INCLUDE [Test drive content](./includes/connect-lead-management.md)]
+[!INCLUDE [Links to lead configuration for different CRM systems](./includes/connect-lead-management.md)]
 
 ## <a name="understand-lead-data"></a>瞭解潛在客戶資料
 
@@ -91,81 +91,11 @@ ms.locfileid: "86535972"
 
 - **程序**：定義清楚的銷售流程，包含里程碑、分析、清楚的小組擁有權。
 - **資格**：定義必要條件，指出潛在客戶是否完全符合資格。 請確定銷售或行銷代表會謹慎地界定潛在客戶，再將其納入完整的銷售流程。
-- **後續**操作：別忘了在24小時內繼續追蹤。 客戶部署試用產品之後，您會立即在您選擇的 CRM 中取得潛在客戶;當他們仍然暖時，將其以電子郵件傳送給他們。 要求排定電話通話，以進一步瞭解您的產品是否為其問題的絕佳解決方案。 一般交易預期需要進行許多後續的呼叫。
-- **加強關係**：培養您的潛在客戶，讓您獲得更高的收益。 簽入，但不要 bombard 它們。 我們建議您在關閉電子郵件之前，先將其寄送到至少幾次，第一次嘗試之後，請不要放棄。 請記住，這些客戶會直接與您的產品接洽，並花時間進行免費試用;這些都是絕佳的潛在客戶。
+- **後續**操作：別忘了在24小時內進行後續追蹤。 客戶部署試用產品之後，您將會立即取得您的 CRM 選擇：以電子郵件寄送電子郵件，但仍然暖。 要求排程電話以進一步瞭解您的產品是否為其問題的良好解決方案。 預期一般交易需要進行許多後續的呼叫。
+- **加強關係**：培養您的潛在客戶，讓您獲得更高的收益。 簽入，但不要 bombard 它們。 建議您先傳送電子郵件給潛在客戶至少幾次，再關閉它們。第一次嘗試之後，請不要放棄。 請記住，這些客戶會直接與您的產品聯繫，並將時間花在免費試用;這些都是絕佳的潛在客戶。
 
-## <a name="common-questions-about-lead-management"></a>潛在客戶管理的常見問題
-
-### <a name="where-can-i-get-help-in-setting-up-my-lead-destination"></a>可以在哪裡取得設定我潛在客戶目的地的說明？
-
-遵循[連線到您的 CRM 系統](#connect-to-your-crm-system)一節中的步驟，或透過[合作夥伴中心說明及支援](https://aka.ms/marketplacepublishersupport)提交支援票證。 然後選取 [供應項目建立]  >  [您的供應項目類型]  >  [潛在客戶管理設定]。
-
-### <a name="am-i-required-to-configure-a-lead-destination-in-order-to-publish-an-offer-in-the-commercial-marketplace"></a>我是否必須設定潛在客戶目的地，才能在商業市集中發佈供應項目？
-
-答案取決於您要發佈的供應項目類型。 軟體即服務 (SaaS) 和 Dynamics 365 Customer Engagement 使用**聯絡我**來列出所有 Dynamics 365 的財務和營運供應項目、所有 Dynamics 365 Business Central 供應項目、所有諮詢服務供應項目。 因此，其需要連線到潛在客戶目的地。 如果未列出您的供應項目類型，則不需要連線到潛在客戶目的地。 我們建議您設定潛在客戶目的地，讓您不會錯過商機。
-
-### <a name="how-can-i-find-the-test-lead"></a>如何找到測試潛在客戶？
-
-在您的潛在客戶目的地中搜尋 `"MSFT_TEST"`。 以下是 Microsoft 的範例測試潛在客戶。 請注意，測試潛在客戶的格式會根據潛在客戶目的地而有所不同。
-
-```
-{
-    "UserDetails": {
-      "FirstName": "MSFT_TEST_636573304831318844",
-      "LastName": "MSFT_TEST_636573304831318844",
-      "Email": "MSFT_TEST_636573304831318844@test.com",
-      "Phone": "1234567890",
-      "Country": "US",
-      "Company": "MSFT_TEST_636573304831318844",
-      "Title": "MSFT_TEST_636573304831318844"
-    },
-    "LeadSource": "AzureMarketplace",
-    "ActionCode": "INS",
-    "OfferTitle": "Contoso Test"
-    "Description": "MSFT_TEST_636573304831318844"
-}
-```
-
-### <a name="i-have-a-live-offer-but-why-am-i-not-seeing-any-leads"></a>我有作用中的供應項目，但為什麼沒看到任何潛在客戶？
-
-請確定您的潛在客戶目的地連線有效。 您在 [合作夥伴中心] 中選取 [發佈] 您的供應項目後，我們會將測試潛在客戶傳送給您。 如果您看到測試潛在客戶，表示連線有效。 您也可以嘗試在預覽步驟中取得供應項目預覽，以測試您的潛在客戶連線。 選取商業市集中列出的 [立即取得]、[與我聯繫] 或 [免費試用]。
-
-此外，請確定您尋找的是正確的資料。 本文的[瞭解潛在客戶資料](#understand-lead-data)一節說明我們傳送到潛在客戶目的地的潛在客戶資料。
-
-### <a name="i-configured-azure-blob-storage-as-my-lead-destination-but-why-dont-i-see-the-lead"></a>我已將 Azure Blob 儲存體設定為我的潛在客戶目的地，為何沒有看到潛在客戶？
-
-Azure Blob 儲存體已不再支援做為潛在客戶目的地，因此您會遺失您的供應項目所產生的任何潛在客戶。 切換至任何其他[潛在客戶目的地選項](./commercial-marketplace-get-customer-leads.md)。 
-
-### <a name="i-received-an-email-from-the-commercial-marketplace-but-why-cant-i-find-the-lead-in-my-crm"></a>我收到來自商業市集的電子郵件，但為什麼在我的 CRM 中找不到潛在客戶？
-
-終端使用者的電子郵件網域可能來自 .edu。 基於隱私權考慮，我們不會從 .edu 網域傳遞個人資訊。 請透過[合作夥伴中心說明及支援](https://aka.ms/marketplacepublishersupport)提交支援票證。
-
-### <a name="i-configured-an-azure-table-as-my-lead-destination-how-can-i-view-the-leads"></a>我已將 Azure 資料表設定為我的潛在客戶目的地。 如何才能檢視潛在客戶？
-
-您可以從 Azure 入口網站存取儲存在 Azure 資料表中的潛在客戶資料。 您也可以免費下載並安裝 [Azure 儲存體總管](https://azure.microsoft.com/features/storage-explorer/)，以檢視 Azure 儲存體帳戶的資料表資料。
-
-### <a name="i-configured-an-azure-table-as-my-lead-destination-can-i-get-notified-whenever-a-new-commercial-marketplace-lead-is-sent"></a>我已將 Azure 資料表設定為我的潛在客戶目的地。 是否可以在每次傳送新的商業市集潛在客戶時收到通知？
-
-是。 依照 [使用 Azure 資料表來設定潛在客戶管理](./commercial-marketplace-lead-management-instructions-azure-table.md)中的指示設定 Microsoft 流程，在潛在客戶新增至 Azure 資料表時傳送電子郵件。
-
-### <a name="i-configured-salesforce-as-my-lead-destination-but-why-cant-i-find-the-leads"></a>我已設定 Salesforce 做為我的潛在客戶目的地，但為什麼找不到潛在客戶？
-
-根據挑選清單檢查潛在客戶表單的 Web 是否為必要欄位。 如果是，請將該欄位切換為必要文字欄位。
-
-### <a name="there-was-an-issue-with-my-lead-destination-and-i-missed-some-leads-can-i-have-them-sent-to-me-in-an-email"></a>我的潛在客戶目的地發生問題，我遺漏了一些潛在客戶。 是否可以在電子郵件中將這些潛在客戶傳送給我？
-
-由於個人資訊原則的緣故，我們無法透過不安全的電子郵件分享潛在客戶資訊。
-
-### <a name="i-configured-an-azure-table-as-my-lead-destination-how-much-will-it-cost"></a>我已將 Azure 資料表設定為我的潛在客戶目的地。 需要花費多少成本？
-
-潛在客戶產生資料很少。 幾乎對所有發行者來說都小於 1 GB。 成本取決於收到的潛在客戶數目。 例如，如果一個月收到 1000 個潛在客戶，則成本大約是 50 美分。 如需儲存體定價的詳細資訊，請參閱 [Azure 儲存體概觀定價](https://azure.microsoft.com/pricing/details/storage/)。
-
-如果您的問題未獲得解答，請透過[合作夥伴中心說明及支援](https://aka.ms/marketplacepublishersupport)聯絡 Microsoft 支援服務。 然後選取 [供應項目建立]  >  [您的供應項目類型]  >  [潛在客戶管理設定]。
-
-### <a name="im-receiving-email-notifications-when-new-customer-leads-are-received-how-can-i-configure-someone-else-to-receive-these-emails"></a>當我收到新的潛在客戶時，也會收到電子郵件通知。 如何設定其他人收到這些電子郵件？
-
-在合作夥伴中心存取您的供應項目，移至 [供應項目設定] 頁面 > [潛在客戶管理]  >  [編輯]。 更新 [連絡人電子郵件] 欄位底下的電子郵件地址。
+技術設定完成後，將這些潛在客戶整合至您目前的銷售與行銷策略以及營運流程當中。 我們有興趣進一步了解您的整體銷售流程，並想與您密切合作，為您提供高品質潛在客戶及足夠的資料，讓您獲致成功。 我們歡迎您針對我們如何能最佳化及改善我們傳送給您的潛在客戶，及提供額外資料協助這些客戶達成您的成就，提出您的意見反應。 如果您有興趣[提供意見反應](mailto:AzureMarketOnboard@microsoft.com)及建議，讓我們的銷售團隊能推出更成功的商業市集潛在客戶，請告訴我們。
 
 ## <a name="next-steps"></a>後續步驟
 
-技術設定完成後，將這些潛在客戶整合至您目前的銷售與行銷策略以及營運流程當中。 我們有興趣進一步了解您的整體銷售流程，並想與您密切合作，為您提供高品質潛在客戶及足夠的資料，讓您獲致成功。 我們歡迎您針對我們如何能最佳化及改善我們傳送給您的潛在客戶，及提供額外資料協助這些客戶達成您的成就，提出您的意見反應。 如果您有興趣[提供意見反應](mailto:AzureMarketOnboard@microsoft.com)及建議，讓我們的銷售團隊能推出更成功的商業市集潛在客戶，請告訴我們。
+- [潛在客戶管理常見問題和疑難排解](../lead-management-faq.md)

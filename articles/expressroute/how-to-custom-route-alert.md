@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: duau
-ms.openlocfilehash: 4a116d06f5feb3fe402e7f64b9bccd5531b210c1
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: e546963a7ca90c7494164af7afefbb4e78b2259b
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90986567"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91651933"
 ---
 # <a name="configure-custom-alerts-to-monitor-advertised-routes"></a>設定自訂警示以監視已公告路由
 
@@ -78,7 +78,7 @@ ms.locfileid: "90986567"
 
 2. 選取 [ **角色** ] 以查看正在使用的角色定義。
 
-   :::image type="content" source="./media/custom-route-alert-portal/run-as-account-permissions.png" alt-text="指派角色":::
+   :::image type="content" source="./media/custom-route-alert-portal/run-as-account-permissions.png" alt-text="新增自動化帳戶":::
 
 ## <a name="create-and-configure-runbooks"></a><a name="runbooks"></a>建立和設定 runbook
 
@@ -88,25 +88,25 @@ ms.locfileid: "90986567"
 
 1. 開啟您的 Azure 自動化帳戶，然後流覽至 [ **模組**]。
 
-   :::image type="content" source="./media/custom-route-alert-portal/navigate-modules.png" alt-text="流覽至模組":::
+   :::image type="content" source="./media/custom-route-alert-portal/navigate-modules.png" alt-text="新增自動化帳戶":::
 
 2. 搜尋資源庫，並匯入下列模組： **Az. Accounts**、 **az. Network**、 **az. Automation**和 **az. Profile**。
 
-   :::image type="content" source="./media/custom-route-alert-portal/import-modules.png" alt-text="搜尋和匯入模組" lightbox="./media/custom-route-alert-portal/import-modules-expand.png":::
+   :::image type="content" source="./media/custom-route-alert-portal/import-modules.png" alt-text="新增自動化帳戶" lightbox="./media/custom-route-alert-portal/import-modules-expand.png":::
   
 ### <a name="2-create-a-runbook"></a><a name="create"></a>2. 建立 runbook
 
 1. 若要建立 PowerShell runbook，請流覽至您的自動化帳戶。 在 [程式 **自動化**] 底下，選取 [ **runbook** ] 磚，然後選取 [ **建立 runbook**]。
 
-   :::image type="content" source="./media/custom-route-alert-portal/create-runbook.png" alt-text="建立 runbook。":::
+   :::image type="content" source="./media/custom-route-alert-portal/create-runbook.png" alt-text="新增自動化帳戶":::
 
 2. 選取 [ **建立** ] 以建立 runbook。
 
-   :::image type="content" source="./media/custom-route-alert-portal/create-runbook-2.png" alt-text="選取 [建立]。":::
+   :::image type="content" source="./media/custom-route-alert-portal/create-runbook-2.png" alt-text="新增自動化帳戶":::
 
 3. 選取新建立的 runbook，然後選取 [ **編輯**]。
 
-   :::image type="content" source="./media/custom-route-alert-portal/edit-runbook.png" alt-text="編輯 runbook":::
+   :::image type="content" source="./media/custom-route-alert-portal/edit-runbook.png" alt-text="新增自動化帳戶":::
 
 4. 在 [ **編輯**] 中，貼上 PowerShell 腳本。 您可以修改 [範例腳本](#script) ，並在一或多個資源群組中用來監視 ExpressRoute 閘道。
 
@@ -231,7 +231,7 @@ Write-Output  $jsonResults
 1. 選取 [ **儲存** ] 以儲存 runbook 的草稿副本。
 2. 選取 [ **發佈** ]，將 runbook 發佈為自動化帳戶中的正式 runbook 版本。
 
-   :::image type="content" source="./media/custom-route-alert-portal/save-publish-runbook.png" alt-text="儲存併發布 runbook。":::
+   :::image type="content" source="./media/custom-route-alert-portal/save-publish-runbook.png" alt-text="新增自動化帳戶":::
 
 當您執行 PowerShell 腳本時，會收集值清單：
  
@@ -263,7 +263,7 @@ PowerShell 腳本會將收集的資訊轉換成 JSON 輸出。 Runbook 會使用
 
 建立 runbook 之後，就必須進行驗證。 選取 [ **啟動** ]，並檢查不同工作資料流程的輸出和錯誤。
 
-:::image type="content" source="./media/custom-route-alert-portal/validate-runbook.png" alt-text="驗證 runbook" lightbox="./media/custom-route-alert-portal/validate-runbook-expand.png":::
+:::image type="content" source="./media/custom-route-alert-portal/validate-runbook.png" alt-text="新增自動化帳戶" lightbox="./media/custom-route-alert-portal/validate-runbook-expand.png":::
 
 ## <a name="create-and-configure-a-logic-app"></a><a name="logic"></a>建立並設定邏輯應用程式
 
@@ -273,13 +273,13 @@ Azure Logic Apps 是所有集合和動作之進程的協調器。 在下列各�
 
 在此工作流程中，您會建立可定期監視 ExpressRoute 閘道的邏輯應用程式。 如果存在新的項目，邏輯應用程式會針對每個項目傳送電子郵件。 當您完成時，邏輯應用程式大致如下列工作流程所示︰
 
-:::image type="content" source="./media/custom-route-alert-portal/logic-apps-workflow.png" alt-text="Logic Apps 工作流程":::
+:::image type="content" source="./media/custom-route-alert-portal/logic-apps-workflow.png" alt-text="新增自動化帳戶":::
 
 ### <a name="1-create-a-logic-app"></a>1. 建立邏輯應用程式
 
 在 **邏輯應用程式設計**工具中，使用空白的 **邏輯應用程式** 範本建立邏輯應用程式。 如需相關步驟，請參閱 [建立 Logic Apps](../logic-apps/quickstart-create-first-logic-app-workflow.md#create-your-logic-app)。
 
-:::image type="content" source="./media/custom-route-alert-portal/blank-template.png" alt-text="空白範本":::
+:::image type="content" source="./media/custom-route-alert-portal/blank-template.png" alt-text="新增自動化帳戶":::
 
 ### <a name="2-add-a-trigger"></a>2. 新增觸發程式
 
@@ -287,7 +287,7 @@ Azure Logic Apps 是所有集合和動作之進程的協調器。 在下列各�
 
 若要定期執行以預先定義的時間排程為基礎的邏輯應用程式，請將內建的「 **週期：排程** 」新增至您的工作流程。 在 [搜尋] 方塊中，輸入 **schedule**。 選取 [觸發程序]  。 從觸發程式清單中選取 **[週期排程**]。
 
-:::image type="content" source="./media/custom-route-alert-portal/schedule.png" alt-text="週期：排程":::
+:::image type="content" source="./media/custom-route-alert-portal/schedule.png" alt-text="新增自動化帳戶":::
 
 在「週期排程」觸發程式中，您可以設定用來重複該工作流程的時區和週期。 時間間隔和頻率可一起為邏輯應用程式的觸發程序定義排程。 若要建立合理的最小週期頻率，請考慮下列因素：
 
@@ -299,7 +299,7 @@ Azure Logic Apps 是所有集合和動作之進程的協調器。 在下列各�
 
 在工作流程設定結束時，您可以藉由執行工作流程幾次，然後在 **執行歷程記錄**中確認結果，來檢查迴圈頻率的一致性。
 
-:::image type="content" source="./media/custom-route-alert-portal/recurrence.png" alt-text="螢幕擷取畫面：顯示週期間隔和頻率值。" lightbox="./media/custom-route-alert-portal/recurrence-expand.png":::
+:::image type="content" source="./media/custom-route-alert-portal/recurrence.png" alt-text="新增自動化帳戶" lightbox="./media/custom-route-alert-portal/recurrence-expand.png":::
 
 ### <a name="3-create-a-job"></a><a name="job"></a>3. 建立作業
 
@@ -308,29 +308,29 @@ Azure Logic Apps 是所有集合和動作之進程的協調器。 在下列各�
 1. 在 **Logic Apps 設計師**的 **[週期**] 下，選取 [ **新增步驟**]。 在 **[選擇動作** ] 和 [搜尋] 方塊中，選取 [ **全部**]。
 2. 在 [搜尋] 方塊中，輸入 **Azure 自動化** 並搜尋。 選取 [ **建立作業**]。 **建立作業** 將用來引發稍早建立的自動化 runbook。
 
-   :::image type="content" source="./media/custom-route-alert-portal/create-job.png" alt-text="建立作業":::
+   :::image type="content" source="./media/custom-route-alert-portal/create-job.png" alt-text="新增自動化帳戶":::
 
 3. 使用服務主體登入。 您可以使用現有的服務主體，也可以建立一個新的服務主體。 若要建立新的服務主體，請參閱 [如何使用入口網站來建立可存取資源的 Azure AD 服務主體](../active-directory/develop/howto-create-service-principal-portal.md)。 選取 **[使用服務主體連線]**。
 
-   :::image type="content" source="./media/custom-route-alert-portal/sign-in.png" alt-text="登入":::
+   :::image type="content" source="./media/custom-route-alert-portal/sign-in.png" alt-text="新增自動化帳戶":::
 
-4. 輸入連線 **名稱**、將 **用戶端識別碼** 新增 (應用程式識別碼) 、 **用戶端密碼**和 **租使用者識別碼**。 然後，選取 [Create] \(建立\)。
+4. 輸入連線 **名稱**、將 **用戶端識別碼** 新增 (應用程式識別碼) 、 **用戶端密碼**和 **租使用者識別碼**。 然後，選取 [Create]  \(建立\)。
 
-   :::image type="content" source="./media/custom-route-alert-portal/connect-service-principal.png" alt-text="使用服務主體連接":::
+   :::image type="content" source="./media/custom-route-alert-portal/connect-service-principal.png" alt-text="新增自動化帳戶":::
 
 5. 在 [ **建立作業** ] 頁面上，服務主體應該在裝載自動化帳戶的 **資源群組** 上具有「讀取者」角色，並在 **自動化帳戶**上具有「自動化作業操作員」。 此外，請確認您已將 **Runbook 名稱** 新增為新的參數。
 
-   :::image type="content" source="./media/custom-route-alert-portal/roles.png" alt-text="螢幕擷取畫面顯示 [迴圈] 中的 [建立作業值]，您可以在其中確認 Runbook 名稱。" lightbox="./media/custom-route-alert-portal/roles-expand.png":::
+   :::image type="content" source="./media/custom-route-alert-portal/roles.png" alt-text="新增自動化帳戶" lightbox="./media/custom-route-alert-portal/roles-expand.png":::
 
 ### <a name="4-get-the-job-output"></a><a name="output"></a>4. 取得作業輸出
 
 1. 選取 [新增步驟]。 搜尋「Azure 自動化」。 從 [ **動作** ] 清單中選取 [ **取得工作輸出**]。
 
-   :::image type="content" source="./media/custom-route-alert-portal/get-output.png" alt-text="取得作業輸出":::
+   :::image type="content" source="./media/custom-route-alert-portal/get-output.png" alt-text="新增自動化帳戶":::
 
 2. 在 [ **取得作業輸出** ] 頁面上，指定存取自動化帳戶所需的資訊。 選取您要使用的訂用帳戶 **、資源群組**和 **自動化帳戶** 。 在 [ **作業識別碼** ] 方塊內按一下。 當 **動態內容** 清單出現時，請選取 [ **作業識別碼**]。
 
-   :::image type="content" source="./media/custom-route-alert-portal/job-id.png" alt-text="作業識別碼" lightbox="./media/custom-route-alert-portal/job-id-expand.png":::
+   :::image type="content" source="./media/custom-route-alert-portal/job-id.png" alt-text="新增自動化帳戶" lightbox="./media/custom-route-alert-portal/job-id-expand.png":::
 
 ### <a name="5-parse-the-json"></a><a name="parse"></a>5. 剖析 JSON
 
@@ -339,23 +339,23 @@ Azure Logic Apps 是所有集合和動作之進程的協調器。 在下列各�
 1. 新增動作。 在 [ **取得工作輸出->] 動作**底下，選取 [ **新增步驟**]。
 2. 在 [ **選擇動作** ] 搜尋方塊中，輸入「剖析 json」，以搜尋提供此動作的連接器。 在 [ **動作** ] 清單底下，針對您想要使用的資料作業，選取 [ **剖析 JSON** ] 動作。
 
-   :::image type="content" source="./media/custom-route-alert-portal/parse-json.png" alt-text="剖析 JSON":::
+   :::image type="content" source="./media/custom-route-alert-portal/parse-json.png" alt-text="新增自動化帳戶":::
 
 3. 在 **內容** 方塊內部按一下。 當動態內容清單出現時，請選取 [ **內容**]。
 
-   :::image type="content" source="./media/custom-route-alert-portal/content.png" alt-text="螢幕擷取畫面顯示已選取內容的 [剖析 JSON] 對話方塊。" lightbox="./media/custom-route-alert-portal/content-expand.png":::
+   :::image type="content" source="./media/custom-route-alert-portal/content.png" alt-text="新增自動化帳戶" lightbox="./media/custom-route-alert-portal/content-expand.png":::
 
 4. 剖析 JSON 需要架構。 您可以使用自動化 runbook 的輸出來產生架構。 開啟新的網頁瀏覽器會話、執行自動化 runbook，並抓取輸出。 返回 **Logic Apps 剖析 JSON 資料作業** 動作。 在頁面底部，選取 [ **使用範例承載來產生架構**]。
 
-   :::image type="content" source="./media/custom-route-alert-portal/sample-payload.png" alt-text="使用範例承載來產生架構":::
+   :::image type="content" source="./media/custom-route-alert-portal/sample-payload.png" alt-text="新增自動化帳戶":::
 
 5. 針對 **輸入或貼上範例 JSON**承載，請貼上自動化 runbook 的輸出，然後選取 [ **完成**]。
 
-   :::image type="content" source="./media/custom-route-alert-portal/paste-payload.png" alt-text="貼上範例承載" lightbox="./media/custom-route-alert-portal/paste-payload-expand.png":::
+   :::image type="content" source="./media/custom-route-alert-portal/paste-payload.png" alt-text="新增自動化帳戶" lightbox="./media/custom-route-alert-portal/paste-payload-expand.png":::
 
 6. 架構是藉由剖析 JSON 輸入承載自動產生的。
 
-   :::image type="content" source="./media/custom-route-alert-portal/generate-schema.png" alt-text="產生架構" lightbox="./media/custom-route-alert-portal/generate-schema-expand.png":::
+   :::image type="content" source="./media/custom-route-alert-portal/generate-schema.png" alt-text="新增自動化帳戶" lightbox="./media/custom-route-alert-portal/generate-schema-expand.png":::
 
 ### <a name="6-define-and-initialize-a-variable"></a><a name="define-variable"></a>6. 定義和初始化變數
 
@@ -363,15 +363,15 @@ Azure Logic Apps 是所有集合和動作之進程的協調器。 在下列各�
 
 1. 在 [ **取得作業輸出] 動作**底下，選取 [ **新增步驟**]。 在 [搜尋] 方塊中，尋找並選取 [ **變數**]。
 
-   :::image type="content" source="./media/custom-route-alert-portal/variables.png" alt-text="螢幕擷取畫面顯示 [選擇動作] 對話方塊和 [搜尋] 方塊中的變數，以及選取的變數。":::
+   :::image type="content" source="./media/custom-route-alert-portal/variables.png" alt-text="新增自動化帳戶":::
 
 2. 從 [ **動作** ] 清單中，選取 [ **初始化變數** ] 動作。
 
-   :::image type="content" source="./media/custom-route-alert-portal/initialize-variables.png" alt-text="初始化變數":::
+   :::image type="content" source="./media/custom-route-alert-portal/initialize-variables.png" alt-text="新增自動化帳戶":::
 
 3. 指定變數的名稱。 在 [ **類型**] 中選取 [ **字串**]。 稍後會在工作流程中指派變數的 **值** 。
 
-   :::image type="content" source="./media/custom-route-alert-portal/string.png" alt-text="螢幕擷取畫面顯示與 Initialize variable 相關聯的剖析 JSON，您可以在其中輸入名稱、類型和值。" lightbox="./media/custom-route-alert-portal/string-expand.png":::
+   :::image type="content" source="./media/custom-route-alert-portal/string.png" alt-text="新增自動化帳戶" lightbox="./media/custom-route-alert-portal/string-expand.png":::
 
 ### <a name="7-create-a-for-each-action"></a><a name="cycles-json"></a>7. 建立 "For each" 動作
 
@@ -379,51 +379,51 @@ Azure Logic Apps 是所有集合和動作之進程的協調器。 在下列各�
 
 1. 在 [ **初始化變數**] 下，選取 [ **新增動作**]。 在搜尋方塊中，輸入 "for each" 作為篩選條件。
 
-   :::image type="content" source="./media/custom-route-alert-portal/control.png" alt-text="螢幕擷取畫面顯示 [選擇動作] 對話方塊，並在 [搜尋] 方塊中選取並選取控制項。":::
+   :::image type="content" source="./media/custom-route-alert-portal/control.png" alt-text="新增自動化帳戶":::
 
 2. 從 [ **動作** ] 清單中選取 **每個控制項**的動作。
 
-   :::image type="content" source="./media/custom-route-alert-portal/for-each.png" alt-text="針對每個控制項":::
+   :::image type="content" source="./media/custom-route-alert-portal/for-each.png" alt-text="新增自動化帳戶":::
 
 3. 按一下 [ **選取先前步驟** 中的輸出] 文字方塊。 當 **動態內容** 清單出現時，請選取 **主體**，也就是從剖析的 JSON 輸出。
 
-   :::image type="content" source="./media/custom-route-alert-portal/body.png" alt-text="螢幕擷取畫面顯示與 For each 相關聯的初始化變數，其中包含 [選取先前步驟的輸出] 文字方塊。":::
+   :::image type="content" source="./media/custom-route-alert-portal/body.png" alt-text="新增自動化帳戶":::
 
 4. 針對 JSON 主體的每個元素，我們想要設定條件。 從 [動作] 群組中選取 [ **控制項**]。
 
-   :::image type="content" source="./media/custom-route-alert-portal/condition-control.png" alt-text="控制":::
+   :::image type="content" source="./media/custom-route-alert-portal/condition-control.png" alt-text="新增自動化帳戶":::
 
 5. 在 [ **動作** ] 清單中，選取 [ **條件-控制項**]。 條件控制是一個控制項結構，它會比較您工作流程中的資料與特定值或欄位。 然後，您可以根據資料是否符合條件，指定要執行的不同動作。
 
-   :::image type="content" source="./media/custom-route-alert-portal/condition.png" alt-text="Condition 控制項":::
+   :::image type="content" source="./media/custom-route-alert-portal/condition.png" alt-text="新增自動化帳戶":::
 
 6. 在 [ **條件** ] 動作的根目錄中，將邏輯作業變更為 **或**。
 
-   :::image type="content" source="./media/custom-route-alert-portal/condition-or.png" alt-text="Or" lightbox="./media/custom-route-alert-portal/condition-or-expand.png":::
+   :::image type="content" source="./media/custom-route-alert-portal/condition-or.png" alt-text="新增自動化帳戶" lightbox="./media/custom-route-alert-portal/condition-or-expand.png":::
 
 7. 檢查 ExpressRoute 閘道向兩個 BGP 對等端通告的網路首碼的值。 您可以在 **動態內容**中的 "numRoutePeer1" 和 "numRoutePeer2" 中使用路由的數目。 在 [值] 方塊中，輸入 **numRoutePeer1**的值。
 
-   :::image type="content" source="./media/custom-route-alert-portal/peer-1.png" alt-text="numRoutesPeer1":::
+   :::image type="content" source="./media/custom-route-alert-portal/peer-1.png" alt-text="新增自動化帳戶":::
 
 8. 若要在條件中加入另一個資料列，請選擇 [ **加入-> 加入資料列**]。 在第二個方塊的 [ **動態內容**] 中，選取 [ **numRoutePeer2**]。
 
-   :::image type="content" source="./media/custom-route-alert-portal/peer-2.png" alt-text="numRoutesPeer2":::
+   :::image type="content" source="./media/custom-route-alert-portal/peer-2.png" alt-text="新增自動化帳戶":::
 
 9. 當兩個動態變數（numRoute1 或 numRoute2）中的其中一個大於臨界值時，邏輯條件為 true。 在此範例中，臨界值固定為 160 (80% 的最大200路由) 。 您可以變更臨界值，以符合您的需求。 為求一致，此值應與 runbook PowerShell 腳本中使用的值相同。
 
-   :::image type="content" source="./media/custom-route-alert-portal/logic-condition.png" alt-text="邏輯條件":::
+   :::image type="content" source="./media/custom-route-alert-portal/logic-condition.png" alt-text="新增自動化帳戶":::
 
 10. 在 [ **若為 true**] 下，以電子郵件格式和建立傳送警示的動作。 在 [選擇動作] 中，搜尋並選取 **變數**。
 
-    :::image type="content" source="./media/custom-route-alert-portal/condition-if-true.png" alt-text="若為 true":::
+    :::image type="content" source="./media/custom-route-alert-portal/condition-if-true.png" alt-text="新增自動化帳戶":::
 
 11. 在 [變數] 中選取 [ **新增動作**]。 在 [ **動作** ] 清單中選取 [ **設定變數**]。
 
-    :::image type="content" source="./media/custom-route-alert-portal/condition-set-variable.png" alt-text="設定變數":::
+    :::image type="content" source="./media/custom-route-alert-portal/condition-set-variable.png" alt-text="新增自動化帳戶":::
 
 12. 在 [ **名稱**] 中，選取您先前建立之名為 **EmailBody** 的變數。 針對 [ **值**]，貼上格式化警示電子郵件所需的 HTML 腳本。 使用 **動態內容** 來包含 JSON 主體的值。 設定這些設定之後，結果就是變數 **Emailbody** 包含與警示相關的所有資訊（HTML 格式）。
 
-    :::image type="content" source="./media/custom-route-alert-portal/paste-script.png" alt-text="設定變數":::
+    :::image type="content" source="./media/custom-route-alert-portal/paste-script.png" alt-text="新增自動化帳戶":::
 
 ### <a name="8-add-the-email-connector"></a><a name="email"></a>8. 新增電子郵件連接器
 
@@ -431,30 +431,30 @@ Logic Apps 提供許多電子郵件連接器。 在此範例中，我們新增�
 
 1. 選取 [ **Office 365 Outlook**]。
 
-   :::image type="content" source="./media/custom-route-alert-portal/email.png" alt-text="傳送電子郵件":::
+   :::image type="content" source="./media/custom-route-alert-portal/email.png" alt-text="新增自動化帳戶":::
 
 2. 在 [ **動作** ] 清單中，選取 [ **傳送電子郵件 (V2) **。
 
-   :::image type="content" source="./media/custom-route-alert-portal/email-v2.png" alt-text="傳送電子郵件 (V2) ":::
+   :::image type="content" source="./media/custom-route-alert-portal/email-v2.png" alt-text="新增自動化帳戶":::
 
 3. 登入以建立與 Office 365 Outlook 的連線。
 
-   :::image type="content" source="./media/custom-route-alert-portal/office-365.png" alt-text="登入":::
+   :::image type="content" source="./media/custom-route-alert-portal/office-365.png" alt-text="新增自動化帳戶":::
 
 4. 在 [ **主體** ] 欄位中，按一下 [ **新增動態內容**]。 從動態內容面板中，新增變數 **Emailbody**。 填寫 **[主旨** ] 和 [ **到** ] 欄位。
 
-   :::image type="content" source="./media/custom-route-alert-portal/emailbody.png" alt-text="本文":::
+   :::image type="content" source="./media/custom-route-alert-portal/emailbody.png" alt-text="新增自動化帳戶":::
 
 5. [ **傳送電子郵件 (v2]) ** 動作完成工作流程設定。
 
-   :::image type="content" source="./media/custom-route-alert-portal/send-email-v2.png" alt-text="傳送電子郵件 v2" lightbox="./media/custom-route-alert-portal/send-email-v2-expand.png":::
+   :::image type="content" source="./media/custom-route-alert-portal/send-email-v2.png" alt-text="新增自動化帳戶" lightbox="./media/custom-route-alert-portal/send-email-v2-expand.png":::
 
 ### <a name="9-workflow-validation"></a><a name="validation"></a>9. 工作流程驗證
 
 最後一個步驟是工作流程驗證。 在 **Logic Apps 總覽**] 中，選取 [ **執行觸發**程式]。 選取 **[週期**]。 您可以在 **執行歷程記錄**中監視和驗證工作流程。
 
-:::image type="content" source="./media/custom-route-alert-portal/trigger.png" alt-text="執行觸發程式":::
+:::image type="content" source="./media/custom-route-alert-portal/trigger.png" alt-text="新增自動化帳戶":::
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 若要深入瞭解如何自訂工作流程，請參閱 [Azure Logic Apps](../logic-apps/logic-apps-overview.md)。

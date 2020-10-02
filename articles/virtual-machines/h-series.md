@@ -8,28 +8,26 @@ ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: b1f30e91b9ce96daf8b2eb8ac6c8cb38b86b347f
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: 56112107bbd1bb506fcbff615ec524e043d54d1a
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89594402"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653718"
 ---
 # <a name="h-series"></a>H 系列
 
 H 系列 Vm 已針對依核心需求高 CPU 頻率或大型記憶體驅動的應用程式進行優化。 H 系列 Vm 的特色為8或 16 Intel 可高度 E5 2667 v3 處理器核心，每個 CPU 核心最多 14 GB RAM，且無超執行緒。 H 系列功能 56 Gb/秒的 Mellanox FDR 可在非封鎖的 fat 樹狀結構設定中使用，以達到一致的 RDMA 效能。 H 系列 Vm 目前尚未啟用 SR-IOV，並支援 Intel MPI 5.x 和 MS-CHAP。
 
-ACU：290 - 300
+[ACU](acu.md)：290-300<br>
+[進階儲存體](premium-storage-performance.md)：不支援<br>
+[進階儲存體](premium-storage-performance.md)快取：不支援<br>
+[即時移轉](maintenance-and-updates.md)：不支援<br>
+[記憶體保留更新](maintenance-and-updates.md)：不支援<br>
+[VM 世代支援](generation-2.md)：第1代<br>
+<br>
 
-進階儲存體：不支援
-
-進階儲存體快取：不支援
-
-即時移轉：不支援
-
-記憶體保留更新：不支援
-
-| 大小 | vCPU | 處理器 | 記憶體 (GB) | 記憶體頻寬 GB/秒 | 基礎 CPU 頻率 (GHz)  | 所有核心頻率 (GHz，尖峰)  | 單一核心頻率 (GHz，尖峰)  | RDMA 效能 (Gb/秒)  | MPI 支援 | 暫存儲存體 (GB)  | 最大資料磁碟 | 最大磁碟輸送量︰IOPS | 最大乙太網路 Nic |
+| 大小 | vCPU | 處理器 | 記憶體 (GiB) | 記憶體頻寬 GB/秒 | 基礎 CPU 頻率 (GHz)  | 所有核心頻率 (GHz，尖峰)  | 單一核心頻率 (GHz，尖峰)  | RDMA 效能 (Gb/秒)  | MPI 支援 | 暫存儲存體 (GiB) | 最大資料磁碟 | 最大磁碟輸送量︰IOPS | 最大乙太網路 Nic |
 | --- | --- |--- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_H8   | 8  | Intel 至 E5 2667 v3 | 56 | 40 | 3.2 | 3.3 | 3.6 | - | Intel 5.x、MS-CHAP | 1000 | 32 | 32 x 500 | 2 |
 | Standard_H16  | 16 | Intel 至 E5 2667 v3 | 112 | 80 | 3.2 | 3.3 | 3.6 | - | Intel 5.x、MS-CHAP | 2000 | 64 | 64 x 500 | 4 |

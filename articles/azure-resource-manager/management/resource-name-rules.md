@@ -2,13 +2,13 @@
 title: 資源命名限制
 description: 顯示命名 Azure 資源的規則和限制。
 ms.topic: conceptual
-ms.date: 09/23/2020
-ms.openlocfilehash: a4c3bf58bf5e84051b1e21863d2d581af5fa9f23
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.date: 10/01/2020
+ms.openlocfilehash: ff92eff9351e944f8baa11cf981e8511ad8e4ae1
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91447518"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653361"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Azure 資源的命名規則和限制
 
@@ -174,7 +174,7 @@ ms.locfileid: "91447518"
 > | galleries / images / versions | image | 32 位元整數 | 數字和句號。 |
 > | images | 資源群組 | 1-80 | 英數字元、底線、句號和連字號。<br><br>以英數字元開頭。 以英數字元或底線結尾。 |
 > | snapshots | 資源群組 | 1-80 | 英數字元、底線、句號和連字號。<br><br>以英數字元開頭。 以英數字元或底線結尾。 |
-> | virtualMachines | 資源群組 | 1-15 (Windows)<br>1-64 (Linux)<br><br>請參閱下方注意事項。 | 無法使用空格或下列字元：<br> `\/"'[]:|<>+=;,?*@&`<br><br>不能以底線開頭。 不能以句號或連字號結尾。 |
+> | virtualMachines | 資源群組 | 1-15 (Windows)<br>1-64 (Linux)<br><br>請參閱下方注意事項。 | 無法使用空格或下列字元：<br> `\/"'[]:|<>+=;,?*@&_`<br><br>Windows Vm 不能包含句號或以連字號結尾。<br><br>Linux Vm 的結尾不能是句號或連字號。 |
 > | virtualMachineScaleSets | 資源群組 | 1-15 (Windows)<br>1-64 (Linux)<br><br>請參閱下方注意事項。 | 無法使用空格或下列字元：<br> `\/"'[]:|<>+=;,?*@&`<br><br>不能以底線開頭。 不能以句號或連字號結尾。 |
 
 > [!NOTE]

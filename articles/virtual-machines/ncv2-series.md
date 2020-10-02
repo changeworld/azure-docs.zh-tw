@@ -7,29 +7,27 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: f7d4403fa480aa03868df5a0daa09e54ce8ecda7
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 19ed565cbc68cc49da9daa5460e4dca41ce01cbc
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286218"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653480"
 ---
 # <a name="ncv2-series"></a>NCv2 系列
 
-NCv2 系列 VM 是由 NVIDIA Tesla P100 GPU 提供技術支援。 這些 GPU 可提供 NC 系列 2 倍以上的計算效能。 客戶可針對儲槽模型、DNA 定序、蛋白質分析、蒙地卡羅模擬等傳統 HPC 工作負載，善用這些更新過的 GPU。 除了 Gpu 以外，NCv2 系列 Vm 也是由 Intel 強式 E5-2690 v4 （Broadwell） Cpu 提供技術支援。
+NCv2 系列 VM 是由 NVIDIA Tesla P100 GPU 提供技術支援。 這些 GPU 可提供 NC 系列 2 倍以上的計算效能。 客戶可針對儲槽模型、DNA 定序、蛋白質分析、蒙地卡羅模擬等傳統 HPC 工作負載，善用這些更新過的 GPU。 除了 Gpu 之外，NCv2 系列的 Vm 也會由 Intel Broadwell E5-2690 v4 () Cpu 提供技術支援。
 
 NC24rs v2 組態提供低延遲且高輸送量網路介面，最適合用於緊密結合的平行計算工作負載。
 
-進階儲存體：支援
-
-進階儲存體快取：支援
-
-即時移轉：不支援
-
-記憶體保留更新：不支援
+[進階儲存體](premium-storage-performance.md)：支援<br>
+[進階儲存體](premium-storage-performance.md)快取：支援<br>
+[即時移轉](maintenance-and-updates.md)：不支援<br>
+[記憶體保留更新](maintenance-and-updates.md)：不支援<br>
+[VM 世代支援](generation-2.md)：第1代和第2代<br>
 
 > [!IMPORTANT]
-> 針對此 VM 系列，您訂用帳戶中的 vCPU （核心）配額一開始會在每個區域中設定為0。 在[可用區域](https://azure.microsoft.com/regions/services/)中，為此系列[要求增加 vCPU 配額](../azure-portal/supportability/resource-manager-core-quotas-request.md)。
+> 針對此 VM 系列，訂用帳戶中的 vCPU (core) 配額一開始會在每個區域中設定為0。 在[可用區域](https://azure.microsoft.com/regions/services/)中，為此系列[要求增加 vCPU 配額](../azure-portal/supportability/resource-manager-core-quotas-request.md)。
 >
 | 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | GPU | GPU 記憶體：GiB | 最大資料磁碟 | 最大取消快取的磁碟輸送量：IOPS/MBps | 最大 NIC |
 |---|---|---|---|---|---|---|---|---|
@@ -50,7 +48,7 @@ NC24rs v2 組態提供低延遲且高輸送量網路介面，最適合用於緊�
 
 [NVIDIA GPU 驅動程式擴充功能](./extensions/hpccompute-gpu-windows.md)會在 N 系列 VM 上安裝適當的 NVIDIA CUDA 或 GRID 驅動程式。 使用 Azure 入口網站或者 Azure PowerShell 或 Azure Resource Manager 範本之類的工具，安裝或管理擴充功能。 如需支援的作業系統和部署步驟，請參閱 [NVIDIA GPU 驅動程式擴充功能文件](./extensions/hpccompute-gpu-windows.md)。 如需有關虛擬機器擴充功能的一般資訊，請參閱 [Azure 虛擬機器擴充功能和功能](./extensions/overview.md)。
 
-如果您選擇手動安裝 NVIDIA GPU 驅動程式，請參閱適用于[Windows 的 n 系列 gpu 驅動程式設定](./windows/n-series-driver-setup.md)或[Linux 的 n 系列 gpu 驅動](./linux/n-series-driver-setup.md)程式設定，以瞭解支援的作業系統、驅動程式、安裝和驗證步驟。
+如果您選擇手動安裝 NVIDIA GPU 驅動程式，請參閱適用于 [Windows 的 n 系列 gpu 驅動程式設定](./windows/n-series-driver-setup.md) ，或適用于 [Linux 的 n 系列 gpu 驅動程式設定](./linux/n-series-driver-setup.md) ，以取得支援的作業系統、驅動程式、安裝和驗證步驟。
 
 ## <a name="other-sizes"></a>其他大小
 

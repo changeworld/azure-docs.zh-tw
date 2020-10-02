@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 04/07/2020
 ms.author: jushiman
-ms.openlocfilehash: c91e9832e4b415a59c12b71964a0da580e9fda21
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 5bf6a17c1a4aa1c7f212045af0d1b750ddb2a906
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88651126"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653548"
 ---
 # <a name="mv2-series"></a>Mv2 系列
 
@@ -20,15 +20,13 @@ Mv2 系列提供高輸送量、低延遲的平臺，在超執行緒 Intel®的®
 
 Mv2 系列 VM 的功能 Intel®超執行緒技術
 
-進階儲存體：支援
-
-進階儲存體快取：支援
-
-即時移轉：不支援
-
-記憶體保留更新：不支援
-
-寫入加速器： [支援](./how-to-enable-write-accelerator.md)
+[進階儲存體](premium-storage-performance.md)：支援<br>
+[進階儲存體](premium-storage-performance.md)快取：支援<br>
+[即時移轉](maintenance-and-updates.md)：不支援<br>
+[記憶體保留更新](maintenance-and-updates.md)：不支援<br>
+[VM 世代支援](generation-2.md)：第1代和第2代<br>
+[寫入加速器](./how-to-enable-write-accelerator.md)：支援<br>
+<br>
 
 |大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大資料磁碟 | 最大快取和暫存儲存體輸送量IOPS / MBps (快取大小，以 GiB 為單位) | 最大取消快取的磁碟輸送量︰IOPS / MBps | 最大 NIC | 預期的網路頻寬 (Mbps)  |
 |---|---|---|---|---|---|---|---|---|

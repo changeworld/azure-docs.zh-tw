@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/10/2016
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: ec3f8f71713abb818f29458748eb0054390f474e
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 17b8fc3824fb1c7e6cfcfc3d4333dc226b51724d
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89396670"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653633"
 ---
 # <a name="expressroute-for-cloud-solution-providers-csp"></a>適用於雲端解決方案提供者 (CSP) 的 ExpressRoute
 Microsoft 為傳統的轉銷商和經銷商 (CSP) 提供超大規模的服務，以便為您的客戶快速佈建新的服務和解決方案，而不需要投資開發這些新服務。 若要讓雲端解決方案提供者 (CSP) 能夠直接管理這些新服務，Microsoft 提供了一些程式和 API，讓 CSP 可以代表您的客戶管理 Microsoft Azure 資源。 其中一個資源是 ExpressRoute。 ExpressRoute 可讓 CSP 將現有的客戶資源連接到 Azure 服務。 ExpressRoute 是 Azure 中服務的高速私人通訊連結。 
@@ -34,18 +34,18 @@ Microsoft 提供 Csp Api 來管理 Azure 客戶訂用帳戶，其方式是允許
 您與客戶簽訂的合約將會決定訂用帳戶的管理方式。 CSP 可以直接管理資源的建立和維護，或客戶可以持續控制 Microsoft Azure 訂用帳戶並建立他們所需的 Azure 資源。 如果您的客戶在其 Microsoft Azure 訂用帳戶中管理資源的建立，則會使用兩個模型的其中一種：「連線*到*」模型或「*直接到*」模型。 下列各節會詳細說明這些模型。  
 
 ### <a name="connect-through-model"></a>Connect-Through 模型
-![替代文字](./media/expressroute-for-cloud-solution-providers/connect-through.png)  
+![顯示「連接到」模型的圖表。](./media/expressroute-for-cloud-solution-providers/connect-through.png)  
 
 在 Connect-Through 模型中，CSP 會在您的資料中心與您客戶的 Azure 訂用帳戶之間建立直接連線。 使用 ExpressRoute 進行直接連線，連接您的網路與 Azure。 然後您的客戶會連接到您的網路。 此案例需要客戶通過 CSP 網路來存取 Azure 服務。 
 
 如果您的客戶有其他未由您管理的 Azure 訂用帳戶，則會使用公用網際網路或自己的私人連線來連線到在非 CSP 訂用帳戶下布建的服務。 
 
-針對管理 Azure 服務的 CSP，假設 CSP 有先前建立的客戶身分識別存放區，接著會將其複寫到 Azure Active Directory，以透過代理者 (AOBO) 來管理其 CSP 訂用帳戶。 此案例的關鍵驅動因素包括：指定的夥伴或服務提供者與客戶建立關聯性、客戶目前使用提供者服務，或夥伴想要提供提供者裝載和 Azure 託管解決方案的組合，以提供彈性並解決 CSP 本身無法滿足的客戶挑戰。 此模型如下 **圖**所說明。
+針對管理 Azure 服務的 CSP，假設 CSP 有先前建立的客戶身分識別存放區，接著會將其複寫到 Azure Active Directory，以透過代理者 (AOBO) 來管理其 CSP 訂用帳戶。 此案例的關鍵驅動因素包括：指定的夥伴或服務提供者與客戶建立關聯性、客戶目前使用提供者服務，或夥伴想要提供提供者裝載和 Azure 託管解決方案的組合，以提供彈性並解決 CSP 本身無法滿足的客戶挑戰。 下 **圖** 說明此模型。
 
-![替代文字](./media/expressroute-for-cloud-solution-providers/connect-through-model.png)
+![顯示「連接到」模型之詳細案例的圖表。](./media/expressroute-for-cloud-solution-providers/connect-through-model.png)
 
 ### <a name="connect-to-model"></a>Connect-To 模型
-![替代文字](./media/expressroute-for-cloud-solution-providers/connect-to.png)
+![顯示「連接到」模型的圖表。](./media/expressroute-for-cloud-solution-providers/connect-to.png)
 
 在 Connect-To 模型中，服務提供者會使用 ExpressRoute 透過客戶的 (客戶) 網路，在其客戶的資料中心與 CSP 佈建的 Azure 訂用帳戶之間建立直接連線。
 
@@ -56,7 +56,7 @@ Microsoft 提供 Csp Api 來管理 Azure 客戶訂用帳戶，其方式是允許
 
 此連線案例要求客戶直接透過客戶網路連接，以存取受 CSP 管理的 Azure 訂用帳戶，使用建立、擁有及管理的直接網路連線，無論是由客戶完全或部分管理。 針對這些客戶，假設提供者目前未建立客戶身分識別存放區，而且提供者會協助客戶將其目前的身分識別存放區複寫到 Azure Active Directory，以透過 AOBO 管理其訂用帳戶。 此案例的關鍵驅動因素包括特定的夥伴或服務提供者已建立起與客戶的關聯性、客戶目前使用提供者服務，或夥伴想要提供單獨以 Azure 裝載的解決方案為基礎的服務，而不需要現有的提供者資料中心或基礎結構。
 
-![替代文字](./media/expressroute-for-cloud-solution-providers/connect-to-model.png)
+![顯示「連接到」模型詳細案例的圖表。](./media/expressroute-for-cloud-solution-providers/connect-to-model.png)
 
 這兩個選項之間的選擇，取決於您客戶的需求，以及您目前提供 Azure 服務的需求。 下列連結涵蓋這些模型的詳細資料，以及相關聯的角色型存取控制、網路和身分識別設計模式︰
 
@@ -109,7 +109,7 @@ ExpressRoute 會透過 Azure 虛擬網路閘道連接到 Azure 網路。 網路�
 * 使用 VPN 閘道的虛擬網路對虛擬網路路由
 * 使用 VPN 或 ExpressRoute 閘道的虛擬網路對內部部署網路路由
 
-![替代文字](./media/expressroute-for-cloud-solution-providers/default-routing.png)  
+![顯示預設路由選項的圖表。](./media/expressroute-for-cloud-solution-providers/default-routing.png)  
 
 ### <a name="user-defined-routing-udr"></a>使用者定義的路由 (UDR)
 使用者定義的路由能夠控制從虛擬網路中指派的子網路輸出至其他子網路的流量，或透過其中一個其他預先定義的閘道 (ExpressRoute、網際網路或 VPN) 輸出的流量。 使用者定義的路由表可以取代預設的系統路由表，其以自訂路由取代預設的路由表。 利用使用者定義的路由，客戶可以建立對應用裝置 (例如防火牆或入侵偵測應用裝置) 的特定路由，或封鎖從裝載使用者定義之路由的子網路對特定子網路的存取。 如需使用者定義路由的總覽，請參閱 [這裡](../virtual-network/virtual-networks-udr-overview.md)。 
@@ -124,7 +124,7 @@ ExpressRoute 會透過 Azure 虛擬網路閘道連接到 Azure 網路。 網路�
 
 ![替代文字](./media/expressroute-for-cloud-solution-providers/expressroute-security.png)  
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 雲端解決方案提供者服務可讓您提升您對於客戶的價值，而不需要購買昂貴的基礎結構和功能，同時讓您維持主要外包提供者的地位。 透過 CSP API 可達成與 Microsoft Azure 的緊密整合，讓您將 Microsoft Azure 的管理整合在現有的管理架構內。  
 
 在下列連結中可以找到額外的資訊︰

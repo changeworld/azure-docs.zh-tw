@@ -8,20 +8,20 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 08/31/2020
+ms.date: 10/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: 0933e34e5bdd8469b827ed03c0eff51a4ecba0d5
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 5810bea7920dbfe91a836814124cbe4c7f6f3bee
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89488162"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653786"
 ---
 # <a name="azure-time-series-insights-explorer"></a>Azure 時間序列深入解析總管
 
 本文說明 Azure 時間序列深入解析 Gen2 [示範環境](https://insights.timeseries.azure.com/preview/demo)內可用的各種功能和選項。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要開始使用 Azure 時間序列深入解析 Explorer，您必須：
 
@@ -214,12 +214,12 @@ Azure 時間序列深入解析的 Gen2 條款面板會顯示，而不是階層�
 
 **Where**：使用 where 子句，利用下表所列的運算元集合來快速篩選您的事件。 如果透過選取運算元進行搜尋，述詞會依據該搜尋自動更新。 支援的運算元類型包括下列各項：
 
-| 作業    | 支援的類型    | 備註 |
+| 作業    | 支援的類型    | 注意 |
 | --- | --- | --- |
 | `<`, `>`, `<=`, `>=` | Double、DateTime、TimeSpan | |
 | `=`, `!=`, `<>` | String、Bool、Double、DateTime、TimeSpan、NULL |
 | `IN` | String、Bool、Double、DateTime、TimeSpan、NULL | 所有的運算元都應該是相同的類型或是 NULL 常數。 |
-| `HAS` | String | 右邊只允許常數位串常值。 不允許空字串和 Null。 |
+| `HAS` | 字串 | 右邊只允許常數位串常值。 不允許空字串和 Null。 |
 
 若要深入瞭解支援的查詢作業和資料類型，請參閱 [ (TSX) 的時間序列運算式 ](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax)。
 
@@ -237,7 +237,7 @@ Azure 時間序列深入解析的 Gen2 條款面板會顯示，而不是階層�
 
   [![取消已查詢和已篩選的選項](media/v2-update-explorer/s1-s2-preview-filtered-view-cancel.png)](media/v2-update-explorer/s1-s2-preview-filtered-view-cancel.png#lightbox)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 瞭解如何將 [資料擷取](./concepts-ingestion-overview.md) 至您的環境。
 

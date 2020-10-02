@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: b-juche
-ms.openlocfilehash: 4b8c879a89da47a081e4b95382d17b3d2baede9d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 2a64e595f0ea07510f416be56a54a3c74294b95d
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91325567"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653616"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>關於 Azure NetApp Files 的常見問題
 
@@ -178,15 +178,11 @@ Yes, Azure NetApp Files supports LDAP signing by default. This functionality ena
 
 ### <a name="i-tried-to-use-the-root-and-local-users-to-access-a-dual-protocol-volume-with-the-ntfs-security-style-on-a-unix-system-why-did-i-encounter-a-permission-denied-error"></a>我嘗試使用「根」和「本機使用者」來存取 UNIX 系統上具有 NTFS 安全性樣式的雙重通訊協定磁片區。 為什麼我遇到「許可權被拒」錯誤？   
 
-雙協定磁片區支援 NFS 和 SMB 通訊協定。  當您嘗試存取 UNIX 系統上裝載的磁片區時，系統會嘗試將您使用的 UNIX 使用者對應到 Windows 使用者。 如果找不到對應，就會發生「許可權拒絕」錯誤。  當您使用「根」使用者進行存取時，這種情況也適用。    
-
-若要避免「許可權被拒」的問題，請 `pcuser` 在存取掛接點之前，確定 Windows Active Directory 包含。 如果您在 `pcuser` 遇到「許可權拒絕」問題之後新增，請等候24小時讓快取專案清除，然後再嘗試存取。
+請參閱 [疑難排解雙重通訊協定磁片](troubleshoot-dual-protocol-volumes.md) 區以取得解決方法。
 
 ### <a name="when-i-try-to-create-a-dual-protocol-volume-why-does-the-creation-process-fail-with-the-error-failed-to-validate-ldap-configuration-try-again-after-correcting-ldap-configuration"></a>當我嘗試建立雙重通訊協定磁片區時，為什麼建立程式會失敗，並出現「無法驗證 LDAP 設定，請在修正 LDAP 設定後再試一次」？  
 
-DNS 伺服器上可能遺失 AD 主機電腦的指標 (PTR) 記錄。 您必須在 DNS 伺服器上建立反向對應區域，然後在該反向對應區域中新增 AD 主機電腦的 PTR 記錄。
-
-例如，假設 AD 機器的 IP 位址是 `1.1.1.1` 、ad 機器的主機名稱 (如使用 `hostname` 命令) 找到的 `AD1` ，且功能變數名稱為 `myDomain.com` 。  加入至反向對應區域的 PTR 記錄應該是 `1.1.1.1`  ->  `AD1.myDomain.com` 。
+請參閱 [疑難排解雙重通訊協定磁片](troubleshoot-dual-protocol-volumes.md) 區以取得解決方法。
 
 ## <a name="capacity-management-faqs"></a>容量管理常見問題
 

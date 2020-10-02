@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 08/31/2020
+ms.date: 10/01/2020
 ms.author: inhenkel
-ms.openlocfilehash: 061ae48de9a73270ed499282c9fc9a4f8f1dba90
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 515379a4207a582b441d132b1c28ff11bc83c714
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89298941"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91651746"
 ---
 # <a name="media-services-v2-vs-v3"></a>媒體服務 v2 與 v3
 
@@ -30,18 +30,17 @@ ms.locfileid: "89298941"
 
 ## <a name="general-changes-from-v2"></a>V2 的一般變更
 
-* 針對使用 v3 建立的資產，媒體服務僅支援 [Azure 儲存體伺服器端儲存體加密](../../storage/common/storage-service-encryption.md)。
-    * 您可以使用 v3 API 搭配以 v2 API 建立的 Asset，後者的[儲存體加密](../previous/media-services-rest-storage-encryption.md) (AES 256) 是由媒體服務所提供。
-    * 您無法使用 v3 API 建立具有舊版 AES 256 [儲存體加密](../previous/media-services-rest-storage-encryption.md)的新 Asset。
-* V3 中的 [資產](assets-concept.md)屬性與 v2 不同，請參閱 [屬性的對應方式](#map-v3-asset-properties-to-v2)。
+* 如需資產相關變更，請參閱下面的「 [資產特定變更](#asset-specific-changes) 」一節。
 * v3 SDK 現在已與儲存體 SDK 分離，其掌控力勝過所使用的儲存體 SDK，並可避免版本控制問題。 
 * 在 v3 API 中，所有的編碼位元速率單位都是「位元/秒」。 這不同於 v2 媒體編碼器標準預設。 例如，v2 中的位元速率會指定為 128 (kbps)，但在 v3 中，則會是 128000 (位元/秒)。 
 * 實體 AssetFiles、AccessPolicies 和 IngestManifests 不存在於 v3 中。
-* IAsset.ParentAssets 屬性不在 v3 中。
 * ContentKey 不再是實體，現在是串流定位器的屬性。
 * 事件方格支援取代了 NotificationEndpoint。
-* 下列實體已重新命名
-    * 作業輸出會取代工作，而且現在是作業的一部分。
+* 下列實體已重新命名：
+
+   * v3 JobOutput 取代 v2 工作，現在是作業的一部分。 輸入和輸出現在位於作業層級。 如需詳細資訊，請參閱 [從本機檔案建立工作輸入](job-input-from-local-file-how-to.md)。 
+
+       若要取得作業進度的歷程記錄，請接聽 EventGrid 事件。 如需詳細資訊，請參閱 [處理事件方格事件](reacting-to-media-services-events.md)。
     * 串流定位器取代了定位器。
     * 即時事件取代了通道。<br/>即時事件計費是以直播頻道計量為基礎。 如需詳細資訊，請參閱[計費](live-event-states-billing.md)和[定價](https://azure.microsoft.com/pricing/details/media-services/)。
     * 即時輸出取代了程式。
@@ -89,6 +88,12 @@ v3 API 與 v2 API 具有下列功能差距。 縮小差距是刻不容緩的工�
 
 ## <a name="asset-specific-changes"></a>資產特定變更
 
+* 針對使用 v3 建立的資產，媒體服務僅支援 [Azure 儲存體伺服器端儲存體加密](../../storage/common/storage-service-encryption.md)。
+    * 您可以使用 v3 API 搭配以 v2 API 建立的 Asset，後者的[儲存體加密](../previous/media-services-rest-storage-encryption.md) (AES 256) 是由媒體服務所提供。
+    * 您無法使用 v3 API 建立具有舊版 AES 256 [儲存體加密](../previous/media-services-rest-storage-encryption.md)的新 Asset。
+* V3 中的 [資產](assets-concept.md)屬性與 v2 不同，請參閱 [屬性的對應方式](#map-v3-asset-properties-to-v2)。
+* IAsset.ParentAssets 屬性不在 v3 中。
+
 ### <a name="map-v3-asset-properties-to-v2"></a>將 v3 資產屬性對應至 v2
 
 下表顯示 [資產](/rest/api/media/assets/createorupdate#asset)在 v3 中的屬性如何對應至 v2 中的資產屬性。
@@ -124,7 +129,7 @@ v3 API 與 v2 API 具有下列功能差距。 縮小差距是刻不容緩的工�
 
 下表顯示 v2 和 v3 常見案例的程式碼差異。
 
-|案例|V2 API|V3 API|
+|案例|v2 API|v3 API|
 |---|---|---|
 |建立資產並上傳檔案 |[v2 .NET 範例](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L113)|[v3 .NET 範例](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L169)|
 |提交作業|[v2 .NET 範例](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L146)|[v3 .NET 範例](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L298)<br/><br/>示範如何先建立 Transform，然後再提交 Job。|

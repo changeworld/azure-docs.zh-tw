@@ -3,12 +3,12 @@ title: Azure 實驗室服務的加速教室實驗室設定指南
 description: 本指南可協助實驗室建立者快速設定實驗室帳戶，以便在學校使用。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: ad1a679c556316c2d23a713ffa5ac5dfe86cce0e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 510aa97a0a47e62f627203495c601bb2538e19ad
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445571"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91652205"
 ---
 # <a name="classroom-lab-setup-guide"></a>教室實驗室設定指南
 
@@ -60,9 +60,6 @@ ms.locfileid: "85445571"
 - **排程**：排程可供自動控制實驗室 VM 的開機和關機時間。
 - **配額**：配額能夠控制學生在排程時間以外可存取 VM 的時數。 如果學生在使用 VM 時達到配額，VM 就會自動關機。 除非增加配額，否則學生無法重新開機 VM。
 - **自動關機**：啟用時，在學生從遠端桌面通訊協定 (RDP) 工作階段中斷連線後，自動關機設定會指示 Windows VM 在一段特定時間之後自動關機。 此設定預設為停用狀態。  
-
-    > [!NOTE]
-    > 目前僅 Windows 提供此設定。
 
 ### <a name="how-will-students-save-their-work"></a>學生如何儲存作業？
 
@@ -127,7 +124,7 @@ ms.locfileid: "85445571"
 1. **使用儀表板。** 如需指示，請參閱[使用實驗室的儀表板](https://docs.microsoft.com/azure/lab-services/classroom-labs/use-dashboard) (機器翻譯)。
 
     > [!NOTE]
-    > 儀表板中所顯示預估成本是可預期學生使用實驗室的最大成本。 例如，學生未使用的配額時數「不」收費。 估計成本*不會*反映使用範本 VM、共用映射資源庫，或實驗室建立者啟動使用者電腦時的任何費用。
+    > 儀表板中所顯示預估成本是可預期學生使用實驗室的最大成本。 例如，學生未使用的配額時數「不」收費。 估計成本 *不會* 反映使用範本 VM、共用映射庫，或實驗室建立者啟動使用者電腦時的任何費用。
 
 ## <a name="next-steps"></a>後續步驟
 

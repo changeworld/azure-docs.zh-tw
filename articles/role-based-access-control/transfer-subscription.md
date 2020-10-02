@@ -1,5 +1,5 @@
 ---
-title: '將 Azure 訂用帳戶轉移至不同的 Azure AD 目錄 (預覽) '
+title: 將 Azure 訂用帳戶轉移至不同的 Azure AD 目錄
 description: 瞭解如何將 Azure 訂用帳戶和已知的相關資源傳輸至不同的 Azure Active Directory (Azure AD) 目錄。
 services: active-directory
 author: rolyon
@@ -10,19 +10,14 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 08/31/2020
 ms.author: rolyon
-ms.openlocfilehash: ab004c11b46428c5fad28177b0d94edc04b95654
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 6d0c0333186655d4f105337021164814453ab47a
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89400539"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91652379"
 ---
-# <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory-preview"></a>將 Azure 訂用帳戶轉移至不同的 Azure AD 目錄 (預覽) 
-
-> [!IMPORTANT]
-> 遵循這些步驟，將訂用帳戶轉移至不同的 Azure AD 目錄目前處於公開預覽狀態。
-> 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。
-> 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+# <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory"></a>將 Azure 訂用帳戶轉移至不同的 Azure AD 目錄
 
 組織可能會有數個 Azure 訂用帳戶。 每個訂用帳戶都會與特定的 Azure Active Directory (Azure AD) 目錄相關聯。 為了讓管理更容易，您可能會想要將訂用帳戶轉移至不同的 Azure AD 目錄。 當您將訂用帳戶轉移至不同的 Azure AD 目錄時，部分資源不會傳送至目標目錄。 例如，Azure 角色型存取控制中的所有角色指派和自訂角色 (Azure RBAC) 會從來原始目錄中 **永久** 刪除，而且不會傳送至目標目錄。
 
@@ -87,11 +82,11 @@ ms.locfileid: "89400539"
 > [!WARNING]
 > 如果您針對資源（例如儲存體帳戶或 SQL database）使用待用資料加密，但其相依于金鑰保存庫，但該金鑰保存庫 **不** 在要傳輸的相同訂用帳戶中，則可能會導致無法復原的情況。 如果您有這種情況，您應該採取步驟來使用不同的金鑰保存庫，或暫時停用客戶管理的金鑰，以避免此無法復原的情況。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成這些步驟，您將需要：
 
-- Azure Cloud Shell 或[Azure CLI](https://docs.microsoft.com/cli/azure) [中的 Bash](/azure/cloud-shell/overview)
+- Azure Cloud Shell 或[Azure CLI](/cli/azure) [中的 Bash](/azure/cloud-shell/overview)
 - 您要在來原始目錄中傳輸之訂用帳戶的帳戶管理員
 - 目標目錄中的[擁有](built-in-roles.md#owner)者角色
 
@@ -101,13 +96,13 @@ ms.locfileid: "89400539"
 
 1. 以系統管理員身分登入 Azure。
 
-1. 使用 [az account list](/cli/azure/account#az-account-list) 命令取得訂用帳戶清單。
+1. 使用 [az account list](/cli/azure/account#az_account_list) 命令取得訂用帳戶清單。
 
     ```azurecli
     az account list --output table
     ```
 
-1. 使用 [az account set](https://docs.microsoft.com/cli/azure/account#az-account-set) 設定您要傳送的使用中訂用帳戶。
+1. 使用 [az account set](/cli/azure/account#az_account_set) 設定您要傳送的使用中訂用帳戶。
 
     ```azurecli
     az account set --subscription "Marketing"
@@ -115,9 +110,9 @@ ms.locfileid: "89400539"
 
 ### <a name="install-the-resource-graph-extension"></a>安裝 resource graph 延伸模組
 
- Resource graph 延伸模組可讓您使用 [az graph](https://docs.microsoft.com/cli/azure/ext/resource-graph/graph) 命令來查詢受 Azure Resource Manager 管理的資源。 您將在稍後的步驟中使用此命令。
+ Resource graph 延伸模組可讓您使用 [az graph](/cli/azure/ext/resource-graph/graph) 命令來查詢受 Azure Resource Manager 管理的資源。 您將在稍後的步驟中使用此命令。
 
-1. 使用 [az 延伸模組清單](https://docs.microsoft.com/cli/azure/extension#az-extension-list) ，查看是否已安裝 *resource graph* 延伸模組。
+1. 使用 [az 延伸模組清單](/cli/azure/extension#az_extension_list) ，查看是否已安裝 *resource graph* 延伸模組。
 
     ```azurecli
     az extension list
@@ -131,7 +126,7 @@ ms.locfileid: "89400539"
 
 ### <a name="save-all-role-assignments"></a>儲存所有角色指派
 
-1. 使用 [az 角色指派清單](https://docs.microsoft.com/cli/azure/role/assignment#az-role-assignment-list) 來列出所有角色指派 (包括) 繼承的角色指派。
+1. 使用 [az 角色指派清單](/cli/azure/role/assignment#az_role_assignment_list) 來列出所有角色指派 (包括) 繼承的角色指派。
 
     為了讓您更輕鬆地查看清單，您可以將輸出匯出為 JSON、TSV 或資料表。 如需詳細資訊，請參閱 [使用 AZURE RBAC 和 Azure CLI 列出角色指派](role-assignments-list-cli.md)。
 
@@ -149,7 +144,7 @@ ms.locfileid: "89400539"
 
 ### <a name="save-custom-roles"></a>儲存自訂角色
 
-1. 使用 [az 角色定義清單](https://docs.microsoft.com/cli/azure/role/definition#az-role-definition-list) 來列出您的自訂角色。 如需詳細資訊，請參閱 [使用 Azure CLI 建立或更新 Azure 自訂角色](custom-roles-cli.md)。
+1. 使用 [az 角色定義清單](/cli/azure/role/definition#az_role_definition_list) 來列出您的自訂角色。 如需詳細資訊，請參閱 [使用 Azure CLI 建立或更新 Azure 自訂角色](custom-roles-cli.md)。
 
     ```azurecli
     az role definition list --custom-role-only true --output json --query '[].{roleName:roleName, roleType:roleType}'
@@ -193,7 +188,7 @@ ms.locfileid: "89400539"
 
 1. 請參閱 [支援受控識別的 Azure 服務清單，](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md) 以記下您可能使用受控識別的位置。
 
-1. 使用 [az ad sp list](/cli/azure/identity?view=azure-cli-latest#az-identity-list) 列出系統指派和使用者指派的受控識別。
+1. 使用 [az ad sp list](/cli/azure/ad/sp#az_ad_sp_list) 列出系統指派和使用者指派的受控識別。
 
     ```azurecli
     az ad sp list --all --filter "servicePrincipalType eq 'ManagedIdentity'"
@@ -207,7 +202,7 @@ ms.locfileid: "89400539"
     | `alternativeNames` 屬性不包含 `isExplicit` | 系統指派 |
     | `alternativeNames` 屬性包含 `isExplicit=True` | 使用者指派 |
 
-    您也可以使用 [az identity list](https://docs.microsoft.com/cli/azure/identity#az-identity-list) 只列出使用者指派的受控識別。 如需詳細資訊，請參閱 [使用 Azure CLI 建立、列出或刪除使用者指派的受控識別](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md)。
+    您也可以使用 [az identity list](/cli/azure/identity#az_identity_list) 只列出使用者指派的受控識別。 如需詳細資訊，請參閱 [使用 Azure CLI 建立、列出或刪除使用者指派的受控識別](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md)。
 
     ```azurecli
     az identity list
@@ -224,7 +219,7 @@ ms.locfileid: "89400539"
 > [!WARNING]
 > 如果您針對資源（例如儲存體帳戶或 SQL database）使用待用資料加密，但其相依于金鑰保存庫，但該金鑰保存庫 **不** 在要傳輸的相同訂用帳戶中，則可能會導致無法復原的情況。 如果您有這種情況，您應該採取步驟來使用不同的金鑰保存庫，或暫時停用客戶管理的金鑰，以避免此無法復原的情況。
 
-- 如果您有金鑰保存庫，請使用 [az keyvault show](https://docs.microsoft.com/cli/azure/keyvault#az-keyvault-show) 來列出存取原則。 如需詳細資訊，請參閱 [指派 Key Vault 存取原則](../key-vault/general/assign-access-policy-cli.md)。
+- 如果您有金鑰保存庫，請使用 [az keyvault show](/cli/azure/keyvault#az_keyvault_show) 來列出存取原則。 如需詳細資訊，請參閱 [指派 Key Vault 存取原則](../key-vault/general/assign-access-policy-cli.md)。
 
     ```azurecli
     az keyvault show --name MyKeyVault
@@ -232,7 +227,7 @@ ms.locfileid: "89400539"
 
 ### <a name="list-azure-sql-databases-with-azure-ad-authentication"></a>列出具有 Azure AD authentication 的 Azure SQL 資料庫
 
-- 使用 [az sql server ad-admin list](https://docs.microsoft.com/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-list) 和 [az graph](https://docs.microsoft.com/cli/azure/ext/resource-graph/graph) 擴充功能來查看您是否使用已啟用 Azure AD AUTHENTICATION 整合的 Azure sql database。 如需詳細資訊，請參閱 [設定和管理使用 SQL 的 Azure Active Directory 驗證](../azure-sql/database/authentication-aad-configure.md)。
+- 使用 [az sql server ad-admin list](/cli/azure/sql/server/ad-admin#az_sql_server_ad_admin_list) 和 [az graph](/cli/azure/ext/resource-graph/graph) 擴充功能來查看您是否使用已啟用 Azure AD AUTHENTICATION 整合的 Azure sql database。 如需詳細資訊，請參閱 [設定和管理使用 SQL 的 Azure Active Directory 驗證](../azure-sql/database/authentication-aad-configure.md)。
 
     ```azurecli
     az sql server ad-admin list --ids $(az graph query -q 'resources | where type == "microsoft.sql/servers" | project id' -o tsv | cut -f1)
@@ -248,13 +243,13 @@ ms.locfileid: "89400539"
 
 ### <a name="list-other-known-resources"></a>列出其他已知的資源
 
-1. 使用 [az account show](https://docs.microsoft.com/cli/azure/account#az-account-show) 來取得您的訂用帳戶識別碼。
+1. 使用 [az account show](/cli/azure/account#az_account_show) 來取得您的訂用帳戶識別碼。
 
     ```azurecli
     subscriptionId=$(az account show --query id | sed -e 's/^"//' -e 's/"$//')
     ```
 
-1. 使用 [az graph](https://docs.microsoft.com/cli/azure/ext/resource-graph/graph) 擴充功能來列出具有已知 Azure AD 目錄相依性的其他 Azure 資源。
+1. 使用 [az graph](/cli/azure/ext/resource-graph/graph) 擴充功能來列出具有已知 Azure AD 目錄相依性的其他 Azure 資源。
 
     ```azurecli
     az graph query -q \
@@ -286,13 +281,13 @@ ms.locfileid: "89400539"
 
     只有新帳戶中接受轉移要求的使用者才能存取管理資源。
 
-1. 使用 [az account list](https://docs.microsoft.com/cli/azure/account#az-account-list) 命令取得訂用帳戶清單。
+1. 使用 [az account list](/cli/azure/account#az_account_list) 命令取得訂用帳戶清單。
 
     ```azurecli
     az account list --output table
     ```
 
-1. 使用 [az account set](https://docs.microsoft.com/cli/azure/account#az-account-set) 設定您要使用的使用中訂用帳戶。
+1. 使用 [az account set](/cli/azure/account#az_account_set) 設定您要使用的使用中訂用帳戶。
 
     ```azurecli
     az account set --subscription "Contoso"
@@ -300,7 +295,7 @@ ms.locfileid: "89400539"
 
 ### <a name="create-custom-roles"></a>建立自訂角色
         
-- 使用 [az role definition create](https://docs.microsoft.com/cli/azure/role/definition#az-role-definition-create) ，從您稍早建立的檔案建立每個自訂角色。 如需詳細資訊，請參閱 [使用 Azure CLI 建立或更新 Azure 自訂角色](custom-roles-cli.md)。
+- 使用 [az role definition create](/cli/azure/role/definition#az_role_definition_create) ，從您稍早建立的檔案建立每個自訂角色。 如需詳細資訊，請參閱 [使用 Azure CLI 建立或更新 Azure 自訂角色](custom-roles-cli.md)。
 
     ```azurecli
     az role definition create --role-definition <role_definition>
@@ -308,7 +303,7 @@ ms.locfileid: "89400539"
 
 ### <a name="create-role-assignments"></a>建立角色指派
 
-- 使用 [az role 指派 create](https://docs.microsoft.com/cli/azure/role/assignment#az-role-assignment-create) 來建立使用者、群組和服務主體的角色指派。 如需詳細資訊，請參閱 [使用 AZURE RBAC 和 Azure CLI 新增或移除角色指派](role-assignments-cli.md)。
+- 使用 [az role 指派 create](/cli/azure/role/assignment#az_role_assignment_create) 來建立使用者、群組和服務主體的角色指派。 如需詳細資訊，請參閱 [使用 AZURE RBAC 和 Azure CLI 新增或移除角色指派](role-assignments-cli.md)。
 
     ```azurecli
     az role assignment create --role <role_name_or_id> --assignee <assignee> --resource-group <resource_group>
@@ -324,7 +319,7 @@ ms.locfileid: "89400539"
     | 虛擬機器擴展集 | [使用 Azure CLI 在虛擬機器擴展集上設定 Azure 資源受控識別](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vmss.md#system-assigned-managed-identity) |
     | 其他服務 | [支援適用於 Azure 資源的受控識別服務](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md) |
 
-1. 使用 [az role 指派 create](https://docs.microsoft.com/cli/azure/role/assignment#az-role-assignment-create) 來建立系統指派的受控識別的角色指派。 如需詳細資訊，請參閱 [使用 Azure CLI 將受控識別存取權指派給資源](../active-directory/managed-identities-azure-resources/howto-assign-access-cli.md)。
+1. 使用 [az role 指派 create](/cli/azure/role/assignment#az_role_assignment_create) 來建立系統指派的受控識別的角色指派。 如需詳細資訊，請參閱 [使用 Azure CLI 將受控識別存取權指派給資源](../active-directory/managed-identities-azure-resources/howto-assign-access-cli.md)。
 
     ```azurecli
     az role assignment create --assignee <objectid> --role '<role_name_or_id>' --scope <scope>
@@ -340,7 +335,7 @@ ms.locfileid: "89400539"
     | 虛擬機器擴展集 | [使用 Azure CLI 在虛擬機器擴展集上設定 Azure 資源受控識別](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vmss.md#user-assigned-managed-identity) |
     | 其他服務 | [支援適用於 Azure 資源的受控識別服務](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)<br/>[使用 Azure CLI 建立、列出和刪除使用者指派的受控識別](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md) |
 
-1. 使用 [az role 指派 create](https://docs.microsoft.com/cli/azure/role/assignment#az-role-assignment-create) 來建立使用者指派的受控識別的角色指派。 如需詳細資訊，請參閱 [使用 Azure CLI 將受控識別存取權指派給資源](../active-directory/managed-identities-azure-resources/howto-assign-access-cli.md)。
+1. 使用 [az role 指派 create](/cli/azure/role/assignment#az_role_assignment_create) 來建立使用者指派的受控識別的角色指派。 如需詳細資訊，請參閱 [使用 Azure CLI 將受控識別存取權指派給資源](../active-directory/managed-identities-azure-resources/howto-assign-access-cli.md)。
 
     ```azurecli
     az role assignment create --assignee <objectid> --role '<role_name_or_id>' --scope <scope>
@@ -382,7 +377,7 @@ ms.locfileid: "89400539"
 
 1. 若為使用憑證的資源，請更新憑證。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [將 Azure 訂用帳戶的帳單擁有權轉移給另一個帳戶](../cost-management-billing/manage/billing-subscription-transfer.md)
 - [在訂閱者與 CSP 之間轉移 Azure 訂用帳戶](../cost-management-billing/manage/transfer-subscriptions-subscribers-csp.md)

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 8209f5b7fc02f59c33ad0a7b58ec6305d6eecf0c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8d727bc8bdc8f015504baa57f9596b3bacac9712
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91320076"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91651628"
 ---
 # <a name="troubleshoot-storage-resource-deletion-errors"></a>針對儲存體資源刪除錯誤進行疑難排解
 
@@ -95,9 +95,9 @@ Azure 能預防刪除已連接 VM 的磁碟，以避免損毀。 它也能預防
 7. 在 [磁碟]**** 窗格頂端，選取 [編輯]****。
 8. 針對要刪除的資料磁碟按一下**中斷連結圖示**。
 
-     ![開啟儲存體「Blob 中繼資料」窗格的入口網站螢幕擷取畫面](./media/troubleshoot-vhds/utd-vm-disks-edit.png)
+     ![入口網站的螢幕擷取畫面，其中會開啟儲存體 [Blob 中繼資料] 窗格，並反白顯示要刪除之資料磁片的卸離圖示。](./media/troubleshoot-vhds/utd-vm-disks-edit.png)
 
-9. 選取 [儲存]。 磁碟現在會與 VM 中斷連結，不再租用 VHD。 釋放租用可能需要幾分鐘的時間。 若要確認租用已釋放，請瀏覽至 Blob 位置；在 [Blob 屬性]**** 窗格中，[租用狀態]**** 值應該會是 [已解除鎖定]**** 或 [可用]****。
+9. 選取 [儲存]  。 磁碟現在會與 VM 中斷連結，不再租用 VHD。 釋放租用可能需要幾分鐘的時間。 若要確認租用已釋放，請瀏覽至 Blob 位置；在 [Blob 屬性]**** 窗格中，[租用狀態]**** 值應該會是 [已解除鎖定]**** 或 [可用]****。
 
 [Storage deletion errors in Resource Manager deployment]: #storage-delete-errors-in-rm
 

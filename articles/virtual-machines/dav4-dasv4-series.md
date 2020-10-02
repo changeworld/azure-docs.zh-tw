@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 2548f002b2006b5d241c323ae880704bbe95301e
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 6ab532e3d824aa857a35bf2898aea2efba28df71
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88649919"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653021"
 ---
 # <a name="dav4-and-dasv4-series"></a>Dav4 和 Dasv4 系列
 
@@ -20,15 +20,13 @@ Dav4 系列和 Dasv4 系列是在多執行緒設定中使用 AMD 的採用 2.35 
 
 ## <a name="dav4-series"></a>Dav4 系列
 
-ACU：230-260
-
-進階儲存體：不支援
-
-進階儲存體快取：不支援
-
-即時移轉：支援
-
-記憶體保留更新：支援
+[ACU](acu.md)：230-260<br>
+[進階儲存體](premium-storage-performance.md)：不支援<br>
+[進階儲存體](premium-storage-performance.md)快取：不支援<br>
+[即時移轉](maintenance-and-updates.md)：支援<br>
+[記憶體保留更新](maintenance-and-updates.md)：支援<br>
+[VM 世代支援](generation-2.md)：第1代<br>
+<br>
 
 Dav4 系列大小以採用 2.35 Ghz AMD EPYC<sup>TM</sup> 7452 處理器為基礎，可達到最大的 3.35 ghz 頻率。 Dav4 系列大小提供 vCPU、記憶體和暫存儲存體的組合，適用于大多數生產工作負載。 資料磁碟儲存體與虛擬機器分開計費。 若要使用 premium SSD，請使用 Dasv4 大小。 Dasv4 大小的定價和計費方式與 Dav4 系列相同。
 
@@ -45,15 +43,13 @@ Dav4 系列大小以採用 2.35 Ghz AMD EPYC<sup>TM</sup> 7452 處理器為基�
 
 ## <a name="dasv4-series"></a>Dasv4 系列
 
-ACU：230-260
-
-進階儲存體：支援
-
-進階儲存體快取：支援
-
-即時移轉：支援
-
-記憶體保留更新：支援
+[ACU](acu.md)：230-260<br>
+[進階儲存體](premium-storage-performance.md)：支援<br>
+[進階儲存體](premium-storage-performance.md)快取：支援<br>
+[即時移轉](maintenance-and-updates.md)：支援<br>
+[記憶體保留更新](maintenance-and-updates.md)：支援<br>
+[VM 世代支援](generation-2.md)：第1代和第2代<br>
+<br>
 
 Dasv4 系列大小以採用 2.35 Ghz AMD EPYC<sup>TM</sup> 7452 處理器為基礎，可達到最大的 3.35 ghz 頻率，並使用 premium SSD。 Dasv4 系列大小提供 vCPU、記憶體和暫存儲存體的組合，適用于大多數生產工作負載。
 

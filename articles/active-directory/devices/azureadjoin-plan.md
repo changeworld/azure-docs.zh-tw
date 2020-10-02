@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8a70097cbae3bc5ebf48c0358faa32aea0a6be5
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: de383bfa9f943cd5644d35ed83db8a80ec8017bd
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91370172"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653208"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>如何：規劃 Azure AD Join 實作
 
@@ -187,6 +187,7 @@ Azure AD 聯結裝置的裝置管理是以 MDM 平臺（例如 Intune）和 MDM 
 從 Windows 10 2004 更新開始，使用者也可以使用遠端桌面，從 Azure AD 註冊的 Windows 10 裝置到 Azure AD 加入的裝置。 
 
 ## <a name="understand-your-provisioning-options"></a>了解您的佈建選項
+**注意**： Azure AD 加入的裝置無法使用系統準備工具部署 (Sysprep) 或類似的映射工具
 
 您可以使用下列方法來佈建 Azure AD Join：
 

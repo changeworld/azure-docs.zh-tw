@@ -7,27 +7,24 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 33d481d546d94bb1279cafbd85ae23c8ac4d00b8
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 65aab240dd0be97aafa370883aa953f8eb766cf2
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89437262"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91650743"
 ---
 # <a name="av2-series"></a>Av2 系列
 
 Av2 系列 VM 可以部署在各種不同的硬體類型和處理器上。 Av2 系列 Vm 具有最適合專案層級工作負載（例如開發和測試）的 CPU 效能和記憶體設定。 大小會受到節流，以針對執行中的實例提供一致的處理器效能，不論其部署所在的硬體為何。 若要判斷此大小部署所在的實體硬體，請從虛擬機器內查詢虛擬硬體。 某些使用案例範例包括開發與測試伺服器、低流量網頁伺服器、小型至中型資料庫、概念證明和程式碼存放庫。
 
-ACU：100
-
-進階儲存體：不支援
-
-進階儲存體快取：不支援
-
-即時移轉：支援
-
-記憶體保留更新：支援
-
+[ACU](acu.md)：100<br>
+[進階儲存體](premium-storage-performance.md)：不支援 <br>
+[進階儲存體](premium-storage-performance.md)快取：不支援 <br>
+[即時移轉](maintenance-and-updates.md)：支援 <br>
+[記憶體保留更新](maintenance-and-updates.md)：支援 <br>
+[VM 世代支援](generation-2.md)：第1代 <br>
+<br>
 
 | 大小 | vCore | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大暫存儲存體輸送量： IOPS/讀取 MBps/寫入 MBps | 最大資料磁片/輸送量： IOPS | 最大 NIC | 預期的網路頻寬 (Mbps) 
 |---|---|---|---|---|---|---|---|

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: duau
-ms.openlocfilehash: b72126933c5454b8fabe19dda08ad5eb66edd1ba
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: f080f5011311101ed8f9faa2ee807c030a048409
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89392665"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653038"
 ---
 # <a name="performance-considerations-for-traffic-manager"></a>流量管理員的效能考量
 
@@ -50,7 +50,7 @@ ms.locfileid: "89392665"
 
     其中一個最簡單的工具是 WebSitePulse。 輸入 URL，您就會看到 DNS 解析時間、第一個位元組、最後一個位元組，以及其他效能統計資料。 您可以從三個不同的測試位置中選擇。 在本範例中，您會看到第一次執行顯示 DNS 查閱用了 0.204 秒。
 
-    ![pulse1](./media/traffic-manager-performance-considerations/traffic-manager-web-site-pulse.png)
+    ![顯示 "WebSitePulse" 工具的螢幕擷取畫面，其中已醒目提示 "DNS" 查閱結果。](./media/traffic-manager-performance-considerations/traffic-manager-web-site-pulse.png)
 
     因為結果已快取過了，對相同流量管理員端點進行第二次測試時，DNS 查閱用了 0.002 秒。
 

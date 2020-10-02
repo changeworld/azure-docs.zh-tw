@@ -7,12 +7,12 @@ ms.custom: devx-track-csharp
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: eebdf053cc3eea1dfc91476bff3817891bec42a3
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 4a22602dd9638b981cfe3d8bae9b5cdaacbf90dc
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88959049"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91652035"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>開始使用 Azure WebJobs SDK 進行事件驅動幕後處理
 
@@ -264,13 +264,13 @@ WebJobs SDK 會在 Azure 中的 [應用程式設定] 尋找儲存體連接字串
 
 1. 輸入 queue 作為佇列的名稱，然後選取 [建立]。
 
-   ![建立佇列](./media/webjobs-sdk-get-started/create-queue.png)
+   ![螢幕擷取畫面：顯示您建立佇列的位置，並將其命名為「佇列」。 ](./media/webjobs-sdk-get-started/create-queue.png)
 
 1. 以滑鼠右鍵按一下新佇列的節點，然後選取 [檢視佇列]。
 
 1. 選取 [新增訊息] 圖示。
 
-   ![建立佇列](./media/webjobs-sdk-get-started/create-queue-message.png)
+   ![反白顯示 [新增訊息] 圖示的螢幕擷取畫面。](./media/webjobs-sdk-get-started/create-queue-message.png)
 
 1. 在 [新增訊息] 對話方塊中，輸入 Hello World! 作為 [訊息文字]，然後選取 [確定]。 佇列中現在會有一則訊息。
 

@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 02/13/2019
 ms.author: duau
-ms.openlocfilehash: 8ac38c25821a9f636ac98903599ee7d3acfa5e17
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: ccbd9645ac7d331c06e528298b3a45a184c6cc49
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89395718"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91652222"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit"></a>建立和修改 ExpressRoute 線路的對等互連
 
@@ -65,7 +65,7 @@ ms.locfileid: "89395718"
 
    **線路提供者狀態：已布建**
 
-   [![顯示 ExpressRoute 示範電路 [總覽] 頁面的螢幕擷取畫面，其中紅色方塊反白顯示 [提供者狀態] 設定為 [已布建]。](./media/expressroute-howto-routing-portal-resource-manager/provisioned-m.png)](./media/expressroute-howto-routing-portal-resource-manager/provisioned-m-lightbox.png#lightbox)
+   [![顯示 ExpressRoute 示範電路 [總覽] 頁面的螢幕擷取畫面，其中的紅色方塊會將提供者狀態設定為 [已布建]。](./media/expressroute-howto-routing-portal-resource-manager/provisioned-m.png)](./media/expressroute-howto-routing-portal-resource-manager/provisioned-m-lightbox.png#lightbox)
 
 2. 設定線路的 Microsoft 對等。 繼續之前，請確定您擁有下列資訊。
 
@@ -175,7 +175,7 @@ ms.locfileid: "89395718"
 ![刪除私用對等互連](./media/expressroute-howto-routing-portal-resource-manager/delete-p.png)
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 下一步，將 [VNet 連結至 ExpressRoute 線路](expressroute-howto-linkvnet-portal-resource-manager.md)
 * 如需 ExpressRoute 工作流程的詳細資訊，請參閱 [ExpressRoute 工作流程](expressroute-workflows.md)。

@@ -8,28 +8,26 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 9b841b6422a4314b43a594cb0b22040f884228eb
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 21d44044250bacc95c4dbb0dde147e87f2fed6a5
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543889"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91652732"
 ---
 # <a name="nvv4-series"></a>NVv4 系列 
 
-NVv4 系列虛擬機器是由[Amd Radeon 直覺 MI25](https://www.amd.com/en/products/professional-graphics/instinct-mi25) GPU 和 Amd EPYC 7V12 （羅馬） cpu 提供技術支援。 在 NVv4 系列中，Azure 引進了具有部分 Gpu 的虛擬機器。 針對 GPU 加速圖形應用程式和虛擬桌面，從具有2個 GiB 畫面格緩衝區的 GPU 1/第8部，挑選正確大小的虛擬機器，並使用16個 GiB 框架緩衝區的完整 GPU。 NVv4 虛擬機器目前僅支援 Windows 客體作業系統。
+NVv4 系列虛擬機器是由 [Amd Radeon 直覺 MI25](https://www.amd.com/en/products/professional-graphics/instinct-mi25) GPU 和 Amd EPYC 7V12 (羅馬) cpu 提供技術支援。 使用 NVv4 系列 Azure 時，會介紹具有部分 Gpu 的虛擬機器。 針對 GPU 加速圖形應用程式和虛擬桌面，從 GPU 1/8 開始挑選適用于 gpu 加速圖形應用程式和虛擬桌面的虛擬機器大小，並以2個 GiB 框架緩衝區至具有 16 GiB 框架緩衝區的完整 GPU。 NVv4 虛擬機器目前僅支援 Windows 客體作業系統。
 
 <br>
 
-ACU：230-260
-
-進階儲存體：支援
-
-進階儲存體快取：支援
-
-即時移轉：不支援
-
-記憶體保留更新：不支援
+[ACU](acu.md)：230-260<br>
+[進階儲存體](premium-storage-performance.md)：支援<br>
+[進階儲存體](premium-storage-performance.md)快取：支援<br>
+[即時移轉](maintenance-and-updates.md)：不支援<br>
+[記憶體保留更新](maintenance-and-updates.md)：不支援<br>
+[VM 世代支援](generation-2.md)：第1代<br>
+<br>
 
 | 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | GPU | GPU 記憶體：GiB | 最大資料磁碟 | 最大 NIC/預期的網路頻寬 (MBps) |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -38,15 +36,15 @@ ACU：230-260
 | Standard_NV16as_v4 |16 |56 |352 | 1/2 | 8 | 16 | 8 / 4000 |
 | Standard_NV32as_v4 |32 |112 |704 | 1 | 16 | 32 | 8 / 8000 |
 
-<sup>1</sup>個 NVv4 系列 VM 功能 AMD 同時多執行緒技術
+<sup>1</sup> 個 NVv4 系列 VM 功能 AMD 同時多執行緒技術
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 
 ## <a name="supported-operating-systems-and-drivers"></a>支援的作業系統和驅動程式
 
-若要利用執行 Windows 之 Azure NVv4 系列 Vm 的 GPU 功能，必須安裝 AMD GPU 驅動程式。
+若要利用執行 Windows 的 Azure NVv4 系列 Vm 的 GPU 功能，必須安裝 AMD GPU 驅動程式。
 
-若要手動安裝 AMD GPU 驅動程式，請參閱適用于[Windows 的 N 系列 AMD GPU 驅動程式設定](./windows/n-series-amd-driver-setup.md)，以瞭解支援的作業系統、驅動程式、安裝和驗證步驟。
+若要手動安裝 AMD GPU 驅動程式，請參閱適用于 [Windows 的 N 系列 AMD GPU 驅動程式設定](./windows/n-series-amd-driver-setup.md) ，以取得支援的作業系統、驅動程式、安裝和驗證步驟。
 
 ## <a name="other-sizes"></a>其他大小
 

@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: jushiman
-ms.openlocfilehash: 41dbb42637db98dcd97e3487f252e88f2ba5f9a3
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: fccdaaab121f315f1cb98b2b6ee3bffcb9ac2b3b
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88649885"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653004"
 ---
 # <a name="dcsv2-series"></a>DCsv2 系列
 
@@ -21,17 +21,13 @@ DCv2 系列可協助在公用雲端處理資料與程式碼時，保護其機密
 
 使用案例範例包括：機密的多方資料共用、詐騙偵測、洗錢防治、區塊鏈、機密流量分析、智慧分析和機密機器學習。
 
-進階儲存體：支援*
-
-進階儲存體快取：支援*
-
-即時移轉：不支援
-
-記憶體保留更新：不支援
+[進階儲存體](premium-storage-performance.md)：支援的 *<br>
+[進階儲存體](premium-storage-performance.md)快取：支援<br>
+[即時移轉](maintenance-and-updates.md)：不支援<br>
+[記憶體保留更新](maintenance-and-updates.md)：不支援<br>
+[VM 世代支援](generation-2.md)：第1代和第2代<br>
 
 *Standard_DC8_v2 除外
-
-
 
 | 大小             | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大資料磁碟 | 最大快取和暫存儲存體輸送量IOPS / MBps (快取大小，以 GiB 為單位) | 最大 NIC/預期的網路頻寬 (MBps) | EPC 記憶體 (MiB) |
 |------------------|------|-------------|------------------------|----------------|-------------------------------------------------------------------------|----------------------------------------------|---------------------|

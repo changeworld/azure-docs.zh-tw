@@ -3,12 +3,12 @@ title: Azure Migrate 中的 VMware 遷移支援
 description: 瞭解 Azure Migrate 中 VMware VM 遷移的支援。
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: f41223e9dfa336fdbf64fcfdc56798511f3a5b21
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 87733cac23d0336e4b9319f2a325e8d844e6e5b2
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91442274"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91651950"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>VMware 遷移的支援矩陣
 
@@ -154,7 +154,7 @@ VM | 在 Vm 上執行的行動服務會與內部部署複寫設備通訊， (設
 
 ## <a name="azure-vm-requirements"></a>Azure VM 需求
 
-使用無代理程式或以代理程式為基礎的) 遷移，將所有複寫到 Azure 的內部部署 Vm 都必須符合下表中摘要說明的 Azure VM 需求。 
+使用無代理程式或以代理程式為基礎的遷移將所有複寫到 Azure (的內部部署 Vm) 必須符合此表中摘要說明的 Azure VM 需求。 
 
 **元件** | **需求** 
 --- | --- | ---
