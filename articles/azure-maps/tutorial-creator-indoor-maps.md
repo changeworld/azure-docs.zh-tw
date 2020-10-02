@@ -1,21 +1,21 @@
 ---
-title: 使用建立工具建立室內地圖
-description: 使用 Azure 地圖服務建立工具建立室內地圖。
+title: 教學課程：使用建立工具建立室內地圖
+description: 如何使用 Azure 地圖服務建立工具建立室內地圖的教學課程
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 08/29/2020
-ms.topic: conceptual
+ms.date: 09/22/2020
+ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 9ed6690348816229d369bcff5d92c9703a4b3702
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
-ms.translationtype: MT
+ms.openlocfilehash: 731ffe02b16fe832bb5feba34973ca81bf941646
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89469910"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371417"
 ---
-# <a name="use-creator-to-create-indoor-maps"></a>使用建立工具建立室內地圖
+# <a name="tutorial-use-creator-to-create-indoor-maps"></a>教學課程：使用建立工具建立室內地圖
 
 本教學課程說明如何建立室內地圖。 在本教學課程中，您將了解如何使用 API 執行下列動作：
 
@@ -35,12 +35,12 @@ ms.locfileid: "89469910"
 1. [建立 Azure 地圖服務帳戶](quick-demo-map-app.md#create-an-azure-maps-account)
 2. [取得主要訂用帳戶金鑰](quick-demo-map-app.md#get-the-primary-key-for-your-account)，也稱為主要金鑰或訂用帳戶金鑰。
 3. [建立一個建立工具資源](how-to-manage-creator.md)
-4. 下載[範例繪圖套件](https://github.com/Azure-Samples/am-creator-indoor-data-examples)。
+4. 下載[範例繪圖套件](https://github.com/Azure-Samples/am-creator-indoor-data-examples/blob/master/Sample%20-%20Contoso%20Drawing%20Package.zip)。
 
 本教學課程使用 [Postman](https://www.postman.com/) 應用程式，但您可以選擇不同的 API 開發環境。
 
 >[!IMPORTANT]
-> 本檔中的 API url 可能必須根據您建立者資源的位置來調整。 如需詳細資訊，請參閱建立 [者服務的存取權](how-to-manage-creator.md#access-to-creator-services)。
+> 本文件中的 API URL 可能必須根據您建立者資源的位置進行調整。 如需詳細資訊，請參閱[存取建立工具服務](how-to-manage-creator.md#access-to-creator-services)。
 
 ## <a name="upload-a-drawing-package"></a>上傳繪圖套件
 
@@ -64,7 +64,7 @@ ms.locfileid: "89469910"
 
 5. 按一下藍色的 [傳送] 按鈕，然後等候系統處理要求。 在要求完成後，移至回應的 [標頭] 索引標籤。 複製 [位置] 索引鍵的值，也就是 `status URL`。
 
-6. 若要檢查 API 呼叫的狀態，請在 `status URL` 建立 **GET** HTTP 要求。 您必須將主要訂用帳戶金鑰附加至 URL，以進行驗證。 **GET**要求看起來應該類似下列 URL：
+6. 若要檢查 API 呼叫的狀態，請在 `status URL` 建立 **GET** HTTP 要求。 您必須將主要訂用帳戶金鑰附加至 URL，以進行驗證。 **GET** 要求應會類似於下列 URL：
 
     ```http
     https://atlas.microsoft.com/mapData/operations/<operationId>?api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}
@@ -111,13 +111,13 @@ ms.locfileid: "89469910"
     ```
 
     >[!IMPORTANT]
-    > 本檔中的 API url 可能必須根據您建立者資源的位置來調整。 如需詳細資訊，請參閱建立 [者服務的存取權](how-to-manage-creator.md#access-to-creator-services)。
+    > 本文件中的 API URL 可能必須根據您建立者資源的位置進行調整。 如需詳細資訊，請參閱[存取建立工具服務](how-to-manage-creator.md#access-to-creator-services)。
 
-3. 按一下 [傳送] 按鈕，然後等候系統處理要求。 在要求完成後，移至回應的 [標頭] 索引標籤，並尋找 [位置] 索引鍵。 複製 [位置] 索引鍵的值，此為轉換要求的 `status URL`。 您將在下一個步驟中使用此功能。
+3. 按一下 [傳送] 按鈕，然後等候系統處理要求。 在要求完成後，移至回應的 [標頭] 索引標籤，並尋找 [位置] 索引鍵。 複製 [位置] 索引鍵的值，此為轉換要求的 `status URL`。 您將會在下個步驟中使用這個。
 
-    :::image type="content" source="./media/tutorial-creator-indoor-maps/copy-location-uri-dialog.png" border="true" alt-text="複製位置索引鍵的值":::
+    :::image type="content" source="./media/tutorial-creator-indoor-maps/copy-location-uri-dialog.png" border="true" alt-text="複製 [位置] 索引鍵的值":::
 
-4. 在 [產生器] 索引標籤中啟動新的 **GET** HTTP 方法。將您的 Azure 地圖服務主要訂用帳戶金鑰附加至 `status URL`。 在**GET** `status URL` 您于步驟3複製的上提出 GET 要求。 `status URL`看起來如下所示的 URL：
+4. 在 [產生器] 索引標籤中啟動新的 **GET** HTTP 方法。將您的 Azure 地圖服務主要訂用帳戶金鑰附加至 `status URL`。 在您於步驟 3 中複製的 `status URL` 進行 **GET** 要求。 `status URL` 看起來如下列 URL：
 
     ```http
     https://atlas.microsoft.com/conversion/operations/<operationId>?api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}
@@ -404,43 +404,11 @@ ms.locfileid: "89469910"
 
 [功能取得狀態 API](https://docs.microsoft.com/rest/api/maps/featurestate/getstatespreview) 可讓您使用功能 `ID` 擷取功能的狀態。 您也可以使用[功能狀態刪除 API](https://docs.microsoft.com/rest/api/maps/featurestate/deletestatesetpreview) 來刪除狀態集及其資源。
 
+若要深入了解本文中討論的不同 Azure 地圖服務建立工具服務，請參閱 [建立工具室內地圖](creator-indoor-maps.md)。
+
 ## <a name="next-steps"></a>後續步驟
 
-在本教學課程中，您已了解如何：
-
-> [!div class="checklist"]
-> * 上傳您的室內地圖繪圖套件
-> * 將繪圖套件轉換成地圖資料
-> * 從地圖資料建立資料集
-> * 從資料集中的資料建立圖格集
-> * 查詢 Azure 地圖 WFS 服務以了解您的地圖功能
-> * 使用您的地圖功能和資料集中的資料建立功能狀態集
-> * 更新您的功能狀態集
-
-您現在已具備繼續進行後續指南所需的技能：
+若要了解如何使用室內地圖模組，請參閱
 
 > [!div class="nextstepaction"]
 > [使用室內地圖模組](how-to-use-indoor-module.md)
-
-> [!div class="nextstepaction"]
-> [為室內地圖實作動態樣式](indoor-map-dynamic-styling.md)
-
-深入了解本文中討論的不同 Azure 地圖服務：
-
-> [!div class="nextstepaction"]
-> [資料上傳](creator-indoor-maps.md#upload-a-drawing-package)
-
-> [!div class="nextstepaction"]
-> [資料轉換](creator-indoor-maps.md#convert-a-drawing-package)
-
-> [!div class="nextstepaction"]
-> [資料集](creator-indoor-maps.md#datasets)
-
-> [!div class="nextstepaction"]
-> [地圖底圖集](creator-indoor-maps.md#tilesets)
-
-> [!div class="nextstepaction"]
-> [功能狀態集](creator-indoor-maps.md#feature-statesets)
-
-> [!div class="nextstepaction"]
-> [WFS 服務](creator-indoor-maps.md#web-feature-service-api)

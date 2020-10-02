@@ -8,13 +8,13 @@ metadata:
   ms.topic: landing-page
   author: dikamath
   ms.author: dikamath
-  ms.date: 05/04/2020
-  ms.openlocfilehash: aad6bc60066d76c96dd38fa3ba1e94069bb9e25a
-  ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+  ms.date: 09/21/2020
+  ms.openlocfilehash: 76a879f1c2c228fd509f0b0725b7ff3ddac4fa41
+  ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 08/22/2020
-  ms.locfileid: "88752108"
+  ms.lasthandoff: 09/30/2020
+  ms.locfileid: "91574903"
 landingContent:
 - title: 關於 Azure VMware 解決方案
   linkLists:
@@ -22,15 +22,61 @@ landingContent:
     links:
     - text: 什麼是 Azure VMware 解決方案？
       url: introduction.md
+  - linkListType: concept
+    links:
+    - text: 私人雲端和叢集
+      url: concepts-private-clouds-clusters.md
+    - text: 私人雲端網路和內部連線能力
+      url: concepts-networking.md
+    - text: 私人雲端中的儲存體
+      url: concepts-storage.md
+    - text: 私人雲端的存取和身分識別
+      url: concepts-identity.md
+    - text: 角色型存取控制
+      url: concepts-role-based-access-control.md
+    - text: 私人雲端升級
+      url: concepts-upgrades.md
+- title: 部署 Azure VMware 解決方案
+  linkLists:
   - linkListType: get-started
     links:
-    - text: 網路檢查清單
-      url: tutorial-network-checklist.md
+    - text: 前置部署程序
+      url: production-ready-deployment-steps.md
+    - text: 前置部署檢查清單
+      url: pre-deployment-checklist.md
+    - text: 1 - 部署 Azure VMware 解決方案
+      url: deploy-azure-vmware-solution.md
+    - text: 2 - 連線至內部部署
+      url: azure-vmware-solution-on-premises.md
+    - text: 3 - 部署及設定 HCX
+      url: tutorial-deploy-vmware-hcx.md
   - linkListType: tutorial
     links:
-    - text: 建立 AVS 私人雲端
+    - text: 網路規劃檢查清單
+      url: tutorial-network-checklist.md
+    - text: 建立私人雲端
       url: tutorial-create-private-cloud.md
-    - text: 設定網路功能
-      url: tutorial-configure-networking.md
     - text: 存取私人雲端
       url: tutorial-access-private-cloud.md
+    - text: 設定網路功能
+      url: tutorial-configure-networking.md
+    - text: 建立 NSX-T 網路區段
+      url: tutorial-nsx-t-network-segment.md
+    - text: 將內部部署環境對等互連至私人雲端
+      url: tutorial-expressroute-global-reach-private-cloud.md
+    - text: 部署及設定 VMWare HCX
+      url: tutorial-deploy-vmware-hcx.md
+    - text: 縮放私人雲端
+      url: tutorial-scale-private-cloud.md
+- title: 擴充 Azure VMware 解決方案
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 移轉評估
+      url: ../migrate/how-to-create-azure-vmware-solution-assessment.md?context=/azure/migrate/context/migrate-context.json
+    - text: 管理 DHCP
+      url: manage-dhcp.md
+    - text: 部署 VM 的災害復原
+      url: disaster-recovery-for-virtual-machines.md
+    - text: 透過內容庫部署 VM
+      url: tutorial-deploy-vm-content-library.md

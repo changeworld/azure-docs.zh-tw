@@ -595,10 +595,6 @@
                   href: ../../bastion/create-host-cli.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: 使用 Bastion 來連線
               href: ../../bastion/bastion-connect-vm-ssh.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
-              items:
-                - name: Bastion SSH 連線
-            - name: Bastion RDP 連線
-              href: ../../bastion/bastion-connect-vm-rdp.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Encrypt
           items:
             - name: 適用於 Linux 的磁碟加密案例
@@ -625,7 +621,7 @@
               href: disk-encryption-troubleshooting.md
             - name: 磁碟加密常見問題
               href: disk-encryption-faq.md
-            - name: 磁碟加密 - 先前版本 (Azure AD)
+            - name: 磁碟加密 - 舊版
               items:
                 - name: 概觀
                   href: disk-encryption-overview-aad.md
@@ -640,6 +636,7 @@
         - name: 建立金鑰保存庫
           href: key-vault-setup.md
         - name: 建立及使用 SSH 金鑰
+          displayName: ssh keys ssh openssh
           items:
             - name: 在 Linux 或 macOS 上
               href: mac-create-ssh-keys.md

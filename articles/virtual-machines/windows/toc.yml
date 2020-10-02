@@ -407,7 +407,7 @@
           href: ps-template.md
         - name: 連接到 VM
           href: connect-logon.md
-        - name: 連線至 Linux VM
+        - name: SSH 到 Linux VM
           displayName: ssh keygen ssk-key putty
           items:
             - name: 在入口網站中
@@ -595,7 +595,7 @@
               href: disk-encryption-troubleshooting.md
             - name: 磁碟加密常見問題
               href: disk-encryption-faq.md
-            - name: 磁碟加密 - 先前版本 (Azure AD)
+            - name: 磁碟加密 - 舊版
               items:
                 - name: 概觀
                   href: disk-encryption-overview-aad.md

@@ -57,10 +57,16 @@
           href: developer-guidance-for-integrating-applications.md
     - name: 單一登入
       items:
-        - name: 單一登入選項
-          href: sso-options.md
         - name: 規劃單一登入部署
           href: plan-sso-deployment.md
+        - name: 單一登入選項
+          href: sso-options.md
+        - name: 以 SAML 為基礎的 SSO
+          href: configure-saml-single-sign-on.md
+        - name: 密碼式 SSO
+          href: configure-password-single-sign-on-non-gallery-applications.md
+        - name: 連結式 SSO
+          href: configure-linked-sign-on.md
         - name: 單鍵 SSO
           href: one-click-sso-tutorial.md
     - name: 應用程式安全性
@@ -102,14 +108,6 @@
 - name: 操作指南
   expanded: false
   items:
-    - name: 設定單一登入
-      items:
-        - name: 設定 SAML 型單一登入
-          href: configure-saml-single-sign-on.md
-        - name: 設定密碼式登入
-          href: configure-password-single-sign-on-non-gallery-applications.md
-        - name: 設定連結的登入
-          href: configure-linked-sign-on.md
     - name: 指派使用者和管理應用程式存取
       items:
         - name: 設定使用者同意

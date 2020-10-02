@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 0ed50b8d128386008a73eb4d1a8b412a42fdb945
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 0364495d751465f644686824758992d47f0b8bdf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89485450"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91290648"
 ---
 # <a name="azure-key-vault-logging"></a>Azure Key Vault 記錄
 
@@ -133,6 +133,7 @@ Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Ena
   * 建立、修改或刪除這些金鑰或祕密。
   * 簽署、驗證、加密、解密、包裝和解除包裝金鑰、取得秘密，以及列出金鑰和祕密 (及其版本)。
 * 產生 401 回應的未經驗證要求。 例如，沒有持有人權杖的要求、格式不正確或已過期的要求，或具有無效權杖的要求。  
+* 即將過期、已過期和保存庫存取原則已變更的事件方格通知事件 (新版本事件未記錄)。 不論金鑰保存庫上是否已建立事件訂用帳戶，都會記錄事件。 如需詳細資訊，請參閱 [Key Vault 的事件方格事件結構描述](https://docs.microsoft.com/azure/event-grid/event-schema-key-vault)
 
 ## <a name="enable-logging-using-azure-cli"></a>使用 Azure CLI 啟用記錄
 
@@ -289,6 +290,8 @@ $blobs | Get-AzStorageBlobContent -Destination C:\Users\username\ContosoKeyVault
 
 下表列出 **operationName** 值和相對應的 REST API 命令：
 
+### <a name="operation-names-table"></a>作業名稱資料表
+
 | operationName | REST API 命令 |
 | --- | --- |
 | **驗證** |透過 Azure Active Directory 端點驗證 |
@@ -318,6 +321,13 @@ $blobs | Get-AzStorageBlobContent -Destination C:\Users\username\ContosoKeyVault
 | **SecretDelete** |[刪除秘密](https://msdn.microsoft.com/library/azure/dn903613.aspx) |
 | **SecretList** |[列出保存庫中的密碼](https://msdn.microsoft.com/library/azure/dn903614.aspx) |
 | **SecretListVersions** |[列出密碼的版本](https://msdn.microsoft.com/library/azure/dn986824.aspx) |
+| **VaultAccessPolicyChangedEventGridNotification** | 已發佈保存庫存取原則已變更事件 |
+| **SecretNearExpiryEventGridNotification** |已發佈祕密即將過期事件 |
+| **SecretExpiredEventGridNotification** |已發佈祕密已過期事件 |
+| **KeyNearExpiryEventGridNotification** |已發佈金鑰即將過期事件 |
+| **KeyExpiredEventGridNotification** |已發佈金鑰已過期事件 |
+| **CertificateNearExpiryEventGridNotification** |已發佈憑證即將過期事件 |
+| **CertificateExpiredEventGridNotification** |已發佈憑證已過期事件 |
 
 ## <a name="use-azure-monitor-logs"></a><a id="loganalytics"></a>使用 Azure 監視器記錄
 

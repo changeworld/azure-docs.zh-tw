@@ -76,6 +76,8 @@
       href: upgrade-virtual-wan.md
     - name: 在虛擬中樞內建立 NVA
       href: How-to-nva-hub.md
+    - name: 建立跨租用戶 VNet 連線
+      href: cross-tenant-vnet.md
     - name: ExpressRoute
       items:
         - name: 建立 ExpressRoute 連線

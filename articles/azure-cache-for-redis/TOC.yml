@@ -43,6 +43,8 @@
           href: cache-java-spring-boot-initializer-with-redis-cache.md
     - name: 建立排行榜
       href: cache-web-app-cache-aside-leaderboard.md
+    - name: 部署機器學習模型
+      href: cache-ml.md
     - name: 使用 Azure PowerShell 管理
       href: cache-how-to-manage-redis-cache-powershell.md
     - name: 使用 Azure CLI 管理
@@ -68,6 +70,8 @@
       items:
         - name: 選擇快取層
           href: cache-overview.md#choosing-the-right-tier
+        - name: 設定 Redis 版本
+          href: cache-how-to-version.md
         - name: 利用叢集來散發您的快取
           href: cache-how-to-premium-clustering.md
         - name: 利用 Redis 資料永續性來留存您的快取

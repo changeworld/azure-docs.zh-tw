@@ -172,7 +172,7 @@
           href: connect-azure-stack.md
     - name: 啟用使用者與實體行為分析
       href: enable-entity-behavior-analytics.md
-    - name: 使用多個租用戶 (MSSP)
+    - name: 管理多個租用戶 (MSSP)
       href: multiple-tenants-service-providers.md
     - name: 使用多個工作區中的事件
       href: multiple-workspace-view.md

@@ -5,15 +5,15 @@ description: 本文將概述應用程式閘道上的 Web 應用程式防火牆 (
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 08/31/2020
+ms.date: 09/16/2020
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: e3b7e3ae10afd45105358743ef1fc0f4c6d14e78
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 659e7fcdbd2284110282d14fc89bd4d8d5ac2472
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89226993"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91267018"
 ---
 # <a name="what-is-azure-web-application-firewall-on-azure-application-gateway"></a>什麼是 Azure 應用程式閘道上的 Web 應用程式防火牆?
 
@@ -75,9 +75,21 @@ Azure 應用程式閘道上的 Azure Web 應用程式防火牆 (WAF) 可為 Web 
 - 進行流量的地理篩選，以允許或阻止特定國家/區域取得應用程式的存取權。 (預覽)
 - 使用 Bot 風險降低規則集，保護您的應用程式不受 Bot 影響。 (預覽)
 
-## <a name="waf-policy"></a>WAF 原則
+## <a name="waf-policy-and-rules"></a>WAF 原則和規則
 
-若要在應用程式閘道上啟用 Web 應用程式防火牆，您必須建立 WAF 原則。 此原則中包含所有受控規則、自訂規則、排除項目及其他自訂項目 (例如檔案上傳限制)。 
+若要在應用程式閘道上啟用 Web 應用程式防火牆，您必須建立 WAF 原則。 此原則中包含所有受控規則、自訂規則、排除項目及其他自訂項目 (例如檔案上傳限制)。
+
+您可以設定 WAF 原則，並將其與一或多個應用程式閘道建立關聯以進行保護。 WAF 原則包含兩種類型的安全性規則：
+
+- 您建立的自訂規則
+
+- 受控規則集，一組由 Azure 管理且預先設定的規則集合
+
+當兩者都存在時，會先處理自訂規則，然後再處理受控規則集內的規則。 規則是由比對條件、優先順序和動作所組成。 支援的動作類型為：ALLOW、BLOCK 和 LOG。 您可以結合受控和自訂規則，建立符合特定應用程式保護需求的完全自訂原則。
+
+原則中的規則會依照優先順序來處理。 優先順序是唯一整數，可定義規則的處理順序。 較小的整數值表示較高的優先順序，並且這些規則會在整數值較高的規則之前進行評估。 一旦符合規則，規則中所定義的對應動作就會套用至要求。 完成此對比處理之後，優先順序較低的規則就不會再進行處理。
+
+應用程式閘道所傳遞的 Web 應用程式可以在全域層級、在每個網站層級，或在每個 URI 層級建立相關聯的 WAF 原則。
 
 ### <a name="core-rule-sets"></a>核心規則集
 
@@ -159,6 +171,11 @@ Microsoft Azure Sentinel 是可調整的雲端原生安全性資訊事件管理 
 
 
 ![Azure WAF 防火牆事件活頁簿](../media/ag-overview/sentinel.png)
+
+
+#### <a name="azure-monitor-workbook-for-waf"></a>適用於 WAF 的 Azure 監視器活頁簿
+
+此活頁簿可讓您跨數個可篩選的面板，對安全性相關的 WAF 事件進行視覺效果自訂。 其適用於所有 WAF 類型，包括應用程式閘道、Front Door 和 CDN，而且可以根據 WAF 類型或特定 WAF 執行個體進行篩選。 透過 ARM 範本或資源庫範本匯入。 若要部署此活頁簿，請參閱 [WAF 活頁簿](https://github.com/Azure/Azure-Network-Security/tree/master/Azure%20WAF/Azure%20Monitor%20Workbook)。
 
 #### <a name="logging"></a>記錄
 

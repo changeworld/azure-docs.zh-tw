@@ -196,6 +196,8 @@
               href: search-howto-index-csv-blobs.md
             - name: 索引 JSON Blob
               href: search-howto-index-json-blobs.md
+            - name: 索引加密的 Blob
+              href: search-howto-index-encrypted-blobs.md
         - name: Azure 資料表
           href: search-howto-indexing-azure-tables.md
         - name: Azure Cosmos DB
@@ -401,7 +403,7 @@
 - name: 參考
   items:
     - name: Azure CLI
-      href: /cli/azure/search?view=azure-cli-latest
+      href: /cli/azure/search
     - name: Azure PowerShell
       href: /powershell/module/az.search
     - name: Resource Manager 範本

@@ -112,7 +112,7 @@
           displayName: 'request units, RUs, RU'
           href: scaling-throughput.md
         - name: 衝突類型和解決原則
-          displayName: 'last write wins, custom, multi master, multi-master'
+          displayName: 'last write wins, custom, multi-region writes, multi-master'
           href: conflict-resolution-policies.md
         - name: 全域散發 - 運作原理
           href: global-dist-under-the-hood.md
@@ -584,7 +584,7 @@
         - name: 資料加密
           href: database-encryption-at-rest.md
         - name: 安全存取資料
-          displayName: 'master key, resource token, users, roles'
+          displayName: 'primary key, resource token, users, roles'
           href: secure-access-to-data.md
         - name: IP 防火牆
           href: firewall-support.md
@@ -977,7 +977,7 @@
           href: how-to-move-regions.md
     - name: 全球發佈
       items:
-        - name: 設定多重主機
+        - name: 設定多重區域寫入
           href: how-to-multi-master.md
         - name: 管理一致性層級
           displayName: 'session, consistency prefix, strong, eventual, bounded staleness'

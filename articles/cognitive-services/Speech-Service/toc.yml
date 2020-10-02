@@ -10,6 +10,10 @@
       href: language-support.md
     - name: 區域支援
       href: regions.md
+    - name: 定價
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/'
+    - name: 配額和限制
+      href: speech-services-quotas-and-limits.md
     - name: Docs 有哪些新功能？
       href: whats-new.md
 - name: 語音轉文字
@@ -347,6 +351,8 @@
       items:
         - name: 什麼是語音助理？
           href: voice-assistants.md
+        - name: 語音助理範例 (GitHub)
+          href: 'https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant'
     - name: 自訂命令
       items:
         - name: 什麼是自訂命令？
@@ -459,11 +465,58 @@
       items:
         - name: 說話者辨識 REST API
           href: 'https://docs.microsoft.com/rest/api/speakerrecognition/'
-- name: Hosting
+- name: 工具
   items:
-    - name: 裝載文件
-      href: index-hosting.yml
-    - name: 操作指南
+    - name: 語音 SDK
+      items:
+        - name: 語音 SDK 概觀
+          href: speech-sdk.md
+        - name: 設定語音 SDK
+          href: quickstarts/setup-platform.md
+        - name: 語音 SDK 版本資訊
+          href: releasenotes.md
+        - name: 參考
+          items:
+            - name: C++
+              href: 'https://aka.ms/csspeech/cppref'
+            - name: C#
+              href: 'https://aka.ms/csspeech/csharpref'
+            - name: Java
+              href: 'https://aka.ms/csspeech/javaref'
+            - name: JavaScript
+              href: 'https://aka.ms/csspeech/javascriptref'
+            - name: Objective-C
+              href: 'https://aka.ms/csspeech/objectivecref'
+            - name: Python
+              href: 'https://aka.ms/csspeech/pythonref'
+    - name: Speech CLI
+      displayName: SPX
+      items:
+        - name: Speech CLI 概觀
+          displayName: What is SPX?
+          href: spx-overview.md
+        - name: Speech CLI 基本概念
+          displayName: SPX basics
+          href: spx-basics.md
+    - name: Speech Studio
+      items:
+        - name: Speech Studio 概觀
+          href: 'https://speech.microsoft.com'
+        - name: 使用 Speech Studio 建立自訂命令應用程式
+          href: quickstart-custom-speech-commands-create-new.md
+- name: 部署
+  items:
+    - name: 啟用記錄
+      href: how-to-use-logging.md
+    - name: 追蹤記憶體使用量
+      href: how-to-track-speech-sdk-memory-usage.md
+    - name: 設定適用於 Linux 的 OpenSSL
+      displayName: 'memory usage, memory consumption, object logging, object tracking, memory, openssl'
+      href: how-to-configure-openssl-linux.md
+    - name: 設定 RHEL/CentOS 7
+      href: how-to-configure-rhel-centos-7.md
+      displayName: 'RHEL, CentOS 7, CentOS, Configure RHEL, Configure CentO'
+    - name: 容器
       items:
         - name: 安裝和執行語音容器
           displayName: 'containers,install container,run container'
@@ -479,53 +532,8 @@
         - name: Azure 容器執行個體上的語音容器
           displayName: 'ACI,azure container instances,container instances,containers'
           href: deploy-speech-on-container-instances.md
-    - name: 資源
-      items:
         - name: 容器常見問題集
           href: speech-container-faq.md
-- name: 語音 SDK
-  items:
-    - name: 語音 SDK 概觀
-      href: speech-sdk.md
-    - name: 設定語音 SDK
-      displayName: 'install the speech sdk, install the speech sdk java, install the speech sdk C#, install the speech sdk python, install the speech sdk C++, setup speech sdk, install, install C#, install C++, install Python, install Java, install Javascript'
-      href: quickstarts/setup-platform.md
-    - name: 操作指南
-      items:
-        - name: 啟用記錄
-          href: how-to-use-logging.md
-        - name: 追蹤記憶體使用量
-          href: how-to-track-speech-sdk-memory-usage.md
-        - name: 設定適用於 Linux 的 OpenSSL
-          displayName: 'memory usage, memory consumption, object logging, object tracking, memory, openssl'
-          href: how-to-configure-openssl-linux.md
-        - name: 設定 RHEL/CentOS 7
-          href: how-to-configure-rhel-centos-7.md
-          displayName: 'RHEL, CentOS 7, CentOS, Configure RHEL, Configure CentOS'
-    - name: 範例
-      items:
-        - name: 語音 SDK 範例 (GitHub)
-          href: 'https://github.com/Azure-Samples/cognitive-services-speech-sdk'
-        - name: 語音裝置 SDK 範例 (GitHub)
-          href: 'https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK'
-        - name: 語音助理範例 (GitHub)
-          href: 'https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant'
-    - name: 參考
-      items:
-        - name: C++
-          href: 'https://aka.ms/csspeech/cppref'
-        - name: C#
-          href: 'https://aka.ms/csspeech/csharpref'
-        - name: Java
-          href: 'https://aka.ms/csspeech/javaref'
-        - name: JavaScript
-          href: 'https://aka.ms/csspeech/javascriptref'
-        - name: Objective-C
-          href: 'https://aka.ms/csspeech/objectivecref'
-        - name: Python
-          href: 'https://aka.ms/csspeech/pythonref'
-        - name: 語音 SDK 版本資訊
-          href: releasenotes.md
 - name: 裝置
   items:
     - name: 語音裝置文件
@@ -536,6 +544,8 @@
           href: speech-devices-sdk.md
         - name: 取得語音裝置 SDK
           href: get-speech-devices-sdk.md
+        - name: 語音裝置 SDK 範例 (GitHub)
+          href: 'https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK'
     - name: 硬體
       items:
         - name: 麥克風陣列建議
@@ -560,23 +570,6 @@
       items:
         - name: 語音裝置 SDK 版本資訊
           href: devices-sdk-release-notes.md
-- name: 工具
-  items:
-    - name: Speech CLI
-      displayName: SPX
-      items:
-        - name: 什麼是 Speech CLI？
-          displayName: What is SPX?
-          href: spx-overview.md
-        - name: Speech CLI 基本概念
-          displayName: SPX basics
-          href: spx-basics.md
-    - name: Speech Studio
-      items:
-        - name: 什麼是 Speech Studio？
-          href: 'https://speech.microsoft.com'
-        - name: 使用 Speech Studio 建立自訂命令應用程式
-          href: quickstart-custom-speech-commands-create-new.md
 - name: 遷移
   items:
     - name: 從 Bing 語音
@@ -588,19 +581,13 @@
     - name: 支援
       displayName: 'support,help,release notes,search,scoped search,azure support,github support,stack overflow,github issues,bugs,feedback,uservoice'
       href: support.md
-    - name: 區域
-      href: regions.md
     - name: Swagger 文件
       href: swagger-documentation.md
     - name: Sovereign Clouds
       displayName: 'fairfax,mooncake,compliant,secret,compliance,government,government cloud,dod,china'
       href: sovereign-clouds.md
-    - name: 定價
-      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/'
     - name: 定價計算機
       href: 'https://azure.microsoft.com/pricing/calculator/#cognitive-services'
-    - name: 配額和限制
-      href: speech-services-quotas-and-limits.md
     - name: 法規遵循
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: 加密

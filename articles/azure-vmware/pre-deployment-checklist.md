@@ -60,7 +60,7 @@ ms.locfileid: "91579637"
 | 訂用帳戶和識別碼 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |
 | 具有 EA 的訂用帳戶 | ☐是 &nbsp; &nbsp; ☐否  |
 | 資源群組名稱 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |
-| 位置 | ☒美國東部 |
+| Location | ☒美國東部 |
 | Azure 系統管理員<br><br>提供系統管理員的名稱和連絡人<br>指派為從 marketplace 啟用服務。<br>參與者是所需的最小角色 <br>[註冊 Azure VMware 解決方案資源提供者](tutorial-create-private-cloud.md#register-the-resource-provider)。 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |
 
 

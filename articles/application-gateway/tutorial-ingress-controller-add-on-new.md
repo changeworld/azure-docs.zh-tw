@@ -1,18 +1,18 @@
 ---
-title: 使用新的 Azure 應用程式閘道執行個體來啟用新 AKS 叢集的輸入控制器附加元件
-description: 了解如何使用 Azure CLI，以新的應用程式閘道執行個體為新的 AKS 叢集啟用輸入控制器附加元件。
+title: 教學課程：使用新的 Azure 應用程式閘道執行個體來啟用新 AKS 叢集的輸入控制器附加元件
+description: 使用此教學課程來了解如何使用 Azure CLI，以新的應用程式閘道執行個體，為新的 AKS 叢集啟用輸入控制器附加元件。
 services: application-gateway
 author: caya
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 06/10/2020
+ms.date: 09/24/2020
 ms.author: caya
-ms.openlocfilehash: 620fe5851f9dbde01b2206595fa79b61f62deb66
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: ab917fe476a40eb8ea559bc08e52d4bbf16a8436
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89595915"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91285582"
 ---
 # <a name="tutorial-enable-the-ingress-controller-add-on-preview-for-a-new-aks-cluster-with-a-new-application-gateway-instance"></a>教學課程：使用新的應用程式閘道執行個體來啟用新 AKS 叢集的輸入控制器附加元件 (預覽)
 
@@ -30,11 +30,12 @@ ms.locfileid: "89595915"
 > * 使用 AGIC 在 AKS 叢集上輸入，以部署範例應用程式。
 > * 檢查是否可透過應用程式閘道連線到應用程式。
 
+## <a name="prerequisites"></a>Prerequisites
+
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="prerequisites"></a>必要條件
 
 如果您選擇在本機安裝和使用 CLI，本教學課程需要您執行 Azure CLI 2.0.4 版或更新版本。 若要尋找版本，請執行 `az --version`。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
 
@@ -134,7 +135,7 @@ az group delete --name myResourceGroup
 ```
 
 ## <a name="next-steps"></a>後續步驟
-* [了解如何停用 AGIC 附加元件](./ingress-controller-disable-addon.md)
-* [了解 AGIC 支援哪些注釋](./ingress-controller-annotations.md)
-* [AGIC 相關問題疑難排解](./ingress-controller-troubleshoot.md)
+
+> [!div class="nextstepaction"]
+> [了解如何停用 AGIC 附加元件](./ingress-controller-disable-addon.md)
 

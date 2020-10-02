@@ -4,6 +4,8 @@
   items:
     - name: 什麼是 Azure NetApp Files
       href: azure-netapp-files-introduction.md
+    - name: 新功能
+      href: whats-new.md
     - name: Azure NetApp Files 的儲存體階層
       href: azure-netapp-files-understand-storage-hierarchy.md
 - name: 快速入門
@@ -27,6 +29,8 @@
           href: azure-netapp-files-performance-metrics-volumes.md
         - name: Linux 的效能評定
           href: performance-benchmarks-linux.md
+        - name: Azure NetApp Files 單一磁碟區上的 Oracle 資料庫效能
+          href: performance-oracle-single-volumes.md
         - name: 與 SMB 效能相關的常見問題集
           href: azure-netapp-files-smb-performance.md
     - name: 適用於Azure NetApp Files 的成本模型
