@@ -449,12 +449,6 @@
               href: windows-voice-assistants-best-practices.md
             - name: 範例和常見問題集
               href: windows-voice-assistants-faq.md
-    - name: 自訂關鍵字
-      items:
-        - name: 自訂關鍵字概觀
-          href: custom-keyword-overview.md
-        - name: 自訂關鍵字基本概念
-          href: custom-keyword-basics.md
 - name: 說話者辨識
   items:
     - name: 說話者辨識概觀
@@ -465,6 +459,12 @@
       items:
         - name: 說話者辨識 REST API
           href: 'https://docs.microsoft.com/rest/api/speakerrecognition/'
+- name: 自訂關鍵字
+  items:
+    - name: 自訂關鍵字概觀
+      href: custom-keyword-overview.md
+    - name: 自訂關鍵字基本概念
+      href: custom-keyword-basics.md
 - name: 工具
   items:
     - name: 語音 SDK
