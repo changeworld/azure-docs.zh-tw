@@ -51,6 +51,8 @@
       href: cli-samples.md
 - name: 概念
   items:
+    - name: 高可用性
+      href: cache-high-availability.md
     - name: 容錯移轉和修補
       href: cache-failover.md
     - name: 最佳作法
@@ -90,8 +92,6 @@
           href: cache-reserved-pricing.md
         - name: 遷移至 Azure Cache for Redis
           href: cache-migration-guide.md
-        - name: 從受控快取服務遷移 (已取代)
-          href: cache-migrate-to-redis.md
         - name: 規劃常見問題
           href: cache-planning-faq.md
     - name: 組建
