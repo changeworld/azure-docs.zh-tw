@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 09/28/2020
 ms.author: aahi
 keywords: 內部部署、Docker、容器、Kubernetes
-ms.openlocfilehash: ccba46c1e83f92b1f27c64cb4d9ca32039862bd1
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.openlocfilehash: ed61760312ad8bada0241b0338c36ab3557e2caa
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91597455"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91665407"
 ---
 # <a name="azure-cognitive-services-containers"></a>Azure 認知服務容器
 
@@ -29,7 +29,8 @@ Azure 認知服務提供數個 [Docker 容器](https://www.docker.com/what-conta
 
 > [!div class="checklist"]
 > * [異常偵測器][ad-containers]
-> * [電腦視覺][cv-containers]
+> * [讀取 OCR (光學字元辨識) ][cv-containers]
+> * [空間分析][spa-containers]
 > * [臉部][fa-containers]
 > * [表單辨識器][fr-containers]
 > * [語言理解 (LUIS)][lu-containers]
@@ -90,7 +91,7 @@ Azure 認知服務容器可透過您的 Azure 訂用帳戶公開取得，而 Doc
 
 [!INCLUDE [Container repositories and images](containers/includes/cognitive-services-container-images.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 您必須滿足下列必要條件才能使用 Azure 認知服務容器：
 

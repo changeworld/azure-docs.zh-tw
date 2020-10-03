@@ -1,31 +1,30 @@
 ---
 author: paulbouwer
 ms.topic: include
-ms.date: 11/15/2019
+ms.date: 10/02/2020
 ms.author: pabouwer
-ms.openlocfilehash: 74f5b22ccc822a188059b29d9c661a15cf8412bf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5dc9686e4a9994a085cc9f4a4631e66b05d7949d
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77593930"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91666691"
 ---
 ## <a name="download-and-install-the-istio-istioctl-client-binary"></a>下載並安裝 Istio istioctl 用戶端二進位檔
 
-在 MacOS 上以 bash 為基礎的 shell 中，使用 `curl` 下載 Istio 版本，然後以解壓縮， `tar` 如下所示：
+在 macOS 上以 bash 為基礎的 shell 中，使用 `curl` 下載 Istio 版本，然後以如下方式解壓縮 `tar` ：
 
 ```bash
 # Specify the Istio version that will be leveraged throughout these instructions
-ISTIO_VERSION=1.4.0
+ISTIO_VERSION=1.7.3
 
-curl -sL "https://github.com/istio/istio/releases/download/$ISTIO_VERSION/istio-$ISTIO_VERSION-osx.tar.gz" | tar xz
+curl -sL "https://github.com/istio/istio/releases/download/$ISTIO_VERSION/istioctl-$ISTIO_VERSION-osx.tar.gz" | tar xz
 ```
 
-`istioctl`用戶端二進位檔會在您的用戶端電腦上執行，並可讓您與 Istio 服務網格互動。 使用下列命令，將 Istio `istioctl` 用戶端二進位檔安裝在 MacOS 上以 bash 為基礎的 shell 中。 這些命令會將 `istioctl` 用戶端二進位檔複製到 `PATH` 中的標準使用者程式位置。
+`istioctl`用戶端二進位檔會在用戶端電腦上執行，並可讓您在 AKS 叢集中安裝及管理 Istio。 使用下列命令， `istioctl` 在 macOS 上以 bash 為基礎的 shell 中安裝 Istio 用戶端二進位檔。 這些命令會將 `istioctl` 用戶端二進位檔複製到 `PATH` 中的標準使用者程式位置。
 
 ```bash
-cd istio-$ISTIO_VERSION
-sudo cp ./bin/istioctl /usr/local/bin/istioctl
+sudo mv ./istioctl /usr/local/bin/istioctl
 sudo chmod +x /usr/local/bin/istioctl
 ```
 

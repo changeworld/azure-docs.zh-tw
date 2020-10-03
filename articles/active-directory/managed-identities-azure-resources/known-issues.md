@@ -17,12 +17,12 @@ ms.date: 08/06/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 0d8c835cdc501061607dc05d0b40ebf95deb36a8
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: cf9f484a3f9285d1be06443b39bd50ec73ccf632
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90969142"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91665288"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Azure 資源適用受控識別的常見問題集與已知問題
 
@@ -43,7 +43,7 @@ az resource list --query "[?identity.type=='SystemAssigned'].{Name:name,  princi
 
 ### <a name="do-managed-identities-have-a-backing-app-object"></a>受控識別是否有支援的應用程式物件？
 
-不可以。 受控識別和 Azure AD App 註冊與目錄中的內容不同。 
+否。 受控識別和 Azure AD App 註冊與目錄中的內容不同。 
 
 應用程式註冊有兩個元件：應用程式物件 + 服務主體物件。 適用于 Azure 資源的受控識別只有其中一個元件：服務主體物件。 
 
@@ -129,7 +129,7 @@ az vm update -n <VM Name> -g <Resource Group> --remove tags.fixVM
  - 若為系統指派的受控識別：停用然後重新啟用。 
  - 若為使用者指派的受控識別：加以刪除、重新建立，然後重新連結至所需的資源 (例如虛擬機器)
 
-如需詳細資訊，請參閱[將 Azure 訂用帳戶轉移至不同的 Azure AD 目錄 (預覽)](../../role-based-access-control/transfer-subscription.md)。
+如需詳細資訊，請參閱將 [Azure 訂用帳戶轉移至不同的 Azure AD 目錄](../../role-based-access-control/transfer-subscription.md)。
 
 ### <a name="moving-a-user-assigned-managed-identity-to-a-different-resource-groupsubscription"></a>將使用者指派的受控識別移至不同的資源群組/訂用帳戶
 

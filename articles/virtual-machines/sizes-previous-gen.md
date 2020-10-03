@@ -6,14 +6,14 @@ ms.subservice: sizes
 author: mimckitt
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 02/20/2020
+ms.date: 10/02/2020
 ms.author: jushiman
-ms.openlocfilehash: 18389f3058bcc60c22f8598040f4fea4b036f1ee
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: afad68be53637cf258223eafab0a13f525a92f4c
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89298907"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91666614"
 ---
 # <a name="previous-generations-of-virtual-machine-sizes"></a>前幾代的虛擬機器大小
 
@@ -163,7 +163,7 @@ A8-A11 和 H 系列大小也稱為 *計算密集型執行個體*。 執行這些
 <sup>1</sup> 對於 MPI 應用程式，FDR InfiniBand 網路會啟用專用 RDMA 後端網路，以提供超低延遲和高頻寬。  
 
 > [!NOTE]
-> A8 – A11 VM 計劃於 2021 年 3 月淘汰。 如需詳細資訊，請參閱 [HPC 移轉指南](https://azure.microsoft.com/resources/hpc-migration-guide/)。
+> A8 – A11 VM 計劃於 2021 年 3 月淘汰。 強烈建議您不要建立任何新的 A8-A11 Vm。 請將任何現有的 A8 – A11 Vm 遷移至較新且強大的高效能運算 VM 大小，例如 H、HB、HC、HBv2，以及一般目的計算 VM 大小，例如 D、E 和 F，以獲得更好的價格效能。 如需詳細資訊，請參閱 [HPC 移轉指南](https://azure.microsoft.com/resources/hpc-migration-guide/)。
 
 <br>
 

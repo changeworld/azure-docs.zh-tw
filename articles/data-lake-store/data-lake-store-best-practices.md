@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: sachins
-ms.openlocfilehash: 103315b61592cc711f61ec5e95468e50314b9fa6
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 291a5850540ea7d7d24a4a544c1eb65183df8ffb
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89440825"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91667736"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen1"></a>使用 Azure Data Lake Storage Gen1 的最佳做法
 
@@ -33,7 +33,7 @@ Azure Data Lake Storage Gen1 針對 Azure Active Directory (Azure AD) 使用者�
 
 在 Data Lake Storage Gen1 中使用巨量資料時，最有可能是使用服務主體來允許 Azure HDInsight 這類服務使用資料。 不過，也可能會有個別使用者需要存取資料的情況。 在這種情況下，您必須使用 Azure Active Directory [安全性群組](data-lake-store-secure-data.md#create-security-groups-in-azure-active-directory)，而不是將個別使用者指派至資料夾和檔案。
 
-指派權限給安全性群組之後，在群組中新增或移除使用者皆不需要更新 Data Lake Storage Gen1。 這也有助於確保您不會超過 [32 個存取和預設 ACL](../azure-resource-manager/management/azure-subscription-service-limits.md#data-lake-store-limits) 的限制 (該數量包含 4 個 POSIX 樣式 ACL，它們一律與每個檔案和資料夾相關聯：[擁有使用者](data-lake-store-access-control.md#the-owning-user)、[擁有群組](data-lake-store-access-control.md#the-owning-group)、[遮罩](data-lake-store-access-control.md#the-mask)等等)。
+指派權限給安全性群組之後，在群組中新增或移除使用者皆不需要更新 Data Lake Storage Gen1。 這也有助於確保您不會超過 [32 個存取和預設 ACL](../azure-resource-manager/management/azure-subscription-service-limits.md#data-lake-storage-limits) 的限制 (該數量包含 4 個 POSIX 樣式 ACL，它們一律與每個檔案和資料夾相關聯：[擁有使用者](data-lake-store-access-control.md#the-owning-user)、[擁有群組](data-lake-store-access-control.md#the-owning-group)、[遮罩](data-lake-store-access-control.md#the-mask)等等)。
 
 ### <a name="security-for-groups"></a>群組的安全性
 
@@ -189,7 +189,7 @@ NA/Extracts/ACMEPaperCo/Out/2017/08/14/processed_updates_08142017.csv
 
 對於直接將批次資料處理至 Hive 或傳統 SQL 資料庫的常見案例，則不需要 **/in** 或 **/out** 資料夾，因為輸出已進入 Hive 資料表或外部資料庫的個別資料夾中。 例如，來自客戶的每日擷取會置入個別的資料夾，而 Azure Data Factory、Apache Oozie 或 Apache Airflow 這類服務的協調流程將會觸發每日 Hive 或 Spark 作業來處理資料，並寫入 Hive 資料表。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [Azure Data Lake Storage Gen1 概觀](data-lake-store-overview.md)
 * [Azure Data Lake Storage Gen1 中的存取控制](data-lake-store-access-control.md)

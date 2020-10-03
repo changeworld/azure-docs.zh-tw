@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2020
 author: shganesh-dev
 ms.author: shganesh
-ms.openlocfilehash: ed836e3df28c5e39aa7f9d21f020c0d37292dcfc
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: aff26d3b491896aa9a1b1fee93d39a5ec93d730c
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91631795"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91665136"
 ---
 # <a name="commercial-marketplace-analytics-terminology-and-common-questions"></a>商業市集分析的術語和常見問題
 
@@ -45,7 +45,7 @@ ms.locfileid: "91631795"
 | Azure 授權類型：Enterprise | 客戶、訂單 | 終端客戶透過 Enterprise 合約 (直接與 Microsoft 簽署) 取得 Azure 和您的 Marketplace 供應項目。|
 | Azure 授權類型：企業透過轉銷商  | 客戶、訂單 | 終端客戶透過協助他們與 Microsoft 簽署「Enterprise 合約」的轉銷商取得 Azure 和您的 Marketplace 供應項目。|
 | Azure 授權類型：隨用隨付| 客戶、訂單 | 終端客戶透過「隨用隨付」合約 (直接與 Microsoft 簽署) 取得 Azure 和您的 Marketplace 供應項目。|
-| 計費帳戶識別碼| 客戶、訂單、使用量| 產生帳單的帳戶識別碼。 使用這個屬性可將分析報表與付款交易報表連接。|
+| 計費帳戶識別碼| 客戶、訂單、使用量| 產生帳單的帳戶識別碼。 將 **帳單帳戶識別碼** 對應至 **customerID** ，以連接您的付款交易報表與客戶、訂單和使用量報表。|
 | 雲端執行個體名稱| 單| 發生 VM 部署的 Microsoft Cloud。|
 | 雲端執行個體名稱：Azure 全域| 單| 公用的全域 Microsoft 雲端。|
 | 雲端執行個體名稱：Azure Government | 單| 政府特有的 Microsoft 雲端，適用於下列其中一種政府：中國、德國或美國地區。| |

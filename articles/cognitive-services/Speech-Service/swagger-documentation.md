@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: reference
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 30e8224b6cb757f044a5eac598d834cee838391e
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: 6bb50e427fa85a170c5ad23a63d67c01e898a17d
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91629976"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91665679"
 ---
 # <a name="swagger-documentation"></a>Swagger 文件
 
@@ -30,10 +30,17 @@ ms.locfileid: "91629976"
 
 您必須將 Swagger 設定為與您的語音服務訂用帳戶相同的區域。 您可以在語音服務資源下的 Azure 入口網站中確認您的區域。 如需支援區域的完整清單，請參閱 [區域](regions.md)。
 
-1. 在瀏覽器中，移至您區域的 Swagger 規格 `https://<your-region>.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0` 。 在該頁面上，按一下 [ **API 定義**]，然後按一下 [ **Swagger**]。 複製所顯示頁面的 URL。
+1. 在瀏覽器中，移至您區域的 Swagger 規格：  
+       `https://<your-region>.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0`
+1. 在該頁面上，按一下 [ **API 定義**]，然後按一下 [ **Swagger**]。 複製所顯示頁面的 URL。
 1. 在新的瀏覽器中，移至 https://editor.swagger.io
 1. 按一下 [檔案] **，按一下 [** 匯 **入 url**]，貼上 Url，然後按一下 **[確定]**。
-1. 按一下 [ **產生用戶端** ]，然後選取 [ **python**]。 用戶端程式庫會下載到您的電腦。
+1. 按一下 [ **產生用戶端** ]，然後選取 [ **python**]。 用戶端程式庫會將檔案下載到您的電腦 `.zip` 。
+1. 從下載中解壓縮所有內容。 您可以使用 `tar -xf` 將所有專案解壓縮。
+1. 將解壓縮的模組安裝到您的 Python 環境：  
+       `pip install path/to/package/python-client`
+1. 已安裝的套件命名為 `swagger_client` 。 檢查安裝是否正常：  
+       `python -c "import swagger_client"`
 
 您可以使用您在 [GitHub 上以語音服務範例](https://aka.ms/csspeech/samples)產生的 Python 程式庫。
 

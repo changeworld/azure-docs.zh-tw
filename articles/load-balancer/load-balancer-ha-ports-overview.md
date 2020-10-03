@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2019
 ms.author: allensu
-ms.openlocfilehash: 5115190d944e78d476f369442dccdbda394e46ba
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: b0b19eaa86269feff28c73275e4db4a3d332b3df
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90564044"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91664868"
 ---
 # <a name="high-availability-ports-overview"></a>高可用性連接埠概觀
 
-Azure Standard Load Balancer 可協助您在使用內部負載平衡器時，同時對所有連接埠上的 TCP 和 UDP 流量進行負載平衡。 
+當您透過 HA 埠使用內部 Load Balancer 時，Azure Standard Load Balancer 可協助您同時對**所有**埠上的**所有**通訊協定流量進行負載平衡。
 
-高可用性 (HA) 埠負載平衡規則是負載平衡規則的變異，設定在內部 Standard Load Balancer 上。 您可以透過提供單一規則來對抵達內部 Standard Load Balancer 所有連接埠的所有 TCP 和 UDP 流量進行負載平衡，以簡化對於負載平衡器的使用。 每次都會針對流量進行負載平衡決策。 此動作會以下列五個 Tuple 連線為基礎：來源 IP 位址、來源連接埠、目的地 IP 位址、目的地連接埠和通訊協定。
+高可用性 (HA) 埠是一種負載平衡規則，可讓您輕鬆地對抵達內部 Standard Load Balancer 之**所有**埠的**所有**流程進行負載平衡。 每次都會針對流量進行負載平衡決策。 此動作會以下列五個 Tuple 連線為基礎：來源 IP 位址、來源連接埠、目的地 IP 位址、目的地連接埠和通訊協定。
 
 HA 連接埠負載平衡規則可協助您處理重要的使用案例，例如虛擬網路中網路虛擬裝置 (NVA) 的高可用性和規模調整。 此功能也可以在必須對大量連接埠進行負載平衡時提供協助。 
 
@@ -32,7 +32,7 @@ HA 連接埠負載平衡規則可協助您處理重要的使用案例，例如�
 
 ## <a name="why-use-ha-ports"></a>為何要使用 HA 連接埠？
 
-### <a name="network-virtual-appliances"></a><a name="nva"></a>網路虛擬設備
+### <a name="network-virtual-appliances"></a><a name="nva"></a>網路虛擬裝置
 
 您可以使用 NVA 保護 Azure 工作負載，使其不會遭受多個類型的安全性威脅。 當您在這些案例中使用 NVA 時，它們必須具有可靠性、高可用性，並可依需要相應放大。
 

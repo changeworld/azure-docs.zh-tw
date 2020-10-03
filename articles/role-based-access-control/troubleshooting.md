@@ -15,12 +15,12 @@ ms.date: 09/18/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: 2f96e48d0c7b14178185f751b8c708e75ab3f322
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 415af4d71365a88a5998f6a9356d5240bc5e2518
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91441839"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91665985"
 ---
 # <a name="troubleshoot-azure-rbac"></a>針對 Azure RBAC 進行疑難排解
 
@@ -86,7 +86,7 @@ $ras.Count
 
 ## <a name="transferring-a-subscription-to-a-different-directory"></a>將訂用帳戶轉移至不同的目錄
 
-- 如果您需要如何將訂用帳戶轉移至不同 Azure AD 目錄的步驟，請參閱將 [Azure 訂用帳戶轉移至不同的 Azure AD 目錄 (預覽) ](transfer-subscription.md)。
+- 如果您需要如何將訂用帳戶轉移至不同 Azure AD 目錄的步驟，請參閱將 [Azure 訂用帳戶轉移至不同的 Azure AD 目錄](transfer-subscription.md)。
 - 如果您將訂用帳戶轉移至不同的 Azure AD 目錄，所有角色指派都會從來源 Azure AD 目錄中 **永久** 刪除，而且不會遷移至目標 Azure AD 目錄。 您必須在目標目錄中重新建立角色指派。 您也必須手動重新建立適用于 Azure 資源的受控識別。 如需詳細資訊，請參閱 [受控識別的常見問題和已知問題](../active-directory/managed-identities-azure-resources/known-issues.md)。
 - 如果您是 Azure AD 的全域系統管理員，而且在目錄之間傳送訂用帳戶之後，您沒有訂用帳戶的存取權，請使用 **Azure 資源的存取管理** 切換，暫時 [提高存取](elevate-access-global-admin.md) 權以取得訂用帳戶的存取權。
 

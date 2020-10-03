@@ -9,14 +9,14 @@ manager: diviso
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 08/14/2020
+ms.date: 10/02/2020
 ms.custom: seodec18
-ms.openlocfilehash: fcb38f761a72bf2c6e5dee8bb993cec9143e7241
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 99cde78f0944544941224927e84e117bd0e660d8
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88998946"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91667838"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-gen2-environment-using-c-sharp"></a>使用 C 銳利查詢 Azure 時間序列深入解析 Gen2 環境中的資料
 
@@ -71,7 +71,7 @@ ms.locfileid: "88998946"
 
 ## <a name="c-sample-code"></a>C# 範例程式碼
 
-請參閱 [Azure 時間序列深入解析](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/gen2-sample/csharp-tsi-gen2-sample) 存放庫，以存取 c # 範例程式碼。 
+請參閱 [Azure 時間序列深入解析](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/gen2-sample/csharp-tsi-gen2-sample) 存放庫，以存取 c # 範例程式碼。
 
 > [!NOTE]
 >

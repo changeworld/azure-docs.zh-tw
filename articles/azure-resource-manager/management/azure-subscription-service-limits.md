@@ -3,12 +3,12 @@ title: Azure 訂用帳戶限制與配額
 description: 提供通用的 Azure 訂用帳戶和服務限制、配額和條件約束的清單。 本文包含如何增加限制以及最大值的資訊。
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 004c3f35dae4a4966e9ac3d4756aecfba7df2075
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 3b4185fb90aec68eda600b67c95529e6b80b09e4
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371713"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91665586"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure 訂用帳戶和服務限制、配額與限制
 
@@ -212,7 +212,7 @@ ms.locfileid: "91371713"
 
 [!INCLUDE [azure-data-lake-analytics-limits](../../../includes/azure-data-lake-analytics-limits.md)]
 
-## <a name="data-lake-store-limits"></a>Data Lake Store 限制
+## <a name="data-lake-storage-limits"></a>Data Lake Storage 限制
 
 [!INCLUDE [azure-data-lake-store-limits](../../../includes/azure-data-lake-store-limits.md)]
 

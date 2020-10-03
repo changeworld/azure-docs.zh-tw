@@ -10,13 +10,13 @@ ms.custom: how-to
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 09/01/2020
-ms.openlocfilehash: db14670d19bf6bf0019e1533ebefdc5a47436a1c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 10/02/2020
+ms.openlocfilehash: cade5a4329cdfc11c1b256ba01e9764f60a476a6
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91302361"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91667855"
 ---
 # <a name="create-and-attach-an-azure-kubernetes-service-cluster"></a>建立並附加 Azure Kubernetes Service 叢集
 
@@ -278,6 +278,31 @@ az ml computetarget attach aks -n myaks -i aksresourceid -g myresourcegroup -w m
 如需在入口網站中附加 AKS 叢集的詳細資訊，請參閱在 [Azure Machine Learning studio 中建立計算目標](how-to-create-attach-compute-studio.md#inference-clusters)。
 
 ---
+
+## <a name="detach-an-aks-cluster"></a>卸離 AKS 叢集
+
+若要從您的工作區卸離叢集，請使用下列其中一種方法：
+
+> [!WARNING]
+> 使用 Azure Machine Learning studio、SDK 或機器學習服務的 Azure CLI 擴充功能來卸離 AKS 叢集， **並不會刪除 AKS**叢集。 若要刪除叢集，請參閱搭配 [使用 Azure CLI 與 AKS](/azure/aks/kubernetes-walkthrough#delete-the-cluster)。
+
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+aks_target.detach()
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+若要將現有的叢集卸離您的工作區，請使用下列命令。 將取代為 `myaks` AKS 叢集附加至工作區的名稱。 取代 `myresourcegroup` 為包含您工作區的資源群組。 取代 `myworkspace` 為您的工作區名稱。
+
+```azurecli
+az ml computetarget detach -n myaks -g myresourcegroup -w myworkspace
+```
+
+# <a name="portal"></a>[入口網站](#tab/azure-portal)
+
+在 Azure Machine Learning studio 中，選取 [ __計算__]、[ __推斷__叢集] 以及您想要移除的叢集。 使用卸 __離__ 連結來卸離叢集。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -3,12 +3,12 @@ title: 在 Azure Migrate 伺服器評量中設定無代理程式相依性分析
 description: 在 Azure Migrate 伺服器評量中設定無代理程式相依性分析。
 ms.topic: how-to
 ms.date: 6/08/2020
-ms.openlocfilehash: 164cc20632faa1d444d06da6688000e9b40d7e76
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 57e5add810cf4fac232bce08fc7ca96df0a7c3a0
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91275586"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91667464"
 ---
 # <a name="analyze-machine-dependencies-agentless"></a>分析機器相依性 (無代理程式)
 
@@ -27,7 +27,7 @@ ms.locfileid: "91275586"
 - 目前無法使用伺服器群組的相依性對應。
 - 您可以為1000伺服器同時設定相依性資料收集。 您可以使用1000的批次順序來分析較高數目的伺服器。
 
-## <a name="before-you-start"></a>在您開始使用 Intune 之前
+## <a name="before-you-start"></a>開始之前
 
 - [檢查](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless) 支援的作業系統和必要的許可權。
 - 請確定您已執行下列動作：
@@ -50,7 +50,7 @@ ms.locfileid: "91275586"
 2. 流覽至 [ **提供 vCenter 詳細資料** ] 面板。
 3. 在 [**探索 vm 上的應用程式和**相依性] 中，按一下 [**新增認證**]
 3. 選擇**作業系統**、提供帳戶的易記名稱和**使用者名稱** / **密碼**
-6. 按一下 [檔案]  。
+6. 按一下 [檔案] 。
 7. 按一下 [ **儲存並開始探索**]。
 
     ![新增 VM 使用者帳戶](./media/how-to-create-group-machine-dependencies-agentless/add-vm-credential.png)
@@ -137,12 +137,12 @@ Timeslot | 觀察到相依性期間的 timeslot。 <br/> 相依性資料目前�
 如果您想要停止相依于數部電腦，您可以使用 [PowerShell](#start-or-stop-dependency-discovery-using-powershell) 來執行這項操作。
 
 
-### <a name="start-or-stop-dependency-discovery-using-powershell"></a>使用 PowerShell 啟動或停止相依性探索
+## <a name="start-or-stop-dependency-discovery-using-powershell"></a>使用 PowerShell 啟動或停止相依性探索
 
 從 GitHub 上 [Azure PowerShell 範例](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/dependencies-at-scale) 存放庫下載 PowerShell 模組。
 
 
-#### <a name="log-in-to-azure"></a>登入 Azure
+### <a name="log-in-to-azure"></a>登入 Azure
 
 1. 使用 Disconnect-azaccount Cmdlet 登入您的 Azure 訂用帳戶。
 
@@ -166,7 +166,7 @@ Timeslot | 觀察到相依性期間的 timeslot。 <br/> 相依性資料目前�
     Import-Module .\AzMig_Dependencies.psm1
     ```
 
-#### <a name="enable-or-disable-dependency-data-collection"></a>啟用或停用相依性資料收集
+### <a name="enable-or-disable-dependency-data-collection"></a>啟用或停用相依性資料收集
 
 1. 使用下列命令，在您的 Azure Migrate 專案中取得探索到的 VMware Vm 清單。 在下列範例中，專案名稱是 FabrikamDemoProject，而其所屬的資源群組為 FabrikamDemoRG。 電腦清單會儲存在 FabrikamDemo_VMs.csv
 

@@ -4,17 +4,17 @@ description: 使用儲存體分析、用戶端記錄及其他協力廠商工具�
 author: normesta
 ms.service: storage
 ms.topic: troubleshooting
-ms.date: 09/23/2019
+ms.date: 10/02/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: 79e108303575d5a9969e04f01bdeb126bf078762
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: a63af55161c2e60724fd35987f9dcbf05b12df2e
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90031478"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91667906"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>監視、診斷與疑難排解 Microsoft Azure 儲存體
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -256,6 +256,14 @@ Storage Client Library for .NET 能讓您針對應用程式所執行的儲存體
 >
 >
 
+# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+
+下列程式碼範例示範如何使用自訂用戶端要求識別碼。 
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Monitoring.cs" id="Snippet_UseCustomRequestID":::
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+
 如果儲存體用戶端程式庫在用戶端擲回 **StorageException**，則 **RequestInformation** 屬性所包含的 **RequestResult** 物件裡會出現 **ServiceRequestID** 屬性。 您可以從 **OperationContext** 執行個體存取 **RequestResult** 物件。
 
 下列程式碼範例示範如何藉由附加 **OperationContext** 物件要求至儲存體服務來設定自訂的 **ClientRequestId** 值。 此範例同時示範如何從回應訊息擷取 **ServerRequestId** 值。
@@ -291,6 +299,8 @@ catch (StorageException storageException)
     }
 }
 ```
+
+---
 
 ### <a name="timestamps"></a><a name="timestamps"></a>時間戳記
 您也可以使用時間戳記找到相關的記錄項目，但是要注意任何可能存在用戶端與伺服器之間的時鐘誤差。 依據用戶端上的時間戳記，搜尋前後誤差 15 分鐘之內相符的伺服器端記錄項目。 請記住，針對內含度量的 Blob 所產生的 Blob 中繼資料，代表儲存在 Blob 中的度量時間範圍。 如果您在同一分鐘或小時內擁有太多度量 Blob，此時間範圍相當有用。
@@ -358,13 +368,19 @@ catch (StorageException storageException)
 
 對於資料表和佇列服務，Nagle 演算法也可能導致相較於 **AverageServerLatency** 的高 **AverageE2ELatency**。如需詳細資訊，請參閱 [Nagle 演算法不適用於小型要求](https://docs.microsoft.com/archive/blogs/windowsazurestorage/nagles-algorithm-is-not-friendly-towards-small-requests)一文。 您可以在 **System.Net** 命名空間中使用 **ServicePointManager** 類別，來停用程式碼中的 Nagle 演算法。 由於這麼做會影響已經開啟的連線，因此在對應用程式裡的資料表或佇列服務進行任何呼叫之前，請先完成這個動作。 以下範例來自背景工作角色裡的 **Application_Start** 方法。
 
+# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Monitoring.cs" id="Snippet_DisableNagle":::
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+
 ```csharp
 var storageAccount = CloudStorageAccount.Parse(connStr);
-ServicePoint tableServicePoint = ServicePointManager.FindServicePoint(storageAccount.TableEndpoint);
-tableServicePoint.UseNagleAlgorithm = false;
 ServicePoint queueServicePoint = ServicePointManager.FindServicePoint(storageAccount.QueueEndpoint);
 queueServicePoint.UseNagleAlgorithm = false;
 ```
+
+---
 
 您應該檢查用戶端記錄，了解您的用戶端應用程式提交多少要求數量，並查看用戶端內是否出現 .NET 相關的一般效能瓶頸，例如 CPU、.NET 記憶體回收、網路使用率或記憶體等。 若要開始疑難排解 .NET 用戶端應用程式，請參閱 [偵錯、追蹤與分析](https://msdn.microsoft.com/library/7fe0dd2y)。
 
@@ -594,6 +610,12 @@ SCRIPT7002: XMLHttpRequest: Network Error 0x80070005, Access is denied.
 
 下例程式碼範例顯示如何設定您的 Blob 服務，以讓 JavaScript 在 Contoso 網域中執行，進而存取位於您的 Blob 儲存體服務中的 Blob：
 
+# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Monitoring.cs" id="Snippet_ConfigureCORS":::
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+
 ```csharp
 CloudBlobClient client = new CloudBlobClient(blobEndpoint, new StorageCredentials(accountName, accountKey));
 // Set the service properties.
@@ -609,6 +631,8 @@ sp.Cors.CorsRules.Clear();
 sp.Cors.CorsRules.Add(cr);
 client.SetServiceProperties(sp);
 ```
+
+---
 
 #### <a name="network-failure"></a><a name="network-failure"></a>網路失敗
 在某些情況中，遺失網路封包可能導致儲存體服務將 HTTP 404 訊息傳回給用戶端。 舉例來說，當您的用戶端應用程式正在刪除資料表服務中的某個實體，您看到該用戶端正從資料表服務擲回一個回報「HTTP 404 (找不到)」狀態訊息的儲存體例外。 當您調查資料表儲存體服務中的資料表時，會看到該服務已依要求刪除該實體。

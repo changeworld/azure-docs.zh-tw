@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: a642f7dfc470a695f96967cad0ed738d45b11efb
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 59b4a04231df3b93b093750cc6c9d70982a418a9
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90881935"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91665339"
 ---
 # <a name="azure-data-lake-storage-gen-1-output-from-azure-stream-analytics"></a>從 Azure 串流分析 Azure Data Lake Storage Gen 1 輸出
 
@@ -44,7 +44,7 @@ Azure Data Lake Storage 來自串流分析的輸出，在 Azure 中國世紀和 
 
 ## <a name="output-batch-size"></a>輸出批次大小
 
-如需訊息大小上限，請參閱 [Data Lake Storage 限制](../azure-resource-manager/management/azure-subscription-service-limits.md#data-lake-store-limits)。 若要將批次大小優化，請使用每個寫入作業最多 4 MB。
+如需訊息大小上限，請參閱 [Data Lake Storage 限制](../azure-resource-manager/management/azure-subscription-service-limits.md#data-lake-storage-limits)。 若要將批次大小優化，請使用每個寫入作業最多 4 MB。
 
 ## <a name="next-steps"></a>後續步驟
 

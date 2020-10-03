@@ -1,5 +1,5 @@
 ---
-title: 建立自訂關鍵字-語音服務
+title: Create 關鍵字快速入門-語音服務
 titleSuffix: Azure Cognitive Services
 description: 您的裝置一律會接聽關鍵字 (或片語) 。 當使用者說出關鍵字時，裝置會將所有後續的音訊傳送到雲端，直到使用者停止說話。 自訂關鍵字是用來區分您的裝置和強化品牌的有效方式。
 services: cognitive-services
@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/20/2019
+ms.date: 10/02/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 188824b9c43387cf106a3cdd53a09fd6bcb198b8
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: f2f333cd01057ff5f6f904924880f88b0685c72f
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91360662"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91667688"
 ---
-# <a name="custom-keyword-basics"></a>自訂關鍵字基本概念
+# <a name="get-started-with-custom-keyword"></a>開始使用自訂關鍵字
 
-在本文中，您將瞭解使用「語音 Studio」和「語音 SDK」來處理自訂關鍵字的基本概念。 關鍵字是可讓您的產品啟用語音的單字或簡短片語。 您可以在「語音 Studio」中建立關鍵字模型，然後在您的應用程式中匯出與「語音 SDK」搭配使用的模型檔案。
+在本快速入門中，您將瞭解使用「語音 Studio」和「語音 SDK」來處理自訂關鍵字的基本概念。 關鍵字是可讓您的產品啟用語音的單字或簡短片語。 您可以在「語音 Studio」中建立關鍵字模型，然後在您的應用程式中匯出與「語音 SDK」搭配使用的模型檔案。
 
 ## <a name="prerequisites"></a>Prerequisites
 

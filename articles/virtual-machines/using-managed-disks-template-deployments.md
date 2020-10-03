@@ -1,6 +1,6 @@
 ---
-title: 受控磁片-Azure Resource Manager 範本
-description: 詳細說明如何在 Azure Vm 的 Azure Resource Manager 範本中使用受控磁片。
+title: 使用 Azure Resource Manager 範本部署磁片
+description: 詳細說明如何在 Azure Vm 的 Azure Resource Manager 範本中使用受控和非受控磁片。
 documentationcenter: ''
 author: jboeshart
 manager: ''
@@ -10,14 +10,14 @@ ms.workload: storage
 ms.date: 06/01/2017
 ms.author: jaboes
 ms.subservice: disks
-ms.openlocfilehash: 708df0a8ed1085c6e7d435c6f3c3b811ef2ed64e
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 298c6e4f33fff99fff01b6b911ec77c78f1fbd26
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88854324"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91666546"
 ---
-# <a name="using-managed-disks-in-azure-resource-manager-templates"></a>在 Azure Resource Manager 範本中使用受控磁碟
+# <a name="using-disks-in-azure-resource-manager-templates"></a>使用 Azure Resource Manager 範本中的磁片
 
 本文逐步解說當使用 Azure Resource Manager 範本佈建虛擬機器時，受控與非受控磁碟之間的差異。 這些範例有助於您將使用非受控磁碟的現有範本，更新為使用受控磁碟。 如需參考，我們會使用 [101-vm-simple-windows](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows) \(英文\) 範本作為指南。 如果您想要直接進行比較，您可以看到使用[受控磁碟](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows/azuredeploy.json) \(英文\) 的範本以及使用[非受控磁碟](https://github.com/Azure/azure-quickstart-templates/tree/93b5f72a9857ea9ea43e87d2373bf1b4f724c6aa/101-vm-simple-windows/azuredeploy.json) \(英文\) 的先前版本。
 

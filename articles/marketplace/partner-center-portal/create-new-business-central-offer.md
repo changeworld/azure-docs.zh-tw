@@ -7,12 +7,12 @@ ms.topic: how-to
 author: navits09
 ms.author: navits
 ms.date: 08/07/2020
-ms.openlocfilehash: d92dc562136ef20dac19e7ddfa4339c565793308
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: e42111de7d05f184e1153ddc351c3f1fa10cc86f
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91531814"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91665233"
 ---
 # <a name="create-a-dynamics-365-business-central-offer"></a>建立 Dynamics 365 Business Central 供應項目
 
@@ -129,7 +129,7 @@ ms.locfileid: "91531814"
 6. 隱私權原則
 7. 供應項目名稱
 8. 摘要
-9. 說明
+9. 描述
 10. 螢幕擷取畫面/影片
 
 ### <a name="name"></a>名稱
@@ -256,9 +256,8 @@ ms.locfileid: "91531814"
 
 如果您的供應項目必須與另一個不會發佈至市集的擴充功能一起安裝，則此為必要項目。 若是如此，請在這裡上傳其 .app 檔。
 
-#### <a name="dependency-package-file"></a>相依性套件檔案
-
-如果您的供應項目必須與另一個已發佈至市集的擴充功能一起安裝，則此為必要項目。 若是如此，請在這裡上傳其 `.app` 或 `.zip` 檔案。
+>[!NOTE]
+>不再使用相依性封裝檔案。 請改為上傳文件庫套件檔案。
 
 ### <a name="url-to-app-installation"></a>應用程式安裝的 URL
 

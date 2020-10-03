@@ -3,15 +3,15 @@ title: 建立 Windows 虛擬桌面主機集區 PowerShell - Azure
 description: 如何使用 PowerShell Cmdlet 在 Windows 虛擬桌面中建立主機集區。
 author: Heidilohr
 ms.topic: how-to
-ms.date: 08/11/2020
+ms.date: 10/02/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ce3b2b30b1ed421937c11e58bc014cc740b45480
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a47126a48ea63efd4e49097428679b85b7a95a61
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91287282"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91667158"
 ---
 # <a name="create-a-windows-virtual-desktop-host-pool-with-powershell"></a>使用 PowerShell 建立 Windows 虛擬桌面主機集區
 
@@ -99,6 +99,9 @@ $token = Get-AzWvdRegistrationInfo -ResourceGroupName <resourcegroupname> -HostP
 
     >[!NOTE]
     > 如果您要將 VM 加入 Azure Active Directory Domain Services (Azure AD DS) 環境，請確定您的網域加入使用者也是 [AAD DC 系統管理員群組](../active-directory-domain-services/tutorial-create-instance-advanced.md#configure-an-administrative-group)的成員。
+
+>[!IMPORTANT]
+>建議您不要啟用任何停用 Windows Installer 的原則或設定。 如果您停用 Windows Installer，服務將無法在您的工作階段主機上安裝代理程式更新，而您的工作階段主機將無法正常運作。
 
 ## <a name="register-the-virtual-machines-to-the-windows-virtual-desktop-host-pool"></a>向 Windows 虛擬桌面主機集區註冊虛擬機器
 

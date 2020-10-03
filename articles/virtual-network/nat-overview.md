@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: allensu
-ms.openlocfilehash: 5efcf944f5d22759f9d448da5862bcf1f19e2efe
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.openlocfilehash: 75a2bb187b2ed7a234e99d8cd293cb30148bcb1f
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91409556"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91667192"
 ---
 # <a name="what-is-virtual-network-nat"></a>什麼是虛擬網路 NAT？
 
@@ -43,7 +43,7 @@ ms.locfileid: "91409556"
 
 您可以使用 NAT 為每個子網路定義輸出連線能力。  相同虛擬網路內的多個子網路可以有不同的 NAT。 藉由指定要使用哪個 NAT 閘道資源來設定子網路。 來自任何虛擬機器執行個體的所有 UDP 和 TCP 輸出流量都會使用 NAT。 
 
-NAT 與標準 SKU 公用 IP 位址資源、公用 IP 前置詞資源或兩者的組合相容。  您可以直接使用公用 IP 前置詞，或將前置詞的公用 IP 位址散發到多個 NAT 閘道資源。 NAT 會將所有流量清理到前置詞的 IP 位址範圍。  現在很容易就能為您的部署建立任何 IP 允許清單。
+NAT 與標準 SKU 公用 IP 位址資源、公用 IP 前置詞資源或兩者的組合相容。  您可以直接使用公用 IP 前置詞，或將前置詞的公用 IP 位址散發到多個 NAT 閘道資源。 NAT 會將所有流量清理到前置詞的 IP 位址範圍。  您部署的任何 IP 篩選現在都很簡單。
 
 子網路的所有輸出流量都是由 NAT 自動處理，而不需要任何客戶設定。  不需要使用者定義的路由。 NAT 優先於其他輸出案例，並可取代子網路的預設網際網路目的地。
 
@@ -145,4 +145,3 @@ NAT 的公用端不會產生「TCP 重設」封包或任何其他流量。  只�
 
 * 深入了解 [NAT 閘道資源](./nat-gateway-resource.md)。
 * [在 UserVoice 中告訴我們可為虛擬網路 NAT 打造的下一項功能](https://aka.ms/natuservoice)。
-

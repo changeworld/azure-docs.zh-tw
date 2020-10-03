@@ -8,13 +8,13 @@ ms.service: time-series-insights
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
-ms.date: 02/03/2020
-ms.openlocfilehash: b2e86a92c253bc1926386269e289cdb7ae578746
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 10/02/2020
+ms.openlocfilehash: 7de4dc21391f7dbd817c56ce51606a808cf9e3c4
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080747"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91665801"
 ---
 1. 在 [Azure 入口網站](https://ms.portal.azure.com/)中，選取 [Azure Active Directory] > [應用程式註冊] > [新增註冊]。
 
@@ -22,7 +22,7 @@ ms.locfileid: "87080747"
 
     應用程式在註冊後便會在此列出。
 
-1. 請為應用程式提供名稱，然後選取 [僅此組織目錄中的帳戶] 來指定可存取 API 的 [支援的帳戶類型]。 選擇要在使用者通過驗證後作為其重新導向目的地的有效 URI，然後選取 [註冊]。
+1. 請為應用程式提供名稱，然後選取 [僅此組織目錄中的帳戶] 來指定可存取 API 的 [支援的帳戶類型]。 如果您要建立 [公用用戶端應用程式](https://docs.microsoft.com/azure/active-directory/develop/msal-client-application-configuration#redirect-uri)，請新增有效的重新導向 URI，然後 **註冊**。
 
    [![在 Azure Active Directory 中建立應用程式](media/time-series-insights-aad-registration/active-directory-registration.png)](media/time-series-insights-aad-registration/active-directory-registration.png#lightbox)
 
@@ -32,7 +32,7 @@ ms.locfileid: "87080747"
 
    複製 [應用程式 (用戶端) 識別碼] 以便用於用戶端應用程式。
 
-1. [驗證] 刀鋒視窗會指定重要的驗證組態設定。 
+1. [驗證] 刀鋒視窗會指定重要的驗證組態設定。
 
     1. 選取 [+ 新增平台]，以新增 [重新導向 URI] 並設定 [存取權杖]。
 
@@ -66,7 +66,7 @@ ms.locfileid: "87080747"
    > [!NOTE]
    > 您可以改用匯入憑證的功能。 為了增強安全性，建議使用憑證。 若要使用憑證，請選取 [上傳憑證]。
 
-1. 建立 Azure Active Directory 應用程式 Azure 時間序列深入解析的關聯。 選取 [API 權限] > [新增權限] > [組織使用的 API]。 
+1. 將 Azure Active Directory 應用程式 Azure 時間序列深入解析相關聯。 選取 [API 權限] > [新增權限] > [組織使用的 API]。
 
     [![讓 API 與 Azure Active Directory 應用程式建立關聯](media/time-series-insights-aad-registration/active-directory-app-api-permission.png)](media/time-series-insights-aad-registration/active-directory-app-api-permission.png#lightbox)
 

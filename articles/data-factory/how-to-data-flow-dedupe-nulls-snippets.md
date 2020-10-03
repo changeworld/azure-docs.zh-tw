@@ -8,18 +8,20 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: makromer
-ms.openlocfilehash: 683d7ffe5549b86a587cd2dc3c9a86a36aee1bba
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: 841484a647d2737d621c75ebe63f65f2de829a26
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91637137"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91666492"
 ---
 # <a name="dedupe-rows-and-find-nulls-using-data-flow-snippets"></a>使用資料流程程式碼片段重復資料列和尋找 null
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 藉由在對應資料流程中使用程式碼片段，您很容易就能執行常見的工作，例如重復資料刪除和 null 篩選。 本操作指南將說明如何使用資料流程腳本片段，輕鬆地將這些函式新增至您的管線。
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4GnhH]
 
 ## <a name="create-a-pipeline"></a>建立管線
 

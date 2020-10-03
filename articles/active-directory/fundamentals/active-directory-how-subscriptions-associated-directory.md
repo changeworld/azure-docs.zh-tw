@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18, contperfq4
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ddca4bc684646854ae8d308043b3de56ec65924
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.openlocfilehash: 747edfdb2a2709a842f767d2ace09662d139c827
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89426090"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91666427"
 ---
 # <a name="associate-or-add-an-azure-subscription-to-your-azure-active-directory-tenant"></a>將 Azure 訂用帳戶關聯或新增至您的 Azure Active Directory 租用戶
 
@@ -50,7 +50,7 @@ Azure 訂用帳戶與 Azure Active Directory (Azure AD) 有信任關係。 訂�
   - 如果您有任何金鑰保存庫，將無法存取它們，而且您必須在關聯之後修正它們
   - 如果您的資源有任何受控識別，例如虛擬機器或 Logic Apps，則您必須在關聯之後重新啟用或重新建立它們
   - 如果您有已註冊的 Azure Stack，您必須在關聯之後重新註冊它
-  - 如需詳細資訊，請參閱[將 Azure 訂用帳戶轉移至不同的 Azure AD 目錄 (預覽)](../../role-based-access-control/transfer-subscription.md)。
+  - 如需詳細資訊，請參閱將 [Azure 訂用帳戶轉移至不同的 Azure AD 目錄](../../role-based-access-control/transfer-subscription.md)。
 
 - 使用符合下列條件的帳戶登入：
 
@@ -93,9 +93,9 @@ Azure 訂用帳戶與 Azure Active Directory (Azure AD) 有信任關係。 訂�
 
 - 如果您已使用此訂用帳戶註冊 Azure Stack，則必須重新註冊。 如需詳細資訊，請參閱 [向 Azure 註冊 Azure Stack](/azure-stack/operator/azure-stack-registration)。
 
-- 如需詳細資訊，請參閱[將 Azure 訂用帳戶轉移至不同的 Azure AD 目錄 (預覽)](../../role-based-access-control/transfer-subscription.md)。
+- 如需詳細資訊，請參閱將 [Azure 訂用帳戶轉移至不同的 Azure AD 目錄](../../role-based-access-control/transfer-subscription.md)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 若要建立新的 Azure AD 租使用者，請參閱 [快速入門：在 Azure Active Directory 中建立新的租](active-directory-access-create-new-tenant.md)使用者。
 

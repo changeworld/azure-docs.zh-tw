@@ -13,12 +13,12 @@ ms.custom:
 - 'Role: IoT Device'
 - 'Role: Cloud Development'
 - contperfq1
-ms.openlocfilehash: 2e1c8975c0f37fff2e177c9aa0dcf8f3b92a9d3f
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 0a5cf5ad4a7cbf7d732d1fafdcafd434cba20d13
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89421402"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91664931"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>使用 MQTT 通訊協定來與 IoT 中樞通訊
 
@@ -103,6 +103,38 @@ device_client = IoTHubDeviceClient.create_from_connection_string(deviceConnectio
 
 * Python SDK 不支援 AMQP。
 
+## <a name="example-in-c-using-mqtt-without-an-azure-iot-sdk"></a>在 C 中使用 MQTT 的範例（不含 Azure IoT SDK）
+
+在 [IOT MQTT 範例存放庫](https://github.com/Azure-Samples/IoTMQTTSample)中，您會發現幾個 C/c + + 示範專案，示範如何傳送遙測訊息，以及如何透過 iot 中樞接收事件，而不需要使用 Azure IOT C SDK。 
+
+這些範例會使用 Eclipse Mosquitto 程式庫，將訊息傳送至 IoT 中樞內所執行的 MQTT 訊息代理程式。
+
+此存放庫包含：
+
+**若為 Windows：**
+
+* TelemetryMQTTWin32：包含程式碼，可將遙測訊息傳送至在 Windows 電腦上建置和執行的 Azure IoT 中樞。
+
+* SubscribeMQTTWin32：包含程式碼，可訂閱 Windows 機器上特定 IoT 中樞的事件。
+
+* DeviceTwinMQTTWin32：包含程式碼，可查詢和訂閱 Windows 機器上 Azure IoT 中樞內裝置的裝置對應項事件。
+
+* PnPMQTTWin32：包含程式碼，可利用 IoT 隨插即用預覽裝置功能，將遙測訊息傳送至在 Windows 電腦上建置和執行的 Azure IoT 中樞。 您可以深入瞭解 [IoT 即插 & Play](https://docs.microsoft.com/azure/iot-pnp/overview-iot-plug-and-play)
+
+**若為 Linux：**
+
+* MQTTLinux：包含要在 Linux 上執行的程式碼和組建指令碼 (到目前為止已測試過 WSL、Ubuntu 和 Raspbian)。
+
+* LinuxConsoleVS2019：包含相同的程式碼，但位於以 WSL 為目標的 VS2019 專案中 (Windows Linux 子系統系統)。 此專案可讓您從 Visual Studio，逐步偵錯在 Linux 上執行的程式碼。
+
+**若為 mosquitto_pub：**
+
+此資料夾包含兩個範例命令，與 Mosquitto.org 所提供的 mosquitto_pub 公用程式工具搭配使用。
+
+* Mosquitto_sendmessage：將簡單的文字簡訊傳送至充當裝置的 Azure IoT 中樞。
+
+* Mosquitto_subscribe：查看 Azure IoT 中樞發生的事件。
+
 ## <a name="using-the-mqtt-protocol-directly-as-a-device"></a>直接使用 MQTT 通訊協定 (作為裝置)
 
 如果裝置無法使用裝置 SDK，它仍可使用連接埠 8883 上的 MQTT 通訊協定連線到公用裝置端點。 在 **CONNECT** 封包中，裝置應使用下列值：
@@ -147,38 +179,6 @@ device_client = IoTHubDeviceClient.create_from_connection_string(deviceConnectio
 對於 MQTT 的連接和中斷連接封包，IoT 中樞會對 **作業監視** 通道發出事件。 此事件具有其他資訊，可協助您對連線問題進行疑難排解。
 
 裝置應用程式可以在 **CONNECT** 封包中指定 **Will** 訊息。 裝置應用程式應該使用 `devices/{device_id}/messages/events/` 或 `devices/{device_id}/messages/events/{property_bag}` 作為 **Will** 主題名稱，以定義要當作遙測訊息轉送的 **Will** 訊息。 在此情況下，如果網路連線已關閉，但先前並未接收到來自裝置的 **DISCONNECT** 封包，則 IoT 中樞會將 **CONNECT** 封包中提供的 **Will** 訊息傳送到遙測通道。 遙測通道可以是預設的**事件**端點，或是 IoT 中樞路由所定義的自訂端點。 訊息具有 **iothub-MessageType** 屬性，且已為它指派 **Will** 值。
-
-### <a name="an-example-of-c-code-using-mqtt-without-azure-iot-c-sdk"></a>在沒有 Azure IoT C SDK 情況下使用 MQTT 的 C 程式碼範例
-
-在 [IOT MQTT 範例存放庫](https://github.com/Azure-Samples/IoTMQTTSample)中，您會發現幾個 C/c + + 示範專案，示範如何傳送遙測訊息，以及如何透過 iot 中樞接收事件，而不需要使用 Azure IOT C SDK。 
-
-這些範例會使用 Eclipse Mosquitto 程式庫，將訊息傳送至 IoT 中樞內所執行的 MQTT 訊息代理程式。
-
-此存放庫包含：
-
-**若為 Windows：**
-
-* TelemetryMQTTWin32：包含程式碼，可將遙測訊息傳送至在 Windows 電腦上建置和執行的 Azure IoT 中樞。
-
-* SubscribeMQTTWin32：包含程式碼，可訂閱 Windows 機器上特定 IoT 中樞的事件。
-
-* DeviceTwinMQTTWin32：包含程式碼，可查詢和訂閱 Windows 機器上 Azure IoT 中樞內裝置的裝置對應項事件。
-
-* PnPMQTTWin32：包含程式碼，可利用 IoT 隨插即用預覽裝置功能，將遙測訊息傳送至在 Windows 電腦上建置和執行的 Azure IoT 中樞。 您可以深入瞭解 [IoT 即插 & Play](https://docs.microsoft.com/azure/iot-pnp/overview-iot-plug-and-play)
-
-**若為 Linux：**
-
-* MQTTLinux：包含要在 Linux 上執行的程式碼和組建指令碼 (到目前為止已測試過 WSL、Ubuntu 和 Raspbian)。
-
-* LinuxConsoleVS2019：包含相同的程式碼，但位於以 WSL 為目標的 VS2019 專案中 (Windows Linux 子系統系統)。 此專案可讓您從 Visual Studio，逐步偵錯在 Linux 上執行的程式碼。
-
-**若為 mosquitto_pub：**
-
-此資料夾包含兩個範例命令，與 Mosquitto.org 所提供的 mosquitto_pub 公用程式工具搭配使用。
-
-* Mosquitto_sendmessage：將簡單的文字簡訊傳送至充當裝置的 Azure IoT 中樞。
-
-* Mosquitto_subscribe：查看 Azure IoT 中樞發生的事件。
 
 ## <a name="using-the-mqtt-protocol-directly-as-a-module"></a>直接使用 MQTT 通訊協定 (作為模組)
 

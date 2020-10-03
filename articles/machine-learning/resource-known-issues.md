@@ -10,13 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.custom: troubleshooting, contperfq4
-ms.date: 08/13/2020
-ms.openlocfilehash: 3a1d5c70913f7e2a56eaf04be333a931c1adbc3d
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.date: 10/02/2020
+ms.openlocfilehash: c4250be15b1c4fdc5df81c0f0ba3623dedf6488f
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91450054"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91667260"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Azure Machine Learning 的已知問題與疑難排解
 
@@ -410,7 +410,7 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
 
 針對下列錯誤採取下列動作：
 
-|Error  | 解決方案  |
+|錯誤  | 解決方案  |
 |---------|---------|
 |部署 web 服務時映射建立失敗     |  新增 "pynacl = = 1.2.1" 作為映射設定 Conda 檔案的 pip 相依性       |
 |`['DaskOnBatch:context_managers.DaskOnBatch', 'setup.py']' died with <Signals.SIGKILL: 9>`     |   將部署中所使用 Vm 的 SKU 變更為具有更多記憶體的 Vm。 |
@@ -449,6 +449,10 @@ kubectl get secret/azuremlfessl -o yaml
 
 >[!Note]
 >Kubernetes 會以 base-64 編碼格式儲存秘密。 您將需要以64為基礎來解碼 `cert.pem` 和 `key.pem` 元件，再提供這些秘密 `attach_config.enable_ssl` 。 
+
+### <a name="detaching-azure-kubernetes-service"></a>卸離 Azure Kubernetes Service
+
+使用 Azure Machine Learning studio、SDK 或機器學習服務的 Azure CLI 擴充功能來卸離 AKS 叢集，並不會刪除 AKS 叢集。 若要刪除叢集，請參閱搭配 [使用 Azure CLI 與 AKS](/azure/aks/kubernetes-walkthrough#delete-the-cluster)。
 
 ### <a name="webservices-in-azure-kubernetes-service-failures"></a>Azure Kubernetes Service 失敗中的 Webservices
 

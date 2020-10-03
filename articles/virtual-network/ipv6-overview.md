@@ -12,12 +12,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 5c175a1575a4efbdc2294412e3743e201d8c4bb1
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: c0d4c72bd60f35088773ec6dc5df80709c5ae98c
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653293"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91666818"
 ---
 # <a name="what-is-ipv6-for-azure-virtual-network"></a>什麼是 Azure 虛擬網路的 IPv6？
 
@@ -61,7 +61,7 @@ Azure VNET 的 IPv6 優點：
     - 注意:IPv6 只能負載平衡到 Azure VM 上的主要網路介面 (NIC)。 
 - [標準 IPv6 內部 Load Balancer](ipv6-dual-stack-standard-internal-load-balancer-powershell.md) 支援，以在 Azure VNET 中建立具有復原性的多層式應用程式。   
 - 基本的 IPv6 公用 Load Balancer 支援，可與舊版部署相容
-- [保留的 IPv6 公用 IP 位址和位址範圍](ipv6-public-ip-address-prefix.md)可提供穩定且可預測的 IPv6 位址，可讓您輕鬆地將公司和客戶 Azure 裝載應用程式加入允許清單。
+- [保留的 Ipv6 公用 IP 位址和位址範圍](ipv6-public-ip-address-prefix.md) 提供穩定且可預測的 ipv6 位址，可輕鬆地篩選您的公司和客戶的 azure 託管應用程式。
 - 執行個體層級的公用 IP 可直接對個別 VM 提供 IPv6 網際網路連線能力。
 - [將 IPv6 新增至現有的僅限 IPv4 部署](ipv6-add-to-existing-vnet-powershell.md) - 這項功能可讓您輕鬆地將 IPv6 連線能力新增至現有的僅限 IPv4 部署，而不需要重新建立部署。  在此程序中，IPv4 網路流量不會受到影響，因此，視您的應用程式和作業系統而定，您甚至可以將 IPv6 新增到即時服務。    
 - 讓網際網路用戶端使用其選擇、具有 Azure DNS IPv6 (AAAA) 記錄支援的通訊協定，順暢地存取雙重堆疊應用程式。 
