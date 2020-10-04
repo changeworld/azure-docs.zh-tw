@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 926f4dd94ba5b1f864a002c282004b3a9f438dca
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: 280b7e051c4c9d87c504c1abf6aca0b04bfa1b29
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88722733"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91704594"
 ---
 # <a name="review-security-audit-events-in-azure-active-directory-domain-services-using-azure-monitor-workbooks"></a>使用 Azure 監視器活頁簿，在 Azure Active Directory Domain Services 中檢查安全性審核事件
 
@@ -58,7 +58,7 @@ Azure AD DS 包含下列兩個活頁簿範本：
 1. 選取您的受控網域，例如 *aaddscontoso.com*
 1. 從左側功能表中，選擇 [監視] > 活頁 **簿**
 
-    ![在 Azure 入口網站中，選取 [活頁簿] 功能表選項](./media/use-azure-monitor-workbooks/select-workbooks-in-azure-portal.png)
+    ![醒目提示在哪裡選取安全性概觀報表和 [帳戶活動] 報表的螢幕擷取畫面。](./media/use-azure-monitor-workbooks/select-workbooks-in-azure-portal.png)
 
 1. 選擇 **安全性概觀報表**。
 1. 從活頁簿頂端的下拉式功能表中，選取您的 Azure 訂用帳戶，然後選取 Azure 監視器工作區。

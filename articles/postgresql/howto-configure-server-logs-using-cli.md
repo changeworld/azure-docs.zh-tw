@@ -1,19 +1,19 @@
 ---
-title: 記錄管理-Azure CLI 適用於 PostgreSQL 的 Azure 資料庫-單一伺服器
-description: 本文說明如何使用 Azure CLI，在適用於 PostgreSQL 的 Azure 資料庫單一伺服器中設定和存取伺服器記錄檔（.log 檔案）。
-author: rachel-msft
-ms.author: raagyema
+title: 記錄管理-Azure CLI-適用於 PostgreSQL 的 Azure 資料庫-單一伺服器
+description: 本文描述如何使用 Azure CLI，在適用於 PostgreSQL 的 Azure 資料庫單一伺服器中設定和存取伺服器記錄檔 ( .log 檔) 。
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 5/6/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 50875d0575da7287269bee55004a2acfa5396cd5
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 71dac0b6ea2202e712280607a73e860ae68bdb73
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87493545"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91704866"
 ---
 # <a name="configure-and-access-server-logs-by-using-azure-cli"></a>使用 Azure CLI 設定和存取伺服器記錄
 您可以使用命令列介面 (Azure CLI) 來下載 PostgreSQL 伺服器錯誤記錄。 不過，不支援存取交易記錄。 
@@ -46,5 +46,5 @@ az postgres server-logs list --resource-group myresourcegroup --server mydemoser
 az postgres server-logs download --name 20170414-mydemoserver-postgresql.log --resource-group myresourcegroup --server mydemoserver
 ```
 ## <a name="next-steps"></a>後續步驟
-- 若要深入瞭解伺服器記錄，請參閱[適用於 PostgreSQL 的 Azure 資料庫中的伺服器記錄](concepts-server-logs.md)。
+- 若要深入瞭解伺服器記錄，請參閱 [適用於 PostgreSQL 的 Azure 資料庫中的伺服器記錄](concepts-server-logs.md)檔。
 - 如需伺服器參數的詳細資訊，請參閱[使用 Azure CLI 自訂伺服器設定參數](howto-configure-server-parameters-using-cli.md)。

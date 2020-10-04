@@ -1,17 +1,17 @@
 ---
 title: 連接程式庫-適用於 PostgreSQL 的 Azure 資料庫-單一伺服器
-description: 本文描述數個程式庫和驅動程式，可供您在撰寫應用程式來連接及查詢適用於 PostgreSQL 的 Azure 資料庫單一伺服器時使用。
-author: rachel-msft
-ms.author: raagyema
+description: 本文描述您在撰寫應用程式以連接和查詢適用於 PostgreSQL 的 Azure 資料庫單一伺服器時，可以使用的數個程式庫和驅動程式。
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 2305a02e5b094ec9e98f39363ddbd0c39221ab0b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 45081c6ba161686498398f2c4ccae8b4cff4c0d1
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74768889"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91704305"
 ---
 # <a name="connection-libraries-for-azure-database-for-postgresql---single-server"></a>適用於 PostgreSQL 的 Azure 資料庫的連接程式庫-單一伺服器
 本文所列出開發人員可用來開發應用程式的程式庫和驅動程式，以連線及查詢適用於 PostgreSQL 的 Azure 資料庫。
@@ -35,4 +35,4 @@ ms.locfileid: "74768889"
 ## <a name="next-steps"></a>後續步驟
 請閱讀這些快速入門，以了解如何使用您選擇的語言來連線及查詢適用於 PostgreSQL 的 Azure 資料庫：
 
-[Python](./connect-python.md)  | [Node.JS](./connect-nodejs.md)  | [JAVA](./connect-java.md)  | [Ruby](./connect-ruby.md)  | [PHP](./connect-php.md)  | [.NET （C #）](./connect-csharp.md)  | [Go](./connect-go.md)
+[Python](./connect-python.md)  | [Node.JS](./connect-nodejs.md)  | [JAVA](./connect-java.md)  | [Ruby](./connect-ruby.md)  | [PHP](./connect-php.md)  | [.Net (c # ) ](./connect-csharp.md)  | [Go](./connect-go.md)

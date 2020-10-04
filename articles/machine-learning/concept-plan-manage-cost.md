@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: 872775df82d609a640346ddef2f77381c2160fcf
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 031ec44cec473d9f2b2f05669aa3fc18084985f2
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91276062"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91704723"
 ---
 # <a name="plan-and-manage-costs-for-azure-machine-learning"></a>規劃和管理 Azure Machine Learning 的成本
 
@@ -69,7 +69,7 @@ ms.locfileid: "91276062"
 
 Azure Machine Learning 使用者可以使用受控 Azure Machine Learning 計算叢集，也稱為 AmlCompute。 AmlCompute 支援各種 GPU 和 CPU 選項。 AmlCompute 由 Azure Machine Learning 在內部裝載，代表您的訂用帳戶。 它提供相同的企業級安全性、合規性和 Azure IaaS 雲端規模的治理。
 
-因為這些計算集區位於 Azure 的 IaaS 基礎結構內，所以您可以使用與其他基礎結構相同的安全性和合規性需求來部署、調整及管理定型。  這些部署會在您的訂用帳戶中進行，並遵守您的治理規則。 深入瞭解 [Azure Machine Learning 計算](how-to-create-attach-compute-sdk.md#amlcompute)。
+因為這些計算集區位於 Azure 的 IaaS 基礎結構內，所以您可以使用與其他基礎結構相同的安全性和合規性需求來部署、調整及管理定型。  這些部署會在您的訂用帳戶中進行，並遵守您的治理規則。 深入瞭解 [Azure Machine Learning 計算](how-to-create-attach-compute-cluster.md)。
 
 ## <a name="configure-training-clusters-for-autoscaling"></a>設定自動調整的定型群集
 
@@ -127,4 +127,4 @@ Azure Machine Learning 計算原本就支援保留實例。 如果您購買一�
 深入了解：
 * [管理和增加資源配額](how-to-manage-quotas.md)
 * [使用成本分析來管理成本](../cost-management-billing/costs/quick-acm-cost-analysis.md)。
-* 使用 [SDK](how-to-create-attach-compute-sdk.md#amlcompute) 或在 [studio](how-to-create-attach-compute-studio.md#amlcompute)中建立 Azure Machine Learning 計算。
+* 使用 [SDK](how-to-create-attach-compute-cluster.md) 或在 [studio](how-to-create-attach-compute-studio.md#amlcompute)中建立 Azure Machine Learning 計算。

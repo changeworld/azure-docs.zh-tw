@@ -1,18 +1,18 @@
 ---
 title: 管理讀取複本-Azure PowerShell-適用於 PostgreSQL 的 Azure 資料庫
 description: 瞭解如何使用 PowerShell 在適用於 PostgreSQL 的 Azure 資料庫中設定和管理讀取複本。
-author: rachel-msft
-ms.author: raagyema
+author: sr-msft
+ms.author: srranga
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 06/08/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: b57fe5879c45225f8ba22e2c94aceeb5b38369e3
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 26c6f70f92e4c372c0ff6afbcbb3c0bb284e2f6c
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91539430"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91704761"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-postgresql-using-powershell"></a>如何使用 PowerShell 在適用於 PostgreSQL 的 Azure 資料庫中建立及管理讀取複本
 
@@ -22,7 +22,7 @@ ms.locfileid: "91539430"
 
 您可以使用 PowerShell 來建立及管理讀取複本。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成本操作說明指南，您需要：
 

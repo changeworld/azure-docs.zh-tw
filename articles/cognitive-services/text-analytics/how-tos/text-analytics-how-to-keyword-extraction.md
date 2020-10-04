@@ -1,7 +1,7 @@
 ---
-title: 使用文字分析 REST API 的關鍵字組解壓縮
+title: 使用文字分析 REST API 的主要片語解壓縮
 titleSuffix: Azure Cognitive Services
-description: 如何使用 Azure 認知服務的文字分析 REST API 來解壓縮主要片語。
+description: 如何使用 Azure 認知服務中的文字分析 REST API 來將關鍵字組解壓縮。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,14 +10,14 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 05/13/2020
 ms.author: aahi
-ms.openlocfilehash: c1ca14b8471ef6257c0603e61d78e789e846f0ae
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: e4a652b146286965c68154bd362525861158ecb2
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84142396"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91704373"
 ---
-# <a name="example-how-to-extract-key-phrases-using-text-analytics"></a>範例：如何使用文字分析解壓縮關鍵字組
+# <a name="example-how-to-extract-key-phrases-using-text-analytics"></a>範例：如何使用文字分析來將關鍵字組解壓縮
 
 [關鍵片語擷取 API](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/KeyPhrases) \(英文\) 會評估非結構化的文字，並針對每份 JSON 文件，傳回關鍵片語的清單。
 
@@ -30,11 +30,13 @@ ms.locfileid: "84142396"
 
 ## <a name="preparation"></a>準備
 
+[!INCLUDE [v3 region availability](../includes/v3-region-availability.md)]
+
 關鍵片語擷取在處理較大量文字時的效果最佳。 這與情感分析相反，後者較適合用來處理較少量的文字。 若要從這兩個作業中取得最佳結果，請考慮據以重建輸入。
 
-您必須具有此格式的 JSON 檔：識別碼、文字、語言
+您必須具有下列格式的 JSON 檔：識別碼、文字、語言
 
-檔案大小必須是5120或每份檔較少的字元，而且每個集合最多可以有1000個專案（識別碼）。 集合會在要求本文中提交。 下列範例是您可能會針對關鍵片語擷取所提交內容的說明。
+檔案大小必須是每份檔5120或更少的字元，而且每個集合可以有多達1000個專案 (識別碼) 。 集合會在要求本文中提交。 下列範例是您可能會針對關鍵片語擷取所提交內容的說明。
 
 ```json
     {
@@ -70,11 +72,11 @@ ms.locfileid: "84142396"
 
 ## <a name="step-1-structure-the-request"></a>步驟 1:建立要求結構
 
-如需要求定義的詳細資訊，請參閱[如何呼叫文字分析 API](text-analytics-how-to-call-api.md)。 為了方便起見，我們將重申下列各點：
+如需要求定義的詳細資訊，請參閱 [如何呼叫文字分析 API](text-analytics-how-to-call-api.md)。 為了方便起見，我們將重申下列各點：
 
-+ 建立**POST**要求。 請參閱此要求的 API 檔：[關鍵字組 api](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/KeyPhrases)。
++ 建立 **POST** 要求。 請參閱此要求的 API 檔： [主要片語 api](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/KeyPhrases)。
 
-+ 使用 Azure 上的文字分析資源或具現化的[文字分析容器](text-analytics-how-to-install-containers.md)，設定關鍵字組解壓縮的 HTTP 端點。 您必須在 URL 中納入 `/text/analytics/v3.0/keyPhrases`。 例如： `https://<your-custom-subdomain>.api.cognitiveservices.azure.com/text/analytics/v3.0/keyPhrases` 。
++ 使用 Azure 上的文字分析資源或具現化的 [文字分析容器](text-analytics-how-to-install-containers.md)來設定金鑰片語解壓縮的 HTTP 端點。 您必須在 URL 中納入 `/text/analytics/v3.0/keyPhrases`。 例如： `https://<your-custom-subdomain>.api.cognitiveservices.azure.com/text/analytics/v3.0/keyPhrases` 。
 
 + 設定要求標頭以包含文字分析作業的[存取金鑰](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource)。
 
@@ -85,68 +87,77 @@ ms.locfileid: "84142396"
 
 ## <a name="step-2-post-the-request"></a>步驟 2：張貼要求
 
-分析會在接收要求時執行。 如需每分鐘或每秒可傳送之要求的大小和數目的詳細資訊，請參閱總覽中的[資料限制](../overview.md#data-limits)一節。
+分析會在接收要求時執行。 如需您可以每分鐘或每秒傳送的要求大小和數量的相關資訊，請參閱總覽中的 [資料限制](../overview.md#data-limits) 一節。
 
 請記得，服務是無狀態的。 您的帳戶中並不會儲存任何資料。 結果會在回應中立即傳回。
 
 ## <a name="step-3-view-results"></a>步驟 3：檢視結果
 
-所有的 POST 要求都會傳回 JSON 格式的回應，具有識別碼和偵測到的屬性。 傳回之主要片語的順序是由模型在內部決定。
+所有的 POST 要求都會傳回 JSON 格式的回應，具有識別碼和偵測到的屬性。 傳回的主要片語順序是由模型在內部決定。
 
 輸出會立即傳回。 您可以將結果串流處理到可接受 JSON 的應用程式，或將輸出儲存到本機系統上的檔案，然後將它匯入能讓您排序、搜尋和操作資料的應用程式。
 
-以下顯示關鍵片語擷取的輸出範例：
+從 3.1-preview 開始，主要片語的輸出範例如下所示。2端點如下所示：
 
 ```json
     {
-        "documents": [
-            {
-                "keyPhrases": [
-                    "year",
-                    "trail",
-                    "trip",
-                    "views"
-                ],
-                "id": "1"
-            },
-            {
-                "keyPhrases": [
-                    "marked trails",
-                    "Worst hike",
-                    "goners"
-                ],
-                "id": "2"
-            },
-            {
-                "keyPhrases": [
-                    "trail",
-                    "small children",
-                    "family"
-                ],
-                "id": "3"
-            },
-            {
-                "keyPhrases": [
-                    "spectacular views",
-                    "trail",
-                    "area"
-                ],
-                "id": "4"
-            },
-            {
-                "keyPhrases": [
-                    "places",
-                    "beautiful views",
-                    "favorite trail"
-                ],
-                "id": "5"
-            }
-        ],
-        "errors": []
+       "documents":[
+          {
+             "id":"1",
+             "keyPhrases":[
+                "year",
+                "trail",
+                "trip",
+                "views",
+                "hike"
+             ],
+             "warnings":[]
+          },
+          {
+             "id":"2",
+             "keyPhrases":[
+                "marked trails",
+                "Worst hike",
+                "goners"
+             ],
+             "warnings":[]
+          },
+          {
+             "id":"3",
+             "keyPhrases":[
+                "trail",
+                "small children",
+                "family"
+             ],
+             "warnings":[]
+          },
+          {
+             "id":"4",
+             "keyPhrases":[
+                "spectacular views",
+                "trail",
+                "Worth",
+                "area"
+             ],
+             "warnings":[]
+          },
+          {
+             "id":"5",
+             "keyPhrases":[
+                "places",
+                "beautiful views",
+                "favorite trail",
+                "rest"
+             ],
+             "warnings":[]
+          }
+       ],
+       "errors":[],
+       "modelVersion":"2020-07-01"
     }
-```
 
-如先前所述，分析器會尋找並捨棄不必要的單字，而且會保留看似句子主旨或物件的單一詞彙或片語。
+```
+如同前面所述，分析器會尋找並捨棄非必要的字組，並保留看似句子主體或物件的單一字詞或片語。
 
 ## <a name="summary"></a>摘要
 
@@ -155,7 +166,7 @@ ms.locfileid: "84142396"
 + [關鍵片語擷取 API](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/KeyPhrases) \(英文\) 僅針對特定語言提供。
 + 要求本文中的 JSON 文件包含識別碼、文字和語言代碼。
 + 使用對您訂用帳戶有效的個人化[存取金鑰和端點](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource)，將要求 POST 到 `/keyphrases` 端點。
-+ 回應輸出（由每個檔識別碼的關鍵字和片語組成）可以串流處理到任何可接受 JSON 的應用程式，包括 Microsoft Office Excel 和 Power BI 等。
++ 回應輸出（包含每個檔識別碼的關鍵字組和片語）可以串流處理到任何可接受 JSON 的應用程式，包括 Microsoft Office Excel 和 Power BI 等等。
 
 ## <a name="see-also"></a>另請參閱
 

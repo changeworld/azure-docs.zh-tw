@@ -8,12 +8,12 @@ ms.author: nibaccam
 author: nibaccam
 ms.date: 08/05/2020
 ms.custom: how-to, tracking-python
-ms.openlocfilehash: c90d11ba630dbb1e37054715855ae5547a8a034b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: a80559761c8a3eba6045db5cd99a7719dd041fa8
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90902721"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91704390"
 ---
 # <a name="create-azure-machine-learning-datasets-from-azure-open-datasets"></a>從 Azure 開放資料集建立 Azure Machine Learning 資料集
 
@@ -37,7 +37,7 @@ Azure 開放資料集是策劃的公用資料集，可讓您用來新增案例�
 開放資料集位於雲端上的 Microsoft Azure，同時包含在 [Azure Machine Learning PYTHON SDK](#create-datasets-with-the-sdk) 和 [Azure Machine Learning studio](#create-datasets-with-the-studio)中。
 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 在本文中，您需要：
 
@@ -45,20 +45,20 @@ Azure 開放資料集是策劃的公用資料集，可讓您用來新增案例�
 
 * [Azure Machine Learning 工作區](../machine-learning/how-to-manage-workspace.md)。
 
-* [安裝適用于 Python 的 AZURE MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)，其中包含 `azureml-datasets` 套件。
+* [安裝適用于 Python 的 AZURE MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true )，其中包含 `azureml-datasets` 套件。
 
-    * 建立 [Azure Machine Learning 計算實例](../machine-learning/concept-compute-instance.md#managing-a-compute-instance)，此實例是完全設定且受管理的開發環境，其中包含已安裝的整合式筆記本和 SDK。
+    * 建立 [Azure Machine Learning 計算實例](../machine-learning/how-to-create-manage-compute-instance.md)，此實例是完全設定且受管理的開發環境，其中包含已安裝的整合式筆記本和 SDK。
 
     **OR**
 
-    * 使用您自己的 Python 環境，並使用 [這些指示](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)自行安裝 SDK。
+    * 使用您自己的 Python 環境，並使用 [這些指示](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true )自行安裝 SDK。
 
 > [!NOTE]
 > 某些資料集類別具有 [azureml dataprep](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py) 套件的相依性，其僅與64位 Python 相容。 針對 Linux 使用者，只有下列發行版本才支援這些類別： Red Hat Enterprise Linux (7、8) 、Ubuntu (14.04、16.04、18.04) 、Fedora (27、28) 、Debian (8、9) 和 CentOS (7) 。
 
 ## <a name="create-datasets-with-the-sdk"></a>使用 SDK 建立資料集
 
-若要透過 Python SDK 中的 Azure 開放資料集類別建立 Azure Machine Learning 資料集，請確定您已使用安裝套件 `pip install azureml-opendatasets` 。 每個離散資料集都是在 SDK 中以自己的類別來表示，而某些類別可作為 Azure Machine Learning [ `TabularDataset` 、 `FileDataset` ](../machine-learning/how-to-create-register-datasets.md#dataset-types)或兩者。 請參閱 [參考檔](https://docs.microsoft.com/python/api/azureml-opendatasets/azureml.opendatasets?view=azure-ml-py) ，以取得完整的 `opendatasets` 類別清單。
+若要透過 Python SDK 中的 Azure 開放資料集類別建立 Azure Machine Learning 資料集，請確定您已使用安裝套件 `pip install azureml-opendatasets` 。 每個離散資料集都是在 SDK 中以自己的類別來表示，而某些類別可作為 Azure Machine Learning [ `TabularDataset` 、 `FileDataset` ](../machine-learning/how-to-create-register-datasets.md#dataset-types)或兩者。 請參閱 [參考檔](https://docs.microsoft.com/python/api/azureml-opendatasets/azureml.opendatasets?view=azure-ml-py&preserve-view=true ) ，以取得完整的 `opendatasets` 類別清單。
 
 您可以將特定 `opendatasets` 類別以或的形式抓取，這樣可 `TabularDataset` `FileDataset` 讓您直接操作及/或下載檔案。 其他類別只能使用**only** `get_tabular_dataset()` `get_file_dataset()` `Dataset` Python SDK 中類別的或函式來取得資料集。
 
@@ -88,7 +88,7 @@ diabetes_tabular = Diabetes.get_tabular_dataset()
 
 使用您的工作區註冊 Azure Machine Learning 資料集，以便與其他人共用這些資料集，並在工作區中的實驗之間重複使用這些資料集。 當您註冊從開啟的資料集建立的 Azure Machine Learning 資料集時，將不會立即下載任何資料，但稍後會在定型期間要求 (時存取資料，例如從中央儲存體位置) 。
 
-若要向工作區註冊您的資料集，請使用 [`register()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.abstract_dataset.abstractdataset?view=azure-ml-py#register-workspace--name--description-none--tags-none--create-new-version-false-) 方法。 
+若要向工作區註冊您的資料集，請使用 [`register()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.abstract_dataset.abstractdataset?view=azure-ml-py#register-workspace--name--description-none--tags-none--create-new-version-false-&preserve-view=true ) 方法。 
 ```Python
 titanic_ds = titanic_ds.register(workspace=workspace,
                                  name='titanic_ds',
@@ -125,7 +125,7 @@ titanic_ds = titanic_ds.register(workspace=workspace,
 
 如需開啟資料集功能的範例和示範，請參閱這些 [範例筆記本](samples.md)。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [定型您的第一個 ML 模型](../machine-learning/tutorial-1st-experiment-sdk-train.md)。
 

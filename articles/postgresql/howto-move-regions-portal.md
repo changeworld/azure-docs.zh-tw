@@ -1,18 +1,18 @@
 ---
 title: 移動 Azure 區域-Azure 入口網站-適用於 PostgreSQL 的 Azure 資料庫-單一伺服器
 description: 使用讀取複本和 Azure 入口網站將適用於 PostgreSQL 的 Azure 資料庫伺服器從一個 Azure 區域移至另一個區域。
-author: rachel-msft
-ms.author: raagyema
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 06/29/2020
-ms.openlocfilehash: c7c095aa710d97292afc7d2d8f633058c21fa4d0
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 0eaac8ac65b490e1b8de716d79bd36d2f7a7567c
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91539226"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91707654"
 ---
 # <a name="move-an-azure-database-for-azure-database-for-postgresql---single-server-to-another-region-by-using-the-azure-portal"></a>使用 Azure 入口網站將適用於 PostgreSQL 的 Azure 資料庫單一伺服器的 Azure 資料庫移至另一個區域
 
@@ -23,7 +23,7 @@ ms.locfileid: "91539226"
 > [!NOTE]
 > 本文著重于將您的伺服器移至不同的區域。 如果您想要將您的伺服器移至不同的資源群組或訂用帳戶，請參閱 [移動](https://docs.microsoft.com/azure/azure-resource-manager/management/move-resource-group-and-subscription) 文章。 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 跨區域讀取複本功能僅適用于一般用途或記憶體優化定價層中的適用於 PostgreSQL 的 Azure 資料庫單一伺服器。 確定來源伺服器是在其中一個定價層。
 
@@ -36,7 +36,7 @@ ms.locfileid: "91539226"
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
 1. 選取您要用來作為來源伺服器的現有適用於 PostgreSQL 的 Azure 資料庫伺服器。 這個動作會開啟 [概觀] 頁面。
 1. 從伺服器的功能表中 **，選取 [** 複寫]。 如果 Azure 複寫支援至少設定為 **複本**，則您可以建立讀取複本。 
-1. 如果 Azure 複寫支援未設定為至少 **複本**，請加以設定。 選取 [儲存]。
+1. 如果 Azure 複寫支援未設定為至少 **複本**，請加以設定。 選取 [儲存]  。
 1. 選取 **[是]**，重新開機伺服器以套用變更。
 1. 當作業完成時，您會收到兩個 Azure 入口網站通知。 有一個補救伺服器參數的通知。 接下來會有另一個伺服器重新開機通知。
 1. 重新整理 Azure 入口網站頁面，以更新複寫工具列。 您現在可以建立此伺服器的讀取複本。

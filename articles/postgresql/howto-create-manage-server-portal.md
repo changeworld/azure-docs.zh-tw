@@ -1,17 +1,17 @@
 ---
 title: 管理適用於 PostgreSQL 的 Azure 資料庫-Azure 入口網站
 description: 瞭解如何從 Azure 入口網站管理適用於 PostgreSQL 的 Azure 資料庫伺服器。
-author: rachel-msft
-ms.author: raagyema
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 11/20/2019
-ms.openlocfilehash: 02a50a94b0b07d1755abe78c567df7ff5c7eda92
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 393e67d1b690f7231b5bf298b44f4db7c489d184
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90907450"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91704509"
 ---
 # <a name="manage-an-azure-database-for-postgresql-server-using-the-azure-portal"></a>使用 Azure 入口網站管理適用於 PostgreSQL 的 Azure 資料庫伺服器
 
@@ -50,7 +50,7 @@ ms.locfileid: "90907450"
 
 2. 將滑桿移至所需的值來變更 [vCore]**** 設定。
 
-   :::image type="content" source="./media/howto-create-manage-server-portal/scaling-compute.png" alt-text="適用於 PostgreSQL 的 Azure 資料庫中選擇 [vCore] 選項 Azure 入口網站的螢幕擷取畫面":::
+   :::image type="content" source="./media/howto-create-manage-server-portal/scaling-compute.png" alt-text="在適用於 PostgreSQL 的 Azure 資料庫中選擇基本、一般用途或記憶體優化層 Azure 入口網站的螢幕擷取畫面":::
 
    > [!NOTE]
    > 調整虛擬核心會導致伺服器重新開機。
@@ -63,7 +63,7 @@ ms.locfileid: "90907450"
 
 2. 將滑杆移至您想要的值，以變更 **儲存體** 設定。
 
-   :::image type="content" source="./media/howto-create-manage-server-portal/scaling-storage.png" alt-text="在適用於 PostgreSQL 的 Azure 資料庫中選擇儲存體規模 Azure 入口網站的螢幕擷取畫面":::
+   :::image type="content" source="./media/howto-create-manage-server-portal/scaling-storage.png" alt-text="在適用於 PostgreSQL 的 Azure 資料庫中選擇基本、一般用途或記憶體優化層 Azure 入口網站的螢幕擷取畫面":::
 
    > [!NOTE]
    > 存放裝置無法縮小。
@@ -76,11 +76,11 @@ ms.locfileid: "90907450"
 
 1. 在 Azure 入口網站中選取您的伺服器。 在 [ **總覽** ] 視窗中，選取 [ **重設密碼**]。
 
-   :::image type="content" source="./media/howto-create-manage-server-portal/overview-reset-password.png" alt-text="在適用於 PostgreSQL 的 Azure 資料庫中重設密碼 Azure 入口網站的螢幕擷取畫面":::
+   :::image type="content" source="./media/howto-create-manage-server-portal/overview-reset-password.png" alt-text="在適用於 PostgreSQL 的 Azure 資料庫中選擇基本、一般用途或記憶體優化層 Azure 入口網站的螢幕擷取畫面":::
 
 2. 輸入新密碼並確認密碼。 文字方塊會提示您輸入密碼複雜性需求。
 
-   :::image type="content" source="./media/howto-create-manage-server-portal/reset-password.png" alt-text="Azure 入口網站的螢幕擷取畫面，以重設密碼並儲存適用於 PostgreSQL 的 Azure 資料庫":::
+   :::image type="content" source="./media/howto-create-manage-server-portal/reset-password.png" alt-text="在適用於 PostgreSQL 的 Azure 資料庫中選擇基本、一般用途或記憶體優化層 Azure 入口網站的螢幕擷取畫面":::
 
 3. 選取 **[確定]** 以儲存新密碼。
 
@@ -90,11 +90,11 @@ ms.locfileid: "90907450"
 
 1. 在 Azure 入口網站中選取您的伺服器。 在 [ **總覽** ] 視窗中，選取 [ **刪除**]。
 
-   :::image type="content" source="./media/howto-create-manage-server-portal/overview-delete.png" alt-text="適用於 PostgreSQL 的 Azure 資料庫中刪除伺服器 Azure 入口網站的螢幕擷取畫面":::
+   :::image type="content" source="./media/howto-create-manage-server-portal/overview-delete.png" alt-text="在適用於 PostgreSQL 的 Azure 資料庫中選擇基本、一般用途或記憶體優化層 Azure 入口網站的螢幕擷取畫面":::
 
 2. 在 [輸入] 方塊中輸入伺服器的名稱，確認這是您要刪除的伺服器。
 
-   :::image type="content" source="./media/howto-create-manage-server-portal/confirm-delete.png" alt-text="在適用於 PostgreSQL 的 Azure 資料庫中確認伺服器刪除 Azure 入口網站的螢幕擷取畫面":::
+   :::image type="content" source="./media/howto-create-manage-server-portal/confirm-delete.png" alt-text="在適用於 PostgreSQL 的 Azure 資料庫中選擇基本、一般用途或記憶體優化層 Azure 入口網站的螢幕擷取畫面":::
 
    > [!NOTE]
    > 刪除伺服器無法復原。

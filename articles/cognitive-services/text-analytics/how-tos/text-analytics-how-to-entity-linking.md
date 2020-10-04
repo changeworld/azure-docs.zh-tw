@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 09/24/2020
 ms.author: aahi
-ms.openlocfilehash: 5f5122b5fa7c20bc0717ef1605e41bb5f2700be2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d6820e890607ff16230ecf48e8318e6d1119a3a2
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91309093"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91707501"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>如何在文字分析中使用命名實體辨識
 
@@ -141,10 +141,11 @@ NER
 
 ### <a name="example-responses"></a>範例回應
 
-第3版針對 NER 和實體連結提供不同的端點。 這兩項作業的回應如下。 
+第3版提供適用于一般 NER、PII 和實體連結的個別端點。 這兩項作業的回應如下。 
 
 #### <a name="version-30"></a>[3.0 版](#tab/version-3)
 
+一般 NER 回應的範例：
 ```json
 {
   "documents": [
@@ -198,6 +199,44 @@ NER
 ```
 #### <a name="version-31-preview"></a>[版本 3.1-預覽](#tab/version-3-preview)
 
+PII 回應的範例：
+```json
+{
+  "documents": [
+    {
+    "redactedText": "You can even pre-order from their online menu at *************************, call ************ or send email to ***************************!",
+    "id": "0",
+    "entities": [
+        {
+        "text": "www.contososteakhouse.com",
+        "category": "URL",
+        "offset": 49,
+        "length": 25,
+        "confidenceScore": 0.8
+        }, 
+        {
+        "text": "312-555-0176",
+        "category": "Phone Number",
+        "offset": 81,
+        "length": 12,
+        "confidenceScore": 0.8
+        }, 
+        {
+        "text": "order@contososteakhouse.com",
+        "category": "Email",
+        "offset": 111,
+        "length": 27,
+        "confidenceScore": 0.8
+        }
+      ],
+    "warnings": []
+    }
+  ],
+  "errors": [],
+  "modelVersion": "2020-07-01"
+}
+```
+實體連結回應的範例：
 ```json
 {
   "documents": [
@@ -244,7 +283,6 @@ NER
   "modelVersion": "2020-02-01"
 }
 ```
-
 ---
 
 

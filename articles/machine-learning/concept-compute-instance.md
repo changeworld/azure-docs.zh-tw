@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
-ms.date: 08/25/2020
-ms.openlocfilehash: 56febc6c2a0e88b2be547c71a2f90ccfa9b78f26
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.date: 10/02/2020
+ms.openlocfilehash: 68143d3ee5df6dca29c43cb090f5873c4b50060f
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91630826"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91704685"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>什麼是 Azure Machine Learning 計算執行個體？
 
@@ -24,7 +24,7 @@ Azure Machine Learning 計算實例是適用于資料科學家的受控雲端架
 
 在雲端中使用計算實例作為機器學習的完整設定和受控開發環境。 它們也可用來做為用於開發和測試之定型和推斷的計算目標。  
 
-針對生產等級模型定型，請使用具有多節點調整功能的 [Azure Machine Learning 計算](how-to-create-attach-compute-sdk.md#amlcompute) 叢集。 針對生產等級模型部署，請使用 [Azure Kubernetes Service](how-to-deploy-azure-kubernetes-service.md)叢集。
+針對生產等級模型定型，請使用具有多節點調整功能的 [Azure Machine Learning 計算](how-to-create-attach-compute-cluster.md) 叢集。 針對生產等級模型部署，請使用 [Azure Kubernetes Service](how-to-deploy-azure-kubernetes-service.md)叢集。
 
 ## <a name="why-use-a-compute-instance"></a>為何要使用計算執行個體？
 
@@ -37,6 +37,8 @@ Azure Machine Learning 計算實例是適用于資料科學家的受控雲端架
 |&nbsp;針對 &nbsp; ML 預先設定|使用已預先設定好的最新 ML 套件、深度學習架構、GPU 驅動程式，節省設定工作的時間。|
 |可完全自訂|廣泛支援各種 Azure VM 類型 (包括 GPU) 和持續性的低層級自訂，例如安裝套件和驅動程式可讓您輕鬆地建置進階案例。 |
 
+您可以自行 [建立計算實例](how-to-create-manage-compute-instance.md?tabs=python#create) ，或系統管理員可以 [為您建立計算實例](how-to-create-manage-compute-instance.md?tabs=python#create-on-behalf-of-preview)。
+
 ## <a name="tools-and-environments"></a><a name="contents"></a>工具和環境
 
 > [!IMPORTANT]
@@ -45,7 +47,9 @@ Azure Machine Learning 計算實例是適用于資料科學家的受控雲端架
 
 Azure Machine Learning 計算執行個體可讓您在工作區中以完全整合的筆記本體驗來撰寫、定型和部署模型。
 
-下列工具和環境會安裝在計算執行個體上： 
+您可以 [安裝套件](how-to-create-manage-compute-instance.md#install-packages) ，並 [將核心新增](how-to-create-manage-compute-instance.md#add-new-kernels) 至您的計算實例。  
+
+這些工具和環境已安裝在計算實例上： 
 
 |一般工具和環境|詳細資料|
 |----|:----:|
@@ -78,46 +82,6 @@ Azure Machine Learning 計算執行個體可讓您在工作區中以完全整合
 
 Python 套件全都安裝在 **Python 3.6 - AzureML** 環境中。  
 
-### <a name="installing-packages"></a>安裝套件
-
-您可以直接在 Jupyter Notebook 或 RStudio 中安裝套件：
-
-* RStudio：使用右下角的 [套件] 索引標籤，或左上角的 [主控台] 索引標籤。  
-* Python：新增安裝程式碼，並在 Jupyter Notebook 儲存格中執行。
-
-或者，您也可以使用下列任何一種方式來存取終端機視窗：
-
-* RStudio：選取左上角的 [終端機] 索引標籤。
-* Jupyter Lab：在 [啟動器] 索引標籤中的 [其他] 標題下，選取 [終端機] 圖格。
-* Jupyter：在 [檔案] 索引標籤的右上角選取 [新增] > [終端機]。
-* 透過 SSH 連線到電腦。  然後將 Python 套件安裝到 **Python 3.6 - AzureML** 環境中。  將 R 套件安裝到 **R** 環境中。
-
-自訂計算實例時，請確定您不會刪除 azureml_py36 conda 環境或 Python 3.6-AzureML 核心。 這是 Jupyter/JupyterLab 功能的必要項
-
-### <a name="add-new-kernels"></a>加入新的核心程序
-
-若要將新的 Jupyter 核心新增至計算實例：
-
-1. 從 Jupyter、JupyterLab 或從筆記本窗格或 SSH 建立新的終端機到計算實例
-2. 使用終端機視窗建立新的環境。  例如，下列程式碼會建立 `newenv` ：
-    ```shell
-    conda create --name newenv
-    ```
-3. 啟用環境。  例如，建立 `newenv` 之後：
-
-    ```shell
-    conda activate newenv
-    ```
-4. 將 pip 和 ipykernel 套件安裝至新環境，並為該 conda 環境建立核心
-
-    ```shell
-    conda install pip
-    conda install ipykernel
-    python -m ipykernel install --user --name newenv --display-name "Python (newenv)"
-    ```
-
-您可以安裝任何[可用的 Jupyter 核心程序](https://github.com/jupyter/jupyter/wiki/Jupyter-kernels) 。
-
 ## <a name="accessing-files"></a>存取檔案
 
 筆記本和 R 指令碼會儲存在 Azure 檔案共用中您工作區的預設儲存體帳戶內。  這些檔案位於您的「使用者檔案」目錄底下。 此儲存體可讓您輕鬆地在計算執行個體之間共用筆記本。 當您停止或刪除計算執行個體時，儲存體帳戶也會讓您的筆記本安全地保留下來。
@@ -131,68 +95,6 @@ Python 套件全都安裝在 **Python 3.6 - AzureML** 環境中。
 寫入小型檔案可能會比寫入至計算實例本機磁片本身的網路磁片磁碟機更慢。  如果您要撰寫許多小型檔案，請嘗試直接在計算執行個體上使用目錄，例如 `/tmp` 目錄。 請注意，這些檔案將無法從其他計算實例存取。 
 
 您可以使用 `/tmp` 計算實例上的目錄來取得暫存資料。  不過，請勿在計算實例的 OS 磁片上寫入大量的資料。  請改用 [資料存放區](concept-azure-machine-learning-architecture.md#datasets-and-datastores) 。 如果您已安裝 JupyterLab git 擴充功能，它也可能會導致計算實例效能變慢。
-
-## <a name="managing-a-compute-instance"></a>管理計算執行個體
-
-在 Azure Machine Learning Studio 的工作區中選取 [計算]，然後選取頂端的 [計算執行個體]。
-
-![管理計算執行個體](./media/concept-compute-instance/manage-compute-instance.png)
-
-您可以執行下列動作：
-
-* [建立計算實例](#create)。 
-* 重新整理 [計算實例] 索引標籤。
-* 啟動、停止和重新開機計算實例。  當實例正在執行時，您需要支付該實例的費用。 當您未使用計算實例來降低成本時，請將它停止。 停止計算實例會將其解除配置。 然後再於需要時加以啟動。
-* 刪除計算實例。
-* 篩選計算實例的清單，只顯示您已建立的實例。
-
-針對您可以使用的工作區中的每個計算實例，您可以：
-
-* 存取計算執行個體上的 Jupyter、JupyterLab、RStudio
-* 透過 SSH 連線到計算執行個體。 預設會停用 SSH 存取，但可在建立計算執行個體時加以啟用。 SSH 存取是透過公開/私密金鑰機制來加以控制的。 此索引標籤會提供 SSH 連線的詳細資料，例如 IP 位址、使用者名稱和連接埠號碼。
-* 取得特定計算執行個體的詳細資料，例如 IP 位址和區域。
-
-[RBAC](/azure/role-based-access-control/overview) 可讓您控制工作區中的哪些使用者可以建立、刪除、啟動、停止、重新啟動計算執行個體。 工作區參與者和擁有者角色中的所有使用者都可以在工作區中建立、刪除、啟動、停止和重新啟動計算執行個體。 不過，只有特定計算實例的建立者，或代表其建立的使用者指派時，才允許存取該計算實例上的 Jupyter、JupyterLab 和 RStudio。 計算實例專用於具有根存取權的單一使用者，而且可以透過 Jupyter/JupyterLab/RStudio 來進行終端機。 計算實例將會有單一使用者登入，而且所有動作都將使用該使用者的身分識別來進行 RBAC 和實驗執行的屬性。 SSH 存取是透過公開/私密金鑰機制來加以控制的。
-
-這些動作可由 RBAC 控制：
-* *Microsoft.MachineLearningServices/workspaces/computes/read*
-* *Microsoft.MachineLearningServices/workspaces/computes/write*
-* *Microsoft.MachineLearningServices/workspaces/computes/delete*
-* *MachineLearningServices/workspace/計算/開始/動作*
-* *MachineLearningServices/workspace/計算/停止/動作*
-* *MachineLearningServices/workspace/計算/重新開機/動作*
-
-### <a name="create-a-compute-instance"></a><a name="create"></a>建立計算執行個體
-
-在 Azure Machine Learning studio 的工作區中，從 [**計算**] 區段或 [**筆記本**] 區段中[建立新的計算實例](how-to-create-attach-compute-studio.md#compute-instance)（當您準備好要執行其中一個筆記本時）。 
-
-您也可以透過下列方式建立執行個體：
-* 直接從 [整合式筆記本體驗](tutorial-1st-experiment-sdk-setup.md#azure)
-* Azure 入口網站
-* 從 Azure Resource Manager 範本。 如需範例範本，請參閱 [建立 Azure Machine Learning 計算實例範本](https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-compute-create-computeinstance)。
-* 使用 [AZURE MACHINE LEARNING SDK](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-on-computeinstance/train-on-computeinstance.ipynb)
-* 從[適用于 Azure Machine Learning 的 CLI 擴充](reference-azure-machine-learning-cli.md#computeinstance)功能
-
-適用于計算實例建立的每個區域每個區域的專用核心是統一的，並與 Azure Machine Learning 訓練計算叢集配額共用。 停止計算實例並不會釋放配額，以確保您能夠重新開機計算實例。
-
-
-### <a name="create-on-behalf-of-preview"></a>代表 (預覽版建立) 
-
-系統管理員可以代表資料科學家建立計算實例，並使用下列專案將實例指派給它們：
-* [Azure Resource Manager 範本](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/preview/2020-09-01-preview/examples/createComputeInstance.json)。  如需有關如何尋找此範本所需之 TenantID 和 ObjectID 的詳細資訊，請參閱 [尋找驗證設定的識別物件識別碼](../healthcare-apis/find-identity-object-ids.md)。  您也可以在 Azure Active Directory 入口網站中找到這些值。
-* REST API
-
-您建立計算實例所需的資料科學家需要下列 RBAC 許可權： 
-* *MachineLearningServices/workspace/計算/開始/動作*
-* *MachineLearningServices/workspace/計算/停止/動作*
-* *MachineLearningServices/workspace/計算/重新開機/動作*
-* *MachineLearningServices/workspace/計算/applicationaccess/action*
-
-資料科學家可以啟動、停止和重新開機計算實例。 他們可以使用的計算實例：
-* Jupyter
-* JupyterLab
-* RStudio
-* 整合式筆記本
 
 ## <a name="compute-target"></a>計算目標
 
@@ -218,4 +120,5 @@ Python 套件全都安裝在 **Python 3.6 - AzureML** 環境中。
 
 ## <a name="next-steps"></a>後續步驟
 
- * [教學課程：進行第一個 ML 模型的定型](tutorial-1st-experiment-sdk-train.md)會示範如何搭配使用計算執行個體與整合式筆記本。
+* [建立及管理計算實例](how-to-create-manage-compute-instance.md)
+* [教學課程：進行第一個 ML 模型的定型](tutorial-1st-experiment-sdk-train.md)會示範如何搭配使用計算執行個體與整合式筆記本。
