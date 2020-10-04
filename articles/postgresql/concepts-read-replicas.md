@@ -1,17 +1,17 @@
 ---
 title: 讀取複本-適用於 PostgreSQL 的 Azure 資料庫-單一伺服器
 description: 本文說明適用於 PostgreSQL 的 Azure 資料庫單一伺服器中的讀取複本功能。
-author: rachel-msft
-ms.author: raagyema
+author: sr-msft
+ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/10/2020
-ms.openlocfilehash: d1fa99d0954177e2804039fc71c2ba010b94bd50
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 2d0ee0e4c5cf3f7c2f4b623f0270ecf5eb01fc36
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91530935"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710510"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>讀取適用於 PostgreSQL 的 Azure 資料庫中的複本-單一伺服器
 
@@ -83,7 +83,7 @@ psql -h myreplica.postgres.database.azure.com -U myadmin@myreplica -d postgres
 ## <a name="monitor-replication"></a>監視複寫
 適用於 PostgreSQL 的 Azure 資料庫提供兩個計量來監視複寫。 這兩個計量是複本和**複本延遲****之間的最大延隔**時間。 若要瞭解如何查看這些計量，請參閱「[讀取複本操作說明](howto-read-replicas-portal.md)」一文中的「**監視複本**」一節。
 
-[ **複本之間的最大延隔** 時間] 計量會顯示主要與最延遲複本之間的延遲（以位元組為單位）。 此計量僅適用于主伺服器。
+[ **複本之間的最大延隔** 時間] 計量會顯示主要與最延遲複本之間的延遲（以位元組為單位）。 此計量僅適用于主伺服器，而且只有當至少有一個讀取複本連接到主要複本時，才能使用此度量。
 
 [ **複本延隔** 時間] 計量會顯示上次重新執行的交易之後的時間。 如果您的主伺服器上沒有發生交易，計量會反映此時間延隔時間。 此計量僅適用于複本伺服器。 複本延隔時間是從 `pg_stat_wal_receiver` 視圖中計算：
 
@@ -141,12 +141,15 @@ AS total_log_delay_in_bytes from pg_stat_replication;
     
 一旦您的應用程式成功處理讀取和寫入，您就已完成容錯移轉。 當您偵測到問題並完成上述步驟1和2時，您的應用程式所經歷的停機時間將會取決於您的情況。
 
+### <a name="disaster-recovery"></a>災害復原
+
+當發生重大的災難事件（例如可用性區域層級或區域性失敗）時，您可以藉由升級讀取複本來執行嚴重損壞修復作業。 您可以從 UI 入口網站流覽至讀取複本伺服器。 然後按一下 [複寫] 索引標籤，您可以停止複本將它升階為獨立的伺服器。 或者，您可以使用 [Azure CLI](https://docs.microsoft.com/cli/azure/postgres/server/replica?view=azure-cli-latest#az_postgres_server_replica_stop) 來停止及升級複本伺服器。
 
 ## <a name="considerations"></a>考量
 
 本節將摘要說明有關讀取複本功能的考量。
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>Prerequisites
 讀取複本和 [邏輯解碼](concepts-logical.md) 都取決於 Postgres 的預先寫入記錄 (WAL) 取得資訊。 這兩個功能需要來自 Postgres 的不同記錄層級。 邏輯解碼需要比讀取複本更高層級的記錄。
 
 若要設定正確的記錄層級，請使用 Azure 複寫支援參數。 Azure 複寫支援有三個設定選項：
@@ -165,7 +168,7 @@ AS total_log_delay_in_bytes from pg_stat_replication;
 
 建立或之後建立複本時，防火牆規則、虛擬網路規則和參數設定都不會從主伺服器繼承至複本。
 
-### <a name="scaling"></a>擴縮
+### <a name="scaling"></a>調整大小
 調整虛擬核心或一般目的與記憶體優化：
 * 于 postgresql 需要 `max_connections` 次要伺服器上的設定 [大於或等於主伺服器上的設定](https://www.postgresql.org/docs/current/hot-standby.html)，否則次要伺服器將不會啟動。
 * 在適用於 PostgreSQL 的 Azure 資料庫中，每個伺服器允許的連線數上限會固定到計算 sku，因為連接會佔用記憶體。 您可以深入瞭解 [max_connections 與計算 sku 之間的對應](concepts-limits.md)。

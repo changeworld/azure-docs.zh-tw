@@ -12,12 +12,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: 548113a5f775595caf3a798d7b35eddfbc80674e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 1742c80fd6914a1c9420f37217df02791e80da9d
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90886096"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710051"
 ---
 # <a name="where-to-save-and-write-files-for-azure-machine-learning-experiments"></a>在哪裡儲存和寫入 Azure Machine Learning 實驗的檔案
 
@@ -75,8 +75,8 @@ Jupyter 筆記本| 建立檔案 `.amlignore` 或將筆記本移至新的空白�
 
 * **若要在執行歷程記錄中將寫入的檔案儲存為記錄檔，請** 將檔案寫入 `./logs` 資料夾。 記錄會即時上傳，因此這個方法適用于從遠端執行串流處理即時更新。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * 深入瞭解如何 [從您的資料存放區存取資料](how-to-access-data.md)。
 
-* 深入瞭解如何使用 [PYTHON SDK](how-to-create-attach-compute-sdk.md) 或 [studio](how-to-create-attach-compute-studio.md)來建立計算目標。
+* 深入瞭解如何 [建立模型定型和部署的計算目標](how-to-create-attach-compute-studio.md)

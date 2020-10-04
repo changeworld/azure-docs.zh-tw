@@ -1,5 +1,5 @@
 ---
-title: 設定企業 Azure AD 應用程式的角色宣告 |Azure
+title: 設定企業 Azure AD 應用程式的角色宣告 |蔚藍
 titleSuffix: Microsoft identity platform
 description: 了解如何針對 Azure Active Directory 中的企業應用程式設定 SAML 權杖中發出的角色宣告
 services: active-directory
@@ -12,12 +12,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 04/22/2019
 ms.author: jeedes
-ms.openlocfilehash: 85c406fc561424d7b02d39dfd58dc3c8fe34aab2
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 8ec87a8d78f73af48b662c5971dfe1803717f88a
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88116082"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91704543"
 ---
 # <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>操作說明：針對企業應用程式，設定 SAML 權杖中發出的角色宣告
 
@@ -54,7 +54,7 @@ ms.locfileid: "88116082"
 
     ![屬性頁面](./media/active-directory-enterprise-app-role-management/tutorial_app_properties.png)
 
-6. 在另一個視窗中開啟[Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) ，並採取下列步驟：
+6. 在另一個視窗中開啟 [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) ，然後執行下列步驟：
 
     a. 使用您租用戶的全域管理員或共同管理員認證來登入 [Graph 總管] 網站。
 
@@ -88,7 +88,7 @@ ms.locfileid: "88116082"
 
       ![用來取得所需修改服務主體的查詢](./media/active-directory-enterprise-app-role-management/graph-explorer-new2.png)
 
-    g. 從服務主體物件中解壓縮**appRoles**屬性。
+    g. 從服務主體物件中解壓縮 **appRoles** 屬性。
 
       ![appRoles 屬性的詳細資料](./media/active-directory-enterprise-app-role-management/graph-explorer-new3.png)
 
@@ -135,7 +135,7 @@ ms.locfileid: "88116082"
 
       ![具有成功訊息的修補作業](./media/active-directory-enterprise-app-role-management/graph-explorer-new11.png)
 
-7. 將服務主體修補成具有更多角色之後，您可以將使用者指派給各自的角色。 您可以移至入口網站並瀏覽至應用程式，來指派使用者。 選取 [**使用者和群組**] 索引標籤。此索引標籤會列出已指派給應用程式的所有使用者和群組。 您可以對新角色新增使用者。 您也可以選取現有使用者，然後選取 [編輯]**** 以變更角色。
+7. 將服務主體修補成具有更多角色之後，您可以將使用者指派給各自的角色。 您可以移至入口網站並瀏覽至應用程式，來指派使用者。 選取 [ **使用者和群組** ] 索引標籤。此索引標籤會列出已指派給應用程式的所有使用者和群組。 您可以對新角色新增使用者。 您也可以選取現有使用者，然後選取 [編輯]**** 以變更角色。
 
     ![[使用者和群組] 索引標籤](./media/active-directory-enterprise-app-role-management/graph-explorer-new5.png)
 
@@ -155,13 +155,13 @@ ms.locfileid: "88116082"
     | 角色名稱  | user.assignedroles |
 
     >[!NOTE]
-    >如果角色宣告值為 null，則 Azure AD 不會在權杖中傳送此值，而這預設會依設計而成。
+    >如果角色宣告值為 null，則 Azure AD 不會在權杖中傳送此值，而這是根據設計的預設值。
 
-    a. 按一下 [**編輯**] 圖示以開啟 [**使用者屬性] & [宣告**] 對話方塊。
+    a. 按一下 [ **編輯** ] 圖示，以開啟 [ **使用者屬性 & 宣告** ] 對話方塊。
 
-      ![[新增屬性] 按鈕](./media/active-directory-enterprise-app-role-management/editattribute.png)
+      ![反白顯示用來開啟 [使用者屬性 & 宣告] 對話方塊的編輯圖示的螢幕擷取畫面。](./media/active-directory-enterprise-app-role-management/editattribute.png)
 
-    b. 在 [**管理使用者宣告**] 對話方塊中，按一下 [新增宣告] 來新增 [SAML 權杖]**屬性。**
+    b. 在 [ **管理使用者宣告** ] 對話方塊中，按一下 [ **新增**宣告] 來新增 [SAML 權杖] 屬性。
 
       ![[新增屬性] 按鈕](./media/active-directory-enterprise-app-role-management/tutorial_attribute_04.png)
 
@@ -181,7 +181,7 @@ ms.locfileid: "88116082"
 
 若要更新現有角色，請執行下列步驟：
 
-1. 開啟[Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer)]。
+1. 開啟 [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer)。
 
 2. 使用您租用戶的全域管理員或共同管理員認證來登入 [Graph 總管] 網站。
 
@@ -199,7 +199,7 @@ ms.locfileid: "88116082"
 
     ![用來取得所需修改服務主體的查詢](./media/active-directory-enterprise-app-role-management/graph-explorer-new2.png)
 
-5. 從服務主體物件中解壓縮**appRoles**屬性。
+5. 從服務主體物件中解壓縮 **appRoles** 屬性。
 
     ![appRoles 屬性的詳細資料](./media/active-directory-enterprise-app-role-management/graph-explorer-new3.png)
 
@@ -219,7 +219,7 @@ ms.locfileid: "88116082"
 
 若要刪除現有角色，請執行下列步驟：
 
-1. 在另一個視窗中開啟[Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) 。
+1. 在另一個視窗中開啟 [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) 。
 
 2. 使用您租用戶的全域管理員或共同管理員認證來登入 [Graph 總管] 網站。
 
@@ -237,7 +237,7 @@ ms.locfileid: "88116082"
 
     ![用來取得所需修改服務主體的查詢](./media/active-directory-enterprise-app-role-management/graph-explorer-new2.png)
 
-5. 從服務主體物件中解壓縮**appRoles**屬性。
+5. 從服務主體物件中解壓縮 **appRoles** 屬性。
 
     ![服務主體物件中 appRoles 屬性的詳細資料](./media/active-directory-enterprise-app-role-management/graph-explorer-new7.png)
 
