@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 2d14207bada52c937875bc62bdbde63d788c1aca
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: e67346eb1a0fccc7a788e8698df734536e1e395b
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91653582"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708946"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB 服務配額
 
@@ -137,6 +137,7 @@ Azure Cosmos 項目可根據所使用的 API，分別代表集合中的文件、
 | 屬性值的長度上限 | 沒有實際限制 |
 | 字串屬性值的長度上限 | 沒有實際限制 |
 | 數值屬性值的長度上限 | IEEE754 雙精確度 64 位元 |
+| 内嵌物件/陣列的最大嵌套層級 | 128 |
 | 最大 TTL 值 |2147483647|
 
 除了分割區索引鍵和識別碼值的長度限制，以及 2 MB 的整體大小限制以外，項目裝載 (例如屬性數目和巢狀深度) 沒有任何限制。 您可能必須針對具有大型或複雜項目結構的容器設定編製索引原則，以減少 RU 耗用量。 如需真實世界範例以及用來管理大型項目的模式，請參閱 [Cosmos DB 中的模型項目](how-to-model-partition-example.md)。

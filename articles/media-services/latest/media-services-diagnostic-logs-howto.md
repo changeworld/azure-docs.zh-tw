@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e2cfa21bc5223af058d412bf3f17f53cb151fc5c
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: e756ff0133e3d3f0f86ea2f592005f2f2986488e
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89297632"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91707756"
 ---
 # <a name="monitor-media-services-diagnostic-logs"></a>監視媒體服務診斷記錄
 
@@ -39,9 +39,9 @@ ms.locfileid: "89297632"
 1. 在 https://portal.azure.com 上登入 Azure 入口網站。
 1. 在中流覽至您的媒體服務帳戶，然後按一下 [**監視**] 下的 [**診斷設定**]。 在這裡，您會看到訂用帳戶中所有透過 Azure 監視器而產生監視資料的資源清單。
 
-    ![診斷設定區段](media/media-services-diagnostic-logs/logs01.png)
+    ![在 [監視] 區段底下強調診斷設定的螢幕擷取畫面。](media/media-services-diagnostic-logs/logs01.png)
 
-1. 按一下「新增診斷設定」****。
+1. 按一下「新增診斷設定」  。
 
    資源診斷設定可定義應該從特定資源路由傳送「什麼」** 監視資料，以及監視資料應該傳送至「何處」**。
 
@@ -52,7 +52,7 @@ ms.locfileid: "89297632"
 
    ![診斷設定區段](media/media-services-diagnostic-logs/logs02.png)
 1. 將 [保留期 (天數)]**** 滑桿設為 30。 此滑桿可設定監視資料在儲存體帳戶中的保留天數。 Azure 監視器會自動刪除比指定天數更舊的資料。 保留天數為 0 會無限期地儲存資料。
-1. 按一下 [儲存]。
+1. 按一下 [檔案] 。
 
 來自資源的監視資料現在開始流入儲存體帳戶。
 
@@ -187,6 +187,6 @@ az monitor diagnostic-settings create --name amsv3diagnostic \
 * [Azure 監視器診斷記錄](../../azure-monitor/platform/platform-logs-overview.md)
 * [如何收集和取用來自 Azure 資源的記錄資料](../../azure-monitor/platform/platform-logs-overview.md)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 [監視計量](media-services-metrics-howto.md)

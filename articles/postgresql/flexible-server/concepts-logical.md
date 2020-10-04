@@ -1,17 +1,17 @@
 ---
 title: 邏輯複寫和邏輯解碼-適用於 PostgreSQL 的 Azure 資料庫彈性的伺服器
 description: 瞭解如何在適用於 PostgreSQL 的 Azure 資料庫彈性的伺服器中使用邏輯複寫和邏輯解碼
-author: rachel-msft
-ms.author: raagyema
+author: sr-msft
+ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: dd7aed0d23dd657b655e473565611ef36c592562
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b6689220873aaeb65337ba480e346e5d2c8020ce
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91336321"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91707858"
 ---
 # <a name="logical-replication-and-logical-decoding-in-azure-database-for-postgresql---flexible-server"></a>適用於 PostgreSQL 的 Azure 資料庫-彈性伺服器中的邏輯複寫和邏輯解碼
 

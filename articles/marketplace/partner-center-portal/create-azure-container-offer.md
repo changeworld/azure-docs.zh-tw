@@ -7,12 +7,12 @@ ms.topic: how-to
 author: keferna
 ms.author: keferna
 ms.date: 06/17/2020
-ms.openlocfilehash: 12987ae687e9af59fdd71b3aa846612c947b9a90
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: cbaca0b9d608d7703beec559e5434f52308629ab
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89649260"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91709099"
 ---
 # <a name="create-an-azure-container-offer-in-azure-marketplace"></a>在 Azure Marketplace 中建立 Azure 容器供應項目
 
@@ -80,10 +80,10 @@ ms.locfileid: "89649260"
 
 以下是一些額外的潛在客戶管理資源：
 
-- [潛在客戶管理概觀](commercial-marketplace-get-customer-leads.md)
-- [潛在客戶管理常見問題集](../lead-management-for-cloud-marketplace.md#frequently-asked-questions)
-- [常見潛在客戶設定錯誤](../lead-management-for-cloud-marketplace.md#publishing-config-errors)
-- [潛在客戶管理概觀](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF (請確定您已關閉快顯封鎖程式)
+- [來自您的商業市集供應項目的潛在客戶](commercial-marketplace-get-customer-leads.md)
+- [潛在客戶管理的常見問題](../lead-management-faq.md#common-questions-about-lead-management)
+- [針對潛在客戶設定錯誤進行疑難排解](../lead-management-faq.md#publishing-config-errors)
+- [潛在客戶管理概觀](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF (請確定您已關閉快顯封鎖程式)。
 
 選取 [儲存草稿] 後再繼續。
 
@@ -122,7 +122,7 @@ ms.locfileid: "89649260"
 
 ##### <a name="your-own-terms-and-conditions"></a>您自己的條款及條件
 
-若要提供您自己的自訂條款及條件，請在 [條款及條件] 方塊中加以輸入。 您可以在此方塊中輸入不限數量的文字字元。 客戶必須先接受這些條款，才能試用您的供應項目。
+若要提供您自己的自訂條款及條件，請在 [條款及條件] 方塊中加以輸入。 您可以在此方塊中輸入不限數目的文字字元。 客戶必須先接受這些條款，才能試用您的供應項目。
 
 選取 [儲存草稿]，再繼續進行下一節，＜供應項目清單＞。
 
@@ -190,7 +190,7 @@ ms.locfileid: "89649260"
 
 提供要與您供應項目搭配使用的標誌和映像。 所有影像都必須採用 PNG 格式。 模糊映像將會遭到拒絕。
 
-[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+[!INCLUDE [logo tips](../includes/graphics-suggestions.md)]
 
 >[!Note]
 >如果您在上傳檔案時遇到問題，請確定您的區域網路不會封鎖合作夥伴中心所使用的 https://upload.xboxlive.com 服務。
@@ -223,19 +223,19 @@ ms.locfileid: "89649260"
 
 這會顯示 Azure Marketplace 中的**供應項目清單**頁面：
 
-:::image type="content" source="media/azure-create-container-offer-images/azure-create-6-offer-listing-mkt-plc.png" alt-text="說明 Azure Marketplace 中的供應項目清單頁面。" :::
+:::image type="content" source="media/azure-create-container-offer-images/azure-create-6-offer-listing-mkt-plc.png" alt-text="說明如何使用 Microsoft 商業市集的標準合約核取方塊。" :::
 
 這會顯示 Azure Marketplace 中的搜尋結果：
 
-:::image type="content" source="media/azure-create-container-offer-images/azure-create-7-search-results-mkt-plc.png" alt-text="說明 Azure Marketplace 中的搜尋結果。":::
+:::image type="content" source="media/azure-create-container-offer-images/azure-create-7-search-results-mkt-plc.png" alt-text="說明如何使用 Microsoft 商業市集的標準合約核取方塊。":::
 
 這會顯示 Azure 入口網站中的**供應項目清單**頁面：
 
-:::image type="content" source="media/azure-create-container-offer-images/azure-create-8-offer-listing-portal.png" alt-text="說明 Azure 入口網站中的供應項目清單頁面。":::
+:::image type="content" source="media/azure-create-container-offer-images/azure-create-8-offer-listing-portal.png" alt-text="說明如何使用 Microsoft 商業市集的標準合約核取方塊。":::
 
 這會顯示 Azure 入口網站中的搜尋結果：
 
-:::image type="content" source="media/azure-create-container-offer-images/azure-create-9-search-results-portal.png" alt-text="說明 Azure 入口網站中的搜尋結果。":::
+:::image type="content" source="media/azure-create-container-offer-images/azure-create-9-search-results-portal.png" alt-text="說明如何使用 Microsoft 商業市集的標準合約核取方塊。":::
 
 ## <a name="preview"></a>預覽
 
@@ -328,11 +328,11 @@ Azure Government 服務會處理受限於特定政府法規和需求的資料。
 
 以下是在檢視方案詳細資料時，Azure Marketplace 中的欄位：
 
-:::image type="content" source="media/azure-create-container-offer-images/azure-create-10-plan-details-mtplc.png" alt-text="說明在 Azure Marketplace 中檢視方案詳細資料時所看到的欄位。":::
+:::image type="content" source="media/azure-create-container-offer-images/azure-create-10-plan-details-mtplc.png" alt-text="說明如何使用 Microsoft 商業市集的標準合約核取方塊。":::
 
 這些是 Azure 入口網站的方案詳細資料：
 
-:::image type="content" source="media/azure-create-container-offer-images/azure-create-11-plan-details-portal.png" alt-text="說明 Azure 入口網站的方案詳細資料。":::
+:::image type="content" source="media/azure-create-container-offer-images/azure-create-11-plan-details-portal.png" alt-text="說明如何使用 Microsoft 商業市集的標準合約核取方塊。":::
 
 ### <a name="plan-availability"></a>方案可用性
 
@@ -363,11 +363,11 @@ Azure Government 服務會處理受限於特定政府法規和需求的資料。
 
 **Azure Container Registry** 的系統管理員使用者名稱–提供系統 [管理員使用者名稱](../../container-registry/container-registry-authentication.md#admin-account)) 與具有容器映射的 Azure Container Registry 連結。 需要使用者名稱和密碼，以確保貴公司有權存取登錄。 若要取得管理使用者名稱和密碼，請使用 Azure 命令列介面 (CLI)，將 **admin-enabled** 屬性設定為 **True**。 您可以選擇性地將 Azure 入口網站中的 [管理使用者] 設定為 [啟用]。
 
- :::image type="content" source="media/azure-create-container-offer-images/azure-create-12-update-container-registry-edit.png" alt-text="說明 [更新容器登錄] 對話方塊。":::
+ :::image type="content" source="media/azure-create-container-offer-images/azure-create-12-update-container-registry-edit.png" alt-text="說明如何使用 Microsoft 商業市集的標準合約核取方塊。":::
 
 **Azure Container Registry 密碼** - 提供與 Azure Container Registry 相關聯且擁有您容器映像之管理使用者名稱的密碼。 需要使用者名稱和密碼，以確保貴公司有權存取登錄。 若要取得 Azure 入口網站的密碼，請前往 [容器登錄] > [存取金鑰]，或是使用 Azure CLI 的 [show 命令](https://docs.microsoft.com/cli/azure/acr/credential?view=azure-cli-latest#az-acr-credential-show)。
 
-:::image type="content" source="media/azure-create-container-offer-images/azure-create-13-access-keys.png" alt-text="說明 [存取金鑰] 功能表。":::
+:::image type="content" source="media/azure-create-container-offer-images/azure-create-13-access-keys.png" alt-text="說明如何使用 Microsoft 商業市集的標準合約核取方塊。":::
 
 **Azure Container Registry 內的存放庫名稱**。 提供具有您映像的 Azure Container Registry 存放庫名稱。 當您將映像推送至登錄時，包含存放庫的名稱。 您可以前往[容器登錄](https://azure.microsoft.com/services/container-registry/) > [存放庫] 頁面來尋找儲存機制的名稱。 如需詳細資訊，請參閱[檢視 Azure 入口網站中的容器登錄存放庫](../../container-registry/container-registry-repositories.md)。
 

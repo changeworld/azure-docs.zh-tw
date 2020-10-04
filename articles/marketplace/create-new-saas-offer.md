@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/02/2020
-ms.openlocfilehash: 93b47d2147a7438ebd38a5ae36363950639ba414
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 2679d24a9e8c821dae73114f32adbeb3d22a1458
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89380768"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708895"
 ---
 # <a name="how-to-create-a-saas-offer-in-the-commercial-marketplace"></a>如何在商業市場中建立 SaaS 供應專案
 
@@ -49,8 +49,8 @@ ms.locfileid: "89380768"
 1. 若要透過 Microsoft 銷售並讓我們為您加速交易，請選取 **[是]**。 繼續 [啟用測試磁片磁碟機](#enable-a-test-drive-optional)。
 
 1. 若要透過商業 marketplace 和個別處理交易來列出您的供應專案，請選取 [ **否**]，然後執行下列其中一項：
-   + 若要為您的供應專案提供免費訂用帳戶，請選取 [ **立即取得] (免費) **。 然後，在出現的 [ **供應專案 URL** ] 方塊中，輸入 url (開頭為 *HTTP* 或 *HTTPs*) ，客戶可以 [使用 Azure Active Directory (Azure AD) ](marketplace-saas-applications-technical-publishing-guide.md#using-azure-active-directory-to-enable-trials)，透過單鍵驗證來取得試用版。 例如： `https://contoso.com/saas-app` 。
-   + 若要提供30天的免費試用版，請選取 [ **免費試用**]，然後在出現的 [ **試用 url** ] 方塊中輸入 URL (開頭為 *HTTP* 或 *HTTPs*) ，客戶可以 [使用 Azure Active Directory (Azure AD) ](marketplace-saas-applications-technical-publishing-guide.md#using-azure-active-directory-to-enable-trials)，透過單鍵驗證存取您的免費試用。 例如： `https://contoso.com/trial/saas-app` 。
+   + 若要為您的供應專案提供免費訂用帳戶，請選取 [ **立即取得] (免費) **。 然後，在出現的 [ **供應專案 URL** ] 方塊中，輸入 url (開頭為 *HTTP* 或 *HTTPs*) ，客戶可以 [使用 Azure Active Directory (Azure AD) ](marketplace-saas-applications-technical-publishing-guide.md#using-azure-active-directory-to-enable-trials)，透過單鍵驗證來取得試用版。 例如 `https://contoso.com/saas-app`。
+   + 若要提供30天的免費試用版，請選取 [ **免費試用**]，然後在出現的 [ **試用 url** ] 方塊中輸入 URL (開頭為 *HTTP* 或 *HTTPs*) ，客戶可以 [使用 Azure Active Directory (Azure AD) ](marketplace-saas-applications-technical-publishing-guide.md#using-azure-active-directory-to-enable-trials)，透過單鍵驗證存取您的免費試用。 例如 `https://contoso.com/trial/saas-app`。
    + 若要讓潛在客戶聯繫您購買供應專案，請選取 [ **洽詢我**]。
 
 ### <a name="enable-a-test-drive-optional"></a>啟用 (選用) 的試用產品
@@ -69,7 +69,7 @@ ms.locfileid: "89380768"
 將您的客戶關係管理 (CRM) system 與您的商業 marketplace 供應專案連接，讓您可以在客戶表達興趣或部署您的產品時，收到客戶連絡人資訊。 您可以在建立供應專案期間或之後的任何時間修改此連接。
 
 > [!NOTE]
-> 如果您是透過 Microsoft 銷售您的供應專案，或您選取了 [ **Contact Me** ] 清單選項，就必須設定潛在客戶管理。 如需詳細指引，請參閱 [商用 marketplace 的潛在客戶管理](lead-management-for-cloud-marketplace.md)。
+> 如果您是透過 Microsoft 銷售您的供應專案，或您選取了 [ **Contact Me** ] 清單選項，就必須設定潛在客戶管理。 如需詳細指引，請參閱 [您的商業 marketplace 供應專案客戶潛在客戶](partner-center-portal/commercial-marketplace-get-customer-leads.md)。
 
 #### <a name="to-configure-the-connection-details-in-partner-center"></a>若要在合作夥伴中心中設定連接詳細資料
 
@@ -86,6 +86,6 @@ ms.locfileid: "89380768"
 1. 若要驗證您所提供的設定，請選取 [ **驗證** ] 連結。
 1. 若要關閉對話方塊，請選取 **[確定]**。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [如何設定您的 SaaS 供應專案屬性](create-new-saas-offer-properties.md)

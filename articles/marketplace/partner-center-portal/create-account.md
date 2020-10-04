@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 07/01/2020
 author: parthpandyaMSFT
 ms.author: parthp
-ms.openlocfilehash: 64788544971eaa7738013ab1a0475771c13bab88
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 96a11caa93a925731ad2f24ac860b21301a29cdf
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89647652"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708181"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>在合作夥伴中心中建立商業 marketplace 帳戶
 
@@ -80,7 +80,7 @@ ms.locfileid: "89647652"
     
 1. 若要確認商用 marketplace 帳戶列為 [已註冊]，請選取 [**設定**  >  **夥伴設定**  >  **程式**]。
 
-您現在已在合作夥伴中心中建立商用 marketplace 帳戶。 如需詳細資訊，請參閱 [商業 marketplace 總覽](./commercial-marketplace-overview.md)。 如需新增發行者的說明，請參閱 [將新的發行者新增至商用 marketplace](#add-new-publishers-to-the-commercial-marketplace-program)。
+您現在已在合作夥伴中心中建立商用 marketplace 帳戶。 如需新增發行者的說明，請參閱 [將新的發行者新增至商用 marketplace](#add-new-publishers-to-the-commercial-marketplace-program)。
 
 ## <a name="create-an-account-by-using-existing-microsoft-partner-center-enrollments"></a>使用現有的 Microsoft 合作夥伴中心註冊建立帳戶
 
@@ -129,7 +129,7 @@ ms.locfileid: "89647652"
     
 1. 若要確認商用 marketplace 帳戶列為 [已註冊]，請選取 [**設定**  >  **夥伴設定**  >  **程式**]。
 
-您現在已在合作夥伴中心中建立商用 marketplace 帳戶。 如需詳細資訊，請參閱 [商業 marketplace 總覽](./commercial-marketplace-overview.md)。 如需新增發行者的說明，請參閱 [將新的發行者新增至商用 marketplace](#add-new-publishers-to-the-commercial-marketplace-program)。
+您現在已在合作夥伴中心中建立商用 marketplace 帳戶。 如需新增發行者的說明，請參閱 [將新的發行者新增至商用 marketplace](#add-new-publishers-to-the-commercial-marketplace-program)。
 
 ### <a name="what-if-im-already-enrolled-in-a-developer-program"></a>如果我已經註冊開發人員計畫，該怎麼辦？
 
@@ -157,7 +157,7 @@ ms.locfileid: "89647652"
     
 1. 若要確認商用 marketplace 帳戶列為 [已註冊]，請選取 [**設定**  >  **夥伴設定**  >  **程式**]。
 
-您現在已在合作夥伴中心中建立商用 marketplace 帳戶。 如需詳細資訊，請參閱 [商業 marketplace 總覽](./commercial-marketplace-overview.md)。 如需新增發行者的說明，請參閱 [將新的發行者新增至商用 marketplace](#add-new-publishers-to-the-commercial-marketplace-program)。
+您現在已在合作夥伴中心中建立商用 marketplace 帳戶。 如需新增發行者的說明，請參閱 [將新的發行者新增至商用 marketplace](#add-new-publishers-to-the-commercial-marketplace-program)。
 
 ## <a name="for-publishers-who-moved-from-the-cloud-partner-portal"></a>針對從 Cloud Partner 入口網站移動的發行者
 
@@ -188,6 +188,7 @@ ms.locfileid: "89647652"
 
 完成此程式之後，您可以移至左窗格中所列的商業 marketplace 帳戶，以管理新建立的發行者。 如果您沒有看到商用 marketplace 帳戶，請重新整理頁面。 「 **發行者」清單中** 會出現新的「發行者」。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
+- [什麼是 Microsoft 商業 marketplace？](../overview.md)
 - [在合作夥伴中心管理您的商業市集帳戶](./manage-account.md)

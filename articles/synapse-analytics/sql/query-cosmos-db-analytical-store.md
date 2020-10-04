@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 09/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 028f47fcfb4a6a4d94d672e950b4c37d739e672b
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.openlocfilehash: 9d36cee1ebf9f58991db6fd40fd6aa9422546b61
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91597318"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710748"
 ---
 # <a name="query-azure-cosmos-db-data-using-sql-serverless-in-azure-synapse-link-preview"></a>使用 Azure Synapse 連結中的 SQL 無伺服器查詢 Azure Cosmos DB 資料 (預覽) 
 
-SQL 無伺服器 (先前的 SQL 無伺服器) 可讓您以近乎即時的方式，在已啟用 [Azure Synapse 連結](../../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) 的 Azure Cosmos DB 容器中分析資料，而不會影響交易式工作負載的效能。 它提供了一個熟悉的 T-sql 語法，可從 [分析存放區](../../cosmos-db/analytical-store-introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) 查詢資料，並透過 t-sql 介面整合各種 BI 和臨機操作查詢工具的連接。
+Synapse SQL 無伺服器 (先前的 SQL 隨選) 可讓您以近乎即時的方式，在已啟用 [Azure Synapse 連結](../../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) 的 Azure Cosmos DB 容器中分析資料，而不會影響交易式工作負載的效能。 它提供了一個熟悉的 T-sql 語法，可從 [分析存放區](../../cosmos-db/analytical-store-introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) 查詢資料，並透過 t-sql 介面整合各種 BI 和臨機操作查詢工具的連接。
 
 > [!NOTE]
 > 支援使用 SQL 無伺服器查詢 Azure Cosmos DB 分析存放區目前處於閘道預覽狀態。 

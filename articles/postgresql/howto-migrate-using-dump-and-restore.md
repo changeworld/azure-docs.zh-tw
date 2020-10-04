@@ -1,17 +1,17 @@
 ---
 title: 傾印和還原-適用於 PostgreSQL 的 Azure 資料庫-單一伺服器
 description: 說明如何將于 postgresql 資料庫解壓縮到傾印檔案，並從適用於 PostgreSQL 的 Azure 資料庫-單一伺服器中 pg_dump 所建立的檔案還原。
-author: rachel-msft
-ms.author: raagyema
+author: sr-msft
+ms.author: srranga
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: 529573bd18dbdbd16a795619d488beedfb532b11
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 4fe15d1bd23f36b7289c54bedf575ae4760600e0
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90902660"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710799"
 ---
 # <a name="migrate-your-postgresql-database-using-dump-and-restore"></a>使用傾印和還原來移轉 PostgreSQL 資料庫
 [!INCLUDE[applies-to-postgres-single-flexible-server](includes/applies-to-postgres-single-flexible-server.md)]
@@ -106,6 +106,6 @@ pg_restore -v --no-owner --host=mydemoserver.postgres.database.azure.com --port=
 
 請務必在測試環境中測試和驗證這些命令之後，再於在生產環境中使用。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 - 若要使用匯出和匯入來移轉 PostgreSQL 資料庫，請參閱[使用匯出和匯入移轉 PostgreSQL 資料庫](howto-migrate-using-export-and-import.md)。
 - 如需有關將資料庫移轉至適用於 PostgreSQL 的 Azure 資料庫詳細資訊，請參閱[資料庫移轉指南](https://aka.ms/datamigration)。

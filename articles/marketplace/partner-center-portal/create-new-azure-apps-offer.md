@@ -7,12 +7,12 @@ ms.topic: how-to
 author: AarathiN
 ms.author: aarathin
 ms.date: 07/14/2020
-ms.openlocfilehash: 512f901c33ebce4fef06629fe78976a071820c87
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: fb3a3ab5339186d8fa4e347d9d13e66940457f8a
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91251418"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710714"
 ---
 # <a name="create-an-azure-application-offer"></a>建立 Azure 應用程式供應項目
 
@@ -188,17 +188,17 @@ Azure 應用程式方法有兩種：解決方案範本和受控應用程式。
 5. 隱私權原則位址 (連結) 
 6. 供應項目名稱
 7. 摘要
-8. 說明
+8. 描述
 9. 螢幕擷取畫面/影片
 
 <br>以下是供應專案資訊出現在 Azure 入口網站中的範例：
 
-:::image type="content" source="media/example-virtual-machine-container-iot-edge-saas.png" alt-text="說明這項供應專案如何出現在 Azure 入口網站中。":::
+:::image type="content" source="media/example-virtual-machine-container-iot-edge-saas.png" alt-text="說明這項供應專案在 Azure Marketplace 中的顯示方式。":::
 
 #### <a name="call-out-descriptions"></a>撥出描述
 
 1. 標題
-2. 說明
+2. 描述
 3. 實用連結
 4. 螢幕擷取畫面
 
@@ -242,7 +242,7 @@ Azure 應用程式方法有兩種：解決方案範本和受控應用程式。
 
 提供要搭配您供應項目使用的標誌和映像。 所有影像都必須採用 PNG 格式。 模糊影像將會導致您的提交遭到拒絕。
 
-[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+[!INCLUDE [logo tips](../includes/graphics-suggestions.md)]
 
 >[!Note]
 >如果在上傳檔案時發生問題，請確定您的區域網路不會封鎖合作夥伴中心所使用的 https://upload.xboxlive.com 服務。

@@ -7,13 +7,13 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.custom: contperfq1
-ms.date: 08/25/2020
-ms.openlocfilehash: 7de882683248406e44a617dfb5d070e12879aea3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 10/2/2020
+ms.openlocfilehash: 5f109ad719ada9728938f6e37d4ec854d3950a24
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91317747"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708430"
 ---
 # <a name="outputs-from-azure-stream-analytics"></a>Azure 串流分析的輸出
 
@@ -26,10 +26,10 @@ Azure 串流分析作業是由輸入、查詢及輸出所組成。 有數種輸�
 | 輸出類型 | 資料分割 | 安全性 | 
 |-------------|--------------|----------|
 |[Azure Data Lake Storage Gen 1](azure-data-lake-storage-gen1-output.md)|是|Azure Active Directory 使用者 </br> MSI|
-|[Azure SQL Database](sql-database-output.md)|是，必須啟用。|SQL 使用者驗證 </br> MSI (預覽) |
-|[Azure Synapse Analytics](azure-synapse-analytics-output.md)|否|SQL 使用者驗證|
+|[Azure SQL Database](sql-database-output.md)|是，選擇性。|SQL 使用者驗證 </br> MSI (預覽) |
+|[Azure Synapse Analytics](azure-synapse-analytics-output.md)|是|SQL 使用者驗證|
 |[Blob 儲存體和 Azure Data Lake Gen 2](blob-storage-azure-data-lake-gen2-output.md)|是|MSI </br> 存取金鑰|
-|[Azure 事件中樞](event-hubs-output.md)|是|存取金鑰|
+|[Azure 事件中樞](event-hubs-output.md)|是，需要在輸出設定中設定分割區索引鍵資料行。|存取金鑰|
 |[Power BI](power-bi-output.md)|否|Azure Active Directory 使用者 </br> MSI|
 |[Azure 資料表儲存體](table-storage-output.md)|是|帳戶金鑰|
 |[Azure 服務匯流排佇列](service-bus-queues-output.md)|是|存取金鑰|
@@ -41,7 +41,7 @@ Azure 串流分析作業是由輸入、查詢及輸出所組成。 有數種輸�
 
 串流分析支援所有輸出的磁碟分割，但 Power BI 除外。 如需資料分割索引鍵和輸出寫入器數目的詳細資訊，請參閱您感興趣之特定輸出類型的相關文章。 在上一節中會連結所有輸出文章。  
 
-您可以使用 (查看查詢中的) 子句來控制輸出寫入器的數目 `INTO <partition count>` ，這有助於 [達成](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics#into-shard-count) 所需的作業拓撲。 如果您的輸出介面卡未分割，則在某個輸入分割區中缺少資料會導致延遲延遲到延遲的時間。 在這種情況下，輸出會合併為單一寫入器，這可能會在您的管線中產生瓶頸。 若要深入了解延遲傳入原則，請參閱 [Azure 串流分析事件的順序考量](stream-analytics-out-of-order-and-late-events.md)。
+此外，若要更先進地微調分割區，可以使用 (查看查詢中的) 子句來控制輸出寫入器的數目 `INTO <partition count>` ，這有助於 [達成](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics#into-shard-count) 所需的作業拓撲。 如果您的輸出介面卡未分割，則在某個輸入分割區中缺少資料會導致延遲延遲到延遲的時間。 在這種情況下，輸出會合併為單一寫入器，這可能會在您的管線中產生瓶頸。 若要深入了解延遲傳入原則，請參閱 [Azure 串流分析事件的順序考量](stream-analytics-out-of-order-and-late-events.md)。
 
 ## <a name="output-batch-size"></a>輸出批次大小
 

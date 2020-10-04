@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 06/17/2020
-ms.openlocfilehash: 7b42c12499977b5f7bc1704c57904e90be2e8466
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 464e75e55bc67ce619134be01ba00f2606a271a4
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91398009"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91709065"
 ---
 # <a name="create-a-consulting-service-offer"></a>建立諮詢服務供應項目
 
@@ -76,10 +76,10 @@ ms.locfileid: "91398009"
 
 以下是一些額外的潛在客戶管理資源：
 
-- [潛在客戶管理概觀](commercial-marketplace-get-customer-leads.md)
-- [潛在客戶管理常見問題](../lead-management-for-cloud-marketplace.md#frequently-asked-questions)) 
-- [常見的潛在客戶設定錯誤](../lead-management-for-cloud-marketplace.md#publishing-config-errors)) 
-- [潛在客戶管理概觀](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF (請確定您已關閉快顯封鎖程式)
+- [來自您的商業市集供應項目的潛在客戶](commercial-marketplace-get-customer-leads.md)
+- [潛在客戶管理的常見問題](../lead-management-faq.md#common-questions-about-lead-management)
+- [針對潛在客戶設定錯誤進行疑難排解](../lead-management-faq.md#publishing-config-errors)
+- [潛在客戶管理概觀](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF (請確定您已關閉快顯封鎖程式)。
 
 選取 [儲存草稿] 後再繼續。
 
@@ -102,7 +102,7 @@ ms.locfileid: "91398009"
     - 應用程式現代化
     - 封存
     - AI + 機器學習服務
-    - Backup
+    - 備份
     - 巨量資料
     - 資料平台
     - 資料中心管理
@@ -146,7 +146,7 @@ ms.locfileid: "91398009"
 
 <br>以下是供應專案資訊在 Microsoft AppSource 中的顯示方式範例 (任何列出的價格僅供範例用途，不適合反映實際成本) ：
 
-:::image type="content" source="media/example-consulting-service-offer-appsource.png" alt-text="說明這項供應專案在 Microsoft AppSource 中的顯示方式。":::
+:::image type="content" source="media/example-consulting-service-offer-appsource.png" alt-text="說明這項供應專案在 Azure Marketplace 中的顯示方式。":::
 
 #### <a name="call-out-descriptions"></a>撥出描述
 
@@ -202,7 +202,7 @@ ms.locfileid: "91398009"
 
 提供要與您的供應項目搭配使用的標誌和影像。 所有影像都必須是 .png 格式。 模糊影像會被拒絕。
 
-[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+[!INCLUDE [logo tips](../includes/graphics-suggestions.md)]
 
 >[!Note]
 >如果您在上傳檔案時遇到問題，請確定您的區域網路不會封鎖合作夥伴中心所使用的 https://upload.xboxlive.com 服務。
@@ -247,7 +247,7 @@ ms.locfileid: "91398009"
 
 完成供應項目的所有必要區段之後，您可以提交供應項目來進行檢閱和發佈。
 
-1. 當您準備好發佈諮詢服務供應項目時，請按一下 [檢閱與發佈]。
+1. 當您準備好發佈諮詢服務供應專案時，請選取 [ **審核併發布**]。
 2. 請檢閱最終提交頁面的詳細資料。
 3. 必要時，如果您認為您的供應項目有任何詳細資料需要說明，請寫下備註給認證小組。
 4. 當您準備好時，請選取 [提交]。

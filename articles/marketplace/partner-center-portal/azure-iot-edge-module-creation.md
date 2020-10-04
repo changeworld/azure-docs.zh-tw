@@ -7,12 +7,12 @@ ms.topic: how-to
 author: keferna
 ms.author: keferna
 ms.date: 08/07/2020
-ms.openlocfilehash: dc1e8bfa9b747b9933762af1b6a5b59cf8cd98de
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 5b823b0429feffa87a05faadc78574287bc9b4a4
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815771"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708334"
 ---
 # <a name="create-an-iot-edge-module-offer"></a>建立 IoT Edge 模組供應項目
 
@@ -78,9 +78,9 @@ ms.locfileid: "88815771"
 
 以下是一些額外的潛在客戶管理資源：
 
-- [潛在客戶管理概觀](commercial-marketplace-get-customer-leads.md)
-- [潛在客戶管理常見問題](../lead-management-for-cloud-marketplace.md#frequently-asked-questions)) 
-- [常見的潛在客戶設定錯誤](../lead-management-for-cloud-marketplace.md#publishing-config-errors)) 
+- [來自您的商業市集供應項目的潛在客戶](commercial-marketplace-get-customer-leads.md)
+- [潛在客戶管理的常見問題](../lead-management-faq.md#common-questions-about-lead-management)
+- [針對潛在客戶設定錯誤進行疑難排解](../lead-management-faq.md#publishing-config-errors)
 - [潛在客戶管理概觀](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF (請確定您已關閉快顯封鎖程式)。
 
 選取 [儲存草稿] 後再繼續。
@@ -194,7 +194,7 @@ IoT Edge 模組供應項目必須在描述的底部包含最低硬體需求段�
 
 提供要與您供應項目搭配使用的標誌和映像。 所有影像都必須採用 PNG 格式。 模糊映像將會遭到拒絕。
 
-[!INCLUDE [logostips](../includes/graphics-suggestions.md)]
+[!INCLUDE [logo tips](../includes/graphics-suggestions.md)]
 
 >[!Note]
 >如果您在上傳檔案時遇到問題，請確定您的區域網路不會封鎖合作夥伴中心所使用的 https://upload.xboxlive.com 服務。
@@ -237,12 +237,12 @@ IoT Edge 模組供應項目必須在描述的底部包含最低硬體需求段�
 6. 名稱
 7. 摘要
 8. 描述
-9. 實用的連結
+9. 實用連結
 10. 螢幕擷取畫面/影片
 
 <br>以下範例說明如何在 Azure Marketplace 搜尋結果中顯示供應專案資訊：
 
-:::image type="content" source="media/example-iot-azure-marketplace-offer-search-results.png" alt-text="說明這項供應專案在 Azure Marketplace 搜尋結果中的顯示方式。":::
+:::image type="content" source="media/example-iot-azure-marketplace-offer-search-results.png" alt-text="說明這項供應專案在 Azure Marketplace 中的顯示方式。":::
 
 #### <a name="call-out-descriptions"></a>撥出描述
 
@@ -252,18 +252,18 @@ IoT Edge 模組供應項目必須在描述的底部包含最低硬體需求段�
 
 <br>以下是供應專案資訊出現在 Azure 入口網站中的範例：
 
-:::image type="content" source="media/example-iot-azure-portal-offer.png" alt-text="說明這項供應專案如何出現在 Azure 入口網站中。":::
+:::image type="content" source="media/example-iot-azure-portal-offer.png" alt-text="說明這項供應專案在 Azure Marketplace 中的顯示方式。":::
 
 #### <a name="call-out-descriptions"></a>撥出描述
 
 1. 名稱
 2. 描述
-3. 實用的連結
+3. 實用連結
 4. 螢幕擷取畫面
 
 <br>以下是如何在 Azure 入口網站搜尋結果中顯示供應專案資訊的範例：
 
-:::image type="content" source="media/example-iot-azure-portal-offer-search-results.png" alt-text="說明這項供應專案如何顯示在 Azure 入口網站搜尋結果中。":::
+:::image type="content" source="media/example-iot-azure-portal-offer-search-results.png" alt-text="說明這項供應專案在 Azure Marketplace 中的顯示方式。":::
 
 #### <a name="call-out-descriptions"></a>撥出描述
 
@@ -362,7 +362,7 @@ Azure Government 服務會處理受限於特定政府法規和需求的資料。
 
 以下是 Azure Marketplace 方案詳細資料的範例 (任何列出的價格僅供範例用途，不適合反映實際成本) ：
 
-:::image type="content" source="media/example-iot-azure-marketplace-plan.png" alt-text="說明 Azure Marketplace 計畫詳細資料。":::
+:::image type="content" source="media/example-iot-azure-marketplace-plan.png" alt-text="說明這項供應專案在 Azure Marketplace 中的顯示方式。":::
 
 #### <a name="call-out-descriptions"></a>撥出描述
 
@@ -372,7 +372,7 @@ Azure Government 服務會處理受限於特定政府法規和需求的資料。
 
 <br>以下是 Azure 入口網站方案詳細資料的範例 (任何列出的價格僅供範例用途，不適合反映實際成本) ：
 
-:::image type="content" source="media/example-iot-azure-marketplace-plan-details.png" alt-text="說明 Azure 入口網站計畫詳細資料。":::
+:::image type="content" source="media/example-iot-azure-marketplace-plan-details.png" alt-text="說明這項供應專案在 Azure Marketplace 中的顯示方式。":::
 
 #### <a name="call-out-descriptions"></a>撥出描述
 
@@ -393,7 +393,7 @@ Azure Government 服務會處理受限於特定政府法規和需求的資料。
 
 ## <a name="technical-configuration"></a>技術設定
 
-**IoT Edge 模組**供應項目類型是一種在 IoT Edge 裝置上執行的特定類型容器。 在 [技術設定] 索引標籤上，您將會在 [Azure Container Registry](https://azure.microsoft.com/services/container-registry/) 內提供容器映射存放庫的參考資訊，以及讓客戶可輕鬆使用模組的組態設定。
+**IoT Edge 模組**供應項目類型是一種在 IoT Edge 裝置上執行的特定類型容器。 在 [ **技術** 設定] 索引標籤中，您將會在 [Azure Container Registry](https://azure.microsoft.com/services/container-registry/)內提供容器映射存放庫的參考資訊，以及可讓客戶輕鬆使用模組的設定。
 
 發佈供應項目之後，您的 IoT Edge 容器映射會複製到 Azure Marketplace 的特定公用容器登錄中。 來自 Azure 使用者的所有使用模組要求，都是從 Azure Marketplace 公用容器登錄 (而不是您的私人容器登錄) 提供。
 
@@ -413,7 +413,7 @@ Azure Government 服務會處理受限於特定政府法規和需求的資料。
 
 **Azure Container Registry**的系統管理員使用者名稱：提供與擁有容器映射 Azure Container Registry 相關聯的系統 [管理員使用者名稱](../../container-registry/container-registry-authentication.md#admin-account)) 。 需要使用者名稱和密碼，以確保貴公司有權存取登錄。 若要取得管理使用者名稱和密碼，請使用 Azure 命令列介面 (CLI)，將 **admin-enabled** 屬性設定為 **True**。 您可以選擇性地將 Azure 入口網站中的 [管理使用者] 設定為 [啟用]。
 
-:::image type="content" source="media/example-iot-update-container-registry.png" alt-text="說明 [更新容器登錄] 對話方塊。":::
+:::image type="content" source="media/example-iot-update-container-registry.png" alt-text="說明這項供應專案在 Azure Marketplace 中的顯示方式。":::
 
 #### <a name="call-out-description"></a>撥出描述
 
@@ -421,7 +421,7 @@ Azure Government 服務會處理受限於特定政府法規和需求的資料。
 
 <br>**Azure Container Registry 的密碼**：提供與 Azure Container Registry 相關聯且擁有您容器映像之管理使用者名稱的密碼。 需要使用者名稱和密碼，以確保貴公司有權存取登錄。 若要取得 Azure 入口網站的密碼，請前往 [容器登錄] > [存取金鑰]，或是使用 Azure CLI 的 [show 命令](https://docs.microsoft.com/cli/azure/acr/credential?view=azure-cli-latest#az-acr-credential-show)。
 
-:::image type="content" source="media/example-iot-access-keys.png" alt-text="說明 Azure 入口網站中的 [存取金鑰] 畫面。":::
+:::image type="content" source="media/example-iot-access-keys.png" alt-text="說明這項供應專案在 Azure Marketplace 中的顯示方式。":::
 
 #### <a name="call-out-descriptions"></a>撥出描述
 
@@ -429,7 +429,7 @@ Azure Government 服務會處理受限於特定政府法規和需求的資料。
 2. 使用者名稱
 3. 密碼
 
-**Azure Container Registry 內的存放庫名稱**。 提供具有您映像的 Azure Container Registry 存放庫名稱。 當您將映像推送至登錄時，可以指定存放庫的名稱。 您可以前往[容器登錄](https://azure.microsoft.com/services/container-registry/) > [存放庫] 頁面來尋找儲存機制的名稱。 如需詳細資訊，請參閱[檢視 Azure 入口網站中的容器登錄存放庫](../../container-registry/container-registry-repositories.md)。 請注意，設定名稱之後，即無法變更。 請為您帳戶中的每個供應項目使用唯一的名稱。
+**Azure Container Registry 內的存放庫名稱**。 提供具有您映像的 Azure Container Registry 存放庫名稱。 當您將映像推送至登錄時，可以指定存放庫的名稱。 您可以前往[容器登錄](https://azure.microsoft.com/services/container-registry/) > [存放庫] 頁面來尋找儲存機制的名稱。 如需詳細資訊，請參閱[檢視 Azure 入口網站中的容器登錄存放庫](../../container-registry/container-registry-repositories.md)。 設定名稱之後，即無法變更。 請為您帳戶中的每個供應項目使用唯一的名稱。
 
 ### <a name="image-tags-for-new-versions-of-your-offer"></a>供應項目新版本的映像標籤
 
@@ -466,7 +466,7 @@ Azure Government 服務會處理受限於特定政府法規和需求的資料。
 - 第 1 個名稱：ACCEPT_EULA
 - 第 1 個值：Y
 
-**預設容器建立選項**。 容器建立選項會引導建立 IoT Edge 模組 Docker 容器。 IoT Edge 支援 Docker 引擎 API 建立容器選項。 請參閱[列出容器](https://docs.docker.com/engine/api/v1.30/#operation/ContainerList)中的所有選項。 建立選項欄位必須是有效的 JSON、非逸出且小於 512 個字元。
+**預設容器建立選項**。 容器建立選項會引導建立 IoT Edge 模組 Docker 容器。 IoT Edge 支援 Docker 引擎 API 建立容器選項。 請參閱[列出容器](https://docs.docker.com/engine/api/v1.30/#operation/ContainerList)中的所有選項。 [建立選項] 欄位必須是有效的 JSON、未經過轉義和少於512個字元。
 
 例如，如果模組需要連接埠繫結，請定義下列建立選項：
 

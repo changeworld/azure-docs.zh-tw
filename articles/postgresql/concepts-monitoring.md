@@ -1,17 +1,17 @@
 ---
 title: 監視和調整 - 適用於 PostgreSQL 的 Azure 資料庫 - 單一伺服器
 description: 本文說明適用於 PostgreSQL 的 Azure 資料庫單一伺服器中的監視和微調功能。
-author: rachel-msft
-ms.author: raagyema
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/10/2020
-ms.openlocfilehash: 2f57d20df6adbb7c1a0c73958cc10035126e29b8
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 4fd16e9dcf9f0b75b48311adf3e9282adbce2a25
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91530981"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708708"
 ---
 # <a name="monitor-and-tune-azure-database-for-postgresql---single-server"></a>監視和調整「適用於 PostgreSQL 的 Azure 資料庫 - 單一伺服器」
 監視伺服器的相關資料，可協助您疑難排解並最佳化您的工作負載。 「適用於 PostgreSQL 的 Azure 資料庫」提供各種監視選項，可讓您深入了解伺服器的行為。
@@ -22,7 +22,7 @@ ms.locfileid: "91530981"
 ### <a name="list-of-metrics"></a>計量清單
 這些計量可供適用於 PostgreSQL 的 Azure 資料庫使用：
 
-|計量|計量顯示名稱|單位|說明|
+|計量|計量顯示名稱|單位|描述|
 |---|---|---|---|
 |cpu_percent|CPU 百分比|百分比|使用中的 CPU 百分比。|
 |memory_percent|記憶體百分比|百分比|使用中記憶體的百分比。|

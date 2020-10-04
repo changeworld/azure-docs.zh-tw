@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: a149d147b9817d8fde7a4fa7eb1b0e7a7eea8283
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: ca60c44d1e167367e2c138af1e7bfd4ba1a69417
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936609"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710068"
 ---
 # <a name="compute-and-storage-options-in-azure-database-for-postgresql---flexible-server"></a>適用於 PostgreSQL 的 Azure 資料庫-彈性伺服器中的計算和儲存體選項
 
@@ -22,7 +22,7 @@ ms.locfileid: "90936609"
 
 | 資源/層 | **高載** | **一般用途** | **記憶體優化** |
 |:---|:----------|:--------------------|:---------------------|
-| 虛擬核心 | 1, 2 | 4、8、16、32、64 | 4、8、16、32、48、64 |
+| 虛擬核心 | 1, 2 | 2、4、8、16、32、48、64 | 2、4、8、16、32、48、64 |
 | 每個虛擬核心的記憶體 | 變數 | 4 GB | 6.75 到 8 GB |
 | 儲存體大小 | 32 GB 至 16 TB | 32 GB 至 16 TB | 32 GB 至 16 TB |
 | 資料庫備份的保留期限 | 7 至 35 天 | 7 至 35 天 | 7 至 35 天 |
@@ -176,7 +176,7 @@ ms.locfileid: "90936609"
 
 如需最新的定價資訊，請參閱服務的[定價頁面](https://azure.microsoft.com/pricing/details/PostgreSQL/)。 若要查看您所需的設定成本，[Azure 入口網站](https://portal.azure.com/#create/Microsoft.PostgreSQLServer)會根據您選取的選項，在 [定價層]**** 索引標籤中顯示每月成本。 如果您沒有 Azure 訂用帳戶，則可以使用 Azure 價格計算機來取得估計的價格。 在 [Azure 價格計算機](https://azure.microsoft.com/pricing/calculator/)網站上，選取 [新增項目]**** 展開 [資料庫]**** 類別，然後選擇 [適用於 PostgreSQL 的 Azure 資料庫]**** 以自訂選項。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 瞭解如何 [在入口網站中建立于 postgresql 伺服器](how-to-manage-server-portal.md)。
 - 了解[服務限制](concepts-limits.md)。

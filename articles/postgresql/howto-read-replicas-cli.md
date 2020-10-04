@@ -1,18 +1,18 @@
 ---
 title: 管理讀取複本-Azure CLI、REST API 適用於 PostgreSQL 的 Azure 資料庫-單一伺服器
 description: 瞭解如何從 Azure CLI 和 REST API 管理適用於 PostgreSQL 的 Azure 資料庫單一伺服器中的讀取複本
-author: rachel-msft
-ms.author: raagyema
+author: sr-msft
+ms.author: srranga
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 07/10/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 732db7fb9eaebb437dea60f98d6c85c855d1b109
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 20bedf7e48b2e40cd67e33ea024a3ae0a9d305a6
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91541589"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91707535"
 ---
 # <a name="create-and-manage-read-replicas-from-the-azure-cli-rest-api"></a>從 Azure CLI 建立及管理讀取複本，REST API
 
@@ -32,7 +32,7 @@ ms.locfileid: "91541589"
 ## <a name="azure-cli"></a>Azure CLI
 您可以使用 Azure CLI 來建立及管理讀取複本。
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>Prerequisites
 
 - [安裝 Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 - [適用於 PostgreSQL 的 Azure 資料庫伺服器](quickstart-create-server-up-azure-cli.md)作為主伺服器。
@@ -65,7 +65,7 @@ ms.locfileid: "91541589"
 | 設定 | 範例值 | 描述  |
 | --- | --- | --- |
 | resource-group | myresourcegroup |  將在其中建立複本伺服器的資源群組。  |
-| NAME | mydemoserver-複本 | 所建立的新複本伺服器名稱。 |
+| name | mydemoserver-複本 | 所建立的新複本伺服器名稱。 |
 | source-server | mydemoserver | 要從中複寫之現有主伺服器的名稱或資源識別碼。 如果您希望複本和 master 的資源群組不同，請使用資源識別碼。 |
 
 在以下的 CLI 範例中，會在與主伺服器相同的區域中建立複本。

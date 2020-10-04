@@ -4,14 +4,14 @@ description: Azure 監視器計量警示和可能解決方案的常見問題。
 author: harelbr
 ms.author: harelbr
 ms.topic: troubleshooting
-ms.date: 09/14/2020
+ms.date: 10/04/2020
 ms.subservice: alerts
-ms.openlocfilehash: f9003aa7b9b2c28e443485484ccd4eb50fa6e0dd
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1280529aa758194dbd02196d71a715310431a73b
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91294220"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710289"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>針對 Azure 監視器計量警示中的問題進行疑難排解 
 
@@ -75,6 +75,9 @@ ms.locfileid: "91294220"
     
 > [!NOTE] 
 > 如果您已將來賓計量設定為傳送至 Log Analytics 工作區，計量會出現在 Log Analytics 工作區資源下，而且只會在建立監視這些計量的警示規則之後， **才** 會開始顯示資料。 若要這麼做，請遵循步驟來[設定記錄的計量警示](./alerts-metric-logs.md#configuring-metric-alert-for-logs)。
+
+> [!NOTE] 
+> 目前的計量警示不支援監視多部虛擬機器的來賓計量（具有單一警示規則）。 您可以使用 [記錄警示規則](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log)來達成此目的。 若要這樣做，請確定系統會將來賓計量收集到 Log Analytics 工作區，並在工作區上建立記錄警示規則。
 
 ## <a name="cant-find-the-metric-to-alert-on"></a>找不到要警示的度量
 
@@ -252,6 +255,12 @@ ms.locfileid: "91294220"
     - 我想要更新第一個條件，只監視**ApiName**維度等於 *"GetBlob"* 的交易
     - 由於**交易**和**successe2elatency 時間**計量都支援**ApiName**維度，因此我必須同時更新這兩個條件，而且兩者都必須使用 *"GetBlob"* 值來指定**ApiName**維度。
 
+## <a name="setting-the-alert-rules-period-and-frequency"></a>設定警示規則的期間和頻率
+
+我們建議您選擇大於*評估頻率*的*匯總資料細微性 (期間) * ，以降低在下列情況下遺漏新增時間序列第一次評估的可能性：
+-   監視多個維度的度量警示規則-新增維度值組合時
+-   監視多個資源的計量警示規則-將新資源新增至範圍時
+-   計量警示規則，可監視未持續發出 (稀疏計量) 的計量–當計量在一段時間超過24小時未發出時發出時
 
 ## <a name="next-steps"></a>後續步驟
 

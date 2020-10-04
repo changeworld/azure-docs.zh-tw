@@ -9,12 +9,12 @@ ms.subservice: spot
 ms.date: 03/25/2020
 ms.reviewer: jagaveer
 ms.custom: jagaveer, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: b5888000028ba87d503bb0bc690aad6628a51a37
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 61f82cf907ef861307a907f6cd2b9b13f043b9a0
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89072735"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91709038"
 ---
 # <a name="azure-spot-vms-for-virtual-machine-scale-sets"></a>適用于虛擬機器擴展集的 Azure 位置 Vm 
 
@@ -163,8 +163,7 @@ $vmssConfig = New-AzVmssConfig `
 
 **問：**  自動調整是否適用于收回原則， (解除配置和刪除) ？
 
-**答：** 建議您在使用自動調整時，將收回原則設定為 [刪除]。 這是因為解除配置執行個體是按照擴展集的容量計數進行計算。 使用自動調整時，由於已解除配置收回的執行個體，可能會很快達到目標執行個體計數。 
-
+**答：** 建議您在使用自動調整時，將收回原則設定為 [刪除]。 這是因為解除配置執行個體是按照擴展集的容量計數進行計算。 使用自動調整時，由於已解除配置收回的執行個體，可能會很快達到目標執行個體計數。 此外，您的調整作業可能會受到點收回的影響。 例如，VMSS 實例可能落在設定的最小計數，因為在調整作業期間有多個點收回。 
 
 **問：** 哪些通道支援現成的 Vm？
 
@@ -177,9 +176,9 @@ $vmssConfig = New-AzVmssConfig `
 | Enterprise 合約         | 是                               |
 | 隨用隨付                | 是                               |
 | 雲端服務提供者 (CSP) | [洽詢您的合作夥伴](/partner-center/azure-plan-get-started) |
-| 優點                     | 無法使用                     |
+| 優點                     | 尚未提供                     |
 | 贊助                    | 是                               |
-| 免費試用                   | 無法使用                     |
+| 免費試用                   | 尚未提供                     |
 
 
 **問：** 我可以在哪裡張貼問題？

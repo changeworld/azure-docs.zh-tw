@@ -6,33 +6,33 @@ ms.author: sngun
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
-ms.openlocfilehash: 4507b3f3338dccbf51f7342081997549e62f13fe
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: bd0ec4cf085fb19c89c6be48d4f4534383560fd5
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290075"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91707773"
 ---
 # <a name="azure-cosmos-db-nosql-migration-and-application-development-partners"></a>Azure Cosmos DB NoSQL 移轉和應用程式開發合作夥伴
 
-要從 NoSQL 移轉到應用程式開發，您有各式各樣資深的系統整合者合作夥伴和工具可以選擇，以支援您 Azure Cosmos DB 的解決方案。 
+要從 NoSQL 移轉到應用程式開發，您有各式各樣資深的系統整合者合作夥伴和工具可以選擇，以支援您 Azure Cosmos DB 的解決方案。 本文列出使用 Azure Cosmos DB 的解決方案或服務的合作夥伴。 這份清單會隨著時間而改變，Microsoft 對於這些合作夥伴的解決方案所做的任何變更或更新，概不負責。
 
-## <a name="systems-integrator-partners"></a>系統整合者合作夥伴
+## <a name="systems-integrator-and-tooling-partners"></a>系統整合者和工具合作夥伴
 
-|**搭檔**  |**功能和體驗**  |**支援的國家/區域**  |
+|**合作夥伴**  |**功能和體驗**  |**支援的國家/區域**  |
 |---------|---------|---------|
-|[Striim](https://www.striim.com/)    |  連續的即時資料移動，資料移轉|   USA   |
-| [10thMagnitude](https://www.10thmagnitude.com/) | IoT，零售（清查），操作分析（Spark），無伺服器架構，應用程式開發 | USA |
-|[Altoros 開發 LLC](https://www.altoros.com/)  |  IoT，個人化零售（清查），無伺服器架構 NoSQL 遷移，應用程式開發|   USA |
-|[Avanade](https://www.avanade.com/) | IoT，零售（清查），無伺服器架構，應用程式開發 | 奧地利、德國、瑞士、義大利、挪威、西班牙、英國、加拿大 |
-|[Accenture](https://www.accenture.com/) | IoT，零售（清查），無伺服器架構，應用程式開發 |全域|
-|[Capax Global LLC](https://www.capaxglobal.com/) | IoT，個人化，零售（清查），操作分析（Spark），無伺服器架構，應用程式開發|    USA     |  
-| [Capgemini](https://www.capgemini.com/) | 零售（清查），IoT，操作分析（Spark），應用程式開發 | 美國、法國、英國、荷蘭、芬蘭  |
-| [Cognizant](https://www.cognizant.com/) | IoT，個人化，零售（清查），營運分析（Spark），應用程式開發 |美國、加拿大、英國、丹麥、荷蘭、瑞士、澳大利亞、日本 |
+|[Striim](https://www.striim.com/)    |  持續、即時的資料移動、資料移轉|   USA   |
+| [10thMagnitude](https://www.10thmagnitude.com/) | IoT，零售 (清查) ，作業分析 (Spark) 、無伺服器架構、應用程式開發 | USA |
+|[Altoros 開發 LLC](https://www.altoros.com/)  |  IoT、個人化零售 (清查) 、無伺服器架構 NoSQL 遷移、應用程式開發|   USA |
+|[Avanade](https://www.avanade.com/) | IoT，零售 (清查) ，無伺服器架構，應用程式開發 | 奧地利、德國、瑞士、義大利、挪威、西班牙、英國、加拿大 |
+|[Accenture](https://www.accenture.com/) | IoT，零售 (清查) ，無伺服器架構，應用程式開發 |全球|
+|[Capax Global LLC](https://www.capaxglobal.com/) | IoT、個人化、零售 (清查) 、營運分析 (Spark) 、無伺服器架構、應用程式開發|    USA     |  
+| [Capgemini](https://www.capgemini.com/) | 零售 (清查) 、IoT、營運分析 (Spark) 、應用程式開發 | 美國、法國、英國、荷蘭、芬蘭  |
+| [Cognizant](https://www.cognizant.com/) | IoT、個人化、零售 (清查) 、營運分析 (Spark) 、應用程式開發 |美國、加拿大、英國、丹麥、荷蘭、瑞士、澳大利亞、日本 |
 |[Infosys](https://www.infosys.com/)     | 應用程式開發      |    USA    |  
-| [Lagash 系統](https://www.lagash.com/) | IoT，無伺服器架構，應用程式開發 | 阿根廷、智利、哥倫比亞、墨西哥|
-| [Lambda3 Informatics](https://www.lambda3.com.br/) | 即時個人化，零售庫存，應用程式開發 | 巴西|
-|[Neal Analytics](https://www.nealanalytics.com/)    |     個人化，零售（清查），作業分析（Spark），應用程式開發  |    USA     |  
+| [Lagash 系統](https://www.lagash.com/) | IoT、無伺服器架構、應用程式開發 | 阿根廷、智利、哥倫比亞、墨西哥|
+| [Lambda3 Informatics](https://www.lambda3.com.br/) | 即時個人化、零售清查、應用程式開發 | 巴西|
+|[Neal Analytics](https://www.nealanalytics.com/)    |     個人化、零售 (清查) 、營運分析 (Spark) 、應用程式開發  |    USA     |  
 |[Pragmatic Works Software Inc](https://www.pragmaticworks.com/)    |   NoSQL 移轉      |   USA      |
 | [Ricoh 數位服務](https://www.ricoh.com/) | IoT，即時個人化，零售清查，NoSQL 遷移 | 英國  |
 |[SNP Technologies](https://www.snp.com/) | NoSQL 移轉| USA |
@@ -40,13 +40,13 @@ ms.locfileid: "87290075"
 | [西班牙文點技術](https://www.spanishpoint.ie/) | NoSQL 移轉| 愛爾蘭|
 | [Syone](https://www.syone.com/) | NoSQL 移轉| 葡萄牙|
 |[Tallan](https://www.tallan.com/)    |  應用程式開發      |    USA     |
-| [TCS](https://www.tcs.com/) | 應用程式開發 | 美國、英國、法國、馬來西亞、丹麥、挪威、瑞典|
-|[VTeamLabs](https://www.vteamlabs.com/)    | 個人化，零售（清查），IoT，遊戲，操作分析（Spark），無伺服器架構，NoSQL 遷移，應用程式開發       |  USA      |  
-| [白色 GmbH](https://whiteducksoftware.com/) |新的應用程式開發、應用程式後端、以檔為基礎的資料儲存體| 德國 |
+| [Tcs](https://www.tcs.com/) | 應用程式開發 | 美國、英國、法國、馬來西亞、丹麥、挪威、瑞典|
+|[VTeamLabs](https://www.vteamlabs.com/)    | 個人化、零售 (清查) 、IoT、遊戲、營運分析 (Spark) 、無伺服器架構、NoSQL 遷移、應用程式開發       |  USA      |  
+| [白色的 GmbH](https://whiteducksoftware.com/) |新的應用程式開發、應用程式後端、以檔為基礎的資料儲存體| 德國 |
 | [Xpand IT](https://www.xpand-it.com/) | 新的應用程式開發 | 葡萄牙、英國|
 | [Hanu](https://hanu.com/) | IoT，應用程式開發 | USA|
-| [Incycle 軟體](https://www.incyclesoftware.com/) | NoSQL 遷移，無伺服器架構，應用程式開發| USA|
-| [Orion](https://www.orioninc.com/) | 個人化，零售（清查），操作分析（Spark），IoT，應用程式開發| 美國、加拿大|
+| [Incycle 軟體](https://www.incyclesoftware.com/) | NoSQL 遷移、無伺服器架構、應用程式開發| USA|
+| [獵戶座](https://www.orioninc.com/) | 個人化、零售 (清查) 、營運分析 (Spark) 、IoT、應用程式開發| 美國、加拿大|
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/05/2016
 ms.author: matd
-ms.openlocfilehash: 397dac67ea94db22829080a65dfae857bb3706dd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a35b4e398757cb3d4b17e4fd6a5e342fe3c82918
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87036925"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710374"
 ---
 # <a name="storsimple-as-a-backup-target-with-backup-exec"></a>使用 StorSimple 做為 Backup Exec 的備份目標
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 Azure StorSimple 是 Microsoft 提供的混合式雲端儲存體解決方案。 StorSimple 使用 Azure 儲存體帳戶做為內部部署解決方案的擴充功能，跨內部部署儲存體和雲端儲存體自動將資料分層，解決資料暴增的複雜性問題。
 
@@ -102,7 +102,7 @@ StorSimple 提供下列優點︰
 | 備份案例  | 本機儲存體容量  | 雲端儲存體容量  |
 |---|---|---|
 | 主要備份  | 最近的備份會儲存在本機儲存體供快速復原，以符合復原點目標 (RPO) | 備份歷程記錄 (RPO) 可放入雲端容量 |
-| 次要備份 | 備份資料的次要複本可儲存在雲端容量  | 不適用  |
+| 次要備份 | 備份資料的次要複本可儲存在雲端容量  | N/A  |
 
 ## <a name="storsimple-as-a-primary-backup-target"></a>使用 StorSimple 做為主要備份目標
 
@@ -233,7 +233,7 @@ StorSimple 提供下列優點︰
 -   StorSimple 支援 Backup Exec 完整和增量備份。 建議您不要使用綜合和差異備份。
 -   備份資料檔案最好只包含特定作業的資料。 例如，不允許在不同作業之間附加媒體。
 -   停用作業驗證。 如有必要，應該將驗證安排在最新的備份作業之後進行。 請務必了解這項作業會影響您的備份時間範圍。
--   選取 [**儲存體**] [磁片] [  >  **Your disk**  >  **詳細資料**]  >  **屬性**。 關閉 [預先配置磁碟空間]****。
+-   選取 [**儲存體**  >  **磁片**  >  **詳細資料**]  >  **屬性**。 關閉 [預先配置磁碟空間]****。
 
 如需實作這些需求的最新 Backup Exec 設定和最佳作法，請參閱 [Veritas 網站](https://www.veritas.com)。
 
@@ -267,7 +267,7 @@ StorSimple 提供下列優點︰
 
 ### <a name="to-set-up-backup-exec-storage"></a>若要設定 Backup Exec 儲存體
 
-1.  在 Backup Exec 管理主控台中，選取**Storage**  >  **Configure Storage**  >  [儲存體] [設定以**磁片為基礎的**儲存體  >  **] [下一步]**。
+1.  在 Backup Exec 管理主控台中，選取 [**存儲**設備  >  **設定儲存體**  >  **磁片型儲存**  >  **]**。
 
     ![Backup Exec 管理主控台，設定儲存體頁面](./media/storsimple-configure-backup-target-using-backup-exec/image4.png)
 
@@ -275,7 +275,7 @@ StorSimple 提供下列優點︰
 
     ![Backup Exec 管理主控台，選取儲存體頁面](./media/storsimple-configure-backup-target-using-backup-exec/image5.png)
 
-3.  輸入一個代表性名稱，例如，「星期六完整」**** 和描述。 選取 [下一步]。
+3.  輸入一個代表性名稱，例如，「星期六完整」**** 和描述。 選取 [下一步]  。
 
     ![Backup Exec 管理主控台，名稱和描述頁面](./media/storsimple-configure-backup-target-using-backup-exec/image7.png)
 
@@ -395,11 +395,11 @@ StorSimple 提供下列優點︰
 
 #### <a name="to-assign-storsimple-volumes-to-a-backup-exec-archive-and-duplication-job"></a>若要將 StorSimple 磁碟區指派給 Backup Exec 封存和重複資料刪除作業
 
-1.  在 Backup Exec 管理主控台中，以滑鼠右鍵按一下您想要封存至 StorSimple 磁片區的作業，然後選取 [**備份定義屬性**] [  >  **編輯**]。
+1.  在 Backup Exec 管理主控台中，以滑鼠右鍵按一下您要封存至 StorSimple 磁片區的作業，然後選取 [**備份定義屬性**  >  **編輯**]。
 
     ![Backup Exec 管理主控台，備份定義屬性索引標籤](./media/storsimple-configure-backup-target-using-backup-exec/image19.png)
 
-2.  選取 [**新增階段**  >  **複製到磁片**] [  >  **編輯**]。
+2.  選取 [**將階段**  >  **複製到磁片**  >  **編輯**]。
 
     ![Backup Exec 管理主控台，新增階段](./media/storsimple-configure-backup-target-using-backup-exec/image20.png)
 
@@ -409,15 +409,15 @@ StorSimple 提供下列優點︰
 
 4.  在 [儲存體]**** 下拉式清單中，選取您想要封存作業以儲存資料的 StorSimple 磁碟區。
 
-    ![Backup Exec 管理主控台，備份定義屬性和複製選項](./media/storsimple-configure-backup-target-using-backup-exec/image22.png)
+    ![顯示您需要選取 [儲存體] 清單的螢幕擷取畫面。](./media/storsimple-configure-backup-target-using-backup-exec/image22.png)
 
 5.  選取 [確認]****，然後選取 [不要驗證這個作業的資料]**** 核取方塊。
 
-    ![Backup Exec 管理主控台，備份定義屬性和複製選項](./media/storsimple-configure-backup-target-using-backup-exec/image23.png)
+    ![顯示您選取 [不要確認此作業的資料] 選項的螢幕擷取畫面。](./media/storsimple-configure-backup-target-using-backup-exec/image23.png)
 
-6.  選取 [確定]。
+6.  選取 [確定]  。
 
-    ![Backup Exec 管理主控台，備份定義屬性和複製選項](./media/storsimple-configure-backup-target-using-backup-exec/image24.png)
+    ![顯示備份定義屬性的螢幕擷取畫面。](./media/storsimple-configure-backup-target-using-backup-exec/image24.png)
 
 7.  在 [Backup (備份)]**** 欄中，新增新的階段。 針對來源，使用 [增量]****。 針對目標，選擇其中封存增量備份作業的 StorSimple 磁碟區。 重複步驟 1 至 6。
 
@@ -472,7 +472,7 @@ StorSimple 雲端快照集可保護位於 StorSimple 裝置中的資料。 建�
 
 各種因素都可能造成災害。 下表列出常見的災害復原案例。
 
-| 案例 | 影響 | 如何復原 | 附註 |
+| 案例 | 影響 | 如何復原 | 注意 |
 |---|---|---|---|
 | StorSimple 裝置故障 | 備份和還原作業會中斷。 | 更換故障的裝置，並執行 [StorSimple 容錯移轉和災害復原](storsimple-device-failover-disaster-recovery.md)。 | 如果您需要在裝置復原後執行還原，則會從雲端擷取完整的使用中資料集到新裝置。 所有作業都會以雲端速度進行。 編製索引及編製目錄的重新掃描程序可能會造成所有備份集都要進行掃描並從雲端層提取到本機裝置層，而這可能會非常耗時。 |
 | Backup Exec 伺服器故障 | 備份和還原作業會中斷。 | 重建備份伺服器，並依[如何執行手動備份和還原 Backup Exec (BEDB) 資料庫 (英文)](http://www.veritas.com/docs/000041083) 中所述執行資料庫還原。 | 您必須在災害復原站台重建或還原 Backup Exec 伺服器。 將資料庫還原到最新的點。 如果還原的 Backup Exec 資料庫沒有與您最新的備份作業同步，就必須編製索引及編製目錄。 重新掃描索引和目錄的程序可能會造成所有備份集都要進行掃描並從雲端層提取到本機裝置層。 這會更耗費時間。 |

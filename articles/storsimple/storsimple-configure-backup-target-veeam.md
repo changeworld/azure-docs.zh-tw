@@ -1,6 +1,6 @@
 ---
 title: StorSimple 8000 系列做為 Veeam 的備份目標 | Microsoft Docs
-description: 瞭解 StorSimple 備份目標設定，其中包含 Veeam 和整合這兩個解決方案的最佳作法。
+description: 深入瞭解 StorSimple 備份目標設定，以及整合這兩種解決方案的 Veeam 和最佳作法。
 services: storsimple
 documentationcenter: ''
 author: harshakirank
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2016
 ms.author: matd
-ms.openlocfilehash: 71a5434d985aad4033e4392dd31e6b7d112692de
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 052859e99ffd0082994d313508ebb6f0496d980b
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88183972"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710340"
 ---
 # <a name="storsimple-as-a-backup-target-with-veeam"></a>使用 StorSimple 做為 Veeam 的備份目標
 
@@ -274,13 +274,13 @@ StorSimple 提供下列優點︰
 
 1.  在 [Veeam 備份和複寫] 主控台的 [儲存機制工具]**** 中，移至 [備份基礎結構]****。 以滑鼠右鍵按一下 [備份儲存裝置]****，然後選取 [新增備份儲存裝置]****。
 
-    ![Veeam 管理主控台，備份儲存機制頁面](./media/storsimple-configure-backup-target-using-veeam/veeamimage1.png)
+    ![顯示 Veeam 管理主控台的螢幕擷取畫面，並反白顯示 [新增備份儲存機制] 選項。](./media/storsimple-configure-backup-target-using-veeam/veeamimage1.png)
 
-2.  在 [新增備份儲存機制]**** 對話方塊中，輸入儲存機制的名稱和描述。 選取 [下一步] 。
+2.  在 [新增備份儲存機制]**** 對話方塊中，輸入儲存機制的名稱和描述。 選取 [下一步]  。
 
     ![Veeam 管理主控台，名稱和描述頁面](./media/storsimple-configure-backup-target-using-veeam/veeamimage2.png)
 
-3.  選取 [Microsoft Windows Server]**** 做為類型。 選取 Veeam 伺服器。 選取 [下一步] 。
+3.  選取 [Microsoft Windows Server]**** 做為類型。 選取 Veeam 伺服器。 選取 [下一步]  。
 
     ![Veeam 管理主控台，選取備份存放庫的類型](./media/storsimple-configure-backup-target-using-veeam/veeamimage3.png)
 
@@ -293,9 +293,9 @@ StorSimple 提供下列優點︰
 
     ![Veeam 管理主控台，存放裝置相容性設定](./media/storsimple-configure-backup-target-using-veeam/veeamimage5.png)
 
-6.  在 [新增備份儲存機制]**** 對話方塊中，選取 [在裝載伺服器上啟用 vPower NFS 服務 (建議)]**** 核取方塊。 選取 [下一步] 。
+6.  在 [新增備份儲存機制]**** 對話方塊中，選取 [在裝載伺服器上啟用 vPower NFS 服務 (建議)]**** 核取方塊。 選取 [下一步]  。
 
-    ![Veeam 管理主控台，備份儲存機制頁面](./media/storsimple-configure-backup-target-using-veeam/veeamimage6.png)
+    ![顯示 Veeam 管理主控台的螢幕擷取畫面，您可以在其中新增新的備份存放庫。](./media/storsimple-configure-backup-target-using-veeam/veeamimage6.png)
 
 7.  檢閱設定，然後選取 [下一步]****。
 
@@ -335,11 +335,11 @@ StorSimple 提供下列優點︰
 
 2.  在 [新增備份作業]**** 對話方塊中，輸入每日備份作業的名稱和描述。
 
-    ![Veeam 管理主控台，新增備份作業頁面](./media/storsimple-configure-backup-target-using-veeam/veeamimage9.png)
+    ![Veeam 管理主控台的螢幕擷取畫面，您可以在其中新增名稱和描述。](./media/storsimple-configure-backup-target-using-veeam/veeamimage9.png)
 
 3.  選取要備份到哪個虛擬機器。
 
-    ![Veeam 管理主控台，新增備份作業頁面](./media/storsimple-configure-backup-target-using-veeam/veeamimage10.png)
+    ![顯示您選取虛擬機器之 Veeam 管理主控台的螢幕擷取畫面。](./media/storsimple-configure-backup-target-using-veeam/veeamimage10.png)
 
 4.  選取您想的 [備份 Proxy]**** 和 [備份儲存機制]**** 值。 根據本機連接儲存體上環境的 RPO 和 RTO 定義，選取 [要保留在磁碟上的還原點]**** 的值。 選取 [進階]  。
 
@@ -347,9 +347,9 @@ StorSimple 提供下列優點︰
 
 5. 在 [進階設定] **** 對話方塊的 [備份]**** 索引標籤上，選取 [增量]****。 確定已清除 [定期建立綜合的完整備份]**** 核取方塊。 選取 [定期建立作用中的完整備份]**** 核取方塊。 在 [作用中的完整備份]**** 之下，針對星期六選取 [每週選取的日期]**** 核取方塊。
 
-    ![Veeam 管理主控台，新增備份作業進階設定頁面](./media/storsimple-configure-backup-target-using-veeam/veeamimage12.png)
+    ![顯示 Veeam 管理主控台的螢幕擷取畫面，特別是 [新增備份作業] 設定頁面](./media/storsimple-configure-backup-target-using-veeam/veeamimage12.png)
 
-6. 在 [儲存體]**** 索引標籤上，確定 [啟用內嵌重複資料刪除]**** 核取方塊。 選取 [排除分頁檔案區塊]**** 核取方塊，然後選取 [排除已刪除的檔案區塊]**** 核取方塊。 將 [壓縮層級]**** 設定為 [無]****。 若要獲得平衡的效能和重複資料刪除，請將 [儲存體最佳化]**** 設定為 [LAN 目標]****。 選取 [確定]。
+6. 在 [儲存體]**** 索引標籤上，確定 [啟用內嵌重複資料刪除]**** 核取方塊。 選取 [排除分頁檔案區塊]**** 核取方塊，然後選取 [排除已刪除的檔案區塊]**** 核取方塊。 將 [壓縮層級]**** 設定為 [無]****。 若要獲得平衡的效能和重複資料刪除，請將 [儲存體最佳化]**** 設定為 [LAN 目標]****。 選取 [確定]  。
 
     ![Veeam 管理主控台，新增備份作業進階設定頁面](./media/storsimple-configure-backup-target-using-veeam/veeamimage13.png)
 
@@ -408,11 +408,11 @@ StorSimple 提供下列優點︰
 
 1.  在 [Veeam 備份和複寫] 主控台中，選取 [備份和複寫]****。 以滑鼠右鍵按一下 [備份]****，然後根據您的環境選取 [VMware]**** 或 [Hyper-V]****。
 
-    ![Veeam 管理主控台，新增備份複製作業頁面](./media/storsimple-configure-backup-target-using-veeam/veeamimage16.png)
+    ![顯示 Veeam 管理主控台的螢幕擷取畫面，其中包含可供您選取的 VMware 和 Hyper-v 選項。](./media/storsimple-configure-backup-target-using-veeam/veeamimage16.png)
 
 2.  在 [新增備份複製作業]**** 對話方塊中，輸入作業的名稱和描述。
 
-    ![Veeam 管理主控台，新增備份複製作業頁面](./media/storsimple-configure-backup-target-using-veeam/veeamimage17.png)
+    ![顯示 Veeam 管理主控台的螢幕擷取畫面，您可以在其中輸入作業的名稱和描述。](./media/storsimple-configure-backup-target-using-veeam/veeamimage17.png)
 
 3.  選取您要處理的 VM。 選取 [從備份]，然後選取您稍早建立的每日備份。
 
@@ -422,13 +422,13 @@ StorSimple 提供下列優點︰
 
 5.  選取您的備份儲存機制，並設定 [要保留的還原點]**** 的值。 務必選取 [保留下列還原點以供封存之用]**** 核取方塊。 定義備份頻率，然後選取 [進階]****。
 
-    ![Veeam 管理主控台，新增備份複製作業頁面](./media/storsimple-configure-backup-target-using-veeam/veeamimage19.png)
+    ![顯示您定義備份頻率之位置的螢幕擷取畫面。](./media/storsimple-configure-backup-target-using-veeam/veeamimage19.png)
 
 6.  指定下列進階設定：
 
     * 在 [維護]**** 索引標籤上，關閉儲存體層級損毀保護。
 
-    ![Veeam 管理主控台，新增備份複製作業進階設定頁面](./media/storsimple-configure-backup-target-using-veeam/veeamimage20.png)
+    ![顯示 Veeam 管理主控台之 [維護] 索引標籤的螢幕擷取畫面。](./media/storsimple-configure-backup-target-using-veeam/veeamimage20.png)
 
     * 在 [儲存體]**** 索引標籤上，確定已關閉重複資料刪除和壓縮。
 
@@ -459,7 +459,7 @@ StorSimple 雲端快照集可保護位於 StorSimple 裝置中的資料。 建�
 
 ![備份生命週期圖表](./media/storsimple-configure-backup-target-using-veeam/backuplifecycle.png)
 
-### <a name="requirements"></a>規格需求
+### <a name="requirements"></a>需求
 
 -   執行指令碼的伺服器必須能夠存取 Azure 雲端資源。
 -   使用者帳戶必須擁有必要的權限。
@@ -488,7 +488,7 @@ StorSimple 雲端快照集可保護位於 StorSimple 裝置中的資料。 建�
 
 - 若為 [Exchange Server](https://www.veeam.com/microsoft-exchange-recovery.html)
 - 若為 [Active Directory](https://www.veeam.com/microsoft-active-directory-explorer.html)
-- 針對[SQL Server](https://www.veeam.com/microsoft-sql-server-explorer.html)
+- 針對 [SQL Server](https://www.veeam.com/microsoft-sql-server-explorer.html)
 - For [SharePoint](https://www.veeam.com/microsoft-sharepoint-recovery-explorer.html)
 - 若為 [Oracle](https://www.veeam.com/oracle-backup-recovery-explorer.html)
 
@@ -500,14 +500,14 @@ StorSimple 雲端快照集可保護位於 StorSimple 裝置中的資料。 建�
 
 各種因素都可能造成災害。 下表列出常見的災害復原案例。
 
-| 狀況 | 影響 | 如何復原 | 備註 |
+| 案例 | 影響 | 如何復原 | 注意 |
 |---|---|---|---|
 | StorSimple 裝置故障 | 備份和還原作業會中斷。 | 更換故障的裝置，並執行 [StorSimple 容錯移轉和災害復原](storsimple-device-failover-disaster-recovery.md)。 | 如果您需要在裝置復原後執行還原，則會從雲端擷取完整的使用中資料集到新裝置。 所有作業都會以雲端速度進行。 索引和目錄重新掃描程序可能會造成所有備份集都要進行掃描並從雲端層提取到本機裝置層，而這可能會非常耗時。 |
-| Veeam 伺服器故障 | 備份和還原作業會中斷。 | 重建備份伺服器，並依照[Veeam 說明中心 (技術檔) ](https://www.veeam.com/documentation-guides-datasheets.html)中的詳細說明來執行資料庫還原。  | 您必須在災害復原站台重建或還原 Veeam 伺服器。 將資料庫還原到最新的點。 如果還原的 Veeam 資料庫沒有與您最新的備份作業同步，就必須編製索引及編製目錄。 重新掃描索引和目錄的程序可能會造成所有備份集都要進行掃描並從雲端層提取到本機裝置層。 這會更耗費時間。 |
+| Veeam 伺服器故障 | 備份和還原作業會中斷。 | 重建備份伺服器，並依照 [Veeam 說明中心 (技術檔) ](https://www.veeam.com/documentation-guides-datasheets.html)中的詳細說明來執行資料庫還原。  | 您必須在災害復原站台重建或還原 Veeam 伺服器。 將資料庫還原到最新的點。 如果還原的 Veeam 資料庫沒有與您最新的備份作業同步，就必須編製索引及編製目錄。 重新掃描索引和目錄的程序可能會造成所有備份集都要進行掃描並從雲端層提取到本機裝置層。 這會更耗費時間。 |
 | 站台故障造成備份伺服器和 StorSimple 都遺失 | 備份和還原作業會中斷。 | 先還原 StorSimple，然後再還原 Veeam。 | 先還原 StorSimple，然後再還原 Veeam。 如果您需要在裝置復原後執行還原，則會從雲端擷取完整的使用中資料集到新裝置。 所有作業都會以雲端速度進行。 |
 
 
-## <a name="references"></a>參考資料
+## <a name="references"></a>參考
 
 本文中參考下列文件︰
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/21/2019
 ms.author: xpouyat
-ms.openlocfilehash: 912f8bdf90e2b45932a73e5bd99190f58cf546a7
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: c82fb9764b29119092bf313b2c10f00c983e8c03
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89265944"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710765"
 ---
 # <a name="licensing-microsoftreg-smooth-streaming-client-porting-kit"></a>授權 Microsoft &reg; Smooth Streaming 用戶端移植套件
 
@@ -32,7 +32,7 @@ Microsoft Smooth Streaming Client Porting Kit (簡稱**SSPK** ) 是最佳化的 
 
 ![SSPK](./media/media-services-sspk/sspk-arch.png)
 
-## <a name="description"></a>說明
+## <a name="description"></a>描述
 SSPK 是根據可提供絕佳商業價值的條款授權。 SSPK 授權提供給業界：
 
 * Smooth Streaming Porting Kit 的 C++ 原始碼 
@@ -116,6 +116,7 @@ Smooth Streaming 用戶端最終產品乃根據權利金模型提供，細節如
 ## <a name="microsoft-smooth-streaming-client-final-product-agreement-licensees"></a>Microsoft Smooth Streaming 用戶端最終產品合約被授權者
 * Advanced Digital Broadcast SA
 * AirTies Kablosuz Iletism Sanayive Dis Ticaret A.S.
+* AmTRAN 技術同事，公司 
 * Arcadyan Technology Corporation
 * Arcelik
 * Compal Electronics, Inc.

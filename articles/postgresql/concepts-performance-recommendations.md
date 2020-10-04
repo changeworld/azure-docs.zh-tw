@@ -1,17 +1,17 @@
 ---
 title: 效能建議-適用於 PostgreSQL 的 Azure 資料庫-單一伺服器
 description: 本文說明適用於 PostgreSQL 的 Azure 資料庫單一伺服器中的效能建議功能。
-author: rachel-msft
-ms.author: raagyema
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: f0ce3843752ebd6ed56281f6699783181b52fdc6
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: d547844671e6485e71be7dd8c355de08f3dec5e6
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90903873"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710561"
 ---
 # <a name="performance-recommendations-in-azure-database-for-postgresql---single-server"></a>適用於 PostgreSQL 的 Azure 資料庫中的效能建議-單一伺服器
 
@@ -33,7 +33,7 @@ ms.locfileid: "90903873"
 
 如果找到任何建議， **建議** 視窗會顯示建議清單。
 
-:::image type="content" source="./media/concepts-performance-recommendations/performance-recommendations-result.png" alt-text="效能建議新頁面":::
+:::image type="content" source="./media/concepts-performance-recommendations/performance-recommendations-result.png" alt-text="[效能建議] 登陸頁面":::
 
 建議不會自動套用。 若要套用建議，請複製查詢文字並從您選擇的用戶端中執行該文字。 請記得進行測試和監視來評估建議。 
 
@@ -49,6 +49,6 @@ ms.locfileid: "90903873"
 
 ## <a name="considerations"></a>考量
 * [讀取複本](concepts-read-replicas.md)無法使用效能建議。
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 - 深入了解在適用於 PostgreSQL 的 Azure 資料庫中進行[監視和微調](concepts-monitoring.md)。
 

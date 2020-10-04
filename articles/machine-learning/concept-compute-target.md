@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
-ms.date: 07/27/2020
-ms.openlocfilehash: 6b166e46c8ebb640e15c005e2ddae3161e141f10
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.date: 09/29/2020
+ms.openlocfilehash: ca23bb49a3592dcc139bcc04875f3867018e158d
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91446784"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91707724"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Azure Machine Learning 中的計算目標是什麼？ 
 
@@ -28,18 +28,31 @@ ms.locfileid: "91446784"
 您用於計算目標的計算資源會附加至 [工作區](concept-workspace.md)。 本機電腦以外的計算資源會由工作區的使用者共用。
 
 ## <a name="training-compute-targets"></a><a name="train"></a> 訓練計算目標
-
-Azure Machine Learning 在不同的計算資源之間有不同的支援。  您也可以附加自己的計算資源，但支援各種案例可能會有所不同。
+Azure Machine Learning 在不同計算目標上提供不同的支援。 一般模型開發生命週期會先開始開發/測試少量的資料。 在這個階段，我們建議使用本機環境。 例如，您的本機電腦或雲端式虛擬機器。 當您在較大的資料集上擴大定型規模或執行分散式定型時，建議您使用 Azure Machine Learning Compute 建立單一或多重節點叢集，在每次提交執行時自動調整。 您也可以附加您自己的計算資源，不過支援的各種情節可能會有所不同，詳述如下：
 
 [!INCLUDE [aml-compute-target-train](../../includes/aml-compute-target-train.md)]
 
-深入瞭解如何 [使用計算目標進行模型定型](how-to-set-up-training-targets.md)。
+深入瞭解如何將 [訓練回合提交至計算目標](how-to-set-up-training-targets.md)。
 
-## <a name="deployment-targets"></a><a name="deploy"></a>部署目標
+## <a name="compute-targets-for-inference"></a><a name="deploy"></a> 推斷的計算目標
 
 您可以使用下列計算資源來裝載您的模型部署。
 
 [!INCLUDE [aml-compute-target-deploy](../../includes/aml-compute-target-deploy.md)]
+
+執行推斷時，Azure Machine Learning 會建立 Docker 容器來裝載模型，以及使用它所需的相關聯資源。 然後，此容器會在下列其中一個部署案例中使用：
+
+* 作為用於即時推斷的 __web 服務__ 。 Web 服務部署會使用下列其中一個計算目標：
+
+    * [本機電腦](how-to-attach-compute-targets.md#local)
+    * [Azure Machine Learning 計算執行個體](how-to-create-manage-compute-instance.md)
+    * [Azure 容器執行個體](how-to-attach-compute-targets.md#aci)
+    * [Azure Kubernetes Service](how-to-create-attach-kubernetes.md)
+    * Azure Functions (preview) 。 部署至 Azure Functions 只依賴 Azure Machine Learning 來建立 Docker 容器。 從該處，它會使用 Azure Functions 來部署。 如需詳細資訊，請參閱 [將機器學習模型部署至 Azure Functions (preview) ](how-to-deploy-functions.md)。
+
+* 作為用來定期處理資料批次的 __批次推斷__ 端點。 批次推斷會使用 [Azure Machine Learning 計算](how-to-create-attach-compute-cluster.md)叢集。
+
+* __IoT 裝置__ (預覽) 。 部署至 IoT 裝置只依賴 Azure Machine Learning 來建立 Docker 容器。 從該處，它會使用 Azure IoT Edge 來部署。 如需詳細資訊，請參閱 [ (preview) 部署為 IoT Edge 模組 ](/azure/iot-edge/tutorial-deploy-machine-learning)。
 
 瞭解 [將模型部署至計算目標的位置和方式](how-to-deploy-and-where.md)。
 
@@ -49,9 +62,10 @@ Azure Machine Learning 在不同的計算資源之間有不同的支援。  您�
 受控計算資源是由 Azure Machine Learning 所建立和管理。 此計算已針對機器學習工作負載進行優化。 Azure Machine Learning 計算叢集和 [計算實例](concept-compute-instance.md) 是唯一的受控計算。 
 
 您可以從下列來源建立 Azure Machine Learning 計算實例或計算叢集：
-* [Azure Machine Learning Studio](how-to-create-attach-compute-studio.md)
-* Azure 入口網站
-* Python SDK [ComputeInstance](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computeinstance%28class%29?view=azure-ml-py&preserve-view=true) 和 [AmlCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute%28class%29?view=azure-ml-py&preserve-view=true) 類別
+* [Azure Machine Learning studio](how-to-create-attach-compute-studio.md)
+* Python SDK 和 CLI：
+    * [計算執行個體](how-to-create-manage-compute-instance.md)
+    * [計算叢集](how-to-create-attach-compute-cluster.md)
 * [R SDK](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-compute-targets) (預覽) 
 * Resource Manager 範本。 如需範例範本，請參閱 [建立 Azure Machine Learning 計算範本](https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-compute-create-amlcompute)。
 * [Azure CLI 的](reference-azure-machine-learning-cli.md#resource-management)機器學習擴充功能。  
@@ -68,7 +82,7 @@ Azure Machine Learning 在不同的計算資源之間有不同的支援。  您�
 
 
 > [!NOTE]
-> 當計算叢集閒置時，它會自動調整至0個節點，所以您不需支付未使用的費用。  不過，計算 *實例*一律為開啟，且不會自動調整。  當您未使用 [計算實例](concept-compute-instance.md#managing-a-compute-instance) 時，應該將其停止，以避免產生額外的成本。 
+> 當計算叢集閒置時，它會自動調整至0個節點，所以您不需支付未使用的費用。  不過，計算 *實例*一律為開啟，且不會自動調整。  當您未使用 [計算實例](how-to-create-manage-compute-instance.md#manage) 時，應該將其停止，以避免產生額外的成本。 
 
 ### <a name="supported-vm-series-and-sizes"></a>支援的 VM 系列和大小
 

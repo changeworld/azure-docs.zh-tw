@@ -1,17 +1,17 @@
 ---
 title: 監視和計量-適用於 PostgreSQL 的 Azure 資料庫彈性的伺服器
 description: 本文說明適用於 PostgreSQL 的 Azure 資料庫彈性的伺服器中的監視和計量功能。
-author: rachel-msft
-ms.author: raagyema
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: b0957219308dfaab2d375fb7c23926a13c745344
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1519e0b5cef6055cf8d8b0aded0d8ad323d548a2
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91314669"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91707841"
 ---
 # <a name="monitor-metrics-on-azure-database-for-postgresql---flexible-server"></a>監視適用於 PostgreSQL 的 Azure 資料庫彈性伺服器上的計量
 
@@ -27,7 +27,7 @@ ms.locfileid: "91314669"
 下列計量適用于于 postgresql 彈性伺服器：
 
 
-|計量|計量顯示名稱|單位|說明|
+|計量|計量顯示名稱|單位|描述|
 |---|---|---|---|
 | active_connections | 作用中的連線 | Count | 您伺服器的連接數目。 | 
 | backup_storage_used | 已使用的備份儲存體 | 位元組 | 使用的備份儲存體數量。 此計量代表所有完整資料庫備份、差異備份和記錄備份所使用的儲存體總和（根據針對伺服器所設定的備份保留期限而定）。 備份的頻率是服務管理的。 針對異地複寫儲存體，備份儲存體使用量會是本機冗余儲存體的兩倍。 |

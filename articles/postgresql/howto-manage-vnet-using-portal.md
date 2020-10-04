@@ -1,17 +1,17 @@
 ---
 title: 使用虛擬網路規則-Azure 入口網站-適用於 PostgreSQL 的 Azure 資料庫-單一伺服器
 description: 使用 Azure 入口網站建立及管理 VNet 服務端點和規則適用於 PostgreSQL 的 Azure 資料庫-單一伺服器
-author: rachel-msft
-ms.author: raagyema
+author: niklarin
+ms.author: nlarin
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 5/6/2019
-ms.openlocfilehash: 87f8c298345bb1d427163758974948bd8a841e2c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 8ff1800bc699a7fb29f64b63a3098225921628df
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90882054"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710833"
 ---
 # <a name="create-and-manage-vnet-service-endpoints-and-vnet-rules-in-azure-database-for-postgresql---single-server-by-using-the-azure-portal"></a>使用 Azure 入口網站在適用於 PostgreSQL 的 Azure 資料庫單一伺服器中建立和管理 VNet 服務端點和 VNet 規則
 虛擬網路 (VNet) 服務端點和規則會將虛擬網路的私人位址空間延伸到您適用於 PostgreSQL 伺服器的 Azure 資料庫。 如需適用於 PostgreSQL 的 Azure 資料庫的 VNet 服務端點概觀 (包含限制)，請參閱[適用於 PostgreSQL 伺服器的 Azure 資料庫的 VNet 服務端點](concepts-data-access-and-security-vnet.md)。 VNet 服務端點在「適用於 PostgreSQL 的 Azure 資料庫」的所有支援區域皆可使用。
@@ -36,13 +36,7 @@ ms.locfileid: "90882054"
 
 4. 輸入 VNet 規則名稱，選取訂用帳戶、虛擬網路和子網路名稱，然後按一下 [啟用]****。 這會使用 **Microsoft.SQL** 服務標籤自動啟用子網路上的 VNet 服務端點。
 
-   :::image type="content" source="./media/howto-manage-vnet-using-portal/2-configure-vnet.png" alt-text="Azure 入口網站 - 設定 VNet":::
-
-    該帳戶必須擁有必要的權限，才能建立虛擬網路和服務端點。
-
-    擁有虛擬網路寫入權的使用者可以任意地在虛擬網路上設定服務端點。
-    
-    若要將 Azure 服務資源放到 VNet 保護，使用者必須擁有所要新增之子網路的 "Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/" 權限。 此權限預設會隨附在內建的服務管理員角色中，可藉由建立自訂角色加以修改。
+   :::image type="content" source="./media/howto-manage-vnet-using-portal/2-configure-vnet.png" alt-text="Azure 入口網站按一下 [連接安全性]" 權限。 此權限預設會隨附在內建的服務管理員角色中，可藉由建立自訂角色加以修改。
     
     深入了解[內建角色](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles)以及如何將特定權限指派給[自訂角色](https://docs.microsoft.com/azure/active-directory/role-based-access-control-custom-roles)。
     
@@ -54,9 +48,9 @@ ms.locfileid: "90882054"
 
 5. 啟用之後，按一下 [確定]****，您將會看到 VNet 服務端點和 VNet 規則一起啟用。
 
-   :::image type="content" source="./media/howto-manage-vnet-using-portal/3-vnet-service-endpoints-enabled-vnet-rule-created.png" alt-text="VNet 服務端點已啟用且 VNet 規則已建立":::
+   :::image type="content" source="./media/howto-manage-vnet-using-portal/3-vnet-service-endpoints-enabled-vnet-rule-created.png" alt-text="Azure 入口網站按一下 [連接安全性]":::
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 - 同樣地，您可以編寫指令碼，以[使用 Azure CLI 啟用 VNet 服務端點及建立適用於 PostgreSQL 的 Azure 資料庫 的 VNET 規則](howto-manage-vnet-using-cli.md)。
 - 如需連線至「適用於 PostgreSQL 的 Azure 資料庫」伺服器的說明，請參閱[「適用於 PostgreSQL 的 Azure 資料庫」的連線庫](./concepts-connection-libraries.md)
 

@@ -1,17 +1,17 @@
 ---
 title: 使用 Advanced 威脅防護-適用於 PostgreSQL 的 Azure 資料庫-單一伺服器
 description: 「威脅保護」會偵測異常資料庫活動，指出資料庫有潛在的安全性威脅。
-author: rachel-msft
-ms.author: raagyema
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 5/6/2019
-ms.openlocfilehash: 25f263a5c9ccdc67f1ab8353e616a6dded0c7f7e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 6aa0a0f798df2fd69d6f69badd0dcbbb92a0cf39
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90901663"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708215"
 ---
 # <a name="advanced-threat-protection-for-azure-database-for-postgresql---single-server"></a>適用於 PostgreSQL 的 Azure 資料庫的 Advanced 威脅防護-單一伺服器
 
@@ -42,15 +42,15 @@ ms.locfileid: "90901663"
     
 1. 按一下電子郵件中的 [檢視最近的警示]**** 連結來啟動 Azure 入口網站，並顯示 Azure 資訊安全中心警示頁面，其中會概述在 SQL 資料庫上偵測到的作用中威脅。
     
-    :::image type="content" source="./media/howto-database-threat-protection-portal/anomalous-activity-report.png" alt-text="異常活動報告":::
+    :::image type="content" source="./media/howto-database-threat-protection-portal/anomalous-activity-report.png" alt-text="設定威脅偵測":::
 
     檢視作用中的威脅：
 
-    :::image type="content" source="./media/howto-database-threat-protection-portal/active-threats.png" alt-text="作用中的威脅":::
+    :::image type="content" source="./media/howto-database-threat-protection-portal/active-threats.png" alt-text="設定威脅偵測":::
 
 2. 按一下特定警示可取得其他詳細資料和調查此威脅的建議，並對未來的威脅採取補救措施。
     
-    :::image type="content" source="./media/howto-database-threat-protection-portal/specific-alert.png" alt-text="特定警示":::
+    :::image type="content" source="./media/howto-database-threat-protection-portal/specific-alert.png" alt-text="設定威脅偵測":::
 
 ## <a name="explore-threat-detection-alerts"></a>探索威脅偵測警示
 
@@ -58,9 +58,9 @@ ms.locfileid: "90901663"
 
 按一下 [威脅保護]**** 下的 [安全性警訊]**** 會啟動 Azure 資訊安全中心的警示頁面，並獲得在資料庫中偵測到的作用中 SQL 威脅概觀。
 
-  :::image type="content" source="./media/howto-database-threat-protection-portal/threat-detection-alert-asc.png" alt-text="威脅防護 asc":::
+  :::image type="content" source="./media/howto-database-threat-protection-portal/threat-detection-alert-asc.png" alt-text="設定威脅偵測":::
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * 深入了解 [Azure 資訊安全中心](https://docs.microsoft.com/azure/security-center/security-center-intro)
 * 如需定價的詳細資訊，請參閱[適用於 PostgreSQL 的 Azure 資料庫價格頁面](https://azure.microsoft.com/pricing/details/postgresql/)  

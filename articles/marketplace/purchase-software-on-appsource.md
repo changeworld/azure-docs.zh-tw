@@ -1,5 +1,5 @@
 ---
-title: 如何在 AppSource 上購買軟體 |Azure Marketplace
+title: 如何購買 Microsoft AppSource 的軟體
 description: 在 AppSource 上購買軟體的步驟 |Azure Marketplace。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -7,18 +7,18 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 03/20/2020
-ms.openlocfilehash: 6ea96f23f6d8c6a2e95a6217522f23545d49e9df
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: bfdae8de4c1a460844b09f82048e1e1d6abdb2ad
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90032838"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708028"
 ---
 # <a name="how-to-purchase-software-on-microsoft-appsource"></a>如何在 Microsoft AppSource 上購買軟體
 
 Microsoft [AppSource](https://appsource.microsoft.com/) 現在可讓客戶訂閱 Microsoft 合作夥伴所提供的 SaaS 應用程式。 客戶可以在該商店中找到認證的 Web 應用程式，並使用 Microsoft 系統管理中心在單一位置中管理費用、升級、降級和取消。 本文說明如何從商店購買應用程式。
 
-AppSource 提供精選的應用程式供您選擇，包括免費版、試用版和付費訂閱版。 本文說明如何透過 AppSource 來購買付費訂閱版。
+AppSource 可讓您選擇可供選擇的應用程式，包括免費試用和付費訂閱。 本文說明如何透過 AppSource 來購買付費訂閱版。
 
 ## <a name="requirements"></a>需求
 
@@ -51,7 +51,7 @@ AppSource 提供精選的應用程式供您選擇，包括免費版、試用版�
 
 在收到您的訂單後，可能需要幾秒鐘的時間才會確認訂單。 您會在頁面上收到用來設定 SaaS 訂閱的連結，以及確認購買的電子郵件和用來完成設定的連結。
 
-1. 在 [訂單確認] 頁面上，選取 [設定]。 或者，您可以使用在確認電子郵件中傳送給您的 [設定] 連結。
+1. 在 [訂單確認] 頁面上，選取 [設定]。 或者，您也可以在確認電子郵件中使用傳送給您的設定連結。
 1. 完成佈建，並在軟體供應商的網站上設定。
 
     > [!Note]
@@ -65,4 +65,4 @@ AppSource 提供精選的應用程式供您選擇，包括免費版、試用版�
 
 ## <a name="next-steps"></a>後續步驟
 
-- 請參閱[商業市集文件](partner-center-portal/commercial-marketplace-overview.md)以取得詳細資訊。
+- [Microsoft 市集客戶文件](/marketplace/)

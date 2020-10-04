@@ -1,17 +1,17 @@
 ---
 title: 邏輯解碼-適用於 PostgreSQL 的 Azure 資料庫-單一伺服器
 description: 描述適用於 PostgreSQL 的 Azure 資料庫-單一伺服器中變更資料捕捉的邏輯解碼和 wal2json
-author: rachel-msft
-ms.author: raagyema
+author: sr-msft
+ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 06/22/2020
-ms.openlocfilehash: bd886bea90c1092e38fac191a60a118aab0bef1f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 4ab4a64fa395c105ced8e47cdcec019373f7f835
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90903894"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708606"
 ---
 # <a name="logical-decoding"></a>邏輯解碼
  
@@ -50,13 +50,13 @@ ms.locfileid: "90903894"
 
 ### <a name="using-azure-portal"></a>使用 Azure 入口網站
 
-1. 將 Azure 複寫支援設定為 **邏輯**。 選取 [儲存]。
+1. 將 Azure 複寫支援設定為 **邏輯**。 選取 [儲存]  。
 
    :::image type="content" source="./media/concepts-logical/replication-support.png" alt-text="適用於 PostgreSQL 的 Azure 資料庫複寫-Azure 複寫支援":::
 
 2. 選取 **[是]**，重新開機伺服器以套用變更。
 
-   :::image type="content" source="./media/concepts-logical/confirm-restart.png" alt-text="適用於 PostgreSQL 的 Azure 資料庫複寫-確認重新開機":::
+   :::image type="content" source="./media/concepts-logical/confirm-restart.png" alt-text="適用於 PostgreSQL 的 Azure 資料庫複寫-Azure 複寫支援":::
 
 
 ## <a name="start-logical-decoding"></a>啟動邏輯解碼
@@ -162,7 +162,7 @@ SELECT pg_drop_replication_slot('test_slot');
 > 如果您停止使用邏輯解碼，請將 azure.replication_support 變更回 `replica` 或 `off` 。 所保留的 WAL 詳細資料 `logical` 會更詳細，而且應該在邏輯解碼未使用時停用。 
 
  
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * 請造訪 Postgres 檔，以 [深入瞭解邏輯解碼](https://www.postgresql.org/docs/current/logicaldecoding-explanation.html)。
 * 如果您有關于邏輯解碼的問題，請與 [我們的小組](mailto:AskAzureDBforPostgreSQL@service.microsoft.com) 聯繫。

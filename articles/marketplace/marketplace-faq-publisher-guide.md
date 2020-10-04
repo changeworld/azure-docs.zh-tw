@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 09/11/2020
-ms.openlocfilehash: 5bf94faff86edf954c687ca3024c63229829ca04
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: a706ced5c65b9de3cb3bfdb623d810bb1ea43623
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91369717"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91707977"
 ---
 # <a name="common-questions-about-the-microsoft-commercial-marketplace"></a>關於 Microsoft 商業 marketplace 的常見問題
 
@@ -311,9 +311,8 @@ Microsoft AppSource 支援信用卡付款。 Azure Marketplace 支援信用卡�
 
 以下是一些讓您開始的資源：
 
-- [簡介 Microsoft 商業市集](/azure/marketplace/marketplace-publishers-guide)
+- [什麼是 Microsoft 商業 marketplace？](overview.md)
 - [Microsoft 商業市集合作夥伴中樞](https://partner.microsoft.com/asset/collection/commercial-marketplace#/)
-- [歡迎使用商業市集](index.yml)
 
 ### <a name="how-can-i-engage-with-microsoft-and-other-partners"></a>如何與 Microsoft 和其他合作夥伴交流？
 
@@ -324,7 +323,7 @@ Microsoft AppSource 支援信用卡付款。 Azure Marketplace 支援信用卡�
 
 ### <a name="where-can-i-learn-more-about-partner-center"></a>可以在哪裡深入了解合作夥伴中心？
 
-- [合作夥伴中心文件](https://docs.microsoft.com/partner-center/)
+- [合作夥伴中心文件](/partner-center/)
 - [歡迎使用商業市集](index.yml)
 
 ### <a name="where-can-i-learn-more-about-the-microsoft-admin-center"></a>可以在哪裡深入了解 Microsoft 管理中心？

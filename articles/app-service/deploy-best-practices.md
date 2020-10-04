@@ -7,12 +7,12 @@ ms.assetid: bb51e565-e462-4c60-929a-2ff90121f41d
 ms.topic: article
 ms.date: 07/31/2019
 ms.author: jafreebe
-ms.openlocfilehash: b4581b7e93cde9d6ba9a20d46ee263a879c05402
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 37c1854aeb1a1fa3d9283c00b07c665b213b306c
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88961868"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708147"
 ---
 # <a name="deployment-best-practices"></a>部署最佳作法
 
@@ -47,7 +47,7 @@ Azure Pipelines、Jenkins 和編輯器外掛程式等部署工具會使用其中
 
 永遠不應針對您的生產位置啟用持續部署。 相反地，您的生產分支 (通常會將主要) 部署到非生產位置。 當您準備好釋出基底分支時，請將它交換到生產位置。 切換至生產環境（而不是部署到生產環境）可避免停機時間，並可讓您再次交換以復原變更。 
 
-![插槽使用量視覺效果](media/app-service-deploy-best-practices/slot_flow_code_diagam.png)
+![此圖顯示開發、預備和主要分支之間的流程，以及部署至的位置。](media/app-service-deploy-best-practices/slot_flow_code_diagam.png)
 
 ### <a name="continuously-deploy-containers"></a>持續部署容器
 

@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/21/2020
-ms.openlocfilehash: 67c924c350fa2bc69f724d44a1b43c7e878e493a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 8a1b30803494facf6eaabcc3695770d694b4e221
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936669"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708674"
 ---
 # <a name="compute-and-storage-options-in-azure-database-for-mysql---flexible-server-preview"></a>適用於 MySQL 的 Azure 資料庫彈性的伺服器 (預覽) 中的計算和儲存體選項
 
@@ -23,7 +23,7 @@ ms.locfileid: "90936669"
 | 資源/層 | **高載** | **一般用途** | **記憶體優化** |
 |:---|:----------|:--------------------|:---------------------|
 | VM 系列| B 系列 | Ddsv4 系列 | Edsv4-series|
-| 虛擬核心 | 1, 2 | 2、4、8、16、32、64 | 2、4、8、16、32、48、64 |
+| 虛擬核心 | 1, 2 | 2、4、8、16、32、48、64 | 2、4、8、16、32、48、64 |
 | 每個虛擬核心的記憶體 | 變數 | 4 GiB | 8 GiB * |
 | 儲存體大小 | 5 GiB 至 16 TiB | 5 GiB 至 16 TiB | 5 GiB 至 16 TiB |
 | 資料庫備份的保留期限 | 1至35天 | 1至35天 | 1至35天 |
@@ -162,7 +162,7 @@ ms.locfileid: "90936669"
 - 停止未使用的伺服器。
 - 如果不需要較長的備份保留期，請縮短備份保留期限。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 深入了解如何[在入口網站中建立 MySQL 伺服器](quickstart-create-server-portal.md)。
 - 瞭解 [服務限制](concepts-limitations.md)。

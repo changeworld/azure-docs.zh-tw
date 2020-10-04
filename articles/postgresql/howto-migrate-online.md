@@ -1,17 +1,17 @@
 ---
 title: 將停機時間降至適用於 PostgreSQL 的 Azure 資料庫-單一伺服器
 description: 本文說明如何使用 Azure 資料庫移轉服務，以最短停機時間將于 postgresql 資料庫移轉至適用於 PostgreSQL 的 Azure 資料庫單一伺服器。
-author: rachel-msft
-ms.author: raagyema
+author: sr-msft
+ms.author: srranga
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 5/6/2019
-ms.openlocfilehash: 8bdafb73c4b791f059f8c38233ae8f9cc5945039
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 1f1af53388f177dc348c5cb805ef8e6fbe9f9436
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90881978"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710816"
 ---
 # <a name="minimal-downtime-migration-to-azure-database-for-postgresql---single-server"></a>將停機時間降至適用於 PostgreSQL 的 Azure 資料庫-單一伺服器
 [!INCLUDE[applies-to-postgres-single-flexible-server](includes/applies-to-postgres-single-flexible-server-hyperscale.md)]
@@ -23,6 +23,6 @@ Azure DMS 會執行「適用於 PostgreSQL 的 Azure 資料庫」內部部署的
 
 :::image type="content" source="./media/howto-migrate-online/ContinuousSync.png" alt-text="透過 Azure 資料庫移轉服務進行持續同步":::
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 - 檢視[使用 Microsoft Azure 將應用程式現代化](https://medius.studios.ms/Embed/Video/BRK2102?sid=BRK2102)影片，影片中會示範如何將 PostgreSQL 應用程式移轉至適用於 PostgreSQL 的 Azure 資料庫。
 - 請參閱[在線上使用 DMS 將 PostgreSQL 遷移至適用於 PostgreSQL 的 Azure 資料庫](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online)教學課程。

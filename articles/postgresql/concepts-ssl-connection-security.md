@@ -1,17 +1,17 @@
 ---
 title: SSL/TLS-適用於 PostgreSQL 的 Azure 資料庫-單一伺服器
 description: 有關如何為適用於 PostgreSQL 的 Azure 資料庫單一伺服器設定 TLS 連線能力的指示和資訊。
-author: rachel-msft
-ms.author: raagyema
+author: niklarin
+ms.author: nlarin
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: e54b8bc51817d2a56153dcc0c14f45e76b9ae88b
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 2785f79d327402a40be0a905877b5113b3f751b7
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91444944"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710442"
 ---
 # <a name="configure-tls-connectivity-in-azure-database-for-postgresql---single-server"></a>在適用於 PostgreSQL 的 Azure 資料庫-單一伺服器中設定 TLS 連線能力
 

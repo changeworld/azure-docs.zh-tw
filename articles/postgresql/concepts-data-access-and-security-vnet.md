@@ -1,17 +1,17 @@
 ---
 title: 虛擬網路規則-適用於 PostgreSQL 的 Azure 資料庫-單一伺服器
 description: 瞭解如何使用虛擬網路 (vnet) 服務端點連接到適用於 PostgreSQL 的 Azure 資料庫單一伺服器。
-author: rachel-msft
-ms.author: raagyema
+author: niklarin
+ms.author: nlarin
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.openlocfilehash: d7ad1116f7c0168181dbf5b43f8f1595ce250949
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 170d5eaa4c14c6de54825bc08f3aef0fd0dfa0c5
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90903922"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91707994"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-postgresql---single-server"></a>針對適用於 PostgreSQL 的 Azure 資料庫單一伺服器使用虛擬網路服務端點和規則
 
@@ -132,7 +132,7 @@ RBAC 替代方案：**
 - [Azure 虛擬網路][vm-virtual-network-overview]
 - [Azure 虛擬網路服務端點][vm-virtual-network-service-endpoints-overview-649d]
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 如需建立 VNet 規則的文章，請參閱：
 - [使用 Azure 入口網站建立和管理適用於 PostgreSQL 的 Azure 資料庫 VNet 規則](howto-manage-vnet-using-portal.md)
 - [使用 Azure CLI 建立和管理適用於 PostgreSQL 的 Azure 資料庫 VNet 規則](howto-manage-vnet-using-cli.md)

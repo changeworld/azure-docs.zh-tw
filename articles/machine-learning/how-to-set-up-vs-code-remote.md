@@ -10,12 +10,12 @@ ms.custom: how-to
 ms.author: jmartens
 author: j-martens
 ms.date: 09/03/2020
-ms.openlocfilehash: 2c7ff633705d3db327c563b41ce199a5342dda82
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 6ac116b315d4a11b51b37c5b51edf35aa0676713
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89461556"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708368"
 ---
 # <a name="connect-to-an-azure-machine-learning-compute-instance-in-visual-studio-code-preview"></a>在 Visual Studio Code (preview 中連接到 Azure Machine Learning 計算實例) 
 
@@ -68,7 +68,7 @@ ms.locfileid: "89461556"
 如需完整功能的遠端開發體驗，您需要幾個必要條件：
 
 * [Visual Studio Code 遠端 SSH 延伸](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh)模組。
-* 啟用 SSH 的計算實例。 如需詳細資訊， [請參閱建立計算實例指南](concept-compute-instance.md#create)。
+* 啟用 SSH 的計算實例。 如需詳細資訊， [請參閱建立計算實例指南](how-to-create-manage-compute-instance.md)。
 
 > [!NOTE]
 > 在 Windows 平臺上，您必須 [安裝與 OpenSSH 相容的 SSH 用戶端](https://code.visualstudio.com/docs/remote/troubleshooting#_installing-a-supported-ssh-client) （如果沒有的話）。 因為 ssh 命令必須在路徑中，所以 Windows 不支援 PuTTY。
@@ -134,7 +134,7 @@ Host azmlci1
 |----|---------|
 |主機|針對計算實例使用您喜歡的任何速記 |
 |HostName|這是計算實例的 IP 位址 |
-|Port|這是上述 SSH 對話方塊中顯示的埠 |
+|連接埠|這是上述 SSH 對話方塊中顯示的埠 |
 |User|這必須是 `azureuser` |
 |IdentityFile|應指向您儲存私密金鑰的檔案 |
 
@@ -150,7 +150,7 @@ Host azmlci1
 
 從這裡開始，您會完全使用計算實例，而且您現在可以編輯、偵測、使用 git、使用延伸模組等，就像您可以使用本機 Visual Studio Code 一樣。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 現在您已設定 Visual Studio Code 遠端，您可以使用計算實例作為 Visual Studio Code 的遠端計算，以 [互動方式進行程式碼的偵錯工具](how-to-debug-visual-studio-code.md)。
 

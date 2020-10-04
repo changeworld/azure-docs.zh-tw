@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: vikrambmsft
 ms.author: vikramb
 ms.date: 09/09/2020
-ms.openlocfilehash: 4ddf37d5f2e7f569e5447dfe321574e3f9ccc778
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 52b9a67ee8c11011ea04f7414a3d978f5860c0ce
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90974844"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708062"
 ---
 # <a name="commercial-marketplace-policies-and-terms"></a>商業市集原則和條款
 
@@ -30,6 +30,6 @@ ms.locfileid: "90974844"
 - [Azure Marketplace 參與原則](/legal/marketplace/participation-policy?context=/azure/marketplace/context/context)
 - [Azure Marketplace 條款](/legal/marketplace/terms?context=/azure/marketplace/context/context)
 
-## <a name="next-step"></a>後續步驟
+## <a name="next-steps"></a>後續步驟
 
-造訪「 [商業 marketplace 發佈指南](marketplace-publishers-guide.md) 」頁面。
+- [什麼是 Microsoft 商業 marketplace？](overview.md)

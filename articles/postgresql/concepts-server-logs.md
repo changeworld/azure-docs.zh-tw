@@ -1,17 +1,17 @@
 ---
 title: 記錄-適用於 PostgreSQL 的 Azure 資料庫-單一伺服器
 description: 描述適用於 PostgreSQL 的 Azure 資料庫-單一伺服器中的記錄設定、儲存和分析
-author: rachel-msft
-ms.author: raagyema
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 06/25/2020
-ms.openlocfilehash: c5515c21d89b01576bb6aae8c9d480b439dc1507
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 8d249cdabcbfd82fc555c486f29bbdba200e1da1
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90902710"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710493"
 ---
 # <a name="logs-in-azure-database-for-postgresql---single-server"></a>適用於 PostgreSQL 的 Azure 資料庫-單一伺服器中的記錄
 
@@ -98,7 +98,7 @@ AzureDiagnostics
 
 下表說明 **PostgreSQLLogs** 類型的欄位。 視您選擇的輸出端點而定，所含欄位及其出現順序可能會有所不同。 
 
-|**欄位** | **說明** |
+|**欄位** | **描述** |
 |---|---|
 | TenantId | 您的租用戶識別碼 |
 | SourceSystem | `Azure` |
@@ -124,7 +124,7 @@ AzureDiagnostics
 | 前置詞 | 記錄行的前置詞 |
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 - 了解如何從 [Azure 入口網站](howto-configure-server-logs-in-portal.md) 或 [Azure CLI](howto-configure-server-logs-using-cli.md) 存取記錄。
 - 深入瞭解 [Azure 監視器定價](https://azure.microsoft.com/pricing/details/monitor/)。
 - 深入瞭解 [audit 記錄](concepts-audit.md)

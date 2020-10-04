@@ -11,12 +11,12 @@ author: NilsPohlmann
 ms.date: 8/14/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: 641f6de00f641f52db4f0b1e799d02397d01989d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 9bfec8c1da0581fa7f17dd671358218f22c877c6
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91315655"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708470"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>使用 Azure Machine Learning SDK 來建立及執行機器學習管線
 
@@ -110,7 +110,7 @@ output_data1 = PipelineData(
 ## <a name="set-up-a-compute-target"></a>設定計算目標
 
 
-在 Azure Machine Learning 中，__計算__一詞 (或__計算目標__) 係指會在您機器學習管線中執行計算步驟的機器或叢集。   如需計算目標的完整清單，請參閱 [模型定型的計算目標](concept-compute-target.md#train) ，以及建立如何建立和附加至工作區的 [計算目標](how-to-create-attach-compute-sdk.md) 。   無論您是定型模型或執行管線步驟，建立和或附加計算目標的程式都相同。 在您建立並連結計算目標之後，請在您的[管線步驟](#steps)中使用 `ComputeTarget` 物件。
+在 Azure Machine Learning 中，__計算__一詞 (或__計算目標__) 係指會在您機器學習管線中執行計算步驟的機器或叢集。   如需計算目標的完整清單，請參閱 [模型定型的計算目標](concept-compute-target.md#train) ，以及建立如何建立和附加至工作區的 [計算目標](how-to-create-attach-compute-studio.md) 。   無論您是定型模型或執行管線步驟，建立和或附加計算目標的程式都相同。 在您建立並連結計算目標之後，請在您的[管線步驟](#steps)中使用 `ComputeTarget` 物件。
 
 > [!IMPORTANT]
 > 不支援從遠端作業內部對計算目標執行管理作業。 由於機器學習管線會作為遠端作業提交，因此請勿從管線內對計算目標使用管理作業。

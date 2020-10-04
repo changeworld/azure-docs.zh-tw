@@ -1,17 +1,17 @@
 ---
 title: Advanced 威脅防護-適用於 PostgreSQL 的 Azure 資料庫-單一伺服器
 description: 瞭解如何使用 Advanced 威脅防護來偵測異常資料庫活動，指出資料庫有潛在的安全性威脅。
-author: rachel-msft
-ms.author: raagyema
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: fbb6a7dbe73444ac9049573705e4d04bd868a806
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: cfe565c45ea6aa0a4bcfecc95b1e1149b17542a2
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90884569"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708045"
 ---
 # <a name="advanced-threat-protection-in-azure-database-for-postgresql---single-server"></a>適用於 PostgreSQL 的 Azure 資料庫中的 Advanced 威脅防護-單一伺服器
 
@@ -39,7 +39,7 @@ ms.locfileid: "90884569"
 - **從可能有害的應用程式存取**：使用可能有害的應用程式用存取資料庫時，會觸發此警示。 在某些情況下，警示會偵測到執行中的滲透測試。 在其他情況下，警示則是偵測使用常見攻擊工具的攻擊。
 - **暴力破解適用於 PostgreSQL 的 Azure 資料庫認證**：當有使用不同認證的異常大量失敗登入時，就會觸發此警示。 在某些情況下，警示會偵測到執行中的滲透測試。 在其他情況下，警示則是偵測暴力攻擊。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * 深入了解 [Azure 資訊安全中心](https://docs.microsoft.com/azure/security-center/security-center-intro)
 * 如需定價的詳細資訊，請參閱[適用於 PostgreSQL 的 Azure 資料庫價格頁面](https://azure.microsoft.com/pricing/details/postgresql/) 

@@ -7,12 +7,12 @@ ms.topic: how-to
 author: navits09
 ms.author: navits
 ms.date: 06/17/2020
-ms.openlocfilehash: 106ad6c1669506b5a8086afc1a74d967478e556c
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.openlocfilehash: bcb14c786ab652b1c51a3d3bf487e39fd0ebfdb6
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91597304"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710680"
 ---
 # <a name="create-a-dynamics-365-for-customer-engagement--powerapps-offer"></a>建立 Dynamics 365 for Customer Engagement 和 PowerApps 供應項目
 
@@ -138,7 +138,7 @@ ms.locfileid: "91597304"
 4. 支援位址 (連結) 
 5. 使用規定位址 (連結) 
 6. 供應項目名稱
-7. 說明
+7. 描述
 8. 螢幕擷取畫面/影片
 
 ### <a name="name"></a>名稱
@@ -191,7 +191,7 @@ ms.locfileid: "91597304"
 
 請提供供應項目的標誌和影像。 所有影像都必須採用 PNG 格式。
 
-[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+[!INCLUDE [logo tips](../includes/graphics-suggestions.md)]
 
 >[!NOTE]
 >如果在上傳檔案時發生問題，請確定您的區域網路不會封鎖合作夥伴中心所使用的 https://upload.xboxlive.com 服務。

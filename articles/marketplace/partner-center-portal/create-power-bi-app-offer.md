@@ -7,16 +7,16 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 07/22/2020
-ms.openlocfilehash: f011f2703286cd7eb4e19588ae1ae1fe9319500f
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: e0dcd5db36e41093bf1cd75779770b04df2fc26a
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89646684"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710646"
 ---
 # <a name="create-a-power-bi-app-offer"></a>建立 Power BI 應用程式供應項目
 
-此文章描述如何針對 Microsoft [AppSource](https://appsource.microsoft.com/) 建立並發佈 Power BI 應用程式供應項目。
+本文說明如何建立 Power BI 應用程式供應專案，並將其發佈至 [Microsoft AppSource](https://appsource.microsoft.com/)。
 
 開始之前，請先[在合作夥伴中心建立商業市集帳戶](create-account.md) \(部分機器翻譯\) (如果您尚未這麼做)。 請確定您已在商業市集方案中註冊帳戶。
 
@@ -55,10 +55,10 @@ ms.locfileid: "89646684"
 
 其包含根據您所做的選擇，在此供應項目上執行作業的連結。 例如：
 
-- 如果供應專案為草稿- [刪除草稿供應](update-existing-offer.md#delete-a-draft-offer) 專案) 
-- 如果供應專案是即時的，則會 [停止銷售供應](update-existing-offer.md#stop-selling-an-offer-or-plan) 專案) 
-- 如果供應專案處於預覽[階段) ](publishing-status.md#publisher-approval)
-- 如果您尚未完成發行者登出- [取消發佈](update-existing-offer.md#cancel-publishing)) 
+- 如果供應項目為草稿 - [刪除草稿供應項目](update-existing-offer.md#delete-a-draft-offer) \(部分機器翻譯\)
+- 如果供應項目已上線 - [停止銷售供應項目](update-existing-offer.md#stop-selling-an-offer-or-plan) \(部分機器翻譯\)
+- 如果供應項目處於預覽階段 - [上線](publishing-status.md#publisher-approval) \(部分機器翻譯\)
+- 如果您尚未完成發佈- [取消發行](update-existing-offer.md#cancel-publishing)
 
 ## <a name="offer-setup"></a>供應項目設定
 
@@ -73,7 +73,7 @@ ms.locfileid: "89646684"
     - [Salesforce](commercial-marketplace-lead-management-instructions-salesforce.md)
 
     > [!NOTE]
-    > 如果以上未列出您的 CRM 系統，請使用 [Azure 資料表](commercial-marketplace-lead-management-instructions-azure-table.md) \(部分機器翻譯\) 或 [Https 端點](commercial-marketplace-lead-management-instructions-https.md) \(部分機器翻譯\) 來儲存潛在客戶資料。 接著，將資料匯出至您的 CRM 系統。
+    > 如果您的 CRM 系統不在此清單中，請使用 [Azure 資料表](commercial-marketplace-lead-management-instructions-azure-table.md) 或和 [HTTPS 端點](commercial-marketplace-lead-management-instructions-https.md) 來儲存客戶潛在客戶資料。 接著，將資料匯出至您的 CRM 系統。
 
 2. 在合作夥伴中心內發佈時，將供應項目連線到潛在客戶目的地。
 3. 確認已正確設定與潛在客戶目的地的連線。 在合作夥伴中心加以發佈之後，我們會驗證連線並將測試潛在客戶傳送給您。 在供應項目上線前對其進行預覽時，您也可以嘗試在預覽環境中自行購買供應項目，藉此測試您的潛在客戶連線。
@@ -81,10 +81,10 @@ ms.locfileid: "89646684"
 
 以下是一些額外的潛在客戶管理資源：
 
-- [潛在客戶管理概觀](commercial-marketplace-get-customer-leads.md)
-- [潛在客戶管理常見問題](../lead-management-for-cloud-marketplace.md#frequently-asked-questions)) 
-- [常見的潛在客戶設定錯誤](../lead-management-for-cloud-marketplace.md#publishing-config-errors)) 
-- [潛在客戶管理概觀](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) \(英文\) PDF (請確定您已關閉快顯封鎖程式)
+- [來自您的商業市集供應項目的潛在客戶](commercial-marketplace-get-customer-leads.md)
+- [潛在客戶管理的常見問題](../lead-management-faq.md#common-questions-about-lead-management)
+- [針對潛在客戶設定錯誤進行疑難排解](../lead-management-faq.md#publishing-config-errors)
+- [潛在客戶管理概觀](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF (請確定您已關閉快顯封鎖程式)。
 
 選取 [儲存草稿] 後再繼續。
 
@@ -202,7 +202,7 @@ ms.locfileid: "89646684"
 
 提供要與您供應項目搭配使用的標誌和映像。 所有影像都必須採用 PNG 格式。 模糊映像將會遭到拒絕。
 
-[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+[!INCLUDE [logo tips](../includes/graphics-suggestions.md)]
 
 >[!NOTE]
 >如果您在上傳檔案時遇到問題，請確定您的區域網路不會封鎖合作夥伴中心所使用的 `https://upload.xboxlive.com` 服務。
@@ -218,7 +218,7 @@ ms.locfileid: "89646684"
 
 [!INCLUDE [logos-appsource-only](../includes/logos-appsource-only.md)]
 
-[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+[!INCLUDE [logo tips](../includes/graphics-suggestions.md)]
 
 #### <a name="screenshots"></a>螢幕擷取畫面
 

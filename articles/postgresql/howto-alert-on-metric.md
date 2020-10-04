@@ -1,17 +1,17 @@
 ---
 title: 設定警示-Azure 入口網站-適用於 PostgreSQL 的 Azure 資料庫-單一伺服器
 description: 本文說明如何從 Azure 入口網站設定和存取適用於 PostgreSQL 的 Azure 資料庫單一伺服器的計量警示。
-author: rachel-msft
-ms.author: raagyema
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 5/6/2019
-ms.openlocfilehash: 0866df5f4f78fff429e75d586450bce72faece63
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: fba5c868a146529a981e23cd88b413f2eb441896
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90907552"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708929"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-postgresql---single-server"></a>使用 Azure 入口網站設定適用於 PostgreSQL 的 Azure 資料庫單一伺服器的計量警示
 
@@ -40,19 +40,19 @@ ms.locfileid: "90907552"
 
 4. [建立規則]**** 頁面隨即開啟，如下所示。 填寫必要資訊：
 
-   :::image type="content" source="./media/howto-alert-on-metric/4-add-rule-form.png" alt-text="[新增計量警示] 表單":::
+   :::image type="content" source="./media/howto-alert-on-metric/4-add-rule-form.png" alt-text="選取警示規則":::
 
 5. 在 [條件]**** 區段中，選取 [新增條件]****。
 
 6. 從要提醒的訊號清單中選擇一個計量。 在此範例中，選取 "Storage percent"。
    
-   :::image type="content" source="./media/howto-alert-on-metric/6-configure-signal-logic.png" alt-text="選取計量":::
+   :::image type="content" source="./media/howto-alert-on-metric/6-configure-signal-logic.png" alt-text="選取警示規則":::
 
 7. 設定警示邏輯，包括**條件** (例如， "Greater than")、**閾值** (例如， 85 percent)、**時間彙總**，觸發警示之前，必須滿足計量規則的**期間** (例如， 「過去30分鐘內」 ) 和 **頻率**。
    
    完成時選取 [完成]****。
 
-   :::image type="content" source="./media/howto-alert-on-metric/7-set-threshold-time.png" alt-text="選取計量":::
+   :::image type="content" source="./media/howto-alert-on-metric/7-set-threshold-time.png" alt-text="選取警示規則":::
 
 8. 在 [動作群組]**** 區段中，選取 [建立]**** 建立新的群組，以接收警示通知。
 
@@ -66,11 +66,11 @@ ms.locfileid: "90907552"
 
     完成時選取 [確定]****。
 
-    :::image type="content" source="./media/howto-alert-on-metric/10-action-group-type.png" alt-text="動作群組":::
+    :::image type="content" source="./media/howto-alert-on-metric/10-action-group-type.png" alt-text="選取警示規則":::
 
 11. 指定 [警示規則名稱]、[描述] 與 [嚴重性]。
 
-    :::image type="content" source="./media/howto-alert-on-metric/11-name-description-severity.png" alt-text="動作群組"::: 
+    :::image type="content" source="./media/howto-alert-on-metric/11-name-description-severity.png" alt-text="選取警示規則"::: 
 
 12. 選取 [建立警示規則]**** 以建立警示。
 
@@ -83,6 +83,6 @@ ms.locfileid: "90907552"
 * **編輯**或**刪除**警示規則。
 * 如果您想要暫時停止或恢復接收通知，可以將警示**停用**或**啟用**。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 * 深入了解 [在警示中設定 webhook](../azure-monitor/platform/alerts-webhooks.md)。
 * 依照 [計量集合概觀](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md) 中的做法，確保您的服務可使用且有回應。

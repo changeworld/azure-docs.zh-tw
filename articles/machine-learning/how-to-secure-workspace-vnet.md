@@ -11,12 +11,12 @@ author: peterclu
 ms.date: 07/07/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4, tracking-python, contperfq1
-ms.openlocfilehash: e593cfa06b160539a0d830b9149c9aa9a069a984
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: be476af3696e0753c8e36cfc34a024f8b585c605
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91542065"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708311"
 ---
 # <a name="secure-an-azure-machine-learning-workspace-with-virtual-networks"></a>使用虛擬網路保護 Azure Machine Learning 工作區
 
@@ -37,7 +37,7 @@ ms.locfileid: "91542065"
 > - Azure 金鑰保存庫
 > - Azure Container Registry
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 + 閱讀 [網路安全性總覽](how-to-network-security-overview.md) 文章，以瞭解常見的虛擬網路案例和整體虛擬網路架構。
 
@@ -176,7 +176,7 @@ Azure Machine Learning 會使用相關聯的 Key Vault 實例來儲存下列認�
 
 * Azure Container Registry 所在的虛擬網路和子網路必須與用於定型或推斷的儲存體帳戶和計算目標相同。
 
-* Azure Machine Learning 工作區必須包含 [Azure Machine Learning 計算叢集](how-to-create-attach-compute-sdk.md#amlcompute)。
+* Azure Machine Learning 工作區必須包含 [Azure Machine Learning 計算叢集](how-to-create-attach-compute-cluster.md)。
 
     當 ACR 位於虛擬網路後方時，Azure Machine Learning 就無法使用 ACR 來直接建置 Docker 映像。 但可改為使用計算叢集來建置映像。
 

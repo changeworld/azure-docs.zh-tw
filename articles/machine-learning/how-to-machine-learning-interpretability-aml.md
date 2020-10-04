@@ -11,12 +11,12 @@ ms.reviewer: Luis.Quintanilla
 ms.date: 07/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: c23522911bd0c8dc9726a62cced839a1c4be37a6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 08981ad21c15b6fc375e2e0733564c40d54932ba
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91333829"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708249"
 ---
 # <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python-preview"></a>使用可解譯性套件以 Python (preview & 預測來說明 ML 模型) 
 
@@ -242,7 +242,7 @@ tabular_explainer = TabularExplainer(clf.steps[-1][1],
     ```bash
     pip install azureml-interpret
     ```
-1. 在本機 Jupyter Notebook 中建立定型指令碼。 例如： `train_explain.py` 。
+1. 在本機 Jupyter Notebook 中建立定型指令碼。 例如 `train_explain.py`。
 
     ```python
     from azureml.interpret import ExplanationClient
@@ -273,7 +273,7 @@ tabular_explainer = TabularExplainer(clf.steps[-1][1],
     #client.upload_model_explanation(global_explanation, top_k=2, comment='global explanation: Only top 2 features')
     ```
 
-1. 將 Azure Machine Learning 計算設定為您的計算目標，並提交定型回合。 如需相關指示，請參閱 [使用 PYTHON SDK 建立計算目標](how-to-create-attach-compute-sdk.md#amlcompute) 。 您也可能會發現 [範例筆記本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model/azure-integration/remote-explanation) 很有用。
+1. 將 Azure Machine Learning 計算設定為您的計算目標，並提交定型回合。 如需相關指示，請參閱 [建立和管理 Azure Machine Learning 計算](how-to-create-attach-compute-cluster.md) 叢集。 您也可能會發現 [範例筆記本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model/azure-integration/remote-explanation) 很有用。
 
 1. 請下載您本機 Jupyter 筆記本中的說明。
 
@@ -302,7 +302,7 @@ tabular_explainer = TabularExplainer(clf.steps[-1][1],
 
 下圖提供定型模型的整體觀點，以及其預測和說明。
 
-|圖|說明|
+|圖|描述|
 |----|-----------|
 |資料探索| 顯示資料集和預測值的總覽。|
 |全域重要性|匯總個別資料點的特徵重要性值，以顯示模型的整體 top K (可設定的 K) 重要功能。 有助於瞭解基礎模型的整體行為。|
@@ -316,7 +316,7 @@ tabular_explainer = TabularExplainer(clf.steps[-1][1],
 
 您可以按一下任何一個整體繪圖中的任何個別資料點，為任何資料點載入個別的特徵重要性繪圖。
 
-|圖|說明|
+|圖|描述|
 |----|-----------|
 |本機重要性|針對個別預測，顯示可設定的前 K (K) 重要功能。 有助於說明特定資料點上基礎模型的本機行為。|
 |更動探索 (假設分析) |允許變更所選資料點的功能值，並觀察預測值的結果變更。|

@@ -7,12 +7,12 @@ ms.topic: how-to
 author: emuench
 ms.author: mingshen
 ms.date: 08/07/2020
-ms.openlocfilehash: 9f48c06f075ccdc3c3c212e1ba7912707565cd87
-ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
+ms.openlocfilehash: 46749015d5141053eaea3f2f251bbba7d9455481
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91405049"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91709011"
 ---
 # <a name="create-an-azure-virtual-machine-offer-on-azure-marketplace"></a>在 Azure Marketplace 上建立 Azure 虛擬機器供應項目
 
@@ -242,7 +242,7 @@ ms.locfileid: "91405049"
 
 提供要搭配您供應項目使用的標誌和影像。 所有影像都必須採用 PNG 格式。 模糊影像將會導致您的提交遭到拒絕。
 
-[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+[!INCLUDE [logo tips](../includes/graphics-suggestions.md)]
 
 >[!NOTE]
 >如果在上傳檔案時發生問題，請確定您的區域網路不會封鎖合作夥伴中心所使用的 https://upload.xboxlive.com 服務。
@@ -547,7 +547,7 @@ Microsoft 將會傳送一封電子郵件訊息，讓您知道供應項目的預�
 
 <br>以下範例說明如何在 Azure Marketplace 搜尋結果中顯示供應專案資訊：
 
-:::image type="content" source="media/example-azure-marketplace-virtual-machine-search-results.png" alt-text="說明這項供應專案在 Azure Marketplace 搜尋結果中的顯示方式。":::
+:::image type="content" source="media/example-azure-marketplace-virtual-machine-search-results.png" alt-text="說明這項供應專案在 Azure Marketplace 中的顯示方式。":::
 
 #### <a name="call-out-descriptions"></a>撥出描述
 
@@ -558,7 +558,7 @@ Microsoft 將會傳送一封電子郵件訊息，讓您知道供應項目的預�
 
 <br>以下是 Azure Marketplace 方案詳細資料的範例：
 
-:::image type="content" source="media/example-azure-marketplace-virtual-machine-plan-details.png" alt-text="說明 Azure Marketplace 計畫詳細資料。":::
+:::image type="content" source="media/example-azure-marketplace-virtual-machine-plan-details.png" alt-text="說明這項供應專案在 Azure Marketplace 中的顯示方式。":::
 
 #### <a name="call-out-descriptions"></a>撥出描述
 
@@ -568,7 +568,7 @@ Microsoft 將會傳送一封電子郵件訊息，讓您知道供應項目的預�
 
 <br>以下是供應專案資訊出現在 Azure 入口網站中的範例：
 
-:::image type="content" source="media/example-azure-portal-virtual-machine-offer.png" alt-text="說明這項供應專案如何出現在 Azure 入口網站中。":::
+:::image type="content" source="media/example-azure-portal-virtual-machine-offer.png" alt-text="說明這項供應專案在 Azure Marketplace 中的顯示方式。":::
 
 #### <a name="call-out-descriptions"></a>撥出描述
 
@@ -579,7 +579,7 @@ Microsoft 將會傳送一封電子郵件訊息，讓您知道供應項目的預�
 
 <br>以下是如何在 Azure 入口網站搜尋結果中顯示供應專案資訊的範例：
 
-:::image type="content" source="media/example-azure-portal-virtual-machine-search-results.png" alt-text="說明這項供應專案如何顯示在 Azure 入口網站搜尋結果中。":::
+:::image type="content" source="media/example-azure-portal-virtual-machine-search-results.png" alt-text="說明這項供應專案在 Azure Marketplace 中的顯示方式。":::
 
 #### <a name="call-out-descriptions"></a>撥出描述
 
@@ -589,7 +589,7 @@ Microsoft 將會傳送一封電子郵件訊息，讓您知道供應項目的預�
 
 <br>以下是 Azure 入口網站方案詳細資料的範例：
 
-:::image type="content" source="media/example-azure-portal-virtual-machine-plan-details.png" alt-text="說明 Azure 入口網站計畫詳細資料。":::
+:::image type="content" source="media/example-azure-portal-virtual-machine-plan-details.png" alt-text="說明這項供應專案在 Azure Marketplace 中的顯示方式。":::
 
 #### <a name="call-out-descriptions"></a>撥出描述
 

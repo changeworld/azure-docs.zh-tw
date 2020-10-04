@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/08/2020
 author: Microsoft-BradleyWright
 ms.author: brwrigh
-ms.openlocfilehash: 9745dce03d87b447dfd606f021891794cb343593
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 25f110f27ec9ac55420f624b5eea4555e482e7f4
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89419749"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708351"
 ---
 # <a name="consulting-service-offers"></a>諮詢服務供應項目
 
@@ -22,7 +22,7 @@ ms.locfileid: "89419749"
 
 ## <a name="compare-consulting-services"></a>比較諮詢服務
 
-商業 marketplace 線上商店、Microsoft AppSource 和 Azure Marketplace 都與解決方案類型和雲端產品一致，以協助客戶找到所需的內容。 每個線上商店都有專門的發佈選項，可協助您將發佈投資最大化。 若要深入瞭解這兩個線上商店之間的差異，請參閱 [比較 Microsoft AppSource 和 Azure Marketplace](comparing-appsource-azure-marketplace.md)。
+商業 marketplace 線上商店、Microsoft AppSource 和 Azure Marketplace 都與解決方案類型和雲端產品一致，以協助客戶找到所需的內容。 每個線上商店都有專門的發佈選項，可協助您將發佈投資最大化。 若要深入瞭解 AppSource 與 Azure Marketplace 之間的差異，請參閱 [商用 Marketplace 線上商店](overview.md#commercial-marketplace-online-stores)。
 
 以 Dynamics 365、Power Apps 和 Power BI 為基礎的諮詢服務供應項目有資格在 AppSource 上列出。 如需詳細資訊，請參閱 [Microsoft AppSource 諮詢服務清單清單指導方針](https://go.microsoft.com/fwlink/?LinkId=828734&clcid=0x409) PDF 檔案。
 

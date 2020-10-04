@@ -1,17 +1,17 @@
 ---
 title: 商務持續性-適用於 PostgreSQL 的 Azure 資料庫-單一伺服器
 description: 本文說明使用適用於 PostgreSQL 的 Azure 資料庫時 (時間點還原、資料中心中斷、異地還原、複本) 的商務持續性。
-author: rachel-msft
-ms.author: raagyema
+author: sr-msft
+ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/07/2020
-ms.openlocfilehash: 75cd86bd1587a9294caef00efdf973fe8a26c150
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: 6bcb1ea6c16fd387dfb7f15f909d1908c20a44d7
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89612023"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710901"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-postgresql---single-server"></a>使用適用於 PostgreSQL 的 Azure 資料庫-單一伺服器的商務持續性總覽
 
@@ -19,16 +19,20 @@ ms.locfileid: "89612023"
 
 ## <a name="features-that-you-can-use-to-provide-business-continuity"></a>可用來提供商務持續性的功能
 
-適用於 PostgreSQL 的 Azure 資料庫提供包含自動備份以及可讓使用者起始異地還原的商務持續性功能。 每項功能分別具有適用於預估復原時間 (ERT) 和潛在資料遺失的不同特性。 估計的復原時間 (ERT) 是資料庫在還原/容錯移轉要求後完全正常運作的預估持續時間。 一旦您了解這些選項，就可以在其中選擇，並針對不同情況加以搭配使用。 當您開發商務持續性計劃時，您必須了解應用程式在干擾性事件之後完全復原所需的最大可接受時間 - 這是您的復原時間目標 (RTO)。 您也必須了解在干擾性事件之後，應用程式在復原時可容許遺失的最近資料更新 (時間間隔) 最大數量 - 這是您的復原點目標 (RPO)。
+當您開發商務持續性計劃時，您必須了解應用程式在干擾性事件之後完全復原所需的最大可接受時間 - 這是您的復原時間目標 (RTO)。 您也必須了解在干擾性事件之後，應用程式在復原時可容許遺失的最近資料更新 (時間間隔) 最大數量 - 這是您的復原點目標 (RPO)。
 
-下表將比較各項可用功能的 ERT 與 RPO：
+適用於 PostgreSQL 的 Azure 資料庫供應商務持續性功能，包括可起始異地還原的地理區域冗余備份，以及在不同區域中部署讀取複本的功能。 每個都有不同的復原時間和潛在資料遺失特性。 使用 [異地還原](concepts-backup.md) 功能時，會使用從另一個區域複寫的備份資料來建立新的伺服器。 還原和復原所需的整體時間，取決於資料庫的大小以及要復原的記錄量。 建立伺服器的整體時間會因幾分鐘到數小時而異。 使用 [讀取複本](concepts-read-replicas.md)時，主資料庫的交易記錄會以非同步方式串流至複本。 主要和複本之間的延隔時間取決於網站之間的延遲，以及要傳輸的資料量。 如果主要網站發生失敗（例如可用性區域錯誤），升級複本會提供較短的 RTO，並減少資料遺失的情況。 
+
+下表將比較一般案例中的 RTO 和 RPO：
 
 | **功能** | **基本** | **一般用途** | **記憶體最佳化** |
 | :------------: | :-------: | :-----------------: | :------------------: |
 | 從備份進行時間點還原 | 保留期間內的任何還原點 | 保留期間內的任何還原點 | 保留期間內的任何還原點 |
-| 從異地複寫備份進行異地還原 | 不支援 | ERT < 12 小時<br/>RPO < 1 小時 | ERT < 12 小時<br/>RPO < 1 小時 |
+| 從異地複寫備份進行異地還原 | 不支援 | RTO-變化 <br/>RPO < 1 小時 | RTO-變化 <br/>RPO < 1 小時 |
+| 讀取複本 | RTO-分鐘 <br/>RPO < 5 分鐘 | RTO-分鐘 <br/>RPO < 5 分鐘| RTO-分鐘 <br/>RPO < 5 分鐘|
 
-您也可以考慮使用 [讀取複本](concepts-read-replicas.md)。
+> [!IMPORTANT]
+> 此處所提及的預期 RTO 和 RPO 僅供參考之用。 這些計量不提供任何 Sla。
 
 ## <a name="recover-a-server-after-a-user-or-application-error"></a>在使用者或應用程式錯誤之後復原伺服器
 
@@ -60,7 +64,7 @@ ms.locfileid: "89612023"
 根據預設，適用於 PostgreSQL 的 Azure 資料庫不會在其部署所在的區域中移動或儲存客戶資料。 不過，客戶可以選擇性地選擇啟用 [異地複寫備份](concepts-backup.md#backup-redundancy-options) ，或建立 [跨區域讀取複本](concepts-read-replicas.md#cross-region-replication) ，以便將資料儲存在另一個區域中。
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 - 深入了解[適用於 PostgreSQL 的 Azure 資料庫中的自動備份](concepts-backup.md)。 
 - 了解如何使用 [Azure 入口網站](howto-restore-server-portal.md)或 [Azure CLI](howto-restore-server-cli.md) 來進行還原。
 - 了解[適用於 PostgreSQL 的 Azure 資料庫中的讀取複本](concepts-read-replicas.md)。

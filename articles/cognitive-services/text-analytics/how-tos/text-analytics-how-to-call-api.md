@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: b2c994d23e63f9e2118cd3e6571c5dcc0449a367
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: e17f2015ed4428cfd3c1a6c8a7bc4f92854a6b71
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90601090"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710595"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>如何呼叫文字分析 REST API
 
@@ -26,6 +26,8 @@ ms.locfileid: "90601090"
 文字分析是無狀態的，因此不會有資料資產需要管理。 系統會上傳您的文字、於接收到時便進行分析，並立即將結果傳回至呼叫應用程式。
 
 [!INCLUDE [text-analytics-api-references](../includes/text-analytics-api-references.md)]
+
+[!INCLUDE [v3 region availability](../includes/v3-region-availability.md)]
 
 ## <a name="prerequisites"></a>Prerequisites
 

@@ -10,18 +10,18 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 12/10/2018
-ms.openlocfilehash: 46572853cf882df4d6909297dd058d5ccaf782e1
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 0745957620aab7ed4d08cb016c706b56e6da1c5a
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89144765"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708963"
 ---
 # <a name="create-a-shared-pool-of-data-science-virtual-machines"></a>建立共用的資料科學虛擬機器集區
 
 在本文中，您將瞭解如何為小組 (Dsvm) 建立資料科學虛擬機器的共用集區。 使用共用集區的優點包括更佳的資源使用率、更輕鬆的共用和共同作業，以及更有效地管理 DSVM 資源。
 
-您可以使用許多方法和技術來建立 DSVM 集區。 本文著重于 (Vm) 的互動式虛擬機器集區。 替代的受控計算基礎結構是 Azure Machine Learning Compute。 如需詳細資訊，請參閱 [使用 PYTHON SDK 建立計算目標](../how-to-create-attach-compute-sdk.md)。
+您可以使用許多方法和技術來建立 DSVM 集區。 本文著重于 (Vm) 的互動式虛擬機器集區。 替代的受控計算基礎結構是 Azure Machine Learning Compute。 如需詳細資訊，請參閱 [建立計算](../how-to-create-attach-compute-cluster.md)叢集。
 
 ## <a name="interactive-vm-pool"></a>互動式虛擬機器集區
 
@@ -55,7 +55,7 @@ az group deployment create --resource-group  [[NAME OF RESOURCE GROUP ABOVE]]  -
 
 虛擬機器擴展集支援自動調整。 您可以設定有關何時建立其他實例的規則，以及何時縮小實例的時機。 例如，您可以相應減少為零個執行個體，以在完全不使用 VM 時節省雲端硬體使用成本。 虛擬機器擴展集的文件頁面會提供[自動調整](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview)的詳細步驟。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [設定通用身分識別](dsvm-common-identity.md)
 * [安全地儲存用來存取雲端資源的認證](dsvm-secure-access-keys.md)

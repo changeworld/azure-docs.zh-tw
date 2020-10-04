@@ -11,23 +11,26 @@ ms.subservice: core
 ms.date: 08/06/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq1
-ms.openlocfilehash: 5345fd81e41bbb354e11e1be23329c3130d4d0c2
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: c22593fbd1e1653efa98c760d5bbb73b03761059
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90898073"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708390"
 ---
 # <a name="create-compute-targets-for-model-training-and-deployment-in-azure-machine-learning-studio"></a>在 Azure Machine Learning studio 中建立模型定型和部署的計算目標
 
 在本文中，您將瞭解如何在 Azure Machine studio 中建立和管理計算目標。  您也可以使用下列方式來建立和管理計算目標：
 
-* [Azure Machine Learning LEARNING SDK](how-to-create-attach-compute-sdk.md)、 
-* Azure Machine Learning 的 [CLI 擴充](reference-azure-machine-learning-cli.md#resource-management) 功能
+* Azure Machine Learning Learning SDK 或適用于 Azure Machine Learning 的 CLI 擴充功能
+  * [計算執行個體](how-to-create-manage-compute-instance.md)
+  * [計算叢集](how-to-create-attach-compute-cluster.md)
+  * [Azure Kubernetes Service 叢集](how-to-create-attach-kubernetes.md)
+  * [其他計算資源](how-to-attach-compute-targets.md)
 * Azure Machine Learning 的 [VS Code 延伸](how-to-manage-resources-vscode.md#compute-clusters) 模組。
 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 如果您沒有 Azure 訂用帳戶，請在開始前先建立免費帳戶。 立即試用[免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)
 * [Azure Machine Learning 工作區](how-to-manage-workspace.md)
@@ -56,11 +59,11 @@ ms.locfileid: "90898073"
 
 1. 如果您沒有任何計算目標，請選取頁面中間的 [  **建立** ]。
   
-    :::image type="content" source="media/how-to-create-attach-studio/create-compute-target.png" alt-text="建立計算目標":::
+    :::image type="content" source="media/how-to-create-attach-studio/create-compute-target.png" alt-text="查看計算目標的清單":::
 
 1. 如果您看到計算資源的清單，請選取清單上方的 [ **+ 新增** ]。
 
-    :::image type="content" source="media/how-to-create-attach-studio/select-new.png" alt-text="選取 [新增]":::
+    :::image type="content" source="media/how-to-create-attach-studio/select-new.png" alt-text="查看計算目標的清單":::
 
 
 1. 填寫您計算類型的表單：
@@ -74,14 +77,14 @@ ms.locfileid: "90898073"
 
 1. 從清單選取計算目標以檢視建立作業的狀態：
 
-    :::image type="content" source="media/how-to-create-attach-studio/view-list.png" alt-text="從清單中查看計算狀態":::
+    :::image type="content" source="media/how-to-create-attach-studio/view-list.png" alt-text="查看計算目標的清單":::
 
 
 ### <a name="compute-instance"></a>計算執行個體
 
 使用 [上述步驟](#portal-create) 來建立計算實例。  然後填寫表單，如下所示：
 
-:::image type="content" source="media/concept-compute-instance/create-compute-instance.png" alt-text="建立新的計算實例":::
+:::image type="content" source="media/concept-compute-instance/create-compute-instance.png" alt-text="查看計算目標的清單":::
 
 
 |欄位  |描述  |
@@ -107,7 +110,7 @@ ms.locfileid: "90898073"
 |節點數目上限 | 您要布建的節點數目上限。 當提交工作時，計算會自動調整為此節點計數的最大值。 |
 |進階設定     |  選擇性。 設定虛擬網路。 指定 **資源群組**、 **虛擬網路**和 **子網** ，以在 Azure 虛擬網路內建立計算實例， (vnet) 。 如需詳細資訊，請參閱這些 vnet 的 [網路需求](how-to-enable-virtual-network.md#compute-instance) 。   同時附加 [受控](#managed-identity) 識別以授與資源的存取權     |
 
-#### <a name="set-up-managed-identity"></a><a id="managed-identity"></a> 設定受控識別
+#### <a name="set-up-managed-identity"></a><a name="managed-identity"></a> 設定受控識別
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-managed-identity-intro.md)]
 
@@ -160,7 +163,7 @@ ms.locfileid: "90898073"
 1. 選取 [附加]。 
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 建立目標並將其連結至您的工作區之後，您可以在 [執行](how-to-set-up-training-targets.md) 設定中搭配 `ComputeTarget` 物件使用它：
 

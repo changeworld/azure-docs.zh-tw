@@ -1,17 +1,17 @@
 ---
 title: 網路功能總覽-適用於 MySQL 的 Azure 資料庫彈性的伺服器
 description: 瞭解適用於 MySQL 的 Azure 資料庫的彈性伺服器部署選項中的連線能力和網路選項
-author: rachel-msft
-ms.author: raagyema
+author: ambhatna
+ms.author: ambhatna
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/23/2020
-ms.openlocfilehash: 4eb9ffceada245f7a7f4b2631a79330fb497a452
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 48265856e5e745e05f6625766f9cd0c9b15c90a5
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91331721"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708657"
 ---
 # <a name="connectivity-and-networking-concepts-for-azure-database-for-mysql---flexible-server-preview"></a>適用於 MySQL 的 Azure 資料庫彈性的伺服器 (預覽) 的連線能力和網路概念
 

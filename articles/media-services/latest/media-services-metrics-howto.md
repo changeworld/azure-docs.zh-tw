@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: f5a3488be3fdc0eb3bc8956db66c06df25ff18c0
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 09c306b85c910e8ec2021abf15013935c44b0df3
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89296616"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91707705"
 ---
 # <a name="monitor-media-services-metrics"></a>監視媒體服務計量
 
@@ -48,7 +48,7 @@ Azure 監視器提供數種方式來與計量互動，包括在入口網站中�
 
     選取資源，然後按 **下 [** 套用]。 如需支援的資源和度量的詳細資訊，請參閱 [監視媒體服務計量](media-services-metrics-diagnostic-logs.md)。
 
-    ![計量](media/media-services-metrics/metrics02.png)
+    ![顯示所選資源的螢幕擷取畫面，並反白顯示 [套用] 按鈕。](media/media-services-metrics/metrics02.png)
 
     > [!NOTE]
     > 若要在您要監視計量的資源之間切換，請再次按一下 **資源** 方塊，然後重複此步驟。
@@ -75,6 +75,6 @@ az monitor metrics list --resource \
 * [Azure 監視器計量](../../azure-monitor/platform/data-platform.md)
 * [使用 Azure 監視器建立、查看和管理計量警示](../../azure-monitor/platform/alerts-metric.md)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 [診斷記錄](media-services-diagnostic-logs-howto.md)

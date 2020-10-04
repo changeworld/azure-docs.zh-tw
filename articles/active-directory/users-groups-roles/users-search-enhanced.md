@@ -10,27 +10,29 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: how-to
-ms.date: 09/03/2020
+ms.date: 10/02/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e0c8e6fb3bab179483d03320e6d90ab712ec528
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: be0d428120f53a4edb9763199a78b0e50409b19a
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89493323"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708727"
 ---
 # <a name="user-management-enhancements-preview-in-azure-active-directory"></a>Azure Active Directory 中的使用者管理增強功能 (預覽) 
 
-本文說明如何使用 Azure Active Directory (Azure AD) 入口網站中的增強型使用者管理預覽。 [ **所有使用者** 和 **已刪除的使用者** ] 頁面已更新為提供詳細資訊，並可讓您更輕鬆地找到使用者。 如需有關預覽版的詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+本文說明如何使用 Azure Active Directory (Azure AD) 入口網站中的使用者管理增強功能預覽。 [ **所有使用者** 和 **已刪除的使用者** ] 頁面已更新為提供詳細資訊，並可讓您更輕鬆地找到使用者。 如需有關預覽版的詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 預覽版中的變更包括：
 
 - 更多可見的使用者屬性，包括物件識別碼、目錄同步處理狀態、建立類型和身分識別簽發者
 - 搜尋現在允許名稱、電子郵件和物件識別碼的合併搜尋
-- 依使用者類型的增強篩選 (成員和來賓) 、目錄同步處理狀態和建立類型
+- 依使用者類型的增強篩選 (成員、來賓、無) 、目錄同步狀態、建立類型、公司名稱和功能變數名稱
+- 屬性（例如名稱和使用者主體名稱）上的新排序功能
+- 新的總使用者計數會以搜尋或篩選準則更新
 
 > [!NOTE]
 > Azure AD B2C 租使用者目前無法使用此預覽。
@@ -66,7 +68,7 @@ ms.locfileid: "89493323"
 - 邀請狀態：來賓使用者邀請的狀態。
 - Mail：使用者的電子郵件。
 
-   ![顯示在 [所有使用者] 和 [已刪除的使用者] 頁面上的新使用者屬性](./media/users-search-enhanced/user-properties.png)
+![顯示在 [所有使用者] 和 [已刪除的使用者] 頁面上的新使用者屬性](./media/users-search-enhanced/user-properties.png)
 
 ### <a name="deleted-users-page"></a>刪除的使用者頁面
 
@@ -96,22 +98,36 @@ ms.locfileid: "89493323"
 
 以下是 [ **所有使用者** ] 頁面上的可篩選屬性：
 
-- 使用者類型-成員或來賓
-- 目錄同步狀態-是
-- 建立類型-邀請、電子郵件驗證、本機帳戶
+- 使用者類型：成員、來賓、無
+- 目錄同步狀態：是，否
+- 建立類型：邀請、電子郵件驗證、本機帳戶
 - 邀請狀態-等待接受、已接受
-- 管理單位-選取此選項可將您所看到的使用者範圍限制為單一管理單位。 如需詳細資訊，請參閱 [管理單位管理預覽](directory-administrative-units.md)。
+- 功能變數名稱：輸入功能變數名稱
+- 公司名稱：輸入公司名稱
+- 管理單位：選取此選項可將您所看到的使用者範圍限制為單一管理單位。 如需詳細資訊，請參閱 [管理單位管理預覽](directory-administrative-units.md)。
 
-## <a name="filtering-deleted-users-list"></a>篩選已刪除的使用者清單
+### <a name="filtering-deleted-users-list"></a>篩選已刪除的使用者清單
 
 [ **已刪除的使用者** ] 頁面的其他篩選不在 [ **所有使用者** ] 頁面中。 以下是 [ **已刪除的使用者** ] 頁面上的可篩選屬性：
 
-- 使用者類型-成員或來賓
-- 目錄同步狀態-是
-- 建立類型-邀請、電子郵件驗證、本機帳戶
-- 邀請狀態-等待接受、已接受
-- 刪除日期-過去7、14或30天
-- 永久刪除日期-過去7、14或30天
+- 使用者類型：成員、來賓、無
+- 目錄同步狀態：是，否
+- 建立類型：邀請、電子郵件驗證、本機帳戶
+- 邀請狀態：等待接受，已接受
+- 刪除日期：過去7、14或30天
+- 功能變數名稱：輸入功能變數名稱
+- 公司名稱：輸入公司名稱
+- 永久刪除日期：過去7、14或30天
+
+## <a name="user-list-sorting"></a>使用者清單排序
+
+您現在可以在 [ **所有使用者** ] 和 [ **已刪除的使用者** ] 頁面中依名稱和使用者主體名稱排序。 您也可以在 [ **刪除的使用者** ] 清單中依刪除日期排序。
+
+## <a name="user-list-counts"></a>使用者清單計數
+
+您可以在 [ **所有使用者** ] 和 [ **已刪除的使用者** ] 頁面中，查看使用者總數。 當您搜尋或篩選清單時，計數會更新以反映找到的使用者總數。
+
+![[所有使用者] 頁面上的使用者清單計數圖例](./media/users-search-enhanced/user-list-sorting.png)
 
 ## <a name="frequently-asked-questions-faq"></a>常見問題集 (FAQ)
 
@@ -121,10 +137,8 @@ ms.locfileid: "89493323"
 來源資料行發生什麼事？ | **源**資料行已取代為其他提供類似資訊的資料行，可讓您個別篩選這些值。 範例包括 **建立類型**、 **同步目錄** 和身分 **識別簽發者**。
 使用者名稱資料行發生什麼事？ | [ **使用者名稱** ] 欄仍然存在，但已重新命名為 [ **使用者主體名稱**]。 這樣做會更清楚地反映出該資料行中所包含的資訊。 您也會發現，B2B 來賓現在已顯示完整使用者主要名稱。 這會比對您在 MS Graph 中得到的結果。  
 為什麼我只能執行「開頭為」搜尋，而不是「包含」搜尋？ | 有一些限制讓我們無法讓您執行「包含」搜尋。 我們聽說了意見反應，因此請持續關注。
-為什麼我無法排序資料行？ | 有一些限制讓我們無法讓您排序資料行。 我們聽說了意見反應，因此請持續關注。
-為什麼我只能依 [是] 篩選 [已 **同步目錄** ] 資料行？ | 有一些限制讓我們無法讓您依無值篩選此屬性。 我們聽說了意見反應，因此請持續關注。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 使用者作業
 

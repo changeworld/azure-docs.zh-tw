@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 07/06/2020
-ms.openlocfilehash: c3ffcea27fa16fd4f5449b42407a7e4779ca27f9
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 33198f95ef0309cada6f5f11c809811f23d7f826
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89420926"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708640"
 ---
 # <a name="offer-listing-best-practices"></a>陳列供應項目的最佳做法
 
@@ -61,7 +61,8 @@ Microsoft AppSource 和 Azure Marketplace 是提供不同方案類型的線上�
 
 #### <a name="important-saas-offers-and-microsoft-365-add-ins"></a>重要： SaaS 提供和 Microsoft 365 增益集
 
-如需有關交易功能可能會如何影響您的供應專案在 marketplace 客戶間的查看和購買方式的特定詳細資料，請參閱 [指南（依供應專案類型](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-overview) ）。 在 SaaS 供應專案中，供應專案的交易功能以及類別選取專案將會決定即將發佈供應專案的線上商店：
+請參閱 [商用市集中的交易](marketplace-commercial-transaction-capabilities-and-considerations.md) ，以取得有關交易功能可能會如何影響 marketplace 客戶可查看和購買供應專案的特定詳細資料。 針對 SaaS 供應專案，供應專案的交易功能以及類別選取專案將會決定您的供應專案將發佈到的線上商店。
+
 
 | SaaS 供應項目    | SaaS 供應項目   | SaaS 供應項目  | SaaS 供應項目   | SaaS 供應項目   | SaaS 供應項目   | SaaS 供應項目    | 適用的線上商店| 適用的線上商店 |
 |:-------------:|:---:|:--------:|:---------:|:--:|:--:|:---:|:---------------------:|:-------------:|

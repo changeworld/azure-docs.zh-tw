@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: 2f05ab2bc7e514f3e58f383faf47a74ef69f94b6
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 53d821809820b11a9a126a826db79726dd43e382
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91535088"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708232"
 ---
 # <a name="configure-and-submit-training-runs"></a>設定並提交定型回合
 
@@ -26,14 +26,12 @@ ms.locfileid: "91535088"
 
 您只需要在 **腳本執行**設定內定義每個計算目標的環境。  然後，當您想要在不同的計算目標上執行定型實驗時，為該計算指定回合組態。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 如果您沒有 Azure 訂用帳戶，請在開始前先建立免費帳戶。 立即試用[免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)
 * [適用于 Python 的 AZURE MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true) ( # B0 = 1.13.0) 
 * [Azure Machine Learning 工作區](how-to-manage-workspace.md)、`ws`
-* 計算目標 `my_compute_target` 。  建立具有下列內容的計算目標：
-  * [Python SDK](how-to-create-attach-compute-sdk.md) 
-  * [Azure Machine Learning studio](how-to-create-attach-compute-studio.md)
+* 計算目標 `my_compute_target` 。  [建立計算目標](how-to-create-attach-compute-studio.md) 
 
 ## <a name="whats-a-script-run-configuration"></a><a name="whats-a-run-configuration"></a>什麼是腳本執行設定？
 [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true)可用來設定提交定型回合作為實驗一部分的必要資訊。
@@ -94,7 +92,7 @@ myenv = Environment.get(workspace=ws, name="AzureML-Minimal")
 
 如需有關環境的詳細資訊和詳細資訊，請參閱 [Azure Machine Learning 中的建立 & 使用軟體環境](how-to-use-environments.md)。
   
-### <a name="local-compute-target"></a>本機計算目標
+### <a name="local-compute-target"></a><a name="local"></a>本機計算目標
 
 如果您的計算目標是您的 **本機電腦**，您必須負責確保執行腳本的 Python 環境中有所有必要的套件可供使用。  使用您 `python.user_managed_dependencies` 目前的 python 環境 (或您指定) 路徑上的 python。
 
@@ -119,6 +117,10 @@ src = ScriptRunConfig(source_directory=project_folder,
                       script='train.py',
                       compute_target=my_compute_target,
                       environment=myenv)
+
+# Set compute target
+# Skip this if you are running on your local computer
+script_run_config.run_config.target = my_compute_target
 ```
 
 如果您未指定環境，將會為您建立預設環境。

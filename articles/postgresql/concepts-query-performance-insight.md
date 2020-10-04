@@ -1,17 +1,17 @@
 ---
 title: 查詢效能深入解析-適用於 PostgreSQL 的 Azure 資料庫-單一伺服器
 description: 本文說明適用於 PostgreSQL 的 Azure 資料庫單一伺服器中的查詢效能深入解析功能。
-author: rachel-msft
-ms.author: raagyema
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: a7573e99de96e3d13509056c49bc24be7fe166bf
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: babf2c8208732a194184549dfa5ed3228b376d0f
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90906522"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710255"
 ---
 # <a name="query-performance-insight"></a>查詢效能深入解析 
 
@@ -40,12 +40,12 @@ Azure 入口網站中的[查詢效能深入解析](concepts-query-performance-in
 
 選取 [等候統計資料] 索引標籤，以檢視伺服器中等候的對應視覺效果。
 
-:::image type="content" source="./media/concepts-query-performance-insight/query-performance-insight-wait-statistics.png" alt-text="查詢效能深入解析等候統計資料":::
+:::image type="content" source="./media/concepts-query-performance-insight/query-performance-insight-wait-statistics.png" alt-text="查詢效能深入解析長時間執行的查詢":::
 
 ## <a name="considerations"></a>考量
 * [讀取複本](concepts-read-replicas.md)無法使用查詢效能深入解析。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 - 深入了解在適用於 PostgreSQL 的 Azure 資料庫中進行[監視和微調](concepts-monitoring.md)。
 
 

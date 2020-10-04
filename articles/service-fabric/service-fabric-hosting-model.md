@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/15/2017
 ms.author: harahma
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2e14995b92e99e1a9695f81fb71bcab6dd62303a
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 5f3f6238bb72704d13fef4a7171aeaebee5f9141
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89011662"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708691"
 ---
 # <a name="azure-service-fabric-hosting-model"></a>Azure Service Fabric 主控模型
 本文提供 Azure Service Fabric 所提供之應用程式主控模型的概觀，並說明**共用處理序**與**專屬處理序**模型之間的差異。 本文說明已部署之應用程式在 Service Fabric 節點上看起來的樣子，以及服務的複本 (或執行個體) 與服務主機處理序之間的關聯性。
@@ -30,19 +30,19 @@ ms.locfileid: "89011662"
 假設我們有一個含有 3 個節點的叢集，並且建立一個類型為 'MyAppType' 的「應用程式」** **fabric:/App1**。 在這個「應用程式」**fabric:/App1** 中，我們會建立一個類型為 'MyServiceType' 的服務 **fabric:/App1/ServiceA**。 此服務具有 2 個分割區 (例如 **P1** 和 **P2**) 且每一分割區有 3 個複本。 下圖顯示此應用程式最後部署在節點上時的檢視。
 
 
-![所部署應用程式的節點檢視圖表][node-view-one]
+![此圖顯示此應用程式最後部署在節點上的觀點。][node-view-one]
 
 
 Service Fabric 啟動了 'MyServicePackage'，而 'MyServicePackage' 則啟動了裝載來自兩個分割區之複本的 'MyCodePackage'。 此叢集內的所有節點都具有相同檢視，因為我們所選擇的每一分割區複本數目等於此叢集內的節點數目。 讓我們在應用程式 **fabric:/App1** 中建立另一個服務 **fabric:/App1/ServiceB**。 此服務具有 1 個分割區 (例如 **P3**) 且每一分割區有 3 個複本。 下圖顯示節點上的新檢視：
 
 
-![所部署應用程式的節點檢視圖表][node-view-two]
+![顯示節點上新視圖的圖表。][node-view-two]
 
 
 Service Fabric 在現有的 'MyServicePackage' 啟用項中，放置了服務 **fabric:/App1/ServiceB** 之分割區 **P3** 的新複本。 現在。 建立另一個 'MyAppType' 類型的「應用程式」**fabric:/App2**。 在 **fabric:/App2** 中建立服務 **fabric:/App2/ServiceA**。 此服務具有 2 個分割區 (**P4** 和 **P5**) 且每一分割區有 3 個複本。 下圖顯示新的節點檢視：
 
 
-![所部署應用程式的節點檢視圖表][node-view-three]
+![顯示新節點視圖的圖表。][node-view-three]
 
 
 Service Fabric 會啟動 'MyServicePackage' 的新複本，而這會啟動 'MyCodePackage' 的新複本。 **fabric:/App2/ServiceA** 服務的兩個分割區複本 (**P4** 和 **P5**)，會位於這個新複本 'MyCodePackage'。
@@ -157,7 +157,7 @@ Service Fabric 會將[客體可執行檔][a2]和[容器][a3]應用程式視為�
 在指定的節點上，這兩個服務各有兩個複本。 由於我們已使用專屬處理序模型來建立這些服務，因此 Service Fabric 會為每個複本建立一份新的 'MyServicePackage'。 每個 'MultiTypeServicePackage' 啟用項都會啟動一份 'MyCodePackageA' 和 'MyCodePackageB'。 不過，'MyCodePackageA' 或 'MyCodePackageB' 只有其中之一會裝載作為 'MultiTypeServicePackage' 啟用對象的複本。 下圖顯示節點檢視：
 
 
-![所部署應用程式的節點檢視圖表][node-view-five]
+![顯示節點視圖的圖表。][node-view-five]
 
 
 在服務 **fabric:/SpecialApp/ServiceA** 分割區 **P1** 之複本的 'MultiTypeServicePackage' 啟用項中，是由 'MyCodePackageA' 裝載複本。 'MyCodePackageB' 則正在執行。 同樣地，在服務 **fabric:/SpecialApp/ServiceB** 分割區 **P3** 之複本的 'MultiTypeServicePackage' 啟用項中，是由 'MyCodePackageB' 裝載複本。 'MyCodePackageB' 則正在執行。 因此，每一 ServicePackage** 的 CodePackage** (註冊不同的 ServiceType**) 數目越多，備援資源的使用量就越高。 

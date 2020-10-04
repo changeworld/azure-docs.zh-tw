@@ -1,17 +1,17 @@
 ---
 title: 防火牆規則-適用於 PostgreSQL 的 Azure 資料庫-單一伺服器
 description: 本文說明如何使用防火牆規則來連接到適用於 PostgreSQL 的 Azure 資料庫單一伺服器。
-author: rachel-msft
-ms.author: raagyema
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.openlocfilehash: 7048fac4804e16ae70145c8fadc1cd6e0859fcfc
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: e677aef7a90e7372c5af4bfa48c6160c439b3ee8
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90903906"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91707960"
 ---
 # <a name="firewall-rules-in-azure-database-for-postgresql---single-server"></a>適用於 PostgreSQL 的 Azure 資料庫中的防火牆規則-單一伺服器
 除非您指定哪些電腦擁有許可權，否則適用於 PostgreSQL 的 Azure 資料庫伺服器防火牆會防止對您資料庫伺服器的所有存取。 此防火牆會根據每一個要求的來源 IP 位址來授與伺服器存取權。
@@ -40,7 +40,7 @@ ms.locfileid: "90903906"
 > [ **允許存取 azure 服務** ] 選項會設定防火牆，以允許所有來自 Azure 的連線，包括來自其他客戶訂用帳戶的連接。 選取這個選項時，請確定您的登入和使用者權限會限制為只有授權的使用者才能存取。
 > 
 
-:::image type="content" source="media/concepts-firewall-rules/allow-azure-services.png" alt-text="在入口網站中設定 [允許存取 Azure 服務]":::
+:::image type="content" source="media/concepts-firewall-rules/allow-azure-services.png" alt-text="防火牆運作方式的範例流程":::
 
 ### <a name="connecting-from-a-vnet"></a>從 VNet 連接
 若要從 VNet 安全地連接到您的適用於 PostgreSQL 的 Azure 資料庫伺服器，請考慮使用 [vnet 服務端點](./concepts-data-access-and-security-vnet.md)。 
@@ -71,7 +71,7 @@ ms.locfileid: "90903906"
 
    例如，如果您從已啟用 **Microsoft .sql** 但沒有對應 VNet 規則的子網中的 Azure VM 連線，您可能會看到下列錯誤：  `FATAL: Client from Azure Virtual Networks is not allowed to access the server`
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 * [使用 Azure 入口網站建立和管理適用於 PostgreSQL 的 Azure 資料庫防火牆規則](howto-manage-firewall-using-portal.md)
 * [使用 Azure CLI 建立和管理適用於 PostgreSQL 的 Azure 資料庫防火牆規則](howto-manage-firewall-using-cli.md)
 * [適用於 PostgreSQL 的 Azure 資料庫中的 VNet 服務端點](./concepts-data-access-and-security-vnet.md)
