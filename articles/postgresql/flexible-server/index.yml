@@ -4,17 +4,17 @@ summary: 適用於 PostgreSQL 的 Azure 資料庫 - 彈性伺服器 (預覽) 是
 metadata:
   title: 適用於 PostgreSQL 的 Azure 資料庫 - 彈性伺服器 (預覽)
   description: 適用於 PostgreSQL 的 Azure 資料庫 - 彈性伺服器 (預覽) 是 Microsoft 雲端中針對開發人員所建置、並以 PostgreSQL Community Edition 為基礎的關聯式資料庫服務。
-  author: rachel-msft
-  ms.author: raagyema
+  author: sunilagarwal
+  ms.author: sunila
   ms.date: 09/22/2020
   ms.service: postgresql
   ms.topic: landing-page
-  ms.openlocfilehash: 7c214662a37083708b0a38148382e16b553145c4
-  ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+  ms.openlocfilehash: 215a34c7adcd9f5628bb164deecaf94d2b885b1d
+  ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 09/22/2020
-  ms.locfileid: "90928759"
+  ms.lasthandoff: 10/04/2020
+  ms.locfileid: "91710663"
 landingContent:
 - title: 關於彈性伺服器 (預覽)
   linkLists:

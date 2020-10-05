@@ -117,15 +117,10 @@
       items:
         - name: 概觀
           href: platform/data-platform.md
-        - name: 資料地點
-          href: platform/data-locations.md
-        - name: 計量
-          href: platform/data-platform-metrics.md
         - name: 記錄
           href: platform/data-platform-logs.md
-        - name: 記錄檔資料擷取時間
-          displayname: latency
-          href: platform/data-ingestion-time.md
+        - name: 計量
+          href: platform/data-platform-metrics.md
         - name: 將資料串流至事件中樞
           href: platform/stream-monitoring-data-event-hubs.md
     - name: 深入解析
@@ -209,39 +204,42 @@
           href: platform/diagnostic-settings.md
     - name: Log Analytics
       items:
-        - name: 記錄查詢概觀
-          displayname: 'log query, log queries, query, queries'
+        - name: 概觀
+          displayname: 'Log Analytics, log query, log queries, query, queries'
           href: log-query/log-query-overview.md
+        - name: 教學課程
+          displayname: 'Log Analytics workspace, log query, log queries, query, queries'
+          href: log-query/get-started-portal.md
+        - name: 查詢範圍
+          href: log-query/scope.md
         - name: 簡單記錄體驗
           href: log-query/simple-logs.md
-        - name: 稽核記錄查詢
-          href: log-query/query-audit.md
-        - name: 教學課程
+        - name: 記錄查詢
           items:
-            - name: Log Analytics 教學課程
-              href: log-query/get-started-portal.md
-            - name: 記錄查詢教學課程
-              href: log-query/get-started-queries.md
-        - name: 記錄資料
-          items:
-            - name: 查詢範圍
-              href: log-query/scope.md
             - name: 標準資料行
               href: platform/log-standard-columns.md
+            - name: 稽核查詢
+              href: log-query/query-audit.md
+            - name: 最佳化查詢
+              href: log-query/query-optimization.md
+            - name: 函式
+              href: log-query/functions.md
+            - name: 剖析文字資料
+              href: log-query/parse-text.md
+            - name: 查詢範例
+              href: log-query/saved-queries.md
             - name: 電腦群組
               href: platform/computer-groups.md
         - name: 查詢語言
           items:
-            - name: 查詢語言文件
-              href: log-query/query-language.md
-            - name: 語言差異
+            - name: KQL 參考
+              href: /azure/data-explorer/kusto/query/
+            - name: 與 Azure 資料總管的差異
               href: log-query/data-explorer-difference.md
-            - name: 實用運算子
-              href: log-query/useful-operators.md
-            - name: 函式
-              href: log-query/functions.md
-            - name: 從記錄搜尋轉換
-              href: log-query/log-search-transition.md
+            - name: 範例
+              href: log-query/examples.md
+            - name: 智慧分析範例
+              href: log-query/smart-analytics.md
             - name: 課程
               items:
                 - name: 字串作業
@@ -268,9 +266,9 @@
                   href: log-query/sql-cheatsheet.md
                 - name: Splunk
                   href: log-query/splunk-cheatsheet.md
-        - name: 跨資源
+        - name: 跨資源查詢
           items:
-            - name: 跨資源查詢
+            - name: 概觀
               href: log-query/cross-workspace-query.md
             - name: 應用程式運算式
               href: log-query/app-expression.md
@@ -280,32 +278,25 @@
               href: log-query/resource-expression.md
             - name: 統一應用程式資料資源
               href: log-query/unify-app-resource-data.md
-        - name: 範例和指引
-          items:
-            - name: 查詢範例
-              href: log-query/saved-queries.md
-            - name: 記錄查詢範例
-              href: log-query/examples.md
-            - name: 智慧分析範例
-              href: log-query/smart-analytics.md
-            - name: 最佳化查詢
-              href: log-query/query-optimization.md
-            - name: 剖析文字資料
-              href: log-query/parse-text.md
         - name: 工作區和叢集
           items:
             - name: 設計工作區部署
               href: platform/design-logs-deployment.md
             - name: 建立工作區
               items:
-                - name: 使用 Azure 入口網站
+                - name: Azure 入口網站
                   href: learn/quick-create-workspace.md
-                - name: 使用 Azure CLI
+                - name: Azure CLI
                   href: learn/quick-create-workspace-cli.md
-                - name: 使用 PowerShell
+                - name: PowerShell
                   href: platform/powershell-workspace-configuration.md
+                - name: Resource Manager 範本
+                  href: platform/template-workspace-configuration.md
             - name: 刪除並復原工作區
               href: platform/delete-workspace.md
+            - name: 管理存取權
+              displayName: Log Analytics workspace
+              href: platform/manage-access.md
             - name: 移動工作區
               href: platform/move-workspace.md
             - name: 服務提供者的設計
@@ -324,10 +315,13 @@
           href: platform/metric-chart-samples.md
         - name: 針對計量圖表進行疑難排解
           href: platform/metrics-troubleshoot.md
-    - name: 資料收集
+    - name: 資料集合
       items:
         - name: 資料收集規則
           href: platform/data-collection-rule-overview.md
+        - name: 記錄檔資料擷取時間
+          displayname: latency
+          href: platform/data-ingestion-time.md
         - name: 代理程式資料來源
           items:
             - name: 概觀
@@ -1167,12 +1161,18 @@
               href: platform/workbooks-time.md
             - name: 文字參數
               href: platform/workbooks-text.md
+            - name: 資源參數
+              href: platform/workbooks-resources.md
         - name: 組態
           items:
             - name: 存取控制
               href: platform/workbooks-access-control.md
             - name: 使用 Azure Resource Manager 進行部署
               href: platform/workbooks-automate.md
+            - name: 群組
+              href: platform/workbooks-groups.md
+            - name: 使用 JSONPath 轉換 JSON 資料
+              href: platform/workbooks-jsonpath.md
             - name: 將活頁簿移至另一個區域
               href: platform/workbooks-move-region.md
             - name: 將活頁簿範本移至另一個區域

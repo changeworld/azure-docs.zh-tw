@@ -39,6 +39,7 @@
         - name: 適用於 App Service 的 Azure Defender
           href: defender-for-app-service-introduction.md
         - name: 適用於儲存體的 Azure Defender
+          displayName: 'blob, adls, files'
           href: defender-for-storage-introduction.md
         - name: 適用於 SQL 的 Azure Defender
           displayName: database
@@ -46,7 +47,7 @@
         - name: 適用於 IoT 的 Azure Defender
           href: defender-for-iot-introduction.md
         - name: 適用於 Key Vault 的 Azure Defender
-          displayName: KV
+          displayName: 'KV, akv'
           href: defender-for-key-vault-introduction.md
         - name: 適用於 Kubernetes 的 Azure Defender
           displayName: 'clusters, k8s'
@@ -65,13 +66,13 @@
   items:
     - name: 開始使用
       href: security-center-get-started.md
-    - name: 連接非 Azure 機器
-      displayName: 'azure stack, windows, linux'
-      href: quickstart-onboard-machines.md
-    - name: 連接 AWS 和 GCP 帳戶
+    - name: 設定混合式環境
       items:
+        - name: 連接非 Azure 機器
+          displayName: 'azure stack, ash, windows, linux, hybrid, arc'
+          href: quickstart-onboard-machines.md
         - name: 連接 AWS 帳戶
-          displayName: 'hybrid, multicloud, amazon'
+          displayName: 'hybrid, multicloud, amazon, arc'
           href: quickstart-onboard-aws.md
         - name: 連接 GCP 帳戶
           displayName: 'hybrid, multicloud, google'
@@ -90,7 +91,7 @@
       href: security-center-planning-and-operations-guide.md
     - name: 保護您的資源
       href: tutorial-protect-resources.md
-    - name: 回應事件
+    - name: 調查及回應安全性警示
       href: tutorial-security-incident.md
     - name: 改善法規合規性
       href: security-center-compliance-dashboard.md
@@ -206,6 +207,7 @@
       items:
         - name: 在 Azure VM 上設定適用於 SQL 的 Azure Defender
           href: defender-for-sql-usage.md
+          displayName: 'hybrid, arc'
         - name: 自訂資訊保護原則
           href: security-center-info-protection-policy.md
     - name: 使用適用於容器登錄的 Azure Defender
@@ -218,6 +220,7 @@
         - name: 建立和管理警示歸併規則
           href: alerts-suppression-rules.md
         - name: 回應適用於 Key Vault 的 Azure Defender 警示
+          displayName: 'akv, kv'
           href: defender-for-key-vault-usage.md
         - name: 管理安全性事件
           href: security-center-incident.md

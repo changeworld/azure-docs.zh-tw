@@ -3,17 +3,17 @@ title: 適用於 PostgreSQL 的 Azure 資料庫文件
 summary: 適用於 PostgreSQL 的 Azure 資料庫是以開放原始碼 Postgres 資料庫引擎為基礎的關聯式資料庫服務。 其是完全受控的資料庫即服務，能透過可預測的效能、安全性、高可用性及動態可擴縮性來處理任務關鍵性工作負載。
 metadata:
   description: 適用於 PostgreSQL 的 Azure 資料庫位於 Microsoft 雲端中，其是以開放原始碼 PostgreSQL 伺服器引擎為基礎的關聯式資料庫服務，供開發人員使用。
-  author: rachel-msft
-  ms.author: raagyema
+  author: sunilagarwal
+  ms.author: sunila
   ms.date: 09/21/2020
   ms.service: postgresql
   ms.topic: landing-page
-  ms.openlocfilehash: c14cab875ab017feb913269e277e8b5c12a3ee08
-  ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+  ms.openlocfilehash: 4931a50d2258902c551cb276a8b47b129a176551
+  ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 09/22/2020
-  ms.locfileid: "90895654"
+  ms.lasthandoff: 10/04/2020
+  ms.locfileid: "91704288"
 landingContent:
 - title: 關於 適用於 PostgreSQL 的 Azure 資料庫
   linkLists:

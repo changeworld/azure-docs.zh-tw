@@ -3,17 +3,17 @@ title: 適用於 PostgreSQL 的 Azure 資料庫單一伺服器文件
 summary: 適用於 PostgreSQL 的 Azure 資料庫是以開放原始碼 Postgres 資料庫引擎為基礎的關聯式資料庫服務。  單一伺服器是用來建立 postgres 伺服器的各種部署選項之一。 了解如何透過我們的快速入門、教學課程和範例使用單一伺服器。
 metadata:
   description: 適用於 PostgreSQL 的 Azure 資料庫位於 Microsoft 雲端中，其是以開放原始碼 PostgreSQL 伺服器引擎為基礎的關聯式資料庫服務，供開發人員使用。
-  author: rachel-msft
-  ms.author: raagyema
+  author: sunilagarwal
+  ms.author: sunila
   ms.date: 09/20/2020
   ms.service: postgresql
   ms.topic: landing-page
-  ms.openlocfilehash: 833b35b7a2f597186c69d95fc4ab8f2704b59c91
-  ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+  ms.openlocfilehash: 34ecc6339f1ade7fd9f0bc427982b1b322d79f56
+  ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 09/22/2020
-  ms.locfileid: "90928743"
+  ms.lasthandoff: 10/04/2020
+  ms.locfileid: "91710150"
 landingContent:
 - title: 關於單一伺服器
   linkLists:
