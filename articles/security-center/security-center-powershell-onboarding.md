@@ -1,5 +1,5 @@
 ---
-title: 使用 PowerShell 上架到 Azure 資訊安全中心
+title: 使用 PowerShell 上架至 Azure 資訊安全中心
 description: 本文件將逐步引導您完成使用 PowerShell Cmdlet 上架 Azure 資訊安全中心的程序。
 services: security-center
 documentationcenter: na
@@ -8,17 +8,17 @@ manager: rkarlin
 ms.assetid: e400fcbf-f0a8-4e10-b571-5a0d0c3d0c67
 ms.service: security-center
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/02/2018
 ms.author: memildin
-ms.openlocfilehash: e367851c4d709acbc0eb94a47d7e20d4d3c1cc46
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
-ms.translationtype: MT
+ms.openlocfilehash: c805b35b2c05600f96983da42ea7206a09e2e3e8
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90904815"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447383"
 ---
 # <a name="automate-onboarding-of-azure-security-center-using-powershell"></a>使用 PowerShell 自動化上架 Azure 資訊安全中心
 
@@ -29,15 +29,15 @@ ms.locfileid: "90904815"
 
 此文章提供了一個範例 PowerShell 指令碼，可以在您的環境中對其進行修改並使用，以在您的訂用帳戶之間推出資訊安全中心。 
 
-在此範例中，我們會在識別碼： d07c0080-170c-4c24-861d-9c817742786c 的訂用帳戶上啟用資訊安全中心，並藉由啟用 Azure Defender （可提供先進的威脅防護和偵測功能）來套用提供高階保護的建議設定：
+在此範例中，我們將在識別碼為 d07c0080-170c-4c24-861d-9c817742786c 的訂用帳戶上啟用資訊安全中心，並藉由啟用可提供進階威脅防護和偵測功能的 Azure Defender，來套用提供高層級保護的建議設定：
 
 1. 啟用 [Azure Defender](azure-defender.md)。 
  
-2. 設定 log Analytics 代理程式將會在與訂用帳戶相關聯的 Vm 上傳送其收集資料的 Log Analytics 工作區–在此範例中，現有的使用者定義工作區 (myWorkspace) 。
+2. 設定 Log Analytics 工作區，以將 Log Analytics 代理程式在訂用帳戶相關聯 VM 上收集的資料傳送到其中 – 在此範例中，是現有的使用者定義工作區 (myWorkspace)。
 
-3. 啟用安全中心的自動代理程式布建，以 [部署 Log Analytics 代理程式](security-center-enable-data-collection.md#auto-provision-mma)。
+3. 啟用資訊安全中心的自動代理程式佈建，這會[部署 Log Analytics 代理程式](security-center-enable-data-collection.md#auto-provision-mma)。
 
-5. 將組織的 [CISO 設定為資訊安全中心警示和值得注意事件的安全性連絡人](security-center-provide-security-contact-details.md)。
+5. 將組織的 [CISO 設定為資訊安全中心警示與重大事件的安全性連絡人](security-center-provide-security-contact-details.md)。
 
 6. 指派資訊安全中心的[預設安全性原則](tutorial-security-policy.md)。
 
@@ -61,7 +61,7 @@ ms.locfileid: "90904815"
 
     ```Register-AzResourceProvider -ProviderNamespace 'Microsoft.Security'```
 
-1. 選擇性：設定訂用帳戶 (的 Azure Defender 開啟/關閉) 的涵蓋範圍層級。 如果未定義，則 Defender 為 off：
+1. 選用：設定訂用帳戶的涵蓋範圍層級 (開啟/關閉 Azure Defender)。 如果未定義，Defender 將會關閉：
 
     ```Set-AzContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"```
 
@@ -71,7 +71,7 @@ ms.locfileid: "90904815"
 
     ```Set-AzSecurityWorkspaceSetting -Name "default" -Scope "/subscriptions/d07c0080-170c-4c24-861d-9c817742786c" -WorkspaceId"/subscriptions/d07c0080-170c-4c24-861d-9c817742786c/resourceGroups/myRg/providers/Microsoft.OperationalInsights/workspaces/myWorkspace"```
 
-1. 在您的 Azure Vm 上自動布建 Log Analytics 代理程式的安裝：
+1. 在您的 Azure VM 上自動佈建 Log Analytics 代理程式的安裝：
     
     ```Set-AzContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"```
     
@@ -91,7 +91,7 @@ ms.locfileid: "90904815"
 
     ```$Policy = Get-AzPolicySetDefinition | where {$_.Properties.displayName -EQ 'Enable Monitoring in Azure Security Center'} New-AzPolicyAssignment -Name 'ASC Default <d07c0080-170c-4c24-861d-9c817742786c>' -DisplayName 'Security Center Default <subscription ID>' -PolicySetDefinition $Policy -Scope '/subscriptions/d07c0080-170c-4c24-861d-9c817742786c'```
 
-您已成功使用 PowerShell 上線 Azure 資訊安全中心。
+您已成功使用 PowerShell 上架 Azure 資訊安全中心。
 
 您現在可以將這些 PowerShell Cmdlet 與自動化指令碼一起使用，以程式設計方式逐一查看跨訂用帳戶和資源。 這可以節省時間，並減少人為錯誤的可能性。 您可以使用此[範例指令碼](https://github.com/Microsoft/Azure-Security-Center/blob/master/quickstarts/ASC-Samples.ps1)作為參考。
 
@@ -101,9 +101,9 @@ ms.locfileid: "90904815"
 ## <a name="see-also"></a>另請參閱
 若要深入了解如何使用 PowerShell 來自動化上架到資訊安全中心的相關資訊，請參閱下列文章：
 
-* [Az. Security](https://docs.microsoft.com/powershell/module/az.security)
+* [Az.Security](https://docs.microsoft.com/powershell/module/az.security)
 
 如要深入了解資訊安全中心，請參閱下列文章：
 
-* [在 Azure 資訊安全中心中設定安全性原則](tutorial-security-policy.md) --瞭解如何為您的 Azure 訂用帳戶和資源群組設定安全性原則。
-* [管理和回應 Azure 資訊安全中心中的安全性警示](security-center-managing-and-responding-alerts.md) --瞭解如何管理和回應安全性警示。
+* [在 Azure 資訊安全中心設定安全性原則](tutorial-security-policy.md) -- 了解如何為您的 Azure 訂用帳戶及資源群組設定安全性原則。
+* [管理與回應 Azure 資訊安全中心的安全性警示](security-center-managing-and-responding-alerts.md) -- 了解如何管理與回應安全性警示。

@@ -1,31 +1,34 @@
 ---
-title: 快速入門：在 Web 上試用 Content Moderator - Content Moderator
+title: 快速入門：在 Web 上試用 Content Moderator
 titleSuffix: Azure Cognitive Services
-description: 在此快速入門中，您將使用線上「Content Moderator 審核工具」，無須撰寫任何程式碼，即可測試 Content Moderator 的基本功能。
+description: 使用線上「Content Moderator 審核工具」，無須撰寫任何程式碼，即可測試 Content Moderator 的基本功能。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
-ms.date: 06/29/2020
+ms.date: 09/29/2020
 ms.author: pafarley
-ms.openlocfilehash: 7be14c07a08d58f02890a48d39dd0a8010101374
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.custom: cog-serv-seo-aug-2020
+keywords: 內容仲裁者, 內容仲裁
+ms.openlocfilehash: 025c8fcf98a31d7b3380ee2530428d08428493fb
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91332622"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91596798"
 ---
 # <a name="quickstart-try-content-moderator-on-the-web"></a>快速入門：在 Web 上試用 Content Moderator
 
-在此快速入門中，您將使用線上「Content Moderator 審核工具」，無須撰寫任何程式碼，即可測試 Content Moderator 的基本功能。 如果您想要將此服務更快整合至您的應用程式，請參閱[後續步驟](#next-steps)一節中的其他快速入門。
+在此快速入門中，您將使用線上「Content Moderator 審核工具」，無須撰寫任何程式碼，即可測試 Content Moderator 的基本功能。 如果您想要將此服務更快整合至您的內容仲裁應用程式，請參閱[後續步驟](#next-steps)一節中的其他快速入門。
 
 ## <a name="prerequisites"></a>必要條件
 
 - 網頁瀏覽器
 
 ## <a name="set-up-the-review-tool"></a>設定審核工具
+
 「Content Moderator 審核工具」是一個 Web 型工具，可讓人工審核者協助認知服務進行決策。 在本指南中，您將完成設定審核工具的簡短程序，以便了解 Content Moderator 服務如何運作。 請前往 [Content Moderator 審核工具](https://contentmoderator.cognitive.microsoft.com/)網站並註冊。
 
 ![Content Moderator 首頁](images/homepage.PNG)
@@ -82,6 +85,6 @@ ms.locfileid: "91332622"
 ## <a name="next-steps"></a>後續步驟
 
 了解如何在您的應用程式中使用「仲裁 API」本身。
-- 實作影像仲裁。 使用 [API 主控台](try-image-api.md)或依照 [.NET SDK 快速入門](dotnet-sdk-quickstart.md)的指示掃描影像，並使用標籤、信賴分數和其他擷取資訊來偵測潛在的成人和猥褻內容。
-- 實作文字仲裁。 使用 [API 主控台](try-text-api.md)或使用 [.NET SDK 快速入門](dotnet-sdk-quickstart.md)來掃描文字內容，以找出潛在的粗話、機器輔助的不必要文字分類 (預覽)，以及個人資料。
+- 實作影像仲裁。 使用 [API 主控台](try-image-api.md)或依照[用戶端程式庫快速入門](client-libraries.md)的指示掃描影像，並使用標籤、信賴分數和其他擷取資訊來偵測潛在的成人和猥褻內容。
+- 實作文字仲裁。 使用 [API 主控台](try-text-api.md)或使用[用戶端程式庫快速入門](client-libraries.md)來掃描文字內容，以找出潛在的粗話、機器輔助的不必要文字分類 (預覽)，以及個人資料。
 - 實作影片仲裁。 請遵循[適用於 C# 的影片仲裁操作指南](video-moderation-api.md)以掃描影片並偵測潛在成人和不雅內容。 

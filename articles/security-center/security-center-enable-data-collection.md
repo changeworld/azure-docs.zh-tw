@@ -5,15 +5,15 @@ services: security-center
 author: memildin
 manager: rkarlin
 ms.service: security-center
-ms.topic: conceptual
+ms.topic: quickstart
 ms.date: 04/27/2020
 ms.author: memildin
-ms.openlocfilehash: 132e21c861f50caca37fb6fc5df660ff413d07a5
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
-ms.translationtype: MT
+ms.openlocfilehash: 92c73fed84910e525378aa18e02456960acf9911
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905489"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447234"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Azure 資訊安全中心的資料收集
 資訊安全中心會從您的 Azure 虛擬機器 (VM)、虛擬機器擴展集、IaaS 容器和非 Azure (包括內部部署機器) 電腦收集資料，以監視是否有安全性弱點和威脅。 資料是使用 Log Analytics 代理程式收集而得，收集的方式是讀取機器的各種安全性相關組態和事件記錄，並將資料複製到工作區進行分析。 這類資料的範例包括︰作業系統類型和版本、作業系統記錄 (Windows 事件記錄)、執行中程序、電腦名稱、IP 位址和已登入的使用者。
@@ -71,7 +71,7 @@ ms.locfileid: "90905489"
 若要選取資訊安全中心所建立的工作區：
 
 1. 在 [預設工作區組態] 下，選取 [使用資訊安全中心建立的工作區]。
-   ![選取定價層][10] 
+    :::image type="content" source="./media/security-center-enable-data-collection/workspace-selection.png" alt-text="啟用 Log Analytics 代理程式的自動佈建功能"::: 
 
 1. 按一下 [檔案] 。<br>
     資訊安全中心會在此地理位置建立新的資源群組和預設工作區，並將代理程式連線到該工作區。 工作區和資源群組的命名慣例如下：<br>
@@ -81,7 +81,7 @@ ms.locfileid: "90905489"
 1. 資訊安全中心會依據為訂用帳戶設定的定價層，在工作區上自動啟用資訊安全中心解決方案。 
 
 > [!NOTE]
-> 資訊安全中心所建立工作區的 Log Analytics 定價層不會影響資訊安全中心的收費。 資訊安全中心的計費一律根據您的資訊安全中心的安全性原則，以及工作區安裝的解決方案。 針對沒有 Azure Defender 的訂用帳戶，資訊安全中心會在預設工作區上啟用 *SecurityCenterFree* 解決方案。 針對使用 Azure Defender 的訂用帳戶，資訊安全中心會在預設工作區啟用 *安全性* 解決方案。
+> 資訊安全中心所建立工作區的 Log Analytics 定價層不會影響資訊安全中心的收費。 資訊安全中心的計費一律根據您的資訊安全中心的安全性原則，以及工作區安裝的解決方案。 針對沒有 Azure Defender 的訂用帳戶，資訊安全中心會在預設工作區上啟用 *SecurityCenterFree* 解決方案。 針對使用 Azure Defender 的訂用帳戶，資訊安全中心會在預設工作區上啟用 *Security* 解決方案。
 > 將資料儲存在 Log Analytics 中，可能會產生額外的資料儲存費用。 如需詳細資訊，請參閱[價格頁面](https://azure.microsoft.com/pricing/details/security-center/)。
 
 如需現有 Log Analytics 帳戶的詳細資訊，請參閱[現有的 Log Analytics 客戶](./faq-azure-monitor-logs.md)。
@@ -99,8 +99,7 @@ ms.locfileid: "90905489"
 若要選取現有的 Log Analytics 工作區：
 
 1. 在 [預設工作區組態] 下，選取 [使用其他工作區]。
-
-   ![使用其他工作區][2]
+    :::image type="content" source="./media/security-center-enable-data-collection/use-another-workspace.png" alt-text="啟用 Log Analytics 代理程式的自動佈建功能"::: 
 
 2. 從下拉式功能表中，選取要儲存收集資料的工作區。
 
@@ -122,17 +121,17 @@ ms.locfileid: "90905489"
 
    - 若要取消作業，請選取 [取消]。
 
-     ![查看重新設定受監視 Vm 的選項][3]
+     ![檢視重新設定受監視 VM 的選項][3]
 
-5. 選取工作區是否會啟用 Azure Defender。
+5. 選取工作區是否要啟用 Azure Defender。
 
     若要使用現有的工作區，請設定工作區的定價層。 這會在工作區上安裝資訊安全中心解決方案 (如果不存在)。
 
     1. 在 [資訊安全中心] 主功能表中，選取 [定價和設定]。
      
-    1. 選取您要將代理程式連接到的工作區。
+    1. 選取要與代理程式連線的工作區。
 
-    1. 選取 **Azure defender on** 或 **azure defender off**。
+    1. 選取 [開啟 Azure Defender] 或 [關閉 Azure Defender]。
 
    
    >[!NOTE]
@@ -158,7 +157,7 @@ ms.locfileid: "90905489"
 
 
 > [!NOTE]
-> 這些安全性事件集僅適用于 Azure Defender。 若要深入了解資訊安全中心的定價層，請參閱[價格](security-center-pricing.md)。
+> 這些安全性事件集僅適用於 Azure Defender。 若要深入了解資訊安全中心的定價層，請參閱[價格](security-center-pricing.md)。
 這些集合都是設計用來處理一般情況。 實作之前，請務必評估哪一個適合您的需求。
 >
 >
@@ -191,10 +190,10 @@ ms.locfileid: "90905489"
 >
 
 若要選擇篩選原則：
-1. 在 [資料收集] 頁面的 [安全性事件] 下，選取您的篩選原則。
-2. 選取 [儲存]。
-
-   ![選擇篩選原則][5]
+1. 在 [資料收集] 頁面的 [儲存其他未經處理的資料 - Windows 安全性事件] 底下，選取您的篩選原則。
+ 
+1. 選取 [儲存]。
+    :::image type="content" source="./media/security-center-enable-data-collection/data-collection-tiers.png" alt-text="啟用 Log Analytics 代理程式的自動佈建功能":::
 
 ### <a name="automatic-provisioning-in-cases-of-a-pre-existing-agent-installation"></a>在預先存在的代理程式安裝情況下自動佈建 <a name="preexisting"></a> 
 
@@ -207,7 +206,7 @@ ms.locfileid: "90905489"
 <br>
 對於 Linux 機器尚不支援代理程式多路連接 - 因此，如果偵測到現有的代理程式安裝，將不會進行自動佈建，且不會改變機器的設定。
 <br>
-針對在2019年3月17日之前上線至資訊安全中心的訂用帳戶上的現有機器，當偵測到現有的代理程式時，將不會安裝 Log Analytics 代理程式延伸模組，而且不會影響電腦。 針對這類機器，請參閱「請解決機器上的 Monitoring Agent 健康情況問題」的建議，以解決這些機器上的代理程式安裝問題。
+對於在 2019 年 3 月 17 日之前上線到資訊安全中心之訂用帳戶中的現有機器，在偵測到現有的代理程式時，將不會安裝 Log Analytics 代理程式延伸模組，且機器將不受影響。 針對這類機器，請參閱「請解決機器上的 Monitoring Agent 健康情況問題」的建議，以解決這些機器上的代理程式安裝問題。
 
   
 - System Center Operations Manager 代理程式安裝在機器上<br>
@@ -219,15 +218,15 @@ ms.locfileid: "90905489"
     - 如果您環境中的用戶端工作站上已安裝 Log Analytics 代理程式，並會向現有的 Log Analytics 工作區報告，請檢閱 [Azure 資訊安全中心支援的作業系統](security-center-os-coverage.md)清單，確保您的作業系統受支援。 如需詳細資訊，請參閱[現有的 Log Analytics 客戶](./faq-azure-monitor-logs.md)。
  
 ### <a name="turn-off-automatic-provisioning"></a>關閉自動佈建 <a name="offprovisioning"></a>
-若要關閉自動布建 Log Analytics 代理程式：
+關閉 Log Analytics 代理程式的自動佈建：
 
 1. 從入口網站中資訊安全中心的功能表中，選取 [定價和設定]。
 2. 選取相關的訂用帳戶。
 
-   ![選取訂閱][7]
+    :::image type="content" source="./media/security-center-enable-data-collection/select-subscription.png" alt-text="啟用 Log Analytics 代理程式的自動佈建功能":::
 
 3. 選取 [資料收集]。
-4. 在 [ **自動**布建] 下，選取 [ **關閉** ] 以停用自動布建。
+4. 在 [自動佈建] 下，選取 [關閉] 以停用自動佈建。
 5. 選取 [儲存]。 
 
 
@@ -248,26 +247,26 @@ ms.locfileid: "90905489"
 
 您可以手動安裝 Log Analytics 代理程式，讓資訊安全中心能夠收集您 VM 所傳來的安全性資料，並提供建議和警示。
 
-1. 停用自動布建。
+1. 停用自動佈建。
 
-1. （選擇性）建立工作區。
+1. (選擇性) 建立工作區。
 
 1. 在您要安裝 Log Analytics 代理程式的工作區上啟用 Azure Defender：
 
     1. 在資訊安全中心功能表中，選取 [定價和設定]。
 
-    1. 設定您要在其上安裝代理程式的工作區。 請確定工作區位於您在資訊安全中心使用的相同訂用帳戶中，而且您具備工作區的讀取/寫入權限。
+    1. 設定您要安裝代理程式的工作區。 請確定工作區位於您在資訊安全中心使用的相同訂用帳戶中，而且您具備工作區的讀取/寫入權限。
 
-    1. 將 Azure Defender 設定為開啟，然後選取 [ **儲存**]。
+    1. 將 Azure Defender 設定為 [開啟]，然後選取 [儲存]。
 
        >[!NOTE]
        >如果工作區已經啟用 **Security** 或 **SecurityCenterFree** 解決方案，將會自動設定定價。 
 
-1. 如果您想要使用 Resource Manager 範本在新的 Vm 上部署代理程式，請安裝 Log Analytics 代理程式：
+1. 如果您想要使用 Resource Manager 範本在新的 VM 上部署代理程式，請安裝 Log Analytics 代理程式：
 
-   a.  [安裝適用于 Windows 的 Log Analytics 代理程式](../virtual-machines/extensions/oms-windows.md)
+   a.  [安裝適用於 Windows 的 Log Analytics 代理程式](../virtual-machines/extensions/oms-windows.md)
     
-   b.  [安裝適用于 Linux 的 Log Analytics 代理程式](../virtual-machines/extensions/oms-linux.md)
+   b.  [安裝適用於 Linux 的 Log Analytics 代理程式](../virtual-machines/extensions/oms-linux.md)
 
 1. 若要在現有的 VM 上部署擴充功能，請遵循[收集有關 Azure 虛擬機器的資料](../azure-monitor/learn/quick-collect-azurevm.md)中的指示。
 
@@ -275,7 +274,7 @@ ms.locfileid: "90905489"
    > **收集事件和效能資料**一節是選擇性的。
    >
 
-1. 若要使用 PowerShell 來部署擴充功能，請使用虛擬機器檔中的指示：
+1. 若要使用 PowerShell 來部署擴充功能，請使用虛擬機器文件中的指示：
 
     - [Windows 電腦](https://docs.microsoft.com/azure/virtual-machines/extensions/oms-windows?toc=%2Fazure%2Fazure-monitor%2Ftoc.json#powershell-deployment)
 
@@ -309,13 +308,7 @@ ms.locfileid: "90905489"
 
 
 <!--Image references-->
-[1]: ./media/security-center-enable-data-collection/enable-automatic-provisioning.png
-[2]: ./media/security-center-enable-data-collection/use-another-workspace.png
 [3]: ./media/security-center-enable-data-collection/reconfigure-monitored-vm.png
-[5]: ./media/security-center-enable-data-collection/data-collection-tiers.png
-[7]: ./media/security-center-enable-data-collection/select-subscription.png
-[8]: ./media/security-center-enable-data-collection/manual-provision.png
 [9]: ./media/security-center-enable-data-collection/pricing-tier.png
-[10]: ./media/security-center-enable-data-collection/workspace-selection.png
 [11]: ./media/security-center-enable-data-collection/log-analytics.png
 [12]: ./media/security-center-enable-data-collection/log-analytics2.png

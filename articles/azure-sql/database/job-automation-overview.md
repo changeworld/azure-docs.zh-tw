@@ -6,17 +6,17 @@ ms.service: sql-db-mi
 ms.subservice: features
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: overview
-author: jovanpop-msft
-ms.author: jovanpop
-ms.reviewer: carlr
+ms.topic: conceptual
+author: stevestein
+ms.author: sstein
+ms.reviewer: ''
 ms.date: 03/10/2020
-ms.openlocfilehash: 8c9bdb059008a3d9e33631c3101cb7b459660119
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 6b4b31ab4bc0cb1fe5bd9140870df86db6841ff3
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89436777"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91450347"
 ---
 # <a name="automate-management-tasks-using-database-jobs"></a>使用資料庫作業將管理工作自動化
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -249,7 +249,7 @@ EXEC msdb.dbo.sp_update_job @job_name=N'Load data using SSIS',
 **範例 4** 顯示包含以彈性集區作為目標的目標群組。 類似於*範例 2*，集區會在作業執行時間以動態方式列舉，以決定集區中的資料庫清單。
 <br><br>
 
-![目標群組範例](./media/job-automation-overview/targetgroup-examples2.png)
+![其他目標群組範例](./media/job-automation-overview/targetgroup-examples2.png)
 
 **範例 5** 和**範例 6** 顯示進階案例，其中伺服器、彈性集區和資料庫都可使用包含及排除規則來結合。<br>
 **範例 7** 顯示分區對應中的分區也可在作業執行階段進行評估。

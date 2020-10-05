@@ -1,25 +1,27 @@
 ---
-title: 變更 Azure 帳戶的連絡人資訊
-description: 說明如何變更 Azure 系統管理帳戶的連絡人資訊
+title: 變更 Azure 帳單帳戶的連絡人資訊
+description: 說明如何變更 Azure 帳單帳戶的連絡人資訊
 author: genlin
 ms.reviewer: dcscontentpm
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 08/03/2020
+ms.date: 09/23/2020
 ms.author: banders
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6045afba230fa204dd5f93adc11b67ff0e3e209f
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.custom: contperfq1
+ms.openlocfilehash: be3de838e340400da09ad261d82328f6793aed2e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684893"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91297720"
 ---
-# <a name="change-the-contact-information-for-your-azure-account"></a>變更 Azure 帳戶的連絡人資訊
+# <a name="change-contact-information-for-an-azure-billing-account"></a>變更 Azure 帳單帳戶的連絡人資訊
 
-本文可協助您在 Azure 入口網站中更新帳戶的連絡人資訊。 更新連絡人資訊的指示會因計費帳戶類型而異。 若要深入了解計費帳戶及識別您的計費帳戶類型，請參閱[在 Azure 入口網站中檢視計費帳戶](view-all-accounts.md)。
+本文可協助您在 Azure 入口網站中更新「帳單帳戶」的連絡人資訊。 更新連絡人資訊的指示會因計費帳戶類型而異。 若要深入了解計費帳戶及識別您的計費帳戶類型，請參閱[在 Azure 入口網站中檢視計費帳戶](view-all-accounts.md)。 Azure 計費帳戶與您的 Azure 使用者帳戶和 [Microsoft 帳戶](https://account.microsoft.com/)不同。
+
+如果您想要更新 Azure Active Directory 的使用者設定檔資訊，只有使用者系統管理員可以進行變更。 如果您未獲指派使用者系統管理員角色，請洽詢您的使用者系統管理員。 如需有關變更使用者設定檔的詳細資訊，請參閱[使用 Azure Active Directory 新增或更新使用者的設定檔資訊](../../active-directory/fundamentals/active-directory-users-profile-azure-portal.md)。
 
 *銷售對象地址* - 銷售對象地址是組織或個人 (負責管理計費帳戶) 的地址和連絡人資訊。 其會顯示在計費帳戶所產生的所有發票中。
 
@@ -31,21 +33,21 @@ ms.locfileid: "88684893"
 
 1. 使用具有帳戶上帳戶管理員權限的電子郵件地址來登入 [Azure 入口網站](https://portal.azure.com/)。
 1. 搜尋 [成本管理 + 帳單]。  
-    ![顯示在入口網站中搜尋 [成本管理 + 帳單] 的螢幕擷取畫面](./media/change-azure-account-profile/search-cmb.png)
+    ![顯示在 Azure 入口網站中何處搜尋 [成本管理 + 計費] 的螢幕擷取畫面](./media/change-azure-account-profile/search-cmb.png)
 1. 從左側選取 [屬性]。  
-    ![顯示 [更新地址] 頁面的螢幕擷取畫面](./media/change-azure-account-profile/update-contact-information-select-properties.png)
+    ![顯示 MOSP 帳單帳戶屬性的螢幕擷取畫面](./media/change-azure-account-profile/update-contact-information-select-properties.png)
 1. 選取 [更新帳單地址] 以更新銷售對象地址和帳單寄送地址。 輸入新地址，然後選取 [儲存]。  
-    ![顯示 [更新地址] 頁面的螢幕擷取畫面](./media/change-azure-account-profile/update-contact-information-mosp.png)
+    ![顯示 MOSP 帳單帳戶更新地址的螢幕擷取畫面](./media/change-azure-account-profile/update-contact-information-mosp.png)
 
 ## <a name="update-an-mca-billing-account-sold-to-address"></a>更新 MCA 計費帳戶的銷售對象地址
 
 1. 使用在 Microsoft 客戶合約的計費帳戶上具有擁有者或參與者角色的電子郵件地址來登入 [Azure 入口網站](https://portal.azure.com/)。
 1. 搜尋 [成本管理 + 帳單]。  
-    ![顯示在入口網站中搜尋 [成本管理 + 帳單] 的螢幕擷取畫面](./media/change-azure-account-profile/search-cmb.png)
+    ![顯示在 Azure 入口網站中何處搜尋的螢幕擷取畫面](./media/change-azure-account-profile/search-cmb.png)
 1. 從左側選取 [屬性]，然後選取 [更新銷售對象]。  
-    ![顯示選取更新銷售對象的螢幕擷取畫面](./media/change-azure-account-profile/update-sold-to-list-properties-mca.png)
+    ![顯示 MCA 計費帳戶屬性中可以修改銷售地址的螢幕擷取畫面](./media/change-azure-account-profile/update-sold-to-list-properties-mca.png)
 1. 輸入新地址，然後選取 [儲存]。  
-    ![顯示更新地址的螢幕擷取畫面](./media/change-azure-account-profile/update-sold-to-save-mca.png)
+    ![顯示更新 MCA 帳戶銷售地址的螢幕擷取畫面](./media/change-azure-account-profile/update-sold-to-save-mca.png)
 
     > [!IMPORTANT]
     > 某些帳戶需要先進行額外驗證才能更新其銷售對象。 如果您的帳戶需要手動核准，系統會要求您連絡 Azure 支援。
@@ -54,13 +56,12 @@ ms.locfileid: "88684893"
 
 1. 使用在 MCA 的計費帳戶或帳單設定檔上具有擁有者或參與者角色的電子郵件地址來登入 [Azure 入口網站](https://portal.azure.com/)。
 1. 搜尋 [成本管理 + 帳單]。  
-    ![顯示在入口網站中搜尋 [成本管理 + 帳單] 的螢幕擷取畫面](./media/change-azure-account-profile/search-cmb.png)
 1. 從左側選取 [帳單設定檔]。
 1. 選取要更新帳單地址的帳單設定檔。  
-    ![顯示在入口網站中搜尋 [成本管理 + 帳單] 的螢幕擷取畫面](./media/change-azure-account-profile/update-bill-to-list-profiles-mca.png)
+    ![顯示您可以在其中選取帳單設定檔的 [帳單] 設定檔頁面螢幕擷取畫面](./media/change-azure-account-profile/update-bill-to-list-profiles-mca.png)
 1. 從左側選取 [屬性]。
 1. 選取 [更新地址]。  
-    ![顯示在入口網站中搜尋 [成本管理 + 帳單] 的螢幕擷取畫面](./media/change-azure-account-profile/update-bill-to-list-properties-mca.png)
+    ![顯示在何處更新地址的螢幕擷取畫面](./media/change-azure-account-profile/update-bill-to-list-properties-mca.png)
 1. 輸入新地址，然後選取 [儲存]。  
     ![顯示更新地址的螢幕擷取畫面](./media/change-azure-account-profile/update-bill-to-save-mca.png)
 
@@ -83,11 +84,9 @@ ms.locfileid: "88684893"
 
 您可以使用下列其中一種方法來變更您的連絡人電子郵件地址。 更新連絡人電子郵件地址並不會更新您用來登入的電子郵件地址。
 
-* 如果您是 MOSP 帳戶的帳戶管理員，請遵循[更新 MOSP 計費帳戶地址](#update-an-mosp-billing-account-address)中的指示，然後在最後一個步驟中選取 [更新連絡人資訊]。 接下來，輸入新的電子郵件地址。
-
-* 移至 Azure 入口網站中的[連絡人資訊](https://portal.azure.com/#blade/HubsExtension/ContactInfoBlade)區域，然後輸入新的電子郵件地址。 
-
-* 在 [Azure 入口網站](https://portal.azure.com/#blade/HubsExtension/ContactInfoBlade)中，選取具有您的姓名縮寫或圖片的圖示。 然後，選取快顯功能表 ( **...** )。接下來，從功能表中選取 [我的連絡人資訊]，然後輸入新的電子郵件地址。
+1. 如果您是 MOSP 帳戶的帳戶管理員，請遵循[更新 MOSP 計費帳戶地址](#update-an-mosp-billing-account-address)中的指示，然後在最後一個步驟中選取 [更新連絡人資訊]。 接下來，輸入新的電子郵件地址。
+1. 移至 Azure 入口網站中的[連絡人資訊](https://portal.azure.com/#blade/HubsExtension/ContactInfoBlade)區域，然後輸入新的電子郵件地址。 
+1. 在 [Azure 入口網站](https://portal.azure.com/#blade/HubsExtension/ContactInfoBlade)中，選取具有您的姓名縮寫或圖片的圖示。 然後，選取快顯功能表 ( **...** )。接下來，從功能表中選取 [我的連絡人資訊]，然後輸入新的電子郵件地址。
 
 ![在 Azure 中更新電子郵件地址的範例](./media/change-azure-account-profile/azure-contact-information.png)
 

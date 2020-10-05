@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7223d33f8f26897d24841f84454405f91cf3bc49
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 1e758a886e32c5a3f7cd3c744ac451b948a74802
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686338"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91308855"
 ---
 # <a name="upgrade-your-azure-free-account-or-azure-for-students-starter-account"></a>將您的 Azure 免費帳戶或 Azure 學生入門版帳戶升級
 
@@ -80,4 +80,4 @@ ms.locfileid: "88686338"
 
 ## <a name="next-steps"></a>後續步驟
 
-您現在已將帳戶升級，請參閱[使用 Azure 計費與成本管理來避免非預期的費用](getting-started.md)。
+既然您已經升級帳戶，請參閱[規劃管理 Azure 成本](../understand/plan-manage-costs.md)。

@@ -2,20 +2,18 @@
 title: 包含檔案
 description: 包含檔案
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.date: 05/05/2020
 ms.topic: include
-ms.author: diberry
-ms.openlocfilehash: da9388a3bd5f4d46ec34ed226e3ee23a96b2f494
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: fda9df6c7e9651bbd3b0b70ad9d47f23c0c19d01
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87375706"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541421"
 ---
 ## <a name="sign-in-to-luis-portal"></a>登入 LUIS 入口網站
 
@@ -29,7 +27,7 @@ LUIS 的新使用者必須遵循此程序：
 
 1. 填入資源的詳細資料。
 
-    ![建立撰寫資源](../media/migrate-authoring-key/choose-authoring-resource-form.png)
+    ![顯示 [建立用於撰寫的新資源] 窗格的螢幕擷取畫面。](../media/migrate-authoring-key/choose-authoring-resource-form.png)
 
     在**建立新的撰寫資源**時，請提供下列資訊：
 
@@ -42,8 +40,8 @@ LUIS 的新使用者必須遵循此程序：
 
 1. 隨即會顯示所要建立資源的摘要。 選取 [下一步] 。
 
-    ![建立撰寫資源](../media/sign-in/sign-in-confirm-key-selection.png)
+    ![此螢幕擷取畫面顯示的 [歡迎使用] 頁面，其中包含連結至您的 Azure 帳戶的選項。](../media/sign-in/sign-in-confirm-key-selection.png)
 
 1. 請選取 [繼續] 來表示確認。
 
-    ![建立撰寫資源](../media/sign-in/sign-in-confirm-continue.png)
+    ![螢幕擷取畫面顯示您連結至 Azure 帳戶之後的 [歡迎使用] 頁面。](../media/sign-in/sign-in-confirm-continue.png)

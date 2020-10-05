@@ -9,12 +9,12 @@ ms.date: 08/26/2020
 ms.reviewer: andalmia
 ms.author: banders
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 8d8d8caec81dc71992fe330c2fde24f89ccfc961
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 62989c21333e53fcb58b4b637802c8b697ae970e
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88943142"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371434"
 ---
 # <a name="programmatically-create-azure-subscriptions-preview"></a>以程式設計方式建立 Azure 訂用帳戶 (預覽)
 
@@ -130,7 +130,7 @@ Azure 會以您可以存取的註冊帳戶清單來回應：
 
 ### <a name="create-subscriptions-under-a-specific-enrollment-account"></a>在特定的註冊帳戶下建立訂用帳戶
 
-下列範例會在上一個步驟中選取的註冊帳戶中，建立名為「開發小組訂用帳戶」的訂用帳戶。 訂用帳戶供應項目是 MS-AZR-0017P (一般 Microsoft Enterprise 合約)。 這也會依選擇新增兩個使用者作為該訂用帳戶的「RBAC 擁有者」。
+下列範例會在上一個步驟中選取的註冊帳戶中，建立名為「開發小組訂用帳戶」的訂用帳戶。 訂用帳戶供應項目是 MS-AZR-0017P (一般 Microsoft Enterprise 合約)。 這也會依選擇新增兩個使用者作為該訂用帳戶的「Azure RBAC 擁有者」。
 
 ### <a name="rest"></a>[REST](#tab/rest)
 
@@ -157,7 +157,7 @@ POST https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
 | `displayName` | 否      | String | 訂用帳戶的顯示名稱。 如果未指定，會設定為供應項目的名稱，例如「Microsoft Azure 企業版」。                                 |
 | `offerType`   | 是      | String | 訂用帳戶的供應項目方案。 EA 的兩個選項為 [MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/) (生產環境使用) 和 [MS-AZR-0148P](https://azure.microsoft.com/offers/ms-azr-0148p/) (開發/測試環境使用，必須[使用 EA 入口網站來開啟](https://ea.azure.com/helpdocs/DevOrTestOffer))。                |
-| `owners`      | 否       | String | 在建立訂用帳戶之後，任何您想要在該訂用帳戶上新增為「RBAC 擁有者」之使用者的「物件識別碼」。  |
+| `owners`      | 否       | String | 在建立訂用帳戶之後，任何您想要在該訂用帳戶上新增為「Azure RBAC 擁有者」使用者的「物件識別碼」。  |
 
 在回應中，您可以從 `Location` 標頭中取得可查詢訂用帳戶建立作業狀態的 URL。 建立好訂用帳戶之後，`Location` URL 上的 GET 會傳回 `subscriptionLink` 物件，其中包含訂用帳戶 ID。 如需詳細資訊，請參閱[訂用帳戶 API 文件](/rest/api/subscription/)
 
@@ -176,9 +176,9 @@ New-AzSubscription -OfferType MS-AZR-0017P -Name "Dev Team Subscription" -Enroll
 | `Name` | 否      | String | 訂用帳戶的顯示名稱。 如果未指定，會設定為供應項目的名稱，例如「Microsoft Azure 企業版」。                                 |
 | `OfferType`   | 是      | String | 訂用帳戶的供應項目方案。 EA 的兩個選項為 [MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/) (生產環境使用) 和 [MS-AZR-0148P](https://azure.microsoft.com/offers/ms-azr-0148p/) (開發/測試環境使用，必須[使用 EA 入口網站來開啟](https://ea.azure.com/helpdocs/DevOrTestOffer))。                |
 | `EnrollmentAccountObjectId`      | 是       | String | 用來建立訂用帳戶並加以收費的註冊帳戶物件識別碼。 此值是您從 `Get-AzEnrollmentAccount` 取得的 GUID。 |
-| `OwnerObjectId`      | 否       | String | 在建立訂用帳戶之後，任何您想要在該訂用帳戶上新增為「RBAC 擁有者」之使用者的「物件識別碼」。  |
-| `OwnerSignInName`    | 否       | String | 在建立訂用帳戶之後，任何您想要在該訂用帳戶上新增為「RBAC 擁有者」之使用者的電子郵件地址。 您可以使用此參數來取代 `OwnerObjectId`。|
-| `OwnerApplicationId` | 否       | String | 在建立訂用帳戶之後，任何您想要在該訂用帳戶上新增為「RBAC 擁有者」之服務主體的「應用程式識別碼」。 您可以使用此參數來取代 `OwnerObjectId`。 使用此參數時，服務主體必須具有[目錄的讀取權限](/powershell/azure/active-directory/signing-in-service-principal?view=azureadps-2.0#give-the-service-principal-reader-access-to-the-current-tenant-get-azureaddirectoryrole)。|
+| `OwnerObjectId`      | 否       | String | 在建立訂用帳戶之後，任何您想要在該訂用帳戶上新增為「Azure RBAC 擁有者」使用者的「物件識別碼」。  |
+| `OwnerSignInName`    | 否       | String | 在建立訂用帳戶之後，任何您想要在該訂用帳戶上新增為「Azure RBAC 擁有者」使用者的電子郵件地址。 您可以使用此參數來取代 `OwnerObjectId`。|
+| `OwnerApplicationId` | 否       | String | 在建立訂用帳戶之後，任何您想要在該訂用帳戶上新增為「Azure RBAC 擁有者」服務主體的「應用程式識別碼」。 您可以使用此參數來取代 `OwnerObjectId`。 使用此參數時，服務主體必須具有[目錄的讀取權限](/powershell/azure/active-directory/signing-in-service-principal?view=azureadps-2.0#give-the-service-principal-reader-access-to-the-current-tenant-get-azureaddirectoryrole)。|
 
 若要查看所有參數的完整清單，請參閱 [New-AzSubscription](/powershell/module/az.subscription/New-AzSubscription)。
 
@@ -198,9 +198,9 @@ az account create --offer-type "MS-AZR-0017P" --display-name "Dev Team Subscript
 | `display-name` | 否      | String | 訂用帳戶的顯示名稱。 如果未指定，會設定為供應項目的名稱，例如「Microsoft Azure 企業版」。                                 |
 | `offer-type`   | 是      | String | 訂用帳戶的供應項目方案。 EA 的兩個選項為 [MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/) (生產環境使用) 和 [MS-AZR-0148P](https://azure.microsoft.com/offers/ms-azr-0148p/) (開發/測試環境使用，必須[使用 EA 入口網站來開啟](https://ea.azure.com/helpdocs/DevOrTestOffer))。                |
 | `enrollment-account-object-id`      | 是       | String | 用來建立訂用帳戶並加以收費的註冊帳戶物件識別碼。 此值是您從 `az billing enrollment-account list` 取得的 GUID。 |
-| `owner-object-id`      | 否       | String | 在建立訂用帳戶之後，任何您想要在該訂用帳戶上新增為「RBAC 擁有者」之使用者的「物件識別碼」。  |
-| `owner-upn`    | 否       | String | 在建立訂用帳戶之後，任何您想要在該訂用帳戶上新增為「RBAC 擁有者」之使用者的電子郵件地址。 您可以使用此參數來取代 `owner-object-id`。|
-| `owner-spn` | 否       | String | 在建立訂用帳戶之後，任何您想要在該訂用帳戶上新增為「RBAC 擁有者」之服務主體的「應用程式識別碼」。 您可以使用此參數來取代 `owner-object-id`。 使用此參數時，服務主體必須具有[目錄的讀取權限](/powershell/azure/active-directory/signing-in-service-principal?view=azureadps-2.0#give-the-service-principal-reader-access-to-the-current-tenant-get-azureaddirectoryrole)。|
+| `owner-object-id`      | 否       | String | 在建立訂用帳戶之後，任何您想要在該訂用帳戶上新增為「Azure RBAC 擁有者」使用者的「物件識別碼」。  |
+| `owner-upn`    | 否       | String | 在建立訂用帳戶之後，任何您想要在該訂用帳戶上新增為「Azure RBAC 擁有者」使用者的電子郵件地址。 您可以使用此參數來取代 `owner-object-id`。|
+| `owner-spn` | 否       | String | 在建立訂用帳戶之後，任何您想要在該訂用帳戶上新增為「Azure RBAC 擁有者」服務主體的「應用程式識別碼」。 您可以使用此參數來取代 `owner-object-id`。 使用此參數時，服務主體必須具有[目錄的讀取權限](/powershell/azure/active-directory/signing-in-service-principal?view=azureadps-2.0#give-the-service-principal-reader-access-to-the-current-tenant-get-azureaddirectoryrole)。|
 
 若要查看所有參數的完整清單，請參閱 [az account create](/cli/azure/ext/subscription/account?view=azure-cli-latest#-ext-subscription-az-account-create)。
 
@@ -210,7 +210,7 @@ az account create --offer-type "MS-AZR-0017P" --display-name "Dev Team Subscript
 
 - 使用此 API 只能建立「Azure 企業版」訂用帳戶。
 - 每一註冊帳戶僅限 2000 個訂用帳戶。 之後，您只能在 Azure 入口網站中為帳戶建立更多訂用帳戶。 如果您想要透過 API 建立更多訂用帳戶，請建立另一個註冊帳戶。
-- 不是「帳戶擁有者」但已透過 RBAC 新增至註冊帳戶的使用者並無法在 Azure 入口網站中建立訂用帳戶。
+- 不是「帳戶擁有者」但已透過 Azure RBAC 新增至註冊帳戶的使用者，並無法在 Azure 入口網站中建立訂用帳戶。
 - 您無法選取要作為訂用帳戶建立位置的租用戶。 訂用帳戶一律會建立在「帳戶擁有者」的主租用戶中。 若要將訂用帳戶移至不同的租用戶，請參閱[變更訂用帳戶租用戶](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)。
 
 
@@ -349,7 +349,7 @@ POST https://management.azure.com<invoiceSectionId>/providers/Microsoft.Subscrip
 | `displayName` | 是      | String | 訂用帳戶的顯示名稱。|
 | `billingProfileId`   | 是      | String | 要對其收取訂用帳戶費用的帳單設定檔識別碼。  |
 | `skuId` | 是      | String | 決定 Azure 方案類型的 SKU 識別碼。 |
-| `owners`      | 否       | String | 在建立訂用帳戶之後，任何您想要在該訂用帳戶上新增為「RBAC 擁有者」之使用者或服務主體的「物件識別碼」。  |
+| `owners`      | 否       | String | 在建立訂用帳戶之後，任何您想要在該訂用帳戶上新增為「Azure RBAC 擁有者」使用者或服務主體的「物件識別碼」。  |
 | `costCenter` | 否      | String | 與訂用帳戶相關聯的成本中心。 其會顯示在使用量 csv 檔案中。 |
 | `managementGroupId` | 否      | String | 其中將新增訂用帳戶的管理群組識別碼。 若要取得管理群組的清單，請參閱[管理群組 - 清單 API](/rest/api/resources/managementgroups/list)。 使用 API 中的管理群組識別碼。 |
 

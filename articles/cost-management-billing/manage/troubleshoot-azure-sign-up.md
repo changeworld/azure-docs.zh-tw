@@ -10,12 +10,12 @@ ms.subservice: billing
 ms.topic: troubleshooting
 ms.date: 08/20/2020
 ms.author: v-miegge
-ms.openlocfilehash: 86f9f92810cff241f816dadfc6e1e8ca120f1f4a
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 3e611e25288d52b0be93c76e8a3a28ce6d7d5088
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686644"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326601"
 ---
 # <a name="troubleshoot-issues-when-you-sign-up-for-a-new-account-in-azure-portal-or-azure-account-center"></a>針對在 Azure 入口網站或 Azure 帳戶中心註冊新帳戶時所發生的問題進行疑難排解
 
@@ -131,7 +131,7 @@ Azure 註冊體驗包含四個區段：
 
 ### <a name="i-saw-a-charge-on-my-free-trial-account"></a>我的免費試用帳戶收到一筆費用
 
-您在註冊後可能會在信用卡帳戶上看到一筆小額度且暫時的驗證保留費用。 此保留會在三到五天內移除。 如果您擔心管理成本，請深入了解[如何避免非預期的成本](https://docs.microsoft.com/azure/cost-management-billing/manage/getting-started)。
+您在註冊後可能會在信用卡帳戶上看到一筆小額度且暫時的驗證保留費用。 此保留會在三到五天內移除。 如果您擔心管理成本，請參閱[分析非預期的費用](../understand/analyze-unexpected-charges.md)。
 
 ## <a name="agreement"></a>合約
 

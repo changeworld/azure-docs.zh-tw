@@ -1,6 +1,6 @@
 ---
 title: 取得 Microsoft 合作夥伴合約 (MPA) 的 Azure 訂用帳戶的帳單擁有權
-description: 了解如何向其他使用者要求 Azure 訂用帳戶的帳單擁有權。
+description: 了解如何向 Microsoft 合作夥伴合約 (MPA) 的其他使用者要求 Azure 訂用帳戶的帳單擁有權。
 author: amberbhargava
 tags: billing
 ms.service: cost-management-billing
@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: eef36726db735cfdd42f5a103073303cf3b3a632
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: bb2a58b76445f2cfd14a905de1fb66dbff3eee7e
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684944"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371009"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-to-your-mpa-account"></a>將 Azure 訂用帳戶的帳單擁有權交給您的 MPA 帳戶
 
@@ -35,7 +35,7 @@ ms.locfileid: "88684944"
 
 1. 使用 CSP 租用戶中的 CSP 管理代理程式認證登入 [Azure 入口網站](https://portal.azure.com)。
 1. 搜尋 [成本管理 + 帳單]。  
-    ![顯示在 Azure 入口網站中搜尋 [成本管理 + 計費] 的螢幕擷取畫面](./media/mpa-request-ownership/search-cmb.png)
+    ![顯示在 Azure 入口網站中搜尋 [成本管理 + 計費] 以要求帳單擁有權的螢幕擷取畫面。](./media/mpa-request-ownership/search-cmb.png)
 1. 從左側選取 [客戶]，然後從清單中選取客戶。  
     [![顯示選取客戶的螢幕擷取畫面](./media/mpa-request-ownership/mpa-select-customers.png)](./media/mpa-request-ownership/mpa-select-customers.png#lightbox)
 1. 從左下方選取 [轉移要求]，然後選取 [新增要求]。  
@@ -56,7 +56,7 @@ ms.locfileid: "88684944"
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 1. 搜尋 [成本管理 + 帳單]。  
-    ![顯示在 Azure 入口網站中搜尋 [成本管理 + 計費] 的螢幕擷取畫面](./media/mpa-request-ownership/billing-search-cost-management-billing.png)
+    ![顯示在 Azure 入口網站中搜尋 [成本管理 + 計費] 以要求轉移狀態的螢幕擷取畫面。](./media/mpa-request-ownership/billing-search-cost-management-billing.png)
 1. 從左側選取 [客戶]。  
     [![顯示選取客戶的螢幕擷取畫面](./media/mpa-request-ownership/mpa-select-customers.png)](./media/mpa-request-ownership/mpa-select-customers.png#lightbox)
 1. 從清單中選取您為其傳送轉移要求的客戶。
@@ -127,7 +127,7 @@ Azure 保留不會自動隨著訂用帳戶轉移。 您可以保有 EA 中的保
 
 ### <a name="access-to-azure-services"></a>對 Azure 服務的存取
 
-使用 [Azure RBAC (角色型存取控制)](../../role-based-access-control/overview.md) 為現有使用者、群組或服務主體指派的存取權，在轉換期間不受影響。 合作夥伴不會取得訂用帳戶的任何新 RBAC 存取權。
+使用 [Azure 角色型存取控制 (Azure RBAC)](../../role-based-access-control/overview.md) 為現有使用者、群組或服務主體指派的存取權，在轉換期間不受影響。 合作夥伴不會取得訂用帳戶的任何新 Azure RBAC 存取權。
 
 合作夥伴應該與客戶合作，以取得訂用帳戶的存取權。 合作夥伴必須取得[代表的管理員 - AOBO](https://channel9.msdn.com/Series/cspdev/Module-11-Admin-On-Behalf-Of-AOBO) 或 [Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/concepts/cloud-solution-provider) 存取權才能開啟支援票證。
 
@@ -174,4 +174,4 @@ SaaS 產品不會隨著訂用帳戶一起轉移。 請要求使用者[連絡 Azu
 ## <a name="next-steps"></a>後續步驟
 
 * Azure 訂用帳戶的帳單擁有權已轉移給您。 請在 [Azure入口網站](https://portal.azure.com)中追蹤這些訂用帳戶的費用。
-* 與客戶合作，以取得已轉移 Azure 訂用帳戶的存取權。 [使用 RBAC 管理 Azure 資源的存取](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)。
+* 與客戶合作，以取得已轉移 Azure 訂用帳戶的存取權。 [使用 Azure 入口網站新增或移除 Azure 角色指派](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)。

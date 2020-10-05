@@ -5,13 +5,13 @@ author: ShaneBala-keyvault
 ms.author: sudbalas
 ms.service: key-vault
 ms.topic: tutorial
-ms.date: 08/25/2020
-ms.openlocfilehash: f77d197c30d00083b280a97079fe03146fcfeb82
-ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
+ms.date: 09/25/2020
+ms.openlocfilehash: ca075414b234b65f15b82847a112104f6fbe3cc1
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90061796"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91597893"
 ---
 # <a name="tutorial-configure-and-run-the-azure-key-vault-provider-for-the-secrets-store-csi-driver-on-kubernetes"></a>教學課程：在 Kubernetes 上，為祕密存放區 CSI 驅動程式設定及執行 Azure Key Vault 提供者
 
@@ -114,7 +114,7 @@ az ad sp create-for-rbac --name contosoServicePrincipal --skip-assignment
 
 在範例 SecretProviderClass YAML 檔案中，填入遺漏的參數。 必要參數如下：
 
-* **userAssignedIdentityID**：# [必要] 如果您要使用服務主體，請使用用戶端識別碼來指定要使用的使用者指派受控識別。 如果您是使用使用者指派的身分識別作為 VM 的受控識別，請指定身分識別的用戶端識別碼。如果值是空的，則預設為在 VM 上使用系統指派的身分識別 
+* **userAssignedIdentityID**：# [必要] 如果您要使用服務主體，請使用用戶端識別碼來指定要使用的使用者指派受控識別。 如果您是使用使用者指派的身分識別作為 VM 的受控識別，請指定身分識別的用戶端識別碼。 如果值是空的，則預設為在 VM 上使用系統指派的身分識別 
 * **keyvaultName**：金鑰保存庫的名稱
 * **objects**：您想要掛接的所有秘密內容所屬的容器
     * **objectName**：秘密內容的名稱

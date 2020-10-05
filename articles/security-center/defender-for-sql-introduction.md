@@ -1,73 +1,73 @@
 ---
-title: 適用于 SQL 的 Azure Defender-優點和功能
-description: 瞭解 Azure Defender for SQL 的優點和功能。
+title: 適用於 SQL 的 Azure Defender - 優點和功能
+description: 了解適用於 SQL 的 Azure Defender 的優點和功能。
 author: memildin
 ms.author: memildin
 ms.date: 9/22/2020
-ms.topic: conceptual
+ms.topic: overview
 ms.service: security-center
 ms.custom: references_regions
 manager: rkarlin
-ms.openlocfilehash: dcdbc3efba53f78890816721b6659aa69553d6ea
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
-ms.translationtype: MT
+ms.openlocfilehash: 328a565dbb22a13c71a7001d43941e7be062dff9
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91301596"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449051"
 ---
-# <a name="introduction-to-azure-defender-for-sql"></a>Azure Defender for SQL 簡介
+# <a name="introduction-to-azure-defender-for-sql"></a>適用於 SQL 的 Azure Defender 簡介
 
-適用于 SQL 的 azure Defender 包含兩個 Azure Defender 方案，可延伸 Azure 資訊安全中心的 [資料安全性套件](../azure-sql/database/advanced-data-security.md) ，以保護您的資料庫及其資料（不論其所在位置）。 
+適用於 SQL 的 Azure Defender 包含兩個 Azure Defender 方案，可擴充 Azure 資訊安全中心的[資料安全性套件](../azure-sql/database/advanced-data-security.md)，以保護您的資料庫及其資料 (不論位於何處)。 
 
 ## <a name="availability"></a>可用性
 
 |層面|詳細資料|
 |----|:----|
-|釋放狀態：|**適用于 AZURE SQL database 伺服器的 Azure Defender** -正式推出 (GA) <br>**電腦上適用于 SQL server 的 Azure Defender** -預覽|
-|定價：|形成**Azure Defender FOR SQL**的兩個計畫會依[定價頁面](security-center-pricing.md)上的顯示方式計費|
-|受保護的 SQL 版本：|Azure SQL Database <br>Azure SQL 受控執行個體<br>Azure Synapse Analytics (先前為 SQL DW)<br>SQL Server (所有支援的版本) |
-|雲端：|![是](./media/icons/yes-icon.png) 商業雲端<br>![是](./media/icons/yes-icon.png) US Gov<br>![否](./media/icons/no-icon.png) 中國 Gov，其他 Gov|
+|版本狀態：|**適用於 Azure SQL 資料庫伺服器的 Azure Defender** - 正式發行 (GA)<br>**適用於機器上的 SQL 伺服器的 Azure Defender** - 預覽|
+|定價：|構成**適用於 SQL 的 Azure Defender** 的兩個方案，會依照[定價頁面](security-center-pricing.md)顯示的方式計費|
+|受保護的 SQL 版本：|Azure SQL Database <br>Azure SQL 受控執行個體<br>Azure Synapse Analytics (先前為 SQL DW)<br>SQL Server (所有支援的版本)|
+|雲端：|![是](./media/icons/yes-icon.png) 商業雲端<br>![是](./media/icons/yes-icon.png) US Gov<br>![否](./media/icons/no-icon.png) 中國 Gov、其他 Gov|
 |||
 
-## <a name="what-does-azure-defender-for-sql-protect"></a>Azure Defender for SQL 如何保護？
+## <a name="what-does-azure-defender-for-sql-protect"></a>適用於 SQL 的 Azure Defender 可保護哪些項目？
 
-**適用于 SQL 的 Azure defender** 包含兩個不同的 azure defender 方案：
+**適用於 SQL 的 Azure Defender** 包含兩個不同的 Azure Defender 方案：
 
-- **適用于 AZURE SQL database 伺服器的 Azure Defender** 可保護：
+- **適用於 Azure SQL 資料庫伺服器的 Azure Defender** 可保護：
   - [Azure SQL Database](../azure-sql/database/sql-database-paas-overview.md)
   - [Azure SQL 受控執行個體](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md)
   - [Azure Synapse Analytics](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)
 
-- **適用于電腦上 SQL server 的 Azure Defender (預覽版) ** 擴充您 azure 原生 SQL server 的保護，以完整支援混合式環境，並保護 SQL server (裝載于 Azure、其他雲端環境，甚至是內部部署機器中的所有支援版本) 
+- **適用於機器上的 SQL 伺服器的 Azure Defender (預覽)** 可擴充 Azure 原生 SQL Server 的保護，以完整支援混合式環境，並保護裝載於 Azure、其他雲端環境，甚至是內部部署機器的 SQL 伺服器 (所有支援的版本)
 
 
-## <a name="what-are-the-benefits-of-azure-defender-for-sql"></a>適用于 SQL 的 Azure Defender 有哪些優點？
+## <a name="what-are-the-benefits-of-azure-defender-for-sql"></a>適用於 SQL 的 Azure Defender 有哪些優點？
 
-這兩個方案包含用來識別和減緩潛在資料庫弱點，以及偵測可能表示對資料庫有威脅之異常活動的功能：
+這兩個方案包含下列功能：識別潛在資料庫弱點並降低其風險，以及偵測可能表示資料庫面臨威脅的異常活動：
 
-- [弱點評定](../azure-sql/database/sql-vulnerability-assessment.md) -要探索、追蹤並協助您補救潛在資料庫弱點的掃描服務。 評量掃描可概述您的 SQL 機器的安全性狀態，以及任何安全性發現的詳細資料。
+- [弱點評量](../azure-sql/database/sql-vulnerability-assessment.md) - 掃描服務以探索、追蹤及協助您修復潛在的資料庫弱點。 評量掃描可讓您概略了解 SQL 機器的安全性狀態，並提供任何安全性結果的詳細資料。
 
-- [先進的威脅防護](../azure-sql/database/threat-detection-overview.md) -此偵測服務會持續監視您的 sql server 是否有威脅，例如 sql 插入式攻擊、暴力密碼破解攻擊，以及特權濫用。 這項服務在 Azure 資訊安全中心中提供動作導向的安全性警示，並提供可疑活動的詳細資料、如何緩解威脅的指引，以及使用 Azure Sentinel 繼續進行調查的選項。
+- [進階威脅防護](../azure-sql/database/threat-detection-overview.md) - 此偵測服務會持續監視您的 SQL 伺服器是否有威脅，例如 SQL 插入式攻擊、暴力密碼破解攻擊和權限濫用。 這項服務會在 Azure 資訊安全中心提供動作導向的安全性警示，以及可疑活動的詳細資料、如何降低威脅的指引，以及使用 Azure Sentinel 繼續進行調查的選項。
 
 
-## <a name="what-kind-of-alerts-does-azure-defender-for-sql-provide"></a>Azure Defender for SQL 提供哪一種警示？
+## <a name="what-kind-of-alerts-does-azure-defender-for-sql-provide"></a>適用於 SQL 的 Azure Defender 提供何種警示？
 
-當發生下列情況時，就會觸發安全性警示：
+出現下列情況時，就會觸發安全性警示：
 
-- **潛在的 sql 插入式攻擊** -包括應用程式在資料庫中產生錯誤的 sql 語句時所偵測到的弱點
-- **異常的資料庫存取和查詢模式** -例如，使用不同認證的異常大量失敗登入嘗試 (暴力密碼破解嘗試) 
-- **可疑的資料庫活動** -例如，SQL 匯入和匯出作業的匯出儲存體目的地變更
+- **潛在的 SQL 插入式攻擊** - 包括應用程式在資料庫中產生錯誤的 SQL 陳述式時所偵測到的弱點
+- **異常的資料庫存取和查詢模式** - 例如，使用不同認證的登入嘗試 (暴力密碼破解嘗試) 次數異常偏高
+- **可疑的資料庫活動** - 例如，SQL 匯入和匯出作業的匯出儲存體目的地有所變更
 
-警示包含觸發警示的事件詳細資料，以及如何調查和修復威脅的建議。
+警示中包含加以觸發之事件的詳細資料，以及如何調查和補救威脅的建議。
 
 
 
 ## <a name="next-steps"></a>後續步驟
 
-在本文中，您已瞭解 Azure Defender for SQL。
+在本文中，您已了解適用於 SQL 的 Azure Defender。
 
 如需相關內容，請參閱下列文章： 
 
-- [如何在電腦上啟用適用于 SQL server 的 Azure Defender](defender-for-sql-usage.md)
-- [如何啟用適用于 SQL database 伺服器的 Azure Defender](../azure-sql/database/advanced-data-security.md)
-- [適用于 SQL 的 Azure Defender 警示清單](alerts-reference.md#alerts-sql-db-and-warehouse)
+- [如何啟用適用於機器上的 SQL 伺服器的 Azure Defender](defender-for-sql-usage.md)
+- [如何啟用適用於 SQL 資料庫伺服器的 Azure Defender](../azure-sql/database/advanced-data-security.md)
+- [適用於 SQL 的 Azure Defender 警示清單](alerts-reference.md#alerts-sql-db-and-warehouse)

@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/31/2020
-ms.author: v-myoung
-ms.openlocfilehash: 3607ecb7d1ef01b968b67c704e12136cc1888b69
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 09/30/2020
+ms.author: inhenkel
+ms.openlocfilehash: 797ba00820e7ff9d96868acdfc1dddfff3d21623
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91296224"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91598289"
 ---
 # <a name="dynamic-packaging-in-media-services-v3"></a>媒體服務 v3 中的動態封裝
 
@@ -56,6 +56,9 @@ Azure 媒體服務動態封裝僅支援 MP4 容器格式的影片和音訊檔案
 |HLS V4 |`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-aapl)`||
 |HLS V3 |`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-aapl-v3)`||
 |HLS CMAF| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-cmaf)`||
+
+> [!NOTE]
+> Apple 先前的指導方針建議，低頻寬網路的後援是提供僅限音訊的串流。  目前，媒體服務編碼器會自動產生僅限音訊的曲目。Apple 指導方針現在會指出「不」應包含僅限音訊的曲目，特別是 Apple TV 散發套件。  為了防止播放機預設為僅限音訊曲目，我們建議在 URL 中使用 “audio-only=false” 標記，在 HLS 中移除僅限音訊轉譯，或僅使用 HLS-V3。 例如： `http://host/locator/asset.ism/manifest(format=m3u8-aapl,audio-only=false)` 。
 
 ### <a name="mpeg-dash-protocol"></a>MPEG-DASH 通訊協定
 

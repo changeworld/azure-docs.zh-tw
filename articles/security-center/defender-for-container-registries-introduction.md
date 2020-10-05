@@ -1,84 +1,84 @@
 ---
-title: 適用于 container registry 的 Azure Defender-優點和功能
-description: 瞭解適用于容器登錄的 Azure Defender 優點和功能。
+title: 適用於容器登錄的 Azure Defender - 優點和功能
+description: 了解適用於容器登錄的 Azure Defender 有何優點和功能。
 author: memildin
 ms.author: memildin
 ms.date: 9/22/2020
-ms.topic: conceptual
+ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 6254b78ad19e7034f78f7891d57a3474fee0c602
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
-ms.translationtype: MT
+ms.openlocfilehash: 12264a79ee5428e98d6cf7d37bef6706295e68dc
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91301914"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448379"
 ---
-# <a name="introduction-to-azure-defender-for-container-registries"></a>適用于容器登錄的 Azure Defender 簡介
+# <a name="introduction-to-azure-defender-for-container-registries"></a>適用於容器登錄的 Azure Defender 簡介
 
-Azure Container Registry (ACR) 是受控的私人 Docker 登錄服務，可在中央登錄中儲存及管理 Azure 部署的容器映射。 它是以開放原始碼的 Docker Registry 2.0 為基礎。
+Azure Container Registry (ACR) 是受控的私人 Docker 登錄服務，可在中央登錄中儲存及管理您 Azure 部署的容器映像。 此服務以開放原始碼的 Docker Registry 2.0 為基礎。
 
-若要保護訂用帳戶中所有以 Azure Resource Manager 為基礎的登錄，請在訂用帳戶層級啟用 **容器登錄的 Azure Defender** 。 然後，「安全性中心」會掃描推送至登錄、匯入登錄的映射，或在過去30天內提取的任何映射。 這項功能是依每個映射收費。
+若要保護您訂用帳戶中所有以 Azure Resource Manager 為基礎的登錄，請在訂用帳戶層級上啟用**適用於容器登錄的 Azure Defender**。 資訊安全中心接著將會掃描推送至登錄的映像、匯入登錄中的映像，或過去 30 天內提取的任何映像。 這項功能會按映像收費。
 
-## <a name="what-are-the-benefits-of-azure-defender-for-container-registries"></a>適用于 container registry 的 Azure Defender 有哪些優點？
+## <a name="what-are-the-benefits-of-azure-defender-for-container-registries"></a>適用於容器登錄的 Azure Defender 有哪些優點？
 
-「安全性中心」會識別您訂用帳戶中以 Azure Resource Manager 為基礎的 ACR 登錄，並針對您的登錄映射順暢地提供 Azure 原生弱點評定與管理。
+資訊安全中心可識別您的訂用帳戶中以 Azure Resource Manager 為基礎的 ACR 登錄，並順暢地為您的登錄映像提供 Azure 原生弱點評量和管理。
 
-**適用于 container registry 的 Azure Defender** 包含弱點掃描程式，可掃描您 Azure Resource Manager 型 Azure Container Registry 登錄中的映射，並提供更深入的映射弱點可見度。 整合式掃描器是由領先業界的弱點掃描廠商的 Qualys 提供技術支援。
+**適用於容器登錄的 Azure Defender** 包含弱點掃描器，可在您以 Azure Resource Manager 為基礎的 Azure Container Registry 登錄中掃描映像，並且讓您更深入地檢視映像的弱點。 整合式掃描器由領先業界的弱點掃描廠商 Qualys 提供技術支援。
 
-當您發現問題時（透過 Qualys 或安全性中心），您將會在 [安全性中心] 儀表板中收到通知。 針對每個弱點，「安全性中心」提供可操作的建議，以及嚴重性分類，以及如何修復問題的指引。 如需資訊安全中心的容器建議詳細資訊，請參閱 [建議的參考清單](recommendations-reference.md#recs-containers)。
+當 Qualys 或資訊安全中心發現問題時，您將會在資訊安全中心儀表板中收到通知。 針對每個弱點，資訊安全中心都會提供可採取動作的建議及嚴重性分類，以及如何補救問題的指引。 如需資訊安全中心的容器建議詳細資料，請參閱[建議的參考清單](recommendations-reference.md#recs-containers)。
 
-安全性中心會篩選並分類掃描器的結果。 當映射狀況良好時，「安全性中心」會將它標示為如此。 安全性中心只會針對有問題要解決的映射產生安全性建議。 資訊安全中心會提供每個報告的弱點和嚴重性分類的詳細資料。 此外，它也提供如何補救每個映射上所發現特定弱點的指引。
+資訊安全中心會篩選並分類掃描器發現的結果。 當映像狀況良好時，資訊安全中心會據以標示。 資訊安全中心只會針對有問題待解決的映像產生安全性建議。 資訊安全中心會提供每個回報的弱點和嚴重性分類的詳細資料。 此外也會提供如何對在每個映像上發現的特定弱點進行補救的指引。
 
-藉由只在發生問題時通知，資訊安全中心會降低不必要資訊警示的可能性。
+資訊安全中心只會在發生問題時發出通知，藉以減少非必要的資訊警示。
 
 
-## <a name="when-are-images-scanned"></a>影像掃描的時間為何？
+## <a name="when-are-images-scanned"></a>何時會掃描映像？
 
-影像掃描有三個觸發程式：
+映像掃描有三個觸發程序：
 
-- **在推送** 時，只要將映射推送至您的登錄，資訊安全中心就會自動掃描該映射。 若要觸發映射掃描，請將其推送至您的存放庫。
+- **推送時** - 每當映像推送至您的登錄時，資訊安全中心就會自動掃描該映像。 若要觸發映像的掃描，請將其推送至您的存放庫。
 
-- **最近的提取** -由於每日都會探索到新的弱點，因此 **Container Registry 的 Azure Defender** 也會掃描過去30天內已提取的任何映射。 重新掃描不需要額外收費;如前文所述，每個影像只會支付一次費用。
+- **最近提取的** - 由於每天都會發現新的弱點，**適用於容器登錄的 Azure Defender** 也會掃描過去 30 天內提取的任何映像。 重新掃描不會額外收費；如前所述，您需按映像付費。
 
-- **On import** -Azure Container Registry 具有匯入工具，可將映射從 Docker Hub、Microsoft Container registry 或其他 Azure container registry 帶入您的登錄。 **適用于 container registry 的 Azure Defender** 會掃描您匯入的任何支援映射。 深入瞭解 [如何將容器映射匯入至容器](../container-registry/container-registry-import-images.md)登錄。
+- **匯入時** - Azure Container Registry 具有匯入工具，可將映像從 Docker Hub、Microsoft Container Registry 或另一個 Azure Container Registry 導入您的登錄中。 **適用於容器登錄的 Azure Defender** 會掃描您匯入的任何支援映像。 深入了解如何[將容器映像匯入至容器登錄](../container-registry/container-registry-import-images.md)。
  
-掃描通常會在2分鐘內完成，但最多可能需要15分鐘的時間。 結果會以安全性中心建議的形式提供，如下列所示：
+掃描通常會在 2 分鐘內完成，但最多可能需要 15 分鐘的時間。 結果會以資訊安全中心建議的形式提供，如下所示：
 
-[![有關在 Azure Container Registry (ACR) 託管映射中探索到的弱點 Azure 資訊安全中心建議](media/azure-container-registry-integration/container-security-acr-page.png)](media/azure-container-registry-integration/container-security-acr-page.png#lightbox)
-
-
-## <a name="how-does-security-center-work-with-azure-container-registry"></a>安全性中心如何搭配 Azure Container Registry
-
-以下是使用安全性中心保護您的登錄的元件和優點的高階圖表。
-
-![Azure 資訊安全中心和 Azure Container Registry (ACR) 高階總覽](./media/azure-container-registry-integration/aks-acr-integration-detailed.png)
+[![Azure 資訊安全中心針對在 Azure Container Registry (ACR) 裝載映像中探索到的弱點提供的建議範例](media/azure-container-registry-integration/container-security-acr-page.png)](media/azure-container-registry-integration/container-security-acr-page.png#lightbox)
 
 
+## <a name="how-does-security-center-work-with-azure-container-registry"></a>資訊安全中心如何與 Azure Container Registry 搭配運作
+
+以下是使用資訊安全中心保護登錄的所需元件和優點的高階圖表。
+
+![Azure 資訊安全中心和 Azure Container Registry (ACR) 高階概觀](./media/azure-container-registry-integration/aks-acr-integration-detailed.png)
 
 
-## <a name="faq-for-azure-container-registry-image-scanning"></a>Azure Container Registry 影像掃描的常見問題
 
-### <a name="how-does-security-center-scan-an-image"></a>資訊安全中心如何掃描映射？
-從登錄中提取映射。 然後，它會在隔離的沙箱中執行，並使用 Qualys 掃描器來解壓縮已知的弱點清單。
 
-安全性中心會篩選並分類掃描器的結果。 當映射狀況良好時，「安全性中心」會將它標示為如此。 安全性中心只會針對有問題要解決的映射產生安全性建議。 藉由只在發生問題時通知，資訊安全中心會降低不必要資訊警示的可能性。
+## <a name="faq-for-azure-container-registry-image-scanning"></a>Azure Container Registry 映像掃描的常見問題集
 
-### <a name="can-i-get-the-scan-results-via-rest-api"></a>我可以透過 REST API 取得掃描結果嗎？
-可以。 結果會在 [子評量 REST API](/rest/api/securitycenter/subassessments/list/)下進行。 此外，您也可以使用 Azure Resource Graph (ARG) （適用于所有資源的 Kusto） API：查詢可以提取特定的掃描。
+### <a name="how-does-security-center-scan-an-image"></a>資訊安全中心掃描映像的方式為何？
+系統會從登錄中提取映像。 然後，映像會在隔離的沙箱中執行，並且由 Qualys 掃描器擷取已知弱點的清單。
+
+資訊安全中心會篩選並分類掃描器發現的結果。 當映像狀況良好時，資訊安全中心會據以標示。 資訊安全中心只會針對有問題待解決的映像產生安全性建議。 資訊安全中心只會在發生問題時發出通知，藉以減少非必要的資訊警示。
+
+### <a name="can-i-get-the-scan-results-via-rest-api"></a>是否可透過 REST API 取得掃描結果？
+是。 結果會存放在[子評量 Rest API](/rest/api/securitycenter/subassessments/list/) 下。 此外，您可以使用 Azure Resource Graph (ARG)，這是適用於所有資源的類 Kusto API：查詢可以擷取特定的掃描。
  
-### <a name="what-registry-types-are-scanned-what-types-are-billed"></a>掃描的登錄類型為何？ 哪些類型會計費？
-如需 Azure Defender 針對容器登錄所支援的容器登錄類型清單，請參閱 [可用性](defender-for-container-registries-usage.md#availability)。
+### <a name="what-registry-types-are-scanned-what-types-are-billed"></a>掃描的登錄類型為何？ 哪些類型需計費？
+如需適用於容器登錄的 Azure Defender 所支援的容器登錄類型清單，請參閱[可用性](defender-for-container-registries-usage.md#availability)。
 
-如果您將不支援的登錄連接到您的 Azure 訂用帳戶，則不會進行掃描，而且不會向您收取費用。
+如果您將不支援的登錄連線至您的 Azure 訂用帳戶，則不會進行掃描，也不會向您收取費用。
 
 
 ## <a name="next-steps"></a>後續步驟
 
-若要深入瞭解資訊安全中心的容器安全性功能，請參閱：
+若要深入了解資訊安全中心的容器安全性功能，請參閱：
 
-- [Azure 資訊安全中心與容器安全性](container-security.md)
+- [Azure 資訊安全中心和容器安全性](container-security.md)
 
-- [Azure Defender for Kubernetes 簡介](defender-for-kubernetes-introduction.md)
+- [適用於 Kubernetes 的 Azure Defender 簡介](defender-for-kubernetes-introduction.md)
 
 

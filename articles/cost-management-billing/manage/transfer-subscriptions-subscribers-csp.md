@@ -5,19 +5,19 @@ author: bandersmsft
 ms.reviewer: dhgandhi
 ms.service: cost-management-billing
 ms.subservice: billing
-ms.topic: conceptual
-ms.date: 08/20/2020
+ms.topic: how-to
+ms.date: 09/24/2020
 ms.author: banders
-ms.openlocfilehash: 52dd9d2f6299f8d574934e7baec54333d2ffc0c8
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: d2d098c3a80bbbdb8c9fb64b25cc5967ee693046
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88997569"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371400"
 ---
 # <a name="transfer-azure-subscriptions-between-subscribers-and-csps"></a>在訂閱者與 CSP 之間轉移 Azure 訂用帳戶
 
-本文概述在雲端解決方案提供者 (CSP) 合作夥伴及其客戶往返轉移 Azure 訂用帳戶的步驟。
+本文概述在雲端解決方案提供者 (CSP) 合作夥伴及其客戶往返轉移 Azure 訂用帳戶的步驟。 這裡的資訊適用於 Azure 訂閱者，以協助其與合作夥伴協調。 Microsoft 合作夥伴用於轉移程序的資訊記載於[了解如何將客戶的 Azure 訂用帳戶轉移給另一個合作夥伴](/partner-center/switch-azure-subscriptions-to-a-different-partner)。
 
 ## <a name="transfer-ea-subscriptions-to-a-csp-partner"></a>將 EA 訂用帳戶轉移給 CSP 合作夥伴
 
@@ -38,7 +38,7 @@ ms.locfileid: "88997569"
     > [!IMPORTANT]
     > - 當您將訂用帳戶與不同的 Azure AD 目錄建立關聯時，已使用 [Azure 角色型存取控制 (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md) 指派角色的使用者會失去其存取權。 傳統訂用帳戶管理員 (包括服務管理員和共同管理員) 也會失去存取權。
     > - 當訂用帳戶與不同目錄建立關聯時，也會從訂用帳戶移除原則指派。
-1. 您用來進行轉移的使用者帳戶必須擁有這兩個訂用帳戶的 [RBAC](add-change-subscription-administrator.md) 擁有者存取權。
+1. 您用來進行轉移的使用者帳戶必須擁有這兩個訂用帳戶的 [Azure RBAC](add-change-subscription-administrator.md) 擁有者存取權。
 1. 開始之前，請先[確認](/rest/api/resources/resources/validatemoveresources)所有 Azure 資源都可以從來源訂用帳戶移至目的地訂用帳戶。  
     某些 Azure 資源無法在訂用帳戶之間移動。 若要檢視可移動的 Azure 資源完整清單，請參閱[資源的移動作業支援](../../azure-resource-manager/management/move-support-resources.md)。
     > [!IMPORTANT]
@@ -57,10 +57,10 @@ ms.locfileid: "88997569"
     請注意，變更目錄不是 CSP 訂用帳戶。 例如，您要從 CSP 轉移到隨用隨付訂用帳戶。 您需要變更隨用隨付訂用帳戶的目錄，以符合目錄。
 
     > [!IMPORTANT]
-    >  - 當您將訂用帳戶與不同的目錄建立關聯時，已使用 [RBAC](../../role-based-access-control/role-assignments-portal.md)指派角色的使用者會失去其存取權。 傳統訂用帳戶管理員 (包括服務管理員和共同管理員) 也會失去存取權。
+    >  - 當您將訂用帳戶與不同的目錄建立關聯時，已使用 [Azure RBAC](../../role-based-access-control/role-assignments-portal.md) 指派角色的使用者會失去其存取權。 傳統訂用帳戶管理員 (包括服務管理員和共同管理員) 也會失去存取權。
     >  - 當訂用帳戶與不同目錄建立關聯時，也會從訂用帳戶移除原則指派。
 
-1. 您用來進行轉移的使用者帳戶必須擁有這兩個訂用帳戶的 [RBAC](add-change-subscription-administrator.md) 擁有者存取權。
+1. 您用來進行轉移的使用者帳戶必須擁有這兩個訂用帳戶的 [Azure RBAC](add-change-subscription-administrator.md) 擁有者存取權。
 1. 開始之前，請先[確認](/rest/api/resources/resources/validatemoveresources)所有 Azure 資源都可以從來源訂用帳戶移至目的地訂用帳戶。
     > [!IMPORTANT]
     >  - 某些 Azure 資源無法在訂用帳戶之間移動。 若要檢視可移動的 Azure 資源完整清單，請參閱[資源的移動作業支援](../../azure-resource-manager/management/move-support-resources.md)。

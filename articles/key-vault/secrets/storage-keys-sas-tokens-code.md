@@ -9,12 +9,12 @@ ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/10/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0f81ffb5279e10c71f7d7cccfb6b738bc12e5cf4
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 6072c71fa675bd203e94f3f42814a1183b12ae8e
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90086771"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91597979"
 ---
 # <a name="create-sas-definition-and-fetch-shared-access-signature-tokens-in-code"></a>建立 SAS 定義並擷取程式碼中的共用存取簽章權杖
 
@@ -42,6 +42,9 @@ ms.locfileid: "90086771"
 如果您共用的存取簽章權杖即將到期，您可以再次擷取相同的祕密來產生新的權杖。
 
 如需如何使用從 Key Vault SAS 權杖擷取來存取 Azure 儲存體服務的指南，請參閱[使用帳戶 SAS 存取 Blob 服務](https://docs.microsoft.com/azure/storage/common/storage-account-sas-create-dotnet#use-an-account-sas-from-a-client)
+
+> [!NOTE]
+> 如果您的應用程式從儲存體取得 403，就必須準備好重新整理 SAS，讓您可以處理金鑰遭到入侵的情況，而且您需要以比一般輪替週期更快的速度來進行輪替。 
 
 ## <a name="next-steps"></a>後續步驟
 - 了解如何[使用 SAS 授與 Azure 儲存體資源的存取權](../../storage/common/storage-sas-overview.md)。

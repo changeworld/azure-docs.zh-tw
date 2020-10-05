@@ -1,24 +1,24 @@
 ---
-title: 使用 Apache Spark MLlib 建立機器學習應用程式
-description: 了解如何使用 Apache Spark MLlib 建立一個透過羅吉斯迴歸使用分類來分析資料集的機器學習應用程式。
+title: 教學課程：使用 Apache Spark MLlib 建置機器學習應用程式
+description: 此教學課程說明如何使用 Apache Spark MLlib 建立一個透過羅吉斯迴歸使用分類來分析資料集的機器學習應用程式。
 services: synapse-analytics
 author: euangMS
 ms.service: synapse-analytics
 ms.reviewer: jrasnick
-ms.topic: conceptual
+ms.topic: tutorial
 ms.subservice: machine-learning
 ms.date: 04/15/2020
 ms.author: euang
-ms.openlocfilehash: 2b641075a45db29c07b96c1934d4540f4c3292dd
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
-ms.translationtype: MT
+ms.openlocfilehash: 667ce8ede9469063e5714470a8e18c218f3c2c90
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91259980"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540314"
 ---
-# <a name="build-a-machine-learning-app-with-apache-spark-mllib-and-azure-synapse-analytics"></a>使用 Apache Spark MLlib 和 Azure Synapse Analytics 來建置機器學習應用程式
+# <a name="tutorial-build-a-machine-learning-app-with-apache-spark-mllib-and-azure-synapse-analytics"></a>教學課程：使用 Apache Spark MLlib 和 Azure Synapse Analytics 來建置機器學習應用程式
 
-在本文中，您將瞭解如何使用 Apache Spark [MLlib](https://spark.apache.org/mllib/) 來建立機器學習應用程式，以對 Azure 開放資料集執行簡單的預測性分析。 Spark 提供內建的機器學習程式庫。 這個範例會透過羅吉斯迴歸使用「分類」。
+在本文中，您將了解如何使用 Apache Spark [MLlib](https://spark.apache.org/mllib/) 建立機器學習應用程式，在 Azure 開放資料集上進行簡單預測性分析。 Spark 提供內建的機器學習程式庫。 這個範例會透過羅吉斯迴歸使用「分類」。
 
 MLlib 是核心 Spark 程式庫，提供許多可用於機器學習工作的公用程式，包括具有下列用途的公用程式：
 
@@ -71,7 +71,7 @@ MLlib 是核心 Spark 程式庫，提供許多可用於機器學習工作的公�
 
 因為未經處理資料採用 Parquet 格式，所以您可以使用 Spark 內容，直接將檔案當作資料框架提取至記憶體中。 雖然下列程式碼使用預設選項，但是您可以視需要強制對應資料類型和其他結構描述屬性。
 
-1. 執行下列幾行，將程式碼貼至新的儲存格來建立 Spark 資料框架。 這會透過開放式資料集 API 來抓取資料。 提取所有資料會產生大約 15 億個資料列。 根據您的 Spark 集區 (預覽) 大小，未經處理資料可能太大，或花費太多時間來操作。 您可以將此資料篩選成較小的項目。 下列程式碼範例會使用 start_date 和 end_date 來套用會傳回單一月份資料的篩選準則。
+1. 執行下列幾行，將程式碼貼至新的儲存格來建立 Spark 資料框架。 這會透過開放資料集 API 來擷取資料。 提取所有資料會產生大約 15 億個資料列。 根據您的 Spark 集區 (預覽) 大小，未經處理資料可能太大，或花費太多時間來操作。 您可以將此資料篩選成較小的項目。 下列程式碼範例會使用 start_date 和 end_date 來套用篩選器，以傳回單一月份的資料。
 
     ```python
     from azureml.opendatasets import NycTlcYellow
@@ -96,7 +96,7 @@ MLlib 是核心 Spark 程式庫，提供許多可用於機器學習工作的公�
     display(sampled_taxi_df)
     ```
 
-4. 視所產生的資料集大小大小而定，您需要實驗或執行筆記本多次，建議您在工作區本機快取資料集。 有三種方式可以執行明確的快取：
+4. 根據所產生的資料集大小，以及您實驗或執行筆記本多次的需求而定，建議您在工作區中的本機快取資料集。 有三種方式可執行明確的快取：
 
    - 以檔案的形式將資料框架儲存在本機
    - 將資料框架儲存為暫存資料表或檢視
@@ -157,7 +157,7 @@ plt.show()
 - 透過篩選移除極端值/不正確的值。
 - 移除不需要的資料行。
 - 建立衍生自未經處理資料的新資料行，讓模型運作更有效率，有時稱為特徵化。
-- 加上標籤-因為您正在進行二元分類 (在指定的行程中將會有秘訣) 需要將 tip 數量轉換成0或1值。
+- 加上標籤 - 因為您正在進行二元分類 (指定行程是否有小費)，因此需要將小費金額轉換成 0 或 1 的值。
 
 ```python
 taxi_df = sampled_taxi_df.select('totalAmount', 'fareAmount', 'tipAmount', 'paymentType', 'rateCodeId', 'passengerCount'\
@@ -193,7 +193,7 @@ taxi_featurised_df = taxi_df.select('totalAmount', 'fareAmount', 'tipAmount', 'p
 
 ## <a name="create-a-logistic-regression-model"></a>建立羅吉斯迴歸模型
 
-最後一項工作，是將加上標籤的資料轉換成可依羅吉斯迴歸進行分析的格式。 羅吉斯迴歸演算法的輸入必須是一組「標籤-特性向量配對」，其中「特性向量」是代表輸入點的數字向量。 因此，我們需要將類別資料行轉換成數字。 `trafficTimeBins`和資料 `weekdayString` 行需要轉換成整數表示。 有多種方法可以執行轉換，不過在此範例中採取的方法是「OneHotEncoding」，這是一種常見的方法。
+最後一項工作，是將加上標籤的資料轉換成可依羅吉斯迴歸進行分析的格式。 羅吉斯迴歸演算法的輸入必須是一組「標籤-特性向量配對」，其中「特性向量」是代表輸入點的數字向量。 因此，我們需要將類別資料行轉換成數字。 `trafficTimeBins` 和 `weekdayString` 資料行必須轉換為整數表示法。 有多種方法可以執行轉換，不過在此範例中採取的方法是「OneHotEncoding」，這是一種常見的方法。
 
 ```python
 # Since the sample uses an algorithm that only works with numeric features, convert them so they can be consumed
@@ -206,7 +206,7 @@ en2 = OneHotEncoder(dropLast=False, inputCol="weekdayIndex", outputCol="weekdayV
 encoded_final_df = Pipeline(stages=[sI1, en1, sI2, en2]).fit(taxi_featurised_df).transform(taxi_featurised_df)
 ```
 
-此動作會產生一個新的資料框架，其中包含正確格式的所有資料行來定型模型。
+此動作會產生新的資料框架，其中包含正確格式的所有資料行來定型模型。
 
 ## <a name="train-a-logistic-regression-model"></a>定型羅吉斯迴歸模型
 
@@ -225,7 +225,7 @@ train_data_df, test_data_df = encoded_final_df.randomSplit([trainingFraction, te
 現在有兩個資料框架，下一個工作是建立模型公式並對定型資料框架執行，然後針對測試資料框架進行驗證。 您應該使用不同版本的模型公式來進行實驗，以查看不同組合的影響。
 
 > [!Note]
-> 若要儲存模型，您將需要儲存體 Blob 資料參與者 Azure 角色。 在您的儲存體帳戶底下，流覽至 (IAM) 的 [存取控制]，然後選取 [ **新增角色指派**]。 將儲存體 Blob 資料參與者 Azure 角色指派給您的 SQL Database 伺服器。 僅有具備「擁有者」權限的成員才能執行此步驟。 如需各種 Azure 內建角色，請參閱此[指南](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
+> 若要儲存模型，您將需要儲存體 Blob 資料參與者 Azure 角色。 在您的儲存體帳戶底下，瀏覽至 [存取控制 (IAM)]，然後選取 [新增角色指派]。 將儲存體 Blob 資料參與者 Azure 角色指派給您的 SQL Database 伺服器。 僅有具備「擁有者」權限的成員才能執行此步驟。 如需各種 Azure 內建角色，請參閱此[指南](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
 
 ```python
 ## Create a new LR object for the model

@@ -4,18 +4,18 @@ ms.service: cost-management-billing
 ms.topic: include
 ms.date: 07/01/2019
 ms.author: amberb
-ms.openlocfilehash: bc60e7d39e6dbdf04744a10ef6c6f286e1b1ea52
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 6787983421285122834479cb652fec52ee7bf72b
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75987781"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360681"
 ---
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
  
 2. 針對 [成本管理 + 帳單]  進行搜尋。
  
-   ![顯示 Azure 入口網站搜尋的螢幕擷取畫面](./media/billing-check-account-type/billing-search-cost-management-billing.png)    
+   ![顯示在 Azure 入口網站中搜尋 [成本管理 + 計費] 的螢幕擷取畫面。](./media/billing-check-account-type/billing-search-cost-management-billing.png)    
  
 3. 如果您只能存取一個計費範圍，請選取左側的 [屬性]  。
  

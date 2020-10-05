@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 9f5e69a609931f4f8ead62f4d5c5ba2a1064a6ea
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 6424fc0ff49566fad949b3fba4718acb2bad4cd3
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683006"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362761"
 ---
 # <a name="organize-costs-by-customizing-your-billing-account"></a>自訂計費帳戶以整理成本
 
@@ -53,19 +53,19 @@ ms.locfileid: "88683006"
 |---------|---------|
 |Jack 註冊 Azure，且需要每個月的發票。 | 一個帳單設定檔和一個發票區段。 Jack 註冊 Azure 時，系統會自動設定此結構，不需要任何額外的步驟。 |
 
-![簡單計費狀況的資訊圖](./media/mca-section-invoice/organize-billing-scenario1.png)
+![單一計費情節的資訊圖。](./media/mca-section-invoice/organize-billing-scenario1.png)
 
 |狀況  |結構  |
 |---------|---------|
 |Contoso 是一個小型組織，需要每個月的發票，並依據部門 (行銷和工程) 將成本分組。  | 一個 Contoso 的帳單設定檔，以及行銷和工程部門各一個發票區段。 |
 
-![簡單計費狀況的資訊圖](./media/mca-section-invoice/organize-billing-scenario2.png)
+![多個計費情節的資訊圖。](./media/mca-section-invoice/organize-billing-scenario2.png)
 
 |狀況  |結構  |
 |---------|---------|
 |Fabrikam 是中型組織，其工程和行銷部門需要分開的發票。 工程部門想要依環境 (生產和開發) 將成本分組。  | 行銷和工程部門各一個帳單設定檔。 工程部門的生產和開發環境各一個發票區段。 |
 
-![簡單計費狀況的資訊圖](./media/mca-section-invoice/organize-billing-scenario3.png)
+![適用於多個計費情節的資訊圖，具有適用於實際執行和開發環境的個別計費。](./media/mca-section-invoice/organize-billing-scenario3.png)
 
 ## <a name="create-a-new-invoice-section"></a>建立新的發票區段
 
@@ -79,7 +79,7 @@ ms.locfileid: "88683006"
 
 3. 從左側窗格中選取 [帳單設定檔]。 從清單中選取 [帳單設定檔]。 新的區段會顯示在所選帳單設定檔的發票上。
 
-   [![顯示帳單設定檔清單的螢幕擷取畫面](./media/mca-section-invoice/mca-select-profile.png)](./media/mca-section-invoice/mca-select-profile-zoomed-in.png#lightbox)
+   [![顯示帳單設定檔清單的螢幕擷取畫面。](./media/mca-section-invoice/mca-select-profile.png)](./media/mca-section-invoice/mca-select-profile-zoomed-in.png#lightbox)
 
 4. 從左側窗格中選取 [發票區段]，然後從頁面頂端選取 [新增]。
 
@@ -107,7 +107,7 @@ ms.locfileid: "88683006"
 
 3. 從左側窗格中選取 [帳單設定檔]，然後從頁面頂端選取 [新增]。
 
-   [![顯示帳單設定檔清單的螢幕擷取畫面](./media/mca-section-invoice/mca-list-profiles.png)](./media/mca-section-invoice/mca-list-profiles-zoomed-in.png#lightbox)
+   [![顯示帳單設定檔清單並已選取 [新增] 的螢幕擷取畫面。](./media/mca-section-invoice/mca-list-profiles.png)](./media/mca-section-invoice/mca-list-profiles-zoomed-in.png#lightbox)
 
     > [!Note]
     >
@@ -136,15 +136,15 @@ ms.locfileid: "88683006"
 
 2. 尋找**訂用帳戶**。
 
-   [![顯示在入口網站中搜尋訂用帳戶的螢幕擷取畫面](./media/mca-section-invoice/search-subscriptions.png)](./media/mca-section-invoice/search-subscriptions.png#lightbox)
+   [![顯示在 Azure 入口網站中搜尋訂用帳戶的螢幕擷取畫面。](./media/mca-section-invoice/search-subscriptions.png)](./media/mca-section-invoice/search-subscriptions.png#lightbox)
 
 3. 從頁面頂端選取 [新增]。
 
-   ![在 [訂用帳戶] 檢視中顯示 [新增] 按鈕的螢幕擷取畫面](./media/mca-section-invoice/subscription-add.png)
+   ![顯示 [訂用帳戶] 檢視中適用於新訂用帳戶 [新增] 按鈕的螢幕擷取畫面。](./media/mca-section-invoice/subscription-add.png)
 
 4. 如果您有多個計費帳戶的存取權，請選取 Microsoft 客戶合約的計費帳戶。
 
-   ![在 [訂用帳戶] 檢視中顯示 [新增] 按鈕的螢幕擷取畫面](./media/mca-section-invoice/mca-create-azure-subscription.png)
+   ![顯示 [建立訂用帳戶] 窗格的螢幕擷取畫面。](./media/mca-section-invoice/mca-create-azure-subscription.png)
 
 5. 選取要對其收取訂用帳戶使用量費用的帳單設定檔。 此訂用帳戶的 Azure 使用量費用和其他購置將會計入選取帳單設定檔的發票。
 
@@ -166,7 +166,7 @@ ms.locfileid: "88683006"
 
 2. 搜尋 [成本管理 + 帳單]。
 
-   ![顯示在入口網站中搜尋訂用帳戶的螢幕擷取畫面](./media/mca-section-invoice/search-cmb.png)
+   ![顯示在 Azure 入口網站中搜尋 [成本管理 + 計費] 的螢幕擷取畫面。](./media/mca-section-invoice/search-cmb.png)
 
 3. 若要將訂用帳戶連結至新的發票區段，請選取畫面左側的 [Azure 訂用帳戶]。 針對其他產品 (例如 Azure Marketplace、應用程式來源資源)，請選取 [週期性費用]。
 

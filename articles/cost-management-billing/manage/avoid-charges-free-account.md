@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: f81c33f3b49352933801c8b89a2c3a1787c2356a
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 203a3b93f200a54ec40c96ee79c7fc822fac140b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88682904"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91270605"
 ---
 # <a name="avoid-charges-with-your-azure-free-account"></a>避免 Azure 免費帳戶產生費用
 
@@ -31,7 +31,7 @@ Azure 免費帳戶提供使用量有限的每個月免費服務。 免費使用�
 
 ## <a name="you-used-some-services-that-arent-free"></a>您使用的服務有些不是免費的
 
-將您的帳戶升級後，若使用並非 Azure 免費帳戶隨附的免費服務，則會以隨用隨付費率向您收費。 若要了解免費帳戶隨附的服務，請參閱 [Azure 免費帳戶常見問題集](https://azure.microsoft.com/free/free-account-faq/)。 您可以在 Azure 入口網站中檢查您的服務使用量。 若要深入了解，請參閱[定期查看入口網站以了解成本明細和完工速率](getting-started.md#costs)。
+將您的帳戶升級後，若使用並非 Azure 免費帳戶隨附的免費服務，則會以隨用隨付費率向您收費。 若要了解免費帳戶隨附的服務，請參閱 [Azure 免費帳戶常見問題集](https://azure.microsoft.com/free/free-account-faq/)。 您可以在 Azure 入口網站中檢查您的服務使用量。 若要深入了解，請參閱[分析未預期的費用](../understand/analyze-unexpected-charges.md)。
 
 ## <a name="you-reached-the-end-of-your-free-12-months"></a>您已達 12 個月的免費使用期
 

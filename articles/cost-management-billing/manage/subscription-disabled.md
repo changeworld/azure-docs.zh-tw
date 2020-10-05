@@ -10,12 +10,12 @@ ms.subservice: billing
 ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 32a6284c7766f3b5d9413a76056dc915a8ac93dc
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 550be6c10402398b62af307281660b93981a0df3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686797"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91308957"
 ---
 # <a name="reactivate-a-disabled-azure-subscription"></a>重新啟用已停用的 Azure 訂用帳戶
 
@@ -32,7 +32,7 @@ ms.locfileid: "88686797"
 > [!NOTE]
 > 如果您有免費試用訂用帳戶並移除消費限制，則在免費試用結束時，您的訂用帳戶會轉換成採用隨用隨付費率的個別訂用帳戶。 您可以在建立訂用帳戶之後保留剩餘點數達整整 30 天之久。 您也可以在 12 個月內存取免費服務。
 
-若要監視和管理 Azure 計費活動，請參閱[使用 Azure 計費與成本管理避免非預期的成本](getting-started.md)。
+若要監視和管理 Azure 的計費活動，請參閱[規劃管理 Azure 成本](../understand/plan-manage-costs.md)。
 
 
 ## <a name="your-bill-is-past-due"></a>您的帳單逾期未繳
@@ -60,4 +60,4 @@ ms.locfileid: "88686797"
 如有問題或需要協助，請[建立支援要求](https://go.microsoft.com/fwlink/?linkid=2083458)。
 
 ## <a name="next-steps"></a>後續步驟
-- 了解如何[監視和管理 Azure 的計費活動](getting-started.md)。
+- 了解如何[規劃管理 Azure 成本](../understand/plan-manage-costs.md)。

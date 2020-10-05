@@ -8,12 +8,12 @@ ms.subservice: reservations
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: 211e06695d3cabef8cfeb0a7bbf581835819345c
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: d22ab9f028f0491db33d62d0a6dff8d06282f925
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686202"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91368714"
 ---
 # <a name="buy-a-reservation"></a>購買保留項目
 
@@ -123,7 +123,7 @@ Enterprise 合約 (EA) 客戶可藉由在 EA 入口網站中停用 [新增保留
 針對具有 EA 訂用帳戶的客戶：
 
 - 通知只會傳送給 EA 通知連絡人。
-- 使用 RBAC (IAM) 權限新增至保留的使用者，不會收到任何電子郵件通知。
+- 使用 Azure RBAC (IAM) 權限新增至保留的使用者，不會收到任何電子郵件通知。
 
 針對具有個別訂用帳戶的客戶：
 

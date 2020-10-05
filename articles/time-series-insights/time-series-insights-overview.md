@@ -8,16 +8,19 @@ ms.author: dpalled
 manager: diviso
 ms.workload: big-data
 ms.topic: overview
-ms.date: 07/07/2020
+ms.date: 09/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1ab17e2c24d106e1aec0b546a6efd05ac4c3e32f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f395f96dfa48567f95a1c50cf5403d3cbb427cb7
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87020520"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91597820"
 ---
 # <a name="what-is-azure-time-series-insights-gen1"></a>什麼是 Azure 時間序列深入解析 Gen1？
+
+> [!CAUTION]
+> 這是 Gen1 文章。
 
 建置 Azure 時間序列深入解析是為了儲存、視覺化及查詢大量時間序列資料，例如 IoT 裝置所產生的時間序列資料。 如果您想要儲存、管理、查詢或以視覺化方式呈現雲端的時間序列資料，Azure 時間序列深入解析可能很適合您。
 

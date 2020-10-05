@@ -1,28 +1,30 @@
 ---
 title: 快速入門：使用範例標籤工具為表單加上標籤、定型模型以及分析表單 - 表單辨識器
 titleSuffix: Azure Cognitive Services
-description: 在本快速入門中，您將使用表單辨識器範例標籤工具，手動為表單文件加上標籤。 接著，您將使用已加上標籤的文件來定型自訂模型，並使用模型來擷取索引鍵/值組。
+description: 在本快速入門中，您將使用表單辨識器範例標籤工具，手動為表單文件加上標籤。 接著，您將使用已加上標籤的文件來定型自訂文件處理模型，並使用模型來擷取索引鍵/值組。
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 08/25/2020
+ms.date: 09/30/2020
 ms.author: pafarley
-ms.openlocfilehash: e231bb7919f25210d7e5a2adff49dede6f0349a9
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.custom: cog-serv-seo-aug-2020
+keywords: 文件處理
+ms.openlocfilehash: 6b641df00d4b4981aa47f314f8e575a9cbcccbba
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89418954"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91597736"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>使用範例標籤工具，以標籤定型表單辨識器模型
 
-在本快速入門中，您將搭配使用表單辨識器 REST API 與範例標籤工具，以手動加上標籤的資料定型自訂模型。 若要深入了解此功能，請參閱概觀的[以標籤定型](../overview.md#train-with-labels)一節。
+在本快速入門中，您將搭配使用表單辨識器 REST API 與範例標籤工具，以手動加上標籤的資料定型自訂文件處理模型。 若要深入了解使用「表單辨識器」的受監督定型，請參閱概觀的[以標籤定型](../overview.md#train-with-labels)一節。
 
 > [!VIDEO https://channel9.msdn.com/Shows/Docs-Azure/Azure-Form-Recognizer/player]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要完成此快速入門，您必須：
 
@@ -137,7 +139,7 @@ ms.locfileid: "89418954"
 * **API 金鑰** - 您的表單辨識器訂用帳戶金鑰。
 * **描述** - 選擇性 - 專案描述
 
-:::image type="content" source="../media/label-tool/new-project.png" alt-text="範例標籤工具上的新增專案頁面。":::
+:::image type="content" source="../media/label-tool/new-project.png" alt-text="範例標籤工具的連線設定。":::
 
 ## <a name="label-your-forms"></a>為表單加上標籤
 
@@ -153,7 +155,7 @@ ms.locfileid: "89418954"
 
 其也會顯示哪些資料表已自動擷取。 按一下文件左側的 [資料表/格線] 圖示，以查看已擷取的資料表。 因為本快速入門會自動擷取資料表內容，所以我們不會為資料表內容加上標籤，而是會仰賴自動化擷取。
 
-:::image type="content" source="../media/label-tool/table-extraction.png" alt-text="範例標籤工具中的資料表視覺效果。":::
+:::image type="content" source="../media/label-tool/table-extraction.png" alt-text="範例標籤工具的連線設定。":::
 
 ### <a name="apply-labels-to-text"></a>將標籤套用至文字
 
@@ -199,7 +201,7 @@ ms.locfileid: "89418954"
 
 ---
 
-:::image type="content" source="../media/label-tool/main-editor-2-1.png" alt-text="範例標籤工具的主要編輯器視窗。":::
+:::image type="content" source="../media/label-tool/main-editor-2-1.png" alt-text="範例標籤工具的連線設定。":::
 
 
 請遵循上述步驟，至少為您表單中的五個表單加上標籤。
@@ -254,7 +256,7 @@ ms.locfileid: "89418954"
 * 標籤的清單，以及每個標籤的預估精確度。
 
 
-:::image type="content" source="../media/label-tool/train-screen.png" alt-text="定型檢視。":::
+:::image type="content" source="../media/label-tool/train-screen.png" alt-text="範例標籤工具的連線設定。":::
 
 定型完成後，請查看 [平均精確度] 值。 如果該值偏低，您應新增更多輸入文件，並重複上述步驟。 您已加上標籤的文件會保留在專案索引中。
 
@@ -273,7 +275,7 @@ ms.locfileid: "89418954"
 
 若要在範例標籤工具中撰寫模型，請按一下左側的 [模型撰寫 (合併箭號)] 圖示。 在左側，選取您想要一起撰寫的模型。 具有箭號圖示的模型是已經撰寫好的模型。 按一下 [撰寫] 按鈕。 在快顯視窗中，為新撰寫的模型命名，然後按一下 [撰寫]。 當作業完成時，新撰寫的模型應該就會出現在清單中。 
 
-:::image type="content" source="../media/label-tool/model-compose.png" alt-text="模型撰寫 UX 檢視。":::
+:::image type="content" source="../media/label-tool/model-compose.png" alt-text="範例標籤工具的連線設定。":::
 
 ---
 
@@ -306,7 +308,10 @@ ms.locfileid: "89418954"
 
 ## <a name="next-steps"></a>後續步驟
 
-在本快速入門中，您已了解如何使用表單辨識器範例標籤工具，以手動加上標籤的資料為模型定型。 如果您想要將標籤工具整合到您自己的應用程式中，請使用可處理標示資料定型的 REST API。
+在本快速入門中，您已了解如何使用表單辨識器範例標籤工具，以手動加上標籤的資料為模型定型。 如果您想要建置自己的公用程式來為定型資料加上標籤，請使用處理已加上標籤資料定型的 REST API。
 
 > [!div class="nextstepaction"]
 > [使用 Python 以標籤定型](./python-labeled-data.md)
+
+* [什麼是表單辨識器？](../overview.md)
+* [表單辨識器用戶端程式庫快速入門](client-library.md)

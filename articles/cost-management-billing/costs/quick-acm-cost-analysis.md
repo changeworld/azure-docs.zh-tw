@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
 ms.custom: seodec18
-ms.openlocfilehash: 8ca9eaeeb8d484c9aeae6646e6f4814afbaed577
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 89a12be047a3571c1d85febc246a1ed8a3c8b720
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88718521"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91297856"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>快速入門：使用成本分析探索及分析成本
 
@@ -150,7 +150,7 @@ ms.locfileid: "88718521"
 
 >[!VIDEO https://www.youtube.com/embed/kQkXXj-SmvQ]
 
-若要釘選成本分析，選取右上角的釘選圖示。 釘選成本分析只會儲存主要的圖表或資料表檢視。 請共用儀表板來讓其他人可以存取圖格。 請注意，這只會共用儀表板設定，而不會授與其他人存取基礎資料的權限。 如果您沒有成本存取權，但可以存取共用儀表板，您將會看到「存取遭拒」訊息。
+若要釘選成本分析，選取右上角或 [<Subscription Name> | 成本分析] 後面的釘選圖示。 釘選成本分析只會儲存主要的圖表或資料表檢視。 請共用儀表板來讓其他人可以存取圖格。 請注意，這只會共用儀表板設定，而不會授與其他人存取基礎資料的權限。 如果您沒有成本存取權，但可以存取共用儀表板，您將會看到「存取遭拒」訊息。
 
 若要共用成本分析的連結，請選取刀鋒視窗頂端的 [共用]。 此時會顯示自訂 URL，它可以開啟此特定範圍的此特定檢視。 如果您沒有成本存取權並取得此 URL，您會看到「存取遭拒」訊息。
 

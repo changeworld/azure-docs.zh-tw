@@ -1,27 +1,27 @@
 ---
-title: 教學課程：將資料庫加入至容錯移轉群組
-description: 使用 Azure 入口網站、PowerShell 或 Azure CLI，將 Azure SQL Database 中的資料庫新增至 autofailover 群組。
+title: 教學課程：將資料庫新增至容錯移轉群組
+description: 使用 Azure 入口網站、PowerShell 或 Azure CLI，將 Azure SQL Database 中的資料庫新增至自動容錯移轉群組。
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
 ms.custom: sqldbrb=1, devx-track-azurecli
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: tutorial
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein
 ms.date: 06/19/2019
-ms.openlocfilehash: 23b78acb226b0d4de637dc653e6edb3bb4177219
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
-ms.translationtype: MT
+ms.openlocfilehash: 5fca46e7bf80504632e0894deefa1805a080b3b9
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91263584"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91442731"
 ---
-# <a name="tutorial-add-an-azure-sql-database-to-an-autofailover-group"></a>教學課程：將 Azure SQL Database 新增至 autofailover 群組
+# <a name="tutorial-add-an-azure-sql-database-to-an-autofailover-group"></a>教學課程：將 Azure SQL Database 新增至自動容錯移轉群組
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-[容錯移轉群組](auto-failover-group-overview.md)是一種宣告式的抽象層，可讓您將多個異地複寫資料庫分組。 瞭解如何使用 Azure 入口網站、PowerShell 或 Azure CLI 來設定 Azure SQL Database 的容錯移轉群組，以及測試容錯移轉。  在本教學課程中，您將了解如何：
+[容錯移轉群組](auto-failover-group-overview.md)是宣告式抽象層，可讓您將多個異地複寫資料庫集合為群組。 了解如何使用 Azure 入口網站、PowerShell 或 Azure CLI 來為 Azure SQL Database 設定容錯移轉群組，並測試容錯移轉。  在本教學課程中，您將了解如何：
 
 > [!div class="checklist"]
 >
@@ -29,76 +29,76 @@ ms.locfileid: "91263584"
 > - 在兩部伺服器之間建立資料庫的容錯移轉群組。
 > - 測試容錯移轉。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 # <a name="the-portal"></a>[入口網站](#tab/azure-portal)
 
 若要完成本教學課程，請確定您具有下列項目︰
 
-- Azure 訂用帳戶。 如果您還沒有帳戶，請[建立一個免費帳戶](https://azure.microsoft.com/free/)。
+- Azure 訂用帳戶。 [建立免費帳戶](https://azure.microsoft.com/free/) (如果您還沒有帳戶的話)。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-若要完成本教學課程，請確定您有下列專案：
+若要完成本教學課程，請確定您具有下列必要項目：
 
-- Azure 訂用帳戶。 如果您還沒有帳戶，請[建立一個免費帳戶](https://azure.microsoft.com/free/)。
+- Azure 訂用帳戶。 [建立免費帳戶](https://azure.microsoft.com/free/) (如果您還沒有帳戶的話)。
 - [Azure PowerShell](/powershell/azure/)
 
 # <a name="the-azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-若要完成本教學課程，請確定您有下列專案：
+若要完成本教學課程，請確定您具有下列必要項目：
 
-- Azure 訂用帳戶。 如果您還沒有帳戶，請[建立一個免費帳戶](https://azure.microsoft.com/free/)。
-- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)的最新版本。
+- Azure 訂用帳戶。 [建立免費帳戶](https://azure.microsoft.com/free/) (如果您還沒有帳戶的話)。
+- 最新版的 [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
 ---
 
-## <a name="1---create-a-database"></a>1-建立資料庫
+## <a name="1---create-a-database"></a>1 - 建立資料庫
 
 [!INCLUDE [sql-database-create-single-database](../includes/sql-database-create-single-database.md)]
 
-## <a name="2---create-the-failover-group"></a>2-建立容錯移轉群組
+## <a name="2---create-the-failover-group"></a>2 - 建立容錯移轉群組
 
-在此步驟中，您會在現有的伺服器與另一個區域中的新伺服器之間建立 [容錯移轉群組](auto-failover-group-overview.md) 。 然後將範例資料庫新增到容錯移轉群組。
+在此步驟中，您將會在現有伺服器與另一個區域中的新伺服器之間建立[容錯移轉群組](auto-failover-group-overview.md)。 然後將範例資料庫新增到容錯移轉群組。
 
 # <a name="the-portal"></a>[入口網站](#tab/azure-portal)
 
 使用 Azure 入口網站建立您的容錯移轉群組，並將您的資料庫新增至其中。
 
-1. 在[Azure 入口網站](https://portal.azure.com)的左側功能表中選取**Azure SQL** 。 如果 **AZURE SQL** 不在清單中，請選取 [ **所有服務**]，然後在 [搜尋] 方塊中輸入 Azure sql。 (選用) 選取 **Azure SQL** 旁的星號將其設為最愛，並新增為左側導覽中的項目。
-1. 選取在第1節中建立的資料庫，例如 `mySampleDatabase` 。
-1. 您可以在伺服器層級設定容錯移轉群組。 在 [ **伺服器名稱** ] 底下選取伺服器的名稱，以開啟伺服器的設定。
+1. 在 [Azure 入口網站](https://portal.azure.com)的左側功能表中，選取 [Azure SQL]。 如果 **Azure SQL** 不在清單中，請選取 [所有服務]，然後在搜尋方塊中鍵入 Azure SQL。 (選用) 選取 **Azure SQL** 旁的星號將其設為最愛，並新增為左側導覽中的項目。
+1. 選取在第 1 節中建立的資料庫，例如 `mySampleDatabase`。
+1. 您可以在伺服器層級設定容錯移轉群組。 在 [伺服器名稱] 底下選取伺服器的名稱，以開啟伺服器的設定。
 
-   ![開啟資料庫的伺服器](./media/failover-group-add-single-database-tutorial/open-sql-db-server.png)
+   ![開器資料庫的伺服器](./media/failover-group-add-single-database-tutorial/open-sql-db-server.png)
 
-1. 選取 [**設定**] 窗格底下的 [**容錯移轉群組**]，然後選取 [**新增群組**] 以建立新的容錯移轉群組。
+1. 選取 [設定] 窗格底下的 [容錯移轉群組]，然後選取 [新增群組]，以建立新的容錯移轉群組。
 
    ![新增容錯移轉群組](./media/failover-group-add-single-database-tutorial/sqldb-add-new-failover-group.png)
 
-1. 在 [ **容錯移轉群組** ] 頁面上，輸入或選取下列值，然後選取 [ **建立**：
+1. 在 [容錯移轉群組] 頁面上輸入或選取下列值，然後選取 [建立]：
 
-   - **容錯移轉組名**：輸入唯一的容錯移轉組名，例如 `failovergrouptutorial` 。
-   - **次要伺服器**：選取 *設定必要設定* 的選項，然後選擇 **建立新的伺服器**。 或者，您也可以選擇已經存在的伺服器做為次要伺服器。 輸入下列值之後，請選取 [ **選取**]。
-      - **伺服器名稱**：輸入次要伺服器的唯一名稱，例如 `mysqlsecondary` 。
-      - **伺服器管理員登**入：類型 `azureuser`
+   - **容錯移轉群組名稱**：輸入唯一的容錯移轉群組名稱，例如 `failovergrouptutorial`。
+   - **次要伺服器**：選取 [設定必要設定] 選項，然後選擇 [建立新的伺服器]。 或者，您也可以選擇已經存在的伺服器作為次要伺服器。 輸入下列值之後，選取 [選取]。
+      - **伺服器名稱**：輸入次要伺服器的唯一名稱，例如 `mysqlsecondary`。
+      - **伺服器管理員登入**：輸入 `azureuser`
       - **密碼**：輸入符合密碼需求的複雜密碼。
-      - **位置**：從下拉式清單中選擇一個位置，例如 `East US` 。 此位置不能與主伺服器位於相同的位置。
+      - **位置**：從下拉式清單中選擇位置，例如 `East US`。 此位置不能與您的主要伺服器位於相同的位置。
 
      > [!NOTE]
-     > 伺服器登入和防火牆設定必須符合主伺服器的設定。
+     > 伺服器登入和防火牆設定必須符合主要伺服器的設定。
 
      ![建立容錯移轉群組的次要伺服器](./media/failover-group-add-single-database-tutorial/create-secondary-failover-server.png)
 
-   - **群組內的資料庫**：選取次要伺服器之後，這個選項就會變成解除鎖定。 選取此項可 **選取要加入** 的資料庫，然後選擇您在第1節中建立的資料庫。 將資料庫新增至容錯移轉群組，將會自動啟動異地複寫進程。
+   - **群組中的資料庫**：選取次要伺服器之後，此選項就會解除鎖定。 請將其選取，以**選取要新增的資料庫**，然後選擇您在第 1 節中建立的資料庫。 將資料庫新增到容錯移轉群組後，將會自動啟動異地複寫程序。
 
-   ![將 SQL Database 新增至容錯移轉群組](./media/failover-group-add-single-database-tutorial/add-sqldb-to-failover-group.png)
+   ![將 SQL 資料庫新增至容錯移轉群組](./media/failover-group-add-single-database-tutorial/add-sqldb-to-failover-group.png)
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-使用 PowerShell 建立您的容錯移轉群組，並將您的資料庫新增至該群組。
+使用 PowerShell 建立您的容錯移轉群組，並將您的資料庫新增至其中。
 
    > [!NOTE]
-   > 伺服器登入和防火牆設定必須符合主伺服器的設定。
+   > 伺服器登入和防火牆設定必須符合主要伺服器的設定。
 
    ```powershell-interactive
    # $subscriptionId = '<SubscriptionID>'
@@ -165,19 +165,19 @@ ms.locfileid: "91263584"
 
 | Command | 注意 |
 |---|---|
-| [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | 在 Azure SQL Database 中建立伺服器，以裝載單一資料庫和彈性集區。 |
-| [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | 在 Azure SQL Database 中建立伺服器的防火牆規則。 |
+| [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | 在裝載單一資料庫和彈性集區的 Azure SQL Database 中建立伺服器。 |
+| [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | 為 Azure SQL Database 中的伺服器建立防火牆規則。 |
 | [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) | 在 Azure SQL Database 中建立新的單一資料庫。 |
 | [New-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/new-azsqldatabasefailovergroup) | 在 Azure SQL Database 中建立新的容錯移轉群組。 |
-| [Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase) | 取得 Azure SQL Database 中的一或多個資料庫。 |
-| [Add-AzSqlDatabaseToFailoverGroup](/powershell/module/az.sql/add-azsqldatabasetofailovergroup) | 將一或多個資料庫新增至 Azure SQL Database 中的容錯移轉群組。 |
+| [Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase) | 取得 Azure SQL Database 中的一個或多個資料庫。 |
+| [Add-AzSqlDatabaseToFailoverGroup](/powershell/module/az.sql/add-azsqldatabasetofailovergroup) | 將一個或多個資料庫新增至 Azure SQL Database 中的容錯移轉群組。 |
 
 # <a name="the-azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 使用 Azure CLI 建立您的容錯移轉群組，並將您的資料庫新增至其中。
 
    > [!NOTE]
-   > 伺服器登入和防火牆設定必須符合主伺服器的設定。
+   > 伺服器登入和防火牆設定必須符合主要伺服器的設定。
 
    ```azurecli-interactive
    #!/bin/bash
@@ -203,7 +203,7 @@ ms.locfileid: "91263584"
 
 ---
 
-## <a name="3---test-failover"></a>3-測試容錯移轉
+## <a name="3---test-failover"></a>3 - 測試容錯移轉
 
 在此步驟中，您會將容錯移轉群組容錯移轉到次要伺服器，然後使用 Azure 入口網站進行容錯回復。
 
@@ -211,28 +211,28 @@ ms.locfileid: "91263584"
 
 使用 Azure 入口網站測試容錯移轉。
 
-1. 在[Azure 入口網站](https://portal.azure.com)的左側功能表中選取**Azure SQL** 。 如果 **AZURE SQL** 不在清單中，請選取 [ **所有服務**]，然後在 [搜尋] 方塊中輸入 Azure sql。 (選用) 選取 **Azure SQL** 旁的星號將其設為最愛，並新增為左側導覽中的項目。
-1. 選取在區段2中建立的資料庫，例如 `mySampleDatbase` 。
-1. 在 [ **伺服器名稱** ] 底下選取伺服器的名稱，以開啟伺服器的設定。
+1. 在 [Azure 入口網站](https://portal.azure.com)的左側功能表中，選取 [Azure SQL]。 如果 **Azure SQL** 不在清單中，請選取 [所有服務]，然後在搜尋方塊中鍵入 Azure SQL。 (選用) 選取 **Azure SQL** 旁的星號將其設為最愛，並新增為左側導覽中的項目。
+1. 選取在第 2 節中建立的資料庫，例如 `mySampleDatbase`。
+1. 在 [伺服器名稱] 底下選取伺服器的名稱，以開啟伺服器的設定。
 
-   ![開啟資料庫的伺服器](./media/failover-group-add-single-database-tutorial/open-sql-db-server.png)
+   ![開器資料庫的伺服器](./media/failover-group-add-single-database-tutorial/open-sql-db-server.png)
 
-1. 選取 [**設定**] 窗格底下的 [**容錯移轉群組**]，然後選擇您在第2節中建立的容錯移轉群組。
+1. 選取 [設定] 窗格下的 [容錯移轉群組]，然後選擇您在第 2 節中建立的容錯移轉群組。
   
    ![從入口網站選取容錯移轉群組](./media/failover-group-add-single-database-tutorial/select-failover-group.png)
 
-1. 檢查哪一個是主要伺服器，哪個伺服器是次要伺服器。
-1. 從工作窗格中選取 [ **容錯移轉** ]，以容錯移轉包含範例資料庫的容錯移轉群組。
-1. 在警告上選取 **[是]** ，通知您 TDS 會話將會中斷連線。
+1. 檢查哪個伺服器是主要的，哪個伺服器是次要的。
+1. 從工作窗格中選取 [容錯移轉]，以容錯移轉包含範例資料庫的容錯移轉群組。
+1. 在通知您 TDS 工作階段將中斷的警告上，選取 [是]。
 
    ![容錯移轉包含您資料庫的容錯移轉群組](./media/failover-group-add-single-database-tutorial/failover-sql-db.png)
 
-1. 檢查哪些伺服器現在是主要伺服器，以及哪個伺服器是次要伺服器。 如果容錯移轉成功，這兩部伺服器應該具有交換的角色。
-1. 再次選取 [ **容錯移轉** ]，將伺服器容錯回復至其原始角色。
+1. 檢查哪個伺服器現在是主要的，哪個伺服器是次要的。 如果容錯移轉成功，這兩部伺服器應該已交換角色。
+1. 再次選取 [容錯移轉]，讓伺服器容錯回復到其原始角色。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-使用 PowerShell 來測試容錯移轉。
+使用 PowerShell 測試容錯移轉。
 
 檢查次要複本的角色：
 
@@ -250,7 +250,7 @@ ms.locfileid: "91263584"
       -ServerName $drServerName).ReplicationRole
    ```
 
-容錯移轉至次要伺服器：
+容錯移轉到次要伺服器：
 
    ```powershell-interactive
    # Set variables
@@ -295,14 +295,14 @@ ms.locfileid: "91263584"
 
 使用 Azure CLI 測試容錯移轉。
 
-確認哪一個伺服器是次要複本：
+確認哪一個伺服器是次要伺服器：
 
    ```azurecli-interactive
    echo "Verifying which server is in the secondary role..."
    az sql failover-group list --server $server --resource-group $resourceGroup
    ```
 
-容錯移轉至次要伺服器：
+容錯移轉到次要伺服器：
 
    ```azurecli-interactive
    echo "Failing over group to the secondary server..."
@@ -329,15 +329,15 @@ ms.locfileid: "91263584"
 
 ## <a name="clean-up-resources"></a>清除資源
 
-藉由刪除資源群組來清除資源。
+刪除資源群組，即可清除資源。
 
 # <a name="the-portal"></a>[入口網站](#tab/azure-portal)
 
 使用 Azure 入口網站刪除資源群組。
 
 1. 瀏覽至您在 [Azure 入口網站](https://portal.azure.com)中的資源群組。
-1. 選取 [  **刪除資源群組** ] 以刪除群組中的所有資源，以及資源群組本身。
-1. 在文字方塊中輸入資源群組的名稱， `myResourceGroup` 然後選取 [ **刪除** ] 以刪除資源群組。  
+1. 選取 [刪除資源群組] 以刪除群組中的所有資源，以及資源群組本身。
+1. 在文字方塊中輸入資源群組的名稱 (`myResourceGroup`)，然後選取 [刪除]，即可刪除該資源群組。  
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -378,9 +378,9 @@ ms.locfileid: "91263584"
 ---
 
 > [!IMPORTANT]
-> 如果您想要保留資源群組，但要刪除次要資料庫，請先將它從容錯移轉群組中移除，再加以刪除。 從容錯移轉群組中移除次要資料庫之前，先將它刪除，可能會導致無法預期的行為。
+> 如果您想要保留資源群組，但要刪除次要資料庫，請先將其從容錯移轉群組中移除，然後再將其刪除。 將次要資料庫從容錯移轉群組中移除之前先將其刪除，可能會導致無法預期的行為。
 
-## <a name="full-scripts"></a>完整腳本
+## <a name="full-scripts"></a>完整指令碼
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -392,13 +392,13 @@ ms.locfileid: "91263584"
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | 建立用來存放所有資源的資源群組。 |
 | [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | 在 Azure SQL Database 中建立裝載單一資料庫和彈性集區的伺服器。 |
-| [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | 在 Azure SQL Database 中建立伺服器的防火牆規則。 |
+| [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | 為 Azure SQL Database 中的伺服器建立防火牆規則。 |
 | [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) | 在 Azure SQL Database 中建立新的資料庫。 |
 | [New-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/new-azsqldatabasefailovergroup) | 在 Azure SQL Database 中建立新的容錯移轉群組。 |
-| [Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase) | 取得 Azure SQL Database 中的一或多個資料庫。 |
-| [Add-AzSqlDatabaseToFailoverGroup](/powershell/module/az.sql/add-azsqldatabasetofailovergroup) | 將一或多個資料庫新增至 Azure SQL Database 中的容錯移轉群組。 |
+| [Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase) | 取得 Azure SQL Database 中的一個或多個資料庫。 |
+| [Add-AzSqlDatabaseToFailoverGroup](/powershell/module/az.sql/add-azsqldatabasetofailovergroup) | 將一個或多個資料庫新增至 Azure SQL Database 中的容錯移轉群組。 |
 | [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) | 取得或列出 Azure SQL Database 中的容錯移轉群組。 |
-| [Switch-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup)| 在 Azure SQL Database 中執行容錯移轉群組的容錯移轉。 |
+| [Switch-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup)| 執行 Azure SQL Database 中容錯移轉群組的容錯移轉。 |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | 移除 Azure SQL Database 中的資源群組。|
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
@@ -412,24 +412,24 @@ ms.locfileid: "91263584"
 | [az account set](/cli/azure/account?view=azure-cli-latest#az-account-set) | 將訂用帳戶設定為目前使用中的訂用帳戶。 |
 | [az group create](/cli/azure/group#az-group-create) | 建立用來存放所有資源的資源群組。 |
 | [az sql server create](/cli/azure/sql/server#az-sql-server-create) | 在 Azure SQL Database 中建立裝載單一資料庫和彈性集區的伺服器。 |
-| [az sql server firewall-rule create](/cli/azure/sql/server/firewall-rule) | 在 Azure SQL Database 中建立伺服器層級 IP 防火牆規則。 |
+| [az sql server firewall-rule create](/cli/azure/sql/server/firewall-rule) | 在 Azure SQL Database 中建立伺服器層級的 IP 防火牆規則。 |
 | [az sql db create](/cli/azure/sql/db?view=azure-cli-latest) | 在 Azure SQL Database 中建立資料庫。 |
 | [az sql failover-group create](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-create) | 在 Azure SQL Database 中建立容錯移轉群組。 |
-| [az sql failover-group list](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-list) | 列出伺服器中 Azure SQL Database 的容錯移轉群組。 |
+| [az sql failover-group list](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-list) | 列出 Azure SQL Database 中伺服器的容錯移轉群組。 |
 | [az sql failover-group set-primary](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-set-primary) | 從目前的主伺服器容錯移轉所有資料庫，以設定容錯移轉群組的主要複本。 |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az-vm-extension-set) | 刪除資源群組，包括所有的巢狀資源。 |
 
 # <a name="the-portal"></a>[入口網站](#tab/azure-portal)
 
-Azure 入口網站沒有任何可用的腳本。
+沒有可供 Azure 入口網站使用的指令碼。
 
 ---
 
-您可以在這裡找到其他 Azure SQL Database 腳本： [Azure PowerShell](powershell-script-content-guide.md) 和 [Azure CLI](az-cli-script-samples-content-guide.md)。
+您可以在這裡找到其他 Azure SQL Database 指令碼：[Azure PowerShell](powershell-script-content-guide.md) 和 [Azure CLI](az-cli-script-samples-content-guide.md)。
 
 ## <a name="next-steps"></a>後續步驟
 
-在本教學課程中，您已將 Azure SQL Database 中的資料庫新增至容錯移轉群組，並測試容錯移轉。 您已了解如何︰
+在本教學課程中，您已將 Azure SQL Database 中的資料庫新增至容錯移轉群組，並已測試了容錯移轉。 您已了解如何︰
 
 > [!div class="checklist"]
 >
@@ -437,7 +437,7 @@ Azure 入口網站沒有任何可用的腳本。
 > - 在兩部伺服器之間建立資料庫的容錯移轉群組。
 > - 測試容錯移轉。
 
-前進到下一個教學課程，以瞭解如何將彈性集區新增至容錯移轉群組。
+請前進到下一個教學課程，了解如何將彈性集區新增至容錯移轉群組。
 
 > [!div class="nextstepaction"]
 > [教學課程：將 Azure SQL Database 彈性集區新增至容錯移轉群組](failover-group-add-elastic-pool-tutorial.md)

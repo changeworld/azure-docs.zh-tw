@@ -1,22 +1,22 @@
 ---
-title: 搭配 Entity Framework 使用彈性資料庫用戶端程式庫
+title: 搭配使用彈性資料庫用戶端程式庫與 Entity Framework
 description: 使用彈性資料庫用戶端程式庫與和 Entity Framework 來編寫資料庫
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: sample
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/04/2019
-ms.openlocfilehash: b53e37384ba85770b445f834c440075cd35b6eb2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: 8eafd99f07c64c20565a954216341f3dea9541b0
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84026579"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91442651"
 ---
 # <a name="elastic-database-client-library-with-entity-framework"></a>搭配使用彈性資料庫用戶端程式庫與 Entity Framework
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -28,7 +28,7 @@ ms.locfileid: "84026579"
 若要下載本文的程式碼：
 
 * 需要 visual Studio 2012 或更新版本。
-* 下載[適用于 AZURE SQL 的彈性 DB 工具-Entity Framework 整合範例](https://github.com/Azure/elastic-db-tools/)。 將範例解壓縮至您選擇的位置。
+* 下載 [Elastic DB Tools for Azure SQL - Entity Framework 整合範例](https://github.com/Azure/elastic-db-tools/)。 將範例解壓縮至您選擇的位置。
 * 啟動 Visual Studio。
 * 在 Visual Studio 中，選取 [檔案] -> [開啟專案/方案]。
 * 在 [開啟專案]**** 對話方塊中，瀏覽至您下載的範例，然後選取 **EntityFrameworkCodeFirst.sln** 以開啟範例。
@@ -39,7 +39,7 @@ ms.locfileid: "84026579"
 * 分區 1 資料庫
 * 分區 2 資料庫
 
-建立這些資料庫之後，請在**Program.cs**中填入預留位置，其中包含您的伺服器名稱、資料庫名稱，以及用來連接到資料庫的認證。 在 Visual Studio 中建置方案。 在建置過程中，Visual Studio 會下載彈性資料庫用戶端程式庫、Entity Framework 和暫時性錯誤處理所需的 NuGet 套件。 請確定您的解決方案已啟用還原 NuGet 封裝。 您可以用滑鼠右鍵按一下 Visual Studio [方案總管] 中的方案檔來啟用這個設定。
+一旦建立這些資料庫後，在 **Program.cs** 的預留位置中，填入您的伺服器名稱、資料庫名稱及用來連線到資料庫的認證。 在 Visual Studio 中建置方案。 在建置過程中，Visual Studio 會下載彈性資料庫用戶端程式庫、Entity Framework 和暫時性錯誤處理所需的 NuGet 套件。 請確定您的解決方案已啟用還原 NuGet 封裝。 您可以用滑鼠右鍵按一下 Visual Studio [方案總管] 中的方案檔來啟用這個設定。
 
 ## <a name="entity-framework-workflows"></a>Entity Framework 工作流程
 
@@ -60,7 +60,7 @@ Entity Framework 開發人員依賴下列四種工作流程來建置應用程式
 
 分區對應管理員可防止使用者檢視 Shardlet 資料時出現不一致，這種情況發生在並行 Shardlet 管理作業中 (例如將資料從一個分區重新放置到另一個分區)。 在作法上，用戶端程式庫所管理的分區對應會代理應用程式的資料庫連接。 這可讓分區對應功能在分區管理作業可能影響已建立連接的 Shardlet 時，自動終止資料庫連接。 這種方法需要與一些 EF 功能整合，例如從現有連接建立新的連接以檢查資料庫是否存在。 一般而言，我們觀察是只有在已關閉的資料庫連接上 (EF 工作可安心複製)，標準 DbContext 建構函式才能可靠地運作。 彈性資料庫的設計原則只是代理已開啟的連接。 有人可能會認為先關閉用戶端程式庫所代理的連接，再交給 EF DbContext，就可以解決這個問題。 不過，若關閉連線並依賴 EF 來重新開啟它，就等於放棄程式庫所執行的驗證和一致性檢查。 不過，EF 的移轉功能會使用這些連接，在應用程式不知情的情況下管理基礎資料庫結構描述。 在理想的情況下，您要在相同的應用程式中保留並結合彈性資料庫用戶端程式庫和 EF 提供的所有這些功能。 下一節詳細討論這些屬性和需求。
 
-## <a name="requirements"></a>規格需求
+## <a name="requirements"></a>需求
 
 當使用彈性資料庫用戶端程式庫和 Entity Framework API 時，您需要保留下列屬性：
 
@@ -276,7 +276,7 @@ new CreateDatabaseIfNotExists<ElasticScaleContext<T>>());
 
 ## <a name="conclusion"></a>結論
 
-透過本文件中所述的步驟，EF 應用程式可以使用彈性資料庫用戶端程式庫的資料相依路由功能，重構 EF 應用程式中使用的 **DbContext** 子類別的建構函式。 這會將所需的變更限制為**DbCoNtext**類別已存在的位置。 此外，EF 應用程式可以結合叫用必要 EF 移轉的步驟，以及將新的分區和對應註冊在分區對應中的步驟，以繼續受益於自動結構描述部署。
+透過本文件中所述的步驟，EF 應用程式可以使用彈性資料庫用戶端程式庫的資料相依路由功能，重構 EF 應用程式中使用的 **DbContext** 子類別的建構函式。 已存在 **DbContext** 類別的地方不需要做太多變更。 此外，EF 應用程式可以結合叫用必要 EF 移轉的步驟，以及將新的分區和對應註冊在分區對應中的步驟，以繼續受益於自動結構描述部署。
 
 [!INCLUDE [elastic-scale-include](../../../includes/elastic-scale-include.md)]
 

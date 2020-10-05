@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: b18e08f93df143f9844fe774eee59452978d7437
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 42d9c2b4b1edac62449fa4120463a384400d6d27
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686389"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360682"
 ---
 # <a name="billing-accounts-and-scopes-in-the-azure-portal"></a>Azure 入口網站中的計費帳戶和範圍
 
@@ -80,11 +80,11 @@ Azure 入口網站支援下列計費帳戶類型：
 
 2. 搜尋 [成本管理 + 帳單]。
 
-   ![顯示 Azure 入口網站搜尋的螢幕擷取畫面](./media/view-all-accounts/billing-search-cost-management-billing.png)
+   ![顯示在 Azure 入口網站中搜尋 [成本管理 + 計費] 的螢幕擷取畫面。](./media/view-all-accounts/billing-search-cost-management-billing.png)
 
 3. 在 [概觀] 頁面中，選取 [切換範圍]。
 
-   ![顯示計費範圍的螢幕擷取畫面](./media/view-all-accounts/overview-select-scopes.png)
+   ![顯示計費範圍的螢幕擷取畫面。](./media/view-all-accounts/overview-select-scopes.png)
 
    > [!Note]
     >
@@ -92,7 +92,7 @@ Azure 入口網站支援下列計費帳戶類型：
 
 4. 選取範圍以檢視詳細資料。
 
-   ![顯示計費範圍的螢幕擷取畫面](./media/view-all-accounts/list-of-scopes.png)
+   ![顯示計費範圍的螢幕擷取畫面，可供您選取以取得詳細資料。](./media/view-all-accounts/list-of-scopes.png)
 
 ## <a name="check-the-type-of-your-account"></a>檢查帳戶的類型
 [!INCLUDE [billing-check-mca](../../../includes/billing-check-account-type.md)]

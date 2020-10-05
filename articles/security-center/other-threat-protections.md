@@ -1,29 +1,29 @@
 ---
-title: Azure 資訊安全中心中的額外威脅防護
-description: 瞭解 Azure Defender 以外的 Azure 資訊安全中心所提供的威脅防護
+title: Azure 資訊安全中心提供的其他威脅防護
+description: 了解 Azure 資訊安全中心除了 Azure Defender 還提供哪些威脅防護
 services: security-center
 documentationcenter: na
 author: memildin
 manager: rkarlin
 ms.assetid: 33c45447-3181-4b75-aa8e-c517e76cd50d
 ms.service: security-center
-ms.topic: conceptual
+ms.topic: overview
 ms.date: 09/15/2020
 ms.author: memildin
-ms.openlocfilehash: 0f4a849af2be9f02187dc3cda526c9c4727cab1b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
-ms.translationtype: MT
+ms.openlocfilehash: 377c68cd2f0b0c132fc690cb03d7c3c5694bb52e
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934138"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91438900"
 ---
-# <a name="additional-threat-protections-in-azure-security-center"></a>Azure 資訊安全中心中的其他威脅防護
-除了內建的 [Azure Defender 保護](azure-defender.md)之外，Azure 資訊安全中心也提供下列威脅防護功能。
+# <a name="additional-threat-protections-in-azure-security-center"></a>Azure 資訊安全中心提供的其他威脅防護
+除了內建的 [Azure Defender 保護](azure-defender.md)以外，Azure 資訊安全中心也提供下列威脅防護功能。
 
 > [!TIP]
 > 若要啟用資訊安全中心的威脅防護功能，您必須在包含適用工作負載的訂用帳戶上啟用 Azure Defender。
 >
-> 您只能在資源層級啟用 **適用於 MariaDB 的 Azure 資料庫/MySQL/于 postgresql** 的威脅防護。
+> 您只能在資源層級為**適用於 MariaDB/MySQL/PostgreSQL 的 Azure 資料庫**啟用威脅防護。
 
 
 ## <a name="threat-protection-for-azure-network-layer"></a>Azure 網路層的威脅防護 <a name="network-layer"></a>
@@ -37,7 +37,7 @@ ms.locfileid: "90934138"
 如需 Azure 網路層警示的清單，請參閱[警示的參考資料表](alerts-reference.md#alerts-azurenetlayer)。
 
 
-## <a name="threat-protection-for-azure-resource-manager-preview"></a>Azure Resource Manager (Preview) 的威脅防護 <a name ="management-layer"></a>
+## <a name="threat-protection-for-azure-resource-manager-preview"></a>Azure Resource Manager 的威脅防護 (預覽)<a name ="management-layer"></a>
 以 Azure Resource Manager 為基礎的資訊安全中心保護層目前處於預覽階段。
 
 資訊安全中心會利用 Azure Resource Manager 事件來提供額外的保護層，我們將其視為 Azure 的控制平面。 藉由分析 Azure Resource Manager 記錄，資訊安全中心會在 Azure 訂用帳戶環境中偵測不尋常或可能有害的作業。
@@ -51,18 +51,18 @@ ms.locfileid: "90934138"
 > 1. 在資訊安全中心功能表中，選取 [定價和設定]。
 > 1. 選取您想變更的訂用帳戶。
 > 1. 選取 [威脅偵測]。
-> 1. 清除 [ **允許 Microsoft Cloud App Security 存取我的資料**]，然後選取 [ **儲存**]。
+> 1. 清除 [允許 Microsoft Cloud App Security 存取我的資料]，然後選取 [儲存]。
 
 
 >[!NOTE]
 >資訊安全中心會將關乎安全性的客戶資料儲存在與其資源相同的地理位置。 如果 Microsoft 尚未在資源的地理位置部署資訊安全中心，則會將資料儲存在美國。 啟用 Cloud App Security 時，會根據 Cloud App Security 的地理位置規則來儲存這項資訊。 如需詳細資訊，請參閱[非區域服務的資料儲存體](https://azuredatacentermap.azurewebsites.net/)。
 
-1. 設定您要在其上安裝代理程式的工作區。 請確定工作區位於您在資訊安全中心使用的相同訂用帳戶中，而且您具備工作區的讀取/寫入權限。
+1. 設定您要安裝代理程式的工作區。 請確定工作區位於您在資訊安全中心使用的相同訂用帳戶中，而且您具備工作區的讀取/寫入權限。
 
-1. 啟用 **Azure Defender**，然後選取 [ **儲存**]。
+1. 啟用 **Azure Defender**，然後選取 [儲存]。
 
 
-## <a name="threat-protection-for-azure-cosmos-db-preview"></a>Azure Cosmos DB (Preview) 的威脅防護 <a name="cosmos-db"></a>
+## <a name="threat-protection-for-azure-cosmos-db-preview"></a>Azure Cosmos DB 的威脅防護 (預覽)<a name="cosmos-db"></a>
 
 Azure Cosmos DB 警示是因為以不尋常且有危害意圖的方式嘗試存取或惡意探索 Azure Cosmos DB 帳戶而產生的。
 
