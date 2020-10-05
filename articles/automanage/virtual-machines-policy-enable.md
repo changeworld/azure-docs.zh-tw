@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 09/04/2020
 ms.author: jushiman
-ms.openlocfilehash: 47f4085ff01526853fab29da2c1bc1a3e8998d23
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 8f679626b69bd855e86b94cdde51955edd068e8f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90933957"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714891"
 ---
 # <a name="enable-automanage-for-virtual-machines-through-azure-policy"></a>透過 Azure 原則啟用虛擬機器的 Automanage
 
@@ -28,7 +28,7 @@ ms.locfileid: "90933957"
 > 免費試用帳戶無法存取本教學課程中使用的虛擬機器。 請升級為隨用隨付訂用帳戶。
 
 > [!IMPORTANT]
-> 若要啟用 Automanage： **擁有** 者角色或 **參與者** 以及 **使用者存取系統管理員** 角色，則需要下列 RBAC 許可權。
+> 若要啟用 Automanage： **擁有** 者角色或 **參與者** ，以及 **使用者存取系統管理員** 角色，則需要下列 Azure RBAC 許可權。
 
 
 ## <a name="sign-in-to-azure"></a>登入 Azure
@@ -64,7 +64,7 @@ ms.locfileid: "90933957"
 > 該原則需要一些時間才會開始在目前位於資源群組或訂用帳戶中的 Vm 上生效。
 
 
-## <a name="next-steps"></a>下一步 
+## <a name="next-steps"></a>後續步驟 
 
 瞭解透過 Azure 入口網站為虛擬機器啟用 Azure Automanage 的另一種方式。 
 

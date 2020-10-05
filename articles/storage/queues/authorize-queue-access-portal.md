@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozguns
 ms.subservice: queues
 ms.custom: contperfq1
-ms.openlocfilehash: 32e78b3b8ccad791bc7b9bb11123dbe901df597f
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 2593f1b7ea4cfabe0243fe6f830d718896e68473
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90088666"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715509"
 ---
 # <a name="choose-how-to-authorize-access-to-queue-data-in-the-azure-portal"></a>選擇如何授權存取 Azure 入口網站中的佇列資料
 
@@ -24,11 +24,11 @@ ms.locfileid: "90088666"
 
 ## <a name="permissions-needed-to-access-queue-data"></a>存取佇列資料所需的許可權
 
-根據您要如何授權存取 Azure 入口網站中的佇列資料，您將需要特定的許可權。 在大部分情況下，這些許可權是透過角色型存取控制來提供 (RBAC) 。 如需 RBAC 的詳細資訊，請參閱 [什麼是 AZURE rbac) 的 azure 角色型存取控制 (？](../../role-based-access-control/overview.md)。
+根據您要如何授權存取 Azure 入口網站中的佇列資料，您將需要特定的許可權。 在大部分的情況下，這些許可權是透過 Azure 角色型存取控制提供 (Azure RBAC) 。 如需有關 Azure RBAC 的詳細資訊，請參閱 [什麼是 AZURE rbac)  (的 azure 角色型存取控制？](../../role-based-access-control/overview.md)。
 
 ### <a name="use-the-account-access-key"></a>使用帳戶存取金鑰
 
-若要使用帳戶存取金鑰來存取佇列資料，您必須擁有指派給您的 Azure 角色，其中包含 RBAC 動作 **Microsoft. Storage/storageAccounts/listkeys/action**。 此 Azure 角色可能是內建或自訂角色。 支援 **Microsoft Storage/storageAccounts/listkeys/action** 的內建角色包括：
+若要使用帳戶存取金鑰來存取佇列資料，您必須擁有指派給您的 Azure 角色，其中包含 Azure RBAC 動作 **Microsoft. Storage/storageAccounts/listkeys/action**。 此 Azure 角色可能是內建或自訂角色。 支援 **Microsoft Storage/storageAccounts/listkeys/action** 的內建角色包括：
 
 - Azure Resource Manager [擁有](../../role-based-access-control/built-in-roles.md#owner) 者角色
 - Azure Resource Manager [參與者](../../role-based-access-control/built-in-roles.md#contributor) 角色
@@ -74,11 +74,11 @@ ms.locfileid: "90088666"
 
 如果您要使用帳戶存取金鑰進行驗證，您會在入口網站中看到指定為驗證方法的 **存取金鑰** ：
 
-:::image type="content" source="media/authorize-queue-access-portal/auth-method-access-key.png" alt-text="顯示使用者目前使用帳戶金鑰存取佇列的螢幕擷取畫面":::
+:::image type="content" source="media/authorize-queue-access-portal/auth-method-access-key.png" alt-text="顯示如何流覽至 Azure 入口網站中佇列資料的螢幕擷取畫面":::
 
 若要切換到使用 Azure AD 帳戶，請按一下影像中反白顯示的連結。 如果您有適當的許可權可透過指派給您的 Azure 角色，您將能夠繼續進行。 但是，如果您沒有正確的許可權，您會看到如下所示的錯誤訊息：
 
-:::image type="content" source="media/authorize-queue-access-portal/auth-error-azure-ad.png" alt-text="如果 Azure AD 帳戶不支援存取，就會顯示錯誤":::
+:::image type="content" source="media/authorize-queue-access-portal/auth-error-azure-ad.png" alt-text="顯示如何流覽至 Azure 入口網站中佇列資料的螢幕擷取畫面":::
 
 請注意，如果您的 Azure AD 帳戶沒有許可權可加以查看，則清單中不會出現任何佇列。 按一下 [ **切換至存取金鑰** ] 連結，以再次使用存取金鑰進行驗證。
 
@@ -86,7 +86,7 @@ ms.locfileid: "90088666"
 
 如果您要使用您的 Azure AD 帳戶進行驗證，您會在入口網站中看到指定為驗證方法 **Azure AD 使用者帳戶** ：
 
-:::image type="content" source="media/authorize-queue-access-portal/auth-method-azure-ad.png" alt-text="顯示使用者目前使用 Azure AD 帳戶存取佇列的螢幕擷取畫面":::
+:::image type="content" source="media/authorize-queue-access-portal/auth-method-azure-ad.png" alt-text="顯示如何流覽至 Azure 入口網站中佇列資料的螢幕擷取畫面":::
 
 若要切換到使用帳戶存取金鑰，請按一下影像中反白顯示的連結。 如果您有帳戶金鑰的存取權，就可以繼續進行。 但是，如果您沒有帳戶金鑰的存取權，Azure 入口網站會顯示錯誤訊息。
 
@@ -95,6 +95,6 @@ ms.locfileid: "90088666"
 ## <a name="next-steps"></a>後續步驟
 
 - [使用 Azure Active Directory 來驗證 Azure blob 和佇列的存取權](../common/storage-auth-aad.md)
-- [在 Azure 入口網站中使用 RBAC 授與 Azure 容器和佇列的存取權](../common/storage-auth-aad-rbac-portal.md)
-- [透過 Azure CLI 使用 RBAC 授與 Azure Blob 和佇列資料的存取權](../common/storage-auth-aad-rbac-cli.md)
-- [透過 PowerShell 使用 RBAC 授與 Azure Blob 和佇列資料的存取權](../common/storage-auth-aad-rbac-powershell.md)
+- [使用 Azure 入口網站指派 Azure 角色以存取 blob 和佇列資料](../common/storage-auth-aad-rbac-portal.md)
+- [使用 Azure CLI 指派 Azure 角色以存取 blob 和佇列資料](../common/storage-auth-aad-rbac-cli.md)
+- [使用 Azure PowerShell 模組指派 Azure 角色以存取 blob 和佇列資料](../common/storage-auth-aad-rbac-powershell.md)

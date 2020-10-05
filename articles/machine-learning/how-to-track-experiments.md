@@ -11,15 +11,15 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 44fe71f575a32ccc1a687bc87793cb6a8b6508a9
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
-ms.translationtype: HT
+ms.openlocfilehash: 7eaa2fbe6033f801a252f6f2c7afa5eb726bce2f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89650630"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318240"
 ---
 # <a name="enable-logging-in-azure-ml-training-runs"></a>在 Azure ML 定型回合中啟用記錄
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 Azure Machine Learning Python SDK 可讓您使用預設的 Python 記錄套件和 SDK 特有的功能來記錄即時資訊。 您可以登入本機，並將記錄傳送至入口網站中的工作區。
 
@@ -37,17 +37,17 @@ Azure Machine Learning Python SDK 可讓您使用預設的 Python 記錄套件�
 
 ## <a name="data-types"></a>資料類型
 
-您可以記錄多個資料類型，包括純量值、清單、資料表、影像、目錄等等。 如需詳細資訊和不同資料類型的 Python 程式碼範例，請參閱[回合類別參考頁面](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py&preserve-view=true)。
+您可以記錄多個資料類型，包括純量值、清單、資料表、影像、目錄等等。 如需詳細資訊和不同資料類型的 Python 程式碼範例，請參閱[回合類別參考頁面](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py&preserve-view=true)。
 
 ## <a name="interactive-logging-session"></a>互動式記錄工作階段
 
-互動式記錄工作階段通常用於筆記本環境。 [Experiment.start_logging()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment(class)?view=azure-ml-py#&preserve-view=truestart-logging--args----kwargs-) 方法會啟動互動式記錄工作階段。 工作階段期間記錄的所有計量都會加入實驗的回合記錄中。 [run.complete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#&preserve-view=truecomplete--set-status-true-) 方法會結束工作階段，並將該回合標示為已完成。
+互動式記錄工作階段通常用於筆記本環境。 [Experiment.start_logging()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truestart-logging--args----kwargs-) 方法會啟動互動式記錄工作階段。 工作階段期間記錄的所有計量都會加入實驗的回合記錄中。 [run.complete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truecomplete--set-status-true-) 方法會結束工作階段，並將該回合標示為已完成。
 
-## <a name="scriptrunconfig-logs"></a>ScriptRunConfig 記錄
+## <a name="scriptrun-logs"></a>ScriptRun 記錄
 
-在本節中，您將了解如何在 ScriptConfig 回合內新增記錄程式碼。 您可以使用 [**ScriptRunConfig**](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true) 類別來封裝可重複回合的指令碼和環境。 您也可以使用此選項來顯示用於監視的視覺型 Jupyter Notebook 小工具。
+在本節中，您將了解在使用 ScriptRunConfig 進行設定時所建立的執行程序內，新增記錄程式碼的方法。 您可以使用 [**ScriptRunConfig**](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true) 類別來封裝可重複回合的指令碼和環境。 您也可以使用此選項來顯示用於監視的視覺型 Jupyter Notebook 小工具。
 
-這個範例會對 Alpha 值執行參數整理，並使用 [run.log()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#&preserve-view=truelog-name--value--description----) 方法來擷取結果。
+這個範例會對 Alpha 值執行參數整理，並使用 [run.log()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truelog-name--value--description----) 方法來擷取結果。
 
 1. 建立包含記錄邏輯 `train.py` 的定型指令碼。
 
@@ -83,7 +83,7 @@ logging.basicConfig(level=logging.DEBUG)
 
 Azure Machine Learning 也可以在定型期間記錄來自其他來源的資訊，例如自動化機器學習回合，或執行作業的 Docker 容器。 這些記錄不會記載下來，但如果您遇到問題並連絡 Microsoft 支援服務，他們在進行疑難排解時可能會使用這些記錄。
 
-如需 Azure Machine Learning 設計工具 (預覽) 中的記錄計量相關資訊，請參閱[如何在設計工具中記錄計量 (預覽)](how-to-track-designer-experiments.md)
+如需 Azure Machine Learning 設計工具中的記錄計量相關資訊，請參閱[如何在設計工具中記錄計量](how-to-track-designer-experiments.md)。
 
 ## <a name="example-notebooks"></a>Notebook 範例
 
@@ -97,6 +97,6 @@ Azure Machine Learning 也可以在定型期間記錄來自其他來源的資訊
 
 若要深入了解如何使用 Azure Machine Learning，請參閱下列文章：
 
-* 了解如何[在 Azure Machine Learning 設計工具中記錄計量 (預覽)](how-to-track-designer-experiments.md)。
+* 了解如何[在 Azure Machine Learning 設計工具中記錄計量](how-to-track-designer-experiments.md)。
 
 * 關於如何註冊最佳模型，並在教學課程中加以部署的範例，請參閱[使用 Azure Machine Learning 定型映像分類模型](tutorial-train-models-with-aml.md)。

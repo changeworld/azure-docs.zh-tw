@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 08/14/2019
 ms.reviewer: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 739325f66594667c6973df356e2bcf26a3eb056d
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 50b3cae00110a64e4d95171822bf1d2a282d2cc1
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89300267"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715407"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>設定 Azure App Service 的部署認證
 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) 支援兩種認證類，用於[本機 Git 部署](deploy-local-git.md)和 [FTP/S 部署](deploy-ftp.md)。 這些認證與您的 Azure 訂用帳戶認證不同。
@@ -100,7 +100,7 @@ az resource update --resource-group <resource-group> --name scm --namespace Micr
 
 ### <a name="disable-access-to-the-api"></a>停用對 API 的存取
 
-上一節中的 API 是 (RBAC) 的 Azure 角色型存取控制支援，這表示您可以 [建立自訂角色](https://docs.microsoft.com/azure/role-based-access-control/custom-roles#steps-to-create-a-custom-role) ，並將較低 priveldged 的使用者指派給角色，讓他們無法在任何網站上啟用基本驗證。 若要設定自訂角色，請 [遵循下列指示](https://azure.github.io/AppService/2020/08/10/securing-data-plane-access.html#create-a-custom-rbac-role)。
+上一節中的 API 是 azure RBAC)  (azure 角色型存取控制，這表示您可以 [建立自訂角色](https://docs.microsoft.com/azure/role-based-access-control/custom-roles#steps-to-create-a-custom-role) ，並將較低 priveldged 的使用者指派給角色，讓他們無法在任何網站上啟用基本驗證。 若要設定自訂角色，請 [遵循下列指示](https://azure.github.io/AppService/2020/08/10/securing-data-plane-access.html#create-a-custom-rbac-role)。
 
 您也可以使用 [Azure 監視器](https://azure.github.io/AppService/2020/08/10/securing-data-plane-access.html#audit-with-azure-monitor) 來審核任何成功的驗證要求，並使用 [Azure 原則](https://azure.github.io/AppService/2020/08/10/securing-data-plane-access.html#enforce-compliance-with-azure-policy) 對訂用帳戶中的所有網站強制執行此設定。
 

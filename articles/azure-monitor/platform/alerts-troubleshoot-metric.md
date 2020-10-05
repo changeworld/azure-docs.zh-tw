@@ -4,14 +4,14 @@ description: Azure 監視器計量警示和可能解決方案的常見問題。
 author: harelbr
 ms.author: harelbr
 ms.topic: troubleshooting
-ms.date: 10/04/2020
+ms.date: 10/05/2020
 ms.subservice: alerts
-ms.openlocfilehash: 1280529aa758194dbd02196d71a715310431a73b
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: 579729eca8269d75569166a5bda32a979544b164
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91710289"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715322"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>針對 Azure 監視器計量警示中的問題進行疑難排解 
 
@@ -81,8 +81,10 @@ ms.locfileid: "91710289"
 
 ## <a name="cant-find-the-metric-to-alert-on"></a>找不到要警示的度量
 
-如果您想要針對特定的計量發出警示，但無法查看資源的任何計量，請 [檢查計量警示是否支援該資源類型](./alerts-metric-near-real-time.md)。
-如果您可以查看資源的一些計量，但找不到特定的計量，請 [檢查該計量是否可用](./metrics-supported.md)，如果是，請查看度量描述，以查看它是否僅適用于特定版本的資源。
+如果您想要針對特定的計量發出警示，但在建立警示規則時看不到它，請檢查下列各項：
+- 如果您看不到資源的任何計量，請 [檢查計量警示是否支援該資源類型](./alerts-metric-near-real-time.md)。
+- 如果您可以看到資源的一些計量，但找不到特定的計量，請 [檢查該計量是否可用](./metrics-supported.md)，如果是，請查看度量描述，以檢查其是否僅適用于特定版本的資源。
+- 如果資源無法使用計量，它可能會出現在資源記錄中，而且可以使用記錄警示進行監視。 如需如何 [從 Azure 資源收集及分析資源記錄](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-resource-logs)的詳細資訊，請參閱這裡。
 
 ## <a name="cant-find-the-metric-dimension-to-alert-on"></a>找不到要警示的度量維度
 

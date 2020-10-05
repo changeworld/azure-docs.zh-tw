@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 09/13/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 9b0eeda443aefc105fb36d6075c717fafae4cb61
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.openlocfilehash: 7ec511400d1e00d37993f2f4ee581bce1bccb897
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91598025"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715992"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows-smb"></a>針對 Windows (SMB) 中的 Azure 檔案儲存體問題進行疑難排解
 
@@ -173,7 +173,7 @@ Azure 檔案同步可以將您的內部部署 Windows Server 轉換成 Azure 檔
 
 ### <a name="solution-for-cause-2"></a>原因 2 的解決方案
 
-瀏覽至 Azure 檔案共用所在的儲存體帳戶，按一下 [存取控制 (IAM)]****，並確認您的使用者帳戶擁有儲存體帳戶的存取權。 若要深入了解，請參閱[如何使用角色型存取控制 (RBAC) 保護儲存體帳戶](https://docs.microsoft.com/azure/storage/blobs/security-recommendations#data-protection)。
+瀏覽至 Azure 檔案共用所在的儲存體帳戶，按一下 [存取控制 (IAM)]****，並確認您的使用者帳戶擁有儲存體帳戶的存取權。 若要深入瞭解，請參閱 [如何使用 azure 角色型存取控制來保護儲存體帳戶 (AZURE RBAC) ](https://docs.microsoft.com/azure/storage/blobs/security-recommendations#data-protection)。
 
 <a id="open-handles"></a>
 ## <a name="unable-to-delete-a-file-or-directory-in-an-azure-file-share"></a>無法刪除 Azure 檔案共用中的檔案或目錄

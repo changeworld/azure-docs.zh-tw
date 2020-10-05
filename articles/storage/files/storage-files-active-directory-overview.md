@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: rogarana
-ms.openlocfilehash: 3f2fd9f2b75faeeb2d40bd71d074a929e86eebdf
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: be308a91b5b583f96406f10675344ab263150a81
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91358367"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91716069"
 ---
 # <a name="overview-of-azure-files-identity-based-authentication-options-for-smb-access"></a>瞭解 SMB 存取 Azure 檔案儲存體身分識別型驗證選項
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -46,7 +46,7 @@ ms.locfileid: "91358367"
 
 -   **Azure 角色型存取控制 (Azure RBAC)**
 
-    Azure 角色型存取控制 (Azure RBAC) 可讓您對 Azure 進行更細緻的存取管理。 使用 RBAC，您可以對使用者授權執行其執行工作所需的最少權限，以便管理對資源的存取權。 如需 RBAC 的詳細資訊，請參閱 [什麼是 azure 中 AZURE RBAC) 的 azure 角色型存取控制 (？](../../role-based-access-control/overview.md)。
+    Azure 角色型存取控制 (Azure RBAC) 可讓您對 Azure 進行更細緻的存取管理。 使用 Azure RBAC，您可以藉由授與使用者執行其作業所需的最少許可權，來管理資源的存取權。 如需有關 Azure RBAC 的詳細資訊，請參閱 [什麼是 AZURE rbac)  (的 azure 角色型存取控制？](../../role-based-access-control/overview.md)。
 
 ## <a name="common-use-cases"></a>一般使用案例
 

@@ -9,12 +9,12 @@ ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: hux
 ms.custom: references_regions
-ms.openlocfilehash: 70d0e31809227d5e27f8f2b22a7703d5a8ccca3c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 3b6162552e43c9f475bef2ca3097da22ae198011
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91275059"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713687"
 ---
 # <a name="manage-and-find-azure-blob-data-with-blob-index-preview"></a>使用 Blob 索引 (預覽版來管理和尋找 Azure Blob 資料) 
 
@@ -97,7 +97,7 @@ FindBlobsByTags 作業可讓您取得已篩選的一組 blob，其索引標記�
 
 下表顯示所有適用于 FindBlobsByTags 的有效運算子：
 
-|  運算子  |  說明  | 範例 |
+|  運算子  |  描述  | 範例 |
 |------------|---------------|---------|
 |     =      |     等於     | 「狀態」 = 「進行中」 |
 |     >      |  大於 | "Date" > ' 2018-06-18 ' |
@@ -120,7 +120,7 @@ FindBlobsByTags 作業可讓您取得已篩選的一組 blob，其索引標記�
 
 下表顯示條件式作業的所有有效運算子：
 
-|  運算子  |  說明  | 範例 |
+|  運算子  |  描述  | 範例 |
 |------------|---------------|---------|
 |     =      |     等於     | 「狀態」 = 「進行中」 |
 |     <>     |   不等於   | 「狀態」  <>  「完成」  |
@@ -196,7 +196,7 @@ Blob 索引的標記不僅可協助您分類、管理及搜尋 blob 資料，還
 
 您可以使用下列其中一種方法來授權存取 blob 索引：
 
-- 使用以角色為基礎的存取控制 (RBAC) 將許可權授與 Azure Active Directory (Azure AD) 安全性主體。 Microsoft 建議使用 Azure AD，以獲得更高的安全性與易用性。 如需搭配使用 Azure AD 與 blob 作業的詳細資訊，請參閱 [使用 Azure Active Directory 授權存取 blob 和佇列](../common/storage-auth-aad.md)。
+- 藉由使用 Azure 角色型存取控制 (Azure RBAC) 來授與 Azure Active Directory (Azure AD) 安全性主體的許可權。 Microsoft 建議使用 Azure AD，以獲得更高的安全性與易用性。 如需搭配使用 Azure AD 與 blob 作業的詳細資訊，請參閱 [使用 Azure Active Directory 授權存取 blob 和佇列](../common/storage-auth-aad.md)。
 - 使用共用存取簽章 (SAS) 來委派 blob 索引的存取權。 如需共用存取簽章的詳細資訊，請參閱[使用共用存取簽章 (SAS) 授與 Azure 儲存體資源的有限存取權](../common/storage-sas-overview.md)。
 - 使用帳戶存取金鑰來授權具有共用金鑰的作業。 如需詳細資訊，請參閱[使用共用金鑰進行授權](/rest/api/storageservices/authorize-with-shared-key)。
 
@@ -205,7 +205,7 @@ Blob 索引標記是 blob 資料的子資源。 具有許可權的使用者或�
 ### <a name="role-based-access-control"></a>角色型存取控制
 使用 Azure AD 身分 [識別](../common/storage-auth-aad.md) 的呼叫端可能會被授與下列許可權，以在 blob 索引標記上操作。
 
-|   Blob 作業  |  RBAC 動作   |
+|   Blob 作業  |  Azure RBAC 動作   |
 |--------------------|----------------|
 | 依標記尋找 Blob | Microsoft. 儲存體/storageAccounts/blobServices/容器/blob/篩選/動作 |
 | 設定 Blob 標記      | Microsoft. Storage/storageAccounts/blobServices/container/blob/tag/write |

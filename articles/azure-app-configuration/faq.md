@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: lcozzens
-ms.openlocfilehash: 10510774409a6b75687086290b32885b30d9131a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ef4633953f7ac03737608124309d94e436913794
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91335376"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715441"
 ---
 # <a name="azure-app-configuration-faq"></a>Azure 應用程式組態常見問題
 
@@ -41,7 +41,7 @@ ms.locfileid: "91335376"
 
 ## <a name="does-app-configuration-encrypt-my-data"></a>應用程式設定是否會將我的資料加密？
 
-可以。 應用程式設定會加密其保存的所有金鑰值，並將網路通訊加密。 索引鍵名稱和標籤是用來作為抓取設定資料的索引，且不會加密。
+是。 應用程式設定會加密其保存的所有金鑰值，並將網路通訊加密。 索引鍵名稱和標籤是用來作為抓取設定資料的索引，且不會加密。
 
 ## <a name="where-does-data-stored-in-app-configuration-reside"></a>應用程式設定中儲存的資料位於何處？ 
 
@@ -94,7 +94,7 @@ Azure App Service 可讓您定義每個 App Service 實例的應用程式設定�
     針對標準層商店，每日的前200000要求都會包含在每日費用中。 額外的要求會以超額部分的方式計費。
 
 - **服務等級協定**：標準層具有99.9% 可用性的 SLA。 免費層沒有 SLA。
-- **安全性功能**：兩個層級都包含基本安全性功能，包括使用 Microsoft 管理的金鑰進行加密、透過 HMAC 或 Azure Active Directory 的驗證、RBAC 支援和受控識別。 標準層提供更先進的安全性功能，包括使用客戶管理的金鑰來 Private Link 支援和加密。
+- **安全性功能**：這兩個層級都包含基本安全性功能，包括使用 Microsoft 管理的金鑰進行加密、透過 HMAC 或 Azure Active Directory 進行驗證、Azure RBAC 支援和受控識別。 標準層提供更先進的安全性功能，包括使用客戶管理的金鑰來 Private Link 支援和加密。
 - **成本**：標準層商店具有每日使用量費用。 每日配置過去的要求也會收取超額費用。 使用免費層存放區不會產生任何費用。
 
 ## <a name="can-i-upgrade-a-store-from-the-free-tier-to-the-standard-tier-can-i-downgrade-a-store-from-the-standard-tier-to-the-free-tier"></a>是否可以將商店從免費層升級至標準層？ 我可以將存放區從標準層降級至免費層嗎？

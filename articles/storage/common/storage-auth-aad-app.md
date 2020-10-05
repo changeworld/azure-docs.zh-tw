@@ -10,12 +10,12 @@ ms.date: 09/21/2020
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 78c25afe69565840ca1af013d29dd512550241b6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: df0bc6a07444070a0f14e632e81ad0bb787569c8
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91280216"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714770"
 ---
 # <a name="acquire-a-token-from-azure-ad-for-authorizing-requests-from-a-client-application"></a>從 Azure AD 取得權杖，以授權用戶端應用程式的要求
 
@@ -31,7 +31,7 @@ ms.locfileid: "91280216"
 
 ## <a name="assign-a-role-to-an-azure-ad-security-principal"></a>將角色指派給 Azure AD 安全性主體
 
-若要從 Azure 儲存體應用程式中驗證安全性主體，必須先為該安全性主體設定角色型存取控制 (RBAC) 設定。 Azure 儲存體會定義包含容器和佇列許可權的內建角色。 當 RBAC 角色指派給安全性主體時，此安全性主體會獲得存取該資源的權限。 如需詳細資訊，請參閱 [使用 RBAC 管理 Azure Blob 和佇列資料的存取權限](storage-auth-aad-rbac.md)。
+若要從您的 Azure 儲存體應用程式驗證安全性主體，請先為該安全性主體的 Azure RBAC) 設定 (設定 Azure 角色型存取控制。 Azure 儲存體會定義包含容器和佇列許可權的內建角色。 當 Azure 角色指派給安全性主體時，該安全性主體就會被授與該資源的存取權。 如需詳細資訊，請參閱 [使用 AZURE RBAC 管理 Azure Blob 和佇列資料的存取權限](storage-auth-aad-rbac.md)。
 
 ## <a name="register-your-application-with-an-azure-ad-tenant"></a>向 Azure AD 租用戶註冊應用程式
 
@@ -46,7 +46,7 @@ ms.locfileid: "91280216"
 
 註冊您的應用程式之後，您會在 [設定]**** 下看到應用程式識別碼 (或用戶端識別碼)︰
 
-:::image type="content" source="media/storage-auth-aad-app/app-registration-client-id.png" alt-text="顯示用戶端識別碼的螢幕擷取畫面":::
+:::image type="content" source="media/storage-auth-aad-app/app-registration-client-id.png" alt-text="顯示如何使用 Azure AD 註冊您的儲存體應用程式的螢幕擷取畫面":::
 
 如需有關向 Azure AD 註冊應用程式的詳細資訊，請參閱[整合應用程式與 Azure Active Directory](../../active-directory/develop/quickstart-v2-register-an-app.md)。
 
@@ -59,13 +59,13 @@ ms.locfileid: "91280216"
 1. 在 [ **要求 API 許可權** ] 窗格中， **您的應用程式需要哪種許可權類型？**，請注意，可用的許可權類型是 **委派許可權**。 預設會為您選取此選項。
 1. 在 [ **許可權**] 底下，選取 [ **user_impersonation**] 旁的核取方塊，然後選取 [ **新增許可權** ] 按鈕。
 
-    :::image type="content" source="media/storage-auth-aad-app/registered-app-permissions-1.png" alt-text="顯示儲存體 API 許可權的螢幕擷取畫面":::
+    :::image type="content" source="media/storage-auth-aad-app/registered-app-permissions-1.png" alt-text="顯示如何使用 Azure AD 註冊您的儲存體應用程式的螢幕擷取畫面":::
 
 1. 接著，按一下 **[授與系統管理員同意預設目錄**]，授與管理員同意這些許可權。
 
 [ **API 許可權** ] 窗格現在會顯示您已註冊的 Azure AD 應用程式可存取 Microsoft Graph 和 Azure 儲存體 api，並且授與該同意給預設目錄。 當您第一次向 Azure AD 註冊應用程式時，系統會自動將權限授與 Microsoft Graph。
 
-:::image type="content" source="media/storage-auth-aad-app/registered-app-permissions-2.png" alt-text="顯示已註冊應用程式之 API 許可權的螢幕擷取畫面":::
+:::image type="content" source="media/storage-auth-aad-app/registered-app-permissions-2.png" alt-text="顯示如何使用 Azure AD 註冊您的儲存體應用程式的螢幕擷取畫面":::
 
 ### <a name="create-a-client-secret"></a>建立用戶端密碼
 
@@ -81,13 +81,13 @@ ms.locfileid: "91280216"
 
 ### <a name="enable-implicit-grant-flow"></a>啟用隱含授與流程
 
-接下來，為您的應用程式設定隱含授與流程。 請遵循下列步驟：
+接下來，為您的應用程式設定隱含授與流程。 遵循這些步驟：
 
 1. 在 Azure 入口網站中，流覽至您的應用程式註冊。
 1. 在 [ **管理** ] 區段中，選取 **驗證** 設定。
 1. 在 [ **隱含授** 與] 區段中，選取核取方塊以啟用識別碼權杖，如下圖所示：
 
-    :::image type="content" source="media/storage-auth-aad-app/enable-implicit-grant-flow.png" alt-text="顯示如何啟用隱含授與流程設定的螢幕擷取畫面":::
+    :::image type="content" source="media/storage-auth-aad-app/enable-implicit-grant-flow.png" alt-text="顯示如何使用 Azure AD 註冊您的儲存體應用程式的螢幕擷取畫面":::
 
 ## <a name="client-libraries-for-token-acquisition"></a>取得權杖的用戶端程式庫
 
@@ -127,7 +127,7 @@ ms.locfileid: "91280216"
 
 若要執行程式碼範例，請在與您 Azure Active Directory 相同的訂用帳戶中建立儲存體帳戶。 然後，在該儲存體帳戶內建立容器。 範例程式碼會在此容器中建立區塊 blob。
 
-接下來，將 **儲存體 Blob 資料參與者** 角色明確指派給將用來執行範例程式碼的使用者帳戶。 如需如何在 Azure 入口網站中指派此角色的指示，請參閱 [Azure 入口網站中使用 RBAC 授與 Azure blob 和佇列資料的存取權](storage-auth-aad-rbac-portal.md)。
+接下來，將 **儲存體 Blob 資料參與者** 角色明確指派給將用來執行範例程式碼的使用者帳戶。 如需如何在 Azure 入口網站中指派此角色的指示，請參閱 [使用 Azure 入口網站指派 Azure 角色以存取 blob 和佇列資料](storage-auth-aad-rbac-portal.md)。
 
 > [!NOTE]
 > 當您建立 Azure 儲存體帳戶時，系統不會自動將許可權指派給您透過 Azure AD 存取資料。 您必須明確地將 Azure 儲存體的 Azure 角色指派給自己。 您可以在訂用帳戶、資源群組、儲存體帳戶或容器/佇列層級上指派此角色。
@@ -291,5 +291,5 @@ https://<storage-account>.blob.core.windows.net/<container>/Blob1.txt
 ## <a name="next-steps"></a>後續步驟
 
 - [Microsoft 身分識別平台](https://docs.microsoft.com/azure/active-directory/develop/)
-- [使用 RBAC 管理儲存體資料的存取權限](storage-auth-aad-rbac.md)
+- [使用 Azure RBAC 管理儲存體資料的存取權限](storage-auth-aad-rbac.md)
 - [使用 Azure 資源的 Azure Active Directory 和受控識別來驗證 blob 和佇列的存取權](storage-auth-aad-msi.md)

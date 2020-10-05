@@ -10,12 +10,12 @@ ms.date: 12/18/2019
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: e499b27124ed5723fb19fecbe4091f17364aea5a
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 05ab666eff39412c1b169178e7ea4c68f3a81ca9
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533983"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714538"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-net"></a>使用 .NET 建立容器或 blob 的使用者委派 SAS
 
@@ -27,7 +27,7 @@ ms.locfileid: "87533983"
 
 ## <a name="assign-azure-roles-for-access-to-data"></a>指派 Azure 角色以存取資料
 
-當 Azure AD 安全性主體嘗試存取 blob 資料時，該安全性主體必須具有該資源的許可權。 無論安全性主體是 Azure 中的受控識別，或是在開發環境中執行程式碼的 Azure AD 使用者帳戶，都必須將 Azure 角色指派給安全性主體，以授與 Azure 儲存體中 blob 資料的存取權。 如需透過 RBAC 指派許可權的相關資訊，請參閱[使用 Azure Active Directory 來授與 azure blob 和佇列](../common/storage-auth-aad.md#assign-azure-roles-for-access-rights)的存取權的「**指派 azure 角色的存取權**」一節。
+當 Azure AD 安全性主體嘗試存取 blob 資料時，該安全性主體必須具有該資源的許可權。 無論安全性主體是 Azure 中的受控識別，或是在開發環境中執行程式碼的 Azure AD 使用者帳戶，都必須將 Azure 角色指派給安全性主體，以授與 Azure 儲存體中 blob 資料的存取權。 如需透過 Azure RBAC 指派許可權的相關資訊，請參閱[使用 Azure Active Directory 來授與 azure blob 和佇列的存取](../common/storage-auth-aad.md#assign-azure-roles-for-access-rights)權的「**指派 azure 角色的存取權**」一節。
 
 [!INCLUDE [storage-install-packages-blob-and-identity-include](../../../includes/storage-install-packages-blob-and-identity-include.md)]
 

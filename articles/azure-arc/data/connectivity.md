@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4364ed916e2b2783ab09f9d61ae63197d001ad42
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 9c1dd6f628e87792808d14db2c7bcc7f050923a3
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91273176"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713201"
 ---
 # <a name="connectivity-modes-and-requirements"></a>連接模式和需求
 
@@ -36,7 +36,7 @@ Azure Arc 啟用的資料服務可讓您選擇在兩個不同的「連線模式�
 
 ||**間接連接**|**直接連線**|**從未連接**|
 |---|---|---|---|
-|**說明**|間接連接模式可在您環境中的本機提供大部分的管理服務，而不需要直接連線到 Azure。  您 _只能_將少量的資料傳送至 Azure，以供清查和計費之用。 它會匯出至檔案，並上傳至 Azure 至少每個月一次。  不需要直接或連續連接至 Azure。  某些需要連接至 Azure 的功能和服務將無法使用。|直接連線模式會在可與 Azure 建立直接連線時，提供所有可用的服務。 一律會從您 _的_ 環境起始連接至 Azure，並使用標準埠和通訊協定，例如 HTTPS/443。|任何資料都不能以任何方式傳送至 Azure 或從中傳送。|
+|**描述**|間接連接模式可在您環境中的本機提供大部分的管理服務，而不需要直接連線到 Azure。  您 _只能_將少量的資料傳送至 Azure，以供清查和計費之用。 它會匯出至檔案，並上傳至 Azure 至少每個月一次。  不需要直接或連續連接至 Azure。  某些需要連接至 Azure 的功能和服務將無法使用。|直接連線模式會在可與 Azure 建立直接連線時，提供所有可用的服務。 一律會從您 _的_ 環境起始連接至 Azure，並使用標準埠和通訊協定，例如 HTTPS/443。|任何資料都不能以任何方式傳送至 Azure 或從中傳送。|
 |**目前的可用性**| 在預覽版中提供。|預計在未來進行預覽。|目前不支援。|
 |**一般使用案例**|內部部署資料中心，因為商務或法規合規性原則或不考慮外部攻擊或資料遭到外泄，所以不允許在資料中心的資料區域內進行連線。  一般範例：金融機構、醫療保健、政府。 <br/><br/>邊緣網站通常不會連線到網際網路的邊緣網站位置。  一般範例：石油/天然氣或軍事現場應用程式。  <br/><br/>具有長時間中斷連接的邊緣網站位置。  一般範例：運動場、巡航。 | 使用公用雲端的組織。  一般範例： Azure、AWS 或 Google Cloud。<br/><br/>通常存在且允許網際網路連線的邊緣網站位置。  一般範例：零售商店、製造。<br/><br/>公司資料中心具有更寬鬆的原則，可在資料中心的資料區域與網際網路之間進行連接。  一般範例：非管制企業、小型/中型企業|真正的「空調」環境，在任何情況下都不會有任何資料可從資料環境中進入或移出。 一般範例：高秘密政府機構。|
 |**將資料傳送至 Azure 的方式**|有三個選項可供您將帳單和清查資料傳送到 Azure：<br><br> 1) 資料會透過可連線至安全資料區域和 Azure 的自動化程式，從資料區域匯出。<br><br>2) 資料會由資料區域內的自動化程式從資料區域匯出，自動複製到較不安全的區域，而較不安全區域中的自動化程式會將資料上傳至 Azure。<br><br>3) 資料是由安全區域內的使用者手動匯出，以手動方式從安全區域中取出，並以手動方式上傳至 Azure。 <br><br>前兩個選項是可排程為經常執行的自動化連續程式，因此，將資料傳輸至 Azure 時，最少的延遲會受限於 Azure 的可用連線。|資料會自動並持續傳送至 Azure。|資料永遠不會傳送至 Azure。|
@@ -54,7 +54,7 @@ Azure Arc 啟用的資料服務可讓您選擇在兩個不同的「連線模式�
 |**自動備份和還原**|支援<br/>自動本機備份和還原。|支援<br/>除了自動本機備份和還原之外，您還可以 _選擇性地_ 將備份傳送至長期、異地保留的 Azure 備份。 **正在等待直接連線模式的可用性**|
 |**監視**|支援<br/>使用 Grafana 和 Kibana 儀表板的本機監視。|支援<br/>除了本機監視儀表板，您可以 _選擇性地_ 將監視資料和記錄檔傳送至 Azure 監視器，以便在同一處大規模監視多個網站。 **正在等待直接連線模式的可用性**|
 |**驗證**|使用本機使用者名稱/密碼進行資料控制器和儀表板驗證。 使用 SQL 和 Postgres 登入或 Active Directory 連接至資料庫實例。  使用 K8s authentication 提供者來驗證 Kubernetes API。|除了（而非間接連接模式的驗證方法）之外，您也可以 _選擇_ 使用 Azure Active Directory。 **正在等待直接連線模式的可用性**|
-|**以角色為基礎的存取控制 (RBAC) **|在 Kubernetes API 上使用 Kubernetes RBAC。 針對資料庫實例，請使用 SQL 和 Postgres RBAC。|您可以選擇性地與 RBAC 的 Azure Active Directory 整合。 **正在等待直接連線模式的可用性**|
+|**角色型存取控制 (RBAC)**|在 Kubernetes API 上使用 Kubernetes RBAC。 針對資料庫實例，請使用 SQL 和 Postgres RBAC。|您可以選擇性地整合 Azure Active Directory 和 Azure RBAC。 **正在等待直接連線模式的可用性**|
 |**Azure Defender**|不支援|規劃未來|
 
 ## <a name="connectivity-requirements"></a>連線能力需求
@@ -69,7 +69,7 @@ Azure Arc 啟用的資料服務可讓您選擇在兩個不同的「連線模式�
 |**資源清查**|客戶環境-> Azure|必要|否|間接或直接|資料控制站、資料庫實例 (于 postgresql 和 SQL) 的清查會保留在 Azure 中供計費之用，也適用于在一個位置建立所有資料控制器和資料庫實例的清查，這在您有多個 Azure Arc 資料服務的環境時特別有用。  當實例布建、取消布建、相應放大/縮小時，會在 Azure 中更新清查的相應增加/減少。|
 |**帳單遙測資料**|客戶環境-> Azure|必要|否|間接或直接|資料庫實例的使用量必須傳送至 Azure，以供計費之用。  在預覽期間，Azure Arc 啟用的資料服務不會產生任何費用。|
 |**監視資料和記錄**|客戶環境-> Azure|選擇性|可能視資料量而定 (請參閱 [Azure 監視器定價](https://azure.microsoft.com/en-us/pricing/details/monitor/)) |間接或直接|您可能會想要將本機收集的監視資料和記錄檔傳送至 Azure 監視器，以將多個環境中的資料匯總至一個位置，也可以使用 Azure 監視器的服務，例如警示、使用 Azure Machine Learning 中的資料等。|
-|**Azure 角色型存取控制 (RBAC) **|客戶環境-> Azure > 客戶環境|選用|否|僅限直接|如果您想要使用 Azure for RBAC，則必須隨時與 Azure 建立連線能力。  如果您不想要使用 Azure for RBAC，您可以使用本機 Kubernetes RBAC。  **正在等待直接連線模式的可用性**|
+|**Azure 角色型存取控制 (Azure RBAC) **|客戶環境-> Azure > 客戶環境|選用|否|僅限直接|如果您想要使用 Azure RBAC，則必須隨時與 Azure 建立連線能力。  如果您不想要使用 Azure RBAC，則可以使用本機 Kubernetes RBAC。  **正在等待直接連線模式的可用性**|
 |**Azure Active Directory (AD)**|客戶環境-> Azure > 客戶環境|選擇性|或許您可能已支付 Azure AD|僅限直接|如果您想要使用 Azure AD 進行驗證，則必須隨時與 Azure 建立連接。 如果您不想要使用 Azure AD 來進行驗證，您可以 Active Directory 同盟服務 (ADFS) 超過 Active Directory。 **正在等待直接連線模式的可用性**|
 |**備份/還原**|客戶環境-> Azure > 客戶環境|選擇性|是儲存體成本|僅限直接|您可能會想要將在本機執行的備份傳送到 Azure 備份，以長期備份保留備份，並將它們帶回本機環境進行還原。 **正在等待直接連線模式的可用性**|
 |**Azure Defender 安全性服務**|客戶環境-> Azure > 客戶環境|選擇性|是|僅限直接|**正在等待直接連線模式的可用性**|
@@ -80,7 +80,7 @@ Azure Arc 啟用的資料服務可讓您選擇在兩個不同的「連線模式�
 
 目前，在預覽階段中，只支援間接連接的模式。  在此模式中，網際網路上提供的服務只需要三個連接。  所有對 Azure 和 Microsoft Container Registry 的 HTTPS 連線都會使用已正式簽署和可驗證的憑證，以 SSL/TLS 加密。
 
-|**Name**|**連線來源**|**連線目標**|**通訊協定**|**連接埠**|**可以使用 proxy**|**驗證**|**備註**|
+|**名稱**|**連線來源**|**連線目標**|**通訊協定**|**通訊埠**|**可以使用 proxy**|**驗證**|**備註**|
 |---|---|---|---|---|---|---|---|
 |**Microsoft Container Registry (MCR) **|每個 Kubernetes 節點上的 Kubernetes kubelet 會提取容器映射。|`mcr.microsoft.com`|HTTPS|443|是|無|Microsoft Container Registry 會裝載已啟用 Azure Arc 的資料服務容器映射。  您可以從 MCR 提取這些映射，並將其推送至私人容器登錄，並設定資料控制器部署程式從該私人容器登錄中提取容器映射。|
 |**Azure Resource Manager Api**|執行 Azure Data Studio、Azure 資料 CLI 或 Azure CLI 的電腦，其會連線到 Azure。|`login.microsoftonline.com`<br/>`management.azure.com`<br/>`san-af-eastus-prod.azurewebsites.net`<br/>`san-af-eastus2-prod.azurewebsites.net`<br/>`san-af-australiaeast-prod.azurewebsites.net`<br/>`san-af-centralus-prod.azurewebsites.net`<br/>`san-af-westus2-prod.azurewebsites.net`<br/>`san-af-westeurope-prod.azurewebsites.net`<br/>`san-af-southeastasia-prod.azurewebsites.net`<br/>`san-af-koreacentral-prod.azurewebsites.net`<br/>`san-af-northeurope-prod.azurewebsites.net`<br/>`san-af-westeurope-prod.azurewebsites.net`<br/>`san-af-uksouth-prod.azurewebsites.net`<br/>`san-af-francecentral-prod.azurewebsites.net`|HTTPS|443|是|Azure Active Directory|Azure Data Studio，Azure 資料 CLI 和 Azure CLI 會連線至 Azure Resource Manager Api，以針對某些功能在 Azure 中傳送和取得資料。|

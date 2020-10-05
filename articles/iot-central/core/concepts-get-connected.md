@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 - device-developer
-ms.openlocfilehash: 834d3bd3e41be0487a3d05f00846bcb58bfe00a8
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: f39efcbfe7f0094e9481049a1678dba8a045888f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90018176"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714260"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>連線至 Azure IoT Central
 
@@ -99,13 +99,13 @@ IoT Central 使用 [Azure IoT 中樞裝置布建服務 (DPS) ](../../iot-dps/abo
 
 1. 在 [ **主要憑證] 頁面**上，上傳您的主要 x.509 憑證。 這是您的根或中繼憑證：
 
-    :::image type="content" source="media/concepts-get-connected/upload-primary-certificate.png" alt-text="主要憑證螢幕擷取畫面":::
+    :::image type="content" source="media/concepts-get-connected/upload-primary-certificate.png" alt-text="新增 x.509 註冊群組螢幕擷取畫面":::
 
-1. 使用 **驗證碼** 來產生您所使用之工具中的驗證碼。 然後選取 [ **驗證** ] 以上傳驗證憑證。
+1. 按一下 [ **產生驗證碼** ]，為您要用來產生驗證憑證的工具產生程式碼。 然後選取 [ **驗證** ] 以上傳驗證憑證。
 
 1. 驗證成功時，您會看到下列確認：
 
-    :::image type="content" source="media/concepts-get-connected/verified-primary-certificate.png" alt-text="驗證的主要憑證螢幕擷取畫面":::
+    :::image type="content" source="media/concepts-get-connected/verified-primary-certificate.png" alt-text="新增 x.509 註冊群組螢幕擷取畫面":::
 
 確認憑證擁有權可確保上傳憑證的人員具有憑證的私密金鑰。
 
@@ -147,7 +147,7 @@ IoT Central 使用 [Azure IoT 中樞裝置布建服務 (DPS) ](../../iot-dps/abo
 
 1. 從 **SAS-IoT-裝置** 註冊群組複製群組主要金鑰：
 
-    :::image type="content" source="media/concepts-get-connected/group-primary-key.png" alt-text="從 SAS 群組主要金鑰-IoT-裝置註冊群組":::
+    :::image type="content" source="media/concepts-get-connected/group-primary-key.png" alt-text="新增 x.509 註冊群組螢幕擷取畫面":::
 
 1. 使用 `az iot central device compute-device-key` 命令來產生裝置 SAS 金鑰。 使用上一個步驟中的群組主要金鑰。 裝置識別碼必須是小寫：
 

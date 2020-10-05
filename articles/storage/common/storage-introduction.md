@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/08/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: b603776ce19bca8d6fefa7c3c85366ebe3b7b01f
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 1f335640eb37f51857fa295298d0a3ca91f2a370
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653795"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714976"
 ---
 # <a name="introduction-to-the-core-azure-storage-services"></a>核心 Azure 儲存體服務簡介
 
@@ -91,7 +91,7 @@ Azure 佇列服務用來儲存及擷取訊息。 佇列訊息的大小上限為 
 
 如需 Azure 佇列的詳細資訊，請參閱[佇列簡介](../queues/storage-queues-introduction.md)。
 
-## <a name="table-storage"></a>資料表儲存體
+## <a name="table-storage"></a>表格儲存體
 
 Azure 資料表儲存體現在屬於 Azure Cosmos DB。 若要查看 Azure 資料表儲存體文件，請參閱 [Azure 資料表儲存體概觀](../tables/table-storage-overview.md)。 除了現有的 Azure 資料表儲存體服務，有新的 Azure Cosmos DB 資料表 API 供應項目，可提供輸送量最佳化的資料表、全域發佈，以及自動次要索引。 若要深入瞭解並試用新的 premium 體驗，請參閱 [Azure Cosmos DB 資料表 API](https://aka.ms/premiumtables)。
 
@@ -111,7 +111,7 @@ Azure 儲存體提供數種類型的儲存體帳戶。 每個類型都支援不�
 
 每個對 Azure 儲存體的要求都必須獲得授權。 Azure 儲存體支援下列授權方法：
 
-- **Azure Active Directory (Azure AD blob 和佇列資料的) 整合。** Azure 儲存體透過以角色為基礎的存取控制 (RBAC) ，支援對 Blob 和佇列服務的 Azure AD 進行驗證和授權。 建議使用 Azure AD 的授權，以提供更佳的安全性和易用性。 如需詳細資訊，請參閱 [使用 Azure Active Directory 授與 Azure blob 和佇列的存取權](storage-auth-aad.md)。
+- **Azure Active Directory (Azure AD blob 和佇列資料的) 整合。** Azure 儲存體透過 Azure 角色型存取控制 (Azure RBAC) ，支援對 Blob 和佇列服務的 Azure AD 進行驗證和授權。 建議使用 Azure AD 的授權，以提供更佳的安全性和易用性。 如需詳細資訊，請參閱 [使用 Azure Active Directory 授與 Azure blob 和佇列的存取權](storage-auth-aad.md)。
 - **Azure AD 透過 SMB 進行 Azure 檔案儲存體的授權。** Azure 檔案儲存體透過 Azure Active Directory Domain Services (Azure AD DS) 或內部部署 Active Directory Domain Services (preview) ，支援透過 SMB (Server Message Block) 進行以身分識別為基礎的授權。 您已加入網域的 Windows Vm 可以使用 Azure AD 認證來存取 Azure 檔案共用。 如需詳細資訊，請參閱 [AZURE 檔案儲存體 SMB 存取的身分識別型驗證支援](../files/storage-files-active-directory-overview.md) 和 [規劃 Azure 檔案儲存體部署](../files/storage-files-planning.md#identity)的總覽。
 - **使用共用金鑰進行授權。** Azure 儲存體 Blob、檔案、佇列和表格服務都支援具有共用金鑰的授權。 使用共用金鑰授權的用戶端會將標頭傳遞給使用儲存體帳戶存取金鑰簽署的每個要求。 如需詳細資訊，請參閱[使用共用金鑰進行授權](https://docs.microsoft.com/rest/api/storageservices/authorize-with-shared-key)。
 - **使用共用存取簽章 (SAS) 的授權。**  (SAS) 的共用存取簽章是一個字串，其中包含可附加至儲存體資源之 URI 的安全性權杖。 安全性權杖會封裝條件約束，例如許可權和存取間隔。 如需詳細資訊，請參閱 [使用共用存取簽章 (SAS) ](storage-sas-overview.md)。

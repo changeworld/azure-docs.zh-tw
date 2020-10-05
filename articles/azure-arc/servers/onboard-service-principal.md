@@ -3,12 +3,12 @@ title: 大規模將混合式機器連線至 Azure
 description: 在本文中，您將瞭解如何使用已啟用 Azure Arc 的伺服器，使用服務主體將機器連線到 Azure。
 ms.date: 09/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 5976e2ff9aef5f68d119a5fdf5f7d4d4345287a4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: dc92b1cb96b61caa17f141ca9a78fb10fe59a2a9
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91254936"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713413"
 ---
 # <a name="connect-hybrid-machines-to-azure-at-scale"></a>大規模將混合式機器連線至 Azure
 
@@ -67,7 +67,7 @@ ms.locfileid: "91254936"
 > 請務必使用服務主體的 **ApplicationId** 屬性，而非使用 **Id** 屬性。
 >
 
-**Azure Connected Machine 上線**角色只會包含讓機器上線所需的權限。 您可以指派服務主體權限，以允許其範圍包含資源群組或訂用帳戶。 若要新增角色指派，請參閱[使用 Azure RBAC 和 Azure 入口網站來新增或移除角色指派](../../role-based-access-control/role-assignments-portal.md)或[使用 Azure RBAC 和 Azure CLI 來新增或移除角色指派](../../role-based-access-control/role-assignments-cli.md)。
+**Azure Connected Machine 上線**角色只會包含讓機器上線所需的權限。 您可以指派服務主體權限，以允許其範圍包含資源群組或訂用帳戶。 若要新增角色指派，請參閱 [使用 Azure 入口網站新增或移除 azure 角色指派](../../role-based-access-control/role-assignments-portal.md) ，或 [使用 Azure CLI 新增或移除 azure 角色指派](../../role-based-access-control/role-assignments-cli.md)。
 
 ## <a name="install-the-agent-and-connect-to-azure"></a>安裝代理程式並連線至 Azure
 

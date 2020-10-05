@@ -10,12 +10,12 @@ ms.date: 09/15/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: e6e6c802da212294594f45d0545c6cf07694760b
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 48831a9482087dbeed0952cc30fcbc9c14fbaed0
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90707912"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715638"
 ---
 # <a name="configure-object-replication-for-block-blobs"></a>設定區塊 blob 的物件複寫
 
@@ -37,7 +37,7 @@ ms.locfileid: "90707912"
 
 當您設定物件複寫時，會透過 Azure 儲存體資源提供者，在目的地帳戶上建立複寫原則。 建立複寫原則之後，Azure 儲存體指派原則識別碼給它。 然後，您必須使用原則識別碼，將該複寫原則與來源帳戶產生關聯。 來源和目的地帳戶的原則識別碼必須相同才能進行複寫。
 
-若要設定儲存體帳戶的物件複寫原則，您必須將 Azure Resource Manager **參與者** 角色指派給儲存體帳戶層級或更高的層級。 如需詳細資訊，請參閱 Azure 角色型存取控制中的 [azure 內建角色](../../role-based-access-control/built-in-roles.md) (RBAC) 檔。
+若要設定儲存體帳戶的物件複寫原則，您必須將 Azure Resource Manager **參與者** 角色指派給儲存體帳戶層級或更高的層級。 如需詳細資訊，請參閱 azure 角色型存取控制 (Azure RBAC) 檔中的 [azure 內建角色](../../role-based-access-control/built-in-roles.md) 。
 
 ### <a name="configure-object-replication-when-you-have-access-to-both-storage-accounts"></a>當您可以存取這兩個儲存體帳戶時，請設定物件複寫
 
@@ -65,19 +65,19 @@ ms.locfileid: "90707912"
 
     下圖顯示篩選會限制哪些 Blob 符合複寫規則並接受複製。
 
-    :::image type="content" source="media/object-replication-configure/configure-replication-copy-prefix.png" alt-text="顯示複寫規則篩選的螢幕擷取畫面":::
+    :::image type="content" source="media/object-replication-configure/configure-replication-copy-prefix.png" alt-text="顯示 Azure 入口網站中複寫規則的螢幕擷取畫面":::
 
 1. 根據預設，複製範圍會設定為只複製新的物件。 若要複製容器中的所有物件，或從自訂日期和時間開始複製物件，請選取 [變更] 連結，並設定容器配對的複製範圍。
 
     下圖顯示自訂複製範圍，它會從指定的日期和時間開始複製物件。
 
-    :::image type="content" source="media/object-replication-configure/configure-replication-copy-scope.png" alt-text="顯示物件複寫自訂複製範圍的螢幕擷取畫面":::
+    :::image type="content" source="media/object-replication-configure/configure-replication-copy-scope.png" alt-text="顯示 Azure 入口網站中複寫規則的螢幕擷取畫面":::
 
 1. 選取 [儲存並套用] 以建立複寫原則，並開始複寫資料。
 
 設定物件複寫之後，Azure 入口網站會顯示複寫原則和規則，如下圖所示。
 
-:::image type="content" source="media/object-replication-configure/object-replication-policies-portal.png" alt-text="顯示 Azure 入口網站中的物件複寫原則的螢幕擷取畫面":::
+:::image type="content" source="media/object-replication-configure/object-replication-policies-portal.png" alt-text="顯示 Azure 入口網站中複寫規則的螢幕擷取畫面":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -238,7 +238,7 @@ az storage account or-policy show \
 
 如果您沒有來源儲存體帳戶的許可權，您可以在目的地帳戶上設定物件複寫，並將包含原則定義的 JSON 檔案提供給其他使用者，以在來源帳戶上建立相同的原則。 例如，如果來源帳戶與目的地帳戶位於不同的 Azure AD 租使用者，則您可以使用此方法來設定物件複寫。
 
-請記住，您必須將 Azure Resource Manager **參與者** 角色指派給目的地儲存體帳戶層級或更高的層級，才能建立原則。 如需詳細資訊，請參閱 Azure 角色型存取控制中的 [azure 內建角色](../../role-based-access-control/built-in-roles.md) (RBAC) 檔。
+請記住，您必須將 Azure Resource Manager **參與者** 角色指派給目的地儲存體帳戶層級或更高的層級，才能建立原則。 如需詳細資訊，請參閱 azure 角色型存取控制 (Azure RBAC) 檔中的 [azure 內建角色](../../role-based-access-control/built-in-roles.md) 。
 
 下表摘要說明每個案例中，JSON 檔案中的原則識別碼和規則識別碼所使用的值。
 
@@ -284,7 +284,7 @@ az storage account or-policy show \
 1. 選取 **[上傳複寫規則**]。
 1. 上傳 JSON 檔案。 Azure 入口網站會顯示將建立的原則和規則，如下圖所示。
 
-    :::image type="content" source="media/object-replication-configure/replication-rules-upload-portal.png" alt-text="顯示如何上傳 JSON 檔案以定義複寫原則的螢幕擷取畫面":::
+    :::image type="content" source="media/object-replication-configure/replication-rules-upload-portal.png" alt-text="顯示 Azure 入口網站中複寫規則的螢幕擷取畫面":::
 
 1. 選取 [ **上傳** ] 以在目的地帳戶上建立複寫原則。
 
@@ -293,7 +293,7 @@ az storage account or-policy show \
 1. 在 Azure 入口網站中，流覽至目的地帳戶的 **物件** 複寫設定。
 1. 選取您要下載之原則旁的 [ **更多** ] 按鈕，然後選取 [ **下載規則**]，如下圖所示。
 
-    :::image type="content" source="media/object-replication-configure/replication-rules-download-portal.png" alt-text="顯示如何將複寫規則下載至 JSON 檔案的螢幕擷取畫面":::
+    :::image type="content" source="media/object-replication-configure/replication-rules-download-portal.png" alt-text="顯示 Azure 入口網站中複寫規則的螢幕擷取畫面":::
 
 1. 將 JSON 檔案儲存至您的本機電腦，以與其他使用者共用，以設定來源帳戶的原則。
 
