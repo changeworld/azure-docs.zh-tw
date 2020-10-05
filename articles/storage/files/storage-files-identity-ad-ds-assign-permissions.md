@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 06/22/2020
 ms.author: rogarana
-ms.openlocfilehash: 287bd02a11c71fbdd29b28b5ec9fc8424a477fea
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: af88f0b3403fb80acbb7dacebe293ac583e35799
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91320348"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91716044"
 ---
 # <a name="part-two-assign-share-level-permissions-to-an-identity"></a>第二部分：將共用層級許可權指派給身分識別
 
@@ -52,7 +52,7 @@ ms.locfileid: "91320348"
 
 ### <a name="powershell"></a>PowerShell
 
-下列 PowerShell 範例說明如何根據登入名稱，將 Azure 角色指派給 Azure AD 身分識別。 如需使用 PowerShell 指派 Azure 角色的詳細資訊，請參閱 [使用 RBAC 和 Azure PowerShell 管理存取權](../../role-based-access-control/role-assignments-powershell.md)。
+下列 PowerShell 範例說明如何根據登入名稱，將 Azure 角色指派給 Azure AD 身分識別。 如需使用 PowerShell 指派 Azure 角色的詳細資訊，請參閱 [使用 Azure PowerShell 課程模組新增或移除 azure 角色指派](../../role-based-access-control/role-assignments-powershell.md)。
 
 執行下列範例腳本之前，請將預留位置值（包括括弧）取代為您的值。
 
@@ -67,7 +67,7 @@ New-AzRoleAssignment -SignInName <user-principal-name> -RoleDefinitionName $File
 
 ### <a name="cli"></a>CLI
   
-下列 CLI 2.0 命令會根據登入名稱，將 Azure 角色指派給 Azure AD 身分識別。 如需使用 Azure CLI 指派 Azure 角色的詳細資訊，請參閱 [使用 RBAC 和 Azure CLI 管理存取權](../../role-based-access-control/role-assignments-cli.md)。 
+下列 CLI 2.0 命令會根據登入名稱，將 Azure 角色指派給 Azure AD 身分識別。 如需使用 Azure CLI 指派 Azure 角色的詳細資訊，請參閱 [使用 Azure CLI 新增或移除 azure 角色指派](../../role-based-access-control/role-assignments-cli.md)。 
 
 在您執行下列範例腳本之前，請記得使用您自己的值來取代預留位置值（包含括弧）。
 

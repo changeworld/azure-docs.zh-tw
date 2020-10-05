@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: troubleshooting
 ms.date: 09/04/2020
 ms.author: deanwe
-ms.openlocfilehash: 348106c405e6e096f7bfd9a225fc783c4454b1ad
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 003f97c99de7dd4be79e820e822b6071f45ed146
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91449776"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714967"
 ---
 # <a name="frequently-asked-questions-for-azure-automanage-for-vms"></a>適用于 Vm 的 Azure Automanage 的常見問題
 
@@ -35,7 +35,7 @@ ms.locfileid: "91449776"
 - Vm 不得連結至不同訂用帳戶中的 log analytics 工作區
 - Automanage 目前不支援沙箱訂閱
 
-**啟用 Automanage 需要何種 RBAC 許可權？**
+**啟用 Automanage 所需的 Azure RBAC 許可權為何？**
 
 如果您要在具有現有 Automanage 帳戶的 VM 上啟用 Automanage，您需要有 VM 所在資源群組的「參與者」角色。
 

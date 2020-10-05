@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 09/04/2020
 ms.author: jushiman
-ms.openlocfilehash: 7a716ed9bca6d34ad4dbcd2566837a839f71153b
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 377677c9e5e81487059241db68baff639a3de033
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91450309"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715036"
 ---
 # <a name="create-a-custom-preference-in-azure-automanage-for-vms"></a>在適用于 Vm 的 Azure Automanage 中建立自訂喜好設定
 
@@ -34,7 +34,7 @@ ms.locfileid: "91450309"
 > 免費試用帳戶無法存取本教學課程中使用的虛擬機器。 請升級為隨用隨付訂用帳戶。
 
 > [!IMPORTANT]
-> 若要啟用 Automanage： **擁有** 者角色或 **參與者** 以及 **使用者存取系統管理員** 角色，則需要下列 RBAC 許可權。
+> 若要啟用 Automanage： **擁有** 者角色或 **參與者** 以及 **使用者存取系統管理員** 角色，則需要下列 Azure RBAC 許可權。
 
 
 ## <a name="sign-in-to-azure"></a>登入 Azure

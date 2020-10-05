@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: d6c954d6336a0b88f57ba1f70571263af5d1c583
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 4db7727558d0b7f4c26aba3ffa823bebb07862f6
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89229798"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713776"
 ---
 # <a name="azure-security-baseline-for-api-management"></a>適用於 API 管理的 Azure 安全性基準
 
@@ -187,7 +187,7 @@ ms.locfileid: "89229798"
 **指引**：為您的 Azure API 管理佈署相關的網路設定，定義及實作標準安全性設定。 使用 "Microsoft.ApiManagement" 和 "Microsoft.Network" 命名空間中的 Azure 原則別名來建立自訂原則，以稽核或強制執行 Azure API 管理部署和相關資源的網路設定。 您也可以利用 Azure 虛擬網路的內建原則定義，例如：
 - 應啟用 DDoS 保護標準
 
-您也可以使用 Azure 藍圖，在單一藍圖定義中封裝金鑰環境成品 (例如 Azure Resource Manager 範本、角色型存取控制 (RBAC) 和原則)，以簡化大規模的 Azure 部署。 您可以輕鬆地將藍圖套用至新的訂用帳戶、環境，以及透過版本控制來微調控制和管理。
+您也可以使用 Azure 藍圖，將金鑰環境成品（例如 Azure Resource Manager 範本、Azure 角色型存取控制 (Azure RBAC) 和原則）封裝在單一藍圖定義中，以簡化大規模的 Azure 部署。 您可以輕鬆地將藍圖套用至新的訂用帳戶、環境，以及透過版本控制來微調控制和管理。
 
 * [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 

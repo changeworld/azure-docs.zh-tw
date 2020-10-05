@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 08/07/2020
 ms.author: jeedes
-ms.openlocfilehash: 20674f5a793267c3a9e2fa078f95cbf96624df13
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 24814ede954980e3a9fc3c3ba60546cedad4e8fd
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550156"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713437"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-amazon-web-services-aws-legacy-tutorial"></a>教學課程： Azure Active Directory 與 Amazon Web Services (AWS)  (舊版教學課程) 
 
@@ -30,7 +30,7 @@ Amazon Web Services (AWS) 與 Azure AD 整合提供下列優點：
 
 如果您想要瞭解有關 SaaS 應用程式與 Azure AD 整合的更多詳細資料，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 
-![結果清單中的 Amazon Web Services (AWS)](./media/aws-multi-accounts-tutorial/amazonwebservice.png)
+![圖顯示 Azure A D，其中有 W S 應用程式透過 I D P 起始的 S O 連接到三個 W S 的帳戶。](./media/aws-multi-accounts-tutorial/amazonwebservice.png)
 
 > [!NOTE]
 > 請注意，將一個 AWS 應用程式連線到您所有的 AWS 帳戶並不是我們建議的方法。 取而代之的是，建議您使用[這個](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial)方法在 Azure AD 中將多個 AWS 帳戶執行個體設定為多個 AWS 應用程式的執行個體。 只有當您有少數 AWS 帳戶和角色時，才應該使用這種方法，此模型無法調整，因為這些帳戶內的 AWS 帳戶和角色會成長。 這種方法不會使用 Azure AD 使用者布建來使用 AWS 角色匯入功能，因此您必須手動新增/更新/刪除角色。 如需此方法的其他限制，請參閱下列詳細資料。
@@ -74,7 +74,7 @@ Amazon Web Services (AWS) 與 Azure AD 整合提供下列優點：
 1. 使用公司或學校帳戶或個人的 Microsoft 帳戶登入 [Azure 入口網站](https://portal.azure.com)。
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory] 服務。
 1. 巡覽至 [企業應用程式]，然後選取 [所有應用程式]。
-1. 若要新增應用程式，請選取 [新增應用程式]。
+1. 若要新增應用程式，請選取 [新增應用程式]  。
 1. 在 [從資源庫新增] 區段的搜尋方塊中輸入 **Amazon Web Services (AWS)** 。
 1. 從結果面板選取 [Amazon Web Services (AWS)]，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
@@ -110,7 +110,7 @@ Amazon Web Services (AWS) 與 Azure AD 整合提供下列優點：
 
     ![單一登入選取模式](common/select-saml-option.png)
 
-3. 在 [以 SAML 設定單一登入] 頁面上，按一下 [編輯] 圖示以開啟 [基本 SAML 設定] 對話方塊。
+3. 在 [以 SAML 設定單一登入] 頁面上，按一下 [編輯] 圖示以開啟 [基本 SAML 設定] 對話方塊。   
 
     ![編輯基本 SAML 組態](common/edit-urls.png)
 
@@ -118,7 +118,7 @@ Amazon Web Services (AWS) 與 Azure AD 整合提供下列優點：
 
 5. Amazon Web Services (AWS) 應用程式會預期要有特定格式的 SAML 判斷提示。 設定此應用程式的下列宣告。 您可以在應用程式整合頁面的 [使用者屬性與宣告] 區段中管理這些屬性的值。 在 [ **以 SAML 設定單一登入** ] 頁面上，按一下 [ **編輯** ] 按鈕，以開啟 [ **使用者屬性 & 宣告** ] 對話方塊。
 
-    ![image](common/edit-attribute.png)
+    ![螢幕擷取畫面顯示已呼叫編輯控制項的使用者屬性。](common/edit-attribute.png)
 
 6. 在 [使用者屬性] 對話方塊的 [使用者宣告] 區段中，如上圖所示設定 SAML 權杖屬性，然後執行下列步驟：
 
@@ -130,9 +130,9 @@ Amazon Web Services (AWS) 與 Azure AD 整合提供下列優點：
 
     a. 按一下 [新增宣告] 以開啟 [管理使用者宣告] 對話方塊。
 
-    ![image](common/new-save-attribute.png)
+    ![螢幕擷取畫面顯示 [新增宣告] 和 [另存新檔] 的使用者宣告。](common/new-save-attribute.png)
 
-    ![image](common/new-attribute-details.png)
+    ![螢幕擷取畫面顯示 [管理使用者宣告]，您可以在此輸入此步驟中所述的值。](common/new-attribute-details.png)
 
     b. 在 [名稱] 文字方塊中，輸入該資料列所顯示的屬性名稱。
 
@@ -200,11 +200,11 @@ Amazon Web Services (AWS) 與 Azure AD 整合提供下列優點：
 
 1. 在搜尋列中搜尋 **系統管理員存取權** ，然後選取 [ **AdministratorAccess** ] 核取方塊，然後按 **[下一步：標記]**。
 
-    ![選取系統管理員存取權](./media/aws-multi-accounts-tutorial/administrator-access.png)
+    ![螢幕擷取畫面顯示已選取 AdministratorAccess 作為原則名稱。](./media/aws-multi-accounts-tutorial/administrator-access.png)
 
 1. 在 [ **將標籤新增 (選用) ** ] 區段中，執行下列步驟：
 
-    ![選取系統管理員存取權](./media/aws-multi-accounts-tutorial/config2.png)
+    ![螢幕擷取畫面顯示 [新增標記] 窗格，您可以在其中新增金鑰值組。](./media/aws-multi-accounts-tutorial/config2.png)
 
     a. 在 [索引 **鍵** ] 文字方塊中，輸入 Ex： Azureadtest 的索引鍵名稱。
 
@@ -229,25 +229,25 @@ Amazon Web Services (AWS) 與 Azure AD 整合提供下列優點：
 
 1. 請記下該 AWS 帳戶的帳戶識別碼，方法是從 EC2 屬性或 IAM 儀表板，如下所示：
 
-    ![選取系統管理員存取權](./media/aws-multi-accounts-tutorial/aws-accountid.png)
+    ![螢幕擷取畫面顯示我的帳戶 I D 出現在 W S 視窗中的位置。](./media/aws-multi-accounts-tutorial/aws-accountid.png)
 
 1. 現在登入 [Azure 入口網站](https://portal.azure.com/) 並流覽至 [ **群組**]。
 
 1. 使用與稍早建立的 IAM 角色相同的名稱建立新群組，並記下這些新群組的 **物件識別碼** 。
 
-    ![選取系統管理員存取權](./media/aws-multi-accounts-tutorial/copy-objectids.png)
+    ![螢幕擷取畫面顯示在 [總覽] 窗格中，于哪裡輸入帳戶 I D。 ](./media/aws-multi-accounts-tutorial/copy-objectids.png)
 
 1. 從目前的 AWS 帳戶登出，然後以您要設定 Azure AD 的單一登入的其他帳戶登入。
 
 1. 在帳戶中建立所有角色後，角色會顯示在這些帳戶的 [角色]**** 清單中。
 
-    ![角色設定](./media/aws-multi-accounts-tutorial/tutorial-amazonwebservices-listofroles.png)
+    ![螢幕擷取畫面顯示具有角色名稱、描述和信任實體的角色清單。](./media/aws-multi-accounts-tutorial/tutorial-amazonwebservices-listofroles.png)
 
 1. 對於跨所有帳戶的各個角色，我們必須擷取所有角色 ARN 和受信任的實體，因為我們需要手動將其與 Azure AD 應用程式對應。
 
 1. 按一下角色以複製 [角色 ARN]**** 和 [信任實體]**** 值。 對於您必須在 Azure AD 中建立的所有角色，您都需要這些值。
 
-    ![角色設定](./media/aws-multi-accounts-tutorial/tutorial-amazonwebservices-role-summary.png)
+    ![螢幕擷取畫面顯示已選取 [信任關係] 索引標籤的 [摘要] 窗格。](./media/aws-multi-accounts-tutorial/tutorial-amazonwebservices-role-summary.png)
 
 1. 對所有帳戶中的所有角色執行上述步驟，並以**角色 ARN,信任實體**的格式將其全部儲存在記事本中。
 
@@ -257,11 +257,11 @@ Amazon Web Services (AWS) 與 Azure AD 整合提供下列優點：
 
     b. 您必須有足夠的權限才能建立角色。 按一下 [修改權限]**** 以取得必要的權限。
 
-    ![Microsoft Graph Explorer 對話方塊](./media/aws-multi-accounts-tutorial/graph-explorer-new9.png)
+    ![螢幕擷取畫面顯示 [Graph Explorer 驗證] 視窗與 [修改許可權] 連結。](./media/aws-multi-accounts-tutorial/graph-explorer-new9.png)
 
     c. 從清單中選取下列權限 (如果您還沒有)，然後按一下 [修改權限] 
 
-    ![Microsoft Graph Explorer 對話方塊](./media/aws-multi-accounts-tutorial/graph-explorer-new10.png)
+    ![螢幕擷取畫面顯示三個選取的許可權： AccessAsUser、All、all、和目錄。 All。](./media/aws-multi-accounts-tutorial/graph-explorer-new10.png)
 
     d. 此時系統會要求您重新登入並接受此要求。 接受同意之後，您會再次登入 Microsoft Graph Explorer。
 
@@ -271,17 +271,17 @@ Amazon Web Services (AWS) 與 Azure AD 整合提供下列優點：
 
     如果您使用多個目錄，則可以使用下列模式，其中包含您的主要網域：`https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
 
-    ![Microsoft Graph Explorer 對話方塊](./media/aws-multi-accounts-tutorial/graph-explorer-new1.png)
+    ![螢幕擷取畫面顯示已選取 GET、Beta 和 Run 查詢。](./media/aws-multi-accounts-tutorial/graph-explorer-new1.png)
 
     f. 從所擷取的服務主體清單中，取得您需要修改的服務主體。 您也可以使用 Ctrl+F，從所有列出的服務主體中搜尋應用程式。 您可以使用下列查詢，方法是使用您從 Azure AD [屬性] 頁面複製的 **服務主體物件識別碼** ，以取得個別的服務主體。
 
     `https://graph.microsoft.com/beta/servicePrincipals/<objectID>`.
 
-    ![Microsoft Graph Explorer 對話方塊](./media/aws-multi-accounts-tutorial/graph-explorer-new2.png)
+    ![螢幕擷取畫面顯示使用查詢來取得服務主體物件。](./media/aws-multi-accounts-tutorial/graph-explorer-new2.png)
 
     g. 從服務主體物件擷取 appRoles 屬性。
 
-    ![Microsoft Graph Explorer 對話方塊](./media/aws-multi-accounts-tutorial/graph-explorer-new3.png)
+    ![螢幕擷取畫面：顯示服務主體物件的詳細資料。](./media/aws-multi-accounts-tutorial/graph-explorer-new3.png)
 
     h. 現在，您必須為您的應用程式產生新角色。 
 
@@ -331,7 +331,7 @@ Amazon Web Services (AWS) 與 Azure AD 整合提供下列優點：
 
     j. 返回至您的 Microsoft Graph Explorer，並將方法從 **GET** 變更為 **PATCH**。 藉由將 appRoles 屬性更新為前述範例中的類似屬性，將服務主體物件修補成具有所需的角色。 按一下 [執行查詢]**** 以執行修補作業。 此時會出現成功訊息，確認 Amazon Web Services 應用程式的角色已建立。
 
-    ![Microsoft Graph Explorer 對話方塊](./media/aws-multi-accounts-tutorial/graph-explorer-new11.png)
+    ![螢幕擷取畫面顯示已選取 Patch 方法的 Graph Explorer。](./media/aws-multi-accounts-tutorial/graph-explorer-new11.png)
 
 1. 以更多角色修補服務主體之後，您即可將使用者/群組指派給各自的角色。 移至入口網站，然後瀏覽至 Amazon Web Services 應用程式，即可完成此作業。 按一下頂端的 [使用者和群組]**** 索引標籤。
 
@@ -339,14 +339,14 @@ Amazon Web Services (AWS) 與 Azure AD 整合提供下列優點：
 
 1. 群組建立後，請選取群組並指派給應用程式。
 
-    ![設定單一登入的新增](./media/aws-multi-accounts-tutorial/graph-explorer-new5.png)
+    ![螢幕擷取畫面顯示 [新增指派] 與選取的使用者和群組，以開啟 [使用者和群組] 窗格。](./media/aws-multi-accounts-tutorial/graph-explorer-new5.png)
 
     > [!Note]
     > 指派群組時，不支援巢狀群組。
 
 1. 若要將角色指派給群組，請選取角色，然後按一下頁面底部的 [指派]**** 按鈕。
 
-    ![設定單一登入的新增](./media/aws-multi-accounts-tutorial/graph-explorer-new6.png)
+    ![螢幕擷取畫面：顯示已選取一個群組的 [新增指派]。](./media/aws-multi-accounts-tutorial/graph-explorer-new6.png)
 
     > [!Note]
     > 請注意，您必須在 Azure 入口網站中重新整理您的工作階段，才能看到新角色。
@@ -357,11 +357,11 @@ Amazon Web Services (AWS) 與 Azure AD 整合提供下列優點：
 
 當您在存取面板中按一下 [Amazon Web Services (AWS)] 圖格時，應該會進入有選項可供選取角色的 Amazon Web Services (AWS) 應用程式頁面。
 
-![設定單一登入的新增](./media/aws-multi-accounts-tutorial/tutorial-amazonwebservices-test-screen.png)
+![螢幕擷取畫面顯示 [W S 應用程式] 頁面，您可以在其中選取角色。](./media/aws-multi-accounts-tutorial/tutorial-amazonwebservices-test-screen.png)
 
 您也可以驗證 SAML 回應，以查看以宣告的形式傳遞的角色。
 
-![設定單一登入的新增](./media/aws-multi-accounts-tutorial/tutorial-amazonwebservices-test-saml.png)
+![螢幕擷取畫面顯示包含屬性值的 SAML 回應的一部分。](./media/aws-multi-accounts-tutorial/tutorial-amazonwebservices-test-saml.png)
 
 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../active-directory-saas-access-panel-introduction.md)。
 

@@ -10,12 +10,12 @@ ms.date: 08/26/2020
 ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 3343f0e21cdf8873447bd448c200102940b632e8
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 62a6bb807f01fd19a92c3dc4edf797171dd5ebc9
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89077087"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713402"
 ---
 # <a name="use-powershell-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>使用 PowerShell 管理 Azure Data Lake Storage Gen2 中的目錄、檔案和 Acl
 
@@ -67,7 +67,7 @@ Select-AzSubscription -SubscriptionId <subscription-id>
 
 ### <a name="option-1-obtain-authorization-by-using-azure-active-directory-ad"></a>選項1：使用 Azure Active Directory (AD) 取得授權
 
-使用此方法時，系統會確保您的使用者帳戶具有適當的角色型存取控制， (RBAC) 指派和 ACL 許可權。 
+使用此方法時，系統會確保您的使用者帳戶具有適當的 Azure 角色型存取控制， (Azure RBAC) 指派和 ACL 許可權。 
 
 ```powershell
 $ctx = New-AzStorageContext -StorageAccountName '<storage-account-name>' -UseConnectedAccount
@@ -75,7 +75,7 @@ $ctx = New-AzStorageContext -StorageAccountName '<storage-account-name>' -UseCon
 
 ### <a name="option-2-obtain-authorization-by-using-the-storage-account-key"></a>選項2：使用儲存體帳戶金鑰取得授權
 
-使用此方法時，系統不會檢查 RBAC 或 ACL 許可權。
+使用此方法時，系統不會檢查 Azure RBAC 或 ACL 許可權。
 
 ```powershell
 $storageAccount = Get-AzStorageAccount -ResourceGroupName "<resource-group-name>" -AccountName "<storage-account-name>"

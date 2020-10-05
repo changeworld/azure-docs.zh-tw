@@ -8,12 +8,12 @@ ms.date: 03/11/2020
 ms.service: storage
 ms.reviewer: rukmani-msft
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: fcd59cb3bf42dc843387043d982e6c43d665784d
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: bc6d4a60c3db6b2537a0f300562db1df5e249b43
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89486836"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91716148"
 ---
 # <a name="migrate-azure-data-lake-storage-from-gen1-to-gen2"></a>將 Azure Data Lake Storage 從 Gen1 遷移至 Gen2
 
@@ -98,7 +98,7 @@ Azure Data Lake Storage Gen2 建置於 [Azure Blob 儲存體](storage-blobs-intr
 |資料組織|[階層式命名空間](data-lake-storage-namespace.md)<br>檔案和資料夾支援|[階層式命名空間](data-lake-storage-namespace.md)<br>容器、檔案和資料夾支援 |
 |異地備援| [LRS](../common/storage-redundancy.md#locally-redundant-storage)| [LRS](../common/storage-redundancy.md#locally-redundant-storage)、 [ZRS](../common/storage-redundancy.md#zone-redundant-storage)、 [GRS](../common/storage-redundancy.md#geo-redundant-storage)、 [RA-GRS](../common/storage-redundancy.md#read-access-to-data-in-the-secondary-region) |
 |驗證|[AAD 受控識別](../../active-directory/managed-identities-azure-resources/overview.md)<br>[服務主體](../../active-directory/develop/app-objects-and-service-principals.md)|[AAD 受控識別](../../active-directory/managed-identities-azure-resources/overview.md)<br>[服務主體](../../active-directory/develop/app-objects-and-service-principals.md)<br>[共用存取金鑰](https://docs.microsoft.com/rest/api/storageservices/authorize-with-shared-key)|
-|授權|管理- [RBAC](../../role-based-access-control/overview.md)<br>資料- [acl](data-lake-storage-access-control.md)|管理– [RBAC](../../role-based-access-control/overview.md)<br>資料-  [acl](data-lake-storage-access-control.md)、 [RBAC](../../role-based-access-control/overview.md) |
+|授權|管理- [AZURE RBAC](../../role-based-access-control/overview.md)<br>資料- [acl](data-lake-storage-access-control.md)|管理– [AZURE RBAC](../../role-based-access-control/overview.md)<br>資料-  [acl](data-lake-storage-access-control.md)、 [Azure RBAC](../../role-based-access-control/overview.md) |
 |加密-待用資料|伺服器端–具有 [Microsoft 管理](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) 或 [客戶管理的](../common/encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) 金鑰|伺服器端–具有 [Microsoft 管理](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) 或 [客戶管理的](../common/encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) 金鑰|
 |VNET 支援|[VNET 整合](../../data-lake-store/data-lake-store-network-security.md)|[服務端點](../common/storage-network-security.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)， [私人端點](../common/storage-private-endpoints.md)|
 |開發人員體驗|[REST](../../data-lake-store/data-lake-store-data-operations-rest-api.md)、 [.net](../../data-lake-store/data-lake-store-data-operations-net-sdk.md)、 [JAVA](../../data-lake-store/data-lake-store-get-started-java-sdk.md)、 [Python](../../data-lake-store/data-lake-store-data-operations-python.md)、 [PowerShell](../../data-lake-store/data-lake-store-get-started-powershell.md)、 [Azure CLI](../../data-lake-store/data-lake-store-get-started-cli-2.0.md)|正式推出- [REST](/rest/api/storageservices/data-lake-storage-gen2)、 [.net](data-lake-storage-directory-file-acl-dotnet.md)、 [JAVA](data-lake-storage-directory-file-acl-java.md)、 [Python](data-lake-storage-directory-file-acl-python.md)<br>公開預覽- [JavaScript](data-lake-storage-directory-file-acl-javascript.md)、 [PowerShell](data-lake-storage-directory-file-acl-powershell.md)、 [Azure CLI](data-lake-storage-directory-file-acl-cli.md)|
@@ -202,7 +202,7 @@ Azure Data Lake Storage Gen2 建置於 [Azure Blob 儲存體](storage-blobs-intr
 
 ： heavy_check_mark：遷移工作很高，但它提供對 Gen1 和 Gen2 的並存支援。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 瞭解設定儲存體帳戶安全性的各個部分。 請參閱 [Azure 儲存體安全性指南](../common/storage-security-guide.md)。
 - 將您 Data Lake Store 的效能優化。 查看效能 [優化 Azure Data Lake Storage Gen2](data-lake-storage-performance-tuning-guidance.md)

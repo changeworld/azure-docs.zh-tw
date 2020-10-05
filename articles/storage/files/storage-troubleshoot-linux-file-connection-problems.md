@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 40fb5a1623175445065f0546403661a1f6eb399f
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: da60d6a2146385e1dfd0717afb1172b378e52533
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91629432"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715996"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux-smb"></a>針對 Linux (SMB) 中的 Azure 檔案儲存體問題進行疑難排解
 
@@ -150,7 +150,7 @@ Linux 4.11 核心已推出 SMB 3.0 適用的加密功能。 此功能讓您可�
 
 ### <a name="solution-for-cause-2"></a>原因 2 的解決方案
 
-瀏覽至 Azure 檔案共用所在的儲存體帳戶，按一下 [存取控制 (IAM)]****，並確認您的使用者帳戶擁有儲存體帳戶的存取權。 若要深入了解，請參閱[如何使用角色型存取控制 (RBAC) 保護儲存體帳戶](https://docs.microsoft.com/azure/storage/blobs/security-recommendations#data-protection)。
+瀏覽至 Azure 檔案共用所在的儲存體帳戶，按一下 [存取控制 (IAM)]****，並確認您的使用者帳戶擁有儲存體帳戶的存取權。 若要深入瞭解，請參閱 [如何使用 azure 角色型存取控制來保護儲存體帳戶 (AZURE RBAC) ](https://docs.microsoft.com/azure/storage/blobs/security-recommendations#data-protection)。
 
 <a id="open-handles"></a>
 ## <a name="unable-to-delete-a-file-or-directory-in-an-azure-file-share"></a>無法刪除 Azure 檔案共用中的檔案或目錄

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: tamram
 ms.custom: security-recommendations
-ms.openlocfilehash: 5b1e5c73f3d43ca2627729149256f3e9362d58c2
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: bd50a007b73438a5776cf6ecdb1074dc9980c537
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90984270"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713709"
 ---
 # <a name="security-recommendations-for-blob-storage"></a>Blob 儲存體的安全性建議
 
@@ -29,7 +29,7 @@ Azure 資訊安全中心會定期分析 Azure 資源的安全性狀態，以找�
 
 | 建議 | 註解 | 資訊安全中心 |
 |-|----|--|
-| 使用 Azure Resource Manager 部署模型 | 使用 Azure Resource Manager 部署模型來建立新的儲存體帳戶，以進行重要的安全性增強功能，包括絕佳的存取控制 (RBAC) 和審核、Resource Manager 型部署和治理、受控識別的存取、秘密的 Azure Key Vault 存取，以及 Azure AD 資料和資源的存取 Azure 儲存體型驗證和授權。 可能的話，請將使用傳統部署模型的現有儲存體帳戶遷移為使用 Azure Resource Manager。 如需 Azure Resource Manager 的詳細資訊，請參閱 [Azure Resource Manager 總覽](/azure/azure-resource-manager/resource-group-overview)。 | - |
+| 使用 Azure Resource Manager 部署模型 | 使用 Azure Resource Manager 部署模型來建立新的儲存體帳戶，以進行重要的安全性增強功能，包括絕佳的 Azure 角色型存取控制 (Azure RBAC) 和審核、Resource Manager 型部署和治理、受控識別的存取、秘密的 Azure Key Vault 存取，以及 Azure AD 資料和資源的存取 Azure 儲存體型驗證和授權。 可能的話，請將使用傳統部署模型的現有儲存體帳戶遷移為使用 Azure Resource Manager。 如需 Azure Resource Manager 的詳細資訊，請參閱 [Azure Resource Manager 總覽](/azure/azure-resource-manager/resource-group-overview)。 | - |
 | 為您的所有儲存體帳戶啟用 Azure Defender | 適用于 Azure 儲存體的 Azure Defender 提供額外一層的安全性情報，可偵測不尋常且可能有害的存取或惡意探索儲存體帳戶嘗試。 當活動中發生異常狀況，而且也透過電子郵件傳送給訂用帳戶管理員時，會在 Azure 資訊安全中心中觸發安全性警示，並提供可疑活動的詳細資料，以及如何調查和修復威脅的建議。 如需詳細資訊，請參閱 [設定 Azure Defender 的 Azure 儲存體](../common/azure-defender-storage-configure.md)。 | [是](../../security-center/security-center-sql-service-recommendations.md) |
 | 開啟 blob 資料的虛刪除 | 虛刪除可讓您復原已刪除的 blob 資料。 如需虛刪除的詳細資訊，請參閱 [Azure 儲存體 blob 的虛刪除](storage-blob-soft-delete.md)。 | - |
 | 在不可變的 blob 中儲存商務關鍵資料 | 設定合法保存和以時間為基礎的保留原則，將 blob 資料儲存在 WORM (寫入一次，讀取許多) 狀態。 Blob 儲存的, 可以讀取，但無法在保留間隔的持續期間內修改或刪除。 如需詳細資訊，請參閱 [使用不可變的儲存體儲存商務關鍵 blob 資料](storage-blob-immutable-storage.md)。 | - |
@@ -40,7 +40,7 @@ Azure 資訊安全中心會定期分析 Azure 資源的安全性狀態，以找�
 | 建議 | 註解 | 資訊安全中心 |
 |-|----|--|
 | 使用 Azure Active Directory (Azure AD) 來授權存取 blob 資料 | Azure AD 透過共用金鑰提供更高的安全性和使用性，以授權對 Blob 儲存體的要求。 如需詳細資訊，請參閱 [使用 Azure Active Directory 授與 Azure blob 和佇列的存取權](../common/storage-auth-aad.md)。 | - |
-| 透過 RBAC 將許可權指派給 Azure AD 安全性主體時，請記住最低許可權的主體。 | 將角色指派給使用者、群組或應用程式時，只授與該安全性主體執行其工作所需的許可權。 限制對資源的存取有助於防止不慎和惡意誤用您的資料。 | - |
+| 透過 Azure RBAC 將許可權指派給 Azure AD 安全性主體時，請記住最低許可權的主體。 | 將角色指派給使用者、群組或應用程式時，只授與該安全性主體執行其工作所需的許可權。 限制對資源的存取有助於防止不慎和惡意誤用您的資料。 | - |
 | 使用使用者委派 SAS 將 blob 資料的有限存取權授與用戶端 | 使用者委派 SAS 可透過 Azure Active Directory (Azure AD) 認證，以及為 SAS 指定的許可權來保護。 根據服務 sas 的範圍和功能，使用者委派 SAS 類似于服務 SAS，但透過服務 SAS 提供安全性優勢。 如需詳細資訊，請參閱 [使用共用存取簽章將有限存取權授與 Azure 儲存體資源 (SAS) ](../common/storage-sas-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。 | - |
 | 使用 Azure Key Vault 保護您的帳戶存取金鑰 | Microsoft 建議使用 Azure AD 來授權 Azure 儲存體的要求。 但是，如果您必須使用共用金鑰授權，請使用 Azure Key Vault 保護您的帳戶金鑰。 您可以在執行時間從金鑰保存庫中取出金鑰，而不是將它們儲存到您的應用程式。 如需 Azure Key Vault 的詳細資訊，請參閱 [Azure Key Vault 總覽](../../key-vault/general/overview.md)。 | - |
 | 定期重新產生您的帳戶金鑰 | 輪替帳戶金鑰會定期減少將資料公開給惡意執行者的風險。 | - |
@@ -67,7 +67,7 @@ Azure 資訊安全中心會定期分析 Azure 資源的安全性狀態，以找�
 |-|----|--|
 | 追蹤要求的授權方式 | 啟用 Azure 儲存體記錄，以追蹤針對 Azure 儲存體所提出的每個要求如何獲得授權。 這些記錄會指出是以匿名方式、使用 OAuth 2.0 權杖、使用共用金鑰，或使用共用存取簽章 (SAS) 來進行要求。 如需詳細資訊，請參閱 [Azure 儲存體分析記錄](../common/storage-analytics-logging.md)。 | - |
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [Azure 安全性文件](https://docs.microsoft.com//azure/security/)
 - [安全開發檔](https://docs.microsoft.com/azure/security/develop/)。

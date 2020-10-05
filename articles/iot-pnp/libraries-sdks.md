@@ -8,12 +8,12 @@ ms.topic: reference
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 1b534c6ccb3bfca6c7dddaec82d8794deae72ff2
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: 87e701bfd742c48cf7d99b2fa09fa408e900a77d
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91651304"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714834"
 ---
 # <a name="microsoft-sdks-for-iot-plug-and-play"></a>適用于 IoT 隨插即用的 Microsoft Sdk
 
@@ -34,7 +34,7 @@ IoT 隨插即用程式庫和 Sdk 可讓開發人員在多個平臺上使用各�
 
 | 平台  | 封裝 | 程式碼存放庫 | 範例 | 快速入門 | 參考 |
 |---|---|---|---|---|---|
-| .NET-IoT 中樞服務 | [NuGet 1.31。0](https://www.nuget.org/packages/Microsoft.Azure.Devices ) | [GitHub](https://github.com/Azure/azure-iot-sdk-csharp) | [範例](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/iot-hub/Samples/service/PnpServiceSamples) | N/A | [參考](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices?view=azure-dotnet&preserve-view=true) |
+| .NET-IoT 中樞服務 | [NuGet 1.27。1](https://www.nuget.org/packages/Microsoft.Azure.Devices ) | [GitHub](https://github.com/Azure/azure-iot-sdk-csharp) | [範例](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/iot-hub/Samples/service/PnpServiceSamples) | N/A | [參考](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices?view=azure-dotnet&preserve-view=true) |
 | JAVA-IoT 中樞服務 | [Maven 1.26。0](https://mvnrepository.com/artifact/com.microsoft.azure.sdk.iot/iot-service-client/1.26.0) | [GitHub](https://github.com/Azure/azure-iot-sdk-java) | [範例](https://github.com/Azure/azure-iot-sdk-java/tree/master/service/iot-service-samples/pnp-service-sample) | N/A | [參考](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.service?view=azure-java-stable&preserve-view=true) |
 | 節點-IoT 中樞服務 | [npm 1.13。0](https://www.npmjs.com/package/azure-iothub) | [GitHub](https://github.com/Azure/azure-iot-sdk-node) | [範例](https://github.com/Azure/azure-iot-sdk-node/tree/master/service/samples) | N/A | [參考](https://docs.microsoft.com/javascript/api/azure-iothub/?view=azure-node-latest&preserve-view=true) |
 | Python-數位 Twins 服務 | [pip 2.2。3](https://pypi.org/project/azure-iot-hub) | [GitHub](https://github.com/Azure/azure-iot-sdk-python) | [範例](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-hub/samples) | [與 IoT 中樞數位 Twins API 互動](quickstart-service-python.md) | N/A |

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: a30ab4136b1d54e852ddb8fe3d0ed9a4e2bc9149
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 03f996f1105601dc46c81fa1a874816913e80633
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89485935"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91716048"
 ---
 # <a name="get-started-with-azcopy"></a>開始使用 AzCopy
 
@@ -94,7 +94,7 @@ AzCopy 是命令列公用程式，可讓您在儲存體帳戶之間複製 Blob �
 - 資源群組
 - 訂用帳戶
 
-若要瞭解如何驗證和指派角色，請參閱 [Azure 入口網站中的 RBAC 授與 Azure blob 和佇列資料的存取權](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
+若要瞭解如何驗證和指派角色，請參閱 [使用 Azure 入口網站指派 Azure 角色以存取 blob 和佇列資料](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
 
 > [!NOTE]
 > 請記住，Azure 角色指派最多可能需要五分鐘的時間來傳播。
@@ -247,7 +247,7 @@ azcopy copy "C:\local\path" "https://account.blob.core.windows.net/mycontainer1/
 
 若要深入瞭解 SAS 權杖，以及如何取得 SAS 權杖，請參閱 [使用共用存取簽章 (SAS) ](https://docs.microsoft.com/azure/storage/common/storage-sas-overview)。
 
-## <a name="transfer-files"></a>傳送檔案
+## <a name="transfer-files"></a>傳輸檔案
 
 驗證您的身分識別或取得 SAS 權杖之後，您就可以開始傳送檔案。
 
@@ -318,6 +318,6 @@ URL 會出現在此命令的輸出中。 然後，您的腳本就可以使用該
 
 請參閱 [設定、優化和疑難排解 AzCopy](storage-use-azcopy-configure.md)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如果您有任何疑問、問題或一般意見反應，請 [在 GitHub 頁面上](https://github.com/Azure/azure-storage-azcopy) 提交。

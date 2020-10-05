@@ -7,22 +7,22 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 09/16/2020
 ms.author: rogarana
-ms.openlocfilehash: de0f58b54f0cb5ad450949bb1a7b8744f081227d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 50753950556531ed3915292f44668073b88be45b
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91320331"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91716027"
 ---
 # <a name="part-three-configure-directory-and-file-level-permissions-over-smb"></a>第三部分：透過 SMB 設定目錄和檔案層級許可權 
 
 開始本文之前，請確定您已完成前一篇文章， [將共用層級許可權指派給身分識別](storage-files-identity-ad-ds-assign-permissions.md) ，以確保您的共用層級許可權已就緒。
 
-使用 RBAC 指派共用層級許可權之後，您必須在根目錄、目錄或檔案層級設定適當的 Windows Acl，以利用細微的存取控制。 請將 RBAC 共用層級的許可權視為可決定使用者是否可以存取共用的高階閘道管理員。 雖然 Windows Acl 會以更細微的層級運作，以判斷使用者可在目錄或檔案層級執行哪些作業。 當使用者嘗試存取檔案/目錄時，會強制執行共用層級和檔案/目錄層級許可權，因此如果兩者之間有差異，則只會套用限制最嚴格的許可權。 例如，如果使用者在檔案層級擁有讀取/寫入存取權，但只在共用層級讀取，則只能讀取該檔案。 如果已反轉，且使用者在共用層級擁有讀取/寫入存取權，但只在檔案層級讀取，則相同也會是 true，但只能讀取檔案。
+使用 Azure RBAC 指派共用層級許可權之後，您必須在根、目錄或檔案層級設定適當的 Windows Acl，以利用細微的存取控制。 請將 Azure RBAC 共用層級的許可權視為可決定使用者是否可以存取共用的高階閘道管理員。 雖然 Windows Acl 會以更細微的層級運作，以判斷使用者可在目錄或檔案層級執行哪些作業。 當使用者嘗試存取檔案/目錄時，會強制執行共用層級和檔案/目錄層級許可權，因此如果兩者之間有差異，則只會套用限制最嚴格的許可權。 例如，如果使用者在檔案層級擁有讀取/寫入存取權，但只在共用層級讀取，則只能讀取該檔案。 如果已反轉，且使用者在共用層級擁有讀取/寫入存取權，但只在檔案層級讀取，則相同也會是 true，但只能讀取檔案。
 
-## <a name="rbac-permissions"></a>RBAC 許可權
+## <a name="azure-rbac-permissions"></a>Azure RBAC 許可權
 
-下表包含與此設定相關的 RBAC 許可權：
+下表包含與此設定相關的 Azure RBAC 許可權：
 
 
 | 內建角色  | NTFS 許可權  | 產生的存取權  |

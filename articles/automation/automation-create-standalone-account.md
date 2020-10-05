@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/15/2019
 ms.topic: conceptual
-ms.openlocfilehash: 40654926b2998b3ba1c4ce1a5607a768f2c32340
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: c78a65c3cc2d913ba0b836947d2184b3a061a648
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90987272"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714636"
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>建立獨立的 Azure 自動化帳戶
 
@@ -22,7 +22,7 @@ ms.locfileid: "90987272"
 
 * 在 Azure Active Directory (Azure AD) 中建立服務主體。
 * 建立憑證。
-* 指派參與者角色型存取控制 (RBAC)，此控制可使用 Runbook 來管理 Azure Resource Manager 資源。
+* 指派「參與者」角色，該角色會使用 runbook 來管理 Azure Resource Manager 資源。
 
 利用這個為您建立的帳戶，您可以快速開始建置和部署 Runbook 以支援您的自動化需求。
 
@@ -74,7 +74,7 @@ ms.locfileid: "90987272"
    > [!NOTE]
    > 如果您選取 [否]，以選擇不要 [建立執行身分帳戶] ，則加入自動化帳戶窗格中會顯示一則訊息。 雖然此帳戶建立於 Azure 入口網站中，但此帳戶在傳統部署模型訂用帳戶或 Azure Resource Manager 訂用帳戶目錄服務內不會有對應的驗證身分識別。 因此，自動化帳戶無法存取您訂用帳戶中的資源。 這會導致所有參考此帳戶的 Runbook 均無法進行驗證，也無法對那些部署模型中的資源執行工作。
    >
-   > :::image type="content" source="media/automation-create-standalone-account/create-account-decline-create-runas-msg.png" alt-text="提示顯示 [您已選擇不要建立執行帳戶] 訊息的螢幕擷取畫面。":::
+   > :::image type="content" source="media/automation-create-standalone-account/create-account-decline-create-runas-msg.png" alt-text="提示「您沒有許可權可在 Azure Active directory 中建立執行帳戶」的螢幕擷取畫面。":::
    >
    > 若未建立服務主體，則不會指派參與者角色。
    >

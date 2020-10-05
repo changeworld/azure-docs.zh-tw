@@ -1,7 +1,7 @@
 ---
 title: 使用 PowerShell 指派 Azure 角色以進行資料存取
 titleSuffix: Azure Storage
-description: 瞭解如何使用 PowerShell，將許可權指派給具有角色型存取控制的 Azure Active Directory 安全性主體 (RBAC) 。 Azure 儲存體支援內建和 Azure 自訂角色，以透過 Azure AD 進行驗證。
+description: 瞭解如何使用 Azure PowerShell 模組，利用 azure 角色型存取控制，將許可權指派給 Azure Active Directory 安全性主體 (Azure RBAC) 。 Azure 儲存體支援內建和 Azure 自訂角色，以透過 Azure AD 進行驗證。
 services: storage
 author: tamram
 ms.service: storage
@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 28f5be6d48b673f3148f05e14a92cf906aca4d81
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: d750e1f287ff7dfc5259b704355e026011fa872a
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89077036"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715803"
 ---
 # <a name="use-powershell-to-assign-an-azure-role-for-access-to-blob-and-queue-data"></a>使用 PowerShell 指派 Azure 角色以存取 blob 和佇列資料
 
@@ -136,6 +136,6 @@ New-AzRoleAssignment -SignInName <email> `
 
 ## <a name="next-steps"></a>後續步驟
 
-- [使用 RBAC 與 Azure PowerShell 管理 Azure 資源的存取權](../../role-based-access-control/role-assignments-powershell.md)
-- [透過 Azure CLI 使用 RBAC 授與 Azure Blob 和佇列資料的存取權](storage-auth-aad-rbac-cli.md)
-- [在 Azure 入口網站中使用 RBAC 授與 Azure Blob 和佇列資料的存取權](storage-auth-aad-rbac-portal.md)
+- [使用 Azure PowerShell 模組新增或移除 Azure 角色指派](../../role-based-access-control/role-assignments-powershell.md)
+- [使用 Azure CLI 指派 Azure 角色以存取 blob 和佇列資料](storage-auth-aad-rbac-cli.md)
+- [使用 Azure 入口網站指派 Azure 角色以存取 blob 和佇列資料](storage-auth-aad-rbac-portal.md)

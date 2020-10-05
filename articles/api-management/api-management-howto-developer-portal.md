@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/28/2020
 ms.author: apimpm
-ms.openlocfilehash: 068f15cc06a76412836176dc13237741ea14d135
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: 3642b95f5bd6d0207508ca85f1d22ce20b44eae3
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89614054"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715452"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Azure API 管理開發人員入口網站概觀
 
@@ -115,11 +115,11 @@ ms.locfileid: "89614054"
 
 ### <a name="does-the-portal-support-azure-resource-manager-templates-andor-is-it-compatible-with-api-management-devops-resource-kit"></a>入口網站支援 Azure Resource Manager 範本和/或相容于 API 管理 DevOps 資源套件嗎？
 
-不會。
+不可以。
 
 ### <a name="is-the-portals-content-saved-with-the-backuprestore-functionality-in-api-management"></a>入口網站的內容是否以「API 管理」中的備份/還原功能儲存？
 
-不會。
+不可以。
 
 ### <a name="do-i-need-to-enable-additional-vnet-connectivity-for-the-managed-portal-dependencies"></a>我是否需要為受控入口網站相依性啟用額外的 VNet 連線？
 
@@ -172,7 +172,7 @@ ms.locfileid: "89614054"
 
 ### <a name="what-permissions-do-i-need-to-edit-the-developer-portal"></a>我需要哪些許可權才能編輯開發人員入口網站？
 
-如果您 `Oops. Something went wrong. Please try again later.` 在系統管理模式中開啟入口網站時看到錯誤，您可能缺少必要的許可權 (RBAC) 。
+如果您 `Oops. Something went wrong. Please try again later.` 在系統管理模式中開啟入口網站時看到錯誤，可能是因為 AZURE RBAC)  (缺少必要的許可權。
 
 舊版入口網站需要 `Microsoft.ApiManagement/service/getssotoken/action` 服務範圍的許可權 (`/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.ApiManagement/service/<apim-service-name>`) ，才能讓使用者系統管理員存取入口網站。 新的入口網站需要範圍的許可權 `Microsoft.ApiManagement/service/users/token/action` `/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.ApiManagement/service/<apim-service-name>/users/1` 。
 
@@ -222,7 +222,7 @@ New-AzRoleAssignment -SignInName "user1@contoso.com" -RoleDefinitionName "APIM N
 
  <small><sup>1</sup> 兩個最新的生產版本支援。</small>
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 深入瞭解新的開發人員入口網站：
 

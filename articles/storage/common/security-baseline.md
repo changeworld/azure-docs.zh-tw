@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 6358f9d233b3c09dc4ae4f3ecac7c91dea8bba6e
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: f4687add8fdd55c8084a7180a6e0a3bffd9751b1
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89228268"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715152"
 ---
 # <a name="azure-security-baseline-for-azure-storage"></a>適用于 Azure 儲存體的 Azure 安全性基準
 
@@ -380,13 +380,13 @@ ms.locfileid: "89228268"
 
 ### <a name="39-use-azure-active-directory"></a>3.9：使用 Azure Active Directory
 
-**指導**方針：使用 Azure Active Directory (Azure AD) 作為中央驗證和授權系統。 Azure AD 提供了角色型存取控制 (RBAC)，供您更細微地控制用戶端對儲存體帳戶資源的存取。  盡可能使用 Azure AD 認證作為安全性最佳做法，而不是使用帳戶金鑰，這可能更容易遭到入侵。 當您的應用程式設計需要共用存取簽章以存取 Blob 儲存體時，請使用 Azure AD 認證來建立使用者委派共用存取簽章 (SAS) 以獲得較佳的安全性。
+**指導**方針：使用 Azure Active Directory (Azure AD) 作為中央驗證和授權系統。 Azure 提供 Azure 角色型存取控制 (的 Azure RBAC) ，可讓您更精細地控制用戶端對儲存體帳戶中資源的存取權。  盡可能使用 Azure AD 認證作為安全性最佳做法，而不是使用帳戶金鑰，這可能更容易遭到入侵。 當您的應用程式設計需要共用存取簽章以存取 Blob 儲存體時，請使用 Azure AD 認證來建立使用者委派共用存取簽章 (SAS) 以獲得較佳的安全性。
 
 - [如何建立和設定 Azure AD 實例](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
 
 - [使用 Azure 儲存體資源提供者存取管理資源](https://docs.microsoft.com/azure/storage/common/authorization-resource-provider)
 
-- [如何在 Azure 入口網站中使用 RBAC 設定 Azure Blob 和佇列資料的存取權](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal)
+- [如何在 Azure 入口網站中使用 Azure RBAC 設定 Azure Blob 和佇列資料的存取權](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal)
 
 - [授權存取 Azure 儲存體中的資料](https://docs.microsoft.com/azure/storage/common/storage-auth)
 
@@ -478,7 +478,7 @@ ms.locfileid: "89228268"
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2：隔離儲存或處理敏感性資訊的系統
 
-**指導**方針：使用個別的訂用帳戶、管理群組和儲存體帳戶，為個別的安全性網域（例如環境、資料敏感度）實行隔離。  您可以根據所使用的網路類型和子集來限制儲存體帳戶，以控制您的應用程式和企業環境所需的儲存體帳戶存取層級。 設定網路規則時，只有透過一組指定網路要求資料的應用程式才能存取儲存體帳戶。 您可以透過 Azure AD RBAC 來控制對 Azure 儲存體的存取。 您也可以設定私人端點來改善安全性，因為您的虛擬網路與服務之間的流量會流經 Microsoft 骨幹網路，以消除公用網際網路的風險。 
+**指導**方針：使用個別的訂用帳戶、管理群組和儲存體帳戶，為個別的安全性網域（例如環境、資料敏感度）實行隔離。  您可以根據所使用的網路類型和子集來限制儲存體帳戶，以控制您的應用程式和企業環境所需的儲存體帳戶存取層級。 設定網路規則時，只有透過一組指定網路要求資料的應用程式才能存取儲存體帳戶。 您可以透過 Azure RBAC 控制對 Azure 儲存體的存取。 您也可以設定私人端點來改善安全性，因為您的虛擬網路與服務之間的流量會流經 Microsoft 骨幹網路，以消除公用網際網路的風險。 
 
 - [如何建立額外的 Azure 訂閱](https://docs.microsoft.com/azure/billing/billing-create-subscription)
 
@@ -534,13 +534,13 @@ ms.locfileid: "89228268"
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6：使用 Azure RBAC 來控制資源的存取權
 
-**指導**方針： Azure Active Directory (Azure AD) 透過以角色為基礎的存取控制 (RBAC) ，來授與受保護資源的存取權限。 Azure 儲存體會定義一組 Azure 內建角色，其中包含用來存取 blob 或佇列資料的一般許可權集。 
+**指導**方針： Azure Active Directory (Azure AD) 透過 azure RBAC (的 azure 角色型存取控制，來授與受保護資源的存取權限。 Azure 儲存體會定義一組 Azure 內建角色，其中包含用來存取 blob 或佇列資料的一般許可權集。 
 
 - [如何為 Azure 儲存體帳戶指派 Azure 角色](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal#assign-azure-roles-using-the-azure-portal)
 
 - [使用 Azure 儲存體資源提供者存取管理資源](https://docs.microsoft.com/azure/storage/common/authorization-resource-provider)
 
-- [如何在 Azure 入口網站中使用 RBAC 設定 Azure Blob 和佇列資料的存取權](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal)
+- [如何在 Azure 入口網站中使用 Azure RBAC 設定 Azure Blob 和佇列資料的存取權](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal)
 
 - [如何建立和設定 AAD 執行個體](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
 

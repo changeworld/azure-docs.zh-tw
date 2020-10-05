@@ -10,12 +10,12 @@ ms.date: 08/27/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e4a13fb22fd826f82252383587bc4a273c43099f
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: 191213511a6b41e3a8419660a40b8d79a5c747f2
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91613504"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714931"
 ---
 # <a name="blob-versioning"></a>Blob 版本設定
 
@@ -175,17 +175,17 @@ Blob 快照集是在特定時間點取得之 blob 的唯讀複本。 Blob 快照
 
 您可以使用下列其中一種方法來授權存取 blob 版本：
 
-- 使用以角色為基礎的存取控制 (RBAC) 將許可權授與 Azure Active Directory (Azure AD) 安全性主體。 Microsoft 建議使用 Azure AD，以獲得更高的安全性與易用性。 如需搭配使用 Azure AD 與 blob 作業的詳細資訊，請參閱 [使用 Azure Active Directory 授權存取 blob 和佇列](../common/storage-auth-aad.md)。
+- 藉由使用 Azure 角色型存取控制 (Azure RBAC) 來授與 Azure Active Directory (Azure AD) 安全性主體的許可權。 Microsoft 建議使用 Azure AD，以獲得更高的安全性與易用性。 如需搭配使用 Azure AD 與 blob 作業的詳細資訊，請參閱 [使用 Azure Active Directory 授權存取 blob 和佇列](../common/storage-auth-aad.md)。
 - 使用共用存取簽章 (SAS) 來委派 blob 版本的存取權。 指定代表 blob 版本之已簽署資源類型的版本識別碼， `bv` 以建立特定版本作業的 SAS 權杖。 如需共用存取簽章的詳細資訊，請參閱[使用共用存取簽章 (SAS) 授與 Azure 儲存體資源的有限存取權](../common/storage-sas-overview.md)。
 - 使用帳戶存取金鑰，以共用金鑰組 blob 版本進行作業授權。 如需詳細資訊，請參閱[使用共用金鑰進行授權](/rest/api/storageservices/authorize-with-shared-key)。
 
 Blob 版本設定的設計是為了保護您的資料免于遭到意外或惡意刪除。 若要增強保護，刪除 blob 版本需要特殊許可權。 下列各節說明刪除 blob 版本所需的許可權。
 
-### <a name="rbac-action-to-delete-a-blob-version"></a>用來刪除 blob 版本的 RBAC 動作
+### <a name="azure-rbac-action-to-delete-a-blob-version"></a>用來刪除 blob 版本的 Azure RBAC 動作
 
-下表顯示支援刪除 blob 或 blob 版本的 RBAC 動作。
+下表顯示哪些 Azure RBAC 動作支援刪除 blob 或 blob 版本。
 
-| 說明 | Blob 服務作業 | 需要 RBAC 資料動作 | RBAC 內建角色支援 |
+| 描述 | Blob 服務作業 | 需要 Azure RBAC 資料動作 | Azure 內建角色支援 |
 |----------------------------------------------|------------------------|---------------------------------------------------------------------------------------|-------------------------------|
 | 正在刪除 blob 的目前版本 | 刪除 Blob | **Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete** | 儲存體 Blob 資料參與者 |
 | 刪除版本 | 刪除 Blob | **Microsoft. Storage/storageAccounts/blobServices/container/blob/deleteBlobVersion/action** | 儲存體 Blob 資料擁有者 |

@@ -10,22 +10,22 @@ ms.date: 09/14/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: queues
-ms.openlocfilehash: 1dc8009792163730602827a995c4b6900a0ef08d
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 27a742b5f683a7e542ca8d51a711d903b00bda61
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90108569"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715479"
 ---
 # <a name="run-powershell-commands-with-azure-ad-credentials-to-access-queue-data"></a>使用 Azure AD 認證來執行 PowerShell 命令以存取佇列資料
 
 Azure 儲存體提供 PowerShell 的延伸模組，可讓您以 Azure Active Directory (Azure AD) 認證來登入和執行指令碼命令。 當您使用 Azure AD 認證登入 PowerShell 時，會傳回 OAuth 2.0 存取權杖。 PowerShell 會自動使用該權杖來對佇列儲存體授權後續的資料作業。 針對支援的作業，您不需要再使用命令傳遞帳戶金鑰或 SAS 權杖。
 
-您可以透過以角色為基礎的存取控制 (RBAC) ，指派將資料佇列到 Azure AD 安全性主體的許可權。 如需有關 Azure 儲存體中的 Azure 角色的詳細資訊，請參閱 [使用 RBAC 管理 Azure 儲存體資料的存取權限](../common/storage-auth-aad-rbac.md)。
+您可以透過 Azure RBAC)  (的 Azure 角色型存取控制，指派將資料佇列到 Azure AD 安全性主體的許可權。 如需有關 Azure 儲存體中 Azure 角色的詳細資訊，請參閱 [使用 AZURE RBAC 管理 Azure 儲存體資料的存取權限](../common/storage-auth-aad-rbac.md)。
 
 ## <a name="supported-operations"></a>支援的作業
 
-佇列資料的作業支援 Azure 儲存體擴充功能。 您可以呼叫哪些作業取決於授與您用來登入 PowerShell 的 Azure AD 安全性主體的許可權。 透過 RBAC 指派 Azure 儲存體佇列的許可權。 例如，如果您已獲指派 **佇列資料讀者** 角色，則您可以執行從佇列讀取資料的指令碼命令。 如果您已獲指派 **佇列資料參與者** 角色，則您可以執行指令碼命令，以讀取、寫入或刪除佇列或它們所包含的資料。
+佇列資料的作業支援 Azure 儲存體擴充功能。 您可以呼叫哪些作業取決於授與您用來登入 PowerShell 的 Azure AD 安全性主體的許可權。 透過 Azure RBAC 指派 Azure 儲存體佇列的許可權。 例如，如果您已獲指派 **佇列資料讀者** 角色，則您可以執行從佇列讀取資料的指令碼命令。 如果您已獲指派 **佇列資料參與者** 角色，則您可以執行指令碼命令，以讀取、寫入或刪除佇列或它們所包含的資料。
 
 如需有關佇列上每個 Azure 儲存體作業所需許可權的詳細資訊，請參閱 [使用 OAuth 權杖呼叫儲存體作業](/rest/api/storageservices/authorize-with-azure-active-directory#call-storage-operations-with-oauth-tokens)。  
 
@@ -68,7 +68,7 @@ Azure 儲存體提供 PowerShell 的延伸模組，可讓您以 Azure Active Dir
     $ctx = New-AzStorageContext -StorageAccountName "<storage-account>" -UseConnectedAccount
     ```
 
-1. 建立佇列之前，請先將「 [儲存體佇列資料參與者](../../role-based-access-control/built-in-roles.md#storage-queue-data-contributor) 」角色指派給自己。 即使您是帳戶擁有者，您還是需要明確的許可權，才能對儲存體帳戶執行資料作業。 如需指派 Azure 角色的詳細資訊，請參閱 [Azure 入口網站中的 RBAC 授與 azure blob 和佇列資料的存取權](../common/storage-auth-aad-rbac.md)。
+1. 建立佇列之前，請先將「 [儲存體佇列資料參與者](../../role-based-access-control/built-in-roles.md#storage-queue-data-contributor) 」角色指派給自己。 即使您是帳戶擁有者，您還是需要明確的許可權，才能對儲存體帳戶執行資料作業。 如需指派 Azure 角色的詳細資訊，請參閱 [使用 Azure 入口網站指派 azure 角色以存取 blob 和佇列資料](../common/storage-auth-aad-rbac.md)。
 
     > [!IMPORTANT]
     > Azure 角色指派可能需要數分鐘的時間傳播。

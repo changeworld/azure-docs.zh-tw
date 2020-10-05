@@ -1,25 +1,25 @@
 ---
 title: 管理 Azure 自動化中的角色權限與安全性
-description: 本文說明如何使用角色型存取控制（RBAC），以啟用 Azure 資源的存取管理。
+description: 本文說明如何使用 azure 角色型存取控制 (Azure RBAC) ，以啟用 Azure 資源的存取管理。
 keywords: 自動化 rbac, 角色型存取控制, azure rbac
 services: automation
 ms.subservice: shared-capabilities
 ms.date: 07/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: 21742d2db6a7fde69568e5fd1e5eda98542faa47
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: efdb195ad41b036f7f470884b3a441de1db7f7f4
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87528663"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91716159"
 ---
 # <a name="manage-role-permissions-and-security"></a>管理角色權限與安全性
 
-角色型存取控制 (RBAC) 可以啟用對 Azure 資源的存取權管理。 您可以使用 [RBAC](../role-based-access-control/overview.md) 來區隔小組內的職責，僅授與使用者、群組和應用程式執行作業所需的存取權範圍。 您可以使用 Azure 入口網站、Azure 命令列工具或 Azure 管理 API，授與使用者角色型存取權。
+Azure 角色型存取控制 (Azure RBAC) 啟用 Azure 資源的存取管理。 使用 [AZURE RBAC](../role-based-access-control/overview.md)，您可以將小組內的職責區隔，並只授與使用者、群組和應用程式執行其作業所需的存取權數量。 您可以使用 Azure 入口網站、Azure 命令列工具或 Azure 管理 API，授與使用者角色型存取權。
 
 ## <a name="roles-in-automation-accounts"></a>自動化帳戶中的角色
 
-在 Azure 自動化中，會將適當的 Azure 角色指派給自動化帳戶範圍的使用者、群組和應用程式，以授與存取權。 以下是自動化帳戶支援的內建角色：
+在 Azure 自動化中，您可以將適當的 Azure 角色指派給自動化帳戶範圍內的使用者、群組和應用程式，以授與存取權。 以下是自動化帳戶支援的內建角色：
 
 | **角色** | **說明** |
 |:--- |:--- |
@@ -72,7 +72,7 @@ ms.locfileid: "87528663"
 自動化操作員可在自動化帳戶中建立和管理作業，以及讀取所有 Runbook 的名稱和屬性。
 
 >[!NOTE]
->如果您想要控制操作員存取個別 runbook，請不要設定此角色。 相反地，請使用**自動化作業運算子**和**自動化 Runbook 操作員**角色組合。
+>如果您想要控制操作員存取個別 runbook，請不要設定此角色。 相反地，請使用 **自動化作業操作員** 和 **自動化 Runbook 操作員** 角色組合。
 
 下表說明針對此角色授與的權限：
 
@@ -101,7 +101,7 @@ ms.locfileid: "87528663"
 
 ### <a name="automation-job-operator"></a>自動化作業運算子
 
-授與「自動化作業操作員」角色時會在「自動化」帳戶範圍內授與。 這可讓操作員有權建立和管理帳戶中所有 Runbook 作業。 如果作業操作員角色被授與包含自動化帳戶之資源群組的讀取權限，則該角色的成員就能夠啟動 runbook。 不過，他們沒有建立、編輯或刪除它們的能力。
+授與「自動化作業操作員」角色時會在「自動化」帳戶範圍內授與。 這可讓操作員有權建立和管理帳戶中所有 Runbook 作業。 如果將包含自動化帳戶之資源群組的讀取權限授與作業操作員角色，角色的成員就能夠啟動 runbook。 不過，他們無法建立、編輯或刪除它們。
 
 下表說明針對此角色授與的權限：
 
@@ -121,7 +121,7 @@ ms.locfileid: "87528663"
 
 ### <a name="automation-runbook-operator"></a>自動化 Runbook 運算子
 
-授與「自動化 Runbook 運算子」角色時，會在 Runbook 範圍授與。 「自動化 Runbook 操作員」可檢視 Runbook 的名稱和屬性。此角色與**自動化作業操作員**角色結合，可讓操作員同時建立和管理 runbook 的作業。 下表說明針對此角色授與的權限：
+授與「自動化 Runbook 運算子」角色時，會在 Runbook 範圍授與。 「自動化 Runbook 操作員」可檢視 Runbook 的名稱和屬性。此角色與「 **自動化作業操作員** 」角色結合，可讓操作員同時建立及管理 runbook 的作業。 下表說明針對此角色授與的權限：
 
 |**動作**  |**說明**  |
 |---------|---------|
@@ -270,11 +270,11 @@ ms.locfileid: "87528663"
 |解決方法     |Log Analytics 參與者         | 解決方法|
 |虛擬機器     | 虛擬機器參與者        | 虛擬機器        |
 
-## <a name="configure-rbac-for-your-automation-account"></a>為您的自動化帳戶設定 RBAC
+## <a name="configure-azure-rbac-for-your-automation-account"></a>為您的自動化帳戶設定 Azure RBAC
 
-下一節將說明如何透過 [Azure 入口網站](#configure-rbac-using-the-azure-portal)和 [PowerShell](#configure-rbac-using-powershell)，在您的自動化帳戶上設定 RBAC。
+下一節說明如何透過 [Azure 入口網站](#configure-azure-rbac-using-the-azure-portal) 和 [PowerShell](#configure-azure-rbac-using-powershell)在您的自動化帳戶上設定 Azure RBAC。
 
-### <a name="configure-rbac-using-the-azure-portal"></a>使用 Azure 入口網站設定 RBAC
+### <a name="configure-azure-rbac-using-the-azure-portal"></a>使用 Azure 入口網站設定 Azure RBAC
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)，並從 [自動化帳戶] 頁面開啟您的自動化帳戶。
 2. 按一下 [存取控制 (IAM)]，以開啟 [存取控制 (IAM)] 頁面。 您可以使用此頁面以新增新使用者、群組及應用程式來管理您的自動化帳戶，並檢視可以為自動化帳戶設定的現有角色。
@@ -315,11 +315,11 @@ ms.locfileid: "87528663"
 
    ![移除使用者](media/automation-role-based-access-control/automation-08-remove-users.png)
 
-### <a name="configure-rbac-using-powershell"></a>使用 PowerShell 設定 RBAC
+### <a name="configure-azure-rbac-using-powershell"></a>使用 PowerShell 設定 Azure RBAC
 
 您也可以使用下列 [Azure PowerShell Cmdlet](../role-based-access-control/role-assignments-powershell.md)，設定對自動化帳戶的角色型存取：
 
-[Get-azroledefinition](/powershell/module/Az.Resources/Get-AzRoleDefinition?view=azps-3.7.0)會列出 Azure Active Directory 中可用的所有 Azure 角色。 您可以使用此 Cmdlet 搭配 `Name` 參數，列出特定角色可以執行的所有動作。
+[>get-azroledefinition](/powershell/module/Az.Resources/Get-AzRoleDefinition?view=azps-3.7.0) 會列出 Azure Active Directory 中提供的所有 Azure 角色。 您可以使用此 Cmdlet 搭配 `Name` 參數，列出特定角色可以執行的所有動作。
 
 ```azurepowershell-interactive
 Get-AzRoleDefinition -Name 'Automation Operator'
@@ -338,7 +338,7 @@ NotActions       : {}
 AssignableScopes : {/}
 ```
 
-[New-azroleassignment](/powershell/module/az.resources/get-azroleassignment?view=azps-3.7.0)會列出指定範圍的 Azure 角色指派。 如果沒有任何參數，此 Cmdlet 會傳回在訂閱下所做的所有角色指派。 使用 `ExpandPrincipalGroups` 參數，列出特定使用者以及該使用者所屬群組的存取權指派。
+[>new-azroleassignment](/powershell/module/az.resources/get-azroleassignment?view=azps-3.7.0) 會列出在指定範圍的 Azure 角色指派。 如果沒有任何參數，此 Cmdlet 會傳回在訂閱下所做的所有角色指派。 使用 `ExpandPrincipalGroups` 參數，列出特定使用者以及該使用者所屬群組的存取權指派。
 
 **範例︰** 使用下列 Cmdlet 列出自動化帳戶中的所有使用者以及其角色。
 
@@ -398,9 +398,9 @@ Remove-AzRoleAssignment -SignInName <sign-in Id of a user you wish to remove> -R
 
 ![無法存取資源](media/automation-role-based-access-control/automation-10-no-access-to-resources.png)
 
-## <a name="configure-rbac-for-runbooks"></a>為 Runbook 設定 RBAC
+## <a name="configure-azure-rbac-for-runbooks"></a>設定適用于 runbook 的 Azure RBAC
 
-Azure 自動化可讓您將 RBAC 指派給特定 Runbook。 若要達成目的，請執行下列指令碼，將使用者新增至特定 Runbook。 自動化帳戶管理員或租用戶系統管理員可以執行此指令碼。
+Azure 自動化可讓您將 Azure 角色指派給特定的 runbook。 若要達成目的，請執行下列指令碼，將使用者新增至特定 Runbook。 自動化帳戶管理員或租用戶系統管理員可以執行此指令碼。
 
 ```azurepowershell-interactive
 $rgName = "<Resource Group Name>" # Resource Group name for the Automation account
@@ -423,7 +423,7 @@ New-AzRoleAssignment -ObjectId $userId -RoleDefinitionName "Automation Runbook O
 
 執行指令碼後，使用者就可以登入 Azure 入口網站，並選取 [所有資源]。 在清單中，使用者可以看到已將其新增為自動化 Runbook 操作員的 Runbook。
 
-![入口網站中的 Runbook RBAC](./media/automation-role-based-access-control/runbook-rbac.png)
+![入口網站中的 Runbook Azure RBAC](./media/automation-role-based-access-control/runbook-rbac.png)
 
 ### <a name="user-experience-for-automation-operator-role---runbook"></a>自動化操作員角色的使用者體驗 - Runbook
 
@@ -433,6 +433,6 @@ New-AzRoleAssignment -ObjectId $userId -RoleDefinitionName "Automation Runbook O
 
 ## <a name="next-steps"></a>後續步驟
 
-* 若要了解更多 PowerShell RBAC，請參閱[使用 Azure PowerShell 管理 RBAC](../role-based-access-control/role-assignments-powershell.md)。
+* 若要瞭解如何使用 PowerShell 的 Azure RBAC 詳細資訊，請參閱 [使用 Azure PowerShell 新增或移除 azure 角色指派](../role-based-access-control/role-assignments-powershell.md)。
 * 如需 Runbook 類型的詳細資料，請參閱 [Azure 自動化 Runbook 類型](automation-runbook-types.md)。
 * 若要啟動 Runbook，請參閱[在 Azure 自動化中啟動 Runbook](start-runbooks.md)。

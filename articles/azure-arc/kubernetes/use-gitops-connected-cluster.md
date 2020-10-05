@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: 針對已啟用 Azure Arc 的叢集設定使用 GitOps (預覽)
 keywords: GitOps, Kubernetes, K8s, Azure, Arc, Azure Kubernetes Service, 容器
-ms.openlocfilehash: 142c131f0382eb887d51185db920511ccf4eb735
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: c00ed30c9a7424d083bf076c64cf008e0480bb2b
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91541623"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714191"
 ---
 # <a name="deploy-configurations-using-gitops-on-arc-enabled-kubernetes-cluster-preview"></a>在啟用 Arc 的 Kubernetes 叢集 (預覽版上使用 Gitops) 將部署設定) 
 
@@ -23,7 +23,7 @@ Gitops) 將是在 Git 存放庫中宣告 Kubernetes 設定的預期狀態 (部�
 
 在您的叢集中執行的 `config-agent` 會負責在 `sourceControlConfiguration` 啟用 Azure Arc 的 Kubernetes 資源上監看新的或更新的延伸模組資源、部署 flux 操作員以監看 Git 存放庫，以及傳播對所做的任何更新 `sourceControlConfiguration` 。 您甚至可以建立多個 `sourceControlConfiguration` 資源， `namespace` 範圍位於相同的 Azure Arc 啟用的 Kubernetes 叢集，以達成多租使用者。 在這種情況下，每個運算子只能將設定部署到其各自的命名空間。
 
-Git 存放庫可以包含任何有效的 Kubernetes 資源，包括命名空間、ConfigMaps、部署、Daemonset 等。其也可能包含用來部署應用程式的 Helm 圖表。 一組常見的案例包括為貴組織定義基準設定，其可能包含一般 RBAC 角色，以及繫結、監視或記錄代理程式，或整個叢集的服務。
+Git 存放庫可以包含任何有效的 Kubernetes 資源，包括命名空間、ConfigMaps、部署、Daemonset 等。其也可能包含用來部署應用程式的 Helm 圖表。 常見的一組案例包括定義組織的基準設定，其中可能包括常見的 Azure 角色和系結、監視或記錄代理程式，或全叢集服務。
 
 您可以使用相同的模式來管理較大的叢集集合，這些叢集可能會跨不同的環境進行部署。 例如，您可能有一個存放庫會定義貴組織的基準設定，並一次將該設定套用至數十個 Kubernetes 叢集。 [Azure 原則可](use-azure-policy.md) 在 `sourceControlConfiguration`)  (訂用帳戶或資源群組的範圍下，以一組特定 Azure Arc 參數自動建立。
 

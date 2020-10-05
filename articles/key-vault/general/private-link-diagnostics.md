@@ -7,12 +7,12 @@ ms.date: 09/30/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: ea818cd14e6052da2bbcf2a4473e95c68cd5e4a9
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.openlocfilehash: faf7a6e0331e3891c2ece7461685b14e751c0894
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91671301"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713050"
 ---
 # <a name="diagnose-private-links-configuration-issues-on-azure-key-vault"></a>診斷 Azure Key Vault 上的私人連結設定問題
 
@@ -34,7 +34,7 @@ ms.locfileid: "91671301"
 ### <a name="symptoms-not-covered-by-this-article"></a>本文未涵蓋的徵兆
 
 - 有間歇性的連線問題。 在指定的用戶端中，您會看到某些要求正在運作，而且有些無法運作。 *間歇性問題通常不是私用連結設定中的問題所造成;它們是網路或用戶端超載的符號。*
-- 您正在使用支援 BYOK (攜帶您自己的金鑰) 或 CMK (客戶管理金鑰) 的 Azure 產品，且該產品無法存取您的金鑰保存庫。 *查看其他產品檔。請確定它明確指出支援啟用防火牆的金鑰保存庫。如有需要，請與該特定產品的產品支援人員聯絡。*
+- 您使用的 Azure 產品支援 BYOK (攜帶您自己的金鑰) 或 CMK (客戶管理的金鑰) ，且該產品無法存取您的金鑰保存庫。 *查看其他產品檔。請確定它明確指出支援啟用防火牆的金鑰保存庫。如有需要，請與該特定產品的產品支援人員聯絡。*
 
 ### <a name="how-to-read-this-article"></a>如何閱讀這篇文章
 
@@ -46,7 +46,7 @@ ms.locfileid: "91671301"
 
 ### <a name="confirm-that-your-client-runs-at-the-virtual-network"></a>確認您的用戶端是在虛擬網路上執行
 
-這份疑難排解指南適用于從應用程式程式碼產生的金鑰保存庫連接。 範例包括在虛擬機器中執行的應用程式和腳本、Azure Service Fabric 叢集、Azure App Service Azure Kubernetes Service (AKS) ，以及類似其他專案。
+本指南旨在協助您修正從應用程式程式碼產生的金鑰保存庫連接。 範例包括在 Azure 虛擬機器中執行的應用程式和腳本、Azure Service Fabric 叢集、Azure App Service Azure Kubernetes Service (AKS) ，以及類似其他專案。
 
 根據私用連結的定義，應用程式或腳本必須在連接到 [私人端點資源](../../private-link/private-endpoint-overview.md) 部署所在之虛擬網路的電腦、叢集或環境上執行。 如果應用程式是在任意連接網際網路的網路上執行，本指南並不適用，而且可能無法使用私人連結。
 
@@ -158,11 +158,11 @@ Linux：
 
 您可以看到名稱解析為公用 IP 位址，但沒有 `privatelink` 別名。 別名稍後會加以說明，現在請不要擔心。
 
-無論電腦是連線到虛擬網路，或是具有網際網路連線的任意電腦，預期都會有上述結果。 發生這種情況是因為金鑰保存庫沒有處於已核准狀態的私用連結，因此，金鑰保存庫不需要支援私人連結連線。
+無論電腦是連線到虛擬網路，或是具有網際網路連線的任意電腦，預期都會有上述結果。 發生這種情況是因為金鑰保存庫沒有處於已核准狀態的私人端點連線，因此金鑰保存庫不需要支援私用連結。
 
 ### <a name="key-vault-with-private-link-resolving-from-arbitrary-internet-machine"></a>從任意網際網路電腦解析私用連結的金鑰保存庫
 
-當金鑰保存庫有一或多個私人端點連線處於已核准狀態，而且您從連線到網際網路的任意電腦解析主機名稱時 (電腦 **未** 連線至私人端點所在的虛擬網路) ，您應該會發現：
+當金鑰保存庫有一或多個私人端點連線處於已核准狀態，而且您從連線到網際網路的任意電腦解析主機名稱時 (電腦 *未* 連線至私人端點所在的虛擬網路) ，您應該會發現：
 
 Windows：
 
@@ -253,7 +253,7 @@ Linux：
 此外， `A` (IP 位址) 的記錄值必須是 [金鑰保存庫的私人 IP 位址](#find-the-key-vault-private-ip-address-in-the-virtual-network)。 如果您找到 `A` 記錄，但它包含錯誤的 ip 位址，您必須移除錯誤的 ip 位址，並新增一個。 建議您移除整個 `A` 記錄，並新增一個記錄。
 
 >[!NOTE]
-> 每當您移除或修改 `A` 記錄時，機器仍可解析為舊的 IP 位址，因為 TTL (存留時間) 值可能尚未過期。 建議您一律將 TTL 值指定為小於60秒 (一分鐘) ，而且不超過600秒 (10 分鐘的) 。 如果您指定的值太大，您的用戶端將會發生從中斷復原的問題。
+> 每當您移除或修改 `A` 記錄時，機器仍可解析為舊的 IP 位址，因為 TTL (存留時間) 值可能尚未過期。 建議您一律將 TTL 值指定為小於60秒 (一分鐘) ，而且不超過600秒 (10 分鐘的) 。 如果您指定的值太大，您的用戶端可能會花太多時間來復原中斷。
 
 ### <a name="dns-resolution-for-more-than-one-virtual-network"></a>一個以上虛擬網路的 DNS 解析
 
@@ -261,15 +261,13 @@ Linux：
 
 在更先進的案例中，有多個已啟用對等互連的虛擬網路。 在此情況下，只有一個虛擬網路需要私人端點資源，但兩者都需要連結至私人 DNS 區域資源。 這是本檔未直接涵蓋的案例。
 
-### <a name="fact-the-user-controls-dns-resolution"></a>事實：使用者控制 DNS 解析
+### <a name="fact-you-have-control-over-dns-resolution"></a>事實：您可以控制 DNS 解析
 
-如果您是網路 scholar 或好奇的人，您可能已經瞭解 DNS 解析的運作方式。 如上一 [節](#key-vault-with-private-link-resolving-from-arbitrary-internet-machine)所述，具有私人連結的金鑰保存庫 `{vaultname}.privatelink.vaultcore.azure.net` 在其 *公開* 註冊中將會有別名。 虛擬網路所使用的 DNS 伺服器會檢查每個別名是否有 *私人* 名稱註冊，如果找到的話，則會停止遵循公開註冊的別名。
+如上一 [節](#key-vault-with-private-link-resolving-from-arbitrary-internet-machine)所述，具有私用連結的金鑰保存庫 `{vaultname}.privatelink.vaultcore.azure.net` 在其 *公開* 註冊中具有別名。 虛擬網路所使用的 DNS 伺服器會使用公開註冊，但它會檢查每個別名是否有 *私人* 註冊，如果找到的話，則會停止在公開註冊時定義的下列別名。
 
-例如，假設虛擬網路已連結至名稱為的私人 DNS 區域 `privatelink.vaultcore.azure.net` ，而金鑰保存庫的公用 dns 註冊有別名 `fabrikam.privatelink.vaultcore.azure.net` 。 請注意，尾碼與私人 DNS 區功能變數名稱稱完全相符。 這表示在 `A` `fabrikam` 私人 DNS 區域中，解決方案會先尋找名稱為的記錄。 如果 `A` 找到記錄，就會在 DNS 查詢中傳回其 IP 位址。 而且該 IP 位址只會是金鑰保存庫的私人 IP 位址。
+此邏輯表示如果虛擬網路連結到具有名稱的私人 DNS 區域 `privatelink.vaultcore.azure.net` ，且金鑰保存庫的公用 dns 註冊有別名 `fabrikam.privatelink.vaultcore.azure.net` (請注意，金鑰保存庫主機名稱尾碼會與私人 dns 區功能變數名稱稱完全相符) ，然後 DNS 查詢會 `A` `fabrikam` *在私人 dns 區域中*尋找具有名稱的記錄。 如果 `A` 找到記錄，就會在 DNS 查詢中傳回其 IP 位址，且不會在公用 DNS 註冊中執行任何進一步的查閱。
 
-如您所見，整個名稱解析都是在使用者控制項之下。
-
-這種設計有兩個原因：
+您可以看到，名稱解析是在您的控制之下。 此設計的原理後會有期是：
 
 - 您可能會有一個複雜的案例，包括自訂 DNS 伺服器，以及與內部部署網路整合。 在此情況下，您需要控制名稱如何轉譯為 IP 位址。
 - 您可能需要存取沒有私用連結的金鑰保存庫。 在這種情況下，從虛擬網路解析主機名稱必須傳回公用 IP 位址，這是因為沒有私用連結的金鑰保存庫 `privatelink` 在名稱註冊中沒有別名。

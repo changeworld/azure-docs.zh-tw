@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: tamram
 ms.custom: security-recommendations
-ms.openlocfilehash: 70bb96da858c94fbd2c75d56cda4e705f2ffa3ba
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 44dac73f4e51214dbc41e8663dd44550dc9549f4
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90986626"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715396"
 ---
 # <a name="security-recommendations-for-queue-storage"></a>佇列儲存體的安全性建議
 
@@ -29,7 +29,7 @@ Azure 資訊安全中心會定期分析 Azure 資源的安全性狀態，以找�
 
 | 建議 | 註解 | 資訊安全中心 |
 |-|----|--|
-| 使用 Azure Resource Manager 部署模型 | 使用 Azure Resource Manager 部署模型來建立新的儲存體帳戶，以進行重要的安全性增強功能，包括絕佳的存取控制 (RBAC) 和審核、Resource Manager 型部署和治理、受控識別的存取、秘密的 Azure Key Vault 存取，以及 Azure AD 資料和資源的存取 Azure 儲存體型驗證和授權。 可能的話，請將使用傳統部署模型的現有儲存體帳戶遷移為使用 Azure Resource Manager。 如需 Azure Resource Manager 的詳細資訊，請參閱 [Azure Resource Manager 總覽](/azure/azure-resource-manager/resource-group-overview)。 | - |
+| 使用 Azure Resource Manager 部署模型 | 使用 Azure Resource Manager 部署模型來建立新的儲存體帳戶，以進行重要的安全性增強功能，包括絕佳的 Azure 角色型存取控制 (Azure RBAC) 和審核、Resource Manager 型部署和治理、受控識別的存取、秘密的 Azure Key Vault 存取，以及 Azure AD 資料和資源的存取 Azure 儲存體型驗證和授權。 可能的話，請將使用傳統部署模型的現有儲存體帳戶遷移為使用 Azure Resource Manager。 如需 Azure Resource Manager 的詳細資訊，請參閱 [Azure Resource Manager 總覽](/azure/azure-resource-manager/resource-group-overview)。 | - |
 | 為您所有的儲存體帳戶啟用先進的威脅防護 | Azure 儲存體的「先進威脅防護」提供額外一層的安全性情報，可偵測到不尋常且可能有害的存取或惡意探索儲存體帳戶的嘗試。 當活動中發生異常狀況，而且也透過電子郵件傳送給訂用帳戶管理員時，會在 Azure 資訊安全中心中觸發安全性警示，並提供可疑活動的詳細資料，以及如何調查和修復威脅的建議。 如需詳細資訊，請參閱 [Azure 儲存體的 Advanced 威脅防護](../common/azure-defender-storage-configure.md)。 | [是](../../security-center/security-center-sql-service-recommendations.md) |
 | 將共用存取簽章 (SAS) 權杖限制為僅限 HTTPS 連接 | 當用戶端使用 SAS 權杖存取佇列資料時，需要 HTTPS 有助於將竊聽的風險降至最低。 如需詳細資訊，請參閱 [使用共用存取簽章將有限存取權授與 Azure 儲存體資源 (SAS) ](../common/storage-sas-overview.md)。 | - |
 
@@ -38,7 +38,7 @@ Azure 資訊安全中心會定期分析 Azure 資源的安全性狀態，以找�
 | 建議 | 註解 | 資訊安全中心 |
 |-|----|--|
 | 使用 Azure Active Directory (Azure AD) 來授權佇列資料的存取權 | Azure AD 透過共用金鑰提供更高的安全性和使用，以授權佇列儲存體的要求。 如需詳細資訊，請參閱 [使用 Azure Active Directory 授與 Azure blob 和佇列的存取權](../common/storage-auth-aad.md)。 | - |
-| 透過 RBAC 將許可權指派給 Azure AD 安全性主體時，請記住最低許可權的主體。 | 將角色指派給使用者、群組或應用程式時，只授與該安全性主體執行其工作所需的許可權。 限制對資源的存取有助於防止不慎和惡意誤用您的資料。 | - |
+| 透過 Azure RBAC 將許可權指派給 Azure AD 安全性主體時，請記住最低許可權的主體。 | 將角色指派給使用者、群組或應用程式時，只授與該安全性主體執行其工作所需的許可權。 限制對資源的存取有助於防止不慎和惡意誤用您的資料。 | - |
 | 使用 Azure Key Vault 保護您的帳戶存取金鑰 | Microsoft 建議使用 Azure AD 來授權 Azure 儲存體的要求。 但是，如果您必須使用共用金鑰授權，請使用 Azure Key Vault 保護您的帳戶金鑰。 您可以在執行時間從金鑰保存庫中取出金鑰，而不是將它們儲存到您的應用程式。 | - |
 | 定期重新產生您的帳戶金鑰 | 輪替帳戶金鑰會定期減少將資料公開給惡意執行者的風險。 | - |
 | 將許可權指派給 SAS 時，請記住最低許可權的主體 | 建立 SAS 時，請只指定用戶端執行其功能所需的許可權。 限制對資源的存取有助於防止不慎和惡意誤用您的資料。 | - |
@@ -63,7 +63,7 @@ Azure 資訊安全中心會定期分析 Azure 資源的安全性狀態，以找�
 |-|----|--|
 | 追蹤要求的授權方式 | 啟用 Azure 儲存體記錄，以追蹤針對 Azure 儲存體所提出的每個要求如何獲得授權。 這些記錄會指出是以匿名方式、使用 OAuth 2.0 權杖、使用共用金鑰，或使用共用存取簽章 (SAS) 來進行要求。 如需詳細資訊，請參閱 [Azure 儲存體分析記錄](../common/storage-analytics-logging.md)。 | - |
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [Azure 安全性文件](https://docs.microsoft.com//azure/security/)
 - [安全開發檔](https://docs.microsoft.com/azure/security/develop/)。
