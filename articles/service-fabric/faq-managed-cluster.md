@@ -6,12 +6,12 @@ ms.author: pepogors
 author: peterpogorski
 ms.date: 09/28/2020
 ms.custom: references_regions
-ms.openlocfilehash: 73815e793357dd38244dd429f9056c4c6a0bfff1
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.openlocfilehash: 77d7b3fba62fb9f059df97c4f7fae99db783f3f0
+ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91410308"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91728993"
 ---
 # <a name="service-fabric-managed-clusters-frequently-asked-questions"></a>Service Fabric 受控叢集的常見問題
 
@@ -41,7 +41,7 @@ SLA 不會從目前的 Service Fabric 資源模型變更。
 
 ### <a name="what-is-the-difference-between-a-basic-and-standard-sku-cluster"></a>基本和標準 SKU 叢集之間有何差異？
 
-基本 SKU 叢集表示，大部分的設定都是由 Service Fabric 資源提供者提供。 基本 SKU 叢集的目的是要用於測試和預先生產環境。 標準 SKU 叢集可讓使用者設定叢集，以明確符合其需求。 如需詳細資訊，請參閱 [Service Fabric 受控叢集 sku](overview-managed-cluster.md#service-fabric-managed-cluster skus.md) ，以取得更多詳細資料。
+基本 SKU 叢集表示，大部分的設定都是由 Service Fabric 資源提供者提供。 基本 SKU 叢集的目的是要用於測試和預先生產環境。 標準 SKU 叢集可讓使用者設定叢集，以明確符合其需求。 如需詳細資訊，請參閱 [Service Fabric 受控叢集 sku](https://docs.microsoft.com/azure/service-fabric/overview-managed-cluster#service-fabric-managed-cluster-skus) ，以取得更多詳細資料。
 
 ## <a name="cluster-deployment-and-management"></a>叢集部署與管理
 

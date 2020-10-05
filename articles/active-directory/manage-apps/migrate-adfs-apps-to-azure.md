@@ -14,19 +14,19 @@ ms.date: 04/01/2020
 ms.author: kenwith
 ms.reviewer: baselden
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b8a40449d7a2b17adddd55120ab232a5cd3f459
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 5a4d50bcf2493c67880fd5a27b326705b1923feb
+ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90600940"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91728976"
 ---
 # <a name="moving-application-authentication-from-active-directory-federation-services-to-azure-active-directory"></a>將應用程式驗證從 Active Directory 同盟服務移至 Azure Active Directory
 
 [Azure Active Directory (Azure AD) ](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) 提供通用身分識別平臺，可讓您的人員、合作夥伴和客戶擁有單一身分識別，以存取應用程式，並從任何平臺和裝置共同作業。 Azure AD 有一 [套完整的身分識別管理功能](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis)。 將應用程式的 (應用程式) 驗證和授權標準化，Azure AD 可提供這些功能所提供的優點。 
 
-> [!NOTE]
-> 本文著重于將應用程式驗證從內部部署 Active Directory 和 Active Directory 同盟服務移至 Azure AD。 如需規劃這項移動的總覽，請參閱將 [應用程式驗證遷移至 Azure AD](https://aka.ms/migrateapps/whitepaper) 的白皮書。 這份白皮書會討論如何規劃遷移、測試和深入解析。
+> [!TIP]
+> 本文是針對開發人員物件撰寫的。 規劃應用程式移至 Azure AD 的專案經理和系統管理員應考慮閱讀我們將 [應用程式驗證移至 Azure AD](https://aka.ms/migrateapps/whitepaper) 白皮書 (PDF) 。
 
 ## <a name="introduction"></a>簡介
 
