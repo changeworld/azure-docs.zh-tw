@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/12/2020
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 089c53c72ae2c4cf6216937e8977b64a7abf80fc
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: ff28bbf57ac77e1bc092d35e9bf493f75040cc9c
+ms.sourcegitcommit: 5b69ba21787c07547edfbfd5254eaf34315cfadd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90983202"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91712301"
 ---
 # <a name="azure-activity-log"></a>Azure 活動記錄
 活動記錄是 Azure 中的 [平臺記錄](platform-logs-overview.md) ，可提供訂用帳戶層級事件的見解。 這包括修改資源或啟動虛擬機器時的資訊。 您可以在 Azure 入口網站中檢視活動記錄，或使用 PowerShell 和 CLI 來取出項目。 如需其他功能，您應該建立診斷設定，以將活動記錄傳送至 [Azure 監視器記錄](data-platform-logs.md)檔、Azure 事件中樞轉送至 Azure 外部，或用於封存的 Azure 儲存體。 本文提供有關查看活動記錄，並將其傳送至不同目的地的詳細資料。
@@ -201,12 +201,12 @@ insights-logs-networksecuritygrouprulecounter/resourceId=/SUBSCRIPTIONS/00000000
 
     | 屬性 | 必要 | 描述 |
     | --- | --- | --- |
-    | Name |Yes |記錄檔設定檔的名稱。 |
-    | StorageAccountId |No |應儲存活動記錄之儲存體帳戶的資源識別碼。 |
-    | serviceBusRuleId |No |服務匯流排規則識別碼，您想要在其中建立事件中樞的服務匯流排命名空間。 這是具有下列格式的字串： `{service bus resource ID}/authorizationrules/{key name}` 。 |
+    | 名稱 |是 |記錄檔設定檔的名稱。 |
+    | StorageAccountId |否 |應儲存活動記錄之儲存體帳戶的資源識別碼。 |
+    | serviceBusRuleId |否 |服務匯流排規則識別碼，您想要在其中建立事件中樞的服務匯流排命名空間。 這是具有下列格式的字串： `{service bus resource ID}/authorizationrules/{key name}` 。 |
     | 位置 |是 |以逗號分隔的區域清單，其中列出您要收集的活動記錄檔事件的區域。 |
-    | RetentionInDays |Yes |要在儲存體帳戶中保留事件的天數，介於1到365之間。 值為 0 會無限期地儲存記錄。 |
-    | 類別 |No |以逗號分隔的類別清單，其中列出應該收集的事件類別。 可能的值為 _Write_、 _Delete_和 _Action_。 |
+    | RetentionInDays |是 |要在儲存體帳戶中保留事件的天數，介於1到365之間。 值為 0 會無限期地儲存記錄。 |
+    | 類別 |否 |以逗號分隔的類別清單，其中列出應該收集的事件類別。 可能的值為 _Write_、 _Delete_和 _Action_。 |
 
 ### <a name="example-script"></a>範例指令碼
 以下是範例 PowerShell 腳本，用來建立記錄檔設定檔，以將活動記錄寫入儲存體帳戶和事件中樞。
@@ -226,7 +226,7 @@ insights-logs-networksecuritygrouprulecounter/resourceId=/SUBSCRIPTIONS/00000000
    # Build the storage account Id from the settings above
    $storageAccountId = "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Storage/storageAccounts/$storageAccountName"
 
-   Add-AzLogProfile -Name $logProfileName -Location $locations -ServiceBusRuleId $serviceBusRuleId
+   Add-AzLogProfile -Name $logProfileName -Location $locations -StorageAccountId  $storageAccountId -ServiceBusRuleId $serviceBusRuleId
    ```
 
 
@@ -245,11 +245,11 @@ insights-logs-networksecuritygrouprulecounter/resourceId=/SUBSCRIPTIONS/00000000
     | 屬性 | 必要 | 描述 |
     | --- | --- | --- |
     | NAME |是 |記錄檔設定檔的名稱。 |
-    | storage-account-id |Yes |資源識別碼，活動記錄應該要儲存至此儲存體帳戶。 |
+    | storage-account-id |是 |資源識別碼，活動記錄應該要儲存至此儲存體帳戶。 |
     | 位置 |是 |以空格分隔的區域清單，其中列出您要收集的活動記錄事件的區域。 您可以使用 `az account list-locations --query [].name` 來檢視您訂用帳戶的所有區域清單。 |
-    | days |Yes |事件應保留的天數，介於1到365之間。 值為 0 會無限期地 (永遠) 儲存記錄。  如果為零，則表示 enabled 參數應設為 false。 |
-    |已啟用 | Yes |是非題。  用來啟用或停用保留原則。  如果為 True，則 days 參數必須是大於 0 的值。
-    | categories |Yes |以空格分隔的類別清單，其中列出應收集的事件類別。 可能的值有 Write、Delete、Action。 |
+    | days |是 |事件應保留的天數，介於1到365之間。 值為 0 會無限期地 (永遠) 儲存記錄。  如果為零，則表示 enabled 參數應設為 false。 |
+    |已啟用 | 是 |是非題。  用來啟用或停用保留原則。  如果為 True，則 days 參數必須是大於 0 的值。
+    | categories |是 |以空格分隔的類別清單，其中列出應收集的事件類別。 可能的值有 Write、Delete、Action。 |
 
 
 ### <a name="log-analytics-workspace"></a>Log Analytics 工作區

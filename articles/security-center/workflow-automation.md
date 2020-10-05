@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 3b87f25f9424e8afebe601d2ff15330881d2173b
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: b713977d811411ea2ccd7dfa22c7757321ecd7aa
+ms.sourcegitcommit: 5b69ba21787c07547edfbfd5254eaf34315cfadd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91447721"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91712284"
 ---
 # <a name="create-automatic-responses-to-alerts-and-recommendations-with-workflow-automation"></a>使用工作流程自動化來建立警示和建議的自動回應
 
@@ -30,10 +30,10 @@ ms.locfileid: "91447721"
 
 |層面|詳細資料|
 |----|:----|
-|釋放狀態：|正式上市 (GA)|
+|版本狀態：|正式上市 (GA)|
 |定價：|免費|
-|必要的角色和許可權：|資源群組的**安全性系統管理員角色**或**擁有**者<br>也必須具有目標資源的寫入權限<br><br>若要使用 Azure Logic Apps 工作流程，您也必須具有下列 Logic Apps 角色/許可權：<br> - [邏輯應用程式操作員](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-operator) 許可權是必要的或邏輯應用程式讀取/觸發存取 (此角色無法建立或編輯邏輯應用程式;只 *執行* 現有的) <br> - 邏輯應用程式建立和修改需要[邏輯應用程式參與者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-contributor)許可權<br>如果您想要使用邏輯應用程式連接器，您可能需要額外的認證來登入其各自的服務 (例如，您的 Outlook/團隊/時差實例) |
-|雲端：|![是](./media/icons/yes-icon.png) 商業雲端<br>![是](./media/icons/yes-icon.png) US Gov<br>![是](./media/icons/yes-icon.png) 中國 Gov，其他 Gov|
+|必要的角色和權限：|資源群組的**安全性系統管理員角色**或**擁有**者<br>也必須具有目標資源的寫入權限<br><br>若要使用 Azure Logic Apps 工作流程，您也必須具有下列 Logic Apps 角色/許可權：<br> - [邏輯應用程式操作員](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-operator) 許可權是必要的或邏輯應用程式讀取/觸發存取 (此角色無法建立或編輯邏輯應用程式;只 *執行* 現有的) <br> - 邏輯應用程式建立和修改需要[邏輯應用程式參與者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-contributor)許可權<br>如果您想要使用邏輯應用程式連接器，您可能需要額外的認證來登入其各自的服務 (例如，您的 Outlook/團隊/時差實例) |
+|雲端：|![是](./media/icons/yes-icon.png) 商業雲端<br>![是](./media/icons/yes-icon.png) 國家/地區/主權 (US Gov、中國 Gov、其他 Gov)|
 |||
 
 

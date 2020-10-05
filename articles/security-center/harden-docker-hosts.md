@@ -7,18 +7,18 @@ ms.date: 9/12/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 3f59bae9864e533270b0bfea829f64ccf541a8a3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 500fa45db7e0e6bffb587d9d352ee1ab49f14703
+ms.sourcegitcommit: 5b69ba21787c07547edfbfd5254eaf34315cfadd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91301426"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91712267"
 ---
 # <a name="harden-your-docker-hosts"></a>強化 Docker 主機
 
-Azure 資訊安全中心識別裝載于 IaaS Linux Vm 上的非受控容器，或執行 Docker 容器的其他 Linux 機器。 安全性中心會持續評估這些容器的設定。 然後，它會將它們與 [網際網路安全性 (CIS) Docker 基準測試的中心](https://www.cisecurity.org/benchmark/docker/)進行比較。
+Azure 資訊安全中心可識別 IaaS Linux VM 上裝載的非受控容器，或其他執行 Docker 容器的 Linux 機器。 資訊安全中心會持續評估這些容器的設定。 然後與[網際網路安全性 (CIS) Docker 基準測試中心](https://www.cisecurity.org/benchmark/docker/)進行比較。
 
-如果您的容器無法滿足任何控制項，則 [安全性中心] 會包含 CIS Docker 基準測試的完整規則集，併發出警示。 當它找到錯誤配置時，安全性中心會產生安全性建議。 使用 [資訊中心的 **建議] 頁面** 來查看建議和補救問題。
+資訊安全中心包含 CIS Docker 基準測試的整個規則集，並會在您的容器無法滿足任何控制項時發出警示。 資訊安全中心會在找到錯誤的設定時，產生安全性建議。 使用資訊安全中心的**建議頁面**來檢視建議並補救問題。
 
 當發現弱點時，就會在單一建議中分組。
 
@@ -29,10 +29,10 @@ Azure 資訊安全中心識別裝載于 IaaS Linux Vm 上的非受控容器，�
 
 |層面|詳細資料|
 |----|:----|
-|釋放狀態：|正式上市 (GA)|
-|定價：|需要 [適用于伺服器的 Azure Defender](defender-for-servers-introduction.md)|
-|必要的角色和許可權：|主機所連接之工作區的**讀取器**|
-|雲端：|![是](./media/icons/yes-icon.png) 商業雲端<br>![否](./media/icons/no-icon.png) 全國/主權 (US Gov、中國 Gov、其他 Gov) |
+|版本狀態：|正式上市 (GA)|
+|定價：|需要[適用於伺服器的 Azure Defender](defender-for-servers-introduction.md)|
+|必要的角色和權限：|主機所連接之工作區的**讀取器**|
+|雲端：|![是](./media/icons/yes-icon.png) 商業雲端<br>![是](./media/icons/yes-icon.png) 國家/地區/主權 (US Gov、中國 Gov、其他 Gov)|
 |||
 
 ## <a name="identify-and-remediate-security-vulnerabilities-in-your-docker-configuration"></a>找出並修復 Docker 設定中的安全性弱點
