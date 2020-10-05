@@ -9,10 +9,10 @@ ms.date: 03/06/2020
 ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: db6f5927e1cbdb3527014ccbb277c7ec20b02600
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
-ms.translationtype: MT
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/31/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "84231460"
 ---
 1. 在 [方案總管] 中，以滑鼠右鍵按一下專案並選取 [發佈]。
@@ -51,6 +51,6 @@ ms.locfileid: "84231460"
     
 1.  在 [發佈] 索引標籤中，選擇 [在 Cloud Explorer 中管理]。 這會在 Cloud Explorer 中開啟新的函式應用程式 Azure 資源。 
     
-    :::image type="content" source="media/functions-vstools-publish/functions-visual-studio-publish-complete.png" alt-text="發行成功訊息":::
+    :::image type="content" source="media/functions-vstools-publish/functions-visual-studio-publish-complete.png" alt-text="建立發行設定檔":::
     
     Cloud Explorer 可讓您使用 Visual Studio 來檢視網站的內容、啟動和停止函式應用程式，以及直接瀏覽 Azure 上和 Azure 入口網站中的函式應用程式資源。 

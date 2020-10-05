@@ -13,10 +13,10 @@ ms.author: urmilano
 ms.reviewer: sstein, MashaMSFT
 ms.date: 07/10/2020
 ms.openlocfilehash: 2da7311e61aa39be69a6a0a29eff686baaad7ebf
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91323187"
 ---
 # <a name="overview-of-azure-sql-managed-instance-management-operations"></a>Azure SQL 受控執行個體管理作業概觀
@@ -145,7 +145,7 @@ Azure SQL 受控執行個體提供管理作業，可讓您在不再需要時，�
 若要了解如何取消管理作業，請參閱[取消管理作業](management-operations-cancel.md)。
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - 若要了解如何建立您的第一個受控執行個體，請參閱[快速入門指南](instance-create-quickstart.md)。
 - 如需功能與比較清單，請參閱[常見的 SQL 功能](../database/features-comparison.md)。
