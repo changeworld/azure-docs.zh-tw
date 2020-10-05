@@ -11,16 +11,16 @@ ms.topic: troubleshooting
 ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: bfb4d265a42fe1e4473af0f9bde4ebb76f0734a0
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 3b9acc3f91a91527e96f450d825d06f6b909e15d
+ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90707963"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91729146"
 ---
 # <a name="troubleshoot-problems-signing-in-to-an-application-from-azure-ad-my-apps"></a>針對從 Azure AD 我的應用程式登入應用程式的問題進行疑難排解
 
-我的應用程式是一個網頁型入口網站，可讓使用者在 Azure Active Directory (Azure AD) 中使用工作或學校帳戶，以查看並啟動 Azure AD 系統管理員已授與他們存取權的雲端式應用程式。 
+我的應用程式是一個網頁型入口網站，可讓使用者在 Azure Active Directory (Azure AD) 中使用工作或學校帳戶，以查看並啟動 Azure AD 系統管理員已授與他們存取權的雲端式應用程式。 我的應用程式是在中使用網頁瀏覽器來存取 [https://myapps.microsoft.com](https://myapps.microsoft.com) 。
 
 若要深入瞭解如何使用 Azure AD 作為應用程式的身分識別提供者，請參閱 [Azure AD 中的應用程式管理](what-is-application-management.md)。 若要快速掌握速度，請參閱 [應用程式管理的快速入門系列](view-applications-portal.md)。
 

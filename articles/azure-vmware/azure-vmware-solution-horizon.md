@@ -3,12 +3,12 @@ title: Azure VMware 解決方案上的部署範圍
 description: 瞭解如何在 Azure VMware 解決方案上部署 VMware 的範圍。
 ms.topic: how-to
 ms.date: 09/29/2020
-ms.openlocfilehash: 60207b0ed9e1df805ac667752b55f14a693ec25c
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.openlocfilehash: bda4be049e360670cb7038bfbb3070c2a5f262c4
+ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91492416"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91729044"
 ---
 # <a name="deploy-horizon-on-azure-vmware-solution"></a>Azure VMware 解決方案上的部署範圍 
 
@@ -84,7 +84,7 @@ Azure 私用雲端在概念上與 VMware SDDC 相同，此詞彙通常用於範�
 
 假設 Azure 私用雲端/SDDC 的最大限制，我們建議在 Azure 虛擬網路內執行 (UAGs) 的集中連線伺服器和 VMware 整合存取閘道的部署架構。 這會有效地將每個 Azure 私用雲端/SDDC 轉換成一個區塊。 如此一來，就能將 Azure VMware 解決方案上執行範圍的擴充性最大化。
 
-從 Azure 虛擬網路到 Azure 私用雲端/SDDCs 的連線，應設定 ExpressPath Fast Path。 下圖顯示基本的範圍 pod 部署。
+從 Azure 虛擬網路到 Azure 私用雲端/SDDCs 的連線，應使用 ExpressRoute FastPath 進行設定。 下圖顯示基本的範圍 pod 部署。
 
 :::image type="content" source="media/horizon/horizon-pod-deployment-expresspath-fast-path.png" alt-text="Azure VMware 解決方案的範圍與 Azure 上的範圍雲端之間的差異" border="false":::
 
@@ -92,7 +92,7 @@ Azure 私用雲端在概念上與 VMware SDDC 相同，此詞彙通常用於範�
 
 本節會以高層級將網路架構的版面配置，以使用一些常見的部署範例來調整 Azure VMware 解決方案的範圍。 這裡的重點是專門針對重要的網路元素。
 
-### <a name="single-horizon-pd-on-azure-vmware-solution"></a>Azure VMware 解決方案上的單一範圍 pd
+### <a name="single-horizon-pod-on-azure-vmware-solution"></a>Azure VMware 解決方案上的單一範圍 pod
 
 :::image type="content" source="media/horizon/single-horizon-pod-azure-vmware-solution.png" alt-text="Azure VMware 解決方案的範圍與 Azure 上的範圍雲端之間的差異" border="false":::
 

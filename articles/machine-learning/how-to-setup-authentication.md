@@ -3,20 +3,20 @@ title: 設定驗證
 titleSuffix: Azure Machine Learning
 description: 了解如何在 Azure Machine Learning 中設定各種資源和工作流程的驗證。 在服務內設定和使用驗證的方法有很多種，範圍從用於開發或測試用途的簡單 UI 型驗證到完整 Azure Active Directory 服務主體驗證。
 services: machine-learning
-author: larryfr
-ms.author: larryfr
+author: cjgronlund
+ms.author: cgronlun
 ms.reviewer: larryfr
 ms.service: machine-learning
 ms.subservice: core
 ms.date: 06/17/2020
 ms.topic: conceptual
 ms.custom: how-to, has-adal-ref, devx-track-js
-ms.openlocfilehash: 0650b1c6364a187447ea3a378675df9d76eef4d9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 486f026f0d9b325f8e17a040c69f9d3e1da9b359
+ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91275722"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91729027"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>設定 Azure Machine Learning 資源和工作流程的驗證
 

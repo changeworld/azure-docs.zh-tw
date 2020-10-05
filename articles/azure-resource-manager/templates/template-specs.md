@@ -2,21 +2,21 @@
 title: 範本規格總覽
 description: 說明如何建立範本規格，並與組織中的其他使用者共用它們。
 ms.topic: conceptual
-ms.date: 09/28/2020
+ms.date: 10/02/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 30e7f26a53e81ebdeebe2acaef44dccab1cf4b27
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: b0dfc41bddccc6b5c5c924168044cffc0aa5e2b5
+ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91448815"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91728466"
 ---
 # <a name="azure-resource-manager-template-specs-preview"></a>Azure Resource Manager 範本規格 (預覽) 
 
-範本規格是新的資源類型，可將 Azure Resource Manager 範本 (ARM 範本) 儲存在 Azure 中，以供稍後部署。 此資源類型可讓您與組織中的其他使用者共用 ARM 範本。 就像任何其他 Azure 資源一樣，您也可以使用 Azure 角色型存取控制 (Azure RBAC) 來共用範本規格。
+範本規格是一種資源類型，可將 Azure Resource Manager 範本 (ARM 範本) 儲存在 Azure 中，以供稍後部署。 此資源類型可讓您與組織中的其他使用者共用 ARM 範本。 就像任何其他 Azure 資源一樣，您也可以使用 Azure 角色型存取控制 (Azure RBAC) 來共用範本規格。
 
-**Microsoft .resources/templateSpecs** 是範本規格的新資源類型。 它是由主要範本和任何數目的連結範本所組成。 Azure 會將範本規格安全地儲存在資源群組中。 範本規格支援 [版本控制](#versioning)。
+**Microsoft .resources/templateSpecs** 是範本規格的資源類型。 它是由主要範本和任何數目的連結範本所組成。 Azure 會將範本規格安全地儲存在資源群組中。 範本規格支援 [版本控制](#versioning)。
 
 若要部署範本規格，您可以使用 PowerShell、Azure CLI、Azure 入口網站、REST 和其他支援的 Sdk 和用戶端等標準 Azure 工具。 您可以使用與範本相同的命令。
 

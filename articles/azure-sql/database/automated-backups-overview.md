@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: shkale-msft
 ms.author: shkale
 ms.reviewer: mathoma, stevestein, danil
-ms.date: 09/25/2020
-ms.openlocfilehash: 93370050b503875d670283b720088b0871377c09
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.date: 10/05/2020
+ms.openlocfilehash: 43551ca17180cbb3614c670490a19aeaae6c7701
+ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91535063"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91728653"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>自動備份-Azure SQL Database & SQL 受控執行個體
 
@@ -50,7 +50,7 @@ SQL Database 和 SQL 受控執行個體使用 SQL Server 技術來每週建立 [
 > 區域-多餘的儲存體目前僅適用于 [某些區域](../../storage/common/storage-redundancy.md#zone-redundant-storage)。 
 
 > [!NOTE]
-> Azure SQL Database 可設定的備份儲存體冗余目前僅適用于東南亞 Azure 區域中的公開預覽。  
+> 適用于 Azure SQL Database 的可設定備份儲存體冗余目前僅適用于東南亞 Azure 區域中的公開預覽。 超大規模層尚無法使用這項功能。 
 
 ### <a name="backup-usage"></a>備份使用量
 
@@ -439,9 +439,9 @@ New-AzSqlInstance -Name managedInstance2 -ResourceGroupName ResourceGroup01 -Loc
 
 新增新的內建原則之後，您可以在訂用帳戶或資源群組層級指派這些原則，以防止建立新的資料庫 (s) 或實例 (s，) 使用異地冗余備份儲存體。 
 
-[SQL Database 應避免使用 GRS 備份冗余](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb219b9cf-f672-4f96-9ab0-f5a3ac5e1c13)
+[SQL Database 應避免使用 GRS 備份備援](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb219b9cf-f672-4f96-9ab0-f5a3ac5e1c13)
 
-[SQL 受控實例應避免使用 GRS 備份冗余](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa9934fd7-29f2-4e6d-ab3d-607ea38e9079)
+[SQL 受控執行個體應避免使用 GRS 備份備援](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa9934fd7-29f2-4e6d-ab3d-607ea38e9079)
 
 您可以在 [這裡](https://docs.microsoft.com/azure/azure-sql/database/policy-reference)找到 SQL Database 和受控執行個體內建原則定義的完整清單。
 

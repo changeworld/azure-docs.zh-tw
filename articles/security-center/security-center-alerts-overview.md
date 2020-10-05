@@ -8,18 +8,18 @@ manager: rkarlin
 ms.assetid: 1b71e8ad-3bd8-4475-b735-79ca9963b823
 ms.service: security-center
 ms.topic: conceptual
-ms.date: 07/14/2020
+ms.date: 10/05/2020
 ms.author: memildin
-ms.openlocfilehash: b2d5731ea9e8f2fb13d234fc9d951e221c0ab3e5
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 7228368645023ffc7debbc84adb8e3b7c27b1bbb
+ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905472"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91728432"
 ---
 # <a name="security-alerts-in-azure-security-center"></a>Azure 資訊安全中心的安全性警示
 
-在 Azure 資訊安全中心中，提供了許多不同資源類型的各種警示。 資訊安全中心會針對部署在 Azure 上的資源產生警示，也會針對內部部署和部署於混合式雲端環境的資源產生警示。
+在 [安全性中心] 中，有許多不同的資源類型都有各種不同的警示。 資訊安全中心會針對部署在 Azure 上的資源產生警示，也會針對內部部署和部署於混合式雲端環境的資源產生警示。
 
 安全性警示是由 advanced 偵測所觸發，且僅適用于 Azure Defender。 有免費試用版可用。 您可以從 [ **定價 & 設定** ] 頁面進行升級。 深入瞭解資訊 [安全中心的定價](https://azure.microsoft.com/pricing/details/security-center/)。
 
@@ -84,6 +84,14 @@ Azure 資訊安全中心的優勢在於 Microsoft 上上下下都設有資訊安
 * **偵測微調**︰對真正的客戶資料集執行演算法，而資訊安全研究人員會與客戶一起驗證結果。 真肯定和誤判可用來縮小機器學習演算法的範圍。
 
 結合上述努力終於獲得全新及改善的偵測功能，您因而立即受惠 – 不需採取任何的動作。
+
+## <a name="export-alerts"></a>匯出警示
+
+您有許多選項可供您在「安全性中心」之外查看您的警示，包括：
+
+- [警示] 儀表板上的 [**下載 csv 報表**] 可提供一次性匯出至 CSV。
+- 從定價的**連續匯出**& 設定可讓您將安全性警示和建議的串流設定至 Log Analytics 工作區和事件中樞。 [深入瞭解連續匯出](continuous-export.md)
+- **Azure Sentinel 連接器** 會將 Azure Defender 警示從 Azure 資訊安全中心串流至 Azure Sentinel。 [深入瞭解如何使用 Sentinel 連接 Azure 資訊安全中心](../sentinel/connect-azure-security-center.md)
 
 
 ## <a name="next-steps"></a>後續步驟
