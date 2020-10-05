@@ -5,10 +5,10 @@ manager: rkarlin
 ms.date: 06/30/2020
 ms.topic: include
 ms.openlocfilehash: 1b650fa5a0e9ba2f7019e6e67690d9d1fd65e72a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90894887"
 ---
 資訊安全中心可為您的容器化環境提供即時威脅防護，並產生可疑活動的警示。 您可以使用這項資訊來快速修復安全性問題，並改善您容器的安全性。
