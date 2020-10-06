@@ -62,6 +62,8 @@
       href: disaster-recovery-for-virtual-machines.md
     - name: 透過內容庫部署 VM
       href: tutorial-deploy-vm-content-library.md
+    - name: 設定 GitHub Enterprise 伺服器
+      href: github-enterprise-server.md
     - name: Azure 原生整合
       items:
         - name: API 管理
@@ -84,6 +86,8 @@
       items:
         - name: 設定 vRealize 作業
           href: vrealize-operations-for-azure-vmware-solution.md
+        - name: 部署 VMware Horizon
+          href: azure-vmware-solution-horizon.md
 - name: 資源
   items:
     - name: 疑難排解

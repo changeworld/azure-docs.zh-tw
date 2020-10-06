@@ -100,6 +100,8 @@
           href: rbac-migration.md
         - name: 針對存取問題進行疑難排解
           href: troubleshooting-access-issues.md
+    - name: 如何啟用記錄功能
+      href: howto-logging.md
     - name: 開發
       items:
         - name: Azure 金鑰保存庫開發人員指南
@@ -146,6 +148,10 @@
           href: move-subscription.md
         - name: 將金鑰保存庫移至另一個區域
           href: move-region.md
+    - name: 網路
+      items:
+        - name: 診斷私人連結設定問題
+          href: private-link-diagnostics.md
 - name: 參考
   items:
     - name: 新功能

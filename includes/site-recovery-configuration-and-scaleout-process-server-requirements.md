@@ -9,14 +9,14 @@ ms.topic: include
 ms.date: 07/08/2020
 ms.author: raynew
 ms.custom: include file
-ms.openlocfilehash: 60012f79c3c04a4ff14c4a7f0609b6940d3402c4
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
-ms.translationtype: MT
+ms.openlocfilehash: e3106b52ede95fe63a8df691a82acdd4937c8cce
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86544237"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91672327"
 ---
-**設定和處理伺服器需求**
+**組態和處理序伺服器需求**
 
 
 ## <a name="hardware-requirements"></a>硬體需求
@@ -35,34 +35,34 @@ RAM | 16 GB
 **元件** | **需求** 
 --- | ---
 作業系統 | Windows Server 2012 R2 <br> Windows Server 2016
-作業系統地區設定 | 英文（en-*）
+作業系統地區設定 | 英文 (en-*)
 Windows Server 角色 | 請勿啟用這些角色： <br> - Active Directory Domain Services <br>- 網際網路資訊服務 <br> - Hyper-V 
 群組原則 | 請勿啟用這些群組原則： <br> - 防止存取命令提示字元。 <br> - 防止存取登錄編輯工具。 <br> - 檔案附件的信任邏輯。 <br> - 開啟指令碼執行。 <br> [深入了解](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)
 IIS | - 沒有預先存在的預設網站 <br> - 沒有預先存在的網站/應用程式接聽連接埠 443 <br>- 啟用[匿名驗證](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br> - 啟用 [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) 設定 
-FIPS （聯邦資訊處理標準） | 不要啟用 FIPS 模式
+FIPS (聯邦資訊處理標準) | 不要啟用 FIPS 模式
 |
 
 ## <a name="network-requirements"></a>網路需求
 
 **元件** | **需求** 
 --- | --- 
-IP 位址類型 | 靜態 
+IP 位址類型 | Static 
 連接埠 | 443 (控制通道協調流程)<br>9443 (資料傳輸) 
-NIC 類型 | VMXNET3 （如果設定伺服器是 VMware VM）
+NIC 類型 | VMXNET3 (如果組態伺服器是 VMware 虛擬機器)
  |
-**網際網路存取**（伺服器需要直接或透過 proxy 存取下列 url）：|
+**網際網路存取** (伺服器需要能以直接方式或透過 Proxy 存取下列 URL)：|
 \*.backup.windowsazure.com | 用於所複寫資料的轉送和協調
-\*.blob.core.windows.net | 用來存取儲存已複寫資料的儲存體帳戶。 您可以提供快取儲存體帳戶的特定 URL。
+\*.blob.core.windows.net | 用於存取儲存體帳戶來儲存複寫的資料。 您可以為快取儲存體帳戶提供特定 URL。
 \*.hypervrecoverymanager.windowsazure.com | 用於複寫管理作業和協調
 https:\//login.microsoftonline.com | 用於複寫管理作業和協調 
-time.nist.gov | 用來檢查系統與通用時間之間的時間同步處理
-time.windows.com | 用來檢查系統與通用時間之間的時間同步處理
-| <ul> <li> https:\//management.azure.com </li><li> https:\//secure.aadcdn.microsoftonline-p.com </li><li> HTTPs： \/ /login.live.com </li><li> HTTPs： \/ /graph.windows.net </li><li> https:\//login.windows.net </li><li> *. services.visualstudio.com （選擇性） </li><li> HTTPs： \/ /www.live.com </li><li> HTTPs： \/ /www.microsoft.com </li></ul> | OVF 安裝程式需要存取這些額外的 Url。 它們是用於 Azure Active Directory 的存取控制和身分識別管理。
-https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi  | 以完成 MySQL 下載。 </br> 在幾個區域中，下載可能會重新導向至 CDN URL。 必要時，請確定 CDN URL 也會列入允許清單。
+time.nist.gov | 用於檢查系統時間與通用時間之間的時間同步處理
+time.windows.com | 用於檢查系統時間與通用時間之間的時間同步處理
+| <ul> <li> https:\//management.azure.com </li><li> https:\//secure.aadcdn.microsoftonline-p.com </li><li> https:\//login.live.com </li><li> https:\//graph.windows.net </li><li> https:\//login.windows.net </li><li> *.services.visualstudio.com (選用) </li><li> https:\//www.live.com </li><li> https:\//www.microsoft.com </li></ul> | 設定 OVF 時需要存取這些額外的 URL。 其可供 Azure Active Directory 用於管理存取控制和身分識別。
+https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi  | 若要完成 MySQL 下載。 </br> 在幾個區域中，下載可能會重新導向至 CDN URL。 如有需要，請確定也已核准 CDN URL。
 |
 
 > [!NOTE]
-> 如果您有[私人連結](../articles/site-recovery/hybrid-how-to-enable-replication-private-endpoints.md)可與 Site Recovery 保存庫連線，則設定伺服器不需要任何額外的網際網路存取。 這項例外狀況是在使用 OVA 範本設定 CS 機器時，您需要存取下列 Url （而不是私用連結存取- https://management.azure.com 、 https://www.live.com 和） https://www.microsoft.com 。 如果您不想要允許存取這些 Url，請使用統一安裝程式來設定 CS。
+> 如果您有 Site Recovery 保存庫的[私人連結連線能力](../articles/site-recovery/hybrid-how-to-enable-replication-private-endpoints.md)，則不需要設定伺服器的任何額外網際網路存取。 例外狀況是在使用 OVA 範本設定 CS 機器時，除了上述私人連結存取以外，您還需要存取下列 URL - https://management.azure.com 、 https://www.live.com 和 https://www.microsoft.com 。 如果您不想允許存取這些 URL，請使用統一安裝程式來設定 CS。
 
 ## <a name="required-software"></a>必要的軟體
 
@@ -74,13 +74,12 @@ MySQL | 應該安裝 MySQL。 您可以手動安裝，或者 Site Recovery 可�
 
 ## <a name="sizing-and-capacity-requirements"></a>調整大小和容量需求
 
-下表彙總組態伺服器的容量需求。 如果您要複寫多個 VMware Vm，請參閱[容量規劃考慮](../articles/site-recovery/site-recovery-plan-capacity-vmware.md)，並執行[Azure Site Recovery 部署規劃工具工具](../articles/site-recovery/site-recovery-deployment-planner.md)。
+下表彙總組態伺服器的容量需求。 如果您要複寫多部 VMware VM，請檢閱[容量規劃考量](../articles/site-recovery/site-recovery-plan-capacity-vmware.md)並執行 [Azure Site Recovery 部署規劃工具](../articles/site-recovery/site-recovery-deployment-planner.md)。
 
 
-**CPU** | **記憶體** | **快取磁片** | **資料變更率** | **複寫的機器**
+**CPU** | **記憶體** | **快取磁碟** | **資料變更率** | **複寫的機器**
 --- | --- | --- | --- | ---
 8 個 vCPU<br/><br/> 2 個插槽 * 4 個核心 \@ 2.5 GHz | 16 GB | 300 GB | 500 GB 或更少 | < 100 部機器
 12 個 vCPU<br/><br/> 2 個插槽 * 6 個核心 \@ 2.5 GHz | 18 GB | 600 GB | 500 GB-1 TB | 100 到 150 部機器
 16 個 vCPU<br/><br/> 2 個插槽 * 8 個核心 \@ 2.5 GHz | 32 GB | 1 TB | 1-2 TB | 150 到 200 部機器
 |
-

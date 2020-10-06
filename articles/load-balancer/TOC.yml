@@ -65,7 +65,7 @@
       href: load-balancer-multivip-overview.md
     - name: 輸出連線
       href: load-balancer-outbound-connections.md
-    - name: 逾時時的 TCP 重設
+    - name: TCP 重設和 TCP 閒置逾時
       href: load-balancer-tcp-reset.md
     - name: 標準 Load Balancer 和可用性區域
       href: load-balancer-standard-availability-zones.md

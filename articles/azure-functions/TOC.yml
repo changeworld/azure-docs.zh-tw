@@ -214,6 +214,8 @@
               href: functions-create-scheduled-function.md
         - name: 新增繫結
           items:
+            - name: 如何新增繫結
+              href: add-bindings-existing-function.md
             - name: Azure Cosmos DB - 入口網站
               href: functions-integrate-store-unstructured-data-cosmosdb.md
             - name: 儲存體 - Python

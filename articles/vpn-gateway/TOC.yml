@@ -170,7 +170,7 @@
               href: vpn-gateway-howto-openvpn-clients.md
             - name: 從 SSTP 移至 OpenVPN 通訊協定或 IKEv2
               href: ikev2-openvpn-from-sstp.md
-        - name: 設定 P2S 工作階段管理
+        - name: P2S 工作階段管理
           href: p2s-session-management.md
         - name: 轉換為 P2S 的公用 CA 閘道憑證
           href: vpn-gateway-point-to-site-gateway-public-ca.md

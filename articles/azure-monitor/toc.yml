@@ -976,6 +976,8 @@
           href: insights/vminsights-maps.md
         - name: 監視效能
           href: insights/vminsights-performance.md
+        - name: 監視變更
+          href: insights/vminsights-change-analysis.md
         - name: 使用日誌查詢分析資料
           href: insights/vminsights-log-search.md
         - name: 使用活頁簿將資料視覺化

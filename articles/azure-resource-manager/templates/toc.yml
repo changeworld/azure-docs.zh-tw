@@ -379,7 +379,7 @@
           href: key-vault-parameter.md
     - name: CI/CD
       items:
-        - name: 具有管線的 VS 專案
+        - name: 具有管線的 ARM 範本
           href: add-template-to-azure-pipelines.md
         - name: 部署 - GitHub 動作
           href: deploy-github-actions.md

@@ -1,119 +1,115 @@
 - name: 商業市集文件
   href: index.yml
+  items: null
+- name: 關於商業市集
+  href: overview.md
+- name: 帳戶管理
   items:
-    - name: 商業市集更新
-      href: marketplace-roadmap.md
-    - name: 商業市集概觀和權益
-      href: marketplace-publishers-guide.md
+    - name: 建立新的合作夥伴中心帳戶
+      href: partner-center-portal/create-account.md
+    - name: 管理您的帳戶
+      href: partner-center-portal/manage-account.md
+    - name: 尋找或建立公司工作帳戶
+      href: partner-center-portal/company-work-accounts.md
+    - name: 將帳戶從 CPP 移轉到合作夥伴中心
+      href: partner-center-portal/account-migration-from-cpp-to-pc.md
+- name: 概念
+  items:
+    - name: 發佈選項與考量
+      href: determine-your-listing-type.md
+    - name: 在商業市集中交易
+      href: marketplace-commercial-transaction-capabilities-and-considerations.md
+    - name: 私人供應項目
+      href: private-offers.md
+    - name: 方案和定價
+      href: plans-pricing.md
+    - name: 標準合約
+      href: standard-contract.md
+    - name: Azure Marketplace 列名需求
+      href: marketplace-criteria-content-validation.md
+    - name: 潛在客戶管理
+      href: partner-center-portal/commercial-marketplace-get-customer-leads.md
+    - name: 試用產品
       items:
-        - name: 一個市集，二間線上商店
-          href: comparing-appsource-azure-marketplace.md
-        - name: 發佈選項與考量
-          href: determine-your-listing-type.md
-          items:
-            - name: 潛在客戶管理
-              href: lead-management-for-cloud-marketplace.md
-            - name: 在商業市集中交易
-              href: marketplace-commercial-transaction-capabilities-and-considerations.md
-            - name: 方案和定價
-              href: plans-pricing.md
-            - name: 私人供應項目
-              href: private-offers.md
-            - name: 標準合約
-              href: standard-contract.md
-            - name: Azure 合作夥伴客戶使用狀況屬性
-              href: azure-partner-customer-usage-attribution.md
-            - name: 支援的國家/區域
-              href: sell-from-countries.md
-        - name: 依供應項目類型的發行指南
-          href: publisher-guide-by-offer-type.md
-          items:
-            - name: 計畫 SaaS 供應項目
-              href: plan-saas-offer.md
-            - name: 虛擬機器
-              href: marketplace-virtual-machines.md
-            - name: Azure 應用程式解決方案範本
-              href: marketplace-solution-templates.md
-            - name: Azure 應用程式受控應用程式
-              href: marketplace-managed-apps.md
-            - name: 容器
-              href: marketplace-containers.md
-            - name: IoT Edge 模組
-              href: iot-edge-module.md
-            - name: 諮詢服務
-              href: consulting-services.md
-            - name: Microsoft 365、Dynamics 365 和 Power BI
-              href: appsource-offer-publishing-guide.md
-            - name: 使用 Azure AD 啟用供應項目驗證
-              href: enable-appsource-marketplace-using-azure-ad.md
-            - name: 整合式解決方案
-              href: integrated-solutions-for-publishers.md
-        - name: 行銷最佳做法
-          href: gtm-marketing-best-practices.md
-          items:
-            - name: 陳列供應項目的最佳做法
-              href: gtm-offer-listing-best-practices.md
-            - name: 取得精選項目
-              href: gtm-how-to-get-featured.md
-            - name: Marketplace 內容驗證
-              href: marketplace-criteria-content-validation.md
-            - name: 雲端解決方案提供者
-              href: cloud-solution-providers.md
-            - name: Connect 計畫上線指南
-              href: business-applications-isv-program.md
+        - name: 什麼是試用產品？
+          href: what-is-test-drive.md
+        - name: 試用產品技術設定
+          href: test-drive-technical-configuration.md
+        - name: Azure Resource Manager 的試用產品
+          href: azure-resource-manager-test-drive.md
+    - name: Azure 合作夥伴客戶使用狀況屬性
+      href: azure-partner-customer-usage-attribution.md
+    - name: Go-To-Market 選項
+      items:
         - name: 您的 Marketplace 權益
           href: gtm-your-marketplace-benefits.md
-          items:
-            - name: Azure 使用量承諾權益
-              href: azure-consumption-commitment-benefit.md
-            - name: 共同銷售合作夥伴參與
-              href: marketplace-co-sell.md
-            - name: 慣用的解決方案
-              href: preferred-solutions.md
-            - name: 整合式解決方案
-              href: integrated-solutions.md
-        - name: 支援商業市集
-          href: support-azure-marketplace.md
-          items:
-            - name: 商業市集常見問題集
-              href: marketplace-faq-publisher-guide.md
-            - name: 各地區上市情況和貨幣
-              href: marketplace-geo-availability-currencies.md
-- name: 合作夥伴中心中的商業市集
+        - name: 共同銷售合作夥伴參與
+          href: marketplace-co-sell.md
+        - name: 合作夥伴中心內的共同銷售選項
+          href: partner-center-portal/commercial-marketplace-co-sell.md
+        - name: 透過 CSP 合作夥伴轉售
+          href: cloud-solution-providers.md
+        - name: Connect 計畫上線指南
+          href: business-applications-isv-program.md
+        - name: Azure 使用量承諾權益
+          href: azure-consumption-commitment-benefit.md
+        - name: 慣用的解決方案
+          href: preferred-solutions.md
+        - name: 整合式解決方案
+          href: integrated-solutions-for-publishers.md
+    - name: 啟動管理 Marketplace 獎勵
+      href: partner-center-portal/marketplace-rewards.md
+    - name: 取得付款
+      items:
+        - name: 取得付款
+          href: /partner-center/marketplace-get-paid?context=/azure/marketplace/context/context
+        - name: 設定支出帳戶和稅賦形式
+          href: /partner-center/set-up-your-payout-account?context=/azure/marketplace/context/context
+        - name: 付款閾值和時間範圍
+          href: /partner-center/payment-thresholds-methods-timeframes?context=/azure/marketplace/context/context
+        - name: 支付明細表
+          href: /partner-center/payout-statement?context=/azure/marketplace/context/context
+        - name: 支出原則詳細資料
+          href: /partner-center/payout-policy-details?context=/azure/marketplace/context/context
+        - name: 稅賦詳細資訊
+          href: /partner-center/tax-details-marketplace?context=/azure/marketplace/context/context
+        - name: 支付常見問題
+          href: /partner-center/payout-faq?context=/azure/marketplace/context/context
+- name: 建立及管理供應項目
   items:
-    - name: 商業市集概觀
-      href: partner-center-portal/commercial-marketplace-overview.md
-    - name: 移轉常見問題集
-      href: cloud-partner-portal-migration-faq.md
-    - name: 帳戶管理
+    - name: 依供應項目類型的發行指南
+      href: publisher-guide-by-offer-type.md
+    - name: 使用 Azure AD 啟用供應項目驗證
+      href: enable-appsource-marketplace-using-azure-ad.md
+    - name: Azure 應用程式供應項目
       items:
-        - name: 建立新的合作夥伴中心帳戶
-          href: partner-center-portal/create-account.md
-        - name: 管理合作夥伴中心帳戶
-          href: partner-center-portal/manage-account.md
-        - name: 尋找或建立公司工作帳戶
-          href: partner-center-portal/company-work-accounts.md
-        - name: 將帳戶從 CPP 移轉到合作夥伴中心
-          href: partner-center-portal/account-migration-from-cpp-to-pc.md
-    - name: 建立新的供應項目
+        - name: 規劃解決方案範本供應項目
+          href: marketplace-solution-templates.md
+        - name: 規劃受控應用程式供應項目
+          href: marketplace-managed-apps.md
+        - name: 建立及發佈 Azure 應用程式供應項目
+          href: partner-center-portal/create-new-azure-apps-offer.md
+        - name: Azure 應用程式計量付費計費
+          href: partner-center-portal/azure-app-metered-billing.md
+        - name: 處理檢閱意見反應
+          href: partner-center-portal/azure-apps-review-feedback.md
+        - name: Azure 應用程式 API
+          href: partner-center-portal/azure-app-apis.md
+    - name: Azure 容器供應項目
       items:
-        - name: Azure 應用程式供應項目
-          items:
-            - name: 建立 Azure 應用程式供應項目
-              href: partner-center-portal/create-new-azure-apps-offer.md
-            - name: Azure 應用程式計量付費計費
-              href: partner-center-portal/azure-app-metered-billing.md
-            - name: 處理檢閱意見反應
-              href: partner-center-portal/azure-apps-review-feedback.md
-            - name: 用於上線的 API
-              href: partner-center-portal/azure-app-apis.md
-        - name: Azure 容器供應項目
+        - name: 規劃 Azure 容器供應項目
+          href: marketplace-containers.md
+        - name: 建立及發佈 Azure 容器供應項目
           items:
             - name: 預備技術資產
               href: partner-center-portal/create-azure-container-technical-assets.md
             - name: 建立 Azure 容器供應項目
               href: partner-center-portal/create-azure-container-offer.md
-        - name: 虛擬機器供應項目
+    - name: Azure 虛擬機器供應項目
+      items:
+        - name: 規劃虛擬機器供應項目
+          href: marketplace-virtual-machines.md
+        - name: 建立及發佈虛擬機器供應項目
           items:
             - name: 建立 Azure 虛擬機器供應項目
               href: partner-center-portal/azure-vm-create-offer.md
@@ -133,15 +129,23 @@
                       href: partner-center-portal/get-sas-uri.md
                     - name: SAS URI 常見問題集
                       href: partner-center-portal/common-sas-uri-issues.md
-        - name: 諮詢服務
+    - name: 諮詢服務
+      items:
+        - name: 規劃諮詢服務供應項目
+          href: consulting-services.md
+        - name: 建立及發佈諮詢服務供應項目
           items:
-            - name: 必要條件
+            - name: Prerequisites
               href: partner-center-portal/consulting-service-prerequisites.md
             - name: 建立諮詢服務供應項目
               href: partner-center-portal/create-consulting-service-offer.md
-        - name: Dynamics 365 供應項目
+    - name: Dynamics 365 供應項目
+      items:
+        - name: 規劃 Dynamics 365 供應項目
+          href: appsource-offer-publishing-guide.md
+        - name: 建立及發佈 Dynamics 365 供應項目
           items:
-            - name: 建立 Dynamics 365 for Customer Engagement 和 Power Apps 供應項目
+            - name: 建立 Dynamics 365 Customer Engagement 和 Power Apps 供應項目
               href: partner-center-portal/create-new-customer-engagement-offer.md
             - name: 建立 Dynamics 365 for Operations 供應項目
               items:
@@ -153,150 +157,123 @@
               href: partner-center-portal/create-new-business-central-offer.md
         - name: IoT Edge 模組供應項目
           items:
+            - name: 規劃 IoT Edge 模組供應項目
+              href: iot-edge-module.md
             - name: 建立 IoT Edge 模組供應項目
               href: partner-center-portal/azure-iot-edge-module-creation.md
             - name: 預備 IoT Edge 模組技術資產
               href: partner-center-portal/create-iot-edge-module-asset.md
-        - name: 受控服務供應項目
+    - name: 受控服務供應項目
+      items:
+        - name: 建立受控服務供應項目
+          href: partner-center-portal/create-new-managed-service-offer.md
+    - name: Power BI 應用程式供應項目
+      items:
+        - name: 規劃 Power BI 應用程式供應項目
+          href: partner-center-portal/create-power-bi-app-overview.md
+        - name: 建立 Power BI 應用程式供應項目
+          href: partner-center-portal/create-power-bi-app-offer.md
+    - name: SaaS 供應項目
+      items:
+        - name: 計畫 SaaS 供應項目
+          href: plan-saas-offer.md
+        - name: SaaS 的 Azure AD 驗證
           items:
-            - name: 建立受控服務供應項目
-              href: partner-center-portal/create-new-managed-service-offer.md
-        - name: Power BI 應用程式供應項目
+            - name: Azure AD 和 SaaS 概觀
+              href: azure-ad-saas.md
+            - name: 可交易供應項目的登陸頁面
+              href: azure-ad-transactable-saas-landing-page.md
+            - name: 免費或試用版供應項目的登陸頁面
+              href: azure-ad-free-or-trial-landing-page.md
+        - name: SaaS 計量帳單
+          href: partner-center-portal/saas-metered-billing.md
+        - name: 建立及發佈 SaaS 供應項目
           items:
-            - name: 發佈概觀
-              href: partner-center-portal/create-power-bi-app-overview.md
-            - name: 建立 Power BI 應用程式供應項目
-              href: partner-center-portal/create-power-bi-app-offer.md
-        - name: SaaS 供應項目
-          items:
-            - name: 計畫 SaaS 供應項目
-              href: plan-saas-offer.md
-            - name: SaaS 的 Azure AD 驗證
-              items:
-                - name: Azure AD 和 SaaS 概觀
-                  href: azure-ad-saas.md
-                - name: 可交易供應項目的登陸頁面
-                  href: azure-ad-transactable-saas-landing-page.md
-                - name: 免費或試用版供應項目的登陸頁面
-                  href: azure-ad-free-or-trial-landing-page.md
-            - name: SaaS 計量帳單
-              href: partner-center-portal/saas-metered-billing.md
-            - name: 建立及發佈 SaaS 供應項目
-              items:
-                - name: 建立 SaaS 供應項目
-                  href: create-new-saas-offer.md
-                - name: 設定 SaaS 供應項目屬性
-                  href: create-new-saas-offer-properties.md
-                - name: 設定 SaaS 供應項目清單
-                  href: create-new-saas-offer-listing.md
-                - name: 新增預覽對象
-                  href: create-new-saas-offer-preview.md
-                - name: 新增技術詳細資訊
-                  href: create-new-saas-offer-technical.md
-                - name: 建立方案
-                  href: create-new-saas-offer-plans.md
-                - name: 測試及發佈 SaaS 供應項目
-                  href: test-publish-saas-offer.md
-            - name: 行銷您的 SaaS 供應項目
-              href: create-new-saas-offer-marketing.md
-            - name: SaaS 履行 API
-              href: partner-center-portal/pc-saas-fulfillment-apis.md
-              items:
-                - name: 註冊 SaaS 應用程式
-                  href: partner-center-portal/pc-saas-registration.md
-                - name: SaaS 履行 API v2
-                  href: partner-center-portal/pc-saas-fulfillment-api-v2.md
-                - name: SaaS 履行 API v1 (已淘汰)
-                  href: partner-center-portal/pc-saas-fulfillment-api-v1.md
-                - name: SaaS 履行 API - 常見問題集
-                  href: partner-center-portal/saas-fulfillment-apis-faq.md
-        - name: 潛在客戶管理概觀
-          href: partner-center-portal/commercial-marketplace-get-customer-leads.md
-          items:
-            - name: Azure Blob
-              href: partner-center-portal/commercial-marketplace-lead-management-instructions-azure-blob.md
-            - name: Azure 資料表
-              href: partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table.md
-            - name: Dynamics 365 for Customer Engagement
-              href: partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics.md
-            - name: HTTPS 端點
-              href: partner-center-portal/commercial-marketplace-lead-management-instructions-https.md
-            - name: Marketo
-              href: partner-center-portal/commercial-marketplace-lead-management-instructions-marketo.md
-            - name: Salesforce
-              href: partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce.md
-        - name: Marketplace 計量服務
-          items:
-            - name: 驗證策略
-              href: partner-center-portal/marketplace-metering-service-authentication.md
-            - name: Marketplace 計量服務 API
-              href: partner-center-portal/marketplace-metering-service-apis.md
-            - name: Marketplace 計量服務 API - 常見問題集
-              href: partner-center-portal/marketplace-metering-service-apis-faq.md
-        - name: 試用產品
-          items:
-            - name: 什麼是試用產品？
-              href: what-is-test-drive.md
-            - name: 試用產品技術設定
-              href: test-drive-technical-configuration.md
-            - name: Azure Resource Manager 的試用產品
-              href: azure-resource-manager-test-drive.md
-        - name: 共同銷售選項
-          href: partner-center-portal/commercial-marketplace-co-sell.md
-          items:
-            - name: 國家及區域代碼
-              href: partner-center-portal/commercial-marketplace-co-sell-countries.md
-            - name: 狀態碼
-              href: partner-center-portal/commercial-marketplace-co-sell-states.md
-    - name: 檢閱並發佈
+            - name: 建立 SaaS 供應項目
+              href: create-new-saas-offer.md
+            - name: 設定 SaaS 供應項目屬性
+              href: create-new-saas-offer-properties.md
+            - name: 設定 SaaS 供應項目清單
+              href: create-new-saas-offer-listing.md
+            - name: 新增預覽對象
+              href: create-new-saas-offer-preview.md
+            - name: 新增技術詳細資訊
+              href: create-new-saas-offer-technical.md
+            - name: 建立方案
+              href: create-new-saas-offer-plans.md
+            - name: 測試及發佈 SaaS 供應項目
+              href: test-publish-saas-offer.md
+        - name: 行銷您的 SaaS 供應項目
+          href: create-new-saas-offer-marketing.md
+    - name: 檢閱及發行供應項目
       href: review-publish-offer.md
     - name: 更新現有供應項目
       href: partner-center-portal/update-existing-offer.md
-    - name: 啟動管理 Marketplace 獎勵
-      href: partner-center-portal/marketplace-rewards.md
-    - name: 合作夥伴中心分析
+- name: 銷售及行銷您的供應項目
+  items:
+    - name: 行銷最佳做法
+      href: gtm-marketing-best-practices.md
+    - name: 陳列供應項目的最佳做法
+      href: gtm-offer-listing-best-practices.md
+    - name: 取得精選項目
+      href: gtm-how-to-get-featured.md
+    - name: 設定潛在客戶管理
       items:
-        - name: 商業市集的分析
-          href: partner-center-portal/analytics.md
-        - name: 摘要儀表板
-          href: partner-center-portal/summary-dashboard.md
-        - name: 訂單儀表板
-          href: partner-center-portal/orders-dashboard.md
-        - name: 使用量儀表板
-          href: partner-center-portal/usage-dashboard.md
-        - name: 客戶儀表板
-          href: partner-center-portal/customer-dashboard.md
-        - name: Marketplace 見解儀表板
-          href: partner-center-portal/insights-dashboard.md
-        - name: 下載儀表板
-          href: partner-center-portal/downloads-dashboard.md
-        - name: 評分與評論儀表板
-          href: partner-center-portal/ratings-reviews.md
-        - name: 常見問題集與術語
-          href: partner-center-portal/faq-terminology.md
-    - name: 取得付款
-      items:
-        - name: 取得付款
-          href: /partner-center/marketplace-get-paid?context=/azure/marketplace/context/context
-        - name: 設定支出帳戶和稅賦形式
-          href: /partner-center/set-up-your-payout-account?context=/azure/marketplace/context/context
-        - name: 付款閾值和時間範圍
-          href: /partner-center/payment-thresholds-methods-timeframes?context=/azure/marketplace/context/context
-        - name: 支付明細表
-          href: /partner-center/payout-statement?context=/azure/marketplace/context/context
-        - name: 支出原則詳細資料
-          href: /partner-center/payout-policy-details?context=/azure/marketplace/context/context
-        - name: 稅賦詳細資訊
-          href: /partner-center/tax-details-marketplace?context=/azure/marketplace/context/context
-        - name: 支付常見問題
-          href: /partner-center/payout-faq?context=/azure/marketplace/context/context
+        - name: Azure Blob
+          href: partner-center-portal/commercial-marketplace-lead-management-instructions-azure-blob.md
+        - name: Azure 資料表
+          href: partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table.md
+        - name: Dynamics 365 for Customer Engagement
+          href: partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics.md
+        - name: HTTPS 端點
+          href: partner-center-portal/commercial-marketplace-lead-management-instructions-https.md
+        - name: Marketo
+          href: partner-center-portal/commercial-marketplace-lead-management-instructions-marketo.md
+        - name: Salesforce
+          href: partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce.md
+        - name: 潛在客戶管理常見問題集
+          href: lead-management-faq.md
+- name: 資料與分析
+  items:
+    - name: 商業市集分析
+      href: partner-center-portal/analytics.md
+    - name: 摘要儀表板
+      href: partner-center-portal/summary-dashboard.md
+    - name: 訂單儀表板
+      href: partner-center-portal/orders-dashboard.md
+    - name: 使用量儀表板
+      href: partner-center-portal/usage-dashboard.md
+    - name: 客戶儀表板
+      href: partner-center-portal/customer-dashboard.md
+    - name: Marketplace 見解儀表板
+      href: partner-center-portal/insights-dashboard.md
+    - name: 下載儀表板
+      href: partner-center-portal/downloads-dashboard.md
+    - name: 評分與評論儀表板
+      href: partner-center-portal/ratings-reviews.md
+    - name: 合作夥伴中心分析詞彙
+      href: partner-center-portal/faq-terminology.md
+- name: 原則和條款
+  items:
+    - name: 關於我們的原則和條款
+      href: policies-terms.md
+    - name: 商業市集認證原則
+      href: /legal/marketplace/certification-policies?context=/azure/marketplace/context/context
+    - name: 商業市集檢閱原則
+      href: /legal/marketplace/rating-review-policies?context=/azure/marketplace/context/context
+    - name: Azure Marketplace 參與原則
+      href: /legal/marketplace/participation-policy?context=/azure/marketplace/context/context
+    - name: Azure Marketplace 條款
+      href: /legal/marketplace/terms?context=/azure/marketplace/context/context
+- name: 參考
+  items:
     - name: CPP API 參考
       items:
-        - name: 概觀
+        - name: CPP API 概觀
           href: cloud-partner-portal-api-overview.md
-        - name: 必要條件
+        - name: API 必要條件
           href: cloud-partner-portal-api-prerequisites.md
-        - name: 考量
+        - name: API 考量
           href: cloud-partner-portal-api-considerations.md
         - name: 並行控制
           href: cloud-partner-portal-api-concurrency-control.md
@@ -320,21 +297,44 @@
           href: cloud-partner-portal-api-setting-price.md
         - name: 針對驗證錯誤進行疑難排解
           href: cloud-partner-portal-api-troubleshooting-authentication-errors.md
-    - name: 支援選項
-      href: partner-center-portal/support.md
-- name: 商業市集原則和條款
-  items:
-    - name: 關於我們的原則和條款
-      href: policies-terms.md
-    - name: 商業市集認證原則
-      href: /legal/marketplace/certification-policies?context=/azure/marketplace/context/context
-    - name: 商業市集檢閱原則
-      href: /legal/marketplace/rating-review-policies?context=/azure/marketplace/context/context
-    - name: Azure Marketplace 參與原則
-      href: /legal/marketplace/participation-policy?context=/azure/marketplace/context/context
-    - name: Azure Marketplace 條款
-      href: /legal/marketplace/terms?context=/azure/marketplace/context/context
+    - name: Marketplace 計量服務
+      items:
+        - name: 驗證策略
+          href: partner-center-portal/marketplace-metering-service-authentication.md
+        - name: Marketplace 計量服務 API
+          href: partner-center-portal/marketplace-metering-service-apis.md
+        - name: Marketplace 計量服務 API - 常見問題集
+          href: partner-center-portal/marketplace-metering-service-apis-faq.md
+    - name: SaaS 履行 API
+      items:
+        - name: SaaS 履行 API 概觀
+          href: partner-center-portal/pc-saas-fulfillment-apis.md
+          items:
+            - name: 註冊 SaaS 應用程式
+              href: partner-center-portal/pc-saas-registration.md
+            - name: SaaS 履行 API v2
+              href: partner-center-portal/pc-saas-fulfillment-api-v2.md
+            - name: SaaS 履行 API v1 (已淘汰)
+              href: partner-center-portal/pc-saas-fulfillment-api-v1.md
+            - name: SaaS 履行 API - 常見問題集
+              href: partner-center-portal/saas-fulfillment-apis-faq.md
 - name: 資源
   items:
+    - name: 商業市集常見問題集
+      href: marketplace-faq-publisher-guide.md
+    - name: Cloud Partner 入口網站移轉常見問題集
+      href: cloud-partner-portal-migration-faq.md
+    - name: 合作夥伴中心支援選項
+      href: partner-center-portal/support.md
+    - name: 各地區上市情況和貨幣
+      href: marketplace-geo-availability-currencies.md
+    - name: 支援的國家/區域
+      href: sell-from-countries.md
     - name: 支援的 HTML 標籤
       href: supported-html-tags.md
+    - name: 共同銷售國家及區域代碼
+      href: partner-center-portal/commercial-marketplace-co-sell-countries.md
+    - name: 共同銷售狀態碼
+      href: partner-center-portal/commercial-marketplace-co-sell-states.md
+    - name: 論壇、部落格和快速連結
+      href: marketplace-roadmap.md
