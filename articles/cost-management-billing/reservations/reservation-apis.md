@@ -9,12 +9,12 @@ ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: cffb753d515c4d066c8ce52e7dacebe5a8f6f8ca
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 12b20f7556a460506067305401fb2379678ee58e
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88682632"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371689"
 ---
 # <a name="apis-for-azure-reservation-automation"></a>適用於 Azure 保留自動化的 API
 
@@ -88,9 +88,9 @@ PUT https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/
 
 使用[保留 - 作業 - 清單 API](/rest/api/reserved-vm-instances/reservationorder/list) 來取得使用者有權存取的所有保留的清單。 若要以程式設計方式提供保留的存取權，請參閱下列其中一篇文章：
 
-- [使用 RBAC 和 REST API 來管理存取權](../../role-based-access-control/role-assignments-rest.md)
-- [使用 RBAC 和 Azure PowerShell 來管理存取權](../../role-based-access-control/role-assignments-powershell.md)
-- [使用 RBAC 和 Azure CLI 來管理存取權](../../role-based-access-control/role-assignments-cli.md)
+- [使用 REST API 新增或移除 Azure 角色指派](../../role-based-access-control/role-assignments-rest.md)
+- [使用 Azure PowerShell 新增或移除 Azure 角色指派](../../role-based-access-control/role-assignments-powershell.md)
+- [使用 Azure CLI 新增或移除 Azure 角色指派](../../role-based-access-control/role-assignments-cli.md)
 
 ## <a name="split-or-merge-reservation"></a>分割或合併保留項目
 

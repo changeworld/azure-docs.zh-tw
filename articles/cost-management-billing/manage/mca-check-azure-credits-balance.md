@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: how-to
 ms.date: 08/20/2019
 ms.author: banders
-ms.openlocfilehash: 334193f64c49b546bab5f44840df5b3f59e32c4f
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: ebe750440528e40feaf0b4700c018a612b482e34
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690573"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447636"
 ---
 # <a name="track-microsoft-customer-agreement-azure-credit-balance"></a>追蹤 Microsoft 客戶合約的 Azure 點數餘額
 
@@ -35,11 +35,11 @@ ms.locfileid: "88690573"
 
 2. 搜尋 [成本管理 + 帳單]。
 
-    ![顯示在入口網站中搜尋 [成本管理 + 帳單] 的螢幕擷取畫面](./media/mca-check-azure-credits-balance/billing-search-cost-management-billing.png)
+    ![顯示在入口網站中搜尋 [成本管理 + 計費] 的螢幕擷取畫面。](./media/mca-check-azure-credits-balance/billing-search-cost-management-billing.png)
 
 3. 在 [計費範圍] 頁面中，選取您要追蹤其點數餘額的計費帳戶。 計費帳戶的類型應該是 **Microsoft 客戶合約**。
 
-    ![顯示在入口網站中搜尋 [成本管理 + 帳單] 的螢幕擷取畫面](./media/mca-check-azure-credits-balance/list-of-scopes.png)
+    ![顯示計費範圍的螢幕擷取畫面。](./media/mca-check-azure-credits-balance/list-of-scopes.png)
 
     > [!NOTE]
     >
@@ -47,7 +47,7 @@ ms.locfileid: "88690573"
 
 3. 從左側選取 [付款方式]，然後選取 [Azure 點數]。
 
-   ![帳單設定檔點數餘額的螢幕擷取畫面](./media/mca-check-azure-credits-balance/mca-payment-methods.png)
+   ![預估和目前餘額的螢幕擷取畫面。](./media/mca-check-azure-credits-balance/mca-payment-methods.png)
 
 4. [Azure 點數] 頁面會有下列區段：
 

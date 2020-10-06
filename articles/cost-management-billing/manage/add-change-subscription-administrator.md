@@ -1,6 +1,6 @@
 ---
 title: 新增或變更 Azure 訂用帳戶系統管理員
-description: 說明如何使用角色型存取控制 (RBAC) 來新增或變更 Azure 訂用帳戶管理員。
+description: 說明如何使用 Azure 角色型存取控制 (Azure RBAC) 來新增或變更 Azure 訂用帳戶管理員。
 author: genlin
 ms.reviewer: dcscontentpm
 tags: billing
@@ -9,21 +9,21 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 2ccdb16af788f6f8d106628742b2a83e25b26263
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 273f12765f60eb1a0d65037e30e33e58b16463bf
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683091"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372301"
 ---
 # <a name="add-or-change-azure-subscription-administrators"></a>新增或變更 Azure 訂用帳戶系統管理員
 
 
 若要管理對 Azure 資源的存取，您必須具有適當的系統管理員角色。 Azure 有一個稱為 [Azure 角色型存取控制 (Azure RBAC)](../../role-based-access-control/overview.md) 的授權系統，其中含有可供您選擇的內建角色。 您可以在不同範圍 (例如管理群組、訂用帳戶或資源群組) 指派這些角色。 根據預設，建立新 Azure 訂用帳戶的人員可以將訂用帳戶的系統管理存取權指派給其他使用者。
 
-本文說明如何在訂用帳戶範圍使用 RBAC 來新增或變更使用者的系統管理員角色。
+本文說明如何在訂用帳戶範圍使用 Azure RBAC 來新增或變更使用者的系統管理員角色。
 
-Microsoft 建議您使用 RBAC 來管理對資源的存取。 不過，如果您仍是使用傳統部署模型，且使用 [Azure 服務管理 PowerShell 模組](/powershell/module/servicemanagement/azure.service) \(英文\) 來管理傳統資源，您會需要使用傳統系統管理員。
+Microsoft 建議您使用 Azure RBAC 來管理對資源的存取。 不過，如果您仍是使用傳統部署模型，且使用 [Azure 服務管理 PowerShell 模組](/powershell/module/servicemanagement/azure.service) \(英文\) 來管理傳統資源，您會需要使用傳統系統管理員。
 
 > [!TIP]
 > 如果您只使用 Azure 入口網站來管理傳統資源，則不需要使用傳統系統管理員。

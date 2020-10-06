@@ -1,7 +1,7 @@
 ---
 title: 快速入門：使用 PHP 來呼叫文字分析 API
 titleSuffix: Azure Cognitive Services
-description: 此快速入門示範如何取得資訊和程式碼範例，協助您在 Azure 認知服務中快速開始使用文字分析 API。
+description: 此快速入門示範如何使用 PHP 取得資訊和程式碼範例，協助您在 Azure 認知服務中快速開始使用文字分析 API。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 07/10/2020
 ms.author: aahi
-ms.openlocfilehash: 4627cc83de70f596ae4917d0449f785a33bf720f
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 09901c514a1f2b94edc3e4108ec46051a284a6db
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261363"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90527253"
 ---
 # <a name="quickstart-using-php-to-call-the-text-analytics-cognitive-service"></a>快速入門：使用 PHP 來呼叫文字分析認知服務
 <a name="HOLTop"></a>
@@ -24,7 +24,7 @@ ms.locfileid: "86261363"
 
 [!INCLUDE [text-analytics-api-references](../includes/text-analytics-api-references.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
 

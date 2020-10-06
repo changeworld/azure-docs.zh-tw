@@ -1,30 +1,28 @@
 ---
-title: 版本資訊：Azure Synapse Analytics (工作區)
-description: Azure Synapse Analytics (工作區) 的版本資訊
+title: 版本資訊：Azure Synapse Analytics (工作區預覽)
+description: Azure Synapse Analytics (工作區預覽) 的版本資訊
 services: synapse-analytics
 author: julieMSFT
 ms.service: synapse-analytics
 ms.topic: overview
-ms.subservice: ''
+ms.subservice: overview
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: add5c89e83f33980803bf571239023859653c4f1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f2050bf671af35df4faec8b0b1d53f4c10a9075e
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87059608"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90031665"
 ---
-# <a name="azure-synapse-analytics-preview-release-notes"></a>Azure Synapse Analytics (預覽) 版本資訊
+# <a name="azure-synapse-analytics-workspaces-preview-release-notes"></a>Azure Synapse Analytics (工作區預覽) 版本資訊
 
 本文將說明 Azure Synapse Analytics (工作區) 的限制和問題。 如需相關資訊，請參閱[什麼是 Azure Synapse Analytics (工作區)](overview-what-is.md)
 
 [!INCLUDE [preview](includes/note-preview.md)]
 
-## <a name="azure-synapse-workspaces"></a>Azure Synapse (工作區) 
-
-### <a name="azure-synapse-cli"></a>Azure Synapse CLI
+## <a name="azure-cli"></a>Azure CLI
 
 - 問題和客戶的影響：SDK 所建立的工作區無法啟動 Synapse Studio
 
@@ -36,8 +34,6 @@ ms.locfileid: "87059608"
 
 ## <a name="next-steps"></a>後續步驟
 
-* [建立工作區](quickstart-create-workspace.md)
-* [使用 Synapse Studio](quickstart-synapse-studio.md)
-* [建立 SQL 集區](quickstart-create-sql-pool-portal.md)
-* [使用 SQL 隨選](quickstart-sql-on-demand.md)
-* [建立 Apache Spark 集區](quickstart-create-apache-spark-pool-portal.md)
+* [什麼是 Azure Synapse](overview-what-is.md)
+* [開始使用](get-started.md)
+* [常見問題集](overview-faq.md)

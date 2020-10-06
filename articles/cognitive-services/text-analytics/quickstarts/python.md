@@ -1,7 +1,7 @@
 ---
 title: 快速入門：使用 Python 來呼叫文字分析 API
 titleSuffix: Azure Cognitive Services
-description: 此快速入門示範如何取得資訊和程式碼範例，協助您在 Azure 認知服務中快速開始使用文字分析 API。
+description: 此快速入門示範如何使用 Python 取得資訊和程式碼範例，協助您在 Azure 認知服務中快速開始使用文字分析 API。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,21 +11,21 @@ ms.topic: quickstart
 ms.date: 07/20/2020
 ms.author: aahi
 ms.custom: devx-track-python
-ms.openlocfilehash: 34d1b62ed97b966c000ff81e8f7676c30338b6a1
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 0ef870b6b2d3b88b13c16c8c2acbfcee7ed551c1
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876762"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90527236"
 ---
-# <a name="quickstart-using-the-python-rest-api-to-call-the-text-analytics-cognitive-service"></a>快速入門：使用 Python REST API 呼叫文字分析認知服務 
+# <a name="quickstart-using-the-python-rest-api-to-call-the-text-analytics-cognitive-service"></a>使用 Python REST API 呼叫文字分析認知服務 
 <a name="HOLTop"></a>
 
 透過此快速入門，開始使用文字分析 REST API 和 Python 來分析語言。 本文示範如何[偵測語言](#Detect)、[分析情感](#SentimentAnalysis)、[擷取關鍵片語](#KeyPhraseExtraction)，以及[識別已連結的實體](#Entities)。
 
 [!INCLUDE [text-analytics-api-references](../includes/text-analytics-api-references.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * [Python 3.x](https://python.org)
 
@@ -71,7 +71,7 @@ endpoint = "<paste-your-text-analytics-endpoint-here>"
 language_api_url = endpoint + "/text/analytics/v3.0/languages"
 ```
 
-對 API 的承載是由 `documents` 清單所組成，其為包含 `id` 和 `text`  屬性的元組。 `text` 屬性會儲存要分析的文字，而 `id` 可以是任何值。 
+對 API 的承載是由 `documents` 清單所組成，其為包含 `id` 和 `text` 屬性的元組。 `text` 屬性會儲存要分析的文字，而 `id` 可以是任何值。 
 
 ```python
 documents = {"documents": [

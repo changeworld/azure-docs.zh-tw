@@ -13,12 +13,12 @@ ms.date: 05/17/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f74798eeed4764bf2f7b71cb5049fb1c6b3ae077
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 895355b5acebffe6ad24b15b0c709d21e8f20be4
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89278644"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90016643"
 ---
 # <a name="what-is-hybrid-identity-with-azure-active-directory"></a>什麼是 Azure Active Directory 的混合式身分識別？
 
@@ -45,7 +45,7 @@ Microsoft 的身分識別解決方案可跨越內部部署和雲端架構功能�
 |我需要：|PHS 和 SSO<sup>1</sup>| PTA 和 SSO<sup>2</sup> | AD FS<sup>3</sup>| 
 |-----|-----|-----|-----| 
 |自動將我的內部部署 Active Directory 中建立的新使用者、連絡人及群組帳戶同步至雲端。|![建議](./media/whatis-hybrid-identity/ic195031.png)| ![建議](./media/whatis-hybrid-identity/ic195031.png) |![建議](./media/whatis-hybrid-identity/ic195031.png)| 
-|設定適用於 Office 365 混合式案例的租用戶。|![建議](./media/whatis-hybrid-identity/ic195031.png)| ![建議](./media/whatis-hybrid-identity/ic195031.png) |![建議](./media/whatis-hybrid-identity/ic195031.png)| 
+|設定適用於 Microsoft 365 混合式案例的租用戶。|![建議](./media/whatis-hybrid-identity/ic195031.png)| ![建議](./media/whatis-hybrid-identity/ic195031.png) |![建議](./media/whatis-hybrid-identity/ic195031.png)| 
 |讓我的使用者可以使用其內部部署密碼登入及存取雲端服務。|![建議](./media/whatis-hybrid-identity/ic195031.png)| ![建議](./media/whatis-hybrid-identity/ic195031.png) |![建議](./media/whatis-hybrid-identity/ic195031.png)| 
 |使用公司認證實作單一登入。|![建議](./media/whatis-hybrid-identity/ic195031.png)| ![建議](./media/whatis-hybrid-identity/ic195031.png) |![建議](./media/whatis-hybrid-identity/ic195031.png)|  
 |確定雲端中未儲存任何密碼雜湊。| |![建議](./media/whatis-hybrid-identity/ic195031.png)|![建議](./media/whatis-hybrid-identity/ic195031.png)| 

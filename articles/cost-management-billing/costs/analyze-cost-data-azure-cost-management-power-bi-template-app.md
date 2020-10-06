@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: benshy
-ms.openlocfilehash: 2a66ef2f91715180ae84036fc7eead759e7ee00f
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 0174c8a0c96d884f42aea9b6fb1cb0d9c06ce400
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88685046"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447654"
 ---
 # <a name="analyze-cost-with-the-azure-cost-management-power-bi-app-for-enterprise-agreements-ea"></a>使用適用於 Enterprise 合約 (EA) 的 Azure 成本管理 Power BI 應用程式來分析成本
 
@@ -47,7 +47,7 @@ Azure 成本管理 Power BI 應用程式目前僅支援具有 [Enterprise 合約
 9. 在出現的對話方塊中，於 **BillingProfileIdOrEnrollmentNumber** 中輸入您的 EA 註冊號碼。 指定要取得資料的月份數。 保留**註冊號碼**的預設**範圍**值，然後選取 [下一步]。  
   ![輸入 EA 註冊資訊](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-number.png)  
 10. 下一個對話方塊會與 Azure 連結，並取得保留執行個體建議所需的資料。 *保留已設定的預設值*，然後選取 [登入]。  
-  ![連接到 Azure](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit.png)  
+  ![顯示含預設值之 [連線到 Azure 成本管理應用程式] 對話方塊的螢幕擷取畫面。](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit.png)  
 11. 最後的安裝步驟會連結到您的 EA 註冊，而且需要[企業系統管理員](../manage/understand-ea-roles.md)帳戶。 選取 [登入]，以向您的 EA 註冊進行驗證。 此步驟也會在 Power BI 中啟動資料重新整理動作。  
   ![連結到 EA 註冊](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-auth.png)  
     > [!NOTE]
@@ -189,7 +189,7 @@ Failed to update data source credentials: The credentials provided for the Azure
 
 1. 連線到您的資料。
 1. 輸入 EA 註冊和月數之後，請確定您將驗證方法保留為**匿名**的預設值，並將隱私權等級設為**無**。  
-  ![連接到 Azure](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit-troubleshoot.png)  
+  ![顯示已輸入 [匿名] 和 [無] 值之 [連線到 Azure 成本管理應用程式] 對話方塊的螢幕擷取畫面。](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit-troubleshoot.png)  
 1. 在下一個頁面上，將驗證方法設定為 **OAuth2**，並將隱私權等級設為**無**。 接著，登入以驗證您的註冊。 此步驟也會重新整理 Power BI 資料。
 
 

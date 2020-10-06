@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: f42c185046e6ce78edd234923da1a3390ed08608
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: ccdd7b16c7ec292b8f4f4c155a6f9497c606a489
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690845"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371808"
 ---
 # <a name="manage-access-to-billing-information-for-azure"></a>管理對 Azure 帳單資訊的存取
 
@@ -40,7 +40,7 @@ ms.locfileid: "88690845"
 
 這些角色可以在 [Azure 入口網站](https://portal.azure.com/)中存取計費資訊。 獲指派這些角色的人員也可以使用[計費 API](usage-rate-card-overview.md)，以程式設計方式取得發票和使用量詳細資料。
 
-若要指派角色，請參閱[使用 RBAC 和 Azure 入口網站來管理存取權](../../role-based-access-control/role-assignments-portal.md)。
+若要指派角色，請參閱[使用 Azure 入口網站新增或移除 Azure 角色指派](../../role-based-access-control/role-assignments-portal.md)。
 
 ** 如果您是 EA 客戶，帳戶擁有者可以將上述角色指派給其小組的其他使用者。 但是為了讓這些使用者檢視計費資訊，企業系統管理員必須在 Enterprise 入口網站中啟用 AO 檢視費用。
 
@@ -105,7 +105,7 @@ ms.locfileid: "88690845"
 
 ## <a name="next-steps"></a>後續步驟
 
-- 具備其他角色 (例如「擁有者」和「參與者」) 的使用者不僅可存取帳單資訊，還可存取 Azure 服務。 若要管理這些角色，請參閱[使用 RBAC 和 Azure 入口網站來管理存取權](../../role-based-access-control/role-assignments-portal.md)。
+- 具備其他角色 (例如「擁有者」和「參與者」) 的使用者不僅可存取帳單資訊，還可存取 Azure 服務。 若要管理這些角色，請參閱[使用 Azure 入口網站新增或移除 Azure 角色指派](../../role-based-access-control/role-assignments-portal.md)。
 - 如需角色的詳細資訊，請參閱 [Azure 內建角色](../../role-based-access-control/built-in-roles.md)。
 
 ## <a name="need-help-contact-us"></a>需要協助嗎？ 與我們連絡。

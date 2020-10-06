@@ -9,22 +9,22 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: python
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 53590344a45990187b5ca8aba4eca18da526f308
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 6e778541023befc756e61be9b9646bf37c82c47c
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87872611"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530602"
 ---
-# <a name="quickstart-create-and-provision-a-simulated-tpm-device-using-python-device-sdk-for-iot-hub-device-provisioning-service"></a>快速入門：使用適用於 IoT 中樞裝置佈建服務的 Python 裝置 SDK 來建立及佈建模擬 TPM 裝置
+# <a name="quickstart-create-and-provision-a-simulated-tpm-device-using-python-device-sdk-for-iot-hub-device-provisioning-service"></a>快速入門 - 使用適用於 IoT 中樞裝置佈建服務的 Python 裝置 SDK 來建立及佈建模擬 X.509 裝置。
 
 [!INCLUDE [iot-dps-selector-quick-create-simulated-device-tpm](../../includes/iot-dps-selector-quick-create-simulated-device-tpm.md)]
 
 在本快速入門中，您會在 Windows 電腦上建立模擬的 IoT 裝置。 模擬裝置會包含 TPM 模擬器以作為硬體安全性模組 (HSM)。 您可以使用裝置範例 Python 程式碼，使用以裝置佈建服務 (DPS) 所進行的個別註冊，讓此模擬裝置與 IoT 中樞進行連線。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件：
 
-- 檢閱[自動佈建概念](concepts-auto-provisioning.md)。
+- 熟悉[佈建](about-iot-dps.md#provisioning-process) 概念。
 - 完成[使用 Azure 入口網站設定 IoT 中樞裝置佈建服務](./quick-setup-auto-provision.md)。
 - 具有有效訂用帳戶的 Azure 帳戶。 [建立免費帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 - [Visual Studio 2015+](https://visualstudio.microsoft.com/vs/) 以及使用 C++ 的桌面開發。
@@ -64,7 +64,7 @@ ms.locfileid: "87872611"
     cmake -Duse_prov_client:BOOL=ON -Duse_tpm_simulator:BOOL=ON ..
     ```
 
-1. 在個別的命令提示字元中，瀏覽至 TPM 模擬器資料夾，並執行 [TPM](https://docs.microsoft.com/windows/device-security/tpm/trusted-platform-module-overview) 模擬器，使其成為模擬裝置的 [HSM](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/)。 按一下 [允許存取]  。 它會透過連接埠 2321年和 2322 上的通訊端接聽。 請勿關閉此命令視窗；您必須讓此模擬器保持執行，直到此快速入門指南結束。 
+1. 在個別的命令提示字元中，瀏覽至 TPM 模擬器資料夾，並執行 [TPM](https://docs.microsoft.com/windows/device-security/tpm/trusted-platform-module-overview) 模擬器，使其成為模擬裝置的 [HSM](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/)。 按一下 [允許存取]****。 它會透過連接埠 2321年和 2322 上的通訊端接聽。 請勿關閉此命令視窗；您必須讓此模擬器保持執行，直到此快速入門指南結束。 
 
     ```cmd/sh
     .\azure-iot-sdk-python\c\provisioning_client\deps\utpm\tools\tpm_simulator\Simulator.exe
@@ -84,26 +84,26 @@ Azure IoT 裝置佈建服務支援兩種類型的註冊：
 
 1. 開啟在 *cmake* 資料夾中產生的方案 (名為 `azure_iot_sdks.sln`)，並且在 Visual Studio 中建置。
 
-1. 以滑鼠右鍵按一下 **tpm_device_provision** 專案，然後選取 [設為起始專案]  。 執行方案。 輸出視窗會顯示裝置註冊所需的 [簽署金鑰]  和 [登錄識別碼]  。 請記下這些值。 
+1. 以滑鼠右鍵按一下 **tpm_device_provision** 專案，然後選取 [設為起始專案]****。 執行方案。 輸出視窗會顯示裝置註冊所需的 [簽署金鑰]**__** 和 [登錄識別碼]**__**。 請記下這些值。 
 
     ![TPM 安裝程式](./media/python-quick-create-simulated-device/tpm-setup.png)
 
-1. 登入 Azure 入口網站，選取左側功能表上的 [所有資源]  按鈕，然後開啟您的裝置佈建服務。
+1. 登入 Azure 入口網站，選取左側功能表上的 [所有資源]**** 按鈕，然後開啟您的裝置佈建服務。
 
-1. 從 [裝置佈建服務] 功能表中，選取 [管理註冊]  。 選取 [個別註冊]  索引標籤，然後選取頂端的 [新增個別註冊]  按鈕。 
+1. 從 [裝置佈建服務] 功能表中，選取 [管理註冊]****。 選取 [個別註冊]**** 索引標籤，然後選取頂端的 [新增個別註冊]**** 按鈕。 
 
-1. 在 [新增註冊]  面板中，輸入下列資訊：
-   - 選取 [TPM]  作為身分識別證明「機制」  。
-   - 針對 TPM 裝置，輸入先前所記下的 [註冊識別碼]  和 [簽署金鑰]  值。
+1. 在 [新增註冊]**** 面板中，輸入下列資訊：
+   - 選取 [TPM]**** 作為身分識別證明「機制」**。
+   - 針對 TPM 裝置，輸入先前所記下的 [註冊識別碼]** 和 [簽署金鑰]** 值。
    - 選取與您的佈建服務連結的 IoT 中樞。
    - 您可以選擇性地提供下列資訊：
-       - 輸入唯一的 [裝置識別碼]  。 替您的裝置命名時，務必避免使用敏感性資料。 如果您選擇不提供名稱，則會改用註冊識別碼來識別裝置。
+       - 輸入唯一的 [裝置識別碼]**。 替您的裝置命名時，務必避免使用敏感性資料。 如果您選擇不提供名稱，則會改用註冊識別碼來識別裝置。
        - 使用裝置所需的初始組態更新**初始裝置對應項狀態**。
-   - 完成後，按 [儲存]  按鈕。 
+   - 完成後，按 [儲存]**** 按鈕。 
 
      ![在入口網站刀鋒視窗中輸入裝置註冊資訊](./media/python-quick-create-simulated-device/enterdevice-enrollment.png)  
 
-   註冊成功時，您裝置的「登錄識別碼」  將會出現在「個別註冊」  索引標籤之下的清單中。 
+   註冊成功時，您裝置的「登錄識別碼」** 將會出現在「個別註冊」** 索引標籤之下的清單中。 
 
 
 ## <a name="simulate-the-device"></a>模擬裝置
@@ -125,7 +125,7 @@ Azure IoT 裝置佈建服務支援兩種類型的註冊：
     cd azure-iot-sdk-python/provisioning_device_client/samples
     ```
 
-1. 使用您的 Python IDE，編輯名為 **provisioning\_device\_client\_sample.py** 的 python 指令碼。 將 GLOBAL\_PROV\_URI  和 ID\_SCOPE  變數修改為先前所述的值。 此外確定 SECURITY\_DEVICE\_TYPE  設定為 `ProvisioningSecurityDeviceType.TPM`
+1. 使用您的 Python IDE，編輯名為 **provisioning\_device\_client\_sample.py** 的 python 指令碼。 將 GLOBAL\_PROV\_URI** 和 ID\_SCOPE** 變數修改為先前所述的值。 此外確定 SECURITY\_DEVICE\_TYPE** 設定為 `ProvisioningSecurityDeviceType.TPM`
 
     ```python
     GLOBAL_PROV_URI = "{globalServiceEndpoint}"
@@ -146,7 +146,7 @@ Azure IoT 裝置佈建服務支援兩種類型的註冊：
 
     ![註冊成功](./media/python-quick-create-simulated-device/registration-success.png)
 
-1. 模擬裝置成功佈建到與佈建服務連結的 IoT 中樞時，裝置識別碼會出現在中樞的 [IoT 裝置]  刀鋒視窗上。
+1. 模擬裝置成功佈建到與佈建服務連結的 IoT 中樞時，裝置識別碼會出現在中樞的 [IoT 裝置]**** 刀鋒視窗上。
 
     ![已向 IoT 中樞註冊裝置](./media/python-quick-create-simulated-device/hubregistration.png) 
 
@@ -159,8 +159,8 @@ Azure IoT 裝置佈建服務支援兩種類型的註冊：
 
 1. 在您的電腦上關閉裝置用戶端範例輸出視窗。
 1. 在您的電腦上關閉 TPM 模擬器視窗。
-1. 從 Azure 入口網站的左側功能表中，選取 [所有資源]  ，然後選取您的裝置佈建服務。 開啟您服務的 [管理註冊]  刀鋒視窗，然後選取 [個別註冊]  索引標籤。選取您在本快速入門中所註冊裝置的 [註冊識別碼]  旁的核取方塊，然後按窗格頂端的 [刪除]  按鈕。 
-1. 從 Azure 入口網站的左側功能表中，選取 [所有資源]  ，然後選取您的 IoT 中樞。 開啟您中樞的 [IoT 裝置]  刀鋒視窗，選取您在本快速入門所註冊裝置的 [裝置識別碼]  旁的核取方塊，然後按窗格頂端的 [刪除]  按鈕。
+1. 從 Azure 入口網站的左側功能表中，選取 [所有資源]****，然後選取您的裝置佈建服務。 開啟您服務的 [管理註冊]  刀鋒視窗，然後選取 [個別註冊]  索引標籤。選取您在本快速入門中所註冊裝置的 [註冊識別碼]  旁的核取方塊，然後按窗格頂端的 [刪除]  按鈕。 
+1. 從 Azure 入口網站的左側功能表中，選取 [所有資源]****，然後選取您的 IoT 中樞。 開啟您中樞的 [IoT 裝置]**** 刀鋒視窗，選取您在本快速入門所註冊裝置的 [裝置識別碼]** 旁的核取方塊，然後按窗格頂端的 [刪除]**** 按鈕。
 
 ## <a name="next-steps"></a>後續步驟
 

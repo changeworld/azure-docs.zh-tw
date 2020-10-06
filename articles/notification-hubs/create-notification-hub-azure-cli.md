@@ -14,14 +14,14 @@ ms.author: dbradish
 ms.reviewer: thsomasu
 ms.lastreviewed: 03/18/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: f1829b6d8ab7b2cab0734ffd3cbab295e6c39678
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 5361931328ed107c7cc130b633a40b1582828aa1
+ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87761088"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90024111"
 ---
-# <a name="quickstart-create-an-azure-notification-hub-using-the-azure-cli"></a>快速入門：使用 Azure CLI 建立 Azure 通知中樞
+# <a name="quickstart-create-an-azure-notification-hub-using-the-azure-cli"></a>使用 Azure CLI 建立 Azure 通知中樞
 
 Azure 通知中樞提供易於使用且相應放大的推播引擎，可讓您從任何後端 (雲端或內部部署) 傳送通知到任何平台 (iOS、Android、Windows、Kindle、Baidu 等)。 如需該服務的詳細資訊，請參閱[什麼是 Azure 通知中樞？](notification-hubs-push-notification-overview.md)。
 
@@ -29,37 +29,30 @@ Azure 通知中樞提供易於使用且相應放大的推播引擎，可讓您�
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-通知中樞需要 Azure CLI 的 2.0.67 版或更新版本。 執行 `az --version` 以尋找已安裝的版本和相依程式庫。 若要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
+> [!IMPORTANT]
+> 通知中樞需要 Azure CLI 的 2.0.67 版或更新版本。 執行 `az --version` 以尋找已安裝的版本和相依程式庫。 若要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
 
-## <a name="prepare-your-environment"></a>準備您的環境
+## <a name="install-the-azure-cli-extension"></a>安裝 Azure CLI 擴充功能
 
-1. 如果您使用的是 CLI 的本機安裝，請使用 [az login](/cli/azure/reference-index#az-login) 命令登入。
+當搭配 Azure CLI 的延伸模組參考一起使用時，您必須先安裝延伸模組。 Azure CLI 擴充功能可讓您存取核心 CLI 尚未隨附的實驗性與發行前版本命令。 若要深入了解延伸模組 (包括更新及解除安裝)，請參閱[使用 Azure CLI 延伸模組](/cli/azure/azure-cli-extensions-overview) (英文)。
 
-    ```azurecli
-    az login
-    ```
+安裝適用於通知中樞的 Azure CLI 擴充功能。
 
-    請遵循您終端機上顯示的步驟，來完成驗證程序。
+```azurecli
+az extension add --name notification-hub
+```
 
-2. 當搭配 Azure CLI 的延伸模組參考一起使用時，您必須先安裝延伸模組。 Azure CLI 延伸模組可讓您存取核心 CLI 尚未隨附的實驗性與發行前版本命令。 若要深入了解延伸模組 (包括更新及解除安裝)，請參閱[使用 Azure CLI 延伸模組](/cli/azure/azure-cli-extensions-overview) (英文)。
+## <a name="create-a-resource-group"></a>建立資源群組
 
-   執行下列命令，以安裝 [適用於通知中樞的延伸模組](/cli/azure/ext/notification-hub/notification-hub)：
+Azure 通知中樞與所有 Azure 資源一樣都必須部署到資源群組中。  資源群組可讓您組織和管理相關的 Azure 資源。  若要深入了解資源群組，請參閱[什麼是 Azure Resource Manager](/azure/azure-resource-manager/management/overview)。
 
-    ```azurecli
-    az extension add --name notification-hub
-   ```
+針對此快速入門，請使用下列 [az group create](/cli/azure/group#az-group-create) 命令，在 eastus 位置中建立一個名為 spnhubrg 的資源群組。
 
-3. 建立資源群組。
-
-   Azure 通知中樞與所有 Azure 資源一樣都必須部署到資源群組中。 資源群組可讓您組織和管理相關的 Azure 資源。
-
-   針對此快速入門，請使用下列 [az group create](/cli/azure/group#az-group-create) 命令，在 eastus 位置中建立一個名為 spnhubrg 的資源群組：
-
-   ```azurecli
-   az group create --name spnhubrg --location eastus
-   ```
+```azurecli
+az group create --name spnhubrg --location eastus
+```
 
 ## <a name="create-a-notification-hubs-namespace"></a>建立通知中樞命名空間
 
@@ -109,7 +102,7 @@ Azure 通知中樞提供易於使用且相應放大的推播引擎，可讓您�
 
 2. 取得命名空間的清單。
 
-   若要查看新命名空間的詳細資料，請使用 [az notification-hub namespace list](/cli/azure/ext/notification-hub/notification-hub/namespace?view=azure-cli-latest#ext-notification-hub-az-notification-hub-namespace-list) 命令。 若您想要查看訂用帳戶的所有命名空間，可選擇 `--resource-group` 參數。
+   若要查看新命名空間的詳細資料，請使用 [az notification-hub namespace list](/cli/azure/ext/notification-hub/notification-hub/namespace#ext-notification-hub-az-notification-hub-namespace-list) 命令。 若您想要查看訂用帳戶的所有命名空間，可選擇 `--resource-group` 參數。
 
    ```azurecli
    az notification-hub namespace list --resource-group spnhubrg
@@ -135,7 +128,7 @@ Azure 通知中樞提供易於使用且相應放大的推播引擎，可讓您�
 
 3. 取得通知中樞的清單。
 
-   Azure CLI 會傳回每個已執行命令的成功或錯誤訊息；然而，也保證可以查詢通知中樞清單。 [az notification-hub list](/cli/azure/ext/notification-hub/notification-hub?view=azure-cli-latest#ext-notification-hub-az-notification-hub-list) 命令是針對這個用途所設計。
+   Azure CLI 會傳回每個已執行命令的成功或錯誤訊息；然而，也保證可以查詢通知中樞清單。 [az notification-hub list](/cli/azure/ext/notification-hub/notification-hub#ext-notification-hub-az-notification-hub-list) 命令是針對這個用途所設計。
 
    ```azurecli
    az notification-hub list --resource-group spnhubrg --namespace-name spnhubns --output table

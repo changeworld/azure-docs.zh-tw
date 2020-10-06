@@ -8,12 +8,12 @@ ms.subservice: cost-management
 ms.topic: reference
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: e2252d13dd39587e7730b141a6096afc0a34dbc1
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 07595eed70850ce5270a261d588a33b68ff964fe
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690012"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371927"
 ---
 # <a name="azure-consumption-api-overview"></a>Azure 使用量 API 概觀
 
@@ -38,7 +38,7 @@ Azure 使用量 API 可存取：
 此 API 包含︰
 
 -   **計量層級使用量資料** - 查看資料，包括使用量成本、發出費用的計量及費用所屬的 Azure 資源。 所有使用量詳細資料記錄都會對應至每日貯體。
--   **Azure 角色型存取控制** - 在 [Azure 入口網站](https://portal.azure.com)上或是透過 [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) 或 [Azure PowerShell Cmdlet](https://docs.microsoft.com/powershell/azure/) 設定存取原則，以指定哪些使用者或應用程式可以存取訂用帳戶的使用量資料。 呼叫端必須使用標準的 Azure Active Directory 權杖進行驗證。 將呼叫端新增到「發票讀者」、「讀者」、「擁有者」或「參與者」角色，以存取特定 Azure 訂用帳戶的使用情況資料。
+-   **Azure 角色型存取控制 (Azure RBAC)** - 在 [Azure 入口網站](https://portal.azure.com)上或是透過 [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) 或 [Azure PowerShell Cmdlet](https://docs.microsoft.com/powershell/azure/) 設定存取原則，以指定哪些使用者或應用程式可以存取訂用帳戶的使用量資料。 呼叫端必須使用標準的 Azure Active Directory 權杖進行驗證。 將呼叫端新增到「發票讀者」、「讀者」、「擁有者」或「參與者」角色，以存取特定 Azure 訂用帳戶的使用情況資料。
 -   **篩選** - 使用下列篩選，將您的 API 結果集向下修剪為較小的使用量詳細資料記錄集：
     - 使用結束/使用開始
     - 資源群組
@@ -55,7 +55,7 @@ Azure 使用量 API 可存取：
 此 API 包含︰
 
 -   **計量層級使用量資料** - 查看資料，包括 Marketplace 使用量成本、發出費用的計量及費用所屬的資源。 所有使用量詳細資料記錄都會對應至每日貯體。
--   **Azure 角色型存取控制** - 在 [Azure 入口網站](https://portal.azure.com)上或是透過 [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) 或 [Azure PowerShell Cmdlet](https://docs.microsoft.com/powershell/azure/) 設定存取原則，以指定哪些使用者或應用程式可以存取訂用帳戶的使用量資料。 呼叫端必須使用標準的 Azure Active Directory 權杖進行驗證。 將呼叫端新增到「發票讀者」、「讀者」、「擁有者」或「參與者」角色，以存取特定 Azure 訂用帳戶的使用情況資料。
+-   **Azure 角色型存取控制 (Azure RBAC)** - 在 [Azure 入口網站](https://portal.azure.com)上或是透過 [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) 或 [Azure PowerShell Cmdlet](https://docs.microsoft.com/powershell/azure/) 設定存取原則，以指定哪些使用者或應用程式可以存取訂用帳戶的使用量資料。 呼叫端必須使用標準的 Azure Active Directory 權杖進行驗證。 將呼叫端新增到「發票讀者」、「讀者」、「擁有者」或「參與者」角色，以存取特定 Azure 訂用帳戶的使用情況資料。
 -   **篩選** - 使用下列篩選，將您的 API 結果集向下修剪為較小的 Marketplace 記錄集：
     - 結束使用/開始使用
     - 資源群組
@@ -70,7 +70,7 @@ Azure 使用量 API 可存取：
 
 此 API 包含︰
 
--   **Azure 角色型存取控制** - 在 [Azure 入口網站](https://portal.azure.com)上或是透過 [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) 或 [Azure PowerShell Cmdlet](https://docs.microsoft.com/powershell/azure/) 設定存取原則，以指定哪些使用者或應用程式可以存取訂用帳戶的使用量資料。 呼叫端必須使用標準的 Azure Active Directory 權杖進行驗證。 將呼叫端新增到「發票讀者」、「讀者」、「擁有者」或「參與者」角色，以存取特定 Azure 訂用帳戶的使用情況資料。
+-   **Azure 角色型存取控制 (Azure RBAC)** - 在 [Azure 入口網站](https://portal.azure.com)上或是透過 [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) 或 [Azure PowerShell Cmdlet](https://docs.microsoft.com/powershell/azure/) 設定存取原則，以指定哪些使用者或應用程式可以存取訂用帳戶的使用量資料。 呼叫端必須使用標準的 Azure Active Directory 權杖進行驗證。 將呼叫端新增到「發票讀者」、「讀者」、「擁有者」或「參與者」角色，以存取特定 Azure 訂用帳戶的使用情況資料。
 -   **僅限企業客戶** - 此 API 僅適用於 EA 客戶。
     - 客戶必須具有企業系統管理員權限才能呼叫此 API
 
@@ -82,7 +82,7 @@ Azure 使用量 API 可存取：
 
 此 API 包含︰
 
--   **Azure 角色型存取控制** - 在 [Azure 入口網站](https://portal.azure.com)上或是透過 [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) 或 [Azure PowerShell Cmdlet](https://docs.microsoft.com/powershell/azure/) 設定存取原則，以指定哪些使用者或應用程式可以存取訂用帳戶的使用量資料。 呼叫端必須使用標準的 Azure Active Directory 權杖進行驗證。 將呼叫端新增到「發票讀者」、「讀者」、「擁有者」或「參與者」角色，以存取特定 Azure 訂用帳戶的使用情況資料。
+-   **Azure 角色型存取控制 (Azure RBAC)** - 在 [Azure 入口網站](https://portal.azure.com)上或是透過 [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) 或 [Azure PowerShell Cmdlet](https://docs.microsoft.com/powershell/azure/) 設定存取原則，以指定哪些使用者或應用程式可以存取訂用帳戶的使用量資料。 呼叫端必須使用標準的 Azure Active Directory 權杖進行驗證。 將呼叫端新增到「發票讀者」、「讀者」、「擁有者」或「參與者」角色，以存取特定 Azure 訂用帳戶的使用情況資料。
 -   **僅限企業客戶** - 此 API 僅適用於 EA 客戶。
 -   **可設定的通知** - 指定讓使用者在預算有誤時收到通知。
 -   **使用量或成本型預算** - 依照您的案例需求，建立依據使用量或成本的預算。
@@ -100,7 +100,7 @@ Azure 使用量 API 可存取：
 
 此 API 包含︰
 
--   **Azure 角色型存取控制** - 在 [Azure 入口網站](https://portal.azure.com)上或是透過 [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) 或 [Azure PowerShell Cmdlet](https://docs.microsoft.com/powershell/azure/) 設定存取原則，以指定哪些使用者或應用程式可以存取訂用帳戶的使用量資料。 呼叫端必須使用標準的 Azure Active Directory 權杖進行驗證。 將呼叫端新增到「發票讀者」、「讀者」、「擁有者」或「參與者」角色，以存取特定 Azure 訂用帳戶的使用情況資料。
+-   **Azure 角色型存取控制 (Azure RBAC)** - 在 [Azure 入口網站](https://portal.azure.com)上或是透過 [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) 或 [Azure PowerShell Cmdlet](https://docs.microsoft.com/powershell/azure/) 設定存取原則，以指定哪些使用者或應用程式可以存取訂用帳戶的使用量資料。 呼叫端必須使用標準的 Azure Active Directory 權杖進行驗證。 將呼叫端新增到「發票讀者」、「讀者」、「擁有者」或「參與者」角色，以存取特定 Azure 訂用帳戶的使用情況資料。
 -   **篩選** - 使用下列篩選，量身打造您的建議結果：
     - 影響範圍
     - 回顧期間
@@ -114,7 +114,7 @@ Azure 使用量 API 可存取：
 
 此 API 包含︰
 
--   **Azure 角色型存取控制** - 在 [Azure 入口網站](https://portal.azure.com)上或是透過 [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) 或 [Azure PowerShell Cmdlet](https://docs.microsoft.com/powershell/azure/) 設定存取原則，以指定哪些使用者或應用程式可以存取訂用帳戶的使用量資料。 呼叫端必須使用標準的 Azure Active Directory 權杖進行驗證。 將呼叫端新增到「發票讀者」、「讀者」、「擁有者」或「參與者」角色，以存取特定 Azure 訂用帳戶的使用情況資料。
+-   **Azure 角色型存取控制 (Azure RBAC)** - 在 [Azure 入口網站](https://portal.azure.com)上或是透過 [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) 或 [Azure PowerShell Cmdlet](https://docs.microsoft.com/powershell/azure/) 設定存取原則，以指定哪些使用者或應用程式可以存取訂用帳戶的使用量資料。 呼叫端必須使用標準的 Azure Active Directory 權杖進行驗證。 將呼叫端新增到「發票讀者」、「讀者」、「擁有者」或「參與者」角色，以存取特定 Azure 訂用帳戶的使用情況資料。
 -   **篩選** - 使用下列篩選，將您的 API 結果集向下修剪為較小的保留集：
     - 日期範圍
 -   **不同供應項目類型的保留資訊** - 保留資訊目前適用於企業和 Web Direct 客戶。
@@ -127,7 +127,7 @@ Azure 使用量 API 可存取：
 
 此 API 包含︰
 
--   **Azure 角色型存取控制** - 在 [Azure 入口網站](https://portal.azure.com)上或是透過 [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) 或 [Azure PowerShell Cmdlet](https://docs.microsoft.com/powershell/azure/) 設定存取原則，以指定哪些使用者或應用程式可以存取訂用帳戶的使用量資料。 呼叫端必須使用標準的 Azure Active Directory 權杖進行驗證。 將呼叫端新增到「發票讀者」、「讀者」、「擁有者」或「參與者」角色，以存取特定 Azure 訂用帳戶的使用情況資料。
+-   **Azure 角色型存取控制 (Azure RBAC)** - 在 [Azure 入口網站](https://portal.azure.com)上或是透過 [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) 或 [Azure PowerShell Cmdlet](https://docs.microsoft.com/powershell/azure/) 設定存取原則，以指定哪些使用者或應用程式可以存取訂用帳戶的使用量資料。 呼叫端必須使用標準的 Azure Active Directory 權杖進行驗證。 將呼叫端新增到「發票讀者」、「讀者」、「擁有者」或「參與者」角色，以存取特定 Azure 訂用帳戶的使用情況資料。
 -   **篩選** - 使用下列篩選，量身打造使用每日資料粒度時的結果：
     - 使用日期
 -   **不同供應項目類型的保留資訊** - 保留資訊目前適用於企業和 Web Direct 客戶。
@@ -140,7 +140,7 @@ Azure 使用量 API 可存取：
 
 此 API 包含︰
 
--   **Azure 角色型存取控制** - 在 [Azure 入口網站](https://portal.azure.com)上或是透過 [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) 或 [Azure PowerShell Cmdlet](https://docs.microsoft.com/powershell/azure/) 設定存取原則，以指定哪些使用者或應用程式可以存取訂用帳戶的使用量資料。 呼叫端必須使用標準的 Azure Active Directory 權杖進行驗證。 將呼叫端新增到「發票讀者」、「讀者」、「擁有者」或「參與者」角色，以存取特定 Azure 訂用帳戶的使用情況資料。
+-   **Azure 角色型存取控制 (Azure RBAC)** - 在 [Azure 入口網站](https://portal.azure.com)上或是透過 [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) 或 [Azure PowerShell Cmdlet](https://docs.microsoft.com/powershell/azure/) 設定存取原則，以指定哪些使用者或應用程式可以存取訂用帳戶的使用量資料。 呼叫端必須使用標準的 Azure Active Directory 權杖進行驗證。 將呼叫端新增到「發票讀者」、「讀者」、「擁有者」或「參與者」角色，以存取特定 Azure 訂用帳戶的使用情況資料。
 -   **僅限企業客戶** - 此 API 僅適用於 EA 客戶。 Web Direct 客戶應該使用 RateCard API 來取得定價。
 
 如需詳細資訊，請參閱[價位表 API](https://docs.microsoft.com/rest/api/consumption/pricesheet) 的技術規格。

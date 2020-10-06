@@ -1,14 +1,14 @@
 ---
 title: Azure 管理概觀 - Azure 控管
 description: 管理 Azure 應用程式與資源的區域概觀，並提供 Azure 管理工具內容的連結。
-ms.date: 07/06/2020
+ms.date: 09/09/2020
 ms.topic: overview
-ms.openlocfilehash: 81d655db706a7330fc541724d490a4885cc2fe8b
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 0aaa23dd2841802919cfdfcc857a189e072a5c6b
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86041909"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662123"
 ---
 # <a name="what-are-the-azure-management-areas"></a>什麼是 Azure 管理區域？
 
@@ -18,7 +18,9 @@ ms.locfileid: "86041909"
 
 下圖說明維護應用程式或資源所需的不同管理範圍。 您可以將這些不同的區域視為生命週期。 在資源的存留期間內，各個領域必須接續進行。 此一資源生命週期始於最初的部署，在經歷持續的作業後，因遭到淘汰而告終。
 
-:::image type="content" source="../monitoring/media/management-overview/management-capabilities.png" alt-text="Azure 中的管理專業領域" border="false":::
+:::image type="complex" source="../monitoring/media/management-overview/management-capabilities.png" alt-text="Azure 中管理專業領域的圖表。" border="false":::
+   此圖顯示在支援 Azure 中管理和治理的服務轉輪中有以下元素：遷移、安全、保護、監視、設定及治理。 安全的子項目有安全性管理和威脅防護。 保護的子項目有備份和災害復原。 監視器的子項目有應用程式、基礎和網路監視，以及 Log Analytics 和診斷。 設定的子項目有設定、更新管理、自動化和指令碼。 而治理的子項目有原則管理和成本管理。
+:::image-end:::
 
 沒有單一 Azure 服務能完全符合特定管理領域的需求。 必須在多項服務的搭配運作下，才能符合這些需求。 某些服務可提供針對 Web 應用程式進行監視的功能，例如 Application Insights。 有些服務則可儲存其他服務的管理資料，例如 Azure 監視器記錄。 這項功能可讓您對不同服務所收集的不同資料類型進行分析。
 

@@ -9,20 +9,20 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: secdec18
-ms.openlocfilehash: c69dc63af6bacb4aaf1beda1a0846a98b06ec209
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 660b5751e3b3cbc632331e99d797af3392a8aea4
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88689247"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371961"
 ---
 # <a name="assign-access-to-cost-management-data"></a>指派成本管理資料的存取權
 
-對於具有 Azure Enterprise 合約的使用者，在 Azure 入口網站和企業 (EA) 入口網站中授與的權限組合，定義了使用者對 Azure 成本管理資料的存取權層級。 對於其他 Azure 帳戶類型的使用者，定義使用者對成本管理資料的存取層級，會比使用 Azure 角色型存取控制簡單。 本文逐步引導您指派對 Azure 成本管理資料的存取權。 指派權限組合之後，使用者根據其存取權範圍和他們在 Azure 入口網站中選取的範圍，來檢視成本管理中的資料。
+對於具有 Azure Enterprise 合約的使用者，在 Azure 入口網站和企業 (EA) 入口網站中授與的權限組合，定義了使用者對 Azure 成本管理資料的存取權層級。 對於其他 Azure 帳戶類型的使用者，定義使用者對成本管理資料的存取層級，會比使用 Azure 角色型存取控制 (Azure RBAC) 簡單。 本文逐步引導您指派對 Azure 成本管理資料的存取權。 指派權限組合之後，使用者根據其存取權範圍和他們在 Azure 入口網站中選取的範圍，來檢視成本管理中的資料。
 
 使用者選取的範圍使用於成本管理，以提供資料彙總及控制對成本資訊的存取權。 使用範圍時，使用者不能多重選取範圍。 相反地，他們是選取子範圍彙總至的較大範圍，然後再篩選出想要檢視的部分。 請務必了解資料彙總，因為有些人員不應存取子範圍所彙總至的父範圍。
 
-觀看[成本管理控制存取](https://www.youtube.com/watch?v=_uQzQ9puPyM)影片，了解如何使用 Azure 角色型存取控制來指派檢視成本和費用的存取權。 若要觀看其他影片，請造訪[成本管理 YouTube 頻道](https://www.youtube.com/c/AzureCostManagement)。
+觀看[成本管理控制存取](https://www.youtube.com/watch?v=_uQzQ9puPyM)影片，了解如何使用 Azure 角色型存取控制 (Azure RBAC) 來指派檢視成本和費用的存取權。 若要觀看其他影片，請造訪[成本管理 YouTube 頻道](https://www.youtube.com/c/AzureCostManagement)。
 
 >[!VIDEO https://www.youtube.com/embed/_uQzQ9puPyM]
 
@@ -71,7 +71,7 @@ ms.locfileid: "88689247"
 1. 在 [設定]  底下選取 [原則]  功能表項目，然後進行設定。  
     ![顯示檢視費用選項的計費範圍原則](./media/assign-access-acm-data/azure-portal-policies-view-charges.png)
 
-啟用檢視費用選項之後，大部分的範圍在 Azure 入口網站中也都需要角色型存取控制 (RBAC) 權限設定。
+啟用檢視費用選項之後，大部分的範圍在 Azure 入口網站中也都需要 Azure 角色型存取控制 (Azure RBAC) 權限設定。
 
 ## <a name="enable-access-to-costs-in-the-ea-portal"></a>在 EA 入口網站中啟用對成本的存取權
 
@@ -84,7 +84,7 @@ ms.locfileid: "88689247"
 3. 針對您想要提供存取權的成本管理範圍，啟用 [DA 檢視費用]  和/或 [AO 檢視費用]  的費用選項。  
     ![顯示 DA 和 AO 檢視費用選項的 [註冊] 索引標籤](./media/assign-access-acm-data/ea-portal-enrollment-tab.png)
 
-啟用檢視費用選項之後，大部分的範圍在 Azure 入口網站中也都需要角色型存取控制 (RBAC) 權限設定。
+啟用檢視費用選項之後，大部分的範圍在 Azure 入口網站中也都需要 Azure 角色型存取控制 (Azure RBAC) 權限設定。
 
 ## <a name="enterprise-administrator-role"></a>Enterprise 系統管理員角色
 
@@ -182,9 +182,9 @@ ms.locfileid: "88689247"
 
 ## <a name="cross-tenant-authentication-issues"></a>跨租用戶驗證問題
 
-目前，Azure 成本管理對於跨租用戶驗證僅提供有限支援。 在某些情況下，當您嘗試進行跨租用戶驗證時，您可能會在成本分析中收到**拒絕存取**錯誤。 如果您對另一個租用戶的訂用帳戶設定了角色型存取控制 (RBAC)，然後嘗試檢視成本資料，就可能會發生此問題。
+目前，Azure 成本管理對於跨租用戶驗證僅提供有限支援。 在某些情況下，當您嘗試進行跨租用戶驗證時，您可能會在成本分析中收到**拒絕存取**錯誤。 如果您對另一個租用戶的訂用帳戶設定了 Azure 角色型存取控制 (Azure RBAC)，然後嘗試檢視成本資料，就可能會發生此問題。
 
-*若要解決此問題*：設定跨租用戶 RBAC 之後，請等候一小時。 然後，嘗試在成本分析中檢視成本，或將成本管理存取權授與這兩個租用戶中的使用者。  
+*若要解決此問題*：設定跨租用戶 Azure RBAC 之後，請等候一小時。 然後，嘗試在成本分析中檢視成本，或將成本管理存取權授與這兩個租用戶中的使用者。  
 
 
 ## <a name="next-steps"></a>後續步驟

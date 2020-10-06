@@ -6,31 +6,23 @@ author: saveenr
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: overview
-ms.date: 04/15/2020
+ms.date: 09/12/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: f9277842339d7c4fa74e2e0f1febcf5916d86f4a
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: c4338152579170bf809577262992f0db9a1a95ff
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89180774"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90524941"
 ---
 # <a name="what-is-azure-synapse-analytics-workspaces-preview"></a>什麼是 Azure Synapse Analytics (工作區預覽)？
 
 [!INCLUDE [preview](includes/note-preview.md)]
 
-現今的企業分析皆需要在任何類型的資料上進行大規模作業，不論是未經處理、精簡或高度策劃的資料都是如此。 在過去，建立這些類型的分析解決方案都需要企業將巨量資料和資料倉儲技術 (例如 Spark 和 SQL) 結合在一起。 接著，必須將這些項目整合到豐富的資料管線，以便在關聯式存放區和資料湖中處理資料。  
+企業分析必須在任何類型的資料上進行大規模作業，不論是未經處理、精簡或高度策劃的資料都是如此。 這需要企業將巨量資料和資料倉儲技術 (例如 Spark 和 SQL) 結合到豐富的資料管線中，以便在關聯式存放區和資料湖中處理資料。 這類解決方案難以建立、保護和維護。 複雜度會延遲傳遞企業所需的深入解析。
 
-建立、設定、保護和維護這類解決方案相當不容易，因此會延遲智慧型深入解析的即時擷取。
-
-**Azure Synapse** 是一種整合式分析服務，可讓您在資料倉儲和巨量資料分析系統之間，更快地取得所有資料的深入解析，且不論資料規模為何。 此服務將企業資料倉儲中所用的 **SQL** 技術、巨量資料分析中所用的 **Spark** 技術及**管線**完美地結合在一起，以便進行資料整合與 ETL/ELT。
-
-Azure Synapse 隨附 Web 原生的 **Studio** 使用者體驗，可提供管理、監視、編碼和安全性的單一體驗和模型。
-
-Azure Synapse 為企業提供最簡單且最快速的方式，讓他們能夠使用最熟悉的分析方式來對任何規模的任何資料收集深入解析。 其與 **Power BI** 緊密整合，讓資料工程師能夠建立端對端的分析解決方案，來提供商業智慧。
-
-此外，Azure Synapse 可透過透過其內建的 **AzureML** 支援，使用機器學習來協助預測模型的建置和進行進階分析。
+**Azure Synapse** 是一種整合式分析服務，可讓您在資料倉儲和巨量資料分析系統之間，更快地取得深入解析。 Azure Synapse 的核心會將企業資料倉儲中所用的 **SQL** 技術、巨量資料所用的 **Spark** 技術及**管線**完美地結合在一起，以便進行資料整合與 ETL/ELT。 Synapse 有一個以 Web 為基礎的 **Studio**，可提供單一位置來進行管理、監視、編碼和安全性作業。 Synapse 功能會與其他 Azure 服務 (例如 **PowerBI**、 **CosmosDB** 和 **AzureML**) 深入整合。
 
 ## <a name="key-features--benefits"></a>主要功能及優點
 
@@ -38,7 +30,7 @@ Azure Synapse 為企業提供最簡單且最快速的方式，讓他們能夠使
 
 * **Synapse SQL** 是一種分散式查詢系統，可讓企業使用資料工程師熟悉的標準 T-SQL 體驗來實作資料倉儲和資料虛擬化案例。 此系統也可擴充 SQL 的功能，進而處理串流和機器學習案例。
 
-* Synapse SQL 提供**無伺服器**和**已佈建**的資源模型，能根據您的需求提供耗用量和計費選項。 針對可預測的效能和成本，請佈建集區來為 SQL 資料表中所儲存的資料保留處理效能。 針對非計畫或暴增的工作負載，請使用無伺服器且永遠可用的 SQL 端點。
+* Synapse SQL 提供**無伺服器**和**專用**的資源模型，能根據您的需求提供耗用量和計費選項。 針對可預測的效能和成本，請建立專用 SQL 集區來為 SQL 資料表中所儲存的資料保留處理效能。 針對非計畫或暴增的工作負載，請使用永遠可用的無伺服器 SQL 端點。
 * 請使用內建的**串流**功能，將雲端資料來源中的資料放入 SQL 資料表
 * 若要整合 AI 與 SQL，請使用**機器學習**模型，以利用 [T-SQL PREDICT 函式來為資料評分](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest)
 
@@ -85,8 +77,6 @@ Azure Synapse 為企業提供單一方式來管理分析資源、監視使用方
 
 ## <a name="next-steps"></a>後續步驟
 
+* [開始使用 Azure Synapse Analytics](get-started.md)
 * [建立工作區](quickstart-create-workspace.md)
-* [使用 Synapse Studio](quickstart-synapse-studio.md)
-* [建立 SQL 集區](quickstart-create-sql-pool-portal.md)
 * [使用 SQL 隨選](quickstart-sql-on-demand.md)
-* [建立 Apache Spark 集區](quickstart-create-apache-spark-pool-portal.md)

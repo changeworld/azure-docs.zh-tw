@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: c0fcc9d5753ce90365829fba658031e633819513
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 6ef5a457bac7b384dc1b4349b1782a752c41ea26
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683261"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447616"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>教學課程：建立和管理匯出的資料
 
@@ -91,9 +91,9 @@ ms.locfileid: "88683261"
 
 1. 如果尚未建立管理群組，請建立一個群組，並將訂用帳戶指派給該群組。
 1. 在成本分析中，將範圍設定為您的管理群組，然後選取 [選取此管理群組]。  
-    :::image type="content" source="./media/tutorial-export-acm-data/management-group-scope.png" alt-text="顯示選取此管理群組選項的範例" lightbox="./media/tutorial-export-acm-data/management-group-scope.png":::
+    :::image type="content" source="./media/tutorial-export-acm-data/management-group-scope.png" alt-text="新增匯出範例" lightbox="./media/tutorial-export-acm-data/management-group-scope.png":::
 1. 在範圍建立匯出，以取得管理群組中訂用帳戶的成本管理資料。  
-    :::image type="content" source="./media/tutorial-export-acm-data/new-export-management-group-scope.png" alt-text="顯示建立新的匯出選項與管理群組範圍的範例":::
+    :::image type="content" source="./media/tutorial-export-acm-data/new-export-management-group-scope.png" alt-text="新增匯出範例":::
 
 ## <a name="verify-that-data-is-collected"></a>驗證已收集資料
 
@@ -128,11 +128,11 @@ ms.locfileid: "88683261"
 
 您可以在匯出清單頁面中選取個別的匯出，以檢視排程匯出的執行歷程記錄。 匯出清單頁面也可讓您快速存取，以檢視先前匯出的執行時間，以及下一次執行匯出的時間。 以下是顯示執行歷程記錄的範例。
 
-:::image type="content" source="./media/tutorial-export-acm-data/run-history.png" alt-text="顯示匯出執行歷程記錄的範例":::
+:::image type="content" source="./media/tutorial-export-acm-data/run-history.png" alt-text="新增匯出範例":::
 
 選取匯出以檢視其執行歷程記錄。
 
-:::image type="content" source="./media/tutorial-export-acm-data/single-export-run-history.png" alt-text="顯示匯出執行歷程記錄的範例":::
+:::image type="content" source="./media/tutorial-export-acm-data/single-export-run-history.png" alt-text="新增匯出範例":::
 
 ## <a name="access-exported-data-from-other-systems"></a>從其他系統存取匯出資料
 

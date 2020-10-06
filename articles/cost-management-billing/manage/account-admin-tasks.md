@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: ad39b9980562c345aff87f4e0771f265011886b3
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 469ccad773693047391f56c1f1109a9c444ee90b
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683295"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447693"
 ---
 # <a name="account-administrator-tasks-in-the-azure-portal"></a>Azure 入口網站中的帳戶管理員工作
 
@@ -35,14 +35,14 @@ ms.locfileid: "88683295"
 
 1. 在 [我的訂用帳戶]  清單中，選取要新增信用卡的訂用帳戶。
 
-   ![在概觀中顯示 [我的訂閱] 方格的螢幕擷取畫面](./media/account-admin-tasks/cost-management-billing-overview-x.png)
+   ![顯示 [成本管理 + 帳單] 頁面的螢幕擷取畫面，您可在其中選取訂用帳戶。](./media/account-admin-tasks/cost-management-billing-overview-x.png)
 
    > [!NOTE]
    > 如果您在這裡未看到某些訂用帳戶，原因可能是您在某個時間點變更了訂用帳戶目錄。 若要看到這些訂用帳戶，您必須將目錄切換到原始目錄 (您最初註冊時所在的目錄)。 然後，重複步驟 2。
 
 1. 選取 [**付款方式**]。
 
-    ![顯示已選取 [付款方式] 刀鋒視窗的螢幕擷取畫面。](./media/account-admin-tasks/subscription-payment-methods-blade.png)
+    ![顯示 [付款方式] 頁面的螢幕擷取畫面，您可在其中新增付款方式。](./media/account-admin-tasks/subscription-payment-methods-blade.png)
 
 您可以在這裡新增信用卡、變更使用中的付款方式、編輯信用卡詳細資料，以及刪除信用卡。
 
@@ -100,7 +100,7 @@ ms.locfileid: "88683295"
 
 1. 在命令列中選取 [按發票付款]  。
 
-    ![顯示已選取 [付款方式] 刀鋒視窗的螢幕擷取畫面。](./media/account-admin-tasks/subscription-payment-methods-pay-by-invoice.png)
+    ![顯示已選取 [按發票付款] 之 [付款方式] 頁面的螢幕擷取畫面。](./media/account-admin-tasks/subscription-payment-methods-pay-by-invoice.png)
 
 1. 輸入發票付款方式的位址。
 1. 按 [下一步]  。
@@ -124,7 +124,7 @@ Azure 消費限制可避免您的花費超過您的點數額度。 只要您的 
 
 1. 在 [我的訂用帳戶]  清單中，選取您的 Visual Studio Enterprise 訂用帳戶。
 
-   ![在概觀中顯示 [我的訂閱] 方格的螢幕擷取畫面](./media/account-admin-tasks/cost-management-overview-msdn-x.png)
+   ![顯示 [我的訂用帳戶] 區域的螢幕擷取畫面，您可在其中選取您的 Visual Studio Enterprise 訂用帳戶。](./media/account-admin-tasks/cost-management-overview-msdn-x.png)
 
     > [!NOTE]
     > 如果您在這裡未看到某些 Visual Studio 訂用帳戶，原因可能是您在某個時間點變更了訂用帳戶目錄。 若要看到這些訂用帳戶，您必須將目錄切換到原始目錄 (您最初註冊時所在的目錄)。 然後，重複步驟 2。
@@ -152,7 +152,7 @@ Azure 消費限制可避免您的花費超過您的點數額度。 只要您的 
 
 1. 在 [我的訂用帳戶]  清單中，選取您的 Azure in Open 訂用帳戶。
 
-    ![在概觀中顯示 [我的訂閱] 方格的螢幕擷取畫面](./media/account-admin-tasks/cost-management-overview-aio-x.png)
+    ![顯示 [我的訂閱] 區域的螢幕擷取畫面，您可在其中選取您的 Azure in Open 訂用帳戶。](./media/account-admin-tasks/cost-management-overview-aio-x.png)
 
    > [!NOTE]
    > 如果您在這裡未看到訂用帳戶，原因可能是您已在某個時間點變更其目錄。 您必須將訂用帳戶的目錄切換到原始目錄 (您最初註冊時所在的目錄)。 然後，重複步驟 2。
@@ -183,4 +183,4 @@ Azure 消費限制可避免您的花費超過您的點數額度。 只要您的 
 我們不支援虛擬或預付卡。 如果您在新增或更新有效信用卡時發生錯誤，請嘗試以私人模式開啟瀏覽器。
 
 ## <a name="next-steps"></a>後續步驟
-- 深入了解如何[在 Azure 入口網站中分析和避免非預期的成本](getting-started.md)
+- 深入了解[分析非預期的費用](../understand/analyze-unexpected-charges.md)

@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 30fa6e0489c1f2c33e02286280e7508239c1c1d2
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 0667e253d50ecc34acef822a928a95e49f13282e
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89567906"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91439786"
 ---
 # <a name="pay-for-your-azure-subscription-by-invoice"></a>按發票支付 Azure 訂閱費
 
@@ -85,7 +85,7 @@ ms.locfileid: "89567906"
 
 1. 移至 [Azure 入口網站](https://portal.azure.com)以帳戶管理員身分登入。 搜尋並選取 [成本管理 + 計費]。
 
-    ![搜尋 [成本管理和計費]、Microsoft Azure 入口網站](./media/pay-by-invoice/search.png)
+    ![顯示在 Azure 入口網站中搜尋 [成本管理和計費] 的螢幕擷取畫面。](./media/pay-by-invoice/search.png)
 
 1. 選取您要切換至發票付款的訂用帳戶。
 1. 選取 [**付款方式**]。

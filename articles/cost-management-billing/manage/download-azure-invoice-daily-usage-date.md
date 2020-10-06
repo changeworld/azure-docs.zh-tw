@@ -10,12 +10,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: a3930698bb2999ebaad4d78e0b545b83cc968ef2
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: c24af5a9fb1367e00d9a014b1e10f750a38ad30b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690029"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91270894"
 ---
 # <a name="download-or-view-your-azure-billing-invoice-and-daily-usage-data"></a>下載或檢視您的 Azure 帳單發票和每日使用量資料
 
@@ -49,7 +49,7 @@ ms.locfileid: "88690029"
 
     ![顯示 [下載發票和使用 量] 的螢幕擷取畫面](./media/download-azure-invoice-daily-usage-date/usageandinvoice.png)
 
-如需發票的詳細資訊，請參閱[了解 Microsoft Azure 帳單](../understand/review-individual-bill.md)。 如需管理成本的說明，請參閱[使用 Azure 計費與成本管理避免非預期的成本](getting-started.md)。
+如需發票的詳細資訊，請參閱[了解 Microsoft Azure 帳單](../understand/review-individual-bill.md)。 如需管理成本的協助，請參閱[分析非預期的費用](../understand/analyze-unexpected-charges.md)。
 
 ### <a name="download-invoices-for-a-microsoft-customer-agreement"></a>下載 Microsoft 客戶合約的發票
 

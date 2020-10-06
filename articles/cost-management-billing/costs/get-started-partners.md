@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: 6dfced457f6840294700fb998c93cf2ab993024c
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: b1f261d3d777ccf19cea84e77ef83eb45ecc2065
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683533"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372250"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>適用於合作夥伴的 Azure 成本管理入門
 
@@ -22,7 +22,7 @@ Azure 成本管理依其原生狀態即適用於已將客戶登錄至 Microsoft 
 
 針對直接合作夥伴和間接提供者，全域管理員和系統管理員代理人可以存取合作夥伴租用戶中的成本管理，以及以發票價格管理成本。
 
-轉銷商和客戶則可存取客戶租用戶中的成本管理，並檢視訂用帳戶的成本，其中成本會以零售費率來計算和顯示。 不過，其必須具有客戶租用戶中訂用帳戶的 RBAC 存取權，才能檢視成本。 客戶租用戶的提供者必須啟用成本可見性原則。
+轉銷商和客戶則可存取客戶租用戶中的成本管理，並檢視訂用帳戶的成本，其中成本會以零售費率來計算和顯示。 不過，其必須具有客戶租用戶中訂用帳戶的 Azure RBAC 存取權，才能檢視成本。 客戶租用戶的提供者必須啟用成本可見性原則。
 
 客戶可在其 CSP 合作夥伴啟用成本管理功能後使用這些功能。
 
@@ -55,13 +55,13 @@ Azure 成本管理需要對您的計費帳戶或訂用帳戶的讀取權限。
 
 如需為計費帳戶啟用 Azure 成本管理及指派其存取權的詳細資訊，請參閱[指派使用者角色和權限](/partner-center/permissions-overview)。 「全域系統管理員」和「管理員代理人」角色可以管理計費帳戶的成本。
 
-若要在訂用帳戶範圍存取 Azure 成本管理，任何對訂用帳戶具有 RBAC 存取權的使用者，都可檢視以零售 (隨用隨付) 費率計算的成本。 不過，必須啟用[客戶租用戶的成本可見性原則](#enable-the-policy-to-view-azure-usage-charges)。 若要檢視支援帳戶類型的完整清單，請參閱[了解成本管理資料](understand-cost-mgt-data.md)。
+若要在訂用帳戶範圍存取 Azure 成本管理，任何對訂用帳戶具有 Azure RBAC 存取權的使用者，都可檢視以零售 (隨用隨付) 費率計算的成本。 不過，必須啟用[客戶租用戶的成本可見性原則](#enable-the-policy-to-view-azure-usage-charges)。 若要檢視支援帳戶類型的完整清單，請參閱[了解成本管理資料](understand-cost-mgt-data.md)。
 
 ## <a name="how-cost-management-uses-scopes"></a>成本管理使用範圍的方式
 
-在範圍中，您可管理計費資料、指定付款專屬角色、檢視發票，以及進行一般帳戶管理。 計費和帳戶角色會與用於資源管理的範圍 (後者使用 RBAC) 分開管理。 為了清楚區分不同範圍的意圖 (包括存取控制差異)，這些範圍分別稱為計費範圍和 RBAC 範圍。
+在範圍中，您可管理計費資料、指定付款專屬角色、檢視發票，以及進行一般帳戶管理。 計費和帳戶角色會與用於資源管理的範圍 (後者使用 Azure RBAC) 分開管理。 為了清楚區分不同範圍的意圖 (包括存取控制差異)，這些範圍分別稱為「計費範圍」和「Azure RBAC 範圍」。
 
-若要了解計費範圍和 RBAC 範圍，以及成本管理與範圍搭配運作的方式，請參閱[了解並使用範圍](understand-work-scopes.md)。
+若要了解計費範圍和 Azure RBAC 範圍，以及成本管理與範圍搭配運作的方式，請參閱[了解並使用範圍](understand-work-scopes.md)。
 
 ## <a name="manage-costs-with-partner-tenant-billing-scopes"></a>使用合作夥伴租用戶計費範圍來管理成本
 
@@ -116,9 +116,9 @@ Azure 成本管理需要對您的計費帳戶或訂用帳戶的讀取權限。
 
 ## <a name="enable-cost-management-for-customer-tenant-subscriptions"></a>啟用客戶租用戶訂用帳戶的成本管理
 
-合作夥伴可在客戶登錄至 Microsoft 客戶合約後啟用對成本管理的存取。 其後，合作夥伴將可啟用適當的原則，讓客戶能夠檢視其以隨用隨付零售費率計算的 Azure 取用服務成本。 在 RBAC 訂用帳戶和資源群組範圍中，客戶的使用量成本會以其帳單貨幣顯示。
+合作夥伴可在客戶登錄至 Microsoft 客戶合約後啟用對成本管理的存取。 其後，合作夥伴將可啟用適當的原則，讓客戶能夠檢視其以隨用隨付零售費率計算的 Azure 取用服務成本。 在 Azure RBAC 訂用帳戶和資源群組範圍中，客戶的使用量成本會以其帳單貨幣顯示。
 
-當合作夥伴啟用了成本可見性的原則時，任何對訂用帳戶具有 Azure Resource Manager 存取權的使用者，都可以管理和分析以隨用隨付費率計算的成本。 實際上，對 Azure 訂用帳戶具有適當 RBAC 存取權的轉銷商和客戶，都可以檢視成本。
+當合作夥伴啟用了成本可見性的原則時，任何對訂用帳戶具有 Azure Resource Manager 存取權的使用者，都可以管理和分析以隨用隨付費率計算的成本。 實際上，對 Azure 訂用帳戶具有適當 Azure RBAC 存取權的轉銷商和客戶，都可以檢視成本。
 
 不論原則為何，只要提供者的全域管理員和管理員代理人有權存取訂用帳戶和資源群組，他們就可以檢視訂用帳戶成本。
 
@@ -149,9 +149,9 @@ Azure 成本管理需要對您的計費帳戶或訂用帳戶的讀取權限。
 
 [![以客戶的身分檢視成本分析](./media/get-started-partners/subscription-costs.png)](./media/get-started-partners/subscription-costs.png#lightbox)
 
-成本分析、預算和警示可按隨用隨付費率的成本，在訂用帳戶和資源群組 RBAC 範圍中使用。
+成本分析、預算和警示可按隨用隨付費率的成本，在訂用帳戶和資源群組 Azure RBAC 範圍中使用。
 
-在 RBAC 範圍中，保留執行個體的攤提檢視和實際成本會將費用顯示為零。 保留執行個體成本只會顯示在進行購買的計費範圍中。
+在 Azure RBAC 範圍中，保留執行個體的攤提檢視和實際成本會將費用顯示為零。 保留執行個體成本只會顯示在進行購買的計費範圍中。
 
 對於所有客戶來說，用於計算檢視中所顯示成本的零售費率，會與 Azure 定價計算機中所顯示的價格相同。 所顯示的成本不包括合作夥伴可能會有的任何折扣或點數，例如合作夥伴獲得的點數、階層折扣和全球服務折扣。
 
@@ -159,7 +159,7 @@ Azure 成本管理需要對您的計費帳戶或訂用帳戶的讀取權限。
 
 對合作夥伴租用戶中的計費範圍具有存取權的合作夥伴可在不同客戶的成本分析中，探索及分析特定客戶或發票的發票成本。 在[成本分析](quick-acm-cost-analysis.md)檢視中，您也可以[儲存檢視](quick-acm-cost-analysis.md#saving-and-sharing-customized-views)，並將資料匯出至 [CSV 和 PNG 檔案](quick-acm-cost-analysis.md#download-usage-data)。
 
-對客戶租用戶中的訂用帳戶具有存取權的 RBAC 使用者也可以為客戶租用戶中的訂用帳戶分析零售成本、儲存檢視，以及將資料匯出至 CSV 和 PNG 檔案。
+對客戶租用戶中的訂用帳戶具有存取權的 Azure RBAC 使用者也可以為客戶租用戶中的訂用帳戶分析零售成本、儲存檢視，以及將資料匯出至 CSV 和 PNG 檔案。
 
 您可在成本分析中使用篩選和群組依據功能，依多個欄位來分析成本。 下一節會說明合作夥伴的特定欄位。
 
@@ -223,8 +223,8 @@ Azure 成本管理需要對您的計費帳戶或訂用帳戶的讀取權限。
 | costinBillingCurrency | 稅前的延伸成本或混合成本 (以計費貨幣為單位)。 | N/A |
 | costinPricingCurrency | 要與價格相互關聯的稅前延伸成本或混合成本 (以帳單貨幣為單位)。 | N/A |
 | **costinUSD** | 稅前的預估延伸成本或混合成本 (以美元為單位)。 | N/A |
-| **paygCostInBillingCurrency** | 如果價格是零售價格，則會顯示成本。 以帳單貨幣顯示隨用隨付價格。 僅適用於 RBAC 範圍。 | N/A |
-| **paygCostInUSD** | 如果價格是零售價格，則會顯示成本。 以美元顯示隨用隨付價格。 僅適用於 RBAC 範圍。 | N/A |
+| **paygCostInBillingCurrency** | 如果價格是零售價格，則會顯示成本。 以帳單貨幣顯示隨用隨付價格。 僅適用於 Azure RBAC 範圍。 | N/A |
+| **paygCostInUSD** | 如果價格是零售價格，則會顯示成本。 以美元顯示隨用隨付價格。 僅適用於 Azure RBAC 範圍。 | N/A |
 | exchangeRate | 用來從定價貨幣轉換成帳單貨幣的匯率。 | 在合作夥伴中心稱為 PCToBCExchangeRate。 從定價貨幣轉換成帳單貨幣的匯率。|
 | exchangeRateDate | 用來從定價貨幣轉換成帳單貨幣的匯率日期。 | 在合作夥伴中心稱為 PCToBCExchangeRateDat。 從定價貨幣轉換成帳單貨幣的匯率日期。|
 | isAzureCreditEligible | 指出成本是否符合以 Azure 點數付款的資格。 | N/A |
@@ -262,7 +262,7 @@ Azure 成本管理需要對您的計費帳戶或訂用帳戶的讀取權限。
 
 對合作夥伴租用戶中的計費範圍具有存取權的合作夥伴，可以將其成本和使用情況資料匯出至 Azure 儲存體 Blob。 Blob 必須位於合作夥伴租用戶中的訂用帳戶上，且該訂用帳戶不可以是共用的服務訂用帳戶或客戶的訂用帳戶。 若要啟用成本資料匯出，建議您在合作夥伴租用戶中設定獨立的隨用隨付訂用帳戶，以裝載匯出的成本資料。 系統會在隨用隨付訂用帳戶所裝載的 Azure 儲存體 Blob 上建立匯出儲存體帳戶。 根據夥伴建立匯出的範圍，相關聯的資料會定期自動匯出至儲存體帳戶。
 
-對訂用帳戶具有 RBAC 存取權的使用者，也可以將成本資料匯出至客戶租用戶中的任何訂用帳戶所裝載的 Azure 儲存體 Blob。
+對訂用帳戶具有 Azure RBAC 存取權的使用者，也可以將成本資料匯出至客戶租用戶中的任何訂用帳戶所裝載的 Azure 儲存體 Blob。
 
 ### <a name="create-an-export-in-a-partner-tenant-or-customer-tenant"></a>在合作夥伴租用戶或客戶租用戶中建立匯出
 
@@ -276,7 +276,7 @@ Azure 成本管理需要對您的計費帳戶或訂用帳戶的讀取權限。
 
 在合作夥伴租用戶中建立匯出時，請選取合作夥伴租用戶中的隨用隨付訂用帳戶。 使用該訂用帳戶建立 Azure 儲存體帳戶。
 
-針對客戶租用戶中的 RBAC 使用者，選取客戶租用戶中的訂用帳戶。 使用該訂用帳戶建立 Azure 儲存體帳戶。
+針對客戶租用戶中的 Azure RBAC 使用者，選取客戶租用戶中的訂用帳戶。 使用該訂用帳戶建立 Azure 儲存體帳戶。
 
 檢查內容，然後選取 [建立] 以排程匯出。
 

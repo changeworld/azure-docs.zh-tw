@@ -1,6 +1,6 @@
 ---
 title: 什麼是 Azure AD Connect 和 Connect Health。 | Microsoft Docs
-description: 描述用來搭配 Azure AD 進行同步處理及監視您內部部署環境的工具。
+description: 了解用來搭配 Azure AD 進行同步處理及監視您內部部署環境的工具。
 services: active-directory
 author: billmath
 manager: daveba
@@ -11,12 +11,12 @@ ms.date: 01/08/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 02a30aa4d553910c52a7dde89719450baf9037ce
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 338f957d3e881a76b39b0b7c00288ae2ebf2be59
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89278831"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90018606"
 ---
 # <a name="what-is-azure-ad-connect"></a>何謂 Azure AD Connect？
 
@@ -35,7 +35,7 @@ Azure AD Connect 是一種 Microsoft 工具，其設計目的是要符合並完�
 
 ## <a name="what-is-azure-ad-connect-health"></a>何謂 Azure AD Connect Health？
 
-Azure Active Directory (Azure AD) Connect Health 可為您的內部部署身分識別基礎結構提供健全的監視功能。 它可讓您維持與 Office 365 和 Microsoft Online Services 的可靠連線。  藉由為您的關鍵身分識別元件提供監視功能，便得以達成此可靠性。 此外，它還可讓您輕鬆存取這些元件的相關關鍵資料點。
+Azure Active Directory (Azure AD) Connect Health 可為您的內部部署身分識別基礎結構提供健全的監視功能。 其可讓您維持與 Microsoft 365 和 Microsoft Online Services 的可靠連線。  藉由為您的關鍵身分識別元件提供監視功能，便得以達成此可靠性。 此外，它還可讓您輕鬆存取這些元件的相關關鍵資料點。
 
 這些資訊會呈現在 [Azure AD Connect Health 入口網站](https://aka.ms/aadconnecthealth)中。 請使用 Azure AD Connect Health 入口網站來檢視警示、效能監視、使用情況分析等資訊。 Azure AD Connect Health 就像功能濾鏡，可讓您集中監控重要身分識別元件的健康狀態。
 
@@ -44,7 +44,7 @@ Azure Active Directory (Azure AD) Connect Health 可為您的內部部署身分�
 ## <a name="why-use-azure-ad-connect"></a>為何要使用 Azure AD Connect？
 將內部部署目錄與 Azure AD 整合可提供一個通用身分識別來存取雲端和內部部署資源，讓使用者變得更有生產力。 使用者和組織可以利用：
 
-* 使用者可以使用單一身分識別來存取內部部署應用程式和雲端服務，例如 Office 365。
+* 使用者可以使用單一身分識別來存取內部部署應用程式和雲端服務，例如 Microsoft 365。
 * 單一工具即可提供輕鬆進行同步處理和登入的部署經驗。
 * 提供您案例的最新功能。 Azure AD Connect 會取代舊版的身分識別整合工具，如 DirSync 和 Azure AD Sync。如需詳細資訊，請參閱 [混合式身分識別目錄整合工具比較](plan-hybrid-identity-design-considerations-tools-comparison.md)。
 

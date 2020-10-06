@@ -2,24 +2,27 @@
 author: areddish
 ms.author: areddish
 ms.service: cognitive-services
-ms.date: 08/17/2020
-ms.openlocfilehash: 918ac54836adf6ad12934d7e30cf88f2786e1fba
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.date: 09/15/2020
+ms.openlocfilehash: 481c0d85420ab2cc57f5636ed1862a525ace553b
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88508504"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604942"
 ---
-本文提供資訊和範例程式碼，可協助您開始使用自訂視覺用戶端程式庫與 Go 來建置影像分類模型。 建立它之後，您就可以新增標記、上傳影像、為專案定型、取得專案的已發佈預測端點 URL，並使用端點以程式設計方式測試影像。 請使用此範例作為範本來建置您自己的 Go 應用程式。 如果您想要進行「不用」  程式碼來建置及使用分類模型的程序，請改為參閱[以瀏覽器為基礎的指引](../../getting-started-build-a-classifier.md)。
+本指南提供指示和範例程式碼，可協助您開始使用適用於 Go 的自訂視覺用戶端程式庫來建置影像分類模型。 您將建立專案、新增標籤、將專案定型，並使用專案的預測端點 URL 以程式設計方式加以測試。 請使用此範例作為自行建置影像辨識應用程式的範本。
 
-## <a name="prerequisites"></a>Prerequisites
+> [!NOTE]
+> 如果您想要在「不用」撰寫程式碼的情況下，建立和訓練分類模型，請改為參閱[以瀏覽器為基礎的指引](../../getting-started-build-a-classifier.md)。
+
+## <a name="prerequisites"></a>先決條件：
 
 - [Go 1.8+](https://golang.org/doc/install)
 - [!INCLUDE [create-resources](../../includes/create-resources.md)]
 
 ## <a name="install-the-custom-vision-client-library"></a>安裝自訂視覺用戶端程式庫
 
-若要安裝適用於 Go 的自訂視覺服務用戶端程式庫，請在 PowerShell 中執行下列命令：
+若要使用適用於 Go 的自訂視覺來撰寫影像分析應用程式，您將需要自訂視覺服務用戶端程式庫。 在 PowerShell 中執行下列命令：
 
 ```shell
 go get -u github.com/Azure/azure-sdk-for-go/...
@@ -36,9 +39,9 @@ dep ensure -add github.com/Azure/azure-sdk-for-go
 
 ## <a name="add-the-code"></a>新增程式碼
 
-在您偏好的專案目錄中建立名為 sample.go  的新檔案。
+在您偏好的專案目錄中建立名為 sample.go** 的新檔案。
 
-### <a name="create-the-custom-vision-service-project"></a>建立自訂視覺服務專案
+## <a name="create-the-custom-vision-project"></a>建立自訂視覺專案
 
 在指令碼中新增下列程式碼，以建立新的自訂視覺服務專案。 在適當的定義中插入訂用帳戶金鑰。 此外，請從自訂視覺網站的 [設定] 頁面取得您的 [端點 URL]。
 
@@ -80,9 +83,9 @@ func main() {
     }
 ```
 
-### <a name="create-tags-in-the-project"></a>在專案中建立標記
+## <a name="create-tags-in-the-project"></a>在專案中建立標記
 
-若要在專案中建立分類標記，請在 sample.go  結尾新增以下程式碼：
+若要在專案中建立分類標記，請在 sample.go** 結尾新增以下程式碼：
 
 ```go
 // Make two tags in the new project
@@ -90,7 +93,7 @@ hemlockTag, _ := trainer.CreateTag(ctx, *project.ID, "Hemlock", "Hemlock tree ta
 cherryTag, _ := trainer.CreateTag(ctx, *project.ID, "Japanese Cherry", "Japanese cherry tree tag", string(training.Regular))
 ```
 
-### <a name="upload-and-tag-images"></a>上傳和標記影像
+## <a name="upload-and-tag-images"></a>上傳和標記影像
 
 若要將範例影像新增到專案，在標記建立之後插入下列程式碼。 此程式碼會上傳每個影像及其對應標記。 您最多可以在單一批次中上傳 64 個影像。
 
@@ -123,7 +126,7 @@ for _, file := range japaneseCherryImages {
 }
 ```
 
-### <a name="train-the-classifier-and-publish"></a>訓練分類器並發佈
+## <a name="train-and-publish-the-project"></a>訓練及發佈專案
 
 此程式碼會在預測模型中建立第一個反覆項目，然後將該反覆項目發佈至預測端點。 提供給已發佈反覆項目的名稱可用來傳送預測要求。 反覆項目要等到發佈後才可在預測端點中使用。
 
@@ -143,7 +146,7 @@ fmt.Println("Training status: " + *iteration.Status)
 trainer.PublishIteration(ctx, *project.ID, *iteration.ID, iteration_publish_name, prediction_resource_id))
 ```
 
-### <a name="get-and-use-the-published-iteration-on-the-prediction-endpoint"></a>取得並使用預測端點上已發佈的反覆項目
+## <a name="use-the-prediction-endpoint"></a>使用預測端點
 
 若要將影像傳送到預測端點並擷取預測，在檔案結尾處新增以下程式碼：
 
@@ -163,7 +166,7 @@ trainer.PublishIteration(ctx, *project.ID, *iteration.ID, iteration_publish_name
 
 ## <a name="run-the-application"></a>執行應用程式
 
-執行 sample.go  。
+執行 sample.go**。
 
 ```shell
 go run sample.go
@@ -184,7 +187,7 @@ Done!
         Japanese Cherry: 0.01%
 ```
 
-接著，您可以確認測試影像 (位於 **<base_image_url>/Images/Test/** ) 的標記是否適當。 您也可以返回[自訂視覺網站](https://customvision.ai)，然後查看新建立專案的目前狀態。
+接著，您可以確認測試影像 (位於 **<base_image_url>/Images/Test/**) 的標記是否適當。 您也可以返回[自訂視覺網站](https://customvision.ai)，然後查看新建立專案的目前狀態。
 
 [!INCLUDE [clean-ic-project](../../includes/clean-ic-project.md)]
 
@@ -194,3 +197,7 @@ Done!
 
 > [!div class="nextstepaction"]
 > [測試和重新定型模型](../../test-your-model.md)
+
+* 什麼是自訂視覺服務？
+* [SDK 參考文件 (訓練)](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/customvision/training)
+* [SDK 參考文件 (預測)](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.1/customvision/prediction)

@@ -1,29 +1,29 @@
 ---
 title: Azure Cosmos DB Cassandra API 支援的 Apache Cassandra 功能
 description: 了解 Azure Cosmos DB Cassandra API 中的 Apache Cassandra 功能
-author: kanshiG
-ms.author: govindk
+author: TheovanKraay
+ms.author: thvankra
 ms.reviewer: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
-ms.date: 09/24/2018
-ms.openlocfilehash: e7384237f91bf3af8ccad1a97b27fb62a1845a88
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.date: 09/14/2020
+ms.openlocfilehash: 9fe149fb026aabcb50a595061d3ba57df7812563
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85118979"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90602807"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB Cassandra API 支援的 Apache Cassandra 功能 
 
-Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您可以透過 Cassandra 查詢語言 (CQL) v4 [有線通訊協定](https://github.com/apache/cassandra/blob/trunk/doc/native_protocol_v4.spec)合規性開放原始碼 Cassandra 用戶端[驅動程式](https://cassandra.apache.org/doc/latest/getting_started/drivers.html?highlight=driver)與 Azure Cosmos DB Cassandra API 通訊。 
+Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您可以透過 CQL 二進位通訊協定 v4 [有線通訊協定](https://github.com/apache/cassandra/blob/trunk/doc/native_protocol_v4.spec)合規性開放原始碼 Cassandra 用戶端[驅動程式](https://cassandra.apache.org/doc/latest/getting_started/drivers.html?highlight=driver)與 Azure Cosmos DB Cassandra API 通訊。 
 
-透過使用 Azure Cosmos DB Cassandra API，您可以享受 Apache Cassandra API 的好處，以及 Azure Cosmos DB 所提供的企業功能。 企業功能包括[全域散發](distribute-data-globally.md)、[自動擴增分割處理](partition-data.md)、可用性與延遲保證、靜態資料加密、備份等。
+透過使用 Azure Cosmos DB Cassandra API，您可以享受 Apache Cassandra API 的好處，以及 Azure Cosmos DB 所提供的企業功能。 企業功能包括[全域散發](distribute-data-globally.md)、[自動擴增分割處理](cassandra-partitioning.md)、可用性與延遲保證、靜態資料加密、備份等。
 
 ## <a name="cassandra-protocol"></a>Cassandra 通訊協定 
 
-Azure Cosmos DB Cassandra API 與 CQL 版本 **v4** 相容。 支援的 CQL 命令、工具、限制與例外，如下所示。 能解析這些通訊協定的任何用戶端驅動程式，都應該能夠使用連線到 Azure Cosmos DB Cassandra API。
+Azure Cosmos DB Cassandra API 與 Cassandra 查詢語言 (CQL) v3.11 API 相容 (可與 2.x 版的舊版相容)。 支援的 CQL 命令、工具、限制與例外，如下所示。 能解析這些通訊協定的任何用戶端驅動程式，都應該能夠使用連線到 Azure Cosmos DB Cassandra API。
 
 ## <a name="cassandra-driver"></a>Cassandra 驅動程式
 
@@ -37,61 +37,149 @@ Azure Cosmos DB Cassandra API 支援下列 Cassandra 驅動程式：
 * [PHP 1.3](https://github.com/datastax/php-driver)  
 * [Gocql](https://github.com/gocql/gocql)  
  
+
 ## <a name="cql-data-types"></a>CQL 資料類型 
 
 Azure Cosmos DB Cassandra API 支援下列 CQL 資料類型：
 
-* ascii  
-* BIGINT  
-* blob  
-* boolean  
-* counter  
-* date  
-* decimal  
-* double  
-* FLOAT  
-* 冰雪奇緣  
-* inet  
-* int  
-* list  
-* set  
-* SMALLINT  
-* text  
-* time  
-* timestamp  
-* timeuuid  
-* TINYINT  
-* Tuple  
-* uuid  
-* varchar  
-* varint  
-* Tuple  
-* udts  
-* map  
+|Command  |支援 |
+|---------|---------|
+| ascii  | 是 |
+| BIGINT  | 是 |
+| blob  | 是 |
+| boolean  | 是 |
+| counter  | 是 |
+| date  | 是 |
+| decimal  | 是 |
+| double  | 是 |
+| FLOAT  | 是 |
+| 冰雪奇緣  | 是 |
+| inet  | 是 |
+| int  | 是 |
+| list  | 是 |
+| set  | 是 |
+| SMALLINT  | 是 |
+| text  | 是 |
+| time  | 是 |
+| timestamp  | 是 |
+| timeuuid  | 是 |
+| TINYINT  | 是 |
+| Tuple  | 是 |
+| uuid  | 是 |
+| varchar  | 是 |
+| varint  | 是 |
+| Tuple | 是 | 
+| udts  | 是 |
+| map | 是 |
 
 ## <a name="cql-functions"></a>CQL 功能
 
 Azure Cosmos DB Cassandra API 支援下列 CQL 函式：
 
-* Token  
-* 彙總函式
-  * min、max、avg、count
-* Blob 轉換函式 
-  * typeAsBlob(value)  
-  * blobAsType(value)
-* UUID 與 timeuuid 功能 
-  * dateOf()  
-  * now()  
-  * minTimeuuid()  
-  * unixTimestampOf()  
-  * toDate(timeuuid)  
-  * toTimestamp(timeuuid)  
-  * toUnixTimestamp(timeuuid)  
-  * toDate(timestamp)  
-  * toUnixTimestamp(timestamp)  
-  * toTimestamp(date)  
-  * toUnixTimestamp(date) 
+|Command  |支援 |
+|---------|---------|
+| Token * | 是 |
+| ttl | 是 |
+| writetime | 是 |
+| 轉換 | 否 |
+
+\* Cassandra API 支援使用 Token 作為投影/選取器，而且只允許 token (pk) 位在 where 子句的左側。 例如，支援 `WHERE token(pk) > 1024`，但不支援 `WHERE token(pk) > token(100)`。
+
+
+彙總函式：
+
+|Command  |支援 |
+|---------|---------|
+| Min | 是 |
+| max | 是 |
+| avg | 是 |
+| count | 是 |
+
+Blob 轉換函式：
+ 
+|Command  |支援 |
+|---------|---------|
+| typeAsBlob(value)   | 是 |
+| blobAsType(value) | 是 |
+
+
+UUID 與 timeuuid 函式：
+ 
+|Command  |支援 |
+|---------|---------|
+| dateOf()  | 是 |
+| now()  | 是 |
+| minTimeuuid()  | 是 |
+| unixTimestampOf()  | 是 |
+| toDate(timeuuid)  | 是 |
+| toTimestamp(timeuuid)  | 是 |
+| toUnixTimestamp(timeuuid)  | 是 |
+| toDate(timestamp)  | 是 |
+| toUnixTimestamp(timestamp)  | 是 |
+| toTimestamp(date)  | 是 |
+| toUnixTimestamp(date) | 是 |
+
+
   
+## <a name="cql-commands"></a>CQL 命令
+
+Azure Cosmos DB 支援在 Cassandra API 帳戶上使用下列資料庫命令。
+
+|Command  |支援 |
+|---------|---------|
+| 允許篩選 | 是 |
+| ALTER KEYSPACE | N/A (PaaS 服務，內部複寫管理)|
+| ALTER MATERIALIZED VIEW | 否 |
+| ALTER_ROLE | 否 |
+| ALTER TABLE | 是 |
+| ALTER TYPE | 否 |
+| ALTER USER | 否 |
+| BATCH | 是 (僅限未記錄的批次)|
+| COMPACT STORAGE | N/A (PaaS 服務) |
+| CREATE AGGREGATE | 否 | 
+| CREATE CUSTOM INDEX (SASI) | 否 |
+| CREATE INDEX | 是 (不[指定索引名稱](cassandra-secondary-index.md)且不支援叢集索引鍵上的索引或完整凍結集合) |
+| CREATE FUNCTION | 否 |
+| CREATE KEYSPACE (忽略複寫設定) | 是 |
+| CREATE MATERIALIZED VIEW | 否 |
+| CREATE TABLE | 是 |
+| CREATE TRIGGER | 否 |
+| CREATE TYPE | 是 |
+| CREATE ROLE | 否 |
+| CREATE USER (已在原生 Apache Cassandra 中淘汰) | 否 |
+| 刪除 | 是 |
+| DELETE (使用 IF CONDITION 的輕量交易)| 是 |
+| DROP AGGREGATE | 否 |
+| .DROP 函式 | 否 |
+| DROP INDEX | 是 |
+| DROP KEYSPACE | 是 |
+| DROP MATERIALIZED VIEW | 否 |
+| DROP ROLE | 否 |
+| DROP TABLE | 是 |
+| DROP_TRIGGER | 否 | 
+| DROP TYPE | 是 |
+| DROP USER (已在原生 Apache Cassandra 中淘汰) | 否 |
+| GRANT | 否 |
+| Insert | 是 |
+| INSERT (使用 IF CONDITION 的輕量交易)| 是 |
+| LIST PERMISSIONS | 否 |
+| LIST ROLES | 否 |
+| LIST USERS (已在原生 Apache Cassandra 中淘汰) | 否 |
+| REVOKE | 否 |
+| SELECT | 是 |
+| SELECT (使用 IF CONDITION 的輕量交易)| 否 |
+| UPDATE | 是 |
+| UPDATE (使用 IF CONDITION 的輕量交易)| 否 |
+| TRUNCATE | 否 |
+| USE | 是 |
+
+## <a name="json-support"></a>JSON 支援
+|Command  |支援 |
+|---------|---------|
+| SELECT JSON | 是 |
+| INSERT JSON | 是 |
+| fromJson() | 否 |
+| toJson() | 否 |
 
 
 ## <a name="cassandra-api-limits"></a>Cassandra API 限制
@@ -108,9 +196,12 @@ Azure Cosmos DB Cassandra API 是受控服務平台。 它不會造成任何管�
 
 您可以直接從 [Azure 入口網站](data-explorer.md)中的資料總管或 [Azure Cosmos 總管](https://cosmos.azure.com/)，開啟裝載的原生 Cassandra Shell (CQLSH v5.0.1)。 啟用 CQL Shell 之前，您必須先在帳戶中[啟用筆記本](enable-notebooks.md)功能 (如果尚未啟用，在按一下 `Open Cassandra Shell` 時將會出現提示)。 查看[為 Azure Cosmos DB 帳戶啟用筆記本](enable-notebooks.md)中反白顯示的附註，以了解支援的 Azure 區域。
 
-:::image type="content" source="./media/cassandra-support/cqlsh.png" alt-text="CQLSH":::
+:::image type="content" source="./media/cassandra-support/cqlsh.png" alt-text="開啟 CQLSH&quot;:::
 
 您也可以使用本機電腦上安裝的 CQLSH 連線至 Azure Cosmos DB 中的 Cassandra API。 其中隨附 Apache Cassandra 3.1.1，且只需設定環境變數即可立即運作。 以下幾節包含相關指示，可引導您在 Windows 或 Linux 上使用 CQLSH 安裝、設定及連線至 Azure Cosmos DB 中的 Cassandra API。
+
+> [!NOTE]
+> 與 Azure Cosmos DB Cassandra API 連線將無法使用 CQLSH 的 DataStax Enterprise (DSE) 版本。 請確定您在連線到 Cassandra API 時，只使用 CQLSH 的開放原始碼 Apache Cassandra 版本。 
 
 **Windows：**
 
@@ -129,7 +220,7 @@ curl https://cacert.omniroot.com/bc2025.crt > bc2025.crt
 keytool -importcert -alias bc2025ca -file bc2025.crt
 
 # Install the Cassandra libraries in order to get CQLSH:
-echo "deb http://www.apache.org/dist/cassandra/debian 311x main" | sudo tee -a /etc/apt/sources.list.d/cassandra.sources.list
+echo &quot;deb http://www.apache.org/dist/cassandra/debian 311x main" | sudo tee -a /etc/apt/sources.list.d/cassandra.sources.list
 curl https://downloads.apache.org/cassandra/KEYS | sudo apt-key add -
 sudo apt-get update
 sudo apt-get install cassandra
@@ -142,22 +233,6 @@ export SSL_VALIDATE=false
 cqlsh <YOUR_ACCOUNT_NAME>.cassandra.cosmosdb.azure.com 10350 -u <YOUR_ACCOUNT_NAME> -p <YOUR_ACCOUNT_PASSWORD> --ssl
 
 ```
-
-## <a name="cql-commands"></a>CQL 命令
-
-Azure Cosmos DB 支援在 Cassandra API 帳戶上使用下列資料庫命令。
-
-* CREATE KEYSPACE (已忽略此命令的複寫設定)
-* CREATE TABLE 
-* CREATE INDEX (不指定索引名稱，以及尚未支援完整凍結索引)
-* 允許篩選
-* ALTER TABLE 
-* USE 
-* Insert 
-* SELECT 
-* UPDATE 
-* BATCH - 只支援未記錄的命令 
-* 刪除
 
 透過 CQL v4 相容 SDK 執行的所有 CRUD 作業，將傳回有關錯誤及已取用的要求單位等額外資訊。 DELETE 和 UPDATE 命令應使用納入考慮的資源管理來處理，確保會以最有效率的方式使用佈建的輸送量。
 

@@ -6,25 +6,25 @@ ms.topic: overview
 ms.date: 03/12/2020
 ms.author: cgillum
 ms.reviewer: azfuncdf
-ms.openlocfilehash: d1c4f62f19a36867ebc85a98b0cd38bbbf8ce757
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 28c494bf2867ec5d2d3ee99ef7ee45f8181cfd90
+ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88660677"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89669242"
 ---
 # <a name="what-are-durable-functions"></a>Durable Functions 是什麼？
 
-*Durable Functions* 是 [Azure Functions](../functions-overview.md) 的擴充功能，可讓您在無伺服器計算環境中撰寫具狀態函式。 此擴充功能可讓您使用 Azure Functions 程式設計模型，藉由撰寫[協調器函式](durable-functions-orchestrations.md)來定義具狀態的工作流程，以及撰寫[實體函式](durable-functions-entities.md)來定義具狀態的實體。 擴充功能其實會為您管理狀態、檢查點和重新啟動，讓您將焦點放在商務邏輯。
+*Durable Functions* 是 [Azure Functions](../functions-overview.md) 的擴充功能，可讓您在無伺服器計算環境中撰寫具狀態函式。 此擴充功能可讓您使用 Azure Functions 程式設計模型，藉由撰寫[協調器函式**](durable-functions-orchestrations.md)來定義具狀態的工作流程，以及撰寫[實體函式**](durable-functions-entities.md)來定義具狀態的實體。 擴充功能其實會為您管理狀態、檢查點和重新啟動，讓您將焦點放在商務邏輯。
 
 ## <a name="supported-languages"></a><a name="language-support"></a>支援的語言
 
 Durable Functions 目前支援下列語言：
 
-* **C#** ：[預先編譯的類別庫](../functions-dotnet-class-library.md)和 [C# 指令碼](../functions-reference-csharp.md)。
+* **C#**：[預先編譯的類別庫](../functions-dotnet-class-library.md)和 [C# 指令碼](../functions-reference-csharp.md)。
 * **JavaScript**：只有 2.x 版的 Azure Functions 執行階段才支援。 需要 1.7.0 版的 Durable Functions 擴充功能，或更新版本。 
-* **Python**：需要 1.8.5 版的 Durable Functions 擴充功能，或更新版本。 
-* **F#** ：預先編譯的類別庫和 F# 指令碼。 只有 1.x 版的 Azure Functions 執行階段才支援 F# 指令碼。
+* **Python**：需要 1.8.5 版的 Durable Functions 擴充功能，或更新版本。 Durable Functions 的支援目前處於公開預覽狀態。
+* **F#**：預先編譯的類別庫和 F# 指令碼。 只有 1.x 版的 Azure Functions 執行階段才支援 F# 指令碼。
 * **PowerShell**：Durable Functions 的支援目前處於公開預覽狀態。 只有 3.x 版的 Azure Functions 執行階段和 PowerShell 7 才支援。 需要 2.2.2 版的 Durable Functions 擴充功能，或更新版本。 目前僅支援以下模式：[函式鏈結](#chaining)、[展開傳送/傳入](#fan-in-out)、[非同步 HTTP API](#async-http)。
 
 Durable Functions 的目標是支援所有的 [Azure Functions 語言](../supported-languages.md)。 請參閱 [Durable Functions 問題清單](https://github.com/Azure/azure-functions-durable-extension/issues)，以取得最新工作狀態來支援其他語言。
@@ -42,7 +42,7 @@ Durable Functions 主要用來簡化無伺服器應用程式中複雜的具狀�
 * [人為互動](#human)
 * [彙總工具 (具狀態實體)](#aggregator)
 
-### <a name="pattern-1-function-chaining"></a><a name="chaining"></a>模式 #1：函式鏈結
+### <a name="pattern-1-function-chaining"></a>模式 #1：函式鏈結
 
 在函式鏈結模式中，有一連串的函式會依特定順序執行。 在此模式中，一個函式的輸出會套用至另一個函式的輸入。
 
@@ -135,7 +135,7 @@ Invoke-ActivityFunction -FunctionName 'F4' -Input $Z
 
 ---
 
-### <a name="pattern-2-fan-outfan-in"></a><a name="fan-in-out"></a>模式 #2：展開傳送/收合傳送。
+### <a name="pattern-2-fan-outfan-in"></a>模式 #2：展開傳送/收合傳送
 
 在展開傳送/收合傳送模式中，您會以平行方式執行多個函式，然後等候所有函式完成。 某些彙總工作通常會在函式傳回結果時執行。
 
@@ -255,7 +255,7 @@ Invoke-ActivityFunction -FunctionName 'F3' -Input $Total
 > [!NOTE]
 > 在少數的情況下，在活動函式完成後，但將其完成儲存到協調流程歷程記錄前的空窗期中可能會發生損毀。 如果發生這種情況，則會在程序復原之後從頭重新執行活動函式。
 
-### <a name="pattern-3-async-http-apis"></a><a name="async-http"></a>模式 #3：非同步的 HTTP API
+### <a name="pattern-3-async-http-apis"></a>模式 #3：非同步的 HTTP API
 
 非同步 HTTP API 模式會處理與外部用戶端協調長時間執行作業狀態的問題。 實作為此模式的常見方式是讓 HTTP 端點觸發長時間執行的動作。 然後，將用戶端重新導向至用戶端輪詢的狀態端點，以了解作業完成的時間。
 
@@ -403,7 +403,7 @@ PowerShell 目前不支援監視。
 
 收到要求時，系統會針對該作業識別碼建立新的協調流程執行個體。 執行個體會輪詢狀態，直到符合條件且迴圈結束為止。 長期計時器可控制輪詢間隔。 接著可執行更多工作，否則協調流程可能會結束。 當 `nextCheck` 超過 `expiryTime` 時，監視器就會結束。
 
-### <a name="pattern-5-human-interaction"></a><a name="human"></a>模式 #5：與使用者互動
+### <a name="pattern-5-human-interaction"></a>模式 #5：人為互動
 
 許多自動化程序都會牽涉到某種類型的人為互動。 自動化程序卻需人為涉入很弔詭，因為人們無法像雲端服務一樣隨時有空能夠回應。 自動化程序可使用逾時和補償邏輯來允許此互動。
 
@@ -556,7 +556,7 @@ PowerShell 目前不支援人為互動。
 
 ### <a name="pattern-6-aggregator-stateful-entities"></a><a name="aggregator"></a>模式 #6：彙總工具 (具狀態實體)
 
-第六個模式是關於將一段時間的事件資料彙總成單一可定址的「實體」。 在此模式中，所彙總的資料可能來自多個來源、可分批傳遞，或可散佈於長期的時間。 彙總工具可能需要在事件資料送達時對其採取動作，而外部用戶端可能需要查詢所彙總的資料。
+第六個模式是關於將一段時間的事件資料彙總成單一可定址的「實體」**。 在此模式中，所彙總的資料可能來自多個來源、可分批傳遞，或可散佈於長期的時間。 彙總工具可能需要在事件資料送達時對其採取動作，而外部用戶端可能需要查詢所彙總的資料。
 
 ![彙總工具圖表](./media/durable-functions-concepts/aggregator.png)
 
@@ -639,7 +639,7 @@ PowerShell 目前不支援耐久性實體。
 
 ---
 
-用戶端可以使用[實體用戶端繫結](durable-functions-bindings.md#entity-client)，將實體函式的「作業」排入佇列 (也稱為「訊號處理」)。
+用戶端可以使用[實體用戶端繫結](durable-functions-bindings.md#entity-client)，將實體函式的「作業」** 排入佇列 (也稱為「訊號處理」)。
 
 # <a name="c"></a>[C#](#tab/csharp)
 

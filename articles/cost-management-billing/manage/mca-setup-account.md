@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: afa95609e0bcb879b6ad4b3b50b5dff5feb9a9f7
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 5498fd83efa0fa52f5f0861588eaa8cdeb0953ac
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88682785"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371791"
 ---
 # <a name="set-up-your-billing-account-for-a-microsoft-customer-agreement"></a>設定 Microsoft 客戶合約的計費帳戶
 
@@ -132,7 +132,7 @@ ms.locfileid: "88682785"
 
 ### <a name="user-access-to-azure-resources"></a>Azure 資源的使用者存取
 
-在轉換期間，使用 Azure RBAC (角色型存取控制) 設定的 Azure 資源存取不受影響。
+在轉換期間，使用 Azure 角色型存取控制 (Azure RBAC) 設定的 Azure 資源存取不受影響。
 
 ### <a name="azure-reservations"></a>Azure 保留
 
@@ -225,7 +225,7 @@ ms.locfileid: "88682785"
 
 4. 從左側選取 [存取控制 (IAM)]  。
 
-   ![顯示轉換後的企業系統管理員存取權的螢幕擷取畫面](./media/mca-setup-account/mca-ea-admins-ba-access-post-transition.png)
+   ![顯示轉換後列為計費帳戶擁有者之企業系統管理員存取權的螢幕擷取畫面。](./media/mca-setup-account/mca-ea-admins-ba-access-post-transition.png)
 
 企業系統管理員會列為計費帳戶擁有者，而具有唯讀權限的企業系統管理員則會列為計費帳戶讀者。 如果您認為有任何企業系統管理員的存取權遺失，您可以在 Azure 入口網站中為他們授與存取權。 如需詳細資訊，請參閱[在 Azure 入口網站中管理計費角色](understand-mca-roles.md#manage-billing-roles-in-the-azure-portal)。
 
@@ -241,7 +241,7 @@ ms.locfileid: "88682785"
 
 4. 從左側選取 [存取控制 (IAM)]  。
 
-   ![顯示轉換後的企業系統管理員存取權的螢幕擷取畫面](./media/mca-setup-account/mca-ea-admins-bp-access-post-transition.png)
+   ![顯示轉換後列為帳單設定檔擁有者之企業系統管理員存取權的螢幕擷取畫面。](./media/mca-setup-account/mca-ea-admins-bp-access-post-transition.png)
 
 企業系統管理員會列為帳單設定檔擁有者，而具有唯讀權限的企業系統管理員則會列為帳單設定檔讀者。 如果您認為有任何企業系統管理員的存取權遺失，您可以在 Azure 入口網站中為他們授與存取權。 如需詳細資訊，請參閱[在 Azure 入口網站中管理計費角色](understand-mca-roles.md#manage-billing-roles-in-the-azure-portal)。
 

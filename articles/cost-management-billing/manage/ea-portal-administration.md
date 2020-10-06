@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: 27073cb7cbd78183e519290c676c2499700b0cca
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: cc44f05491cc17adb9ca51963d09667400fa1ff6
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442542"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371910"
 ---
 # <a name="azure-ea-portal-administration"></a>Azure EA 入口網站系統管理員
 
@@ -175,7 +175,7 @@ Azure 企業版使用者可以從 Microsoft 帳戶 (MSA 或 Live ID) 轉換為�
 
 ### <a name="how-many-azure-account-owners-can-you-have-per-subscription"></a>您的每個訂用帳戶可以有多少個 Azure 帳戶擁有者？
 
-每個訂用帳戶只能有一個帳戶擁有者。  您可以在 [Azure 入口網站](https://portal.azure.com)頁面左上角的 [訂用帳戶] 索引標籤中，使用角色型存取或 (存取控制 (IAM)) 來新增其他角色。
+每個訂用帳戶只能有一個帳戶擁有者。  您可以在 [Azure 入口網站](https://portal.azure.com)頁面左上角的 [訂用帳戶] 索引標籤中，使用 Azure 角色型存取控制 (Azure RBAC) 來新增其他角色。
 
 ### <a name="can-an-azure-account-owner-be-listed-under-more-than-one-department"></a>一個 Azure 帳戶擁有者是否可列在多個部門下？
 
@@ -191,7 +191,7 @@ Azure 帳戶擁有者可以建立及管理不限數量的訂用帳戶。
 
 ### <a name="how-can-i-accessview-all-my-organizations-subscriptions"></a>如何存取/檢視組織的所有訂用帳戶？
 
-目前，這必須使用原則來完成；也就是說，對於每個建立的訂用帳戶，您都必須要求使用角色型存取將您的帳戶新增至訂用帳戶角色。
+目前，這必須使用原則來完成；也就是說，對於每個建立的訂用帳戶，您都必須要求使用 Azure 角色型存取控制 (Azure RBAC) 將您的帳戶新增至訂用帳戶角色。
 
 ### <a name="where-do-i-go-to-create-a-subscription"></a>我應在何處建立訂用帳戶？
 

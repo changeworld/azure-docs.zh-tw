@@ -6,12 +6,12 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 10/07/2019
-ms.openlocfilehash: 21d980bcaa73af6367908b2f24c0c856d6a6c8ad
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 005068c8e81adb9a79a4e6dc7e86a9bfb39902a1
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505817"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90088624"
 ---
 # <a name="azure-monitor-overview"></a>Azure 監視器概觀
 
@@ -42,23 +42,23 @@ Azure 監視器所收集的所有資料均符合下列兩個基本類型之一�
 
 對於許多 Azure 資源，您會在 Azure 入口網站的 [概觀] 頁面當中看到 Azure 監視器所收集的資料。 比方說，查看一下任何虛擬機器，您會看到數個顯示效能計量的圖表。 按一下任何圖表，以在 Azure 入口網站的[計量瀏覽器](platform/metrics-charts.md)中開啟資料，可讓您將一段時間的多個計量值繪製成圖表。  您可以互動方式檢視圖表，或將其釘選到儀表板，利用其他視覺效果進行檢視。
 
-![計量](media/overview/metrics.png)
+![圖表顯示流入「計量瀏覽器」的計量資料，以便在視覺效果中使用。](media/overview/metrics.png)
 
 可以使用[查詢](log-query/log-query-overview.md)分析 Azure 監視器收集的記錄資料，以快速擷取、彙總和分析收集的資料。  您可以在 Azure 入口網站中使用 [Log Analytics](./log-query/log-query-overview.md) 來建立和測試查詢，然後使用不同的工具直接分析資料，或儲存查詢以便搭配[視覺效果](visualizations.md)或[警示規則](platform/alerts-overview.md)使用。
 
 Azure 監視器使用 Azure 資料總管使用的 [Kusto 查詢語言](/azure/kusto/query/)版本，適合用於簡單的記錄查詢，但也包含進階的功能，例如彙總、聯結和智慧分析。 您可以使用[多個課程](log-query/get-started-queries.md)，快速了解查詢語言。  我們會為已經熟悉 [SQL](log-query/sql-cheatsheet.md) 和 [Splunk](log-query/splunk-cheatsheet.md) 的使用者提供特別指引。
 
-![記錄](media/overview/logs.png)
+![圖表顯示流入 Log Analytics 以便進行分析的記錄資料。](media/overview/logs.png)
 
 ## <a name="what-data-does-azure-monitor-collect"></a>Azure 監視器會收集哪些資料？
 
 Azure 監視器可以從各種來源收集資料。 您可以考慮為各層中的應用程式監視資料，範圍從您的應用程式、它所倚賴的任何作業系統和服務，以至平台本身。 Azure 監視器會從下列各層收集資料：
 
-- **應用程式監視資料**：您所撰寫程式碼的效能和功能相關資料 (不論其平台為何)。
-- **客體 OS 監視資料**：有關應用程式執行所在作業系統的資料。 這可以在 Azure、其他雲端或內部部署中執行。 
-- **Azure 資源監視資料**：有關 Azure 資源操作的資料。
-- **Azure 訂用帳戶監視資料**：有關 Azure 訂用帳戶作業和管理的資料，以及有關 Azure 本身健康情況和作業的資料。 
-- **Azure 租用戶監視資料**：租用戶層級 Azure 服務的作業相關資料，例如 Azure Active Directory。
+- **應用程式監視資料：** 您所撰寫程式碼的效能和功能相關資料 (不論其平台為何)。
+- **客體 OS 監視資料：** 有關應用程式執行所在作業系統的資料。 這可以在 Azure、其他雲端或內部部署中執行。 
+- **Azure 資源監視資料：** 有關 Azure 資源作業的資料。
+- **Azure 訂用帳戶監視資料：** 有關 Azure 訂用帳戶作業和管理的資料，以及有關 Azure 本身健康情況和作業的資料。 
+- **Azure 租用戶監視資料：** 租用戶層級 Azure 服務的作業相關資料，例如 Azure Active Directory。
 
 當您建立 Azure 訂用帳戶並開始新增資源 (例如虛擬機器和 Web 應用程式) 時，Azure 監視器就會開始收集資料。  [活動記錄](platform/platform-logs-overview.md)會記錄資源的建立或修改時間。 [計量](platform/data-platform.md)會告訴您如何執行資源以及它所取用的資源。 
 
@@ -103,12 +103,12 @@ Azure 監視器中的[監視解決方案](insights/solutions.md)是幾組封裝�
 
 Azure 監視器中的警示規則會使用[動作群組](platform/action-groups.md)，其中包含幾組獨特的收件人以及多個規則可共用的動作。 根據您的需求，動作群組可以執行一些動作，例如使用 Webhook 讓警示啟動外部動作，或與 ITSM 工具整合。
 
-![警示](media/overview/alerts.png)
+![螢幕擷取畫面顯示 Azure 監視器中的警示，其中包含嚴重性、警示總計和其他資訊。](media/overview/alerts.png)
 
 ### <a name="autoscale"></a>Autoscale
 自動調整可讓您執行適當數量的資源來處理應用程式的負載。 它可讓您建立一些規則，這些規則會使用 Azure 監視器所收集的計量來決定何時自動新增資源來處理增加的負載，並可藉由移除閒置資源來節省成本。 您可指定執行個體的數目上限和下限，以及何時要增加或減少資源的邏輯。
 
-![Autoscale](media/overview/autoscale.png)
+![圖表顯示自動調整功能，其中有數個伺服器位在標示「處理器時間 > 80%」的線條上，兩部伺服器標示為最小值、三部伺服器標示為目前的容量，以及五部伺服器標示為最大值。](media/overview/autoscale.png)
 
 ## <a name="visualizing-monitoring-data"></a>將監視資料視覺化
 [視覺效果](visualizations.md) (例如圖表和資料表) 是摘要監視資料以及向不同對象呈現資料的有效工具。 Azure 監視器有自己的功能可將監視資料視覺化，並運用其他 Azure 服務向不同的對象發佈資料。
@@ -116,12 +116,12 @@ Azure 監視器中的警示規則會使用[動作群組](platform/action-groups.
 ### <a name="dashboards"></a>儀表板
 [Azure 儀表板](../azure-portal/azure-portal-dashboards.md)可讓您將不同種類的資料 (包括計量和記錄) 結合至 [Azure 入口網站](https://portal.azure.com)的單一窗格中。 您可以選擇性地與其他 Azure 使用者共用儀表板。 您可以將 Azure 監視器的元素新增至 Azure 儀表板 (任何記錄查詢或計量圖表的輸出除外)。 例如，您可以建立一個儀表板，將顯示計量圖表、活動記錄表、來自 Application Insights 的使用情況圖表，以及記錄查詢輸出的圖格結合在一起。
 
-![儀表板](media/overview/dashboard.png)
+![螢幕擷取畫面顯示 Azure 儀表板，其中包括應用程式和安全性磚，以及其他可自訂的資訊。](media/overview/dashboard.png)
 
 ### <a name="views"></a>檢視
 [[檢視]](./platform/view-designer.md) 會以視覺化方式在 Azure 監視器中呈現記錄資料。  每個檢視都包含單一圖格，該圖格可向下切入至視覺效果的組合，例如長條圖和折線圖 (摘要重要資料的清單除外)。  監視解決方案包含可摘要特定應用程式資料的檢視，而且您可以建立自己的檢視，以呈現來自任何記錄查詢的資料。 如何 Azure 監視器中的其他元素，可以將檢視新增至 Azure 儀表板。
 
-![檢視](media/overview/view.png)
+![螢幕擷取畫面顯示容器監視解決方案的磚，以及在選取磚時開啟的詳細檢視。](media/overview/view.png)
 
 ### <a name="power-bi"></a>Power BI
 [Power BI](https://powerbi.microsoft.com) 是一項商務分析服務，可提供橫跨各種資料來源的互動式視覺效果，而且是將資料提供給貴組織內外的其他人使用的有效方法。 您可以將 Power BI 設定為[從 Azure 監視器自動匯入記錄資料](./platform/powerbi.md)，以便利用這些額外的視覺效果。

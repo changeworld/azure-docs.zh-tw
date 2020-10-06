@@ -8,12 +8,12 @@ ms.date: 07/24/2020
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.openlocfilehash: dc4d319e0e6b55af8af460fa8a56b9ef24a53341
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 03953e210f1c4caf1541db272ce4c02c271dafaa
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89487346"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371825"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>將合作夥伴識別碼連結到您的 Azure 帳戶
 
@@ -151,9 +151,9 @@ C:\ az managementpartner delete --partner-id 12345
 
 您因為下列原因而無法在報告中看到該客戶
 
-1. 連結的使用者帳戶沒有任何客戶 Azure 訂用帳戶或資源的[角色型存取權](https://docs.microsoft.com/azure/role-based-access-control/overview)。
+1. 連結的使用者帳戶沒有任何客戶 Azure 訂用帳戶或資源的 [Azure 角色型存取控制 (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview)。
 
-2. 使用者具有[角色型存取權](https://docs.microsoft.com/azure/role-based-access-control/overview)的 Azure 訂用帳戶沒有任何使用量。
+2. 使用者具有 [Azure 角色型存取控制 (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) 存取權的 Azure 訂用帳戶沒有任何使用量。
 
 **連結合作夥伴識別碼是否可搭配 Azure Stack 使用？**
 

@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: tutorial
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 4adb3bb1408357d40e3869c2a0d251b11d015195
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 619dec1b2246b7e74b058e570df4021888196b0c
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88689519"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447537"
 ---
 # <a name="tutorial-review-your-microsoft-customer-agreement-invoice"></a>教學課程：檢閱 Microsoft 客戶合約發票
 
@@ -47,7 +47,7 @@ ms.locfileid: "88689519"
 
 在 Azure 入口網站的搜尋方塊中輸入 [成本管理 + 計費]  ，然後選取 [成本管理 + 計費]  。
 
-![顯示在 Azure 入口網站中搜尋 [成本管理 + 帳單] 的螢幕擷取畫面](./media/review-customer-agreement-bill/billing-search-cost-management-billing.png)
+![針對 [成本管理 + 計費] 顯示 Azure 入口網站搜尋的螢幕擷取畫面。](./media/review-customer-agreement-bill/billing-search-cost-management-billing.png)
 
 如果您只能存取一個計費範圍，請選取左側的 [屬性]  。 如果帳單帳戶類型為 [Microsoft 客戶合約]  ，您可以存取 Microsoft 客戶合約的計費帳戶。
 
@@ -106,7 +106,7 @@ ms.locfileid: "88689519"
 
 費用區段會顯示當月費用和上個月的費用。
 
-![顯示在 Azure 入口網站中搜尋 [成本管理 + 帳單] 的螢幕擷取畫面](./media/review-customer-agreement-bill/mca-billing-profile-summary.png)
+![顯示帳單設定檔摘要的螢幕擷取畫面。](./media/review-customer-agreement-bill/mca-billing-profile-summary.png)
 
 當月費用是當月的待決費用，會在當月的發票產生時計費。 如果上個月的發票尚未產生，則上個月的費用也會列為待決，且會顯示在下一張發票上。
 
@@ -138,7 +138,7 @@ ms.locfileid: "88689519"
 
 [Azure 訂用帳戶] 頁面會顯示帳單設定檔中每個訂用帳戶當月和上個月的費用。 當月費用是當月的待決費用，會在當月的發票產生時計費。 如果上個月的發票尚未產生，則上個月的費用也會列為待決。
 
-![顯示帳單設定檔的 Azure 訂用帳戶清單的螢幕擷取畫面](./media/review-customer-agreement-bill/mca-billing-profile-subscriptions-list.png)
+![顯示具有月初至今費用和上個月費用的訂用帳戶螢幕擷取畫面。](./media/review-customer-agreement-bill/mca-billing-profile-subscriptions-list.png)
 
 ## <a name="analyze-your-azure-usage-charges"></a>分析您的 Azure 使用量費用
 
@@ -172,7 +172,7 @@ ms.locfileid: "88689519"
 
 下圖顯示 Azure 入口網站中的訂用帳戶清單。
 
-![顯示帳單設定檔的 Azure 訂用帳戶清單的螢幕擷取畫面](./media/review-customer-agreement-bill/mca-billing-profile-subscriptions-list-highlighted.png)
+![顯示 Azure 入口網站中訂用帳戶清單的螢幕擷取畫面，其中包含一個訂用帳戶圖說文字。](./media/review-customer-agreement-bill/mca-billing-profile-subscriptions-list-highlighted.png)
 
 將 Azure 使用量和費用 CSV 檔案中的 **subscriptionName** 資料行篩選到 **WA_Subscription**，以檢視 WA_Subscription 的詳細使用量費用。
 

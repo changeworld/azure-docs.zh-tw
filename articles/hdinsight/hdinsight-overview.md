@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: overview
 ms.custom: contperfq1
 ms.date: 08/21/2020
-ms.openlocfilehash: 676d287969933d4815260f040b164753ec5803e1
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: f66eaaa3be0b300f6a0aa68bd43a2c336f4b4d23
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88754866"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526624"
 ---
 # <a name="what-is-azure-hdinsight"></a>什麼是 Azure HDInsight？
 
@@ -36,7 +36,7 @@ Azure HDInsight 是 Hadoop 元件的雲端發行版。 Azure HDInsight 可輕鬆
 |功能  |描述  |
 |---------|---------|
 |雲端原生     |     Azure HDInsight 可讓您在 Azure 上建立 [Hadoop](./hadoop/apache-hadoop-linux-tutorial-get-started.md)、 [Spark](./spark/apache-spark-jupyter-spark-sql.md)、 [互動式查詢 (LLAP)](./interactive-query/apache-interactive-query-get-started.md)、 [Kafka](./kafka/apache-kafka-get-started.md)、 [Storm](./storm/apache-storm-tutorial-get-started-linux.md)、 [HBase](./hbase/apache-hbase-tutorial-get-started-linux.md) 和  [ML 服務](./r-server/r-server-overview.md)的最佳化叢集。 HDInsight 也提供所有生產工作負載的端對端 SLA。  |
-|低成本且可調整     | HDInsight 可讓您[相應](./hdinsight-administer-use-portal-linux.md#scale-clusters) 增加或減少工作負載。 您可以 [依照需求建立叢集](./hdinsight-hadoop-create-linux-clusters-adf.md) 來降低成本，且只支付您所使用的部分。 您也可以建置資料管線來施行您的作業。 低耦合的計算和儲存體可提供更好的效能和彈性。 |
+|低成本且可調整     | HDInsight 可讓您[相應](./hdinsight-administer-use-portal-linux.md#scale-clusters) 增加或減少工作負載。您可以 [依照需求建立叢集](./hdinsight-hadoop-create-linux-clusters-adf.md) 來降低成本，且只支付您所使用的部分。 您也可以建置資料管線來施行您的作業。 低耦合的計算和儲存體可提供更好的效能和彈性。 |
 |安全且符合規範    | HDInsight 可讓您使用 [Azure 虛擬網路](./hdinsight-plan-virtual-network-deployment.md)、[加密](./hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md)，以及與 [Azure Active Directory](./domain-joined/hdinsight-security-overview.md) 整合來保護企業資料資產。 HDInsight 也符合最受歡迎的產業和政府[合規性標準](https://azure.microsoft.com/overview/trusted-cloud)。        |
 |監視    | Azure HDInsight 與 [Azure 監視器記錄](./hdinsight-hadoop-oms-log-analytics-tutorial.md)整合後會提供單一介面，以便監視所有的叢集。        |
 |正式上市 | HDInsight 的適用 [區域](https://azure.microsoft.com/regions/services/) 超過任何其他巨量資料分析供應項目。 Azure HDInsight 也會適用於 Azure Government、中國和德國，可讓您符合您在重要主權區域中的企業需求。 |  
@@ -55,25 +55,25 @@ Azure HDInsight 可在巨量資料處理的各種案例中使用。 它可以是
 
 您可以使用 HDInsight 對任何格式的結構化或非結構化資料執行 PB 規模的互動式查詢。 您也可以建置模型，將這些查詢連線至 BI 工具。 如需詳細資訊，請參閱[此客戶案例](https://customers.microsoft.com/story/milliman)。
 
-![HDInsight 架構：資料倉儲](./hadoop/media/apache-hadoop-introduction/hdinsight-architecture-data-warehouse.png "HDInsight 資料倉儲架構")
+HDInsight 架構：資料倉儲
 
 ### <a name="internet-of-things-iot"></a>物聯網 (IoT)
 
 您可以使用 HDInsight 來處理從不同裝置類型即時接收的串流資料。 如需詳細資訊，請[閱讀 Azure 的此部落格文章，其中宣佈了在 HDInsight 上使用 Azure 受控磁碟的 Apache Kafka 公開預覽](https://azure.microsoft.com/blog/announcing-public-preview-of-apache-kafka-on-hdinsight-with-azure-managed-disks/)。
 
-![HDInsight 架構：物聯網](./hadoop/media/apache-hadoop-introduction/hdinsight-architecture-iot.png "HDInsight IoT 架構")
+HDInsight 架構：物聯網
 
 ### <a name="data-science"></a>資料科學
 
 您可以使用 HDInsight 建置應用程式，從資料中擷取重要的深入解析。 您也可以在其上使用 Azure Machine Learning，以預測您未來的業務趨勢。 如需詳細資訊，請參閱[此客戶案例](https://customers.microsoft.com/story/pros)。
 
-![HDInsight 架構：資料科學](./hadoop/media/apache-hadoop-introduction/hdinsight-architecture-data-science.png "HDInsight 資料科學架構")
+HDInsight 架構：資料科學
 
 ### <a name="hybrid"></a>混合式
 
 您可以使用 HDInsight 將現有的內部部署巨量資料基礎結構延伸至 Azure，充分利用雲端的進階分析功能。
 
-![HDInsight 架構：混合式](./hadoop/media/apache-hadoop-introduction/hdinsight-architecture-hybrid.png "HDInsight 混合式架構")
+HDInsight 架構：混合式
 
 ## <a name="cluster-types-in-hdinsight"></a>HDInsight 中的叢集類型
 
@@ -129,9 +129,19 @@ HDInsight 叢集 (包括 Spark、HBase、Kafka、Hadoop 等) 支援許多種程�
 
 * [使用 Microsoft Hive ODBC 驅動程式將 Excel 連線到 Apache Hadoop](./hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md) (需要 Windows)
 
+
+## <a name="in-region-data-residency"></a>區域內資料落地 
+
+Spark、Hadoop、LLAP、Storm 和 MLService 不會儲存客戶資料，因此這些服務會自動滿足區域內的資料落地需求，包括 [信任中心](https://azuredatacentermap.azurewebsites.net/)中指定的需求。 
+
+Kafka 和 HBase 會儲存客戶資料。 Kafka 和 HBase 會自動將此資料儲存在單一區域中，因此這項服務可滿足區域內的資料落地需求，包括 [信任中心](https://azuredatacentermap.azurewebsites.net/)中指定的需求。 
+
+
+熟悉的商業智慧 (BI) 工具可使用 Power Query 增益集或 Microsoft Hive ODBC 驅動程式來擷取、分析和報告與 HDInsight 整合的資料。
+
 ## <a name="next-steps"></a>後續步驟
 
 * [在 HDInsight 中建立 Apache Hadoop 叢集](./hadoop/apache-hadoop-linux-create-cluster-get-started-portal.md)
-* [建立 Apache Spark 叢集 - 入口網站](./spark/apache-spark-jupyter-spark-sql-use-portal.md)
+* 建立 Apache Spark 叢集 - 入口網站
 * [為 Azure HDInsight 規劃虛擬網路](hdinsight-plan-virtual-network-deployment.md)
 * [Azure HDInsight 中的企業安全性](./domain-joined/hdinsight-security-overview.md)

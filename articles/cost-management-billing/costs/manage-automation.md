@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: matrive
-ms.openlocfilehash: eb6ed73305d55b4f76464a4567c6b53715b10c3a
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 2bf28384ae672440a18331cad8ac95f6ea051b85
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526641"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372182"
 ---
 # <a name="manage-costs-with-automation"></a>使用自動化管理成本
 
@@ -234,7 +234,7 @@ GET https://management.azure.com/{scope}/providers/Microsoft.Consumption/usageDe
 - **時間週期** - 代表預算的有效時間長度。 預算會主動監視，並且只有在仍然有效時才會向您發出警示。
 - **通知**
   - 連絡人電子郵件 - 當預算產生成本且超過定義的限額時，電子郵件地址就會收到警示。
-  - 連絡人角色 - 在給定範圍上具有相符 Azure RBAC 角色的所有使用者都會透過此選項而收到電子郵件警示。 例如，訂用帳戶擁有者會收到在訂用帳戶範圍上所建立預算的警示。
+  - 連絡人角色 - 在給定範圍上具有相符 Azure 角色的所有使用者都會透過此選項而收到電子郵件警示。 例如，訂用帳戶擁有者會收到在訂用帳戶範圍上所建立預算的警示。
   - 連絡人群組 - 當超過警示限額時，預算會呼叫已設定的動作群組。
 - **成本維度篩選** - 您可以在成本分析或查詢 API 中執行的相同篩選，也可以在您的預算上進行。 使用此篩選可減少您所監視的預算成本範圍。
 

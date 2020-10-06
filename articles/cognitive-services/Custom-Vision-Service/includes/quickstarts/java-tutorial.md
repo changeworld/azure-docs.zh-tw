@@ -3,26 +3,29 @@ author: areddish
 ms.custom: devx-track-java
 ms.author: areddish
 ms.service: cognitive-services
-ms.date: 08/17/2020
-ms.openlocfilehash: cd6388e6c6313ba84978d43d388855b114a4875d
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.date: 09/15/2020
+ms.openlocfilehash: f4b64c25bff93683c79aa1aa3eb556988c798cb0
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88508503"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604943"
 ---
-本文說明如何開始使用自訂視覺 Java 用戶端程式庫來建置影像分類模型。 建立它之後，您就可以新增標記、上傳影像、為專案定型、取得專案的預設預測端點 URL，並使用端點以程式設計方式測試影像。 請使用此範例作為範本來建置您自己的 Java 應用程式。 如果您想要進行「不用」  程式碼來建置及使用分類模型的程序，請改為參閱[以瀏覽器為基礎的指引](../../getting-started-build-a-classifier.md)。
+本指南提供指示和範例程式碼，可協助您開始使用適用於 Java 的自訂視覺用戶端程式庫來建置影像分類模型。 您將建立專案、新增標籤、將專案定型，並使用專案的預測端點 URL 以程式設計方式加以測試。 請使用此範例作為自行建置影像辨識應用程式的範本。
 
-## <a name="prerequisites"></a>Prerequisites
+> [!NOTE]
+> 如果您想要在「不用」撰寫程式碼的情況下，建立和訓練分類模型，請改為參閱[以瀏覽器為基礎的指引](../../getting-started-build-a-classifier.md)。
+
+## <a name="prerequisites"></a>先決條件：
 
 - 您選擇的 Java IDE
 - 已安裝 [JDK 7 或 8](https://aka.ms/azure-jdks)。
 - 已安裝 [Maven](https://maven.apache.org/)
 - [!INCLUDE [create-resources](../../includes/create-resources.md)]
 
-## <a name="get-the-custom-vision-client-library-and-sample-code"></a>取得自訂視覺 用戶端程式庫與程式碼範例
+## <a name="get-the-custom-vision-client-library"></a>取得自訂視覺用戶端程式庫
 
-若要撰寫使用自訂視覺的 Java 應用程式，您需要有自訂視覺 Maven 套件。 這些套件包含在您將會下載的專案範例內，但您可以在此個別存取這些套件。
+若要使用適用於 Java 的自訂視覺來撰寫影像分析應用程式，您將需要自訂視覺 Maven 套件。 這些套件包含在您將會下載的專案範例內，但您可以在此個別存取這些套件。
 
 您可以在 Maven 中央存放庫中尋找自訂視覺用戶端程式庫：
 
@@ -31,7 +34,7 @@ ms.locfileid: "88508503"
 
 複製或下載[認知服務 Java SDK 範例](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master)專案。 瀏覽至 **Vision/CustomVision/** 資料夾。
 
-此 Java 專案會建立名為「Java 專案範例」  的新自訂視覺影像分類專案，如需存取此專案，請透過[自訂視覺網站](https://customvision.ai/)。 然後上傳影像以便為分類器定型並加以測試。 在此專案中，分類器會用來判斷影像是「鐵杉」  還是「日本櫻」  。
+此 Java 專案會建立名為「Java 專案範例」____ 的新自訂視覺影像分類專案，如需存取此專案，請透過[自訂視覺網站](https://customvision.ai/)。 然後上傳影像以便為分類器定型並加以測試。 在此專案中，分類器會用來判斷影像是「鐵杉」____ 還是「日本櫻」____。
 
 [!INCLUDE [get-keys](../../includes/get-keys.md)]
 
@@ -45,21 +48,21 @@ $env:AZURE_CUSTOMVISION_TRAINING_API_KEY ="<your training api key>"
 $env:AZURE_CUSTOMVISION_PREDICTION_API_KEY ="<your prediction api key>"
 ```
 
-## <a name="understand-the-code"></a>了解程式碼
+## <a name="examine-the-code"></a>檢查程式碼
 
 在 Java IDE 中載入 `Vision/CustomVision` 專案，然後開啟 _CustomVisionSamples.java_ 檔案。 尋找 **runSample** 方法，並將 **ObjectDetection_Sample** 方法呼叫註解化 &mdash; 此方法會執行偵測案例，但這不在本指南的討論範圍內。 **ImageClassification_Sample** 方法會實作此範例的主要功能；瀏覽至其定義，然後檢查程式碼。
 
-### <a name="create-a-custom-vision-service-project"></a>建立自訂視覺服務專案
+## <a name="create-a-custom-vision-project"></a>建立自訂視覺專案
 
 這第一段程式碼會建立影像分類專案。 所建立的專案會顯示在您稍早瀏覽過的[自訂視覺網站](https://customvision.ai/)上。 當您建立專案時，請參閱 [CreateProject](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.customvision.training.trainings.createproject?view=azure-java-stable#com_microsoft_azure_cognitiveservices_vision_customvision_training_Trainings_createProject_String_CreateProjectOptionalParameter_) 方法多載來指定其他選項 (如[建置分類器](../../getting-started-build-a-classifier.md) Web 入口網站指南中所述)。
 
 [!code-java[](~/cognitive-services-java-sdk-samples/Vision/CustomVision/src/main/java/com/microsoft/azure/cognitiveservices/vision/customvision/samples/CustomVisionSamples.java?name=snippet_create)]
 
-### <a name="create-tags-in-the-project"></a>在專案中建立標記
+## <a name="create-tags-in-the-project"></a>在專案中建立標記
 
 [!code-java[](~/cognitive-services-java-sdk-samples/Vision/CustomVision/src/main/java/com/microsoft/azure/cognitiveservices/vision/customvision/samples/CustomVisionSamples.java?name=snippet_tags)]
 
-### <a name="upload-and-tag-images"></a>上傳和標記影像
+## <a name="upload-and-tag-images"></a>上傳和標記影像
 
 影像範例包含在專案的 **src/main/resources** 資料夾中。 系統會從該處讀取影像，並使用其適當標記將其上傳至服務。
 
@@ -69,13 +72,13 @@ $env:AZURE_CUSTOMVISION_PREDICTION_API_KEY ="<your prediction api key>"
 
 [!code-java[](~/cognitive-services-java-sdk-samples/Vision/CustomVision/src/main/java/com/microsoft/azure/cognitiveservices/vision/customvision/samples/CustomVisionSamples.java?name=snippet_helpers)]
 
-### <a name="train-the-classifier-and-publish"></a>訓練分類器並發佈
+## <a name="train-and-publish-the-project"></a>訓練及發佈專案
 
 此程式碼會在預測模型中建立第一個反覆項目，然後將該反覆項目發佈至預測端點。 提供給已發佈反覆項目的名稱可用來傳送預測要求。 反覆項目要等到發佈後才可在預測端點中使用。
 
 [!code-java[](~/cognitive-services-java-sdk-samples/Vision/CustomVision/src/main/java/com/microsoft/azure/cognitiveservices/vision/customvision/samples/CustomVisionSamples.java?name=snippet_train)]
 
-### <a name="use-the-prediction-endpoint"></a>使用預測端點
+## <a name="use-the-prediction-endpoint"></a>使用預測端點
 
 在此以 `predictor` 物件所表示的預測端點，可作為參考供您用來提交影像給目前的模型，並取得分類預測。 在此範例中，`predictor` 會在其他地方使用預測金鑰環境變數加以定義。
 
@@ -133,3 +136,6 @@ Done!
 
 > [!div class="nextstepaction"]
 > [測試和重新定型模型](../../test-your-model.md)
+
+* 什麼是自訂視覺服務？
+* * [SDK 參考文件](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/customvision?view=azure-java-stable)

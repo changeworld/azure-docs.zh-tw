@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 98941530ba0483e82f43af222e12df7439b6625e
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 4d6208360bd876a2a1ae0a9ff154604a33584db9
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88688743"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447940"
 ---
 # <a name="get-started-with-your-microsoft-partner-agreement-billing-account"></a>開始使用您的 Microsoft 合作夥伴合約計費帳戶
 
@@ -55,7 +55,7 @@ Microsoft 合作夥伴合約的計費帳戶包含您計費所用之每種貨幣�
 
 1. 針對 [成本管理 + 帳單]  進行搜尋。
 
-   ![顯示 Azure 入口網站搜尋的螢幕擷取畫面](./media/mpa-overview/search-cmb.png)
+   ![針對 [成本管理 + 計費] 顯示 Azure 入口網站搜尋的螢幕擷取畫面。](./media/mpa-overview/search-cmb.png)
 
 1. 從左側選取 [客戶]  ，然後從清單中選取客戶。
 

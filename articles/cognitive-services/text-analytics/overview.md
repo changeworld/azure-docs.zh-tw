@@ -1,47 +1,53 @@
 ---
-title: 什麼是文字分析 API？ - 功能 -
+title: 使用文字分析 API 進行文字採礦和分析 - Azure 認知服務
 titleSuffix: Azure Cognitive Services
-description: 從 Azure 認知服務中使用「文字分析 API」來進行情感分析、關鍵片語擷取、語言偵測和實體辨識。
+description: 了解如何使用文字分析 API 進行文字採礦。 將其用於情感分析、語言偵測，以及其他形式的自然語言處理。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 08/27/2020
+ms.date: 09/09/2020
 ms.author: aahi
-ms.openlocfilehash: a3c538f3a9e7a2d8d71fff38fb927dbcdf725732
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+keywords: 文字採礦, 情感分析, 文字分析
+ms.custom: cog-serv-seo-aug-2020
+ms.openlocfilehash: 544de4adb1891c3d558a524466a076daefb42aa4
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89000952"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89647472"
 ---
 # <a name="what-is-the-text-analytics-api"></a>什麼是文字分析 API？
 
-文字分析 API 是一種雲端式服務，可針對原始的文字提供進階的自然語言處理，同時包含四種主要功能：情感分析、關鍵片語擷取、語言偵測和具名實體辨識。
+文字分析 API 是一項雲端式服務，可提供自然語言處理 (NLP) 功能來進行文字採礦和文字分析，包括：情感分析、意見挖掘、關鍵片語擷取、語言偵測，以及具名實體辨識。
 
-此 API 屬於 [Azure 認知服務](https://docs.microsoft.com/azure/cognitive-services/)的一部分，由雲端中的機器學習和 AI 演算法的集合所組成，可供您的開發專案使用。
+此 API 屬於 [Azure 認知服務](https://docs.microsoft.com/azure/cognitive-services/)的一部分，由雲端中的機器學習和 AI 演算法的集合所組成，可供您的開發專案使用。 您可以將這些功能與 [REST API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/) \(英文\) 或[用戶端程式庫](quickstarts/text-analytics-sdk.md)搭配使用。
 
 > [!VIDEO https://channel9.msdn.com/Shows/AI-Show/Understanding-Text-using-Cognitive-Services/player]
 
-文字分析可能代表不同的意義，但在認知服務中，文字分析 API 可提供四種類型的分析，如下所述。 您可以將這些功能與 [REST API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/) \(英文\) 或[用戶端程式庫](quickstarts/text-analytics-sdk.md)搭配使用。
-
 ## <a name="sentiment-analysis"></a>情感分析
-使用[情感分析](how-tos/text-analytics-how-to-sentiment-analysis.md)可藉由分析原始文字而獲得有關於正面或負面情感的線索，來了解客戶對您的品牌或主題有何看法。 此 API 會為每份文件傳回 0 到 1 之間的情感分數，1 代表最正面的情感。<br /> 分析模型會使用大量文字主體和 Microsoft 的自然語言技術預先定型。 針對[選取的語言](text-analytics-supported-languages.md)，API 可對您所提供的任何原始文字進行分析及評分，並直接將結果傳回至呼叫端應用程式。
+
+使用[情感分析](how-tos/text-analytics-how-to-sentiment-analysis.md)對文字進行採礦，可獲得關於正面或負面情感的線索，進而了解客戶對您的品牌或主題有何看法。 此 API 功能會為每份文件傳回 0 到 1 之間的情感分數，1 代表最正面的情感。
+
+從 v3.1 預覽版開始，意見挖掘是情感分析的功能。 這項功能也稱為自然語言處理 (NLP) 中的層面型情感分析，可提供文字中與各層面相關意見的詳細資訊 (例如產品或服務的屬性)。
 
 ## <a name="key-phrase-extraction"></a>關鍵片語擷取
-可自動[擷取關鍵片語](how-tos/text-analytics-how-to-keyword-extraction.md)，以快速識別重點。 例如，若輸入文字為 "The food was delicious and there were wonderful staff"，API 即會傳回主要討論要點："food" 和 "wonderful staff"。
+
+使用[關鍵片語擷取](how-tos/text-analytics-how-to-keyword-extraction.md)可快速識別文字中的主要概念。 例如，若輸入文字 "The food was delicious and there were wonderful staff"，關鍵片語擷取即會傳回主要討論要點："food" 和 "wonderful staff"。
 
 ## <a name="language-detection"></a>語言偵測
-您可以[偵測輸入文字是以何種語言撰寫的](how-tos/text-analytics-how-to-language-detection.md)，並按要求針對所提交的每份文件回報單一語言代碼，包括多種不同的語言、變體、方言，和某些區域性/文化語言。 語言代碼各配有一個分數，表示分數的強度。
+
+語言偵測可以[偵測輸入文字的撰寫語言](how-tos/text-analytics-how-to-language-detection.md)，並按要求針對所提交的每份文件回報單一語言代碼，包括多種不同的語言、變體、方言，和某些區域性/文化語言。 語言代碼會與信賴分數配對。
 
 ## <a name="named-entity-recognition"></a>具名實體辨識
-[識別文字中的實體並分類](how-tos/text-analytics-how-to-entity-linking.md)為人員、位置、組織、日期/時間、數量、百分比、貨幣等等。 已知的實體也會辨識出來，並連結至網路上的其他資訊。
+
+「具名實體辨識 (NER)」可以[將文字中的實體識別和分類](how-tos/text-analytics-how-to-entity-linking.md)為人員、地點、組織或數量，而眾所皆知的實體還可以在辨識後連結至網路上的更多資訊。
 
 ## <a name="use-containers"></a>使用容器
 
-[使用文字分析容器](how-tos/text-analytics-how-to-install-containers.md)，藉由在更接近資料的位置安裝標準化的 Docker 容器，於本機擷取關鍵片語、偵測語言和分析人氣。
+[使用文字分析容器](how-tos/text-analytics-how-to-install-containers.md)作為文字採礦和使用 API 的內部部署解決方案。 這些 Docker 容器可讓您擷取關鍵片語、偵測語言，以及分析更貼近資料的情感。
 
 ## <a name="typical-workflow"></a>一般工作流程
 

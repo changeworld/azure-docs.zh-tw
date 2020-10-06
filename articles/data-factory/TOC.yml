@@ -544,6 +544,8 @@
           href: data-flow-new-branch.md
         - name: 樞紐
           href: data-flow-pivot.md
+        - name: 排名
+          href: data-flow-rank.md
         - name: 選取
           href: data-flow-select.md
         - name: 接收

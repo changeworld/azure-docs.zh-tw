@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: 8997cf5e86eb79b527c0b37ef0b85556469aea98
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 0404e3b268f5797e34b3818df8eebeefbe68a1f3
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88687632"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371944"
 ---
 # <a name="get-started-with-the-azure-enterprise-portal"></a>開始使用 Azure 企業版入口網站
 
@@ -242,10 +242,10 @@ Azure 企業版入口網站階層包含：
 
 - 當您完成訂用帳戶轉移時，Microsoft 會更新帳戶擁有者。
 
-了解這些角色型存取控制 (RBAC) 原則：
+了解這些 Azure 角色型存取控制 (Azure RBAC) 原則：
 
-- 當您在相同租用戶中的兩個組織識別碼之間執行訂用帳戶轉移時，RBAC 原則和現有的服務管理員及共同管理員角色都會保留。
-- 其他訂用帳戶轉移會導致您的 RBAC 原則和角色指派遺失。
+- 當您在相同租用戶中的兩個組織識別碼之間執行訂用帳戶轉移時，Azure RBAC 原則和現有的服務管理員及共同管理員角色都會保留。
+- 其他訂用帳戶轉移會導致您的 Azure RBAC 原則和角色指派遺失。
 - 原則和管理員角色不會在不同的目錄之間轉移。 服務管理員會更新為目的地帳戶的擁有者。
 
 變更帳戶擁有者之前：
@@ -569,7 +569,7 @@ Azure 企業版入口網站為企業客戶提供兩種類型的訂用帳戶：
 
 若要定義消費配額，請選取部門，然後選取編輯圖示。 編輯消費限制詳細資料之後，請選取 [儲存]。
 
-### <a name="i-used-resource-groups-to-implement-rbac-and-track-usage-how-can-i-view-the-associated-usage-details"></a>我使用了資源群組來實行 RBAC 和追蹤使用量。 如何才能檢視相關聯的使用量詳細資料？
+### <a name="i-used-resource-groups-to-implement-azure-rbac-and-track-usage-how-can-i-view-the-associated-usage-details"></a>我使用了資源群組來實行 Azure RBAC 和追蹤使用量。 如何才能檢視相關聯的使用量詳細資料？
 
 如果您使用「資源群組」和「標記」，則會在服務層級追蹤此資訊，而且您可在詳細使用量下載 (CSV) 檔案中加以存取。 請參閱 Azure 企業版入口網站中的[下載使用量報告](https://ea.azure.com/report/downloadusage)。
 

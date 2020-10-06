@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
 ms.custom: ''
-ms.openlocfilehash: 64e7f0eae10f590ffd268b43b63a5d8cb0987c57
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 16ddb9cfc2f0731381b1c92d8fdb5f4cffa1ca63
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683142"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372352"
 ---
 # <a name="understand-and-work-with-scopes"></a>了解並使用範圍
 
@@ -26,7 +26,7 @@ ms.locfileid: "88683142"
 - 計費資料，例如付款和發票
 - 雲端服務，例如成本和原則治理
 
-在範圍中，您可管理計費資料、指定付款專屬角色、檢視發票，以及進行一般帳戶管理。 計費和帳戶角色會與用於資源管理的角色 (其使用 [Azure RBAC](../../role-based-access-control/overview.md)) 分開管理。 為了清楚區分不同範圍的意圖 (包括存取控制差異)，這些範圍分別稱為「計費範圍」和「RBAC 範圍」。
+在範圍中，您可管理計費資料、指定付款專屬角色、檢視發票，以及進行一般帳戶管理。 計費和帳戶角色會與用於資源管理的角色 (其使用 [Azure RBAC](../../role-based-access-control/overview.md)) 分開管理。 為了清楚區分不同範圍的意圖 (包括存取控制差異)，這些範圍分別稱為「計費範圍」和「Azure RBAC 範圍」。
 
 若要深入了解範圍，請觀看[成本管理設定階層](https://www.youtube.com/watch?v=n3TLRaYJ1NY)影片。 若要觀看其他影片，請造訪[成本管理 YouTube 頻道](https://www.youtube.com/c/AzureCostManagement)。
 
@@ -34,7 +34,7 @@ ms.locfileid: "88683142"
 
 ## <a name="how-cost-management-uses-scopes"></a>成本管理使用範圍的方式
 
-成本管理適用於資源之上的所有範圍，可讓組織在其擁有存取權的層級管理成本 (無論是整個計費帳戶還是單一資源群組)。 雖然計費範圍會根據您的 Microsoft 合約 (訂用帳戶類型) 而有所不同，但 RBAC 範圍不會。
+成本管理適用於資源之上的所有範圍，可讓組織在其擁有存取權的層級管理成本 (無論是整個計費帳戶還是單一資源群組)。 雖然計費範圍會根據您的 Microsoft 合約 (訂用帳戶類型) 而有所不同，但 Azure RBAC 範圍不會。
 
 ## <a name="azure-rbac-scopes"></a>Azure RBAC 範圍
 
@@ -98,7 +98,7 @@ EA 計費範圍支援下列角色：
 - **企業唯讀使用者** – 可以檢視計費帳戶設定、成本資料和成本配置。 例如，預算和匯出。 在函式中，EA 計費範圍與[成本管理讀者 Azure 角色](../../role-based-access-control/built-in-roles.md#cost-management-reader)相同。
 - **部門系統管理員** – 可以管理部門設定 (例如成本中心)，而且可以存取、檢視所有成本，以及管理成本配置。 例如，預算和匯出。  必須為部門系統管理員和唯讀使用者啟用 [DA 檢視費用] 計費帳戶設定，才能查看成本。 如果已停用 [DA 檢視費用] 選項，部門使用者就無法查看任何層級的成本，即使他們是帳戶或訂用帳戶擁有者也一樣。
 - **部門唯讀使用者** – 可以檢視部門設定、成本資料和成本配置。 例如，預算和匯出。 如果已停用 [DA 檢視費用] 選項，部門使用者就無法查看任何層級的成本，即使他們是帳戶或訂用帳戶擁有者也一樣。
-- **帳戶擁有者** – 可以管理註冊帳戶設定 (例如成本中心)、檢視所有成本，以及管理註冊帳戶的成本配置 (例如預算和匯出)。 必須為帳戶擁有者和 RBAC 使用者啟用 [AO 檢視費用] 計費帳戶設定，才能查看成本。
+- **帳戶擁有者** – 可以管理註冊帳戶設定 (例如成本中心)、檢視所有成本，以及管理註冊帳戶的成本配置 (例如預算和匯出)。 必須為帳戶擁有者和 Azure RBAC 使用者啟用 [AO 檢視費用] 計費帳戶設定，才能查看成本。
 
 EA 計費帳戶使用者沒有發票的直接存取權。 您可以從外部大量授權系統取得發票。
 

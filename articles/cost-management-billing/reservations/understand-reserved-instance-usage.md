@@ -9,12 +9,12 @@ ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: b1b5a344da20bff31f85a2d3cb20a0a35e4c4bde
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 2b00c90abce915ae6fd645cbcce3536870609558
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88681918"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447880"
 ---
 # <a name="understand-azure-reservation-usage-for-your-individual-subscription-with-pay-as-you-go-rates-subscription"></a>了解個別訂用帳戶 (採用隨用隨付費率) 的 Azure 保留使用量
 
@@ -74,7 +74,7 @@ CSV 檔案的這個區段會顯示保留的整體使用量。 請對包含 **"Re
 
 針對 [保留執行個體使用方式] 計量名稱進行篩選，然後選擇所需的 [計量類別目錄] - [Azure SQL Database] 或 [Azure Cosmos DB]。 您會看到類似下列螢幕擷取畫面的內容：
 
-![SQL Database 保留容量的 CSV 檔案](./media/understand-reserved-instance-usage/billing-payg-sql-db-reserved-capacity-csv-statements.png)
+![顯示計量類別項目的螢幕擷取畫面。](./media/understand-reserved-instance-usage/billing-payg-sql-db-reserved-capacity-csv-statements.png)
 
 [保留的執行個體使用量] 行有保留所涵蓋的核心時數總數。 這一行的費率為 $0，原因是保留涵蓋該成本。
 
@@ -82,7 +82,7 @@ CSV 檔案的這個區段會顯示保留的整體使用量。 請對包含 **"Re
 
 篩選**其他資訊**並輸入**保留識別碼**。 以下螢幕擷取畫面顯示與 SQL Database 保留容量相關的欄位。
 
-![SQL Database 保留容量的 CSV 檔案](./media/understand-reserved-instance-usage/billing-payg-sql-db-reserved-capacity-csv-details.png)
+![顯示保留容量之 CSV 檔案詳細資料的螢幕擷取畫面。](./media/understand-reserved-instance-usage/billing-payg-sql-db-reserved-capacity-csv-details.png)
 
 1. [其他資訊] 欄位中的 **ReservationId** 是套用至 SQL Database 資源的 SQL Database 保留容量。
 2. **ConsumptionMeter** 是 SQL Database 資源的計量識別碼。

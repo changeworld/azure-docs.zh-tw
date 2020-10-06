@@ -9,12 +9,12 @@ ms.subservice: cost-management
 ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 7bed8cc55e0880d88df22ca32bc5886e22022cbc
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 50451acdbd1c88b6ae703ed25de9cee1f3e48216
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690182"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91446453"
 ---
 # <a name="manage-costs-with-azure-budgets"></a>使用 Azure 預算來管理成本
 
@@ -152,7 +152,7 @@ Logic Apps 可協助您建立、排程程序，並以工作流程的形式自動
 1. 選取 [確定]  來設定運算式。
 1. 在 [條件]  下拉式方塊中，選取 [大於或等於]  。
 1. 在條件的 [選擇值]  方塊中，輸入 `.8`。  
-    ![Azure - 邏輯應用程式 - 具有值的浮點運算式](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-12.png)
+    ![顯示已選取值的 [條件] 對話方塊的螢幕擷取畫面。](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-12.png)
 1. 選取 [條件] 方塊內的 [新增]   > [新增資料列]  來新增條件的額外部分。
 1. 在 [條件]  方塊中選取包含 `Choose a value` 的文字方塊。
 1. 選取清單頂端的 [運算式]  ，然後在運算式編輯器中輸入下列運算式：`float()`
@@ -160,7 +160,7 @@ Logic Apps 可協助您建立、排程程序，並以工作流程的形式自動
 1. 選取 [確定]  來設定運算式。
 1. 在 [條件]  的下拉式方塊中，選取 [小於]  。
 1. 在 [條件] 的 [選擇值]  方塊中，輸入 `1`。  
-    ![Azure - 邏輯應用程式 - 具有值的浮點運算式](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-13.png)
+    ![顯示具有兩個條件的 [條件] 對話方塊的螢幕擷取畫面。](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-13.png)
 1. 在 [若為 true]  方塊中，選取 [新增動作]  。 您會新增一個會關閉選擇性 VM 的 HTTP POST 動作。  
     ![Azure - 邏輯應用程式 - 新增動作](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-14.png)
 1. 輸入 **HTTP** 來搜尋該 HTTP 動作，然後選取 [HTTP – HTTP]  動作。  
@@ -183,7 +183,7 @@ Logic Apps 可協助您建立、排程程序，並以工作流程的形式自動
 使用條件陳述式來檢查閾值額度是否已達到或超過預算值的 100%。 如果已達到這個閾值額度，便使用名為 **Complete** 的 Webhook 來傳送 HTTP POST。 這個動作將關閉所有剩下的 VM。
 
 1. 選取 [新增步驟]   > [新增條件]  。  
-    ![Azure - 邏輯應用程式 - 新增動作](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-20.png)
+    ![顯示 [若為 True] 對話方塊的螢幕擷取畫面，其中包含 [新增動作] 圖說文字。](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-20.png)
 1. 在 [條件]  方塊中，選取包含 `Choose a value` 的文字方塊，以顯示可用值的清單。
 1. 選取清單頂端的 [運算式]  ，然後在運算式編輯器中輸入下列運算式：`float()`
 1. 選取 [動態內容]  ，將游標放在括號 () 裡面，然後從清單中選取 [NotificationThresholdAmount]  來填入完整的運算式。
@@ -194,11 +194,11 @@ Logic Apps 可協助您建立、排程程序，並以工作流程的形式自動
 1. 在 [條件] 的 [選擇值]  方塊中，輸入 `1`。  
     ![Azure - 邏輯應用程式 - 設定條件值](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-21.png)
 1. 在 [若為 true]  方塊中，選取 [新增動作]  。 您會新增一個會關閉所有剩下 VM 的 HTTP POST 動作。  
-    ![Azure - 邏輯應用程式 - 新增動作](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-22.png)
+    ![顯示 [若為 True] 對話方塊的螢幕擷取畫面，您可在其中新增 HTTP POST 動作。](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-22.png)
 1. 輸入 **HTTP** 來搜尋該 HTTP 動作，然後選取 [HTTP – HTTP]  動作。
 1. 選取 **Post** 作為**方法**值。
 1. 輸入您稍早於本教學課程中所建立之 **Complete** Webhook 的 URL，作為 [Uri]  值。  
-    ![Azure - 邏輯應用程式 - 新增動作](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-23.png)
+    ![顯示 HTTP 對話方塊的螢幕擷取畫面，您可在其中輸入 URL 值。](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-23.png)
 1. 在 [若為 true]  方塊中，選取 [新增動作]  。 您會新增電子郵件動作來傳送電子郵件，以通知收件者剩下的 VM 已關閉。
 1. 搜尋「傳送電子郵件」，然後根據您所使用的電子郵件服務，選取其中一個*傳送電子郵件*動作。
 1. 為通知收件者選擇性 VM 已被關閉的電子郵件，新增 [收件者]  、[主旨]  和 [本文]  。 使用 **BudgetName** 和 **NotificationThresholdAmount** 動態內容來填入主旨和本文欄位。  

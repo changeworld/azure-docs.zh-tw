@@ -8,12 +8,12 @@ ms.subservice: enterprise
 ms.topic: conceptual
 ms.date: 09/03/2020
 ms.author: banders
-ms.openlocfilehash: c4d328d2e2ef562813bcb529c104b3559f03066e
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 140fc450623f0dcb6c7cf1bf08a8cfc43b094763
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442423"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371893"
 ---
 # <a name="azure-enterprise-transfers"></a>Azure Enterprise 傳輸
 
@@ -101,13 +101,13 @@ Azure EA 入口網站可以將訂用帳戶從一個帳戶擁有者轉移至另�
 
 當 Azure 訂用帳戶轉移到相同 Azure Active Directory 租用戶中的帳戶時，具有 [Azure 角色型存取控制 (Azure RBAC)](../../role-based-access-control/overview.md) 可管理資源的所有使用者、群組和服務主體都會保留其存取權。
 
-若要檢視訂用帳戶上具有 RBAC 存取權的使用者：
+若要檢視訂用帳戶上具有 Azure RBAC 存取權的使用者：
 
 1. 在 Azure 入口網站中，開啟**訂用帳戶**。
 2. 選取要檢視的訂用帳戶，然後選取 [存取控制 (IAM)]。
-3. 選取 [角色指派]。 [角色指派] 頁面會列出在訂用帳戶上具有 RBAC 存取權的所有使用者。
+3. 選取 [角色指派]。 [角色指派] 頁面會列出在訂用帳戶上具有 Azure RBAC 存取權的所有使用者。
 
-如果訂用帳戶轉移到不同 Azure AD 租用戶中的帳戶，則具有 [RBAC](../../role-based-access-control/overview.md) 可管理資源的所有使用者、群組和服務主體都會「失去」其存取權。 雖然 RBAC 存取不存在，但您可以透過安全性機制取得訂用帳戶的存取權，包括：
+如果訂用帳戶轉移到不同 Azure AD 租用戶中的帳戶，則具有 [Azure RBAC](../../role-based-access-control/overview.md) 可管理資源的所有使用者、群組和服務主體都會「失去」其存取權。 雖然 Azure RBAC 存取不存在，但您可以透過安全性機制取得訂用帳戶的存取權，包括：
 
 - 可將使用者管理權限授與給訂用帳戶資源的管理憑證。 如需詳細資訊，請參閱[建立和上傳 Azure 的管理憑證](../../cloud-services/cloud-services-certs-create.md)。
 - 服務 (例如儲存體) 的存取金鑰。 如需詳細資訊，請參閱 [Azure 儲存體帳戶概觀](../../storage/common/storage-account-overview.md)。
