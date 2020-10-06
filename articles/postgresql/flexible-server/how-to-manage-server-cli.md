@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: 8f078c2c7b22a27c1fd87030361fc56d4495177c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 0f3c21d5c7f328ddef000ca7f1eaa9d5e18e6ca9
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936771"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761884"
 ---
 # <a name="manage-an-azure-database-for-postgresql---flexible-server-using-the-azure-cli"></a>使用 Azure CLI 管理適用於 PostgreSQL 的 Azure 資料庫彈性的伺服器
 
@@ -40,7 +40,7 @@ az account set --subscription <subscription id>
 
 ## <a name="scale-compute-and-storage"></a>調整計算和儲存體
 
-您可以使用下列命令，輕鬆地擴大計算層級、虛擬核心和儲存體。 您可以查看所有伺服器操作，您可以執行 [az postgres 有彈性的伺服器伺服器總覽](/cli/azure/PostgreSQL/server)
+您可以使用下列命令，輕鬆地擴大計算層級、虛擬核心和儲存體。 您可以查看所有伺服器操作，您可以執行 [az postgres 有彈性的伺服器伺服器總覽](https://azure.microsoft.com/services/postgresql/)
 
 ```azurecli-interactive
 az postgres flexible-server update --resource-group myresourcegroup --name mydemoserver --sku-name Standard_D4ds_v3 --storage-size 6144
@@ -129,7 +129,7 @@ az postgres flexible-server update --resource-group myresourcegroup --name mydem
 az postgres flexible-server delete --resource-group myresourcegroup --name mydemoserver
 ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [瞭解備份和還原概念](concepts-backup-restore.md)
 - [調整和監視伺服器](concepts-monitoring.md)

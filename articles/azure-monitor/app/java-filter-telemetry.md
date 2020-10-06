@@ -1,15 +1,15 @@
 ---
-title: 在您的 JAVA web 應用程式中篩選 Azure 應用程式 Insights 遙測
+title: 在 JAVA web 應用程式中篩選 Azure 應用程式見解遙測
 description: 篩選出您不需要監視的事件，以減少遙測流量。
 ms.topic: conceptual
 ms.date: 3/14/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: 825c807d9af542e8776e3b6361b8f6b6dd08f164
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: e450cf0de7dce4f626fd41252bfeed5fba294c70
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372173"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761000"
 ---
 # <a name="filter-telemetry-in-your-java-web-app"></a>在 Java Web 應用程式中篩選遙測
 
@@ -78,10 +78,7 @@ ms.locfileid: "87372173"
 
 ```
 
-
-
-
-[檢查整組的內建處理器](https://github.com/Microsoft/ApplicationInsights-Java/tree/master/core/src/main/java/com/microsoft/applicationinsights/internal/processor)。
+[檢查整組的內建處理器](https://github.com/Microsoft/ApplicationInsights-Java/tree/master/core/src/main/java/com/microsoft/applicationinsights/internal)。
 
 ## <a name="built-in-filters"></a>內建篩選器
 
@@ -228,7 +225,7 @@ ms.locfileid: "87372173"
 ```
 
 
-### <a name="2-invoke-your-filter-in-the-configuration-file"></a>2. 在設定檔案中叫用您的篩選器
+### <a name="2-invoke-your-filter-in-the-configuration-file"></a>2. 在設定檔中叫用您的篩選
 
 在 ApplicationInsights.xml 中：
 
@@ -247,9 +244,9 @@ ms.locfileid: "87372173"
 
 ```
 
-### <a name="3-invoke-your-filter-java-spring"></a>3. 叫用您的篩選（JAVA 彈簧）
+### <a name="3-invoke-your-filter-java-spring"></a>3. (JAVA 春季叫用您的篩選) 
 
-針對以春天架構為基礎的應用程式，自訂遙測處理器必須在您的主要應用程式類別中註冊為 bean。 然後會在應用程式啟動時 autowired 它們。
+針對以春季架構為基礎的應用程式，自訂遙測處理器必須在您的主要應用程式類別中註冊為 bean。 當應用程式啟動時，它們就會 autowired。
 
 ```Java
 @Bean
@@ -258,7 +255,7 @@ public TelemetryProcessor successFilter() {
 }
 ```
 
-您必須在中建立自己的篩選參數 `application.properties` ，並利用春季 Boot 的外部化設定架構，將這些參數傳遞至您的自訂篩選器。 
+您必須在中建立自己的篩選參數 `application.properties` ，並利用彈簧開機的外部化設定架構，將這些參數傳遞至您的自訂篩選準則。 
 
 
 ## <a name="troubleshooting"></a>疑難排解

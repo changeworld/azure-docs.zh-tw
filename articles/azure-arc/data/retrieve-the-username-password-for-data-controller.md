@@ -1,6 +1,6 @@
 ---
-title: 取得使用者名稱和密碼以連接到 Arc 資料控制器
-description: 取得使用者名稱和密碼以連接到 Arc 資料控制器
+title: 擷取使用者名稱和密碼以連線到 Arc 資料控制器
+description: 擷取使用者名稱和密碼以連線到 Arc 資料控制器
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
@@ -9,14 +9,14 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 1c33cf21be0b4b1ea39a568d6df9fd90507dd454
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 8cabb48e3620f1a17d1bb9b87e1646ce2793143b
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934258"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761697"
 ---
-# <a name="retrieve-the-user-name-and-password-to-connect-to-the-arc-data-controller"></a>取得使用者名稱和密碼以連接到 Arc 資料控制器
+# <a name="retrieve-the-user-name-and-password-to-connect-to-the-arc-data-controller"></a>擷取使用者名稱和密碼以連線到 Arc 資料控制器
 
 您可能會遇到需要取出資料控制器之使用者名稱和密碼的情況。 這些是您執行時所需的命令。 
 
@@ -59,6 +59,6 @@ kubectl -n arc get secret controller-login-secret -o=jsonpath="{.data['password'
 [Text.Encoding]::Utf8.GetString([Convert]::FromBase64String((kubectl -n arc get secret controller-login-secret -o=jsonpath="{.data['password']}")))
 ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
-試用其他 [案例](https://github.com/microsoft/Azure-data-services-on-Azure-Arc/tree/master/scenarios)
+試用其他 [案例](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/active-directory-domain-services/scenarios.md)

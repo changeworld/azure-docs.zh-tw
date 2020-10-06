@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: abshamsft
 ms.author: absha
 ms.date: 02/20/2018
-ms.openlocfilehash: b7b6a7202392e083aaaa5cdc8adcf0c81cfb0e0d
-ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
+ms.openlocfilehash: 18c07266cec68aaf6e95fe4085b9d21244fecff4
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91403699"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761034"
 ---
 # <a name="service-connectivity-monitor"></a>服務連線能力監視
 
@@ -29,7 +29,7 @@ ms.locfileid: "91403699"
 ![服務連線能力監視](media/network-performance-monitor-service-endpoint/service-endpoint-intro.png)
 
 
-## <a name="configuration"></a>設定 
+## <a name="configuration"></a>組態 
 若要開啟網路效能監控的設定，請開啟 [網路效能監控方案](network-performance-monitor.md) ，然後選取 [ **設定**]。
 
 ![設定網路效能監控](media/network-performance-monitor-service-endpoint/npm-configure-button.png)
@@ -99,7 +99,7 @@ netsh advfirewall firewall add rule name="NPMDICMPV6TimeExceeded" protocol="icmp
 
 在您判定問題是因為網路之後，選取 [拓撲]**** 檢視連結，以識別拓撲地圖上的問題躍點。 範例如下圖所示。 節點與應用程式端點之間的 105 毫秒延遲總計之中，有 96 毫秒是因為躍點標示為紅色。 識別出問題躍點之後，您可以採取矯正措施。 
 
-![服務連線能力監視測試](media/network-performance-monitor-service-endpoint/service-endpoint-topology.png)
+![服務連線監視器端點拓撲](media/network-performance-monitor-service-endpoint/service-endpoint-topology.png)
 
 ## <a name="diagnostics"></a>診斷 
 

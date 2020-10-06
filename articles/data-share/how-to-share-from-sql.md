@@ -1,19 +1,19 @@
 ---
-title: 從 Azure SQL Database 和 Azure Synapse Analytics 共用及接收資料
+title: 共用和接收來自 Azure SQL Database 和 Azure Synapse Analytics 的資料
 description: 瞭解如何從 Azure SQL Database 和 Azure Synapse Analytics 共用及接收資料
 author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: how-to
-ms.date: 08/28/2020
-ms.openlocfilehash: e813921727ee08bf9a76c0a2dbfe15f45fe4db79
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.date: 10/02/2020
+ms.openlocfilehash: 3f243a1a8d4f4b3ee4688ac3942debee5282a9a4
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89490066"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761918"
 ---
-# <a name="share-and-receive-data-from-azure-sql-database-and-azure-synapse-analytics"></a>從 Azure SQL Database 和 Azure Synapse Analytics 共用及接收資料
+# <a name="share-and-receive-data-from-azure-sql-database-and-azure-synapse-analytics"></a>共用和接收來自 Azure SQL Database 和 Azure Synapse Analytics 的資料
 
 [!INCLUDE[appliesto-sql](includes/appliesto-sql.md)]
 
@@ -33,13 +33,14 @@ Azure Data Share 支援從 Azure SQL Database 和 Azure Synapse Analytics (先�
 * 如果來源 Azure 資料存放區位於與您將用來建立資料共用資源的不同 Azure 訂用帳戶中，請在 Azure 資料存放區所在的訂用帳戶中註冊 [Microsoft.DataShare 資源提供者](concepts-roles-permissions.md#resource-provider-registration)。 
 
 ### <a name="prerequisites-for-sql-source"></a>SQL 來源的必要條件
+以下是從 SQL 來源共用資料的必要條件清單。 您也可以遵循 [逐步示範](https://youtu.be/hIE-TjJD8Dc) 來設定必要條件。
 
-* Azure SQL Database 或 Azure Synapse Analytics (先前的 SQL 資料倉儲，) 具有您想要共用的資料表和 views。
+* Azure SQL Database 或 Azure Synapse Analytics (先前為 SQL 資料倉儲)，具有您要共用的資料表和檢視。
 * 對 SQL Server 上的資料庫進行寫入的權限，存在於 Microsoft.Sql/servers/databases/write  中。 此權限存在於參與者角色中。
 * 存取資料倉儲的資料共用權限。 這可以透過下列步驟完成： 
-    1. 將您自己設定為 SQL Server 的 Azure Active Directory 系統管理員。
-    1. 使用 Azure Active Directory 連線到 Azure SQL Database/資料倉儲。
-    1. 使用查詢編輯器 (預覽) 執行下列指令碼，將 Data Share 資源受控識別新增為 db_datareader。 您必須使用 Active Directory 連線，而不是使用 SQL Server 驗證。 
+    1. 在 Azure 入口網站中，流覽至 SQL server，並將您自己設定為 Azure Active Directory 系統管理員。
+    1. 使用 [查詢編輯器](https://docs.microsoft.com/azure/azure-sql/database/connect-query-portal#connect-using-azure-active-directory) 或 SQL Server Management Studio 搭配 Azure Active Directory 驗證連接到 Azure SQL Database/資料倉儲。 
+    1. 執行下列腳本，將 Data Share 資源受控識別新增為 db_datareader。 您必須使用 Active Directory 連線，而不是使用 SQL Server 驗證。 
     
         ```sql
         create user "<share_acct_name>" from external provider;     
@@ -49,10 +50,11 @@ Azure Data Share 支援從 Azure SQL Database 和 Azure Synapse Analytics (先�
 
 * 具有 'db_datareader' 存取權的 Azure SQL Database 使用者，可瀏覽並選取您想共用的資料表和/或檢視。 
 
-* 用戶端 IP SQL Server 防火牆存取。 這可以透過下列步驟完成： 
+* SQL Server 防火牆存取。 這可以透過下列步驟完成： 
     1. 在 Azure 入口網站的 SQL Server 中，瀏覽至 [防火牆和虛擬網路] 
-    1. 按一下 [開啟]  切換開關，以允許存取 Azure 服務。
-    1. 按一下 [+ 新增用戶端 IP]  ，然後按一下 [儲存]  。 用戶端 IP 位址可能會有所變更。 下次從 Azure 入口網站共用 SQL 資料時，可能需要重複執行此程序。 您也可以新增 IP 範圍。 
+    1. 按一下 **[是]** ， *允許 Azure 服務和資源存取此伺服器*。
+    1. 按一下 [ **+ 新增用戶端 IP**]。 用戶端 IP 位址可能會有所變更。 下次從 Azure 入口網站共用 SQL 資料時，可能需要重複執行此程序。 您也可以新增 IP 範圍。
+    1. 按一下 [檔案] 。 
 
 ### <a name="sign-in-to-the-azure-portal"></a>登入 Azure 入口網站
 
@@ -88,7 +90,7 @@ Azure Data Share 支援從 Azure SQL Database 和 Azure Synapse Analytics (先�
 
     ![共用您的資料](./media/share-receive-data.png "共用您的資料") 
 
-1. 選取 [開始共用資料]  。
+1. 選取 [開始共用資料]。
 
 1. 選取 [建立]  。   
 
@@ -147,13 +149,13 @@ Azure Data Share 現已建立完成，而且 Data Share 的收件者現已準備
 * 將角色指派新增至儲存體帳戶的權限，存在於 Microsoft.Authorization/role assignments/write  中。 此權限存在於擁有者角色中。  
 
 ### <a name="prerequisites-for-sql-target"></a>SQL 目標的必要條件
-如果您選擇將資料接收到 Azure SQL Database 中，Azure Synapse Analytics 下列是必要條件清單。
+如果您選擇將資料接收到 Azure SQL Database 中，Azure Synapse Analytics 下列是必要條件清單。 您也可以遵循 [逐步示範](https://youtu.be/aeGISgK1xro) 來設定必要條件。
 
 * 對 SQL Server 上的資料庫進行寫入的權限，存在於 Microsoft.Sql/servers/databases/write  中。 此權限存在於參與者角色中。 
-* 資料共用資源之受控識別的許可權，以存取 Azure SQL Database 或 Azure Synapse Analytics。 這可以透過下列步驟完成： 
-    1. 將您自己設定為 SQL Server 的 Azure Active Directory 系統管理員。
-    1. 使用 Azure Active Directory 連線到 Azure SQL Database/資料倉儲。
-    1. 使用查詢編輯器 (預覽) 執行下列指令碼，將 Data Share 受控識別新增為 'db_datareader, db_datawriter, db_ddladmin'。 您必須使用 Active Directory 連線，而不是使用 SQL Server 驗證。 
+* 資料共用資源的受控識別用來存取 Azure SQL Database 或 Azure Synapse Analytics 的權限。 這可以透過下列步驟完成： 
+    1. 在 Azure 入口網站中，流覽至 SQL server，並將您自己設定為 Azure Active Directory 系統管理員。
+    1. 使用 [查詢編輯器](https://docs.microsoft.com/azure/azure-sql/database/connect-query-portal#connect-using-azure-active-directory) 或 SQL Server Management Studio 搭配 Azure Active Directory 驗證連接到 Azure SQL Database/資料倉儲。 
+    1. 執行下列腳本，將 Data Share 受控識別新增為 ' db_datareader、db_datawriter db_ddladmin '。 您必須使用 Active Directory 連線，而不是使用 SQL Server 驗證。 
 
         ```sql
         create user "<share_acc_name>" from external provider; 
@@ -163,10 +165,11 @@ Azure Data Share 現已建立完成，而且 Data Share 的收件者現已準備
         ```      
         請注意， *<share_acc_name>* 是您 Data Share 資源的名稱。 如果您尚未建立 Data Share 資源，您可以稍後再回到此先決條件。         
 
-* 用戶端 IP SQL Server 防火牆存取。 這可以透過下列步驟完成： 
+* SQL Server 防火牆存取。 這可以透過下列步驟完成： 
     1. 在 Azure 入口網站的 SQL Server 中，瀏覽至 [防火牆和虛擬網路] 
-    1. 按一下 [開啟]  切換開關，以允許存取 Azure 服務。
-    1. 按一下 [+ 新增用戶端 IP]  ，然後按一下 [儲存]  。 用戶端 IP 位址可能會有所變更。 下次從 Azure 入口網站將資料接收到 SQL 目標時，可能需要重複執行此程序。 您也可以新增 IP 範圍。 
+    1. 按一下 **[是]** ， *允許 Azure 服務和資源存取此伺服器*。
+    1. 按一下 [ **+ 新增用戶端 IP**]。 用戶端 IP 位址可能會有所變更。 下次從 Azure 入口網站共用 SQL 資料時，可能需要重複執行此程序。 您也可以新增 IP 範圍。
+    1. 按一下 [檔案] 。 
 
 ### <a name="sign-in-to-the-azure-portal"></a>登入 Azure 入口網站
 
@@ -231,6 +234,49 @@ Azure Data Share 現已建立完成，而且 Data Share 的收件者現已準備
 
 ### <a name="view-history"></a>檢視歷程記錄
 此步驟僅適用於以快照集為基礎的共用。 若要檢視快照集的記錄，請選取 [歷程記錄] 索引標籤。您會在這裡找到過去 30 天所有產生的快照集歷程記錄。 
+
+## <a name="supported-data-types"></a>支援的資料類型
+當您從 SQL 來源共用資料時，會在快照集處理期間，從 SQL Server 資料類型到 Azure Data Share 過渡期資料類型使用下列對應。 
+
+| SQL Server 資料類型 | Azure Data Share 過渡期資料類型 |
+|:--- |:--- |
+| BIGINT |Int64 |
+| BINARY |Byte[] |
+| bit |Boolean |
+| char |String, Char[] |
+| date |Datetime |
+| Datetime |Datetime |
+| datetime2 |Datetime |
+| Datetimeoffset |DateTimeOffset |
+| Decimal |Decimal |
+| FILESTREAM attribute (varbinary(max)) |Byte[] |
+| Float |Double |
+| image |Byte[] |
+| int |Int32 |
+| money |Decimal |
+| NCHAR |String, Char[] |
+| ntext |String, Char[] |
+| NUMERIC |Decimal |
+| NVARCHAR |String, Char[] |
+| real |Single |
+| rowversion |Byte[] |
+| smalldatetime |Datetime |
+| SMALLINT |Int16 |
+| SMALLMONEY |Decimal |
+| sql_variant |物件 |
+| text |String, Char[] |
+| time |TimeSpan |
+| timestamp |Byte[] |
+| TINYINT |Int16 |
+| UNIQUEIDENTIFIER |Guid |
+| varbinary |Byte[] |
+| varchar |String, Char[] |
+| Xml |字串 |
+
+>[!NOTE]
+> 1. 針對對應至 Decimal 過渡類型的資料類型，目前快照集最多可支援最多28的精確度。 如果您的資料需要的精確度大於28，請考慮轉換成字串。 
+> 1.  如果您要將資料從 Azure SQL database 共用到 Azure Synapse Analytics，則不支援所有資料類型。 如需詳細資料，請參閱 [SYNAPSE SQL 集區中的資料表資料類型](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-data-types) 。 
+
 
 ## <a name="next-steps"></a>後續步驟
 您已瞭解如何使用 Azure Data Share 服務，從儲存體帳戶共用及接收資料。 若要深入瞭解如何從其他資料來源共用，請繼續進行 [支援的資料存放區](supported-data-stores.md)。

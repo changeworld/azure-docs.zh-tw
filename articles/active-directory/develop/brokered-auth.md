@@ -13,12 +13,12 @@ ms.date: 09/17/2020
 ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman, hahamil, brianmel
-ms.openlocfilehash: 2bb48971e86c2b61742735020469865fa969bee3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 5042bfad2cfe06c7c368c6b476aa1b02d67bcc9c
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91258401"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760749"
 ---
 # <a name="brokered-authentication-in-android"></a>Android 中的代理驗證
 
@@ -95,7 +95,7 @@ keytool -exportcert -alias androiddebugkey -keystore %HOMEPATH%\.android\debug.k
 
 當您使用 *keytool*產生簽章雜湊之後，請使用 Azure 入口網站來產生重新導向 URI：
 
-1. 登入 [Azure 入口網站](https://protal.azure.com) ，並在 **應用程式註冊**中選取您的 Android 應用程式。
+1. 登入 [Azure 入口網站](https://portal.azure.com) ，並在 **應用程式註冊**中選取您的 Android 應用程式。
 1. 選取 [**驗證**]  >  **新增平臺**  >  **Android**。
 1. 在 [ **設定您的 Android 應用程式** ] 窗格中，輸入您稍早產生的簽章 **雜湊** 和 **套件名稱**。
 1. 選取 [ **設定** ] 按鈕。

@@ -3,12 +3,12 @@ title: 保護 Azure Functions
 description: 了解如何讓您的函式程式碼更安全地在 Azure 中執行，以免遭受常見的攻擊。
 ms.date: 4/13/2020
 ms.topic: conceptual
-ms.openlocfilehash: e48991788307a47d0e01a7921e0c94d77ddcd5ad
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 470ee517b929b7327df76963e21c88db21d363da
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91294745"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761408"
 ---
 # <a name="securing-azure-functions"></a>保護 Azure Functions
 
@@ -24,7 +24,7 @@ ms.locfileid: "91294745"
 
 ### <a name="security-center"></a>資訊安全中心
 
-資訊安全中心會在入口網站中與您的函式應用程式整合。 其免費提供可能與設定相關之安全性弱點的快速評量。 在專用方案中執行的函式應用程式也可以使用資訊安全中心的即時安全性功能，但需支付額外費用。 若要深入了解，請參閱[保護您的 Azure App Service Web 應用程式和 API](../security-center/security-center-app-services.md)。 
+資訊安全中心會在入口網站中與您的函式應用程式整合。 其免費提供可能與設定相關之安全性弱點的快速評量。 在專用方案中執行的函式應用程式也可以使用資訊安全中心的即時安全性功能，但需支付額外費用。 若要深入了解，請參閱[保護您的 Azure App Service Web 應用程式和 API](https://docs.microsoft.com/azure/security-center/defender-for-app-service-introduction)。 
 
 ### <a name="log-and-monitor"></a>記錄和監視
 
@@ -76,7 +76,7 @@ Functions 也會與 Azure 監視器記錄整合，讓您能夠將函式應用程
 
 根據預設，金鑰會儲存在設定所提供之帳戶的 Blob 儲存體容器中 `AzureWebJobsStorage` 。 您可以使用特定的應用程式設定來覆寫此行為，並將金鑰儲存在不同的位置。
 
-|位置  |設定 | 值 | 說明  |
+|位置  |設定 | 值 | 描述  |
 |---------|---------|---------|---------|
 |不同的儲存體帳戶     |  `AzureWebJobsSecretStorageSas`       | `<BLOB_SAS_URL` | 會根據提供的 SAS URL，將金鑰儲存在第二個儲存體帳戶的 Blob 儲存體中。 金鑰會在使用您函式應用程式特有的秘密進行儲存之前進行加密。 |
 |檔案系統   | `AzureWebJobsSecretStorageType`   |  `files`       | 金鑰會保存在檔案系統上，並使用您函式應用程式特有的秘密在儲存體之前加密。 |

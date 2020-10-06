@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 6242e593171bd8a01d01739b884ae8a1ca7beb4d
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: 0f433c33f50506309e88b7ffa2c8aaf498fb3613
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91629755"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761153"
 ---
 # <a name="azure-security-baseline-for-service-bus"></a>適用于服務匯流排的 Azure 安全性基準
 
@@ -273,7 +273,7 @@ ms.locfileid: "91629755"
 
 ### <a name="34-use-azure-active-directory-single-sign-on-sso"></a>3.4：使用 Azure Active Directory 單一登入 (SSO) 
 
-**指導**方針： Microsoft Azure 會根據 Azure Active Directory (Azure AD) ，提供資源與應用程式的整合式存取控制管理。 使用 Azure AD 搭配 Azure 服務匯流排的主要優點是您不再需要將認證儲存在程式碼中。 相反地，您可以從 Microsoft 身分識別平臺要求 OAuth 2.0 存取權杖。 要求權杖的資源名稱是 https://servicebus.azure.net/ 。 Azure AD 會 (使用者、群組或服務主體) 執行應用程式來驗證安全性主體。 如果驗證成功，Azure AD 會將存取權杖傳回給應用程式，然後應用程式就可以使用存取權杖來授權 Azure 服務匯流排資源的要求。
+**指導**方針： Microsoft Azure 會根據 Azure Active Directory (Azure AD) ，提供資源與應用程式的整合式存取控制管理。 使用 Azure AD 搭配 Azure 服務匯流排的主要優點是您不再需要將認證儲存在程式碼中。 相反地，您可以從 Microsoft 身分識別平臺要求 OAuth 2.0 存取權杖。 要求權杖的資源名稱是 https://azure.microsoft.com/services/service-bus/ 。 Azure AD 會 (使用者、群組或服務主體) 執行應用程式來驗證安全性主體。 如果驗證成功，Azure AD 會將存取權杖傳回給應用程式，然後應用程式就可以使用存取權杖來授權 Azure 服務匯流排資源的要求。
 
 - [如何使用 Azure AD 來驗證應用程式，以存取服務匯流排資源](authenticate-application.md)
 

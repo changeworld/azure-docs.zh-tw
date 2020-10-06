@@ -1,6 +1,6 @@
 ---
 title: 從 Azure Marketplace 在您的 Microsoft Azure Stack Edge Pro 裝置上部署 GPU 模組 |Microsoft Docs
-description: 說明如何啟用計算，並透過本機 UI 讓您的 Azure Stack Edge Pro 裝置計算就緒。
+description: 說明如何在 Azure Stack Edge Pro GPU 裝置上部署已啟用 GPU 的 IoT 模組。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 09/09/2020
 ms.author: alkohli
-ms.openlocfilehash: a15e74dd2a1a2737675ef66284f348f33cd753dd
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 64d028892298a70e7588863bf9a3f4fc6f4ca609
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90899942"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760054"
 ---
 # <a name="deploy-a-gpu-enabled-iot-module-from-azure-marketplace-on-azure-stack-edge-pro-gpu-device"></a>從 Azure Stack Edge Pro GPU 裝置上的 Azure Marketplace 部署已啟用 GPU 的 IoT 模組
 
@@ -55,7 +55,7 @@ ms.locfileid: "90899942"
 
 4. 選取 [ **繼續** ] 以確認提供者的使用規定和隱私權原則。 
 
-    ![取得範例模組](media/azure-stack-edge-gpu-deploy-sample-module-marketplace/terms-of-use-1.png)
+    ![取得範例模組2](media/azure-stack-edge-gpu-deploy-sample-module-marketplace/terms-of-use-1.png)
 
 5. 選擇您用來部署 Azure Stack Edge Pro 裝置的訂用帳戶。
 
@@ -89,7 +89,7 @@ ms.locfileid: "90899942"
 
 13. 確認模組已部署在您的 IoT 中樞的 Azure 入口網站中。 選取您的裝置，選取 [ **設定模組**]，   模組應該會列在 [ **IoT Edge 模組**]   區段中。
 
-    ![選取 [建立]](media/azure-stack-edge-gpu-deploy-sample-module-marketplace/running-module-iotres-1.png)
+    ![選取 [建立 2]](media/azure-stack-edge-gpu-deploy-sample-module-marketplace/running-module-iotres-1.png)
 
 ## <a name="monitor-the-module"></a>監視模組  
 

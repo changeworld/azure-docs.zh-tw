@@ -1,5 +1,5 @@
 ---
-title: 調整大小指導方針
+title: 調整大小指引
 description: 規劃 Azure Arc 啟用的資料服務部署的大小。
 services: azure-arc
 ms.service: azure-arc
@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 7afe00746b133e8376cf32ba874831c7962e85b1
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 3bd54d8a23aca7e493cd3c0ddb7f057a6e1f5362
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936789"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761476"
 ---
 # <a name="sizing-guidance"></a>調整大小指導方針
 
@@ -27,7 +27,7 @@ ms.locfileid: "90936789"
 ## <a name="general-sizing-requirements"></a>一般調整大小需求
 
 > [!NOTE]
-> 如果您不熟悉本文中的概念，您可以閱讀更多有關 [Kubernetes 資源治理](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) 和 [Kubernetes 大小標記法](https://kubernetes.io/docs/concepts/configuration/.manage-resources-containers/#resource-units-in-kubernetes)的資訊。
+> 如果您不熟悉本文中的概念，您可以閱讀更多有關 [Kubernetes 資源治理](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) 和 [Kubernetes 大小標記法](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-units-in-kubernetes)的資訊。
 
 核心數目必須是大於或等於1的整數值。
 

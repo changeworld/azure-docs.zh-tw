@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 8651921dafd5727f79e4ab3919e188d4b8612465
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: a405a7a32b1f54732589fb14e34ff52db4992028
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934626"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761680"
 ---
 # <a name="create-azure-arc-data-controller-using-the-azure-data-cli-azdata"></a>使用 Azure Data CLI 建立 Azure Arc 資料控制器 (azdata) 
 
@@ -30,7 +30,7 @@ ms.locfileid: "90934626"
 
 無論您選擇哪一個目標平臺，您都必須先設定下列環境變數，然後再建立資料控制器系統管理員使用者。 您可以視需要將這些認證提供給需要系統管理員存取資料控制器的其他人員。
 
-**AZDATA_USERNAME** -您選擇的使用者名稱做為資料控制器系統管理員使用者。 範例： `arcadmin`
+**AZDATA_USERNAME** -您選擇的使用者名稱做為資料控制器系統管理員使用者。 範例：`arcadmin`
 
 **AZDATA_PASSWORD** -您為數據控制器系統管理員使用者選擇的密碼。 密碼長度必須至少為8個字元，且包含下列四個集合中的三個字元：大寫字母、小寫字母、數位和符號。
 
@@ -155,7 +155,7 @@ azdata arc dc create --profile-name azure-arc-aks-hci --namespace arc --name arc
 > [!NOTE]
 >   在這裡和下列命令中，使用相同的命名空間 `azdata arc dc create` 。 範例為 `arc` 。
 
-首先，從 [GitHub](https://raw.githubusercontent.com/microsoft/azure_arc/master/data_services/deployment/yaml/arc-data-scc.yaml) 下載自訂安全性內容條件約束 (SCC) ，並將其套用至您的叢集。
+首先，從 [GitHub](https://github.com/microsoft/azure_arc/tree/master/arc_data_services/deploy/yaml) 下載自訂安全性內容條件約束 (SCC) ，並將其套用至您的叢集。
 
 您可以執行下列命令來建立資料控制器：
 > [!NOTE]

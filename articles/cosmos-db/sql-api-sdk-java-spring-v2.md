@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 11278f558f94fe358be94c914ecfeae6cfd5461e
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: d5a906e12df14c6c3ffec704310bbede742ad841
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91570743"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760820"
 ---
 # <a name="spring-data-azure-cosmos-db-v2-for-core-sql-api-release-notes-and-resources"></a>適用于 Core (SQL) API 的春季資料 Azure Cosmos DB v2：版本資訊和資源
 > [!div class="op_single_selector"]
@@ -67,10 +67,10 @@ ms.locfileid: "91570743"
 | **SDK 下載** | [Maven](https://mvnrepository.com/artifact/com.microsoft.azure/spring-data-cosmosdb) |
 |**API 文件** | [彈簧資料 Azure Cosmos DB 參考檔]() |
 |**參與 SDK** | [GitHub 上的春季資料 Azure Cosmos DB 存放庫](https://github.com/microsoft/spring-data-cosmosdb) | 
-|**春季開機 Starter**| [適用于 JAVA 的 Azure Cosmos DB 春季 Boot Starter 用戶端程式庫](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/spring/azure-spring-boot-starter-cosmosdb) |
+|**春季開機 Starter**| [適用于 JAVA 的 Azure Cosmos DB 春季 Boot Starter 用戶端程式庫](https://github.com/MicrosoftDocs/azure-dev-docs/blob/master/articles/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db.md) |
 |**使用 Azure Cosmos DB 的春季 TODO 應用程式範例**| [App Service Linux 的端對端 JAVA 體驗 (第2部分) ](https://github.com/Azure-Samples/e2e-java-experience-in-app-service-linux-part-2) |
 |**開發人員指南** | [Spring Data Azure Cosmos DB 開發人員指南](https://docs.microsoft.com/azure/developer/java/spring-framework/how-to-guides-spring-data-cosmosdb) | 
-|**使用 Starter** | [如何搭配 Azure Cosmos DB SQL API 使用春季 Boot Starter](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db) <br> [適用于 Azure Cosmos DB 春季 Boot Starter 的 GitHub 存放庫](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/spring/azure-spring-boot-starter-cosmosdb) |
+|**使用 Starter** | [如何搭配 Azure Cosmos DB SQL API 使用春季 Boot Starter](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db) <br> [適用于 Azure Cosmos DB 春季 Boot Starter 的 GitHub 存放庫](https://github.com/MicrosoftDocs/azure-dev-docs/blob/master/articles/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db.md) |
 |**Azure App Service 的範例** | [如何在 Linux 上的 App Service 中使用 Spring 和 Cosmos DB](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-app-with-cosmos-db-on-app-service-linux) <br> [TODO 應用程式範例](https://github.com/Azure-Samples/e2e-java-experience-in-app-service-linux-part-2.git) |
 
 ## <a name="release-history"></a>版本歷程記錄

@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 00709ca5e842e51edbf5b26c53fe0a18e80bb896
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 0382c7c7f7d068ea227397ae7accf4bc410de04a
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91262343"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761442"
 ---
 # <a name="receipt-concepts"></a>回條概念
 
@@ -459,4 +459,4 @@ Azure 表單辨識器可以使用其中一個預先建立的模型來分析收�
 ## <a name="see-also"></a>請參閱
 
 * [什麼是表單辨識器？](./overview.md)
-* [REST API 參考檔](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer/api)
+* [REST API 參考檔](https://docs.microsoft.com/azure/cognitive-services/form-recognizer)

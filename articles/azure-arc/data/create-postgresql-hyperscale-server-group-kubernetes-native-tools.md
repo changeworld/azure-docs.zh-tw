@@ -9,18 +9,18 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: bbf41cf48f4891814fa0c2baa750783f98d8574b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: f447c6028b1750aa96e531a97e7b0861f66a5749
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91342677"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761663"
 ---
 # <a name="create-a-postgresql-hyperscale-server-group-using-kubernetes-tools"></a>使用 Kubernetes 工具建立于 postgresql 超大規模伺服器群組
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 您應該已建立 [Azure Arc 資料控制器](./create-data-controller.md)。
 
@@ -34,7 +34,7 @@ ms.locfileid: "91342677"
 
 ## <a name="create-a-yaml-file"></a>建立 yaml 檔案
 
-您可以使用 [範本 yaml](https://raw.githubusercontent.com/microsoft/azure_arc/master/arc_data_services/deploy/yaml/postgresql.yaml) 檔作為起點，建立您自己的自訂于 postgresql 超大規模伺服器群組 yaml 檔。  將此檔案下載至您的本機電腦，並在文字編輯器中開啟它。  使用支援語法醒目提示和 linting 的文字編輯器（例如支援 yaml 檔案的語法醒目提示和 [VS Code](https://code.visualstudio.com/download) ）會很有用。
+您可以使用 [範本 yaml](https://raw.githubusercontent.com/microsoft/azure_arc/master/arc_data_services/deploy/yaml/postsgresql.yaml) 檔作為起點，建立您自己的自訂于 postgresql 超大規模伺服器群組 yaml 檔。  將此檔案下載至您的本機電腦，並在文字編輯器中開啟它。  使用支援語法醒目提示和 linting 的文字編輯器（例如支援 yaml 檔案的語法醒目提示和 [VS Code](https://code.visualstudio.com/download) ）會很有用。
 
 這是範例 yaml 檔：
 

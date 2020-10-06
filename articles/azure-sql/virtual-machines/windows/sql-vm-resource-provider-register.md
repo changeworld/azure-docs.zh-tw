@@ -10,21 +10,27 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 11/13/2019
+ms.date: 09/21/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: a197f8a11186d799f320c03a5bbe980b1f38e126
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b48f0429525822d09f08965128df0ceb1e32898a
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91272062"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761306"
 ---
 # <a name="register-a-sql-server-vm-in-azure-with-the-sql-vm-resource-provider-rp"></a>在 Azure 中使用 SQL VM 資源提供者 (RP 註冊 SQL Server VM) 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-本文說明如何使用 SQL VM 資源提供者 (RP) ，在 Azure 中 (VM) 註冊 SQL Server 虛擬機器。 向資源提供者註冊會在訂用帳戶中建立 **SQL 虛擬機器**_資源_，這是與虛擬機器資源不同的資源。 向資源提供者取消註冊 SQL Server VM 會移除 **SQL 虛擬機器**的_資源_ ，但不會卸載實際的虛擬機器。 
+本文說明如何使用 SQL VM 資源提供者 (RP) ，在 Azure 中 (VM) 註冊 SQL Server 虛擬機器。 
+
+本文將指導您向 SQL VM 資源提供者註冊單一 SQL Server VM。 或者，您也可以 [自動](sql-vm-resource-provider-automatic-registration.md) 註冊所有 SQL Server vm 或 [大量編寫腳本](sql-vm-resource-provider-bulk-register.md)。
+
+## <a name="overview"></a>概觀
+
+向資源提供者註冊會在訂用帳戶中建立 **SQL 虛擬機器**_資源_，這是與虛擬機器資源不同的資源。 向資源提供者取消註冊 SQL Server VM 會移除 **SQL 虛擬機器**的_資源_ ，但不會卸載實際的虛擬機器。
 
 透過 Azure 入口網站部署 SQL Server VM Azure Marketplace 映像，會自動向資源提供者註冊 SQL Server VM。 不過，如果選擇在 Azure 虛擬機器上自行安裝 SQL Server，或從自訂 VHD 佈建 Azure 虛擬機器，則應該向資源提供者註冊 SQL Server VM 以達到下列目的：
 
@@ -58,7 +64,7 @@ ms.locfileid: "91272062"
 若要向資源提供者註冊 SQL Server VM，您將需要： 
 
 - [Azure 訂用帳戶](https://azure.microsoft.com/free/)。
-- 部署至公用或 Azure Government 雲端的 Azure 資源模型 [SQL Server VM](create-sql-vm-portal.md)。 
+- Azure 資源模型 [Windows 虛擬機器](../../../virtual-machines/windows/quick-create-portal.md) ，其中 [SQL Server](https://www.microsoft.com/sql-server/sql-server-downloads) 部署至公用或 Azure Government 雲端。 
 - 最新版的 [Azure CLI](/cli/azure/install-azure-cli) 或 [PowerShell](/powershell/azure/new-azureps-module-az)。 
 
 ## <a name="management-modes"></a>管理模式
@@ -328,11 +334,11 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.SqlVirtualMachine
 
 1. 選取 [刪除] 。 
 
-   ![刪除 SQL VM 資源提供者](./media/sql-vm-resource-provider-register/delete-sql-vm-resource-provider.png)
+   ![選取頂端導覽中的 [刪除]](./media/sql-vm-resource-provider-register/delete-sql-vm-resource-provider.png)
 
 1. 輸入 SQL 虛擬機器的名稱，並 **清除虛擬機器旁的核取方塊**。
 
-   ![刪除 SQL VM 資源提供者](./media/sql-vm-resource-provider-register/confirm-delete-of-resource-uncheck-box.png)
+   ![取消核取 VM 以防止刪除實際的虛擬機器，然後選取 [刪除] 以繼續刪除 SQL VM 資源](./media/sql-vm-resource-provider-register/confirm-delete-of-resource-uncheck-box.png)
 
    >[!WARNING]
    > 如果無法清除虛擬機器名稱旁的核取方塊，將會完全*刪除*虛擬機器。 清除核取方塊可從資源提供者取消註冊 SQL Server VM，但*不會刪除實際的虛擬機器*。 
@@ -342,7 +348,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.SqlVirtualMachine
 ### <a name="command-line"></a>命令列
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-若要使用 Azure CLI 向資源提供者取消註冊 SQL Server VM，請使用 [az SQL VM delete](/cli/azure/sql/vm?view=azure-cli-latest#az-sql-vm-delete) 命令。 這會移除 SQL Server VM *資源* ，但不會刪除虛擬機器。 
+若要使用 Azure CLI 向資源提供者取消註冊 SQL Server VM，請使用 [az SQL VM delete](/cli/azure/sql/vm?view=azure-cli-latest&preserve-view=true#az-sql-vm-delete) 命令。 這會移除 SQL Server VM *資源* ，但不會刪除虛擬機器。 
 
 
 ```azurecli-interactive
@@ -400,7 +406,7 @@ SQL VM 資源提供者只支援：
 
 是，向 SQL VM 資源提供者註冊會在 VM 上安裝代理程式。
 
-SQL Server IaaS 延伸模組依賴代理程式來查詢 SQL Server 的中繼資料。 只有在 NoAgent 模式中 regsitered SQL VM 資源提供者時，才會安裝代理程式的唯一時間
+SQL Server IaaS 延伸模組依賴代理程式來查詢 SQL Server 的中繼資料。 只有當 SQL VM 資源提供者在 NoAgent 模式中註冊時，才會安裝代理程式。
 
 **將會向我的 VM 上的 SQL VM 資源提供者重新開機 SQL Server 註冊嗎？**
 

@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 375191bbe6f45189fba50ea927454c0ec4f64678
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 55269b45159210eec2ec7a6dd8eaea661ff13ebd
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934310"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760301"
 ---
 # <a name="upload-billing-data-to-azure-and-view-it-in-the-azure-portal"></a>將帳單資料上傳至 Azure，並在 Azure 入口網站中加以查看
 
@@ -30,7 +30,7 @@ ms.locfileid: "90934310"
 - **間接連線** -沒有 Azure 的直接連線。 資料只會透過匯出/上傳程式傳送至 Azure。 所有 Azure Arc 資料服務部署在此模式下都能以預覽形式運作。
 - **直接連線** -在此模式中，會相依于已啟用 Azure Arc 的 Kubernetes 服務，以提供 Azure 與 Azure Arc 啟用的資料服務執行所在之 Kubernetes 叢集之間的直接連接。 這會啟用更多的功能，而且也可讓您使用 Azure 入口網站和 Azure CLI 來管理已啟用 Azure Arc 的資料服務，就像是在 Azure PaaS 中管理您的資料服務一樣。  此連線模式尚未提供預覽，但即將推出。
 
-您可以閱讀更多連線 [模式](/docs/connectivity.md)之間的差異。
+您可以閱讀更多連線 [模式](https://docs.microsoft.com/azure/azure-arc/data/connectivity)之間的差異。
 
 在間接連線模式中，會定期將帳單資料從 Azure Arc 資料控制器匯出至安全檔案，然後上傳至 Azure 並進行處理。  在即將推出的直接連線模式中，計費資料將會大約 1/小時自動傳送至 Azure，以提供接近即時的方式來查看您的服務成本。 在間接連接模式中匯出和上傳資料的程式也可以使用腳本來自動化，也可以建立服務來為您完成此作業。
 
@@ -40,7 +40,7 @@ ms.locfileid: "90934310"
 
 1. 如果您還沒有已啟用 Azure Arc 的資料服務，請建立它。 例如，建立下列其中一項：
    - [在 Azure Arc 上建立 Azure SQL 受控實例](create-sql-managed-instance.md)
-   - [建立已啟用 Azure Arc 的于 postgresql 超大規模伺服器群組](create-postgresql-hyperscale-server-group.md)
+   - [建立已啟用 Azure Arc 的 PostgreSQL 超大規模資料庫伺服器群組](create-postgresql-hyperscale-server-group.md)
 1. [將資源清查、使用量資料、計量和記錄上傳至 Azure 監視器（](upload-metrics-and-logs-to-azure-monitor.md) 如果您尚未這樣做）。
 1. 建立資料服務之後，請至少等候2小時，讓計費遙測收集程式能夠收集一些帳單資料。
 

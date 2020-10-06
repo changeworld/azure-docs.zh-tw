@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89b8097aa288be710e95e835bb66904ef2c6ab56
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: add8a533f2b4fba9a9e881442e43030adb7e2b53
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421666"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91762003"
 ---
 # <a name="bulk-add-group-members-in-azure-active-directory"></a>在 Azure Active Directory 中大量新增群組成員
 
@@ -69,13 +69,13 @@ ms.locfileid: "87421666"
 
 您可以在 [大量作業結果] 頁面中，查看所有待決之大量要求的狀態。
 
-[![檢查 [大量作業結果] 頁面中的狀態。](media/groups-bulk-import-members/bulk-center.png)](media/groups-bulk-import-members/bulk-center.png#lightbox)
+[![檢查大量作業結果頁面中的狀態。](media/groups-bulk-import-members/bulk-center.png)](media/groups-bulk-import-members/bulk-center.png#lightbox)
 
 如需大量作業中每行項目的詳細資料，請選取 [成功數目]、[失敗數目] 或 [要求總計] 欄底下的值。 如果發生失敗，將會列出失敗的原因。
 
 ## <a name="bulk-import-service-limits"></a>大量匯入服務限制
 
-每個要匯入群組成員清單的大量活動，最多可執行一小時。 這樣能夠匯入至少 40,000 個成員的清單。
+每個要匯入群組成員清單的大量活動，最多可執行一小時。 這可讓您匯入最多40000個成員的清單。
 
 ## <a name="next-steps"></a>後續步驟
 

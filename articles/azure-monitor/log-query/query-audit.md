@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/03/2020
-ms.openlocfilehash: df937ba7f23f2789d929a043c7239ababb24374f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1c0247c5adfe60dc2436c832cf3d561882ae3a5d
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91285055"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760156"
 ---
 # <a name="audit-queries-in-azure-monitor-logs-preview"></a>Azure 監視器記錄中的 Audit 查詢 (preview) 
 記錄查詢 audit 記錄檔提供有關在 Azure 監視器中執行之記錄查詢的遙測。 這包括執行查詢時、執行的物件、使用的工具、查詢文字，以及描述查詢執行的效能統計資料等資訊。
@@ -68,6 +68,9 @@ ms.locfileid: "91285055"
 - 來自 Azure 資料總管 proxy 的查詢無法使用效能統計資料。 這些查詢的所有其他資料仍會填入。
 - [混淆字串常](/azure/data-explorer/kusto/query/scalar-data-types/string#obfuscated-string-literals)值之字串的*h*提示不會影響查詢審核記錄。 查詢將會完全依照提交方式來捕捉，而不會將字串模糊化。 您應確定只有具有合規性許可權的使用者可以使用 Log Analytics 工作區中可用的各種 RBAC 模式來查看這項資料。
 - 對於包含多個工作區資料的查詢，只會在使用者具有存取權的工作區中捕捉查詢。
+
+## <a name="costs"></a>費用  
+Azure 診斷延伸模組無須付費，但內嵌資料可能會產生費用。 針對將要收集資料的目的地，請查看 [Azure 監視器定價](https://azure.microsoft.com/pricing/details/monitor/)。
 
 ## <a name="next-steps"></a>後續步驟
 

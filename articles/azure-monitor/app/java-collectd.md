@@ -3,12 +3,12 @@ title: 監視 Linux - Azure 上的 Java Web 應用程式效能 | Microsoft Docs
 description: 使用 Application Insights 的 CollectD 外掛程式擴充您的 Java 網站的應用程式效能監視功能。
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: 648d0e5adc289dfeb83a54c3dcb9ab7d25fc1cc4
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: fd061d6dd1f87456b92a61c9a62caaf3ef3189b2
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322596"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761017"
 ---
 # <a name="collectd-linux-performance-metrics-in-application-insights"></a>collectd：Application Insights 中的 Linux 效能計量
 
@@ -28,7 +28,7 @@ ms.locfileid: "87322596"
 在您的 Linux 伺服器機器上：
 
 1. 安裝 [collectd](https://collectd.org/) 5.4.0 版或更新版本。
-2. 下載 [Application Insights collectd 寫入器外掛程式](https://github.com/microsoft/ApplicationInsights-Java/tree/master/collectd/src/main/java/com/microsoft/applicationinsights/collectd/internal)。 記下版本號碼。
+2. 下載 [Application Insights collectd 寫入器外掛程式](https://github.com/microsoft/ApplicationInsights-Java/tree/master/core/src/main/java/com/microsoft/applicationinsights/internal)。 記下版本號碼。
 3. 將外掛程式 JAR 複製到 `/usr/share/collectd/java`。
 4. 編輯 `/etc/collectd/collectd.conf`：
    * 確定 [Java 外掛程式](https://collectd.org/wiki/index.php/Plugin:Java) 已啟用。
@@ -82,7 +82,7 @@ ms.locfileid: "87322596"
 根據其 [手冊](https://collectd.org/wiki/index.php/First_steps)重新啟動 collectd。
 
 ## <a name="view-the-data-in-application-insights"></a>在 Application Insights 中檢視資料
-在您的 Application Insights 資源中，開啟 [[計量] 和 [新增圖表][metrics]]，從 [自訂] 類別選取您想要查看的度量。
+在 Application Insights 資源中，開啟 [計量並新增圖表，並][metrics]從自訂類別中選取您想要查看的計量。
 
 根據預設，會對收集度量來源的所有主機電腦彙總度量。 若要檢視每一主機的度量，在圖表的 [詳細資料] 刀鋒視窗中，開啟 [群組]，然後選擇依 CollectD-Host 群組。
 
@@ -115,7 +115,7 @@ ms.locfileid: "87322596"
 
 Application Insights 的「寫入」外掛程式與某些「讀取」外掛程式不相容。 有些外掛程式有時會在 Application Insights 外掛程式預期要有浮點數的位置傳送 "NaN"。
 
-徵兆： collectd 記錄檔會顯示錯誤，其中包括「AI： .。。SyntaxError：未預期的 token N」。
+徵兆： collectd 記錄會顯示包含「AI： ...」的錯誤。SyntaxError：未預期的權杖 N」。
 
 因應措施：排除有問題的「寫入」外掛程式所收集的資料。 
 

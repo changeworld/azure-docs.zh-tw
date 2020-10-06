@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 4e1a2fdd772c7b318ba36b1aee623c663689526f
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.openlocfilehash: 85ffff1a38d42aac00ce122a1e51d79515b0c51b
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91597276"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91762020"
 ---
 # <a name="how-does-azure-cosmos-db-provide-high-availability"></a>Azure Cosmos DB 如何提供高可用性？ 
 
@@ -97,7 +97,7 @@ Azure Cosmos DB 會以透明方式將您的資料複寫到與 Azure Cosmos 帳�
 |Throughput | X RU/秒布建的輸送量 | X RU/秒布建的輸送量 * 1.25 | 2X RU/秒布建的輸送量 <br/><br/> 相較于具有可用性區域的單一區域，此設定模式需要兩倍的輸送量（因為有兩個區域）。 |
 
 > [!NOTE]
-> 若要啟用多區域 Azure Cosmos 帳戶的可用性區域支援，帳戶必須啟用多區域寫入寫入。
+> 若要啟用多區域 Azure Cosmos 帳戶的可用性區域支援，帳戶必須啟用多重區域寫入。
 
 將區域新增至新的或現有的 Azure Cosmos 帳戶時，您可以啟用區域冗余。 若要在您的 Azure Cosmos 帳戶上啟用區域冗余，您應該將旗標設為 `isZoneRedundant` `true` 特定的位置。 您可以在 [位置] 屬性內設定這個旗標。 例如，下列 PowerShell 程式碼片段會啟用「東南亞」區域的區域冗余：
 

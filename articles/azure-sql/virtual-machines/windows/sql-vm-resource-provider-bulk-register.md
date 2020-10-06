@@ -10,20 +10,24 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 10/21/2019
+ms.date: 09/21/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: cf1fdd3feff76454f0e801d7bd53c63702000014
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b83a44db98907f505c7bf0d8302470cf3031a967
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91271982"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761255"
 ---
 # <a name="register-multiple-sql-virtual-machines-in-azure-with-the-sql-vm-resource-provider"></a>向 SQL VM 資源提供者註冊多個 Azure 中的 SQL 虛擬機器
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 這篇文章說明如何在 Azure 中使用 `Register-SqlVMs` PowerShell Cmdlet 向 SQL VM 資源提供者大量註冊 SQL Server 虛擬機器 (VM)。
+
+本文將指導您如何大量註冊 SQL Server Vm。 或者，您可以 [自動註冊所有 SQL Server vm](sql-vm-resource-provider-automatic-registration.md) ，或 [個別 SQL Server vm](sql-vm-resource-provider-register.md)。 
+
+## <a name="overview"></a>概觀
 
 `Register-SqlVMs` Cmdlet 可用在指定的訂用帳戶、資源群組或特定虛擬機器清單中註冊所有虛擬機器。 此 Cmdlet 會在_輕量_管理模式下註冊虛擬機器，然後產生[報告和記錄檔](#output-description)。 
 
