@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 10/23/2017
 ms.author: alkohli
-ms.openlocfilehash: dff1d8f48b275fa7e45dab93b5ce45962499b450
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 8b74e23147e4dcc6f786c1c08b8a03bd07dd0b9a
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90563874"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91744027"
 ---
 # <a name="use-azure-automation-runbooks-to-manage-storsimple-devices"></a>使用 Azure 自動化 Runbook 管理 StorSimple 裝置
 
@@ -22,7 +22,7 @@ ms.locfileid: "90563874"
 
 本節採用 StorSimple 的範例 Windows PowerShell 指令碼，並詳細說明各種必要步驟將指令碼匯入 Runbook，然後發佈及執行 Runbook。
 
-### <a name="prerequisites"></a>Prerequisites
+### <a name="prerequisites"></a>必要條件
 
 開始之前，請確定您有︰
 
@@ -85,7 +85,7 @@ ms.locfileid: "90563874"
 
 6. 確認已在 `C:\scripts\StorSimpleSDKTools` 中建立自動化模組 ZIP 檔案。
 
-    ![螢幕擷取畫面顯示具有自動化模組 zip 檔案的 StorSimpleSDKTools 資料夾。](./media/storsimple-8000-automation-azurerm-runbook/verify-automation-module.png)
+    ![螢幕擷取畫面顯示具有自動化模組 zip 檔案的 StorSimpleSDKTools 資料夾](./media/storsimple-8000-automation-azurerm-runbook/verify-automation-module.png)
 
 7. 透過 Windows PowerShell 建立自動化模組後，會顯示下列輸出。
 
@@ -184,7 +184,7 @@ ms.locfileid: "90563874"
    5. 保持選取預設值 [建立執行身分帳戶]**** 選項。
    6. 或者勾選 [釘選到儀表板]****。 按一下 [建立]。
 
-       ![螢幕擷取畫面顯示 [新增自動化帳戶] 窗格，其中包含 [訂用帳戶]、[建立 Azure 執行帳戶] 和 [建立] 的值。](./media/storsimple-8000-automation-azurerm-runbook/create-automation-account.png)
+       ![螢幕擷取畫面顯示 [新增自動化帳戶] 窗格，其中包含訂用帳戶的值、建立 Azure 執行帳戶，以及建立2](./media/storsimple-8000-automation-azurerm-runbook/create-automation-account.png)
 
       成功建立自動化帳戶之後會通知您。 如需如何建立自動化帳戶的詳細資訊，請移至[建立 [執行身分] 帳戶](https://docs.microsoft.com/azure/automation/automation-create-runas-account)。
 
@@ -194,9 +194,9 @@ ms.locfileid: "90563874"
 
 4. 在新建立的帳戶中，移至 [共用資源] > [模組]**** 並按一下 [+ 新增模組]****。
 
-5. 在 [新增模組]**** 刀鋒視窗中，瀏覽至 ZIP 壓縮模組的位置，然後選取並開啟模組。 按一下 [確定]。
+5. 在 [新增模組]**** 刀鋒視窗中，瀏覽至 ZIP 壓縮模組的位置，然後選取並開啟模組。 按一下 [確定]  。
 
-    ![螢幕擷取畫面顯示 [新增模組] 窗格，其中包含上傳檔案值和 [確定]。](./media/storsimple-8000-automation-azurerm-runbook/add-module.png)
+    ![螢幕擷取畫面顯示 [新增模組] 窗格，其中包含上傳檔案值和 [確定]](./media/storsimple-8000-automation-azurerm-runbook/add-module.png)
 
 6. 移至 [程序自動化] > [Runbook]**，然後按一下 [+ 新增 Runbook]**。 在 [新增 Runbook]**** 刀鋒視窗中，按一下 [匯入現有 Runbook]****。 指向 **Runbook 檔案** 的 Windows PowerShell 指令碼檔案。 會自動選取 Runbook 類型。 提供 Runbook 的名稱和選擇性描述。 按一下 [建立]。
 
@@ -208,11 +208,11 @@ ms.locfileid: "90563874"
 
 8. 編輯 Runbook 並按一下 [測試]**** 窗格。 提供參數，例如 StorSimple 裝置管理員服務的名稱、StorSimple 裝置的名稱和訂用帳戶。 **開始** 測試。 執行完成後即會產生報告。 如需詳細資訊，請參閱 [如何測試 runbook](../automation/automation-first-runbook-textual-powershell.md#step-3---test-the-runbook)。
 
-    ![螢幕擷取畫面：顯示您 canenter 參數值並開始測試的測試平移。](./media/storsimple-8000-automation-azurerm-runbook/test-runbook.png)
+    ![螢幕擷取畫面：顯示您 canenter 參數值並開始測試的測試平移](./media/storsimple-8000-automation-azurerm-runbook/test-runbook.png)
 
 9. 在 [測試] 窗格中檢查 Runbook 的輸出。 如果滿意測試結果，請關閉窗格。 按一下 [發佈]**** 並在提示要求確認時予以確認，並發佈 Runbook。
 
-    ![螢幕擷取畫面顯示 [編輯 PowerShell Runbook] 窗格，其會提示您繼續發佈 Runbook。](./media/storsimple-8000-automation-azurerm-runbook/publish-runbook.png)
+    ![螢幕擷取畫面顯示 [編輯 PowerShell Runbook] 窗格，其會提示您繼續發佈 Runbook](./media/storsimple-8000-automation-azurerm-runbook/publish-runbook.png)
 
 ## <a name="next-steps"></a>後續步驟
 

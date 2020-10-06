@@ -8,14 +8,14 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/09/2020
 ms.author: cherylmc
-ms.openlocfilehash: 852ff5e6ad847ff33f8e32b4c3d9f8b325b80716
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: a77a870304e20c179e22b4a4ffe404315894d8a0
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89664056"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743687"
 ---
-# <a name="create-and-set-custom-ipsec-policies-for-point-to-site"></a>建立並設定點對站的自訂 IPsec 原則
+# <a name="create-and-set-custom-ipsec-policies-for-point-to-site-preview"></a>建立並設定點對站 (預覽版的自訂 IPsec 原則) 
 
 如果您的環境需要自訂 IPsec 原則進行加密，您可以輕鬆地使用必要的設定來設定原則物件。 本文可協助您建立自訂原則物件，然後使用 PowerShell 進行設定。
 
@@ -57,6 +57,6 @@ $gateway = Get-AzVirtualNetworkGateway -ResourceGroupName $RG -name $GWName
 Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gateway -VpnClientIpsecPolicy $vpnclientipsecpolicy
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如需有關 P2S 設定的詳細資訊，請參閱 [關於點對站 VPN](point-to-site-about.md)。

@@ -3,17 +3,17 @@ title: 在 dns 多區域性環境中診斷 Azure Cosmos Sdk 的可用性並進�
 description: 瞭解如何在多個區域環境中運作時的 Azure Cosmos SDK 可用性行為。
 author: ealsur
 ms.service: cosmos-db
-ms.date: 09/24/2020
+ms.date: 10/05/2020
 ms.author: maquaran
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 8dd7ced2dfcfd3c555555d6f0a197623bd8726f2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 400795d20b6e7ad919f5cbbfa6078987bb65297e
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91330429"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743959"
 ---
 # <a name="diagnose-and-troubleshoot-the-availability-of-azure-cosmos-sdks-in-multiregional-environments"></a>在 dns 多區域性環境中診斷 Azure Cosmos Sdk 的可用性並進行疑難排解
 
@@ -24,7 +24,7 @@ ms.locfileid: "91330429"
 * .NET V2 SDK 中的 [ConnectionPolicy. PreferredLocations](/dotnet/api/microsoft.azure.documents.client.connectionpolicy.preferredlocations) 屬性。
 * .NET V3 SDK 中的 [CosmosClientOptions. ApplicationRegion](/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.applicationregion) 或 [CosmosClientOptions. ApplicationPreferredRegions](/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.applicationpreferredregions) 屬性。
 * JAVA V4 SDK 中的 [CosmosClientBuilder. preferredRegions](/java/api/com.azure.cosmos.cosmosclientbuilder.preferredregions) 方法。
-* 節點 SDK 中的 [CosmosClient.preferred_locations](/python/api/azure-cosmos/azure.cosmos.cosmos_client.cosmosclient) 參數。
+* Python SDK 中的 [CosmosClient.preferred_locations](/python/api/azure-cosmos/azure.cosmos.cosmos_client.cosmosclient) 參數。
 * JS SDK 中的 [CosmosClientOptions. ConnectionPolicy. preferredLocations](/javascript/api/@azure/cosmos/connectionpolicy#preferredlocations) 參數。
 
 當您設定地區喜好設定時，用戶端將會連線到下表所述的區域：
@@ -49,6 +49,8 @@ ms.locfileid: "91330429"
 * .NET V2 SDK 回應中的 *RequestDiagnosticsString* 屬性。
 * .NET V3 SDK 中回應和例外狀況的 *診斷* 屬性。
 * *GetDiagnostics ( # B1*方法來回應 JAVA V4 SDK 中的回應和例外狀況。
+
+依喜好設定順序決定下一個區域時，SDK 用戶端會使用帳戶區域清單，將慣用區域的優先順序設定為 (如果有任何) 。
 
 如需有關這些事件期間 SLA 保證的完整詳細資訊，請參閱 [可用性 sla](high-availability.md#slas-for-availability)。
 

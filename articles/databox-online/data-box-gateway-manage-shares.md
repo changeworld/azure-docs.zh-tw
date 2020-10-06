@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: how-to
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 785fcbbcde0c4efe3c2d1cd84bf19bd03371ab06
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 847c8a07bfa245d0c9859bb3cf6f6ed233934250
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90883535"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743874"
 ---
 # <a name="use-the-azure-portal-to-manage-shares-on-your-azure-data-box-gateway"></a>使用 Azure 入口網站來管理 Azure 資料箱閘道上的共用 
 
@@ -94,7 +94,7 @@ ms.locfileid: "90883535"
 
 1. 在 Azure 入口網站中，移至 [共用]****。 選取並按一下您想要重新整理的共用。
 
-   ![選取共用](media/data-box-gateway-manage-shares/refresh-1.png)
+   ![選取共用2](media/data-box-gateway-manage-shares/refresh-1.png)
 
 2. 按一下 [重新整理]****。 
 
@@ -124,16 +124,16 @@ ms.locfileid: "90883535"
 1. 移至您資源的 [概觀]****。 
 2. 從共用清單中，選擇並按一下與您需要同步處理的儲存體帳戶相關聯的共用。按一下 [ **同步處理儲存體金鑰**]。 
 
-     ![同步儲存體金鑰 1](media/data-box-gateway-manage-shares/sync-storage-key-1.png)
+     ![同步儲存體金鑰](media/data-box-gateway-manage-shares/sync-storage-key-1.png)
 
 3. 在出現確認提示時，按一下 [是]****。 在同步完成後結束對話方塊。
 
-     ![同步儲存體金鑰 1](media/data-box-gateway-manage-shares/sync-storage-key-2.png)
+     ![同步儲存體金鑰2](media/data-box-gateway-manage-shares/sync-storage-key-2.png)
 
 >[!NOTE]
 > 您只需要針對指定的儲存體帳戶執行此作業一次。 不需要針對與相同儲存體帳戶相關聯的所有共用，重複此動作。
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 了解如何[透過 Azure 入口網站管理使用者](data-box-gateway-manage-users.md)。

@@ -10,12 +10,12 @@ author: jpe316
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 28401b5900640ed7228d7c7caad0cebbabf00a65
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: f0c923bcb7df930ed4b1380d487ededc6c160844
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91532715"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743738"
 ---
 # <a name="train-scikit-learn-models-at-scale-with-azure-machine-learning"></a>訓練 scikit-learn-利用 Azure Machine Learning 瞭解大規模模型
 
@@ -66,9 +66,17 @@ ws = Workspace.from_config()
 
 若要定義 Azure ML [環境](concept-environments.md) 以封裝定型腳本的相依性，您可以定義自訂環境，或使用和 Azure ml 策劃環境。
 
+#### <a name="use-a-curated-environment"></a>使用策劃環境
+如果您不想要定義自己的環境，Azure ML 可選擇性地提供預建的策劃環境。 如需詳細資訊，請參閱 [這裡](resource-curated-environments.md)。
+如果您想要使用策劃環境，您可以改為執行下列命令：
+
+```python
+sklearn_env = Environment.get(workspace=ws, name='AzureML-Tutorial')
+```
+
 #### <a name="create-a-custom-environment"></a>建立自訂環境
 
-若要建立您自己的自訂環境，請在 YAML 檔案中定義您的 conda 相依性;在此範例中，會將檔案命名為 `conda_dependencies.yml` 。
+您也可以建立自己的自訂環境。 在 YAML 檔案中定義您的 conda 相依性;在此範例中，會將檔案命名為 `conda_dependencies.yml` 。
 
 ```yaml
 dependencies:
@@ -87,14 +95,6 @@ sklearn_env = Environment.from_conda_specification(name='sklearn-env', file_path
 ```
 
 如需有關建立和使用環境的詳細資訊，請參閱 [在 Azure Machine Learning 中建立和使用軟體環境](how-to-use-environments.md)。
-
-#### <a name="use-a-curated-environment"></a>使用策劃環境
-如果您不想要建立自己的映射，Azure ML 可選擇性地提供預建的策劃環境。 如需詳細資訊，請參閱 [這裡](resource-curated-environments.md)。
-如果您想要使用策劃環境，您可以改為執行下列命令：
-
-```python
-sklearn_env = Environment.get(workspace=ws, name='AzureML-Tutorial')
-```
 
 ## <a name="configure-and-submit-your-training-run"></a>設定並提交定型回合
 

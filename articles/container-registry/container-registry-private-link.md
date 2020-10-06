@@ -2,13 +2,13 @@
 title: 設定私人連結
 description: 在容器登錄上設定私人端點，並透過本機虛擬網路中的私人連結來啟用存取。 Private link 存取是 Premium 服務層級的功能。
 ms.topic: article
-ms.date: 06/26/2020
-ms.openlocfilehash: da07d35ad944db8e9b8a7bac0602fff23cd222d8
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.date: 10/01/2020
+ms.openlocfilehash: 793003edea853922f78b36f0dc1a6e35205cdadb
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89488740"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743636"
 ---
 # <a name="connect-privately-to-an-azure-container-registry-using-azure-private-link"></a>使用 Azure Private Link 私下連接到 Azure container registry
 
@@ -79,7 +79,7 @@ az network vnet subnet update \
 
 ### <a name="configure-the-private-dns-zone"></a>設定私人 DNS 區域
 
-建立私人 Azure Container Registry 網域的私人 DNS 區域。 在後續步驟中，您會在此 DNS 區域中建立登錄網域的 DNS 記錄。
+建立私人 Azure container registry 網域的 [私人 DNS 區域](../dns/private-dns-privatednszone.md) 。 在後續步驟中，您會在此 DNS 區域中建立登錄網域的 DNS 記錄。
 
 若要使用私人區域來覆寫 Azure Container Registry 的預設 DNS 解析，區域必須命名為 **privatelink.azurecr.io**。 執行下列 [az network private-dns zone create][az-network-private-dns-zone-create] 命令以建立私人區域：
 
@@ -219,7 +219,7 @@ az network private-dns record-set a add-record \
     | 虛擬網路| 選取您在其中部署虛擬機器的虛擬網路，例如 myDockerVMVNET。 |
     | 子網路 | 選取子網路，例如您在其中部署虛擬機器的 myDockerVMSubnet。 |
     |**私人 DNS 整合**||
-    |與私人 DNS 區域整合 |選取 [是]  。 |
+    |與私人 DNS 區域整合 |選取 [是]。 |
     |私人 DNS 區域 |選取 (新增) privatelink.azurecr.io |
     |||
 1. 設定其餘的登錄設定，然後選取 [檢閱 + 建立]。
@@ -262,7 +262,7 @@ az network private-dns record-set a add-record \
     | 虛擬網路| 選取您在其中部署虛擬機器的虛擬網路，例如 myDockerVMVNET。 |
     | 子網路 | 選取子網路，例如您在其中部署虛擬機器的 myDockerVMSubnet。 |
     |**私人 DNS 整合**||
-    |與私人 DNS 區域整合 |選取 [是]  。 |
+    |與私人 DNS 區域整合 |選取 [是]。 |
     |私人 DNS 區域 |選取 (新增) privatelink.azurecr.io |
     |||
 
@@ -306,28 +306,46 @@ az acr update --name $REGISTRY_NAME --public-network-enabled false
 
 若要驗證私人連結連線，請透過 SSH 連線到您在虛擬網路中設定的虛擬機器。
 
-執行 `nslookup` 命令，以透過私人連結來解析登錄的 IP 位址：
+執行或之類的公用 `nslookup` 程式 `dig` ，透過私人連結查閱您登錄的 IP 位址。 例如：
 
 ```bash
-nslookup $REGISTRY_NAME.azurecr.io
+dig $REGISTRY_NAME.azurecr.io
 ```
 
 範例輸出會在子網路的位址空間中顯示登錄的 IP 位址：
 
 ```console
 [...]
-myregistry.azurecr.io       canonical name = myregistry.privatelink.azurecr.io.
-Name:   myregistry.privatelink.azurecr.io
-Address: 10.0.0.6
+; <<>> DiG 9.11.3-1ubuntu1.13-Ubuntu <<>> myregistry.azurecr.io
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 52155
+;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 65494
+;; QUESTION SECTION:
+;myregistry.azurecr.io.         IN      A
+
+;; ANSWER SECTION:
+myregistry.azurecr.io.  1783    IN      CNAME   myregistry.privatelink.azurecr.io.
+myregistry.privatelink.azurecr.io. 10 IN A      10.0.0.7
+
+[...]
 ```
 
-將此結果與 `nslookup` 輸出中的公用 IP 位址進行比較，以透過公用端點取得相同的登錄：
+將此結果與 `dig` 輸出中的公用 IP 位址進行比較，以透過公用端點取得相同的登錄：
 
 ```console
 [...]
-Non-authoritative answer:
-Name:   myregistry.westeurope.cloudapp.azure.com
-Address: 40.78.103.41
+;; ANSWER SECTION:
+myregistry.azurecr.io.  2881    IN  CNAME   myregistry.privatelink.azurecr.io.
+myregistry.privatelink.azurecr.io. 2881 IN CNAME xxxx.xx.azcr.io.
+xxxx.xx.azcr.io.    300 IN  CNAME   xxxx-xxx-reg.trafficmanager.net.
+xxxx-xxx-reg.trafficmanager.net. 300 IN CNAME   xxxx.westeurope.cloudapp.azure.com.
+xxxx.westeurope.cloudapp.azure.com. 10  IN A 20.45.122.144
+
+[...]
 ```
 
 ### <a name="registry-operations-over-private-link"></a>透過私人連結的登錄作業
@@ -361,9 +379,15 @@ az acr private-endpoint-connection list \
 
 ## <a name="add-zone-records-for-replicas"></a>新增複本的區域記錄
 
-如本文所示，當您將私人端點連線新增至登錄時，會針對登錄及其在[複寫](container-registry-geo-replication.md)登錄之區域中的資料端點，建立 `privatelink.azurecr.io` 區域中的 DNS 記錄。 
+如本文所示，當您新增登錄的私人端點連線時，您會在登錄的區域中建立 DNS 記錄，並在複寫登錄的 `privatelink.azurecr.io` 區域中建立其資料端點。 [replicated](container-registry-geo-replication.md) 
 
 如果您稍後新增新的複本，則必須手動為該區域中的資料端點新增新的區域記錄。 例如，如果您在 northeurope 位置中建立 myregistry 的複本，請新增 `myregistry.northeurope.data.azurecr.io` 的區域記錄。 如需相關步驟，請參閱本文中的[在私人區域中建立 DNS 記錄](#create-dns-records-in-the-private-zone)。
+
+## <a name="dns-configuration-options"></a>DNS 組態選項
+
+此範例中的私人端點會與基本虛擬網路相關聯的私人 DNS 區域整合。 此安裝程式會直接使用 Azure 提供的 DNS 服務，將登錄的公用 FQDN 解析為虛擬網路中的私人 IP 位址。 
+
+Private link 支援使用私人區域的其他 DNS 設定案例，包括自訂 DNS 解決方案。 例如，您可能會在虛擬網路中部署自訂 DNS 解決方案，或在網路中使用 VPN 閘道來連線到虛擬網路的內部部署。 若要將登錄的公用 FQDN 解析為這些案例中的私人 IP 位址，您必須將伺服器層級轉寄站設定為 Azure DNS 服務 (168.63.129.16) 。 確切的設定選項和步驟取決於您現有的網路和 DNS。 如需範例，請參閱 [Azure 私人端點 DNS](../private-link/private-endpoint-dns.md)設定。
 
 ## <a name="clean-up-resources"></a>清除資源
 

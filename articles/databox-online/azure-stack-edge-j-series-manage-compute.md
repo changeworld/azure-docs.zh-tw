@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 58e199cc3c09e6b4ff333fb53c047598b1ec9b5f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 1d4d0c591640a3528b7aeec5254f2a634ee008aa
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90890601"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743670"
 ---
 # <a name="manage-compute-on-your-azure-stack-edge-pro-gpu"></a>管理您 Azure Stack Edge Pro GPU 上的計算
 
@@ -109,7 +109,7 @@ ms.locfileid: "90890601"
 
 2. 如果您移除計算設定，將必須重新設定裝置，以免您需要再次使用計算。 系統提示您確認時，請選取 [是]****。
 
-    ![選取 [移除計算]](media/azure-stack-edge-j-series-manage-compute/remove-compute-2.png)
+    ![選取 [移除計算 2]](media/azure-stack-edge-j-series-manage-compute/remove-compute-2.png)
 
 ### <a name="sync-up-iot-device-and-iot-edge-device-access-keys"></a>同步 IoT 裝置和 IoT Edge 裝置的存取金鑰
 
@@ -131,6 +131,6 @@ ms.locfileid: "90890601"
 
 3. 在同步完成後結束對話方塊。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 瞭解如何針對 [您的 Azure Stack Edge Pro 進行疑難排解](azure-stack-edge-gpu-troubleshoot.md)。

@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: how-to
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 38b4b701329cf35088d797b095fa3caca46f55b6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9e941007ddc27f809de7d43cd33e44c5b521a6bd
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84338969"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743823"
 ---
 # <a name="use-the-azure-portal-to-manage-users-on-your-azure-data-box-gateway"></a>使用 Azure 入口網站來管理 Azure 資料箱閘道上的使用者。
 
@@ -33,7 +33,7 @@ ms.locfileid: "84338969"
  - **完整權限的使用者** - 具有完整存取權的本機使用者。
  - **唯讀使用者** - 具有唯讀存取權的本機使用者。 這些使用者會與允許唯讀作業的共用相關聯。
 
-在共用建立期間建立使用者時，首先會定義使用者權限。 目前不支援修改共用層級許可權。
+在共用建立期間建立使用者時，首先會定義使用者權限。 目前不支援修改共用層級權限。
 
 ## <a name="add-a-user"></a>新增使用者
 
@@ -45,7 +45,7 @@ ms.locfileid: "84338969"
 
 2. 針對您要新增的使用者指定使用者名稱和密碼。 確認密碼，然後按一下 [新增]****。
 
-    ![按一下 [新增使用者]](media/data-box-gateway-manage-users/add-user-2.png)
+    ![按一下 [新增使用者 2]](media/data-box-gateway-manage-users/add-user-2.png)
 
     > [!IMPORTANT] 
     > 系統會保留下列使用者，不得加以使用：系統管理員、EdgeUser、EdgeSupport、HcsSetupUser、WDAGUtilityAccount、CLIUSR、DefaultAccount、來賓。  
@@ -70,11 +70,11 @@ ms.locfileid: "84338969"
 
 2. 出現提示時，確認刪除。 
 
-   ![刪除使用者](media/data-box-gateway-manage-users/delete-user-2.png)
+   ![刪除使用者2](media/data-box-gateway-manage-users/delete-user-2.png)
 
 使用者清單會更新，以反映出已刪除的使用者。
 
-![刪除使用者](media/data-box-gateway-manage-users/delete-user-3.png)
+![刪除使用者3](media/data-box-gateway-manage-users/delete-user-3.png)
 
 
 ## <a name="next-steps"></a>後續步驟

@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 2ff987448e3900c2a533789b2f38fd3ced71ce72
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 29ea9300b2f86f442d95c96d4a5df3364628d866
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84698932"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91744129"
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-virtual-array"></a>部署 StorSimple Virtual Array 的 StorSimple 裝置管理員服務
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 [!INCLUDE [storsimple-virtual-array-eol-banner](../../includes/storsimple-virtual-array-eol-banner.md)]
 
@@ -70,7 +70,7 @@ StorSimple 裝置管理員服務相關的一般工作包括︰
 
 #### <a name="to-delete-a-service"></a>刪除服務
 
-1. 移至 [**所有資源**]。 搜尋您的 StorSimple 裝置管理員服務。 選取您想要刪除的服務。
+1. 移至 **所有資源**。 搜尋您的 StorSimple 裝置管理員服務。 選取您想要刪除的服務。
    
     ![選取要刪除的服務](./media/storsimple-virtual-array-manage-service/deleteservice2.png)
 2. 移至服務儀表板，確保沒有裝置連接至此服務。 如果沒有裝置向此服務註冊，您也會看到相關的橫幅訊息。 按一下 **[刪除]** 。
@@ -109,7 +109,7 @@ StorSimple 裝置管理員服務相關的一般工作包括︰
 #### <a name="to-regenerate-the-service-registration-key"></a>重新產生服務註冊金鑰
 1. 在 [StorSimple 裝置管理員]**** 中，移至 [管理]**&gt;[金鑰]** ****。
    
-   ![[金鑰] 刀鋒視窗](./media/storsimple-virtual-array-manage-service/getregkey2.png)
+   ![按鍵再次分頁](./media/storsimple-virtual-array-manage-service/getregkey2.png)
 2. 在 [金鑰]**** 刀鋒視窗中，按一下 [重新產生]****。
    
    ![按一下重新產生](./media/storsimple-virtual-array-manage-service/getregkey5.png)
@@ -118,11 +118,11 @@ StorSimple 裝置管理員服務相關的一般工作包括︰
    ![確認重新產生金鑰](./media/storsimple-virtual-array-manage-service/getregkey3.png)
 4. 新的服務註冊金鑰隨即顯示。
    
-    ![確認重新產生金鑰](./media/storsimple-virtual-array-manage-service/getregkey4.png)
+    ![其他確認重新產生金鑰](./media/storsimple-virtual-array-manage-service/getregkey4.png)
    
    複製這個金鑰並儲存，以對任何新的裝置註冊此服務。
 
 ## <a name="next-steps"></a>後續步驟
-* 瞭解如何[開始](storsimple-virtual-array-deploy1-portal-prep.md)使用 StorSimple Virtual Array。
+* 瞭解如何 [開始](storsimple-virtual-array-deploy1-portal-prep.md) 使用 StorSimple Virtual Array。
 * 深入了解 [管理 StorSimple Virtual Array](storsimple-ova-web-ui-admin.md)。
 

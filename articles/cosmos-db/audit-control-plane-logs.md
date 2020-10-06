@@ -4,14 +4,14 @@ description: 瞭解如何在 Azure Cosmos DB 中審核控制平面作業，例�
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 06/25/2020
+ms.date: 10/05/2020
 ms.author: sngun
-ms.openlocfilehash: 691c6ec0559eceb60d57bf04819701edebbffd83
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 08cc3b08611947ac32973b2dfb01060140dc0798
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89462440"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743891"
 ---
 # <a name="how-to-audit-azure-cosmos-db-control-plane-operations"></a>如何 audit Azure Cosmos DB 控制平面作業
 
@@ -69,17 +69,17 @@ Azure Cosmos DB 中的控制平面是 RESTful 服務，可讓您在 Azure Cosmos
 
 下列螢幕擷取畫面會在 Azure Cosmos 帳戶的一致性層級變更時捕捉記錄：
 
-:::image type="content" source="./media/audit-control-plane-logs/add-ip-filter-logs.png" alt-text="新增 VNet 時的控制平面記錄":::
+:::image type="content" source="./media/audit-control-plane-logs/add-ip-filter-logs.png" alt-text="啟用控制平面要求記錄":::
 
 下列螢幕擷取畫面會在建立 Cassandra 帳戶的 keyspace 或資料表，以及更新輸送量時，捕捉記錄。 在資料庫上建立和更新作業的控制平面記錄和容器會分開記錄，如下列螢幕擷取畫面所示：
 
-:::image type="content" source="./media/audit-control-plane-logs/throughput-update-logs.png" alt-text="更新輸送量時的控制平面記錄":::
+:::image type="content" source="./media/audit-control-plane-logs/throughput-update-logs.png" alt-text="啟用控制平面要求記錄":::
 
 ## <a name="identify-the-identity-associated-to-a-specific-operation"></a>識別與特定作業相關聯的身分識別
 
 如果您想要進一步進行偵錯工具，您可以使用活動識別碼或作業的時間戳記，來識別 **活動記錄** 中的特定作業。 某些 Resource Manager 不會明確傳遞活動識別碼的用戶端會使用時間戳。 活動記錄會提供有關用來起始作業之身分識別的詳細資料。 下列螢幕擷取畫面顯示如何使用活動識別碼，並在活動記錄中尋找與其相關聯的作業：
 
-:::image type="content" source="./media/audit-control-plane-logs/find-operations-with-activity-id.png" alt-text="使用活動識別碼並尋找作業":::
+:::image type="content" source="./media/audit-control-plane-logs/find-operations-with-activity-id.png" alt-text="啟用控制平面要求記錄":::
 
 ## <a name="control-plane-operations-for-azure-cosmos-account"></a>Azure Cosmos 帳戶的控制平面作業
 
@@ -211,7 +211,22 @@ on activityId_g
 | project Caller, activityId_g
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+取得索引或 ttl 更新的查詢。 然後，您可以比較此查詢的輸出與先前的更新，以查看索引或 ttl 的變更。
+
+```Kusto
+AzureDiagnostics
+| where Category =="ControlPlaneRequests"
+| where  OperationName == "SqlContainersUpdate"
+| project resourceDetails_s
+```
+
+**輸出：**
+
+```json
+{id:skewed,indexingPolicy:{automatic:true,indexingMode:consistent,includedPaths:[{path:/*,indexes:[]}],excludedPaths:[{path:/_etag/?}],compositeIndexes:[],spatialIndexes:[]},partitionKey:{paths:[/pk],kind:Hash},defaultTtl:1000000,uniqueKeyPolicy:{uniqueKeys:[]},conflictResolutionPolicy:{mode:LastWriterWins,conflictResolutionPath:/_ts,conflictResolutionProcedure:}
+```
+
+## <a name="next-steps"></a>後續步驟
 
 * [探索適用於 Azure Cosmos DB 的 Azure 監視器](../azure-monitor/insights/cosmosdb-insights-overview.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json)
 * [使用 Azure Cosmos DB 中的計量進行監視及偵錯](use-metrics.md)

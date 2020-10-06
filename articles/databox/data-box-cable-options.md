@@ -1,6 +1,6 @@
 ---
 title: Azure 資料箱佈線選項 | Microsoft Docs
-description: 深入瞭解使用管理埠或資料埠來連接 Azure 資料箱以進行資料傳輸的不同方式。
+description: 瞭解如何使用「管理埠」或「資料埠」將 Azure 資料箱連接資料的方式，以進行資料傳輸。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: how-to
 ms.date: 10/24/2018
 ms.author: alkohli
-ms.openlocfilehash: 1a1ce22cd700368d630d70912ea266d16fd772bf
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: bab81809f42c9afa3d2c701398fa5ff8ffc2800d
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87925204"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91744163"
 ---
 # <a name="cabling-options-for-your-azure-data-box"></a>Azure 資料箱的佈線選項
 
@@ -105,7 +105,7 @@ ms.locfileid: "87925204"
    - **IP 位址** 192.168.100.5
    - **子網路** 255.255.255.0。
 
-     ![具有交換器的雙連接埠設定](media/data-box-cable-options/cabling-with-switch-static-ip.png)
+     ![使用交換器2的雙埠設定](media/data-box-cable-options/cabling-with-switch-static-ip.png)
 
 3. 在下列位址存取裝置的本機 Web UI：192.168.100.10。 從 Azure 入口網站登入資料箱，並使用解除鎖定密碼將其解除鎖定。
 4. 將靜態 IP 指派給您已設定的資料連接埠。
@@ -125,7 +125,7 @@ ms.locfileid: "87925204"
 
 1. 使用 RJ45 或 SFP + 纜線透過交換器 (可存取 DHCP 伺服器) 連接到伺服器。
 
-    ![具有交換器的雙連接埠設定](media/data-box-cable-options/cabling-dhcp-data-only.png)
+    ![使用交換器3的雙埠設定](media/data-box-cable-options/cabling-dhcp-data-only.png)
 2. 使用 DHCP 伺服器或 DNS 伺服器識別 IP 位址。
 3. 從相同網路上的伺服器，使用 DHCP 伺服器所指派的 IP 位址存取裝置的本機 Web UI。 從 Azure 入口網站登入資料箱，並使用解除鎖定密碼將其解除鎖定。
 

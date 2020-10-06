@@ -5,12 +5,12 @@ ms.assetid: f7091b25-b2b6-48da-8d4a-dcf9b7baccab
 ms.topic: article
 ms.date: 08/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8085cbd3d19bd60c50de38950625de2fcd1e5c27
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 617a2717a1d1265d067cb3e1f26531d135d47941
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962480"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743908"
 ---
 # <a name="scale-up-an-app-in-azure-app-service"></a>在 Azure App Service 中擴大應用程式
 
@@ -36,7 +36,7 @@ ms.locfileid: "88962480"
 ## <a name="scale-up-your-pricing-tier"></a>擴大您的定價層
 
 > [!NOTE]
-> 若要擴大 **PremiumV2** 層，請參閱[設定 App Service 的 PremiumV2 層](app-service-configure-premium-tier.md)。
+> 若要擴大至 **PremiumV3** 層，請參閱 [設定適用于 App Service 的 PremiumV3 層](app-service-configure-premium-tier.md)。
 >
 
 1. 在瀏覽器中，開啟 [Azure 入口網站][portal]。
@@ -78,7 +78,7 @@ ms.locfileid: "88962480"
 ## <a name="more-resources"></a>其他資源
 
 [手動或自動調整執行個體計數](../azure-monitor/platform/autoscale-get-started.md)  
-[設定 App Service 的 PremiumV2 層](app-service-configure-premium-tier.md)
+[設定 App Service 的 PremiumV3 層](app-service-configure-premium-tier.md)
 
 <!-- LINKS -->
 [vmsizes]:https://azure.microsoft.com/pricing/details/app-service/

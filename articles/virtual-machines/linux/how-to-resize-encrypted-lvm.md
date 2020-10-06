@@ -1,288 +1,287 @@
 ---
-title: 如何使用 Azure 磁碟加密調整加密邏輯磁片區管理磁片的大小
+title: 如何使用 Azure 磁碟加密來調整加密邏輯磁片區管理磁片的大小
 description: 本文提供使用邏輯磁片區管理來調整 ADE 加密磁片大小的指示。
 author: jofrance
 ms.service: security
 ms.topic: article
 ms.author: jofrance
 ms.date: 09/21/2020
-ms.openlocfilehash: ba652b9424b8d5ce1b6a2c5b7d70b8fd9e999323
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 3a3e9b7406e11261aff12d77d9fbeed5debbe938
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91342349"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91744265"
 ---
-# <a name="how-to-resize-logical-volume-management-devices-encrypted-with-azure-disk-encryption"></a>如何調整以 Azure 磁碟加密加密的邏輯磁片區管理裝置大小
+# <a name="how-to-resize-logical-volume-management-devices-that-use-azure-disk-encryption"></a>如何調整使用 Azure 磁碟加密的邏輯磁片區管理裝置大小
 
-本文將逐步說明如何在 Linux 上使用邏輯磁片區管理 (LVM) 來調整 ADE 加密資料磁片的大小，適用于多個案例。
+在本文中，您將瞭解如何調整使用 Azure 磁碟加密的資料磁片大小。 若要調整磁片大小，您將使用 Linux 上 (LVM) 的邏輯磁片區管理。 這些步驟適用于多個案例。
 
-此程式適用于下列環境：
+您可以在下列環境中使用這種調整大小的進程：
 
-- Linux 散發套件
-    - RHEL 7+
-    - Ubuntu 16 +
-    - SUSE 12 +
-- Azure 磁碟加密單一傳遞延伸模組
-- Azure 磁碟加密雙重傳遞延伸模組
+- Linux 發行版本：
+    - Red Hat Enterprise Linux (RHEL) 7 或更新版本
+    - Ubuntu 16 或更新版本
+    - SUSE 12 或更新版本
+- Azure 磁碟加密版本： 
+    - 單一傳遞延伸模組
+    - 雙重傳遞延伸模組
 
-## <a name="considerations"></a>考量
+## <a name="prerequisites"></a>Prerequisites
 
-本檔假設：
+本文假設您已經：
 
-1. 有現有的 LVM 設定。
-   
-   如需在 Linux VM 上設定 LVM 的詳細資訊，請參閱在 [LINUX vm 上設定 lvm](configure-lvm.md) 。
+- 現有的 LVM 設定。 如需詳細資訊，請參閱 [在 LINUX VM 上設定 LVM](configure-lvm.md)。
 
-2. 磁片已使用 Azure 磁碟加密檢查 [設定 crypt](how-to-configure-lvm-raid-on-crypt.md) 上的 lvm，以取得如何設定 Lvm 內部 crypt 的資訊。
+- Azure 磁碟加密已加密的磁片。 如需詳細資訊，請參閱 [在加密裝置上設定 LVM 和 RAID](how-to-configure-lvm-raid-on-crypt.md)。
 
-3. 您有必要的 Linux 和 LVM 專業知識，可以遵循這些範例。
+- 體驗使用 Linux 和 LVM。
 
-4. 您已瞭解在 Azure 上使用資料磁片的建議，如針對 [裝置名稱問題進行疑難排解](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-device-names-problems)所述，是使用/dev/disk/scsi1/路徑。
+- 體驗在 Azure 上使用資料磁片的 */dev/disk/scsi1/* 路徑。 如需詳細資訊，請參閱針對 [LINUX VM 裝置名稱問題進行疑難排解](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-device-names-problems)。 
 
 ## <a name="scenarios"></a>案例
 
 本文中的程式適用于下列案例：
 
-### <a name="for-traditional-lvm-and-lvm-on-crypt-configurations"></a>針對傳統 LVM 和 LVM 內部 Crypt 設定
+- 傳統 LVM 和 LVM 內部 crypt 設定
+- 傳統 LVM 加密 
+- LVM-內部 crypt 
 
-- 在 VG 中有可用空間時，擴充邏輯磁片區
+### <a name="traditional-lvm-and-lvm-on-crypt-configurations"></a>傳統 LVM 和 LVM 內部 crypt 設定
 
-### <a name="for-traditional-lvm-encryption-the-logical-volumes-are-encrypted-not-the-whole-disk"></a>針對傳統 LVM 加密 (邏輯磁片區會加密，而不是整個磁片) 
+傳統 LVM 和 LVM 內部 crypt 設定會在磁片區群組 (VG) 具有可用空間時，擴充邏輯磁片區 (LV) 。
 
-- 擴充傳統 LVM 磁片區新增 PV
-- 擴充傳統的 LVM 磁片區以調整現有的 PV
+### <a name="traditional-lvm-encryption"></a>傳統 LVM 加密 
 
-### <a name="for-lvm-on-crypt-recommended-method-the-entire-disk-is-encrypted-not-only-the-logical-volume"></a>針對 LVM crypt (建議的方法，會加密整個磁片，而不是只有邏輯磁片區) 
+在傳統 LVM 加密中，Lvs) 會加密。 整個磁片未加密。
 
-- 擴充 crypt 磁片區上的 LVM 新增 PV
-- 擴充 crypt 磁片區上的 LVM 以調整現有的 PV
+使用傳統 LVM 加密，您可以：
+
+- 當您加入新的實體磁片區 (PV) 時，請擴充 LV。
+- 當您調整現有 PV 的大小時，請擴充 LV。
+
+### <a name="lvm-on-crypt"></a>LVM-內部 crypt 
+
+磁片加密的建議方法是使用 LVM 加密。 這個方法會加密整個磁片，而不只是 LV。
+
+藉由使用 LVM 內部 crypt，您可以： 
+
+- 當您加入新的 PV 時，請擴充 LV。
+- 當您調整現有 PV 的大小時，請擴充 LV。
 
 > [!NOTE]
-> 不建議在相同的 VM 上混用傳統 LVM 加密和 LVM 內部 Crypt。
+> 我們不建議將傳統 LVM 加密和 LVM crypt 混合在相同的 VM 上。
 
-> [!NOTE]
-> 這些範例會針對磁片、實體磁片區、磁片區群組、邏輯磁片區、檔案系統、Uuid 和掛接點使用既有的名稱，因此您需要取代這些範例所提供的值，以符合您的環境。
+下列各節提供如何使用 LVM 和 LVM 內部 crypt 的範例。 這些範例會針對磁片、PVs、VGs、Lvs) 、檔案系統、通用唯一識別碼 (Uuid) 和掛接點使用預先存在的值。 將這些值取代為您自己的值，以符合您的環境。
 
-#### <a name="extending-a-logical-volume-when-theres-available-space-in-the-vg"></a>在 VG 中有可用空間時，擴充邏輯磁片區
+#### <a name="extend-an-lv-when-the-vg-has-available-space"></a>當 VG 具有可用空間時，擴充 LV
 
-傳統的方法可用來調整邏輯磁片區的大小，它可以套用至非加密磁片、傳統 lvm 加密磁片區和 LVM Crypt 設定。
+將 Lvs) 調整大小的傳統方式是在 VG 具有可用空間時，擴充 LV。 您可以將此方法用於非加密磁片、傳統 LVM 加密磁片區和 LVM crypt 設定。
 
-1. 確認目前要增加的檔案系統大小：
+1. 確認您要增加的檔案系統目前大小：
 
     ``` bash
     df -h /mountpoint
     ```
 
-    ![scenarioa-檢查-fs1](./media/disk-encryption/resize-lvm/001-resize-lvm-scenarioa-check-fs.png)
+    ![顯示檢查檔案系統大小之程式碼的螢幕擷取畫面。 命令和結果會反白顯示。](./media/disk-encryption/resize-lvm/001-resize-lvm-scenarioa-check-fs.png)
 
-2. 確認 VG 有足夠的空間可增加 LV
+2. 確認 VG 有足夠的空間可增加 LV：
 
     ``` bash
     vgs
     ```
 
-    ![scenarioa-檢查-vg](./media/disk-encryption/resize-lvm/002-resize-lvm-scenarioa-check-vgs.png)
+    ![顯示檢查 VG 空間之程式碼的螢幕擷取畫面。 命令和結果會反白顯示。](./media/disk-encryption/resize-lvm/002-resize-lvm-scenarioa-check-vgs.png)
 
-    您也可以使用 "vgdisplay"
+    您也可以使用 `vgdisplay` ：
 
     ``` bash
     vgdisplay vgname
     ```
 
-    ![scenarioa-檢查-vgdisplay](./media/disk-encryption/resize-lvm/002-resize-lvm-scenarioa-check-vgdisplay.png)
+    ![顯示 V G 顯示程式碼的螢幕擷取畫面，可檢查 VG 上的空間。 命令和結果會反白顯示。](./media/disk-encryption/resize-lvm/002-resize-lvm-scenarioa-check-vgdisplay.png)
 
-3. 識別需要調整的邏輯磁片區大小
+3. 找出需要調整大小的 LV：
 
     ``` bash
     lsblk
     ```
 
-    ![scenarioa-檢查-lsblk1](./media/disk-encryption/resize-lvm/002-resize-lvm-scenarioa-check-lsblk1.png)
+    ![顯示 l s b l k 命令之結果的螢幕擷取畫面。 命令和結果會反白顯示。](./media/disk-encryption/resize-lvm/002-resize-lvm-scenarioa-check-lsblk1.png)
 
-    針對 LVM Crypt，此輸出上的差異在於，這會顯示加密層在涵蓋整個磁片的加密層上
+    針對 LVM crypt，差別在於此輸出顯示加密層級位於磁片層級。
 
-    ![scenarioa-檢查-lsblk2](./media/disk-encryption/resize-lvm/002-resize-lvm-scenarioa-check-lsblk2.png)
+    ![顯示 l s b l k 命令之結果的螢幕擷取畫面。 輸出會反白顯示。 它會顯示加密的圖層。](./media/disk-encryption/resize-lvm/002-resize-lvm-scenarioa-check-lsblk2.png)
 
-4. 檢查邏輯磁片區大小
+4. 檢查 LV 大小：
 
     ``` bash
     lvdisplay lvname
     ```
 
-    ![scenarioa-檢查-lvdisplay01](./media/disk-encryption/resize-lvm/002-resize-lvm-scenarioa-check-lvdisplay01.png)
+    ![顯示檢查邏輯磁片區大小之程式碼的螢幕擷取畫面。 命令和結果會反白顯示。](./media/disk-encryption/resize-lvm/002-resize-lvm-scenarioa-check-lvdisplay01.png)
 
-5. 使用 "-r" 針對檔案系統的線上調整大小來增加 LV 大小
+5. 使用 `-r` 將檔案系統的大小調整為線上，以增加 LV 大小：
 
     ``` bash
     lvextend -r -L +2G /dev/vgname/lvname
     ```
 
-    ![scenarioa-調整大小-lv](./media/disk-encryption/resize-lvm/003-resize-lvm-scenarioa-resize-lv.png)
+    ![顯示增加邏輯磁片區大小之程式碼的螢幕擷取畫面。 命令和結果會反白顯示。](./media/disk-encryption/resize-lvm/003-resize-lvm-scenarioa-resize-lv.png)
 
-6. 確認 LV 和檔案系統的新大小
-
-    ``` bash
-    df -h /mountpoint
-    ```
-
-    ![scenarioa-檢查-fs](./media/disk-encryption/resize-lvm/004-resize-lvm-scenarioa-check-fs.png)
-
-    新的大小會反映出來，這表示已成功重設 LV 和檔案系統的大小
-
-7. 您可以再次檢查 LV 資訊，以確認 LV 層級的變更
-
-    ``` bash
-    lvdisplay lvname
-    ```
-
-    ![scenarioa-檢查-lvdisplay2](./media/disk-encryption/resize-lvm/004-resize-lvm-scenarioa-check-lvdisplay2.png)
-
-#### <a name="extending-a-traditional-lvm-volume-adding-a-new-pv"></a>擴充傳統 LVM 磁片區新增 PV
-
-適用于您需要新增磁片以增加磁片區群組大小時。
-
-1. 確認目前要增加的檔案系統大小：
+6. 確認 LV 和檔案系統的新大小：
 
     ``` bash
     df -h /mountpoint
     ```
 
-    ![scenariob-檢查-fs](./media/disk-encryption/resize-lvm/005-resize-lvm-scenariob-check-fs.png)
+    ![顯示驗證 LV 和檔案系統大小之程式碼的螢幕擷取畫面。 命令和結果會反白顯示。](./media/disk-encryption/resize-lvm/004-resize-lvm-scenarioa-check-fs.png)
 
-2. 確認目前的實體磁片區設定
+    大小輸出表示已成功調整 LV 和檔案系統的大小。
+
+您可以再次檢查 LV 資訊，以確認 LV 層級的變更：
+
+``` bash
+lvdisplay lvname
+```
+
+![顯示確認新大小之程式碼的螢幕擷取畫面。 這些大小會反白顯示。](./media/disk-encryption/resize-lvm/004-resize-lvm-scenarioa-check-lvdisplay2.png)
+
+#### <a name="extend-a-traditional-lvm-volume-by-adding-a-new-pv"></a>藉由新增新的 PV 來擴充傳統 LVM 磁片區
+
+當您需要新增磁片以增加 VG 大小時，請新增新的 PV 以擴充您的傳統 LVM 磁片區。
+
+1. 確認您要增加的檔案系統目前大小：
+
+    ``` bash
+    df -h /mountpoint
+    ```
+
+    ![顯示檢查檔案系統目前大小之程式碼的螢幕擷取畫面。 命令和結果會反白顯示。](./media/disk-encryption/resize-lvm/005-resize-lvm-scenariob-check-fs.png)
+
+2. 確認目前的 PV 設定：
 
     ``` bash
     pvs
     ```
 
-    ![scenariob-檢查-pvs](./media/disk-encryption/resize-lvm/006-resize-lvm-scenariob-check-pvs.png)
+    ![顯示檢查目前 PV 設定之程式碼的螢幕擷取畫面。 命令和結果會反白顯示。](./media/disk-encryption/resize-lvm/006-resize-lvm-scenariob-check-pvs.png)
 
-3. 檢查目前的 VG 資訊
+3. 檢查目前的 VG 資訊：
 
     ``` bash
     vgs
     ```
 
-    ![scenariob-檢查-vgs](./media/disk-encryption/resize-lvm/007-resize-lvm-scenariob-check-vgs.png)
+    ![顯示檢查目前磁片區群組資訊之程式碼的螢幕擷取畫面。 命令和結果會反白顯示。](./media/disk-encryption/resize-lvm/007-resize-lvm-scenariob-check-vgs.png)
 
-4. 檢查目前的磁片清單
-
-    您應藉由檢查/dev/disk/azure/scsi1/下的裝置來識別資料磁片
+4. 檢查目前的磁片清單。 藉由在 */dev/disk/azure/scsi1/* 中檢查裝置來識別資料磁片。
 
     ``` bash
     ls -l /dev/disk/azure/scsi1/
     ```
 
-    ![scenariob-檢查-scs1](./media/disk-encryption/resize-lvm/008-resize-lvm-scenariob-check-scs1.png)
+    ![顯示檢查目前磁片清單之程式碼的螢幕擷取畫面。 命令和結果會反白顯示。](./media/disk-encryption/resize-lvm/008-resize-lvm-scenariob-check-scs1.png)
 
-5. 檢查 lsblk 的輸出 
+5. 檢查 `lsblk` 下列輸出： 
 
     ``` bash
     lsbk
     ```
 
-    ![scenariob-檢查-lsblk](./media/disk-encryption/resize-lvm/008-resize-lvm-scenariob-check-lsblk.png)
+    ![螢幕擷取畫面，顯示檢查 l s b l k 輸出的程式碼。 命令和結果會反白顯示。](./media/disk-encryption/resize-lvm/008-resize-lvm-scenariob-check-lsblk.png)
 
-6. 將新磁片連結至 VM
+6. 遵循 [將資料磁片連接至 LINUX vm](attach-disk-portal.md)中的指示，將新的磁片連結至 VM。
 
-    追蹤下列檔的步驟4
-
-   - [將磁片連結至 VM](attach-disk-portal.md)
-
-7. 連接磁片之後，請檢查磁片清單，並注意新的磁片
+7. 檢查磁片清單，並注意新的磁片。
 
     ``` bash
     ls -l /dev/disk/azure/scsi1/
     ```
 
-    ![scenariob-檢查-scsi12](./media/disk-encryption/resize-lvm/009-resize-lvm-scenariob-check-scsi12.png)
+    ![顯示檢查磁片清單之程式碼的螢幕擷取畫面。 結果會反白顯示。](./media/disk-encryption/resize-lvm/009-resize-lvm-scenariob-check-scsi12.png)
 
     ``` bash
     lsbk
     ```
 
-    ![scenariob-檢查-lsblk12](./media/disk-encryption/resize-lvm/009-resize-lvm-scenariob-check-lsblk1.png)
+    ![螢幕擷取畫面，顯示使用 l s b l k 來檢查磁片清單的程式碼。 命令和結果會反白顯示。](./media/disk-encryption/resize-lvm/009-resize-lvm-scenariob-check-lsblk1.png)
 
-8. 在新的資料磁片之上建立新的 PV
+8. 在新的資料磁片之上建立新的 PV：
 
     ``` bash
     pvcreate /dev/newdisk
     ```
 
-    ![scenariob-pvcreate](./media/disk-encryption/resize-lvm/010-resize-lvm-scenariob-pvcreate.png)
+    ![顯示建立新 PV 之程式碼的螢幕擷取畫面。 結果會反白顯示。](./media/disk-encryption/resize-lvm/010-resize-lvm-scenariob-pvcreate.png)
 
-    這個方法會使用整個磁片做為沒有分割區的 PV，選擇性地使用 "fdisk" 來建立資料分割，然後針對 "pvcreate" 使用該分割區。
+    這個方法會使用整個磁片做為不含分割區的 PV。 或者，您可以使用 `fdisk` 建立資料分割，然後使用該資料分割 `pvcreate` 。
 
-9. 確認 PV 已新增至 PV 清單。
+9. 確認 PV 已新增至 PV 清單：
 
     ``` bash
     pvs
     ```
 
-    ![scenariob-檢查-pvs1](./media/disk-encryption/resize-lvm/011-resize-lvm-scenariob-check-pvs1.png)
+    ![顯示顯示實體磁片區清單之程式碼的螢幕擷取畫面。 結果會反白顯示。](./media/disk-encryption/resize-lvm/011-resize-lvm-scenariob-check-pvs1.png)
 
-10. 藉由新增新的 PV 來擴充 VG
+10. 藉由新增新的 PV 來擴充 VG：
 
     ``` bash
     vgextend vgname /dev/newdisk
     ```
 
-    ![scenariob-vg-擴充](./media/disk-encryption/resize-lvm/012-resize-lvm-scenariob-vgextend.png)
+    ![顯示擴充磁片區群組之程式碼的螢幕擷取畫面。 結果會反白顯示。](./media/disk-encryption/resize-lvm/012-resize-lvm-scenariob-vgextend.png)
 
-11. 檢查新的 VG 大小
+11. 檢查新的 VG 大小：
 
     ``` bash
     vgs
     ```
 
-    ![scenariob-檢查-vgs1](./media/disk-encryption/resize-lvm/013-resize-lvm-scenariob-check-vgs1.png)
+    ![顯示檢查磁片區群組大小之程式碼的螢幕擷取畫面。 結果會反白顯示。](./media/disk-encryption/resize-lvm/013-resize-lvm-scenariob-check-vgs1.png)
 
-12. 使用 lsblk 來識別需要調整大小的 LV
+12. 用 `lsblk` 來識別需要調整大小的 LV：
 
     ``` bash
     lsblk
     ```
 
-    ![scenariob-檢查-lsblk1](./media/disk-encryption/resize-lvm/013-resize-lvm-scenariob-check-lsblk1.png)
+    ![螢幕擷取畫面，顯示可識別需要調整大小之本機磁片區的程式碼。 結果會反白顯示。](./media/disk-encryption/resize-lvm/013-resize-lvm-scenariob-check-lsblk1.png)
 
-13. 使用 "-r" 擴充 LV 大小以線上增加檔案系統
+13. 使用來擴充 LV 大小， `-r` 以在線上增加檔案系統：
 
     ``` bash
     lvextend -r -L +2G /dev/vgname/lvname
     ```
 
-    ![scenariob-lvextend](./media/disk-encryption/resize-lvm/013-resize-lvm-scenariob-lvextend.png) 
+    ![顯示程式碼的螢幕擷取畫面，此程式碼會增加線上檔案系統的大小。 結果會反白顯示。](./media/disk-encryption/resize-lvm/013-resize-lvm-scenariob-lvextend.png) 
 
-14. 驗證新的 LV 和 filesystem 大小
+14. 確認 LV 和檔案系統的新大小：
 
     ``` bash
     df -h /mountpoint
     ```
 
-    ![scenariob-檢查-fs1](./media/disk-encryption/resize-lvm/014-resize-lvm-scenariob-check-fs1.png)
+    ![顯示檢查本機磁片區和檔案系統大小之程式碼的螢幕擷取畫面。 命令和結果會反白顯示。](./media/disk-encryption/resize-lvm/014-resize-lvm-scenariob-check-fs1.png)
 
-    請務必瞭解當 ADE 用於傳統 LVM 設定時，加密層是在 LV 層級建立，而不是在磁片層級建立。
-
-    此時，加密層會擴充到新的磁片。
-    實際的資料磁片在平台層級沒有任何加密設定，因此其加密狀態不會更新。
-
-    >[!NOTE]
-    >這些是 Crypt LVM 的一些原因，是建議的方法。 
+    >[!IMPORTANT]
+    >在傳統 LVM 設定上使用 Azure 資料加密時，會在 LV 層級（而不是在磁片層級）建立加密層。
+    >
+    >此時，加密層會擴充到新的磁片。 實際的資料磁片在平台層級沒有任何加密設定，因此其加密狀態不會更新。
+    >
+    >這些是 crypt LVM 的一些原因，是建議的方法。 
 
 15. 從入口網站檢查加密資訊：
 
-    ![scenariob-檢查-portal1](./media/disk-encryption/resize-lvm/014-resize-lvm-scenariob-check-portal1.png)
+    ![顯示入口網站中加密資訊的螢幕擷取畫面。 磁片名稱和加密會反白顯示。](./media/disk-encryption/resize-lvm/014-resize-lvm-scenariob-check-portal1.png)
 
-    您必須加入新的 LV 並在 VM 上啟用擴充功能，才能更新磁片上的加密設定。
+    若要更新磁片上的加密設定，請新增 LV，並在 VM 上啟用擴充功能。
     
-16. 新增 LV、在其上建立檔案系統，並將它新增至/etc/fstab
+16. 新增 LV、在其上建立檔案系統，並將它新增至 `/etc/fstab` 。
 
-17. 再次設定加密擴充功能，以在平台層級的新資料磁片上戳記加密設定。
-
-    範例：
-
-    CLI
+17. 再次設定加密擴充功能。 這一次，您會在平台層級的新資料磁片上，戳記加密設定。 以下是 CLI 範例：
 
     ``` bash
     az vm encryption enable -g ${RGNAME} --name ${VMNAME} --disk-encryption-keyvault "<your-unique-keyvault-name>"
@@ -290,68 +289,70 @@ ms.locfileid: "91342349"
 
 18. 從入口網站檢查加密資訊：
 
-    ![scenariob-檢查-portal2](./media/disk-encryption/resize-lvm/014-resize-lvm-scenariob-check-portal2.png)
+    ![顯示入口網站中加密資訊的螢幕擷取畫面。 系統會反白顯示磁片名稱和加密資訊。](./media/disk-encryption/resize-lvm/014-resize-lvm-scenariob-check-portal2.png)
 
-19. 更新加密設定之後，您可以刪除新的 LV，您也必須從為它建立的/etc/fstab 和/etc/crypttab 中刪除專案。
+更新加密設定之後，您可以刪除新的 LV。 也請從您建立的和中刪除專案 `/etc/fstab` `/etc/crypttab` 。
 
-    ![scenariob-delete-fstab-crypttab](./media/disk-encryption/resize-lvm/014-resize-lvm-scenariob-delete-fstab-crypttab.png)
+![顯示刪除新邏輯磁片區之程式碼的螢幕擷取畫面。 [已刪除的 F S 索引標籤和 crypt] 索引標籤會醒目提示。](./media/disk-encryption/resize-lvm/014-resize-lvm-scenariob-delete-fstab-crypttab.png)
 
-20. 卸載邏輯磁片區
+請遵循下列步驟來完成清除：
+
+1. 卸載 LV：
 
     ``` bash
     umount /mountpoint
     ```
 
-21. 關閉磁片區的加密層
+1. 關閉磁片區的加密層：
 
     ``` bash
     cryptsetup luksClose /dev/vgname/lvname
     ```
 
-22. 刪除 LV
+1. 刪除 LV：
 
     ``` bash
     lvremove /dev/vgname/lvname
     ```
 
-#### <a name="extending-a-traditional-lvm-volume-resizing-an-existing-pv"></a>擴充傳統的 LVM 磁片區以調整現有的 PV
+#### <a name="extend-a-traditional-lvm-volume-by-resizing-an-existing-pv"></a>調整現有的 PV 以擴充傳統 LVM 磁片區
 
-某些案例或限制需要您調整現有磁片的大小。
+Im 某些案例中，您的限制可能會要求您調整現有磁片的大小。 其做法如下：
 
-1. 識別您的加密磁片
+1. 識別您的加密磁片：
 
     ``` bash
     ls -l /dev/disk/azure/scsi1/
     ```
 
-    ![scenarioc-檢查-scsi1](./media/disk-encryption/resize-lvm/015-resize-lvm-scenarioc-check-scsi1.png)
+    ![顯示可識別加密磁片之程式碼的螢幕擷取畫面。 結果會反白顯示。](./media/disk-encryption/resize-lvm/015-resize-lvm-scenarioc-check-scsi1.png)
 
     ``` bash
     lsblk -fs
     ```
 
-    ![scenarioc-檢查-lsblk](./media/disk-encryption/resize-lvm/015-resize-lvm-scenarioc-check-lsblk.png)
+    ![螢幕擷取畫面，顯示可識別加密磁片的替代程式碼。 結果會反白顯示。](./media/disk-encryption/resize-lvm/015-resize-lvm-scenarioc-check-lsblk.png)
 
-2. 檢查 pv 資訊
+2. 檢查 PV 資訊：
 
     ``` bash
     pvs
     ```
 
-    ![scenarioc-檢查-pvs](./media/disk-encryption/resize-lvm/016-resize-lvm-scenarioc-check-pvs.png)
+    ![顯示檢查實體磁片區相關資訊之程式碼的螢幕擷取畫面。 結果會反白顯示。](./media/disk-encryption/resize-lvm/016-resize-lvm-scenarioc-check-pvs.png)
 
-    目前使用的所有 PVs 上的所有空間
+    影像中的結果顯示目前使用所有 PVs 上的所有空間。
 
-3. 檢查 VGs 資訊
+3. 檢查 VG 資訊：
 
     ``` bash
     vgs
     vgdisplay -v vgname
     ```
 
-    ![scenarioc-檢查-vgs](./media/disk-encryption/resize-lvm/017-resize-lvm-scenarioc-check-vgs.png)
+    ![顯示檢查磁片區群組相關資訊之程式碼的螢幕擷取畫面。 結果會反白顯示。](./media/disk-encryption/resize-lvm/017-resize-lvm-scenarioc-check-vgs.png)
 
-4. 檢查磁片大小，您可以使用 fdisk 或 lsblk 來列出磁片磁碟機大小
+4. 檢查磁片大小。 您可以使用 `fdisk` 或 `lsblk` 來列出磁片磁碟機大小。
 
     ``` bash
     for disk in `ls -l /dev/disk/azure/scsi1/* | awk -F/ '{print $NF}'` ; do echo "fdisk -l /dev/${disk} | grep ^Disk "; done | bash
@@ -359,18 +360,18 @@ ms.locfileid: "91342349"
     lsblk -o "NAME,SIZE"
     ```
 
-    ![scenarioc 檢查-fdisk](./media/disk-encryption/resize-lvm/018-resize-lvm-scenarioc-check-fdisk.png)
+    ![顯示檢查磁片大小之程式碼的螢幕擷取畫面。 結果會反白顯示。](./media/disk-encryption/resize-lvm/018-resize-lvm-scenarioc-check-fdisk.png)
 
-    我們已識別出哪些 PVs 與使用 lsblk-fs 的 Lvs) 相關聯，您也可以藉由執行 "lvdisplay" 來加以識別。
+    在這裡，我們識別出哪些 PVs 與使用的 Lvs) 相關聯 `lsblk -fs` 。 您可以藉由執行來識別關聯 `lvdisplay` 。
 
     ``` bash
     lvdisplay --maps VG/LV
     lvdisplay --maps datavg/datalv1
     ```
 
-    ![檢查-lvdisplay](./media/disk-encryption/resize-lvm/019-resize-lvm-scenarioc-check-lvdisplay.png)
+    ![螢幕擷取畫面，顯示識別與本機磁片區的實體磁片區關聯的替代方法。 結果會反白顯示。](./media/disk-encryption/resize-lvm/019-resize-lvm-scenarioc-check-lvdisplay.png)
 
-    在此情況下，所有4個數據磁片磁碟機都屬於相同 VG 和單一 LV 的一部分，您的設定可能會與此範例不同。
+    在此情況下，所有四個數據磁片磁碟機都屬於相同 VG 和單一 LV 的一部分。 您的設定可能會有所不同。
 
 5. 檢查目前的檔案系統使用量：
 
@@ -378,16 +379,14 @@ ms.locfileid: "91342349"
     df -h /datalvm*
     ```
 
-    ![scenarioc-檢查-df](./media/disk-encryption/resize-lvm/020-resize-lvm-scenarioc-check-df.png)
+    ![顯示檢查檔案系統使用量之程式碼的螢幕擷取畫面。 命令和結果會反白顯示。](./media/disk-encryption/resize-lvm/020-resize-lvm-scenarioc-check-df.png)
 
-6. 調整資料磁片的大小 (s) ：
+6. 遵循 [擴充 Azure 受控磁片](expand-disks.md#expand-an-azure-managed-disk)中的指示，調整資料磁片的大小。 您可以使用入口網站、CLI 或 PowerShell。
 
-    您可以參考 [Linux 擴充磁片](expand-disks.md) (只需要參考磁片調整大小) ，您可以使用入口網站、CLI 或 PowerShell 來執行此步驟。
+    >[!IMPORTANT]
+    >當 VM 正在執行時，您無法調整虛擬磁片的大小。 將您的 VM 解除配置，以進行此步驟。
 
-    >[!NOTE]
-    >請考慮在執行的 VM 上無法執行虛擬磁片上的調整大小作業。 您必須將 VM 解除配置，才能進行此步驟
-
-7. 當磁片調整大小為所需的值時，請使用 fdisk 啟動 VM 並檢查新的大小
+7. 啟動 VM，並使用來檢查新的大小 `fdisk` 。
 
     ``` bash
     for disk in `ls -l /dev/disk/azure/scsi1/* | awk -F/ '{print $NF}'` ; do echo "fdisk -l /dev/${disk} | grep ^Disk "; done | bash
@@ -395,186 +394,185 @@ ms.locfileid: "91342349"
     lsblk -o "NAME,SIZE"
     ```
 
-    ![scenarioc-檢查-fdisk1](./media/disk-encryption/resize-lvm/021-resize-lvm-scenarioc-check-fdisk1.png)
+    ![顯示檢查磁片大小之程式碼的螢幕擷取畫面。 結果會反白顯示。](./media/disk-encryption/resize-lvm/021-resize-lvm-scenarioc-check-fdisk1.png)
 
-    在此特定案例中，/dev/sdd 已從5G 調整為20G
+    在此情況下， `/dev/sdd` 已從 5 g 調整為 20 g。
 
-8. 檢查目前的 PV 大小
+8. 檢查目前的 PV 大小：
 
     ``` bash
     pvdisplay /dev/resizeddisk
     ```
 
-    ![scenarioc-檢查-pvdisplay](./media/disk-encryption/resize-lvm/022-resize-lvm-scenarioc-check-pvdisplay.png)
+    ![顯示檢查 P V 大小之程式碼的螢幕擷取畫面。結果會反白顯示。](./media/disk-encryption/resize-lvm/022-resize-lvm-scenarioc-check-pvdisplay.png)
     
-    即使磁片已調整大小，pv 仍具有先前的大小。
+    即使磁片已調整大小，但 PV 仍具有先前的大小。
 
-9. 調整 PV 的大小
+9. 調整 PV 的大小：
 
     ``` bash
     pvresize /dev/resizeddisk
     ```
 
-    ![scenarioc-檢查-pvresize](./media/disk-encryption/resize-lvm/023-resize-lvm-scenarioc-check-pvresize.png)
+    ![顯示調整實體磁片區之程式碼的螢幕擷取畫面。 結果會反白顯示。](./media/disk-encryption/resize-lvm/023-resize-lvm-scenarioc-check-pvresize.png)
 
 
-10. 檢查 PV 大小
+10. 檢查 PV 大小：
 
     ``` bash
     pvdisplay /dev/resizeddisk
     ```
 
-    ![scenarioc-檢查-pvdisplay1](./media/disk-encryption/resize-lvm/024-resize-lvm-scenarioc-check-pvdisplay1.png)
+    ![顯示檢查實體磁片區大小之程式碼的螢幕擷取畫面。 結果會反白顯示。](./media/disk-encryption/resize-lvm/024-resize-lvm-scenarioc-check-pvdisplay1.png)
 
     針對您要調整大小的所有磁片套用相同的程式。
 
-11. 檢查 VG 資訊
+11. 檢查 VG 資訊。
 
     ``` bash
     vgdisplay vgname
     ```
 
-    ![scenarioc-檢查-vgdisplay1](./media/disk-encryption/resize-lvm/025-resize-lvm-scenarioc-check-vgdisplay1.png)
+    ![顯示檢查磁片區群組資訊之程式碼的螢幕擷取畫面。 結果會反白顯示。](./media/disk-encryption/resize-lvm/025-resize-lvm-scenarioc-check-vgdisplay1.png)
 
-    VG 現在有空間可配置給 Lvs) 
+    VG 現在有足夠的空間可配置給 Lvs) 。
 
-12. 調整 LV 的大小
+12. 調整 LV 的大小：
 
     ``` bash
     lvresize -r -L +5G vgname/lvname
     lvresize -r -l +100%FREE /dev/datavg/datalv01
     ```
 
-    ![scenarioc-檢查-lvresize1](./media/disk-encryption/resize-lvm/031-resize-lvm-scenarioc-check-lvresize1.png)
+    ![顯示調整 L V 大小之程式碼的螢幕擷取畫面。結果會反白顯示。](./media/disk-encryption/resize-lvm/031-resize-lvm-scenarioc-check-lvresize1.png)
 
-13. 檢查 FS 大小
+13. 檢查檔案系統的大小：
 
     ``` bash
     df -h /datalvm2
     ```
 
-    ![scenarioc-檢查-df3](./media/disk-encryption/resize-lvm/032-resize-lvm-scenarioc-check-df3.png)
+    ![顯示檢查檔案系統大小之程式碼的螢幕擷取畫面。 結果會反白顯示。](./media/disk-encryption/resize-lvm/032-resize-lvm-scenarioc-check-df3.png)
 
-#### <a name="extending-an-lvm-on-crypt-volume-adding-a-new-pv"></a>擴充 LVM 內部 Crypt 磁片區新增 PV
+#### <a name="extend-an-lvm-on-crypt-volume-by-adding-a-new-pv"></a>藉由新增新的 PV 來擴充 LVM 內部 crypt 磁片區
 
-此方法會嚴格遵循在 [crypt 上設定 LVM](how-to-configure-lvm-raid-on-crypt.md) 來新增磁片的步驟，並在 crypt 設定下進行設定。
+您也可以藉由新增新的 PV 來擴充 LVM 內部 crypt 磁片區。 此方法會嚴格遵循在 [加密裝置上設定 LVM 和 RAID](how-to-configure-lvm-raid-on-crypt.md#general-steps)的步驟。 請參閱說明如何新增磁片並在 crypt 設定中設定它的章節。
 
-您可以使用這個方法將空間新增至已存在的 LV，或改為建立新的 VGs 或 Lvs) 。
+您可以使用這個方法將空間新增至現有的 LV。 或者，您可以建立新的 VGs 或 Lvs) 。
 
-1. 確認 VG 的目前大小
+1. 確認 VG 的目前大小：
 
     ``` bash
     vgdisplay vgname
     ```
 
-    ![scenarioe-檢查-vg01](./media/disk-encryption/resize-lvm/033-resize-lvm-scenarioe-check-vg01.png)
+    ![顯示檢查磁片區群組大小之程式碼的螢幕擷取畫面。 結果會反白顯示。](./media/disk-encryption/resize-lvm/033-resize-lvm-scenarioe-check-vg01.png)
 
-2. 確認您想要增加的 fs 和 lv 的大小
+2. 確認您要擴充的檔案系統和 LV 的大小：
 
     ``` bash
     lvdisplay /dev/vgname/lvname
     ```
 
-    ![scenarioe-檢查-lv01](./media/disk-encryption/resize-lvm/034-resize-lvm-scenarioe-check-lv01.png)
+    ![顯示檢查本機磁片區大小之程式碼的螢幕擷取畫面。 結果會反白顯示。](./media/disk-encryption/resize-lvm/034-resize-lvm-scenarioe-check-lv01.png)
 
     ``` bash
     df -h mountpoint
     ```
 
-    ![scenarioe-檢查-fs01](./media/disk-encryption/resize-lvm/034-resize-lvm-scenarioe-check-fs01.png)
+    ![顯示檢查檔案系統大小之程式碼的螢幕擷取畫面。 結果會反白顯示。](./media/disk-encryption/resize-lvm/034-resize-lvm-scenarioe-check-fs01.png)
 
 3. 將新的資料磁片新增至 VM，並加以識別。
 
-    請先檢查磁片再新增磁片
+    在您新增新的磁片之前，請先檢查磁片：
 
     ``` bash
     fdisk -l | egrep ^"Disk /"
     ```
 
-    ![scenarioe-檢查-newdisk01](./media/disk-encryption/resize-lvm/035-resize-lvm-scenarioe-check-newdisk01.png)
+    ![顯示檢查磁片大小之程式碼的螢幕擷取畫面。 結果會反白顯示。](./media/disk-encryption/resize-lvm/035-resize-lvm-scenarioe-check-newdisk01.png)
 
-    請先檢查磁片再新增磁片
+    以下是在新增新磁片之前檢查磁片的另一種方式：
 
     ``` bash
     lsblk
     ```
 
-    ![scenarioe-檢查-newdisk002](./media/disk-encryption/resize-lvm/035-resize-lvm-scenarioe-check-newdisk02.png)
+    ![螢幕擷取畫面，顯示檢查磁片大小的替代程式碼。 結果會反白顯示。](./media/disk-encryption/resize-lvm/035-resize-lvm-scenarioe-check-newdisk02.png)
 
-    使用 PowerShell、Azure CLI 或 Azure 入口網站來新增磁片。 查看如何在將磁片新增至 VM 時， [連接磁片](attach-disk-portal.md) 以供參考。
+    若要新增新的磁片，您可以使用 PowerShell、Azure CLI 或 Azure 入口網站。 如需詳細資訊，請參閱 [將資料磁片連接至 LINUX VM](attach-disk-portal.md)。
 
-    在裝置的核心名稱配置之後，新的磁片磁碟機通常會被指派下一個可用的字母，在此特定案例中，會 sdd 新新增的磁片。
+    核心名稱配置會套用至新加入的裝置。 通常會將下一個可用的字母指派給新的磁片磁碟機。 在此情況下，新增的磁片為 `sdd` 。
 
-4. 新增新磁片之後，請檢查磁片
+4. 請檢查磁片以確定已新增新磁片：
 
     ``` bash
     fdisk -l | egrep ^"Disk /"
     ```
 
-    ![scenarioe-檢查-newdisk02](./media/disk-encryption/resize-lvm/036-resize-lvm-scenarioe-check-newdisk02.png)-
+    ![顯示列出磁片之程式碼的螢幕擷取畫面。 結果會反白顯示。](./media/disk-encryption/resize-lvm/036-resize-lvm-scenarioe-check-newdisk02.png)
 
     ``` bash
     lsblk
     ```
 
-    ![scenarioe-檢查-newdisk003](./media/disk-encryption/resize-lvm/036-resize-lvm-scenarioe-check-newdisk03.png)
+    ![螢幕擷取畫面，顯示輸出中新增的磁片。](./media/disk-encryption/resize-lvm/036-resize-lvm-scenarioe-check-newdisk03.png)
 
-5. 在最近新增的磁片上建立檔案系統
-
-    在/dev/disk/azure/scsi1/上將最近新增的磁片與連結的裝置進行比對
+5. 在最近新增的磁片之上建立檔案系統。 將磁片與上的連結裝置進行比對 `/dev/disk/azure/scsi1/` 。
 
     ``` bash
     ls -la /dev/disk/azure/scsi1/
     ```
 
-    ![scenarioe-檢查-newdisk03](./media/disk-encryption/resize-lvm/037-resize-lvm-scenarioe-check-newdisk03.png)
+    ![顯示建立檔案系統之程式碼的螢幕擷取畫面。 結果會反白顯示。](./media/disk-encryption/resize-lvm/037-resize-lvm-scenarioe-check-newdisk03.png)
 
     ``` bash
     mkfs.ext4 /dev/disk/azure/scsi1/${disk}
     ```
 
-    ![scenarioe-mkfs01](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-mkfs01.png)
+    ![顯示額外程式碼的螢幕擷取畫面，可建立檔案系統並將磁片與連結的裝置比對。 結果會反白顯示。](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-mkfs01.png)
 
-6. 為新新增的磁片建立新的暫存掛接點
+6. 建立新新增磁片的暫存掛接點：
 
     ``` bash
     newmount=/data4
     mkdir ${newmount}
     ```
 
-7. 將最近建立的檔案系統新增至/etc/fstab
+7. 將最近建立的檔案系統新增至 `/etc/fstab` 。
 
     ``` bash
     blkid /dev/disk/azure/scsi1/lun4| awk -F\" '{print "UUID="$2" '${newmount}' "$4" defaults,nofail 0 0"}' >> /etc/fstab
     ```
 
-8. 使用掛接掛接新建立的 fs-a
+8. 掛接新建立的檔案系統：
 
     ``` bash
     mount -a
     ```
 
-9. 確認已裝載新增的 FS
+9. 確認已裝載新的檔案系統：
 
     ``` bash
     df -h
     ```
 
-    ![調整大小-lvm-scenarioe-df](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-df.png)
+    ![顯示驗證檔案系統是否已掛接之程式碼的螢幕擷取畫面。 結果會反白顯示。](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-df.png)
 
     ``` bash
     lsblk
     ```
 
-    ![調整大小-lvm-scenarioe-lsblk](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-lsblk.png)
+    ![顯示額外程式碼的螢幕擷取畫面，以確認已掛接檔案系統。 結果會反白顯示。](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-lsblk.png)
 
-10. 重新開機先前為數據磁片磁碟機啟動的加密
+10. 重新開機您先前為數據磁片磁碟機啟動的加密。
 
-    針對 LVM Crypt，建議使用 EncryptFormatAll，否則在設定其他磁片時可能會發生雙重加密。
+    >[!TIP]
+    >針對 LVM-crypt，我們建議您使用 `EncryptFormatAll` 。 否則，您可能會在設定其他磁片時看到雙重加密。
+    >
+    >如需詳細資訊，請參閱 [在加密裝置上設定 LVM 和 RAID](how-to-configure-lvm-raid-on-crypt.md)。
 
-    如需使用方式的詳細資訊，請參閱 [在 crypt 上設定 LVM](how-to-configure-lvm-raid-on-crypt.md)。
-
-    範例：
+    以下是範例：
 
     ``` bash
     az vm encryption enable \
@@ -588,172 +586,157 @@ ms.locfileid: "91342349"
     -o table
     ```
 
-    加密完成後，您會在新加入的磁片上看到 crypt 圖層。
+    加密完成時，您會在新加入的磁片上看到 crypt 圖層：
 
     ``` bash
     lsblk
     ```
 
-    ![scenarioe-lsblk2](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-lsblk2.png)
+    ![顯示檢查 crypt 圖層之程式碼的螢幕擷取畫面。 結果會反白顯示。](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-lsblk2.png)
 
-11. 卸載新磁片的加密層
+11. 卸載新磁片的加密層：
 
     ``` bash
     umount ${newmount}
     ```
 
-12. 檢查目前的 pvs 資訊
+12. 檢查目前的 PV 資訊：
 
     ``` bash
     pvs
     ```
 
-    ![scenarioe-currentpvs](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-currentpvs.png)
+    ![顯示檢查實體磁片區相關資訊之程式碼的螢幕擷取畫面。 結果會反白顯示。](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-currentpvs.png)
 
-13. 在磁片的加密層級上建立 PV
-
-    從先前的 lsblk 命令抓取裝置名稱，並在裝置名稱前面新增/dev/mapper 以建立 pv
+13. 在磁片的加密層級上建立 PV。 從上一個命令取得裝置名稱 `lsblk` 。 `/dev/`在裝置名稱前方新增對應工具，以建立 PV：
 
     ``` bash
     pvcreate /dev/mapper/mapperdevicename
     ```
 
-    ![scenarioe-pvcreate](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-pvcreate.png)
+    ![顯示在加密層級上建立實體磁片區程式碼的螢幕擷取畫面。 結果會反白顯示。](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-pvcreate.png)
 
-    您將會看到關於抹除目前 ext4 fs 簽章的警告，這是預期的答案，此問題的答案為 y
+    您會看到關於抹除目前簽章的警告 `ext4 fs` 。 這是預期的警告。 使用來回答這個問題 `y` 。
 
-14. 確認新的 PV 已新增至 lvm 設定
+14. 確認新的 PV 已新增至 LVM 設定：
 
     ``` bash
     pvs
     ```
 
-    ![scenarioe-newpv](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-newpv.png)
+    ![顯示驗證實體磁片區是否已新增至 LVM 設定之程式碼的螢幕擷取畫面。 結果會反白顯示。](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-newpv.png)
 
-15. 將新的 PV 新增至您需要增加的 VG
+15. 將新的 PV 新增至您需要增加的 VG。
 
     ``` bash
     vgextend vgname /dev/mapper/nameofhenewpv
     ```
 
-    ![scenarioe-vgextent](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-vgextent.png)
+    ![顯示將實體磁片區新增至磁片區群組之程式碼的螢幕擷取畫面。 結果會反白顯示。](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-vgextent.png)
 
-16. 確認 VG 的新大小和可用空間
+16. 確認 VG 的新大小和可用空間：
 
     ``` bash
     vgdisplay vgname
     ```
 
-    ![scenarioe-vgdisplay](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-vgdisplay.png)
+    ![顯示驗證磁片區群組大小和可用空間的程式碼螢幕擷取畫面。 結果會反白顯示。](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-vgdisplay.png)
 
-    請注意，總 PE 計數和可用 PE/大小的增加
+    請注意 `Total PE` 計數和的增加 `Free PE / Size` 。
 
-17. 使用 lvextend 上的-r 選項來增加 lv 和檔案系統的大小 (在此範例中，我們會取得 VG 中的總可用空間，並將其新增至指定的邏輯磁片區) 
+17. 增加 LV 和檔案系統的大小。 使用 `-r` 上的選項 `lvextend` 。 在此範例中，我們會將 VG 中的總可用空間新增至指定的 LV。
 
     ``` bash
     lvextend -r -l +100%FREE /dev/vgname/lvname
     ```
 
-    ![scenarioe-lvextend](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-lvextend.png)
+    ![顯示增加本機磁片區和檔案系統大小之程式碼的螢幕擷取畫面。 結果會反白顯示。](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-lvextend.png)
 
-18. 確認 LV 的大小
+遵循後續步驟來驗證您的變更。
+
+1. 確認 LV 的大小：
 
     ``` bash
     lvdisplay /dev/vgname/lvname
     ```
 
-    ![scenarioe-lvdisplay](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-lvdisplay.png)
+    ![顯示驗證本機磁片區新大小之程式碼的螢幕擷取畫面。 結果會反白顯示。](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-lvdisplay.png)
 
-19. 確認您剛剛調整大小的檔案系統大小
+1. 確認檔案系統的新大小：
 
     ``` bash
     df -h mountpoint
     ```
 
-    ![scenarioe-df1](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-df1.png)
+    ![顯示驗證檔案系統新大小之程式碼的螢幕擷取畫面。 結果會反白顯示。](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-df1.png)
 
-20. 確認 LVM 層是在加密層級上建立的
+1. 確認 LVM 層位於加密層級之上：
 
     ``` bash
     lsblk
     ```
 
-    ![scenarioe-lsblk3](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-lsblk3.png)
+    ![螢幕擷取畫面，顯示驗證 LVM 層位於加密層上方的程式碼。 結果會反白顯示。](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-lsblk3.png)
 
-    使用沒有選項的 lsblk 會顯示掛接點多次，因為它會依裝置和邏輯磁片區排序，因此您可能會想要使用 lsblk-fs，-s 會反轉排序，因此掛接點會顯示一次，然後會多次顯示磁片。
+    如果您 `lsblk` 不使用任何選項，則會看到掛接點多次。 此命令會依裝置和 Lvs) 排序。 
+
+    您可能會想要使用 `lsblk -fs` 。 在此命令中， `-fs` 反轉排序次序，使掛接點顯示一次。 磁片會顯示多次。
 
     ``` bash
     lsblk -fs
     ```
 
-    ![scenarioe-lsblk4](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-lsblk4.png)
+    ![顯示替代程式碼的螢幕擷取畫面，可驗證 LVM 層是否位於加密層的最上層。 結果會反白顯示。](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-lsblk4.png)
 
-#### <a name="extending-an-lvm-on-crypt-volume-resizing-an-existing-pv"></a>擴充 crypt 磁片區上的 LVM 以調整現有的 PV
+#### <a name="extend-an-lvm-on-a-crypt-volume-by-resizing-an-existing-pv"></a>調整現有的 PV 以擴充 crypt 磁片區上的 LVM
 
-1. 識別您的加密磁片
+1. 識別您的加密磁片：
 
     ``` bash
     lsblk
     ```
 
-    ![scenariof-lsblk01](./media/disk-encryption/resize-lvm/039-resize-lvm-scenariof-lsblk01.png)
+    ![顯示可識別加密磁片之程式碼的螢幕擷取畫面。 結果會反白顯示。](./media/disk-encryption/resize-lvm/039-resize-lvm-scenariof-lsblk01.png)
 
     ``` bash
     lsblk -s
     ```
 
-    ![scenariof-lsblk012](./media/disk-encryption/resize-lvm/040-resize-lvm-scenariof-lsblk012.png)
+    ![顯示用來識別已加密磁片之替代程式碼的螢幕擷取畫面。 結果會反白顯示。](./media/disk-encryption/resize-lvm/040-resize-lvm-scenariof-lsblk012.png)
 
-2. 檢查您的 pv 資訊
+2. 檢查您的 PV 資訊：
 
     ``` bash
     pvs
     ```
 
-    ![scenariof-pvs1](./media/disk-encryption/resize-lvm/041-resize-lvm-scenariof-pvs.png)
+    ![顯示檢查實體磁片區資訊之程式碼的螢幕擷取畫面。 結果會反白顯示。](./media/disk-encryption/resize-lvm/041-resize-lvm-scenariof-pvs.png)
 
-3. 檢查您的 vg 資訊
+3. 檢查您的 VG 資訊：
 
     ``` bash
     vgs
     ```
 
-    ![scenariof-vgs](./media/disk-encryption/resize-lvm/042-resize-lvm-scenariof-vgs.png)
+    ![顯示檢查磁片區群組資訊之程式碼的螢幕擷取畫面。 結果會反白顯示。](./media/disk-encryption/resize-lvm/042-resize-lvm-scenariof-vgs.png)
 
-4. 檢查您的 lv 資訊
+4. 檢查您的 LV 資訊：
 
     ``` bash
     lvs
     ```
 
-    ![scenariof-lvs) ](./media/disk-encryption/resize-lvm/043-resize-lvm-scenariof-lvs.png)
+    ![顯示檢查本機磁片區資訊之程式碼的螢幕擷取畫面。 結果會反白顯示。](./media/disk-encryption/resize-lvm/043-resize-lvm-scenariof-lvs.png)
 
-5. 檢查檔案系統使用量
+5. 檢查檔案系統使用率：
 
     ``` bash
     df -h /mountpoint(s)
     ```
 
-    ![lvm-scenariof-fs](./media/disk-encryption/resize-lvm/044-resize-lvm-scenariof-fs.png)
+    ![顯示程式碼的螢幕擷取畫面，此程式碼會檢查使用的檔案系統數量。 結果會反白顯示。](./media/disk-encryption/resize-lvm/044-resize-lvm-scenariof-fs.png)
 
-6. 檢查您的磁片大小
-
-    ``` bash
-    fdisk
-    fdisk -l | egrep ^"Disk /"
-    lsblk
-    ```
-
-    ![scenariof-fdisk01](./media/disk-encryption/resize-lvm/045-resize-lvm-scenariof-fdisk01.png)
-
-7. 調整資料磁碟的大小
-
-    您可以參考 [Linux 擴充磁片](expand-disks.md) (只需要參考磁片調整大小) ，您可以使用入口網站、CLI 或 PowerShell 來執行此步驟。
-
-    >[!NOTE]
-    >請考慮在執行的 VM 上無法執行虛擬磁片上的調整大小作業。 您必須將 VM 解除配置，才能進行此步驟
-
-8. 檢查您的磁片大小
+6. 檢查您磁片的大小：
 
     ``` bash
     fdisk
@@ -761,37 +744,50 @@ ms.locfileid: "91342349"
     lsblk
     ```
 
-    ![scenariof-fdisk02](./media/disk-encryption/resize-lvm/046-resize-lvm-scenariof-fdisk02.png)
+    ![顯示檢查磁片大小之程式碼的螢幕擷取畫面。 結果會反白顯示。](./media/disk-encryption/resize-lvm/045-resize-lvm-scenariof-fdisk01.png)
 
-    請注意，在此案例中 () 兩個磁片的大小調整為 2 gb，但 FS、LV 和 PV 大小維持不變。
+7. 調整資料磁片的大小。 您可以使用入口網站、CLI 或 PowerShell。 如需詳細資訊，請參閱 [擴充 LINUX VM 上的虛擬硬碟](expand-disks.md#expand-an-azure-managed-disk)中的磁片大小調整一節。 
 
-9. 檢查目前的 pv 大小
+    >[!IMPORTANT]
+    >當 VM 正在執行時，您無法調整虛擬磁片的大小。 將您的 VM 解除配置，以進行此步驟。
 
-    請記住，在 Crypt 上，pv 是/dev/mapper/裝置，而不是/dev/sd * 裝置
+8. 檢查您的磁片大小：
+
+    ``` bash
+    fdisk
+    fdisk -l | egrep ^"Disk /"
+    lsblk
+    ```
+
+    ![顯示檢查磁片大小之程式碼的螢幕擷取畫面。 結果會反白顯示。](./media/disk-encryption/resize-lvm/046-resize-lvm-scenariof-fdisk02.png)
+
+    在此情況下，這兩個磁片的大小為 2 GB 到 4 GB。 但是檔案系統、LV 和 PV 的大小維持不變。
+
+9. 檢查目前的 PV 大小。 請記住，在 crypt 上，PV 是 `/dev/mapper/` 裝置，而不是 `/dev/sd*` 裝置。
 
     ``` bash
     pvdisplay /dev/mapper/devicemappername
     ```
 
-    ![scenariof-pvs](./media/disk-encryption/resize-lvm/047-resize-lvm-scenariof-pvs.png)
+    ![顯示檢查目前實體磁片區大小之程式碼的螢幕擷取畫面。 結果會反白顯示。](./media/disk-encryption/resize-lvm/047-resize-lvm-scenariof-pvs.png)
 
-10. 調整 pv 的大小
+10. 調整 PV 的大小：
 
     ``` bash
     pvresize /dev/mapper/devicemappername
     ```
 
-    ![scenariof-調整大小-pv](./media/disk-encryption/resize-lvm/048-resize-lvm-scenariof-resize-pv.png)
+    ![顯示調整實體磁片區之程式碼的螢幕擷取畫面。 結果會反白顯示。](./media/disk-encryption/resize-lvm/048-resize-lvm-scenariof-resize-pv.png)
 
-11. 在調整大小後檢查 pv 大小
+11. 檢查新的 PV 大小：
 
     ``` bash
     pvdisplay /dev/mapper/devicemappername
     ```
 
-    ![scenariof-pv](./media/disk-encryption/resize-lvm/049-resize-lvm-scenariof-pv.png)
+    ![顯示檢查實體磁片區大小之程式碼的螢幕擷取畫面。 結果會反白顯示。](./media/disk-encryption/resize-lvm/049-resize-lvm-scenariof-pv.png)
 
-12. 在 PV 上調整加密層的大小
+12. 在 PV 上調整加密層：
 
     ``` bash
     cryptsetup resize /dev/mapper/devicemappername
@@ -799,60 +795,60 @@ ms.locfileid: "91342349"
 
     針對您要調整大小的所有磁片套用相同的程式。
 
-13. 檢查您的 vg 資訊
+13. 檢查您的 VG 資訊：
 
     ``` bash
     vgdisplay vgname
     ```
 
-    ![scenariof-vg](./media/disk-encryption/resize-lvm/050-resize-lvm-scenariof-vg.png)
+    ![顯示檢查磁片區群組資訊之程式碼的螢幕擷取畫面。 結果會反白顯示。](./media/disk-encryption/resize-lvm/050-resize-lvm-scenariof-vg.png)
 
-    VG 現在有空間可配置給 Lvs) 
+    VG 現在有足夠的空間可配置給 Lvs) 。
 
-14. 檢查 lv 資訊
+14. 檢查 LV 資訊：
 
     ``` bash
     lvdisplay vgname/lvname
     ```
 
-    ![scenariof-lv](./media/disk-encryption/resize-lvm/051-resize-lvm-scenariof-lv.png)
+    ![顯示檢查本機磁片區資訊之程式碼的螢幕擷取畫面。 結果會反白顯示。](./media/disk-encryption/resize-lvm/051-resize-lvm-scenariof-lv.png)
 
-15. 檢查 fs 使用率
+15. 檢查檔案系統使用率：
 
     ``` bash
     df -h /mountpoint
     ```
 
-    ![scenariof-fs](./media/disk-encryption/resize-lvm/052-resize-lvm-scenariof-fs.png)
+    ![顯示檢查檔案系統使用量之程式碼的螢幕擷取畫面。 結果會反白顯示。](./media/disk-encryption/resize-lvm/052-resize-lvm-scenariof-fs.png)
 
-16. 調整 lv 的大小
+16. 調整 LV 的大小：
 
     ``` bash
     lvresize -r -L +2G /dev/vgname/lvname
     ```
 
-    ![scenariof-lvresize](./media/disk-encryption/resize-lvm/053-resize-lvm-scenariof-lvresize.png)
+    ![顯示調整本機磁片區大小之程式碼的螢幕擷取畫面。 結果會反白顯示。](./media/disk-encryption/resize-lvm/053-resize-lvm-scenariof-lvresize.png)
 
-    我們使用-r 選項也可以執行 FS 調整大小
+    在此，我們使用 `-r` 選項來調整檔案系統的大小。
 
-17. 檢查 lv 資訊
+17. 檢查 LV 資訊：
 
     ``` bash
     lvdisplay vgname/lvname
     ```
 
-    ![scenariof-lvsize](./media/disk-encryption/resize-lvm/054-resize-lvm-scenariof-lvsize.png)
+    ![顯示可取得本機磁片區相關資訊之程式碼的螢幕擷取畫面。 結果會反白顯示。](./media/disk-encryption/resize-lvm/054-resize-lvm-scenariof-lvsize.png)
 
-18. 檢查檔案系統使用量
+18. 檢查檔案系統使用率：
 
     ``` bash
     df -h /mountpoint
     ```
 
-    ![建立檔案系統](./media/disk-encryption/resize-lvm/055-resize-lvm-scenariof-fs.png)
+    ![顯示檢查檔案系統使用量之程式碼的螢幕擷取畫面。 結果會反白顯示。](./media/disk-encryption/resize-lvm/055-resize-lvm-scenariof-fs.png)
 
-    將相同的調整大小程式套用至任何其他需要它的 lv
+將相同的調整大小程式套用至任何其他需要它的 LV。
 
 ## <a name="next-steps"></a>後續步驟
 
-- [Azure 磁碟加密的疑難排解](disk-encryption-troubleshooting.md)
+[針對 Azure 磁碟加密進行疑難排解](disk-encryption-troubleshooting.md)

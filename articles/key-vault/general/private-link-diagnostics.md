@@ -7,12 +7,12 @@ ms.date: 09/30/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: faf7a6e0331e3891c2ece7461685b14e751c0894
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 52ac5b89a0c7173b9b2585f84b5f34361b4b136c
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/05/2020
-ms.locfileid: "91713050"
+ms.locfileid: "91744214"
 ---
 # <a name="diagnose-private-links-configuration-issues-on-azure-key-vault"></a>診斷 Azure Key Vault 上的私人連結設定問題
 
@@ -22,7 +22,7 @@ ms.locfileid: "91713050"
 
 如果您不熟悉這項功能，請參閱 [整合 Key Vault 與 Azure Private Link](private-link-service.md)。
 
-### <a name="symptoms-covered-by-this-article"></a>本文所涵蓋的徵兆
+### <a name="problems-covered-by-this-article"></a>本文所涵蓋的問題
 
 - 您的 DNS 查詢仍然會傳回金鑰保存庫的公用 IP 位址，而不是您預期使用私用連結功能的私人 IP 位址。
 - 使用私用連結的指定用戶端所提出的所有要求，都會因為超時或網路錯誤而失敗，而且問題不是間歇性的。
@@ -31,7 +31,7 @@ ms.locfileid: "91713050"
 - 您的金鑰保存庫有兩個私人端點。 使用其中一個的要求會正常運作，但使用其他要求的要求卻失敗。
 - 您有另一個使用私用連結的訂用帳戶、金鑰保存庫或虛擬網路。 您想要建立新的類似部署，但無法取得私人連結來運作。
 
-### <a name="symptoms-not-covered-by-this-article"></a>本文未涵蓋的徵兆
+### <a name="problems-not-covered-by-this-article"></a>本文未涵蓋的問題
 
 - 有間歇性的連線問題。 在指定的用戶端中，您會看到某些要求正在運作，而且有些無法運作。 *間歇性問題通常不是私用連結設定中的問題所造成;它們是網路或用戶端超載的符號。*
 - 您使用的 Azure 產品支援 BYOK (攜帶您自己的金鑰) 或 CMK (客戶管理的金鑰) ，且該產品無法存取您的金鑰保存庫。 *查看其他產品檔。請確定它明確指出支援啟用防火牆的金鑰保存庫。如有需要，請與該特定產品的產品支援人員聯絡。*
@@ -188,7 +188,7 @@ Linux：
 
 這並不表示從虛擬網路 *外部* 的電腦執行的要求 (，就像您剛剛使用的電腦一樣) 將會使用私人連結，而不是。 您可以看到，從主機名稱仍然解析為公用 IP 位址的事實中。 只有 *連線到虛擬網路的* 機器可以使用 private links。 接下來將會有更多相關資訊。
 
-如果您沒有看到 `privatelink` 別名，表示金鑰保存庫的狀態為零的私人端點連線 `Approved` 。 繼續閱讀這篇文章。
+如果您沒有看到 `privatelink` 別名，表示金鑰保存庫的狀態為零的私人端點連線 `Approved` 。 請在重試之前返回 [至此區段](#2-confirm-that-the-connection-is-approved-and-succeeded) 。
 
 ### <a name="key-vault-with-private-link-resolving-from-virtual-network"></a>從虛擬網路解析私用連結的金鑰保存庫
 
@@ -210,7 +210,7 @@ Linux：
     fabrikam.vault.azure.net is an alias for fabrikam.privatelink.vaultcore.azure.net.
     fabrikam.privatelink.vaultcore.azure.net has address 10.1.2.3
 
-有兩個值得注意的差異。 首先，名稱會解析為私人 IP 位址。 這必須是我們在本文 [對應章節](#find-the-key-vault-private-ip-address-in-the-virtual-network) 中找到的 IP 位址。 其次，它後面沒有其他別名 `privatelink` 。 發生這種情況是因為虛擬網路 DNS 伺服器會 *攔截* 別名鏈，而且會直接從名稱傳回私人 IP 位址 `fabrikam.privatelink.vaultcore.azure.net` 。 該專案實際上是 `A` 私人 DNS 區域中的一筆記錄。 接下來將會有更多相關資訊。
+有兩個值得注意的差異。 首先，名稱會解析為私人 IP 位址。 這必須是我們在本文 [對應章節](#find-the-key-vault-private-ip-address-in-the-virtual-network) 中找到的 IP 位址。 其次，它後面沒有其他別名 `privatelink` 。 發生這種情況是因為虛擬網路 DNS 伺服器會 *攔截* 別名鏈，並直接從名稱傳回私人 IP 位址 `fabrikam.privatelink.vaultcore.azure.net` 。 該專案實際上是 `A` 私人 DNS 區域中的一筆記錄。 接下來將會有更多相關資訊。
 
 >[!NOTE]
 > 上述結果只會發生在連線到已建立私人端點之虛擬網路的虛擬機器上。 如果您沒有部署在包含私人端點的虛擬網路中的 VM，請部署一個 VM，並從遠端連線到該 VM，然後執行 `nslookup` 命令 (Windows) 或 `host` (Linux) 的命令。
