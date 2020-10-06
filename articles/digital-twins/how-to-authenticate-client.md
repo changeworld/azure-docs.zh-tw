@@ -8,30 +8,32 @@ ms.date: 4/22/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: devx-track-js
-ms.openlocfilehash: dd0d3e462f0b2d8b525e63d65d657a8f056d01a9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 0438632a36fe14d35210cb5acb8d3a50d0f038b7
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91331857"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767826"
 ---
 # <a name="write-client-app-authentication-code"></a>撰寫用戶端應用程式驗證碼
 
 [設定 Azure 數位 Twins 實例和驗證](how-to-set-up-instance-portal.md)之後，您可以建立將用來與實例互動的用戶端應用程式。 設定好入門用戶端專案後，本文將說明 **如何在該用戶端應用程式中撰寫程式碼，以** 對 Azure 數位 Twins 實例進行驗證。
 
 本文中有兩種方法可以撰寫範例程式碼。 您可以使用最適合您的語言，視您選擇的語言而定：
-* 範例程式碼的第一個區段會使用 Azure 數位 Twins .NET (c # ) SDK。 SDK 是 Azure SDK for .NET 的一部分，位於這裡： [*適用于 .net 的 Azure IoT 數位對應項用戶端程式庫*](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)。
-* 範例程式碼的第二個部分是針對不使用 .NET SDK 的使用者，而是使用其他語言的 AutoRest 產生的 Sdk。 如需此策略的詳細資訊，請參閱作法 [*：使用 AutoRest 建立 Azure 數位 Twins 的自訂 sdk*](how-to-create-custom-sdks.md)。
+* 範例程式碼的第一個區段會使用 Azure 數位 Twins .NET (c # ) SDK。 SDK 是 Azure SDK for .NET 的一部分，位於這裡： [*適用于 .net 的 Azure IoT 數位對應項用戶端程式庫*](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)。 此外，也有支援 [JAVA](https://search.maven.org/artifact/com.azure/azure-digitaltwins-core/1.0.0-beta.1/jar ) 和 [JavaScript](https://www.npmjs.com/package/@azure/digital-twins/v/1.0.0-preview.1)的 sdk，可透過類似的方式使用。
+* 範例程式碼的第二個部分是針對未使用提供之 SDK 的使用者，改為使用 AutoRest 產生的其他語言 Sdk。 如需此策略的詳細資訊，請參閱作法 [*：使用 AutoRest 建立 Azure 數位 Twins 的自訂 sdk*](how-to-create-custom-sdks.md)。
 
 您也可以在 how [*to：使用 Azure 數位 Twins api 和 sdk*](how-to-use-apis-sdks.md)中，深入瞭解適用于 Azure 數位 Twins 的 Api 和 sdk。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 首先，請完成 how [*to：設定實例和驗證*](how-to-set-up-instance-portal.md)中的設定步驟。 這可確保您有 Azure 數位 Twins 實例、您的使用者具有存取權限，而且您已設定用戶端應用程式的許可權。 完成此設定之後，您就可以開始撰寫用戶端應用程式程式碼。
 
 若要繼續，您將需要一個用來撰寫程式碼的用戶端應用程式專案。 如果您尚未設定用戶端應用程式專案，請使用您選擇的語言建立基本專案，以搭配本教學課程使用。
 
 ## <a name="authentication-and-client-creation-net-c-sdk"></a>驗證和用戶端建立： .NET (c # ) SDK
+
+本節說明 c # 中使用所提供 .NET SDK 的範例。
 
 首先，請在您的專案中包含下列套件，以使用 .NET SDK 和驗證工具進行此操作說明：
 * `Azure.DigitalTwins.Core`
@@ -100,11 +102,11 @@ client = new DigitalTwinsClient(new Uri(adtInstanceUrl), cred, opts);
 
 ## <a name="authentication-with-an-autorest-generated-sdk"></a>使用 AutoRest 產生的 SDK 進行驗證
 
-如果您不是使用 .NET，您可以選擇以您選擇的語言建立 SDK 程式庫，如 [*如何：使用 AutoRest 建立 Azure 數位 Twins 的自訂 sdk*](how-to-create-custom-sdks.md)中所述。
+如果您未使用其中一個提供的 Sdk ( .NET、JAVA、JavaScript) ，您可以選擇以您選擇的語言建立 SDK 程式庫，如 [*如何：使用 AutoRest 建立 Azure 數位 Twins 的自訂 sdk*](how-to-create-custom-sdks.md)（英文）中所述。
 
 本節說明如何在這種情況下進行驗證。
 
-### <a name="prerequisites"></a>Prerequisites
+### <a name="prerequisites"></a>必要條件
 
 首先，您應該使用 AutoRest 中的步驟來完成建立自訂 SDK 的步驟，方法是使用 how [*to：建立適用于 Azure 數位 Twins 的自訂 sdk 和 AutoRest*](how-to-create-custom-sdks.md)。
 

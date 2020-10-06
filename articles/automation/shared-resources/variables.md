@@ -3,14 +3,14 @@ title: 管理 Azure 自動化中的變數
 description: 本文說明如何在 Runbook 和 DSC 組態中使用變數。
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 09/10/2020
+ms.date: 10/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: 300bfa2ed801b810bcaaeb5bc4d04775d590015b
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: 4749fcb6698ff1716f2cae257cc0efad458bf9a9
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90004557"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91766198"
 ---
 # <a name="manage-variables-in-azure-automation"></a>管理 Azure 自動化中的變數
 
@@ -43,7 +43,7 @@ Azure 自動化會安全地儲存每個加密變數。 當您建立變數時，�
 
 變數不會受限於指定的資料類型。 如果您想要指定不同類型的值，必須使用 Windows PowerShell 來設定變數。 如果您指出 `Not defined`，變數的值會設定為 Null。 您必須使用 [Set-AzAutomationVariable](/powershell/module/az.automation/set-azautomationvariable) Cmdlet 或內部 `Set-AutomationVariable` Cmdlet 來設定此值。
 
-您無法使用 Azure 入口網站來建立或變更複雜變數類型的值。 不過，您可以使用 Windows PowerShell 提供任何類型的值。 複雜類型會擷取為 [PSCustomObject](/dotnet/api/system.management.automation.pscustomobject)。
+您無法使用 Azure 入口網站來建立或變更複雜變數類型的值。 不過，您可以使用 Windows PowerShell 提供任何類型的值。 複雜類型會以Newtonsoft.Js的形式抓取 [ 。](https://www.newtonsoft.com/json/help/html/N_Newtonsoft_Json_Linq.htm) 複雜物件類型的 JProperty，而不是 PSObject 類型 [PSCustomObject](/dotnet/api/system.management.automation.pscustomobject)。
 
 您可以藉由建立陣列或雜湊表，並將它儲存到變數中，來儲存多個值到單一變數。
 
@@ -56,7 +56,7 @@ Azure 自動化會安全地儲存每個加密變數。 當您建立變數時，�
 
 | Cmdlet | 描述 |
 |:---|:---|
-|[Get-AzAutomationVariable](/powershell/module/az.automation/get-azautomationvariable) | 擷取現有變數的值。 如果值為簡單類型，則會擷取該相同的類型。 如果其為複雜類型，則會擷取 `PSCustomObject` 類型。 <br>**注意：** 您無法使用這個 Cmdlet 來擷取加密變數的值。 若要這麼做，唯一的方法是在 Runbook 或 DSC 組態中使用內部 `Get-AutomationVariable` Cmdlet。 請參閱[存取變數的內部 Cmdlet](#internal-cmdlets-to-access-variables)。 |
+|[Get-AzAutomationVariable](/powershell/module/az.automation/get-azautomationvariable) | 擷取現有變數的值。 如果值為簡單類型，則會擷取該相同的類型。 如果其為複雜類型，則會擷取 `PSCustomObject` 類型。 <br>**注意：** 您無法使用這個 Cmdlet 來取出加密變數的值。 若要這麼做，唯一的方法是在 Runbook 或 DSC 組態中使用內部 `Get-AutomationVariable` Cmdlet。 請參閱[存取變數的內部 Cmdlet](#internal-cmdlets-to-access-variables)。 |
 |[New-AzAutomationVariable](/powershell/module/az.automation/new-azautomationvariable) | 建立新的變數並設定其值。|
 |[Remove-AzAutomationVariable](/powershell/module/az.automation/remove-azautomationvariable)| 移除現有的變數。|
 |[Set-AzAutomationVariable](/powershell/module/az.automation/set-azautomationvariable)| 設定現有的變數的值。 |
@@ -74,7 +74,7 @@ Azure 自動化會安全地儲存每個加密變數。 當您建立變數時，�
 > 避免在 Runbook 或 DSC 組態中，`Get-AutomationVariable` 的 `Name` 參數中使用變數。 使用變數可能會在設計階段將 Runbook 和自動化變數之間的相依性探索複雜化。
 
 `Get-AutomationVariable` 無法在 PowerShell 中運作，但只能在 Runbook 或 DSC 組態中使用。 例如，若要查看加密變數的值，您可以建立 Runbook 來取得該變數，然後將其寫入輸出資料流：
- 
+
 ```powershell
 $mytestencryptvar = Get-AutomationVariable -Name TestVariable
 Write-output "The encrypted value of the variable is: $mytestencryptvar"
@@ -123,18 +123,18 @@ $string = (Get-AzAutomationVariable -ResourceGroupName "ResourceGroup01" `
 –AutomationAccountName "MyAutomationAccount" –Name 'MyStringVariable').Value
 ```
 
-下列範例示範如何建立具有複雜類型的變數，然後擷取其屬性。 在此情況下，會使用來自 [Get-AzVM](/powershell/module/Az.Compute/Get-AzVM) 的虛擬機器物件。
+下列範例示範如何建立具有複雜類型的變數，然後擷取其屬性。 在此情況下，會使用 [new-azvm](/powershell/module/Az.Compute/Get-AzVM) 中的虛擬機器物件來指定其屬性的子集。
 
 ```powershell
-$vm = Get-AzVM -ResourceGroupName "ResourceGroup01" –Name "VM01"
-New-AzAutomationVariable –AutomationAccountName "MyAutomationAccount" –Name "MyComplexVariable" –Encrypted $false –Value $vm
+$vm = Get-AzVM -ResourceGroupName "ResourceGroup01" –Name "VM01" | Select Name, Location, Extensions
+New-AzAutomationVariable -ResourceGroupName "ResourceGroup01" –AutomationAccountName "MyAutomationAccount" –Name "MyComplexVariable" –Encrypted $false –Value $vm
 
-$vmValue = (Get-AzAutomationVariable -ResourceGroupName "ResourceGroup01" `
-–AutomationAccountName "MyAutomationAccount" –Name "MyComplexVariable").Value
+$vmValue = Get-AzAutomationVariable -ResourceGroupName "ResourceGroup01" `
+–AutomationAccountName "MyAutomationAccount" –Name "MyComplexVariable"
+
 $vmName = $vmValue.Name
-$vmIpAddress = $vmValue.IpAddress
+$vmExtensions = $vmValue.Extensions
 ```
-
 ## <a name="textual-runbook-examples"></a>文字式 Runbook 範例
 
 ### <a name="retrieve-and-set-a-simple-value-from-a-variable"></a>從變數擷取及設定簡單值

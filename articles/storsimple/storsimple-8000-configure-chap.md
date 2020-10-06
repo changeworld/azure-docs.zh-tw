@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: TBD
 ms.date: 05/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 5f0c022de69823aedbbb34eb369de350b4999c69
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 694d63dacedd8ffcd075e73bb91b5ab0a089b58c
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514348"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91766503"
 ---
 # <a name="configure-chap-for-your-storsimple-device"></a>為 StorSimple 裝置設定 CHAP
 
@@ -58,8 +58,8 @@ CHAP 代表 Challenge Handshake 驗證通訊協定。 它是伺服器用來驗�
    
    3. 確認密碼。
 
-       ![CHAP 啟動器](./media/storsimple-8000-configure-chap/configure-chap6.png)
-3. 按一下 [檔案] 。 隨即顯示確認訊息。 按一下 [確定]**** 儲存變更。
+       ![CHAP 啟動器2](./media/storsimple-8000-configure-chap/configure-chap6.png)
+3. 按一下 [檔案] 。 隨即顯示確認訊息。 按一下 [確定] 以儲存變更。
 
 #### <a name="to-configure-one-way-authentication-on-the-windows-host-server"></a>在 Windows 主機伺服器上設定單向驗證
 1. 在 Windows 主機伺服器上啟動 iSCSI 啟動器。
@@ -72,7 +72,7 @@ CHAP 代表 Challenge Handshake 驗證通訊協定。 它是伺服器用來驗�
 3. 在 [探索目標入口網站]**** 對話方塊中：
    
    1. 指定裝置的 IP 位址。
-   2. 按一下 [進階]****。
+   2. 按一下 **[進階]** 。
       
        ![探索目標入口網站](./media/storsimple-configure-chap/IC740945.png)
 4. 在 [進階設定]**** 對話方塊中：
@@ -80,7 +80,7 @@ CHAP 代表 Challenge Handshake 驗證通訊協定。 它是伺服器用來驗�
    1. 選取 [啟用 CHAP 登入]**** 核取方塊。
    2. 在 [名稱]**** 欄位中，提供您在 Azure 入口網站中指定給 CHAP 啟動器的使用者名稱。
    3. 在 [目標密碼]**** 欄位中，提供您在 Azure 入口網站中指定給 CHAP 啟動器的密碼。
-   4. 按一下 [確定]。
+   4. 按一下 [確定]  。
       
        ![進階設定 - 一般](./media/storsimple-configure-chap/IC740946.png)
 5. 在 [iSCSI 啟動器屬性]**** 視窗的 [目標]**** 索引標籤上，裝置狀態應該會顯示為 [已連線]****。 如果您使用 StorSimple 1200 裝置，則每個磁碟區會掛接為 iSCSI 目標。 因此，需要對每個磁碟區重複執行步驟 3-4。
@@ -112,8 +112,8 @@ CHAP 代表 Challenge Handshake 驗證通訊協定。 它是伺服器用來驗�
    2. 提供裝置的 [密碼] **** 。
    3. 確認密碼。
 
-       ![CHAP 啟動器](./media/storsimple-8000-configure-chap/configure-chap11.png)
-4. 按一下 [檔案] 。 隨即顯示確認訊息。 按一下 [確定]**** 儲存變更。
+       ![CHAP 啟動器3](./media/storsimple-8000-configure-chap/configure-chap11.png)
+4. 按一下 [檔案] 。 隨即顯示確認訊息。 按一下 [確定] 以儲存變更。
 
 #### <a name="to-configure-bidirectional-authentication-on-the-windows-host-server"></a>在 Windows 主機伺服器上設定雙向驗證
 
@@ -123,11 +123,11 @@ CHAP 代表 Challenge Handshake 驗證通訊協定。 它是伺服器用來驗�
 4. 在 [iSCSI 啟動器相互 CHAP 密碼]**** 對話方塊中：
    
    1. 輸入您在 Azure 入口網站中設定的 [反向 CHAP 密碼]****。
-   2. 按一下 [確定]。
+   2. 按一下 [確定]  。
       
        ![iSCSI 啟動器相互 CHAP 密碼](./media/storsimple-configure-chap/IC740949.png)
 5. 按一下 [目標]**** 索引標籤。
-6. 按一下 [連線] 按鈕。 
+6. 按一下 [連接] 按鈕。 
 7. 在 [連接到目標]**** 對話方塊中，按一下 [進階]****。
 8. 在 [進階屬性]**** 對話方塊中：
    
@@ -160,7 +160,7 @@ CHAP 代表 Challenge Handshake 驗證通訊協定。 它是伺服器用來驗�
 #### <a name="to-verify-your-chap-configuration"></a>驗證 CHAP 設定
 1. 按一下 [我的最愛目標]****。
 2. 選取您已啟用驗證的目標。
-3. 按一下 [詳細資料]****。
+3. 按一下 [詳細資訊] 。
    
     ![iSCSI 啟動器屬性 - 我的最愛目標](./media/storsimple-configure-chap/IC740951.png)
 4. 在 [我的最愛目標詳細資料]**** 對話方塊中，記下 [驗證]**** 欄位中的項目。 如果設定成功，則會顯示為 [CHAP]****。

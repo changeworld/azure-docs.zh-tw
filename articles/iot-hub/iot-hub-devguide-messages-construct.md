@@ -11,12 +11,12 @@ ms.author: asrastog
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: dd2b88d923d0398dc42362242b94b978ccd24252
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 06db7b46d095a79177b80bba6df3d5e9aadad16b
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87336713"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91766977"
 ---
 # <a name="create-and-read-iot-hub-messages"></a>建立及讀取 IoT 中樞訊息
 
@@ -61,8 +61,8 @@ IoT 中樞的裝置對雲端傳訊具有下列特性：
 | iothub-connection-module-id |由 IoT 中樞在裝置到雲端訊息上設定的識別碼。 包含傳送訊息之裝置的 **moduleId** 。 | 否 | connectionModuleId |
 | iothub-connection-auth-generation-id |由 IoT 中樞在裝置到雲端訊息上設定的識別碼。 包含傳送訊息之裝置的 **connectionDeviceGenerationId** (依據[裝置身分識別屬性](iot-hub-devguide-identity-registry.md#device-identity-properties))。 | 否 |connectionDeviceGenerationId |
 | iothub-connection-auth-method |由 IoT 中樞在裝置到雲端訊息上設定的驗證方法。 這個屬性包含用來驗證傳送訊息之裝置的驗證方法的相關資訊。| 否 | connectionAuthMethod |
-| dt-dataschema | 此值是由 IoT 中樞在裝置到雲端訊息上設定。 其中包含裝置連接中設定的裝置型號識別碼。 這項功能可做為[IoT 隨插即用公開預覽](../iot-pnp/overview-iot-plug-and-play.md)的一部分。 | 否 | 不適用 |
-| dt-主旨 | 傳送裝置到雲端訊息的元件名稱。 這項功能可做為[IoT 隨插即用公開預覽](../iot-pnp/overview-iot-plug-and-play.md)的一部分。 | 是 | N/A |
+| dt-dataschema | 此值是由 IoT 中樞在裝置到雲端訊息上設定的。 它包含裝置連線中所設定的裝置型號識別碼。 | 否 | N/A |
+| dt-subject | 傳送裝置到雲端訊息的元件名稱。 | 是 | N/A |
 
 ## <a name="system-properties-of-c2d-iot-hub-messages"></a>**C2D** IoT 中樞訊息的系統屬性
 
@@ -90,10 +90,10 @@ IoT 中樞的裝置對雲端傳訊具有下列特性：
 |Connection auth method|iothub-connection-auth-method|connectionAuthMethod|iothub-connection-auth-method|iothub-connection-auth-method|
 |ContentType|Content-Type|ContentType|ContentType|iothub-content-type|
 |contentEncoding|content-encoding|contentEncoding|ContentEncoding|iothub-content-encoding|
-|iothub-enqueuedtime|iothub-enqueuedtime|enqueuedTime| 不適用 |iothub-enqueuedtime|
+|iothub-enqueuedtime|iothub-enqueuedtime|enqueuedTime| N/A |iothub-enqueuedtime|
 |CorrelationId|correlation-id|correlationId|CorrelationId|correlation-id|
 |dt-dataschema|dt-dataschema|dt-dataschema|dt-dataschema|dt-dataschema|
-|dt-主旨|dt-主旨|dt-主旨|dt-主旨|dt-主旨|
+|dt-subject|dt-subject|dt-subject|dt-subject|dt-subject|
 
 ## <a name="message-size"></a>訊息大小
 

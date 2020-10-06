@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 5/12/2020
-ms.openlocfilehash: b47ab44c5a5f8faad85b60032a6781475235a170
-ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
+ms.openlocfilehash: 12623dccdc298aaad23ad6779caf33d895c5634a
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83402254"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91766134"
 ---
 # <a name="monitor-azure-database-for-mysql-performance-with-query-store"></a>使用查詢存放區監視適用於 MySQL 的 Azure 資料庫效能
 
@@ -108,7 +108,7 @@ SELECT * FROM mysql.query_store_wait_stats;
 
 ## <a name="views-and-functions"></a>檢視和函式
 
-使用下列檢視和函式來檢視和管理查詢存放區。 [選取權限公用角色](howto-create-users.md#how-to-create-additional-admin-users-in-azure-database-for-mysql)中的任何人都可以使用這些檢視，查看查詢存放區中的資料。 這些檢視僅適用於 **mysql** 資料庫。
+使用下列檢視和函式來檢視和管理查詢存放區。 [選取權限公用角色](howto-create-users.md#to-create-additional-admin-users-in-azure-database-for-mysql)中的任何人都可以使用這些檢視，查看查詢存放區中的資料。 這些檢視僅適用於 **mysql** 資料庫。
 
 移除常值和常數之後，查看查詢結構，其會呈現標準化。 如果兩個查詢完全相同 (但常值除外)，則兩者會有相同的雜湊碼。
 

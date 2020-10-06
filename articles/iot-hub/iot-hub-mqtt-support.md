@@ -13,12 +13,12 @@ ms.custom:
 - 'Role: IoT Device'
 - 'Role: Cloud Development'
 - contperfq1
-ms.openlocfilehash: 0a5cf5ad4a7cbf7d732d1fafdcafd434cba20d13
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.openlocfilehash: 720d8f3b1f3d13427cda56ee68596d190ac40dc7
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91664931"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767324"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>使用 MQTT 通訊協定來與 IoT 中樞通訊
 
@@ -119,7 +119,7 @@ device_client = IoTHubDeviceClient.create_from_connection_string(deviceConnectio
 
 * DeviceTwinMQTTWin32：包含程式碼，可查詢和訂閱 Windows 機器上 Azure IoT 中樞內裝置的裝置對應項事件。
 
-* PnPMQTTWin32：包含程式碼，可利用 IoT 隨插即用預覽裝置功能，將遙測訊息傳送至在 Windows 電腦上建置和執行的 Azure IoT 中樞。 您可以深入瞭解 [IoT 即插 & Play](https://docs.microsoft.com/azure/iot-pnp/overview-iot-plug-and-play)
+* PnPMQTTWin32：包含程式碼，可將具有 IoT 隨插即用裝置功能的遙測訊息傳送至 Azure IoT 中樞，並在 Windows 電腦上建立和執行。 您可以進一步瞭解 [IoT 隨插即用](https://docs.microsoft.com/azure/iot-pnp/overview-iot-plug-and-play)
 
 **若為 Linux：**
 

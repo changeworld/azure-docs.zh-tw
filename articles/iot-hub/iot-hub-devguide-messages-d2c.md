@@ -11,12 +11,12 @@ ms.author: asrastog
 ms.custom:
 - 'Role: Cloud Development'
 - devx-track-csharp
-ms.openlocfilehash: a451e13b39aea27b4f1e23f9faa30f4b11c1cff1
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 256ede9471f3e889dcce9415a6728414b5ab5f75
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021233"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91766938"
 ---
 # <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>使用 IoT 中樞訊息路由將裝置到雲端訊息傳送至不同的端點
 
@@ -126,7 +126,7 @@ public void ListBlobsInContainer(string containerName, string iothub)
 
 ## <a name="non-telemetry-events"></a>非遙測事件
 
-除了裝置遙測之外，訊息路由也可讓您在公開預覽)  (傳送裝置對應項變更事件、裝置生命週期事件和數位對應項變更事件。 例如，如果隨同設定為**裝置對應項變更事件**的資料來源建立路由，IoT 中樞會將訊息傳送至包含裝置對應項變更的端點。 同樣地，如果建立的路由會將資料來源設定為 **裝置生命週期事件**，IoT 中樞就會傳送一則訊息，指出裝置是否已刪除或已建立。 最後，在 [IoT 隨插即用公開預覽](../iot-pnp/overview-iot-plug-and-play.md)的過程中，開發人員可以建立資料來源設定為數字對應項 **變更事件** 的路由，而 IoT 中樞會在每次設定或變更數位對應項 [屬性](../iot-pnp/iot-plug-and-play-glossary.md) 時傳送訊息、取代 [數位](../iot-pnp/iot-plug-and-play-glossary.md) 對應項，或在基礎裝置對應項發生變更事件時傳送訊息。
+除了裝置遙測之外，訊息路由還可讓您傳送裝置對應項變更事件、裝置生命週期事件和數位對應項變更事件。 例如，如果隨同設定為**裝置對應項變更事件**的資料來源建立路由，IoT 中樞會將訊息傳送至包含裝置對應項變更的端點。 同樣地，如果建立的路由會將資料來源設定為 **裝置生命週期事件**，IoT 中樞就會傳送一則訊息，指出裝置是否已刪除或已建立。 最後，在 [IoT 隨插即用](../iot-pnp/overview-iot-plug-and-play.md)過程中，開發人員可以建立資料來源設定為數字對應項 **變更事件** 的路由，而 IoT 中樞會在每次設定或變更數位對應項 [屬性](../iot-pnp/iot-plug-and-play-glossary.md) 時傳送訊息、取代 [數位](../iot-pnp/iot-plug-and-play-glossary.md) 對應項，或在基礎裝置對應項發生變更事件時傳送訊息。
 
 [IoT 中樞也會與 Azure 事件方格整合](iot-hub-event-grid.md) ，以發佈裝置事件，以支援以這些事件為基礎的即時整合和自動化工作流程。 請參閱[訊息路由與事件格線之間的關鍵差異](iot-hub-event-grid-routing-comparison.md)了解何者最適合您的情況。
 

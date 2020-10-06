@@ -3,61 +3,24 @@ title: 管理 Azure 自動化執行身分帳戶
 description: 本文說明如何使用 PowerShell 或從 Azure 入口網站管理您的執行身分帳戶。
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 06/26/2020
+ms.date: 09/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: cb804b21d6f5312c13bfdbf7b0fc0404961ba1e3
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: 3357cb40ff476a3cc0bce259930068aeccf2c10c
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90005729"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767406"
 ---
 # <a name="manage-an-azure-automation-run-as-account"></a>管理 Azure 自動化執行身分帳戶
 
-Azure 自動化中的執行身分帳戶可提供驗證，以使用 Azure Cmdlet 來管理 Azure 中的資源。 當您建立執行身分帳戶時，其會在 Azure Active Directory (AD) 中建立新的服務主體使用者，並在訂用帳戶層級將參與者角色指派給這位使用者。
+Azure 自動化中的執行身份帳戶提供使用自動化 runbook 和其他自動化功能來管理 Azure Resource Manager 或 Azure 傳統部署模型上資源的驗證。 本文提供如何管理執行身份或傳統執行帳戶的指引。
 
-## <a name="types-of-run-as-accounts"></a>執行身分帳戶的類型
+若要深入瞭解與程式自動化案例相關的 Azure 自動化帳戶驗證和指引，請參閱 [自動化帳戶驗證總覽](automation-security-overview.md)。
 
-Azure 自動化使用兩種類型的執行身分帳戶：
-
-* Azure 執行身分帳戶
-* Azure 傳統執行身分帳戶
-
->[!NOTE]
->Azure 雲端方案提供者 (CSP) 訂用帳戶僅支援 Azure Resource Manager 模型。 非 Azure Resource Manager 服務不在方案中。 當您使用 CSP 訂用帳戶時，並不會建立 Azure 傳統執行身分帳戶，但會建立 Azure 執行身分帳戶。 若要深入了解 CSP 訂用帳戶，請參閱 [CSP 訂用帳戶中可用的服務](/azure/cloud-solution-provider/overview/azure-csp-available-services)。
-
-執行身分帳戶的服務主體依預設並沒有讀取 Azure AD 的權限。 如果您想要新增讀取或管理 Azure AD 的權限，您必須在 [API 權限] 下授與服務主體的權限。 若要深入瞭解，請參閱 [新增許可權以存取您的 WEB API](../active-directory/develop/quickstart-configure-app-access-web-apis.md#add-permissions-to-access-your-web-api)。
-
-### <a name="run-as-account"></a>執行身分帳戶
-
-執行身分帳戶會管理 [Resource Manager 部署模型](../azure-resource-manager/management/deployment-models.md)資源。 其會執行下列步驟。
-
-* 建立可使用自我簽署憑證或企業憑證的公開金鑰進行匯出的 Azure AD 應用程式、建立此應用程式在 Azure AD 中的服務主體帳戶，並在目前的訂用帳戶中為此帳戶指派參與者角色。 您可以將憑證設定變更為擁有者或任何其他角色。 如需詳細資訊，請參閱 [Azure 自動化中的角色型存取控制](automation-role-based-access-control.md)。
-
-* 在指定的自動化帳戶中，建立名為 `AzureRunAsCertificate` 的自動化憑證資產。 憑證資產會保存 Azure AD 應用程式所使用的憑證私密金鑰。
-
-* 在指定的自動化帳戶中，建立名為 `AzureRunAsConnection` 的自動化連線資產。 連線資產會保存應用程式識別碼、租用戶識別碼、訂閱識別碼，以及憑證指紋。
-
-### <a name="azure-classic-run-as-account"></a>Azure 傳統執行身分帳戶
-
-Azure 傳統執行身分帳戶會管理[傳統部署模型](../azure-resource-manager/management/deployment-models.md)資源。 您必須是訂用帳戶的共同管理員，才能建立或更新這類型的帳戶。
-
-Azure 傳統執行身分帳戶會執行下列工作。
-
-  * 在訂用帳戶中建立管理憑證。
-
-  * 在指定的自動化帳戶中，建立名為 `AzureClassicRunAsCertificate` 的自動化憑證資產。 憑證資產會保存管理憑證所使用的憑證私密金鑰。
-
-  * 在指定的自動化帳戶中，建立名為 `AzureClassicRunAsConnection` 的自動化連線資產。 連線資產會保存訂用帳戶名稱、訂用帳戶識別碼，以及憑證資產名稱。
-
->[!NOTE]
->當您建立自動化帳戶時，依預設並不會建立 Azure 傳統執行身分帳戶。 此帳戶會依照本文稍後說明的步驟個別建立。
-
-## <a name="obtain-run-as-account-permissions"></a><a name="permissions"></a>取得執行身分帳戶權限
+## <a name="run-as-account-permissions"></a><a name="permissions"></a>執行身份帳戶許可權
 
 本節將定義一般執行身分帳戶和傳統執行身分帳戶的權限。
-
-### <a name="get-permissions-to-configure-run-as-accounts"></a>取得設定執行身分帳戶的權限
 
 若要建立或更新執行身分帳戶，您必須擁有特定的權限和使用權限。 Azure Active Directory 中的應用程式系統管理員和訂用帳戶中的擁有者可以完成所有工作。 針對有劃分職責的情況，下表顯示工作、對等的 Cmdlet 及所需權限的清單：
 
@@ -74,7 +37,7 @@ Azure 傳統執行身分帳戶會執行下列工作。
 
 如果您在被新增至訂用帳戶的全域管理員角色之前，並非訂用帳戶 Active Directory 執行個體的成員，系統就會將您新增為來賓。 在此情況下，您會在 `You do not have permissions to create…` [ **新增自動化帳戶** ] 頁面上收到警告。
 
-如果您是指派全域管理員角色時訂用帳戶 Active Directory 實例的成員，您也可以在 `You do not have permissions to create…` [ **新增自動化帳戶** ] 頁面上收到警告。 在此情況下，您可以要求從訂用帳戶的 Active Directory 執行個體中移除，然後要求重新新增，以便成為 Active Directory 的完整使用者。
+如果您是指派全域管理員角色之訂用帳戶 Active Directory 實例的成員，您也可以在 `You do not have permissions to create…` [ **新增自動化帳戶** ] 頁面上收到警告。 在此情況下，您可以要求從訂用帳戶的 Active Directory 執行個體中移除，然後要求重新新增，以便成為 Active Directory 的完整使用者。
 
 若要確認產生錯誤訊息的情況已修正：
 
@@ -83,7 +46,7 @@ Azure 傳統執行身分帳戶會執行下列工作。
 3. 選擇您的名稱，然後選取 [設定檔]。
 4. 確定您的使用者設定檔下的 [使用者類型] 屬性值未設定為 [來賓]。
 
-### <a name="get-permissions-to-configure-classic-run-as-accounts"></a><a name="permissions-classic"></a>取得設定傳統執行身分帳戶的權限
+### <a name="permissions-required-to-create-or-manage-classic-run-as-accounts"></a><a name="permissions-classic"></a>建立或管理傳統執行身份帳戶所需的許可權
 
 若要設定或更新傳統執行身分帳戶，您必須具有訂用帳戶層級的共同管理員角色。 若要深入了解傳統訂用帳戶權限，請參閱 [Azure 傳統訂用帳戶管理員](../role-based-access-control/classic-administrators.md#add-a-co-administrator)。
 
@@ -97,17 +60,87 @@ Azure 傳統執行身分帳戶會執行下列工作。
 
 3. 在 [自動化帳戶] 頁面上，從清單中選取您的自動化帳戶。
 
-4. 在左窗格的 [帳戶設定] 區段中，選取 [執行身分帳戶]。
+4. 在左窗格中，選取 [**帳戶設定**] 區段中的 [**執行身份帳戶**]。
 
-5. 根據您所需的帳戶，選取 [Azure 執行身分帳戶] 或 [Azure 傳統執行身分帳戶]。
+    :::image type="content" source="media/manage-runas-account/automation-account-properties-pane.png" alt-text="選取 [執行身份帳戶] 選項。":::
 
-6. 根據涉及的帳戶，使用 [新增 Azure 執行身分] 或 [新增 Azure 傳統執行身分帳戶] 窗格。 在檢閱概觀資訊後，按一下 [建立]。
+5. 根據您所需的帳戶，使用 [ **+ Azure 執行帳戶** ] 或 [ **+ Azure 傳統執行帳戶** ] 窗格。 在檢閱概觀資訊後，按一下 [建立]。
 
-7. 在 Azure 建立執行身分帳戶時，您可以在功能表的 [通知]  底下追蹤進度。 橫幅也會顯示說明帳戶正在建立。 此程序需要數分鐘的時間完成。
+    :::image type="content" source="media/manage-runas-account/automation-account-create-runas.png" alt-text="選取 [執行身份帳戶] 選項。":::
+
+6. 在 Azure 建立執行身分帳戶時，您可以在功能表的 [通知]  底下追蹤進度。 橫幅也會顯示說明帳戶正在建立。 此程序需要數分鐘的時間完成。
+
+## <a name="create-a-run-as-account-using-powershell"></a>使用 PowerShell 建立執行身分帳戶
+
+下列清單提供在 PowerShell 中使用提供的腳本建立執行身份帳戶的需求。 這些需求適用於這兩種類型的執行身分帳戶。
+
+* 具有 Azure Resource Manager 模組 3.4.1 和更新版本的 Windows 10 或 Windows Server 2016。 PowerShell 指令碼不支援舊版 Windows。
+* Azure PowerShell PowerShell 6.2.4 或更新版本。 如需詳細資訊，請參閱 [如何安裝和設定 Azure PowerShell](/powershell/azure/install-az-ps)。
+* 自動化帳戶，系統會將其參照為 `AutomationAccountName` 和 `ApplicationDisplayName` 參數的值。
+* 權限相當於[設定執行身分帳戶的必要權限](#permissions)中所列的權限。
+
+若要取得 `AutomationAccountName` 、 `SubscriptionId` 和 `ResourceGroupName` （這些是 PowerShell 腳本所需的參數）的值，請完成下列步驟。
+
+1. 在 Azure 入口網站中，選取 [自動化帳戶]。
+
+1. 在 [自動化帳戶] 頁面上，選取 [自動化帳戶]。
+
+1. 在 [帳戶設定] 區段中，選取 [屬性]。
+
+1. 請注意 [**屬性**] 頁面上的 [**名稱**]、[訂用帳戶**識別碼**] 和 [**資源群組**] 的值。
+
+   ![自動化帳戶的屬性頁面](media/manage-runas-account/automation-account-properties.png)
+
+### <a name="powershell-script-to-create-a-run-as-account"></a>用來建立執行身分帳戶的 PowerShell 指令碼
+
+PowerShell 腳本包含數個設定的支援。
+
+* 使用自我簽署憑證建立執行身分帳戶。
+* 使用自我簽署憑證建立執行身分帳戶和傳統執行身分帳戶。
+* 使用企業憑證授權單位 (CA) 所核發的憑證，來建立執行身分帳戶和傳統執行身分帳戶。
+* 在 Azure Government 雲端中，使用自我簽署憑證建立執行身分帳戶和傳統執行身分帳戶。
+
+1. 使用下列命令，下載並將腳本儲存至本機資料夾。
+
+    ```powershell
+    wget https://raw.githubusercontent.com/azureautomation/runbooks/master/Utility/AzRunAs/Create-RunAsAccount.ps1 -outfile Create-RunAsAccount.ps1
+    ```
+
+2. 使用提升的使用者權限啟動 PowerShell，並流覽至包含腳本的資料夾。
+
+3. 執行下列其中一個命令，根據您的需求建立執行身份和（或）傳統執行身份帳戶。
+
+    * 使用自我簽署憑證建立執行帳戶。
+
+        ```powershell
+        .\Create-RunAsAccount.ps1 -ResourceGroup <ResourceGroupName> -AutomationAccountName <NameofAutomationAccount> -SubscriptionId <SubscriptionId> -ApplicationDisplayName <DisplayNameofAADApplication> -SelfSignedCertPlainPassword <StrongPassword> -CreateClassicRunAsAccount $false
+        ```
+
+    * 使用自我簽署憑證建立執行身分帳戶和傳統執行身分帳戶。
+
+        ```powershell
+        .\Create-RunAsAccount.ps1 -ResourceGroup <ResourceGroupName> -AutomationAccountName <NameofAutomationAccount> -SubscriptionId <SubscriptionId> -ApplicationDisplayName <DisplayNameofAADApplication> -SelfSignedCertPlainPassword <StrongPassword> -CreateClassicRunAsAccount $true
+        ```
+
+    * 使用企業憑證建立執行身分帳戶和傳統執行身分帳戶。
+
+        ```powershell
+        .\Create-RunAsAccount.ps1 -ResourceGroup <ResourceGroupName> -AutomationAccountName <NameofAutomationAccount> -SubscriptionId <SubscriptionId> -ApplicationDisplayName <DisplayNameofAADApplication>  -SelfSignedCertPlainPassword <StrongPassword> -CreateClassicRunAsAccount $true -EnterpriseCertPathForRunAsAccount <EnterpriseCertPfxPathForRunAsAccount> -EnterpriseCertPlainPasswordForRunAsAccount <StrongPassword> -EnterpriseCertPathForClassicRunAsAccount <EnterpriseCertPfxPathForClassicRunAsAccount> -EnterpriseCertPlainPasswordForClassicRunAsAccount <StrongPassword>
+        ```
+
+        如果您使用企業公開憑證 ( .cer 檔案) 建立了傳統執行身分帳戶，請使用此憑證。 腳本會在您 `%USERPROFILE%\AppData\Local\Temp` 用來執行 PowerShell 會話的使用者設定檔下，建立並將它儲存到您電腦上的 [暫存檔案] 資料夾中。 請參閱[將管理 API 憑證上傳至 Azure 入口網站](../cloud-services/cloud-services-configure-ssl-certificate-portal.md)。
+
+    * 在 Azure Government 雲端中，使用自我簽署憑證建立執行身分帳戶和傳統執行身分帳戶
+
+        ```powershell
+        .\Create-RunAsAccount.ps1 -ResourceGroup <ResourceGroupName> -AutomationAccountName <NameofAutomationAccount> -SubscriptionId <SubscriptionId> -ApplicationDisplayName <DisplayNameofAADApplication> -SelfSignedCertPlainPassword <StrongPassword> -CreateClassicRunAsAccount $true -EnvironmentName AzureUSGovernment
+        ```
+
+4. 指令碼執行之後，系統會提您向 Azure 進行驗證。 使用屬於訂用帳戶系統管理員角色成員的帳戶登入。 如果您要建立傳統執行身分帳戶，您的帳戶必須是訂用帳戶的共同管理員。
 
 ## <a name="delete-a-run-as-or-classic-run-as-account"></a>刪除執行身分或傳統執行身分帳戶
 
-本節說明如何刪除執行身分或傳統執行身分帳戶。 當您執行此動作時，系統不會保留自動化帳戶。 刪除帳戶後，您可以在 Azure 入口網站中重新加以建立。
+本節說明如何刪除執行身分或傳統執行身分帳戶。 當您執行此動作時，系統不會保留自動化帳戶。 刪除執行身份帳戶之後，您可以在 Azure 入口網站中或使用所提供的 PowerShell 腳本來重新建立它。
 
 1. 在 Azure 入口網站中，開啟自動化帳戶。
 
@@ -120,10 +153,6 @@ Azure 傳統執行身分帳戶會執行下列工作。
    ![刪除執行身分帳戶](media/manage-runas-account/automation-account-delete-runas.png)
 
 5. 刪除帳戶時，您可以在功能表的 [通知] 底下追蹤進度。
-
-6. 帳戶刪除之後，您可以在 [執行身分帳戶] 屬性頁面中，選取建立選項 [Azure 執行身分帳戶] 重新加以建立。
-
-   ![重新建立自動化執行身分帳戶](media/manage-runas-account/automation-account-create-runas.png)
 
 ## <a name="renew-a-self-signed-certificate"></a><a name="cert-renewal"></a>更新自我簽署憑證
 
@@ -174,8 +203,7 @@ $roleDefinition | Set-AzRoleDefinition
 2. 選取 [Azure 執行身分帳戶]。
 3. 選取 [角色]，以找出正在使用的角色定義。
 
-:::image type="content" source="media/manage-runas-account/verify-role.png" alt-text="確認執行身份帳戶角色。" lightbox="media/manage-runas-account/verify-role-expanded.png":::
-
+:::image type="content" source="media/manage-runas-account/verify-role.png" alt-text="選取 [執行身份帳戶] 選項。" lightbox="media/manage-runas-account/verify-role-expanded.png":::
 
 您也可以針對多個訂用帳戶或自動化帳戶，確認執行身分帳戶所使用的角色定義。 此動作可使用 PowerShell 資源庫中的 [Check-AutomationRunAsAccountRoleAssignments.ps1](https://aka.ms/AA5hug5) 指令碼來完成。
 
@@ -199,7 +227,7 @@ $roleDefinition | Set-AzRoleDefinition
 
 在這類設定錯誤實例中，自動化帳戶會偵測到變更，並在帳戶的 [執行身分帳戶] 屬性頁面上顯示 [不完整] 狀態。
 
-![不完整的執行身分帳戶設定狀態](media/manage-runas-account/automation-account-runas-incomplete-config.png)
+![不完整的執行身分帳戶設定狀態](media/manage-runas-account/automation-account-runas-config-incomplete.png)
 
 當您選取執行身分帳戶時，帳戶的 [屬性] 窗格會顯示下列錯誤訊息：
 

@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 08/27/2020
+ms.date: 10/06/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 191213511a6b41e3a8419660a40b8d79a5c747f2
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 20e48640d52fba7b3262014c2e84cfc56c7110cc
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91714931"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767236"
 ---
 # <a name="blob-versioning"></a>Blob 版本設定
 
@@ -36,13 +36,13 @@ Microsoft 建議使用 blob 版本設定來維護舊版的 blob，以獲得較�
 
 版本會在指定的時間點捕捉 blob 的狀態。 針對儲存體帳戶啟用 blob 版本設定時，Azure 儲存體會在每次修改或刪除 blob 時，自動建立新版本的 blob。
 
-當您建立已啟用版本設定的 blob 時，新的 blob 會是目前的 blob 版本 (或基底 blob) 。 如果您之後修改該 blob，Azure 儲存體會在修改之前建立一個可捕獲 blob 狀態的版本。 修改過的 blob 會成為新的目前版本。 每次修改 blob 時，就會建立新的版本。
+當您建立已啟用版本設定的 blob 時，新的 blob 會是目前的 blob 版本 (或基底 blob) 。 如果您之後修改該 blob，Azure 儲存體會在修改之前建立一個可捕獲 blob 狀態的版本。 修改過的 blob 會成為新的目前版本。 每次修改 blob 時，就會建立新的版本。 Blob 最多可以有1000個相關聯的版本。
 
 當您刪除已啟用版本設定的 blob 時，Azure 儲存體會建立一個版本，以在其被刪除之前，先捕捉 blob 的狀態。 Blob 的目前版本會被刪除，但 blob 的版本會保存，因此可以視需要重新建立。 
 
 Blob 版本是不可變的。 您無法修改現有 blob 版本的內容或中繼資料。
 
-Blob 版本設定適用于一般用途 v2、區塊 blob 和 Blob 儲存體帳戶。 目前不支援已啟用階層命名空間的儲存體帳戶搭配 Azure Data Lake Storage Gen2 使用。
+Blob 版本設定適用于一般用途 v2、區塊 blob 和 Blob 儲存體帳戶。 目前不支援已啟用階層命名空間的儲存體帳戶搭配 Azure Data Lake Storage Gen2 使用。 
 
 版本2019-10-10 和更高版本的 Azure 儲存體 REST API 支援 blob 版本設定。
 

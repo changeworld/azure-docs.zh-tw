@@ -4,12 +4,12 @@ description: Application Insights 遙測內容資料模型
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.reviewer: sergkanz
-ms.openlocfilehash: cbd717243ed35fc90772cb2b727f7670bb77ee70
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 76f3be510494a1f005b0080ee8f2390a3fbc3622
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/06/2020
-ms.locfileid: "91757294"
+ms.locfileid: "91767842"
 ---
 # <a name="telemetry-context-application-insights-data-model"></a>遙測內容：Application Insights 資料模型
 
@@ -85,7 +85,7 @@ ms.locfileid: "91757294"
 
 ## <a name="authenticated-user-id"></a>已驗證的使用者識別碼
 
-已驗證的使用者識別碼。匿名使用者識別碼的相反，此欄位代表具有易記名稱的使用者。 由於其 PII 資訊，根據預設，大部分的 SDK 都不會收集該資訊。
+已驗證的使用者識別碼。匿名使用者識別碼的相反，此欄位代表具有易記名稱的使用者。 預設只會使用 ASP.NET Framework SDK 進行收集 [`AuthenticatedUserIdTelemetryInitializer`](https://github.com/microsoft/ApplicationInsights-dotnet/blob/develop/WEB/Src/Web/Web/AuthenticatedUserIdTelemetryInitializer.cs) 。  
 
 最大長度：1024
 

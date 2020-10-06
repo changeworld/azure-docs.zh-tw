@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 10/05/2020
+ms.date: 10/06/2020
 ms.author: alkohli
-ms.openlocfilehash: 3a61bd16d127afadc2dc4d968b3492f3c8491d29
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 59b2307bb2e1f4effce9f68530be86e9ca625c9c
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91743210"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91766300"
 ---
 # <a name="manage-an-azure-stack-edge-pro-gpu-device-via-windows-powershell"></a>透過 Windows PowerShell 管理 Azure Stack Edge Pro GPU 裝置
 
@@ -430,7 +430,16 @@ DEBUG 2020-05-14T20:42:14Z: loop process - 0 events, 0.000s
 基礎板管理控制器 (BMC) 可用來遠端監視和管理您的裝置。 本節說明可用來管理 BMC 設定的 Cmdlet。 在執行這些 Cmdlet 之前，請先 [連接到裝置的 PowerShell 介面](#connect-to-the-powershell-interface)。
 
 - `Get-HcsNetBmcInterface`：使用這個 Cmdlet 取得 BMC 的網路設定屬性，例如，、、 `IPv4Address` `IPv4Gateway` `IPv4SubnetMask` 、 `DhcpEnabled` ： 
-
+    
+    以下是範例輸出：
+    
+    ```powershell
+    [10.100.10.10]: PS>Get-HcsNetBmcInterface
+    IPv4Address   IPv4Gateway IPv4SubnetMask DhcpEnabled
+    -----------   ----------- -------------- -----------
+    10.128.53.186 10.128.52.1 255.255.252.0        False
+    [10.100.10.10]: PS>
+    ```
 - `Set-HcsNetBmcInterface`：您可以使用下列兩種方式來使用此 Cmdlet。
 
     - 使用 Cmdlet 來啟用或停用適用于 BMC 的 DHCP 設定，方法是使用適當的 `UseDhcp` 參數值。 

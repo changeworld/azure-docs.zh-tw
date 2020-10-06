@@ -3,12 +3,12 @@ title: Azure 服務匯流排的網路安全性
 description: 本文說明網路安全性功能，例如服務標記、IP 防火牆規則、服務端點和私人端點。
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 731300179ce9a0ff72169cdad5c7c039749b20f6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fb21c8beb6d48ecab04917525011cc4762c46ff3
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341138"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91766396"
 ---
 # <a name="network-security-for-azure-service-bus"></a>Azure 服務匯流排的網路安全性 
 本文說明如何搭配 Azure 服務匯流排使用下列安全性功能： 
@@ -16,33 +16,33 @@ ms.locfileid: "85341138"
 - 服務標籤
 - IP 防火牆規則
 - 網路服務端點
-- 私人端點（預覽）
+- 私人端點
 
 
 ## <a name="service-tags"></a>服務標籤
-服務標籤代表來自指定 Azure 服務的一組 IP 位址前置詞。 Microsoft 會管理服務標籤包含的位址前置詞，並隨著位址變更自動更新服務標籤，而盡可能簡化網路安全性規則頻繁的更新。 如需服務標記的詳細資訊，請參閱[服務標記總覽](../virtual-network/service-tags-overview.md)。
+服務標籤代表來自指定 Azure 服務的一組 IP 位址前置詞。 Microsoft 會管理服務標籤包含的位址前置詞，並隨著位址變更自動更新服務標籤，而盡可能簡化網路安全性規則頻繁的更新。 如需服務標籤的詳細資訊，請參閱 [服務標記總覽](../virtual-network/service-tags-overview.md)。
 
-您可以使用服務標記來定義[網路安全性群組](../virtual-network/security-overview.md#security-rules)或[Azure 防火牆](../firewall/service-tags.md)上的網路存取控制。 建立安全性規則時，請以服務標籤取代特定的 IP 位址。 藉由在規則的適當 [*來源*] 或 [*目的地*] 欄位中指定服務標籤名稱（例如，伺服器**匯流排**），您可以允許或拒絕對應服務的流量。
+您可以使用服務標記來定義 [網路安全性群組](../virtual-network/security-overview.md#security-rules) 或 [Azure 防火牆](../firewall/service-tags.md)上的網路存取控制。 建立安全性規則時，請以服務標籤取代特定的 IP 位址。 藉由指定服務標籤名稱 (例如，在規則的適當*來源*或*目的地*欄位中指定服務卷**標) ，** 您可以允許或拒絕對應服務的流量。
 
 | 服務標籤 | 目的 | 可以使用輸入還是輸出？ | 是否可為區域性？ | 是否可與 Azure 防火牆搭配使用？ |
 | --- | -------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| **ServiceBus** | 使用進階服務層級的 Azure 服務匯流排流量。 | 輸出 | 是 | Yes |
+| **ServiceBus** | 使用進階服務層級的 Azure 服務匯流排流量。 | 輸出 | 是 | 是 |
 
 
 > [!NOTE]
-> 您只能針對**premium**命名空間使用服務標籤。 如果您使用**標準**命名空間，請使用您執行下列命令時所看到的 IP 位址： `nslookup <host name for the namespace>` 。 例如： `nslookup contosons.servicebus.windows.net` 。 
+> 您只能對 **premium** 命名空間使用服務標記。 如果您使用的是 **標準** 命名空間，請使用您在執行下列命令時所看到的 IP 位址： `nslookup <host name for the namespace>` 。 例如： `nslookup contosons.servicebus.windows.net` 。 
 
 ## <a name="ip-firewall"></a>IP 防火牆 
 根據預設，只要要求具備有效的驗證和授權，便可以從網際網路存取服務匯流排命名空間。 透過 IP 防火牆，您可以將其進一步限制為僅允許一組 IPv4 位址，或是使用 [CIDR (無類別網域間路由)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) 標記法來設定 IPv4 位址範圍。
 
-此功能在只應該從特定知名網站存取 Azure 服務匯流排的情況下，會很有幫助。 防火牆規則可讓您設定規則以接受源自特定 IPv4 位址的流量。 例如，如果您將服務匯流排與 [Azure Express Route] [Express-route] 搭配使用，您可以建立**防火牆規則**，只允許來自您內部部署基礎結構 IP 位址或公司 NAT 閘道位址的流量。 
+此功能在只應該從特定知名網站存取 Azure 服務匯流排的情況下，會很有幫助。 防火牆規則可讓您設定規則以接受源自特定 IPv4 位址的流量。 例如，如果您搭配 [Azure Express Route] [express route] 使用服務匯流排，您可以建立 **防火牆規則** ，以允許來自公司 NAT 閘道的內部部署基礎結構 IP 位址或位址的流量。 
 
 IP 防火牆規則會套用在服務匯流排命名空間層級上。 因此，規則會套用至來自用戶端的所有連接 (使用任何受支援的通訊協定)。 任何來自某個 IP 位址的連線嘗試，只要不符合「服務匯流排」命名空間上的允許 IP 規則，系統就會將它視為未經授權而予以拒絕。 回應則不涉及 IP 規則。 IP 篩選器規則會依序套用，而且第一個符合 IP 位址的規則會決定接受或拒絕動作。
 
-如需詳細資訊，請參閱[如何設定服務匯流排命名空間的 IP 防火牆](service-bus-ip-filtering.md)
+如需詳細資訊，請參閱 [如何設定服務匯流排命名空間的 IP 防火牆](service-bus-ip-filtering.md)
 
 ## <a name="network-service-endpoints"></a>網路服務端點
-將服務匯流排與[虛擬網路（VNet）服務端點](service-bus-service-endpoints.md)整合，可讓您從系結至虛擬網路的工作負載（例如虛擬機器）安全地存取訊息功能，而兩端的網路流量路徑都受到保護。
+服務匯流排與 [虛擬網路 (VNet) 服務端點](service-bus-service-endpoints.md) 的整合可讓您安全地存取來自系結至虛擬網路之虛擬機器的工作負載（例如，系結至虛擬網路的虛擬機器），並將網路流量路徑安全地放在兩端。
 
 一旦設定為繫結到至少一個虛擬網路子網路服務端點，個別的服務匯流排命名空間除了授權的虛擬網路以外，無法再接受任何位置的流量。 從虛擬網路的觀點而言，將服務匯流排命名空間繫結至服務端點，會設定從虛擬網路子網路到傳訊服務的隔離網路通道。
 
@@ -51,7 +51,7 @@ IP 防火牆規則會套用在服務匯流排命名空間層級上。 因此，�
 > [!IMPORTANT]
 > 唯有[進階層](service-bus-premium-messaging.md)服務匯流排命名空間支援虛擬網路。
 > 
-> 搭配服務匯流排使用 VNet 服務端點時，您不應該在混合標準和進階層服務匯流排命名空間的應用程式中啟用這些端點。 因為標準層不支援 Vnet。 端點僅限進階層命名空間。
+> 使用 VNet 服務端點搭配服務匯流排時，您不應該在混合標準和進階層服務匯流排命名空間的應用程式中啟用這些端點。 因為標準層不支援 Vnet。 端點僅限進階層命名空間。
 
 ### <a name="advanced-security-scenarios-enabled-by-vnet-integration"></a>VNet 整合所實現的進階安全性案例 
 
@@ -65,11 +65,11 @@ IP 防火牆規則會套用在服務匯流排命名空間層級上。 因此，�
 
 「虛擬網路規則」** 是防火牆安全性功能，可控制 Azure 服務匯流排伺服器是否接受來自特定虛擬網路子網路的連線。
 
-將服務匯流排命名空間繫結至虛擬網路是一個雙步驟的程序。 您必須先在虛擬網路子網上建立**虛擬網路服務端點**，並如[服務端點總覽](service-bus-service-endpoints.md)中所述，針對 Microsoft 進行啟用 **。** 一旦您新增服務端點，您就可使用「虛擬網路規則」**** 將服務匯流排命名空間與它繫結。
+將服務匯流排命名空間繫結至虛擬網路是一個雙步驟的程序。 您必須先在虛擬網路子網上建立 **虛擬網路服務端點** ，並針對 **Microsoft** 進行啟用，如 [服務端點總覽](service-bus-service-endpoints.md)中所述。 一旦您新增服務端點，您就可使用「虛擬網路規則」**** 將服務匯流排命名空間與它繫結。
 
 虛擬網路規則是服務匯流排命名空間與虛擬網路子網路的關聯。 當此規則存在時，繫結至子網路的所有工作負載都會獲得授與服務匯流排命名空間的存取權。 服務匯流排本身永遠不會建立輸出連線，不需要獲得存取權，因此永遠不會因為啟用這項規則而獲得授與子網路的存取權。
 
-如需詳細資訊，請參閱[如何設定服務匯流排命名空間的虛擬網路服務端點](service-bus-service-endpoints.md)
+如需詳細資訊，請參閱 [如何設定服務匯流排命名空間的虛擬網路服務端點](service-bus-service-endpoints.md)
 
 ## <a name="private-endpoints"></a>私人端點
 
@@ -81,11 +81,9 @@ Azure Private Link 服務可供透過虛擬網路中的**私人端點**存取 Az
 
 > [!NOTE]
 > Azure 服務匯流排的**進階**層支援這項功能。 如需進階層的詳細資訊，請參閱[服務匯流排進階和標準傳訊層級](service-bus-premium-messaging.md)一文。
->
-> 此功能目前為**預覽**狀態。 
 
 
-如需詳細資訊，請參閱[如何設定服務匯流排命名空間的私用端點](private-link-service.md)
+如需詳細資訊，請參閱 [如何設定服務匯流排命名空間的私人端點。](private-link-service.md)
 
 
 ## <a name="next-steps"></a>後續步驟
@@ -93,4 +91,4 @@ Azure Private Link 服務可供透過虛擬網路中的**私人端點**存取 Az
 
 - [如何設定服務匯流排命名空間的 IP 防火牆](service-bus-ip-filtering.md)
 - [如何設定服務匯流排命名空間的虛擬網路服務端點](service-bus-service-endpoints.md)
-- [如何設定服務匯流排命名空間的私用端點](private-link-service.md)
+- [如何設定服務匯流排命名空間的私人端點](private-link-service.md)

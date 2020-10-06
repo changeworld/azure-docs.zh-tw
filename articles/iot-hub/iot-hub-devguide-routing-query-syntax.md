@@ -1,6 +1,6 @@
 ---
 title: 對 Azure IoT 中樞訊息路由進行查詢 | Microsoft Docs
-description: 瞭解您可以用來將豐富查詢套用至訊息的 IoT 中樞訊息路由查詢語言，以接收對您很重要的資料。
+description: 瞭解 IoT 中樞訊息路由查詢語言，您可以用來將豐富的查詢套用至訊息，以接收重要的資料。
 author: ash2017
 ms.service: iot-hub
 services: iot-hub
@@ -10,12 +10,12 @@ ms.author: asrastog
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
-ms.openlocfilehash: 4ff61687f2fa045b51dfcb69488d1fbd87b65f75
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 9b5463ba789a1bcfb707fb03c70f1a8464cb6b59
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87336492"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767352"
 ---
 # <a name="iot-hub-message-routing-query-syntax"></a>IoT 中樞訊息路由查詢語法
 
@@ -59,10 +59,10 @@ IoT 中樞會針對所有裝置到雲端訊息定義[常見格式](iot-hub-devgu
 | contentEncoding | 字串 | 使用者會指定訊息的編碼類型。 允許的值為 UTF-8、UTF-16、UTF-32 (若 contentType 是設為 application/JSON)。 |
 | iothub-connection-device-id | 字串 | 此值是由 IoT 中樞設定，並能識別裝置的識別碼。 若要查詢，請使用 `$connectionDeviceId`。 |
 | iothub-enqueuedtime | 字串 | 此值是由 IoT 中樞設定，並代表將訊息加入佇列的實際時間 (以 UTC 表示)。 若要查詢，請使用 `enqueuedTime`。 |
-| dt-dataschema | 字串 |  此值是由 IoT 中樞在裝置到雲端訊息上設定。 其中包含裝置連接中設定的裝置型號識別碼。 這項功能可做為[IoT 隨插即用公開預覽](../iot-pnp/overview-iot-plug-and-play.md)的一部分。 若要查詢，請使用 `$dt-dataschema`。 |
-| dt-主旨 | 字串 | 傳送裝置到雲端訊息的元件名稱。 這項功能可做為[IoT 隨插即用公開預覽](../iot-pnp/overview-iot-plug-and-play.md)的一部分。 若要查詢，請使用 `$dt-subject`。 |
+| dt-dataschema | 字串 |  此值是由 IoT 中樞在裝置到雲端訊息上設定的。 它包含裝置連線中所設定的裝置型號識別碼。 若要查詢，請使用 `$dt-dataschema`。 |
+| dt-subject | 字串 | 傳送裝置到雲端訊息的元件名稱。 若要查詢，請使用 `$dt-subject`。 |
 
-如 [IoT 中樞訊息](iot-hub-devguide-messages-construct.md)中所述，訊息中還有其他系統屬性。 除了上表中的上述屬性以外，您也可以查詢**connectionDeviceId**， **connectionModuleId**。
+如 [IoT 中樞訊息](iot-hub-devguide-messages-construct.md)中所述，訊息中還有其他系統屬性。 除了上表中的上述屬性之外，您還可以查詢 **>connectiondeviceid**、 **>connectionmoduleid**。
 
 ### <a name="application-properties"></a>應用程式屬性
 
@@ -90,7 +90,7 @@ processingPath = 'hot'
 $contentEncoding = 'UTF-8' AND processingPath = 'hot'
 ```
 
-[[運算式和條件](iot-hub-devguide-query-language.md#expressions-and-conditions)] 中會顯示支援的運算子和函式的完整清單。
+[運算式和條件](iot-hub-devguide-query-language.md#expressions-and-conditions)中會顯示支援的運算子和函數的完整清單。
 
 ## <a name="message-routing-query-based-on-message-body"></a>根據訊息本文的訊息路由查詢
 
@@ -146,7 +146,7 @@ deviceClient.sendEvent(message, (err, res) => {
 ```
 
 > [!NOTE] 
-> 這會顯示如何以 javascript 處理本文的編碼方式。 如果您想要查看 c # 中的範例，請下載[Azure IoT c # 範例](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)。 將 master.zip 檔案解壓縮。 Visual Studio 方案*SimulatedDevice*的 Program.cs 檔案示範如何編碼和提交訊息至 IoT 中樞。 這是用來測試訊息路由的相同範例，如[訊息路由教學](tutorial-routing.md)課程中所述。 在 Program.cs 底部，它也有一個方法可以讀取其中一個已編碼的檔案、將它解碼，然後將它寫回為 ASCII，讓您可以讀取它。 
+> 這會顯示如何以 javascript 處理主體的編碼。 如果您想要在 c # 中查看範例，請下載 [Azure IoT c # 範例](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)。 將 master.zip 檔案解壓縮。 Visual Studio solution *>simulateddevice*的 Program.cs 檔案會說明如何編碼和提交訊息至 IoT 中樞。 這是用來測試訊息路由的相同範例，如 [訊息路由教學](tutorial-routing.md)課程中所述。 在 Program.cs 的底部，它也有一種方法可以讀取其中一個已編碼的檔案、將其解碼，然後寫回 ASCII，讓您可以讀取它。 
 
 
 ### <a name="query-expressions"></a>查詢運算式
@@ -171,7 +171,7 @@ $body.Weather.Temperature = 50 AND processingPath = 'hot'
 
 ## <a name="message-routing-query-based-on-device-twin"></a>根據裝置對應項的訊息路由查詢 
 
-訊息路由可讓您針對[裝置對應項](iot-hub-devguide-device-twins.md)標記和屬性 (其為 JSON 物件) 進行查詢。 也支援查詢模組對應項。 範例的裝置對應項標記和屬性如下所示。
+訊息路由可讓您針對[裝置對應項](iot-hub-devguide-device-twins.md)標記和屬性 (其為 JSON 物件) 進行查詢。 也支援在模組對應項上進行查詢。 範例的裝置對應項標記和屬性如下所示。
 
 ```JSON
 {
@@ -204,7 +204,7 @@ $body.Weather.Temperature = 50 AND processingPath = 'hot'
 
 ### <a name="query-expressions"></a>查詢運算式
 
-訊息對應項的查詢前面必須加上 `$twin` 。 您的查詢運算式也可以將對應項標記或屬性參考和內文參考、訊息系統屬性，以及訊息應用程式屬性參考進行結合。 我們建議在標記和屬性中使用唯一名稱，因為查詢不會區分大小寫。 這同時適用于裝置 twins 和模組 twins。 此外，也請避免使用 `twin`、`$twin`、`body` 或 `$body` 作為屬性名稱。 例如，以下是所有有效的查詢運算式： 
+訊息對應項的查詢必須加上前置詞 `$twin` 。 您的查詢運算式也可以將對應項標記或屬性參考和內文參考、訊息系統屬性，以及訊息應用程式屬性參考進行結合。 我們建議在標記和屬性中使用唯一名稱，因為查詢不會區分大小寫。 這同時適用于裝置 twins 和模組 twins。 此外，也請避免使用 `twin`、`$twin`、`body` 或 `$body` 作為屬性名稱。 例如，以下是所有有效的查詢運算式： 
 
 ```sql
 $twin.properties.desired.telemetryConfig.sendFrequency = '5m'
@@ -218,9 +218,9 @@ $body.Weather.Temperature = 50 AND $twin.properties.desired.telemetryConfig.send
 $twin.tags.deploymentLocation.floor = 1 
 ```
 
-不支援在內容或屬性名稱中有一個句號的主體或裝置對應項上的路由查詢。
+不支援在裝載或屬性名稱中使用句點在主體或裝置對應項上進行路由查詢。
 
 ## <a name="next-steps"></a>後續步驟
 
-* 深入瞭解[訊息路由](iot-hub-devguide-messages-d2c.md)。
-* 嘗試[訊息路由教學](tutorial-routing.md)課程。
+* 深入瞭解 [訊息路由](iot-hub-devguide-messages-d2c.md)。
+* 請嘗試 [訊息路由教學](tutorial-routing.md)課程。

@@ -10,12 +10,12 @@ ms.devlang: NA
 ms.topic: how-to
 ms.date: 07/15/2020
 ms.author: alkohli
-ms.openlocfilehash: 86a3e2ab15e83f5393315f75f37ad8b41d3489b2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5ebb7f1d9440bc7a8b75afe64403762532213c1d
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496140"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767565"
 ---
 # <a name="use-the-storsimple-device-manager-service-in-azure-portal-to-clone-a-volume"></a>在 Azure 入口網站中，使用 StorSimple 裝置管理員服務來複製磁碟區
 
@@ -64,11 +64,11 @@ StorSimple 裝置管理員服務 [備份類別目錄] **** 刀鋒視窗會顯示
 
       與選取的磁碟區或備份原則相關聯的備份應該會出現在備份組清單中。
    
-      ![備份組清單](./media/storsimple-8000-clone-volume-u2/bucatalog.png)
+      ![備份組清單2](./media/storsimple-8000-clone-volume-u2/bucatalog.png)
      
 3. 展開備份組以檢視相關聯的磁碟區，並選取備份組中的磁碟區。 以滑鼠右鍵按一下，然後從操作功能表中選取 [複製]****。
 
-   ![備份組清單](./media/storsimple-8000-clone-volume-u2/clonevol3b.png) 
+   ![備份組清單3](./media/storsimple-8000-clone-volume-u2/clonevol3b.png) 
 
 3. 在 [複製]**** 刀鋒視窗中，執行下列步驟︰
    
@@ -84,17 +84,17 @@ StorSimple 裝置管理員服務 [備份類別目錄] **** 刀鋒視窗會顯示
           
    3. 在 [已連線的主機]**** 下，指定該複製的存取控制記錄 (ACR)。 您可以加入新的 ACR，或從現有清單中選擇。 ACR 會決定可存取此複製的主機。
       
-       ![備份組清單](./media/storsimple-8000-clone-volume-u2/clonevol3a.png) 
+       ![備份組清單4](./media/storsimple-8000-clone-volume-u2/clonevol3a.png) 
 
    4. 按一下 [複製]****，以完成作業。
 
 4. 複製作業隨即起始，並在成功建立複製時通知您。 按一下作業通知，或移至 [作業]**** 刀鋒視窗以監控複製作業。
 
-    ![備份組清單](./media/storsimple-8000-clone-volume-u2/clonevol5.png)
+    ![備份組清單5](./media/storsimple-8000-clone-volume-u2/clonevol5.png)
 
 7. 複製作業完成後，移至您的裝置，然後按一下 [磁碟區]****。 在磁碟區清單中，您應該會看見剛剛在相同磁碟區容器中建立的複製具有來源磁碟區。
 
-    ![備份組清單](./media/storsimple-8000-clone-volume-u2/clonevol6.png)
+    ![備份組清單6](./media/storsimple-8000-clone-volume-u2/clonevol6.png)
 
 以這種方式建立的複製就是暫時性複製。 如需複製類型的詳細資訊，請參閱 [暫時性與永久複製](#transient-vs-permanent-clones)。
 
@@ -114,6 +114,6 @@ StorSimple 裝置管理員服務 [備份類別目錄] **** 刀鋒視窗會顯示
 您需要確認生產環境中的測試錯誤。 您在生產環境中建立磁碟區的複製，並採用這個複製的雲端快照來建立獨立的複製磁碟區。 在此案例中，使用的是永久複製。
 
 ## <a name="next-steps"></a>後續步驟
-* 瞭解如何[從備份組還原 StorSimple 磁片](storsimple-8000-restore-from-backup-set-u2.md)區。
+* 瞭解如何 [從備份組還原 StorSimple 磁片](storsimple-8000-restore-from-backup-set-u2.md)區。
 * 了解如何[使用 StorSimple 裝置管理員服務管理 StorSimple 裝置](storsimple-8000-manager-service-administration.md)。
 

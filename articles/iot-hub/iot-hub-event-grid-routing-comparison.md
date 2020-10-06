@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: kgremban
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 05b582e24afddf25b7f50d4c8cd1a029684a2d4f
-ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
+ms.openlocfilehash: fa5c4bc1aae91e9e40b6d14ad5c12b8d1aee68f6
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90023800"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767604"
 ---
 # <a name="compare-message-routing-and-event-grid-for-iot-hub"></a>比較 IoT 中樞的訊息路由和事件格線
 
@@ -32,7 +32,7 @@ Azure IoT 中樞可讓您從已連線的裝置串流資料，並將該資料整�
 
 | 功能 | IoT 中樞訊息路由 | IoT 中樞與事件格線的整合 |
 | ------- | --------------- | ---------- |
-| **裝置訊息和事件** | 是，訊息路由可用於遙測資料、報告裝置對應項變更、裝置生命週期事件 (例如 當裝置建立、刪除、連線和中斷連線 IoT 中樞) ，以及數位對應項變更事件 ([IoT 隨插即用公開預覽](../iot-pnp/overview-iot-plug-and-play.md)) 的一部分。 | 是，事件方格可用於遙測資料和裝置生命週期事件。 但是，事件方格不能用於裝置對應項變更事件和數位對應項變更事件。 |
+| **裝置訊息和事件** | 是，訊息路由可用於遙測資料、報告裝置對應項變更、裝置生命週期事件 (例如 當裝置建立、刪除、連線和中斷連線 IoT 中樞時) 以及數位對應項變更事件。 | 是，事件方格可用於遙測資料和裝置生命週期事件。 但是，事件方格不能用於裝置對應項變更事件和數位對應項變更事件。 |
 | **排序** | 是，會維持事件的排序。  | 否，不保證維持事件的順序。 | 
 | **篩選** | 對訊息應用程式屬性、訊息系統屬性、訊息內文、裝置對應項標籤及裝置對應項屬性所進行的豐富篩選功能。 篩選不會套用至數位對應項變更事件。 如需範例，請參閱[訊息路由查詢語法](iot-hub-devguide-routing-query-syntax.md)。 | 根據事件種類、主體類型和每個事件中的屬性進行篩選。 如需範例，請參閱 [瞭解事件方格訂用帳戶中的篩選事件](../event-grid/event-filtering.md)。 訂閱遙測事件時，您可以在發佈至事件方格之前，對資料套用額外的篩選，以篩選訊息屬性、訊息內文以及 IoT 中樞內的裝置對應項。 請參閱 [如何篩選事件](../iot-hub/iot-hub-event-grid.md#filter-events)。 |
 | **端點** | <ul><li>事件中樞</li> <li>Azure Blob 儲存體</li> <li>服務匯流排佇列</li> <li>服務匯流排主題</li></ul><br>付費的「IoT 中樞」SKU (S1、S2 及 S3) 僅限有 10 個自訂端點。 可以為每個「IoT 中樞」建立 100 個路由。 | <ul><li>Azure Functions</li> <li>Azure 自動化</li> <li>事件中樞</li> <li>Logic Apps</li> <li>儲存體 Blob</li> <li>自訂主題</li> <li>佇列儲存體</li> <li>Microsoft Flow</li> <li>透過 WebHook 提供的協力廠商服務</li></ul><br>每個 IoT 中樞支援500個端點。 如需最新的端點清單，請參閱[事件格線處理常式](../event-grid/overview.md#event-handlers)。 |
@@ -73,7 +73,7 @@ Azure IoT 中樞可讓您從已連線的裝置串流資料，並將該資料整�
 
    「事件格線」則不保證端點收到事件的順序會與事件發生順序相同。 在這些情況下，訊息的絕對順序很重要，而且/或取用者需要訊息的可信賴唯一識別碼，因此我們建議使用訊息路由。 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 深入了解 [IoT 中樞訊息路由](iot-hub-devguide-messages-d2c.md)和 [IoT 中樞端點](iot-hub-devguide-endpoints.md)。
 * 深入了解 [Azure Event Grid](../event-grid/overview.md)。

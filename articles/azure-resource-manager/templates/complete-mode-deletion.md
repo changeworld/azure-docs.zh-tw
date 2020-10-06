@@ -2,13 +2,13 @@
 title: 完整模式刪除
 description: 顯示資源類型如何處理 Azure Resource Manager 範本中的完整模式刪除。
 ms.topic: conceptual
-ms.date: 09/21/2020
-ms.openlocfilehash: 1e27960953aeb16486f893054c7653edb98bbdbc
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.date: 10/06/2020
+ms.openlocfilehash: 72303a7916aec39c05f9b4fa2cbc77de18b7fb3e
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91372456"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91766715"
 ---
 # <a name="deletion-of-azure-resources-for-complete-mode-deployments"></a>完整模式部署的 Azure 資源刪除
 
@@ -19,6 +19,11 @@ ms.locfileid: "91372456"
 標記為 **No** 的資源類型不會在範本中自動刪除;但是，如果父資源遭到刪除，則會刪除這些資源。 如需行為的完整描述，請參閱 [Azure Resource Manager 部署模式](deployment-modes.md)。
 
 如果您 [在範本中部署至多個資源群組](cross-scope-deployment.md)，部署作業中所指定資源群組中的資源就有資格刪除。 次要資源群組中的資源不會被刪除。
+
+資源會依資源提供者命名空間列出。 若要使資源提供者命名空間與 Azure 服務名稱相符，請參閱 [azure 服務的資源提供者](../management/azure-services-resource-providers.md)。
+
+> [!NOTE]
+> 在以完整模式部署範本之前，請一律使用「 [假設](template-deploy-what-if.md) 」作業。 假設會顯示要建立、刪除或修改哪些資源。 使用假設來避免不慎刪除資源。
 
 跳至資源提供者命名空間：
 > [!div class="op_single_selector"]
