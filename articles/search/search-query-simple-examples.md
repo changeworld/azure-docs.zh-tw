@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 3c469d7274bb90e194478af2464cb352efe7490c
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.date: 10/05/2020
+ms.openlocfilehash: e2c6f627c69316b8f146d3ac82b8d29801ec3902
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89294861"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91740678"
 ---
 # <a name="create-a-simple-query-in-azure-cognitive-search"></a>在 Azure 認知搜尋中建立簡單的查詢
 
@@ -37,13 +37,13 @@ ms.locfileid: "89294861"
 
 在指定要求標頭後，您可以將其重複用於本文中的所有查詢，只要替換掉 **search=** 字串即可。 
 
-  ![Postman 要求標頭設定參數](media/search-query-lucene-examples/postman-header.png)
+  :::image type="content" source="media/search-query-lucene-examples/postman-header.png" alt-text="Postman 要求標頭設定參數" border="false":::
 
 ### <a name="set-the-request-url"></a>設定要求 URL
 
 要求是與包含 Azure 認知搜尋端點和搜尋字串的 URL 配對的 GET 命令。
 
-  ![Postman 要求標頭 GET](media/search-query-lucene-examples/postman-basic-url-request-elements.png)
+  :::image type="content" source="media/search-query-lucene-examples/postman-basic-url-request-elements.png" alt-text="Postman 要求標頭設定參數" border="false":::
 
 URL 組合具有下列元素：
 
@@ -97,7 +97,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-
 
 此查詢的回應會如下列螢幕擷取畫面所示。
 
-  ![Postman 範例回應](media/search-query-lucene-examples/postman-sample-results.png)
+  :::image type="content" source="media/search-query-lucene-examples/postman-sample-results.png" alt-text="Postman 要求標頭設定參數" border="false":::
 
 您可能已注意到在回應中的搜尋分數。 沒有排名時，分數一律為 1，這是因為搜尋不是全文檢索搜尋，或是未套用任何準則。 若是未套用任何準則的 Null 搜尋，資料列會以任意順序傳回。 當您包含實際準則時，您會發現搜尋分數逐漸具有其實質意義。
 
@@ -133,7 +133,7 @@ POST /indexes/nycjobs/docs/search?api-version=2020-06-30
 
 搭配使用時，會先將篩選套用到整個索引，再對篩選結果執行搜尋。 由於篩選能夠減少搜尋查詢需要處理的資料集合，因此對於提升查詢效能方面是很實用的技術。
 
-  ![篩選查詢回應](media/search-query-simple-examples/filtered-query.png)
+  :::image type="content" source="media/search-query-simple-examples/filtered-query.png" alt-text="Postman 要求標頭設定參數" border="false":::
 
 如果您想要使用 GET 在 Postman 中試用看看，您可以貼入此字串：
 
@@ -167,7 +167,7 @@ POST /indexes/nycjobs/docs/search?api-version=2020-06-30
       "count": "true"
     }
 ```
-  ![數值範圍的範圍篩選條件](media/search-query-simple-examples/rangefilternumeric.png)
+  :::image type="content" source="media/search-query-simple-examples/rangefilternumeric.png" alt-text="Postman 要求標頭設定參數" border="false":::
 
 
 ```http
@@ -181,7 +181,7 @@ POST /indexes/nycjobs/docs/search?api-version=2020-06-30
     }
 ```
 
-  ![文字範圍的範圍篩選條件](media/search-query-simple-examples/rangefiltertext.png)
+  :::image type="content" source="media/search-query-simple-examples/rangefiltertext.png" alt-text="Postman 要求標頭設定參數" border="false":::
 
 您也可以使用 GET 在 Postman 中試用這些：
 
@@ -251,14 +251,14 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&$count=true&searchMode=any&search="fire department"  -"Metrotech Center"
 ```
 
-  ![搜尋模式：任何](media/search-query-simple-examples/searchmodeany.png)
+  :::image type="content" source="media/search-query-simple-examples/searchmodeany.png" alt-text="Postman 要求標頭設定參數" border="false":::
 
 將 searchMode 變更為 `all` 時，會對準則強制執行累加效果，而傳回較小的結果集 (21 份文件)，由包含完整片語 "fire department"、但工作地點不是 Metrotech Center 的文件所組成。
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&$count=true&searchMode=all&search="fire department"  -"Metrotech Center"
 ```
-  ![搜尋模式：全部](media/search-query-simple-examples/searchmodeall.png)
+  :::image type="content" source="media/search-query-simple-examples/searchmodeall.png" alt-text="Postman 要求標頭設定參數" border="false":::
 
 ## <a name="example-8-structuring-results"></a>範例 8︰建構結果
 
@@ -285,7 +285,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&$count=true&$select=job_id,agency,business_title,civil_service_title,work_location,job_description&search="fire department"&$orderby=civil_service_title&$top=5&$skip=5
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 嘗試在您的程式碼中指定查詢。 下列連結說明如何使用預設的簡單語法設定 .NET 和 REST API 的搜尋查詢。
 
 * [使用 .NET SDK 查詢您的索引](./search-get-started-dotnet.md)

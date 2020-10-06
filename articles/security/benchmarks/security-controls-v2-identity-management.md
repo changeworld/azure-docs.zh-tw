@@ -7,22 +7,22 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: a007b8e85440faab6f3d9f35c49ee207ee1597ff
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8a29dbbf365304240283fe4fd5899b58e3bc227c
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91295493"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91741402"
 ---
 # <a name="security-control-v2-identity-management"></a>安全性控制 V2：身分識別管理
 
 身分識別管理涵蓋的控制項可使用 Azure Active Directory 建立安全的身分識別和存取控制。 這包括使用單一登入、增強式驗證、受控識別 (和服務原則) 應用程式、條件式存取，以及帳戶異常監視。
 
-## <a name="id-1-standardize-azure-active-directory-as-the-central-identity-and-authentication-system"></a>識別碼-1：將 Azure Active Directory 標準化為中央身分識別和驗證系統
+## <a name="im-1-standardize-azure-active-directory-as-the-central-identity-and-authentication-system"></a>IM-1：將 Azure Active Directory 標準化為中央身分識別和驗證系統
 
 | Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP800-53 r4 ID (s)  |
 |--|--|--|--|
-| 識別碼-1 | 16.1、16.2、16.4、16。5 | IA-2、IA-8、AC-2、AC-3 |
+| IM-1 | 16.1、16.2、16.4、16。5 | IA-2、IA-8、AC-2、AC-3 |
 
 Azure Active Directory (Azure AD) 是 Azure 的預設身分識別和存取管理服務。 您應標準化 Azure AD，以管理組織的身分識別和存取管理：
 - Microsoft 雲端資源，例如 Azure 入口網站、Azure 儲存體、Azure 虛擬機器 (Linux 和 Windows) 、Azure Key Vault、PaaS 和 SaaS 應用程式。
@@ -55,11 +55,11 @@ Azure Active Directory (Azure AD) 是 Azure 的預設身分識別和存取管理
 
 - [狀態管理](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
-## <a name="id-2-manage-application-identities-securely-and-automatically"></a>識別碼-2：安全且自動地管理應用程式識別碼
+## <a name="im-2-manage-application-identities-securely-and-automatically"></a>IM-2：安全且自動地管理應用程式身分識別
 
 | Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP800-53 r4 ID (s)  |
 |--|--|--|--|
-| 識別碼-2 | N/A | AC-2、AC-3、IA-2、IA-4、IA-9 |
+| IM-2 | N/A | AC-2、AC-3、IA-2、IA-4、IA-9 |
 
 針對非人力帳戶（例如服務或自動化），請使用 Azure 受控識別，而不是建立功能更強大的人力帳戶來存取資源或執行程式碼。 Azure 受控識別可以向支援 Azure AD authentication 的 Azure 服務和資源進行驗證。 透過預先定義的存取授與規則來啟用驗證，以避免在原始程式碼或設定檔中使用硬式編碼的認證。 
 
@@ -83,11 +83,11 @@ Azure Active Directory (Azure AD) 是 Azure 的預設身分識別和存取管理
 
 - [應用程式安全性和 DevSecOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
-## <a name="id-3-use-azure-ad-single-sign-on-sso-for-application-access"></a>識別碼-3：使用 Azure AD 單一登入 (SSO) 來存取應用程式
+## <a name="im-3-use-azure-ad-single-sign-on-sso-for-application-access"></a>IM-3：使用 Azure AD 單一登入 (SSO) 來存取應用程式
 
 | Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP800-53 r4 ID (s)  |
 |--|--|--|--|
-| 識別碼-3 | 4.4 | IA-2、IA-4 |
+| IM-3 | 4.4 | IA-2、IA-4 |
 
 Azure AD 可提供 Azure 資源、雲端應用程式和內部部署應用程式的身分識別和存取管理。 身分識別和存取管理適用于企業身分識別，例如員工，以及外部身分識別，例如合作夥伴、廠商和供應商。
 
@@ -105,11 +105,11 @@ Azure AD 可提供 Azure 資源、雲端應用程式和內部部署應用程式�
 
 - [應用程式安全性和 DevSecOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
-## <a name="id-4-use-strong-authentication-controls-for-all-azure-active-directory-based-access"></a>識別碼-4：針對所有以 Azure Active Directory 為基礎的存取，使用強式驗證控制項
+## <a name="im-4-use-strong-authentication-controls-for-all-azure-active-directory-based-access"></a>IM-4：針對所有以 Azure Active Directory 為基礎的存取，使用強式驗證控制項
 
 | Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP800-53 r4 ID (s)  |
 |--|--|--|--|
-| 識別碼-4 | 4.2、4.4 4.5、11.5、12.11、16。3 | AC-2、AC-3、IA-2、IA-4 |
+| IM-4 | 4.2、4.4 4.5、11.5、12.11、16。3 | AC-2、AC-3、IA-2、IA-4 |
 
 Azure AD 透過多重要素驗證 (MFA) 和強式無密碼方法來支援強式驗證控制項。  
 - 多重要素驗證：啟用 Azure AD MFA，並遵循 MFA 設定的 Azure 資訊安全中心身分識別和存取管理建議。 MFA 可以根據登入條件和風險因素，在所有使用者、選取使用者或依使用者層級強制執行。 
@@ -140,11 +140,11 @@ Azure AD 透過多重要素驗證 (MFA) 和強式無密碼方法來支援強式�
 
 - [應用程式安全性和 DevSecOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
-## <a name="id-5-monitor-and-alert-on-account-anomalies"></a>識別碼-5：監視和警示帳戶異常
+## <a name="im-5-monitor-and-alert-on-account-anomalies"></a>IM-5：監視和警示帳戶異常
 
 | Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP800-53 r4 ID (s)  |
 |--|--|--|--|
-| 識別碼-5 | 4.8、4.9、16.12、16.13 | AC-2、AC-3、AC-7、AU-6 |
+| IM-5 | 4.8、4.9、16.12、16.13 | AC-2、AC-3、AC-7、AU-6 |
 
 Azure AD 提供下列資料來源： 
 -   登入 – 登入報告會提供受控應用程式和使用者登入活動的使用情況相關資訊。
@@ -185,11 +185,11 @@ Azure 進階威脅防護 (ATP) 是一種安全性解決方案，可使用內部�
 
 - [狀態管理](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
-## <a name="id-6-restrict-azure-resource-access-based-on-conditions"></a>識別碼-6：根據條件限制 Azure 資源存取
+## <a name="im-6-restrict-azure-resource-access-based-on-conditions"></a>IM-6：根據條件限制 Azure 資源存取
 
 | Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP800-53 r4 ID (s)  |
 |--|--|--|--|
-| 識別碼-6 | N/A | AC-2、AC-3 |
+| IM-6 | N/A | AC-2、AC-3 |
 
 根據使用者定義的條件，使用 Azure AD 條件式存取來進行更細微的存取控制，例如要求特定 IP 範圍的使用者登入使用 MFA。 您也可以在不同的使用案例中，透過 Azure AD 條件式存取原則來使用細微的驗證會話管理。 
 
@@ -211,11 +211,11 @@ Azure 進階威脅防護 (ATP) 是一種安全性解決方案，可使用內部�
 
 - [威脅情報](/azure/cloud-adoption-framework/organize/cloud-security-threat-intelligence)
 
-## <a name="id-7-eliminate-unintended-credential-exposure"></a>識別碼-7：消除非預期的認證暴露
+## <a name="im-7-eliminate-unintended-credential-exposure"></a>IM-7：消除非預期的認證暴露
 
 | Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP800-53 r4 ID (s)  |
 |--|--|--|--|
-| 識別碼-7 | 18.1、18。7 | IA-5 |
+| IM-7 | 18.1、18。7 | IA-5 |
 
 執行 Azure DevOps 認證掃描器來識別程式碼中的認證。 認證掃描器也鼓勵將探索到的認證移至更安全的位置，例如 Azure Key Vault。
 
@@ -233,11 +233,11 @@ Azure 進階威脅防護 (ATP) 是一種安全性解決方案，可使用內部�
 
 - [狀態管理](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
-## <a name="id-8-secure-user-access-to-legacy-applications"></a>識別碼-8：安全地存取繼承應用程式的使用者
+## <a name="im-8-secure-user-access-to-legacy-applications"></a>IM-8：安全地存取繼承應用程式的使用者
 
 | Azure 識別碼 | CIS 控制7.1 識別碼 (s)  | NIST SP800-53 r4 ID (s)  |
 |--|--|--|--|
-| 識別碼-8 | 14.6 | AC-2、AC-3、SC-11 |
+| IM-8 | 14.6 | AC-2、AC-3、SC-11 |
 
 確定您具有適用于繼承應用程式的新式存取控制和會話監視，以及它們所儲存和處理的資料。 雖然 Vpn 通常是用來存取繼承應用程式，但它們通常只會有基本的存取控制和有限的會話監視。
 
@@ -258,4 +258,3 @@ Azure AD 應用程式 Proxy 可讓您將舊版內部部署應用程式發佈至�
 - [基礎結構和端點安全性](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
 - [應用程式安全性和 DevSecOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
-

@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 718a01abacf6f2c3cbc9523cc644aca02dc5ff49
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 55df425367cc8295ef6a3899e2edb47669fe57b7
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89321186"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91741171"
 ---
 # <a name="restore-or-remove-a-recently-deleted-user-using-azure-active-directory"></a>使用 Azure Active Directory 將最近刪除的使用者還原或移除
 刪除使用者之後，其帳戶會維持在暫時停權狀態 30 天。 在這 30 天期間，可以還原該使用者帳戶及其所有屬性。 30 天期限過後，系統會自動將該使用者永久刪除。
@@ -77,9 +77,9 @@ ms.locfileid: "89321186"
 
 2. 選取 [永久刪除]****。
 
-    ![[使用者 - 已刪除的使用者] 頁面上顯示反白的 [還原使用者] 選項](media/active-directory-users-restore/users-deleted-users-permanent-delete-user.png)
+    ![已反白顯示刪除使用者選項的使用者-已刪除使用者頁面](media/active-directory-users-restore/users-deleted-users-permanent-delete-user.png)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 還原或刪除使用者之後，您可以執行下列基本程序：
 
 - [新增或刪除使用者](add-users-azure-active-directory.md)

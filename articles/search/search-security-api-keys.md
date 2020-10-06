@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 1fa464eca69f50fba7fa125212b85e0f7f63bcc9
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.date: 10/05/2020
+ms.openlocfilehash: 60c5051b403d3072292a03c60d7cba95bd0cf1d7
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89294776"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91740627"
 ---
 # <a name="create-and-manage-api-keys-for-an-azure-cognitive-search-service"></a>建立及管理 Azure 認知搜尋服務的 api 金鑰
 
@@ -21,7 +21,7 @@ ms.locfileid: "89294776"
 
 金鑰會在服務佈建期間與您的搜尋服務一起建立。 您可以在 [Azure 入口網站](https://portal.azure.com)中檢視及取得金鑰值。
 
-![入口網站頁面、取得設定、金鑰區段](media/search-manage/azure-search-view-keys.png)
+:::image type="content" source="media/search-manage/azure-search-view-keys.png" alt-text="入口網站頁面、取得設定、金鑰區段" border="false":::
 
 ## <a name="what-is-an-api-key"></a>什麼是 API 金鑰
 
@@ -47,7 +47,7 @@ API 金鑰是由隨機產生的數字和字母所組成的字串。 透過[角�
 2. 列出您訂用帳戶的[搜尋服務](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。
 3. 選取服務，然後在 [總覽] 頁面上，按一下 [**設定**  > **金鑰**] 以查看管理員和查詢金鑰。
 
-   ![入口網站頁面、視圖設定、金鑰區段](media/search-security-overview/settings-keys.png)
+   :::image type="content" source="media/search-security-overview/settings-keys.png" alt-text="入口網站頁面、取得設定、金鑰區段" border="false":::
 
 ## <a name="create-query-keys"></a>建立查詢金鑰
 
@@ -61,7 +61,7 @@ API 金鑰是由隨機產生的數字和字母所組成的字串。 透過[角�
 4. 按一下 [ **管理查詢金鑰**]。
 5. 使用已為您的服務產生的查詢金鑰，或建立最多50個新的查詢金鑰。 預設的查詢金鑰未命名，但可以命名其他查詢金鑰以進行管理。
 
-   ![建立或使用查詢金鑰](media/search-security-overview/create-query-key.png) 
+   :::image type="content" source="media/search-security-overview/create-query-key.png" alt-text="入口網站頁面、取得設定、金鑰區段" border="false":::
 
 > [!Note]
 > 在 [c # 中查詢 Azure 認知搜尋索引時](./search-get-started-dotnet.md)，可以找到顯示查詢金鑰使用方式的程式碼範例。

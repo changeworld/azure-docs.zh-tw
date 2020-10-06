@@ -4,12 +4,12 @@ description: 了解如何在 Azure 中調整您的資源 Web 應用程式、雲�
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: f784ce9eb4c465c83bea28e05e7f423e0b55c947
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b8d16b4e112c9aebe86c60dc01d380d591fc7624
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91294244"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743517"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>開始在 Azure 中自動調整規模
 本文說明如何在 Microsoft Azure 入口網站中為您的資源設定自動調整規模。
@@ -57,7 +57,7 @@ Azure 監視器自動調整僅適用於[虛擬機器擴展集](https://azure.mic
 
    您現在應該會有一個調整規模設定，其會根據 CPU 使用量進行相應放大/相應縮小。
    ![根據 CPU 調整規模][8]
-1. 按一下 [檔案]  。
+1. 按一下 [檔案] 。
 
 恭喜！ 您現在已成功建立第一個調整規模設定，可根據 CPU 使用量自動調整 Web 應用程式的規模。
 
@@ -115,7 +115,9 @@ Azure 監視器自動調整僅適用於[虛擬機器擴展集](https://azure.mic
 
 ## <a name="route-traffic-to-healthy-instances-app-service"></a>將流量路由傳送至狀況良好的實例 (App Service) 
 
-當您相應放大至多個實例時，App Service 可以對實例執行健康情況檢查，只將流量路由傳送至狀況良好的實例。 若要這樣做，請開啟入口網站 App Service，然後選取 [**監視**] 底下的 [**健康情況檢查**]。 選取 [ **啟用** ]，並在您的應用程式上提供有效的 URL 路徑，例如 `/health` 或 `/api/health` 。 按一下 [檔案]  。
+當您相應放大至多個實例時，App Service 可以對實例執行健康情況檢查，只將流量路由傳送至狀況良好的實例。 若要這樣做，請開啟入口網站 App Service，然後選取 [**監視**] 底下的 [**健康情況檢查**]。 選取 [ **啟用** ]，並在您的應用程式上提供有效的 URL 路徑，例如 `/health` 或 `/api/health` 。 按一下 [檔案] 。
+
+若要啟用 ARM 範本的功能，請將 `healthcheckpath` 資源的屬性設定 `Microsoft.Web/sites` 為您網站上的健康情況檢查路徑，例如： `"/api/health/"` 。 若要停用此功能，請將屬性設定回空字串 `""` 。
 
 ### <a name="health-check-path"></a>健康情況檢查路徑
 

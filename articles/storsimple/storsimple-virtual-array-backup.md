@@ -1,6 +1,6 @@
 ---
 title: Microsoft Azure StorSimple Virtual Array 備份教學課程 | Microsoft Docs
-description: 建立 Microsoft Azure StorSimple Virtual Array 的排程和手動備份，並執行專案層級復原，以還原虛擬陣列上已刪除的檔案。
+description: 建立 Microsoft Azure StorSimple Virtual Array 的排程和手動備份，以及執行專案層級復原來還原虛擬陣列上已刪除的檔案。
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,12 +15,12 @@ ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 41cb02e77fa77c5a7452c5e3e0d2080ee3d472d5
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 5c49a46dfcd97f5feb43b0b910476ef3ad6f402a
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88183219"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91742242"
 ---
 # <a name="back-up-shares-or-volumes-on-your-storsimple-virtual-array"></a>備份 StorSimple Virtual Array 上的共用或磁碟區
 
@@ -76,7 +76,7 @@ StorSimple Virtual Array 有預設的備份原則會在每日特定時間 (22:30
    
     依需求備份開始執行，您會看到備份作業已啟動。
    
-    ![正在啟動備份](./media/storsimple-virtual-array-backup/takebackup3m.png) 
+    ![備份開始2](./media/storsimple-virtual-array-backup/takebackup3m.png) 
    
     作業順利完成後會再次通知您。 備份程序接著開始。
    

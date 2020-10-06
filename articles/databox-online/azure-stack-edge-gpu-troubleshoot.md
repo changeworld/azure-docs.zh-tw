@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: troubleshooting
 ms.date: 08/19/2020
 ms.author: alkohli
-ms.openlocfilehash: 9deb10336d959a3f706cfc0ba970c3b83d5cd0a4
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 026f476b888380b6f262a6a52c064c939e27e931
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90891550"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743194"
 ---
 # <a name="troubleshoot-issues-on-your-azure-stack-edge-pro-gpu-device"></a>針對 Azure Stack Edge Pro GPU 裝置上的問題進行疑難排解 
 
@@ -51,7 +51,7 @@ ms.locfileid: "90891550"
  
 2. 建立支援封裝之後，請選取 [ **下載支援套件**]。 壓縮的套件會下載至您所選的路徑。 您可以將此套件解壓縮並檢視系統記錄檔。
 
-    ![選取新增使用者](media/azure-stack-edge-gpu-troubleshoot/collect-logs-2.png)
+    ![選取 [新增使用者 2]](media/azure-stack-edge-gpu-troubleshoot/collect-logs-2.png)
 
 ## <a name="gather-advanced-security-logs"></a>收集 advanced security 記錄
 
@@ -200,6 +200,6 @@ Advanced security 記錄可以是 Azure Stack Edge Pro 裝置的軟體或硬體�
 |連接逾時。|登入 Azure Stack Edge Pro，然後檢查它是否已解除鎖定。 裝置重新開機時，會一直鎖定，直到有人登入為止。|
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 深入了解[此版本中的已知問題](azure-stack-edge-gpu-2008-release-notes.md)。

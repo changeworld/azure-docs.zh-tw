@@ -14,18 +14,18 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 4560ca2b07826e2a071f515f147dfab8cbec3624
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 81799e6ec366c7429fdb29b85b4ff65d353a8fba
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84704585"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91742412"
 ---
 # <a name="deploy-storsimple-virtual-array--set-up-as-an-iscsi-server-via-azure-portal"></a>部署 StorSimple Virtual Array - 透過 Azure 入口網站設定為 iSCSI 伺服器
 
 ![iSCSI 安裝程序流程](./media/storsimple-virtual-array-deploy3-iscsi-setup/iscsi4.png)
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 [!INCLUDE [storsimple-virtual-array-eol-banner](../../includes/storsimple-virtual-array-eol-banner.md)]
 
@@ -33,7 +33,7 @@ ms.locfileid: "84704585"
 
 完成此處描述的程序需要大約 30 分鐘至 1 個小時。 這篇文章中的資訊僅適用於 StorSimple Virtual Array。
 
-## <a name="setup-prerequisites"></a>安裝的必要條件
+## <a name="setup-prerequisites"></a>安裝必要條件
 
 在您設定及安裝 StorSimple Virtual Array 之前，請先確定：
 
@@ -77,7 +77,7 @@ ms.locfileid: "84704585"
 5. DNS 伺服器是必要的，因為在裝置嘗試與雲端儲存體服務提供者通訊時，或是在根據名稱來解析已設定為檔案伺服器的裝置時，就需要使用 DNS 伺服器。 在 [網路設定]**** 頁面的 [DNS 伺服器]**** 下方：
    
    1. 系統會自動設定主要及次要 DNS 伺服器。 如果您選擇設定靜態 IP 位址，就可以指定 DNS 伺服器。 為了達到高可用性，我們建議您設定主要及次要 DNS 伺服器。
-   2. 按一下 [套用] 。 這將會套用並驗證網路設定。
+   2. 按一下 [套用]。 這將會套用並驗證網路設定。
 6. 在 [裝置設定] **** 頁面上：
    
    1. 為裝置指派唯一的 [名稱] **** 。 這個名稱可以有 1 至 15 個字元，且可以包含字母、數字和連字號。
@@ -93,17 +93,17 @@ ms.locfileid: "84704585"
    4. 此時會出現一個對話方塊。 請以指定格式輸入網域認證。 按一下核取圖示  ![核取圖示](./media/storsimple-virtual-array-deploy3-iscsi-setup/image15.png). 系統將會驗證該網域認證。 如果認證不正確，畫面會出現錯誤訊息。
       
        ![認證](./media/storsimple-virtual-array-deploy3-iscsi-setup/image8.png)
-   5. 按一下 [套用] 。 這將會套用並驗證裝置設定。
+   5. 按一下 [套用]。 這將會套用並驗證裝置設定。
 7. (可省略) 設定 Web Proxy 伺服器。 雖然 Web Proxy 設定是選用的，但請注意，如果您使用 Web Proxy，就只能在此處設定它。
    
     ![設定 Web Proxy](./media/storsimple-virtual-array-deploy3-iscsi-setup/image9.png)
    
     在 [Web Proxy] **** 頁面上：
    
-   1. 提供此格式的**Web PROXY URL** ： *HTTP： \/ /host-IP 位址*或*FQDN：埠號碼*。 請注意，此處不支援 HTTPS URL。
+   1. 以下列格式提供 **Web PROXY URL** ： *HTTP： \/ /host-IP 位址* 或 *FQDN：埠號碼*。 請注意，此處不支援 HTTPS URL。
    2. 將 [驗證]**** 指定為 [基本]**** 或 [無]****。
    3. 如果您要使用驗證功能，您也必須提供 [使用者名稱]**** 和 [密碼]****。
-   4. 按一下 [套用] 。 這將會驗證並套用您設定的 Web Proxy 設定。
+   4. 按一下 [套用]。 這將會驗證並套用您設定的 Web Proxy 設定。
 8. (可省略) 設定裝置的時間設定，例如時區，以及主要和次要 NTP 伺服器。 NTP 伺服器是必要的，因為您的裝置必須讓時間同步，才能與您的雲端服務提供者進行驗證。
    
     ![時間設定](./media/storsimple-virtual-array-deploy3-iscsi-setup/image10.png)
@@ -113,11 +113,11 @@ ms.locfileid: "84704585"
    1. 根據裝置部署的地理位置，從下拉式清單中選取 [時區] **** 。 裝置的預設時區是太平洋標準時間。 裝置將針對所有排程的操作使用這個時區。
    2. 指定裝置的 [主要 NTP 伺服器] **** ，或是接受預設值 time.windows.com。 請確定您的網路允許 NTP 流量從您的資料中心通過網際網路。
    3. (選擇性) 指定裝置的 [次要 NTP 伺服器] **** 。
-   4. 按一下 [套用] 。 這將會驗證並套用您設定的時間設定。
+   4. 按一下 [套用]。 這將會驗證並套用您設定的時間設定。
 9. 設定裝置的雲端設定。 在此步驟中，您將會完成本機裝置設定，然後向您的 StorSimple 裝置管理員服務註冊裝置。
    
    1. 輸入您在[部署 StorSimple Virtual Array：準備入口網站](storsimple-virtual-array-deploy1-portal-prep.md#step-2-get-the-service-registration-key)一文的＜步驟 2：取得服務註冊金鑰＞**** 中取得的「服務註冊金鑰」****。
-   2. 如果這不是您向此服務註冊的第一個裝置，您將需要提供**服務資料加密金鑰**。 這個金鑰需要與服務註冊金鑰搭配使用，才能向 StorSimple 裝置管理員服務註冊其他裝置。 如需詳細資訊，請參閱使用本機 Web UI 來 [取得服務資料加密金鑰](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key) 。
+   2. 如果這不是您向此服務註冊的第一個裝置，您將必須提供 **服務資料加密金鑰**。 這個金鑰需要與服務註冊金鑰搭配使用，才能向 StorSimple 裝置管理員服務註冊其他裝置。 如需詳細資訊，請參閱使用本機 Web UI 來 [取得服務資料加密金鑰](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key) 。
    3. 按一下 [註冊] 。 這將讓裝置重新啟動。 您可能需要等待 2 至 3 分鐘，裝置才會註冊成功。 裝置重新啟動之後，您將會看到登入頁面。
       
       ![註冊裝置](./media/storsimple-virtual-array-deploy3-iscsi-setup/image11.png)
@@ -125,7 +125,7 @@ ms.locfileid: "84704585"
 11. 瀏覽至服務的 [裝置]**** 刀鋒視窗。 如果您有大量資源，請依序按一下 [所有資源]****、您的服務名稱 (如有必要，請搜尋) 及 [裝置]****。
 12. 在 [裝置]**** 刀鋒視窗上，查閱狀態來確認裝置已成功連接至服務。 裝置狀態應該是 [準備好進行設定]****。
     
-    ![註冊裝置](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis1m.png)
+    ![部署裝置](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis1m.png)
 
 ## <a name="step-2-configure-the-device-as-iscsi-server"></a>步驟 2︰將裝置設定為 iSCSI 伺服器
 
@@ -138,7 +138,7 @@ ms.locfileid: "84704585"
     ![將裝置設定為 iSCSI 伺服器](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis1m.png) 
 2. 按一下裝置，您會看到橫幅訊息，指出裝置已準備好進行設定。
    
-    ![將裝置設定為 iSCSI 伺服器](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis2m.png)  
+    ![將裝置設定為 iSCSI 伺服器2](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis2m.png)  
 3. 按一下裝置命令列上的 [設定]****。 這會開啟 [設定]**** 刀鋒視窗。 在 [設定]**** 刀鋒視窗中，執行下列動作：
    
    * iSCSI 伺服器名稱會自動填入。
@@ -146,13 +146,13 @@ ms.locfileid: "84704585"
    * 指定 32 個字元的加密金鑰，並將它記錄在金鑰管理應用程式中，供日後參考。
    * 選取要與裝置搭配使用的儲存體帳戶。 在這個訂用帳戶中，您可以選取現有的儲存體帳戶，或按一下 [新增]****，從不同的訂用帳戶中選擇帳戶。
      
-     ![將裝置設定為 iSCSI 伺服器](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis4m.png)
+     ![將裝置設定為 iSCSI 伺服器3](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis4m.png)
 4. 按一下 [設定]**** 來完成 iSCSI 伺服器的設定。
    
-    ![將裝置設定為 iSCSI 伺服器](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis5m.png) 
+    ![將裝置設定為 iSCSI 伺服器4](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis5m.png) 
 5. 正在建立 iSCSI 伺服器時會通知您。 成功建立 iSCSI 伺服器之後，[裝置]**** 刀鋒視窗會更新，而且對應的裝置狀態為 [線上]****。
    
-    ![將裝置設定為 iSCSI 伺服器](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis9m.png)
+    ![將裝置設定為 iSCSI 伺服器5](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis9m.png)
 
 ## <a name="step-3-add-a-volume"></a>步驟 3：新增磁碟區
 
@@ -169,17 +169,17 @@ ms.locfileid: "84704585"
      
      反之，階層式磁碟區是精簡佈建。 當您建立階層式磁碟區時，大約 10% 的空間會佈建在本機層上，而 90% 的空間會佈建在雲端中。 舉例來說，如果您佈建 1 TB 的磁碟區，當資料使用階層式磁碟區時，其中 100 GB 會位於本機的空間，900 GB 會位於雲端。 然而這也代表，如果裝置已沒有可用的空間，您就無法佈建階層式共用 (因為那 10% 的空間將無法使用)。
      
-     ![新增磁碟區](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis12.png)
+     ![新增磁片區2](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis12.png)
    * 按一下 [連接的主機]****，選取存取控制記錄 (ACR) (對應於您要連接至此磁碟區的 iSCSI 啟動器，然後按一下 [選取]****。 <br><br> 
 3. 若要新增連接的主機，請按一下 [新增]****，輸入主機的名稱及其 iSCSI 合格名稱 (IQN)，然後按一下 [新增]****。 如果您沒有 IQN，請前往 [附錄 A：取得 Windows Server 主機的 IQN](#appendix-a-get-the-iqn-of-a-windows-server-host)。
    
-      ![新增磁碟區](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis15m.png)
+      ![新增磁片區3](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis15m.png)
 4. 磁碟區設定完成之後，按一下 [確定]****。 將會使用指定的設定來建立磁碟區，您會看到通知。 根據預設，磁碟區的監視及備份功能將會啟用。
    
-     ![新增磁碟區](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis18m.png)
+     ![新增磁片區4](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis18m.png)
 5. 若要確認已成功建立磁碟區，請移至 [磁碟區]**** 刀鋒視窗。 您應該會看到此處列出該磁碟區。
    
-   ![新增磁碟區](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis20m.png)
+   ![新增磁片區5](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis20m.png)
 
 ## <a name="step-4-mount-initialize-and-format-a-volume"></a>步驟 4：掛接、初始化及格式化磁碟區
 
@@ -194,7 +194,7 @@ ms.locfileid: "84704585"
 3. 在 [探索目標入口網站]**** 對話方塊中，提供已啟用 iSCSI 網路介面的 IP 位址，然後按一下 [確定]****。
    
     ![IP 位址](./media/storsimple-virtual-array-deploy3-iscsi-setup/image23.png)
-4. 在 [iSCSI 啟動器屬性]**** 視窗的 [目標]**** 索引標籤上，找到 [探索到的目標]****。 （每個磁片區都是探索到的目標）。裝置狀態應會顯示為 [**非**作用中]。
+4. 在 [iSCSI 啟動器屬性]**** 視窗的 [目標]**** 索引標籤上，找到 [探索到的目標]****。  (每個磁片區將會是探索到的目標。 ) 裝置狀態應該會顯示為 [ **非**作用中]。
    
     ![探索到的目標](./media/storsimple-virtual-array-deploy3-iscsi-setup/image24.png)
 5. 選取目標裝置，然後按一下 [連接]****。 連接裝置之後，狀態應會變更為 [已連接]****。 如需有關如何使用 Microsoft iSCSI 啟動器的詳細資訊，請參閱[安裝和設定 Microsoft iSCSI 啟動器][1]。
@@ -217,7 +217,7 @@ ms.locfileid: "84704585"
 12. 指派一個磁碟機代號給磁碟區，然後按 [下一步] ****。
     
     ![新增磁碟區精靈 2](./media/storsimple-virtual-array-deploy3-iscsi-setup/image30.png)
-13. 輸入要格式化磁碟區所需的參數。 **Windows Server 只支援 NTFS。** 將配置單位大小設定為 64K。 並提供您磁碟區的標籤。 建議的最佳做法是這個名稱與您在 StorSimple Virtual Array 上提供的磁碟區名稱相同。 按 [下一步] 。
+13. 輸入要格式化磁碟區所需的參數。 **Windows Server 只支援 NTFS。** 將配置單位大小設定為 64K。 並提供您磁碟區的標籤。 建議的最佳做法是這個名稱與您在 StorSimple Virtual Array 上提供的磁碟區名稱相同。 按 [下一步]  。
     
     ![新增磁碟區精靈 3](./media/storsimple-virtual-array-deploy3-iscsi-setup/image31.png)
 14. 查看您磁碟區的各個值，然後按一下 [完成] ****。
@@ -230,7 +230,7 @@ ms.locfileid: "84704585"
 
 ## <a name="next-steps"></a>後續步驟
 
-瞭解如何使用本機 web UI 來[管理 StorSimple Virtual Array](storsimple-ova-web-ui-admin.md)。
+瞭解如何使用本機 web UI 來 [管理 StorSimple Virtual Array](storsimple-ova-web-ui-admin.md)。
 
 ## <a name="appendix-a-get-the-iqn-of-a-windows-server-host"></a>附錄 A：取得 Windows Server 主機的 IQN
 

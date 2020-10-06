@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: 0a7dab1129eb88d7e58bab8a827d745596bc218d
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 6af095c7abdb9aa61e57d543ff2ab2f9192dadc8
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88183712"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743568"
 ---
 # <a name="change-a-blob-path-from-the-default-path"></a>變更預設的 blob 路徑
 
@@ -38,7 +38,7 @@ StorSimple 資料管理員服務在轉換資料時，預設會將經過轉換的
 4. 在 [函式應用程式]**** 設定刀鋒視窗中，執行下列步驟︰
 
     1. 提供唯一的 [應用程式名稱]****。
-    2. 從下拉式清單中選取**訂**用帳戶。 這必須是與 StorSimple 資料管理員服務相關聯的訂用帳戶。
+    2. 從下拉式清單中選取 **訂**用帳戶。 這必須是與 StorSimple 資料管理員服務相關聯的訂用帳戶。
     3. 選取 [建立新的]**** 資源群組。
     4. 在 [主控方案]**** 下拉式清單中選取 [取用方案]****。
     5. 指定用來執行函式的位置。 建議您讓 StorSimple 資料管理員服務以及與作業定義相關聯的儲存體帳戶位於相同區域中。
@@ -69,7 +69,7 @@ StorSimple 資料管理員服務在轉換資料時，預設會將經過轉換的
      
 10. 在 [函式] 視窗中，執行 .csx__ 檔案。
 
-    ![建立新的 C# 函式](./media/storsimple-data-manager-change-default-blob-path/new-function-run-csx.png)
+    ![建立新的 c # 函數2](./media/storsimple-data-manager-change-default-blob-path/new-function-run-csx.png)
     
     請執行下列步驟：
 
@@ -179,7 +179,7 @@ StorSimple 資料管理員服務在轉換資料時，預設會將經過轉換的
 
         ![複製儲存體連線名稱](./media/storsimple-data-manager-change-default-blob-path/new-function-storage-connection-name.png)
 
-    3. **儲存**函數。
+    3. **儲存** 函數。
 
         ![儲存函式](./media/storsimple-data-manager-change-default-blob-path/save-function.png)
 
@@ -191,9 +191,9 @@ StorSimple 資料管理員服務在轉換資料時，預設會將經過轉換的
 
     2. 按一下 [+ 新增]。
         
-        ![[檢視檔案] 連結](./media/storsimple-data-manager-change-default-blob-path/new-function-add-file.png)
+        ![加入新的函式新增檔案](./media/storsimple-data-manager-change-default-blob-path/new-function-add-file.png)
     
-    3. **在上輸入project.js**，然後按**enter**。 在 **project.json** 檔案中貼上下列程式碼：
+    3. 輸入 **project.js開啟**，然後按 **enter**。 在 **project.json** 檔案中貼上下列程式碼：
 
         ```
         {
@@ -211,7 +211,7 @@ StorSimple 資料管理員服務在轉換資料時，預設會將經過轉換的
     
     4. 按一下 [檔案] 。
 
-        ![[檢視檔案] 連結](./media/storsimple-data-manager-change-default-blob-path/new-function-project-json.png)
+        ![新增函數專案 json](./media/storsimple-data-manager-change-default-blob-path/new-function-project-json.png)
 
 您已建立 Azure 函式。 每次資料轉換作業產生新的 blob 時就會觸發此函式。
 

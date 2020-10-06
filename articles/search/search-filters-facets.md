@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 10/05/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a9d508afac64e448ca220a36b2be983da85d96b0
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 9360fc000e01e1c52561cbaa3e2f2968e67e2fa2
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89002618"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91740865"
 ---
 # <a name="how-to-build-a-facet-filter-in-azure-cognitive-search"></a>如何在 Azure 認知搜尋中建立 facet 篩選 
 
@@ -29,7 +29,8 @@ ms.locfileid: "89002618"
 
 Facet 是動態且會在查詢中傳回。 搜尋回應會為它們提供用來瀏覽結果的 Facet 類別。 如果您不熟悉 Facet，下列範例是多面向導覽結構的說明。
 
-  ![顯示搜尋對話方塊的影像，並依商務標題群組篩選的搜尋結果。 箭號表示結果是顯示在 facet 導覽結構中的 facet。](./media/search-filters-facets/facet-nav.png)
+:::image type="complex" source="media/search-filters-facets/facet-nav.png" alt-text="篩選的搜尋結果&quot;:::
+「顯示搜尋對話方塊的影像，並依商務標題群組篩選的搜尋結果。 箭號表示結果是顯示在 facet 導覽結構中的 facet " :::image-end:::
 
 多面向導覽的新手，想要更詳細說明嗎？ 瞭解 [如何在 Azure 認知搜尋中執行](search-faceted-navigation.md)多面向導覽。
 

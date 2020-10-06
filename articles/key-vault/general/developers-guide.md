@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 23c64f956821dd2a204a15c37bf0fcdde4d09ba8
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 662c23a29e383800a4591c900e02133c16fa2090
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/05/2020
-ms.locfileid: "91716121"
+ms.locfileid: "91743313"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Azure 金鑰保存庫開發人員指南
 
@@ -51,11 +51,10 @@ Key Vault 管理（類似于其他 Azure 服務）是透過 Azure Resource Manag
 
 Key Vault 使用 Azure AD 驗證，要求 Azure AD 安全性主體授與存取權。 Azure AD 的安全性主體可能是使用者、應用程式服務主體、 [適用于 Azure 資源的受控識別](../../active-directory/managed-identities-azure-resources/overview.md)，或任何類型之安全性主體的群組。
 
-針對安全的應用程式，建議針對部署至 Azure 的應用程式使用受控識別。 如果 Azure 服務不支援受控識別或部署在內部部署的應用程式，則可以 [使用具有憑證的服務主體](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) 。 憑證應儲存在 Key Vault 中，並經常輪替。 
+### <a name="authentication-best-practices"></a>驗證最佳作法
+建議您針對部署至 Azure 的應用程式使用受控識別。 如果您使用的 Azure 服務不支援受控識別，或應用程式是部署在內部部署環境，則有可能的替代方案是 [具有憑證的服務主體](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) 。 在該案例中，憑證應儲存在 Key Vault 中，並經常輪替。 具有秘密的服務主體可用於開發和測試環境，建議您在本機或 Cloud Shell 使用使用者主體。
 
-具有秘密的服務主體可用於開發和測試環境，建議在本機或 Cloud Shell 使用者主體中使用。
-
-針對應用程式開發，您可以在不同的環境和平臺之間使用 Azure 身分識別 SDK，而不需要變更程式碼。 Azure 身分識別已與 Azure CLI、Visual Studio、Visual Studio Code 及其他專案整合。 
+Azure 身分識別用戶端程式庫支援上述驗證案例，並與 Key Vault Sdk 整合。 Azure 身分識別程式庫可以跨不同的環境和平臺使用，而不需要變更您的程式碼。 Azure 身分識別也會自動從使用 Azure CLI、Visual Studio、Visual Studio Code 及其他專案登入 Azure 使用者的驗證權杖中取出。 
 
 如需詳細資訊，請參閱 
 

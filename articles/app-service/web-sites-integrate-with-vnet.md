@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/05/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 433d519cc71b8bb218569679c94142658f3c9416
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 141649f7620063b58134caaa878162f3a7e767e7
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91255229"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91739899"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>將您的應用程式與 Azure 虛擬網路整合
 
@@ -144,7 +144,7 @@ VNet 中所定義的路由用於將流量從您的應用程式導向至 VNet。 
 
 使用需要閘道的 VNet 整合功能時，需支付三個相關費用：
 
-* **App Service 方案定價層費用**：您的應用程式必須是「標準」、「進階」或「進階 V2」App Service 方案中包含的應用程式。 如需那些費用的詳細資訊，請參閱 [App Service 定價][ASPricing]。
+* **App Service 規劃定價層費用**：您的應用程式必須位於 Standard、Premium、>premiumv2 或 PremiumV3 App Service 方案中。 如需那些費用的詳細資訊，請參閱 [App Service 定價][ASPricing]。
 * **資料傳輸成本**：即使 VNet 位於相同的資料中心，也需要對資料輸出付費。 [資料傳輸定價詳細資料][DataPricing]中會說明那些費用。
 * **VPN 閘道成本**：點對站 VPN 所需的虛擬網路閘道需付費使用。 如需詳細資訊，請參閱 [VPN 閘道定價][VNETPricing]。
 

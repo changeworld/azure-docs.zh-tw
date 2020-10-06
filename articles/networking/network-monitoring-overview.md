@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: agummadi
-ms.openlocfilehash: 5e2d3f0b5abcd7a9dcd4f49c120353adacffcb31
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 36e41db6e1a3cff13f31f0abf2e83e872dfd7c49
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91399647"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91742327"
 ---
 # <a name="network-monitoring-solutions"></a>網路監視解決方案 
 
@@ -103,7 +103,7 @@ Expressroute 的 NPM 提供對於 Azure 私用對等連線和 Microsoft 對等�
 
 流量分析會為您提供可採取動作的資訊，從而協助您稽核貴組織的網路活動、保護應用程式和資料、將工作負載效能最佳化並保持符合規範。
 
-![顯示跨區域流量的地理資訊地圖](../network-watcher/media/traffic-analytics/geo-map-view-showcasing-traffic-distribution-to-countries-and-continents.png) 
+![顯示區域2間流量的地理地圖](../network-watcher/media/traffic-analytics/geo-map-view-showcasing-traffic-distribution-to-countries-and-continents.png) 
 
 相關連結：
 * [部落格文章](https://aka.ms/trafficanalytics)、[文件](https://aka.ms/trafficanalyticsdocs)、[常見問題集](https://docs.microsoft.com/azure/network-watcher/traffic-analytics-faq)

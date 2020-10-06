@@ -16,12 +16,12 @@ ms.date: 07/27/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99ebac32193f764059bea2a30b6ddbce879938a6
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 1a602405065a41cb26b2ae5303d12c45ed21616f
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89275918"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91741188"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>針對 Azure Active Directory 傳遞驗證進行疑難排解
 
@@ -92,10 +92,11 @@ ms.locfileid: "89275918"
 | 80002 | 驗證代理程式的密碼驗證要求已逾時。 | 檢查是否可以從驗證代理程式連線到您的 Active Directory。
 | 80003 | 驗證代理程式收到無效的回應。 | 如果有多位使用者發生一樣的問題，請檢查您的 Active Directory 設定。
 | 80004 | 登入要求中使用的使用者主體名稱 (UPN) 不正確。 | 要求使用者以正確的使用者名稱登入。
-| 80005 | 驗證代理程式：發生錯誤。 | 暫時性錯誤。 請稍後再試一次。
+| 80005 | 驗證代理程式：發生錯誤。 | 暫時性錯誤。 請稍後再試。
 | 80007 | 驗證代理程式無法連線至 Active Directory。 | 檢查是否可以從驗證代理程式連線到您的 Active Directory。
 | 80010 | 驗證代理程式無法連線將密碼解密。 | 如果問題一再出現，請安裝並註冊新的驗證代理程式。 然後解除安裝目前的代理程式。 
 | 80011 | 驗證代理程式無法擷取解密金鑰。 | 如果問題一再出現，請安裝並註冊新的驗證代理程式。 然後解除安裝目前的代理程式。
+| 80014 | 超過最大經過時間後，驗證要求會回應。 | 驗證代理程式已超時。開啟支援票證，並提供錯誤碼、相互關聯識別碼和時間戳記，以取得有關此錯誤的詳細資料
 
 >[!IMPORTANT]
 >傳遞驗證代理程式會藉由呼叫 [Win32 LOGONUSER API](/windows/win32/api/winbase/nf-winbase-logonusera)來驗證使用者的使用者名稱和 Active Directory 密碼，藉以驗證 Azure AD 使用者。 如此一來，如果您已在 Active Directory 中設定 [登入] 設定以限制工作站登入存取，您也必須將裝載傳遞驗證代理程式的伺服器新增至 [登入] 伺服器的清單。 若無法這樣做，將會封鎖使用者登入 Azure AD。

@@ -7,13 +7,13 @@ author: tchristiani
 ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 05/19/2020
-ms.openlocfilehash: b428ff4a9a4f4b9110e88dba57cfad20f2221cf1
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 10/05/2020
+ms.openlocfilehash: 941d7f54bcb44653280abe264ff1cffbeae33679
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936158"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743177"
 ---
 # <a name="debug-sessions-in-azure-cognitive-search"></a>Azure 認知搜尋中的 Debug 話
 
@@ -35,8 +35,7 @@ ms.locfileid: "88936158"
 
 若要啟動偵錯工作階段，您必須擁有現有的 AI 擴充管線，包括：資料來源、技能、索引子和索引。 若要設定偵錯工作階段，您必須為工作階段命名，並提供一般用途的儲存體帳戶，以在索引子執行期間用來快取技能執行。 您也必須選取將要執行的索引子。 索引子具有儲存至資料來源、技能和索引的參考。 偵錯工作階段會預設為資料來源中的第一份文件，或者您可以在資料來源中指定要逐步執行的文件。
 
-> [!div class="mx-imgBorder"]
-> ![建立偵錯工作階段](media/cognitive-search-debug/debug-session-new.png)
+> :::image type="content" source="media/cognitive-search-debug/debug-session-new.png" alt-text="建立偵錯工作階段":::
 
 ## <a name="debug-session-features"></a>偵錯工作階段功能
 
@@ -52,8 +51,7 @@ ms.locfileid: "88936158"
 
 選取圖表中的技能會反白顯示與其連線的技能、建立其輸入的節點，以及接受其輸出的節點。 每個技能節點都會顯示其類型、錯誤或警告，以及執行計數。 [技能圖表] 是您將選取哪些技能要用來偵錯或加強的位置。 當您選取技能時，其詳細資料就會顯示在圖表右側的 [技能詳細資料] 窗格中。
 
-> [!div class="mx-imgBorder"]
-> ![技能圖表](media/cognitive-search-debug/skills-graph.png)
+> :::image type="content" source="media/cognitive-search-debug/skills-graph.png" alt-text="建立偵錯工作階段":::
 
 ## <a name="skill-details"></a>技能詳細資料
 
@@ -75,8 +73,7 @@ ms.locfileid: "88936158"
 
 [豐富型資料結構] 窗格會透過技能顯示文件的擴充，詳述每個擴充的內容和原始技能。 [運算式評估工具] 也可以用來檢視每個擴充的內容。
 
-> [!div class="mx-imgBorder"]
-> ![豐富型資料結構](media/cognitive-search-debug/enriched-data-structure-display.png)
+> :::image type="content" source="media/cognitive-search-debug/enriched-data-structure-display.png" alt-text="建立偵錯工作階段":::
 
 ## <a name="expression-evaluator"></a>運算式評估工具
 

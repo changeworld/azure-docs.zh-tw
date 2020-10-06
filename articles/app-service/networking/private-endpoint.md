@@ -9,19 +9,19 @@ ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 16ce03ad8d6af1908a9ea4d3b7759bb5eb3c1139
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 9f593bd5e1d4970b43b25c434abfa87177b72066
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88961545"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743007"
 ---
 # <a name="using-private-endpoints-for-azure-web-app-preview"></a>使用 Azure Web 應用程式的私人端點 (預覽)
 
 > [!Note]
 > 在預覽重新整理中，我們發行了資料外泄保護功能。
 >
-> 預覽版適用于 >premiumv2 Windows 和 Linux Web Apps 和彈性 Premium 功能的所有公用區域。 
+> 預覽版適用于 >premiumv2 和 PremiumV3 Windows 和 Linux 應用程式和彈性高階功能的所有公用區域。 
 
 您可以使用 Azure Web 應用程式的私人端點來允許位於私人網路中的用戶端透過 Private Link 安全地存取應用程式。 私人端點會使用 Azure VNet 位址空間中的 IP 位址。 私人網路上的用戶端與 Web 應用程式之間的網路流量會流經 VNet 和 Microsoft 骨幹網路上的 Private Link，以排除公開網際網路的風險。
 

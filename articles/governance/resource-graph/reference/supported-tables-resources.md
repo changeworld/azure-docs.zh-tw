@@ -1,15 +1,15 @@
 ---
 title: 支援的 Azure Resource Manager 資源類型
 description: 提供 Azure Resource Graph 和變更歷程記錄所支援的 Azure Resource Manager 資源類型清單。
-ms.date: 09/15/2020
+ms.date: 09/30/2020
 ms.topic: reference
 ms.custom: generated
-ms.openlocfilehash: a52378422c6ee740f30f155cdfb0839a3f281abe
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 385ee96fa821b8d90ff529fecb52dbec9803dea2
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90600597"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91739998"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Azure Resource Graph 資料表和資源類型參考
 
@@ -119,6 +119,7 @@ Azure Resource Graph 支援下列 [Azure Resource Manager](../../../azure-resour
 - microsoft.cdn/profiles
 - microsoft.cdn/profiles/endpoints
 - microsoft.certificateregistration/certificateorders
+- microsoft 混亂/chaosexperiments
 - microsoft.classiccompute/domainnames
 - microsoft.classiccompute/virtualmachines
 - microsoft.classicnetwork/networksecuritygroups
@@ -400,6 +401,8 @@ Azure Resource Graph 支援下列 [Azure Resource Manager](../../../azure-resour
 - microsoft.operationalinsights/workspaces
 - microsoft.operationsmanagement/solutions
 - microsoft.operationsmanagement/views
+- orbital/contactprofiles
+- orbital/spacecrafts
 - microsoft.peering/peerings
 - microsoft.peering/peeringservices
 - microsoft.portal/dashboards
@@ -420,6 +423,10 @@ Azure Resource Graph 支援下列 [Azure Resource Manager](../../../azure-resour
 - microsoft.resources/templatespecs/versions
 - microsoft.saas/applications
 - microsoft.scheduler/jobcollections
+- microsoft scvmm/雲端
+- microsoft scvmm/virtualmachines
+- microsoft scvmm/virtualmachinetemplates
+- microsoft scvmm/virtualnetworks
 - microsoft scvmm/vmmservers
 - microsoft.search/searchservices
 - microsoft.security/automations
@@ -436,6 +443,7 @@ Azure Resource Graph 支援下列 [Azure Resource Manager](../../../azure-resour
 - microsoft.servicefabricmesh/volumes
 - microsoft.serviceshub/connectors
 - microsoft.signalrservice/signalr
+- singularity/帳戶
 - microsoft.solutions/appliancedefinitions
 - microsoft.solutions/appliances
 - microsoft.solutions/applicationdefinitions
@@ -531,6 +539,7 @@ Azure Resource Graph 支援下列 [Azure Resource Manager](../../../azure-resour
 - wandisco.fusion/fusiongroups/onpremzones
 - wandisco.fusion/fusiongroups/replicationrules
 - wandisco 的融合/migrators
+- wandisco. 融合/migrators/livedatamigrations
 - wandisco 的融合/migrators/目標
 
 ## <a name="securityresources"></a>securityresources

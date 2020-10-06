@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: troubleshooting
 ms.date: 08/11/2020
 ms.author: alkohli
-ms.openlocfilehash: bc4afa0d26f6ba256354d3802a0c4f9b9b04088e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: f668136713024ba57d72bf5a457cd249742a3b11
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90903654"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91742021"
 ---
 # <a name="troubleshoot-your-azure-stack-edge-pro-issues"></a>針對您的 Azure Stack Edge Pro 問題進行疑難排解
 
@@ -55,7 +55,7 @@ ms.locfileid: "90903654"
 
 2. 建立支援封裝之後，請選取 [ **下載支援套件**]。 壓縮的套件會下載至您所選的路徑。 您可以將此套件解壓縮並檢視系統記錄檔。
 
-    ![按一下 [新增使用者]](media/azure-stack-edge-troubleshoot/collect-logs-2.png)
+    ![按一下 [新增使用者 2]](media/azure-stack-edge-troubleshoot/collect-logs-2.png)
 
 ## <a name="use-logs-to-troubleshoot"></a>使用記錄進行疑難排解
 
@@ -82,6 +82,6 @@ ms.locfileid: "90903654"
 
     [!INCLUDE [data-box-edge-edge-upload-error-reference](../../includes/data-box-edge-gateway-upload-error-reference.md)]
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * 深入了解[此版本中的已知問題](data-box-gateway-release-notes.md)。

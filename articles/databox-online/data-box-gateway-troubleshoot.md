@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 入口網站對 Azure 資料箱閘道進行疑難排解 | Micrsoft Docs
-description: 瞭解如何針對 Azure 資料箱閘道上的問題進行疑難排解。 您可以執行診斷、收集支援的資訊，以及使用記錄進行疑難排解。
+description: 瞭解如何針對 Azure 資料箱閘道的問題進行疑難排解。 您可以執行診斷、收集支援的資訊，以及使用記錄來進行疑難排解。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: troubleshooting
 ms.date: 03/20/2019
 ms.author: alkohli
-ms.openlocfilehash: e49cc400fd8af3d284a223363f3384063d862981
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: e5280805090a83245e287c0b15a1735ee41e934e
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87927176"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91741800"
 ---
 # <a name="troubleshoot-your-azure-data-box-gateway-issues"></a>針對 Azure 資料箱閘道問題進行疑難排解
 
@@ -30,13 +30,13 @@ ms.locfileid: "87927176"
 
 若要診斷任何裝置錯誤並進行疑難排解，您可以執行診斷測試。 在您裝置的本機 Web UI 中執行下列步驟，以執行診斷測試。
 
-1. 在本機 Web UI 中，移至 [疑難排解] > [診斷測試]****。 選取您想要執行的測試，然後按一下 [執行測試]****。 這會執行測試，以診斷您的網路、裝置、Web Proxy、時間或雲端設定的任何可能問題。 您會收到裝置正在執行測試的通知。
+1. 在本機 Web UI 中，移至 [疑難排解] > [診斷測試]****。 選取您要執行的測試，然後按一下 [ **執行測試**]。 這會執行測試，以診斷您的網路、裝置、Web Proxy、時間或雲端設定的任何可能問題。 您會收到裝置正在執行測試的通知。
 
     ![按一下 [新增使用者]](media/data-box-gateway-troubleshoot/run-diag-1.png)
  
 2. 測試完成後會顯示結果。 如果測試失敗，則會顯示建議動作的 URL。 您可以按一下此 URL，以檢視建議的動作。 
  
-    ![按一下 [新增使用者]](media/data-box-gateway-troubleshoot/run-diag-2.png)
+    ![按一下 [新增使用者 2]](media/data-box-gateway-troubleshoot/run-diag-2.png)
 
 
 ## <a name="collect-support-package"></a>收集支援套件
@@ -47,11 +47,11 @@ ms.locfileid: "87927176"
 
 1. 在本機 Web UI 中，移至 [疑難排解] > [支援]****。 按一下 [建立支援套件]****。 系統會開始收集支援套件。 套件收集可能需要幾分鐘的時間。
 
-    ![按一下 [新增使用者]](media/data-box-gateway-troubleshoot/collect-logs-1.png)
+    ![按一下 [新增使用者 3]](media/data-box-gateway-troubleshoot/collect-logs-1.png)
  
 2. 建立支援套件之後，按一下 [下載支援套件]****。 壓縮的套件會下載至您所選的路徑。 您可以將套件解壓縮。
 
-    ![按一下 [新增使用者]](media/data-box-gateway-troubleshoot/collect-logs-2.png)
+    ![按一下 [新增使用者 4]](media/data-box-gateway-troubleshoot/collect-logs-2.png)
 
 ## <a name="use-logs-to-troubleshoot"></a>使用記錄進行疑難排解
 
@@ -59,7 +59,7 @@ ms.locfileid: "87927176"
 
 1. 若要檢視錯誤檔案，請移至您的共用，並按一下此共用以檢視內容。 
 
-      ![按一下 [新增使用者]](media/data-box-gateway-troubleshoot/troubleshoot-logs-1.png)
+      ![按一下 [新增使用者 5]](media/data-box-gateway-troubleshoot/troubleshoot-logs-1.png)
 
 2. 按一下 [Microsoft 資料箱閘道]__ 資料夾。 這個資料夾有兩個子資料夾：
 

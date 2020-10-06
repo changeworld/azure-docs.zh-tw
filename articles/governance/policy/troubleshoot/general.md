@@ -1,14 +1,14 @@
 ---
 title: 常見問題疑難排解
 description: 瞭解如何針對建立原則定義、各種 SDK 和 Kubernetes 的附加元件的問題進行疑難排解。
-ms.date: 08/17/2020
+ms.date: 10/05/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: d4ede1703df922196c89a4c1ca4f37cbc95a6297
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 6026dc75187c8a70203a2484380eed70d519599d
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545534"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743432"
 ---
 # <a name="troubleshoot-errors-using-azure-policy"></a>使用 Azure 原則針對錯誤進行疑難排解
 
@@ -52,7 +52,7 @@ Azure 原則會使用 [別名](../concepts/definition-structure.md#aliases) 來�
 
 首先，請等候一段適當的時間讓評估完成，並將相容性結果提供給 Azure 入口網站或 SDK。 若要使用 Azure PowerShell 或 REST API 開始新的評估掃描，請參閱隨 [選評估掃描](../how-to/get-compliance-data.md#on-demand-evaluation-scan)。
 
-### <a name="scenario-evaluation-not-as-expected"></a>案例：評估不符合預期
+### <a name="scenario-compliance-not-as-expected"></a>案例：不符合預期的合規性
 
 #### <a name="issue"></a>問題
 
@@ -64,10 +64,21 @@ Azure 原則會使用 [別名](../concepts/definition-structure.md#aliases) 來�
 
 #### <a name="resolution"></a>解決方案
 
-- 針對預期符合規範的不符合規範資源，請先 [判斷不符合規範的原因](../how-to/determine-non-compliance.md)。 定義與評估屬性值的比較會指出資源不符合規範的原因。
-- 針對預期不符合規範的資源，請依條件讀取原則定義條件並針對資源屬性進行評估。 驗證邏輯運算子會將正確的條件群組在一起，而且您的條件不會反轉。
+遵循下列步驟來針對您的原則定義進行疑難排解：
 
-如果原則指派的合規性顯示 `0/0` 資源，則不會判斷任何資源是否適用于指派範圍內。 檢查原則定義和指派範圍。
+1. 首先，請等候一段適當的時間讓評估完成，並將相容性結果提供給 Azure 入口網站或 SDK。 若要使用 Azure PowerShell 或 REST API 開始新的評估掃描，請參閱隨 [選評估掃描](../how-to/get-compliance-data.md#on-demand-evaluation-scan)。
+1. 請檢查指派參數和指派範圍是否已正確設定。
+1. 檢查 [原則定義模式](../concepts/definition-structure.md#mode)：
+   - 所有資源類型的「全部」模式。
+   - 如果原則定義檢查標記或位置，則為「已編制索引」模式。
+1. 檢查資源範圍是否未被 [排除](../concepts/assignment-structure.md#excluded-scopes) 或 [豁免](../concepts/exemption-structure.md)。
+1. 如果原則指派的合規性顯示 `0/0` 資源，則不會判斷任何資源是否適用于指派範圍內。 檢查原則定義和指派範圍。
+1. 針對預期符合規範的不符合規範資源，請檢查 [判斷不符合規範的原因](../how-to/determine-non-compliance.md)。 定義與評估屬性值的比較會指出資源不符合規範的原因。
+   - 如果 **目標值** 錯誤，請修改原則定義。
+   - 如果 **目前的值** 錯誤，請透過驗證資源承載 `resources.azure.com` 。
+1. 檢查 [疑難排解：](#scenario-enforcement-not-as-expected) 其他常見問題和解決方案的強制性不如預期。
+
+如果您仍有重複和自訂內建原則定義或自訂定義的問題，請在 **撰寫原則** 下建立支援票證，以正確地路由問題。
 
 ### <a name="scenario-enforcement-not-as-expected"></a>案例：不符合預期的強制
 
@@ -81,7 +92,18 @@ Azure 原則會使用 [別名](../concepts/definition-structure.md#aliases) 來�
 
 #### <a name="resolution"></a>解決方案
 
-將 **enforcementMode** 更新為 _Enabled_。 這項變更可讓 Azure 原則對此原則指派中的資源採取動作，並將專案傳送至活動記錄。 如果已啟用 **enforcementMode** ，請參閱 [不符合預期](#scenario-evaluation-not-as-expected) 的動作課程的評估。
+遵循下列步驟來針對您的原則指派強制進行疑難排解：
+
+1. 首先，請等候一段適當的時間讓評估完成，並將相容性結果提供給 Azure 入口網站或 SDK。 若要使用 Azure PowerShell 或 REST API 開始新的評估掃描，請參閱隨 [選評估掃描](../how-to/get-compliance-data.md#on-demand-evaluation-scan)。
+1. 請檢查指派參數和指派範圍是否已正確設定，而且已_啟用_ **enforcementMode** 。 
+1. 檢查 [原則定義模式](../concepts/definition-structure.md#mode)：
+   - 所有資源類型的「全部」模式。
+   - 如果原則定義檢查標記或位置，則為「已編制索引」模式。
+1. 檢查資源範圍是否未被 [排除](../concepts/assignment-structure.md#excluded-scopes) 或 [豁免](../concepts/exemption-structure.md)。
+1. 確認資源承載符合原則邏輯。 這可以藉由 [捕捉 HAR 追蹤](../../../azure-portal/capture-browser-trace.md) 或檢查 ARM 範本屬性來完成。
+1. 檢查疑難排解：其他常見問題和解決方案的 [合規性不如預期](#scenario-compliance-not-as-expected) 。
+
+如果您仍有重複和自訂內建原則定義或自訂定義的問題，請在 **撰寫原則** 下建立支援票證，以正確地路由問題。
 
 ### <a name="scenario-denied-by-azure-policy"></a>案例： Azure 原則拒絕
 

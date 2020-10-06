@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: 2562e7463ba0a79cf77d21f3bb619f13283c989d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f13e402344111dea28514ed7b0d381b46ff73064
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514929"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743602"
 ---
 # <a name="use-azure-automation-to-trigger-a-job"></a>使用 Azure 自動化來觸發作業
 
@@ -35,24 +35,24 @@ ms.locfileid: "85514929"
 
 ### <a name="set-up-the-automation-account"></a>設定自動化帳戶
 
-1. 在 Azure 入口網站中建立 Azure 執行身分自動化帳戶。 若要這樣做，請移至 [Azure Marketplace] > [所有項目]****，然後搜尋**自動化**。 選取 [**自動化帳戶**]。
+1. 在 Azure 入口網站中建立 Azure 執行身分自動化帳戶。 若要這樣做，請移至 [Azure Marketplace] > [所有項目]****，然後搜尋**自動化**。 選取 [ **自動化帳戶**]。
 
     ![建立執行身分自動化帳戶](./media/storsimple-data-manager-job-using-automation/search-automation-account1.png)
 
 2. 若要新增自動化帳戶，請按一下 [+ 新增]****。
 
-    ![建立執行身分自動化帳戶](./media/storsimple-data-manager-job-using-automation/add-automation-account1.png)
+    ![建立執行為自動化帳戶2](./media/storsimple-data-manager-job-using-automation/add-automation-account1.png)
 
 3. 在 [新增自動化]**** 中：
 
-   1. 提供您的自動化帳戶**名稱**。
+   1. 提供自動化帳戶的 **名稱** 。
    2. 選取連結至 StorSimple 裝置管理員服務的 [訂用帳戶]****。
    3. 建立新的資源群組，或從現有的資源群組中選取。
    4. 選取 [位置] 。
    5. 保持選取預設值 [建立執行身分帳戶]**** 選項。
    6. 若要在儀表板上取得可供快速存取的連結，請核取 [釘選到儀表板]****。 按一下 [建立]。
 
-      ![建立執行身分自動化帳戶](./media/storsimple-data-manager-job-using-automation/create-automation-run-as-account.png)
+      ![建立執行為自動化帳戶3](./media/storsimple-data-manager-job-using-automation/create-automation-run-as-account.png)
     
       成功建立自動化帳戶之後會通知您。
     
@@ -94,11 +94,11 @@ ms.locfileid: "85514929"
 
     ![新增 Runbook 3](./media/storsimple-data-manager-job-using-automation/add-runbook-3.png)
 
-5. 編輯 runbook，然後按一下 [**測試**窗格]。
+5. 編輯 runbook，然後按一下 [ **測試** ] 窗格。
 
     ![新增 Runbook 4](./media/storsimple-data-manager-job-using-automation/add-runbook-4.png)
 
-6. 提供各項參數，例如 StorSimple 資料管理員服務的名稱、相關聯的資源群組，以及作業定義名稱。 **開始**測試。 執行完成後即會產生報告。 如需詳細資訊，請移至如何[測試 Runbook](../automation/automation-first-runbook-textual-powershell.md#step-3---test-the-runbook)。
+6. 提供各項參數，例如 StorSimple 資料管理員服務的名稱、相關聯的資源群組，以及作業定義名稱。 **開始** 測試。 執行完成後即會產生報告。 如需詳細資訊，請移至如何[測試 Runbook](../automation/automation-first-runbook-textual-powershell.md#step-3---test-the-runbook)。
 
     ![新增 Runbook 8](./media/storsimple-data-manager-job-using-automation/add-runbook-8.png)    
 
@@ -110,7 +110,7 @@ ms.locfileid: "85514929"
 
     ![新增 Runbook 7](./media/storsimple-data-manager-job-using-automation/add-runbook-7.png)
 
-9. **啟動**runbook。 在 [啟動 Runbook]**** 中，輸入所有參數。 按一下 [確定]****，以提交並啟動資料轉換作業。
+9. **啟動** runbook。 在 [啟動 Runbook]**** 中，輸入所有參數。 按一下 [確定]****，以提交並啟動資料轉換作業。
 
 10. 若要在 Azure 入口網站中監視作業進度，請移至 StorSimple 資料管理員服務中的 [作業]****。 選取並按一下作業，以檢視作業詳細資料。
 
@@ -118,4 +118,4 @@ ms.locfileid: "85514929"
 
 ## <a name="next-steps"></a>後續步驟
 
-[使用 StorSimple 資料管理員的 UI 來轉換您的資料](storsimple-data-manager-ui.md)。
+[使用 STORSIMPLE 資料管理員 UI 來轉換您的資料](storsimple-data-manager-ui.md)。

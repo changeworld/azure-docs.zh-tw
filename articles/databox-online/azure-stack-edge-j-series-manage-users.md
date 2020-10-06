@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 5f7e8c09a09084b28278667cdeaf94f7e38908cd
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 66967c1fa8f6ca42459559caf46bffb0e5afe925
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90904511"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743585"
 ---
 # <a name="use-the-azure-portal-to-manage-users-on-your-azure-stack-edge-pro"></a>使用 Azure 入口網站管理 Azure Stack Edge Pro 上的使用者
 
@@ -74,7 +74,7 @@ ms.locfileid: "90904511"
 
 2. 從使用者清單中選取使用者，然後選取 [刪除]****。 出現提示時，確認刪除。
 
-    ![選取要刪除的使用者](media/azure-stack-edge-j-series-manage-users/delete-user-2.png)
+    ![選取要刪除的使用者2](media/azure-stack-edge-j-series-manage-users/delete-user-2.png)
 
 使用者清單會更新，以反映出已刪除的使用者。
 

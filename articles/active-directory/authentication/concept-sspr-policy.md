@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 05/27/2020
+ms.date: 10/05/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 990d8ef275982b6d70c51819e47b33f543345023
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: bc6e72a5e5ab9f95ec88b1e8ed711f00b8051208
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91531270"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91741712"
 ---
 # <a name="password-policies-and-account-restrictions-in-azure-active-directory"></a>Azure Active Directory 中的密碼原則和帳戶限制
 
@@ -41,13 +41,15 @@ ms.locfileid: "91531270"
 
 ## <a name="azure-ad-password-policies"></a><a name="password-policies-that-only-apply-to-cloud-user-accounts"></a>Azure AD 密碼原則
 
-密碼原則會套用至直接在 Azure AD 中建立和管理的所有使用者帳戶。 雖然您可以 [設定 Azure AD 密碼保護的自訂禁用密碼](tutorial-configure-custom-password-protection.md)，但無法修改此密碼原則。
+密碼原則會套用至直接在 Azure AD 中建立和管理的所有使用者帳戶。 您可以設定 Azure AD 密碼保護或帳戶鎖定參數 [的自訂禁用密碼](tutorial-configure-custom-password-protection.md) ，但無法修改其中某些密碼原則設定。
 
-除非您啟用 EnforceCloudPasswordPolicyForPasswordSyncedUsers，否則密碼原則不會套用至使用 Azure AD Connect 從內部部署 AD DS 環境同步處理的使用者帳戶。
+依預設，帳戶會在10次失敗的登入嘗試次數錯誤的情況下鎖定。 使用者會被鎖定一分鐘。 後續錯誤的登入嘗試會增加使用者被封鎖的時間。 [智慧鎖定](howto-password-smart-lockout.md)會追蹤最後三個不正確的密碼雜湊，以避免因為相同密碼而累計鎖定計數器。 如果有人多次輸入相同的錯誤密碼，此行為不會造成帳戶鎖定。您可以定義智慧鎖定閾值和持續時間。
 
-以下是定義的密碼原則選項：
+除非您啟用 *EnforceCloudPasswordPolicyForPasswordSyncedUsers*，否則不會將 Azure AD 密碼原則套用至使用 Azure AD Connect 從內部部署 AD DS 環境同步處理的使用者帳戶。
 
-| 屬性 | 需求 |
+已定義下列 Azure AD 密碼原則選項。 除非另有說明，否則您無法變更這些設定：
+
+| 屬性 | 規格需求 |
 | --- | --- |
 | 允許的字元 |<ul><li>A – Z</li><li>a - z</li><li>0 – 9</li> <li>@ # $ % ^ & * - _ ! + = [] {} &#124; \： '，。 ? / \` ~ " ( ) ;</li> <li>空白</li></ul> |
 | 不允許的字元 | Unicode 字元。 |
@@ -57,7 +59,6 @@ ms.locfileid: "91531270"
 | 密碼到期 (讓密碼永遠不會過期)  |<ul><li>預設值： **false** (表示密碼的到期日) 。</li><li>可以使用 `Set-MsolUser` Cmdlet 針對個別使用者帳戶設定該值。</li></ul> |
 | 密碼變更歷程記錄 | 當使用者變更密碼時，*不能*重複使用上次的密碼。 |
 | 密碼重設歷程記錄 | 當使用者重設忘記密碼時，*不能*重複使用上次的密碼。 |
-| 帳戶鎖定 | 使用錯誤的密碼於 10 次失敗的登入嘗試之後，使用者會被封鎖一分鐘。 後續錯誤的登入嘗試會增加使用者被封鎖的時間。 [智慧鎖定](howto-password-smart-lockout.md)會追蹤最後三個不正確的密碼雜湊，以避免因為相同密碼而累計鎖定計數器。 如果有人多次輸入相同的錯誤密碼，此行為不會造成帳戶鎖定。 |
 
 ## <a name="administrator-reset-policy-differences"></a>系統管理員重設原則差異
 

@@ -3,12 +3,12 @@ title: 針對登錄的網路問題進行疑難排解
 description: 存取虛擬網路或防火牆後方的 Azure container registry 時，常見問題的徵兆、原因和解決方式
 ms.topic: article
 ms.date: 10/01/2020
-ms.openlocfilehash: c2ae8609dbd28a1a39a634e3c065030552aefb06
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: f84b11418344bfeaf790377c1d8644fbc7d7d636
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91630945"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743364"
 ---
 # <a name="troubleshoot-network-issues-with-registry"></a>針對登錄的網路問題進行疑難排解
 
@@ -90,6 +90,8 @@ ContainerRegistryLoginEvents 資料表中的登錄資源記錄檔可協助診斷
 如果您想要使用不同 Azure 訂用帳戶中的虛擬網路來限制登錄存取，請確定您已 `Microsoft.ContainerRegistry` 在該訂用帳戶中註冊資源提供者。 使用 Azure 入口網站、Azure CLI 或其他 Azure 工具，為 Azure Container Registry[註冊資源提供者](../azure-resource-manager/management/resource-providers-and-types.md)。
 
 如果網路中已設定 Azure 防火牆或類似的解決方案，請檢查來自其他資源（例如 AKS 叢集）的輸出流量是否已啟用，以連接到登錄端點。
+
+如果已設定私人端點，請確認 DNS 將登錄的公用 FQDN （例如 *myregistry.azurecr.io* ）解析為登錄的私人 IP 位址。 使用網路公用程式（例如 `dig` 或） `nslookup` 進行 DNS 查閱。
 
 相關連結：
 

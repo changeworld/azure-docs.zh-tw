@@ -1,14 +1,14 @@
 ---
 title: 跨租用戶管理體驗
 description: Azure 委派的資源管理能提供跨租用戶管理體驗。
-ms.date: 09/22/2020
+ms.date: 09/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 70356fd3856e517ca8fb3414a4ae2a8ccf28326e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 60eab197e38c7b6ef3b7f2d9442a0b7583f66d09
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91336627"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91739726"
 ---
 # <a name="cross-tenant-management-experiences"></a>跨租用戶管理體驗
 
@@ -120,6 +120,7 @@ Azure PowerShell [>select-azsubscription 指令程式](/powershell/module/Az.Acc
   - 透過自適性網路強化來強化網路安全性群組設定
   - 透過自適性應用程式控制來確保伺服器只會執行適當的應用程式與處理序
   - 透過檔案完整性監視 (FIM) 來監視對重要檔案與登錄的變更
+- 請注意，整個訂用帳戶必須委派給管理租使用者;委派的資源群組不支援 Azure 資訊安全中心案例
 
 [Azure Sentinel](../../sentinel/multiple-tenants-service-providers.md)：
 

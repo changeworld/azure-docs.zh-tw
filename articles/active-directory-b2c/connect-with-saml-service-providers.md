@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 09/09/2020
+ms.date: 10/05/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 09edfc91f98e51a7dce7e98b48f2970ccba33586
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: 9e67f24cf670024432f64487df20b9fca515c006
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89611607"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91740372"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>在 Azure AD B2C 中註冊 SAML 應用程式
 
@@ -252,6 +252,9 @@ Azure AD B2C 利用下列兩種方式的其中一種來達到 SAML 互通性：
   </RelyingParty>
 </TrustFrameworkPolicy>
 ```
+
+> [!NOTE]
+> 當您在執行其他類型的使用者流程 (例如登入、密碼重設或設定檔編輯) 時，此程式基本上與本節所述的相同。 在上述步驟4中，您會將使用者旅程的最後一個步驟從變更 `JWTIssuer` 為 `Saml2AssertionIssuer` 。 在上述的步驟6中，您會在 [信賴憑證者] 區段中，將 **通訊協定** 從變更 `OpenIdConnect` 為 `SAML2` 。
 
 ### <a name="32-upload-and-test-your-policy-metadata"></a>3.2 上傳並測試您的原則中繼資料
 

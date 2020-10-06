@@ -3,19 +3,18 @@ title: Azure Key Vault 安全性
 description: 針對 Azure Key Vault、金鑰和祕密進行存取權限管理。 包含 Key Vault 的驗證和授權模型以及如何保護金鑰保存庫。
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.date: 04/18/2019
+ms.date: 09/30/2020
 ms.author: mbaldwin
-ms.openlocfilehash: b6163ca0cb02670024fe95459f31ac81c4da756c
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.openlocfilehash: c3dd4e5138741a3c035507358830f3572cf92751
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91596354"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91739685"
 ---
 # <a name="azure-key-vault-security"></a>Azure Key Vault 安全性
 
@@ -76,29 +75,16 @@ Key Vault 存取原則可分別授與金鑰、祕密或憑證的權限。 您只
 
 如需有關 Azure Key Vault 網路位址的詳細資訊，請檢閱 [Azure Key Vault 的虛擬網路服務端點](overview-vnet-service-endpoints.md))
 
-### <a name="tls-and-https"></a>TLS 和 HTTPS
+## <a name="tls-and-https"></a>TLS 和 HTTPS
 
 *   Key Vault 前端 (資料平面) 是多租使用者伺服器。 這表示來自不同客戶的金鑰保存庫可以共用相同的公用 IP 位址。 為了達成隔離，每個 HTTP 要求都會與其他要求分開進行驗證和授權。
 *   您可以識別舊版的 TLS 來回報弱點，但因為公用 IP 位址是共用的，所以 key vault 服務小組無法針對傳輸層級的個別金鑰保存庫停用舊版 TLS。
 *   HTTPS 通訊協定可讓用戶端參與 TLS 協商。 **用戶端可以強制執行最新版本的 TLS**，而且每當用戶端執行此動作時，整個連接都會使用對應的層級保護。 Key Vault 仍然支援舊版 TLS 的事實不會影響使用較新 TLS 版本的連線安全性。
 *   儘管 TLS 通訊協定有已知的弱點，但在攻擊者使用具有弱點的 TLS 版本連線時，並沒有任何已知的攻擊可讓惡意代理程式從您的金鑰保存庫中解壓縮任何資訊。 攻擊者仍然需要自行驗證及授權，而且只要合法的用戶端一律與最新的 TLS 版本連線，就無法在舊版的 TLS 版本上洩漏認證。
 
+## <a name="logging-and-monitoring"></a>記錄和監視
 
-## <a name="monitoring"></a>監視
-
-Key Vault 記錄會儲存在保存庫上執行之活動的相關資訊。 Key Vault 記錄：
-
-- 所有已驗證的 REST API 要求，包括失敗的要求
-  - 金鑰保存庫本身的作業。 這些作業包括建立、刪除、設定存取原則，以及更新金鑰保存庫屬性，例如標記。
-  - 金鑰保存庫中的金鑰和祕密作業，包括：
-    - 建立、修改或刪除這些金鑰或祕密。
-    - 簽署、驗證、加密、解密、包裝和解除包裝金鑰、取得秘密，以及列出金鑰和祕密 (及其版本)。
-- 產生 401 回應的未經驗證要求。 例如，沒有持有人權杖的要求、格式不正確或已過期的要求，或具有無效權杖的要求。
-
-在金鑰保存庫作業 10 分鐘後，您就可以存取記錄資訊。 儲存體帳戶中的記錄由您全權管理。
-
-- 請使用標準的 Azure 存取控制方法限制可存取記錄的人員，藉此來保護記錄。
-- 刪除不想繼續保留在儲存體帳戶中的記錄。
+Key Vault 記錄會儲存在保存庫上執行之活動的相關資訊。 如需完整的詳細資訊，請參閱 [Key Vault 記錄](logging.md)。
 
 如需安全地管理儲存體帳戶的建議，請參閱 [Azure 儲存體安全性指南](../../storage/blobs/security-recommendations.md)
 
@@ -106,4 +92,3 @@ Key Vault 記錄會儲存在保存庫上執行之活動的相關資訊。 Key Va
 
 - [Azure Key Vault 的虛擬網路服務端點](overview-vnet-service-endpoints.md)
 - [RBAC：內建角色](../../role-based-access-control/built-in-roles.md)
-

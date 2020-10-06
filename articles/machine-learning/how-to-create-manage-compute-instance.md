@@ -11,12 +11,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: a57ea081bf6fef8c0778af2a6254b3f61564027e
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: 1ba3f49c9016d71acf162efb07cd6120b1dcc1ec
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91711199"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743551"
 ---
 # <a name="create-and-manage-an-azure-machine-learning-compute-instance"></a>建立及管理 Azure Machine Learning 計算實例
 
@@ -108,7 +108,7 @@ az ml computetarget create computeinstance  -n instance -s "STANDARD_D3_V2" -v
 ### <a name="create-on-behalf-of-preview"></a>代表 (預覽版建立) 
 
 系統管理員可以代表資料科學家建立計算實例，並使用下列專案將實例指派給它們：
-* [Azure Resource Manager 範本](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/preview/2020-09-01-preview/examples/createComputeInstance.json)。  如需有關如何尋找此範本所需之 TenantID 和 ObjectID 的詳細資訊，請參閱 [尋找驗證設定的識別物件識別碼](../healthcare-apis/find-identity-object-ids.md)。  您也可以在 Azure Active Directory 入口網站中找到這些值。
+* [Azure Resource Manager 範本](https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-compute-create-computeinstance)。  如需有關如何尋找此範本所需之 TenantID 和 ObjectID 的詳細資訊，請參閱 [尋找驗證設定的識別物件識別碼](../healthcare-apis/find-identity-object-ids.md)。  您也可以在 Azure Active Directory 入口網站中找到這些值。
 * REST API
 
 您為其建立計算實例的資料科學家需要下列 [ (RBAC) 許可權的 Azure 角色型存取控制 ](../role-based-access-control/overview.md) ： 
@@ -138,7 +138,7 @@ az ml computetarget create computeinstance  -n instance -s "STANDARD_D3_V2" -v
     instance.get_status()
     ```
 
-* Stop
+* 停止
 
     ```python
     # stop() is used to stop the ComputeInstance
@@ -172,7 +172,7 @@ az ml computetarget create computeinstance  -n instance -s "STANDARD_D3_V2" -v
 
 在下列範例中，計算實例的名稱為 **instance**
 
-* Stop
+* 停止
 
     ```azurecli-interactive
     az ml computetarget stop computeinstance -n instance -v

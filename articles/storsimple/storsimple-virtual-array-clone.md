@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/21/2016
 ms.author: alkohli
-ms.openlocfilehash: dd82f7dd821991bbcf57cc7d8105575e0baa4d12
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b6cc89cb082cd0ed32abd88e3a6683c60a27ba90
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87070702"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91742174"
 ---
 # <a name="clone-from-a-backup-of-your-storsimple-virtual-array"></a>從 StorSimple Virtual Array 的備份複製
 
@@ -44,7 +44,7 @@ ms.locfileid: "87070702"
    
    c.    按一下 [確定]  。
    
-   ![複製備份](./media/storsimple-virtual-array-clone/cloneshare3.png)
+   ![複本備份2](./media/storsimple-virtual-array-clone/cloneshare3.png)
 3. 在 [複製]**** 刀鋒視窗中，按一下 [目標設定]****，然後執行下列動作︰
    
    a.    提供共用名稱。 共用名稱必須包含 3-127 個字元。
@@ -59,13 +59,13 @@ ms.locfileid: "87070702"
    
    f.    按一下 [確定]  。
    
-   ![複製備份](./media/storsimple-virtual-array-clone/cloneshare6.png)
+   ![複本備份3](./media/storsimple-virtual-array-clone/cloneshare6.png)
 
 4. 按一下 [複製]**** 啟動複製作業。 作業完成後，複製作業會開始並通知您。 若要監視複製進度，請移至 [作業]**** 刀鋒視窗，按一下作業來檢視作業詳細資料。
 5. 成功建立複製之後，瀏覽回到裝置的 [共用]**** 刀鋒視窗。
 6. 您現在可以在裝置的共用清單中檢視剛複製的共用。 階層式共用會複製為階層式，固定在本機的共用則會複製為固定在本機的共用。
    
-   ![複製備份](./media/storsimple-virtual-array-clone/cloneshare10.png)
+   ![複本備份4](./media/storsimple-virtual-array-clone/cloneshare10.png)
 
 ## <a name="clone-volumes-from-a-backup-set"></a>從備份組複製磁碟區
 
@@ -84,7 +84,7 @@ ms.locfileid: "87070702"
    
    c.    按一下 [確定]  。
    
-   ![複製備份](./media/storsimple-virtual-array-clone/clonevolume3.png)
+   ![複製磁片區2](./media/storsimple-virtual-array-clone/clonevolume3.png)
 3. 在 [複製]**** 刀鋒視窗中，按一下 [目標磁碟區設定]****，然後執行下列動作︰
    
    a. 裝置名稱會自動填入。
@@ -95,16 +95,16 @@ ms.locfileid: "87070702"
    
    d. 在 [連接的主機]**** 中，按一下 [選取]****。
    
-   ![複製備份](./media/storsimple-virtual-array-clone/clonevolume4.png)
-4. 在 [連接的主機]**** 刀鋒視窗中，選取現有的 ACR 或新增 ACR。 若要新增 ACR，您必須提供 ACR 名稱和主機 IQN。 按一下 [選取]。
+   ![複製磁片區3](./media/storsimple-virtual-array-clone/clonevolume4.png)
+4. 在 [連接的主機]**** 刀鋒視窗中，選取現有的 ACR 或新增 ACR。 若要新增 ACR，您必須提供 ACR 名稱和主機 IQN。 按一下 [選取]。 
    
-   ![複製備份](./media/storsimple-virtual-array-clone/clonevolume5.png)
+   ![複製磁片區4](./media/storsimple-virtual-array-clone/clonevolume5.png)
 5. 按一下 [複製]**** 啟動複製作業。
    
-   ![複製備份](./media/storsimple-virtual-array-clone/clonevolume6.png)  
+   ![複製磁片區5](./media/storsimple-virtual-array-clone/clonevolume6.png)  
 6. 建立複製作業之後將會開始複製。 建立複製後，就會顯示在裝置的 [磁碟區] 刀鋒視窗上。 請注意，階層式磁碟區會複製為階層式，固定在本機的磁碟區則會複製為固定在本機的磁碟區。
    
-   ![複製備份](./media/storsimple-virtual-array-clone/clonevolume8.png)
+   ![複製磁片區6](./media/storsimple-virtual-array-clone/clonevolume8.png)
 7. 當磁碟區出現在線上的磁碟區清單上後，該磁碟區即可供使用。 在 iSCSI 啟動器主機上，重新整理 iSCSI 啟動器屬性視窗中的目標清單。 複製的磁碟區名稱所在的新目標，應該會在狀態資料行下方顯示為 [非作用中]。
 8. 選取目標並按一下 [連接] ****。 當啟動器連接到目標之後，狀態應會變更為 [已連接] ****。
 9. 在 [磁碟管理]**** 視窗中，將會出現掛接的磁碟區，如下圖所示。 以滑鼠右鍵按一下探索到的磁碟區 (按一下磁碟名稱)，然後按一下 [線上]****。
@@ -127,7 +127,7 @@ ms.locfileid: "87070702"
    * **排程備份**，命名為 &lt;裝置名稱&gt;DailySchedule-YYYYMMDD-HHMMSS-UTC。
    * **手動備份** ，命名為 Ad-hoc-YYYYMMDD-HHMMSS-UTC。
      
-     ![檔案瀏覽器的螢幕擷取畫面，其中顯示 [備份] 資料夾。 在該資料夾內，會選取 [手動備份] 資料夾。](./media/storsimple-virtual-array-clone/image14.png)
+     ![顯示備份檔案夾檔案總管的螢幕擷取畫面。 在該資料夾內，會選取 [手動備份] 資料夾。](./media/storsimple-virtual-array-clone/image14.png)
 
 2. 識別包含已刪除檔案之最新版本的備份。 在上述所有情況下，雖然資料夾名稱包含 UTC 時間戳記，但是資料夾建立時間是備份啟動時的實際裝置時間。 使用資料夾時間戳記來尋找並識別備份。
 

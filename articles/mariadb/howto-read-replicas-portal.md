@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 6/10/2020
-ms.openlocfilehash: 41e99d11199ae0f2a411b6e2c0b93ea8efcebca2
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 5faed87995d1c49ab635f39264354a791f729b57
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91542524"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91742854"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-the-azure-portal"></a>如何使用 Azure 入口網站在適用於 MariaDB 的 Azure 資料庫中建立及管理讀取複本
 
@@ -116,7 +116,7 @@ ms.locfileid: "91542524"
 
 3. 輸入來源伺服器的名稱，然後按一下 [ **刪除** ] 以確認刪除來源伺服器。  
 
-   ![適用於 MariaDB 的 Azure 資料庫-刪除主機](./media/howto-read-replica-portal/delete-master-confirm.png)
+   ![適用於 MariaDB 的 Azure 資料庫-刪除主機確認](./media/howto-read-replica-portal/delete-master-confirm.png)
 
 ## <a name="monitor-replication"></a>監視複寫
 
@@ -134,7 +134,7 @@ ms.locfileid: "91542524"
 
 5. 檢視所選時間範圍的複寫延遲。 下圖顯示大型工作負載的過去30分鐘。
 
-   ![選取時間範圍](./media/howto-read-replica-portal/monitor-replication-lag-time-range-thirty-mins.png)
+   ![選取時間範圍30分鐘](./media/howto-read-replica-portal/monitor-replication-lag-time-range-thirty-mins.png)
 
 ## <a name="next-steps"></a>後續步驟
 

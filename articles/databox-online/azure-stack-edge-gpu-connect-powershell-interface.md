@@ -1,19 +1,19 @@
 ---
-title: 透過 Windows PowerShell 介面，連接到 Microsoft Azure Stack Edge Pro 裝置並加以管理 |Microsoft Docs
-description: 說明如何透過 Windows PowerShell 介面連接到 Azure Stack Edge Pro，然後加以管理。
+title: 透過 Windows PowerShell 介面連線至 Microsoft Azure Stack Edge Pro GPU 裝置並進行管理 |Microsoft Docs
+description: 說明如何透過 Windows PowerShell 介面連接到 Azure Stack Edge Pro GPU，然後加以管理。
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 09/10/2020
+ms.date: 10/05/2020
 ms.author: alkohli
-ms.openlocfilehash: b0c2b547391efd37fc667b84548d99f1e7385cfb
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 3a61bd16d127afadc2dc4d968b3492f3c8491d29
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90903515"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743210"
 ---
 # <a name="manage-an-azure-stack-edge-pro-gpu-device-via-windows-powershell"></a>透過 Windows PowerShell 管理 Azure Stack Edge Pro GPU 裝置
 
@@ -127,7 +127,7 @@ Nvidia Gpu 上的多進程服務 (MP) 提供一種機制，可讓多個作業共
 
 當您在此步驟中建立 Kubernetes 叢集之前，您會想要執行此設定，然後再從 Azure 入口網站設定計算。
 
-1. 連接到裝置的 PowerShell 介面。
+1. [連接到裝置的 PowerShell 介面](#connect-to-the-powershell-interface)。
 1. 從裝置的 PowerShell 介面，執行：
 
     `Set-HcsKubeClusterNetworkInfo -PodSubnet <subnet details> -ServiceSubnet <subnet details>`
@@ -425,12 +425,61 @@ DEBUG 2020-05-14T20:42:14Z: loop process - 0 events, 0.000s
 [10.100.10.10]: PS>
 ```
 
+## <a name="connect-to-bmc"></a>連接至 BMC
 
+基礎板管理控制器 (BMC) 可用來遠端監視和管理您的裝置。 本節說明可用來管理 BMC 設定的 Cmdlet。 在執行這些 Cmdlet 之前，請先 [連接到裝置的 PowerShell 介面](#connect-to-the-powershell-interface)。
+
+- `Get-HcsNetBmcInterface`：使用這個 Cmdlet 取得 BMC 的網路設定屬性，例如，、、 `IPv4Address` `IPv4Gateway` `IPv4SubnetMask` 、 `DhcpEnabled` ： 
+
+- `Set-HcsNetBmcInterface`：您可以使用下列兩種方式來使用此 Cmdlet。
+
+    - 使用 Cmdlet 來啟用或停用適用于 BMC 的 DHCP 設定，方法是使用適當的 `UseDhcp` 參數值。 
+
+        ```powershell
+        Set-HcsNetBmcInterface -UseDhcp $true
+        ```
+
+        以下是範例輸出： 
+
+        ```powershell
+        [10.100.10.10]: PS>Set-HcsNetBmcInterface -UseDhcp $true
+        [10.100.10.10]: PS>Get-HcsNetBmcInterface
+        IPv4Address IPv4Gateway IPv4SubnetMask DhcpEnabled
+        ----------- ----------- -------------- -----------
+        10.128.54.8 10.128.52.1 255.255.252.0         True
+        [10.100.10.10]: PS>
+        ```
+
+    - 使用此 Cmdlet 來設定 BMC 的靜態設定。 您可以指定 `IPv4Address` 、和的值 `IPv4Gateway` `IPv4SubnetMask` 。 
+    
+        ```powershell
+        Set-HcsNetBmcInterface -IPv4Address "<IPv4 address of the device>" -IPv4Gateway "<IPv4 address of the gateway>" -IPv4SubnetMask "<IPv4 address for the subnet mask>"
+        ```        
+        
+        以下是範例輸出： 
+
+        ```powershell
+        [10.100.10.10]: PS>Set-HcsNetBmcInterface -IPv4Address 10.128.53.186 -IPv4Gateway 10.128.52.1 -IPv4SubnetMask 255.255.252.0
+        [10.100.10.10]: PS>Get-HcsNetBmcInterface
+        IPv4Address   IPv4Gateway IPv4SubnetMask DhcpEnabled
+        -----------   ----------- -------------- -----------
+        10.128.53.186 10.128.52.1 255.255.252.0        False
+        [10.100.10.10]: PS>
+        ```    
+
+- `Set-HcsBmcPassword`：使用這個 Cmdlet 來修改的 BMC 密碼 `EdgeUser` 。 
+
+    以下是範例輸出： 
+
+    ```powershell
+    [10.100.10.10]: PS> Set-HcsBmcPassword -NewPassword "Password1"
+    [10.100.10.10]: PS>
+    ```
 
 ## <a name="exit-the-remote-session"></a>結束遠端會話
 
 若要結束遠端 PowerShell 會話，請關閉 PowerShell 視窗。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 在 Azure 入口網站中部署 [Azure Stack Edge Pro](azure-stack-edge-gpu-deploy-prep.md)。

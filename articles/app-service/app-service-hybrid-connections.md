@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/08/2020
 ms.author: ccompy
 ms.custom: seodec18, fasttrack-edit
-ms.openlocfilehash: 8c8b71e4be11a886da3e0889add0a3cdc19a56c3
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 1cb86f77a6ffcbb0fb45b3a57b57de531822f2b0
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962412"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91742599"
 ---
 # <a name="azure-app-service-hybrid-connections"></a>Azure App Service 混合式連線
 
@@ -42,7 +42,7 @@ ms.locfileid: "88962412"
 - 通常不需要在防火牆開洞。 連線全都是透過標準的 Web 連接埠輸出。
 - 由於這是網路層級的功能，因此不會因為應用程式所使用的語言及端點所使用的技術而受到影響。
 - 它可用來讓您從單一應用程式存取多個網路。 
-- 適用于 Windows 應用程式的 GA 支援，並且在 Linux 應用程式中為預覽狀態。
+- 適用于 Windows 原生應用程式的 GA 支援，並且在 Linux 應用程式中為預覽狀態。 Windows 容器應用程式不支援此功能。
 
 ### <a name="things-you-cannot-do-with-hybrid-connections"></a>混合式連線無法執行的作業 ###
 
@@ -134,7 +134,7 @@ App Service 方案 UI 會顯示您正在使用的混合式連線數目，以及�
 1. 選取您要讓 HCM 轉送的「混合式連線」。
 ![混合式連線的螢幕擷取畫面][9]
 
-1. 選取 [儲存]  。
+1. 選取 [儲存]。
 
 現在可以看到您新增的「混合式連線」。 您也可以選取已設定的混合式連線，以查看詳細資料。
 

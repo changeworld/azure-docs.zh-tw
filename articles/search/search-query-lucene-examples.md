@@ -8,13 +8,13 @@ ms.author: heidist
 tags: Lucene query analyzer syntax
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 8e8c32f5596e469de5402a1f712d234a806a69e4
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.date: 10/05/2020
+ms.openlocfilehash: 3d2172f76faecfc8347d7e0ca13fb506817f25de
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89297989"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91740695"
 ---
 # <a name="use-the-full-lucene-search-syntax-advanced-queries-in-azure-cognitive-search"></a>使用 "full" Lucene 搜尋語法 (Azure 認知搜尋中的先進查詢) 
 
@@ -40,13 +40,13 @@ Lucene 剖析器支援複雜的查詢結構，例如欄位範圍查詢、模糊�
 
 在指定要求標頭後，您可以將其重複用於本文中的所有查詢，只要替換掉 **search=** 字串即可。 
 
-  ![Postman 要求標頭設定參數](media/search-query-lucene-examples/postman-header.png)
+  :::image type="content" source="media/search-query-lucene-examples/postman-header.png" alt-text="Postman 要求標頭設定參數" border="false":::
 
 ### <a name="set-the-request-url"></a>設定要求 URL
 
 要求是與包含 Azure 認知搜尋端點和搜尋字串的 URL 配對的 GET 命令。
 
-  ![Postman 要求標頭 GET](media/search-query-lucene-examples/postman-basic-url-request-elements.png)
+  :::image type="content" source="media/search-query-lucene-examples/postman-basic-url-request-elements.png" alt-text="Postman 要求標頭設定參數" border="false":::
 
 URL 組合具有下列元素：
 
@@ -137,7 +137,7 @@ $select=business_title, posting_type&search=business_title:(senior NOT junior) A
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&queryType=full&$count=true&$select=business_title&search=business_title:(senior NOT junior)
 ```
 
-  ![Postman 範例回應搜尋運算式](media/search-query-lucene-examples/intrafieldfilter.png)
+  :::image type="content" source="media/search-query-lucene-examples/intrafieldfilter.png" alt-text="Postman 要求標頭設定參數" border="false":::
 
 您可以使用 **fieldName： searchExpression** 語法來定義回復搜尋作業，其中搜尋運算式可以是單一單字或片語，或是以括弧括住的更複雜運算式（選擇性地使用布林運算子）。 部分範例如下：
 
@@ -199,7 +199,7 @@ searchFields=business_title&$select=business_title&search=business_title:%22seni
 ```GET
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:%22senior%20analyst%22~1
 ```
-  ![鄰近查詢](media/search-query-lucene-examples/proximity-before.png)
+  :::image type="content" source="media/search-query-lucene-examples/proximity-before.png" alt-text="Postman 要求標頭設定參數" border="false":::
 
 移除 "senior analyst" 一詞之間的單字，然後再試一次。 請注意，相較於上一個查詢傳回 10 份文件，此查詢僅傳回 8 份文件。
 
@@ -217,7 +217,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-
 ```GET
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:computer%20analyst
 ```
-  ![before 的詞彙提升](media/search-query-lucene-examples/termboostingbefore.png)
+  :::image type="content" source="media/search-query-lucene-examples/termboostingbefore.png" alt-text="Postman 要求標頭設定參數" border="false":::
 
 在 "after" 查詢中再次執行此搜尋，但這次在兩個單字未同時存在的情況下，提升含有 *analyst* 一詞的結果，使其高於 *computer* 一詞。 
 
@@ -226,7 +226,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-
 ```
 上述查詢較易讀的版本為 `search=business_title:computer analyst^2`。 在可行的查詢中，`^2` 會編碼為 `%5E2`，因此難以檢視。
 
-  ![after 的詞彙提升](media/search-query-lucene-examples/termboostingafter.png)
+  :::image type="content" source="media/search-query-lucene-examples/termboostingafter.png" alt-text="Postman 要求標頭設定參數" border="false":::
 
 詞彙提升與評分設定檔的不同之處在於，評分設定檔會提升特定欄位，而不是特定字詞。 下列範例可協助說明差異。
 
@@ -253,7 +253,7 @@ searchFields=business_title&$select=business_title&search=business_title:/(Sen|J
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:/(Sen|Jun)ior/
 ```
 
-  ![RegEx 查詢](media/search-query-lucene-examples/regex.png)
+  :::image type="content" source="media/search-query-lucene-examples/regex.png" alt-text="Postman 要求標頭設定參數" border="false":::
 
 > [!Note]
 > RegEx 查詢不會進行[分析](./search-lucene-query-architecture.md#stage-2-lexical-analysis)。 只能對不完整的查詢詞彙執行小寫轉換。
@@ -275,13 +275,13 @@ searchFields=business_title&$select=business_title&search=business_title:prog*
 ```GET
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:prog*
 ```
-  ![萬用字元查詢](media/search-query-lucene-examples/wildcard.png)
+  :::image type="content" source="media/search-query-lucene-examples/wildcard.png" alt-text="Postman 要求標頭設定參數" border="false":::
 
 > [!Note]
 > 萬用字元查詢不會進行[分析](./search-lucene-query-architecture.md#stage-2-lexical-analysis)。 只能對不完整的查詢詞彙執行小寫轉換。
 >
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 請在您的程式碼中嘗試指定 Lucene 查詢剖析器。 下列連結說明如何設定 .NET 和 REST API 的搜尋查詢。 這些連結會使用預設的簡單語法，因此您必須套用您從本文了解的內容來指定 **queryType**。
 
 * [使用 .NET SDK 查詢您的索引](./search-get-started-dotnet.md)

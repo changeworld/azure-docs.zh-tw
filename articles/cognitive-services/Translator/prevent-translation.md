@@ -10,20 +10,20 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: 37d2e4c0131569ab50ebf49ff73b6adf7a420713
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: ec39b3692a90f22409e85b5502d3ea874e3282d6
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996171"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91742055"
 ---
 # <a name="how-to-prevent-translation-of-content-with-the-translator"></a>如何使用翻譯工具防止內容轉譯
 
-翻譯工具可讓您標記內容，使其不會轉譯。 例如，您可以標記程式碼、品牌名稱，或當地語系化後沒有意義的字組/片語。
+翻譯工具可讓您標記內容，使其不會轉譯。 例如，您可能想要標記在當地語系化時，沒有必要翻譯的程式碼、品牌名稱或字詞/語句。
 
 ## <a name="methods-for-preventing-translation"></a>防止翻譯的方法
 
-1. 使用 `notranslate` 標記您的內容。 這是設計的，只有在輸入 textType 設定為 HTML 時才會運作。
+1. 使用 `notranslate` 標記您的內容。 這是設計，只有在輸入 textType 設定為 HTML 時，才會運作
 
    範例：
 
@@ -37,13 +37,26 @@ ms.locfileid: "83996171"
    <div>This will be translated. </div>
    ```
 
-2. 使用[動態字典](dynamic-dictionary.md)來規定特定翻譯。
+2. 使用 `translate="no"` 標記您的內容。 這僅適用于將輸入 textType 設定為 HTML 時
 
-3. 請勿將字串傳遞至翻譯工具進行轉譯。
+   範例：
 
-4. 自訂翻譯：使用[自訂翻譯中的字典](custom-translator/what-is-dictionary.md)來規定以100% 機率轉譯的片語。
+   ```html
+   <span translate="no">This will not be translated.</span>
+   <span>This will be translated. </span>
+   ```
+   
+   ```html
+   <div translate="no">This will not be translated.</div>
+   <div>This will be translated. </div>
+
+3. Use the [dynamic dictionary](dynamic-dictionary.md) to prescribe a specific translation.
+
+4. Don't pass the string to the Translator for translation.
+
+5. Custom Translator: Use a [dictionary in Custom Translator](custom-translator/what-is-dictionary.md) to prescribe the translation of a phrase with 100% probability.
 
 
-## <a name="next-steps"></a>後續步驟
+## Next steps
 > [!div class="nextstepaction"]
-> [避免翻譯工具呼叫中的轉譯](reference/v3-0-translate.md)
+> [Use the Translate operation to translate text](reference/v3-0-translate.md)

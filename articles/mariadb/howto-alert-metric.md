@@ -1,17 +1,17 @@
 ---
-title: 設定度量警示-Azure 入口網站-適用於 MariaDB 的 Azure 資料庫
+title: 設定計量警示-Azure 入口網站-適用於 MariaDB 的 Azure 資料庫
 description: 本文描述如何從 Azure 入口網站，設定和存取「適用於 MariaDB 的 Azure 資料庫」的計量警示。
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: 5687255057fdd5e73478626721c789c98b2ea366
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 6ed890fca9dddcbc7f04914a6f920d530d18ed0f
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120070"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91742837"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mariadb"></a>使用 Azure 入口網站來設定適用於 MariaDB 之 Azure 資料庫的計量警示
 
@@ -48,11 +48,11 @@ ms.locfileid: "86120070"
    
    ![選取計量](./media/howto-alert-metric/6-configure-signal-logic.png)
 
-7. 設定警示邏輯，包括**條件** (例如， "Greater than")、**閾值** (例如， 85 percent)、**時間彙總**，觸發警示之前，必須滿足計量規則的**期間** (例如， 「過去30分鐘內」）和**頻率**。
+7. 設定警示邏輯，包括**條件** (例如， "Greater than")、**閾值** (例如， 85 percent)、**時間彙總**，觸發警示之前，必須滿足計量規則的**期間** (例如， 「過去30分鐘內」 ) 和 **頻率**。
    
    完成時選取 [完成]****。
 
-   ![選取計量](./media/howto-alert-metric/7-set-threshold-time.png)
+   ![選取度量2](./media/howto-alert-metric/7-set-threshold-time.png)
 
 8. 在 [動作群組]**** 區段中，選取 [建立]**** 建立新的群組，以接收警示通知。
 
@@ -70,7 +70,7 @@ ms.locfileid: "86120070"
 
 11. 指定 [警示規則名稱]、[描述] 與 [嚴重性]。
 
-    ![動作群組](./media/howto-alert-metric/11-name-description-severity.png) 
+    ![動作群組2](./media/howto-alert-metric/11-name-description-severity.png) 
 
 12. 選取 [建立警示規則]**** 以建立警示。
 
