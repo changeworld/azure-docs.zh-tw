@@ -11,12 +11,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 1ba3f49c9016d71acf162efb07cd6120b1dcc1ec
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 3b5698c782b691dd8ae91913115db184fc83a2eb
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91743551"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91756614"
 ---
 # <a name="create-and-manage-an-azure-machine-learning-compute-instance"></a>建立及管理 Azure Machine Learning 計算實例
 
@@ -46,7 +46,7 @@ ms.locfileid: "91743551"
 
 建立計算實例是工作區的一次性進程。 您可以將此計算重複使用於開發工作站或作為定型的計算目標。 您可以將多個計算實例附加至工作區。
 
-適用于計算實例建立的每個區域每個區域的專用核心是統一的，並與 Azure Machine Learning 訓練計算叢集配額共用。 停止計算實例並不會釋放配額，以確保您能夠重新開機計算實例。
+適用于計算實例建立的每個區域每個區域的專用核心是統一的，並與 Azure Machine Learning 訓練計算叢集配額共用。 停止計算實例並不會釋放配額，以確保您能夠重新開機計算實例。 請注意，建立計算實例之後，就無法變更其虛擬機器大小。
 
 下列範例示範如何建立計算實例：
 

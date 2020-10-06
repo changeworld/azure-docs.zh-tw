@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 05/28/2020
-ms.openlocfilehash: d8779a25b7c6036f3b09badab67733fa55acfee7
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 0138715e4c9df8ae05c9a3eade64d539eb7cdeda
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90907587"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91756546"
 ---
 # <a name="featurization-in-automated-machine-learning"></a>自動化機器學習中的特徵化
 
@@ -316,7 +316,7 @@ class_prob = fitted_model.predict_proba(X_test)
 
 AutoML 會採取下列步驟來進行 BERT。 
 
-1. **所有文字資料行的**前置處理和 token 化。 例如，"StringCast" 轉換器可以在最終模型的特徵化摘要中找到。 您可以在 [此筆記本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-text-dnn/auto-ml-classification-text-dnn.ipynb)中找到如何產生模型特徵化摘要的範例。
+1. **所有文字資料行的**前置處理和 token 化。 例如，"StringCast" 轉換器可以在最終模型的特徵化摘要中找到。 您可以在 [此筆記本](https://towardsdatascience.com/automated-text-classification-using-machine-learning-3df4f4f9570b)中找到如何產生模型特徵化摘要的範例。
 
 2. 將**所有文字資料行串連成單一文字資料行**，因此 `StringConcatTransformer` 在最終模型中。 
 
@@ -350,7 +350,7 @@ automl_settings = {
 }
 ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * 瞭解如何設定自動化 ML 實驗：
 

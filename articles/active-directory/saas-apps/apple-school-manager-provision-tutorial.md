@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/08/2020
 ms.author: Zhchia
-ms.openlocfilehash: 221039ad1dc30e645d98ba6dd7e79c7b81ba3430
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 5ce2c866954f46e3a01cabb23033ea2dae77ead6
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91313054"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91757433"
 ---
 # <a name="tutorial-configure-apple-school-manager-for-automatic-user-provisioning"></a>教學課程：設定 Apple School Manager 來自動布建使用者
 
@@ -34,7 +34,7 @@ ms.locfileid: "91313054"
 > * 若不再需要存取權，請在 Apple School Manager 中移除使用者
 > * 讓特定的使用者屬性在 Azure AD 與 Apple School Manager 之間保持同步
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 本教學課程中概述的案例假設您已經具有下列必要條件：
 
@@ -55,7 +55,7 @@ ms.locfileid: "91313054"
 1. 在 Apple School Manager 中，使用具有 [系統管理員]、[網站管理員] 或 [人員管理員] 角色的帳戶登入。
 2. 按一下側邊欄底部的 [設定]，按一下 [組織設定] 下方的 [資料來源]，然後按一下 [連接到資料來源]。
 3. 按一下 [SCIM] 旁的 [連接]，仔細閱讀警告，按一下 [複製]，然後按一下 [關閉]。
-[連接到 SCIM] 視窗，它會在其下提供權杖和複製按鈕。]讓此視窗保持開啟，以將租使用者 URL 從 Apple Business Manager 複製到 Azure AD，也就是： https://federation.apple.com/feeds/school/scim
+[連接到 SCIM] 視窗，它會在其下提供權杖和複製按鈕。]讓此視窗保持開啟，以將租使用者 URL 從 Apple Business Manager 複製到 Azure AD，也就是： ' https://federation.apple.com/feeds/school/scim '
 
     ![Apple School Manager](media/appleschoolmanager-provisioning-tutorial/scim-token.png)
 
@@ -103,7 +103,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
     ![通知電子郵件](common/provisioning-notification-email.png)
 
-7. 按一下 [檔案]  。
+7. 按一下 [檔案] 。
 
 8. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 使用者到 Apple School Manager**]。
 
@@ -152,16 +152,16 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
 * [管理企業應用程式的使用者帳戶佈建](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
-* [審查 Apple School Manager 的 SCIM 需求](URL=https://support.apple.com/guide/apple-school-manager/apdd88331cd6)
-* [如何在 Apple School Manager 中使用 Person ID](URL=https://support.apple.com/guide/apple-school-manager/apd69e1e48e9)
-* [使用 SCIM 將使用者匯入 Apple School Manager](URL=https://support.apple.com/guide/apple-school-manager/apd3ec7b95ad)
-* [解決 Apple School Manager 中的 SCIM 使用者帳戶衝突](URL=https://support.apple.com/guide/apple-school-manager/apd313013d12)
-* [刪除出現在 Apple School Manager 中 Azure AD 帳戶](URL=https://support.apple.com/guide/apple-school-manager/apdaa5798fbe)
-* [在 Apple School Manager 中查看 SCIM 活動](URL=https://support.apple.com/guide/apple-school-manager/apd1bfd8dfde)
-* [在 Apple School Manager 中管理現有的 SCIM token 和連接](URL=https://support.apple.com/guide/apple-school-manager/apdc9a823611)
-* [中斷 Apple School Manager 中的 SCIM 連接](URL=https://support.apple.com/guide/apple-school-manager/apd609be3a61)
-* [在 Apple School Manager 中管理現有的 SCIM token 和連接](URL=https://support.apple.com/guide/apple-school-manager/apdc9a8236e9)
-* [在 Apple School Manager 中針對 SCIM 連接進行疑難排解](URL=https://support.apple.com/guide/apple-school-manager/apd403a0f3bd)
+* [審查 Apple School Manager 的 SCIM 需求](https://support.apple.com/guide/apple-school-manager/apdd88331cd6)
+* [如何在 Apple School Manager 中使用 Person ID](https://support.apple.com/guide/apple-school-manager/apd69e1e48e9)
+* [使用 SCIM 將使用者匯入 Apple School Manager](https://support.apple.com/guide/apple-school-manager/apd3ec7b95ad)
+* [解決 Apple School Manager 中的 SCIM 使用者帳戶衝突](https://support.apple.com/guide/apple-school-manager/apd313013d12)
+* [刪除出現在 Apple School Manager 中 Azure AD 帳戶](https://support.apple.com/guide/apple-school-manager/apdaa5798fbe)
+* [在 Apple School Manager 中查看 SCIM 活動](https://support.apple.com/guide/apple-school-manager/apd1bfd8dfde)
+* [在 Apple School Manager 中管理現有的 SCIM token 和連接](https://support.apple.com/guide/apple-school-manager/apdc9a823611)
+* [中斷 Apple School Manager 中的 SCIM 連接](https://support.apple.com/guide/apple-school-manager/apd609be3a61)
+* [在 Apple School Manager 中管理現有的 SCIM token 和連接](https://support.apple.com/guide/apple-school-manager/apdc9a8236e9)
+* [在 Apple School Manager 中針對 SCIM 連接進行疑難排解](https://support.apple.com/guide/apple-school-manager/apd403a0f3bd)
 
 ## <a name="next-steps"></a>後續步驟
 

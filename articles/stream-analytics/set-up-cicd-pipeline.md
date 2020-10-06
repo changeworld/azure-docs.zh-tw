@@ -8,20 +8,20 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 09/10/2020
-ms.openlocfilehash: 23ac1e241c0811944a943c3c3fef3116eff68a67
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: d9b6dfc977aab7d8907b5d3c3851a22f96227d78
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90933999"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91757753"
 ---
 # <a name="use-azure-devops-to-create-a-cicd-pipeline-for-a-stream-analytics-job"></a>使用 Azure DevOps 建立串流分析作業的 CI/CD 管線
 
-在本文中，您會瞭解如何使用 Azure 串流分析 CI/CD 工具來建立 Azure DevOps [組建](/devops/pipelines/get-started-designer) 和 [發行](/devops/pipelines/release/define-multistage-release-process) 管線。
+在本文中，您會瞭解如何使用 Azure 串流分析 CI/CD 工具來建立 Azure DevOps [組建](/azure/devops/pipelines/get-started/pipelines-get-started) 和 [發行](/azure/devops/pipelines/release/define-multistage-release-process) 管線。
 
 ## <a name="commit-your-stream-analytics-project"></a>認可您的串流分析專案
 
-開始之前，請將您的完整串流分析專案作為來源檔案認可至 [Azure DevOps](/devops/user-guide/source-control) 存放庫。 您可以在 Azure Pipelines 中參考此 [範例存放庫](https://dev.azure.com/wenyzou/azure-streamanalytics-cicd-demo) 和 [串流分析專案原始碼](https://dev.azure.com/wenyzou/_git/azure-streamanalytics-cicd-demo?path=%2FmyASAProject) 。
+開始之前，請將您的完整串流分析專案作為來源檔案認可至 [Azure DevOps](/azure/devops/user-guide/source-control) 存放庫。 您可以在 Azure Pipelines 中參考此 [範例存放庫](https://dev.azure.com/wenyzou/azure-streamanalytics-cicd-demo) 和 [串流分析專案原始碼](https://dev.azure.com/wenyzou/_git/azure-streamanalytics-cicd-demo?path=%2FmyASAProject) 。
 
 本文中的步驟會使用串流分析 Visual Studio Code 專案。 如果您是使用 Visual Studio 專案，請遵循 [使用 CI/CD 工具來自動化 Azure 串流分析作業的組建、測試和部署](cicd-tools.md)的步驟。
 
@@ -39,7 +39,7 @@ ms.locfileid: "90933999"
 
 1. 選取您的來源類型、team 專案和儲存機制。 然後選取 [ **繼續**]。
 
-   :::image type="content" source="media/set-up-cicd-pipeline/select-repo.png" alt-text="選取 Azure 串流分析專案":::
+   :::image type="content" source="media/set-up-cicd-pipeline/select-repo.png" alt-text="建立新的 Azure 管線":::
 
 1. 在 [ **選擇範本** ] 頁面上，選取 [ **空白作業**]。
 
@@ -47,7 +47,7 @@ ms.locfileid: "90933999"
 
 1. **在 [工作**] 頁面上，選取 [**代理程式作業 1**] 旁的加號。 在 [工作搜尋] 中輸入 *npm* ，然後選取 [ **npm**]。
 
-   :::image type="content" source="media/set-up-cicd-pipeline/search-npm.png" alt-text="選取 npm 工作":::
+   :::image type="content" source="media/set-up-cicd-pipeline/search-npm.png" alt-text="建立新的 Azure 管線":::
 
 2. 提供工作的 **顯示名稱**。 將 **命令** 選項變更為 *自訂* ，並在 **命令和引數**中輸入下列命令。 保留其餘的預設選項。
 
@@ -55,7 +55,7 @@ ms.locfileid: "90933999"
    install -g azure-streamanalytics-cicd
    ```
 
-   :::image type="content" source="media/set-up-cicd-pipeline/npm-config.png" alt-text="輸入 npm 工作的設定":::
+   :::image type="content" source="media/set-up-cicd-pipeline/npm-config.png" alt-text="建立新的 Azure 管線":::
 
 ## <a name="add-a-build-task"></a>新增組建工作
 
@@ -77,7 +77,7 @@ ms.locfileid: "90933999"
 
    下圖使用串流分析 Visual Studio Code 專案作為範例。
 
-   :::image type="content" source="media/set-up-cicd-pipeline/command-line-config-build.png" alt-text="輸入命令列工作 visual studio code 的設定":::
+   :::image type="content" source="media/set-up-cicd-pipeline/command-line-config-build.png" alt-text="建立新的 Azure 管線":::
 
 ## <a name="add-a-test-task"></a>新增測試工作
 
@@ -87,7 +87,7 @@ ms.locfileid: "90933999"
    |-|-|
    |testPath|測試|
 
-   :::image type="content" source="media/set-up-cicd-pipeline/pipeline-variables-test.png" alt-text="新增管線變數":::
+   :::image type="content" source="media/set-up-cicd-pipeline/pipeline-variables-test.png" alt-text="建立新的 Azure 管線":::
 
 2. **在 [工作**] 頁面上，選取 [**代理程式作業 1**] 旁的加號。 搜尋 **命令列**。
 
@@ -99,7 +99,7 @@ ms.locfileid: "90933999"
    azure-streamanalytics-cicd test -project $(projectRootPath)/asaproj.json -outputpath $(projectRootPath)/$(outputPath)/$(testPath) -testConfigPath $(projectRootPath)/test/testConfig.json 
    ```
 
-   :::image type="content" source="media/set-up-cicd-pipeline/command-line-config-test.png" alt-text="輸入命令列工作的設定":::
+   :::image type="content" source="media/set-up-cicd-pipeline/command-line-config-test.png" alt-text="建立新的 Azure 管線":::
 
 ## <a name="add-a-copy-files-task"></a>新增複製檔案工作
 
@@ -116,7 +116,7 @@ ms.locfileid: "90933999"
 
 2. 展開 [ **控制選項**]。 **除非先前的工作失敗，否則請選取 [執行此工作中的組建已取消**]。 **Run this task**
 
-   :::image type="content" source="media/set-up-cicd-pipeline/copy-config.png" alt-text="輸入複製工作的設定":::
+   :::image type="content" source="media/set-up-cicd-pipeline/copy-config.png" alt-text="建立新的 Azure 管線":::
 
 ## <a name="add-a-publish-build-artifacts-task"></a>新增發行組建成品工作
 
@@ -124,7 +124,7 @@ ms.locfileid: "90933999"
 
 2. 展開 [ **控制選項**]。 **除非先前的工作失敗，否則請選取 [執行此工作中的組建已取消**]。 **Run this task**
 
-   :::image type="content" source="media/set-up-cicd-pipeline/publish-config.png" alt-text="輸入發佈工作的設定":::
+   :::image type="content" source="media/set-up-cicd-pipeline/publish-config.png" alt-text="建立新的 Azure 管線":::
 
 ## <a name="save-and-run"></a>儲存並執行
 
@@ -134,9 +134,9 @@ ms.locfileid: "90933999"
 
 您可以在 **已發行** 的資料夾中找到測試摘要檔案和 Azure Resource Manager 範本檔案。
 
-   :::image type="content" source="media/set-up-cicd-pipeline/check-build-test-result.png" alt-text="檢查組建和測試結果":::
+   :::image type="content" source="media/set-up-cicd-pipeline/check-build-test-result.png" alt-text="建立新的 Azure 管線":::
 
-   :::image type="content" source="media/set-up-cicd-pipeline/check-drop-folder.png" alt-text="檢查構件":::
+   :::image type="content" source="media/set-up-cicd-pipeline/check-drop-folder.png" alt-text="建立新的 Azure 管線":::
 
 ## <a name="release-with-azure-pipelines"></a>Azure Pipelines 的版本
 
@@ -150,7 +150,7 @@ ms.locfileid: "90933999"
 
 3. **在 [成品**] 方塊中，選取 [ **+ 新增**成品]。 在 [ **來源**] 底下，選取您建立的組建管線，然後選取 [ **新增**]。
 
-   :::image type="content" source="media/set-up-cicd-pipeline/build-artifact.png" alt-text="輸入組建管線成品":::
+   :::image type="content" source="media/set-up-cicd-pipeline/build-artifact.png" alt-text="建立新的 Azure 管線":::
 
 4. 變更 **第1階段** 的名稱，將 **作業部署至測試環境**。
 
@@ -168,7 +168,7 @@ ms.locfileid: "90933999"
    |Azure 訂用帳戶| 選擇您的訂用帳戶。|
    |動作| *建立或更新資源群組*|
    |資源群組| 選擇將包含您的串流分析作業的測試資源組名。|
-   |Location|選擇您的測試資源群組的位置。|
+   |位置|選擇您的測試資源群組的位置。|
    |範本位置| 連結的成品|
    |[範本]| $ (System.defaultworkingdirectory) /_azure->mslearn-streamanalytics-cicd-示範-部署/捨棄/myASAProject.JobTemplate.js開啟 |
    |範本參數|$ (System.defaultworkingdirectory) /_azure->mslearn-streamanalytics-cicd-示範-部署/捨棄/myASAProject.JobTemplate.parameters.js開啟 |
@@ -185,7 +185,7 @@ ms.locfileid: "90933999"
    |Azure 訂用帳戶| 選擇您的訂用帳戶。|
    |動作| *建立或更新資源群組*|
    |資源群組| 選擇將包含您的串流分析作業的生產資源群組的名稱。|
-   |Location|選擇生產資源群組的位置。|
+   |位置|選擇生產資源群組的位置。|
    |範本位置| *連結的成品*|
    |[範本]| $ (System.defaultworkingdirectory) /_azure->mslearn-streamanalytics-cicd-示範-部署/捨棄/myASAProject.JobTemplate.js開啟 |
    |範本參數|$ (System.defaultworkingdirectory) /_azure->mslearn-streamanalytics-cicd-示範-部署/捨棄/myASAProject.JobTemplate.parameters.js開啟 |
@@ -196,9 +196,9 @@ ms.locfileid: "90933999"
 
 若要建立發行，請選取右上角的 [ **建立發行** ]。
 
-:::image type="content" source="media/set-up-cicd-pipeline/create-release.png" alt-text="使用 Azure Pipelines 建立發行":::
+:::image type="content" source="media/set-up-cicd-pipeline/create-release.png" alt-text="建立新的 Azure 管線":::
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [Azure 串流分析的持續整合與持續部署](cicd-overview.md)
 * [使用 CI/CD 工具自動建立、測試及部署 Azure 串流分析作業](cicd-tools.md)

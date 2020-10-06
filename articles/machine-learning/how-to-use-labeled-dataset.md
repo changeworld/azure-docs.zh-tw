@@ -9,12 +9,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 05/14/2020
-ms.openlocfilehash: 9ffc134c2bded747346f3639119dde4a6f14231b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 7f21d3ed3d5e71c2f87777316e7584011490043a
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91250703"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91757770"
 ---
 # <a name="create-and-explore-azure-machine-learning-dataset-with-labels"></a>建立和探索具有標籤的 Azure Machine Learning 資料集
 
@@ -61,13 +61,20 @@ pip install azureml-contrib-dataset
 >[!NOTE]
 >azureml.contrib 命名空間會因為我們致力於改善本服務而經常變更。 因此，此命名空間中的任何項目均應被視為預覽，而且 Microsoft 不會完全支援。
 
-轉換成 Pandas 資料框架時，我們會針對檔案串流提供下列檔案處理選項。
+Azure Machine Learning 在轉換成 pandas 資料框架時，提供檔案資料流程的下列檔案處理選項。
 * 下載：將您的資料檔案下載至本機路徑。
 * 掛接：將您的資料檔案掛接到掛接點。 「掛接」僅適用於以 Linux 為基礎的計算，包括 Azure Machine Learning 筆記本 VM 和 Azure Machine Learning Compute。
 
+在下列程式碼中， `animal_labels` 資料集是標記專案先前儲存至工作區的輸出。
+
 ```Python
+import azureml.core
 import azureml.contrib.dataset
+from azureml.core import Dataset, Workspace
 from azureml.contrib.dataset import FileHandlingOption
+
+# get animal_labels dataset from the workspace
+animal_labels = Dataset.get_by_name(workspace, 'animal_labels')
 animal_pd = animal_labels.to_pandas_dataframe(file_handling_option=FileHandlingOption.DOWNLOAD, target_path='./download/', overwrite_download=True)
 
 import matplotlib.pyplot as plt
@@ -82,8 +89,18 @@ imgplot = plt.imshow(img)
 
 您可以使用 [to_torchvision()](https://docs.microsoft.com/python/api/azureml-contrib-dataset/azureml.contrib.dataset.tabulardataset?view=azure-ml-py&preserve-view=true#&preserve-view=trueto-torchvision--) 方法，同樣將已標記的資料集從 `azureml-contrib-dataset` 類別載入 Torchvision 資料集。 若要使用此方法，您必須安裝 [PyTorch](https://pytorch.org/)。 
 
+在下列程式碼中， `animal_labels` 資料集是標記專案先前儲存至工作區的輸出。
+
 ```python
+import azureml.core
+import azureml.contrib.dataset
+from azureml.core import Dataset, Workspace
+from azureml.contrib.dataset import FileHandlingOption
+
 from torchvision.transforms import functional as F
+
+# get animal_labels dataset from the workspace
+animal_labels = Dataset.get_by_name(workspace, 'animal_labels')
 
 # load animal_labels dataset into torchvision dataset
 pytorch_dataset = animal_labels.to_torchvision()

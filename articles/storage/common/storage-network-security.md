@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/16/2020
+ms.date: 10/05/2020
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 474b3c4261b412c0c875f7a05802095c9e0c2cd9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b936460d98ce772e49f281a06f95da09fa34ccfb
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91320365"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91758790"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>設定 Azure 儲存體防火牆和虛擬網路
 
@@ -379,7 +379,7 @@ Azure 儲存體提供分層的安全性模型。 此模型可讓您根據所使�
 | Azure 事件中心         | Microsoft.EventHub         | 使用事件中樞擷取封存資料。 [深入了解](/azure/event-hubs/event-hubs-capture-overview)。 |
 | Azure 檔案同步          | Microsoft.StorageSync      | 可讓您將內部部署檔案伺服器轉換為 Azure 檔案共用的快取。 允許多網站同步處理、快速災害復原，以及雲端備份。 [深入了解](../files/storage-sync-files-planning.md) |
 | Azure HDInsight          | Microsoft.HDInsight        | 為新的 HDInsight 叢集佈建預設檔案系統的初始內容。 [深入了解](/azure/hdinsight/hdinsight-hadoop-use-blob-storage)。 |
-| Azure 匯入匯出      | Microsoft.ImportExport     | 可讓您使用匯入/匯出服務將資料匯入至 Azure，以及從 Azure 匯出資料。 [深入了解](/azure/storage/common/storage-import-export-service)。  |
+| Azure 匯入匯出      | Microsoft.ImportExport     | 使用 Azure 儲存體匯入/匯出服務，將資料匯入至 Azure 儲存體 Azure 儲存體或匯出資料。 [深入了解](/azure/storage/common/storage-import-export-service)。  |
 | Azure 監視器            | Microsoft.Insights         | 允許將監視資料寫入至受保護的儲存體帳戶，包括資源記錄、Azure Active Directory 登入和稽核記錄，以及 Microsoft Intune 記錄。 [深入了解](/azure/monitoring-and-diagnostics/monitoring-roles-permissions-security)。 |
 | Azure 網路         | Microsoft.Network          | 儲存及分析網路流量記錄，包括透過網路監看員和流量分析服務。 [深入了解](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview)。 |
 | Azure Site Recovery      | Microsoft.SiteRecovery     | 當使用已啟用防火牆的快取、來源或目標儲存體帳戶時，啟用複寫以進行 Azure IaaS 虛擬機器的災害復原。  [深入了解](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication)。 |

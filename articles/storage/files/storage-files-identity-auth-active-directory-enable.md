@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 09/13/2020
 ms.author: rogarana
-ms.openlocfilehash: fd80f7b4a62380b62acb52543b49f5640cc5d365
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: bb408c762c33e4d146a2f0ef36f32e525b3859bd
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91627970"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91758263"
 ---
 # <a name="overview---on-premises-active-directory-domain-services-authentication-over-smb-for-azure-file-shares"></a>總覽-Azure 檔案共用的內部部署 Active Directory Domain Services 透過 SMB 進行驗證
 
@@ -54,7 +54,9 @@ ms.locfileid: "91627970"
 
     請確定尚未針對 Azure AD DS 驗證設定包含您檔案共用的儲存體帳戶。 如果已在儲存體帳戶上啟用 Azure 檔案儲存體的 Azure AD DS 驗證，則必須先將它停用，才能變更為使用內部部署 AD DS。 這表示在 Azure AD DS 環境中設定的現有 Acl 將需要重新設定，才能強制執行適當的許可權。
 
-    如果您在連接到 Azure 檔案儲存體時遇到問題，請參閱 [我們針對 Windows 上的 Azure 檔案儲存體掛接錯誤所發佈的疑難排解工具](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Windows)。 我們也會在埠445遭到封鎖時，提供解決案例的 [指引](https://docs.microsoft.com/azure/storage/files/storage-files-faq#on-premises-access) 。 
+
+    如果您在連接到 Azure 檔案儲存體時遇到問題，請參閱 [我們針對 Windows 上的 Azure 檔案儲存體掛接錯誤所發佈的疑難排解工具](https://azure.microsoft.com/blog/new-troubleshooting-diagnostics-for-azure-files-mounting-errors-on-windows/)。 我們也會在埠445遭到封鎖時，提供解決案例的 [指引](https://docs.microsoft.com/azure/storage/files/storage-files-faq#on-premises-access) 。 
+
 
 - 在啟用和設定 Azure 檔案共用的 AD DS authentication 之前，請先進行任何相關的網路設定。 如需詳細資訊，請參閱 [Azure 檔案儲存體網路功能考慮](storage-files-networking-overview.md) 。
 

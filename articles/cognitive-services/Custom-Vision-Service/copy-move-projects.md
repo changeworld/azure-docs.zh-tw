@@ -9,18 +9,18 @@ ms.subservice: custom-vision
 ms.topic: how-to
 ms.date: 09/08/2020
 ms.author: pafarley
-ms.openlocfilehash: 5285dfb23476662a13162788b2ec497b4fe49228
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 78ae0fc94e74755b481f80724ca26b34da99122c
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90532602"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91758569"
 ---
 # <a name="copy-and-move-your-custom-vision-projects"></a>複製並移動您的自訂視覺專案
 
 在您建立並定型自訂視覺專案之後，您可能會想要將專案複製到另一個資源。 例如，您可能想要將專案從開發移至生產環境，或將專案備份到不同 Azure 區域中的帳戶，以增加資料安全性。
 
-**[ExportProject](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Training_3.3/operations/5eb0bcc6548b571998fddeb3])** 和**[ImportProject](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Training_3.3/operations/5eb0bcc7548b571998fddee3)** api 可讓您將專案從一個自訂視覺帳戶複製到其他帳戶，藉此實現此案例。 本指南說明如何透過捲曲使用這些 REST Api。 您也可以使用 HTTP 要求服務（例如 Postman）發出要求。
+**[ExportProject](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Training_3.3/operations/5eb0bcc6548b571998fddeb3)** 和**[ImportProject](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Training_3.3/operations/5eb0bcc7548b571998fddee3)** api 可讓您將專案從一個自訂視覺帳戶複製到其他帳戶，藉此實現此案例。 本指南說明如何透過捲曲使用這些 REST Api。 您也可以使用 HTTP 要求服務（例如 Postman）發出要求。
 
 ## <a name="business-scenarios"></a>商務案例
 

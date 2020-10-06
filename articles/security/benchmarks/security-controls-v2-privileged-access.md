@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: b5315b4d2ec8b757f7fa1075a438419679f5e798
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 68fdff9444286a7f304c3a3361ad33a02e87a282
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91317968"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91758365"
 ---
 # <a name="security-control-v2-privileged-access"></a>安全性控制 V2：特殊許可權存取
 
@@ -126,7 +126,7 @@ ms.locfileid: "91317968"
 
 - [安全性合規性管理](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)
 
-- [安全性作業 (SecOps) ](//azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [安全性作業 (SecOps) ](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 ## <a name="pa-5-automate-entitlement-management"></a>PA-5：自動化權利管理
 

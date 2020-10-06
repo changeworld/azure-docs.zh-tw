@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: a5f11a6054358584a8511cb967860c89f6491beb
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: a72552d8654a45d1ff4c1890c8086d43d7bd801d
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934398"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91756529"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql-flexible-server-preview"></a>適用於 MySQL 的 Azure 資料庫彈性的伺服器 (預覽版備份和還原) 
 
@@ -24,7 +24,7 @@ ms.locfileid: "90934398"
 
 有彈性的伺服器會取得資料檔案的快照集備份，並將它們儲存在本機多餘的儲存體中。 伺服器也會執行交易記錄備份，並將它們儲存在本機多餘的儲存體中。 在您設定的備份保留期限內，這些備份可讓您將伺服器還原至任何時間點。 預設的備份保留期限是七天。 您可以選擇性地將資料庫備份設定為1到35天。 所有備份都會使用 AES 256 位加密來加密待用儲存的資料。
 
-這些備份檔案無法匯出。 備份只能用在彈性伺服器的還原作業。 您也可以使用 [mysqldump](https://docs.microsoft.com/azure/MySQL/howto-migrate-using-dump-and-restore)   MySQL 用戶端的 mysqldump 來複製資料庫。
+這些備份檔案無法匯出。 備份只能用在彈性伺服器的還原作業。 您也可以使用 [mysqldump](https://docs.microsoft.com/azure/postgresql/howto-migrate-using-dump-and-restore)   MySQL 用戶端的 mysqldump 來複製資料庫。
 
 ## <a name="backup-frequency"></a>備份頻率
 
@@ -88,7 +88,7 @@ ms.locfileid: "90934398"
 -   確定已備妥適當的登入和資料庫層級許可權。
 -   適當地設定警示。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 -   瞭解 [商務持續性](./concepts-business-continuity.md)
 -   深入瞭解 [區域冗余高可用性](./concepts-high-availability.md)

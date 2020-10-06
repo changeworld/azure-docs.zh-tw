@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 09/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9d36cee1ebf9f58991db6fd40fd6aa9422546b61
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: 6f4dd0836ba04d0e07ada8aced964317498b1f22
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91710748"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91757590"
 ---
 # <a name="query-azure-cosmos-db-data-using-sql-serverless-in-azure-synapse-link-preview"></a>使用 Azure Synapse 連結中的 SQL 無伺服器查詢 Azure Cosmos DB 資料 (預覽) 
 
@@ -23,7 +23,7 @@ Synapse SQL 無伺服器 (先前的 SQL 隨選) 可讓您以近乎即時的方�
 > [!NOTE]
 > 支援使用 SQL 無伺服器查詢 Azure Cosmos DB 分析存放區目前處於閘道預覽狀態。 
 
-若要查詢 Azure Cosmos DB，可透過[OPENROWSET](develop-openrowset.md)函式（包括大部分的[SQL 函數和運算子](overview-features.md)）支援完整的[選取](/sql/t-sql/queries/select-transact-sql.md?view=sql-server-ver15&preserve-view=true)介面區。 您也可以儲存查詢的結果，此查詢會使用 [create external table as select](develop-tables-cetas.md#cetas-in-sql-on-demand)，從 Azure Cosmos DB 中讀取資料，以及 Azure Blob 儲存體中的資料和 Azure Data Lake Storage。 您目前無法使用 [CETAS](develop-tables-cetas.md#cetas-in-sql-on-demand)將 SQL 無伺服器查詢結果儲存至 Azure Cosmos DB。
+若要查詢 Azure Cosmos DB，可透過[OPENROWSET](develop-openrowset.md)函式（包括大部分的[SQL 函數和運算子](overview-features.md)）支援完整的[選取](/sql/t-sql/queries/select-transact-sql?view=sql-server-ver15)介面區。 您也可以儲存查詢的結果，此查詢會使用 [create external table as select](develop-tables-cetas.md#cetas-in-sql-on-demand)，從 Azure Cosmos DB 中讀取資料，以及 Azure Blob 儲存體中的資料和 Azure Data Lake Storage。 您目前無法使用 [CETAS](develop-tables-cetas.md#cetas-in-sql-on-demand)將 SQL 無伺服器查詢結果儲存至 Azure Cosmos DB。
 
 在本文中，您將瞭解如何使用 SQL 無伺服器來撰寫查詢，該查詢將會從已啟用 Synapse 連結的 Azure Cosmos DB 容器中查詢資料。 然後，您可以在 [本](./tutorial-data-analyst.md) 教學課程中深入瞭解如何透過 Azure Cosmos DB 容器建立 SQL 無伺服器，並將其連接到 Power BI 模型。 
 

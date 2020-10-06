@@ -4,12 +4,12 @@ description: 針對 SDK 撰寫遙測處理器和遙測初始化運算式，以�
 ms.topic: conceptual
 ms.date: 11/23/2016
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: d2a0c348eda569e95a3029b9dce76aa981989ddf
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b3ccc3516d5b31f4c119c2d5a2bd11a63dbdc611
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91264026"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91758025"
 ---
 # <a name="filter-and-preprocess-telemetry-in-the-application-insights-sdk"></a>在 Application Insights SDK 中篩選及前置處理遙測
 
@@ -292,7 +292,7 @@ protected void Application_Start()
 }
 ```
 
-請參閱 [此範例](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/MvcWebRole)的詳細資訊。
+請參閱 [此範例](https://github.com/MohanGsk/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/MvcWebRole)的詳細資訊。
 
 ASP.NET **核心/背景工作服務應用程式：載入您的初始化運算式**
 

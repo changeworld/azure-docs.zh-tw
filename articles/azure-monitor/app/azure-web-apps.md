@@ -4,12 +4,12 @@ description: Azure 應用程式服務的應用程式效能監視。 圖表載入
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js, devx-track-dotnet
-ms.openlocfilehash: 2ac5466e280bb7dd835314561f565ca72be2743c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 36f6ad4c248b3de54de5de0893410e9b13df0c26
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91321810"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91759453"
 ---
 # <a name="monitor-azure-app-service-performance"></a>監視 Azure App Service 效能
 
@@ -391,7 +391,7 @@ $app = Set-AzWebApp -AppSettings $newAppSettings -ResourceGroupName $app.Resourc
 
 這是因為 APPINSIGHTS_JAVASCRIPT_ENABLED 的應用程式設定設定為 true，而且同時存在內容編碼。 目前尚不支援此案例。 解決方法是從您的應用程式設定中移除 APPINSIGHTS_JAVASCRIPT_ENABLED。 可惜的是，如果仍然需要用戶端/瀏覽器端的 JavaScript 檢測，您的網頁需要手動 SDK 參考。 請遵循使用 JavaScript SDK 進行手動檢測的 [指示](https://github.com/Microsoft/ApplicationInsights-JS#snippet-setup-ignore-if-using-npm-setup) 。
 
-如需 Application Insights 代理程式/擴充功能的最新資訊，請參閱 [版本](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/app-insights-web-app-extensions-releasenotes.md)資訊。
+如需 Application Insights 代理程式/擴充功能的最新資訊，請參閱 [版本](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/app-insights-web-app-extensions-releasenotes.md)資訊。
 
 ### <a name="default-website-deployed-with-web-apps-does-not-support-automatic-client-side-monitoring"></a>使用 web apps 部署的預設網站不支援自動用戶端監視
 

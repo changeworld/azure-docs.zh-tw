@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 488ca52abdd5f8d6cfd1f92a5f91861a17a77d19
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 184073ef3ee1b6a67c844754f7da81f88bbbdf62
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88510452"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91757022"
 ---
 # <a name="how-to-manage-settings"></a>如何管理設定
 
@@ -51,6 +51,8 @@ ms.locfileid: "88510452"
 
     ![建立新的工作區對話方塊](media/how-to/create-new-workspace-dialog.png)
 
+>[!Note]
+>自訂翻譯不支援為翻譯工具文字的 API 資源建立工作區 (也稱為 在 [啟用的 VNET](https://docs.microsoft.com/azure/api-management/api-management-using-with-vnet)內建立的 Azure 訂用帳戶金鑰) 。
 
 ### <a name="modify-existing-key"></a>修改現有金鑰
 
@@ -61,7 +63,7 @@ ms.locfileid: "88510452"
 
 3. 在對話方塊中，輸入 Translator 訂用帳戶的金鑰，然後按一下 [儲存] 按鈕。
 
-    ![如何新增訂用帳戶金鑰](media/how-to/how-to-add-subscription-key-dialog.png)
+    ![如何新增訂用帳戶金鑰組話框](media/how-to/how-to-add-subscription-key-dialog.png)
 
 ## <a name="manage-your-workspace"></a>管理工作區
 

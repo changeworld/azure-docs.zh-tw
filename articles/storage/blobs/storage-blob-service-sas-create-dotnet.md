@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 08/07/2020
+ms.date: 10/05/2020
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 16179ae730e81ff1ff7c107e3af70b5ce24e8813
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 6ebb81e6f5adce1dbc301ac905fed5af1ee6a825
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89001939"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91758300"
 ---
 # <a name="create-a-service-sas-for-a-container-or-blob-with-net"></a>使用 .NET 建立容器或 blob 的服務 SAS
 
@@ -30,7 +30,7 @@ ms.locfileid: "89001939"
 
 ### <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
 
-建立新的 [>blobsasbuilder](/dotnet/api/azure.storage.sas.blobsasbuilder)。 然後，呼叫 [ToSasQueryParameters](/dotnet/api/azure.storage.sas.blobsasbuilder.tosasqueryparameters) 以取得 SAS 權杖字串。 
+服務 SAS 會以帳戶存取金鑰簽署。 使用 [StorageSharedKeyCredential](/dotnet/api/azure.storage.storagesharedkeycredential) 類別來建立用來簽署 SAS 的認證。 接著，建立新的 [>blobsasbuilder](/dotnet/api/azure.storage.sas.blobsasbuilder) 物件，並呼叫 [TOSASQUERYPARAMETERS](/dotnet/api/azure.storage.sas.blobsasbuilder.tosasqueryparameters) 以取得 SAS 權杖字串。
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Security.cs" id="Snippet_GetContainerSasUri":::
 
@@ -86,7 +86,7 @@ private static string GetContainerSasUri(CloudBlobContainer container, string st
 
 ### <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
 
-建立新的 [>blobsasbuilder](/dotnet/api/azure.storage.sas.blobsasbuilder)。 然後，呼叫 [ToSasQueryParameters](/dotnet/api/azure.storage.sas.blobsasbuilder.tosasqueryparameters) 以取得 SAS 權杖字串。 
+服務 SAS 會以帳戶存取金鑰簽署。 使用 [StorageSharedKeyCredential](/dotnet/api/azure.storage.storagesharedkeycredential) 類別來建立用來簽署 SAS 的認證。 接著，建立新的 [>blobsasbuilder](/dotnet/api/azure.storage.sas.blobsasbuilder) 物件，並呼叫 [TOSASQUERYPARAMETERS](/dotnet/api/azure.storage.sas.blobsasbuilder.tosasqueryparameters) 以取得 SAS 權杖字串。
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Security.cs" id="Snippet_GetBlobSasUri":::
 
@@ -136,6 +136,7 @@ private static string GetBlobSasUri(CloudBlobContainer container, string blobNam
     return blob.Uri + sasBlobToken;
 }
 ```
+
 ---
 
 [!INCLUDE [storage-blob-dotnet-resources-include](../../../includes/storage-blob-dotnet-resources-include.md)]

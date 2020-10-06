@@ -7,12 +7,12 @@ ms.topic: reference
 author: keferna
 ms.author: keferna
 ms.date: 07/29/2020
-ms.openlocfilehash: cc697cd78e929b62f951014f760d644552fa082c
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 59c5473e88e0c4a8108f651e9543ec90c08290ab
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89650985"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91759072"
 ---
 # <a name="geographic-availability-and-currency-support-for-commercial-marketplace"></a>商業市集的地理可用性和貨幣支援
 
@@ -166,7 +166,7 @@ ms.locfileid: "89650985"
 | 辛巴威                            | ZW        | 美元          |
 |   |   |   |
 
-\* 針對巴西的客戶，commcercial marketplace 透過雲端解決方案提供者 (CSP) 使用 USD。
+\* 對於巴西的客戶而言，透過雲端解決方案提供者 (CSP) 使用 USD 的商業 marketplace。
 
 \** 僅限免費和 BYOL VM 映像。
 
@@ -181,7 +181,7 @@ ms.locfileid: "89650985"
 
 供應專案的價格一律會以當地貨幣向客戶顯示。 您在合作夥伴中心中選取的價格會根據您在合作夥伴中心中儲存價格時的匯率，轉換成當地貨幣的客戶。 除非您重新發佈您的供應專案，否則在線上商店中向客戶顯示的價格不會變更。
 
-Microsoft 會以當地貨幣接收客戶的款項，並以您的當地貨幣來支付費用。 Microsoft 會使用購買日的匯率，將客戶當地貨幣轉換為當地貨幣。
+Microsoft 會以當地貨幣接收客戶的款項，並以您在合作夥伴中心中選取的貨幣來支付費用。 Microsoft 會使用購買日的匯率來轉換客戶當地貨幣。
 
 > [!NOTE]
 > Microsoft 會使用 Microsoft 財政部兌換費率來轉換供應專案價格。
@@ -196,7 +196,7 @@ Microsoft 會以當地貨幣接收客戶的款項，並以您的當地貨幣來�
 
 - [建立 Azure 應用程式供應項目](partner-center-portal/create-new-azure-apps-offer.md)
 - [建立 Azure 容器供應專案](partner-center-portal/create-azure-container-offer.md)
-- [建立 Azure 虛擬機器供應專案](partner-center-portal/azure-vm-create-offer.md)
+- [建立 Azure 虛擬機器供應項目](partner-center-portal/azure-vm-create-offer.md)
 - [建立諮詢服務供應項目](partner-center-portal/create-consulting-service-offer.md)
 - [建立 Dynamics 365 for Customer Engagement 和 PowerApps 供應項目](partner-center-portal/create-new-customer-engagement-offer.md)
 - [建立 Dynamics 365 for Operations 供應項目](partner-center-portal/create-new-operations-offer.md)

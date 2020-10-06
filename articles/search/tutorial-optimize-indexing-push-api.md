@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 08/21/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: bfb2598fb3a207bbdfaade9086efd07827b077dd
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: cb012fcc701e9dd18dbe1db5304807b4d96c2a86
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88998419"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91757787"
 ---
 # <a name="tutorial-optimize-indexing-with-the-push-api"></a>教學課程：使用推送 API 將索引編製最佳化
 
@@ -325,7 +325,7 @@ do
 
 從這裡開始，我們會將指數輪詢程式碼包裝到函式中，讓其可供您輕鬆呼叫。
 
-接著建立另一個函式來管理作用中的執行緒。 為求簡化，這裡並未包含該函式，但您可以在 [ExponentialBackoff.cs](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/optimize-data-indexing/OptimizeDataIndexing/ExponentialBackoff.cs) 中找到。 您可以使用下列命令來呼叫該函數，其中 `hotels` 是我們想要上傳的資料、`1000` 是批次大小，而 `8` 則是並行執行緒的數目：
+接著建立另一個函式來管理作用中的執行緒。 為求簡化，這裡並未包含該函式，但您可以在 [ExponentialBackoff.cs](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/optimize-data-indexing/v10/OptimizeDataIndexing/ExponentialBackoff.cs) 中找到。 您可以使用下列命令來呼叫該函數，其中 `hotels` 是我們想要上傳的資料、`1000` 是批次大小，而 `8` 則是並行執行緒的數目：
 
 ```csharp
 ExponentialBackoff.IndexData(indexClient, hotels, 1000, 8).Wait();
