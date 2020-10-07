@@ -4,10 +4,10 @@ description: 快速入門：本文將逐步解說如何建立一個會從 Azure 
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.openlocfilehash: 59cd0d757108e7579ce389d216b0ee4d569e12fd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87002449"
 ---
 # <a name="quickstart-send-events-to-or-receive-events-from-event-hubs-using-go"></a>快速入門：使用 Go 將事件傳送至事件中樞或從中接收事件

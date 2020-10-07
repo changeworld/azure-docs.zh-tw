@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 02/10/2020
 ms.author: travisw
 ms.openlocfilehash: 84c9f61783d2fea425b83c214deede295c4ed581
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87375099"
 ---
 1. 啟動 Android Studio，然後在 [歡迎使用] 視窗中選取 [開始新的 Android Studio 專案]。

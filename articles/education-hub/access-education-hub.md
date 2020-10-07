@@ -8,10 +8,10 @@ ms.service: azure-education
 ms.subservice: education-hub
 ms.date: 06/30/2020
 ms.openlocfilehash: 995956e23e211d2182159f6e61abbbf184983ab0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87100803"
 ---
 # <a name="accessing-the-azure-education-hub"></a>存取 Azure Education Hub
@@ -32,7 +32,7 @@ ms.locfileid: "87100803"
    > [!IMPORTANT]
    > 確認您是使用組織/公司帳戶 (例如貴機構的 @domain.edu) 進行登入。 若是如此，請先在視窗左側選取此選項。 這會將您帶到不同的登入畫面。
 
-    :::image type="content" source="media/access-education-hub/sign-in.png" alt-text="組織登入對話方塊。" border="false":::
+    :::image type="content" source="media/access-education-hub/sign-in.png" alt-text="開啟私密瀏覽器視窗。" border="false":::
 
 1. 登入之後，系統會將您導向至 Azure 入口網站。 若要尋找 Education Hub，請移至 [所有服務] 功能表，然後搜尋 [教育]。
    第一次登入時，會顯示 [開始使用] 頁面。

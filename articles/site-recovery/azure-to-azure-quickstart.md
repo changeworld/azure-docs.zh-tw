@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.date: 03/27/2020
 ms.custom: mvc
 ms.openlocfilehash: 8681ccaac30402927005e5e8802d7da2bddc2c5c
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "86135703"
 ---
 # <a name="quickstart-set-up-disaster-recovery-to-a-secondary-azure-region-for-an-azure-vm"></a>快速入門：設定 Azure VM 到次要 Azure 區域的災害復原
@@ -48,7 +48,7 @@ ms.locfileid: "86135703"
 1. 在 [作業]  中，選取 [災害復原]  。
 1. 若要從 [概觀]  中檢視複寫詳細資料，請選取 [基本資訊]  。 如需詳細資訊，請參閱**健康情況和狀態**、**容錯移轉整備**和**基礎結構檢視**對應項目。
 
-   :::image type="content" source="media/azure-to-azure-quickstart/replication-status.png" alt-text="複寫狀態。":::
+   :::image type="content" source="media/azure-to-azure-quickstart/replication-status.png" alt-text="啟用複寫。":::
 
 ## <a name="clean-up-resources"></a>清除資源
 
@@ -65,7 +65,7 @@ ms.locfileid: "86135703"
 1. 從 [概觀]  中選取 [停用複寫]  。
 1. 若要卸載 Site Recovery 擴充模組，請移至 VM 的 [設定]   > [擴充功能]  。
 
-   :::image type="content" source="media/azure-to-azure-quickstart/disable2-replication.png" alt-text="停用複寫。":::
+   :::image type="content" source="media/azure-to-azure-quickstart/disable2-replication.png" alt-text="啟用複寫。":::
 
 ## <a name="next-steps"></a>後續步驟
 

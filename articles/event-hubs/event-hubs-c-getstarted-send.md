@@ -4,10 +4,10 @@ description: 快速入門：本文會逐步解說如何建立 C 應用程式，�
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.openlocfilehash: bfe1ca1a45f7b33d7431aed13446d8d72f79fb90
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "85315658"
 ---
 # <a name="quickstart-send-events-to-azure-event-hubs-using-c"></a>快速入門：使用 C 將事件傳送至 Azure 事件中樞

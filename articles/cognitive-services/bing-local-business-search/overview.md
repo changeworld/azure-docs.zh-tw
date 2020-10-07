@@ -11,10 +11,10 @@ ms.topic: overview
 ms.date: 03/24/2020
 ms.author: aahi
 ms.openlocfilehash: 685ee0c616234563981e55f14213e424daae32f5
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/01/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "85611266"
 ---
 # <a name="what-is-bing-local-business-search"></a>什麼是 Bing 當地商家搜尋？

@@ -4,10 +4,10 @@ description: 在本快速入門中，您將在 REST API 中使用 Azure 藍圖�
 ms.date: 06/29/2020
 ms.topic: quickstart
 ms.openlocfilehash: e3cdf28cfe523e52aceefe20294042d28b98e1e2
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/06/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "85971193"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-rest-api"></a>快速入門：使用 REST API 定義和指派 Azure 藍圖

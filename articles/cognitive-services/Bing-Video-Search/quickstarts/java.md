@@ -12,10 +12,10 @@ ms.date: 05/22/2020
 ms.custom: devx-track-java
 ms.author: aahi
 ms.openlocfilehash: b03dd9140ef49d34ba0303742aa4961a9f313cc9
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87323361"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-java"></a>快速入門：使用 Bing 影片搜尋 REST API 和 Java 來搜尋影片
@@ -24,7 +24,7 @@ ms.locfileid: "87323361"
 
 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingVideoSearchv7.java) 上有此範例的原始程式碼，其中還有其他錯誤處理、功能和程式碼註釋。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * [Java 開發套件 (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html)
 

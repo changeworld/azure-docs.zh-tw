@@ -9,10 +9,10 @@ ms.topic: include
 ms.custom: include file
 ms.date: 04/27/2020
 ms.openlocfilehash: a078455b7630046a83a9ae1c896d0fc44bf8efad
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87132875"
 ---
 這個以 cURL 為基礎的快速入門會逐步引導您從知識庫取得答案。

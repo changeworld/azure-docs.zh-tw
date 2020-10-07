@@ -10,10 +10,10 @@ ms.date: 11/08/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt
 ms.openlocfilehash: 3f38933c1b11ffca6a9ac26eb11d29387712067f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "86495086"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-with-azure-powershell"></a>快速入門：使用 Azure PowerShell 建立虛擬機器擴展集
@@ -34,7 +34,7 @@ ms.locfileid: "86495086"
 New-AzResourceGroup -ResourceGroupName "myResourceGroup" -Location "EastUS"
 ```
 
-現在使用 [New-AzVmss](/powershell/module/az.compute/new-azvmss) 建立虛擬機器擴展集。 下列範例會建立使用 Windows Server 2016 資料中心平台映像，名為 myScaleSet 的擴展集。 系統會自動建立虛擬網路、公用 IP 位址和負載平衡器的 Azure 網路資源。 出現提示時，您可以為擴展集中的 VM 執行個體設定自己的系統管理認證：
+現在使用 [New-AzVmss](/powershell/module/az.compute/new-azvmss) 建立虛擬機器擴展集。 下列範例會建立使用 Windows Server 2016 資料中心  平台映像，名為 myScaleSet  的擴展集。 系統會自動建立虛擬網路、公用 IP 位址和負載平衡器的 Azure 網路資源。 出現提示時，您可以為擴展集中的 VM 執行個體設定自己的系統管理認證：
 
 ```azurepowershell-interactive
 New-AzVmss `

@@ -8,10 +8,10 @@ ms.date: 06/30/2020
 ms.service: azure-education
 ms.subservice: education-hub
 ms.openlocfilehash: 0b797e2416b4d8849da19e4e75127f86a6f17322
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87100823"
 ---
 # <a name="quickstart-set-up-a-course-and-create-a-classroom"></a>快速入門：設定課程並建立教室
@@ -45,17 +45,17 @@ ms.locfileid: "87100823"
 
 1. 選取資料表左上角的 [+ 新增] 圖示，以開始建立工作流程。
 
-    :::image type="content" source="media/set-up-course-classroom/courses-add.png" alt-text="將課程新增至 Azure Education Hub" border="false":::
+    :::image type="content" source="media/set-up-course-classroom/courses-add.png" alt-text="Azure Education Hub 課程頁面" border="false":::
 
 1. 您可以使用兩種方法來建立課程名冊：上傳名冊或使用邀請代碼。
     - **名冊**：如果您已經有所有學生的名稱和登入，您可以填入並上傳名冊檔案。 若要下載上傳名冊所需的 .csv 檔案範例檔案，請選取右上角的 [下載範例檔案] 連結。
     - **邀請代碼**：如果您選擇使用邀請代碼，請決定有多少代碼可以兌換，以及何時過期。 您會將下列連結傳送給您的學生，以兌換代碼： https://aka.ms/joinedu 。
 
-      :::image type="content" source="media/set-up-course-classroom/enter-invitation-code.png" alt-text="在 Azure Education Hub 中輸入您的邀請代碼" border="false":::
+      :::image type="content" source="media/set-up-course-classroom/enter-invitation-code.png" alt-text="Azure Education Hub 課程頁面" border="false":::
 
 1. 選取右下角的 [建立教室]。 這可能需要一些時間才能完成。
 
-   :::image type="content" source="media/set-up-course-classroom/create-classroom.png" alt-text="在 Azure Education Hub 中建立教室" border="false":::
+   :::image type="content" source="media/set-up-course-classroom/create-classroom.png" alt-text="Azure Education Hub 課程頁面" border="false":::
 
 ## <a name="next-steps"></a>後續步驟
 

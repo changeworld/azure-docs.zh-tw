@@ -9,10 +9,10 @@ ms.date: 11/05/2019
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 46119b9f7cdac47920d4bba8e00c3fc56b0edc78
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87494514"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-in-the-azure-portal"></a>快速入門：在 Azure 入口網站中建立 Windows 虛擬機器
@@ -88,7 +88,7 @@ Install-WindowsFeature -name Web-Server -IncludeManagementTools
 
 若不再需要，您可以刪除資源群組、虛擬機器和所有相關資源。 
 
-請選取虛擬機器的資源群組，然後選取 [刪除]。 確認要完成資源刪除作業的資源群組名稱。
+請選取虛擬機器的資源群組，然後選取 [刪除]  。 確認要完成資源刪除作業的資源群組名稱。
 
 ## <a name="next-steps"></a>後續步驟
 
