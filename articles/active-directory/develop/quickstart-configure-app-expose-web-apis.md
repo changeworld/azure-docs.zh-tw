@@ -14,10 +14,10 @@ ms.author: marsma
 ms.custom: aaddev, contperfq1
 ms.reviewer: aragra, lenalepa, sureshja
 ms.openlocfilehash: 72d66bd4c738ed60bbaefc123daae90ecc0db163
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89442123"
 ---
 # <a name="quickstart-configure-an-application-to-expose-a-web-api"></a>快速入門：設定應用程式以公開 Web API
@@ -95,7 +95,7 @@ ms.locfileid: "89442123"
 
 如果您成功新增前幾節中所述的兩個範例範圍，則這些範圍會出現在 Web API 應用程式註冊的 **公開 API** 窗格中，類似於此圖：
 
-:::image type="content" source="media/quickstart-configure-app-expose-web-apis/portal-03-scopes-list.png" alt-text="公開 API 窗格的螢幕擷取畫面，其中顯示兩個公開的範圍。":::
+:::image type="content" source="media/quickstart-configure-app-expose-web-apis/portal-03-scopes-list.png" alt-text="應用程式註冊在 Azure 入口網站中公開 API 窗格":::
 
 如圖片中所示，範圍的完整字串是 Web API 的 **應用程式識別碼 URI** 和範圍之**範圍名稱**的串連。
 

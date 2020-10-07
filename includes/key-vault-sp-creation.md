@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 07/20/2020
 ms.author: msmbaldwin
 ms.openlocfilehash: deb2eb877743d533c5daeee8b6636edd62418fe0
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89494318"
 ---
 若要驗證雲端式應用程式，最簡單的方法是使用受控識別；如需詳細資訊，請參閱[向 Key Vault 進行驗證](/azure/key-vault/general/authentication)。

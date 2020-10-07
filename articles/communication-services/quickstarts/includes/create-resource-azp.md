@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
 ms.openlocfilehash: 11b9c553573d9e6188ba634b4cb966d6a9b850b4
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90943933"
 ---
 ## <a name="prerequisites"></a>必要條件
@@ -23,11 +23,11 @@ ms.locfileid: "90943933"
 
 在 [搜尋 Marketplace] 輸入或入口網站頂端的搜尋列中，輸入 [通訊]。
 
-:::image type="content" source="../media/create-a-communication-resource/searchbar-communication-portal.png" alt-text="顯示在搜尋列中搜尋通訊服務的螢幕擷取畫面。":::
+:::image type="content" source="../media/create-a-communication-resource/searchbar-communication-portal.png" alt-text="醒目提示 Azure 入口網站中建立資源按鈕的螢幕擷取畫面。":::
 
 在結果中選取 [通訊服務]，然後選取 [新增]。
 
-:::image type="content" source="../media/create-a-communication-resource/add-communication-portal.png" alt-text="顯示 Azure 面板的螢幕擷取畫面，其中醒目提示新增按鈕。":::
+:::image type="content" source="../media/create-a-communication-resource/add-communication-portal.png" alt-text="醒目提示 Azure 入口網站中建立資源按鈕的螢幕擷取畫面。":::
 
 您現在可以設定您的通訊服務資源。 在建立程序的第一個頁面上，系統會要求您指定：
 

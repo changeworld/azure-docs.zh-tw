@@ -15,10 +15,10 @@ ms.custom:
 - cog-serv-seo-aug-2020
 keywords: 電腦視覺, 電腦視覺應用程式, 電腦視覺服務
 ms.openlocfilehash: fa00265f3c591578f9970b77770fbf7290d87510
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90907064"
 ---
 # <a name="what-is-computer-vision"></a>什麼是電腦視覺？

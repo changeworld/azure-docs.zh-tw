@@ -9,10 +9,10 @@ ms.date: 07/28/2020
 ms.topic: include
 ms.service: azure-communication-services
 ms.openlocfilehash: d4ef8baa123f805d380b14fa24abff65903cb41d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90943655"
 ---
 ## <a name="prerequisites"></a>必要條件
@@ -132,7 +132,7 @@ module.exports = async function (context, req) {
 
 在您的瀏覽器上開啟 URL，您應該會看到回應本文，以及通訊使用者識別碼、權杖，和權杖的到期日。
 
-:::image type="content" source="../media/trusted-service-sample-response.png" alt-text="此螢幕擷取畫面顯示已建立 Azure 函式的回應範例。":::
+:::image type="content" source="../media/trusted-service-sample-response.png" alt-text="信任的服務架構圖":::
 
 ## <a name="deploy-the-function-to-azure"></a>將函式部署至 Azure
 

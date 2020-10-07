@@ -4,10 +4,10 @@ description: 本主題提供 IoT Edge 上 Live Video Analytics 的概觀。 此�
 ms.topic: overview
 ms.date: 05/27/2020
 ms.openlocfilehash: b9b8726c5e8ad6850e05aeee48fccabee703080e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90904351"
 ---
 # <a name="what-is-live-video-analytics-on-iot-edge-preview"></a>何謂 IoT Edge 上的 Live Video Analytics？ (預覽)

@@ -8,10 +8,10 @@ ms.custom: mvc
 ms.topic: quickstart
 ms.date: 7/15/2020
 ms.openlocfilehash: cdddd9a90911499421351adf0f41ef90f0e2f9a5
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90906553"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-server-in-the-azure-portal"></a>快速入門：在 Azure 入口網站中建立適用於 MySQL 的 Azure 資料庫伺服器
@@ -39,7 +39,7 @@ ms.locfileid: "90906553"
 3. 在新伺服器詳細資料表單中填寫下列資訊︰
     
 >[!div class="mx-imgBorder"]
-> :::image type="content" source="./media/quickstart-create-mysql-server-database-using-azure-portal/4-create-form.png" alt-text="建立伺服器表單":::
+> :::image type="content" source="./media/quickstart-create-mysql-server-database-using-azure-portal/4-create-form.png" alt-text="適用於 MySQL 的 Azure 資料庫 選項":::
 
 **設定** | **建議的值** | **欄位描述** 
 ---|---|---
@@ -67,7 +67,7 @@ Location | *最接近使用者的區域*| 選擇最靠近您的使用者或其�
 根據預設，建立的伺服器受防火牆保護，且不可公開存取。 若要授與 IP 存取權，請移至 Azure 入口網站中的伺服器資源，然後從伺服器資源的左側功能表選取 [連線安全性]。 如果不知道如何尋找資源，請參閱[如何開啟資源](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resources-portal#open-resources)。
 
 >[!div class="mx-imgBorder"]
-> :::image type="content" source="./media/quickstart-create-mysql-server-database-using-azure-portal/add-current-ip-firewall.png" alt-text="連線安全性 - 防火牆規則":::
+> :::image type="content" source="./media/quickstart-create-mysql-server-database-using-azure-portal/add-current-ip-firewall.png" alt-text="適用於 MySQL 的 Azure 資料庫 選項":::
    
 現在，選取 [新增目前的用戶端 IP 位址]，然後選取 [儲存]。 您可以新增其他 IP 或提供 IP 範圍，以從這些 IP 連線到您的伺服器。 如需詳細資訊，請參閱[如何在適用於 MySQL 的 Azure 資料庫上管理防火牆規則](./concepts-firewall-rules.md)
 
@@ -83,7 +83,7 @@ Location | *最接近使用者的區域*| 選擇最靠近您的使用者或其�
     >如果您是第一次啟動 Cloud Shell，會看到建立資源群組、儲存體帳戶的提示。 這是一次性的步驟，而且會針對所有工作階段自動連接。 
 
    >[!div class="mx-imgBorder"]
-   > :::image type="content" source="./media/quickstart-create-mysql-server-database-using-azure-portal/use-in-cloud-shell.png" alt-text="入口網站完整檢視 Cloud Shell":::
+   > :::image type="content" source="./media/quickstart-create-mysql-server-database-using-azure-portal/use-in-cloud-shell.png" alt-text="適用於 MySQL 的 Azure 資料庫 選項":::
 2. 在 Azure Cloud Shell 終端機上執行此命令。 將值取代為實際的伺服器名稱和管理員使用者登入名稱。 適用於 MySQL 的 Azure 資料庫管理員使用者名稱需要 '@\<servername>'，如下所示  
 
   ```azurecli-interactive
@@ -136,7 +136,7 @@ Location | *最接近使用者的區域*| 選擇最靠近您的使用者或其�
 
 若要刪除伺服器，您可以在伺服器的 [概觀] 頁面上按一下 [刪除] 按鈕，如下所示：
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="media/quickstart-create-mysql-server-database-using-azure-portal/delete-server.png" alt-text="刪除資源":::
+> :::image type="content" source="media/quickstart-create-mysql-server-database-using-azure-portal/delete-server.png" alt-text="適用於 MySQL 的 Azure 資料庫 選項":::
 
 ## <a name="next-steps"></a>後續步驟
 > [!div class="nextstepaction"]

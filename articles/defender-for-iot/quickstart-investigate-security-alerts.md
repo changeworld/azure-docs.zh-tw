@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 07/30/2020
 ms.author: mlottner
 ms.openlocfilehash: 172ae82288c2cb948839b69955b9491715eb4690
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90943614"
 ---
 # <a name="quickstart-investigate-security-alerts"></a>快速入門：調查安全性警示
@@ -44,12 +44,12 @@ ms.locfileid: "90943614"
 
 1. 從 [IoT 中樞] > [安全性] > [警示] 清單中，選取並開啟任一安全性警示。 
 1. 針對彙總期間發出此警示的所有裝置，檢閱警示**描述**、**嚴重性**、**偵測來源**、**裝置詳細資料**。
-:::image type="content" source="media/quickstart/drill-down-iot-alert-details.png" alt-text="向下切入並檢閱彙總警示中每個裝置的詳細資料"::: 
+:::image type="content" source="media/quickstart/drill-down-iot-alert-details.png" alt-text="使用新的警示旗標調查新的 IoT 安全性警示"::: 
 1. 檢閱警示細節之後，請使用**手動補救步驟**指示，協助修復及/或解決造成警示的問題。 
-:::image type="content" source="media/quickstart/iot-alert-manual-remediation-steps.png" alt-text="請遵循手動補救步驟來協助解決或修復您的裝置安全性警示":::
+:::image type="content" source="media/quickstart/iot-alert-manual-remediation-steps.png" alt-text="使用新的警示旗標調查新的 IoT 安全性警示":::
 
 1. 如果需要進一步調查，請使用連結**來調查 Log Analytics 中的警示**。 
-:::image type="content" source="media/quickstart/investigate-iot-alert-log-analytics.png" alt-text="若要進一步調查警示，請使用畫面上提供的 [使用 Log Analytics 調查] 連結":::
+:::image type="content" source="media/quickstart/investigate-iot-alert-log-analytics.png" alt-text="使用新的警示旗標調查新的 IoT 安全性警示":::
 
 ## <a name="next-steps"></a>後續步驟
 

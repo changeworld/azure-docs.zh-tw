@@ -8,10 +8,10 @@ ms.custom: mvc
 ms.topic: quickstart
 ms.date: 09/22/2020
 ms.openlocfilehash: 25c3f875717c9c064af0ce27bdab735db67d2f5d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90943595"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql---flexible-server-in-the-azure-portal"></a>快速入門：在 Azure 入口網站中建立適用於 PostgreSQL 的 Azure 資料庫 - 彈性伺服器
@@ -41,11 +41,11 @@ Azure Database for PostgreSQL 是一種受控服務，您用來在雲端執行�
 
 3. 選取 [彈性伺服器] 部署選項。
 
-   :::image type="content" source="./media/quickstart-create-database-portal/2-select-deployment-option.png" alt-text="選取適用於 PostgreSQL 的 Azure 資料庫 - 彈性伺服器部署選項":::
+   :::image type="content" source="./media/quickstart-create-database-portal/2-select-deployment-option.png" alt-text="選單中的適用於 PostgreSQL 的 Azure 資料庫":::
 
 4. 在 [基本資料]  表單中填寫下列資訊：
 
-    :::image type="content" source="./media/quickstart-create-database-portal/3-create-basics.png" alt-text="建立伺服器":::
+    :::image type="content" source="./media/quickstart-create-database-portal/3-create-basics.png" alt-text="選單中的適用於 PostgreSQL 的 Azure 資料庫":::
 
     設定|建議的值|描述
     ---|---|---
@@ -58,23 +58,23 @@ Azure Database for PostgreSQL 是一種受控服務，您用來在雲端執行�
     版本|最新的主要版本| 最新 PostgreSQL 主要版本 (除非您有其他特定需求)。
     計算 + 儲存體 | **一般用途**、**4 虛擬核心**、**512 GB**、**7 天** | 新伺服器的計算、儲存體和備份組態。 選取 [設定伺服器]  。 一般用途、4 虛擬核心、512 GB 和 7 天分別是**計算層**、**虛擬核心**、**儲存體**和**備份保留期間**的預設值。 您可以讓這些滑桿保持原狀或加以調整。 若要儲存此定價層選取項目，請選取 [確定]  。 下方螢幕擷取畫面會擷取這些選取項目。
 
-    :::image type="content" source="./media/quickstart-create-database-portal/4-pricing-tier.png" alt-text="定價層窗格":::
+    :::image type="content" source="./media/quickstart-create-database-portal/4-pricing-tier.png" alt-text="選單中的適用於 PostgreSQL 的 Azure 資料庫":::
     
 5. 設定網路功能選項
 
     在網路功能索引標籤上，您可以選擇伺服器的連線方式。 Azure Database for PostgreSQL 會在伺服器層級建立防火牆。 它會防止外部應用程式和工具連線到伺服器及伺服器上的任何資料庫，除非您建立規則以針對特定 IP 位址開啟防火牆。 建議您讓伺服器可公開存取：
 
-    :::image type="content" source="./media/quickstart-create-database-portal/5-networking.png" alt-text="網路功能窗格":::
+    :::image type="content" source="./media/quickstart-create-database-portal/5-networking.png" alt-text="選單中的適用於 PostgreSQL 的 Azure 資料庫":::
 
     然後將其限制為您自己的用戶端 IP 位址：
 
-    :::image type="content" source="./media/quickstart-create-database-portal/6-add-client-ip.png" alt-text="選取「新增目前的用戶端 IP 位址」":::
+    :::image type="content" source="./media/quickstart-create-database-portal/6-add-client-ip.png" alt-text="選單中的適用於 PostgreSQL 的 Azure 資料庫":::
 
 6. 選取 [檢閱 + 建立] 以檢閱您的選項。 選取 [建立] 以佈建伺服器。 這項作業可能需要幾分鐘的時間。
 
 7. 在工具列上，選取 [通知]  圖示 (鈴鐺) 以監視部署程序。 完成部署後，您可以選取 [釘選到儀表板]  ，在 Azure 入口網站儀表板上建立此伺服器的圖格，以作為伺服器 [概觀]  頁面的捷徑。 選取 [移至資源]**** 會開啟伺服器的 [概觀]**** 頁面。
 
-    :::image type="content" source="./media/quickstart-create-database-portal/7-notifications.png" alt-text="通知窗格":::
+    :::image type="content" source="./media/quickstart-create-database-portal/7-notifications.png" alt-text="選單中的適用於 PostgreSQL 的 Azure 資料庫":::
 
    根據預設，**postgres** 資料庫會建立在您的伺服器底下。 [postgres](https://www.postgresql.org/docs/12/static/app-initdb.html) 資料庫是要供使用者、公用程式及第三方應用程式使用的預設資料庫。 (其他預設資料庫是 **azure_maintenance**。 其功能是分隔受控服務處理程序和使用者動作。 您無法存取此資料庫。)
 
@@ -88,7 +88,7 @@ Azure Database for PostgreSQL 是一種受控服務，您用來在雲端執行�
 
 開啟伺服器的 [概觀]**** 頁面。 記下 [伺服器名稱]**** 和 [伺服器管理員登入名稱]****。 將您的游標停留在每個欄位上，複製符號就會出現在文字右邊。 視需要選取複製符號來複製值。
 
- :::image type="content" source="./media/quickstart-create-database-portal/8-server-name.png" alt-text="伺服器概觀頁面":::
+ :::image type="content" source="./media/quickstart-create-database-portal/8-server-name.png" alt-text="選單中的適用於 PostgreSQL 的 Azure 資料庫":::
 
 ## <a name="connect-to-the-postgresql-database-using-psql"></a>使用 psql 連線至 PostgreSQL 資料庫
 
@@ -162,7 +162,7 @@ Azure Database for PostgreSQL 是一種受控服務，您用來在雲端執行�
 
 2. 在 [概觀]  頁面上，按一下 [刪除]  。
 
-    :::image type="content" source="./media/quickstart-create-database-portal/9-delete.png" alt-text="刪除按鈕":::
+    :::image type="content" source="./media/quickstart-create-database-portal/9-delete.png" alt-text="選單中的適用於 PostgreSQL 的 Azure 資料庫":::
 
 3. 確認您要刪除的伺服器名稱，並且會檢視其下受影響的資料庫。 在文字方塊中輸入您的伺服器名稱，例如範例中的 **mydemoserver**。 選取 [刪除]  。
 

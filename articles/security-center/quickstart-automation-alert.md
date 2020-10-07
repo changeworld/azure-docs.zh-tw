@@ -9,10 +9,10 @@ ms.custom: subject-armqs
 ms.author: memildin
 ms.date: 08/20/2020
 ms.openlocfilehash: 6c8a3d6c291435a379a637707a42f9ad7fe8dc00
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90906361"
 ---
 # <a name="quickstart-create-an-automatic-response-to-a-specific-security-alert-using-an-azure-resource-manager-template-arm-template"></a>快速入門：使用 Azure Resource Manager 範本 (ARM 範本) 來建立特定安全性警示的自動回應
@@ -84,7 +84,7 @@ ms.locfileid: "90906361"
 1. 從 [Azure 入口網站](https://portal.azure.com)中開啟**資訊安全中心**。
 1. 從頂端功能表列選取 [篩選] 圖示，然後選取您在其上部署新工作流程自動化的特定訂用帳戶。
 1. 從資訊安全中心的提要欄位中開啟**工作流程自動化**，並尋找要刪除的自動化。
-    :::image type="content" source="./media/quickstart-automation-alert/deleting-workflow-automation.png" alt-text="移除工作流程自動化的步驟" lightbox="./media/quickstart-automation-alert/deleting-workflow-automation.png":::
+    :::image type="content" source="./media/quickstart-automation-alert/deleting-workflow-automation.png" alt-text="已設定的自動化項目清單" lightbox="./media/quickstart-automation-alert/deleting-workflow-automation.png":::
 1. 選取所要刪除項目的核取方塊。
 1. 從工具列中選取 [刪除]。
 

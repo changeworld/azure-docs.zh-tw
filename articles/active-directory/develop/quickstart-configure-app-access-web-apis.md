@@ -14,10 +14,10 @@ ms.author: marsma
 ms.custom: aaddev, contperfq1
 ms.reviewer: lenalepa, aragra, sureshja
 ms.openlocfilehash: fc2f3202ac88e3ee6c24db21dd9072a13a8deef9
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89442249"
 ---
 # <a name="quickstart-configure-a-client-application-to-access-a-web-api"></a>快速入門：設定用戶端應用程式以存取 Web API
@@ -59,7 +59,7 @@ ms.locfileid: "89442249"
 
 將權限新增至您的 API 後，您應該會在**設定的權限**之下看到選取的權限。 下圖顯示範例 Employees.Read.All 委派的權限已新增至用戶端應用程式的註冊。
 
-:::image type="content" source="media/quickstart-configure-app-access-web-apis/portal-02-configured-permissions-pane.png" alt-text="Azure 入口網站中的設定的權限窗格，其中顯示新增的權限":::
+:::image type="content" source="media/quickstart-configure-app-access-web-apis/portal-02-configured-permissions-pane.png" alt-text="折線圖，顯示右側有公開範圍的 Web API，以及左側用戶端應用程式，其中已選取這些範圍作為權限":::
 
 您也可能會注意到 Microsoft Graph API 的 User.Read 權限。 當您在 Azure 入口網站中註冊應用程式時，系統會自動新增此權限。
 
@@ -136,11 +136,11 @@ ms.locfileid: "89442249"
 
 **授與 {your tenant} 管理員同意**按鈕可讓系統管理員對於應用程式上設定的權限授與系統管理員同意。 選取該按鈕時，會顯示一個對話方塊要求您確認同意動作。
 
-:::image type="content" source="media/quickstart-configure-app-access-web-apis/portal-03-grant-admin-consent-button.png" alt-text="在 Azure 入口網站的設定的權限窗格中反白顯示授與管理員同意按鈕":::
+:::image type="content" source="media/quickstart-configure-app-access-web-apis/portal-03-grant-admin-consent-button.png" alt-text="折線圖，顯示右側有公開範圍的 Web API，以及左側用戶端應用程式，其中已選取這些範圍作為權限":::
 
 授與同意之後，需要管理員同意的權限就會顯示為同意授權：
 
-:::image type="content" source="media/quickstart-configure-app-access-web-apis/portal-04-admin-consent-granted.png" alt-text="在 Azure 入口網站中設定權限資料表，以顯示授與 Files.Read.All 權限的管理員同意":::
+:::image type="content" source="media/quickstart-configure-app-access-web-apis/portal-04-admin-consent-granted.png" alt-text="折線圖，顯示右側有公開範圍的 Web API，以及左側用戶端應用程式，其中已選取這些範圍作為權限":::
 
 如果您不是系統管理員，或未針對應用程式設定權限，則會「停用」**授與管理員同意**按鈕。 如果您有已授與但未設定的權限，系統管理員同意按鈕會提示您處理這些權限。 您可以將其新增至已設定權限，或將其移除。
 

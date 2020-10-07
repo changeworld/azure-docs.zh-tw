@@ -14,10 +14,10 @@ ms.author: nitinme
 ms.custom: cog-serv-seo-aug-2020
 keywords: 顯示圖片、詞性、閱讀選取的文字、翻譯單字、閱讀理解
 ms.openlocfilehash: 621be6293b4ac487cafafc14498524c97fdc6d82
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90978333"
 ---
 # <a name="quickstart-get-started-with-immersive-reader"></a>快速入門：開始使用沈浸式閱讀程式

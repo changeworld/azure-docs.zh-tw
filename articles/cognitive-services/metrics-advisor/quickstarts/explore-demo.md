@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 09/14/2020
 ms.author: aahi
 ms.openlocfilehash: fbc73e20b8cc2baa1cc5c5a5b2f674fb1b2dde84
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90943895"
 ---
 # <a name="quickstart-explore-the-metrics-advisor-demo-with-example-data"></a>快速入門：探索含有範例資料的 Metrics Advisor 示範
@@ -44,14 +44,14 @@ ms.locfileid: "90943895"
 * 更新資料摘要時的記錄。   
 * 資料摘要資訊和設定。
 
-:::image type="content" source="../media/data-feed-view.png" alt-text="資料摘要檢視" lightbox="../media/data-feed-view.png":::
+:::image type="content" source="../media/data-feed-view.png" alt-text="範例資料清單" lightbox="../media/data-feed-view.png":::
 
 
 ## <a name="view-time-series-visualizations-and-configurations"></a>檢視時間序列視覺效果和組態
 
 按一下「範例 - 成本/收益 - 城市/類別」資料摘要中的「成本」計量。 您會看到依維度配置的相關聯時間序列，並根據歷程記錄計量資料來呈現視覺效果。 計量資料周圍的藍色區域代表來自 Metrics Advisor 機器學習模型的預期值範圍。 落在此範圍外的點會標示為紅色，表示偵測到異常狀況。 
 
-:::image type="content" source="../media/series-visualization.png" alt-text="序列視覺效果" lightbox="../media/series-visualization.png":::
+:::image type="content" source="../media/series-visualization.png" alt-text="範例資料清單" lightbox="../media/series-visualization.png":::
 
 您可以微調計量詳細資料頁面左側的**偵測組態**，來設定異常偵測。 您可以使用多種異常偵測方法，並且可以將各種方法結合在一起使用。 您還可以嘗試不同的敏感性、偵測方向和其他組態。 **偵測組態**底部的**進階組態**連結，可讓您建立更複雜且自訂的偵測設定，可用於群組或個別的序列。 
 
@@ -59,7 +59,7 @@ ms.locfileid: "90943895"
 
 在**新增意見反應**面板的底部，會顯示**前往事件中樞**的連結，此連結會將您導向事件分析頁面，並分析事件的根本原因。  
 
-:::image type="content" source="../media/incident-link.png" alt-text="事件連結" lightbox="../media/incident-link.png":::
+:::image type="content" source="../media/incident-link.png" alt-text="範例資料清單" lightbox="../media/incident-link.png":::
 
 ## <a name="explore-anomaly-detection-results-and-perform-root-cause-analysis"></a>探索異常偵測結果並執行根本原因分析
 
@@ -67,7 +67,7 @@ ms.locfileid: "90943895"
 
 **診斷**區段會顯示事件的樹狀結構，以及用來診斷事件的數個索引標籤。
 
-:::image type="content" source="../media/incident-diagnostic.png" alt-text="事件診斷" lightbox="../media/incident-diagnostic.png":::
+:::image type="content" source="../media/incident-diagnostic.png" alt-text="範例資料清單" lightbox="../media/incident-diagnostic.png":::
 
 藉由查明事件的根本原因，您可以採取動作並減輕問題產生的影響，避免出現更糟的情況。 您也可以按一下所提供的其他診斷功能，以探索更多深入解析。 
 

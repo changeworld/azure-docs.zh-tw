@@ -8,10 +8,10 @@ ms.custom: mvc
 ms.topic: quickstart
 ms.date: 5/26/2020
 ms.openlocfilehash: 5ec6aab8aaa63b848131d44f78867100f154d251
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90896330"
 ---
 # <a name="quickstart-use-mysql-workbench-to-connect-and-query-data-in-azure-database-for-mysql"></a>快速入門：使用 MySQL Workbench 來連線及查詢適用於 MySQL 的 Azure 資料庫中的資料
@@ -49,7 +49,7 @@ ms.locfileid: "90896330"
 
 2.    在 [設定新連線] 對話方塊的 [參數] 索引標籤上輸入下列資訊︰
 
-:::image type="content" source="./media/connect-workbench/2-setup-new-connection.png" alt-text="設定新連線":::
+:::image type="content" source="./media/connect-workbench/2-setup-new-connection.png" alt-text="Azure Database for MySQL 伺服器名稱":::
 
 | **設定** | **建議的值** | **欄位描述** |
 |---|---|---|
@@ -103,7 +103,7 @@ ms.locfileid: "90896330"
 
     執行完畢後，螢幕擷取畫面會在 SQL Workbench 中顯示 SQL 程式碼的範例和輸出。
     
-    :::image type="content" source="media/connect-workbench/3-workbench-sql-tab.png" alt-text="執行範例 SQL 程式碼的 MySQL Workbench SQL 索引標籤":::
+    :::image type="content" source="media/connect-workbench/3-workbench-sql-tab.png" alt-text="Azure Database for MySQL 伺服器名稱":::
 
 2. 若要執行範例 SQL 程式碼，請在 [SQL 檔案] 索引標籤的工具列中按一下閃電圖示。
 3. 請注意頁面中間的 [結果方格] 區段中的三個索引標籤式結果。 
