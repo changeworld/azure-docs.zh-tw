@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 05/21/2020
 ms.author: aahi
 ms.openlocfilehash: 44dc3f16128913f76369ad645a32e91f38272546
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "83869855"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-php"></a>快速入門：使用 Bing 拼字檢查 REST API 和 PHP 進行拼字檢查
@@ -23,7 +23,7 @@ ms.locfileid: "83869855"
 
 雖然此應用程式是以 PHP 撰寫的，但 API 是一種與大多數程式設計語言都相容的 RESTful Web 服務。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * [PHP 5.6.x](https://php.net/downloads.php)
 

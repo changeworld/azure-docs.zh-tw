@@ -8,10 +8,10 @@ ms.topic: quickstart
 ms.date: 10/11/2019
 ms.author: rohink
 ms.openlocfilehash: 52bf9e061eb57c7ce6ea698b7468b5ba5e11b4e8
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "78244955"
 ---
 # <a name="quickstart-create-an-azure-private-dns-zone-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站建立 Azure 私人 DNS 區域
@@ -76,35 +76,35 @@ DNS 區域包含網域的 DNS 項目。 若要開始將網域裝載到 Azure DNS
 
 ## <a name="link-the-virtual-network"></a>連結虛擬網路
 
-若要將私人 DNS 區域連結至虛擬網路，您要建立虛擬網路連結。
+若要將私人 DNS 區域連結至虛擬網路，則需要建立虛擬網路連結。
 
 ![新增虛擬網路連結](media/private-dns-portal/dns-add-virtual-network-link.png)
 
 1. 開啟 **MyAzureResourceGroup** 資源群組，並且選取 **private.contoso.com** 私人區域。
-2. 在左窗格中，選取 [虛擬網路連結]  。
-3. 選取 [新增]  。
+2. 在左窗格中，選取 [虛擬網路連結]****。
+3. 選取 [新增]。
 4. 輸入 **myLink** 作為**連結名稱**。
-5. 針對 [虛擬網路]  ，選取 [myAzureVNet]  。
-6. 選取 [啟用自動註冊]  核取方塊。
-7. 選取 [確定]  。
+5. 針對 [虛擬網路]****，選取 [myAzureVNet]****。
+6. 選取 [啟用自動註冊]**** 核取方塊。
+7. 選取 [確定]。
 
 ## <a name="create-the-test-virtual-machines"></a>建立測試虛擬機器
 
 現在，請建立兩部虛擬機器，讓您可以測試私人 DNS 區域：
 
-1. 在入口網站頁面左上方，選取 [建立資源]  ，然後選取 [Windows Server 2016 Datacenter]  。
+1. 在入口網站頁面左上方，選取 [建立資源]****，然後選取 [Windows Server 2016 Datacenter]****。
 1. 針對 [資源群組]，選取 **MyAzureResourceGroup**。
 1. 輸入 **myVM01** 作為虛擬機器的名稱。
-1. 針對 [區域]  選取 [美國中西部]  。
+1. 針對 [區域]**** 選取 [美國中西部]****。
 1. 輸入管理員使用者的名稱。
 2. 輸入密碼並確認密碼。
-5. 針對 [公用輸入連接埠]  選取 [允許選取的連接埠]  ，然後針對 [選取輸入連接埠]  選取 [RDP (3389)]  。
+5. 針對 [公用輸入連接埠]**** 選取 [允許選取的連接埠]****，然後針對 [選取輸入連接埠]**** 選取 [RDP (3389)]****。
 10. 接受頁面的其他預設值，然後按 **[下一步：磁碟 >]** 。
-11. 接受 [磁碟]  頁面上的其他預設值，然後按 **[下一步：網路 >]** 。
+11. 接受 [磁碟] 頁面上的其他預設值，然後按 **[下一步：網路 >]** 。
 1. 確定已針對虛擬網路選取 **myAzureVNet**。
 1. 接受頁面的其他預設值，然後按 [**下一步：管理 >]** 。
-2. 針對 [開機診斷]  選取 [關閉]  ，接受其他預設值，然後選取 [檢閱 + 建立]  。
-1. 檢閱設定，然後按一下 [建立]  。
+2. 針對 [開機診斷]**** 選取 [關閉]****，接受其他預設值，然後選取 [檢閱 + 建立]****。
+1. 檢閱設定，然後按一下 [建立]。
 
 重複上述步驟，建立名為 **myVM02** 的另一部虛擬機器。
 
@@ -115,10 +115,10 @@ DNS 區域包含網域的 DNS 項目。 若要開始將網域裝載到 Azure DNS
  下列範例會在資源群組 **MyAzureResourceGroup** 中的 DNS 區域 **private.contoso.com** 中，建立具有相對名稱 **db** 的記錄。 記錄集的完整名稱是 **db.private.contoso.com**。 記錄類型是 "A"，IP 位址為 **myVM01**。
 
 1. 開啟 **MyAzureResourceGroup** 資源群組，並且選取 **private.contoso.com** 私人區域。
-2. 選取 [+ 記錄集]  。
-3. 針對 [名稱]  輸入 **db**。
-4. 針對 [IP 位址]  ，輸入您所看到 **myVM01** 的 IP 位址。 這樣應該就可以在虛擬機器啟動時自動註冊。
-5. 選取 [確定]  。
+2. 選取 [+ 記錄集]。
+3. 針對 [名稱]**** 輸入 **db**。
+4. 針對 [IP 位址]****，輸入您所看到 **myVM01** 的 IP 位址。 這樣應該就可以在虛擬機器啟動時自動註冊。
+5. 選取 [確定]。
 
 ## <a name="test-the-private-zone"></a>測試私人區域
 

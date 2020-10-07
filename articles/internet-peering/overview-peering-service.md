@@ -9,10 +9,10 @@ ms.topic: overview
 ms.date: 5/22/2020
 ms.author: derekol
 ms.openlocfilehash: 3ffef24d459a2864ffd3f2271e6bca9e4bc638cc
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/26/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "83849377"
 ---
 # <a name="internet-peering-vs-peering-service"></a>網際網路對等互連與對等互連服務

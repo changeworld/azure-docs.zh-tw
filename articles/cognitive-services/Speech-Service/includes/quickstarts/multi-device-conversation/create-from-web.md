@@ -8,10 +8,10 @@ ms.topic: include
 ms.date: 01/15/2020
 ms.author: ralphe
 ms.openlocfilehash: 9ed32feaf68a7cae4d2a847aac19458fe0e61890
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "76268106"
 ---
 3. 您必須建立可加入的交談：

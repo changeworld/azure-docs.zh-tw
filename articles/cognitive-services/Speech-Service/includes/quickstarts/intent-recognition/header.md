@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 01/27/2020
 ms.author: trbye
 ms.openlocfilehash: 8d70d282ffb1a39f9ffb3eb6addf694ac9d0d060
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "81422313"
 ---
 在本快速入門中，您將使用[語音 SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) 和 Language Understanding (LUIS)服務來辨識從麥克風擷取之音訊資料的意圖。 具體而言，您將使用語音 SDK 來擷取語音，並使用 LUIS 中預先建置的網域來識別家庭自動化的意圖，例如開燈和關燈。 

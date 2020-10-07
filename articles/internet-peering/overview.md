@@ -9,10 +9,10 @@ ms.topic: overview
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 576bc3e37711851acd7d6c7ac811a10e40080710
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "75908923"
 ---
 # <a name="internet-peering-overview"></a>網際網路對等互連概觀

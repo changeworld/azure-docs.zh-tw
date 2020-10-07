@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 03/12/2020
 ms.author: aahi
 ms.openlocfilehash: fbc7d7b35b46e96e9cd007a3794a8ccc561f91e4
-ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/16/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "84878978"
 ---
 使用本快速入門，透過適用於 C# 的 Bing 新聞搜尋用戶端程式庫開始搜尋新聞。 雖然 Bing 新聞搜尋具有與大部分程式設計語言相容的 REST API，但此用戶端程式庫可提供簡單的方法，將服務整合到您的應用程式。 此範例的原始程式碼可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingNewsSearch) 上找到。

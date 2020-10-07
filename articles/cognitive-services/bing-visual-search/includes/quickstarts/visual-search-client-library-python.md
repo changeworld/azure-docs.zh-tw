@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 03/26/2020
 ms.author: aahi
 ms.openlocfilehash: debc5130824a0f661a3736b8d24d950fc789f2f3
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "80573302"
 ---
 使用本快速入門，開始使用 Python 用戶端程式庫從 Bing 圖像式搜尋服務取得影像見解。 雖然 Bing 圖像式搜尋具有與大部分程式設計語言相容的 REST API，但此用戶端程式庫可提供簡單的方法，將服務整合到您的應用程式。 此範例的原始程式碼位於 [GitHub](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/visual_search_samples.py) 

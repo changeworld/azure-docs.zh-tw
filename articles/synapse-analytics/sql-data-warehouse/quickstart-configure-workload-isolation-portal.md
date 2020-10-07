@@ -12,10 +12,10 @@ ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
 ms.openlocfilehash: 30862a0c16995e143df72f2a243419819941f54e
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "85213035"
 ---
 # <a name="quickstart-configure-synapse-sql-pool-workload-isolation-using-a-workload-group-in-the-azure-portal"></a>快速入門：使用 Azure 入口網站中的工作負載群組來設定 Synapse SQL 集區工作負載隔離

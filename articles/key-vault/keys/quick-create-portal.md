@@ -12,10 +12,10 @@ ms.custom: mvc
 ms.date: 03/24/2020
 ms.author: mbaldwin
 ms.openlocfilehash: 41f3d60d91b7418d6e9733b8351d4830b31dbace
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "81420282"
 ---
 # <a name="quickstart-set-and-retrieve-a-key-from-azure-key-vault-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站從 Azure Key Vault 設定及擷取金鑰
@@ -30,17 +30,17 @@ Azure Key Vault 是一項雲端服務，可為祕密提供安全的存放區。 
 
 ## <a name="create-a-vault"></a>建立保存庫
 
-1. 從 Azure 入口網站功能表或**首頁**，選取 [建立資源]  。
+1. 從 Azure 入口網站功能表或**首頁**，選取 [建立資源]。
 2. 在 [搜尋] 方塊中輸入 **Key Vault**。
-3. 從結果清單中，選擇 [Key Vault]  。
-4. 在 [金鑰保存庫] 區段上選擇 [建立]  。
-5. 在 [建立金鑰保存庫]  區段上提供下列資訊：
+3. 從結果清單中，選擇 [Key Vault]。
+4. 在 [金鑰保存庫] 區段上選擇 [建立]。
+5. 在 [建立金鑰保存庫] 區段上提供下列資訊：
     - **Name**：唯一名稱是必要項。 在本快速入門中，我們會使用 **Example-Vault**。 
-    - 訂用帳戶  ：選擇訂用帳戶。
-    - 在 [資源群組]  底下，選擇 [新建]  ，然後輸入資源群組名稱。
-    - 在 [位置]  下拉式功能表中選擇位置。
+    - 訂用帳戶：選擇訂用帳戶。
+    - 在 [資源群組] 底下，選擇 [新建]，然後輸入資源群組名稱。
+    - 在 [位置] 下拉式功能表中選擇位置。
     - 將其他的選項保留預設值。
-6. 提供上述資訊之後，請選取 [建立]  。
+6. 提供上述資訊之後，請選取 [建立]。
 
 請記下下列兩個屬性：
 
@@ -73,8 +73,8 @@ Azure Key Vault 是一項雲端服務，可為祕密提供安全的存放區。 
 如果不再需要，請刪除資源群組，這會刪除 Key Vault 和相關資源。 若要透過入口網站刪除資源群組：
 
 1. 在入口網站頂端的 [搜尋] 方塊中，輸入資源群組的名稱。 當您在搜尋結果中看到本快速入門中使用的資源群組時，請加以選取。
-2. 選取 [刪除資源群組]  。
-3. 在 [輸入資源群組名稱:]  方塊中輸入資源群組的名稱，然後選取 [刪除]  。
+2. 選取 [刪除資源群組]。
+3. 在 [輸入資源群組名稱:] 方塊中輸入資源群組的名稱，然後選取 [刪除]。
 
 
 ## <a name="next-steps"></a>後續步驟

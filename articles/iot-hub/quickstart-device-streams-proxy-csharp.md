@@ -10,10 +10,10 @@ ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
 ms.openlocfilehash: 97551ac63066f7064c16a001d9ce1f6bc31465ec
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "80586568"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-c-proxy-application-preview"></a>快速入門：使用 C# Proxy 應用程式透過 IoT 中樞裝置串流進行 SSH 和 RDP 輸送 (預覽)

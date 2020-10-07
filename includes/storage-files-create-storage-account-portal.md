@@ -9,10 +9,10 @@ ms.date: 03/28/2018
 ms.author: wgries
 ms.custom: include file
 ms.openlocfilehash: a0db3ee9f32be35e62accc5df7b92697a883df20
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "83778188"
 ---
 儲存體帳戶是您可在其中部署 Azure 檔案共用或其他儲存體資源 (例如 blob 或佇列) 的共用儲存體集區。 儲存體帳戶可以包含無限多個共用。 共用可儲存無限制數目的檔案，最多可達儲存體帳戶的容量限制。

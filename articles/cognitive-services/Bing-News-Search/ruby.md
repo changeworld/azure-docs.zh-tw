@@ -12,10 +12,10 @@ ms.date: 05/22/2020
 ms.author: aahi
 ms.custom: seodec2018
 ms.openlocfilehash: ad52116e11f9d89bf55a23692ae4e27f53b51319
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "83873412"
 ---
 # <a name="quickstart-perform-a-news-search-using-ruby-and-the-bing-news-search-rest-api"></a>快速入門：使用 Ruby 和 Bing 新聞搜尋 REST API 來執行新聞搜尋

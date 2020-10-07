@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 12/05/2018
 ms.author: areddish
 ms.openlocfilehash: 09067b957b5da9b7c54958d9f30381b8d141e639
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "67174305"
 ---
 ## <a name="get-the-sample-images"></a>取得範例影像

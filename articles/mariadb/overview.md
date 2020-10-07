@@ -8,22 +8,22 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 3/18/2020
 ms.openlocfilehash: 84fd24890495e7278c69c2f83c7182fd65f86791
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "79535556"
 ---
 # <a name="what-is-azure-database-for-mariadb"></a>什麼是適用於 MariaDB 的 Azure 資料庫？
 
 「適用於 MariaDB 的 Azure 資料庫」是 Microsoft 雲端中的關聯式資料庫服務。 「適用於 MariaDB 的 Azure 資料庫」以 [MariaDB Community Edition](https://mariadb.org/download/) (可使用 GPLv2 授權取得) 資料庫引擎 (10.2 和 10.3 版) 為基礎。
 
-「適用於 MariaDB 的 Azure 資料庫」提供：
+適用於 MariaDB 的 Azure 資料庫提供：
 
 - 內建高可用性但沒有任何額外成本。
 - 可預測的效能，使用隨用隨付計價方式。
-- 可以迅速根據需求調整規模。
-- 受到保護，可保護機密的待用資料和移動中資料。
+- 視需要在幾秒內進行擴縮。
+- 保護待用與移動中敏感性資料的安全。
 - 最多 35 天的自動備份和指定時間點還原。
 - 企業級安全性與合規性。
 

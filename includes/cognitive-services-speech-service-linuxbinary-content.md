@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 05/07/2018
 ms.author: wolfma
 ms.openlocfilehash: 22507b7432a200a5c24c7063ca644b1b82eb5481
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "67174273"
 ---
 | Path | 描述 |

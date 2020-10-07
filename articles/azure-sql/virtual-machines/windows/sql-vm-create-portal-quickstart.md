@@ -13,10 +13,10 @@ ms.date: 07/11/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: fb10e85b07037805d59dcba91ff20a4bc2a6574e
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "84667636"
 ---
 # <a name="quickstart-create-sql-server-2017-on-a-windows-virtual-machine-in-the-azure-portal"></a>快速入門：在 Azure 入口網站中的 Windows 虛擬機器上建立 SQL Server 2017

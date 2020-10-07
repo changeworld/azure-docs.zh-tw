@@ -9,10 +9,10 @@ ms.date: 09/12/2019
 ms.author: jonels
 ms.custom: include file
 ms.openlocfilehash: e7a6f7b4ba4219483cd3eb8f4600bc94213df131
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "74973404"
 ---
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。

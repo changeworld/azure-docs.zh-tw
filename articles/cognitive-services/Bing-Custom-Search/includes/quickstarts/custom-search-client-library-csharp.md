@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 02/27/2020
 ms.author: aahi
 ms.openlocfilehash: ba80d1396b30b61bdfe4c121220429f5a7d994b0
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "79486057"
 ---
 開始使用適用於 C# 的 Bing 自訂搜尋用戶端程式庫。 請遵循下列步驟來安裝套件，並試用基本工作的程式碼範例。 Bing 自訂搜尋 API 可讓您針對感興趣的主題，建立量身訂做且無廣告的搜尋經驗。 此範例的原始程式碼可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingCustomWebSearch) 上找到。

@@ -12,17 +12,17 @@ ms.date: 05/22/2020
 ms.author: aahi
 ms.custom: seodec2018
 ms.openlocfilehash: bbb6acd4e976d345daa99cde7635febc3755963f
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "83873829"
 ---
 # <a name="quickstart-use-php-to-call-the-bing-web-search-api"></a>快速入門：使用 PHP 來呼叫 Bing Web 搜尋 API  
 
 使用本快速入門，第一次呼叫 Bing Web 搜尋 API。 這個 Node.js 應用程式會將搜尋要求傳送給 API，並顯示 JSON 回應。 雖然此應用程式是以 JavaScript 撰寫的，但 API 是一種與大多數程式設計語言都相容的 RESTful Web 服務。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 以下是執行本快速入門之前的幾個必備項目：
 

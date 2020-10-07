@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 11/19/2019
 ms.author: aahi
 ms.openlocfilehash: eb00d680e6312bb7f380e27d2fa6bb6fe34fa616
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "74483014"
 ---
 ## <a name="clean-up-resources"></a>清除資源

@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 03/19/2020
 ms.author: aahi
 ms.openlocfilehash: 7a9fab8ba8bb9d21c9284cbf14bc67226d2ef9d3
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "80289904"
 ---
 使用本快速入門，透過適用於 Python 的 Bing 影片搜尋用戶端程式庫開始搜尋新聞。 雖然 Bing 影片搜尋具有與大部分程式設計語言相容的 REST API，但此用戶端程式庫可提供簡單的方法，將服務整合到您的應用程式。 在 [Github](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/video_search_samples.py) 上可找到此範例的完整原始程式碼，以及其他註釋和功能。
