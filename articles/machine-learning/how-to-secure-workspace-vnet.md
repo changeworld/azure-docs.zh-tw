@@ -8,15 +8,15 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.author: peterlu
 author: peterclu
-ms.date: 07/07/2020
+ms.date: 10/06/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4, tracking-python, contperfq1
-ms.openlocfilehash: be476af3696e0753c8e36cfc34a024f8b585c605
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: 5d34fe403e0af4bc871ba176d0fa755650c26292
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91708311"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776032"
 ---
 # <a name="secure-an-azure-machine-learning-workspace-with-virtual-networks"></a>使用虛擬網路保護 Azure Machine Learning 工作區
 
@@ -37,7 +37,7 @@ ms.locfileid: "91708311"
 > - Azure 金鑰保存庫
 > - Azure Container Registry
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 + 閱讀 [網路安全性總覽](how-to-network-security-overview.md) 文章，以瞭解常見的虛擬網路案例和整體虛擬網路架構。
 
@@ -57,10 +57,9 @@ Azure Private Link 可讓您使用私人端點連接到工作區。 私人端點
 
 如需設定 Private Link 工作區的詳細資訊，請參閱 [如何設定 Private Link](how-to-configure-private-link.md)。
 
+## <a name="secure-azure-storage-accounts-with-service-endpoints"></a>使用服務端點保護 Azure 儲存體帳戶
 
-## <a name="secure-azure-storage-accounts"></a>保護 Azure 儲存體帳戶
-
-在本節中，您會瞭解如何使用服務端點保護 Azure 儲存體帳戶。 不過，您也可以使用私人端點來保護 Azure 儲存體。 如需詳細資訊，請參閱 [使用私用端點進行 Azure 儲存體](../storage/common/storage-private-endpoints.md)。
+Azure Machine Learning 支援設定為使用服務端點或私人端點的儲存體帳戶。 在本節中，您會瞭解如何使用服務端點保護 Azure 儲存體帳戶。 若為私用端點，請參閱下一節。
 
 > [!IMPORTANT]
 > 適用於 Azure Machine Learning 的_預設儲存體帳戶_ 或_非預設儲存體帳戶_都可以放在虛擬網路中。
@@ -95,9 +94,21 @@ Azure Private Link 可讓您使用私人端點連接到工作區。 私人端點
 
    [![Azure 入口網站中的 [防火牆和虛擬網路] 窗格](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks-page.png)](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks-page.png#lightbox)
 
+## <a name="secure-azure-storage-accounts-with-private-endpoints"></a>使用私人端點保護 Azure 儲存體帳戶
+
+Azure Machine Learning 支援設定為使用服務端點或私人端點的儲存體帳戶。 如果儲存體帳戶使用私人端點，您必須為預設儲存體帳戶設定兩個私人端點：
+1. 具有 **blob** 目標子資源的私人端點。
+1. 具有 **檔案目標子資源的私人** 端點 (檔案共用) 。
+
+![顯示具有 blob 和檔案選項之私人端點設定頁面的螢幕擷取畫面](./media/how-to-enable-studio-virtual-network/configure-storage-private-endpoint.png)
+
+若要為 **非** 預設儲存體的儲存體帳戶設定私人端點，請選取對應至您想要新增之儲存體帳戶的 **目標子資源** 類型。
+
+如需詳細資訊，請參閱 [使用私人端點進行 Azure 儲存體](../storage/common/storage-private-endpoints.md)
+
 ## <a name="secure-datastores-and-datasets"></a>安全資料存放區和資料集
 
-在本節中，您會瞭解如何使用虛擬網路中的資料存放區和資料集使用方式來取得 SDK 體驗。 如需有關 studio 體驗的詳細資訊，請參閱 [使用虛擬網路中的 Azure Machine Learning studio](how-to-enable-studio-virtual-network.md)。
+在本節中，您會瞭解如何在 SDK 體驗中使用虛擬網路的資料存放區和資料集。 如需有關 studio 體驗的詳細資訊，請參閱 [使用虛擬網路中的 Azure Machine Learning studio](how-to-enable-studio-virtual-network.md)。
 
 若要使用 SDK 存取資料，您必須使用資料儲存所在之個別服務所需的驗證方法。 例如，如果您註冊資料存放區以存取 Azure Data Lake 存放區 Gen2，您仍然必須使用 [[連線至 Azure 儲存體服務]](how-to-access-data.md#azure-data-lake-storage-generation-2)中所述的服務主體。
 

@@ -4,18 +4,18 @@ description: 如何跨 Azure 訂用帳戶和資源群組移動復原服務保存
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.custom: references_regions
-ms.openlocfilehash: 69021131f12b57aedcd531997029858b0722933f
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 19b1c930ffc0e4b519c25f421662547a4d8dcde6
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89181505"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91773360"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>跨 Azure 訂用帳戶和資源群組移動復原服務保存庫
 
 本文說明如何跨 Azure 訂用帳戶或往相同訂用帳戶中的另一個資源群組移動為 Azure 備份所設定的復原服務保存庫。 您可以使用 Azure 入口網站或 PowerShell 來移動復原服務保存庫。
 
-## <a name="supported-regions"></a>支援區域
+## <a name="supported-regions"></a>支援的區域
 
 澳大利亞東部、澳大利亞東南部、加拿大中部、加拿大東部、南部東亞、東亞、美國中部、美國中北部、美國東部、美國東部2、美國中南部、美國中西部、美國中西部2、美國西部、美國西部2、巴西南部、印度中部、印度南部、日本東部、日本西部、韓國中部、南韓南部中支援復原服務保存庫的資源移動、北歐、西歐、南非北部、南非西部、英國南部和英國西部。
 
@@ -142,6 +142,50 @@ az resource move --destination-group <destinationResourceGroupName> --ids <Vault
 
 1. 設定/驗證資源群組的存取控制。  
 2. 移動完成之後，必須再次針對保存庫設定備份報告和監視功能。 移動作業期間會失去先前的設定。
+
+## <a name="move-an-azure-virtual-machine-to-a-different-recovery-service-vault"></a>將 Azure 虛擬機器移至不同的復原服務保存庫。 
+
+如果您想要移動已啟用 Azure 備份的 Azure 虛擬機器，則您有兩個選擇。 它們取決於您的業務需求：
+
+- [不需要保留先前的備份資料](#dont-need-to-preserve-previous-backed-up-data)
+- [必須保留先前的備份資料](#must-preserve-previous-backed-up-data)
+
+### <a name="dont-need-to-preserve-previous-backed-up-data"></a>不需要保留先前的備份資料
+
+若要在新的保存庫中保護工作負載，您必須在舊的保存庫中刪除目前的保護和資料，然後再次設定備份。
+
+>[!WARNING]
+>下列作業是破壞性的作業，無法復原。 所有與受保護伺服器相關聯的備份資料和備份專案都會永久刪除。 請謹慎進行。
+
+**停止並刪除舊保存庫上的目前保護：**
+
+1. 停用保存庫屬性中的虛刪除。 請遵循下列 [步驟](backup-azure-security-feature-cloud.md#disabling-soft-delete-using-azure-portal) 來停用虛刪除。
+
+2. 停止保護並刪除目前保存庫中的備份。 在保存庫儀表板功能表中，選取 [ **備份專案**]。 此處所列的專案必須移至新的保存庫，並與其備份資料一起移除。 瞭解如何 [在雲端中刪除受保護的專案](backup-azure-delete-vault.md#delete-protected-items-in-the-cloud) ，以及 [刪除內部部署的受保護專案](backup-azure-delete-vault.md#delete-protected-items-on-premises)。
+
+3. 如果您打算將 AFS (Azure 檔案共用) 、SQL server 或 SAP Hana 伺服器，則您也需要將其取消註冊。 在保存庫儀表板功能表中，選取 [ **備份基礎結構**]。 瞭解如何 [取消註冊 SQL server](manage-monitor-sql-database-backup.md#unregister-a-sql-server-instance)、 [取消登錄與 Azure 檔案共用相關聯的儲存體帳戶](manage-afs-backup.md#unregister-a-storage-account)，以及 [取消註冊 SAP Hana 實例](sap-hana-db-manage.md#unregister-an-sap-hana-instance)。
+
+4. 移除舊的保存庫後，請繼續在新的保存庫中為您的工作負載設定備份。
+
+### <a name="must-preserve-previous-backed-up-data"></a>必須保留先前的備份資料
+
+如果您需要將目前受保護的資料保留在舊的保存庫中，並在新的保存庫中繼續保護，部分工作負載的選項有限：
+
+- 針對 MARS，您可以 [停止保護保留資料](backup-azure-manage-mars.md#stop-protecting-files-and-folder-backup) ，並在新的保存庫中註冊代理程式。
+
+  - Azure 備份服務會繼續保留舊保存庫的所有現有復原點。
+  - 您必須付費，才能將復原點保留在舊的保存庫中。
+  - 您只能針對舊保存庫中未到期的復原點還原已備份的資料。
+  - 您必須在新的保存庫上建立資料的新初始複本。
+
+- 針對 Azure VM，您可以 [停止保護以保留](backup-azure-manage-vms.md#stop-protecting-a-vm) 舊保存庫中 vm 的資料，將 vm 移至另一個資源群組，然後在新的保存庫中保護 vm。 請參閱將 VM 移至另一個資源群組的 [指導方針和限制](https://docs.microsoft.com/azure/azure-resource-manager/management/move-limitations/virtual-machines-move-limitations) 。
+
+  虛擬機器一次只能在一個保存庫中受到保護。 不過，新的資源群組中的 VM 可以在新的保存庫上受到保護，因為它被視為不同的 VM。
+
+  - Azure 備份服務將會保留在舊的保存庫上備份的復原點。
+  - 您必須付費，才能將復原點保留在舊的保存庫中 (如需詳細資料) ，請參閱 [Azure 備份定價](azure-backup-pricing.md) 。
+  - 若有需要，您可以從舊的保存庫還原 VM。
+  - 新資源中 VM 新保存庫上的第一個備份會是初始複本。
 
 ## <a name="next-steps"></a>後續步驟
 

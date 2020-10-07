@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/12/2020
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: ff28bbf57ac77e1bc092d35e9bf493f75040cc9c
-ms.sourcegitcommit: 5b69ba21787c07547edfbfd5254eaf34315cfadd
+ms.openlocfilehash: 6543b629af8d67658afe61ef81e22eb7355e1de7
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91712301"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91772799"
 ---
 # <a name="azure-activity-log"></a>Azure 活動記錄
 活動記錄是 Azure 中的 [平臺記錄](platform-logs-overview.md) ，可提供訂用帳戶層級事件的見解。 這包括修改資源或啟動虛擬機器時的資訊。 您可以在 Azure 入口網站中檢視活動記錄，或使用 PowerShell 和 CLI 來取出項目。 如需其他功能，您應該建立診斷設定，以將活動記錄傳送至 [Azure 監視器記錄](data-platform-logs.md)檔、Azure 事件中樞轉送至 Azure 外部，或用於封存的 Azure 儲存體。 本文提供有關查看活動記錄，並將其傳送至不同目的地的詳細資料。
@@ -201,7 +201,7 @@ insights-logs-networksecuritygrouprulecounter/resourceId=/SUBSCRIPTIONS/00000000
 
     | 屬性 | 必要 | 描述 |
     | --- | --- | --- |
-    | 名稱 |是 |記錄檔設定檔的名稱。 |
+    | Name |是 |記錄檔設定檔的名稱。 |
     | StorageAccountId |否 |應儲存活動記錄之儲存體帳戶的資源識別碼。 |
     | serviceBusRuleId |否 |服務匯流排規則識別碼，您想要在其中建立事件中樞的服務匯流排命名空間。 這是具有下列格式的字串： `{service bus resource ID}/authorizationrules/{key name}` 。 |
     | 位置 |是 |以逗號分隔的區域清單，其中列出您要收集的活動記錄檔事件的區域。 |
@@ -399,4 +399,5 @@ Azure Log Analytics 監視解決方案即將被取代，並使用 Log Analytics 
 ## <a name="next-steps"></a>後續步驟
 
 * [閱讀平台記錄的概觀](platform-logs-overview.md)
+* [審核活動記錄事件架構](activity-log-schema.md)
 * [建立診斷設定以將活動記錄傳送至其他目的地](diagnostic-settings.md)

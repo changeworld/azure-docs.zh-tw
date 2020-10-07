@@ -8,15 +8,15 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.author: peterlu
 author: peterclu
-ms.date: 09/30/2020
+ms.date: 10/06/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, references_regions, contperfq1
-ms.openlocfilehash: d4690062dead8186022cc53ca47dbc7e17a9376f
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: 7bc56f6296bf41933348fad9ea4aeb640b9afbf0
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91631183"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776012"
 ---
 # <a name="virtual-network-isolation-and-privacy-overview"></a>虛擬網路隔離和隱私權總覽
 
@@ -70,7 +70,7 @@ ms.locfileid: "91631183"
 
 1. 建立 [已啟用 Private Link 的工作區](how-to-secure-workspace-vnet.md#secure-the-workspace-with-private-endpoint) ，以啟用您的 VNet 和工作區之間的通訊。
 1. 將 Azure Key Vault 新增至具有 [服務端點](../key-vault/general/overview-vnet-service-endpoints.md) 或 [私人端點](../key-vault/general/private-link-service.md)的虛擬網路。 將 Key Vault 設定為「 [允許信任的 Microsoft 服務略過此防火牆](how-to-secure-workspace-vnet.md#secure-azure-key-vault)」。
-1. 將您的 Azure 儲存體帳戶新增至具有[服務端點](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts)或[私人端點](../storage/common/storage-private-endpoints.md)的虛擬網路
+1. 將您的 Azure 儲存體帳戶新增至具有 [服務端點](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-service-endpoints) 或 [私人端點](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-private-endpoints)的虛擬網路。
 1. [將 Azure Container Registry 設定為使用私人端點](how-to-secure-workspace-vnet.md#enable-azure-container-registry-acr) ，並 [在 Azure 容器實例中啟用子網委派](how-to-secure-inferencing-vnet.md#enable-azure-container-instances-aci)。
 
 ![此架構圖表顯示工作區和相關聯的資源如何透過服務端點或 VNet 內的私人端點彼此通訊](./media/how-to-network-security-overview/secure-workspace-resources.png)
@@ -141,17 +141,17 @@ ms.locfileid: "91631183"
 
 [保護工作區](#secure-the-workspace-and-associated-resources)  > [保護定型環境](#secure-the-training-environment)  > [保護推斷環境](#secure-the-inferencing-environment)  > **啟用 studio 功能**  > [設定防火牆設定](#configure-firewall-settings)
 
-雖然 studio 可以存取以服務端點設定的儲存體帳戶中的資料，但某些功能預設為停用：
+如果您的儲存體位於 VNet 中，您必須先執行額外的設定步驟，才能在 [studio](overview-what-is-machine-learning-studio.md)中啟用完整功能。 預設會停用下列功能：
 
 * 預覽 studio 中的資料。
 * 視覺化設計工具中的資料。
 * 提交 AutoML 實驗。
 * 開機磁碟區標專案。
 
-若要在使用儲存體服務端點時啟用完整功能，請參閱 [在虛擬網路中使用 Azure Machine Learning studio](how-to-enable-studio-virtual-network.md#access-data-using-the-studio)。 Studio 支援儲存體帳戶的服務端點和私人端點。
+若要在 VNet 內啟用完整 studio 功能，請參閱 [在虛擬網路中使用 Azure Machine Learning studio](how-to-enable-studio-virtual-network.md#access-data-using-the-studio)。 Studio 支援使用服務端點或私人端點的儲存體帳戶。
 
 ### <a name="limitations"></a>限制
-- Studio 無法存取設定為使用私人端點之儲存體帳戶中的資料。 如需完整的功能，您必須使用服務端點來儲存及使用受控識別。
+- [ML 輔助資料標記](how-to-create-labeling-projects.md#use-ml-assisted-labeling) 不支援在虛擬網路後方保護的預設儲存體帳戶。 您必須使用非預設儲存體帳戶進行 ML 輔助資料標記。 請注意，非預設儲存體帳戶可以在虛擬網路後方受到保護。 
 
 ## <a name="configure-firewall-settings"></a>設定防火牆設定
 

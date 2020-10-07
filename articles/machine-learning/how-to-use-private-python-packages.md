@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/10/2020
-ms.openlocfilehash: 1afa9173c2ca3704bf4408c271e3cf950ef79077
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 58bb08cad111e0744f7831783169901cd76caef4
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91302211"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91772629"
 ---
 # <a name="use-private-python-packages-with-azure-machine-learning"></a>搭配 Azure Machine Learning 使用私人 Python 套件
 
@@ -29,7 +29,7 @@ ms.locfileid: "91302211"
 
 私用套件會透過 [環境](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment) 類別使用。 在環境中，您會宣告要使用的 Python 套件，包括私用套件。 若要深入瞭解 Azure Machine Learning 中的環境，請參閱 [如何使用環境](how-to-use-environments.md)。 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
  * [適用于 Python 的 AZURE MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)
  * [Azure Machine Learning 工作區](how-to-manage-workspace.md)
@@ -91,7 +91,7 @@ Azure Machine Learning 服務會在內部將 URL 取代為安全的 SAS URL，�
 
 您可以從組織防火牆內的 Azure 儲存體帳戶使用套件。 儲存體帳戶可以保留一組策劃的封裝或公開可用封裝的內部鏡像。
 
-若要設定這類私用存放裝置，請參閱 [保護 Azure Machine Learning 工作區和相關聯的資源](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts)。 您也必須 [將 Azure Container Registry 放在 VNet 後方 (ACR) ](how-to-secure-workspace-vnet.md#enable-azure-container-registry-acr)。
+若要設定這類私用存放裝置，請參閱 [保護 Azure Machine Learning 工作區和相關聯的資源](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-service-endpoints)。 您也必須 [將 Azure Container Registry 放在 VNet 後方 (ACR) ](how-to-secure-workspace-vnet.md#enable-azure-container-registry-acr)。
 
 > [!IMPORTANT]
 > 您必須完成此步驟，才能使用私用套件儲存機制來定型或部署模型。

@@ -4,24 +4,19 @@ description: 使用 Azure 私人端點私下連線至 Web 應用程式
 author: ericgre
 ms.assetid: 2dceac28-1ba6-4904-a15d-9e91d5ee162c
 ms.topic: article
-ms.date: 08/12/2020
+ms.date: 10/07/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 9f593bd5e1d4970b43b25c434abfa87177b72066
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: c6a55958102c89c78fe2cd797bb59cf72f9ec505
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91743007"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91773139"
 ---
-# <a name="using-private-endpoints-for-azure-web-app-preview"></a>使用 Azure Web 應用程式的私人端點 (預覽)
-
-> [!Note]
-> 在預覽重新整理中，我們發行了資料外泄保護功能。
->
-> 預覽版適用于 >premiumv2 和 PremiumV3 Windows 和 Linux 應用程式和彈性高階功能的所有公用區域。 
+# <a name="using-private-endpoints-for-azure-web-app"></a>使用 Azure Web 應用程式的私人端點
 
 您可以使用 Azure Web 應用程式的私人端點來允許位於私人網路中的用戶端透過 Private Link 安全地存取應用程式。 私人端點會使用 Azure VNet 位址空間中的 IP 位址。 私人網路上的用戶端與 Web 應用程式之間的網路流量會流經 VNet 和 Microsoft 骨幹網路上的 Private Link，以排除公開網際網路的風險。
 
@@ -99,7 +94,7 @@ ms.locfileid: "91743007"
 在此 DNS 設定之後，您就可以使用預設名稱 mywebappname.azurewebsites.net，私下連線至您的 Web 應用程式。
 
 
-如果您需要使用自訂 DNS 名稱，則必須在 Web 應用程式中新增自訂名稱。 在預覽期間，您必須使用公用 DNS 解析來驗證自訂名稱，就如同任何自訂名稱一樣。 如需詳細資訊，請參閱[自訂 DNS 驗證][dnsvalidation]。
+如果您需要使用自訂 DNS 名稱，則必須在 Web 應用程式中新增自訂名稱。 自訂名稱必須像任何自訂名稱一樣，使用公用 DNS 解析來進行驗證。 如需詳細資訊，請參閱[自訂 DNS 驗證][dnsvalidation]。
 
 針對 Kudu 主控台或 Kudu REST API 使用 Azure DevOps 自我裝載代理程式 (部署，例如) ，您必須在 Azure DNS 私人區域或自訂 DNS 伺服器中建立兩筆記錄。 
 
@@ -118,7 +113,9 @@ ms.locfileid: "91743007"
 
 當您在彈性進階方案中使用 Azure 函式搭配私人端點時，若要在 Azure Web 入口網站中執行函式，您必須具有直接網路存取權，否則會收到 HTTP 403 錯誤。 換句話說，您的瀏覽器必須能夠連線到私人端點，才能從 Azure 入口網站執行函式。 
 
-在預覽期間，只有生產位置會在私人端點後方公開，而其他位置必須由公用端點進行連線。
+您最多可以將100私人端點連線到特定的 Web 應用程式。
+
+私人端點適用于 >premiumv2、PremiumV3、Windows 和 Linux Web 應用程式（容器化），而 Azure Functions Premium 方案 (有時也稱為彈性 Premium 方案) 。 
 
 我們會定期改善 Private Link 功能和私人端點，請查看[這篇文章][pllimitations]，以取得有關限制的最新資訊。
 

@@ -10,12 +10,12 @@ ms.date: 10/02/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: e0c5e6041da933b4a42bc438900f8c4c91cc6dbc
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: 4b2f819edd875130c57d487536691b4588dcc71f
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91711243"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91772663"
 ---
 # <a name="monitoring-azure-files"></a>監視 Azure 檔案儲存體
 
@@ -71,6 +71,8 @@ Azure 監視器中的計量和記錄只支援 Azure Resource Manager 儲存體�
 | StorageRead | 物件的讀取作業。 |
 | StorageWrite | 對物件進行寫入作業。 |
 | StorageDelete | 刪除物件上的作業。 |
+
+若要取得已記錄的 SMB 和 REST 作業的清單，請參閱 [儲存體記錄作業和狀態訊息](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) ，以及 [Azure 檔案儲存體監視資料參考](storage-files-monitoring-reference.md)。
 
 ## <a name="analyzing-metrics"></a>分析計量
 
@@ -276,7 +278,7 @@ Azure 監視器提供 [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.
 
 您可以儲存體帳戶中的 Blob 形式、以事件資料形式，或透過 Log Analytics 查詢來存取資源記錄。
 
-如需這些記錄中出現之欄位的詳細參考，請參閱 [Azure Azure 檔案儲存體監視資料參考](storage-files-monitoring-reference.md)。
+若要取得已記錄的 SMB 和 REST 作業的清單，請參閱 [儲存體記錄作業和狀態訊息](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) ，以及 [Azure 檔案儲存體監視資料參考](storage-files-monitoring-reference.md)。
 
 > [!NOTE]
 > Azure 監視器中的 Azure 儲存體記錄處於公開預覽狀態，可在所有公用雲端區域中進行預覽測試。 若要註冊預覽，請參閱[本頁](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxW65f1VQyNCuBHMIMBV8qlUM0E0MFdPRFpOVTRYVklDSE1WUTcyTVAwOC4u)。 此預覽可啟用 Blob (包括 Azure Data Lake Storage Gen2)、檔案、佇列、資料表、一般用途 v1 高階儲存體帳戶及一般用途 v2 儲存體帳戶的記錄。 不支援傳統儲存體帳戶。
@@ -292,7 +294,7 @@ Azure 監視器提供 [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.
 - 使用共用存取簽章 (SAS) 或 OAuth 的要求，包括失敗和成功的要求
 - 對分析資料 ( **$logs** 中的傳統記錄資料和 **$metric** 資料表中的類別計量資料) 的要求
 
-Azure 檔案儲存體服務本身所提出的要求（例如記錄建立或刪除）不會記錄下來。 如需已記錄資料的完整清單，請參閱[儲存體記錄的作業和狀態訊息](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)及[儲存體記錄格式](storage-files-monitoring-reference.md)。
+Azure 檔案儲存體服務本身所提出的要求（例如記錄建立或刪除）不會記錄下來。 如需記錄的 SMB 和 REST 要求的完整清單，請參閱 [儲存體記錄作業和狀態訊息](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) ，以及 [Azure 檔案儲存體監視資料參考](storage-files-monitoring-reference.md)。
 
 ### <a name="log-anonymous-requests"></a>記錄匿名要求
 
@@ -303,7 +305,7 @@ Azure 檔案儲存體服務本身所提出的要求（例如記錄建立或刪�
 - 用戶端與伺服器的逾時錯誤
 - 失敗的 GET 要求，其錯誤碼為 304 (未修改)
 
-系統不會記錄所有其他失敗的匿名要求。 如需已記錄資料的完整清單，請參閱[儲存體記錄的作業和狀態訊息](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)及[儲存體記錄格式](storage-files-monitoring-reference.md)。
+系統不會記錄所有其他失敗的匿名要求。 如需記錄的 SMB 和 REST 要求的完整清單，請參閱 [儲存體記錄作業和狀態訊息](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) ，以及 [Azure 檔案儲存體監視資料參考](storage-files-monitoring-reference.md)。
 
 ### <a name="accessing-logs-in-a-storage-account"></a>存取儲存體帳戶中的記錄
 
@@ -484,7 +486,7 @@ StorageFileLogs
 - [Azure 檔案儲存體監視資料參考](storage-files-monitoring.md)
 - [使用 Azure 監視器監視 Azure 資源](../../azure-monitor/insights/monitor-azure-resource.md)
 - [Azure 儲存體計量遷移](../common/storage-metrics-migration.md)
-- [規劃 Azure 檔案服務部署](https://docs.microsoft.com/azure/storage/files/storage-files-planning) (機器翻譯)
+- [規劃 Azure 檔案部署](https://docs.microsoft.com/azure/storage/files/storage-files-planning)
 - [如何部署 Azure 檔案儲存體](https://docs.microsoft.com/azure/storage/files/storage-files-deployment-guide)
 - [針對 Windows 中的 Azure 檔案服務進行疑難排解](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems)
 - [針對 Linux 中的 Azure 檔案服務進行疑難排解](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-linux-file-connection-problems)

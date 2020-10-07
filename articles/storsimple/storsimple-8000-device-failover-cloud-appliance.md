@@ -1,5 +1,5 @@
 ---
-title: StorSimple 雲端設備的容錯移轉和嚴重損壞修復
+title: 對 StorSimple 雲端設備的容錯移轉和嚴重損壞修復
 description: 了解如何將您的 StorSimple 8000 系列實體裝置容錯移轉至雲端設備。
 services: storsimple
 documentationcenter: ''
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 198b87d0a458108ce76934217c651d613ab5d75e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 18b34ff466f3935cb5cd18d46e6d26e36e756a9b
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85512078"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91774455"
 ---
 # <a name="fail-over-to-your-storsimple-cloud-appliance"></a>容錯移轉至您的 StorSimple 雲端設備
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 本教學課程說明當發生災害時，將 StorSimple 8000 系列實體裝置容錯移轉至 StorSimple 雲端設備所需要的步驟。 StorSimple 會使用裝置容錯移轉功能，將資料從資料中心的實體裝置來源移轉至 Azure 中執行的雲端設備。 本教學課程中的指導方針適用於 StorSimple 8000 系列實體裝置和執行軟體版本為 Update 3 和更新版本的雲端設備。
 
@@ -46,15 +46,15 @@ ms.locfileid: "85512078"
     ![選取裝置](./media/storsimple-8000-device-failover-disaster-recovery/failover-cloud-dev1.png)
 3. 選取並按一下您的來源裝置。 來源裝置具有您想要容錯移轉的磁碟區容器。 移至 [設定] > [磁碟區容器]****。
 
-    ![選取裝置](./media/storsimple-8000-device-failover-disaster-recovery/failover-cloud-dev2.png)
+    ![選取裝置2](./media/storsimple-8000-device-failover-disaster-recovery/failover-cloud-dev2.png)
     
 4. 選取您要容錯移轉至另一個裝置的磁碟區容器。 按一下磁碟區容器，以顯示此容器內的磁碟區清單。 選取磁碟區，按一下滑鼠右鍵，然後按一下 [離線]****，讓磁碟區離線。
 
-    ![選取裝置](./media/storsimple-8000-device-failover-disaster-recovery/failover-cloud-dev5.png)
+    ![選取裝置3](./media/storsimple-8000-device-failover-disaster-recovery/failover-cloud-dev5.png)
 
 5. 針對磁碟區容器中的所有磁碟區，重複執行這個程序。
 
-     ![選取裝置](./media/storsimple-8000-device-failover-disaster-recovery/failover-cloud-dev7.png)
+     ![選取裝置4](./media/storsimple-8000-device-failover-disaster-recovery/failover-cloud-dev7.png)
 
 6. 針對您要容錯移轉至另一個裝置的所有磁碟區容器，重複執行前一個步驟。
 
@@ -63,7 +63,7 @@ ms.locfileid: "85512078"
     ![按一下 [容錯移轉]](./media/storsimple-8000-device-failover-disaster-recovery/failover-cloud-dev8.png)
 8. 在 [容錯移轉]**** 刀鋒視窗中，執行下列步驟︰
    
-    1. 按一下 [來源]****。 選取要容錯移轉的磁碟區容器。 **只會顯示與雲端快照集和離線磁碟區相關聯的磁碟區容器。**
+    1. 按一下 [ **來源**]。 選取要容錯移轉的磁碟區容器。 **只會顯示與雲端快照集和離線磁碟區相關聯的磁碟區容器。**
         ![選取來源](./media/storsimple-8000-device-failover-disaster-recovery/failover-cloud-dev11.png)
     2. 按一下 [目標]****。 從可用裝置的下拉式清單中，選取目標雲端設備。 **清單中只會顯示擁有足夠容量容納來源磁碟區容器的裝置。**
 
@@ -81,7 +81,7 @@ ms.locfileid: "85512078"
 
     1. 為容錯移轉選取要用來做為目標的裝置。
 
-       ![選取裝置](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev14.png)
+       ![選取裝置5](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev14.png)
 
     2. 按一下 [磁碟區容器]****。 此時應會列出所有磁碟區容器以及舊裝置中的磁碟區。
 

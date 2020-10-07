@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: how-to
-ms.date: 07/14/2020
+ms.date: 10/06/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 86d88f841f76b367e83f0ae6b81e604e1b7f3e4b
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: e16f33cb8aa7c6ceeb1398dd23ccba31b5f936b1
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88950114"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776131"
 ---
 # <a name="get-started-with-azure-active-directory-identity-protection-and-microsoft-graph"></a>開始使用 Azure Active Directory Identity Protection 和 Microsoft Graph
 
@@ -70,7 +70,7 @@ Microsoft Graph 是 Microsoft 統一 API 端點，也是 [Azure Active Directory
 1. 從您建立的 **應用程式** 中，選取 [ **憑證 & 秘密**]。
 1. 在 [用戶端密碼]**** 底下，選取 [新增用戶端密碼]****。
    1. 提供用戶端密碼的 **描述** ，並根據您的組織原則設定到期時間週期。
-   1. 選取 [新增]。
+   1. 選取 [新增]  。
 
    > [!NOTE]
    > 如果遺失此金鑰，則必須返回本區段並建立新的金鑰。 請勿將此金鑰告知他人︰任何人只要擁有此金鑰就可以存取您的資料。
@@ -104,6 +104,8 @@ Microsoft Graph 是 Microsoft 統一 API 端點，也是 [Azure Active Directory
 如果成功，回應會是身分識別風險偵測的集合，以及 OData JSON 格式的相關資料，您可以視需要加以剖析和處理。
 
 ### <a name="sample"></a>範例
+
+此範例示範如何使用共用密碼來進行驗證。 在生產環境中，通常會 frowned 在程式碼中儲存秘密。 組織可以利用 Azure 資源的受控識別來保護這些認證。 如需受控識別的詳細資訊，請參閱文章， [什麼是適用于 Azure 資源的受控](../managed-identities-azure-resources/overview.md)識別。
 
 以下是使用 PowerShell 驗證並呼叫 API 的範例程式碼。  
 您只需要新增用戶端識別碼、祕密金鑰和租用戶網域。
@@ -158,7 +160,7 @@ GET https://graph.microsoft.com/v1.0/identityProtection/riskDetections?$filter=d
 GET https://graph.microsoft.com/v1.0/identityProtection/riskyUsers?$filter=riskDetail eq 'userPassedMFADrivenByRiskBasedPolicy'
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 恭喜，您剛剛完成了對 Microsoft Graph 的第一次呼叫！  
 您現在可以查詢身分識別風險偵測並使用資料，不過您可以看到合適的資料。

@@ -4,15 +4,15 @@ description: 使用 Azure 進階 SSD 受控磁碟設計高效能應用程式。 
 author: roygara
 ms.service: virtual-machines
 ms.topic: conceptual
-ms.date: 06/27/2017
+ms.date: 10/05/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 48157c8d9285c48d49e76f39602075a2a8ac9682
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: f89358f4ca34c39527d7e65307ada042ba3df7e0
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89650718"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776148"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure 進階儲存體：專為高效能而設計
 
@@ -305,45 +305,11 @@ Azure 進階儲存體提供各種大小，讓您可以選擇最符合您需求�
 
 ## <a name="optimize-performance-on-linux-vms"></a>最佳化 Linux VM 的效能
 
-對於所有快取設為 [唯讀] 或 [無] 的進階 SSD 或 Ultra 磁碟，當您掛接檔案系統時，您必須停用 "barriers" (阻礙)。 此案例中您不需要阻礙，因為對這些快取設定而言，寫入進階儲存體磁碟是持久的。 寫入要求成功完成時，資料就已寫入永久性的存放區。 若要停用 "barrier" (阻礙)，請使用下列其中一種方法。 請選擇適用您檔案系統的方法︰
-  
-* 若是 **reiserFS**，請使用 `barrier=none` 掛接選項停用阻礙。 (若要啟用阻礙，請使用 `barrier=flush`。)
-* 若是 **ext3/ext4**，請使用 `barrier=0` 掛接選項停用阻礙。 (若要啟用阻礙，請使用 `barrier=1`。)
-* 若是 **XFS**，請使用 `nobarrier` 掛接選項停用阻礙。 (若要啟用阻礙，請使用 `barrier`。)
-* 對於快取設定為 **ReadWrite** 的進階儲存體，請啟用寫入持續性的障礙。
-* 對於要在 VM 重新開機後保存的磁碟機標籤，您必須以參考磁碟的通用唯一識別碼 (UUID) 更新 /etc/fstab。 如需詳細資訊，請參閱[將受控磁碟新增至 Linux VM](./linux/add-disk.md)。
+針對所有高階 Ssd 或 ultra 磁片，您可以停用磁片上檔案系統的「阻礙」，以便在已知沒有任何快取可能遺失資料的情況下改善效能。  如果 Azure 磁碟快取設定為 [唯讀] 或 [無]，您可以停用阻礙。  但是，如果快取設定為 ReadWrite，則應該保持啟用障礙，以確保寫入耐久性。  通常預設會啟用阻礙，但您可以根據檔案系統類型，使用下列其中一種方法來停用阻礙：
 
-下列 Linux 散發套件經過驗證，可使用進階 SSD。 如需透過進階 SSD 提升效能與穩定性，建議您將虛擬機器升級成這些版本之一或更新的版本。 
-
-部分版本需要適用於 Azure 的最新 Linux Integration Services 4.0 版。 若要下載並安裝散發套件，請遵循下表所列的連結。 完成驗證時，我們會將映像新增至清單中。 驗證結果顯示每個映像的效能各有差異。 效能取決於工作負載特性和映像上的設定。 不同的映像已針對不同種類的工作負載進行調整。
-
-| 散發 | 版本 | 支援的核心 | 詳細資料 |
-| --- | --- | --- | --- |
-| Ubuntu | 12.04 或更新版本| 3.2.0-75.110+ | &nbsp; |
-| Ubuntu | 14.04 或更新版本| 3.13.0-44.73+  | &nbsp; |
-| Debian | 7.x, 8.x 或更新版本| 3.16.7-ckt4-1+ | &nbsp; |
-| SUSE | SLES 12 或更新版本| 3.12.36-38.1+ | &nbsp; |
-| SUSE | SLES 11 SP4 或更新版本| 3.0.101-0.63.1+ | &nbsp; |
-| CoreOS | 584.0.0+ 或更新版本| 3.18.4+ | &nbsp; |
-| CentOS | 6.5、6.6、6.7、7.0 或更新版本| &nbsp; | [LIS4 (必要)](https://www.microsoft.com/download/details.aspx?id=55106) <br> *請參閱下一節中的附註* |
-| CentOS | 7.1+ 或更新版本| 3.10.0-229.1.2.el7+ | [LIS4 (建議使用) ](https://www.microsoft.com/download/details.aspx?id=55106) <br> *請參閱下一節中的附註* |
-| Red Hat Enterprise Linux (RHEL) | 6.8+、7.2+ 或更新版本 | &nbsp; | &nbsp; |
-| Oracle | 6.0+、7.2+ 或更新版本 | &nbsp; | UEK4 或 RHCK |
-| Oracle | 7.0-7.1 或更新版本 | &nbsp; | UEK4 或 RHCK w/[LIS4](https://www.microsoft.com/download/details.aspx?id=55106) |
-| Oracle | 6.4-6.7 或更新版本 | &nbsp; | UEK4 或 RHCK w/[LIS4](https://www.microsoft.com/download/details.aspx?id=55106) |
-
-### <a name="lis-drivers-for-openlogic-centos"></a>Openlogic CentOS 的 LIS 驅動程式
-
-如果您執行 OpenLogic CentOS VM，請執行下列命令以安裝最新的驅動程式：
-
-```
-sudo yum remove hypervkvpd  ## (Might return an error if not installed. That's OK.)
-sudo yum install microsoft-hyper-v
-sudo reboot
-```
-
-在某些情況下，上述命令也會升級核心。 如果需要核心更新，您可能需要在重新開機之後再次執行上述命令，才能完整安裝 microsoft hyper-v 套件。
-
+* 若為 **reiserFS**，請使用屏障 = none 掛接選項來停用阻礙。  若要明確啟用阻礙，請使用關卡 = flush。
+* 針對 **ext3/ext4**，請使用屏障 = 0 掛接選項來停用阻礙。  若要明確啟用阻礙，請使用關卡 = 1。
+* 若為 **XFS**，請使用 nobarrier 掛接選項來停用阻礙。  若要明確啟用阻礙，請使用關卡。  請注意，在較新的 Linux 核心版本中，XFS 檔案系統的設計一律可確保持久性，而停用阻礙則沒有任何作用。  
 
 ## <a name="disk-striping"></a>磁碟等量分割
 

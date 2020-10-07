@@ -11,18 +11,18 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b225ccb0e607b073fd28f79d0151da0b77f5cdf
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 922cea49179e63e2481a7f15b1e78bd8bf6c4848
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91266610"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91773921"
 ---
 # <a name="passwordless-authentication-options-for-azure-active-directory"></a>Azure Active Directory 的無密碼 authentication 選項
 
 多重要素驗證 (MFA) 這類功能是保護您組織的絕佳方法，但使用者通常會在必須記住其密碼的情況下，讓額外的安全性層級感到挫折。 無密碼 authentication 方法更為方便，因為密碼已移除，並取代為您擁有的內容，以及您或您所知的東西。
 
-| 驗證  | 您擁有的東西 | 您或知道的事項 |
+| 驗證  | 您有的項目 | 您或知道的事項 |
 | --- | --- | --- |
 | 無密碼 | Windows 10 裝置、電話或安全性金鑰 | 生物特徵辨識或 PIN |
 
@@ -61,6 +61,8 @@ Windows Hello 企業版 [規劃指南](/windows/security/identity-protection/hel
 ![使用 Microsoft Authenticator 應用程式登入 Microsoft Edge](./media/concept-authentication-passwordless/concept-web-sign-in-microsoft-authenticator-app.png)
 
 驗證器應用程式會將任何 iOS 或 Android 手機變成強式無密碼認證。 使用者可以登入任何平臺或瀏覽器，方法是取得電話的通知、比對畫面上顯示的數位與手機上的數位，然後使用其生物特徵辨識 (觸控或臉部) 或 PIN 來確認。 如需安裝詳細資料，請參閱 [下載並安裝 Microsoft Authenticator 應用程式](../user-help/user-help-auth-app-download-install.md) 。
+
+無密碼使用 Microsoft Authenticator 應用程式登入 Azure AD 目前為預覽狀態。 使用 Microsoft Authenticator 應用程式進行 Azure Multi-Factor Authentication 的次要驗證、自助式密碼重設 (SSPR) 或 OATH 軟體權杖正式運作。 如需有關預覽版的詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 使用驗證器應用程式的無密碼 authentication，會遵循與 Windows Hello 企業版相同的基本模式。 由於必須識別使用者，讓 Azure AD 可以找到所使用的 Microsoft Authenticator 應用程式版本，因此會稍微複雜一點：
 
@@ -172,7 +174,7 @@ Azure AD 無密碼登入功能目前為預覽狀態。 您必須考量下列事�
 
 使用下表來選擇可支援您的需求和使用者的方法。
 
-|角色|狀況|環境|無密碼技術|
+|角色|案例|環境|無密碼技術|
 |:-|:-|:-|:-|
 |**管理員**|安全存取裝置以進行管理工作|指派 Windows 10 裝置|Windows Hello 企業版及/或 FIDO2 安全性金鑰|
 |**管理員**|非 Windows 裝置上的管理工作| 行動裝置或非 windows 裝置|使用 Microsoft Authenticator 應用程式無密碼登入|

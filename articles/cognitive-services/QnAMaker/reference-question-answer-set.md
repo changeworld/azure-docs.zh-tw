@@ -1,14 +1,16 @@
 ---
 title: 設計知識庫-QnA Maker
 description: QnA Maker 的知識庫是由一組問答 (QnA) 配對以及與每個 QnA 配對相關聯的選擇性中繼資料所組成。
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 09/01/2020
-ms.openlocfilehash: 1f5bd07a465c3d27dffe54eb853330a952be0d59
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 363af72df89be9104e4d946bf8da0d44908382d4
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/06/2020
-ms.locfileid: "91762460"
+ms.locfileid: "91776216"
 ---
 # <a name="question-and-answer-pair-concepts"></a>問題和答案配對概念
 

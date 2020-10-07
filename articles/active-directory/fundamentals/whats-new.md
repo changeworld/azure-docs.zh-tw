@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/28/2020
+ms.date: 10/06/2020
 ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f9bcc356835fcfc080bd381043552d6e8868cc7f
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: c16008ac4a328f93669179ccca783efb9ef092a5
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91446622"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91773500"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory 的新增功能？
 
@@ -57,6 +57,22 @@ Azure AD 會持續不斷進行改進。 為了讓您隨時掌握最新的開發�
 - [Webroot 安全性意識](../saas-apps/webroot-security-awareness-training-provisioning-tutorial.md)
 
 如需如何使用自動化使用者帳戶佈建來加強組織安全性的詳細資訊，請參閱[使用 Azure AD 自動將使用者佈建至 SaaS 應用程式](../app-provisioning/user-provisioning.md)。
+ 
+---
+### <a name="cloud-provisioning-public-preview-refresh"></a>雲端布建公開預覽更新
+
+**類型：** 新功能  
+**服務類別：** Azure AD 雲端布建 **產品功能：** 身分識別生命週期管理
+ 
+Azure AD Connect 雲端布建公開預覽重新整理功能，提供了兩個從客戶意見反應開發的主要增強功能 
+
+- 透過 Azure 入口網站的屬性對應體驗
+
+    透過這項功能，IT 系統管理員可以使用目前存在的各種對應類型，將使用者、群組或連絡人屬性從 AD 對應至 Azure AD。 屬性對應是一項功能，可用來將從 Active Directory 流向 Azure Active Directory 的屬性值標準化。 您可以決定是否直接將屬性值從 AD 對應到 Azure AD，或在布建使用者時使用運算式來轉換屬性值。 [深入了解](../cloud-provisioning/how-to-attribute-mapping.md)
+
+- 隨選布建或測試使用者體驗
+
+    設定好設定之後，您可能會想要先測試使用者轉換是否如預期般運作，再將它套用至範圍內的所有使用者。 使用隨選布建時，IT 系統管理員可以輸入 AD 使用者 (DN) 的辨別名稱，並查看它們是否如預期般同步。 隨選布建提供一種絕佳的方式，可確保您先前執行的屬性對應會如預期般運作。 [深入了解](../cloud-provisioning/how-to-on-demand-provision.md)
  
 ---
 
@@ -106,7 +122,7 @@ Azure AD 會持續不斷進行改進。 為了讓您隨時掌握最新的開發�
 
 ---
 
-### <a name="ask-users-requesting-an-access-package-additional-questions-to-improve-approval-decisions"></a>要求使用者要求存取套件其他問題，以改善核准決策
+### <a name="public-preview-ask-users-requesting-an-access-package-additional-questions-to-improve-approval-decisions"></a>公開預覽：要求使用者要求存取套件其他問題，以改善核准決策
 
 **類型：** 新功能  
 **服務類別：** 使用者存取管理  

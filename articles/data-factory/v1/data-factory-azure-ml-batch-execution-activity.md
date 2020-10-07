@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure Data Factory 建立預測性資料管線
-description: 說明如何使用 Azure Data Factory 和 Azure Machine Learning 建立預測管線
+description: '說明如何使用 Azure Data Factory 和 Azure Machine Learning Studio (傳統來建立預測管線) '
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -11,14 +11,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: c40b58dfb63ac6bf1b5532eb06bfd2ad0cdccde9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9b773eee27cd72562999e468f90dd87907cf9677
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84022022"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776182"
 ---
-# <a name="create-predictive-pipelines-using-azure-machine-learning-and-azure-data-factory"></a>使用 Azure Machine Learning 和 Azure Data Factory 來建立預測管線
+# <a name="create-predictive-pipelines-using-azure-machine-learning-studio-classic-and-azure-data-factory"></a>使用 Azure Machine Learning Studio (傳統) 和 Azure Data Factory 建立預測管線
 
 > [!div class="op_single_selector" title1="轉換活動"]
 > * [Hive 活動](data-factory-hive-activity.md)
@@ -37,52 +37,52 @@ ms.locfileid: "84022022"
 > 本文適用於 Data Factory 第 1 版。 如果您使用目前版本的 Data Factory 服務，請參閱[在 Data Factory 中使用機器學習來轉換資料](../transform-data-using-machine-learning.md)。
 
 
-### <a name="azure-machine-learning"></a>Azure Machine Learning
-[Azure Machine Learning](https://azure.microsoft.com/documentation/services/machine-learning/)可讓您建立、測試及部署預測性分析解決方案。 從高階觀點而言，由下列三個步驟完成這個動作：
+### <a name="azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (傳統) 
+[Azure Machine Learning Studio (傳統) ](https://azure.microsoft.com/documentation/services/machine-learning/) 可讓您建立、測試及部署預測性分析解決方案。 從高階觀點而言，由下列三個步驟完成這個動作：
 
-1. **建立訓練實驗**。 您可以使用 Azure Machine Learning Studio 來執行此步驟。 Azure Machine Learning Studio 是一個共同作業的視覺化開發環境，可供您使用定型資料來將預測性分析模型定型及測試模型。
+1. **建立訓練實驗**。 您可以使用 Azure Machine Learning Studio (傳統) 來執行此步驟。 Azure Machine Learning Studio (傳統) 是一個共同作業的視覺化開發環境，可讓您使用定型資料來定型及測試預測性分析模型。
 2. **將其轉換為評分實驗**。 一旦您的模型已使用現有資料訓練，並做好使用該模型為新資料評分的準備之後，您準備並簡化用於評分實驗。
 3. **將其部署為 Web 服務**。 只要按一下，您就可以將評分實驗當做 Azure Web 服務發佈。 您可以透過此 Web 服務端點將資料傳送給您的模型，並從模型接收結果預測。
 
 ### <a name="azure-data-factory"></a>Azure Data Factory
-Data Factory 是以雲端為基礎的資料整合服務，可協調及自動**移動**和**轉換**資料。 您可以使用 Azure Data Factory 建立資料整合方案，以從各種資料存放區內嵌資料、轉換/處理資料，並將結果資料發佈至資料存放區。
+Data Factory 是以雲端為基礎的資料整合服務，可協調及自動化資料的 **移動** 和 **轉換** 。 您可以使用 Azure Data Factory 建立資料整合方案，以從各種資料存放區內嵌資料、轉換/處理資料，並將結果資料發佈至資料存放區。
 
 Data Factory 服務可讓您建立資料管線，以移動和轉換資料，然後依指定的排程 (每小時、每天、每週等) 執行管線。 它也提供豐富的視覺效果來顯示資料管線之間的歷程和相依性，並可透過單一整合檢視監視您所有的資料管線，以輕鬆地找出問題並設定監視警示。
 
 請參閱 [Azure Data Factory 簡介](data-factory-introduction.md)和[建置您的第一個管線](data-factory-build-your-first-pipeline.md)文章，快速地開始使用 Azure Data Factory 服務。
 
-### <a name="data-factory-and-machine-learning-together"></a>Data Factory 和 Machine Learning 一起合作
-Azure Data Factory 可讓您輕鬆地建立管線，使用已發佈的[Azure Machine Learning][azure-machine-learning] web 服務進行預測性分析。 藉由在 Azure Data Factory 管線中使用**批次執行活動**，您便可以叫用 Azure Machine Learning Studio Web 服務來對批次中的資料進行預測。 如需詳細資訊，請參閱「使用批次執行活動來叫用 Azure Machine Learning Studio Web 服務」一節。
+### <a name="data-factory-and-machine-learning-studio-classic-together"></a>Data Factory 和 Machine Learning Studio 一起 (傳統) 
+Azure Data Factory 可讓您輕鬆地建立管線，使用已發佈的 [Azure Machine Learning Studio (傳統) ][azure-machine-learning] web 服務進行預測性分析。 使用 Azure Data Factory 管線中的 **批次執行活動** ，您可以叫用 Azure Machine Learning Studio (傳統) web 服務來對批次中的資料進行預測。 如需詳細資訊，請參閱使用批次執行活動一節叫用 Azure Machine Learning Studio (傳統) web 服務。
 
-經過一段時間後，必須使用新的輸入資料集來重新訓練 Azure Machine Learning Studio 評分實驗中的預測模型。 您可以透過執行下列步驟，從 Data Factory 管線重新訓練 Azure Machine Learning Studio 模型：
+經過一段時間之後，就必須使用新的輸入資料集重新定型 Azure Machine Learning Studio 中的預測模型 (傳統) 評分實驗。 您可以執行下列步驟，從 Data Factory 管線將 Azure Machine Learning Studio (傳統) 模型重新定型：
 
-1. 將訓練實驗 (而非預設實驗) 發佈為 Web 服務。 您在 Azure Machine Learning Studio 中執行此步驟的方式，就像在先前案例中將預測實驗公開成 Web 服務時一樣。
-2. 使用「Azure Machine Learning Studio 批次執行活動」來為訓練實驗叫用 Web 服務。 基本上，您可以使用「Azure Machine Learning Studio 批次執行活動」既叫用訓練 Web 服務，也叫用評分 Web 服務。
+1. 將訓練實驗 (而非預設實驗) 發佈為 Web 服務。 您可以在 Azure Machine Learning Studio (傳統) 中執行此步驟，就像在先前的案例中將預測實驗公開為 web 服務一樣。
+2. 使用 Azure Machine Learning Studio (傳統) 批次執行活動來叫用用於訓練實驗的 web 服務。 基本上，您可以使用 Azure Machine Learning Studio (傳統) 批次執行活動來叫用定型 web 服務和評分 web 服務。
 
-完成重新訓練之後，請使用 **Azure Machine Learning Studio 更新資源活動**，以新定型的模型來更新評分 Web 服務 (公開成 Web 服務的預測實驗)。 如需詳細資料，請參閱[使用更新資源活動更新模型](data-factory-azure-ml-update-resource-activity.md)一文。
+當您完成重新訓練之後，請使用 **Azure Machine Learning Studio (傳統) 更新資源活動**，將評分 web 服務 (以 web 服務公開的預測性實驗，) 為新定型的模型。 如需詳細資料，請參閱[使用更新資源活動更新模型](data-factory-azure-ml-update-resource-activity.md)一文。
 
 ## <a name="invoking-a-web-service-using-batch-execution-activity"></a>使用批次執行活動來叫用 Web 服務
-您可以使用 Azure Data Factory 協調資料的移動和處理作業，然後使用 Azure Machine Learning 批次執行。 以下是最上層的步驟︰
+您可以使用 Azure Data Factory 來協調資料移動和處理，然後使用 Azure Machine Learning Studio (傳統) 執行批次執行。 以下是最上層的步驟︰
 
-1. 建立 Azure Machine Learning 連結服務。 您需要下列值︰
+1. 建立 Azure Machine Learning Studio (傳統) 連結服務。 您需要下列值︰
 
    1. **要求 URI** 。 您可以按一下 Web 服務頁面中的 **批次執行** 連結，即可找到要求 URI。
-   2. **API 金鑰** 。 按一下已發佈的 Web 服務，即可找到 API 金鑰。
+   2. 發佈的 Azure Machine Learning Studio (傳統) web 服務的**API 金鑰**。 按一下已發佈的 Web 服務，即可找到 API 金鑰。
    3. 使用 **AzureMLBatchExecution** 活動。
 
-      ![機器學習服務儀表板](./media/data-factory-azure-ml-batch-execution-activity/AzureMLDashboard.png)
+      ![Machine Learning Studio (傳統) 儀表板](./media/data-factory-azure-ml-batch-execution-activity/AzureMLDashboard.png)
 
       ![批次 URI](./media/data-factory-azure-ml-batch-execution-activity/batch-uri.png)
 
 ### <a name="scenario-experiments-using-web-service-inputsoutputs-that-refer-to-data-in-azure-blob-storage"></a>案例：使用 Web 服務輸入/輸出 (參考 Azure Blob 儲存體中的資料) 的實驗
-在此案例中，Azure Machine Learning Web 服務會使用 Azure Blob 儲存體中的檔案資料執行預測，並將預測結果儲存在 Blob 儲存體中。 下列 JSON 使用 AzureMLBatchExecution 活動定義 Data Factory 管線。 此活動以 **DecisionTreeInputBlob** 資料集做為輸入，以 **DecisionTreeResultBlob** 資料集做為輸出。 **DecisionTreeInputBlob** 會做為輸入以使用 **webServiceInput** JSON 屬性傳遞至 Web 服務。 **DecisionTreeResultBlob** 會做為輸出以使用 **webServiceOutputs** JSON 屬性傳遞至 Web 服務。
+在此案例中，Azure Machine Learning Studio (傳統) Web 服務會使用 Azure blob 儲存體中檔案的資料進行預測，並將預測結果儲存在 blob 儲存體中。 下列 JSON 使用 AzureMLBatchExecution 活動定義 Data Factory 管線。 此活動以 **DecisionTreeInputBlob** 資料集做為輸入，以 **DecisionTreeResultBlob** 資料集做為輸出。 **DecisionTreeInputBlob** 會做為輸入以使用 **webServiceInput** JSON 屬性傳遞至 Web 服務。 **DecisionTreeResultBlob** 會做為輸出以使用 **webServiceOutputs** JSON 屬性傳遞至 Web 服務。
 
 > [!IMPORTANT]
 > 如果 Web 服務接受多個輸入，請使用 **webServiceInputs** 屬性，而不要使用 **webServiceInput**。 如需如何使用 webServiceInputs 屬性的範例，請參閱 [Web 服務需要多個輸入](#web-service-requires-multiple-inputs) 一節。
 >
-> **WebServiceInput** / **webServiceInputs**和**webServiceOutputs**屬性（在**typeProperties**中）所參考的資料集也必須包含在活動**輸入**和**輸出**中。
+> **webServiceInput** /) **>typeproperties**中 webServiceInput**webServiceInputs**和 **>webserviceoutputs** (屬性所參考的資料集也必須包含在活動**輸入**和**輸出**中。
 >
-> 在您的 Azure Machine Learning Studio 實驗中，Web 服務輸入和輸出連接埠及全域參數具有您可以自訂的預設名稱 ("input1"、"input2")。 您用於 webServiceInputs、webServiceOutputs 及 globalParameters 設定的名稱必須與實驗中的名稱完全相同。 您可以檢視您 Azure Machine Learning Studio 端點之 [批次執行說明] 頁面上的範例要求承載，來確認預期的對應。
+> 在您的 Azure Machine Learning Studio (傳統) 實驗中，web 服務輸入和輸出埠及全域參數都有預設名稱 ( "input1"，"input2" ) 您可以自訂。 您用於 webServiceInputs、webServiceOutputs 及 globalParameters 設定的名稱必須與實驗中的名稱完全相同。 您可以在 Azure Machine Learning Studio (傳統) 端點的 [批次執行說明] 頁面上查看範例要求承載，以確認預期的對應。
 >
 >
 
@@ -251,7 +251,7 @@ Azure Data Factory 可讓您輕鬆地建立管線，使用已發佈的[Azure Mac
 5. 最後，撰寫一個包含 **AzureMLBatchExecution** 活動的管線。 在執行階段，管線會執行下列步驟︰
 
    1. 從輸入資料集取得輸入檔案的位置。
-   2. 叫用 Azure Machine Learning 批次執行 API
+   2. 叫用 Azure Machine Learning Studio (傳統) 批次執行 API
    3. 將批次執行輸出複製到輸出資料集中指定的 Blob。
 
       > [!NOTE]
@@ -301,7 +301,7 @@ Azure Data Factory 可讓您輕鬆地建立管線，使用已發佈的[Azure Mac
       }
       ```
 
-      **開始**和**結束**日期時間都必須是[ISO 格式](https://en.wikipedia.org/wiki/ISO_8601)。 例如：2014-10-14T16:32:41Z。 **結束**時間是選用項目。 如果您未指定**end**屬性的值，則會計算為 **「開始 + 48 時數」。** 若要無限期地執行管線，請指定 **9999-09-09** 做為 **end** 屬性的值。 如需 JSON 屬性的詳細資料，請參閱 [JSON 指令碼參考](https://msdn.microsoft.com/library/dn835050.aspx) 。
+      **開始**和**結束**日期時間都必須是[ISO 格式](https://en.wikipedia.org/wiki/ISO_8601)。 例如：2014-10-14T16:32:41Z。 **結束**時間是選用項目。 如果您未指定**end**屬性的值，則會計算為 **「開始 + 48 小時」。** 若要無限期地執行管線，請指定 **9999-09-09** 做為 **end** 屬性的值。 如需 JSON 屬性的詳細資料，請參閱 [JSON 指令碼參考](https://msdn.microsoft.com/library/dn835050.aspx) 。
 
       > [!NOTE]
       > 您可自行選擇是否指定 AzureMLBatchExecution 活動的輸入。
@@ -309,16 +309,16 @@ Azure Data Factory 可讓您輕鬆地建立管線，使用已發佈的[Azure Mac
       >
 
 ### <a name="scenario-experiments-using-readerwriter-modules-to-refer-to-data-in-various-storages"></a>案例：使用讀取器/寫入器模組參考各種儲存體資料的實驗
-建立 Azure Machine Learning Studio 實驗時的另一個常見案例是使用「讀取器」和「寫入器」模組。 讀取器模組是用來將資料載入實驗，而寫入器模組則是用於儲存您的實驗資料。 如需讀取器和寫入器模組的詳細資料，請參閱 MSDN Library 上的[讀取器](https://msdn.microsoft.com/library/azure/dn905997.aspx)和[寫入器](https://msdn.microsoft.com/library/azure/dn905984.aspx)主題。
+建立 Azure Machine Learning Studio (傳統) 實驗的另一個常見案例是使用讀取器和寫入器模組。 讀取器模組是用來將資料載入實驗，而寫入器模組則是用於儲存您的實驗資料。 如需讀取器和寫入器模組的詳細資料，請參閱 MSDN Library 上的[讀取器](https://msdn.microsoft.com/library/azure/dn905997.aspx)和[寫入器](https://msdn.microsoft.com/library/azure/dn905984.aspx)主題。
 
-使用讀取器和寫入器模組時，較好的做法是針對這些讀取器/寫入器模組的每一個屬性，使用 Web 服務參數。 這些 Web 參數可讓您在執行階段設定值。 例如，建立實驗時，您可以利用讀取器模組使用 Azure SQL Database：XXX.database.windows.net。 部署 web 服務之後，您想要讓 web 服務的取用者指定另一個名為 YYY.database.windows.net 的邏輯 SQL server。 您可以使用 Web 服務參數來設定此值。
+使用讀取器和寫入器模組時，較好的做法是針對這些讀取器/寫入器模組的每一個屬性，使用 Web 服務參數。 這些 Web 參數可讓您在執行階段設定值。 例如，建立實驗時，您可以利用讀取器模組使用 Azure SQL Database：XXX.database.windows.net。 部署 web 服務之後，您會想要啟用 web 服務的取用者，以指定另一部名為 YYY.database.windows.net 的邏輯 SQL 伺服器。 您可以使用 Web 服務參數來設定此值。
 
 > [!NOTE]
-> Web 服務的輸入和輸出與 Web 服務參數不同。 在第一個案例中，您已了解如何為 Azure Machine Learning Studio Web 服務指定輸入和輸出。 在此案例中，您會傳遞 Web 服務的參數，以對應至讀取器/寫入器模組的屬性。
+> Web 服務的輸入和輸出與 Web 服務參數不同。 在第一個案例中，您已瞭解如何針對 Azure Machine Learning Studio (傳統) Web 服務來指定輸入和輸出。 在此案例中，您會傳遞 Web 服務的參數，以對應至讀取器/寫入器模組的屬性。
 >
 >
 
-讓我們看看使用 Web 服務參數的案例。 您已部署 Azure Machine Learning Web 服務，其使用讀取器模組所讀取的資料，是來自其中一個受 Azure Machine Learning 支援的資料來源 (例如：Azure SQL Database)。 批次執行之後，會使用寫入器模組寫入結果 (Azure SQL Database)。  實驗中沒有定義任何 Web 服務的輸入和輸出。 在此情況下，我們建議您為讀取器和寫入器模組設定相關 Web 服務參數。 此組態允許在使用 AzureMLBatchExecution 活動時設定讀取器/寫入器模組。 如以下活動 JSON 所示，在 **globalParameters** 區段中指定 Web 服務參數。
+讓我們看看使用 Web 服務參數的案例。 您已部署 Azure Machine Learning Studio (傳統) web 服務，其使用讀取器模組，從 Azure Machine Learning Studio (傳統)  (所支援的其中一個資料來源讀取資料 Azure SQL Database 例如：) 。 批次執行之後，會使用寫入器模組寫入結果 (Azure SQL Database)。  實驗中沒有定義任何 Web 服務的輸入和輸出。 在此情況下，我們建議您為讀取器和寫入器模組設定相關 Web 服務參數。 此組態允許在使用 AzureMLBatchExecution 活動時設定讀取器/寫入器模組。 如以下活動 JSON 所示，在 **globalParameters** 區段中指定 Web 服務參數。
 
 ```JSON
 "typeProperties": {
@@ -347,7 +347,7 @@ Azure Data Factory 可讓您輕鬆地建立管線，使用已發佈的[Azure Mac
 ### <a name="using-a-reader-module-to-read-data-from-multiple-files-in-azure-blob"></a>使用讀取器模組讀取 Azure Blob 中多個檔案的資料
 具有 Pig 和 Hive 等活動的巨量資料管線可以產生沒有副檔名的一個或多個輸出檔案。 例如，當您指定外部 Hive 資料表時，外部 Hive 資料表的資料可以儲存在 Azure Blob 儲存體中，並命名為：000000_0。 您可以在實驗中使用讀取器模組讀取多個檔案，並將該模組用於預測。
 
-在 Azure Machine Learning 實驗中使用讀取器模組時，您可以指定 Azure Blob 做為輸入。 Azure Blob 儲存體中的檔案可以是在 HDInsight 上執行的 Pig 和 Hive 指令碼所產生的輸出檔 (範例：000000_0)。 讀取器模組可讓您藉由設定 **容器、目錄或 Blob 的路徑**來讀取檔案 (沒有副檔名)。 **容器路徑**指向容器，**目錄/Blob** 則指向包含檔案的資料夾，如下圖所示。 星號 (也就是 \*) **會指定容器/資料夾中的所有檔案 (也就是 data/aggregateddata/year=2014/month-6/\*)** 將讀取為實驗的一部分。
+使用 Azure Machine Learning Studio (傳統) 實驗中的讀取器模組時，您可以指定 Azure Blob 做為輸入。 Azure Blob 儲存體中的檔案可以是在 HDInsight 上執行的 Pig 和 Hive 指令碼所產生的輸出檔 (範例：000000_0)。 讀取器模組可讓您藉由設定 **容器、目錄或 Blob 的路徑**來讀取檔案 (沒有副檔名)。 **容器路徑**指向容器，**目錄/Blob** 則指向包含檔案的資料夾，如下圖所示。 星號 (也就是 \*) **會指定容器/資料夾中的所有檔案 (也就是 data/aggregateddata/year=2014/month-6/\*)** 將讀取為實驗的一部分。
 
 ![Azure Blob 屬性](./media/data-factory-create-predictive-pipelines/azure-blob-properties.png)
 
@@ -358,7 +358,7 @@ Azure Data Factory 可讓您輕鬆地建立管線，使用已發佈的[Azure Mac
 {
   "name": "MLWithSqlReaderSqlWriter",
   "properties": {
-    "description": "Azure Machine Learning studio model with sql azure reader/writer",
+    "description": "Azure Machine Learning Studio (classic) model with sql azure reader/writer",
     "activities": [
       {
         "name": "MLSqlReaderSqlWriterActivity",
@@ -404,14 +404,14 @@ Azure Data Factory 可讓您輕鬆地建立管線，使用已發佈的[Azure Mac
 
 在上述 JSON 範例中：
 
-* 已部署的 Azure Machine Learning Web 服務使用讀取器和寫入器模組，讀取 Azure SQL Database 的資料，或將資料寫入其中。 此 Web 服務會公開下列 4 個參數：資料庫伺服器名稱、資料庫名稱、伺服器使用者帳戶名稱和伺服器使用者帳戶密碼。
-* **開始**和**結束**日期時間都必須是[ISO 格式](https://en.wikipedia.org/wiki/ISO_8601)。 例如：2014-10-14T16:32:41Z。 **結束**時間是選用項目。 如果您未指定**end**屬性的值，則會計算為 **「開始 + 48 時數」。** 若要無限期地執行管線，請指定 **9999-09-09** 做為 **end** 屬性的值。 如需 JSON 屬性的詳細資料，請參閱 [JSON 指令碼參考](https://msdn.microsoft.com/library/dn835050.aspx) 。
+* 部署的 Azure Machine Learning Studio (傳統) Web 服務會使用讀取器和寫入器模組，從 Azure SQL Database 讀取/寫入資料。 此 Web 服務會公開下列 4 個參數：資料庫伺服器名稱、資料庫名稱、伺服器使用者帳戶名稱和伺服器使用者帳戶密碼。
+* **開始**和**結束**日期時間都必須是[ISO 格式](https://en.wikipedia.org/wiki/ISO_8601)。 例如：2014-10-14T16:32:41Z。 **結束**時間是選用項目。 如果您未指定**end**屬性的值，則會計算為 **「開始 + 48 小時」。** 若要無限期地執行管線，請指定 **9999-09-09** 做為 **end** 屬性的值。 如需 JSON 屬性的詳細資料，請參閱 [JSON 指令碼參考](https://msdn.microsoft.com/library/dn835050.aspx) 。
 
 ### <a name="other-scenarios"></a>其他案例
 #### <a name="web-service-requires-multiple-inputs"></a>Web 服務需要多個輸入
 如果 Web 服務接受多個輸入，請使用 **webServiceInputs** 屬性，而不要使用 **webServiceInput**。 **webServiceInputs** 所參考的資料集也必須包含在活動的 **inputs** 中。
 
-在您的 Azure Machine Learning Studio 實驗中，Web 服務輸入和輸出連接埠及全域參數具有您可以自訂的預設名稱 ("input1"、"input2")。 您用於 webServiceInputs、webServiceOutputs 及 globalParameters 設定的名稱必須與實驗中的名稱完全相同。 您可以檢視您 Azure Machine Learning Studio 端點之 [批次執行說明] 頁面上的範例要求承載，來確認預期的對應。
+在您的 Azure Machine Learning Studio (傳統) 實驗中，web 服務輸入和輸出埠及全域參數都有預設名稱 ( "input1"，"input2" ) 您可以自訂。 您用於 webServiceInputs、webServiceOutputs 及 globalParameters 設定的名稱必須與實驗中的名稱完全相同。 您可以在 Azure Machine Learning Studio (傳統) 端點的 [批次執行說明] 頁面上查看範例要求承載，以確認預期的對應。
 
 ```JSON
 {
@@ -454,7 +454,7 @@ Azure Data Factory 可讓您輕鬆地建立管線，使用已發佈的[Azure Mac
 ```
 
 #### <a name="web-service-does-not-require-an-input"></a>Web 服務不需要輸入
-Azure Machine Learning Studio 批次執行 Web 服務可用來執行任何可能不需要任何輸入的工作流程，例如 R 或 Python 指令碼。 或者，您也可以使用不會公開任何 GlobalParameters 的讀取器模組來設定實驗。 在此情況下，AzureMLBatchExecution 活動的設定如下：
+Azure Machine Learning Studio (傳統) 批次執行 web 服務可以用來執行任何可能不需要任何輸入的工作流程，例如 R 或 Python 腳本。 或者，您也可以使用不會公開任何 GlobalParameters 的讀取器模組來設定實驗。 在此情況下，AzureMLBatchExecution 活動的設定如下：
 
 ```JSON
 {
@@ -481,7 +481,7 @@ Azure Machine Learning Studio 批次執行 Web 服務可用來執行任何可能
 ```
 
 #### <a name="web-service-does-not-require-an-inputoutput"></a>Web 服務不需要輸入/輸出
-Azure Machine Learning Studio 批次執行 Web 服務可能未設定任何 Web 服務輸出。 在此範例中，沒有任何 Web 服務輸入或輸出，也不會設定任何 GlobalParameters。 仍會在活動本身設定輸出，但不會將它指定為 webServiceOutput。
+Azure Machine Learning Studio (傳統) 批次執行 web 服務可能未設定任何 Web 服務輸出。 在此範例中，沒有任何 Web 服務輸入或輸出，也不會設定任何 GlobalParameters。 仍會在活動本身設定輸出，但不會將它指定為 webServiceOutput。
 
 ```JSON
 {
@@ -505,7 +505,7 @@ Azure Machine Learning Studio 批次執行 Web 服務可能未設定任何 Web �
 ```
 
 #### <a name="web-service-uses-readers-and-writers-and-the-activity-runs-only-when-other-activities-have-succeeded"></a>Web 服務會使用讀取器和寫入器，而且只有在其他活動皆成功時，才會執行活動
-Azure Machine Learning Studio Web 服務的讀取器和寫入器模組可能已設定為不一定要搭配任何 GlobalParameter 來執行。 但是，您可能想要在管線中內嵌服務呼叫來使用資料集相依性，只有在完成一些上游處理之後，才會叫用該服務。 您也可以在使用此方法完成批次執行之後觸發一些其他動作。 在此情況下，您可以使用活動輸入和輸出來表達相依性，而不需將它們任一個命名為 Web 服務輸入或輸出。
+Azure Machine Learning Studio (傳統) web 服務讀取器和寫入器模組可能會設定為執行，或不使用任何 GlobalParameters。 但是，您可能想要在管線中內嵌服務呼叫來使用資料集相依性，只有在完成一些上游處理之後，才會叫用該服務。 您也可以在使用此方法完成批次執行之後觸發一些其他動作。 在此情況下，您可以使用活動輸入和輸出來表達相依性，而不需將它們任一個命名為 Web 服務輸入或輸出。
 
 ```JSON
 {
@@ -545,10 +545,10 @@ Azure Machine Learning Studio Web 服務的讀取器和寫入器模組可能已�
 
 
 ## <a name="updating-models-using-update-resource-activity"></a>使用更新資源活動來更新模型
-完成重新訓練之後，請使用 **Azure Machine Learning Studio 更新資源活動**，以新定型的模型來更新評分 Web 服務 (公開成 Web 服務的預測實驗)。 如需詳細資料，請參閱[使用更新資源活動更新模型](data-factory-azure-ml-update-resource-activity.md)一文。
+當您完成重新訓練之後，請使用 **Azure Machine Learning Studio (傳統) 更新資源活動**，將評分 web 服務 (以 web 服務公開的預測性實驗，) 為新定型的模型。 如需詳細資料，請參閱[使用更新資源活動更新模型](data-factory-azure-ml-update-resource-activity.md)一文。
 
 ### <a name="reader-and-writer-modules"></a>讀取器和寫入器模組
-使用 Azure SQL 讀取器和寫入器，是常見的 Web 服務參數使用案例。 讀取器模組可用來將資料從 Azure Machine Learning Studio 外部的資料管理服務載入至實驗。 寫入器模組則用來將資料從實驗儲存至 Azure Machine Learning Studio 外部的資料管理服務。
+使用 Azure SQL 讀取器和寫入器，是常見的 Web 服務參數使用案例。 讀取器模組可用來將資料從 Azure Machine Learning Studio (傳統) 以外的資料管理服務載入至實驗。 寫入器模組是指將實驗中的資料儲存至 Azure Machine Learning Studio (傳統) 以外的資料管理服務。
 
 如需 Azure Blob/Azure SQL 讀取器/寫入器的詳細資料，請參閱 MSDN Library 上的[讀取器](https://msdn.microsoft.com/library/azure/dn905997.aspx)和[寫入器](https://msdn.microsoft.com/library/azure/dn905984.aspx)主題。 上一節中的範例已使用 Azure Blob 讀取器與 Azure Blob 寫入器。 本節討論如何使用 Azure SQL 讀取器和 Azure SQL 寫入器。
 
@@ -557,14 +557,14 @@ Azure Machine Learning Studio Web 服務的讀取器和寫入器模組可能已�
 
 **答：** 是。 如需詳細資料，請參閱 **使用讀取器模組讀取 Azure Blob 中多個檔案的資料** 一節。
 
-## <a name="azure-machine-learning-studio-batch-scoring-activity"></a>Azure Machine Learning Studio 批次評分活動
-如果您使用 **AzureMLBatchScoring** 活動來與 Azure Machine Learning 整合，建議您使用最新的 **AzureMLBatchExecution** 活動。
+## <a name="azure-machine-learning-studio-classic-batch-scoring-activity"></a>Azure Machine Learning Studio (傳統) 批次評分活動
+如果您使用 **>azuremlbatchscoring** 活動與 Azure Machine Learning Studio (傳統) 整合，建議您使用最新的 **AzureMLBatchExecution** 活動。
 
 2015 年 8 月發行的 Azure SDK 和 Azure PowerShell 中導入了 AzureMLBatchExecution 活動。
 
 如果您想要繼續使用 AzureMLBatchScoring 活動，請繼續閱讀本節。
 
-### <a name="azure-machine-learning-studio-batch-scoring-activity-using-azure-storage-for-inputoutput"></a>使用 Azure 儲存體進行輸入/輸出的 Azure Machine Learning Studio 批次評分活動
+### <a name="azure-machine-learning-studio-classic-batch-scoring-activity-using-azure-storage-for-inputoutput"></a>Azure Machine Learning Studio (傳統) 批次評分活動（使用 Azure 儲存體進行輸入/輸出）
 
 ```JSON
 {

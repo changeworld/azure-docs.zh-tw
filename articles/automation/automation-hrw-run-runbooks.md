@@ -3,14 +3,14 @@ title: 在混合式 Runbook 背景工作角色上執行 Azure 自動化 Runbook
 description: 本文說明如何使用混合式 Runbook 背景工作角色，在您的本機資料中心或其他雲端提供者的機器上執行 runbook。
 services: automation
 ms.subservice: process-automation
-ms.date: 09/22/2020
+ms.date: 10/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: ab3daedcb2222f8d639522d1afa6d4e9acbe1626
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 2f1c703f2bd2e90e15c566b7e04e8a878c16f6de
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91323340"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91772816"
 ---
 # <a name="run-runbooks-on-a-hybrid-runbook-worker"></a>在混合式 Runbook 背景工作上啟動 Runbook
 
@@ -24,7 +24,7 @@ Azure 自動化處理混合式 Runbook 背景工作角色上的作業，與在 A
 
 混合式 Runbook 背景工作角色的作業會在 Windows 上的本機 **系統** 帳戶或 Linux 上的 **>nxautomation** 帳戶下執行。 若為 Linux，請確認 **>nxautomation** 帳戶可以存取儲存 runbook 模組的位置。 您使用 [Install 模組](/powershell/module/powershellget/install-module) Cmdlet 時，請務必為 `Scope` 參數指定 AllUsers，以確保 **nxautomation** 帳戶具有存取權。 如需 Linux 上的 PowerShell 有關的詳細資訊，請參閱[非 Windows 平台上的 PowerShell 已知問題](/powershell/scripting/whats-new/known-issues-ps6#known-issues-for-powershell-on-non-windows-platforms)。
 
-## <a name="set-up-runbook-permissions"></a>設定 Runbook 權限
+## <a name="configure-runbook-permissions"></a>設定 runbook 許可權
 
 以下列方式定義 Runbook 在混合式 Runbook 背景工作角色上執行的權限：
 
@@ -32,7 +32,7 @@ Azure 自動化處理混合式 Runbook 背景工作角色上的作業，與在 A
 * 使用 [Azure 資源的受控識別驗證](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-arm.md#grant-your-vm-access-to-a-resource-group-in-resource-manager)設定驗證。
 * 指定執行身分帳戶以對所有 Runbook 提供使用者內容。
 
-## <a name="use-runbook-authentication-to-local-resources"></a>對本機資源使用 Runbook 驗證
+### <a name="use-runbook-authentication-to-local-resources"></a>對本機資源使用 Runbook 驗證
 
 如果準備可提供自己對資源驗證的 Runbook，請在 Runbook 中使用[認證](./shared-resources/credentials.md)和[憑證](./shared-resources/certificates.md)資產。 有數個 Cmdlet 可讓您指定認證，讓 Runbook 可以向不同的資源進行驗證。 下列範例顯示會重新啟動電腦的 Runbook 的一部分。 它會從認證資產擷取認證和從變數資產擷取電腦的名稱，然後使用這些值搭配 `Restart-Computer` Cmdlet。
 
@@ -45,7 +45,7 @@ Restart-Computer -ComputerName $Computer -Credential $Cred
 
 您也可以使用 [InlineScript](automation-powershell-workflow.md#use-inlinescript) 活動。 `InlineScript` 可讓您在具有認證的另一部電腦上執行程式碼區塊。
 
-## <a name="use-runbook-authentication-with-managed-identities"></a><a name="runbook-auth-managed-identities"></a>使用 Runbook 驗證搭配受控識別
+### <a name="use-runbook-authentication-with-managed-identities"></a><a name="runbook-auth-managed-identities"></a>使用 Runbook 驗證搭配受控識別
 
 在 Azure 虛擬機器上的混合式 Runbook 背景工作角色，可以使用受控識別向 Azure 資源進行驗證。 使用 Azure 資源的受控識別而非執行身分帳戶的好處是您不需要：
 
@@ -72,7 +72,7 @@ Restart-Computer -ComputerName $Computer -Credential $Cred
     > [!NOTE]
     > `Connect-AzAccount -Identity` 適用於混合式 Runbook 背景工作角色 (使用系統指派的身分識別和單一使用者指派的身分識別)。 如果您在混合式 Runbook 背景工作角色上使用多個使用者指派的身分識別，您的 Runbook 必須指定 `Connect-AzAccount` 的 `AccountId` 參數，才能選取特定使用者指派的身分識別。
 
-## <a name="use-runbook-authentication-with-run-as-account"></a>搭配執行身分帳戶使用 Runbook 驗證
+### <a name="use-runbook-authentication-with-run-as-account"></a>搭配執行身分帳戶使用 Runbook 驗證
 
 您不需要讓 Runbook 提供自己的驗證給本機資源，您可以針對混合式 Runbook 背景工作角色群組指定執行身分帳戶。 若要指定執行身分帳戶，您必須定義可存取本機資源的 [認證資產](./shared-resources/credentials.md) 。 這些資源包括憑證存放區，以及在群組中以混合式 Runbook 背景工作角色的這些認證執行的所有 Runbook。
 
@@ -182,7 +182,7 @@ Get-AzAutomationAccount | Select-Object AutomationAccountName
 
 ## <a name="work-with-signed-runbooks-on-a-windows-hybrid-runbook-worker"></a>在 Windows 混合式 Runbook 背景工作角色上使用已簽署的 Runbook
 
-您可以將 Windows 混合式 Runbook 背景工作角色設定為只執行已簽署的 Runbook。 
+您可以將 Windows 混合式 Runbook 背景工作角色設定為只執行已簽署的 Runbook。
 
 > [!IMPORTANT]
 > 一旦將混合式 Runbook 背景工作角色設定為只能執行已簽署的 Runbook，尚未經過簽署的 Runbook 將無法在背景工作角色上執行。
@@ -194,14 +194,13 @@ Get-AzAutomationAccount | Select-Object AutomationAccountName
 ```powershell
 # Create a self-signed certificate that can be used for code signing
 $SigningCert = New-SelfSignedCertificate -CertStoreLocation cert:\LocalMachine\my `
-                                        -Subject "CN=contoso.com" `
-                                        -KeyAlgorithm RSA `
-                                        -KeyLength 2048 `
-                                        -Provider "Microsoft Enhanced RSA and AES Cryptographic Provider" `
-                                        -KeyExportPolicy Exportable `
-                                        -KeyUsage DigitalSignature `
-                                        -Type CodeSigningCert
-
+    -Subject "CN=contoso.com" `
+    -KeyAlgorithm RSA `
+    -KeyLength 2048 `
+    -Provider "Microsoft Enhanced RSA and AES Cryptographic Provider" `
+    -KeyExportPolicy Exportable `
+    -KeyUsage DigitalSignature `
+    -Type CodeSigningCert
 
 # Export the certificate so that it can be imported to the hybrid workers
 Export-Certificate -Cert $SigningCert -FilePath .\hybridworkersigningcertificate.cer
@@ -247,6 +246,13 @@ Set-AuthenticodeSignature .\TestRunbook.ps1 -Certificate $SigningCert
 > [!IMPORTANT]
 > 一旦將混合式 Runbook 背景工作角色設定為只能執行已簽署的 Runbook，尚未經過簽署的 Runbook 將無法在背景工作角色上執行。
 
+您將執行下列步驟來完成此設定：
+
+* 建立 GPG Keyring 和金鑰組
+* 使 Keyring 可供混合式 Runbook 背景工作角色使用
+* 確認簽章驗證已開啟
+* 簽署 Runbook
+
 ### <a name="create-a-gpg-keyring-and-keypair"></a>建立 GPG Keyring 和金鑰組
 
 若要建立 GPG Keyring 和金鑰組，請使用混合式 Runbook 背景工作角色 [nxautomation 帳戶](automation-runbook-execution.md#log-analytics-agent-for-linux)。
@@ -271,10 +277,10 @@ Set-AuthenticodeSignature .\TestRunbook.ps1 -Certificate $SigningCert
 
 ### <a name="make-the-keyring-available-to-the-hybrid-runbook-worker"></a>使 Keyring 可供混合式 Runbook 背景工作角色使用
 
-建立 Keyring 之後，使它可供混合式 Runbook 背景工作角色使用。 修改設定檔 **/var/opt/microsoft/omsagent/state/automationworker/diy/worker.conf**，以將下列範例程式碼包含在檔案區段 `[worker-optional]` 底下。
+建立 Keyring 之後，使它可供混合式 Runbook 背景工作角色使用。 修改設定檔的 **home/>nxautomation/state/worker. 會議** ，以將下列範例程式碼包含在 file 區段下 `[worker-optional]` 。
 
 ```bash
-gpg_public_keyring_path = /var/opt/microsoft/omsagent/run/.gnupg/pubring.kbx
+gpg_public_keyring_path = /home/nxautomation/run/.gnupg/pubring.kbx
 ```
 
 ### <a name="verify-that-signature-validation-is-on"></a>確認簽章驗證已開啟

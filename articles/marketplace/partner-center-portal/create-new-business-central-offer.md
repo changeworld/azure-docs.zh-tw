@@ -7,12 +7,12 @@ ms.topic: how-to
 author: navits09
 ms.author: navits
 ms.date: 08/07/2020
-ms.openlocfilehash: e42111de7d05f184e1153ddc351c3f1fa10cc86f
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.openlocfilehash: bc34d2044c3a91fe18e900b21d589dde855754d3
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91665233"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91774573"
 ---
 # <a name="create-a-dynamics-365-business-central-offer"></a>建立 Dynamics 365 Business Central 供應項目
 
@@ -36,12 +36,13 @@ ms.locfileid: "91665233"
 輸入**供應項目識別碼**。 這是您帳戶中每個供應項目的唯一識別碼。
 
 - 客戶可以在市集供應項目和 Azure Resource Manager 範本 (如果適用) 的網址中看到此識別碼。
-- 請一律使用小寫字母和數字。 其可以包含連字號和底線，但不能有空格，且限制為 50 個字元。 例如，如果您輸入 **test-offer-1**，供應項目網址將為 `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`。
+- 與發行者識別碼結合的供應專案識別碼長度必須低於40個字元。
+- 請一律使用小寫字母和數字。 它可以包括連字號和底線，但不能包含空格。 例如，如果您的發行者識別碼是 testpublisherid，而您在此輸入了 **測試供應專案-1** ，則供應專案的網址將會是 `https://appsource.microsoft.com/product/dynamics-365/testpublisherid.test-offer-1` 。
 - 選取 [建立] 之後，即無法變更供應項目識別碼。
 
 輸入**供應項目別名**。 這是用於合作夥伴中心內供應項目的名稱。
 
-- 此名稱不會在市集中使用，且與向客戶顯示的供應項目名稱和其他值不同。
+- 此名稱不會在市集中使用，且不同於向客戶顯示的供應項目名稱及其他值。
 - 在您選取 [建立] 之後，就無法變更供應項目別名。
 
 選取 [建立] 以產生供應項目並繼續。
@@ -58,7 +59,7 @@ ms.locfileid: "91665233"
 
 免費向客戶列出您的供應專案。
 
-#### <a name="free-trial-listing"></a>免費試用 (清單)
+#### <a name="free-trial-listing"></a>免費試用版 (清單)
 
 使用免費試用的連結向客戶列出您的供應專案。 供應項目清單免費試用版是由您的服務所建立、管理及設定，且沒有由 Microsoft 管理的訂閱。
 
