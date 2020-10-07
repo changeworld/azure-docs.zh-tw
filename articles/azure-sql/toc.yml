@@ -497,12 +497,8 @@
               href: database/database-copy.md
             - name: 複寫至 SQL Database
               href: database/replication-to-sql-database.md
-            - name: SQL 資料同步
-              items:
-                - name: 複寫結構描述變更
-                  href: database/sql-data-sync-update-sync-schema.md
-                - name: 透過 OMS 進行監視
-                  href: database/sql-data-sync-monitor-sync.md
+            - name: 複寫結構描述變更 (資料同步)
+              href: database/sql-data-sync-update-sync-schema.md
         - name: 資料庫分區
           items:
             - name: 升級用戶端程式庫
@@ -1034,7 +1030,7 @@
                       href: virtual-machines/windows/availability-group-clusterless-workgroup-configure.md
                     - name: 手動設定
                       items:
-                        - name: Prerequisites
+                        - name: 必要條件
                           href: virtual-machines/windows/availability-group-manually-configure-prerequisites-tutorial.md
                         - name: 教學課程
                           href: virtual-machines/windows/availability-group-manually-configure-tutorial.md

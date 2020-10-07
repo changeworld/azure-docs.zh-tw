@@ -226,7 +226,7 @@
       items:
         - name: 擴大伺服器容量
           href: manage-scale-up.md
-        - name: 設定 PremiumV2 層
+        - name: 設定 PremiumV3 層
           href: app-service-configure-premium-tier.md
         - name: 擴增至多個執行個體
           href: ../azure-monitor/platform/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json

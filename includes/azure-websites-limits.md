@@ -4,14 +4,14 @@ ms.service: app-service
 ms.topic: include
 ms.date: 03/04/2020
 ms.author: jroth
-ms.openlocfilehash: 1811590dcf9077a503f89a900f661c52aa442c96
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 557e20dcafabb2db0bc66c9dfda4977aca50de50
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87425275"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91745458"
 ---
-| 資源 | 免費 | 共用 | 基本 | 標準 | 進階 (v2) | 隔離 </th> |
+| 資源 | 免費 | 共用 | 基本 | 標準 | 進階 (v3) | 隔離 </th> |
 | --- | --- | --- | --- | --- | --- | --- |
 | 每個 [Azure App Service 方案](../articles/app-service/overview-hosting-plans.md)<sup>1</sup>的 [Web、Mobile 或 API Apps](https://azure.microsoft.com/services/app-service/) |10 |100 |無限制<sup>2</sup> |無限制<sup>2</sup> |無限制<sup>2</sup> |無限制<sup>2</sup>|
 | [App Service 計劃](../articles/app-service/overview-hosting-plans.md) |每個區域 10 個 |每個資源群組 10 個 |每個資源群組 100 個 |每個資源群組 100 個 |每個資源群組 100 個 |每個資源群組 100 個|
@@ -52,7 +52,7 @@ ms.locfileid: "87425275"
 <sup>5</sup>儲存體限制是跨相同 App Service 方案中所有應用程式的目前總大小。 單一資源群組和區域中所有 App Service 方案上的所有應用程式內容大小總計不能超過 500GB。  
 <sup>6</sup>這些資源都會受到專用執行個體 (執行個體大小和執行個體數目) 上的實體資源限制。  
 <sup>7</sup>如果您將基本層的一個應用程式調整為兩個執行個體，則其中每個執行個體有 350 個並行連線。 針對標準層和其以上版本，Web 通訊端沒有理論上的限制，但其他因素可能會限制 Web 通訊端的數目。 例如，允許的並行要求數上限 (由 `maxConcurrentRequestsPerCpu`所定義) 是：每個小型 VM 7,500 個、每個中型 VM 15,000 個 (7,500 x 2 個核心) 和每個大型 VM 75,000 個 (18,750 x 4 個核心)。  
-<sup>8</sup>IP 連線數會以執行個體為基礎，並且取決於執行個體的大小：每個 B1/S1/P1V2 執行個體 1,920 個、每個 B2/S2/P2V2 執行個體3,968 個、每個 B3/S3/P3V2 執行個體 8,064 個。  
+<sup>8</sup>IP 連線數會以執行個體為基礎，並且取決於執行個體的大小：每個 B1/S1/P1V3 執行個體 1,920 個、每個 B2/S2/P2V3 執行個體3,968 個、每個 B3/S3/P3V3 執行個體 8,064 個。  
 <sup>9</sup>您可以透過支援要求將每個訂用帳戶的 App Service 憑證配額限制增加到最多 200 個。  
 <sup>10</sup>App Service 隔離式 SKU 能夠透過 Azure Load Balancer 在內部達成負載平衡 (ILB)，因此網際網路未提供公用連線。 因此，ILB 隔離式 App Service 的某些功能必須從具有 ILB 網路端點直接存取權的電腦才能使用。  
 <sup>11</sup>在您的 App Service 執行個體中，以背景工作的方式隨選、依照排程或連續執行自訂可執行檔和/或指令碼。 若要連續執行 WebJobs，「永遠開啟」是必要選項。 可在 App Service 執行個體中執行的 WebJobs 數目沒有預先定義的限制。 但根據應用程式程式碼嘗試執行的動作，會有一些實際限制。

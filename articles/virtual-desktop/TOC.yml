@@ -34,6 +34,8 @@
           href: connect-macos.md
         - name: 與 iOS 用戶端連線
           href: connect-ios.md
+        - name: 與 Microsoft Store 用戶端連線
+          href: connect-microsoft-store.md
     - name: 設定 PowerShell 模組
       href: powershell-module.md
     - name: 建立主機集區和工作階段主機

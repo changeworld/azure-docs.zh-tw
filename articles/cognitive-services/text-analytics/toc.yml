@@ -103,7 +103,7 @@
             - name: Python
               href: 'https://aka.ms/azsdk-python-textanalytics-ref-docs'
             - name: Java
-              href: 'https://aka.ms/azsdk-java-textanalytics-ref-docs'
+              href: 'https://docs.microsoft.com/java/api/overview/azure/ai-textanalytics-readme?view=azure-java-stable'
             - name: Node.js
               href: 'https://aka.ms/azsdk-js-textanalytics-ref-docs'
         - name: v2
@@ -130,7 +130,7 @@
       href: 'https://azure.microsoft.com/global-infrastructure/services/'
     - name: 法規遵循
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
-    - name: Stack Overflow
+    - name: 堆疊溢位
       href: 'https://stackoverflow.com/questions/tagged/text-analytics-api'
     - name: 試試看！
       href: 'https://azure.microsoft.com/services/cognitive-services/text-analytics/'

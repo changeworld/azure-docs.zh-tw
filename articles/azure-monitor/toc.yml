@@ -1326,6 +1326,8 @@
       href: samples/policy-reference.md
     - name: 功能與 API 淘汰
       items:
+        - name: OperationalInsights API
+          href: platform/operationalinsights-api-retirement.md
         - name: 傳統警示與計量
           href: ./platform/classic-api-retirement-metrics-autoscale.md
         - name: 傳統警示和監視
