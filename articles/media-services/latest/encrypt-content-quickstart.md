@@ -4,10 +4,10 @@ description: 本快速入門說明如何使用 Azure 入口網站中的 Azure �
 ms.topic: quickstart
 ms.date: 08/31/2020
 ms.openlocfilehash: e42b2d4487f2f51c082f22068160a02b3dcbb0a5
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89263632"
 ---
 # <a name="quickstart-use-portal-to-encrypt-content"></a>快速入門：使用入口網站加密內容

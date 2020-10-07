@@ -8,10 +8,10 @@ ms.date: 08/31/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 488e7c84e481edd1b136fe90ab948d3cfb51ed2c
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89230775"
 ---
 # <a name="quickstart-create-a-server---portal"></a>快速入門：建立伺服器 - 入口網站

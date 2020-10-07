@@ -17,10 +17,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 94f4d17596936dd9d0ebbdae3c351cac9ed2a570
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89299859"
 ---
 # <a name="quickstart-configure-named-locations-in-azure-active-directory"></a>快速入門：在 Azure Active Directory 中設定具名位置

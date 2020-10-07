@@ -4,10 +4,10 @@ description: 在本快速入門中，您會使用 REST API 來建立管理群組
 ms.date: 08/31/2020
 ms.topic: quickstart
 ms.openlocfilehash: b19fddf8215a1b133254c2a31bbea568a315f721
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89236892"
 ---
 # <a name="quickstart-create-a-management-group-with-rest-api"></a>快速入門：透過 REST API 建立管理群組

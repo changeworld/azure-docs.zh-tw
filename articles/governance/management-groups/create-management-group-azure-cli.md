@@ -5,10 +5,10 @@ ms.date: 08/31/2020
 ms.topic: quickstart
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: f07ae46c95f9ab9cc1ad973204ac5c50320fdf46
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89236890"
 ---
 # <a name="quickstart-create-a-management-group-with-the-azure-cli"></a>快速入門：使用 Azure CLI 建立管理群組
