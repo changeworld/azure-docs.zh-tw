@@ -141,7 +141,7 @@
           href: app/data-retention-privacy.md
     - name: 警示
       items:
-        - name: 概觀
+        - name: 總覽
           href: platform/alerts-overview.md
         - name: 度量警示
           href: platform/alerts-metric-overview.md
@@ -301,8 +301,6 @@
               href: platform/move-workspace.md
             - name: 服務提供者的設計
               href: platform/service-providers.md
-            - name: 管理存取權
-              href: platform/manage-access.md
             - name: 專用叢集
               href: log-query/logs-dedicated-clusters.md
     - name: 計量瀏覽器
@@ -370,7 +368,7 @@
           href: faq.md#agents
         - name: Azure 監視器代理程式
           items:
-            - name: 概觀
+            - name: 總覽
               displayname: Azure Monitor agent
               href: platform/azure-monitor-agent-overview.md
             - name: 資料集合
@@ -432,7 +430,7 @@
             - name: Linux
               displayname: diagnostics extension
               items:
-                - name: 概觀
+                - name: 總覽
                   href: ../virtual-machines/extensions/diagnostics-linux.md?toc=/azure/azure-monitor/toc.json
                 - name: 使用 Telegraf 收集計量
                   href: platform/collect-custom-metrics-linux-telegraf.md
@@ -673,7 +671,7 @@
               href: app/remove-application-insights.md
         - name: 無程式碼監視
           items:
-            - name: 概觀
+            - name: 總覽
               href: app/codeless-overview.md
             - name: Azure 虛擬機器和虛擬機器擴展集
               href: app/azure-vm-vmss-apps.md
@@ -751,8 +749,6 @@
             - name: 可用性警示
               displayname: 'alerts, global, alerting'
               href: app/availability-alerts.md
-            - name: 效能測試
-              href: app/performance-testing.md
             - name: 疑難排解
               displayname: 'availability, troubleshoot, troubleshoot availability'
               href: app/troubleshoot-availability.md
@@ -1075,7 +1071,7 @@
           href: insights/troubleshoot-workbooks.md
     - name: 方案
       items:
-        - name: 概觀
+        - name: 總覽
           href: insights/solutions.md
           displayName: 'Azure CLI, az monitor log-analytics'
         - name: 目標解決方案

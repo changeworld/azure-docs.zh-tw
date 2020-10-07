@@ -6,7 +6,7 @@
   items:
     - name: 購買模型
       items:
-        - name: 概觀
+        - name: 總覽
           href: database/purchasing-models.md
         - name: 虛擬核心模型概觀
           href: database/service-tiers-vcore.md
@@ -16,7 +16,7 @@
           href: database/reserved-capacity-overview.md
     - name: 計算和儲存體
       items:
-        - name: 概觀
+        - name: 總覽
           href: database/service-tiers-general-purpose-business-critical.md
           displayName: provisioned compute tier
         - name: 一般目的/標準
@@ -39,7 +39,7 @@
           href: database/read-scale-out.md
         - name: 安全性
           items:
-            - name: 概觀
+            - name: 總覽
               href: database/security-overview.md
               displayName: 'compliance, fedramp, soc, fact, fisc, hitrust, pci, iso'
             - name: 最佳作法
@@ -195,7 +195,7 @@
               href: ../data-factory/connector-azure-sql-database.md?toc=/azure/azure-sql/toc.json
         - name: 開發資料應用程式
           items:
-            - name: 概觀
+            - name: 總覽
               href: database/develop-overview.md
             - name: 使用 JSON 資料
               href: database/json-features.md
@@ -916,7 +916,7 @@
       href: virtual-machines/index.yml
     - name: Windows
       items:
-        - name: 概觀
+        - name: 總覽
           items:
             - name: 什麼是 SQL Server 虛擬機器？
               href: virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md
@@ -992,6 +992,8 @@
                 - name: 使用 SQL VM RP 進行註冊
                   displayName: 'resource provider, registration'
                   items:
+                    - name: 自動註冊
+                      href: virtual-machines/windows/sql-vm-resource-provider-automatic-registration.md
                     - name: 單一 VM
                       href: virtual-machines/windows/sql-vm-resource-provider-register.md
                     - name: 大量註冊多個 VM
