@@ -1,14 +1,16 @@
 ---
 title: 快速入門：在 QnA Maker 入口網站中新增問題和答案
 description: 本快速入門說明如何利用中繼資料新增成對的問與答，讓使用者可以找到其問題的正確答案。
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 05/26/2020
-ms.openlocfilehash: a832d9f421d3a1851401c286f129e29d0196ec99
-ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
+ms.openlocfilehash: 930acbd3bbdb8f63b6aa888b292025a76435b289
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84331384"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776743"
 ---
 # <a name="quickstart-add-questions-and-answer-with-qna-maker-portal"></a>快速入門：使用 QnA Maker 入口網站新增問題和答案
 

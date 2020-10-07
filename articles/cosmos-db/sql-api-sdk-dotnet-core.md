@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 7592bc9badd1f27f0d24feffe916242981492209
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: cf27fc44d34fad10a215526f03878e34675b3a16
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88998368"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91802645"
 ---
 # <a name="azure-cosmos-db-net-core-sdk-v2-for-sql-api-release-notes-and-resources"></a>適用于 SQL API 的 Azure Cosmos DB .NET Core SDK v2：版本資訊和資源
 > [!div class="op_single_selector"]
@@ -27,7 +27,7 @@ ms.locfileid: "88998368"
 > * [非同步 Java SDK v2](sql-api-sdk-async-java.md)
 > * [同步 Java SDK v2](sql-api-sdk-java.md)
 > * [春季資料 v2](sql-api-sdk-java-spring-v2.md)
-> * [春季資料 v3](sql-api-sdk-java-spring-v3.md)
+> * [Spring Data v3](sql-api-sdk-java-spring-v3.md)
 > * [Spark 連接器](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST] (/rest/api
@@ -39,7 +39,7 @@ ms.locfileid: "88998368"
 | |  |
 |---|---|
 |**SDK 下載**| [NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/)|
-|**API 文件**|[.NET API 參考文件](/dotnet/api/overview/azure/cosmosdb?view=azure-dotnet)|
+|**API 文件**|[.NET API 參考文件](/dotnet/api/overview/azure/cosmosdb?view=azure-dotnet&preserve-view=true)|
 |**範例**|[.NET 程式碼範例](sql-api-dotnet-samples.md)|
 |**開始使用**|[開始使用 Azure Cosmos DB .NET](sql-api-sdk-dotnet.md)|
 |**Web 應用程式教學課程**|[使用 Azure Cosmos DB 進行 Web 應用程式開發](sql-api-dotnet-application.md)|

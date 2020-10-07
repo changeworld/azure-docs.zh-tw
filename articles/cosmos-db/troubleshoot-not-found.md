@@ -7,12 +7,12 @@ ms.date: 07/13/2020
 ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 1d778b4330389d23b0fe7179a005abfbd7d66d5c
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: f32a37d5d08e8b20e59455393c70e4e4d288eb11
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88871100"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91802391"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-not-found-exceptions"></a>針對找不到 Azure Cosmos DB 找不到例外狀況進行診斷和疑難排解
 HTTP 狀態碼 404 表示資源已不存在。
@@ -37,7 +37,7 @@ HTTP 狀態碼 404 表示資源已不存在。
 修正導致不正確組合的應用程式邏輯。 
 
 ### <a name="invalid-character-in-an-item-id"></a>專案識別碼中有不正確字元
-專案會插入 Azure Cosmos DB 中，並在專案識別碼中包含 [不正確字元](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.resource.id?view=azure-dotnet#remarks) 。
+專案會插入 Azure Cosmos DB 中，並在專案識別碼中包含 [不正確字元](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.resource.id?view=azure-dotnet&preserve-view=true#remarks) 。
 
 #### <a name="solution"></a>解決方案：
 將識別碼變更為不包含特殊字元的其他值。 如果無法變更識別碼，您可以使用 Base64 編碼此識別碼以將特殊字元換用。
@@ -52,7 +52,7 @@ string containerRid = selfLinkSegments[3];
 Container containerByRid = this.cosmosClient.GetContainer(databaseRid, containerRid);
 
 // Invalid characters are listed here.
-//https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.resource.id?view=azure-dotnet#remarks
+//https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.resource.id?view=azure-dotnet&preserve-view=true#remarks
 FeedIterator<JObject> invalidItemsIterator = this.Container.GetItemQueryIterator<JObject>(
     @"select * from t where CONTAINS(t.id, ""/"") or CONTAINS(t.id, ""#"") or CONTAINS(t.id, ""?"") or CONTAINS(t.id, ""\\"") ");
 while (invalidItemsIterator.HasMoreResults)
@@ -96,6 +96,12 @@ while (invalidItemsIterator.HasMoreResults)
 #### <a name="solution"></a>解決方案：
 1. [還原](https://docs.microsoft.com/azure/cosmos-db/online-backup-and-restore#backup-retention-period) 父資源，或重新建立資源。
 1. 建立新的資源以取代已刪除的資源。
+
+### <a name="7-containercollection-names-are-case-sensitive"></a>7. 容器/集合名稱區分大小寫
+容器/集合名稱是 Cosmos DB 中的大小寫 sesnsitive。
+
+#### <a name="solution"></a>解決方案：
+連接到 Cosmos DB 時，請務必使用確切的名稱。
 
 ## <a name="next-steps"></a>後續步驟
 * 當您使用 Azure Cosmos DB .NET SDK 時[，診斷和疑難排解](troubleshoot-dot-net-sdk.md)問題。

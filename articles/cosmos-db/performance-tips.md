@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 06/26/2020
 ms.author: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: bdf512c66958338992c5959f8e00b4589850ff33
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: efedfb9701d12548b80eccda9cd2aa29bc644ac2
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89008364"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91802135"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net-sdk-v2"></a>Azure Cosmos DB 和 .NET SDK v2 的效能秘訣
 
@@ -42,7 +42,7 @@ Azure Cosmos DB 是一個既快速又彈性的分散式資料庫，可在獲得�
 
 我們建議 Windows 64 位主機處理，以改善效能。 SQL SDK 包含原生 ServiceInterop.dll，可在本機剖析和最佳化查詢。 ServiceInterop.dll 只能在 Windows x64 平台上受到支援。 若為 Linux 和其他不支援 ServiceInterop.dll 的平臺，則會對閘道進行額外的網路呼叫，以取得優化的查詢。 下列類型的應用程式預設會使用32位主機處理。 若要將主機處理變更為64位處理，請根據應用程式的類型，遵循下列步驟：
 
-- 針對可執行檔應用程式，您可以在 [**專案屬性**] 視窗的 [**組建**] 索引標籤中，將 [[平臺目標](https://docs.microsoft.com/visualstudio/ide/how-to-configure-projects-to-target-platforms?view=vs-2019)] 設定為 [ **x64** ] 來變更主機處理
+- 針對可執行檔應用程式，您可以在 [**專案屬性**] 視窗的 [**組建**] 索引標籤中，將 [[平臺目標](https://docs.microsoft.com/visualstudio/ide/how-to-configure-projects-to-target-platforms?view=vs-2019&preserve-view=true)] 設定為 [ **x64** ] 來變更主機處理
 
 - 針對以 VSTest 為基礎的測試專案，您可以在**Test**  >  [Visual Studio 測試] 功能表上選取 [測試**測試設定**  >  **預設處理器架構為 X64** **Test** ] 來變更主處理。
 
@@ -203,7 +203,7 @@ readDocument.RequestDiagnosticsString
 > [!NOTE] 
 > `maxItemCount`屬性不應只用于分頁。 其主要用途是減少在單一頁面中傳回的最大專案數，藉以改善查詢的效能。  
 
-您也可以使用可用的 Azure Cosmos DB Sdk 來設定頁面大小。 中的 [MaxItemCount](/dotnet/api/microsoft.azure.documents.client.feedoptions.maxitemcount?view=azure-dotnet) 屬性可 `FeedOptions` 讓您設定列舉作業中要傳回的專案數目上限。 當 `maxItemCount` 設定為-1 時，SDK 會自動尋找最佳值，視檔案大小而定。 例如：
+您也可以使用可用的 Azure Cosmos DB Sdk 來設定頁面大小。 中的 [MaxItemCount](/dotnet/api/microsoft.azure.documents.client.feedoptions.maxitemcount?view=azure-dotnet&preserve-view=true) 屬性可 `FeedOptions` 讓您設定列舉作業中要傳回的專案數目上限。 當 `maxItemCount` 設定為-1 時，SDK 會自動尋找最佳值，視檔案大小而定。 例如：
     
 ```csharp
 IQueryable<dynamic> authorResults = client.CreateDocumentQuery(documentCollection.SelfLink, "SELECT p.Author FROM Pages p WHERE p.Title = 'About Seattle'", new FeedOptions { MaxItemCount = 1000 });

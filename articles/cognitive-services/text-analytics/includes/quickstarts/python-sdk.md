@@ -1,15 +1,16 @@
 ---
 author: aahill
 ms.service: cognitive-services
+ms.subservice: text-analytics
 ms.topic: include
 ms.date: 09/21/2020
 ms.author: aahi
-ms.openlocfilehash: 3fa9683b63f94f740c19d45865dab9b6d5a08d3f
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 9a7846d1a63ee0b3042bbea473babffbe52f06a6
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91401043"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91779449"
 ---
 <a name="HOLTop"></a>
 
@@ -27,7 +28,7 @@ ms.locfileid: "91401043"
 
 ---
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/cognitive-services)
 * [Python 3.x](https://www.python.org/)

@@ -1,16 +1,18 @@
 ---
 title: 快速入門：使用 cURL 和 REST 來管理知識庫 - QnA Maker
 description: 本快速入門說明如何使用 REST API 來建立、發佈和查詢知識庫。
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.date: 04/13/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
 ms.topic: quickstart
-ms.openlocfilehash: facc45ab8f916181f7eeceb65c5102a60ae7d7e9
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 11a7bd8655d1b5606c3b53ed78e796bc42f85b2e
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81261698"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777431"
 ---
 # <a name="quickstart-use-curl-and-rest-to-manage-knowledge-base"></a>快速入門：使用 cURL 和 REST 來管理知識庫
 

@@ -6,18 +6,18 @@ ms.topic: how-to
 author: kanshiG
 ms.author: govindk
 ms.date: 06/25/2020
-ms.openlocfilehash: e7005a3786bb2d538450b076c113e159c766d72e
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 183b161039b86ce824fd0bfde82cf291d54024fc
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88642073"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91801472"
 ---
 # <a name="how-to-monitor-normalized-rus-for-an-azure-cosmos-container-or-an-account"></a>如何監視 Azure Cosmos 容器或帳戶的正規化 RU/秒
 
 Azure Cosmos DB 的 Azure 監視器會提供計量視圖，以監視您的帳戶和建立儀表板。 預設會收集 Azure Cosmos DB 計量，這項功能不會要求您明確啟用或設定任何設定。
 
-**正規化的 RU 耗用量**計量是用來查看分割區索引鍵範圍對於流量的飽和程度。 Azure Cosmos DB 會在所有分割區索引鍵範圍內平均分配輸送量。 此計量會提供資料分割索引鍵範圍的最大輸送量使用率的每秒查看量。 使用此計量來計算指定容器之分割區索引鍵範圍內的 RU/秒使用量。 藉由使用此計量，如果您在 Azure 監視器中看到所有分割區索引鍵範圍的要求單位使用率百分比很高，您應該增加輸送量以符合工作負載的需求。 
+**正規化的 RU 耗用量**計量是用來查看分割區索引鍵範圍對於流量的飽和程度。 Azure Cosmos DB 會在所有分割區索引鍵範圍內平均分配輸送量。 此計量會提供資料分割索引鍵範圍的最大輸送量使用率的每秒查看量。 使用此計量來計算指定容器之分割區索引鍵範圍內的 RU/秒使用量。 藉由使用此計量，如果您在 Azure 監視器中看到所有分割區索引鍵範圍的要求單位使用率百分比很高，您應該增加輸送量以符合工作負載的需求。 範例-標準化使用率會定義為所有資料分割索引鍵範圍的 RU/秒使用率上限。 例如，假設您的最大輸送量為 20000 RU/秒，而您有兩個分割區索引鍵範圍，P_1 和 P_2，每個都可以調整為 10000 RU/秒。 在指定的秒數內，如果 P_1 已使用 6000 RU，P_2 已使用 8000 RU，則標準化使用率為 MAX(6000 RU / 10,000 RU，8000 RU / 10,000 RU) = 0.8。
 
 ## <a name="what-to-expect-and-do-when-normalized-rus-is-higher"></a>當正規化的 RU/秒較高時的預期和效果
 
@@ -43,13 +43,13 @@ Azure 監視器計量可協助您使用「 **要求總數** 」度量來尋找 S
 
 3. 從 [計量] 窗格 > **選取資源** > 選擇必要的**訂用帳戶**和**資源群組**。 在 [資源類型] 中，選取 [Azure Cosmos DB 帳戶]，然後選擇其中一個現有的 Azure Cosmos 帳戶並選取 [套用]。
 
-   :::image type="content" source="./media/monitor-normalized-request-units/select-cosmos-db-account.png" alt-text="選擇 Azure Cosmos 帳戶以查看計量":::
+   :::image type="content" source="./media/monitor-normalized-request-units/select-cosmos-db-account.png" alt-text="Azure 監視器中的 [計量] 窗格":::
 
 4. 接下來，您可以從可用的計量清單中選取計量。 您可以選取 [要求單位]、[儲存體]、[延遲]、[可用性]、[Cassandra] 等等的專屬計量。 若要深入了解此清單中所有可用的計量，請參閱[依類別區分的計量](monitor-cosmos-db-reference.md)一文。 在此範例中，讓我們選取 **正規化的 RU 耗用量** 計量和 **最大** 值作為匯總值。
 
    除了這些詳細資料之外，您也可以選取計量的 [時間範圍] 和 [時間細微性]。 在 [最大值] 中，您可以檢視過去 30 天的計量。  套用篩選之後，圖表就會根據您的篩選條件來顯示。
 
-   :::image type="content" source="./media/monitor-normalized-request-units/normalized-request-unit-usage-metric.png" alt-text="從 Azure 入口網站選擇計量":::
+   :::image type="content" source="./media/monitor-normalized-request-units/normalized-request-unit-usage-metric.png" alt-text="Azure 監視器中的 [計量] 窗格":::
 
 ### <a name="filters-for-normalized-request-unit-consumption"></a>標準化要求單位耗用量的篩選
 
@@ -59,7 +59,7 @@ Azure 監視器計量可協助您使用「 **要求總數** 」度量來尋找 S
 
 每個容器的標準化要求單位耗用量度量會顯示如下圖所示：
 
-:::image type="content" source="./media/monitor-normalized-request-units/normalized-request-unit-usage-filters.png" alt-text="將篩選套用至標準化的要求單位耗用量度量":::
+:::image type="content" source="./media/monitor-normalized-request-units/normalized-request-unit-usage-filters.png" alt-text="Azure 監視器中的 [計量] 窗格":::
 
 ## <a name="next-steps"></a>後續步驟
 

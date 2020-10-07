@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/20/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 69ea1964449143a25f447375f2aae15d9feeff10
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 5fdce791ba8848b93a8457f3738392b1f5f15508
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88235718"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91801795"
 ---
 # <a name="how-provisioning-works"></a>佈建運作方式
 
@@ -169,22 +169,42 @@ Azure AD 連線至應用程式的使用者管理 API 時所需的認證。 在�
 使用者佈建服務所執行的所有作業，都會記錄在 Azure AD [佈建記錄 (預覽)](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) 中。 這些記錄包含對來源和目標系統所做的所有讀取和寫入作業，以及在每次作業期間讀取或寫入的使用者資料。 如需如何在 Azure 入口網站中讀取佈建記錄的相關資訊，請參閱[佈建報告指南](./check-status-user-account-provisioning.md)。
 
 ## <a name="de-provisioning"></a>取消佈建
+Azure AD 布建服務會在移除使用者存取權時，透過解除布建帳戶讓來源和目標系統保持同步。
 
-當使用者不應再有存取權時，Azure AD 佈建服務會藉由取消佈建帳戶，將來源和目標系統保持同步。 
+布建服務支援刪除和停用 (有時也稱為虛刪除) 使用者。 [停用] 和 [刪除] 的確切定義會根據目標應用程式的執行而有所不同，但通常是 [停用] 表示使用者無法登入。 刪除表示使用者已完全從應用程式移除。 針對 SCIM 應用程式，停用是在使用者上將 *使用中屬性設* 為 false 的要求。 
 
-Azure AD 布建服務會在應用程式支援虛刪除時，虛刪除應用程式中的使用者， (update 要求使用 active = false) 併發生下列任何事件：
+**設定您的應用程式以停用使用者**
 
-* 在中 Azure AD 刪除使用者帳戶
-*   從應用程式取消指派使用者
-*   使用者不再符合範圍篩選器，因而超出範圍
-    * 根據預設，Azure AD 佈建服務會虛刪除或停用超出範圍的使用者。 如果您想要覆寫此預設行為，您可以設定旗標以[略過超出範圍的刪除](../app-provisioning/skip-out-of-scope-deletions.md)。
-*   AccountEnabled 屬性設定為 False
+確定您已選取 [更新] 核取方塊。
 
-如果發生上述四個事件之一，而目標應用程式不支援虛刪除，則佈建服務會傳送 DELETE 要求，以從應用程式中永久刪除使用者。 
+確定您的應用程式有作用 *中的對應* 。 如果您是使用應用程式資源庫中的應用程式，則對應可能會稍有不同。 請確定您使用的是資源庫應用程式的預設/外框對應。
 
-在 Azure AD 中刪除使用者的 30 天後，就會從租用戶中永久刪除使用者。 此時，佈建服務會傳送 DELETE 要求，以永久刪除應用程式中的使用者。 在 30 天的時間範圍內，您可以[手動永久刪除使用者](../fundamentals/active-directory-users-restore.md)，此動作會將刪除要求傳送至應用程式。
 
-如果您在屬性對應中看到 IsSoftDeleted 屬性，此屬性將用來決定使用者的狀態，以及是否要傳送 active = false 的更新要求以虛刪除使用者。 
+**設定您的應用程式以刪除使用者**
+
+下列案例將會觸發停用或刪除： 
+* 在 Azure AD 中，使用者會被虛刪除， (傳送至 [回收站]/[AccountEnabled] 屬性設定為 [false]) 。
+    在 Azure AD 中刪除使用者的 30 天後，就會從租用戶中永久刪除使用者。 此時，佈建服務會傳送 DELETE 要求，以永久刪除應用程式中的使用者。 在30天的時間範圍內，您可以在30天內 [手動刪除使用者](../fundamentals/active-directory-users-restore.md)，這會將刪除要求傳送到應用程式。
+* 使用者會在 Azure AD 中永久刪除/刪除回收站。
+* 從應用程式解除指派使用者。
+* 使用者從範圍移至超出範圍 (不會再傳遞範圍篩選器) 。
+    
+根據預設，Azure AD 佈建服務會虛刪除或停用超出範圍的使用者。 如果您想要覆寫此預設行為，您可以設定旗標來 [略過超出範圍的刪除。](skip-out-of-scope-deletions.md)
+
+如果發生上述四個事件之一，而目標應用程式不支援虛刪除，則佈建服務會傳送 DELETE 要求，以從應用程式中永久刪除使用者。
+
+如果您在屬性對應中看到 IsSoftDeleted 屬性，此屬性將用來決定使用者的狀態，以及是否要傳送 active = false 的更新要求以虛刪除使用者。
+
+**已知限制**
+
+* 如果先前由布建服務管理的使用者未指派給應用程式或指派給應用程式的群組，則會傳送停用要求。 屆時，使用者不是由服務所管理，而且我們不會在從目錄中刪除時傳送刪除要求。
+* 不支援布建在 Azure AD 中停用的使用者。 在布建之前，它們必須在 Azure AD 中處於作用中狀態。
+* 當使用者從虛刪除變成作用中時，Azure AD 布建服務會在目標應用程式中啟動使用者，但不會自動還原群組成員資格。 目標應用程式應維持處於非使用中狀態之使用者的群組成員資格。 如果目標應用程式不支援此功能，您可以重新開機布建以更新群組成員資格。 
+
+**建議**
+
+開發應用程式時，一律支援虛刪除和實刪除。 它可讓客戶在意外停用使用者時復原。
+
 
 ## <a name="next-steps"></a>後續步驟
 

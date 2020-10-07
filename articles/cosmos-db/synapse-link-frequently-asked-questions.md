@@ -6,12 +6,12 @@ ms.author: rosouz
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/09/2020
-ms.openlocfilehash: 34bc8e3775c2334b0cdbb22c8cad8f8d1dd5c732
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: 9eb1f9162f0546e08f59391af1042becad25cf3b
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91568611"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803988"
 ---
 # <a name="frequently-asked-questions-about-azure-synapse-link-for-azure-cosmos-db"></a>關於適用於 Azure Cosmos DB 的 Azure Synapse Link 常見問題
 
@@ -19,29 +19,29 @@ ms.locfileid: "91568611"
 
 ## <a name="general-faq"></a>一般常見問題
 
-### <a name="is-synapse-link-supported-for-all-azure-cosmos-db-apis"></a>所有 Azure Cosmos DB API 都支援 Synapse Link 嗎？
+### <a name="is-azure-synapse-link-supported-for-all-azure-cosmos-db-apis"></a>是否支援所有 Azure Cosmos DB Api 的 Azure Synapse Link？
 
-在公開預覽版本中，Azure Cosmos DB SQL (Core) API 和適用于 MongoDB 的 Azure Cosmos DB API 都支援 Synapse 連結。 
+在公開預覽版本中，Azure Cosmos DB SQL (Core) API 和適用于 MongoDB 的 Azure Cosmos DB API 都支援 Azure Synapse 連結。 
 
-### <a name="is-synapse-link-supported-for-multi-region-azure-cosmos-accounts"></a>多區域 Azure Cosmos 帳戶是否支援 Synapse Link？
+### <a name="is-azure-synapse-link-supported-for-multi-region-azure-cosmos-db-accounts"></a>是否支援多區域 Azure Cosmos DB 帳戶的 Azure Synapse Link？
 
 是，在多區域 Azure Cosmos 帳戶中，儲存在分析存放區中的資料也會全域散發。 不論是單一寫入區域或多個寫入區域，從 Azure Synapse Analytics 執行的分析查詢都可以從最接近的本地區域提供服務。
 
-規劃設定具有分析存放區支援的多區域 Azure Cosmos 帳戶時，建議您在建立帳戶時新增所有必要的區域。
+當您規劃設定多區域 Azure Cosmos DB 具有分析存放區支援的帳戶時，建議您在建立帳戶時新增所有必要的區域。
 
-### <a name="can-i-choose-to-enable-synapse-link-for-only-certain-region-and-not-all-regions-in-a-multi-region-account-set-up"></a>我可以在多區域帳戶的設定中只為特定區域啟用 Synapse Link，而不要所有區域都啟用嗎？
+### <a name="can-i-choose-to-enable-azure-synapse-link-for-only-certain-region-and-not-all-regions-in-a-multi-region-account-set-up"></a>我可以選擇只針對特定區域啟用 Azure Synapse 連結，而不是在設定多區域帳戶中的所有區域嗎？
 
-在預覽版本中，為多區域帳戶啟用 Synapse Link 時，會在所有區域中建立分析存放區。 基礎資料已針對交易存放區中的輸送量和交易一致性進行最佳化。
+在預覽版本中，針對多區域帳戶啟用 Azure Synapse 連結時，會在所有區域中建立分析存放區。 基礎資料已針對交易存放區中的輸送量和交易一致性進行最佳化。
 
-### <a name="is-backup-and-restore-supported-for-synapse-link-enabled-accounts"></a>Synapse 連結啟用的帳戶是否支援備份和還原？
+### <a name="is-backup-and-restore-supported-for-azure-synapse-link-enabled-accounts"></a>Azure Synapse Link 啟用的帳戶是否支援備份和還原？
 
-在預覽中，針對已啟用 Synapse 連結的資料庫帳戶，不支援備份和還原容器。 如果您的生產工作負載需要備份和還原功能，建議您不要在這些資料庫帳戶上啟用 Synapse 連結。 
+在預覽中，針對已啟用 Azure Synapse 連結的資料庫帳戶，不支援備份和還原容器。 如果您的生產工作負載需要備份和還原功能，建議您不要在這些資料庫帳戶上啟用 Synapse 連結。 
 
-### <a name="can-i-disable-the-synapse-link-feature-for-my-azure-cosmos-account"></a>我可以替我的 Azure Cosmos 帳戶停用 Synapse Link 功能嗎？
+### <a name="can-i-disable-the-azure-synapse-link-feature-for-my-azure-cosmos-db-account"></a>我可以停用 Azure Cosmos DB 帳戶的 Azure Synapse Link 功能嗎？
 
-目前，在帳戶層級啟用 Synapse Link 功能之後，您就無法將其停用。  如果您想要關閉此功能，必須刪除並重新建立新的 Azure Cosmos 帳戶。
+目前，在帳戶層級啟用 Synapse Link 功能之後，您就無法將其停用。 請了解，如果已在帳戶層級啟用 Synapse Link 功能，且分析存放區沒有啟用容器，您就不會有任何隱含計費。 
 
-請瞭解，如果已在帳戶層級啟用 Synapse Link 功能，但分析存放區沒有啟用容器，您就「不會」有任何隱含計費。
+如果您需要關閉此功能，您有2個選項。 第一個是刪除並重新建立新的 Azure Cosmos DB 帳戶，視需要將資料移轉。 第二個選項是開啟支援票證，以取得將資料移轉至其他帳戶的協助。
 
 ## <a name="azure-cosmos-db-analytical-store"></a>Azure Cosmos DB 分析存放區
 
@@ -49,11 +49,11 @@ ms.locfileid: "91568611"
 
 目前，只能為 (新的和現有的帳戶中) 新的容器啟用分析存放區。
 
-### <a name="can-i-disable-analytical-store-on-my-azure-cosmos-containers-after-enabling-it-during-container-creation"></a>在建立我的 Azure Cosmos 容器時，我可以在容器上啟用分析存放區之後將其停用嗎？
+### <a name="can-i-disable-analytical-store-on-my-azure-cosmos-db-containers-after-enabling-it-during-container-creation"></a>在建立容器期間啟用分析存放區之後，我是否可以停用其 Azure Cosmos DB 容器上的分析存放區？
 
-目前，在 Azure Cosmos 容器的建立期間啟用分析存放區後，便無法在容器上停用。
+目前，在 Azure Cosmos DB 容器的建立期間啟用分析存放區後，便無法在容器上停用。
 
-### <a name="is-analytical-store-supported-for-azure-cosmos-containers-with-autoscale-provisioned-throughput"></a>具有自動調整佈建輸送量功能的 Azure Cosmos 容器支援分析存放區嗎？
+### <a name="is-analytical-store-supported-for-azure-cosmos-db-containers-with-autoscale-provisioned-throughput"></a>支援自動調整布建輸送量的 Azure Cosmos DB 容器是否支援分析存放區？
 
 是，您可以在具有自動調整佈建輸送量功能的容器上啟用分析存放區。
 
@@ -78,7 +78,7 @@ Azure Cosmos DB 保證會將交易和分析的工作負載效能隔離。 在容
 
 ### <a name="can-i-write-back-the-query-aggregation-results-from-synapse-back-to-the-analytical-store"></a>我可以將 Synapse 的查詢彙總結果寫回分析存放區嗎？
 
-分析存放區是 Azure Cosmos 容器中的唯讀存放區。 因此，您無法將彙總結果直接回寫分析存放區，但可以將其寫入另一個容器的 Azure Cosmos DB 交易存放區，之後就可以加以利用做為服務層。
+分析存放區是 Azure Cosmos DB 容器中的唯讀存放區。 因此，您無法將彙總結果直接回寫分析存放區，但可以將其寫入另一個容器的 Azure Cosmos DB 交易存放區，之後就可以加以利用做為服務層。
 
 ### <a name="is-the-autosync-replication-from-transactional-store-to-the-analytical-store-asynchronous-or-synchronous-and-what-are-the-latencies"></a>從交易存放區到分析存放區的自動同步複寫是非同步或同步，其延遲為何？
 
@@ -112,7 +112,7 @@ Azure Cosmos DB 保證會將交易和分析的工作負載效能隔離。 在容
 
 ## <a name="billing"></a>計費
 
-### <a name="what-is-the-billing-model-of-synapse-link-for-azure-cosmos-db"></a>適用於 Azure Cosmos DB 的 Azure Synapse Link 計費模型為何？
+### <a name="what-is-the-billing-model-of-azure-synapse-link-for-azure-cosmos-db"></a>適用于 Azure Cosmos DB 的 Azure Synapse 連結的計費模型為何？
 
 [Azure Cosmos DB 分析存放區](analytical-store-introduction.md)會在公開預覽中提供，直到 2020 年 8 月 30 日為止，分析存放區不會有任何費用。 Synapse Spark 和 Synapse SQL 會透過 [Synapse 服務耗用量](https://azure.microsoft.com/pricing/details/synapse-analytics/)計費。
 
@@ -120,19 +120,19 @@ Azure Cosmos DB 保證會將交易和分析的工作負載效能隔離。 在容
 
 ### <a name="what-are-the-ways-to-authenticate-with-the-analytical-store"></a>有哪些方式能向分析存放區驗證？
 
-分析存放區的驗證與交易存放區相同。 針對指定的資料庫，您可以使用主要或唯讀金鑰進行驗證。 您可以利用 Synapse Studio 中的連結服務，避免將 Azure Cosmos DB 金鑰貼入 Spark 筆記本中。 具有工作區存取權的每個人都可以存取此連結服務。
+分析存放區的驗證與交易存放區相同。 針對指定的資料庫，您可以使用主要或唯讀金鑰進行驗證。 您可以利用 Azure Synapse Studio 中的連結服務，避免將 Azure Cosmos DB 金鑰貼入 Spark 筆記本。 具有工作區存取權的每個人都可以存取此連結服務。
 
 ## <a name="synapse-run-times"></a>Synapse 執行階段
 
 ### <a name="what-are-the-currently-supported-synapse-run-times-to-access-azure-cosmos-db-analytical-store"></a>目前支援使用哪些 Synapse 執行階段來存取 Azure Cosmos DB 分析存放區？
 
-|Synapse 執行階段 |目前的支援 |
+|Azure Synapse 執行時間 |目前的支援 |
 |---------|---------|
-|Synapse Spark 集區 | 讀取、寫入 (透過交易存放區)、資料表、暫存檢視 |
-|Synapse SQL 無伺服器    | 讀取、觀看 |
-|已佈建的 Synapse SQL   |  無法使用 |
+|Azure Synapse Spark 集區 | 讀取、寫入 (透過交易存放區)、資料表、暫存檢視 |
+|Azure Synapse SQL 無伺服器集區    | 讀取、觀看 |
+|已布建 Azure Synapse SQL   |  尚未提供 |
 
-### <a name="do-my-synapse-spark-tables-sync-with-my-synapse-sql-serverless-tables-the-same-way-they-do-with-azure-data-lake"></a>我的 Synapse Spark 資料表與我的 Synapse SQL 無伺服器資料表進行同步處理時，與 Azure Data Lake 的方式相同？
+### <a name="do-my-azure-synapse-spark-tables-sync-with-my-azure-synapse-sql-serverless-tables-the-same-way-they-do-with-azure-data-lake"></a>我的 Azure Synapse Spark 資料表與我的 Azure Synapse SQL 無伺服器資料表進行同步處理時，與 Azure Data Lake 的方式相同？
 
 目前沒有此功能。
 
@@ -140,9 +140,9 @@ Azure Cosmos DB 保證會將交易和分析的工作負載效能隔離。 在容
 
 目前，是使用交易存放區的變更摘要功能來執行 Azure Cosmos DB 的 Spark 結構化串流支援，而分析存放區尚未支援此功能。
 
-## <a name="synapse-studio"></a>Synapse Studio
+## <a name="azure-synapse-studio"></a>Azure Synapse Studio
 
-### <a name="in-the-synapse-studio-how-do-i-recognize-if-im-connected-to-an-azure-cosmos-db-container-with-the-analytics-store-enabled"></a>在 Synapse Studio 中，我要如何辨識是否已連線到已啟用分析存放區的 Azure Cosmos DB 容器？
+### <a name="in-the-azure-synapse-studio-how-do-i-recognize-if-im-connected-to-an-azure-cosmos-db-container-with-the-analytics-store-enabled"></a>在 Azure Synapse Studio 中，如何辨識是否已連線到已啟用分析存放區的 Azure Cosmos DB 容器？
 
 已啟用分析存放區的 Azure Cosmos DB 容器會有下列圖示：
 
@@ -152,12 +152,12 @@ Azure Cosmos DB 保證會將交易和分析的工作負載效能隔離。 在容
 
 :::image type="content" source="./media/synapse-link-frequently-asked-questions/transactional-store-icon.png" alt-text="啟用分析存放區的 Azure Cosmos DB 容器圖示":::
  
-### <a name="how-do-you-pass-azure-cosmos-db-credentials-from-synapse-studio"></a>如何從 Synapse Studio 傳遞 Azure Cosmos DB 認證？
+### <a name="how-do-you-pass-azure-cosmos-db-credentials-from-azure-synapse-studio"></a>如何從 Azure Synapse Studio 傳遞 Azure Cosmos DB 認證？
 
 目前 Azure Cosmos DB 認證是在建立連結服務時由具有 Azure Cosmos DB 資料庫存取權的使用者傳遞。 其他能存取工作區的使用者也會具有該工作區的存取權。
 
 ## <a name="next-steps"></a>後續步驟
 
-* 瞭解 [Synapse Link 的優點](synapse-link.md#synapse-link-benefits)
+* 深入瞭解 [Azure Synapse 連結的優點](synapse-link.md#synapse-link-benefits)
 
-* 瞭解 [Synapse Link 與 Azure Cosmos DB之間的整合](synapse-link.md#synapse-link-integration)。
+* 深入瞭解 [Azure Synapse 連結與 Azure Cosmos DB 之間的整合](synapse-link.md#synapse-link-integration)。

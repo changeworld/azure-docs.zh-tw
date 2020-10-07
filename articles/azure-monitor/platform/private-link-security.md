@@ -4,20 +4,16 @@ description: 使用 Azure 私人連結將網路安全地連線到 Azure 監視�
 author: nkiest
 ms.author: nikiest
 ms.topic: conceptual
-ms.date: 05/20/2020
+ms.date: 10/05/2020
 ms.subservice: ''
-ms.openlocfilehash: 2b94c782b5d7139fae7a01233bffd3b17cf43c7c
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: 0c7838b291ca5ba1747b08d7e8fcc6d17cc35f7d
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91570411"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91802220"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>使用 Azure 私人連結將網路安全地連線到 Azure 監視器
-
-> [!IMPORTANT]
-> 現階段，您必須**要求存取權**才能使用這項功能。 您可以使用[註冊表單](https://aka.ms/AzMonPrivateLinkSignup)申請存取權。
-
 
 [Azure 私人連結](../../private-link/private-link-overview.md)可讓您使用私人端點，將 Azure PaaS 服務安全地連結至您的虛擬網路。 如果有許多服務，您只需為每個資源設定一個端點。 不過，Azure 監視器是不同的相互連線服務的集合，它們可以一起監視您的工作負載。 因此，我們建立了稱為 Azure 監視器私人連結範圍 (AMPLS) 的資源，可讓您定義監視網路的界限，以及連線到您的虛擬網路。 本文涵蓋 Azure 監視器私人連結範圍的使用時機以及如何設定 。
 

@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 60c2b3e194fc7703ad1c3f1d3138f9a2c6301f33
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 72a224d4ad1807d095baa8db819878bf2e22e133
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88585044"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91802713"
 ---
 # <a name="java-bulk-executor-library-download-information"></a>Java 大量執行程式程式庫：下載資訊
 
@@ -28,7 +28,7 @@ ms.locfileid: "88585044"
 > * [非同步 Java SDK v2](sql-api-sdk-async-java.md)
 > * [同步 Java SDK v2](sql-api-sdk-java.md)
 > * [春季資料 v2](sql-api-sdk-java-spring-v2.md)
-> * [春季資料 v3](sql-api-sdk-java-spring-v3.md)
+> * [Spring Data v3](sql-api-sdk-java-spring-v3.md)
 > * [Spark 連接器](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api/cosmos-db/)
@@ -44,7 +44,7 @@ ms.locfileid: "88585044"
 |**GitHub 中的大量執行工具程式庫**|[GitHub](https://github.com/Azure/azure-cosmosdb-bulkexecutor-java-getting-started)|
 | **API 文件**| [Java API 參考文件](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.bulkexecutor)|
 |**開始使用**|[開始使用大量執行程式程式庫 Java SDK](bulk-executor-java.md)|
-|**最低支援執行階段**|[Java 開發套件 (JDK) 7+](/java/azure/jdk/?view=azure-java-stable)|
+|**最低支援執行階段**|[Java 開發套件 (JDK) 7+](/java/azure/jdk/?view=azure-java-stable&preserve-view=true)|
 
 ## <a name="release-notes"></a>版本資訊
 

@@ -7,18 +7,20 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/02/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 976cb096ca654c38d7c4c2534bc6938026be5771
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 52885f874f877d9a2fd256d0212ba8693067ea8e
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89397027"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91802925"
 ---
 # <a name="time-to-live-ttl-in-azure-cosmos-db"></a>Azure Cosmos DB 中的存留時間 (TTL)
 
 透過生存 **時間** 或 TTL，Azure Cosmos DB 可讓您在一段時間後自動從容器中刪除專案。 根據預設，您可以在容器層級設定存留時間，且覆寫每個項目的值。 在容器或項目層級設定 TTL 之後，Azure Cosmos DB 會在自從上次修改以來的時間週期後自動移除這些項目。 存留時間值會以秒設定。 當您設定 TTL 時，系統會根據 TTL 值自動刪除過期的專案，而不需要用戶端應用程式明確發出的刪除操作。 TTL 的最大值是2147483647。
 
 刪除過期的專案是背景工作，其會取用要求單位（不是使用者要求所取用的要求單位）來取用剩餘的 [要求單位](request-units.md)。 即使在 TTL 過期之後，如果容器因為要求而多載，而且沒有足夠的 RU 可供使用，則資料刪除會延遲。 一旦有足夠的 ru 可用來執行刪除作業，就會刪除資料。 雖然資料刪除是延遲的，但在 TTL 過期之後，任何 API)  (的任何查詢都不會傳回資料。
+
+> 此內容與 Azure Cosmos DB 的交易式存放區 TTL 相關。 如果您要尋找 analitycal store TTL，可透過 [Azure Synapse 連結](https://docs.microsoft.com/azure/cosmos-db/synapse-link)啟用 NoETL HTAP 案例，請按一下 [這裡](https://docs.microsoft.com/azure/cosmos-db/analytical-store-introduction#analytical-ttl)。
 
 ## <a name="time-to-live-for-containers-and-items"></a>容器和項目的存留時間
 
@@ -82,7 +84,7 @@ ms.locfileid: "89397027"
 |ttl =-1   |已啟用 TTL。 專案永遠不會過期。|
 |ttl = 2000 |已啟用 TTL。 專案將在2000秒後過期。|
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 在下列文章中瞭解如何設定存留時間：
 

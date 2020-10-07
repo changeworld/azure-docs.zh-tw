@@ -10,12 +10,12 @@ ms.date: 12/11/2019
 ms.topic: conceptual
 ms.service: azure-remote-rendering
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3d0628777fbd6250fff4bb8347461d206d13782d
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 332213adf64e17c0935ddf612acac5bbca413a87
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90561868"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91802288"
 ---
 # <a name="graphics-binding"></a>圖形繫結
 
@@ -120,7 +120,10 @@ if (*wmrBinding->UpdateUserCoordinateSystem(ptr) == Result::Success)
 
 #### <a name="render-remote-image"></a>轉譯遠端影像
 
-在每個畫面的開始，需將遠端畫面轉譯成背景緩衝區。 這可藉由呼叫 `BlitRemoteFrame` 來完成，其會在目前繫結的轉譯目標中填入色彩和深度資訊。 因此，將背景緩衝區繫結為轉譯目標後，請務必完成此項作業。
+在每個畫面格的開頭，必須將遠端框架轉譯為背景緩衝區。 這是藉由呼叫來完成 `BlitRemoteFrame` ，這會在目前系結的轉譯目標中填滿兩個眼睛的色彩和深度資訊。 因此，在將完整背景緩衝區系結為轉譯目標之後，請務必這麼做。
+
+> [!WARNING]
+> 將遠端影像 array.blit 至背景緩衝區之後，應使用單一傳遞的身歷聲轉譯技術（例如使用 **SV_RenderTargetArrayIndex**）來轉譯本機內容。 使用其他身歷聲轉譯技術（例如在個別行程中轉譯每個眼睛），可能會導致重大的效能降低或圖形構件，因此應予以避免。
 
 ```cs
 AzureSession currentSession = ...;

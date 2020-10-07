@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e172a023cc9156f435b4f40b2262ee44128c138e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4210ad382301851a41d3fbd7ee3dc20a748fb544
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84731999"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91802186"
 ---
 # <a name="create-and-assign-a-custom-role-in-azure-active-directory"></a>在 Azure Active Directory 中建立及指派自訂角色
 
@@ -58,14 +58,14 @@ ms.locfileid: "84731999"
 若要安裝 AzureAD PowerShell 模組，請使用下列命令︰
 
 ``` PowerShell
-install-module azureadpreview
-import-module azureadpreview
+Install-Module AzureADPreview
+Import-Module AzureADPreview
 ```
 
 若要確認此模組已可使用，請使用下列命令︰
 
 ``` PowerShell
-get-module azureadpreview
+Get-Module AzureADPreview
   ModuleType Version      Name                         ExportedCommands
   ---------- ---------    ----                         ----------------
   Binary     2.0.2.31     azuread                      {Add-AzureADAdministrati...}
@@ -125,7 +125,7 @@ $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -Rol
     body
 
     ``` HTTP
-   {
+    {
        "description": "Can manage basic aspects of application registrations.",
        "displayName": "Application Support Administrator",
        "isEnabled": true,
@@ -138,11 +138,11 @@ $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -Rol
                ]
            }
        ]
-   }
+    }
     ```
 
-  > [!Note]
-  > "templateId":"GUID" 是會根據需求於本文中傳送的選擇性參數。 如果您需要使用一般參數來建立多個不同的自訂角色，最好是建立範本並定義 templateId。 您可以使用 PowerShell Cmdlet (New-Guid).Guid 預先產生 templateId。 
+    > [!Note]
+    > `"templateId": "GUID"`是根據需求在主體中傳送的選擇性參數。 如果您需要使用一般參數建立多個不同的自訂角色，最好是建立範本並定義一個 `templateId` 值。 您可以 `templateId` 事先使用 PowerShell Cmdlet 來產生值 `(New-Guid).Guid` 。 
 
 1. 建立角色指派。
 
@@ -163,7 +163,6 @@ $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -Rol
        "resourceScope":"/<GUID OF APPLICATION REGISTRATION>"
    }
     ```
-
 
 ## <a name="assign-a-custom-role-scoped-to-a-resource"></a>指派範圍為資源的自訂角色
 

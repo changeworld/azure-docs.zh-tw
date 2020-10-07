@@ -1,16 +1,18 @@
 ---
 title: 快速入門：使用 SDK 來建立和管理知識庫 - QnA Maker
 description: 本快速入門將說明如何使用用戶端 SDK 來建立和管理您的知識庫。
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 06/18/2020
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
 zone_pivot_groups: programming-languages-set-sixteen
-ms.openlocfilehash: aae9bce5542dc4c610df91d8176916adc459fe86
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 36a38c69c68613e912e7c598495b9370044f13a6
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91253918"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777468"
 ---
 # <a name="quickstart-qna-maker-client-library"></a>快速入門：QnA Maker 用戶端程式庫
 

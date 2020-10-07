@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: dech
-ms.openlocfilehash: f4236b099915e737f9d489d89e5bf18b84736d75
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 5599a64e812c3006cf4379f98c5a0f0b0cd067e7
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87761190"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91801846"
 ---
 # <a name="use-built-in-notebook-commands-and-features-in-azure-cosmos-db-python-notebooks-preview"></a>使用 Azure Cosmos DB Python 筆記本 (預覽) 中的內建筆記本命令和功能
 
@@ -167,7 +167,7 @@ container = database.create_container_if_not_exists(id='WebsiteData', partition_
 ## <a name="create-a-custom-instance-of-cosmos_client"></a>建立 ``cosmos_client`` 的自訂執行個體
 如需更多彈性，您可建立 ``cosmos_client`` 的自訂執行個體，以便：
 
-- 自訂[連線原則](https://docs.microsoft.com/python/api/azure-cosmos/azure.cosmos.documents.connectionpolicy?view=azure-python-preview)
+- 自訂[連線原則](https://docs.microsoft.com/python/api/azure-cosmos/azure.cosmos.documents.connectionpolicy?view=azure-python-preview&preserve-view=true)
 - 針對與您所在不同的 Azure Cosmos 帳戶執行作業
 
 您可透過[環境變數](#access-the-account-endpoint-and-primary-key-env-variables)來存取目前帳戶的連接字串和主要金鑰。 
@@ -200,7 +200,7 @@ primary_key = COSMOS.KEY
 ## <a name="reset-notebooks-workspace"></a>重設筆記本工作區
 若要將筆記本工作區重設為預設設定，請在命令列上選取 [重設工作區]。 這會移除任何已安裝的自訂套件，並重新啟動 Jupyter 伺服器。 筆記本、檔案和 Azure Cosmos 資源將不受影響。  
 
-:::image type="content" source="media/use-notebook-features-and-commands/reset-workspace.png" alt-text="重設筆記本工作區":::
+:::image type="content" source="media/use-notebook-features-and-commands/reset-workspace.png" alt-text="nteract 資料總管":::
 
 ## <a name="next-steps"></a>後續步驟
 

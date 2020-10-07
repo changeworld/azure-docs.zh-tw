@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 09/15/2020
 ms.author: banders
-ms.openlocfilehash: 8366c0681f1ac29d9e265225dfaeeab44aa4b8ca
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 6b4b5fe5d7dffbcacc804500cc1f3f8f07f0090d
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91252964"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91758535"
 ---
 # <a name="add-or-update-a-credit-card-for-azure"></a>新增或更新用於 Azure 的信用卡
 
@@ -32,7 +32,7 @@ Microsoft Azure 支援的付款方法為信用卡和支票/電匯。 若要獲�
 
 ## <a name="manage-credit-cards-for-an-azure-subscription"></a>管理 Azure 訂用帳戶的信用卡
 
-下列各節適用於擁有 Microsoft Online Services 方案計費帳戶的客戶。 了解如何[查看您的計費帳戶類型](#check-the-type-of-your-account)。 如果您的計費帳戶類型是 Microsoft Online Services 方案，付款方式會與個別 Azure 訂用帳戶相關聯。 如果在新增信用卡之後收到錯誤，請參閱[在 Azure 註冊時信用卡遭拒](/troubleshoot-declined-card.md)。
+下列各節適用於擁有 Microsoft Online Services 方案計費帳戶的客戶。 了解如何[查看您的計費帳戶類型](#check-the-type-of-your-account)。 如果您的計費帳戶類型是 Microsoft Online Services 方案，付款方式會與個別 Azure 訂用帳戶相關聯。 如果在新增信用卡之後收到錯誤，請參閱[在 Azure 註冊時信用卡遭拒](/azure/cost-management-billing/manage/troubleshoot-declined-card)。
 
 ### <a name="change-credit-card-for-a-subscription-by-adding-a-new-credit-card"></a>新增新的信用卡以變更訂用帳戶的信用卡
 

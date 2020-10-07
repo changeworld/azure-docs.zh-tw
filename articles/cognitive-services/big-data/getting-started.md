@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: quickstart
 ms.date: 07/06/2020
 ms.author: marhamil
-ms.openlocfilehash: 7f4849c75b36b1663416ad1a97e3264fabcdaa67
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 5256db4547f8c19960a6f470ce3c84b2eef25e24
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86201731"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776607"
 ---
 # <a name="getting-started"></a>開始使用
 
@@ -60,7 +60,7 @@ Azure Databricks 是 Apache Spark 型的分析平台，具有單鍵設定、簡�
 1. 安裝巨量資料認知服務
     * 在 Databricks 工作區中建立新的程式庫  
        <img src="media/create-library.png" alt="Create library" width="50%"/>
-    * 輸入下列 Maven 座標：`com.microsoft.ml.spark:mmlspark_2.11:1.0.0-rc1` 存放庫：`https://mmlspark.azureedge.net/maven`  
+    * 輸入下列 Maven 座標：`com.microsoft.ml.spark:mmlspark_2.11:1.0.0-rc3` 存放庫：`https://mmlspark.azureedge.net/maven`  
       <img src="media/library-coordinates.png" alt="Library Coordinates" width="50%"/>
     * 將程式庫安裝到叢集上  
       <img src="media/install-library.png" alt="Install Library on Cluster" width="50%"/>

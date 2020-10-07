@@ -4,17 +4,17 @@ description: 瞭解如何從儲存體分析計量轉換 (傳統計量) 至 Azure
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 09/04/2020
+ms.date: 10/20/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: 076f5573b599fbb83486087380174fc2da53986c
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: c6a5f69a5a32ed1279b367c93b5246eb77ef0208
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91708572"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91802832"
 ---
 # <a name="transition-to-metrics-in-azure-monitor"></a>轉換至 Azure 監視器中的計量
 
@@ -46,6 +46,8 @@ ms.locfileid: "91708572"
 本節說明這兩個計量平臺之間的一些主要差異。
 
 主要差異在於計量的管理方式。 傳統計量是由 Azure 儲存體管理，而 Azure 監視器中的計量是由 Azure 監視器管理。 使用傳統計量時，Azure 儲存體會收集計量值、匯總它們，然後將它們儲存在位於儲存體帳戶中的資料表。 使用 Azure 監視器中的計量時，Azure 儲存體會將計量資料傳送到 Azure 監視器後端。 Azure 監視器提供統一的監視體驗，包括來自 Azure 入口網站的資料以及內嵌的資料。 
+
+傳統計量會傳送並儲存在 Azure 儲存體帳戶中。 Azure 監視器計量可以傳送到多個位置。 儲存體帳戶可以是這些位置之一，但不是必要的。  
 
 至於計量支援，傳統計量只會提供 Azure Blob 儲存體的 **容量** 計量。 Azure 監視器中的計量提供 Blob、資料表、檔案、佇列和 premium 儲存體的容量計量。 傳統計量提供 Blob、資料表、Azure 檔案和佇列儲存體的 **交易** 計量。 Azure 監視器中的計量會將 premium 儲存體新增至該清單。
 

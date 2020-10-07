@@ -1,17 +1,19 @@
 ---
 title: 快速入門：使用 SDK 建立和使用學習迴圈 - 個人化工具
 description: 本快速入門將說明如何使用「個人化工具」用戶端程式庫來建立和管理您的知識庫。
+ms.service: cognitive-services
+ms.subservice: personalizer
 ms.topic: quickstart
 ms.date: 08/27/2020
 ms.custom: cog-serv-seo-aug-2020
 keywords: 個人化工具, Azure 個人化工具, 機器學習
 zone_pivot_groups: programming-languages-set-six
-ms.openlocfilehash: dccdec0888f2968fb7089c4ff80c9338215de135
-ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
+ms.openlocfilehash: 3acfd8134a2a65e6ea9f019baff24b8b8149f7f3
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89055953"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777331"
 ---
 # <a name="quickstart-personalizer-client-library"></a>快速入門：個人化工具用戶端程式庫
 

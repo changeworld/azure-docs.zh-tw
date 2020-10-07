@@ -1,14 +1,16 @@
 ---
 title: 快速入門：建立、訓練及發佈知識庫 - QnA Maker
 description: 您可以從自己的內容 (例如常見問題集或產品手冊) 建立 QnA Maker 知識庫 (KB)。 本文包含從簡單的常見問題集網頁建立 QnA Maker 知識庫的範例，以回答問題 QnA Maker。
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 05/26/2020
-ms.openlocfilehash: 3cc38ca49820b1a97ec11c890bfd0ef1670f6eef
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: 1646666244eb2247d6e7127c4d4e8d39cb0af5ff
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89535844"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777691"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>快速入門：建立、訓練及發佈您的 QnA Maker 知識庫
 
@@ -64,7 +66,7 @@ ms.locfileid: "89535844"
 
     ` * Azure QnA Maker service\n* Azure Cognitive Search\n* Azure web app\n* Azure app plan`
 
-    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/add-question-and-answer.png" alt-text="以文字型式新增問題與使用 markdown 設定格式的答案。":::
+    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/add-question-and-answer.png" alt-text="選取 QnA Maker 服務知識庫的螢幕擷取畫面":::
 
     markdown 符號 `*` 用於表示項目符號。 `\n` 用於表示新行。
 
@@ -81,7 +83,7 @@ ms.locfileid: "89535844"
 
     `How many Azure services are used by a knowledge base?`
 
-    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/test-panel-in-qna-maker.png" alt-text="在文字方塊中輸入範例使用者查詢。":::
+    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/test-panel-in-qna-maker.png" alt-text="選取 QnA Maker 服務知識庫的螢幕擷取畫面":::
 
 1. 選取 [檢查]****，更詳細地檢查回應。 測試視窗是用來測試您對知識庫所做的變更，然後加以發佈。
 
@@ -131,7 +133,7 @@ ms.locfileid: "89535844"
 
     聊天 Bot 會使用來自您知識庫的答案來回應。
 
-    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/test-web-chat.png" alt-text="在測試網頁聊天中輸入使用者查詢。":::
+    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/test-web-chat.png" alt-text="選取 QnA Maker 服務知識庫的螢幕擷取畫面":::
 
 ## <a name="what-did-you-accomplish"></a>您完成了哪些工作？
 

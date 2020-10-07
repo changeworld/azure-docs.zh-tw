@@ -8,12 +8,12 @@ ms.date: 01/28/2020
 ms.author: dech
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: af3c8713b70911399b2382184dc9fd78d585e03a
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 34508abdfa509dc2f8238e8e3b0dbac21c26ff7d
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91540280"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91801914"
 ---
 # <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-azure-devops"></a>使用 Azure Cosmos DB 模擬器建置工作在 Azure DevOps 中設定 CI/CD 管線
 
@@ -32,13 +32,13 @@ Azure Cosmos DB 模擬器提供了一個模擬 Azure Cosmos DB 服務的本機�
 接下來，選擇要在其中安裝擴充功能的組織。 
 
 > [!NOTE]
-> 若要將擴充功能安裝到 Azure DevOps 組織，您必須是帳戶擁有者或專案集合管理員。 如果您沒有權限，但是您是帳戶成員，可以改為要求擴充功能。 [深入了解。](https://docs.microsoft.com/azure/devops/marketplace/faq-extensions?view=vsts)
+> 若要將擴充功能安裝到 Azure DevOps 組織，您必須是帳戶擁有者或專案集合管理員。 如果您沒有權限，但是您是帳戶成員，可以改為要求擴充功能。 [深入了解。](https://docs.microsoft.com/azure/devops/marketplace/faq-extensions?view=vsts&preserve-view=true)
 
 :::image type="content" source="./media/tutorial-setup-ci-cd/addExtension_2.png" alt-text="在 Azure DevOps Marketplace 中尋找 Azure Cosmos DB 模擬器建置工作並進行安裝":::
 
 ## <a name="create-a-build-definition"></a>建立組建定義
 
-在安裝擴充功能後，現在請登入您的 Azure DevOps 組織，並從專案儀表板中尋找您的專案。 您可以將[組建管線](https://docs.microsoft.com/azure/devops/pipelines/get-started-designer?view=vsts&tabs=new-nav)新增至您的專案，或修改現有的組建管線。 如果您已有組建定義，可以直接跳到[將模擬器建置工作新增至組建定義](#addEmulatorBuildTaskToBuildDefinition)。
+在安裝擴充功能後，現在請登入您的 Azure DevOps 組織，並從專案儀表板中尋找您的專案。 您可以將[組建管線](https://docs.microsoft.com/azure/devops/pipelines/get-started-designer?view=vsts&preserve-view=true&tabs=new-nav)新增至您的專案，或修改現有的組建管線。 如果您已有組建定義，可以直接跳到[將模擬器建置工作新增至組建定義](#addEmulatorBuildTaskToBuildDefinition)。
 
 1. 若要建立新的組建定義，請瀏覽至 Azure DevOps 中的 [**組建**] 索引標籤。 選取 [ **+新建**]。 \> [新增組建管線]
 
@@ -51,7 +51,7 @@ Azure Cosmos DB 模擬器提供了一個模擬 Azure Cosmos DB 服務的本機�
 3. 最後，選取所需的組建管線範本。 我們會在本教學課程中選取 **ASP.NET** 範本。 現在，您已有可設定成使用 Azure Cosmos DB 模擬器建置工作的組建管線。 
 
 > [!NOTE]
-> 要選取用於此 CI 的代理程式集區應該已安裝適用於 Windows 的 Docker，除非在先前工作中手動安裝成為 CI 的一部分。 請參閱 [Microsoft 託管代理程式](https://docs.microsoft.com/azure/devops/pipelines/agents/hosted?view=azure-devops&tabs=yaml) (英文) 一文中精選的代理程式集區；建議從 `Hosted VS2017` 著手。
+> 要選取用於此 CI 的代理程式集區應該已安裝適用於 Windows 的 Docker，除非在先前工作中手動安裝成為 CI 的一部分。 請參閱 [Microsoft 託管代理程式](https://docs.microsoft.com/azure/devops/pipelines/agents/hosted?view=azure-devops&preserve-view=true&tabs=yaml) (英文) 一文中精選的代理程式集區；建議從 `Hosted VS2017` 著手。
 
 Azure Cosmos DB 模擬器目前不支援託管的 VS2019 代理程式集區。 不過，模擬器已經安裝 VS2019，您可以使用下列 PowerShell Cmdlet 來啟動模擬器，加以使用。 如果您在使用 VS2019 時遇到任何問題，請連絡 [Azure DevOps](https://developercommunity.visualstudio.com/spaces/21/index.html) 小組尋求協助：
 
@@ -92,7 +92,7 @@ Start-CosmosDbEmulator
 
 現在，我們會設定我們的測試使用模擬器。 模擬器建置工作會匯出環境變數 (CosmosDbEmulator.Endpoint)，建置管線中任何進一步的工作都可以針對該變數發出要求。 
 
-在本教學課程中，我們會使用 [Visual Studio 測試工作](https://github.com/Microsoft/azure-pipelines-tasks/blob/master/Tasks/VsTestV2/README.md) (英文) 來執行單元測試 (該測試會透過 **.runsettings** 檔案來設定)。 若要深入了解單位測試設定，請造訪[文件](https://docs.microsoft.com/visualstudio/test/configure-unit-tests-by-using-a-dot-runsettings-file?view=vs-2017)。 在 [GitHub](https://github.com/Azure-Samples/documentdb-dotnet-todo-app) 上可取得您在本文件中使用的完整 Todo 應用程式的程式碼範例
+在本教學課程中，我們會使用 [Visual Studio 測試工作](https://github.com/Microsoft/azure-pipelines-tasks/blob/master/Tasks/VsTestV2/README.md) (英文) 來執行單元測試 (該測試會透過 **.runsettings** 檔案來設定)。 若要深入了解單位測試設定，請造訪[文件](https://docs.microsoft.com/visualstudio/test/configure-unit-tests-by-using-a-dot-runsettings-file?view=vs-2017&preserve-view=true)。 在 [GitHub](https://github.com/Azure-Samples/documentdb-dotnet-todo-app) 上可取得您在本文件中使用的完整 Todo 應用程式的程式碼範例
 
 以下是 **.runsettings** 檔案的範例，該檔案會定義要傳遞至應用程式單元測試的參數。 請注意，所使用的 `authKey` 變數是模擬器的[已知金鑰](https://docs.microsoft.com/azure/cosmos-db/local-emulator#authenticating-requests)。 這個 `authKey` 是模擬器建置工作所預期的金鑰，應該在您的 **.runsettings** 檔案中定義。
 

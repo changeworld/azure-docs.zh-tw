@@ -17,12 +17,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/06/2019
 ms.author: kumud
-ms.openlocfilehash: 7beff39ed2c37eeb0f07571ba6d611d23a3221e7
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 92e71a8c08ef2c64509d7e00b0c43abdd58cf036
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89292022"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91804022"
 ---
 # <a name="manage-public-ip-addresses"></a>管理公用 IP 位址
 
@@ -47,16 +47,22 @@ ms.locfileid: "89292022"
 
 ## <a name="create-a-public-ip-address"></a>建立公用 IP 位址
 
-1. 從 Azure 入口網站功能表或 **[首頁]** 頁面，選取 [建立資源]。
-2. 在 [搜尋 Marketplace]** 方塊中，輸入「公用 IP 位址」**。 當「公用 IP 位址」**** 出現於搜尋結果時，將其選取。
-3. 在 [公用 IP 位址]**** 下方，選取 [建立]****。
-4. 在 [建立公用 IP 位址]**** 下方，輸入或選取下列設定的值，然後選取 [建立]****：
+如需如何使用入口網站、PowerShell 或 CLI 建立公用 IP 位址的指示，請參閱下列頁面：
+
+ * [建立公用 IP addresses - 入口網站](https://docs.microsoft.com/azure/virtual-network/create-public-ip-portal?tabs=option-create-public-ip-standard-zones)
+ * [建立公用 IP addresses - PowerShell](https://docs.microsoft.com/azure/virtual-network/create-public-ip-powershell?tabs=option-create-public-ip-standard-zones)
+ * [建立公用 IP addresses - Azure CLI](https://docs.microsoft.com/azure/virtual-network/create-public-ip-cli?tabs=option-create-public-ip-standard-zones)
+
+>[!NOTE]
+>雖然入口網站提供可讓您建立兩個公用 IP 位址資源 (一個 IPv4 和一個 IPv6) 的選項，但 PowerShell 和 CLI 命令會建立一個資源，其中包含一個 IP 版本或另一個 IP 版本的位址。 如果您想要兩個公用 IP 位址資源（每個 IP 版本各一個），您必須執行命令兩次，指定公用 IP 位址資源的不同名稱和 IP 版本。
+
+如需建立時公用 IP 位址之特定屬性的詳細資訊，請參閱下表。
 
    |設定|必要？|詳細資料|
    |---|---|---|
    |IP 版本|是| 選取 [IPv4] 或 [IPv6] 或 [兩者]。 選取兩者都會導致2個公用 IP 位址建立-1 個 IPv4 位址和1個 IPv6 位址。 深入瞭解 [Azure vnet 中的 IPv6](../virtual-network/ipv6-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。|
    |SKU|是|在 Sku 推出之前建立的所有公用 IP 位址都是 **基本** SKU 公用 ip 位址。 建立公用 IP 位址之後，即無法變更 SKU。 獨立虛擬機器、可用性設定組內的虛擬機器，或虛擬機器擴展集，可以使用基本或標準 SKU。 不允許在可用性設定組或擴展集或獨立 Vm 內的虛擬機器之間混合使用 Sku。 **基本** SKU：如果您要在支援可用性區域的區域中建立公用 IP 位址，**可用性區域**設定依預設會設為「無」**。 基本公用 Ip 不支援可用性區域。 **標準** SKU：標準 SKU 公用 IP 可與虛擬機器或負載平衡器前端建立關聯。 如果您要在支援可用性區域的區域中建立公用 IP 位址，**可用性區域**設定依預設會設為「區域備援」**。 如需可用性區域的詳細資訊，請參閱**可用性區域**設定。 如果您要將位址與標準負載平衡器建立關聯，則需要標準 SKU。 若要深入了解標準負載平衡器，請參閱 [Azure 負載平衡器標準 SKU](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 當您將標準 SKU 的公用 IP 位址指派給虛擬機器的網路介面時，必須使用[網路安全性群組](security-overview.md#network-security-groups)明確地允許預定的流量。 在建立和關聯網路安全性群組並明確地允許所要流量前，與資源進行的通訊都會失敗。|
-   |Name|是|名稱必須是您選取的資源群組中唯一的名稱。|
+   |名稱|是|名稱必須是您選取的資源群組中唯一的名稱。|
    |IP 位址指派|是|**動態︰** 只有在公用 IP 位址與 Azure 資源相關聯，且第一次啟動資源之後，才會指派動態位址。 動態位址指派給資源時可以變更 (例如指派給虛擬機器，而虛擬機器停止 (解除配置)，然後再重新開機)。 如果虛擬機器已重新開機或停止 (但未解除配置)，則位址維持不變。 當公用 IP 位址資源與其所關聯的資源中斷關聯時，便會釋放動態位址。 **靜態︰** 建立公用 IP 位址時會指派靜態位址。 刪除公用 IP 位址資源之前，不會釋出靜態位址。 如果位址與資源沒有關聯，您可以在位址建立後變更指派方法。 如果位址與資源相關聯，您可能無法變更指派方法。 如果您針對**IP 版本**選取*IPv6* ，則基本 SKU 的指派方法必須是*動態*的。  適用于 IPv4 和 IPv6 的標準 SKU 位址是 *靜態* 的。 |
    |閒置逾時 (分鐘)|否|不需依賴用戶端傳送保持連線訊息，讓 TCP 或 HTTP 連線保持開啟的分鐘數。 如果您選取 IPv6 作為 **IP 版本**，則無法變更此值。 |
    |DNS 名稱標籤|否|在您建立名稱的 Azure 位置 (跨越所有訂用帳戶和所有位置) 中必須是唯一的。 Azure 會在其 DNS 中自動登錄名稱和 IP 位址，以便您連線至具有此名稱的資源。 Azure 會將 *location.cloudapp.azure.com* (其中 location 是您選取的位置) 之類的預設子網路附加至您提供的名稱 ，以建立完整的 DNS 名稱。 如果您選擇兩個位址版本都建立，則會指派相同的 DNS 名稱給 IPv4 和 IPv6 位址。 Azure 預設 DNS 包含 IPv4 A 和 IPv6 AAAA 名稱記錄，並且會在查詢 DNS 名稱時回應這兩個記錄。 用戶端選擇要與哪一個位址 (IPv4 或 IPv6) 通訊。 可改為 (或同時) 使用具有預設尾碼的 DNS 名稱標籤，您可以使用 Azure DNS 服務來設定 DNS 名稱，其具有解析為公用 IP 位址的自訂尾碼。 如需詳細資訊，請參閱[使用具有 Azure 公用 IP 位址的 Azure DNS](../dns/dns-custom-domain.md?toc=%2fazure%2fvirtual-network%2ftoc.json#public-ip-address)。|
@@ -67,56 +73,60 @@ ms.locfileid: "89292022"
    |位置|是|必須存在於相同的 [位置](https://azure.microsoft.com/regions)（也稱為區域），作為您將與公用 IP 建立關聯的資源。|
    |可用性區域| 否 | 只有在您選取受支援的位置時，才會出現此設定。 如需受支援位置的清單，請參閱[可用性區域概觀](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 如果您選取**基本** SKU，則會自動為您選取「無」**。 如果您想要保證特定區域，可選取特定區域。 或選擇非區域備援。 如果您選取**標準** SKU：會自動為您選取區域備援，並針對區域失敗進行資料路徑復原。 如果您希望保證對區域失敗無法復原的特定區域，則可選取特定區域。
 
-**命令**
+## <a name="view-modify-settings-for-or-delete-a-public-ip-address"></a>查看、修改公用 IP 位址的設定，或刪除公用 IP 位址
 
-雖然入口網站提供建立兩個公用 IP 位址資源 (一個 IPv4 和一個 IPv6) 的選項，但下列的 CLI 和 PowerShell 命令則是會以其中一個 IP 版本的位址建立一個資源。 如果您想要兩個公用 IP 位址資源（每個 IP 版本各一個），您必須執行命令兩次，指定公用 IP 位址資源的不同名稱和 IP 版本。
-
-|工具|Command|
-|---|---|
-|CLI|[az network public-ip create](/cli/azure/network/public-ip#az-network-public-ip-create)|
-|PowerShell|[New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress)|
-
-## <a name="view-change-settings-for-or-delete-a-public-ip-address"></a>檢視、變更公用 IP 位址的設定，或刪除公用 IP 位址
-
-1. 在 Azure 入口網站頂端包含「搜尋資源」** 文字的方塊中，輸入「公用 ip 位址」**。 當「公用 IP 位址」**** 出現於搜尋結果時，將其選取。
-2. 選取您要檢視、變更設定，或從清單中刪除的公用 IP 位址名稱。
-3. 根據您要檢視、刪除或變更公用 IP 位址，完成下列其中一個選項。
-   - **檢視**：[概觀]**** 區段會顯示公用 IP 位址的主要設定，例如和該位址關聯的網路介面 (如果位址與網路介面關聯)。 入口網站不會顯示位址版本 (IPv4 或 IPv6)。 若要檢視版本資訊，請使用 PowerShell 或 CLI 命令來檢視公用 IP 位址。 如果 IP 位址版本是 IPv6 時，指派的位址不會顯示在入口網站、PowerShell 或 CLI 。
-   - **刪除**：若要刪除公用 IP 位址，請在 [概觀]**** 區段中選取 [刪除]****。 如果位址目前與 IP 組態相關聯，則無法加以刪除。 如果位址目前與組態相關聯，請選取 [解除關聯]**** 來解除位址與 IP 組態的關聯。
-   - **變更**：選取 [組態]****。 使用[建立公用 IP 位址](#create-a-public-ip-address)中步驟 4 的資訊來變更設定。 若要將 IPv4 位址的指派從靜態變更為動態，您必須先解除公用 IPv4 位址與相關聯 IP 組態的關聯。 您可以接著將指派方法變更為動態，然後選取 [關聯]**** 讓 IP 位址與相同 IP 組態、不同組態建立關聯，您也可以讓它解除關聯。 若要解除公用 IP 位址的關聯，請在 [概觀]**** 區段中，選取 [解除關聯]****。
-
+   - **視圖/清單**：若要檢查公用 IP 的設定，包括 SKU、位址、任何適用的關聯 (例如虛擬機器 NIC、Load Balancer 前端) 。
+   - **修改**：使用 [建立公用 IP 位址](#create-a-public-ip-address)的步驟4中的資訊來修改設定，例如閒置 timeout、DNS 名稱標籤或指派方法。
    >[!WARNING]
-   >當您將指派方法從靜態變更為動態時，您會遺失已指派給公用 IP 位址的 IP 位址。 雖然 Azure 公用 DNS 伺服器會維護靜態或動態位址與任何 DNS 名稱標籤 (如果您定義一個位置) 之間的對應，但是動態 IP 位址可能會在虛擬機器處於停止 (已解除配置) 狀態後啟動時變更。 若要防止位址變更，請指派靜態 IP 位址。
+   >若要將公用 IP 位址的指派從靜態變更為動態，您必須先中斷任何適用 IP 設定的位址關聯 (請參閱 **刪除** 區段) 。  另請注意，當您將指派方法從靜態變更為動態時，會遺失指派給公用 IP 位址的 IP 位址。 雖然 Azure 公用 DNS 伺服器會維護靜態或動態位址與任何 DNS 名稱標籤 (如果您定義一個位置) 之間的對應，但是動態 IP 位址可能會在虛擬機器處於停止 (已解除配置) 狀態後啟動時變更。 若要防止位址變更，請指派靜態 IP 位址。
+   
+|作業|Azure 入口網站|Azure PowerShell|Azure CLI|
+|---|---|---|---|
+|檢視 | 在公用 IP 的 [ **總覽** ] 區段中 |[>get-azpublicipaddress](/powershell/module/az.network/get-azpublicipaddress) 以取得公用 IP 位址物件並查看其設定| [az 網路公用 ip 顯示](/cli/azure/network/public-ip#az-network-public-ip-show) 顯示設定|
+|清單 | 在 [ **公用 IP 位址** ] 類別下 |[>get-azpublicipaddress](/powershell/module/az.network/get-azpublicipaddress) 以取得一或多個公用 IP 位址物件並查看其設定|[az 網路公用 ip 清單](/cli/azure/network/public-ip#az-network-public-ip-list) 可列出公用 ip 位址|
+|修改 | 若為中斷關聯的 IP，請 **選取 [** 設定] 以修改閒置的超時時間、DNS 名稱標籤，或將基本 IP 的變更指派從靜態變更為動態  |[>get-azpublicipaddress](/powershell/module/az.network/set-azpublicipaddress) 以更新設定 |[az 網路公用 ip 更新](/cli/azure/network/public-ip#az-network-public-ip-update) 以進行更新 |
 
-**命令**
+   - **刪除**：公用 ip 的刪除要求公用 ip 物件不會與任何 IP 設定或虛擬機器 NIC 相關聯。 如需詳細資訊，請參閱下表。
 
-|工具|Command|
-|---|---|
-|CLI|[az network public-ip list](/cli/azure/network/public-ip#az-network-public-ip-list) 可列出公用 IP 位址、[az network public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show) 可顯示設定；[az network public-ip update](/cli/azure/network/public-ip#az-network-public-ip-update) 可進行更新；[az network public-ip delete](/cli/azure/network/public-ip#az-network-public-ip-delete) 可進行刪除|
-|PowerShell|[>get-azpublicipaddress](/powershell/module/az.network/get-azpublicipaddress) 以取得公用 IP 位址物件，並查看其設定、 [設定 >get-azpublicipaddress](/powershell/module/az.network/set-azpublicipaddress) 以更新設定; [移除->get-azpublicipaddress](/powershell/module/az.network/remove-azpublicipaddress) 以刪除|
+|資源|Azure 入口網站|Azure PowerShell|Azure CLI|
+|---|---|---|---|
+|[虛擬機器](https://docs.microsoft.com/azure/virtual-network/remove-public-ip-address-vm)|選取 [中斷關聯] 以中斷 IP 位址與 NIC 設定的關聯， **然後選取 [** **刪除**]。|[>get-azpublicipaddress](/powershell/module/az.network/set-azpublicipaddress) 會中斷 IP 位址與 NIC 設定的關聯; [移除->get-azpublicipaddress](/powershell/module/az.network/remove-azpublicipaddress) 以刪除|[az network public-ip update--移除](/cli/azure/network/public-ip#az-network-public-ip-update)以中斷 ip 位址與 NIC 設定的關聯;az 要刪除的[網路公用 ip 刪除](/cli/azure/network/public-ip#az-network-public-ip-delete) |
+|Load Balancer 前端 | 流覽至未使用的公用 IP 位址，然後選取 [ **關聯** ] 並挑選具有相關前端 IP 設定的 Load Balancer 來取代它 (然後可以使用與 VM 相同的方法來刪除舊 IP)   | [>new-azloadbalancerfrontendipconfig](/powershell/module/az.network/set-azloadbalancerfrontendipconfig) 會將新的前端 IP 設定與公用 Load Balancer 建立關聯; [移除->get-azpublicipaddress](/powershell/module/az.network/remove-azpublicipaddress) 以刪除;如果有一個以上的 IP 設定，也可以使用 [>new-azloadbalancerfrontendipconfig](/powershell/module/az.network/remove-azloadbalancerfrontendipconfig) 來移除前端 IP 設定 |[az network lb 前端-ip 更新](/cli/azure/network/lb/frontend-ip?view=azure-cli-latest#az_network_lb_frontend_ip_update) ，以將新的前端 ip 設定與公用 Load Balancer 建立關聯; [移除->get-azpublicipaddress](/powershell/module/az.network/remove-azpublicipaddress) 以刪除;也可以使用 [az network lb 前端-ip 刪除](/cli/azure/network/lb/frontend-ip?view=azure-cli-latest#az_network_lb_frontend_ip_delete) 來移除前端 ip 設定（如果有一個以上）|
+|防火牆|N/A| [解除配置 ( # B1 ](https://docs.microsoft.com/azure/firewall/firewall-faq#how-can-i-stop-and-start-azure-firewall) 以解除配置防火牆並移除所有 IP 設定 | [az network firewall ip-config delete](/cli/azure/ext/azure-firewall/network/firewall/ip-config#ext_azure_firewall_az_network_firewall_ip_config_delete) 以移除 ip (但必須使用 PowerShell 來解除配置第一個) |
+
+>[!NOTE]
+>某些資源無法在建立之後變更或移除其公用 Ip。  這些是： Azure NAT 閘道、Azure VPN 閘道、Azure 應用程式閘道。
+
+## <a name="virtual-machine-scale-sets"></a>虛擬機器擴展集
+
+使用具有公用 Ip 的虛擬機器擴展集時，不會有不同的公用 IP 物件與個別的虛擬機器實例相關聯。 不過，您可以使用公用 IP 前置詞物件 [來產生實例 ip](https://azure.microsoft.com/resources/templates/101-vmms-with-public-ip-prefix/)。
+
+若要列出虛擬機器擴展集上的公用 Ip，您可以使用 PowerShell ([>get-azpublicipaddress-VirtualMachineScaleSetName](/powershell/module/az.network/get-azpublicipaddress)) 或 CLI ([az vmss list-instance-Public-ip](/cli/azure/vmss?view=azure-cli-latest#az_vmss_list_instance_public_ips)) 。
+
+如需詳細資訊，請參閱 [Azure 虛擬機器擴展集的網路功能](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-networking#public-ipv4-per-virtual-machine)。
 
 ## <a name="assign-a-public-ip-address"></a>指派公用 IP 位址
 
 了解如何將公用 IP 位址指派給下列資源：
 
-- [Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 或 [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) VM (建立期間)，或指派給[現有的 VM](virtual-network-network-interface-addresses.md#add-ip-addresses)
-- [網際網路面向的 Load Balancer](../load-balancer/load-balancer-get-started-internet-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-- [Azure 應用程式閘道](../application-gateway/application-gateway-create-gateway-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-- [使用 Azure VPN 閘道的站對站連線](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-- [Azure 虛擬機器擴展集](../virtual-machine-scale-sets/virtual-machine-scale-sets-portal-create.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+- [Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)或[Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)虛擬機器 (建立) 或[現有的虛擬機器](virtual-network-network-interface-addresses.md#add-ip-addresses)
+- [公用 Load Balancer](../load-balancer/load-balancer-get-started-internet-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+- [應用程式閘道](../application-gateway/application-gateway-create-gateway-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+- [使用 VPN 閘道的站對站連線](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+- [虛擬機器擴展集](../virtual-machine-scale-sets/virtual-machine-scale-sets-portal-create.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 
 ## <a name="permissions"></a>權限
 
 若要針對公用 IP 位址執行工作，您的帳戶必須指派為[網路參與者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)角色，或為已指派下表所列適當動作的[自訂](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)角色：
 
-| 動作                                                             | Name                                                           |
+| 動作                                                             | 名稱                                                           |
 | ---------                                                          | -------------                                                  |
 | Microsoft.Network/publicIPAddresses/read                           | 讀取公用 IP 位址                                          |
 | Microsoft.Network/publicIPAddresses/write                          | 建立或更新公用 IP 位址                           |
 | Microsoft.Network/publicIPAddresses/delete                         | 刪除公用 IP 位址                                     |
 | Microsoft.Network/publicIPAddresses/join/action                    | 將公用 IP 位址與資源建立關聯                    |
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 使用 [PowerShell](powershell-samples.md) 或 [Azure CLI](cli-samples.md) 範例指令碼，或使用 Azure [Resource Manager 範本](template-samples.md)建立公用 IP 位址
 - 建立並指派公用 IP 位址的[Azure 原則定義](policy-samples.md)

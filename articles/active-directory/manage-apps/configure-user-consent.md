@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: how-to
-ms.date: 05/19/2020
+ms.date: 06/01/2020
 ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
-ms.openlocfilehash: 433ff5498baeb4c31473e43fc4a5d24f4ba9fd1c
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 877e90fa3c1c8a595c438fc6745c142e97b5692c
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90605153"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803274"
 ---
 # <a name="configure-how-end-users-consent-to-applications"></a>設定使用者同意應用程式的方式
 
@@ -26,21 +26,24 @@ ms.locfileid: "90605153"
 
 藉由允許使用者將資料的存取權授與應用程式，使用者可以輕鬆地取得有用的應用程式並提高生產力。 不過，在某些情況下，如果未謹慎監視和控制，此設定會是一個風險。
 
+> [!IMPORTANT]
+> 若要降低惡意應用程式嘗試誘騙使用者授與貴組織資料存取權的風險，建議您只允許使用者同意由[已驗證的發行者](../develop/publisher-verification-overview.md)發佈的應用程式。
+
 ## <a name="user-consent-settings"></a>使用者同意設定
 
-若要控制使用者可以同意應用程式的情況，請選擇將套用至所有使用者的同意原則。 以下是三個同意原則選項：
+應用程式同意原則會描述必須符合才能同意應用程式的條件。 這些原則可能包含應用程式要求存取的條件，以及應用程式所要求的許可權。
 
-* **停用使用者同意** - 使用者無法對應用程式授與權限。 使用者可以繼續登入先前已同意或由系統管理員代表他們同意的應用程式，但是不允許他們自行同意新的權限或新的應用程式。 只有已授與目錄角色 (包括授與同意的權限) 的使用者，才能夠同意新的權限或新的應用程式。
+藉由選擇適用于所有使用者的應用程式同意原則，您可以設定允許使用者同意應用程式的許可權，以及何時需要要求系統管理員審查和核准的限制：
 
-* **使用者可以同意來自已驗證發行者的應用程式，但是僅適用於您選取的權限 (預覽)** - 所有使用者只能同意由[已驗證的發行者](../develop/publisher-verification-overview.md)所發行的應用程式，以及在您的租用戶中註冊的應用程式。 使用者只能同意您已分類為「低影響」的許可權，也稱為「低風險」。 針對某個組織被視為低風險的情況（例如，查看使用者電子郵件地址的應用程式）可能會被視為其他組織的高風險。 基於這個理由，租使用者的系統管理員會設定「低風險」許可權。
+* **停用使用者同意** - 使用者無法對應用程式授與權限。 使用者可以繼續登入先前已同意或由系統管理員代表他們同意的應用程式，但是不允許他們自行同意新的權限或新的應用程式。 只有被授與授與同意之目錄角色的使用者，才能夠同意新的應用程式。
 
-  請務必[分類權限](#configure-permission-classifications-preview)，以選取允許使用者同意的權限。
+* **使用者可以同意來自已驗證發行者或您組織的應用程式，但僅針對您選取的許可權，** 所有使用者只能同意已 [驗證的發行者](../develop/publisher-verification-overview.md) 和您租使用者中註冊之應用程式所發佈的應用程式。 使用者只能同意您已分類為「低影響」的許可權。 您必須 [分類許可權](configure-permission-classifications.md) ，以選取允許使用者同意的許可權。
 
-* **使用者可以同意所有應用程式** - 此選項可讓所有使用者同意任何應用程式的任何權限，而不需要管理員同意。 
+* **使用者可以同意所有** 應用程式-此選項可讓所有使用者同意任何應用程式的任何不需要系統管理員同意的許可權。
 
-   若要降低惡意應用程式嘗試誘騙使用者授與貴組織資料存取權的風險，建議您只允許使用者同意由[已驗證的發行者](../develop/publisher-verification-overview.md)發佈的應用程式。
+* **自訂應用程式同意原則** ：若要更多選項來管理使用者同意的條件，您可以 [建立自訂應用程式同意原則](manage-app-consent-policies.md#create-a-custom-app-consent-policy)，並將其設定為適用于使用者同意。
 
-### <a name="configure-user-consent-settings-from-the-azure-portal"></a>從 Azure 入口網站設定使用者同意設定
+# <a name="portal"></a>[入口網站](#tab/azure-portal)
 
 若要透過 Azure 入口網站設定使用者同意設定：
 
@@ -51,14 +54,13 @@ ms.locfileid: "90605153"
 
 :::image type="content" source="media/configure-user-consent/setting-for-all-users.png" alt-text="使用者同意設定":::
 
-> [!TIP]
-> 請考量[啟用管理員同意工作流程](configure-admin-consent-workflow.md)，讓使用者要求系統管理員檢閱和核准不允許使用者同意的應用程式，例如，當使用者同意已停用，或應用程式要求使用者不被允許授與的權限時。
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-### <a name="configure-user-consent-settings-using-powershell"></a>使用 PowerShell 設定使用者同意設定
+您可以使用最新的 Azure AD PowerShell Preview 模組 [AzureADPreview](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview&preserve-view=true)，選擇哪個應用程式同意原則會控管應用程式的使用者同意。
 
-您可以使用最新的 Azure AD PowerShell Preview 模組 [AzureADPreview](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview&preserve-view=true)，選擇哪一種同意原則可管理應用程式的使用者同意。
+#### <a name="disable-user-consent"></a>停用使用者同意
 
-* **停用使用者同意** - 若要停用使用者同意，請將管理使用者同意的同意原則設定為空白：
+若要停用使用者同意，請將管理使用者同意的同意原則設為空白：
 
   ```powershell
   Set-AzureADMSAuthorizationPolicy `
@@ -66,137 +68,52 @@ ms.locfileid: "90605153"
      -PermissionGrantPolicyIdsAssignedToDefaultUserRole @()
   ```
 
-* **允許使用者同意來自已驗證發行者的應用程式、選取的權限 (預覽)** - 若只要允許來自已驗證發行者的應用程式和在您的租用戶中所註冊應用程式的有限使用者同意，且僅針對您分類為「低影響」的權限，請設定名為 `microsoft-user-default-low` 的內建同意原則：
+#### <a name="allow-user-consent-subject-to-an-app-consent-policy"></a>允許使用者同意遵守應用程式同意原則
+
+若要允許使用者同意，請選擇要將同意授與應用程式的應用程式同意原則應管理使用者的授權：
 
   ```powershell
   Set-AzureADMSAuthorizationPolicy `
      -Id "authorizationPolicy" `
-     -PermissionGrantPolicyIdsAssignedToDefaultUserRole @("microsoft-user-default-low")
+     -PermissionGrantPolicyIdsAssignedToDefaultUserRole @("{consent-policy-id}")
   ```
 
-   請記得[分類權限](#configure-permission-classifications-preview)，以選取允許使用者同意的權限。
+將取代 `{consent-policy-id}` 為您想要套用的原則識別碼。 您可以選擇您所建立的 [自訂應用程式同意原則](manage-app-consent-policies.md#create-a-custom-app-consent-policy) ，也可以從下列內建原則中選擇：
 
-* **允許使用者同意所有應用程式** - 允許使用者同意所有應用程式：
+| ID | 描述 |
+|:---|:------------|
+| microsoft-使用者-預設-低 | **針對選取的許可權，允許來自已驗證發行者的應用程式使用者同意**<br /> 僅限已驗證的發行者和您租使用者中註冊之應用程式的應用程式，以及您分類為「低影響」的許可權，才允許限制使用者同意。  (別忘了將 [許可權分類](configure-permission-classifications.md) ，以選取允許使用者同意的許可權。 )  |
+| microsoft-使用者-預設-舊版 | **允許使用者同意應用程式**<br /> 此選項可讓所有使用者同意任何應用程式的任何不需要系統管理員同意的許可權 |
+  
+例如，若要讓使用者同意受制于內建原則 `microsoft-user-default-low` ：
 
-  ```powershell
-  Set-AzureADMSAuthorizationPolicy `
-     -Id "authorizationPolicy" `
-     -PermissionGrantPolicyIdsAssignedToDefaultUserRole @("microsoft-user-default-legacy")
-  ```
+```powershell
+Set-AzureADMSAuthorizationPolicy `
+   -Id "authorizationPolicy" `
+   -PermissionGrantPolicyIdsAssignedToDefaultUserRole @("microsoft-user-default-low")
+```
 
-   此選項可讓所有使用者同意任何應用程式的任何權限，而不需要管理員同意。 我們建議您只允許使用者同意來自已驗證發行者的應用程式。
-
-## <a name="configure-permission-classifications-preview"></a>設定權限分類 (預覽)
-
-權限分類可讓您根據組織的原則和風險評估，識別不同權限的影響。 例如，您可以在同意原則中使用權限分類，以識別允許使用者同意的權限集。
-
-> [!NOTE]
-> 目前僅支援「低影響」權限分類。 只有不需要管理員同意的委派權限可以分類為「低影響」。
-
-### <a name="classify-permissions-using-the-azure-portal"></a>使用 Azure 入口網站來分類權限
-
-1. 以[全域管理員](../users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator)身分登入 [Azure 入口網站](https://portal.azure.com)。
-1. 選取 **Azure Active Directory**  >  **企業應用程式**  >  **同意和權限**  >  **權限分類**。
-1. 選擇 [新增權限]，將另一個權限分類為「低影響」。 
-1. 選取 API，然後選取委派的權限。
-
-在此範例中，我們已將單一登入所需的最小權限集合分類：
-
-:::image type="content" source="media/configure-user-consent/permission-classifications.png" alt-text="權限分類":::
+---
 
 > [!TIP]
-> 針對 Microsoft Graph API，執行基本單一登入所需的最小權限是 `openid`、`profile`、`User.Read` 和 `offline_access`。 使用這些權限，即使使用者不再使用應用程式，應用程式可以讀取已登入使用者的設定檔詳細資料，並且可以維護此存取權。
+> [啟用管理員同意工作流程](configure-admin-consent-workflow.md) ，讓使用者可以要求系統管理員對使用者的評論和核准，要求使用者同意，例如，當使用者同意已停用或應用程式要求使用者不允許授與許可權時。
 
-### <a name="classify-permissions-using-powershell"></a>使用 PowerShell 來分類權限
+## <a name="risk-based-step-up-consent"></a>以風險為基礎的逐步同意
 
-您可以使用最新的 Azure AD PowerShell Preview 模組 [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true)，來分類權限。 權限分類是在 API (發佈權限) 的 **ServicePrincipal** 物件上設定。
+以風險為基礎的升級同意有助於降低使用者暴露於進行[非法同意要求](https://docs.microsoft.com/microsoft-365/security/office-365-security/detect-and-remediate-illicit-consent-grants)的惡意應用程式風險。 如果 Microsoft 偵測到有風險的使用者同意要求，則要求需要「升級」以進行管理員同意。 這項功能預設為啟用，但是只有在啟用使用者同意時，才會導致行為變更。
 
-#### <a name="to-read-the-current-permission-classifications-for-an-api"></a>若要讀取 API 目前的權限分類：
+當偵測到有風險的同意要求時，同意提示會顯示一則訊息，指出需要系統管理員核准。 如果已啟用[管理員同意要求工作流程](configure-admin-consent-workflow.md)，則使用者可以將要求傳送給系統管理員，以便直接從同意提示進行進一步的檢閱。 如果未啟用，將會顯示下列訊息：
 
-1. 擷取 API 的 **ServicePrincipal** 物件。 在這裡，我們會擷取 Microsoft Graph API 的 ServicePrincipal 物件：
+* **AADSTS90094：** &lt;clientAppDisplayName&gt; 需要只有系統管理員才能授與的權限來存取貴組織中的資源。 請先要求系統管理員授與此應用程式的權限，然後您才能使用。
 
-   ```powershell
-   $api = Get-AzureADServicePrincipal `
-       -Filter "servicePrincipalNames/any(n:n eq 'https://graph.microsoft.com')"
-   ```
+在此情況下，也會記錄稽核事件，具有「ApplicationManagement」類別、「同意應用程式」的活動類型和「偵測到有風險應用程式」的狀態原因。
 
-1. 讀取 API 的委派權限分類：
+> [!IMPORTANT]
+> 在核准要求之前，系統管理員應該先仔細[評估所有同意要求](manage-consent-requests.md#evaluating-a-request-for-tenant-wide-admin-consent)，特別是當 Microsoft 偵測到風險時。
 
-   ```powershell
-   Get-AzureADMSServicePrincipalDelegatedPermissionClassification `
-       -ServicePrincipalId $api.ObjectId | Format-Table Id, PermissionName, Classification
-   ```
+### <a name="disable-or-re-enable-risk-based-step-up-consent-using-powershell"></a>使用 PowerShell 來停用或重新啟用以風險為基礎的升級同意
 
-#### <a name="to-classify-a-permission-as-low-impact"></a>若要將權限分類為「低影響」：
-
-1. 擷取 API 的 **ServicePrincipal** 物件。 在這裡，我們會擷取 Microsoft Graph API 的 ServicePrincipal 物件：
-
-   ```powershell
-   $api = Get-AzureADServicePrincipal `
-       -Filter "servicePrincipalNames/any(n:n eq 'https://graph.microsoft.com')"
-   ```
-
-1. 尋找您想要分類的委派權限：
-
-   ```powershell
-   $delegatedPermission = $api.OAuth2Permissions | Where-Object { $_.Value -eq "User.ReadBasic.All" }
-   ```
-
-1. 使用權限名稱和識別碼來設定權限分類：
-
-   ```powershell
-   Add-AzureADMSServicePrincipalDelegatedPermissionClassification `
-      -ServicePrincipalId $api.ObjectId `
-      -PermissionId $delegatedPermission.Id `
-      -PermissionName $delegatedPermission.Value `
-      -Classification "low"
-   ```
-
-#### <a name="to-remove-a-delegated-permission-classification"></a>若要移除委派權限分類：
-
-1. 擷取 API 的 **ServicePrincipal** 物件。 在這裡，我們會擷取 Microsoft Graph API 的 ServicePrincipal 物件：
-
-   ```powershell
-   $api = Get-AzureADServicePrincipal `
-       -Filter "servicePrincipalNames/any(n:n eq 'https://graph.microsoft.com')"
-   ```
-
-1. 尋找您想要移除的委派權限分類：
-
-   ```powershell
-   $classifications = Get-AzureADMSServicePrincipalDelegatedPermissionClassification `
-       -ServicePrincipalId $api.ObjectId
-   $classificationToRemove = $classifications | Where-Object {$_.PermissionName -eq "User.ReadBasic.All"}
-   ```
-
-1. 刪除權限分類：
-
-   ```powershell
-   Remove-AzureADMSServicePrincipalDelegatedPermissionClassification `
-       -ServicePrincipalId $api.ObjectId `
-       -Id $classificationToRemove.Id
-   ```
-
-## <a name="configure-group-owner-consent-to-apps-accessing-group-data"></a>設定群組擁有者同意存取群組資料的應用程式
-
-群組擁有者可以授權應用程式 (例如由第三方廠商發佈的應用程式) 存取與群組相關聯的組織資料。 例如，Microsoft Teams 中的小組擁有者可以允許應用程式讀取小組中的所有 Teams 訊息，或列出群組成員的基本設定檔。
-
-您可以設定允許哪些使用者同意應用程式存取其群組的資料，或者您可以停用這項功能。
-
-### <a name="configure-group-owner-consent-using-the-azure-portal"></a>使用 Azure 入口網站設定群組擁有者同意
-
-1. 以[全域管理員](../users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator)身分登入 [Azure 入口網站](https://portal.azure.com)。
-2. 選取 **Azure Active Directory**  >  **企業應用程式**  >  **同意和權限**  >  **使用者同意設定**。
-3. 在 [群組擁有者同意存取資料的應用程式] 底下，選取您要啟用的選項。
-4. 選取 [儲存] 以儲存您的設定。
-
-在此範例中，所有群組擁有者都可以同意應用程式存取其群組的資料：
-
-:::image type="content" source="media/configure-user-consent/group-owner-consent.png" alt-text="群組擁有者同意設定":::
-
-### <a name="configure-group-owner-consent-using-powershell"></a>使用 PowerShell 設定群組擁有者同意
-
-您可以使用 Azure AD PowerShell Preview 模組 [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true)，啟用或停用群組擁有者同意應用程式存取其所擁有貴組織群組資料的能力。
+您可以使用 Azure AD PowerShell Preview 模組 [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true)，停用在 Microsoft 偵測到風險的情況下必要的升級至管理員同意，或是在先前停用時重新啟用。
 
 1. 請確定您使用的是 [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true) 模組。 如果您已安裝 [AzureAD](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0&preserve-view=true) 模組和 [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true) 模組兩者，則這個步驟很重要。
 
@@ -222,35 +139,25 @@ ms.locfileid: "90605153"
         $settings = $template.CreateDirectorySetting()
     }
 
-    $enabledValue = $settings.Values | ? { $_.Name -eq "EnableGroupSpecificConsent" }
-    $limitedToValue = $settings.Values | ? { $_.Name -eq "ConstrainGroupSpecificConsentToMembersOfGroupId" }
+    $riskBasedConsentEnabledValue = $settings.Values | ? { $_.Name -eq "BlockUserConsentForRiskyApps" }
     ```
 
-1. 了解設定值。 有兩個設定值可定義哪些使用者可以允許應用程式存取其群組的資料：
+1. 瞭解設定值：
 
     | 設定       | 類型         | 描述  |
     | ------------- | ------------ | ------------ |
-    | _EnableGroupSpecificConsent_   | Boolean | 表示是否允許群組擁有者授與群組特定權限的旗標。 |
-    | _ConstrainGroupSpecificConsentToMembersOfGroupId_ | Guid | 如果 _EnableGroupSpecificConsent_ 設定為 "True"，且此值設定為群組的物件識別碼，則已識別群組的成員會獲得授權，將群組特定權限授與他們所擁有的群組。 |
+    | _BlockUserConsentForRiskyApps_   | Boolean |  指出偵測到有風險的要求時，是否將封鎖使用者同意的旗標。 |
 
 1. 更新所需設定的設定值：
 
     ```powershell
-    # Disable group-specific consent entirely
-    $enabledValue.Value = "False"
-    $limitedToValue.Value = ""
+    # Disable risk-based step-up consent entirely
+    $riskBasedConsentEnabledValue.Value = "False"
     ```
 
     ```powershell
-    # Enable group-specific consent for all users
-    $enabledValue.Value = "True"
-    $limitedToValue.Value = ""
-    ```
-
-    ```powershell
-    # Enable group-specific consent for users in a given group
-    $enabledValue.Value = "True"
-    $limitedToValue.Value = "{group-object-id}"
+    # Re-enable risk-based step-up consent, if disabled previously
+    $riskBasedConsentEnabledValue.Value = "True"
     ```
 
 1. 儲存您的設定。
@@ -265,53 +172,12 @@ ms.locfileid: "90605153"
     }
     ```
 
-## <a name="configure-risk-based-step-up-consent"></a>設定以風險為基礎的升級同意
-
-以風險為基礎的升級同意有助於降低使用者暴露於進行[非法同意要求](https://docs.microsoft.com/microsoft-365/security/office-365-security/detect-and-remediate-illicit-consent-grants)的惡意應用程式風險。 如果 Microsoft 偵測到有風險的使用者同意要求，則要求需要「升級」以進行管理員同意。 這項功能預設為啟用，但是只有在啟用使用者同意時，才會導致行為變更。
-
-當偵測到有風險的同意要求時，同意提示會顯示一則訊息，指出需要系統管理員核准。 如果已啟用[管理員同意要求工作流程](configure-admin-consent-workflow.md)，則使用者可以將要求傳送給系統管理員，以便直接從同意提示進行進一步的檢閱。 如果未啟用，將會顯示下列訊息：
-
-* **AADSTS90094：** &lt;clientAppDisplayName&gt; 需要只有系統管理員才能授與的權限來存取貴組織中的資源。 請先要求系統管理員授與此應用程式的權限，然後您才能使用。
-
-在此情況下，也會記錄稽核事件，具有「ApplicationManagement」類別、「同意應用程式」的活動類型和「偵測到有風險應用程式」的狀態原因。
-
-> [!IMPORTANT]
-> 在核准要求之前，系統管理員應該先仔細[評估所有同意要求](manage-consent-requests.md#evaluating-a-request-for-tenant-wide-admin-consent)，特別是當 Microsoft 偵測到風險時。
-
-### <a name="disable-or-re-enable-risk-based-step-up-consent-using-powershell"></a>使用 PowerShell 來停用或重新啟用以風險為基礎的升級同意
-
-您可以使用 Azure AD PowerShell Preview 模組 [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true)，停用在 Microsoft 偵測到風險的情況下必要的升級至管理員同意，或是在先前停用時重新啟用。
-
-您可以使用如上所述適用於[使用 PowerShell 設定群組擁有者同意](#configure-group-owner-consent-using-powershell)的相同步驟，但是以不同的設定值替代，來完成此操作。 步驟有三個差異： 
-
-1. 了解以風險為基礎升級同意的設定值：
-
-    | 設定       | 類型         | 描述  |
-    | ------------- | ------------ | ------------ |
-    | _BlockUserConsentForRiskyApps_   | Boolean |  指出偵測到有風險的要求時，是否將封鎖使用者同意的旗標。 |
-
-1. 替代步驟 3 中的下列值：
-
-    ```powershell
-    $riskBasedConsentEnabledValue = $settings.Values | ? { $_.Name -eq "BlockUserConsentForRiskyApps" }
-    ```
-    
-1. 替代步驟 5 中的下列其中一項：
-
-    ```powershell
-    # Disable risk-based step-up consent entirely
-    $riskBasedConsentEnabledValue.Value = "False"
-    ```
-
-    ```powershell
-    # Re-enable risk-based step-up consent, if disabled previously
-    $riskBasedConsentEnabledValue.Value = "True"
-    ```
-
 ## <a name="next-steps"></a>後續步驟
 
 若要深入了解：
 
+* [設定使用者同意設定](configure-user-consent.md)
+* [管理應用程式同意原則](manage-app-consent-policies.md)
 * [設定管理員同意工作流程](configure-admin-consent-workflow.md)
 * [了解如何管理對應用程式的同意及評估同意要求](manage-consent-requests.md)
 * [對應用程式授與全租用戶的管理員同意](grant-admin-consent.md)

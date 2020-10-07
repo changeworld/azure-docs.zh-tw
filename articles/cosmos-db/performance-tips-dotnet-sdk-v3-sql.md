@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: jawilley
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 9d50ed62343a7fd0aafb1fed97c0f33f2caaec12
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: f8e610531eaf3e7e5dbee9c40c88683a05029303
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019924"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91802985"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Azure Cosmos DB 和 .NET 的效能祕訣
 
@@ -39,7 +39,7 @@ Azure Cosmos DB 是快速、彈性的分散式資料庫，可透過保證的延�
 
 此處列出的四個應用程式類型預設使用32位主機處理。 若要針對您的應用程式類型將主機處理變更為64位處理，請執行下列動作：
 
-- **針對可執行檔應用程式**：在 [ **專案屬性** ] 視窗的 [ **組建** ] 窗格中，將 [ [平臺目標](https://docs.microsoft.com/visualstudio/ide/how-to-configure-projects-to-target-platforms?view=vs-2019) ] 設定為 [ **x64**]。
+- **針對可執行檔應用程式**：在 [ **專案屬性** ] 視窗的 [ **組建** ] 窗格中，將 [ [平臺目標](https://docs.microsoft.com/visualstudio/ide/how-to-configure-projects-to-target-platforms?view=vs-2019&preserve-view=true) ] 設定為 [ **x64**]。
 
 - **針對以 VSTest 為基礎的測試專案**：在 [Visual Studio**測試**] 功能表上，選取 [**測試**  >  **測試設定**]，然後將 [**預設處理器架構**] 設定為 [ **X64**]。
 
@@ -126,7 +126,7 @@ new CosmosClientOptions
 
 您可以藉由確定呼叫的應用程式與布建的 Azure Cosmos DB 端點位於相同的 Azure 區域內，以取得可能的最低延遲。 如需可用區域的清單，請參閱 [Azure 區域](https://azure.microsoft.com/regions/#services)。
 
-:::image type="content" source="./media/performance-tips/same-region.png" alt-text="共置相同區域中的用戶端。" border="false":::
+:::image type="content" source="./media/performance-tips/same-region.png" alt-text="使用不同的連線模式和通訊協定，建立與 Azure Cosmos DB 的連接。" border="false":::
 
    <a id="increase-threads"></a>
 
@@ -199,7 +199,7 @@ SQL .NET SDK 支援平行查詢，可讓您以平行方式查詢分割的容器�
 
 在效能測試期間，您應該增加負載，直到低比率的要求受到節流。 如果要求受到節流處理，用戶端應用程式應該會在伺服器指定的重試間隔後關閉節流。 遵循輪詢有助於確保您在重試之間花費最少的等待時間。 
 
-如需詳細資訊，請參閱 [RetryAfter](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosexception.retryafter?view=azure-dotnet#Microsoft_Azure_Cosmos_CosmosException_RetryAfter)。
+如需詳細資訊，請參閱 [RetryAfter](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosexception.retryafter?view=azure-dotnet&preserve-view=true#Microsoft_Azure_Cosmos_CosmosException_RetryAfter)。
     
 有一種機制可記錄其他診斷資訊和針對延遲問題進行疑難排解，如下列範例所示。 您可以記錄讀取延遲較高之要求的診斷字串。 所捕獲的診斷字串將協助您瞭解在指定的要求中收到 *429* 錯誤的次數。
 

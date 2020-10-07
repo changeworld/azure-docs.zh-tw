@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e1359fd2a59b49f10bb3b2daa4bcbadae921e188
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 22fcee69c32388c764434bedac04465bbc3e28cb
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89012444"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91801319"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中最佳化已佈建的輸送量成本
 
@@ -80,7 +80,7 @@ HTTP Status 429,
 
 如果您有多個用戶端的累積作業高於要求速率，則預設的重試計數（目前設定為9）可能還不夠。 在這種情況下，用戶端會對 `RequestRateTooLargeException` 應用程式擲回狀態碼429。 在 ConnectionPolicy 執行個體上設定 `RetryOptions`，即可變更預設重試次數。 根據預設， `RequestRateTooLargeException` 如果要求繼續以要求速率以上的方式運作，則在30秒的累計等候時間之後，會傳回 with 狀態碼429。 即使目前的重試計數小於最大重試計數 (預設值 9 或使用者定義的值)，也會發生這種情況。 
 
-[MaxRetryAttemptsOnThrottledRequests](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretryattemptsonthrottledrequests?view=azure-dotnet) 設定為3，因此在此情況下，如果要求作業的速率限制超過容器的保留輸送量，則在將例外狀況擲回應用程式之前，要求作業會重試三次。 [MaxRetryWaitTimeInSeconds](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretrywaittimeinseconds?view=azure-dotnet#Microsoft_Azure_Documents_Client_RetryOptions_MaxRetryWaitTimeInSeconds) 設定為60，因此在此情況下，如果第一個要求之後的累計重試等候時間（以秒為單位）超過60秒，則會擲回例外狀況。
+[MaxRetryAttemptsOnThrottledRequests](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretryattemptsonthrottledrequests?view=azure-dotnet&preserve-view=true) 設定為3，因此在此情況下，如果要求作業的速率限制超過容器的保留輸送量，則在將例外狀況擲回應用程式之前，要求作業會重試三次。 [MaxRetryWaitTimeInSeconds](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretrywaittimeinseconds?view=azure-dotnet&preserve-view=true#Microsoft_Azure_Documents_Client_RetryOptions_MaxRetryWaitTimeInSeconds) 設定為60，因此在此情況下，如果第一個要求之後的累計重試等候時間（以秒為單位）超過60秒，則會擲回例外狀況。
 
 ```csharp
 ConnectionPolicy connectionPolicy = new ConnectionPolicy(); 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: banders
 ms.custom: contperfq1
-ms.openlocfilehash: ae15fc59137e9bf6fb7bfd9fedfb410aa4e0931c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 2e0b9f10a321fce0b8ccc31bf914fe4f2995c49a
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91336883"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91651899"
 ---
 # <a name="analyze-unexpected-charges"></a>分析非預期的費用
 
@@ -26,7 +26,7 @@ ms.locfileid: "91336883"
 
 下列文章提供詳細的步驟，說明如何根據您的客戶類型來檢閱您的帳單。 在每篇文章中都有相關指示，說明如何下載 CSV 檔案，其中包含指定計費週期的使用量和成本詳細資料。
 
-- [隨用隨付帳單檢閱流程](review-individual-bill.md#compare-invoiced-charges-with-usage-file)
+- [隨用隨付帳單檢閱流程](review-individual-bill.md#charges)
 - [Enterprise 合約帳單檢閱流程](review-enterprise-agreement-bill.md)
 - [Microsoft 客戶合約檢閱流程](review-customer-agreement-bill.md#analyze-your-azure-usage-charges)
 - [Microsoft 合作夥伴合約檢閱流程](review-partner-agreement-bill.md#analyze-your-azure-usage-charges)
