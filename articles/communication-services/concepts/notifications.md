@@ -6,15 +6,15 @@ author: mikben
 manager: jken
 services: azure-communication-services
 ms.author: mikben
-ms.date: 03/10/2020
+ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 5be2ff48ea5510c54c79e76e8bae082bd5085794
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: abc2367c309f46ee1b29a51145c67e8d71919774
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90943703"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91665390"
 ---
 # <a name="communication-services-notifications"></a>通訊服務通知
 
@@ -36,7 +36,7 @@ Azure 通訊服務與 [Azure 事件方格](https://azure.microsoft.com/services/
 
 您可以將 Azure 通知中樞連線到您的通訊服務資源，以便在接到來電時，自動將推播通知傳送至使用者的行動裝置。 您應該使用這些推播通知將您的應用程式從背景喚醒，並且顯示 UI，讓使用者接受或拒絕通話。 
 
-:::image type="content" source="./media/notifications/acs-anh-int.png" alt-text="圖表顯示通訊服務與事件中樞的整合方式。":::
+:::image type="content" source="./media/notifications/acs-anh-int.png" alt-text="圖表顯示通訊服務與事件方格的整合方式。":::
 
 通訊服務會使用 Azure 通知中樞作為傳遞服務，以使用[直接傳送](https://docs.microsoft.com/rest/api/notificationhubs/direct-send) API 與各種平台特定的推播通知服務進行通訊。 這可讓您重複使用現有的 Azure 通知中樞資源和設定，為您的應用程式提供低延遲、可靠的通話通知。
 
@@ -66,7 +66,7 @@ armclient POST /subscriptions/<sub_id>/resourceGroups/<resource_group>/providers
 
 在入口網站中，瀏覽至您的 Azure 通訊服務資源。 在通訊服務資源中，從 [通訊服務] 頁面的左側功能表選取 [推播通知]，然後連線您先前佈建的通知中樞。 您必須在這裡提供您的連接字串和資源識別碼：
 
-:::image type="content" source="./media/notifications/acs-anh-portal-int.png" alt-text="顯示 Azure 入口網站中推播通知設定的螢幕擷取畫面。":::
+:::image type="content" source="./media/notifications/acs-anh-portal-int.png" alt-text="圖表顯示通訊服務與事件方格的整合方式。":::
 
 #### <a name="device-registration"></a>裝置註冊 
 

@@ -2,84 +2,74 @@
 title: 快速入門：建立 Synapse 工作區
 description: 遵循此指南中的步驟建立 Synapse 工作區。
 services: synapse-analytics
-author: pimorano
+author: saveenr
 ms.service: synapse-analytics
 ms.topic: quickstart
 ms.subservice: ''
-ms.date: 04/15/2020
-ms.author: pimorano
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: da7f115224db10ad1d66e8ffe7b86e58e43ae866
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 09/03/2020
+ms.author: saveenr
+ms.reviewer: jrasnick
+ms.openlocfilehash: 04bbab477f20ec25ccb0e975dad2b30a511346d2
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87052454"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91667753"
 ---
 # <a name="quickstart-create-a-synapse-workspace"></a>快速入門：建立 Synapse 工作區
-
 本快速入門說明如何使用 Azure 入口網站來建立 Azure Synapse 工作區。
 
-如果您沒有 Azure 訂用帳戶，請[在開始前建立免費帳戶](https://azure.microsoft.com/free/)。
+## <a name="create-a-synapse-workspace"></a>建立 Synapse 工作區
 
-## <a name="prerequisites"></a>必要條件
+1. 開啟 [Azure 入口網站](https://portal.azure.com)，並在頂端搜尋 **Synapse**。
+1. 在 [服務] 底下的搜尋結果中，選取 [Azure Synapse Analytics (工作區預覽)]。
+1. 選取 [新增]，使用這些設定來建立工作區：
 
-- [Azure Data Lake Storage Gen2 儲存體帳戶](../storage/common/storage-account-create.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+    |索引標籤|設定 | 建議的值 | 描述 |
+    |---|---|---|---|
+    |基本概念|**工作區名稱**|您可以賦予其任何名稱。| 在本文件中，我們將使用 **myworkspace**。|
+    |基本概念|**區域**|比對儲存體帳戶的區域。|
 
-## <a name="sign-in-to-the-azure-portal"></a>登入 Azure 入口網站
+1. 您需要 ADLSGEN2 帳戶來建立工作區。 最簡單的選擇是建立新的帳戶。 如果想要重複使用現有的帳戶，則必須執行一些額外的設定。 
+1. 選項 1 建立新的 ADLSGEN2 帳戶 
+    1. 在**選取 Data Lake Storage Gen 2** 中按一下 [建立新的] 並命名為 **contosolake**。
+    1. 在**選取 Data Lake Storage Gen 2** 中按一下 [檔案系統] 並命名為 **users**。
+1. 選項 2 請參閱本文件末尾的**準備儲存體帳戶**指示。
+1. 您的 Azure Synapse 工作區會使用此儲存體帳戶作為「主要」儲存體帳戶，以及用來儲存工作區資料的容器。 工作區會將資料儲存在 Apache Spark 資料表中。 其會將 Spark 應用程式記錄儲存在名為 **/synapse/workspacename** 的資料夾底下。
+1. 選取 [檢閱+建立] > [建立]。 您的工作區將會在幾分鐘內就緒。
 
-登入 [Azure 入口網站](https://portal.azure.com/)
+## <a name="open-synapse-studio"></a>開啟 Synapse Studio
 
-## <a name="create-an-azure-synapse-workspace-using-the-azure-portal"></a>使用 Azure 入口網站建立 Azure Synapse 工作區
+建立 Azure Synapse 工作區之後，有兩種方式可以開啟 Synapse Studio：
 
-1. 在 [Microsoft Azure 搜尋] 窗格中，輸入 **Synapse 工作區**，然後選取此服務。
-![Azure 入口網站搜尋列中輸入了 Azure Synapse 工作區。](media/quickstart-create-synapse-workspace/workspace-search.png)
-2. 在 [Synapse 工作區] 頁面上，按一下 [+ 新增]。
-![建立反白顯示的新 Azure Synapse 工作區之命令。](media/quickstart-create-synapse-workspace/create-workspace-02.png)
-3. 在 **Azure Synapse 工作區**表單中填寫下列資訊︰
+* 在 [Azure 入口網站](https://portal.azure.com)中開啟 Synapse 工作區。 在 [概觀] 區段的頂端，選取 [啟動 Synapse Studio]。
+* 移至 `https://web.azuresynapse.net` 並登入您的工作區。
 
-    | 設定 | 建議的值 | 描述 |
-    | :------ | :-------------- | :---------- |
-    | **訂用帳戶** | *您的訂用帳戶* | 如需訂用帳戶的詳細資訊，請參閱[訂用帳戶](https://account.windowsazure.com/Subscriptions)。 |
-    | **資源群組** | *任何資源群組* | 如需有效的資源群組名稱，請參閱[命名規則和限制](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)。 |
-    | **工作區名稱** | mysampleworkspace | 指定工作區的名稱，此名稱也會用於連線端點。|
-    | **區域** | 美國東部 2 | 指定工作區的位置。|
-    | **Data Lake Storage Gen2** | 帳戶：`storage account name` </br> 檔案系統：`root file system to use` | 指定要當作主要儲存體使用的 ADLS Gen2 儲存體帳戶名稱，以及要使用的檔案系統。|
-    ||||
+## <a name="prepare-an-existing-storage-account-for-use-with-synapse-analytics"></a>準備要與 Synapse Analytics 搭配使用的現有儲存體帳戶
 
-    ![工作區佈建流程 - 基本索引標籤。](media/quickstart-create-synapse-workspace/create-workspace-03.png)
+1. 開啟 [Azure 入口網站](https://portal.azure.com)。
+1. 瀏覽至現有的 ADLSGEN2 儲存體帳戶
+1. 在左窗格上選取 [存取控制 (IAM)]。 然後指派下列角色，或確定其已指派：
+    * 將您自己指派給**擁有者**角色。
+    * 將您自己指派給**儲存體 Blob 資料擁有者**角色。
+1. 在左側窗格中，選取 [容器] 並建立容器。
+1. 您可以為容器提供任何名稱。 在本文件中，我們會將容器命名為 **users**。
+1. 接受 [公用存取層級] 的預設設定，然後選取 [建立]。
 
-    您可以從下列選項選取儲存體帳戶：
-    - 您的訂用帳戶中可用的 ADLS Gen2 帳戶清單
-    - 使用帳戶名稱手動輸入
+### <a name="configure-access-to-the-storage-account-from-your-workspace"></a>從您的工作區設定儲存體帳戶的存取權
 
-    > [!IMPORTANT]
-    > Azure Synapse 工作區必須能夠讀取和寫入選取的 ADLS Gen2 帳戶。 此外，對於您連結為主要儲存體帳戶的任何儲存體帳戶，您必須已在建立儲存體帳戶時啟用 [階層式命名空間]。
-    >
-    > 在 ADLS Gen2 選項欄位下，會有注意事項說明系統將在所選 Data Lake Storage Gen2 檔案系統上，為工作區的受控識別指派**儲存體 Blob 資料參與者**角色，為其授與完整的資料存取權。
+Azure Synapse 工作區的受控身分識別可能已經有儲存體帳戶的存取權。 請依照下列步驟來確認：
 
-4. (選用) 修改任何**安全性 + 網路預設值**索引標籤：
-5. (選用) 在 [標籤] 索引標籤中新增任何標籤。
-6. [摘要] 索引標籤會執行必要的驗證，以確保可以成功建立工作區。 驗證成功之後，請按 [建立![工作區佈建流程 - 確認] 索引標籤。](media/quickstart-create-synapse-workspace/create-workspace-05.png)
-7. 一旦資源佈建流程成功完成，您會在 Synapse 工作區清單中看到已建立工作區的項目。 ![顯示新佈建工作區的 Synapse 工作區清單。](media/quickstart-create-synapse-workspace/create-workspace-07.png)
+1. 開啟 [Azure 入口網站](https://portal.azure.com)，然後開啟為您工作區選擇的主要儲存體帳戶。
+1. 從左窗格中選取 [存取控制 (IAM)]。
+1. 指派下列角色，或確定其已指派。 我們使用相同名稱作為工作區身分識別和工作區名稱。
+    * 針對儲存體帳戶上的 [儲存體 Blob 資料參與者] 角色，請指派 **myworkspace** 作為工作區身分識別。
+    * 指派 **myworkspace** 作為工作區名稱。
 
-## <a name="clean-up-resources"></a>清除資源
-
-請遵循下列步驟來刪除 Azure Synapse 工作區。
-> [!WARNING]
-> 刪除 Azure Synapse 工作區將會移除分析引擎和儲存在包含 SQL 集區和工作區繼資料之資料庫中的資料。 您無法再連線到 SQL 端點以及 Apache Spark 端點。 系統將刪除所有程式碼成品 (查詢、筆記本、作業定義和管線)。
->
-> 刪除工作區**不會**影響連結到工作區之 Data Lake Store Gen2 中的資料。
-
-如果想刪除 Azure Synapse 工作區，請完成下列步驟：
-
-1. 瀏覽至要刪除的 Azure Synapse 工作區。
-1. 在命令列中按 [刪除]。
- ![Azure Synapse 工作區概觀 - 已反白顯示刪除命令。](media/quickstart-create-synapse-workspace/create-workspace-10.png)
-1. 確認刪除，然後按 [刪除] 按鈕。
- ![Azure Synapse 工作區概觀 - 刪除工作區確認對話方塊。](media/quickstart-create-synapse-workspace/create-workspace-11.png)
-1. 當流程成功完成時，Azure Synapse 工作區就不會再列入工作區清單中。
+1. 選取 [儲存]。
 
 ## <a name="next-steps"></a>後續步驟
 
-接下來，您可以[建立 SQL 集區](quickstart-create-sql-pool-studio.md)或 [建立 Apache Spark 集區](quickstart-create-apache-spark-pool-studio.md)，以開始分析和探索您的資料。
+* [建立 SQL 集區](quickstart-create-sql-pool-studio.md) 
+* [建立 Apache Spark 集區](quickstart-create-apache-spark-pool-portal.md)
+* [使用 SQL 隨選](quickstart-sql-on-demand.md)

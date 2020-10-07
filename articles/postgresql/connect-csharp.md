@@ -1,19 +1,19 @@
 ---
 title: 快速入門：使用 C# 連線 - 適用於 PostgreSQL 的 Azure 資料庫 - 單一伺服器
 description: 本快速入門提供 C# (.NET) 程式碼範例，供您在連線至「適用於 PostgreSQL 的 Azure 資料庫 - 單一伺服器」及查詢其資料時使用。
-author: rachel-msft
-ms.author: raagyema
+author: mksuni
+ms.author: sumuth
 ms.service: postgresql
 ms.custom: mvc, devcenter, devx-track-csharp
 ms.devlang: csharp
 ms.topic: quickstart
 ms.date: 5/6/2019
-ms.openlocfilehash: c176caf4bd2bac68b1994b5eef51ebc2f7e7be4b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: cfa7a6e7e2de11978709fd662dcbfaa2085a0716
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90903865"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91710408"
 ---
 # <a name="quickstart-use-net-c-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>快速入門：使用 .NET (C#) 來連線和查詢適用於 PostgreSQL 的 Azure 資料庫中的資料 - 單一伺服器
 

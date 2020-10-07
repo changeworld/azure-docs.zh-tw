@@ -6,19 +6,19 @@ author: mikben
 manager: jken
 services: azure-communication-services
 ms.author: mikben
-ms.date: 03/10/2020
+ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 02a0a5dd5cfe3a1ecaa264f1e81c848a8da6c58d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 072e885ec1c618229141dea477cd598d8db34ce7
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90943909"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91756737"
 ---
 # <a name="quickstart-handle-sms-events"></a>快速入門：處理 SMS 事件
 
-[!INCLUDE [Private Preview Notice](../../includes/private-preview-include.md)]
+[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
 使用 Azure 事件方格來處理通訊服務 SMS 事件，以開始使用 Azure 通訊服務。 
 
@@ -65,11 +65,11 @@ ms.locfileid: "90943909"
 
 查看 [Azure 通訊服務支援的事件](../../concepts/event-handling.md)的完整清單。
 
-:::image type="content" source="./media/handle-sms-events/select-events-create-eventsub.png" alt-text="顯示選取了 [已接收 SMS] 和 [已接收 SMS 傳遞報表] 事件類型的螢幕擷取畫面。":::
+:::image type="content" source="./media/handle-sms-events/select-events-create-eventsub.png" alt-text="顯示在資源的 [事件] 頁面中選取 [事件訂用帳戶] 按鈕的螢幕擷取畫面。":::
 
 選取 [WebHook] 作為 [端點類型]。 
 
-:::image type="content" source="./media/handle-sms-events/select-events-create-linkwebhook.png" alt-text="顯示將 [端點類型] 欄位設定為 [Webhook] 的螢幕擷取畫面。":::
+:::image type="content" source="./media/handle-sms-events/select-events-create-linkwebhook.png" alt-text="顯示在資源的 [事件] 頁面中選取 [事件訂用帳戶] 按鈕的螢幕擷取畫面。":::
 
 針對 [端點]，按一下 [選取端點]，然後輸入 Web 應用程式的 URL。
 
@@ -77,7 +77,7 @@ ms.locfileid: "90943909"
 
 然後，選取 [確認選取項目]。
 
-:::image type="content" source="./media/handle-sms-events/select-events-create-selectwebhook-epadd.png" alt-text="顯示確認 Webhook 端點的螢幕擷取畫面。":::
+:::image type="content" source="./media/handle-sms-events/select-events-create-selectwebhook-epadd.png" alt-text="顯示在資源的 [事件] 頁面中選取 [事件訂用帳戶] 按鈕的螢幕擷取畫面。":::
 
 ## <a name="viewing-sms-events"></a>檢視 SMS 事件
 
@@ -94,9 +94,9 @@ ms.locfileid: "90943909"
 
 當您完成上述任一動作後，您會看到有 `SMS Received` 和 `SMS Delivery Report Received` 事件傳送至您的端點。 這些事件會顯示在我們一開始設定的 [Azure 事件方格檢視器範例](https://docs.microsoft.com/samples/azure-samples/azure-event-grid-viewer/azure-event-grid-viewer/)中。 您可以按事件旁的眼睛圖示，以查看整個承載。 事件會顯示如下：
 
-:::image type="content" source="./media/handle-sms-events/sms-received.png" alt-text="此螢幕擷取畫面顯示 [已接收 SMS] 事件的事件方格結構描述。":::
+:::image type="content" source="./media/handle-sms-events/sms-received.png" alt-text="顯示在資源的 [事件] 頁面中選取 [事件訂用帳戶] 按鈕的螢幕擷取畫面。":::
 
-:::image type="content" source="./media/handle-sms-events/SMS-Delivery-Report-Received.png" alt-text="此螢幕擷取畫面顯示 [SMS 傳遞報表] 事件的事件方格結構描述。":::
+:::image type="content" source="./media/handle-sms-events/sms-delivery-report-received.png" alt-text="顯示在資源的 [事件] 頁面中選取 [事件訂用帳戶] 按鈕的螢幕擷取畫面。":::
 
 深入了解[事件結構描述和其他事件處理概念](../../concepts/event-handling.md)
 

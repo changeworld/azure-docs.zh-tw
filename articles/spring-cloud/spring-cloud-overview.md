@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: f622042c9a2e8cc5bc11c8dc909d02afe38e5c78
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: b03bedd9abbe59ed3bc1b0ec1439aa27af57e6da
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90908360"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91758892"
 ---
 # <a name="what-is-azure-spring-cloud"></a>什麼是 Azure Spring Cloud？
 
@@ -32,7 +32,7 @@ Azure Spring Cloud 作為 Azure 生態系統的一部分，可讓您輕鬆繫結
 
 ## <a name="spring-cloud-config-server"></a>Spring Cloud Config Server
 
-Azure Spring Cloud Config Server 能在分散式系統中提供外部化設定，並同時支援伺服器端和用戶端。  Azure Spring Cloud Config Server 是一個中央位置，用以管理所有環境的應用程式屬性。 如需詳細資訊，請參閱 [Spring Cloud Config Server 參考](https://spring.io/projects/spring-cloud-config.md)。 
+Azure Spring Cloud Config Server 能在分散式系統中提供外部化設定，並同時支援伺服器端和用戶端。  Azure Spring Cloud Config Server 是一個中央位置，用以管理所有環境的應用程式屬性。 如需詳細資訊，請參閱 [Spring Cloud Config Server 參考](https://spring.io/projects/spring-cloud-config)。 
 
 ## <a name="bluegreen-deployments"></a>藍/綠部署
 

@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 04/18/2020
 ms.author: lcozzens
 ms.custom: devx-track-java
-ms.openlocfilehash: 337baae97d426fe05ac59290a882865038f60c02
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 220d446990a9c362c30b3352e247af2b76d3d128
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019737"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767666"
 ---
 # <a name="quickstart-add-feature-flags-to-a-spring-boot-app"></a>快速入門：將功能旗標新增至 Spring Boot 應用程式
 
@@ -30,7 +30,7 @@ Spring Boot 功能管理程式庫可透過全方位的功能旗標支援來擴�
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. 選取 [功能管理員]   > [+新增]  ，以新增名為 `Beta` 的功能旗標。
+7. 選取 [功能管理員]   > [+新增]  ，以新增名為 `Beta` 的功能旗標。
 
     > [!div class="mx-imgBorder"]
     > ![啟用名為 Beta 的功能旗標](media/add-beta-feature-flag.png)

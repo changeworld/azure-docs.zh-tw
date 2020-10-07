@@ -10,12 +10,12 @@ ms.date: 09/03/2020
 ms.topic: include
 ms.custom: include file
 ms.author: dadoolab
-ms.openlocfilehash: 3fe27bf31385e0310211b5e1b0b7bbfa636eb19b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 9265caa3054cde6af311e655db2b2496524e8d24
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90943962"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91757110"
 ---
 藉由使用通訊服務 Python SMS 用戶端程式庫來傳送 SMS 訊息，以開始使用 Azure 通訊服務。
 
@@ -107,7 +107,7 @@ sms_response = sms_client.send(
 
 ```
 
-您應該將 `<leased-phone-number>` 取代為與您通訊服務相關聯且已啟用 SMS 的電話號碼，並使用您想要對其傳送訊息的電話號碼取代 `<to-phone-number>`。 所有的電話號碼參數都應該遵守 [E-164 標準](../../../concepts/telephony-sms/plan-solution.md#optional-reading-international-public-telecommunication-numbering-plan-e164)。
+您應該將 `<leased-phone-number>` 取代為與您通訊服務相關聯且已啟用 SMS 的電話號碼，並使用您想要對其傳送訊息的電話號碼取代 `<to-phone-number>`。 
 
 `send_sms_options` 參數是選擇性參數，可讓您用來設定傳遞報告。 這適用於想要在傳遞 SMS 訊息時發出事件的案例。 請參閱[處理 SMS 事件](../handle-sms-events.md)快速入門，以設定 SMS 訊息的傳遞報告。
 

@@ -6,15 +6,15 @@ author: mikben
 manager: jken
 services: azure-communication-services
 ms.author: mikben
-ms.date: 03/10/2020
+ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: af07894fcbfae386849d32492be9d2718a3adcc3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: f33d7efd1c136619767c3eadd93740442ae7239a
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90943770"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91762037"
 ---
 # <a name="chat-concepts"></a>聊天概念
 
@@ -28,7 +28,7 @@ ms.locfileid: "90943770"
 
 聊天會在對話中進行。 聊天對話可以包含許多訊息和許多使用者。 每則訊息都屬於單一對話，而使用者可以加入一個或多個對話。 
 
-聊天對話中的每個使用者都稱為成員。 一個聊天對話中最多可以有 250 個成員。 只有聊天對話成員可以在對話中傳送和接收訊息或新增/移除成員。 允許的訊息大小上限大約是 28KB。 通訊服務會儲存聊天記錄，直到您在聊天對話上執行刪除作業為止。 您可以使用 `List/Get Messages` 作業來擷取聊天對話中的所有訊息。
+聊天對話中的每個使用者都稱為成員。 一個聊天對話中最多可以有 250 個成員。 只有聊天對話成員可以在對話中傳送和接收訊息或新增/移除成員。 允許的訊息大小上限大約是 28KB。 您可以使用 `List/Get Messages` 作業來擷取聊天對話中的所有訊息。 通訊服務會儲存聊天記錄，直到您對聊天對話或訊息執行刪除作業，或交談對話中沒有其餘成員為止；屆時，記錄將會孤立並進行處理準備刪除。   
 
 如果聊天對話中的成員超過 20 位，則會停用讀取回條和輸入指示器功能。 
 
@@ -128,9 +128,9 @@ ms.locfileid: "90943770"
 
 達成此目標的其中一種方式是讓信任的服務作為聊天對話的成員。 假設您想要啟用語言翻譯。 這項服務會負責接聽其他成員 [1] 所交換的訊息、呼叫認知 API 以將內容翻譯為所需的語言 [2、3]，並以訊息的形式將翻譯的結果傳送到聊天對話中 [4]。 
 
-如此一來，訊息記錄就會同時包含原始和翻譯的訊息。 在用戶端應用程式中，您可以新增邏輯來顯示原始或翻譯的訊息。 請參閱[本快速入門](https://docs.microsoft.com/azure/cognitive-services/translator/quickstart-translate)，了解如何使用認知 API，將文字翻譯成不同的語言。 
+如此一來，訊息記錄就會同時包含原始和翻譯的訊息。 在用戶端應用程式中，您可以新增邏輯來顯示原始或翻譯的訊息。 請參閱[本快速入門](https://docs.microsoft.com/azure/cognitive-services/translator/quickstart-translator)，了解如何使用認知 API，將文字翻譯成不同的語言。 
 
-:::image type="content" source="../media/chat/cognitive-services.png" alt-text="顯示認知服務如何與通訊服務互動的圖表。":::
+:::image type="content" source="../media/chat/cognitive-services.png" alt-text="顯示通訊服務聊天架構的圖表。":::
 
 ## <a name="next-steps"></a>下一步
 

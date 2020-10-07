@@ -8,23 +8,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 05/28/2020
+ms.date: 10/05/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-java
-ms.openlocfilehash: 2ef95af333bad96e443821e1bc039ef2614593f5
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e9f31a16434c8b54e13f4d52a412afbc90fb5c6b
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327220"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760881"
 ---
 # <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-rest-api-and-java"></a>快速入門：使用電腦視覺 REST API 和 Java 擷取印刷和手寫文字
 
 在本快速入門中，您會使用電腦視覺 REST API 來擷取影像中的印刷和手寫文字。 您可以使用[讀取](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005)和[取得讀取結果](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d9869604be85dee480c8750)方法來偵測影像中的文字，然後將辨識到的字元擷取為機器可讀的字元串流。
 
-
-> [!IMPORTANT]
-> [讀取](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005)方法會以非同步方法執行。 這個方法不會在成功回應的主體中傳回任何資訊。 「批次讀取」方法會改為在 `Operation-Location` 回應標頭欄位的值中傳回 URI。 您接著可以呼叫代表[取得讀取結果](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d9869604be85dee480c8750)API 的這個 URI，以檢查狀態並傳回「讀取」方法呼叫的結果。
+[讀取](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005)方法會以非同步方法執行。 這個方法不會在成功回應的主體中傳回任何資訊。 「批次讀取」方法會改為在 `Operation-Location` 回應標頭欄位的值中傳回 URI。 您接著可以呼叫代表[取得讀取結果](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d9869604be85dee480c8750)API 的這個 URI，以檢查狀態並傳回「讀取」方法呼叫的結果。
 
 ---
 

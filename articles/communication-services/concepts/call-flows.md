@@ -6,15 +6,15 @@ author: mikben
 manager: jken
 services: azure-communication-services
 ms.author: mikben
-ms.date: 03/10/2020
+ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 7172e3319e60603d46dc2af87f3818a5c3664285
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 9fe5cb13ee352b2c49ab6ae57cabd6116cdfa720
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90943922"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91667668"
 ---
 # <a name="call-flows"></a>通話流程
 
@@ -44,13 +44,13 @@ ms.locfileid: "90943922"
 
 對於 Alice，這會是咖啡廳的 NAT，對 Bob 而言則是家裡的 NAT。 Alice 的裝置會傳送其 NAT 的外部位址，而 Bob 的裝置也會執行相同的動作。 用戶端程式庫會從 Azure 通訊服務免費提供的 STUN (Session Traversal Utilities for NAT) 服務獲知外部位址。 處理 Alice 與 Bob 雙方交握的邏輯會內嵌在 Azure 通訊服務提供的用戶端程式庫內。 (您不需要進行額外的設定)
 
-:::image type="content" source="./media/call-flows/about-voice-case-2.png" alt-text="此圖顯示使用 STUN 連線的 VOIP 通話。":::
+:::image type="content" source="./media/call-flows/about-voice-case-2.png" alt-text="此圖顯示使用者與通訊服務之間的直接 VOIP 通話。":::
 
 ### <a name="case-3-voip-where-neither-a-direct-nor-nat-connection-is-possible"></a>案例 3：直接連線和 NAT 連線皆不可行的 VoIP
 
 如果有一或兩個用戶端裝置位於對稱式 NAT 後方，則需要以個別的雲端服務在兩個用戶端程式庫之間轉送媒體。 這項服務稱為 TURN (Traversal Using Relays around NAT)，同樣由通訊服務所提供。 通訊服務的通話用戶端程式庫會根據偵測到的網路狀況自動使用 TURN 服務。 使用 Microsoft 的 TURN 服務須另外計費。
 
-:::image type="content" source="./media/call-flows/about-voice-case-3.png" alt-text="此圖顯示使用 TURN 連線的 VOIP 通話。":::
+:::image type="content" source="./media/call-flows/about-voice-case-3.png" alt-text="此圖顯示使用者與通訊服務之間的直接 VOIP 通話。":::
  
 ### <a name="case-4-group-calls-with-pstn"></a>案例 4：PSTN 的群組通話
 
@@ -58,7 +58,7 @@ PSTN 通話的訊號和媒體均使用 Azure 通訊服務的電話語音資源�
 
 PSTN 媒體流量會通過名為「媒體處理器」的元件。
 
-:::image type="content" source="./media/call-flows/about-voice-pstn.png" alt-text="此圖顯示使用通訊服務的 PSTN 群組通話。":::
+:::image type="content" source="./media/call-flows/about-voice-pstn.png" alt-text="此圖顯示使用者與通訊服務之間的直接 VOIP 通話。":::
 
 > [!NOTE]
 > 對於熟悉媒體處理的人而言，我們的媒體處理器也會是背靠背使用者代理程式 (Back to Back User Agent)，如 [RFC 3261 SIP：工作階段初始通訊協定](https://tools.ietf.org/html/rfc3261)所定義，這表示在處理 Microsoft 與電信業者網路之間的通話時，可以轉譯解碼器。 Azure 通訊服務的訊號控制器是 Microsoft 根據相同 RFC 進行的 SIP Proxy 實作。
@@ -70,11 +70,11 @@ PSTN 媒體流量會通過名為「媒體處理器」的元件。
 > [!NOTE]
 > 媒體處理器可作為 Multipoint 控制單位 (MCU) 或選擇性轉送單位 (SFU)
 
-:::image type="content" source="./media/call-flows/about-voice-group-calls.png" alt-text="此圖顯示通訊服務內的 UDP 媒體處理流程。":::
+:::image type="content" source="./media/call-flows/about-voice-group-calls.png" alt-text="此圖顯示使用者與通訊服務之間的直接 VOIP 通話。":::
 
 如果用戶端程式庫因防火牆限制而無法將 UDP 用於媒體，則會嘗試使用傳輸控制通訊協定 (TCP)。 請注意，媒體處理器元件需要 UDP，因此在發生這種情況時，將會在群組通話中新增通訊服務 TURN 服務，以將 TCP 轉譯為 UDP。 在此情況下將會產生 TURN 費用，除非手動停用 TURN 功能。
 
-:::image type="content" source="./media/call-flows/about-voice-group-calls-2.png" alt-text="此圖顯示通訊服務內的 TCP 媒體處理流程。":::
+:::image type="content" source="./media/call-flows/about-voice-group-calls-2.png" alt-text="此圖顯示使用者與通訊服務之間的直接 VOIP 通話。":::
 
 ## <a name="next-steps"></a>下一步
 

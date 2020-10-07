@@ -1,19 +1,19 @@
 ---
 title: 快速入門：使用 Ruby 連線 - 適用於 PostgreSQL 的 Azure 資料庫 - 單一伺服器
 description: 本快速入門提供 Ruby 程式碼範例，供您在連線至「適用於 PostgreSQL 的 Azure 資料庫 - 單一伺服器」及查詢其資料時使用。
-author: rachel-msft
-ms.author: raagyema
+author: mksuni
+ms.author: sumuth
 ms.service: postgresql
 ms.custom: mvc
 ms.devlang: ruby
 ms.topic: quickstart
 ms.date: 5/6/2019
-ms.openlocfilehash: e33e80a7363ac27bd7e0983a1ff3b65ee85b86b2
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 4afe6f175095d146c7feed04d469d78203179e0f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90882380"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91707875"
 ---
 # <a name="quickstart-use-ruby-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>快速入門：使用 Ruby 來連線和查詢適用於 PostgreSQL 的 Azure 資料庫中的資料 - 單一伺服器
 

@@ -8,12 +8,12 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 09/16/2020
-ms.openlocfilehash: 0a28bd0d4101fc9d49413adaaccc0a6d38ec64ed
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 460c37107ac2dbd8bc3377d3716e708331db9904
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91307716"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91740918"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>快速入門：在 Azure 入口網站中建立 Azure 認知搜尋索引
 
@@ -35,7 +35,7 @@ ms.locfileid: "91307716"
 
 服務儀表板上的區段會顯示您已有多少個索引、索引子和資料來源。 
 
-![索引、索引子和資料來源的清單](media/search-get-started-portal/tiles-indexers-datasources.png)
+:::image type="content" source="media/search-get-started-portal/tiles-indexers-datasources.png" alt-text="索引、索引子和資料來源的清單":::
 
 ## <a name="create-an-index-and-load-data"></a><a name="create-index"></a> 建立索引和載入資料
 
@@ -49,11 +49,11 @@ ms.locfileid: "91307716"
 
 1. [尋找您的搜尋服務](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/)，然後在 [概觀] 頁面上，按一下命令列上的 [匯入資料]，以建立及填入搜尋索引。
 
-   ![匯入資料命令](media/search-get-started-portal/import-data-cmd.png)
+   :::image type="content" source="media/search-get-started-portal/import-data-cmd.png" alt-text="索引、索引子和資料來源的清單":::
 
 1. 在精靈中，按一下 [連線到您的資料] > [範例] > [hotels-sample]。 此資料來源是內建的。 如果您建立自己的資料來源，則必須指定名稱、類型和連線資訊。 一旦建立，就會變成可在其他匯入作業中重複使用的「現有資料來源」。
 
-   ![選取範例資料集](media/search-get-started-portal/import-datasource-sample.png)
+   :::image type="content" source="media/search-get-started-portal/import-datasource-sample.png" alt-text="索引、索引子和資料來源的清單":::
 
 1. 繼續進行下一頁。
 
@@ -63,7 +63,7 @@ ms.locfileid: "91307716"
 
 我們將暫時略過此步驟，而直接進行**自訂目標索引**。
 
-   ![跳過認知技術步驟](media/search-get-started-portal/skip-cog-skill-step.png)
+   :::image type="content" source="media/search-get-started-portal/skip-cog-skill-step.png" alt-text="索引、索引子和資料來源的清單":::
 
 > [!TIP]
 > 您可以透過[快速入門](cognitive-search-quickstart-blob.md)或[教學課程](cognitive-search-tutorial-blob.md)，逐步執行 AI 索引編製範例。
@@ -87,7 +87,7 @@ ms.locfileid: "91307716"
 
    如果您使用現有的旅館資料來源再次執行精靈，系統將不會使用預設屬性來設定索引。 您必須以手動方式對未來的匯入選取屬性。 
 
-   ![產生的旅館索引](media/search-get-started-portal/hotelsindex.png)
+   :::image type="content" source="media/search-get-started-portal/hotelsindex.png" alt-text="索引、索引子和資料來源的清單":::
 
 2. 繼續進行下一頁。
 
@@ -100,7 +100,7 @@ ms.locfileid: "91307716"
 
 按一下 [提交] 以建立並同時執行索引子。
 
-  ![旅館索引子](media/search-get-started-portal/hotels-indexer.png)
+  :::image type="content" source="media/search-get-started-portal/hotels-indexer.png" alt-text="索引、索引子和資料來源的清單":::
 
 ## <a name="monitor-progress"></a>監視進度
 
@@ -108,7 +108,7 @@ ms.locfileid: "91307716"
 
 入口網站更新頁面可能需要幾分鐘的時間，但您應該會在清單中看到新建立的索引子 (其狀態顯示為「進行中」或成功)，以及已編製索引的文件數目。
 
-   ![索引子進度訊息](media/search-get-started-portal/indexers-inprogress.png)
+   :::image type="content" source="media/search-get-started-portal/indexers-inprogress.png" alt-text="索引、索引子和資料來源的清單":::
 
 ## <a name="view-the-index"></a>檢視索引
 
@@ -116,13 +116,13 @@ ms.locfileid: "91307716"
 
 等候入口網站頁面重新整理。 幾分鐘後，您應該會看到具有文件計數和儲存體大小的索引。
 
-   ![服務儀表板上的索引清單](media/search-get-started-portal/indexes-list.png)
+   :::image type="content" source="media/search-get-started-portal/indexes-list.png" alt-text="索引、索引子和資料來源的清單":::
 
 在此清單中，您可以按一下剛剛建立的 *hotels-sample* 索引、檢視索引結構描述， 以及選擇性地新增欄位。 
 
 [欄位] 索引標籤會顯示索引結構描述。 捲動至清單底部可輸入新欄位。 在大部分情況下，您無法變更現有的欄位。 現有的欄位在 Azure 認知搜尋中具有實體表示法，因此不可修改，甚至是在程式碼中也不可修改。 若要對現有欄位進行重大變更，請建立新索引並，捨棄原始欄位。
 
-   ![範例索引定義](media/search-get-started-portal/sample-index-def.png)
+   :::image type="content" source="media/search-get-started-portal/sample-index-def.png" alt-text="索引、索引子和資料來源的清單":::
 
 您可以隨時新增其他建構，例如評分設定檔和 CORS 選項。
 
@@ -140,15 +140,15 @@ ms.locfileid: "91307716"
 
 1. 按一下命令列上的 [搜尋總管]  。
 
-   ![搜尋總管命令](media/search-get-started-portal/search-explorer-cmd.png)
+   :::image type="content" source="media/search-get-started-portal/search-explorer-cmd.png" alt-text="索引、索引子和資料來源的清單":::
 
 2. 從 [索引] 下拉式清單中，選擇 [hotels-sample-index]。 按一下[API 版本] 下拉式清單，以查看可用的 REST API。 針對下面的查詢，請使用公開推出版本 (2020-06-30)。
 
-   ![索引和 API 命令](media/search-get-started-portal/search-explorer-changeindex.png)
+   :::image type="content" source="media/search-get-started-portal/search-explorer-changeindex.png" alt-text="索引、索引子和資料來源的清單":::
 
 3. 在搜尋列中貼入下列查詢字串，然後按一下 [搜尋]。
 
-   ![查詢字串和搜尋按鈕](media/search-get-started-portal/search-explorer-query-string-example.png)
+   :::image type="content" source="media/search-get-started-portal/search-explorer-query-string-example.png" alt-text="索引、索引子和資料來源的清單":::
 
 ## <a name="example-queries"></a>查詢範例
 

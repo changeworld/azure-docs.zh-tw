@@ -8,12 +8,12 @@ ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 8/26/2020
 ms.author: alkemper
-ms.openlocfilehash: 5542dca6d9b1ab18cf1b9b93e20fa64da0eb1dd4
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: f57163b3d17877f7f8c66fa57fc8a0736c6affb7
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90998292"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767714"
 ---
 # <a name="quickstart-add-feature-flags-to-an-azure-functions-app"></a>快速入門：將功能旗標新增至 Azure Functions 應用程式
 
@@ -31,14 +31,14 @@ ms.locfileid: "90998292"
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. 選取 [功能管理員]   > [+新增]  ，以新增名為 `Beta` 的功能旗標。
+7. 選取 [功能管理員]   > [+新增]  ，以新增名為 `Beta` 的功能旗標。
 
     > [!div class="mx-imgBorder"]
     > ![啟用名為 Beta 的功能旗標](media/add-beta-feature-flag.png)
 
     請暫且將 `label` 和 `Description` 保留為未定義。
 
-7. 選取 [套用]  以儲存新的功能旗標。
+8. 選取 [套用]  以儲存新的功能旗標。
 
 ## <a name="create-a-functions-app"></a>建立 Functions 應用程式
 

@@ -13,12 +13,12 @@ ms.author: aahi
 keywords: 文字採礦, 情感分析, 文字分析
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
 zone_pivot_groups: programming-languages-text-analytics
-ms.openlocfilehash: ed87c536c53ab1c07af05a7b8223901591c16e66
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 0fbd8b92846f6436128f64680a1fa9b77763a2c8
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91332292"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91710775"
 ---
 # <a name="quickstart-use-the-text-analytics-client-library"></a>快速入門：使用文字分析用戶端程式庫
 
@@ -37,6 +37,8 @@ ms.locfileid: "91332292"
 > * 文字分析 API 的最新穩定版本是 `3.0`。
 >    * 請務必遵循您所使用版本的指示。
 > * 為求簡化，本文中的程式碼使用同步方法和未受保護的認證儲存體。 針對生產案例，建議您使用批次非同步方法來取得效能和擴充性。 請參閱下列參考文件。
+
+[!INCLUDE [v3 region availability](../includes/v3-region-availability.md)]
 
 [!INCLUDE [C# quickstart](../includes/quickstarts/csharp-sdk.md)]
 

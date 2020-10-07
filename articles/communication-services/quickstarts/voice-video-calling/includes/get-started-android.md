@@ -6,25 +6,23 @@ ms.author: marobert
 ms.date: 08/11/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 658aaf018dd4c231b9bc9fc8c6dda78b2a6f05c0
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 460d1c33dcd5284067d14d5d6efa9da9b5b182ae
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90943945"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91779292"
 ---
-在本快速入門中，您將了解如何使用適用於 Android 的 Azure 通訊服務通話用戶端程式庫以開始通話。
+在本快速入門中，您將了解如何使用適用於 Android 的 Azure 通訊服務通話用戶端程式庫開始進行通話。
 
 ## <a name="prerequisites"></a>必要條件
 
 - 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - [Android Studio](https://developer.android.com/studio)，用於建立 Android 應用程式。
-- 針對您的 Azure 通訊服務的[使用者存取權杖](../../access-tokens.md)。
 - 已部署通訊服務資源。 [建立通訊服務資源](../../create-communication-resource.md)。
-
+- 針對您的 Azure 通訊服務的[使用者存取權杖](../../access-tokens.md)。
 
 ## <a name="setting-up"></a>設定
-
 
 ### <a name="create-an-android-app-with-an-empty-activity"></a>建立具有空白活動的 Android 應用程式
 
@@ -34,11 +32,9 @@ ms.locfileid: "90943945"
 
 選取 [手機和平板電腦] 底下的 [空白活動] 專案範本。
 
-:::image type="content" source="../media/android/studio-blank-activity.png" alt-text="顯示在 [專案範本] 畫面中選取 [空白活動] 選項的螢幕擷取畫面。":::
+:::image type="content" source="../media/android/studio-blank-activity.png" alt-text="顯示在 Android Studio 中選取 [啟動新的 Android Studio 專案] 按鈕的螢幕擷取畫面。" 或更新版本。
 
-選取最低版本的用戶端程式庫 "API 26：Android 8.0 (Oreo)" 或更新版本。
-
-:::image type="content" source="../media/android/studio-calling-min-api.png" alt-text="顯示在 [專案範本] 畫面中選取 [空白活動] 選項的螢幕擷取畫面 2。":::
+:::image type="content" source="../media/android/studio-calling-min-api.png" alt-text="顯示在 Android Studio 中選取 [啟動新的 Android Studio 專案] 按鈕的螢幕擷取畫面。":::
 
 
 ### <a name="install-the-package"></a>安裝套件
@@ -64,7 +60,7 @@ allprojects {
     }
 }
 ```
-然後，在您的模組層級 build.gradle 中，將下列幾行新增至相依性和 android 區段
+然後，在您的模組層級 build.gradle 中，將以下幾行新增至相依性和 android 區段
 
 ```groovy
 android {
@@ -80,7 +76,7 @@ android {
 
 dependencies {
     ...
-    implementation 'com.azure.android:azure-communication-calling:1.0.0-beta.1'
+    implementation 'com.azure.android:azure-communication-calling:1.0.0-beta.2'
     ...
 }
 ```
@@ -126,9 +122,9 @@ See https://developer.android.com/about/versions/pie/android-9.0-changes-28#apac
     
 ```
 
-### <a name="setup-the-layout-for-the-app"></a>設定應用程式的版面配置
+### <a name="set-up-the-layout-for-the-app"></a>設定應用程式的配置
 
-需要兩個輸入：被呼叫者識別碼的文字輸入，以及用來進行呼叫的按鈕。 這些可以透過設計工具或藉由編輯版面配置 xml 來新增。 建立識別碼為 `call_button` 的按鈕，以及 `callee_id` 的文字輸入。 瀏覽至 `app/src/main/res/layout/activity_main.xml` 並且以下列內容取代檔案的內容：
+需要兩個輸入：被呼叫者識別碼的文字輸入，以及用來進行呼叫的按鈕。 這些可以透過設計工具或藉由編輯版面配置 xml 來新增。 建立識別碼為 `call_button`、文字輸入為 `callee_id` 的按鈕。 瀏覽至 `app/src/main/res/layout/activity_main.xml` 並且以下列內容取代檔案的內容：
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -315,4 +311,8 @@ private void startCall() {
 
 應用程式現在可以使用工具列上的 [執行應用程式] 按鈕 (Shift+F10) 來啟動。 確認您可以藉由呼叫 `8:echo123` 來進行呼叫。 接著會播放預先錄製的訊息，為您重複訊息。
 
-:::image type="content" source="../media/android/quickstart-android-call-echobot.png" alt-text="顯示已完成應用程式的螢幕擷取畫面。":::
+:::image type="content" source="../media/android/quickstart-android-call-echobot.png" alt-text="顯示在 Android Studio 中選取 [啟動新的 Android Studio 專案] 按鈕的螢幕擷取畫面。":::
+
+## <a name="sample-code"></a>範例程式碼
+
+您可以從 [GitHub](https://github.com/Azure/Communication/tree/master/samples/Add%20Voice%20Calling/Android/Java) 下載範例應用程式

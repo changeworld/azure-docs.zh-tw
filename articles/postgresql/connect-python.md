@@ -1,19 +1,19 @@
 ---
 title: 快速入門：使用 Python 連線 - 適用於 PostgreSQL 的 Azure 資料庫 - 單一伺服器
 description: 本快速入門提供 Python 程式碼範例，供您在連線至「適用於 PostgreSQL 的 Azure 資料庫 - 單一伺服器」及查詢其資料時使用。
-author: rachel-msft
-ms.author: raagyema
+author: mksuni
+ms.author: sumuth
 ms.service: postgresql
 ms.custom: mvc, devcenter, devx-track-python
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 11/07/2019
-ms.openlocfilehash: 9fb0c02bcf040b1d27831e72d31ff07a7c38ad0a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 6452934828c4e74563daf001271b3ce018ab58e3
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90901819"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91707892"
 ---
 # <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>快速入門：使用 Python 來連線和查詢適用於 PostgreSQL 的 Azure 資料庫中的資料 - 單一伺服器
 
@@ -105,7 +105,7 @@ conn.close()
 
 程式碼會在成功執行後產生下列輸出：
 
-:::image type="content" source="media/connect-python/2-example-python-output.png" alt-text="命令列輸出":::
+:::image type="content" source="media/connect-python/2-example-python-output.png" alt-text="適用於 PostgreSQL 的 Azure 資料庫伺服器名稱":::
 
 ## <a name="read-data"></a>讀取資料
 下列程式碼範例會連線到適用於 PostgreSQL 的 Azure 資料庫，並使用 [cursor.execute](http://initd.org/psycopg/docs/cursor.html#execute) 搭配 SQL **SELECT** 陳述式來讀取資料。 此函式會接受查詢並使用 [cursor.fetchall()](http://initd.org/psycopg/docs/cursor.html#cursor.fetchall) 傳回用於反覆查詢的結果集。 

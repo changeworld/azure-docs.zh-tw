@@ -8,22 +8,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 05/27/2020
+ms.date: 10/05/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-js
-ms.openlocfilehash: c3f0b7c262fc774e43f2f63ebf09a1a08beea686
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 4100bf38b61d1b6eb7c3dfad3f1434a885c7d2ae
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91262666"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760847"
 ---
 # <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-rest-api-and-javascript"></a>快速入門：使用電腦視覺 REST API 和 JavaScript 擷取印刷和手寫文字
 
 在本快速入門中，您將使用電腦視覺 REST API 來擷取影像中的印刷和手寫文字。 您可以使用[讀取](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005)和[取得讀取結果](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d9869604be85dee480c8750)方法來偵測影像中的文字，然後將辨識到的字元擷取為機器可讀的字元串流。 
 
-> [!IMPORTANT]
-> [讀取](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005)方法會以非同步方法執行。 這個方法不會在成功回應的主體中傳回任何資訊。 「批次讀取」方法會改為在 `Operation-Location` 回應標頭欄位的值中傳回 URI。 您接著可以呼叫代表[取得讀取結果](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d9869604be85dee480c8750)API 的這個 URI，以檢查狀態並傳回「讀取」方法呼叫的結果。
+[讀取](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005)方法會以非同步方法執行。 這個方法不會在成功回應的主體中傳回任何資訊。 「批次讀取」方法會改為在 `Operation-Location` 回應標頭欄位的值中傳回 URI。 您接著可以呼叫代表[取得讀取結果](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d9869604be85dee480c8750)API 的這個 URI，以檢查狀態並傳回「讀取」方法呼叫的結果。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -32,8 +31,8 @@ ms.locfileid: "91262666"
     * 您需要來自所建立資源的金鑰和端點，以將應用程式連線至 電腦視覺服務。 您稍後會在快速入門中將金鑰和端點貼到下列程式碼中。
     * 您可以使用免費定價層 (`F0`) 來試用服務，之後可升級至付費層以用於實際執行環境。
 
-## <a name="create-and-run-the-sample"></a>建立並執行範例
 
+## <a name="create-and-run-the-sample"></a>建立並執行範例
 
 若要建立並執行範例，請執行下列步驟：
 

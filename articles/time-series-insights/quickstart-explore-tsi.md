@@ -9,13 +9,13 @@ manager: diviso
 ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
-ms.date: 07/07/2020
-ms.openlocfilehash: 135fbe914a1bf99f1cc32bd9291658f60282aa0e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 10/02/2020
+ms.openlocfilehash: 9cd1a6059360c948229a1da00780cd6cb40b7f35
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87100807"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91666529"
 ---
 # <a name="quickstart-explore-the-azure-time-series-insights-gen2-demo-environment"></a>快速入門：探索 Azure 時間序列深入解析 Gen2 示範環境
 
@@ -100,7 +100,7 @@ Azure 時間序列深入解析 Gen2 總管會顯示歷史資料和根本原因�
 
       [![將時間範圍延伸至 60 天](media/v2-update-quickstart/quick-start-expand-interval-range.png)](media/v2-update-quickstart/quick-start-expand-interval-range.png#lightbox)
 
-1. 我們可以新增其他感應器資料點，以提供更詳盡的內容。 我們檢視的感應器愈多，就愈能充分了解問題的本質。 我們將置放標記，以顯示實際的值。 
+1. 我們可以新增其他感應器資料點，以提供更詳盡的內容。 我們檢視的感應器愈多，就愈能充分了解問題的本質。 我們將置放標記，以顯示實際的值。
 
     1. 選取 [發電機系統]，然後選取三個感應器：**GridVoltagePhase1**、**GridVoltagePhase2** 和 **GridVoltagePhase3**。
     1. 在可見區域的最後一個資料點上置放標記。

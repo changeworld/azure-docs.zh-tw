@@ -4,12 +4,12 @@ description: 在本快速入門中，您將依照步驟為 Azure CLI 啟用 Reso
 ms.date: 08/10/2020
 ms.topic: quickstart
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 7d55aaae30176b3f0246dd254496465fb89b0e99
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 2abec0e4143dfa4a2d5b7146b9c09a2b33777a9e
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89050983"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91667889"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-cli"></a>快速入門：使用 Azure CLI 執行您的第一個 Resource Graph 查詢
 
@@ -25,7 +25,7 @@ ms.locfileid: "89050983"
 
 ## <a name="add-the-resource-graph-extension"></a>新增 Resource Graph 延伸模組
 
-若要讓 Azure CLI 可查詢 Azure Resource Graph，您必須新增延伸模組。 此延伸模組適用於可使用 Azure CLI 的任何地方，包括 [Windows 10 的 Bash](/windows/wsl/install-win10)、[Cloud Shell](https://shell.azure.com) (獨立與內部入口網站)、[Azure CLI Docker 映像](https://hub.docker.com/r/microsoft/azure-cli/)，或在本機安裝。
+若要讓 Azure CLI 可查詢 Azure Resource Graph，您必須新增延伸模組。 此延伸模組適用於可使用 Azure CLI 的任何地方，包括 [Windows 10 的 Bash](/windows/wsl/install-win10)、[Cloud Shell](https://shell.azure.com) (獨立與內部入口網站)、[Azure CLI Docker 映像](https://hub.docker.com/_/microsoft-azure-cli)，或在本機安裝。
 
 1. 確認已安裝最新的 Azure CLI (至少 **2.0.76**)。 如果尚未安裝，請依照[這些指示](/cli/azure/install-azure-cli-windows)操作。
 

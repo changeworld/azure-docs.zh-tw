@@ -3,12 +3,12 @@ title: 快速入門：使用 Azure CLI 建立藍圖
 description: 在此快速入門中，您將在 Azure CLI 中使用 Azure 藍圖建立、定義及部署成品。
 ms.date: 06/02/2020
 ms.topic: quickstart
-ms.openlocfilehash: c64723befbe3cb8d811179e7062df18606749783
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 3dfb74469bc186c25b918bfe87c7ce6f1930f2e1
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89051537"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91667685"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-azure-cli"></a>快速入門：使用 Azure CLI 定義及指派 Azure 藍圖
 
@@ -23,7 +23,7 @@ ms.locfileid: "89051537"
 ## <a name="add-the-blueprint-extension"></a>新增藍圖延伸模組
 
 若要讓 Azure CLI 可管理藍圖定義與指派，您必須新增延伸模組。
-此延伸模組適用於可使用 Azure CLI 的任何地方，包括 [Windows 10 的 Bash](/windows/wsl/install-win10)、[Cloud Shell](https://shell.azure.com) (獨立與內部入口網站)、[Azure CLI Docker 映像](https://hub.docker.com/r/microsoft/azure-cli/)，或在本機安裝。
+此延伸模組適用於可使用 Azure CLI 的任何地方，包括 [Windows 10 的 Bash](/windows/wsl/install-win10)、[Cloud Shell](https://shell.azure.com) (獨立與內部入口網站)、[Azure CLI Docker 映像](https://hub.docker.com/_/microsoft-azure-cli)，或在本機安裝。
 
 1. 確認已安裝最新的 Azure CLI (至少 **2.0.76**)。 如果尚未安裝，請依照[這些指示](/cli/azure/install-azure-cli-windows)操作。
 

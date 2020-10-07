@@ -15,12 +15,12 @@ ms.tgt_pltfrm: .NET
 ms.workload: tbd
 ms.date: 10/21/2019
 ms.author: lcozzens
-ms.openlocfilehash: 17817a5730678ae708c92c99093e7b859e05f8fe
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 145015b7645cf7923f15ecd7c0378ff6cb96dd7e
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90983847"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767696"
 ---
 # <a name="quickstart-add-feature-flags-to-a-net-framework-app"></a>快速入門：將功能旗標新增至 .NET Framework 應用程式
 
@@ -38,7 +38,7 @@ ms.locfileid: "90983847"
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. 選取 [功能管理員]   > [+新增]  ，以新增名為 `Beta` 的功能旗標。
+7. 選取 [功能管理員]   > [+新增]  ，以新增名為 `Beta` 的功能旗標。
 
     > [!div class="mx-imgBorder"]
     > ![啟用名為 Beta 的功能旗標](media/add-beta-feature-flag.png)

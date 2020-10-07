@@ -8,12 +8,12 @@ ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 09/28/2020
 ms.author: lcozzens
-ms.openlocfilehash: 7d4fe0f54ecd11c197f258d190e9eaef14bf2bb7
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.openlocfilehash: b62bf900e3e7859437b10b7b45801ee0dc575282
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91459918"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767771"
 ---
 # <a name="quickstart-create-an-azure-functions-app-with-azure-app-configuration"></a>快速入門：使用 Azure 應用程式組態建立 Azure Functions 應用程式
 
@@ -29,7 +29,7 @@ ms.locfileid: "91459918"
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. 選取 [組態總管] > [+ 建立] > [索引鍵/值] 以新增下列索引鍵/值組：
+7. 選取 [組態總管] > [+ 建立] > [索引鍵/值] 以新增下列索引鍵/值組：
 
     | Key | 值 |
     |---|---|
@@ -37,7 +37,7 @@ ms.locfileid: "91459918"
 
     目前先讓 [標籤]  和 [內容類型]  保持空白。
 
-7. 選取 [套用]  。
+8. 選取 [套用]  。
 
 ## <a name="create-a-functions-app"></a>建立 Functions 應用程式
 

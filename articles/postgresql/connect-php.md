@@ -1,19 +1,19 @@
 ---
 title: 快速入門：使用 PHP 連線 - 適用於 PostgreSQL 的 Azure 資料庫 - 單一伺服器
 description: 本快速入門提供 PHP 程式碼範例，供您在連線至「適用於 PostgreSQL 的 Azure 資料庫 - 單一伺服器」及查詢其資料時使用。
-author: rachel-msft
-ms.author: raagyema
+author: mksuni
+ms.author: sumuth
 ms.service: postgresql
 ms.custom: mvc
 ms.devlang: php
 ms.topic: quickstart
 ms.date: 2/28/2018
-ms.openlocfilehash: 8443742fb883a63ec869157de7bf436d8f6f5ad6
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 45fa455d00a757e6df87d2a93982f33fe4e64bef
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90901893"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91710357"
 ---
 # <a name="quickstart-use-php-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>快速入門：使用 PHP 來連線和查詢適用於 PostgreSQL 的 Azure 資料庫中的資料 - 單一伺服器
 

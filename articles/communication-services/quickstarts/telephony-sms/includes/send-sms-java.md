@@ -10,12 +10,12 @@ ms.date: 08/20/2020
 ms.topic: include
 ms.custom: include file
 ms.author: chrwhit
-ms.openlocfilehash: c11c2098d30ed6f00d94124fd77c2ebdb6cd2c7a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 76aae596c145c736ae75e65f7f72fdbdcead5919
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91303301"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91779262"
 ---
 藉由使用通訊服務 Java SMS 用戶端程式庫來傳送 SMS 訊息，以開始使用 Azure 通訊服務。
 
@@ -58,7 +58,7 @@ mvn archetype:generate -DgroupId=com.communication.quickstart -DartifactId=commu
 <dependency>
     <groupId>com.azure</groupId>
     <artifactId>azure-communication-sms</artifactId>
-    <version>1.0.0-beta.1</version>
+    <version>1.0.0-beta.2</version>
 </dependency>
 ```
 
@@ -161,7 +161,7 @@ SendSmsResponse response = client.sendMessage(
 System.out.println("MessageId: " + response.getMessageId());
 ```
 
-您應該將 `<leased-phone-number>` 取代為與您通訊服務資源相關聯且已啟用 SMS 的電話號碼，並使用您想要對其傳送訊息的電話號碼取代 `<to-phone-number>`。 所有的電話號碼參數都應該遵守 [E-164 標準](../../../concepts/telephony-sms/plan-solution.md#optional-reading-international-public-telecommunication-numbering-plan-e164)。
+您應該將 `<leased-phone-number>` 取代為與您通訊服務資源相關聯且已啟用 SMS 的電話號碼，並使用您想要對其傳送訊息的電話號碼取代 `<to-phone-number>`。
 
 `enableDeliveryReport` 參數是選擇性參數，可讓您用來設定傳遞報告。 這適用於想要在傳遞 SMS 訊息時發出事件的案例。 請參閱[處理 SMS 事件](../handle-sms-events.md)快速入門，以設定 SMS 訊息的傳遞報告。
 

@@ -6,15 +6,15 @@ author: mikben
 manager: jken
 services: azure-communication-services
 ms.author: mikben
-ms.date: 03/10/2020
+ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 697e0f7031e55cd924352fe1e1fdbd480f8e411b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 2a205daeffb659ce0dd5756066d11691a89c166e
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90943891"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91664948"
 ---
 # <a name="event-handling-in-azure-communication-services"></a>Azure 通訊服務中的事件處理
 
@@ -36,9 +36,9 @@ Azure 通訊服務會發出下列事件類型：
 | ----------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
 | Microsoft.Communication.SMSReceived                         | 當 SMS 是由與通訊服務相關聯的電話號碼接收時發佈。 |
 | Microsoft.Communication.SMSDeliveryReportReceived           | 在收到通訊服務所傳送 SMS 的傳遞報告時發佈。     |
-| Microsoft.Communication.ChatMessageReceived                 | 在其所屬聊天對話中的使用者收到訊息時發佈。        |
-| Microsoft.Communication.ChatMessageEdited                   | 在使用者所屬的聊天對話中編輯訊息時發佈。                |
-| Microsoft.Communication.ChatMessageDeleted                  | 在使用者所屬的聊天對話中刪除訊息時發佈。               |
+| Microsoft.Communication.ChatMessageReceived*                | 在其所屬聊天對話中的使用者收到訊息時發佈。        |
+| Microsoft.Communication.ChatMessageEdited*                   | 在使用者所屬的聊天對話中編輯訊息時發佈。                |
+| Microsoft.Communication.ChatMessageDeleted*                  | 在使用者所屬的聊天對話中刪除訊息時發佈。               |
 | Microsoft.Communication.ChatThreadCreatedWithUser           | 在建立聊天對話期間將使用者新增為成員時發佈。           |
 | Microsoft.Communication.ChatThreadWithUserDeleted           | 當使用者所屬的聊天對話遭到刪除時發佈。                           |
 | Microsoft.Communication.ChatThreadPropertiesUpdatedPerUser  | 當使用者所屬的聊天對話屬性更新時發佈。              |
@@ -46,6 +46,8 @@ Azure 通訊服務會發出下列事件類型：
 | Microsoft.Communication.ChatMemberRemovedFromThreadWithUser | 從聊天對話中移除使用者時發佈。                                         |
 
 您可以使用 Azure 入口網站或 Azure CLI 來訂閱您的通訊服務資源所發出的事件。 藉由查看[如何處理通訊服務中的 SMS 事件](../quickstarts/telephony-sms/handle-sms-events.md)來開始處理事件
+
+*請務必在您的「傳送訊息」API 呼叫中提供「寄件者名稱」，這些事件才會被觸發。
 
 ## <a name="event-subjects"></a>事件主旨
 

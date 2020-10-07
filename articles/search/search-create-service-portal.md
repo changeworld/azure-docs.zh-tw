@@ -7,13 +7,13 @@ author: tchristiani
 ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 09/16/2020
-ms.openlocfilehash: 246cdb458b4529c60f61c3ddcb26280c1e3223af
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 10/05/2020
+ms.openlocfilehash: 713199dc6b1eb1330b49c320022af137d0d1402e
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91268361"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91741001"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>快速入門：在入口網站中建立 Azure 認知搜尋服務
 
@@ -47,7 +47,7 @@ Azure 認知搜尋是一項可用來在自訂應用程式中插入搜尋體驗�
 
 1. 使用搜尋列尋找「Azure 認知搜尋」，或透過 [Web] > [Azure 認知搜尋] 瀏覽至資源。
 
-![在入口網站建立資源](./media/search-create-service-portal/find-search3.png "在入口網站建立資源")
+:::image type="content" source="media/search-create-service-portal/find-search3.png" alt-text="在入口網站建立資源" border="false":::
 
 ## <a name="choose-a-subscription"></a>選擇訂用帳戶
 
@@ -59,11 +59,11 @@ Azure 認知搜尋是一項可用來在自訂應用程式中插入搜尋體驗�
 
 如果您不想將資源結合成單一群組，或現有的資源群組中有許多資源用於不相關的解決方案中，請為您的 Azure 認知搜尋資源建立專屬的新資源群組。 
 
-![建立新的資源群組](./media/search-create-service-portal/new-resource-group.png "建立新的資源群組")
+:::image type="content" source="media/search-create-service-portal/new-resource-group.png" alt-text="在入口網站建立資源" border="false":::
 
 經過一段時間，您可以追蹤目前和預估的所有成本，或查看個別資源的費用。 下列螢幕擷取畫面顯示當您將多個資源結合成一個群組時，您會看到的成本資訊類型。
 
-![在資源群組層級管理成本](./media/search-create-service-portal/resource-group-cost-management.png "在資源群組層級管理成本")
+:::image type="content" source="media/search-create-service-portal/resource-group-cost-management.png" alt-text="在入口網站建立資源" border="false":::
 
 > [!TIP]
 > 資源群組可簡化清除，因為刪除群組也會刪除其中的所有服務。 針對使用多個服務的原型專案，將它們全部放入同一個資源群組，在專案結束之後就能更容易清除。
@@ -114,11 +114,11 @@ Azure 認知搜尋可在大部分區域中使用。 支援的區域清單可在[
 
 在您提供必要的輸入之後，請繼續並建立服務。 
 
-![檢閱及建立服務](./media/search-create-service-portal/new-service3.png "檢閱及建立服務")
+:::image type="content" source="media/search-create-service-portal/new-service3.png" alt-text="在入口網站建立資源" border="false":::
 
 您的服務會在幾分鐘內部署完成。 您可以透過 Azure 通知來監視進度。 請考慮將服務釘選在儀表板上，以便日後存取。
 
-![監視及釘選服務](./media/search-create-service-portal/monitor-notifications.png "監視及釘選服務")
+:::image type="content" source="media/search-create-service-portal/monitor-notifications.png" alt-text="在入口網站建立資源" border="false":::
 
 ## <a name="get-a-key-and-url-endpoint"></a>取得金鑰和 URL 端點
 
@@ -128,7 +128,7 @@ Azure 認知搜尋可在大部分區域中使用。 支援的區域清單可在[
 
 2. 在 [金鑰] 頁面上，複製其中一個系統管理金鑰 (它們是相等的)。 在您的服務上建立、更新及刪除物件時，需要系統管理員 API 金鑰。 相反地，查詢金鑰會提供索引內容的讀取存取權。
 
-   ![包含 URL 端點的服務概觀頁面](./media/search-create-service-portal/get-url-key.png "URL 端點和其他服務詳細資料")
+   :::image type="content" source="media/search-create-service-portal/get-url-key.png" alt-text="在入口網站建立資源" border="false":::
 
 入口網站工作不需要端點和金鑰。 入口網站已透過管理員權限連結至您的 Azure 認知搜尋資源。 如需入口網站逐步解說，請從[快速入門：在入口網站中建立 Azure 認知搜尋索引](search-get-started-portal.md)。
 
@@ -149,7 +149,7 @@ Azure 認知搜尋可在大部分區域中使用。 支援的區域清單可在[
 2. 在左導覽窗格中，選取 [設定] > [調整]。
 3. 您可以使用滑桿來新增任何一種類型的資源。
 
-![新增容量](./media/search-create-service-portal/settings-scale.png "透過複本和分割區新增容量")
+:::image type="content" source="media/search-create-service-portal/settings-scale.png" alt-text="在入口網站建立資源" border="false":::
 
 > [!Note]
 > 每個分割區的儲存體和速度均以更高的層次增加。 如需詳細資訊，請參閱[容量和限制](search-limits-quotas-capacity.md)。

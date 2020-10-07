@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: devx-track-csharp
 ms.date: 09/28/2020
 ms.author: lcozzens
-ms.openlocfilehash: 83da47ce27d452fd77fab3905c9ce48944c42ffb
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: f133572b0c3163f5c5fe0a5c2e48ce5e6d53adcc
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91575056"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767737"
 ---
 # <a name="quickstart-create-a-net-core-app-with-app-configuration"></a>快速入門：使用應用程式設定建立 .NET Core 應用程式
 
@@ -28,7 +28,7 @@ ms.locfileid: "91575056"
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. 選取 [組態總管]   > [建立]   > [索引鍵/值]  以新增下列索引鍵/值組：
+7. 選取 [組態總管]   > [建立]   > [索引鍵/值]  以新增下列索引鍵/值組：
 
     | Key | 值 |
     |---|---|
@@ -36,7 +36,7 @@ ms.locfileid: "91575056"
 
     目前先讓 [標籤]  和 [內容類型]  保持空白。
 
-7. 選取 [套用]  。
+8. 選取 [套用]  。
 
 ## <a name="create-a-net-core-console-app"></a>建立 .NET Core 主控台應用程式
 

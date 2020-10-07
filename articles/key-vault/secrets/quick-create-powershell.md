@@ -3,24 +3,21 @@ title: 快速入門：使用 PowerShell 從 Key Vault 設定及擷取祕密
 description: 在本快速入門中，您將了解如何使用 Azure PowerShell 從 Azure Key Vault 建立、擷取和刪除祕密。
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 11/08/2019
+ms.date: 09/30/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 9e3f5e37462b30b0201be5350dedc103a49bb39a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6ef7b17efc1f18009edffbacb2578f94fcf40b1c
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87039288"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743024"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-powershell"></a>快速入門：使用 PowerShell 從 Azure Key Vault 設定及擷取祕密
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 Azure Key Vault 是一項雲端服務，可作為安全的祕密存放區。 您也可以安全地儲存金鑰、密碼、憑證和其他祕密。 如需 Key Vault 的詳細資訊，您可以檢閱[概觀](../general/overview.md)。 在本快速入門中，您會使用 PowerShell 來建立金鑰保存庫。 然後，將祕密存放在新建立的保存庫中。
 
@@ -36,7 +33,7 @@ Login-AzAccount
 
 ## <a name="create-a-resource-group"></a>建立資源群組
 
-使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 來建立 Azure 資源群組。 資源群組是在其中部署與管理 Azure 資源的邏輯容器。 
+使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 來建立 Azure 資源群組。 資源群組是在其中部署與管理 Azure 資源的邏輯容器。
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name ContosoResourceGroup -Location EastUS

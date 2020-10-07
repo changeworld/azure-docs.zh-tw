@@ -4,21 +4,21 @@ description: 了解如何在您的 Azure IoT 中樞上線及啟用適用於 Azur
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
-author: mlottner
+author: rkarlin
 manager: rkarlin
 editor: ''
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/06/2020
-ms.author: mlottner
-ms.openlocfilehash: 6f438bd7dd0b3e45fd292947a3b08db80401b825
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/24/2020
+ms.author: rkarlin
+ms.openlocfilehash: 38e78b80fd14aec7557b563b2b33faf7d51bd114
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90943795"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91759727"
 ---
 # <a name="quickstart-security-module-for-azure-rtos-preview"></a>快速入門：適用於 Azure RTOS 的安全性模組 (預覽)
 
@@ -35,7 +35,7 @@ ms.locfileid: "90943795"
 - NXP i.MX RT1060 EVK
 - Microchip SAM E54 Xplained Pro EVK
 
-從[適用於 Azure RTOS GitHub 資源的安全性模組](hhtps://github.com/azure-rtos/azure-iot-preview/releases)下載、編譯及執行您選擇之特定主機板和工具 (IAR、半導體 IDE 或電腦) 的其中一個 .zip 檔案。
+從[適用於 Azure RTOS GitHub 資源的安全性模組](https://github.com/azure-rtos/azure-iot-preview/releases)下載、編譯及執行您選擇之特定主機板和工具 (IAR、半導體 IDE 或電腦) 的其中一個 .zip 檔案。
 
 ### <a name="azure-resources"></a>Azure 資源
 
@@ -63,10 +63,10 @@ IoT 解決方案的 Defender 預設會關閉 IoT 中樞內的 Log Analytics 擷�
 1. 選取 [資料收集]。 
 1. 從 [工作區組態] 選項，將交換器切換至**開啟**。 
 1. 建立新的 Log Analytics 工作區，或附加現有的 Log Analytics 工作區。 請確定已選取 [存取原始安全性資料] 選項。 
- :::image type="content" source="media/quickstart/azure-rtos-data-collection-on.png" alt-text="Azure RTOS 組態顯示同時選取的資料收集選項和原始安全性資料選項":::
+ :::image type="content" source="media/quickstart/azure-rtos-data-collection-on.png" alt-text="Azure RTOS 的存取資料收集選項":::
 1. 選取 [儲存]。
 1. 返回您的 Azure 資源清單，確認您已為 IoT 中樞啟用所建立或附加的 Log Analytics 工作區。
-    :::image type="content" source="media/quickstart/verify-azure-resource-list.png" alt-text="檢查您的 Azure 資源清單，確認為 IoT 中樞新增了正確的 Log Analytics 工作區"::: 
+    :::image type="content" source="media/quickstart/verify-azure-resource-list.png" alt-text="Azure RTOS 的存取資料收集選項"::: 
 
 ## <a name="next-steps"></a>後續步驟
 

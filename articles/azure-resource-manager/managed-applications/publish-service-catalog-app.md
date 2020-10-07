@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs, devx-track-azurecli
 ms.date: 04/14/2020
 ms.author: tomfitz
-ms.openlocfilehash: af5efd7c9b3c486e608c39c230700b52dd17a260
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 342fa722d704933f22cec00a46d11ccc38fc6e4d
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371621"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91650641"
 ---
 # <a name="quickstart-create-and-publish-a-managed-application-definition"></a>快速入門：建立及發佈受控應用程式定義
 
@@ -35,42 +35,42 @@ ms.locfileid: "91371621"
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "storageAccountNamePrefix": {
-            "type": "string"
-        },
-        "storageAccountType": {
-            "type": "string"
-        },
-        "location": {
-            "type": "string",
-            "defaultValue": "[resourceGroup().location]"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "storageAccountNamePrefix": {
+      "type": "string"
     },
-    "variables": {
-        "storageAccountName": "[concat(parameters('storageAccountNamePrefix'), uniqueString(resourceGroup().id))]"
+    "storageAccountType": {
+      "type": "string"
     },
-    "resources": [
-        {
-            "type": "Microsoft.Storage/storageAccounts",
-            "apiVersion": "2019-06-01",
-            "name": "[variables('storageAccountName')]",
-            "location": "[parameters('location')]",
-            "sku": {
-                "name": "[parameters('storageAccountType')]"
-            },
-            "kind": "StorageV2",
-            "properties": {}
-        }
-    ],
-    "outputs": {
-        "storageEndpoint": {
-            "type": "string",
-            "value": "[reference(resourceId('Microsoft.Storage/storageAccounts/', variables('storageAccountName')), '2019-06-01').primaryEndpoints.blob]"
-        }
+    "location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]"
     }
+  },
+  "variables": {
+    "storageAccountName": "[concat(parameters('storageAccountNamePrefix'), uniqueString(resourceGroup().id))]"
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2019-06-01",
+      "name": "[variables('storageAccountName')]",
+      "location": "[parameters('location')]",
+      "sku": {
+        "name": "[parameters('storageAccountType')]"
+      },
+      "kind": "StorageV2",
+      "properties": {}
+    }
+  ],
+  "outputs": {
+    "storageEndpoint": {
+      "type": "string",
+      "value": "[reference(resourceId('Microsoft.Storage/storageAccounts/', variables('storageAccountName')), '2019-06-01').primaryEndpoints.blob]"
+    }
+  }
 }
 ```
 
@@ -86,50 +86,50 @@ ms.locfileid: "91371621"
 
 ```json
 {
-   "$schema": "https://schema.management.azure.com/schemas/0.1.2-preview/CreateUIDefinition.MultiVm.json#",
-   "handler": "Microsoft.Azure.CreateUIDef",
-   "version": "0.1.2-preview",
-   "parameters": {
-        "basics": [
-            {}
-        ],
-        "steps": [
-            {
-                "name": "storageConfig",
-                "label": "Storage settings",
-                "subLabel": {
-                    "preValidation": "Configure the infrastructure settings",
-                    "postValidation": "Done"
-                },
-                "bladeTitle": "Storage settings",
-                "elements": [
-                    {
-                        "name": "storageAccounts",
-                        "type": "Microsoft.Storage.MultiStorageAccountCombo",
-                        "label": {
-                            "prefix": "Storage account name prefix",
-                            "type": "Storage account type"
-                        },
-                        "defaultValue": {
-                            "type": "Standard_LRS"
-                        },
-                        "constraints": {
-                            "allowedTypes": [
-                                "Premium_LRS",
-                                "Standard_LRS",
-                                "Standard_GRS"
-                            ]
-                        }
-                    }
-                ]
+  "$schema": "https://schema.management.azure.com/schemas/0.1.2-preview/CreateUIDefinition.MultiVm.json#",
+  "handler": "Microsoft.Azure.CreateUIDef",
+  "version": "0.1.2-preview",
+  "parameters": {
+    "basics": [
+      {}
+    ],
+    "steps": [
+      {
+        "name": "storageConfig",
+        "label": "Storage settings",
+        "subLabel": {
+          "preValidation": "Configure the infrastructure settings",
+          "postValidation": "Done"
+        },
+        "bladeTitle": "Storage settings",
+        "elements": [
+          {
+            "name": "storageAccounts",
+            "type": "Microsoft.Storage.MultiStorageAccountCombo",
+            "label": {
+              "prefix": "Storage account name prefix",
+              "type": "Storage account type"
+            },
+            "defaultValue": {
+              "type": "Standard_LRS"
+            },
+            "constraints": {
+              "allowedTypes": [
+                "Premium_LRS",
+                "Standard_LRS",
+                "Standard_GRS"
+              ]
             }
-        ],
-        "outputs": {
-            "storageAccountNamePrefix": "[steps('storageConfig').storageAccounts.prefix]",
-            "storageAccountType": "[steps('storageConfig').storageAccounts.type]",
-            "location": "[location()]"
-        }
+          }
+        ]
+      }
+    ],
+    "outputs": {
+      "storageAccountNamePrefix": "[steps('storageConfig').storageAccounts.prefix]",
+      "storageAccountType": "[steps('storageConfig').storageAccounts.type]",
+      "location": "[location()]"
     }
+  }
 }
 ```
 
@@ -161,7 +161,7 @@ Set-AzStorageBlobContent `
   -File "D:\myapplications\app.zip" `
   -Container appcontainer `
   -Blob "app.zip" `
-  -Context $ctx 
+  -Context $ctx
 ```
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
@@ -197,7 +197,7 @@ az storage blob upload \
 
 下一個步驟是選取要代表客戶管理資源的使用者群組、使用者或應用程式。 此身分識別會根據指派的角色，取得受控資源群組的權限。 角色可以是任何內建的 Azure 角色，例如擁有者或參與者。 若要建立新的 Active Directory 使用者群組，請參閱[在 Azure Active Directory 中建立群組和新增成員](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)。
 
-您需要使用者群組的物件識別碼，以便用於管理資源。 
+您需要使用者群組的物件識別碼，以便用於管理資源。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -313,7 +313,7 @@ az managedapp definition create \
 
 1. 在 [Azure 入口網站](https://portal.azure.com)中，瀏覽至您的儲存體帳戶。
 1. 選取 [存取控制 (IAM)]，以顯示儲存體帳戶的存取控制設定。 選取 [角色指派] 索引標籤，以查看角色指派的清單。
-1. 在 [新增角色指派] 視窗中，選取 [參與者] 角色。 
+1. 在 [新增角色指派] 視窗中，選取 [參與者] 角色。
 1. 在 [存取權指派對象為] 欄位中，選取 [Azure AD 使用者、群組或服務主體]。
 1. 在 [選取] 底下搜尋**設備資源提供者**角色，並加以選取。
 1. 儲存角色指派。
@@ -321,23 +321,23 @@ az managedapp definition create \
 ### <a name="deploy-the-managed-application-definition-with-an-arm-template"></a>使用 ARM 範本部署受控應用程式定義
 
 使用下列 ARM 範本，在以您自己的儲存體帳戶儲存及維護定義檔案的服務類別目錄，將您已封裝的受控應用程式部署為新的受控應用程式定義：
-   
+
 ```json
-    {
-    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "location": {
-            "type": "string",
-            "defaultValue": "[resourceGroup().location]"
-        },
-        "applicationName": {
-            "type": "string",
-            "metadata": {
-                "description": "Managed Application name"
-            }
-        },
-        "storageAccountType": {
+{
+  "$schema": "http://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]"
+    },
+    "applicationName": {
+      "type": "string",
+      "metadata": {
+        "description": "Managed Application name"
+      }
+    },
+    "storageAccountType": {
       "type": "string",
       "defaultValue": "Standard_LRS",
       "allowedValues": [
@@ -350,45 +350,45 @@ az managedapp definition create \
         "description": "Storage Account type"
       }
     },
-        "definitionStorageResourceID": {
-            "type": "string",
-            "metadata": {
-                "description": "Storage account resource ID for where you're storing your definition"
-            }
-        },
-        "_artifactsLocation": {
-            "type": "string",
-            "metadata": {
-                "description": "The base URI where artifacts required by this template are located."
-            }
-        }
+    "definitionStorageResourceID": {
+      "type": "string",
+      "metadata": {
+        "description": "Storage account resource ID for where you're storing your definition"
+      }
     },
-    "variables": {
-        "lockLevel": "None",
-        "description": "Sample Managed application definition",
-        "displayName": "Sample Managed application definition",
-        "managedApplicationDefinitionName": "[parameters('applicationName')]",
-        "packageFileUri": "[parameters('_artifactsLocation')]",
-        "defLocation": "[parameters('definitionStorageResourceID')]",
-        "managedResourceGroupId": "[concat(subscription().id,'/resourceGroups/', concat(parameters('applicationName'),'_managed'))]",
-        "applicationDefinitionResourceId": "[resourceId('Microsoft.Solutions/applicationDefinitions',variables('managedApplicationDefinitionName'))]"
-    },
-    "resources": [
-        {
-            "type": "Microsoft.Solutions/applicationDefinitions",
-            "apiVersion": "2019-07-01",
-            "name": "[variables('managedApplicationDefinitionName')]",
-            "location": "[parameters('location')]",
-            "properties": {
-                "lockLevel": "[variables('lockLevel')]",
-                "description": "[variables('description')]",
-                "displayName": "[variables('displayName')]",
-                "packageFileUri": "[variables('packageFileUri')]",
-                "storageAccountId": "[variables('defLocation')]"
-            }
-        }
-    ],
-    "outputs": {}
+    "_artifactsLocation": {
+      "type": "string",
+      "metadata": {
+        "description": "The base URI where artifacts required by this template are located."
+      }
+    }
+  },
+  "variables": {
+    "lockLevel": "None",
+    "description": "Sample Managed application definition",
+    "displayName": "Sample Managed application definition",
+    "managedApplicationDefinitionName": "[parameters('applicationName')]",
+    "packageFileUri": "[parameters('_artifactsLocation')]",
+    "defLocation": "[parameters('definitionStorageResourceID')]",
+    "managedResourceGroupId": "[concat(subscription().id,'/resourceGroups/', concat(parameters('applicationName'),'_managed'))]",
+    "applicationDefinitionResourceId": "[resourceId('Microsoft.Solutions/applicationDefinitions',variables('managedApplicationDefinitionName'))]"
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Solutions/applicationDefinitions",
+      "apiVersion": "2020-08-21-preview",
+      "name": "[variables('managedApplicationDefinitionName')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "lockLevel": "[variables('lockLevel')]",
+        "description": "[variables('description')]",
+        "displayName": "[variables('displayName')]",
+        "packageFileUri": "[variables('packageFileUri')]",
+        "storageAccountId": "[variables('defLocation')]"
+      }
+    }
+  ],
+  "outputs": {}
 }
 ```
 

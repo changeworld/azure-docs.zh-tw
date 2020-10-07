@@ -8,12 +8,12 @@ ms.subservice: qna-maker
 ms.topic: include
 ms.date: 09/04/2020
 ms.author: v-jawe
-ms.openlocfilehash: 621a0bbc6449c6deec9497d9f908edece8dba7f1
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 08f62ce70a09beaa2e99349e187671be46ed2ecb
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90982768"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777449"
 ---
 使用適用於 Go 的 QnA Maker 用戶端程式庫來：
 
@@ -155,4 +155,4 @@ QnA Maker 使用兩種不同的物件模型：
 go run kb_sample.go
 ```
 
-此範例的原始程式碼位於 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/go/qnamaker/sdk/kb_sample.go)
+此範例的原始程式碼位於 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/go/QnAMaker/sdk/kb_sample.go)

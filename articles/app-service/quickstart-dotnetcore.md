@@ -3,15 +3,15 @@ title: 快速入門：建立 C# ASP.NET Core 應用程式
 description: 了解如何藉由部署您的第一個 ASP.NET Core 應用程式，在 Azure App Service 中執行 Web 應用程式。
 ms.assetid: b1e6bd58-48d1-4007-9d6c-53fd6db061e3
 ms.topic: quickstart
-ms.date: 08/01/2020
-ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, seodec18
+ms.date: 09/24/2020
+ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, seodec18, contperfq1
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 95f877c9030d51e68b97a21875ff3ff05b383457
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: aa8eb945ba77e1a4ac5215acf3bdbc12cac0c4c9
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90973755"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91661120"
 ---
 # <a name="quickstart-create-an-aspnet-core-web-app-in-azure"></a>快速入門：在 Azure 中建立 ASP.NET Core Web 應用程式
 
@@ -175,6 +175,8 @@ Web 應用程式的**概觀**頁面，其中包含瀏覽、停止、啟動、重
 * <a href="https://git-scm.com/" target="_blank">安裝 Git</a>
 * <a href="https://dotnet.microsoft.com/download/dotnet-core/3.1" target="_blank">安裝最新的 .NET Core 3.1 SDK</a>
 
+[有任何問題嗎？請告訴我們。](https://aka.ms/DotNetAppServiceLinuxQuickStart)
+
 ## <a name="create-the-app-locally"></a>在本機建立應用程式
 
 在您電腦上的終端機視窗中，建立名為 `hellodotnetcore` 的目錄，並將目前的目錄變更為該目錄。
@@ -214,13 +216,23 @@ git add .
 git commit -m "first commit"
 ```
 
+[有任何問題嗎？請告訴我們。](https://aka.ms/DotNetAppServiceLinuxQuickStart)
+
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+
+[有任何問題嗎？請告訴我們。](https://aka.ms/DotNetAppServiceLinuxQuickStart)
 
 [!INCLUDE [Configure deployment user](../../includes/configure-deployment-user.md)]
 
+[有任何問題嗎？請告訴我們。](https://aka.ms/DotNetAppServiceLinuxQuickStart)
+
 [!INCLUDE [Create resource group](../../includes/app-service-web-create-resource-group-linux.md)]
 
+[有任何問題嗎？請告訴我們。](https://aka.ms/DotNetAppServiceLinuxQuickStart)
+
 [!INCLUDE [Create app service plan](../../includes/app-service-web-create-app-service-plan-linux.md)]
+
+[有任何問題嗎？請告訴我們。](https://aka.ms/DotNetAppServiceLinuxQuickStart)
 
 ## <a name="create-a-web-app"></a>建立 Web 應用程式
 
@@ -265,6 +277,8 @@ To https://&lt;app-name&gt;.scm.azurewebsites.net:443/&lt;app-name&gt;.git
    d87e6ca..d6b5447  master -> master
 </pre>
 
+[有任何問題嗎？請告訴我們。](https://aka.ms/DotNetAppServiceLinuxQuickStart)
+
 ## <a name="browse-to-the-app"></a>瀏覽至應用程式
 
 使用 web 瀏覽器瀏覽至已部署的應用程式。
@@ -278,6 +292,8 @@ http://<app_name>.azurewebsites.net
 ![在 Azure 中執行的範例應用程式](media/quickstart-dotnetcore/dotnet-browse-azure.png)
 
 **恭喜！** 您已將第一個 .NET Core 應用程式部署至 Linux 上的 App Service。
+
+[有任何問題嗎？請告訴我們。](https://aka.ms/DotNetAppServiceLinuxQuickStart)
 
 ## <a name="update-and-redeploy-the-code"></a>更新和重新部署程式碼
 
@@ -298,6 +314,8 @@ git push azure master
 
 ![在 Azure 中執行的已更新範例應用程式](media/quickstart-dotnetcore/dotnet-browse-azure-updated.png)
 
+[有任何問題嗎？請告訴我們。](https://aka.ms/DotNetAppServiceLinuxQuickStart)
+
 ## <a name="manage-your-new-azure-app"></a>管理新的 Azure 應用程式
 
 移至 <a href="https://portal.azure.com" target="_blank">Azure 入口網站</a>，以管理您所建立的應用程式。
@@ -313,6 +331,8 @@ git push azure master
 左側功能表提供不同的頁面來設定您的應用程式。 
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
+
+[有任何問題嗎？請告訴我們。](https://aka.ms/DotNetAppServiceLinuxQuickStart)
 
 ## <a name="next-steps"></a>後續步驟
 
