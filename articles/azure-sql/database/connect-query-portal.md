@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 入口網站中的查詢編輯器查詢 SQL Database
+title: 使用 Azure 入口網站中的查詢編輯器查詢 SQL Database (預覽)
 description: 了解如何使用查詢編輯器對 Azure SQL Database 中的資料庫執行 Transact-SQL (T-SQL) 查詢。
 titleSuffix: Azure SQL Database
 keywords: 連線至 SQL Database, 查詢 SQL Database, Azure 入口網站、入口網站、查詢編輯器
@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: quickstart
 author: Ninarn
 ms.author: ninarn
-ms.reviewer: carlrab
+ms.reviewer: sstein
 ms.date: 05/29/2020
-ms.openlocfilehash: ec43ad0c83ea56af935b326a2b13aa3b3dc4fa13
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 4eb02c65a8ce486ea152863d8b6c6d0600280893
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89441765"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91409576"
 ---
-# <a name="quickstart-use-the-azure-portals-query-editor-to-query-an-azure-sql-database"></a>快速入門：使用 Azure 入口網站的查詢編輯器來查詢 Azure SQL Database
+# <a name="quickstart-use-the-azure-portals-query-editor-preview-to-query-an-azure-sql-database"></a>快速入門：使用 Azure 入口網站的查詢編輯器 (預覽) 查詢 Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 查詢編輯器是 Azure 入口網站中的一項工具，可針對 Azure SQL Database 中的資料庫或 Azure Synapse Analytics 中的資料倉儲執行 SQL 查詢。 

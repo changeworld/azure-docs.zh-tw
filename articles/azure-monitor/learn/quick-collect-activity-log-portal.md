@@ -6,12 +6,12 @@ ms.topic: quickstart
 author: bwren
 ms.author: bwren
 ms.date: 06/25/2020
-ms.openlocfilehash: 6f13a465aa43f0c45fa99d2ea396a5ca92d75d66
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
+ms.openlocfilehash: 47cf0a1f1d40b9e8358d6bdb4a3ea6a501b67da2
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85446235"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91439211"
 ---
 # <a name="send-azure-activity-log-to-log-analytics-workspace-using-azure-portal"></a>使用 Azure 入口網站將 Azure 活動記錄傳送至 Log Analytics 工作區
 活動記錄是 Azure 中的平台記錄，提供訂用帳戶層級事件的深入解析。 這包括修改資源或啟動虛擬機器時的資訊。 您可以在 Azure 入口網站中檢視活動記錄，或使用 PowerShell 和 CLI 來取出項目。 本快速入門說明如何使用 Azure 入口網站來建立 Log Analytics 工作區和診斷設定，以將活動記錄傳送至 Azure 監視器記錄，您可以在其中使用[記錄查詢](../log-query/log-query-overview.md)進行分析，以及啟用[記錄警示](../platform/alerts-log-query.md)和[活頁簿](../platform/workbooks-overview.md)等其他功能。 
@@ -24,7 +24,7 @@ ms.locfileid: "85446235"
 ## <a name="create-a-log-analytics-workspace"></a>建立 Log Analytics 工作區
 在 Azure 入口網站中，搜尋並選取 [Log Analytics 工作區]。 
 
-![Azure 入口網站](media/quick-create-workspace/azure-portal-01.png)
+![Azure 入口網站的螢幕擷取畫面，顯示搜尋方塊中的「Log Analytics 工作區」，並將 [服務] 底下的 Log Analytics 工作區反白顯示。](media/quick-create-workspace/azure-portal-01.png)
   
 按一下 [新增]，然後提供 [資源群組]、[工作區]、[名稱] 和 [位置] 的值。 工作區名稱在您的 Azure 訂用帳戶中必須是唯一的。
 
@@ -36,7 +36,7 @@ ms.locfileid: "85446235"
 ## <a name="create-diagnostic-setting"></a>建立診斷設定
 在 Azure 入口網站中，搜尋 [監視器] 然後加以選取。 
 
-![Azure 入口網站](media/quick-collect-activity-log/azure-portal-monitor.png)
+![Azure 入口網站螢幕擷取畫面，顯示搜尋方塊中的「監視器」，並將 [服務] 底下的監視器反白顯示。](media/quick-collect-activity-log/azure-portal-monitor.png)
 
 選取 [活動記錄]。 您應該會看到目前訂用帳戶的最近事件。 按一下 [診斷設定] 以檢視訂用帳戶的診斷設定。
 

@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 07/30/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: e8d11c2122a21b67620987ad9ef74efc99eeb98b
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: beafff2276d0b6dc525b586fa2d5943675012981
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654492"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91446122"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站來建立內部負載平衡器以平衡 VM 的負載
 
@@ -43,8 +43,6 @@ ms.locfileid: "88654492"
 
 在本節中，您會建立負載平衡器以平衡虛擬機器的負載。 
 
-您可以建立公用負載平衡器或內部負載平衡器。 
-
 當您建立內部負載平衡器時，會將虛擬網路設定為負載平衡器的網路。 
 
 虛擬網路中的私人 IP 位址會設定為負載平衡器的前端 (命名為 **LoadBalancerFrontend**)。 
@@ -55,11 +53,11 @@ ms.locfileid: "88654492"
 
 在本節中，您會建立虛擬網路和子網路。
 
-1. 在畫面的左上方，選取 [建立資源] > [網路] > [虛擬網路]，或在搜尋方塊中搜尋 [虛擬網路]。
+1. 在畫面的左上方，選取 [建立資源] > [網路] > [虛擬網路]  ，或在搜尋方塊中搜尋 [虛擬網路]  。
 
-2. 在 [建立虛擬網路] 中，在 [基本] 索引標籤中輸入或選取這項資訊：
+2. 在 [建立虛擬網路]  中，在 [基本]  索引標籤中輸入或選取這項資訊：
 
-    | **設定**          | **值**                                                           |
+    | **設定**          | **ReplTest1**                                                           |
     |------------------|-----------------------------------------------------------------|
     | **專案詳細資料**  |                                                                 |
     | 訂用帳戶     | 選取您的 Azure 訂用帳戶                                  |
@@ -70,7 +68,7 @@ ms.locfileid: "88654492"
 
 3. 選取 [IP 位址] 索引標籤，或選取頁面底部的 [下一步：IP 位置] 按鈕。
 
-4. 在 [IP 位址] 索引標籤中，輸入這項資訊：
+4. 在 [IP 位址]  索引標籤中，輸入這項資訊：
 
     | 設定            | 值                      |
     |--------------------|----------------------------|
@@ -78,7 +76,7 @@ ms.locfileid: "88654492"
 
 5. 在 [子網路名稱] 下，選取 [預設] 字組。
 
-6. 在 [編輯子網路] 中，輸入這項資訊：
+6. 在 [編輯子網路]  中，輸入這項資訊：
 
     | 設定            | 值                      |
     |--------------------|----------------------------|
@@ -113,7 +111,7 @@ ms.locfileid: "88654492"
     | 訂用帳戶               | 選取您的訂用帳戶。    |    
     | 資源群組         | 選取您在上一個步驟建立的 **myResourceGroupLB**。|
     | 名稱                   | 輸入 **myLoadBalancer**                                   |
-    | 區域         | 選取 [西歐]。                                        |
+    | 區域         | 選取 [西歐]  。                                        |
     | 類型          | 選取 [內部]。                                        |
     | SKU           | 選取 [標準] |
     | 虛擬網路 | 選取您在上一個步驟中建立的 **myVNet**。 |
@@ -125,7 +123,7 @@ ms.locfileid: "88654492"
 
 4. 在 [檢閱 + 建立] 索引標籤中，選取 [建立]。   
     
-    :::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/create-standard-internal-load-balancer.png" alt-text="建立標準內部負載平衡器" border="true":::
+    :::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/create-standard-internal-load-balancer.png" alt-text="建立標準內部負載平衡器。" border="true":::
  
 ## <a name="create-load-balancer-resources"></a>建立負載平衡器資源
 
@@ -162,7 +160,7 @@ ms.locfileid: "88654492"
     | 設定 | 值 |
     | ------- | ----- |
     | 名稱 | 輸入 **myHealthProbe**。 |
-    | 通訊協定 | 選取 [HTTP]。 |
+    | 通訊協定 | 選取 [HTTP]  。 |
     | 連接埠 | 輸入 **80**。|
     | 間隔 | 輸入 **15** 作為探查嘗試之間的 [間隔]  秒數。 |
     | 狀況不良臨界值 | 選取 [2] 作為 [狀況不良閾值] 的數值，或將 VM 視為狀況不良之前，必須達到的連續探查失敗次數。|
@@ -192,7 +190,7 @@ ms.locfileid: "88654492"
     | 名稱 | 輸入 **myHTTPRule**。 |
     | IP 版本 | 選取 **IPv4** |
     | 前端 IP 位址 | 選取 **LoadBalancerFrontEnd** |
-    | 通訊協定 | 選取 [TCP]。 |
+    | 通訊協定 | 選取 [TCP]  。 |
     | 連接埠 | 輸入 **80**。|
     | 後端連接埠 | 輸入 **80**。 |
     | 後端集區 | 選取 [myBackendPool]。|
@@ -213,7 +211,7 @@ ms.locfileid: "88654492"
 
 ### <a name="create-virtual-machines"></a>建立虛擬機器
 
-在本節中，您將使用二個不同區域 (**區域 1**和**區域 2** ) 中的標準公用 IP 位址，來建立二個 VM (**myVM1** 和 **myVM2** )。 
+在本節中，您將建立二個 VM (**myVM1** 和 **myVM2**)。
 
 這些 VM 會新增至先前建立之負載平衡器的後端集區。
 
@@ -248,7 +246,7 @@ ms.locfileid: "88654492"
     | **網路介面** |  |
     | 虛擬網路 | **myVNet** |
     | 子網路 | **myBackendSubnet** |
-    | 公用 IP | 接受預設值 **myVM-ip**。 </br> IP 將會自動成為區域 1 中的標準 SKU IP。 |
+    | 公用 IP | 選取 [無] |
     | NIC 網路安全性群組 | 選取 [進階]|
     | 設定網路安全性群組 | 選取 [建立新的]。 </br> 在 [建立網路安全性群組] 的 [名稱] 中，輸入 **myNSG**。 </br> 選取 [確定] |
     | **負載平衡**  |
@@ -257,21 +255,12 @@ ms.locfileid: "88654492"
     | 負載平衡選項 | 選取 [Azure 負載平衡] |
     | 選取負載平衡器 | 選取 [myLoadBalancer]  |
     | 選取後端集區 | 選取 [myBackendPool] |
-
-5. 選取 [管理] 索引標籤，或選取 [下一步] > [管理]。
-
-6. 在 [管理] 索引標籤中，選取或輸入：
-    
-    | 設定 | 值 |
-    |-|-|
-    | **監視** |  |
-    | 開機診斷 | 選取 [關閉] |
    
-7. 選取 [檢閱 + 建立]。 
+5. 選取 [檢閱 + 建立]。 
   
-8. 檢閱設定，然後選取 [建立]。
+6. 檢閱設定，然後選取 [建立]。
 
-9. 依照步驟 1 到 8，使用下列值建立一個額外的 VM (其他所有設定則與 **myVM1** 相同)：
+7. 依照步驟 1 到 8，使用下列值建立一個額外的 VM (其他所有設定則與 **myVM1** 相同)：
 
     | 設定 | VM 2|
     | ------- | ----- |
@@ -287,8 +276,6 @@ ms.locfileid: "88654492"
 
 在本節中，您會建立負載平衡器以平衡虛擬機器的負載。 
 
-您可以建立公用負載平衡器或內部負載平衡器。 
-
 當您建立內部負載平衡器時，會將虛擬網路設定為負載平衡器的網路。 
 
 虛擬網路中的私人 IP 位址會設定為負載平衡器的前端 (命名為 **LoadBalancerFrontend**)。 
@@ -299,11 +286,11 @@ ms.locfileid: "88654492"
 
 在本節中，您會建立虛擬網路和子網路。
 
-1. 在畫面的左上方，選取 [建立資源] > [網路] > [虛擬網路]，或在搜尋方塊中搜尋 [虛擬網路]。
+1. 在畫面的左上方，選取 [建立資源] > [網路] > [虛擬網路]  ，或在搜尋方塊中搜尋 [虛擬網路]  。
 
-2. 在 [建立虛擬網路] 中，在 [基本] 索引標籤中輸入或選取這項資訊：
+2. 在 [建立虛擬網路]  中，在 [基本]  索引標籤中輸入或選取這項資訊：
 
-    | **設定**          | **值**                                                           |
+    | **設定**          | **ReplTest1**                                                           |
     |------------------|-----------------------------------------------------------------|
     | **專案詳細資料**  |                                                                 |
     | 訂用帳戶     | 選取您的 Azure 訂用帳戶                                  |
@@ -314,7 +301,7 @@ ms.locfileid: "88654492"
 
 3. 選取 [IP 位址] 索引標籤，或選取頁面底部的 [下一步：IP 位置] 按鈕。
 
-4. 在 [IP 位址] 索引標籤中，輸入這項資訊：
+4. 在 [IP 位址]  索引標籤中，輸入這項資訊：
 
     | 設定            | 值                      |
     |--------------------|----------------------------|
@@ -322,7 +309,7 @@ ms.locfileid: "88654492"
 
 5. 在 [子網路名稱] 下，選取 [預設] 字組。
 
-6. 在 [編輯子網路] 中，輸入這項資訊：
+6. 在 [編輯子網路]  中，輸入這項資訊：
 
     | 設定            | 值                      |
     |--------------------|----------------------------|
@@ -357,7 +344,7 @@ ms.locfileid: "88654492"
     | 訂用帳戶               | 選取您的訂用帳戶。    |    
     | 資源群組         | 選取您在上一個步驟建立的 **myResourceGroupLB**。|
     | 名稱                   | 輸入 **myLoadBalancer**                                   |
-    | 區域         | 選取 [西歐]。                                        |
+    | 區域         | 選取 [西歐]  。                                        |
     | 類型          | 選取 [內部]。                                        |
     | SKU           | 選取 [基本] |
     | 虛擬網路 | 選取您在上一個步驟中建立的 **myVNet**。 |
@@ -368,7 +355,7 @@ ms.locfileid: "88654492"
 
 4. 在 [檢閱 + 建立] 索引標籤中，選取 [建立]。   
 
-    :::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/create-basic-internal-load-balancer.png" alt-text="建立標準內部負載平衡器" border="true":::
+    :::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/create-basic-internal-load-balancer.png" alt-text="建立標準內部負載平衡器。" border="true":::
 
 ## <a name="create-load-balancer-resources"></a>建立負載平衡器資源
 
@@ -413,11 +400,11 @@ ms.locfileid: "88654492"
     | 設定 | 值 |
     | ------- | ----- |
     | 名稱 | 輸入 **myHealthProbe**。 |
-    | 通訊協定 | 選取 [HTTP]。 |
+    | 通訊協定 | 選取 [HTTP]  。 |
     | 連接埠 | 輸入 **80**。|
     | Path | 輸入 **/** |
     | 間隔 | 輸入 **15** 作為探查嘗試之間的 [間隔]  秒數。 |
-    | 狀況不良臨界值 | 選取 [2] 作為 [狀況不良閾值] 的數值，或將 VM 視為狀況不良之前，必須達到的連續探查失敗次數。|
+    | 狀況不良臨界值 | 選取 [2]  作為 [狀況不良閾值]  的數值，或將 VM 視為狀況不良之前，必須達到的連續探查失敗次數。|
 
 3. 選取 [確定]。
 
@@ -443,7 +430,7 @@ ms.locfileid: "88654492"
     | 名稱 | 輸入 **myHTTPRule**。 |
     | IP 版本 | 選取 **IPv4** |
     | 前端 IP 位址 | 選取 **LoadBalancerFrontEnd** |
-    | 通訊協定 | 選取 [TCP]。 |
+    | 通訊協定 | 選取 [TCP]  。 |
     | 連接埠 | 輸入 **80**。|
     | 後端連接埠 | 輸入 **80**。 |
     | 後端集區 | 選取 [myBackendPool]。|
@@ -461,9 +448,7 @@ ms.locfileid: "88654492"
 
 ### <a name="create-virtual-machines"></a>建立虛擬機器
 
-公用 IP SKU 和負載平衡器 SKU 必須相符。 對於標準負載平衡器，使用後端集區中具有基本 IP 位址的 VM。 
-
-在本節中，您將使用基本的公用 IP 位址來建立二個 VM (**myVM1** 和 **myVM2**)。  
+在本節中，您將建立二個 VM (**myVM1** 和 **myVM2**)。
 
 這二個 VM 將會新增至名為 **myAvailabilitySet** 的可用性設定組中。
 
@@ -505,21 +490,12 @@ ms.locfileid: "88654492"
     | 設定網路安全性群組 | 選取 [建立新的]。 </br> 在 [建立網路安全性群組] 的 [名稱] 中，輸入 **myNSG**。 </br> 選取 [確定] |
     | **負載平衡**  |
     | 要將此虛擬機器放在現有負載平衡解決方案後面嗎? | 選取 [否] |
- 
-5. 選取 [管理] 索引標籤，或選取 [下一步] > [管理]。
 
-6. 在 [管理] 索引標籤中，選取或輸入：
-    
-    | 設定 | 值 |
-    |-|-|
-    | **監視** |  |
-    | 開機診斷 | 選取 [關閉] |
-
-7. 選取 [檢閱 + 建立]。 
+5. 選取 [檢閱 + 建立]。 
   
-8. 檢閱設定，然後選取 [建立]。
+6. 檢閱設定，然後選取 [建立]。
 
-9. 依照步驟 1 到 8，使用下列值建立一個額外的 VM (其他所有設定則與 **myVM1** 相同)：
+7. 依照步驟 1 到 8，使用下列值建立一個額外的 VM (其他所有設定則與 **myVM1** 相同)：
 
     | 設定 | VM 2 |
     | ------- | ----- |
@@ -583,19 +559,10 @@ ms.locfileid: "88654492"
     | 公用 IP | 選取 [無]。 |
     | NIC 網路安全性群組 | 選取 [進階]|
     | 設定網路安全性群組 | 選取您在上一個步驟中建立的 **MyNSG**。|
-    
-5. 選取 [管理] 索引標籤，或選取 [下一步] > [管理]。
-
-6. 在 [管理] 索引標籤中，選取或輸入：
-    
-    | 設定 | 值 |
-    |-|-|
-    | **監視** |  |
-    | 開機診斷 | 選取 [關閉] |
-   
-7. 選取 [檢閱 + 建立]。 
+       
+5. 選取 [檢閱 + 建立]。 
   
-8. 檢閱設定，然後選取 [建立]。
+6. 檢閱設定，然後選取 [建立]。
 
 ## <a name="install-iis"></a>安裝 IIS
 
@@ -647,9 +614,9 @@ ms.locfileid: "88654492"
 
 8. 在瀏覽器的網址列中，輸入上一個步驟中的 IP 位址。 IIS Web 伺服器的預設頁面會顯示在瀏覽器上。
 
-    :::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/load-balancer-test.png" alt-text="建立標準內部負載平衡器" border="true":::
+    :::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/load-balancer-test.png" alt-text="建立標準內部負載平衡器。" border="true":::
    
-若要讓負載平衡器將流量分散到這三個 VM，您可以為每個 VM 的 IIS Web 伺服器自訂預設頁面，然後從用戶端機器強制重新整理您的網頁瀏覽器。
+若要讓負載平衡器將流量分散到這兩個 VM，您可以為每個 VM 的 IIS Web 伺服器自訂預設頁面，然後從用戶端機器強制重新整理您的網頁瀏覽器。
 
 ## <a name="clean-up-resources"></a>清除資源
 
@@ -659,11 +626,9 @@ ms.locfileid: "88654492"
 
 在本快速入門中，您已：
 
-* 建立 Azure 標準或基本內部 Load Balancer
+* 已建立 Azure 標準或基本內部負載平衡器
 * 將 2 個 VM 連接至負載平衡器。
 * 設定負載平衡器流量規則、健康情況探查，並測試負載平衡器。 
 
 如需 Azure Load Balancer 的詳細資訊，請繼續參閱[什麼是 Azure Load Balancer？](load-balancer-overview.md)和 [Load Balancer 常見問題集](load-balancer-faqs.md)。
 
-* 深入了解 [Load Balancer 和可用性區域](load-balancer-standard-availability-zones.md)。
-* 深入了解 [Azure Bastion](https://docs.microsoft.com/azure/bastion/bastion-overview)。

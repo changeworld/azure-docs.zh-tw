@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/28/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to add and connect to shares on Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: 3c0a72c9daa72cffcfe2e5e45bbb6214a13e0a7f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: cd288926e6f7a3f454be2788479b5c9d414b167a
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90891112"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91440280"
 ---
 # <a name="tutorial-transfer-data-via-shares-with-azure-stack-edge-pro-gpu"></a>教學課程：以 Azure Stack Edge Pro GPU 透過共用傳輸資料
 
@@ -116,7 +116,7 @@ ms.locfileid: "90891112"
     ``` 
     您可以從本機 Web UI 中的**裝置**頁面，取得**網路**的裝置 IP 和裝置自訂名稱。 下列主控檔案的螢幕擷取畫面會顯示項目：
 
-    ![Windows 檔案總管主控檔案](media/azure-stack-edge-j-series-deploy-add-shares/client-hosts-file-2.png)
+    ![Windows 檔案總管 hosts 檔案 2](media/azure-stack-edge-j-series-deploy-add-shares/client-hosts-file-2.png)
 
 ### <a name="connect-to-an-smb-share"></a>連線至 SMB 共用
 

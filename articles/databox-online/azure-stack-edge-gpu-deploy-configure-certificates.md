@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure certificates for Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: 5be484c613c4a18e86df7b5a83f95ca75aec6077
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 7854aff0b4194efae7c4df653dee18e2676fdd41
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90903316"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91446326"
 ---
 # <a name="tutorial-configure-certificates-for-your-azure-stack-edge-pro-with-gpu"></a>教學課程：為您搭配 GPU 的 Azure Stack Edge Pro 設定憑證
 
@@ -51,11 +51,11 @@ ms.locfileid: "90903316"
 
     - 如果您變更了裝置名稱或 DNS 網域，就會看到憑證的狀態顯示為**無效**。 
 
-        ![本機 web UI 的「憑證」頁面](./media/azure-stack-edge-gpu-deploy-configure-certificates/generate-certificate-1.png)    
+        ![本機 Web UI 的「憑證」頁面 2](./media/azure-stack-edge-gpu-deploy-configure-certificates/generate-certificate-1.png)    
 
         選取憑證以檢視狀態的詳細資料。
 
-        ![本機 web UI 的「憑證」頁面](./media/azure-stack-edge-gpu-deploy-configure-certificates/generate-certificate-1a.png)  
+        ![本機 Web UI 的「憑證」頁面 3](./media/azure-stack-edge-gpu-deploy-configure-certificates/generate-certificate-1a.png)  
 
         這是因為憑證不會反映更新的裝置名稱和 DNS 網域 (用於主體名稱和主體替代項目)。 若要成功啟動您的裝置，請選擇下列其中一個選項： 
     
@@ -108,11 +108,11 @@ ms.locfileid: "90903316"
 
 4. 選取憑證的下載連結，並在出現提示時儲存憑證。 
 
-    ![產生並下載憑證 6](./media/azure-stack-edge-gpu-deploy-configure-certificates/generate-certificate-7.png)
+    ![產生並下載憑證 8](./media/azure-stack-edge-gpu-deploy-configure-certificates/generate-certificate-7.png)
 
 5. 針對您想要下載的所有憑證重複此程序。 
     
-    ![產生並下載憑證 7](./media/azure-stack-edge-gpu-deploy-configure-certificates/generate-certificate-8.png)
+    ![產生並下載憑證 9](./media/azure-stack-edge-gpu-deploy-configure-certificates/generate-certificate-8.png)
 
     裝置產生的憑證會儲存為具有下列名稱格式的 DER 憑證： 
 
@@ -135,31 +135,31 @@ ms.locfileid: "90903316"
 
 1. 若要上傳憑證，請在**憑證**頁面上，選取 [+ 新增憑證]。
 
-    ![本機 web UI 的「憑證」頁面](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-1.png)
+    ![本機 Web UI 的「憑證」頁面 4](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-1.png)
 
 2. 先上傳簽署鏈結，然後選取 [驗證和新增]。
 
-    ![本機 web UI 的「憑證」頁面](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-2.png)
+    ![本機 Web UI 的「憑證」頁面 5](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-2.png)
 
 3. 現在您可以上傳其他憑證。 例如，您可以上傳 Azure Resource Manager 和 Blob 儲存體端點憑證。
 
-    ![本機 web UI 的「憑證」頁面](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-3.png)
+    ![本機 Web UI 的「憑證」頁面 6](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-3.png)
 
     您也可以上傳本機 Web UI 憑證。 上傳此憑證之後，您必須開啟瀏覽器並清除快取。 接著，您必須連線到裝置的本機 Web UI。  
 
-    ![本機 web UI 的「憑證」頁面](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-5.png)
+    ![本機 Web UI 的「憑證」頁面 7](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-5.png)
 
     您也可以上傳節點憑證。
 
-    ![本機 web UI 的「憑證」頁面](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-4.png)
+    ![本機 Web UI 的「憑證」頁面 8](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-4.png)
 
     您隨時都可以選取憑證並檢視詳細資料，確保這些憑證與您上傳的憑證相符。
 
-    ![本機 web UI 的「憑證」頁面](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-6.png)
+    ![本機 Web UI 的「憑證」頁面 9](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-6.png)
 
     憑證頁面應該會更新，以反映新增的憑證。
 
-    ![本機 web UI 的「憑證」頁面](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-7.png)  
+    ![本機 Web UI 的「憑證」頁面 10](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-7.png)  
 
     > [!NOTE]
     > 除了 Azure 公用雲端以外，在啟用所有雲端設定 (Azure Government 或 Azure Stack) 之前，必須先放入簽署鏈結憑證。

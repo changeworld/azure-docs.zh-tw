@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: quickstart
 ms.date: 04/23/2020
 ms.author: JenCook
-ms.openlocfilehash: 476b93400b69063590c12ed38037c0bf6c6d1714
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 4723bce8f3721833ae80b233f7b346fe69363b0b
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281067"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91409539"
 ---
 # <a name="quickstart-deploy-an-azure-confidential-computing-vm-in-the-azure-portal"></a>快速入門：在 Azure 入口網站中部署 Azure 機密運算 VM
 
@@ -199,9 +199,7 @@ sudo apt -y install clang-7 libssl-dev gdb libsgx-enclave-common libsgx-enclave-
 
 在本快速入門中，您已部署機密運算虛擬機器，並已安裝 Open Enclave SDK。 如需有關 Azure 上機密運算虛擬機器的詳細資訊，請參閱[虛擬機器的解決方案](virtual-machine-solutions.md)。 
 
-如果您已部署 Windows VM，請了解如何使用 GitHub 上[適用於 Windows 的 OE SDK 範例](https://github.com/openenclave/openenclave/blob/master/samples/README_Windows.md)來建置應用程式。 
-
-藉由繼續了解 GitHub 上的 Open Enclave SDK Linux 範例，探索如何在 Linux 上建置機密運算應用程式。 
+繼續了解 GitHub 上的 Open Enclave SDK 範例，以探索如何建置機密運算應用程式。 
 
 > [!div class="nextstepaction"]
-> [在 Linux 上建置 Open Enclave SDK 範例](https://github.com/openenclave/openenclave/blob/master/samples/README_Linux.md)
+> [建置 Open Enclave SDK 範例](https://github.com/openenclave/openenclave/blob/master/samples/README.md)

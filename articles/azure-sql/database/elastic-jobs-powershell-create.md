@@ -1,5 +1,5 @@
 ---
-title: 使用 PowerShell 建立彈性作業代理程式
+title: 使用 PowerShell 建立彈性作業代理程式 (預覽)
 description: 了解如何使用 PowerShell 建立彈性作業代理程式。
 services: sql-database
 ms.service: sql-database
@@ -11,14 +11,14 @@ author: johnpaulkee
 ms.author: joke
 ms.reviwer: sstein
 ms.date: 03/13/2019
-ms.openlocfilehash: 0fe6a3b1d0e5216d923cfe3997826e7a727f1a2b
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: aaf749708b49c57d08a63581f3d911b04aba2103
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89077342"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91408662"
 ---
-# <a name="create-an-elastic-job-agent-using-powershell"></a>使用 PowerShell 建立彈性作業代理程式
+# <a name="create-an-elastic-job-agent-using-powershell-preview"></a>使用 PowerShell 建立彈性作業代理程式 (預覽)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 [彈性作業 (預覽)](job-automation-overview.md#elastic-database-jobs-preview) 可讓您以平行方式跨多個資料庫執行一或多個 Transact-SQL (T-SQL) 指令碼。
