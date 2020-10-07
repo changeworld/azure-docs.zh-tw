@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/28/2020
 ms.author: jeedes
-ms.openlocfilehash: 1d974badd715d7966f552603a77d77aab95d70f7
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 68869d464df01d3cc89493c64d66511b4a6f369d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549960"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91299983"
 ---
 # <a name="tutorial-azure-active-directory-sso-integration-with-kemp-loadmaster-azure-ad-integration"></a>教學課程：Azure Active Directory SSO 與 Kemp LoadMaster Azure AD 整合
 
@@ -197,11 +197,11 @@ ms.locfileid: "88549960"
 
 ### <a name="ssl-acceleration"></a>SSL 加速
  
-1. 移至 Kemp Load Master Web UI > 虛擬服務 > 虛擬服務。
+1. 移至 Kemp LoadMaster Web UI > 虛擬服務 > 檢視/修改服務。
 
 1. 按一下作業下的 [修改]。
 
-1. 在 tcp/x.x.x.:443 (ID:6) 屬性下 (第 7 層作業)，按一下 [SSL 屬性]。
+1. 按一下 [SSL 屬性] (在第 7 層運作)。
     
     ![Kemp LoadMaster Azure AD 整合 Web 伺服器](./media/kemp-tutorial/kemp-3.png)
     

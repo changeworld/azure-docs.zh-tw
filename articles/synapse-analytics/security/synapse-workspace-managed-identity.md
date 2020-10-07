@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 07244f28a345bc3290762c657c2189941009faac
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e3c2b2ce5bd9af60d6d1fd4ac066681ee8473521
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077742"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91249445"
 ---
 # <a name="azure-synapse-workspace-managed-identity-preview"></a>Azure Synapse 工作區的受控識別 (預覽)
 
@@ -58,4 +58,4 @@ Azure Synapse 會使用受控識別來協調管線。 受控識別的生命週�
 
 ## <a name="next-steps"></a>後續步驟
 
-[授與權限給 Azure Synapse 工作區受控識別](./how-to-grant-workspace-managed-identity-permissions.md)
+深入了解[授與權限給 Azure Synapse 工作區受控識別](./how-to-grant-workspace-managed-identity-permissions.md)

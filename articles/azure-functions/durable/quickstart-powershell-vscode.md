@@ -1,16 +1,16 @@
 ---
 title: 使用 PowerShell 在 Azure Functions 中建立第一個耐久函式
-description: 使用 Visual Studio Code 建立及發佈 Azure Durable Function。
+description: 使用 Visual Studio Code 在 PowerShell 中建立及發佈 Azure Durable Function。
 author: anthonychu
 ms.topic: quickstart
 ms.date: 08/10/2020
 ms.reviewer: azfuncdf, antchu
-ms.openlocfilehash: 11ae695a898e011fd287730d894394eff013a0ca
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: edd02085abe63b124082255247362f096248ba82
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88272956"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317254"
 ---
 # <a name="create-your-first-durable-function-in-powershell"></a>使用 PowerShell 建立第一個耐久函式
 

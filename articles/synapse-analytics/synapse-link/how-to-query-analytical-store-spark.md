@@ -9,12 +9,12 @@ ms.subservice: synapse-link
 ms.date: 09/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 663c07795926b17eb42ff185ca248454c5bc459c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 07342cb31f1c44273f98a97b018620538f86c17f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90881835"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91287724"
 ---
 # <a name="interact-with-azure-cosmos-db-using-apache-spark-in-azure-synapse-link-preview"></a>使用 Azure Synapse 連結中的 Apache Spark 與 Azure Cosmos DB 互動 (預覽)
 
@@ -120,6 +120,8 @@ df.write.format("cosmos.oltp").
     save()
 ```
 
+## <a name="load-streaming-dataframe-from-container"></a>從容器載入串流 DataFrame
+在此手勢中，您將使用 Spark 串流功能將容器中的資料載入至 DataFrame。 資料將會儲存在已連線至工作區的主要 Data Lake 帳戶 (和檔案系統) 中。 
 > [!NOTE]
 > 如果要參考 Synapse Apache Spark 中的外部程式庫，請[在此深入了解](#external-library-management)。 比方說，如果要將 Spark 資料框架內嵌至適用於 Mongo DB 的 Cosmos DB API 容器，可以在[這裡](https://docs.mongodb.com/spark-connector/master/)利用適用於 Spark 的 Mongo DB 連接器。
 

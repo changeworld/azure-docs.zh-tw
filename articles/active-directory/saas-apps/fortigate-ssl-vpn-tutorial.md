@@ -1,6 +1,6 @@
 ---
-title: 教學課程：Azure AD SSO 與 FortiGate SSL VPN 整合
-description: 在本教學課程中，您會了解如何設定 Azure Active Directory 與 FortiGate SSL VPN 之間的單一登入。
+title: 教學課程：Azure Active Directory 單一登入 (SSO) 與 FortiGate SSL VPN 整合 | Microsoft Docs
+description: 了解您整合 FortiGate SSL VPN 與 Azure Active Directory (Azure AD) 所需執行的步驟。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 08/11/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: abe92218d6bb20274e916089c15df8c1f44c4fd6
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 187903bfbf75ada45b9a539acd1157dfe730747a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90986431"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331109"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-fortigate-ssl-vpn"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 FortiGate SSL VPN 整合
 
@@ -94,16 +94,29 @@ FortiGate SSL VPN 支援由 SP 起始的 SSO。
     > [!NOTE]
     > 這些值只是模式。 您需要使用實際的「登入 URL」、「識別碼」、「回覆 URL」及「登出 URL」。 請連絡 [FortiGate SSL VPN 用戶端支援小組](mailto:tac_amer@fortinet.com)以取得實際的值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
 
-1. FortiGate SSL VPN 需要特定格式的 SAML 判斷提示。 因此，您必須將自訂屬性對應新增至 SAML 權杖屬性組態。 以下螢幕擷取畫面顯示預設屬性：
+1. FortiGate SSL VPN 應用程式需要特定格式的 SAML 判斷提示，因此您必須將自訂屬性對應新增至設定中。 以下螢幕擷取畫面顯示預設屬性清單。
 
     ![顯示預設屬性的螢幕擷取畫面。](common/default-attributes.png)
 
-1. FortiGate SSL VPN 也需要在 SAML 回應中傳回更多屬性。 下表會顯示這兩個屬性。 這些屬性也會預先填入，但您可以根據您的需求來檢閱這些屬性。
-    
-    | 名稱 |  來源屬性|
-    | ------------ | --------- |
-    | username | user.userprincipalname |
-    | 群組 | user.groups |
+1. 下表顯示 FortiGate SSL VPN 所需的兩個額外宣告。 這些宣告的名稱必須符合本教學課程的**執行 FortiGate 命令列設定**一節中使用的名稱。 
+
+   | 名稱 |  來源屬性|
+   | ------------ | --------- |
+   | username | user.userprincipalname |
+   | 群組 | user.groups |
+   
+   若要建立這些額外的宣告：
+   
+   1. 在 [使用者屬性與宣告] 旁，選取 [編輯]。
+   1. 選取 [新增宣告]。
+   1. 針對 [名稱]，輸入 **username**。
+   1. 針對 [來源屬性]，選取 [user.userprincipalname]。
+   1. 選取 [儲存]。
+   1. 選取 [新增群組宣告]。
+   1. 選取 [所有群組]。
+   1. 選取 [自訂群組宣告的名稱] 核取方塊。
+   1. 針對 [名稱]，輸入 **group**。
+   1. 選取 [儲存]。   
 
 1. 在 [設定使用 SAML 的單一登入] 頁面的 [SAML 簽署憑證] 區段中，選取 [憑證 (Base64)] 旁的 [下載] 連結，以下載憑證並將其儲存在電腦上：
 

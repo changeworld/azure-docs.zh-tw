@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: c699186c77bba16e96de2dc8b5968f5a83a5a9ce
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 4d00abdd3caf6c77b2227d9edfea3cc23d13e392
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89461760"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91288200"
 ---
 # <a name="synapse-sql-resource-consumption"></a>Synapse SQL 資源耗用量
 
@@ -29,7 +29,7 @@ SQL 隨選是按照每個查詢來收費的服務，因此您不必挑選合適�
 
 ### <a name="data-warehouse-units"></a>資料倉儲單位
 
-Synapse SQL 集區代表所要佈建的分析資源集合。 分析資源會以 CPU、記憶體和 IO 的組合來定義。 這三個資源會組合成計算規模的單位，我們稱之為「資料倉儲單位 (DWU)」。 DWU 能以抽象而標準化的量值來呈現計算資源與效能。 變更服務等級即可改變可供系統使用的 DWU 數目，進而調整系統的效能與成本。
+Synapse SQL 集區代表所要佈建的分析資源集合。 分析資源會定義為 CPU、記憶體和 IO 的組合。 這三個資源會組合成計算規模的單位，我們稱之為「資料倉儲單位 (DWU)」。 DWU 能以抽象而標準化的量值來呈現計算資源與效能。 若變更您的服務等級，則會改變系統可用的 DWU 數目。 接著，這項變更會調整系統的效能和成本。
 
 若要提升效能，則可以增加資料倉儲單位數。 若要降低效能，則請降低資料倉儲單位。 儲存體和計算成本會分別計費，因此，變更資料倉儲單位不會影響儲存體成本。
 
@@ -124,11 +124,11 @@ JOIN    sys.databases                     AS db ON ds.database_id = db.database_
 
 若要變更 DWU：
 
-1. 開啟 [Azure 入口網站](https://portal.azure.com)、開啟您的資料庫，然後按一下 [調整]。
+1. 開啟 [Azure 入口網站](https://portal.azure.com)、開啟您的資料庫，然後選取 [調整]。
 
 2. 在 [調整] 下方，將滑桿向左或右移動來變更 DWU 設定。
 
-3. 按一下 [檔案] 。 確認訊息隨即出現。 按一下 [是] 以確認或 [否] 以取消。
+3. 選取 [儲存]。 確認訊息隨即出現。 按一下 [是] 以確認，或選取 [否] 以取消。
 
 #### <a name="powershell"></a>PowerShell
 

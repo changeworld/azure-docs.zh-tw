@@ -2,16 +2,19 @@
 author: areddish
 ms.author: areddish
 ms.service: cognitive-services
-ms.date: 08/17/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 6705e6f1e988a836a3a9b7e7c4950510fcb2b228
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.date: 09/15/2020
+ms.custom: devx-track-js
+ms.openlocfilehash: b0dc5553828b9dd31b297df076857332e9cbd881
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88511279"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327439"
 ---
-本文說明如何開始搭配使用自訂視覺用戶端程式庫與 Node.js 來建置物件偵測模型。 建立它之後，您就可以新增標記的區域、上傳影像、為專案定型、取得專案的已發佈預測端點 URL，並使用端點以程式設計方式測試影像。 請使用此範例作為範本來建置您自己的 Node.js 應用程式。
+本指南提供指示和範例程式碼，可協助您開始使用適用於 Node.js 的自訂視覺用戶端程式庫來建置物件偵測模型。 您將建立專案、新增標籤、將專案定型，並使用專案的預測端點 URL 以程式設計方式加以測試。 請使用此範例作為自行建置影像辨識應用程式的範本。
+
+> [!NOTE]
+> 如果您想要在「不用」撰寫程式碼的情況下，建立和訓練物件偵測模型，請改為參閱[以瀏覽器為基礎的指引](../../get-started-build-detector.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -26,7 +29,7 @@ ms.locfileid: "88511279"
 
 ## <a name="install-the-custom-vision-client-library"></a>安裝自訂視覺用戶端程式庫
 
-若要在專案中安裝適用於 Node.js 的自訂視覺服務用戶端程式庫，請使用下列命令：
+若要使用適用於 Node.js 的自訂視覺來撰寫影像分析應用程式，您將需要自訂視覺 NPM 套件。 若要加以安裝，請在 PowerShell 中執行下列命令：
 
 ```shell
 npm install @azure/cognitiveservices-customvision-training
@@ -37,7 +40,7 @@ npm install @azure/cognitiveservices-customvision-prediction
 
 在您偏好的專案目錄中建立名為 sample.js  的新檔案。
 
-### <a name="create-the-custom-vision-service-project"></a>建立自訂視覺服務專案
+## <a name="create-the-custom-vision-project"></a>建立自訂視覺專案
 
 在指令碼中新增下列程式碼，以建立新的自訂視覺服務專案。 在適當的定義中插入您的訂用帳戶金鑰，並將 sampleDataRoot 路徑值設定為您的映像資料夾路徑。 請確定 endPoint 值符合您在 [Customvision.ai](https://www.customvision.ai/) 建立的訓練和預測端點。 請注意，建立物件偵測和影像分類專案之間的差異，就是在 **createProject** 呼叫中指定的領域。
 
@@ -78,7 +81,7 @@ async function asyncForEach (array, callback) {
     const sampleProject = await trainer.createProject("Sample Obj Detection Project", { domainId: objDetectDomain.id });
 ```
 
-### <a name="create-tags-in-the-project"></a>在專案中建立標記
+## <a name="create-tags-in-the-project"></a>在專案中建立標記
 
 若要在專案中建立分類標記，請在 sample.js  結尾新增以下程式碼：
 
@@ -87,7 +90,7 @@ async function asyncForEach (array, callback) {
     const scissorsTag = await trainer.createTag(sampleProject.id, "Scissors");
 ```
 
-### <a name="upload-and-tag-images"></a>上傳和標記影像
+## <a name="upload-and-tag-images"></a>上傳和標記影像
 
 為物件偵測專案中的影像加上標記時，您必須使用標準化座標來識別每個加上標記的物件所屬的區域。 
 
@@ -173,7 +176,7 @@ await asyncForEach(scissorsFiles, async (file) => {
 await Promise.all(fileUploadPromises);
 ```
 
-### <a name="train-the-project-and-publish"></a>訓練專案並發佈
+## <a name="train-and-publish-the-project"></a>定型和發佈專案
 
 此程式碼會在預測模型中建立第一個反覆項目，然後將該反覆項目發佈至預測端點。 提供給已發佈反覆項目的名稱可用來傳送預測要求。 反覆項目要等到發佈後才可在預測端點中使用。
 
@@ -229,7 +232,11 @@ node sample.js
 
 ## <a name="next-steps"></a>後續步驟
 
-現在，您已了解如何在程式碼中完成物件偵測程序的每個步驟。 此範例會執行單一的訓練反覆項目，但您通常必須對模型進行多次訓練和測試，以便提升其精確度。 下列訓練指南會處理影像分類，但其原則類似於物件偵測。
+現在，您已完成在程式碼中執行物件偵測程序的每個步驟。 此範例會執行單一的訓練反覆項目，但您通常必須對模型進行多次訓練和測試，以便提升其精確度。 下列指南會處理影像分類，但其原則類似於物件偵測。
 
 > [!div class="nextstepaction"]
 > [測試和重新定型模型](../../test-your-model.md)
+
+* [什麼是自訂視覺服務？](../../overview.md)
+* [SDK 參考文件 (定型)](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-customvision-training/?view=azure-node-latest)
+* [SDK 參考文件 (預測)](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-customvision-prediction/?view=azure-node-latest)

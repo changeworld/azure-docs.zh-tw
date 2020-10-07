@@ -10,12 +10,12 @@ ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d00232d602ce7b2de0db4e06ef3c7456f552833e
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 6b9835cf5de28fbd515a214554f723d99e8e8fe4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018734"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91260726"
 ---
 # <a name="azure-synapse-analytics-shared-metadata-tables"></a>Azure Synapse Analytics 共用中繼資料資料表
 
@@ -105,7 +105,7 @@ Spark 資料庫和資料表，以及其在 SQL 引擎中的同步代表項目，
     CREATE TABLE mytestdb.myParquetTable(id int, name string, birthdate date) USING Parquet
 ```
 
-這會在 `mytestdb` 資料庫中建立 `myParquetTable` 資料表。 短暫延遲之後，您就可以在 SQL 隨選中看到資料表。 例如，從 SQL 隨選執行下列陳述式。
+此命令會在 `mytestdb` 資料庫中建立 `myParquetTable` 資料表。 短暫延遲之後，您就可以在 SQL 隨選中看到資料表。 例如，從 SQL 隨選執行下列陳述式。
 
 ```sql
     USE mytestdb;

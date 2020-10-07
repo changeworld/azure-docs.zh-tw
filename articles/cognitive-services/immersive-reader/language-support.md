@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: overview
 ms.date: 04/13/2020
 ms.author: metan
-ms.openlocfilehash: cdf21ed85933c2a629c5752659e9cc50107a3762
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: c4aa9c22a0350c5d946d2fd45a983eac34681512
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84309300"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320926"
 ---
 # <a name="language-support-for-immersive-reader"></a>沈浸式閱讀程式的語言支援
 
@@ -30,7 +30,8 @@ ms.locfileid: "84309300"
 | 阿拉伯文 (沙烏地阿拉伯) | ar-SA |
 | 保加利亞文 | bg |
 | 保加利亞文 (保加利亞) | bg-BG |
-| 卡達隆尼亞文 | ca-ES |
+| 卡達隆尼亞文 | ca |
+| 加泰蘭文 (加泰蘭) | ca-ES |
 | 中文 | zh |
 | 中文 (中國) | zh-CN |
 | 中文 (香港特別行政區) | zh-HK |
@@ -40,7 +41,8 @@ ms.locfileid: "84309300"
 | 簡體中文 | zh-Hans |
 | 簡體中文 (中國) | zh-Hans-CN |
 | 簡體中文 (新加坡) | zh-Hans-SG |
-| 繁體中文 | zh-Hant-CN |
+| 繁體中文 | zh-Hant |
+| 繁體中文 (中國) | zh-Hant-CN |
 | 繁體中文 (香港特別行政區) | zh-Hant-HK |
 | 繁體中文 (澳門特別行政區) | zh-Hant-MO |
 | 繁體中文 (台灣) | zh-Hant-TW |
@@ -103,7 +105,7 @@ ms.locfileid: "84309300"
 | 斯洛伐克文 | sk |
 | 斯洛伐克文 (斯洛伐克) | sk-SK |
 | 斯洛維尼亞文 | sl |
-| 斯洛維尼亞文 (斯洛維尼亞) | sl-SL |
+| 斯洛維尼亞文 (斯洛維尼亞) | sl-SI |
 | 西班牙文 | es |
 | 西班牙文 (拉丁美洲) | es-419 |
 | 西班牙文 (墨西哥) | es-MX |
@@ -126,13 +128,15 @@ ms.locfileid: "84309300"
 | Language | Tag |
 |----------|-----|
 | 南非荷蘭文 | af |
+| 阿拉伯文 | ar |
 | 阿拉伯文 (埃及) | ar-EG |
 | 阿拉伯文 (沙烏地阿拉伯) | ar-SA |
 | 孟加拉文 | bn |
 | 波士尼亞文 | bs |
 | 保加利亞文 | bg |
 | 保加利亞文 (保加利亞) | bg-BG |
-| 卡達隆尼亞文 | ca-ES |
+| 卡達隆尼亞文 | ca |
+| 加泰蘭文 (加泰蘭) | ca-ES |
 | 中文 | zh |
 | 中文 (中國) | zh-CN |
 | 中文 (香港特別行政區) | zh-HK |
@@ -142,7 +146,8 @@ ms.locfileid: "84309300"
 | 簡體中文 | zh-Hans |
 | 簡體中文 (中國) | zh-Hans-CN |
 | 簡體中文 (新加坡) | zh-Hans-SG |
-| 繁體中文 | zh-Hant-CN |
+| 繁體中文 | zh-Hant |
+| 繁體中文 (中國) | zh-Hant-CN |
 | 繁體中文 (香港特別行政區) | zh-Hant-HK |
 | 繁體中文 (澳門特別行政區) | zh-Hant-MO |
 | 繁體中文 (台灣) | zh-Hant-TW |
@@ -152,6 +157,7 @@ ms.locfileid: "84309300"
 | 捷克文 (捷克共和國) | cs-CZ |
 | 丹麥文 | da |
 | 丹麥文 (丹麥) | da-DK |
+| 達利語 (阿富汗) | prs |
 | 荷蘭文 | nl |
 | 荷蘭文 (荷蘭) | nl-NL |
 | 英文 | en |
@@ -176,6 +182,7 @@ ms.locfileid: "84309300"
 | 德文 (奧地利) | de-AT |
 | 德文 (德國) | de-DE |
 | 德文 (瑞士)| de-CH |
+| 古吉拉特文 | gu |
 | 希臘文 | el |
 | 希臘文 (希臘) | el-GR |
 | 海地文 (克利奧爾) | ht |
@@ -198,6 +205,8 @@ ms.locfileid: "84309300"
 | 史瓦希里文 | sw |
 | 韓文 | ko |
 | 韓文 (韓國) | ko-KR |
+| 庫德文 (中部) | ku |
+| 庫德文 (北部) | kmr |
 | 拉脫維亞文 | lv |
 | 立陶宛文 | lt |
 | 馬達加斯加文 | mg |
@@ -206,8 +215,11 @@ ms.locfileid: "84309300"
 | 馬來亞拉姆文 | ml |
 | 馬爾他文 | mt |
 | 毛利文 | mi |
+| 馬拉地文 | mr |
 | 挪威文 (巴克摩)| nb |
 | 挪威文 (巴克摩) (挪威) | nb-NO |
+| 歐利亞文 | 或 |
+| 普什圖文 (阿富汗) | ps |
 | 波斯文 | fa |
 | 波蘭文 | pl |
 | 波蘭文 (波蘭) | pl-PL |
@@ -227,7 +239,7 @@ ms.locfileid: "84309300"
 | 斯洛伐克文 | sk |
 | 斯洛伐克文 (斯洛伐克) | sk-SK |
 | 斯洛維尼亞文 | sl |
-| 斯洛維尼亞文 (斯洛維尼亞) | sl-SL |
+| 斯洛維尼亞文 (斯洛維尼亞) | sl-SI |
 | 西班牙文 | es |
 | 西班牙文 (拉丁美洲) | es-419 |
 | 西班牙文 (墨西哥) | es-MX |
@@ -257,12 +269,14 @@ ms.locfileid: "84309300"
 
 | Language | Tag |
 |----------|-----|
+| 阿拉伯文 | ar |
 | 阿拉伯文 (埃及) | ar-EG |
 | 阿拉伯文 (沙烏地阿拉伯) | ar-SA |
 | 巴斯克文 | eu |
 | 保加利亞文 | bg |
 | 保加利亞文 (保加利亞) | bg-BG |
-| 卡達隆尼亞文 | ca-ES |
+| 卡達隆尼亞文 | ca |
+| 加泰蘭文 (加泰蘭) | ca-ES |
 | 簡體中文 | zh-Hans |
 | 簡體中文 (中國) | zh-Hans-CN |
 | 簡體中文 (新加坡) | zh-Hans-SG |
@@ -338,7 +352,7 @@ ms.locfileid: "84309300"
 | 斯洛伐克文 | sk |
 | 斯洛伐克文 (斯洛伐克) | sk-SK |
 | 斯洛維尼亞文 | sl |
-| 斯洛維尼亞文 (斯洛維尼亞) | sl-SL |
+| 斯洛維尼亞文 (斯洛維尼亞) | sl-SI |
 | 西班牙文 | es |
 | 西班牙文 (拉丁美洲) | es-419 |
 | 西班牙文 (墨西哥) | es-MX |
@@ -365,7 +379,8 @@ ms.locfileid: "84309300"
 | 巴斯克文 | eu |
 | 保加利亞文 | bg |
 | 保加利亞文 (保加利亞) | bg-BG |
-| 卡達隆尼亞文 | ca-ES |
+| 卡達隆尼亞文 | ca |
+| 加泰蘭文 (加泰蘭) | ca-ES |
 | 克羅埃西亞文 | hr |
 | 克羅埃西亞文 (克羅埃西亞) | hr-HR |
 | 捷克文 | cs |
@@ -423,7 +438,7 @@ ms.locfileid: "84309300"
 | 斯洛伐克文 | sk |
 | 斯洛伐克文 (斯洛伐克) | sk-SK |
 | 斯洛維尼亞文 | sl |
-| 斯洛維尼亞文 (斯洛維尼亞) | sl-SL |
+| 斯洛維尼亞文 (斯洛維尼亞) | sl-SI |
 | 西班牙文 | es |
 | 西班牙文 (拉丁美洲) | es-419 |
 | 西班牙文 (墨西哥) | es-MX |

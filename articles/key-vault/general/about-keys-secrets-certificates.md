@@ -1,5 +1,5 @@
 ---
-title: Azure Key Vault REST API 概觀
+title: Azure Key Vault 的金鑰、祕密與憑證概觀
 description: 概述 Azure Key Vault REST 介面和開發人員在金鑰、祕密和憑證方面的詳細資料。
 services: key-vault
 author: msmbaldwin
@@ -9,14 +9,14 @@ ms.service: key-vault
 ms.topic: overview
 ms.date: 04/17/2020
 ms.author: mbaldwin
-ms.openlocfilehash: b2d3753cd31b54c500b2757520f2634eb1b2794a
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: c02a2658325fdd88ef1052937edc3b84c4545872
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90983269"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91296832"
 ---
-# <a name="azure-key-vault-rest-api-overview"></a>Azure Key Vault REST API 概觀
+# <a name="azure-key-vault-keys-secrets-and-certificates-overview"></a>Azure Key Vault 的金鑰、祕密與憑證概觀
 
 Azure Key Vault 可讓 Microsoft Azure 應用程式和使用者儲存及使用數種類型的祕密/金鑰資料。 Key Vault 資源提供者支援兩種資源類型：保存庫和受控 HSM。
 

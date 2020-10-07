@@ -9,12 +9,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/14/2020
-ms.openlocfilehash: ca330357e88ff6f4824c74a6048769638542cc29
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d6c447deedbdcc4f2439fc069f368db88b3560b9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88556079"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91278017"
 ---
 # <a name="tutorial-assign-directory-readers-role-to-an-azure-ad-group-and-manage-role-assignments"></a>教學課程：將目錄讀取者角色指派給 Azure AD 群組並管理角色指派
 
@@ -55,7 +55,7 @@ ms.locfileid: "88556079"
 
 若要檢查和管理已建立的群組，請回到 Azure 入口網站中的**群組**窗格，然後搜尋您的群組名稱。 選取群組之後，您可以在**擁有者**和**管理**設定的**成員**功能表下新增其他擁有者和成員。 您也可以檢閱群組的**已指派角色**。
 
-:::image type="content" source="media/authentication-aad-directory-readers-role/azure-ad-group-created.png" alt-text="azure-ad-group-created":::
+:::image type="content" source="media/authentication-aad-directory-readers-role/azure-ad-group-created.png" alt-text="aad-new-group":::
 
 ### <a name="add-azure-sql-managed-identity-to-the-group"></a>將 Azure SQL 受控識別新增至群組
 
@@ -68,17 +68,17 @@ ms.locfileid: "88556079"
 
 1. 在 Azure 入口網站中尋找 **SQL 受控執行個體**資源。
 
-   :::image type="content" source="media/authentication-aad-directory-readers-role/azure-ad-managed-instance.png" alt-text="azure-ad-managed-instance":::
+   :::image type="content" source="media/authentication-aad-directory-readers-role/azure-ad-managed-instance.png" alt-text="aad-new-group":::
 
    在建立 SQL 受控執行個體期間，系統會為您的執行個體建立 Azure 身分識別。 建立的身分識別與 SQL 受控執行個體名稱具有相同的前置詞。 您可以遵循下列步驟，找到建立為 Azure AD 應用程式之 SQL 受控執行個體身分識別的服務主體：
 
     - 移至 **Azure Active Directory** 資源。 在**管理**下選取 [企業應用程式]。 **物件識別碼**是執行個體的身分識別。
     
-    :::image type="content" source="media/authentication-aad-directory-readers-role/azure-ad-managed-instance-service-principal.png" alt-text="azure-ad-managed-instance-service-principal":::
+    :::image type="content" source="media/authentication-aad-directory-readers-role/azure-ad-managed-instance-service-principal.png" alt-text="aad-new-group":::
 
 1. 移至 **Azure Active Directory** 資源。 在**受控**下，移至**群組**。 選取您建立的群組。 在群組的**受控**設定下，選取 [成員]。 選取 [新增成員]，然後藉由搜尋上方找到的名稱，將您的 SQL 受控執行個體服務主體新增為群組的成員。
 
-   :::image type="content" source="media/authentication-aad-directory-readers-role/azure-ad-add-managed-instance-service-principal.png" alt-text="azure-ad-add-managed-instance-service-principal":::
+   :::image type="content" source="media/authentication-aad-directory-readers-role/azure-ad-add-managed-instance-service-principal.png" alt-text="aad-new-group":::
 
 > [!NOTE]
 > 可能需要幾分鐘的時間，才能透過 Azure 系統傳播服務主體權限，並允許存取 Azure AD 圖形 API。 在佈建 SQL 受控執行個體的 Azure AD 管理員之前，您可能必須等候幾分鐘的時間。

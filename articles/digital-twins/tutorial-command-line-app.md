@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 5/8/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: a1dc42815167da308fd87b541c0f21d02b47329b
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: b6f2e8ff6689a3817ecf9eb43c7cea4a0632fc25
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89022508"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91297654"
 ---
 # <a name="tutorial-explore-azure-digital-twins-with-a-sample-client-app"></a>教學課程：使用範例用戶端應用程式探索 Azure Digital Twins
 
@@ -85,18 +85,18 @@ ms.locfileid: "89022508"
 
 現在您已定義模型，剩餘的步驟涉及使用範例應用程式來與您的 Azure Digital Twins 執行個體進行互動。 使用工具列中的這個按鈕以執行專案：
 
-:::image type="content" source="media/tutorial-command-line-app/start-button-sample.png" alt-text="Visual Studio 啟動按鈕 (SampleClientApp 專案)":::
+:::image type="content" source="media/tutorial-command-line-app/start-button-sample.png" alt-text="編輯後的 Room.json，其中含有更新後的版本號碼、HumidityLevel 與 RoomName 屬性，並包含關聯性":::
 
 主控台視窗隨即會開啟、執行驗證，然後等候命令。 
 * 這會透過瀏覽器處理驗證，因此您的預設網頁瀏覽器將開啟驗證提示。 使用此提示與您的 Azure 認證登入。 接著，您可以關閉瀏覽器索引標籤或視窗。
 
 以下為專案主控台外觀的螢幕擷取畫面：
 
-:::image type="content" source="media/tutorial-command-line-app/command-line-app.png" alt-text="命令列應用程式的歡迎訊息":::
+:::image type="content" source="media/tutorial-command-line-app/command-line-app.png" alt-text="編輯後的 Room.json，其中含有更新後的版本號碼、HumidityLevel 與 RoomName 屬性，並包含關聯性":::
 
 > [!TIP]
 > 如需您可以搭配此專案使用的所有可能命令清單，請在專案主控台中輸入 `help`，然後按返回。
-> :::image type="content" source="media/tutorial-command-line-app/command-line-app-help.png" alt-text="Help 命令的輸出":::
+> :::image type="content" source="media/tutorial-command-line-app/command-line-app-help.png" alt-text="編輯後的 Room.json，其中含有更新後的版本號碼、HumidityLevel 與 RoomName 屬性，並包含關聯性":::
 
 請將專案主控台維持在執行狀態，以用於本教學課程中的剩餘步驟。
 
@@ -117,7 +117,7 @@ CreateModels Room Floor
 
 執行 `GetModels true` 命令以驗證模型已建立。 這將會為所有已上傳的模型查詢 Azure Digital Twins 執行個體，並列印出其完整資訊。 在結果中尋找編輯過的 *Room* 模型：
 
-:::image type="content" source="media/tutorial-command-line-app/output-get-models.png" alt-text="GetModels 的結果，顯示更新的 Room 模型":::
+:::image type="content" source="media/tutorial-command-line-app/output-get-models.png" alt-text="編輯後的 Room.json，其中含有更新後的版本號碼、HumidityLevel 與 RoomName 屬性，並包含關聯性":::
 
 #### <a name="errors"></a>Errors
 
@@ -165,7 +165,7 @@ CreateDigitalTwin dtmi:example:Floor;1 floor1
 
 這些命令的輸出應該會指出分身已成功建立。 
 
-:::image type="content" source="media/tutorial-command-line-app/output-create-digital-twin.png" alt-text="CreateDigitalTwin 命令結果的摘要，顯示 floor0、floor1、room0 與 room1":::
+:::image type="content" source="media/tutorial-command-line-app/output-create-digital-twin.png" alt-text="編輯後的 Room.json，其中含有更新後的版本號碼、HumidityLevel 與 RoomName 屬性，並包含關聯性":::
 
 您也可以透過執行 `Query` 命令來驗證分身已建立。 此命令向 Azure Digital Twins 執行個體查詢其包含的所有數位分身。 在結果中尋找 *floor0*、*floor1*、*room0* 與 *room1* 分身。
 
@@ -205,7 +205,7 @@ CreateRelationship floor1 contains room1 relationship1
 
 這些命令的輸出會確認已成功建立關聯性：
 
-:::image type="content" source="media/tutorial-command-line-app/output-create-relationship.png" alt-text="CreateRelationship 命令的結果摘要，顯示 relationship0 與 relationship1":::
+:::image type="content" source="media/tutorial-command-line-app/output-create-relationship.png" alt-text="編輯後的 Room.json，其中含有更新後的版本號碼、HumidityLevel 與 RoomName 屬性，並包含關聯性":::
 
 您也可以使用任何下列命令來驗證關聯性，這些命令會查詢您 Azure Digital Twins 執行個體中的關聯性。
 * 查看來自每一個樓層的所有關聯性 (從其中一端檢視關聯性)，
@@ -219,13 +219,13 @@ CreateRelationship floor1 contains room1 relationship1
     ```
 * 個別查詢這些關聯性， 
     ```cmd/sh
-    GetRelationship floor0 contains relationship0
-    GetRelationship floor1 contains relationship1
+    GetRelationship floor0 relationship0
+    GetRelationship floor1 relationship1
     ```
 
 您在本教學課程中設定的分身和關聯性會形成以下概念圖表：
 
-:::image type="content" source="media/tutorial-command-line-app/sample-graph.png" alt-text="顯示 floor0 透過 relationship0 連線到 room0，floor1 透過 relationship1 連線到 room1 的圖表" border="false":::
+:::image type="content" source="media/tutorial-command-line-app/sample-graph.png" alt-text="編輯後的 Room.json，其中含有更新後的版本號碼、HumidityLevel 與 RoomName 屬性，並包含關聯性" border="false":::
 
 ### <a name="query-the-twin-graph-to-answer-environment-questions"></a>查詢分身圖表以回答環境問題
 
@@ -239,10 +239,10 @@ Azure Digital Twins 的主要功能是能夠輕鬆且有效率地[查詢](concep
 
     這可以讓您一眼就能了解環境，確認所有項目的呈現方式都和您希望其在 Azure Digital Twins 中的呈現方式相同。 其結果包含每個數位分身及其詳細資料的輸出。 摘要如下：
 
-    :::image type="content" source="media/tutorial-command-line-app/output-query-all.png" alt-text="分身查詢的部分結果，顯示 room0 與 floor1":::
+    :::image type="content" source="media/tutorial-command-line-app/output-query-all.png" alt-text="編輯後的 Room.json，其中含有更新後的版本號碼、HumidityLevel 與 RoomName 屬性，並包含關聯性":::
 
     >[!NOTE]
-    >不包含任何其他引數的 `Query` 命令與 `Query SELECT * FROM DIGITALTWINS` 相等。
+    >在範例專案中，不包含任何其他引數的 `Query` 命令等同於 `Query SELECT * FROM DIGITALTWINS`。 若要使用[查詢 API](how-to-use-apis-sdks.md) 或 [CLI 命令](how-to-use-cli.md)來查詢執行個體中的所有對應項，請使用較長 (完整) 的查詢。
 
 * **我的環境中有哪些房間？** (依模型查詢)
 
@@ -252,7 +252,7 @@ Azure Digital Twins 的主要功能是能夠輕鬆且有效率地[查詢](concep
 
     您可以將查詢限制在特定類型的分身，以取得其表示項目更具體的資訊。 該結果會顯示 *room0* 與 *room1*，但**不會**顯示 *floor0* 或 *floor1* (因為其為樓層，而非房間)。
     
-    :::image type="content" source="media/tutorial-command-line-app/output-query-model.png" alt-text="模型查詢的結果，僅顯示 room0 與 room1":::
+    :::image type="content" source="media/tutorial-command-line-app/output-query-model.png" alt-text="編輯後的 Room.json，其中含有更新後的版本號碼、HumidityLevel 與 RoomName 屬性，並包含關聯性":::
 
 * ***floor0* 上有哪些房間？** (依關聯性查詢)
 
@@ -262,7 +262,7 @@ Azure Digital Twins 的主要功能是能夠輕鬆且有效率地[查詢](concep
 
     您可以根據圖表中的關聯性進行查詢，以取得分身連線方式的資訊，或是將您的查詢限制在特定區域。 由於只有 *room0* 位於 *floor0* 上，因此其為結果中唯一的房間。
 
-    :::image type="content" source="media/tutorial-command-line-app/output-query-relationship.png" alt-text="關聯性查詢的結果，顯示 room0":::
+    :::image type="content" source="media/tutorial-command-line-app/output-query-relationship.png" alt-text="編輯後的 Room.json，其中含有更新後的版本號碼、HumidityLevel 與 RoomName 屬性，並包含關聯性":::
 
 * **我的環境中有哪些分身的溫度高於 75？** (依屬性查詢)
 
@@ -272,7 +272,7 @@ Azure Digital Twins 的主要功能是能夠輕鬆且有效率地[查詢](concep
 
     您可以根據屬性查詢圖表來回答各種問題，包括尋找您環境中需要注意的極端值。 也支援其他比較運算子 ( *<* 、 *>* 、 *=* 或 *!=* )。 *room1* 會顯示在此處的結果中，因為其溫度為 80。
 
-    :::image type="content" source="media/tutorial-command-line-app/output-query-property.png" alt-text="屬性查詢的結果，僅顯示 room1":::
+    :::image type="content" source="media/tutorial-command-line-app/output-query-property.png" alt-text="編輯後的 Room.json，其中含有更新後的版本號碼、HumidityLevel 與 RoomName 屬性，並包含關聯性":::
 
 * ***floor0* 上有哪些房間的溫度高於 75？** (複合查詢)
 
@@ -282,7 +282,7 @@ Azure Digital Twins 的主要功能是能夠輕鬆且有效率地[查詢](concep
 
     您也可以合併使用 `AND`、`OR`、`NOT` 等運算子，如在 SQL 中一樣合併先前的查詢。 此查詢使用 `AND`，讓先前有關分身溫度的查詢更為明確。 結果現在只會包含位於 *floor0* 上溫度高於 75 的房間 (在此案例中，沒有任何房間符合此條件)。 結果集為空白。
 
-    :::image type="content" source="media/tutorial-command-line-app/output-query-compound.png" alt-text="複合查詢的結果，顯示沒有結果":::
+    :::image type="content" source="media/tutorial-command-line-app/output-query-compound.png" alt-text="編輯後的 Room.json，其中含有更新後的版本號碼、HumidityLevel 與 RoomName 屬性，並包含關聯性":::
 
 ## <a name="clean-up-resources"></a>清除資源
 

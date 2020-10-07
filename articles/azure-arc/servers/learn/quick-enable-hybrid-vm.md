@@ -1,24 +1,24 @@
 ---
-title: 將混合式電腦與已啟用 Azure Arc 的伺服器連線 (預覽)
-description: 了解如何使用已啟用 Azure Arc 的伺服器 (預覽) 連線和註冊您的混合式電腦。
+title: 將混合式機器與已啟用 Azure Arc 的伺服器連線
+description: 了解如何使用已啟用 Azure Arc 的伺服器連線和註冊您的混合式機器。
 ms.topic: quickstart
-ms.date: 08/12/2020
-ms.openlocfilehash: eacf75871b1f7cc7fc3b703d8859338578e43456
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.date: 09/23/2020
+ms.openlocfilehash: b57f30821a105a99041d8187716b75096116ea8e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213613"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327879"
 ---
-# <a name="quickstart-connect-hybrid-machine-with-azure-arc-enabled-servers-preview"></a>快速入門：將混合式電腦與已啟用 Azure Arc 的伺服器連線 (預覽)
+# <a name="quickstart-connect-hybrid-machine-with-azure-arc-enabled-servers"></a>快速入門：將混合式機器與已啟用 Azure Arc 的伺服器連線
 
-[已啟用 Azure Arc 的伺服器](../overview.md) (預覽) 可讓您管理和控管裝載在內部部署、邊緣和多重雲端環境中的 Windows 和 Linux 電腦。 在本快速入門中，您將在裝載於 Azure 外部的 Windows 或 Linux 電腦上，部署和設定已連線的電腦代理程式，以透過啟用 Arc 的伺服器 (預覽) 進行管理。
+[已啟用 Azure Arc 的伺服器](../overview.md)可讓您管理和控管裝載在內部部署、邊緣和多重雲端環境中的 Windows 和 Linux 機器。 在本快速入門中，您將在裝載於 Azure 外部的 Windows 或 Linux 機器上，部署和設定連線機器代理程式，以透過啟用 Arc 的伺服器進行管理。
 
 ## <a name="prerequisites"></a>必要條件
 
 * 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-* 部署已啟用 Arc 的伺服器 (預覽) 混合式連線電腦代理程式需要您擁有電腦的管理員權限，才能安裝和設定代理程式。 在 Linux 上請使用根帳戶；在 Windows 上則必須使用本機管理員群組成員的帳戶。
+* 要部署已啟用 Arc 的伺服器混合式連線機器代理程式，您必須擁有電腦的管理員權限，以安裝和設定代理程式。 在 Linux 上請使用根帳戶；在 Windows 上則必須使用本機管理員群組成員的帳戶。
 
 * 開始之前，請務必檢閱代理程式[必要條件](../agent-overview.md#prerequisites)並確認下列事項：
 
@@ -28,13 +28,13 @@ ms.locfileid: "88213613"
 
     * 如果電腦透過防火牆或 Proxy 伺服器連線到網際網路進行通訊，請確定[列出的 URL](../agent-overview.md#networking-configuration) 不會遭到封鎖。
 
-    * 已啟用 Azure Arc 的伺服器 (預覽) 只支援[此處](../overview.md#supported-regions)所指定的區域。
+    * 已啟用 Azure Arc 的伺服器僅支援[這裡](../overview.md#supported-regions)所指定的區域。
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
 ## <a name="register-azure-resource-providers"></a>註冊 Azure 資源提供者
 
-已啟用 Azure Arc 的伺服器 (預覽) 需依賴您訂用帳戶中的下列 Azure 資源提供者來使用此服務：
+已啟用 Azure Arc 的伺服器需依賴您訂用帳戶中的下列 Azure 資源提供者來使用此服務：
 
 * Microsoft.HybridCompute
 * Microsoft.GuestConfiguration
@@ -97,15 +97,15 @@ az provider register --namespace 'Microsoft.GuestConfiguration'
 
 ## <a name="verify-the-connection-with-azure-arc"></a>驗證與 Azure Arc 的連線
 
-在安裝好代理程式並將其設定為連線至已啟用 Azure Arc 的伺服器 (預覽) 之後，請移至 Azure 入口網站以確認伺服器已成功連線。 在 [Azure 入口網站](https://aka.ms/hybridmachineportal)中檢視您的電腦。
+在安裝好代理程式並將其設定為連線至已啟用 Azure Arc 的伺服器之後，請移至 Azure 入口網站以確認伺服器已成功連線。 在 [Azure 入口網站](https://aka.ms/hybridmachineportal)中檢視您的電腦。
 
-:::image type="content" source="./media/quick-enable-hybrid-vm/enabled-machine.png" alt-text="電腦成功連線" border="false":::
+:::image type="content" source="./media/quick-enable-hybrid-vm/enabled-machine.png" alt-text="搜尋所有服務中已啟用 Arc 的伺服器" border="false":::
 
 ## <a name="next-steps"></a>後續步驟
 
 既然您已啟用 Linux 或 Windows 混合式電腦並成功連線到服務，就可以開始啟用 Azure 原則以了解 Azure 中的合規性。
 
-若要了解如何識別未安裝 Log Analytics 代理程式的已啟用 Azure Arc 伺服器 (預覽) 的電腦，請繼續進行教學課程：
+若要了解如何識別已啟用 Azure Arc 但未安裝 Log Analytics 代理程式的伺服器電腦，請繼續進行教學課程：
 
 > [!div class="nextstepaction"]
 > [建立原則指派以識別不相容資源](tutorial-assign-policy-portal.md)

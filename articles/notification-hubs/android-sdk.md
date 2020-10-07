@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 通知中樞和 Firebase SDK 1.0.0-preview1 版將推播通知傳送至 Android
-description: 在本教學課程中，您將了解如何使用 Azure 通知中樞和 Google Firebase 雲端通訊，將推播通知傳送至 Android 裝置。
+description: 在本教學課程中，您將了解如何使用 Azure 通知中樞和 Google Firebase 雲端通訊，將推播通知傳送至 Android 裝置 (1.0.0-preview1 版)。
 author: sethmanheim
 ms.author: sethm
 ms.date: 5/28/2020
@@ -9,12 +9,12 @@ ms.service: notification-hubs
 ms.reviewer: thsomasu
 ms.lastreviewed: 05/27/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ae1d2dfaf7d83d3b2323812f637bddd91b9a2ea2
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 63841bd603373d0fb325bcf82511ce3fb07b4136
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018224"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91315179"
 ---
 # <a name="tutorial-send-push-notifications-to-android-devices-using-firebase-sdk-version-100-preview1"></a>教學課程：使用 Firebase SDK 1.0.0-preview1 版將推播通知傳送至 Android 裝置
 
@@ -62,23 +62,23 @@ ms.locfileid: "89018224"
 
 2. 建立專案之後，請選取 **** [將 Firebase 新增至 Android 應用程式]。
 
-   :::image type="content" source="media/android-sdk/get-started.png" alt-text="新增 Firebase":::
+   :::image type="content" source="media/android-sdk/get-started.png" alt-text="設定專案":::
 
 3. 在 [將 Firebase 新增至 Android 應用程式] ****  頁面上，執行下列動作：
 
    1. 對於 [Android 套件名稱] **** ，複製應用程式 **build.gradle** 檔案的 applicationId 值。 在此範例中為  `com.fabrikam.fcmtutorial1app`。
 
-      :::image type="content" source="media/android-sdk/specify-package-name-fcm-settings.png" alt-text="指定套件名稱":::
+      :::image type="content" source="media/android-sdk/specify-package-name-fcm-settings.png" alt-text="設定專案":::
 
    2. 選取 **註冊應用程式**。
 
 4. 選取 [下載 google-services.json] **** ，將檔案儲存到專案的 **應用程式** 資料夾，然後選取 **** [下一步]。
 
-   :::image type="content" source="media/android-sdk/download-google-service-button.png" alt-text="下載 Google 服務":::
+   :::image type="content" source="media/android-sdk/download-google-service-button.png" alt-text="設定專案":::
 
 5. 在 Firebase 主控台中，選取您專案的齒輪圖示。 然後選取 [專案設定] **** 。
 
-   :::image type="content" source="media/android-sdk/notification-hubs-firebase-console-project-settings.png" alt-text="專案設定":::
+   :::image type="content" source="media/android-sdk/notification-hubs-firebase-console-project-settings.png" alt-text="設定專案":::
 
 6. 如果您尚未將 **google-services.json** 檔案下載到 Android Studio 專案的 **應用程式** 資料夾，可以在此頁面下載。
 
@@ -94,7 +94,7 @@ ms.locfileid: "89018224"
 
 3. 在 [通知中樞] ****  頁面上，選取工具列上的 ****  [新增]。
 
-   :::image type="content" source="media/android-sdk/add-hub.png" alt-text="新增中樞":::
+   :::image type="content" source="media/android-sdk/add-hub.png" alt-text="設定專案":::
 
 4. 在 [通知中樞] ****  頁面上，執行下列動作：
 
@@ -108,15 +108,15 @@ ms.locfileid: "89018224"
 
    5. 選取 [建立] **** 。
 
-      :::image type="content" source="media/android-sdk/create-hub.png" alt-text="建立中樞":::
+      :::image type="content" source="media/android-sdk/create-hub.png" alt-text="設定專案":::
 
 5. 選取 [通知] ****  (鈴鐺圖示)，然後選取 **** [前往資源]。 您也可以重新整理 [通知中樞] ****  頁面中的清單，然後選取您的中樞。
 
-   :::image type="content" source="media/android-sdk/notification-hubs.png" alt-text="選取中樞":::
+   :::image type="content" source="media/android-sdk/notification-hubs.png" alt-text="設定專案":::
 
 6. 從清單中選取 ****  [存取原則]。 請注意，有兩個連接字串可供使用。 您稍後需要用到這些連接字串來處理推播通知。
 
-   :::image type="content" source="media/android-sdk/access-policies.png" alt-text="存取原則":::
+   :::image type="content" source="media/android-sdk/access-policies.png" alt-text="設定專案":::
 
    > [!IMPORTANT]
    > 請勿在應用程式中使用 **DefaultFullSharedAccessSignature** 原則。 此原則僅適用於應用程式後端。
@@ -129,7 +129,7 @@ ms.locfileid: "89018224"
 
 3. 在工具列上，選取 **** [儲存]。
 
-   :::image type="content" source="media/android-sdk/fcm-server-key.png" alt-text="伺服器金鑰":::
+   :::image type="content" source="media/android-sdk/fcm-server-key.png" alt-text="設定專案":::
 
 4. Azure 入口網站會顯示訊息來指出中樞的更新已成功。 [儲存] ****  按鈕已停用。
 
@@ -143,15 +143,15 @@ ms.locfileid: "89018224"
 
 2. 選取您專案中使用的 Android SDK 目標版本。 然後選取 **** [顯示套件詳細資料]。
 
-   :::image type="content" source="media/android-sdk/notification-hubs-android-studio-sdk-manager.png" alt-text="SDK 管理員":::
+   :::image type="content" source="media/android-sdk/notification-hubs-android-studio-sdk-manager.png" alt-text="設定專案":::
 
 3. 如果尚未安裝 **** [Google API]，請加以選取。
 
-   :::image type="content" source="media/android-sdk/google-apis-selected.png" alt-text="API":::
+   :::image type="content" source="media/android-sdk/google-apis-selected.png" alt-text="設定專案":::
 
 4. 切換至 [SDK Tools] ****  索引標籤。 如果您尚未安裝 Google Play Services，請選取 ****  [Google Play Services]，如下圖所示。 然後選取 [套用] ****  以進行安裝。 請注意在稍後步驟中使用的 SDK 路徑。
 
-   :::image type="content" source="media/android-sdk/google-play-services-selected.png" alt-text="Play 服務":::
+   :::image type="content" source="media/android-sdk/google-play-services-selected.png" alt-text="設定專案":::
 
 5. 如果您看到 [確認變更] ****  對話方塊，請選取 **** [確定]。 元件安裝程式會安裝要求的元件。 在元件安裝完成後，選取 ****  [完成]。
 
@@ -237,11 +237,11 @@ ms.locfileid: "89018224"
 
 4. 確定您有可供執行應用程式的虛擬裝置。 如果沒有，請如下所示加以新增：
 
-   1. :::image type="content" source="media/android-sdk/open-device-manager.png" alt-text="裝置管理員":::
-   2. :::image type="content" source="media/android-sdk/your-virtual-devices.png" alt-text="虛擬裝置":::
+   1. :::image type="content" source="media/android-sdk/open-device-manager.png" alt-text="設定專案":::
+   2. :::image type="content" source="media/android-sdk/your-virtual-devices.png" alt-text="設定專案":::
    3. 在您所選的裝置上執行應用程式，並確認該應用程式已向中樞註冊成功。
 
-      :::image type="content" source="media/android-sdk/device-registration.png" alt-text="裝置註冊":::
+      :::image type="content" source="media/android-sdk/device-registration.png" alt-text="設定專案":::
 
       > [!NOTE]
       > 註冊可能會在初始啟動期間失敗，直到呼叫執行個體識別碼服務的 `onTokenRefresh()` 方法為止。 重新整理作業應該會起始向通知中樞註冊的作業並且會成功。
@@ -258,7 +258,7 @@ ms.locfileid: "89018224"
 
 4. 在入口網站頁面底部的清單中查看作業的結果。
 
-   :::image type="content" source="media/android-sdk/notification-hubs-test-send.png" alt-text="傳送測試通知":::
+   :::image type="content" source="media/android-sdk/notification-hubs-test-send.png" alt-text="設定專案":::
 
 5. 您會在裝置上看到通知訊息。
 

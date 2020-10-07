@@ -1,6 +1,6 @@
 ---
 title: 在 SQL 隨選 (預覽) 中建立及使用外部資料表
-description: 在本節中，您將了解如何在 SQL 隨選 (預覽) 中建立和使用外部資料表。 當您想要在 SQL 隨選中控制外部資料的存取權，以及想要使用 Power BI 等工具搭配隨選 SQL 時，外部資料表會很實用。
+description: 在本節中，您將了解如何在 SQL 隨選 (預覽) 中建立和使用外部資料表。
 services: synapse-analytics
 author: vvasic-msft
 ms.service: synapse-analytics
@@ -8,13 +8,13 @@ ms.topic: overview
 ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: vvasic
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: d830ee28eb1f5befc3ad778a6b82c291d1e49d02
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.reviewer: jrasnick
+ms.openlocfilehash: 182deba959144f6a3992bb41243f29023bad5e5c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85206507"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289322"
 ---
 # <a name="create-and-use-external-tables-in-sql-on-demand-preview-using-azure-synapse-analytics"></a>使用 Azure Synapse Analytics 在 SQL 隨選 (預覽) 中建立及使用外部資料表
 
@@ -132,4 +132,4 @@ ORDER BY
 
 ## <a name="next-steps"></a>後續步驟
 
-如需如何將查詢結果儲存到儲存體的相關資訊，請參閱[將查詢結果儲存到儲存體](../sql/create-external-table-as-select.md)。
+如需如何將查詢結果儲存到儲存體的相關資訊，請參閱[將查詢結果儲存到儲存體](../sql/create-external-table-as-select.md)一文。

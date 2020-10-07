@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 09/03/2020
 ms.author: cshoe
-ms.openlocfilehash: 66335548381a6f7e3ebf93c97eb212255639644c
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: b009b34be69e48ae6205cd9ab88d1583ca9c6561
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90604082"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91280552"
 ---
 # <a name="quickstart-building-your-first-static-web-app-in-the-azure-portal"></a>快速入門：在 Azure 入口網站中建立您的第一個靜態 Web 應用程式
 
@@ -37,9 +37,9 @@ Azure Static Web Apps 藉由從 GitHub 存放庫建置應用程式，將網站�
 1. 選取 [Static Web Apps (預覽)]
 1. 選取 [建立] 
 
-在 [基本資料] 索引標籤中，先設定您的新應用程式，並將其連結至 GitHub 存放庫。
+在基本資料區段中，先設定您的新應用程式，並將其連結至 GitHub 存放庫。
 
-:::image type="content" source="media/getting-started-portal/basics-tab.png" alt-text="[基本] 索引標籤":::
+:::image type="content" source="media/getting-started-portal/basics-tab.png" alt-text="基本區段":::
 
 1. 選取您的 _Azure 訂用帳戶_
 1. 選取或建立新的 [資源群組]
@@ -51,7 +51,7 @@ Azure Static Web Apps 藉由從 GitHub 存放庫建置應用程式，將網站�
 
 當您使用 GitHub 登入後，請輸入存放庫資訊。
 
-:::image type="content" source="media/getting-started-portal/repository-details.png" alt-text="存放庫詳細資料":::
+:::image type="content" source="media/getting-started-portal/repository-details.png" alt-text="基本區段":::
 
 1. 選取您慣用的 [組織]
 1. 從 [存放庫] 下拉式清單中選取 **my-first-web-static-app**
@@ -94,18 +94,18 @@ Azure Static Web Apps 藉由從 GitHub 存放庫建置應用程式，將網站�
 
 1. 選取 [檢閱 + 建立]。
 
-    :::image type="content" source="media/getting-started-portal/review-create.png" alt-text="檢閱建立按鈕":::
+    :::image type="content" source="media/getting-started-portal/review-create.png" alt-text="基本區段":::
 
     > [!NOTE]
     > 若要在建立應用程式之後變更這些值，您可以編輯[工作流程檔案](github-actions-workflow.md)。
 
 1. 選取 [建立]  。
 
-    :::image type="content" source="media/getting-started-portal/create-button.png" alt-text="建立按鈕":::
+    :::image type="content" source="media/getting-started-portal/create-button.png" alt-text="基本區段":::
 
 1. 選取 [前往資源]  。
 
-    :::image type="content" source="media/getting-started-portal/resource-button.png" alt-text="移至資源按鈕":::
+    :::image type="content" source="media/getting-started-portal/resource-button.png" alt-text="基本區段":::
 
 [!INCLUDE [view website](../../includes/static-web-apps-get-started-view-website.md)]
 

@@ -10,18 +10,18 @@ ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 42a1110b089d5edf9793bf2bb2c699a717a4b1a4
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: aa940b00e9c23ab08244ea55c0cd22a8d5f1897f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89004964"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289373"
 ---
 # <a name="connection-strings-for-synapse-sql-preview"></a>Synapse SQL (預覽) 的連接字串
 
 您可以使用數個不同的應用程式通訊協定 (例如 [ADO.NET](https://msdn.microsoft.com/library/e80y5yhx(v=vs.110).aspx)、[ODBC](https://msdn.microsoft.com/library/jj730314.aspx)、[PHP](https://msdn.microsoft.com/library/cc296172.aspx?f=255&MSPPError=-2147217396) 及 [JDBC](https://msdn.microsoft.com/library/mt484311(v=sql.110).aspx)) 連線到 Synapse SQL (預覽)。 以下是每個通訊協定連接字串的一些範例。 
 
-您也可以使用 Azure 入口網站來建立連接字串。  若要使用 Azure 入口網站建置連接字串，請瀏覽至您資料庫的刀鋒視窗，在 [程式集]  底下，按一下 [顯示資料庫連接字串]  。
+您也可以使用 Azure 入口網站來建立連接字串。  若要使用 Azure 入口網站建置連接字串，請瀏覽至您資料庫的刀鋒視窗，在 [程式集] 底下，選取 [顯示資料庫連接字串]。
 
 ## <a name="sample-adonet-connection-string"></a>範例 ADO.NET 連接字串
 

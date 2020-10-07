@@ -5,15 +5,29 @@ author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
-ms.date: 07/27/2020
-ms.openlocfilehash: 9642f6d1090ef358cf86241640255c647dea52eb
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.date: 09/23/2020
+ms.openlocfilehash: c63a8efc4bbcf6e5a124d439e6f9f91397e2fa53
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432658"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91315077"
 ---
-# <a name="changelog"></a>變更記錄 #
+# <a name="changelog"></a>變更記錄
+
+## <a name="236-official-update-september-21-2020"></a>2.3.6 (官方更新 2020 年 9 月 21 日)
+
+### <a name="features-236"></a>功能 2.3.6
+
+新增了對 azureHtml5JS 技術 (DASH) 的僅限音訊支援、支援即時轉譯中的延遲啟動、支援即時轉譯中的語言變更
+
+### <a name="bug-fixes-236"></a>錯誤修正 2.3.6
+
+在 Apple 裝置上的 HLS 播放中使用 "playsinline" 時，按一下 [即時] 按鈕會導致影片重新啟動。AMP 海報影像有時會導致例外狀況。播放 HLS FairPlay 時，音量按鈕會消失。[協助工具] 使用鍵盤時不會定義按鈕的工具提示。[協助工具] 進度列的亮度比小於 1.3:1。[協助工具] 鍵盤焦點有時不會回到影片品質按鈕上。[協助工具] [影片] 畫面不會顯示控制項，導致朗讀程式找不到控制項
+
+### <a name="changes-236"></a>變更 2.3.6
+
+將有意義的 KeyDelivery 錯誤傳回給呼叫端應用程式
 
 ## <a name="235-official-update-june-1-2020"></a>2.3.5 (官方更新 2020 年 6 月 1 日)
 

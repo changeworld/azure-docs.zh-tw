@@ -1,16 +1,16 @@
 ---
 title: 使用 Python 在 Azure 中建立第一個耐久函式
-description: 使用 Visual Studio Code 建立及發佈 Azure Durable Function。
+description: 使用 Visual Studio Code 在 Python 中建立及發佈 Azure Durable Function。
 author: anthonychu
 ms.topic: quickstart
 ms.date: 04/04/2020
 ms.reviewer: azfuncdf, antchu
-ms.openlocfilehash: c9ca6d52bd71683344115004ec17a981b03f0a24
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.openlocfilehash: 5d624027259212d804ced26a6daaffb853984a98
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85198875"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91294839"
 ---
 # <a name="create-your-first-durable-function-in-python"></a>使用 Python 建立第一個耐久函式
 

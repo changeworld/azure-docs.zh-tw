@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: prgomata
 ms.reviewer: euang
-ms.openlocfilehash: 58c52649750ae03f19188a025fa4baa16a55ae05
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 11f73d2becb40b800c49afe0cd58f56953f8d42d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88590076"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91259912"
 ---
 # <a name="introduction"></a>簡介
 
@@ -30,7 +30,7 @@ Azure Synapse Apache Spark 集區對 Synapse SQL 連接器是適用於 Apache Sp
 
 ## <a name="authentication-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中的驗證
 
-在 Azure Synapse Analytics 中，系統之間的驗證會順暢地進行。 在存取儲存體帳戶或資料倉儲伺服器時，會有一個與 Azure Active Directory 連線的權杖服務可供您取得所要使用的安全性權杖。
+在 Azure Synapse Analytics 中，系統之間的驗證會順暢地進行。 權杖服務會與 Azure Active Directory 連線，以取得要在存取儲存體帳戶或資料倉儲伺服器時使用的安全性權杖。
 
 因此，只要在儲存體帳戶和資料倉儲伺服器上設定好 AAD 驗證，就不需要建立認證或在連接器 API 中指定認證。 如果未設定，則可以指定 SQL 驗證。 請於[使用方式](#usage)一節尋找更多詳細資料。
 
@@ -91,7 +91,7 @@ val df = spark.read.sqlanalytics("<DBName>.<Schema>.<TableName>")
 df.write.sqlanalytics("<DBName>.<Schema>.<TableName>", <TableType>)
 ```
 
-寫入 API 會在 SQL 集區中建立資料表，然後叫用 Polybase 來載入資料。  資料表不能存在於 SQL 集區中，否則會傳回錯誤，指出「已經有物件名為...」。
+寫入 API 會在 SQL 集區中建立資料表，然後叫用 Polybase 來載入資料。  資料表不能存在於 SQL 集區中，否則會傳回錯誤，指出「已經有物件名為...」
 
 TableType 值
 
@@ -106,7 +106,7 @@ df.write.sqlanalytics("<DBName>.<Schema>.<TableName>", Constants.INTERNAL)
 
 SQL 集區外部資料表
 
-若要寫入 SQL 集區外部資料表，SQL 集區上必須有 EXTERNAL DATA SOURCE 和 EXTERNAL FILE FORMAT。  如需詳細資訊，請參閱 SQL 集區中的[建立外部資料來源](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)和[外部檔案格式](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。  以下是在 SQL 集區中建立外部資料來源和外部檔案格式的範例。
+若要寫入 SQL 集區外部資料表，SQL 集區上必須有 EXTERNAL DATA SOURCE 和 EXTERNAL FILE FORMAT。  如需詳細資訊，請參閱 SQL 集區中的[建立外部資料來源](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)和[外部檔案格式](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。  以下是在 SQL 集區中建立外部資料來源和外部檔案格式的範例。
 
 ```sql
 --For an external table, you need to pre-create the data source and file format in SQL pool using SQL queries:

@@ -5,14 +5,14 @@ author: vhorne
 ms.service: web-application-firewall
 services: web-application-firewall
 ms.topic: tutorial
-ms.date: 03/18/2020
+ms.date: 09/16/2020
 ms.author: victorh
-ms.openlocfilehash: 7a9e0cc3977892fd899b4a25e17ad72f13481506
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: c5505b9437a4bd8dced6a090817b17d5e29374f2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82608808"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327933"
 ---
 # <a name="tutorial-create-a-waf-policy-on-azure-cdn-using-the-azure-portal"></a>教學課程：使用 Azure 入口網站建立 Azure CDN 的 WAF 原則
 
@@ -72,17 +72,22 @@ ms.locfileid: "82608808"
 
 下列螢幕擷取畫面顯示若查詢字串包含 **blockme** 值即封鎖要求的自訂比對規則。
 
-![變更 WAF 原則模式](../media/waf-cdn-create-portal/custommatch.png)
+![新增自訂比對規則](../media/waf-cdn-create-portal/custommatch.png)
 
 速率限制規則需要兩個額外的欄位：[速率限制持續時間]  和 [速率限制閾值 (要求數)]  ，如下列範例所示：
 
-![變更 WAF 原則模式](../media/waf-cdn-create-portal/customrate.png)
+![新增速率限制規則](../media/waf-cdn-create-portal/customrate.png)
 
 ### <a name="default-rule-set-drs"></a>預設規則集 (DRS)
 
 依預設會啟用 Azure 受控預設規則集。 若要停用規則群組內的個別規則，請展開該規則群組中的規則、選取規則編號前面的核取方塊，然後選取上方索引標籤上的 [停用]  。 若要變更規則集內個別規則的動作類型，請選取規則編號前面的核取方塊，然後選取上方的 [變更動作]  索引標籤。
 
  ![變更 WAF 規則集](../media/waf-cdn-create-portal/managed2.png)
+
+## <a name="clean-up-resources"></a>清除資源
+
+當不再需要資源時，請移除資源群組及所有相關資源。
+
 
 ## <a name="next-steps"></a>後續步驟
 

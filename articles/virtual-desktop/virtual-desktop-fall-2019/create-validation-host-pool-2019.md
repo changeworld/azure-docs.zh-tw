@@ -1,17 +1,17 @@
 ---
 title: Windows 虛擬桌面 (傳統) 主機集區服務更新 - Azure
-description: 將更新推展到生產環境之前，如何建立驗證主機集區來監視服務更新。
+description: 了解將更新推展到生產環境之前，如何在 Windows 虛擬桌面 (傳統版) 中建立驗證主機集區以監視服務更新。
 author: Heidilohr
 ms.topic: tutorial
 ms.date: 05/27/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 572b74347194070615efadca4ed6b1329b3f89c2
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 291f1e8b8870257c233dc32894ff49b26c0a3501
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526794"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323524"
 ---
 # <a name="tutorial-create-a-host-pool-to-validate-service-updates-in-windows-virtual-desktop-classic"></a>教學課程：建立主機集區來驗證 Windows 虛擬桌面 (傳統) 中的服務更新
 

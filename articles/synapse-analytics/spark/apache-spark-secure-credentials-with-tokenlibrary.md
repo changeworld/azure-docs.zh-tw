@@ -9,15 +9,19 @@ ms.subservice: spark
 ms.date: 08/26/2020
 ms.author: martinle
 ms.reviewer: euang
-ms.openlocfilehash: 21b571c859ec8ecc66c1c9a222e0648dc7f28f4f
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 90e7297236994650e0820e883c94a98b29c49fb7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89422117"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91249411"
 ---
 # <a name="securing-your-credentials-through-linked-services-with-the-tokenlibrary"></a>使用 TokenLibrary 透過已連結的服務保護您的認證
-從外部來源存取資料是常見的模式。 除非外部資料源允許匿名存取，否則您可能需要使用認證、祕密或連接字串來保護您的連線。  Azure Synapse Analytics 提供已連結的服務，藉由將連線詳細資料儲存在已連結的服務或 Azure Key Vault 中，進而簡化整合程序。 建立已連結的服務之後，Apache Spark 就可以參考已連結的服務，以在您的程式碼中套用連線資訊。 如需詳細資訊，請參閱[已連結的服務](../../data-factory/concepts-linked-services.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
+從外部來源存取資料是常見的模式。 除非外部資料源允許匿名存取，否則您可能需要使用認證、祕密或連接字串來保護您的連線。  
+
+Azure Synapse Analytics 提供已連結的服務，藉由將連線詳細資料儲存在已連結的服務或 Azure Key Vault 中，進而簡化整合程序。 建立連結服務後，Apache Spark 就可以參考連結服務，以在您的程式碼中套用連線資訊。 
+
+如需詳細資訊，請參閱[已連結的服務](../../data-factory/concepts-linked-services.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
 > [!NOTE]
 > 從工作區中的 Azure Data Lake Storage 存取檔案會使用 AAD 傳遞進行驗證，因此您不需要使用 TokenLibrary。 
 
@@ -26,7 +30,7 @@ ms.locfileid: "89422117"
 * 連結的服務 - 您必須建立外部資料源的已連結服務，並從權杖程式庫參考已連結的服務。 深入了解[已連結的服務](../../data-factory/concepts-linked-services.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
 
 
-## <a name="connecting-to-adls-gen2-outside-of-synapse-workspace"></a>連線至 Synapse 工作區之外的 ADLS Gen2
+## <a name="connect-to-adls-gen2-outside-of-synapse-workspace"></a>連線至 Synapse 工作區以外的 ADLS Gen2
 
 Synapse 提供 Azure Data Lake Storage Gen2 的整合已連結的服務體驗。
 
@@ -52,7 +56,7 @@ df = spark.read.csv("abfss://<CONTAINER>@<ACCOUNT>.dfs.core.windows.net/<DIRECTO
 
 df.show()
 ```
-## <a name="using-the-token-library"></a>使用權杖程式庫
+## <a name="use-the-token-library"></a>使用權杖程式庫
 
 若要連線到其他已連結的服務，您可以直接呼叫 TokenLibrary。
 

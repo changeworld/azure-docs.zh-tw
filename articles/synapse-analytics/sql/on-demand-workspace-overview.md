@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: fc306dbca3191f04a85f2c5cc88d41336c13e09c
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: dc47bf73f39d73861c166674a692932d51064e6d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496384"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91288523"
 ---
 # <a name="sql-on-demand-preview-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中的 SQL 隨選 (預覽) 
 
@@ -25,9 +25,11 @@ SQL 隨選是一項可查詢資料湖內所含資料的服務。 其可讓您透
 - 已有可供查詢資料的熟悉 T-SQL 語法，讓您不必將資料複製或載入至特製化的存放區。 
 - 透過 T-SQL 介面所實現的整合式連線能力，可提供各式各樣的商業智慧和臨機操作查詢工具，包括最熱門的驅動程式。 
 
-SQL 隨選是一種分散式資料處理系統，專門建置來處理大規模的資料和計算。 視工作負載而定，SQL 隨選可讓您在幾秒到幾分鐘內就完成巨量資料的分析。 由於內建了查詢執行容錯功能，即使是涉及大型資料集的長時間執行查詢，系統也可提供高度的可靠性和成功率。
+隨選 SQL 是一種分散式資料處理系統，針對大規模資料和計算函式而建置的。 視工作負載而定，SQL 隨選可讓您在幾秒到幾分鐘內就完成巨量資料的分析。 由於內建了查詢執行容錯功能，即使是涉及大型資料集的長時間執行查詢，系統也可提供高度的可靠性和成功率。
 
-SQL 隨選無須伺服器，因此不必設置基礎結構，也不用維護叢集。 每個 Azure Synapse 工作區內都會提供用於此服務的預設端點，因此您可以在工作區建立好之後就立即開始查詢資料。 所保留的資源不會收費，您只需就執行查詢時所掃描的資料來支付費用，因此此模型是真正的按使用次數付費模型。  
+隨選 SQL 無需伺服器，因此不必設置基礎結構，也不用維護叢集。 每個 Azure Synapse 工作區內都會提供用於此服務的預設端點，因此您可以在工作區建立好之後就立即開始查詢資料。 
+
+所保留的資源不會收費，您只需就執行查詢時所處理的資料來支付費用，因此此模型是真正的按使用次數付費模型。  
 
 如果您在資料管線中使用 Apache Spark for Azure Synapse 來進行資料準備、清理或擴充，則可以直接從 SQL 隨選[查詢您在程序中所建立的外部 Spark 資料表](develop-storage-files-spark-tables.md)。 使用 [Private Link](../security/how-to-connect-to-workspace-with-private-links.md) 則可將 SQL 隨選端點帶入到[受控工作區 VNet](../security/synapse-workspace-managed-vnet.md)。  
 

@@ -10,12 +10,12 @@ author: GitHubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 11/06/2019
-ms.openlocfilehash: 05103052308b6dbf1314348f7d45abc9cba79827
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 552b3f55632e817cc4669ce5da41b1e127c7d808
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "84706421"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91283865"
 ---
 # <a name="tutorial-security-in-azure-sql-managed-instance-using-azure-ad-server-principals-logins"></a>教學課程：使用 Azure AD 伺服器主體 (登入) 的 Azure SQL 受控執行個體中的安全性
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -104,7 +104,7 @@ Azure SQL 受控執行個體幾乎提供了最新的 SQL Server (Enterprise Edit
     GO
     ```
 
-    ![native-login.png](./media/aad-security-configure-tutorial/native-login.png)
+    ![S S M S 物件總管 [結果] 索引標籤的螢幕擷取畫面，顯示新增之登入的名稱、principal_id、sid、類型和 type_desc。](./media/aad-security-configure-tutorial/native-login.png)
 
 如需詳細資訊，請參閱 [CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current)。
 
@@ -153,13 +153,13 @@ Azure SQL 受控執行個體幾乎提供了最新的 SQL Server (Enterprise Edit
    - Active Directory - 密碼
    - Active Directory - 整合式 </br>
 
-     ![ssms-login-prompt.png](./media/aad-security-configure-tutorial/ssms-login-prompt.png)
+     ![S S M S 中的 [連線至伺服器] 對話方塊的螢幕擷取畫面，其中已在 [驗證] 下拉式清單中選取了 [Active Directory - 通用，具 MFA 支援]。](./media/aad-security-configure-tutorial/ssms-login-prompt.png)
 
      如需詳細資訊，請參閱[通用驗證 (多重要素驗證的 SSMS 支援)](../database/authentication-mfa-ssms-overview.md)。
 
 1. 選取 [Active Directory - 通用，具 MFA 支援]。 此時會出現 Multi-Factor Authentication 登入視窗。 使用 Azure AD 密碼來登入。
 
-    ![mfa-login-prompt.png](./media/aad-security-configure-tutorial/mfa-login-prompt.png)
+    ![[Multi-Factor Authentication 登入] 視窗的螢幕擷取畫面，顯示 [輸入密碼] 欄位中的游標。](./media/aad-security-configure-tutorial/mfa-login-prompt.png)
 
 1. 在 SSMS 的 [物件總管] 中，以滑鼠右鍵按一下伺服器，然後選擇 [新增查詢]。
 1. 在查詢視窗中，使用下列語法來為另一個 Azure AD 帳戶建立登入：
@@ -222,7 +222,7 @@ Azure SQL 受控執行個體幾乎提供了最新的 SQL Server (Enterprise Edit
 
 現在，我們已經建立好名為 **MyMITestDB** 的資料庫，以及只有預設權限的登入，接下來我們要從該登入建立使用者。 目前，登入可以連線至受控執行個體，並看到所有資料庫，但不能與資料庫互動。 如果您使用具有預設權限的 Azure AD 帳戶來登入，並嘗試展開新建立的資料庫，則會看到下列錯誤：
 
-![ssms-db-not-accessible.png](./media/aad-security-configure-tutorial/ssms-db-not-accessible.png)
+![S S M S 物件總管中錯誤訊息的螢幕擷取畫面，訊息顯示為「無法存取資料庫 MyMITestDB。 (ObjectExplorer)」。](./media/aad-security-configure-tutorial/ssms-db-not-accessible.png)
 
 如需如何授與資料庫權限的詳細資訊，請參閱[資料庫引擎權限使用者入門](/sql/relational-databases/security/authentication-access/getting-started-with-database-engine-permissions)。
 
@@ -326,7 +326,7 @@ Azure SQL 受控執行個體幾乎提供了最新的 SQL Server (Enterprise Edit
 1. 使用已新增至 `db_datareader` 角色的使用者，建立連往受控執行個體的新連線。
 1. 在 [物件總管] 中展開資料庫以查看資料表。
 
-    ![ssms-test-table.png](./media/aad-security-configure-tutorial/ssms-test-table.png)
+    ![S S M S 物件總管的螢幕擷取畫面，顯示 MyMITestDB 中所含資料表的資料夾結構。 dbo.TestTable 資料夾反白顯示。](./media/aad-security-configure-tutorial/ssms-test-table.png)
 
 1. 開啟新的查詢視窗，並執行下列 SELECT 陳述式：
 
@@ -337,7 +337,7 @@ Azure SQL 受控執行個體幾乎提供了最新的 SQL Server (Enterprise Edit
 
     您能否查看資料表中的資料？ 您應該會看見系統傳回資料行。
 
-    ![ssms-test-table-query.png](./media/aad-security-configure-tutorial/ssms-test-table-query.png)
+    ![S S M S 物件總管中 [結果] 索引標籤的螢幕擷取畫面，顯示資料表資料行標頭 AccountNum、City、Name 和 State。](./media/aad-security-configure-tutorial/ssms-test-table-query.png)
 
 ## <a name="impersonate-azure-ad-server-level-principals-logins"></a>模擬 Azure AD 伺服器層級主體 (登入)
 

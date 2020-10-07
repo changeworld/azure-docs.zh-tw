@@ -8,12 +8,12 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 04/15/2020
-ms.openlocfilehash: 787e9efa8ef11a83b63719cad51f9b26e055620d
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 143713649afd7f9e42f517713b6b2365ee1605a3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90562074"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91260269"
 ---
 # <a name="tutorial-create-apache-spark-job-definition-in-synapse-studio"></a>教學課程：在 Synapse Studio 中建立 Apache Spark 作業定義
 
@@ -47,11 +47,11 @@ ms.locfileid: "90562074"
 
      ![範例檔案](./media/apache-spark-job-definitions/sample-files.png)
 
-3. 按一下 [資料] ****   -> [已連結] ****   -> [Azure Data Lake Storage Gen2] **** ，然後將  **wordcount.py**  和  **shakespeare.txt** 上傳至您的 ADLS Gen2 檔案系統。 
+3. 選取 [資料] ****   -> [已連結] ****   -> [Azure Data Lake Storage Gen2] **** ，然後將  **wordcount.py**  和  **shakespeare.txt** 上傳至您的 ADLS Gen2 檔案系統。 
 
      ![上傳 Python 檔案](./media/apache-spark-job-definitions/upload-python-file.png)
 
-4. 按一下 [開發] 中樞，按一下 [+] 圖示，然後選取 [Spark 作業定義] 以建立新的 Spark 作業定義。 
+4. 選取 [開發] 中樞，再選取 [+] 圖示，然後選取 [Spark 作業定義] 以建立新的 Spark 作業定義。 
 
      ![建立 Python 的新定義](./media/apache-spark-job-definitions/create-new-definition.png)
 
@@ -75,7 +75,7 @@ ms.locfileid: "90562074"
 
      ![設定適用於 Python 的 Spark 作業定義值](./media/apache-spark-job-definitions/create-py-definition.png)
 
-7. 按一下 [發佈] 以儲存 Apache Spark 作業定義。
+7. 選取 [發佈] 以儲存 Apache Spark 作業定義。
 
      ![發佈 py 定義](./media/apache-spark-job-definitions/publish-py-definition.png)
 
@@ -89,11 +89,11 @@ ms.locfileid: "90562074"
  
      ![範例檔案 scala](./media/apache-spark-job-definitions/sample-files-scala.png)
 
- 3. 按一下 [資料] ****   -> [已連結] ****   -> [Azure Data Lake Storage Gen2] **** ，然後將  **wordcount.jar**  和  **shakespeare.txt** 上傳至您的 ADLS Gen2 檔案系統。
+ 3. 選取 [資料] ****   -> [已連結] ****   -> [Azure Data Lake Storage Gen2] **** ，然後將  **wordcount.jar**  和  **shakespeare.txt** 上傳至您的 ADLS Gen2 檔案系統。
  
      ![準備 Scala 結構](./media/apache-spark-job-definitions/prepare-scala-structure.png)
 
- 4. 按一下 [開發] 中樞，按一下 [+] 圖示，然後選取 [Spark 作業定義] 以建立新的 Spark 作業定義。 (範例影像與**針對 PySpark 建立 Apache Spark 作業定義 (Python)** 步驟 4 的影像相同。)
+ 4. 選取 [開發] 中樞，再選取 [+] 圖示，然後選取 [Spark 作業定義] 以建立新的 Spark 作業定義。 (範例影像與**針對 PySpark 建立 Apache Spark 作業定義 (Python)** 步驟 4 的影像相同。)
 
  5. 從 Apache Spark 作業定義主視窗的 [語言] 下拉式清單中，選取 [Spark (Scala)]。
 
@@ -116,7 +116,7 @@ ms.locfileid: "90562074"
 
      ![設定適用於 Scala 的 Spark 作業定義值](./media/apache-spark-job-definitions/create-scala-definition.png)
 
- 7. 按一下 [發佈] 以儲存 Apache Spark 作業定義。
+ 7. 選取 [發佈] 以儲存 Apache Spark 作業定義。
 
       ![發佈 Scala 定義](./media/apache-spark-job-definitions/publish-scala-definition.png)
 
@@ -129,11 +129,11 @@ ms.locfileid: "90562074"
 
      ![範例 dotnet](./media/apache-spark-job-definitions/sample-dotnet.png)
 
- 3. 按一下 [資料] ****   -> [已連結] ****   -> [Azure Data Lake Storage Gen2] **** ，然後將  **wordcount.zip**  和  **shakespeare.txt** 上傳至您的 ADLS Gen2 檔案系統。
+ 3. 選取 [資料] ****   -> [已連結] ****   -> [Azure Data Lake Storage Gen2] **** ，然後將  **wordcount.zip**  和  **shakespeare.txt** 上傳至您的 ADLS Gen2 檔案系統。
  
      ![準備 Dotnet 結構](./media/apache-spark-job-definitions/prepare-dotnet-structure.png)
 
- 4. 按一下 [開發] 中樞，按一下 [+] 圖示，然後選取 [Spark 作業定義] 以建立新的 Spark 作業定義。 (範例影像與**針對 PySpark 建立 Apache Spark 作業定義 (Python)** 步驟 4 的影像相同。)
+ 4. 選取 [開發] 中樞，再選取 [+] 圖示，然後選取 [Spark 作業定義] 以建立新的 Spark 作業定義。 (範例影像與**針對 PySpark 建立 Apache Spark 作業定義 (Python)** 步驟 4 的影像相同。)
 
  5. 從 Apache Spark 作業定義主視窗的 [語言] 下拉式清單中，選取 [.NET Spark (C#/F#)]。
 
@@ -156,7 +156,7 @@ ms.locfileid: "90562074"
 
      ![設定適用於 Dotnet 的 Spark 作業定義值](./media/apache-spark-job-definitions/create-dotnet-definition.png)
 
- 7. 按一下 [發佈] 以儲存 Apache Spark 作業定義。
+ 7. 選取 [發佈] 以儲存 Apache Spark 作業定義。
 
       ![發佈 Dotnet 定義](./media/apache-spark-job-definitions/publish-dotnet-definition.png)
 
@@ -165,29 +165,29 @@ ms.locfileid: "90562074"
 在建立 Apache Spark 作業定義後，您可以將其提交至 Apache Spark 集區。 請確定您是所要使用的 ADLS Gen2 檔案系統的**儲存體 Blob 資料擁有者**。 如果您還不是，則必須手動新增權限。
 
 ### <a name="scenario-1-submit-apache-spark-job-definition"></a>案例 1：提交 Apache Spark 作業定義
- 1. 按一下 Apache Spark 作業定義以開啟其視窗。
+ 1. 選取 Apache Spark 作業定義以開啟其視窗。
 
       ![開啟要提交的 Spark 作業定義 ](./media/apache-spark-job-definitions/open-spark-definition.png)
 
- 2. 按一下 [提交] 圖示將您的專案提交至選取的 Apache Spark 集區。 您可以按一下 [Spark 監視 URL] 索引標籤來查看 Apache Spark 應用程式的 LogQuery。
+ 2. 選取 [提交] 圖示將您的專案提交至選取的 Apache Spark 集區。 您可以選取 [Spark 監視 URL] 索引標籤，以查看 Apache Spark 應用程式的 LogQuery。
 
-    ![按一下 [提交] 按鈕以提交 Spark 作業定義](./media/apache-spark-job-definitions/submit-spark-definition.png)
+    ![選取 [提交] 按鈕以提交 Spark 作業定義](./media/apache-spark-job-definitions/submit-spark-definition.png)
 
     ![[提交 Spark] 對話方塊](./media/apache-spark-job-definitions/submit-definition-result.png)
 
 ### <a name="scenario-2-view-apache-spark-job-running-progress"></a>案例 2：檢視 Apache Spark 作業的執行進度
 
- 1. 按一下 [監視器]，然後選取 [Apache Spark 應用程式] 選項。 您可以找到已提交的 Apache Spark 應用程式。
+ 1. 選取 [監視器]，然後選取 [Apache Spark 應用程式] 選項。 您可以找到已提交的 Apache Spark 應用程式。
 
      ![檢視 Spark 應用程式](./media/apache-spark-job-definitions/view-spark-application.png)
 
- 2. 然後按一下 Apache Spark 應用程式，[SparkJobDefinition] 作業視窗隨即顯示。 您可以從這裡檢視作業的執行進度。
+ 2. 然後，選取 Apache Spark 應用程式，[SparkJobDefinition] 作業視窗隨即顯示。 您可以從這裡檢視作業的執行進度。
      
      ![檢視 Spark 應用程式 LogQuery](./media/apache-spark-job-definitions/view-job-log-query.png)
 
 ### <a name="scenario-3-check-output-file"></a>案例 3：檢查輸出檔案
 
- 1. 按一下 [資料]  ->  [已連結]  ->  [Azure Data Lake Storage Gen2] (hozhaobdbj)，開啟稍早建立的 [結果] 資料夾，您可以移至 [結果] 資料夾，並檢查是否已產生輸出。
+ 1. 選取 [資料] -> [已連結] -> [Azure Data Lake Storage Gen2] (hozhaobdbj)，開啟先前建立的 [結果] 資料夾，您可以移至 [結果] 資料夾，並檢查是否已產生輸出。
 
      ![檢視輸出檔案](./media/apache-spark-job-definitions/view-output-file.png)
 
@@ -197,7 +197,7 @@ ms.locfileid: "90562074"
 
  1. 開啟現有的 Apache Spark 作業定義。
 
- 2. 按一下 Apache Spark 作業定義右上方的圖示，選擇 [現有的管線] 或 [新增管線]。 如需詳細資訊，您可以參考 [管線] 頁面。
+ 2. 選取 Apache Spark 作業定義右上方的圖示，選擇 [現有的管線] 或 [新增管線]。 如需詳細資訊，您可以參考 [管線] 頁面。
 
      ![新增至 pipeline1](./media/apache-spark-job-definitions/add-to-pipeline01.png)
 
@@ -205,5 +205,5 @@ ms.locfileid: "90562074"
 
 ## <a name="next-steps"></a>後續步驟
 
-本教學課程示範如何使用 Azure Synapse Studio 來建立 Apache Spark 作業定義，然後將其提交至 Apache Spark 集區。 接下來，您可以使用 Azure Synapse Studio 來建立 Power BI 資料集和管理 Power BI 資料。
+接下來，您可以使用 Azure Synapse Studio 來建立 Power BI 資料集和管理 Power BI 資料。 繼續參閱[將 Power BI 工作區連結至 Synapse 工作區](../quickstart-power-bi.md)一文，以深入了解。 
 

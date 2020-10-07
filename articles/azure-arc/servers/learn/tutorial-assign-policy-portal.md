@@ -2,18 +2,18 @@
 title: 教學課程 - 使用 Azure 入口網站指派新原則
 description: 在本教學課程中，您會使用 Azure 入口網站建立 Azure 原則指派，以識別不符合規範的資源。
 ms.topic: tutorial
-ms.date: 08/12/2020
-ms.openlocfilehash: 4ba301b066137dbdb85ccea0a02ffcac88128e6b
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.date: 09/23/2020
+ms.openlocfilehash: fbfe7090db1b4e1a8f802b30fdf749466ea26f1f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213240"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321861"
 ---
 # <a name="tutorial-create-a-policy-assignment-to-identify-non-compliant-resources"></a>教學課程：建立原則指派以識別不相容資源
 
 了解 Azure 中合規性的第一個步驟是識別您資源的狀態。
-本教學課程會引導您完成建立原則指派的流程，以識別已啟用 Azure Arc 的伺服器 (預覽) 電腦，並識別未在已啟用 Azure Arc 的電腦上安裝 Log Analytics 代理程式的電腦。
+本教學課程會引導您完成建立原則指派的流程，以識別已啟用 Azure Arc 的伺服器電腦，並識別未在已啟用 Azure Arc 的機器上安裝 Log Analytics 代理程式的機器。
 
 在此流程結束時，您會成功識別未安裝適用於 Windows 或 Linux 之 Log Analytics 代理程式的電腦。 它們「不符合」原則指派的規範。
 
@@ -31,11 +31,11 @@ ms.locfileid: "88213240"
 
 1. 選取 Azure 原則分頁左側的 [指派]****。 指派是已指派在特定範圍內發生的原則。
 
-   :::image type="content" source="./media/tutorial-assign-policy-portal/select-assignment.png" alt-text="從 [原則概觀] 頁面選取 [指派] 頁面" border="false":::
+   :::image type="content" source="./media/tutorial-assign-policy-portal/select-assignment.png" alt-text="搜尋所有服務中的原則" border="false":::
 
 1. 從 [原則 - 指派]**** 分頁頂端選取 [指派原則]****。
 
-   :::image type="content" source="./media/tutorial-assign-policy-portal/select-assign-policy.png" alt-text="從 [指派] 頁面指派原則定義" border="false":::
+   :::image type="content" source="./media/tutorial-assign-policy-portal/select-assign-policy.png" alt-text="搜尋所有服務中的原則" border="false":::
 
 1. 在 [指派原則]**** 頁面上，按一下省略符號並選取管理群組或訂用帳戶來選取 [範圍]****。 選擇性地選取資源群組。 範圍會決定在哪些資源或資源群組上強制執行原則指派。 然後，按一下位於 [範圍]**** 分頁底部的 [選取]****。
 
@@ -51,9 +51,9 @@ ms.locfileid: "88213240"
 
    如需可用內建原則的部分清單，請參閱 [Azure 原則範例](../../../governance/policy/samples/index.md)。
 
-1. 搜尋原則定義清單以尋找 \[預覽]：「您的 Windows Azure Arc 電腦上應已安裝 Log Analytics 代理程式」定義，如果您已在 Windows 電腦上啟用已啟用 Arc 的伺服器 (預覽) 代理程式。 針對以 Linux 電腦，尋找對應的 \[預覽]：「Linux Azure Arc 電腦上應已安裝 Log Analytics 代理程式」原則定義。 按一下該原則，然後按一下 [選取]****。
+1. 搜尋原則定義清單以尋找 \[預覽]：「您的 Windows Azure Arc 機器上應已安裝 Log Analytics 代理程式」定義，如果您已在 Windows 機器上啟用已啟用 Arc 的伺服器代理程式。 針對以 Linux 電腦，尋找對應的 \[預覽]：「Linux Azure Arc 電腦上應已安裝 Log Analytics 代理程式」原則定義。 按一下該原則，然後按一下 [選取]****。
 
-   :::image type="content" source="./media/tutorial-assign-policy-portal/select-available-definition.png" alt-text="尋找正確的原則定義" border="false":::
+   :::image type="content" source="./media/tutorial-assign-policy-portal/select-available-definition.png" alt-text="搜尋所有服務中的原則" border="false":::
 
 1. [指派名稱]**** 會自動填入您選取的原則名稱，但您可加以變更。 針對此範例，請將 \[預覽]：「Windows Azure Arc 電腦上應已安裝 Log Analytics 代理程式」或\[預覽]：「Linux Azure Arc 電腦上應已安裝 Log Analytics 代理程式」，依您選取的項目而。 您也可以新增選擇性的 [描述]****。 描述會提供有關此原則指派的詳細資料。
    **指派者**將根據登入者自動填入。 這是選擇性欄位，因此可以輸入自訂值。
@@ -68,7 +68,7 @@ ms.locfileid: "88213240"
 
 選取頁面左側的 [合規性]。 然後尋找 \[預覽]：「Windows Azure Arc 電腦上應已安裝 Log Analytics 代理程式」或您建立的 \[預覽]：「Linux Azure Arc 電腦上應已安裝 Log Analytics 代理程式」原則指派。
 
-:::image type="content" source="./media/tutorial-assign-policy-portal/policy-compliance.png" alt-text="[原則合規性] 頁面上的合規性詳細資料" border="false":::
+:::image type="content" source="./media/tutorial-assign-policy-portal/policy-compliance.png" alt-text="搜尋所有服務中的原則" border="false":::
 
 如果有任何現有資源不符合這個新指派的規範，它們會顯示在 [不符合規範的資源] 下。
 
@@ -92,12 +92,11 @@ ms.locfileid: "88213240"
 
 1. 以滑鼠右鍵按一下原則指派，然後選取 [刪除指派]。
 
-   :::image type="content" source="./media/tutorial-assign-policy-portal/delete-assignment.png" alt-text="從 [合規性] 頁面刪除指派" border="false":::
+   :::image type="content" source="./media/tutorial-assign-policy-portal/delete-assignment.png" alt-text="搜尋所有服務中的原則" border="false":::
 
 ## <a name="next-steps"></a>後續步驟
 
-在本教學課程中，您會將原則定義指派至範圍，並評估其更新狀態報告。
-原則定義可驗證範圍中的所有資源都符合規範，並且識別哪些資源不符合。 現在您已準備好使用適用於 VM 的 Azure 監視器，監視已啟用 Azure Arc 的伺服器 (預覽) 電腦。
+在本教學課程中，您會將原則定義指派至範圍，並評估其更新狀態報告。 原則定義可驗證範圍中的所有資源都符合規範，並且識別哪些資源不符合。 現在您已準備好使用適用於 VM 的 Azure 監視器，監視已啟用 Azure Arc 的伺服器電腦。
 
 若要了解如何從您的電腦監視和檢視效能、執行中程序及其相依性，請繼續進行教學課程：
 

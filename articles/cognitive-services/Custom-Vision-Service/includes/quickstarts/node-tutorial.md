@@ -2,16 +2,19 @@
 author: areddish
 ms.author: areddish
 ms.service: cognitive-services
-ms.date: 08/17/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 2a8937debc38dab4b2d38b56d1c6a9c3edcbe2a7
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.date: 09/15/2020
+ms.custom: devx-track-js
+ms.openlocfilehash: 90927109a78d387ed3a535128e98ae7910c222dc
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88508507"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321047"
 ---
-本文說明如何開始搭配使用自訂視覺用戶端程式庫與 Node.js 來建置影像分類模型。 建立它之後，您就可以新增標記、上傳影像、為專案定型、取得專案的已發佈預測端點 URL，並使用端點以程式設計方式測試影像。 請使用此範例作為範本來建置您自己的 Node.js 應用程式。 如果您想要進行「不用」  程式碼來建置及使用分類模型的程序，請改為參閱[以瀏覽器為基礎的指引](../../getting-started-build-a-classifier.md)。
+本指南提供指示和範例程式碼，可協助您開始使用適用於 Node.js 的自訂視覺用戶端程式庫來建置影像分類模型。 您將建立專案、新增標籤、將專案定型，並使用專案的預測端點 URL 以程式設計方式加以測試。 請使用此範例作為自行建置影像辨識應用程式的範本。
+
+> [!NOTE]
+> 如果您想要在「不用」撰寫程式碼的情況下建立和定型分類模型，請參閱[以瀏覽器為基礎的指引](../../getting-started-build-a-classifier.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -21,7 +24,7 @@ ms.locfileid: "88508507"
 
 ## <a name="install-the-custom-vision-client-library"></a>安裝自訂視覺用戶端程式庫
 
-若要安裝適用於 Node.js 的自訂視覺服務用戶端程式庫，請在 PowerShell 中執行下列命令：
+若要使用適用於 Node.js 的自訂視覺來撰寫影像分析應用程式，您將需要自訂視覺 NPM 套件。 若要加以安裝，請在 PowerShell 中執行下列命令：
 
 ```shell
 npm install @azure/cognitiveservices-customvision-training
@@ -36,7 +39,7 @@ npm install @azure/cognitiveservices-customvision-prediction
 
 在您偏好的專案目錄中建立名為 sample.js  的新檔案。
 
-### <a name="create-the-custom-vision-service-project"></a>建立自訂視覺服務專案
+## <a name="create-the-custom-vision-project"></a>建立自訂視覺專案
 
 在指令碼中新增下列程式碼，以建立新的自訂視覺服務專案。 在適當的定義中插入您的訂用帳戶金鑰，並將 sampleDataRoot 路徑值設定為您的映像資料夾路徑。 請確定 endPoint 值符合您在 [Customvision.ai](https://www.customvision.ai/) 建立的訓練和預測端點。 請注意，建立物件偵測和影像分類專案之間的差異，就是在 **createProject** 呼叫中指定的領域。
 
@@ -66,7 +69,7 @@ const trainer = new TrainingApi.TrainingAPIClient(credentials, endPoint);
     const sampleProject = await trainer.createProject("Sample Project");
 ```
 
-### <a name="create-tags-in-the-project"></a>在專案中建立標記
+## <a name="create-tags-in-the-project"></a>在專案中建立標記
 
 若要在專案中建立分類標記，請在 sample.js  結尾新增以下程式碼：
 
@@ -75,7 +78,7 @@ const trainer = new TrainingApi.TrainingAPIClient(credentials, endPoint);
     const cherryTag = await trainer.createTag(sampleProject.id, "Japanese Cherry");
 ```
 
-### <a name="upload-and-tag-images"></a>上傳和標記影像
+## <a name="upload-and-tag-images"></a>上傳和標記影像
 
 若要將範例影像新增到專案，在標記建立之後插入下列程式碼。 此程式碼會上傳每個影像及其對應標記。 您最多可以在單一批次中上傳 64 個影像。
 
@@ -101,7 +104,7 @@ const trainer = new TrainingApi.TrainingAPIClient(credentials, endPoint);
     await Promise.all(fileUploadPromises);
 ```
 
-### <a name="train-the-classifier-and-publish"></a>訓練分類器並發佈
+## <a name="train-and-publish-the-classifier"></a>定型和發佈分類器
 
 此程式碼會在預測模型中建立第一個反覆項目，然後將該反覆項目發佈至預測端點。 提供給已發佈反覆項目的名稱可用來傳送預測要求。 反覆項目要等到發佈後才可在預測端點中使用。
 
@@ -122,7 +125,7 @@ const trainer = new TrainingApi.TrainingAPIClient(credentials, endPoint);
     await trainer.publishIteration(sampleProject.id, trainingIteration.id, publishIterationName, predictionResourceId);
 ```
 
-### <a name="get-and-use-the-published-iteration-on-the-prediction-endpoint"></a>取得並使用預測端點上已發佈的反覆項目
+## <a name="use-the-prediction-endpoint"></a>使用預測端點
 
 若要將影像傳送到預測端點並擷取預測，在檔案結尾處新增以下程式碼：
 
@@ -175,3 +178,7 @@ Results:
 
 > [!div class="nextstepaction"]
 > [測試和重新定型模型](../../test-your-model.md)
+
+* [什麼是自訂視覺服務？](../../overview.md)
+* [SDK 參考文件 (定型)](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-customvision-training/?view=azure-node-latest)
+* [SDK 參考文件 (預測)](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-customvision-prediction/?view=azure-node-latest)

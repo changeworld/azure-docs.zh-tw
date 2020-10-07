@@ -1,16 +1,16 @@
 ---
 title: Azure 遠端轉譯資產工具
-description: 連結至裝載展示應用程式的 GitHub 存放庫
+description: 了解 Azure 遠端轉譯資產工具 (ARRT)；這是以 C++/Qt 開發的開放原始碼桌面應用程式。
 author: mafranc
 ms.author: mafranc
 ms.date: 06/09/2020
 ms.topic: sample
-ms.openlocfilehash: c02bb46cfdfa37fed7f9c9cc2ad3c2a426547ce8
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.openlocfilehash: e20d21f1f8b58b69ee760fd4e95d6f194e13105a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84636898"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322167"
 ---
 # <a name="azure-remote-rendering-asset-tool-arrt"></a>Azure 遠端轉譯資產工具 (ARRT)
 

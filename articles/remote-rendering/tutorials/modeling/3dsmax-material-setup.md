@@ -5,12 +5,12 @@ author: FlorianBorn71
 ms.author: flborn
 ms.date: 06/16/2020
 ms.topic: tutorial
-ms.openlocfilehash: e77379be863f4527081eeec6a0ee1f426d526527
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 12407d6344c69c747230e9db6fa4d53b4520dc82
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90084459"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331806"
 ---
 # <a name="tutorial-set-up-physically-based-rendering-materials-in-3ds-max"></a>教學課程：在 3ds Max 中設定以實體為基礎的轉譯材質
 
@@ -22,6 +22,10 @@ ms.locfileid: "90084459"
 > * 將具有進階光源的材質指派給場景中的物件。
 > * 處理物件和材質的執行個體。
 > * 將場景匯出為 FBX 格式，並選取的重要選項。
+
+> [!Note]
+> 本教學課程中說明的程序適用於 3ds Max 2019 和 3ds Max 2020。
+> 3ds Max 2021 匯出凹凸貼圖的方式變更後，表示在使用該版本時，轉換服務將不會找到法線貼圖。
 
 在 3ds Max 中建立[以實體為基礎的轉譯 (PBR) 材質](../../overview/features/pbr-materials.md)，這是相當簡單的工作。 在許多方式中，這類似於在其他內容建立應用程式 (例如 Maya) 中進行 PBR 設定。 本教學課程會指引您如何設定 PBR 著色器，以及以 FBX 匯出 Azure 遠端轉譯專案。
 

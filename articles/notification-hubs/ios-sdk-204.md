@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 通知中樞和 iOS SDK 2.0.4 版將推播通知傳送至 iOS
-description: 在本教學課程中，您將了解如何使用 Azure 通知中樞和 Apple Push Notification Service 將推播通知傳送至 iOS 裝置。
+description: 在本教學課程中，您將了解如何使用 Azure 通知中樞和 Apple Push Notification Service 將推播通知傳送至 iOS 裝置 (2.0.4 版)。
 author: sethmanheim
 ms.author: sethm
 ms.date: 06/19/2020
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: notification-hubs
 ms.reviewer: thsomasu
 ms.lastreviewed: 06/01/2020
-ms.openlocfilehash: d89d46e3365a97d9deea8a89de2d9a1d5799cb72
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: ffa562a734e0e6f898aaff89622362080bf1a053
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836049"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318189"
 ---
 # <a name="tutorial-send-push-notifications-to-ios-apps-using-azure-notification-hubs-version-204"></a>教學課程：使用 Azure 通知中樞 (2.0.4 版) 將推播通知傳送至 iOS 應用程式
 
@@ -53,30 +53,11 @@ ms.locfileid: "87836049"
 
    如果畫面未顯示您在 Xcode 中建立的新佈建設定檔，請嘗試重新整理簽署身分識別的設定檔。 按一下功能表列上的  **Xcode** ，再依序按一下 [喜好設定] **** 、[帳戶] ****   索引標籤、[檢視詳細資料] ****   按鈕、您的簽署身分識別，然後按一下右下角的 [重新整理] 按鈕。
 
-   :::image type="content" source="media/ios-sdk/image2.png" alt-text="檢視詳細資料":::
+   :::image type="content" source="media/ios-sdk/image2.png" alt-text="選取範本":::
 
 4. 在 [簽署與功能] ****   索引標籤中，選取 [+ 功能] **** 。 按兩下 [推播通知] ****   加以啟用。
 
-   :::image type="content" source="media/ios-sdk/image3.png" alt-text="功能":::
-
-5. 新增 Azure 通知中樞 SDK 模組。
-
-   您也可以使用  [Cocoapods](https://cocoapods.org/) ，或手動將二進位檔新增至您的專案，來將 Azure 通知中樞 SDK 整合至應用程式中。
-
-   - 透過 Cocoapods 整合：將下列相依性新增至設定檔，以在您的應用程式中包含 Azure 通知中樞 SDK：
-
-      ```ruby
-      pod 'AzureNotificationHubs-iOS'
-      ```
-
-      - 執行 Pod 安裝來安裝新定義的 Pod，並開啟您的 .xcworkspace。
-
-         如果您在執行 Pod 安裝時看到**找不到 AzureNotificationHubs-iOS 的規格**之類的錯誤，請執行 `pod repo update` 以從 Cocoapods 存放庫取得最新的 Pod，然後執行 Pod 安裝。
-
-   - 透過 Carthage 整合：將下列相依性新增至 Cartfile，以在您的應用程式中包含 Azure 通知中樞 SDK：
-
-      ```ruby
-      github "Azure/azure-notificationhubs-ios"
+   :::image type="content" source="media/ios-sdk/image3.png" alt-text="選取範本"
       ```
 
       - 接下來，更新組建相依性：
@@ -93,7 +74,7 @@ ms.locfileid: "87836049"
 
         - 在 Xcode 中，以滑鼠右鍵按一下您的專案，然後按一下 [新增檔案至] ****   選項，將  **WindowsAzureMessaging.framework**  資料夾新增至 Xcode 專案。 選取 [選項] ****  ，並確定已選取 [必要時複製項目] ****  ，然後按一下 [新增] **** 。
 
-          :::image type="content" source="media/ios-sdk/image4.png" alt-text="新增架構":::
+          :::image type="content" source="media/ios-sdk/image4.png" alt-text="選取範本":::
 
 6. 將新的標頭檔新增至名為  **Constants.h** 的專案。 若要這麼做，請以滑鼠右鍵按一下專案名稱並選取 [新增檔案...] **** 。然後選取 [標頭檔] **** 。 此檔案會保存通知中樞的常數。 然後選取 [下一步] **** 。 將檔案命名為  **Constants.h**。
 
@@ -110,13 +91,7 @@ ms.locfileid: "87836049"
 
 8. 新增 Constants.h 的實作檔。 若要這麼做，請以滑鼠右鍵按一下專案名稱並選取 [新增檔案...] **** 。選取 [Objective-C 檔案] **** ，然後選取 [下一步] **** 。 將檔案命名為  **Constants.m**。
 
-   :::image type="content" source="media/ios-sdk/image5.png" alt-text="新增實作檔案":::
-
-9. 開啟  **Constants.m**  檔案，並以下列程式碼取代其內容。 以您先前從入口網站取得的中樞名稱和  **DefaultListenSharedAccessSignature**，分別取代字串常值預留位置  `NotificationHubConnectionString`  和  `NotificationHubConnectionString` ：
-
-   ```objc
-   #import <Foundation/Foundation.h>
-   #import "Constants.h"
+   :::image type="content" source="media/ios-sdk/image5.png" alt-text="選取範本"
 
    NSString* const NHInfoConnectionString = @"NotificationHubConnectionString";
    NSString* const NHInfoHubName = @"NotificationHubName";NSString* const NHUserDefaultTags = @"notification_tags";
@@ -450,7 +425,7 @@ ms.locfileid: "87836049"
 
 您可以在  [Azure 入口網站](https://portal.azure.com/)中，使用 [測試傳送] ****   選項測試應用程式能否接收通知。 它會將測試推播通知傳送至您的裝置。
 
-:::image type="content" source="media/ios-sdk/image6.png" alt-text="測試傳送":::
+:::image type="content" source="media/ios-sdk/image6.png" alt-text="選取範本":::
 
 推播通知通常會以後端服務傳送，例如 Mobile Apps 或使用相容程式庫的 ASP.NET。 如果您的後端無法使用程式庫，您也可以直接使用 REST API 來傳送通知訊息。
 
@@ -467,13 +442,13 @@ ms.locfileid: "87836049"
 
 1. 執行應用程式並確認註冊成功，然後按下 [確定] **** 。
 
-   :::image type="content" source="media/ios-sdk/image7.png" alt-text="註冊":::
+   :::image type="content" source="media/ios-sdk/image7.png" alt-text="選取範本":::
 
 2. 接下來，請依照上一節的說明，從  [Azure 入口網站](https://portal.azure.com/)傳送測試推播通知。
 
 3. 推播通知會從指定的通知中樞傳送至所有已註冊要接收通知的裝置。
 
-   :::image type="content" source="media/ios-sdk/image8.png" alt-text="傳送測試":::
+   :::image type="content" source="media/ios-sdk/image8.png" alt-text="選取範本":::
 
 ## <a name="next-steps"></a>後續步驟
 

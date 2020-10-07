@@ -1,26 +1,28 @@
 ---
-title: 快速入門：表單辨識器用戶端程式庫 | Microsoft Docs
-description: 開始使用 [產品名稱] 用戶端程式庫。
+title: 快速入門：表單辨識器用戶端程式庫
+titleSuffix: Azure Cognitive Services
+description: 使用表單辨識器用戶端程式庫建立表單處理應用程式，從您的自訂文件中擷取索引鍵/值組和資料表資料。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 08/17/2020
+ms.date: 09/21/2020
 ms.author: pafarley
-ms.custom: devx-track-javascript, devx-track-csharp
 zone_pivot_groups: programming-languages-set-ten
-ms.openlocfilehash: 0aa72b595bf60184aa840922a3d8a6496bb983a7
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.custom: devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
+keywords: 表單處理, 自動化資料處理
+ms.openlocfilehash: eb3fc3ebe5c3d9f659758a14ba620018671d95f5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88934342"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318881"
 ---
 # <a name="quickstart-use-the-form-recognizer-client-library"></a>快速入門：使用表單辨識器用戶端程式庫
 
-開始使用表單辨識器用戶端程式庫。 表單辨識器是一項認知服務，其使用機器學習技術來識別和擷取表單文件中的索引鍵/值組和資料表資料。 然後，它會輸出在原始檔中包含關聯性的結構化資料。 請遵循下列步驟來安裝 SDK 套件，並試用基本工作的程式碼範例。
+以您選擇的語言開始使用表單辨識器用戶端程式庫。 Azure 表單辨識器是一種認知服務，可讓您使用機器學習技術來建置自動化的資料處理軟體。 從表單文件中識別並擷取索引鍵/值組和資料表資料&mdash;原始檔案中包含關聯性的輸出結構化資料。 請遵循下列步驟來安裝 SDK 套件，並試用基本工作的程式碼範例。
 
 使用表單辨識器用戶端程式庫執行下列動作：
 

@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 08/04/2020
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 96a97b9b141d434f201da4c7e36f6715186a652e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: a5b4d0591f58d2ce4d3d2e9055c70fdc7118e123
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90903060"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326247"
 ---
 # <a name="quickstart-monitoring-azure-spring-cloud-apps-with-logs-metrics-and-tracing"></a>快速入門：使用記錄、計量和追蹤來監視 Azure Spring Cloud 應用程式
 
@@ -63,7 +63,7 @@ Executing ObjectResult, writing value of type 'System.Collections.Generic.KeyVal
 
 ### <a name="log-analytics"></a>Log Analytics
 
-1. 移至 [服務 |總覽] 頁面，並在 [監視] 區段中選取 [記錄]。 在 Azure Spring Cloud 的其中一個範例查詢上選取 [執行]。
+1. 在 Azure 入口網站中，移至 [服務 | 概觀] 頁面，並在 [監視] 區段中選取 [記錄]。 在 Azure Spring Cloud 的其中一個範例查詢上選取 [執行]。
 
    [ ![記錄分析項目](media/spring-cloud-quickstart-logs-metrics-tracing/logs-entry.png) ](media/spring-cloud-quickstart-logs-metrics-tracing/logs-entry.png#lightbox)
     
@@ -75,7 +75,7 @@ Executing ObjectResult, writing value of type 'System.Collections.Generic.KeyVal
 
 ## <a name="metrics"></a>計量
 
-1. 在 Azure 入口網站中，移至 [服務 |概觀] 頁面，並在 [監視] 區段中選取 [計量]。 在 [計量] 中選取 [`system.cpu.usage`] 來新增第一個計量，並在 [彙總] 中選取 [`Avg`] 來查看整體 CPU 使用量的時間表。
+1. 在 Azure 入口網站中，移至 [服務 |概觀] 頁面，並在 [監視] 區段中選取 [計量]。 在 [計量] 下拉式清單中的 [效能 (.NET)] 或 [要求 (.NET)] 下選取其中一個 .NET 計量，以新增您的第一個計量，並在 [彙總] 中選取 `Avg` 以查看該計量的時間軸。
 
    [ ![計量項目 - Steeltoe](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-basic-cpu-steeltoe.png) ](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-basic-cpu-steeltoe.png#lightbox)
     

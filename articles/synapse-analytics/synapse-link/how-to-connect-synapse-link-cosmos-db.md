@@ -9,12 +9,12 @@ ms.subservice: synapse-link
 ms.date: 04/21/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: fa33f2d9e0c4606587ca5ef65a3f4a021319431f
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.openlocfilehash: f453c074126e448eb54d432532b9064b3eb3cb35
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85195040"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91287887"
 ---
 # <a name="connect-to-azure-synapse-link-preview-for-azure-cosmos-db"></a>連線至適用於 Azure Cosmos DB 的 Azure Synapse Link (預覽)
 
@@ -22,7 +22,7 @@ ms.locfileid: "85195040"
 
 ## <a name="prerequisites"></a>必要條件
 
-要將 Azure Cosmos DB 資料庫連線至您的工作區，必須符合下列先決條件：
+要將 Azure Cosmos DB 資料庫連線至您的工作區，您將需要：
 
 > [!IMPORTANT]
 > 適用於 Azure Cosmos DB 的 Azure Synapse Link 目前支援未啟用受控虛擬網路的工作區。 

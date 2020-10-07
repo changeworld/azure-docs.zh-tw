@@ -1,19 +1,19 @@
 ---
 title: 快速入門：在應用程式閘道上建立 Azure WAF v2 - Azure Resource Manager 範本
 titleSuffix: Azure Application Gateway
-description: 了解如何使用 Azure Resource Manager 範本 (ARM 範本) 在 Azure 應用程式閘道上建立 Web 應用程式防火牆 v2。
+description: 了解如何使用 Azure Resource Manager 快速入門範本 (ARM 範本) 在 Azure 應用程式閘道上建立 Web 應用程式防火牆 v2。
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: quickstart
-ms.date: 04/02/2020
+ms.date: 09/16/2020
 ms.author: victorh
-ms.openlocfilehash: b0a430ebfb19ca529ae96698173df27d18e6dd10
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: 036503f95a7dc1aaa5690bacc01d07034e6d162f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705158"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91266930"
 ---
 # <a name="quickstart-create-an-azure-waf-v2-on-application-gateway-using-an-arm-template"></a>快速入門：使用 ARM 範本在應用程式閘道上建立 Azure WAF v2
 

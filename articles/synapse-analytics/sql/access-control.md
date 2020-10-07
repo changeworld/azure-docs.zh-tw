@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 52cf3af4b4ab84c12b2e1b5d7f076c43e652157d
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: a2e6111f2df5a8d7334a85ec5b6a9e514368ad6c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90031308"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289475"
 ---
 # <a name="manage-access-to-workspaces-data-and-pipelines"></a>管理工作區、資料和管線的存取權
 
@@ -50,7 +50,7 @@ ms.locfileid: "90031308"
 1. 開啟 [Azure 入口網站](https://portal.azure.com)
 2. 巡覽至 Azure Data Lake Storage Gen2 帳戶
 3. 瀏覽至您為 Azure Synapse 工作區挑選的容器 (檔案系統)
-4. 按一下 [存取控制 (IAM)]
+4. 選取 [存取控制 (IAM)]
 5. 指派下列角色：
    1. 將**讀者**角色指派給：  `Synapse_WORKSPACENAME_Users`
    2. 將**儲存體 Blob 資料擁有者**角色指派給：  `Synapse_WORKSPACENAME_Admins`
@@ -64,17 +64,17 @@ ms.locfileid: "90031308"
 
 1. 移至 [**Azure Synapse Web UI**](https://web.azuresynapse.net)
 2. 移至 [管理]  > [安全性] > [存取控制]
-3. 按一下 [新增系統管理員]，然後選取 `Synapse_WORKSPACENAME_Admins`
+3. 選取 [新增管理員]，然後選取 `Synapse_WORKSPACENAME_Admins`
 
 ### <a name="step-4-configure-sql-admin-access-for-the-workspace"></a>步驟 4：設定工作區的 SQL 系統管理員存取權
 
 1. 移至 [Azure 入口網站](https://portal.azure.com)
 2. 瀏覽至您的工作區
 3. 移至 [設定] > [Active Directory 系統管理員]
-4. 按一下 [設定系統管理員]
+4. 選取 [設定管理員]
 5. 選取 `Synapse_WORKSPACENAME_Admins`
-6. 按一下 [選取]
-7. 按一下 [儲存]
+6. 選擇 [選取]
+7. 選取 [儲存]。
 
 > [!NOTE]
 > WORKSPACENAME - 此部分應使用實際的工作區名稱。

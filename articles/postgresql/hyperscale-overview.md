@@ -8,12 +8,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: overview
 ms.date: 09/01/2020
-ms.openlocfilehash: e62d1bf0e9db5e80193cb0615d0a9d31e3041d63
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 90d3cb106fa93649f7d6dda5ab5755061d118f66
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90943827"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268378"
 ---
 # <a name="what-is-azure-database-for-postgresql---hyperscale-citus"></a>什麼是適用於 PostgreSQL 的 Azure 資料庫 - 超大規模 (Citus)？
 
@@ -32,5 +32,5 @@ ms.locfileid: "90943827"
 ## <a name="next-steps"></a>後續步驟
 
 - 從[建立第一個](./quickstart-create-hyperscale-portal.md)適用於 PostgreSQL 的 Azure 資料庫 - 超大規模 (Citus) 伺服器開始。
-- 如需成本比較和計算機，請參閱[定價頁面](https://azure.microsoft.com/pricing/details/postgresql/)。 超大規模 (Citus) 提供預付的保留執行個體折扣。如需詳細資訊，請參閱[超大規模資料庫 RI 定價](concepts-hyperscale-reserved-pricing.md)頁面。
+- 如需成本比較和計算機，請參閱[定價頁面](https://azure.microsoft.com/pricing/details/postgresql/)。 超大規模 (Citus) 提供預付的保留執行個體折扣。如需詳細資訊，請參閱[超大規模資料庫 (Citus) RI 定價](concepts-hyperscale-reserved-pricing.md)頁面。
 - 判斷伺服器群組的最佳[初始大小](howto-hyperscale-scaling.md#picking-initial-size)

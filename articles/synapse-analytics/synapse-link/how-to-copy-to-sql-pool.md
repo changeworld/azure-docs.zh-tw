@@ -9,12 +9,12 @@ ms.subservice: synapse-link
 ms.date: 08/10/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 88962d63519cfeb78be694c4f702b05ed4e7d3df
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 409f1ecee5ccf42a0168d500b40337366e07bfc0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88658326"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91287845"
 ---
 # <a name="copy-data-from-azure-cosmos-db-into-a-sql-pool-using-apache-spark"></a>使用 Apache Spark 將資料從 Azure Cosmos DB 複製到 SQL 集區
 
@@ -29,12 +29,12 @@ ms.locfileid: "88658326"
 * [進行正確設定以將資料從 Spark 匯入到 SQL 集區](../spark/synapse-spark-sql-pool-import-export.md)
 
 ## <a name="steps"></a>步驟
-在本教學課程中，您將連線到分析存放區，因此不會影響交易存放區 (其不會取用任何要求單位)。 我們將逐步執行下列步驟：
+在本教學課程中，您將連線到分析存放區，因此不會影響交易存放區 (其不會取用任何要求單位)。 我們會進行下列步驟：
 1. 將 Cosmos DB HTAP 容器讀入 Spark 資料框架中
 2. 在新的資料框架中彙總結果
 3. 將資料擷取至 SQL 集區
 
-[![Spark 至 SQL 的步驟](../media/synapse-link-spark-to-sql/synapse-spark-to-sql.png)](../media/synapse-link-spark-to-sql/synapse-spark-to-sql.png#lightbox)
+[![Spark 至 SQL 的步驟 1](../media/synapse-link-spark-to-sql/synapse-spark-to-sql.png)](../media/synapse-link-spark-to-sql/synapse-spark-to-sql.png#lightbox)
 
 ## <a name="data"></a>資料
 在該範例中，我們使用名為 **RetailSales** 的 HTAP 容器。 此容器是名為 **ConnectedData** 的連結服務一部分，而且具有下列結構描述：
@@ -97,7 +97,7 @@ SELECT  [productCode]
  FROM [dbo].[productsales]
 ```
 
-您的查詢將會以圖表模式呈現下列結果：[![Spark 至 SQL 的步驟](../media/synapse-link-spark-to-sql/sql-script-spark-sql.png)](../media/synapse-link-spark-to-sql/sql-script-spark-sql.png#lightbox)
+您的查詢將會以圖表模式呈現下列結果：[![Spark 至 SQL 的步驟 2](../media/synapse-link-spark-to-sql/sql-script-spark-sql.png)](../media/synapse-link-spark-to-sql/sql-script-spark-sql.png#lightbox)
 
 ## <a name="next-steps"></a>後續步驟
 * [使用 Apache Spark 查詢 Azure Cosmos DB 分析存放區](./how-to-query-analytical-store-spark.md)

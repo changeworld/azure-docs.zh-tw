@@ -9,12 +9,12 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.date: 09/15/2020
-ms.openlocfilehash: c01d1bcb682a5f711dcba3cc7b32ef69b2642ef6
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 47b8c45e22569cc758d00fb8534f409ecebf58ca
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90900765"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91299926"
 ---
 # <a name="explore-the-synapse-knowledge-center"></a>探索 Synapse 知識中心
 
@@ -46,7 +46,6 @@ ms.locfileid: "90900765"
 1. 按一下 [執行]。 其將會執行您選取的文字。
 
 ## <a name="loading-more-nyc-taxi-data"></a>載入更多 NYC 計程車資料
-
 1. 在**知識中心**中，按一下 [瀏覽可用範例] 
 1. 選取頂端的 [SQL 指令碼] 索引標籤
 1. 選取 [載入紐約計程車資料集]
@@ -58,5 +57,6 @@ ms.locfileid: "90900765"
 
 ## <a name="next-steps"></a>後續步驟
 
-> [!div class="nextstepaction"]
-> [使用 SQL 集區進行分析](get-started-analyze-sql-pool.md)
+* [開始使用 Azure Synapse Analytics](get-started.md)
+* [建立工作區](quickstart-create-workspace.md)
+* [使用 SQL 隨選](quickstart-sql-on-demand.md)

@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: b7b8a0d98db1411a08afdb33fa272bb7e6d6313e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: e541a5620d4f263e5e1379b364d7c7dd9a97a331
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87280472"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289016"
 ---
 # <a name="how-to-use-openrowset-with-sql-on-demand-preview"></a>如何搭配 SQL 隨選使用 (預覽) OPENROWSET
 
@@ -119,7 +119,7 @@ WITH ( {'column_name' 'column_type' [ 'column_ordinal'] })
 | Azure Blob 儲存體         | wasb[s]  | \<container>@\<storage_account>.blob.core.windows.net/path/file |
 | Azure Data Lake Store Gen1 | http[s]  | \<storage_account>.azuredatalakestore.net/webhdfs/v1 |
 | Azure Data Lake Store Gen2 | http[s]  | \<storage_account>.dfs.core.windows.net /path/file   |
-| Azure Data Lake Store Gen2 | abfs[s]  | [\<file_system>@\<account_name>.dfs.core.windows.net/path/file](../../storage/blobs/data-lake-storage-introduction-abfs-uri.md#uri-syntax)              |
+| Azure Data Lake Store Gen2 | aufs[s]  | [\<file_system>@\<account_name>.dfs.core.windows.net/path/file](../../storage/blobs/data-lake-storage-introduction-abfs-uri.md#uri-syntax)              |
 ||||
 
 '\<storage_path>'
@@ -135,7 +135,7 @@ WITH ( {'column_name' 'column_type' [ 'column_ordinal'] })
 > [!NOTE]
 > 與 Hadoop 和 PolyBase 不同的是，SQL 隨選不會傳回子資料夾； 此外，與 Hadoop 和 PolyBase 不同的是，SQL 隨選不會傳回檔案名稱開頭為底線 (_) 或英文句號 (.) 的檔案。
 
-在下列範例中，如果 unstructured_data_path=`https://mystorageaccount.dfs.core.windows.net/webdata/`，SQL 隨選查詢將會傳回 mydata.txt 和 _hidden.txt 中的資料列。 其不會傳回 mydata2.txt 和 mydata3.txt，因為其位於子資料夾中。
+在下列範例中，如果 unstructured_data_path=`https://mystorageaccount.dfs.core.windows.net/webdata/`，SQL 隨選查詢將會傳回 mydata.txt 和 _hidden.txt 中的資料列。 而不會傳回 mydata2 .txt 和 mydata3.txt，因為位於子資料夾中。
 
 ![外部資料表的遞迴資料](./media/develop-openrowset/folder-traversal.png)
 
@@ -184,7 +184,7 @@ ESCAPE_CHAR = 'char'
 
 FIRSTROW = 'first_row' 
 
-指定要載入之第一個資料列的號碼。 預設值是 1。 這表示指定之資料檔中的第一個資料列。 資料列號碼是由計算資料列結束字元所決定。 FIRSTROW 是以 1 為基底。
+指定要載入之第一個資料列的號碼。 預設值是 1，表示所指定資料檔案中的第一個資料列。 資料列號碼是由計算資料列結束字元所決定。 FIRSTROW 是以 1 為基底。
 
 FIELDQUOTE = 'field_quote' 
 
@@ -203,7 +203,7 @@ PARSER_VERSION = 'parser_version'
 - PARSER_VERSION = '1.0'
 - PARSER_VERSION = '2.0'
 
-CSV 剖析器 1.0 版是預設項目且功能豐富，而 2.0 是為提高效能而建立的，並不支援所有選項和編碼。 
+CSV 剖析器 1.0 版為預設值，功能豐富。 2\.0 版是為提高效能而建立的，並不支援所有選項和編碼。 
 
 CSV 剖析器 2.0 版的詳細資訊：
 

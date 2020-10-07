@@ -9,32 +9,33 @@ zone_pivot_groups: programming-languages-set-eighteen
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 08/17/2020
+ms.date: 09/17/2020
 ms.author: pafarley
-ms.custom: devx-track-python, devx-track-csharp
-ms.openlocfilehash: 9352b99214598f252658ad0b5b4c1b74f193c0c5
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.custom: devx-track-python, devx-track-csharp, cog-serv-seo-aug-2020
+keywords: 依影像搜尋臉部, 臉部辨識搜尋, 臉部辨識, 臉部辨識應用程式
+ms.openlocfilehash: de9467719c3e88d257edb64d2a9ac2a54412d6ca
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88931500"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322938"
 ---
 # <a name="quickstart-use-the-face-client-library"></a>快速入門：使用臉部用戶端程式庫
 
 ::: zone pivot="programming-language-csharp"
 
-[!INCLUDE [C# quickstart](../includes/quickstarts/face-client-library-csharp.md)]
+[!INCLUDE [C# quickstart](../includes/quickstarts/csharp-sdk.md)]
 
 ::: zone-end
 
 ::: zone pivot="programming-language-python"
 
-[!INCLUDE [Python quickstart](../includes/quickstarts/face-client-library-python.md)]
+[!INCLUDE [Python quickstart](../includes/quickstarts/python-sdk.md)]
 
 ::: zone-end
 
 ::: zone pivot="programming-language-go"
 
-[!INCLUDE [Go quickstart](../includes/quickstarts/face-client-library-go.md)]
+[!INCLUDE [Go quickstart](../includes/quickstarts/go-sdk.md)]
 
 ::: zone-end

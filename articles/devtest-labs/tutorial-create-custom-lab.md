@@ -3,12 +3,12 @@ title: 使用 Azure DevTest Labs 建立實驗室 | Microsoft Docs
 description: 在本教學課程中，您會使用 Azure 入口網站在 Azure DevTest Labs 中建立實驗室。 實驗室管理員會設定實驗室，在實驗室中建立 VM，然後設定原則。
 ms.topic: tutorial
 ms.date: 06/26/2020
-ms.openlocfilehash: 9d016b38beb2f338a97ac862a060dc5ec3a77780
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 4b59edd4ab1204d6683cf95a02070d10b1abe061
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85476558"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324275"
 ---
 # <a name="tutorial-set-up-a-lab-by-using-azure-devtest-labs"></a>教學課程：使用 Azure DevTest Labs 設定實驗室
 在本教學課程中，您會使用 Azure 入口網站建立實驗室。 實驗室管理員會在組織設定實驗室，並在實驗室中建立 VM，然後設定原則。 實驗室使用者 (例如：開發人員和測試人員) 會認領實驗室中的 VM、與之連線並加以使用。 
@@ -56,7 +56,7 @@ ms.locfileid: "85476558"
     2. 針對 [使用者名稱]  ，輸入可存取虛擬機器的使用者名稱。 
     3. 針對 [密碼]  ，輸入使用者的密碼。 
 
-        ![選擇基底](./media/tutorial-create-custom-lab/new-virtual-machine.png)
+        ![顯示 [建立實驗室資源] 頁面基本設定的螢幕擷取畫面。](./media/tutorial-create-custom-lab/new-virtual-machine.png)
 1. 選取 [進階設定]  索引標籤。
     1. 針對 [讓此機器接受認領]  ，選取 [是]  。
     2. 確認 [執行個體計數]  已設定為 [1]  。 如果您將其設定為 [2]  ，則會以下列名稱建立 2 部 VM：`<base image name>00' and <base image name>01`。 例如：`win10vm00` 和 `win10vm01`。     

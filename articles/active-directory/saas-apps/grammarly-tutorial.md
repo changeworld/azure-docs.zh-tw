@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/01/2020
 ms.author: jeedes
-ms.openlocfilehash: 29778d872541ea251a46affcccd0e2befbd9003d
-ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
+ms.openlocfilehash: 989e3f4a285d44128bba1c9811aebcb76b8c0220
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/06/2020
-ms.locfileid: "89500521"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327930"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-grammarly"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Grammarly 整合
 
@@ -81,16 +81,13 @@ ms.locfileid: "89500521"
 1. 在 [基本 SAML 設定]  設定區段上，已預先設定好應用程式，並已經為 Azure 預先填入必要的 URL。 使用者必須按一下 [儲存]  按鈕，才能儲存設定。
 
 
-1. Grammarly 應用程式需要特定格式的 SAML 判斷提示，需要您加入自訂屬性對應到您的 SAML 權杖屬性設定。 以下螢幕擷取畫面顯示預設屬性清單。
-
-    ![image](common/default-attributes.png)
-
-1. 除了上述屬性外，Grammarly 應用程式還需要在 SAML 回應中多傳回幾個屬性，如下所示。 這些屬性也會預先填入，但您可以根據您的需求來檢閱這些屬性。
+1. Grammarly 應用程式需要特定格式的 SAML 判斷提示。 這些屬性也會預先填入，但您可以根據您的需求來檢閱這些屬性。
     
     | 名稱 |  來源屬性|
     | -------------- | --------- |
     | 名字 | user.givenname |
     | 姓氏 | user.surname |
+    | EmailAddress | user.principalname|
 
 1. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，尋找 [憑證 (Base64)]  並選取 [下載]  ，以下載憑證並將其儲存在電腦上。
 
@@ -108,7 +105,7 @@ ms.locfileid: "89500521"
 1. 在畫面頂端選取 [新增使用者]。
 1. 在 [使用者] 屬性中，執行下列步驟：
    1. 在 [名稱] 欄位中，輸入 `B.Simon`。  
-   1. 在 [使用者名稱] 欄位中，輸入 username@companydomain.extension。 例如： `B.Simon@contoso.com` 。
+   1. 在 [使用者名稱]  欄位中，輸入 username@companydomain.extension。 例如： `B.Simon@contoso.com` 。
    1. 選取 [顯示密碼] 核取方塊，然後記下 [密碼] 方塊中顯示的值。
    1. 按一下 [建立]。
 
@@ -126,7 +123,7 @@ ms.locfileid: "89500521"
 
 ## <a name="configure-grammarly-sso"></a>設定 Grammarly SSO
 
-若要設定 **Grammarly** 端的單一登入，您必須將從 Azure 入口網站下載的 [憑證 (Base64)] 和複製的適當 URL 傳送給 [Grammarly 支援小組](mailto:support@grammarly.com)。 他們會進行此設定，讓兩端的 SAML SSO 連線都設定正確。
+若要在 **Grammarly** 上設定單一登入，您必須將 [登入 URL]、[Azure AD 識別碼] 和下載的 [憑證 (Base64)] 複製到 Grammarly 管理面板。 [了解作法](https://support.grammarly.com/hc/en-us/articles/360048683092-How-do-I-set-up-SAML-single-sign-on-for-my-Grammarly-Business-account-)。
 
 ### <a name="create-grammarly-test-user"></a>建立 Grammarly 測試使用者
 

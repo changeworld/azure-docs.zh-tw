@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7a6b145e9a1efb29bbb6c233f2a09498b4a4ea7f
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 8bd955e844c9569438c5d35f152ba1bcdfccc306
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85213120"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91287996"
 ---
 # <a name="self-help-for-sql-on-demand-preview"></a>SQL 隨選 (預覽) 的自助服務
 
@@ -24,7 +24,7 @@ ms.locfileid: "85213120"
 
 如果 Synapse Studio 無法與 SQL 隨選連線，您將會發現 SQL 隨選呈現灰色，或顯示狀態為「離線」。 這個問題通常會在有下列其中一種情況時發生：
 
-1) 網路阻止與 Azure Synapse 後端通訊。 最常見的情況是連接埠 1443 已遭到封鎖。 若要讓 SQL 隨選運作，請將此連接埠解除封鎖。 其他問題也可能會讓 SQL 隨選無法運作，[請瀏覽完整的疑難排解指南以取得詳細資訊](../troubleshoot/troubleshoot-synapse-studio.md)。
+1) 網路阻止與 Azure Synapse 後端通訊。 最常見的情況是連接埠 1443 已遭到封鎖。 若要讓隨選 SQL 運作，請將此連接埠解除封鎖。 其他問題也可能會讓 SQL 隨選無法運作，[請瀏覽完整的疑難排解指南以取得詳細資訊](../troubleshoot/troubleshoot-synapse-studio.md)。
 2) 您沒有可供登入 SQL 隨選的權限。 若要取得存取權，請讓其中一個 Azure Synapse 工作區系統管理員將您新增至工作區系統管理員或 SQL 系統管理員角色。 [請瀏覽關於存取控制的完整指南以取得詳細資訊](access-control.md)。
 
 ## <a name="query-fails-because-file-cannot-be-opened"></a>查詢因為無法開啟檔案而失敗
@@ -35,7 +35,7 @@ ms.locfileid: "85213120"
 
 如果您的查詢失敗，並出現錯誤訊息「此查詢因為目前的資源條件約束而無法執行」，則表示 SQL 隨選目前因為資源條件約束而無法執行查詢： 
 
-- 請確定您已使用適當大小的資料類型。 此外，請針對字串資料行指定 Parquet 檔案的結構描述，因為其預設會是 VARCHAR (8000)。 
+- 確定您已使用適當大小的資料類型。 此外，請針對字串資料行指定 Parquet 檔案的結構描述，因為其預設會是 VARCHAR (8000)。 
 
 - 如果您的查詢以 CSV 檔案作為目標，請考慮[建立統計資料](develop-tables-statistics.md#statistics-in-sql-on-demand-preview)。 
 

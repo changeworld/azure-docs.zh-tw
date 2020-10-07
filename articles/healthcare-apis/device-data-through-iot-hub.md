@@ -8,12 +8,12 @@ ms.subservice: iomt
 ms.topic: tutorial
 ms.date: 08/03/2020
 ms.author: punagpal
-ms.openlocfilehash: 04c732b857c06246bdc636f01afd2689c98c2b0d
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 3b2e4a1ae5ff43283893b286dafb38491a1181b4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87831612"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91308219"
 ---
 # <a name="tutorial-receive-device-data-through-azure-iot-hub"></a>教學課程：透過 Azure IoT 中樞接收裝置資料
 
@@ -61,7 +61,7 @@ Azure IoT 中樞支援稱為[訊息路由](https://docs.microsoft.com/azure/iot-
 ### <a name="add-a-message-route"></a>新增訊息路由
 此步驟會使用上面建立的端點來定義訊息路由。 請根據您的喜好設定，使用 [Add-AzIotHubRoute](https://docs.microsoft.com/powershell/module/az.iothub/Add-AzIoTHubRoute) PowerShell 命令或 [az iot hub route create](https://docs.microsoft.com/cli/azure/iot/hub/route#az-iot-hub-route-create) CLI 命令來建立路由點。
 
-以下是要搭配命令以建立端點的參數清單：
+以下是要用於命令以新增訊息路由的參數清單：
 
 |PowerShell 參數|CLI 參數|描述|
 |---|---|---|
