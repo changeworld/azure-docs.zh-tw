@@ -8,10 +8,10 @@ ms.date: 08/12/2020
 ms.author: spelluru
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 178f990e46801cd51e9feb88bbd20181842e4400
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89077682"
 ---
 # <a name="use-azure-powershell-to-create-a-service-bus-namespace-and-a-queue"></a>使用 Azure PowerShell 建立服務匯流排命名空間和佇列
@@ -34,7 +34,7 @@ ms.locfileid: "89077682"
     :::image type="content" source="./media/service-bus-quickstart-powershell/launch-cloud-shell.png" alt-text="啟動 Cloud Shell":::
 3. 在 Cloud Shell 視窗底部，從 **Bash** 切換至 **PowerShell**。 
 
-    :::image type="content" source="./media/service-bus-quickstart-powershell/cloud-power-shell.png" alt-text="切換為 PowerShell 模式":::    
+    :::image type="content" source="./media/service-bus-quickstart-powershell/cloud-power-shell.png" alt-text="啟動 Cloud Shell":::    
 4. 執行下列命令以建立 Azure 資源群組。 您可以視需要更新資源群組名稱和位置。 
 
     ```azurepowershell-interactive

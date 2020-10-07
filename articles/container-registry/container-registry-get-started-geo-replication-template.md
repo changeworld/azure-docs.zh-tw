@@ -9,10 +9,10 @@ ms.custom: subject-armqs
 ms.author: danlep
 ms.date: 05/26/2020
 ms.openlocfilehash: 2cfce37ff63a8321f40843ced2a7b786bcfc013e
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88649596"
 ---
 # <a name="quickstart-create-a-geo-replicated-container-registry-by-using-an-arm-template"></a>快速入門：使用 ARM 範本建立異地複寫的容器登錄
@@ -62,7 +62,7 @@ ms.locfileid: "88649596"
 
  3. 如果接受這些條款與條件，請選取 [購買]。 成功建立登錄之後，您會收到一則通知：
 
-     :::image type="content" source="media/container-registry-get-started-geo-replication-template/deployment-notification.png" alt-text="入口網站通知":::
+     :::image type="content" source="media/container-registry-get-started-geo-replication-template/deployment-notification.png" alt-text="範本屬性":::
 
  Azure 入口網站用於部署範本。 除了 Azure 入口網站，您可以使用 Azure PowerShell、Azure CLI 和 REST API。 若要了解其他部署方法，請參閱[部署範本](../azure-resource-manager/templates/deploy-cli.md)。
 
@@ -74,11 +74,11 @@ ms.locfileid: "88649596"
 
 1. 記下 [概觀] 頁面中，登錄的**登入伺服器**。 當您使用 Docker 標記映像並將其推送至您的登錄時，請使用此 URI。 如需相關資訊，請參閱[使用 Docker CLI 推送您的第一個映像](container-registry-get-started-docker-cli.md)。
 
-    :::image type="content" source="media/container-registry-get-started-geo-replication-template/registry-overview.png" alt-text="登錄概觀":::
+    :::image type="content" source="media/container-registry-get-started-geo-replication-template/registry-overview.png" alt-text="範本屬性":::
 
 1. 在 [複寫] 頁面上，確認主要複本和透過範本所新增複本的位置。 如有需要，請在此頁面中新增更多複本。
 
-    :::image type="content" source="media/container-registry-get-started-geo-replication-template/registry-replications.png" alt-text="登錄複寫":::
+    :::image type="content" source="media/container-registry-get-started-geo-replication-template/registry-replications.png" alt-text="範本屬性":::
 
 ## <a name="clean-up-resources"></a>清除資源
 

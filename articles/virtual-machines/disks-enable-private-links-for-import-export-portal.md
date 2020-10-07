@@ -9,10 +9,10 @@ ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
 ms.openlocfilehash: ab861b3ed265da9060e2367bdfdeeeee7047c584
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88815856"
 ---
 # <a name="use-the-azure-portal-to-restrict-importexport-access-for-managed-disks-with-private-links"></a>使用 Azure 入口網站，透過 Private Link 限制受控磁碟的匯入/匯出存取
@@ -52,7 +52,7 @@ ms.locfileid: "88815856"
 
 您可以直接瀏覽到已建立的資源。
 
-:::image type="content" source="media/disks-enable-private-links-for-import-export-portal/screenshot-resource-button.png" alt-text="入口網站中 [移至資源] 按鈕的螢幕擷取畫面":::
+:::image type="content" source="media/disks-enable-private-links-for-import-export-portal/screenshot-resource-button.png" alt-text="磁碟存取建立刀鋒視窗的螢幕擷取畫面。填入想要的名稱、選取區域、選取資源群組，然後繼續":::
 
 ## <a name="create-a-private-endpoint"></a>建立私人端點
 
@@ -61,13 +61,13 @@ ms.locfileid: "88815856"
 1. 從磁碟存取資源中，選取 [私人端點連線]。
 1. 選取 [+私人端點]。
 
-    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-main-private-blade.png" alt-text="磁碟存取資源之概觀刀鋒視窗的幕擷取畫面。私人端點連線已反白。":::
+    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-main-private-blade.png" alt-text="磁碟存取建立刀鋒視窗的螢幕擷取畫面。填入想要的名稱、選取區域、選取資源群組，然後繼續":::
 
 1. 選取資源群組
 1. 填入名稱，並選取與您磁碟存取資源建立位置相同的區域。
 1. 完成時，選取 下一步:**資源 >**
 
-    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-private-endpoint-first-blade.png" alt-text="私人端點建立工作流程，第一個刀鋒視窗的螢幕擷取畫面。如果您未選取適當的區域，稍後可能會遇到問題。":::
+    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-private-endpoint-first-blade.png" alt-text="磁碟存取建立刀鋒視窗的螢幕擷取畫面。填入想要的名稱、選取區域、選取資源群組，然後繼續":::
 
 1. 選取 [資源] 刀鋒視窗中的 [連線到我目錄中的 Azure 資源]。
 1. 在 [資源類型] 中，選取 [Microsoft.Compute/diskAccesses]
@@ -75,7 +75,7 @@ ms.locfileid: "88815856"
 1. 將 [目標子資源] 保留為**磁碟**
 1. 選取 下一步：**組態 >** 。
 
-    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-private-endpoint-second-blade.png" alt-text="私人端點建立工作流程，第二個刀鋒視窗的螢幕擷取畫面。已反白顯示所有值 (資源類型、資源、目標子資源)":::
+    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-private-endpoint-second-blade.png" alt-text="磁碟存取建立刀鋒視窗的螢幕擷取畫面。填入想要的名稱、選取區域、選取資源群組，然後繼續":::
 
 1. 選取要限制磁碟匯出的虛擬網路，其他虛擬網路將無法匯出您的磁碟。
 
@@ -85,7 +85,7 @@ ms.locfileid: "88815856"
 1. 選取適當的子網路
 1. 選取 [檢閱 + 建立]。
 
-    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-private-endpoint-third-blade.png" alt-text="私人端點建立工作流程，第三個刀鋒視窗的螢幕擷取畫面。強調虛擬網路和子網路。":::
+    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-private-endpoint-third-blade.png" alt-text="磁碟存取建立刀鋒視窗的螢幕擷取畫面。填入想要的名稱、選取區域、選取資源群組，然後繼續":::
 
 ## <a name="enable-private-endpoint-on-your-disk"></a>啟用磁碟上的私人端點
 
@@ -94,7 +94,7 @@ ms.locfileid: "88815856"
 1. 選取 [私人端點 (透過磁碟存取)]，並選取您稍早建立的磁碟存取。
 1. 選取 [儲存]。
 
-    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-managed-disk-networking-blade.png" alt-text="受控磁碟網路功能刀鋒視窗的螢幕擷取畫面。反白顯示私人端點選取項目，以及選取的磁碟存取。儲存此設定會為您的磁碟設定此存取。":::
+    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-managed-disk-networking-blade.png" alt-text="磁碟存取建立刀鋒視窗的螢幕擷取畫面。填入想要的名稱、選取區域、選取資源群組，然後繼續":::
 
 您現在已完成設定 Private Link，可在匯入/匯出受控磁碟時使用。
 

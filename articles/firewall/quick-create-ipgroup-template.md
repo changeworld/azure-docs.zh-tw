@@ -9,10 +9,10 @@ ms.custom: subject-armqs
 ms.date: 08/28/2020
 ms.author: victorh
 ms.openlocfilehash: 7966cbe44fc8984cf3c3d9e2d08a11bf599ff158
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89079127"
 ---
 # <a name="quickstart-create-an-azure-firewall-and-ip-groups---arm-template"></a>快速入門：建立 Azure 防火牆和 IP 群組 - ARM 範本
@@ -76,7 +76,7 @@ ms.locfileid: "89079127"
 
 :::image type="content" source="media/quick-create-ipgroup-template/ipgroups.png" alt-text="IP 群組。":::
 
-:::image type="content" source="media/quick-create-ipgroup-template/network-rule.png" alt-text="網路規則。":::
+:::image type="content" source="media/quick-create-ipgroup-template/network-rule.png" alt-text="IP 群組。":::
 
 若要了解範本中防火牆的 JSON 語法和屬性，請參閱 [Microsoft.Network azureFirewalls 範本參考](/azure/templates/Microsoft.Network/2019-11-01/azureFirewalls)。
 

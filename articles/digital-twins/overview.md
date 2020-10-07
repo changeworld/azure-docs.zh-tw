@@ -8,10 +8,10 @@ ms.date: 3/12/2020
 ms.topic: overview
 ms.service: digital-twins
 ms.openlocfilehash: ea08843dc73ed7603181eee1cf36495fda82b8d4
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89003842"
 ---
 # <a name="what-is-azure-digital-twins"></a>什麼是 Azure Digital Twins？
@@ -88,7 +88,7 @@ Azure Digital Twins 通常會與其他 Azure 服務搭配使用，以做為大�
 
 下圖顯示 Azure Digital Twins 位於大行 Azure IoT 解決方案的內容中。
 
-:::image type="content" source="media/overview/solution-context.png" alt-text="此圖顯示輸入來源、輸出服務，以及與用戶端應用程式和外部計算資源之間的雙向通訊。" border="false" lightbox="media/overview/solution-context.png":::
+:::image type="content" source="media/overview/solution-context.png" alt-text="Azure Digital Twins 總管範例應用程式的螢幕擷取畫面，其中顯示代表 Digital Twins 的節點圖表" border="false" lightbox="media/overview/solution-context.png":::
 
 ## <a name="service-limits-in-public-preview"></a>公開預覽中的服務限制
 

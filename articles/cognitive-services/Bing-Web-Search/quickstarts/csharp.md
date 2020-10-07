@@ -12,10 +12,10 @@ ms.date: 05/22/2020
 ms.author: aahi
 ms.custom: seodec2018, devx-track-csharp
 ms.openlocfilehash: 2760e6a46801871a25ecbe23a2400211ae312650
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88921693"
 ---
 # <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-c"></a>快速入門：使用 Bing Web 搜尋 REST API 和 C# 來搜尋 Web
@@ -24,7 +24,7 @@ ms.locfileid: "88921693"
 
 本快速入門中的這個範例程式僅使用 .NET Core 類別。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 以下是執行本快速入門之前的幾個必備項目：
 

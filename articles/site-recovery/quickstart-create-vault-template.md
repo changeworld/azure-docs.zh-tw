@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 04/29/2020
 ms.openlocfilehash: 62bfe71c397367282c696eecdf55ab9c900c69a1
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88684111"
 ---
 # <a name="quickstart-create-a-recovery-services-vault-using-an-arm-template"></a>快速入門：使用 ARM 範本建立復原服務保存庫
@@ -63,7 +63,7 @@ ms.locfileid: "88684111"
 
 1. 若要開始保存庫的部署，請選取 [購買] 按鈕。 部署成功後，就會顯示通知。
 
-   :::image type="content" source="media/quickstart-create-vault-template/deployment-success.png" alt-text="保存庫部署成功。":::
+   :::image type="content" source="media/quickstart-create-vault-template/deployment-success.png" alt-text="建立復原服務保存庫的範本":::
 
 ## <a name="validate-the-deployment"></a>驗證部署
 

@@ -10,10 +10,10 @@ ms.date: 05/28/2020
 ms.author: sngun
 ms.custom: devx-track-csharp
 ms.openlocfilehash: e49ecf0f8e88e0de22117a5ed85b8352e73a2f5d
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89020230"
 ---
 # <a name="quickstart-build-a-table-api-app-with-net-sdk-and-azure-cosmos-db"></a>快速入門：使用 .NET SDK 與 Azure Cosmos DB 建置資料表 API 應用程式 
@@ -104,15 +104,7 @@ ms.locfileid: "89020230"
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)中，按一下 [連接字串]。 使用視窗右方的複製按鈕來複製**主要連接字串**。
 
-   :::image type="content" source="./media/create-table-dotnet/connection-string.png" alt-text="在 [連接字串] 窗格中檢視及複製主要連接字串":::
-
-2. 在 Visual Studio 中開啟 **Settings.json** 檔案。 
-
-3. 將來自入口網站的**主要連接字串**貼到 StorageConnectionString 值中。 在引號內貼上字串。
-
-   ```csharp
-   {
-      "StorageConnectionString": "<Primary connection string from Azure portal>"
+   :::image type="content" source="./media/create-table-dotnet/connection-string.png" alt-text="開啟解決方案"
    }
    ```
 
@@ -124,25 +116,25 @@ ms.locfileid: "89020230"
 
 1. 在 Visual Studio 中，於 [方案總管] 中的 **CosmosTableSamples** 專案上按一下滑鼠右鍵，然後按一下 [管理 NuGet 套件]。 
 
-   :::image type="content" source="media/create-table-dotnet/azure-cosmosdb-manage-nuget.png" alt-text="管理 NuGet 套件":::
+   :::image type="content" source="media/create-table-dotnet/azure-cosmosdb-manage-nuget.png" alt-text="開啟解決方案":::
 
 2. 在 NuGet [瀏覽] 方塊中，輸入Microsoft.Azure.Cosmos.Table。 這會尋找 Cosmos DB 資料表 API 用戶端程式庫。 請注意，此文件庫目前僅適用於 .NET Framework 與 .NET Standard。 
    
-   :::image type="content" source="media/create-table-dotnet/azure-cosmosdb-nuget-browse.png" alt-text="[NuGet 瀏覽] 索引標籤":::
+   :::image type="content" source="media/create-table-dotnet/azure-cosmosdb-nuget-browse.png" alt-text="開啟解決方案":::
 
 3. 按一下 [安裝] 可安裝 **Microsoft.Azure.Cosmos.Table** 程式庫。 這會安裝 Azure Cosmos DB 資料表 API 套件以及所有相依性。
 
 4. 當您執行整個應用程式時，會將範例資料插入資料表實體，並於結束時刪除，因此如果您執行完整的範例，並不會看到插入任何資料。 不過，您可以插入一些中斷點來檢視資料。 開啟 BasicSamples.cs 檔案，然後以滑鼠右鍵按一下第 52 行，選取 [中斷點]，然後選取 [插入中斷點]。 在第 55 行上插入另一個中斷點。
 
-   :::image type="content" source="media/create-table-dotnet/azure-cosmosdb-breakpoint.png" alt-text="新增中斷點"::: 
+   :::image type="content" source="media/create-table-dotnet/azure-cosmosdb-breakpoint.png" alt-text="開啟解決方案"::: 
 
 5. 按 F5 執行應用程式。 主控台視窗會顯示 Azure Cosmos DB 中新資料表資料庫的名稱 (在此情況下為 demoa13b1)。 
     
-   :::image type="content" source="media/create-table-dotnet/azure-cosmosdb-console.png" alt-text="主控台輸出":::
+   :::image type="content" source="media/create-table-dotnet/azure-cosmosdb-console.png" alt-text="開啟解決方案":::
 
    到達第一個中斷點時，請回到 Azure 入口網站中的 [資料總管]。 按一下 [重新整理] 按鈕、展開示範 * 資料表，然後按一下 [實體]。 右側的 [實體] 索引標籤會顯示針對 Walter Harp 新增的新實體。 請注意，新實體的電話號碼為 425-555-0101。
 
-   :::image type="content" source="media/create-table-dotnet/azure-cosmosdb-entity.png" alt-text="新的實體":::
+   :::image type="content" source="media/create-table-dotnet/azure-cosmosdb-entity.png" alt-text="開啟解決方案":::
     
    如果您收到錯誤，指出執行專案時找不到 Settings.json 檔案，您可以將下列 XML 項目新增至專案設定來解決該問題。 以滑鼠右鍵按一下 [CosmosTableSamples]、選取 [編輯 CosmosTableSamples.csproj]，然後新增下列 itemGroup： 
 
