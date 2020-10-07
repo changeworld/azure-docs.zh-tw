@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: d9f16b612b508a6237c748bd135ff32618015b0b
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 4deab6fcadda36ad729096ff2f38e40ce81c7ae9
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057002"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91446094"
 ---
 # <a name="tutorial-load-balance-vms-across-availability-zones-with-a-standard-load-balancer-using-the-azure-portal"></a>教學課程：使用 Azure 入口網站透過標準 Load Balancer 將 VM 的負載平均分配至多個可用性區域
 
@@ -93,7 +93,7 @@ ms.locfileid: "86057002"
     - myNetworkSecurityGroup - 作為網路安全性群組的名稱。
     - myResourceGroupLBAZ - 作為現有資源群組的名稱。
    
-![建立虛擬網路](./media/load-balancer-standard-public-availability-zones-portal/create-nsg.png)
+![此螢幕擷取畫面顯示 [建立網路安全性群組] 窗格。](./media/load-balancer-standard-public-availability-zones-portal/create-nsg.png)
 
 ### <a name="create-network-security-group-rules"></a>建立網路安全性群組規則
 
@@ -112,7 +112,7 @@ ms.locfileid: "86057002"
     - 允許 HTTP - 負載平衡器規則的描述。
 4. 按一下 [確定]。
  
-   ![建立虛擬網路](./media/load-balancer-standard-public-availability-zones-portal/8-load-balancer-nsg-rules.png)
+   ![此螢幕擷取畫面顯示 [新增輸入安全性規則] 窗格。](./media/load-balancer-standard-public-availability-zones-portal/8-load-balancer-nsg-rules.png)
 5. 重複步驟 2 到 4 來建立另一個名為 myRDPRule 的規則，以允許使用連接埠 3389 的輸入 RDP 連線，其具有下列值：
     - 服務標記 - 作為 [來源]。
     - 網際網路 - 作為 [來源服務標記]

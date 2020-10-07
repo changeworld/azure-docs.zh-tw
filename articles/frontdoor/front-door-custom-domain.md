@@ -10,19 +10,19 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/10/2018
+ms.date: 09/24/2020
 ms.author: duau
-ms.openlocfilehash: ee9a883cbd69826e30d6f2416d588792a8c17b1c
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: ebc0ee2e029e1f349972e3cd7fada46495534d54
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89648807"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91252386"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-front-door"></a>教學課程：將自訂網域新增到您的前端
 本教學課程說明如何將自訂網域新增至您的 Front Door。 使用 Azure Front Door 進行應用程式傳遞時，如果您想要在使用者要求中顯示您自己的網域名稱，則需要自訂網域。 有可見的網域名稱對您的客戶而言較為方便，並且也有助於宣傳商標。
 
-當您建立 Front Door 後，預設端點主機 (`azurefd.net` 的子網域) 依預設會包含在從您的後端傳遞 Front Door 內容的 URL 中 (例如 https:\//contoso.azurefd.net/activeusers.htm)。 為了方便起見，Azure Front Door 會提供在自訂網域與預設主機之間建立關聯的選項。 使用此選項時，您會使用 URL 中的自訂網域來傳遞內容，而不是使用 Front Door 擁有的網域名稱 (例如 https:\//www.contoso.com/photo.png)。 
+在您建立 Front Door 之後，預設端點主機 (`azurefd.net` 的子網域) 依預設會包含在從您的後端傳遞 Front Door 內容的 URL 中 (例如 https:\//contoso-frontend.azurefd.net/activeusers.htm)。 為了方便起見，Azure Front Door 會提供在自訂網域與預設主機之間建立關聯的選項。 使用此選項時，您會使用 URL 中的自訂網域來傳遞內容，而不是使用 Front Door 擁有的網域名稱 (例如 https:\//www.contoso.com/photo.png)。 
 
 在本教學課程中，您會了解如何：
 > [!div class="checklist"]
@@ -46,7 +46,7 @@ ms.locfileid: "89648807"
 
 ## <a name="create-a-cname-dns-record"></a>建立 CNAME DNS 記錄
 
-您必須先透過網域提供者建立正式名稱 (CNAME) 記錄，以指向您 Front Door 的預設前端主機 (例如 contoso.azurefd.net)，才能將自訂網域用於您的 Front Door。 CNAME 記錄是一種將來源網域名稱對應至目的地網域名稱的 DNS 記錄。 在 Azure Front Door 中，來源網域名稱是您的自訂網域名稱，而目的地網域名稱是您的 Front Door 預設主機名稱。 在 Front Door 驗證您所建立的 CNAME 記錄後，定址到來源自訂網域 (例如 www\.contoso.com) 的流量即會路由傳送至指定的目的地 Front Door 預設前端主機 (例如 contoso.azurefd.net)。 
+您必須先透過網域提供者建立正式名稱 (CNAME) 記錄，以指向您 Front Door 的預設前端主機 (例如 contoso.azurefd.net)，才能將自訂網域用於您的 Front Door。 CNAME 記錄是一種將來源網域名稱對應至目的地網域名稱的 DNS 記錄。 在 Azure Front Door 中，來源網域名稱是您的自訂網域名稱，而目的地網域名稱是您的 Front Door 預設主機名稱。 在 Front Door 驗證您所建立的 CNAME 記錄後，定址到來源自訂網域 (例如 www\.contoso.com) 的流量即會路由傳送至指定的目的地 Front Door 預設前端主機 (例如 contoso-frontend.azurefd.net)。 
 
 自訂網域及其子網域一次只能與單一 Front Door 相關聯。 不過，您可以使用多個 CNAME 記錄，將來自相同自訂網域的不同子網域用於不同的 Front Door。 您也可以將具有不同子網域的自訂網域對應至相同的 Front Door。
 
@@ -67,13 +67,13 @@ ms.locfileid: "89648807"
 
     | 來源                    | 類型  | Destination                     |
     |---------------------------|-------|---------------------------------|
-    | afdverify. www.contoso.com | CNAME | afdverify.contoso.azurefd.net |
+    | afdverify. www.contoso.com | CNAME | afdverify.contoso-frontend.azurefd.net |
 
     - 來源：以下列格式輸入您的自訂網域名稱 (包括 afdverify 子網域)：afdverify. _&lt;自訂網域名稱&gt;_ 。 例如 afdverify. www.contoso.com。
 
     - 輸入：輸入 CNAME  。
 
-    - 目的地：以下列格式輸入您的預設 Front Door 前端主機 (包括 afdverify 子網域)：afdverify. _&lt;端點名稱&gt;_ .azurefd.net。 例如 afdverify.contoso.azurefd.net。
+    - 目的地：以下列格式輸入您的預設 Front Door 前端主機 (包括 afdverify 子網域)：afdverify. _&lt;端點名稱&gt;_ .azurefd.net。 例如，afdverify.contoso-frontend.azurefd.net。
 
 4. 儲存您的變更。
 
@@ -93,7 +93,7 @@ ms.locfileid: "89648807"
 
     - 主機：輸入要使用的自訂網域的子網域，包括 afdverify 子網域名稱。 例如 afdverify.www。
 
-    - 指向：輸入預設 Front Door 前端主機的主機名稱，包括 afdverify 子網域名稱。 例如 afdverify.contoso.azurefd.net。 
+    - 指向：輸入預設 Front Door 前端主機的主機名稱，包括 afdverify 子網域名稱。 例如，afdverify.contoso-frontend.azurefd.net。 
 
     - TTL：保持選取 [一小時]  。
 
@@ -144,13 +144,13 @@ ms.locfileid: "89648807"
 
     | 來源          | 類型  | Destination           |
     |-----------------|-------|-----------------------|
-    | <www.contoso.com> | CNAME | contoso.azurefd.net |
+    | <www.contoso.com> | CNAME | contoso-frontend.azurefd.net |
 
    - 來源：輸入您的自訂網域名稱 (例如 www\.contoso.com)。
 
    - 輸入：輸入 CNAME  。
 
-   - 目的地：輸入您的預設 Front Door 前端主機。 此名稱必須是下列格式： _&lt;主機名稱&gt;_ .azurefd.net。 例如 contoso.azurefd.net。
+   - 目的地：輸入您的預設 Front Door 前端主機。 此名稱必須是下列格式： _&lt;主機名稱&gt;_ .azurefd.net。 例如，contoso-frontend.azurefd.net。
 
 4. 儲存您的變更。
 

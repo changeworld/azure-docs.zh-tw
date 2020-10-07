@@ -1,7 +1,7 @@
 ---
 title: 快速入門：使用 Bing 自動建議 REST API 與 PHP 建議搜尋查詢
 titleSuffix: Azure Cognitive Services
-description: 了解如何快速開始使用 Bing 自動建議 API，即時建議搜尋字詞。
+description: 了解如何快速開始使用 Bing 自動建議 API 和 PHP，即時建議搜尋字詞。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-autosuggest
 ms.topic: quickstart
 ms.date: 05/06/2020
 ms.author: aahi
-ms.openlocfilehash: 6552c345678b6996f4a35e9e1fc7a1838505ff09
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 534702a9122fd19be1b47dc1fcbd54ba7bfad14c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82930177"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332605"
 ---
 # <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-php"></a>快速入門：使用 Bing 自動建議 REST API 與 PHP 建議搜尋查詢
 

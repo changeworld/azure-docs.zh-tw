@@ -4,12 +4,12 @@ description: 在本教學課程中，您會了解如何使用 Azure Pipelines �
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: 302ad1dcfaa93564d70fab739726787ef09c79df
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: a26cfaca466e01b154c65b27895f3004f6320e5d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90563925"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326332"
 ---
 # <a name="tutorial-deploy-an-application-with-cicd-to-a-service-fabric-cluster"></a>教學課程：將搭配 CI/CD 的應用程式部署到 Service Fabric 叢集
 
@@ -65,11 +65,11 @@ Visual Studio 右上角的狀態列上，選取 [新增至原始檔控制]   -> 
 
 在 [Team Explorer]  的 [推送]  檢視中，選取 [推送至 Azure DevOps]  下的 [發佈 Git 儲存機制]  按鈕。
 
-![推送 Git 儲存機制][push-git-repo]
+![Visual Studio 中 Team Explorer - 同步處理視窗的螢幕擷取畫面。 [發佈至 Git 存放庫] 按鈕會在 [推送至 Azure DevOps] 底下反白顯示。][push-git-repo]
 
 確認您的電子郵件，並在 [Azure DevOps 網域]  下拉式清單選取帳戶。 輸入您的儲存機制名稱，並選取 [發佈儲存機制]  。
 
-![推送 Git 儲存機制][publish-code]
+![[推送至 Azure DevOps] 設定的螢幕擷取畫面，其中反白顯示 [電子郵件]、[帳戶]、[存放庫名稱] 和 [發佈存放庫] 按鈕。][publish-code]
 
 發佈儲存機制將在帳戶中建立與本機儲存機制名稱相同的新專案。 若要在現有專案中建立存放庫，請按一下**存放庫名稱**旁邊的 [進階]  ，並選取專案。 您可以選取**在網路上檢視**，在網路上檢視您的程式碼。
 
@@ -155,7 +155,7 @@ Azure Pipelines 發行管線描述將應用程式封裝部署到叢集的工作�
 
 確認部署成功，而且應用程式在叢集中執行。  開啟 web 瀏覽器並巡覽至 `http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/`。  請注意應用程式版本，在此範例中是 "1.0.0.20170815.3"。
 
-![Service Fabric Explorer][sfx1]
+![Service Fabric Explorer (執行於瀏覽器視窗) 中投票應用程式的螢幕擷取畫面。 反白顯示應用程式版本 "1.0.0.20170815.3"。][sfx1]
 
 ## <a name="update-the-application"></a>更新應用程式
 
@@ -163,11 +163,11 @@ Azure Pipelines 發行管線描述將應用程式封裝部署到叢集的工作�
 
 應用程式的升級開始後，即可注意 Service Fabric Explorer 中的升級進度：
 
-![Service Fabric Explorer][sfx2]
+![Service Fabric Explorer 中投票應用程式的螢幕擷取畫面。 反白顯示狀態訊息「正在升級」和「升級進行中」訊息。][sfx2]
 
 應用程式升級可能需要幾分鐘的時間。 升級完成時，應用程式將執行下一個版本。  在此範例中為 "1.0.0.20170815.4"。
 
-![Service Fabric Explorer][sfx3]
+![Service Fabric Explorer (執行於瀏覽器視窗) 中投票應用程式的螢幕擷取畫面。 反白顯示已更新的應用程式版本 "1.0.0.20170815.4"。][sfx3]
 
 ## <a name="next-steps"></a>後續步驟
 

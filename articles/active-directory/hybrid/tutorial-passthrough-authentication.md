@@ -11,12 +11,12 @@ ms.date: 05/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c87a965c96920ea2ce90dae0333147338c99018a
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: f02ec2220827fbec8c981ab3a1859d633675a6f4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279137"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91313258"
 ---
 # <a name="tutorial--integrate-a-single-ad-forest-using-pass-through-authentication-pta"></a>教學課程：使用傳遞驗證整合單一 AD 樹系 (PTA)
 
@@ -188,7 +188,7 @@ Set-ADUser -Identity $Identity -PasswordNeverExpires $true -ChangePasswordAtLogo
 2. 選取**加號圖示 (+)** 並搜尋 **Azure Active Directory**。
 3. 在搜尋結果中選取 [Azure Active Directory]  。
 4. 選取 [建立]  。</br>
-![建立](media/tutorial-password-hash-sync/create1.png)</br>
+![顯示如何建立 Azure AD 租用戶的螢幕擷取畫面。](media/tutorial-password-hash-sync/create1.png)</br>
 5. 提供**組織名稱**與**初始網域名稱**。 然後選取 [建立]  。 這將會建立您的目錄。
 6. 完成此動作之後，請按一下**這裡**以管理目錄。
 
@@ -196,10 +196,10 @@ Set-ADUser -Identity $Identity -PasswordNeverExpires $true -ChangePasswordAtLogo
 現在我們已有 Azure AD 租用戶，我們將建立全域系統管理員帳戶。  此帳戶會用來在 Azure AD Connect 安裝期間建立 Azure AD Connector 帳戶。  Azure AD Connector 帳戶會用來將資訊寫入到 Azure AD。   若要建立全域系統管理員帳戶，請執行下列動作。
 
 1.  在 [管理]  底下選取 [使用者]  。</br>
-![建立](media/tutorial-password-hash-sync/gadmin1.png)</br>
+![此螢幕擷取畫面顯示在 [管理] 區段中選取的 [使用者] 選項，您可以在其中建立全域管理員。](media/tutorial-password-hash-sync/gadmin1.png)</br>
 2.  選取 [所有使用者 ]  ，然後選取 [+ 新增使用者]  。
 3.  提供此使用者的名稱與使用者名稱。 這將成為您租用戶的全域系統管理員。 建議您將 [目錄角色]  變更為 [全域系統管理員]  。 您也可以顯示暫時密碼。 完成之後，請選取 [建立]  。</br>
-![建立](media/tutorial-password-hash-sync/gadmin2.png)</br>
+![此螢幕擷取畫面顯示當您在 Azure AD 中建立全域管理員時選取的 [建立] 按鈕。](media/tutorial-password-hash-sync/gadmin2.png)</br>
 4. 完成此動作之後，請開啟新的網頁瀏覽器，並使用新的全域系統管理員帳戶與臨時密碼登入 myapps.microsoft.com。
 5. 將全域系統管理員密碼變更為您可以記住的密碼。
 
@@ -209,12 +209,12 @@ Set-ADUser -Identity $Identity -PasswordNeverExpires $true -ChangePasswordAtLogo
 1. 返回 [Azure 入口網站](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview)，並關閉 [所有使用者]  刀鋒視窗。
 2. 在左側選取 [自訂網域名稱]  。
 3. 選取 [新增自訂網域]  。</br>
-![Custom](media/tutorial-federation/custom1.png)</br>
+![顯示 [新增自訂網域] 按鈕已反白顯示的螢幕擷取畫面。](media/tutorial-federation/custom1.png)</br>
 4. 在 [自訂網域名稱]  上，於方塊中輸入您的自訂網域名稱，然後按一下 [新增網域]  。
 5. 在自訂網域名稱畫面上，我們將提供 TXT 或 MX 資訊給您。  此資訊必須新增到網域註冊機構中您的網域下的 DNS 資訊中。  因此，您必須移至您的網域註冊機構，然後將 TXT 或 MX 資訊輸入到您網域的 DNS 設定中。  這將可允許 Azure 驗證您的網域。  Azure 最多可能需要 24 小時才能驗證該網域。  如需詳細資訊，請參閱[新增自訂網域](../../active-directory/fundamentals/add-custom-domain.md)文件。</br>
-![Custom](media/tutorial-federation/custom2.png)</br>
+![顯示您在哪裡新增 TXT 或 MX 資訊的螢幕擷取畫面。](media/tutorial-federation/custom2.png)</br>
 6. 若要確定系統會驗證它，請按一下 [驗證] 按鈕。</br>
-![Custom](media/tutorial-federation/custom3.png)</br>
+![在您選取 [驗證] 之後顯示驗證成功訊息的螢幕擷取畫面。](media/tutorial-federation/custom3.png)</br>
 
 ## <a name="download-and-install-azure-ad-connect"></a>下載並安裝 Azure AD Connect
 現在您可以下載並安裝 Azure AD Connect。  安裝之後，我們將會執行快速安裝。  執行下列動作：

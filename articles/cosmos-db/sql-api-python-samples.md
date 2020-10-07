@@ -9,12 +9,12 @@ ms.topic: sample
 ms.date: 08/11/2020
 ms.author: rosouz
 ms.custom: devx-track-python
-ms.openlocfilehash: 34257281470f051f3d385aa729ca5a4f3591e61c
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: a0db0ff7db8f0bf5b036e40080ee7ff8eac62b63
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88586245"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322677"
 ---
 # <a name="azure-cosmos-db-python-examples"></a>Azure Cosmos DB Python 範例
 
@@ -22,6 +22,7 @@ ms.locfileid: "88586245"
 > * [.NET V2 SDK 範例](sql-api-dotnet-samples.md)
 > * [.NET V3 SDK 範例](sql-api-dotnet-v3sdk-samples.md)
 > * [Java V4 SDK 範例](sql-api-java-sdk-samples.md)
+> * [Spring Data V3 SDK 範例](sql-api-spring-data-sdk-samples.md)
 > * [Node.js 範例](sql-api-nodejs-samples.md)
 > * [Python 範例](sql-api-python-samples.md)
 > * [Azure 程式碼範例庫](https://azure.microsoft.com/resources/samples/?sort=0&service=cosmos-db)

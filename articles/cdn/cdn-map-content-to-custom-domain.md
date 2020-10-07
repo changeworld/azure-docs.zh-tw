@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 06/11/2018
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 4ca601a3f149d8287137265665379d407d10b988
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 08bbe1000d457cc4f4d6b655051ec640d4dcecf4
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192685"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362090"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-azure-cdn-endpoint"></a>教學課程：將自訂網域新增至 Azure CDN 端點
 本教學課程說明如何將自訂網域新增至 Azure 內容傳遞網路 (CDN) 端點。 使用 CDN 端點來傳遞內容時，如果您想要在 CDN URL 中顯示您自己的網域名稱，則需要自訂網域。 有可見的網域名稱對您的客戶而言較為方便，並且也有助於宣傳商標。 
@@ -90,7 +90,7 @@ ms.locfileid: "88192685"
 
 5. 完成 CNAME 項目的下列欄位：
 
-    ![CNAME 項目](./media/cdn-map-content-to-custom-domain/cdn-cdnverify-cname-entry.png)
+    ![此螢幕擷取畫面顯示 C NAME 項目，其中具有暫時 cdnverify 子網域的類型、主機、指向及 T T L 值。](./media/cdn-map-content-to-custom-domain/cdn-cdnverify-cname-entry.png)
 
     - 輸入：保留已選取的 [CNAME]  。
 
@@ -104,7 +104,7 @@ ms.locfileid: "88192685"
  
     CNAME 項目會新增至 DNS 記錄資料表。
 
-    ![DNS 記錄資料表](./media/cdn-map-content-to-custom-domain/cdn-cdnverify-dns-table.png)
+    ![此螢幕擷取畫面顯示 C NAME 項目已新增至暫時 cdnverify 子網域的 D N S 記錄資料表。](./media/cdn-map-content-to-custom-domain/cdn-cdnverify-dns-table.png)
 
 
 ## <a name="associate-the-custom-domain-with-your-cdn-endpoint"></a>將自訂網域與您的 CDN 端點產生關聯
@@ -188,7 +188,7 @@ ms.locfileid: "88192685"
 
 5. 完成 CNAME 項目的欄位：
 
-    ![CNAME 項目](./media/cdn-map-content-to-custom-domain/cdn-cname-entry.png)
+    ![此螢幕擷取畫面顯示 C NAME 項目，其中具有永久自訂網域的類型、主機、指向及 T T L 值。](./media/cdn-map-content-to-custom-domain/cdn-cname-entry.png)
 
     - 輸入：保留已選取的 [CNAME]  。
 
@@ -202,7 +202,7 @@ ms.locfileid: "88192685"
  
     CNAME 項目會新增至 DNS 記錄資料表。
 
-    ![DNS 記錄資料表](./media/cdn-map-content-to-custom-domain/cdn-dns-table.png)
+    ![此螢幕擷取畫面顯示 C NAME 項目已新增至永久自訂網域的 D N S 記錄資料表。](./media/cdn-map-content-to-custom-domain/cdn-dns-table.png)
 
 7. 如果您有 cdnverify CNAME 記錄，請選取它旁邊的鉛筆圖示，然後選取資源回收筒圖示。
 

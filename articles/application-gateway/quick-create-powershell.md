@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 08/27/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 115f01bffc4664798682923cb83a99a23a8ce274
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 3f64086ed97594416b5964cf648c857c2f271480
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88958315"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331092"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway-using-azure-powershell"></a>快速入門：透過 Azure PowerShell 使用 Azure 應用程式閘道引導網路流量
 
@@ -53,6 +53,8 @@ Azure 需要虛擬網路才能在您所建立的資源之間進行通訊。  應
 1. 使用 `New-AzVirtualNetworkSubnetConfig` 建立子網路組態。
 2. 使用 `New-AzVirtualNetwork` 以子網路組態建立虛擬網路。 
 3. 使用 `New-AzPublicIpAddress` 建立公用 IP 位址。 
+> [!NOTE]
+> 應用程式閘道子網路中目前不支援[虛擬網路服務端點原則](../virtual-network/virtual-network-service-endpoint-policies-overview.md)。
 
 ```azurepowershell-interactive
 $agSubnetConfig = New-AzVirtualNetworkSubnetConfig `
@@ -236,7 +238,7 @@ Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAdd
 
 ## <a name="clean-up-resources"></a>清除資源
 
-當您不再需要先前為應用程式閘道建立的資源時，請刪除資源群組。 當您刪除資源群組時，也可以刪除應用程式閘道及其所有相關資源。 
+當您不再需要先前為應用程式閘道建立的資源時，請刪除資源群組。 在刪除資源群組時，將同時刪除應用程式閘道及其所有相關資源。 
 
 呼叫 `Remove-AzResourceGroup` Cmdlet 以刪除資源群組：
 

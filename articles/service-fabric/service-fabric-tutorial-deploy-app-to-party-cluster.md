@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.author: mikhegn
 ms.custom: mvc
-ms.openlocfilehash: 4cd21669b30b8ec83d6a0538c90d4cec5cafe32a
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: e35b655dc8b735214de891884fe40fb951dd16cd
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86244985"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91441282"
 ---
 # <a name="tutorial-deploy-a-service-fabric-application-to-a-cluster-in-azure"></a>教學課程：將 Service Fabric 應用程式部署到 Azure 中的叢集
 
@@ -78,19 +78,19 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 
 在 [叢集]  索引標籤中輸入 [叢集名稱]  (例如 "mytestcluster")、選取您的訂用帳戶、選取叢集的區域 (例如美國中南部)、輸入叢集節點數目 (建議測試叢集使用三個節點)，然後輸入資源群組 (例如 "mytestclustergroup")。 按 [下一步]  。
 
-![建立叢集](./media/service-fabric-tutorial-deploy-app-to-party-cluster/create-cluster.png)
+![此螢幕擷取畫面顯示 [建立 Service Fabric 叢集] 對話方塊的 [叢集] 索引標籤。](./media/service-fabric-tutorial-deploy-app-to-party-cluster/create-cluster.png)
 
 在 [憑證]  索引標籤中，輸入叢集憑證的密碼和輸出路徑。 自我簽署的憑證會以 PFX 檔案的形式建立，並儲存至指定的輸出路徑。  此憑證可用來確保節點對節點和用戶端對節點的安全性。  請勿對生產叢集使用自我簽署的憑證。  Visual Studio 會使用此憑證對叢集進行驗證，以及部署應用程式。 請選取 [匯入憑證]  ，將 PFX 安裝在電腦的 CurrentUser\My certificate 存放區中。  按 [下一步]  。
 
-![建立叢集](./media/service-fabric-tutorial-deploy-app-to-party-cluster/certificate.png)
+![此螢幕擷取畫面顯示 [建立 Service Fabric 叢集] 對話方塊的 [憑證] 索引標籤。](./media/service-fabric-tutorial-deploy-app-to-party-cluster/certificate.png)
 
 在 [VM 詳細資料]  索引標籤中，輸入叢集管理員帳戶的 [使用者名稱]  和 [密碼]  。  選取叢集節點的 [虛擬機器映像]  和每個叢集節點的 [虛擬機器大小]  。  按一下 [進階]  索引標籤。
 
-![建立叢集](./media/service-fabric-tutorial-deploy-app-to-party-cluster/vm-detail.png)
+![此螢幕擷取畫面顯示 [建立 Service Fabric 叢集] 對話方塊的 [VM 詳細資料] 索引標籤。](./media/service-fabric-tutorial-deploy-app-to-party-cluster/vm-detail.png)
 
 在 [連接埠]  中，輸入先前步驟中的 VotingWeb 服務端點 (例如 8080)。  叢集建立後，這些應用程式連接埠即會在 Azure 負載平衡器中開啟，以將流量轉送至叢集。  請按一下 [建立]  以建立叢集，這需要幾分鐘的時間。
 
-![建立叢集](./media/service-fabric-tutorial-deploy-app-to-party-cluster/advanced.png)
+![此螢幕擷取畫面顯示 [建立 Service Fabric 叢集] 對話方塊的 [進階] 索引標籤。](./media/service-fabric-tutorial-deploy-app-to-party-cluster/advanced.png)
 
 ## <a name="publish-the-application-to-the-cluster"></a>將應用程式發佈至叢集
 

@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 04/27/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, mvc, cc996988-fb4f-47
-ms.openlocfilehash: 29b35493342b92813aa808069ebdd7ca8a7bbc56
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: feb6b36f8e5e7bbec83d8882552484f68abfd56d
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88208544"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91537747"
 ---
 # <a name="create-a-function-that-integrates-with-azure-logic-apps"></a>建立與 Azure Logic Apps 整合的函式
 
@@ -182,7 +182,7 @@ Azure Functions 提供的絕佳方法，可讓您將 Logic Apps 工作流程中�
 
 2. 在 [選擇動作] 中，輸入 [文字分析]，然後按一下 [偵測情感] 動作。
     
-    ![選取 [新增步驟]，然後選取 [新增動作]](media/functions-twitter-email/11-detect-sentiment.png)
+    ![此螢幕擷取畫面顯示 [搜尋] 方塊中具有 [文字分析] 並已選取 [偵測情感] 動作的 [選擇動作] 區段。 ](media/functions-twitter-email/11-detect-sentiment.png)
 
 3. 輸入連線名稱 (例如 `MyCognitiveServicesConnection`)，貼上您存放在文字編輯器中的認知服務 API 金鑰和認知服務端點，然後按一下 [建立]。
 
@@ -202,7 +202,7 @@ Azure Functions 提供的絕佳方法，可讓您將 Logic Apps 工作流程中�
   
 4. 選取您先前建立的函式應用程式。
 
-    ![選取函式](media/functions-twitter-email/15-select-function.png)
+    ![此螢幕擷取畫面顯示已選取函數應用程式的 [選擇動作] 區段。](media/functions-twitter-email/15-select-function.png)
 
 5. 選取您為本教學課程建立的函式。
 
@@ -228,7 +228,7 @@ Azure Functions 提供的絕佳方法，可讓您將 Logic Apps 工作流程中�
 
 3. 在 [若為是] 中、按一下 [新增動作]、搜尋 `outlook.com`、按一下 [傳送電子郵件]，然後登入您的 Outlook.com 帳戶。
 
-    ![設定傳送電子郵件動作的電子郵件。](media/functions-twitter-email/20-add-outlook.png)
+    ![此螢幕擷取畫面顯示已在搜尋方塊中輸入 "outlook.com"，並選取 [傳送電子郵件] 動作的 [IF TRUE] 區段。](media/functions-twitter-email/20-add-outlook.png)
 
     > [!NOTE]
     > 如果您沒有 Outlook.com 帳戶，可以選擇另一個連接器，例如 Gmail 或 Office 365 Outlook

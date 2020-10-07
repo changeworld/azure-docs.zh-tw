@@ -1,6 +1,7 @@
 ---
-title: 開始使用 Microsoft 身分識別平台 UWP | Azure
-description: 通用 Windows 平台 (UWP) 應用程式可以呼叫需要由 Microsoft 身分識別平台端點存取權杖的 API。
+title: 教學課程：建立通用 Windows 平台 (UWP) 應用程式，使用 Microsoft 身分識別平台進行驗證 | Azure
+titleSuffix: Microsoft identity platform
+description: 在本教學課程中，您會建置 UWP 應用程式，使用 Microsoft 身分識別平台來登入使用者，並取得存取權杖來代表他們呼叫 Microsoft Graph API。
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -11,26 +12,31 @@ ms.workload: identity
 ms.date: 12/13/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: acdc23c664f84882916b91b8f8698ee36b1e6cd3
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: bee6f832476537a6d7dba3db98d9aada6c61a476
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88165544"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91574240"
 ---
-# <a name="call-the-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>自通用 Windows 平台應用程式 (XAML) 呼叫 Microsoft Graph API
-
-> [!div renderon="docs"]
+# <a name="call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>自通用 Windows 平台 (UWP) 應用程式呼叫 Microsoft Graph API
 
 本指南說明原生通用 Windows 平台 (UWP) 應用程式如何要求存取權杖。 應用程式接著會呼叫 Microsoft Graph API。 此指南也適用於需要來自 Microsoft 身分識別平台端點之存取權杖的其他 API。
 
 在本指南結尾，您的應用程式會使用個人帳戶呼叫受保護的 API。 例如，outlook.com、live.com 等。 您的應用程式也會從具有 Azure Active Directory (Azure AD) 的任何公司或組織呼叫工作和學校帳戶。
 
->[!NOTE]
-> 本指南需安裝具備通用 Windows 平台開發功能的 Visual Studio。 如需下載及設定 Visual Studio 以開發通用 Windows 平台應用程式的說明，請參閱[開始設定](/windows/uwp/get-started/get-set-up)。
+本教學課程內容：
 
->[!NOTE]
-> 如果您不熟悉 Microsoft 身分識別平台，請從[從通用 Windows 平台 (UWP) 應用程式快速入門呼叫 Microsoft Graph API](quickstart-v2-uwp.md) 開始了解。
+> [!div class="checklist"]
+> * 在 Visual Studio 中建立*通用 Windows 平台 (UWP)* 專案
+> * 在 Azure 入口網站中註冊應用程式
+> * 新增程式碼以支援使用者登入和登出
+> * 新增程式碼以呼叫 Microsoft Graph API
+> * 測試應用程式
+
+## <a name="prerequisites"></a>必要條件
+
+* 已安裝包含[通用 Windows 平台開發](/windows/uwp/get-started/get-set-up)工作負載的 [Visual Studio 2019](https://visualstudio.microsoft.com/vs/)
 
 ## <a name="how-this-guide-works"></a>本指南使用方式
 
@@ -115,7 +121,7 @@ Visual Studio 會在專案範本中建立 *MainPage.xaml*。 開啟此檔案，�
     ```csharp
     public sealed partial class MainPage : Page
     {
-       
+
         //Set the scope for API call to user.read
         private string[] scopes = new string[] { "user.read" };
 
@@ -427,16 +433,15 @@ private async Task DisplayMessageAsync(string message)
             }
            ...
     }
-  
+
     ```
 
-    執行應用程式，然後在到達中斷點時複製 `redirectUri` 的值。 此值看起來應該與下列值類似：  
-    `ms-app://s-1-15-2-1352796503-54529114-405753024-3540103335-3203256200-511895534-1429095407/`
+    執行應用程式，然後在到達中斷點時複製 `redirectUri` 的值。 此值看起來應該與下列值類似：`ms-app://s-1-15-2-1352796503-54529114-405753024-3540103335-3203256200-511895534-1429095407/`
 
-    接著，您可以移除程式碼，因為其只需要一次，即可擷取值。 
+    接著，您可以移除程式碼，因為其只需要一次，即可擷取值。
 
 3. 在應用程式註冊入口網站中，於 [驗證] 窗格的 [RedirectUri] 中新增傳回的值。
-   
+
 ## <a name="test-your-code"></a>測試您的程式碼
 
 若要測試您的應用程式，請選取 **F5** 以在 Visual Studio 中執行專案。 您的主視窗隨即出現：
@@ -496,3 +501,10 @@ Microsoft Graph API 需要 `user.read` 範圍以讀取使用者的設定檔。 �
 **因應措施：** 選取 [使用其他選項登入]。 然後選取 [以您的使用者名稱和密碼登入]。 選取 [提供您的密碼]。 然後完成電話驗證程序。
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+
+## <a name="next-steps"></a>後續步驟
+
+深入了解使用 Microsoft 驗證程式庫 (MSAL)，在 .NET 應用程式中進行授權和驗證：
+
+> [!div class="nextstepaction"]
+> [Microsoft 驗證程式庫 (MSAL) 概觀](msal-overview.md)

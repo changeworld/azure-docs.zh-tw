@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 入口網站使用變更追蹤以累加方式複製資料
-description: 在本教學課程中，您將建立 Azure Data Factory 管線，並以累加方式，將差異資料從 SQL Server 資料庫中的多個資料表複製到 Azure SQL Database 中的資料庫。
+description: 在本教學課程中，您會建立一個 Azure Data Factory 並讓其具有管線，以根據 Azure SQL Database 來源資料庫中的變更追蹤資訊，將差異資料載入到 Azure Blob 儲存體。
 services: data-factory
 ms.author: yexu
 author: dearandyxu
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/12/2018
-ms.openlocfilehash: c28489c2fa502f0ba1283abdea19219ed7438a99
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 78b9d3f30ebc8f74433f04c4474121682c4a3f36
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085781"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91542014"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information-using-the-azure-portal"></a>使用 Azure 入口網站使用變更追蹤資訊，以累加方式將資料從 Azure SQL Database 載入到 Azure Blob 儲存體
 
@@ -285,10 +285,10 @@ ms.locfileid: "86085781"
 
 1. 按一下左窗格中的 [+] (加號)，然後按一下 [管線]。
 
-    ![新增管線功能表](./media/tutorial-incremental-copy-change-tracking-feature-portal/new-pipeline-menu.png)
+    ![此螢幕擷取畫面顯示資料處理站的 [管線] 選項。](./media/tutorial-incremental-copy-change-tracking-feature-portal/new-pipeline-menu.png)
 2. 您會看到用於設定管線的新索引標籤。 你也會在樹狀檢視中看到該管線。 在 [屬性] 視窗中，將管線的名稱變更為 **FullCopyPipeline**。
 
-    ![新增管線功能表](./media/tutorial-incremental-copy-change-tracking-feature-portal/full-copy-pipeline-name.png)
+    ![此螢幕擷取畫面顯示已輸入名稱的管線。](./media/tutorial-incremental-copy-change-tracking-feature-portal/full-copy-pipeline-name.png)
 3. 在 [活動] 工具箱中展開 [資料流程]，並將 [複製] 活動拖放至管線設計工具介面，然後將名稱設為 **FullCopyActivity**。
 
     ![FullCopyActivity - 名稱](./media/tutorial-incremental-copy-change-tracking-feature-portal/full-copy-activity-name.png)
@@ -303,7 +303,7 @@ ms.locfileid: "86085781"
     ![驗證管線](./media/tutorial-incremental-copy-change-tracking-feature-portal/full-copy-pipeline-validate.png)
 7. 若要發佈實體 (連結服務、資料集、管線)，按一下 [發佈]。 等待發佈成功。
 
-    ![發佈按鈕](./media/tutorial-incremental-copy-change-tracking-feature-portal/publish-button.png)
+    ![此螢幕擷取畫面顯示已呼叫 [全部發佈] 按鈕的資料處理站。](./media/tutorial-incremental-copy-change-tracking-feature-portal/publish-button.png)
 8. 請靜待 [發佈成功] 訊息顯示。
 
     ![發佈成功](./media/tutorial-incremental-copy-change-tracking-feature-portal/publishing-succeeded.png)
@@ -315,16 +315,16 @@ ms.locfileid: "86085781"
 ### <a name="run-the-full-copy-pipeline"></a>執行完整的複製管線
 按一下管線工具列上的 [觸發]，然後按一下 [立即觸發]。
 
-![立即觸發功能表](./media/tutorial-incremental-copy-change-tracking-feature-portal/trigger-now-menu.png)
+![此螢幕擷取畫面顯示已從 [觸發程序] 功能表選取的 [立即觸發] 選項。](./media/tutorial-incremental-copy-change-tracking-feature-portal/trigger-now-menu.png)
 
 ### <a name="monitor-the-full-copy-pipeline"></a>監視完整的複製管線
 
 1. 按一下左側的 [監視] 索引標籤。 您會在清單中看到管線執行和其狀態。 若要重新整理清單，按一下 [重新整理]。 [動作] 資料行中的連結可讓您檢視與此管線執行相關聯的活動執行，以及重新執行管線。
 
-    ![管線執行](./media/tutorial-incremental-copy-change-tracking-feature-portal/monitor-full-copy-pipeline-run.png)
+    ![此螢幕擷取畫面顯示資料處理站的管線執行。](./media/tutorial-incremental-copy-change-tracking-feature-portal/monitor-full-copy-pipeline-run.png)
 2. 若要檢視與此管線執行相關聯的活動執行，按一下 [動作] 資料行中的 [檢視活動執行] 連結。 管線中只有一個活動，所以在清單中只會看到一個項目。 若要切換回 [管線執行] 檢視，按一下頂端的 [管線] 連結。
 
-    ![活動執行](./media/tutorial-incremental-copy-change-tracking-feature-portal/activity-runs-full-copy.png)
+    ![此螢幕擷取畫面顯示已呼叫 [管線] 連結的資料處理站活動執行。](./media/tutorial-incremental-copy-change-tracking-feature-portal/activity-runs-full-copy.png)
 
 ### <a name="review-the-results"></a>檢閱結果
 您會在 `adftutorial` 容器的 `incchgtracking` 資料夾中看到名為 `incremental-<GUID>.txt` 的檔案。
@@ -362,19 +362,19 @@ SET [Age] = '10', [name]='update' where [PersonID] = 1
 
 1. 在 [Data Factory] 使用者介面中，切換至 [編輯] 索引標籤。按一下左窗格中的 [+] (加號)，然後按一下 [管線]。
 
-    ![新增管線功能表](./media/tutorial-incremental-copy-change-tracking-feature-portal/new-pipeline-menu-2.png)
+    ![此螢幕擷取畫面顯示如何在資料處理站中建立管線。](./media/tutorial-incremental-copy-change-tracking-feature-portal/new-pipeline-menu-2.png)
 2. 您會看到用於設定管線的新索引標籤。 你也會在樹狀檢視中看到該管線。 在 [屬性] 視窗中，將管線的名稱變更為 **IncrementalCopyPipeline**。
 
     ![管線名稱](./media/tutorial-incremental-copy-change-tracking-feature-portal/incremental-copy-pipeline-name.png)
 3. 在 [活動] 工具箱中展開 [一般]，並將 [查閱] 活動拖放至管線設計工具介面。 將活動的名稱設定為 **LookupLastChangeTrackingVersionActivity**。 此活動會取得在上次複製作業中使用的變更追蹤版本，這項資訊儲存在 **table_store_ChangeTracking_version** 資料表中。
 
-    ![查閱活動 - 名稱](./media/tutorial-incremental-copy-change-tracking-feature-portal/first-lookup-activity-name.png)
+    ![此螢幕擷取畫面顯示具有查閱活動的管線。](./media/tutorial-incremental-copy-change-tracking-feature-portal/first-lookup-activity-name.png)
 4. 切換至 [屬性] 視窗中的 [設定]，在 [來源資料集] 欄位選取 [ChangeTrackingDataset]。
 
-    ![查閱活動 - 設定](./media/tutorial-incremental-copy-change-tracking-feature-portal/first-lookup-activity-settings.png)
+    ![此螢幕擷取畫面顯示 [屬性] 視窗中的 [設定] 索引標籤。](./media/tutorial-incremental-copy-change-tracking-feature-portal/first-lookup-activity-settings.png)
 5. 將 [活動] 工具箱中的 [查閱] 活動拖放至管線設計工具介面。 將活動的名稱設定為 **LookupCurrentChangeTrackingVersionActivity**。 此活動會取得目前的變更追蹤版本。
 
-    ![查閱活動 - 名稱](./media/tutorial-incremental-copy-change-tracking-feature-portal/second-lookup-activity-name.png)
+    ![此螢幕擷取畫面顯示具有兩個查閱活動的管線。](./media/tutorial-incremental-copy-change-tracking-feature-portal/second-lookup-activity-name.png)
 6. 在 [屬性] 視窗中切換至 [設定] ，執行下列步驟：
 
    1. 為 [來源資料集] 欄位選取 [SourceDataset]。
@@ -385,7 +385,7 @@ SET [Age] = '10', [name]='update' where [PersonID] = 1
        SELECT CHANGE_TRACKING_CURRENT_VERSION() as CurrentChangeTrackingVersion
        ```
 
-      ![查閱活動 - 設定](./media/tutorial-incremental-copy-change-tracking-feature-portal/second-lookup-activity-settings.png)
+      ![此螢幕擷取畫面顯示已新增至 [屬性] 視窗中 [設定] 索引標籤的查詢。](./media/tutorial-incremental-copy-change-tracking-feature-portal/second-lookup-activity-settings.png)
 7. 在 [活動] 工具箱中展開 [資料流程]，並將 [複製] 活動拖放至管線設計工具介面。 將活動的名稱設定為 **IncrementalCopyActivity**。 此活動會將上次變更追蹤版本和目前變更追蹤版本之間的資料，複製到目的地資料存放區。
 
     ![複製活動 - 名稱](./media/tutorial-incremental-copy-change-tracking-feature-portal/incremental-copy-activity-name.png)
@@ -432,21 +432,21 @@ SET [Age] = '10', [name]='update' where [PersonID] = 1
     ![驗證按鈕](./media/tutorial-incremental-copy-change-tracking-feature-portal/validate-button.png)
 16. 按一下 [全部發佈] 按鈕，將實體 (連結的服務、資料集、管線) 發佈至 Data Factory 服務。 請靜待 [發佈成功] 訊息顯示。
 
-       ![發佈按鈕](./media/tutorial-incremental-copy-change-tracking-feature-portal/publish-button-2.png)    
+       ![此螢幕擷取畫面顯示資料處理站的 [全部發佈] 選項。](./media/tutorial-incremental-copy-change-tracking-feature-portal/publish-button-2.png)    
 
 ### <a name="run-the-incremental-copy-pipeline"></a>執行累加複製管線
 1. 按一下管線工具列上的 [觸發]，然後按一下 [立即觸發]。
 
-    ![立即觸發功能表](./media/tutorial-incremental-copy-change-tracking-feature-portal/trigger-now-menu-2.png)
+    ![此螢幕擷取畫面顯示具有活動且已從 [觸發程序] 功能表選取 [立即觸發] 選項的管線。](./media/tutorial-incremental-copy-change-tracking-feature-portal/trigger-now-menu-2.png)
 2. 在 [管線執行] 視窗中，選取 [完成]。
 
 ### <a name="monitor-the-incremental-copy-pipeline"></a>監視累加複製管線
 1. 按一下左側的 [監視] 索引標籤。 您會在清單中看到管線執行和其狀態。 若要重新整理清單，按一下 [重新整理]。 [動作] 資料行中的連結可讓您檢視與此管線執行相關聯的活動執行，以及重新執行管線。
 
-    ![管線執行](./media/tutorial-incremental-copy-change-tracking-feature-portal/inc-copy-pipeline-runs.png)
+    ![此螢幕擷取畫面顯示資料處理站的管線執行，包括您的管線。](./media/tutorial-incremental-copy-change-tracking-feature-portal/inc-copy-pipeline-runs.png)
 2. 若要檢視與此管線執行相關聯的活動執行，按一下 [動作] 資料行中的 [檢視活動執行] 連結。 管線中只有一個活動，所以在清單中只會看到一個項目。 若要切換回 [管線執行] 檢視，按一下頂端的 [管線] 連結。
 
-    ![活動執行](./media/tutorial-incremental-copy-change-tracking-feature-portal/inc-copy-activity-runs.png)
+    ![此螢幕擷取畫面顯示資料處理站的管線執行，其中數個管線執行已標示為成功。](./media/tutorial-incremental-copy-change-tracking-feature-portal/inc-copy-activity-runs.png)
 
 
 ### <a name="review-the-results"></a>檢閱結果

@@ -4,12 +4,12 @@ description: 在本教學課程中，您將了解如何使用 Kestrel 將 HTTPS 
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: b309a13288c8ea95f453c1e80549a979e3f89921
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: c675f8ece8369bcfc0055343221ac82aea59dec1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89441522"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326230"
 ---
 # <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>教學課程：使用 Kestrel 將 HTTPS 端點新增至 ASP.NET Core Web API 前端服務
 
@@ -354,7 +354,7 @@ if ($cert -eq $null)
 
 儲存所有檔案，然後按 F5 在本機執行應用程式。  在應用程式部署之後，Web 瀏覽器會開啟至 https:\//localhost:443。 如果您使用自我簽署的憑證，您會看到您的電腦不信任此網站安全性的警告。  繼續在網頁上執行。
 
-![投票應用程式][image2]
+![Service Fabric 投票範例應用程式的螢幕擷取畫面，此應用程式在瀏覽器視窗中，URL 為 https://localhost/ 。][image2]
 
 ## <a name="install-certificate-on-cluster-nodes"></a>在叢集節點上安裝憑證
 
@@ -371,7 +371,7 @@ if ($cert -eq $null)
 > [!Warning]
 > 自我簽署的憑證已足夠用於開發和測試應用程式。 對於生產應用程式，使用[憑證授權單位 (CA)](https://wikipedia.org/wiki/Certificate_authority) 提供的憑證，而非自我簽署的憑證。
 
-## <a name="open-port-443-in-the-azure-load-balancer"></a>在 Azure Load Balancer 中開啟連接埠 443
+## <a name="open-port-443-in-the-azure-load-balancer-and-virtual-network"></a>在 Azure Load Balancer 和虛擬網路中開啟連接埠 443
 
 在負載平衡器中開啟連接埠 443 (如果尚未開啟的話)。
 
@@ -396,13 +396,33 @@ $slb | Add-AzLoadBalancerRuleConfig -Name $rulename -BackendAddressPool $slb.Bac
 $slb | Set-AzLoadBalancer
 ```
 
+對相關聯的虛擬網路執行相同的動作。
+
+```powershell
+$rulename="allowAppPort$port"
+$nsgname="voting-vnet-security"
+$RGname="voting_RG"
+$port=443
+
+# Get the NSG resource
+$nsg = Get-AzNetworkSecurityGroup -Name $nsgname -ResourceGroupName $RGname
+
+# Add the inbound security rule.
+$nsg | Add-AzNetworkSecurityRuleConfig -Name $rulename -Description "Allow app port" -Access Allow `
+    -Protocol * -Direction Inbound -Priority 3891 -SourceAddressPrefix "*" -SourcePortRange * `
+    -DestinationAddressPrefix * -DestinationPortRange $port
+
+# Update the NSG.
+$nsg | Set-AzNetworkSecurityGroup
+```
+
 ## <a name="deploy-the-application-to-azure"></a>將應用程式部署至 Azure
 
 儲存所有檔案、從 [偵錯] 切換至 [發行]，然後按 F6 重建。  在 [方案總管] 中，以滑鼠右鍵按一下 [投票]  並選取 [發佈]  。 選取在[將應用程式部署到叢集](service-fabric-tutorial-deploy-app-to-party-cluster.md)中建立之叢集的連線端點。，或選取另一個叢集。  按一下 [發佈]  ，將應用程式發佈至遠端叢集。
 
 當應用程式部署時，開啟網頁瀏覽器並巡覽至 `https://mycluster.region.cloudapp.azure.com:443` (以您叢集的連線端點更新此 URL)。 如果您使用自我簽署的憑證，您會看到您的電腦不信任此網站安全性的警告。  繼續在網頁上執行。
 
-![投票應用程式][image3]
+![Service Fabric 投票範例應用程式的螢幕擷取畫面，此應用程式在瀏覽器視窗中，URL 為 https://mycluster.region.cloudapp.azure.com:443 。][image3]
 
 ## <a name="next-steps"></a>後續步驟
 

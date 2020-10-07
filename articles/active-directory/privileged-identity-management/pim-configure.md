@@ -10,24 +10,27 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: pim
 ms.topic: overview
-ms.date: 08/08/2020
+ms.date: 09/29/2020
 ms.author: curtand
-ms.custom: pim
+ms.custom: pim ; azuread-video-2020
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a4a081bc5a8040fa3ccd0599341eb2671bbe2d4d
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: a0b7bcfa6569edd93373f493cfaa7deff2976d35
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89047814"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540824"
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>什麼是 Azure AD Privileged Identity Management？
 
- Privileged Identity Management (PIM) 是 Azure Active Directory (Azure AD) 中的一項服務，可供您管理、控制和監視組織內重要資源的存取。 這些資源包括 Azure AD、Azure 與其他 Microsoft 線上服務 (如 Office 365 或 Microsoft Intune) 中的資源。
+ Privileged Identity Management (PIM) 是 Azure Active Directory (Azure AD) 中的一項服務，可供您管理、控制和監視組織內重要資源的存取。 這些資源包括 Azure AD、Azure 與其他 Microsoft 線上服務 (如 Microsoft 365 或 Microsoft Intune) 中的資源。 下列影片將為您介紹重要的 PIM 概念和功能。
+<br><br>
+
+> [!VIDEO https://www.youtube.com/embed/f-0K7mRUPpQ]
 
 ## <a name="reasons-to-use"></a>使用的理由
 
-組織想要將能夠存取安全資訊或資源的人數降到最低，因為這樣可以降低惡意執行者取得該存取權，或者授權使用者無意中影響到敏感資源的機率。 不過，使用者仍然需要在 Azure AD、Azure、Office 365 或 SaaS 應用程式中執行特殊權限作業。 組織可以將 Azure 資源和 Azure AD 的 Just-In-Time 特殊存取權限提供給使用者。 需要針對這些使用者使用其系統管理員權限的方式進行監督。
+組織想要將能夠存取安全資訊或資源的人數降到最低，因為這樣可以降低惡意執行者取得該存取權，或者授權使用者無意中影響到敏感資源的機率。 不過，使用者仍然需要在 Azure AD、Azure、Microsoft 365 或 SaaS 應用程式中執行特殊權限作業。 組織可以將 Azure 資源和 Azure AD 的 Just-In-Time 特殊存取權限提供給使用者。 需要針對這些使用者使用其系統管理員權限的方式進行監督。
 
 ## <a name="what-does-it-do"></a>用途
 

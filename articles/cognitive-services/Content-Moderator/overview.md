@@ -8,24 +8,28 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: overview
-ms.date: 08/05/2020
+ms.date: 09/15/2020
 ms.author: pafarley
-ms.openlocfilehash: 82dc81c540115f08e57f87e63184e1e895c5e4fe
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.custom: cog-serv-seo-aug-2020
+keywords: content moderator, azure content moderator, 線上仲裁者, 內容篩選軟體, 內容仲裁服務
+ms.openlocfilehash: d502f41a79500b80e1891219b54bde30eb3cd8ca
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87834536"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91309649"
 ---
 # <a name="what-is-azure-content-moderator"></a>什麼是 Azure Content Moderator？
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-Azure Content Moderator 是一項認知服務，可檢查文字、影像和視訊內容是否含有可能具冒犯意味、有風險或不當的資料。 找到這種資料時，服務會對內容套用適當的標籤 (旗標)。 加上旗標的內容隨後可由您的應用程式處理，以遵循法規或維護使用者應有的環境。 請參閱[仲裁 API](#moderation-apis) 一節，以深入了解不同內容旗標的意義。
+Azure Content Moderator 是一種 AI 服務，可讓您處理可能具冒犯意味、有風險或不當的資料。 其包含 AI 驅動的內容仲裁服務，可掃描文字、影像和影片，並自動套用內容旗標，以及包含檢閱工具，這是人工檢閱者小組的線上仲裁者環境。
+
+您可能想要在應用程式中建置內容篩選軟體，以遵循法規或維護使用者應有的環境。
 
 ## <a name="where-its-used"></a>其使用場合
 
-以下是軟體開發人員或小組可能使用 Content Moderator 的幾個案例：
+以下是軟體開發人員或小組將需要內容仲裁服務的幾個案例：
 
 - 對產品目錄和使用者產生的其他內容進行仲裁的線上市集。
 - 對使用者產生的遊戲成品和聊天室進行仲裁的遊戲公司。
@@ -33,7 +37,7 @@ Azure Content Moderator 是一項認知服務，可檢查文字、影像和視�
 - 對其內容實作集中式仲裁的企業媒體公司。
 - 為學生和授課者篩選掉不當內容的 K-12 教育解決方案提供者。
 
-> [!NOTE]
+> [!IMPORTANT]
 > 您無法使用 Content Moderator 來偵測不合法的孩童利用影像。 不過，合格組織可以使用[PhotoDNA Cloud Service](https://www.microsoft.com/photodna "Microsoft PhotoDNA Cloud Service") 來篩選出這方面的內容。
 
 ## <a name="what-it-includes"></a>包含內容
@@ -77,4 +81,4 @@ Content Moderator 服務也包含以 Web 為基礎的[審核工具](Review-Tool-
 
 ## <a name="next-steps"></a>後續步驟
 
-請遵循[在 Web 上試用 Content Moderator](quick-start.md) 中的指示，以開始使用 Content Moderator 服務。
+若要在入口網站上開始使用 Content Moderator，請遵循[在 Web 上試用 Content Moderator](quick-start.md)。 或者，完成[用戶端程式庫快速入門](client-libraries.md)，以在程式碼中實作基本案例。

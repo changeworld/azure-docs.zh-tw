@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 07/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 1865d307e7b79e7e40b0e98f2dcfa2535b0313fd
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 08e6491e1d8d94e8e6e9112e5a19682018103325
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551702"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400344"
 ---
 # <a name="tutorial-back-up-and-restore-files-for-linux-virtual-machines-in-azure"></a>教學課程：在 Azure 中備份和還原 Linux 虛擬機器的檔案
 
@@ -70,7 +70,7 @@ Azure 備份服務開始備份時，會觸發備份擴充功能以建立時間�
  
 1. 在您的本機電腦上開啟瀏覽器，輸入在您的 VM 公用 IP 位址，應該可以看到預設的 nginx 網頁。
 
-    ![預設的 nginx 網頁](./media/tutorial-backup-vms/nginx-working.png)
+    ![顯示預設 nginx 網頁的螢幕擷取畫面。](./media/tutorial-backup-vms/nginx-working.png)
 
 1. 透過 SSH 連線到您的 VM。
 
@@ -86,7 +86,7 @@ Azure 備份服務開始備份時，會觸發備份擴充功能以建立時間�
     
 4. 在您的本機電腦上，按 CTRL + F5 重新整理瀏覽器，應該會看到該預設 nginx 網頁已不存在。
 
-    ![預設的 nginx 網頁](./media/tutorial-backup-vms/nginx-broken.png)
+    ![顯示預設 nginx 頁面已不存在的螢幕擷取畫面。](./media/tutorial-backup-vms/nginx-broken.png)
     
 1. 在您的本機電腦上，登入 [Azure 入口網站](https://portal.azure.com/)。
 6. 在左邊的功能表上，選取 [虛擬機器]  。 

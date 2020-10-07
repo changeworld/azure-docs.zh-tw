@@ -3,12 +3,12 @@ title: Azure Resource Graph 概觀
 description: 了解 Azure Resource Graph 服務如何能夠在訂用帳戶和租用戶之間，大規模地進行複雜的資源查詢。
 ms.date: 08/13/2020
 ms.topic: overview
-ms.openlocfilehash: 73143c13fd83c8b784679ac28bd9a14f1c6a6888
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: f2de6ce52870417eab1c74333dfce2905317e73d
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798528"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91531678"
 ---
 # <a name="what-is-azure-resource-graph"></a>什麼是 Azure Resource Graph？
 
@@ -59,7 +59,7 @@ Resource Graph 接著會更新其資料庫。 Resource Graph 也會執行標準�
 
 ## <a name="permissions-in-azure-resource-graph"></a>Azure Resource Graph 中的權限
 
-若要使用 Resource Graph，您必須先透過[角色型存取控制](../../role-based-access-control/overview.md) (RBAC) 獲得適當授權，至少取得您欲查詢資源的讀取權限。 如果連 Azure 物件或物件群組的 `read` 權限都不具備，則不會傳回結果。
+若要使用 Resource Graph，您必須先透過 [Azure 角色型存取控制](../../role-based-access-control/overview.md) (Azure RBAC) 獲得適當授權，至少取得您欲查詢資源的讀取權限。 如果連 Azure 物件或物件群組的 `read` 權限都不具備，則不會傳回結果。
 
 > [!NOTE]
 > Resource Graph 會使用主體在登入期間可使用的訂用帳戶。 若要查看作用中工作階段期間加入的新訂用帳戶資源，主體必須重新整理內容。 若登出後再登入，則此動作會自動執行。

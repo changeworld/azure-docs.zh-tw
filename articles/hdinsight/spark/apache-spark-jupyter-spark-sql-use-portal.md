@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 02/25/2020
-ms.openlocfilehash: 1d816a84dc8062890633661716cf78aa5ba58527
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: a04657463808a3df3634102c0295f4b79a7b4579
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82888853"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91537849"
 ---
 # <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-azure-portal"></a>快速入門：使用 Azure 入口網站在 Azure HDInsight 中建立 Apache Spark 叢集
 
@@ -56,7 +56,7 @@ ms.locfileid: "82888853"
     |叢集登入密碼| 輸入叢集登入密碼。 |
     |安全殼層 (SSH) 使用者名稱| 輸入 SSH 使用者名稱。 針對本快速入門所使用的 SSH 使用者名稱是 **sshuser**。 根據預設，此帳戶會共用與「叢集登入使用者名稱」  帳戶相同的密碼。 |
 
-    ![建立 HDInsight 叢集基本設定](./media/apache-spark-jupyter-spark-sql-use-portal/azure-portal-cluster-basics-spark.png "在 HDInsight 中建立 Spark 叢集基本設定")
+    ![此螢幕擷取畫面顯示 [建立 H D 見解叢集]，並已選取 [基本] 索引標籤。](./media/apache-spark-jupyter-spark-sql-use-portal/azure-portal-cluster-basics-spark.png "在 HDInsight 中建立 Spark 叢集基本設定")
 
     完成時，選取 [下一步:  儲存體>>] 繼續前往 [儲存體]  頁面。
 
@@ -69,7 +69,7 @@ ms.locfileid: "82888853"
     |主要儲存體帳戶|使用自動填入的值。|
     |容器|使用自動填入的值。|
 
-    ![建立 HDInsight 叢集基本設定](./media/apache-spark-jupyter-spark-sql-use-portal/azure-portal-cluster-storage.png "在 HDInsight 中建立 Spark 叢集基本設定")
+    ![此螢幕擷取畫面顯示 [建立 H D 見解叢集]，並已選取 [儲存體] 索引標籤。](./media/apache-spark-jupyter-spark-sql-use-portal/azure-portal-cluster-storage.png "在 HDInsight 中建立 Spark 叢集基本設定")
 
     選取 [檢閱 + 建立]  繼續執行。
 
@@ -95,7 +95,7 @@ SQL (結構化查詢語言) 是最常見且廣泛使用的語言，可用於查�
 
 1. 確認核心已就緒。 當您在 Notebook 中的核心名稱旁邊看到一個空心圓時，表示核心已準備就緒。 實心圓表示核心忙碌中。
 
-    ![HDInsight 中的 Apache Hive 查詢](./media/apache-spark-jupyter-spark-sql/jupyter-spark-kernel-status.png "HDInsight 中的 Hive 查詢")
+    ![此螢幕擷取畫面顯示具有 PySpark 指標的 Jupyter 視窗。](./media/apache-spark-jupyter-spark-sql/jupyter-spark-kernel-status.png "HDInsight 中的 Hive 查詢")
 
     當您第一次啟動 Notebook 時，核心會在背景執行某些工作。 等待核心準備就緒。
 
@@ -108,7 +108,7 @@ SQL (結構化查詢語言) 是最常見且廣泛使用的語言，可用於查�
 
     當您使用 Jupyter Notebook 搭配 HDInsight 叢集時，您可取得預設的 `sqlContext`，用來執行使用 Spark SQL 的 Hive 查詢。 `%%sql` 會告知 Jupyter Notebook 使用預設的 `sqlContext` 來執行 Hive 查詢。 此查詢會擷取 Hive 資料表 (**hivesampletable**) 中的前 10 個資料列，依預設所有 HDInsight 叢集均隨附該資料表。 大約需要 30 秒才能取得結果。 輸出看起來如下：
 
-    ![HDInsight 中的 Apache Hive 查詢](./media/apache-spark-jupyter-spark-sql-use-portal/hdinsight-spark-get-started-hive-query.png "HDInsight 中的 Hive 查詢")
+    ![此螢幕擷取畫面顯示 Jupyter 視窗，此視窗適用於本快速入門中建立的筆記本。](./media/apache-spark-jupyter-spark-sql-use-portal/hdinsight-spark-get-started-hive-query.png "HDInsight 中的 Hive 查詢")
 
     每當您在 Jupyter 中執行查詢時，網頁瀏覽器視窗標題將會顯示 Notebook 標題和 **(忙碌)** 狀態。 您也會在右上角的 **PySpark** 文字旁看到一個實心圓。
 

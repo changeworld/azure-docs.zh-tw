@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 08/20/2020
 ms.author: trbye
-ms.openlocfilehash: 57577c840c93888b2b96971994724f085ad44ebe
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 2277c054be3e0649d48350b21eb9add2a1e52e8b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89569300"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91282862"
 ---
 # <a name="what-is-the-speech-service"></a>什麼是語音服務？
 
@@ -74,13 +74,13 @@ ms.locfileid: "89569300"
    - 為您的新資源提供唯一的名稱。 此名稱可協助您區分繫結至相同服務的多個訂用帳戶。
    - 選擇與新資源相關聯的 Azure 訂用帳戶來決定費用的計費方式。
    - 選擇將使用此資源的[區域](regions.md)。
-   - 選擇免費 (F0) 或付費 (S0) 的定價層。 如需每一層的定價和使用量配額完整資訊，請選取 [檢視完整定價詳細資料]。
+   - 選擇免費 (F0) 或付費 (S0) 的定價層。 如需每一層的定價和使用量配額完整資訊，請選取 [檢視完整定價詳細資料]。 如需您可以為每個訂用帳戶建立的資源限制，請參閱 [Azure 認知服務限制](../../azure-resource-manager/management/azure-subscription-service-limits.md#azure-cognitive-services-limits)。
    - 為此語音訂用帳戶建立新的資源群組，或將該訂用帳戶指派給現有的資源群組。 資源群組可協助組織各種 Azure 訂用帳戶。
    - 選取 [建立]  。 這會帶您前往部署概觀並顯示部署進度訊息。
-
+<!--
 > [!NOTE]
-> 您可以在一或多個區域中建立無限數量的標準層訂用帳戶。 不過，您可以建立只有一個免費層的訂用帳戶。 免費層上的模型部署若持續 7 天未使用，將會自動解除委任。
-
+> You can create an unlimited number of standard-tier subscriptions in one or multiple regions. However, you can create only one free-tier subscription. Model deployments on the free tier that remain unused for 7 days will be decommissioned automatically.
+-->
 部署新的語音資源需要幾分鐘的時間。 部署完成後，選取 [移至資源]，然後在左側瀏覽窗格中選取 [金鑰] 以顯示語音服務訂用帳戶金鑰。 每個訂用帳戶都有兩個金鑰，您可以在應用程式中使用任一個金鑰。 若要快速地將金鑰複製/貼到您的程式碼編輯器或其他位置，請選取每個金鑰旁的 [複製] 按鈕，切換視窗將剪貼簿內容貼到所需的位置。
 
 > [!IMPORTANT]

@@ -1,6 +1,6 @@
 ---
 title: 快速入門：建立適用於 Java 的 CI/CD 管線 - Azure DevOps Starter
-description: DevOps 入門版可供輕鬆地開始使用 Azure。 它可協助您透過幾個簡單的步驟，在您選擇的 Azure 服務上啟動應用程式。
+description: 了解使用簡化的 Azure DevOps 入門版體驗，在 Azure Pipelines 中為 Java 應用程式設定持續整合 (CI) 與持續傳遞 (CD) 管線。
 ms.prod: devops
 ms.technology: devops-cicd
 services: vsts
@@ -13,18 +13,18 @@ ms.topic: quickstart
 ms.date: 03/24/2020
 ms.author: mlearned
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 738822d2dd4a67ea0b5c83c6c5f6c289e93766c3
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 29b05feab0a44629c3d450709a3bc05481be6e84
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327781"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330361"
 ---
 # <a name="set-up-a-cicd-pipeline-for-a-java-app-with-azure-devops-starter"></a>使用 Azure DevOps Starter 設定適用於 Java 應用程式的 CI/CD 管線
 
 在本快速入門中，您會使用簡化的 Azure DevOps 入門版體驗，在 Azure Pipelines 中為 Java 應用程式設定持續整合 (CI) 與持續傳遞 (CD) 管線。 您可以使用 Azure DevOps 入門版來設定您在開發、部署及監控應用程式時所需的一切。 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。 
 - [Azure DevOps](https://azure.microsoft.com/services/devops/) 帳戶和組織。

@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.topic: tutorial
 ms.date: 01/30/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 627086bdb13acdd29821af399f90fee8deaae432
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f0d62ae3909bc886fa6a56ba7ed32d55d27302dd
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76900191"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91568664"
 ---
 # <a name="set-up-azure-cosmos-db-global-distribution-using-the-table-api"></a>使用資料表 API 來設定 Azure Cosmos DB 全域散發
 
@@ -34,7 +34,7 @@ Azure Cosmos DB 資料表 API SDK 會根據帳戶組態和目前的區域可用�
 
 * **讀取要求：** 所有讀取要求都會傳送至已設定的 `CurrentRegion`。 根據鄰近性，SDK 會自動選取高可用性所需的後援異地複寫區域。
 
-* **寫入要求：** SDK 會自動將所有寫入要求傳送至目前的寫入區域。 在多重主機帳戶中，目前的區域也會處理寫入要求。 根據鄰近性，SDK 會自動選取高可用性所需的後援異地複寫區域。
+* **寫入要求：** SDK 會自動將所有寫入要求傳送至目前的寫入區域。 在具有多重區域寫入的帳戶中，目前的區域也會處理寫入要求。 根據鄰近性，SDK 會自動選取高可用性所需的後援異地複寫區域。
 
 若未指定 `CurrentRegion` 屬性，SDK 將會對所有作業使用目前的寫入區域。
 

@@ -1,7 +1,7 @@
 ---
-title: 將登入新增至 Microsoft 身分識別平台 ASP.NET Web 應用程式
+title: 教學課程：建立 ASP.NET Web 應用程式，使用 Microsoft 身分識別平台進行驗證 | Azure
 titleSuffix: Microsoft identity platform
-description: 使用傳統網頁瀏覽器型應用程式和 OpenID Connect 標準在 ASP.NET 方案上實作 Microsoft 登入
+description: 在本教學課程中，您會建置 ASP.NET Web 應用程式，使用 Microsoft 身分識別平台和 OWIN 中介軟體來啟用使用者登入。
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: 740d62136393cf0c9cf31d367735bffed1c05276
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 6a5fb517b3ea6626a929da10954bd58cc8e39ef0
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88165578"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91574223"
 ---
 # <a name="add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>將「登入到 Microsoft」新增至 ASP.NET Web 應用程式
 
@@ -25,10 +25,18 @@ ms.locfileid: "88165578"
 
 當您完成此指南時，您的應用程式就能夠接受來自 outlook.com 和 live.com 等個人帳戶的登入。 此外，與 Microsoft 身分識別平台整合的任何公司或組織中的公司和學校帳戶也可以登入您的應用程式。
 
-> 此指南需要 Microsoft Visual Studio 2019。  沒有嗎？  [免費下載 Visual Studio 2019](https://www.visualstudio.com/downloads/)。
+本教學課程內容：
 
->[!NOTE]
-> 如果您不熟悉 Microsoft 身分識別平台，建議您從[將 Microsoft 身分識別平台登入新增至 ASP.NET Web 應用程式](quickstart-v2-aspnet-webapp.md)開始了解。
+> [!div class="checklist"]
+> * 在 Visual Studio 中建立 *ASP.NET Web 應用程式*專案
+> * 新增 Open Web Interface for .NET (OWIN) 中介軟體元件
+> * 新增程式碼以支援使用者登入和登出
+> * 在 Azure 入口網站中註冊應用程式
+> * 測試應用程式
+
+## <a name="prerequisites"></a>必要條件
+
+* 已安裝包含 **ASP.NET 和 Web 開發**工作負載的 [Visual Studio 2019](https://visualstudio.microsoft.com/vs/)
 
 ## <a name="how-the-sample-app-generated-by-this-guide-works"></a>本指南產生之範例應用程式的運作方式
 
@@ -264,7 +272,7 @@ ms.locfileid: "88165578"
     ```
 
 ### <a name="more-information"></a>詳細資訊
-此頁面會以 SVG 格式新增一個具有黑色背景的登入按鈕：<br/>![使用 Microsoft 登入](media/active-directory-develop-guidedsetup-aspnetwebapp-use/aspnetsigninbuttonsample.png)<br/> 如需了解更多登入按鈕，請前往[商標指導方針](./howto-add-branding-in-azure-ad-apps.md "商標方針")。
+此頁面會以 SVG 格式新增一個具有黑色背景的登入按鈕：<br/>![使用 Microsoft 帳戶登入按鈕](media/active-directory-develop-guidedsetup-aspnetwebapp-use/aspnetsigninbuttonsample.png)<br/> 如需了解更多登入按鈕，請前往[商標指導方針](./howto-add-branding-in-azure-ad-apps.md "商標方針")。
 
 ## <a name="add-a-controller-to-display-users-claims"></a>新增控制器來顯示使用者的宣告
 此控制器示範如何使用 `[Authorize]` 屬性來保護控制器。 此屬性會設定限制，只允許經過驗證的使用者存取控制器。 下列程式碼會利用屬性來顯示在登入過程中擷取的使用者宣告：
@@ -369,7 +377,7 @@ ms.locfileid: "88165578"
 1. 使用公司或學校帳戶或個人 Microsoft 帳戶登入 [Azure 入口網站](https://portal.azure.com)。
 1. 如果您的帳戶可讓您存取多個租用戶，請在右上角選取帳戶，然後將您的入口網站工作階段設定為想要的 Azure AD 租用戶。
 1. 移至 Microsoft 身分識別平台，以取得開發人員的[應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)頁面。
-1. 選取 [新增註冊]  。
+1. 選取 [新增註冊]。
 1. 當 [註冊應用程式]  頁面出現時，輸入您應用程式的註冊資訊：
    1. 在 [名稱]  區段中，輸入將對應用程式使用者顯示、且有意義的應用程式名稱，例如 **ASPNET-Tutorial**。
    1. 在 [回覆 URL]  中，新增您透過步驟 1 從 Visual Studio 中複製的 SSL URL (例如 `https://localhost:44368/`)，然後選取 [註冊]  。
@@ -392,7 +400,7 @@ ms.locfileid: "88165578"
 
 當您準備好執行測試時，請使用 Azure AD 帳戶 (公司或學校帳戶) 或個人 Microsoft 帳戶 (<span>live.</span>com 或 <span>outlook.</span>com) 帳戶登入。
 
-![使用 Microsoft 登入](media/active-directory-develop-guidedsetup-aspnetwebapp-test/aspnetbrowsersignin.png)
+![顯示在瀏覽器中瀏覽器登入頁面上的 [使用 Microsoft 帳戶登入] 按鈕](media/active-directory-develop-guidedsetup-aspnetwebapp-test/aspnetbrowsersignin.png)
 <br/><br/>
 ![登入您的 Microsoft 帳戶](media/active-directory-develop-guidedsetup-aspnetwebapp-test/aspnetbrowsersignin2.png)
 
@@ -470,20 +478,11 @@ GlobalFilters.Filters.Add(new AuthorizeAttribute());
 
 您可以實作自訂方法，使用 **IssuerValidator** 參數來驗證簽發者。 如需此參數使用方式的詳細資訊，請參閱 [TokenValidationParameters 類別](/dotnet/api/microsoft.identitymodel.tokens.tokenvalidationparameters)。
 
+[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+
 ## <a name="next-steps"></a>後續步驟
 
-深入了解 Web 應用程式如何呼叫 Web API。
-
-### <a name="learn-how-to-create-the-application-used-in-this-quickstart"></a>了解如何建立本快速入門中所使用的應用程式
-
-深入了解使用 Microsoft 身分識別平台呼叫 Web API 的 Web 應用程式：
+了解使用 Microsoft 身分識別平台，從 Web 應用程式呼叫受保護的 Web API：
 
 > [!div class="nextstepaction"]
 > [呼叫 Web API 的 Web 應用程式](scenario-web-app-sign-user-overview.md) \(英文\)
-
-了解如何建立可呼叫 Microsoft Graph 的 Web 應用程式：
-
-> [!div class="nextstepaction"]
-> [Microsoft Graph ASP.NET 教學課程](/graph/tutorials/aspnet)
-
-[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

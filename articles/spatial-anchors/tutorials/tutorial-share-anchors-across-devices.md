@@ -8,18 +8,18 @@ ms.author: rgarcia
 ms.date: 07/31/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 12a15a2d0cd45207b4adefc7315e48c6d642c0f7
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 8b6c3608165ed592cc2f0daf475226c9d35de012
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87810156"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358750"
 ---
 # <a name="tutorial-share-azure-spatial-anchors-across-sessions-and-devices"></a>教學課程：跨工作階段和裝置來共用 Azure Spatial Anchors
 
 在本教學課程中，您將了解如何使用 [Azure Spatial Anchors](../overview.md) 在一個工作階段中建立錨點，然後在相同或不同裝置上找到這些錨點。 這些相同的錨點也可由多個裝置在相同的位置同時找到。
 
-![持續性](./media/persistence.gif)
+![動畫顯示使用行動裝置建立的 Azure 空間錨點，並在過去幾天內與不同的裝置搭配使用。](./media/persistence.gif)
 
 Azure Spatial Anchors 是一款跨平台開發人員服務，可讓您使用在一段時間之後仍跨裝置保持其位置的物件，建立混合實境體驗。 當您完成時，您將會有可部署至兩個或更多裝置的應用程式。 一個執行個體所建立的 Azure Spatial Anchors，將可與其他執行個體共用。
 

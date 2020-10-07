@@ -1,6 +1,6 @@
 ---
 title: 篩選 VM 網路流量 - Azure PowerShell 指令碼範例
-description: Azure PowerShell 指令碼範例 - 篩選輸入和輸出 VM 網路流量。
+description: 篩選輸入及輸出 VM 網路流量 - Azure PowerShell 指令碼範本。
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/20/2018
 ms.author: kumud
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: b04ad7d9252bd97d3fa1a236a4150ffac3d8af65
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: dbbc0fa160affec81d36a4da127c4fb864913fd5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89077818"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91306730"
 ---
 # <a name="filter-inbound-and-outbound-vm-network-traffic-script-sample"></a>篩選輸入和輸出 VM 網路流量的指令碼範例
 

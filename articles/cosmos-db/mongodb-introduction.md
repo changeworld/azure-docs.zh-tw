@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 10/1/2019
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: 8fb9f422f2d2c4ed035b04b4abe4141bbb8ebfc7
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 81fceb210981e5755bcdd8e241b381d161d4f637
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89299842"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570206"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb"></a>適用於 MongoDB 的 Azure Cosmos DB API
 
@@ -36,7 +36,7 @@ Cosmos DB 作為完全受控且全域散發之資料庫的主要優點如[這裡
 * 維持您的應用程式可攜，並繼續維持雲端廠商中立。
 * 取得由 Cosmos DB 所提供領先業界且有財務補償適用於常見 NoSQL API 的 SLA。
 * 根據您的需要，彈性地調整針對 Cosmos 資料庫佈建的輸送量和儲存體，並僅支付您所需要的儲存體與輸送量。 這會大量節省成本。
-* 周全全球散發且具有多重主機複寫。
+* 周全全球散發且具有多重區域寫入複寫。
 
 ## <a name="cosmos-dbs-api-for-mongodb"></a>適用於 MongoDB 的 Cosmos DB API
 

@@ -12,12 +12,12 @@ ms.date: 04/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9cd70d534cebf35938285208dc76bd4a6d94533
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 3d9f59906c566d80344891c0796a85b0a4972e68
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279001"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91313088"
 ---
 # <a name="tutorial--setting-up-phs-as-backup-for-ad-fs-in-azure-ad-connect"></a>教學課程：在 Azure AD Connect 中將 PHS 設定為 AD FS 的備份
 
@@ -74,7 +74,7 @@ ms.locfileid: "89279001"
 
 1. 瀏覽至 [https://myapps.microsoft.com](https://myapps.microsoft.com)
 2. 使用我們在新租用戶中建立的使用者來登入。  您必須使用下列格式登入：(user@domain.onmicrosoft.com)。 透過該使用者在內部部署用來登入的密碼登入。</br>
-   ![Verify](media/tutorial-password-hash-sync/verify1.png)</br>
+   ![測試登入時顯示成功訊息的螢幕擷取畫面。 ](media/tutorial-password-hash-sync/verify1.png)</br>
 
 ## <a name="switch-back-to-federation"></a>切換回同盟
 現在，我們將說明如何切換回同盟。  若要這麼做，請執行下列步驟：
@@ -91,7 +91,7 @@ ms.locfileid: "89279001"
 10. 設定完成後，請按 [下一步]  。
 ![設定](media/tutorial-phs-backup/backup4.png)</br>
 11. 在 [驗證同盟連線能力]  畫面上，按一下 [確認]  。  您可能需要設定 DNS 記錄 (新增 A 和 AAAA 記錄)，此作業才能順利完成。
-![Verify](media/tutorial-phs-backup/backup5.png)</br>
+![顯示 [驗證同盟連線能力] 畫面和 [驗證] 按鈕的螢幕擷取畫面。](media/tutorial-phs-backup/backup5.png)</br>
 12. 按一下 [結束]  。
 
 ## <a name="reset-the-ad-fs-and-azure-trust"></a>重設 AD FS 與 Azure 的信任
@@ -106,7 +106,7 @@ ms.locfileid: "89279001"
 6.  在 [連線至 AD FS]  畫面上，輸入 contoso\Administrator 使用者名稱與密碼，然後按 [下一步]  。
 7.  在 [憑證]  畫面上，按 [下一步]  。
 
-## <a name="test-signing-in-with-one-of-our-users"></a>使用我們其中一個使用者來測試登入
+## <a name="test-signing-in-with-a-user"></a>測試透過使用者進行登入
 
 1.  瀏覽至 [https://myapps.microsoft.com](https://myapps.microsoft.com)
 2. 使用我們在新租用戶中建立的使用者來登入。  您必須使用下列格式登入：(user@domain.onmicrosoft.com)。 透過該使用者在內部部署用來登入的密碼登入。

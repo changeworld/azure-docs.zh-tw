@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: tutorial
 ms.custom: mvc, devx-track-csharp
 ms.date: 02/27/2020
-ms.openlocfilehash: 4adec4579cf1a413aeac54782b4f9a833d557ad9
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 38b4713383368f0c64983738f2ed65f60edb9e67
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90029965"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334084"
 ---
 # <a name="tutorial-automate-tasks-to-process-emails-by-using-azure-logic-apps-azure-functions-and-azure-storage"></a>教學課程：使用 Azure Logic Apps、Azure Functions 和 Azure 儲存體，將工作自動化以處理電子郵件
 
@@ -323,7 +323,7 @@ Azure Logic Apps 可協助您自動執行工作流程，並整合 Azure 服務�
 
    1. 在第一個資料列的 [和] 下方，按一下左側方塊內部。 從顯示的動態內容清單中，選取 [有附件] 屬性。
 
-      ![建置條件](./media/tutorial-process-email-attachments-workflow/build-condition.png)
+      ![此螢幕擷取畫面顯示條件的 "And" 屬性，以及 [具有附件] 屬性選項。](./media/tutorial-process-email-attachments-workflow/build-condition.png)
 
    1. 在中間的方塊中，將運算子保留為 [等於]。
 
@@ -389,7 +389,7 @@ Azure Logic Apps 可協助您自動執行工作流程，並整合 Azure 服務�
 
    ![在 [若為 true] 內，新增動作](./media/tutorial-process-email-attachments-workflow/if-true-add-action.png)
 
-1. 在搜尋方塊中尋找「azure 函式」，並選取下列動作：**選擇 Azure 函式 – Azure Functions**
+1. 在搜尋方塊中尋找「Azure 函式」，並選取下列動作：**選擇 Azure 函式 – Azure Functions**
 
    ![選取「選擇 Azure 函式」的動作](./media/tutorial-process-email-attachments-workflow/add-action-azure-function.png)
 
@@ -458,7 +458,7 @@ Azure Logic Apps 可協助您自動執行工作流程，並整合 Azure 服務�
 
    完成上述步驟後，動作會如下列範例所示︰
 
-   ![已完成的「建立 Blob」動作](./media/tutorial-process-email-attachments-workflow/create-blob-for-email-body-done.png)
+   ![此螢幕擷取畫面顯示已完成「建立 Blob」動作的範例。](./media/tutorial-process-email-attachments-workflow/create-blob-for-email-body-done.png)
 
 1. 儲存您的邏輯應用程式。
 

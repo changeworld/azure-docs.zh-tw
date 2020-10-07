@@ -7,12 +7,12 @@ author: bwren
 ms.author: bwren
 ms.date: 08/19/2019
 ms.custom: mvc, sec-javascript-october2019
-ms.openlocfilehash: 91a4e2f6a770282e9d031c31fdf1af15f0cd00bf
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: fb7a32199117be76e411155910d558ef187398ab
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87067542"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448256"
 ---
 # <a name="collect-data-from-an-azure-virtual-machine-with-azure-monitor"></a>使用 Azure 監視器從 Azure 虛擬機器收集資料
 
@@ -87,7 +87,7 @@ Azure 監視器可以從 Windows 事件記錄或 Linux Syslog 收集事件，和
 
 7. 當您第一次為新的 Log Analytics 工作區設定 Windows 效能計數器時，系統會提供選項，讓您快速建立數個常用的計數器。 這些計數器旁邊皆會列出核取方塊。
 
-    ![選取的預設 Windows 效能計數器](media/quick-collect-azurevm/windows-perfcounters-default.png)
+    ![[Windows 效能計數器] 窗格的螢幕擷取畫面，其中具有所選取計數器的清單，並已選取 [新增選定的效能計數器] 按鈕。](media/quick-collect-azurevm/windows-perfcounters-default.png)
 
     選取 [新增選定的效能計數器]  。  隨即會新增且收集取樣間隔時間的預設值為 10 秒。
   
@@ -107,7 +107,7 @@ Azure 監視器可以從 Windows 事件記錄或 Linux Syslog 收集事件，和
 
 6. 當您第一次為新的 Log Analytics 工作區設定 Linux 效能計數器時，系統會提供選項，讓您快速建立數個常用的計數器。 這些計數器旁邊皆會列出核取方塊。
 
-    ![選取的預設 Windows 效能計數器](media/quick-collect-azurevm/linux-perfcounters-azure-monitor.png)
+    ![[Linux 效能計數器] 窗格的螢幕擷取畫面，其中具有所選取計數器的清單，並已選取 [新增選定的效能計數器] 按鈕。](media/quick-collect-azurevm/linux-perfcounters-azure-monitor.png)
 
     選取 [將下列設定套用至我的機器]  ，然後選取 [新增選取的效能計數器]  。  隨即會新增且收集取樣間隔時間的預設值為 10 秒。  
 

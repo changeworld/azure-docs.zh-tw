@@ -5,15 +5,15 @@ author: craigktreasure
 manager: vriveras
 services: azure-spatial-anchors
 ms.author: crtreasu
-ms.date: 08/14/2020
+ms.date: 09/29/2020
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 4d5ec2411b7b1a65da9a1f4262822cb85a3b386e
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: 630e90069cd1b9735dbaec4c0d825be71df7e69c
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89536244"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91539304"
 ---
 # <a name="quickstart-create-a-unity-ios-app-with-azure-spatial-anchors"></a>快速入門：使用 Azure 空間錨點來建立 Unity iOS 應用程式
 
@@ -56,7 +56,11 @@ ms.locfileid: "89536244"
 
 [!INCLUDE [Configure Xcode](../../../includes/spatial-anchors-unity-ios-xcode.md)]
 
-依照應用程式中的指示放置及回收錨點。
+在應用程式中，使用箭頭選取 **BasicDemo**，然後按下 [Go!] 按鈕來執行示範。 依照指示來放置及回收錨點。
+
+![螢幕擷取畫面 1](./media/get-started-unity-ios/screenshot-1.jpg)
+![螢幕擷取畫面 2](./media/get-started-unity-ios/screenshot-2.jpg)
+![螢幕擷取畫面 3](./media/get-started-unity-ios/screenshot-3.jpg)
 
 完成時，在 Xcode 中按 [停止] 即可停止應用程式。
 

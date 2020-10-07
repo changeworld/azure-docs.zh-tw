@@ -3,12 +3,12 @@ title: Azure 藍圖概觀
 description: 了解 Azure 藍圖服務如何讓您在 Azure 環境中建立、定義及部署成品。
 ms.date: 08/27/2020
 ms.topic: overview
-ms.openlocfilehash: e5c08f4211f03ddc6d2f48eee4fc84a824732e43
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 499f2c4afa55913b6af714d20ec1d52e2ecbbc47
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89050772"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541759"
 ---
 # <a name="what-is-azure-blueprints"></a>什麼是 Azure 藍圖？
 
@@ -78,7 +78,9 @@ Azure 藍圖服務由散佈於世界各地的 [Azure Cosmos DB](../../cosmos-db/
 
 ## <a name="permissions-in-azure-blueprints"></a>Azure 藍圖中的權限
 
-若要使用藍圖，您必須透過[角色型存取控制](../../role-based-access-control/overview.md) (RBAC) 獲得授權。 若要建立藍圖，您的帳戶需要下列權限：
+若要使用藍圖，您必須透過 [Azure 角色型存取控制](../../role-based-access-control/overview.md) (Azure RBAC) 獲得授權。 若要讀取或檢視 Azure 入口網站中的藍圖，您的帳戶必須對藍圖定義所在的範圍具有讀取權。
+
+若要建立藍圖，您的帳戶需要下列權限：
 
 - `Microsoft.Blueprint/blueprints/write` - 建立藍圖定義
 - `Microsoft.Blueprint/blueprints/artifacts/write` - 在藍圖定義上建立成品

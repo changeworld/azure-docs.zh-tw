@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 09/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: da944f74fd6214e1b69a3ee7d230e72accd4e2e4
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 2830d8b82f5b53300d0af3f48e55b573d78ad295
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90084357"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91287384"
 ---
 # <a name="tutorial-create-a-host-pool-with-the-azure-portal"></a>教學課程：透過 Azure 入口網站建立主機集區
 
@@ -48,7 +48,8 @@ ms.locfileid: "90084357"
 
 1. 登入 Azure 入口網站：[https://portal.azure.com](https://portal.azure.com/)。
    
-   >![NOTE] 如果您要登入 US Gov 入口網站，請改為移至 [https://portal.azure.us/](https://portal.azure.us/)。
+   >[!NOTE]
+   > 如果您要登入 US Gov 入口網站，請改為移至 [https://portal.azure.us/](https://portal.azure.us/)。
 
 2. 在搜尋列中輸入 **Windows 虛擬桌面**，然後尋找並選取 [服務] 底下的 [Windows 虛擬桌面]。
 

@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: fe6def8a935fcc6f093c4489409a3bcde829ac10
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 8c1e47db4f5f5bb64c31d16c26f6c3860b5bcb29
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89294929"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323051"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-c"></a>快速入門：使用 Face REST API 和 C# 偵測影像中的臉部
 
@@ -23,7 +23,7 @@ ms.locfileid: "89294929"
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/cognitive-services/)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/cognitive-services/)
 * 擁有 Azure 訂用帳戶之後，在 Azure 入口網站中<a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title="建立 Face 資源"  target="_blank">建立 Face 資源<span class="docon docon-navigate-external x-hidden-focus"></span></a>，以取得您的金鑰和端點。 在其部署後，按一下 [前往資源]。
@@ -75,7 +75,7 @@ namespace DetectFace
 
 ### <a name="receive-image-input"></a>接收影像輸入
 
-對 **Program** 類別的 **Main** 方法新增下列程式碼。 此程式碼會將提示字元寫入主控台，並要求使用者輸入影像 URL。 然後呼叫另一種方法：**MakeAnalysisRequest**，以處理該位置上的影像。
+對 **Program** 類別的 **Main** 方法新增下列程式碼。 此程式碼會將提示寫入至主控台，要求使用者輸入其本機影像檔案路徑。 然後呼叫另一種方法：**MakeAnalysisRequest**，以處理該位置上的影像。
 
 ```csharp
         static void Main(string[] args)
@@ -159,7 +159,7 @@ namespace DetectFace
 
 ### <a name="process-the-input-image-data"></a>處理輸入影像資料
 
-將下列方法新增至 **Program** 類別。 此方法會將位於指定 URL 的影像轉換成位元組陣列。
+將下列方法新增至 **Program** 類別。 此方法會將位於指定檔案路徑的影像轉換成位元組陣列。
 
 ```csharp
         // Returns the contents of the specified file as a byte array.

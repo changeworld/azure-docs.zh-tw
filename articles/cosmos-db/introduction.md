@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: overview
 ms.date: 10/23/2019
-ms.openlocfilehash: bfac783fcb8ce88977fc8d97f821a7350f57aab8
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: 2301219db250b97fd7ea2eb3814f5eba2c70148a
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85118571"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569869"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>歡迎使用 Azure Cosmos DB
 
@@ -36,19 +36,19 @@ Cosmos DB 允許您隨時新增任何 Azure 區域到您的 Cosmos 帳戶，或�
 
 ### <a name="always-on"></a>永遠開啟
 
-藉由與 Azure 基礎結構的深度整合以及[明確的多重主機複寫](global-dist-under-the-hood.md)，Cosmos DB 為讀取和寫入提供了 [99.999% 高可用性](high-availability.md)。 Cosmos DB 還提供您以程式設計方式 (或透過入口網站) 叫用 Cosmos 帳戶的區域性容錯移轉功能。 此功能可協助確保您的應用程式可以在發生區域性災害時進行容錯移轉。
+藉由與 Azure 基礎結構的深度整合以及[透明的多重區域寫入複寫](global-dist-under-the-hood.md)，Cosmos DB 為讀取和寫入提供了 [99.999% 高可用性](high-availability.md)。 Cosmos DB 還提供您以程式設計方式 (或透過入口網站) 叫用 Cosmos 帳戶的區域性容錯移轉功能。 此功能可協助確保您的應用程式可以在發生區域性災害時進行容錯移轉。
 
 ### <a name="elastic-scalability-of-throughput-and-storage-worldwide"></a>在全球彈性調整輸送量與儲存體
 
-Cosmos DB 的設計包括透明的水平分割和多重主要複寫，可為您在全球各地的寫入和讀取提供前所未有的彈性延展性。 您可以透過使用單一 API 呼叫，在全球範圍內彈性地擴大數億個要求/秒，並僅支付您所需要的輸送量 (和儲存體)。 此功能可協助您應付工作負載中非預期的暴增，而無需針對尖峰過度佈建。 如需詳細資訊，請參閱 [Cosmos DB 中的分割區](partitioning-overview.md)、[容器和資料庫上佈建的輸送量](set-throughput.md)，以及[全域調整佈建的輸送量](scaling-throughput.md)。
+Cosmos DB 的設計包括透明的水平分割和多重區域寫入複寫，可為您在全球各地的寫入和讀取提供前所未有的彈性延展性。 您可以透過使用單一 API 呼叫，在全球範圍內彈性地擴大數億個要求/秒，並僅支付您所需要的輸送量 (和儲存體)。 此功能可協助您應付工作負載中非預期的暴增，而無需針對尖峰過度佈建。 如需詳細資訊，請參閱 [Cosmos DB 中的分割區](partitioning-overview.md)、[容器和資料庫上佈建的輸送量](set-throughput.md)，以及[全域調整佈建的輸送量](scaling-throughput.md)。
 
 ### <a name="guaranteed-low-latency-at-99th-percentile-worldwide"></a>保證在第 99 個百分位數低延遲 (全球)
 
-使用 Cosmos DB，您可以建置具高回應能力的全球級應用程式。 Cosmos DB 利用其新的多重主要複寫通訊協定、無閂鎖和[最適合寫入的資料庫引擎](index-policy.md)，保證全球各地的讀取 (索引) 和寫入延遲低於 10 毫秒的時間達第 99 個百分位數。 此功能可以持續擷取資料，並為回應迅速的應用程式提供快速查詢。
+使用 Cosmos DB，您可以建置具高回應能力的全球級應用程式。 Cosmos DB 利用其新的多重區域寫入複寫通訊協定、無閂鎖和[最適合寫入的資料庫引擎](index-policy.md)，保證全球各地的讀取 (索引) 和寫入延遲低於 10 毫秒的時間達第 99 個百分位數。 此功能可以持續擷取資料，並為回應迅速的應用程式提供快速查詢。
 
 ### <a name="precisely-defined-multiple-consistency-choices"></a>精確定義的多重一致性選擇
 
-建置 Cosmos DB 中的全域分散式應用程式時，您不再需要[在一致性、可用性、延遲和輸送量之間做出極端取捨](consistency-levels-tradeoffs.md)。 Cosmos DB 的多重主要複寫通訊協定謹慎設計成提供[五種定義完善的一致性選擇](consistency-levels.md) -      (強式、限定過期、工作階段、一致前置詞和最終)，以取得直覺式的程式設計模型，讓全域分散式應用程式具有低延遲和高可用性。
+建置 Cosmos DB 中的全域分散式應用程式時，您不再需要[在一致性、可用性、延遲和輸送量之間做出極端取捨](consistency-levels-tradeoffs.md)。 Cosmos DB 的多重區域寫入複寫通訊協定謹慎設計成提供[五種定義完善的一致性選擇](consistency-levels.md) -      (強式、限定過期、工作階段、一致前置詞和最終)，以取得直覺式的程式設計模型，讓全域分散式應用程式具有低延遲和高可用性。
 
 ### <a name="no-schema-or-index-management"></a>不需要任何結構描述或索引管理
 
@@ -56,7 +56,7 @@ Cosmos DB 的設計包括透明的水平分割和多重主要複寫，可為您�
 
 ### <a name="battle-tested-database-service"></a>實戰測試資料庫服務
 
-Cosmos DB 是 Azure 中的基本服務。 近十年來，許多 Microsoft 產品已針對全球範圍內的任務關鍵性應用程式採用 Cosmos DB，包括 Skype、Xbox、Office 365，Azure 等等。 現在，Cosmos DB 是 Azure 上成長最快速的服務之一，許多外部客戶和任務關鍵性應用程式皆有使用，這些外部客戶和應用程式需要彈性延展、周全的全域發佈、多重主機複寫，以實現讀取和寫入的低延遲和高可用性。
+Cosmos DB 是 Azure 中的基本服務。 近十年來，許多 Microsoft 產品已針對全球範圍內的任務關鍵性應用程式採用 Cosmos DB，包括 Skype、Xbox、Microsoft 365，Azure 等等。 現在，Cosmos DB 是 Azure 上成長最快速的服務之一，許多外部客戶和任務關鍵性應用程式皆有使用，這些外部客戶和應用程式需要彈性延展、周全的全域發佈、多重區域寫入複寫，以實現讀取和寫入的低延遲和高可用性。
 
 ### <a name="ubiquitous-regional-presence"></a>遍及各區，無所不在
 

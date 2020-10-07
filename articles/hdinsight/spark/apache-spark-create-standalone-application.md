@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: contperfq1
 ms.date: 08/21/2020
-ms.openlocfilehash: cfdb02b0a5942536a608fbc957ed69d1efd97e8e
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: deda7644d29fce5deb8d6c76f93da0caf0b22ff8
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88756889"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91536914"
 ---
 # <a name="tutorial-create-a-scala-maven-application-for-apache-spark-in-hdinsight-using-intellij"></a>教學課程：使用 IntelliJ 為 HDInsight 中的 Apache Spark 建立 Scala Maven 應用程式
 
@@ -98,7 +98,7 @@ ms.locfileid: "88756889"
 
 5. 從 archetype 清單中選取 [`org.scala-tools.archetypes:scala-archetype-simple` ]。 此 archetype 會建立正確的目錄結構，並下載撰寫 Scala 程式所需的預設相依性。
 
-    ![「IntelliJ IDEA 建立 Maven 專案」](./media/apache-spark-create-standalone-application/intellij-project-create-maven.png)
+    ![此螢幕擷取畫面顯示 [新增專案] 視窗中選取的原型。](./media/apache-spark-create-standalone-application/intellij-project-create-maven.png)
 
 6. 選取 [下一步]  。
 
@@ -107,7 +107,7 @@ ms.locfileid: "88756889"
     - **GroupId：** com.microsoft.spark.example
     - **ArtifactId：** SparkSimpleApp
 
-    ![「IntelliJ IDEA 建立 Maven 專案」](./media/apache-spark-create-standalone-application/intellij-artifact-coordinates.png)
+    ![此螢幕擷取畫面顯示 [新增專案] 視窗中的 [成品座標] 選項。](./media/apache-spark-create-standalone-application/intellij-artifact-coordinates.png)
 
 8. 選取 [下一步]  。
 

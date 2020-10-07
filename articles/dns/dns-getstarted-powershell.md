@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 3/11/2019
 ms.author: rohink
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 120cb86e1bacfefdd9242d8fa766b391983e9c81
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 7361f58247019584d7fb3d60cdd7f76b2e62a212
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89069455"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91355443"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-azure-powershell"></a>快速入門：使用 Azure PowerShell 建立 Azure DNS 區域和記錄
 
@@ -90,7 +90,7 @@ Get-AzDnsRecordSet -ZoneName contoso.xyz -ResourceGroupName MyResourceGroup
 
    您應該會看到類似於下列畫面的內容：
 
-   ![nslookup](media/dns-getstarted-portal/nslookup.PNG)
+   ![螢幕擷取畫面顯示命令提示字元視窗，其中包含 n s 查閱命令，以及伺服器、位址、名稱和位址的值。](media/dns-getstarted-portal/nslookup.PNG)
 
 主機名稱 **www\.contoso.xyz** 解析為 **10.10.10.10**，正如您所設定。 此結果確認了名稱解析正常運作。
 

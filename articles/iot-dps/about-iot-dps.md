@@ -11,12 +11,12 @@ manager: eliotgra
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 1b12886ee55741f62a1156269423ffadd34cd433
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: e3fce15cdeb1792749224299167b52fc2311d04e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81683300"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318267"
 ---
 # <a name="provisioning-devices-with-azure-iot-hub-device-provisioning-service"></a>使用 Azure IoT 中樞裝置佈建服務來佈建裝置
 Microsoft Azure 提供一組豐富的整合式公用雲端服務，可滿足所有的 IoT 方案需求。 IoT 中樞裝置佈建服務 (DPS) 是 IoT 中樞的一項協助程式服務，可對正確的 IoT 中樞進行自動 Just-in-Time 佈建，完全無須人為介入。 DPS 可讓您以安全且可擴充的方式佈建數百萬個裝置。
@@ -88,7 +88,7 @@ DPS 有許多功能，因此適合用來佈建裝置。
 * **待用資料加密**允許使用 256 位元的 AES 加密 (可用的最強區塊編碼器之一)，以透明方式加密及解密 DPS 中的資料，而且符合 FIPS 140-2 規範。
 
 
-您可以在[裝置概念](concepts-device.md)、[服務概念](concepts-service.md)和[安全性概念](concepts-security.md)中，深入了解裝置佈建中包含的概念和功能。
+您可以深入了解涉及裝置佈建的概念和功能，方法為檢閱 [DPS 術語](concepts-service.md)主題，以及同一章節中的其他概念性主題。
 
 ## <a name="cross-platform-support"></a>跨平台支援
 DPS 和所有 Azure IoT 服務一樣，都能跨平台用於各種作業系統。 Azure 提供多種[程式設計語言](https://github.com/Azure/azure-iot-sdks)的開放原始碼 SDK，以協助建立裝置的連線及管理服務。 DPS 支援使用下列通訊協定建立裝置的連線：
@@ -123,7 +123,9 @@ DPS 可使用 Azure IoT 中樞將裝置佈建自動化。 深入了解 [IoT 中�
 
 ## <a name="next-steps"></a>後續步驟
 現在您已了解 Azure 中 IoT 裝置的概觀。 下一個步驟是嘗試端對端 IoT 情節。
-> [!div class="nextstepaction"]
-> [使用 Azure 入口網站設定 IoT 中樞裝置佈建服務](quick-setup-auto-provision.md)
-> [建立及佈建模擬裝置](quick-create-simulated-device.md)
-> [設定佈建的裝置](tutorial-set-up-device.md)
+
+[使用 Azure 入口網站設定 IoT 中樞裝置佈建服務](quick-setup-auto-provision.md)
+
+[建立及佈建模擬裝置](quick-create-simulated-device.md)
+
+[設定裝置的佈建功能](tutorial-set-up-device.md)

@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: alkohli
-ms.openlocfilehash: c2d971c2c9375f58fd5f41a46716fac4bff29f88
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 3181b88b0cf49516eb5230585460d0cc91bb4042
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90604303"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91575294"
 ---
 # <a name="tutorial-order-azure-data-box"></a>教學課程：訂購 Azure 資料箱
 
@@ -215,11 +215,11 @@ PS C:\Windows\System32>
 1. 使用您的 Microsoft Azure 認證在以下 URL 登入：[https://portal.azure.com](https://portal.azure.com)。
 2. 選取 [+ 建立資源]，然後搜尋「Azure 資料箱」。 選取 [Azure 資料箱]。
 
-   ![選取 [Azure 資料箱]](media/data-box-deploy-ordered/select-data-box-import-02.png)
+   ![[搜尋] 欄位中具有 Azure 資料箱的 [新增] 區段螢幕擷取畫面。](media/data-box-deploy-ordered/select-data-box-import-02.png)
 
 3. 選取 [建立]。
 
-   ![選取 [Azure 資料箱]](media/data-box-deploy-ordered/select-data-box-import-03.png)
+   ![[Azure 資料箱] 區段的螢幕擷取畫面，其中已呼叫 [建立] 選項。](media/data-box-deploy-ordered/select-data-box-import-03.png)
 
 4. 確認您的區域是否適用資料箱服務。 輸入或選取下列資訊，然後選取 [套用]。
 
@@ -235,7 +235,7 @@ PS C:\Windows\System32>
 
 5. 選取 [資料箱]。 單一訂單的最大可用容量是 80 TB。 您可以建立多份訂單以訂購更大的資料大小。
 
-    ![選取資料箱選項 1](media/data-box-deploy-ordered/select-data-box-import-05.png)
+    ![有不同資料大小可供選取的螢幕擷取畫面：資料箱磁碟 40 TB、資料箱 100 TB、Data Box Heavy、1000 TB，以及將 1 TB 傳送給您自己的磁碟。](media/data-box-deploy-ordered/select-data-box-import-05.png)
 
 6. 在 [訂購] 中，移至 [基本] 索引標籤。輸入或選取下列資訊，然後選取 [下一步:資料目的地>]。
 
@@ -245,7 +245,7 @@ PS C:\Windows\System32>
     |資源群組    | 您先前選取的資源群組。 |
     |匯入訂單名稱 | 提供用來追蹤訂單的易記名稱。 <br> 名稱長度可介於 3 到 24 個字元之間，且可以是字母、數字和連字號。 <br> 名稱必須以字母或數字為開頭或結尾。    |
 
-    ![選取資料箱選項 1](media/data-box-deploy-ordered/select-data-box-import-06.png)
+    ![[訂單] 精靈的螢幕擷取畫面，其中顯示精靈的基本步驟，並已填入正確資訊。](media/data-box-deploy-ordered/select-data-box-import-06.png)
 
     根據預設，裝置解除鎖定密碼會使用 Microsoft 管理的金鑰進行加密。 完成訂單之後，您可以新增客戶自控金鑰。 客戶自控金鑰可讓您使用來自 Azure Key Vault、屬於您自己的金鑰，以保護您的裝置解除鎖定密碼。 如需詳細資訊，請參閱[針對 Azure 資料箱使用 Azure Key Vault 中的客戶自控金鑰](data-box-customer-managed-encryption-key-portal.md)。
 
@@ -265,7 +265,7 @@ PS C:\Windows\System32>
     |---------|---------|
     |資源群組     | 如果您想要從內部部署 VHD 建立受控磁碟，請建立新的資源群組。 只有當資源群組是在資料箱服務建立受控磁碟的資料箱訂單之前建立的，您才能使用現有的資源群組。 <br> 指定以分號分隔的多個資源群組。 最多支援 10 個資源群組。|
 
-    ![受控磁碟的資料箱訂單](media/data-box-deploy-ordered/select-data-box-import-07b.png)
+    ![[訂單] 精靈的螢幕擷取畫面，其中顯示精靈的資料目的地步驟，並已填入正確資訊。](media/data-box-deploy-ordered/select-data-box-import-07b.png)
 
     針對受控磁碟指定的儲存體帳戶不能當成暫存的儲存體帳戶來使用。 資料箱服務會先將 VHD 以分頁 Blob 形式上傳至暫存的儲存體帳戶，然後再將它轉換為受控磁碟並移至資源群組。 如需詳細資訊，請參閱[確認資料上傳至 Azure](data-box-deploy-picked-up.md#verify-data-upload-to-azure)。
    > [!NOTE]
@@ -286,11 +286,11 @@ PS C:\Windows\System32>
 
 8. 在 [連絡人詳細資料] 中，選取 [+ 新增交貨位址]。
 
-    ![受控磁碟的資料箱訂單](media/data-box-deploy-ordered/select-data-box-import-08a.png)
+    ![[訂單] 精靈的螢幕擷取畫面，其中顯示精靈的連絡人詳細資料步驟，並已呼叫 [新增交貨位址] 選項。](media/data-box-deploy-ordered/select-data-box-import-08a.png)
 
 9. 在 [交貨地址] 中，提供您的姓名、公司的名稱和郵寄地址，以及有效的電話號碼。 選取 [驗證地址]。 服務會驗證交貨地址以確認服務可用性。 如果服務可提供至指定的交貨地址，您將會收到該項通知。
 
-   ![受控磁碟的資料箱訂單](media/data-box-deploy-ordered/select-data-box-import-10.png)
+   ![[新增交貨位址] 對話方塊的螢幕擷取畫面，其中已呼叫 [交貨方式] 選項和 [新增交貨位址] 選項。](media/data-box-deploy-ordered/select-data-box-import-10.png)
 
    成功下達訂單後，如果選取自我管理運送，您會收到電子郵件通知。 如需有關自我管理運送的詳細資訊，請參閱[使用自我管理運送](data-box-portal-customer-managed-shipping.md)。
 
@@ -300,13 +300,13 @@ PS C:\Windows\System32>
 
     建議您使用群組電子郵件，以便在群組中的管理員離開時繼續接收通知。
 
-    ![受控磁碟的資料箱訂單](media/data-box-deploy-ordered/select-data-box-import-08c.png)
+    ![[電子郵件] 區段的螢幕擷取畫面，此區段屬於 [訂單] 精靈的連絡人詳細資料步驟，並已呼叫 [電子郵件] 文字方塊和 [下一步：檢閱和訂購] 選項。](media/data-box-deploy-ordered/select-data-box-import-08c.png)
 
 12. 在 [檢閱 + 訂購] 中，檢閱與訂單、連絡人、通知和隱私權條款相關的資訊。 請勾選隱私權條款合約的對應方塊。
 
 13. 選取 [訂單]。 建立訂單需要幾分鐘的時間。
 
-    ![受控磁碟的資料箱訂單](media/data-box-deploy-ordered/select-data-box-import-11.png)
+    ![[訂單] 精靈的螢幕擷取畫面，其中顯示檢閱和訂購步驟，並已呼叫 [訂單] 選項。](media/data-box-deploy-ordered/select-data-box-import-11.png)
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 

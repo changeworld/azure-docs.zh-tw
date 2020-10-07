@@ -1,7 +1,7 @@
 ---
 title: 快速入門：使用 REST API 和 Java 檢查拼字 - Bing 拼字檢查
 titleSuffix: Azure Cognitive Services
-description: 開始使用 Bing 拼字檢查 REST API 來檢查拼字和文法。
+description: 開始使用 Bing 拼字檢查 REST API 和 Java 來檢查拼字和文法。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 05/21/2020
 ms.custom: devx-track-java
 ms.author: aahi
-ms.openlocfilehash: 56a5215daea9289a481e0a51575ef0ee3cbdb3a0
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 02e83d2a18958e23f412af7b9685ddd1ab400aac
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322069"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316625"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-java"></a>快速入門：使用 Bing 拼字檢查 REST API 和 Java 進行拼字檢查
 

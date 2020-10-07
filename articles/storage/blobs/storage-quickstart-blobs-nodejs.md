@@ -3,17 +3,17 @@ title: 快速入門：Azure Blob 儲存體程式庫 v12 - JavaScript
 description: 在本快速入門中，您將了解如何使用適用於 JavaScript 的 Azure Blob 儲存體用戶端程式庫 12 版，在 Blob (物件) 儲存體中建立容器與 Blob。 接下來，您要了解如何將 Blob 下載到本機電腦，以及如何列出容器中的所有 Blob。
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 07/24/2020
+ms.date: 09/17/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.custom: devx-track-javascript
-ms.openlocfilehash: c4343012c7d0abb7c8b8a22da687dc5ac668dc19
-ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
+ms.custom: devx-track-js
+ms.openlocfilehash: 54bf6265a5b440e5c450d21b192acc2f7024f938
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89514369"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91307529"
 ---
 # <a name="quickstart-manage-blobs-with-javascript-v12-sdk-in-nodejs"></a>快速入門：使用 Node.js 中的 JavaScript v12 SDK 來管理 Blob
 
@@ -312,7 +312,8 @@ Done
 如需教學課程、範例、快速入門及其他文件，請瀏覽：
 
 > [!div class="nextstepaction"]
-> [Azure for JavaScript 文件](/azure/developer/javascript/)
+> [Azure for JavaScript 開發人員中心](/azure/developer/javascript/)
 
-* 若要深入了解，請參閱[適用於 JavaScript 的 Azure Blob 儲存體用戶端程式庫](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob)。
+* 若要了解如何部署使用 Azure Blob 儲存體的 Web 應用程式，請參閱[教學課程：使用 Azure 儲存體在雲端中上傳影像資料](/azure/storage/blobs/storage-upload-process-images?tabs=javascript&preserve-view=true)
 * 若要查看 Blob 儲存體範例應用程式，請繼續執行 [Azure Blob 儲存體用戶端程式庫 v12 JavaScript 範例](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob/samples)。
+* 若要深入了解，請參閱[適用於 JavaScript 的 Azure Blob 儲存體用戶端程式庫](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob)。

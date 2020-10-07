@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.date: 05/11/2020
+ms.date: 09/22/2020
 ms.author: anfeldma
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 8ec5562af254aa1bcdb030057f61db496a17826b
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: 25e5d583b2ae94277b155e8e03d61a308a88ec8d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423383"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322745"
 ---
 # <a name="quickstart-use-nodejs-to-connect-and-query-data-from-azure-cosmos-db-sql-api-account"></a>快速入門：使用 Node.js 連線至 Azure Cosmos DB SQL API 帳戶並從中查詢資料
 
@@ -22,6 +22,7 @@ ms.locfileid: "87423383"
 > - [.NET V3](create-sql-api-dotnet.md)
 > - [.NET V4](create-sql-api-dotnet-V4.md)
 > - [Java SDK v4](create-sql-api-java.md)
+> * [Spring Data v3](create-sql-api-spring-data.md)
 > - [Node.js](create-sql-api-nodejs.md)
 > - [Python](create-sql-api-python.md)
 > - [Xamarin](create-sql-api-xamarin-dotnet.md)
@@ -176,7 +177,7 @@ npm install @azure/cosmos
 
 1. 在您於 [Azure 入口網站](https://portal.azure.com/)的 Azure Cosmos DB 帳戶中，從左側瀏覽區選取 [金鑰]，然後選取 [讀寫金鑰]。 在下一個步驟中，使用畫面右側的複製按鈕，將 URI 和主要金鑰複製到 app.js 檔案。
 
-   :::image type="content" source="./media/create-sql-api-dotnet/keys.png" alt-text="在 Azure 入口網站的 [金鑰] 刀鋒視窗中檢視並複製存取金鑰":::
+   :::image type="content" source="./media/create-sql-api-dotnet/keys.png" alt-text="Azure 入口網站資料總管，[新增容器] 窗格":::
 
 2. 開啟 config.js 檔案。
 

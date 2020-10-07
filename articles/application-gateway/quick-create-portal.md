@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 08/27/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 7c144ddac255087ae48ff2f1c5406ad66d670562
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: d700c2f2b4df01da577b67dafab989b655bdb58d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90601345"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331075"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-portal"></a>快速入門：使用 Azure 應用程式閘道引導網路流量 - Azure 入口網站
 
@@ -52,6 +52,9 @@ ms.locfileid: "90601345"
      ![建立新的應用程式閘道：基本概念](./media/application-gateway-create-gateway-portal/application-gateway-create-basics.png)
 
 2. Azure 需要虛擬網路才能在您所建立的資源之間進行通訊。 您可以建立新的虛擬網路，或使用現有的虛擬網路。 在此範例中，您將會在建立應用程式閘道時，同時建立新的虛擬網路。 在不同的子網路中，建立應用程式閘道執行個體。 在此範例中您會建立兩個子網路：一個用於應用程式閘道，另一個用於後端伺服器。
+
+    > [!NOTE]
+    > 應用程式閘道子網路中目前不支援[虛擬網路服務端點原則](../virtual-network/virtual-network-service-endpoint-policies-overview.md)。
 
     在 [設定虛擬網路]  底下，選取 [新建]  以建立新的虛擬網路。 在隨即開啟的 [建立虛擬網路]  視窗中，輸入下列值以建立虛擬網路和兩個子網路：
 
@@ -216,7 +219,7 @@ ms.locfileid: "90601345"
 
 ## <a name="clean-up-resources"></a>清除資源
 
-當您不再需要先前為應用程式閘道建立的資源時，請刪除資源群組。 當您刪除資源群組時，您也可以移除應用程式閘道及其所有相關資源。
+當您不再需要先前為應用程式閘道建立的資源時，請刪除資源群組。 在刪除資源群組時，將同時移除應用程式閘道及其所有相關資源。
 
 若要刪除資源群組：
 

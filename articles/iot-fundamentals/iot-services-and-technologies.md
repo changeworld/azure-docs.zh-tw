@@ -7,12 +7,12 @@ services: iot-fundamentals
 ms.topic: overview
 ms.date: 01/15/2020
 ms.author: dobett
-ms.openlocfilehash: 0b04b5170c13f6f6c3fd74976461f03e4367060a
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: dedb799121fcdbc6bab38865132ae46a78aa6494
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77046069"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91578169"
 ---
 # <a name="azure-technologies-and-services-for-creating-iot-solutions"></a>用來建立 IoT 解決方案的 Azure 技術和服務
 
@@ -57,7 +57,7 @@ Azure IoT 解決方案加速器可提升您對 IoT 解決方案的控制能力�
 
 使用其中一個 [Azure IoT 入門套件](https://catalog.azureiotsolutions.com/kits)來開發 IoT 裝置，或從 [Azure IoT 認證裝置目錄](https://catalog.azureiotsolutions.com)中選擇要使用的裝置。 使用開放原始碼[裝置 SDK](../iot-hub/iot-hub-devguide-sdks.md) 來實作內嵌程式碼。 裝置 SDK 支援多種作業系統，例如 Linux、Windows 和即時作業系統。 有適用於多種程式設計語言的 SDK，例如 [C](https://github.com/Azure/azure-iot-sdk-c)、[Node.js](https://github.com/Azure/azure-iot-sdk-node)、[Java](https://github.com/Azure/azure-iot-sdk-java)、[.NET](https://github.com/Azure/azure-iot-sdk-csharp) 和 [Python](https://github.com/Azure/azure-iot-sdk-python)。
 
-您可以使用 [IoT 隨插即用預覽版](../iot-pnp/overview-iot-plug-and-play.md)服務，進一步簡化為裝置建立內嵌程式碼的方式。 IoT 隨插即用可讓解決方案開發人員將裝置與解決方案整合，而不需要撰寫任何內嵌程式碼。 IoT 隨插即用的核心是說明裝置功能的「裝置功能模型」  結構描述。 使用裝置功能模型來產生內嵌裝置程式碼，並設定雲端式解決方案，例如 IoT Central 應用程式。
+您可以使用 [IoT 隨插即用](../iot-pnp/overview-iot-plug-and-play.md)服務，進一步簡化為裝置建立內嵌程式碼的方式。 IoT 隨插即用可讓解決方案開發人員將裝置與解決方案整合，而不需要撰寫任何內嵌程式碼。 IoT 隨插即用的核心是說明裝置功能的「裝置功能模型」  結構描述。 使用裝置功能模型來產生內嵌裝置程式碼，並設定雲端式解決方案，例如 IoT Central 應用程式。
 
 [Azure IoT Edge](../iot-edge/about-iot-edge.md) 可讓您將部分的 IoT 工作負載從 Azure 雲端服務卸載至您的裝置。 IoT Edge 可以減少解決方案中的延遲、減少裝置與雲端交換的資料量，以及啟用離線案例。 您可以從 IoT Central 和一些解決方案加速器來管理 IoT Edge 裝置。
 

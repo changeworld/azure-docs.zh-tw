@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 04/22/2020
 ms.author: apimpm
-ms.openlocfilehash: 583179c4678b43bef25174835ec2701d571b37b6
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 3ceaa357150fe0c4d26eeedc6821761d2eb00106
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905645"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91357959"
 ---
 # <a name="import-soap-api"></a>匯入 SOAP API
 
@@ -45,7 +45,7 @@ ms.locfileid: "87905645"
 3. 在 **WSDL 規格**中，輸入 SOAP API 的所在 URL。
 4. **SOAP 傳遞**選項按鈕會預設為選取。 透過此選項，API 會公開為 SOAP。 取用者必須使用 SOAP 規則。 如果您想要「Restify」API，請遵循[匯入 SOAP API 並將其轉換成 REST](restify-soap-api.md) 中的步驟。
 
-    ![傳遞](./media/import-soap-api/pass-through.png)
+    ![此螢幕擷取畫面顯示 [從 W S D L 建立] 對話方塊，您可以在其中輸入 W S D L 規格。](./media/import-soap-api/pass-through.png)
 5. 按 tab 鍵。
 
     下列欄位會填入來自 SOAP API 的資訊：顯示名稱、名稱、描述。

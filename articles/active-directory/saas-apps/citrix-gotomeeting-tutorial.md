@@ -1,6 +1,6 @@
 ---
 title: 教學課程：Azure Active Directory 與 GoToMeeting 整合 | Microsoft Docs
-description: 了解如何設定 Azure Active Directory 與 GoToMeeting 之間的單一登入。
+description: 了解您整合 GoToMeeting 與 Azure Active Directory (Azure AD) 所需執行的步驟。
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/16/2020
 ms.author: jeedes
-ms.openlocfilehash: b410c4a106f65c8913dc41f5957cdaf10cad3c89
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 50ef8cac944304ef51d2caeb0ddfeed3eb457876
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551227"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331143"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-gotomeeting"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 GoToMeeting 整合
 

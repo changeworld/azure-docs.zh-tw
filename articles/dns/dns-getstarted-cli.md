@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 3/11/2019
 ms.author: rohink
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: a15209351f95e44c7cf10993513e03ba35b53d27
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: a08a3bb8e01d827b806dae269b65569cb415404d
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87494344"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358571"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-azure-cli"></a>快速入門：使用 Azure CLI 建立 Azure DNS 區域和記錄
 
@@ -92,7 +92,7 @@ az network dns record-set list -g MyResourceGroup -z contoso.xyz
 
    您應該會看到類似於下列畫面的內容：
 
-   ![nslookup](media/dns-getstarted-portal/nslookup.PNG)
+   ![螢幕擷取畫面顯示命令提示字元視窗，其中包含 n s 查閱命令，以及伺服器、位址、名稱和位址的值。](media/dns-getstarted-portal/nslookup.PNG)
 
 主機名稱 **www\.contoso.xyz** 解析為 **10.10.10.10**，正如您所設定。 此結果確認了名稱解析正常運作。
 

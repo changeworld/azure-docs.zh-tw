@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-accelerators
 services: iot-accelerators
 manager: timlt
-ms.openlocfilehash: 1a27d748e16f892a748cf18569c13ca3f9ead1dd
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: a8314fed43c8282c536fc6e95e6c3aa877408b09
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "71309506"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91542490"
 ---
 # <a name="what-are-azure-iot-solution-accelerators"></a>Azure IoT 解決方案加速器是什麼？
 
@@ -46,7 +46,7 @@ IoT 解決方案加速器是完整且可立即部署的 IoT 解決方案，可�
 
 您可以使用連線工廠儀表板來監視及管理您的工業裝置：
 
-[![連線工廠解決方案儀表板](./media/about-iot-accelerators/cf-dashboard-inline.png)](./media/about-iot-accelerators/cf-dashboard-expanded.png#lightbox)
+:::image type="content" source="./media/about-iot-accelerators/cf-dashboard-inline.png" alt-text="此螢幕擷取畫面顯示已連線的處理站解決方案儀表板。" lightbox="./media/about-iot-accelerators/cf-dashboard-expanded.png":::
 
 ### <a name="predictive-maintenance"></a>預測性維護
 
@@ -54,7 +54,7 @@ IoT 解決方案加速器是完整且可立即部署的 IoT 解決方案，可�
 
 您可以使用預測性維護儀表板來檢視預測性維護分析：
 
-[![連線工廠解決方案儀表板](./media/about-iot-accelerators/pm-dashboard-inline.png)](./media/about-iot-accelerators/pm-dashboard-expanded.png#lightbox)
+:::image type="content" source="./media/about-iot-accelerators/pm-dashboard-inline.png" alt-text="此螢幕擷取畫面顯示已連線的處理站解決方案儀表板。" lightbox="./media/about-iot-accelerators/pm-dashboard-expanded.png":::
 
 ### <a name="device-simulation"></a>裝置模擬
 

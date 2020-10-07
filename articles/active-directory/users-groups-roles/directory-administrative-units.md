@@ -1,5 +1,5 @@
 ---
-title: 管理單位管理 (預覽) - Azure AD | Microsoft Docs
+title: Azure Active Directory 中的管理單位 | Microsoft Docs
 description: 使用管理單位在 Azure Active Directory 中進行更細微的權限委派
 services: active-directory
 documentationcenter: ''
@@ -9,21 +9,21 @@ ms.service: active-directory
 ms.topic: overview
 ms.subservice: users-groups-roles
 ms.workload: identity
-ms.date: 07/27/2020
+ms.date: 09/22/2020
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5854ef57a08218fee4479eb9e075824f4a1ff781
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 7aa356c806b6b96fa6a22f8642b005b2002f7c2a
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89376378"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447922"
 ---
-# <a name="administrative-units-management-in-azure-active-directory-preview"></a>在 Azure Active Directory 中的管理單位管理 (預覽)
+# <a name="administrative-units-in-azure-active-directory"></a>Azure Active Directory 中的管理單位
 
-本文說明 Azure Active Directory (Azure AD) 中的管理單位。 管理單位是一種 Azure AD 資源，可以是其他 Azure AD 資源的容器。 在此預覽版本中，管理單位只能包含使用者和群組。
+本文說明 Azure Active Directory (Azure AD) 中的管理單位。 管理單位是一種 Azure AD 資源，可以是其他 Azure AD 資源的容器。 管理單位只能包含使用者和群組。
 
 管理單位可讓您授與系統管理權限，這些權限受限於您所定義組織的部門、區域或其他區段。 您可以使用管理單位將權限委派給區域管理員或以細微的層級設定原則。 例如，使用者帳戶管理員可以更新設定檔資訊、重設密碼，且只針對其管理單位中的使用者指派授權。
 
@@ -44,11 +44,11 @@ ms.locfileid: "89376378"
 
 ## <a name="manage-administrative-units"></a>管理管理單位
 
-在此預覽版本中，您可使用 Azure 入口網站、PowerShell Cmdlet 和指令碼或 Microsoft Graph 來管理管理單位。 您可以參考我們的文件以取得詳細資料：
+您可以使用 Azure 入口網站、PowerShell Cmdlet 和指令碼或 Microsoft Graph 來管理管理單位。 您可以參考我們的文件以取得詳細資料：
 
 - [在管理單位中建立、移除、填入和新增角色](roles-admin-units-manage.md)：完成操作程序
-- [使用管理單位](/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0)：如何使用 PowerShell 處理管理單位
-- [管理單位 Graph 支援](/graph/api/resources/administrativeunit?view=graph-rest-beta)：管理單位的 Microsoft Graph 詳細文件。
+- [使用管理單位](/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0&preserve-view=true)：如何使用 PowerShell 處理管理單位
+- [管理單位 Graph 支援](/graph/api/resources/administrativeunit?view=graph-rest-1.0&preserve-view=true)：管理單位的 Microsoft Graph 詳細文件。
 
 ### <a name="planning-your-administrative-units"></a>規劃您的管理單位
 
@@ -95,9 +95,6 @@ ms.locfileid: "89376378"
 管理單位範圍的群組屬性和成員管理     |  支援   |    支援    |  不支援
 管理單位範圍的群組授權管理   |    支援  |    支援   |   不支援
 
-> [!NOTE]
->
-> 具有管理單位範圍的系統管理員無法管理動態群組成員資格規則。
 
 管理單位只會將範圍套用至管理權限。 其不會阻止成員或系統管理員使用其[預設使用者權限](../fundamentals/users-default-permissions.md)來瀏覽管理單位以外的其他使用者、群組或資源。 在 Microsoft 365 系統管理中心，系統會篩選出限域系統管理員的管理單位以外的使用者，但您可以在 Azure AD 入口網站、PowerShell 和其他 Microsoft 服務中瀏覽其他使用者。
 

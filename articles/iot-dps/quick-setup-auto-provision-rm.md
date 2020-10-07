@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure Resource Manager 範本設定 Azure IoT 中樞裝置佈建
+title: 快速入門 - 使用 Azure Resource Manager 範本設定 Azure IoT 中樞裝置佈建服務
 description: Azure 快速入門 - 使用範本設定 Azure IoT 中樞裝置佈建服務 (DPS)
 author: wesmc7777
 ms.author: wesmc
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 482401b75cadf44e2cef03cced8dd216d0980524
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: e1ca3d7270fb0858bb2512e5b9e285eb8d4555c6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74969576"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91297142"
 ---
 # <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-with-an-azure-resource-manager-template"></a>快速入門：使用 Azure Resource Manager 範本設定 IoT 中樞裝置佈建服務
 
@@ -300,7 +300,7 @@ ms.locfileid: "74969576"
 
 請使用下列 Azure CLI 命令來部署您的範本，並確認部署。
 
-1. 若要部署您的範本，請瀏覽至包含範本和參數檔案的資料夾，然後執行下列[命令開始進行部署](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create)：
+1. 若要部署您的範本，請瀏覽至包含範本和參數檔案的資料夾，然後執行下列[命令開始進行部署](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create&preserve-view=true)：
     
     ```azurecli
      az group deployment create -g {your resource group name} --template-file template.json --parameters @parameters.json
@@ -311,7 +311,7 @@ ms.locfileid: "74969576"
    ![佈建輸出](./media/quick-setup-auto-provision-rm/output.png) 
 
 
-2. 若要確認您的部署，請執行下列[命令以列出資源](https://docs.microsoft.com/cli/azure/resource?view=azure-cli-latest#az-resource-list)，並在輸出中尋找新的佈建服務和 IoT 中樞：
+2. 若要確認您的部署，請執行下列[命令以列出資源](https://docs.microsoft.com/cli/azure/resource?view=azure-cli-latest#az-resource-list&preserve-view=true)，並在輸出中尋找新的佈建服務和 IoT 中樞：
 
     ```azurecli
      az resource list -g {your resource group name}

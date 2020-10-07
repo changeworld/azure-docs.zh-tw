@@ -1,17 +1,15 @@
 ---
 title: 在 Azure 中使用 ELK 監視 Service Fabric 中的應用程式
 description: 在本教學課程，了解如何設定 ELK 和監視 Service Fabric 應用程式。
-author: suhuruli
 ms.topic: tutorial
 ms.date: 02/26/2018
-ms.author: suhuruli
 ms.custom: mvc, devx-track-java
-ms.openlocfilehash: b27711158c10b0f7fa78875aec7f9c63c166258c
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 5faf26230618161a5b908c9a544a43ec5c33b807
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327169"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91532017"
 ---
 # <a name="tutorial-monitor-your-service-fabric-applications-using-elk"></a>教學課程：使用 ELK 監視 Service Fabric 應用程式
 
@@ -142,7 +140,7 @@ git clone https://github.com/Azure-Samples/service-fabric-java-quickstart
 
 8. 存取 Kibana 儀表板 (位於 **http:\//SERVER-IP**) 並輸入 Kibana 的使用者名稱和密碼。 如果您在 Azure 中使用 ELK 映像，則預設使用者名稱為 'user'，而密碼則取自 [開機診斷]  。
 
-    ![Kibana](./media/service-fabric-tutorial-java-elk/kibana.png)
+    ![此螢幕擷取畫面顯示可視覺化平台和應用程式記錄的 Kibana 儀表板。](./media/service-fabric-tutorial-java-elk/kibana.png)
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -1,7 +1,7 @@
 ---
 title: 快速入門：使用 REST API 和 Ruby 來取得影像見解 - Bing 圖像式搜尋
 titleSuffix: Azure Cognitive Services
-description: 了解如何將影像上傳到 Bing 圖像式搜尋 API 並取得其見解。
+description: 了解如何使用 Bing 圖像式搜尋 API 和 Ruby 上傳影像，然後取得影像的相關見解。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-visual-search
 ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: aahi
-ms.openlocfilehash: 20c5ef930af8cc279f63432e9e3a14a0767ca592
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: ba5d07017c0244c370a8dc6945a7958beb0f224f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83870340"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324564"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-ruby"></a>快速入門：使用 Bing 圖像式搜尋 REST API 和 Ruby 來取得影像見解
 

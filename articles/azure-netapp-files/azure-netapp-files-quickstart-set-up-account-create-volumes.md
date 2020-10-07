@@ -6,14 +6,14 @@ ms.author: b-juche
 ms.service: azure-netapp-files
 ms.workload: storage
 ms.topic: quickstart
-ms.date: 06/09/2020
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 92d92072fbc8ceebdd4fd9253620e5fba89bfb54
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.date: 09/22/2020
+ms.custom: devx-track-azurecli, subject-armqs
+ms.openlocfilehash: d118bef4a7ccc263010fe176432a5301c4104118
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87987506"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91533888"
 ---
 # <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>快速入門：設定 Azure NetApp Files 並建立 NFS 磁碟區 
 
@@ -53,7 +53,7 @@ ms.locfileid: "87987506"
 
 本操作說明文章需要 Azure PowerShell 模組 Az 2.6.0 版或更新版本。 執行 `Get-Module -ListAvailable Az` 來尋找您目前的版本。 如果您需要安裝或升級，請參閱[安裝 Azure PowerShell 模組](/powershell/azure/install-Az-ps)。 如果您想要，也可以改為在 PowerShell 工作階段中使用 Cloud Shell 主控台。
 
-1. 在 PowerShell 命令提示字元 (或 PowerShell Cloud Shell 工作階段) 中，指定已列入 Azure NetApp Files 允許清單中的訂用帳戶：
+1. 在 PowerShell 命令提示字元 (或 PowerShell Cloud Shell 工作階段) 中，指定 Azure NetApp Files 已核准的訂用帳戶：
     ```powershell-interactive
     Select-AzSubscription -Subscription <subscriptionId>
     ```
@@ -66,6 +66,14 @@ ms.locfileid: "87987506"
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 [!INCLUDE [azure-netapp-files-cloudshell-include](../../includes/azure-netapp-files-azure-cloud-shell-window.md)]
+
+# <a name="template"></a>[範本](#tab/template)
+
+無。  
+
+使用 Azure 入口網站、PowerShell 或 Azure CLI 來註冊 Azure NetApp Files 和 NetApp 資源提供者。  
+
+如需詳細資訊，請參閱[註冊 Azure NetApp Files](azure-netapp-files-register.md)。 
 
 ---
 
@@ -151,6 +159,17 @@ ms.locfileid: "87987506"
         --location $LOCATION \
         --account-name $ANF_ACCOUNT_NAME
     ```
+
+# <a name="template"></a>[範本](#tab/template)
+
+[!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
+
+下列程式碼片段示範如何使用 [Microsoft.NetApp/netAppAccounts](https://docs.microsoft.com/azure/templates/microsoft.netapp/netappaccounts) 資源，在 Azure Resource Manager 範本 (ARM 範本) 中建立 NetApp 帳戶。 若要執行程式碼，請從我們的 GitHub 存放庫下載[完整 ARM 範本](https://github.com/Azure/azure-quickstart-templates/blob/master/101-anf-nfs-volume/azuredeploy.json)。
+
+:::code language="json" source="~/quickstart-templates/101-anf-nfs-volume/azuredeploy.json" range="177-183":::
+
+<!-- Block begins with "type": "Microsoft.NetApp/netAppAccounts", -->
+
 ---
 
 ## <a name="set-up-a-capacity-pool"></a>設定容量集區
@@ -167,14 +186,15 @@ ms.locfileid: "87987506"
 
 3. 按一下 [+ 新增集區]  。 
 
-    ![按一下新增集區](../media/azure-netapp-files/azure-netapp-files-click-add-pools.png)  
+    ![按一下新增集區](../media/azure-netapp-files/azure-netapp-files-new-capacity-pool.png)  
 
 4. 提供容量集區的資訊： 
-    1. 請輸入 **mypool1** 作為集區名稱。
-    2. 選取 [進階]  作為服務等級。 
-    3. 指定 **4 (TiB)** 作為集區大小。 
+    * 請輸入 **mypool1** 作為集區名稱。
+    * 選取 [進階]  作為服務等級。 
+    * 指定 **4 (TiB)** 作為集區大小。 
+    * 使用 [自動] QoS 類型。
 
-5. 按一下 [確定]  。
+5. 按一下 [建立]。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -213,6 +233,16 @@ ms.locfileid: "87987506"
         --size $POOL_SIZE_TiB \
         --service-level $SERVICE_LEVEL
     ```
+
+# <a name="template"></a>[範本](#tab/template)
+
+<!-- [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)] -->
+
+下列程式碼片段示範如何使用 [Microsoft.NetApp/netAppAccounts/capacityPools](https://docs.microsoft.com/azure/templates/microsoft.netapp/netappaccounts/capacitypools) 資源，在 Azure Resource Manager 範本 (ARM 範本) 中建立集區。 若要執行程式碼，請從我們的 GitHub 存放庫下載[完整 ARM 範本](https://github.com/Azure/azure-quickstart-templates/blob/master/101-anf-nfs-volume/azuredeploy.json)。
+
+:::code language="json" source="~/quickstart-templates/101-anf-nfs-volume/azuredeploy.json" range="184-196":::
+
+<!-- LN 185, block begins with  "type": "Microsoft.NetApp/netAppAccounts/capacityPools", -->
 
 ---
 
@@ -353,6 +383,20 @@ ms.locfileid: "87987506"
         --protocol-types "NFSv3"
     ```
 
+# <a name="template"></a>[範本](#tab/template)
+
+<!-- [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)] --> 
+
+下列程式碼片段示範如何在 Azure Resource Manager 範本 (ARM 範本) 中設定 VNet 並建立 Azure NetApp Files 磁碟區。 設定 VNet 時會使用 [Microsoft.Network/virtualNetworks](https://docs.microsoft.com/azure/templates/Microsoft.Network/virtualNetworks) 的資源。 建立磁碟區時會使用 [Microsoft.NetApp/netAppAccounts/capacityPools/volumes](https://docs.microsoft.com/azure/templates/microsoft.netapp/netappaccounts/capacitypools/volumes) 資源。 若要執行程式碼，請從我們的 GitHub 存放庫下載[完整 ARM 範本](https://github.com/Azure/azure-quickstart-templates/blob/master/101-anf-nfs-volume/azuredeploy.json)。
+
+:::code language="json" source="~/quickstart-templates/101-anf-nfs-volume/azuredeploy.json" range="148-176":::
+
+<!-- Block begins with  "type": "Microsoft.Network/virtualNetworks", -->
+
+:::code language="json" source="~/quickstart-templates/101-anf-nfs-volume/azuredeploy.json" range="197-229":::
+
+<!-- Block begins with  "type": "Microsoft.NetApp/netAppAccounts/capacityPools/volumes", -->
+
 ---
 
 ## <a name="clean-up-resources"></a>清除資源
@@ -373,13 +417,13 @@ ms.locfileid: "87987506"
 
 3. 在 [資源群組] 頁面中，按一下 [刪除資源群組]  。
 
-    ![刪除資源群組](../media/azure-netapp-files/azure-netapp-files-azure-delete-resource-group.png) 
+    ![反白顯示 [刪除資源群組] 按鈕的螢幕擷取畫面。](../media/azure-netapp-files/azure-netapp-files-azure-delete-resource-group.png) 
 
     隨即開啟一個視窗，其中顯示有關資源將會與資源群組一起刪除的警告。
 
 4. 輸入資源群組名稱 (myRG1) 以確認您想要永久刪除該資源群組和所有資源，然後按一下 [刪除]  。
 
-    ![刪除資源群組](../media/azure-netapp-files/azure-netapp-files-azure-confirm-resource-group-deletion.png ) 
+    ![確認刪除資源群組](../media/azure-netapp-files/azure-netapp-files-azure-confirm-resource-group-deletion.png ) 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -407,6 +451,13 @@ ms.locfileid: "87987506"
     az group delete \
         --name $RESOURCE_GROUP
     ```
+
+# <a name="template"></a>[範本](#tab/template)
+
+無。
+
+使用 Azure 入口網站、PowerShell 或 Azure CLI 來刪除資源群組。   
+
 ---
 
 ## <a name="next-steps"></a>後續步驟  

@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 媒體服務串流視訊檔案 - .NET | Microsoft Docs
-description: 按照本教學課程的步驟建立新的 Azure 媒體服務帳戶、對檔案進行編碼，然後將它串流到 Azure 媒體播放器。
+description: 按照本教學課程的步驟，使用 .NET 來建立新的 Azure 媒體服務帳戶、對檔案進行編碼，然後將其串流到 Azure 媒體播放器。
 services: media-services
 documentationcenter: ''
 author: IngridAtMicrosoft
@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: ec60f775fbeb176f9442aff11117c85c5028a81f
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 530089b9c6b9544201b0f07368cac3d1a695a4f8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267083"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268684"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---net"></a>教學課程：編碼以 URL 為基礎的遠端檔案及串流處理影片 - .NET
 
@@ -70,7 +70,7 @@ ms.locfileid: "89267083"
 1. 按下 Ctrl+F5 來執行 EncodeAndStreamFiles  應用程式。
 2. 選擇 Apple 的 **HLS** 通訊協定 (結尾是 *manifest(format=m3u8-aapl)* ) 並從主控台複製串流 URL。
 
-![輸出](./media/stream-files-tutorial-with-api/output.png)
+![Visual Studio 中 EncodeAndStreamFiles 應用程式輸出的螢幕擷取畫面，其中顯示三個用於 Azure 媒體播放器的串流 URL。](./media/stream-files-tutorial-with-api/output.png)
 
 在此範例的[原始程式碼](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/Program.cs)中，您可以看到建置 URL 的方式。 若要建置它，您需要串連串流端點主機名稱和串流定位器路徑。  
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 5e8571da46ca188e975119c387fa4ee0695c4fde
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 0454ffc1ed68056b2aedc10a6e904a9a934ab223
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545704"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333489"
 ---
 # <a name="tutorial-configure-zscaler-zscloud-for-automatic-user-provisioning"></a>教學課程：設定 Zscaler ZSCloud 來自動佈建使用者
 
@@ -120,7 +120,7 @@ Azure AD 使用者必須先獲得所選應用程式的存取權，才能使用�
 
 11. 在 [屬性對應]  區段中，檢閱從 Azure AD 同步至 Zscaler ZSCloud 的使用者屬性。 選取為 [比對]  屬性的屬性會用來比對 Zscaler ZSCloud 中的使用者帳戶以進行更新作業。 選取 [儲存]  認可任何變更。
 
-    ![屬性對應](./media/zscaler-zscloud-provisioning-tutorial/userattributemappings.png)
+    ![[屬性對應] 區段的螢幕擷取畫面，其中顯示七個對應。](./media/zscaler-zscloud-provisioning-tutorial/userattributemappings.png)
 
 12. 在 [對應]  區段中，選取 [將 Azure Active Directory 群組同步至 Zscaler ZSCloud]  ：
 
@@ -128,7 +128,7 @@ Azure AD 使用者必須先獲得所選應用程式的存取權，才能使用�
 
 13. 在 [屬性對應]  區段中，檢閱從 Azure AD 同步至 Zscaler ZSCloud 的群組屬性。 選取為 [比對]  屬性的屬性會用來比對 Zscaler ZSCloud 中的群組以進行更新作業。 選取 [儲存]  認可任何變更。
 
-    ![屬性對應](./media/zscaler-zscloud-provisioning-tutorial/groupattributemappings.png)
+    ![[屬性對應] 區段的螢幕擷取畫面，其中顯示三個對應。](./media/zscaler-zscloud-provisioning-tutorial/groupattributemappings.png)
 
 14. 若要設定範圍篩選條件，請參閱[範圍篩選條件教學課程](./../active-directory-saas-scoping-filters.md)中的指示。
 

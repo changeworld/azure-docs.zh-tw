@@ -4,12 +4,12 @@ description: 本教學課程將逐步說明如何設定您的事件架構，以�
 ms.topic: tutorial
 ms.date: 07/07/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 27cc64eee31755bcefc9d0d82b7d06e52efcf183
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: e37cb6a0679ee2e249de4ed8fa31c40d5082ea4a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89004539"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324122"
 ---
 # <a name="build-your-own-disaster-recovery-for-custom-topics-in-event-grid"></a>為事件方格中的自訂主題建置您自己的災害復原
 災害復原著重在從應用程式功能的嚴重損失中復原。 本教學課程將逐步說明如何設定您的事件架構，以便在特定區域中的事件方格服務狀況不良時進行復原。
@@ -72,7 +72,7 @@ ms.locfileid: "89004539"
    * 選取端點類型 Web Hook。
    * 將端點設為您事件接收器的事件 URL，應會顯示如下：`https://<your-event-reciever>.azurewebsites.net/api/updates`
 
-     ![事件方格主要事件訂用帳戶](./media/custom-disaster-recovery/create-primary-es.png)
+     ![顯示 [建立事件訂用帳戶 - 基本] 頁面的螢幕擷取畫面，其中已反白顯示 [名稱]、[端點類型] 和 [端點] 值。](./media/custom-disaster-recovery/create-primary-es.png)
 
 1. 重複相同的流程以建立次要主題和訂用帳戶。 這次請將 "-primary" 尾碼取代為 "-secondary"，以方便追蹤。 最後，請確實將其放在不同的 Azure 區域中。 雖然您可以將其放在您想要的任何位置，但建議您使用 [Azure 配對區域](../best-practices-availability-paired-regions.md)。 將次要主題和訂用帳戶放在不同的區域中，可確保即使主要區域中斷運作，您的新事件仍會傳送。
 

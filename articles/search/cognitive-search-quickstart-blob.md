@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 06/07/2020
-ms.openlocfilehash: 8fba7245475c9873a3e2d3abeda4806d1376e7ca
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.date: 09/25/2020
+ms.openlocfilehash: be45292552a7ac62c7131c637b044edc477328e2
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89300029"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91396785"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-cognitive-skillset-in-the-azure-portal"></a>快速入門：在 Azure 入口網站中建立 Azure 認知搜尋的認知技能集
 
@@ -50,7 +50,7 @@ ms.locfileid: "89300029"
 
 1. 在容器中按一下 [上傳]，以上傳您在第一個步驟中下載的範例檔案。 請注意，您有多種不同的內容類型，包括無法以原生格式全文檢索搜尋的影像和應用程式檔案。
 
-   ![Azure Blob 儲存體中的來源檔案](./media/cognitive-search-quickstart-blob/sample-data.png)
+   :::image type="content" source="media/cognitive-search-quickstart-blob/sample-data.png" alt-text="Azure Blob 儲存體中的來源檔案" border="false":::
 
 現在您已準備就緒，可移至「匯入資料」精靈。
 
@@ -60,13 +60,13 @@ ms.locfileid: "89300029"
 
 1. [尋找您的搜尋服務](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/)，然後在 [概觀] 頁面上，按一下命令列上的 [匯入資料]，以四個步驟設定認知擴充。
 
-   ![匯入資料命令](media/cognitive-search-quickstart-blob/import-data-cmd2.png)
+   :::image type="content" source="media/cognitive-search-quickstart-blob/import-data-cmd2.png" alt-text="Azure Blob 儲存體中的來源檔案" border="false":::
 
 ### <a name="step-1---create-a-data-source"></a>步驟 1 - 建立資料來源
 
 1. 在 [連線到您的資料] 中，選擇 [Azure Blob 儲存體]，然後選取您建立的儲存體帳戶和容器。 指定資料來源的名稱，其餘部分則使用預設值。 
 
-   ![Azure Blob 組態](./media/cognitive-search-quickstart-blob/blob-datasource.png)
+   :::image type="content" source="media/cognitive-search-quickstart-blob/blob-datasource.png" alt-text="Azure Blob 儲存體中的來源檔案" border="false":::
 
     繼續進行下一頁。
 
@@ -76,7 +76,7 @@ ms.locfileid: "89300029"
 
 1. 在本快速入門中，我們將使用**免費**的認知服務資源。 範例資料包含 14 個檔案，因此認知服務20 筆交易的免費配額就足以供本快速入門使用。 
 
-   ![附加認知服務附加基底服務](media/cognitive-search-quickstart-blob/cog-search-attach.png)
+   :::image type="content" source="media/cognitive-search-quickstart-blob/cog-search-attach.png" alt-text="Azure Blob 儲存體中的來源檔案" border="false":::
 
 1. 展開 [新增擴充]，然後進行四項選擇。 
 
@@ -86,7 +86,7 @@ ms.locfileid: "89300029"
 
    選擇實體辨識 (人員、組織、位置) 和影像分析技能。
 
-   ![附加認知服務選取技能集的服務](media/cognitive-search-quickstart-blob/skillset.png)
+   :::image type="content" source="media/cognitive-search-quickstart-blob/skillset.png" alt-text="Azure Blob 儲存體中的來源檔案" border="false":::
 
    繼續進行下一頁。
 
@@ -102,9 +102,9 @@ ms.locfileid: "89300029"
 
 + 預設屬性為 [可擷取] 和 [可搜尋]。 [可搜尋] 會允許對欄位進行全文檢索搜尋。 [可擷取] 表示可在結果中傳回欄位值。 精靈假設您希望這些欄位為可擷取並可搜尋，因為您是透過技能集來建立欄位。
 
-  ![索引欄位](media/cognitive-search-quickstart-blob/index-fields.png)
+  :::image type="content" source="media/cognitive-search-quickstart-blob/index-fields.png" alt-text="Azure Blob 儲存體中的來源檔案" border="false":::
 
-請注意，依 `content` 欄位顯示的 [可擷取] 屬性上的刪除線和問號。 在大量文字的 Blob 文件中，`content` 欄位包含檔案主體，有可能遇到數千行。 這類欄位在搜尋結果中會很難處理，因此請在此示範中予以排除。 
+請注意，[可擷取] 屬性上 `content` 欄位旁邊的刪除線和問號。 在大量文字的 Blob 文件中，`content` 欄位包含檔案主體，有可能遇到數千行。 這類欄位在搜尋結果中會很難處理，因此請在此示範中予以排除。 
 
 不過，如果您需要將檔案內容傳遞給用戶端程式碼，請確定 [可擷取] 保持已選取狀態。 否則，如果您覺得所擷取的元素 (例如 `people`、`organizations`、`locations` 等等) 就已足夠，則可考慮在 `content` 上清除這個屬性。
 
@@ -118,7 +118,7 @@ ms.locfileid: "89300029"
 
 1. 在 [索引子] 頁面上，您可以接受預設名稱，並按一下 [一次] 排程選項立即加以執行。 
 
-   ![索引子定義](media/cognitive-search-quickstart-blob/indexer-def.png)
+   :::image type="content" source="media/cognitive-search-quickstart-blob/indexer-def.png" alt-text="Azure Blob 儲存體中的來源檔案" border="false":::
 
 1. 按一下 [提交] 以建立並同時執行索引子。
 
@@ -126,7 +126,7 @@ ms.locfileid: "89300029"
 
 認知技能的索引編製需要比一般文字的索引編製更長的時間來完成，OCR 和影像分析更是如此。 若要監視進度，請移至 [概觀] 頁面，然後按一下頁面中央的 [索引子]。
 
-  ![Azure 認知搜尋通知](./media/cognitive-search-quickstart-blob/indexer-notification.png)
+  :::image type="content" source="media/cognitive-search-quickstart-blob/indexer-notification.png" alt-text="Azure Blob 儲存體中的來源檔案" border="false":::
 
 由於內容類型的種類繁多，所以出現警告是很正常的事。 有些並不是特定技能的有效內容類型，而且在較低的層級中，常常會遇到[索引子限制](search-limits-quotas-capacity.md#indexer-limits)。 例如，32,000 個字元的截斷通知就是免費層的索引子限制。 如果您在較高的層級執行此示範，許多截斷警告便會消失。
 
@@ -134,11 +134,11 @@ ms.locfileid: "89300029"
 
 在該頁面上，再次按一下 [警告] 狀態，以檢視類似下面所示警告的清單。 
 
-  ![索引子警告清單](./media/cognitive-search-quickstart-blob/indexer-warnings.png)
+  :::image type="content" source="media/cognitive-search-quickstart-blob/indexer-warnings.png" alt-text="Azure Blob 儲存體中的來源檔案" border="false":::
 
 當您按一下特定狀態行時，就會顯示詳細資料。 此警告指出在達到最大閾值 (這個特殊的 PDF 很大) 後，合併作業已停止。
 
-  ![警告詳細資料](./media/cognitive-search-quickstart-blob/warning-detail.png)
+  :::image type="content" source="media/cognitive-search-quickstart-blob/warning-detail.png" alt-text="Azure Blob 儲存體中的來源檔案" border="false":::
 
 ## <a name="query-in-search-explorer"></a>在搜尋總管中查詢
 
@@ -157,7 +157,7 @@ ms.locfileid: "89300029"
 
 查詢字串會區分大小寫，因此如果您收到「未知的欄位」訊息，請檢查 [欄位] 或 [索引定義 (JSON)] 以確認名稱和大小寫。 
 
-  ![搜尋總管範例](./media/cognitive-search-quickstart-blob/search-explorer.png)
+  :::image type="content" source="media/cognitive-search-quickstart-blob/search-explorer.png" alt-text="Azure Blob 儲存體中的來源檔案" border="false":::
 
 ## <a name="takeaways"></a>重要心得
 

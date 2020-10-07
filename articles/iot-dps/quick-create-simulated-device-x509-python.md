@@ -1,5 +1,5 @@
 ---
-title: 使用 Python 將模擬 X.509 裝置佈建到 Azure IoT 中樞
+title: 快速入門 - 使用 Python 將模擬 X.509 裝置佈建到 Azure IoT 中樞
 description: 快速入門 - 使用適用於 IoT 中樞裝置佈建服務 (DPS) 的 Python 裝置 SDK 來建立及佈建模擬 X.509 裝置。 本快速入門使用個別註冊。
 author: wesmc7777
 ms.author: wesmc
@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: python
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 3386dcf60049ede9297bd36e701442ce50603add
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 28a65e9e5f85d3c1102875a97ae122a00456c607
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87872510"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323901"
 ---
 # <a name="quickstart-create-and-provision-a-simulated-x509-device-using-python-device-sdk-for-iot-hub-device-provisioning-service"></a>快速入門：使用適用於 IoT 中樞裝置佈建服務的 Python 裝置 SDK 來建立及佈建模擬 X.509 裝置
 
@@ -24,7 +24,7 @@ ms.locfileid: "87872510"
 
 ## <a name="prerequisites"></a>必要條件
 
-- 檢閱[自動佈建概念](concepts-auto-provisioning.md)。
+- 熟悉[佈建](about-iot-dps.md#provisioning-process)概念。
 - 完成[使用 Azure 入口網站設定 IoT 中樞裝置佈建服務](./quick-setup-auto-provision.md)。
 - 具有有效訂用帳戶的 Azure 帳戶。 [建立免費帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 - [Visual Studio 2015+](https://visualstudio.microsoft.com/vs/) 以及使用 C++ 的桌面開發。

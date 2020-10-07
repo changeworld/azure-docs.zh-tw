@@ -1,17 +1,17 @@
 ---
 title: 使用 JavaScript 在 Azure 中建立第一個耐久函式
-description: 使用 Visual Studio Code 建立及發佈 Azure Durable Function。
+description: 使用 Visual Studio Code 在 JavaScript 中建立及發佈 Azure Durable Function。
 author: anthonychu
 ms.topic: quickstart
 ms.date: 05/07/2020
 ms.reviewer: azfuncdf, antchu
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 7614cec43fd9b2f294a04ed266cb0614f6cde872
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.custom: devx-track-js
+ms.openlocfilehash: f8ffa90ba0f1ac32d4691165fabf3d8eb9fb7605
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291837"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335444"
 ---
 # <a name="create-your-first-durable-function-in-javascript"></a>使用 JavaScript 建立第一個耐久函式
 

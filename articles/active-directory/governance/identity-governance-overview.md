@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c100c1b65b2af1201dfc3b52a6d90b2ed26d454
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 2ecbebfc75cb8c77ebb99ad04b1f9e33b3c4ef64
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89460809"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91306458"
 ---
 # <a name="what-is-azure-ad-identity-governance"></a>什麼是 Azure AD Identity Governance？
 
@@ -46,7 +46,7 @@ Identity Governance 可協助組織取得以下兩者之間的平衡：*生產�
 
 ![身分識別生命週期](./media/identity-governance-overview/identity-lifecycle.png)
 
-對許多組織來說，員工的身分識別生命週期會繫結到該使用者在 HCM (人力資本管理) 系統中的代表項目。  Azure AD Premium 會在 Active Directory 與 Azure Active Directory 中自動維護人員在 Workday 中表示的使用者身分識別，如 [Workday 輸入佈建教學課程](../saas-apps/workday-inbound-tutorial.md)中所述。  Azure AD Premium 也包含 [Microsoft Identity Manager](/microsoft-identity-manager/)，其可從內部部署 HCM 系統 (例如 SAP、Oracle eBusiness 和 PeopleSoft) 匯入記錄。
+對許多組織來說，員工的身分識別生命週期會繫結到該使用者在 HCM (人力資本管理) 系統中的代表項目。  Azure AD Premium 會在 Active Directory 與 Azure Active Directory 中自動維護人員在 Workday 和 SuccessFactors 中表示的使用者身分識別，如 [Azure Active Directory 使用者佈建計劃指南的雲端 HR 應用程式](../app-provisioning/plan-cloud-hr-provision.md)中所述。  Azure AD Premium 也包含 [Microsoft Identity Manager](/microsoft-identity-manager/)，其可從內部部署 HCM 系統 (例如 SAP HCM、Oracle eBusiness 和 PeopleSoft) 匯入記錄。
 
 有愈來愈多的案例需要與組織外部人員共同作業。 [Azure AD B2B](/azure/active-directory/b2b/) 共同作業可讓您與來賓使用者和來自任何組織的外部夥伴安全地共用貴組織的應用程式與服務，同時持續控制貴公司的資料。  [Azure AD 權利管理](entitlement-management-overview.md)可讓您選取要允許哪些組織的使用者要求存取權，並將其新增為您組織目錄中的 B2B 來賓，以及確保這些來賓不再需要存取權時會遭到移除。
 
@@ -69,6 +69,24 @@ Identity Governance 可協助組織取得以下兩者之間的平衡：*生產�
 ![特殊權限的存取生命週期](./media/identity-governance-overview/privileged-access-lifecycle.png)
 
 [Azure AD Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) 提供量身訂做的其他控制項，以保護 Azure AD、Azure 和其他 Microsoft Online Services 中資源的存取權限。  除了多重要素驗證和條件式存取，Just-In-Time 存取以及 Azure AD PIM 所提供的角色變更警示功能都會提供一組完整的控管控制項，協助保護貴公司的資源 (目錄、Microsoft 365 和 Azure 資源角色)。 如同其他形式的存取權，組織可以使用存取權檢閱，對具有系統管理員角色的所有使用者設定週期性存取權重新確認。
+
+## <a name="governance-capabilities-in-other-azure-ad-features"></a>其他 Azure AD 功能中的治理功能
+
+除了以上所列的功能之外，經常用來提供身分識別治理案例的其他 Azure AD 功能包括：
+
+| 功能 | 案例 |特徵
+| ------- | --------------------- |-----|
+|身分識別生命週期 (員工)|管理員可以啟用從 Workday 或 SuccessFactors 雲端 HR 或內部部署 HR 進行使用者帳戶佈建。|[Azure AD 使用者佈建的雲端 HR](../app-provisioning/plan-cloud-hr-provision.md)|
+|身分識別生命週期 (來賓)|管理員可以從另一個 Azure AD 租用戶、直接同盟、單次密碼 (OTP) 或 Google 帳戶，啟用自助式來賓使用者上線。  系統會根據生命週期原則自動佈建和取消佈建來賓使用者。|使用 [B2B](../external-identities/what-is-b2b.md) 進行[權利管理](entitlement-management-overview.md)|
+|權利管理|資源擁有者可以建立包含應用程式、Teams、Azure AD 和 Microsoft 365 群組的存取套件，以及 SharePoint Online 網站。|[權利管理](entitlement-management-overview.md)|
+|存取要求|終端使用者可以要求群組成員資格或應用程式存取權。 終端使用者 (包括來自其他組織的來賓) 可以要求存取套件的存取權。|[權利管理](entitlement-management-overview.md)|
+|工作流程|資源擁有者可以針對角色啟用要求的存取要求和核准者定義核准者和升級核准者。  |[權利管理](entitlement-management-overview.md)和 [PIM](../privileged-identity-management/pim-configure.md)|
+|原則和角色管理|管理員可以針對應用程式的執行階段存取權定義條件式存取原則。  資源擁有者可以透過存取套件來定義使用者的存取原則。|[條件式存取](../conditional-access/overview.md)和[權利管理](entitlement-management-overview.md)原則|
+|存取認證|管理員可以針對下列項目啟用重複存取重新認證：SaaS 應用程式或雲端群組成員資格、Azure AD 或 Azure 資源角色指派。 自動移除資源存取權、封鎖來賓存取權，以及刪除來賓帳戶。|[存取權檢閱](access-reviews-overview.md)也會顯示在 [PIM](../privileged-identity-management/pim-how-to-start-security-review.md) 中|
+|履行和佈建|自動佈建和解除佈建至 Azure AD 連線的應用程式，包括透過 SCIM 以及至 SharePoint Online 網站。 |[使用者佈建](../app-provisioning/user-provisioning.md)|
+|報告與分析|管理員可以擷取最近使用者佈建和登入活動的稽核記錄。 與 Azure 監視器和「誰可以透過存取套件進行存取」進行整合。|[Azure AD 報告](../reports-monitoring/overview-reports.md)和[監視](../reports-monitoring/overview-monitoring.md)|
+|特殊權限存取|Azure AD 角色 (包括自訂角色) 及 Azure 資源角色的 Just-In-Time 及排程存取、警示、核准工作流程。|[Azure AD PIM](../privileged-identity-management/pim-configure.md)|
+|稽核|管理員可以在建立管理員帳戶時收到警示。|[Azure AD PIM 警示](../privileged-identity-management/pim-how-to-configure-security-alerts.md)|
 
 ## <a name="getting-started"></a>開始使用
 

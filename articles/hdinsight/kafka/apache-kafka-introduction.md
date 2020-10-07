@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: overview
 ms.custom: hdinsightactive
 ms.date: 02/25/2020
-ms.openlocfilehash: 8c22ff3cc79d326da09c44167519adbea48b5643
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: c6209ae985f8e59e1acae2d8fd6a1c821acae5a7
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88651330"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449541"
 ---
 # <a name="what-is-apache-kafka-in-azure-hdinsight"></a>什麼是 Azure HDInsight 中的 Apache Kafka
 
@@ -33,7 +33,9 @@ HDInsight 上的 Apache Kafka 特定特性如下：
 
     如需詳細資訊，請參閱[使用 HDInsight 上的 Apache Kafka 確保高可用性](apache-kafka-high-availability.md)文件。
 
-* HDInsight 可讓您在叢集建立後，變更背景工作節點 (裝載 Kafka 訊息代理程式的節點) 的數目。 您可以從 Azure 入口網站、Azure PowerShell 及其他 Azure 管理介面執行調整。 對於 Kafka，您應該在調整作業完成後重新平衡磁碟分割複本。 重新平衡資料分割可讓 Kafka 利用新的背景工作節點數。
+* HDInsight 可讓您在叢集建立後，變更背景工作節點 (裝載 Kafka 訊息代理程式的節點) 的數目。 您可以從 Azure 入口網站、Azure PowerShell 及其他 Azure 管理介面執行向上調整。 對於 Kafka，您應該在調整作業完成後重新平衡磁碟分割複本。 重新平衡資料分割可讓 Kafka 利用新的背景工作節點數。
+
+   HDInsight Kafka 不支援向下調整或減少叢集內的訊息代理程式數目。 如果嘗試減少節點數目，則會傳回 `InvalidKafkaScaleDownRequestErrorCode` 錯誤。
 
     如需詳細資訊，請參閱[使用 HDInsight 上的 Apache Kafka 確保高可用性](apache-kafka-high-availability.md)文件。
 
@@ -49,7 +51,7 @@ HDInsight 上的 Apache Kafka 特定特性如下：
 
 Apache ZooKeeper 會管理 Kafka 叢集的狀態。 Zookeeper 是針對並行、彈性且低度延遲的交易所建置的。
 
-Kafka 會在「主題」  中儲存記錄 (資料)。 記錄是由「產生者」  產生，並由「取用者」  取用。 產生者會在 Kafka「訊息代理程式」  中傳送記錄。 HDInsight 叢集中的每個背景工作節點都是 Kafka 訊息代理程式。
+Kafka 會在「主題」**** 中儲存記錄 (資料)。 記錄是由「產生者」產生，並由「取用者」取用。 產生者會在 Kafka「訊息代理程式」**** 中傳送記錄。 HDInsight 叢集中的每個背景工作節點都是 Kafka 訊息代理程式。
 
 主題會將記錄分割至各個訊息代理程式。 取用記錄時，您可以針對每個分割區最多使用一個取用者，以達到資料平行處理。
 
@@ -81,4 +83,4 @@ Kafka 會在「主題」  中儲存記錄 (資料)。 記錄是由「產生者�
 
 * [教學課程：使用 Apache Spark 搭配 HDInsight 上的 Apache Kafka](../hdinsight-apache-spark-with-kafka.md)
 
-* [教學課程：使用 Apache Storm 搭配 HDInsight 上的 Apache Kafka](../hdinsight-apache-storm-with-kafka.md)
+* [教學課程：在 HDInsight 上搭配使用 Apache Storm 與 Apache Kafka](../hdinsight-apache-storm-with-kafka.md)

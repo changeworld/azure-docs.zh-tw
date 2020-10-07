@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 09/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 08455d3033040d14c85e4c4170ae34a6d05cfac1
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 03566dccbb453aa06a2b5f86bd02b86d85d61b28
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90527168"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322048"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>什麼是 Windows 虛擬桌面？
 
@@ -100,6 +100,8 @@ Windows 虛擬桌面包含您交付給使用者的 Windows 桌面與應用程式
 * 從用戶端的網路到主機集區部署所在 Azure 區域的來回行程 (RTT) 延遲應少於 150 毫秒。 使用[體驗估算器](https://azure.microsoft.com/services/virtual-desktop/assessment)來檢視您的連線健康情況和建議的 Azure 區域。
 * 當裝載桌面和應用程式的 VM 連線至管理服務時，網路流量可能會送到國家/地區以外。
 * 若要將網路效能最佳化，我們建議讓工作階段主機的 VM 共置在與管理服務相同的 Azure 區域中。
+
+您可以在我們的[架構文件](https://docs.microsoft.com/azure/architecture/example-scenario/wvd/windows-virtual-desktop)中，看到企業 Windows 虛擬桌面的一般架構設定。
 
 ## <a name="supported-remote-desktop-clients"></a>支援的遠端桌面用戶端
 

@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: tutorial
 ms.date: 3/11/2019
 ms.author: rohink
-ms.openlocfilehash: 7a250eaeb8ac4d0c8cacfb1748855700c9986bf5
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: cc36eca0b39db5188be7a63ffb148cc0f4cf30bf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88079445"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91252862"
 ---
 # <a name="tutorial-create-dns-records-in-a-custom-domain-for-a-web-app"></a>教學課程：在自訂網域中建立 Web 應用程式的 DNS 記錄 
 
@@ -35,7 +35,7 @@ ms.locfileid: "88079445"
 > * 建立自訂網域的 A 記錄和 TXT 記錄
 > * 建立自訂網域的 CNAME 記錄
 > * 測試新記錄
-> * 新增 Web 應用程式的自訂主機名稱
+> * 將自訂主機名稱新增至 Web 應用程式
 > * 測試自訂主機名稱
 
 
@@ -182,7 +182,7 @@ set-AzWebApp `
 
 ## <a name="clean-up-resources"></a>清除資源
 
-若不再需要本教學課程中建立的資源，請刪除 **MyAzureResourceGroup** 資源群組。
+若不再需要本教學課程中建立的資源，請刪除 **myresourcegroup** 資源群組。
 
 ## <a name="next-steps"></a>後續步驟
 

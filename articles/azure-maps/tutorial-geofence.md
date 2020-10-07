@@ -1,20 +1,20 @@
 ---
-title: 教學課程：建立地理柵欄並在 Azure 地圖服務上追蹤裝置
-description: 了解如何設定地理柵欄。 請參閱如何使用 Azure 地圖服務空間服務來追蹤相對於地理柵欄的裝置。
+title: 教學課程：建立地理柵欄並在Microsoft Azure 地圖服務上追蹤裝置
+description: 如何設定地理柵欄的教學課程。 請參閱如何使用 Azure 地圖服務空間服務來追蹤相對於地理柵欄的裝置
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 8/11/2020
+ms.date: 8/20/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: b374bbe086281c7f7914334be6ca275f0fd05b7f
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 7a0c39b6d2369a1279fee3905083f0660a4aabb8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90056504"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335189"
 ---
 # <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>教學課程：使用 Azure 地圖服務設定地理柵欄
 
@@ -429,14 +429,14 @@ Azure 地圖服務支援[三種事件類型](https://docs.microsoft.com/azure/ev
 
 在上述的 GeoJSON 回應中，設備仍然在主要位置地理柵欄中，但是已離開子位置地理柵欄。 不過請注意，`userTime` 值會在 `expiredTime` (如地理柵欄資料中所定義) 之後。 因此，`isEventPublished` 參數會設定為 `false`，而 Operations Manager 不會收到電子郵件通知。
 
-### <a name="location-547637988-1221338344"></a>位置 5 (47.637988，-122.1338344)
+### <a name="location-5-4763799--122134505"></a>位置 5 (47.63799、-122.134505)
 
 1. 在 Postman 應用程式頂端處，選取 [新增]。 在 [新建] 視窗中，選取 [要求]。 輸入要求的 [要求名稱]。 使其成為「位置 5」。 選取您在 [上傳Geofencing GeoJSON 資料區段](#upload-geofencing-geojson-data)中建立的集合，然後選取 [儲存]。
 
 2. 選取建立器索引標籤上的 **GET** HTTP 方法，然後輸入下列 URL。 確定以您的主要訂用帳戶金鑰取代 `{Azure-Maps-Primary-Subscription-key}`，並使用您儲存在[上傳 Geofencing GeoJSON 資料區段](#upload-geofencing-geojson-data)中的 `udid` 取代 `{udid}`。
 
     ```HTTP
-    https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udid={udid}&lat=47.637988&lon=-122.1338344&searchBuffer=5&isAsync=True&mode=EnterAndExit
+    https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udid={udid}&lat=47.63799&lon=-122.134505&searchBuffer=5&isAsync=True&mode=EnterAndExit
     ```
 
 3. 選取 [傳送]。 下列 GeoJSON 會出現在回應視窗中：
@@ -469,13 +469,10 @@ Azure 地圖服務支援[三種事件類型](https://docs.microsoft.com/azure/ev
 
 在上述的 GeoJSON 回應中，設備已離開主要位置地理柵欄。 因此，`isEventPublished` 參數會設定為 `true`，而 Operations Manager 會收到電子郵件通知，指出設備已離開地理柵欄。
 
+
+您也可以[使用事件方格和 Logic Apps 來傳送電子郵件通知](https://docs.microsoft.com/azure/event-grid/publish-iot-hub-events-to-logic-apps)，並使用 Azure 地圖服務來檢查[事件方格中支援的事件處理常式](https://docs.microsoft.com/azure/event-grid/event-handlers)。
+
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
 > [在 Azure 邏輯應用程式中處理內容類型](https://docs.microsoft.com/azure/logic-apps/logic-apps-content-type)
-
-> [!div class="nextstepaction"]
-> [使用事件方格和 Logic Apps 來傳送電子郵件通知](https://docs.microsoft.com/azure/event-grid/publish-iot-hub-events-to-logic-apps)
-
-> [!div class="nextstepaction"]
-> [事件方格中支援的事件處理常式](https://docs.microsoft.com/azure/event-grid/event-handlers)

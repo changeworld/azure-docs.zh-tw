@@ -1,6 +1,7 @@
 ---
-title: 開始使用 Microsoft 身分識別平台 Windows 桌面
-description: Windows Desktop .NET (XAML) 應用程式如何取得存取權杖，以及呼叫受 Microsoft 身分識別平台保護的 API。
+title: 教學課程：建立 Windows Presentation Foundation (WPF) 應用程式，使用 Microsoft 身分識別平台進行驗證 | Azure
+titleSuffix: Microsoft identity platform
+description: 在本教學課程中，您會建置 WPF 應用程式，使用 Microsoft 身分識別平台來登入使用者，並取得存取權杖來代表他們呼叫 Microsoft Graph API。
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -11,24 +12,32 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: a865bab690c79288bdffcd7cebe424d1bb1969c0
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 7effb1592fb19f92958353a3333edf6fdf9a51af
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "82181526"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91574257"
 ---
 # <a name="call-the-microsoft-graph-api-from-a-windows-desktop-app"></a>從 Windows 傳統型應用程式呼叫 Microsoft 圖形 API
 
-本指南示範原生 Windows Desktop .NET (XAML) 應用程式如何使用存取權杖以呼叫 Microsoft Graph API。 此應用程式也可以存取其他 API，其需要 Microsoft 身分識別平台針對開發人員 v2.0 端點提供的存取權杖。 此平台先前名為 Azure AD。
+本指南示範原生 Windows Desktop .NET (XAML) 應用程式如何使用存取權杖以呼叫 Microsoft Graph API。 此應用程式也可以存取其他 API，這些 API 需要 Microsoft 身分識別平台提供的存取權杖。
 
 當您完成本指南之後，您的應用程式就可以呼叫受保護的 API (使用個人帳戶，包括 outlook.com、live.com 等等)。 應用程式也可以使用任何公司或組織 (使用 Azure Active Directory) 的公司和學校帳戶。
 
-> [!NOTE]
-> 本指南需要 Visual Studio 2015 Update 3、Visual Studio 2017 或 Visual Studio 2019。 沒有上述任一版本嗎？ [免費下載 Visual Studio 2019](https://www.visualstudio.com/downloads/)。
+本教學課程內容：
 
->[!NOTE]
-> 如果您不熟悉 Microsoft 身分識別平台，建議您從[從 Windows 桌面應用程式取得權杖並呼叫 Microsoft Graph API](quickstart-v2-windows-desktop.md) 開始了解。
+> [!div class="checklist"]
+> * 在 Visual Studio 中建立 *Windows Presentation Foundation (WPF)* 專案
+> * 安裝適用於 .NET 的 Microsoft Authentication Library (MSAL)
+> * 在 Azure 入口網站中註冊應用程式
+> * 新增程式碼以支援使用者登入和登出
+> * 新增程式碼以呼叫 Microsoft Graph API
+> * 測試應用程式
+
+## <a name="prerequisites"></a>必要條件
+
+* [Visual Studio 2019](https://visualstudio.microsoft.com/vs/)
 
 ## <a name="how-the-sample-app-generated-by-this-guide-works"></a>本指南產生之範例應用程式的運作方式
 
@@ -367,3 +376,10 @@ private void DisplayBasicTokenInfo(AuthenticationResult authResult)
 除了用來呼叫 Microsoft Graph API 的存取權杖之外，使用者登入之後，MSAL 也會取得 ID 權杖。 此權杖包含與使用者相關的一小部分資訊。 `DisplayBasicTokenInfo` 方法會顯示權杖中包含的基本資訊。 例如，它會顯示使用者的顯示名稱和 ID，以及權杖到期日期和代表存取權杖本身的字串。 您可以選取 [呼叫 Microsoft Graph API] 按鈕多次，以了解相同的權杖如何重複用於多個後續要求。 您也可以在 MSAL 決定應該要更新權杖時，看到延長的到期日期。
 
 [!INCLUDE [5. Test and Validate](../../../includes/active-directory-develop-guidedsetup-windesktop-test.md)]
+
+## <a name="next-steps"></a>後續步驟
+
+深入了解如何建置傳統型應用程式，以在我們的多部分案例系列中呼叫受保護的 Web API：
+
+> [!div class="nextstepaction"]
+> [案例：呼叫 Web API 的傳統型應用程式](scenario-desktop-overview.md)

@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 通知中樞和 Firebase SDK 0.6 版將推播通知傳送至 Android | Microsoft Docs
-description: 在本教學課程中，您將了解如何使用 Azure 通知中樞和 Google Firebase 雲端通訊，將推播通知傳送至 Android 裝置。
+description: 在本教學課程中，您將了解如何使用 Azure 通知中樞和 Google Firebase 雲端通訊，將推播通知傳送至 Android 裝置 (0.6 版)。
 services: notification-hubs
 documentationcenter: android
 keywords: 推播通知,推播通知,android 推播通知,fcm,firebase 雲端通訊
@@ -16,12 +16,12 @@ ms.date: 06/22/2020
 ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 09/11/2019
-ms.openlocfilehash: 3b32a61dcf8dfe403a44af236afad830472d1b8d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 7e68e93e8a103ccf92c949df779d929ac4095d92
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321457"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268820"
 ---
 # <a name="tutorial-send-push-notifications-to-android-devices-using-firebase-sdk-version-06"></a>教學課程：使用 Firebase SDK 0.6 版將推播通知傳送至 Android 裝置
 

@@ -8,12 +8,12 @@ ms.service: dns
 ms.topic: quickstart
 ms.date: 3/11/2019
 ms.author: rohink
-ms.openlocfilehash: 3b34b45cba805d748dcc8a0c31340cd8116e1c80
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 93d9ce50a451221c86f5336107dba30695af159f
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82160761"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91355358"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站建立 Azure DNS 區域和記錄
 
@@ -97,7 +97,7 @@ DNS 區域包含網域的 DNS 項目。 若要開始將網域裝載到 Azure DNS
 
    您應該會看到類似於下列畫面的內容：
 
-   ![nslookup](media/dns-getstarted-portal/nslookup.PNG)
+   ![螢幕擷取畫面顯示命令提示字元視窗，其中包含 n s 查閱命令，以及伺服器、位址、名稱和位址的值。](media/dns-getstarted-portal/nslookup.PNG)
 
 主機名稱 **www\.contoso.xyz** 解析為 **10.10.10.10**，正如您所設定。 此結果確認了名稱解析正常運作。 
 

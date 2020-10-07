@@ -1,5 +1,5 @@
 ---
-title: 使用 C# 將模擬 X.509 裝置佈建到 Azure IoT 中樞
+title: 快速入門 - 使用 C# 將模擬 X.509 裝置佈建到 Azure IoT 中樞
 description: 快速入門 - 使用適用於 Azure IoT 中樞裝置佈建服務 (DPS) 的 C# 裝置 SDK 來建立及佈建模擬 X.509 裝置。 本快速入門使用個別註冊。
 author: wesmc7777
 ms.author: wesmc
@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: 639ab07113a0e62cac43af5b79f052da1efd93ab
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 27bb1c97fa082f15642ab9eff6b0bdba357068a2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74976514"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323969"
 ---
 # <a name="quickstart-create-and-provision-a-simulated-x509-device-using-c-device-sdk-for-iot-hub-device-provisioning-service"></a>快速入門：使用適用於 IoT 中樞裝置佈建服務的 C# 裝置 SDK 來建立及佈建模擬 X.509 裝置
 
@@ -22,7 +22,7 @@ ms.locfileid: "74976514"
 
 這些步驟會示範如何使用[適用於 C# 的 Azure IoT 範例](https://github.com/Azure-Samples/azure-iot-samples-csharp)，在執行 Windows OS 的開發電腦上，模擬 X.509 裝置。 此範例也會使用裝置佈建服務，將模擬的裝置連線至 IoT 中樞。
 
-如果您不熟悉自動佈建程序，請務必也要檢閱[自動佈建概念](concepts-auto-provisioning.md)。 繼續之前，請務必完成[使用 Azure 入口網站設定 IoT 中樞裝置佈建服務](./quick-setup-auto-provision.md)中的步驟。 
+如果您不熟悉自動佈建程序，請檢閱[佈建](about-iot-dps.md#provisioning-process)概觀。 繼續之前，請務必完成[使用 Azure 入口網站設定 IoT 中樞裝置佈建服務](./quick-setup-auto-provision.md)中的步驟。 
 
 Azure IoT 裝置佈建服務支援兩種類型的註冊：
 - [註冊群組](concepts-service.md#enrollment-group)：用來註冊多個相關的裝置。

@@ -1,6 +1,6 @@
 ---
 title: 使用 PHP 的 Azure 儲存體表格服務或 Azure Cosmos DB 資料表 API
-description: 使用 Azure 資料表儲存體或 Azure Cosmos DB 資料表 API 將結構化資料儲存在雲端。
+description: 從 PHP 使用 Azure 資料表儲存體或 Azure Cosmos DB 資料表 API 將結構化資料儲存在雲端。
 author: sakash279
 ms.author: akshanka
 ms.service: cosmos-db
@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: php
 ms.topic: sample
 ms.date: 07/23/2020
-ms.openlocfilehash: c690002141c6c275d90d5bae41318f9a5907fb85
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 26381d03598485598f0f72242862edd191e9bd30
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88236406"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318750"
 ---
 # <a name="how-to-use-azure-storage-table-service-or-the-azure-cosmos-db-table-api-from-php"></a>如何使用 PHP 的 Azure 儲存體表格服務或 Azure Cosmos DB 資料表 API
 

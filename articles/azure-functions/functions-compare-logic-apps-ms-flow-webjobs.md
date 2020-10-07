@@ -4,12 +4,12 @@ description: 比較已針對整合工作最佳化的 Microsoft 雲端服務：Po
 ms.topic: overview
 ms.date: 04/09/2018
 ms.custom: mvc
-ms.openlocfilehash: 2e0d8f356ec8da900b4a38399ba94434c3b1b93d
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 2c17b311811fd2cba46db379fcc766c04dd9d56d
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87809964"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403070"
 ---
 # <a name="choose-the-right-integration-and-automation-services-in-azure"></a>在 Azure 中選擇正確的整合和自動化服務
 
@@ -41,7 +41,7 @@ Power Automate 可讓任何辦公室工作人員有能力執行簡單的整合 (
 | **設計工具** |瀏覽器內及行動裝置應用程式，僅限 UI |有瀏覽器內和 [Visual Studio](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)、[程式碼檢視](../logic-apps/logic-apps-author-definitions.md)可用 |
 | **應用程式生命週期管理 (ALM)** |在非生產環境中設計及測試，在就緒時升級到生產環境 |Azure DevOps：在 [Azure Resource Manager](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md) 中的原始檔控制、測試支援、自動化及管理性 |
 | **管理員體驗** |管理 Power Automate 環境和資料外洩防護 (DLP) 原則，追蹤授權：[管理中心](https://admin.flow.microsoft.com) |管理資源群組、連線、存取管理和記錄：[Azure 入口網站](https://portal.azure.com) |
-| **安全性** |Office 365 安全性與相容性稽核記錄、DLP、敏感性資料[靜止時加密](https://wikipedia.org/wiki/Data_at_rest#Encryption) |Azure 的安全性保證︰[Azure 安全性](https://www.microsoft.com/en-us/trustcenter/Security/AzureSecurity)、[Azure 資訊安全中心](https://azure.microsoft.com/services/security-center/)、[稽核記錄](https://azure.microsoft.com/blog/azure-audit-logs-ux-refresh/) |
+| **安全性** |Microsoft 365 安全性稽核記錄、DLP、敏感性資料[靜止時加密](https://wikipedia.org/wiki/Data_at_rest#Encryption) |Azure 的安全性保證︰[Azure 安全性](https://www.microsoft.com/en-us/trustcenter/Security/AzureSecurity)、[Azure 資訊安全中心](https://azure.microsoft.com/services/security-center/)、[稽核記錄](https://azure.microsoft.com/blog/azure-audit-logs-ux-refresh/) |
 
 ## <a name="compare-azure-functions-and-azure-logic-apps"></a>比較 Azure Functions 和 Azure Logic Apps
 

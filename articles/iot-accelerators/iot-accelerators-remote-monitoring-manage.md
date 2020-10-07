@@ -9,12 +9,12 @@ services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: e4236952bd41c4955e337813ff6d706263b8ef47
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 432386809596fb2ef040a05d1fe0d12294a1abef
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73890909"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91534517"
 ---
 # <a name="tutorial-configure-devices-connected-to-your-monitoring-solution"></a>教學課程：設定連線到監視解決方案的裝置
 
@@ -66,7 +66,7 @@ Contoso 已排序新的機制來延伸其中一個設備。 在等待新機制�
 
 若要更新引擎的位置，請將作業名稱設定為 [UpdateEngineLocation]  、將經度設定為 [-122.15]  、將位置設定為 [Factory 2]  、將緯度設定為 [47.62]  ，然後按一下 [套用]  ：
 
-[![更新裝置屬性值](./media/iot-accelerators-remote-monitoring-manage/devicesreconfigurephysical-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesreconfigurephysical-expanded.png#lightbox)
+[![此螢幕擷取畫面顯示已反白顯示 [工作] 視窗的 [裝置總管] 頁面。](./media/iot-accelerators-remote-monitoring-manage/devicesreconfigurephysical-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesreconfigurephysical-expanded.png#lightbox)
 
 若要追蹤作業狀態，請按一下 [檢視作業狀態]  ：
 
@@ -113,7 +113,7 @@ Contoso 已排序新的機制來延伸其中一個設備。 在等待新機制�
 
 在條件中建立使用 **FieldService** 標記名稱和 **ConnectedVehicle** 值的文字篩選條件。 將篩選條件儲存為 [Connected Vehicle]  。
 
-[![建立已連線的車輛篩選條件](./media/iot-accelerators-remote-monitoring-manage/connectedvehiclefilter-inline.png)](./media/iot-accelerators-remote-monitoring-manage/connectedvehiclefilter-expanded.png#lightbox)
+[![此螢幕擷取畫面顯示已反白顯示 [管理裝置群組] 視窗的 [裝置總管] 頁面。](./media/iot-accelerators-remote-monitoring-manage/connectedvehiclefilter-inline.png)](./media/iot-accelerators-remote-monitoring-manage/connectedvehiclefilter-expanded.png#lightbox)
 
 現在，Contoso 操作員能夠根據作業小組來查詢裝置：
 

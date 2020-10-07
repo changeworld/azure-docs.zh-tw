@@ -3,12 +3,12 @@ title: 使用 Azure 實驗室服務設定教室實驗室 | Microsoft Docs
 description: 在本教學課程中，您會使用 Azure Lab Services 來設定教室實驗室，且其中包含您教室中學生所使用的虛擬機器。
 ms.topic: tutorial
 ms.date: 06/26/2020
-ms.openlocfilehash: bc1b23b92c6af902797a9be354fe6514b4e225af
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 1155646d31ddb8a0a3abce025acde5c4cb645f54
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85445129"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336729"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>教學課程：設定教室實驗室 
 您將在本教學課程中設定教室實驗室，且其中包含教室中學生所使用的虛擬機器。  
@@ -37,7 +37,7 @@ ms.locfileid: "85445129"
 2. 選取 [登入]，然後輸入您的認證。 Azure 實驗室服務支援組織帳戶和 Microsoft 帳戶。 
 3. 選取 [新增實驗室]。 
     
-    ![建立教室實驗室](./media/tutorial-setup-classroom-lab/new-lab-button.png)
+    ![顯示「Azure 實驗室服務」並已選取 [新建實驗室] 按鈕的螢幕擷取畫面。](./media/tutorial-setup-classroom-lab/new-lab-button.png)
 4. 在 [新增實驗室] 視窗中，執行下列動作： 
     1. 指定實驗室的**名稱**，然後選取 [下一步]。  
 
@@ -90,7 +90,7 @@ ms.locfileid: "85445129"
 
 1. 切換至 [排程] 頁面，然後選取工具列上的 [新增已排定事件]。 
 
-    ![[排程] 頁面上的 [新增排程] 按鈕](./media/how-to-create-schedules/add-schedule-button.png)
+    ![此螢幕擷取畫面顯示 [排程] 頁面上的 [新增已排定事件] 按鈕。](./media/how-to-create-schedules/add-schedule-button.png)
 2. 在 [新增已排定事件] 頁面上，執行下列步驟：
     1. 確認已為 [事件類型] 選取 [標準]。  
     2. 選取課程的 [開始日期]。 

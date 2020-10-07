@@ -3,14 +3,14 @@ title: 使用 .NET API 執行平行工作負載
 description: 教學課程 - 使用 Batch .NET 用戶端程式庫透過 Azure Batch 中的 ffmpeg 平行進行媒體檔案轉碼
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 12/21/2018
+ms.date: 09/29/2020
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: f57354a6eb52b3439cf298f66b706f53d101371e
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 8c8dcd01c7e97f77e994d021e39ce6a5e591ff9f
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88930225"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91537577"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-net-api"></a>教學課程：使用 .NET API 透過 Azure Batch 執行平行工作負載
 
@@ -35,7 +35,7 @@ ms.locfileid: "88930225"
 
 * Batch 帳戶和連結的 Azure 儲存體帳戶。 若要建立這些帳戶，請參閱使用 [Azure 入口網站](quick-create-portal.md)或 [Azure CLI](quick-create-cli.md) 的 Batch 快速入門。
 
-* [Windows 64 位元版本的 ffmpeg 3.4](https://ffmpeg.zeranoe.com/builds/win64/static/ffmpeg-3.4-win64-static.zip) (.zip)。 將 ZIP 檔案下載到本機電腦。 在本教學課程中，您只需要 ZIP 檔案。 您不需要將此檔案解壓縮或在本機進行安裝。
+* [Windows 64 位元版本的 ffmpeg 4.3.1](https://www.gyan.dev/ffmpeg/builds/packages/ffmpeg-4.3.1-2020-09-21-full_build.zip) (.zip)。 將 ZIP 檔案下載到本機電腦。 在本教學課程中，您只需要 ZIP 檔案。 您不需要將此檔案解壓縮或在本機進行安裝。
 
 ## <a name="sign-in-to-azure"></a>登入 Azure
 
@@ -47,7 +47,7 @@ ms.locfileid: "88930225"
 
 1. 在 Azure 入口網站中，按一下 [更多服務]   > [Batch 帳戶]  ，然後按一下您的 Batch 帳戶名稱。
 3. 按一下 [應用程式]   > [新增]  。
-4. 針對 [應用程式識別碼]  ，輸入 ffmpeg  ，以及 3.4  套件版本。 選取您先前下載的 ffmpeg ZIP 檔案，然後按一下 [確定]  。 ffmpeg 應用程式套件會新增至您的 Batch 帳戶。
+4. 針對 [應用程式識別碼]，輸入 ffmpeg，以及 4.3.1 套件版本。 選取您先前下載的 ffmpeg ZIP 檔案，然後按一下 [確定]  。 ffmpeg 應用程式套件會新增至您的 Batch 帳戶。
 
 ![新增應用程式套件](./media/tutorial-parallel-dotnet/add-application.png)
 
@@ -84,7 +84,7 @@ private const string StorageAccountKey  = "xxxxxxxxxxxxxxxxy4/xxxxxxxxxxxxxxxxfw
 
 ```csharp
 const string appPackageId = "ffmpeg";
-const string appPackageVersion = "3.4";
+const string appPackageVersion = "4.3.1";
 ```
 
 ### <a name="build-and-run-the-sample-project"></a>建置及執行範例專案
@@ -263,7 +263,7 @@ for (int i = 0; i < inputFiles.Count; i++)
     string outputMediaFile = String.Format("{0}{1}",
         System.IO.Path.GetFileNameWithoutExtension(inputMediaFile),
         ".mp3");
-    string taskCommandLine = String.Format("cmd /c {0}\\ffmpeg-3.4-win64-static\\bin\\ffmpeg.exe -i {1} {2}", appPath, inputMediaFile, outputMediaFile);
+    string taskCommandLine = String.Format("cmd /c {0}\\ffmpeg-4.3.1-2020-09-21-full_build\\bin\\ffmpeg.exe -i {1} {2}", appPath, inputMediaFile, outputMediaFile);
 
     // Create a cloud task (with the task ID and command line)
     CloudTask task = new CloudTask(taskId, taskCommandLine);

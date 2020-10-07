@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/25/2019
 ms.author: dobett
-ms.openlocfilehash: 32e2d3f9e8bbd63944188355774558ca5ea7bd9d
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 8d007fa7100a9880878e0b748c2c38402e5ea192
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "60889975"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540229"
 ---
 # <a name="quickstart-try-a-cloud-based-remote-monitoring-solution"></a>快速入門：試用雲端式遠端監視解決方案
 
@@ -133,7 +133,7 @@ ms.locfileid: "60889975"
 
 如果您不再需要解決方案加速器，可加以選取，然後按一下 [刪除解決方案]，從[已佈建的解決方案](https://www.azureiotsolutions.com/Accelerators#dashboard)頁面中加以刪除：
 
-![刪除解決方案](media/quickstart-remote-monitoring-deploy/deletesolution.png)
+![此螢幕擷取畫面顯示 [已佈建的解決方案] 頁面，其中已反白顯示解決方案加速器。](media/quickstart-remote-monitoring-deploy/deletesolution.png)
 
 
 ![刪除解決方案](media/quickstart-remote-monitoring-deploy/deletesolution-page.png)

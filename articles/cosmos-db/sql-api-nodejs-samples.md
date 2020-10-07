@@ -7,13 +7,13 @@ ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 08/23/2019
 ms.author: dech
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 2c0e2b7a63f02559f95b647bc1b4ef46b8a157cd
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: e6e28de27e6142b713c2f00ef982d30d04816b86
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421819"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326689"
 ---
 # <a name="nodejs-examples-to-manage-data-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中管理資料的 Node.js 範例
 
@@ -21,6 +21,7 @@ ms.locfileid: "87421819"
 > * [.NET V2 SDK 範例](sql-api-dotnet-samples.md)
 > * [.NET V3 SDK 範例](sql-api-dotnet-v3sdk-samples.md)
 > * [Java V4 SDK 範例](sql-api-java-sdk-samples.md)
+> * [Spring Data V3 SDK 範例](sql-api-spring-data-sdk-samples.md)
 > * [Node.js 範例](sql-api-nodejs-samples.md)
 > * [Python 範例](sql-api-python-samples.md)
 > * [Azure 程式碼範例庫](https://azure.microsoft.com/resources/samples/?sort=0&service=cosmos-db)

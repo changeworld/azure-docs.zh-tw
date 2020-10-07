@@ -2,13 +2,13 @@
 title: 關於 Azure 實驗室服務 | Microsoft Azure
 description: 了解實驗室服務如何協助您輕鬆搭配虛擬機器建立、管理及保護實驗室，以供開發人員、測試人員、教育工作者、學生及其他人員使用。
 ms.topic: overview
-ms.date: 06/26/2020
-ms.openlocfilehash: 7661b26d16eb2c2acd53c30889ea791689c1eec0
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
+ms.date: 09/16/2020
+ms.openlocfilehash: ad17ebb3a803a15d1ac9ef8cb71cf8ca7976243b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85442800"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333931"
 ---
 # <a name="an-introduction-to-azure-lab-services"></a>Azure 實驗室服務簡介
 **Azure 實驗室服務**可讓您建立由 Azure 管理基礎結構的實驗室。 目前，教室實驗室是 Azure 實驗室服務唯一支援的受控實驗室類型。 服務本身會處理受控實驗室類型的所有基礎結構管理，從啟動 VM 以處理錯誤，到調整基礎結構的規模。 當 IT 管理員在 Azure 實驗室服務中建立實驗室帳戶之後，講師可以快速地為課堂設定實驗室、指定在課堂中進行練習所需的 VM 數目和類型，以及將使用者新增至課堂。 使用者在註冊課堂，即可存取 VM 以執行課堂的練習。  

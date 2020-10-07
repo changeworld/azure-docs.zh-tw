@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/08/2019
 ms.author: dobett
-ms.openlocfilehash: cecf23d61d6a12c20aa3e64e4ee0ddacddbe7823
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 7266f110069155e2a9f7804d53c6e1088768ec8d
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "62106808"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541844"
 ---
 # <a name="quickstart-try-a-cloud-based-solution-to-run-a-predictive-maintenance-analysis-on-my-connected-devices"></a>快速入門：嘗試以雲端式解決方案對我的連線裝置執行預測性維護分析
 
@@ -52,7 +52,7 @@ Fabrikam 的飛機引擎由各種感應器進行檢測，而這些感應器會�
 
 在 [已佈建的解決方案]  頁面上，按一下新的預測性維護解決方案加速器。
 
-![解決方案面板](./media/quickstart-predictive-maintenance-deploy/solution.png)
+![此螢幕擷取畫面顯示 [已佈建的解決方案] 頁面，其中已反白顯示 [預測性維護] 解決方案加速器。](./media/quickstart-predictive-maintenance-deploy/solution.png)
 
  您可以在顯示的頁面中檢視解決方案加速器的相關資訊。 選擇 [移至解決方案加速器]  以檢視預測性維護解決方案加速器：
 

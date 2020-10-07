@@ -3,12 +3,12 @@ title: Azure 原則的概觀
 description: Azure 原則是 Azure 中的一個服務，您可以在 Azure 環境中用來建立、指派和管理原則定義。
 ms.date: 09/22/2020
 ms.topic: overview
-ms.openlocfilehash: 662a7510013e2008d8c16cf21376b11c247e0bc0
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 596e52cca2be2a347c26502434048053a8b4684c
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905971"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91538951"
 ---
 # <a name="what-is-azure-policy"></a>什麼是 Azure 原則？
 
@@ -57,15 +57,15 @@ Azure 原則會透過套用[效果](./concepts/effects.md)，讓每個商務回�
 
 ## <a name="getting-started"></a>開始使用
 
-### <a name="azure-policy-and-rbac"></a>Azure 原則和 RBAC
+### <a name="azure-policy-and-azure-rbac"></a>Azure 原則與 Azure RBAC
 
-Azure 原則和角色型存取控制 (RBAC) 之間有幾個主要差異。 Azure 原則會藉由檢查 Resource Manager 中呈現的資源屬性及部分資源提供者的屬性，來評估狀態。 Azure 原則不會限制動作 (也稱為「作業」)。 Azure 原則可確保資源狀態遵循您的商務規則，而不需要擔心誰進行了變更或誰有權進行變更。
+Azure 原則和 Azure 角色型存取控制 (Azure RBAC) 之間有幾個主要差異。 Azure 原則會藉由檢查 Resource Manager 中呈現的資源屬性及部分資源提供者的屬性，來評估狀態。 Azure 原則不會限制動作 (也稱為「作業」)。 Azure 原則可確保資源狀態遵循您的商務規則，而不需要擔心誰進行了變更或誰有權進行變更。
 
-RBAC 著重於管理不同範圍的使用者[動作](../../role-based-access-control/resource-provider-operations.md)。 如果需要控制動作，則 RBAC 是您應使用的正確工具。 即使個人擁有執行動作的存取權，但結果若是不符合規範的資源，Azure 原則仍會封鎖建立或更新動作。
+Azure RBAC 著重於管理不同範圍的使用者[動作](../../role-based-access-control/resource-provider-operations.md)。 如果需要控制動作，則 Azure RBAC 是您應使用的正確工具。 即使個人擁有執行動作的存取權，但結果若是不符合規範的資源，Azure 原則仍會封鎖建立或更新動作。
 
-RBAC 和 Azure 原則的結合，可在 Azure 中提供完整的範圍控制。
+Azure RBAC 和 Azure 原則的結合，可在 Azure 中提供完整的範圍控制。
 
-### <a name="rbac-permissions-in-azure-policy"></a>Azure 原則中的 RBAC 權限
+### <a name="azure-rbac-permissions-in-azure-policy"></a>Azure 原則中的 Azure RBAC 權限
 
 Azure 原則在下列兩個資源提供者中有數個權限，一般稱之為作業：
 

@@ -2,13 +2,13 @@
 title: 什麼是 Azure 事件方格？
 description: 使用 Azure 事件方格，將事件資料從來源傳送至處理常式。 建置事件型應用程式，並與 Azure 服務整合。
 ms.topic: overview
-ms.date: 07/07/2020
-ms.openlocfilehash: 87ac29c2324c63977c57d60b11b3b930c23a4dd9
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.date: 09/24/2020
+ms.openlocfilehash: 73d218058c5f95d8c2d2324f1a0e1e77b24f1364
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89436862"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326488"
 ---
 # <a name="what-is-azure-event-grid"></a>什麼是 Azure 事件方格？
 
@@ -20,16 +20,17 @@ Azure 事件方格的部署方式是以原生方式分散到每個區域中中�
 
 本文提供 Azure Event Grid 的概觀。 若要開始使用 Event Grid，請參閱[使用 Azure Event Grid 建立和路由傳送自訂事件](custom-event-quickstart.md)。 
 
-![來源和處理常式的事件方格模型](./media/overview/functional-model.png)
+:::image type="content" source="./media/overview/functional-model.png" alt-text="來源和處理常式的事件方格模型" lightbox="./media/overview/functional-model.png":::
 
 此圖顯示事件方格如何連接來源和處理常式，但這並非完整的支援整合清單。
 
 ## <a name="event-sources"></a>事件來源
 
-目前支援將事件傳送到事件格線的 Azure 服務如下：
+目前，下列 Azure 服務支援將事件傳送到事件格線。 如需清單中來源的詳細資訊，請選取此連結。
 
 - [Azure 應用程式組態](event-schema-app-configuration.md)
 - [Azure Blob 儲存體](event-schema-blob-storage.md)
+- [Azure 通訊服務](event-schema-communication-services.md) 
 - [Azure Container Registry](event-schema-container-registry.md)
 - [Azure 事件中樞](event-schema-event-hubs.md)
 - [Azure IoT 中心](event-schema-iot-hub.md)

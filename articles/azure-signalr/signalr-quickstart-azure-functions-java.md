@@ -1,6 +1,6 @@
 ---
 title: 使用 Java 搭配 Azure Functions 與 SignalR Service 來建立聊天室
-description: 說明如何使用 Azure SignalR 服務與 Azure Functions 來建立聊天室的快速入門。
+description: 使用 Java 搭配 Azure SignalR 服務與 Azure Functions 來建立聊天室的快速入門。
 author: sffamily
 ms.service: signalr
 ms.devlang: java
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 03/04/2019
 ms.author: zhshang
 ms.custom: devx-track-java
-ms.openlocfilehash: 544f200e749b1b125e8077ee65f20a06779fb13d
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: ab13c9494ee04d112cec93af9efaab43705297bc
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89050568"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319515"
 ---
 # <a name="quickstart-use-java-to-create-a-chat-room-with-azure-functions-and-signalr-service"></a>快速入門：使用 Java 搭配 Azure Functions 與 SignalR Service 來建立聊天室
 

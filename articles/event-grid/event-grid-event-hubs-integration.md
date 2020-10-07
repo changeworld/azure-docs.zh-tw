@@ -4,12 +4,12 @@ description: 教學課程：說明如何使用 Azure 事件方格和事件中樞
 ms.topic: tutorial
 ms.date: 07/07/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d45fcedb570e384b851a7ac815ca175c67cc00a0
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 64d4b9769e1a228294bd7d8741f6f4b1260fb0dd
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89435026"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91270542"
 ---
 # <a name="tutorial-stream-big-data-into-a-data-warehouse"></a>教學課程：將巨量資料串流處理至資料倉儲
 Azure [Event Grid](overview.md) 是一項智慧型事件路由服務，可讓您對應用程式和服務發出的通知 (事件) 做出回應。 例如，它可以觸發 Azure 函式以處理已擷取至 Azure Blob 儲存體或 Azure Data Lake Storage 的事件中樞資料，並將資料移轉至其他資料存放庫。 此[事件中樞和事件方格整合範例](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo)說明如何使用事件中樞與事件方格，將已擷取的事件中樞資料從 Blob 儲存體順暢地遷移至 Azure Synapse Analytics (先前為 SQL 資料倉儲)。
@@ -66,7 +66,7 @@ Azure [Event Grid](overview.md) 是一項智慧型事件路由服務，可讓您
 4. 在 Cloud Shell 中，如果您看到選取 **Bash** 或 **PowerShell** 的選項，請選取 **Bash**。 
 5. 如果您是第一次使用 Cloud Shell，請選取 [建立儲存體] 以建立儲存體帳戶。 Azure Cloud Shell 需要以 Azure 儲存體帳戶儲存某些檔案。 
 
-    ![建立 Cloud Shell 的儲存體](media/event-grid-event-hubs-integration/create-storage-cloud-shell.png)
+    ![此螢幕擷取畫面顯示已選取 [建立儲存體] 按鈕的 [您未掛接任何儲存體] 對話方塊。](media/event-grid-event-hubs-integration/create-storage-cloud-shell.png)
 6. 等待 Cloud Shell 完成初始化。 
 
     ![建立 Cloud Shell 的儲存體](media/event-grid-event-hubs-integration/cloud-shell-initialized.png)
@@ -209,7 +209,7 @@ Azure [Event Grid](overview.md) 是一項智慧型事件路由服務，可讓您
    ![發佈函數應用程式](media/event-grid-event-hubs-integration/publish-function-app.png)
 4. 如果您看到下列畫面，請選取 [開始]。 
 
-   ![開始發佈按鈕](media/event-grid-event-hubs-integration/start-publish-button.png) 
+   ![此螢幕擷取畫面顯示 [發佈] 區段具有 [啟動] 按鈕的 Visual Studio。](media/event-grid-event-hubs-integration/start-publish-button.png) 
 5. 在 [發佈] 對話方塊中，針對 [目標] 選取 [Azure]，然後選取 [下一步]。 
 
    ![開始發佈按鈕](media/event-grid-event-hubs-integration/publish-select-azure.png)

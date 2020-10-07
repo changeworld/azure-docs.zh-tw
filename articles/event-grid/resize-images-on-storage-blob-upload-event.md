@@ -3,12 +3,12 @@ title: 教學課程：使用 Azure 事件方格以自動調整上傳映像的大
 description: 教學課程：Azure Event Grid 可在 Azure 儲存體的 Blob 上傳項目上觸發。 您可以使用此將上傳至 Azure 儲存體的映像檔案傳送至其他服務 (例如 Azure Functions)，以調整大小和其他改善功能。
 ms.topic: tutorial
 ms.date: 07/07/2020
-ms.openlocfilehash: 19dfffdcee0fb95ae867b1b26fa51e702658445d
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 47ac8cad6d7c2ead8d25aa3525aafdab735f9e71
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "86105790"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326553"
 ---
 # <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>教學課程：使用 Event Grid 自動調整已上傳映像的大小
 
@@ -20,11 +20,11 @@ ms.locfileid: "86105790"
 
 # <a name="net-v12-sdk"></a>[\.NET v12 SDK](#tab/dotnet)
 
-![瀏覽器中已發佈的 Web 應用程式](./media/resize-images-on-storage-blob-upload-event/tutorial-completed.png)
+![此螢幕擷取畫顯示瀏覽器中針對 \.NET v12 SDK 發佈的 Web 應用程式。](./media/resize-images-on-storage-blob-upload-event/tutorial-completed.png)
 
 # <a name="nodejs-v10-sdk"></a>[Node.js V10 SDK](#tab/nodejsv10)
 
-![瀏覽器中已發佈的 Web 應用程式](./media/resize-images-on-storage-blob-upload-event/upload-app-nodejs-thumb.png)
+![此螢幕擷取畫顯示瀏覽器中針對 \.NET v10 SDK 發佈的 Web 應用程式。](./media/resize-images-on-storage-blob-upload-event/upload-app-nodejs-thumb.png)
 
 ---
 
@@ -263,7 +263,7 @@ az functionapp deployment source config --name $functionapp `
 
 1.  選取 [整合]，然後選擇 [事件方格觸發程式]並選取 [建立事件方格訂用帳戶]。
 
-    :::image type="content" source="./media/resize-images-on-storage-blob-upload-event/add-event-subscription.png" alt-text="瀏覽至 Azure 入口網站中的新增事件方格訂用帳戶" :::
+    :::image type="content" source="./media/resize-images-on-storage-blob-upload-event/add-event-subscription.png" alt-text="選擇入口網站中的縮圖功能" :::
 
 1. 使用表格中指定的事件訂閱設定。
     
@@ -301,7 +301,7 @@ az functionapp deployment source config --name $functionapp `
 
 請注意，上傳的映像消失之後，上傳映像的複本會顯示在 [產生縮圖] 浮動切換中。 此映像已由函式調整大小、新增至 *thumbnails* 容器，並由 Web 用戶端下載。
 
-![瀏覽器中已發佈的 Web 應用程式](./media/resize-images-on-storage-blob-upload-event/tutorial-completed.png)
+![此螢幕擷取畫顯示瀏覽器中針對 \.NET v12 SDK 發佈的 Web 應用程式，標題名稱為 "ImageResizer"。](./media/resize-images-on-storage-blob-upload-event/tutorial-completed.png)
 
 # <a name="nodejs-v10-sdk"></a>[Node.js V10 SDK](#tab/nodejsv10)
 

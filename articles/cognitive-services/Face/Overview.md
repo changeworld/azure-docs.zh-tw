@@ -1,20 +1,22 @@
 ---
-title: 什麼是臉部辨識服務？
+title: 什麼是 Azure 臉部辨識服務？
 titleSuffix: Azure Cognitive Services
-description: Azure 認知服務的臉部辨識服務會提供相關的演算法，用以偵測、辨識和分析影像中的人臉。
+description: Azure 臉部辨識服務會提供 AI 演算法，您可以用來偵測、辨識和分析影像中的人臉。
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: overview
-ms.date: 9/01/2020
+ms.date: 9/17/2020
 ms.author: pafarley
-ms.openlocfilehash: 1dc970a16c3b031b311c5b98ca43613d9ecf39d4
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.custom: cog-serv-seo-aug-2020
+keywords: 臉部辨識, 臉部辨識軟體, 臉部分析, 臉部比對, 臉部辨識應用程式, 依影像進行臉部搜尋, 臉部辨識搜尋
+ms.openlocfilehash: 0a7e242add9fdaa9e169a4003e8ad8f39b1fb111
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89421566"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91262479"
 ---
 # <a name="what-is-the-azure-face-service"></a>什麼是 Azure 臉部辨識服務？
 
@@ -23,16 +25,16 @@ ms.locfileid: "89421566"
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-Azure 認知服務的臉部辨識服務會提供相關的演算法，以偵測、辨識和分析影像中的人臉。 處理人臉資訊在許多不同的軟體案例中都是重要的能力。 舉例來說，這些案例包括安全性、自然使用者介面、影像內容分析和管理、行動應用程式及機器人。
+Azure 臉部辨識服務會提供 AI 演算法，可偵測、辨識和分析影像中的人臉。 臉部辨識軟體在許多不同的案例中都有其重要性，例如安全性、自然使用者介面、影像內容分析和管理、行動應用程式及機器人。
 
-臉部服務提供了幾個不同的功能，下列各節會有相關概述。
+臉部服務提供了幾個不同的臉部分析功能，下列各節會有相關概述。
 
 ## <a name="face-detection"></a>臉部偵測
 
-臉部辨識服務可偵測影像中的人臉，並傳回其位置的矩形座標。 臉部偵測也可以擷取一連串與臉部相關的屬性。 例如，姿勢、性別、年齡、頭部姿勢、臉部汗毛和眼鏡等。
+臉部辨識服務可偵測影像中的人臉，並傳回其位置的矩形座標。 臉部偵測也可以擷取一連串與臉部相關的屬性，例如頭部姿勢、性別、年齡、表情、臉部汗毛和眼鏡。
 
 > [!NOTE]
-> [電腦視覺 API](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) 也提供臉部偵測功能。 如果您想要以臉部資料執行進一步的作業，請使用臉部辨識服務，這是本文所討論的服務。
+> [電腦視覺服務](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home)也提供臉部偵測功能。 不過，如果想要使用臉部資料執行進一步的作業，您應該改用此服務。
 
 ![女性與男性影像，其臉部周圍繪有矩形，並顯示其年齡和性別](./Images/Face.detection.jpg)
 
@@ -44,7 +46,9 @@ Azure 認知服務的臉部辨識服務會提供相關的演算法，以偵測�
 
 ## <a name="find-similar-faces"></a>尋找類似臉部
 
-「尋找類似項目 API」會比較目標臉部和一組候選臉部，以尋找看起來與目標臉部相似的一小組臉部。 目前支援 matchPerson 和 matchFace 兩種工作模式。 matchPerson 模式會在使用[驗證 API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a) 篩選出相同人員後，傳回類似的臉部。 matchFace 模式會忽略相同人員的篩選。 它會傳回不一定屬於同一人的類似候選臉部清單。
+「尋找類似項目 API」會在目標臉部和一組候選臉部之間進行臉部比對，找出看起來與目標臉部相似的一小組臉部。 這適用於依影像執行臉部搜尋。 
+
+目前支援 **matchPerson** 和 **matchFace** 兩種工作模式。 **matchPerson** 模式會在篩選出相同人員後，使用[驗證 API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a) 傳回類似的臉部。 **matchFace** 模式會忽略相同人員的篩選條件。 其會傳回不一定屬於同一人的類似候選臉部清單。
 
 下列範例顯示目標臉部：
 
@@ -54,7 +58,7 @@ Azure 認知服務的臉部辨識服務會提供相關的演算法，以偵測�
 
 ![五個面帶笑容人員的影像。 影像 a 和 b 顯示同一人。](./Images/FaceFindSimilar.Candidates.jpg)
 
-在尋找四個相似的臉部時，matchPerson 模式會傳回 a 和 b，因為它們顯示的是與目標臉部相同的人員。 matchFace 模式會傳回 a、b、c 和 d 四個候選項目，不過某些項目不是與目標相同的人員，或是相似度較低。 如需詳細資訊，請參閱[臉部辨識](concepts/face-recognition.md)概念指南或[尋找類似項目 API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237) 參考文件。
+為了尋找四個相似的臉部，**matchPerson** 模式會傳回 a 和 b，因為其顯示的是與目標臉部相同的人員。 **matchFace** 模式會傳回 a、b、c 和 d 四個候選項目，不過某些項目不是與目標相同的人員，或是相似度較低。 如需詳細資訊，請參閱[臉部辨識](concepts/face-recognition.md)概念指南或[尋找類似項目 API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237) 參考文件。
 
 ## <a name="face-grouping"></a>臉部分組
 
@@ -62,7 +66,7 @@ Azure 認知服務的臉部辨識服務會提供相關的演算法，以偵測�
 
 ## <a name="person-identification"></a>人員識別
 
-識別 API 可用來識別對人員資料庫偵測出來的臉部。 對於相片管理軟體中的自動影像標記功能來說，此功能可能很實用。 您可以事先建立資料庫，然後隨著時間加以編輯。
+識別 API 可用來識別對人員資料庫偵測出來的臉部 (臉部辨識搜尋)。 對於相片管理軟體中的自動影像標記功能來說，此功能可能很實用。 您可以事先建立資料庫，然後隨著時間加以編輯。
 
 下圖說明資料庫 `"myfriends"` 的範例。 每個群組最多可包含一百萬個不同的人員物件。 每個人員物件最多可以註冊 248 張臉。
 
@@ -89,6 +93,6 @@ Azure 認知服務的臉部辨識服務會提供相關的演算法，以偵測�
 
 ## <a name="next-steps"></a>後續步驟
 
-請依照快速入門實作程式碼中的臉部偵測案例：
+遵循快速入門，以您選擇的語言撰寫臉部辨識應用程式的基本元件。
 
-- [快速入門：使用 .NET SDK 和 C# 偵測影像中的臉部](quickstarts/csharp.md)。 另有其他語言可供使用。
+- [用戶端程式庫快速入門](quickstarts/client-libraries.md)。

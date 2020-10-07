@@ -1,6 +1,6 @@
 ---
 title: 使用 .NET SDK 建立 Azure Data Factory
-description: 建立 Azure 資料處理站，以將資料從 Azure Blob 儲存體中的某個位置複製到另一個位置。
+description: 使用 .NET SDK 建立 Azure 資料處理站及管線，以將資料從 Azure Blob 儲存體中的某個位置複製到另一個位置。
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 06/24/2019
 ms.author: jingwang
-ms.openlocfilehash: d4652ca62a82d14c7e44466161ae9b463818a71f
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: e8da3dff39f94d6639471a2d1d96691c9cde614d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89433971"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322847"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-net-sdk"></a>快速入門：使用 .NET SDK 建立資料處理站和管線
 
@@ -49,7 +49,7 @@ ms.locfileid: "89433971"
 
 1. 在[建立 Azure Active Directory 應用程式](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)中，建立代表您要在本教學課程中建立之 .NET 應用程式的應用程式。 針對登入 URL，您可以提供虛擬 URL，如文章中所示 (`https://contoso.org/exampleapp`)。
 2. 在[取得值以便登入](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)中，取得**應用程式識別碼**和**租用戶識別碼**，並記下這些值以稍後在本教學課程中使用。 
-3. 在[憑證和祕密](../active-directory/develop/howto-create-service-principal-portal.md#upload-a-certificate-or-create-a-secret-for-signing-in)中，取得**驗證金鑰**，並記下此值以稍後在本教學課程中使用。
+3. 在[憑證和祕密](../active-directory/develop/howto-create-service-principal-portal.md#authentication-two-options)中，取得**驗證金鑰**，並記下此值以稍後在本教學課程中使用。
 4. 在[指派角色給應用程式](../active-directory/develop/howto-create-service-principal-portal.md#assign-a-role-to-the-application)中，將應用程式指派給訂用帳戶層級的**參與者**角色，讓應用程式可以在訂用帳戶中建立資料處理站。
 
 ## <a name="create-a-visual-studio-project"></a>建立 Visual Studio 專案

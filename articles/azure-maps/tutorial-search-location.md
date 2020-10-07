@@ -1,6 +1,6 @@
 ---
 title: 教學課程：在地圖上搜尋附近位置 | Microsoft Azure 地圖服務
-description: 了解如何在地圖上搜尋景點。 請參閱如何使用 Azure 地圖服務 Web SDK，將搜尋功能和互動式快顯方塊新增至地圖。
+description: 如何在地圖上搜尋景點的教學課程。 請參閱如何使用 Azure 地圖服務 Web SDK，將搜尋功能和互動式快顯方塊新增至地圖。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 1/15/2020
@@ -8,13 +8,13 @@ ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: 6ed463cbda3ceb560f907529dc8de54a772932ea
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.custom: mvc, devx-track-js
+ms.openlocfilehash: 4d6728d4fbde4b7d6cc8ed06e961642264ad31bc
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90085071"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321691"
 ---
 # <a name="tutorial-search-nearby-points-of-interest-using-azure-maps"></a>教學課程：使用 Azure 地圖服務來搜尋附近景點
 
@@ -26,44 +26,14 @@ ms.locfileid: "90085071"
 > * 使用地圖控制項 API 建立新的網頁
 > * 使用地圖服務的搜尋服務來尋找附近景點
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
-
-## <a name="sign-in-to-the-azure-portal"></a>登入 Azure 入口網站
-
-登入 [Azure 入口網站](https://portal.azure.com)。
+## <a name="prerequisites"></a>必要條件
 
 <a id="createaccount"></a>
-
-## <a name="create-an-account-with-azure-maps"></a>使用 Azure 地圖服務建立帳戶
-
-使用下列步驟建立新的地圖服務帳戶：
-
-1. 按一下 [Azure 入口網站](https://portal.azure.com)左上角的 [建立資源]。
-2. 在 [搜尋 Marketplace]  方塊中，輸入 **Maps**。
-3. 從 [結果]  中，選取 [地圖服務]  。 按一下地圖下方顯示的 [建立] 按鈕。
-4. 在 [建立地圖服務帳戶] 頁面上輸入下列值：
-    * 您想要使用於此帳戶的 [訂用帳戶]。
-    * 此帳戶的 [資源群組] 名稱。 您可以選擇 [建立新的] 或 [使用現有的] 資源群組。
-    * 新帳戶的 [名稱]。
-    * 此帳戶的 [定價層]。
-    * 閱讀 [授權] 和 [隱私權聲明]，然後選取核取方塊以接受條款。
-    * 按一下 [ **建立** ] 按鈕。
-
-![在 Azure 入口網站中建立 Azure 地圖服務帳戶](./media/tutorial-search-location/create-account.png)
-
 <a id="getkey"></a>
 
-## <a name="get-the-primary-key-for-your-account"></a>取得帳戶的主要金鑰
-
-成功建立地圖服務帳戶後，擷取金鑰以便能查詢地圖服務 API。 我們建議在呼叫 Azure 地圖服務時，使用您帳戶的主要金鑰作為訂用帳戶金鑰。
-
-1. 在入口網站中開啟地圖服務帳戶。
-2. 在 [設定] 區段上，選取 [驗證]。
-3. 將 [主索引鍵] 複製到剪貼簿。 將其儲存在本機，以供本教學課程稍後使用。
-
-![在 Azure 入口網站中取得主要金鑰](./media/tutorial-search-location/get-key.png)
-
-如需 Azure 地圖服務中驗證的詳細資訊，請參閱[管理 Azure 地圖服務中的驗證](how-to-manage-authentication.md)。
+1. 登入 [Azure 入口網站](https://portal.azure.com)。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
+2. [建立 Azure 地圖服務帳戶](quick-demo-map-app.md#create-an-azure-maps-account)
+3. [取得主要訂用帳戶金鑰](quick-demo-map-app.md#get-the-primary-key-for-your-account)，也稱為主要金鑰或訂用帳戶金鑰。 如需 Azure 地圖服務中驗證的詳細資訊，請參閱[管理 Azure 地圖服務中的驗證](how-to-manage-authentication.md)。
 
 <a id="createmap"></a>
 
@@ -275,21 +245,9 @@ ms.locfileid: "90085071"
 
     ![Azure 地圖控制項和搜尋服務](./media/tutorial-search-location/popup-map.png)
 
+若要檢視本教學課程的完整程式碼，請按一下[這裡](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/search.html)。 若要檢視即時範例，請按一下[這裡](https://azuremapscodesamples.azurewebsites.net/?sample=Search%20for%20points%20of%20interest)
+
 ## <a name="next-steps"></a>後續步驟
-
-在本教學課程中，您已了解如何：
-
-> [!div class="checklist"]
-> * 使用 Azure 地圖服務建立帳戶
-> * 取得帳戶的主要金鑰
-> * 使用地圖控制項 API 建立新網頁
-> * 使用搜尋服務來尋找附近景點
-
-> [!div class="nextstepaction"]
-> [檢視完整的原始程式碼](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/search.html)
-
-> [!div class="nextstepaction"]
-> [檢視即時範例](https://azuremapscodesamples.azurewebsites.net/?sample=Search%20for%20points%20of%20interest)
 
 下一個教學課程會示範如何顯示兩個位置之間的路線。
 

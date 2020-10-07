@@ -8,18 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 08/05/2020
+ms.date: 09/15/2020
 ms.author: pafarley
-ms.openlocfilehash: 67632301b534f91c36de837bbfa12f9ec16ed58f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.custom: cog-serv-seo-aug-2020
+ms.openlocfilehash: c8b5d3f58f11e85c6e77ce0cbf0c6d435f570ade
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551347"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91277337"
 ---
 # <a name="quickstart-how-to-build-a-classifier-with-custom-vision"></a>快速入門：如何使用自訂視覺建置分類器
 
-在本快速入門中，您將了解如何透過自訂視覺網站建置分類器。 在建置分類器模型後，您可以使用自訂視覺服務進行影像分類。
+在本快速入門中，您將了解如何透過自訂視覺網站建置影像分類器。 一旦建置了模型，您就可以使用新的影像進行測試，並最終將其整合到您自己的影像辨識軟體。
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/cognitive-services/)。
 
@@ -27,7 +28,7 @@ ms.locfileid: "88551347"
 
 - 一組用來定型分類的影像。 如需選擇影像的秘訣，請參閱下文。
 
-## <a name="create-custom-vision-resources-in-the-azure-portal"></a>在 Azure 入口網站中建立自訂視覺資源
+## <a name="create-custom-vision-resources"></a>建立自訂視覺資源
 
 [!INCLUDE [create-resources](includes/create-resources.md)]
 
@@ -45,7 +46,7 @@ ms.locfileid: "88551347"
 1. 輸入專案的名稱和描述。 然後選取一個 [資源群組]。 如果您登入的帳戶與 Azure 帳戶相關聯，[資源群組] 下拉式清單會顯示所有的 Azure 資源群組，包括自訂視覺服務資源。 
 
    > [!NOTE]
-   > 如果沒有資源群組可用，請確認您已使用您用來登入 [Azure 入口網站](https://portal.azure.com/)的相同帳戶登入 [customvision.ai](https://customvision.ai)。 此外，請確認您所選取的自訂視覺入口網站「目錄」，與 Azure 入口網站中的目錄相同，也就是您自訂視覺資源的位置。 在這兩個網站中，您可以從畫面右上角的下拉式帳戶功能表選取您的目錄。 
+   > 如果沒有資源群組可用，請確認您已使用您用來登入 [Azure 入口網站](https://portal.azure.com/)的相同帳戶登入 [customvision.ai](https://customvision.ai)。 此外，請確認您在自訂視覺網站中選取的「目錄」，與 Azure 入口網站中的目錄相同，也就是您自訂視覺資源的位置。 在這兩個網站中，您可以從畫面右上角的下拉式帳戶功能表選取您的目錄。 
 
 1. 選取 [專案類型]  下的 [分類]  。 然後，在 [分類類型]  下，端視您的使用案例而定，選擇 [多標籤]  或 [多類別]  。 多標籤分類會將任意數目的標記套用至影像 (零或多個)，而多類別分類會將影像排序成單一類別 (您提交的每個影像將排序到最可能的標記)。 如果您想要，可以於稍後變更分類類型。
 
@@ -120,3 +121,4 @@ ms.locfileid: "88551347"
 > [!div class="nextstepaction"]
 > [測試和重新定型模型](test-your-model.md)
 
+* [什麼是自訂視覺服務？](./overview.md)

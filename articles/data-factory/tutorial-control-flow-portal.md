@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 入口網站在管線中分支和鏈結活動
-description: 了解如何將活動分支和鏈結來控制 Azure Data Factory 中的資料流程。
+description: 了解如何使用 Azure 入口網站來控制 Azure Data Factory 中的資料流程。
 services: data-factory
 author: djpmsft
 ms.author: daperlov
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/11/2018
-ms.openlocfilehash: c046d2e437004146b5ee4c53dd98942ca1781ad4
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: b1b766e3cb337151c5ca9b35e2040a2a47124151
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90983736"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91568538"
 ---
 # <a name="branching-and-chaining-activities-in-an-azure-data-factory-pipeline-using-the-azure-portal"></a>使用 Azure 入口網站在 Azure Data Factory 管線中為活動建立分支並進行鏈結
 
@@ -184,7 +184,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
    ![拖放複製活動](./media/tutorial-control-flow-portal/drag-drop-copy-activity.png)
 5. 在底部 [複製] 活動的 [屬性] 視窗中，切換到 [來源] 索引標籤，然後按一下 [+ 新增]。 您在此步驟中為複製活動建立來源資料集。
 
-   ![來源資料集](./media/tutorial-control-flow-portal/new-source-dataset-button.png)
+   ![顯示如何為複製活動建立源資料集的螢幕擷取畫面。](./media/tutorial-control-flow-portal/new-source-dataset-button.png)
 6. 在 [新增資料集] 視窗中選取 [Azure Blob 儲存體]，然後按一下 [完成]。
 
    ![選取 Azure Blob 儲存體](./media/tutorial-control-flow-portal/select-azure-blob-storage.png)
@@ -273,7 +273,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
         ![第二個 Web 活動的設定](./media/tutorial-control-flow-portal/web-activity2-settings.png)         
 22. 在管線設計工具中選取 [複製] 活動，按一下 +-> 按鈕，然後選取 [錯誤]。  
 
-    ![第二個 Web 活動的設定](./media/tutorial-control-flow-portal/select-copy-failure-link.png)
+    ![此螢幕擷取畫面顯示如何在管線設計師中的複製活動上選取錯誤。](./media/tutorial-control-flow-portal/select-copy-failure-link.png)
 23. 將複製活動旁邊的**紅色**按鈕拖曳至第二個 Web 活動 **SendFailureEmailActivity**。 您可以將活動四處移動，讓管線看起來如下圖所示：
 
     ![具有所有活動的完整管線](./media/tutorial-control-flow-portal/full-pipeline.png)
@@ -304,7 +304,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
     ![成功的管線執行](./media/tutorial-control-flow-portal/monitor-success-pipeline-run.png)
 2. 若要檢視與此管線執行相關聯的**活動執行**，請按一下 [動作] 資料行中的第一個連結。 您可以按一下頂端的 [管線]，來切換回到前一個檢視。 使用 [重新整理] 按鈕可重新整理清單。
 
-    ![活動執行](./media/tutorial-control-flow-portal/activity-runs-success.png)
+    ![顯示如何檢視活動執行清單的螢幕擷取畫面。](./media/tutorial-control-flow-portal/activity-runs-success.png)
 
 ## <a name="trigger-a-pipeline-run-that-fails"></a>觸發失敗的管線執行
 1. 切換至左側的 [編輯] 索引標籤。

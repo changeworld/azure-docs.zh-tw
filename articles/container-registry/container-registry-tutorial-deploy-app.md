@@ -4,12 +4,12 @@ description: 使用異地複寫 Azure Container Registry 中的容器映像，�
 ms.topic: tutorial
 ms.date: 08/20/2018
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 5b075e1065ef8c30837000f490cc93525b4b61cc
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: bcbce3c60aa0b4613b1dd1840c335c800193e549
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74456097"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328683"
 ---
 # <a name="tutorial-deploy-a-web-app-from-a-geo-replicated-azure-container-registry"></a>教學課程：從異地複寫的 Azure Container Registry 部署 Web 應用程式
 
@@ -58,7 +58,7 @@ Azure Container Registry 支援將容器化的應用程式直接部署至[用於
 
 選取 [建立]  以將 Web 應用程式佈建至「美國西部」  區域。
 
-![Azure 入口網站中 Linux 上的 Web 應用程式設定][deploy-app-portal-02]
+![此螢幕擷取畫面顯示用於容器的 Web App，其中已反白顯示 [建立] 按鈕。][deploy-app-portal-02]
 
 ## <a name="view-the-deployed-web-app"></a>檢視部署的 Web 應用程式
 
@@ -68,11 +68,11 @@ Azure Container Registry 支援將容器化的應用程式直接部署至[用於
 
 選取 **App Service** 概觀右上方 Web 應用程式的超連結 URL，以在您的瀏覽器中檢視執行中的應用程式。
 
-![Azure 入口網站中 Linux 上的 Web 應用程式設定][deploy-app-portal-04]
+![此螢幕擷取畫面顯示已反白顯示 Web 應用程式 URL 的 App Service 概觀。][deploy-app-portal-04]
 
 從異地複寫的容器登錄部署 Docker 映像之後，網站顯示的映像就代表裝載容器登錄的 Azure 區域。
 
-![在瀏覽器中檢視部署的 Web 應用程式][deployed-app-westus]
+![此螢幕擷取畫面顯示已在瀏覽器中檢視的已部署 Web 應用程式。][deployed-app-westus]
 
 ## <a name="deploy-second-web-app-for-containers-instance"></a>部署第二個用於容器的 Web 應用程式執行個體
 
@@ -88,9 +88,9 @@ Azure Container Registry 支援將容器化的應用程式直接部署至[用於
 
 選取 [建立]  以將 Web 應用程式佈建至「美國東部」  區域。
 
-![Azure 入口網站中 Linux 上的 Web 應用程式設定][deploy-app-portal-06]
+![此螢幕擷取畫面顯示用於容器的 Web App [建立] 視窗，其中已反白顯示 [建立] 按鈕。][deploy-app-portal-06]
 
-## <a name="view-the-deployed-web-app"></a>檢視部署的 Web 應用程式
+## <a name="view-the-second-deployed-web-app"></a>檢視第二個部署的 Web 應用程式
 
 像之前一樣，您可以在瀏覽器中瀏覽至其 URL 檢視執行的應用程式。
 

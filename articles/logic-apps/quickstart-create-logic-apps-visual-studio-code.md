@@ -6,13 +6,13 @@ ms.suite: integration
 ms.reviewer: jonfan, deli, logicappspm
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 10/25/2019
-ms.openlocfilehash: a2239d5ee70e90b9ee7c07b4dca78a45d2ce7ef9
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.date: 09/25/2020
+ms.openlocfilehash: fa103c39b540c41536e4f231692b4602afe01a3e
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131475"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361206"
 ---
 # <a name="quickstart-create-and-manage-logic-app-workflow-definitions-by-using-visual-studio-code"></a>快速入門：使用 Visual Studio Code 來建立及管理邏輯應用程式工作流程定義
 
@@ -130,7 +130,7 @@ ms.locfileid: "87131475"
    例如，以下是範例邏輯應用程式工作流程定義，以 RSS 觸發程序和 Office 365 Outlook 動作為開頭。 通常 JSON 元素會在每個區段中依字母順序顯示。 不過，此範例大致上會以邏輯應用程式步驟出現在設計工具中的順序來顯示這些元素。
 
    > [!IMPORTANT]
-   > 如果您想要重複使用此範例邏輯應用程式定義，您必須要有 Office 365 組織帳戶，例如 @fabrikam.com。 請務必將虛構的電子郵件地址取代為您自己的電子郵件地址。 若要使用不同的電子郵件連接器 (例如 Outlook.com 或 Gmail)，請將 `Send_an_email_action` 動作取代為 [Azure Logic Apps 支援的電子郵件連接器](../connectors/apis-list.md)所提供的類似動作。
+   > 如果您想要重複使用此範例邏輯應用程式定義，您必須要有組織帳戶，例如 @fabrikam.com。 請務必將虛構的電子郵件地址取代為您自己的電子郵件地址。 若要使用不同的電子郵件連接器 (例如 Outlook.com 或 Gmail)，請將 `Send_an_email_action` 動作取代為 [Azure Logic Apps 支援的電子郵件連接器](../connectors/apis-list.md)所提供的類似動作。
    >
    > 如果您想要使用 Gmail 連接器，只有 G-Suite 商務帳戶可以在邏輯應用程式中使用此連接器，而不受限制。 
    > 如果您有 Gmail 取用者帳戶，您只能使用此連接器搭配特定的 Google 核准服務，或者您可以[建立 Google 用戶端應用程式，以用來向 Gmail 連接器進行驗證](/connectors/gmail/#authentication-and-bring-your-own-application)。 
@@ -307,4 +307,4 @@ ms.locfileid: "87131475"
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [使用 Visual Studio 建立邏輯應用程式](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)
+> [在 Visual Studio Code (預覽) 中建立具狀態或無狀態邏輯應用程式](../logic-apps/create-stateful-stateless-workflows-visual-studio-code.md)

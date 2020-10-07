@@ -14,12 +14,12 @@ ms.date: 05/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 04ea92e18fc6efb8b375a22cc34baf1d33b78802
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: b82dcc633f0f2bb13cb84f80873117f9eb94a24f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279018"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91313157"
 ---
 # <a name="tutorial--integrate-a-single-ad-forest-using-password-hash-sync-phs"></a>教學課程：使用密碼雜湊同步處理整合單一 AD 樹系 (PHS)
 
@@ -184,7 +184,7 @@ Set-ADUser -Identity $Identity -PasswordNeverExpires $true -ChangePasswordAtLogo
 2. 選取**加號圖示 (+)** 並搜尋 **Azure Active Directory**。
 3. 在搜尋結果中選取 [Azure Active Directory]  。
 4. 選取 [建立]  。</br>
-![建立](media/tutorial-password-hash-sync/create1.png)</br>
+![顯示如何建立 Azure AD 租用戶的螢幕擷取畫面。](media/tutorial-password-hash-sync/create1.png)</br>
 5. 提供**組織名稱**與**初始網域名稱**。 然後選取 [建立]  。 這將會建立您的目錄。
 6. 完成此動作之後，請按一下**這裡**以管理目錄。
 
@@ -192,10 +192,10 @@ Set-ADUser -Identity $Identity -PasswordNeverExpires $true -ChangePasswordAtLogo
 現在我們已有 Azure AD 租用戶，我們將建立全域系統管理員帳戶。  此帳戶會用來在 Azure AD Connect 安裝期間建立 Azure AD Connector 帳戶。  Azure AD Connector 帳戶會用來將資訊寫入到 Azure AD。   若要建立全域系統管理員帳戶，請執行下列動作。
 
 1.  在 [管理]  底下選取 [使用者]  。</br>
-![建立](media/tutorial-password-hash-sync/gadmin1.png)</br>
+![此螢幕擷取畫面顯示在 [管理] 區段中選取的 [使用者] 選項，您可以在其中建立全域管理員。](media/tutorial-password-hash-sync/gadmin1.png)</br>
 2.  選取 [所有使用者 ]  ，然後選取 [+ 新增使用者]  。
 3.  提供此使用者的名稱與使用者名稱。 這將成為您租用戶的全域系統管理員。 建議您將 [目錄角色]  變更為 [全域系統管理員]  。 您也可以顯示暫時密碼。 完成之後，請選取 [建立]  。</br>
-![建立](media/tutorial-password-hash-sync/gadmin2.png)</br>
+![此螢幕擷取畫面顯示當您在 Azure AD 中建立全域管理員時選取的 [建立] 按鈕。](media/tutorial-password-hash-sync/gadmin2.png)</br>
 4. 完成此動作之後，請開啟新的網頁瀏覽器，並使用新的全域系統管理員帳戶與臨時密碼登入 myapps.microsoft.com。
 5. 將全域系統管理員密碼變更為您可以記住的密碼。
 
@@ -206,7 +206,7 @@ Set-ADUser -Identity $Identity -PasswordNeverExpires $true -ChangePasswordAtLogo
 2. 瀏覽並按兩下 **AzureADConnect.msi**。
 3. 在 [歡迎] 畫面上，選取同意授權條款的方塊，然後按一下 [繼續]  。  
 4. 在 [快速設定] 畫面上，按一下 [ **使用快速設定**]。</br>  
-![建立](media/tutorial-password-hash-sync/express1.png)</br>
+![顯示 [快速設定] 畫面和 [使用快速設定] 按鈕的螢幕擷取畫面。](media/tutorial-password-hash-sync/express1.png)</br>
 5. 在 [連線至 Azure AD] 畫面上，輸入 Azure AD 的全域系統管理員使用者名稱和密碼。 按 [下一步]  。  
 6. 在 [連接到 AD DS] 畫面上輸入企業系統管理員帳戶的使用者名稱和密碼。 按 [下一步]  。  
 7. 在 [準備好設定] 畫面中，按一下 [安裝]  。

@@ -1,6 +1,7 @@
 ---
-title: 建立 Azure Active Directory 租用戶
-description: 了解如何建立 Azure AD 租用戶，以供註冊及建置應用程式使用。
+title: 快速入門：建立 Azure Active Directory 租用戶
+titleSuffix: Microsoft identity platform
+description: 在本快速入門中，您會了解如何建立 Azure Active Directory 租用戶，用於開發使用 Microsoft 身分識別平台進行驗證和授權的應用程式。
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -12,12 +13,12 @@ ms.date: 03/12/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: df873e49e1bc581a32bcb4e4b40b2b24db98cee5
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 60d789c4297c400b812cd6c5c19c8c6148cb347d
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88120808"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91575974"
 ---
 # <a name="quickstart-set-up-a-tenant"></a>快速入門：設定租用戶
 
@@ -26,6 +27,10 @@ Microsoft 身分識別平台可讓開發人員建置以各種自訂 Microsoft 36
 租用戶是組織的代表。 它是組織或應用程式開發人員在與 Microsoft 建立關係 (例如註冊 Azure、Microsoft Intune 或 Microsoft 365) 時收到的 Azure AD 專屬執行個體。
 
 每個 Azure AD 租用戶都與其他 Azure AD 租用戶截然不同，並且具有自己的公司與學校身分識別、消費者身分識別 (如果它是 Azure AD B2C 租用戶) 與應用程式註冊。 租用戶內部的應用程式註冊，只能允許來自您的租用戶或所有租用戶內的帳戶進行驗證。
+
+## <a name="prerequisites"></a>必要條件
+
+- 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="determining-environment-type"></a>決定環境類型
 
@@ -71,6 +76,5 @@ Microsoft 身分識別平台可讓開發人員建置以各種自訂 Microsoft 36
 
 ## <a name="next-steps"></a>後續步驟
 
-* [註冊應用程式](quickstart-register-app.md)，並與 Microsoft 身分識別平台整合。 
-* 了解[驗證的基本概念](./authentication-vs-authorization.md)。
-* 如需訂用帳戶與 Azure AD 租用戶之間關聯性的詳細資料，請參閱[將 Azure 訂用帳戶與 Azure Active Directory 租用戶建立關聯或將其新增至其中](../fundamentals/active-directory-how-subscriptions-associated-directory.md)。
+> [!div class="nextstepaction"]
+> [註冊應用程式](quickstart-register-app.md)以與 Microsoft 身分識別平台整合。

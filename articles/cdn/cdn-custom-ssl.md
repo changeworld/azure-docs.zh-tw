@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 10/1/2019
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 5cf1181c41af1edc752205f4477f18b78680f484
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 66e0ac622479d38d2e2a3cbf499bb7900251571d
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81253997"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91359386"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>教學課程：在 Azure CDN 自訂網域上設定 HTTPS
 
@@ -80,7 +80,7 @@ Azure CDN 預設支援 CDN 端點主機名稱上的 HTTPS。 舉例來說，當�
 
 4. 在自訂網域清單中，選取您要啟用 HTTPS 的自訂網域。
 
-    ![自訂網域清單](./media/cdn-custom-ssl/cdn-custom-domain.png)
+    ![顯示 [自訂網域] 頁面的螢幕擷取畫面，此頁面包含 [使用我自己的憑證] 的選項。](./media/cdn-custom-ssl/cdn-custom-domain.png)
 
     [自訂網域]  頁面隨即出現。
 

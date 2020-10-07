@@ -7,14 +7,14 @@ author: lisaguthrie
 ms.service: azure-app-configuration
 ms.custom: devx-track-csharp
 ms.topic: quickstart
-ms.date: 12/17/2019
+ms.date: 09/28/2020
 ms.author: lcozzens
-ms.openlocfilehash: 6795d10950ddd7b03dfa505ab44d2f43837c9045
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 4edf48b73ee4d50679cbec377ed47749d2c94776
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88590263"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569607"
 ---
 # <a name="quickstart-create-a-net-framework-app-with-azure-app-configuration"></a>快速入門：使用 Azure 應用程式設定建立 .NET Framework 應用程式
 
@@ -22,7 +22,7 @@ ms.locfileid: "88590263"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-- Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/)
+- Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/dotnet)
 - [Visual Studio 2019](https://visualstudio.microsoft.com/vs)
 - [.NET Framework 4.7.2](https://dotnet.microsoft.com/download)
 
@@ -88,23 +88,15 @@ ms.locfileid: "88590263"
         string message = System.Configuration.ConfigurationManager.AppSettings["TestApp:Settings:Message"];
 
         Console.WriteLine(message);
+        Console.ReadKey();
     }
     ```
 
 ## <a name="build-and-run-the-app-locally"></a>於本機建置並執行應用程式
 
-1. 將名為 **ConnectionString** 的環境變數設定為應用程式組態存放區的連接字串。 如果您使用 Windows 命令提示字元，請執行下列命令：
+1. 將 `${ConnectionString}` 取代為應用程式組態執行個體的實際連接字串，以更新 **App.config** 檔案。 您可以在 Azure 入口網站中 [應用程式組態] 資源的 [存取金鑰] 索引標籤中找到存取金鑰。
 
-    ```cmd
-        setx ConnectionString "connection-string-of-your-app-configuration-store"
-    ```
-
-    如果您使用 Windows PowerShell，請執行下列命令：
-
-    ```azurepowershell
-        $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
-    ```
-1. 重新啟動 Visual Studio，以讓變更生效。 按 Ctrl + F5 以建置並執行主控台應用程式。
+1. 按 Ctrl + F5 以建置並執行主控台應用程式。
 
 ## <a name="clean-up-resources"></a>清除資源
 

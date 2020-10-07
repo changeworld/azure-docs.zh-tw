@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 08/07/2020
-ms.openlocfilehash: cc38210690c88fec826dc727775d01884dedd997
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: cdc4dfe23cce7c2f58e4c9b44f2cea46e2337e00
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88008877"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322439"
 ---
 # <a name="quickstart-create-automated-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>快速入門：使用 Azure Logic Apps 建立自動化工作、程序和工作流程 - Visual Studio
 
@@ -22,7 +22,7 @@ ms.locfileid: "88008877"
 
 在本快速入門中，您會使用 Visual Studio 建立與 Azure 入口網站快速入門中相同的邏輯應用程式。 此邏輯應用程式會監視網站的 RSS 摘要，並針對該摘要中的每個新項目傳送電子郵件。 您已完成的邏輯應用程式看起來像以下高階工作流程：
 
-![完成的邏輯應用程式](./media/quickstart-create-logic-apps-with-visual-studio/high-level-workflow-overview.png)
+![此螢幕擷取畫面顯示已完成邏輯應用程式的高階工作流程。](./media/quickstart-create-logic-apps-with-visual-studio/high-level-workflow-overview.png)
 
 <a name="prerequisites"></a>
 
@@ -55,7 +55,7 @@ ms.locfileid: "88008877"
 
   設計工具需要網際網路連線才能在 Azure 中建立資源，以及從邏輯應用程式中的連接器讀取屬性和資料。
 
-* Logic Apps 支援的電子郵件帳戶 (例如 Office 365 Outlook、Outlook.com 或 Gmail)。 對於其他提供者，請檢閱[這裡的連接器清單](/connectors/)。 此範例使用 Office 365 Outlook。 如果您使用不同的提供者，則整體步驟相同，但您的 UI 可能稍有不同。
+* Logic Apps 支援的電子郵件帳戶 (例如 Outlook for Microsoft 365、Outlook.com 或 Gmail)。 對於其他提供者，請檢閱[這裡的連接器清單](/connectors/)。 此範例使用 Office 365 Outlook。 如果您使用不同的提供者，則整體步驟相同，但您的 UI 可能稍有不同。
 
   > [!IMPORTANT]
   > 如果您想要使用 Gmail 連接器，只有 G-Suite 商務帳戶可以在邏輯應用程式中使用此連接器，而不受限制。 如果您有 Gmail 取用者帳戶，您只能使用此連接器搭配特定的 Google 核准服務，或者您可以[建立 Google 用戶端應用程式，以用來向 Gmail 連接器進行驗證](/connectors/gmail/#authentication-and-bring-your-own-application)。 如需詳細資訊，請參閱 [Azure Logic Apps 中 Google 連接器的資料安全性和隱私權原則](../connectors/connectors-google-data-security-privacy-policy.md)。

@@ -2,35 +2,35 @@
 title: 使用 Visual Studio Code 在 Azure 中建立第一個函式
 description: 使用 Visual Studio Code 中的 Azure Functions 擴充功能建立簡單 HTTP 觸發函式並發佈至 Azure。
 ms.topic: quickstart
-ms.date: 01/10/2020
+ms.date: 09/28/2020
 ms.custom: devx-track-csharp, mvc, devcenter, seo, devx-track-python
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: db5b28ae0bffa16b17cb63471b8d5ba6b5ac94ed
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: a8fefee3903a9ff5ce9bdd05a0fd5bcf07bc5429
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146567"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91408528"
 ---
 # <a name="quickstart-create-a-function-in-azure-using-visual-studio-code"></a>快速入門：使用 Visual Studio Code 在 Azure 中建立函式
 
-::: zone pivot="programming-language-csharp"  
-在本文中，您會使用 Visual Studio Code 建立可回應 HTTP 要求的 C# 類別庫函式。 在本機測試程式碼之後，您可以將其部署到 Azure Functions 的無伺服器環境。 
-::: zone-end  
+::: zone pivot="programming-language-csharp"
+在本文中，您會使用 Visual Studio Code 建立可回應 HTTP 要求的 C# 類別庫函式。 在本機測試程式碼之後，您可以將其部署到 Azure Functions 的無伺服器環境。
+::: zone-end
 ::: zone pivot="programming-language-javascript"
-在本文中，您會使用 Visual Studio Code 建立可回應 HTTP 要求的 JavaScript 函式。 在本機測試程式碼之後，您可以將其部署到 Azure Functions 的無伺服器環境。 
+在本文中，您會使用 Visual Studio Code 建立可回應 HTTP 要求的 JavaScript 函式。 在本機測試程式碼之後，您可以將其部署到 Azure Functions 的無伺服器環境。
 ::: zone-end
 ::: zone pivot="programming-language-typescript"
-在本文中，您會使用 Visual Studio Code 建立可回應 HTTP 要求的 TypeScript 函式。 在本機測試程式碼之後，您可以將其部署到 Azure Functions 的無伺服器環境。 
-::: zone-end   
+在本文中，您會使用 Visual Studio Code 建立可回應 HTTP 要求的 TypeScript 函式。 在本機測試程式碼之後，您可以將其部署到 Azure Functions 的無伺服器環境。
+::: zone-end 
 ::: zone pivot="programming-language-powershell"
-在本文中，您會使用 Visual Studio Code 建立可回應 HTTP 要求的 PowerShell 函式。 在本機測試程式碼之後，您可以將其部署到 Azure Functions 的無伺服器環境。 
-::: zone-end  
-::: zone pivot="programming-language-python" 
-在本文中，您會使用 Visual Studio Code 建立可回應 HTTP 要求的 Python 函式。 在本機測試程式碼之後，您可以將其部署到 Azure Functions 的無伺服器環境。 
-::: zone-end  
-::: zone pivot="programming-language-java" 
-在本文中，您會使用 Visual Studio Code 建立可回應 HTTP 要求的 Java 函式。 在本機測試程式碼之後，您可以將其部署到 Azure Functions 的無伺服器環境。 
+在本文中，您會使用 Visual Studio Code 建立可回應 HTTP 要求的 PowerShell 函式。 在本機測試程式碼之後，您可以將其部署到 Azure Functions 的無伺服器環境。
+::: zone-end
+::: zone pivot="programming-language-python"
+在本文中，您會使用 Visual Studio Code 建立可回應 HTTP 要求的 Python 函式。 在本機測試程式碼之後，您可以將其部署到 Azure Functions 的無伺服器環境。
+::: zone-end
+::: zone pivot="programming-language-java"
+在本文中，您會使用 Visual Studio Code 建立可回應 HTTP 要求的 Java 函式。 在本機測試程式碼之後，您可以將其部署到 Azure Functions 的無伺服器環境。
 ::: zone-end
 
 完成本快速入門後，您的 Azure 帳戶中會產生幾美分或更少的少許費用。 
@@ -38,54 +38,54 @@ ms.locfileid: "89146567"
 ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"
 本文還有 [CLI 型版本](functions-create-first-azure-function-azure-cli.md)。
 ::: zone-end
-::: zone pivot="programming-language-java"  
+::: zone pivot="programming-language-java"
 > [!NOTE]
 > 如果 Visual Studio Code 不是您慣用的開發工具，請參閱供 JAVA 開發人員參考的類似教學課程，內容分別使用 [Maven](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java)、[Gradle](./functions-create-first-java-gradle.md) 和 [IntelliJ IDEA](/azure/developer/java/toolkit-for-intellij/quickstart-functions) 等開發工具。
-::: zone-end  
+::: zone-end
 
 ## <a name="configure-your-environment"></a>設定環境
 
 開始使用之前，請先確定您具備下列必要項目︰
 
-+ 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+- 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
-::: zone pivot="programming-language-csharp,programming-language-powershell,programming-language-python"  
-+ [Node.js](https://nodejs.org/)，Windows 需要將其用於 npm。 僅限[作用中 LTS 和維修 LTS 版本](https://nodejs.org/about/releases/)。 請使用 `node --version` 命令來檢查您的版本。
-    macOS 和 Linux 上的本機開發不需要此項目。   
-::: zone-end   
-::: zone pivot="programming-language-javascript,programming-language-typescript"  
-+ [Node.js](https://nodejs.org/)、作用中 LTS 和維修 LTS 版本 (建議使用 10.14.1)。 請使用 `node --version` 命令來檢查您的版本。  
-::: zone-end  
+::: zone pivot="programming-language-csharp,programming-language-powershell,programming-language-python"
+- [Node.js](https://nodejs.org/)，Windows 需要將其用於 npm。 僅限[作用中 LTS 和維修 LTS 版本](https://nodejs.org/about/releases/)。 請使用 `node --version` 命令來檢查您的版本。
+    macOS 和 Linux 上的本機開發不需要此項目。 
+::: zone-end 
+::: zone pivot="programming-language-javascript,programming-language-typescript"
+- [Node.js](https://nodejs.org/)、作用中 LTS 和維修 LTS 版本 (建議使用 10.14.1)。 請使用 `node --version` 命令來檢查您的版本。
+::: zone-end
 ::: zone pivot="programming-language-python"
-+ Azure Functions (x64) 支援 [Python 3.8](https://www.python.org/downloads/release/python-381/)、[Python 3.7](https://www.python.org/downloads/release/python-375/)、[Python 3.6](https://www.python.org/downloads/release/python-368/)。
-::: zone-end   
+- Azure Functions (x64) 支援 [Python 3.8](https://www.python.org/downloads/release/python-381/)、[Python 3.7](https://www.python.org/downloads/release/python-375/)、[Python 3.6](https://www.python.org/downloads/release/python-368/)。
+::: zone-end 
 ::: zone pivot="programming-language-powershell"
-+ [PowerShell 7](/powershell/scripting/install/installing-powershell-core-on-windows)
+- [PowerShell 7](/powershell/scripting/install/installing-powershell-core-on-windows)
 
-+ [.NET Core 3.1](https://www.microsoft.com/net/download) 與 [.NET Core 2.1](https://dotnet.microsoft.com/download/dotnet-core/2.2)  
-::: zone-end  
-::: zone pivot="programming-language-java"  
-+ [Java Developer Kit](https://aka.ms/azure-jdks) 第 8 版。
+- [.NET Core 3.1](https://www.microsoft.com/net/download) 與 [.NET Core 2.1](https://dotnet.microsoft.com/download/dotnet-core/2.2)
+::: zone-end
+::: zone pivot="programming-language-java"
+- [Java Developer Kit](https://aka.ms/azure-jdks) 第 8 版。
 
-+ [Apache Maven](https://maven.apache.org) 3.0 版或更高版本。
-::: zone-end  
-+ 其中一個[支援的平台](https://code.visualstudio.com/docs/supporting/requirements#_platforms)上有 [Visual Studio Code](https://code.visualstudio.com/)。    
-::: zone pivot="programming-language-csharp"  
-+ 適用於 Visual Studio Code 的 [ 擴充功能](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)。  
-::: zone-end  
-::: zone pivot="programming-language-python"  
-+ 適用於 Visual Studio Code 的 [Python 擴充功能](https://marketplace.visualstudio.com/items?itemName=ms-python.python)。  
-::: zone-end  
-::: zone pivot="programming-language-powershell"  
-+ [適用於 Visual Studio Code 的 PowerShell 擴充功能](https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell)。  
-::: zone-end  
-::: zone pivot="programming-language-java"   
-+ [Java 延伸模組套件](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack)  
-::: zone-end  
+- [Apache Maven](https://maven.apache.org) 3.0 版或更高版本。
+::: zone-end
+- 其中一個[支援的平台](https://code.visualstudio.com/docs/supporting/requirements#_platforms)上有 [Visual Studio Code](https://code.visualstudio.com/)。  
+::: zone pivot="programming-language-csharp"
+- 適用於 Visual Studio Code 的 [ 擴充功能](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)。
+::: zone-end
+::: zone pivot="programming-language-python"
+- 適用於 Visual Studio Code 的 [Python 擴充功能](https://marketplace.visualstudio.com/items?itemName=ms-python.python)。
+::: zone-end
+::: zone pivot="programming-language-powershell"
+- [適用於 Visual Studio Code 的 PowerShell 擴充功能](https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell)。
+::: zone-end
+::: zone pivot="programming-language-java"
+- [Java 延伸模組套件](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack)
+::: zone-end
 
-+ 適用於 Visual Studio Code 的 [Azure Functions 擴充功能](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions)。 
+- 適用於 Visual Studio Code 的 [Azure Functions 擴充功能](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions)。
 
-## <a name="create-your-local-project"></a><a name="create-an-azure-functions-project"></a>建立本機專案 
+## <a name="create-your-local-project"></a><a name="create-an-azure-functions-project"></a>建立本機專案
 
 在這一節中，您會使用 Visual Studio Code 在您所選的語言中建立本機 Azure Functions 專案。 稍後在本文中，您會將函式程式碼發佈至 Azure。 
 
@@ -101,50 +101,50 @@ ms.locfileid: "89146567"
 1. 依照提示提供下列資訊：
 
     ::: zone pivot="programming-language-csharp"
-    + **為您的函式專案選取語言**：選擇 `C#`。
+    - **為您的函式專案選取語言**：選擇 `C#`。
     ::: zone-end
     ::: zone pivot="programming-language-javascript"
-    + **為您的函式專案選取語言**：選擇 `JavaScript`。
+    - **為您的函式專案選取語言**：選擇 `JavaScript`。
     ::: zone-end
     ::: zone pivot="programming-language-typescript"
-    + **為您的函式專案選取語言**：選擇 `TypeScript`。
+    - **為您的函式專案選取語言**：選擇 `TypeScript`。
     ::: zone-end
     ::: zone pivot="programming-language-powershell"
-    + **為您的函式專案選取語言**：選擇 `PowerShell`。
+    - **為您的函式專案選取語言**：選擇 `PowerShell`。
     ::: zone-end
     ::: zone pivot="programming-language-python"
-    + **為您的函式專案選取語言**：選擇 `Python`。
+    - **為您的函式專案選取語言**：選擇 `Python`。
 
-    + **選取 Python 別名以建立虛擬環境**：選擇 Python 解譯器的位置。 如果未顯示位置，請輸入 Python 二進位檔的完整路徑。  
+    - **選取 Python 別名以建立虛擬環境**：選擇 Python 解譯器的位置。 如果未顯示位置，請輸入 Python 二進位檔的完整路徑。
     ::: zone-end
 
-    ::: zone pivot="programming-language-java"  
-    + **為您的函式專案選取語言**：選擇 `Java`。
+    ::: zone pivot="programming-language-java"
+    - **為您的函式專案選取語言**：選擇 `Java`。
 
-    + **選取 Java 的版本**：選擇您的函式在 Azure 中執行的 `Java 8` 或 `Java 11 (preview)`。 選擇您已在本機驗證的 Java 版本。
+    - **選取 Java 的版本**：選擇您的函式在 Azure 中執行的 `Java 8` 或 `Java 11 (preview)`。 選擇您已在本機驗證的 Java 版本。
 
-    + **提供群組識別碼**：選擇 `com.function`。
+    - **提供群組識別碼**：選擇 `com.function`。
 
-    + **提供成品識別碼**：選擇 `myFunction`。
+    - **提供成品識別碼**：選擇 `myFunction`。
 
-    + **提供版本**：選擇 `1.0-SNAPSHOT`。
+    - **提供版本**：選擇 `1.0-SNAPSHOT`。
 
-    + **提供套件名稱**：選擇 `com.function`。
+    - **提供套件名稱**：選擇 `com.function`。
 
-    + **提供應用程式名稱**：選擇 `myFunction-12345`。
-    ::: zone-end  
+    - **提供應用程式名稱**：選擇 `myFunction-12345`。
+    ::: zone-end
     ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"
-    + **選取您的專案第一個函式的範本**：選擇 `HTTP trigger`。
-    
-    + **提供函式名稱**：輸入 `HttpExample`。
-    ::: zone-end  
+    - **選取您的專案第一個函式的範本**：選擇 `HTTP trigger`。
+  
+    - **提供函式名稱**：輸入 `HttpExample`。
+    ::: zone-end
     ::: zone pivot="programming-language-csharp"
-    + **提供命名空間**：輸入 `My.Functions`。 
-    ::: zone-end  
+    - **提供命名空間**：輸入 `My.Functions`。
+    ::: zone-end
     ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"
-    + **授權層級**選擇 `Anonymous`，讓任何人都能呼叫您的函式端點。 若要了解授權層級，請參閱[授權金鑰](functions-bindings-http-webhook-trigger.md#authorization-keys)。
-    ::: zone-end  
-    + **選取您開啟專案的方式**：選擇 `Add to workspace`。
+    - **授權層級**選擇 `Anonymous`，讓任何人都能呼叫您的函式端點。 若要了解授權層級，請參閱[授權金鑰](functions-bindings-http-webhook-trigger.md#authorization-keys)。
+    ::: zone-end
+    - **選取您開啟專案的方式**：選擇 `Add to workspace`。
 
 1. Visual Studio Code 會使用這項資訊產生具有 HTTP 觸發程序的 Azure Functions 專案。 您可以在 Explorer 中檢視本機專案檔。 若要深入了解所建立的檔案，請參閱[產生的專案檔](functions-develop-vs-code.md#generated-project-files)。 
 
@@ -160,7 +160,7 @@ ms.locfileid: "89146567"
 
 ::: zone-end
 
-確認函式在本機電腦上正確執行之後，就可以使用 Visual Studio Code 將專案直接發佈到 Azure。 
+確認函式在本機電腦上正確執行之後，就可以使用 Visual Studio Code 將專案直接發佈到 Azure。
 
 [!INCLUDE [functions-sign-in-vs-code](../../includes/functions-sign-in-vs-code.md)]
 
@@ -168,7 +168,7 @@ ms.locfileid: "89146567"
 
 ## <a name="run-the-function-in-azure"></a>在 Azure 中執行函式
 
-1. 返回 [Azure：  函式] 區域 (位於提要欄位中)，在訂用帳戶下展開新的函式應用程式。 展開 [函式]  ，以滑鼠右鍵按一下 (Windows) 或按住 Ctrl 並在 (macOS) **HttpExample** 上按一下，然後選擇 [複製函式 URL]  。
+1. 返回 [Azure：  函式] 區域 (位於提要欄位中)，在訂用帳戶下展開新的函式應用程式。 展開 [函式]，以滑鼠右鍵按一下 (Windows) 或按住 <kbd>Ctrl</kbd> 並在 (macOS) **HttpExample** 上按一下，然後選擇 [複製函式 URL]。
 
     ![複製新 HTTP 觸發程序的函數 URL](./media/functions-create-first-function-vs-code/function-copy-endpoint-url.png)
 
@@ -177,7 +177,7 @@ ms.locfileid: "89146567"
     ```http
     http://<functionappname>.azurewebsites.net/api/httpexample?name=Functions
     ```
-        
+
     下列範例顯示瀏覽器中對於函式所傳回遠端 GET 要求所做出的回應︰ 
 
     ![瀏覽器中的函式回應](./media/functions-create-first-function-vs-code/functions-test-remote-browser.png)

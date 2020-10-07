@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/09/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my local site to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
-ms.openlocfilehash: eceb9e4c8c839e4da333e005e879ea6094936092
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5f39f5a8f758f390536e5d113629b185252c05d9
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525145"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91439365"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan"></a>教學課程：使用 Azure 虛擬 WAN 來建立站對站連線
 
@@ -231,7 +231,7 @@ ms.locfileid: "86525145"
 
 您可以選取 [檢視/設定]，隨時檢視和設定您的 VPN 閘道設定。
 
-:::image type="content" source="media/virtual-wan-site-to-site-portal/view-configuration-1.png" alt-text="檢視設定" lightbox="media/virtual-wan-site-to-site-portal/view-configuration-1-expand.png":::
+:::image type="content" source="media/virtual-wan-site-to-site-portal/view-configuration-1.png" alt-text="此螢幕擷取畫面顯示箭頭指向 [檢視/設定] 動作的 [VPN (網台對網站)] 頁面。" lightbox="media/virtual-wan-site-to-site-portal/view-configuration-1-expand.png":::
 
 在 [編輯 VPN 閘道] 頁面上，您可以看到下列設定：
 
@@ -240,7 +240,7 @@ ms.locfileid: "86525145"
 * VPN 閘道的預設 BGP IP 位址 (由 Azure 指派)
 * 自訂 BGP IP 位址的設定選項：此欄位保留給 APIPA (自動私人 IP 定址)。 Azure 在範圍 169.254.21.* 和 169.254.22.* 支援 BGP IP。 Azure 會接受這些範圍內的 BGP 連線，但會使用預設的 BGP IP 來進行撥號連線。
 
-   :::image type="content" source="media/virtual-wan-site-to-site-portal/view-configuration-2.png" alt-text="檢視設定" lightbox="media/virtual-wan-site-to-site-portal/view-configuration-2-expand.png":::
+   :::image type="content" source="media/virtual-wan-site-to-site-portal/view-configuration-2.png" alt-text="此螢幕擷取畫面顯示箭頭指向 [檢視/設定] 動作的 [VPN (網台對網站)] 頁面。" lightbox="media/virtual-wan-site-to-site-portal/view-configuration-2-expand.png":::
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -1,6 +1,6 @@
 ---
-title: 教學課程：如何使用 Microsoft Azure 地圖服務路線規劃服務和地圖控制項顯示路線方向
-description: 了解如何使用 Microsoft Azure 地圖服務路線規劃服務和地圖控制項顯示路線方向。
+title: 教學課程：尋找前往位置的路線 | Microsoft Azure 地圖服務
+description: 如何尋找路線前往景點的教學課程。 請參閱如何設定地址座標和查詢 Azure 地圖服務路線規劃服務，以取得前往該景點的指示。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 09/01/2020
@@ -8,13 +8,13 @@ ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: 35a3f6d1e7894eec9baa4ea5432a8e3fec138a21
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.custom: mvc, devx-track-js
+ms.openlocfilehash: 3cb9bee65ab7fa2c29185c40ecb48fd531192187
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90085037"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321708"
 ---
 # <a name="tutorial-how-to-display-route-directions-using-azure-maps-route-service-and-map-control"></a>教學課程：如何使用 Azure 地圖服務路線規劃服務和地圖控制項顯示路線方向
 
@@ -218,7 +218,7 @@ ms.locfileid: "90085037"
 
      :::image type="content" source="./media/tutorial-route-location/map-route.png" alt-text="地圖控制項的基本地圖呈現":::
 
-    您可以在[這裡](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/route.html)取得範例的完整原始程式碼。 您可以在[這裡](https://azuremapscodesamples.azurewebsites.net/?sample=Route%20to%20a%20destination)找到即時範例。
+您可以在[這裡](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/route.html)取得範例的完整原始程式碼。 您可以在[這裡](https://azuremapscodesamples.azurewebsites.net/?sample=Route%20to%20a%20destination)找到即時範例。
 
 ## <a name="next-steps"></a>後續步驟
 

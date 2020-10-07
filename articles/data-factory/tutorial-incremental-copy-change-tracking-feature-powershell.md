@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019, devx-track-azurepowershell
 ms.date: 01/22/2018
-ms.openlocfilehash: 6fab092b0467228fd4fcdbcf95f99fd0981fb1e4
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 3bd18f697c25f7e81f227e7e1456ba0b3d2150c6
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89079212"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541742"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information-using-powershell"></a>使用 PowerShell 使用變更追蹤資訊，以累加方式將資料從 Azure SQL Database 載入到 Azure Blob 儲存體
 
@@ -453,10 +453,10 @@ Invoke-AzDataFactoryV2Pipeline -PipelineName "FullCopyPipeline" -ResourceGroup $
     ![監視及管理圖格](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-monitor-manage-tile-3.png)    
 5. **資料整合應用程式**會在不同的索引標籤中啟動。您可以看到所有**管線執行**及其狀態。 請注意，在下列範例中，管線執行狀態是 [成功]。 按一下 [參數] 資料行中的連結，即可檢查傳遞到管線的參數。 如果有錯誤，您就會在 [錯誤] 資料行中看到連結。 按一下 [動作] 資料行中的連結。
 
-    ![管線執行](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-pipeline-runs-4.png)    
+    ![此螢幕擷取畫面顯示資料處理站的管線執行。](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-pipeline-runs-4.png)    
 6. 當您按一下 [動作] 資料行中的連結時，您會看到下列頁面，其中顯示管線的所有**活動執行**。
 
-    ![活動執行](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-activity-runs-5.png)
+    ![此螢幕擷取畫面顯示已呼叫 [管線] 連結的資料處理站活動執行。](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-activity-runs-5.png)
 7. 若要切換回 [管線執行] 檢視，請按一下 [管線]，如下圖所示。
 
 
@@ -632,10 +632,10 @@ Invoke-AzDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -Resource
 ### <a name="monitor-the-incremental-copy-pipeline"></a>監視累加複製管線
 1. 在**資料整合應用程式**中，重新整理 [管線執行] 檢視。 確認您有在清單中看到 IncrementalCopyPipeline。 按一下 [動作] 資料行中的連結。  
 
-    ![管線執行](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-pipeline-runs-6.png)    
+    ![此螢幕擷取畫面顯示資料處理站的管線執行，包括您的管線。](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-pipeline-runs-6.png)    
 2. 當您按一下 [動作] 資料行中的連結時，您會看到下列頁面，其中顯示管線的所有**活動執行**。
 
-    ![活動執行](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-activity-runs-7.png)
+    ![此螢幕擷取畫面顯示資料處理站的管線執行，其中數個管線執行已標示為成功。](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-activity-runs-7.png)
 3. 若要切換回 [管線執行] 檢視，請按一下 [管線]，如下圖所示。
 
 ### <a name="review-the-results"></a>檢閱結果

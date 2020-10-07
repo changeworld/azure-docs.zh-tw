@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 10/23/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 80fcebec76788ca9ec754b35c57f9965f38c2c0e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1d2a0d79a5cdd53f8376c088fc986c20908575eb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87037094"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329446"
 ---
 # <a name="tutorial-extend-windows-file-servers-with-azure-file-sync"></a>教學課程：使用 Azure 檔案同步擴充 Windows 檔案伺服器
 
@@ -83,7 +83,7 @@ ms.locfileid: "87037094"
 
    ![在入口網站刀鋒視窗上輸入關於 VM 的基本資訊](./media/storage-sync-files-extend-servers/vm-resource-group-and-subscription.png)
 
-1. 在 [執行個體詳細資料]  下方，提供 VM 名稱。 例如，您可以使用 myVM  。
+1. 在 [執行個體詳細資料]  下方，提供 VM 名稱。 例如，您可以使用 myVM。
 1. 請勿變更 [區域]  、[可用性選項]  、[映像]  及 [大小]  的預設設定。
 1. 在 [系統管理員帳戶]  底下提供 VM 的 [使用者名稱]  和 [密碼]  。
 1. 在 [輸入連接埠規則]  下方，選擇 [允許選取的連接埠]  ，然後從下拉式功能表中選取 [RDP (3389)]  和 [HTTP]  。
@@ -314,6 +314,8 @@ Azure 檔案同步代理程式是可下載的套件，可讓 Windows Server 能�
 ![已成功同步處理 Azure 儲存體](media/storage-sync-files-extend-servers/files-synced-in-azurestorage.png)
 
 ## <a name="clean-up-resources"></a>清除資源
+
+如果您想要清除您在本教學課程中建立的資源，首先從儲存體同步服務移除端點。 然後，向您的儲存體同步服務取消註冊伺服器、移除同步群組，並刪除同步服務。
 
 [!INCLUDE [storage-files-clean-up-portal](../../../includes/storage-files-clean-up-portal.md)]
 

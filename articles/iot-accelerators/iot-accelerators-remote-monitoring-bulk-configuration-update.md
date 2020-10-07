@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: tutorial
 ms.date: 11/29/2018
 ms.author: philmea
-ms.openlocfilehash: eaca93ac8a4e8c660be9618aefb27921a4e0a2eb
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8309b625a590131c5f521335e180967ab2c2667c
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77565573"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91363149"
 ---
 # <a name="tutorial-manage-your-connected-devices-in-bulk"></a>教學課程：管理已連線的大量裝置
 
@@ -147,7 +147,7 @@ If this is going to be a tutorial - we need to split this include into two so th
 
 1. 上傳完成時，IoT DevKit 裝置會重新開機。 重新開機完成時，IoT DevKit 的畫面會顯示 **[FW 版本：1.0.0]** ，而且會檢查是否有新韌體：
 
-    ![ota-1](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-1.jpg)
+    ![相片顯示 I o T DevKit 裝置，其畫面會顯示韌體版本，並檢查是否有新的韌體。](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-1.jpg)
 
 ## <a name="create-a-device-configuration"></a>建立裝置組態
 
@@ -248,25 +248,25 @@ If this is going to be a tutorial - we need to split this include into two so th
 
 幾分鐘後，IoT DevKit 會擷取新的韌體資訊，並開始將資料下載到裝置：
 
-![ota-2](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-2.jpg)
+![相片顯示 I o T DevKit 裝置，其畫面顯示新的韌體版本下載中。](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-2.jpg)
 
 根據您的網路速度，下載可能需要幾分鐘的時間。 下載韌體之後，裝置會確認檔案大小和 CRC 值。 如果驗證成功，則 MXChip 的畫面會顯示**通過**。
 
-![ota-3](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-3.jpg)
+![相片顯示 I o T DevKit 裝置，其畫面會顯示韌體版本，並成功通過驗證。](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-3.jpg)
 
 如果檢查成功，則裝置會重新開機。 在發生重新啟動前，您會看到從 **5** 到 **0** 的倒數計時。
 
-![ota-4](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-4.jpg)
+![相片顯示準備重新開機的 I o T DevKit 裝置。](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-4.jpg)
 
 重新開機後，IoT DevKit 開機載入器會將韌體升級為新的版本。 升級可能需要數秒鐘的時間。 在這個階段中，裝置中的 RGB LED 為紅色且螢幕空白。
 
-![ota-5](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-5.jpg)
+![相片顯示執行升級的 I o T DevKit 裝置。 沒有顯示，但有 R G B L E D 發光的紅色。](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-5.jpg)
 
 完成重新開機後，您的 IoT DevKit 裝置現在會執行 1.0.1 版的韌體。
 
-![ota-6](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-6.jpg)
+![相片顯示 I o T DevKit 裝置，其畫面顯示新的韌體版本。](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-6.jpg)
 
-在 [部署]  頁面上，按一下部署可查看裝置更新時的狀態。 您可以在您的裝置群組和您所定義的自訂度量中，看到每個裝置的狀態。
+在 [部署]**** 頁面上，按一下部署可查看裝置更新時的狀態。 您可以在您的裝置群組和您所定義的自訂度量中，看到每個裝置的狀態。
 
 ![部署詳細資料](media/iot-accelerators-remote-monitoring-bulk-configuration-update/deploymentstatus.png)
 

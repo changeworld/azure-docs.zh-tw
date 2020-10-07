@@ -10,12 +10,12 @@ manager: anandsub
 ms.topic: tutorial
 ms.custom: seo-dt-2019
 ms.date: 01/04/2018
-ms.openlocfilehash: 18f72ff32b29ff5832c363601ed63280339079df
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 52fba5064d656158a53ba71fec194cfa4f360df5
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86083055"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360288"
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory-using-the-azure-portal"></a>使用 Azure 入口網站，在 Azure 虛擬網路中使用 Azure Data Factory 的 Hive 活動轉換資料
 
@@ -233,7 +233,7 @@ ms.locfileid: "86083055"
         ![指令碼引數](./media/tutorial-transform-data-using-hive-in-vnet-portal/script-arguments.png)
 1. 若要將成品發佈至 Data Factory，按一下 [發佈]。
 
-    ![發佈](./media/tutorial-transform-data-using-hive-in-vnet-portal/publish.png)
+    ![此螢幕擷取畫面顯示發佈至 Data Factory 的選項。](./media/tutorial-transform-data-using-hive-in-vnet-portal/publish.png)
 
 ## <a name="trigger-a-pipeline-run"></a>觸發管線執行
 

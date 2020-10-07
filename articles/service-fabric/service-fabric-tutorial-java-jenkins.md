@@ -1,17 +1,15 @@
 ---
 title: 在 Azure 中的 Service Fabric 上為 Java 應用程式設定 Jenkins
 description: 在本教學課程中，了解如何使用 Jenkins 設定持續整合以部署 Java Service Fabric 應用程式。
-author: suhuruli
 ms.topic: tutorial
 ms.date: 08/27/2018
-ms.author: suhuruli
 ms.custom: mvc, devx-track-java
-ms.openlocfilehash: 42efc13d37ccfdaf60896f338b1a38384ef06568
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 4e29104f0586a8e18afb7a640903c57ce988b692
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320709"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91531967"
 ---
 # <a name="tutorial-configure-a-jenkins-environment-to-enable-cicd-for-a-java-application-on-service-fabric"></a>教學課程：設定 Jenkins 環境以便在 Service Fabric 上啟用 Java 應用程式的 CI/CD
 
@@ -109,7 +107,7 @@ ms.locfileid: "87320709"
 
     您也可以提供用來部署應用程式的其他詳細資料。 請參閱下列螢幕擷取畫面，以取得應用程式詳細資料的範例︰
 
-    ![Service Fabric Jenkins 建置動作](./media/service-fabric-tutorial-java-jenkins/sfjenkins.png)
+    ![具有其他 Service Fabric 專案部署選項的 [建置後動作] 對話方塊](./media/service-fabric-tutorial-java-jenkins/sfjenkins.png)
 
     > [!NOTE]
     > 如果您使用 Service Fabric 來部署 Jenkins 容器映像，這裡的叢集可能與裝載 Jenkins 容器應用程式的叢集相同。

@@ -1,6 +1,6 @@
 ---
 title: 使用 PowerShell 以累加方式複製多個資料表
-description: 在本教學課程中，您將建立 Azure Data Factory 管線，並以累加方式，將差異資料從 SQL Server 資料庫中的多個資料表複製到 Azure SQL Database 中的資料庫。
+description: 在本教學課程中，您將建立 Azure Data Factory 與管線，以將差異資料從 SQL Server 資料庫中的多個資料表載入 Azure SQL Database。
 services: data-factory
 ms.author: yexu
 author: dearandyxu
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 06/10/2020
-ms.openlocfilehash: e7846ae0f52dfee4260838302d55213d2791eb07
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: d32c4da4604307bca406f7f5d5e5a94b69efe7ac
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85250956"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541810"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-azure-sql-database-using-powershell"></a>使用 PowerShell 以累加方式將 SQL Server 中多個資料表的資料載入到 Azure SQL Database
 
@@ -821,11 +821,11 @@ END
 4. 在 [Data Factory] 頁面上選取 [編寫與監視]，以在個別索引標籤中啟動 Azure Data Factory。
 
 5. 在 [立即開始] 頁面中，選取左側的 [監視]。 
-![管線執行](media/doc-common-process/get-started-page-monitor-button.png)    
+![此螢幕擷取畫面顯示 Azure Data Factory 的 [現在就開始吧] 頁面。](media/doc-common-process/get-started-page-monitor-button.png)    
 
 6. 您可以看到所有管線執行及其狀態。 請注意，在下列範例中，管線執行狀態是 [成功]。 若要檢查傳遞到管線的參數，請選取 [參數] 資料行中的連結。 如果發生錯誤，您就會在 [錯誤] 資料行中看到連結。
 
-    ![管線執行回合](media/tutorial-incremental-copy-multiple-tables-powershell/monitor-pipeline-runs-4.png)    
+    ![此螢幕擷取畫面顯示資料處理站的管線執行，包括您的管線。](media/tutorial-incremental-copy-multiple-tables-powershell/monitor-pipeline-runs-4.png)    
 7. 當您選取 [動作] 資料行中的連結時，您會看到管線的所有活動執行。 
 
 8. 若要回到 [管線執行] 檢視，請選取 [所有管線執行]。 

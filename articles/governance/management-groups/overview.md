@@ -1,14 +1,15 @@
 ---
 title: 使用管理群組來組織資源 - Azure Governance
 description: 了解管理群組及權限如何運作，以及如何使用。
-ms.date: 07/06/2020
+ms.date: 09/22/2020
 ms.topic: overview
-ms.openlocfilehash: c1c054ab67a94b5782187092c572e1e73752c8c2
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.custom: contperfq1
+ms.openlocfilehash: e3bc3ee34227fd23ea9f56070f8ea7776a10a134
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87920155"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91533800"
 ---
 # <a name="what-are-azure-management-groups"></a>什麼是 Azure 管理群組？
 
@@ -21,11 +22,13 @@ ms.locfileid: "87920155"
 
 您可以建置管理群組和訂用帳戶的彈性結構，將資源組織到一個階層中，以便執行統一原則與存取管理。 下圖顯示使用管理群組建立治理階層的範例。
 
-:::image type="content" source="./media/tree.png" alt-text="管理群組階層樹狀結構範例" border="false":::
+:::image type="complex" source="./media/tree.png" alt-text="管理群組階層範例的圖表。" border="false":::
+   根管理群組的圖表，此群組同時包含管理群組和訂用帳戶。 一些子管理群組保存管理群組、一些保留訂用帳戶，一些則保留這兩者。 範例階層的其中一個範例是四個層級的管理群組，其中的子等級為所有訂用帳戶。
+:::image-end:::
 
 您可以建立套用原則的階層，例如將名為「生產」群組中的 VM 位置限制為美國西部區域。 此原則將會繼承管理群組底下的所有 Enterprise 合約 (EA) 訂用帳戶，並套用至那些訂用帳戶底下的所有 VM。 此安全性原則無法由資源或訂用帳戶擁有者改變，並能進一步提升治理能力。
 
-另一個案例是使用管理群組來向使用者提供多個訂用帳戶的存取權。 透過將多個訂用帳戶移至該管理群組底下，您可以在管理群組上建立一個 [Azure 角色指派](../../role-based-access-control/overview.md)，這會將該存取權繼承至所有的訂用帳戶。 只需要單獨對管理群組進行指派，使用者便能存取其所需要的所有內容，無需透過指令碼將 RBAC 指派給多個訂用帳戶。
+另一個案例是使用管理群組來向使用者提供多個訂用帳戶的存取權。 透過將多個訂用帳戶移至該管理群組底下，您可以在管理群組上建立一個 [Azure 角色指派](../../role-based-access-control/overview.md)，這會將該存取權繼承至所有的訂用帳戶。 只需要單獨對管理群組進行指派，使用者便能存取其所需要的所有內容，無需透過指令碼將 Azure RBAC 指派給多個訂用帳戶。
 
 ### <a name="important-facts-about-management-groups"></a>關於管理群組的重要事實
 
@@ -147,7 +150,9 @@ Azure 管理群組支援對所有的資源存取和角色定義使用 [Azure 角
 
 例如，讓我們查看一小部分的視覺效果階層。
 
-:::image type="content" source="./media/subtree.png" alt-text="sub-tree" border="false":::
+:::image type="complex" source="./media/subtree.png" alt-text="管理群組階層範例的圖表。" border="false":::
+   此圖表著重於具有子系 I T 和行銷管理群組的根管理群組。 I T 管理群組具有名為「生產」的單一子管理群組，而行銷管理群組則有兩個免費試用的子訂用帳戶。
+:::image-end:::
 
 假設行銷管理群組上有定義的自訂角色。 接著，該自訂角色會在兩個免費試用訂用帳戶上指派。  
 
@@ -164,7 +169,7 @@ Azure 管理群組支援對所有的資源存取和角色定義使用 [Azure 角
 在管理群組上使用自訂角色時，有一些限制存在。 
 
  - 您只能在新角色的可指派範圍中定義一個管理群組。 這項限制是為了減少角色定義和角色指派中斷連線的情況。 當具有角色指派的訂用帳戶或管理群組移至沒有角色定義的不同父系時，就會發生這種情況。  
- - 不允許在管理群組自訂角色中定義 RBAC 資料平面動作。 有這項限制是因為 RBAC 動作更新資料平面資源提供者時會發生延遲問題。
+ - 無法在管理群組自訂角色中定義資源提供者資料平面動作。 有這項限制是因為更新資料平面資源提供者時會發生延遲問題。
    此延遲問題正在處理中，而且將從角色定義停用這些動作，以降低任何風險。
  - Azure Resource Manager 不會驗證角色定義的可指派範圍中是否存在管理群組。 如果有錯字或列出了不正確的管理群組識別碼，則仍會建立角色定義。  
 
@@ -189,7 +194,7 @@ Azure 管理群組支援對所有的資源存取和角色定義使用 [Azure 角
 
 [Azure 活動記錄](../../azure-monitor/platform/platform-logs-overview.md)中支援管理群組。 在與其他 Azure 資源位於相同中央位置的管理群組中，您可以搜尋其中發生的所有事件。 例如，您可以看到對特定的管理群組的所有角色指派或原則指派變更。
 
-:::image type="content" source="./media/al-mg.png" alt-text="使用管理群組的活動記錄" border="false":::
+:::image type="content" source="./media/al-mg.png" alt-text="管理群組階層範例的圖表。" border="false":::
 
 在 Azure 入口網站外部查詢管理群組時，管理群組的目標範圍像是 **"/providers/Microsoft.Management/managementGroups/{yourMgID}"** 。
 

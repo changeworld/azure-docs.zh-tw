@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB Gremlin API 簡介
 description: 了解如何使用 Azure Cosmos DB 並透過 Apache TinkerPop 的 Gremlin 圖形查詢語言，以低延遲的方式儲存、查詢和周遊巨大圖形。
-author: LuisBosquez
+author: jasonwhowell
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 07/10/2020
-ms.author: lbosq
-ms.openlocfilehash: 3dc534d1cbb195cd93ede091503222b297b17059
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.author: jasonh
+ms.openlocfilehash: 67a2c9537851343e8e5dad4a3654b31082e83d11
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86523735"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91409607"
 ---
 # <a name="introduction-to-gremlin-api-in-azure-cosmos-db"></a>Azure Cosmos DB 中的 Gremlin API 簡介
 
@@ -106,7 +106,7 @@ Azure Cosmos DB 是一種完全受控的圖表資料庫，提供全域散發、�
 
 讓我們利用一個範例圖表了解如何以 Gremlin 表達查詢。 下圖顯示的商務應用程式以圖表形式管理使用者、興趣和裝置的相關資料。  
 
-:::image type="content" source="./media/gremlin-support/sample-graph.png" alt-text="顯示人員、裝置和興趣的範例資料庫" border="false"::: 
+:::image type="content" source="./media/gremlin-support/sample-graph.png" alt-text="Azure Cosmos DB 圖表架構" border="false"::: 
 
 此圖形有下列*頂點*類型 (在 Gremlin 中稱為「標籤」)︰
 

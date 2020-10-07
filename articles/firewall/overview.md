@@ -6,15 +6,15 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc, contperfq1
-ms.date: 08/25/2020
+ms.date: 09/24/2020
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: 0572613fe33d525ed1a5a42c627de3ce1049a290
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 24b30842bea51394a375cf48e09b7547e057405c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89434039"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91261731"
 ---
 # <a name="what-is-azure-firewall"></a>何謂 Azure 防火牆？
 
@@ -55,7 +55,8 @@ Azure 防火牆有下列已知問題：
 |不支援在 64000 與 65535 之間使用連接埠的 NAT 規則|Azure 防火牆允許網路和應用程式規則使用 1-65535 範圍中的任何連接埠，不過 NAT 規則只支援 1-63999 範圍中的連接埠。|這是目前的限制。
 |組態更新平均可能需要 5 分鐘|Azure 防火牆組態更新平均可能需要三到五分鐘，而且不支援平行更新。|我們正在調查提供修正程式的可能性。|
 |Azure 防火牆會使用 SNI TLS 標頭來篩選 HTTPS 和 MSSQL 流量|如果瀏覽器或伺服器軟體不支援伺服器名稱指示 (SNI) 擴充功能，您就無法透過 Azure 防火牆連線。|如果瀏覽器或伺服器軟體不支援 SNI，您或許能夠使用網路規則 (而不是應用程式規則) 來控制連線。 如需可支援 SNI 的軟體，請參閱[伺服器名稱指示](https://wikipedia.org/wiki/Server_Name_Indication)。|
-|自訂 DNS (預覽) 無法與強制通道搭配運作|如果已啟用強制通道，自訂 DNS (預覽) 就無法運作。|我們正在調查提供修正程式的可能性。
+|自訂 DNS (預覽) 無法與強制通道搭配運作|如果已啟用強制通道，自訂 DNS (預覽) 就無法運作。|我們正在調查提供修正程式的可能性。|
+|多個可用性區域支援新的公用 IP 位址|當您部署具有兩個可用性區域 (1 和 2、2 和 3，或 1 和 3) 的防火牆時，無法新增公用 IP 位址|這是公用 IP 位址資源限制。
 
 ## <a name="next-steps"></a>後續步驟
 

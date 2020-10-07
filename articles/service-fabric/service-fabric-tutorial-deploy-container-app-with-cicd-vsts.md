@@ -4,12 +4,12 @@ description: 在本教學課程中，您會了解如何使用 Visual Studio Azur
 ms.topic: tutorial
 ms.date: 08/29/2018
 ms.custom: mvc
-ms.openlocfilehash: 498513d1e31108d633de8165b2684dffbebdf37d
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: bb0eb9226a99f139ff10a8da12a1e22017536c67
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90563942"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326298"
 ---
 # <a name="tutorial-deploy-a-container-application-with-cicd-to-a-service-fabric-cluster"></a>教學課程：將具有 CI/CD 的容器應用程式部署到 Service Fabric 叢集
 
@@ -46,11 +46,11 @@ Visual Studio 右上角的狀態列上，選取 [新增至原始檔控制]   -> 
 
 在 [Team Explorer]  的 [推送]  檢視中，選取 [推送至 Azure DevOps]  下的 [發佈 Git 儲存機制]  按鈕。
 
-![推送 Git 儲存機制][push-git-repo]
+![Visual Studio 中 Team Explorer - 同步處理視窗的螢幕擷取畫面。 在 [推送至 Azure DevOps] 底下，[發佈至 Git 存放庫] 按鈕會反白顯示。][push-git-repo]
 
 確認電子郵件，並在 [帳戶]  下拉式清單中選取組織。 如果您還沒有組織，請先設定一個。 輸入您的儲存機制名稱，並選取 [發佈儲存機制]  。
 
-![推送 Git 儲存機制][publish-code]
+![[推送至 Azure DevOps] 視窗的螢幕擷取畫面。 [電子郵件]、[帳戶]、[存放庫名稱] 和 [發佈存放庫] 按鈕的設定會反白顯示。][publish-code]
 
 發佈存放庫將在帳戶中建立與本機存放庫名稱相同的新 Team 專案。 若要在現有的 Team 專案中建立存放庫，請按一下**存放庫名稱**旁邊的 [進階]  ，並選取 Team 專案。 您可以選取**在網路上檢視**，在網路上檢視您的程式碼。
 
@@ -158,7 +158,7 @@ Azure DevOps 發行定義描述將應用程式封裝部署到叢集的工作流�
 
 確認部署成功，而且應用程式在叢集中執行。  開啟 web 瀏覽器並巡覽至 `http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/`。  請注意應用程式版本，在此範例中是 "1.0.0.20170815.3"。
 
-![Service Fabric Explorer][sfx1]
+![Service Fabric Explorer 中投票應用程式的螢幕擷取畫面。 在 [基本資訊] 索引標籤中，應用程式版本 "1.0.0.20170815.3" 會反白顯示。][sfx1]
 
 ## <a name="update-the-application"></a>更新應用程式
 
@@ -166,11 +166,11 @@ Azure DevOps 發行定義描述將應用程式封裝部署到叢集的工作流�
 
 應用程式的升級開始後，即可注意 Service Fabric Explorer 中的升級進度：
 
-![Service Fabric Explorer][sfx2]
+![Service Fabric Explorer 中投票應用程式的螢幕擷取畫面。 [升級進行中] 訊息會反白顯示，且應用程式狀態為 [升級中]。][sfx2]
 
 應用程式升級可能需要幾分鐘的時間。 升級完成時，應用程式將執行下一個版本。  在此範例中為 "1.0.0.20170815.4"。
 
-![Service Fabric Explorer][sfx3]
+![Service Fabric Explorer 中投票應用程式的螢幕擷取畫面。 在 [基本資訊] 索引標籤中，已更新的應用程式版本 "1.0.0.20170815.4" 會反白顯示。][sfx3]
 
 ## <a name="next-steps"></a>後續步驟
 

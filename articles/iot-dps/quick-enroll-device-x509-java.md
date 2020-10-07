@@ -1,5 +1,5 @@
 ---
-title: 使用 Java 向 Azure 裝置佈建服務註冊 X.509 裝置
+title: 快速入門 - 使用 Java 向 Azure 裝置佈建服務註冊 X.509 裝置
 description: 本快速入門同時使用群組註冊和個別註冊。 在本快速入門中，您會使用 Java 向 Azure IoT 中樞裝置佈建服務 (DPS) 註冊 X.509 裝置。
 author: wesmc7777
 ms.author: wesmc
@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: java
 ms.custom: mvc, devx-track-java
-ms.openlocfilehash: 1d1b4e2573519fbd033121763d3e7fe6b071f075
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 924cf1e1b5bc155bfdbd2f5f766c5459d599fed5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327016"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91276181"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-java"></a>快速入門：使用 Java 向裝置佈建服務註冊 X.509 裝置
 

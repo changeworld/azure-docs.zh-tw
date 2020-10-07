@@ -1,6 +1,6 @@
 ---
 title: 教學課程：使用 Azure 地圖服務建立商店定位器應用程式 | Microsoft Azure 地圖服務
-description: 了解如何建立商店定位器 Web 應用程式。 使用 Azure 地圖服務 Web SDK 來建立網頁、查詢搜尋服務，並在地圖上顯示結果。
+description: 如何建立商店定位器 Web 應用程式的教學課程。 使用 Azure 地圖服務 Web SDK 來建立網頁、查詢搜尋服務，並在地圖上顯示結果。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 08/11/2020
@@ -8,18 +8,18 @@ ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: 61c085cb721f9e1a8d9c44146a9d96cd5a08562c
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.custom: mvc, devx-track-js
+ms.openlocfilehash: 9c2160a241243b59ca7adda99fe2100d416c55be
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90085309"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335257"
 ---
 # <a name="tutorial-create-a-store-locator-by-using-azure-maps"></a>教學課程：使用 Azure 地圖服務建立商店定位器
 
 本教學課程將引導您完成使用 Azure 地圖服務建立簡單商店定位器的程序。 商店定位器是通用的。 這類應用程式中使用的概念大多也都適用於許多其他類型的應用程式。 大多數直接對消費者進行銷售的企業，都有需要為客戶提供商店定位器。 在本教學課程中，您會了解如何：
-    
+
 > [!div class="checklist"]
 > * 使用 Azure 地圖控制項 API 建立新的網頁。
 > * 從檔案載入自訂資料，並顯示在地圖上。
@@ -924,34 +924,21 @@ ms.locfileid: "90085309"
 
 ![小型螢幕版商店定位器的螢幕擷取畫面](./media/tutorial-create-store-locator/FinishedSimpleStoreLocatorSmallScreen.png)
 
-## <a name="next-steps"></a>後續步驟
-
 在本教學課程中，您已了解如何使用 Azure 地圖服務建立基本的商店定位器。 您在本教學課程中建立的商店定位器可能已有您所需的所有功能。 您可以在商店定位器中新增功能，或使用更進階的功能以滿足自訂使用者體驗： 
 
-> [!div class="checklist"]
-> * 啟用[在搜尋方塊中鍵入時提供建議](https://azuremapscodesamples.azurewebsites.net/?sample=Search%20Autosuggest%20and%20JQuery%20UI)的功能。  
-> * 新增[支援多種語言](https://azuremapscodesamples.azurewebsites.net/?sample=Map%20Localization)。 
-> * 允許使用者[沿路線篩選位置](https://azuremapscodesamples.azurewebsites.net/?sample=Filter%20Data%20Along%20Route)。 
-> * 新增[設定篩選](https://azuremapscodesamples.azurewebsites.net/?sample=Filter%20Symbols%20by%20Property)的功能。 
-> * 新增使用查詢字串指定初始搜尋值的支援。 當您在商店定位器中納入此選項時，使用者可以將搜尋加入書籤和共用搜尋。 此外也可讓您輕鬆地將其他頁面上的搜尋傳至此頁面。  
-> * 將商店定位器部署為 [Azure App Service Web 應用程式](https://docs.microsoft.com/azure/app-service/quickstart-html)。 
-> * 將資料儲存在資料庫中和搜尋附近的位置。 若要深入了解，請參閱 [SQL Server 空間資料類型概觀](https://docs.microsoft.com/sql/relational-databases/spatial/spatial-data-types-overview)和[查詢最接近像素的空間資料](https://docs.microsoft.com/sql/relational-databases/spatial/query-spatial-data-for-nearest-neighbor)。
+ * 啟用[在搜尋方塊中鍵入時提供建議](https://azuremapscodesamples.azurewebsites.net/?sample=Search%20Autosuggest%20and%20JQuery%20UI)的功能。  
+ * 新增[支援多種語言](https://azuremapscodesamples.azurewebsites.net/?sample=Map%20Localization)。 
+ * 允許使用者[沿路線篩選位置](https://azuremapscodesamples.azurewebsites.net/?sample=Filter%20Data%20Along%20Route)。 
+ * 新增[設定篩選](https://azuremapscodesamples.azurewebsites.net/?sample=Filter%20Symbols%20by%20Property)的功能。 
+ * 新增使用查詢字串指定初始搜尋值的支援。 當您在商店定位器中納入此選項時，使用者可以將搜尋加入書籤和共用搜尋。 此外也可讓您輕鬆地將其他頁面上的搜尋傳至此頁面。  
+ * 將商店定位器部署為 [Azure App Service Web 應用程式](https://docs.microsoft.com/azure/app-service/quickstart-html)。 
+ * 將資料儲存在資料庫中和搜尋附近的位置。 若要深入了解，請參閱 [SQL Server 空間資料類型概觀](https://docs.microsoft.com/sql/relational-databases/spatial/spatial-data-types-overview?view=sql-server-2017&preserve-view=true)和[查詢最接近像素的空間資料](https://docs.microsoft.com/sql/relational-databases/spatial/query-spatial-data-for-nearest-neighbor?view=sql-server-2017&preserve-view=true)。
 
-> [!div class="nextstepaction"]
-> [檢視完整的原始程式碼](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator)
+您可以[檢視完整的原始程式碼](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator)、[檢視即時範例](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Simple%20Store%20Locator)，以及使用[縮放層級和圖格格線](zoom-levels-and-tile-grid.md)深入了解 Azure 地圖服務的涵蓋範圍和功能。 您也可以[使用資料驅動的樣式運算式](data-driven-style-expressions-web-sdk.md) ，將其套用至您的商務邏輯。
 
-> [!div class="nextstepaction"]
-> [檢視即時範例](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Simple%20Store%20Locator)
-
-若要深入了解 Azure 地圖服務的涵蓋範圍和功能：
-
-> [!div class="nextstepaction"]
-> [縮放層級和圖格格線](zoom-levels-and-tile-grid.md)
+## <a name="next-steps"></a>後續步驟
 
 若要查看更多程式碼範例和互動式編碼體驗：
 
 > [!div class="nextstepaction"]
 > [如何使用地圖控制項](how-to-use-map-control.md)
-
-> [!div class="nextstepaction"]
-> [使用資料驅動樣式運算式](data-driven-style-expressions-web-sdk.md)

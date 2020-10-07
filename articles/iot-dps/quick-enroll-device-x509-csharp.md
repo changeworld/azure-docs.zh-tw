@@ -1,20 +1,20 @@
 ---
-title: 使用 C# 向 Azure 裝置佈建服務註冊 X.509 裝置
+title: 快速入門 - 使用 C# 向 Azure 裝置佈建服務註冊 X.509 裝置
 description: 本快速入門使用群組註冊。 在本快速入門中，使用 C# 向 Azure IoT 中樞裝置佈建服務 (DPS) 註冊 X.509 裝置。
 author: wesmc7777
 ms.author: wesmc
-ms.date: 11/08/2019
+ms.date: 09/28/2020
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.devlang: csharp
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 89d98cdf6f635cab3b85462adf5c6695f7c4482e
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 618b2c6acb8792382adb4c067aa8f33003227091
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020927"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91532579"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-c"></a>快速入門：使用 C# 向裝置佈建服務註冊 X.509 裝置
 
@@ -159,12 +159,15 @@ ms.locfileid: "89020927"
    }
    ```
 
-1. 最後，使用下列幾行取代 `Main` 方法的主體：
+1. 最後，將 `Main` 方法取代為下列幾行：
 
    ```csharp
-   RunSample().GetAwaiter().GetResult();
-   Console.WriteLine("\nHit <Enter> to exit ...");
-   Console.ReadLine();
+    static async Task Main(string[] args)
+    {
+        await RunSample();
+        Console.WriteLine("\nHit <Enter> to exit ...");
+        Console.ReadLine();
+    }
    ```
 
 1. 建置方案。

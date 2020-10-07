@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 41713554273ed5d6548a35d0ac956d8ff5c74191
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 2e3b2ee35352c2af4ae8196ba7c9699da761f83e
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88542514"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372471"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-springer-link"></a>教學課程：Azure Active Directory 與 Springer Link 整合
 
@@ -39,7 +39,7 @@ Springer Link 與 Azure AD 整合提供下列優點：
 
 ## <a name="scenario-description"></a>案例描述
 
-在本教學課程中，您會在測試環境中設定和測試 Azure AD 單一登入。
+在本教學課程中，您會設定和測試 Azure AD 單一登入。
 
 * Springer Link 支援由 **SP** 和 **IDP** 起始的 SSO
 
@@ -68,7 +68,6 @@ Springer Link 與 Azure AD 整合提供下列優點：
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>設定和測試 Azure AD 單一登入
 
 在本節中，您會以名為 **Britta Simon** 的測試使用者身分，使用 Springer Link 設定及測試 Azure AD 單一登入。
-若要讓單一登入能夠運作，必須建立 Azure AD 使用者與 Springer Link 中相關使用者之間的連結關聯性。
 
 若要使用 Springer Link 來設定並測試 Azure AD 單一登入，您需要完成下列建置組塊：
 
@@ -76,8 +75,7 @@ Springer Link 與 Azure AD 整合提供下列優點：
 2. **[設定 Springer Link 單一登入](#configure-springer-link-single-sign-on)** - 在應用程式端設定單一登入設定。
 3. **[建立 Azure AD 測試使用者](#create-an-azure-ad-test-user)** - 使用 Britta Simon 測試 Azure AD 單一登入。
 4. **[指派 Azure AD 測試使用者](#assign-the-azure-ad-test-user)** - 讓 Britta Simon 能夠使用 Azure AD 單一登入。
-5. **[建立 Springer Link 測試使用者](#create-springer-link-test-user)** - 在 Springer Link 中建立 Britta Simon 的對應項目，且該項目與 Azure AD 中代表使用者的項目連結。
-6. **[測試單一登入](#test-single-sign-on)** ，驗證組態是否能運作。
+5. **[測試單一登入](#test-single-sign-on)** ，驗證組態是否能運作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>設定 Azure AD 單一登入
 
@@ -85,7 +83,7 @@ Springer Link 與 Azure AD 整合提供下列優點：
 
 若要使用 Springer Link 設定 Azure AD 單一登入，請執行下列步驟：
 
-1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Springer Link]  應用程式整合頁面上，選取 [單一登入]  。
+1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Springer Link]**** 應用程式整合頁面上，選取 [單一登入]****。
 
     ![設定單一登入連結](common/select-sso.png)
 
@@ -97,44 +95,34 @@ Springer Link 與 Azure AD 整合提供下列優點：
 
     ![編輯基本 SAML 組態](common/edit-urls.png)
 
-4. 在 [基本 SAML 組態]  區段上，若您想要以 **IDP** 起始模式設定應用程式，請執行下列步驟：
+4. 在 [基本 SAML 組態] 區段上，若您想要以 **IDP** 起始模式設定應用程式，請執行下列步驟：
 
     ![Springer Link 網域和 URL 單一登入資訊](common/idp-relay.png)
 
-    a. 在 [識別碼]  文字方塊中，鍵入 URL：`https://fsso.springer.com`
+    a. 在 [識別碼] 文字方塊中，鍵入 URL：`https://fsso.springer.com`
 
     b. 在 [回覆 URL]  文字方塊中，鍵入 URL：`https://fsso.springer.com/federation/Consumer/metaAlias/SpringerServiceProvider`
 
     c. 按一下 [設定額外的 URL]  。
 
-    d. 在 [轉送狀態]  文字方塊中，鍵入 URL：`https://link.springer.com`
+    d. 在 [轉送狀態] 文字方塊中，鍵入 URL：`https://link.springer.com`
 
 5. 如果您想要在 **SP** 起始模式中設定應用程式，請執行下列步驟：
 
     ![Springer Link 網域和 URL 單一登入資訊](common/both-signonurl.png)
 
-    在 [登入 URL]  文字方塊中，以下列模式輸入 URL︰`https://fsso.springer.com/saml/login?idp=<entityID>&targetUrl=https://link.springer.com`
+    在 [登入 URL] 文字方塊中，以下列模式輸入 URL︰`https://fsso.springer.com/saml/login?idp=<entityID>&targetUrl=https://link.springer.com`
 
     > [!NOTE]
-    > [登入 URL] 的值不是真正的值。 請使用實際的「登入 URL」來更新此值。 `<entityID>` 是從＜設定 Springer Link＞  一節複製的 Azure AD 識別碼，稍後會在教學課程中說明。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > [登入 URL] 的值不是真正的值。 請使用實際的「登入 URL」來更新此值。 `<entityID>` 是從＜設定 Springer Link＞一節複製的 Azure AD 識別碼，稍後會在教學課程中說明。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
 
-6. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，按一下 [複製] 圖示以複製**應用程式同盟中繼資料 URL**，並儲存在您的電腦上。
+6. 在 [以 SAML 設定單一登入]**** 頁面的 [SAML 簽署憑證]**** 區段中，按一下 [複製] 圖示以複製**應用程式同盟中繼資料 URL**，並儲存在您的電腦上。
 
-    ![憑證下載連結](common/metadataxml.png)
-
-7. 在 [設定 Springer Link]  區段上，依據您的需求複製適當的 URL。
-
-    ![複製組態 URL](common/copy-configuration-urls.png)
-
-    a. 登入 URL
-
-    b. Azure AD 識別碼
-
-    c. 登出 URL
+    ![中繼資料下載連結](common/copy_metadataurl.png)
 
 ### <a name="configure-springer-link-single-sign-on"></a>設定 Springer Link 單一登入
 
-若要在 **Springer Link** 端設定單一登入，您必須將從 Azure 入口網站複製的**應用程式同盟中繼資料 URL** 和適當 URL 傳送給 [Springer Link 支援小組](mailto:identity@springernature.com)。 他們會進行此設定，讓兩端的 SAML SSO 連線都設定正確。
+若要在 **Springer Link** 端設定單一登入，您必須將複製的**應用程式同盟中繼資料 Url** 傳送給 [Springer Link 支援小組](mailto:onlineservice@springernature.com)。 Springer Link 連結支援小組會使用此 URL，在兩端適當地設定 SAML SSO 連線。
 
 ### <a name="create-an-azure-ad-test-user"></a>建立 Azure AD 測試使用者 
 
@@ -144,7 +132,7 @@ Springer Link 與 Azure AD 整合提供下列優點：
 
     ![[使用者和群組] 與 [所有使用者] 連結](common/users.png)
 
-2. 在畫面頂端選取 [新增使用者]  。
+2. 在畫面頂端選取 [新增使用者]。
 
     ![[新增使用者] 按鈕](common/new-user.png)
 
@@ -154,26 +142,26 @@ Springer Link 與 Azure AD 整合提供下列優點：
 
     a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
   
-    b. 在 [使用者名稱]  欄位中，輸入 **brittasimon@yourcompanydomain.extension**  
+    b. 在 [使用者名稱] 欄位中，輸入 **brittasimon@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com
 
     c. 選取 [顯示密碼]  核取方塊，然後記下 [密碼] 方塊中顯示的值。
 
-    d. 按一下頁面底部的 [新增]  。
+    d. 按一下 [建立]。
 
 ### <a name="assign-the-azure-ad-test-user"></a>指派 Azure AD 測試使用者
 
 在本節中，您會將 Springer Link 的存取權授與 Britta Simon，讓她能夠使用 Azure 單一登入。
 
-1. 在 Azure 入口網站中，依序選取 [企業應用程式]  、[所有應用程式]  及 [Springer Link]  。
+1. 在 Azure 入口網站中，依序選取 [企業應用程式]****、[所有應用程式]**** 及 [Springer Link]****。
 
     ![企業應用程式刀鋒視窗](common/enterprise-applications.png)
 
-2. 在應用程式清單中，選取 [Springer Link]  。
+2. 在應用程式清單中，選取 [Springer Link]****。
 
     ![應用程式清單中的 Springer Link 連結](common/all-applications.png)
 
-3. 在左側功能表中，選取 [使用者和群組]  。
+3. 在左側功能表中，選取 [使用者和群組]。
 
     ![[使用者和群組] 連結](common/users-groups-blade.png)
 
@@ -183,13 +171,9 @@ Springer Link 與 Azure AD 整合提供下列優點：
 
 5. 在 [使用者和群組]  對話方塊的 [使用者] 清單中，選取 [Britta Simon]  ，然後按一下畫面底部的 [選取]  按鈕。
 
-6. 如果您預期使用 SAML 判斷提示中的任何角色值，請在 [選取角色]  對話方塊的清單中選取適當使用者角色，然後按一下畫面底部的 [選取]  按鈕。
+6. 如果您預期使用 SAML 判斷提示中的任何角色值，請在 [選取角色] 對話方塊的清單中選取適當使用者角色，然後按一下畫面底部的 [選取] 按鈕。
 
 7. 在 [新增指派]  對話方塊中，按一下 [指派]  按鈕。
-
-### <a name="create-springer-link-test-user"></a>建立 Springer Link 測試使用者
-
-在本節中，您要在 Springer Link 中建立名為 Britta Simon 的使用者。 與 [Springer Link 支援小組](mailto:identity@springernature.com)合作，在 Springer Link 平台中新增使用者。 您必須先建立和啟動使用者，然後才能使用單一登入。
 
 ### <a name="test-single-sign-on"></a>測試單一登入 
 

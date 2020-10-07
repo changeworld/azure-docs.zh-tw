@@ -1,7 +1,7 @@
 ---
 title: 快速入門：使用 REST API 和 Python 來取得影像見解 - Bing 圖像式搜尋
 titleSuffix: Azure Cognitive Services
-description: 了解如何將影像上傳到 Bing 圖像式搜尋 API 並取得其見解。
+description: 了解如何使用 Bing 圖像式搜尋 API 和 Python 上傳影像，然後取得影像的相關見解。
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: scottwhi
 ms.custom: devx-track-python
-ms.openlocfilehash: 7c76ec8600ade26098206a5d18559e795db53178
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: ef265ab0cff9514695b40995e842518803e2e4c0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87853070"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324581"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-python"></a>快速入門：使用 Bing 圖像式搜尋 REST API 和 Python 取得影像見解
 

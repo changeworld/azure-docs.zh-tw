@@ -1,7 +1,7 @@
 ---
 title: 快速入門：使用 Bing 自動建議 REST API 與 Ruby 建議搜尋查詢
 titleSuffix: Azure Cognitive Services
-description: 了解如何快速開始使用 Bing 自動建議 API，即時建議搜尋字詞。
+description: 了解如何快速開始使用 Bing 自動建議 API 和 Ruby，即時建議搜尋字詞。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,19 +10,19 @@ ms.subservice: bing-autosuggest
 ms.topic: quickstart
 ms.date: 05/06/2020
 ms.author: aahi
-ms.openlocfilehash: e9b990f7e79fe0d70a213db5739153fe1e558f3c
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: dc7b929aa139e6d51af25d4689166d2596dda70b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82930194"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91262887"
 ---
 # <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-ruby"></a>快速入門：使用 Bing 自動建議 REST API 與 Ruby 建議搜尋查詢
 
 本快速入門說明如何呼叫 Bing 自動建議 API，並讀取 JSON 回應。 這個簡單的 Ruby 應用程式會將部分搜尋查詢傳送至 API，並傳回搜尋建議。 雖然此應用程式是以 Ruby 撰寫的，但 API 是一種與大多數程式設計語言都相容的 RESTful Web 服務。
 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * [Ruby 2.4 或更新版本](https://www.ruby-lang.org/en/downloads/) (英文)。
 

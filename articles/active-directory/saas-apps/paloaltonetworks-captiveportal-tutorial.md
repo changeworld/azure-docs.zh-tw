@@ -9,28 +9,23 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/25/2018
+ms.date: 09/10/2020
 ms.author: jeedes
-ms.openlocfilehash: 1dad0ecc80302ae6b48d420664723a3a03fc9ea5
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 1096437fc1d77042a9db4dc359d51cd6d9d22960
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554005"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91304384"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks-captive-portal"></a>教學課程：Azure Active Directory 與 Palo Alto Networks Captive Portal 整合
 
 在本教學課程中，您將了解如何整合 Palo Alto Networks Captive Portal 與 Azure Active Directory (Azure AD)。
-
-將 Palo Alto Networks Captive Portal 與 Azure AD 整合，可提供下列優點：
+整合 Palo Alto Networks Captive Portal 與 Azure AD 可提供下列優點：
 
 * 您可以在 Azure AD 中控制可存取 Palo Alto Networks Captive Portal 的人員。
-* 您可以利用使用者的 Azure AD 帳戶在 Palo Alto Networks Captive Portal 中自動登入使用者 (單一登入)。
+* 您可以讓使用者使用他們的 Azure AD 帳戶自動登入 Palo Alto Networks Captive Portal (單一登入)。
 * 您可以在 Azure 入口網站中集中管理您的帳戶。
-
-若要深入了解軟體即服務 (SaaS) 應用程式與 Azure AD 的整合，請參閱 [Azure Active Directory 中的應用程式單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
-
-如果您沒有 Azure 訂用帳戶，請[建立免費帳戶](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -43,63 +38,45 @@ ms.locfileid: "88554005"
 
 在本教學課程中，您會在測試環境中設定和測試 Azure AD 單一登入。
 
-Palo Alto Networks Captive Portal 支援下列案例：
+* Palo Alto Networks Captive Portal 支援 **IDP** 起始的 SSO
+* Palo Alto Networks Captive Portal 支援 **Just In Time** 使用者佈建
 
-* **由 IDP 起始的單一登入**
-* **Just-in-Time 使用者佈建**
+## <a name="adding-palo-alto-networks-captive-portal-from-the-gallery"></a>從資源庫新增 Palo Alto Networks Captive Portal
 
-## <a name="add-palo-alto-networks-captive-portal-from-the-gallery"></a>從資源庫新增 Palo Alto Networks Captive Portal
+若要設定將 Palo Alto Networks Captive Portal 整合到 Azure AD 中，您需要從資源庫將 Palo Alto Networks Captive Portal 新增到受控 SaaS 應用程式清單。
 
-若要開始使用，請在資源庫中將 Palo Alto Networks Captive Portal 新增至受控 SaaS 應用程式清單：
+1. 使用公司或學校帳戶或個人的 Microsoft 帳戶登入 Azure 入口網站。
+1. 在左方瀏覽窗格上，選取 [Azure Active Directory] 服務。
+1. 巡覽至 [企業應用程式]，然後選取 [所有應用程式]。
+1. 若要新增應用程式，請選取 [新增應用程式]  。
+1. 在 [從資源庫新增] 區段的搜尋方塊中輸入 **Palo Alto Networks Captive Portal**。
+1. 從結果面板中選取 [Palo Alto Networks Captive Portal]，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
-1. 在 [Azure 入口網站](https://portal.azure.com)的左側功能表中，選取 [Azure Active Directory]  。
+## <a name="configure-and-test-azure-ad-sso"></a>設定並測試 Azure AD SSO
 
-    ![Azure Active Directory 按鈕](common/select-azuread.png)
+在本節中，您會以名為 **B.Simon** 的測試使用者為基礎，使用 Palo Alto Networks Captive Portal 設定及測試 Azure AD 單一登入。
+若要讓單一登入能夠運作，必須建立 Azure AD 使用者與 Palo Alto Networks Captive Portal 中相關使用者之間的連結關聯性。
 
-2. 選取 [企業應用程式]   > [所有應用程式]  。
+若要使用 Palo Alto Networks Captive Portal 設定並測試 Azure AD 單一登入，請執行下列步驟：
 
-    ![功能表中的企業應用程式選項](common/enterprise-applications.png)
+1. **[設定 Azure AD SSO](#configure-azure-ad-sso)** - 讓使用者能夠使用這項功能。
+    * **[建立 Azure AD 測試使用者](#create-an-azure-ad-test-user)** - 以使用者 B.Simon 的身分測試 Azure AD 單一登入。
+    * **[指派 Azure AD 測試使用者](#assign-the-azure-ad-test-user)** - 將 B.Simon 設定為使用 Azure AD 單一登入。
+2. **[設定 Palo Alto Networks Captive Portal SSO](#configure-palo-alto-networks-captive-portal-sso)** - 在應用程式中設定單一登入設定。
+    * **[建立 Palo Alto Networks Captive Portal SSO 測試使用者](#create-a-palo-alto-networks-captive-portal-test-user)** - 使 Palo Alto Networks Captive Portal SSO 中對應的 B.Simon 連結到該使用者在 Azure AD 中的代表項目。
+3. **[測試 SSO](#test-sso)** - 驗證組態是否能運作。
 
-3. 選取 [新增應用程式]  。
+## <a name="configure-azure-ad-sso"></a>設定 Azure AD SSO
 
-    ![新增應用程式按鈕](common/add-new-app.png)
+依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
-4. 在搜尋方塊中，輸入 **Palo Alto Networks Captive Portal**。 在搜尋結果中選取 [Palo Alto Networks - Captive Portal]  ，然後選取 [新增]  。
+1. 在 Azure 入口網站的 **Palo Alto Networks Captive Portal** 應用程式整合頁面上，找到 [管理] 區段並選取 [單一登入]。
+1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
+1. 在 [以 SAML 設定單一登入] 頁面上，按一下 [基本 SAML 設定] 的編輯/畫筆圖示，以編輯設定。
 
-     ![結果清單中的 Palo Alto 網路 - 網頁驗證入口](common/search-new-app.png)
+   ![編輯基本 SAML 組態](common/edit-urls.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>設定和測試 Azure AD 單一登入
-
-您會以名為 *Britta Simon* 的測試使用者為基礎，設定及測試與 Palo Alto Networks Captive Portal 搭配運作的 Azure AD 單一登入。 若要讓單一登入能夠運作，您必須建立 Azure AD 使用者與 Palo Alto Networks Captive Portal 中的相同使用者之間的關聯性。 
-
-若要設定及測試與 Palo Alto Networks Captive Portal 搭配運作的 Azure AD 單一登入，請完成下列建置組塊：
-
-1. **[設定 Azure AD 單一登入](#configure-azure-ad-single-sign-on)** ：讓使用者能夠使用這項功能。
-2. **[設定 Palo Alto Networks Captive Portal 單一登入](#configure-palo-alto-networks-captive-portal-single-sign-on)** ：在應用程式中設定單一登入設定。
-3. **[建立 Azure AD 測試使用者](#create-an-azure-ad-test-user)** ：以使用者 *Britta Simon* 測試 Azure AD 單一登入。
-4. **[指派 Azure AD 測試使用者](#assign-the-azure-ad-test-user)** ：將 Britta Simon 設定為使用 Azure AD 單一登入。
-5. **建立 Palo Alto Networks Captive Portal 測試使用者**：在 Palo Alto Networks Captive Portal 中建立連結到 Azure AD 使用者的對應使用者 *Britta Simon*。
-6. **[測試單一登入](#test-single-sign-on)** ：驗證組態是否能運作。
-
-### <a name="configure-azure-ad-single-sign-on"></a>設定 Azure AD 單一登入
-
-首先，在 Azure 入口網站中啟用 Azure AD 單一登入：
-
-1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Palo Alto Networks - 網頁驗證入口]  應用程式整合頁面上，選取 [單一登入]  。
-
-    ![設定單一登入連結](common/select-sso.png)
-
-2. 在 [選取單一登入方法]  窗格中，選取 [SAML]  。
-
-    ![單一登入選取模式](common/select-saml-option.png)
-
-3. 在 [以 SAML 設定單一登入]  窗格中，選取鉛筆狀的 [編輯]  圖示。
-
-    ![鉛筆狀的編輯圖示](common/edit-urls.png)
-
-4. 在 [基本 SAML 組態]  窗格中，完成下列步驟：
-
-    ![Palo Alto Networks Captive Portal 基本 SAML 組態窗格](common/idp-intiated.png)
+4. 在 [基本 SAML 組態] 窗格中，執行下列步驟：
 
    1. 針對 [識別碼]  ，輸入具有 `https://<customer_firewall_host_name>/SAML20/SP` 模式的 URL。
 
@@ -112,7 +89,31 @@ Palo Alto Networks Captive Portal 支援下列案例：
 
     ![同盟中繼資料 XML 下載連結](common/metadataxml.png)
 
-### <a name="configure-palo-alto-networks-captive-portal-single-sign-on"></a>設定 Palo Alto Networks Captive Portal 單一登入
+### <a name="create-an-azure-ad-test-user"></a>建立 Azure AD 測試使用者
+
+在本節中，您將在 Azure 入口網站中建立名為 B.Simon 的測試使用者。
+
+1. 在 Azure 入口網站的左窗格中，依序選取 [Azure Active Directory]  、[使用者]  和 [所有使用者]  。
+1. 在畫面頂端選取 [新增使用者]。
+1. 在 [使用者] 屬性中，執行下列步驟：
+   1. 在 [名稱] 欄位中，輸入 `B.Simon`。  
+   1. 在 [使用者名稱]  欄位中，輸入 username@companydomain.extension。 例如： `B.Simon@contoso.com` 。
+   1. 選取 [顯示密碼] 核取方塊，然後記下 [密碼] 方塊中顯示的值。
+   1. 按一下 [建立]。
+
+### <a name="assign-the-azure-ad-test-user"></a>指派 Azure AD 測試使用者
+
+在本節中，您會把 Palo Alto Networks Captive Portal SSO 的存取權授與 B.Simon，讓她能夠使用 Azure 單一登入。
+
+1. 在 Azure 入口網站中，選取 [企業應用程式]  ，然後選取 [所有應用程式]  。
+1. 在應用程式清單中，選取 [Palo Alto Networks Captive Portal SSO]。
+1. 在應用程式的概觀頁面中尋找 [管理]  區段，然後選取 [使用者和群組]  。
+1. 選取 [新增使用者]，然後在 [新增指派] 對話方塊中選取 [使用者和群組]。
+1. 在 [使用者和群組] 對話方塊的 [使用者] 清單中選取 [B.Simon]，然後按一下畫面底部的 [選取] 按鈕。
+1. 如果您需要將角色指派給使用者，您可以從 [選取角色] 下拉式清單中選取。 如果未設定此應用程式的角色，您會看到已選取 [預設存取] 角色。
+1. 在 [新增指派] 對話方塊中，按一下 [指派] 按鈕。
+
+## <a name="configure-palo-alto-networks-captive-portal-sso"></a>設定 Palo Alto Networks Captive Portal SSO
 
 接著，在 Palo Alto Networks Captive Portal 中設定單一登入：
 
@@ -136,56 +137,6 @@ Palo Alto Networks Captive Portal 支援下列案例：
     
     3. 選取 [確定]  。
 
-### <a name="create-an-azure-ad-test-user"></a>建立 Azure AD 測試使用者 
-
-接著，在 Azure 入口網站中建立名為 *Britta Simon* 的測試使用者：
-
-1. 在 Azure 入口網站中，選取 [Azure Active Directory]   > [使用者]   > [所有使用者]  。
-
-    ![[使用者和群組] 與 [所有使用者] 連結](common/users.png)
-
-2. 選取 [新增使用者]  。
-
-    ![新增使用者按鈕](common/new-user.png)
-
-3. 在 [使用者]  窗格中，完成下列步驟：
-
-    ![[使用者] 對話方塊](common/user-properties.png)
-
-    1. 針對 [名稱]  ，輸入 **BrittaSimon**。
-  
-    2. 針對**使用者名稱**，輸入 **BrittaSimon\@\<your_company_domain\>** 。 例如 **BrittaSimon\@contoso.com**。
-
-    3. 針對 [密碼]  ，輸入密碼。 建議您為輸入的密碼保留記錄。 您可以選取 [顯示密碼]  核取方塊，以顯示密碼。
-
-    4. 選取 [建立]  。
-
-### <a name="assign-the-azure-ad-test-user"></a>指派 Azure AD 測試使用者
-
-接著，為 Britta Simon 授與對 Palo Alto Networks Captive Portal 的存取權，讓她能夠使用 Azure 單一登入：
-
-1. 在 Azure 入口網站中，選取 [企業應用程式]   > [所有應用程式]  。
-
-    ![[企業應用程式] 窗格](common/enterprise-applications.png)
-
-2. 在應用程式清單中輸入 [Palo Alto Networks - Captive Portal]  ，然後選取該應用程式。
-
-    ![應用程式清單中的 Palo Alto Networks - Captive Portal 連結](common/all-applications.png)
-
-3. 在功能表中，選取 [使用者和群組]  。
-
-    ![[使用者和群組] 連結](common/users-groups-blade.png)
-
-4. 選取 [新增使用者]  。 然後在 [新增指派]  窗格中，選取 [使用者和群組]  。
-
-    ![新增指派窗格](common/add-assign-user.png)
-
-5. 在 [使用者和群組]  窗格的 [使用者]  清單中，選取 [Britta Simon]  。 選取 [選取]  。
-
-6. 若要將角色值新增至 SAML 判斷提示，請在 [選取角色]  窗格中為使用者選取相關的角色。 選取 [選取]  。
-
-7. 在 [新增指派]  窗格中，選取 [指派]  。
-
 ### <a name="create-a-palo-alto-networks-captive-portal-test-user"></a>建立 Palo Alto Networks Captive Portal 測試使用者
 
 接著，在 Palo Alto Networks Captive Portal 中建立名為 *Britta Simon* 的使用者。 Palo Alto Networks Captive Portal 支援依預設啟用的 Just-in-Time 佈建。 在本節中，您不需要完成任何工作。 如果 Palo Alto Networks Captive Portal 中還沒有任何使用者存在，在驗證之後就會建立新的使用者。
@@ -193,15 +144,14 @@ Palo Alto Networks Captive Portal 支援下列案例：
 > [!NOTE]
 > 如果您想要手動建立使用者，請連絡 [Palo Alto Networks Captive Portal 用戶端支援小組](https://support.paloaltonetworks.com/support)。
 
-### <a name="test-single-sign-on"></a>測試單一登入 
+## <a name="test-sso"></a>測試 SSO 
 
-Palo Alto Networks Captive Portal 安裝於 Windows VM 的防火牆後方。 若要測試 Palo Alto Networks Captive Portal 中的單一登入，請使用遠端桌面通訊協定 (RDP) 登入 Windows VM。 在 RDP 工作階段中開啟瀏覽器，並移至任何網站。 SSO URL 會開啟，且系統會提示您進行驗證。 在完成驗證後，您即可存取網站。
+在本節中，您會使用下列選項來測試您的 Azure AD 單一登入組態。
 
-## <a name="additional-resources"></a>其他資源
+在 Azure 入口網站中按一下 [測試此應用程式]，您應該會自動登入您已設定 SSO 的 Palo Alto Networks Captive Portal
 
-若要深入了解，請參閱下列文章：
+您可以使用 Microsoft 存取面板。 當您在存取面板中按一下 Palo Alto Networks Captive Portal 圖格時，應該會自動登入您設定 SSO 的 Palo Alto Networks Captive Portal。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
 
-- [關於整合 SaaS 應用程式與 Azure Active Directory 的教學課程](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
-- [Azure Active Directory 中的應用程式單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
-- [Azure Active Directory 中的條件式存取](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+## <a name="next-steps"></a>後續步驟
 
+設定 Palo Alto Networks Captive Portal 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。

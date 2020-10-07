@@ -8,12 +8,12 @@ ms.date: 12/11/2017
 ms.author: ancav
 ms.custom: mvc
 ms.subservice: autoscale
-ms.openlocfilehash: 8a55ab9b6b87a379fbdebcead4467ec47507d67a
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 8853a153450a07105ed4bac13de0da6cea95ce2a
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327509"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91356344"
 ---
 # <a name="create-an-autoscale-setting-for--azure-resources-based-on-performance-data-or-a-schedule"></a>根據效能資料或排程建立自動調整 Azure 資源規模設定
 
@@ -46,7 +46,7 @@ ms.locfileid: "87327509"
 1. 從左邊的瀏覽窗格，選取 [監視器]  選項。 一旦頁面載入，請選取 [自動調整規模]  索引標籤。
 2. 您訂用帳戶中支援自動調整規模的資源清單會列在這裡。 找出稍早在教學課程中建立的 App Service 方案，然後按一下它。
 
-    ![瀏覽到自動調整規模設定](./media/tutorial-autoscale-performance-schedule/monitor-blade-autoscale.png)
+    ![此螢幕擷取畫面顯示先選取 [監視] 再選取 [自動調整] 的 Azure 入口網站。](./media/tutorial-autoscale-performance-schedule/monitor-blade-autoscale.png)
 
 3. 在自動調整規模設定上，按一下 [啟用自動調整規模]  按鈕。
 
@@ -59,7 +59,7 @@ ms.locfileid: "87327509"
 2. 在預設設定檔中，確定 [縮放模式]  設定為 [調整為特定執行個體計數]。
 3. 將執行個體計數設定為 **1**。 此設定可確保當沒有其他設定檔為使用中或作用中時，預設設定檔會將執行個體計數還原為 1。
 
-   ![瀏覽到自動調整規模設定](./media/tutorial-autoscale-performance-schedule/autoscale-setting-profile.png)
+   ![此螢幕擷取畫面顯示已針對設定輸入名稱的 [自動調整] 設定頁面。](./media/tutorial-autoscale-performance-schedule/autoscale-setting-profile.png)
 
 
 ## <a name="create-recurrence-profile"></a>建立循環設定檔

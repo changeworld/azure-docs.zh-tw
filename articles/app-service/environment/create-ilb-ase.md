@@ -4,15 +4,15 @@ description: 了解如何使用 Azure Resource Manager 範本建立具有內部�
 author: ccompy
 ms.assetid: 0f4c1fa4-e344-46e7-8d24-a25e247ae138
 ms.topic: quickstart
-ms.date: 08/05/2019
+ms.date: 09/16/2020
 ms.author: ccompy
 ms.custom: mvc, seodec18
-ms.openlocfilehash: f2124dd77e3e5d9828ea457a6bccdf7d1bc05405
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 1bda52227737b082927dd1449fa6469cf849ff15
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88961766"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273257"
 ---
 # <a name="create-and-use-an-internal-load-balancer-app-service-environment"></a>建立及使用內部負載平衡器 App Service 環境 
 
@@ -100,15 +100,26 @@ ILB ASE 支援函式和 Web 工作，但若要讓入口網站可以使用，您�
 
 ## <a name="dns-configuration"></a>DNS 組態 
 
-當您使用外部 VIP，DNS 是由 Azure 管理。 在您 ASE 中建立的任何 app 都會自動新增至 Azure DNS，這是一個公用 DNS。 在 ILB ASE 中，您必須管理您自己的 DNS。 搭配 ILB ASE 使用的網域尾碼取決於 ASE 的名稱。 網域尾碼是 *&lt;ASE 名稱&gt;.appserviceenvironment.net*。 您的 ILB IP 位址位於入口網站中的 [IP 位址]  底下。 
+當您使用外部 ASE 時，在 ASE 中建立的應用程式會向 Azure DNS 註冊。 外部 ASE 中不會有任何額外的步驟，讓您的應用程式可公開使用。 使用 ILB ASE 時，您必須管理您自己的 DNS。 您可以在自己的 DNS 伺服器中或使用 Azure DNS 私人區域執行此動作。
 
-若要設定您的 DNS：
+若要使用 ILB ASE 在自己的 DNS 伺服器中設定 DNS：
 
-- 為 *&lt;ASE 名稱&gt;.appserviceenvironment.net* 建立一個區域
-- 在該區域中建立一個指向 ILB IP 位址的 A 記錄
-- 在該區域中建立一個將 @ 指向 ILB IP 位址的 A 記錄
-- 在名為 scm 的 *&lt;ASE 名稱&gt;.appserviceenvironment.net* 中建立一個區域
-- 在 scm 區域中建立一個將 * 指向 ILB IP 位址的 A 記錄
+1. 為 <ASE name>.appserviceenvironment.net 建立一個區域
+2. 在該區域中建立一個指向 ILB IP 位址的 A 記錄
+3. 在該區域中建立一個將 @ 指向 ILB IP 位址的 A 記錄
+4. 在名為 scm 的 <ASE name>.appserviceenvironment.net 中建立一個區域
+5. 在 scm 區域中建立一個將 * 指向 ILB IP 位址的 A 記錄
+
+若要在 Azure DNS 私人區域中設定 DNS：
+
+1. 建立名為 <ASE name>.appserviceenvironment.net 的 Azure DNS 私人區域
+2. 在該區域中建立一個指向 ILB IP 位址的 A 記錄
+3. 在該區域中建立一個將 @ 指向 ILB IP 位址的 A 記錄
+4. 在該區域中建立一個將 *.scm 指向 ILB IP 位址的 A 記錄
+
+ASE 預設網域尾碼的 DNS 設定並不會將您的應用程式限制為僅供那些名稱存取。 在 ILB ASE 中，您可以在應用程式上設定自訂網域名稱，而不會進行任何驗證。 如果您想要建立名為 contoso.net 的區域，則可以這麼做，並將其指向 ILB IP 位址。 自訂網域名稱適用於應用程式要求，但不適用於 scm 網站。 scm 網站僅能在 <appname>.scm.<asename>.appserviceenvironment.net 上使用。
+
+名為 <asename>.appserviceenvironment.net 的區域是全域唯一的。 在 2019 年 5月之前，客戶可以指定 ILB ASE 的網域尾碼。 如果想要使用 contoso.com 做為網域尾碼，您可以這麼做，這會包含 scm 網站。 該模型會有挑戰，包括管理預設 SSL 憑證、缺少與 scm 網站的單一登入，以及使用萬用字元憑證的需求。 ILB ASE 預設憑證升級程序也會造成干擾，並導致應用程式重新啟動。 為了解決這些問題，ILB ASE 行為已變更為根據 ASE 名稱和搭配 Microsoft 擁有的尾碼來使用網域尾碼。 ILB ASE 行為的變更只會影響 2019 年 5 月之後所做的 ILB ASE。 預先存在的 ILB ASE 仍然必須管理 ASE 的預設憑證和其 DNS 組態。
 
 ## <a name="publish-with-an-ilb-ase"></a>使用 ILB ASE 發佈
 

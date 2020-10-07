@@ -9,12 +9,12 @@ services: iot-accelerators
 ms.date: 11/08/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 676f1133a516174478a456a97bc467e7770fe6e7
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 695d1b1124c042b61837f0a1257ac2a201ae4860
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "84712508"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91539396"
 ---
 # <a name="tutorial-detect-issues-with-devices-connected-to-your-monitoring-solution"></a>教學課程：偵測與監視解決方案連線的裝置問題
 
@@ -122,7 +122,7 @@ ms.locfileid: "84712508"
 
 若要永久刪除某個規則，您可以在規則清單中加以刪除。 選取要刪除的規則，然後選擇 [刪除]  。
 
-[![刪除規則](./media/iot-accelerators-remote-monitoring-automate/rulesactionsdelete-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsdelete-expanded.png#lightbox)
+[![此螢幕擷取畫面顯示已反白顯示 [刪除規則] 視窗的 [規則] 頁面。](./media/iot-accelerators-remote-monitoring-automate/rulesactionsdelete-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsdelete-expanded.png#lightbox)
 
 在您確認要刪除規則之後，您將有權從 [維護]  頁面中刪除任何與規則相關聯的警示。
 

@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 入口網站中設定 IoT 中樞裝置佈建服務
+title: 快速入門 - 在 Azure 入口網站中設定 IoT 中樞裝置佈建服務
 description: 快速入門 - 在 Azure 入口網站中設定 Azure IoT 中樞裝置佈建服務 (DPS)
 author: wesmc7777
 ms.author: wesmc
@@ -8,22 +8,22 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 765b7e5bb7341974a6a16d3f1ed0bcabf415f9f3
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 644635d1ab7b0a43c8df3e10bbbd02d1ea67a94a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76029174"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91297227"
 ---
 # <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-with-the-azure-portal"></a>快速入門：使用 Azure 入口網站設定 IoT 中樞裝置佈建服務
 
 IoT 中樞裝置佈建服務可以搭配 IoT 中樞使用，無須人為介入，即可對所需的 IoT 中樞進行 Just-In-Time 自動佈建，讓客戶能以安全又可調整的方式佈建數百萬個 IoT 裝置。 Azure IoT 中樞裝置佈建服務支援採用 TPM、對稱金鑰和 x.509 憑證驗證的 IoT 裝置。 如需詳細資訊，請參閱 [IoT 中樞裝置佈建服務概觀](./about-iot-dps.md)
 
 在本快速入門中，您將了解如何在 Azure 入口網站中設定 IoT 中樞裝置佈建服務，以使用下列步驟來佈建您的裝置：
-> [!div class="checklist"]
-> * 使用 Azure 入口網站建立 IoT 中樞
-> * 使用 Azure 入口網站建立 IoT 中樞裝置佈建服務並取得識別碼範圍
-> * 將 IoT 中樞連結至裝置佈建服務
+
+* 使用 Azure 入口網站建立 IoT 中樞
+* 使用 Azure 入口網站建立 IoT 中樞裝置佈建服務並取得識別碼範圍
+* 將 IoT 中樞連結至裝置佈建服務
 
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。

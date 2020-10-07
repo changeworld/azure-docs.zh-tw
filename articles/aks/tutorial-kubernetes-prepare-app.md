@@ -3,14 +3,14 @@ title: Azure 上的 Kubernetes 教學課程 - 準備應用程式
 description: 在本 Azure Kubernetes Service (AKS) 教學課程中，您將了解如何透過 Docker Compose 來準備和建置後續可部署至 AKS 的多容器應用程式。
 services: container-service
 ms.topic: tutorial
-ms.date: 12/19/2018
+ms.date: 09/30/2020
 ms.custom: mvc
-ms.openlocfilehash: feab8495536b3306fd96793323d51644570b401b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 15bf29c676c4ca41fc2d005f3500a89ed6b9c380
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77593155"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91576331"
 ---
 # <a name="tutorial-prepare-an-application-for-azure-kubernetes-service-aks"></a>教學課程：準備 Azure Kubernetes Service (AKS) 的應用程式
 
@@ -63,15 +63,15 @@ cd azure-voting-app-redis
 docker-compose up -d
 ```
 
-完成時，使 [docker images][docker-images] 命令來查看所建立的映像。 已下載或建立三個映像。 *azure-vote-front* 映像包含前端應用程式，並使用 `nginx-flask` 映像作為基礎映像。 `redis` 映像可用來啟動 Redis 執行個體。
+完成時，使 [docker images][docker-images] 命令來查看所建立的映像。 已下載或建立三個映像。 *azure-vote-front* 映像包含前端應用程式，並使用 *nginx-flask* 映像作為基礎映像。 *redis* 映像可用來啟動 Redis 執行個體。
 
 ```
 $ docker images
 
-REPOSITORY                   TAG        IMAGE ID            CREATED             SIZE
-azure-vote-front             latest     9cc914e25834        40 seconds ago      694MB
-redis                        latest     a1b99da73d05        7 days ago          106MB
-tiangolo/uwsgi-nginx-flask   flask      788ca94b2313        9 months ago        694MB
+REPOSITORY                                     TAG                 IMAGE ID            CREATED             SIZE
+mcr.microsoft.com/azuredocs/azure-vote-front   v1                  84b41c268ad9        9 seconds ago       944MB
+mcr.microsoft.com/oss/bitnami/redis            6.0.8               3a54a920bb6c        2 days ago          103MB
+tiangolo/uwsgi-nginx-flask                     python3.6           a16ce562e863        6 weeks ago         944MB
 ```
 
 執行 [docker ps][docker-ps] 命令可查看執行中的容器：
@@ -79,9 +79,9 @@ tiangolo/uwsgi-nginx-flask   flask      788ca94b2313        9 months ago        
 ```
 $ docker ps
 
-CONTAINER ID        IMAGE             COMMAND                  CREATED             STATUS              PORTS                           NAMES
-82411933e8f9        azure-vote-front  "/usr/bin/supervisord"   57 seconds ago      Up 30 seconds       443/tcp, 0.0.0.0:8080->80/tcp   azure-vote-front
-b68fed4b66b6        redis             "docker-entrypoint..."   57 seconds ago      Up 30 seconds       0.0.0.0:6379->6379/tcp          azure-vote-back
+CONTAINER ID        IMAGE                                             COMMAND                  CREATED             STATUS              PORTS                           NAMES
+d10e5244f237        mcr.microsoft.com/azuredocs/azure-vote-front:v1   "/entrypoint.sh /sta…"   3 minutes ago       Up 3 minutes        443/tcp, 0.0.0.0:8080->80/tcp   azure-vote-front
+21574cb38c1f        mcr.microsoft.com/oss/bitnami/redis:6.0.8         "/opt/bitnami/script…"   3 minutes ago       Up 3 minutes        0.0.0.0:6379->6379/tcp          azure-vote-back
 ```
 
 ## <a name="test-application-locally"></a>在本機測試應用程式

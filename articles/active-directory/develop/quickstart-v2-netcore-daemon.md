@@ -1,7 +1,7 @@
 ---
-title: 使用主控台應用程式身分識別來取得權杖和呼叫 Microsoft Graph | Azure
+title: 快速入門：在主控台應用程式中取得權杖和呼叫 Microsoft Graph | Azure
 titleSuffix: Microsoft identity platform
-description: 了解如何取得權杖，並從 .NET Core 應用程式使用該權杖來呼叫受保護的 Microsoft Graph API
+description: 在本快速入門中，您會了解 .NET Core 範例應用程式如何使用用戶端認證流程，來取得權杖並呼叫 Microsoft Graph。
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: e33b912ab65a3565e42c294388949a5c55b4ee8a
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 6f4f4c2de3b1030c4d14cb74e562954a3d3d1144
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683751"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91257816"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-using-console-apps-identity"></a>快速入門：使用主控台應用程式的身分識別來取得權杖並呼叫 Microsoft Graph API
 
@@ -170,12 +170,7 @@ MSAL ([Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Ident
 
  您可以在 Visual Studio 的 [套件管理員主控台] 中，透過執行下列命令來安裝 MSAL.NET：
 
-```powershell
-Install-Package Microsoft.Identity.Client
-```
-
-或者，如果您是不使用 Visual Studio，您可以執行下列命令來將 MSAL 新增至您的專案：
-
+```powershell twhitney
 ```console
 dotnet add package Microsoft.Identity.Client
 ```
@@ -204,7 +199,7 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 > | `config.ClientId` | 是註冊於 Azure 入口網站中的應用程式所具備的**應用程式 (用戶端) 識別碼**。 您可以在 Azure 入口網站的應用程式 [概觀] 頁面中找到此值。 |
 > | `config.Authority`    | (選擇性) 供使用者用於驗證的 STS 端點。 若為公用雲端，通常是 `https://login.microsoftonline.com/{tenant}`，其中 {tenant} 是租用戶的名稱或租用戶識別碼。|
 
-如需詳細資訊，請參閱[下列項目的參考文件：`ConfidentialClientApplication`](/dotnet/api/microsoft.identity.client.iconfidentialclientapplication?view=azure-dotnet)
+如需詳細資訊，請參閱[下列項目的參考文件：`ConfidentialClientApplication`](/dotnet/api/microsoft.identity.client.iconfidentialclientapplication)
 
 ### <a name="requesting-tokens"></a>要求權杖
 
@@ -219,28 +214,13 @@ result = await app.AcquireTokenForClient(scopes)
 > |---------|---------|
 > | `scopes` | 包含所要求的範圍。 針對機密用戶端，這應該使用類似 `{Application ID URI}/.default` 的格式，以指出所要求的範圍是 Azure 入口網站中所設定應用程式物件中以靜態方式定義的範圍 (若為 Microsoft Graph，`{Application ID URI}` 會指向 `https://graph.microsoft.com`)。 若為自訂 Web API，在 Azure 入口網站「應用程式註冊 (預覽)」中的 [公開 API] 區段底下會定義 `{Application ID URI}`。 |
 
-如需詳細資訊，請參閱[下列項目的參考文件：`AcquireTokenForClient`](/dotnet/api/microsoft.identity.client.confidentialclientapplication.acquiretokenforclient?view=azure-dotnet)
+如需詳細資訊，請參閱[下列項目的參考文件：`AcquireTokenForClient`](/dotnet/api/microsoft.identity.client.confidentialclientapplication.acquiretokenforclient)
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
 ## <a name="next-steps"></a>後續步驟
 
-若要深入了解精靈應用程式，請參閱案例登陸頁面
+若要深入了解精靈應用程式，請參閱案例概觀：
 
 > [!div class="nextstepaction"]
 > [呼叫 Web API 的精靈應用程式](scenario-daemon-overview.md)
-
-如需精靈應用程式教學課程，請參閱：
-
-> [!div class="nextstepaction"]
-> [精靈 .NET Core 主控台教學課程](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2)
-
-深入了解權限和同意：
-
-> [!div class="nextstepaction"]
-> [權限和同意](v2-permissions-and-consent.md)
-
-若要深入了解此案例的驗證流程，請參閱 Oauth 2.0 用戶端認證流程：
-
-> [!div class="nextstepaction"]
-> [用戶端認證 Oauth 流程](v2-oauth2-client-creds-grant-flow.md)

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/22/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my corporate on-premises network(s) to my VNets using Virtual WAN and ExpressRoute.
-ms.openlocfilehash: b78c2b93a9427105ce2cc0ad8bd5d2b995c834ae
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 536d233a9c135b0b7dde6d6d80c705d2008226e6
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90976288"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569650"
 ---
 # <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan"></a>教學課程：使用 Azure 虛擬 WAN 來建立 ExpressRoute 關聯
 
@@ -40,7 +40,7 @@ ms.locfileid: "90976288"
 
 * 取得中樞區域的 IP 位址範圍。 中樞是虛擬 WAN 建立和使用的虛擬網路。 您為中樞區域指定的位址範圍不能與任何連線的現有虛擬網路重疊。 也不能與連線至內部部署的位址範圍重疊。 如果您不熟悉位於內部部署網路設定的 IP 位址範圍，請與能夠提供那些詳細資料的人員協調。
 
-* ExpressRoute 線路必須是進階線路，才能連線至中樞閘道。
+* ExpressRoute 線路必須是進階/標準線路，才能連線至中樞閘道。
 
 * 如果您沒有 Azure 訂用帳戶，請建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -105,7 +105,7 @@ ExpressRoute 閘道以 2 Gbps 為單位進行佈建。 1 個縮放單位 = 2 Gbp
 
 ## <a name="connect-your-circuit-to-the-hub-gateway"></a><a name="connectcircuit"></a>將您的線路連線至中樞閘道
 
-建立閘道之後，即可將 [ExpressRoute 線路](../expressroute/expressroute-howto-circuit-portal-resource-manager.md)連線到該閘道。 ExpressRoute Global Reach 支援位置中的 ExpressRoute Premium 線路可以連線到虛擬 WAN ExpressRoute 閘道。
+建立閘道之後，即可將 [ExpressRoute 線路](../expressroute/expressroute-howto-circuit-portal-resource-manager.md)連線到該閘道。 ExpressRoute 進階/標準線路若位於 ExpressRoute Global Reach 支援的位置，則可以連線至虛擬 WAN ExpressRoute 閘道，並享用所有虛擬 WAN 傳輸功能 (VPN 至 VPN、VPN 與 ExpressRoute transit)。 ExpressRoute 進階/標準線路若位於非 Global Reach 位置，則可以連線至 Azure 資源，但將無法使用虛擬 WAN 傳輸功能。
 
 ### <a name="to-connect-the-circuit-to-the-hub-gateway"></a>將線路連線到中樞閘道
 

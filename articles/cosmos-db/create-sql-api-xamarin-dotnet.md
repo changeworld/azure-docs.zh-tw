@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 05/11/2020
+ms.date: 09/22/2020
 ms.author: anfeldma
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 33ade2be8b75a4e63f6def2b6c5e1001dde97ff8
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 7d8f51b12c16afbb8a0cf71e99b9b357719db4be
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020485"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319039"
 ---
 # <a name="quickstart-build-a-todo-app-with-xamarin-using-azure-cosmos-db-sql-api-account"></a>快速入門：使用 Azure Cosmos DB SQL API 帳戶透過 Xamarin 建置待辦事項應用程式
 
@@ -22,6 +22,7 @@ ms.locfileid: "89020485"
 > * [.NET V3](create-sql-api-dotnet.md)
 > * [.NET V4](create-sql-api-dotnet-V4.md)
 > * [Java SDK v4](create-sql-api-java.md)
+> * [Spring Data v3](create-sql-api-spring-data.md)
 > * [Node.js](create-sql-api-nodejs.md)
 > * [Python](create-sql-api-python.md)
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
@@ -90,7 +91,7 @@ Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您�
 
 1. 進入 [Azure 入口網站](https://portal.azure.com/)，在您的 Azure Cosmos DB SQL API 帳戶的左側瀏覽區中按一下 [金鑰]，然後按一下 [讀寫金鑰]。 在下一個步驟中，您將使用畫面右側的複製按鈕，將 URI 和主要金鑰複製到 APIKeys.cs 檔案中。
 
-    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/keys.png" alt-text="在 Azure 入口網站的 [金鑰] 刀鋒視窗中檢視並複製存取金鑰":::
+    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/keys.png" alt-text="在 iOS 上執行的 Xamarin 待辦事項應用程式":::
 
 2. 在 Visual Studio 2019 或 Visual Studio for Mac 中，開啟位於 azure-cosmos-db-sql-xamarin-getting-started/src/ToDoItems.Core/Helpers 資料夾中的 APIKeys.cs 檔案。
 
@@ -108,7 +109,7 @@ Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您�
 
 這個解決方案會示範如何使用 Azure Cosmos DB SQL API 和 Xamarin.Forms 建立待辦事項應用程式。 此應用程式有兩個索引標籤，第一個索引標籤所包含的清單檢視會顯示尚未完成的待辦事項項目。 第二個索引標籤會顯示已完成的待辦事項項目。 除了在第一個索引標籤中檢視未完成的待辦事項項目以外，您也可以新增待辦事項項目、編輯現有的項目，以及將項目標示為已完成。
 
-:::image type="content" source="./media/create-sql-api-xamarin-dotnet/android-todo-screen.png" alt-text="將 json 資料複製在 Azure 入口網站的 [資料總管] 中並按一下 [儲存]":::
+:::image type="content" source="./media/create-sql-api-xamarin-dotnet/android-todo-screen.png" alt-text="在 iOS 上執行的 Xamarin 待辦事項應用程式":::
 
 ToDoItems 解決方案中的程式碼包含：
 
@@ -171,27 +172,27 @@ ToDoItems 解決方案中的程式碼包含：
 
 1. 首先，按一下下拉式反白清單，並選取 ToDoItems.iOS (適用於 iOS) 或 ToDoItems.Android (適用於 Android)，以選取要作為目標的平台。
 
-    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/ide-select-platform.png" alt-text="選取要在 Visual Studio for Mac 中偵錯的平台":::
+    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/ide-select-platform.png" alt-text="在 iOS 上執行的 Xamarin 待辦事項應用程式":::
 
 2. 若要開始對應用程式偵錯，請按 cmd+Enter 鍵，或按一下 [播放] 按鈕。
 
-    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/ide-start-debug.png" alt-text="開始在 Visual Studio for Mac 中偵錯":::
+    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/ide-start-debug.png" alt-text="在 iOS 上執行的 Xamarin 待辦事項應用程式":::
 
 3. IOS 模擬器或 Android 模擬器完成啟動時，應用程式將會顯示 2 個索引標籤；在 iOS 的畫面上顯示於底部，在 Android 的畫面上顯示於頂端。 第一個索引標籤會顯示尚未完成的待辦事項項目，第二個會顯示已完成的待辦事項項目。
 
-    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/ios-droid-started.png" alt-text="待辦事項應用程式的啟動畫面":::
+    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/ios-droid-started.png" alt-text="在 iOS 上執行的 Xamarin 待辦事項應用程式":::
 
 4. 若要在 iOS 上完成待辦事項項目，請將其滑到左側，然後點選 [完成] 按鈕。 若要在 Android 上完成待辦事項項目，請長按該項目，然後點選 [完成] 按鈕。
 
-    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/simulator-complete.png" alt-text="完成待辦事項項目":::
+    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/simulator-complete.png" alt-text="在 iOS 上執行的 Xamarin 待辦事項應用程式":::
 
 5. 若要編輯待辦事項項目，請點選該項目，新畫面會隨即出現，讓您輸入新值。 點選 [儲存] 按鈕會將變更保存至 Azure Cosmos DB。
 
-    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/simulator-edit.png" alt-text="編輯待辦事項項目":::
+    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/simulator-edit.png" alt-text="在 iOS 上執行的 Xamarin 待辦事項應用程式":::
 
 6. 若要新增待辦事項項目，請點選主畫面右上方的 [新增] 按鈕，新的空白編輯頁面會隨即出現。
 
-    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/simulator-add.png" alt-text="新增待辦事項項目":::
+    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/simulator-add.png" alt-text="在 iOS 上執行的 Xamarin 待辦事項應用程式":::
 
 ## <a name="review-slas-in-the-azure-portal"></a>在 Azure 入口網站中檢閱 SLA
 

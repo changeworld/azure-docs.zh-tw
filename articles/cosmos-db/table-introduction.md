@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-table
 ms.topic: overview
 ms.date: 07/26/2019
 ms.author: sngun
-ms.openlocfilehash: 6cf9dddbfa6eb6f754c529981307f8ee80cfe7d1
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: f56c3bd2d302fc7163fa8c05c595891f191c6a11
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89376990"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91568432"
 ---
 # <a name="introduction-to-azure-cosmos-db-table-api"></a>Azure Cosmos DB 簡介：資料表 API
 
@@ -36,7 +36,7 @@ ms.locfileid: "89376990"
 | --- | --- | --- |
 | Latency | 快速，但延遲沒有上限。 | 一位數毫秒的讀取和寫入延遲，並在世界各地支援任何規模的 <10 毫秒延遲讀取和寫入 (第 99 個百分位數)。 |
 | Throughput | 變數輸送量模型。 資料表每秒 20,000 個作業的延展性限制。 | 高延展性且[每個資料表都有專用的保留輸送量](request-units.md) (由 SLA 支援)。 帳戶沒有輸送量上限，而且支援每個資料表每秒 > 1 千萬個作業。 |
-| 全球發佈 | 具有一個選擇性高可用性可讀取次要讀取區域的單一區域。 | [周全的全域發佈](distribute-data-globally.md)介於 1 到任何數量的區域。 隨時隨地在世界各地支援[自動和手動容錯移轉](high-availability.md)。 可讓任何區域接受寫入作業的多重主機功能。 |
+| 全球發佈 | 具有一個選擇性高可用性可讀取次要讀取區域的單一區域。 | [周全的全域發佈](distribute-data-globally.md)介於 1 到任何數量的區域。 隨時隨地在世界各地支援[自動和手動容錯移轉](high-availability.md)。 可讓任何區域接受寫入作業的多重寫入區域。 |
 | 編製索引 | PartitionKey 和 RowKey 只有主要索引。 沒有次要索引。 | 根據預設，對所有屬性自動執行完整的編製索引，但不進行索引管理。 |
 | 查詢 | 查詢執行作業會使用主索引鍵的索引，要不然會進行掃描。 | 查詢可以利用自動編製屬性的索引，加快查詢速度。 |
 | 一致性 | 主要區域內的強式。 次要區域內的事件式。 | [五個定義完善的一致性層級](consistency-levels.md)，可以您應用程式的需求作為基礎，進行可用性、延遲、輸送量及一致性的取捨。 |

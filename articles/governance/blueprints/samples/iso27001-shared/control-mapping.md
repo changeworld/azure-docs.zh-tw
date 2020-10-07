@@ -3,12 +3,12 @@ title: ISO 27001 共用服務藍圖範例控制項
 description: ISO 27001 共用服務藍圖範例的控制項對應。 每個控制項都會對應至一或多個可協助評量的 Azure 原則。
 ms.date: 07/13/2020
 ms.topic: sample
-ms.openlocfilehash: 7655ae2828972a9b99479c7a94f02b02005a9284
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: e0e5aa7bbfb8178b2527e65f7e6371d815b0cccd
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87927125"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541198"
 ---
 # <a name="control-mapping-of-the-iso-27001-shared-services-blueprint-sample"></a>ISO 27001 共用服務藍圖範例的控制項對應
 
@@ -34,7 +34,7 @@ Azure 的 [SQL 弱點評量服務](../../../../azure-sql/database/sql-vulnerabil
 
 ## <a name="a912-access-to-networks-and-network-services"></a>A.9.1.2 存取網路和網路服務
 
-Azure 會實作 [Azure 角色型存取控制 (Azure RBAC)](../../../../role-based-access-control/overview.md)，以管理有權存取 Azure 資源的人員。 此藍圖指派了七項 [Azure 原則](../../../policy/overview.md)定義以協助您控制對 Azure 資源的存取。 這些原則會稽核資源類型和組態的使用方式是否可能會允許更寬鬆資源存取。
+[Azure 角色型存取控制 (Azure RBAC)](../../../../role-based-access-control/overview.md) 可協助管理有權存取 Azure 資源的人員。 此藍圖指派了七項 [Azure 原則](../../../policy/overview.md)定義以協助您控制對 Azure 資源的存取。 這些原則會稽核資源類型和組態的使用方式是否可能會允許更寬鬆資源存取。
 了解有哪些資源違反這些原則可協助您採取修正動作，以確保 Azure 資源僅限定給經授權的使用者存取。
 
 - 部署必要條件，以稽核有不具密碼帳戶的 Linux VM
@@ -47,7 +47,7 @@ Azure 會實作 [Azure 角色型存取控制 (Azure RBAC)](../../../../role-base
 
 ## <a name="a923-management-of-privileged-access-rights"></a>A.9.2.3 管理特殊權限的存取權
 
-此藍圖指派了四項 [Azure 原則](../../../policy/overview.md)定義，用以稽核具有擁有者及/或寫入權限的外部帳戶，和具有擁有者及/或寫入權限、且未啟用多重要素驗證的帳戶，以協助您限制及控制特殊權限的存取權。 Azure 會實作角色型存取控制 (RBAC)，以管理有權存取 Azure 資源的人員。 此藍圖還指派了三項 Azure 原則定義，用以稽核將 Azure Active Directory 驗證用於 SQL Server 和 Service Fabric 的情形。 使用 Azure Active Directory 驗證可針對資料庫使用者及其他 Microsoft 服務，簡化權限管理及集中管理身分識別。 此藍圖也指派了一項 Azure 原則定義來稽核自訂 RBAC 規則的使用情形。 了解自訂 RBAC 規則的實作之處，有助於您確認需求和適當的實作，因為自訂的 RBAC 規則很容易發生錯誤。
+此藍圖指派了四項 [Azure 原則](../../../policy/overview.md)定義，用以稽核具有擁有者及/或寫入權限的外部帳戶，和具有擁有者及/或寫入權限、且未啟用多重要素驗證的帳戶，以協助您限制及控制特殊權限的存取權。 Azure 角色型存取控制 (Azure RBAC) 可協助管理有權存取 Azure 資源的人員。 此藍圖也指派了三項 Azure 原則定義，用以稽核將 Azure Active Directory 驗證用於 SQL Server 和 Service Fabric 的情形。 使用 Azure Active Directory 驗證可針對資料庫使用者及其他 Microsoft 服務，簡化權限管理及集中管理身分識別。 此藍圖也指派了一項 Azure 原則定義來稽核自訂 Azure RBAC 規則的使用情形。 了解自訂 Azure RBAC 規則的實作之處，有助於您確認需求和適當的實作，因為自訂的 Azure RBAC 規則很容易發生錯誤。
 
 - 應在您訂用帳戶上具有擁有者權限的帳戶上啟用 MFA
 - 應在您訂用帳戶上具有寫入權限的帳戶上啟用 MFA
@@ -69,7 +69,7 @@ Azure 會實作 [Azure 角色型存取控制 (Azure RBAC)](../../../../role-base
 
 ## <a name="a925-review-of-user-access-rights"></a>A.9.2.5 檢閱使用者存取權限
 
-Azure 會實作 [Azure 角色型存取控制 (Azure RBAC)](../../../../role-based-access-control/overview.md)，以協助您管理有權存取 Azure 資源的人員。 您可以使用 Azure 入口網站，檢閱可存取 Azure 資源的人員及其權限。 此藍圖指派了四項 [Azure 原則](../../../policy/overview.md)定義來稽核應優先檢閱的帳戶，包括已停用的帳戶和已提高權限的外部帳戶。
+[Azure 角色型存取控制 (Azure RBAC)](../../../../role-based-access-control/overview.md) 可協助您管理有權存取 Azure 中資源的人員。 您可以使用 Azure 入口網站，檢閱可存取 Azure 資源的人員及其權限。 此藍圖指派了四項 [Azure 原則](../../../policy/overview.md)定義來稽核應優先檢閱的帳戶，包括已停用的帳戶和已提高權限的外部帳戶。
 
 - 已取代帳戶應該從您的訂用帳戶中移除
 - 具有擁有者權限的已取代帳戶應該從您的訂用帳戶中移除
@@ -78,7 +78,7 @@ Azure 會實作 [Azure 角色型存取控制 (Azure RBAC)](../../../../role-base
 
 ## <a name="a926-removal-or-adjustment-of-access-rights"></a>A.9.2.6 移除或調整存取權限
 
-Azure 會實作 [Azure 角色型存取控制 (Azure RBAC)](../../../../role-based-access-control/overview.md)，以協助您管理有權存取 Azure 資源的人員。 使用 [Azure Active Directory](../../../../active-directory/fundamentals/active-directory-whatis.md) 和 RBAC，可更新使用者角色以反映組織變更。 必要時可以封鎖帳戶的登入 (或移除帳戶)，而立即移除對 Azure 資源的存取權限。 此藍圖指派了兩項 [Azure 原則](../../../policy/overview.md)定義來稽核應考慮移除的停用帳戶。
+[Azure 角色型存取控制 (Azure RBAC)](../../../../role-based-access-control/overview.md) 可協助您管理有權存取 Azure 中資源的人員。 使用 [Azure Active Directory](../../../../active-directory/fundamentals/active-directory-whatis.md) 和 Azure RBAC，可更新使用者角色以反映組織變更。 必要時可以封鎖帳戶的登入 (或移除帳戶)，而立即移除對 Azure 資源的存取權限。 此藍圖指派了兩項 [Azure 原則](../../../policy/overview.md)定義來稽核應考慮移除的停用帳戶。
 
 - 已取代帳戶應該從您的訂用帳戶中移除
 - 具有擁有者權限的已取代帳戶應該從您的訂用帳戶中移除
@@ -181,7 +181,7 @@ Azure 會實作 [Azure 角色型存取控制 (Azure RBAC)](../../../../role-base
 
 ## <a name="a1311-network-controls"></a>A.13.1.1 網路控制
 
-此藍圖指派了一項 [Azure 原則](../../../policy/overview.md)定義來監視使用寬鬆規則的網路安全性群組，以協助您管理和控制網路。 太寬鬆的規則可能會允許非預期的網路存取，您應加以檢閱。 此藍圖還指派了三項 Azure 原則定義，以監視未受保護的端點、應用程式和儲存體帳戶。 不受防火牆保護的端點和應用程式，以及存取不受限制的儲存體帳戶，都可能允許資訊系統內所包含的資訊受到非預期的存取。
+此藍圖指派了一項 [Azure 原則](../../../policy/overview.md)定義來監視使用寬鬆規則的網路安全性群組，以協助您管理和控制網路。 太寬鬆的規則可能會允許非預期的網路存取，您應加以檢閱。 此藍圖也指派了三項 Azure 原則定義，以監視未受保護的端點、應用程式和儲存體帳戶。 不受防火牆保護的端點和應用程式，以及存取不受限制的儲存體帳戶，都可能允許資訊系統內所包含的資訊受到非預期的存取。
 
 - 應限制透過網際網路面向端點存取
 - 儲存體帳戶應限制網路存取

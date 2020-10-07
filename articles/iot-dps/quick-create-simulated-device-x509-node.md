@@ -1,5 +1,5 @@
 ---
-title: 使用 Node.js 將模擬 X.509 裝置佈建到 Azure IoT 中樞
+title: 快速入門 - 使用 Node.js 將模擬 X.509 裝置佈建到 Azure IoT 中樞
 description: 使用適用於 Azure IoT 中樞裝置佈建服務 (DPS) 的 Node.js 裝置 SDK 來建立及佈建模擬 X.509 裝置。本快速入門使用個別註冊。
 author: wesmc7777
 ms.author: wesmc
@@ -8,13 +8,13 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.devlang: nodejs
-ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: 844a174e8cd3208e071db165a31d6c82dd1af3b1
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: mvc, devx-track-js
+ms.openlocfilehash: f4d2a5e10db77e9ec9d06e3bcc73552bda280152
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422108"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323935"
 ---
 # <a name="quickstart-create-and-provision-an-x509-simulated-device-using-nodejs-device-sdk-for-iot-hub-device-provisioning-service"></a>快速入門：使用適用於 IoT 中樞裝置佈建服務的 Node.js 裝置 SDK 來建立及佈建 X.509 模擬裝置
 
@@ -24,7 +24,7 @@ ms.locfileid: "87422108"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-- 檢閱[自動佈建概念](concepts-auto-provisioning.md)。
+- 熟悉[佈建](about-iot-dps.md#provisioning-process)概念。
 - 完成[使用 Azure 入口網站設定 IoT 中樞裝置佈建服務](./quick-setup-auto-provision.md)。
 - 具有有效訂用帳戶的 Azure 帳戶。 [建立免費帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 - [Node.js v4.0+](https://nodejs.org)。

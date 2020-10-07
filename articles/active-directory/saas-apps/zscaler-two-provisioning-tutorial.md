@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: bea34b2a8b8827b709cc637c0a33132477419a83
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b3cd69876eb5fa18d9763bd7f89233d7608384ef
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545730"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317475"
 ---
 # <a name="tutorial-configure-zscaler-two-for-automatic-user-provisioning"></a>教學課程：設定 Zscaler Two 來自動佈建使用者
 
@@ -119,7 +119,7 @@ Azure AD 使用者必須先獲得所選應用程式的存取權，才能使用�
 
 11. 在 [屬性對應]  區段中，檢閱從 Azure AD 同步至 Zscaler Two 的使用者屬性。 選取為 [比對]  屬性的屬性會用來比對 Zscaler Two 中的使用者帳戶以進行更新作業。 選取 [儲存]  認可任何變更。
 
-    ![屬性對應](./media/zscaler-two-provisioning-tutorial/user-attribute-mappings.png)
+    ![[屬性對應] 區段的螢幕擷取畫面，其中顯示七個對應。](./media/zscaler-two-provisioning-tutorial/user-attribute-mappings.png)
 
 12. 在 [對應]  區段中，選取 [將 Azure Active Directory 群組同步至 ZscalerTwo]  ：
 
@@ -127,7 +127,7 @@ Azure AD 使用者必須先獲得所選應用程式的存取權，才能使用�
 
 13. 在 [屬性對應]  區段中，檢閱從 Azure AD 同步至 Zscaler Two 的群組屬性。 選取為 [比對]  屬性的屬性會用來比對 Zscaler Two 中的群組以進行更新作業。 選取 [儲存]  認可任何變更。
 
-    ![屬性對應](./media/zscaler-two-provisioning-tutorial/group-attribute-mappings.png)
+    ![[屬性對應] 區段的螢幕擷取畫面，其中顯示三個對應。](./media/zscaler-two-provisioning-tutorial/group-attribute-mappings.png)
 
 14. 若要設定範圍篩選條件，請參閱[範圍篩選條件教學課程](./../active-directory-saas-scoping-filters.md)中的指示。
 

@@ -1,6 +1,6 @@
 ---
-title: 修改 Microsoft 身分識別平台應用程式帳戶 | Azure
-description: 設定使用 Microsoft 身分識別平台所註冊的應用程式，以變更可以存取應用程式的使用者或帳戶。
+title: 快速入門：修改 Microsoft 身分識別平台應用程式帳戶 | Azure
+description: 在本快速入門中，您會設定向 Microsoft 身分識別平台註冊的應用程式，以變更可以存取應用程式的使用者或帳戶。
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -12,12 +12,12 @@ ms.date: 05/08/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: 2850ca3f23e61be54702878c0683af9fdb1fad91
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: d143bde9c22bc726f00b5c209d1b7fbc131905b0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83826854"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258008"
 ---
 # <a name="quickstart-modify-the-accounts-supported-by-an-application"></a>快速入門：修改應用程式所支援的帳戶
 
@@ -27,11 +27,7 @@ ms.locfileid: "83826854"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-開始之前，請先確定您已完成以下先決條件：
-
-* 了解所支援的[權限和同意](v2-permissions-and-consent.md)，在建置其他使用者或應用程式需要使用的應用程式時，這些是務必了解的重要資訊。
-* 擁有已有應用程式在其中註冊的租用戶。
-  * 如果您尚未註冊應用程式，請[了解如何使用 Microsoft 身分識別平台來註冊應用程式](quickstart-register-app.md)。
+* 完成[快速入門：使用 Microsoft 身分識別平台來註冊應用程式](quickstart-register-app.md)
 
 ## <a name="sign-in-to-the-azure-portal-and-select-the-app"></a>登入 Azure 入口網站，然後選取應用程式
 
@@ -39,7 +35,7 @@ ms.locfileid: "83826854"
 
 1. 使用公司或學校帳戶或個人的 Microsoft 帳戶登入 [Azure 入口網站](https://portal.azure.com)。
 1. 如果您的帳戶可讓您存取多個租用戶，請在右上角選取帳戶，然後將您的入口網站工作階段設定為想要的 Azure AD 租用戶。
-1. 在左側導覽窗格中，選取 [Azure Active Directory] 服務，然後選取 [應用程式註冊]。
+1. 在左側導覽窗格中，選取 [Azure Active Directory]  服務，然後選取 [應用程式註冊]  。
 1. 尋找並選取您要設定的應用程式。 在選取應用程式後，您會看到應用程式的 [概觀] 或主要註冊頁面。
 1. 遵循相關步驟來[變更應用程式註冊以支援不同的帳戶](#change-the-application-registration-to-support-different-accounts)。
 1. 如果您有單頁應用程式，請[啟用 OAuth 2.0 隱含授與](#enable-oauth-20-implicit-grant-for-single-page-applications)。
@@ -78,13 +74,5 @@ ms.locfileid: "83826854"
 
 ## <a name="next-steps"></a>後續步驟
 
-了解與應用程式相關的下列其他應用程式管理快速入門：
-
-* [使用 Microsoft 身分識別平台來註冊應用程式](quickstart-register-app.md)
-* [設定用戶端應用程式以存取 Web API](quickstart-configure-app-access-web-apis.md)
-* [設定應用程式以公開 Web API](quickstart-configure-app-expose-web-apis.md)
-* [移除使用 Microsoft 身分識別平台所註冊的應用程式](quickstart-remove-app.md)
-
-若要了解代表已註冊的應用程式和它們之間關係的兩個 Azure AD 物件，請參閱[應用程式物件和服務主體物件](app-objects-and-service-principals.md)。
-
-若要了解使用 Azure Active Directory 開發應用程式時應使用的商標指導方針，請參閱[應用程式的商標指導方針](howto-add-branding-in-azure-ad-apps.md)。
+> [!div class="nextstepaction"]
+> [應用程式的商標指導方針](howto-add-branding-in-azure-ad-apps.md)

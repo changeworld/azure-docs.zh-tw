@@ -1,7 +1,7 @@
 ---
 title: 快速入門：使用 Bing 自動建議 REST API 與 Node.js 建議搜尋查詢
 titleSuffix: Azure Cognitive Services
-description: 了解如何快速開始使用 Bing 自動建議 API，即時建議搜尋字詞。
+description: 了解如何快速開始使用 Bing 自動建議 API 和 Node.js，即時建議搜尋字詞。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,13 +10,13 @@ ms.subservice: bing-autosuggest
 ms.topic: quickstart
 ms.date: 05/06/2020
 ms.author: aahi
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 6a78c2ae4145a65739d5db56a70dca498d7d6a82
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-js
+ms.openlocfilehash: b61427f39f508413e33ce67f90bfecb8ac202e1f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406481"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332639"
 ---
 # <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-nodejs"></a>快速入門：使用 Bing 自動建議 REST API 與 Node.js 建議搜尋查詢
 

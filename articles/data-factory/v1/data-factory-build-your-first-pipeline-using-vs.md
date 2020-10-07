@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: vs-azure
 ms.date: 01/22/2018
-ms.openlocfilehash: f3c6364226288ffb6796664e89d0b7c2cc4dadf6
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 65309bbd70a6fda2bf725ce96cc5595cd9b55083
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543141"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569073"
 ---
 # <a name="tutorial-create-a-data-factory-by-using-visual-studio"></a>教學課程：使用 Visual Studio 建立資料處理站
 > [!div class="op_single_selector" title="Tools/SDKs"]
@@ -91,7 +91,7 @@ Azure 儲存體連結服務會提供連線資訊，以將 Azure 儲存體帳戶�
 #### <a name="create-azure-storage-linked-service"></a>建立 Azure 儲存體連結服務
 1. 以滑鼠右鍵按一下 [方案總管] 中的 [連結服務]  ，指向 [新增]  ，然後按一下 [新增項目]  。      
 2. 在 [新增新項目]  對話方塊中，從清單選取 [Azure 儲存體連結服務]  ，然後按一下 [新增]  。
-    ![Azure 儲存體連結服務](./media/data-factory-build-your-first-pipeline-using-vs/new-azure-storage-linked-service.png)
+    ![反白顯示清單中 Azure 儲存體連結服務的螢幕擷取畫面。](./media/data-factory-build-your-first-pipeline-using-vs/new-azure-storage-linked-service.png)
 3. 使用 Azure 儲存體帳戶的名稱及其金鑰來取代 `<accountname>` 和 `<accountkey>`。 若要了解如何取得儲存體存取金鑰，請參閱[管理儲存體帳戶存取金鑰](../../storage/common/storage-account-keys-manage.md)。
     ![Azure 儲存體連結服務](./media/data-factory-build-your-first-pipeline-using-vs/azure-storage-linked-service.png)
 4. 儲存 **AzureStorageLinkedService1.json** 檔案。
@@ -368,7 +368,7 @@ Azure 儲存體連結服務會提供連線資訊，以將 Azure 儲存體帳戶�
 7. 按一下 **X** 關閉 **AzureBlobInput** 刀鋒視窗。
 8. 在 [圖表檢視]  中，按兩下 **AzureBlobOutput** 資料集。 您會看到目前正在處理的配量。
 
-   ![資料集](./media/data-factory-build-your-first-pipeline-using-vs/dataset-blade.png)
+   ![反白顯示 AzureBlobOutput 資料集的螢幕擷取畫面。](./media/data-factory-build-your-first-pipeline-using-vs/dataset-blade.png)
 9. 處理完成時，您會看到配量處於 [就緒]  狀態。
 
    > [!IMPORTANT]

@@ -12,12 +12,12 @@ ms.date: 09/03/2020
 ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, contperfq1
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: 5f34215d57bd5dae8c9a5e6e8f4630b7ed0c827e
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 9cd59d6bf5b9bf6e17cba0786bfac27ed12d7638
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89436688"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258127"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>快速入門：使用 Microsoft 身分識別平台來註冊應用程式
 
@@ -59,13 +59,13 @@ ms.locfileid: "89436688"
 
 應用程式的程式碼 (或通常是應用程式中使用的驗證程式庫) 也會使用用戶端識別碼作為驗證其從身分識別平台接收之安全性權杖的一個方式。
 
-:::image type="content" source="media/quickstart-register-app/portal-03-app-reg-02.png" alt-text="Web 瀏覽器中的 Azure 入口網站螢幕擷取畫面，其中顯示應用程式註冊的概觀窗格。":::
+:::image type="content" source="media/quickstart-register-app/portal-03-app-reg-02.png" alt-text="Web 瀏覽器中的 Azure 入口網站螢幕擷取畫面，其中顯示註冊應用程式窗格。":::
 
 ## <a name="add-a-redirect-uri"></a>新增重新導向 URI
 
 重新導向 URI 是 Microsoft 身分識別平台將使用者重新導向的用戶端，且會在驗證之後傳送安全性權杖的位置。
 
-例如，在生產 Web 應用程式中，重新導向 URI 通常是執行您應用程式的公用端點，例如 `https://contoso.com/auth-response`。 在開發期間，通常也會新增您在本機執行應用程式的端點，例如 `https://127.0.0.1/auth-response`。
+例如，在生產 Web 應用程式中，重新導向 URI 通常是執行您應用程式的公用端點，例如 `https://contoso.com/auth-response`。 在開發期間，通常也會新增您在本機執行應用程式的端點，例如 `https://127.0.0.1/auth-response` 或 `http://localhost/auth-response`。
 
 您可以藉由設定其[平台設定](#configure-platform-settings)，為已註冊的應用程式新增和修改重新導向 URI。
 
@@ -80,7 +80,7 @@ ms.locfileid: "89436688"
 1. 在 [平台設定] 下，選取 [新增平台]。
 1. 在 **設定平台**中，選取應用程式類型 (平台) 的圖格以加以設定。
 
-    :::image type="content" source="media/quickstart-register-app/portal-04-app-reg-03-platform-config.png" alt-text="Azure 入口網站中平台組態 窗格的螢幕擷取畫面" border="false":::
+    :::image type="content" source="media/quickstart-register-app/portal-04-app-reg-03-platform-config.png" alt-text="Web 瀏覽器中的 Azure 入口網站螢幕擷取畫面，其中顯示註冊應用程式窗格。" border="false":::
 
     | 平台 | 組態設定 |
     | -------- | ---------------------- |
@@ -101,7 +101,7 @@ ms.locfileid: "89436688"
 
 您可以將憑證和用戶端密碼 (字串) 當作認證新增至您的機密用戶端應用程式註冊。
 
-:::image type="content" source="media/quickstart-register-app/portal-05-app-reg-04-credentials.png" alt-text="Azure 入口網站螢幕擷取畫面，顯示應用程式註冊中的憑證和祕密窗格":::
+:::image type="content" source="media/quickstart-register-app/portal-05-app-reg-04-credentials.png" alt-text="Web 瀏覽器中的 Azure 入口網站螢幕擷取畫面，其中顯示註冊應用程式窗格。":::
 
 ### <a name="add-a-certificate"></a>新增憑證
 

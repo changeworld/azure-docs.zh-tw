@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 12/03/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 56198392f3c769837d8d672b861baa9b341d284e
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 760a3a194e181576acb3601aabc07c6900cb664e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89419345"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91276759"
 ---
 # <a name="get-started-with-azure-cosmos-db-table-api-and-azure-table-storage-using-the-net-sdk"></a>透過 .NET SDK 開始使用 Azure Cosmos DB 資料表 API 和 Azure 資料表儲存體
 
@@ -120,7 +120,7 @@ tableClient.TableClientConfiguration.UseRestExecutorForCosmosEndpoint = true;
 
 ## <a name="insert-or-merge-an-entity"></a>插入或合併實體
 
-下列程式碼範例會建立實體物件，並將它新增至資料表。 [TableOperation](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.tableoperation) \(英文\) 類別內的 InsertOrMerge 方法可用來插入或合併實體。 呼叫 [CloudTable.ExecuteAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.cloudtable.executeasync?view=azure-dotnet) \(英文\) 方法來執行作業。 
+下列程式碼範例會建立實體物件，並將它新增至資料表。 [TableOperation](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.tableoperation) \(英文\) 類別內的 InsertOrMerge 方法可用來插入或合併實體。 呼叫 [CloudTable.ExecuteAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.cloudtable.executeasync?view=azure-dotnet&preserve-view=true) \(英文\) 方法來執行作業。 
 
 以滑鼠右鍵按一下您的專案 **CosmosTableSamples**。 選取 [新增]、[新增項目]，然後新增名為 **SamplesUtils.cs** 的類別。 此類別會儲存在實體上執行 CRUD 作業所需的所有程式碼。 
 
@@ -158,7 +158,7 @@ tableClient.TableClientConfiguration.UseRestExecutorForCosmosEndpoint = true;
 
 立即建置解決方案，然後按 F5 執行專案。 執行專案時，您將在命令提示字元中看見下列輸出：
 
-:::image type="content" source="./media/tutorial-develop-table-standard/output-from-sample.png" alt-text="來自命令提示字元的輸出":::
+:::image type="content" source="./media/tutorial-develop-table-standard/output-from-sample.png" alt-text="在 [連接字串] 窗格中檢視及複製主要連接字串":::
 
 如果您收到錯誤，指出執行專案時找不到 Settings.json 檔案，您可以將下列 XML 項目新增至專案設定來解決該問題。 以滑鼠右鍵按一下 [CosmosTableSamples]、選取 [編輯 CosmosTableSamples.csproj]，然後新增下列 itemGroup： 
 
@@ -171,11 +171,11 @@ tableClient.TableClientConfiguration.UseRestExecutorForCosmosEndpoint = true;
 ```
 現在您可以登入 Azure 入口網站，並確認資料存在於資料表中。 
 
-:::image type="content" source="./media/tutorial-develop-table-standard/results-in-portal.png" alt-text="入口網站中的結果":::
+:::image type="content" source="./media/tutorial-develop-table-standard/results-in-portal.png" alt-text="在 [連接字串] 窗格中檢視及複製主要連接字串":::
 
 ## <a name="next-steps"></a>後續步驟
 
 您現在可以繼續進行下一個教學課程，以了解如何將資料合併至 Azure Cosmos DB 資料表 API 帳戶。 
 
 > [!div class="nextstepaction"]
->[如何查詢資料](../cosmos-db/table-import.md)
+>[將資料遷移至 Azure Comsos DB 資料表 API](../cosmos-db/table-import.md)

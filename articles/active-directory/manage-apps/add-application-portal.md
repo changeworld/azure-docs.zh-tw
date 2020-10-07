@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 10/29/2019
 ms.author: kenwith
-ms.openlocfilehash: 0818ab782710e6a102d2034790ff8d997cd54f8e
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 2946590cbb4c5e8f495a1f6ee4aac65929cd4d0e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87808432"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91305719"
 ---
 # <a name="quickstart-add-an-application-to-your-azure-active-directory-azure-ad-tenant"></a>快速入門：將應用程式新增到您的 Azure Active Directory (Azure AD) 租用戶
 
@@ -47,13 +47,24 @@ Azure Active Directory (Azure AD) 有一個資源庫，其中包含數千個預�
 3. 在 [企業應用程式] 窗格上，選取 [新增應用程式]。 
     ![選取 [新增應用程式] 以將資源庫應用程式新增至您的租用戶](media/add-application-portal/new-application.png)
 4. 切換至新的資源庫預覽體驗：在 [新增應用程式] 頁面頂端的橫幅中，選取顯示為 [按一下這裡試用改良過的新版應用程式資源庫] 的連結。
-5. [瀏覽 Azure AD 資源庫 (預覽)] 窗格隨即開啟，並顯示雲端平台、內部部署應用程式和精選應用程式的圖格。 [精選應用程式] 區段中所列的應用程式，會有圖示指出其是否支援同盟單一登入 (SSO) 和佈建。
+5. [瀏覽 Azure AD 資源庫 (預覽)] 窗格隨即開啟，並顯示雲端平台、內部部署應用程式和精選應用程式的圖格。 [精選應用程式] 區段中所列的應用程式，會有圖示指出其是否支援同盟單一登入 (SSO) 和佈建。 
     ![依名稱或類別搜尋應用程式](media/add-application-portal/browse-gallery.png)
-6. 您可以瀏覽您要新增之應用程式的資源庫，或在搜尋方塊中輸入應用程式的名稱加以搜尋。 然後，從結果中選取應用程式。 在表單中，您可以編輯應用程式名稱，以符合您的組織需求。 在此範例中，我們選取了 GitHub 並將名稱變更為 **GitHub-test**。
-    ![說明如何從資源庫新增應用程式](media/add-application-portal/create-application.png)
-    >[!TIP]
-    >如果您要尋找的應用程式不在資源庫中，可以按一下連結**建立您自己的應用程式**，然後在**您想要對應用程式執行哪些動作？** 下選擇 [整合您在資源庫中找不到的任何其他應用程式]。 Microsoft 已經與許多應用程式開發人員合作，將他們預先設定為可使用 Azure AD。 這些都是顯示在資源庫中的應用程式。 但如果未列出您要新增的應用程式，您可以建立新的一般應用程式，然後自行設定，或使用建立者的開發人員指導方針來設定。
-7. 選取 [建立]。 [開始使用] 頁面會隨即顯示，其中包含可為您組織設定應用程式的選項。
+6. 您可以瀏覽您要新增之應用程式的資源庫，或在搜尋方塊中輸入應用程式的名稱加以搜尋。 然後，從結果中選取應用程式。 
+7. 下一步取決於應用程式開發人員實作單一登入 (SSO) 的方式。 應用程式開發人員可以採取四種方式實作單一登入。 四種方式為 SAML、OpenID Connect、密碼和 Linked。 新增應用程式時，您可以選擇只使用特定的 SSO 實作來篩選和查看應用程式，如螢幕擷取畫面所示。 例如，實作 SSO 的熱門標準稱為安全性聲明標記語言 (SAML)。 另一個熱門的標準稱為 OpenId Connect (OIDC)。 使用這些標準設定 SSO 的方式會有所不同，因此請記下所新增應用程式執行的 SSO 類型。
+
+    :::image type="content" source="media/add-application-portal/sso-types.png" alt-text="此螢幕擷取畫面顯示 SSO 類型選取器。" lightbox="media/add-application-portal/sso-types.png":::
+
+    - 如果應用程式的開發人員已將 **OIDC 標準**用於 SSO，請選取 [註冊]。 設定頁面隨即出現。 接下來，移至設定 OIDC 型單一登入的快速入門。
+    :::image type="content" source="media/add-application-portal/sign-up-oidc-sso.png" alt-text="此螢幕擷取畫面顯示 SSO 類型選取器。":::
+
+    - 如果應用程式的開發人員已將 **SAML 標準**用於 SSO，請選取 [建立]。 [開始使用] 頁面會隨即顯示，其中包含可為您組織設定應用程式的選項。 在表單中，您可以編輯應用程式名稱，以符合您的組織需求。 接下來，移至設定 SAML 型單一登入的快速入門。
+    :::image type="content" source="media/add-application-portal/create-application.png" alt-text="此螢幕擷取畫面顯示 SSO 類型選取器。":::
+
+
+> [!IMPORTANT]
+> SAML 型和 OIDC 型 SSO 實作之間有一些主要的差異。 使用 SAML 型應用程式，您可以新增同一應用程式的多個執行個體。 例如，GitHub1、GitHub2 等。 若為 OIDC 型應用程式，您只能新增一個應用程式執行個體。 如果您已新增 OIDC 型應用程式，並嘗試再次新增相同的應用程式並提供兩次同意，則不會在租用戶中再次新增該應用程式。
+
+如果您要尋找的應用程式不在資源庫中，可以選取連結**建立您自己的應用程式**，然後在**您想要對應用程式執行哪些動作？** 下選擇 [整合您在資源庫中找不到的任何其他應用程式]。 Microsoft 已經與許多應用程式開發人員合作，將他們預先設定為可使用 Azure AD。 預先設定的應用程式會顯示在資源庫中。 但如果未列出您要新增的應用程式，您可以建立新的一般應用程式，然後自行設定，或使用建立者的開發人員指導方針來設定。
 
 您已完成新增應用程式。 下一個快速入門將示範如何為應用程式變更標誌和編輯其他屬性。
 

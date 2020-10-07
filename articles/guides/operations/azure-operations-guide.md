@@ -8,12 +8,12 @@ ms.service: azure
 ms.topic: overview
 ms.workload: infrastructure
 ms.date: 08/24/2018
-ms.openlocfilehash: 0a383e8e2c38dbd00e0a55f9debb9b4daf40fa9c
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 0f67939358a4395416ea28c1c459d4890ab0351d
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87832751"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397805"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Azure IT 操作員快速入門
 
@@ -68,7 +68,7 @@ Azure 提供數個 PaaS 計算供應項目，包括 Azure App Service 與 Azure 
 
 SaaS 是集中裝載和管理的軟體。 它通常以多租用戶架構為基礎 — 單一應用程式版本用於所有客戶。 它可以相應放大為多個執行個體，以確保所有位置的最佳效能。 SaaS 軟體通常透過每月或每年訂用帳戶授權。 SaaS 軟體廠商會負責軟體堆疊的所有元件，因此，您只需要管理所提供的服務。
 
-Microsoft Office 365 是良好的 SaaS 供應項目範例。 訂閱者需每月或每年支付訂閱費用，他們可取得 Microsoft Exchange、Microsoft OneDrive 和 Microsoft Office 套件即服務的其餘部分。 訂閱者一律可取得最新版本，而系統會為您管理 Exchange 伺服器。 相較於每年安裝及升級 Office，這種作法比較經濟實惠。
+Microsoft 365 是良好的 SaaS 供應項目範例。 訂閱者需每月或每年支付訂閱費用，他們可取得 Microsoft Exchange、Microsoft OneDrive 和 Microsoft Office 套件即服務的其餘部分。 訂閱者一律可取得最新版本，而系統會為您管理 Exchange 伺服器。 相較於每年安裝及升級 Office，這種作法比較經濟實惠。
 
 ## <a name="azure-services"></a>Azure 服務
 

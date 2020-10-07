@@ -7,12 +7,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/19/2017
 ms.custom: mvc
-ms.openlocfilehash: b656774762f5930c5665166a701bda7333940307
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: af8479f6460a6cc555d7ea67dcfe65c779878624
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322426"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91357857"
 ---
 # <a name="find-and-diagnose-run-time-exceptions-with-azure-application-insights"></a>使用 Azure Application Insights 尋找並診斷執行階段例外狀況
 
@@ -97,7 +97,7 @@ Application Insights 收集的所有資料都會儲存在 Azure Log Analytics �
 
     ![程式碼](media/tutorial-runtime-exceptions/codelens.png)
 
-1. 按一下 [分析影響]  以開啟 Application Insights 分析。  它已填入數個查詢，提供失敗要求的詳細資料，例如受影響的使用者、瀏覽器和區域。<br><br>![分析](media/tutorial-runtime-exceptions/analytics.png)<br>
+1. 按一下 [分析影響]  以開啟 Application Insights 分析。  它已填入數個查詢，提供失敗要求的詳細資料，例如受影響的使用者、瀏覽器和區域。<br><br>![此螢幕擷取畫面顯示包含數個查詢的 Application Insights 視窗。](media/tutorial-runtime-exceptions/analytics.png)<br>
 
 ## <a name="add-work-item"></a>新增工作項目
 如果您將 Application Insights 與追蹤系統 (例如 Azure DevOps 或 GitHub) 連結，即可直接從 Application Insights 建立工作項目。

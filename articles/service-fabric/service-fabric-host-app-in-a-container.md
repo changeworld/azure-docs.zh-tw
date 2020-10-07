@@ -3,12 +3,12 @@ title: 將容器中的 .NET 應用程式部署到 Azure Service Fabric
 description: 了解如何使用 Visual Studio 將現有 .NET 應用程式容器化，並在 Service Fabric 本機為容器偵錯。 需將容器化的應用程式推送至 Azure 容器登錄，並部署到 Service Fabric 叢集。 部署到 Azure 時，應用程式會使用 Azure SQL 資料庫保存資料。
 ms.topic: tutorial
 ms.date: 07/08/2019
-ms.openlocfilehash: 4970cf6492da38ad76a51df88eeb73538c850c67
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 4ef696156b6386c7aa1a027dcc61c988ba4692a2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258867"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91314295"
 ---
 # <a name="tutorial-deploy-a-net-application-in-a-windows-container-to-azure-service-fabric"></a>教學課程：將 Windows 容器中的 .NET 應用程式部署到 Azure Service Fabric
 
@@ -39,7 +39,7 @@ ms.locfileid: "86258867"
 
 2. 確認 Fabrikam Fiber CallCenter 應用程式建置及執行正常。  以**系統管理員**身分啟動 Visual Studio，並開啟 [FabrikamFiber.CallCenter.sln][link-fabrikam-github] 檔案。  按 F5 進行偵錯並執行應用程式。
 
-   ![Fabrikam Web 範例][fabrikam-web-page]
+   ![Fabrikam Fiber CallCenter 應用程式首頁 (執行於本機主機上) 的螢幕擷取畫面。 此頁面會顯示儀表板，其中包含支援電話的清單。][fabrikam-web-page]
 
 ## <a name="containerize-the-application"></a>將應用程式容器化
 
@@ -235,7 +235,7 @@ $vnetRuleObject1 = New-AzSqlServerVirtualNetworkRule `
 
 輸出視窗會顯示部署進度。 部署應用程式後，開啟瀏覽器並鍵入叢集位址和應用程式連接埠。 例如： `https://fabrikamfibercallcenter.southcentralus.cloudapp.azure.com:8659/` 。
 
-![Fabrikam Web 範例][fabrikam-web-page-deployed]
+![Fabrikam Fiber CallCenter 應用程式首頁 (執行於 azure.com 上) 的螢幕擷取畫面。 此頁面會顯示儀表板，其中包含支援電話的清單。][fabrikam-web-page-deployed]
 
 ## <a name="set-up-continuous-integration-and-deployment-cicd-with-a-service-fabric-cluster"></a>設定 Service Fabric 叢集的持續整合和部署 (CI/CD)
 

@@ -1,17 +1,15 @@
 ---
 title: 封裝和部署容器
 description: 在本教學課程中，您會了解如何使用 Yeoman 來產生 Azure Service Fabric 應用程式定義以及封裝應用程式。
-author: suhuruli
 ms.topic: tutorial
 ms.date: 07/22/2019
-ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: cc1d6e04b19d36f0ca8c7ed4b2bb3d62f5e8e15a
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 5840539b6c51a0070a98f03dbda3c596fd5c2516
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "78252756"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91539872"
 ---
 # <a name="tutorial-package-and-deploy-containers-as-a-service-fabric-application-using-yeoman"></a>教學課程：使用 Yeoman 封裝和部署容器作為 Service Fabric 應用程式
 
@@ -278,7 +276,7 @@ sfctl cluster select --endpoint https://containertestcluster.eastus.cloudapp.azu
 
 為了連接到執行中應用程式，請開啟網頁瀏覽器並移至叢集 URL，例如 http:\//containertestcluster.eastus.cloudapp.azure.com:80。 您應會在 Web UI 中看到投票應用程式。
 
-![votingapp][votingapp]
+![此螢幕擷取畫面顯示 Azure 投票應用程式與貓、狗、重設和總計的按鈕。][votingapp]
 
 ## <a name="clean-up"></a>清除
 

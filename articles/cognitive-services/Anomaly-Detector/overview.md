@@ -1,27 +1,29 @@
 ---
 title: 什麼是異常偵測器 API？
 titleSuffix: Azure Cognitive Services
-description: 使用 Anomaly Detector API 的進階的演算法來識別時間序列資料中的異常狀況。
+description: 使用 Anomaly Detector API 的演算法，在時間序列資料上套用異常偵測。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: overview
-ms.date: 09/10/2020
+ms.date: 09/22/2020
 ms.author: aahi
-ms.openlocfilehash: ba094709d78d92b678e3aa5ad9995923888caf00
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+keywords: 異常偵測, 機器學習, 演算法
+ms.custom: cog-serv-seo-aug-2020
+ms.openlocfilehash: 2e48c189df23ed94cd54e1bc9097b7d9709c9ed3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90887502"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319311"
 ---
 # <a name="what-is-the-anomaly-detector-api"></a>什麼是異常偵測器 API？
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-Anomaly Detector API 可讓您透過機器學習，監視和偵測時間序列資料中的異常狀況。 不論是什麼產業、情境或資料量，Anomaly Detector API 都會自動找出最適合的模型並套用到您的資料。 使用您的時間序列資料，API 可判斷異常偵測的界限、預期的值，以及哪些資料點異常。
+Anomaly Detector API 可讓您監視和偵測時間序列資料中的異常狀況，而無需知道機器學習。 不論是什麼產業、案例或資料量，Anomaly Detector API 都會自動找出最適合的模型並套用到您的資料。 使用您的時間序列資料，API 可判斷異常偵測的界限、預期的值，以及哪些資料點異常。
 
 ![偵測服務要求中的模式變更](./media/anomaly_detection2.png)
 
@@ -33,7 +35,7 @@ Anomaly Detector API 可讓您透過機器學習，監視和偵測時間序列�
 
 |功能  |描述  |
 |---------|---------|
-|即時偵測發生的異常狀況。 | 使用先前看到的資料點，偵測串流資料中的異常，以判斷您最新的資料點是否異常。 此業會使用您傳送的資料點來生模型，以判斷目標點是否異常。 透過您所產生的每個新資料點呼叫 API，即可在資料建立時加以監視。 |
+|即時異常偵測。 | 使用先前看到的資料點，偵測串流資料中的異常，以判斷您最新的資料點是否異常。 此業會使用您傳送的資料點來生模型，以判斷目標點是否異常。 透過您所產生的每個新資料點呼叫 API，即可在資料建立時加以監視。 |
 |以批次方式偵測整個資料集的異常狀況。 | 使用時間序列來偵測您的資料中可能存在的任何異常狀況。 此作業會使用您的整個時間序列資料產生一個模型，以相同的模型分析每個資料點。         |
 |以批次方式偵測整個資料集的變更點。 | 使用您的時間序列來偵測任何存在於資料中的趨勢變更點。 此作業會使用您的整個時間序列資料產生一個模型，以相同的模型分析每個資料點。    |
 | 取得有關您資料的其他資訊。 | 取得您資料和任何觀察到異常狀況的詳細資料，包括預期的值、異常界限和位置。 |

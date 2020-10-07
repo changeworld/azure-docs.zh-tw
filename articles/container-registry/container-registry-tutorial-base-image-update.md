@@ -3,13 +3,13 @@ title: 教學課程 - 在基底映像更新時觸發映像建置
 description: 在本教學課程中，您將了解如何設定 Azure Container Registry 工作，以在相同登錄中有基礎映像更新時自動觸發雲端中的容器映像建置。
 ms.topic: tutorial
 ms.date: 01/22/2020
-ms.custom: seodec18, mvc, devx-track-javascript
-ms.openlocfilehash: 0efac34d05dfaf8877efec2e66f1f95a19ca95be
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: seodec18, mvc, devx-track-js
+ms.openlocfilehash: 0b87f4ca138e0da76efd184e87f12bec32e3960e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87407994"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91262241"
 ---
 # <a name="tutorial-automate-container-image-builds-when-a-base-image-is-updated-in-an-azure-container-registry"></a>教學課程：在 Azure Container Registry 中更新基底映像時自動執行容器映像建置 
 
@@ -133,7 +133,7 @@ docker run -d -p 8080:80 --name myapp --rm $ACR_NAME.azurecr.io/helloworld:<run-
 
 在瀏覽器中瀏覽至 `http://localhost:8080`，您應該會看到 Node.js 版本號碼呈現於網頁中，如下所示。 在後續步驟中，您可以在版本字串中加上 "a"，以變更版本。
 
-![呈現在瀏覽器中的範例應用程式的螢幕擷取畫面][base-update-01]
+![此螢幕擷取畫面顯示瀏覽器中呈現的範例應用程式。][base-update-01]
 
 若要停止和移除容器，請執行下列命令：
 

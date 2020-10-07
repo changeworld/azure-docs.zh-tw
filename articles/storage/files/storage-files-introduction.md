@@ -4,18 +4,18 @@ description: Azure 檔案服務的概觀，此服務可讓您使用業界標準 
 author: roygara
 ms.service: storage
 ms.topic: overview
-ms.date: 03/10/2018
+ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: aff6f99c119ba2854fd7923d2a15efb2e1a6b601
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 2b5fa5211ad8d4de01f2b63e8267e297e13c4485
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80666801"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570027"
 ---
 # <a name="what-is-azure-files"></a>什麼是 Azure 檔案服務？
-Azure 檔案提供雲端中完全受控的檔案共用，可透過業界標準[伺服器訊息區 (SMB) 通訊協定](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)存取。 Windows、Linux 和 macOS 的雲端部署或內部部署可同時掛接 Azure 檔案共用。 此外，透過 Azure 檔案同步可以在 Windows Server 上快取 Azure 檔案共用，以便在資料的使用位置附近快速存取。
+Azure 檔案儲存體提供雲端中完全受控的檔案共用，可透過業界標準[伺服器訊息區 (SMB) 通訊協定](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)或[網路檔案系統 (NFS) 通訊協定](https://en.wikipedia.org/wiki/Network_File_System)來存取。 雲端部署或內部部署可同時掛接 Azure 檔案共用。 您可以從 Windows、Linux 和 macOS 用戶端存取 Azure 檔案儲存體 SMB 檔案共用。 也可以從 Linux 或 macOS 用戶端存取 Azure 檔案儲存體 NFS 檔案共用。 此外，透過 Azure 檔案儲存體 SMB 檔案共用可以在 Windows Server 上快取 Azure 檔案同步，以便在資料的使用位置附近快速存取。
 
 ## <a name="videos"></a>影片
 | Azure 檔案同步簡介 | 同步的 Azure 檔案儲存體 (Ignite 2019)  |
@@ -30,7 +30,7 @@ Azure 檔案提供雲端中完全受控的檔案共用，可透過業界標準[�
 Azure 檔案共用可以用來：
 
 * **取代或補充內部部署檔案伺服器**：  
-    Azure 檔案服務可用來完全取代或補充傳統內部部署檔案伺服器或 NAS 裝置。 無論身在何處，熱門作業系統 (例如 Windows、macOS 和 Linux) 都可以直接掛接 Azure 檔案共用。 透過 Azure 檔案同步，也可以將 Azure 檔案共用複寫到 Windows Server (在內部部署環境或雲端)，從而在資料的使用位置進行高效能和分散式快取。 使用最新版本的 [Azure 檔案儲存體 AD 驗證](storage-files-active-directory-overview.md)，Azure 檔案共用可以繼續使用已裝載 AD 的內部部署進行存取控制。 
+    Azure 檔案服務可用來完全取代或補充傳統內部部署檔案伺服器或 NAS 裝置。 無論身在何處，熱門作業系統 (例如 Windows、macOS 和 Linux) 都可以直接掛接 Azure 檔案共用。 透過 Azure 檔案 SMB 檔案共用，也可以將 Azure 檔案同步複寫到 Windows Server (在內部部署環境或雲端)，從而在資料的使用位置進行高效能和分散式快取。 使用最新版本的 [Azure 檔案儲存體 AD 驗證](storage-files-active-directory-overview.md)，Azure 檔案 SMB 檔案共用可以繼續使用已裝載 AD 的內部部署進行存取控制。 
 
 * **「原形移轉」應用程式**：  
     Azure 檔案服務可讓您輕易將預期檔案共用會儲存檔案應用程式或使用者資料的應用程式「原形移轉」到雲端。 Azure 檔案服務可支援「傳統」原形移轉案例 (其中的應用程式及其資料會移至 Azure)，和「混合式」原形移轉案例 (其中的應用程式資料會移至 Azure 檔案服務，而應用程式會繼續在內部部署環境執行)。 
@@ -45,16 +45,20 @@ Azure 檔案共用可以用來：
 
     * **開發/測試/偵錯**：  
         當開發人員或系統管理員在雲端的 VM 上執行作業時，他們通常需要一組工具或公用程式。 將這類公用程式和工具複製到每個 VM，可能是費時的練習。 開發人員和系統管理員可藉由在 VM 本機掛接 Azure 檔案共用，快速存取其工具和公用程式 (不需要複製)。
+* **容器化**：  
+    Azure 檔案共用可以用作具狀態容器的永久性磁碟區。 容器提供「組建一次，隨處執行」功能，可讓開發人員加速創新。 對於在每次啟動時存取原始資料的容器，需有共用檔案系統，才能讓這些容器存取檔案系統，不論其執行所在的執行個體為何。
 
 ## <a name="key-benefits"></a>主要權益
-* **共用存取**。 Azure 檔案共用支援業界標準 SMB 通訊協定，這表示您可以順暢地使用 Azure 檔案共用取代內部檔案共用，而不需擔心應用程式相容性。 能夠跨多部電腦和應用程式/執行個體共用檔案系統，是 Azure 檔案服務的重大優勢，尤其是針對需要共用能力的應用程式。 
+* **共用存取**。 Azure 檔案共用支援業界標準 SMB 及 NFS 通訊協定，這表示您可以順暢地使用 Azure 檔案共用取代內部檔案共用，而不需擔心應用程式相容性。 能夠跨多部電腦和應用程式/執行個體共用檔案系統，是 Azure 檔案服務的重大優勢，尤其是針對需要共用能力的應用程式。 
 * **完全受控**。 不需要管理硬體或作業系統就可以建立 Azure 檔案共用。 這表示您不必透過重大安全性升級或替換故障硬碟來處理修補伺服器作業系統。
 * **指令碼和工具**。 PowerShell Cmdlet 和 Azure CLI 可用來建立、掛接和管理 Azure 檔案共用，作為 Azure 應用程式系統管理的一部分。您可以使用 Azure 入口網站和 Azure 儲存體總管來建立及管理 Azure 檔案共用。 
 * **復原功能**。 Azure 檔案服務已從頭建置，可讓您隨時使用。 使用 Azure 檔案服務取代內部部署檔案共用，表示您不再需要被吵醒去處理本機電源中斷或網路問題。 
 * **熟悉的可程式性**。 Azure 中執行的應用程式可透過檔案[系統 I/O API](https://msdn.microsoft.com/library/system.io.file.aspx) 來存取共用中的資料。 因此，開發人員可利用現有的程式碼和技能來移轉現有的應用程式。 除了系統 IO API，您也可以使用 [Azure 儲存體用戶端程式庫](https://msdn.microsoft.com/library/azure/dn261237.aspx)或 [Azure 儲存體的 REST API](/rest/api/storageservices/file-service-rest-api)。
 
 ## <a name="next-steps"></a>後續步驟
+* [了解可用的檔案共用通訊協定](storage-files-compare-protocols.md)
 * [建立 Azure 檔案共用](storage-how-to-create-file-share.md)
-* [連線並在 Windows 上掛接](storage-how-to-use-files-windows.md)
-* [連線並在 Linux 上掛接](storage-how-to-use-files-linux.md)
-* [連線並在 macOS 上掛接](storage-how-to-use-files-mac.md)
+* [在 Windows 上連線並掛接 SMB 共用](storage-how-to-use-files-windows.md)
+* [在 Linux 上連線並掛接 SMB 共用](storage-how-to-use-files-linux.md)
+* [在 macOS 上連線並掛接 SMB 共用](storage-how-to-use-files-mac.md)
+* [如何建立 NFS 磁碟區](storage-files-how-to-create-nfs-shares.md)

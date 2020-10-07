@@ -5,15 +5,15 @@ author: craigktreasure
 manager: vriveras
 services: azure-spatial-anchors
 ms.author: crtreasu
-ms.date: 07/31/2020
+ms.date: 09/29/2020
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 3d5a5d7ec07587b20a8a6285deafa6215db990a5
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 0557ef45f1a18d3e51be5df3f28d35f421c3981d
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87810372"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540424"
 ---
 # <a name="quickstart-create-a-unity-hololens-app-that-uses-azure-spatial-anchors"></a>快速入門：建立使用 Azure 空間錨點的 Unity HoloLens 應用程式
 
@@ -80,7 +80,12 @@ ms.locfileid: "87810372"
 
 選取 [偵錯]   > [開始偵錯]  來部署您的應用程式並開始偵錯。
 
-依照應用程式中的指示放置及回收錨點。
+在應用程式中，使用箭頭選取 **BasicDemo**，然後按下 [Go!] 按鈕來執行示範。 依照指示來放置及回收錨點。
+
+![螢幕擷取畫面 1](./media/get-started-unity-hololens/screenshot-1.jpg)
+![螢幕擷取畫面 2](./media/get-started-unity-hololens/screenshot-2.jpg)
+![螢幕擷取畫面 3](./media/get-started-unity-hololens/screenshot-3.jpg)
+![螢幕擷取畫面 4](./media/get-started-unity-hololens/screenshot-4.jpg)
 
 在 Visual Studio 中，透過選取 [停止偵錯]  或按下 Shift + F5 來停止應用程式。
 
