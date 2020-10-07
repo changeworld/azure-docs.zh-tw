@@ -1,6 +1,6 @@
 ---
 title: 什麼是 Azure IoT Central 中的裝置範本 |Microsoft Docs
-description: Azure IoT Central 裝置範本可讓您指定連接至應用程式之裝置的行為。
+description: Azure IoT Central 裝置範本可讓您指定連接至應用程式之裝置的行為。 裝置範本會指定裝置必須執行的遙測、屬性和命令。 裝置範本也會在 IoT Central 中定義裝置的 UI，例如操作員所使用的表單和儀表板。
 author: dominicbetts
 ms.author: dobett
 ms.date: 05/21/2020
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: cdc85029ec004060abf69b111d8a0ebca42147a4
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 75317b5c6af2d0ce89d2db32f4343d9cc73a1a81
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90015087"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91813163"
 ---
 # <a name="what-are-device-templates"></a>什麼是裝置範本？
 
@@ -26,12 +26,10 @@ Azure IoT Central 中的裝置範本是藍圖，可定義連接至應用程式�
 裝置範本包含下列各節：
 
 - _ (DCM) 的裝置功能模型 _。 裝置範本的這個部分會定義裝置與您應用程式互動的方式。 裝置開發人員會實作為 DCM 中定義的行為。
+    - _介面_。 DCM 包含一或多個介面，可定義裝置必須執行的遙測、屬性和命令。
 - _雲端屬性_。 裝置範本的這個部分可讓解決方案開發人員指定任何要儲存的裝置中繼資料。 雲端屬性永遠不會與裝置同步，而且只存在於應用程式中。 雲端屬性不會影響裝置開發人員撰寫以實行 DCM 的程式碼。
 - _自訂_。 裝置範本的這個部分可讓解決方案開發人員覆寫 DCM 中的部分定義。 如果解決方案開發人員想要調整應用程式處理值的方式（例如變更屬性的顯示名稱或用來顯示遙測值的色彩），自訂會很有用。 自訂不會影響裝置開發人員所撰寫以實行 DCM 的程式碼。
 - _Views_。 裝置範本的這個部分可讓解決方案開發人員定義視覺效果來查看裝置的資料，以及用來管理和控制裝置的表單。 這些視圖會使用 DCM、雲端屬性和自訂專案。 Views 不會影響裝置開發人員撰寫的程式碼，以實行 DCM。
-
-> [!NOTE]
-> [IoT 隨插即用的公開預覽版本](../../iot-pnp/overview-iot-plug-and-play.md)會以裝置開發人員和 oem 為目標，以開始建立可認證的裝置，而這些裝置可在 GA 推出之前 IoT 隨插即用。
 
 ## <a name="device-capability-models"></a>裝置功能模型
 
@@ -108,11 +106,11 @@ DCM 定義裝置如何與您的 IoT Central 應用程式互動。 裝置開發�
 
 您可以使用一些選擇性欄位，將更多詳細資料新增至功能模型，例如顯示名稱和描述。
 
-### <a name="interface"></a>介面
+## <a name="interfaces"></a>介面
 
 DTDL 可讓您描述裝置的功能。 相關的功能會分組為介面。 介面會描述您的裝置所執行的屬性、遙測和命令：
 
-- `Properties`. 屬性是代表裝置狀態的資料欄位。 使用屬性來代表裝置的持久狀態，例如 coolant 泵的關閉狀態。 屬性也可以代表基本裝置屬性，例如裝置的固件版本。 您可將屬性宣告為唯讀或可寫入。
+- `Properties`. 屬性是代表裝置狀態的資料欄位。 使用屬性來代表裝置的持久狀態，例如 coolant 泵的關閉狀態。 屬性也可以代表基本裝置屬性，例如裝置的固件版本。 您可將屬性宣告為唯讀或可寫入。 只有裝置可以更新唯讀屬性的值。 操作員可以設定可寫入屬性的值，以傳送至裝置。
 - `Telemetry`. 遙測欄位代表來自感應器的度量。 當您的裝置進行感應器測量時，它應該會傳送包含感應器資料的遙測事件。
 - `Commands`. 命令代表裝置使用者可在裝置上執行的方法。 例如，重設命令或用來切換風扇的命令。
 
@@ -159,7 +157,7 @@ DTDL 可讓您描述裝置的功能。 相關的功能會分組為介面。 介�
 }
 ```
 
-此範例顯示兩個屬性，也就是遙測型別和兩個命令。 基本欄位描述具有：
+此範例顯示兩個屬性 (一個唯讀和一個可寫入的) 、一個遙測類型，以及兩個命令。 基本欄位描述具有：
 
 - `@type` 若要指定功能的類型： `Telemetry` 、 `Property` 或 `Command` 。  在某些情況下，類型會包含一種語義型別，可讓 IoT Central 針對如何處理值提出一些假設。
 - `name` 適用于遙測值。
@@ -168,7 +166,7 @@ DTDL 可讓您描述裝置的功能。 相關的功能會分組為介面。 介�
 
 選擇性欄位（例如 [顯示名稱] 和 [描述]）可讓您將更多詳細資料新增至介面和功能。
 
-### <a name="properties"></a>屬性
+## <a name="properties"></a>屬性
 
 依預設，屬性為唯讀。 唯讀屬性表示裝置會向您的 IoT Central 應用程式報告屬性值更新。 您的 IoT Central 應用程式無法設定唯讀屬性的值。
 
@@ -180,13 +178,13 @@ DTDL 可讓您描述裝置的功能。 相關的功能會分組為介面。 介�
 
 針對可寫入的屬性，裝置應用程式會傳回所需的狀態狀態碼、版本和描述，以指出它是否接收並套用屬性值。
 
-### <a name="telemetry"></a>遙測
+## <a name="telemetry"></a>遙測
 
 IoT Central 可讓您在儀表板和圖表上查看遙測，並在達到閾值時使用規則來觸發動作。 IoT Central 使用 DCM 中的資訊（例如資料類型、單位和顯示名稱）來判斷如何顯示遙測值。
 
 您可以使用 IoT Central 資料匯出功能，將遙測串流至其他目的地，例如儲存體或事件中樞。
 
-### <a name="commands"></a>命令
+## <a name="commands"></a>命令
 
 命令為同步或非同步。 根據預設，同步命令必須在30秒內執行，而裝置必須在命令抵達時連線。 如果裝置在時間內回應，或裝置未連線，則命令會失敗。
 
@@ -223,7 +221,7 @@ IoT Central 可讓您在儀表板和圖表上查看遙測，並在達到閾值�
 
 您可以新增至視圖的遙測、屬性和命令是由裝置範本中的 DCM、雲端屬性和自訂所決定。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 作為裝置開發人員，您現在已瞭解裝置範本，建議的後續步驟是閱讀 [遙測、屬性和命令](./concepts-telemetry-properties-commands.md) 承載，以深入瞭解裝置與 IoT Central 交換的資料。
 

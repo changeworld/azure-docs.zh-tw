@@ -13,12 +13,12 @@ ms.date: 05/18/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 24d50635efb4d7fe18db9836311cf0a85dfcc734
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 39cd25c2c84e92a0b06bc2ee6c6229ecb2d296d5
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88118615"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91812534"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-resource-owner-password-credentials"></a>Microsoft 身分識別平台和 OAuth 2.0 資源擁有者密碼認證授與
 
@@ -112,5 +112,4 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 ## <a name="learn-more"></a>深入了解
 
-* 使用[範例主控台應用程式](https://github.com/azure-samples/active-directory-dotnetcore-console-up-v2)自行試用 ROPC。
-* 若要判斷您是否應該使用 v2.0 端點，請參閱 [Microsoft 身分識別平台限制](../azuread-dev/azure-ad-endpoint-comparison.md)。
+如需使用 ROPC 的範例，請參閱 GitHub 上的 [.Net Core 主控台應用程式程式](https://github.com/azure-samples/active-directory-dotnetcore-console-up-v2) 代碼範例。

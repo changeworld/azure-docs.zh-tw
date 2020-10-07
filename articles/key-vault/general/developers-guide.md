@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 662c23a29e383800a4591c900e02133c16fa2090
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: a04435b1e2feb537231bb80d2777b9ea2599c241
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91743313"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91812398"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Azure 金鑰保存庫開發人員指南
 
@@ -56,11 +56,16 @@ Key Vault 使用 Azure AD 驗證，要求 Azure AD 安全性主體授與存取�
 
 Azure 身分識別用戶端程式庫支援上述驗證案例，並與 Key Vault Sdk 整合。 Azure 身分識別程式庫可以跨不同的環境和平臺使用，而不需要變更您的程式碼。 Azure 身分識別也會自動從使用 Azure CLI、Visual Studio、Visual Studio Code 及其他專案登入 Azure 使用者的驗證權杖中取出。 
 
-如需詳細資訊，請參閱 
+如需詳細資訊，請參閱： 
 
 | .NET | Python | Java | JavaScript |
 |--|--|--|--|
 |[Azure 身分識別 SDK .NET](https://docs.microsoft.com/dotnet/api/overview/azure/identity-readme)|[Azure 身分識別 SDK Python](https://docs.microsoft.com/python/api/overview/azure/identity-readme)|[Azure 身分識別 SDK JAVA](https://docs.microsoft.com/java/api/overview/azure/identity-readme)|[Azure 身分識別 SDK JavaScript](https://docs.microsoft.com/javascript/api/overview/azure/identity-readme)|     
+
+驗證應用程式中的 Key Vault：
+- [在 .NET 中的 VM 所裝載的應用程式中驗證 Key Vault](https://docs.microsoft.com/azure/key-vault/general/tutorial-net-virtual-machine)
+- [在以 Python 進行的 VM 中裝載的應用程式中驗證 Key Vault](https://docs.microsoft.com/azure/key-vault/general/tutorial-python-virtual-machine)
+- [使用 App Service 驗證 Key Vault](https://docs.microsoft.com/azure/key-vault/general/tutorial-net-create-vault-azure-web-app)
 
 ## <a name="manage-keys-certificates-and-secrets"></a>管理金鑰、憑證和秘密
 
@@ -112,9 +117,13 @@ Azure 身分識別用戶端程式庫支援上述驗證案例，並與 Key Vault 
 
 這些文章是關於其他可讓我們使用及整合 Key Vault 的案例和服務。
 
-- [使用 Key Vault 進行靜態加密](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)
-
+- 待用[加密](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)可在資料保存時允許編碼 (加密) 。 資料加密金鑰通常會使用 Azure Key Vault 中的金鑰加密金鑰進行加密，以進一步限制存取。
 - [Azure 資訊保護](/azure/information-protection/plan-implement-tenant-key)可讓您管理自己的租用戶金鑰。 例如，您可以管理自己的租用戶金鑰，以符合適用於貴組織的特定規範，而不需 Microsoft 管理您的租用戶金鑰 (預設值)。 管理自己的租用戶金鑰也稱為「自備金鑰」或 BYOK。
+- [Azure Private Link 服務](private-link-service.md) 可讓您透過虛擬網路中的私人端點，存取 azure 服務 (例如 Azure Key Vault、Azure 儲存體和 Azure Cosmos DB) ，以及 azure 裝載的客戶/合作夥伴服務。
+- Key Vault 與 [事件方格](https://docs.microsoft.com/azure/event-grid/event-schema-key-vault)  的整合，可讓使用者在金鑰保存庫中儲存的秘密狀態變更時收到通知。 您可以將新版本的秘密散發至應用程式，或輪替接近的到期秘密，以避免中斷。
+- 您可以在 Key Vault 中保護 [Azure Devops](https://docs.microsoft.com/azure/devops/pipelines/release/azure-key-vault) 秘密免于不必要的存取。
+- [使用儲存在 DataBricks Key Vault 中的秘密，以連接到 Azure 儲存體](https://docs.microsoft.com/azure/key-vault/general/integrate-databricks-blob-storage)
+- 在 Kubernetes 上設定並執行 [秘密存放區 CSI 驅動程式](https://docs.microsoft.com/azure/key-vault/general/key-vault-integrate-kubernetes) 的 Azure Key Vault 提供者
 
 ## <a name="key-vault-overviews-and-concepts"></a>Key Vault 的概觀和概念
 

@@ -1,7 +1,7 @@
 ---
 title: 測試 Azure VM 網路輸送量
 titlesuffix: Azure Virtual Network
-description: 使用 NTTTCP 將目標設為網路以進行測試，並將可能影響效能的其他資源使用降至最低。
+description: 使用 NTTTCP 將目標設為網路以進行測試，並將其他可能影響效能的資源使用降至最低。
 services: virtual-network
 documentationcenter: na
 author: steveesp
@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/21/2017
+ms.date: 10/06/2020
 ms.author: steveesp
-ms.openlocfilehash: e5aa2c1c51fccddc3fb62d7ebdbadee19a2b093e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 0b009b7c44084e76194c1447fefdb2ff59f8086a
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87265172"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91812279"
 ---
 # <a name="bandwidththroughput-testing-ntttcp"></a>頻寬/輸送量測試 (NTTTCP)
 
@@ -26,7 +26,7 @@ ms.locfileid: "87265172"
 請將工具複製到兩個大小相同的 Azure VM。 一個 VM 作為「傳送端」，另一個作為「接收端」。
 
 #### <a name="deploying-vms-for-testing"></a>部署用於測試的 VM
-基於這項測試的目的，兩個 VM 應該位於相同的「雲端服務」或相同的「可用性設定組」中，以便我們使用其內部 IP 並將「負載平衡器」從測試中排除。 您可以使用 VIP 進行測試，但這類型的測試不在本文件的涵蓋範圍內。
+基於這項測試的目的，這兩個 Vm 應位於相同的 [鄰近放置群組](../virtual-machines/windows/co-location.md) 或相同的可用性設定組中，以便我們可以使用其內部 ip 並將負載平衡器從測試中排除。 您可以使用 VIP 進行測試，但這類型的測試不在本文件的涵蓋範圍內。
 
 記下「傳送端」的 IP 位址。 讓我將該 IP 稱為 "a.b.c.r"
 
@@ -165,7 +165,7 @@ ntttcp -s -m <2 x nr cores>,*,<Linux  server IP> -ns -t 300
 </Endpoints> 
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 * 視結果而定，可能有將您案例的[網路輸送量機器最佳化](virtual-network-optimize-network-bandwidth.md)的空間。
 * 了解如如何[將頻寬配置給虛擬機器](virtual-machine-network-throughput.md)
 * 深入了解 [Azure 虛擬網路常見問題集 (FAQ)](virtual-networks-faq.md)

@@ -1,6 +1,6 @@
 ---
 title: 最佳化 VM 網路輸送量 | Microsoft Docs
-description: 將 Microsoft Azure Windows 和 Linux Vm 的網路輸送量優化，包括主要發佈（例如 Ubuntu、CentOS 和 Red Hat）。
+description: 將 Microsoft Azure Windows 和 Linux Vm 的網路輸送量優化，包括 Ubuntu、CentOS 和 Red Hat 等主要發行版本。
 services: virtual-network
 documentationcenter: na
 author: steveesp
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/15/2017
+ms.date: 10/06/2020
 ms.author: steveesp
-ms.openlocfilehash: 7b693d10b4e1925e9c07111982a616b56b77e5b6
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 20403b8c45120a53ea38fbbed60c8f96fd9d55e7
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87265138"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91812840"
 ---
 # <a name="optimize-network-throughput-for-azure-virtual-machines"></a>最佳化 Azure 虛擬機器的網路輸送量
 
@@ -56,12 +56,12 @@ Azure 虛擬機器 (VM) 有預設網路設定，可進一步針對網路輸送�
 
 ### <a name="ubuntu-for-new-deployments"></a>新部署的 Ubuntu
 
-The Ubuntu Azure 核心可在 Azure 提供最佳網路效能，且自 2017 年 9 月 21 日起已成為預設核心。 若要使用此核心，請先安裝最新支援版本 16.04-LTS，如下所示：
+Ubuntu Azure 核心最適合用於 Azure 上的網路效能。 若要取得最新的優化，請先安裝 18.04-LTS 的最新支援版本，如下所示：
 
 ```json
 "Publisher": "Canonical",
 "Offer": "UbuntuServer",
-"Sku": "16.04-LTS",
+"Sku": "18.04-LTS",
 "Version": "latest"
 ```
 
@@ -89,7 +89,7 @@ apt-get -y dist-upgrade
 
 #### <a name="ubuntu-azure-kernel-upgrade-for-existing-vms"></a>現有 VM 的 Ubuntu Azure 核心升級
 
-藉由升級至 Azure Linux 核心，可獲得顯著的輸送量效能。 若要確認您是否擁有此核心，請檢查您的核心版本。
+藉由升級至 Azure Linux 核心，可獲得顯著的輸送量效能。 若要確認您是否擁有此核心，請檢查您的核心版本。 它應該與範例相同或晚。
 
 ```bash
 #Azure kernel name ends with "-azure"
@@ -117,7 +117,7 @@ reboot
 ```json
 "Publisher": "OpenLogic",
 "Offer": "CentOS",
-"Sku": "7.4",
+"Sku": "7.7",
 "Version": "latest"
 ```
 
@@ -151,7 +151,8 @@ sudo ./install.sh #or upgrade.sh if prior LIS was previously installed
 
 若要深入了解 Linux Integration Services for Hyper-V 4.2 版，請檢視[下載頁面](https://www.microsoft.com/download/details.aspx?id=55106)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
+* 以[接近放置群組](../virtual-machines/windows/co-location.md)的低延遲部署彼此接近的 vm
 * 針對您的案例查看[測試 Azure VM 的頻寬/輸送量](virtual-network-bandwidth-testing.md)以取得最佳化的結果。
 * 了解如如何[將頻寬配置給虛擬機器](virtual-machine-network-throughput.md)
 * 深入了解 [Azure 虛擬網路常見問題集 (FAQ)](virtual-networks-faq.md)

@@ -7,12 +7,12 @@ author: mimckitt
 ms.author: mimckitt
 ms.topic: conceptual
 ms.date: 08/04/2020
-ms.openlocfilehash: b51b44f3a3d0889836bb41e0bf2fa37234338cf4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a8879bed4160c7cd1bd74cb196ce271964e384f7
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91287078"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91813231"
 ---
 # <a name="azure-boot-diagnostics"></a>Azure 開機診斷
 
@@ -25,12 +25,14 @@ ms.locfileid: "91287078"
 
 > [!IMPORTANT]
 > Azure 客戶將不需支付使用受控儲存體帳戶與開機診斷相關聯的儲存體成本到2020年10月的費用。
+>
+> 開機診斷資料 blob (，其中包含記錄檔和快照集映射) 會儲存在受控儲存體帳戶中。 客戶只需支付 blob 所用的 Gib，而不是磁片的布建大小。 快照計量會用於受控儲存體帳戶的計費。 由於受管理的帳戶是在標準 LRS 或標準 ZRS 上建立，因此客戶只需支付其診斷資料 blob 大小的每月 $ 0.05/GB。 如需此定價的詳細資訊，請參閱 [受控磁片定價](https://azure.microsoft.com/pricing/details/managed-disks/)。 客戶會看到此費用與 VM 資源 URI 相關聯。 
 
 ## <a name="boot-diagnostics-view"></a>開機診斷視圖
 位於虛擬機器分頁中的 [開機診斷] 選項位於 Azure 入口網站的 [ *支援與疑難排解* ] 區段下。 選取 [開機診斷] 將會顯示幕幕快照和序列記錄檔資訊。 序列記錄檔包含核心訊息，而螢幕擷取畫面則是 Vm 目前狀態的快照集。 根據 VM 是否正在執行 Windows 或 Linux，判斷預期的螢幕擷取畫面。 針對 Windows，使用者會看到桌面背景，而針對 Linux，使用者會看到登入提示。
 
 :::image type="content" source="./media/boot-diagnostics/boot-diagnostics-linux.png" alt-text="Linux 開機診斷的螢幕擷取畫面":::
-:::image type="content" source="./media/boot-diagnostics/boot-diagnostics-windows.png" alt-text="Windows 開機診斷的螢幕擷取畫面":::
+:::image type="content" source="./media/boot-diagnostics/boot-diagnostics-windows.png" alt-text="Linux 開機診斷的螢幕擷取畫面":::
 
 
 ## <a name="limitations"></a>限制
@@ -40,6 +42,6 @@ ms.locfileid: "91287078"
 - Azure 序列主控台目前與用於開機診斷的受控儲存體帳戶不相容。 深入瞭解 [Azure 序列主控台](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-overview)。
 - 使用管理儲存體帳戶的開機診斷目前只能透過 Azure 入口網站套用。 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 深入瞭解 [Azure 序列主控台](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-overview) ，以及如何使用開機診斷對 [azure 中的虛擬機器進行疑難排解](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics)。

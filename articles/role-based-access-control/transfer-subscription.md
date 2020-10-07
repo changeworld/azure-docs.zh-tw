@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 10/06/2020
 ms.author: rolyon
-ms.openlocfilehash: fd8192b48f6923a8fe68abf674d6100c8b8e5a00
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: e5b0eb5fc9014a4f8df0f0cc363b5dddb45674af
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91761867"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91804175"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory"></a>將 Azure 訂用帳戶轉移至不同的 Azure AD 目錄
 
@@ -74,7 +74,7 @@ ms.locfileid: "91761867"
 | Azure Data Lake Storage Gen1 | 是 | 是 |  | 您必須重新建立任何 Acl。 |
 | Azure 檔案 | 是 | 是 |  | 您必須重新建立任何 Acl。 |
 | Azure 檔案同步 | 是 | 是 |  |  |
-| Azure 受控磁碟 | 是 | N/A |  |  |
+| Azure 受控磁碟 | 是 | 是 |  |  如果您使用磁片加密集以客戶管理的金鑰來加密受控磁碟，您必須停用並重新啟用與磁片加密集相關聯的系統指派身分識別。 您必須重新建立角色指派，也就是再次將所需的許可權授與金鑰保存庫中的磁片加密集。 |
 | 適用于 Kubernetes 的 Azure Container Service | 是 | 是 |  |  |
 | Azure Active Directory Domain Services | 是 | 否 |  |  |
 | 應用程式註冊 | 是 | 是 |  |  |
@@ -82,7 +82,7 @@ ms.locfileid: "91761867"
 > [!WARNING]
 > 如果您針對資源（例如儲存體帳戶或 SQL database）使用待用資料加密，但其相依于金鑰保存庫，但該金鑰保存庫 **不** 在要傳輸的相同訂用帳戶中，則可能會導致無法復原的情況。 如果您有這種情況，您應該採取步驟來使用不同的金鑰保存庫，或暫時停用客戶管理的金鑰，以避免此無法復原的情況。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成這些步驟，您將需要：
 

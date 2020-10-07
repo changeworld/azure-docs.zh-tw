@@ -2,13 +2,13 @@
 title: 作業大小超過錯誤
 description: 描述當工作大小或範本太大時，如何針對錯誤進行疑難排解。
 ms.topic: troubleshooting
-ms.date: 09/25/2020
-ms.openlocfilehash: 06645561964d9634d93061b3be4d100a578cc7e7
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.date: 10/07/2020
+ms.openlocfilehash: 5f0df102611dba8ce49da948b14110fff32dc2a9
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91373113"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91812891"
 ---
 # <a name="resolve-errors-for-job-size-exceeded"></a>解決超過作業大小的錯誤
 
@@ -38,6 +38,10 @@ ms.locfileid: "91373113"
 
 您可以將其他資源設定為相依于連結的範本，並 [從連結的範本的輸出中取得值](linked-templates.md#get-values-from-linked-template)。
 
-## <a name="solution-2---use-serial-copy"></a>解決方案 2-使用序列複製
+## <a name="solution-2---reduce-name-size"></a>解決方案 2-減少名稱大小
+
+請嘗試縮短您用於 [參數](template-parameters.md)、 [變數](template-variables.md)和 [輸出](template-outputs.md)的名稱長度。 當這些值透過複製迴圈重複時，會將大型名稱乘以多次。 範本的最終大小是不必要的大型。
+
+## <a name="solution-3---use-serial-copy"></a>解決方案 3-使用序列複製
 
 第二個選項是將複製迴圈從 [平行變更為序列處理](copy-resources.md#serial-or-parallel)。 只有當您懷疑錯誤是透過複製來部署大量資源時，才使用此選項。 這項變更可能會大幅增加您的部署時間，因為不會以平行方式部署資源。

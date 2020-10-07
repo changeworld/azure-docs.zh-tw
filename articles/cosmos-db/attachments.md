@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 08/07/2020
 ms.reviewer: sngun
-ms.openlocfilehash: cb5dbe5101231963f45132fca58279b934c5e49c
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 56e8212d60494d469e225c25edbbd331c601ea6b
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90055362"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91804155"
 ---
 # <a name="azure-cosmos-db-attachments"></a>Azure Cosmos DB 附件
 
@@ -158,9 +158,9 @@ namespace attachments
 
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 開始使用 [Azure Blob 儲存體](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-dotnet)
-- 取得透過[Azure Cosmos DB 的 .NET SDK v2](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.attachment?view=azure-dotnet)使用附件的參考
-- 取得透過[Azure Cosmos DB 的 JAVA SDK v2](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.attachment?view=azure-java-stable)使用附件的參考
+- 取得透過[Azure Cosmos DB 的 .NET SDK v2](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.attachment?view=azure-dotnet&preserve-view=true)使用附件的參考
+- 取得透過[Azure Cosmos DB 的 JAVA SDK v2](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.attachment?view=azure-java-stable&preserve-view=true)使用附件的參考
 - 取得透過[Azure Cosmos DB 的 REST API](https://docs.microsoft.com/rest/api/cosmos-db/attachments)使用附件的參考
