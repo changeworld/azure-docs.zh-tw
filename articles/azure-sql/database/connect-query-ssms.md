@@ -12,13 +12,13 @@ ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 05/29/2020
-ms.openlocfilehash: f1fad6554a347acb1de72bfe1e5c3413e6f74d9f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 09/28/2020
+ms.openlocfilehash: 60977b9388af3a93d0ebbbc6aad50628b79e0e44
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87004149"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91598266"
 ---
 # <a name="quickstart-use-ssms-to-connect-to-and-query-azure-sql-database-or-azure-sql-managed-instance"></a>快速入門：使用 SSMS 連線到 Azure SQL Database 或 Azure SQL 受控執行個體並進行查詢
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -64,6 +64,8 @@ ms.locfileid: "87004149"
 
 ## <a name="connect-to-your-database"></a>連接到您的資料庫
 
+[!INCLUDE[ssms-connect-azure-ad](../includes/ssms-connect-azure-ad.md)]
+
 在 SSMS 中，連線到您的伺服器。
 
 > [!IMPORTANT]
@@ -83,6 +85,9 @@ ms.locfileid: "87004149"
    ||||
 
    ![連線至伺服器](./media/connect-query-ssms/connect.png)  
+
+> [!NOTE]
+> 本教學課程使用 SQL Server 驗證。
 
 3. 選取 [連線到伺服器] 對話方塊中的 [選項]。 在 [連線到伺服器] 下拉式功能表中，選取 **mySampleDatabase**。 完成快速入門的[必要條件一節](#prerequisites)後，您會建立名為 mySampleDatabase 的 AdventureWorksLT 資料庫。 如果 AdventureWorks 資料庫的工作複本名稱與 mySampleDatabase 不同，請改為選取該名稱。
 
@@ -155,7 +160,7 @@ ms.locfileid: "87004149"
 
 ### <a name="update-data"></a>更新資料
 
-執行此 [UPDATE](/sql/t-sql/queries/update-transact-sql?view=sql-server-ver15) Transact-SQL 程式碼以修改您的新產品。
+執行此 [UPDATE](/sql/t-sql/queries/update-transact-sql) Transact-SQL 程式碼以修改您的新產品。
 
 1. 將先前的查詢取代為此查詢，以傳回先前建立的新記錄：
 

@@ -1,31 +1,28 @@
 ---
 title: Azure Defender 和可用方案的概觀
-description: 了解 Azure Defender 的方案、保護和警示。 然後，在您的訂用帳戶上啟用 Azure Defender。
+description: 了解 Azure Defender 的方案、保護和警示。 然後在您的訂用帳戶上針對進階安全性啟用 Azure Defender。
 author: memildin
 ms.author: memildin
-ms.date: 9/22/2020
+ms.date: 9/30/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 5a5b96d5a9ea6aa05da30238690b8f5fa745b3f3
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: bfff96666981a522cd6d91828604696a12ecad56
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91448419"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91576844"
 ---
 # <a name="introduction-to-azure-defender"></a>Azure Defender 簡介
 
 Azure 資訊安全中心的功能涵蓋雲端安全性的兩大要素：
 
-- **雲端安全性態勢管理 (CSPM)**
-- **雲端工作負載保護 (CWP)**
+- **雲端安全性態勢管理 (CSPM)** - 資訊安全中心對於所有 Azure 使用者都是**免費**提供的。 免費體驗包括 CSPM 功能，例如安全分數、偵測 Azure 機器中的安全性設定錯誤、資產清查等等。 使用這些 CSPM 功能來強化您的混合式雲端態勢，並且追蹤內建原則的合規性。
 
-資訊安全中心的 CSPM 功能 (例如安全分數、偵測 Windows 和 Linux Azure 機器中的安全性錯誤設定)，全都可供所有 Azure 使用者在資訊安全中心內免費體驗。 使用這些 CSPM 功能可強化安全性狀態，並確保能夠符合法規。
+- **雲端工作負載保護 (CWP)** - 資訊安全中心的整合雲端工作負載保護平台 (CWPP)，**Azure Defender**，為您的 Azure 和混合式資源和工作負載提供進階、智慧型的保護。 啟用 Azure Defender 提供了一系列額外的安全性功能，如本頁面所述。 除了內建原則之外，當您啟用任何 Azure Defender 方案時，您可以新增自訂原則和計畫。 您可以新增法規標準 (例如 NIST 和 Azure CI) 和 Azure 安全性效能評定，以取得合規性的真正自訂檢視。
 
-**Azure Defender** 是整合於資訊安全中心的雲端工作負載保護平台 (CWPP)，可為您的 Azure 和混合式工作負載提供進階的智慧型保護功能。
-
-這是 Azure 資訊安全中心的 Azure Defender 儀表板：
+資訊安全中心的 Azure Defender 儀表板可為您的環境提供 CWP 功能的可見度和控制權：
 
 :::image type="content" source="./media/azure-defender/sample-defender-dashboard.png" alt-text="Azure Defender 儀表板的範例" lightbox="./media/azure-defender/sample-defender-dashboard.png":::
 
@@ -55,11 +52,13 @@ Azure Defender 可為虛擬機器、SQL 資料庫、容器、Web 應用程式及
 - 保護其他雲端中的虛擬機器 (例如 AWS 和 GCP)
 - 保護您的 IoT 裝置
 
-您將可根據本身的特定環境自訂威脅情報及排定警示的優先順序，以全心處理最重要的事務
+您將可根據本身的特定環境自訂威脅情報及排定警示的優先順序，以全心處理最重要的事務。
 
-部署 [Azure Arc](https://azure.microsoft.com/services/azure-arc/)，讓 Azure Defender 將保護延伸至內部部署和多重雲端虛擬機器與 SQL 資料庫。 適用於伺服器的 Azure Arc 是免費服務，但在已啟用 Arc 的伺服器上使用的服務 (例如 Azure Defender) 將依據該服務的定價收費。
+若要將保護延伸至其他雲端或內部部署中的虛擬機器和 SQL 資料庫，請部署 [Azure Arc](https://azure.microsoft.com/services/azure-arc/) 以及啟用 Azure Defender。 適用於伺服器的 Azure Arc 是免費服務，但在已啟用 Arc 的伺服器上使用的服務 (例如 Azure Defender) 將依據該服務的定價收費。 若要深入了解，請參閱[新增具有 Azure Arc 的非 Azure 機器](quickstart-onboard-machines.md#add-non-azure-machines-with-azure-arc)。
 
-[深入了解 Azure Arc](https://docs.microsoft.com/azure/azure-arc/overview)。
+> [!TIP]
+> 適用於 AWS 的原生連接器會以透明方式為您處理 Azure Arc 部署。 若要深入了解，請參閱[將您的 AWS 帳戶連線到 Azure 資訊安全中心](quickstart-onboard-aws.md)。
+
 
 
 ## <a name="azure-defender-alerts"></a>Azure Defender 警示 

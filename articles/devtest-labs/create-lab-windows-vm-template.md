@@ -4,15 +4,15 @@ description: 在本快速入門中，您會使用 Azure Resource Manager 範本 
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 06/26/2020
-ms.openlocfilehash: 93bc4cf91b228de72c217c61ec03d61e87046dd3
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 2b825b4d4485f401199556b6faaef0017f583cc1
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653948"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91461184"
 ---
 # <a name="quickstart-set-up-a-lab-by-using-azure-devtest-labs-arm-template"></a>快速入門：使用 Azure DevTest Labs ARM 範本設定實驗室
-在本快速入門中，您會使用 Azure Resource Manager (ARM) 範本，以 Windows Server 2019 Datacenter VM 建立實驗室。 
+在本快速入門中，您會使用 Azure Resource Manager 範本 (ARM 範本)，以 Windows Server 2019 Datacenter VM 建立實驗室。 
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -65,16 +65,16 @@ ms.locfileid: "88653948"
 ## <a name="validate-the-deployment"></a>驗證部署
 1. 選取頂端的 [通知]，查看部署狀態，再按一下**部署進行中**連結。
 
-    :::image type="content" source="./media/create-lab-windows-vm-template/deployment-notification.png" alt-text="部署通知":::
+    :::image type="content" source="./media/create-lab-windows-vm-template/deployment-notification.png" alt-text="部署範本頁面":::
 2. 在 [部署 - 概觀] 頁面中，等待部署完成。 這類型的作業 (尤其是建立 VM) 需要一些時間才能完成。 然後，選取您的 [移至資源群組] 或 [資源群組名稱]，如下圖所示： 
 
-    :::image type="content" source="./media/create-lab-windows-vm-template/navigate-resource-group.png" alt-text="瀏覽至資源群組":::
+    :::image type="content" source="./media/create-lab-windows-vm-template/navigate-resource-group.png" alt-text="部署範本頁面":::
 3. 在 [資源群組] 頁面上，您會看到資源群組中的資源清單。 確認您在資源中看到類型為 `DevTest Lab` 的實驗室。 您也會在資源群組中看到相依的資源，例如虛擬網路和虛擬機器。 
 
-    :::image type="content" source="./media/create-lab-windows-vm-template/resource-group-home-page.png" alt-text="資源群組的首頁":::
+    :::image type="content" source="./media/create-lab-windows-vm-template/resource-group-home-page.png" alt-text="部署範本頁面":::
 4. 從資源清單中選取您的實驗室，以查看實驗室的首頁。 確認您在**我的虛擬機器**清單中看到 Windows Server 2019 Datacenter VM。 在下圖中，**Essentials** 區段會最小化。 
 
-    :::image type="content" source="./media/create-lab-windows-vm-template/lab-home-page.png" alt-text="實驗室的首頁":::
+    :::image type="content" source="./media/create-lab-windows-vm-template/lab-home-page.png" alt-text="部署範本頁面":::
 
     > [!IMPORTANT] 
     > 讓此頁面保持開啟，並遵循下一節中的指示來清除資源，以避免在 Azure 上執行實驗室和 VM 可能產生的成本。 如果要進行下一個教學課程來測試實驗室中 VM 的存取權，請在完成該教學課程之後清除資源。 
@@ -83,14 +83,14 @@ ms.locfileid: "88653948"
 
 1. 首先請刪除實驗室，以便刪除資源群組。 您無法刪除具有實驗室的資源群組。 若要刪除實驗室，請選取工具列上的 [刪除]。 
 
-    :::image type="content" source="./media/create-lab-windows-vm-template/delete-lab-button.png" alt-text="刪除實驗室按鈕":::
+    :::image type="content" source="./media/create-lab-windows-vm-template/delete-lab-button.png" alt-text="部署範本頁面":::
  2. 在確認頁面上，輸入**實驗室名稱**，然後選取 [刪除]。 
  3. 等待系統刪除實驗室。 選取**小鐘**圖示，以查看刪除作業的通知。 這個程序需要一些時間。 確認實驗室已刪除，然後在階層連結功能表上選取 [資源群組]。 
  
-    :::image type="content" source="./media/create-lab-windows-vm-template/confirm-lab-deletion.png" alt-text="在通知中確認刪除 VM":::
+    :::image type="content" source="./media/create-lab-windows-vm-template/confirm-lab-deletion.png" alt-text="部署範本頁面":::
  1. 在 [資源群組] 頁面中，從工具列選取 [刪除資源群組]。 在確認頁面上，輸入**資源群組名稱**，然後選取 [刪除]。 檢查通知以確認資源群組已刪除。
  
-    :::image type="content" source="./media/create-lab-windows-vm-template/delete-resource-group-button.png" alt-text="刪除資源群組按鈕":::
+    :::image type="content" source="./media/create-lab-windows-vm-template/delete-resource-group-button.png" alt-text="部署範本頁面":::
 
 ## <a name="next-steps"></a>後續步驟
 在本快速入門中，您已建立具有 VM 的實驗室。 若要了解如何存取實驗室，請前進到下一個教學課程：

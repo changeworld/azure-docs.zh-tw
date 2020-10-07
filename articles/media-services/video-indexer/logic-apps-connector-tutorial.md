@@ -7,13 +7,13 @@ ms.author: alzam
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: tutorial
-ms.date: 05/01/2020
-ms.openlocfilehash: 2d89782b836db0daaf75c0337ad3b7f475824177
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/21/2020
+ms.openlocfilehash: f557794265f3bbf48fae97fc04e5e9b068b54f63
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90882882"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540399"
 ---
 # <a name="tutorial-use-video-indexer-with-logic-app-and-power-automate"></a>教學課程：使用影片索引器與邏輯應用程式和 Power Automate
 
@@ -21,7 +21,7 @@ Azure 媒體服務[影片索引器 v2 REST API](https://api-portal.videoindexer.
 
 為了讓整合變得更容易，我們支援與 API 相容的  [Logic Apps](https://azure.microsoft.com/services/logic-apps/)  和  [Power Autmate](https://preview.flow.microsoft.com/connectors/shared_videoindexer-v2/video-indexer-v2/)  連接器。 您可以使用連接器來設定自訂工作流程，以有效地從大量的影片和音訊檔案編制索引並擷取深入解析，而不需要撰寫任何一行程式碼。 此外，使用連接器進行整合，可更清楚地了解工作流程的健康情況，並輕鬆地進行偵錯。  
 
-為了協助您快速開始使用影片索引器連接器，我們將逐步解說範例邏輯應用程式和 Power Automate 解決方案，您可以跟著設定。 本教學課程說明如何使用 Logic Apps 設定流程。
+為了協助您快速開始使用影片索引器連接器，我們將逐步解說範例邏輯應用程式和 Power Automate 解決方案，您可以跟著設定。 本教學課程說明如何使用 Logic Apps 設定流程。 不過，這兩個解決方案中的編輯器和功能幾乎都相同，因此圖表和說明同時適用於 Logic Apps 和 Power Automate。
 
 本教學課程涵蓋的「自動上傳和編製影片索引」案例，是由共同運作的兩個不同流程所組成。 
 * 在 Azure 儲存體帳戶中新增或修改 Blob 時，會觸發第一個流程。 其會將新檔案上傳至具有回撥 URL 的影片索引器，以在索引作業完成後傳送通知。 
@@ -53,7 +53,12 @@ Azure 媒體服務[影片索引器 v2 REST API](https://api-portal.videoindexer.
 
 ![連線名稱和 API 金鑰](./media/logic-apps-connector-tutorial/connection-name-api-key.png)
 
-一旦可以連線到您的 Azure 儲存體和影片索引器帳戶，請在 **Logic Apps 設計工具**中尋找並選擇「當新增或修改 Blob 時」觸發程序。 選取您將放置影片檔案的容器。 
+> [!TIP]
+> 如果您先前已將 Azure 儲存體帳戶或影片索引子帳戶連線至邏輯應用程式，則您的連線詳細資料已儲存，因此會自動連線。 <br/>您可以按一下 Azure 儲存體 ([儲存體] 視窗) 或影片索引子 ([播放程式] 視窗) 動作底部的 [變更連線]，來編輯連線。
+
+一旦可以連線到您的 Azure 儲存體和影片索引器帳戶，請在 **Logic Apps 設計工具**中尋找並選擇「當新增或修改 Blob 時」觸發程序。
+
+選取您將放置影片檔案的容器。 
 
 ![螢幕擷取畫面顯示「當新增或修改 Blob 時」對話方塊，您可以在其中選取容器。](./media/logic-apps-connector-tutorial/container.png)
 
@@ -75,7 +80,7 @@ Azure 媒體服務[影片索引器 v2 REST API](https://api-portal.videoindexer.
 
 您可以使用其他參數的預設值，或根據需求加以設定。 
 
-按一下「儲存」，讓我們繼續設定第二個流程，以便在上傳和編製索引完成後，擷取深入解析。 
+按一下 [儲存]，並繼續設定第二個流程，以便在上傳和編製索引完成後擷取深入解析。 
 
 ## <a name="set-up-the-second-flow---json-extraction"></a>設定第二個流程 - JSON 擷取  
 
@@ -115,6 +120,12 @@ Azure 媒體服務[影片索引器 v2 REST API](https://api-portal.videoindexer.
 
 將影片新增至您的 Azure blob 容器，並在幾分鐘後返回，以查看深入解析是否出現在目的資料夾中，用這種方法試用新建立的邏輯應用程式或 Power Automate 解決方案。 
 
+## <a name="generate-captions"></a>產生字幕
+
+如需說明[如何使用影片索引子和 Logic Apps 產生標題](https://techcommunity.microsoft.com/t5/azure-media-services/generating-captions-with-video-indexer-and-logic-apps/ba-p/1672198)的步驟，請參閱下列部落格。 
+
+本文也說明如何將影片複製到 OneDrive 以自動編製影片索引，以及如何將影片索引子所產生的字幕儲存在 OneDrive 中。
+ 
 ## <a name="clean-up-resources"></a>清除資源
 
 完成本教學課程之後，您可以隨時保留此邏輯應用程式或 Power Automate 解決方案，並在需要時執行。 不過，如果您不想繼續執行，而且不希望支付費用，請在使用 Power Automate 時關閉這兩個流程。 使用 Logic Apps 時，請停用這兩個流程。 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 08/20/2020
 ms.author: trbye
-ms.openlocfilehash: 2277c054be3e0649d48350b21eb9add2a1e52e8b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b15a034a73882287e70afcbcaa9c72ee931c9f78
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91282862"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91630197"
 ---
 # <a name="what-is-the-speech-service"></a>什麼是語音服務？
 
@@ -29,10 +29,10 @@ ms.locfileid: "91282862"
 | 服務 | 功能 | 描述 | SDK | REST |
 |---------|---------|-------------|-----|------|
 | [語音轉文字](speech-to-text.md) | 即時語音轉換文字 | 語音轉換文字可將音訊串流或本機檔案即時轉譯或翻譯為的文字，讓您的應用程式、工具或裝置可以取用或顯示。 若搭配 [Language Understanding (LUIS)](https://docs.microsoft.com/azure/cognitive-services/luis/) 使用語音轉文字，即可從轉譯的語音衍生使用者意圖，以及根據語音命令執行動作。 | [是](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | [是](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
-| | [批次語音轉換文字](batch-transcription.md) | 批次語音轉換文字可針對 Azure Blob 儲存體中的大量語音音訊資料，啟用非同步語音轉換文字轉譯。 除了將語音音訊轉換為文字之外，批次語音轉換文字也可以進行自動分段標記和情感分析。 | 否 | [是](https://westus.cris.ai/swagger/ui/index) |
+| | [批次語音轉換文字](batch-transcription.md) | 批次語音轉換文字可針對 Azure Blob 儲存體中的大量語音音訊資料，啟用非同步語音轉換文字轉譯。 除了將語音音訊轉換為文字之外，批次語音轉換文字也可以進行自動分段標記和情感分析。 | 否 | [是](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0) |
 | | [多裝置交談](multi-device-conversation.md) | 透過便利的轉譯和翻譯支援，在一個對話中連接多個裝置或用戶端以傳送以語音或文字為基礎的訊息| 是 | 否 |
 | | [對話轉譯](conversation-transcription-service.md) | 啟用即時語音辨識、說話者識別和自動分段標記功能。 非常適合利用辨識說話者的能力來轉譯面對面會議。 | 是 | 否 |
-| | [建立自訂語音模型](#customize-your-speech-experience) | 如果您在獨特的環境中使用語音轉文字進行辨識及轉譯，您可以建立並定型自訂原音、語言和發音模型，以處理環境噪音或業界專有詞彙。 | 否 | [是](https://westus.cris.ai/swagger/ui/index) |
+| | [建立自訂語音模型](#customize-your-speech-experience) | 如果您在獨特的環境中使用語音轉文字進行辨識及轉譯，您可以建立並定型自訂原音、語言和發音模型，以處理環境噪音或業界專有詞彙。 | 否 | [是](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0) |
 | [文字轉換語音](text-to-speech.md) | 文字轉換語音 | 文字轉語音會使用[語音合成標記語言 (SSML)](speech-synthesis-markup.md) 將輸入文字轉換為仿真人的合成語音。 可選擇標準語音和類神經語音 (請參閱[語言支援](language-support.md))。 | [是](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | [是](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 | | [建立自訂語音](#customize-your-speech-experience) | 建立您品牌或產品專有的自訂聲音音調。 | 否 | [是](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 | [語音翻譯](speech-translation.md) | 語音翻譯 | 語音翻譯可讓您在應用程式、工具和裝置上使用即時且多語言的語音翻譯。 此服務可用於語音轉語音及語音轉文字翻譯。 | [是](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | 否 |
@@ -128,7 +128,7 @@ ms.locfileid: "91282862"
 - [語音裝置 SDK](speech-devices-sdk.md)
 - [REST API：語音轉文字](rest-speech-to-text.md)
 - [REST API：文字轉語音](rest-text-to-speech.md)
-- [REST API：批次轉譯與自訂](https://westus.cris.ai/swagger/ui/index)
+- [REST API：批次轉譯與自訂](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0)
 
 ## <a name="next-steps"></a>後續步驟
 

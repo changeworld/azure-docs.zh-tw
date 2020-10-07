@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/14/2020
 ms.author: duau
-ms.openlocfilehash: 1b2b891a0b6b67efef38005d3a4d67eecf41afbd
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 0e874ae3d29f4143a4f8a9275d5ffcde48d08e6d
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90531860"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91569761"
 ---
 # <a name="azure-front-door-rules-engine-match-conditions"></a>Azure Front Door 規則引擎比對條件
 
 在 [AFD 規則引擎](front-door-rules-engine.md)中，一個規則包含零個或更多比對條件和一個動作。 本文針對您可在 AFD 規則引擎中使用的比對條件，提供詳細的說明。
 
-規則的第一個部分是一個比對條件或一組比對條件。 一個規則最多可以包含 10 個比對條件。 比對條件會識別特定類型的要求，以便針對這類要求執行已定義的動作。 如果您使用多個比對條件，則會使用 AND 邏輯將比對條件群組在一起。 對於支援多個值的所有比對條件 (如下所示「以空格分隔」)，則會採用 "OR" 運算子。
+規則的第一個部分是一個比對條件或一組比對條件。 一個規則最多可以包含 10 個比對條件。 比對條件會識別特定類型的要求，以便針對這類要求執行已定義的動作。 如果您使用多個比對條件，則會使用 AND 邏輯將比對條件群組在一起。 對於支援多個值的所有比對條件 (標示為「以空格分隔」)，則會採用 "OR" 運算子。
 
 例如，您可以使用比對條件：
 
@@ -84,7 +84,7 @@ IP 比對 | IP 位址 (以空格分隔)
   - **IPv6 範例**：*1:2:3:4:5:6:7:8 10:20:30:40:50:60:70:80* 會比對來自位址 1:2:3:4:5:6:7:8 或 10:20:30:40:50:60:70:80 的任何要求。
 - IP 位址區塊的語法是基底 IP 位址，後面接著正斜線和首碼大小。 例如：
   - **IPv4 範例**：*5.5.5.64/26* 會比對來自 5.5.5.64 到 5.5.5.127 的任何要求。
-  - **IPv6 範例**：*1:2:3:/48* 會比對來自位址 1:2:3:0:0:0:0:0 到 1:2:3:ffff:ffff:ffff:ffff:ffff 的任何要求。
+  - **IPv6 範例**：*1:2:3:/48* 會比對來自位址 1:2:3:0:0:0:0:0 到 1:2:3: ffff:ffff:ffff:ffff:ffff 的任何要求。
 
 ## <a name="request-body"></a>Request body
 
@@ -204,11 +204,11 @@ Equals、Not equals | HTTP、HTTPS
 - Not greater than
 - Not greater than or equals
 
-對於 *Less than* 和 *Greater than or equals* 之類的數值運算子，所使用的比較會以長度為基礎。 在此情況下，比對條件中的值應為等於所要比較長度的整數。 
+對於 *Less than* 和 *Greater than or equals* 之類的數值運算子，所使用的比較會以長度為基礎。 比對條件中的值應為與您要比較的長度相等的整數。 
 
 
 ## <a name="next-steps"></a>後續步驟
 
-- 了解如何設定您的第一個[規則引擎組態](front-door-tutorial-rules-engine.md)。 
+- 了解如何設定您的第一個[規則引擎](front-door-tutorial-rules-engine.md)。 
 - 深入了解[規則引擎動作](front-door-rules-engine-actions.md)
 - 深入了解 [Azure Front Door 規則引擎](front-door-rules-engine.md)

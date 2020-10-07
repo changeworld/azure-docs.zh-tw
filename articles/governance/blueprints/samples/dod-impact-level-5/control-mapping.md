@@ -3,12 +3,12 @@ title: DoD 影響等級 5 藍圖範例控制
 description: 控制 DoD 影響等級 5 藍圖範例的對應。 每個控制項都會對應至一或多個可協助評量的 Azure 原則。
 ms.date: 09/17/2020
 ms.topic: sample
-ms.openlocfilehash: 456560a8042b239a4d53e1c309742650c00bfa6a
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 6cd92cba69367c611a0e3a3c435e41e973a80d73
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90978364"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540535"
 ---
 # <a name="control-mapping-of-the-dod-impact-level-5-blueprint-sample"></a>控制 DoD 影響等級 5 藍圖範例的對應
 
@@ -32,7 +32,7 @@ ms.locfileid: "90978364"
 
 ## <a name="ac-2-7-account-management--role-based-schemes"></a>AC-2 (7) 帳戶管理 | 角色型配置
 
-Azure 會實作 [Azure 角色型存取控制 (Azure RBAC)](../../../../role-based-access-control/overview.md)，以協助您管理有權存取 Azure 資源的人員。 您可以使用 Azure 入口網站，檢閱可存取 Azure 資源的人員及其權限。 此藍圖還指派了 [Azure 原則](../../../policy/overview.md)定義，用以稽核將 Azure Active Directory 驗證用於 SQL Server 和 Service Fabric 的情形。 使用 Azure Active Directory 驗證可針對資料庫使用者及其他 Microsoft 服務，簡化權限管理及集中管理身分識別。 此外，此藍圖指派了一項 Azure 原則定義來稽核自訂 RBAC 規則的使用情形。 了解自訂 RBAC 規則的實作之處，有助於您確認需求和適當的實作，因為自訂的 RBAC 規則很容易發生錯誤。
+Azure 會實作 [Azure 角色型存取控制 (Azure RBAC)](../../../../role-based-access-control/overview.md)，以協助您管理有權存取 Azure 資源的人員。 您可以使用 Azure 入口網站，檢閱可存取 Azure 資源的人員及其權限。 此藍圖還指派了 [Azure 原則](../../../policy/overview.md)定義，用以稽核將 Azure Active Directory 驗證用於 SQL Server 和 Service Fabric 的情形。 使用 Azure Active Directory 驗證可針對資料庫使用者及其他 Microsoft 服務，簡化權限管理及集中管理身分識別。 此外，此藍圖也會指派一個 Azure 原則定義來稽核自訂 Azure RBAC 規則的使用情形。 了解自訂 Azure RBAC 規則的實作之處，有助於您確認需求和適當的實作，因為自訂的 Azure RBAC 規則很容易發生錯誤。
 
 - 應針對 SQL 伺服器佈建 Azure Active Directory 管理員
 - 稽核自訂 RBAC 規則的使用方式

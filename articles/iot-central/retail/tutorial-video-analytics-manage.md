@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: 76e72e8fd134c65cc9334e635375cc25e9b09a75
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: dea009d6d246d68f0686c3dc85f3518ccb13705c
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88719065"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91575192"
 ---
 # <a name="tutorial-monitor-and-manage-a-video-analytics---object-and-motion-detection-application"></a>教學課程：監視和管理 [影片分析 - 物件和動作偵測] 應用程式
 
@@ -27,7 +27,7 @@ ms.locfileid: "88719065"
 開始之前，您應該先完成：
 
 * [在 Azure IoT Central 中建立即時影片分析應用程式](./tutorial-video-analytics-create-app.md)教學課程。
-* 其中一個先前的教學課程：[建立適用於即時影片分析的 IoT Edge 執行個體 (Linux VM)](tutorial-video-analytics-iot-edge-vm.md) 或[建立適用於即時影片分析的 IoT Edge 執行個體 (Linux VM)](tutorial-video-analytics-iot-edge-nuc.md)。
+* 其中一個先前的教學課程：[建立適用於即時影片分析的 IoT Edge 執行個體 (Linux VM)](tutorial-video-analytics-iot-edge-vm.md) 或[建立適用於即時影片分析的 IoT Edge 執行個體 (Intel NUC)](tutorial-video-analytics-iot-edge-nuc.md)。
 
 您應該已在本機電腦上安裝 [Docker](https://www.docker.com/products/docker-desktop)，以執行影片檢視器應用程式。
 
@@ -61,7 +61,7 @@ ms.locfileid: "88719065"
 
 選取 **LVA Gateway 001** 裝置的 [下游裝置] 索引標籤，以查看您剛新增的相機裝置：
 
-:::image type="content" source="media/tutorial-video-analytics-manage/inspect-downstream.png" alt-text="檢查":::
+:::image type="content" source="media/tutorial-video-analytics-manage/inspect-downstream.png" alt-text="新增相機":::
 
 在應用程式的 [裝置] 頁面上，相機裝置也會出現在其中的清單中。
 
@@ -98,7 +98,7 @@ ms.locfileid: "88719065"
 
 幾秒鐘後，您會看到每個設定的 [已接受] 確認訊息：
 
-:::image type="content" source="media/tutorial-video-analytics-manage/object-detection.png" alt-text="物件偵測":::
+:::image type="content" source="media/tutorial-video-analytics-manage/object-detection.png" alt-text="新增相機":::
 
 ## <a name="start-lva-processing"></a>開始 LVA 處理
 
@@ -108,13 +108,13 @@ ms.locfileid: "88719065"
 
 當命令完成時，請檢視命令歷程記錄來確定沒有任何錯誤：
 
-:::image type="content" source="media/tutorial-video-analytics-manage/start-processing.png" alt-text="開始 LVA 處理命令":::
+:::image type="content" source="media/tutorial-video-analytics-manage/start-processing.png" alt-text="新增相機":::
 
 ## <a name="monitor-the-cameras"></a>監視相機
 
 瀏覽至 **camera-003** 裝置，然後選取 [儀表板] 索引標籤：
 
-:::image type="content" source="media/tutorial-video-analytics-manage/camera-dashboard.png" alt-text="相機儀表板":::
+:::image type="content" source="media/tutorial-video-analytics-manage/camera-dashboard.png" alt-text="新增相機":::
 
 [偵測計數] 磚會顯示在一秒的偵測間隔中，每個所選偵測類別物件的平均偵測計數。
 
@@ -157,7 +157,7 @@ docker run -it --rm -e amsAadClientId="<FROM_AZURE_PORTAL>" -e amsAadSecret="<FR
 
 瀏覽至 **camera-003** 裝置，然後選取 [儀表板] 索引標籤。然後在 [推斷事件影片] 磚上，按一下其中一個已擷取的物件偵測超連結。 影片會出現在本機影片播放器所顯示的頁面上：
 
-:::image type="content" source="media/tutorial-video-analytics-manage/video-snippet.png" alt-text="影片程式碼片段":::
+:::image type="content" source="media/tutorial-video-analytics-manage/video-snippet.png" alt-text="新增相機":::
 
 ## <a name="change-the-simulated-devices-in-application-dashboards"></a>變更應用程式儀表板中的模擬裝置
 
@@ -182,7 +182,7 @@ docker run -it --rm -e amsAadClientId="<FROM_AZURE_PORTAL>" -e amsAadSecret="<FR
 
 **真實相機監視器**儀表板現在會顯示真實相機裝置的值：
 
-:::image type="content" source="media/tutorial-video-analytics-manage/update-real-cameras.png" alt-text="真實相機應用程式儀表板":::
+:::image type="content" source="media/tutorial-video-analytics-manage/update-real-cameras.png" alt-text="新增相機":::
 
 ## <a name="pause-processing"></a>暫停處理
 

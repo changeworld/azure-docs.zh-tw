@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 03/12/2020
-ms.openlocfilehash: f72952737af9b76b76ac9a08138238138c54614b
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 45c9625f0a762a0879473cc64c38d791c804d087
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88642175"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530658"
 ---
 # <a name="quickstart-create-apache-hbase-cluster-in-azure-hdinsight-using-arm-template"></a>快速入門：使用 ARM 範本在 Azure HDInsight 中建立 Apache HBase 叢集
 
@@ -73,7 +73,7 @@ ms.locfileid: "88642175"
 
 在 Azure 入口網站中瀏覽至您的叢集，然後選取 [刪除]。
 
-![Resource Manager 範本 HBase](./media/quickstart-resource-manager-template/azure-portal-delete-hbase.png)
+![此螢幕擷取畫面顯示 H D 見解叢集，其中具有要刪除的資源群組。](./media/quickstart-resource-manager-template/azure-portal-delete-hbase.png)
 
 您也可以選取資源群組名稱來開啟資源群組頁面，然後選取 [刪除資源群組]。 刪除資源群組時，會同時刪除 HDInsight 叢集及預設儲存體帳戶。
 

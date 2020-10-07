@@ -1,6 +1,6 @@
 ---
-title: 在 Azure Synapse Studio (預覽) 中使用 SQL 隨選 (預覽) 來分析 Azure 開放資料集
-description: 在本教學課程中，您將了解如何使用 SQL 隨選 (預覽) 輕鬆地執行合併了不同 Azure 開放資料集的探勘資料分析，並在 Azure Synapse Studio 中將結果視覺化。
+title: 教學課程：在 Azure Synapse Studio (預覽) 中使用 SQL 隨選 (預覽) 來分析 Azure 開放資料集
+description: 本教學課程說明如何使用 SQL 隨選 (預覽) 輕鬆執行合併了不同 Azure 開放資料集的探勘資料分析，並在 Azure Synapse Studio 中將結果視覺化。
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -8,15 +8,15 @@ ms.topic: tutorial
 ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 2fc98e927fcf9686f0f39dae600f944b485c5a06
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.reviewer: jrasnick
+ms.openlocfilehash: 0471bd594dcf1b0654d6b4c496e5d39ade2739fd
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089136"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91539515"
 ---
-# <a name="use-sql-on-demand-to-analyze-azure-open-datasets-and-visualize-the-results-in-azure-synapse-studio"></a>使用隨選 SQL 來分析 Azure 開放資料集，並在 Azure Synapse Studio 中將結果視覺化
+# <a name="tutorial-use-sql-on-demand-to-analyze-azure-open-datasets-and-visualize-the-results-in-azure-synapse-studio"></a>教學課程：使用隨選 SQL 來分析 Azure 開放資料集，並在 Azure Synapse Studio 中將結果視覺化
 
 在本教學課程中，您將了解如何使用 SQL 隨選合併不同的 Azure 開放資料集，然後在 Azure Synapse Studio 中將結果視覺化，以執行探勘資料分析。
 
@@ -135,7 +135,7 @@ ORDER BY 1 ASC
 
 ![顯示 2016 年每日乘車次數的直條圖](./media/tutorial-data-analyst/7.png)
 
-從繪圖圖表中，您可以看到有每週模式，而星期六為尖峰日。 由於夏季月份期間屬於假期，所以計程車乘車數量較少。 圖中也有一些地方出現計程車乘車數量大幅下滑的情形，但其發生時間和原因則沒有明顯模式。
+從繪圖圖表中，您可以看到有每週模式，而星期六為尖峰日。 由於夏季月份期間屬於假期，所以計程車乘車數量較少。 此外，您會看到有一些地方出現計程車乘車數量大幅下滑的情形，但其發生時間和原因則沒有明顯模式。
 
 接下來，讓我們將 NYC 計程車乘車資料集與國定假日資料集聯結起來，以了解這些下滑是否與國定假日有所關聯：
 

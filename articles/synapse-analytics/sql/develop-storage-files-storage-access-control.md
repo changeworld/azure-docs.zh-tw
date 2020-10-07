@@ -8,13 +8,13 @@ ms.topic: overview
 ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: fd4cc4cfa7b7be9085ac404cab7fc7447b6d66a7
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.reviewer: jrasnick
+ms.openlocfilehash: 182ab55f8e86d972293222f8a3bcf32dada89328
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87987132"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449456"
 ---
 # <a name="control-storage-account-access-for-sql-on-demand-preview"></a>控制 SQL 隨選 (預覽版) 的儲存體帳戶存取
 
@@ -53,7 +53,7 @@ SQL 隨選查詢會直接從 Azure 儲存體讀取檔案。 存取 Azure 儲存�
 >
 > SAS 權杖：?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-04-18T20:42:12Z&st=2019-04-18T12:42:12Z&spr=https&sig=lQHczNvrk1KoYLCpFdSsMANd0ef9BrIPBNJ3VYEIq78%3D
 
-您必須建立資料庫範圍或伺服器範圍的認證，才能使用 SAS 權杖來啟用存取。
+若要使用 SAS 權杖來啟用存取，您必須建立資料庫範圍或伺服器範圍的認證 
 
 ### <a name="managed-identity"></a>[受控身分識別](#tab/managed-identity)
 
@@ -119,7 +119,7 @@ GRANT REFERENCES ON CREDENTIAL::[storage_credential] TO [specific_user];
 
 ## <a name="server-scoped-credential"></a>伺服器範圍的認證
 
-當 SQL 登入呼叫沒有 `DATA_SOURCE` 的 `OPENROWSET` 函式來讀取某些儲存體帳戶上的檔案時，就會用到伺服器範圍的認證。 伺服器範圍認證的名稱**必須**符合 Azure 儲存體的 URL。 您可以執行 [CREATE CREDENTIAL](/sql/t-sql/statements/create-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)來新增認證。 您必須提供 CREDENTIAL NAME 引數。 其必須是儲存體中資料的部分路徑或完整路徑 (如下所示)。
+當 SQL 登入呼叫沒有 `DATA_SOURCE` 的 `OPENROWSET` 函式來讀取某些儲存體帳戶上的檔案時，就會用到伺服器範圍的認證。 伺服器範圍認證的名稱**必須**符合 Azure 儲存體的 URL。 您可以執行 [CREATE CREDENTIAL](/sql/t-sql/statements/create-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)來新增認證。 您必須提供 CREDENTIAL NAME 引數。 其必須是儲存體中資料的部分路徑或完整路徑 (如下所示)。
 
 > [!NOTE]
 > 不支援 `FOR CRYPTOGRAPHIC PROVIDER` 引數。
@@ -170,7 +170,7 @@ WITH IDENTITY='Managed Identity'
 
 ## <a name="database-scoped-credential"></a>資料庫範圍認證
 
-當任何主體呼叫具有 `DATA_SOURCE` 的 `OPENROWSET` 函式，或從未存取公用檔案的[外部資料表](develop-tables-external-tables.md)選取資料時，就會使用資料庫範圍的認證。 資料庫範圍認證不需要符合儲存體帳戶的名稱，因為其會在定義儲存體位置的 DATA SOURCE 中明確地使用。
+當任何主體呼叫具有 `DATA_SOURCE` 的 `OPENROWSET` 函式，或從未存取公用檔案的[外部資料表](develop-tables-external-tables.md)選取資料時，就會使用資料庫範圍的認證。 資料庫範圍的認證不需要符合儲存體帳戶的名稱。 其會在定義儲存體位置的資料來源中明確地使用。
 
 資料庫範圍的認證可讓您使用下列驗證類型來存取 Azure 儲存體：
 
@@ -268,7 +268,7 @@ WITH ( LOCATION = 'parquet/user-data/*.parquet',
 SELECT TOP 10 * FROM dbo.userPublicData;
 GO
 SELECT TOP 10 * FROM OPENROWSET(BULK 'parquet/user-data/*.parquet',
-                                DATA_SOURCE = [mysample],
+                                DATA_SOURCE = 'mysample',
                                 FORMAT='PARQUET') as rows;
 GO
 ```
@@ -314,7 +314,7 @@ WITH ( LOCATION = 'parquet/user-data/*.parquet',
 ```sql
 SELECT TOP 10 * FROM dbo.userdata;
 GO
-SELECT TOP 10 * FROM OPENROWSET(BULK 'parquet/user-data/*.parquet', DATA_SOURCE = [mysample], FORMAT='PARQUET') as rows;
+SELECT TOP 10 * FROM OPENROWSET(BULK 'parquet/user-data/*.parquet', DATA_SOURCE = 'mysample', FORMAT='PARQUET') as rows;
 GO
 ```
 

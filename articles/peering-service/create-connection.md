@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 05/2/2020
 ms.author: derekol
 Customer intent: With Azure Peering service enhancing the customer connectivity to Microsoft cloud services .
-ms.openlocfilehash: f04ae0d2e541be0a7984e944298fa8d7b47fd126
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: f8f0ee71a8dd00498d868bb6dc11b3fa083df766
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "84870571"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530206"
 ---
 # <a name="tutorial-create-a-peering-service-connection"></a>教學課程：建立對等互連服務連線
 
@@ -43,13 +43,13 @@ ms.locfileid: "84870571"
 
 1. 選取 [字首索引鍵]，然後新增由提供者 (ISP 或 IXP) 提供給您的字首索引鍵。 此索引鍵會允許 MS 驗證已配置您的 IP 字首的字首和提供者。
 
-    ![[註冊對等互連服務設定] 索引標籤](./media/peering-service-portal/peering-serviceconfiguration.png)
+    ![此螢幕擷取畫面顯示 [建立對等互連服務連線] 頁面的 [設定] 索引標籤，您可以在其中輸入前置詞索引鍵。](./media/peering-service-portal/peering-serviceconfiguration.png)
 
 1. 選取頁面左下方的 [檢閱 + 建立] 按鈕。 在 [檢閱 + 建立] 頁面隨即出現，並且 Azure 會驗證設定。
 
  1. 當您看到顯示的 [驗證成功] 訊息時，請選取 [建立]。
 
-> ![[註冊對等互連服務設定] 索引標籤](./media/peering-service-portal/peering-service-prefix.png)
+> ![此螢幕擷取畫面顯示 [建立對等服務連線] 頁面的 [檢閱 + 建立] 索引標籤。](./media/peering-service-portal/peering-service-prefix.png)
 
 1. 註冊對等互連服務連線之後，會對包含的字首執行額外的驗證。 您可以在資源名稱的 [字首] 區段下檢查驗證狀態。 如果驗證失敗，則會顯示下列其中一個錯誤訊息：
 

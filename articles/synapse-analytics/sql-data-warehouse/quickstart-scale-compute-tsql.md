@@ -1,5 +1,5 @@
 ---
-title: 在 Azure Synapse Analytics 中調整計算 - T-SQL
+title: 快速入門：在 Azure Synapse Analytics 中調整計算 - T-SQL
 description: 使用 T-SQL 和 SQL Server Management Studio (SSMS) 調整 Azure Synapse Analytics 中的計算。 擴增計算以提升效能，或將計算調整回來以節省成本。
 services: synapse-analytics
 author: Antvgski
@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: anvang
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: cb813c9a30b644459f3e586ed4313ca070b5a746
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: d11474a3f3b5d8c314f67260fddbbe0a98fe5196
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85212916"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569892"
 ---
 # <a name="quickstart-scale-compute-in-azure-synapse-analytics-using-t-sql"></a>快速入門：使用 T-SQL 在 Azure Synapse Analytics 中調整計算
 
@@ -132,7 +132,7 @@ ms.locfileid: "85212916"
 
 ## <a name="check-data-warehouse-state"></a>檢查資料倉儲狀態
 
-當資料倉儲暫停時，您無法使用 T-SQL 與其連線。 若要查看資料倉儲的目前狀態，您可以使用 PowerShell Cmdlet。 如需範例，請參閱[檢查資料倉儲狀態 - Powershell](quickstart-scale-compute-powershell.md#check-data-warehouse-state)。
+當資料倉儲暫停時，您無法使用 T-SQL 與其連線。 若要查看資料倉儲的目前狀態，您可以使用 PowerShell Cmdlet。 如需範例，請參閱[檢查資料倉儲狀態 - PowerShell](quickstart-scale-compute-powershell.md#check-data-warehouse-state)。
 
 ## <a name="check-operation-status"></a>檢查作業狀態
 

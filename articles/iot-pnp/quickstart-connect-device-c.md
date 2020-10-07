@@ -1,28 +1,28 @@
 ---
-title: 將 IoT 隨插即用預覽版的範例 C 裝置程式碼連線至 IoT 中樞 | Microsoft Docs
-description: 在 Linux 或 Windows 上建置並執行連線至 IoT 中樞的 IoT 隨插即用預覽版範例裝置程式碼。 使用 Azure IoT 檔案總管工具，檢視裝置傳送至中樞的資訊。
+title: 將 IoT 隨插即用範例 C 裝置程式碼連線至 IoT 中樞 | Microsoft Docs
+description: 在 Linux 或 Windows 上建置並執行連線至 IoT 中樞的 IoT 隨插即用範例裝置程式碼。 使用 Azure IoT 檔案總管工具，檢視裝置傳送至中樞的資訊。
 author: ericmitt
 ms.author: ericmitt
 ms.date: 07/14/2020
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: afe7396ebdada97b9311d0afe903f40757084586
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.openlocfilehash: d8782bf6cab85b1b87c0cfc418a4731cc134db8f
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89426107"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91577062"
 ---
-# <a name="quickstart-connect-a-sample-iot-plug-and-play-preview-device-application-running-on-linux-or-windows-to-iot-hub-c"></a>快速入門：將在 Linux 或 Windows 上執行的範例 IoT 隨插即用預覽版裝置應用程式連線至 IoT 中樞 (C)
+# <a name="quickstart-connect-a-sample-iot-plug-and-play-device-application-running-on-linux-or-windows-to-iot-hub-c"></a>快速入門：將在 Linux 或 Windows 上執行的範例 IoT 隨插即用裝置應用程式連線至 IoT 中樞 (C)
 
 [!INCLUDE [iot-pnp-quickstarts-device-selector.md](../../includes/iot-pnp-quickstarts-device-selector.md)]
 
 本快速入門說明如何建置範例 IoT 隨插即用裝置應用程式、將其連線至您的 IoT 中樞，並使用 Azure IoT 總管工具檢視其所傳送的遙測資料。 範例應用程式以 C 撰寫，並且包含在適用於 C 的 Azure IoT 裝置 SDK 中。解決方案建立器可使用 Azure IoT 檔案總管工具直接了解 IoT 隨插即用裝置的功能，而不需檢視任何裝置程式碼。
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
 ## <a name="prerequisites"></a>必要條件
+
+[!INCLUDE [iot-pnp-prerequisites](../../includes/iot-pnp-prerequisites.md)]
 
 您可以在 Linux 或 Windows 上執行本快速入門。 本快速入門中的殼層命令會遵循路徑分隔符號 '`/`' 的 Linux 慣例，如果您在 Windows 上遵循，請務必針對 '`\`' 交換這些分隔符號。
 
@@ -52,32 +52,9 @@ gcc --version
 
 若要在 Windows 上完成本快速入門，請在您的本機 Windows 環境上安裝下列軟體：
 
-* [Visual Studio (Community、Professional 或 Enterprise)](https://visualstudio.microsoft.com/downloads/) - 在[安裝](https://docs.microsoft.com/cpp/build/vscpp-step-0-installation?view=vs-2019) Visual Studio 時，請確實包含**使用 C++ 的桌面開發**工作負載。
+* [Visual Studio (Community、Professional 或 Enterprise)](https://visualstudio.microsoft.com/downloads/) - 在[安裝](https://docs.microsoft.com/cpp/build/vscpp-step-0-installation?view=vs-2019&preserve-view=true) Visual Studio 時，請確實包含**使用 C++ 的桌面開發**工作負載。
 * [Git](https://git-scm.com/download/)。
 * [CMake](https://cmake.org/download/)。
-
-### <a name="azure-iot-explorer"></a>Azure IoT 總管
-
-若要在本快速入門的第二個部分與範例裝置互動，您可以使用 **Azure IoT 總管**工具。 針對您的作業系統[下載並安裝最新版的 Azure IoT 總管](./howto-use-iot-explorer.md)。
-
-[!INCLUDE [iot-pnp-prepare-iot-hub.md](../../includes/iot-pnp-prepare-iot-hub.md)]
-
-執行下列命令，以取得中樞的 _IoT 中樞連接字串_。 記下此連接字串，您稍後會在本快速入門中用到：
-
-```azurecli-interactive
-az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
-```
-
-> [!TIP]
-> 您也可以使用 Azure IoT 總管工具來尋找 IoT 中樞連接字串。
-
-執行下列命令，針對您新增至中樞的裝置取得_裝置連接字串_。 記下此連接字串，您稍後會在本快速入門中用到：
-
-```azurecli-interactive
-az iot hub device-identity show-connection-string --hub-name <YourIoTHubName> --device-id <YourDeviceID> --output table
-```
-
-[!INCLUDE [iot-pnp-download-models.md](../../includes/iot-pnp-download-models.md)]
 
 ## <a name="download-the-code"></a>下載程式碼
 
@@ -108,7 +85,7 @@ git submodule update --init
 1. 執行下列命令，以建置 SDK 和範例：
 
     ```cmd\bash
-    cmake ..
+    cmake -Duse_prov_client=ON -Dhsm_type_symm_key=ON -Drun_e2e_tests=OFF ..
     cmake --build .
     ```
 
@@ -117,12 +94,11 @@ git submodule update --init
 
 ## <a name="run-the-device-sample"></a>執行裝置範例
 
+[!INCLUDE [iot-pnp-environment](../../includes/iot-pnp-environment.md)]
+
+若要深入了解範例設定，請參閱[範例讀我檔案](https://github.com/Azure/azure-iot-sdk-c/blob/master/iothub_client/samples/pnp/readme.md)。
+
 若要在 SDK 中執行範例應用程式，以模擬將遙測傳送到 IoT 中樞的 IoT 隨插即用裝置：
-
-建立兩個環境變數，將範例設定為使用連接字串來連線到您的 IoT 中樞：
-
-- 值為 `"connectionString"` 的 **IOTHUB_DEVICE_SECURITY_TYPE**
-- **IOTHUB_DEVICE_CONNECTION_STRING**用以儲存您先前記下的裝置連接字串。
 
 從 _cmake_ 資料夾瀏覽至包含可執行檔的資料夾並且執行：
 
@@ -177,8 +153,6 @@ IoTHubDeviceClient_SetOption(deviceHandle, OPTION_MODEL_ID, modelId)
 // JSON parser
 #include "parson.h"
 ```
-
-[!INCLUDE [iot-pnp-clean-resources.md](../../includes/iot-pnp-clean-resources.md)]
 
 ## <a name="next-steps"></a>後續步驟
 

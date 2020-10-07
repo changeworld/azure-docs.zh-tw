@@ -8,10 +8,10 @@ ms.subservice: language-understanding
 ms.topic: include
 ms.date: 05/05/2020
 ms.openlocfilehash: a607ad71915606d6046b4c71291a49b8641bdcc9
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91545712"
 ---
 1. 在 LUIS 入口網站的 [管理] 區段 (右上方功能表)、[Azure 資源] 頁面 (左側功能表)、[預測資源] 索引標籤上，複製頁面底部的**範例查詢**。

@@ -9,15 +9,18 @@ manager: diviso
 ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
-ms.date: 06/30/2020
-ms.openlocfilehash: 2140cbbc43af7f80c0c5fc2d7cea85cb31bd7bfe
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 09/30/2020
+ms.openlocfilehash: dd5ed52187a7cd23142b59e20c91c6d125946a72
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87059352"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91613776"
 ---
 # <a name="quickstart-explore-azure-time-series-insights-gen1"></a>快速入門：探索 Azure 時間序列深入解析 Gen1
+
+> [!CAUTION]
+> 這是 Gen1 文章。
 
 這個 Azure 時間序列深入解析總管快速入門可協助您在免費的示範環境中開始使用 Azure 時間序列深入解析。 在本快速入門中，您將了解如何使用網頁瀏覽器將大量的 IoT 資料視覺化，並巡覽目前已正式運作的主要功能。
 
@@ -87,7 +90,7 @@ ms.locfileid: "87059352"
 您現在已完成本教學課程，請清除您所建立的資源：
 
 1. 從 [Azure 入口網站](https://portal.azure.com)的左側功能表中，選取 [所有資源]  ，找出 Azure 時間序列深入解析資源群組。
-1. 選取 [刪除]  以刪除整個資源群組 (和其中包含的所有資源)，或個別移除每個資源。
+1. 選取 [刪除] 以刪除整個資源群組 (和其中包含的所有資源)，或個別移除每個資源。
 
 ## <a name="next-steps"></a>後續步驟
 

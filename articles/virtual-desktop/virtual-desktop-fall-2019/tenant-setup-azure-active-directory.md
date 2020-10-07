@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e2858daaa834552da5a85063fd9973d2c35209d7
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: f41584194f8f5e8afde630405116b8b169cb5656
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88005613"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91542031"
 ---
 # <a name="tutorial-create-a-tenant-in-windows-virtual-desktop-classic"></a>教學課程：在 Windows 虛擬桌面 (傳統) 中建立租用戶
 
@@ -126,7 +126,7 @@ ms.locfileid: "88005613"
 1. 在相同的 [Azure 入口網站](https://portal.azure.com)工作階段中，搜尋並選取 [訂用帳戶]。
 
    > [!div class="mx-imgBorder"]
-   > ![在 Azure 入口網站中搜尋 "Azure Active Directory" 的結果螢幕擷取畫面。 服務 底下的搜尋結果已醒目提示。](../media/tenant-search-subscription.png)
+   > ![在 Azure 入口網站中搜尋 "Azure Active Directory" 的結果螢幕擷取畫面。 「服務」的搜尋結果會反白顯示。](../media/tenant-search-subscription.png)
 
 2. 選取您想要用來接收 Windows 虛擬桌面服務通知的 Azure 訂用帳戶。
 3. 尋找**訂用帳戶識別碼**，然後將滑鼠移到該值上，直到剪貼簿圖示出現。 選取 [剪貼簿] 圖示，然後將其貼在方便取得的位置，以便稍後用來作為 **AzureSubscriptionId** 值。

@@ -1,62 +1,39 @@
 ---
-title: 將 IoT 隨插即用預覽的範例 Java 元件裝置程式碼連線至 IoT 中樞 | Microsoft Docs
-description: 建置並執行 IoT 隨插即用預覽的範例 Java 裝置程式碼，以使用多個元件並連線至 IoT 中樞。 使用 Azure IoT 檔案總管工具，檢視裝置傳送至中樞的資訊。
+title: 將 IoT 隨插即用範例 Java 元件裝置程式碼連線至 IoT 中樞 | Microsoft Docs
+description: 建置並執行使用多個元件的 IoT 隨插即用範例 Java 裝置程式碼，並連線至 IoT 中樞。 使用 Azure IoT 檔案總管工具，檢視裝置傳送至中樞的資訊。
 author: ericmitt
 ms.author: ericmitt
 ms.date: 07/14/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 1d16d8c54939c4f659b6a1530e2d360b957a09ad
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: a7c1f0d207a113b2c12010cbc0a8876edd9269bc
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87351775"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91577249"
 ---
-# <a name="tutorial-connect-a-sample-iot-plug-and-play-preview-multiple-component-device-application-to-iot-hub-java"></a>教學課程：將範例 IoT 隨插即用預覽的多個元件裝置應用程式連線至 IoT 中樞 (Java)
+# <a name="tutorial-connect-a-sample-iot-plug-and-play-multiple-component-device-application-to-iot-hub-java"></a>教學課程：將範例 IoT 隨插即用多重元件裝置應用程式連線至 IoT 中樞 (Java)
 
 [!INCLUDE [iot-pnp-tutorials-device-selector.md](../../includes/iot-pnp-tutorials-device-selector.md)]
 
 本教學課程說明如何建置多個元件範例 IoT 隨插即用裝置應用程式、將其連線至您的 IoT 中樞，並使用 Azure CLI 檢視其所傳送的遙測資料。 範例應用程式是以 Java 撰寫的，並隨附於適用於 Java 的 Azure IoT 裝置 SDK 中。 解決方案建置人員可以使用 Azure CLI 來了解 IoT 隨插即用裝置的功能，而不需檢視任何裝置程式碼。
 
-此教學課程說明如何使用元件和根介面來建置範例 IoT 隨插即用裝置應用程式、將其連線至您的 IoT 中樞，並使用 Azure IoT 總管工具來檢視其傳送至中樞的資訊。 範例應用程式是以 Java 撰寫的，並隨附於適用於 Java 的 Azure IoT 裝置 SDK 中。 解決方案建置人員可以使用 Azure IoT 總管工具來了解 IoT 隨插即用裝置的功能，而不需檢視任何裝置程式碼。
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+本教學課程說明如何建置具有元件的範例 IoT 隨插即用裝置應用程式、將其連線至您的 IoT 中樞，並使用 Azure IoT 總管工具來檢視其傳送至中樞的資訊。 範例應用程式是以 Java 撰寫的，並隨附於適用於 Java 的 Azure IoT 裝置 SDK 中。 解決方案建置人員可以使用 Azure IoT 總管工具來了解 IoT 隨插即用裝置的功能，而不需檢視任何裝置程式碼。
 
 ## <a name="prerequisites"></a>必要條件
 
+[!INCLUDE [iot-pnp-prerequisites](../../includes/iot-pnp-prerequisites.md)]
+
 若要在 Windows 上完成此教學課程，請在您的本機 Windows 環境上安裝下列軟體：
 
-* Java SE 開發套件 8。 在 [Azure 和 Azure Stack 的 Java 長期支援](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable)中，選取 [長期支援] 下的 [Java 8]。
+* Java SE 開發套件 8。 在 [Azure 和 Azure Stack 的 Java 長期支援](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable&preserve-view=true)中，選取 [長期支援] 下的 [Java 8]。
 * [Apache Maven 3](https://maven.apache.org/download.cgi)。
-
-### <a name="azure-iot-explorer"></a>Azure IoT 總管
-
-若要在本快速入門的第二個部分與範例裝置互動，您可以使用 **Azure IoT 總管**工具。 針對您的作業系統[下載並安裝最新版的 Azure IoT 總管](./howto-use-iot-explorer.md)。
-
-[!INCLUDE [iot-pnp-prepare-iot-hub.md](../../includes/iot-pnp-prepare-iot-hub.md)]
-
-執行下列命令，以取得中樞的 _IoT 中樞連接字串_。 記下此連接字串，您稍後會在本快速入門中用到：
-
-```azurecli-interactive
-az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
-```
-
-> [!TIP]
-> 您也可以使用 Azure IoT 總管工具來尋找 IoT 中樞連接字串。
-
-執行下列命令，針對您新增至中樞的裝置取得「裝置連接字串」。 記下此連接字串，您稍後會在本快速入門中用到：
-
-```azurecli-interactive
-az iot hub device-identity show-connection-string --hub-name <YourIoTHubName> --device-id <YourDeviceID> --output table
-```
-
-[!INCLUDE [iot-pnp-download-models.md](../../includes/iot-pnp-download-models.md)]
 
 ## <a name="download-the-code"></a>下載程式碼
 
-在此教學課程中，您會準備可用來複製及建置 Azure IoT 中樞裝置 Java SDK 的開發環境。
+如果您已完成[快速入門：將在 Windows 上執行的範例 IoT 隨插即用裝置應用程式連線至 IoT 中樞 (Java)](quickstart-connect-device-java.md)，您已經複製了存放庫。
 
 在您選擇的目錄中開啟命令提示字元。 執行下列命令，將 [Azure IoT Java SDK 和程式庫](https://github.com/Azure/azure-iot-sdk-java) GitHub 存放庫複製到下列位置：
 
@@ -68,21 +45,19 @@ git clone https://github.com/Azure/azure-iot-sdk-java.git
 
 ## <a name="build-the-code"></a>建置程式碼
 
-在 Windows 上，瀏覽至複製的 Java SDK 存放庫的根資料夾。 然後瀏覽至 \device\iot-device-samples\pnp-device-sample\temerature-controller-device-sample 資料夾。
+在 Windows 上，瀏覽至所複製 Java SDK 存放庫的根資料夾。 執行下列命令以建置相依性：
 
-執行下列命令以建置範例應用程式：
-
-```java
-mvn clean package
+```cmd/sh
+mvn install -T 2C -DskipTests
 ```
 
 ## <a name="run-the-device-sample"></a>執行裝置範例
 
-建立名為 **IOTHUB_DEVICE_CONNECTION_STRING** 的環境變數，來儲存您先前記下的裝置連接字串。
+[!INCLUDE [iot-pnp-environment](../../includes/iot-pnp-environment.md)]
 
-若要執行範例應用程式，請執行下列命令：
+若要執行範例應用程式，請瀏覽至 *\device\iot-device-samples\pnp-device-sample\temperature-controller-device-sample* 資料夾，然後執行下列命令：
 
-```java
+```cmd/sh
 mvn exec:java -Dexec.mainClass="samples.com.microsoft.azure.sdk.iot.device.TemperatureController"
 ```
 
@@ -90,7 +65,7 @@ mvn exec:java -Dexec.mainClass="samples.com.microsoft.azure.sdk.iot.device.Tempe
 
 ## <a name="use-azure-iot-explorer-to-validate-the-code"></a>使用 Azure IoT 總管來驗證程式碼
 
-當裝置用戶端範例啟動之後，使用 Azure IoT 總管工具來驗證其是否正確運作。
+當裝置用戶端範例啟動之後，請使用 Azure IoT 總管工具來驗證其是否正確運作。
 
 [!INCLUDE [iot-pnp-iot-explorer.md](../../includes/iot-pnp-iot-explorer.md)]
 
@@ -162,17 +137,17 @@ Message message = PnpHelper.createIotHubMessageUtf8(telemetryName, currentTemper
 
 `PnpHelper` 類別包含可以搭配多個元件模型使用的其他範例方法。
 
-使用 Azure IoT 總管工具，從這兩個控溫器元件中檢視遙測和屬性：
+使用 Azure IoT 總管工具，檢視來自這兩個控溫器元件的遙測和屬性：
 
 :::image type="content" source="media/tutorial-multiple-components-java/multiple-component.png" alt-text="Azure IoT 總管中的多個元件裝置":::
 
-您也可以使用 Azure IoT 總管工具，在這兩個控溫器元件的其中一個或根介面中呼叫命令。
+您也可以使用 Azure IoT 總管工具，在這兩個控溫器元件的其中之一或是預設元件中呼叫命令。
 
 [!INCLUDE [iot-pnp-clean-resources.md](../../includes/iot-pnp-clean-resources.md)]
 
 ## <a name="next-steps"></a>後續步驟
 
-在此教學課程中，您已了解如何使用元件來將 IoT 隨插即用裝置連線至 IoT 中樞。 若要深入了解 IoT 隨插即用裝置模組，請參閱：
+在此教學課程中，您已了解如何將具有元件的 IoT 隨插即用裝置連線至 IoT 中樞。 若要深入了解 IoT 隨插即用裝置模組，請參閱：
 
 > [!div class="nextstepaction"]
-> [IoT 隨插即用預覽模型開發人員指南](concepts-developer-guide.md)
+> [IoT 隨插即用模型開發人員指南](concepts-developer-guide-device-csharp.md)

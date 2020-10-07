@@ -7,14 +7,14 @@ author: TheovanKraay
 ms.author: thvankra
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 05/18/2020
+ms.date: 10/01/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f17385307995d87f2d5792a7e9ce19ad0260cbcc
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 7389136d5f08c7efd0c0443387744ce4c5816f00
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89010234"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91627358"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-net-sdk-and-azure-cosmos-db"></a>快速入門：使用 .NET SDK 和 Azure Cosmos DB 建置 Cassandra 應用程式
 
@@ -158,13 +158,13 @@ Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您�
     ```
 3. 按 CTRL + F5 來執行應用程式。 您的應用程式會顯示在主控台視窗中。 
 
-    :::image type="content" source="./media/create-cassandra-dotnet/output.png" alt-text="檢視並確認輸出":::
+    :::image type="content" source="./media/create-cassandra-dotnet/output.png" alt-text="在 Azure 入口網站 [連接字串] 頁面中檢視及複製存取金鑰":::
 
     按 CTRL + C 來停止執行程式，並關閉主控台視窗。 
     
 4. 在 Azure 入口網站中，開啟 [資料總管] 以查詢、修改及使用這個新資料。
 
-    :::image type="content" source="./media/create-cassandra-dotnet/data-explorer.png" alt-text="在資料總管中檢視資料":::
+    :::image type="content" source="./media/create-cassandra-dotnet/data-explorer.png" alt-text="在 Azure 入口網站 [連接字串] 頁面中檢視及複製存取金鑰":::
 
 ## <a name="review-slas-in-the-azure-portal"></a>在 Azure 入口網站中檢閱 SLA
 

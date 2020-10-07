@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: ''
 ms.date: 05/04/2020
-ms.openlocfilehash: e15ac501a0598ae81a295d5a04074beb33c860f6
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 6e41109c65a047990577d1f2c77bdcd5219b6ed3
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085713"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91537451"
 ---
 # <a name="incrementally-load-data-from-azure-sql-managed-instance-to-azure-storage-using-change-data-capture-cdc"></a>使用異動資料擷取 (CDC)，以累加方式從 Azure SQL 受控執行個體將資料載入 Azure 儲存體
 
@@ -127,10 +127,10 @@ ms.locfileid: "86085713"
 7. 按一下 [建立]。
 8. 部署完成後，按一下 [移至資源]
 
-   ![Data Factory 首頁](./media/tutorial-incremental-copy-change-data-capture-feature-portal/data-factory-deploy-complete.png)
+   ![此螢幕擷取畫面顯示部署已完成的訊息，以及前往資源的選項。](./media/tutorial-incremental-copy-change-data-capture-feature-portal/data-factory-deploy-complete.png)
 9. 建立完成之後，您會看到如圖中所示的 [Data Factory] 頁面。
 
-   ![Data Factory 首頁](./media/tutorial-incremental-copy-change-data-capture-feature-portal/data-factory-home-page.png)
+   ![此螢幕擷取畫面顯示您已部署的資料處理站。](./media/tutorial-incremental-copy-change-data-capture-feature-portal/data-factory-home-page.png)
 10. 按一下 [撰寫與監視] 圖格，以在另一個索引標籤中啟動 Azure Data Factory 使用者介面 (UI)。
 11. 在 [開始使用] 頁面中，切換至左面板中的 [編輯] 索引標籤，如下圖所示：
 
@@ -289,10 +289,10 @@ ms.locfileid: "86085713"
 
 11. 按一下 [預覽] 以確認查詢正確地傳回變更後的資料列。
 
-    ![複製活動 - 接收設定](./media/tutorial-incremental-copy-change-data-capture-feature-portal/copy-source-preview.png)
+    ![此螢幕擷取畫面顯示驗證查詢的預覽。](./media/tutorial-incremental-copy-change-data-capture-feature-portal/copy-source-preview.png)
 12. 切換至 [接收] 索引標籤，並針對 [接收資料集] 欄位指定 Azure 儲存體資料集。
 
-    ![複製活動 - 接收設定](./media/tutorial-incremental-copy-change-data-capture-feature-portal/copy-sink-settings.png)
+    ![顯示 [接收] 索引標籤的螢幕擷取畫面。](./media/tutorial-incremental-copy-change-data-capture-feature-portal/copy-sink-settings.png)
 13. 按一下以回到主要管道畫布，然後將 [查閱] 活動逐一連線至 [If 條件] 活動。 將附加至 [查閱] 活動的 [綠色] 按鈕拖曳至 [If 條件] 活動。
 
     ![將查閱和複製活動連線](./media/tutorial-incremental-copy-change-data-capture-feature-portal/connect-lookup-if.png)
@@ -333,7 +333,7 @@ ms.locfileid: "86085713"
     ```
 4. 按一下**複製**活動的 [接收] 索引標籤，然後按一下 [開啟] 來編輯資料集屬性。 按一下 [參數] 索引標籤，然後新增名為 **triggerStart** 的參數    
 
-    ![接收資料集設定 - 3](./media/tutorial-incremental-copy-change-data-capture-feature-portal/sink-dataset-configuration-2.png)
+    ![此螢幕擷取畫面顯示將新參數新增至 [參數] 索引標籤的情形。](./media/tutorial-incremental-copy-change-data-capture-feature-portal/sink-dataset-configuration-2.png)
 5. 接下來，設定資料集屬性，將資料儲存在具有日期型分割區的 **customers/incremental** 子目錄中。
    1. 按一下資料集屬性的 [連線] 索引標籤，並針對 [目錄] 和 [檔案] 區段新增動態內容。 
    2. 按一下文字方塊下的動態內容連結，在 [目錄] 區段中輸入下列運算式：

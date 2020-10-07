@@ -1,5 +1,5 @@
 ---
-title: 透過 Azure PowerShell 暫停和繼續 Synapse SQL 集區中的計算
+title: 快速入門：透過 Azure 入口網站暫停和繼續 Synapse SQL 集區中的計算
 description: 使用 Azure 入口網站暫停 SQL 集區的計算以節省成本。 在您準備好使用資料倉儲時繼續計算。
 services: synapse-analytics
 author: kevinvngo
@@ -11,14 +11,14 @@ ms.date: 04/18/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 25f12d038b2a83688c12d95adefef3d4fb39be43
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: bf9d8234be754bd6ed325713f3c9ad27bd283b79
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85214463"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91567633"
 ---
-# <a name="quickstart-pause-and-resume-compute-in-synapse-sql-pool-via-the-azure-portal"></a>快速入門：透過 Azure PowerShell 暫停和繼續 Synapse SQL 集區中的計算
+# <a name="quickstart-pause-and-resume-compute-in-synapse-sql-pool-via-the-azure-portal"></a>快速入門：透過 Azure 入口網站暫停和繼續 Synapse SQL 集區中的計算
 
 您可以使用 Azure 入口網站來暫停和繼續 Synapse SQL 集區 (資料倉儲) 計算資源。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 
@@ -49,7 +49,7 @@ ms.locfileid: "85214463"
 5. 螢幕會出現詢問您是否要繼續的確認問題。 按一下 [是]  。
 6. 請稍候片刻，並留意到 [狀態]  將變成 [正在暫停]  。
 
-    ![正在暫停](./media/pause-and-resume-compute-portal/pausing.png)
+    ![此螢幕擷取畫面顯示範例資料倉儲的 Azure 入口網站， [狀態] 值為 [暫停]。](./media/pause-and-resume-compute-portal/pausing.png)
 
 7. 暫停作業完成後，狀態將會變成 [已暫停]  ，選項按鈕則會是 [繼續]  。
 8. SQL 集區的計算資源現已離線。 在您繼續服務之前，將無需支付計算費用。
@@ -71,7 +71,7 @@ ms.locfileid: "85214463"
 5. 螢幕會出現詢問您是否要啟動的確認問題。 按一下 [是]  。
 6. 留意到 [狀態]  將變成 [正在繼續]  。
 
-    ![繼續中](./media/pause-and-resume-compute-portal/resuming.png)
+    ![此螢幕擷取畫面顯示範例資料倉儲的 Azure 入口網站，其中已選取 [啟動] 按鈕，且 [狀態] 值為 [繼續中]。](./media/pause-and-resume-compute-portal/resuming.png)
 
 7. SQL 集區再度上線時，狀態將會變成 [線上]  ，選項按鈕則會是 [暫停]  。
 8. SQL 集區的計算資源現已上線，且您可以使用服務。 費用計算將繼續進行。

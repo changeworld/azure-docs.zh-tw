@@ -1,19 +1,19 @@
 ---
-title: 此 PowerShell 指令碼用以變更單一主機 Azure Cosmos 帳戶的容錯移轉優先順序
-description: Azure PowerShell 指令碼範例 - 針對 Azure Cosmos DB 單一主機帳戶變更容錯移轉優先順序或觸發容錯移轉
+title: 此 PowerShell 指令碼用來變更具有單一寫入區域的 Azure Cosmos 帳戶的容錯移轉優先順序
+description: Azure PowerShell 指令碼範例 - 對具有單一寫入區域的 Azure Cosmos 帳戶變更容錯移轉優先順序或觸發容錯移轉
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
 ms.date: 03/18/2020
 ms.author: mjbrown
-ms.openlocfilehash: a81938675e72d9ec3a18c920121951e38580b91e
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 07561de8236a06a3ac34aa8867a07890aaf0656f
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87505264"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570598"
 ---
-# <a name="change-failover-priority-or-trigger-failover-for-an-azure-cosmos-db-single-master-account-using-powershell"></a>使用 PowerShell 對 Azure Cosmos DB 單一主機帳戶變更容錯移轉優先順序或觸發容錯移轉
+# <a name="change-failover-priority-or-trigger-failover-for-an-azure-cosmos-account-with-single-write-region-by-using-powershell"></a>使用 PowerShell 對具有單一寫入區域的 Azure Cosmos 帳戶變更容錯移轉優先順序或觸發容錯移轉
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 

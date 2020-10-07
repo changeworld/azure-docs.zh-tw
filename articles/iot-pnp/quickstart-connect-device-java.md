@@ -1,54 +1,33 @@
 ---
-title: 將 IoT 隨插即用預覽版的範例 Java 裝置程式碼連線至 IoT 中樞 | Microsoft Docs
-description: 建置並執行連線至 IoT 中樞的 IoT 隨插即用預覽版範例裝置程式碼。 使用 Azure IoT 檔案總管工具，檢視裝置傳送至中樞的資訊。
+title: 將 IoT 隨插即用範例 Java 裝置程式碼連線至 IoT 中樞 | Microsoft Docs
+description: 建置並執行連線至 IoT 中樞的 IoT 隨插即用範例裝置程式碼。 使用 Azure IoT 檔案總管工具，檢視裝置傳送至中樞的資訊。
 author: ericmitt
 ms.author: ericmitt
 ms.date: 07/14/2020
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: b89c92e675ab505878f350e9716af95050ce28b2
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: b63e1c0bba4d6ac250119c2ac0d9a1cd0e4ee362
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87352570"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91577011"
 ---
-# <a name="quickstart-connect-a-sample-iot-plug-and-play-preview-device-application-running-on-windows-to-iot-hub-java"></a>快速入門：將在 Windows 上執行的範例 IoT 隨插即用預覽版裝置應用程式連線至 IoT 中樞 (Java)
+# <a name="quickstart-connect-a-sample-iot-plug-and-play-device-application-running-on-windows-to-iot-hub-java"></a>快速入門：將在 Windows 上執行的範例 IoT 隨插即用裝置應用程式連線至 IoT 中樞 (Java)
 
 [!INCLUDE [iot-pnp-quickstarts-device-selector.md](../../includes/iot-pnp-quickstarts-device-selector.md)]
 
 此快速入門顯示如何建置範例 IoT 隨插即用裝置應用程式、將其連線至您的 IoT 中樞，並使用 Azure IoT 總管工具檢視其所傳送的遙測資料。 範例應用程式是以 Java 撰寫的，並隨附於適用於 Java 的 Azure IoT 裝置 SDK 中。 解決方案建置人員可以使用 Azure IoT 總管工具來了解 IoT 隨插即用裝置的功能，而不需檢視任何裝置程式碼。
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
 ## <a name="prerequisites"></a>必要條件
+
+[!INCLUDE [iot-pnp-prerequisites](../../includes/iot-pnp-prerequisites.md)]
 
 若要在 Windows 上完成此快速入門，請在您的本機 Windows 環境上安裝下列軟體：
 
-* Java SE 開發套件 8。 在 [Azure 和 Azure Stack 的 Java 長期支援](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable)中，選取 [長期支援] 下的 [Java 8]。
+* Java SE 開發套件 8。 在 [Azure 和 Azure Stack 的 Java 長期支援](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable&preserve-view=true)中，選取 [長期支援] 下的 [Java 8]。
 * [Apache Maven 3](https://maven.apache.org/download.cgi)。
-
-### <a name="azure-iot-explorer"></a>Azure IoT 總管
-
-若要在此快速入門的第二個部分與範例裝置互動，您可以使用 **Azure IoT 總管**工具。 針對您的作業系統[下載並安裝最新版的 Azure IoT 總管](./howto-use-iot-explorer.md)。
-
-[!INCLUDE [iot-pnp-prepare-iot-hub.md](../../includes/iot-pnp-prepare-iot-hub.md)]
-
-執行下列命令，以取得中樞的「IoT 中樞連接字串」。 記下此連接字串，您稍後會在此快速入門中用到：
-
-```azurecli-interactive
-az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
-```
-
-> [!TIP]
-> 您也可以使用 Azure IoT 總管工具來尋找 IoT 中樞連接字串。
-
-執行下列命令，針對您新增至中樞的裝置取得「裝置連接字串」。 記下此連接字串，您稍後會在此快速入門中用到：
-
-```azurecli-interactive
-az iot hub device-identity show-connection-string --hub-name <YourIoTHubName> --device-id <YourDeviceID> --output table
-```
 
 ## <a name="download-the-code"></a>下載程式碼
 
@@ -60,21 +39,23 @@ az iot hub device-identity show-connection-string --hub-name <YourIoTHubName> --
 git clone https://github.com/Azure/azure-iot-sdk-java.git
 ```
 
-[!INCLUDE [iot-pnp-download-models.md](../../includes/iot-pnp-download-models.md)]
-
 ## <a name="build-the-code"></a>建置程式碼
 
-在 Windows 上，瀏覽至所複製 Java SDK 存放庫的根資料夾。 然後瀏覽至 *\device\iot-device-samples\pnp-device-sample\thermostat-device-sample* 資料夾。
+在 Windows 上，瀏覽至所複製 Java SDK 存放庫的根資料夾。
 
 執行下列命令以建置範例應用程式：
 
 ```cmd
-mvn clean package
+mvn install -T 2C -DskipTests
 ```
 
 ## <a name="run-the-device-sample"></a>執行裝置範例
 
-建立名為 **IOTHUB_DEVICE_CONNECTION_STRING** 的環境變數，來儲存您先前記下的裝置連接字串。
+[!INCLUDE [iot-pnp-environment](../../includes/iot-pnp-environment.md)]
+
+若要深入了解範例設定，請參閱[範例讀我檔案](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/pnp-device-sample/readme.md)。
+
+瀏覽至 *\device\iot-device-samples\pnp-device-sample\thermostat-device-sample* 資料夾。
 
 若要執行範例應用程式，請執行下列命令：
 
@@ -121,7 +102,7 @@ private static void initializeDeviceClient() throws URISyntaxException, IOExcept
 private static final String MODEL_ID = "dtmi:com:example:Thermostat;1";
 ```
 
-更新屬性、處理命令及傳送遙測資料的程式碼，與不使用 IoT 隨插即用慣例之裝置的程式碼相同。
+更新屬性、處理命令及傳送遙測資料的程式碼，與不使用 IoT 隨插即用慣例的裝置程式碼相同。
 
 此範例會使用 JSON 程式庫來剖析從您的 IoT 中樞傳送的承載中的 JSON 物件：
 
@@ -132,8 +113,6 @@ import com.google.gson.Gson;
 
 Date since = new Gson().fromJson(jsonRequest, Date.class);
 ```
-
-[!INCLUDE [iot-pnp-clean-resources.md](../../includes/iot-pnp-clean-resources.md)]
 
 ## <a name="next-steps"></a>後續步驟
 

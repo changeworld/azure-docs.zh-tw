@@ -7,12 +7,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 03/10/2020
-ms.openlocfilehash: 21376eb40fb40abe67f7e03d15aabd7d89ea62f8
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 40f8c36b197b0c68b9f04a02dc7731877b27ddd2
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80081897"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541657"
 ---
 # <a name="tutorial-configure-apache-ambari-email-notifications-in-azure-hdinsight"></a>教學課程：在 Azure HDInsight 中設定 Apache Ambari 電子郵件通知
 
@@ -54,7 +54,7 @@ ms.locfileid: "80081897"
 
 1. 在 [管理警示通知]  視窗中，選取 **+** 圖示。
 
-    ![Ambari 建立警示通知](./media/apache-ambari-email/azure-portal-create-notification.png)
+    ![此螢幕擷取畫面顯示 [管理警示通知] 對話方塊。](./media/apache-ambari-email/azure-portal-create-notification.png)
 
 1. 在 [建立警示通知]  對話方塊中，提供下列資訊：
 
@@ -75,7 +75,7 @@ ms.locfileid: "80081897"
     |密碼確認|再次輸入密碼。|
     |啟動 TLS|選取此核取方塊|
 
-    ![Ambari 建立警示通知](./media/apache-ambari-email/ambari-create-alert-notification.png)
+    ![此螢幕擷取畫面顯示 [建立警示通知] 對話方塊。](./media/apache-ambari-email/ambari-create-alert-notification.png)
 
     選取 [儲存]  。 您會回到 [管理警示通知]  視窗。
 

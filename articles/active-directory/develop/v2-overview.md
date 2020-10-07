@@ -1,5 +1,6 @@
 ---
 title: Microsoft 身分識別平台概觀 - Azure
+titleSuffix: Microsoft identity platform
 description: 了解 Microsoft 身分識別平台的元件，以及其如何協助您在應用程式中建立身分識別和存取管理 (IAM) 支援。
 services: active-directory
 author: rwike77
@@ -12,14 +13,14 @@ ms.date: 07/09/2020
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: identityplatformtop40
-ms.openlocfilehash: e34eeeca3b17087fb5bd43ae353e43b5ab355831
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 831af87159b909ca744839d2997aa2b70cbc72e3
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88119550"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91627120"
 ---
-# <a name="microsoft-identity-platform-overview"></a>Microsoft 身分識別平台概觀
+# <a name="what-is-the-microsoft-identity-platform"></a>什麼是 Microsoft 身分識別平台？
 
 Microsoft 身分識別平台可協助您建置可供使用者和客戶使用其 Microsoft 身分識別或社交帳戶來登入的應用程式，並授權其存取 API 或 Microsoft API，例如 Microsoft Graph。
 

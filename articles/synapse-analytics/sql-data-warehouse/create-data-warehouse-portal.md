@@ -1,5 +1,5 @@
 ---
-title: 建立和查詢 Synapse SQL 集區 (Azure 入口網站)
+title: 快速入門：建立和查詢 Synapse SQL 集區 (Azure 入口網站)
 description: 使用 Azure 入口網站來建立及查詢 Synapse SQL 集區
 services: synapse-analytics
 author: kevinvngo
@@ -11,12 +11,12 @@ ms.date: 05/28/2019
 ms.author: Kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 4972e843394cac3b4a4f7c08a27f9d1a9e19cee5
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 878b272e2a1a0e1d5a00a9c2028a6803b6d95383
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89459380"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91568963"
 ---
 # <a name="quickstart-create-and-query-a-synapse-sql-pool-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站來建立及查詢 Synapse SQL 集區
 
@@ -78,7 +78,7 @@ ms.locfileid: "89459380"
 
 7. 在工具列上選取 [通知]，以監視部署程序。
 
-   ![通知](./media/create-data-warehouse-portal/notification.png)
+   ![此螢幕擷取畫面顯示部署進行中的通知。](./media/create-data-warehouse-portal/notification.png)
 
 ## <a name="create-a-server-level-firewall-rule"></a>建立伺服器層級防火牆規則
 

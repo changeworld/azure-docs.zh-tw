@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/20/2020
-ms.openlocfilehash: 38cf9f5d5102fa4cc322b1a9c7134db85de87814
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: b33fab7657827733b2c5e7724666a3800686c8d9
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90943818"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91564777"
 ---
 # <a name="azure-database-for-mysql-single-server"></a>適用於 MySQL 的 Azure 資料庫單一伺服器
 
@@ -20,7 +20,7 @@ ms.locfileid: "90943818"
 - 單一伺服器 
 - 彈性伺服器 (預覽)
 
-在本文中，我們將提供單一伺服器部署模型之核心概念的概觀和簡介。 如需深入了解彈性伺服器部署模式，請參閱[彈性伺服器概觀](flexible-server/index.yml)
+在本文中，我們將提供單一伺服器部署模型之核心概念的概觀和簡介。 如需深入了解彈性伺服器部署模式，請參閱[彈性伺服器概觀](flexible-server/index.yml)。 如需如何決定適合您工作負載部署選項的詳細資訊，請參閱[在 Azure 中選擇正確的 MySQL 伺服器選項](select-right-deployment-type.md)。
 
 ## <a name="overview"></a>概觀
 

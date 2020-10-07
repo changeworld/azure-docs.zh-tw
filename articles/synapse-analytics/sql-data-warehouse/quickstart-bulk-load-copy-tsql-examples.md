@@ -4,17 +4,17 @@ description: 概述大量載入資料的驗證機制
 services: synapse-analytics
 author: kevinvngo
 ms.service: synapse-analytics
-ms.topic: overview
+ms.topic: quickstart
 ms.subservice: sql-dw
 ms.date: 07/10/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6f54a8993b602110e35c410338b6f0a51109738f
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: e3b22b831deca47eece70d337a99346ae472c7ee
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88603885"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569475"
 ---
 # <a name="securely-load-data-using-synapse-sql"></a>使用 Synapse SQL 安全地載入資料
 
@@ -76,7 +76,7 @@ WITH (
 3. 您必須開啟 Azure 儲存體帳戶 [防火牆與虛擬網路] 設定功能表下方的 [允許信任的 Microsoft 服務存取此儲存體帳戶]。 如需詳細資訊請參閱此[指南](../../storage/common/storage-network-security.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#exceptions)。
 #### <a name="steps"></a>步驟
 
-1. 在 PowerShell 中，透過 Azure Active Directory (AAD) **註冊您的 SQL Server**：
+1. 在 PowerShell 中，透過 Azure Active Directory **註冊您的 SQL Server**：
 
    ```powershell
    Connect-AzAccount
@@ -110,10 +110,10 @@ WITH (
     )
     ```
 
-## <a name="d-azure-active-directory-authentication-aad"></a>D. Azure Active Directory 驗證 (AAD)
+## <a name="d-azure-active-directory-authentication"></a>D. Azure Active Directory 驗證
 #### <a name="steps"></a>步驟
 
-1. 在您的儲存體帳戶底下，瀏覽至 [存取控制 (IAM)]，然後選取 [新增角色指派]。 將**儲存體 Blob 資料擁有者、參與者或讀取者** Azure 角色指派給您的 AAD 使用者。 
+1. 在您的儲存體帳戶底下，瀏覽至 [存取控制 (IAM)]，然後選取 [新增角色指派]。 將**儲存體 Blob 資料擁有者、參與者或讀取者** Azure 角色指派給您的 Azure AD 使用者。 
 
     > [!IMPORTANT]
     > 指定**儲存體** **Blob 資料**的擁有者、參與者或讀取者 Azure 角色。 這些角色與 Azure 內建的擁有者、參與者和讀取者角色不同。
@@ -136,11 +136,11 @@ WITH (
 ## <a name="e-service-principal-authentication"></a>E. 服務主體驗證
 #### <a name="steps"></a>步驟
 
-1. [建立 Azure Active Directory (AAD) 應用程式](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application)
+1. [建立 Azure Active Directory 應用程式](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application)
 2. [取得應用程式識別碼](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)
 3. [取得驗證金鑰](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#create-a-new-application-secret)
 4. [取得 V1 OAuth 2.0 權杖端點](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#step-4-get-the-oauth-20-token-endpoint-only-for-java-based-applications)
-5. [將讀取、寫入和執行權限指派給儲存體帳戶上的 AAD 應用程式](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#step-3-assign-the-azure-ad-application-to-the-azure-data-lake-storage-gen1-account-file-or-folder)
+5. [將讀取、寫入和執行權限指派給儲存體帳戶上的 Azure AD 應用程式](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#step-3-assign-the-azure-ad-application-to-the-azure-data-lake-storage-gen1-account-file-or-folder)
 6. 現在，您可以執行 COPY 陳述式：
 
     ```sql

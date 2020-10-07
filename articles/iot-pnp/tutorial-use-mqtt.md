@@ -1,51 +1,44 @@
 ---
-title: 使用 MQTT 建立 IoT 隨插即用預覽版裝置用戶端 | Microsoft Docs
-description: 直接使用 MQTT 通訊協定來建立 IoT 隨插即用預覽裝置用戶端，而不需使用 Azure IoT 裝置 SDK
+title: 使用 MQTT 建立 IoT 隨插即用裝置用戶端 | Microsoft Docs
+description: 直接使用 MQTT 通訊協定建立 IoT 隨插即用裝置用戶端，而無須使用 Azure IoT 裝置 SDK
 author: ericmitt
 ms.author: ericmitt
 ms.date: 05/13/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 56463b03fe633959585e14271050bcdaacb25663
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 2e05165a78a54d6aaa49c28a649a97235891f927
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87535179"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91577912"
 ---
-# <a name="use-mqtt-to-develop-an-iot-plug-and-play-preview-device-client"></a>使用 MQTT 開發 IoT 隨插即用預覽版裝置用戶端
+# <a name="use-mqtt-to-develop-an-iot-plug-and-play-device-client"></a>使用 MQTT 開發 IoT 隨插即用裝置用戶端
 
 如果可能，您應該使用其中一個 Azure IoT 裝置 SDK 來建置您的 IoT 隨插即用裝置用戶端。 不過，在使用記憶體限制裝置的案例中，您可能需要使用 MQTT 程式庫來與 IoT 中樞通訊。
 
 本教學課程中的範例會使用 [Eclipse Mosquitto](http://mosquitto.org/) MQTT 程式庫和 Visual Studio。 本教學課程中的步驟假設您在開發電腦上使用 Windows。
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
 ## <a name="prerequisites"></a>必要條件
+
+[!INCLUDE [iot-pnp-prerequisites](../../includes/iot-pnp-prerequisites.md)]
 
 若要在 Windows 上完成此教學課程，請在您的本機 Windows 環境上安裝下列軟體：
 
-* [Visual Studio (Community、Professional 或 Enterprise)](https://visualstudio.microsoft.com/downloads/) - 在[安裝](https://docs.microsoft.com/cpp/build/vscpp-step-0-installation?view=vs-2019) Visual Studio 時，請確實包含**使用 C++ 的桌面開發**工作負載
+* [Visual Studio (Community、Professional 或 Enterprise)](https://visualstudio.microsoft.com/downloads/) - 在[安裝](https://docs.microsoft.com/cpp/build/vscpp-step-0-installation?view=vs-2019&preserve-view=true) Visual Studio 時，請確實包含**使用 C++ 的桌面開發**工作負載
 * [Git](https://git-scm.com/download/)
 * [CMake](https://cmake.org/download/)
-* [Azure IoT 總管](howto-install-iot-explorer.md)
 
-[!INCLUDE [iot-pnp-prepare-iot-hub.md](../../includes/iot-pnp-prepare-iot-hub.md)]
-
-執行下列命令，以取得裝置的共用存取簽章，以連線到您的中樞。 記下此字串，您稍後會在此教學課程中用到：
-
-```azurecli-interactive
-az iot hub generate-sas-token -d <YourDeviceID> -n <YourIoTHubName>
-az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
-```
-
-使用 IoT 中樞連接字串來設定 **Azure IoT 總管**工具：
+使用 *Azure IoT 總管*工具，將新裝置新增至您的 IoT 中樞。 當您完成下列程序後，您即已設定 IoT 中樞和 Azure IoT 總管工具：[設定 IoT 隨插即用的環境快速入門和教學課程](set-up-environment.md)：
 
 1. 啟動 **Azure IoT 總管**工具。
-1. 在 [設定] 頁面上，將 IoT 中樞連接字串貼入 [應用程式組態] 設定中。
-1. 選取 [儲存並連線]。
-1. 您先前新增的裝置會出現在主要頁面上的裝置清單中。
+1. 在 [IoT 中樞] 頁面上，選取 [檢視此中樞內的裝置]。
+1. 在 [裝置] 頁面上，選取 [+ 新增]。
+1. 建立使用自動產生的對稱金鑰、名稱為 *my-mqtt-device* 的裝置。
+1. 在 [裝置身分識別] 頁面上，展開 [具有 SAS 權杖的連接字串]。
+1. 選擇 [主要金鑰] 作為 [對稱金鑰]、將到期時間設為 60 分鐘，然後選取 [產生]。
+1. 複製產生的 **SAS 權杖連接字串**，稍後將會在本教學課程中使用此值。
 
 ## <a name="clone-sample-repo"></a>複製範例存放庫
 
@@ -89,11 +82,11 @@ cd vcpkg
 
 在 [方案總管] 中，以滑鼠右鍵按一下 **TelemetryMQTTWin32** 專案，然後選取 [設定為啟始專案]。
 
-在 **TelemetryMQTTWin32** 專案中，開啟 **MQTT_Mosquitto.cpp** 來源檔案。 以您先前記下的裝置詳細資料，更新連線資訊定義。 要取代的權杖字串預留位置為：
+在 **TelemetryMQTTWin32** 專案中，開啟 **MQTT_Mosquitto.cpp** 來源檔案。 以您先前記下的裝置詳細資料，更新連線資訊定義。 取代下列項目的權杖字串預留位置：
 
-* `IOTHUBNAME` 識別碼，其中包含您建立的 IoT 中樞名稱。
-* `DEVICEID` 識別碼，其中包含您建立的裝置名稱。
-* `PWD` 識別碼，其中包含您為裝置產生的共用存取簽章值。
+* `IOTHUBNAME` 識別碼取代為您的 IoT 中樞名稱。
+* `DEVICEID` 識別碼取代為 `my-mqtt-device`。
+* `PWD` 識別碼取代為您為裝置產生的 SAS 權杖連接字串的正確部分。 請使用從 `SharedAccessSignature sr=` 到結尾處的連接字串部分。
 
 啟動 Azure IoT 總管並開始接聽遙測，以確認程式碼運作正常。
 
@@ -103,18 +96,18 @@ cd vcpkg
 
 在 Azure IoT 總管中，您可以看到裝置並非 IoT 隨插即用裝置：
 
-:::image type="content" source="media/tutorial-use-mqtt/non-pnp-iot-explorer.png" alt-text="Azure IoT 總管中的非 IoT 隨插即用裝置":::
+:::image type="content" source="media/tutorial-use-mqtt/non-pnp-iot-explorer.png" alt-text="MQTT 範例應用程式的輸出":::
 
 ### <a name="make-the-device-an-iot-plug-and-play-device"></a>讓裝置成為 IoT 隨插即用裝置
 
 IoT 隨插即用裝置必須遵循一組簡單的慣例。 如果裝置在連線時傳送模型識別碼，就會變成 IoT 隨插即用裝置。
 
-在此範例中，您會將模型識別碼** 新增至 MQTT 連線封包。 您會在 `USERNAME` 中將模型識別碼當作 querystring 參數傳遞，並將 `api-version` 變更為 `2020-05-31-preview`：
+在此範例中，您會將模型識別碼新增至 MQTT 連線封包。 您會在 `USERNAME` 中將模型識別碼當作 querystring 參數傳遞，並將 `api-version` 變更為 `2020-09-30`：
 
 ```c
 // computed Host Username and Topic
 //#define USERNAME IOTHUBNAME ".azure-devices.net/" DEVICEID "/?api-version=2018-06-30"
-#define USERNAME IOTHUBNAME ".azure-devices.net/" DEVICEID "/?api-version=2020-05-31-preview&model-id=dtmi:com:example:Thermostat;1"
+#define USERNAME IOTHUBNAME ".azure-devices.net/" DEVICEID "/?api-version=2020-09-30&model-id=dtmi:com:example:Thermostat;1"
 #define PORT 8883
 #define HOST IOTHUBNAME //".azure-devices.net"
 #define TOPIC "devices/" DEVICEID "/messages/events/"
@@ -124,16 +117,13 @@ IoT 隨插即用裝置必須遵循一組簡單的慣例。 如果裝置在連線
 
 裝置對應項現在包含模型識別碼：
 
-:::image type="content" source="media/tutorial-use-mqtt/model-id-iot-explorer.png" alt-text="在 Azure IoT 總管中檢視模型識別碼":::
+:::image type="content" source="media/tutorial-use-mqtt/model-id-iot-explorer.png" alt-text="MQTT 範例應用程式的輸出":::
 
 您現在可以瀏覽 IoT 隨插即用元件：
 
-:::image type="content" source="media/tutorial-use-mqtt/components-iot-explorer.png" alt-text="在 Azure IoT 總管中檢視元件":::
+:::image type="content" source="media/tutorial-use-mqtt/components-iot-explorer.png" alt-text="MQTT 範例應用程式的輸出":::
 
 您現在可以修改裝置程式碼，以實作模型中所定義的遙測、屬性和命令。 若要查看使用 Mosquitto 程式庫之控溫器裝置的範例實作，請參閱 GitHub 上的 [在 Windows 中使用 MQTT PnP 搭配 Azure IoTHub (不含 IoT SDK)](https://github.com/Azure-Samples/IoTMQTTSample/tree/master/src/Windows/PnPMQTTWin32)。
-
-> [!NOTE]
-> 根據預設，共用存取簽章的有效時間只有 60 分鐘。
 
 > [!NOTE]
 >用戶端會使用 `IoTHubRootCA_Baltimore.pem` 根憑證檔案來驗證連線的 IoT 中樞身分識別。
@@ -147,9 +137,7 @@ IoT 隨插即用裝置必須遵循一組簡單的慣例。 如果裝置在連線
 * `DEVICE_TELEMETRY_MESSAGE` 定義裝置用來向 IoT 中樞傳送遙測的主題。
 
 如需 MQTT 的詳細資訊，請造訪 GitHub 存放庫中的[適用於 Azure IoT 的 MQTT 範例](https://github.com/Azure-Samples/IoTMQTTSample/)。
-
-[!INCLUDE [iot-pnp-clean-resources.md](../../includes/iot-pnp-clean-resources.md)]
-
+  
 ## <a name="next-steps"></a>後續步驟
 
 在本教學課程中，您已了解如何修改 MQTT 裝置用戶端，以遵循 IoT 隨插即用慣例。 深入了解 IoT 隨插即用，請參閱：
