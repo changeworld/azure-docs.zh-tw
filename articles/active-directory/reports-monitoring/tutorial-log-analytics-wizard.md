@@ -11,12 +11,12 @@ author: MarkusVi
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 93caf52d8b4a11f9843ad5f18ebf968d1d0730cd
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 643010ef1f6e941a57673a711e1871aafd1e341d
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89226202"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361903"
 ---
 # <a name="tutorial-configure-the-log-analytics-wizard"></a>教學課程：設定記錄分析精靈
 
@@ -72,7 +72,7 @@ ms.locfileid: "89226202"
 
 3. 在記錄分析工作區頁面上，按一下 [新增]。
 
-    ![新增](./media/tutorial-log-analytics-wizard/add.png)
+    ![此螢幕擷取畫面顯示 Log Analytics 工作區頁面中的 [新增] 按鈕。](./media/tutorial-log-analytics-wizard/add.png)
 
 4.  在 [建立 Log Analytics 工作區] 頁面上，執行下列步驟：
 
@@ -305,7 +305,7 @@ ms.locfileid: "89226202"
 
 3. 在 [監視] 區段中，按一下 [活頁簿]。
 
-    ![活頁簿](./media/tutorial-log-analytics-wizard/workbooks.png)
+    ![此螢幕擷取畫面顯示 Azure 入口網站功能表中已選取活頁簿的 [監視]。](./media/tutorial-log-analytics-wizard/workbooks.png)
 
 4. 在 [快速入門] 區段中，按一下 [空白]。
 
@@ -357,7 +357,7 @@ ms.locfileid: "89226202"
 
 3. 在 [監視] 區段中，按一下 [活頁簿]。
 
-    ![活頁簿](./media/tutorial-log-analytics-wizard/workbooks.png)
+    ![此螢幕擷取畫面顯示功能表中已選取活頁簿的 [監視]。](./media/tutorial-log-analytics-wizard/workbooks.png)
 
 4. 在 [條件式存取] 區段中，按一下 [條件式存取深入解析和報告]。
 

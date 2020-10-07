@@ -9,12 +9,12 @@ ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
 ms.custom: has-adal-ref
-ms.openlocfilehash: c578958616e4b4d2d7d3aef1de1650566e0bd40e
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 52964c906df7a96685c8eb80c1d23ef9a9efc6e1
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496401"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361835"
 ---
 # <a name="use-multi-factor-aad-authentication-with-synapse-sql-ssms-support-for-mfa"></a>搭配使用多重要素 AAD 驗證與 Synapse SQL (MFA 的 SSMS 支援)
 
@@ -22,13 +22,11 @@ Synapse SQL 支援使用 *Active Directory 通用驗證*從 SQL Server Managemen
 
 本文討論各種驗證選項之間的差異，以及與使用通用驗證相關聯的限制。 
 
-**下載最新的 SSMS** - 在用戶端電腦上，從[下載 SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx) 下載最新版的 SSMS。 
-
-**下載最新的 SSMS** - 在用戶端電腦上，從[下載 SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) 下載最新版的 SSMS。
+**下載最新的 SSMS** - 在用戶端電腦上，從[下載 SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 下載最新版的 SSMS。
 
 對於本文討論的所有功能，請至少使用 2017 年 7 月的 17.2 版。  最近的連線對話方塊看起來應該會類似下圖：
 
-![1mfa-universal-connect](./media/mfa-authentication/1mfa-universal-connect.png "完成 [使用者名稱] 方塊。")  
+![此螢幕擷取畫面顯示 [連線至伺服器] 對話方塊，您可以在其中選取伺服器名稱和驗證選項。](./media/mfa-authentication/1mfa-universal-connect.png "完成 [使用者名稱] 方塊。")  
 
 ## <a name="the-five-authentication-options"></a>五個驗證選項  
 
@@ -51,7 +49,7 @@ Azure MFA 有助於保護資料和應用程式的存取，同時又滿足使用�
 
 ### <a name="azure-ad-domain-name-or-tenant-id-parameter"></a>Azure AD 網域名稱或租用戶 ID 參數
 
-從 [SSMS 第 17 版](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)開始，從其他 Azure Active Directory 匯入目前 Active Directory 的使用者 (如來賓使用者)，可以在連線時提供 Azure AD 網域名稱或租用戶 ID。 
+從 [SSMS 第 17 版](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)開始，從其他 Azure Active Directory 匯入目前 Active Directory 的使用者 (如來賓使用者)，可以在連線時提供 Azure AD 網域名稱或租用戶 ID。 
 
 來賓使用者包括從其他 Azure AD、Microsoft 帳戶 (例如 outlook.com、hotmail.com、live.com) 或其他帳戶 (例如 gmail.com) 邀請的使用者。 此資訊可讓 [Active Directory 通用驗證搭配 MFA 驗證]  識別正確的驗證授權單位。 支援 Microsoft 帳戶 (MSA) (如 outlook.com、hotmail.com、live.com) 或非 MSA 帳戶時也需要此選項。 
 
@@ -61,11 +59,11 @@ Azure MFA 有助於保護資料和應用程式的存取，同時又滿足使用�
 
 如果使用者是 Azure AD (與 Azure 伺服器連結) 的原生使用者，不是 MSA 帳戶，則不需要網域名稱或租用戶 ID。 
 
-若要輸入參數 (從 SSMS 第 17.2 版開始)，請在 [連線到資料庫]  對話方塊中完成對話方塊，並選取 [Active Directory - Universal with MFA]  ，按一下 [選項]  ，完成 [使用者名稱]  方塊，然後按一下 [連線屬性]  索引標籤。 
+若要輸入參數 (從 SSMS 第 17.2 版開始)，請在 [連線到資料庫] 對話方塊中完成對話方塊，並選取 [Active Directory - Universal with MFA]，選取 [選項]，完成 [使用者名稱] 方塊，然後選取 [連線屬性] 索引標籤。 
 
 核取 [AD 網域名稱或租用戶 ID]  方塊並提供驗證授權單位，如網域名稱 (**contosotest.onmicrosoft.com**) 或租用戶 ID 的 GUID。  
 
-   ![mfa-tenant-ssms](./media/mfa-authentication/mfa-tenant-ssms.png)
+   ![此螢幕擷取畫面顯示 [連線屬性] 索引標籤中的 [連線至伺服器]，已在其中輸入值。](./media/mfa-authentication/mfa-tenant-ssms.png)
 
 如果您執行的是 SSMS 18.x 或更新版本，則來賓使用者不再需要 AD 網域名稱或租用戶識別碼，因為 18.x 或更新版本能自動辨識。
 
@@ -80,7 +78,7 @@ Azure MFA 有助於保護資料和應用程式的存取，同時又滿足使用�
 
 根據預設，使用者群組只有 connect 權限，而任何進一步的資料存取權則需以一般方式進行授與。 
 
-請注意，身為來賓使用者的使用者 `steve@gmail.com` 必須核取此方塊，並且在 SSMS [連線屬性]  對話方塊中新增 AD 網域名稱 `contosotest.onmicrosoft.com`。 [AD 網域名稱或租用戶 ID]  選項僅對 [通用驗證搭配 MFA 連線] 選項提供支援，否則會呈現灰色。
+身為來賓使用者，`steve@gmail.com` 必須核取此方塊，並且在 SSMS [連線屬性] 對話方塊中新增 AD 網域名稱 `contosotest.onmicrosoft.com`。 [AD 網域名稱或租用戶 ID]  選項僅對 [通用驗證搭配 MFA 連線] 選項提供支援，否則會呈現灰色。
 
 ## <a name="universal-authentication-limitations-for-synapse-sql"></a>Synapse SQL 的通用驗證限制
 

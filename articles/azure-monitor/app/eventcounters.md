@@ -4,16 +4,16 @@ description: 監視 Application Insights 中的系統和自訂 .NET/.NET Core Ev
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f8ae36545eecbbad2a6695ca979fb7da8380e8cc
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: a9af36f3c81ee52b41a8eed875c1a286b95bf838
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89657018"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803638"
 ---
 # <a name="eventcounters-introduction"></a>EventCounter 簡介
 
-`EventCounter` 是 .NET/.NET Core 機制，用來發佈和取用計數器或統計資料。 [本](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.Tracing/documentation/EventCounterTutorial.md)文件提供 `EventCounters` 的概觀及其發佈和取用方式的範例。 所有作業系統平台 (Windows、Linux 和 macOS) 都支援 EventCounter。 您可以將其視為只有在 Windows 系統中才支援的 [PerformanceCounter](/dotnet/api/system.diagnostics.performancecounter) 的跨平台對等項目。
+[`EventCounter`](/dotnet/core/diagnostics/event-counters) 是 .NET/.NET Core 機制，用來發行和使用計數器或統計資料。 所有作業系統平台 (Windows、Linux 和 macOS) 都支援 EventCounter。 您可以將其視為只有在 Windows 系統中才支援的 [PerformanceCounter](/dotnet/api/system.diagnostics.performancecounter) 的跨平台對等項目。
 
 雖然使用者可以發佈任何自訂 `EventCounters` 以符合其需求，但 .Net Core 3.0 和更新版本的執行時間預設會發佈一組這些計數器。 本檔將逐步解說 `EventCounters` 在 Azure 應用程式 Insights 中收集和查看 (系統定義或使用者定義) 所需的步驟。
 
@@ -23,32 +23,9 @@ Application Insights 支援 `EventCounters` 以其 `EventCounterCollectionModule
 
 ## <a name="default-counters-collected"></a>收集的預設計數器
 
-針對在 .NET Core 3.0 或更高版本中執行的應用程式，SDK 會自動收集下列計數器。 計數器名稱的格式將為「類別|計數器」。
+從 [ASPNETCORE SDK](asp-net-core.md) 或 [WorkerService sdk](worker-service.md)的2.15.0 版本開始，預設不會收集任何計數器。 模組本身已啟用，因此使用者可以直接新增所需的計數器來收集它們。
 
-|類別 | 計數器|
-|---------------|-------|
-|`System.Runtime` | `cpu-usage` |
-|`System.Runtime` | `working-set` |
-|`System.Runtime` | `gc-heap-size` |
-|`System.Runtime` | `gen-0-gc-count` |
-|`System.Runtime` | `gen-1-gc-count` |
-|`System.Runtime` | `gen-2-gc-count` |
-|`System.Runtime` | `time-in-gc` |
-|`System.Runtime` | `gen-0-size` |
-|`System.Runtime` | `gen-1-size` |
-|`System.Runtime` | `gen-2-size` |
-|`System.Runtime` | `loh-size` |
-|`System.Runtime` | `alloc-rate` |
-|`System.Runtime` | `assembly-count` |
-|`System.Runtime` | `exception-count` |
-|`System.Runtime` | `threadpool-thread-count` |
-|`System.Runtime` | `monitor-lock-contention-count` |
-|`System.Runtime` | `threadpool-queue-length` |
-|`System.Runtime` | `threadpool-completed-items-count` |
-|`System.Runtime` | `active-timer-count` |
-
-> [!NOTE]
-> 從 2.15.0-Beta3 版本的 [ASPNETCORE SDK](asp-net-core.md) 或 [WorkerService SDK](worker-service.md)開始，預設不會收集任何計數器。 模組本身已啟用，因此使用者可以直接新增所需的計數器來收集它們。
+若要取得 .NET 執行時間所發行的已知計數器清單，請參閱 [可用的計數器](/dotnet/core/diagnostics/event-counters#available-counters) 檔。
 
 ## <a name="customizing-counters-to-be-collected"></a>自訂要收集的計數器
 
@@ -67,7 +44,7 @@ Application Insights 支援 `EventCounters` 以其 `EventCounterCollectionModule
         services.ConfigureTelemetryModule<EventCounterCollectionModule>(
             (module, o) =>
             {
-                // This removes all default counters.
+                // This removes all default counters, if any.
                 module.Counters.Clear();
 
                 // This adds a user defined counter "MyCounter" from EventSource named "MyEventSource"

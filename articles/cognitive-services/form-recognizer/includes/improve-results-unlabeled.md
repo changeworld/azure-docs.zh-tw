@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 06/12/2019
 ms.author: pafarley
 ms.openlocfilehash: f0761847c3677b324ef16c5987eb9a1561dbcbe0
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "75379281"
 ---
 檢查 `"pageResults"` 節點下每個索引鍵/值結果的 `"confidence"` 值。 您也應該查看 `"readResults"` 節點中的信賴分數，其對應至文字讀取作業。 讀取結果的信賴度並不會影響索引鍵/值擷取結果的信賴度，因此您應該同時檢查這兩者。

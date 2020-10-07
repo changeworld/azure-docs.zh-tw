@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/24/2020
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 310fee91ed98409e5a724d1be8de7bc9ccb5601b
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: 0db34a615c9d92401e760c702feb0dbbf13ce01d
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91570919"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803869"
 ---
 # <a name="online-backup-and-on-demand-data-restore-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中進行線上備份及隨選資料還原
 
@@ -88,6 +88,13 @@ Azure Cosmos DB 可以在遇到上述所有情況時還原資料。 還原時，
 當您不小心刪除或修改容器內的一或多個專案時 (資料損毀案例) ，您必須指定要還原至的時間。 如果資料損毀，時間就很重要。 因為容器是即時的，所以備份仍在執行中，因此，如果您等待超過保留期限 (預設值為8小時) 會覆寫備份。 **為了防止覆寫備份，請至少將帳戶的備份保留期增加到7天。最好是從資料損毀的8小時內增加您的保留期。**
 
 如果您不小心刪除或損毀資料，請在8小時內聯絡 [Azure 支援](https://azure.microsoft.com/support/options/) ，讓 Azure Cosmos DB 的團隊可以協助您從備份還原資料。 如此一來，Azure Cosmos DB 支援小組將擁有足夠的時間來還原您的帳戶。
+
+> [!NOTE]
+> 還原資料之後，不會將所有來源功能或設定都傳送至還原的帳戶。 下列設定不會傳送至新的帳戶：
+
+> * VNET 存取控制清單
+> * 預存程式、觸發程式和使用者定義函數
+> * 多區域設定  
 
 如果您在資料庫層級布建輸送量，此案例中的備份和還原程式會發生在整個資料庫層級，而不是在個別容器層級上。 在這種情況下，您無法選取要還原的一部分容器。
 

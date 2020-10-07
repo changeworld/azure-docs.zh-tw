@@ -5,12 +5,12 @@ author: FlorianBorn71
 ms.author: flborn
 ms.date: 06/16/2020
 ms.topic: tutorial
-ms.openlocfilehash: 43c11575be084354e4c9287b44b5847d4d086aff
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 56aa0d91372ac2d21a20f28b1044f0811c716b0c
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90084391"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358027"
 ---
 # <a name="tutorial-set-up-physically-based-rendering-materials-in-maya"></a>教學課程：在 Maya 中設定以實體為基礎的轉譯材質
 
@@ -79,7 +79,7 @@ Azure 遠端轉譯會使用計量來進行測量，而向上方向是 Y 軸。 �
 1. 在 [重複特殊選項] 對話方塊中，針對 [幾何類型] 選取 [執行個體] 選項。 
 1. 選取 [重複特殊項目]。
 
-   ![執行個體化](media/instancing.jpg)
+   ![此螢幕擷取畫面顯示已開啟 [重複特殊選項] 對話方塊，且已選取 [重複特殊項目] 的 Maya 視窗。](media/instancing.jpg)
 
 此動作會建立物件的執行個體。 您可以單獨移動、旋轉或調整其父系和該父系的其他執行個體。 
 

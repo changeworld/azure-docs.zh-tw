@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: f82ea8361cef76b2030e5b257b3d3351968d8050
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e8de33e7417ab6421792d341474c320a5f63423b
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91322184"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803818"
 ---
 # <a name="troubleshoot"></a>疑難排解
 
@@ -88,7 +88,7 @@ ms.locfileid: "91322184"
 
 ## <a name="video-recorded-with-mrc-does-not-reflect-the-quality-of-the-live-experience"></a>以 MRC 錄製的影片不會反映即時體驗的品質
 
-您可以透過[混合實境擷取 (MRC)](https://docs.microsoft.com/windows/mixed-reality/mixed-reality-capture-for-developers)，在 Hololens 上錄製影片。 不過，產生的影片品質會比即時體驗差，原因有兩個：
+您可以透過 [混合實境擷取 (MRC) ](https://docs.microsoft.com/windows/mixed-reality/mixed-reality-capture-for-developers)，在 HoloLens 上記錄影片。 不過，產生的影片品質會比即時體驗差，原因有兩個：
 * 影片的畫面播放速率上限為 30 Hz，而不是 60 Hz。
 * 影片影像不會經過[延遲階段重新投影](../overview/features/late-stage-reprojection.md)處理步驟，因此影片畫質會較為抖動。
 
@@ -185,7 +185,7 @@ Azure 遠端轉譯會在 Unity 轉譯管線中執行勾點，組合影片的畫�
 
 ### <a name="library-not-found-error-for-uwp-application-or-dll"></a>UWP 應用程式或 Dll 發生「找不到程式庫」錯誤
 
-在 c + + Nuget 套件中，有檔案檔案會 `microsoft.azure.remoterendering.Cpp.targets` 定義要使用的二進位類別。 若要識別 `UWP` ，檔案中的條件會檢查 `ApplicationType == 'Windows Store'` 。 因此必須確保專案中已設定此類型。 當您透過 Visual Studio 的專案嚮導建立 UWP 應用程式或 Dll 時，就會發生這種情況。
+在 c + + NuGet 套件中，有檔案檔案會 `microsoft.azure.remoterendering.Cpp.targets` 定義要使用的二進位類別。 若要識別 `UWP` ，檔案中的條件會檢查 `ApplicationType == 'Windows Store'` 。 因此必須確保專案中已設定此類型。 當您透過 Visual Studio 的專案嚮導建立 UWP 應用程式或 Dll 時，就會發生這種情況。
 
 ## <a name="unstable-holograms"></a>不穩定的全像投影
 
@@ -193,7 +193,7 @@ Azure 遠端轉譯會在 Unity 轉譯管線中執行勾點，組合影片的畫�
 
 全像投影不穩定 (晃動、變形、抖動 或全像投影跳動) 的另一個原因可能是網路連線不佳，特別是網路頻寬不足，或延遲過高。 網路連線品質良好的指標是 [效能統計資料](../overview/features/performance-queries.md) 值 `ARRServiceStats.VideoFramesReused`。 重複使用的畫面表示需要在用戶端重複使用舊影片畫面的情況 (因為沒有新的影片畫面可用)，例如因為封包遺失或網路延遲等的差異。 如果 `ARRServiceStats.VideoFramesReused` 經常大於零，這就表示網路有問題。
 
-另一個要查看的值是 `ARRServiceStats.LatencyPoseToReceiveAvg`。 此值應始終低於 100 毫秒。 如果您看到較高的值，這表示您連線的資料中心距離太遠。
+另一個要查看的值是 `ARRServiceStats.LatencyPoseToReceiveAvg`。 此值應始終低於 100 毫秒。 如果看到更高的值，可能表示您已連線至距離太遠的資料中心。
 
 如需各種可能降低風險方式的清單，請參閱[網路連線指導方針](../reference/network-requirements.md#guidelines-for-network-connectivity)。
 
@@ -245,7 +245,9 @@ ARR 有一項功能，可用來判斷表面是否可以進行 z 打擊：棋盤�
 
 * 表面是以觸控形式特意撰寫的，例如 decals 或牆上的文字。
 
+## <a name="graphics-artifacts-using-multi-pass-stereo-rendering-in-native-c-apps"></a>在原生 c + + 應用程式中使用多路傳遞身歷聲轉譯的圖形構件
 
+在某些情況下，自訂原生 c + + 應用程式會使用多重傳遞的立體轉譯模式來進行本機內容 (在呼叫 [**BlitRemoteFrame**](../concepts/graphics-bindings.md#render-remote-image) 之後，在個別的行程中轉譯為左方和右邊的) 可能會觸發驅動程式 bug。 Bug 會導致不具決定性的點陣化問題，而導致本機內容的個別三角形或三角形部分會隨機消失。 基於效能考慮，建議您以更新式的單一傳遞身歷聲轉譯技術（例如使用 **SV_RenderTargetArrayIndex**）來呈現本機內容。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -4,10 +4,10 @@ description: 在本快速入門中，您將遵循步驟來呼叫 REST API 的 Re
 ms.date: 06/29/2020
 ms.topic: quickstart
 ms.openlocfilehash: 8776a107484691ffab72f2e1622ed5837375b7fb
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/01/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "85802540"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-rest-api"></a>快速入門：使用 REST API 執行您的第一個 Resource Graph 查詢

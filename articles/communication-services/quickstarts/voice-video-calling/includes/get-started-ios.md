@@ -6,14 +6,14 @@ ms.author: marobert
 ms.date: 07/24/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: c67440453e5ca8395464369d75bfac418a564764
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: bb0af58c9abc4fad701b1d0927f4c13e1fdcca49
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90943940"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91376385"
 ---
-在本快速入門中，您將了解如何使用適用於 iOS 的 Azure 通訊服務通話用戶端程式庫以開始通話。
+在本快速入門中，您將了解如何使用適用於 iOS 的 Azure 通訊服務通話用戶端程式庫開始進行通話。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -28,26 +28,26 @@ ms.locfileid: "90943940"
 
 ### <a name="creating-the-xcode-project"></a>建立 XCode 專案
 
-在 Xcode 中建立新的 iOS 專案，並選取 [單一檢視應用程式] 範本。 本教學課程使用 [SwiftUI 架構](https://developer.apple.com/xcode/swiftui/)，因此您應該將 [語言] 設定為 [Swift]，以及將 [使用者介面] 設定為 [SwiftUI]。 在此快速入門期間，您不會建立單元測試或 UI 測試。 您可以取消核取 [包含單元測試]，也可以取消勾選 [包含 UI 測試]。
+在 Xcode 中建立新的 iOS 專案，並選取 [單一檢視應用程式] 範本。 本教學課程使用 [SwiftUI 架構](https://developer.apple.com/xcode/swiftui/)，因此您應將 [語言] 設定為 [Swift]，並將 [使用者介面] 設定為 [SwiftUI]。 進行本快速入門期間，您不會建立測試。 您可以取消核取 [包含測試]。
 
-:::image type="content" source="../media/ios/xcode-new-ios-project.png" alt-text="顯示 Xcode 內建立新的 [新增專案] 視窗的螢幕擷取畫面。":::
+:::image type="content" source="../media/ios/xcode-new-ios-project.png" alt-text="顯示 Xcode 內 [新增專案] 視窗的螢幕擷取畫面。":::
 
 ### <a name="install-the-package"></a>安裝套件
 
 將 Azure 通訊服務通話用戶端程式庫及其相依性 (AzureCore.framework 和 AzureCommunication.framework) 新增至您的專案。
 
 > [!NOTE]
-> 隨著 AzureCommunicationCalling SDK 的發行，您會發現 bash 指令檔 `BuildAzurePackages.sh`。 當執行 `sh ./BuildAzurePackages.sh` 時，指令檔會提供您已產生架構套件的路徑，該套件需要在下一個步驟中的範例應用程式中匯入。 請注意，您必須在執行指令碼之前，先設定 Xcode 命令列工具（如果尚未完成）：啟動 Xcode，選取 [喜好設定 -> 位置]。 選擇命令列工具的 Xcode 版本。
+> 隨著 AzureCommunicationCalling SDK 的發行，您會發現 bash 指令檔 `BuildAzurePackages.sh`。 當執行 `sh ./BuildAzurePackages.sh` 時，指令檔會提供您已產生架構套件的路徑，該套件需要在下一個步驟中的範例應用程式中匯入。 請注意，您必須在執行指令碼之前，先設定 Xcode 命令列工具（如果尚未完成）：啟動 Xcode，選取 [喜好設定 -> 位置]。 選擇命令列工具的 Xcode 版本。 **BuildAzurePackages.sh 指令碼僅適用於 Xcode 11.5 和更新版本**
 
-1. 下載適用於 iOS 的 Azure 通訊服務通話用戶端程式庫。
+1. [下載](https://github.com/Azure/Communication/releases)適用於 iOS 的 Azure 通訊服務通話用戶端程式庫。
 2. 在 Xcode 中，按一下您的專案檔，然後選取建置目標，以開啟專案設定編輯器。
 3. 在 [一般] 索引標籤底下，瀏覽至 [架構、程式庫和內嵌內容] 區段，然後按一下 [+] 圖示。
-4. 在對話方塊的左下方，選擇 [新增檔案]，瀏覽至未解壓縮用戶端程式庫套件的 **AzureCommunicationCalling.framework** 目錄。
+4. 在對話方塊的左下方，使用下拉式清單選擇 [新增檔案]，瀏覽至未解壓縮的用戶端程式庫套件的 **AzureCommunicationCalling.framework** 目錄。
     1. 重複最後一個步驟以新增 **AzureCore.framework** 和 **AzureCommunication.framework**。
 5. 開啟專案設定編輯器的 [建置設定] 索引標籤，並瀏覽至 [搜尋路徑] 區段。 針對包含 **AzureCommunicationCalling** 的目錄，新增新的**架構搜尋路徑**項目。
     1. 新增另一個「架構搜尋路徑」項目，指向包含相依性的資料夾。
 
-:::image type="content" source="../media/ios/xcode-framework-search-paths.png" alt-text="顯示 XCode 中更新架構搜尋路徑的螢幕擷取畫面。":::
+:::image type="content" source="../media/ios/xcode-framework-search-paths.png" alt-text="顯示 Xcode 內 [新增專案] 視窗的螢幕擷取畫面。":::
 
 ### <a name="request-access-to-the-microphone"></a>要求存取麥克風
 
@@ -121,7 +121,7 @@ struct ContentView: View {
 | ACSCallClient | CallClient 是通話用戶端程式庫的主要進入點。|
 | ACSCallAgent | CallAgent 是用來啟動和管理通話。 |
 | CommunicationUserCredential | CommunicationUserCredential 會當做權杖認證使用，以具現化 CallAgent。| 
-| CommunicationIndentifier | CommunicationIndentifier 是用來代表使用者的身分識別，可以是下列其中一項：CommunicationUser/PhoneNumber/CallingApplication。 |
+| CommunicationIdentifier | CommunicationIdentifier 用來代表使用者的身分識別，可以是下列其中一項：CommunicationUser/PhoneNumber/CallingApplication。 |
 
 ## <a name="authenticate-the-client"></a>驗證用戶端
 
@@ -190,15 +190,15 @@ func endCall()
 
 ## <a name="run-the-code"></a>執行程式碼
 
-您可以藉由選取 [產品]  >  [執行] 或使用 (&#8984;-R) 鍵盤快速鍵，在 iOS 模擬器上建置執行應用程式。
+您可以藉由選取 [產品] > [執行] 或使用 (&#8984;-R) 鍵盤快速鍵，在 iOS 模擬器上建置並執行應用程式。
 
-:::image type="content" source="../media/ios/quick-start-make-call.png" alt-text="快速入門應用程式的最終外觀與風格":::
+:::image type="content" source="../media/ios/quick-start-make-call.png" alt-text="顯示 Xcode 內 [新增專案] 視窗的螢幕擷取畫面。":::
 
 您可以在文字欄位中提供使用者識別碼並且點選 [開始通話] 按鈕，以進行外撥 VOIP 通話。 呼叫 `8:echo123` 會將您連線到 Echo Bot，這非常適合用於開始使用和驗證音訊裝置。 
 
 > [!NOTE]
 > 第一次進行通話時，系統會提示您需要麥克風的存取權。 在實際執行環境應用程式中，您應該使用 `AVAudioSession` API [檢查權限狀態](https://developer.apple.com/documentation/uikit/protecting_the_user_s_privacy/requesting_access_to_protected_resources)，並在未授與權限時，正常地更新應用程式的行為。
 
-## <a name="sample"></a>範例
+## <a name="sample-code"></a>範例程式碼
 
-您可以從 [GitHub](https://github.com/Azure/Communication/tree/master/samples/AzureCommunicationCalling/iOS/Swift) 下載範例應用程式
+您可以從 [GitHub](https://github.com/Azure/Communication/tree/master/samples/Add%20Voice%20Calling/iOS/Swift) 下載範例應用程式

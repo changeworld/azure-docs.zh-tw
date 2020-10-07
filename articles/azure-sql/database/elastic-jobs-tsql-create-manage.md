@@ -11,12 +11,12 @@ ms.author: jaredmoo
 author: jaredmoo
 ms.reviewer: sstein
 ms.date: 02/07/2020
-ms.openlocfilehash: 5c05db4d6e0c98935fc13325b5656f8023c6228e
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: bbecfac4bfd3d5ce1510cb671b93df5f4982cbc4
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91443350"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803852"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs-preview"></a>使用 Transact-sql (T-sql) 來建立和管理彈性資料庫工作 (preview) 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -1023,13 +1023,13 @@ command 必須是有效的 T-SQL 指令碼，且後續會由此作業步驟執�
 要新增成員的目標群組名稱。 target_group_name 是 nvarchar(128)，沒有預設值。
 
 [ ** \@ membership_type =** ] ' membership_type '  
-指定是否要包含或排除目標群組成員。 target_group_name 是 nvarchar(128)，預設值為「包含」。 target_group_name 的有效值為「包含」或「排除」。
+指定是否要包含或排除目標群組成員。 target_group_name 是 nvarchar(128)，預設值為「包含」。 Membership_type 的有效值為「包含」或「排除」。
 
 [ ** \@ target_type =** ] ' target_type '  
 包含伺服器中的所有資料庫、彈性集區中的所有資料庫、分區對應中的所有資料庫或個別資料庫的目標資料庫或資料庫集合的類型。 target_type 是 nvarchar(128)，沒有預設值。 Target_type 的有效值為 'SqlServer'、'SqlElasticPool'、'Sql Database' 或 'SqlShardMap'。
 
 [ ** \@ refresh_credential_name =** ] ' refresh_credential_name '  
-伺服器的名稱。 refresh_credential_name 是 nvarchar(128)，沒有預設值。
+資料庫範圍認證的名稱。 refresh_credential_name 是 nvarchar(128)，沒有預設值。
 
 [ ** \@ server_name =** ] ' server_name '  
 應新增至指定目標群組的伺服器名稱。 當 target_type 為 ‘SqlServer’ 時，即應指定 server_name。 server_name 是 nvarchar(128)，沒有預設值。
@@ -1041,7 +1041,7 @@ command 必須是有效的 T-SQL 指令碼，且後續會由此作業步驟執�
 應新增至指定目標群組的彈性集區名稱。 當 target_type 為 ‘SqlElasticPool’ 時，即應指定 elastic_pool_name。 elastic_pool_name 是 nvarchar(128)，沒有預設值。
 
 [ ** \@ shard_map_name =** ] ' shard_map_name '  
-應新增至指定目標群組的分區對應集區名稱。 當 target_type 為 ‘SqlSqlShardMap’ 時，即應指定 elastic_pool_name。 shard_map_name 是 nvarchar(128)，沒有預設值。
+應新增至指定目標群組的分區對應集區名稱。 當 target_type 為 ' SqlShardMap ' 時，應指定 elastic_pool_name。 shard_map_name 是 nvarchar(128)，沒有預設值。
 
 [ ** \@ target_id =** ] target_group_id 輸出  
 在目標群組成員新增至目標群組時指派給該成員的目標識別碼。 target_id 是 uniqueidentifier 類型的輸出變數，預設值為 NULL。

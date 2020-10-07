@@ -8,25 +8,25 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/26/2020
 ms.author: aahi
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 3a6c89c3932adb4f9465172ca64b9356db1f624a
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-js
+ms.openlocfilehash: be06154c95b14443024c6f163c955769f5b05d07
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406993"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91376752"
 ---
 使用本快速入門，開始使用 JavaScript 用戶端程式庫從 Bing 圖像式搜尋服務取得影像見解。 雖然 Bing 圖像式搜尋具有與大部分程式設計語言相容的 REST API，但此用戶端程式庫可提供簡單的方法，將服務整合到您的應用程式。 此範例的原始程式碼可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/visualSearch.js) 上找到。 
 
-[參考文件](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-visualsearch/?view=azure-node-latest) | [程式庫來源程式碼](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-visualsearch) | [套件 (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-visualsearch) | [範例](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/)
+[參考文件](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-visualsearch/?view=azure-node-latest&preserve-view=true) | [程式庫來源程式碼](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-visualsearch) | [套件 (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-visualsearch) | [範例](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/)
 
 ## <a name="prerequisites"></a>Prerequisites
-* [Node.js](https://www.nodejs.org/)
-* 適用於 JavaScript 的 Bing 圖像式搜尋用戶端程式庫
-    * 若要使用 Bing 圖像式搜尋用戶端程式庫來設定主控台應用程式，請執行下列命令：
-        1. `npm install ms-rest-azure`
-        2. 第 1 課：建立 Windows Azure 儲存體物件`npm install azure-cognitiveservices-visualsearch`。
 
+* 最新版的 [Node.js](https://nodejs.org/en/download/)。
+* [適用於 JavaScript 的 Bing 圖像式搜尋 SDK](https://www.npmjs.com/package/@azure/cognitiveservices-visualsearch)
+     *  若要安裝，請執行 `npm install @azure/cognitiveservices-visualsearch`
+* 來自 `@azure/ms-rest-azure-js` 套件中的 `CognitiveServicesCredentials` 類別，用來驗證用戶端。
+     * 若要安裝，請執行 `npm install @azure/ms-rest-azure-js`
 
 [!INCLUDE [cognitive-services-bing-visual-search-signup-requirements](~/includes/cognitive-services-bing-visual-search-signup-requirements.md)]
 
@@ -40,8 +40,8 @@ ms.locfileid: "87406993"
     const os = require("os");
     const async = require('async');
     const fs = require('fs');
-    const Search = require('azure-cognitiveservices-visualsearch');
-    const CognitiveServicesCredentials = require('ms-rest-azure').CognitiveServicesCredentials;
+    const Search = require('@azure/cognitiveservices-visualsearch');
+    const CognitiveServicesCredentials = require('@azure/ms-rest-azure-js').CognitiveServicesCredentials;
     
     let keyVar = 'YOUR-VISUAL-SEARCH-ACCESS-KEY';
     let credentials = new CognitiveServicesCredentials(keyVar);

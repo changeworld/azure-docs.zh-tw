@@ -1,7 +1,7 @@
 ---
 title: 教學課程：使用您自己的資料
 titleSuffix: Azure Machine Learning
-description: Azure ML 入門系列的第 4 部分，說明如何在遠端訓練執行中使用您自己的資料。
+description: Azure Machine Learning 入門系列的第 4 部分，說明如何在遠端訓練執行中使用您自己的資料。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,46 +11,46 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: tracking-python
-ms.openlocfilehash: 876ba76655572979a1d831a1ca07e5f3871a3283
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 13d43eb788c750a2f24033a6138ebf00ac57fffe
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90929340"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372559"
 ---
 # <a name="tutorial-use-your-own-data-part-4-of-4"></a>教學課程：使用您自己的資料 (第 4 部，共 4 部)
 
 本教學課程會示範如何上傳和使用您自己的資料，以在 Azure Machine Learning 中訓練機器學習模型。
 
-本教學課程是**四部分教學課程系列的第四部分**，您會在其中了解 Azure Machine Learning 的基本概念，以及在 Azure 中完成作業型機器學習工作。 本教學課程建基於此系列的[第 1 部分：設定](tutorial-1st-experiment-sdk-setup-local.md)、[第 2 部分：執行 "Hello World"](tutorial-1st-experiment-hello-world.md) 及 [第 3 部分：訓練模型](tutorial-1st-experiment-sdk-train.md)。
+本教學課程是*四部分教學課程系列的第 4 部分*，您會在其中了解 Azure Machine Learning 的基本概念，以及在 Azure 中完成作業型機器學習工作。 本教學課程建基於您在[第 1 部分：設定](tutorial-1st-experiment-sdk-setup-local.md)、[第 2 部分：執行 "Hello World"](tutorial-1st-experiment-hello-world.md) 及[第 3 部分：訓練模型](tutorial-1st-experiment-sdk-train.md)。
 
-在[第 3 部分：訓練模型](tutorial-1st-experiment-sdk-train.md)中，資料下載方式是使用 PyTorch API 中的內建 `torchvision.datasets.CIFAR10` 方法。 不過，在許多情況下，您會在遠端訓練回合中使用自己的資料。 本文將說明 Azure Machine Learning 中可用來處理自己資料的工作流程。
+在[第 3 部分：定型模型](tutorial-1st-experiment-sdk-train.md)中，資料下載方式是透過 PyTorch API 中的內建 `torchvision.datasets.CIFAR10` 方法。 不過，在許多情況下，您會在遠端訓練回合中使用自己的資料。 本文將說明 Azure Machine Learning 中可用來處理自己資料的工作流程。
 
 在本教學課程中，您：
 
 > [!div class="checklist"]
-> * 設定訓練指令碼以使用本機目錄中的資料
-> * 在本機測試訓練指令碼
-> * 將資料上傳至 Azure
-> * 建立控制指令碼
-> * 了解新的 Azure Machine Learning 概念 (傳遞參數、資料集、資料存放區)
-> * 提交並執行您的訓練指令碼
-> * 在雲端中檢視程式碼輸出
+> * 設定訓練指令碼以使用本機目錄中的資料。
+> * 在本機測試訓練指令碼。
+> * 將資料上傳至 Azure。
+> * 建立控制指令碼。
+> * 了解新的 Azure Machine Learning 概念 (傳遞參數、資料集、資料存放區)。
+> * 提交並執行您的訓練指令碼。
+> * 在雲端中檢視程式碼輸出。
 
 ## <a name="prerequisites"></a>Prerequisites
 
-* 完成該系列的[第 3 部分](tutorial-1st-experiment-sdk-train.md)。
+* 完成系列的[第 3 部分](tutorial-1st-experiment-sdk-train.md)。
 * Python 語言和機器學習工作流程的簡介知識。
-* 本機開發環境。 這包括 (但不限於) Visual Studio Code、Jupyter 或 PyCharm。
-* Python (版本 3.5-3.7)。
+* Visual Studio Code、Jupyter 或 PyCharm 等本機開發環境。
+* Python (版本 3.5 至 3.7)。
 
 ## <a name="adjust-the-training-script"></a>調整訓練指令碼
 現在 Azure Machine Learning 中有執行中的訓練指令碼 (tutorial/src/train.py)，而且您可以監視模型效能。 讓我們藉由引進引數來將訓練指令碼參數化。 使用引數可讓您輕鬆比較不同的超參數。
 
-目前，我們的訓練指令碼會設定為每次執行時下載 CIFAR10 資料集。 下列 Python 程式碼已調整為從目錄讀取資料。
+我們的訓練指令碼現在會設定為每次執行時下載 CIFAR10 資料集。 下列 Python 程式碼已調整為從目錄讀取資料。
 
 >[!NOTE] 
-> 使用 `argparse` 將指令碼參數化。
+> 使用 `argparse` 參數化指令碼。
 
 ```python
 # tutorial/src/train.py
@@ -130,7 +130,7 @@ if __name__ == "__main__":
 
 ### <a name="understanding-the-code-changes"></a>了解程式碼變更
 
-`train.py` 中使用的程式碼已利用 `argparse` 程式庫來設定 `data_path`、`learning_rate` 和 `momentum`。
+`train.py` 中的程式碼已使用 `argparse` 程式庫來設定 `data_path`、`learning_rate` 和 `momentum`。
 
 ```python
 # .... other code
@@ -184,7 +184,7 @@ python src/train.py --data_path ./data --learning_rate 0.003 --momentum 0.92
 
 ## <a name="upload-the-data-to-azure"></a>將資料上傳至 Azure
 
-若要在 Azure Machine Learning 中執行此指令碼，您必須讓您的訓練資料可在 Azure 中使用。 您的 Azure Machine Learning 工作區配備了「預設」的**資料存放區** - Azure Blob 儲存體帳戶，可用來儲存訓練資料。
+若要在 Azure Machine Learning 中執行此指令碼，您必須讓您的訓練資料可在 Azure 中使用。 您的 Azure Machine Learning 工作區配備「預設」 資料存放區。 這是您可以用來儲存訓練資料的 Azure Blob 儲存體帳戶。
 
 >[!NOTE] 
 > Azure Machine Learning 可讓您連結其他雲端式資料存放區來儲存您的資料。 如需詳細資訊，請參閱[資料存放區文件](./concept-data.md)。  
@@ -199,12 +199,12 @@ datastore = ws.get_default_datastore()
 datastore.upload(src_dir='./data', target_path='datasets/cifar10', overwrite=True)
 ```
 
-`target_path` 會指定資料存放區上用來上傳 CIFAR10 資料的路徑。
+`target_path` 值會指定資料存放區上用來上傳 CIFAR10 資料的路徑。
 
 >[!TIP] 
 > 雖然您使用 Azure Machine Learning 來上傳資料，但您可以使用 [Azure 儲存體總管](https://azure.microsoft.com/features/storage-explorer/)來上傳特定檔案。 如果您需要 ETL 工具，可以使用 [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/introduction) 將您的資料內嵌到 Azure 中。
 
-執行 Python 檔案以上傳資料 (注意：上傳應快速且小於 60 秒)。
+執行 Python 檔案以上傳資料。 (上傳應快速且小於 60 秒。)
 
 ```bash
 python 05-upload-data.py
@@ -271,7 +271,7 @@ if __name__ == "__main__":
       `dataset = Dataset.File.from_files( ... )`
    :::column-end:::
    :::column span="2":::
-      [資料集](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py&preserve-view=true)會用來參考您上傳至 Azure Blob 存放區的資料。 資料集是在您資料之上的抽象層，其設計目的是為了改善可靠性和可信度。
+      [資料集](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py&preserve-view=true)會用來參考您上傳至 Azure Blob 儲存體的資料。 資料集是在您資料之上的抽象層，其設計目的是為了改善可靠性和可信度。
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -283,7 +283,7 @@ if __name__ == "__main__":
    :::column-end:::
 :::row-end:::
 
-## <a name="submit-run-to-azure-machine-learning"></a>提交回合至 Azure Machine Learning
+## <a name="submit-the-run-to-azure-machine-learning"></a>提交回合至 Azure Machine Learning
 
 現在請重新提交回合以使用新的設定：
 
@@ -291,11 +291,11 @@ if __name__ == "__main__":
 python 06-run-pytorch-data.py
 ```
 
-這會在 Azure Machine Learning Studio 中列印實驗的 URL。 如果您瀏覽至該連結，就能夠看到您的程式碼正在執行。
+此程式碼會在 Azure Machine Learning Studio 中列印實驗的 URL。 如果您移至該連結，就能夠看到您的程式碼正在執行。
 
-### <a name="inspect-the-70_driver_log-log-file"></a>檢查 70_driver_log 記錄檔
+### <a name="inspect-the-log-file"></a>檢查記錄檔
 
-在 Azure Machine Learning Studio 中，瀏覽至實驗回合 (按一下上方資料格的 URL 輸出)，然後按一下 [輸出 + 記錄]。 按一下 70_driver_log.txt 檔案 - 您應該會看到下列輸出：
+在 Studio 中，移至實驗執行 (藉由選取先前的 URL 輸出)，後面接著 [輸出 + 記錄]。 選取 `70_driver_log.txt` 檔案。 您應該會看見下列輸出：
 
 ```txt
 Processing 'input'.
@@ -331,8 +331,8 @@ LIST FILES IN DATA PATH...
 
 注意：
 
-1. Azure Machine Learning 已自動為您將 Blob 存放區掛接到計算叢集。
-2. 控制指令碼中使用的 ``dataset.as_named_input('input').as_mount()`` 會解析為掛接點
+- Azure Machine Learning 已自動為您將 Blob 儲存體掛接到計算叢集。
+- 控制指令碼中使用的 ``dataset.as_named_input('input').as_mount()`` 會解析為掛接點。
 
 ## <a name="clean-up-resources"></a>清除資源
 
@@ -348,4 +348,4 @@ LIST FILES IN DATA PATH...
 
 現在您已有了模型，接著請了解：
 
-* 如何[使用 Azure Machine Learning 部署模型](how-to-deploy-and-where.md)
+* 如何[使用 Azure Machine Learning 部署模型](how-to-deploy-and-where.md)。

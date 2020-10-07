@@ -8,12 +8,12 @@ ms.topic: tutorial
 author: KishorIoT
 ms.author: nandab
 ms.date: 07/31/2020
-ms.openlocfilehash: b98406984f2c9f2adfca030369a6ea3d47a786f3
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: c7ddff70d24fe87380c4bf1439811042418ac76a
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88762772"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91369564"
 ---
 # <a name="tutorial-create-a-video-analytics---object-and-motion-detection-application-in-azure-iot-central"></a>教學課程：在 Azure IoT Central 中建立影片分析 - 物件和動作偵測應用程式
 
@@ -111,7 +111,7 @@ ms.locfileid: "88762772"
 
 1. 選取 [建立]。
 
-    :::image type="content" source="./media/tutorial-video-analytics-create-app/new-application.png" alt-text="Azure IoT Central 的建立應用程式頁面":::
+    :::image type="content" source="./media/tutorial-video-analytics-create-app/new-application.png" alt-text="設定適用於 AMS 的 AAD 應用程式":::
 
 ### <a name="retrieve-the-configuration-data"></a>擷取設定資料
 
@@ -119,11 +119,11 @@ ms.locfileid: "88762772"
 
 在 [管理] 區段中選取**您的應用程式**，並記下 scratchpad.txt 檔案中的**應用程式 URL** 和**應用程式識別碼**：
 
-:::image type="content" source="./media/tutorial-video-analytics-create-app/administration.png" alt-text="管理":::
+:::image type="content" source="./media/tutorial-video-analytics-create-app/administration.png" alt-text="設定適用於 AMS 的 AAD 應用程式":::
 
 選取 [API 權杖]，然後針對**操作員**角色產生名為 **LVAEdgeToken** 的新權杖：
 
-:::image type="content" source="./media/tutorial-video-analytics-create-app/token.png" alt-text="產生權杖":::
+:::image type="content" source="./media/tutorial-video-analytics-create-app/token.png" alt-text="設定適用於 AMS 的 AAD 應用程式":::
 
 記下 scratchpad.txt 檔案中的權杖，以便稍後使用。 關閉對話方塊之後，您就無法再次檢視權杖。
 
@@ -221,7 +221,7 @@ ms.locfileid: "88762772"
 
     請還不要瀏覽部署資訊清單。 如果您這樣做，部署精靈會預期每個模組都要有介面，但您只需要公開 **LvaEdgeGatewayModule**的介面。 您會在稍後的步驟中上傳資訊清單。
 
-    :::image type="content" source="./media/tutorial-video-analytics-create-app/upload-deployment-manifest.png" alt-text="請勿上傳部署資訊清單":::
+    :::image type="content" source="./media/tutorial-video-analytics-create-app/upload-deployment-manifest.png" alt-text="設定適用於 AMS 的 AAD 應用程式":::
 
     完成時，選取 下一步: **:** 。
 
@@ -237,7 +237,7 @@ ms.locfileid: "88762772"
 
 在 [LVA Edge 閘道] 頁面上，選取 [+ 取代資訊清單]。
 
-:::image type="content" source="./media/tutorial-video-analytics-create-app/replace-manifest.png" alt-text="取代資訊清單":::
+:::image type="content" source="./media/tutorial-video-analytics-create-app/replace-manifest.png" alt-text="設定適用於 AMS 的 AAD 應用程式":::
 
 瀏覽至 lva-configuration 資料夾，然後選取您先前編輯的 deployment.amd64.json 資訊清單檔案。 選取 [上傳] 。 驗證完成之後，請選取 [取代]。
 
@@ -252,7 +252,7 @@ ms.locfileid: "88762772"
 
 然後選取 [儲存]。
 
-:::image type="content" source="media/tutorial-video-analytics-create-app/relationships.png" alt-text="新增關聯性":::
+:::image type="content" source="media/tutorial-video-analytics-create-app/relationships.png" alt-text="設定適用於 AMS 的 AAD 應用程式":::
 
 ### <a name="add-views"></a>新增檢視
 
@@ -274,7 +274,7 @@ ms.locfileid: "88762772"
     * 顯示**系統活動訊號**遙測的上一個已知值磚 (1x1)。
     * 顯示**連結相機**遙測的上一個已知值磚 (1x1)。
 
-    :::image type="content" source="media/tutorial-video-analytics-create-app/gateway-dashboard.png" alt-text="儀表板":::
+    :::image type="content" source="media/tutorial-video-analytics-create-app/gateway-dashboard.png" alt-text="設定適用於 AMS 的 AAD 應用程式":::
 
 1. 選取 [儲存]。
 

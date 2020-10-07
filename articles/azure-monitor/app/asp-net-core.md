@@ -4,12 +4,12 @@ description: 監視 ASP.NET Core Web 應用程式的可用性、效能和使用�
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 04/30/2020
-ms.openlocfilehash: ac742aae88b3e3c62ffca857dcb690fa71434482
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: eae6117f82f3bb138edb6cea23a2c052e19fb0cf
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90006754"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803586"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>ASP.NET Core 應用程式的 Application Insights
 
@@ -25,13 +25,13 @@ ms.locfileid: "90006754"
 * **部署方法**：架構相依或獨立式。
 * **網頁伺服器**：IIS (網際網路資訊伺服器) 或 Kestrel。
 * **裝載平台**：Azure App Service、Azure VM、Docker、Azure Kubernetes Service (AKS) 等的 Web Apps 功能。
-* **.Net Core 執行階段版本**： 1. xx、2. xx 或 3. xx
+* **.Net core 版本**：所有正式 [支援](https://dotnet.microsoft.com/download/dotnet-core) 的 .net Core 版本。
 * **IDE**： Visual Studio、VS Code 或命令列。
 
 > [!NOTE]
 > ASP.NET Core 3.x 需要 [Application Insights 2.8.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.8.0) 或更新版本。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 正常運作的 ASP.NET Core 應用程式。 如果您需要建立 ASP.NET Core 應用程式，請遵循此 [ASP.NET Core 教學](/aspnet/core/getting-started/)課程。
 - 有效的 Application Insights 檢測金鑰。 需要有此金鑰才能將任何遙測資料傳送至 Application Insights。 如果您需要建立新的 Application Insights 資源以取得檢測金鑰，請參閱 [建立 Application Insights 資源](./create-new-resource.md)。
@@ -122,7 +122,7 @@ ms.locfileid: "90006754"
 ### <a name="user-secrets-and-other-configuration-providers"></a>使用者秘密和其他設定提供者
 
 如果您想要將檢測金鑰儲存在 ASP.NET Core 使用者密碼，或從另一個設定提供者抓取，您可以使用多載搭配 `Microsoft.Extensions.Configuration.IConfiguration` 參數。 例如： `services.AddApplicationInsightsTelemetry(Configuration);` 。
-從 ApplicationInsights. AspNetCore version [2.15.0-Beta3](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore)開始，呼叫 `services.AddApplicationInsightsTelemetry()` 會自動從應用程式讀取檢測金鑰 `Microsoft.Extensions.Configuration.IConfiguration` 。 不需要明確地提供 `IConfiguration` 。
+從 ApplicationInsights. AspNetCore 版本 [2.15.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore)開始，呼叫 `services.AddApplicationInsightsTelemetry()` 會自動從應用程式讀取檢測金鑰 `Microsoft.Extensions.Configuration.IConfiguration` 。 不需要明確地提供 `IConfiguration` 。
 
 ## <a name="run-your-application"></a>執行您的應用程式
 
@@ -151,7 +151,7 @@ ASP.NET Core 中的 [效能計數器](./web-monitor-performance.md) 支援有限
 
 ### <a name="eventcounter"></a>EventCounter
 
-`EventCounterCollectionModule` 預設為啟用，而且會從 .NET Core 3.x 應用程式收集一組預設的計數器。 [EventCounter](eventcounters.md)教學課程會列出一組預設收集的計數器。 它也包含自訂清單的指示。
+`EventCounterCollectionModule` 預設為啟用。 [EventCounter](eventcounters.md)教學課程中的指示說明如何設定要收集的計數器清單。
 
 ## <a name="enable-client-side-telemetry-for-web-applications"></a>針對 web 應用程式啟用用戶端遙測
 
@@ -226,9 +226,9 @@ public void ConfigureServices(IServiceCollection services)
 
 如需最新清單，請參閱[中 `ApplicationInsightsServiceOptions` 可設定的設定](https://github.com/microsoft/ApplicationInsights-dotnet/blob/develop/NETCORE/src/Shared/Extensions/ApplicationInsightsServiceOptions.cs)。
 
-### <a name="configuration-recommendation-for-microsoftapplicationinsightsaspnetcore-sdk-2150-beta3--above"></a>適用于 ApplicationInsights. AspNetCore SDK 2.15.0 的設定建議-Beta3 &
+### <a name="configuration-recommendation-for-microsoftapplicationinsightsaspnetcore-sdk-2150--above"></a>適用于 ApplicationInsights. AspNetCore SDK 2.15.0 & 的設定建議
 
-從 ApplicationInsights. AspNetCore SDK 版本 [2.15.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.15.0-beta3) 開始，建議您設定中提供的每項設定 `ApplicationInsightsServiceOptions` ，包括使用應用程式實例的 instrumentationkey `IConfiguration` 。 設定必須在 "ApplicationInsights" 區段底下，如下列範例所示。 appsettings.js的下一節會設定檢測金鑰，也會停用調適型取樣和效能計數器集合。
+從 ApplicationInsights. AspNetCore SDK 版本 [2.15.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.15.0) ，建議您設定中提供的每項設定 `ApplicationInsightsServiceOptions` ，包括使用應用程式實例的 instrumentationkey `IConfiguration` 。 設定必須在 "ApplicationInsights" 區段底下，如下列範例所示。 appsettings.js的下一節會設定檢測金鑰，也會停用調適型取樣和效能計數器集合。
 
 ```json
 {
@@ -244,7 +244,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ### <a name="sampling"></a>取樣
 
-適用于 ASP.NET Core 的 Application Insights SDK 同時支援固定速率和調適型取樣。 預設會啟用調適型取樣。 
+適用于 ASP.NET Core 的 Application Insights SDK 同時支援固定速率和調適型取樣。 預設會啟用調適型取樣。
 
 如需詳細資訊，請參閱 [設定 ASP.NET Core 應用程式的](./sampling.md#configuring-adaptive-sampling-for-aspnet-core-applications)調適型取樣。
 
@@ -335,7 +335,6 @@ public void ConfigureServices(IServiceCollection services)
     services.ConfigureTelemetryModule<EventCounterCollectionModule>(
             (module, o) =>
             {
-                module.Counters.Clear();
                 module.Counters.Add(new EventCounterCollectionRequest("System.Runtime", "gen-0-size"));
             }
         );
@@ -392,7 +391,7 @@ using Microsoft.ApplicationInsights.Channel;
 
 ### <a name="does-application-insights-support-aspnet-core-3x"></a>Application Insights 支援 ASP.NET Core 3.x 嗎？
 
-可以。 針對 ASP.NET Core 2.8.0 版或更高版本 [的 APPLICATION INSIGHTS SDK 進行](https://nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) 更新。 較舊版本的 SDK 不支援 ASP.NET Core 3.x。
+是。 針對 ASP.NET Core 2.8.0 版或更高版本 [的 APPLICATION INSIGHTS SDK 進行](https://nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) 更新。 較舊版本的 SDK 不支援 ASP.NET Core 3.x。
 
 此外，如果您使用 [此處](#enable-application-insights-server-side-telemetry-visual-studio)Visual Studio 的指示，請更新至最新版本的 Visual Studio 2019 (16.3.0 版) 以進行上架。 舊版的 Visual Studio 不支援 ASP.NET Core 3.x 應用程式的自動上線。
 
@@ -445,18 +444,14 @@ public class HomeController : Controller
 
 ### <a name="can-i-enable-application-insights-monitoring-by-using-tools-like-status-monitor"></a>我可以使用狀態監視器之類的工具來啟用 Application Insights 監視嗎？
 
-不會。 [狀態監視器](./monitor-performance-live-website-now.md) 和 [狀態監視器 v2](./status-monitor-v2-overview.md) 目前只支援 ASP.NET 4.x。
-
-### <a name="is-application-insights-automatically-enabled-for-my-aspnet-core-20-application"></a>我的 ASP.NET Core 2.0 應用程式會自動啟用 Application Insights 嗎？
-
-`Microsoft.AspNetCore.All`2.0 中繼套件包含 APPLICATION INSIGHTS SDK (version 2.1.0) 。 如果您在 Visual Studio 偵錯工具下執行應用程式，Visual Studio 會啟用 Application Insights，並在 IDE 本身的本機顯示遙測。 除非指定了檢測金鑰，否則遙測不會傳送到 Application Insights 服務。 建議您遵循這篇文章中的指示來啟用 Application Insights，即使是針對2.0 應用程式也是如此。
+否。 [狀態監視器](./monitor-performance-live-website-now.md) 和 [狀態監視器 v2](./status-monitor-v2-overview.md) 目前只支援 ASP.NET 4.x。
 
 ### <a name="if-i-run-my-application-in-linux-are-all-features-supported"></a>如果我在 Linux 中執行我的應用程式，是否支援所有功能？
 
-可以。 SDK 的功能支援在所有平臺上都相同，但有下列例外狀況：
+是。 SDK 的功能支援在所有平臺上都相同，但有下列例外狀況：
 
 * SDK 會收集 Linux 上的 [事件計數器](./eventcounters.md) ，因為只有 Windows 才支援 [效能計數器](./performance-counters.md) 。 大部分的度量都是一樣的。
-* 雖然 `ServerTelemetryChannel` 預設會啟用，但如果應用程式是在 Linux 或 MacOS 中執行，則通道不會自動建立本機儲存體資料夾，以在發生網路問題時暫時保留遙測。 由於這項限制，當發生暫時性的網路或伺服器問題時，遙測會遺失。 若要解決此問題，請設定通道的本機資料夾：
+* 雖然 `ServerTelemetryChannel` 預設會啟用，但如果應用程式是在 Linux 或 macOS 中執行，則通道不會自動建立本機儲存體資料夾，以在發生網路問題時暫時保留遙測。 由於這項限制，當發生暫時性的網路或伺服器問題時，遙測會遺失。 若要解決此問題，請設定通道的本機資料夾：
 
 ```csharp
 using Microsoft.ApplicationInsights.Channel;
@@ -474,6 +469,8 @@ using Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel;
     }
 ```
 
+這項限制不適用於 [2.15.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.15.0) 和更新版本。
+
 ### <a name="is-this-sdk-supported-for-the-new-net-core-3x-worker-service-template-applications"></a>新的 .NET Core 3.x 背景工作服務範本應用程式是否支援此 SDK？
 
 此 SDK 需要 `HttpContext` ，因此無法在任何非 HTTP 應用程式中運作，包括 .Net Core 3.x 背景工作服務應用程式。 請參閱 [這](worker-service.md) 份檔，以使用新發行的 ApplicationInsights. WorkerService SDK 在這類應用程式中啟用 application insights。
@@ -484,7 +481,7 @@ using Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel;
 
 如需最新的更新和錯誤修正， [請參閱版本](./release-notes.md)資訊。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [探索使用者流程](./usage-flows.md) ，以瞭解使用者如何流覽您的應用程式。
 * [設定快照集集合](./snapshot-debugger.md) ，以查看擲回例外狀況時的原始程式碼和變數狀態。

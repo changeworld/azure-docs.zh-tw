@@ -1,6 +1,6 @@
 ---
 title: 教學課程 - 在 .NET 中搭配使用 Azure Key Vault 與虛擬機器 | Microsoft Docs
-description: 在本教學課程中，您會設定 ASP.NET Core 應用程式以從金鑰保存庫讀取祕密。
+description: 在本教學課程中，您會在 ASP.NET Core 應用程式中設定虛擬機器，以從金鑰保存庫讀取祕密。
 services: key-vault
 author: msmbaldwin
 ms.service: key-vault
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/20/2020
 ms.author: mbaldwin
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: b4f832750f7a94a6a60cbb1d3ba630925dd4fff2
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: e1abc26296b1e3bd16bebf95d3489a4e95595e1a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021726"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336712"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-virtual-machine-in-net"></a>教學課程：在 .NET 中搭配使用 Azure Key Vault 與虛擬機器
 

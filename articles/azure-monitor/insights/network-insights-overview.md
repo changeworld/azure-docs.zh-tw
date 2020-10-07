@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/24/2020
-ms.openlocfilehash: 2559c4f54aa19df248ddf756e376809dea516997
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 5f076f477c36f96d1807ce7071720225a6df8e03
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91330943"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803801"
 ---
 # <a name="azure-monitor-for-networks-preview"></a>適用于網路 (預覽) 的 Azure 監視器
 針對所有已部署的網路資源，Azure 監視器 for Network 提供完整的 [健全狀況](https://docs.microsoft.com/azure/service-health/resource-health-checks-resource-types) 和計量觀點，而不需要任何 [設定](../platform/metrics-supported.md) 。  它也可讓您存取所有網路監視功能，例如連線 [監視器](../../network-watcher/connection-monitor-preview.md)、 [網路安全性群組的流量記錄 (nsg) ](../../network-watcher/network-watcher-nsg-flow-logging-overview.md)、使用 [分析](../../network-watcher/traffic-analytics.md)，以及其他網路 [診斷](../../network-watcher/network-watcher-monitoring-overview.md#diagnostics) 功能。
@@ -108,6 +108,43 @@ ms.locfileid: "91330943"
 
 ![診斷工具組索引標籤](media/network-insights-overview/azure-monitor-for-networks-diagnostic-toolkit.png)
 
+## <a name="troubleshooting"></a>疑難排解 
+
+如需一般疑難排解指引，請參閱專用的以活頁簿為基礎的深入解析 [疑難排解文章](troubleshoot-workbooks.md)。
+
+本節將協助您進行診斷，並針對您使用網路 Azure 監視器時可能遇到的一些常見問題進行疑難排解。 請使用下列清單，找到與您的特定問題相關的資訊。
+
+### <a name="resolving-performance-issues-or-failures"></a>解決效能問題或失敗
+
+若要協助針對您使用網路 Azure 監視器識別的任何網路相關問題進行疑難排解，請參閱故障資源的疑難排解檔。 以下列出適用于高用途服務的疑難排解連結。
+* 虛擬網路 (VNET) 
+* 應用程式閘道
+* VPN 閘道
+* ExpressRoute 
+* 負載平衡器 
+
+### <a name="why-dont-i-see-the-resources-from-all-the-subscriptions-i-have-selected"></a>為什麼我看不到我選取的所有訂用帳戶中的資源
+
+網路深入解析一次只能顯示5個訂用帳戶中的資源。 
+
+### <a name="i-want-to-make-changes-or-add-additional-visualizations-to-network-insights-how-do-i-do-so"></a>我想要進行變更，或將其他視覺效果新增至網路深入解析，我該怎麼做
+
+若要進行變更，請選取 [編輯模式] 以修改活頁簿，然後，您可以將工作儲存為新的活頁簿，並繫結至指定的訂用帳戶和資源群組。
+
+### <a name="what-is-the-time-grain-once-we-pin-any-part-of-the-workbooks"></a>釘選活頁簿的任何部分之後的時間細微性為何
+
+我們採用「自動」時間精細度，這具體上取決於選取的時間範圍。
+
+### <a name="what-is-the-time-range-when-any-part-of-the-workbook-is-pinned"></a>當活頁簿的任何部分釘選時的時間範圍
+
+時間範圍將取決於儀表板設定。
+
+### <a name="what-if-i-want-to-see-other-data-or-make-my-own-visualizations-how-can-i-make-changes-to-the-network-insights"></a>如果我想要查看其他資料或建立自己的視覺效果，該怎麼做？ 如何對 Network Insights 進行變更
+
+您可以透過使用編輯模式，編輯在任何側邊面板和詳細計量視圖中看到的活頁簿，然後將您的工作儲存為新的活頁簿，以進行所有新的變更。
+
+
 ## <a name="next-steps"></a>後續步驟
 
 - 深入瞭解 [什麼是 Azure 網路](../../network-watcher/network-watcher-monitoring-overview.md)監看員的網路監視？。
+- 檢閱[使用 Azure 監視器活頁簿建立互動式報表](../platform/workbooks-overview.md)，以了解設計活頁簿以提供支援的案例、如何撰寫新報表和自訂現有報表，以及其他資訊。

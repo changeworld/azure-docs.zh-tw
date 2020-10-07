@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 4fc5c44ab0fcee5cbf1faa2338f65fe12d779f37
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 67d6fb1f3cc359288ed942d915e186542a62b0fc
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85511785"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803937"
 ---
 # <a name="fail-over-to-a-storsimple-8000-series-physical-device"></a>容錯移轉至 StorSimple 8000 系列實體裝置
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 本教學課程說明出現災害時，將 StorSimple 8000 系列實體裝置容錯移轉至另一個 StorSimple 實體裝置所需要的步驟。 StorSimple 會使用裝置容錯移轉功能，將資料從資料中心的實體裝置來源移轉至另一個實體裝置。 本教學課程中的指導方針適用於執行軟體版本 Update 3 和更新版本的 StorSimple 8000 系列實體裝置。
 
@@ -32,7 +32,7 @@ ms.locfileid: "85511785"
 若要將 StorSimple 實體裝置容錯移轉至 StorSimple 雲端設備，請移至[容錯移轉至 StorSimple 雲端設備](storsimple-8000-device-failover-cloud-appliance.md)。 若要將實體裝置容錯移轉至本身的裝置，請移至[容錯移轉至相同的 StorSimple 實體裝置](storsimple-8000-device-failover-same-device.md)。
 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 請確定您已檢閱裝置容錯移轉的注意事項。 如需詳細資訊，請移至[裝置容錯移轉的一般注意事項](storsimple-8000-device-failover-disaster-recovery.md)。
 
@@ -54,7 +54,7 @@ ms.locfileid: "85511785"
     
 7. 在 [容錯移轉]**** 刀鋒視窗中，執行下列步驟︰
    
-   1. 按一下 [來源]****。 隨即顯示含有與雲端快照集相關聯之磁碟區的磁碟區容器。 只有顯示的容器才可進行容錯移轉。 在磁碟區容器清單中，選取您要容錯移轉的磁碟區容器。 **只會顯示與雲端快照集和離線磁碟區相關聯的磁碟區容器。**
+   1. 按一下 [ **來源**]。 隨即顯示含有與雲端快照集相關聯之磁碟區的磁碟區容器。 只有顯示的容器才可進行容錯移轉。 在磁碟區容器清單中，選取您要容錯移轉的磁碟區容器。 **只會顯示與雲端快照集和離線磁碟區相關聯的磁碟區容器。**
 
        ![選取來源](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev5.png)
    2. 按一下 [目標]****。 從可用裝置的下拉式清單中選取目標裝置，供上一步選取的磁碟區容器使用。 清單中只會顯示擁有足夠容量容納來源磁碟區容器的裝置。
@@ -75,7 +75,7 @@ ms.locfileid: "85511785"
    
    1. 為容錯移轉程序選取要用來做為目標裝置的裝置。
 
-       ![選取裝置](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev14.png)
+       ![選取裝置2](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev14.png)
 
    2. 移至 [磁碟區容器]**** 刀鋒視窗。 此時應會列出所有磁碟區容器以及舊裝置中的磁碟區。
 
