@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/05/2020
+ms.date: 10/06/2020
 ms.author: b-juche
-ms.openlocfilehash: b5c576211fe7bb202e7a27bee5ee3bfd90d74cf9
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 1c64bd10b34b61797cb3bf3de0cd7d2aa819e795
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91743092"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777120"
 ---
 # <a name="service-levels-for-azure-netapp-files"></a>Azure NetApp Files 的服務等級
 服務層級是容量集區的屬性。 服務層級會根據指派給磁片區的配額，定義並依容量集區中的磁片區允許的最大輸送量來區分。
@@ -63,10 +63,10 @@ Azure NetApp Files 支援三種服務層級： *Ultra*、 *Premium*和 *Standard
 
 若為 SAP Hana 系統，可以使用此容量集區來建立下列磁片區。 每個磁片區都會提供個別大小和輸送量，以符合您的應用程式需求：
 
-* SAP Hana 資料磁片區：大小為 4 TB，最高 704 MiB/秒
-* SAP Hana 記錄磁片區：大小為 0.5 TB，最多 256 MiB/秒
-* SAP Hana 共用磁片區：大小為 1 TB，最高 64 MiB/秒
-* SAP Hana 備份磁片區：大小為 6.5 TB，最多 256 MiB/秒
+* SAP Hana 資料磁片區：大小 4 TiB，最高 704 MiB/秒
+* SAP Hana 記錄磁片區：大小 0.5 TiB，最高可達 256 MiB/秒
+* SAP Hana 共用磁片區：大小 1 TiB，最高 64 MiB/秒
+* SAP Hana 備份磁片區：大小 4.5 TiB，最高可達 256 MiB/秒
 
 下圖說明 SAP Hana 磁片區的案例：
 

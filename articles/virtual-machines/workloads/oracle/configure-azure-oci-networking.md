@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/16/2020
 ms.author: rogardle
-ms.openlocfilehash: 7f5f3f4edccc6d23b8041051028273559bcffecd
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 5bb26a21317401ddbd0d9b8f8a9a501c78153842
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91325924"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776573"
 ---
 # <a name="set-up-a-direct-interconnection-between-azure-and-oracle-cloud-infrastructure"></a>設定 Azure 與 Oracle 雲端基礎結構之間的直接互連  
 
@@ -36,7 +36,7 @@ ms.locfileid: "91325924"
 
 ![跨雲端網路連接](media/configure-azure-oci-networking/azure-oci-connect.png)
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * 若要建立 Azure 與 OCI 之間的連線，您必須擁有作用中的 Azure 訂用帳戶和使用中的 OCI 租使用者。
 
@@ -66,7 +66,7 @@ ms.locfileid: "91325924"
     * 在 [ **提供者服務金鑰**] 中，貼上 ExpressRoute 服務金鑰。
     * 使用上一個步驟中劃分的第一個/30 私人 IP 位址空間，作為 **主要 BGP Ip 位址** 和 **次要 bgp ip** 位址的第二/30 私人 ip 位址空間。
         * 將 Oracle BGP IP 位址的第一個可用位址指派 (主要和次要) ，並將第二個位址指派給客戶 BGP IP 位址 (從 FastConnect 的觀點) 。 第一個可用的 IP 位址是/30 位址空間中的第二個 IP 位址 (第一個 IP 位址是由 Microsoft) 保留。
-    * 按一下頁面底部的 [新增] 。
+    * 按一下 [建立]。
 1. 使用路由表，透過動態路由閘道，完成將 FastConnect 連結至 Oracle 租使用者下的虛擬雲端網路。
 1. 流覽至 Azure，並確定 ExpressRoute 線路的 **提供者狀態** 已變更為 [已布 **建** ]，且已布建 **Azure 私人** 類型的對等互連。 這是下列步驟的先決條件。
 
@@ -96,7 +96,7 @@ Microsoft 已建立 Terraform 腳本來啟用網路互連的自動部署。 Terr
 
 若要刪除互連，必須依照指定的順序，遵循下列步驟。 若無法這樣做，將會導致「失敗狀態」 ExpressRoute 線路。
 
-1. 刪除 ExpressRoute 連接。 按一下連線頁面上的 [ **刪除** ] 圖示，以刪除連接。 如需詳細資訊，請參閱 [ExpressRoute 檔](../../../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md#delete-a-connection-to-unlink-a-vnet)集。
+1. 刪除 ExpressRoute 連接。 按一下連線頁面上的 [ **刪除** ] 圖示，以刪除連接。 如需詳細資訊，請參閱 [ExpressRoute 檔](../../../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md#clean-up-resources)集。
 1. 從 Oracle Cloud 主控台刪除 Oracle FastConnect。
 1. 一旦刪除 Oracle FastConnect 線路之後，您就可以刪除 Azure ExpressRoute 線路。
 

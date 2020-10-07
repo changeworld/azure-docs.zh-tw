@@ -1,16 +1,18 @@
 ---
 title: 快速入門：建立知識庫 - REST、C# - QnA Maker
 description: 這個以 C# REST 為基礎的快速入門會逐步引導您以程式設計方式建立範例 QnA Maker 知識庫，且該知識庫會出現在認知服務 API 帳戶的 Azure 儀表板中。
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.date: 12/16/2019
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
 ms.topic: how-to
-ms.openlocfilehash: 343dc5f0b8475a9fad3d9834f97cff0d0f4c75f6
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 6b64c29e6a26f2f9585e7f2c737f98e4646b1332
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89260079"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777724"
 ---
 # <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-c-with-rest"></a>快速入門：使用 c # 搭配 REST 在 QnA Maker 中建立知識庫
 

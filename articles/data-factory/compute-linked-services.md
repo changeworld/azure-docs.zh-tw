@@ -10,12 +10,12 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 ms.date: 05/08/2019
-ms.openlocfilehash: 3d8e667cd96cc6d7091682a4530633588591d3a4
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 5f02a38059ebd27879a3c8d44eee7e473711d0e7
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89483179"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776505"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Azure Data Factory 支援的計算環境
 
@@ -29,8 +29,7 @@ ms.locfileid: "89483179"
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | [隨選 HDInsight 叢集](#azure-hdinsight-on-demand-linked-service)或[您自己的 HDInsight 叢集](#azure-hdinsight-linked-service) | [Hive](transform-data-using-hadoop-hive.md)、[Pig](transform-data-using-hadoop-pig.md)、[Spark](transform-data-using-spark.md)、[MapReduce](transform-data-using-hadoop-map-reduce.md)、[Hadoop 串流](transform-data-using-hadoop-streaming.md) |
 | [Azure Batch](#azure-batch-linked-service)                   | [Custom](transform-data-using-dotnet-custom-activity.md)     |
-| [Azure Machine Learning Studio](#azure-machine-learning-studio-linked-service) | [Machine Learning 活動︰批次執行和更新資源](transform-data-using-machine-learning.md) |
-| [Azure Machine Learning](#azure-machine-learning-linked-service) | [Azure Machine Learning 執行管線](transform-data-machine-learning-service.md) |
+| [Azure Machine Learning Studio (傳統) ](#azure-machine-learning-studio-classic-linked-service) | [Machine Learning Studio (傳統) 活動：批次執行和更新資源](transform-data-using-machine-learning.md) |
 | [Azure Machine Learning](#azure-machine-learning-linked-service) | [Azure Machine Learning 執行管線](transform-data-machine-learning-service.md) |
 | [Azure Data Lake Analytics](#azure-data-lake-analytics-linked-service) | [Data Lake Analytics U-SQL](transform-data-using-data-lake-analytics.md) |
 | [AZURE sql](#azure-sql-database-linked-service)， [Azure Synapse Analytics (先前的 SQL 資料倉儲) ](#azure-synapse-analytics-linked-service)， [SQL Server](#sql-server-linked-service) | [預存程序](transform-data-using-stored-procedure.md) |
@@ -368,8 +367,8 @@ Azure Data Factory 服務可自動建立隨選 HDInsight 叢集來處理資料�
 | linkedServiceName | 與此 Azure Batch 連結服務相關聯的 Azure 儲存體服務連結名稱。 此連結服務用於執行活動所需的暫存檔案。 | 是      |
 | connectVia        | 將活動分派到此連結服務所用的整合執行階段。 您可以使用 Azure 整合執行階段或自我裝載整合執行階段。 如果未指定，就會使用預設的 Azure Integration Runtime。 | 否       |
 
-## <a name="azure-machine-learning-studio-linked-service"></a>Azure Machine Learning Studio 連結服務
-您可建立 Azure Machine Learning Studio 連結服務，以向 Data Factory 註冊 Machine Learning 批次評分端點。
+## <a name="azure-machine-learning-studio-classic-linked-service"></a>Azure Machine Learning Studio (傳統) 連結服務
+您可以建立 Azure Machine Learning Studio (傳統) 連結服務，以向 data factory 註冊 Machine Learning Studio (傳統) 批次評分端點。
 
 ### <a name="example"></a>範例
 
@@ -399,7 +398,7 @@ Azure Data Factory 服務可自動建立隨選 HDInsight 叢集來處理資料�
 | 類型                   | type 屬性應設為：**AzureML**。 | 是                                      |
 | mlEndpoint             | 批次評分 URL。                   | 是                                      |
 | apiKey                 | 已發佈的工作區模型的 API。     | 是                                      |
-| updateResourceEndpoint | Azure Machine Learning Web 服務端點 (用以藉由定型模型檔案更新預測性 Web 服務) 的更新資源 URL | 否                                       |
+| updateResourceEndpoint | Azure Machine Learning Studio (傳統) Web 服務端點的更新資源 URL，用來以定型的模型檔案來更新預測性 Web 服務 | 否                                       |
 | servicePrincipalId     | 指定應用程式的用戶端識別碼。     | 如果指定 updateResourceEndpoint 則需要 |
 | servicePrincipalKey    | 指定應用程式的金鑰。           | 如果指定 updateResourceEndpoint 則需要 |
 | tenant                 | 指定您的應用程式所在租用戶的資訊 (網域名稱或租用戶識別碼)。 將滑鼠游標暫留在 Azure 入口網站右上角，即可擷取它。 | 如果指定 updateResourceEndpoint 則需要 |

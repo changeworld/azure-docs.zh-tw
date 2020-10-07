@@ -4,14 +4,14 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: 5542ca2f50152e7588f32e9ac8717f691fdb4d63
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: eaa7efe761490a639acabd9fd6d91378e1259a67
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91377613"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91779247"
 ---
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
 - 已部署通訊服務資源。 [建立通訊服務資源](../../create-communication-resource.md)。
@@ -72,9 +72,9 @@ const oneToOneCall = callAgent.call([CommunicationUser]);
 ```
 
 ### <a name="place-a-1n-call-with-users-and-pstn"></a>使用使用者和 PSTN 撥出1： n 呼叫
-> [!WARNING]
-> PSTN 呼叫目前處於私人預覽狀態。 若要存取，請 [申請早期採用者計畫](https://aka.ms/ACS-EarlyAdopter)。
+
 若要對使用者和 PSTN 號碼進行1： n 呼叫，您必須指定 CommunicationUser 和兩個被呼叫端的電話號碼。
+
 您的通訊服務資源必須設定為允許 PSTN 呼叫。
 ```js
 

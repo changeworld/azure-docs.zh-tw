@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure Machine Learning 搭配 IoT 中樞資料進行天氣預測
-description: 使用 Azure Machine Learning，根據 IoT 中樞透過感應器收集的溫度和溼度資料來預測下雨的機會。
+title: 使用 Azure Machine Learning Studio (傳統) 搭配 IoT 中樞資料的氣象預報
+description: 使用 Azure Machine Learning Studio (傳統) 根據 IoT 中樞從感應器收集的溫度和濕度資料，來預測雨的機會。
 author: robinsh
 manager: philmea
 keywords: 氣象預報機器學習
@@ -10,24 +10,24 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 09/16/2020
 ms.author: robinsh
-ms.openlocfilehash: 5f51ffc3135ff35214a2c5c40cce1f2b3fcaf33e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8ba68e56d2475b1ff2fb3e63f291f76063ca62e7
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91290882"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777151"
 ---
-# <a name="weather-forecast-using-the-sensor-data-from-your-iot-hub-in-azure-machine-learning"></a>在 Azure Machine Learning 中使用 IoT 中樞的感應器資料進行氣象預報
+# <a name="weather-forecast-using-the-sensor-data-from-your-iot-hub-in-azure-machine-learning-studio-classic"></a>使用 Azure Machine Learning Studio 中 IoT 中樞的感應器資料進行氣象預報 (傳統) 
 
 ![端對端圖表](media/iot-hub-get-started-e2e-diagram/6.png)
 
 [!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
-機器學習服務是一項資料科學技術，協助電腦從現有的資料學習，以便預測未來的行為、結果和趨勢。 Azure Machine Learning 是雲端預測性分析服務，可讓您快速地建立預測模型，並將其部署為分析解決方案。
+機器學習服務是一項資料科學技術，協助電腦從現有的資料學習，以便預測未來的行為、結果和趨勢。 Azure Machine Learning Studio (傳統) 是雲端預測性分析服務，可讓您快速地建立預測模型，並將其部署為分析解決方案。
 
 ## <a name="what-you-learn"></a>您學到什麼
 
-了解如何使用 Azure Machine Learning 透過來自您的 Azure IoT 中樞的溫度和溼度資料執行氣象預報 (下雨的機會)。 下雨的機會是備妥的氣象預報模型的輸出。 此模型的建置是根據溫度和溼度的歷史資料來預測下雨的機會。
+您將瞭解如何使用 Azure Machine Learning Studio (傳統) 來執行氣象預測， (使用 Azure IoT 中樞的溫度和濕度資料，有雨的) 。 下雨的機會是備妥的氣象預報模型的輸出。 此模型的建置是根據溫度和溼度的歷史資料來預測下雨的機會。
 
 ## <a name="what-you-do"></a>您要做什麼
 
@@ -49,7 +49,7 @@ ms.locfileid: "91290882"
 - 慣用的 [Azure 儲存體帳戶](https://docs.microsoft.com/azure/storage/common/storage-account-overview?toc=/azure/storage/blobs/toc.json#types-of-storage-accounts)（ **一般用途 v2** 帳戶），但任何支援 Azure Blob 儲存體的 Azure 儲存體帳戶也可以運作。
 
 > [!Note]
-> 本文使用 Azure 串流分析和數個其他付費服務。 必須在 Azure 區域之間傳輸資料時，Azure 串流分析中會產生額外費用。 基於這個理由，確定您的資源群組、IoT 中樞和 Azure 儲存體帳戶，以及稍後在本教學課程中新增的 Machine Learning Studio (傳統) 工作區和 Azure 串流分析作業，都位於相同的 Azure 區域。 您可以在 [ [依區域的 azure 產品可用性] 頁面](https://azure.microsoft.com/global-infrastructure/services/?products=machine-learning-studio&regions=all)上，查看 Azure Machine Learning Studio 和其他 azure 服務的區域支援。
+> 本文使用 Azure 串流分析和數個其他付費服務。 必須在 Azure 區域之間傳輸資料時，Azure 串流分析中會產生額外費用。 基於這個理由，確定您的資源群組、IoT 中樞和 Azure 儲存體帳戶，以及稍後在本教學課程中新增的 Machine Learning Studio (傳統) 工作區和 Azure 串流分析作業，都位於相同的 Azure 區域。 您可以在 [ [依區域的 Azure 產品可用性] 頁面](https://azure.microsoft.com/global-infrastructure/services/?products=machine-learning-studio&regions=all)上，查看 Azure Machine Learning Studio (傳統) 和其他 azure 服務的區域支援。
 
 ## <a name="deploy-the-weather-prediction-model-as-a-web-service"></a>將氣象預報模型部署為 Web 服務
 
@@ -71,7 +71,7 @@ ms.locfileid: "91290882"
 
 若要讓模型正確運作，溫度和濕度資料必須可轉換為數值資料。 在本節中，您會將 R 指令碼模組新增至氣象預測模型，以移除具有無法轉換為數值之溫度或濕度資料值的任何資料列。
 
-1. 在 Azure Machine Learning Studio 視窗的左側，選取箭號以展開 [工具] 面板。 在搜尋方塊中輸入 "Execute"。 選取**執行 R 指令碼**模組。
+1. 在 Azure Machine Learning Studio (傳統) 視窗的左側，選取箭號以展開 [工具] 面板。 在搜尋方塊中輸入 "Execute"。 選取**執行 R 指令碼**模組。
 
    ![選取執行 R 指令碼模組](media/iot-hub-weather-forecast-machine-learning/select-r-script-module.png)
 
@@ -246,10 +246,10 @@ ms.locfileid: "91290882"
 1. 選取您的訂用帳戶 > **儲存體** 帳戶 > 您的儲存體帳戶 > **Blob 容器** > 您的容器。
 1. 下載 .csv 檔案來查看結果。 最後一個資料行記錄下雨的機會。
 
-   ![使用 Azure Machine Learning 取得氣象預報結果](media/iot-hub-weather-forecast-machine-learning/weather-forecast-result.png)
+   ![使用 Azure Machine Learning Studio (傳統) 取得氣象預報結果](media/iot-hub-weather-forecast-machine-learning/weather-forecast-result.png)
 
 ## <a name="summary"></a>摘要
 
-您已成功使用 Azure Machine Learning 根據 IoT 中樞收到的溫度和溼度資料來產生下雨的機會。
+您已成功使用 Azure Machine Learning Studio (傳統) 根據您的 IoT 中樞所收到的溫度和濕度資料，產生 rain 的機會。
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

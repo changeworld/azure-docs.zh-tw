@@ -9,12 +9,12 @@ ms.reviewer: dineshm
 ms.date: 09/11/2020
 ms.subservice: blobs
 ms.custom: devx-track-javascript, github-actions-azure
-ms.openlocfilehash: 9b616f8df0a8b64969fac1d18544e6d316120e50
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: 919fa0d7b6dff0361e4439b442bcfe9648ed8677
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/06/2020
-ms.locfileid: "91771042"
+ms.locfileid: "91776386"
 ---
 # <a name="set-up-a-github-actions-workflow-to-deploy-your-static-website-in-azure-storage"></a>設定要在 Azure 儲存體中部署靜態網站的 GitHub Actions 工作流程
 
@@ -83,7 +83,7 @@ Azure 訂用帳戶和 GitHub 帳戶。
 
 1. 刪除工作流程檔案區段之後的所有專案 `on:` 。 例如，您剩餘的工作流程看起來可能會像這樣。 
 
-    ```yml
+    ```yaml
     name: CI
 
     on:
@@ -95,7 +95,7 @@ Azure 訂用帳戶和 GitHub 帳戶。
 
 1. 重新命名您 `Blob storage website CI` 的工作流程，並新增簽出和登入動作。 這些動作將會簽出您的網站程式碼，並使用 `AZURE_CREDENTIALS` 您稍早建立的 GitHub 密碼向 Azure 進行驗證。 
 
-    ```yml
+    ```yaml
     name: Blob storage website CI
 
     on:
@@ -181,7 +181,7 @@ Azure 訂用帳戶和 GitHub 帳戶。
 
 1. 刪除工作流程檔案區段之後的所有專案 `on:` 。 例如，您剩餘的工作流程看起來可能會像這樣。 
 
-    ```yml
+    ```yaml
     name: CI
 
     on:
@@ -193,7 +193,7 @@ Azure 訂用帳戶和 GitHub 帳戶。
 
 1. 重新命名您 `Blob storage website CI` 的工作流程，並新增簽出和登入動作。 這些動作將會簽出您的網站程式碼，並使用 `AZURE_CREDENTIALS` 您稍早建立的 GitHub 密碼向 Azure 進行驗證。 
 
-    ```yml
+    ```yaml
     name: Blob storage website CI
 
     on:

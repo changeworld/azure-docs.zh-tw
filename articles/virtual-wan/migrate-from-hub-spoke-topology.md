@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: cherylmc
-ms.openlocfilehash: 68f54e18cf20680156de8a29c54f7924ca6064d1
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: e6078ffcaaf98702bf809dfeb435cdaa0f9b5701
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91610104"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777185"
 ---
 # <a name="migrate-to-azure-virtual-wan"></a>移轉移至 Azure 虛擬 WAN
 
@@ -42,7 +42,7 @@ Contoso 是一家遍及歐洲和亞洲辦公室的全球財務組織。 他們�
 
 * 其中有些網站也會直接在 Azure 中使用 VPN 通道，以連線到裝載在雲端內的應用程式。
 
-## <a name="requirements"></a>需求
+## <a name="requirements"></a>規格需求
 
 分派給網路小組的任務是提供可支援 Contoso 移轉至雲端的全球網路模型，而且必須在成本、規模和效能方面進行最佳化。 總而言之，必須符合下列需求：
 
@@ -66,11 +66,11 @@ Contoso 是一家遍及歐洲和亞洲辦公室的全球財務組織。 他們�
 
 摘要：
 
-- 歐洲的 HQ 會維持與 ExpressRoute 連線，而歐洲的內部部署 DC 則會完全移轉至 Azure 並立即解除委任。
-- 亞洲的 DC 和 HQ 仍會連線到私人 WAN。 Azure 虛擬 WAN 現在可用來增強本機電訊廠商網路並提供全球連線能力。
-- 在西歐和南東亞 Azure 區域中部署的 azure 虛擬 WAN 中樞，可為 ExpressRoute 和 VPN 連接的裝置提供連線中樞。
-- 中樞也會為使用全球網狀網路的 OpenVPN 連線能力，針對跨多個用戶端類型的漫遊使用者提供 VPN 終止點，讓您不僅可以存取移轉至 Azure 的應用程式，也能存取內部部署中剩餘的任何資源。
-- Azure 虛擬 WAN 會提供虛擬網路內資源的網際網路連線能力。
+* 歐洲的 HQ 會維持與 ExpressRoute 連線，而歐洲的內部部署 DC 則會完全移轉至 Azure 並立即解除委任。
+* 亞洲的 DC 和 HQ 仍會連線到私人 WAN。 Azure 虛擬 WAN 現在可用來增強本機電訊廠商網路並提供全球連線能力。
+* 在西歐和南東亞 Azure 區域中部署的 azure 虛擬 WAN 中樞，可為 ExpressRoute 和 VPN 連接的裝置提供連線中樞。
+* 中樞也會為使用全球網狀網路的 OpenVPN 連線能力，針對跨多個用戶端類型的漫遊使用者提供 VPN 終止點，讓您不僅可以存取移轉至 Azure 的應用程式，也能存取內部部署中剩餘的任何資源。
+* Azure 虛擬 WAN 會提供虛擬網路內資源的網際網路連線能力。
 
 Azure 虛擬 WAN 也會提供遠端網站的網際網路連線能力。 透過合作夥伴整合支援的本機網際網路分類，可對 SaaS 服務（例如 Microsoft 365）進行優化存取。
 
@@ -87,20 +87,21 @@ Azure 虛擬 WAN 也會提供遠端網站的網際網路連線能力。 透過�
 
 由客戶管理的中樞虛擬網路與中樞和輪輻方法保持一致，包含數個功能區塊：
 
-- 共用服務 (多個輪輻) 所需的任何一般函數。 範例： Contoso 會在基礎結構即服務 (IaaS) 虛擬機器上使用 Windows Server 網域控制站。
-- IP/路由防火牆服務會透過協力廠商網路虛擬設備提供，可啟用輪輻對輪輻第 3 層 IP 路由。
-- 網際網路輸入/輸出服務 (包括適用於輸入 HTTPS 要求的 Azure 應用程式閘道)，以及在虛擬機器上執行的協力廠商 Proxy 服務 (用以篩選對網際網路資源的輸出存取)。
-- ExpressRoute 和 VPN 虛擬網路閘道，可連線到內部部署網路。
+* 共用服務 (多個輪輻) 所需的任何一般函數。 範例： Contoso 會在基礎結構即服務 (IaaS) 虛擬機器上使用 Windows Server 網域控制站。
+* IP/路由防火牆服務會透過協力廠商網路虛擬設備提供，可啟用輪輻對輪輻第 3 層 IP 路由。
+* 網際網路輸入/輸出服務 (包括適用於輸入 HTTPS 要求的 Azure 應用程式閘道)，以及在虛擬機器上執行的協力廠商 Proxy 服務 (用以篩選對網際網路資源的輸出存取)。
+* ExpressRoute 和 VPN 虛擬網路閘道，可連線到內部部署網路。
 
 ### <a name="step-2-deploy-virtual-wan-hubs"></a>步驟2：部署虛擬 WAN 中樞
 
 在每個區域中部署虛擬 WAN 中樞。 使用 VPN 和 ExpressRoute 功能設定虛擬 WAN 中樞，如下列文章所述：
 
-- [教學課程：使用 Azure 虛擬 WAN 來建立站對站連線](virtual-wan-site-to-site-portal.md)
-- [教學課程：使用 Azure 虛擬 WAN 來建立 ExpressRoute 關聯](virtual-wan-expressroute-portal.md)
+* [教學課程：使用 Azure 虛擬 WAN 來建立站對站連線](virtual-wan-site-to-site-portal.md)
+* [教學課程：使用 Azure 虛擬 WAN 來建立 ExpressRoute 關聯](virtual-wan-expressroute-portal.md)
 
 > [!NOTE]
 > Azure 虛擬 WAN 必須使用標準 SKU，才能啟用本文中所示的部分流量路徑。
+>
 
 :::image type="content" source="./media/migrate-from-hub-spoke-topology/figure2.png" alt-text="中樞和輪輻":::
 **圖2：客戶管理的中樞和輪輻至虛擬 WAN 遷移**
@@ -111,6 +112,7 @@ Azure 虛擬 WAN 也會提供遠端網站的網際網路連線能力。 透過�
 
 > [!NOTE]
 > ExpressRoute 線路必須升級為進階 SKU 類型，才能連線到虛擬 WAN 中樞。
+>
 
 :::image type="content" source="./media/migrate-from-hub-spoke-topology/figure3.png" alt-text="中樞和輪輻":::
 **圖3：客戶管理的中樞和輪輻至虛擬 WAN 遷移**
@@ -176,9 +178,9 @@ Azure 虛擬 WAN 也會提供遠端網站的網際網路連線能力。 透過�
 
 流量的路由如下所示：
 
-- 亞洲分支會透過具有復原功能的 S2S BGP 啟用通道連線到南東亞的虛擬 WAN 中樞。
+* 亞洲分支會透過具有復原功能的 S2S BGP 啟用通道連線到南東亞的虛擬 WAN 中樞。
 
-- 亞洲虛擬 WAN 中樞會在本地將流量路由傳送到連線的 VNet。
+* 亞洲虛擬 WAN 中樞會在本地將流量路由傳送到連線的 VNet。
 
 :::image type="content" source="./media/migrate-from-hub-spoke-topology/flow1.png" alt-text="中樞和輪輻":::
 
@@ -188,9 +190,9 @@ Azure 虛擬 WAN 也會提供遠端網站的網際網路連線能力。 透過�
 
 流量的路由如下所示：
 
-- 歐洲 HQ 會透過 premium ExpressRoute 線路連線到西歐虛擬 WAN 中樞。
+* 歐洲 HQ 會透過 premium ExpressRoute 線路連線到西歐虛擬 WAN 中樞。
 
-- 虛擬 WAN 中樞對中樞全球連線能力，可讓您將流量傳輸到遠端區域中連線的 VNet。
+* 虛擬 WAN 中樞對中樞全球連線能力，可讓您將流量傳輸到遠端區域中連線的 VNet。
 
 :::image type="content" source="./media/migrate-from-hub-spoke-topology/flow2.png" alt-text="中樞和輪輻":::
 
@@ -200,11 +202,11 @@ Azure 虛擬 WAN 也會提供遠端網站的網際網路連線能力。 透過�
 
 流量的路由如下所示：
 
-- 亞洲 DC 會連線到本地私人 WAN 電訊廠商。
+* 亞洲 DC 會連線到本地私人 WAN 電訊廠商。
 
-- ExpressRoute 線路會在私人 WAN 中于本機終止，並連接到南東亞的虛擬 WAN 中樞。
+* ExpressRoute 線路會在私人 WAN 中于本機終止，並連接到南東亞的虛擬 WAN 中樞。
 
-- 虛擬 WAN 中樞對中樞全域連線能力可讓傳輸流量。
+* 虛擬 WAN 中樞對中樞全域連線能力可讓傳輸流量。
 
 :::image type="content" source="./media/migrate-from-hub-spoke-topology/flow3.png" alt-text="中樞和輪輻":::
 
@@ -214,7 +216,7 @@ Azure 虛擬 WAN 也會提供遠端網站的網際網路連線能力。 透過�
 
 流量的路由如下所示：
 
-- 虛擬 WAN 中樞對中樞全域連線能力讓您能夠在沒有進階使用者設定的情況下，原生傳輸所有連線的 Azure VNet。
+* 虛擬 WAN 中樞對中樞全域連線能力讓您能夠在沒有進階使用者設定的情況下，原生傳輸所有連線的 Azure VNet。
 
 :::image type="content" source="./media/migrate-from-hub-spoke-topology/flow4.png" alt-text="中樞和輪輻":::
 
@@ -224,9 +226,9 @@ Azure 虛擬 WAN 也會提供遠端網站的網際網路連線能力。 透過�
 
 流量的路由如下所示：
 
-- 膝上型電腦和行動裝置使用者使用 OpenVPN 用戶端，在西歐的 P2S VPN 閘道中進行透明連線。
+* 膝上型電腦和行動裝置使用者使用 OpenVPN 用戶端，在西歐的 P2S VPN 閘道中進行透明連線。
 
-- 西歐虛擬 WAN 中樞會在本地將流量路由傳送到連線的 VNet。
+* 西歐虛擬 WAN 中樞會在本地將流量路由傳送到連線的 VNet。
 
 :::image type="content" source="./media/migrate-from-hub-spoke-topology/flow5.png" alt-text="中樞和輪輻":::
 
@@ -254,9 +256,9 @@ Contoso 現在已依照本文稍早所述的需求，驗證所有分支和 Vnet 
 
 流量的路由如下所示：
 
-- 連線到相同安全虛擬中樞的虛擬網路，現在會透過 Azure 防火牆路由傳送流量。
+* 連線到相同安全虛擬中樞的虛擬網路，現在會透過 Azure 防火牆路由傳送流量。
 
-- Azure 防火牆可以將原則套用到這些流程。
+* Azure 防火牆可以將原則套用到這些流程。
 
 :::image type="content" source="./media/migrate-from-hub-spoke-topology/flow6.png" alt-text="中樞和輪輻":::
 
@@ -266,9 +268,9 @@ Contoso 現在已依照本文稍早所述的需求，驗證所有分支和 Vnet 
 
 流量的路由如下所示：
 
-- 連線到安全虛擬中樞的虛擬網路可以使用安全中樞作為網際網路存取的中心點，將流量傳送到網際網路上的公用目的地。
+* 連線到安全虛擬中樞的虛擬網路可以使用安全中樞作為網際網路存取的中心點，將流量傳送到網際網路上的公用目的地。
 
-- 此流量可以使用 Azure 防火牆 FQDN 規則在本機進行篩選，或傳送給協力廠商安全性服務進行檢查。
+* 此流量可以使用 Azure 防火牆 FQDN 規則在本機進行篩選，或傳送給協力廠商安全性服務進行檢查。
 
 :::image type="content" source="./media/migrate-from-hub-spoke-topology/flow7.png" alt-text="中樞和輪輻":::
 
@@ -278,12 +280,12 @@ Contoso 現在已依照本文稍早所述的需求，驗證所有分支和 Vnet 
 
 流量的路由如下所示：
 
-- 連線到安全虛擬中樞的分支可以使用安全中樞作為網際網路存取的中心點，將流量傳送到網際網路上的公用目的地。
+* 連線到安全虛擬中樞的分支可以使用安全中樞作為網際網路存取的中心點，將流量傳送到網際網路上的公用目的地。
 
-- 此流量可以使用 Azure 防火牆 FQDN 規則在本機進行篩選，或傳送給協力廠商安全性服務進行檢查。
+* 此流量可以使用 Azure 防火牆 FQDN 規則在本機進行篩選，或傳送給協力廠商安全性服務進行檢查。
 
 :::image type="content" source="./media/migrate-from-hub-spoke-topology/flow8.png" alt-text="中樞和輪輻":::
 
 ## <a name="next-steps"></a>後續步驟
 
-深入了解 [Azure 虛擬 WAN](virtual-wan-about.md)
+深入瞭解 [Azure 虛擬 WAN](virtual-wan-about.md)。

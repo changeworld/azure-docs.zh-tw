@@ -1,16 +1,16 @@
 ---
 title: Azure 自動化中的 Runbook 執行
-description: 本文提供在 Azure 自動化中處理 Runbook 的概觀。
+description: 本文概述 Azure 自動化中的 runbook 處理。
 services: automation
 ms.subservice: process-automation
-ms.date: 09/22/2020
+ms.date: 10/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: b5dd445ec4dd9014f107c0a349deed6cde47f968
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 883cf48fd38d79544d08a68f2c18fc2d2efb4706
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91325822"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776284"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Azure 自動化中的 Runbook 執行
 
@@ -89,20 +89,22 @@ Azure 自動化利用 [Azure 監視器](../azure-monitor/overview.md) 來監視�
 
 ### <a name="log-analytics-agent-for-windows"></a>適用於 Windows 的 Log Analytics 代理程式
 
-[適用於 Windows 的 Log Analytics 代理程式](../azure-monitor/platform/agent-windows.md)可搭配 Azure 監視器，一起管理 Windows VM 和實體電腦。 這些機器可以在 Azure 或非 Azure 環境中執行，例如本地資料中心。 您必須將代理程式設定為向一或多個 Log Analytics 工作區報告。
+[適用於 Windows 的 Log Analytics 代理程式](../azure-monitor/platform/agent-windows.md)可搭配 Azure 監視器，一起管理 Windows VM 和實體電腦。 這些機器可以在 Azure 或非 Azure 環境中執行，例如本地資料中心。
 
 >[!NOTE]
 >適用於 Windows 的 Log Analytics 代理程式先前稱為 Microsoft Monitoring Agent (MMA)。
 
 ### <a name="log-analytics-agent-for-linux"></a>Log Analytics Linux 代理程式
 
-[適用於 Linux 的 Log Analytics 代理程式](../azure-monitor/platform/agent-linux.md)運作方式類似適用於 Windows 的代理程式，但會將 Linux 電腦連線到 Azure 監視器。 這個代理程式是以 **nxautomation** 使用者帳戶安裝，此帳戶允許執行需要 root 權限的命令，例如在混合式 Runbook 背景工作角色上。 **nxautomation** 帳戶是不需要密碼的系統帳戶。
+[適用於 Linux 的 Log Analytics 代理程式](../azure-monitor/platform/agent-linux.md)運作方式類似適用於 Windows 的代理程式，但會將 Linux 電腦連線到 Azure 監視器。 代理程式是以 **>nxautomation** 使用者帳戶安裝，允許執行需要根許可權的命令，例如在混合式 Runbook 背景工作角色上執行。 **nxautomation** 帳戶是不需要密碼的系統帳戶。
 
 在[安裝 Linux 混合式背景工作角色](automation-linux-hrw-install.md)期間，必須有具備對應 sudo 權限的 **nxautomation** 帳戶。 如果您嘗試安裝背景工作角色，但此帳戶不存在或沒有適當的權限，則安裝會失敗。
 
+您不應該變更 `sudoers.d` 資料夾或其擁有權的許可權。 **>nxautomation**帳戶需要 Sudo 許可權，而且不應移除許可權。 將此限制為某些資料夾或命令可能會導致中斷性變更。
+
 Log Analytics 代理程式和 **nxautomation** 帳戶可用的記錄如下：
 
-* /var/opt/microsoft/omsagent/log/omsagent.log - Log Analytics 代理程式記錄 
+* /var/opt/microsoft/omsagent/log/omsagent.log - Log Analytics 代理程式記錄
 * /var/opt/microsoft/omsagent/run/automationworker/worker.log - 自動化背景工作角色記錄
 
 >[!NOTE]
@@ -226,7 +228,7 @@ Azure 沙箱中的 Runbook 作業無法存取任何裝置或應用程式特性�
 
 為了讓雲端的所有 Runbook 共用資源，Azure 採用所謂的「公平共用」概念。 基於公平共用，Azure 會暫時卸載或停止已執行超過三小時的任何作業。 [PowerShell Runbook](automation-runbook-types.md#powershell-runbooks) 和 [Python Runbook](automation-runbook-types.md#python-runbooks) 的作業會停止且不會重新啟動，而作業狀態會變成 Stopped。
 
-對於長時間執行的 Azure 自動化工作，建議使用混合式 Runbook 背景工作角色。 混合式 Runbook 背景工作角色並未受限於公平共用，而且未限制 Runbook 執行時間長度。 其他作業[限制](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits)會套用至 Azure 沙箱和混合式 Runbook 背景工作角色。 雖然混合式 Runbook 背景工作角色不受限於 3 小時的公平共用限制，但您應該以發生非預期的本機基礎結構問題時，也能夠重新啟動的背景工作角色，作為您開發 Runbook 執行的環境。
+對於長時間執行的 Azure 自動化工作，建議使用混合式 Runbook 背景工作角色。 混合式 Runbook 背景工作角色並未受限於公平共用，而且未限制 Runbook 執行時間長度。 其他作業[限制](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits)會套用至 Azure 沙箱和混合式 Runbook 背景工作角色。 雖然混合式 Runbook 背景工作角色未受限於三小時的公平共用限制，但是您應開發 runbook，以在支援從未預期的本機基礎結構問題重新開機的背景工作角色上執行。
 
 另一個選項是使用子 Runbook 將 Runbook 最佳化。 例如，您的 Runbook 可能在數個資源上重複執行同一個函式，例如，在數個資料庫上執行資料庫作業。 您可以將此函式移至[子 Runbook](automation-child-runbooks.md)，然後讓您的 Runbook 使用 [Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook) 來呼叫此函式。 子 Runbook 會個別的流程中平行執行。
 

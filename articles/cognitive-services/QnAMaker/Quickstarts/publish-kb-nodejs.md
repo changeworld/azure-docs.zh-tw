@@ -1,16 +1,18 @@
 ---
 title: 快速入門：使用適用于 Node.js 的 REST Api QnA Maker
 description: 本快速入門示範如何開始使用適用於 Node.js 的 QnA Maker REST API。 請遵循下列步驟來安裝套件，並試用基本工作的程式碼範例。  QnA Maker 可讓您加強常見問題集文件或 URL 及產品手冊等半結構化內容中的問題與解答服務。
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27, devx-track-js
 ms.topic: how-to
-ms.openlocfilehash: 67c4711d74bdeb970a706eabf795e8f9bdcbbded
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ef17f08677d715292a8ee49621156d130e2f5a6b
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91324598"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777489"
 ---
 # <a name="quickstart-qna-maker-rest-apis-for-nodejs"></a>快速入門：適用于 Node.js QnA Maker REST Api
 
@@ -29,7 +31,7 @@ ms.locfileid: "91324598"
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/cognitive-services)
 * 最新版的 [Node.js](https://nodejs.org)。

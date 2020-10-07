@@ -1,14 +1,16 @@
 ---
 title: 對聊天機器人使用 NLP 搭配 LUIS
 description: 瞭解何時使用 Language Understanding，以及何時使用 QnA Maker 並瞭解它們彼此的補充。
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 04/16/2020
-ms.openlocfilehash: 78591fa3d74b10c71c4c50ea2662c3f2ad3c5ace
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b674fcb60ed2b4116b641ed14ff6d51ebfda3816
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91328661"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777351"
 ---
 # <a name="use-cognitive-services-with-natural-language-processing-nlp-to-enrich-bot-conversations"></a>使用認知服務與自然語言處理 (NLP) 擴充 bot 對話
 

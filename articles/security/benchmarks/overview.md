@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: fb6813875858ab6cc438df5abb78a75391adfeac
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 6628d693a8df3614097e23785ac234a451565ca3
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91280652"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777100"
 ---
 # <a name="overview-of-the-azure-security-benchmark-v2"></a>Azure 安全性基準測試 (V2) 總覽
 
@@ -28,21 +28,19 @@ Azure 安全性基準測試 (ASB) 提供規定的最佳作法和建議，以協�
  Azure 安全性基準測試著重于以雲端為中心的控制區。 這些控制項與知名的安全性效能評定一致，例如，透過網際網路安全性的中心所述的 (CIS) 控制7.1 版和美國國家標準規範的標準與技術 (NIST) SP800-53。
 下列控制項包含在 Azure 安全性基準測試中：
 
-| ASB 控制網域 | 說明 
+| ASB 控制網域 | 描述 
 |--|--|
-| [ (NS) 的網路安全性 ](security-controls-v2-network-security.md) | 網路安全性涵蓋的控制項可保護和保護 Azure 網路，包括保護虛擬網路、建立私人連線、預防和緩和外部攻擊，以及保護 DNS 的安全。 |
-| [ (IM) 的身分識別管理 ](security-controls-v2-identity-management.md) | 身分識別管理涵蓋的控制項可讓您使用 Azure Active Directory 建立安全的身分識別與存取控制，包括使用單一登入、增強式驗證、受控識別 (和服務主體) 用於應用程式、條件式存取，以及帳戶異常監視。 |
-| [特殊許可權存取 (PA) ](security-controls-v2-privileged-access.md) | 特殊許可權存取涵蓋的控制項可保護您的 Azure 租使用者和資源的特殊許可權存取權，包括各種控制措施來保護您的系統管理模型、系統管理帳戶和特殊許可權的存取工作站，以防止刻意和不慎的風險。 |
-| [資料保護 (DP) ](security-controls-v2-data-protection.md) | 資料保護涵蓋了待用資料保護、傳輸中以及透過授權的存取機制的控制，包括使用 Azure 中的存取控制、加密和記錄來探索、分類、保護及監視機密資料資產。 |
-| [資產管理 (AM) ](security-controls-v2-asset-management.md) | 資產管理涵蓋的控制項可確保 Azure 資源的安全性可見度和治理，包括安全性人員的許可權建議、資產清查的安全性存取，以及管理服務和資源的核准， (清查、追蹤和正確的) 。 |
-| [記錄和威脅偵測 (LT) ](security-controls-v2-logging-threat-detection.md) | 記錄和威脅偵測涵蓋的控制項可偵測 Azure 上的威脅，以及啟用、收集和儲存 Azure 服務的審核記錄，包括使用控制項啟用偵測、調查和補救程式，以在 Azure 服務中使用原生威脅偵測來產生高品質的警示;它也包括使用 Azure 監視器收集記錄，並使用 Azure Sentinel、時間同步處理和記錄保留來集中進行安全性分析。 |
-| [事件回應 (IR)](security-controls-v2-incident-response.md) | 事件回應涵蓋事件回應生命週期的控制（準備、偵測和分析、內含專案和事件後活動），包括使用 Azure 服務（例如 Azure 資訊安全中心和 Sentinel）來將事件回應程式自動化。 |
-| [狀況和弱點管理 (PV) ](security-controls-v2-posture-vulnerability-management.md) | 狀態和弱點管理著重于評定和改進 Azure 安全性狀態的控制項，包括弱點掃描、滲透測試和補救，以及 Azure 資源中的安全性設定追蹤、報告和修正。 |
-| [端點安全性 (ES) ](security-controls-v2-endpoint-security.md) | 端點安全性涵蓋端點偵測和回應中的控制項，包括在 Azure 環境中使用端點偵測和回應 (EDR) 和反惡意程式碼服務。 |
-| [備份和修復 (BR) ](security-controls-v2-backup-recovery.md) | 備份和復原涵蓋的控制項，可確保在不同的服務層級執行、驗證和保護資料和設定備份。 |
-| [ (GS) 治理和策略 ](security-controls-v2-governance-strategy.md) | 治理和策略提供的指導方針可確保一致的安全性策略，以及記載的治理方法來引導並維持安全性保證，包括為不同的雲端安全性功能、統一的技術策略，以及支援的原則和標準建立角色和責任。 |
-
-您也可以下載 [試算表格式](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Security%20Benchmark)的 Azure 安全性基準測試。
+| [&nbsp; &nbsp; (NS) 的網路安全性](security-controls-v2-network-security.md) | 網路安全性涵蓋的控制項可保護和保護 Azure 網路，包括保護虛擬網路、建立私人連線、預防和緩和外部攻擊，以及保護 DNS 的安全。 |
+| [&nbsp; &nbsp; (IM) 的身分識別管理](security-controls-v2-identity-management.md) | 身分識別管理涵蓋的控制項可讓您使用 Azure Active Directory 建立安全的身分識別與存取控制，包括使用單一登入、增強式驗證、受控識別 (和服務主體) 用於應用程式、條件式存取，以及帳戶異常監視。 |
+| [特殊許可權 &nbsp; 存取 &nbsp; (PA) ](security-controls-v2-privileged-access.md) | 特殊許可權存取涵蓋的控制項可保護您的 Azure 租使用者和資源的特殊許可權存取權，包括各種控制措施來保護您的系統管理模型、系統管理帳戶和特殊許可權的存取工作站，以防止刻意和不慎的風險。 |
+| [資料 &nbsp; 保護 &nbsp; (DP) ](security-controls-v2-data-protection.md) | 資料保護涵蓋了待用資料保護、傳輸中以及透過授權的存取機制的控制，包括使用 Azure 中的存取控制、加密和記錄來探索、分類、保護及監視機密資料資產。 |
+| [資產 &nbsp; 管理 &nbsp; (AM) ](security-controls-v2-asset-management.md) | 資產管理涵蓋的控制項可確保 Azure 資源的安全性可見度和治理，包括安全性人員的許可權建議、資產清查的安全性存取，以及管理服務和資源的核准， (清查、追蹤和正確的) 。 |
+| [記錄 &nbsp; 和 &nbsp; 威脅 &nbsp; 偵測 (LT) ](security-controls-v2-logging-threat-detection.md) | 記錄和威脅偵測涵蓋的控制項可偵測 Azure 上的威脅，以及啟用、收集和儲存 Azure 服務的審核記錄，包括使用控制項啟用偵測、調查和補救程式，以在 Azure 服務中使用原生威脅偵測來產生高品質的警示;它也包括使用 Azure 監視器收集記錄，並使用 Azure Sentinel、時間同步處理和記錄保留來集中進行安全性分析。 |
+| [&nbsp; &nbsp; (IR) 的事件回應](security-controls-v2-incident-response.md) | 事件回應涵蓋事件回應生命週期的控制（準備、偵測和分析、內含專案和事件後活動），包括使用 Azure 服務（例如 Azure 資訊安全中心和 Sentinel）來將事件回應程式自動化。 |
+| [狀況 &nbsp; 和 &nbsp; 弱點 &nbsp; 管理 &nbsp; (PV) ](security-controls-v2-posture-vulnerability-management.md) | 狀態和弱點管理著重于評定和改進 Azure 安全性狀態的控制項，包括弱點掃描、滲透測試和補救，以及 Azure 資源中的安全性設定追蹤、報告和修正。 |
+| [端點 &nbsp; 安全性 &nbsp; (ES) ](security-controls-v2-endpoint-security.md) | 端點安全性涵蓋端點偵測和回應中的控制項，包括在 Azure 環境中使用端點偵測和回應 (EDR) 和反惡意程式碼服務。 |
+| [備份 &nbsp; 和 &nbsp; 修復 &nbsp; (BR) ](security-controls-v2-backup-recovery.md) | 備份和復原涵蓋的控制項，可確保在不同的服務層級執行、驗證和保護資料和設定備份。 |
+| [&nbsp; &nbsp; &nbsp; (GS) 治理和策略](security-controls-v2-governance-strategy.md) | 治理和策略提供的指導方針可確保一致的安全性策略，以及記載的治理方法來引導並維持安全性保證，包括為不同的雲端安全性功能、統一的技術策略，以及支援的原則和標準建立角色和責任。 |
 
 ## <a name="azure-security-benchmark-recommendations"></a>Azure 安全性基準測試建議
 
@@ -60,7 +58,11 @@ Azure 安全性基準測試 (ASB) 提供規定的最佳作法和建議，以協�
 
 我們歡迎您提供 Azure 安全性基準測試工作的詳細意見反應和積極參與。 如果您想要提供 Azure 安全性基準測試小組直接輸入，請填寫表單，網址為 https://aka.ms/AzSecBenchmark
 
+## <a name="download"></a>下載
 
+您可以下載 [試算表格式](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Security%20Benchmark)的 Azure 安全性基準測試。
+
+## <a name="next-steps"></a>後續步驟 
 - 請參閱第一種安全性控制： [網路安全性](security-control-network-security.md)
 - 閱讀 [Azure 安全性基準測試簡介](introduction.md)
-- 下載 [Azure 安全性基準測試 v2 excel 試算表](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Security%20Benchmark)
+- 瞭解 [Azure 安全性基礎](../fundamentals/index.yml)

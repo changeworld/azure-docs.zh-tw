@@ -1,16 +1,18 @@
 ---
 title: 快速入門：發佈知識庫、REST、Python-QnA Maker
 description: 這個以 Python REST 為基礎的快速入門會發佈您的知識庫，並建立可在您應用程式或聊天機器人中呼叫的端點。
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27, devx-track-python
 ms.topic: how-to
-ms.openlocfilehash: 6ba263633c6ee638ea742c47e36be4d184cdea75
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 5c28eac20b0bf2fab01312223ca2d5daef1d316d
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89266437"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777478"
 ---
 # <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-python"></a>快速入門：使用 Python 在 QnA Maker 中發佈知識庫
 
@@ -19,9 +21,9 @@ ms.locfileid: "89266437"
 本快速入門會呼叫 QnA Maker REST API：
 * [發佈](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/publish) - 此 API 不需要在要求主體中有任何資訊。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
-* [Python 3.7](https://www.python.org/downloads/)
+* [Python 3。7](https://www.python.org/downloads/)
 * 您必須有 [QnA Maker 服務](../How-To/set-up-qnamaker-service-azure.md)。 若要擷取您的金鑰和端點 (其中包含資源名稱)，請在 Azure 入口網站中選取資源的 [快速入門]****。
 * QnA Maker 知識庫 (KB) 識別碼可以在 `kbid` 查詢字串參數中的 URL 找到，如下所示。
 

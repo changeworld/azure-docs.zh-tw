@@ -4,14 +4,14 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: aec9d2049a69aebc7102a70274e5fb2a3ef865a8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: bed2a4ccbe87aef9afa395ed789da393e885cc89
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91377520"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91779396"
 ---
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
 - 已部署通訊服務資源。 [建立通訊服務資源](../../create-communication-resource.md)。
@@ -48,7 +48,7 @@ allprojects {
 ```groovy
 dependencies {
     ...
-    implementation 'com.azure.android:azure-communication-calling:1.0.0-beta.1'
+    implementation 'com.azure.android:azure-communication-calling:1.0.0-beta.2'
     ...
 }
 
@@ -109,7 +109,7 @@ Context appContext = this.getApplicationContext();
 Call groupCall = callAgent.call(participants, startCallOptions);
 ```
 
-### <a name="place-a-11-call-with-with-video-camera"></a>使用攝影機撥打1:1 電話
+### <a name="place-a-11-call-with-video-camera"></a>使用攝影機撥打1:1 電話
 > [!WARNING]
 > 目前只支援一個連出的本機影片串流來與影片進行呼叫，您必須使用 API 來列舉本機相機 `deviceManager` `getCameraList` 。
 選取所需的相機之後，請使用它來建立 `LocalVideoStream` 實例，並將它以 `videoOptions` 陣列中的專案形式傳遞 `localVideoStream` 給 `call` 方法。
@@ -136,17 +136,17 @@ JoinCallOptions joinCallOptions = new JoinCallOptions();
 call = callAgent.join(context, groupCallContext, joinCallOptions);
 ```
 
-## <a name="push-notification"></a>推播通知
+## <a name="push-notifications"></a>推播通知
 
 ### <a name="overview"></a>概觀
-行動推播通知是您在行動裝置上取得的快顯通知。 針對呼叫，我們將著重于 VoIP (語音 over 網際網路通訊協定) 推播通知。 我們將為您提供註冊推播通知、處理推播通知，以及取消註冊推播通知的功能。
+行動推播通知是您在行動裝置上看到的快顯通知。 為了進行呼叫，我們將著重于 VoIP (語音 over 網際網路通訊協定) 推播通知。 我們會註冊推播通知、處理推播通知，然後取消註冊推播通知。
 
-### <a name="prerequisite"></a>必要條件
+### <a name="prerequisites"></a>必要條件
 
-本教學課程假設您已將 Firebase 帳戶設定為已啟用雲端通訊 (FCM) ，而您的 Firebase 雲端通訊已連線到 Azure 通知中樞 (ANH) 實例。 如需詳細資訊，請參閱 [將 Firebase 連線到 Azure](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started) 。
-此外，本教學課程假設您使用 Android Studio 3.6 版或更高版本來建立您的應用程式。
+若要完成本節，請建立 Firebase 帳戶，並啟用雲端通訊 (FCM) 。 確定 Firebase 雲端通訊已連線到 Azure 通知中樞 (ANH) 實例。 如需相關指示，請參閱 [將 Firebase 連線至 Azure](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started) 。
+本節也會假設您使用 Android Studio 3.6 版或更高版本來建立您的應用程式。
 
-Android 應用程式需要一組許可權，才能接收來自 FCM 的通知訊息。 在 AndroidManifest.xml 檔案中，于 *<資訊清單 ... >* 或在標記下方新增下列許可權集 *</application>*
+Android 應用程式需要一組許可權，才能接收來自 Firebase 雲端通訊的通知訊息。 在您的檔案中 `AndroidManifest.xml` ，將下列許可權集加入 *<資訊清單 ... >* 或在 *</application>* 標記下方
 
 ```XML
     <uses-permission android:name="android.permission.INTERNET"/>
@@ -154,39 +154,41 @@ Android 應用程式需要一組許可權，才能接收來自 FCM 的通知訊�
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
 ```
 
-### <a name="register-for-push-notification"></a>註冊推播通知
+### <a name="register-for-push-notifications"></a>註冊推播通知
 
-- 為了註冊推播通知，應用程式必須在具有裝置註冊權杖的 *CallAgent* 實例上呼叫 registerPushNotification ( # A1。
+若要註冊推播通知，應用程式必須 `registerPushNotification()` 在具有裝置註冊權杖的 *CallAgent* 實例上呼叫。
 
-- 如何取得裝置註冊權杖
-1. 請務必將 Firebase 用戶端程式庫新增至應用程式模組的 *gradle* 檔案，方法是在 [相依性 *]* 區段中新增下列幾行（如果還沒有的話）：
+若要取得裝置註冊權杖，請將 Firebase 用戶端程式庫新增至您應用程式模組的 *gradle* 檔案，方法是在區段中新增下列幾行 `dependencies` （如果它還不存在）：
+
 ```
     // Add the client library for Firebase Cloud Messaging
     implementation 'com.google.firebase:firebase-core:16.0.8'
     implementation 'com.google.firebase:firebase-messaging:20.2.4'
 ```
 
-2. 在專案層級的 *gradle* 檔案中，于 [相依性 *]* 區段中新增下列專案（如果尚未存在）
+在專案層級的 *gradle* 檔案中，于區段中新增下列專案（ `dependencies` 如果尚未存在）：
+
 ```
     classpath 'com.google.gms:google-services:4.3.3'
 ```
 
-3. 將下列外掛程式新增至檔案的開頭（如果尚未存在）
+將下列外掛程式新增至檔案的開頭（如果尚未存在）：
+
 ```
 apply plugin: 'com.google.gms.google-services'
 ```
 
-4. 選取工具列中的 [ *立即同步* ]
+選取工具列中的 [ *立即同步* ]。 新增下列程式碼片段，以取得用戶端應用程式實例之 Firebase 雲端通訊用戶端程式庫所產生的裝置註冊權杖，請務必將下列匯入新增至實例的主要活動標頭。 程式碼片段需要這些參數才能取得權杖：
 
-5. 新增下列程式碼片段，以取得用戶端應用程式實例的 FCM 用戶端程式庫所產生的裝置註冊權杖 
-- 在實例的主要活動標頭中加入這些匯入。 程式碼片段必須有這些參數才能取得權杖
 ```
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
 ```
-- 新增此程式碼片段以取得權杖
+
+新增此程式碼片段以取得權杖：
+
 ```
         FirebaseInstanceId.getInstance().getInstanceId()
                 .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
@@ -204,7 +206,7 @@ import com.google.firebase.iid.InstanceIdResult;
                     }
                 });
 ```
-6. 針對來電推播通知，向呼叫服務用戶端程式庫登錄裝置註冊權杖
+向呼叫服務用戶端程式庫註冊註冊推播通知的裝置註冊權杖：
 
 ```java
 String deviceRegistrationToken = "some_token";
@@ -218,10 +220,9 @@ catch(Exception e) {
 
 ### <a name="push-notification-handling"></a>推播通知處理
 
-- 若要接收傳入的呼叫推播通知，請在具有承載的*CallAgent*實例上呼叫*HandlePushNotification ( # B1* 。
+若要接收傳入的來電推播通知，請在具有承載的*CallAgent*實例上呼叫*HandlePushNotification ( # B1* 。
 
-1. 若要從 FCM 取得承載，以下是必要的步驟：
--  (檔案中建立新的服務，> 新的 > Service > 服務) 擴充 *FirebaseMessagingService* Firebase 用戶端程式庫類別，並確保覆寫 *onMessageReceived* 方法。 當 FCM 傳遞推播通知給應用程式時，這個方法就是呼叫的事件處理常式。
+若要從 Firebase 雲端通訊取得承載，請從建立新的服務 (檔開始，> 新的 > Service > 服務) ，擴充 *FirebaseMessagingService* Firebase 用戶端程式庫類別並覆寫 `onMessageReceived` 方法。 當 Firebase 雲端通訊將推播通知傳遞給應用程式時，這個方法就是呼叫的事件處理常式。
 
 ```java
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
@@ -239,7 +240,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     }
 }
 ```
-- 此外，將下列服務定義新增至標記內的 AndroidManifest.xml 檔案 <application> 。
+將下列服務定義新增至檔案的 `AndroidManifest.xml` <application> 標記內：
 
 ```
         <service
@@ -251,7 +252,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         </service>
 ```
 
-- 一旦抓取承載之後，您就可以在*CallAgent*實例上呼叫*handlePushNotification*方法，將它傳遞至*通訊服務*用戶端程式庫以進行處理。
+在抓取承載之後，您可以在實例上呼叫方法，將它傳遞至通訊服務用戶端程式庫以進行處理 `handlePushNotification` `CallAgent` 。
 
 ```java
 java.util.Map<String, String> pushNotificationMessageDataFromFCM = remoteMessage.getData();
@@ -262,11 +263,12 @@ catch(Exception e) {
     System.out.println("Something went wrong while handling the Incoming Calls Push Notifications.");
 }
 ```
+
 當處理推播通知訊息成功，而且已正確註冊所有事件處理常式時，應用程式會響鈴。
 
-### <a name="unregister-push-notification"></a>取消註冊推播通知
+### <a name="unregister-push-notifications"></a>取消註冊推播通知
 
-- 應用程式可以隨時取消註冊推播通知。 `unregisterPushNotification()`在 callAgent 上呼叫方法來取消註冊。
+應用程式可以隨時取消註冊推播通知。 `unregisterPushNotification()`在 callAgent 上呼叫方法來取消註冊。
 
 ```java
 try {
@@ -281,25 +283,31 @@ catch(Exception e) {
 您可以存取呼叫屬性，並在呼叫以管理與影片和音訊相關的設定時執行各種作業。
 
 ### <a name="call-properties"></a>呼叫屬性
-* 取得此呼叫的唯一識別碼。
+
+取得此呼叫的唯一識別碼：
+
 ```java
 String callId = call.getCallId();
 ```
 
-* 若要在實例上瞭解呼叫檢查集合中的其他參與者 `remoteParticipant` `call` ：
+若要在實例上瞭解呼叫檢查集合中的其他參與者 `remoteParticipant` `call` ：
+
 ```java
 List<RemoteParticipant> remoteParticipants = call.getRemoteParticipants();
 ```
 
-* 呼叫的傳入時，呼叫端的身分識別。
+呼叫的傳入時，呼叫端的身分識別：
+
 ```java
 CommunicationIdentifier callerId = call.getCallerId();
 ```
 
-* 取得呼叫的狀態。
+取得通話的狀態： 
+
 ```java
 CallState callState = call.getState();
 ```
+
 它會傳回代表呼叫之目前狀態的字串：
 * ' None '-初始撥號狀態
 * 「連入」-指出來電為傳入，必須接受或拒絕
@@ -312,39 +320,45 @@ CallState callState = call.getState();
 * 「已中斷連線」-最終撥號狀態
 
 
-* 若要瞭解通話結束的原因，請檢查 `callEndReason` 屬性。
-它包含程式碼/子代碼 (TODO 連結至檔) 
+若要瞭解通話結束的原因，請檢查 `callEndReason` 屬性。 它包含程式碼/子代碼： 
+
 ```java
 CallEndReason callEndReason = call.getCallEndReason();
 int code = callEndReason.getCode();
 int subCode = callEndReason.getSubCode();
 ```
 
-* 若要查看目前的呼叫是否為傳入的呼叫，請檢查 `isIncoming` 屬性：
+若要查看目前的呼叫是否為傳入的呼叫，請檢查 `isIncoming` 屬性：
+
 ```java
 boolean isIncoming = call.getIsIncoming();
 ```
 
-*  若要查看目前的麥克風是否已靜音，請檢查 `muted` 屬性：
+若要查看目前的麥克風是否已靜音，請檢查 `muted` 屬性：
+
 ```java
 boolean muted = call.getIsMicrophoneMuted();
 ```
 
-* 若要檢查主動式影片串流，請檢查 `localVideoStreams` 集合：
+若要檢查主動式影片串流，請檢查 `localVideoStreams` 集合：
+
 ```java
 List<LocalVideoStream> localVideoStreams = call.getLocalVideoStreams();
 ```
 
 ### <a name="mute-and-unmute"></a>靜音和取消靜音
+
 若要將本機端點靜音或取消靜音，您可以使用 `mute` 和 `unmute` 非同步 api：
+
 ```java
 call.mute().get();
 call.unmute().get();
 ```
 
 ### <a name="start-and-stop-sending-local-video"></a>啟動和停止傳送本機影片
-若要開始影片，您必須使用物件上的 API 來列舉相機 `getCameraList` `deviceManager` 。
-然後建立新的實例 `LocalVideoStream` ，以傳遞所需的相機，並在 API 中將它 `startVideo` 當作引數傳遞
+
+若要開始影片，您必須使用物件上的 API 來列舉相機 `getCameraList` `deviceManager` 。 然後，建立新的實例以 `LocalVideoStream` 傳遞所需的相機，並在 API 中將它 `startVideo` 當作引數傳遞：
+
 ```java
 VideoDeviceInfo desiredCamera = <get-video-device>;
 Context appContext = this.getApplicationContext();
@@ -355,11 +369,13 @@ startVideoFuture.get();
 ```
 
 當您成功開始傳送影片之後， `LocalVideoStream` 實例就會新增至 `localVideoStreams` 呼叫實例上的集合。
+
 ```java
 currentVideoStream == call.getLocalVideoStreams().get(0);
 ```
 
 若要停止本機影片，請傳遞 `localVideoStream` 集合中可用的實例 `localVideoStreams` ：
+
 ```java
 call.stopVideo(localVideoStream).get();
 ```
@@ -383,7 +399,7 @@ List<RemoteParticipant> remoteParticipants = call.getRemoteParticipants(); // [r
 任何指定的遠端參與者都有一組與其相關聯的屬性和集合：
 
 * 取得此遠端參與者的識別碼。
-身分識別是其中一個 ' Identifier ' 類型
+身分識別是 ' Identifier ' 類型的其中之一
 ```java
 CommunicationIdentifier participantIdentity = remoteParticipant.getIdentifier();
 ```
@@ -452,7 +468,9 @@ MediaStreamType streamType = remoteParticipantStream.getType(); // of type Media
 ```
  
 若要 `RemoteVideoStream` 從遠端參與者呈現，您必須訂閱 `OnVideoStreamsUpdated` 事件。
-在事件中，將屬性變更 `isAvailable` 為 true 表示遠端參與者目前正在傳送資料流程一次，建立的新實例， `Renderer` 然後使用非同步 API 建立新的，然後 `RendererView` `createView` `view.target` 在應用程式 UI 中的任何位置附加。
+
+在事件中，將屬性變更 `isAvailable` 為 true 表示遠端參與者目前正在傳送資料流程。 一旦發生這種情況，請建立新的實例 `Renderer` ，然後使用非同步 API 建立新的， `RendererView` `createView` 並 `view.target` 在應用程式 UI 中的任何位置附加。
+
 當遠端資料流的可用性有所變更時，您可以選擇終結整個轉譯器、特定 `RendererView` 或保留，但這會導致顯示空白的影片畫面。
 
 ```java
@@ -504,7 +522,7 @@ renderer.createView()
 renderer.dispose()
 ```
 
-* `StreamSize` -調整遠端影片串流 ( 寬度/高度 ) 
+* `StreamSize` -調整遠端影片串流 (寬度/高度) 
 ```java
 StreamSize renderStreamSize = remoteVideoStream.getSize();
 int width = renderStreamSize.getWidth();

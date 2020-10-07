@@ -1,14 +1,16 @@
 ---
 title: 使用主動式學習與知識庫-QnA Maker
 description: 瞭解如何使用主動式學習來改善知識庫的品質。 在不移除或變更現有問題的情況下，進行審查、接受或拒絕、新增。
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 03/18/2020
-ms.openlocfilehash: 32dfe6a274889181410ab5f800ac595ee81c148c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c67cde3062d88c48eb44a5135bf47ad3948cecc8
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91298140"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776794"
 ---
 # <a name="use-active-learning-to-improve-your-knowledge-base"></a>使用主動式學習來改善知識庫
 

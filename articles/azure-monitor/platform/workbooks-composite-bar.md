@@ -8,12 +8,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 9/04/2020
 ms.author: lagayhar
-ms.openlocfilehash: 76c52d47c7fd7e271f3e74439ee8502117eb83a7
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 80846ecb1ad48d9f8ba49f0025772b4e131c23e2
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89663949"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776352"
 ---
 # <a name="composite-bar-renderer"></a>複合 bar 轉譯器
 
@@ -69,7 +69,7 @@ ms.locfileid: "89663949"
 
 選取 [資料行名稱] 和對應的色彩，將該色彩中的該資料行轉譯為複合橫條圖的一部分。 您可以上下插入、刪除和移動資料列。
 
-### <a name="label"></a>標籤
+### <a name="label"></a>Label
 
 複合橫條圖標籤會顯示在複合列的上方。 您可以混合使用靜態文字、資料行和參數。  如果標籤是空的，則目前資料行的值會顯示為標籤。 在先前的範例中，如果我們將標籤欄位保留為黑色，則會顯示總計資料行的值。
 
@@ -91,7 +91,7 @@ ms.locfileid: "89663949"
 
 ![[群組依據] 設定的螢幕擷取畫面。](./media/workbooks-composite-bar/group-by-settings.png)
 
-#### <a name="none"></a>None
+#### <a name="none"></a>無
 
 無匯總表示群組資料列的資料行沒有顯示任何結果。
 
@@ -124,11 +124,11 @@ ms.locfileid: "89663949"
 3. 將視覺效果變更為 *磚*。
 4. 執行查詢。
 5. 選取 [ **磚設定**]。
-6. 在 [標題] 欄位中選取 [ *左方* ]。
+6. 在 [並排顯示欄位] 中選取 [ *左方* ]。
 7. 在 [ *欄位設定*] 下方輸入下列設定。
     1. 使用資料行： "server"。
     2. 資料行轉譯器： "Text"。
-8. 選取 [標題欄位] 中的 *底部* 。
+8. 選取 [並排顯示] 欄位中的 *底部* 。
 9. 在 [ *欄位設定*] 下方輸入下列設定。
     1. 使用資料行：「總計」。
     2. 資料行轉譯器：「複合橫條」。
@@ -143,9 +143,9 @@ ms.locfileid: "89663949"
     4. 新增標籤： `["online"] of ["total"] are healthy` 。
 10. 選取 [套用]。
 
-標題的複合橫條圖設定：
+磚的複合橫條圖設定：
 
-![具有上述設定的複合橫條圖標題設定螢幕擷取畫面。](./media/workbooks-composite-bar/tiles-settings.png)
+![上述設定的複合橫條圖磚設定螢幕擷取畫面。](./media/workbooks-composite-bar/tiles-settings.png)
 
 具有上述設定之磚的複合橫條圖看起來會像這樣：
 
@@ -157,7 +157,7 @@ ms.locfileid: "89663949"
 
 1. 選取 [ **加入** 並 *加入查詢*]。
 2. 將資料來源變更為 JSON：輸入 [先前範例](#adding-composite-bar-renderer)中的資料。
-3. 將視覺效果變更為 *磚*。
+3. 將視覺效果變更為 *圖形*。
 4. 執行查詢。
 5. 選取 [ **圖形設定]**。
 6. 選取 [在節點格式設定中設定 *中心內容* ]。
@@ -190,7 +190,7 @@ ms.locfileid: "89663949"
 
 ![具有 hive 叢集之複合橫條圖的螢幕擷取畫面。](./media/workbooks-composite-bar/composite-bar-graphs.png)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 使用 Azure Resource Manager[部署](workbooks-automate.md)活頁簿。
 * [控制](workbooks-access-control.md) 和共用活頁簿資源的存取權。

@@ -1,44 +1,46 @@
 ---
 title: SharePoint 檔案-QnA Maker
-description: 將受保護的 SharePoint 資料來源新增至您的知識庫，以使用 Active Directory 保護的問題和答案來擴充知識庫。
+description: 將受保護的 SharePoint 資料來源新增至您的知識庫，以使用可能受到 Active Directory 保護的問題和答案來擴充知識庫。
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: 93f17e79834b412ce0babf220ba13649ae07718c
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 0f49621d44b99412b9a6ab0360c30c894a71e5d1
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83660303"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776862"
 ---
 # <a name="add-a-secured-sharepoint-data-source-to-your-knowledge-base"></a>將受保護的 SharePoint 資料來源新增至您的知識庫
 
-將安全的以雲端為基礎的 SharePoint 資料來源新增至您的知識庫，以使用 Active Directory 可保護的問題和答案來擴充知識庫。
+將安全的雲端式 SharePoint 資料來源新增至您的知識庫，以使用可能會受到 Active Directory 保護的問題和答案來擴充知識庫。
 
-當您將受保護的 SharePoint 檔加入至您的知識庫時，身為 QnA Maker 管理員，您必須要求 QnA Maker 的 Active Directory 許可權。 一旦從 Active Directory 管理員授與此許可權，以 QnA Maker 存取 SharePoint，就不需要再次指定。 如果知識庫的每個後續檔都在同一個 SharePoint 資源中，則不需要授權。
+當您將受保護的 SharePoint 檔加入至知識庫時，您必須為 QnA Maker 管理員要求 QnA Maker 的 Active Directory 許可權。 一旦將此許可權提供給 Active Directory 管理員來 QnA Maker，才能存取 SharePoint，就不必再指定一次。 如果您在相同的 SharePoint 資源中加入知識庫，每個後續的檔都不需要授權。
 
-如果 QnA Maker 知識庫管理員不是 Active Directory 管理員，您就必須與 Active Directory 管理員通訊，才能完成此程式。
+如果 QnA Maker 的知識庫管理員不是 Active Directory manager，您必須與 Active Directory 管理員通訊，才能完成此程式。
 
 ## <a name="prerequisites"></a>必要條件
 
-* 以雲端為基礎的 SharePoint QnA Maker 會使用 Microsoft Graph 的許可權。 如果您的 SharePoint 是內部部署，您將無法從 SharePoint 解壓縮，因為 Microsoft Graph 無法判斷許可權。
-* URL 格式-QnA Maker 只支援為了共用而產生的 SharePoint url，格式為`https://\*.sharepoint.com`
+* 以雲端為基礎的 SharePoint QnA Maker 使用 Microsoft Graph 來取得許可權。 如果您的 SharePoint 是內部部署，您將無法從 SharePoint 進行解壓縮，因為 Microsoft Graph 無法判斷許可權。
+* URL 格式-QnA Maker 僅支援為了共用而產生的 SharePoint url，且格式為 `https://\*.sharepoint.com`
 
 ## <a name="add-supported-file-types-to-knowledge-base"></a>將支援的檔案類型新增至知識庫
 
-您可以從 SharePoint 網站將所有 QnA Maker 支援的[檔案類型](../Concepts/content-types.md)加入至您的知識庫。 如果檔案資源受到保護，您可能必須授與[許可權](#permissions)。
+您可以從 SharePoint 網站將所有 QnA Maker 支援的 [檔案類型](../Concepts/content-types.md) 加入至知識庫。 如果檔案資源受到保護，您可能必須授與 [許可權](#permissions) 。
 
-1. 從具有 SharePoint 網站的程式庫中，選取檔案的省略號功能表 `...` 。
+1. 從具有 SharePoint 網站的文件庫中，選取檔案的省略號功能表 `...` 。
 1. 複製檔案的 URL。
 
-   ![選取檔案的省略號功能表，然後複製 URL，以取得 SharePoint 檔案 URL。](../media/add-sharepoint-datasources/get-sharepoint-file-url.png)
+   ![選取檔案的省略號功能表然後複製 URL，以取得 SharePoint 檔案 URL。](../media/add-sharepoint-datasources/get-sharepoint-file-url.png)
 
-1. 在 QnA Maker 入口網站的 [**設定**] 頁面上，將 URL 加入至知識庫。
+1. 在 QnA Maker 入口網站的 [ **設定** ] 頁面上，將 URL 新增至知識庫。
 
-### <a name="images-with-sharepoint-files"></a>含有 SharePoint 檔案的影像
+### <a name="images-with-sharepoint-files"></a>具有 SharePoint 檔案的影像
 
 如果檔案包含影像，則不會解壓縮這些檔案。 將檔案解壓縮至 QnA 組之後，您可以從 QnA Maker 入口網站新增映射。
 
-使用下列 markdown 語法來新增映射：
+使用下列 markdown 語法新增映射：
 
 ```markdown
 ![Explanation or description of image](URL of public image)
@@ -46,32 +48,32 @@ ms.locfileid: "83660303"
 
 方括弧中的文字會 `[]` 說明影像。 括弧中的 URL `()` 是影像的直接連結。
 
-當您在互動式測試面板中測試 QnA 組時，在 QnA Maker 入口網站中，會顯示影像，而不是 markdown 文字。 這會驗證可以從您的用戶端應用程式公開抓取映射。
+當您在互動式測試面板中測試 QnA 組時，會在 QnA Maker 入口網站中顯示影像，而不是 markdown 文字。 這會驗證是否可從您的用戶端應用程式公開取出映射。
 
 ## <a name="permissions"></a>權限
 
-當 SharePoint 伺服器的安全檔案加入至知識庫時，就會授與許可權。 根據 SharePoint 的設定方式，以及新增檔案的人員許可權而定，這可能需要：
+從 SharePoint 伺服器將安全的檔案新增至知識庫時，即會授與許可權。 根據 SharePoint 的設定方式，以及加入檔案的人員的許可權，這可能需要：
 
-* 沒有其他步驟-新增檔案的人員會擁有所需的擁有權限。
-* 由[知識庫管理員](#knowledge-base-manager-add-sharepoint-data-source-in-qna-maker-portal)和[Active Directory 管理員](#active-directory-manager-grant-file-read-access-to-qna-maker)進行的步驟。
+* 沒有其他步驟-新增檔案的人員具有所需的擁有權限。
+* [知識庫管理員](#knowledge-base-manager-add-sharepoint-data-source-in-qna-maker-portal)和[Active Directory 管理員](#active-directory-manager-grant-file-read-access-to-qna-maker)的步驟。
 
-請參閱下面所列的步驟。
+請參閱下列步驟。
 
-### <a name="knowledge-base-manager-add-sharepoint-data-source-in-qna-maker-portal"></a>知識庫管理員：在 QnA Maker 入口網站中新增 SharePoint 資料來源
+### <a name="knowledge-base-manager-add-sharepoint-data-source-in-qna-maker-portal"></a>知識基底管理員：在 QnA Maker 入口網站中加入 SharePoint 資料來源
 
-當**QnA Maker 管理員**將受保護的 SharePoint 檔加入至知識庫時，知識庫管理員就會起始 Active Directory 管理員需要完成的許可權要求。
+當 **QnA Maker 管理員** 將安全的 SharePoint 檔加入至知識庫時，知識庫管理員就會起始 Active Directory 管理員需要完成的許可權要求。
 
-要求會以快顯的方式開始向 Active Directory 帳戶進行驗證。
+要求會從快顯視窗開始驗證 Active Directory 帳戶。
 
 ![驗證使用者帳戶](../media/add-sharepoint-datasources/authenticate-user-account.png)
 
-一旦 QnA Maker 管理員選取帳戶，Azure Active Directory 系統管理員就會收到通知，指出他們需要允許 QnA Maker 應用程式（而不是 QnA Maker 管理員）存取 SharePoint 資源。 Azure Active Directory 管理員必須針對每個 SharePoint 資源（但不是該資源中的每個檔）執行此動作。
+一旦 QnA Maker 管理員選取帳戶，Azure Active Directory 系統管理員將會收到通知，指出他們必須允許 QnA Maker 應用程式 (QnA Maker 管理員) 存取 SharePoint 資源。 Azure Active Directory 管理員必須為每個 SharePoint 資源（但不是該資源中的每個檔）進行此動作。
 
 ### <a name="active-directory-manager-grant-file-read-access-to-qna-maker"></a>Active directory 管理員：將檔案讀取權限授與 QnA Maker
 
-Active Directory 管理員（而不是 QnA Maker 管理員）必須藉由選取[此連結](https://login.microsoftonline.com/common/oauth2/v2.0/authorize?response_type=id_token&scope=Files.Read%20Files.Read.All%20Sites.Read.All%20User.Read%20User.ReadBasic.All%20profile%20openid%20email&client_id=c2c11949-e9bb-4035-bda8-59542eb907a6&redirect_uri=https%3A%2F%2Fwww.qnamaker.ai%3A%2FCreate&state=68)來授權 QnA Maker 入口網站 SharePoint 企業應用程式擁有檔案讀取權限，以授與存取 SharePoint 資源 QnA Maker 的許可權。
+Active Directory manager (不是 QnA Maker 管理員) 需要將存取權授與 QnA Maker，以存取 SharePoint 資源，方法是選取 [此連結](https://login.microsoftonline.com/common/oauth2/v2.0/authorize?response_type=id_token&scope=Files.Read%20Files.Read.All%20Sites.Read.All%20User.Read%20User.ReadBasic.All%20profile%20openid%20email&client_id=c2c11949-e9bb-4035-bda8-59542eb907a6&redirect_uri=https%3A%2F%2Fwww.qnamaker.ai%3A%2FCreate&state=68) ，以授權 QnA Maker Portal SharePoint enterprise 應用程式擁有檔案讀取權限。
 
-![Azure Active Directory manager 以互動方式授與許可權](../media/add-sharepoint-datasources/aad-manager-grants-permission-interactively.png)
+![Azure Active Directory 管理員以互動方式授與許可權](../media/add-sharepoint-datasources/aad-manager-grants-permission-interactively.png)
 
 <!--
 The Active Directory manager must grant QnA Maker access either by application name, `QnAMakerPortalSharePoint`, or by application ID, `c2c11949-e9bb-4035-bda8-59542eb907a6`.
@@ -109,19 +111,19 @@ The Active Directory manager will get a pop-up window requesting permissions to 
 
     ![Grant required permissions](../media/add-sharepoint-datasources/grant-required-permissions.png)
 -->
-### <a name="grant-access-from-the-azure-active-directory-admin-center"></a>授與 Azure Active Directory 系統管理中心的存取權
+### <a name="grant-access-from-the-azure-active-directory-admin-center"></a>從 Azure Active Directory 系統管理中心授與存取權
 
-1. Active Directory 管理員會登入 Azure 入口網站並開啟**[企業應用程式](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps)**。
+1. Active Directory 管理員登入 Azure 入口網站並開啟 **[企業應用程式](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps)**。
 
-1. 搜尋 `QnAMakerPortalSharePoint` [選取 QnA Maker 應用程式]。
+1. 搜尋 `QnAMakerPortalSharePoint` 選取 QnA Maker 應用程式。
 
     [![搜尋企業應用程式清單中的 QnAMakerPortalSharePoint](../media/add-sharepoint-datasources/search-enterprise-apps-for-qna-maker.png)](../media/add-sharepoint-datasources/search-enterprise-apps-for-qna-maker.png#lightbox)
 
-1. 在 [**安全性**] 底下，移至 [**許可權**]。 選取 **[為組織授與系統管理員同意**]。
+1. 在 [ **安全性**] 底下，移至 [ **許可權**]。 選取 **[授與組織的管理員同意**]。
 
-    [![為 Active Directory 管理員選取 [已驗證的使用者]](../media/add-sharepoint-datasources/grant-aad-permissions-to-enterprise-app.png)](../media/add-sharepoint-datasources/grant-aad-permissions-to-enterprise-app.png#lightbox)
+    [![為 Active Directory 系統管理員選取已驗證的使用者](../media/add-sharepoint-datasources/grant-aad-permissions-to-enterprise-app.png)](../media/add-sharepoint-datasources/grant-aad-permissions-to-enterprise-app.png#lightbox)
 
-1. 選取具有許可權的登入帳戶，以授與 Active Directory 的許可權。
+1. 選取具有許可權可授與 Active Directory 許可權的登入帳戶。
 
 
 

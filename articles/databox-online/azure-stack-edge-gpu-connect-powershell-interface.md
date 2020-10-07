@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 10/06/2020
 ms.author: alkohli
-ms.openlocfilehash: 59b2307bb2e1f4effce9f68530be86e9ca625c9c
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: e0b02f8d6a46c26b8927b4bac4d2089d3b57c295
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/06/2020
-ms.locfileid: "91766300"
+ms.locfileid: "91777776"
 ---
 # <a name="manage-an-azure-stack-edge-pro-gpu-device-via-windows-powershell"></a>透過 Windows PowerShell 管理 Azure Stack Edge Pro GPU 裝置
 
@@ -429,7 +429,7 @@ DEBUG 2020-05-14T20:42:14Z: loop process - 0 events, 0.000s
 
 基礎板管理控制器 (BMC) 可用來遠端監視和管理您的裝置。 本節說明可用來管理 BMC 設定的 Cmdlet。 在執行這些 Cmdlet 之前，請先 [連接到裝置的 PowerShell 介面](#connect-to-the-powershell-interface)。
 
-- `Get-HcsNetBmcInterface`：使用這個 Cmdlet 取得 BMC 的網路設定屬性，例如，、、 `IPv4Address` `IPv4Gateway` `IPv4SubnetMask` 、 `DhcpEnabled` ： 
+- `Get-HcsNetBmcInterface`：使用這個 Cmdlet 取得 BMC 的網路設定屬性，例如，、、 `IPv4Address` `IPv4Gateway` `IPv4SubnetMask` 、 `DhcpEnabled` 。 
     
     以下是範例輸出：
     
@@ -476,7 +476,7 @@ DEBUG 2020-05-14T20:42:14Z: loop process - 0 events, 0.000s
         [10.100.10.10]: PS>
         ```    
 
-- `Set-HcsBmcPassword`：使用這個 Cmdlet 來修改的 BMC 密碼 `EdgeUser` 。 
+- `Set-HcsBmcPassword`：使用這個 Cmdlet 來修改的 BMC 密碼 `EdgeUser` 。 使用者名稱- `EdgeUser` -區分大小寫。
 
     以下是範例輸出： 
 

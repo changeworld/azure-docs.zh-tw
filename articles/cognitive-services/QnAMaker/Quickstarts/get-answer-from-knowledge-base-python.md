@@ -1,16 +1,18 @@
 ---
 title: 快速入門：從知識庫取得答案 - REST (Python) - QnA Maker
 description: 這個以 Python REST 為基礎的快速入門會逐步引導您以程式設計方式從知識庫取得答案。
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27, devx-track-python
 ms.topic: how-to
-ms.openlocfilehash: 645ad24b2b275f9a14fda82746347a6f64c735dc
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 9bad04b060eafcdfea52668237d2d4e0547ce0a0
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268001"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777567"
 ---
 # <a name="quickstart-get-answers-to-a-question-from-a-knowledge-base-with-python"></a>快速入門：使用 Python 從知識庫取得問題的解答
 

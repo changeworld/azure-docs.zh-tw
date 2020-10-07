@@ -1,14 +1,16 @@
 ---
 title: 管理知識庫-QnA Maker
 description: QnA Maker 可讓您藉由提供知識庫設定和內容的存取權來管理您的知識庫。
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 03/18/2020
-ms.openlocfilehash: 08736ce61e6768cfd9ac3d3ded7092a4ab93fca9
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 890b555703f922168a820a0535296b9f55218752
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551773"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777738"
 ---
 # <a name="create-knowledge-base-and-manage-settings"></a>建立知識庫和管理設定
 
@@ -47,7 +49,7 @@ QnA Maker 可讓您藉由提供知識庫設定和資料來源的存取權，來�
     |**+ 新增 URL**|`https://docs.microsoft.com/azure/cognitive-services/qnamaker/troubleshooting`|
     |**閒聊**|選取 [Professional]|
 
-1. 在 **步驟 5**中，選取 [ **建立您的知識庫**]。
+1. 在 [步驟 5] 中，選取 [建立知識庫]。
 
     擷取程序需要一點時間來讀取文件並找出問題和回答。
 
@@ -63,7 +65,7 @@ QnA Maker 可讓您藉由提供知識庫設定和資料來源的存取權，來�
 
 1. 選取特定的知識庫進行編輯。
 
-1.  選取 [設定]。 下列清單包含您可以變更的欄位。
+1.  選取 [設定]  。 下列清單包含您可以變更的欄位。
 
        |目標|動作|
        |--|--|
@@ -103,7 +105,7 @@ QnA Maker 可讓您藉由提供知識庫設定和資料來源的存取權，來�
 
 如果您與共同作業者共用您的知識庫，請 (collaborate-knowledge-base.md) 然後將其刪除，每個人都會失去 KB 的存取權。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 瞭解如何管理資源中所有知識庫 [的語言](language-knowledge-base.md) 。
 

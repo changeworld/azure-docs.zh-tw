@@ -3,14 +3,14 @@ title: 在 Azure 自動化中部署 Linux 混合式 Runbook 背景工作
 description: 本文說明如何安裝 Azure 自動化的混合式 Runbook 背景工作角色，以在您的本機資料中心或雲端環境中以 Linux 為基礎的機器上執行 runbook。
 services: automation
 ms.subservice: process-automation
-ms.date: 09/15/2020
+ms.date: 10/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: fb975305e18315fa8d0a39e4fe0ab6902c98b7e7
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 8295b6bba9703c276bf60a0360ded6f0e195369e
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90987225"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776267"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>部署 Linux 混合式 Runbook 背景工作角色
 
@@ -45,6 +45,10 @@ ms.locfileid: "90987225"
 ### <a name="log-analytics-agent"></a>Log Analytics 代理程式
 
 混合式 Runbook 背景工作角色需要支援的 Linux 作業系統的 [Log Analytics 代理程式](../azure-monitor/platform/log-analytics-agent.md) 。
+
+>[!NOTE]
+>安裝適用于 Linux 的 Log Analytics 代理程式之後，您不應該變更 `sudoers.d` 資料夾或其擁有權的許可權。 **>nxautomation**帳戶需要 Sudo 許可權，這是混合式 Runbook 背景工作角色執行所在的使用者內容。 不應移除許可權。 將此限制為某些資料夾或命令可能會導致中斷性變更。
+>
 
 ### <a name="supported-linux-operating-systems"></a>支援的 Linux 作業系統
 
@@ -88,11 +92,11 @@ Linux 混合式 Runbook 背景工作角色在 Azure 自動化中支援一組有�
 
 |Runbook 類型 | 支援 |
 |-------------|-----------|
-|Python 2 |Yes |
+|Python 2 |是 |
 |PowerShell |是<sup>1</sup> |
-|PowerShell 工作流程 |No |
-|圖形化 |No |
-|圖形化 PowerShell 工作流程 |No |
+|PowerShell 工作流程 |否 |
+|圖形化 |否 |
+|圖形化 PowerShell 工作流程 |否 |
 
 <sup>1</sup>PowerShell runbook 需要在 Linux 機器上安裝 PowerShell Core。 請參閱[在 Linux 上安裝 PowerShell Core](/powershell/scripting/install/installing-powershell-core-on-linux) 以了解其安裝方式。
 

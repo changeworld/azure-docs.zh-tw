@@ -6,15 +6,16 @@ services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
+ms.subservice: text-analytics
 ms.topic: include
 ms.date: 04/29/2020
 ms.author: aahi
-ms.openlocfilehash: f1f36cc730ceca9a961769775d17de6be8d26948
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 1ac035e669ae6d5fcec8dfa8faee12d34039004b
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90906117"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91779729"
 ---
 若要執行 *語言偵測* 容器，請執行下列 `docker run` 命令。 以您自己的值取代下列預留位置：
 

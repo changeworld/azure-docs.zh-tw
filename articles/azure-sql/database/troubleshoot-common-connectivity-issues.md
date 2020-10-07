@@ -12,12 +12,12 @@ author: dalechen
 ms.author: ninarn
 ms.reviewer: sstein, vanto
 ms.date: 01/14/2020
-ms.openlocfilehash: d6635696422c22dfdb4250516a9c3dfc8c577e12
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.openlocfilehash: 46d8aab74f658b039fe07acab82f324ec6ad731f
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91619877"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777066"
 ---
 # <a name="troubleshoot-transient-connection-errors-in-sql-database-and-sql-managed-instance"></a>針對 SQL Database 和 SQL 受控執行個體中的暫時性連接錯誤進行疑難排解
 
@@ -126,7 +126,7 @@ ms.locfileid: "91619877"
 
 ## <a name="net-sqlconnection-parameters-for-connection-retry"></a>進行連線重試的.NET SqlConnection 參數
 
-如果您的用戶端程式使用 .NET Framework 類別 **SqlClient**連接到 SQL Database 中的資料庫，請使用 .net 4.6.1 或更新版本 (或 .net Core) ，讓您可以使用其連接重試功能。 如需此功能的詳細資訊，請參閱[此網頁](https://docs.microsoft.com/dotnet/api/system.data.sqlclient.sqlconnection)。
+如果您的用戶端程式使用 .NET Framework 類別 **SqlClient**連接到 SQL Database 中的資料庫，請使用 .net 4.6.1 或更新版本 (或 .net Core) ，讓您可以使用其連接重試功能。 如需此功能的詳細資訊，請參閱 [SqlConnection. ConnectionString 屬性](/dotnet/api/system.data.sqlclient.sqlconnection.connectionstring?view=netframework-4.8&preserve-view=true)。
 
 <!--
 2015-11-30, FwLink 393996 points to dn632678.aspx, which links to a downloadable .docx related to SqlClient and SQL Server 2014.

@@ -1,18 +1,20 @@
 ---
-title: 支援匯入的 Url 類型-QnA Maker
-description: 瞭解 Url 類型如何用來匯入和建立 QnA 組。
+title: 匯入 QnA Maker 支援的 Url 類型
+description: 瞭解如何使用 Url 的類型來匯入和建立 QnA 配對。
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 01/02/2020
-ms.openlocfilehash: c6c6c7ba19fe7be54733f45997134fddb56a6ba0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8bf50c1ea81cdf5246c47646d1a55926fe7d58d6
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80804311"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776692"
 ---
-# <a name="urls-supported-for-importing-documents"></a>匯入檔所支援的 Url
+# <a name="urls-supported-for-importing-documents"></a>支援匯入檔的 Url
 
-瞭解 Url 類型如何用來匯入和建立 QnA 組。
+瞭解如何使用 Url 的類型來匯入和建立 QnA 配對。
 
 ## <a name="faq-urls"></a>常見問題集 URL
 
@@ -40,15 +42,15 @@ QnA Maker 可支援 3 種不同形式的常見問題集網頁：
  ![知識庫的區段連結常見問題集頁面範例](./media/qnamaker-concepts-datasources/sectionlink-faq.png)
 
 
-### <a name="parent-topics-page-links-to-child-answers-pages"></a>父主題頁面連結至子系回應頁面
+### <a name="parent-topics-page-links-to-child-answers-pages"></a>父主題頁面連結至子回應頁面
 
-這種類型的常見問題具有 [主題] 頁面，其中的每個主題都會連結至不同頁面上的一組對應問題和答案。 QnA Maker 會編目所有連結的頁面，以 & 答案將對應的問題解壓縮。
+這種類型的常見問題有一個主題頁面，其中每個主題都連結至不同頁面上對應的問題和答案集。 QnA Maker 會將所有連結的頁面編目，以將對應的問題解壓縮 & 答案。
 
 以下是主題頁面的範例，其中包含不同頁面中常見問題區段的連結。
 
  ![知識庫的深層連結常見問題集頁面範例](./media/qnamaker-concepts-datasources/topics-faq.png)
 
-## <a name="support-urls"></a>支援 Url
+## <a name="support-urls"></a>支援 URL
 
 QnA Maker 可處理半結構化的支援網頁，例如 Web 文件，其中會說明如何執行指定工作、如何診斷及解決特定問題，以及指定程序的最佳做法是什麼。 內容若具有包含階層式標題的明確結構，擷取將會有最佳效果。
 

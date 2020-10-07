@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/26/2020
 ms.author: rogara
 ms.custom: include file
-ms.openlocfilehash: 897e5b58aed9c47e0b94ee47d1883e2b7a28bacb
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: a168b9f721cd9c3d4ab0e8b6a56b764fec3b1fe3
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88930789"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91779713"
 ---
 ## <a name="assign-access-permissions-to-an-identity"></a>將存取權限指派給身分識別
 
@@ -108,7 +108,7 @@ else
 
 ```
 
-如果您在連接到 Azure 檔案儲存體時遇到問題，請參閱 [我們針對 Windows 上的 Azure 檔案儲存體掛接錯誤所發佈的疑難排解工具](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5)。 我們也會在埠445遭到封鎖時，提供解決案例的 [指引](https://docs.microsoft.com/azure/storage/files/storage-files-faq#on-premises-access) 。 
+如果您在連接到 Azure 檔案儲存體時遇到問題，請參閱 [我們針對 Windows 上的 Azure 檔案儲存體掛接錯誤所發佈的疑難排解工具](https://azure.microsoft.com/blog/new-troubleshooting-diagnostics-for-azure-files-mounting-errors-on-windows/)。 我們也會在埠445遭到封鎖時，提供解決案例的 [指引](https://docs.microsoft.com/azure/storage/files/storage-files-faq#on-premises-access) 。 
 
 
 ### <a name="configure-ntfs-permissions-with-windows-file-explorer"></a>使用 Windows 檔案總管設定 NTFS 許可權
@@ -122,7 +122,7 @@ else
 5. 在 [新增使用者的提示] 視窗中，在 [ **輸入物件名稱來選取** ] 方塊中輸入您想要授與許可權的目標使用者名稱，然後選取 [ **檢查名稱** ] 以尋找目標使用者的完整 UPN 名稱。
 7.    選取 [確定]。
 8.    在 [ **安全性** ] 索引標籤中，選取您要授與新使用者的擁有權限。
-9.    選取 [ **套用**]。
+9.    選取 [套用]。
 
 ### <a name="configure-ntfs-permissions-with-icacls"></a>使用 icacls 設定 NTFS 權限
 

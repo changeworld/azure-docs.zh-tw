@@ -1,15 +1,17 @@
 ---
 title: 主動式學習的建議問題-QnA Maker
 description: 利用主動式學習來改善知識庫的品質。 在不移除或變更現有問題的情況下，進行審查、接受或拒絕、新增。
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: bd90ea3cd73fcd6a545d925e3897c6053184d98c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 7d7dc8564ee35bcd8bfd92d996d07e1d0c365806
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91321011"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776488"
 ---
 # <a name="accept-active-learning-suggested-questions-in-the-knowledge-base"></a>接受知識庫中的主動式學習建議問題
 
@@ -143,7 +145,7 @@ JSON 主體有數個設定：
 |`feedbackRecords`|array|意見反應清單。|
 |`userId`|字串|接受建議問題之人員的使用者識別碼。 使用者識別碼格式是由您負責。 例如，電子郵件地址可以是您架構中的有效使用者識別碼。 選擇性。|
 |`userQuestion`|字串|使用者查詢的確切文字。 必要。|
-|`qnaID`|number|問題的識別碼，可在 [GenerateAnswer 回應](metadata-generateanswer-usage.md#generateanswer-response-properties)中找到。 |
+|`qnaID`|數字|問題的識別碼，可在 [GenerateAnswer 回應](metadata-generateanswer-usage.md#generateanswer-response-properties)中找到。 |
 
 範例 JSON 主體看起來像這樣：
 

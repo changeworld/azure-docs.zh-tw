@@ -1,14 +1,16 @@
 ---
 title: 如何測試知識庫 - QnA Maker
 description: QnA Maker 知識庫測試，對於用以改善傳回回應正確度的互動流程而言，是相當重要的部分。 您可以透過增強的交談介面測試知識庫，也能以之進行編輯。
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 03/05/2020
-ms.openlocfilehash: 9c6d7fc9a421ce466ecd91aaac5c2b83f42a1624
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 05ae359182ac3d9c3f4cc17d7675a3f2fefa0bff
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89650929"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776828"
 ---
 # <a name="test-your-knowledge-base-in-qna-maker"></a>在 QnA Maker 中測試您的知識庫
 
@@ -265,7 +267,7 @@ batchtesting.exe batch-test-data-1.tsv https://YOUR-RESOURCE-NAME.azurewebsites.
 * 工具的命令列範例
 * TSV 輸入和 outfile 檔案的格式
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
 > [發佈知識庫](./publish-knowledge-base.md)

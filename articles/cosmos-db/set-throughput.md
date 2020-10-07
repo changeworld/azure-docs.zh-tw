@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: 00ed8f6ff9839c227f3d8a929a071834c5559226
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 81a31448a588849a410b37868cf579fbb0a9ceb6
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88605726"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777783"
 ---
 # <a name="introduction-to-provisioned-throughput-in-azure-cosmos-db"></a>簡介 Azure Cosmos DB 中的佈建輸送量
 
@@ -40,7 +40,7 @@ Azure Cosmos 資料庫是一組容器的管理單位。 資料庫是由一組無
 
 下圖示範實體分割區如何裝載容器的一或多個邏輯分割區：
 
-:::image type="content" source="./media/set-throughput/resource-partition.png" alt-text="實體分割區" border="false":::
+:::image type="content" source="./media/set-throughput/resource-partition.png" alt-text="裝載容器的一或多個邏輯分割區的實體分割區" border="false":::
 
 ## <a name="set-throughput-on-a-database"></a>在資料庫上設定輸送量
 
@@ -75,7 +75,7 @@ Azure Cosmos 資料庫是一組容器的管理單位。 資料庫是由一組無
 
 如果您的工作負載涉及刪除和重新建立資料庫中的所有集合，建議您先捨棄空的資料庫並重新建立新的資料庫，然後再建立集合。 下圖顯示實體分割區如何裝載一或多個屬於資料庫內不同容器的邏輯分割區：
 
-:::image type="content" source="./media/set-throughput/resource-partition2.png" alt-text="實體分割區" border="false":::
+:::image type="content" source="./media/set-throughput/resource-partition2.png" alt-text="裝載容器的一或多個邏輯分割區的實體分割區" border="false":::
 
 ## <a name="set-throughput-on-a-database-and-a-container"></a>在資料庫和容器上設定輸送量
 
@@ -84,7 +84,7 @@ Azure Cosmos 資料庫是一組容器的管理單位。 資料庫是由一組無
 * 您可以使用 *"K"* 個 RU 的標準 (手動) 佈建輸送量來建立名為 *Z* 的 Azure Cosmos 資料庫。 
 * 接下來，在資料庫中建立五個容器，名稱分別為 *A*、*B*、*C*、*D* 和 *E*。 建立容器 B 時，請務必啟用 [為此容器佈建專用輸送量] 選項，並在此容器上明確設定 *"P"* 個 RU 的佈建輸送量。 請注意，只有在建立資料庫和容器時，才能設定共用和專用輸送量。 
 
-   :::image type="content" source="./media/set-throughput/coll-level-throughput.png" alt-text="設定容器層級的輸送量":::
+   :::image type="content" source="./media/set-throughput/coll-level-throughput.png" alt-text="裝載容器的一或多個邏輯分割區的實體分割區":::
 
 * *"K"* RU 輸送量會在四個容器 *A*、*C*、*D* 和 *E*之間共用。*A*、*C*、*D* 或 *E* 可用的確切輸送量數量會有所不同。 沒有適用於每個個別容器輸送量的 SLA。
 * 容器 *B* 保證能夠隨時取得 *"P"* 個 RU 的輸送量， 並受到 SLA 支援。
@@ -105,11 +105,11 @@ Azure Cosmos 資料庫是一組容器的管理單位。 資料庫是由一組無
 
 實際的最小 RU/秒可能會依您的帳戶設定而有所不同。 您可以使用 [Azure 監視器計量](monitor-cosmos-db.md#view-operation-level-metrics-for-azure-cosmos-db) 來查看布建輸送量的歷程記錄 (RU/秒) 和資源上的儲存體。
 
-您可以使用 SDK，以程式設計方式擷取容器或資料庫的最小輸送量，或檢視 Azure 入口網站中的值。 使用 .NET SDK 時，[DocumentClient.ReplaceOfferAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient.replaceofferasync?view=azure-dotnet) 方法可讓您調整佈建輸送量的值。 使用 Java SDK 時，[RequestOptions.setOfferThroughput](sql-api-java-sdk-samples.md) 方法可讓您調整佈建輸送量的值。 
+您可以使用 SDK，以程式設計方式擷取容器或資料庫的最小輸送量，或檢視 Azure 入口網站中的值。 使用 .NET SDK （容器）時 [。ReplaceThroughputAsync](/dotnet/api/microsoft.azure.cosmos.container.replacethroughputasync?view=azure-dotnet&preserve-view=true) 方法可讓您調整布建的輸送量值。 使用 JAVA SDK 時， [CosmosContainer. replaceProvisionedThroughput](sql-api-java-sdk-samples.md) 方法可讓您調整布建的輸送量值。
 
-使用 .NET SDK 時，[DocumentClient.ReadOfferAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient.readofferasync?view=azure-dotnet) 方法可讓您擷取容器或資料庫的最小輸送量。 
+使用 .NET SDK 時， [ReadThroughputAsync](/dotnet/api/microsoft.azure.cosmos.container.readthroughputasync?view=azure-dotnet&preserve-view=true) 方法可讓您取得容器或資料庫的最小輸送量。 
 
-您可以隨時調整容器或資料庫的佈建輸送量。 執行調整作業以增加輸送量時，可能需要較長的時間，因為系統工作會佈建所需的資源。 您可以在 Azure 入口網站中，或使用 SDK 以程式設計方式檢查調整作業的狀態。 使用 .NET SDK 時，您可以使用 `DocumentClient.ReadOfferAsync` 方法來取得調整作業的狀態。
+您可以隨時調整容器或資料庫的佈建輸送量。 執行調整作業以增加輸送量時，可能需要較長的時間，因為系統工作會佈建所需的資源。 您可以在 Azure 入口網站中，或使用 SDK 以程式設計方式檢查調整作業的狀態。 使用 .NET SDK 時，您可以使用 `Container.ReadThroughputAsync` 方法來取得調整作業的狀態。
 
 ## <a name="comparison-of-models"></a>模型的比較
 下表顯示在資料庫上與在容器上佈建標準 (手動) 輸送量之間的比較。 

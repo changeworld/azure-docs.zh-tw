@@ -1,14 +1,16 @@
 ---
 title: 多回合交談-QnA Maker
 description: 使用提示和內容來管理 bot 的多重回合（稱為多重回合），從一個問題到另一個問題。 多回合功能是能夠進行反向對話，其中先前的問題內容會影響下一個問題和答案。
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 04/13/2020
-ms.openlocfilehash: eff2eccac55bc05784636ecd9d2dfb784f86c4ef
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 57e878f11f5857f4c5b629a8069f64de259e8e7a
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91322830"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777795"
 ---
 # <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>使用後續追蹤提示來建立多回合對話
 
@@ -92,7 +94,7 @@ ms.locfileid: "91322830"
 
 多回合內容會顯示在第一個資料行中。
 
-:::image type="content" source="../media/conversational-context/surface-manual-pdf-follow-up-prompt.png" alt-text="螢幕擷取畫面顯示反白顯示的內容區段。" lightbox="../media/conversational-context/surface-manual-pdf-follow-up-prompt.png":::
+:::image type="content" source="../media/conversational-context/surface-manual-pdf-follow-up-prompt.png" alt-text="螢幕擷取畫面顯示使用者手冊中的結構範例。" lightbox="../media/conversational-context/surface-manual-pdf-follow-up-prompt.png":::
 
 在上圖中， **#1** 表示資料行中的粗體文字，這表示目前的問題。 父問題是資料列中的最上層專案。 下列任何問題都是連結的問答配對。 這些專案是可選取的，因此您可以立即移至其他內容專案。
 
@@ -167,7 +169,7 @@ ms.locfileid: "91322830"
 
     父問題會將新問題顯示為其中一個選項。
 
-    :::image type="content" source="../media/conversational-context/child-prompt-created.png" alt-text="螢幕擷取畫面顯示這兩個問題的內容資料行，指出後續的提示關聯性。" lightbox="../media/conversational-context/child-prompt-created.png":::
+    :::image type="content" source="../media/conversational-context/child-prompt-created.png" alt-text="螢幕擷取畫面顯示使用者手冊中的結構範例。" lightbox="../media/conversational-context/child-prompt-created.png":::
 
 1. 新增後續的提示之後，請選取頂端導覽列中的 [ **儲存並定型** ]。
 

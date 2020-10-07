@@ -4,12 +4,12 @@ description: 瞭解如何將 Azure 原則資源匯出到 GitHub，例如原則�
 ms.date: 09/30/2020
 ms.topic: how-to
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 17f0322390cd2cd89ba182a9e3c7c95843cc135e
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.openlocfilehash: 691e0a026c5f4f1a0a68c744ee81b1da8da9e70b
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91604266"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777083"
 ---
 # <a name="export-azure-policy-resources"></a>匯出 Azure 原則資源
 
@@ -84,7 +84,7 @@ Azure 原則定義、計畫和指派可以使用 [Azure PowerShell](/powershell/
 以下是取得 **名稱** 為 _VirtualMachineStorage_之原則定義的 JSON 範例：
 
 ```azurepowershell-interactive
-Get-AzPolicyDefinition --Name 'VirtualMachineStorage'
+Get-AzPolicyDefinition -Name 'VirtualMachineStorage'
 ```
 
 ## <a name="next-steps"></a>後續步驟

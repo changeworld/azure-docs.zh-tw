@@ -1,22 +1,24 @@
 ---
 title: 限制和界限 - QnA Maker
 description: QnA Maker 知識庫和服務的某些部分有中繼資料的限制。 請務必將您的知識庫保持在這些限制範圍內，以便進行測試及發佈。
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 02/14/2020
-ms.openlocfilehash: cce95574c8ffc245818b61e9843c5f7984de972f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 773c9caa2fb25b3abe4fb451bc59598c485a6110
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86524432"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776250"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>QnA Maker 知識庫的限制和界限
 
-以下提供的 QnA Maker 限制是[Azure 認知搜尋定價層限制](../../search/search-limits-quotas-capacity.md)和[QnA Maker 定價層限制](https://azure.microsoft.com/pricing/details/cognitive-services/qna-maker/)的組合。 您必須知道這兩組限制，以瞭解您可以為每個資源建立多少知識庫，以及每個知識庫可成長的大小。
+以下提供的 QnA Maker 限制是 [Azure 認知搜尋定價層限制](../../search/search-limits-quotas-capacity.md) 和 [QnA Maker 定價層限制](https://azure.microsoft.com/pricing/details/cognitive-services/qna-maker/)的組合。 您必須知道這兩組限制，以瞭解每個資源可以建立多少知識庫，以及每個知識庫可成長的大小。
 
 ## <a name="knowledge-bases"></a>知識庫
 
-知識庫的最大數目是以[Azure 認知搜尋層限制](../../search/search-limits-quotas-capacity.md)為基礎。
+知識庫的最大數目取決於 Azure 認知搜尋的 [層級限制](../../search/search-limits-quotas-capacity.md)。
 
 |**Azure 認知搜尋層** | **免費** | **基本** |**S1** | **S2**| **S3** |**S3 HD**|
 |---|---|---|---|---|---|----|
@@ -30,14 +32,14 @@ ms.locfileid: "86524432"
 
 檔案名不能包含下列字元：
 
-|不要使用字元|
+|請勿使用字元|
 |--|
-|單引號`'`|
-|雙引號`"`|
+|單引號 `'`|
+|雙引號 `"`|
 
 ### <a name="maximum-file-size"></a>檔案大小上限
 
-|格式|檔案大小上限（MB）|
+|格式|檔案大小上限 (MB) |
 |--|--|
 |`.docx`|10|
 |`.pdf`|25|
@@ -47,19 +49,19 @@ ms.locfileid: "86524432"
 
 ### <a name="maximum-number-of-files"></a>檔案數目上限
 
-可以解壓縮的檔案數目上限，以及檔案大小上限是以您**[QnA Maker 定價層限制](https://azure.microsoft.com/pricing/details/cognitive-services/qna-maker/)** 為基礎。
+可以解壓縮的檔案數目上限與檔案大小上限是根據您的 **[QnA Maker 定價層限制](https://azure.microsoft.com/pricing/details/cognitive-services/qna-maker/)** 而定。
 
-### <a name="maximum-number-of-deep-links-from-url"></a>來自 URL 的深度連結數目上限
+### <a name="maximum-number-of-deep-links-from-url"></a>來自 URL 的深層連結數目上限
 
-可以進行編目以從 URL 頁面解壓縮 Qna 的深層連結數目上限為**20**。
+可從 URL 頁面解壓縮以進行 Qna 的最大深層連結數目為 **20**。
 
 ## <a name="metadata-limits"></a>中繼資料限制
 
-中繼資料是以文字為基礎的索引鍵：值配對來呈現，例如 `product:windows 10` 。 它會儲存並在小寫中進行比較。
+中繼資料會顯示為以文字為基礎的索引鍵：值配對，例如 `product:windows 10` 。 它會以小寫儲存並進行比較。
 
-### <a name="by-azure-cognitive-search-pricing-tier"></a>Azure 認知搜尋定價層
+### <a name="by-azure-cognitive-search-pricing-tier"></a>依 Azure 認知搜尋定價層
 
-每個知識庫的元資料欄位數目上限是以您的**[Azure 認知搜尋層限制](../../search/search-limits-quotas-capacity.md)** 為基礎。
+每個知識庫的元資料欄位數目上限是根據您的 **[Azure 認知搜尋層限制](../../search/search-limits-quotas-capacity.md)** 而定。
 
 |**Azure 認知搜尋層** | **免費** | **基本** |**S1** | **S2**| **S3** |**S3 HD**|
 |---|---|---|---|---|---|----|
@@ -67,12 +69,12 @@ ms.locfileid: "86524432"
 
 ### <a name="by-name-and-value"></a>依名稱和值
 
-中繼資料名稱和值的長度和可接受字元會列在下表中。
+下表列出中繼資料名稱和值的長度和可接受的字元。
 
-|項目|允許的字元|Regex 模式比對|最大字元數|
+|項目|允許的字元|Regex 模式相符|最大字元數|
 |--|--|--|--|
-|名稱（索引鍵）|可讓<br>英數位元（字母和數位）<br>`_`底線<br> 不得包含空格。|`^[a-zA-Z0-9_]+$`|100|
-|值|允許以外的所有專案<br>`:`加<br>`|`（垂直管道）<br>只允許一個值。|`^[^:|]+$`|500|
+| (金鑰) 名稱|允許<br>英數位元 (字母和數位) <br>`_` (底線) <br> 不得包含空格。|`^[a-zA-Z0-9_]+$`|100|
+|值|允許以外的所有專案<br>`:` (冒號) <br>`|` (垂直管道) <br>只允許一個值。|`^[^:|]+$`|500|
 |||||
 
 ## <a name="knowledge-base-content-limits"></a>知識庫的內容限制
@@ -81,12 +83,12 @@ ms.locfileid: "86524432"
 * 問題文字的長度：1,000
 * 中繼資料索引鍵文字的長度：100
 * 中繼資料值文字的長度：500
-* 中繼資料名稱的支援字元：字母、數位和`_`
-* 中繼資料值的支援字元：除了 `:` 和以外`|`
+* 中繼資料名稱的支援字元：字母、數位和 `_`
+* 中繼資料值的支援字元：和以外的所有字元 `:``|`
 * 檔案名稱的長度：200
 * 支援的檔案格式：".tsv"、".pdf"、".txt"、".docx"、".xlsx"。
-* 替代問題的最大數目：300
-* 問答組的最大數目：取決於選擇的**[Azure 認知搜尋層](../../search/search-limits-quotas-capacity.md#document-limits)**。 問答組會對應至 Azure 認知搜尋索引上的檔。
+* 替代問題數目上限：300
+* 問答組的數目上限：取決於所選的 **[Azure 認知搜尋層](../../search/search-limits-quotas-capacity.md#document-limits)** 。 問題和答案組會對應至 Azure 認知搜尋索引上的檔。
 * URL/HTML 頁面：1000000個字元
 
 ## <a name="create-knowledge-base-call-limits"></a>建立知識庫呼叫限制：
@@ -104,4 +106,4 @@ ms.locfileid: "86524432"
 
 ## <a name="next-steps"></a>後續步驟
 
-瞭解何時及如何變更[服務定價層](How-To/set-up-qnamaker-service-azure.md#upgrade-qna-maker-sku)。
+瞭解何時及如何變更 [服務定價層](How-To/set-up-qnamaker-service-azure.md#upgrade-qna-maker-sku)。

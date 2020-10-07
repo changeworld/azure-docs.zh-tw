@@ -1,14 +1,16 @@
 ---
 title: Azure 資源-QnA Maker
 description: QnA Maker 會使用數個 Azure 來源，各有不同的用途。 瞭解如何個別使用它們可讓您規劃和選取正確的定價層，或知道何時變更您的定價層。 瞭解它們組合的使用方式，可讓您在發生問題時尋找並修正問題。
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 03/25/2020
-ms.openlocfilehash: 06731c97217e3b6a5c498743b83f1d16bab791eb
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 62f627fb9765f2a86a373f74c33437680c9305af
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548424"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777049"
 ---
 # <a name="azure-resources-for-qna-maker"></a>適用于 QnA Maker 的 Azure 資源
 
@@ -191,7 +193,7 @@ QnA Maker 的管理服務僅用於 QnA Maker 入口網站和初始資料處理�
     * 確定您也允許其他進入點（例如 Bot 服務）、QnA Maker 入口網站 (可能是您的公司網路) 等，以便進行預測 "GenerateAnswer" API 存取。
     * 查看 [更多有關服務標記的資訊。](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 瞭解 QnA Maker [知識庫](knowledge-base.md)
 * 瞭解 [知識庫生命週期](development-lifecycle-knowledge-base.md)

@@ -1,16 +1,18 @@
 ---
 title: 快速入門：建立知識庫 - REST (Java) - QnA Maker
 description: 這個以 JAVA REST 為基礎的快速入門會逐步引導您以程式設計方式建立範例 QnA Maker 知識庫，該知識庫會出現在您的認知服務 API 帳戶的 Azure 儀表板中。
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.date: 12/16/2019
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27, devx-track-java
 ms.topic: how-to
-ms.openlocfilehash: 3a20198e1fce7b72befb0963a4f1eb7a5e7e3f08
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 275b1976e51789d4a458e7bd9f7cfa3240cc81d5
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89259790"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777671"
 ---
 # <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-java"></a>快速入門：使用 Java 在 QnA Maker 中建立知識庫
 
@@ -24,7 +26,7 @@ ms.locfileid: "89259790"
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 * [Go 1.10.1](https://golang.org/dl/)
 * 您必須有 [QnA Maker 服務](../How-To/set-up-qnamaker-service-azure.md)。 若要擷取您的金鑰和端點 (其中包含資源名稱)，請在 Azure 入口網站中選取資源的 [快速入門]****。

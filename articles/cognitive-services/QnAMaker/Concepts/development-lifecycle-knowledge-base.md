@@ -1,14 +1,16 @@
 ---
 title: 知識庫的生命週期 - QnA Maker
 description: QnA Maker 在反覆的週期中學習模型變更、語句範例、發佈資料以及從端點查詢收集資料時，會有最佳學習成效。
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 09/01/2020
-ms.openlocfilehash: 7bbf729fa80e4b41a85b8dfd1080decea1bae108
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: e52e7151bc30a19bd6f6041d52effdd799a87c99
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89612269"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776964"
 ---
 # <a name="knowledge-base-lifecycle-in-qna-maker"></a>QnA Maker 中的知識庫生命週期
 QnA Maker 在反覆的週期中學習模型變更、語句範例、發佈資料以及從端點查詢收集資料時，會有最佳學習成效。
@@ -83,7 +85,7 @@ QnA Maker 知識庫 (KB) 端點會根據知識庫的內容對使用者查詢提�
 *已發佈的知識庫*是在聊天機器人或應用程式中使用的版本。 發佈知識庫會將其測試版本的內容放入其已發行的版本中。 已發佈的知識庫是應用程式透過端點所使用的版本。 請確定內容正確且經過妥善測試。 已發佈的知識庫 `prod` 在 HTTP 要求中稱為。
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
 > [主動式學習建議](./active-learning-suggestions.md)

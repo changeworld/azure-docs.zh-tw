@@ -8,14 +8,14 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: cc9c7dda86d39d31b8c9a6329ac29970888f12d1
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: d7ff32b33a8eab5c6729d84d38fec2e5b2c87449
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90904464"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777202"
 ---
-# <a name="use-the-azure-portal-to-manage-shares-on-your-azure-stack-edge-pro"></a>使用 Azure 入口網站來管理 Azure Stack Edge Pro 上的共用
+# <a name="use-the-azure-portal-to-manage-shares-on-azure-stack-edge-pro"></a>使用 Azure 入口網站管理 Azure Stack Edge Pro 上的共用
 
 本文說明如何管理 Azure Stack Edge Pro 上的共用。 您可以透過 Azure 入口網站或透過本機 web UI 來管理 Azure Stack Edge Pro。 使用 Azure 入口網站來新增、刪除、重新整理共用，或針對與共用相關聯的儲存體帳戶同步儲存體金鑰。
 
@@ -74,7 +74,7 @@ ms.locfileid: "90904464"
 
 1. 在 Azure 入口網站中，移至您的 Azure Stack Edge 資源，然後移至 [ **閘道 > 共用**]。 選取命令列上的 [+ 新增共用]****。
 
-   ![選取 [新增共用]](media/azure-stack-edge-manage-shares/add-local-share-1.png)
+   ![選取 [新增共用 2]](media/azure-stack-edge-manage-shares/add-local-share-1.png)
 
 2. 在 [新增共用]**** 中，指定共用設定。 為共用提供唯一的名稱。
     
@@ -106,7 +106,7 @@ ms.locfileid: "90904464"
 
 1. 在 Azure 入口網站中，移至您的 Azure Stack Edge 資源，然後移至 [ **閘道 > 共用**]。 從共用清單中，選取您想要掛接的共用。 [用於計算]**** 資料行會將所選共用的狀態顯示為 [已停用]****。
 
-   ![選取共用](media/azure-stack-edge-manage-shares/select-share-mount.png)
+   ![選取共用3](media/azure-stack-edge-manage-shares/select-share-mount.png)
 
 2. 選取 [掛接]****。
 
@@ -130,7 +130,7 @@ ms.locfileid: "90904464"
 
 1. 在 Azure 入口網站中，移至您的 Azure Stack Edge 資源，然後移至 [ **閘道 > 共用**]。
 
-   ![選取共用](media/azure-stack-edge-manage-shares/select-share-unmount.png)
+   ![選取共用4](media/azure-stack-edge-manage-shares/select-share-unmount.png)
 
 2. 從共用清單中，選取您想要取消掛接的共用。 請確定沒有任何模組使用您取消掛接的共用。 如果有模組使用該共用，則您會看到對應模組發生問題。 選取 [ **卸載**]。
 
@@ -150,7 +150,7 @@ ms.locfileid: "90904464"
 
 1. 從共用清單中，選取並按一下您想要刪除的共用。
 
-   ![選取共用](media/azure-stack-edge-manage-shares/delete-share-1.png)
+   ![選取共用5](media/azure-stack-edge-manage-shares/delete-share-1.png)
 
 2. 按一下 **[刪除]** 。
 
@@ -175,7 +175,7 @@ ms.locfileid: "90904464"
 
 1. 在 Azure 入口網站中，移至 [共用]****。 選取並按一下您想要重新整理的共用。
 
-   ![選取共用](media/azure-stack-edge-manage-shares/refresh-share-1.png)
+   ![選取共用6](media/azure-stack-edge-manage-shares/refresh-share-1.png)
 
 2. 按一下 [重新整理]****。
 
@@ -212,6 +212,6 @@ ms.locfileid: "90904464"
 >[!NOTE]
 > 您只需要針對指定的儲存體帳戶執行此作業一次。 不需要針對與相同儲存體帳戶相關聯的所有共用，重複此動作。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 了解如何[透過 Azure 入口網站管理使用者](azure-stack-edge-manage-users.md)。
