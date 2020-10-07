@@ -4,12 +4,12 @@ description: 了解如何使用 Azure Migrate 執行 VMware VM 的代理程式�
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.custom: MVC
-ms.openlocfilehash: bf33c61783b6d7399cd880f53009033a97625bca
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: f437c0f3b9f786863d3b58f10d1a7384b0f1e8ba
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378843"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91296139"
 ---
 # <a name="migrate-vmware-vms-to-azure-agent-based"></a>將 VMware VM 遷移至 Azure (代理程式型)
 
@@ -251,7 +251,7 @@ Azure Migrate 伺服器移轉需要 VMware 伺服器的存取權，才能探索�
 
 1. 在 [Azure Migrate 專案] > [伺服器]、 **[Azure Migrate：伺服器移轉]** 中，按一下 [複寫]。
 
-    ![複寫 VM](./media/tutorial-migrate-vmware-agent/select-replicate.png)
+    ![Azure Migrate 中 [伺服器] 畫面的螢幕擷取畫面。 [複寫] 按鈕會在移轉工具下的 [Azure Migrate：伺服器移轉] 中加以選取。](./media/tutorial-migrate-vmware-agent/select-replicate.png)
 
 2. 在 [複寫] > [來源設定] > [您的電腦虛擬化了嗎] 中，選取 [是，使用 VMware vSphere]。
 3. 在 [內部部署設備] 中，選取您設定的 Azure Migrate 設備的名稱。
@@ -259,12 +259,12 @@ Azure Migrate 伺服器移轉需要 VMware 伺服器的存取權，才能探索�
 5. 在 [處理序伺服器] 中，選取複寫設備的名稱。
 6. 在 [來賓認證] 中，指定行動服務推送安裝將使用的 VM 管理員帳戶。 然後按 [下一步：**虛擬機器]** 。
 
-    ![複寫 VM](./media/tutorial-migrate-vmware-agent/source-settings.png)
+    ![[複寫] 畫面中 [來源設定] 索引標籤的螢幕擷取畫面。 [來賓認證] 欄位會反白顯示，且值會設定為 VM-admin-account。](./media/tutorial-migrate-vmware-agent/source-settings.png)
 
 7. 在 [虛擬機器] 中，選取您要複寫的機器。
 
-    - 如果您已執行 VM 的評估，您可以套用評估結果中的 VM 大小調整和磁碟類型 (進階/標準) 建議。 若要這麼做，請在 [從 Azure Migrate 評估匯入移轉設定?] 中，選取 [是] 選項。
-    - 如果您未執行評估，或不想使用評估設定，請選取 [否] 選項。
+    - 如果您已執行 VM 的評估，您可以套用評估結果中的 VM 大小調整和磁碟類型 (進階/標準) 建議。 若要這麼做，請在 [從 Azure Migrate 評估匯入移轉設定?]**** 中，選取 [是]**** 選項。
+    - 如果您未執行評估，或不想使用評估設定，請選取 [否]**** 選項。
     - 如果您選擇使用評估，請選取 VM 群組和評估名稱。
 8. 在**可用性選項**中，選取：
     -  可用性區域，將已遷移的機器釘選到該區域中特定的可用性區域。 使用此選項可將形成多節點應用程式層的伺服器散發到可用性區域。 如果選取此選項，則必須在計算索引標籤中指定要用於每部所選電腦的可用性區域。只有選取要移轉的目的地區域支援可用性區域時，才可以使用此選項

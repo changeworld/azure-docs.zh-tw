@@ -1,6 +1,6 @@
 ---
 title: 教學課程：使用 Azure Notebooks (Python) 來聯結感應器資料與氣象預報資料 | Microsoft Azure 地圖服務
-description: 本教學課程說明如何使用 Azure Notebooks (Python) 來聯結感應器資料與得自 Microsoft Azure 地圖服務氣象服務的氣象預報資料。
+description: 本教學課程關於如何使用 Azure Notebooks (Python) 來聯結感應器資料與得自 Microsoft Azure 地圖服務氣象服務的氣象預報資料。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 01/29/2020
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 4ec51bc84041008c0b843a8549e299747c3134a3
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 717cb600f1bdae228f45409cb271ab04d1d51a19
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87851640"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91310096"
 ---
 # <a name="tutorial-join-sensor-data-with-weather-forecast-data-by-using-azure-notebooks-python"></a>教學課程：使用 Azure Notebooks (Python) 來聯結感應器資料與氣象預報資料
 
@@ -182,9 +182,6 @@ windsPlot.set_ylabel("Wind direction")
 
 ![風速圖](./media/weather-service-tutorial/speed-date-plot.png) ![風向圖](./media/weather-service-tutorial/direction-date-plot.png)</center>
 
-
-## <a name="next-steps"></a>後續步驟
-
 在本教學課程中，您已了解如何呼叫 Azure 地圖服務 REST API 來取得氣象預報資料。 您也了解如何將圖表上的資料視覺化。
 
 若要深入了解如何在 Azure Notebooks 內呼叫 Azure 地圖服務 REST API，請參閱[使用 Azure Notebooks 的 EV 路由](https://docs.microsoft.com/azure/azure-maps/tutorial-ev-routing)。
@@ -196,4 +193,9 @@ windsPlot.set_ylabel("Wind direction")
 
 如需 Azure 地圖服務 REST API 的完整清單，請參閱 [Azure 地圖服務 REST API](https://docs.microsoft.com/azure/azure-maps/consumption-model) \(部分機器翻譯\)。
 
-若要深入了解 Azure Notebooks，請參閱 [Azure Notebooks](https://docs.microsoft.com/azure/notebooks) \(部分機器翻譯\)。
+## <a name="next-steps"></a>後續步驟
+
+若要深入了解 Azure Notebooks，請參閱
+
+> [!div class="nextstepaction"]
+> [Azure Notebooks](https://docs.microsoft.com/azure/notebooks)

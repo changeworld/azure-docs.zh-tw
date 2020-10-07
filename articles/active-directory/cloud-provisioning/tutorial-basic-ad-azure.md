@@ -10,18 +10,18 @@ ms.date: 12/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e8a6fc1291615760320deb488511fdd9d964d25d
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: ceffc928a0cf8313723ff6193d9a6a63f8465f90
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89227860"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91266304"
 ---
 # <a name="tutorial-basic-active-directory-environment"></a>教學課程：基本 Azure Active Directory 環境
 
 本教學課程將逐步引導您建立基本的 Active Directory 環境。 
 
-![建立](media/tutorial-single-forest/diagram1.png)
+![顯示基本 Azure AD 環境的圖表。](media/tutorial-single-forest/diagram1.png)
 
 您可以使用在本教學課程中建立的環境來測試混合式身分識別案例的各個層面，而且此環境將會成為部分教學課程的必要條件。  如果您已經有現有的 Active Directory 環境，可以用來做為替代方案。  本資訊是提供給從頭開始的人員參考。
 
@@ -200,7 +200,7 @@ ms.locfileid: "89227860"
 2. 選取**加號圖示 (+)** 並搜尋 **Azure Active Directory**。
 3. 在搜尋結果中選取 [Azure Active Directory]。
 4. 選取 [建立]。</br>
-![建立](media/tutorial-single-forest/create1.png)</br>
+![顯示 Azure 入口網站中 Azure Active Directory 頁面的螢幕擷取畫面。](media/tutorial-single-forest/create1.png)</br>
 5. 提供**組織名稱**與**初始網域名稱**。 然後選取 [建立]。 這將會建立您的目錄。
 6. 完成此動作之後，請按一下**這裡**以管理目錄。
 
@@ -208,7 +208,7 @@ ms.locfileid: "89227860"
 現在您已有 Azure AD 租用戶，將建立全域系統管理員帳戶。  若要建立全域系統管理員帳戶，請執行下列動作。
 
 1.  在 [管理] 底下選取 [使用者]。</br>
-![建立](media/tutorial-single-forest/administrator1.png)</br>
+![此螢幕擷取畫面顯示已選取 [使用者] 的 [概觀] 功能表。](media/tutorial-single-forest/administrator1.png)</br>
 2.  選取 [所有使用者 ]，然後選取 [+ 新增使用者]。
 3.  提供此使用者的名稱與使用者名稱。 這將成為您租用戶的全域系統管理員。 建議您將 [目錄角色] 變更為 [全域系統管理員]。 您也可以顯示暫時密碼。 完成之後，請選取 [建立]。</br>
 ![建立](media/tutorial-single-forest/administrator2.png)</br>

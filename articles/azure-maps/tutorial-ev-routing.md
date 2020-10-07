@@ -1,6 +1,6 @@
 ---
 title: 教學課程：使用 Azure Notebooks (Python) 規劃電動車的路線 | Microsoft Azure 地圖服務
-description: 使用 Microsoft Azure 地圖服務路線規劃 API 和 Azure Notebooks 來規劃電動車的路線。
+description: 如何使用 Microsoft Azure 地圖服務路線規劃 API 和 Azure Notebooks 來規劃電動車路線的教學課程
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 11/12/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 506429f51ac442b73adea98058a833f52a728c72
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 28fcdc992f98ff380467718314148984559a7fee
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88639744"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335223"
 ---
 # <a name="tutorial-route-electric-vehicles-by-using-azure-notebooks-python"></a>教學課程：使用 Azure Notebooks (Python) 規劃電動車的路線
 
@@ -387,8 +387,6 @@ display(Image(staticMapImage))
 
 ![顯示路線的地圖](./media/tutorial-ev-routing/route.png)
 
-## <a name="next-steps"></a>後續步驟
-
 在此教學課程中，您已了解如何直接呼叫 Azure 地圖服務 REST API，並使用 Python 來將 Azure 地圖服務資料視覺化。
 
 若要探索此教學課程中所使用的 Azure 地圖服務 API，請參閱：
@@ -399,7 +397,11 @@ display(Image(staticMapImage))
 * [轉譯 - 取得地圖影像](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
 * [Post 路線矩陣](https://docs.microsoft.com/rest/api/maps/route/postroutematrix)
 * [取得路線指示](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)
+* [Azure 地圖服務 REST API](https://docs.microsoft.com/azure/azure-maps/consumption-model)
 
-如需 Azure 地圖服務 REST API 的完整清單，請參閱 [Azure 地圖服務 REST API](https://docs.microsoft.com/azure/azure-maps/consumption-model) \(部分機器翻譯\)。
+## <a name="next-steps"></a>後續步驟
 
-若要深入了解 Azure Notebooks，請參閱 [Azure Notebooks](https://docs.microsoft.com/azure/notebooks) \(部分機器翻譯\)。
+若要深入了解 Azure Notebooks，請參閱
+
+> [!div class="nextstepaction"]
+> [Azure Notebooks](https://docs.microsoft.com/azure/notebooks)

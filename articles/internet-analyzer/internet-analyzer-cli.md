@@ -1,18 +1,18 @@
 ---
 title: 使用 CLI 建立 Internet Analyzer 測試 | Microsoft Docs
-description: 在此文章中，了解如何建立您的第一個 Internet Analyzer 測試。
+description: 在此文章中，了解如何使用 Azure CLI 建立您的第一個 Internet Analyzer 測試。
 services: internet-analyzer
 author: diego-perez-botero
 ms.service: internet-analyzer
 ms.topic: tutorial
 ms.date: 10/16/2019
 ms.author: mebeatty
-ms.openlocfilehash: d474442086e2a114f26df279ab2682cd7628a5f5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e5a7984cd868e7fbac08ec80f92fe28ad13d84e7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74184273"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91308090"
 ---
 # <a name="create-an-internet-analyzer-test-using-cli-preview"></a>使用 CLI 建立 Internet Analyzer 測試 (預覽)
 

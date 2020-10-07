@@ -6,12 +6,12 @@ ms.author: cshoe
 ms.service: azure-functions
 ms.topic: tutorial
 ms.date: 06/17/2020
-ms.openlocfilehash: eb3096cadc8197aeda9258bd3123c2eb760a44af
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 948e4f74763efd641bc0f089c679cdaf7c2f784e
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86540276"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530063"
 ---
 # <a name="tutorial-establish-azure-functions-private-site-access"></a>教學課程：建立 Azure Functions 私人網站存取
 
@@ -73,7 +73,7 @@ ms.locfileid: "86540276"
 1. 選擇 [網路] 索引標籤，然後選取 [建立新的] 來設定新的虛擬網路。
 
     >[!div class="mx-imgBorder"]
-    >![為新 VM 建立新的虛擬網路](./media/functions-create-private-site-access/create-vm-networking.png)
+    >![此螢幕擷取畫面顯示 [網路] 索引標籤，其中 [新建] 動作已在 [虛擬網路] 區段中反白顯示。](./media/functions-create-private-site-access/create-vm-networking.png)
 
 1. 在_建立虛擬網路_中，使用影像下方表格中的設定：
 

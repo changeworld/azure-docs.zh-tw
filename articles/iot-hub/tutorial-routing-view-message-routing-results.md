@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/25/2018
 ms.author: robinsh
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: fb86b25fc24ea505ae258cc44d5554a019723af6
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: ddba41acfcfe497059a661b701906cda0d4d77c6
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019159"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91398352"
 ---
 # <a name="tutorial-part-2---view-the-routed-messages"></a>教學課程：第 2 部分 - 檢視路由的訊息
 
@@ -82,7 +82,7 @@ ms.locfileid: "89019159"
 
    ![Office365 選項](./media/tutorial-routing-view-message-routing-results/logic-app-select-outlook.png)
 
-8. 登入 Office 365 帳戶來設定連線。 如果此程序逾時，請直接再試一次。 指定電子郵件收件者的電子郵件地址。 也請指定主旨，然後在本文中輸入要讓收件者看到的訊息。 為了進行測試，請填寫您自己的電子郵件地址作為收件者。
+8. 登入您的公司或學校帳戶來設定連線。 如果此程序逾時，請直接再試一次。 指定電子郵件收件者的電子郵件地址。 也請指定主旨，然後在本文中輸入要讓收件者看到的訊息。 為了進行測試，請填寫您自己的電子郵件地址作為收件者。
 
    選取 [新增動態內容]  會顯示您可以包含的訊息內容。 選取 [內容]  -- 訊息將會包含在電子郵件中。
 

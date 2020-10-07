@@ -10,12 +10,12 @@ ms.author: iainfou
 author: iainfoulds
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30a51f4b07f62b6e3491f74de78ea0d04bbb1775
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 0797ff744dbbf9fb139503d73be7d60118762ac2
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89399968"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530726"
 ---
 # <a name="tutorial-enable-users-to-unlock-their-account-or-reset-passwords-using-azure-active-directory-self-service-password-reset"></a>教學課程：讓使用者使用 Azure Active Directory 自助式密碼重設來解除鎖定其帳戶或重設密碼
 
@@ -116,7 +116,7 @@ Azure AD 可讓您針對 [無]、[已選取] 或 [所有] 使用者啟用 SSPR�
 啟用並設定 SSPR 後，請使用屬於您在上一節中所選群組的使用者來測試 SSPR 程序，例如 *Test-SSPR-Group*。 下列範例會使用 testuser 帳戶。 提供您自己的使用者帳戶，其屬於您在本教學課程的第一節中針對 SSPR 啟用的群組。
 
 > [!NOTE]
-> 當您測試自助式密碼重設時，請使用非系統管理員帳戶。 系統管理員一律會啟用自助密碼重設，且必須使用兩種驗證方法來重設其密碼。
+> 當您測試自助式密碼重設時，請使用非系統管理員帳戶。 根據預設，系統管理員會啟用自助密碼重設，且必須使用兩種驗證方法來重設其密碼。 如需詳細資訊，請參閱[系統管理員重設原則差異](concept-sspr-policy.md#administrator-reset-policy-differences)。
 
 1. 若要查看手動註冊程序，請在 InPrivate 或 Incognito 模式中開啟新的瀏覽器視窗，並瀏覽至 [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup)。 使用者下次登入時，應會被導向至這個註冊入口網站。
 1. 以非系統管理員測試使用者的身分登入 (例如 testuser)，並註冊您的驗證方法連絡人資訊。

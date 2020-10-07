@@ -7,12 +7,12 @@ ms.service: internet-analyzer
 ms.topic: overview
 ms.date: 10/16/2019
 ms.author: mebeatty
-ms.openlocfilehash: 3d9d1240e31d40a3d9c75d56314acc1721d90b99
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 2512092c69390ce604c26ab6c5dd000afafc7c05
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "73488134"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360883"
 ---
 # <a name="what-is-internet-analyzer-preview"></a>什麼是 Internet Analyzer？ (預覽)
 
@@ -90,7 +90,7 @@ Internet Analyzer 解決了下列作業的效能相關問題：雲端移轉、�
 
 當使用者造訪 Web 應用程式時，JavaScript 用戶端會選取兩個端點來測量所有已設定的測試。 針對每個端點，用戶端會執行「冷」  和「暖」  測量。 除了在使用者與端點 (例如 DNS 解析、TCP 連線交握和 SSL/TLS 交涉) 之間的純網路延遲外，「冷」  測量還會產生額外的延遲。 「暖」  測量會緊接在「冷」  測量完成後，並利用新式瀏覽器的持續 TCP 連線管理來取得端對端延遲的精確量值。 當使用者的瀏覽器支援時，會使用 W3C 資源計時 API 進行精確的測量時間。 目前，只會使用暖延遲測量來進行分析。
 
-![架構](./media/ia-overview/architecture.png)
+![此圖顯示使用者有數個選項可連線到內嵌用戶端的應用程式伺服器，以及連線到網際網路上的兩個端點。 使用者會將度量上傳到 Internet Analyzer。](./media/ia-overview/architecture.png)
 
 
 ## <a name="scorecards"></a>計分卡 

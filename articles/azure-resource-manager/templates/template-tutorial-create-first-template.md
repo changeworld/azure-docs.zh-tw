@@ -2,20 +2,20 @@
 title: 教學課程 - 建立及部署範本
 description: 建立第一個 Azure Resource Manager 範本。 在本教學課程中，您將了解範本檔案語法及部署儲存體帳戶的方式。
 author: mumian
-ms.date: 06/10/2020
+ms.date: 09/28/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 124df19287062a7fc8a6b9cf8b9d32eb3863b581
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: 6eb2cf792eb5a458bff8508bc21e1e0690e2e1f3
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90069232"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91409211"
 ---
 # <a name="tutorial-create-and-deploy-your-first-arm-template"></a>教學課程：建立及部署您的第一個 ARM 範本
 
-本教學課程將介紹 Azure Resource Manager (ARM) 範本。 其中示範如何建立入門範本，並將它部署至 Azure。 您將了解範本的結構，以及使用範本所需的工具。 完成此教學課程大約需要 **12 分鐘**，但實際時間則會根據您需要安裝的工具數目而有所不同。
+本教學課程將介紹 Azure Resource Manager (ARM 範本)。 其中示範如何建立入門範本，並將它部署至 Azure。 您將了解範本的結構，以及使用範本所需的工具。 完成此教學課程大約需要 **12 分鐘**，但實際時間則會根據您需要安裝的工具數目而有所不同。
 
 此教學課程是系列中的第一個。 當您進行本課程系列時，將會逐步修改起始範本，直到您已探索 ARM 範本的所有核心部分為止。 這些元素都是適用於更複雜範本的建置組塊。 我們希望在本系列結束時，您能夠有信心地建立自己的範本，並準備好使用範本來將部署自動化。
 
@@ -25,7 +25,7 @@ ms.locfileid: "90069232"
 
 ## <a name="get-tools"></a>取得工具
 
-首先，確定您擁有建立及部署範本所需的工具。
+首先，確定您擁有建立及部署範本所需的工具。 在本機電腦上安裝這些工具。
 
 ### <a name="editor"></a>編輯器
 
@@ -186,7 +186,7 @@ az deployment group create \
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 
-1. 從左側功能表中，選取 [資源群組]。
+1. 從左側功能表中，選取 [資源群組]  。
 
 1. 選取在最後一個程序中部署的資源群組。 預設名稱為 **myResourceGroup**。 您應該不會在資源群組內看到任何已部署的資源。
 
@@ -208,10 +208,10 @@ az deployment group create \
 
 如果您現在要停止，則可能想要刪除資源群組。
 
-1. 在 Azure 入口網站中，選取左側功能表中的 [資源群組]。
-2. 在 [依名稱篩選] 欄位中輸入資源群組名稱。
+1. 在 Azure 入口網站中，選取左側功能表中的 [資源群組]  。
+2. 在 [依名稱篩選]  欄位中輸入資源群組名稱。
 3. 選取資源群組名稱。
-4. 從頂端功能表中選取 [刪除資源群組]。
+4. 從頂端功能表中選取 [刪除資源群組]  。
 
 ## <a name="next-steps"></a>後續步驟
 

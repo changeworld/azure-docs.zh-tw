@@ -1,6 +1,6 @@
 ---
-title: 教學課程：透過 Microsoft Azure 地圖服務實作 IoT 空間分析 | Microsoft Azure 地圖服務
-description: 整合 IoT 中樞與 Azure 地圖服務 API。
+title: 教學課程：執行 IoT 空間分析 | Microsoft Azure 地圖服務
+description: 如何整合 IoT 中樞與 Microsoft Azure 地圖服務 API 的教學課程
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 09/01/2020
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 25665e75a361fbaa5479e2717d5e6aa9290c3d3a
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 3eb405783b16d1bb7de27f6638dba394457601c8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90056563"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321827"
 ---
 # <a name="tutorial-implement-iot-spatial-analytics-by-using-azure-maps"></a>教學課程：使用 Azure 地圖服務執行 IoT 空間分析
 
@@ -253,6 +253,7 @@ Azure Functions 是無伺服器計算服務，可讓您執行一小段程式碼 
     dotnet run
     ```
 
+
   您的本機終端機應會顯示如下。
 
 :::image type="content" source="./media/tutorial-iot-hub-maps/terminal.png" alt-text="系統概觀的圖表。":::
@@ -276,8 +277,6 @@ Azure Functions 是無伺服器計算服務，可讓您執行一小段程式碼 
 
 * [Azure 地圖服務 REST API](https://docs.microsoft.com/rest/api/maps/spatial/getgeofence)
 
-深入了解 IoT 隨插即用，請參閱：
-
 * [IoT 隨插即用](https://docs.microsoft.com/azure/iot-pnp)
 
 若要取得 Azure 認證的 IoT 裝置清單，請造訪：
@@ -287,6 +286,7 @@ Azure Functions 是無伺服器計算服務，可讓您執行一小段程式碼 
 ## <a name="next-steps"></a>下一步
 
 若要深入了解如何將裝置傳送至雲端遙測或執行反向作業，請參閱：
+
 
 > [!div class="nextstepaction"]
 > [從裝置傳送遙測資料](https://docs.microsoft.com/azure/iot-hub/quickstart-send-telemetry-dotnet)

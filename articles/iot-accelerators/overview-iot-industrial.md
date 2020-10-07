@@ -8,14 +8,17 @@ ms.topic: overview
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 3c474b57533cb6165ce7fe77defccd4cb7042b06
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3df10c9d7630e9db76994e8e508f30adb986e0d5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82189917"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91281808"
 ---
 # <a name="what-is-industrial-iot-iiot"></a>什麼是產業 IoT (IIoT)
+
+> [!IMPORTANT]
+> 當我們更新本文時，請參閱 [Azure 產業 IoT](https://azure.github.io/Industrial-IoT/) 以取得最新的內容。
 
 IIoT 是指產業物聯網。 IIoT 可透過在製造業中應用 IoT 來提升產業效能。 
 
@@ -49,5 +52,4 @@ OPC 保存庫是 OPC UA Global Discovery Server (GDS) 的實作，可以設定�
 
 現在您已大致了解產業 IoT 及其元件，以下是建議執行的下一個步驟：
 
-> [!div class="nextstepaction"]
-> [什麼是 OPC 對應項](overview-opc-twin.md)
+[什麼是 OPC 對應項](overview-opc-twin.md)

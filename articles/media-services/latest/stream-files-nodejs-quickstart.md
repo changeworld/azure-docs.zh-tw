@@ -10,15 +10,15 @@ keywords: Azure 媒體服務, 串流
 ms.service: media-services
 ms.workload: media
 ms.topic: tutorial
-ms.custom: mvc, devx-track-javascript
+ms.custom: mvc, devx-track-js
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 901287a82ece873a572d7773dd53f80e1e8af716
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 38207ac47d2e58c689f1933a6ade6d5c86cd44ad
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267389"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268667"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---nodejs"></a>教學課程：編碼以 URL 為基礎的遠端檔案及串流處理影片 - Node.js
 
@@ -74,7 +74,7 @@ ms.locfileid: "89267389"
 
 執行完畢後，您應該會看到類似的輸出：
 
-![執行](./media/stream-files-nodejs-quickstart/run.png)
+![命令視窗的螢幕擷取畫面，其輸出來自 StreamFileSample 範例應用程式，其中顯示已下載到本機目錄的三個檔案 URL。](./media/stream-files-nodejs-quickstart/run.png)
 
 ## <a name="test-with-azure-media-player"></a>使用 Azure 媒體播放器測試
 

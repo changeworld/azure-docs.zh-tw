@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/09/2019
 ms.author: sagonzal
 ms.custom: aaddev, scenarios:getting-started, languages:Java, devx-track-java
-ms.openlocfilehash: 10ae1c76d48c1cedbb915fec66177ac3612feea0
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: d1b79d60bba89ef01b261c403fe3b25939669d0b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115215"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258093"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>快速入門：將「使用 Microsoft 登入」新增至 Java Web 應用程式
 
@@ -193,15 +193,16 @@ ms.locfileid: "88115215"
 3.   Tomcat 的預設 HTTP 連接埠是 8080，但需要透過連接埠 8443 的 HTTPS 連線。 若要進行此設定：
         - 前往 tomcat/conf/server.xml
         - 搜尋 `<connector>` 標記，並將現有的連接器取代為：
-        ```
+
+        ```xml
         <Connector
                    protocol="org.apache.coyote.http11.Http11NioProtocol"
                    port="8443" maxThreads="200"
                    scheme="https" secure="true" SSLEnabled="true"
                    keystoreFile="C:/Path/To/Keystore/File/keystore.p12" keystorePass="KeystorePassword"
                    clientAuth="false" sslProtocol="TLS"/>
-        ``` 
-       
+        ```
+
 4. 開啟命令提示字元，移至此範例的根資料夾 (pom.xml 檔案所在的位置)，然後執行 `mvn package` 以建立專案
     - 這會在您的 /targets 目錄中產生 `msal-web-sample-0.1.0.war` 檔案。
     - 將此檔案重新命名為 `msal4jsample.war`。
@@ -249,16 +250,11 @@ compile group: 'com.microsoft.azure', name: 'msal4j', version: '1.0.0'
 import com.microsoft.aad.msal4j.*;
 ```
 
+[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+
 ## <a name="next-steps"></a>後續步驟
 
-深入了解權限和同意：
+如需深度討論如何建置 Web 應用程式，在 Microsoft 身分識別平台上登入使用者，請移至我們的多部分案例系列：
 
 > [!div class="nextstepaction"]
-> [權限和同意](./v2-permissions-and-consent.md)
-
-若要深入了解此案例的驗證流程，請參閱 OAuth 2.0 授權碼流程：
-
-> [!div class="nextstepaction"]
-> [授權碼 OAuth 流程](./v2-oauth2-auth-code-flow.md)
-
-[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+[案例：登入使用者的 Web 應用程式](scenario-web-app-sign-user-overview.md?tabs=java)

@@ -12,12 +12,12 @@ ms.date: 1/15/2020
 ms.author: hahamil
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: f49a5703b19a76095c8eafe358742b442725d3d0
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 4bbcf73654d7f588c63a9bf81ab6a689360ec978
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88118241"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91355052"
 ---
 # <a name="tutorial-use-shared-device-mode-in-your-android-application"></a>教學課程：在 Android 應用程式中使用共用裝置模式
 
@@ -241,7 +241,7 @@ private void onSignOutClicked()
 
 ![註冊裝置畫面](media/tutorial-v2-shared-device-mode/register-device.png)
 
-![登入](media/tutorial-v2-shared-device-mode/sign-in.png)
+![此螢幕擷取畫面顯示登入頁面。](media/tutorial-v2-shared-device-mode/sign-in.png)
 
 裝置現在已處於共用模式。
 

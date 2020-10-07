@@ -1,14 +1,14 @@
 ---
 title: PCI-DSS v3.2.1 藍圖範例控制項
-description: 支付卡產業資料安全性標準 v3.2.1 藍圖範例與 Azure 原則和 RBAC 的控制項對應。
+description: 支付卡產業資料安全性標準 v3.2.1 藍圖範例與 Azure 原則和 Azure RBAC 的控制項對應。
 ms.date: 08/19/2020
 ms.topic: sample
-ms.openlocfilehash: e6133c4a847a6df8aa6a27bbca63e0fc2d047783
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 3d7bdd62dcc5b65b0978444e74013d289f03ed6a
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88649222"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541640"
 ---
 # <a name="control-mapping-of-the-pci-dss-v321-blueprint-sample"></a>PCI-DSS v3.2.1 藍圖範例的控制項對應
 
@@ -63,7 +63,7 @@ ms.locfileid: "88649222"
 
 ## <a name="32-721-831a-and-831b-management-of-privileged-access-rights"></a>3.2、7.2.1、8.3.1.a 和 8.3.1.b 管理特殊權限的存取權
 
-此藍圖指派了 [Azure 原則](../../../policy/overview.md)定義，用以稽核具有擁有者、寫入及/或讀取權限的外部帳戶，和具有擁有者及/或寫入權限且未啟用多重要素驗證的員工帳戶，以協助您限制及控制特殊權限的存取權。 Azure 會實作角色型存取控制 (RBAC)，以管理有權存取 Azure 資源的人員。 了解自訂 RBAC 規則的實作之處，有助於您確認需求和適當的實作，因為自訂的 RBAC 規則很容易發生錯誤。 此藍圖還指派了 [Azure 原則](../../../policy/overview.md)定義，用以稽核將 Azure Active Directory 驗證用於 SQL Server 的情形。 使用 Azure Active Directory 驗證可針對資料庫使用者及其他 Microsoft 服務，簡化權限管理及集中管理身分識別  
+此藍圖指派了 [Azure 原則](../../../policy/overview.md)定義，用以稽核具有擁有者、寫入及/或讀取權限的外部帳戶，和具有擁有者及/或寫入權限且未啟用多重要素驗證的員工帳戶，以協助您限制及控制特殊權限的存取權。 Azure 角色型存取控制 (Azure RBAC) 可協助管理有權存取 Azure 資源的人員。 了解自訂 Azure RBAC 規則的實作之處，有助於您確認需求和適當的實作，因為自訂的 Azure RBAC 規則很容易發生錯誤。 此藍圖還指派了 [Azure 原則](../../../policy/overview.md)定義，用以稽核將 Azure Active Directory 驗證用於 SQL Server 的情形。 使用 Azure Active Directory 驗證可針對資料庫使用者及其他 Microsoft 服務，簡化權限管理及集中管理身分識別  
 。
  
 - 具有擁有者權限的外部帳戶應該從您的訂用帳戶中移除
@@ -77,7 +77,7 @@ ms.locfileid: "88649222"
 
 ## <a name="812-and-815-least-privilege-and-review-of-user-access-rights"></a>8.1.2 和 8.1.5 最低權限和檢閱使用者存取權限
 
-Azure 會實作角色型存取控制 (RBAC)，以協助您管理有權存取 Azure 資源的人員。 您可以使用 Azure 入口網站，檢閱可存取 Azure 資源的人員及其權限。 此藍圖指派了 [Azure 原則](../../../policy/overview.md)定義來稽核應優先檢閱的帳戶，包括已停用的帳戶和已提高權限的外部帳戶。
+Azure 角色型存取控制 (Azure RBAC) 可協助您管理有權存取 Azure 中資源的人員。 您可以使用 Azure 入口網站，檢閱可存取 Azure 資源的人員及其權限。 此藍圖指派了 [Azure 原則](../../../policy/overview.md)定義來稽核應優先檢閱的帳戶，包括已停用的帳戶和已提高權限的外部帳戶。
 
 - 已取代帳戶應該從您的訂用帳戶中移除
 - 具有擁有者權限的已取代帳戶應該從您的訂用帳戶中移除
@@ -87,7 +87,7 @@ Azure 會實作角色型存取控制 (RBAC)，以協助您管理有權存取 Azu
 
 ## <a name="813-removal-or-adjustment-of-access-rights"></a>8.1.3 移除或調整存取權限
 
-Azure 會實作角色型存取控制 (RBAC)，以協助您管理有權存取 Azure 資源的人員。 使用 Azure Active Directory 和 RBAC，可更新使用者角色以反映組織變更。 必要時可以封鎖帳戶的登入 (或移除帳戶)，而立即移除對 Azure 資源的存取權限。 此藍圖指派了 [Azure 原則](../../../policy/overview.md)定義來稽核應考慮移除的停用帳戶。
+Azure 角色型存取控制 (Azure RBAC) 可協助您管理有權存取 Azure 中資源的人員。 使用 Azure Active Directory 和 Azure RBAC，可更新使用者角色以反映組織變更。 必要時可以封鎖帳戶的登入 (或移除帳戶)，而立即移除對 Azure 資源的存取權限。 此藍圖指派了 [Azure 原則](../../../policy/overview.md)定義來稽核應考慮移除的停用帳戶。
 
 - 已取代帳戶應該從您的訂用帳戶中移除
 - 具有擁有者權限的已取代帳戶應該從您的訂用帳戶中移除

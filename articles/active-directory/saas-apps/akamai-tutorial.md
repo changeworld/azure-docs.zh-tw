@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/03/2020
 ms.author: jeedes
-ms.openlocfilehash: fbec82e25424fd5220aa992cf2dd0e8449e6a0a4
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: c8978504244fbf68875ca8cff7a92f042e8e988b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88523123"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329494"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-akamai"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Akamai 整合
 
@@ -101,7 +101,7 @@ Akamai EAA 應用程式個別設定於 Azure AD 入口網站上。 管理員可�
 
 在**整合案例 1** 和**案例 2** 中，以下所列的所有設定都相同。 在**整合案例 2** 中，您已在 Akamai EAA 中設定個別 IDP，且必須修改 URL 屬性以指向應用程式 URL。
 
-![重要事項](./media/header-akamai-tutorial/important.png)
+![Akamai 企業應用程式存取中 AZURESSO-SP [一般] 索引標籤的螢幕擷取畫面。 [驗證組態 URL] 欄位會反白顯示。](./media/header-akamai-tutorial/important.png)
 
 ## <a name="adding-akamai-from-the-gallery"></a>從資源庫新增 Akamai
 
@@ -151,7 +151,7 @@ Akamai EAA 應用程式個別設定於 Azure AD 入口網站上。 管理員可�
     > [!NOTE]
     > 這些都不是真正的值。 請使用實際的識別碼和回覆 URL 更新這些值。 請連絡 [Akamai 用戶端支援小組](https://www.akamai.com/us/en/contact-us/)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
 
-1. 在 [以 SAML 設定單一登入] 頁面上的 [SAML 簽署憑證] 區段中，尋找 [同盟中繼資料 XML]，然後選取 [下載]，以下載憑證並將其儲存在電腦上。
+1. 在 [以 SAML 設定單一登入]  頁面上的 [SAML 簽署憑證]  區段中，尋找 [同盟中繼資料 XML]  ，然後選取 [下載]  ，以下載憑證並將其儲存在電腦上。
 
     ![憑證下載連結](common/metadataxml.png)
 
@@ -163,11 +163,11 @@ Akamai EAA 應用程式個別設定於 Azure AD 入口網站上。 管理員可�
 
 在本節中，您將在 Azure 入口網站中建立名為 B.Simon 的測試使用者。
 
-1. 在 Azure 入口網站的左窗格中，依序選取 [Azure Active Directory]、[使用者] 和 [所有使用者]。
+1. 在 Azure 入口網站的左窗格中，依序選取 [Azure Active Directory]  、[使用者]  和 [所有使用者]  。
 1. 在畫面頂端選取 [新增使用者]。
 1. 在 [使用者] 屬性中，執行下列步驟：
    1. 在 [名稱] 欄位中，輸入 `B.Simon`。  
-   1. 在 [使用者名稱] 欄位中，輸入 username@companydomain.extension。 例如： `B.Simon@contoso.com` 。
+   1. 在 [使用者名稱]  欄位中，輸入 username@companydomain.extension。 例如： `B.Simon@contoso.com` 。
    1. 選取 [顯示密碼] 核取方塊，然後記下 [密碼] 方塊中顯示的值。
    1. 按一下 [建立]。
 
@@ -198,11 +198,11 @@ Akamai EAA 應用程式個別設定於 Azure AD 入口網站上。 管理員可�
 1. 登入 **Akamai 企業應用程式存取**主控台。
 1. 在 [Akamai EAA 主控台] 上，選取 [身分識別] > [識別提供者]，然後按一下 [新增識別提供者]。
 
-    ![設定 Akamai](./media/header-akamai-tutorial/configure01.png)
+    ![Akamai EAA 主控台識別提供者視窗的螢幕擷取畫面。 在 [身分識別] 功能表上選取 [識別提供者]，然後選取 [新增識別提供者]。](./media/header-akamai-tutorial/configure01.png)
 
 1. 在 [建立新的識別提供者] 上，執行下列步驟：
 
-    ![設定 Akamai](./media/header-akamai-tutorial/configure02.png)
+    ![Akamai EAA 主控台中 [建立新的識別提供者] 對話方塊的螢幕擷取畫面。](./media/header-akamai-tutorial/configure02.png)
 
     a. 指定 [唯一名稱]。
 
@@ -218,7 +218,7 @@ Akamai EAA 應用程式個別設定於 Azure AD 入口網站上。 管理員可�
 1. **Akamai 雲端區域** - 選取適當的雲端區域。
 1. **憑證驗證** - 查看 Akamai 文件 (選擇性)
 
-    ![設定 Akamai](./media/header-akamai-tutorial/configure03.png)
+    ![Akamai EAA 主控台 [一般] 索引標籤的螢幕擷取畫面，其中顯示身分識別攔截、Akamai 雲端區域和憑證驗證的設定。](./media/header-akamai-tutorial/configure03.png)
 
 ### <a name="authentication-configuration"></a>驗證設定
 
@@ -227,37 +227,37 @@ Akamai EAA 應用程式個別設定於 Azure AD 入口網站上。 管理員可�
 3. 簽署 SAML 要求：預設為未核取。
 4. 針對 IDP 中繼資料檔案，在 Azure AD 主控台中新增應用程式。
 
-    ![設定 Akamai](./media/header-akamai-tutorial/configure04.png)
+    ![Akamai EAA 主控台驗證組態的螢幕擷取畫面，其中顯示 URL、登出 URL、簽署 SAML 要求和 IDP 中繼資料檔案的設定。](./media/header-akamai-tutorial/configure04.png)
 
 ### <a name="session-settings"></a>工作階段設定
 
 將設定保留為預設值。
 
-![設定 Akamai](./media/header-akamai-tutorial/sessionsettings.png)
+![Akamai EAA 主控台工作階段設定對話方塊的螢幕擷取畫面。](./media/header-akamai-tutorial/sessionsettings.png)
 
 ### <a name="directories"></a>目錄
 
 略過目錄設定。
 
-![設定 Akamai](./media/header-akamai-tutorial/directories.png)
+![Akamai EAA 主控台 [目錄] 索引標籤的螢幕擷取畫面。](./media/header-akamai-tutorial/directories.png)
 
 ### <a name="customization-ui"></a>自訂 UI
 
 您可以將自訂新增至 IDP。
 
-![設定 Akamai](./media/header-akamai-tutorial/customizationui.png)
+![Akamai EAA 主控台 [自訂] 索引標籤的螢幕擷取畫面，其中顯示自訂 UI、語言設定和佈景主題的設定。](./media/header-akamai-tutorial/customizationui.png)
 
 ### <a name="advanced-settings"></a>進階設定
 
 略過進階設定/如需詳細資訊，請參閱 Akamai 文件。
 
-![設定 Akamai](./media/header-akamai-tutorial/advancesettings.png)
+![Akamai EAA 主控台 [進階設定] 索引標籤的螢幕擷取畫面，其中顯示 EAA 用戶端、進階和 OIDC 至 SAML 橋接的設定。](./media/header-akamai-tutorial/advancesettings.png)
 
 ### <a name="deployment"></a>部署
 
 1. 按一下 [部署識別提供者]。
 
-    ![設定 Akamai](./media/header-akamai-tutorial/deployment.png)
+    ![Akamai EAA 主控台 [部署] 索引標籤的螢幕擷取畫面，其中顯示 [部署識別提供者] 按鈕。](./media/header-akamai-tutorial/deployment.png)
 
 2. 確認部署成功
 
@@ -267,115 +267,115 @@ Akamai EAA 應用程式個別設定於 Azure AD 入口網站上。 管理員可�
 
 1. 從「新增應用程式」精靈選擇 [自訂 HTTP]。
 
-    ![設定 Akamai](./media/header-akamai-tutorial/configure05.png)
+    ![Akamai EAA 主控台 [新增應用程式] 精靈的螢幕擷取畫面，其中顯示 [存取應用程式] 區段中列出的 CustomHTTP。](./media/header-akamai-tutorial/configure05.png)
 
 2. 輸入 [應用程式名稱] 和 [描述]。
 
-    ![設定 Akamai](./media/header-akamai-tutorial/configure06.png)
+    ![[自訂 HTTP 應用程式] 對話方塊的螢幕擷取畫面，其中顯示應用程式名稱和描述的設定。](./media/header-akamai-tutorial/configure06.png)
 
-    ![設定 Akamai](./media/header-akamai-tutorial/configure07.png)
+    ![Akamai EAA 主控台 [一般] 索引標籤的螢幕擷取畫面，其中顯示 MYHEADERAPP 的一般設定。](./media/header-akamai-tutorial/configure07.png)
 
-    ![設定 Akamai](./media/header-akamai-tutorial/configure08.png)
+    ![Akamai EAA 主控台的螢幕擷取畫面，其中顯示憑證和位置的設定。](./media/header-akamai-tutorial/configure08.png)
 
 #### <a name="authentication"></a>驗證
 
 1. 選取 [驗證] 索引標籤。
 
-    ![設定 Akamai](./media/header-akamai-tutorial/configure09.png)
+    ![Akamai EAA 主控台的螢幕擷取畫面，其中已選取 [驗證] 索引標籤。](./media/header-akamai-tutorial/configure09.png)
 
 2. 指派 [識別提供者]
 
-    ![設定 Akamai](./media/header-akamai-tutorial/configure10.png)
+    ![Akamai EAA 主控台 [驗證] 索引標籤 (適用於 MYHEADERAPP) 的螢幕擷取畫面，其中顯示已設定為 Azure AD SSO 的識別提供者。](./media/header-akamai-tutorial/configure10.png)
 
 #### <a name="services"></a>服務
 
 按一下 [儲存] 並移至 [驗證]。
 
-![設定 Akamai](./media/header-akamai-tutorial/configure11.png)
+![Akamai EAA 主控台 [服務] 索引標籤 (適用於 MYHEADERAPP) 的螢幕擷取畫面，其中顯示右下角的 [儲存並移至進階設定] 按鈕。](./media/header-akamai-tutorial/configure11.png)
 
 #### <a name="advanced-settings"></a>進階設定
 
 1. 在 [客戶 HTTP 標頭] 底下，指定 [CustomerHeader] 和 [SAML 屬性]。
 
-    ![設定 Akamai](./media/header-akamai-tutorial/configure12.png)
+    ![Akamai EAA 主控台 [進階設定] 索引標籤的螢幕擷取畫面，其中顯示 [驗證] 底下反白顯示的 [SSO 記錄 URL] 欄位。](./media/header-akamai-tutorial/configure12.png)
 
 1. 按一下 [儲存] 並移至 [部署] 按鈕。
 
-    ![設定 Akamai](./media/header-akamai-tutorial/configure13.png)
+    ![Akamai EAA 主控台 [進階設定] 索引標籤的螢幕擷取畫面，其中顯示右下角的 [儲存並移至部署] 按鈕。](./media/header-akamai-tutorial/configure13.png)
 
 #### <a name="deploy-the-application"></a>部署應用程式
 
 1. 按一下 [部署應用程式] 按鈕。
 
-    ![設定 Akamai](./media/header-akamai-tutorial/configure14.png)
+    ![Akamai EAA 主控台 [部署] 索引標籤的螢幕擷取畫面，其中顯示 [部署應用程式] 按鈕。](./media/header-akamai-tutorial/configure14.png)
 
 1. 確認應用程式已部署成功。
 
-    ![設定 Akamai](./media/header-akamai-tutorial/configure15.png)
+    ![Akamai EAA 主控台 [部署] 索引標籤的螢幕擷取畫面，其中顯示應用程式狀態訊息：「已成功部署應用程式」。](./media/header-akamai-tutorial/configure15.png)
 
 1. 使用者體驗。
 
-    ![設定 Akamai](./media/header-akamai-tutorial/enduser01.png)
+    ![此螢幕擷取畫面顯示 myapps.microsoft.com 的開啟畫面，其中具有背景影像和 [登入] 對話方塊。](./media/header-akamai-tutorial/enduser01.png)
 
-    ![設定 Akamai](./media/header-akamai-tutorial/enduser02.png)
+    ![此螢幕擷取畫面顯示 [應用程式] 視窗的一部分，其中具有增益集、HRWEB、Akamai - CorpApps、費用、群組和存取權檢閱的圖示。 ](./media/header-akamai-tutorial/enduser02.png)
 
 1. 條件式存取。
 
-    ![設定 Akamai](./media/header-akamai-tutorial/conditionalaccess01.png)
+    ![訊息的螢幕擷取畫面：核准登入要求。 我們已傳送一則通知到您的行動裝置。 請回應以繼續。](./media/header-akamai-tutorial/conditionalaccess01.png)
 
-    ![設定 Akamai](./media/header-akamai-tutorial/conditionalaccess02.png)
+    ![[應用程式] 畫面的螢幕擷取畫面，其中顯示 MyHeaderApp 的圖示。](./media/header-akamai-tutorial/conditionalaccess02.png)
 
 #### <a name="remote-desktop"></a>遠端桌面
 
 1. 從「新增應用程式」精靈選擇 [RDP]。
 
-    ![設定 Akamai](./media/header-akamai-tutorial/configure16.png)
+    ![Akamai EAA 主控台 [新增應用程式] 精靈的螢幕擷取畫面，其中顯示在 [存取應用程式] 區段中應用程式之間列出的 RDP。](./media/header-akamai-tutorial/configure16.png)
 
 1. 輸入 [應用程式名稱] 和 [描述]。
 
-    ![設定 Akamai](./media/header-akamai-tutorial/configure17.png)
+    ![[RDP 應用程式] 對話方塊的螢幕擷取畫面，其中顯示應用程式名稱和描述的設定。](./media/header-akamai-tutorial/configure17.png)
 
-    ![設定 Akamai](./media/header-akamai-tutorial/configure18.png)
+    ![Akamai EAA 主控台 [一般] 索引標籤的螢幕擷取畫面，其中顯示 SECRETRDPAPP 的應用程式身分識別設定。](./media/header-akamai-tutorial/configure18.png)
 
 1. 指定會提供此項目的連接器。
 
-    ![設定 Akamai](./media/header-akamai-tutorial/configure19.png)
+    ![Akamai EAA 主控台的螢幕擷取畫面，其中顯示憑證和位置的設定。 相關聯的連接器會設定為 USWST-CON1。](./media/header-akamai-tutorial/configure19.png)
 
 #### <a name="authentication"></a>驗證
 
 按一下 [儲存] 並移至 [服務]。
 
-![設定 Akamai](./media/header-akamai-tutorial/configure20.png)
+![Akamai EAA 主控台 [驗證] 索引標籤 (適用於 SECRETRDPAPP) 的螢幕擷取畫面，其中顯示右下角的 [儲存並移至服務] 按鈕。](./media/header-akamai-tutorial/configure20.png)
 
 #### <a name="services"></a>服務
 
 按一下 [儲存] 並移至 [進階設定]。
 
-![設定 Akamai](./media/header-akamai-tutorial/configure21.png)
+![Akamai EAA 主控台 [服務] 索引標籤 (適用於 SECRETRDPAPP) 的螢幕擷取畫面，其中顯示右下角的 [儲存並移至進階設定] 按鈕。](./media/header-akamai-tutorial/configure21.png)
 
 #### <a name="advanced-settings"></a>進階設定
 
 1. 按一下 [儲存] 並移至 [部署]。
 
-    ![設定 Akamai](./media/header-akamai-tutorial/configure22.png)
+    ![Akamai EAA 主控台 [進階設定] 索引標籤 (適用於 SECRETRDPAPP) 的螢幕擷取畫面，其中顯示遠端桌面組態的設定。](./media/header-akamai-tutorial/configure22.png)
 
-    ![設定 Akamai](./media/header-akamai-tutorial/configure23.png)
+    ![Akamai EAA 主控台 [進階設定] 索引標籤 (適用於 SECRETRDPAPP) 的螢幕擷取畫面，其中顯示驗證和健康情況檢查組態的設定。](./media/header-akamai-tutorial/configure23.png)
 
-    ![設定 Akamai](./media/header-akamai-tutorial/configure24.png)
+    ![Akamai EAA 主控台 [自訂 HTTP 標題] 索引標籤 (適用於 SECRETRDPAPP) 的螢幕擷取畫面，其中具有右下角的 [儲存並移至部署] 按鈕。](./media/header-akamai-tutorial/configure24.png)
 
 1. 使用者體驗
 
-    ![設定 Akamai](./media/header-akamai-tutorial/enduser03.png)
+    ![myapps.microsoft.com 視窗的螢幕擷取畫面，其中具有背景影像和 [登入] 對話方塊。](./media/header-akamai-tutorial/enduser03.png)
 
-    ![設定 Akamai](./media/header-akamai-tutorial/enduser02.png)
+    ![myapps.microsoft.com [應用程式] 視窗的螢幕擷取畫面，其中具有增益集、HRWEB、Akamai - CorpApps、費用、群組和存取權檢閱的圖示。](./media/header-akamai-tutorial/enduser02.png)
 
 1. 條件式存取
 
-    ![設定 Akamai](./media/header-akamai-tutorial/conditionalaccess04.png)
+    ![條件式存取訊息的螢幕擷取畫面：核准登入要求。 我們已傳送一則通知到您的行動裝置。 請回應以繼續。](./media/header-akamai-tutorial/conditionalaccess04.png)
 
-    ![設定 Akamai](./media/header-akamai-tutorial/conditionalaccess05.png)
+    ![[應用程式] 畫面的螢幕擷取畫面，其中顯示 MyHeaderApp 和 SecretRDPApp 的圖示。](./media/header-akamai-tutorial/conditionalaccess05.png)
 
-    ![設定 Akamai](./media/header-akamai-tutorial/conditionalaccess06.png)
+    ![Windows Server 2012 RS 畫面的螢幕擷取畫面，其中顯示一般使用者圖示。 管理員、user0 和 user1 的圖示會顯示他們已登入。](./media/header-akamai-tutorial/conditionalaccess06.png)
 
 1. 或者，您也可以直接輸入 RDP 應用程式 URL。
 
@@ -383,15 +383,15 @@ Akamai EAA 應用程式個別設定於 Azure AD 入口網站上。 管理員可�
 
 1. 移至 [新增應用程式]，選擇 [SSH]。
 
-    ![設定 Akamai](./media/header-akamai-tutorial/configure25.png)
+    ![Akamai EAA 主控台 [新增應用程式] 精靈的螢幕擷取畫面，其中顯示在 [存取應用程式] 區段中應用程式之間列出的 SSH。](./media/header-akamai-tutorial/configure25.png)
 
 1. 輸入 [應用程式名稱] 和 [描述]。
 
-    ![設定 Akamai](./media/header-akamai-tutorial/configure26.png)
+    ![[SSH 應用程式] 對話方塊的螢幕擷取畫面，其中顯示應用程式名稱和描述的設定。](./media/header-akamai-tutorial/configure26.png)
 
 1. 設定應用程式識別碼。
 
-    ![設定 Akamai](./media/header-akamai-tutorial/configure27.png)
+    ![Akamai EAA 主控台 [一般] 索引標籤的螢幕擷取畫面，其中顯示 SSH-SECURE 的應用程式身分識別設定。](./media/header-akamai-tutorial/configure27.png)
 
     a. 指定名稱/描述。
 
@@ -407,43 +407,43 @@ Akamai EAA 應用程式個別設定於 Azure AD 入口網站上。 管理員可�
 
 按一下 [儲存] 並移至 [服務]。
 
-![設定 Akamai](./media/header-akamai-tutorial/configure28.png)
+![Akamai EAA 主控台 [驗證] 索引標籤 (適用於 SSH-SECURE) 的螢幕擷取畫面，其中顯示右下角的 [儲存並移至服務] 按鈕。](./media/header-akamai-tutorial/configure28.png)
 
 #### <a name="services"></a>服務
 
 按一下 [儲存] 並移至 [進階設定]。
 
-![設定 Akamai](./media/header-akamai-tutorial/configure29.png)
+![Akamai EAA 主控台 [服務] 索引標籤 (適用於 SSH-SECURE) 的螢幕擷取畫面，其中顯示右下角的 [儲存並移至進階設定] 按鈕。](./media/header-akamai-tutorial/configure29.png)
 
 #### <a name="advanced-settings"></a>進階設定
 
 按一下 [儲存] 並移至 [部署]
 
-![設定 Akamai](./media/header-akamai-tutorial/configure30.png)
+![Akamai EAA 主控台 [進階設定] 索引標籤 (適用於 SSH-SECURE) 的螢幕擷取畫面，其中顯示驗證和健康情況檢查組態的設定。](./media/header-akamai-tutorial/configure30.png)
 
-![設定 Akamai](./media/header-akamai-tutorial/configure31.png)
+![Akamai EAA 主控台 [自訂 HTTP 標題] 索引標籤 (適用於 SSH-SECURE) 的螢幕擷取畫面，其中具有右下角的 [儲存並移至部署] 按鈕。](./media/header-akamai-tutorial/configure31.png)
 
 #### <a name="deployment"></a>部署
 
 1. 按一下 [部署應用程式]。
 
-    ![設定 Akamai](./media/header-akamai-tutorial/configure32.png)
+    ![Akamai EAA 主控台 [部署] 索引標籤 (適用於 SSH-SECURE) 的螢幕擷取畫面，其中顯示 [部署應用程式] 按鈕。](./media/header-akamai-tutorial/configure32.png)
 
 1. 使用者體驗
 
-    ![設定 Akamai](./media/header-akamai-tutorial/enduser03.png)
+    ![myapps.microsoft.com 視窗 [登入] 對話方塊的螢幕擷取畫面。](./media/header-akamai-tutorial/enduser03.png)
 
-    ![設定 Akamai](./media/header-akamai-tutorial/enduser04.png)
+    ![myapps.microsoft.com [應用程式] 視窗的螢幕擷取畫面，其中顯示增益集、HRWEB、Akamai - CorpApps、費用、群組和存取權檢閱的圖示。](./media/header-akamai-tutorial/enduser04.png)
 
 1. 條件式存取
 
-    ![設定 Akamai](./media/header-akamai-tutorial/conditionalaccess04.png)
+    ![顯示訊息的螢幕擷取畫面：核准登入要求。 我們已傳送一則通知到您的行動裝置。 請回應以繼續。](./media/header-akamai-tutorial/conditionalaccess04.png)
 
-    ![設定 Akamai](./media/header-akamai-tutorial/conditionalaccess07.png)
+    ![[應用程式] 畫面的螢幕擷取畫面，其中顯示 MyHeaderApp、SSH Secure 和 SecretRDPApp 的圖示。](./media/header-akamai-tutorial/conditionalaccess07.png)
 
-    ![設定 Akamai](./media/header-akamai-tutorial/conditionalaccess08.png)
+    ![ssh-secure-go.akamai-access.com 命令視窗的螢幕擷取畫面，其中顯示密碼提示。](./media/header-akamai-tutorial/conditionalaccess08.png)
 
-    ![設定 Akamai](./media/header-akamai-tutorial/conditionalaccess09.png)
+    ![ssh-secure-go.akamai-access.com 命令視窗的螢幕擷取畫面，其中顯示應用程式的相關資訊，並顯示命令的提示。](./media/header-akamai-tutorial/conditionalaccess09.png)
 
 ### <a name="kerberos-authentication"></a>Kerberos 驗證
 
@@ -451,54 +451,54 @@ Akamai EAA 應用程式個別設定於 Azure AD 入口網站上。 管理員可�
 
 #### <a name="general-tab"></a>General Tab
 
-![設定 Akamai](./media/header-akamai-tutorial/generaltab.png)
+![Akamai EAA 主控台 [一般] 索引標籤 (適用於 MYKERBOROSAPP) 的螢幕擷取畫面。](./media/header-akamai-tutorial/generaltab.png)
 
 #### <a name="authentication-tab"></a>[驗證] 索引標籤
 
 指派識別提供者
 
-![設定 Akamai](./media/header-akamai-tutorial/authenticationtab.png)
+![Akamai EAA 主控台 [驗證] 索引標籤 (適用於 MYKERBOROSAPP) 的螢幕擷取畫面，其中顯示已設定為 Azure AD SSO 的識別提供者。](./media/header-akamai-tutorial/authenticationtab.png)
 
 #### <a name="services-tab"></a>服務索引標籤
 
-![設定 Akamai](./media/header-akamai-tutorial/servicestab.png)
+![Akamai EAA 主控台 [服務] 索引標籤 (適用於 MYKERBOROSAPP) 的螢幕擷取畫面。](./media/header-akamai-tutorial/servicestab.png)
 
 #### <a name="advanced-settings"></a>進階設定
 
-![設定 Akamai](./media/header-akamai-tutorial/advancesettings02.png)
+![Akamai EAA 主控台 [進階設定] 索引標籤 (適用於 MYKERBOROSAPP) 的螢幕擷取畫面，其中顯示相關應用程式和驗證的設定。](./media/header-akamai-tutorial/advancesettings02.png)
 
 > [!NOTE]
 > 網頁伺服器的 SPN 必須是 SPN@Domain 格式，以此示範為例，必須是 `HTTP/frp-app1.superdemo.live@SUPERDEMO.LIVE`。 將其餘設定保留為預設值。
 
 #### <a name="deployment-tab"></a>部署索引標籤
 
-![設定 Akamai](./media/header-akamai-tutorial/deploymenttab.png)
+![Akamai EAA 主控台 [部署] 索引標籤 (適用於 MYKERBOROSAPP) 的螢幕擷取畫面，其中顯示 [部署應用程式] 按鈕。](./media/header-akamai-tutorial/deploymenttab.png)
 
 #### <a name="adding-directory"></a>新增目錄
 
 1. 從下拉式清單中選取 [AD]。
 
-    ![設定 Akamai](./media/header-akamai-tutorial/configure33.png)
+    ![Akamai EAA 主控台 [目錄] 視窗的螢幕擷取畫面，其中顯示 [建立新目錄] 對話方塊，並在 [目錄類型] 的下拉式清單中選取 [AD]。](./media/header-akamai-tutorial/configure33.png)
 
 1. 提供必要的資料。
 
-    ![設定 Akamai](./media/header-akamai-tutorial/configure34.png)
+    ![Akamai EAA 主控台 SUPERDEMOLIVE 視窗的螢幕擷取畫面，其中具有 DirectoryName、目錄服務、連接器和屬性對應的設定。](./media/header-akamai-tutorial/configure34.png)
 
 1. 確認目錄已建立。
 
-    ![設定 Akamai](./media/header-akamai-tutorial/directorydomain.png)
+    ![Akamai EAA 主控台 [目錄] 視窗的螢幕擷取畫面，其中顯示已新增目錄 superdemo.live。](./media/header-akamai-tutorial/directorydomain.png)
 
 1. 新增需要存取權的群組/OU。
 
-    ![設定 Akamai](./media/header-akamai-tutorial/addgroup.png)
+    ![目錄 superdemo.live 設定的螢幕擷取畫面。 您選取用來新增群組或 OU 的圖示會反白顯示。](./media/header-akamai-tutorial/addgroup.png)
 
 1. 在下列畫面中，群組稱為 EAAGroup，且有 1 個成員。
 
-    ![設定 Akamai](./media/header-akamai-tutorial/eaagroup.png)
+    ![Akamai EAA 主控台 GROUPS ON SUPERDEMOLIVE DIRECTORY 視窗的螢幕擷取畫面。 具有 1 個使用者的 EAAGroup 會列示在 [群組] 底下。](./media/header-akamai-tutorial/eaagroup.png)
 
 1. 按一下 [身分識別] > [識別提供者] 將目錄新增至您的識別提供者，並按一下 [目錄] 索引標籤，然後按一下 [指派目錄]。
 
-    ![設定 Akamai](./media/header-akamai-tutorial/assigndirectory.png)
+    ![Akamai EAA 主控台 [目錄] 索引標籤 (適用於 Azure AD SSO) 的螢幕擷取畫面，其中顯示目前所指派目錄清單中的 superdemo.live。](./media/header-akamai-tutorial/assigndirectory.png)
 
 ### <a name="configure-kcd-delegation-for-eaa-walkthrough"></a>為 EAA 設定 KCD 委派的逐步解說
 
@@ -506,14 +506,14 @@ Akamai EAA 應用程式個別設定於 Azure AD 入口網站上。 管理員可�
 
 1. 在此範例中，我們將使用名為 **EAADelegation** 的帳戶。 您可以使用 **Active Directory 使用者和電腦** Snappin 來執行此作業。
 
-    ![設定 Akamai](./media/header-akamai-tutorial/assigndirectory.png)
+    ![Akamai EAA 主控台 [目錄] 索引標籤 (適用於 Azure AD SSO) 的螢幕擷取畫面。 目錄 superdemo 會列示在目前指派的目錄底下。](./media/header-akamai-tutorial/assigndirectory.png)
 
     > [!NOTE]
     > 根據 [身分識別攔截名稱]，使用者名稱必須採用特定格式。 從圖 1 中，該名稱顯示為 **corpapps.login.go.akamai-access.com**
 
 1. 使用者登入名稱將是：`HTTP/corpapps.login.go.akamai-access.com`
 
-    ![設定 Akamai](./media/header-akamai-tutorial/eaadelegation.png)
+    ![顯示 EAADelegation 屬性的螢幕擷取畫面，其中名字設定為 "EAADelegation"，而使用者登入名稱設定為 HTTP/corpapps.login.go.akamai-access.com。](./media/header-akamai-tutorial/eaadelegation.png)
 
 #### <a name="step-2-configure-the-spn-for-this-account"></a>步驟 2:設定此帳戶的 SPN
 
@@ -521,13 +521,13 @@ Akamai EAA 應用程式個別設定於 Azure AD 入口網站上。 管理員可�
 
 2. setspn -s **Http/corpapps.login.go.akamai-access.com eaadelegation**
 
-    ![設定 Akamai](./media/header-akamai-tutorial/spn.png)
+    ![管理員命令提示字元的螢幕擷取畫面，其中顯示命令 setspn -s Http/corpapps.login.go.akamai-access.com eaadelegation 的結果。](./media/header-akamai-tutorial/spn.png)
 
 #### <a name="step-3-configure-delegation"></a>步驟 3：設定委派
 
 1. 針對 EAADelegation 帳戶，按一下 [委派] 索引標籤。
 
-    ![設定 Akamai](./media/header-akamai-tutorial/spn.png)
+    ![管理員命令提示字元的螢幕擷取畫面，其中顯示用於設定 SPN 的命令。](./media/header-akamai-tutorial/spn.png)
 
     * 指定使用任何驗證通訊協定
     * 按一下 [新增]，然後新增 Kerberos 網站的應用程式集區帳戶。 如果正確設定，應會自動解析為正確的 SPN。
@@ -551,35 +551,35 @@ Akamai EAA 應用程式個別設定於 Azure AD 入口網站上。 管理員可�
 
 1. Ktpass /out EAADemo.keytab  /princ HTTP/corpapps.login.go.akamai-access.com@superdemo.live /mapuser eaadelegation@superdemo.live /pass RANDOMPASS /crypto All ptype KRB5_NT_PRINCIPAL
 
-    ![設定 Akamai](./media/header-akamai-tutorial/administrator.png)
+    ![管理員命令提示字元的螢幕擷取畫面，其中顯示為 AKAMAI EAA 建立金鑰表檔案的命令結果。](./media/header-akamai-tutorial/administrator.png)
 
 #### <a name="step-5-import-keytab-in-the-akamai-eaa-console"></a>步驟 5：在 AKAMAI EAA 主控台中匯入金鑰表
 
 1. 按一下 [系統] > [金鑰表]。
 
-    ![設定 Akamai](./media/header-akamai-tutorial/keytabs.png)
+    ![Akamai EAA 主控台的螢幕擷取畫面，其中顯示從 [系統] 功能表選取的金鑰表。](./media/header-akamai-tutorial/keytabs.png)
 
 1. 在 [金鑰表類型] 中，選擇 [Kerberos 委派]。
 
-    ![設定 Akamai](./media/header-akamai-tutorial/keytabdelegation.png)
+    ![Akamai EAA 主控台 EAAKEYTAB 畫面的螢幕擷取畫面，其中顯示金鑰表設定。 [金鑰表類型] 會設定為 [Kerberos 委派]。](./media/header-akamai-tutorial/keytabdelegation.png)
 
 1. 確定金鑰表顯示為 [已部署] 和 [已驗證]。
 
-    ![設定 Akamai](./media/header-akamai-tutorial/keytabs02.png)
+    ![Akamai EAA 主控台 KEYTABS 畫面的螢幕擷取畫面，其中將 EAA 金鑰表列為「已部署和已驗證的金鑰表」。](./media/header-akamai-tutorial/keytabs02.png)
 
 1. 使用者體驗
 
-    ![設定 Akamai](./media/header-akamai-tutorial/enduser03.png)
+    ![myapps.microsoft.com 中 [登入] 對話方塊的螢幕擷取畫面。 ](./media/header-akamai-tutorial/enduser03.png)
 
-    ![設定 Akamai](./media/header-akamai-tutorial/enduser04.png)
+    ![myapps.microsoft.com [應用程式] 視窗的螢幕擷取畫面，其中顯示應用程式圖示。](./media/header-akamai-tutorial/enduser04.png)
 
 1. 條件式存取
 
-    ![設定 Akamai](./media/header-akamai-tutorial/conditionalaccess04.png)
+    ![顯示「核准登入要求」訊息的螢幕擷取畫面。 訊息。](./media/header-akamai-tutorial/conditionalaccess04.png)
 
-    ![設定 Akamai](./media/header-akamai-tutorial/conditionalaccess10.png)
+    ![[應用程式] 畫面的螢幕擷取畫面，其中顯示 MyHeaderApp、SSH Secure、SecretRDPApp 和 myKerberosApp 的圖示。](./media/header-akamai-tutorial/conditionalaccess10.png)
 
-    ![設定 Akamai](./media/header-akamai-tutorial/conditionalaccess11.png)
+    ![myKerberosApp 啟動顯示畫面的螢幕擷取畫面。 「歡迎 superdemo\user1」訊息會顯示在背景影像上。](./media/header-akamai-tutorial/conditionalaccess11.png)
 
 ### <a name="create-akamai-test-user"></a>建立 Akamai 測試使用者
 

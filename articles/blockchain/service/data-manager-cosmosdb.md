@@ -4,18 +4,18 @@ description: 使用 Azure 區塊鏈服務的區塊鏈資料管理員將區塊鏈
 ms.date: 03/08/2020
 ms.topic: tutorial
 ms.reviewer: chroyal
-ms.openlocfilehash: 483a5246274f63549dfb2914361ede6aa001e02e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 69790787bc888448f2f40178bd12ee7058cc5892
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79533176"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91283443"
 ---
 # <a name="tutorial-use-blockchain-data-manager-to-send-data-to-azure-cosmos-db"></a>教學課程：使用區塊鏈資料管理員將資料傳送至 Azure Cosmos DB
 
 在本教學課程中，您將使用 Azure 區塊鏈服務的區塊鏈資料管理員，將區塊鏈交易資料記錄在 Azure Cosmos DB 中。 區塊鏈資料管理員會將區塊鏈總帳資料擷取、轉換和傳遞至 Azure 事件方格主題。 在 Azure 事件方格中，您可以使用 Azure 邏輯應用程式連接器在 Azure Cosmos DB 資料庫中建立文件。 完成本教學課程後，您將可在 Azure Cosmos DB 資料總管中探索區塊鏈交易資料。
 
-[![區塊鏈交易詳細資料](./media/data-manager-cosmosdb/raw-msg.png)](./media/data-manager-cosmosdb/raw-msg.png#lightbox)
+[![此螢幕擷取畫面顯示區塊鏈交易詳細資料。](./media/data-manager-cosmosdb/raw-msg.png)](./media/data-manager-cosmosdb/raw-msg.png#lightbox)
 
 在本教學課程中，您：
 
@@ -271,7 +271,7 @@ SendRequest 函式會設定 [RequestMessage]  和 [狀態]  欄位。 [RequestMe
 
 1. 選取項目識別碼以瀏覽訊息，並尋找具有相符交易雜湊的訊息。
 
-    [![區塊鏈交易詳細資料](./media/data-manager-cosmosdb/raw-msg.png)](./media/data-manager-cosmosdb/raw-msg.png#lightbox)
+    [![此螢幕擷取畫面顯示所選項目的區塊鏈交易詳細資料。](./media/data-manager-cosmosdb/raw-msg.png)](./media/data-manager-cosmosdb/raw-msg.png#lightbox)
 
     原始交易訊息會包含交易的相關詳細資料。 不過，屬性資訊會加密處理。
 

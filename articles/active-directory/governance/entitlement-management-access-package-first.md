@@ -16,12 +16,12 @@ ms.date: 07/22/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e58a98f8503c271eec113298a7e7a0cab5e0003e
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 9df1226d4b61326f8e5aa6f9b71d36eb5a33e81e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90707487"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91306509"
 ---
 # <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management"></a>教學課程：在 Azure AD 權利管理中建立您的第一個存取套件
 
@@ -29,7 +29,7 @@ ms.locfileid: "90707487"
 
 在本教學課程中，您將以 IT 系統管理員身分為 Woodgrove Bank 工作。 公司要求您建立行銷活動的資源套件，供內部使用者透過自助式要求取用。 要求不需經過核准，且使用者的存取權會在 30 天後到期。 在本教學課程中，行銷活動資源只是單一群組中的成員資格，但它可能是群組、應用程式或 SharePoint Online 網站的集合。
 
-![案例概觀](./media/entitlement-management-access-package-first/elm-scenario-overview.png)
+![顯示案例概觀的圖表。](./media/entitlement-management-access-package-first/elm-scenario-overview.png)
 
 在本教學課程中，您會了解如何：
 
@@ -110,7 +110,7 @@ ms.locfileid: "90707487"
 
      根據預設，您會看到 [一般] 目錄內部的群組。 當您選取 [一般] 目錄 (您勾選 [查看全部] 和取方塊時會看到) 外部的群組時，該群組將會新增至 [一般] 目錄。
 
-    ![新增存取套件 - [資源角色] 索引標籤](./media/entitlement-management-access-package-first/resource-roles-select-groups.png)
+    ![顯示 [新增存取套件 - 資源角色] 索引標籤和 [選取群組] 視的螢幕擷取畫面。](./media/entitlement-management-access-package-first/resource-roles-select-groups.png)
 
 10. 按一下 [選取]  將群組新增至清單。
 

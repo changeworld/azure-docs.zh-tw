@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sahandle
 ms.custom: contperfq1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ffe7f58f27d028dd114f548521feeeb74bb12cf1
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 4a6911f736e466277ba023f97189e1bb6619b8da
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89437695"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91265267"
 ---
 # <a name="what-is-identity-protection"></a>什麼是 Identity Protection？
 
@@ -53,7 +53,7 @@ Identity Protection 會識別下列分類的風險：
 | 匿名 IP 位址 | 從匿名 IP 位址登入 (例如：Tor 瀏覽器、Anonymizer VPN)。 |
 | 不熟悉的登入屬性 | 以給定使用者近期未出現過的屬性登入。 |
 | 已連結惡意程式碼的 IP 位址 | 從已連結惡意程式碼的 IP 位址登入。 |
-| 認證外洩 | 此風險偵測指出使用者的有效認證已外洩。 |
+| 認證外洩 | 指出使用者的有效認證已外洩。 |
 | 密碼噴灑 | 指出有攻擊者正以一致的暴力密碼破解方式，使用常見的密碼來攻擊多個使用者名稱。 |
 | Azure AD 威脅情報 | Microsoft 的內部和外部威脅情報來源已識別出已知的攻擊模式。 |
 
@@ -96,13 +96,13 @@ Identity Protection 要求使用者必須是安全性讀取者、安全性操作
 
 目前，安全性操作員角色無法存取有風險的登入報告。
 
-條件式存取系統管理員也可以建立原則來將登入風險視為條件，如需詳細資訊，請參閱[條件式存取：條件](../conditional-access/concept-conditional-access-conditions.md#sign-in-risk)。
+條件式存取系統管理員也可以建立原則來將登入風險視為條件。 在下列文章中尋找詳細資訊：[條件式存取：條件](../conditional-access/concept-conditional-access-conditions.md#sign-in-risk)。
 
 ## <a name="license-requirements"></a>授權需求
 
 [!INCLUDE [Active Directory P2 license](../../../includes/active-directory-p2-license.md)]
 
-| 功能 | 詳細資料  | Azure AD Free/Office 365 應用程式 | Azure AD Premium P1|Azure AD Premium P2 |
+| 功能 | 詳細資料  | Azure AD Free / Microsoft 365 應用程式 | Azure AD Premium P1|Azure AD Premium P2 |
 | --- | --- | --- | --- | --- |
 | 風險原則 | 使用者風險原則 (透過 Identity Protection)  | 否 | 否 |是 | 
 | 風險原則 | 登入風險原則 (透過 Identity Protection 或條件式存取)  | 否 |  否 |是 |

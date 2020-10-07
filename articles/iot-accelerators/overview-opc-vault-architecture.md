@@ -8,14 +8,17 @@ ms.topic: overview
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 1e08968034134e2b9ab3b8064387d18663d5c866
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: eb558d967ad657d14158684fba92b13979ea5fe2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "71200154"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91281583"
 ---
 # <a name="opc-vault-architecture"></a>OPC 保存庫架構
+
+> [!IMPORTANT]
+> 當我們更新本文時，請參閱 [Azure 產業 IoT](https://azure.github.io/Industrial-IoT/) 以取得最新的內容。
 
 本文提供 OPC 保存庫微服務和 OPC 保存庫 IoT Edge 模組的概觀。
 
@@ -46,7 +49,7 @@ OPC 保存庫微服務旨在用來支援角色型工作流程，而在 Azure Key
 
 OPC 保存庫微服務包含下列介面，可實作工作流程來散發和管理 OPC UA 應用程式的公司專屬 CA。
 
-### <a name="application"></a>Application 
+### <a name="application"></a>應用程式 
 - OPC UA 應用程式可以是伺服器或用戶端 (或兩者皆是)。 在此案例中，OPC 保存庫是應用程式登錄授權單位。 
 - 除了註冊、更新和取消註冊應用程式的基本作業以外，還有介面可搭配搜尋運算式來尋找及查詢應用程式。 
 - 憑證要求必須參考有效的應用程式，才能處理要求，並使用所有 OPC UA 專屬的擴充功能來發行已簽署的憑證。 

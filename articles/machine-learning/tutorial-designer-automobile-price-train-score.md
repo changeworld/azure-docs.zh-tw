@@ -8,14 +8,14 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 06/28/2020
+ms.date: 09/28/2020
 ms.custom: designer
-ms.openlocfilehash: 55d950435522a18eafda69d152619426fe54d87f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: d9422cfb9bd8e5539f1a9b43d6fb7b137778f3d4
+ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90896708"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91404913"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer"></a>教學課程：使用設計工具預測汽車價格
 
@@ -75,7 +75,7 @@ Azure Machine Learning 管線會將多個機器學習和資料處理步驟組織
     如果您已經有可用的計算目標，您可以選取該目標來執行此管線。
 
     > [!NOTE]
-    > 設計工具只能在 Azure Machine Learning Compute 和 Azure Machine Learning 計算執行個體目標上執行訓練實驗，但其他計算目標將不會顯示。
+    > 設計工具只能在 Azure Machine Learning Compute 上執行訓練實驗，但其他計算目標將不會顯示。
 
 1. 輸入計算資源的名稱。
 
@@ -221,7 +221,7 @@ Azure Machine Learning 管線會將多個機器學習和資料處理步驟組織
     > [!IMPORTANT]
     > 請確實將**分割資料**的左側輸出連接埠連線至**定型模型**。 左側連接埠包含定型集。 右側連接埠包含測試集。
 
-    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-train-model.png"alt-text="此螢幕擷取畫面顯示「訓練模型」模組的正確組態。「線性迴歸」模組連線至「訓練模型」模組的左側連接埠，「分割資料」模組連線至「訓練模型」的右側連接埠。":::
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-train-model.png"alt-text="Select-column":::
 
 1. 選取 **訓練模型** 模組。
 
@@ -236,7 +236,7 @@ Azure Machine Learning 管線會將多個機器學習和資料處理步驟組織
 
     您的管線應會顯示如下：
 
-    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-train-graph.png"alt-text="此螢幕擷取畫面顯示管線在新增「訓練模型」模組之後的正確組態。":::
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-train-graph.png"alt-text="Select-column":::
 
 ### <a name="add-the-score-model-module"></a>新增評分模型模組
 
@@ -256,7 +256,7 @@ Azure Machine Learning 管線會將多個機器學習和資料處理步驟組織
 
     最終的管線應會顯示如下：
 
-    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-final-graph.png"alt-text="此螢幕擷取畫面顯示管線的正確組態。":::
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-final-graph.png"alt-text="Select-column":::
 
 ## <a name="submit-the-pipeline"></a>提交管線
 
@@ -285,7 +285,7 @@ Azure Machine Learning 管線會將多個機器學習和資料處理步驟組織
 
     您可以在這裡看到測試資料中的預測價格和實際價格。
 
-    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/score-result.png"alt-text="此螢幕擷取畫面將「評分標籤」資料行醒目提示的輸出視覺效果":::
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/score-result.png"alt-text="Select-column":::
 
 ### <a name="evaluate-models"></a>評估模型
 

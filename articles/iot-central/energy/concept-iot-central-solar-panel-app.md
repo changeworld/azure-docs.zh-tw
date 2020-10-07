@@ -1,6 +1,6 @@
 ---
 title: Azure IoT Central 的架構概念 - 太陽能板 | Microsoft Docs
-description: 本文介紹 Azure IoT 中心架構的重要相關概念
+description: 此文章介紹與 Azure IoT Central 太陽能板監視應用程式架構相關的重要概念。
 author: op-ravi
 ms.author: omravi
 ms.date: 10/23/2019
@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: f09a8cfae9b0f12df2ea76ecc216b1b2eb66e9ff
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 8c94109746545a1f7ff33534ca3ec54f55357281
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86511852"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316029"
 ---
 # <a name="azure-iot-central---solar-panel-app-architecture"></a>Azure IoT Central - 太陽能板應用程式架構
 

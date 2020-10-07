@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/24/2020
 author: mlearned
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 79e2726e26ff7883d5022e57fff8fa8961af2c98
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 3277fefb5615fd492b2859b741ef8e6f991eaf23
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88163674"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91355469"
 ---
 # <a name="deploy-to-azure-functions-with-devops-starter"></a>使用 DevOps 入門版部署到 Azure Functions
 
@@ -95,7 +95,7 @@ DevOps 入門版會在 Azure DevOps 組織中自動設定 CI/CD 管線。 您可
 
 1. 按一下 [建置] 底下的超連結。 瀏覽器索引標籤會顯示新專案的建置管線。
 
-    ![Build](_img/azure-devops-project-functions/build.png)
+    ![此螢幕擷取畫面顯示 Azure 入口網站 DevOps 入門版儀表板，其中有一個箭號指向 C I/C D 管線中 [組建] 底下的連結。](_img/azure-devops-project-functions/build.png)
 
 1. 選取 [編輯]。 在此窗格中，您可以檢查建置管線的各種工作。 建置會執行各種工作，例如從 Git 存放庫擷取來源程式碼、建置應用程式、執行單元測試，以及發佈用來進行部署的輸出。
 

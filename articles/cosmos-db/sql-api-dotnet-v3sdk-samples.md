@@ -8,12 +8,12 @@ ms.topic: sample
 ms.date: 10/07/2019
 ms.author: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: cfa79569ea4f2ec37eb7086d4878d3592babf18d
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 7ab3a368cbaa065742f62dead71e3a93df87ad87
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89015181"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91302977"
 ---
 # <a name="azure-cosmos-dbnet-v3-sdk-microsoftazurecosmos-examples-for-the-sql-api"></a>適用於 SQL API 的 Azure Cosmos DB.NET V3 SDK (Microsoft.Azure.Cosmos) 範例
 
@@ -21,6 +21,7 @@ ms.locfileid: "89015181"
 > * [.NET V2 SDK 範例](sql-api-dotnet-samples.md)
 > * [.NET V3 SDK 範例](sql-api-dotnet-v3sdk-samples.md)
 > * [Java V4 SDK 範例](sql-api-java-sdk-samples.md)
+> * [Spring Data V3 SDK 範例](sql-api-spring-data-sdk-samples.md)
 > * [Node.js 範例](sql-api-nodejs-samples.md)
 > * [Python 範例](sql-api-python-samples.md)
 > * [Azure 程式碼範例庫](https://azure.microsoft.com/resources/samples/?sort=0&service=cosmos-db)

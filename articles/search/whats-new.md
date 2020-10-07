@@ -8,20 +8,18 @@ ms.service: cognitive-search
 ms.topic: overview
 ms.date: 09/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: 4526e4916a89b53ae13a31bcdef6cd4715dd7e8c
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 7714ec29b3cbe17c7700b48111ea2b455aa18b7e
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90979586"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91532222"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure 認知搜尋的新功能
 
 了解該服務的新功能。 將此頁面加入書籤，以掌握服務的最新狀態。
 
-## <a name="feature-announcements-in-2020"></a>2020 的功能公告
-
-### <a name="september-2020"></a>2020 年 9 月
+## <a name="september-2020"></a>2020 年 9 月
 
 在 Azure Active Directory 中建立搜尋服務的身分識別，然後使用 RBAC 權限將身分識別唯讀權限授與 Azure 資料來源。 如果 IP 規則不是選項，可以選擇性地選擇[信任的服務例外狀況](search-indexer-howto-access-trusted-service-exception.md)功能。
 
@@ -34,13 +32,13 @@ ms.locfileid: "90979586"
 | [管理 REST API (2020-08-01-Preview)](https://docs.microsoft.com/rest/api/searchmanagement/management-api-versions) | REST | 新增 Azure Functions 和適用於 MySQL 資料庫的 Azure SQL 的共用私人連結資源。 | 公開預覽。 |
 | [管理 .NET SDK 4.0](https://docs.microsoft.com/dotnet/api/overview/azure/search/management) | .NET SDK | 適用於管理 SDK 的 Azure SDK 更新，目標為 REST API 版本 2020-08-01。 | 正式推出。 |
 
-### <a name="august-2020"></a>2020 年 8 月
+## <a name="august-2020"></a>2020 年 8 月
 
 |功能&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | 類別 | 描述 | 可用性  |
 |---------|------------------|-------------|---------------|
 | [雙重加密](search-security-overview.md#encryption) | 安全性 | 在新的搜尋服務上設定客戶管理的金鑰 (CMK) 加密，以在儲存層啟用雙重加密。 建立新的服務、[將客戶管理的金鑰設定並套用至索引或同義字對應](search-security-manage-encryption-keys.md)，並從該內容的雙重加密獲益。 | 於 2020 年 8 月 1 日後在下列區域建立的所有搜尋服務中正式發行：美國西部 2、美國東部、美國中南部、US Gov 維吉尼亞州、US Gov 亞利桑那州。 使用入口網站、管理 REST API 或 SDK 來建立服務。 |
 
-### <a name="july-2020"></a>2020 年 7 月
+## <a name="july-2020"></a>2020 年 7 月
 
 |功能&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | 類別 | 描述 | 可用性  |
 |---------|------------------|-------------|---------------|
@@ -48,7 +46,7 @@ ms.locfileid: "90979586"
 | [azure.search.documents 用戶端程式庫](/python/api/overview/azure/search-documents-readme)  | 適用於 Python 的 Azure SDK| Azure SDK 團隊發行了 Python 用戶端程式庫，其設計是為了與其他 Python 用戶端程式庫一致。 <br/><br/>版本 11 的目標為搜尋 REST api-version=2020-06-30。 | 正式推出。 </br> 安裝來自 PyPI 的 [azure-search-documents 套件](https://pypi.org/project/azure-search-documents/)。 |
 | [@azure/search-documents用戶端程式庫](/javascript/api/overview/azure/search-documents-readme)  | 適用於 JavaScript 的 Azure SDK | Azure SDK 團隊發行了 JavaScript 用戶端程式庫，其設計是為了與其他 JavaScript 用戶端程式庫一致。 <br/><br/>版本 11 的目標為搜尋 REST api-version=2020-06-30。 | 正式推出。 </br> 從 npm 安裝[@azure/search-documents 套件](https://www.npmjs.com/package/@azure/search-documents)。 |
 
-### <a name="june-2020"></a>2020 年 6 月
+## <a name="june-2020"></a>2020 年 6 月
 
 |功能&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | 類別 | 描述 | 可用性  |
 |---------|------------------|-------------|---------------|
@@ -57,7 +55,7 @@ ms.locfileid: "90979586"
 | [**Okapi BM25 相關性演算法**](https://en.wikipedia.org/wiki/Okapi_BM25) | 查詢 | 7 月 15 日之後建立的所有新搜尋服務都會使用新的相關性排名演算法。 針對之前建立的服務，您可以藉由在索引欄位上設定 `similarity` 屬性來加入。 | 正式推出。 </br> 使用[搜尋 REST API 2020-06-30](/rest/api/searchservice/) 或更新版本，或是 REST API 2019-05-06。 |
 | **executionEnvironment** | 安全性 (索引子) | 明確地將此索引子設定屬性設為 `private`，以強制透過私人端點連線到外部資料來源。 僅適用於利用 Azure Private Link 的搜尋服務。 | 正式推出。 </br> 使用[搜尋 REST API 2020-06-30](/rest/api/searchservice/) 來設定此一般設定參數。 |
 
-### <a name="may-2020-microsoft-build"></a>2020 年 5 月 (Microsoft 組建)
+## <a name="may-2020-microsoft-build"></a>2020 年 5 月 (Microsoft 組建)
 
 |功能&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | 類別 | 描述 | 可用性  |
 |---------|------------------|-------------|---------------|
@@ -68,21 +66,21 @@ ms.locfileid: "90979586"
 | [**sessionId 查詢參數**](index-similarity-and-scoring.md)，[scoringStatistics=global 參數](index-similarity-and-scoring.md#scoring-statistics) | 查詢 (相關性) | 將 sessionID 新增至查詢，以建立計算搜尋分數的工作階段，並使用 scoringStatistics=global 來收集所有分區的分數，以提供更一致的搜尋分數計算。 | 正式推出。 </br> 使用[搜尋 REST API 2020-06-30](/rest/api/searchservice/) 或更新版本，或是 REST API 2019-05-06。 |
 | [**featuresMode (預覽)** ](index-similarity-and-scoring.md#featuresMode-param) | 查詢 | 新增此查詢參數來展開相關性分數，可顯示更多詳細資料：每個欄位的相似性分數、每個欄位的字詞頻率，以及每個欄位的相符唯一語彙基元數目。 您可以使用自訂評分演算法中的這些資料點。 如需示範此功能的範例，請參閱[新增機器學習服務 (LearnToRank) 以搜尋相關性](https://github.com/Azure-Samples/search-ranking-tutorial)。 | 公開預覽。 </br> 使用[搜尋 REST API 2020-06-30-Preview](/rest/api/searchservice/index-preview) 或 REST API 2019-05-06-Preview。 |
 
-### <a name="march-2020"></a>2020 年 3 月
+## <a name="march-2020"></a>2020 年 3 月
 
 |功能&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | 類別 | 描述 | 可用性  |
 |---------|------------------|-------------|---------------|
-| [**原生 Blob 虛刪除 (預覽)** ](search-howto-indexing-azure-blob-storage.md#incremental-indexing-and-deletion-detection) | 索引子 | Azure 認知搜尋中的 Azure Blob 儲存體索引子會辨識處於虛刪除狀態的 Blob，並在編製索引期間移除對應的搜尋文件。 | 公開預覽。 </br> 使用[搜尋 REST API 2020-06-30-Preview](/rest/api/searchservice/index-preview) 和 REST API 2019-05-06-Preview，針對已啟用原生「虛刪除」的 Azure Blob 資料來源執行索引子。 |
+| [**原生 Blob 虛刪除 (預覽)** ](search-howto-index-changed-deleted-blobs.md) | 索引子 | Azure 認知搜尋中的 Azure Blob 儲存體索引子會辨識處於虛刪除狀態的 Blob，並在編製索引期間移除對應的搜尋文件。 | 公開預覽。 </br> 使用[搜尋 REST API 2020-06-30-Preview](/rest/api/searchservice/index-preview) 和 REST API 2019-05-06-Preview，針對已啟用原生「虛刪除」的 Azure Blob 資料來源執行索引子。 |
 | [**管理 REST API (2020-03-13)** ](/rest/api/searchmanagement/management-api-versions) | REST | 建立和管理搜尋服務的新穩定 REST API。 新增 IP 防火牆和 Private Link 支援 | 正式推出。 |
 
-### <a name="february-2020"></a>2020 年 2 月
+## <a name="february-2020"></a>2020 年 2 月
 
 |功能&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | 類別 | 描述 | 可用性  |
 |---------|------------------|-------------|---------------|
-| [**PII 偵測 (預覽)** ](cognitive-search-skill-pii-detection.md) | AI 擴充 | 在編制索引期間使用的新認知技能，可從輸入文字中擷取個人識別資訊，並可讓您選擇以各種方式將該文字遮罩。 | 公開預覽。 </br> 使用入口網站或[搜尋 REST API 2020-06-30-Preview](/rest/api/searchservice/index-preview) 或 REST API 2019-05-06-Preview。 |
+| [**PII 偵測 (預覽)** ](cognitive-search-skill-pii-detection.md) | AI 擴充 | 在編制索引期間使用的新認知技能，可從輸入文字中擷取個人資訊，並可讓您選擇以各種方式將該文字遮罩。 | 公開預覽。 </br> 使用入口網站或[搜尋 REST API 2020-06-30-Preview](/rest/api/searchservice/index-preview) 或 REST API 2019-05-06-Preview。 |
 | [**自訂實體查閱 (預覽)** ](cognitive-search-skill-custom-entity-lookup.md )| AI 擴充 | 新的認知技能，可從自訂、使用者定義的單字和片語清單中尋找文字。 使用這份清單，其會以任何相符的實體標記所有文件。 此技能也支援某種程度的模糊比對，可加以套用以尋找類似但不精確的相符項目。 | 公開預覽。 </br> 使用入口網站或[搜尋 REST API 2020-06-30-Preview](/rest/api/searchservice/index-preview) 或 REST API 2019-05-06-Preview。 |
 
-### <a name="january-2020"></a>2020 年 1 月
+## <a name="january-2020"></a>2020 年 1 月
 
 |功能&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | 類別 | 描述 | 可用性  |
 |---------|------------------|-------------|---------------|
@@ -90,7 +88,7 @@ ms.locfileid: "90979586"
 | [**適用於內建防火牆支援的 IP 規則 (預覽)** ](service-configure-firewall.md) | 安全性 | 將搜尋服務端點的存取限制為特定 IP 位址。 預覽 API 在 [CreateOrUpdate API](/rest/api/searchmanagement/2019-10-01-preview/createorupdate-service) 中有新的 **IpRule** 和 **NetworkRuleSet** 屬性。 此預覽功能可在幾個區域中使用。 |  使用 api-version=2019-10-01-Preview 的公開預覽版。  |
 | [**私人搜尋端點的 Azure Private Link (預覽)** ](service-create-private-endpoint.md) | 安全性| 藉由以私人連結資源的形式執行搜尋服務，可使其在公用網際網路中受到保護，並且只能讓相同虛擬網路上的用戶端應用程式和其他 Azure 服務存取。 | 使用 api-version=2019-10-01-Preview 的公開預覽版。  |
 
-## <a name="feature-announcements-in-2019"></a>2019 的功能公告
+## <a name="features-in-2019"></a>2019 中的功能
 
 ### <a name="december-2019"></a>2019 年 12 月
 

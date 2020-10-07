@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: overview
 ms.date: 07/12/2019
 ms.author: tomfitz
-ms.openlocfilehash: 9bb3f0d57f7d47e4cb754305627c52003273ca09
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: eb93321e0eb1b3d2dc7963f03715b1aedb4cfdcb
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89377007"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403682"
 ---
 # <a name="azure-managed-applications-overview"></a>Azure 受控應用程式概觀
 
@@ -77,7 +77,7 @@ Azure 中的所有資料提供者目前都不支援限制存取[資料作業](..
 
 ## <a name="azure-policy"></a>Azure 原則
 
-您可以套用 [Azure 原則](../../governance/policy/overview.md)，以便稽核您的受控應用程式。 您可套用原則定義，以確保受控應用程式的已部署執行個體符合資料和安全性需求。 如果您的應用程式與敏感性資料互動，請確定您已評估其保護方式。 例如，如果您的應用程式是與 Office 365 中的資料互動，則套用原則定義以確定資料加密已啟用。
+您可以套用 [Azure 原則](../../governance/policy/overview.md)，以便稽核您的受控應用程式。 您可套用原則定義，以確保受控應用程式的已部署執行個體符合資料和安全性需求。 如果您的應用程式與敏感性資料互動，請確定您已評估其保護方式。 例如，如果您的應用程式是與 Microsoft 365 中的資料互動，則套用原則定義以確定資料加密已啟用。
 
 ## <a name="next-steps"></a>後續步驟
 

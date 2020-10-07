@@ -3,12 +3,12 @@ title: 快速入門：將自訂事件傳送至 Azure 函式 - 事件方格
 description: 快速入門：使用 Azure 事件方格和 Azure CLI 或入口網站來發佈主題，以及訂閱該事件。 Azure 函式會用於端點。
 ms.date: 07/07/2020
 ms.topic: quickstart
-ms.openlocfilehash: 26ddfd1aeb61d3786edcdfca1acf5e293e4145ae
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: aea52bcaa94d6f288e86e44e1a0f294796d8e4a3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86115072"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324381"
 ---
 # <a name="quickstart-route-custom-events-to-an-azure-function-with-event-grid"></a>快速入門：使用事件方格將自訂事件路由至 Azure 函式
 
@@ -17,14 +17,17 @@ Azure Event Grid 是一項雲端事件服務。 Azure Functions 是其中一個�
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="create-azure-function"></a>建立 Azure 函式
+在訂閱自訂主題之前，請先建立一個函式來處理事件。 
 
-在訂閱自訂主題之前，我們要先建立用來處理事件的函式。 在 Azure 入口網站中，按一下 [建立資源] 並輸入 [函式]，然後選擇 [函式應用程式]，再按一下 [建立]。 選取資源群組下的 [新建]，並為其命名。 您將在本教學課程的其餘部分使用此名稱。 為函式應用程式提供名稱，保留 [程式碼] 上的 [發佈] 切換，選取任何執行階段和區域，然後點擊 [建立]。
+1. 使用[建立函式應用程式](../azure-functions/functions-create-first-azure-function.md#create-a-function-app)中的指示，建立函式應用程式。
+2. 使用**事件方格觸發程序**建立函式。 如果這是您第一次使用此觸發程序，您可能必須按一下 [安裝] 以安裝延伸模組。
+    1. 在 [函式應用程式] 頁面上，選取左側功能表上的 [函式]、在範本中搜尋 [事件方格]，然後選取 [Azure Event Grid 觸發程序]。 
 
-函式應用程式準備就緒後，請瀏覽至該應用程式，然後按一下 [+ 新增函式]。 針對開發環境選取 [入口網站內]，然後點擊 [繼續]。 在 [建立函式] 底下選擇 [更多範本] 以檢視更多範本，然後搜尋 [Azure 事件方格觸發程序]，並加以選取。 如果這是您第一次使用此觸發程序，您可能必須按一下 [安裝] 以安裝延伸模組。
+        :::image type="content" source="./media/custom-event-to-function/function-event-grid-trigger.png" alt-text="選取事件方格觸發程序":::
+3. 在 [新增函式] 頁面上，輸入函式的名稱，然後選取 [建立函式]。
 
-![函式事件方格觸發程序](./media/custom-event-to-function/grid-trigger.png)
-
-安裝延伸模組後，請按一下 [繼續]，為您的函式命名，然後點擊 [建立]。
+    :::image type="content" source="./media/custom-event-to-function/new-function-page.png" alt-text="選取事件方格觸發程序":::
+4. 使用 [程式碼 + 測試] 頁面，來查看函式的現有程式碼並將其更新。 
 
 [!INCLUDE [event-grid-register-provider-portal.md](../../includes/event-grid-register-provider-portal.md)]
 
@@ -81,8 +84,12 @@ Event Grid 主題會提供使用者定義的端點，作為您發佈事件的目
     5. 針對函式端點，選取您的函式應用程式所在的 Azure 訂用帳戶和資源群組，然後選取您先前建立的函式應用程式和函式。 選取 [確認選取項目]  。
 
        ![提供端點 URL](./media/custom-event-to-function/provide-endpoint.png)
-
-    6. 回到 [建立事件訂閱]  頁面，選取 [建立]  。
+    6. 此為選用步驟，但基於生產環境案例，還是建議執行。 在 [建立事件訂閱] 頁面上，切換至 [進階功能] 索引標籤，然後設定 [每個批次的事件數上限] 和 [偏好的批次大小 (KB)] 的值。 
+    
+        批次可以提供高輸送量。 針對 [每個批次的事件數上限]，請設定訂用帳戶將包含在批次中的事件數上限。 偏好的批次大小會設定批次大小的偏好上限 (KB)，但如果單一事件大於此臨界值，則可能會超過此限制。
+    
+        :::image type="content" source="./media/custom-event-to-function/enable-batching.png" alt-text="選取事件方格觸發程序":::
+    6. 在 [建立事件訂閱] 頁面上，選取 [建立]。
 
 ## <a name="send-an-event-to-your-topic"></a>將事件傳送至主題
 
@@ -171,9 +178,9 @@ Event Grid 主題會提供使用者定義的端點，作為您發佈事件的目
 ## <a name="clean-up-resources"></a>清除資源
 如果您打算繼續使用此事件，請勿清除在本文中建立的資源。 否則，請刪除您在本文建立的資源。
 
-1. 選取左功能表上的 [資源群組]  。 如果您未在左側功能表上看到它，請選取左側功能表上的 [所有服務]  ，然後選取 [資源群組]  。 
+1. 選取左功能表上的 [資源群組]。 如果您未在左側功能表上看到它，請選取左側功能表上的 [所有服務]  ，然後選取 [資源群組]  。 
 2. 選取資源群組以啟動 [資源群組]  頁面。 
-3. 選取工具列上的 [刪除資源群組]  。 
+3. 選取工具列上的 [刪除資源群組]。 
 4. 輸入資源群組的名稱並選取 [刪除]  ，以確認刪除。 
 
     ![資源群組](./media/custom-event-to-function/delete-resource-groups.png)

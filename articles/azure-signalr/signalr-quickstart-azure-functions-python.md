@@ -1,6 +1,6 @@
 ---
 title: Azure SignalR Service 無伺服器快速入門 - Python
-description: 說明如何使用 Azure SignalR 服務與 Azure Functions 來建立聊天室的快速入門。
+description: 使用 Python 搭配 Azure SignalR 服務與 Azure Functions 來建立聊天室的快速入門。
 author: anthonychu
 ms.service: signalr
 ms.devlang: python
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 12/14/2019
 ms.author: antchu
 ms.custom: devx-track-python
-ms.openlocfilehash: d7d893d3de5541bf1108a9182dfee6ad995e061b
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 24985a006390977c89c4eedc23084a9856272eba
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89050602"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91355632"
 ---
 # <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-python"></a>快速入門：使用 Python 搭配 Azure Functions 與 SignalR Service 來建立聊天室
 
@@ -57,7 +57,7 @@ Azure Functions 需要 [Python 3.6 或 3.7](https://www.python.org/downloads/)�
 
 1. 選取並複製主要連接字串。
 
-    ![建立 SignalR 服務](media/signalr-quickstart-azure-functions-javascript/signalr-quickstart-keys.png)
+    ![選取並複製主要連接字串。](media/signalr-quickstart-azure-functions-javascript/signalr-quickstart-keys.png)
 
 1. 在您的程式碼編輯器中，開啟複製的存放庫中包含的 *src/chat/python* 資料夾。
 

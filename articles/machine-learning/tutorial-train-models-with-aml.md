@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: tutorial
 author: sdgilley
 ms.author: sgilley
-ms.date: 03/18/2020
+ms.date: 09/28/2020
 ms.custom: seodec18, devx-track-python
-ms.openlocfilehash: 1af5ab33497ad8694752db17e874b883e60c942c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 40ee7ad74d1a1daaf6df5e76b5e51db52feea304
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90906661"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91535064"
 ---
 # <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn"></a>教學課程：使用 MNIST 資料和 scikit-learn 將影像分類模型定型 
 
@@ -37,7 +37,7 @@ ms.locfileid: "90906661"
 如果您沒有 Azure 訂用帳戶，請在開始前先建立免費帳戶。 立即試用[免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)。
 
 >[!NOTE]
-> 此文章中的程式碼已經過 [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) 1.0.83 版的測試。
+> 此文章中的程式碼已進行過 [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) 1.13.0 版的測試。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -117,7 +117,7 @@ from azureml.core.compute import ComputeTarget
 import os
 
 # choose a name for your cluster
-compute_name = os.environ.get("AML_COMPUTE_CLUSTER_NAME", "cpucluster")
+compute_name = os.environ.get("AML_COMPUTE_CLUSTER_NAME", "cpu-cluster")
 compute_min_nodes = os.environ.get("AML_COMPUTE_CLUSTER_MIN_NODES", 0)
 compute_max_nodes = os.environ.get("AML_COMPUTE_CLUSTER_MAX_NODES", 4)
 
@@ -223,7 +223,7 @@ plt.show()
 針對這項工作，提交工作，已在您稍早設定的遠端定型叢集上執行。  若要提交工作，您要：
 * 建立目錄
 * 建立定型指令碼
-* 建立 estimator 物件
+* 建立指令碼回合組態
 * 提交工作
 
 ### <a name="create-a-directory"></a>建立目錄
@@ -307,19 +307,19 @@ joblib.dump(value=clf, filename='outputs/sklearn_mnist_model.pkl')
   shutil.copy('utils.py', script_folder)
   ```
 
-### <a name="create-an-estimator"></a>建立估計工具
+### <a name="configure-the-training-job"></a>設定定型作業
 
-估計工具物件用來提交執行。 Azure Machine Learning 已針對常見的機器學習架構來預先設定估算器，並也設定了一般估算器。 藉由指定下列項目來建立估算器
+建立 [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true) 物件，以指定定型作業的組態詳細資料，包括您的定型指令碼、要使用的環境，以及要在其上執行的計算目標。 指定下列各項來設定 ScriptRunConfig：
 
-
-* 估算器物件的名稱 (`est`)。
 * 包含指令碼的目錄。 在此目錄中的所有檔案都會上傳到叢集節點以便執行。
 * 計算目標。 在此案例中，您會使用您所建立的 Azure Machine Learning 計算叢集。
 * 定型指令碼名稱 (**train.py**)。
 * 包含執行指令碼所需程式庫的環境。
-* 來自定型指令碼的必要參數。
+* 來自定型指令碼的必要引數。
 
-在本教學課程中，這個目標會是 AmlCompute。 指令碼資料夾中的所有檔案都會上傳到叢集節點以便執行。 **data_folder** 會設定為使用資料集。 「首先，建立包含下列項目的環境：scikit-learn 程式庫、存取資料集所需的 azureml-dataprep，以及 azureml-defaults (其中包含用於記錄計量的相依性)。 azureml-defaults 也包含之後將模型部署為 Web 服務 (本教學課程第 2 部分) 所需的相依性。
+在本教學課程中，這個目標會是 AmlCompute。 指令碼資料夾中的所有檔案都會上傳到叢集節點以便執行。 **--data_folder** 會設定為使用資料集。
+
+首先，建立包含下列項目的環境：scikit-learn 程式庫、存取資料集所需的 azureml-dataset-runtime，以及 azureml-defaults (其中包含用於記錄計量的相依性)。 azureml-defaults 也包含之後將模型部署為 Web 服務 (本教學課程第 2 部分) 所需的相依性。
 
 定義環境之後，請向工作區註冊此環境，以在本教學課程的第 2 部分重複使用。
 
@@ -329,38 +329,34 @@ from azureml.core.conda_dependencies import CondaDependencies
 
 # to install required packages
 env = Environment('tutorial-env')
-cd = CondaDependencies.create(pip_packages=['azureml-dataprep[pandas,fuse]>=1.1.14', 'azureml-defaults'], conda_packages = ['scikit-learn==0.22.1'])
+cd = CondaDependencies.create(pip_packages=['azureml-dataset-runtime[pandas,fuse]', 'azureml-defaults'], conda_packages=['scikit-learn==0.22.1'])
 
 env.python.conda_dependencies = cd
 
 # Register environment to re-use later
-env.register(workspace = ws)
+env.register(workspace=ws)
 ```
 
-然後使用下列程式碼建立估算器。
+然後，指定定型指令碼、計算目標和環境來建立 ScriptRunConfig。
 
 ```python
-from azureml.train.estimator import Estimator
+from azureml.core import ScriptRunConfig
 
-script_params = {
-    # to mount files referenced by mnist dataset
-    '--data-folder': mnist_file_dataset.as_named_input('mnist_opendataset').as_mount(),
-    '--regularization': 0.5
-}
+args = ['--data-folder', mnist_file_dataset.as_mount(), '--regularization', 0.5]
 
-est = Estimator(source_directory=script_folder,
-              script_params=script_params,
-              compute_target=compute_target,
-              environment_definition=env,
-              entry_script='train.py')
+src = ScriptRunConfig(source_directory=script_folder,
+                      script='train.py', 
+                      arguments=args,
+                      compute_target=compute_target,
+                      environment=env)
 ```
 
 ### <a name="submit-the-job-to-the-cluster"></a>將工作提交至叢集
 
-提交估算器物件以執行實驗：
+提交 ScriptRunConfig 物件來執行實驗：
 
 ```python
-run = exp.submit(config=est)
+run = exp.submit(config=src)
 run
 ```
 
@@ -372,7 +368,7 @@ run
 
 在您等候時，會發生什麼事：
 
-- **影像建立**：系統會建立一個符合估算器所指定 Python 環境的 Docker 映像。 影像會上傳到工作區。 映像的建立和上傳會花費**大約 5 分鐘的時間**。
+- **影像建立**：系統會建立一個 Docker 映像，其符合 Azure ML 環境所指定的 Python 環境。 影像會上傳到工作區。 映像的建立和上傳會花費**大約 5 分鐘的時間**。
 
   這個階段會針對每個 Python 環境發生一次，因為系統會快取容器以供後續執行使用。 在影像建立期間，會將記錄串流至執行歷程記錄中。 您可以使用這些記錄來監視映像建立程序。
 

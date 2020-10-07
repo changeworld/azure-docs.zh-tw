@@ -6,12 +6,12 @@ ms.topic: quickstart
 author: bwren
 ms.author: bwren
 ms.date: 12/15/2019
-ms.openlocfilehash: 0e29b25f5d846cae1563ea90271cf007d02e248c
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: a17546f11db881ecacd39986bcd80d9d63b24644
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324262"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448212"
 ---
 # <a name="quickstart-monitor-an-azure-resource-with-azure-monitor"></a>快速入門：使用 Azure 監視器監視 Azure 資源
 [Azure 監視器](../overview.md)會在 Azure 資源建立時開始從中收集資料。 本快速入門會簡介自動收集的資源資料，以及如何在 Azure 入口網站中查看特定資源的這些資料。 稍後，您可以新增設定來收集其他資料，也可以移至 [Azure 監視器] 功能表，使用相同工具來存取針對您訂用帳戶中所有資源收集的資料。
@@ -40,11 +40,11 @@ ms.locfileid: "87324262"
 1. 在資源功能表的頂端選取 [活動記錄]。
 2. 目前的篩選會設定為與資源相關的事件。 如果您看不到任何事件，請嘗試變更 [時間範圍] 來增加時間範圍。
 
-    ![活動記錄檔](media/quick-monitor-azure-resource/activity-log-resource.png)
+    ![Azure 入口網站中資源活動記錄的螢幕擷取畫面，其中顯示使用預設篩選準則所產生的資源作業清單。](media/quick-monitor-azure-resource/activity-log-resource.png)
 
 4. 如果您想要查看訂用帳戶中其他資源的事件，請變更篩選中的準則，或甚至是移除篩選屬性。
 
-    ![活動記錄檔](media/quick-monitor-azure-resource/activity-log-all.png)
+    ![Azure 入口網站中資源活動記錄的螢幕擷取畫面，其中顯示使用已修改篩選準則所產生的資源作業清單。](media/quick-monitor-azure-resource/activity-log-all.png)
 
 
 
@@ -54,15 +54,15 @@ ms.locfileid: "87324262"
 1. 在資源功能表的 [監視] 區段中，選取 [計量]。 這會開啟計量瀏覽器，並將範圍設定為您的資源。
 2. 按一下 [新增計量] 以在圖表中新增計量。
    
-   ![計量瀏覽器](media/quick-monitor-azure-resource/metrics-explorer-01.png)
+   ![Azure 入口網站中計量瀏覽器的螢幕擷取畫面，其中顯示資源的計量。 [計量] 下拉式清單會開啟，供您新增計量。](media/quick-monitor-azure-resource/metrics-explorer-01.png)
    
 4. 從下拉式清單中選取**計量**，然後選取 [彙總]。 這會定義收集的值將如何在每個時間間隔內取樣。
 
-    ![計量瀏覽器](media/quick-monitor-azure-resource/metrics-explorer-02.png)
+    ![Azure 入口網站中計量瀏覽器的螢幕擷取畫面，其中顯示資源的計量。 [匯總] 下拉式清單會開啟，且已選取 [平均]。](media/quick-monitor-azure-resource/metrics-explorer-02.png)
 
 5. 按一下 [新增計量]，將額外的計量和彙總組合新增至圖表。
 
-    ![計量瀏覽器](media/quick-monitor-azure-resource/metrics-explorer-03.png)
+    ![Azure 入口網站中計量瀏覽器的螢幕擷取畫面，其中顯示資源的計量。](media/quick-monitor-azure-resource/metrics-explorer-03.png)
 
 
 

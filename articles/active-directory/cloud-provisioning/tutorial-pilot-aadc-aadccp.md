@@ -1,6 +1,6 @@
 ---
 title: 教學課程 - 針對現有的同步 AD 樹系進行 Azure AD Connect 雲端佈建試驗
-description: 教學課程。
+description: 深入了解如何針對已使用 Azure Active Directory (Azure AD) Connect 同步進行同步處理的測試 Active Directory 樹系，進行雲端佈建試驗。
 services: active-directory
 author: billmath
 manager: daveba
@@ -11,12 +11,12 @@ ms.date: 05/19/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd9eff90f144909b9746e85a9c42aae2fdf02ed6
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: e771a988faca98d009b97b1e705ddac7110a255f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86146803"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91266491"
 ---
 # <a name="pilot-cloud-provisioning-for-an-existing-synced-ad-forest"></a>針對現有的同步 AD 樹系進行雲端佈建試驗 
 
@@ -40,7 +40,7 @@ ms.locfileid: "86146803"
 - 具有 Azure AD Connect 同步 1.4.32.0 版或更新版本的測試環境
 - 在同步範圍內、並且可用於試驗的 OU 或群組。 建議您先從一小組物件開始。
 - 執行 Windows Server 2012 R2 或更新版本、且將裝載佈建代理程式的伺服器。  此伺服器不可與 Azure AD Connect 伺服器相同。
-- AAD Connect 同步的來源錨點應該是 objectGuid 或 ms-ds-consistencyGUID
+- Azure AD Connect 同步的來源錨點應該是 objectGuid 或 ms-ds-consistencyGUID
 
 ## <a name="update-azure-ad-connect"></a>更新 Azure AD Connect
 
@@ -54,7 +54,7 @@ Azure AD Connect 同步會使用排程器來同步處理您內部部署目錄中
 3.  執行 `Set-ADSyncScheduler -SyncCycleEnabled $false`。
 
 >[!NOTE] 
->如果您執行自己的自訂排程器來進行 AAD Connect 同步，請停用排程器。 
+>如果您要執行自己的自訂排程器來進行 Azure AD Connect 同步，請停用排程器。 
 
 ## <a name="create-custom-user-inbound-rule"></a>建立自訂使用者輸入規則
 
@@ -62,7 +62,7 @@ Azure AD Connect 同步會使用排程器來同步處理您內部部署目錄中
  ![同步化規則編輯器功能表](media/how-to-cloud-custom-user-rule/user8.png)</br>
  
  2. 在下拉式清單中，針對 [方向] 選取 [輸入]，然後按一下 [新增規則]。
- ![自訂規則](media/how-to-cloud-custom-user-rule/user1.png)</br>
+ ![此螢幕擷取畫面顯示已選取 [輸入] 和 [新增規則] 按鈕的 [檢視並管理您的同步規則] 視窗。](media/how-to-cloud-custom-user-rule/user1.png)</br>
  
  3. 在 [描述] 頁面上輸入下列項目，然後按 [下一步]：
 
@@ -74,7 +74,7 @@ Azure AD Connect 同步會使用排程器來同步處理您內部部署目錄中
     **連結類型：** Join<br>
     **優先順序：** 提供在系統中是唯一的值<br>
     **標籤︰** 將此選項保留空白<br>
-    ![自訂規則](media/how-to-cloud-custom-user-rule/user2.png)</br>
+    ![此螢幕擷取畫面顯示已輸入值的 [建立輸入同步處理規則 - 描述] 頁面。](media/how-to-cloud-custom-user-rule/user2.png)</br>
  
  4. 在 [範圍篩選] 頁面上，輸入要作為試驗基礎的 OU 或安全性群組。  若要篩選 OU，請新增辨別名稱的 OU 部分。 此規則會套用到位於該 OU 中的所有使用者。  因此，如果 DN 的結尾為 "OU=CPUsers,DC=contoso,DC=com，您就會新增此篩選。  然後按一下 [下一步]。 
 
@@ -83,31 +83,31 @@ Azure AD Connect 同步會使用排程器來同步處理您內部部署目錄中
     |設定 OU 的範圍|DN|ENDSWITH|OU 的辨別名稱。|
     |設定群組的範圍||ISMEMBEROF|安全性群組的辨別名稱。|
 
-    ![自訂規則](media/how-to-cloud-custom-user-rule/user3.png)</br>
+    ![此螢幕擷取畫面顯示已輸入範圍篩選條件值的 [建立輸入同步處理規則 - 範圍篩選條件] 頁面。](media/how-to-cloud-custom-user-rule/user3.png)</br>
  
  5. 在 [聯結規則] 頁面上，按 [下一步]。
  6. 在 [轉換] 頁面上，將常數 transformation: flow True 新增至 cloudNoFlow 屬性。 按一下 [新增] 。
- ![自訂規則](media/how-to-cloud-custom-user-rule/user4.png)</br>
+ ![此螢幕擷取畫面顯示已新增「固定轉換」流程的 [建立輸入同步處理規則 - 轉換] 頁面。](media/how-to-cloud-custom-user-rule/user4.png)</br>
 
 所有物件類型 (使用者、群組和連絡人) 都必須遵循相同的步驟。 針對每個設定的 AD Connector / AD 樹系重複步驟。 
 
 ## <a name="create-custom-user-outbound-rule"></a>建立自訂使用者輸出規則
 
  1. 在下拉式清單中，針對 [方向] 選取 [輸出]，然後按一下 [新增規則]。
- ![自訂規則](media/how-to-cloud-custom-user-rule/user5.png)</br>
+ ![此螢幕擷取畫面顯示已選取 [輸出] 方向並反白顯示 [新增規則] 按鈕。](media/how-to-cloud-custom-user-rule/user5.png)</br>
  
  2. 在 [描述] 頁面上輸入下列項目，然後按 [下一步]：
 
     **名稱：** 為規則指定有意義的名稱<br>
     **說明：** 新增有意義的描述<br>
-    **連線系統：** 選擇您要為其撰寫自訂同步處理規則的 AAD 連接器<br>
+    **連線系統：** 選擇您要為其撰寫自訂同步處理規則的 Azure AD 連接器<br>
     **連線系統物件類型：** User<br>
     **Metaverse 物件類型：** 個人<br>
     **連結類型：** JoinNoFlow<br>
     **優先順序：** 提供在系統中是唯一的值<br>
     **標籤︰** 將此選項保留空白<br>
     
-    ![自訂規則](media/how-to-cloud-custom-user-rule/user6.png)</br>
+    ![此螢幕擷取畫面顯示已輸入屬性的 [描述] 頁面。](media/how-to-cloud-custom-user-rule/user6.png)</br>
  
  3. 在 [範圍篩選] 頁面上，選擇 [cloudNoFlow] 等於 [True]。 然後按一下 [下一步]。
  ![自訂規則](media/how-to-cloud-custom-user-rule/user7.png)</br>
@@ -122,14 +122,14 @@ Azure AD Connect 同步會使用排程器來同步處理您內部部署目錄中
 2. 使用[這裡](how-to-install.md#install-the-agent)所列的步驟，下載 Azure AD Connect 雲端佈建代理程式。
 3. 執行 Azure AD Connect 雲端佈建 (AADConnectProvisioningAgent.Installer)
 3. 在啟動顯示畫面上**接受**授權條款，然後按一下 [安裝]。</br>
-![歡迎使用畫面](media/how-to-install/install1.png)</br>
+![此螢幕擷取畫面顯示 [Microsoft Azure AD Connect 佈建代理程式] 啟動顯示畫面。](media/how-to-install/install1.png)</br>
 
 4. 此作業完成後，就會啟動組態精靈。  以 Azure AD 全域管理員帳戶登入。
 5. 在 [連線 Active Directory] 畫面上，按一下 [新增目錄]，然後以您的 Active Directory 系統管理員帳戶登入。  此作業將會新增您的內部部署目錄。  按 [下一步] 。</br>
-![歡迎使用畫面](media/how-to-install/install3.png)</br>
+![此螢幕擷取畫面顯示已輸入目錄值的 [連線 Active Directory] 畫面。](media/how-to-install/install3.png)</br>
 
 6. 在 [設定完成] 畫面上，按一下 [確認]。  此作業將會註冊並重新啟動代理程式。</br>
-![歡迎使用畫面](media/how-to-install/install4.png)</br>
+![此螢幕擷取畫面顯示已選取 [確認] 按鈕的 [組態完成] 畫面。](media/how-to-install/install4.png)</br>
 
 7. 此作業完成後，您應該會看到「您已成功通過驗證」的通知。  您可以按一下 [結束]。</br>
 ![歡迎使用畫面](media/how-to-install/install5.png)</br>

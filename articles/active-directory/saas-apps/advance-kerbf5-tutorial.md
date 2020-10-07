@@ -1,6 +1,6 @@
 ---
 title: 教學課程：Azure Active Directory 單一登入與 F5 整合 | Microsoft Docs
-description: 了解如何設定 Azure Active Directory 與 F5 之間的單一登入。
+description: 在本文中，了解您整合 F5 與 Azure Active Directory (Azure AD) 所需執行的步驟。
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/11/2019
 ms.author: jeedes
-ms.openlocfilehash: 2e0e727e73fa1eff21a4b2e481738be49306676a
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: cbcbcb6a649969c5348c3ad445ff43f10372faeb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88542972"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91306152"
 ---
 # <a name="tutorial-azure-active-directory-ad-single-sign-on-sso-integration-with-f5"></a>教學課程：Azure Active Directory (AD) 單一登入 (SSO) 與 F5 整合
 
@@ -39,8 +39,9 @@ ms.locfileid: "88542972"
 
 在本教學課程中，您會在測試環境中設定和測試 Azure AD SSO。
 
-* F5 支援 **SP 和 IDP** 起始的 SSO
-* 您可以使用三種不同的方式設定 F5 SSO。
+F5 支援 **SP 和 IDP** 起始的 SSO。
+
+您可以使用三種不同的方式設定 F5 SSO：
 
 - [設定適用於進階 Kerberos 應用程式的 F5 單一登入](#configure-f5-single-sign-on-for-advanced-kerberos-application)
 

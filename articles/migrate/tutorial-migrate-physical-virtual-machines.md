@@ -4,12 +4,12 @@ description: 本文說明如何使用 Azure Migrate 將實體機器遷移至 Azu
 ms.topic: tutorial
 ms.date: 04/15/2020
 ms.custom: MVC
-ms.openlocfilehash: 7091d95a07da60faed7012df04c05def340df7b4
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 2f9b3d43effff49da6aa348e22c0c974606f4c2b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89376072"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91296326"
 ---
 # <a name="migrate-machines-as-physical-servers-to-azure"></a>將機器視為實體伺服器遷移至 Azure
 
@@ -228,14 +228,14 @@ ms.locfileid: "89376072"
 
 1. 在 [Azure Migrate 專案] > [伺服器]、 **[Azure Migrate：伺服器移轉]** 中，按一下 [複寫]。
 
-    ![複寫 VM](./media/tutorial-migrate-physical-virtual-machines/select-replicate.png)
+    ![Azure Migrate - 伺服器畫面的螢幕擷取畫面，其中會顯示已在移轉工具下 [Azure Migrate：伺服器移轉] 中選取的 [複寫] 按鈕。](./media/tutorial-migrate-physical-virtual-machines/select-replicate.png)
 
 2. 在 [複寫] > [來源設定][您的電腦虛擬化了嗎] >  中，選取 [未虛擬化/其他]。
 3. 在 [內部部署設備] 中，選取您設定的 Azure Migrate 設備的名稱。
 4. 在 [處理序伺服器] 中，選取複寫設備的名稱。
 6. 在**來賓認證**中，請選取先前在[複寫安裝程式安裝](#download-the-replication-appliance-installer)期間建立的虛擬帳戶以手動安裝行動服務 (不支援推送安裝)。 然後按 [下一步：**虛擬機器]** 。   
 
-    ![複寫 VM](./media/tutorial-migrate-physical-virtual-machines/source-settings.png)
+    ![[複寫] 畫面中 [來源設定] 索引標籤的螢幕擷取畫面，其中已反白顯示 [來賓認證] 欄位。](./media/tutorial-migrate-physical-virtual-machines/source-settings.png)
 
 7. 在 [虛擬機器] 的 [從評量匯入移轉設定?] 中，保留預設設定 [否，我將手動指定移轉設定]。
 8. 檢查您要遷移的每個 VM。 然後按 [下一步：目標設定]。
@@ -264,9 +264,9 @@ ms.locfileid: "89376072"
     - **可用性設定組**：指定要使用的可用性設定組。
 
 > [!NOTE]
->如果要為一組虛擬機器選取不同的可用性選項，請移至步驟1，然後在為一組虛擬機器啟動複寫之後，選取不同的可用性選項並重複這些步驟。
+> 如果要為一組虛擬機器選取不同的可用性選項，請移至步驟1，然後在為一組虛擬機器啟動複寫之後，選取不同的可用性選項並重複這些步驟。
 
-    ![Compute settings](./media/tutorial-migrate-physical-virtual-machines/compute-settings.png)
+   ![計算設定](./media/tutorial-migrate-physical-virtual-machines/compute-settings.png)
 
 13. 在 [磁碟] 中，指定是否應將 VM 磁碟複寫至 Azure，並選取 Azure 中的磁碟類型 (標準 SSD/HDD 或進階受控磁碟)。 然後按一下 [下一步]  。
     - 您可以從複寫排除磁碟。

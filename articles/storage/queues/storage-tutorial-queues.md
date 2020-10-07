@@ -9,12 +9,12 @@ ms.subservice: queues
 ms.topic: tutorial
 ms.reviewer: dineshm
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7474cfbd0182797bd62e97979e83e2aeb5244cbc
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 23684dbbc5cb8c2d5fc4880ae8fe1999450928e0
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89008789"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400565"
 ---
 # <a name="tutorial-work-with-azure-storage-queues-in-net"></a>教學課程：在 .NET 中使用 Azure 儲存體佇列
 
@@ -227,6 +227,8 @@ Azure 佇列儲存體可實作雲端式佇列，使分散式應用程式的元�
    # <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
 
    此方法會藉由呼叫 [ReceiveMessagesAsync](/dotnet/api/azure.storage.queues.queueclient.receivemessagesasync)，在第一個參數中傳遞 1 僅擷取佇列中的下一則訊息，以接收佇列中的訊息。 收到訊息後，請呼叫 [DeleteMessageAsync](/dotnet/api/azure.storage.queues.queueclient.deletemessageasync) 以從佇列中刪除該訊息。
+
+   當使用 v12 之前的 SDK 版本將訊息傳送至佇列時，會自動以 Base64 編碼。 從 v12 開始，已移除該功能。 使用 v12 SDK 來擷取訊息時，不會自動進行 Base64 解碼。 您必須自行明確地對內容進行 [Base64 解碼](/dotnet/api/system.convert.frombase64string)。
 
    :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v12/QueueApp/Initial.cs" id="snippet_InitialRetrieveMessage":::
 

@@ -1,7 +1,7 @@
 ---
 title: 建立租用戶模型 (預覽) - 語音服務
 titleSuffix: Azure Cognitive Services
-description: 自動產生安全、合規的租用戶模型 (使用 Office 365 資料的自訂語音)，該模型使用 Office365 資料針對組織特定詞彙，提供最佳語音辨識。
+description: 自動產生安全、合規的租用戶模型 (使用 Microsoft 365 資料的自訂語音)，該模型使用 Microsoft 365 資料針對組織特定詞彙，提供最佳語音辨識。
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,19 +11,19 @@ ms.topic: tutorial
 ms.date: 06/25/2020
 ms.author: erhopf
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 52e4271fca02dc9b0eab45ca98581ecd85119b59
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 5e861182ee57a0b49d3e62a858fc97dbf0890ea3
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88934475"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399698"
 ---
 # <a name="tutorial-create-a-tenant-model-preview"></a>教學課程：建立租用戶模型 (預覽)
 
-租用戶模型 (使用 Office 365 資料的自訂語音) 是 Office 365 企業客戶可選擇加入的服務，它會從您組織的 Office 365 資料自動產生自訂語音辨識模型。 此模型已針對技術詞彙、術語和人員的名字進行最佳化，完全以安全且符合規範的方式進行。
+租用戶模型 (使用 Microsoft 365 資料的自訂語音) 是 Microsoft 365 企業客戶可選擇加入的服務，它會從您組織的 Microsoft 365 資料自動產生自訂語音辨識模型。 此模型已針對技術詞彙、術語和人員的名字進行最佳化，完全以安全且符合規範的方式進行。
 
 > [!IMPORTANT]
-> 如果貴組織使用租用戶模型服務進行註冊，則語音服務可存取貴組織的語言模型。 此模型是從 Office 365 公用群組電子郵件和文件產生而來，貴組織中的任何人都可以看到該模型。 貴組織的 Office 365 系統管理員可以從 Office 365 系統管理入口網站，開啟/關閉全組織語言模型的使用。
+> 如果貴組織使用租用戶模型服務進行註冊，則語音服務可存取貴組織的語言模型。 此模型是從 Microsoft 365 公用群組電子郵件和文件產生而來，貴組織中的任何人都可以看到該模型。 貴組織的 Microsoft 365 系統管理員可以從 Microsoft 365 系統管理入口網站，開啟/關閉全組織語言模型的使用。
 
 在本教學課程中，您會了解如何：
 
@@ -36,7 +36,7 @@ ms.locfileid: "88934475"
 
 ## <a name="enroll-in-the-tenant-model-service"></a>在租用戶模型服務中註冊
 
-您必須先在租用戶模型服務中註冊，才可以部署您的租用戶模型。 註冊是在 Microsoft 365 系統管理中心完成，而且只能由您的 Microsoft 365 系統管理員完成。
+您必須先在租用戶模型服務中註冊，才可以部署您的租用戶模型。 註冊是在 Microsoft 365 管理中心完成，而且只能由您的管理員完成。
 
 1. 登入 [Microsoft 365 系統管理中心](https://admin.microsoft.com)。
 
@@ -69,7 +69,7 @@ ms.locfileid: "88934475"
 
 ## <a name="create-a-language-model"></a>建立語言模型
 
-當您的管理員已為組織啟用租用戶模型之後，您就可以建立以您的 Office365 資料為基礎的語言模型。
+當您的管理員已為組織啟用租用戶模型之後，您就可以建立以您的 Microsoft 365 資料為基礎的語言模型。
 
 1. 登入 [Speech Studio](https://speech.microsoft.com/)。
 1. 在右上方，選取 [設定] (齒輪圖示)，然後選取 [租用戶模型設定]。
@@ -79,7 +79,7 @@ ms.locfileid: "88934475"
    Speech Studio 會顯示一則訊息，讓您知道您是否有資格建立租用戶模型。
 
    > [!NOTE]
-   > 在北美洲的 Office 365 企業客戶有資格建立租用戶模型 (英文)。 如果您是客戶加密箱、客戶金鑰或 Office 365 政府版客戶，則無法使用此功能。 若要判斷您是「客戶加密箱」或「客戶金鑰」客戶，請參閱：
+   > 在北美洲的企業客戶有資格建立租用戶模型 (英文)。 如果您是客戶加密箱、客戶金鑰或 Office 365 政府版客戶，則無法使用此功能。 若要判斷您是「客戶加密箱」或「客戶金鑰」客戶，請參閱：
    > * [客戶加密箱](/microsoft-365/compliance/customer-lockbox-requests) \(部分機器翻譯\)
    > * [客戶金鑰](/microsoft-365/compliance/customer-key-overview) \(部分機器翻譯\)
    > * [Office 365 政府版](https://www.microsoft.com/microsoft-365/government)
@@ -302,7 +302,7 @@ namespace PrincetonSROnly.FrontEnd.Samples
    dotnet TenantLMSample.dll --Username=<Username> --Password=<Password> --SubscriptionKey=<Subscription-Key> --EndpointUri=<Endpoint-Uri>
    ```
 
-在本教學課程中，您已了解如何使用 Office 365 資料來建立自訂語音辨識模型、加以部署，並將其搭配語音 SDK 使用。
+在本教學課程中，您已了解如何使用 Microsoft 365 資料來建立自訂語音辨識模型、加以部署，並將其搭配語音 SDK 使用。
 
 ## <a name="next-steps"></a>後續步驟
 

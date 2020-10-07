@@ -8,14 +8,17 @@ ms.topic: overview
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 66a322d4f60d9553a68207136ae609c1f9b50dbc
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 715ed204e28d6260c28fa099b40fc78aa12de44d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "73826208"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91281536"
 ---
 # <a name="what-is-opc-vault"></a>什麼是 OPC 保存庫？
+
+> [!IMPORTANT]
+> 當我們更新本文時，請參閱 [Azure 產業 IoT](https://azure.github.io/Industrial-IoT/) 以取得最新的內容。
 
 OPC 保存庫是一項微服務，可以設定、註冊和管理雲端中的 OPC UA 伺服器和用戶端應用程式的憑證生命週期。 本文將說明 OPC 保存庫的簡單使用案例。
 
@@ -35,5 +38,4 @@ OPC 保存庫是一項微服務，可以設定、註冊和管理雲端中的 OPC
 
 現在您已了解 OPC 保存庫及其使用方式，以下是建議執行的下一個步驟：
 
-> [!div class="nextstepaction"]
-> [OPC 保存庫架構](overview-opc-vault-architecture.md)
+[OPC 保存庫架構](overview-opc-vault-architecture.md)

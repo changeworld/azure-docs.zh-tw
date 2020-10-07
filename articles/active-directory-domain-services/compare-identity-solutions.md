@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: overview
 ms.date: 06/08/2020
 ms.author: iainfou
-ms.openlocfilehash: 1ed1305939f4f8a9de62de85a2f09c323a2636b1
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: af4ebcac38d4714b8a133087fe328b4d2f6c4872
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489583"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91396360"
 ---
 # <a name="compare-self-managed-active-directory-domain-services-azure-active-directory-and-managed-azure-active-directory-domain-services"></a>比較自我管理 Active Directory Domain Services、Azure Active Directory 和受控 Azure Active Directory Domain Services
 
@@ -26,7 +26,7 @@ ms.locfileid: "87489583"
 * **Active Directory Domain Services (AD DS)** - 符合企業需求的輕量型目錄存取通訊協定 (LDAP) 伺服器，提供身分識別及驗證、電腦物件管理、群組原則和信任等主要功能。
     * AD DS 在許多具有內部部署 IT 環境的組織中是中央元件，並提供核心使用者帳戶驗證和電腦管理功能。
     * 如需詳細資訊，請參閱 [Windows 伺服器文件中的 Active Directory Domain Services 概觀][overview-adds]。
-* **Azure Active Directory (Azure AD)** - 以雲端為基礎的身分識別和行動裝置管理，可為 Office 365、Azure 入口網站或 SaaS 應用程式等資源提供使用者帳戶和驗證服務。
+* **Azure Active Directory (Azure AD)** - 以雲端為基礎的身分識別和行動裝置管理，可為 Microsoft 365、Azure 入口網站或 SaaS 應用程式等資源提供使用者帳戶和驗證服務。
     * Azure AD 可以與內部部署 AD DS 環境同步，為雲端中以原生方式運作的使用者提供單一身分識別。
     * 如需 Azure AD 的詳細資訊，請參閱[什麼是Azure Active Directory？][whatis-azuread]
 * **Azure Active Directory Domain Services (Azure AD DS)** - 提供受控網域服務，其中有一小部分能與傳統 AD DS 功能完全相容，例如，網域加入、群組原則、LDAP 和 Kerberos / NTLM 驗證等功能。

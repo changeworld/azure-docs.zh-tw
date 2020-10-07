@@ -8,12 +8,12 @@ ms.subservice: hyperscale-citus
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 08/17/2020
-ms.openlocfilehash: 1a16283f3d04c9ad331a04c3a36b49055635d76e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: e43e20ceb5e84d652fee9ca4db6d5dc871ed1e4f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90906489"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268447"
 ---
 # <a name="quickstart-create-a-hyperscale-citus-server-group-in-the-azure-portal"></a>快速入門：在 Azure 入口網站中建立超大規模 (Citus) 伺服器群組
 
@@ -25,7 +25,7 @@ Azure Database for PostgreSQL 是一種受控服務，您用來在雲端執行�
 
 使用 psql 連線到 Hyperscale 協調器節點後，您可以完成一些基本工作。
 
-Hyperscale 伺服器內有三種類型的資料表：
+超大規模 (Citus) 伺服器內有三種類型的資料表：
 
 - 分散式或分區化資料表 (已分散有助於調整效能與平行處理)
 - 參考資料表 (維護多份)
@@ -71,7 +71,7 @@ CREATE INDEX event_type_index ON github_events (event_type);
 CREATE INDEX payload_index ON github_events USING GIN (payload jsonb_path_ops);
 ```
 
-接著，我們會採用協調器節點上的 Postgres 資料表，並告知 Hyperscale 跨 背景工作角色進行這些資料表的分區化。 為了這麼做，我們會針對每個資料表執行查詢，並指定要在其中進行分區化的索引鍵。 在目前的範例中，我們會在 `user_id` 上將 events 和 users 資料表分區化：
+接著，我們會採用協調器節點上的 Postgres 資料表，並告知超大規模 (Citus) 跨背景工作角色進行這些資料表的分區化。 為了這麼做，我們會針對每個資料表執行查詢，並指定要在其中進行分區化的索引鍵。 在目前的範例中，我們會在 `user_id` 上將 events 和 users 資料表分區化：
 
 ```sql
 SELECT create_distributed_table('github_events', 'user_id');
@@ -117,7 +117,7 @@ ORDER BY hour;
 
 到目前為止，查詢已獨家參與 github\_events，但我們可以結合此資訊與 github\_users。 因為我們已將相同識別碼 (`user_id`) 上的 users 和 events 分區化，所以使用者識別碼相符的這兩個資料表上的資料列將[共置](concepts-hyperscale-colocation.md)於相同的資料庫節點上，並可輕鬆地聯結。
 
-如果我們在 `user_id` 上聯結，Hyperscale 可以將聯結執行向下推送到分區，進而以平行方式在背景工作角色節點上執行。 例如，讓我們找出建立最多存放庫的使用者：
+如果我們在 `user_id` 上聯結，超大規模 (Citus) 可以將聯結執行向下推送到分區，進而以平行方式在背景工作角色節點上執行。 例如，讓我們找出建立最多存放庫的使用者：
 
 ```sql
 SELECT gu.login, count(*)

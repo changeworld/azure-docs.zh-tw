@@ -3,12 +3,12 @@ title: UK OFFICIAL 與 UK NHS 藍圖範例控制項
 description: UK OFFICIAL 與 UK NHS 藍圖範例的控制項對應。 每個控制項都會對應至一或多個可協助評量的 Azure 原則。
 ms.date: 07/13/2020
 ms.topic: sample
-ms.openlocfilehash: 360c6bc2e1f207ca2d4470ffe62a81f524ce2a73
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: dd16e6e62e5df3bae083cc4df05207f1f518d560
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87078989"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540382"
 ---
 # <a name="control-mapping-of-the-uk-official-and-uk-nhs-blueprint-samples"></a>UK OFFICIAL 與 UK NHS 藍圖範例的控制項對應
 
@@ -76,7 +76,7 @@ ms.locfileid: "87078989"
 
 ## <a name="9-secure-user-management"></a>9 安全的使用者管理 
 
-Azure 會實作角色型存取控制 (RBAC)，以協助您管理有權存取 Azure 資源的人員。 您可以使用 Azure 入口網站，檢閱可存取 Azure 資源的人員及其權限。 此藍圖指派了 [Azure 原則](../../../policy/overview.md)定義，以稽核具有擁有者及/或讀取/寫入權限的外部帳戶，及具有擁有者、讀取及/或寫入權限且未啟用多重要素驗證的帳戶，藉此協助您限制及控制特殊權限的存取權。
+Azure 角色型存取控制 (Azure RBAC) 可協助您管理有權存取 Azure 中資源的人員。 您可以使用 Azure 入口網站，檢閱可存取 Azure 資源的人員及其權限。 此藍圖指派了 [Azure 原則](../../../policy/overview.md)定義，以稽核具有擁有者及/或讀取/寫入權限的外部帳戶，及具有擁有者、讀取及/或寫入權限且未啟用多重要素驗證的帳戶，藉此協助您限制及控制特殊權限的存取權。
 
 - 應在您訂用帳戶上具有擁有者權限的帳戶上啟用 MFA
 - 應在您訂用帳戶上具有寫入權限的帳戶上啟用 MFA

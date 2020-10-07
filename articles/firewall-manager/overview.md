@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 08/25/2020
+ms.date: 09/23/2020
 ms.author: victorh
-ms.openlocfilehash: ae220a1b70be7178c4c2fea01103991c8729ae79
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 74d83ecc240fa4b48421dbaa1c5cc9e62990655d
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855041"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399443"
 ---
 # <a name="what-is-azure-firewall-manager"></a>什麼是 Azure 防火牆管理員？
 
@@ -78,7 +78,7 @@ Azure 防火牆管理員有下列已知問題：
 
 |問題  |描述  |降低  |
 |---------|---------|---------|
-|流量分割|目前不支援 Office 365 和 Azure 公用 PaaS 流量分割。 因此，若為 V2I 或 B2I 選取第三方提供者，也會透過合作夥伴服務傳送所有的 Azure 公用 PaaS 和 Office 365 流量。|正在調查中樞的流量分割。
+|流量分割|目前不支援 Microsoft 365 和 Azure 公用 PaaS 流量分割。 因此，若為 V2I 或 B2I 選取第三方提供者，也會透過合作夥伴服務傳送所有的 Azure 公用 PaaS 和 Microsoft 365 流量。|正在調查中樞的流量分割。
 |每個區域一個安全虛擬中樞|每個區域不能有超過一個安全虛擬中樞。|在區域中建立多個虛擬 WAN。|
 |基本原則必須位於與本機原則相同的區域中|在與基底原則相同的區域中建立您所有的本機原則。 您仍可將在某個區域中建立的原則套用到另一個區域的安全中樞上。|正在調查|
 |篩選安全虛擬中樞部署內的中樞間流量|目前尚不支援安全虛擬中樞對安全虛擬中樞的通訊篩選。 不過，如果未啟用透過 Azure 防火牆進行的私人流量篩選，則中樞對中樞通訊仍可運作。|正在調查|
@@ -87,6 +87,8 @@ Azure 防火牆管理員有下列已知問題：
 |所有共用相同虛擬 WAN 的安全虛擬中樞，都必須位於相同的資源群組中。|此行為與現今的虛擬 WAN 中樞一致。|建立多個虛擬 WAN，以允許在不同的資源群組中建立安全虛擬中樞。|
 |大量 IP 位址新增失敗|如果您新增多個公用 IP 位址，則安全中樞防火牆會進入失敗狀態。|請以遞增方式少量增加公用 IP 位址。 例如，一次新增 10 個。|
 |應用程式規則在已設定自訂 DNS (預覽) 的安全中樞中失敗。|自訂 DNS (預覽) 無法在安全中樞部署和已啟用強制通道的中樞虛擬網路部署中運作。|正在調查是否有可用的修正。|
+|不支援 DDoS 保護標準搭配安全的虛擬中樞|DDoS保護標準不會與 vWAN 整合。|正在調查|
+|未完全支援活動記錄|防火牆原則目前不支援活動記錄。|正在調查|
 
 ## <a name="next-steps"></a>後續步驟
 

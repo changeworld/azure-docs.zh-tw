@@ -7,14 +7,14 @@ ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
 ms.localizationpriority: high
-ms.date: 09/04/2019
+ms.date: 09/17/2019
 ms.author: alkohli
-ms.openlocfilehash: 3f89d713003f1f4265a7ab7c467454af750fab48
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: abe09cf10e241ec95ceed767e7038cde07667fc9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84707798"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322728"
 ---
 ::: zone target="docs"
 
@@ -68,7 +68,12 @@ ms.locfileid: "84707798"
 
       ![受控磁碟的資源群組](media/data-box-disk-deploy-picked-up/resource-group-attached-managed-disk.png)
 
-  - 如果您複製了 VHDX 或動態/差異 VHD，則會將 VHDX/VHD 上傳至暫存的儲存體帳戶以作為區塊 Blob。 移至您暫存的 [儲存體帳戶] > [Blob]  ，然後選取適當的容器：標準 SSD、標準 HDD 或進階 SSD。 VHDX/VHD 應該會在您暫存的儲存體帳戶中顯示為區塊 Blob。
+    > [!NOTE]
+    > 如果分頁 Blob 未在資料複製期間成功轉換為受控磁碟，其會保留在儲存體帳戶中，您需要支付儲存體費用。
+
+  -  如果您複製了 VHDX 或動態/差異 VHD，則會將 VHDX/VHD 上傳至暫存的儲存體帳戶以作為區塊 Blob。 移至您暫存的 [儲存體帳戶] > [Blob]****，然後選取適當的容器：標準 SSD、標準 HDD 或進階 SSD。 VHDX/VHD 應該會在您暫存的儲存體帳戶中顯示為區塊 Blob。
+  
+
   
 ::: zone-end
 
@@ -80,9 +85,9 @@ ms.locfileid: "84707798"
 
 - 您的 Azure 儲存體帳戶。 當您將資料複製到資料箱時，資料會上傳到 Azure 儲存體帳戶中的下列其中一個路徑，視類型而定。
 
-    - **區塊 Blob 和分頁 Blob**： https://<storage_account_name>.blob.core.windows.net/<containername>/files/a.txt
+    - **區塊 Blob 和分頁 Blob**：https://<storage_account_name>.blob.core.windows.net/<containername>/files/a.txt
 
-    - **Azure 檔案儲存體**： https://<storage_account_name>.file.core.windows.net/<sharename>/files/a.txt
+    - **Azure 檔案儲存體**：https://<storage_account_name>.file.core.windows.net/<sharename>/files/a.txt
 
 - 您的受控磁碟資源群組。 建立受控磁碟時，會上傳 VHD 以作為分頁 Blob，接著轉換為受控磁碟。 受控磁碟會連結至訂單建立時所指定的資源群組。
 
@@ -91,10 +96,10 @@ ms.locfileid: "84707798"
 若要確認資料已上傳至 Azure，請採取下列步驟：
 
 1. 移至與磁碟訂單相關聯的儲存體帳戶。
-2. 移至 [Blob 服務 > 瀏覽 Blob]  。 容器清單隨即顯示。 對應至您在 BlockBlob  和 PageBlob  資料夾底下建立的子資料夾，系統會在儲存體帳戶中建立具有相同名稱的容器。
+2. 移至 [Blob 服務 > 瀏覽 Blob]****。 容器清單隨即顯示。 對應至您在 BlockBlob** 和 PageBlob** 資料夾底下建立的子資料夾，系統會在儲存體帳戶中建立具有相同名稱的容器。
     如果資料夾名稱不符合 Azure 命名慣例，則資料上傳至 Azure 會失敗。
 
-3. 若要確認已載入整個資料集，請使用 Microsoft Azure 儲存體總管。 連接對應到資料箱磁碟訂單的儲存體帳戶，然後查看 Blob 容器的清單。 選取容器，按一下 [...更多]  ，然後按一下 [資料夾統計資料]  。 在 [活動]  窗格中，會顯示該資料夾的統計資料，包括 Blob 數目和 Blob 大小總計。 Blob 大小總計 (以位元組為單位) 應該符合資料集的大小。
+3. 若要確認已載入整個資料集，請使用 Microsoft Azure 儲存體總管。 連接對應到資料箱磁碟訂單的儲存體帳戶，然後查看 Blob 容器的清單。 選取容器，按一下 [...更多]****，然後按一下 [資料夾統計資料]****。 在 [活動]**** 窗格中，會顯示該資料夾的統計資料，包括 Blob 數目和 Blob 大小總計。 Blob 大小總計 (以位元組為單位) 應該符合資料集的大小。
 
     ![儲存體總管中的資料夾統計資料](media/data-box-disk-deploy-picked-up/folder-statistics-storage-explorer.png)
 

@@ -8,14 +8,17 @@ ms.topic: overview
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 169a3149a2d8d02d486bc126071b17e9a4f7ed72
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 9825e5e85c8da27b0f3fc2b9d78fcc9ca3513389
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167465"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91281689"
 ---
 # <a name="what-is-opc-twin"></a>什麼是 OPC 對應項？
+
+> [!IMPORTANT]
+> 當我們更新本文時，請參閱 [Azure 產業 IoT](https://azure.github.io/Industrial-IoT/) 以取得最新的內容。
 
 OPC 對應項是由使用 Azure IoT Edge 與 IoT 中樞連接雲端和工廠網路的微服務所組成。 OPC 對應項可透過 REST API 提供對產業裝置的探索、註冊和遠端控制等功能。 OPC 對應項不需要 OPC 統一架構 (OPC UA) SDK、其程式設計語言無從驗證，而且可以包含在無伺服器工作流程中。 本文說明數個 OPC 對應項的使用案例。
 
@@ -41,5 +44,4 @@ OPC 對應項可透過 REST API 用於以任何程式設計語言撰寫的應用
 
 現在您已了解 OPC 對應項及其使用方式，以下是建議執行的下一個步驟：
 
-> [!div class="nextstepaction"]
-> [什麼是 OPC 保存庫](overview-opc-vault.md)
+[什麼是 OPC 保存庫](overview-opc-vault.md)

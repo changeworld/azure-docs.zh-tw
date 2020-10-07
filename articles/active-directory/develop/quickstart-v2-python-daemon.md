@@ -1,6 +1,7 @@
 ---
-title: Microsoft 身分識別平台 Python 精靈 | Azure
-description: 了解 Python 程序如何使用應用程式本身的身分識別來取得存取權杖，並呼叫受 Microsoft 身分識別平台端點保護的 API
+title: 快速入門：從 Python 精靈呼叫 Microsoft Graph | Azure
+titleSuffix: Microsoft identity platform
+description: 在本快速入門中，您會了解 Python 程序如何使用應用程式本身的身分識別來取得存取權杖，並呼叫受 Microsoft 身分識別平台端點保護的 API
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 10/22/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, devx-track-python, scenarios:getting-started, languages:Python
-ms.openlocfilehash: 0969afa95009255981381d41268f416a615dd9f3
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 2c280b8241819155f32942a399caa7f916db3827
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683737"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91257736"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-python-console-app-using-apps-identity"></a>快速入門：使用應用程式的身分識別取得權杖，並從 Python 主控台應用程式呼叫 Microsoft Graph API
 
@@ -224,18 +225,3 @@ if not result:
 
 > [!div class="nextstepaction"]
 > [呼叫 Web API 的精靈應用程式](scenario-daemon-overview.md)
-
-如需精靈應用程式教學課程，請參閱：
-
-> [!div class="nextstepaction"]
-> [精靈 Python 主控台教學課程](https://github.com/Azure-Samples/ms-identity-python-daemon)
-
-深入了解權限和同意：
-
-> [!div class="nextstepaction"]
-> [權限和同意](v2-permissions-and-consent.md)
-
-若要深入了解此案例的驗證流程，請參閱 Oauth 2.0 用戶端認證流程：
-
-> [!div class="nextstepaction"]
-> [用戶端認證 Oauth 流程](v2-oauth2-client-creds-grant-flow.md)

@@ -7,13 +7,13 @@ ms.service: private-link
 ms.topic: overview
 ms.date: 09/03/2020
 ms.author: allensu
-ms.custom: fasttrack-edit
-ms.openlocfilehash: 2d2a520540ad69697da869833d52ab10e63a7730
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.custom: fasttrack-edit, references_regions
+ms.openlocfilehash: c8d4696f2e7d181783d62df2e414329eaa246dce
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90527185"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91529849"
 ---
 # <a name="what-is-azure-private-link"></a>什麼是 Azure Private Link？ 
 Azure Private Link 可讓您存取各項 Azure PaaS 服務 (例如 Azure 儲存體和 SQL Database)，並透過虛擬網路中的[私人端點](private-endpoint-overview.md)裝載 Azure 的客戶擁有/合作夥伴服務。
@@ -40,18 +40,18 @@ Azure Private Link 提供下列優點：
 
 |支援的服務  |可用區域 | 其他考量 | 狀態  |
 |:-------------------|:-----------------|:----------------|:--------|
-|標準 Azure Load Balancer 後方的 Private Link 服務 | 所有公用區域<br/> 所有政府區域  | 支援 Standard Load Balancer | GA <br/> [深入了解](https://docs.microsoft.com/azure/private-link/private-link-service-overview) |
-| Azure Blob 儲存體 (包括 Data Lake Storage Gen2)       |  所有公用區域       |  支援一般用途 V2 帳戶種類 | GA <br/> [深入了解](/azure/storage/common/storage-private-endpoints)  |
-| Azure 檔案 | 所有公用區域      | |   GA <br/> [深入了解](/azure/storage/files/storage-files-networking-endpoints)   |
+|標準 Azure Load Balancer 後方的 Private Link 服務 | 所有公用區域<br/> 所有政府區域<br/>所有中國區域  | 支援 Standard Load Balancer | GA <br/> [深入了解](https://docs.microsoft.com/azure/private-link/private-link-service-overview) |
+| Azure Blob 儲存體 (包括 Data Lake Storage Gen2)       |  所有公用區域<br/> 所有政府區域       |  支援一般用途 V2 帳戶種類 | GA <br/> [深入了解](/azure/storage/common/storage-private-endpoints)  |
+| Azure 檔案 | 所有公用區域<br/> 所有政府區域      | |   GA <br/> [深入了解](/azure/storage/files/storage-files-networking-endpoints)   |
 | Azure 檔案同步 | 所有公用區域      | |   GA <br/> [深入了解](/azure/storage/files/storage-sync-files-networking-endpoints)   |
-| Azure 佇列儲存體       |  所有公用區域       |  支援一般用途 V2 帳戶種類 | GA <br/> [深入了解](/azure/storage/common/storage-private-endpoints)  |
-| Azure 資料表儲存體       |  所有公用區域       |  支援一般用途 V2 帳戶種類 | GA <br/> [深入了解](/azure/storage/common/storage-private-endpoints)  |
-|  Azure SQL Database         | 所有公用區域 <br/> 所有政府區域      |  支援 Proxy [連線原則](https://docs.microsoft.com/azure/azure-sql/database/connectivity-architecture#connection-policyhttps://docs.microsoft.com/azure/azure-sql/database/connectivity-architecture#connection-policy) | GA <br/> [深入了解](https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-overview)      |
+| Azure 佇列儲存體       |  所有公用區域<br/> 所有政府區域       |  支援一般用途 V2 帳戶種類 | GA <br/> [深入了解](/azure/storage/common/storage-private-endpoints)  |
+| Azure 資料表儲存體       |  所有公用區域<br/> 所有政府區域       |  支援一般用途 V2 帳戶種類 | GA <br/> [深入了解](/azure/storage/common/storage-private-endpoints)  |
+|  Azure SQL Database         | 所有公用區域 <br/> 所有政府區域<br/>所有中國區域      |  支援 Proxy [連線原則](https://docs.microsoft.com/azure/azure-sql/database/connectivity-architecture#connection-policyhttps://docs.microsoft.com/azure/azure-sql/database/connectivity-architecture#connection-policy) | GA <br/> [深入了解](https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-overview)      |
 |Azure Synapse Analytics (先前稱為 SQL 資料倉儲)| 所有公用區域 <br/> 所有政府區域 |  支援 Proxy [連線原則](https://docs.microsoft.com/azure/azure-sql/database/connectivity-architecture#connection-policyhttps://docs.microsoft.com/azure/azure-sql/database/connectivity-architecture#connection-policy) |GA <br/> [深入了解](https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-overview)|
-|Azure Cosmos DB|  所有公用區域<br/> 所有政府區域 | |GA <br/> [深入了解](https://docs.microsoft.com/azure/cosmos-db/how-to-configure-private-endpoints)|
-|  適用於 PostgreSQL 的 Azure 資料庫 - 單一伺服器         | 所有公用區域 <br/> 所有政府區域     | 支援一般用途和記憶體最佳化定價層 | GA <br/> [深入了解](https://docs.microsoft.com/azure/postgresql/concepts-data-access-and-security-private-link)      |
-|  適用於 MySQL 的 Azure 資料庫         | 所有公用區域<br/> 所有政府區域      |  | GA <br/> [深入了解](https://docs.microsoft.com/azure/mysql/concepts-data-access-security-private-link)     |
-|  適用於 MariaDB 的 Azure 資料庫         | 所有公用區域<br/> 所有政府區域     |  | GA <br/> [深入了解](https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-private-link)      |
+|Azure Cosmos DB|  所有公用區域<br/> 所有政府區域</br> 所有中國區域 | |GA <br/> [深入了解](https://docs.microsoft.com/azure/cosmos-db/how-to-configure-private-endpoints)|
+|  適用於 PostgreSQL 的 Azure 資料庫 - 單一伺服器         | 所有公用區域 <br/> 所有政府區域<br/>所有中國區域     | 支援一般用途和記憶體最佳化定價層 | GA <br/> [深入了解](https://docs.microsoft.com/azure/postgresql/concepts-data-access-and-security-private-link)      |
+|  適用於 MySQL 的 Azure 資料庫         | 所有公用區域<br/> 所有政府區域<br/>所有中國區域      |  | GA <br/> [深入了解](https://docs.microsoft.com/azure/mysql/concepts-data-access-security-private-link)     |
+|  適用於 MariaDB 的 Azure 資料庫         | 所有公用區域<br/> 所有政府區域<br/>所有中國區域     |  | GA <br/> [深入了解](https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-private-link)      |
 |  Azure 金鑰保存庫         | 所有公用區域<br/> 所有政府區域      |  | GA   <br/> [深入了解](https://docs.microsoft.com/azure/key-vault/private-link-service)   |
 |Azure Kubernetes Service - Kubernetes API | 所有公用區域      |  | GA   <br/> [深入了解](https://docs.microsoft.com/azure/aks/private-clusters)   |
 |Azure 搜尋服務 | 所有公用區域 <br/> 所有政府區域 | 在私人模式下可透過服務來支援 | GA   <br/> [深入了解](https://docs.microsoft.com/azure/search/search-security-overview#endpoint-access)    |
@@ -63,12 +63,15 @@ Azure Private Link 提供下列優點：
 |Azure 轉送 | 所有公用區域      |  | 預覽 <br/> [深入了解](https://docs.microsoft.com/azure/service-bus-relay/private-link-service)  |
 |Azure Event Grid| 所有公用區域<br/> 所有政府區域       |  | GA   <br/> [深入了解](https://docs.microsoft.com/azure/event-grid/network-security) |
 |Azure Web Apps | 所有公用區域      | 支援 PremiumV2 Windows 和 Linux 及 Elastic Premium 函式  | 預覽   <br/> [深入了解](https://docs.microsoft.com/azure/app-service/networking/private-endpoint)   |
-|Azure Machine Learning | 美國東部、美國中南部、美國西部 2      |  | 預覽   <br/> [深入了解](https://docs.microsoft.com/azure/machine-learning/how-to-configure-private-link)   |
+|Azure Machine Learning | 美國東部、美國中南部、<br/>美國東部、美國西部 2、<br/>加拿大中部、東南亞、<br/>日本東部、北歐、<br/>英國南部、澳大利亞東部     |  | 預覽   <br/> [深入了解](https://docs.microsoft.com/azure/machine-learning/how-to-configure-private-link)   |
 | Azure 自動化  | 所有公用區域 |  | 預覽 | |
 | Azure IoT 中樞 | 所有公用區域    |  | GA   <br/> [深入了解](https://docs.microsoft.com/azure/iot-hub/virtual-network-support ) |
-| Azure SignalR | 美國東部、美國西部 2、美國中南部      |  | 預覽   <br/> [深入了解](https://aka.ms/asrs/privatelink)   |
+| Azure SignalR | 美國東部、美國中南部、<br/>美國西部 2、所有中國區域      |  | 預覽   <br/> [深入了解](https://aka.ms/asrs/privatelink)   |
 | Azure 監視器 <br/>(Log Analytics 與 Application Insights) | 所有公用區域      |  | GA   <br/> [深入了解](https://docs.microsoft.com/azure/azure-monitor/platform/private-link-security)   | 
-| Azure Batch | 美國東部、美國西部 2、美國中南部、美國中西部、法國中部、東亞、英國南部、US Gov 維吉尼亞州、US Gov 亞利桑那州  | | GA <br/> [深入了解](https://docs.microsoft.com/azure/batch/private-connectivity) |
+| Azure Batch | 所有公用區域，但下列區域除外：德國中部、德國東北部 <br/> 所有政府區域  | | GA <br/> [深入了解](https://docs.microsoft.com/azure/batch/private-connectivity) |
+|Azure Data Factory | 所有公用區域<br/> 所有政府區域<br/>所有中國區域    | 認證必須儲存在 Azure 金鑰保存庫中| GA   <br/> [深入了解](https://docs.microsoft.com/azure/data-factory/data-factory-private-link)   |
+
+
 
 如需最新通知，請查看 [Azure Private Link 更新頁面](https://azure.microsoft.com/updates/?product=private-link)。
 

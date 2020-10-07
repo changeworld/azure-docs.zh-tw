@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 08/17/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 365fe8c330cadcc01fcd24de28b663cd80b55117
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: 8c9e6462beb48e3326de3c2348b73053f717e032
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89535868"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91441274"
 ---
 # <a name="tutorial-step-by-step-instructions-to-create-a-new-hololens-unity-app-using-azure-spatial-anchors"></a>教學課程：使用 Azure Spatial Anchors 新建 HoloLens Unity 應用程式的逐步指示
 
@@ -204,11 +204,11 @@ ms.locfileid: "89535868"
 
 取得 Azure Spatial Anchors 帳戶識別碼、金鑰和網域之後，請將 `Account Id` 貼到 `SpatialAnchorsAccountId` 中、將 `Account Key` 貼到 `SpatialAnchorsAccountKey` 中，並將 `Account Domain` 貼到 `SpatialAnchorsAccountDomain` 中。
 
-最後，我們要將所有項目連結在一起。 在您的 `SpawnNewAnchoredObject()` 方法中新增下列程式碼。 它會在您的圓球建立時隨即叫用 `CreateAnchorAsync()` 方法。 此方法傳回後，下列程式碼會對您的圓球執行最後的更新，將其色彩變更為藍色。
+最後，我們要將所有項目連結在一起。 在您的 `CreateAndSaveSphere()` 方法中新增下列程式碼。 它會在您的圓球建立時隨即叫用 `CreateAnchorAsync()` 方法。 此方法傳回後，下列程式碼會對您的圓球執行最後的更新，將其色彩變更為藍色。
 
 [!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=320-397&highlight=26-77)]
 
-再次從 **Visual Studio** 執行您的應用程式。 動一動您的頭部，然後藉由空中點選放置圓球。 一旦有足夠的畫面格時，圓球就會變成黃色，並開始進行雲端上傳。 上傳完成後，圓球就會變成藍色。 (選擇性) 您也可以使用 **Visual Studio** 內的 [輸出] 視窗來監視應用程式傳送的記錄訊息。 您可以觀賞 `RecommendedForCreateProgress`，一旦上傳完成，您就能夠看到從雲端傳回的錨點識別碼。
+再次從 **Visual Studio** 執行您的應用程式。 動一動您的頭部，然後藉由空中點選放置圓球。 一旦有足夠的畫面格時，圓球就會變成黃色，並開始進行雲端上傳。 上傳完成後，圓球就會變成藍色。 (選擇性) 您也可以在 **Visual Studio** 內進行偵錯時使用[輸出視窗](https://docs.microsoft.com/visualstudio/ide/reference/output-window)，來監視應用程式傳送的記錄訊息。 請務必從 Visual Studio 部署應用程式的 `Debug` 組態，以查看記錄訊息。 您可以觀賞 `RecommendedForCreateProgress`，一旦上傳完成，您就能夠看到從雲端傳回的錨點識別碼。
 
 > [!NOTE]
 > 如果您收到「DllNotFoundException：無法載入 DLL 'AzureSpatialAnchors'：找不到指定的模組。」，您應**清除**解決方案並重新加以**建置**。

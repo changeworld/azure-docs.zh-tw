@@ -4,12 +4,12 @@ description: Azure 區塊鏈服務的概觀
 ms.date: 05/22/2020
 ms.topic: overview
 ms.reviewer: ravastra
-ms.openlocfilehash: 2a28baeb6de3c8ca1e8ad89e11d45b492f33588c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e82916d7366ad82746d2d3ddfc979264e113619b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076945"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334815"
 ---
 # <a name="what-is-azure-blockchain-service"></a>什麼是 Azure 區塊鏈服務？
 
@@ -45,7 +45,7 @@ Azure 區塊鏈服務是一個受控服務，可確保您的區塊鏈成員節�
 
 此外，Azure 區塊鏈服務可透過 Azure 監視器服務提供豐富的計量，進而提供節點的 CPU、記憶體和儲存體使用量深入解析。  Azure 監視器也會提供區塊鏈網路活動的實用深入解析，例如已挖掘的交易和區塊、交易佇列深度和作用中連線。  您可以自訂計量，以檢視對區塊鏈應用程式很重要的深入解析。  此外，您也可以透過警示來定義閾值，讓使用者可以觸發動作，例如，傳送電子郵件或簡訊、執行邏輯應用程式、Azure 函式或傳送至自訂定義的 Webhook。
 
-![計量](./media/overview/metrics.png)
+![此螢幕擷取畫面顯示監視，其中包含區塊、交易、暫停交易和已處理要求的值。](./media/overview/metrics.png)
 
 透過 Azure Log Analytics，使用者可以檢視與 Quorum 總帳相關的記錄或其他重要資訊，例如，已嘗試連線到交易節點。
 
@@ -77,7 +77,7 @@ Azure 區塊鏈服務的區塊鏈資料管理員會將 Azure 區塊鏈服務交�
 
 * [Azure 區塊鏈服務的 Microsoft 問與答頁面](/answers/topics/azure-blockchain-service.html)
 * [Microsoft 技術社群](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain)
-* [Stack Overflow](https://stackoverflow.com/questions/tagged/AzureBlockchainService)
+* [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-blockchain-service)
 
 ## <a name="next-steps"></a>後續步驟
 

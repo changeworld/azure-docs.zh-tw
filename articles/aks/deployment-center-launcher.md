@@ -5,12 +5,12 @@ ms.author: puagarw
 ms.topic: tutorial
 ms.date: 07/12/2019
 author: pulkitaggarwl
-ms.openlocfilehash: 42bdde45b3a289a35c5bf4c4651e5a50a639f049
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 36b2e829e56cf4d3b5ace64af989fa7f71725c44
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86251768"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360832"
 ---
 # <a name="deployment-center-for-azure-kubernetes"></a>適用於 Azure Kubernetes 的部署中心
 
@@ -54,7 +54,7 @@ Azure DevOps 中的部署中心可簡化對您應用程式設定健全 Azure Dev
 
 1. 選取 AKS 叢集，然後在左側刀鋒視窗上選取 [部署中心 (預覽)]  。 選取 [馬上開始]。 
 
-   ![settings](media/deployment-center-launcher/settings.png)
+   ![此螢幕擷取畫面顯示 Azure 入口網站，其中有一個箭號指向部署中心。](media/deployment-center-launcher/settings.png)
 
 1. 選擇程式碼的位置，然後選取 [下一步]  。 然後，選取其中一個目前支援的存放庫： **[Azure Repos](/azure/devops/repos/index?view=azure-devops)** 或 **GitHub**。
 
@@ -66,7 +66,7 @@ Azure DevOps 中的部署中心可簡化對您應用程式設定健全 Azure Dev
 
     - **GitHub**：為您的 GitHub 帳戶授權並選取存放庫。
 
-        ![GitHub](media/deployment-center-launcher/github.gif)
+        ![動畫顯示 GitHub 中選取 GitHub 做為來源，然後選取存放庫的過程。](media/deployment-center-launcher/github.gif)
 
 
 1. 部署中心會分析存放庫，並偵測您的 Dockerfile。 如果您想要更新 Dockerfile，可以編輯已找到的連接埠號碼。
@@ -75,7 +75,7 @@ Azure DevOps 中的部署中心可簡化對您應用程式設定健全 Azure Dev
 
     如果存放庫不包含 Dockerfile，系統就會顯示訊息來認可一個 Dockerfile。
 
-    ![Dockerfile](media/deployment-center-launcher/dockerfile.png)
+    ![此螢幕擷取畫面顯示部署中心，其中有一則訊息指出「在存放庫中找不到 Dockerfile」。](media/deployment-center-launcher/dockerfile.png)
 
 1. 選取現有的容器登錄或建立一個容器登錄，然後選取 [完成]  。 管線會自動建立，並將建置排入 [Azure Pipelines](/azure/devops/pipelines/index?view=azure-devops) 的佇列中。
 
@@ -87,7 +87,7 @@ Azure DevOps 中的部署中心可簡化對您應用程式設定健全 Azure Dev
 
 1. 部署完成後，您會看到成功的記錄。
 
-    ![記錄](media/deployment-center-launcher/logs.png)
+    ![此螢幕擷取畫面顯示部署中心，其中以綠色的核取記號圖示標記 Release-1。](media/deployment-center-launcher/logs.png)
 
 ## <a name="examine-the-ci-pipeline"></a>檢查 CI 管線
 

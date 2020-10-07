@@ -8,13 +8,13 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/04/2020
 ms.author: aahi
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 953648f5cf83d5ffd22683ba0ce02335a637f18a
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-js
+ms.openlocfilehash: 72c520b0ff135e9f48cd74f0024197ae8606f206
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87407214"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91376308"
 ---
 Bing 影像搜尋用戶端程式庫是 API 的包裝函式，而且功能相同，您可以透過此快速入門，完成初次使用此 SDK 進行的影像搜尋。 這個簡單的 JavaScript 應用程式會傳送影像搜尋查詢、剖析 JSON 回應，以及顯示第一個回傳影像的 URL。
 
@@ -22,10 +22,11 @@ Bing 影像搜尋用戶端程式庫是 API 的包裝函式，而且功能相同�
 
 ## <a name="prerequisites"></a>必要條件
 
-* [適用於 Node.js 的認知服務影像搜尋 SDK](https://www.npmjs.com/package/@azure/cognitiveservices-imagesearch)
-    * 使用 `npm install @azure/cognitiveservices-imagesearch` 進行安裝
-* [Node.js Azure Rest](https://www.npmjs.com/package/ms-rest-azure) 模組
-    * 使用 `npm install ms-rest-azure` 進行安裝
+* 最新版的 [Node.js](https://nodejs.org/en/download/)。
+* [適用於 JavaScript 的 Bing 影像搜尋 SDK](https://www.npmjs.com/package/@azure/cognitiveservices-imagesearch)
+     *  若要安裝，請執行 `npm install @azure/cognitiveservices-imagesearch`
+* 來自 `@azure/ms-rest-azure-js` 套件中的 `CognitiveServicesCredentials` 類別，用來驗證用戶端。
+     * 若要安裝，請執行 `npm install @azure/ms-rest-azure-js`
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](~/includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
@@ -36,7 +37,7 @@ Bing 影像搜尋用戶端程式庫是 API 的包裝函式，而且功能相同�
     ```javascript
     'use strict';
     const ImageSearchAPIClient = require('@azure/cognitiveservices-imagesearch');
-    const CognitiveServicesCredentials = require('ms-rest-azure').CognitiveServicesCredentials;
+    const CognitiveServicesCredentials = require('@azure/ms-rest-azure-js').CognitiveServicesCredentials;
     ```
 
 2. 在專案的主要方法中，針對有效訂用帳戶金鑰、要由 Bing 傳回的影像結果和搜尋字詞建立變數。 然後使用金鑰來將影像搜尋用戶端具現化。

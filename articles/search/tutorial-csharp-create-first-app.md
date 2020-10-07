@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 06/20/2020
+ms.date: 09/25/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: adcd6aa2c232bf87dc82284acbe2815484660ca7
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 49dc551039e0fd82ddb4374713c59fca2f493b62
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88998555"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397941"
 ---
 # <a name="tutorial-create-your-first-search-app-using-the-net-sdk"></a>教學課程：使用 .NET SDK 建立您的第一個搜尋應用程式
 
@@ -42,7 +42,7 @@ DocumentSearchResult<Hotel> results  = await _indexClient.Documents.SearchAsync<
 
 這個一次呼叫會啟動 Azure 資料的搜尋，並傳回結果。
 
-![搜尋 "pool"](./media/tutorial-csharp-create-first-app/azure-search-pool.png)
+:::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-pool.png" alt-text="正在搜尋 *pool*" border="false":::
 
 
 ## <a name="prerequisites"></a>Prerequisites
@@ -58,7 +58,7 @@ DocumentSearchResult<Hotel> results  = await _indexClient.Documents.SearchAsync<
 1. 使用 Visual Studio 瀏覽至基本搜尋頁面的方案並加以開啟，然後選取 [啟動但不偵錯]  (或按下 F5 鍵)。
 1. 輸入一些文字 (例如 "wifi"、"view"、"bar"、"parking")，並檢查結果！
 
-    ![搜尋 "wifi"](./media/tutorial-csharp-create-first-app/azure-search-wifi.png)
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-wifi.png" alt-text="正在搜尋 *pool*" border="false":::
 
 希望這個專案將會順利執行，並讓 Azure 應用程式執行。 許多更複雜搜尋的基本元件都包含在這一個應用程式中，因此最好一一瀏覽，並逐步重新建立該應用程式。
 
@@ -68,15 +68,15 @@ DocumentSearchResult<Hotel> results  = await _indexClient.Documents.SearchAsync<
 
 1. 在 Visual Studio 2017 或更新版本中，選取 [新增/專案]  ，然後選取 [ASP.NET Core Web 應用程式]  。 為專案提供一個名稱，例如 "FirstAzureSearchApp"。
 
-    ![建立一個雲端專案](./media/tutorial-csharp-create-first-app/azure-search-project1.png)
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-project1.png" alt-text="正在搜尋 *pool*" border="false":::
 
 2. 針對此專案類型按一下 [確定]  之後，將會顯示另一組適用於這個專案的選項。 選取 [Web 應用程式 (Model-View-Controller)]  。
 
-    ![建立一個 MVC 專案](./media/tutorial-csharp-create-first-app/azure-search-project2.png)
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-project2.png" alt-text="正在搜尋 *pool*":::
 
 3. 接著，在 [工具]  功能表上，選取 [NuGet 套件管理員]  ，然後選取 [管理解決方案的 NuGet 套件]  。有一個我們需要安裝的套件。 選取 [瀏覽]  索引標籤，然後在搜尋方塊中輸入「Azure 認知搜尋」。 當 **Microsoft.Azure.Search** 出現在清單中 (版本 9.0.1 或更新版本) 時加以安裝。 您必須逐一點選一些其他對話方塊，才能完成安裝。
 
-    ![使用 NuGet 來新增 Azure 程式庫](./media/tutorial-csharp-create-first-app/azure-search-nuget-azure.png)
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-nuget-azure.png" alt-text="正在搜尋 *pool*" border="false":::
 
 ### <a name="initialize-azure-cognitive-search"></a>初始化 Azure 認知搜尋
 
@@ -93,7 +93,7 @@ DocumentSearchResult<Hotel> results  = await _indexClient.Documents.SearchAsync<
 
 2. 我們還未完成此檔案，請選取此檔案的屬性，並將 [複製到輸出目錄]  變更為 [有更新時才複製]  。
 
-    ![將應用程式設定複製到輸出](./media/tutorial-csharp-create-first-app/azure-search-copy-if-newer.png)
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-copy-if-newer.png" alt-text="正在搜尋 *pool*" border="false":::
 
 ## <a name="model-data-structures"></a>模型資料結構
 
@@ -513,11 +513,11 @@ Azure 認知搜尋呼叫會封裝在我們的 **RunQueryAsync** 方法中。
 
 1. 選取 [偵錯/啟動但不偵錯]  ，或按 F5 鍵。 如果您編寫的程式碼正確，就會獲得初始的 [索引] 檢視。
 
-     ![開啟應用程式](./media/tutorial-csharp-create-first-app/azure-search-index.png)
+     :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-index.png" alt-text="正在搜尋 *pool*" border="false":::
 
 2. 輸入文字，例如 "beach" (或想到的任何文字)，然後按一下 [搜尋] 圖示。 您應該會得到一些結果。
 
-     ![搜尋 "beach"](./media/tutorial-csharp-create-first-app/azure-search-beach.png)
+     :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-beach.png" alt-text="正在搜尋 *pool*" border="false":::
 
 3. 請嘗試輸入"five star"。 請注意您沒有得到任何結果。 更複雜的搜尋會將 "five star" 視為 "luxury" 的同義字，並傳回這些結果。 在 Azure 認知搜尋中可以使用同義字，但是我們不會將它涵蓋在第一個教學課程中。
  
@@ -533,7 +533,7 @@ Azure 認知搜尋呼叫會封裝在我們的 **RunQueryAsync** 方法中。
 
 2. 執行應用程式、輸入 "bar" 作為搜尋文字，然後按一下 [搜尋] 圖示。 例外狀況應該會導致錯誤檢視。
 
-     ![強制發生錯誤](./media/tutorial-csharp-create-first-app/azure-search-error.png)
+     :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-error.png" alt-text="正在搜尋 *pool*" border="false":::
 
     > [!Important]
     > 在錯誤頁面傳回內部錯誤編號會被視為安全性風險。 如果您的應用程式用於一般用途，請對發生錯誤時傳回的內容，調查其安全性和最佳做法。

@@ -1,14 +1,16 @@
 ---
 title: 教學課程：使用機器學習實體擷取結構化資料 - LUIS
 description: 使用機器學習實體從語句中擷取結構化資料。 若要提高擷取的正確性，請新增具有特徵的子實體。
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 05/08/2020
-ms.openlocfilehash: eb9761a3d3a98a3318fe0adc6fa170652639a9a1
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 01262ee0271849793c4393b1ea8e18c4179ad4e0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045598"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334716"
 ---
 # <a name="tutorial-extract-structured-data-from-user-utterance-with-machine-learning-entities-in-language-understanding-luis"></a>教學課程：在 Language Understanding (LUIS) 中使用機器學習實體從使用者語句中擷取結構化資料
 
@@ -79,12 +81,12 @@ ms.locfileid: "86045598"
 
 1. 在 [選擇實體類型] 方塊中選取 [新增結構]，然後選取 [下一步]。 必須要有結構，才能新增子實體 (例如大小和數量)。
 
-    ![將結構新增至實體](media/tutorial-machine-learned-entity/add-structure-to-entity.png)
+    ![此螢幕擷取畫面顯示 [選擇實體類型] 視窗，其中已核取 [新增結構] 選項。](media/tutorial-machine-learned-entity/add-structure-to-entity.png)
 
 1. 在 [新增子實體 (選用)] 方塊中，選取 `Order` 列上的 **+** ，然後將 `Size` 和 `Quantity` 新增為子實體，然後選取 [建立]。
 
     > [!div class="mx-imgBorder"]
-    > ![將結構新增至實體](media/tutorial-machine-learned-entity/add-subentities-when-creating-machine-learned-entity.png)
+    > ![此螢幕擷取畫面顯示 [新增子實體 (選用)] 視窗，其中已反白顯示子實體。](media/tutorial-machine-learned-entity/add-subentities-when-creating-machine-learned-entity.png)
 
 ## <a name="edit-subentities-to-improve-extraction"></a>編輯子實體以改善擷取
 
@@ -121,7 +123,7 @@ ms.locfileid: "86045598"
 
 
     > [!div class="mx-imgBorder"]
-    > ![將結構新增至實體](media/tutorial-machine-learned-entity/size-list-entity-with-synonyms.png)
+    > ![此螢幕擷取畫面顯示 SizeList 視窗和清單項目，其中已選取 XLarge。](media/tutorial-machine-learned-entity/size-list-entity-with-synonyms.png)
 
 ### <a name="add-feature-of-sizelist-entity"></a>新增 SizeList 實體的特徵
 
@@ -160,7 +162,7 @@ ms.locfileid: "86045598"
 在 [訂單] 的實體詳細資料頁面上，為 [@ SizeList] 特徵和 [@ number] 特徵選取星號 `*`。 星號會出現在與特徵名稱相同的標籤中。
 
 > [!div class="mx-imgBorder"]
-> ![將結構新增至實體](media/tutorial-machine-learned-entity/set-required-feature-on-subentity.png)
+> ![此螢幕擷取畫面顯示具有星號的 @SizeList 功能，而且需要警告。](media/tutorial-machine-learned-entity/set-required-feature-on-subentity.png)
 
 <a name="label-text-as-entities-in-example-utterances"></a>
 <a name="label-example-utterance-to-teach-luis-about-the-entity"></a>
@@ -200,7 +202,7 @@ ms.locfileid: "86045598"
 1. 若要將預測變更為加上標籤的實體，請在相同的資料列上選取核取記號。
 
     > [!div class="mx-imgBorder"]
-    > ![使用實體預測的新範例語句部分螢幕擷取畫面](media/tutorial-machine-learned-entity/confirm-entity-prediction-for-new-example-utterance-added.png)
+    > ![此螢幕擷取畫面顯示已反白顯示核取記號的範例語句。](media/tutorial-machine-learned-entity/confirm-entity-prediction-for-new-example-utterance-added.png)
 
     此時機器學習實體就會開始運作，因為其可在新的範例語句內找到實體。 當您新增範例語句時，如果實體未正確預測，請為該實體和子實體加上標籤。 如果正確預測實體，請務必確認預測。
 

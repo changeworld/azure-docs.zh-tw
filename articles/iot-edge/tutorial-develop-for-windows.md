@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: d4846a69f548c99de735cc9d9e06bd6bb263b4bd
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.openlocfilehash: a0bc934d32a2d09fcd6b52ec1f186855bf0da92c
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87439691"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449619"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-windows-devices"></a>教學課程：開發適用於 Windows 裝置的 IoT Edge 模組
 
@@ -275,7 +275,7 @@ IoT Edge 執行階段需要登錄認證才能將容器映像提取到 IoT Edge �
 
 您已確認所建置的容器映像儲存在容器登錄中，因此可以開始將這些映像部署到裝置。 請確定您的 IoT Edge 裝置已啟動並執行。
 
-1. 在 Visual Studio 中開啟 [Cloud Explorer]，並展開 IoT 中樞的詳細資料。
+1. 在 Visual Studio 中開啟 Cloud Explorer，並展開 IoT 中樞的詳細資料。
 
 2. 選取要作為部署目的地裝置的名稱。 在 [動作]  清單中，選取 [建立部署]  。
 

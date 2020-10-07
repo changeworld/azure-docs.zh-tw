@@ -1,27 +1,28 @@
 ---
-title: 快速入門：文字分析用戶端程式庫 v3
+title: 快速入門：使用文字分析用戶端程式庫進行文字採礦
 titleSuffix: Azure Cognitive Services
-description: 使用此快速入門將應用程式連線到 Azure 認知服務中的文字分析 API。
+description: 使用此快速入門，搭配 Azure 認知服務中的文字分析 API 來執行情緒分析。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 07/27/2020
+ms.date: 09/09/2020
 ms.author: aahi
-ms.custom: devx-track-python, devx-track-javascript, devx-track-csharp
+keywords: 文字採礦, 情感分析, 文字分析
+ms.custom: devx-track-python, devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
 zone_pivot_groups: programming-languages-text-analytics
-ms.openlocfilehash: 2d81175c73928d25c06acb396dac587c7cc73637
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: ed87c536c53ab1c07af05a7b8223901591c16e66
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88931177"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332292"
 ---
 # <a name="quickstart-use-the-text-analytics-client-library"></a>快速入門：使用文字分析用戶端程式庫
 
-開始使用文字分析用戶端程式庫。 請遵循下列步驟來安裝套件，並試用基本工作的程式碼範例。
+使用此文章開始使用文字分析用戶端程式庫。 請遵循下列步驟來安裝套件，並試用範例程式碼進行文字採礦。
 
 使用文字分析用戶端程式庫執行：
 

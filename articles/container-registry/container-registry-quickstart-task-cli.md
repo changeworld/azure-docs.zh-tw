@@ -1,20 +1,21 @@
 ---
-title: 快速入門 - 建置和執行容器映像
-description: 使用 Azure Container Registry 快速執行工作，在雲端中建置和部署隨選的 Docker 容器映像。
+title: 快速入門 - 在 Azure 中建立隨選的容器映像
+description: 使用 Azure Container Registry 命令，在 Azure 雲端中快速建置、推送和執行隨選的 Docker 容器映像。
 ms.topic: quickstart
-ms.date: 01/31/2020
-ms.openlocfilehash: 610d82a0761f06338d04f0794d4141165d67d36c
-ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
+ms.date: 09/25/2020
+ms.custom: contperfq1
+ms.openlocfilehash: 36921900f64d458f1f2591897e32c98f6d22a550
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84753696"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91538172"
 ---
 # <a name="quickstart-build-and-run-a-container-image-using-azure-container-registry-tasks"></a>快速入門：使用 Azure Container Registry 工作建置和執行容器映像
 
-在本快速入門中，您將使用 Azure Container Registry 工作命令在 Azure 中以原生方式快速建置、推送及執行 Docker 容器映像，以了解如何將「內部迴圈」開發週期卸載至雲端。 [ACR 工作][container-registry-tasks-overview]是 Azure Container Registry 內的一組功能，可協助您跨容器生命週期管理及修改容器映像。 
+在此快速入門中，您會使用 [Azure Container Registry 工作][container-registry-tasks-overview]命令，以原生方式在 Azure 內快速建置、推送及執行 Docker 容器映像，而未安裝本機 Docker。 ACR 工作是 Azure Container Registry 內的一組功能，可協助您跨容器生命週期管理及修改容器映像。 此範例示範如何使用本機 Dockerfile，將您的「內部迴圈」容器映像開發週期卸載至具有隨選組建的雲端。 
 
-完成此快速入門後，請進一步探索 ACR 工作的進階功能。 ACR 工適用於多種案例，包括根據程式碼認可或基底映像更新將映像建置自動化，或是以平行方式測試多個容器。 
+完成此快速入門後，請使用[教學課程](container-registry-tutorial-quick-task.md)進一步探索 ACR 工作的進階功能。 ACR 工適用於多種案例，包括根據程式碼認可或基底映像更新將映像建置自動化，或是以平行方式測試多個容器。 
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶][azure-account]。
 
@@ -45,7 +46,7 @@ az acr create --resource-group myResourceGroup \
 
 ## <a name="build-and-push-image-from-a-dockerfile"></a>從 Dockerfile 建置和推送映像
 
-現在，請使用 Azure Container Registry 建置和推送映像。 首先建立工作目錄，然後使用以下單一行建立名為 *Dockerfile* 的 Dockerfile：`FROM hello-world`。 這是從 Docker Hub 中的 `hello-world` 映像建置 Linux 容器映像的簡單範例。 您可以建立自己的標準 Dockerfile，並建置適用於其他平台的映像。 如果您在 Bash Shell 作業，請使用下列命令建立 Dockerfile：
+現在，請使用 Azure Container Registry 建置和推送映像。 首先建立本機工作目錄，然後使用以下單一行建立名為 *Dockerfile* 的 Dockerfile：`FROM hello-world`。 這是從 Docker Hub 中的 `hello-world` 映像建置 Linux 容器映像的簡單範例。 您可以建立自己的標準 Dockerfile，並建置適用於其他平台的映像。 如果您在 Bash Shell 作業，請使用下列命令建立 Dockerfile：
 
 ```bash
 echo FROM hello-world > Dockerfile

@@ -8,13 +8,13 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/05/2020
 ms.author: aahi
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 0a505e5fb11e776a90c8e198b2568e2ac0bd1854
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-js
+ms.openlocfilehash: 20eaf6e6a9f0eee15e6ad6a5bd8f23bf8531545c
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406364"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91377095"
 ---
 Bing Web 搜尋用戶端程式庫可讓您輕鬆地將 Bing Web 搜尋整合到 Node.js 應用程式。 在本快速入門中，您將了解如何具現化用戶端、傳送要求，以及列印回應。
 
@@ -46,11 +46,11 @@ Bing Web 搜尋用戶端程式庫可讓您輕鬆地將 Bing Web 搜尋整合到 
     npm init
     ```
 
-1. 現在，讓我們安裝一些 Azure 模組並新增至 `package.json`：
+1. 現在，讓我們安裝一些 Azure 模組並將其新增至 `package.json`：
 
     ```console
-    npm install --save azure-cognitiveservices-websearch
-    npm install --save ms-rest-azure
+    npm install --save @azure/cognitiveservices-websearch
+    npm install --save @azure/ms-rest-azure-js
     ```
 
 ## <a name="create-a-project-and-declare-required-modules"></a>建立專案，並宣告所需的模組
@@ -60,13 +60,13 @@ Bing Web 搜尋用戶端程式庫可讓您輕鬆地將 Bing Web 搜尋整合到 
 接下來，將此程式碼複製到您的專案。 此程式碼會載入上一節中所安裝的模組。
 
 ```javascript
-const CognitiveServicesCredentials = require('ms-rest-azure').CognitiveServicesCredentials;
-const WebSearchAPIClient = require('azure-cognitiveservices-websearch');
+const CognitiveServicesCredentials = require('@azure/ms-rest-azure-js').CognitiveServicesCredentials;
+const WebSearchAPIClient = require('@azure/cognitiveservices-websearch');
 ```
 
 ## <a name="instantiate-the-client"></a>具現化用戶端
 
-此程式碼會具現化用戶端並使用 `azure-cognitiveservices-websearch` 模組。 請務必輸入 Azure 帳戶的有效訂用帳戶金鑰再繼續。
+此程式碼會具現化用戶端並使用 `@azure/cognitiveservices-websearch` 模組。 請務必輸入 Azure 帳戶的有效訂用帳戶金鑰再繼續。
 
 ```javascript
 let credentials = new CognitiveServicesCredentials('YOUR-ACCESS-KEY');

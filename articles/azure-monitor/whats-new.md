@@ -6,12 +6,12 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 07/08/2020
-ms.openlocfilehash: 0269d870f55f7246529b9d98608e5a325b6cf468
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: d82e9244152f1ecb78b062b4b1dbf02c45c505a1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89569521"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325652"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Azure 監視器文件的最新動向
 
@@ -19,9 +19,67 @@ ms.locfileid: "89569521"
 
 ## <a name="august-2020"></a>2020 年 8 月
 
-### <a name="containers"></a>容器
+### <a name="general"></a>一般
 
+- [Azure 監視器所監視的內容](monitor-reference.md) - 已更新為包含 Azure 監視器代理程式。
+
+
+### <a name="agents"></a>代理程式
+- [Azure 監視器代理程式概觀](platform/azure-monitor-agent-overview.md) - 新文章。
+- [針對混合式環境啟用 Azure 監視器](insights/vminsights-enable-hybrid.md) - 已更新相依性代理程式版本。
+- [Azure 監視代理程式概觀](platform/agents-overview.md) - 已新增 Azure 監視器代理程式並合併 OS 支援資料表。
+
+
+#### <a name="new-and-updated-articles-from-restructure-of-agent-content"></a>來自重新建構代理程式內容的新文章和更新文章
+- [啟用適用於 VM 的 Azure 監視器概觀](insights/vminsights-enable-overview.md)
+- [在 Linux 電腦上安裝 Log Analytics 代理程式](platform/agent-linux.md)
+- [在 Windows 電腦上安裝 Log Analytics 代理程式](platform/agent-windows.md)
+- [Log Analytics 代理程式概觀](platform/log-analytics-agent.md)
+
+### <a name="application-insights"></a>Application Insights
+- [Azure Application Insights for JavaScript Web 應用程式](app/javascript.md) - 已新增一節，釐清用戶端伺服器相互關聯，以及 CORS 相互關聯的組態。
+- [建立新的 Azure 監視器 Application Insights 工作區型資源](app/create-workspace-resource.md) - 已新增工作區型應用程式所提供的功能。
+- [Application Insights 和 Log Analytics 所使用的 IP 位址](app/ip-addresses.md) - 已更新即時計量資料流的 IP 位址。
+- [監視任何環境上的 Java 應用程式 - Azure 監視器 Application Insights](app/java-in-process-agent.md) - 已為支援的自訂遙測新增資料表。
+- [適用於 Application Insights JavaScript SDK 的 Native React 外掛程式](app/javascript-react-native-plugin.md) - 新文章。
+- [適用於 Application Insights JavaScript SDK 的 React 外掛程式](app/javascript-react-plugin.md) - 新文章。
+- [建立 Azure 函式應用程式與 Application Insights 資源監視功能的 Resource Manager 範本範例](samples/resource-manager-function-app.md) - 新文章。
+- [建立 Azure App Service Web 應用程式與 Application Insights 資源監視功能的 Resource Manager 範本範例](samples/resource-manager-web-app.md) - 新文章。
+- [使用 Azure Application Insights 進行使用量分析](app/usage-overview.md) - 新增的影片。
+
+### <a name="autoscale"></a>Autoscale
+- [開始使用 Azure 中的自動調整](platform/autoscale-get-started.md) - 已新增一節，說明如何路由傳送至 App Service 的狀況良好執行個體。
+
+### <a name="data-collection"></a>資料集合
+- [設定 Azure 監視器代理程式 (預覽) 的資料收集](platform/data-collection-rule-azure-monitor-agent.md) - 新文章。
+- [Azure 監視器 (預覽) 中的資料收集規則](platform/data-collection-rule-overview.md) - 新文章。
+
+
+### <a name="containers"></a>容器
 - [適用於容器的 Azure 監視器的部署和 HPA 計量](insights/container-insights-deployment-hpa-metrics.md) - 新文章。
+
+### <a name="insights"></a>深入解析
+- [Azure 監視器中的監視解決方案](insights/solutions.md) - 已針對新 UI 進行更新。
+- [Azure 中的網路效能監視器解決方案](insights/network-performance-monitor.md) - 已新增支援的工作區區域。
+
+
+### <a name="logs"></a>記錄
+- [Azure 監視器常見問題集](faq.md) - 已新增從工作區刪除資料的項目。 已在 502 和 503 回應上新增項目。
+  - [設計您的 Azure 監視器記錄部署](platform/design-logs-deployment.md) - [擷取量速率限制] 區段的更新。
+- [管理 Azure 監視器記錄的使用量和成本](platform/manage-cost-storage.md) - 已將使用量查詢更新為更有效率的查詢格式。
+- [最佳化 Azure 監視器中的記錄查詢](log-query/query-optimization.md) - 已將特定值新增至效能指標。
+- [診斷設定適用的 Resource Manager 範本範例](samples/resource-manager-diagnostic-settings.md) - 已新增記錄查詢稽核記錄的範例。
+
+
+### <a name="platform-logs"></a>平台記錄
+- [建立診斷設定以將平台記錄和計量傳送至不同目的地](platform/diagnostic-settings.md) - 已新增診斷設定的區域需求。
+
+### <a name="visualizations"></a>視覺效果
+- [Azure 監視器活頁簿概觀](platform/workbooks-overview.md) - 新增的影片。
+- [將 Azure 活頁簿範本移至另一個區域](platform/workbook-templates-move-region.md) - 新文章。
+- [將 Azure 活頁簿移至另一個區域](platform/workbooks-move-region.md) - 新文章。
+
+
 
 ## <a name="july-2020"></a>2020 年 7 月
 
@@ -500,7 +558,6 @@ ms.locfileid: "89569521"
 - [適用於背景工作角色服務應用程式 (非 HTTP 應用程式) 的 Application Insights](app/worker-service.md) - 已新增 C# 程式碼的預設記錄層級。 已更新套件參考版本。
 - [ApplicationInsights.config 參考 - Azure](app/configuration-with-applicationinsights-config.md)- 已更新範例程式碼。
 - [使用 PowerShell 將 Azure Application Insights 自動化](app/powershell.md) - 更新 Resource Manager 範本。
-- [Azure 監視器的 Application Insights NuGet 套件](app/nuget.md) - 已更新套件版本。
 - [建立新的 Azure Application Insights 資源](app/create-new-resource.md) - 新增了全域唯一名稱的附註。
 - [使用即時計量資料流進行診斷](app/live-stream.md) - 已更新 ASP.NET Core SDK 版本需求。
 - [Application Insights 中的事件計數器](app/eventcounters.md) - 已更新 customMetrics 的類別和資料表。
