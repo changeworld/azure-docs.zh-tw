@@ -6,10 +6,10 @@ ms.topic: quickstart
 ms.date: 03/06/2020
 ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, 23113853-34f2-4f
 ms.openlocfilehash: d7cfcd02c5e6c9ff57241288bd79efb45d4ac7ab
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88213981"
 ---
 # <a name="quickstart-create-your-first-function-in-azure-using-visual-studio"></a>快速入門：使用 Visual Studio 在 Azure 中建立第一個函式
@@ -74,7 +74,7 @@ Visual Studio 與 Azure Functions Core Tools 整合，以便您使用完整 Azur
 
 2. 前往此 URL，您會看到瀏覽器中對於函式所傳回遠端 GET 要求所做出的回應，其看起來像下列範例︰
 
-    :::image type="content" source="media/functions-create-your-first-function-visual-studio/functions-create-your-first-function-visual-studio-browser-azure.png" alt-text="瀏覽器中的函式回應":::
+    :::image type="content" source="media/functions-create-your-first-function-visual-studio/functions-create-your-first-function-visual-studio-browser-azure.png" alt-text="正在執行的函數應用程式":::
 
 ## <a name="clean-up-resources"></a>清除資源
 
@@ -88,7 +88,7 @@ Visual Studio 與 Azure Functions Core Tools 整合，以便您使用完整 Azur
 
 1. 在函數應用程式頁面中，選取 [概觀] 索引標籤，然後選取 [資源群組] 底下的連結。
 
-   :::image type="content" source="media/functions-create-your-first-function-visual-studio/functions-app-delete-resource-group.png" alt-text="選取要從函數應用程式頁面中刪除的資源群組":::
+   :::image type="content" source="media/functions-create-your-first-function-visual-studio/functions-app-delete-resource-group.png" alt-text="正在執行的函數應用程式":::
 
 2. 在 [資源群組] 分頁中，檢閱包含資源的清單，並確認這些是您想要刪除的項目。
  

@@ -9,10 +9,10 @@ ms.date: 06/25/2020
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 405cb107711845a6699e09bc09a1d2d9f3005cd6
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87499971"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-in-the-azure-portal"></a>快速入門：在 Azure 入口網站中建立 Linux 虛擬機器
@@ -29,8 +29,8 @@ ms.locfileid: "87499971"
 
 1. 在搜尋中輸入**虛擬機器**。
 1. 在 [服務] 底下，選取 [虛擬機器]。
-1. 在 [虛擬機器] 頁面中，選取 [新增]。 [建立虛擬機器] 頁面隨即開啟。
-1. 在 [基本資料] 索引標籤中的 [專案詳細資料] 底下，確認已選取正確的訂用帳戶，然後選擇 [新建] 資源群組。 輸入 *myResourceGroup* 作為名稱*。 
+1. 在 [虛擬機器]  頁面中，選取 [新增]  。 [建立虛擬機器] 頁面隨即開啟。
+1. 在 [基本資料]  索引標籤中的 [專案詳細資料]  底下，確認已選取正確的訂用帳戶，然後選擇 [新建]  資源群組。 輸入 *myResourceGroup* 作為名稱*。 
 
     ![專案詳細資料區段的螢幕擷取畫面，其中顯示您選取 Azure 訂用帳戶的位置，以及虛擬機器的資源群組](./media/quick-create-portal/project-details.png)
 

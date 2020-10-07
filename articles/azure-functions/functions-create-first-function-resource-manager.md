@@ -6,10 +6,10 @@ ms.topic: quickstart
 ms.service: azure-functions
 ms.custom: subject-armqs
 ms.openlocfilehash: 362ff5cd59982c1d848ed59af8381090344f5c5e
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88642260"
 ---
 # <a name="quickstart-create-and-deploy-azure-functions-resources-from-an-arm-template"></a>快速入門：從 ARM 範本建立及部署 Azure Functions 資源
@@ -117,7 +117,7 @@ Read-Host -Prompt "Press [ENTER] to continue ..."
 
 1. 發佈完成之後，請複製**網站 URL**。
 
-    :::image type="content" source="media/functions-create-first-function-arm/publish-summary-site-url.png" alt-text="從發佈摘要複製網站 URL":::
+    :::image type="content" source="media/functions-create-first-function-arm/publish-summary-site-url.png" alt-text="選擇現有的發佈目標":::
 
 1. 附加路徑 `/api/<FUNCTION_NAME>?name=Functions`，其中 `<FUNCTION_NAME>` 是函式的名稱。 呼叫 HTTP URL 觸發函式的 URL 會採用下列格式：
 

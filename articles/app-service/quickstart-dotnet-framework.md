@@ -6,10 +6,10 @@ ms.topic: quickstart
 ms.date: 08/06/2020
 ms.custom: devx-track-csharp, mvc, devcenter, seodec18
 ms.openlocfilehash: 5bf774f2b5cf4a6275dc04248aadfd9a94f5122d
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88212554"
 ---
 # <a name="create-an-aspnet-framework-web-app-in-azure"></a>在 Azure 中建立 ASP.NET Framework Web 應用程式
@@ -26,7 +26,7 @@ ms.locfileid: "88212554"
 
 若您已安裝 Visual Studio 2019：
 
-- 選取 [說明]   > [檢查更新]  以安裝最新的 Visual Studio 更新。
+- 選取 [說明] > [檢查更新] 以安裝最新的 Visual Studio 更新。
 - 選取 **[工具]**  >  **[取得工具及功能]** 。
 
 ## <a name="create-an-aspnet-web-app"></a>建立 ASP.NET Web 應用程式<a name="create-and-publish-the-web-app"></a>
@@ -43,7 +43,7 @@ ms.locfileid: "88212554"
 
 4. 您可以將任何類型的 ASP.NET web 應用程式部署至 Azure。 在本快速入門中，選擇 [MVC] 範本。
 
-5. 確定驗證已設定為 [不需要驗證]。 選取 [建立]。
+5. 確定驗證已設定為 [不需要驗證]。 選取 [建立]  。
 
    ![建立 ASP.NET Web 應用程式](./media/quickstart-dotnet-framework/select-mvc-template-vs2019.png)
 

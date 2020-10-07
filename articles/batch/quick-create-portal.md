@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.date: 08/17/2020
 ms.custom: mvc
 ms.openlocfilehash: cf65a681764a848f8132ec44b8ba313ef1a83235
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88511366"
 ---
 # <a name="quickstart-run-your-first-batch-job-in-the-azure-portal"></a>快速入門：在 Azure 入口網站中執行您的第一個 Batch 作業
@@ -97,7 +97,7 @@ Batch 會立即建立集區，但需花費數分鐘的時間來配置和啟動�
 
 您建立的範例工作將會在幾分鐘內完成。 若要檢視已完成工作的輸出，請選取該工作，再選取 [節點上的檔案]。 選取 `stdout.txt` 檔案以檢視工作的標準輸出。 內容如下所示：
 
-:::image type="content" source="media/quick-create-portal/task-output.png" alt-text="已完成工作之輸出的螢幕擷取畫面。":::
+:::image type="content" source="media/quick-create-portal/task-output.png" alt-text="Azure Marketplace 中 Batch 服務的螢幕擷取畫面。":::
 
 內容會顯示在節點上設定的 Azure Batch 環境變數。 當您建立自己的 Batch 作業和工作時，您可以在工作命令列中，以及由命令列執行的應用程式和指令碼中，參照這些環境變數。
 

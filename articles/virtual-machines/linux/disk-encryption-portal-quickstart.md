@@ -8,10 +8,10 @@ ms.subservice: security
 ms.topic: quickstart
 ms.date: 10/02/2019
 ms.openlocfilehash: 563b9c03141357eeacf9a7d890c386faae52c6df
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88510688"
 ---
 # <a name="quickstart-create-and-encrypt-a-virtual-machine-with-the-azure-portal"></a>快速入門：使用 Azure 入口網站建立和加密 Linux 虛擬機器
@@ -44,7 +44,7 @@ ms.locfileid: "88510688"
 
 1. 選取 [管理] 索引標籤，並確認您有診斷儲存體帳戶。 如果您沒有儲存體帳戶，請選取 [新建]，為您的儲存體帳戶 myStorageAccount 命名，然後選取 [確定]
 
-    :::image type="content" source="../media/disk-encryption/portal-quickstart-vm-creation-storage.png" alt-text="ResourceGroup 建立畫面":::
+    :::image type="content" source="../media/disk-encryption/portal-quickstart-vm-creation-storage.png" alt-text=" 建立畫面":::
 
 1. 按一下 [檢閱 + 建立]。
 1. 在 [建立虛擬機器] 頁面上，您可以看到即將建立的 VM 詳細資料。 準備完成後，請選取 [建立]。
@@ -58,19 +58,19 @@ ms.locfileid: "88510688"
 1. 在頂端列中，選取 [其他設定]。
 1. 在 [加密設定] > [要加密的磁碟] 下，選取 [OS 和資料磁碟]。
 
-    :::image type="content" source="../media/disk-encryption/portal-quickstart-disks-to-encryption.png" alt-text="磁碟和加密選取項目":::
+    :::image type="content" source="../media/disk-encryption/portal-quickstart-disks-to-encryption.png" alt-text=" 建立畫面":::
 
 1. 在 [加密設定] 底下，選擇 [選取金鑰保存庫與金鑰以進行加密]。
 1. 在 [從 Azure Key Vault 選取金鑰] 畫面上，選取 [新建]。
 
-    :::image type="content" source="../media/disk-encryption/portal-qs-keyvault-create.png" alt-text="磁碟和加密選取項目":::
+    :::image type="content" source="../media/disk-encryption/portal-qs-keyvault-create.png" alt-text=" 建立畫面":::
 
 1. 在**金鑰保存庫和金鑰**左側，選取 [按一下以選取金鑰]。
 1. 在 [從 Azure Key Vault 選取金鑰] 的 **Key Vault** 欄位下，選取 [新建]。
 1. 在 [建立金鑰保存庫] 畫面上，確定資源群組為 myResourceGroup，並為您的金鑰保存庫命名。  Azure 中的每個金鑰保存庫都必須有唯一的名稱。
 1. 在 [存取原則] 索引標籤上，勾選 [用於磁碟區加密的 Azure 磁碟加密] 方塊。
 
-    :::image type="content" source="../media/disk-encryption/portal-quickstart-keyvault-enable.png" alt-text="磁碟和加密選取項目":::
+    :::image type="content" source="../media/disk-encryption/portal-quickstart-keyvault-enable.png" alt-text=" 建立畫面":::
 
 1. 選取 [檢閱 + 建立]。  
 1. 在金鑰保存庫通過驗證後，選取 [建立]。 此時您會回到 [從 Azure Key Vault 中選取金鑰] 畫面。

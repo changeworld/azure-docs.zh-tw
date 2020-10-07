@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.date: 08/04/2020
 ms.custom: seodec18, mvc
 ms.openlocfilehash: ace1030923ea226376369941badafafa662d25ce
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88031768"
 ---
 # <a name="quickstart-create-an-azure-container-registry-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站建立 Azure Container Registry
@@ -31,7 +31,7 @@ Azure Container Registry 是 Azure 中的私人 Docker 登錄，您可以在其�
 
 在 [基本資料]**** 索引標籤中，輸入**資源群組**和**登錄名稱**的值。 登錄名稱在 Azure 內必須是唯一的，且包含 5-50 個英數字元。 在此快速入門中，請在 `West US` 位置中建立名為 `myResourceGroup` 的新資源群組，並選取 [基本] 作為 [SKU]****。
 
-:::image type="content" source="media/container-registry-get-started-portal/qs-portal-03.png" alt-text="在入口網站中建立容器登錄":::
+:::image type="content" source="media/container-registry-get-started-portal/qs-portal-03.png" alt-text="瀏覽至入口網站中的容器登錄":::
 
 接受其餘設定的預設值。 然後，選取 [檢閱 + 建立]****。 檢閱設定之後，選取 [建立]****。
 
@@ -39,7 +39,7 @@ Azure Container Registry 是 Azure 中的私人 Docker 登錄，您可以在其�
 
 當 [部署成功]**** 訊息出現時，請在入口網站中選取容器登錄。 
 
-:::image type="content" source="media/container-registry-get-started-portal/qs-portal-05.png" alt-text="入口網站中的容器登錄概觀":::
+:::image type="content" source="media/container-registry-get-started-portal/qs-portal-05.png" alt-text="瀏覽至入口網站中的容器登錄":::
 
 記下登錄名稱和 [登入伺服器] 的值。 當您使用 Docker 推送和提取映像時，您會在下列步驟中使用這些值。
 
@@ -65,7 +65,7 @@ az acr login --name mycontainerregistry
 
 若要列出您登錄中的映像，請瀏覽至入口網站中的登錄並選取 [存放庫]****，然後選取您使用 `docker push` 建立的 **hello-world**存放庫。
 
-:::image type="content" source="media/container-registry-get-started-portal/qs-portal-09.png" alt-text="列出入口網站中的容器映像":::
+:::image type="content" source="media/container-registry-get-started-portal/qs-portal-09.png" alt-text="瀏覽至入口網站中的容器登錄":::
 
 選取 **hello-world** 存放庫，您會在 [標記]**** 之下看到標記 `v1` 的映像。
 
@@ -75,7 +75,7 @@ az acr login --name mycontainerregistry
 
 若要清除資源，請在入口網站中瀏覽至 **myResourceGroup** 資源群組。 載入資源群組後，按一下 [刪除資源群組]**** 以移除資源群組、容器登錄，以及儲存於該處的容器映像。
 
-:::image type="content" source="media/container-registry-get-started-portal/qs-portal-08.png" alt-text="在入口網站中刪除資源群組":::
+:::image type="content" source="media/container-registry-get-started-portal/qs-portal-08.png" alt-text="瀏覽至入口網站中的容器登錄":::
 
 
 ## <a name="next-steps"></a>後續步驟
