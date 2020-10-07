@@ -3,20 +3,20 @@ title: Azure 實驗室服務中的架構基礎 | Microsoft Docs
 description: 本文將討論實驗室服務所使用的基本資源，以及實驗室的基本架構。
 author: emaher
 ms.topic: overview
-ms.date: 06/26/2020
+ms.date: 09/16/2020
 ms.author: enewman
-ms.openlocfilehash: 93e95e1b03cd942e513a6d643f8a9e96399c231b
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
+ms.openlocfilehash: ac390fb6624ffc762f77b676c778165e7382f73f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85445639"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334033"
 ---
 # <a name="architecture-fundamentals-in-azure-lab-services"></a>Azure 實驗室服務中的架構基礎
 
 Azure 實驗室服務是 SaaS (軟體即服務) 解決方案，這表示其會為您處理實驗室服務所需的資源。 本文將討論實驗室服務所使用的基本資源，以及實驗室的基本架構。  
 
-Azure 實驗室服務提供了幾個區域讓您將自己的資源與實驗室服務搭配使用。  如需在自己的網路上使用 VM 的詳細資訊，請參閱如何[讓虛擬網路對等互連](how-to-connect-peer-virtual-network.md)。  若要重複使用來自共用映像庫的映像，請參閱如何[連結共用映像庫](how-to-attach-detach-shared-image-gallery.md)。
+Azure 實驗室服務提供了幾個區域，讓您將自己的資源與實驗室服務搭配使用。  如需在自己的網路上使用 VM 的詳細資訊，請參閱如何[讓虛擬網路對等互連](how-to-connect-peer-virtual-network.md)。  若要重複使用來自共用映像庫的映像，請參閱如何[連結共用映像庫](how-to-attach-detach-shared-image-gallery.md)。
 
 以下是教室實驗室的基本架構。  實驗室帳戶裝載於您的訂用帳戶中。 學生 VM 以及為了支援 VM 所需的資源，都裝載於實驗室服務所擁有的訂用帳戶中。 讓我們更詳細地討論實驗室服務訂用帳戶所含的資源。
 

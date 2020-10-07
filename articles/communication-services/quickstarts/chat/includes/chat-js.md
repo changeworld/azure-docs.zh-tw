@@ -10,12 +10,12 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: a50f09dd52ccf4d35fd3803967898a4a25e3299f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: d0754ea2d7e8f8f59ec475be8e27fcffd058c11f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90943842"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91377327"
 ---
 ## <a name="prerequisites"></a>必要條件
 開始之前，請務必：
@@ -90,6 +90,8 @@ npm install webpack webpack-cli webpack-dev-server --save-dev
 ### <a name="create-a-chat-client"></a>建立聊天用戶端
 
 若要在 Web 應用程式中建立聊天用戶端，您將使用 Azure 通訊服務端點，以及在必要條件步驟中所產生的存取權杖。 使用者存取權杖可讓您建立直接向 Azure 通訊服務進行驗證的用戶端應用程式。 一旦您在伺服器上產生這些權杖，請將其傳回給用戶端裝置。 您需要使用 `Common client library` 中的 `AzureCommunicationUserCredential` 類別，將權杖傳遞給您的聊天用戶端。
+
+在專案的根目錄中建立 **client.js** 檔案。 我們會使用此檔案，使用適用於 JavaScript 的 Azure 通訊聊天用戶端程式庫來新增聊天功能。
 
 ```JavaScript
 

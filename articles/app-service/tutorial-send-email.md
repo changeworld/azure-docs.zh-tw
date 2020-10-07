@@ -4,12 +4,12 @@ description: 了解如何從您的 App Service 應用程式叫用商務流程。
 ms.topic: tutorial
 ms.date: 04/08/2020
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: ddd57bfe653766d133824f42098d9ad9adb1e56b
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 5aa563e55c64893d57522dd1154a64c7e90a1690
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962191"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397431"
 ---
 # <a name="tutorial-send-email-and-invoke-other-business-processes-from-app-service"></a>教學課程：傳送電子郵件並從 App Service 叫用其他商務流程
 
@@ -84,7 +84,8 @@ ms.locfileid: "88962191"
 1. 在設計工具的底部，按一下 [新增步驟]  ，在動作搜尋方塊中輸入 **Gmail**，然後尋找並選取 [傳送電子郵件 (V2)]  。
     
     > [!TIP]
-    > 您可以搜尋其他類型的整合，例如 SendGrid、MailChimp、Office 365 和 SalesForce。 如需詳細資訊，請參閱 [Logic Apps 文件](../logic-apps/index.yml)。
+    > 您可以搜尋其他類型的整合，例如 SendGrid、MailChimp、Microsoft 365 和 SalesForce。 如需詳細資訊，請參閱 [Logic Apps 文件](../logic-apps/index.yml)。
+
 1. 在 [Gmail]  對話方塊中，選取 [登入]  並登入您想用來傳送電子郵件的 Gmail 帳戶。
 
     ![顯示 Gmail 對話方塊的螢幕擷取畫面，您使用此對話方塊來登入要從中傳送電子郵件的 Gmail 帳戶。](./media/tutorial-send-email/gmail-sign-in.png)

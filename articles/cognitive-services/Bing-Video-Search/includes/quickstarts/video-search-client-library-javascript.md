@@ -8,23 +8,23 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/19/2020
 ms.author: aahi
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 7cf28df4f009b017699c926d1ca54b7e5320a179
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-js
+ms.openlocfilehash: fa1ecb24649d9355e6104bff8add5430fdd64c3c
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87404104"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91377612"
 ---
 使用本快速入門，透過適用於 JavaScript 的 Bing 影片搜尋用戶端程式庫開始搜尋新聞。 雖然 Bing 影片搜尋具有與大部分程式設計語言相容的 REST API，但此用戶端程式庫可提供簡單的方法，將服務整合到您的應用程式。 此範例的原始程式碼可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/videoSearch.js) 上找到。 其中包含更多的註解和功能。
 
 ## <a name="prerequisites"></a>Prerequisites
 
-- [Node.js](https://www.nodejs.org/)
-
-若要使用 Bing 影片搜尋用戶端程式庫來設定主控台應用程式：
-* 在開發環境中執行 `npm install ms-rest-azure`。
-* 在開發環境中執行 `npm install azure-cognitiveservices-videosearch`。
+* 最新版的 [Node.js](https://nodejs.org/en/download/)。
+* [適用於 JavaScript 的 Bing 影片搜尋 SDK](https://www.npmjs.com/package/@azure/cognitiveservices-videosearch)
+     *  若要安裝，請執行 `npm install @azure/cognitiveservices-videosearch`
+* 來自 `@azure/ms-rest-azure-js` 套件中的 `CognitiveServicesCredentials` 類別，用來驗證用戶端。
+     * 若要安裝，請執行 `npm install @azure/ms-rest-azure-js`
 
 [!INCLUDE [cognitive-services-bing-video-search-signup-requirements](~/includes/cognitive-services-bing-video-search-signup-requirements.md)]
 
@@ -33,8 +33,8 @@ ms.locfileid: "87404104"
 1. 在您慣用的 IDE 或編輯器中建立新的 JavaScript 檔案，然後為 Bing 影片搜尋用戶端程式庫新增 `require()` 陳述式，以及新增 `CognitiveServicesCredentials` 模組。 建立訂用帳戶金鑰的變數。 
     
     ```javascript
-    const CognitiveServicesCredentials = require('ms-rest-azure').CognitiveServicesCredentials;
-    const VideoSearchAPIClient = require('azure-cognitiveservices-videosearch');
+    const CognitiveServicesCredentials = require('@azure/ms-rest-azure-js').CognitiveServicesCredentials;
+    const VideoSearchAPIClient = require('@azure/cognitiveservices-videosearch');
     ```
 
 2. 以您的金鑰建立 `CognitiveServicesCredentials` 的執行個體。 然後用其建立影片搜尋用戶端的執行個體。

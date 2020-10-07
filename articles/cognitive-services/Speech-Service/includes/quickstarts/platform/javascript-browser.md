@@ -12,10 +12,10 @@ ms.date: 10/11/2019
 ms.author: erhopf
 ms.custom: devx-track-js
 ms.openlocfilehash: 2701b4cd17a132de07c031166bbe4cb1086227e9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91324729"
 ---
 本指南說明如何安裝適用於 JavaScript 的[語音 SDK](~/articles/cognitive-services/speech-service/speech-sdk.md)，以與網頁搭配使用。

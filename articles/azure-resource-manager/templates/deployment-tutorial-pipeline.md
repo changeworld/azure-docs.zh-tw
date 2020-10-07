@@ -4,12 +4,12 @@ description: 了解如何持續建置、測試及部署 Azure Resource Manager �
 ms.date: 08/24/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: c793c8bcbc01cbef99de13ef6dd2f6ce61a50773
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 433811cb632aae0d7370fc8e401c01fe36621a5b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892672"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333231"
 ---
 # <a name="tutorial-continuous-integration-of-azure-resource-manager-templates-with-azure-pipelines"></a>教學課程：Azure Resource Manager 範本與 Azure Pipelines 的持續整合
 
@@ -180,7 +180,7 @@ azuredeploy.json 已新增至本機存放庫。 接下來您會將範本推送�
     * **部署模式**：選取 [增量]。
     * **部署名稱**：輸入 **DeployPipelineTemplate**。 選取 [進階]，才能看到 [部署名稱]。
 
-    ![Azure Resource Manager Azure DevOps Azure Pipelines 步驟](./media/deployment-tutorial-pipeline/resource-manager-template-pipeline-configure.png)
+    ![此螢幕擷取畫面顯示已輸入必要值的 ARM 範本部署頁面。](./media/deployment-tutorial-pipeline/resource-manager-template-pipeline-configure.png)
 
 1. 選取 [新增]  。
 
@@ -188,7 +188,7 @@ azuredeploy.json 已新增至本機存放庫。 接下來您會將範本推送�
 
     yml 檔案應該會顯示如下：
 
-    ![Azure Resource Manager Azure DevOps Azure Pipelines yaml](./media/deployment-tutorial-pipeline/azure-resource-manager-devops-pipelines-yml.png)
+    ![此螢幕擷取畫面顯示 [檢閱] 頁面，其中具有標題為「檢閱管線 YAML」的新管線。](./media/deployment-tutorial-pipeline/azure-resource-manager-devops-pipelines-yml.png)
 
 1. 選取 [儲存並執行]。
 1. 從 [儲存並執行] 窗格中，再次選取 [儲存並執行]。 YAML 檔案的複本已儲存到連線的存放庫。 您可以瀏覽您的存放庫，就能看到 YAML 檔案。
