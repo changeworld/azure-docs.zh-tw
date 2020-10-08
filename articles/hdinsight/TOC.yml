@@ -3,11 +3,12 @@
 - name: HDInsight 服務
   expanded: true
   items:
-    - name: 概觀
+    - name: 總覽
       items:
         - name: 什麼是 Azure HDInsight？
           href: ./hdinsight-overview.md
     - name: 教學課程
+      expanded: true
       items:
         - name: 建立 HDInsight 叢集
           href: ./hdinsight-hadoop-provision-linux-clusters.md

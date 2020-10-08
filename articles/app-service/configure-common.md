@@ -6,12 +6,12 @@ ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.topic: article
 ms.date: 08/13/2019
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 18463c4350895401c9bf73dc249ce93218a44f7c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 68ff753a0c6e21fac512792670a24bede8980e99
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91264638"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91816445"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>設定 Azure 入口網站中的 App Service 應用程式
 
@@ -83,6 +83,32 @@ ms.locfileid: "91264638"
   ...
 ]
 ```
+
+### <a name="automate-app-settings-with-the-azure-cli"></a>使用 Azure CLI 將應用程式設定自動化
+
+您可以使用 Azure CLI 從命令列建立和管理設定。
+
+- 使用 [az webapp config 應用程式](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set)設定，將值指派給設定：
+
+    ```azurecli-interactive
+    az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings <setting-name>="<value>"
+    ```
+        
+    `<setting-name>`請以設定的名稱取代，並以 `<value>` 要指派給它的值取代。 此命令會建立尚未存在的設定。
+    
+- 使用 [az webapp config appsettings list](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_list)來顯示所有設定及其值：
+    
+    ```azurecli-interactive
+    az webapp config appsettings list --name <app-name> --resource-group <resource-group-name>
+    ```
+    
+- 移除一或多個設定，並使用 [az webapp config app settings delete](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_delete)：
+
+    ```azurecli-interactive
+    az webapp config appsettings delete --name <app-name> --resource-group <resource-group-name> --setting-names {<names>}
+    ```
+    
+    取代 `<names>` 為以空格分隔的設定名稱清單。
 
 ## <a name="configure-connection-strings"></a>設定連接字串
 
@@ -164,7 +190,12 @@ ms.locfileid: "91264638"
 
 在這裡，您可以設定應用程式的一些常見設定。 某些設定需要您 [擴大至更高的定價層](manage-scale-up.md)。
 
-- **堆疊設定**：用來執行應用程式的軟體堆疊，包括語言和 SDK 版本。 針對 Linux 應用程式和自訂容器應用程式，您也可以設定選用的啟動命令或檔案。
+- **堆疊設定**：用來執行應用程式的軟體堆疊，包括語言和 SDK 版本。
+
+    針對 Linux 應用程式和自訂容器應用程式，您可以選取語言執行時間版本，並設定選用的 **啟動命令** 或啟動命令檔。
+
+    ![Linux 容器的一般設定](./media/configure-common/open-general-linux.png)
+
 - **平臺設定**：可讓您設定裝載平臺的設定，包括：
     - **位數**：32位或64位。
     - **WebSocket 通訊協定**：例如，針對 [ASP.NET SignalR] 或 [socket.io](https://socket.io/)。
@@ -245,7 +276,7 @@ ms.locfileid: "91264638"
 
 請參閱 [為 Azure App Service 設定自訂 Linux 容器](configure-custom-container.md)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - [在 Azure App Service 中設定自訂網域名稱]
 - [在 Azure App Service 中設定預備環境] \(部分機器翻譯\)

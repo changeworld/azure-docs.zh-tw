@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: e36485b54f209b10f9a4e6b4e6a26248955b2275
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: b05084a7d01f4c5d5d5a79b60ac0b8ba47843622
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90031393"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91816787"
 ---
 # <a name="configure-and-customize-the-build-tasks"></a>設定和自訂群組建工作
 
@@ -131,7 +131,7 @@ Windows Defender 使用 Windows Update 用戶端來下載和安裝簽章。 如�
 
 > [!NOTE]
 >
-> - Roslyn 分析器與編譯器整合，而且只能在 csc.exe 編譯時執行。 因此，此工作需要重新執行先前在組建中執行的編譯器命令，或重新執行。 這項重新執行作業的完成方式是查詢 MSBuild 組建工作記錄 Visual Studio Team Services (VSTS) 。
+> - Roslyn 分析器與編譯器整合，而且只能在 csc.exe 編譯時執行。 因此，此工作需要重新執行先前在組建中執行的編譯器命令，或重新執行。 這項重新執行作業的完成方式是查詢先前) Visual Studio Team Services MSBuild 組建工作記錄的 Azure DevOps (。
 >
 >   沒有其他方法可讓工作從組建定義中可靠地取得 MSBuild 編譯命令列。 我們已考慮新增自由格式的文字方塊，讓使用者可以輸入其命令列。 但接著很難讓這些命令列保持在最新狀態，並與主要組建同步。
 >
@@ -195,7 +195,7 @@ Windows Defender 使用 Windows Update 用戶端來下載和安裝簽章。 如�
 
 如需這項工作 YAML 設定的相關資訊，請查看我們的 [文章分析 YAML 選項](yaml-configuration.md#post-analysis-task)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 如需 YAML 為基礎的設定相關資訊，請參閱我們的 [YAML 設定指南](yaml-configuration.md)。
 

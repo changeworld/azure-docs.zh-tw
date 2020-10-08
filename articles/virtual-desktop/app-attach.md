@@ -6,17 +6,17 @@ ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e461bbf8c3a6cd845744fc0e17b5d1f0eb9bef58
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 3b02be8f35ff33f758aebe03c89287c51c9ffef7
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88010152"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91816332"
 ---
 # <a name="set-up-msix-app-attach"></a>設定 MSIX 應用程式附加
 
 > [!IMPORTANT]
-> MSIX 應用程式附加目前為公開預覽狀態。
+> MSIX 應用程式附加目前處於公開預覽狀態。
 > 此預覽版本是在沒有服務等級協定的情況下提供，不建議您將其用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。
 > 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
@@ -27,28 +27,28 @@ ms.locfileid: "88010152"
 在您開始之前，設定 MSIX 應用程式附加會需要下列項目：
 
 - 存取 Windows 測試人員入口網站以取得支援 MSIX 應用程式附加 API 的 Windows 10 版本。
-- 運作中的 Windows 虛擬桌面部署。 若要瞭解如何部署 Windows 虛擬桌面 (傳統) ，請參閱[在 Windows 虛擬桌面中建立租](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)使用者。 若要瞭解如何使用 Azure Resource Manager 整合來部署 Windows 虛擬桌面，請參閱[使用 Azure 入口網站建立主機集](./create-host-pools-azure-marketplace.md)區。
+- 運作中的 Windows 虛擬桌面部署。 若要瞭解如何將 Windows 虛擬桌面部署 (傳統) ，請參閱 [在 Windows 虛擬桌面中建立租](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)使用者。 若要瞭解如何使用 Azure Resource Manager 整合部署 Windows 虛擬桌面，請參閱 [使用 Azure 入口網站建立主機集](./create-host-pools-azure-marketplace.md)區。
 - MSIX 封裝工具。
-- Windows 虛擬桌面部署中將儲存 MSIX 套件的網路共用。
+- 您的 Windows 虛擬桌面部署中將儲存 MSIX 封裝的網路共用。
 
 ## <a name="get-the-os-image"></a>取得 OS 映像
 
-首先，您必須取得 OS 映射。 您可以透過 Azure 入口網站取得 OS 映射。 不過，如果您是 Windows 測試人員程式的成員，您可以選擇改為使用 Windows 測試人員入口網站。
+首先，您需要取得 OS 映射。 您可以透過 Azure 入口網站取得 OS 映射。 但是，如果您是 Windows 測試人員程式的成員，您可以選擇改為使用 Windows 測試人員入口網站。
 
 ### <a name="get-the-os-image-from-the-azure-portal"></a>從 Azure 入口網站取得 OS 映射
 
 若要從 Azure 入口網站取得 OS 映射：
 
-1. 開啟[Azure 入口網站](https://portal.azure.com)並登入。
+1. 開啟 [Azure 入口網站](https://portal.azure.com) 並登入。
 
-2. 移至 [**建立虛擬機器**]。
+2. 移至 [ **建立虛擬機器**]。
 
-3. 在 [**基本**] 索引標籤中，選取 [ **Windows 10 企業版] [多重會話，版本 2004**]。
+3. 在 [ **基本** ] 索引標籤中，選取 [ **Windows 10 enterprise 多重會話，版本 2004**]。
 
-4. 請遵循其餘指示來完成虛擬機器的建立。
+4. 遵循其餘的指示，完成虛擬機器的建立作業。
 
      >[!NOTE]
-     >您可以使用此 VM 來直接測試 MSIX 應用程式附加。 若要深入瞭解，請直接跳至[產生適用于 MSIX 的 VHD 或 VHDX 套件](#generate-a-vhd-or-vhdx-package-for-msix)。 否則，請繼續閱讀本節。
+     >您可以使用此 VM 來直接測試 MSIX app 附加。 若要深入瞭解，請直接跳到 [針對 MSIX 產生 VHD 或 VHDX 套件](#generate-a-vhd-or-vhdx-package-for-msix)。 否則，請繼續閱讀本節。
 
 ### <a name="get-the-os-image-from-the-windows-insider-portal"></a>從 Windows 測試人員入口網站取得 OS 映射
 
@@ -92,7 +92,7 @@ rem Disable Windows Update:
 sc config wuauserv start=disabled
 ```
 
-停用自動更新之後，您必須啟用 Hyper-v，因為您會使用掛接 VHD 命令來將 VHD 預備和卸載至「移至容器」。
+停用自動更新之後，您必須啟用 Hyper-v，因為您將使用掛接 VHD 命令將 VHD 暫存並卸載至 [移至]。
 
 ```powershell
 Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
@@ -200,7 +200,7 @@ Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
 
 1. 以滑鼠右鍵按一下套件並選取 [屬性]。
 2. 在出現的視窗中，選取 [數位簽章] 索引標籤。索引標籤上的清單中應該只有一個項目，如下圖所示。 選取該項目使其反白顯示，然後選取 [詳細資料]。
-3. 當 [數位簽章詳細資料] 視窗出現時，選取 [**一般**] 索引標籤，然後選取 [**查看憑證**]，再選取 [**安裝憑證**]。
+3. 當 [數位簽章詳細資料] 視窗出現時，選取 [一般] 索引標籤，然後選取 [**查看憑證**]，然後選取 **[** **安裝憑證**]。
 4. 當安裝程式開啟時，請選取 [本機電腦] 作為您的儲存位置，然後選取 [下一步]。
 5. 如果安裝程式詢問您是否要允許應用程式對您的裝置進行變更，請選取 [是]。
 6. 選取 [將所有憑證放入以下的存放區]，然後選取 [瀏覽]。
@@ -218,7 +218,7 @@ MSIX 應用程式附加有四個不同階段，必須依照下列順序執行：
 
 每個階段都會建立 PowerShell 指令碼。 [這裡](https://github.com/Azure/RDS-Templates/tree/master/msix-app-attach) \(英文\) 提供每個階段的範例指令碼。
 
-### <a name="stage-powershell-script"></a>階段 PowerShell 腳本
+### <a name="stage-powershell-script"></a>暫存 PowerShell 腳本
 
 更新 PowerShell 指令碼之前，請確定您有該磁碟區在 VHD 中的磁碟區 GUID。 取得磁碟區 GUID：
 
@@ -342,20 +342,25 @@ Remove-AppxPackage -PreserveRoamableApplicationData $packageName
 
 ### <a name="destage-powershell-script"></a>取消暫存 PowerShell 指令碼
 
-針對此指令碼，請將 **$packageName** 的預留位置取代為您所要測試套件的名稱。
+針對此指令碼，請將 **$packageName** 的預留位置取代為您所要測試套件的名稱。 在生產環境部署中，最好在關機時執行此功能。
 
 ```powershell
 #MSIX app attach de staging sample
 
+$vhdSrc="<path to vhd>"
+
 #region variables
 $packageName = "<package name>"
-$msixJunction = "C:\temp\AppAttach\"
+$msixJunction = "C:\temp\AppAttach"
 #endregion
 
 #region deregister
 Remove-AppxPackage -AllUsers -Package $packageName
-cd $msixJunction
-rmdir $packageName -Force -Verbose
+Remove-Item "$msixJunction\$packageName" -Recurse -Force -Verbose
+#endregion
+
+#region Detach VHD
+Dismount-DiskImage -ImagePath $vhdSrc -Confirm:$false
 #endregion
 ```
 

@@ -195,7 +195,7 @@
               href: ../dv4-dsv4-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: 計算最佳化
           items:
-            - name: 概觀
+            - name: 總覽
               href: ../sizes-compute.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: Fsv2 系列
               href: ../fsv2-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
@@ -230,7 +230,7 @@
               href: storage-performance.md
         - name: GPU - 加速計算
           items:
-            - name: 概觀
+            - name: 總覽
               href: ../sizes-gpu.md?bc=/azure/virtual-machines/windows/breadcrumb/toc.json&toc=/azure/virtual-machines/windows/toc.json
             - name: NC 系列
               href: ../nc-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
@@ -278,7 +278,7 @@
             - name: VM 執行個體大小彈性
               href: ../reserved-vm-instance-size-flexibility.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Spot VM
-          displayName: 'pre-empt, preempt'
+          displayName: 'pre-empt, preempt, spot'
           href: ../spot-vms.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: 沒有暫存磁碟的 Azure VM
           href: ../azure-vms-no-temp-disk.md
@@ -380,7 +380,7 @@
         - name: 部署 Spot VM
           items:
             - name: 入口網站
-              href: spot-portal.md
+              href: ../spot-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
             - name: PowerShell
               href: spot-powershell.md
             - name: ARM 範本
@@ -677,7 +677,7 @@
       items:
         - name: 維修通知
           items:
-            - name: 概觀
+            - name: 總覽
               href: ../maintenance-notifications.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: CLI
               href: ../maintenance-notifications-cli.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json

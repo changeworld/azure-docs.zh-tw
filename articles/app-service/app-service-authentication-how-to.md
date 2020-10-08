@@ -4,12 +4,12 @@ description: 瞭解如何針對不同的案例自訂 App Service 中的驗證和
 ms.topic: article
 ms.date: 07/08/2020
 ms.custom: seodec18
-ms.openlocfilehash: a01ca051f676f6a62face2c8ef0c9055c0c98c31
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 93c697162bfcb51b77c2e6f48b5824b81070bf51
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91757515"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91816419"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>在 Azure App Service 中進階使用驗證和授權
 
@@ -334,6 +334,35 @@ Microsoft 帳戶和 Azure Active Directory 都可讓您從多個網域登入。 
             "customProtoHeaderName": "<proto header value>"
         }
     },
+    "login": {
+        "routes": {
+            "logoutEndpoint": "<logout endpoint>"
+        },
+        "tokenStore": {
+            "enabled": <true|false>,
+            "tokenRefreshExtensionHours": "<double>",
+            "fileSystem": {
+                "directory": "<directory to store the tokens in if using a file system token store (default)>"
+            },
+            "azureBlobStorage": {
+                "sasUrlSettingName": "<app setting name containing the sas url for the Azure Blob Storage if opting to use that for a token store>"
+            }
+        },
+        "preserveUrlFragmentsForLogins": <true|false>,
+        "allowedExternalRedirectUri": [
+            "https://uri1.azurewebsites.net/",
+            "https://uri2.azurewebsites.net/",
+            "url_scheme_of_your_app://easyauth.callback"
+        ],
+        "cookieExpiration": {
+            "convention": "FixedTime|IdentityProviderDerived",
+            "timeToExpiration": "<timespan>"
+        },
+        "nonce": {
+            "validateNonce": <true|false>,
+            "nonceExpirationInterval": "<timespan>"
+        }
+    },
     "identityProviders": {
         "azureActiveDirectory": {
             "enabled": <true|false>,
@@ -439,35 +468,6 @@ Microsoft 帳戶和 Azure Active Directory 都可讓您從多個網域登入。 
             },
             //...
         }
-    },
-    "login": {
-        "routes": {
-            "logoutEndpoint": "<logout endpoint>"
-        },
-        "tokenStore": {
-            "enabled": <true|false>,
-            "tokenRefreshExtensionHours": "<double>",
-            "fileSystem": {
-                "directory": "<directory to store the tokens in if using a file system token store (default)>"
-            },
-            "azureBlobStorage": {
-                "sasUrlSettingName": "<app setting name containing the sas url for the Azure Blob Storage if opting to use that for a token store>"
-            }
-        },
-        "preserveUrlFragmentsForLogins": <true|false>,
-        "allowedExternalRedirectUri": [
-            "https://uri1.azurewebsites.net/",
-            "https://uri2.azurewebsites.net/",
-            "url_scheme_of_your_app://easyauth.callback"
-        ],
-        "cookieExpiration": {
-            "convention": "FixedTime|IdentityProviderDerived",
-            "timeToExpiration": "<timespan>"
-        },
-        "nonce": {
-            "validateNonce": <true|false>,
-            "nonceExpirationInterval": "<timespan>"
-        }
     }
 }
 ```
@@ -533,7 +533,7 @@ az webapp auth update --name <my_app_name> \
 
 您可以選擇上述程式碼範例中的 [試試看]****，從 [Azure Cloud Shell](../cloud-shell/overview.md) 執行此命令。 在執行 [az login](/cli/azure/reference-index#az-login) 登入之後，您也可以使用[本機 Azure CLI](/cli/azure/install-azure-cli) 來執行此命令。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 > [!div class="nextstepaction"]
 > [教學課程：端對端驗證和授權使用者](tutorial-auth-aad.md)

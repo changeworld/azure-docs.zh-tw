@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 08/02/2017
 ms.author: mimckitt
-ms.openlocfilehash: 0b13dca7f4a33a7fb9ea55a1505c26a97160d0d8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 882ed23fe9f7e759bef7464d512685163a26b288
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86502940"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91816176"
 ---
 # <a name="how-to-update-the-azure-linux-agent-on-a-vm"></a>如何更新虛擬機器上的 Azure Linux 代理程式
 
@@ -31,36 +31,32 @@ ms.locfileid: "86502940"
 需一律先檢查 Linux 散發版本儲存機制中的封裝。 可用的封裝有可能不是最新的版本，啟用自動更新可確保 Linux 代理程式一律更新為最新版本。 如果使用封裝管理員安裝時碰到問題，請向散發版本廠商尋求支援。
 
 > [!NOTE]
-> 如需詳細資訊，請參閱[Azure 上背書的 Linux](../linux/endorsed-distros.md)散發套件
+> 如需詳細資訊，請參閱[Azure 上的背書 Linux 發行](../linux/endorsed-distros.md)版
 
-## <a name="minimum-virtual-machine-agent-support-in-azure"></a>在 Azure 中支援的最小虛擬機器代理程式
 在繼續之前，確認[在 Azure 中針對虛擬機器代理程式的最小版本支援](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)。
 
-## <a name="updating-the-azure-linux-agent"></a>更新 Azure Linux 代理程式
 
 ## <a name="ubuntu"></a>Ubuntu
 
-#### <a name="check-your-current-package-version"></a>檢查目前的封裝版本
+檢查目前的封裝版本
 
 ```bash
 apt list --installed | grep walinuxagent
 ```
 
-#### <a name="update-package-cache"></a>更新封裝快取
+更新封裝快取
 
 ```bash
 sudo apt-get -qq update
 ```
 
-#### <a name="install-the-latest-package-version"></a>安裝最新版本的封裝
+安裝最新版本的封裝
 
 ```bash
 sudo apt-get install walinuxagent
 ```
 
-#### <a name="ensure-auto-update-is-enabled"></a>確定已啟用自動更新
-
-首先，請檢查是否已啟用：
+確定已啟用自動更新。 首先，請檢查是否已啟用：
 
 ```bash
 cat /etc/waagent.conf
@@ -79,15 +75,13 @@ AutoUpdate.Enabled=y
 sudo sed -i 's/# AutoUpdate.Enabled=n/AutoUpdate.Enabled=y/g' /etc/waagent.conf
 ```
 
-### <a name="restart-the-waagent-service"></a>重新啟動 waagent 服務
-
-#### <a name="restart-agent-for-1404"></a>重新啟動 14.04 的代理程式
+重新開機14.04 的 waagengt 服務
 
 ```bash
 initctl restart walinuxagent
 ```
 
-#### <a name="restart-agent-for-1604--1704"></a>重新啟動 16.04 / 17.04 的代理程式
+重新開機 16.04/17.04 的 waagent 服務
 
 ```bash
 systemctl restart walinuxagent.service
@@ -97,25 +91,25 @@ systemctl restart walinuxagent.service
 
 ### <a name="rhelcentos-6"></a>RHEL/CentOS 6
 
-#### <a name="check-your-current-package-version"></a>檢查目前的封裝版本
+檢查目前的封裝版本
 
 ```bash
 sudo yum list WALinuxAgent
 ```
 
-#### <a name="check-available-updates"></a>檢查可用的更新
+檢查可用的更新
 
 ```bash
 sudo yum check-update WALinuxAgent
 ```
 
-#### <a name="install-the-latest-package-version"></a>安裝最新版本的封裝
+安裝最新版本的封裝
 
 ```bash
 sudo yum install WALinuxAgent
 ```
 
-#### <a name="ensure-auto-update-is-enabled"></a>確定已啟用自動更新 
+確定已啟用自動更新 
 
 首先，請檢查是否已啟用：
 
@@ -136,35 +130,33 @@ AutoUpdate.Enabled=y
 sudo sed -i 's/\# AutoUpdate.Enabled=y/AutoUpdate.Enabled=y/g' /etc/waagent.conf
 ```
 
-### <a name="restart-the-waagent-service"></a>重新啟動 waagent 服務
+重新啟動 waagent 服務
 
 ```
 sudo service waagent restart
 ```
 
-### <a name="rhelcentos-7"></a>RHEL/CentOS 7
+## <a name="rhelcentos-7"></a>RHEL/CentOS 7
 
-#### <a name="check-your-current-package-version"></a>檢查目前的封裝版本
+檢查目前的封裝版本
 
 ```bash
 sudo yum list WALinuxAgent
 ```
 
-#### <a name="check-available-updates"></a>檢查可用的更新
+檢查可用的更新
 
 ```bash
 sudo yum check-update WALinuxAgent
 ```
 
-#### <a name="install-the-latest-package-version"></a>安裝最新版本的封裝
+安裝最新版本的封裝
 
 ```bash
 sudo yum install WALinuxAgent  
 ```
 
-#### <a name="ensure-auto-update-is-enabled"></a>確定已啟用自動更新 
-
-首先，請檢查是否已啟用：
+確定已啟用自動更新。 首先，請檢查是否已啟用：
 
 ```bash
 cat /etc/waagent.conf
@@ -183,7 +175,7 @@ AutoUpdate.Enabled=y
 sudo sed -i 's/# AutoUpdate.Enabled=n/AutoUpdate.Enabled=y/g' /etc/waagent.conf
 ```
 
-### <a name="restart-the-waagent-service"></a>重新啟動 waagent 服務
+重新啟動 waagent 服務
 
 ```bash
 sudo systemctl restart waagent.service
@@ -193,23 +185,21 @@ sudo systemctl restart waagent.service
 
 ### <a name="suse-sles-11-sp4"></a>SUSE SLES 11 SP4
 
-#### <a name="check-your-current-package-version"></a>檢查目前的封裝版本
+檢查目前的封裝版本
 
 ```bash
 zypper info python-azure-agent
 ```
 
-#### <a name="check-available-updates"></a>檢查可用的更新
+檢查可用的更新。 上述的輸出結果會顯示封裝是否為最新的狀態。
 
-上述的輸出結果會顯示封裝是否為最新的狀態。
-
-#### <a name="install-the-latest-package-version"></a>安裝最新版本的封裝
+安裝最新版本的封裝
 
 ```bash
 sudo zypper install python-azure-agent
 ```
 
-#### <a name="ensure-auto-update-is-enabled"></a>確定已啟用自動更新 
+確定已啟用自動更新 
 
 首先，請檢查是否已啟用：
 
@@ -230,7 +220,7 @@ AutoUpdate.Enabled=y
 sudo sed -i 's/# AutoUpdate.Enabled=n/AutoUpdate.Enabled=y/g' /etc/waagent.conf
 ```
 
-### <a name="restart-the-waagent-service"></a>重新啟動 waagent 服務
+重新啟動 waagent 服務
 
 ```bash
 sudo /etc/init.d/waagent restart
@@ -238,23 +228,23 @@ sudo /etc/init.d/waagent restart
 
 ### <a name="suse-sles-12-sp2"></a>SUSE SLES 12 SP2
 
-#### <a name="check-your-current-package-version"></a>檢查目前的封裝版本
+檢查目前的封裝版本
 
 ```bash
 zypper info python-azure-agent
 ```
 
-#### <a name="check-available-updates"></a>檢查可用的更新
+檢查可用的更新
 
 在上述的輸出結果中，會顯示封裝是否為最新的狀態。
 
-#### <a name="install-the-latest-package-version"></a>安裝最新版本的封裝
+安裝最新版本的封裝
 
 ```bash
 sudo zypper install python-azure-agent
 ```
 
-#### <a name="ensure-auto-update-is-enabled"></a>確定已啟用自動更新 
+確定已啟用自動更新 
 
 首先，請檢查是否已啟用：
 
@@ -275,7 +265,7 @@ AutoUpdate.Enabled=y
 sudo sed -i 's/# AutoUpdate.Enabled=n/AutoUpdate.Enabled=y/g' /etc/waagent.conf
 ```
 
-### <a name="restart-the-waagent-service"></a>重新啟動 waagent 服務
+重新啟動 waagent 服務
 
 ```bash
 sudo systemctl restart waagent.service
@@ -285,51 +275,47 @@ sudo systemctl restart waagent.service
 
 ### <a name="debian-7-jesse-debian-7-stretch"></a>Debian 7 "Jesse"/Debian 7 "Stretch"
 
-#### <a name="check-your-current-package-version"></a>檢查目前的封裝版本
+檢查目前的封裝版本
 
 ```bash
 dpkg -l | grep waagent
 ```
 
-#### <a name="update-package-cache"></a>更新封裝快取
+更新封裝快取
 
 ```bash
 sudo apt-get -qq update
 ```
 
-#### <a name="install-the-latest-package-version"></a>安裝最新版本的封裝
+安裝最新版本的封裝
 
 ```bash
 sudo apt-get install waagent
 ```
 
-#### <a name="enable-agent-auto-update"></a>啟用代理程式自動更新
-這一版本的 Debian 沒有高於或等於 2.0.16 的版本，因此無法使用自動更新。 上述命令的輸出結果會顯示封裝是否為最新的狀態。
-
-
+啟用代理程式自動更新此版本的 Debian 沒有 >= 2.0.16 的版本，因此無法使用自動更新。 上述命令的輸出結果會顯示封裝是否為最新的狀態。
 
 ### <a name="debian-8-jessie--debian-9-stretch"></a>Debian 8 “Jessie” / Debian 9 “Stretch”
 
-#### <a name="check-your-current-package-version"></a>檢查目前的封裝版本
+檢查目前的封裝版本
 
 ```bash
 apt list --installed | grep waagent
 ```
 
-#### <a name="update-package-cache"></a>更新封裝快取
+更新封裝快取
 
 ```bash
 sudo apt-get -qq update
 ```
 
-#### <a name="install-the-latest-package-version"></a>安裝最新版本的封裝
+安裝最新版本的封裝
 
 ```bash
 sudo apt-get install waagent
 ```
 
-#### <a name="ensure-auto-update-is-enabled"></a>確定已啟用自動更新
-首先，請檢查是否已啟用：
+確定已先啟用自動更新，請檢查是否已啟用：
 
 ```bash
 cat /etc/waagent.conf
@@ -397,10 +383,10 @@ sudo yum update WALinuxAgent
 
 在命令列輸入 `sudo yum install wget` 來安裝 wget (有一些發行版本預設為不安裝，例如 Red Hat、CentOS、Oracle Linux 6.4 和 6.5 版)。
 
-### <a name="1-download-the-latest-version"></a>1. 下載最新版本
+### <a name="1-download-the-latest-version"></a>1.下載最新版本
 在網頁中開啟 [Github 中的 Azure Linux 代理程式版本](https://github.com/Azure/WALinuxAgent/releases) ，然後查明最新的版本號碼。 (您可以輸入 `waagent --version`，即可找到目前的版本 )。
 
-#### <a name="for-version-22x-or-later-type"></a>針對 2.2.x 版本或較新版本，請輸入：
+針對 2.2.x 版本或較新版本，請輸入：
 ```bash
 wget https://github.com/Azure/WALinuxAgent/archive/v2.2.x.zip
 unzip v2.2.x.zip
@@ -417,16 +403,13 @@ cd WALinuxAgent-2.2.14
 
 ### <a name="2-install-the-azure-linux-agent"></a>2. 安裝 Azure Linux 代理程式
 
-#### <a name="for-version-22x-use"></a>針對 2.2.x 版本，請使用：
-您可能需要先安裝套件 `setuptools` ，請參閱 [這裡](https://pypi.python.org/pypi/setuptools)。 然後執行：
+若是 2.2. x 版，請使用：您可能需要先安裝套件， `setuptools` 請參閱 [這裡](https://pypi.python.org/pypi/setuptools)。 然後執行：
 
 ```bash
 sudo python setup.py install
 ```
 
-#### <a name="ensure-auto-update-is-enabled"></a>確定已啟用自動更新
-
-首先，請檢查是否已啟用：
+確定已啟用自動更新。 首先，請檢查是否已啟用：
 
 ```bash
 cat /etc/waagent.conf

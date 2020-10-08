@@ -3,12 +3,12 @@ title: 範本函式 - 資源
 description: 描述 Azure Resource Manager 範本中用來擷取資源相關值的函式。
 ms.topic: conceptual
 ms.date: 09/03/2020
-ms.openlocfilehash: 4f788af065db5ef5f23f9a8e96c2d45405959614
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: dd040715cc8fb1339c6054c53007dbcd08e2cbdb
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91369190"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91816802"
 ---
 # <a name="resource-functions-for-arm-templates"></a>ARM 範本的資源函式
 
@@ -144,7 +144,6 @@ Resource Manager 提供下列函式，以在您的 Azure Resource Manager (ARM) 
 | ApiManagement/service/identityProviders | [listSecrets](/rest/api/apimanagement/2019-12-01/identityprovider/listsecrets) |
 | ApiManagement/service/namedValues | [listValue](/rest/api/apimanagement/2019-12-01/namedvalue/listvalue) |
 | ApiManagement/service/openidConnectProviders | [listSecrets](/rest/api/apimanagement/2019-12-01/openidconnectprovider/listsecrets) |
-| Microsoft.AppConfiguration | [ListKeyValue](/rest/api/appconfiguration/configurationstores/listkeyvalue) |
 | Microsoft.AppConfiguration/configurationStores | [ListKeys](/rest/api/appconfiguration/configurationstores/listkeys) |
 | Microsoft.AppPlatform/Spring | [listTestKeys](/rest/api/azurespringclould/services/listtestkeys) |
 | Microsoft.Automation/automationAccounts | [listKeys](/rest/api/automation/keys/listbyautomationaccount) |
@@ -337,8 +336,6 @@ Resource Manager 提供下列函式，以在您的 Azure Resource Manager (ARM) 
 "sasToken": "[listAccountSas(parameters('storagename'), '2018-02-01', parameters('accountSasProperties')).accountSasToken]"
 ```
 
-如需 listKeyValue 範例，請參閱[快速入門：使用應用程式組態和 Resource Manager 範本進行自動化 VM 部署](../../azure-app-configuration/quickstart-resource-manager.md#deploy-vm-using-stored-key-values)。
-
 ## <a name="pickzones"></a>pickZones
 
 `pickZones(providerNamespace, resourceType, location, [numberOfZones], [offset])`
@@ -352,7 +349,7 @@ Resource Manager 提供下列函式，以在您的 Azure Resource Manager (ARM) 
 | providerNamespace | 是 | 字串 | 要檢查區域支援之資源類型的資源提供者命名空間。 |
 | resourceType | 是 | 字串 | 要檢查是否有區域支援的資源類型。 |
 | location | 是 | 字串 | 要檢查區域支援的區域。 |
-| numberOfZones | 否 | integer | 要傳回的邏輯區域數目。 預設值是 1。 此數位必須是介於1到3之間的正整數。  單一分區資源使用1。 若為多分區資源，此值必須小於或等於支援的區域數目。 |
+| numberOfZones | 否 | integer | 要傳回的邏輯區域數目。 預設值為 1。 此數位必須是介於1到3之間的正整數。  單一分區資源使用1。 若為多分區資源，此值必須小於或等於支援的區域數目。 |
 | Offset | 否 | integer | 從起始邏輯區域算起的位移。 如果 offset 加 numberOfZones 超過支援的區域數目，函數會傳回錯誤。 |
 
 ### <a name="return-value"></a>傳回值

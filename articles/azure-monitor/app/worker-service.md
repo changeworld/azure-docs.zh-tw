@@ -4,16 +4,16 @@ description: 使用 Azure 監視器 Application Insights 監視 .NET Core/.NET F
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 05/11/2020
-ms.openlocfilehash: 12be39e36c003531b815e137cbd1d360ca7f0fd6
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 643edf81d6a98c8f423267b657feb9dfb6da1070
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91760473"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91816392"
 ---
 # <a name="application-insights-for-worker-service-applications-non-http-applications"></a>背景工作服務應用程式的 Application Insights (非 HTTP 應用程式) 
 
-Application Insights 正在發行稱為的新 SDK， `Microsoft.ApplicationInsights.WorkerService` 它最適合用於非 HTTP 工作負載，例如訊息、背景工作、主控台應用程式等。這些類型的應用程式不會有傳入 HTTP 要求的概念，例如傳統的 ASP.NET/ASP.NET Core Web 應用程式，因此不支援針對 [ASP.NET](asp-net.md) 或 [ASP.NET Core](asp-net-core.md) 應用程式使用 Application Insights 套件。
+[適用于背景工作服務的 APPLICATION INSIGHTS sdk](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) 是新的 sdk，最適合用於非 HTTP 工作負載，例如訊息、背景工作、主控台應用程式等。這些類型的應用程式不會有傳入 HTTP 要求的概念，例如傳統的 ASP.NET/ASP.NET Core Web 應用程式，因此不支援針對 [ASP.NET](asp-net.md) 或 [ASP.NET Core](asp-net-core.md) 應用程式使用 Application Insights 套件。
 
 新的 SDK 不會自行執行任何遙測收集。 相反地，它會引進其他知名的 Application Insights 自動收集器，例如 [microsoft.applicationinsights.dependencycollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector/)、 [PerfCounterCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector/)、 [ApplicationInsightsLoggingProvider](https://www.nuget.org/packages/Microsoft.Extensions.Logging.ApplicationInsights) 等。此 SDK 會公開的擴充方法， `IServiceCollection` 以啟用和設定遙測收集。
 
@@ -138,7 +138,7 @@ Application Insights 正在發行稱為的新 SDK， `Microsoft.ApplicationInsig
 
 完整範例可在[這裡](https://github.com/MohanGsk/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/BackgroundTasksWithHostedService)共用
 
-1. 將 ApplicationInsights. WorkerService (https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) 套件安裝至應用程式。
+1. 將 [ApplicationInsights. WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) 套件安裝到應用程式。
 2. 新增 `services.AddApplicationInsightsTelemetryWorkerService();` 至 `ConfigureServices()` 方法，如下列範例所示：
 
 ```csharp
@@ -225,7 +225,7 @@ Application Insights 正在發行稱為的新 SDK， `Microsoft.ApplicationInsig
 
 完整範例可在[這裡](https://github.com/MohanGsk/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/ConsoleAppWithApplicationInsights)共用
 
-1. 將 ApplicationInsights. WorkerService (https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) 套件安裝至應用程式。
+1. 將 [ApplicationInsights. WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) 套件安裝到應用程式。
 
 2. 如下列範例所示修改 Program.cs。
 
@@ -293,7 +293,7 @@ Application Insights 正在發行稱為的新 SDK， `Microsoft.ApplicationInsig
 
 ## <a name="run-your-application"></a>執行您的應用程式
 
-執行您的應用程式。 上述所有範例中的範例背景工作會每秒進行 HTTP 呼叫以 bing.com，同時也會使用 ILogger 發出一些記錄。 這些行會包裝在 `StartOperation` 的呼叫中 `TelemetryClient` ，用來建立此範例中 `RequestTelemetry` 名為 "operation" ) 的作業 (。 Application Insights 預設會將這些 ILogger 記錄 (警告或更高版本收集) 和相依性，而且會與 `RequestTelemetry` 具有父子式關聯性的進行相互關聯。 相互關聯也可以跨進程/網路界限運作。 例如，如果呼叫另一個受監視的元件，則它也會與此父代相關聯。
+執行您的應用程式。 上述所有範例中的範例背景工作會每秒進行 HTTP 呼叫以 bing.com，同時也會使用發出一些記錄 `ILogger` 。 這些行會包裝在 `StartOperation` 的呼叫中 `TelemetryClient` ，用來建立此範例中 `RequestTelemetry` 名為 "operation" ) 的作業 (。 Application Insights 預設會將這些 ILogger 記錄 (警告或更高版本收集) 和相依性，而且會與 `RequestTelemetry` 具有父子式關聯性的進行相互關聯。 相互關聯也可以跨進程/網路界限運作。 例如，如果呼叫另一個受監視的元件，則它也會與此父代相關聯。
 
 這項自訂作業 `RequestTelemetry` 可視為一般 Web 應用程式中的連入 web 要求。 雖然不需要使用作業，但它最適合使用 Application Insights 的相互 [關聯資料模型](./correlation.md) （作為父作業 `RequestTelemetry` ），而在背景工作反復專案內產生的每個遙測都會被視為邏輯上屬於相同的作業。 此方法也可確保產生 (自動和手動) 的所有遙測都會相同 `operation_id` 。 當取樣是根據時 `operation_id` ，取樣演算法會從單一反復專案中保留或卸載所有遙測。
 
@@ -505,7 +505,7 @@ Visual Studio IDE 上線目前僅支援 ASP.NET/ASP.NET Core 應用程式。 當
 
 ### <a name="can-i-enable-application-insights-monitoring-by-using-tools-like-status-monitor"></a>我可以使用狀態監視器之類的工具來啟用 Application Insights 監視嗎？
 
-不正確。 [狀態監視器](./monitor-performance-live-website-now.md) 和 [狀態監視器 v2](./status-monitor-v2-overview.md) 目前只支援 ASP.NET 4.x。
+否。 [狀態監視器](./monitor-performance-live-website-now.md) 和 [狀態監視器 v2](./status-monitor-v2-overview.md) 目前只支援 ASP.NET 4.x。
 
 ### <a name="if-i-run-my-application-in-linux-are-all-features-supported"></a>如果我在 Linux 中執行我的應用程式，是否支援所有功能？
 
@@ -542,7 +542,7 @@ using Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel;
 
 [讀取和參與程式碼](https://github.com/Microsoft/ApplicationInsights-aspnetcore#recent-updates)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * [使用 API](./api-custom-events-metrics.md) 來傳送您自己的事件和計量，以深入瞭解您的應用程式效能和使用量。
 * [追蹤不會自動追蹤的其他](./auto-collect-dependencies.md)相依性。

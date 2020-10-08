@@ -3,12 +3,12 @@ title: 原則範例索引
 description: Azure 原則內建的範例索引。 分類標記、法規合規性、Key Vault、Kubernetes、來賓設定等。
 ms.date: 07/20/2020
 ms.topic: sample
-ms.openlocfilehash: b4f76c42eb23ce368875dfb91f2f7b9e7ee1bd50
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 9fec7c7b0db554d424f8faee7e4e10e6121f1caa
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89481557"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91812517"
 ---
 # <a name="azure-policy-samples"></a>Azure 原則範例
 
@@ -27,7 +27,7 @@ ms.locfileid: "89481557"
 - [欄位](./pattern-fields.md)
 - [參數](./pattern-parameters.md)
 - [效果詳細資料](./pattern-effect-details.md)
-- [使用標籤](./pattern-effect-details.md)
+- [使用標籤](./pattern-tags.md)
 - [值運算子](./pattern-value-operator.md)
 - [Count 運算子](./pattern-count-operator.md)
 - [將計畫中的原則定義進行分組](./pattern-group-with-initiative.md)

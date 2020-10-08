@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: pepogors
 ms.custom: sfrev
-ms.openlocfilehash: 28a01bbc54f752ffc1f25b57dcf2eca566aa635a
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: d2b303c22eea9fb46a68bb3c8e36991d47d61554
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88718096"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91817741"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Service Fabric 叢集容量規劃考量
 
@@ -34,7 +34,7 @@ ms.locfileid: "88718096"
 
 **非主要節點類型** 可以用來定義應用程式角色 (例如 *前端* 和 *後端* 服務) ，以及實際隔離叢集中的服務。 Service Fabric 叢集可以有零或多個非主要節點類型。
 
-主要節點類型是使用 `isPrimary` Azure Resource Manager 部署範本中節點類型定義下的屬性來設定。 如需節點型別屬性的完整清單，請參閱 [NodeTypeDescription 物件](/azure/templates/microsoft.servicefabric/clusters#nodetypedescription-object) 。 如需使用方式，請在[Service Fabric 叢集範例](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/)中開啟檔案的任何*AzureDeploy.js* ，並*在頁面*搜尋中尋找 `nodetTypes` 物件。
+主要節點類型是使用 `isPrimary` Azure Resource Manager 部署範本中節點類型定義下的屬性來設定。 如需節點型別屬性的完整清單，請參閱 [NodeTypeDescription 物件](/azure/templates/microsoft.servicefabric/clusters#nodetypedescription-object) 。 如需使用方式，請在[Service Fabric 叢集範例](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/)中開啟檔案的任何*AzureDeploy.js* ，並*在頁面*搜尋中尋找 `nodeTypes` 物件。
 
 ### <a name="node-type-planning-considerations"></a>節點類型規劃考慮
 
@@ -72,7 +72,7 @@ ms.locfileid: "88718096"
 | 耐久性層級  | 所需的 VM 數目下限 | 支援的 VM 大小                                                                  | 您對虛擬機器擴展集所做的更新                               | Azure 所起始的更新和維護                                                              | 
 | ---------------- |  ----------------------------  | ---------------------------------------------------------------------------------- | ----------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
 | 金卡             | 5                              | 專用於單一客戶 (的完整節點大小，例如 L32s、GS5、G5、DS15_v2 D15_v2)  | 可以延遲到 Service Fabric 叢集核准為止 | 每個升級網域可以暫停2小時，以允許更多時間讓複本從先前的失敗中復原 |
-| 銀卡           | 5                              | 具有至少 50 GB 本機 SSD 的單一核心或更高版本 Vm                      | 可以延遲到 Service Fabric 叢集核准為止 | 無法延遲很長的期間                                                    |
+| 銀色           | 5                              | 具有至少 50 GB 本機 SSD 的單一核心或更高版本 Vm                      | 可以延遲到 Service Fabric 叢集核准為止 | 無法延遲很長的期間                                                    |
 | 青銅卡          | 1                              | 至少具有 50 GB 本機 SSD 的 Vm                                              | Service Fabric 叢集不會延遲           | 無法延遲很長的期間                                                    |
 
 > [!WARNING]
@@ -143,7 +143,7 @@ ms.locfileid: "88718096"
 | --- | --- |
 | 1 | *請勿指定 `reliabilityLevel` 參數：系統會計算參數。* |
 | 3 | 青銅卡 |
-| 5 或 6| 銀卡 |
+| 5 或 6| 銀色 |
 | 7 或 8 | 金卡 |
 | 9 以上 | Platinum |
 
@@ -182,7 +182,7 @@ Azure 中的**測試工作負載**最少可執行一或三個主要節點。 若
 
 針對無狀態的生產工作負載，支援的最小非主要節點類型大小為三個維護仲裁，但建議使用節點類型大小5。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 在設定叢集之前，請先檢查叢集 `Not Allowed` [升級原則](service-fabric-cluster-fabric-settings.md) ，以便在稍後因為無法變更系統組態設定而重新建立叢集。
 

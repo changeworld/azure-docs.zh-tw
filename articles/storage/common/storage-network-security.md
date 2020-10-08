@@ -9,12 +9,12 @@ ms.date: 10/05/2020
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: b936460d98ce772e49f281a06f95da09fa34ccfb
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 49285727e1c2e845ea63905d20b3343576b01612
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91758790"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91816751"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>設定 Azure 儲存體防火牆和虛擬網路
 
@@ -218,7 +218,7 @@ Azure 儲存體提供分層的安全性模型。 此模型可讓您根據所使�
 1. 為虛擬網路和子網路新增網路規則。
 
     ```azurecli
-    $subnetid=(az network vnet subnet show --resource-group "myresourcegroup" --vnet-name "myvnet" --name "mysubnet" --query id --output tsv)
+    subnetid=$(az network vnet subnet show --resource-group "myresourcegroup" --vnet-name "myvnet" --name "mysubnet" --query id --output tsv)
     az storage account network-rule add --resource-group "myresourcegroup" --account-name "mystorageaccount" --subnet $subnetid
     ```
 
@@ -230,7 +230,7 @@ Azure 儲存體提供分層的安全性模型。 此模型可讓您根據所使�
 1. 移除虛擬網路和子網路的網路規則。
 
     ```azurecli
-    $subnetid=(az network vnet subnet show --resource-group "myresourcegroup" --vnet-name "myvnet" --name "mysubnet" --query id --output tsv)
+    subnetid=$(az network vnet subnet show --resource-group "myresourcegroup" --vnet-name "myvnet" --name "mysubnet" --query id --output tsv)
     az storage account network-rule remove --resource-group "myresourcegroup" --account-name "mystorageaccount" --subnet $subnetid
     ```
 

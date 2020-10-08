@@ -9,12 +9,12 @@ ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: hux
 ms.custom: references_regions
-ms.openlocfilehash: 3b6162552e43c9f475bef2ca3097da22ae198011
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: db23d3b5c532a1539936b51222345c98679c554c
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91713687"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91817533"
 ---
 # <a name="manage-and-find-azure-blob-data-with-blob-index-preview"></a>使用 Blob 索引 (預覽版來管理和尋找 Azure Blob 資料) 
 
@@ -72,8 +72,11 @@ Blob 索引標記是索引鍵/值屬性，可套用至儲存體帳戶內的新�
 - 標記索引鍵和值會區分大小寫
 - 標記索引鍵和值只支援字串資料類型;任何數位、日期、時間或特殊字元都會儲存為字串
 - 標記索引鍵和值必須遵守下列命名規則：
-  - 字母數位字元： a-z、a-z、0-9
-  - 特殊字元：空格、加號、減號、句號、冒號、等於、底線、正斜線
+  - 英數位元：
+    - **a** 到 **z** (小寫字母)
+    - **A** 到 **Z** (大寫字母)
+    - **0** 到 **9** (數字)
+  - 有效的特殊字元：空格、加號、減號、句號、冒號、等於、底線、正斜線 (` +-.:=_/`) 
 
 ## <a name="getting-and-listing-blob-index-tags"></a>取得和列出 blob 索引標記
 
@@ -308,7 +311,7 @@ Blob 索引標記只支援字串資料類型，而且查詢會以字典順序來
 ### <a name="are-blob-index-tags-and-azure-resource-manager-tags-related"></a>Blob 索引標記和 Azure Resource Manager 標記是否相關？
 否，Resource Manager 標記可協助組織控制平面資源，例如訂用帳戶、資源群組和儲存體帳戶。 Blob 索引標記可提供資料平面資源的物件管理和探索，例如儲存體帳戶內的 blob。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 如需如何利用 blob 索引的範例，請參閱 [利用 blob 索引來管理和尋找資料](storage-blob-index-how-to.md)。
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/04/2020
 ms.author: deanwe
 ms.custom: references_regions
-ms.openlocfilehash: 54a81ac36fb0b99f6931b372543dc3e4bca6a12c
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 338fe463cec4c44b1ddf019d9ecb435736e46826
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91447924"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91816820"
 ---
 # <a name="azure-automanage-for-virtual-machines"></a>適用于虛擬機器的 Azure Automanage
 
@@ -48,7 +48,7 @@ ms.locfileid: "91447924"
 - Vm 不得連結至不同訂用帳戶中的 log analytics 工作區
 - Automanage 目前不支援沙箱訂閱
 
-您必須具有 **參與者** 角色，才能使用現有的 Automanage 帳戶啟用 Automanage。 如果您要使用新的 Automanage 帳戶啟用 Automanage，您需要下列許可權： **擁有** 者角色或 **參與者** ，以及 **使用者存取系統管理員** 角色。
+您必須具有**參與者**角色，才能使用現有的 Automanage 帳戶來啟用 Automanage。 如果您要使用新的 Automanage 帳戶來啟用 Automanage，則需要下列權限：**擁有者**角色或**參與者**以及**使用者存取系統管理員**角色。
 
 也請務必注意，Automanage 僅支援位於下欄區域的 Windows Vm：西歐、美國東部、美國西部2、加拿大中部美國中西部。
 
@@ -105,7 +105,7 @@ Automanage 帳戶是安全性內容或執行自動化作業所用的身分識別
 在 Azure 入口網站體驗中，當您在 Vm 上啟用 Automanage 時，[ **啟用 AZURE VM 最佳作法** ] 分頁上會有一個 Advanced 下拉式清單，可讓您指派或手動建立 Automanage 帳戶。
 
 > [!NOTE]
-> 您必須具有 **參與者** 角色，才能使用現有的 Automanage 帳戶啟用 Automanage。 如果您要使用新的 Automanage 帳戶啟用 Automanage，您需要下列許可權： **擁有** 者角色或 **參與者** ，以及 **使用者存取系統管理員** 角色。
+> 您必須具有**參與者**角色，才能使用現有的 Automanage 帳戶來啟用 Automanage。 如果您要使用新的 Automanage 帳戶來啟用 Automanage，則需要下列權限：**擁有者**角色或**參與者**以及**使用者存取系統管理員**角色。
 
 
 ## <a name="status-of-vms"></a>Vm 的狀態
@@ -134,18 +134,18 @@ Automanage 帳戶是安全性內容或執行自動化作業所用的身分識別
 
 先仔細閱讀所產生快顯視窗中的訊息，然後同意 [停用]。
 
-```
-Disabling automanagement in a VM results in the following behavior:
+> [!NOTE]
+> 停用 VM 中的 automanagement 會產生下列行為：
+>
+> - VM 的設定及其上線的服務不會變更。
+> - 這些服務所產生的任何費用都會保持計費，並持續產生。
+> - 任何 Automanage 行為都會立即停止。
 
-1.    The configuration of the VM and the services it's onboarded to will not be changed
-2.    Any changes incurred by those services will remain billable and will continue to be incurred
-3.    Any Automanage behaviors will stop immediately
-```
 
 首先，最重要的是，我們不會將虛擬機器從我們上線它並設定的任何服務中關閉。 因此，這些服務所產生的任何費用都會繼續維持計費。 如有必要，您將需要關閉面板。 任何 Automanage 行為都會立即停止。 例如，我們將不再監視 VM 的漂移。
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 在本文中，您已瞭解虛擬機器的 Automanage 提供一種方法，可讓您不需要瞭解、上架及設定最佳作法的 Azure 服務。 此外，如果您從設定設定檔所設定的虛擬機器上線至 Automanage 的機器，我們會自動使其符合規範。
 
