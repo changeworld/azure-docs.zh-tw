@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45263ca0448042aa972ee53093b51dd47bd51190
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: bac3e0dc6c6bcc98bb57989e1335ce6a60872a37
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89049344"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91818341"
 ---
 # <a name="conditional-access-require-mfa-for-administrators"></a>條件式存取：系統管理員需要 MFA
 
@@ -24,11 +24,12 @@ ms.locfileid: "89049344"
 
 Microsoft 建議您至少需要下列角色的 MFA：
 
+* 驗證系統管理員
 * 計費管理員
 * 條件式存取系統管理員
 * Exchange 系統管理員
 * 全域管理員
-* 技術服務人員 (密碼) 系統管理員
+* 服務台管理員
 * 密碼管理員
 * 安全性系統管理員
 * SharePoint 管理員
@@ -72,7 +73,7 @@ Microsoft 建議您至少需要下列角色的 MFA：
    1. 在 [排除] 底下選取 [使用者和群組]，然後選擇組織的緊急存取或急用帳戶。 
    1. 選取 [完成] 。
 1. 在 [雲端應用程式或動作] > [包含] 下，選取 [所有雲端應用程式]，然後選取 [完成]。
-1. 在 [**條件**  >  **用戶端應用程式] (預覽) **的 **[選取用戶端應用程式] 下，選取 [此原則將**套用]， **Done**保留所有選取的預設值並選取
+1. 在 **[條件**  >  **用戶端應用程式**] 底下，切換**設定**為 **[是]** ，然後在 **[選取要套用此原則的用戶端應用程式] 下，選取 [此原則將會**保留**Done**
 1. 在 [存取控制] > [授與] 底下選取 [授與存取權] 和 [需要多重要素驗證]，然後選取 [選取]。
 1. 確認您的設定，並將 [啟用原則] 設定為 [開啟]。
 1. 選取 [建立] 以建立以啟用您的原則。

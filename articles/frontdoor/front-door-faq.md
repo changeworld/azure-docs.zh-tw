@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2020
 ms.author: duau
-ms.openlocfilehash: 0d669d4232adca3348b51c2a48947e0dabf0a472
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 45f9e7a4e508cffd3593cec7bbcea3dd7882a60c
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91324054"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91819037"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door"></a>Azure Front Door 的常見問題
 
@@ -79,7 +79,7 @@ Azure Front Door 是全域散發的多租使用者服務。 因此，Front Door 
 
 ### <a name="is-http-https-redirection-supported"></a>是否支援 HTTP->HTTPS 重新導向？
 
-可以。 事實上，Azure Front Door 支援主機、路徑和查詢字串重新導向，以及 URL 重新導向的一部分。 深入瞭解 [URL](front-door-url-redirect.md)重新導向。 
+是。 事實上，Azure Front Door 支援主機、路徑和查詢字串重新導向，以及 URL 重新導向的一部分。 深入瞭解 [URL](front-door-url-redirect.md)重新導向。 
 
 ### <a name="in-what-order-are-routing-rules-processed"></a>路由規則的處理順序為何？
 
@@ -148,7 +148,7 @@ Front Door 的前端任意傳播 IP 通常不會變更，而且在 Front Door �
 路由或後端集區等的任何更新都是順暢的，將會導致零停機 (如果新的設定正確) 。 憑證更新也是不可部分完成的，而且不會造成任何中斷，除非從「AFD 受控」切換至「使用您自己的憑證」，反之亦然。
 
 
-## <a name="configuration"></a>設定
+## <a name="configuration"></a>組態
 
 ### <a name="can-azure-front-door-load-balance-or-route-traffic-within-a-virtual-network"></a>可以 Azure Front Door 負載平衡或在虛擬網路內路由傳送流量嗎？
 
@@ -248,6 +248,10 @@ Front Door 受控選項會透過 Digicert 布建標準的 TLS/SSL 憑證，並�
 1. **憑證主體名稱不相符**：對於 HTTPS 連線，Front Door 預期您的後端會從主體名稱 (s 的有效 CA 出示憑證，) 符合後端主機名稱。 舉例來說，如果您的後端主機名稱是設定為 `myapp-centralus.contosonews.net` ，而您的後端在 TLS 信號交換期間所呈現的憑證和主體名稱都不相同 `myapp-centralus.contosonews.net` `*myapp-centralus*.contosonews.net` ，Front Door 將拒絕連線並導致錯誤。 
     1. **解決方案**：雖然不建議從合規性的觀點來看，但您可以藉由停用 Front Door 的憑證主體名稱檢查來解決此錯誤。 這會出現在 Azure 入口網站的設定下，以及在 API 中的 BackendPoolsSettings 下。
 2. **來自無效 ca 的後端裝載憑證**：只有來自 [有效 ca](/azure/frontdoor/front-door-troubleshoot-allowed-ca) 的憑證可以在具有 Front Door 的後端使用。 不允許來自內部 Ca 或自我簽署憑證的憑證。
+
+### <a name="can-i-use-clientmutual-authentication-with-azure-front-door"></a>我可以搭配 Azure Front Door 使用用戶端/相互驗證嗎？
+
+否。 雖然 Azure Front Door 支援在 [RFC 5246](https://tools.ietf.org/html/rfc5246)中引入用戶端/相互驗證的 TLS 1.2，但目前 Azure Front Door 不支援用戶端/相互驗證。
 
 ## <a name="diagnostics-and-logging"></a>診斷和記錄
 

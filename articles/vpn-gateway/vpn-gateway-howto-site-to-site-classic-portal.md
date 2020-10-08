@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 02/11/2020
 ms.author: cherylmc
-ms.openlocfilehash: de3ef63600b36e1bcee8a2f5db8a1c1248524173
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 002aa9da465d86392aaaa5d404f67959b341ecf9
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91445921"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91818982"
 ---
 # <a name="create-a-site-to-site-connection-using-the-azure-portal-classic"></a>使用 Azure 入口網站建立站對站連線 (傳統)
 
@@ -104,7 +104,7 @@ DNS 設定不是 S2S 組態的必要部分，但如果您想要名稱解析，�
 
 本機網站通常是指您的內部部署位置。 它包含您要建立連線之 VPN 裝置的 IP 位址，以及將透過 VPN 閘道路由傳送至 VPN 裝置的 IP 位址範圍。
 
-1. 在 VNet 的頁面上，按一下 [ **設定**] 下的 [ **圖表**]。
+1. 在 VNet 的頁面上，按一下 [ **監視**] 底下的 [ **圖表**]。
 1. 在 [ **VPN** 連線] 頁面上，按一下 **您沒有任何現有的 VPN 連線。按一下這裡開始**使用。
 1. 針對 [連線 **類型**]，讓 [ **站對站** ] 保持選取狀態。
 4. 按一下 [本機網路 - 進行必要設定]**** 以開啟 [本機網路]**** 頁面。 進行設定，然後按一下 [確定]**** 以儲存設定。
@@ -215,7 +215,7 @@ DNS 設定不是 S2S 組態的必要部分，但如果您想要名稱解析，�
 
 若需變更閘道 SKU 的步驟，請參閱[調整閘道 SKU 的大小](vpn-gateway-about-SKUS-legacy.md#classicresize)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * 一旦完成您的連接，就可以將虛擬機器加入您的虛擬網路。 如需詳細資訊，請參閱[虛擬機器](https://docs.microsoft.com/azure/)。
 * 如需強制通道的相關資訊，請參閱 [關於強制通道](vpn-gateway-about-forced-tunneling.md)。

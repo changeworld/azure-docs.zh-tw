@@ -7,12 +7,12 @@ ms.service: frontdoor
 ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: duau
-ms.openlocfilehash: 6be33df90ed58dc448009fb0e26ca49c800d1931
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: 44813a7662420ab4dedcd0bf99cc1eec7e9d9d2d
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91766018"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91819086"
 ---
 # <a name="onboard-a-root-or-apex-domain-on-your-front-door"></a>在 Front Door 上將根或 apex 網域上線
 Azure Front Door 使用 CNAME 記錄來驗證網域擁有權，以進行自訂網域的上架。 Front Door 不會公開與您 Front Door 設定檔相關聯的前端 IP 位址。 因此，如果您的目的是要將頂點網域上架到 Azure Front Door，您就無法將其對應至 IP 位址。
@@ -54,7 +54,7 @@ DNS 通訊協定可防止在區域頂點指派 CNAME 記錄。 例如，如果�
 
 1. 選取 [ **儲存** ] 以提交變更。
 
-    :::image type="content" source="./media/front-door-apex-domain/front-door-onboard-apex-domain.png" alt-text="區域頂點的別名記錄":::
+   :::image type="content" source="./media/front-door-apex-domain/front-door-onboard-apex-domain.png" alt-text="區域頂點的別名記錄":::
 
 ## <a name="enable-https-on-your-custom-domain"></a>在您的自訂網域上啟用 HTTPS
 
@@ -62,10 +62,10 @@ DNS 通訊協定可防止在區域頂點指派 CNAME 記錄。 例如，如果�
 
 1. 選取 [*使用我自己的憑證*] 的**憑證管理類型**。
 
-    :::image type="content" source="./media/front-door-apex-domain/front-door-onboard-apex-custom-domain.png" alt-text="區域頂點的別名記錄":::    
+   :::image type="content" source="./media/front-door-apex-domain/front-door-onboard-apex-custom-domain.png" alt-text="區域頂點的別名記錄":::    
 
-    > [!WARNING]
-    > 頂點或根域目前不支援 Front Door 受控憑證管理類型。 針對 Front Door 在頂點或 root 網域上啟用 HTTPS 的唯一可用選項，是使用您自己在 Azure Key Vault 上裝載的自訂 TLS/SSL 憑證。
+   > [!WARNING]
+   > 頂點或根域目前不支援 Front Door 受控憑證管理類型。 針對 Front Door 在頂點或 root 網域上啟用 HTTPS 的唯一可用選項，是使用您自己在 Azure Key Vault 上裝載的自訂 TLS/SSL 憑證。
 
 1. 繼續進行下一個步驟之前，請確定您已設定正確的許可權，讓 Front Door 存取您的金鑰保存庫（如 UI 中所述）。
 

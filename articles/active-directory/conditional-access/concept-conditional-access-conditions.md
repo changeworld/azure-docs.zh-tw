@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0dcbd58c5d8dc12898fe343dbba6c3a6f8cd61b4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 2dddad5692ab2eebb6ef9b427c091be449791d7c
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91258706"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91818355"
 ---
 # <a name="conditional-access-conditions"></a>條件式存取：條件
 
@@ -49,6 +49,9 @@ Azure AD 條件式存取支援下列裝置平臺：
 - macOS
 
 如果您使用 **其他用戶端** 條件來封鎖舊式驗證，您也可以設定裝置平臺條件。
+
+> [!IMPORTANT]
+> Microsoft 建議您針對不支援的裝置平臺有條件式存取原則。 例如，如果您想要封鎖從 Linux 或任何其他不支援的用戶端存取公司資源，您應該使用包含任何裝置的裝置平臺條件來設定原則，並排除受支援的裝置平臺，並將控制組授與封鎖存取。
 
 ## <a name="locations"></a>位置
 
@@ -193,7 +196,7 @@ Azure AD 條件式存取支援下列裝置平臺：
 例如，所有存取*Microsoft Azure 管理*雲端應用程式的*使用者*，包括裝置的**所有裝置狀態**（包括**裝置混合式 Azure AD 未加入裝置**），以及已**標示為符合規範**的裝置，以及*存取控制*，**封鎖**。 
    - 此範例會建立一個原則，只允許從混合式 Azure AD 已加入及/或已標示為符合規範的裝置存取 Microsoft Azure 管理。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - [條件式存取：授與](concept-conditional-access-grant.md)
 

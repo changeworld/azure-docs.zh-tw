@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ae663b2c7a88e116315464c11b8d162135f0aff
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 112c1c6a0fbbd7e0011890d1ce92c6e21e168137
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91450377"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91818009"
 ---
 # <a name="assign-scoped-roles-to-an-administrative-unit"></a>將限域角色指派給管理單位
 
@@ -38,8 +38,10 @@ ms.locfileid: "91450377"
 密碼管理員  |  只能針對指派的管理單位內的非系統管理員和密碼系統管理員重設密碼。
 使用者管理員  |  可以管理使用者和群組的所有層面，包括只在指派的管理單位內為受限的系統管理員重設密碼。
 
-## <a name="security-principals-that-can-be-assigned-to-an-au-scoped-role"></a>可以指派給 AU 範圍角色的安全性主體
-您可以將下列安全性主體指派給 AU 範圍角色：
+## <a name="security-principals-that-can-be-assigned-to-a-scoped-role"></a>可以指派給限域角色的安全性主體
+
+您可以將下列安全性主體指派給具有管理單位範圍的角色：
+
 * 使用者
 * 角色可指派的雲端群組 (預覽) 
 * 服務主體名稱 (SPN)

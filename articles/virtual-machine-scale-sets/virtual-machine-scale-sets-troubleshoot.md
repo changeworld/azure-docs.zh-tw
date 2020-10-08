@@ -9,12 +9,12 @@ ms.subservice: autoscale
 ms.date: 06/25/2020
 ms.reviwer: jushiman
 ms.custom: avverma
-ms.openlocfilehash: b5e786a64d7d9606a3a99a3f1b3f8c67c9869cd1
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 11302c301bee466f678d544d0c4838c39cec9c8e
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87830677"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91818537"
 ---
 # <a name="troubleshooting-autoscale-with-virtual-machine-scale-sets"></a>針對使用虛擬機器擴展集的自動調整進行疑難排解
 **問題** - 您已使用虛擬機器擴展集在 Azure Resource Manager 中建立自動調整基礎結構，例如藉由部署範本，如下所示︰ https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale - 您有已定義的調整規則，並且運作良好，美中不足的是無論您在 VM 上放置多少負載，它都不會自動調整。
@@ -62,7 +62,7 @@ ms.locfileid: "87830677"
     
     如果 Insights 服務無法從 VM 讀取資料，它就會傳送電子郵件給您。 例如，如果 VM 關閉，您會收到電子郵件。 請務必檢查當您建立 Azure 帳戶時指定的電子郵件地址，是否有電子郵件來信。
     
-    您也可以自行查看資料。 使用雲端總管查看 Azure 儲存體帳戶。 例如，使用 [Visual Studio Cloud Explorer](https://visualstudiogallery.msdn.microsoft.com/aaef6e67-4d99-40bc-aacf-662237db85a2)、登入，然後挑選您使用的 Azure 訂用帳戶。 然後，查看您的部署範本中診斷擴充功能定義中參考的診斷儲存體帳戶名稱。
+    您也可以自行查看資料。 使用雲端總管查看 Azure 儲存體帳戶。 例如，使用 [Visual Studio Cloud Explorer](https://visualstudiogallery.msdn.microsoft.com/aaef6e67-4d99-40bc-aacf-662237db85a2)，登入並挑選您要使用的 Azure 訂用帳戶。 然後，查看您的部署範本中診斷擴充功能定義中參考的診斷儲存體帳戶名稱。
     
     ![雲端總管][explorer]
     

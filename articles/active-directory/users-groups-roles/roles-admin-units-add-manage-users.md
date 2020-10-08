@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f3e223dd46806551fbba05127b70a9119a5d9c75
-ms.sourcegitcommit: 487a9f5272300d60df2622c3d13e794d54680f90
+ms.openlocfilehash: 0d29f4ef5806eb8ed9385696dea78f4ae0992b93
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91661137"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91818242"
 ---
 # <a name="add-and-manage-users-in-an-administrative-unit-in-azure-active-directory"></a>在 Azure Active Directory 的管理單位中新增和管理使用者
 
@@ -31,21 +31,30 @@ ms.locfileid: "91661137"
 
 ### <a name="azure-portal"></a>Azure 入口網站
 
-您可以透過兩種方式將使用者指派給管理單位。
+您可以將使用者個別或大量操作指派給系統管理單位。
 
-1. 個別指派
+- 使用者設定檔中的個別指派
 
-    1. 您可以移至入口網站中的 [Azure AD]，並選取 [使用者]，然後選取要指派給管理單位的使用者。 然後，您可以在左面板中選取 [管理單位]。 您可以將使用者指派給一個或多個管理單位，方法是按一下 [指派給管理單位]，然後選取要指派使用者的管理單位。
+   1. 使用具有特殊許可權的角色系統管理員許可權登入 [Azure AD admin center](https://portal.azure.com) 。
+   1. 選取 [ **使用者** ]，然後選取要指派給管理單位的使用者，以開啟使用者的設定檔。
+   1. 選取 [ **管理單位**]。 您可以選取 [ **指派給管理單位** ]，然後選取要指派給使用者的管理單位，將使用者指派給一個或多個管理單位。
 
        ![選取 [新增]，然後輸入管理單位的名稱](./media/roles-admin-units-add-manage-users/assign-users-individually.png)
 
-    1. 您可以移至入口網站中的 [Azure AD]，然後在左窗格中選取 [管理單位]，然後選取要指派使用者的管理單位。 選取 [ **所有使用者** ]，然後選取 [ **新增成員**]。 然後，您可以從右窗格中選取一或多個要指派給管理單位的使用者。
+- 從管理單位進行個別指派
+
+   1. 使用具有特殊許可權的角色系統管理員許可權登入 [Azure AD admin center](https://portal.azure.com) 。
+   1. 選取 [ **管理單位** ]，然後選取要指派使用者的管理單位。
+   1. 選取 [ **所有使用者** ]，然後選取 [ **新增成員** ]，從 [ **新增成員** ] 窗格選取要指派給管理單位的一或多個使用者。
 
         ![選取管理單位，然後選取新增成員](./media/roles-admin-units-add-manage-users/assign-to-admin-unit.png)
 
-1. 大量指派
+- 大量指派
 
-    移至入口網站中的 Azure AD，然後選取 [管理單位]。 選取要新增使用者的管理單位。 按一下 [所有使用者-> 從 .csv 檔案新增成員] 以繼續。 然後您可以下載 CSV 範本，並編輯該檔案。 格式很簡單，需要在每一行新增一個 UPN。 檔案準備就緒後，請將其儲存在適當的位置，然後在步驟3中上傳，以在快照中反白顯示。
+   1. 使用具有特殊許可權的角色系統管理員許可權登入 [Azure AD admin center](https://portal.azure.com) 。
+   1. 選取 [ **管理單位**]。
+   1. 選取要新增使用者的管理單位。
+   1. 開啟 [**所有使用者**  >  **從 .csv 檔案新增成員**]。 然後，您可以將逗點分隔值 (CSV) 範本中下載並編輯檔案。 格式很簡單，需要在每一行新增單一使用者主體名稱。 檔案準備就緒後，請將它儲存在適當的位置，然後將它上傳做為此步驟的一部分。
 
     ![將使用者大量指派給管理單位](./media/roles-admin-units-add-manage-users/bulk-assign-to-admin-unit.png)
 

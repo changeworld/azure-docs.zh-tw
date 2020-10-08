@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/25/2018
 ms.author: mimckitt
-ms.openlocfilehash: 367116948034fd4bedbeec15e655a09b179865d6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2dbfc2173f6631aff2d65c770a5204bbd72d3ed1
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87085719"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91818806"
 ---
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>搭配 Linux 虛擬機器使用 Azure 自訂指令碼擴充功能第 1 版
 自訂指令碼擴充功能第 2 版會在 Azure 虛擬機器上下載並執行指令碼。 此擴充功能適用於部署後設定、軟體安裝或其他任何設定/管理工作。 您可以從 Azure 儲存體或其他可存取的網際網路位置下載指令碼，或是將指令碼提供給擴充功能執行階段。 
@@ -38,14 +38,14 @@ Linux 自訂指令碼擴充功能有兩個：
 
 ### <a name="operating-system"></a>作業系統
 
-適用于 Linux 的自訂腳本擴充功能將在擴充功能支援的擴充功能 OS 上執行。如需詳細資訊，請參閱這[篇文章](../linux/endorsed-distros.md)。
+適用于 Linux 的自訂腳本擴充功能將在擴充功能支援的擴充功能 OS 上執行。如需詳細資訊，請參閱這 [篇文章](../linux/endorsed-distros.md)。
 
 ### <a name="script-location"></a>指令碼位置
 
 您可以利用擴充功能來使用 Azure Blob 儲存體認證，以存取 Azure Blob 儲存體。 或者，指令碼可以位於任何位置，前提是 VM 可以路由傳送至該端點，例如 GitHub、內部檔案伺服器等。
 
 ### <a name="internet-connectivity"></a>網際網路連線
-如果您需要在外部下載指令碼 (例如 GitHub 或 Azure 儲存體)，則必須開放額外的防火牆/網路安全性群組連接埠。 例如，如果您的腳本位於 Azure 儲存體中，您可以使用 Azure NSG 服務標記來允許存取[儲存體](../../virtual-network/security-overview.md#service-tags)。
+如果您需要在外部下載指令碼 (例如 GitHub 或 Azure 儲存體)，則必須開放額外的防火牆/網路安全性群組連接埠。 例如，如果您的腳本位於 Azure 儲存體中，則您可以使用 Azure NSG 服務標籤來允許存取 [儲存體](../../virtual-network/security-overview.md#service-tags)。
 
 如果您的指令碼是在本機伺服器上，則仍然可能需要開放額外的防火牆/網路安全性群組連接埠。
 
@@ -55,14 +55,15 @@ Linux 自訂指令碼擴充功能有兩個：
 * 請確定在指令碼執行時，不需要使用者輸入。
 * 指令碼可執行的時間為 90 分鐘。若超過這個時間，將會導致擴充功能佈建失敗。
 * 請不要在指令碼內放置重新開機指令，這會造成正在安裝的其他擴充功能發生問題。也不要放置後續重新開機指令，因為擴充功能在重新啟動後不會繼續執行。 
-* 如果您的腳本將會造成重新開機，則請安裝應用程式並執行腳本等。您應該使用 Cron 作業，或使用 DSC、Chef、Puppet 擴充功能之類的工具來排程重新開機。
+* 建議您不要執行會導致 VM 代理程式停止或更新的腳本。 這可能會讓擴充處於轉換狀態，並導致超時。
+* 如果您的腳本會造成重新開機，則安裝應用程式並執行腳本等。您應該使用 Cron 作業或使用 DSC 或 Chef、Puppet 擴充功能之類的工具，來排程重新開機。
 * 擴充功能只會執行指令碼一次。如果您想要在每次開機時執行指令碼，則可以使用 [cloud-init image](../linux/using-cloud-init.md)，並使用 [Scripts Per Boot](https://cloudinit.readthedocs.io/en/latest/topics/modules.html#scripts-per-boot) 模組。 或者，您可以使用腳本來建立 SystemD 服務單位。
-* 您只能將一個版本的擴充功能套用至 VM。 若要執行第二個自訂腳本，您必須移除自訂腳本延伸模組，並使用更新後的腳本重新套用它。 
+* 您只能將一個延伸模組版本套用至 VM。 若要執行第二個自訂腳本，您需要移除自訂腳本擴充功能，並使用更新的腳本再次重新套用。 
 * 如果您想要排程指令碼的執行時間，則應該使用擴充功能來建立 Cron 作業。 
 * 當指令碼正在執行時，只能從 Azure 入口網站或 CLI 看到「正在轉換」擴充功能狀態。 如果您需要執行中指令碼更頻繁的狀態更新，便必須建立自己的解決方案。
-* 自訂腳本擴充功能原本就不支援 proxy 伺服器，不過您可以使用檔案傳輸工具，在您的腳本中支援 proxy 伺服器，例如*捲曲*。 
+* 自訂腳本擴充功能原本就不支援 proxy 伺服器，不過您可以使用支援腳本內 proxy 伺服器的檔案傳輸工具，例如 *捲曲*。 
 * 請留意指令碼或命令所依賴的非預設目錄位置是否具備處理此情形的邏輯。
-*  將自訂腳本部署至生產 VMSS 實例時，建議透過 json 範本進行部署，並儲存您的腳本儲存體帳戶，您可以在其中控制 SAS 權杖。 
+*  將自訂腳本部署到生產 VMSS 實例時，建議您透過 json 範本進行部署，並儲存您可以控制 SAS 權杖的腳本儲存體帳戶。 
 
 
 ## <a name="extension-schema"></a>擴充功能結構描述
@@ -118,7 +119,7 @@ Linux 自訂指令碼擴充功能有兩個：
 | type | CustomScript | 字串 |
 | typeHandlerVersion | 2.1 | int |
 | fileUris (例如) | `https://github.com/MyProject/Archive/MyPythonScript.py` | array |
-| commandToExecute (例如) | python MyPythonScript.py\<my-param1> | 字串 |
+| commandToExecute (例如) | python MyPythonScript.py \<my-param1> | 字串 |
 | 指令碼 | IyEvYmluL3NoCmVjaG8gIlVwZGF0aW5nIHBhY2thZ2VzIC4uLiIKYXB0IHVwZGF0ZQphcHQgdXBncmFkZSAteQo= | 字串 |
 | skipDos2Unix (範例) | false | boolean |
 | timestamp (範例) | 123456789 | 32 位元整數 |
@@ -127,7 +128,7 @@ Linux 自訂指令碼擴充功能有兩個：
 | managedIdentity (例如) | { } 或 { "clientId":"31b403aa-c364-4240-a7ff-d85fb6cd7232" } 或 { "objectId":"12dd289c-0583-46e5-b9b4-115d5c19ef4b" } | JSON 物件 |
 
 ### <a name="property-value-details"></a>屬性值詳細資料
-* `apiVersion`：您可以使用[資源總管](https://resources.azure.com/)或從 Azure CLI 使用下列命令，找到最新的 apiVersion`az provider list -o json`
+* `apiVersion`：您可以使用下列命令 [資源總管](https://resources.azure.com/) 或從 Azure CLI 找到最新的 apiVersion `az provider list -o json`
 * `skipDos2Unix`：(選擇性，布林值) 略過指令碼型檔案 URL 或指令碼的 dos2unix 轉換。
 * `timestamp` (選擇性，32 位元整數) 只有在透過變更此欄位的值來觸發指令碼的重新執行時，才需使用此欄位。  任何整數值都是可接受的；只要與先前的值不同即可。
 * `commandToExecute`：(若未設定指令碼則為**必要**，字串) 要執行的進入點指令碼。 如果您的命令包含機密資料 (例如密碼)，請改用此欄位。
@@ -213,7 +214,7 @@ CustomScript 會使用下列演算法來執行指令碼。
 > [!NOTE]
 > **必須**在受保護的設定中，才能指定此屬性。
 
-CustomScript （版本2.1 後）支援從 "fileUris" 設定中提供的 Url 下載檔案的[受控識別](../../active-directory/managed-identities-azure-resources/overview.md)。 其可讓 CustomScript 存取 Azure 儲存體私人 Blob 或容器，而不需要使用者傳遞 SAS 權杖或儲存體帳戶金鑰之類的秘密。
+CustomScript () 2.1 版之前的版本可支援 [受控識別](../../active-directory/managed-identities-azure-resources/overview.md) ，以從 "fileUris" 設定中提供的 url 下載檔案 (s) 。 其可讓 CustomScript 存取 Azure 儲存體私人 Blob 或容器，而不需要使用者傳遞 SAS 權杖或儲存體帳戶金鑰之類的秘密。
 
 若要使用這項功能，使用者必須將[系統指派的](../../app-service/overview-managed-identity.md?tabs=dotnet#add-a-system-assigned-identity)或[使用者指派的](../../app-service/overview-managed-identity.md?tabs=dotnet#add-a-user-assigned-identity)身分識別新增至應執行 CustomScript 的 VM 或 VMSS，並[向受控識別授與 Azure 儲存體容器或 Blob 的存取權](../../active-directory/managed-identities-azure-resources/tutorial-vm-windows-access-storage.md#grant-access)。
 
@@ -416,7 +417,7 @@ az vm extension set \
 /var/log/azure/custom-script/handler.log
 ```
 
-您應該尋找個別執行，它看起來會像這樣：
+您應該尋找個別的執行，看起來會像這樣：
 
 ```output
 time=2018-04-26T17:47:23Z version=v2.0.6/git@1008306-clean operation=enable seq=0 event=start
@@ -449,7 +450,7 @@ time=2018-04-26T17:47:23Z version=v2.0.6/git@1008306-clean operation=enable seq=
 * 擴充功能下載檔案及其結果。
 * 正在執行的命令和結果。
 
-您也可以使用 Azure CLI，抓取自訂腳本擴充功能的執行狀態，包括當做傳遞的實際引數 `commandToExecute` ：
+您也可以使用 Azure CLI，抓取自訂腳本延伸模組的執行狀態，包括傳遞做為的實際引數 `commandToExecute` ：
 
 ```azurecli
 az vm extension list -g myResourceGroup --vm-name myVM
@@ -498,5 +499,5 @@ az vm extension list -g myResourceGroup --vm-name myVM
 ]
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 若要查看程式碼、目前問題和版本，請參閱 [custom-script-extension-linux 存放庫](https://github.com/Azure/custom-script-extension-linux)。
