@@ -9,12 +9,12 @@ ms.date: 12/12/2019
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 162aa0c382ec22f946d20299fbb990b92481518f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e71e56b9da06bfd8f3be24481efd619b788a8839
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91714700"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91822272"
 ---
 # <a name="use-the-azure-storage-resource-provider-to-access-management-resources"></a>使用 Azure 儲存體資源提供者存取管理資源
 
@@ -47,8 +47,8 @@ Azure 提供內建角色，可授與呼叫管理作業的許可權。 Azure 儲�
 |    Azure 角色    |    描述    |    包含帳戶金鑰的存取權嗎？    |
 |---------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------|
 | **擁有者** | 可以管理所有儲存體資源和資源的存取權。  | 是，提供查看和重新產生儲存體帳戶金鑰的許可權。 |
-| **參與者**  | 可以管理所有存放裝置資源，但無法管理指派給資源。 | 是，提供查看和重新產生儲存體帳戶金鑰的許可權。 |
-| **讀取者** | 可以查看儲存體帳戶的相關資訊，但無法查看帳戶金鑰。 | 不可以。 |
+| **參與者**  | 可以管理所有儲存體資源，但無法管理對資源的存取。 | 是，提供查看和重新產生儲存體帳戶金鑰的許可權。 |
+| **讀取者** | 可以查看儲存體帳戶的相關資訊，但無法查看帳戶金鑰。 | 否。 |
 | **儲存體帳戶參與者** | 可以管理儲存體帳戶、取得訂用帳戶資源群組和資源的相關資訊，以及建立和管理訂用帳戶資源群組部署。 | 是，提供查看和重新產生儲存體帳戶金鑰的許可權。 |
 | **使用者存取系統管理員** | 可以管理對儲存體帳戶的存取。   | 是，允許安全性主體將任何許可權指派給自己和其他人。 |
 | **虛擬機器參與者** | 可以管理虛擬機器，但無法管理其連線的儲存體帳戶。   | 是，提供查看和重新產生儲存體帳戶金鑰的許可權。 |
@@ -74,7 +74,7 @@ Resource Manager 和傳統部署模型代表部署和管理 Azure 解決方案�
 
 如需有關 Azure 部署模型的詳細資訊，請參閱 [Resource Manager 和傳統部署](../../azure-resource-manager/management/deployment-models.md)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - [Azure Resource Manager 概觀](/azure/azure-resource-manager/resource-group-overview)
 - [什麼是 Azure 角色型存取控制 (Azure RBAC)？](../../role-based-access-control/overview.md)

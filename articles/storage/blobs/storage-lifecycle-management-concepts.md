@@ -9,12 +9,12 @@ ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
 ms.custom: devx-track-azurepowershell, references_regions
-ms.openlocfilehash: d47b9b5882b25ee030ca813abbaf77805b2df0f5
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 49e82467cd5e9cef8100aa56016f778df3445f12
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90707759"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91822392"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>管理 Azure Blob 儲存體生命週期
 
@@ -76,22 +76,9 @@ ms.locfileid: "90707759"
 
 1. 選取 **基底 blob** 以設定規則的條件。 在下列範例中，如果 blob 未修改30天，則會移至非經常性存取儲存體。
 
-   :::image type="content" source="media/storage-lifecycle-management-concepts/lifecycle-management-base-blobs.png" alt-text="Azure 入口網站中的 [生命週期管理基底 blob] 頁面":::
+   :::image type="content" source="media/storage-lifecycle-management-concepts/lifecycle-management-base-blobs.png" alt-text="生命週期管理在 Azure 入口網站中新增規則詳細資料頁面" 開頭的 *mylifecyclecontainer* 容器中的 blob。
 
-   **上次存取**的選項在下欄區域中提供預覽：
-
-    - 法國中部
-    - 加拿大東部
-    - 加拿大中部
-
-   > [!IMPORTANT]
-   > 上次存取時間追蹤預覽僅供非生產環境使用。 生產環境的服務等級協定 (SLA) 目前無法使用。
-   
-   若要使用 [**上次存取**] 選項，請在 Azure 入口網站的 [**生命週期管理**] 頁面上選取 [**啟用存取追蹤**]。 如需 **上次存取** 選項的詳細資訊，請參閱 [依據上次存取日期移動資料 (預覽) ](#move-data-based-on-last-accessed-date-preview)。
-
-1. 如果您在 [**詳細資料**] 頁面上選取 [**使用篩選準則限制 blob** ]，請選取 [**篩選設定**] 以新增選擇性篩選。 下列範例會篩選以 "log" 開頭的 *mylifecyclecontainer* 容器中的 blob。
-
-   :::image type="content" source="media/storage-lifecycle-management-concepts/lifecycle-management-filter-set.png" alt-text="Azure 入口網站中的生命週期管理篩選器集合頁面":::
+   :::image type="content" source="media/storage-lifecycle-management-concepts/lifecycle-management-filter-set.png" alt-text="生命週期管理在 Azure 入口網站中新增規則詳細資料頁面":::
 
 1. 選取 **[新增]** 以新增原則。
 
@@ -164,7 +151,7 @@ $filter = New-AzStorageAccountManagementPolicyFilter -PrefixMatch ab,cd
 $rule1 = New-AzStorageAccountManagementPolicyRule -Name Test -Action $action -Filter $filter
 
 #Set the policy
-$policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -StorageAccountName $accountName -Rule $rule1
+Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -StorageAccountName $accountName -Rule $rule1
 ```
 
 # <a name="template"></a>[範本](#tab/template)
@@ -244,7 +231,7 @@ $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -Stora
 | 參數名稱 | 參數類型 | 注意 | 必要 |
 |----------------|----------------|-------|----------|
 | `name`         | String |規則名稱最多可包含256個英數位元。 規則名稱會區分大小寫。 它在原則內必須是唯一的。 | True |
-| `enabled`      | 布林值 | 選擇性的布林值，允許暫時停用規則。 如果未設定，預設值為 true。 | 否 | 
+| `enabled`      | Boolean | 選擇性的布林值，允許暫時停用規則。 如果未設定，預設值為 true。 | False | 
 | `type`         | 列舉值 | 目前有效的型別為 `Lifecycle` 。 | True |
 | `definition`   | 定義生命週期規則的物件 | 每個定義是由篩選集和動作集組成。 | True |
 
@@ -319,7 +306,7 @@ $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -Stora
 | tierToCool                  | 支援目前在經常性儲存層的 Blob         | 不支援 |
 | enableAutoTierToHotFromCool | 支援目前在非經常性存取層的 blob        | 不支援 |
 | tierToArchive               | 支援目前在經常儲存性或非經常性儲存層的 Blob | 不支援 |
-| delete                      | 和支援 `blockBlob``appendBlob`  | 支援     |
+| [刪除]                      | 和支援 `blockBlob``appendBlob`  | 支援     |
 
 >[!NOTE]
 >如果在同一個 Blob 上定義多個動作，生命週期管理會將最便宜的動作套用至 Blob。 例如，動作 `delete` 比動作 `tierToArchive` 更便宜。 而動作 `tierToArchive` 比動作 `tierToCool` 更便宜。
@@ -563,7 +550,7 @@ $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -Stora
 
 當 blob 從某個存取層移至另一個存取層時，其上次修改時間並不會變更。 如果您手動將封存的 blob 解除凍結至經常性存取層，則生命週期管理引擎會將它移回封存層。 請暫時停用影響此 blob 的規則，以防止它再次被封存。 當 blob 可以安全地移回封存層時，請重新啟用規則。 如果 blob 需要永久保留在經常性存取層或非經常性存取層，您也可以將它複製到另一個位置。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 了解如何復原意外刪除的資料：
 

@@ -3,12 +3,12 @@ title: Connected Machine Windows 代理程式概觀
 description: 本文提供 Azure Arc 啟用的伺服器代理程式的詳細總覽，可支援監視混合式環境中裝載的虛擬機器。
 ms.date: 09/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0fa406692ae0ff011c65a2683ea04ad969bdc3b5
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: 20f56745127a5182a5dfa057a4496b127d78eac7
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91577215"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91822190"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>Azure Arc 已啟用伺服器代理程式的總覽
 
@@ -53,7 +53,7 @@ Azure Connected Machine 代理程式可正式支援下列 Windows 和 Linux 作�
 - Ubuntu 16.04 和 18.04 LTS (x64) 
 - CentOS Linux 7 (x64)
 - SUSE Linux Enterprise Server (SLES) 15 (x64)
-- Red Hat Enterprise Linux (RHEL) 7 (x64) 
+- Red Hat Enterprise Linux (RHEL) 7 (x64)
 - Amazon Linux 2 (x64)
 
 ### <a name="required-permissions"></a>所需的權限
@@ -85,6 +85,7 @@ Azure Connected Machine 代理程式可正式支援下列 Windows 和 Linux 作�
 
 * AzureActiveDirectory
 * AzureTrafficManager
+* AzureArcInfrastructure
 
 URL：
 
@@ -104,7 +105,7 @@ URL：
 
 ### <a name="register-azure-resource-providers"></a>註冊 Azure 資源提供者
 
-Azure Arc 啟用的伺服器相依于您訂用帳戶中的下列 Azure 資源提供者，才能使用此服務：
+已啟用 Azure Arc 的伺服器需依賴您訂用帳戶中的下列 Azure 資源提供者來使用此服務：
 
 * **Microsoft.HybridCompute**
 * **Microsoft.GuestConfiguration**
@@ -248,7 +249,7 @@ az provider register --namespace 'Microsoft.GuestConfiguration'
     * /var/opt/azcmagent
     * /opt/logs
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * 若要開始評估已啟用 Azure Arc 的伺服器，請遵循 [從 Azure 入口網站將混合式機器連線到 Azure](onboard-portal.md)的文章。
 

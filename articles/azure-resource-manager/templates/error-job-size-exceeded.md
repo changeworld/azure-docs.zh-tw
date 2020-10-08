@@ -3,12 +3,12 @@ title: 作業大小超過錯誤
 description: 描述當工作大小或範本太大時，如何針對錯誤進行疑難排解。
 ms.topic: troubleshooting
 ms.date: 10/07/2020
-ms.openlocfilehash: 5f0df102611dba8ce49da948b14110fff32dc2a9
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.openlocfilehash: 638bdef246fc908ab997bfb99e7526febdb3792e
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/07/2020
-ms.locfileid: "91812891"
+ms.locfileid: "91822146"
 ---
 # <a name="resolve-errors-for-job-size-exceeded"></a>解決超過作業大小的錯誤
 
@@ -40,7 +40,7 @@ ms.locfileid: "91812891"
 
 ## <a name="solution-2---reduce-name-size"></a>解決方案 2-減少名稱大小
 
-請嘗試縮短您用於 [參數](template-parameters.md)、 [變數](template-variables.md)和 [輸出](template-outputs.md)的名稱長度。 當這些值透過複製迴圈重複時，會將大型名稱乘以多次。 範本的最終大小是不必要的大型。
+請嘗試縮短您用於 [參數](template-parameters.md)、 [變數](template-variables.md)和 [輸出](template-outputs.md)的名稱長度。 當這些值透過複製迴圈重複時，會將大型名稱乘以多次。
 
 ## <a name="solution-3---use-serial-copy"></a>解決方案 3-使用序列複製
 

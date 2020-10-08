@@ -1,5 +1,5 @@
 ---
-title: 在 Azure HDInsight 中使用 Apache Ambari 將 Apache HBase 優化
+title: 使用 Azure HDInsight 中的 Apache Ambari 優化 Apache HBase
 description: 使用 Apache Ambari web UI 來設定和優化 Apache HBase。
 author: hrasheed-msft
 ms.author: hrasheed
@@ -7,18 +7,18 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 05/04/2020
-ms.openlocfilehash: d143c9648f84dd0c8b45122cf2271539a0b9d1cf
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: b262e07bd07320e4b10b12a2f2cf07b97e58c61e
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086325"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91821703"
 ---
-# <a name="optimize-apache-hbase-with-apache-ambari-in-azure-hdinsight"></a>在 Azure HDInsight 中使用 Apache Ambari 將 Apache HBase 優化
+# <a name="optimize-apache-hbase-with-apache-ambari-in-azure-hdinsight"></a>使用 Azure HDInsight 中的 Apache Ambari 優化 Apache HBase
 
-Apache Ambari 是用來管理和監視 HDInsight 叢集的 web 介面。 如需 Ambari Web UI 的簡介，請參閱[使用 Apache Ambari WEB Ui 管理 HDInsight](hdinsight-hadoop-manage-ambari.md)叢集。
+Apache Ambari 是用來管理和監視 HDInsight 叢集的 web 介面。 如需 Ambari Web UI 的簡介，請參閱 [使用 Apache Ambari WEB ui 來管理 HDInsight](hdinsight-hadoop-manage-ambari.md)叢集。
 
-從 [ **HBase**設定] 索引標籤修改 Apache HBase 設定。下列各節將說明一些會影響 HBase 效能的重要設定。
+從 [ **HBase** 設定] 索引標籤修改 Apache HBase 設定。下列各節說明影響 HBase 效能的一些重要設定。
 
 ## <a name="set-hbase_heapsize"></a>設定 HBASE_HEAPSIZE
 
@@ -46,7 +46,7 @@ HBase 堆積大小會指定*區域*和*主要*伺服器將使用的堆積最大�
 
 ### <a name="memstore-size"></a>Memstore 大小
 
-所有的編輯均儲存於稱為 *Memstore* 的記憶體緩衝區。 這個緩衝區會增加單一作業中可寫入磁片的資料總量。 它也會加速對最近編輯的存取。 Memstore 大小是由下列兩個參數所定義：
+所有的編輯均儲存於稱為 *Memstore* 的記憶體緩衝區。 此緩衝區會增加單一作業可寫入磁片的總數據量。 它也可加速存取最近的編輯。 Memstore 大小是由下列兩個參數所定義：
 
 * `hbase.regionserver.global.memstore.UpperLimit`：定義合併的 Memstore 可使用的區域伺服器百分比上限。
 
@@ -56,9 +56,9 @@ HBase 堆積大小會指定*區域*和*主要*伺服器將使用的堆積最大�
 
 ### <a name="number-of-rows-fetched-when-scanning-from-disk"></a>從磁碟掃描時擷取的資料列數目
 
-`hbase.client.scanner.caching` 設定會定義在掃描器上呼叫 `next` 方法時，從磁碟讀取的資料列數目。  預設值是 100。 該數字愈高，從用戶端向區域伺服器進行的遠端呼叫愈少，因此可加快掃描。 不過，此設定也會增加用戶端上的記憶體壓力。
+`hbase.client.scanner.caching` 設定會定義在掃描器上呼叫 `next` 方法時，從磁碟讀取的資料列數目。  預設值是 100。 該數字愈高，從用戶端向區域伺服器進行的遠端呼叫愈少，因此可加快掃描。 不過，此設定也會增加用戶端的記憶體壓力。
 
-![已提取的 Apache HBase 資料列數目](./media/optimize-hbase-ambari/hbase-num-rows-fetched.png)
+![提取的 Apache HBase 資料列數](./media/optimize-hbase-ambari/hbase-num-rows-fetched.png)
 
 > [!IMPORTANT]  
 > 請勿將該值設定過高，以免造成掃描器引動 next 方法的相隔時間大於掃描程式逾時。 掃描器逾時持續期間是由 `hbase.regionserver.lease.period` 屬性所定義。
@@ -79,7 +79,7 @@ HBase 會將資料儲存為稱為 *HFile* 的內部檔案格式。 屬性 `hbase
 
 * 屬性 `hbase.hregion.memstore.flush.size` 會定義 Memstore 排清至磁碟的大小。 預設大小為 128 MB。
 
-* HBase 區域區塊乘數是由所定義 `hbase.hregion.memstore.block.multiplier` 。 預設值為 4。 允許的上限為 8。
+* HBase 區域區塊乘數是由定義 `hbase.hregion.memstore.block.multiplier` 。 預設值為 4。 允許的上限為 8。
 
 * 如果 Memstore 是 (`hbase.hregion.memstore.flush.size` * `hbase.hregion.memstore.block.multiplier`) 位元組，HBase 區塊會更新。
 
@@ -89,15 +89,15 @@ HBase 會將資料儲存為稱為 *HFile* 的內部檔案格式。 屬性 `hbase
 
 ## <a name="define-memstore-size"></a>定義 Memstore 大小
 
-Memstore 大小是由 `hbase.regionserver.global.memstore.UpperLimit` 和 `hbase.regionserver.global.memstore.LowerLimit` 參數所定義。 設定這些彼此相等的值會減少寫入期間的暫停 (也會導致更頻繁清除)，並且可提升寫入效能。
+Memstore 大小是由 `hbase.regionserver.global.memstore.upperLimit` 和 `hbase.regionserver.global.memstore.lowerLimit` 參數所定義。 設定這些彼此相等的值會減少寫入期間的暫停 (也會導致更頻繁清除)，並且可提升寫入效能。
 
 ## <a name="set-memstore-local-allocation-buffer"></a>設定 Memstore 本機配置緩衝區
 
-Memstore 本機配置緩衝區的使用方式取決於屬性 `hbase.hregion.memstore.mslab.enabled`。 啟用（true）時，此設定可防止大量寫入作業期間的堆積片段。 預設值為 true。
+Memstore 本機配置緩衝區的使用方式取決於屬性 `hbase.hregion.memstore.mslab.enabled`。 當啟用 (true) 時，此設定會在大量寫入作業期間防止堆積片段。 預設值為 true。
 
 ![hbase.hregion.memstore.mslab.enabled](./media/optimize-hbase-ambari/hbase-hregion-memstore-mslab-enabled.png)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * [使用 Apache Ambari Web UI 管理 HDInsight 叢集](hdinsight-hadoop-manage-ambari.md)
 * [Apache Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md)
