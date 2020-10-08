@@ -5,24 +5,20 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 09/03/2020
-ms.author: alzam
-ms.openlocfilehash: 279c66fa16ac82335a074da60bce35325d4b4499
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.date: 10/07/2020
+ms.author: cherylmc
+ms.openlocfilehash: 51004005e10416f3138f69f91b93b9cd19ed3944
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91439460"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91819755"
 ---
 # <a name="azure-active-directory-authentication-configure-a-vpn-client-for-p2s-openvpn-protocol-connections"></a>Azure Active Directory authentication：為 P2S OpenVPN 通訊協定連線設定 VPN 用戶端
 
 本文可協助您設定 VPN 用戶端，以使用點對站 VPN 連線到虛擬網路，並 Azure Active Directory 驗證。 您必須先設定 Azure AD 租使用者，才可以使用 Azure AD 進行連線和驗證。 如需詳細資訊，請參閱 [設定 Azure AD 租](openvpn-azure-ad-tenant.md)使用者。
 
-> [!NOTE]
-> Azure AD 驗證僅支援 OpenVPN® 通訊協定連線。
->
-> Azure AD authentication 需要 Azure VPN 用戶端，這僅適用于 Windows 10。
->
+[!INCLUDE [Windows 10 and OpenVPN note](../../includes/vpn-gateway-openvpn-auth-include.md)]
 
 ## <a name="working-with-client-profiles"></a><a name="profile"></a>使用用戶端設定檔
 
@@ -94,7 +90,7 @@ ms.locfileid: "91439460"
 
 2. 選取 [移除]**** 以刪除。
 
-    ![delete](./media/openvpn-azure-ad-client/delete/delete2.jpg)
+    ![[刪除]](./media/openvpn-azure-ad-client/delete/delete2.jpg)
 
 ## <a name="create-a-connection"></a><a name="connection"></a>建立連接
 
@@ -116,7 +112,7 @@ ms.locfileid: "91439460"
 
 5. 成功連線後，圖示將會變成綠色，並說出 **已連線**。
 
-    ![連接](./media/openvpn-azure-ad-client/create/create5.jpg)
+    ![connection](./media/openvpn-azure-ad-client/create/create5.jpg)
 
 ### <a name="to-connect-automatically"></a><a name="autoconnect"></a>自動連接
 
@@ -194,7 +190,7 @@ ms.locfileid: "91439460"
 ```
 
 > [!NOTE]
-> OpenVPN Azure AD 用戶端會使用 DNS 名稱解析原則資料表 (NRPT) 專案，這表示 DNS 伺服器不會列在的輸出下 `ipconfig /all` 。 若要確認使用中的 DNS 設定，請參閱 PowerShell 中的 [get-dnsclientnrptpolicy](https://docs.microsoft.com/powershell/module/dnsclient/get-dnsclientnrptpolicy?view=win10-ps) 。
+> OpenVPN Azure AD 用戶端會使用 DNS 名稱解析原則資料表 (NRPT) 專案，這表示 DNS 伺服器不會列在的輸出下 `ipconfig /all` 。 若要確認使用中的 DNS 設定，請參閱 PowerShell 中的 [get-dnsclientnrptpolicy](https://docs.microsoft.com/powershell/module/dnsclient/get-dnsclientnrptpolicy?view=win10-ps&preserve-view=true) 。
 >
 
 ### <a name="how-do-i-add-custom-routes-to-the-vpn-client"></a>如何? 將自訂路由新增至 VPN 用戶端？
@@ -243,6 +239,6 @@ azurevpn -i azurevpnconfig.xml
 若要強制匯入，也請使用 **-f** 參數
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 如需詳細資訊，請參閱 [為使用 Azure AD 驗證的 P2S 開放式 VPN 連線建立 Azure Active Directory 的租](openvpn-azure-ad-tenant.md)使用者。

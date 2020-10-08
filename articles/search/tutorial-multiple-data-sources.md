@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 06/20/2020
+ms.date: 10/07/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d3dd75d246c1f74253a9ce910e50b05402065464
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 06b80b5fe14a7a913d8ad8454c6568b04fe01c2f
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88998453"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91819803"
 ---
 # <a name="tutorial-index-from-multiple-data-sources-using-the-net-sdk"></a>教學課程：使用 .NET SDK 從多個資料來源編製索引
 
@@ -61,19 +61,19 @@ Azure 認知搜尋服務可以將多個資料來源的資料匯入至單一合�
 
 1. 選取 [資料總管]  ，然後選取 [新增資料庫]  。
 
-   ![建立新的資料庫](media/tutorial-multiple-data-sources/cosmos-newdb.png "建立新資料庫")
+   :::image type="content" source="media/tutorial-multiple-data-sources/cosmos-newdb.png" alt-text="建立新的資料庫" border="false":::
 
 1. 輸入名稱 **hotel-rooms-db**。 接受其餘設定的預設值。
 
-   ![設定資料庫](media/tutorial-multiple-data-sources/cosmos-dbname.png "設定資料庫")
+   :::image type="content" source="media/tutorial-multiple-data-sources/cosmos-dbname.png" alt-text="建立新的資料庫" border="false":::
 
 1. 建立新的容器。 使用您剛才建立的現有資料庫。 輸入 **hotels** 作為容器名稱，並使用 **/HotelId** 作為分割區索引鍵。
 
-   ![新增容器](media/tutorial-multiple-data-sources/cosmos-add-container.png "新增容器")
+   :::image type="content" source="media/tutorial-multiple-data-sources/cosmos-add-container.png" alt-text="建立新的資料庫" border="false":::
 
 1. 選取 **hotels** 底下的 [項目]  ，然後按一下命令列上的 [上傳項目]  。 瀏覽至專案資料夾中的檔案 **cosmosdb/HotelsDataSubset_CosmosDb.json**，並加以選取。
 
-   ![上傳至 Azure Cosmos DB 集合](media/tutorial-multiple-data-sources/cosmos-upload.png "上傳至 Azure Cosmos DB 集合")
+   :::image type="content" source="media/tutorial-multiple-data-sources/cosmos-upload.png" alt-text="建立新的資料庫" border="false":::
 
 1. 使用 [重新整理] 按鈕來重新整理您在旅館集合中的項目檢視。 您應該會看到列出七份新的資料庫文件。
 
@@ -83,11 +83,11 @@ Azure 認知搜尋服務可以將多個資料來源的資料匯入至單一合�
 
 1. [建立 Blob 容器](../storage/blobs/storage-quickstart-blobs-portal.md) (名稱為 **hotel-rooms**) 來儲存範例旅館房間 JSON 檔案。 您可以將公用存取層級設定為任何有效值。
 
-   ![建立 Blob 容器](media/tutorial-multiple-data-sources/blob-add-container.png "建立 Blob 容器")
+   :::image type="content" source="media/tutorial-multiple-data-sources/blob-add-container.png" alt-text="建立新的資料庫" border="false":::
 
 1. 建立容器之後，請加以開啟，然後選取命令列的 [上傳]  。 瀏覽至包含範例檔案的資料夾。 全部選取，然後按一下 [上傳]  。
 
-   ![上傳檔案](media/tutorial-multiple-data-sources/blob-upload.png "上傳檔案")
+   :::image type="content" source="media/tutorial-multiple-data-sources/blob-upload.png" alt-text="建立新的資料庫" border="false":::
 
 上傳完成之後，檔案應該會出現在資料容器的清單中。
 
@@ -105,7 +105,7 @@ Azure 認知搜尋服務可以將多個資料來源的資料匯入至單一合�
 
    一併取得查詢金鑰。 最佳做法是發出具有唯讀存取權的查詢要求。
 
-   ![取得服務名稱及管理和查詢金鑰](media/search-get-started-nodejs/service-name-and-keys.png)
+   :::image type="content" source="media/search-get-started-nodejs/service-name-and-keys.png" alt-text="建立新的資料庫" border="false":::
 
 擁有有效的金鑰就能為每個要求在傳送要求之應用程式與處理要求之服務間建立信任。
 
@@ -115,7 +115,7 @@ Azure 認知搜尋服務可以將多個資料來源的資料匯入至單一合�
 
 1. 在 [瀏覽]  索引標籤中，尋找並安裝 **Microsoft.Azure.Search** (9.0.1 版或更新版本)。 您必須逐一點選其他對話方塊來完成安裝。
 
-    ![使用 NuGet 來新增 Azure 程式庫](./media/tutorial-csharp-create-first-app/azure-search-nuget-azure.png)
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-nuget-azure.png" alt-text="建立新的資料庫" border="false":::
 
 1. 搜尋 **Microsoft.Extensions.Configuration.Json** NuGet 套件，並且也加以安裝。
 
@@ -352,7 +352,7 @@ Blob 儲存體索引子可以使用參數來識別要使用的剖析模式。 �
 
 在 Azure 入口網站中，開啟搜尋服務 [概觀]  頁面，然後在 [索引]  清單中尋找 **hotel-rooms-sample** 索引。
 
-  ![Azure 認知搜尋索引的清單](media/tutorial-multiple-data-sources/index-list.png "Azure 認知搜尋索引的清單")
+  :::image type="content" source="media/tutorial-multiple-data-sources/index-list.png" alt-text="建立新的資料庫" border="false":::
 
 按一下清單中的 hotel-rooms-sample 索引。 您將會看到索引的搜尋總管介面。 輸入 "Luxury" 等字詞的查詢。 您應該會在結果中至少看見一份文件，而這份文件應該會在其房間陣列中顯示房間物件的清單。
 

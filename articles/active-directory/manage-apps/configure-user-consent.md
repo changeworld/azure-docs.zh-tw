@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/01/2020
 ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
-ms.openlocfilehash: 877e90fa3c1c8a595c438fc6745c142e97b5692c
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: cff2af745e9b79f573aba02e0a9baefe4a5e45a3
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/07/2020
-ms.locfileid: "91803274"
+ms.locfileid: "91819265"
 ---
 # <a name="configure-how-end-users-consent-to-applications"></a>設定使用者同意應用程式的方式
 
@@ -75,7 +75,7 @@ ms.locfileid: "91803274"
   ```powershell
   Set-AzureADMSAuthorizationPolicy `
      -Id "authorizationPolicy" `
-     -PermissionGrantPolicyIdsAssignedToDefaultUserRole @("{consent-policy-id}")
+     -PermissionGrantPolicyIdsAssignedToDefaultUserRole @("managePermissionGrantsForSelf.{consent-policy-id}")
   ```
 
 將取代 `{consent-policy-id}` 為您想要套用的原則識別碼。 您可以選擇您所建立的 [自訂應用程式同意原則](manage-app-consent-policies.md#create-a-custom-app-consent-policy) ，也可以從下列內建原則中選擇：
@@ -90,7 +90,7 @@ ms.locfileid: "91803274"
 ```powershell
 Set-AzureADMSAuthorizationPolicy `
    -Id "authorizationPolicy" `
-   -PermissionGrantPolicyIdsAssignedToDefaultUserRole @("microsoft-user-default-low")
+   -PermissionGrantPolicyIdsAssignedToDefaultUserRole @("managePermissionGrantsForSelf.microsoft-user-default-low")
 ```
 
 ---

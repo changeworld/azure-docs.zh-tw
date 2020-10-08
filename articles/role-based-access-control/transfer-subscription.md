@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 10/06/2020
 ms.author: rolyon
-ms.openlocfilehash: e5b0eb5fc9014a4f8df0f0cc363b5dddb45674af
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: 35c6d94ce69acf59ae6cd8b26b0ad75645eb526a
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/07/2020
-ms.locfileid: "91804175"
+ms.locfileid: "91819714"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory"></a>將 Azure 訂用帳戶轉移至不同的 Azure AD 目錄
 
@@ -24,7 +24,7 @@ ms.locfileid: "91804175"
 本文說明您可以遵循的基本步驟，將訂用帳戶轉移至不同的 Azure AD 目錄，並在傳輸之後重新建立一些資源。
 
 > [!NOTE]
-> 針對 (CSP) 訂用帳戶的 Azure 雲端服務提供者，不支援變更訂用帳戶的 Azure AD 目錄。
+> 針對 (CSP) 訂用帳戶的 Azure 雲端解決方案提供者，不支援變更訂用帳戶的 Azure AD 目錄。
 
 ## <a name="overview"></a>概觀
 
@@ -82,7 +82,7 @@ ms.locfileid: "91804175"
 > [!WARNING]
 > 如果您針對資源（例如儲存體帳戶或 SQL database）使用待用資料加密，但其相依于金鑰保存庫，但該金鑰保存庫 **不** 在要傳輸的相同訂用帳戶中，則可能會導致無法復原的情況。 如果您有這種情況，您應該採取步驟來使用不同的金鑰保存庫，或暫時停用客戶管理的金鑰，以避免此無法復原的情況。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要完成這些步驟，您將需要：
 
@@ -377,7 +377,7 @@ ms.locfileid: "91804175"
 
 1. 若為使用憑證的資源，請更新憑證。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - [將 Azure 訂用帳戶的帳單擁有權轉移給另一個帳戶](../cost-management-billing/manage/billing-subscription-transfer.md)
 - [在訂閱者與 CSP 之間轉移 Azure 訂用帳戶](../cost-management-billing/manage/transfer-subscriptions-subscribers-csp.md)

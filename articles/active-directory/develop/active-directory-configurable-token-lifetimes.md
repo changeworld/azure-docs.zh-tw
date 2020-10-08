@@ -13,12 +13,12 @@ ms.date: 09/29/2020
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40, content-perf, FY21Q1
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: a9bf992a65914afb8fa800041b57ad9f44ba4fa0
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.openlocfilehash: 8697676abe5af77c8c7795ae4e2ec6480cb99e91
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91595606"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91819439"
 ---
 # <a name="configurable-token-lifetimes-in-microsoft-identity-platform-preview"></a>Microsoft 身分識別平臺中可設定的權杖存留期 (預覽版) 
 
@@ -90,9 +90,9 @@ Microsoft 身分識別平臺會使用兩種 SSO 會話權杖：持續性和非�
 | 存取權杖存留期 |AccessTokenLifetime<sup>2</sup> |存取權杖、識別碼權杖、SAML2 權杖 |1 小時 |10 分鐘 |1 日 |
 | 重新整理權杖最大閒置時間 |MaxInactiveTime |重新整理權杖 |90 天 |10 分鐘 |90 天 |
 | 單一要素重新整理權杖最大壽命 |MaxAgeSingleFactor |重新整理權杖 (適用於任何使用者) |直到撤銷為止 |10 分鐘 |直到撤銷為止<sup>1</sup> |
-| 多重要素重新整理權杖最大壽命 |MaxAgeMultiFactor |重新整理權杖 (適用於任何使用者) | 180 天 |10 分鐘 |直到撤銷為止<sup>1</sup> |
+| 多重要素重新整理權杖最大壽命 |MaxAgeMultiFactor |重新整理權杖 (適用於任何使用者) | 180 天 |10 分鐘 |180 天<sup>1</sup> |
 | 單一要素工作階段權杖最大壽命 |MaxAgeSessionSingleFactor |工作階段權杖 (持續性和非持續性) |直到撤銷為止 |10 分鐘 |直到撤銷為止<sup>1</sup> |
-| 多重要素工作階段權杖最大壽命 |MaxAgeSessionMultiFactor |工作階段權杖 (持續性和非持續性) | 180 天 |10 分鐘 |直到撤銷為止<sup>1</sup> |
+| 多重要素工作階段權杖最大壽命 |MaxAgeSessionMultiFactor |工作階段權杖 (持續性和非持續性) | 180 天 |10 分鐘 | 180 天<sup>1</sup> |
 
 * <sup>1</sup>針對這些屬性，可設定的明確時間長度上限為 365 天。
 * <sup>2</sup>若要確保 Microsoft 小組 Web 用戶端可以運作，建議您讓 Microsoft 小組保持 AccessTokenLifetime 超過15分鐘。

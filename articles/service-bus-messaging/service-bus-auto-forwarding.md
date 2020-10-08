@@ -4,12 +4,12 @@ description: 本文說明如何將 Azure 服務匯流排的佇列或訂用帳戶
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 34b73967813abdcb811221aa4a3a4ac96dce0664
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8f5f93f65871c0b9658a75264ab959dbae7fefe7
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91333676"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91819574"
 ---
 # <a name="chaining-service-bus-entities-with-autoforwarding"></a>使用自動轉寄鏈結服務匯流排實體
 
@@ -53,7 +53,9 @@ namespaceManager.CreateSubscription(srcSubscription));
 
 若要建立連結至另一個佇列或主題的訂用帳戶，訂用帳戶的建立者必須擁有來源和目的地實體的 **管理** 許可權。 將訊息傳送至來源主題只需要來源主題的**傳送**權限。
 
-## <a name="next-steps"></a>後續步驟
+請勿建立超過4個躍點的鏈。 超過4個躍點的訊息是不正確字母。
+
+## <a name="next-steps"></a>下一步
 
 如需自動轉寄的詳細資訊，請參閱下列參考主題：
 

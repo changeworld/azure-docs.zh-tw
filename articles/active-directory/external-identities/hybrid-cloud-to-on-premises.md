@@ -1,6 +1,6 @@
 ---
-title: 將內部部署應用程式的存取權授與 B2B 使用者-Azure AD
-description: 示範如何使用 Azure AD B2B 共同作業，為雲端 B2B 使用者提供內部部署應用程式的存取權。
+title: 將您內部部署應用程式的存取權授與 B2B 使用者-Azure AD
+description: 示範如何讓雲端 B2B 使用者透過 Azure AD B2B 共同作業存取內部部署應用程式。
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 159a14b30113a251c6ac61c4c04a2a3c4d69d3e5
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 132711b4a3fc584261cd577b4b8f1d4fb13da09d
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87908261"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91819387"
 ---
 # <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>對 Azure AD 中的 B2B 使用者授與內部部署應用程式的存取權
 
@@ -28,7 +28,7 @@ ms.locfileid: "87908261"
 
 您必須執行下列兩個動作：
 
-- 使用 SAML 整合應用程式，如[設定 saml 型單一登入](../manage-apps/configure-saml-single-sign-on.md)中所述。 請務必記下您所使用的**登入 URL** 值。
+- 使用 SAML 來整合應用程式，如 [設定 saml 型單一登入](../manage-apps/configure-saml-single-sign-on.md)中所述。 請務必記下您所使用的**登入 URL** 值。
 -  使用 Azure AD 應用程式 Proxy 來發行內部部署應用程式，並將 **Azure Active Directory** 設定為驗證來源。 如需指示，請參閱[使用 Azure AD 應用程式 Proxy 發行應用程式](../manage-apps/application-proxy-publish-azure-portal.md)。 
 
    當您設定 [內部 Url]**** 設定時，請使用您在非資源庫的應用程式範本中指定的登入 URL。 如此一來，使用者就可以從組織界限外存取應用程式。 應用程式 Proxy 會為內部部署應用程式執行 SAML 單一登入。
@@ -41,6 +41,9 @@ ms.locfileid: "87908261"
 
 - **透過 Azure AD 應用程式 Proxy 的驗證**。 B2B 使用者必須能夠向內部部署應用程式進行驗證。 若要這麼做，您必須透過 Azure AD 應用程式 Proxy 發行內部部署應用程式。 如需詳細資訊，請參閱[開始使用應用程式 Proxy 並安裝連接器](../manage-apps/application-proxy-enable.md)和[使用 Azure AD 應用程式 Proxy 發佈應用程式](../manage-apps/application-proxy-publish-azure-portal.md)。
 - **透過內部部署目錄中 B2B 使用者物件的授權**。 應用程式必須能夠執行使用者存取權檢查，並授與正確資源的存取權。 IWA 和 KCD 需要內部部署 Windows Server Active Directory 中的使用者物件才能完成此授權。 如[使用 KCD 單一登入的運作方式](../manage-apps/application-proxy-configure-single-sign-on-with-kcd.md#how-single-sign-on-with-kcd-works)所述，應用程式 Proxy 需要這個使用者物件，以模擬使用者並將 Kerberos 權杖交給應用程式。 
+
+   > [!NOTE]
+   > 當您設定 Azure AD 應用程式 Proxy 時，請確定已將 [ **委派的登** 入身分識別] 設定為 [ **使用者主體名稱** ] ([IWA 單一登入的預設) 。
 
    B2B 使用者案例提供兩種方法，供您建立在內部部署目錄中進行授權所需的來賓使用者物件：
 
@@ -63,8 +66,8 @@ ms.locfileid: "87908261"
 
 您可以透過生命週期管理原則管理內部部署 B2B 使用者物件。 例如：
 
-- 您可以為來賓使用者設定多重要素驗證 (MFA) 原則，以在應用程式 Proxy 驗證期間使用 MFA。 如需詳細資訊，請參閱 B2B 共同作業[使用者的條件式存取](conditional-access.md)。
-- 任何對雲端 B2B 使用者執行的贊助、存取權檢閱、帳戶驗證等，皆適用於內部部署使用者。 例如，如果雲端使用者是透過您的生命週期管理原則來刪除，則 MIM 同步或透過 Azure AD Connect 同步處理也會刪除內部部署使用者。如需詳細資訊，請參閱[使用 Azure AD 存取權審查來管理來賓存取權](../governance/manage-guest-access-with-access-reviews.md)。
+- 您可以為來賓使用者設定多重要素驗證 (MFA) 原則，以在應用程式 Proxy 驗證期間使用 MFA。 如需詳細資訊，請參閱 B2B 共同作業 [使用者的條件式存取](conditional-access.md)。
+- 任何對雲端 B2B 使用者執行的贊助、存取權檢閱、帳戶驗證等，皆適用於內部部署使用者。 例如，如果雲端使用者是透過生命週期管理原則刪除，則內部部署使用者也會由 MIM 同步或透過 Azure AD Connect 同步來刪除。如需詳細資訊，請參閱 [使用 Azure AD 存取權評論來管理來賓存取權](../governance/manage-guest-access-with-access-reviews.md)。
 
 ### <a name="create-b2b-guest-user-objects-through-mim"></a>透過 MIM 建立 B2B 來賓使用者物件
 
@@ -82,7 +85,7 @@ ms.locfileid: "87908261"
 
 請確定您已為存取內部部署應用程式的外部來賓使用者準備正確的用戶端存取授權 (CAL)。 如需詳細資訊，請參閱[用戶端存取授權和管理授權](https://www.microsoft.com/licensing/product-licensing/client-access-license.aspx)的＜外部連接器＞一節。 請就您的特定授權需求向您的 Microsoft 業務代表或地區轉售商洽詢。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - [混合式組織的 Azure Active Directory B2B 共同作業](hybrid-organizations.md)
 
