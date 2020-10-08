@@ -130,3 +130,7 @@
       href: /rest/api/consumption/usagedetails
     - name: 成本管理 - 使用量保留詳細資料 REST API
       href: /rest/api/consumption/reservationsdetails
+- name: 資源
+  items:
+    - name: 使用保留的執行個體學習模組節省成本
+      href: /learn/modules/save-money-with-azure-reserved-instances

@@ -302,13 +302,12 @@
               href: hybrid-design-drm-sybsystem.md
             - name: 參考多重 DRM 設計
               href: media-services-cenc-with-multidrm-access-control.md
-        - name: 利用索引器處理
-          href: media-services-index-content.md
-          items:
-            - name: 工作預設
-              href: indexer-task-preset.md
     - name: 分析內容
       items:
+        - name: 利用索引器處理
+          href: media-services-index-content.md
+        - name: 工作預設
+          href: indexer-task-preset.md
         - name: 利用 Face Redactor 處理
           href: media-services-face-redaction.md
         - name: Face Redactor 逐步解說

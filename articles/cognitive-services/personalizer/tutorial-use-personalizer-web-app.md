@@ -1,15 +1,17 @@
 ---
 title: 使用 Web 應用程式 - 個人化工具
 description: 使用個人化工具迴圈自訂 C# .Net Web 應用程式，以根據動作 (具有特性) 和內容特性來提供正確內容給使用者。
+ms.service: cognitive-services
+ms.subservice: personalizer
 ms.topic: tutorial
 ms.date: 06/10/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e9ce4c433a038008b1ffd75dc6c4b2f9d0b57fde
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: e06d191573219df44631f6ffaee86f895166de57
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935614"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777253"
 ---
 # <a name="tutorial-add-personalizer-to-a-net-web-app"></a>教學課程：將個人化工具新增至 .NET Web 應用程式
 
@@ -254,7 +256,7 @@ Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/530.99 (KHTML, like Gecko)
 透過網頁瀏覽器，您可以傳送排名要求和獎勵要求並查看其回應，以及從環境中擷取的 HTTP 要求特性。
 
 > [!div class="mx-imgBorder"]
-> ![建置和執行 HTTPRequestFeaturesExample 專案。 瀏覽器視窗隨即開啟，以顯示單頁應用程式。](./media/tutorial-web-app/web-app-single-page.png)
+> ![此螢幕擷取畫面顯示網頁瀏覽器中的 Http 要求功能範例。](./media/tutorial-web-app/web-app-single-page.png)
 
 ## <a name="demonstrate-the-personalizer-loop"></a>示範個人化工具迴圈
 
@@ -267,7 +269,7 @@ Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/530.99 (KHTML, like Gecko)
 1. 設定獎勵值，然後選取 [傳送獎勵要求] 按鈕。 如果您未變更獎勵值，則用戶端應用程式一律會將 `1` 值傳送給個人化工具。
 
     > [!div class="mx-imgBorder"]
-    > ![建置和執行 HTTPRequestFeaturesExample 專案。 瀏覽器視窗隨即開啟，以顯示單頁應用程式。](./media/tutorial-web-app/reward-score-api-call.png)
+    > ![此螢幕擷取畫面顯示 [獎勵要求] 區段。](./media/tutorial-web-app/reward-score-api-call.png)
 
     您自己未來的應用程式可能會在從使用者的用戶端行為以及伺服器上的商務邏輯收集資訊後產生獎勵分數。
 

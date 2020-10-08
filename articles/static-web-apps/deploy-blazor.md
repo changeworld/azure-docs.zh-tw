@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: cshoe
-ms.openlocfilehash: 2a8e0ec113b4d008f759c7d199c4dab823576e16
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 60e62228e33d2d86bb407e45802f5c0621a94049
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90929375"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761085"
 ---
 # <a name="tutorial-building-a-static-web-app-with-blazor-in-azure-static-web-apps"></a>教學課程：使用 Blazor 在 Azure Static Web Apps 中建置靜態 Web 應用程式
 
@@ -33,7 +33,7 @@ Azure Static Web Apps 可讓您建立無伺服器後端支援的靜態 Web 應�
 
 本教學課程中精選的應用程式是由三個不同的 Visual Studio 專案所組成：
 
-- **API**：C# Azure Functions 應用程式會實作 API 端點，提供天氣資訊給靜態應用程式。 `WeatherForecast` 物件的 [`WeatherForecastFunction`](https://github.com/staticwebev/blazor-starter/blob/main/Api/WeatherForecastFunction.cs) 會傳回陣列。
+- **API**：C# Azure Functions 應用程式會實作 API 端點，提供天氣資訊給靜態應用程式。 `WeatherForecast` 物件的 [`WeatherForecastFunction`](https://github.com/ssdeepak/blazor/blob/main/Api/WeatherForecastFunction.cs) 會傳回陣列。
 
 - **用戶端**：前端 Blazor Web 組件專案。 系統會實作[後援路由](#fallback-route)，確保所有路由都會提供 index.html檔案。
 
@@ -79,7 +79,7 @@ Azure Static Web Apps 可讓您建立無伺服器後端支援的靜態 Web 應�
 
 在基本資料區段中，先設定您的新應用程式，並將其連結至 GitHub 存放庫。
 
-:::image type="content" source="media/deploy-blazor/basics.png" alt-text="[基本] 索引標籤":::
+:::image type="content" source="media/deploy-blazor/basics.png" alt-text="完整的 Blazor 應用程式":::
 
 1. 選取您的 _Azure 訂用帳戶_
 1. 選取或建立新的 [資源群組]
@@ -91,7 +91,7 @@ Azure Static Web Apps 可讓您建立無伺服器後端支援的靜態 Web 應�
 
 當您使用 GitHub 登入後，請輸入存放庫資訊。
 
-:::image type="content" source="media/deploy-blazor/repository-details.png" alt-text="存放庫詳細資料":::
+:::image type="content" source="media/deploy-blazor/repository-details.png" alt-text="完整的 Blazor 應用程式":::
 
 1. 選取您慣用的 [組織]
 1. 從存放庫下拉式清單中選取 **my-first-static-blazor-app**
@@ -105,15 +105,15 @@ Azure Static Web Apps 可讓您建立無伺服器後端支援的靜態 Web 應�
 
 1. 選取 [檢閱 + 建立]。
 
-    :::image type="content" source="media/deploy-blazor/review-create.png" alt-text="檢閱建立按鈕":::
+    :::image type="content" source="media/deploy-blazor/review-create.png" alt-text="完整的 Blazor 應用程式":::
 
 1. 選取 [建立]  。
 
-    :::image type="content" source="media/deploy-blazor/create-button.png" alt-text="建立按鈕":::
+    :::image type="content" source="media/deploy-blazor/create-button.png" alt-text="完整的 Blazor 應用程式":::
 
 1. 選取 [前往資源]  。
 
-    :::image type="content" source="media/deploy-blazor/resource-button.png" alt-text="移至資源按鈕":::
+    :::image type="content" source="media/deploy-blazor/resource-button.png" alt-text="完整的 Blazor 應用程式":::
 
 ## <a name="view-the-website"></a>檢視網站
 
@@ -123,7 +123,7 @@ Azure Static Web Apps 可讓您建立無伺服器後端支援的靜態 Web 應�
 
 Static Web Apps 概觀視窗會顯示一系列的連結，協助您與 Web 應用程式互動。
 
-:::image type="content" source="./media/deploy-blazor/overview-window.png" alt-text="概觀視窗":::
+:::image type="content" source="./media/deploy-blazor/overview-window.png" alt-text="完整的 Blazor 應用程式":::
 
 1. 按一下顯示「按一下這裡檢查您的 GitHub Actions 執行狀態」的橫幅，會帶您前往針對您存放庫執行的 GitHub Actions。 一旦您確認部署作業已完成，您就可以透過產生的 URL 瀏覽至您的網站。
 

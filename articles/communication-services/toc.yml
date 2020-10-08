@@ -20,10 +20,14 @@
       items:
         - name: 取得電話號碼
           href: quickstarts/telephony-sms/get-phone-number.md
+        - name: 將電話新增至您的應用程式
+          href: quickstarts/voice-video-calling/pstn-call.md
         - name: 傳送 SMS 訊息
           href: quickstarts/telephony-sms/send.md
         - name: 處理 SMS 事件
           href: quickstarts/telephony-sms/handle-sms-events.md
+        - name: 在 Azure Logic Apps 中傳送 SMS
+          href: quickstarts/telephony-sms/logic-app.md
     - name: 語音和視訊通話
       items:
         - name: 將語音電話新增至您的應用程式

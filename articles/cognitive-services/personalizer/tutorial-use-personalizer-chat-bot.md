@@ -1,15 +1,17 @@
 ---
 title: 在聊天機器人中使用個人化工具 - 個人化工具
 description: 使用個人化工具迴圈自訂 C# .Net 聊天機器人，以根據動作 (具有特性) 和內容特性來提供正確內容給使用者。
+ms.service: cognitive-services
+ms.subservice: personalizer
 ms.topic: tutorial
 ms.date: 07/17/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2d95a6999186b964e59ff8f287d917b1f93e1813
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 3ae22294d86ab65be0f09b734735885177c1cf63
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90089882"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777304"
 ---
 # <a name="tutorial-use-personalizer-in-net-chat-bot"></a>教學課程：在 .NET 聊天機器人中使用個人化工具
 

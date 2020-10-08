@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: kirankk
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 514fe30da9c0e232c168992c2aabbb484644aa99
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 912b4966312d8925f70deeed99042d2701641f49
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89015300"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91801506"
 ---
 # <a name="tutorial-build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account"></a>教學課程：建置 .NET 主控台應用程式來管理 Azure Cosmos DB SQL API 帳戶中的資料
 
@@ -70,7 +70,7 @@ ms.locfileid: "89015300"
 1. 在 [方案總管] 中，以滑鼠右鍵按一下 Visual Studio 解決方案底下的新主控台應用程式，然後選取 [管理 NuGet 套件]。
 1. 在 [NuGet 套件管理員] 中，選取 [瀏覽]並搜尋 *Microsoft.Azure.Cosmos*。 選擇 [Microsoft.Azure.Cosmos]，然後選取 [安裝]。
 
-   :::image type="content" source="./media/sql-api-get-started/cosmos-getting-started-manage-nuget-2019.png" alt-text="安裝適用於 Azure Cosmos DB 用戶端 SDK 的 NuGet":::
+   :::image type="content" source="./media/sql-api-get-started/cosmos-getting-started-manage-nuget-2019.png" alt-text="設定您的專案":::
 
    「Azure Cosmos DB SQL API 用戶端程式庫」的套件識別碼是 [Microsoft Azure Cosmos DB 用戶端程式庫](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) \(英文\)。
 
@@ -121,7 +121,7 @@ ms.locfileid: "89015300"
 
 1. 開啟 [Azure 入口網站](https://portal.azure.com)。 尋找 Azure Cosmos DB 帳戶，然後選取 [金鑰]。
 
-   :::image type="content" source="./media/sql-api-get-started/cosmos-getting-started-portal-keys.png" alt-text="從 Azure 入口網站取得 Azure Cosmos DB 金鑰":::
+   :::image type="content" source="./media/sql-api-get-started/cosmos-getting-started-portal-keys.png" alt-text="設定您的專案":::
 
 1. 在 *Program.cs* 中，以 [URI] 的值取代 `<your endpoint URL>`。 以 [主要金鑰] 的值取代 `<your primary key>`。
 
@@ -278,7 +278,7 @@ ms.locfileid: "89015300"
 >
 >
 
-使用 `CosmosDatabase` 類別中的 [**CreateContainerIfNotExistsAsync**](/dotnet/api/microsoft.azure.cosmos.database.createcontainerifnotexistsasync?view=azure-dotnet#Microsoft_Azure_Cosmos_Database_CreateContainerIfNotExistsAsync_Microsoft_Azure_Cosmos_ContainerProperties_System_Nullable_System_Int32__Microsoft_Azure_Cosmos_RequestOptions_System_Threading_CancellationToken_) 或 [**CreateContainerAsync**](/dotnet/api/microsoft.azure.cosmos.database.createcontainerasync?view=azure-dotnet#Microsoft_Azure_Cosmos_Database_CreateContainerAsync_Microsoft_Azure_Cosmos_ContainerProperties_System_Nullable_System_Int32__Microsoft_Azure_Cosmos_RequestOptions_System_Threading_CancellationToken_) 函式可以建立容器。 容器中包含項目 (在 SQL API 中為 JSON 文件) 和 JavaScript 中相關聯的伺服器端應用程式邏輯，例如預存程序、使用者定義的函式和觸發程序。
+使用 `CosmosDatabase` 類別中的 [**CreateContainerIfNotExistsAsync**](/dotnet/api/microsoft.azure.cosmos.database.createcontainerifnotexistsasync?view=azure-dotnet&preserve-view=true#Microsoft_Azure_Cosmos_Database_CreateContainerIfNotExistsAsync_Microsoft_Azure_Cosmos_ContainerProperties_System_Nullable_System_Int32__Microsoft_Azure_Cosmos_RequestOptions_System_Threading_CancellationToken_) 或 [**CreateContainerAsync**](/dotnet/api/microsoft.azure.cosmos.database.createcontainerasync?view=azure-dotnet&preserve-view=true#Microsoft_Azure_Cosmos_Database_CreateContainerAsync_Microsoft_Azure_Cosmos_ContainerProperties_System_Nullable_System_Int32__Microsoft_Azure_Cosmos_RequestOptions_System_Threading_CancellationToken_) 函式可以建立容器。 容器中包含項目 (在 SQL API 中為 JSON 文件) 和 JavaScript 中相關聯的伺服器端應用程式邏輯，例如預存程序、使用者定義的函式和觸發程序。
 
 1. 將 `CreateContainerAsync` 方法複製並貼到 `CreateDatabaseAsync` 方法下方。 `CreateContainerAsync` 會以識別碼 `FamilyContainer` 建立新容器 (如果該容器不存在)，其做法是使用由 `LastName` 屬性分割的 `containerId` 欄位中指定的識別碼。
 
@@ -304,13 +304,13 @@ ms.locfileid: "89015300"
 
 ## <a name="step-6-add-items-to-the-container"></a><a id="CreateDoc"></a>步驟 6：將項目新增至容器
 
-`CosmosContainer`類別的 [**CreateItemAsync**](/dotnet/api/microsoft.azure.cosmos.container.createitemasync?view=azure-dotnet#Microsoft_Azure_Cosmos_Container_CreateItemAsync__1___0_System_Nullable_Microsoft_Azure_Cosmos_PartitionKey__Microsoft_Azure_Cosmos_ItemRequestOptions_System_Threading_CancellationToken_)方法可以建立項目。 使用 SQL API 時，預期的項目會是文件，這是使用者定義的任意 JSON 內容。 您現在可以將項目插入 Azure Cosmos 容器中。
+`CosmosContainer`類別的 [**CreateItemAsync**](/dotnet/api/microsoft.azure.cosmos.container.createitemasync?view=azure-dotnet&preserve-view=true#Microsoft_Azure_Cosmos_Container_CreateItemAsync__1___0_System_Nullable_Microsoft_Azure_Cosmos_PartitionKey__Microsoft_Azure_Cosmos_ItemRequestOptions_System_Threading_CancellationToken_)方法可以建立項目。 使用 SQL API 時，預期的項目會是文件，這是使用者定義的任意 JSON 內容。 您現在可以將項目插入 Azure Cosmos 容器中。
 
 首先，我們來建立 `Family` 類別，以代表此範例中儲存在 Azure Cosmos DB 內的物件。 我們也會建立 `Family` 內使用的 `Parent`、`Child`、`Pet`、`Address` 子類別。 項目必須將 `Id` 屬性序列化為 JSON 中的 `id`。
 
 1. 選取 Ctrl+Shift+A 以開啟 [新增項目]。 將新的類別 `Family.cs` 新增至您的專案。
 
-    :::image type="content" source="./media/sql-api-get-started/cosmos-getting-started-add-family-class-2019.png" alt-text="將新的 Family.cs 類別新增至專案的螢幕擷取畫面":::
+    :::image type="content" source="./media/sql-api-get-started/cosmos-getting-started-add-family-class-2019.png" alt-text="設定您的專案":::
 
 1. 將 `Family`、`Parent`、`Child`、`Pet` 和 `Address` 類別複製並貼到 `Family.cs` 中。
 

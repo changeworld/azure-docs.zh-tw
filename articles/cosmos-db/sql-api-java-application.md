@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 05/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 9daa09209818b9e01738630911a1bb926e3c257d
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 913bc4373785d9341064e505ddce84fe43f727b1
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88079938"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91801591"
 ---
 # <a name="tutorial-build-a-java-web-application-using-azure-cosmos-db-and-the-sql-api"></a>教學課程：使用 Azure Cosmos DB 和 SQL API 來建置 Java Web 應用程式
 
@@ -47,7 +47,7 @@ ms.locfileid: "88079938"
 
   [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
-* [Java Development Kit (JDK) 7+](/java/azure/jdk/?view=azure-java-stable)。
+* [Java Development Kit (JDK) 7+](/java/azure/jdk/?view=azure-java-stable&preserve-view=true)。
 * [Eclipse IDE for Java EE Developers。](https://www.eclipse.org/downloads/packages/release/luna/sr1/eclipse-ide-java-ee-developers)
 * [已啟用某個 Java Runtime Environment (例如 Tomcat 或 Jetty) 的 Azure 網站。](../app-service/quickstart-java.md)
 
@@ -67,7 +67,7 @@ ms.locfileid: "88079938"
 
 1. 首先，我們將從建立 Java 專案開始。 啟動 Eclipse，依序按一下 [檔案]、[新增] 和 [動態 Web 專案]。 如果您在可用專案中沒有看到 [動態 Web 專案]，請執行下列動作：依序按一下 [檔案]、[新增]、[專案]，展開 [Web]，按一下 [動態 Web 專案]，然後按 [下一步]。
    
-    :::image type="content" source="./media/sql-api-java-application/image10.png" alt-text="JSP Java 應用程式開發":::
+    :::image type="content" source="./media/sql-api-java-application/image10.png" alt-text="我的待辦事項清單 Java 應用程式":::
 
 1. 在 [專案名稱] 方塊中輸入專案名稱，然後在 [目標執行階段] 下拉式選單中，選擇性地選取值 (例如 Apache Tomcat v7.0)，然後按一下 [完成]。 選取目標執行階段可讓您透過 Eclipse 在本機執行專案。
 
@@ -75,7 +75,7 @@ ms.locfileid: "88079938"
 
 1. 在 [新增 JSP 檔案] 對話方塊中，將檔案命名為 **index.jsp**。 將上層資料夾保持為 **WebContent**，如下圖所示，然後按 [下一步]。
    
-    :::image type="content" source="./media/sql-api-java-application/image11.png" alt-text="建立新的 JSP 檔案 - Java Web 應用程式教學課程":::
+    :::image type="content" source="./media/sql-api-java-application/image11.png" alt-text="我的待辦事項清單 Java 應用程式":::
 
 1. 在 [選取 JSP 範本] 對話方塊中，基於本教學課程的目的，選取 [新增 JSP 檔案 (html)]，然後按一下 [完成]。
 
@@ -91,7 +91,7 @@ ms.locfileid: "88079938"
 
 1. 如果您在步驟 2 中已設定目標執行階段，就可以依序按一下 [專案] 和 [執行]，即可在本機執行您的 JSP 應用程式：
 
-   :::image type="content" source="./media/sql-api-java-application/image12.png" alt-text="Hello World – Java 應用程式教學課程":::
+   :::image type="content" source="./media/sql-api-java-application/image12.png" alt-text="我的待辦事項清單 Java 應用程式":::
 
 ## <a name="install-the-sql-java-sdk"></a><a id="InstallSDK"></a>安裝 SQL Java SDK
 

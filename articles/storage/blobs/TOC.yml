@@ -462,6 +462,8 @@
               href: storage-blob-static-website-how-to.md
             - name: 與 Azure CDN 整合
               href: static-website-content-delivery-network.md
+            - name: 使用 GitHub Actions 將靜態網站部署至 Azure 儲存體
+              href: storage-blobs-static-site-github-actions.md
         - name: 使用自訂網域
           href: storage-custom-domain-name.md
         - name: 將事件路由至自訂端點
@@ -646,7 +648,7 @@
   items:
     - name: 切換至 Data Lake Storage Gen1 文件
       href: /azure/data-lake-store/
-    - name: 概觀
+    - name: 總覽
       items:
         - name: Data Lake Storage 簡介
           href: data-lake-storage-introduction.md

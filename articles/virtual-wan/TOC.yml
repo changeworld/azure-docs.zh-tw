@@ -134,14 +134,12 @@
       items:
         - name: 在中樞安裝 Azure 防火牆
           href: howto-firewall.md
+        - name: 設定 Private Link 連線能力
+          href: howto-private-link.md
     - name: 監視
       items:
         - name: 記錄和計量
           href: logs-metrics.md
-    - name: Private Link
-      items:
-        - name: 設定 Private Link 連線能力
-          href: howto-private-link.md
 - name: 參考
   items:
     - name: Azure PowerShell

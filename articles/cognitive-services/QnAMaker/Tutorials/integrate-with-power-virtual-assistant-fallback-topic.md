@@ -1,14 +1,16 @@
 ---
 title: 教學課程：與 Power Virtual Agents 整合 - QnA Maker
 description: 在本教學課程中，使用主動式學習來改善知識庫的品質。 在不移除或變更現有問題的情況下，進行審查、接受或拒絕、新增。
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: tutorial
 ms.date: 06/08/2020
-ms.openlocfilehash: f1d51f6ad8892252161238eb71fbb02f463463fd
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.openlocfilehash: 42b50fcf0df27ddbc3e587a7d8e038e4979935ae
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84635320"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777417"
 ---
 # <a name="tutorial-add-your-knowledge-base-to-power-virtual-agents"></a>教學課程：將知識庫新增至 Power Virtual Agents
 建立並擴充 [Power Virtual Agents](https://powervirtualagents.microsoft.com/) Bot，以從您的知識庫提供解答。
@@ -123,7 +125,7 @@ ms.locfileid: "84635320"
 
 1. 選取流至 [訊息] 方塊的 **+** 連接器，然後選取 [呼叫動作]。
 
-    :::image type="content" source="../media/how-to-integrate-power-virtual-agent/create-new-item-call-an-action.png" alt-text="呼叫動作的部分螢幕擷取畫面。":::
+    :::image type="content" source="../media/how-to-integrate-power-virtual-agent/create-new-item-call-an-action.png" alt-text="對話流程的部分螢幕擷取畫面，其中已反白顯示刪除選項。":::
 
 1. 選取 [建立流程]。 此流程會帶您前往 Power Automate 入口網站。
 
@@ -133,7 +135,7 @@ ms.locfileid: "84635320"
 
     Power Automate 會開啟新的範本。 您將不會使用這個新範本。
 
-    :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-automate-flow-initial-template.png" alt-text="Power Automate 的部分螢幕擷取畫面，其中顯示新流程範本。":::
+    :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-automate-flow-initial-template.png" alt-text="對話流程的部分螢幕擷取畫面，其中已反白顯示刪除選項。":::
 
 ## <a name="create-a-power-automate-flow-to-connect-to-your-knowledge-base"></a>建立 Power Automate 流程以連線到您的知識庫
 
@@ -147,12 +149,12 @@ ms.locfileid: "84635320"
 
 1. 在 QnA Maker 流程的新畫面上，選取 [繼續]。
 
-    :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-automate-qna-flow-template-continue.png" alt-text="QnA Maker 範本流程的部分螢幕擷取畫面，其中已醒目提示 [繼續] 按鈕。":::
+    :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-automate-qna-flow-template-continue.png" alt-text="對話流程的部分螢幕擷取畫面，其中已反白顯示刪除選項。":::
 
 1. 選取 [產生答案] 動作方塊，然後填入來自先前標題為[建立和發佈知識庫](#create-and-publish-a-knowledge-base)之小節的 QnA Maker 設定。 下圖中的**服務主機**指的是您的知識庫主機 **Host**，其格式為 `https://YOUR-RESOURCE-NAME.azurewebsites.net/qnamaker`。
 
 
-    :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-virtual-agent-fill-in-generate-answer-settings.png" alt-text="QnA Maker 範本流程的部分螢幕擷取畫面，其中已醒目提示 [繼續] 按鈕。":::
+    :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-virtual-agent-fill-in-generate-answer-settings.png" alt-text="對話流程的部分螢幕擷取畫面，其中已反白顯示刪除選項。":::
 
 1. 選取 [儲存] 以儲存流程。
 
@@ -188,11 +190,11 @@ ms.locfileid: "84635320"
 
 1. 從 [流程] 快顯視窗中，選取名為**使用 QnA Maker 知識庫產生答案 ...** 的新流程。新動作會出現在流程中。
 
-    :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-virtual-agent-flow-after-adding-action.png" alt-text="新增 QnA Maker 流程後，Power Virtual Agent 主題交談畫布的部分螢幕擷取畫面。":::
+    :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-virtual-agent-flow-after-adding-action.png" alt-text="對話流程的部分螢幕擷取畫面，其中已反白顯示刪除選項。":::
 
 1. 若要正確地將輸入變數設定為 QnA Maker 動作，請選取 [選取變數]，然後選取 [bot.UnrecognizedTriggerPhrase]。
 
-    :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-virtual-agent-selection-action-input.png" alt-text="輸入變數時，Power Virtual Agent 主題交談畫布的部分螢幕擷取畫面。":::
+    :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-virtual-agent-selection-action-input.png" alt-text="對話流程的部分螢幕擷取畫面，其中已反白顯示刪除選項。":::
 
 
 1. 若要正確地將輸出變數設定為 QnA Maker 動作，請在 [訊息] 動作中選取 [UnrecognizedTriggerPhrase]，然後選取圖示以插入變數 `{x}`，然後選取 [FinalAnswer]。
@@ -202,7 +204,7 @@ ms.locfileid: "84635320"
 最後代理程式畫布看起來會像這樣。
 
 > [!div class="mx-imgBorder"]
-> ![最終代理程式畫布的螢幕擷取畫面](../media/how-to-integrate-power-virtual-agent/power-virtual-agent-topic-authoring-canvas-full-flow.png)
+> ![螢幕擷取畫面顯示最終代理程式畫布，其中具有 [觸發片語]、[動作]，以及 [訊息] 區段。](../media/how-to-integrate-power-virtual-agent/power-virtual-agent-topic-authoring-canvas-full-flow.png)
 
 ## <a name="test-the-agent"></a>測試代理程式
 
@@ -219,7 +221,7 @@ ms.locfileid: "84635320"
     |5|是|用以回覆 `Can I help with anything else?`|
     |6|如何改善查詢預測的輸送量效能？|此問題會觸發後援動作，該動作會將文字傳送給您的知識庫進行回答， 而後就會顯示解答。 個別動作的綠色核取記號表示每個動作都成功。|
 
-    :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-virtual-agent-test-tracked.png" alt-text="聊天機器人的螢幕擷取畫面，其畫布會指出成功動作的綠色核取記號。":::
+    :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-virtual-agent-test-tracked.png" alt-text="對話流程的部分螢幕擷取畫面，其中已反白顯示刪除選項。":::
 
 ## <a name="publish-your-bot"></a>發佈您的 Bot
 

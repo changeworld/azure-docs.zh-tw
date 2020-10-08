@@ -8,18 +8,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 05/27/2020
+ms.date: 10/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 9d8801037be55a262268afcd6e8f5751d158c76e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 478f7b7671a71d0d1f1f56c5d1d9889db81f7d37
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548509"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760188"
 ---
 # <a name="tutorial-moderate-facebook-posts-and-commands-with-azure-content-moderator"></a>教學課程：使用 Azure Content Moderator 仲裁 Facebook 文章和留言
 
 在本教學課程中，您將了解如何使用 Azure Content Moderator 來協助仲裁 Facebook 頁面上的文章和留言。 Facebook 會將訪客張貼的內容傳送給 Content Moderator 服務。 然後您的 Content Moderator 工作流程就會根據內容分數和閾值，發佈內容或在審核工具內建立審核項目。 如需此案例的工作範例，請參閱 [Build 2017 示範影片](https://channel9.msdn.com/Events/Build/2017/T6033)。
+
+> [!IMPORTANT]
+> 2018 年時，Facebook 已對 Facebook 應用程式實作更嚴格的調查原則。 如果您的應用程式未經過 Facebook 檢閱小組的檢閱與核准，您將無法完成本教學課程的步驟。
 
 本教學課程說明如何：
 
@@ -33,9 +36,6 @@ ms.locfileid: "88548509"
 此圖說明此案例中的每個元件：
 
 ![透過 "FBListener" 接收 Facebook 資訊並透過 "CMListener" 傳送資訊的 Content Moderator 圖示](images/tutorial-facebook-moderation.png)
-
-> [!IMPORTANT]
-> 2018 年時，Facebook 已對 Facebook 應用程式實作更嚴格的調查原則。 如果您的應用程式未經過 Facebook 檢閱小組的檢閱與核准，您將無法完成本教學課程的步驟。
 
 ## <a name="prerequisites"></a>必要條件
 
