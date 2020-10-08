@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 03/29/2019
 ms.author: cephalin
 ms.custom: include file
-ms.openlocfilehash: 060bc1039982cc0a77214d5dbe2a08de7a839c84
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 458cd36a35ea37b2a317fe98fdeb5acc69a36ce8
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "67174458"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91822799"
 ---
 若要透過容器直接開啟 SSH 工作階段，您的應用程式應在執行中。
 
-在瀏覽器中貼入下列 URL，並以您的應用程式名稱取代 \<app-name>：
+在瀏覽器中貼入下列 URL，並以您的應用程式名稱取代 `<app-name>`：
 
 ```
 https://<app-name>.scm.azurewebsites.net/webssh/host

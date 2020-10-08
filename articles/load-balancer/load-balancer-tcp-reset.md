@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/09/2019
+ms.date: 10/07/2020
 ms.author: allensu
-ms.openlocfilehash: f77dd21a2c017ee41f955fdf5e0848df190dec2a
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: 060048bf786f424d5df6eb8fb4813877acb0fea0
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91651270"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91823206"
 ---
 # <a name="load-balancer-tcp-reset-and-idle-timeout"></a>Load Balancer TCP 重設和閒置超時
 
@@ -40,7 +40,11 @@ ms.locfileid: "91651270"
 
 ## <a name="configurable-tcp-idle-timeout"></a>可設定的 TCP 閒置逾時
 
-Azure Load Balancer 的閒置 timeout 設定為4分鐘到120分鐘。 根據預設，設定為 4 分鐘。 如果閒置期間超過逾時值，即無法保證仍能維持用戶端與雲端服務之間的 TCP 或 HTTP 工作階段。
+Azure Load Balancer 具有下列閒置超時範圍：
+-  輸出規則為4分鐘到100分鐘
+-  針對 Load Balancer 規則和輸入 NAT 規則，4分鐘到30分鐘
+
+根據預設，設定為 4 分鐘。 如果閒置期間超過逾時值，即無法保證仍能維持用戶端與雲端服務之間的 TCP 或 HTTP 工作階段。
 
 當連線關閉時，您的用戶端應用程式可能會收到下列錯誤訊息：「基礎連線已關閉：應該保持運作的連接卻被伺服器關閉。」
 
@@ -57,7 +61,7 @@ TCP Keep-Alive 適用於電池使用時間不受約束的情節。 不建議用�
 - 設定 HA 埠的內部負載平衡器不會傳送 TCP 重設。
 - TCP 閒置超時不會影響 UDP 通訊協定上的負載平衡規則。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - 瞭解 [Standard Load Balancer](load-balancer-standard-overview.md)。
 - 深入瞭解 [輸出規則](load-balancer-outbound-rules-overview.md)。

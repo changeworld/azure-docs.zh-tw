@@ -1,6 +1,6 @@
 ---
-title: 對應資料流程視窗轉換
-description: Azure Data Factory 對應資料流程視窗轉換
+title: 對應資料流程中的視窗轉換
+description: Azure Data Factory 對應的資料流程視窗轉換
 author: kromerm
 ms.author: makromer
 ms.reviewer: douglasl
@@ -8,14 +8,14 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/30/2019
-ms.openlocfilehash: 1f440a5877dcefeca8c1baa82fad4299b5ce7bce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0231fc8919444558abcbc965ad127f7372eceb66
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81606230"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91823600"
 ---
-# <a name="azure-data-factory-window-transformation"></a>Azure Data Factory 視窗轉換
+# <a name="window-transformation-in-mapping-data-flow"></a>對應資料流程中的視窗轉換
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
@@ -47,6 +47,6 @@ Over 子句的另一個部分是設定 ```Order By```。 這會設定資料排�
 
 彙總及分析的函式 (可供您在 ADF 資料流程運算式語言透過運算式產生器中使用) 完整清單如下：https://aka.ms/dataflowexpressions。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
-如果您要依匯總尋找簡單的群組，請使用「[匯總」轉換](data-flow-aggregate.md)
+如果您要尋找簡單的分組依據匯總，請使用「 [匯總」轉換](data-flow-aggregate.md)

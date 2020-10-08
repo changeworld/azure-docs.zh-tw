@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020, devx-track-python
 ms.date: 04/29/2020
-ms.openlocfilehash: 09d1063f704c37eb31546be08765f2b5b6fb8632
-ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
+ms.openlocfilehash: a6ad1c068a41b4b865c148ebb7cdb509821609d4
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90060742"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91823409"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>使用指令碼動作在 Azure HDInsight 上安全地管理 Python 環境
 
-HDInsight 在 Spark 叢集中有兩個內建 Python 安裝，Anaconda Python 2.7 和 Python 3.5。 客戶可能需要自訂 Python 環境。 如同安裝外部 Python 套件或其他 Python 版本。 在這裡，我們將示範在 HDInsight 上安全地管理適用於 Apache Spark 叢集的 Python 環境最佳做法。
+HDInsight 在 Spark 叢集中有兩個內建 Python 安裝，Anaconda Python 2.7 和 Python 3.5。 客戶可能需要自訂 Python 環境，例如安裝外部 Python 套件。 在這裡，我們將示範在 HDInsight 上安全地管理適用於 Apache Spark 叢集的 Python 環境最佳做法。
 
 ## <a name="prerequisites"></a>Prerequisites
 

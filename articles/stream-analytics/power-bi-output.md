@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: d398cfe063dbbb2bc87a3debf1669afa6a16b43e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: aee5cb077604e5fc95647eca0e6570ea3582a785
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90891991"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91823002"
 ---
 # <a name="power-bi-output-from-azure-stream-analytics"></a>Azure 串流分析的 Power BI 輸出
 
@@ -43,6 +43,9 @@ Azure China 21Vianet 和 Azure 德國 (T-Systems International) 區域目前無�
 如果 Power BI 資料集和資料表結構描述尚不存在，則 Azure 串流分析會為使用者建立。 在其他情況下，則會以新的值更新資料表。 目前，資料集內只能有一個資料表存在。 
 
 Power BI 是使用先進先出(FIFO) 保留原則。 將會在資料表中收集資料，直到達到 200,000 個資料列為止。
+
+> [!NOTE]
+> 我們不建議使用多個輸出來寫入相同的資料集，因為這可能會導致數個問題。 每個輸出都會嘗試獨立建立 Power BI 資料集，這可能會導致多個具有相同名稱的資料集。 此外，如果輸出的架構不一致，則資料集會在每次寫入時變更架構，導致太多架構變更要求。 即使可以避免這些問題，但多個輸出的效能會比單一合併輸出的效能低。
 
 ### <a name="convert-a-data-type-from-stream-analytics-to-power-bi"></a>將資料類型從串流分析轉換至 Power BI
 

@@ -8,13 +8,13 @@ ms.author: brjohnst
 tags: complex data types; compound data types; aggregate data types
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 07/12/2020
-ms.openlocfilehash: 5b430d5a8f0c2702617b7f6b3935e1b169753552
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.date: 10/07/2020
+ms.openlocfilehash: ee1c0957761fc1c8b9ca80477defae8cef044827
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91530849"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91824476"
 ---
 # <a name="how-to-model-complex-data-types-in-azure-cognitive-search"></a>如何在 Azure 認知搜尋中建立複雜資料類型的模型
 
@@ -35,11 +35,13 @@ Azure 認知搜尋原本就支援複雜類型和集合。 這些類型可讓您�
 
 下列 JSON 檔是由簡單的欄位和複雜欄位所組成。 複雜欄位（例如 `Address` 和 `Rooms` ）有子欄位。 `Address` 針對這些子欄位有一組值，因為它是檔中的單一物件。 相反地， `Rooms` 有多組值的子欄位，集合中的每個物件各有一個值。
 
+
 ```json
 {
   "HotelId": "1",
   "HotelName": "Secret Point Motel",
   "Description": "Ideally located on the main commercial artery of the city in the heart of New York.",
+  "Tags": ["Free wifi", "on-site parking", "indoor pool", "continental breakfast"]
   "Address": {
     "StreetAddress": "677 5th Ave",
     "City": "New York",
@@ -48,17 +50,26 @@ Azure 認知搜尋原本就支援複雜類型和集合。 這些類型可讓您�
   "Rooms": [
     {
       "Description": "Budget Room, 1 Queen Bed (Cityside)",
-      "Type": "Budget Room",
-      "BaseRate": 96.99
+      "RoomNumber": 1105,
+      "BaseRate": 96.99,
     },
     {
       "Description": "Deluxe Room, 2 Double Beds (City View)",
       "Type": "Deluxe Room",
-      "BaseRate": 150.99
-    },
+      "BaseRate": 150.99,
+    }
+    . . .
   ]
 }
 ```
+
+<name = "索引-複雜類型></a>
+
+## <a name="indexing-complex-types"></a>編制複雜類型的索引
+
+在編制索引期間，單一檔內的所有複雜集合中最多可以有3000個元素。 複雜集合的元素是該集合的成員，因此，如果會議室 (飯店範例) 中唯一的複雜集合，則每個空間都是一個元素。 在上述範例中，如果「秘密點 Motel」有500室，旅館檔會有500房間元素。 針對嵌套的複雜集合，除了外部 (父) 元素之外，也會計算每個嵌套的元素。
+
+這種限制只適用于複雜的集合，而非複雜類型 (例如位址) 或字串集合 (例如) 的標記。
 
 ## <a name="creating-complex-fields"></a>建立複雜欄位
 
@@ -93,7 +104,7 @@ Azure 認知搜尋原本就支援複雜類型和集合。 這些類型可讓您�
 
 ## <a name="updating-complex-fields"></a>更新複雜欄位
 
-所有適用于一般欄位的重新 [編制索引規則](search-howto-reindex.md) 仍適用于複雜欄位。 在這裡重申幾個主要規則，加入欄位不需要重建索引，但大部分的修改都有。
+所有適用于一般欄位的重新 [編制索引規則](search-howto-reindex.md) 仍適用于複雜欄位。 在這裡重申幾個主要規則，將欄位加入至複雜型別不需要重建索引，但大部分的修改都有。
 
 ### <a name="structural-updates-to-the-definition"></a>定義的結構更新
 
@@ -151,7 +162,7 @@ Azure 認知搜尋原本就支援複雜類型和集合。 這些類型可讓您�
 
 如同最上層的簡單欄位，如果複雜欄位的簡單子欄位在索引定義中的可 **篩選** 屬性設定為，則只能包含在篩選中 `true` 。 如需詳細資訊，請參閱 [建立索引 API 參考](/rest/api/searchservice/create-index)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 在 [匯**入資料**] 嚮導中，嘗試[旅館資料集](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/README.md)。 您將需要讀我檔案中提供的 Cosmos DB 連接資訊，才能存取資料。
 

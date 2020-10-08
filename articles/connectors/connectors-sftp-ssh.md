@@ -8,12 +8,12 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 10/02/2020
 tags: connectors
-ms.openlocfilehash: b832edca79cbbff39b7d526a21b1fbe95bd7a2ad
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: cb851734dc8f71347168e7ac16ac0752845dda7b
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91761119"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91823619"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>藉由使用 SSH 和 Azure Logic Apps 來監視、建立及管理 SFTP 檔案
 
@@ -259,7 +259,7 @@ SFTP-SSH 觸發程式的運作方式是輪詢 SFTP 檔案系統，並尋找自�
 
 1. 連接逾時是20秒。 請確定 SFTP 伺服器具有良好的效能，而 intermidiate 裝置（例如防火牆）沒有增加額外負荷。 
 
-2. 如果有相關的防火牆，請確定 **受管理的連接器 IP** 位址已列入允許清單。 您可以在 [**這裡**] 找到邏輯應用程式區域的這些 IP 位址 (https://docs.microsoft.com/azure/logic-apps/logic-apps-limits-and-config#multi-tenant-azure---outbound-ip-addresses)
+2. 如果有相關的防火牆，請確定 **受管理的連接器 IP** 位址已新增至核准的清單。 您可以在 [**這裡**] 找到邏輯應用程式區域的這些 IP 位址 (https://docs.microsoft.com/azure/logic-apps/logic-apps-limits-and-config#multi-tenant-azure---outbound-ip-addresses)
 
 3. 如果這是間歇性問題，請測試重試設定，以查看是否有比預設4還高的重試計數。
 
@@ -279,4 +279,3 @@ SFTP-SSH 觸發程式的運作方式是輪詢 SFTP 檔案系統，並尋找自�
 ## <a name="next-steps"></a>後續步驟
 
 * 了解其他 [Logic Apps 連接器](../connectors/apis-list.md)
-

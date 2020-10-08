@@ -1,5 +1,5 @@
 ---
-title: 對應資料流程 Unpivot 轉換
+title: 對應資料流程中的 Unpivot 轉換
 description: Azure Data Factory 對應的資料流程 Unpivot 轉換
 author: kromerm
 ms.author: makromer
@@ -7,18 +7,18 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/14/2020
-ms.openlocfilehash: e7c0a4cd6e44994c4b002fcc2e5fde441cf22283
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 38986c3f93856981e903ae93ed7788ae01fc6d5b
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87541646"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91823587"
 ---
-# <a name="azure-data-factory-unpivot-transformation"></a>Azure Data Factory Unpivot 轉換
+# <a name="unpivot-transformation-in-mapping-data-flow"></a>對應資料流程中的 Unpivot 轉換
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-使用 ADF 對應資料流程中的 Unpivot 做為將未正規化的資料集轉換成更正規化版本的方法，方法是將單一記錄中多個資料行的值擴充為單一資料行中具有相同值的多筆記錄。
+在 ADF 對應資料流程中使用 Unpivot，藉由將單一記錄中多個資料行的值展開成單一資料行中具有相同值的多筆記錄，將未正規化的資料集轉換成更正規化的版本。
 
 ![取消樞紐轉換](media/data-flow/unpivot1.png "Unpivot 選項1")
 
@@ -44,9 +44,9 @@ ms.locfileid: "87541646"
 
 (選擇性) 您可以設定對於每個新資料行名稱從資料列值新增前置詞、中置詞及後置詞的命名模式。
 
-比方說，根據 "Region" 對 "Sales" 進行樞紐處理，就會得到來自每個銷售值的新資料行值。 例如： "25"、"50"、"1000"、.。。不過，如果您設定「銷售」的前置詞值，則「銷售」會在值前面加上。
+比方說，根據 "Region" 對 "Sales" 進行樞紐處理，就會得到來自每個銷售值的新資料行值。 例如： "25"、"50"、"1000"、.。。但是，如果您設定 "Sales" 的前置詞值，則 "Sales" 將會加上值的前置詞。
 
-![此圖顯示使用水果資料行作為 unipivot 金鑰的 unipivot 轉換前後的 PO、廠商和水果資料行。](media/data-flow/unpivot3.png)
+![顯示使用水果資料行作為 unipivot 索引鍵的 unipivot 轉換之前和之後的 PO、供應商和水果資料行的影像。](media/data-flow/unpivot3.png)
 
 設定為「一般」資料行的排列方式，會使用彙總值將已樞紐的資料行分組在一起。 將資料行排列方式設定為「橫向」會在資料行和值之間交替。
 
@@ -54,6 +54,6 @@ ms.locfileid: "87541646"
 
 最終之取消樞紐的資料結果集所顯示的資料行總計，現已取消樞紐為個別的資料列值。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
-使用 [[樞紐分析表] 轉換](data-flow-pivot.md)來將資料列資料行。
+使用 [pivot 轉換](data-flow-pivot.md) 將資料列樞紐分析表資料行。

@@ -1,18 +1,18 @@
 ---
 title: 適用於 Azure Data Lake Analytics 的 Azure 原則法規合規性控制措施
 description: 列出適用於 Azure Data Lake Analytics 的 Azure 原則法規合規性控制措施。 這些內建原則定義提供管理 Azure 資源合規性的常見方法。
-ms.date: 09/16/2020
+ms.date: 10/07/2020
 ms.topic: sample
 author: hrasheed-msft
 ms.author: hrasheed
 ms.service: data-lake-analytics
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 763cac5a3a797a47e74c8e88362d6ed0915292b0
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 1ac1f97e450538711ccfe07b1f435377fe58b83c
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90984094"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825019"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-data-lake-analytics"></a>適用於 Azure Data Lake Analytics 的 Azure 原則法規合規性控制措施
 
