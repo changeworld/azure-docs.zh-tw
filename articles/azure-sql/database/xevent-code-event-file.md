@@ -6,19 +6,19 @@ ms.service: sql-database
 ms.subservice: performance
 ms.custom: sqldbrb=1
 ms.devlang: PowerShell
-ms.topic: conceptual
+ms.topic: sample
 author: MightyPen
 ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 06/06/2020
-ms.openlocfilehash: 7c451deb04c9fd8b394512979668ad266cadf02d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: e9f3f1ca6005ff8c61211263944513d859d6d23e
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84485473"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91620183"
 ---
-# <a name="event-file-target-code-for-extended-events-in-azure-sql-database"></a>Azure SQL Database 中擴充事件的事件檔案目的程式代碼
+# <a name="event-file-target-code-for-extended-events-in-azure-sql-database"></a>Azure SQL Database 中擴充事件的事件檔案目標程式碼
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 [!INCLUDE [sql-database-xevents-selectors-1-include](../../../includes/sql-database-xevents-selectors-1-include.md)]
@@ -39,9 +39,9 @@ ms.locfileid: "84485473"
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 > [!IMPORTANT]
-> Azure SQL Database 仍然支援 PowerShell Azure Resource Manager 模組，但所有未來的開發都是針對 Az .Sql 模組。 如需這些 Cmdlet，請參閱[AzureRM](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 Az 模組和 AzureRm 模組中命令的引數本質上完全相同。
+> Azure SQL Database 仍然支援 PowerShell Azure Resource Manager 模組，但所有未來的開發都是針對 Az.Sql 模組。 如需這些 Cmdlet，請參閱 [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/) \(英文\)。 Az 模組和 AzureRm 模組中命令的引數本質上完全相同。
 
-- Azure 帳戶和訂用帳戶。 您可以註冊[免費試用](https://azure.microsoft.com/pricing/free-trial/)。
+- Azure 帳戶和訂用帳戶。 您可以註冊 [免費試用](https://azure.microsoft.com/pricing/free-trial/)。
 - 您可以在當中建立資料表的任何資料庫。
   
   - 您可以選擇性快速[建立 **AdventureWorksLT** 示範資料庫](single-database-create-quickstart.md)。
@@ -54,7 +54,7 @@ ms.locfileid: "84485473"
 
 - 您必須安裝 [Azure PowerShell 模組](https://go.microsoft.com/?linkid=9811175) 。
 
-  - 模組會提供如- **New-new-azstorageaccount**的命令。
+  - 模組提供 **New-AzStorageAccount**這類的命令。
 
 ## <a name="phase-1-powershell-code-for-azure-storage-container"></a>第 1 階段：Azure 儲存體容器的 PowerShell 程式碼
 
@@ -74,7 +74,7 @@ ms.locfileid: "84485473"
 
 ### <a name="powershell-code"></a>PowerShell 程式碼
 
-此 PowerShell 腳本假設您已安裝 Az 模組。 如需相關資訊，請參閱[安裝 Azure PowerShell 模組](/powershell/azure/install-Az-ps)。
+此 PowerShell 指令碼假設您已安裝 Az 模組。 如需詳細資訊，請參閱[安裝 Azure PowerShell 模組](/powershell/azure/install-Az-ps)。
 
 ```powershell
 ## TODO: Before running, find all 'TODO' and make each edit!!
@@ -251,7 +251,7 @@ Related to   https://github.com/MicrosoftDocs/azure-docs/issues/56520
 PowerShell 指令碼在結束時列印出幾個具名的值。 您必須編輯 Transact-SQL 指令碼以使用這些值。 在 Transact-SQL 指令碼中尋找 **TODO** 找出編輯點。
 
 1. 開啟 SQL Server Management Studio (ssms.exe)。
-2. 在 Azure SQL Database 中連接到您的資料庫。
+2. 連線到 Azure SQL Database 中的資料庫。
 3. 按一下以開啟新的查詢窗格。
 4. 將下列 Transact-SQL 指令碼貼入查詢窗格。
 5. 在指令碼中尋找每個 **TODO** 並進行適當的編輯。
@@ -451,9 +451,9 @@ GO
 
 ## <a name="output"></a>輸出
 
-Transact-SQL 指令碼完成時，按一下 **event_data_XML** 資料欄標題下的儲存格。 其中 **\<event>** 會顯示一個元素，其中顯示一個 UPDATE 語句。
+Transact-SQL 指令碼完成時，按一下 **event_data_XML** 資料欄標題下的儲存格。 此時會顯示一個 **\<event>** 元素，此元素會顯示一個 UPDATE 陳述式。
 
-以下是 **\<event>** 測試期間所產生的一個元素：
+以下是測試期間所產生的一個 **\<event>** 元素：
 
 ```xml
 <event name="sql_statement_starting" package="sqlserver" timestamp="2015-09-22T19:18:45.420Z">
@@ -512,7 +512,7 @@ SELECT 'AFTER__Updates', EmployeeKudosCount, * FROM gmTabEmployee;
   
   - 不需要牽涉到任何 Azure 儲存體帳戶。
 
-## <a name="more-information"></a>更多資訊
+## <a name="more-information"></a>詳細資訊
 
 如需 Azure 儲存體服務中帳戶和容器的詳細資訊，請參閱：
 
@@ -520,5 +520,5 @@ SELECT 'AFTER__Updates', EmployeeKudosCount, * FROM gmTabEmployee;
 - [命名和參考容器、Blob 及中繼資料](https://msdn.microsoft.com/library/azure/dd135715.aspx)
 - [使用根容器](https://msdn.microsoft.com/library/azure/ee395424.aspx)
 - [第 1 課：在 Azure 容器上建立預存的存取原則和共用存取簽章](https://msdn.microsoft.com/library/dn466430.aspx)
-  - [第 2 課︰使用共用存取簽章建立 SQL Server 認證](https://msdn.microsoft.com/library/dn466435.aspx)
+  - [第 2 課：使用共用存取簽章建立 SQL Server 認證](https://msdn.microsoft.com/library/dn466435.aspx)
 - [Microsoft SQL Server 的擴充事件](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events)

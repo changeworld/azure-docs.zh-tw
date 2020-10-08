@@ -1,26 +1,27 @@
 ---
-title: 快速入門：建置分類器 - 自訂視覺服務
+title: 快速入門：使用自訂視覺網站建置分類器
 titleSuffix: Azure Cognitive Services
-description: 在本快速入門中，您將了解如何使用自訂視覺網站建置影像分類模型。
+description: 在本快速入門中，您將了解如何使用自訂視覺網站建立、定型及測試影像分類模型。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 09/15/2020
+ms.date: 09/29/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: c8b5d3f58f11e85c6e77ce0cbf0c6d435f570ade
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+keywords: 影像辨識, 影像辨識應用程式, 自訂視覺
+ms.openlocfilehash: b57720b9d8fb05a605b9eace279b70b060c18450
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91277337"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91596873"
 ---
-# <a name="quickstart-how-to-build-a-classifier-with-custom-vision"></a>快速入門：如何使用自訂視覺建置分類器
+# <a name="quickstart-build-a-classifier-with-the-custom-vision-website"></a>快速入門：使用自訂視覺網站建置分類器
 
-在本快速入門中，您將了解如何透過自訂視覺網站建置影像分類器。 一旦建置了模型，您就可以使用新的影像進行測試，並最終將其整合到您自己的影像辨識軟體。
+在本快速入門中，您將了解如何使用自訂視覺網站建置影像分類模型。 一旦建置了模型，您就可以使用新的影像進行測試，並最終將其整合到您自己的影像辨識應用程式。
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/cognitive-services/)。
 

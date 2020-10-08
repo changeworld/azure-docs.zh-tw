@@ -1,22 +1,22 @@
 ---
-title: 在單一租使用者應用程式中管理架構
+title: 在單一租用戶應用程式中管理結構描述
 description: 在使用 Azure SQL Database 的單一租用戶應用程式中管理多個租用戶的結構描述
 services: sql-database
 ms.service: sql-database
 ms.subservice: scenario
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: tutorial
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/19/2018
-ms.openlocfilehash: 60c2330578ef4b8e3e40dc3e37a0c8b1eb291e2f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: 62e20a10e9709bc69a746a6f62e949c47c3a6d02
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85255546"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91620149"
 ---
 # <a name="manage-schema-in-a-saas-application-using-the-database-per-tenant-pattern-with-azure-sql-database"></a>使用每一租用戶一個資料庫的模式，透過 Azure SQL Database 管理 SaaS 應用程式中的結構描述
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -44,15 +44,15 @@ ms.locfileid: "85255546"
 
 ## <a name="introduction-to-saas-schema-management-patterns"></a>SaaS 結構描述管理模式的簡介
 
-每一租用戶一個資料庫的模式可有效地隔離租用戶資料，但是會增加要管理及維護的資料庫數目。 [彈性作業](../../sql-database/elastic-jobs-overview.md)可協助管理和管理多個資料庫。 這些作業可讓您安全且可靠地對一組資料庫執行工作 (Transact-SQL 指令碼)。 作業可在應用程式中跨所有租用戶資料庫部署結構描述和一般參考資料變更。 彈性作業也可以用來維護建立新租用戶所使用的「範本」** 資料庫，確保它隨時具有最新的結構描述和參考資料。
+每一租用戶一個資料庫的模式可有效地隔離租用戶資料，但是會增加要管理及維護的資料庫數目。 [彈性作業](../../sql-database/elastic-jobs-overview.md)有助於管理多個資料庫。 這些作業可讓您安全且可靠地對一組資料庫執行工作 (Transact-SQL 指令碼)。 作業可在應用程式中跨所有租用戶資料庫部署結構描述和一般參考資料變更。 彈性作業也可以用來維護建立新租用戶所使用的「範本」** 資料庫，確保它隨時具有最新的結構描述和參考資料。
 
 ![畫面](./media/saas-tenancy-schema-management/schema-management-dpt.png)
 
 
 ## <a name="elastic-jobs-public-preview"></a>彈性作業公開預覽
 
-新版本的「彈性作業」現在是 Azure SQL Database 的整合功能。 這個新版本的彈性作業目前處於公開預覽狀態。 此公開預覽目前支援使用 PowerShell 來建立作業代理程式，以及使用 T-sql 建立及管理作業。
-如需詳細資訊，請參閱[彈性資料庫作業](https://docs.microsoft.com/azure/azure-sql/database/elastic-jobs-overview)的文章。
+新版本的「彈性作業」現在是 Azure SQL Database 的整合功能。 這個新的「彈性作業」版本目前處於公開預覽版狀態。 公開預覽版目前支援使用 PowerShell 建立作業代理程式，以及使用 T-SQL 建立及管理作業。
+如需詳細資訊，請參閱[彈性資料庫作業](https://docs.microsoft.com/azure/azure-sql/database/elastic-jobs-overview)上的文章。
 
 ## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>取得每一租用戶一個資料庫的 Wingtip Tickets SaaS 應用程式指令碼
 
@@ -65,7 +65,7 @@ ms.locfileid: "85255546"
 1. 在 [PowerShell ISE]**** 中開啟 …\\Learning Modules\\Schema Management\\*Demo-SchemaManagement.ps1*。
 1. 按 **F5** 以執行指令碼。
 
-*Demo-SchemaManagement.ps1*腳本會呼叫*Deploy-SchemaManagement.ps1*腳本，在目錄伺服器上建立名為*osagent*的資料庫。 接著，該指令碼會建立作業代理程式，以參數的形式使用資料庫。
+Demo-SchemaManagement.ps1 指令碼會呼叫 Deploy-SchemaManagement.ps1 指令碼，以在目錄伺服器上建立名為 osagent 的資料庫。 接著，該指令碼會建立作業代理程式，以參數的形式使用資料庫。
 
 ## <a name="create-a-job-to-deploy-new-reference-data-to-all-tenants"></a>建立作業以將新的參考資料部署到所有租用戶
 
@@ -74,7 +74,7 @@ ms.locfileid: "85255546"
 首先，檢閱每個租用戶資料庫中的場地類型。 連線至 SQL Server Management Studio (SSMS) 中的其中一個租用戶資料庫，並檢查 VenueTypes 資料表。  您也可以在 Azure 入口網站的查詢編輯器中查詢此資料表 (從資料庫頁面進行存取)。 
 
 1. 開啟 SSMS 並連線到租用戶伺服器：tenants1-dpt-&lt;user&gt;.database.windows.net**
-1. 若要確認目前**未**包含*Motorcycle 比賽*和*Swimming 俱樂部*，請流覽至*tenants1-tenants1-dpt user- &lt; 使用者 &gt; *伺服器上的_contosoconcerthall_資料庫，並查詢*VenueTypes*資料表。
+1. 若要確認目前「尚未」包含 Motorcycle Racing (機車賽) 和 Swimming Club (游泳俱樂部)，請瀏覽至 tenants1-dpt-&lt;user&gt; 伺服器上的 contosoconcerthall 資料庫，並查詢 VenueTypes 資料表。
 
 現在讓我們建立作業以更新所有租用戶資料庫中的 *VenueTypes* 資料表，以新增場地類型。
 
@@ -92,7 +92,7 @@ ms.locfileid: "85255546"
 * **sp\_add\_jobstep** 會建立作業步驟，包含更新參考 VenueTypes 資料表的 T-SQL 命令文字。
 * 指令碼中的其餘檢視會顯示物件是否存在，以及監視作業執行。 使用這些查詢來檢閱 **lifecycle** 資料行中的狀態值，以判斷作業在所有目標資料庫上完成的時間。
 
-當指令碼完成之後，您可以驗證參考資料是否已更新。  在 SSMS 中，瀏覽至 tenants1-dpt-&lt;user&gt;** 伺服器上的 contosoconcerthall** 資料庫，並查詢 VenueTypes** 資料表。  請檢查*Motorcycle 的比賽*和*Swimming 俱樂部*現在**是否**存在。
+當指令碼完成之後，您可以驗證參考資料是否已更新。  在 SSMS 中，瀏覽至 tenants1-dpt-&lt;user&gt;** 伺服器上的 contosoconcerthall** 資料庫，並查詢 VenueTypes** 資料表。  確認現在**已存在** Motorcycle Racing (機車賽) 和 Swimming Club (游泳俱樂部)。
 
 
 ## <a name="create-a-job-to-manage-the-reference-table-index"></a>建立作業以管理參考資料表索引
@@ -101,13 +101,13 @@ ms.locfileid: "85255546"
 
 使用相同的作業「系統」預存程序建立作業。
 
-1. 開啟 SSMS 並聯機至_目錄-tenants1-dpt user- &lt; user &gt; . database.windows.net_伺服器
-1. 開啟檔案 _... \\學習模組 \\ 架構管理 \\ onlinereindex.sql_
-1. 按一下滑鼠右鍵，選取 [連線]，然後連接到_tenants1-dpt user- &lt; user &gt; . database.windows.net_伺服器（如果尚未連線）
+1. 開啟 SSMS 並連線到 catalog-dpt-&lt;user&gt;.database.windows.net 伺服器
+1. 開啟檔案 _…\\Learning Modules\\Schema Management\\OnlineReindex.sql_
+1. 按一下滑鼠右鍵並選取 [連線]，然後連線到 catalog-dpt-&lt;user&gt;.database.windows.net 伺服器 (如果您尚未連線)
 1. 確定您已連線到 jobagent__ 資料庫，然後按 **F5** 以執行指令碼
 
 請觀察 OnlineReindex.sql__ 指令碼中的下列元素：
-* **sp \_ add \_ job**會建立名為「線上重新編制 PK \_ \_ 索引重建 venuetyp \_ \_ 265E44FD7FD4C885 的新作業」
+* **sp\_add\_job** 會建立稱為「線上 PK 索引重建\_\_VenueTyp\_\_265E44FD7FD4C885」的新作業
 * **sp\_add\_jobstep** 會建立作業步驟，其中包含要更新索引的 T-SQL 命令文字
 * 指令碼中的其餘檢視會監視作業執行。 使用這些查詢來檢閱 **lifecycle** 資料行中的狀態值，以判斷作業在所有目標群組成員上成功完成的時間。
 
@@ -123,10 +123,10 @@ ms.locfileid: "85255546"
 > * 更新所有租用戶資料庫中的參考資料
 > * 針對所有租用戶資料庫中的資料表建立索引
 
-接下來，請嘗試[特定報表教學](../../sql-database/saas-tenancy-cross-tenant-reporting.md)課程，以探索跨租使用者資料庫執行分散式查詢。
+接下來，請嘗試[隨選報表教學課程](../../sql-database/saas-tenancy-cross-tenant-reporting.md)來探索跨租用戶資料庫執行的分散式查詢。
 
 
 ## <a name="additional-resources"></a>其他資源
 
-* [以 Wingtip 票證 SaaS Database Per Tenant 應用程式部署為基礎的其他教學課程](../../sql-database/saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
+* [在 Tickets SaaS Database Per Tenant 應用程式部署上建置的其他教學課程](../../sql-database/saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
 * [管理相應放大的雲端資料庫](../../sql-database/elastic-jobs-overview.md)

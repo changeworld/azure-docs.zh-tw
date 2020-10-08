@@ -1,19 +1,19 @@
 ---
 title: Azure CLI 指令碼 - 下載「適用於 PostgreSQL 的 Azure 資料庫」中的伺服器記錄
 description: 此範例 Azure CLI 指令碼會示範如何啟用並下載「適用於 PostgreSQL 的 Azure 資料庫」伺服器的伺服器記錄。
-author: rachel-msft
-ms.author: raagyema
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc, devx-track-azurecli
 ms.date: 02/28/2018
-ms.openlocfilehash: 11940cce5ea4bf6265c451ee765c385a18b956b9
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 6042b58dc4187898985abad29d8050ed2be58a13
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496469"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710306"
 ---
 # <a name="enable-and-download-server-slow-query-logs-of-an-azure-database-for-postgresql-server-using-azure-cli"></a>使用 Azure CLI 啟用並下載「適用於 PostgreSQL 的 Azure 資料庫」伺服器的伺服器慢速查詢記錄
 此範例 CLI 指令碼會啟用並下載單一「適用於 PostgreSQL 的 Azure 資料庫」伺服器的慢速查詢記錄。

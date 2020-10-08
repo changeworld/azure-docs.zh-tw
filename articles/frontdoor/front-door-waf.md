@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure Front Door 和 Azure Web 應用程式防火牆 (WAF) 快速調整和保護 Web 應用程式 | Microsoft Docs
-description: 此教學課程將引導您了解如何搭配 Azure Front Door 服務使用 Web 應用程式防火牆
+title: 教學課程：使用 Azure Front Door 和 Azure Web 應用程式防火牆 (WAF) 調整和保護 Web 應用程式
+description: 此教學課程將說明如何使用 Azure Web 應用程式防火牆搭配 Azure Front Door 服務。
 services: frontdoor
 documentationcenter: ''
 author: duongau
@@ -9,60 +9,62 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/14/2020
+ms.date: 10/01/2020
 ms.author: duau
-ms.openlocfilehash: 1958481193b66c8cec2cb6a1ac6648a6900d70ac
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 7c5e938f985296e0534ca6e2438cf3acedb0fb65
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90531197"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91626474"
 ---
-# <a name="tutorial-quickly-scale-and-protect-a-web-application-using-azure-front-door-and-azure-web-application-firewall-waf"></a>教學課程：使用 Azure Front Door 和 Azure Web 應用程式防火牆 (WAF) 快速調整和保護 Web 應用程式
+# <a name="tutorial-quickly-scale-and-protect-a-web-application-by-using-azure-front-door-and-azure-web-application-firewall-waf"></a>教學課程：使用 Azure Front Door 和 Azure Web 應用程式防火牆 (WAF) 快速調整和保護 Web 應用程式
 
-許多 Web 應用程式在 COVID-19 的最近幾週，都經歷了流量的快速增長。 此外，這些 Web 應用程式也會觀察大量湧進的惡意流量，包括拒絕服務攻擊。 處理這些需求、擴增以因應流量激增以及防範攻擊的其中一種有效方式是，使用 Azure WAF 設定 Azure Front Door，作為 Web 應用程式前方的加速、快取和安全性階層。 此文章提供的指導方針說明如何使用 Azure WAF 設定，針對在 Azure 內外執行的任何 Web 應用程式，快速取得此 Azure Front Door。 
+由於 COVID-19，許多 Web 應用程式在最近幾週都經歷了流量的快速增長。 這些 Web 應用程式也會經歷大量湧進的惡意流量，包括拒絕服務攻擊。 擴增應用程式以因應流量激增並同時保護自己免受攻擊的一種有效方式：設定 Azure Front Door 以使用 Azure WAF 作為 Web 應用程式前方的加速、快取和安全性層。 此文章提供的指導方針說明如何針對在 Azure 內外執行的任何 Web 應用程式，設定包含 Azure WAF 的 Azure Front Door。 
 
-我們將在此教學課程中使用 Azure CLI 設定 WAF，但 Azure 入口網站、Azure PowerShell、Azure ARM 與 Azure REST API 也完全支援所有這些步驟。 
+我們將在本教學課程中使用 Azure CLI 來設定 WAF。 您可以使用 Azure 入口網站、Azure PowerShell、Azure Resource Manager 或 Azure REST API 來完成相同的動作。 
 
-在本教學課程中，您會了解如何：
+在本教學課程中，您將了解如何：
 > [!div class="checklist"]
 > - 建立 Front Door。
 > - 建立 Azure WAF 原則。
 > - 設定 WAF 原則的規則集。
-> - 將 WAF 原則與 Front Door 相關聯
-> - 設定自訂網域
+> - 將 WAF 原則與 Front Door 相關聯。
+> - 設定自訂網域。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-此部落格中的指示會使用 Azure 命令列介面 (CLI)。 檢視本指南以[開始使用 Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest)。
+- 本教學課程中的指示會使用 Azure CLI。 [檢視本指南](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest&preserve-view=true)以開始使用 Azure CLI。
 
-*秘訣：開始使用 Azure CLI 簡單而快速的方式是使用 [Azure Cloud Shell 中 Bash](https://docs.microsoft.com/azure/cloud-shell/quickstart)* \(部分機器翻譯\)
+  > [!TIP] 
+  > 開始使用 Azure CLI 簡單而快速的方式是使用 [Azure Cloud Shell 中的 Bash](https://docs.microsoft.com/azure/cloud-shell/quickstart)。
 
-確定已將 front-door 延伸模組新增至您的 Azure CLI
+- 確定已將 `front-door` 延伸模組已新增至 Azure CLI：
 
-```azurecli-interactive 
-az extension add --name front-door
-```
+   ```azurecli-interactive 
+   az extension add --name front-door
+   ```
 
-注意:如需下面所列命令的詳細資訊，請參閱 [Front Door 的 Azure CLI 參考](https://docs.microsoft.com/cli/azure/ext/front-door/?view=azure-cli-latest) \(英文\)。
+> [!NOTE] 
+> 如需本教學課程中使用之命令的詳細資訊，請參閱 [Front Door 的 Azure CLI 參考](https://docs.microsoft.com/cli/azure/ext/front-door/?view=azure-cli-latest&preserve-view=true)。
 
-## <a name="create-an-azure-front-door-afd-resource"></a>建立 Azure Front Door (AFD) 資源
+## <a name="create-an-azure-front-door-resource"></a>建立 Azure Front Door 資源
 
 ```azurecli-interactive 
 az network front-door create --backend-address <>  --accepted-protocols <> --name <> --resource-group <>
 ```
 
-**--backend-address**：後端位址是您想要保護之應用程式的完整網域名稱 (FQDN)。 例如，myapplication.contoso.com
+`--backend-address`：您想要保護之應用程式的完整網域名稱 (FQDN)。 例如： `myapplication.contoso.com` 。
 
-**--accepted-protocols**：接受的通訊協定會指定您希望 AFD 為您的 Web 應用程式支援的所有通訊協定。 其中一個範例是 --accepted-protocols Http Https。
+`--accepted-protocols`：指定您想要 Azure Front Door 支援 Web 應用程式的通訊協定。 例如： `--accepted-protocols Http Https` 。
 
-**--name**：指定 AFD 資源的名稱
+`--name`：您的 Azure Front Door 資源名稱。
 
-**--resource-group**：您希望放入此 AFD 資源的資源群組。  若要深入了解資源群組，請瀏覽在 Azure 中管理資源群組
+`--resource-group`：您希望放入此 Azure Front Door 資源所在的資源群組。 若要深入了解資源群組，請參閱[在 Azure 中管理資源群組](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-portal)。
 
-在您從成功執行此命令取得的回應中，尋找金鑰 "hostName" 並記下其值，以用於後續步驟。 hostName 是您已建立之 AFD 資源的 DNS 名稱
+在您執行此命令時取得的回應中，尋找金鑰 `hostName`。 在稍後的步驟中您將需要此值。 `hostName` 是您所建立 Azure Front 資源的 DNS 名稱。
 
 ## <a name="create-an-azure-waf-profile-to-use-with-azure-front-door-resources"></a>建立 Azure WAF 設定檔以搭配 Azure Front Door 資源使用
 
@@ -70,85 +72,89 @@ az network front-door create --backend-address <>  --accepted-protocols <> --nam
 az network front-door waf-policy create --name <>  --resource-group <>  --disabled false --mode Prevention
 ```
 
---name 指定 Azure WAF 原則的名稱
+`--name`：新 Azure WAF 原則的名稱。
 
---resource-group 您希望放入此 WAF 資源的資源群組。 
+`--resource-group`：您希望放入此 WAFD 資源所在的資源群組。 
 
-上述的 CLI 程式碼將會建立已啟用且處於 [預防] 模式的 WAF 原則。 
+先前的 CLI 程式碼會建立已啟用且處於預防模式的 WAF 原則。 
 
-注意：您可能也會想要在 [偵測] 模式下建立 WAF，並觀察其在決定切換為 [保護] 模式之前，如何偵測並記錄惡意要求 (而非封鎖)。
+> [!NOTE] 
+> 在您決定使用保護模式之前，您可能會想要在偵測模式中建立 WAF 原則，並觀察它如何偵測並記錄惡意要求 (而不加以封鎖)。
 
-在您從成功執行此命令得到的回應中，尋找金鑰 "ID" 並記下其值，以用於後續步驟。 ID 欄位應採用下列格式
+在您執行此命令時取得的回應中，尋找金鑰 `ID`。 在稍後的步驟中您將需要此值。 
+
+`ID` 欄位格式應該如下：
 
 /subscriptions/**訂用帳戶識別碼**/resourcegroups/**資源群組名稱**/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/**WAF 原則名稱**
 
-## <a name="add-managed-rulesets-to-this-waf-policy"></a>將受控規則集新增至此 WAF 原則
+## <a name="add-managed-rule-sets-to-the-waf-policy"></a>將受控規則集新增至 WAF 原則
 
-在 WAF 原則中，您可以新增由 Microsoft 所建置並管理的一組規則所組成的受控規則集，並針對完整的威脅類別提供現成可用的保護。 在此範例中，我們將新增兩個此類規則集 (1) 預設規則集，可防範常見的 Web 威脅和 (2) Bot 保護規則集，可防範惡意 Bot
+您可以將受控規則集新增至 WAF 原則。 受控規則集是由 Microsoft 所建立及管理的一組規則，可協助保護您免於遭受某類威脅。 在此範例中，我們要新增兩個規則集：
+- 預設規則集，可協助保護您免於遭受常見的 Web 威脅。 
+- Bot 保護規則集，可協助保護您免於遭受惡意 Bot 的威脅。
 
-(1) 新增預設規則集
+新增預設規則集：
 
-```azurecli-interactive 
-az network front-door waf-policy managed-rules add --policy-name <> --resource-group <> --type DefaultRuleSet --version 1.0
-```
+   ```azurecli-interactive 
+   az network front-door waf-policy managed-rules add --policy-name <> --resource-group <> --type DefaultRuleSet --version 1.0
+   ```
 
-(2) 新增 Bot Manager 規則集
+新增 Bot 保護規則集：
 
-```azurecli-interactive 
-az network front-door waf-policy managed-rules add --policy-name <> --resource-group <> --type Microsoft_BotManagerRuleSet --version 1.0
-```
+   ```azurecli-interactive 
+   az network front-door waf-policy managed-rules add --policy-name <> --resource-group <> --type Microsoft_BotManagerRuleSet --version 1.0
+   ```
 
---policy-name 您為 Azure WAF 資源提供的名稱
+`--policy-name`：您為 Azure WAF 資源指定的名稱。
 
---resource-group 您已經放入此 WAF 資源的資源群組。
+`--resource-group`：您放入 WAF 資源所在的資源群組。
 
-## <a name="associate-the-waf-policy-with-the-afd-resource"></a>建立 WAF 原則與 AFD 資源的關聯
+## <a name="associate-the-waf-policy-with-the-azure-front-door-resource"></a>建立 WAF 原則與 Azure Front Door 資源的關聯
 
-在此步驟中，我們會將所建置的 WAF 原則與位於 Web 應用程式前方的 AFD 資源建立關聯。
+在此步驟中，我們會將我們所建立的 WAF 原則與位於 Web 應用程式前方的 Azure Front Door 資源建立關聯：
 
 ```azurecli-interactive 
 az network front-door update --name <> --resource-group <> --set frontendEndpoints[0].webApplicationFirewallPolicyLink='{"id":"<>"}'
 ```
 
---name 您為 AFD 資源指定的名稱
+`--name`：您為 Azure Front Door 資源指定的名稱。
 
---resource-group 您已經放入 Azure Front Door 資源的資源群組。
+`--resource-group`：您放入 Azure Front Door 資源所在的資源群組。
 
---set 這是您使用新建置的 WAF 原則，更新與 AFD 資源相關聯之 frontendEndpoint 的屬性 WebApplicationFirewallPolicyLink 所在。 您可以從上述步驟 #2 所得到的回應，找到 WAF 原則的識別碼
+`--set`：這是您使用新 WAF 原則更新與您 Azure Front 資源相關聯 `frontendEndpoint` 的 `WebApplicationFirewallPolicyLink` 屬性的位置。 您應該可從稍早在本教學課程中建立 WAF 設定檔時所收到的回應中找到 WAF 原則的識別碼。
 
-注意：上述範例適用於您未使用自訂網域的情況 (如果您是如此)
+ > [!NOTE] 
+> 前述範例適用於您未使用自訂網域的情況。 如果您未使用任何自訂網域來存取您的 Web 應用程式，可以略過下一節。 在此情況下，您會為客戶提供您在建立 Azure Front Door 資源時取得的 `hostName`。 他們會使用此 `hostName` 來移至您的 Web 應用程式。
 
-如果您未使用任何自訂網域存取您的 Web 應用程式，可以略過步驟 #5。 在該情況下，您會將您在步驟 #1 中取得的主機名稱提供給使用者，以瀏覽至您的 Web 應用程式
+## <a name="configure-the-custom-domain-for-your-web-application"></a>為 Web 應用程式設定自訂網域
 
-## <a name="configure-custom-domain-for-your-web-application"></a>為 Web 應用程式設定自訂網域
+Web 應用程式的自訂網域名稱是客戶用來參考您應用程式的名稱。 例如，www.contoso.com。 一開始，這個自訂網域名稱是指向您引進 Azure Front 之前，其執行所在的位置。 將 Azure Front Door 和 WAF 新增至應用程式的前方之後，與該自訂網域對應的 DNS 項目應該指向 Azure Front Door 資源。 若要進行此變更，您可以將 DNS 伺服器中的項目重新對應至您建立 Azure Front Door 資源時所記下的 Azure Front Door `hostName`。
 
-一開始，您 Web 應用程式的自訂網域名稱 (客戶用來參考您應用程式的自訂網域名稱，例如， www.contoso.com) 會指向您在推出 AFD 之前執行 Web 應用程式所在位置。 在將 AFD+WAF 新增至應用程式前方的此架構變更之後，對應至該自訂網域的 DNS 項目現在應該會指向此 AFD 資源。 將 DNS 伺服器中的這個項目重新對應至您在步驟 #1 記下的 AFD 主機名稱，即可完成此作業。
+更新 DNS 記錄的特定步驟將取決於您的 DNS 服務提供者。 如果您使用 Azure DNS 來裝載您的 DNS 名稱，您可以參閱文件以取得[更新 DNS 記錄的步驟](https://docs.microsoft.com/azure/dns/dns-operations-recordsets-cli)，並指向 Azure Front Door `hostName`。 
 
-更新 DNS 記錄的特定步驟取決於您的 DNS 服務提供者，但如果您使用 Azure DNS 來裝載您的 DNS 名稱，您可以參閱相關文件，以了解[更新 DNS 記錄的步驟](https://docs.microsoft.com/azure/dns/dns-operations-recordsets-cli) \(部分英文翻譯\)，並指向 AFD hostName。 
+如果您需要客戶使用區域頂點 (例如 contoso.com) 來進入您的網站，請注意一個重要事項。 在此情況下，您必須使用 Azure DNS 及其[別名記錄類型](https://docs.microsoft.com/azure/dns/dns-alias)來裝載您的 DNS 名稱。 
 
-這裡要注意的一個重點是，如果您需要使用者使用區域頂點瀏覽至您的網站 (例如，contoso.com)，則必須使用 Azure DNS 及其 [ALIAS 記錄類型](https://docs.microsoft.com/azure/dns/dns-alias)，以裝載您的 DNS 名稱。 
+您也需要更新您的 Azure Front Door 設定，以[新增自訂網域](https://docs.microsoft.com/azure/frontdoor/front-door-custom-domain)至該設定，使其知道此對應。
 
-此外，您也需要將 AFD 設定更新為在其中[新增此自訂網域](https://docs.microsoft.com/azure/frontdoor/front-door-custom-domain)，讓 AFD 了解此對應。
-
-最後，如果您使用自訂網域連線到您的 Web 應用程式，而且希望啟用 HTTPS 通訊協定，則必須[在 AFD 中設定您自訂網域的憑證](https://docs.microsoft.com/azure/frontdoor/front-door-custom-domain-https)。 
+最後，如果您使用自訂網域連線到您的 Web 應用程式，而且希望啟用 HTTPS 通訊協定。 您需要[在 Azure Front Door 中設定自訂網域的憑證](https://docs.microsoft.com/azure/frontdoor/front-door-custom-domain-https)。 
 
 ## <a name="lock-down-your-web-application"></a>鎖定您的 Web 應用程式
 
-另一個要遵循的最佳做法是確保只有 AFD 邊緣可以與您的 Web 應用程式通訊。 此動作可確保沒有人可以略過 AFD 防護並直接存取您的應用程式。 您可以瀏覽 [AFD 的常見問題集一節](https://docs.microsoft.com/azure/frontdoor/front-door-faq) \(部分機器翻譯\)，並參考有關鎖定後端以僅供 AFD 存取的問題來完成此鎖定。
+建議您確保只有 Azure Front Door 邊緣可以與您的 Web 應用程式通訊。 這麼做可確保沒有人可以略過 Azure Front Door 保護並直接存取您的應用程式。 若要完成此鎖定，請參閱[如何將對我的後端的存取鎖定在僅限 Azure Front Door？](https://docs.microsoft.com/azure/frontdoor/front-door-faq#how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door)。
 
 ## <a name="clean-up-resources"></a>清除資源
 
-當您不再需要教學課程中的資源時，請使用 [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) 命令移除資源群組、Front Door 和 WAF 原則。
+當您不再需要教學課程中所使用的資源時，請使用 [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete&preserve-view=true) 命令移除資源群組、Front Door 和 WAF 原則：
 
 ```azurecli-interactive
   az group delete \
     --name <>
 ```
---name 本教學課程中部署的所有資源的資源群組名稱。
+`--name`：本教學課程中使用所有資源的資源群組名稱。
 
 ## <a name="next-steps"></a>後續步驟
 
-如需了解如何針對 Front Door 進行疑難排解，請繼續閱讀操作指南。
+若要了解如何針對 Front Door 進行疑難排解，請參閱疑難排解指南：
 
 > [!div class="nextstepaction"]
 > [針對常見路由問題進行疑難排解](front-door-troubleshoot-routing.md)

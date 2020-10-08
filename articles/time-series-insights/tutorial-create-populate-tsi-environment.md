@@ -7,16 +7,19 @@ ms.author: dpalled
 manager: diviso
 ms.service: time-series-insights
 ms.topic: tutorial
-ms.date: 08/14/2020
+ms.date: 10/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: 36687f6394ef03a3fceb70c73601680dd262d90c
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: 6037ece7f4cbe0edc9cf44bded3ee34815f76a48
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88245395"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91620200"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-gen1-environment"></a>教學課程：建立 Azure 時間序列深入解析 Gen1 環境
+
+> [!CAUTION]
+> 這是 Gen1 文章。
 
 本教學課程將逐步引導您建立已從模擬裝置填入資料的 Azure 時間序列深入解析環境。 在本教學課程中，您會了解如何：
 

@@ -1,27 +1,27 @@
 ---
-title: 監視分區化多租使用者資料庫的效能
-description: 監視及管理多租使用者 SaaS 應用程式中分區化多租使用者 Azure SQL Database 的效能
+title: 監視分區化多租用戶資料庫的效能
+description: 監視及管理多租用戶 SaaS 應用程式中分區化多租用戶 Azure SQL Database 的效能
 services: sql-database
 ms.service: sql-database
 ms.subservice: scenario
 ms.custom: seo-lt-2019, sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: tutorial
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: e4f26b21ad7458b4f5bcad9a902f4e048d726f1f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: 3307e31935377f55f792e640934e59017c1980c7
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84027379"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91619607"
 ---
-# <a name="monitor-and-manage-performance-of-sharded-multi-tenant-azure-sql-database-in-a-multi-tenant-saas-app"></a>監視及管理多租使用者 SaaS 應用程式中分區化多租使用者 Azure SQL Database 的效能
+# <a name="monitor-and-manage-performance-of-sharded-multi-tenant-azure-sql-database-in-a-multi-tenant-saas-app"></a>監視及管理多租用戶 SaaS 應用程式中分區化多租用戶 Azure SQL Database 的效能
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-本教學課程會探索 SaaS 應用程式中使用的數個關鍵效能管理案例。 使用負載產生器來模擬分區化多租使用者資料庫之間的活動時，會示範 Azure SQL Database 的內建監視和警示功能。
+本教學課程會探索 SaaS 應用程式中使用的數個關鍵效能管理案例。 使用負載產生器來跨分區化多租用戶資料庫模擬活動，而且示範 Azure SQL Database 的內建監視和警示功能。
 
 Wingtip Tickets SaaS 多租用戶資料庫應用程式會使用分區化多租用戶資料模型，場地 (租用戶) 資料會在當中依租用戶識別碼跨可能為多個的資料庫進行分散。 與許多 SaaS 應用程式類似，預期的租用戶工作負載模式無法預測且偶爾發生。 換句話說，票證銷售可能會在任何時間發生。 若要利用這個一般資料庫使用模式，可以將資料庫調相應增加及相應減少，從而最佳化解決方案的成本。 使用這種類型的模式，請務必監視資料庫資源使用量，以確保合理地跨可能為多個的資料庫集區平衡負載。 您也必須確定個別的資料庫擁有足夠的資源，且未達到其 [DTU](purchasing-models.md#dtu-based-purchasing-model) 限制。 本教學課程將探討監視及管理資料庫的方式，以及如何採取矯正措施以回應工作負載的變化。
 
@@ -36,7 +36,7 @@ Wingtip Tickets SaaS 多租用戶資料庫應用程式會使用分區化多租�
 
 若要完成本教學課程，請確定已完成下列必要條件：
 
-* 已部署 Wingtip Tickets SaaS 多租用戶資料庫應用程式。 若要在五分鐘內完成部署，請參閱[部署及探索 Wingtip 票證 SaaS 多租使用者資料庫應用程式](../../sql-database/saas-multitenantdb-get-started-deploy.md)
+* 已部署 Wingtip Tickets SaaS 多租用戶資料庫應用程式。 若要在五分鐘內完成部署，請參閱[部署及探索 Wingtip Tickets SaaS 多租用戶資料庫應用程式](../../sql-database/saas-multitenantdb-get-started-deploy.md)
 * 已安裝 Azure PowerShell。 如需詳細資料，請參閱[開始使用 Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps)
 
 ## <a name="introduction-to-saas-performance-management-patterns"></a>SaaS 效能管理模式簡介
@@ -48,15 +48,15 @@ Wingtip Tickets SaaS 多租用戶資料庫應用程式會使用分區化多租�
 * 若要避免手動監視效能，最有效的方式是**設定在資料庫偏離正常範圍時觸發的警示**。
 * 若要回應資料庫計算大小的短期波動，可以**相應增加或減少 DTU 層級**。 如果這樣的波動是以定期或可預測的方式發生，則**可排定自動調整資料庫**。 例如，當您知道夜間或者週末期間工作負載較輕時，就可以相應減少。
 * 若要回應長期波動或租用戶中的變更，**個別租用戶可以移至其他租用戶**。
-* 若要回應「個別」** 租用戶負載中的短期增加，**可由資料庫中取出個別租用戶並指派個別計算大小**。 一旦負載降低後，就可以讓租用戶返回到多租用戶資料庫。 事先知道這一點時，可以事先移動租使用者，以確保資料庫一律擁有它所需的資源，並避免影響多租使用者資料庫中的其他租使用者。 如果可預測此需求，例如場地因熱門活動而發生票券銷售熱潮，則此管理行為可以與應用程式整合。
+* 若要回應「個別」** 租用戶負載中的短期增加，**可由資料庫中取出個別租用戶並指派個別計算大小**。 一旦負載降低後，就可以讓租用戶返回到多租用戶資料庫。 事先知道時，則能預先移動租用戶以確保資料庫一律擁有它所需的資源，和避免影響多租用戶資料庫中的其他租用戶。 如果可預測此需求，例如場地因熱門活動而發生票券銷售熱潮，則此管理行為可以與應用程式整合。
 
 [Azure 入口網站](https://portal.azure.com)提供大部分資源的內建監視與警示功能。 針對 SQL Database，可使用資料庫監視與警示功能。 這個內建的監視與警示功能是資源特定，因此針對少數資源使用很方便，但是搭配許多資源使用時則不方便。
 
-在您處理許多資源的大量案例中，可以使用[Azure 監視器記錄](https://azure.microsoft.com/services/log-analytics/)。 這是個別的 Azure 服務，可針對在 Log Analytics 工作區中收集的已發出記錄提供分析。 Azure 監視器記錄檔可以從許多服務收集遙測，並用來查詢和設定警示。
+在您處理許多資源的大量案例中，可以使用 [Azure 監視器記錄](https://azure.microsoft.com/services/log-analytics/)。 這是個別的 Azure 服務，可針對 Log Analytics 工作區中收集的發出記錄提供分析。 Azure 監視器記錄可以收集來自許多服務的遙測並用來查詢及設定警示。
 
 ## <a name="get-the-wingtip-tickets-saas-multi-tenant-database-application-source-code-and-scripts"></a>取得 Wingtip Tickets SaaS 多租用戶資料庫應用程式原始碼和指令碼
 
-Wingtip 票證 SaaS 多租使用者資料庫腳本和應用程式原始程式碼可在[.. wingtipticketssaas-multitenantdb-master-MultitenantDB](https://github.com/microsoft/WingtipTicketsSaaS-MultiTenantDB) GitHub 存放庫中取得。 關於下載和解除封鎖 Wingtip Tickets SaaS 指令碼的步驟，請參閱[一般指引](saas-tenancy-wingtip-app-guidance-tips.md)。
+可在 [WingtipTicketsSaaS MultitenantDB](https://github.com/microsoft/WingtipTicketsSaaS-MultiTenantDB) GitHub 存放庫中使用 Wingtip Tickets SaaS 多租用戶資料庫指令碼和應用程式來源程式碼。 關於下載和解除封鎖 Wingtip Tickets SaaS 指令碼的步驟，請參閱[一般指引](saas-tenancy-wingtip-app-guidance-tips.md)。
 
 ## <a name="provision-additional-tenants"></a>佈建其他租用戶
 
@@ -65,7 +65,7 @@ Wingtip 票證 SaaS 多租使用者資料庫腳本和應用程式原始程式碼
 如果您已在先前的教學課程中佈建批次的租用戶，請跳至[模擬所有租用戶資料庫上的使用量](#simulate-usage-on-all-tenant-databases)一節。
 
 1. 在 **PowerShell ISE** 中開啟 …\\Learning Modules\\Performance Monitoring and Management\\Demo-PerformanceMonitoringAndManagement.ps1**。 保持此指令碼開啟，因為您將在本教學課程期間執行數個案例。
-1. 設定 **$DemoScenario**  =  **1**，布建_一批_租使用者
+1. 設定 **$DemoScenario** = **1**，_佈建批次的租用戶_
 1. 按 **F5** 以執行指令碼。
 
 指令碼會在幾分鐘內將 17 個租用戶部署至多租用戶資料庫。 
@@ -76,17 +76,17 @@ New-TenantBatch** 指令碼會使用分區化多租用戶資料庫內的唯一�
 
 提供的 Demo-PerformanceMonitoringAndManagement.ps1** 指令碼會模擬對多租用戶資料庫執行的工作負載。 使用其中一個可用的負載案例產生負載：
 
-| 示範 | 狀況 |
+| 示範 | 案例 |
 |:--|:--|
-| 2 | 產生一般強度負載（大約 30 DTU） |
+| 2 | 產生一般強度負載 (大約 30 個 DTU) |
 | 3 | 每個租用戶產生具有更長高載的負載|
-| 4 | 為每個租使用者產生具有更高 DTU 高載的負載（大約 70 DTU）|
-| 5 | 在單一租使用者上產生高濃度（大約 90 DTU），再加上標準強度負載在所有其他租使用者上 |
+| 4 | 每個租用戶產生具有更高 DTU 高載的負載 (大約 70 個 DTU)|
+| 5 | 在單一租用戶上產生高強度 (大約 90 個 DTU)，並在所有其他租用戶上產生標準強度的載入 |
 
 負載產生器會將僅限「綜合」** CPU 的負載套用到每一個租用戶資料庫。 產生器會針對每個租用戶資料庫啟動作業，這會定期呼叫產生負載的預存程序。 負載層級 (單位為 DTU)、持續時間和間隔會跨所有的資料庫而變動，以模擬無法預測的租用戶活動。
 
 1. 在 **PowerShell ISE** 中開啟 …\\Learning Modules\\Performance Monitoring and Management\\Demo-PerformanceMonitoringAndManagement.ps1**。 保持此指令碼開啟，因為您將在本教學課程期間執行數個案例。
-1. 設定 **$DemoScenario**  =  **2**，_產生一般強度負載_
+1. 設定 **$DemoScenario** = **2**，_產生一般強度負載_
 1. 按下 **F5** 將負載套用到您的所有的租用戶。
 
 Wingtip Tickets SaaS 多租用戶資料庫是 SaaS 應用程式，而實際 SaaS 應用程式上的負載通常是偶爾發生且無法預測的。 為了模擬此情況，負載產生器會產生跨所有租用戶散發的隨機負載。 需要數分鐘才會出現負載模式，所以在嘗試監視以下各節中的負載時，請執行負載產生器 3-5 分鐘。
@@ -134,7 +134,7 @@ Wingtip Tickets SaaS 多租用戶資料庫是 SaaS 應用程式，而實際 SaaS
 
 您可以藉由增加產生器所產生的負載，模擬忙碌的資料庫。 讓租用戶高載時間更頻繁且更長，增加多租戶資料庫上的負載而不變更個別租用戶的需求。 在入口網站或從 PowerShell 可以輕鬆地相應增加資料庫。 此練習使用入口網站。
 
-1. 設定 *$DemoScenario*  =  **3**，_針對每個資料庫產生較長且更頻繁的高載負載_，以增加資料庫的匯總負載強度，而不變更每個租使用者所需的尖峰負載。
+1. 設定 *$DemoScenario* = **3**，_每個資料庫產生時間更長、更頻繁高載的負載_，以增加資料庫的彙總負載強度，而不變更每個租用戶所需的尖峰負載。
 1. 按下 **F5** 將負載套用到您的所有租用戶資料庫。
 1. 在 Azure 入口網站中移至 **tenants1** 資料庫。
 
@@ -144,19 +144,19 @@ Wingtip Tickets SaaS 多租用戶資料庫是 SaaS 應用程式，而實際 SaaS
 1. 將 [DTU]**** 設定調整為 **100**。 
 1. 按一下 [套用]**** 以提交調整資料庫的要求。
 
-回到**tenants1**  >  **總覽**以觀看監視圖表。 監視為資料庫提供更多資源的影響 (雖然有一些租用戶和隨機負載，但是在您執行一段時間前，也不容易明確地看出)。 當您查看圖表時，請記住上方圖表上的 100% 現在代表 100 個 DTU，而下方圖表上的 100% 仍是 50 個 DTU。
+返回至 **tenants1** > **概觀** 以檢視監視圖表。 監視為資料庫提供更多資源的影響 (雖然有一些租用戶和隨機負載，但是在您執行一段時間前，也不容易明確地看出)。 當您查看圖表時，請記住上方圖表上的 100% 現在代表 100 個 DTU，而下方圖表上的 100% 仍是 50 個 DTU。
 
 整個過程中，資料庫會維持連線且完全可供使用。 應用程式程式碼應該一律撰寫為重試中斷的連線，且因此重新連線至資料庫。
 
 ## <a name="provision-a-new-tenant-in-its-own-database"></a>在它自己的資料庫中佈建新租用戶 
 
-分區化多租用戶模型可讓您選擇是否要在多租用戶資料庫與其他租用戶佈建新的租用戶，或是在其自己的資料庫中佈建租用戶。 藉由在自己的資料庫中布建租使用者，可受益于個別資料庫中固有的隔離，讓您能夠獨立管理該租使用者的效能、與其他人分開還原該租使用者等等。例如，您可以選擇將免費試用或一般客戶放在多租使用者資料庫中，而在個別資料庫中放置 premium 客戶。  如果您建立了隔離的單一租用戶資料庫，仍可在彈性集區中將它們管理共同，以最佳化資源成本。
+分區化多租用戶模型可讓您選擇是否要在多租用戶資料庫與其他租用戶佈建新的租用戶，或是在其自己的資料庫中佈建租用戶。 藉由在租用戶自己的資料庫中佈建租用戶，會受惠於個別資料庫中的隔離本質，可讓您獨立於其他租用戶的效能管理該租用戶、獨立於其他租用戶進行還原等等。例如，您可能會選擇將免費試用或一般客戶放在多租用戶資料庫中，而將進階客戶放在個別的資料庫。  如果您建立了隔離的單一租用戶資料庫，仍可在彈性集區中將它們管理共同，以最佳化資源成本。
 
 如果您已在它自己的資料庫中佈建新的租用戶，請略過接下來的步驟。
 
 1. 在 **PowerShell ISE** 中，開啟.…\\Learning Modules\\ProvisionTenants\\Demo-ProvisionTenants.ps1**。 
 1. 修改 **$TenantName = "Salix Salsa"** 和 **$VenueType  = "dance"**
-1. 設定 **$Scenario**  =  **2**，_在新的單一租使用者資料庫中_布建租使用者
+1. 設定 **$Scenario** = **2**，_在新的單一租用戶資料庫中佈建租用戶_
 1. 按 **F5** 以執行指令碼。
 
 指令碼會在另一個資料庫中佈建此租用戶、使用目錄註冊資料庫與租用戶，然後在瀏覽器中開啟 [租用戶的事件] 頁面。 重新整理 [事件中樞] 頁面，您就會看到 "Salix Salsa" 已新增為場地。
@@ -168,11 +168,11 @@ Wingtip Tickets SaaS 多租用戶資料庫是 SaaS 應用程式，而實際 SaaS
 本練習會模擬在銷售熱門事件的票券時，Salix Salsa 發生高負載的效果。
 
 1. 開啟 …\\*Demo-PerformanceMonitoringAndManagement.ps1* 指令碼。
-1. 設定 **$DemoScenario = 5**，在_單一租使用者上產生一般負載加上高負載（大約 90 DTU）。_
+1. 設定 **$DemoScenario = 5**，_在單一租用戶上產生一般負載加上高負載 (大約 90 個 DTU)。_
 1. 設定 **$SingleTenantName = Salix Salsa**
 1. 使用 **F5** 執行指令碼。
 
-移至入口網站並流覽至 [ **salixsalsa**  >  **總覽**]，以查看監視圖表。 
+移至入口網站並瀏覽至 **salixsalsa** > **概觀**以檢視監視圖表。 
 
 ## <a name="other-performance-management-patterns"></a>其他效能管理模式
 

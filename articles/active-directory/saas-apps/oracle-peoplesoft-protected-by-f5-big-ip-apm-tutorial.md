@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.author: jeedes
-ms.openlocfilehash: a8d34d60cfb4037192abcc20649b478e9f58a6bb
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 7d2dc1d5d02f1a371d6d94f9eeddf395d49126d7
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90992108"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91620132"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-oracle-peoplesoft---protected-by-f5-big-ip-apm"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與受 F5 BIG-IP APM 保護的 Oracle PeopleSoft 整合
 
@@ -44,7 +44,7 @@ ms.locfileid: "90992108"
         * F5 IP 智慧訂用帳戶，用來偵測及封鎖已知的攻擊者和惡意流量 
         * 網路硬體安全模組 (HSM)，用來保護和管理增強式驗證的數位金鑰
 1. 在 F5 BIG-IP 系統中會佈建 APM 模組 (LTM 是選擇性的) 
-1. 雖然在[同步/容錯移轉裝置群組](https://techdocs.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/big-ip-device-service-clustering-administration-14-1-0.html) (S/F DG) 中部署 F5 系統並非必要作業，但強烈建議您這麼做，因為其中包含作用中待命配對，且具有用於高可用性 (HA) 的浮動 IP 位址。 使用連結彙總控制通訊協定 (LACP) 可達成進一步的介面備援。 LACP 會個別管理連線的實體介面 
+1. 雖然在[同步/容錯移轉裝置群組](https://techdocs.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/big-ip-device-service-clustering-administration-14-1-0.html) (S/F DG) 中部署 F5 系統並非必要作業，但強烈建議您這麼做，因為其中包含作用中待命配對，且具有用於高可用性 (HA) 的浮動 IP 位址。 使用連結彙總控制通訊協定 (LACP) 可達成進一步的介面備援。 LACP 會將連線的實體介面當作單一虛擬介面 (彙總群組) 來管理，並偵測群組內的任何介面失敗。
 
 ## <a name="scenario-description"></a>案例描述
 

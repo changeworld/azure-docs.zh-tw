@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 04/22/2020
 ms.author: apimpm
-ms.openlocfilehash: 3ceaa357150fe0c4d26eeedc6821761d2eb00106
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 58f2a102349baff0b70e2a0c9f72c8a4e0e44046
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91357959"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91626814"
 ---
 # <a name="import-soap-api"></a>匯入 SOAP API
 
@@ -58,7 +58,7 @@ ms.locfileid: "91357959"
 
     * **入門**
     * **無限制**   
-8. 輸入其他 API 設定。 您可以在建立期間設定這些值，或稍後前往 [設定]  索引標籤來進行設定。這些設定會在[匯入和發佈您的第一個 API](import-and-publish.md#-import-and-publish-a-backend-api) 教學課程中說明。
+8. 輸入其他 API 設定。 您可以在建立期間設定這些值，或稍後前往 [設定]  索引標籤來進行設定。這些設定會在[匯入和發佈您的第一個 API](import-and-publish.md#import-and-publish-a-backend-api) 教學課程中說明。
 9. 選取 [建立]  。
 
 ### <a name="test-the-new-api-in-the-administrative-portal"></a>在系統管理入口網站中測試新的 API

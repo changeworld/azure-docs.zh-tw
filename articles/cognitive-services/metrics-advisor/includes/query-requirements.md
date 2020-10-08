@@ -7,16 +7,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: include
-ms.date: 09/10/2020
+ms.date: 09/30/2020
 ms.author: aahi
-ms.openlocfilehash: 68b5946cb21bef1c8979a94c8780682cfe9defa6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 518865f78c170f1fbe4e65b96dc149c1b449a88b
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91377080"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91631355"
 ---
-在查詢內，請使用 `@StartTime` 參數來取得特定時間戳記的計量資料。 這會取代為 `yyyy-MM-ddTHH:mm:ss` 格式字串。 
+在查詢內，使用 `@StartTime` 參數取得單一時間戳記的計量資料。 Metrics Advisor 在執行查詢時會將該參數取代為 `yyyy-MM-ddTHH:mm:ss` 格式字串。
 
 > [!IMPORTANT]
-> 請確定查詢只會傳回**單一時間戳記**的計量資料。 Metrics Advisor 會針對每個時間戳記執行查詢，以取得對應的計量資料。 例如，具有「每日」資料細微性的計量查詢應該只包含單個時間戳記，例如在執行查詢一次時的 `2020-06-21T00:00:00Z`。 
+> 在每個時間戳記上，查詢對於每個維度組合最多僅應傳回一筆記錄。 而且，查詢所傳回的所有記錄必須具有相同的時間戳記。 Metrics Advisor 會對每個時間戳記執行此查詢，以擷取您的資料。 如需詳細資訊和範例，請參閱[查詢的常見問題集一節](../faq.md#how-do-i-write-a-valid-query-for-ingesting-my-data)。 

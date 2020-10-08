@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: development
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: sample
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: aed1965b07a80efa3cd8dbc84e396b9ef4f99252
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: 2829b1c71aebcc97452fc658e6509e4fae42da8c
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84345269"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91616800"
 ---
 # <a name="in-memory-sample"></a>記憶體內部範例
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -25,7 +25,7 @@ Azure SQL Database 中的記憶體內部技術可讓您改善應用程式的效�
 
 在本文中，您會看到兩個範例，分別示範如何在 Azure SQL Database 中使用記憶體內部 OLTP 以及資料行存放區索引。
 
-如需詳細資訊，請參閱：
+如需詳細資訊，請參閱
 
 - [記憶體內部 OLTP 概觀和使用案例](/sql/relational-databases/in-memory-oltp/overview-and-usage-scenarios) (包括客戶案例研究參考和入門資訊)
 - [記憶體內部 OLTP 的文件](/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization)
@@ -36,7 +36,7 @@ Azure SQL Database 中的記憶體內部技術可讓您改善應用程式的效�
 
 &nbsp;
 
-## <a name="1-install-the-in-memory-oltp-sample"></a>1. 安裝記憶體內部 OLTP 範例
+## <a name="1-install-the-in-memory-oltp-sample"></a>1.安裝記憶體內部 OLTP 範例
 
 在 [Azure 入口網站](https://portal.azure.com/)中按幾下滑鼠，即可建立 AdventureWorksLT 範例資料庫。 然後，本節中的步驟會說明如何使用記憶體內部 OLTP 物件擴充 AdventureWorksLT 資料庫，並示範效能優點。
 
@@ -82,7 +82,7 @@ SELECT DatabasePropertyEx(DB_Name(), 'IsXTPSupported');
 - Demo.DemoSalesOrderHeaderSeed
 - Demo.DemoSalesOrderDetailSeed
 
-您可以透過 SSMS 中的 [物件總管]****，檢查記憶體最佳化資料表。 以滑鼠右鍵按一下 [**資料表**  >  **篩選**  >  **篩選器設定**]  >  **的 [記憶體優化**]。 值等於 1。
+您可以透過 SSMS 中的 [物件總管]****，檢查記憶體最佳化資料表。 以滑鼠右鍵按一下 [資料表] > [篩選] > [篩選設定] > [記憶體已最佳化嗎]。 值等於 1。
 
 或者您可以查詢目錄檢視，例如：
 
@@ -158,7 +158,7 @@ end
 
 在 VM 上或你選擇的任何主機上，安裝 Replay Markup Language (RML) 公用程式。 這些公用程式包括 ostress.exe。
 
-如需詳細資訊，請參閱：
+如需詳細資訊，請參閱
 
 - [記憶體內部 OLTP 的範例資料庫](https://msdn.microsoft.com/library/mt465764.aspx)中的 ostress.exe 討論。
 - [記憶體內部 OLTP 的範例資料庫](https://msdn.microsoft.com/library/mt465764.aspx)。
@@ -205,7 +205,7 @@ ostress.exe -n100 -r50 -S<servername>.database.windows.net -U<login> -P<password
 
 `11/12/15 00:35:00.873 [0x000030A8] OSTRESS exiting normally, elapsed time: 00:01:31.867`
 
-#### <a name="reset-edit-for-_ondisk-then-rerun"></a>重設，針對 *_ondisk*進行編輯，然後重新執行
+#### <a name="reset-edit-for-_ondisk-then-rerun"></a>重設，針對 _ondisk 編輯，然後重新執行
 
 在獲得 _inmem** 執行的結果之後，請針對 _ondisk** 執行回合執行下列步驟：
 
@@ -229,11 +229,11 @@ ostress.exe -n100 -r50 -S<servername>.database.windows.net -U<login> -P<password
 
 &nbsp;
 
-## <a name="2-install-the-in-memory-analytics-sample"></a>2. 安裝記憶體內部分析範例
+## <a name="2-install-the-in-memory-analytics-sample"></a>2.安裝記憶體內部分析範例
 
 在本節中，您將比較使用資料行存放區索引與使用傳統 B 型樹狀結構索引時的 IO 和統計資料結果。
 
-針對 OLTP 工作負載的即時分析，通常最好使用非叢集式資料行存放區索引。 如需詳細資訊，請參閱描述的資料行存放區[索引](https://msdn.microsoft.com/library/gg492088.aspx)。
+針對 OLTP 工作負載的即時分析，通常最好使用非叢集式資料行存放區索引。 如需詳細資訊，請參閱[已描述的資料行存放區索引](https://msdn.microsoft.com/library/gg492088.aspx)。
 
 ### <a name="prepare-the-columnstore-analytics-test"></a>準備資料行存放區分析測試
 
@@ -335,7 +335,7 @@ GO
 
 ## <a name="next-steps"></a>後續步驟
 
-- [快速入門1：可加快 T-sql 效能的記憶體內部 OLTP 技術](https://msdn.microsoft.com/library/mt694156.aspx)
+- [快速入門 1：快速入門 1：可讓 Transact-SQL 擁有更快效能的記憶體內部 OLTP 技術](https://msdn.microsoft.com/library/mt694156.aspx)
 
 - [在現有的 Azure SQL 應用程式中使用記憶體內部 OLTP](in-memory-oltp-configure.md)
 
@@ -345,7 +345,7 @@ GO
 
 ### <a name="deeper-information"></a>更深入的資訊
 
-- [瞭解仲裁如何使重要資料庫的工作負載加倍，同時減少70% 與 Azure SQL Database 中記憶體內部 OLTP 的 DTU](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database)
+- [了解仲裁如何透過 Azure SQL Database 中的記憶體內部 OLTP，讓重要資料庫的工作負載加倍，同時降低 70% 的 DTU](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database)
 
 - [Azure SQL Database 中的記憶體內部 OLTP 部落格文章](https://azure.microsoft.com/blog/in-memory-oltp-in-azure-sql-database/)
 

@@ -12,14 +12,14 @@ ms.workload: identity
 ms.date: 12/13/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: bee6f832476537a6d7dba3db98d9aada6c61a476
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: cbfb5c598a2a56b0b14a3a90cf29ce23366b9b6c
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91574240"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91627664"
 ---
-# <a name="call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>自通用 Windows 平台 (UWP) 應用程式呼叫 Microsoft Graph API
+# <a name="tutorial-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>教學課程：自通用 Windows 平台 (UWP) 應用程式呼叫 Microsoft Graph API
 
 本指南說明原生通用 Windows 平台 (UWP) 應用程式如何要求存取權杖。 應用程式接著會呼叫 Microsoft Graph API。 此指南也適用於需要來自 Microsoft 身分識別平台端點之存取權杖的其他 API。
 

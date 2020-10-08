@@ -1,22 +1,22 @@
 ---
-title: 部署分區化的多租使用者資料庫 SaaS 應用程式
+title: 部署分區化多租用戶資料庫 SaaS 應用程式
 description: 部署及探索分區化 Wingtip SaaS 多租用戶資料庫應用程式，其使用 Azure SQL Database 示範 SaaS 模式。
 services: sql-database
 ms.service: sql-database
 ms.subservice: scenario
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: tutorial
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/16/2018
-ms.openlocfilehash: 59a7fbbd6f948ec5207522814a1375b806536810
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: 5363a1b7321bfcbb53b4494b51ee2ea2e7217782
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84310082"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91619639"
 ---
 # <a name="deploy-and-explore-a-sharded-multi-tenant-application"></a>部署及探索分區化多租用戶應用程式
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -41,7 +41,7 @@ ms.locfileid: "84310082"
 > - 如何部署 Wingtip Tickets SaaS 應用程式。
 > - 在何處取得應用程式原始程式碼和管理指令碼。
 > - 關於組成應用程式的伺服器和資料庫。
-> - 如何使用*類別目錄*將租使用者對應至其資料。
+> - 如何使用「目錄」將租用戶對應到其資料。
 > - 如何佈建新租用戶。
 > - 如何監視應用程式中的租用戶活動。
 
@@ -51,15 +51,15 @@ ms.locfileid: "84310082"
 
 若要完成本教學課程，請確定已完成下列必要條件：
 
-- 安裝最新版的 Azure PowerShell。 如需詳細資訊，請參閱[開始使用 Azure PowerShell][link-azure-get-started-powershell-41q]。
+- 安裝最新版的 Azure PowerShell。 如需詳細資料，請參閱[開始使用 Azure PowerShell][link-azure-get-started-powershell-41q]。
 
 ## <a name="deploy-the-wingtip-tickets-app"></a>部署 Wingtip Tickets 應用程式
 
 ### <a name="plan-the-names"></a>計劃名稱
 
 在本節的步驟中，您將提供使用者** 值來確保資源名稱是全域唯一，且為資源群組** 的名稱，該群組包含部署應用程式時建立的所有資源。 假設使用者的姓名為 Ann Finley**，我們建議使用以下名稱：
-- *使用者：* **af1**  *（其姓名縮寫，加上數位）。如果您第二次部署應用程式，請使用不同的值（例如 af2）。）*
-- *資源群組：* **wingtip-mt-af1** *（wingtip-mt 表示這是分區化多租使用者應用程式。附加使用者名稱 af1 會使資源組名與它所包含的資源名稱相互關聯）* 。
+- *使用者：* **af1** *(姓名縮寫加一個數字。* 如果您非首次部署應用程式，請使用另一個值 (例如 af2))。
+- *資源群組：* **wingtip-mt-af1** *(wingtip-mt 表示這是共用的多租用戶應用程式。* 加上使用者名稱 af1，會使資源群組名稱與其中各項資源的名稱相互關聯)。
 
 現在請選擇您的名稱，然後將它們寫下來。 
 
@@ -76,8 +76,8 @@ ms.locfileid: "84310082"
     > 針對此示範，請勿使用任何預先存在的資源群組、伺服器或集區。 而是選擇 [建立新的資源群組]****。 不使用應用程式之後請刪除此資源群組，以停止相關計費。
     > 請不要將此應用程式或任何它所建立的資源用於生產環境。 刻意讓應用程式中的一些驗證和伺服器防火牆設定不安全，以協助示範。
 
-    - 針對 [**資源群組**]-選取 [**新建**]，然後提供資源群組的**名稱**（區分大小寫）。
-        - 從下拉式清單中選取 [**位置**]。
+    - 針對**資源群組** - 選取 [新建] 並提供資源群組的 [名稱] \(區分大小寫)。
+        - 從下拉式清單中選取 [位置]。
     - 針對**使用者** - 我們建議您選擇簡短**使用者**值。
 
 1. **部署應用程式**。
@@ -96,21 +96,21 @@ ms.locfileid: "84310082"
 > [!NOTE]
 > 從外部來源下載 zip 檔案並進行解壓縮時，Windows 可能會封鎖可執行的內容 (指令碼、DLL)。 從 zip 檔案解壓縮指令碼時，請遵循下列步驟先解除封鎖 .zip 檔案，再進行解壓縮。 解除封鎖 .zip 檔案時您就確定允許執行指令碼。
 
-1. 流覽至[.. wingtipticketssaas-multitenantdb-master-MultiTenantDb GitHub](https://github.com/Microsoft/WingtipTicketsSaaS-MultiTenantDb)存放庫。
+1. 瀏覽至 [WingtipTicketsSaaS MultiTenantDb GitHub 存放庫](https://github.com/Microsoft/WingtipTicketsSaaS-MultiTenantDb)。
 2. 按一下 [複製或下載]****。
-3. 按一下 [**下載 ZIP** ] 並儲存檔案。
+3. 按一下 [下載 ZIP]，並儲存檔案。
 4. 以滑鼠右鍵按一下 **WingtipTicketsSaaS-MultiTenantDb-master.zip** 檔案，然後選取 [屬性]****。
 5. 在 [一般]**** 索引標籤上，選取 [解除封鎖]****，然後按一下 [套用]****。
-6. 按一下 [確定]。
-7. 將檔案解壓縮。
+6. 按一下 [確定]  。
+7. 解壓縮檔案。
 
-這些腳本位於.。 * \\.. Wingtipticketssaas-multitenantdb-master-MultiTenantDb-主要 \\ 學習模組 \\ *資料夾。
+指令碼位於 *..\\WingtipTicketsSaaS-MultiTenantDb-master\\Learning Modules\\* 資料夾中。
 
 ## <a name="update-the-configuration-file-for-this-deployment"></a>更新此部署的設定檔
 
 執行任何指令碼之前，請在 **UserConfig.psm1** 中設定「資源群組」** 和「使用者」** 值。 將這些變數設定為您在部署期間所設定的相同值。
 
-1. 開啟 ... \\\\在*PowerShell ISE*中*UserConfig .psm1*的學習模組。
+1. 在 [PowerShell ISE] 中開啟 ...\\Learning Modules\\*UserConfig.psm1*。
 2. 將 ResourceGroupName** 和 Name** 更新為您部署的特定值 (只在第 10 行和第 11 行)。
 3. 儲存變更。
 
@@ -125,7 +125,7 @@ ms.locfileid: "84310082"
 中央 [事件中樞]**** 網頁提供特定部署中租用戶的連結清單。 使用下列步驟，以體驗 [事件中樞]**** 網頁和個別 Web 應用程式：
 
 1. 在網頁瀏覽器中開啟 [事件中樞]****：
-   - http://events.wingtip-mt.&lt; user &gt; . trafficmanager.net &nbsp; *（ &lt; 將 user 取代 &gt; 為您部署的使用者值）。*
+   - http://events.wingtip-mt.&lt;user&gt;.trafficmanager.net &nbsp; *(將 &lt; user&gt; 取代為您部署的使用者值。)*
 
      ![事件中樞](./media/saas-multitenantdb-get-started-deploy/events-hub.png)
 
@@ -137,7 +137,7 @@ ms.locfileid: "84310082"
 
 為了控制連入要求的發佈，Wingtip 應用程式會使用 [Azure 流量管理員](../../traffic-manager/traffic-manager-overview.md)。 每個租用戶的 [活動] 分頁在其 URL 中包含它的租用戶名稱。 每個 URL 也會包含特定「使用者」值。 每個 URL 都藉由使用下列步驟，遵守所顯示的格式：
 
-- http://events.wingtip-mt.&lt; user &gt; . trafficmanager.net/*fabrikamjazzclub*
+- http://events.wingtip-mt.&lt;user&gt;.trafficmanager.net/*fabrikamjazzclub*
 
 1. 活動應用程式會從 URL 剖析租用戶名稱。 在前述範例 URL 中，租用戶名稱是 fabrikamjazzclub**。
 2. 然後應用程式會雜湊租用戶名稱，以使用[分區對應管理](elastic-scale-shard-map-management.md)來建立索引鍵以存取目錄。
@@ -170,7 +170,7 @@ ms.locfileid: "84310082"
 
 初始部署在 Tenants1** 資料庫中包含三個範例租用戶。 讓我們來建立另一個租用戶，並且觀察它對於已部署應用程式的影響。 在此步驟中，您按下一個按鍵以快速建立新的租用戶：
 
-1. 開啟 ... \\\\ \\ 在*PowerShell ISE*中，學習模組會布建和目錄*Demo-ProvisionTenants.ps1* 。
+1. 在 [PowerShell ISE] 中，開啟 ...\\Learning Modules\\Provision and Catalog\\Demo-ProvisionTenants.ps1。
 2. 按 **F5** (而不是 **F8**) 來執行指令碼 (目前先保持預設值)。
 
    > [!NOTE]
@@ -180,7 +180,7 @@ ms.locfileid: "84310082"
 
 ![新租用戶](./media/saas-multitenantdb-get-started-deploy/red-maple-racing.png)
 
-重新整理 [**事件中樞**]，新的租使用者現在會出現在清單中。
+重新整理「事件中樞」，而且新的租用戶現在會出現在清單中。
 
 ## <a name="provision-a-new-tenant-in-its-own-database"></a>在它自己的資料庫中佈建新租用戶
 
@@ -193,16 +193,16 @@ ms.locfileid: "84310082"
 
 接下來，我們佈建另一個租用戶，這次佈建在它自己的資料庫中：
 
-1. 在 ... \\學習模組布建 \\ 和目錄 \\ *Demo-ProvisionTenants.ps1*、修改 *$TenantName*至**Salix Salsa**、 *$VenueType* **dance**和 *$Scenario*至**2**。
+1. 在 ...\\Learning Modules\\Provision and Catalog\\Demo-ProvisionTenants.ps1 中，將 $TenantName 修改為 **Salix Salsa**、將 $VenueType 修改為 **dance**，以及將 $Scenario 修改為 **2**。
 
 2. 按下 **F5** 以再次執行指令碼。
-    - 這個**F5**按下會在個別的資料庫中布建新的租使用者。 資料庫和租用戶會在目錄中註冊。 然後瀏覽器會開啟至租用戶的 [事件] 分頁。
+    - 這次按下 **F5** 會在個別資料庫中佈建新的租用戶。 資料庫和租用戶會在目錄中註冊。 然後瀏覽器會開啟至租用戶的 [事件] 分頁。
 
    ![Salix Salsa 事件分頁](./media/saas-multitenantdb-get-started-deploy/salix-salsa.png)
 
    - 向下捲動到分頁底部。 您會在那裡看到資料庫名稱的橫幅，這是租用戶資料的儲存位置。
 
-3. 重新整理 [**事件中樞**]，這兩個新的租使用者現在會出現在清單中。
+3. 重新整理「事件中樞」，兩個新的租用戶現在會出現在清單中。
 
 ## <a name="explore-the-servers-and-tenant-databases"></a>探索伺服器和租用戶資料庫
 
@@ -212,7 +212,7 @@ ms.locfileid: "84310082"
 
    ![資源群組](./media/saas-multitenantdb-get-started-deploy/resource-group.png)
 
-2. 按一下 [**目錄- &lt; mt &gt; 使用者**伺服器]。 目錄伺服器包含名為 tenantcatalog** 和 basetenantdb** 的兩個資料庫。 basetenantdb** 資料庫是空白的範本資料庫。 它會複製以建立新的租用戶資料庫，無論是用於許多租用戶或僅一個租用戶。
+2. 按一下 **catalog-mt&lt;user&gt;** 伺服器。 目錄伺服器包含名為 tenantcatalog** 和 basetenantdb** 的兩個資料庫。 basetenantdb** 資料庫是空白的範本資料庫。 它會複製以建立新的租用戶資料庫，無論是用於許多租用戶或僅一個租用戶。
 
    ![目錄伺服器](./media/saas-multitenantdb-get-started-deploy/catalog-server.png)
 
@@ -226,7 +226,7 @@ ms.locfileid: "84310082"
 
 如果負載產生器已經執行數分鐘，應該已有足夠的遙測可供查看 Azure 入口網站的內建資料庫監視功能。
 
-1. 流覽至**tenants1-mt &lt; 使用者 &gt; **伺服器，然後按一下 [ **tenants1** ]，以查看具有四個租使用者之資料庫的資源使用率。 每個租用戶受限於負載產生器的偶發性過重負載：
+1. 瀏覽至 **tenants1-mt&lt;user&gt;** 伺服器，然後按一下 [tenants1] 以檢視其中有四個租用戶之資料庫的資源使用率。 每個租用戶受限於負載產生器的偶發性過重負載：
 
    ![監視 tenants1](./media/saas-multitenantdb-get-started-deploy/monitor-tenants1.png)
 
@@ -246,11 +246,11 @@ ms.locfileid: "84310082"
 
 ## <a name="additional-resources"></a>其他資源
 
-- 若要深入瞭解多租使用者 SaaS 應用程式，請參閱[多租使用者 saas 應用程式的設計模式](saas-tenancy-app-design-patterns.md)。
+- 若要了解多租用戶 SaaS 應用程式，請參閱[多租用戶 SaaS 應用程式的設計模式](saas-tenancy-app-design-patterns.md)。
 
 - 若要深入了解彈性集區，請參閱：
 
-  - [彈性集區可協助您管理和擴充中的多個資料庫 Azure SQL Database](elastic-pool-overview.md)
+  - [彈性集區可協助您管理及調整 Azure SQL Database 中的多個資料庫](elastic-pool-overview.md)
   - [使用 Azure SQL Database 相應放大](elastic-scale-introduction.md)
 
 ## <a name="next-steps"></a>後續步驟
@@ -260,12 +260,12 @@ ms.locfileid: "84310082"
 > [!div class="checklist"]
 > - 如何部署 Wingtip Tickets SaaS 多租用戶資料庫應用程式。
 > - 關於組成應用程式的伺服器和資料庫。
-> - 租使用者會使用*目錄*對應至其資料。
+> - 租用戶會使用「類別目錄」來對應到其資料。
 > - 如何將新租用戶佈建到多租用戶資料庫與單一租用戶資料庫。
 > - 如何檢視集區使用率以監視租用戶活動。
 > - 如何刪除範例資源以停止相關計費。
 
-現在，請嘗試布建[和目錄教學](saas-multitenantdb-provision-and-catalog.md)課程。
+現在，請嘗試[佈建和類別目錄教學課程](saas-multitenantdb-provision-and-catalog.md)。
 
 
 <!--  Link references.

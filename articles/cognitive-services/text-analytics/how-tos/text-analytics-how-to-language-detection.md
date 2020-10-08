@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 05/13/2020
 ms.author: aahi
-ms.openlocfilehash: 5b3893dce2d20b1de0a78f11263d880e262098d2
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: b5936d68ba98054eb6d98860c6edfaf12d6736d8
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "84142379"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710120"
 ---
 # <a name="example-detect-language-with-text-analytics"></a>範例：使用文字分析來偵測語言
 
@@ -31,6 +31,8 @@ ms.locfileid: "84142379"
 > 文字分析也會提供可用來偵測語言的 Linux 型 Docker 容器映像，好讓您可以在接近資料的位置[安裝和執行文字分析容器](text-analytics-how-to-install-containers.md)。
 
 ## <a name="preparation"></a>準備
+
+[!INCLUDE [v3 region availability](../includes/v3-region-availability.md)]
 
 您必須具有此格式的 JSON 文件：識別碼和文字。
 

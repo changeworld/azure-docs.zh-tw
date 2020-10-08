@@ -1,38 +1,38 @@
 ---
-title: 教學課程：將 SQL 受控執行個體新增至容錯移轉群組
+title: 教學課程：將 SQL 受控執行個體新增到容錯移轉群組
 titleSuffix: Azure SQL Managed Instance
-description: 在本教學課程中，您將瞭解如何在主要和次要 Azure SQL 受控執行個體之間建立容錯移轉群組。
+description: 在本教學課程中，您將了解如何在主要和次要 Azure SQL 受控執行個體之間建立容錯移轉群組。
 services: sql-database
 ms.service: sql-managed-instance
 ms.subservice: high-availability
 ms.custom: sqldbrb=1, devx-track-azurepowershell
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: tutorial
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sashan, sstein
 ms.date: 08/27/2019
-ms.openlocfilehash: 034940a0990fc97118e62caab051a5a9e2ffd3e7
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
-ms.translationtype: MT
+ms.openlocfilehash: df10e2b674a8e97766ee96a802e614e2bd797b7b
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91578558"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91617735"
 ---
-# <a name="tutorial-add-sql-managed-instance-to-a-failover-group"></a>教學課程：將 SQL 受控執行個體新增至容錯移轉群組
+# <a name="tutorial-add-sql-managed-instance-to-a-failover-group"></a>教學課程：將 SQL 受控執行個體新增到容錯移轉群組
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-將 Azure SQL 受控執行個體受控實例新增至容錯移轉群組。 在本文中，您將了解如何：
+將 Azure SQL 受控執行個體的受控執行個體新增至容錯移轉群組。 在本文中，您將了解如何：
 
 > [!div class="checklist"]
-> - 建立主要受管理的實例。
-> - 建立次要受控實例做為 [容錯移轉群組](../database/auto-failover-group-overview.md)的一部分。 
+> - 建立主要受控執行個體。
+> - 將次要受控執行個體建立為[容錯移轉群組](../database/auto-failover-group-overview.md)的一部分。 
 > - 測試容錯移轉。
 
   > [!NOTE]
-  > - 進行本教學課程時，請確定您設定的資源具有 [設定 SQL 受控執行個體容錯移轉群組的必要條件](../database/auto-failover-group-overview.md#enabling-geo-replication-between-managed-instances-and-their-vnets)。 
-  > - 建立受控實例可能需要相當長的時間。 因此，此教學課程可能需要數小時才能完成。 如需布建時間的詳細資訊，請參閱 [SQL 受控執行個體管理作業](sql-managed-instance-paas-overview.md#management-operations)。 
-  > - 參與容錯移轉群組的受控實例需要 [Azure ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md) 或兩個連線的 VPN 閘道。 目前不支援轉移的全域 VNet 對等互連。 本教學課程提供建立和連接 VPN 閘道的步驟。 如果您已設定 ExpressRoute，請略過這些步驟。 
+  > - 進行本教學課程時，請確定您已遵循＜[為 SQL 受控執行個體設定容錯移轉群組的必要條件](../database/auto-failover-group-overview.md#enabling-geo-replication-between-managed-instances-and-their-vnets)＞來設定資源。 
+  > - 建立受控執行個體可能需要很長的時間。 因此，本教學課程可能需要數小時才能完成。 如需有關佈建時間的詳細資訊，請參閱 [SQL 受控執行個體管理作業](sql-managed-instance-paas-overview.md#management-operations)。 
+  > - 加入容錯移轉群組的受控執行個體需要 [Azure ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md) 或兩個已連線的 VPN 閘道。 目前不支援轉移的全域 VNet 對等互連。 本教學課程提供建立和連結 VPN 閘道的步驟。 如果您已設定 ExpressRoute，請略過這些步驟。 
 
 
 ## <a name="prerequisites"></a>必要條件
@@ -40,48 +40,48 @@ ms.locfileid: "91578558"
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 若要完成本教學課程，請確定您具有下列項目︰ 
 
-- Azure 訂用帳戶。 如果您還沒有帳戶，請[建立一個免費帳戶](https://azure.microsoft.com/free/)。
+- Azure 訂用帳戶。 [建立免費帳戶](https://azure.microsoft.com/free/) (如果您還沒有帳戶的話)。
 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-若要完成本教學課程，請確定您有下列專案：
+若要完成本教學課程，請確定您具有下列必要項目：
 
-- Azure 訂用帳戶。 如果您還沒有帳戶，請[建立一個免費帳戶](https://azure.microsoft.com/free/)。
+- Azure 訂用帳戶。 [建立免費帳戶](https://azure.microsoft.com/free/) (如果您還沒有帳戶的話)。
 - [Azure PowerShell](/powershell/azure/)
 
 ---
 
 
-## <a name="create-a-resource-group-and-primary-managed-instance"></a>建立資源群組和主要受控實例
+## <a name="create-a-resource-group-and-primary-managed-instance"></a>建立資源群組和主要受控執行個體
 
-在此步驟中，您將使用 Azure 入口網站或 PowerShell 建立容錯移轉群組的資源群組和主要受控實例。 
+在此步驟中，您將使用 Azure 入口網站或 PowerShell，為您的容錯移轉群組建立資源群組和主要受控執行個體。 
 
-基於效能考慮，將兩個受控實例部署到 [配對的區域](../../best-practices-availability-paired-regions.md) 。 相較于未配對的區域，位於地理配對區域中的受控實例會有更好的效能。 
+基於效能考慮，這兩個受控執行個體都會部署到[配對區域](../../best-practices-availability-paired-regions.md)。 相較於非配對區域，位於異地配對區域中的受控執行個體會有更好的效能。 
 
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal) 
 
-使用 Azure 入口網站建立資源群組和您的主要受控實例。 
+使用 Azure 入口網站建立資源群組和您的主要受控執行個體。 
 
-1. 在 Azure 入口網站的左側功能表中，選取 [Azure SQL]。 如果 **AZURE SQL** 不在清單中，請選取 [ **所有服務**]，然後 `Azure SQL` 在 [搜尋] 方塊中輸入。 (選用) 選取 **Azure SQL** 旁的星號將其設為最愛，並新增為左側導覽中的項目。 
+1. 在 Azure 入口網站的左側功能表中，選取 [Azure SQL]。 如果 **Azure SQL** 不在清單中，請選取 [所有服務]，然後在搜尋方塊中輸入 `Azure SQL`。 (選用) 選取 **Azure SQL** 旁的星號將其設為最愛，並新增為左側導覽中的項目。 
 1. 選取 [+ 新增] 以開啟 [選取 SQL 部署選項] 頁面。 您可以選取 [資料庫]**** 圖格上的 [顯示詳細資料]****，以查看不同資料庫的其他資訊。
-1. 選取 [ **SQL 受控實例**] 圖格上的 [**建立**]。 
+1. 在 [SQL 受控執行個體] 磚上，選取 [建立]。 
 
     ![選取 SQL 受控執行個體](./media/failover-group-add-instance-tutorial/select-managed-instance.png)
 
-1. 在 [ **建立 AZURE SQL 受控執行個體** ] 頁面的 [ **基本** ] 索引標籤上：
-    1. 在 [ **專案詳細資料**] 底下，從下拉式清單中選取您的 **訂** 用帳戶，然後選擇 **建立新** 的資源群組。 輸入資源群組的名稱，例如 `myResourceGroup` 。 
-    1. 在 **[SQL 受控執行個體詳細資料**] 底下，提供受控實例的名稱，以及您想要部署受控實例的區域。 保留 [ **計算 + 儲存體** ] 的預設值。 
-    1. 在 [ **系統管理員帳戶**] 下，提供管理員登入，例如 `azureuser` 和複雜的管理員密碼。 
+1. 在 [建立 Azure SQL 受控執行個體] 頁面的 [基本資料] 索引標籤上：
+    1. 在 [專案詳細資料] 底下，從下拉式清單選取您的**訂用帳戶**，然後選擇 [建立新的] 資源群組。 輸入資源群組的名稱，例如 `myResourceGroup`。 
+    1. 在 [SQL 受控執行個體詳細資料] 底下，提供受控執行個體的名稱，以及您想要在其中部署受控執行個體的區域。 保留 [計算 + 儲存體] 的預設值。 
+    1. 在 [系統管理員帳戶] 底下，提供管理員登入 (例如 `azureuser`)，以及複雜的管理員密碼。 
 
-    ![建立主要受控實例](./media/failover-group-add-instance-tutorial/primary-sql-mi-values.png)
+    ![建立主要受控執行個體](./media/failover-group-add-instance-tutorial/primary-sql-mi-values.png)
 
-1. 將其餘設定保留為預設值，然後選取 [ **審核 + 建立** ]，以檢查您的 SQL 受控執行個體設定。 
-1. 選取 [ **建立** ] 以建立您的主要受控實例。 
+1. 將其餘設定保留為預設值，然後選取 [檢閱 + 建立] 來檢閱您的 SQL 受控執行個體設定。 
+1. 選取 [建立] 以建立您的主要受控執行個體。 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-使用 PowerShell 建立您的資源群組和主要受控實例。 
+使用 PowerShell 建立您的資源群組和主要受控執行個體。 
 
    ```powershell-interactive
    # Connect-AzAccount
@@ -408,91 +408,91 @@ ms.locfileid: "91578558"
 
 ## <a name="create-secondary-virtual-network"></a>建立次要虛擬網路
 
-如果您使用 Azure 入口網站來建立受控實例，您將需要另外建立虛擬網路，因為主要和次要受控實例的子網不會有重迭的範圍。 如果您要使用 PowerShell 來設定受控實例，請直接跳到步驟3。 
+如果您使用 Azure 入口網站建立受控執行個體，您將必須另外建立虛擬網路，因為主要和次要受控執行個體的子網路不能有重疊的範圍。 如果您使用 PowerShell 來設定受控執行個體，請跳至步驟 3。 
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal) 
 
-若要確認主要虛擬網路的子網範圍，請遵循下列步驟：
+若要確認主要虛擬網路的子網路範圍，請遵循下列步驟：
 
-1. 在 [Azure 入口網站](https://portal.azure.com)中，流覽至您的資源群組，然後選取您主要實例的虛擬網路。  
-2. 選取 [**設定**] 下的**子網**，並記下**位址範圍**。 次要受控實例之虛擬網路的子網位址範圍不能重迭。 
+1. 在 [Azure 入口網站](https://portal.azure.com)中，瀏覽至您的資源群組，然後選取主要執行個體的虛擬網路。  
+2. 選取 [設定] 底下的 [子網路]，並記下**位址範圍**。 次要受控執行個體虛擬網路的子網路位址範圍不能與此重疊。 
 
 
-   ![主要子網](./media/failover-group-add-instance-tutorial/verify-primary-subnet-range.png)
+   ![主要子網路](./media/failover-group-add-instance-tutorial/verify-primary-subnet-range.png)
 
 若要建立虛擬網路，請遵循下列步驟：
 
-1. 在 [ [Azure 入口網站](https://portal.azure.com)中，選取 [ **建立資源** ] 和 [搜尋 *虛擬網路*]。 
-1. 選取 Microsoft 所發行的 **虛擬網路** 選項，然後在下一個頁面上選取 [ **建立** ]。 
-1. 填寫必要欄位以設定次要受控實例的虛擬網路，然後選取 [ **建立**]。 
+1. 在 [Azure 入口網站](https://portal.azure.com)中，選取 [建立資源] 並搜尋 [虛擬網路]。 
+1. 選取 Microsoft 發佈的**虛擬網路**選項，然後在下一頁選取 [建立]。 
+1. 填寫必要欄位，以設定次要受控執行個體的虛擬網路，然後選取 [建立]。 
 
    下表顯示次要虛擬網路所需的值：
 
     | **欄位** | 值 |
     | --- | --- |
-    | **名稱** |  次要受控實例所要使用之虛擬網路的名稱，例如 `vnet-sql-mi-secondary` 。 |
-    | **位址空間** | 虛擬網路的位址空間，例如 `10.128.0.0/16` 。 | 
-    | **訂用帳戶** | 主要受控實例和資源群組所在的訂用帳戶。 |
-    | **區域** | 您將部署次要受控實例的位置。 |
-    | **子網路** | 子網的名稱。 `default` 預設為您提供。 |
-    | **位址範圍**| 子網的位址範圍。 這必須與主要受控實例的虛擬網路所使用的子網位址範圍不同，例如 `10.128.0.0/24` 。  |
+    | **名稱** |  次要受控執行個體所要使用的虛擬網路名稱，例如 `vnet-sql-mi-secondary`。 |
+    | **位址空間** | 虛擬網路的位址空間，例如 `10.128.0.0/16`。 | 
+    | **訂用帳戶** | 主要受控執行個體和資源群組所在的訂用帳戶。 |
+    | **區域** | 將用來部署次要受控執行個體的位置。 |
+    | **子網路** | 您的子網路名稱。 `default` 是預設值。 |
+    | **位址範圍**| 子網路的位址範圍。 這必須與主要受控執行個體虛擬網路所使用的子網路位址範圍不同，例如 `10.128.0.0/24`。  |
     | &nbsp; | &nbsp; |
 
     ![次要虛擬網路值](./media/failover-group-add-instance-tutorial/secondary-virtual-network.png)
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-只有當您使用 Azure 入口網站部署 SQL 受控執行個體時，才需要執行此步驟。 如果您是使用 PowerShell，請跳到步驟3。 
+只有當您使用 Azure 入口網站來部署 SQL 受控執行個體時，才需要執行此步驟。 如果您使用的是 PowerShell，請直接跳到步驟 3。 
 
 ---
 
-## <a name="create-a-secondary-managed-instance"></a>建立次要受控實例
-在此步驟中，您將在 Azure 入口網站中建立次要受控實例，這也會設定兩個受控實例之間的網路。 
+## <a name="create-a-secondary-managed-instance"></a>建立次要受控執行個體
+在此步驟中，您將在 Azure 入口網站中建立次要受控執行個體，這也會設定兩個受控執行個體之間的網路功能。 
 
-您的第二個受控實例必須：
+您的第二個受控執行個體必須：
 - 是空的。 
-- 具有與主要受控實例不同的子網和 IP 範圍。 
+- 具有與主要受控執行個體不同的子網路和 IP 範圍。 
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal) 
 
-使用 Azure 入口網站建立次要受控實例。 
+使用 Azure 入口網站建立次要受控執行個體。 
 
-1. 在 Azure 入口網站的左側功能表中，選取 [Azure SQL]。 如果 **AZURE SQL** 不在清單中，請選取 [ **所有服務**]，然後 `Azure SQL` 在 [搜尋] 方塊中輸入。 (選用) 選取 **Azure SQL** 旁的星號將其設為最愛，並新增為左側導覽中的項目。 
+1. 在 Azure 入口網站的左側功能表中，選取 [Azure SQL]。 如果 **Azure SQL** 不在清單中，請選取 [所有服務]，然後在搜尋方塊中輸入 `Azure SQL`。 (選用) 選取 **Azure SQL** 旁的星號將其設為最愛，並新增為左側導覽中的項目。 
 1. 選取 [+ 新增] 以開啟 [選取 SQL 部署選項] 頁面。 您可以選取 [資料庫]**** 圖格上的 [顯示詳細資料]****，以查看不同資料庫的其他資訊。
-1. 選取 [ **SQL 受控實例**] 圖格上的 [**建立**]。 
+1. 在 [SQL 受控執行個體] 磚上，選取 [建立]。 
 
     ![選取 SQL 受控執行個體](./media/failover-group-add-instance-tutorial/select-managed-instance.png)
 
-1. 在 [**建立 AZURE SQL 受控執行個體**] 頁面的 [**基本**] 索引標籤上，填寫必要欄位以設定您的次要受控實例。 
+1. 在 [建立 Azure SQL 受控執行個體] 頁面的 [基本資料] 索引標籤上，填寫必要欄位以設定次要受控執行個體。 
 
-   下表顯示次要受控實例所需的值：
+   下表顯示次要受控執行個體所需的值：
  
     | **欄位** | 值 |
     | --- | --- |
-    | **訂用帳戶** |  您的主要受控實例所在的訂用帳戶。 |
-    | **資源群組**| 您的主要受控實例所在的資源群組。 |
-    | **SQL 受控執行個體名稱** | 新次要受控實例的名稱，例如 `sql-mi-secondary` 。  | 
-    | **區域**| 次要受控實例的位置。  |
-    | **SQL 受控執行個體管理員登入** | 您要用於新的次要受控實例的登入，例如 `azureuser` 。 |
-    | **密碼** | 新次要受控實例的系統管理員登入所使用的複雜密碼。  |
+    | **訂用帳戶** |  您主要受控執行個體所在的訂用帳戶。 |
+    | **資源群組**| 您主要受控執行個體所在的資源群組。 |
+    | **SQL 受控執行個體名稱** | 新次要受控執行個體的名稱，例如 `sql-mi-secondary`。  | 
+    | **區域**| 次要受控執行個體的位置。  |
+    | **SQL 受控執行個體系統管理員登入** | 您想用於新次要受控執行個體的登入，例如 `azureuser`。 |
+    | **密碼** | 複雜密碼，將用於新次要受控執行個體的系統管理員登入。  |
     | &nbsp; | &nbsp; |
 
-1. 在 [ **網路** 功能] 索引標籤的 [ **虛擬網路**] 中，從下拉式清單中選取您為次要受控實例建立的虛擬網路。
+1. 針對 [網路功能] 索引標籤底下的 [虛擬網路]，從下拉式清單中選取您為次要受控執行個體建立的虛擬網路。
 
-   ![次要 MI 網路](./media/failover-group-add-instance-tutorial/networking-settings-for-secondary-mi.png)
+   ![次要 MI 網路功能](./media/failover-group-add-instance-tutorial/networking-settings-for-secondary-mi.png)
 
-1. 在 [ **其他設定** ] 索引標籤的 [ **異地**複寫] 中，選擇 [ **是]** _作為 [容錯移轉次要資料庫_]。 從下拉式清單中選取 [主要受控實例]。 
+1. 針對 [其他設定] 索引標籤底下的 [異地複寫] 選擇 [是]，以「作為容錯移轉次要執行個體」使用。 從下拉式清單中選取主要受控執行個體。 
     
-   請確定定序和時區符合主要受控實例的定序與時區。 本教學課程中建立的主要受控實例會使用定 `SQL_Latin1_General_CP1_CI_AS` 序和時區的預設值 `(UTC) Coordinated Universal Time` 。 
+   請確定定序和時區與主要受控執行個體相符。 在本教學課程中建立的主要受控執行個體會使用作為預設值的 `SQL_Latin1_General_CP1_CI_AS` 定序和 `(UTC) Coordinated Universal Time` 時區。 
 
-   ![次要受控實例網路](./media/failover-group-add-instance-tutorial/secondary-mi-failover.png)
+   ![次要受控執行個體網路功能](./media/failover-group-add-instance-tutorial/secondary-mi-failover.png)
 
-1. 選取 [ **審核 + 建立** ] 以檢查次要受控實例的設定。 
-1. 選取 [ **建立** ] 以建立您的次要受控實例。 
+1. 選取 [檢閱 + 建立] 來檢閱次要受控執行個體的設定。 
+1. 選取 [建立] 以建立次要受控執行個體。 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-使用 PowerShell 建立次要受控實例。 
+使用 PowerShell 建立次要受控執行個體。 
 
    ```powershell-interactive
    # Configure the secondary virtual network
@@ -738,54 +738,54 @@ ms.locfileid: "91578558"
 
 ## <a name="create-a-primary-gateway"></a>建立主要閘道 
 
-若要讓兩個受控實例參與容錯移轉群組，必須在兩個受控實例的虛擬網路之間設定 ExpressRoute 或閘道，以允許網路通訊。 如果您選擇設定 [ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md) 而不是連接兩個 VPN 閘道，請直接跳到 [步驟 7](#create-a-failover-group)。  
+若要讓兩個受控執行個體加入容錯移轉群組，必須在兩個受控執行個體的虛擬網路之間設定 ExpressRoute 或閘道，以允許網路通訊。 如果您選擇設定 [ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md)，而不是連結兩個 VPN 閘道，請直接跳至 [步驟 7](#create-a-failover-group)。  
 
-本文提供建立兩個 VPN 閘道並將它們連線的步驟，但如果您已設定 ExpressRoute，可以直接跳到建立容錯移轉群組。 
+本文提供建立兩個 VPN 閘道並加以連線的步驟，但如果您已設定 ExpressRoute，可以直接跳到建立容錯移轉群組。 
 
 > [!NOTE]
-> 閘道的 SKU 會影響輸送量效能。 本教學課程會部署具有最基本 SKU () 的閘道 `HwGw1` 。 部署較高的 SKU (範例： `VpnGw3`) 以達到更高的輸送量。 如需所有可用的選項，請參閱 [閘道 sku](../../vpn-gateway/vpn-gateway-about-vpngateways.md#benchmark)
+> 閘道的 SKU 會影響輸送量效能。 本教學課程會以最基本的 SKU (`HwGw1`) 來部署閘道。 部署較高的 SKU (例如：`VpnGw3`) 可達到更高的輸送量。 如需所有可用選項，請參閱[閘道 SKU](../../vpn-gateway/vpn-gateway-about-vpngateways.md#benchmark)
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 
-使用 Azure 入口網站為您的主要受控實例的虛擬網路建立閘道。 
+使用 Azure 入口網站，為您主要受控執行個體的虛擬網路建立閘道。 
 
 
-1. 在 [Azure 入口網站](https://portal.azure.com)中，移至您的資源群組，然後選取您主要受控實例的 **虛擬網路** 資源。 
-1. 選取 [**設定**] 下的**子網**，然後選取以新增**閘道子網**。 保留預設值。 
+1. 在 [Azure 入口網站](https://portal.azure.com)中，移至您的資源群組，然後為您的主要受控執行個體選取**虛擬網路**資源。 
+1. 選取 [設定] 底下的 [子網路]，然後選取新增 [閘道子網路]。 請保留預設值。 
 
-   ![新增主要受控實例的閘道](./media/failover-group-add-instance-tutorial/add-subnet-gateway-primary-vnet.png)
+   ![為主要受控執行個體新增閘道](./media/failover-group-add-instance-tutorial/add-subnet-gateway-primary-vnet.png)
 
-1. 建立子網閘道之後，請從左側流覽窗格中選取 [ **建立資源** ]，然後 `Virtual network gateway` 在 [搜尋] 方塊中輸入。 選取**Microsoft**發佈的**虛擬網路閘道**資源。 
+1. 建立子網路閘道之後，從左側瀏覽窗格中選取 [建立資源]，然後在搜尋方塊中輸入 `Virtual network gateway`。 選取 **Microsoft** 發佈的**虛擬網路閘道**資源。 
 
    ![建立新的虛擬網路閘道](./media/failover-group-add-instance-tutorial/create-virtual-network-gateway.png)
 
-1. 填寫必要欄位，以設定主要受控實例的閘道。 
+1. 填寫必要欄位，為您的主要受控執行個體設定閘道。 
 
-   下表顯示主要受控實例閘道所需的值：
+   下表顯示主要受控執行個體閘道所需的值：
  
     | **欄位** | 值 |
     | --- | --- |
-    | **訂用帳戶** |  您的主要受控實例所在的訂用帳戶。 |
-    | **名稱** | 虛擬網路閘道的名稱，例如 `primary-mi-gateway` 。 | 
-    | **區域** | 主要受控實例所在的區域。 |
+    | **訂用帳戶** |  您主要受控執行個體所在的訂用帳戶。 |
+    | **名稱** | 虛擬網路閘道的名稱，例如 `primary-mi-gateway`。 | 
+    | **區域** | 您主要受控執行個體所在的區域。 |
     | **閘道類型** | 選取 [VPN]。 |
     | **VPN 類型** | 選取 [依路由]。 |
-    | **SKU**| 保留預設值 `VpnGw1` 。 |
-    | **虛擬網路**| 選取在第2節中建立的虛擬網路，例如 `vnet-sql-mi-primary` 。 |
+    | **SKU**| 保留預設值：`VpnGw1`。 |
+    | **虛擬網路**| 選取在第 2 節中建立的虛擬網路，例如 `vnet-sql-mi-primary`。 |
     | **公用 IP 位址**| 選取 [建立新的]。 |
-    | **公用 IP 位址名稱**| 輸入 IP 位址的名稱，例如 `primary-gateway-IP` 。 |
+    | **公用 IP 位址名稱**| 輸入 IP 位址的名稱，例如 `primary-gateway-IP`。 |
     | &nbsp; | &nbsp; |
 
-1. 將其他值保留為預設值，然後選取 [ **審核 + 建立** ] 以檢查虛擬網路閘道的設定。
+1. 將其他值保留為預設值，然後選取 [檢閱 + 建立] 來檢閱虛擬網路閘道的設定。
 
    ![主要閘道設定](./media/failover-group-add-instance-tutorial/settings-for-primary-gateway.png)
 
-1. 選取 [ **建立** ] 以建立新的虛擬網路閘道。 
+1. 選取 [建立] 以建立新的虛擬網路閘道。 
 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-使用 PowerShell 為您的主要受控實例的虛擬網路建立閘道。 
+使用 PowerShell，為您主要受控執行個體的虛擬網路建立閘道。 
 
    ```powershell-interactive
    # Create the primary gateway
@@ -827,7 +827,7 @@ ms.locfileid: "91578558"
 | [Set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork) | 更新虛擬網路。  |
 | [Get-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/get-azvirtualnetworksubnetconfig) | 取得虛擬網路中的子網路。 |
 | [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) | 建立公用 IP 位址。  | 
-| [New-AzVirtualNetworkGatewayIpConfig](/powershell/module/az.network/new-azvirtualnetworkgatewayipconfig) | 建立虛擬網路閘道的 IP 設定。 |
+| [New-AzVirtualNetworkGatewayIpConfig](/powershell/module/az.network/new-azvirtualnetworkgatewayipconfig) | 建立虛擬網路閘道的 IP 組態。 |
 | [New-AzVirtualNetworkGateway](/powershell/module/az.network/new-azvirtualnetworkgateway) | 建立虛擬網路閘道。 |
 
 
@@ -835,26 +835,26 @@ ms.locfileid: "91578558"
 
 
 ## <a name="create-secondary-gateway"></a>建立次要閘道 
-在此步驟中，請使用 Azure 入口網站為次要受控實例的虛擬網路建立閘道。 
+在此步驟中，請使用 Azure 入口網站為次要受控執行個體的虛擬網路建立閘道。 
 
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 
-使用 Azure 入口網站，重複上一節中的步驟，以建立次要受控實例的虛擬網路子網和閘道。 填寫必要欄位，以設定次要受控實例的閘道。 
+使用 Azure 入口網站，重複上一節中的步驟來建立次要受控執行個體的虛擬網路子網路和閘道。 填寫必要欄位，為您的次要受控執行個體設定閘道。 
 
-   下表顯示次要受控實例閘道所需的值：
+   下表顯示次要受控執行個體閘道所需的值：
 
    | **欄位** | 值 |
    | --- | --- |
-   | **訂用帳戶** |  次要受控實例所在的訂用帳戶。 |
-   | **名稱** | 虛擬網路閘道的名稱，例如 `secondary-mi-gateway` 。 | 
-   | **區域** | 次要受控實例所在的區域。 |
+   | **訂用帳戶** |  次要受控執行個體所在的訂用帳戶。 |
+   | **名稱** | 虛擬網路閘道的名稱，例如 `secondary-mi-gateway`。 | 
+   | **區域** | 次要受控執行個體所在的區域。 |
    | **閘道類型** | 選取 [VPN]。 |
    | **VPN 類型** | 選取 [依路由]。 |
-   | **SKU**| 保留預設值 `VpnGw1` 。 |
-   | **虛擬網路**| 選取次要受控實例的虛擬網路，例如 `vnet-sql-mi-secondary` 。 |
+   | **SKU**| 保留預設值：`VpnGw1`。 |
+   | **虛擬網路**| 選取次要受控執行個體的虛擬網路，例如 `vnet-sql-mi-secondary`。 |
    | **公用 IP 位址**| 選取 [建立新的]。 |
-   | **公用 IP 位址名稱**| 輸入 IP 位址的名稱，例如 `secondary-gateway-IP` 。 |
+   | **公用 IP 位址名稱**| 輸入 IP 位址的名稱，例如 `secondary-gateway-IP`。 |
    | &nbsp; | &nbsp; |
 
    ![次要閘道設定](./media/failover-group-add-instance-tutorial/settings-for-secondary-gateway.png)
@@ -862,7 +862,7 @@ ms.locfileid: "91578558"
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-使用 PowerShell 為次要受控實例的虛擬網路建立閘道。 
+使用 PowerShell 為次要受控執行個體的虛擬網路建立閘道。 
 
    ```powershell-interactive
    # Create the secondary gateway
@@ -907,47 +907,47 @@ ms.locfileid: "91578558"
 | [Set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork) | 更新虛擬網路。  |
 | [Get-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/get-azvirtualnetworksubnetconfig) | 取得虛擬網路中的子網路。 |
 | [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) | 建立公用 IP 位址。  | 
-| [New-AzVirtualNetworkGatewayIpConfig](/powershell/module/az.network/new-azvirtualnetworkgatewayipconfig) | 建立虛擬網路閘道的 IP 設定。 |
+| [New-AzVirtualNetworkGatewayIpConfig](/powershell/module/az.network/new-azvirtualnetworkgatewayipconfig) | 建立虛擬網路閘道的 IP 組態。 |
 | [New-AzVirtualNetworkGateway](/powershell/module/az.network/new-azvirtualnetworkgateway) | 建立虛擬網路閘道。 |
 
 ---
 
 
-## <a name="connect-the-gateways"></a>連接閘道
-在此步驟中，建立兩個虛擬網路的兩個閘道之間的雙向連接。 
+## <a name="connect-the-gateways"></a>連結閘道
+在此步驟中，您會在兩個虛擬網路的兩個閘道之間建立雙向連線。 
 
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 
-使用 Azure 入口網站連接這兩個閘道。 
+使用 Azure 入口網站來連結兩個閘道。 
 
 
-1. 選取 [從[Azure 入口網站](https://portal.azure.com)**建立資源**]。
-1. `connection`在 [搜尋] 方塊中輸入，然後按 enter 鍵搜尋，這會帶**Connection**您前往 Microsoft 所發行的連線資源。
-1. 選取 [ **建立** ] 以建立您的連接。 
-1. 在 [ **基本** ] 頁面上，選取下列值，然後選取 **[確定]**。 
-    1. `VNet-to-VNet`針對**連線類型**選取。 
+1. 從 [Azure 入口網站](https://portal.azure.com)選取 [建立資源]。
+1. 在搜尋方塊中輸入 `connection`，然後按 Enter 鍵進行搜尋，這會帶您前往 Microsoft 發佈的**連線**資源。
+1. 選取 [建立] 以建立您的連線。 
+1. 在 [基本資料] 頁面上選取下列值，然後選取 [確定]。 
+    1. 選取 `VNet-to-VNet` 作為 [連線類型]。 
     1. 從下拉式清單中選取訂用帳戶。 
-    1. 在下拉式清單中選取 [SQL 受控執行個體的資源群組。 
-    1. 從下拉式清單中選取您主要受控實例的位置。 
-1. 在 [ **設定** ] 頁面上，選取或輸入下列值，然後選取 **[確定]**：
-    1. 選擇 **第一個虛擬網路閘道**的主要網路閘道，例如 `primaryGateway` 。  
-    1. 選擇 **第二個虛擬網路閘道**的次要網路閘道，例如 `secondaryGateway` 。 
-    1. 選取 [ **建立雙向連接**] 旁的核取方塊。 
-    1. 請保留預設的主要連接名稱，或將其重新命名為您選擇的值。 
-    1. 為連接提供 **共用金鑰 (PSK) ** ，例如 `mi1m2psk` 。 
+    1. 在下拉式清單中，選取 SQL 受控執行個體的資源群組。 
+    1. 從下拉式清單中選取您的主要受控執行個體位置。 
+1. 在 [設定] 頁面上選取或輸入下列值，然後選取 [確定]：
+    1. 選擇主要網路閘道作為 [第一個虛擬網路閘道]，例如 `primaryGateway`。  
+    1. 選擇次要網路閘道作為 [第二個虛擬網路閘道]，例如 `secondaryGateway`。 
+    1. 選取 [建立雙向連線] 旁的核取方塊。 
+    1. 保留預設的主要連線名稱，或將其重新命名為您選擇的值。 
+    1. 提供連線的**共用金鑰 (PSK)** ，例如 `mi1m2psk`。 
     1. 選取 [確定]**** 儲存設定。 
 
     ![建立閘道連線](./media/failover-group-add-instance-tutorial/create-gateway-connection.png)
 
     
 
-1. 在 [ **審核 + 建立** ] 頁面上，檢查雙向連接的設定，然後選取 **[確定]** 以建立您的連接。 
+1. 在 [檢閱 + 建立] 頁面上，檢閱雙向連線的設定，然後選取 [確定] 以建立您的連線。 
 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-使用 PowerShell 連接這兩個閘道。 
+使用 PowerShell 來連結這兩個閘道。 
 
    ```powershell-interactive
    # Connect the primary to secondary gateway
@@ -976,24 +976,24 @@ ms.locfileid: "91578558"
 
 
 ## <a name="create-a-failover-group"></a>建立容錯移轉群組
-在此步驟中，您將建立容錯移轉群組，並將這兩個受控實例新增至其中。 
+在此步驟中，您將建立容錯移轉群組，並將這兩個受控執行個體新增至其中。 
 
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 使用 Azure 入口網站建立容錯移轉群組。 
 
 
-1. 在[Azure 入口網站](https://portal.azure.com)的左側功能表中選取**Azure SQL** 。 如果 **AZURE SQL** 不在清單中，請選取 [ **所有服務**]，然後 `Azure SQL` 在 [搜尋] 方塊中輸入。 (選用) 選取 **Azure SQL** 旁的星號將其設為最愛，並新增為左側導覽中的項目。 
-1. 選取您在第一個區段中建立的主要受控實例，例如 `sql-mi-primary` 。 
-1. 在 [ **設定**] 底下，流覽至 **實例容錯移轉群組** ，然後選擇 [ **加入群組** ] 以開啟 [ **實例容錯移轉群組** ] 頁面。 
+1. 在 [Azure 入口網站](https://portal.azure.com)的左側功能表中，選取 [Azure SQL]。 如果 **Azure SQL** 不在清單中，請選取 [所有服務]，然後在搜尋方塊中輸入 `Azure SQL`。 (選用) 選取 **Azure SQL** 旁的星號將其設為最愛，並新增為左側導覽中的項目。 
+1. 選取您在第一節中建立的主要受控執行個體，例如 `sql-mi-primary`。 
+1. 在 [設定] 底下，瀏覽至 [執行個體容錯移轉群組]，然後選擇 [新增群組] 以開啟 [執行個體容錯移轉群組] 頁面。 
 
    ![新增容錯移轉群組](./media/failover-group-add-instance-tutorial/add-failover-group.png)
 
-1. 在 [ **實例容錯移轉群組** ] 頁面上，輸入您的容錯移轉群組的名稱，例如 `failovergrouptutorial` 。 然後從下拉式清單中選擇次要受控實例（例如 `sql-mi-secondary` ）。 選取 [ **建立** ] 以建立您的容錯移轉群組。 
+1. 在 [執行個體容錯移轉群組] 頁面上，輸入容錯移轉群組的名稱，例如 `failovergrouptutorial`。 然後從下拉式清單中選擇次要受控執行個體，例如 `sql-mi-secondary`。 選取 [建立] 來建立您的容錯移轉群組。 
 
    ![建立容錯移轉群組](./media/failover-group-add-instance-tutorial/create-failover-group.png)
 
-1. 當容錯移轉群組部署完成後，您將會回到 [ **容錯移轉群組** ] 頁面。 
+1. 完成容錯移轉群組的部署之後，您會回到 [容錯移轉群組] 頁面。 
 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
@@ -1026,21 +1026,21 @@ ms.locfileid: "91578558"
 使用 Azure 入口網站測試容錯移轉。 
 
 
-1. 流覽至[Azure 入口網站](https://portal.azure.com)內的_次要_受控實例，然後在 [設定] 底下選取 [**實例容錯移轉群組**]。 
-1. 請檢查哪個受控實例是主要複本，以及哪個受控實例是次要複本。 
-1. 選取 [ **容錯移轉** ]，然後在有關 TDS 會話中斷連線的警告上選取 **[是]** 。 
+1. 在 [Azure 入口網站](https://portal.azure.com)中，瀏覽至「次要」受控執行個體，然後選取 [設定] 底下的 [執行個體容錯移轉群組]。 
+1. 檢閱哪個受控執行個體是主要的，以及哪個受控執行個體是次要的。 
+1. 選取 [容錯移轉]，然後在 TDS 工作階段將中斷連線的警告上，選取 [是]。 
 
-   ![容錯移轉群組的容錯移轉](./media/failover-group-add-instance-tutorial/failover-mi-failover-group.png)
+   ![容錯移轉到容錯移轉群組](./media/failover-group-add-instance-tutorial/failover-mi-failover-group.png)
 
-1. 檢查哪個受控實例是主要複本，以及哪個受控實例是次要複本。 如果容錯移轉成功，這兩個實例應該具有已切換的角色。 
+1. 檢閱哪個受控執行個體是主要的，以及哪個受控執行個體是次要的。 如果容錯移轉成功，這兩個執行個體應該已交換角色。 
 
-   ![受控實例在容錯移轉後已切換角色](./media/failover-group-add-instance-tutorial/mi-switched-after-failover.png)
+   ![受控執行個體在容錯移轉後已交換角色](./media/failover-group-add-instance-tutorial/mi-switched-after-failover.png)
 
-1. 移至新的 _次要_ 受控實例，然後再次選取 [ **容錯移轉** ]，將主要實例容錯移轉回主要角色。 
+1. 移至新的「次要」受控執行個體，然後再次選取 [容錯移轉]，將主要執行個體容錯回復至主要角色。 
 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-使用 PowerShell 來測試容錯移轉。 
+使用 PowerShell 測試容錯移轉。 
 
    ```powershell-interactive
     
@@ -1056,7 +1056,7 @@ ms.locfileid: "91578558"
    ```
 
 
-將容錯移轉群組還原回主伺服器：
+將容錯移轉群組還原至主要伺服器：
 
    ```powershell-interactive
    # Verify the current primary role
@@ -1086,18 +1086,18 @@ ms.locfileid: "91578558"
 
 
 ## <a name="clean-up-resources"></a>清除資源
-先刪除受管理的實例，然後刪除虛擬叢集、任何剩餘的資源，最後再刪除資源群組，以清除資源。 
+若要清除資源，請依序刪除受控執行個體、虛擬叢集及任何剩餘的資源，並在最後刪除資源群組。 
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 1. 瀏覽至您在 [Azure 入口網站](https://portal.azure.com)中的資源群組。 
-1. 選取受控執行個體，然後選取 [刪除]。 在文字方塊中輸入 `yes` 以確認您要刪除資源，然後選取 [刪除]。 此程序可能需要一些時間才能在背景中完成，在其完成前，您將無法刪除*虛擬叢集*或任何其他相依資源。 在 [ **活動** ] 索引標籤中監視刪除，以確認您的受控實例已刪除。 
+1. 選取受控執行個體，然後選取 [刪除]。 在文字方塊中輸入 `yes` 以確認您要刪除資源，然後選取 [刪除]。 此程序可能需要一些時間才能在背景中完成，在其完成前，您將無法刪除*虛擬叢集*或任何其他相依資源。 監視 [活動] 索引標籤中的刪除作業，確認您的受控執行個體已刪除。 
 1. 受控執行個體刪除後，請在資源群組中選取虛擬叢集，然後選擇 [刪除]，加以刪除。 在文字方塊中輸入 `yes` 以確認您要刪除資源，然後選取 [刪除]。 
 1. 刪除任何剩餘的資源。 在文字方塊中輸入 `yes` 以確認您要刪除資源，然後選取 [刪除]。 
 1. 選取 [刪除資源群組]、輸入資源群組的名稱 `myResourceGroup`，然後選取 [刪除]，以刪除資源群組。 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-您將需要移除資源群組兩次。 第一次移除資源群組將會移除受控實例和虛擬叢集，但接著會失敗並顯示錯誤訊息 `Remove-AzResourceGroup : Long running operation failed with status 'Conflict'` 。 請再次執行 Remove-AzResourceGroup 命令，以移除所有剩餘的資源及資源群組。
+您將需要移除資源群組兩次。 第一次移除資源群組時，將會移除受控執行個體和虛擬叢集，但接著會失敗並出現錯誤訊息：`Remove-AzResourceGroup : Long running operation failed with status 'Conflict'`。 請再次執行 Remove-AzResourceGroup 命令，以移除所有剩餘的資源及資源群組。
 
 ```powershell-interactive
 Remove-AzResourceGroup -ResourceGroupName $resourceGroupName
@@ -1140,7 +1140,7 @@ Write-host "Removing residual resources and resource group..."
 | [New-AzSqlInstance](/powershell/module/az.sql/new-azsqlinstance) | 建立受控執行個體。  |
 | [Get-AzSqlInstance](/powershell/module/az.sql/get-azsqlinstance)| 傳回 Azure SQL Database 受控執行個體的資訊。 |
 | [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) | 建立公用 IP 位址。  | 
-| [New-AzVirtualNetworkGatewayIpConfig](/powershell/module/az.network/new-azvirtualnetworkgatewayipconfig) | 建立虛擬網路閘道的 IP 設定。 |
+| [New-AzVirtualNetworkGatewayIpConfig](/powershell/module/az.network/new-azvirtualnetworkgatewayipconfig) | 建立虛擬網路閘道的 IP 組態。 |
 | [New-AzVirtualNetworkGateway](/powershell/module/az.network/new-azvirtualnetworkgateway) | 建立虛擬網路閘道。 |
 | [New-AzVirtualNetworkGatewayConnection](/powershell/module/az.network/new-azvirtualnetworkgatewayconnection) | 建立兩個虛擬網路閘道之間的連線。   |
 | [New-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/new-azsqldatabaseinstancefailovergroup)| 建立新的 SQL 受控執行個體容錯移轉群組。  |
@@ -1150,23 +1150,23 @@ Write-host "Removing residual resources and resource group..."
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal) 
 
-Azure 入口網站沒有任何可用的腳本。
+沒有可供 Azure 入口網站使用的指令碼。
 
 ---
 
 ## <a name="next-steps"></a>後續步驟
 
-在本教學課程中，您已設定兩個受控實例之間的容錯移轉群組。 您已了解如何︰
+在本教學課程中，您已設定兩個受控執行個體之間的容錯移轉群組。 您已了解如何︰
 
 > [!div class="checklist"]
-> - 建立主要受管理的實例。
-> - 建立次要受控實例做為 [容錯移轉群組](../database/auto-failover-group-overview.md)的一部分。 
+> - 建立主要受控執行個體。
+> - 將次要受控執行個體建立為[容錯移轉群組](../database/auto-failover-group-overview.md)的一部分。 
 > - 測試容錯移轉。
 
-前進到下一個有關如何連接到 SQL 受控執行個體的快速入門，以及如何將資料庫還原至 SQL 受控執行個體： 
+請前進到下一個快速入門，了解如何連線到 SQL 受控執行個體，以及如何將資料庫還原至 SQL 受控執行個體： 
 
 > [!div class="nextstepaction"]
-> [連接到 SQL 受控執行個體](connect-vm-instance-configure.md) 
+> [連線到 SQL 受控執行個體](connect-vm-instance-configure.md)
 > [將資料庫還原至 SQL 受控執行個體](restore-sample-database-quickstart.md)
 
 

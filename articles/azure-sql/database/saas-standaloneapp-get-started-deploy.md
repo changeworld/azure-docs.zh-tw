@@ -1,22 +1,22 @@
 ---
-title: 單一租使用者 SaaS 教學課程
+title: 單一租用戶 SaaS 教學課程
 description: 部署及探索使用 Azure SQL Database 的獨立單一租用戶 SaaS 應用程式。
 services: sql-database
 ms.service: sql-database
 ms.subservice: scenario
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: tutorial
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 11/07/2018
-ms.openlocfilehash: 52dfc285deaa84792e37d0f012abd7702d856113
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
-ms.translationtype: MT
+ms.openlocfilehash: 1545f9cde15f010ba3d7d52c6fea1ef233d2fac5
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87544076"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91619467"
 ---
 # <a name="deploy-and-explore-a-standalone-single-tenant-application-that-uses-azure-sql-database"></a>部署及探索使用 Azure SQL Database 的獨立單一租用戶應用程式
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -25,9 +25,9 @@ ms.locfileid: "87544076"
 
 獨立應用程式 (每一租用戶一個應用程式) 模式會為每個租用戶部署一個應用程式執行個體。  每個應用程式都已針對特定租用戶設定，並部署在個別的 Azure 資源群組中。 可以佈建應用程式的多個執行個體來提供多租用戶解決方案。 這個模式最適合少量租用戶，因為租用戶隔離是第一要務。 Azure 的夥伴程式可讓服務提供者將資源部署到租用戶的訂用帳戶中，並代表租用戶管理這些資源。 
 
-在本教學課程中，您將在 Azure 訂用帳戶中部署三個租使用者的三個獨立應用程式。  您可以完整存取探索和使用個別應用程式元件。
+在本教學課程中，您會將三個租用戶的三個獨立應用程式部署到您的 Azure 訂用帳戶中。  您可以完整存取探索和使用個別應用程式元件。
 
-在 [WingtipTicketsSaaS-StandaloneApp](https://github.com/Microsoft/WingtipTicketsSaaS-StandaloneApp) GitHub 存放庫可取得應用程式原始程式碼和管理指令碼。 應用程式是使用 Visual Studio 2015 所建立，而且不會在沒有更新的情況下，于 Visual Studio 2019 中順利開啟和編譯。
+在 [WingtipTicketsSaaS-StandaloneApp](https://github.com/Microsoft/WingtipTicketsSaaS-StandaloneApp) GitHub 存放庫可取得應用程式原始程式碼和管理指令碼。 應用程式是使用 Visual Studio 2015 建立的，若未更新，則無法在 Visual Studio 2019 中成功開啟及編譯。
 
 
 您會在本教學課程中學到：
@@ -37,7 +37,7 @@ ms.locfileid: "87544076"
 > * 在何處取得應用程式原始程式碼和管理指令碼。
 > * 關於組成應用程式的伺服器和資料庫。
 
-將會推出其他教學課程。 它們可讓您根據此應用程式模式，探索各種管理案例。   
+將會推出其他教學課程。 這些教學課程可讓您可以此應用程式模式作為基礎，探索各種管理情節。   
 
 ## <a name="deploy-the-wingtip-tickets-saas-standalone-application"></a>部署 Wingtip Tickets SaaS Standalone 應用程式
 
@@ -46,22 +46,22 @@ ms.locfileid: "87544076"
 1. 按一下每個藍色的 [部署至 Azure]**** 按鈕可在 [Azure 入口網站](https://portal.azure.com)中開啟部署範本。 每個範本需要兩個參數值：新資源群組的名稱，以及區分此部署與應用程式中其他部署的使用者名稱。 下一個步驟將詳細說明如何設定這些值。
 
    **Contoso Concert Hall**   
-   [![顯示標示為「部署至 Azure」之按鈕的影像。](media/saas-standaloneapp-get-started-deploy/deploy.png)](https://aka.ms/deploywingtipsa-contoso)
+   [![顯示標示為「部署至 Azure」的按鈕影像。](media/saas-standaloneapp-get-started-deploy/deploy.png)](https://aka.ms/deploywingtipsa-contoso)
 
    **Dogwood Dojo**   
-   [![顯示標示為「部署至 Azure」之按鈕的影像。](media/saas-standaloneapp-get-started-deploy/deploy.png)](https://aka.ms/deploywingtipsa-dogwood)
+   [![顯示標示為「部署至 Azure」的按鈕影像。](media/saas-standaloneapp-get-started-deploy/deploy.png)](https://aka.ms/deploywingtipsa-dogwood)
 
-   **Fabrikam 爵士樂俱樂部**   
-   [![顯示標示為「部署至 Azure」之按鈕的影像。](media/saas-standaloneapp-get-started-deploy/deploy.png)](https://aka.ms/deploywingtipsa-fabrikam)
+   **Fabrikam Jazz Club**   
+   [![顯示標示為「部署至 Azure」的按鈕影像。](media/saas-standaloneapp-get-started-deploy/deploy.png)](https://aka.ms/deploywingtipsa-fabrikam)
  
 2. 輸入每個部署所需的參數值。
 
     > [!IMPORTANT]
     > 為了示範的目的，已刻意將某些驗證和伺服器防火牆設為不安全。 為每個應用程式部署**建立新的新資源群組**。  請勿使用現有的資源群組。 請不要將此應用程式或任何它所建立的資源用於生產環境。 當您不使用應用程式時，請刪除所有資源群組，以停止相關計費。
 
-    在您的資源名稱中，最好只使用小寫字母、數位和連字號。
-    * 針對**資源群組**選取 [新建]，並為資源群組提供小寫的 [名稱]。 **wingtip-sa- \<venueName\> - \<user\> **是建議的模式。  若為 \<venueName\> ，請將場地名稱取代為不含空格。 若為 \<user\> ，請取代以下的使用者值。  採用此模式後，資源群組名稱可能會是 wingtip-sa-contosoconcerthall-af1**、wingtip-sa-dogwooddojo-af1**、wingtip-sa-fabrikamjazzclub-af1**。
-    * 從下拉式清單中選取 [**位置**]。
+    資源名稱中最好只使用小寫字母、數字和連字號。
+    * 針對**資源群組**選取 [新建]，並為資源群組提供小寫的 [名稱]。 **wingtip-sa-\<venueName\>-\<user\>** 是建議的模式。  針對 \<venueName\>，請取代場地名稱且不含空格。 針對 \<user\>，請取代為以下的使用者值。  採用此模式後，資源群組名稱可能會是 wingtip-sa-contosoconcerthall-af1**、wingtip-sa-dogwooddojo-af1**、wingtip-sa-fabrikamjazzclub-af1**。
+    * 從下拉式清單中選取 [位置]。
 
     * 針對**使用者** - 建議您選擇簡短的使用者 值，可以用您的姓名首字母加上數字，例如：*af1*。
 
@@ -76,7 +76,7 @@ ms.locfileid: "87544076"
 
 ## <a name="run-the-applications"></a>執行應用程式
 
-應用程式會示範裝載事件的場地。  場地是指應用程式的租用戶。 每個場地都有客製化網站可刊登其活動及售票。 場地類型包括音樂廳、爵士俱樂部和運動俱樂部。 在範例中，場地的類型決定了場地網站上顯示的背景相片。   在獨立應用程式模型中，每個場地都有個別的應用程式實例及其獨立的 Azure SQL Database。
+應用程式會示範裝載事件的場地。  場地是指應用程式的租用戶。 每個場地都有客製化網站可刊登其活動及售票。 場地類型包括音樂廳、爵士俱樂部和運動俱樂部。 在範例中，場地的類型決定了場地網站上顯示的背景相片。   在獨立應用程式模式中，每個場地都有個別的應用程式執行個體，該執行個體有自己的獨立 Azure SQL Database。
 
 1. 在不同的瀏覽器索引標籤中開啟三個租用戶的 [事件] 頁面：
 
@@ -91,7 +91,7 @@ ms.locfileid: "87544076"
 為了控制連入要求的發佈，應用程式會使用 [*Azure 流量管理員*](../../traffic-manager/traffic-manager-overview.md)。 每個租用戶專屬的應用程式執行個體都包含租用戶名稱，以在 URL 中作為網域名稱的一部分。 所有租用戶 URL 都包含您的特定 [使用者]**** 值。 URL 的格式如下︰
 - http://events.&lt;venuename&gt;.&lt;user&gt;.trafficmanager.net
 
-每個租使用者的資料庫**位置**都會包含在對應已部署應用程式的應用程式設定中。
+每個租用戶的資料庫 [位置] 都包含在對應已部署應用程式的應用程式設定中。
 
 在生產環境中，您通常會建立 CNAME DNS 記錄以[將公司網際網路網域指向**](../../traffic-manager/traffic-manager-point-internet-domain.md)流量管理員設定檔的 URL。
 
@@ -102,7 +102,7 @@ ms.locfileid: "87544076"
 
 1. 在 [Azure 入口網站](https://portal.azure.com)中，瀏覽至資源群組的清單。
 2. 您應該會看到三個租用戶資源群組。
-3. 開啟**wingtip-sa-fabrikam- &lt; user &gt; **資源群組，其中包含 fabrikam 爵士樂俱樂部部署的資源。  **Fabrikamjazzclub- &lt; &gt; user**伺服器包含**fabrikamjazzclub**資料庫。
+3. 開啟 **wingtip-sa-fabrikam-&lt;user&gt;** 資源群組，其中包含給 Fabrikam Jazz Club 部署的資源。  **fabrikamjazzclub-&lt;user&gt;** 伺服器內含 **fabrikamjazzclub** 資料庫。
 
 每個租用戶資料庫都是 50 DTU 獨立** 資料庫。
 
@@ -114,7 +114,7 @@ ms.locfileid: "87544076"
 * To learn about elastic jobs, see [*Managing scaled-out cloud databases*](../../sql-database/elastic-jobs-overview.md)
 -->
 
-- 若要深入瞭解多租使用者 SaaS 應用程式，請參閱[多租使用者 saas 應用程式的設計模式](saas-tenancy-app-design-patterns.md)。
+- 若要了解多租用戶 SaaS 應用程式，請參閱[多租用戶 SaaS 應用程式的設計模式](saas-tenancy-app-design-patterns.md)。
 
  
 ## <a name="delete-resource-groups-to-stop-billing"></a>刪除資源群組以停止計費 ##
@@ -130,6 +130,6 @@ ms.locfileid: "87544076"
 > * 關於組成應用程式的伺服器和資料庫。
 > * 如何刪除範例資源以停止相關計費。
 
-接下來，請嘗試布建[和目錄](saas-standaloneapp-provision-and-catalog.md)教學課程，其中會探索租使用者目錄的使用，以啟用各種跨租使用者案例，例如架構管理和租使用者分析。
+接下來請嘗試[佈建和目錄](saas-standaloneapp-provision-and-catalog.md)教學課程，探索如何使用租用戶目錄來滿足多種跨租用戶案例的需求，例如結構描述管理和租用戶分析。
  
 

@@ -1,22 +1,22 @@
 ---
-title: 具有異地複寫的 SaaS 應用程式嚴重損壞修復
+title: 使用異地複寫的 SaaS 應用程式災害復原
 description: 了解在發生中斷的狀況時如何使用 Azure SQL Database 異地複寫復原多租用戶 SaaS 應用程式
 services: sql-database
 ms.service: sql-database
 ms.subservice: scenario
 ms.custom: seo-lt-2019, sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: tutorial
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 53d12510c4960b16d56ee32f07ca96bc398f999a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: e08150f5998b71523a986eac1f8a9be993125f5a
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84028409"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91619146"
 ---
 # <a name="disaster-recovery-for-a-multi-tenant-saas-application-using-database-geo-replication"></a>使用資料庫異地複寫進行多租用戶 SaaS 應用程式的災害復原
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -92,8 +92,8 @@ ms.locfileid: "84028409"
 在開始進行復原程序之前，請先查看應用程式的正常健康狀態。
 1. 在您的網頁瀏覽器中，開啟 Wingtip Tickets 事件中樞 (http://events.wingtip-dpt.&lt;user&gt;.trafficmanager.net，將 &lt;user&gt; 取代為部署的使用者值)。
     * 捲動至頁面底部，並查看頁尾處的目錄伺服器名稱和位置。 此位置是您部署應用程式的區域。
-    *提示：將滑鼠停留在位置上，以放大顯示畫面。* 
-     ![原始區域中的事件中樞狀況良好狀態](./media/saas-dbpertenant-dr-geo-replication/events-hub-original-region.png)
+    *提示：將滑鼠置於此位置上方，可放大顯示畫面。* 
+    ![原始區域中的事件中樞健康狀態](./media/saas-dbpertenant-dr-geo-replication/events-hub-original-region.png)
 
 2. 按一下 Contoso Concert Hall 租用戶，並開啟其事件頁面。
     * 在頁尾中，查看租用戶伺服器名稱。 位置會與目錄伺服器的位置相同。
@@ -106,12 +106,12 @@ ms.locfileid: "84028409"
 在此工作中，您會開始進行將伺服器、彈性集區和資料庫的組態同步至租用戶目錄中的程序。 此程序會將目錄中的這些資訊保持在最新狀態。  此程序會處理使用中的目錄，無論目錄位於原始區域還是復原區域中。 組態資訊會作為復原程序的一部分，以確保復原環境與原始環境的一致性，並且在隨後的回復期間確保原始區域會透過在復原環境中所做的任何變更保有一致性。 此目錄也可用來追蹤租用戶資源的復原狀態
 
 > [!IMPORTANT]
-> 為了簡單起見，同步處理常式和其他長時間執行的復原和回復程式都會在這些教學課程中實作為本機 PowerShell 作業或在您用戶端使用者登入下執行的會話。 在您登入時核發的驗證權杖將在數小時後到期，屆時作業即會失敗。 在生產環境中，應以某種可靠、在服務主體下執行的 Azure 服務來實作長時間執行的程序。 請參閱[使用 Azure PowerShell 建立具有憑證的服務主體](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authenticate-service-principal)。
+> 為了方便說明，在這些教學課程中，一律會以在您的用戶端使用者登入下執行的本機 PowerShell 作業或工作階段，來實作同步程序和其他長時間執行的復原與回復程序。 在您登入時核發的驗證權杖將在數小時後到期，屆時作業即會失敗。 在生產環境中，應以某種可靠、在服務主體下執行的 Azure 服務來實作長時間執行的程序。 請參閱[使用 Azure PowerShell 建立具有憑證的服務主體](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authenticate-service-principal)。
 
-1. 在_POWERSHELL ISE_中，開啟. ..\learning Modules\UserConfig.psm1 檔案。 請將第 10 和 11 行上的 `<resourcegroup>` 與 `<user>` 取代為您部署應用程式時所使用的值。  儲存檔案。
+1. 在 _PowerShell ISE_ 中，開啟 ...\Learning Modules\UserConfig.psm1 檔案。 請將第 10 和 11 行上的 `<resourcegroup>` 與 `<user>` 取代為您部署應用程式時所使用的值。  儲存檔案。
 
 2. 在 *PowerShell ISE* 中，開啟 ...\Learning Modules\Business Continuity and Disaster Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1 指令碼，並設定：
-    * **$DemoScenario = 1**，啟動將租使用者伺服器和集區設定資訊同步到目錄中的背景工作
+    * **$DemoScenario = 1**，啟動將租用戶伺服器和集區組態同步至目錄中的背景作業
 
 3. 按 **F5** 以執行同步指令碼。 新的 PowerShell 工作階段隨即開啟，以同步租用戶資源的組態。
 ![同步程序](./media/saas-dbpertenant-dr-geo-replication/sync-process.png)
@@ -173,7 +173,7 @@ ms.locfileid: "84028409"
    > [!Note]
    > 發生中斷的情況時，原始區域中的主要資料庫會離線。  對次要資料庫強制執行容錯移轉，會中斷主要資料庫的連線，且不會嘗試套用任何已排入佇列的其餘交易。 在類似於本教學課程的 DR 演練案例中，如果在容錯移轉期間發生任何更新活動，則可能會遺失部分資料。 隨後在回復期間，當您將復原區域中的資料庫重新容錯移轉至原始區域時，將使用一般容錯移轉來確保不會遺失任何資料。
 
-1. 監視服務以判斷資料庫是否已故障切換。 租用戶資料庫在容錯移轉後，會更新目錄以記錄租用戶資料庫的復原狀態，並將租用戶標示為「已上線」。
+1. 監視服務以判斷資料庫在何時進行容錯移轉。 租用戶資料庫在容錯移轉後，會更新目錄以記錄租用戶資料庫的復原狀態，並將租用戶標示為「已上線」。
     * 租用戶資料庫在目錄中標示為「已上線」後，即可供應用程式存取。
     * 租用戶資料庫中的 rowversion 值的總和會儲存在目錄中。 此值會作為指紋，據以允許回復程序判斷資料庫是否已在復原區域中更新。
 
@@ -233,13 +233,13 @@ ms.locfileid: "84028409"
     ![事件中樞內已復原和新的租用戶](./media/saas-dbpertenant-dr-geo-replication/events-hub-with-hawthorn-hall.png)
 
 2. 在 [Azure 入口網站](https://portal.azure.com)中，開啟資源群組的清單。  
-    * 請注意您已部署的資源群組，加上復原資源群組和 _-recovery_尾碼。  復原資源群組中包含所有在復原程序期間建立的資源，以及在中斷期間建立的新資源。  
+    * 請查看您已部署的資源群組，以及具有 _-recovery_ 尾碼的復原資源群組。  復原資源群組中包含所有在復原程序期間建立的資源，以及在中斷期間建立的新資源。  
 
 3. 開啟復原資源群組，並請查看下列項目：
    * 目錄的復原版本和 tenants1 伺服器 (具有 _-recovery_ 尾碼)。  這些伺服器上已還原的目錄和租用戶資料庫都具有在原始區域中使用的名稱。
 
-   * _Tenants2-tenants1-dpt user- &lt; 使用者 &gt; _復原 SQL server。  這是在中斷期間用來佈建新租用戶的伺服器。
-   * App Service 名為_wingtip-tenants1-dpt user- &lt; recoveryregion &gt; - &lt; user&gt_;，這是事件應用程式的復原實例。 
+   * _tenants2-dpt-&lt;user&gt;-recovery_ SQL 伺服器。  這是在中斷期間用來佈建新租用戶的伺服器。
+   * 名為 _events-wingtip-dpt-&lt;recoveryregion&gt;-&lt;user&gt_; 的 App Service，這是事件應用程式的復原執行個體。 
 
      ![Azure 復原資源](./media/saas-dbpertenant-dr-geo-replication/resources-in-recovery-region.png) 
     
@@ -255,7 +255,7 @@ ms.locfileid: "84028409"
 1. 在瀏覽器中找出 Contoso Concert Hall 的事件清單，並查看最後一個事件名稱。
 2. 在 *PowerShell ISE* 中，進入 ...\Learning Modules\Business Continuity and Disaster Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1 指令碼，並設定下列值：
     * **$DemoScenario = 5**，從復原區域的租用戶中刪除事件
-3. 按**F5**執行腳本
+3. 按 **F5** 以執行指令碼
 4. 重新整理 Contoso Concert Hall 事件頁面 (http://events.wingtip-dpt.&lt;user&gt;.trafficmanager.net/contosoconcerthall - 請將 &lt;user&gt; 替換為部署的使用者值)，並留意系統已刪除最後一個事件。
 
 ## <a name="repatriate-the-application-to-its-original-production-region"></a>將應用程式回復至其原始生產區域
@@ -281,7 +281,7 @@ ms.locfileid: "84028409"
 1. 在 *PowerShell ISE* 中，進入 ...\Learning Modules\Business Continuity and Disaster Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1 指令碼。
 
 2. 確認目錄同步程序仍在其 PowerShell 執行個體中執行。  如有必要，請藉由下列設定加以重新啟動：
-    * **$DemoScenario = 1**，開始將租使用者伺服器、集區和資料庫設定資訊同步到目錄中
+    * **$DemoScenario = 1**，開始將租用戶伺服器、集區和資料庫組態資訊同步處理至目錄中
     * 按 **F5** 以執行指令碼。
 
 3.  然後，若要啟動回復程序，請設定：
@@ -299,7 +299,7 @@ ms.locfileid: "84028409"
 ## <a name="designing-the-application-to-ensure-app-and-database-are-colocated"></a>設計應用程式以確保應用程式和資料庫的共置 
 應用程式經過適當設計，因此應用程式的連線一律會來自租用戶資料庫所在相同區域的執行個體。 此設計可降低應用程式與資料庫之間的延遲。 此最佳化假設應用程式對資料庫的互動比使用者對應用程式的互動更為頻繁。  
 
-在回復期間的某些時刻，租用戶資料庫可能分散於復原和原始區域間。 對於各個資料庫，應用程式會執行租用戶伺服器名稱的 DNS 查閱，以查閱資料庫所在的區域。 在 SQL Database 中，伺服器名稱會是別名。 使用別名的伺服器名稱會包含區域名稱。 如果應用程式不在與資料庫相同的區域中，它會重新導向至與伺服器相同之區域中的實例。 重新導向至資料庫所在之相同區域中的執行個體，可盡量縮短應用程式與資料庫之間的延遲。 
+在回復期間的某些時刻，租用戶資料庫可能分散於復原和原始區域間。 對於各個資料庫，應用程式會執行租用戶伺服器名稱的 DNS 查閱，以查閱資料庫所在的區域。 在 SQL Database 中，伺服器名稱會是別名。 使用別名的伺服器名稱會包含區域名稱。 應用程式若位於與資料庫不同的區域，則會重新導向至伺服器所在相同區域中的執行個體。 重新導向至資料庫所在之相同區域中的執行個體，可盡量縮短應用程式與資料庫之間的延遲。 
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -312,7 +312,7 @@ ms.locfileid: "84028409"
 > * 將應用程式以及目錄和租用戶資料庫容錯移轉至復原區域 
 > * 在中斷問題解決後，將應用程式、目錄和租用戶資料庫容錯回復至原始區域
 
-您可以在[商務持續性總覽](business-continuity-high-availability-disaster-recover-hadr-overview.md)檔中深入瞭解 Azure SQL Database 提供的技術，以啟用商務持續性。
+您可以在[商務持續性概觀](business-continuity-high-availability-disaster-recover-hadr-overview.md)文件中深入了解 Azure SQL Database 為了啟用商務持續性而提供的技術。
 
 ## <a name="additional-resources"></a>其他資源
 

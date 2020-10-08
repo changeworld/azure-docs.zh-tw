@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 09/23/2020
+ms.date: 09/30/2020
 ms.author: victorh
-ms.openlocfilehash: 74d83ecc240fa4b48421dbaa1c5cc9e62990655d
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 00a84fbf694a58128712abf806ff12df96f0e5e9
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91399443"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91596680"
 ---
 # <a name="what-is-azure-firewall-manager"></a>什麼是 Azure 防火牆管理員？
 
@@ -89,6 +89,7 @@ Azure 防火牆管理員有下列已知問題：
 |應用程式規則在已設定自訂 DNS (預覽) 的安全中樞中失敗。|自訂 DNS (預覽) 無法在安全中樞部署和已啟用強制通道的中樞虛擬網路部署中運作。|正在調查是否有可用的修正。|
 |不支援 DDoS 保護標準搭配安全的虛擬中樞|DDoS保護標準不會與 vWAN 整合。|正在調查|
 |未完全支援活動記錄|防火牆原則目前不支援活動記錄。|正在調查|
+|設定 SNAT 私人 IP 位址範圍|如果已設定 Azure 防火牆原則，則會忽略[私人 IP 範圍設定](../firewall/snat-private-range.md)。 已使用預設 Azure 防火牆行為，當目的地 IP 位址不在私人 IP 位址範圍 [IANA RFC 1918](https://tools.ietf.org/html/rfc1918) 時，不會採用 SNAT 網路規則。|正在調查
 
 ## <a name="next-steps"></a>後續步驟
 

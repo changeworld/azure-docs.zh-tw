@@ -1,19 +1,19 @@
 ---
 title: Azure CLI 指令碼 - 調整和監視適用於 PostgreSQL 的 Azure 資料庫
 description: Azure CLI 指令碼範例 - 在查詢計量之後，將「適用於 PostgreSQL 的 Azure 資料庫」伺服器調整為不同的效能等級。
-author: rachel-msft
-ms.author: raagyema
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.devlang: azurecli
 ms.custom: mvc, devx-track-azurecli
 ms.topic: sample
 ms.date: 08/07/2019
-ms.openlocfilehash: 23dae705f10ecca9119932640383c93ab80d1d21
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: d5f08e764ae44b11ab5838689e7f8a70c89b3122
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496479"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708623"
 ---
 # <a name="monitor-and-scale-a-single-postgresql-server-using-azure-cli"></a>使用 Azure CLI 監視和調整單一 PostgreSQL 伺服器
 此範例 CLI 指令碼會在查詢計量之後，對單一「適用於 PostgreSQL 的 Azure 資料庫」伺服器調整計算和儲存。 計算可以擴大或縮小。 儲存體只能擴大。 

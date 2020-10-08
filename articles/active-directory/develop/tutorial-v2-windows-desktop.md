@@ -12,14 +12,14 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 7effb1592fb19f92958353a3333edf6fdf9a51af
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: b82193fda64f2cf265c879c5cda9141be1b576f8
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91574257"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91627885"
 ---
-# <a name="call-the-microsoft-graph-api-from-a-windows-desktop-app"></a>從 Windows 傳統型應用程式呼叫 Microsoft 圖形 API
+# <a name="tutorial-call-the-microsoft-graph-api-from-a-windows-desktop-app"></a>教學課程：從 Windows 傳統型應用程式呼叫 Microsoft 圖形 API
 
 本指南示範原生 Windows Desktop .NET (XAML) 應用程式如何使用存取權杖以呼叫 Microsoft Graph API。 此應用程式也可以存取其他 API，這些 API 需要 Microsoft 身分識別平台提供的存取權杖。
 

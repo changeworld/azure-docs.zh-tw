@@ -6,19 +6,19 @@ ms.service: sql-database
 ms.subservice: performance
 ms.custom: sqldbrb=1
 ms.devlang: PowerShell
-ms.topic: conceptual
+ms.topic: sample
 author: MightyPen
 ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 12/19/2018
-ms.openlocfilehash: faba9eaf59f5d1c941bacb58ba1faf9f817d39cf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: 57449b0bbd39b6ea04ecae5a3ad766ae5687ca0b
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84033879"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91619826"
 ---
-# <a name="ring-buffer-target-code-for-extended-events-in-azure-sql-database"></a>Azure SQL Database 中擴充事件的信號緩衝區目的程式代碼
+# <a name="ring-buffer-target-code-for-extended-events-in-azure-sql-database"></a>Azure SQL Database 中擴充事件的信號緩衝區目標程式碼
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 [!INCLUDE [sql-database-xevents-selectors-1-include](../../../includes/sql-database-xevents-selectors-1-include.md)]
@@ -43,7 +43,7 @@ ms.locfileid: "84033879"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-* Azure 帳戶和訂用帳戶。 您可以註冊[免費試用](https://azure.microsoft.com/pricing/free-trial/)。
+* Azure 帳戶和訂用帳戶。 您可以註冊 [免費試用](https://azure.microsoft.com/pricing/free-trial/)。
 * 您可以在當中建立資料表的任何資料庫。
   
   * 您可以選擇性快速[建立 **AdventureWorksLT** 示範資料庫](single-database-create-quickstart.md)。
@@ -216,13 +216,13 @@ GO
 
 ## <a name="ring-buffer-contents"></a>信號緩衝區內容
 
-我們用 `ssms.exe` 來執行程式碼範例。
+我們已使用 `ssms.exe` 來執行程式碼範例。
 
 為了檢視結果，我們按了 **target_data_XML** 資料欄標題下的儲存格。
 
 然後在結果窗格中，我們按了 **target_data_XML** 資料欄標題下的儲存格。 這個點按動作在 ssms.exe 中以 XML 格式建立了另一個檔案索引標籤，其中顯示了結果儲存格的內容。
 
-輸出如下列區塊所示。 看起來很長，但它只是兩個 **\<event>** 元素。
+輸出如下列區塊所示。 它看起來很長，但其實只是兩個 **\<event>** 元素。
 
 &nbsp;
 
@@ -336,15 +336,15 @@ ALTER EVENT SESSION eventsession_gm_azuresqldb51
             );
 ```
 
-## <a name="more-information"></a>更多資訊
+## <a name="more-information"></a>詳細資訊
 
 Azure SQL Database 上擴充事件的主要主題是：
 
-* [Azure SQL Database 中的擴充事件考慮](xevent-db-diff-from-svr.md)，這會對比 Azure SQL Database 與 Microsoft SQL Server 不同的擴充事件的某些層面。
+* [Azure SQL Database 中的擴充事件考量](xevent-db-diff-from-svr.md)，對比 Azure SQL Database 與 Microsoft SQL Server 之間擴充事件的不同層面。
 
 下列連結提供擴充事件的其他程式碼範例主題。 不過，您必須定期檢查所有範例以查看範例是否適用於 Microsoft SQL Server 與 Azure SQL Database。 然後您可以決定是否需要稍加變更來執行範例。
 
-* Azure SQL Database 的程式碼範例： [Azure SQL Database 中擴充事件的事件檔案目的程式代碼](xevent-code-event-file.md)
+* Azure SQL Database 的程式碼範例：[Azure SQL Database 中擴充事件的事件檔案目標程式碼](xevent-code-event-file.md)
 
 <!--
 ('lock_acquired' event.)

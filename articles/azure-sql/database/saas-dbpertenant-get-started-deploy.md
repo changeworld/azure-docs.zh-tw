@@ -1,30 +1,30 @@
 ---
-title: 每一租使用者一個資料庫 SaaS 教學課程
+title: 每一租用戶一個資料庫的 SaaS 教學課程
 description: 部署及探索 Wingtip Tickets SaaS 多租用戶應用程式，其使用 Azure SQL Database 示範每一租用戶一個資料庫模式和其他 SaaS 模式。
 services: sql-database
 ms.service: sql-database
 ms.subservice: scenario
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: tutorial
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: cfe440cb8ac98518547248485201b85dc0d0076d
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
-ms.translationtype: MT
+ms.openlocfilehash: 3851e6a784d244b101c2c71c67b4b2c9a8f5cbee
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91356820"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91618933"
 ---
-# <a name="deploy-and-explore-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-azure-sql-database"></a>部署及探索使用每一租使用者一個資料庫模式的多租使用者 SaaS 應用程式搭配 Azure SQL Database
+# <a name="deploy-and-explore-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-azure-sql-database"></a>部署及探索搭配 Azure SQL Database 使用每一租用戶一個資料庫模式的多租用戶 SaaS 應用程式
 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 在本教學課程中，您將部署及探索 Wingtip Tickets SaaS 每一租用戶一個資料庫應用程式 (Wingtip)。 本應用程式使用每一租用戶一個資料庫模式來儲存多租用戶的資料。 本應用程式專為展示簡化 SaaS 案例啟用方式的 Azure SQL Database 功能而設計。
 
-選取 [部署至 Azure]**** 後五分鐘，多租用戶 SaaS 應用程式便部署完成。 應用程式包含在 Azure SQL Database 中執行的資料庫。 應用程式中部署了三個範例租用戶，每個租用戶都有自己的資料庫。 所有資料庫均已部署到 SQL 彈性集區。 應用程式會部署到您的 Azure 訂用帳戶。 您可以完整存取，以便探索和使用應用程式的每個元件。 您可以在 [>wingtipticketssaas-dbpertenant-master->wingtipticketssaas-dbpertenant-master GitHub][github-wingtip-dpt]存放庫中取得應用程式 c # 原始程式碼和管理腳本。
+選取 [部署至 Azure]**** 後五分鐘，多租用戶 SaaS 應用程式便部署完成。 應用程式包含 Azure SQL Database 中執行的資料庫。 應用程式中部署了三個範例租用戶，每個租用戶都有自己的資料庫。 所有資料庫均已部署到 SQL 彈性集區。 應用程式會部署到您的 Azure 訂用帳戶。 您可以完整存取，以便探索和使用應用程式的每個元件。 您可以在 [WingtipTicketsSaaS-DbPerTenant GitHub 存放庫][github-wingtip-dpt]，取得應用程式 C# 原始程式碼和管理指令碼。
 
 您會在本教學課程中學到：
 
@@ -32,13 +32,13 @@ ms.locfileid: "91356820"
 > - 如何部署 Wingtip SaaS 應用程式。
 > - 在何處取得應用程式原始程式碼和管理指令碼。
 > - 關於組成應用程式的伺服器、集區和資料庫。
-> - 如何使用 *目錄*將租使用者對應至其資料。
+> - 如何使用「目錄」將租用戶對應到其資料。
 > - 如何佈建新租用戶。
 > - 如何監視應用程式中的租用戶活動。
 
 我們提供了[一系列的相關教學課程](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)，帶領您探索各式各樣的 SaaS 設計和管理模式。 這些教學課程所涵蓋的內容，超出本文的初始部署程序。 閱讀教學課程時，您可以檢查我們提供的指令碼，了解各個 SaaS 模式的實作方式。 指令碼示範 SQL Database 的功能如何簡化 SaaS 應用程式的開發過程。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要完成本教學課程，請確定您已安裝 Azure PowerShell。 如需詳細資訊，請參閱[開始使用 Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps)。
 
@@ -98,7 +98,7 @@ ms.locfileid: "91356820"
 
 執行任何指令碼之前，請更新 User Config 檔案中「資源群組」和「使用者」的值。 將這些變數設定為您在部署期間使用的值。
 
-1. 在 PowerShell ISE 中，開啟 ... \\學習課程模組 \\ **UserConfig. .psm1**
+1. 在 [PowerShell ISE] 中，開啟 ...\\Learning Modules\\**UserConfig.psm1**
 1. 將 ResourceGroupName**** 和 Name**** 更新為您部署的特定值 (只在第 10 行和第 11 行)。
 1. 儲存變更。
 
@@ -108,7 +108,7 @@ ms.locfileid: "91356820"
 
 應用程式會示範裝載事件的場地。 場地類型包括音樂廳、爵士俱樂部和運動俱樂部。 在 Wingtip Tickets 中，場地會註冊為租用戶。 成為租用戶讓場地能夠輕鬆列出活動，並對其客戶銷售票券。 每個場地都有客製化網站可列出其活動及售票。
 
-在應用程式內部，每個租使用者都會取得部署到彈性集區的資料庫。
+在應用程式內部，每個租用戶都有一個部署在彈性集區中的資料庫。
 
 中央 [事件中樞]**** 頁面提供部署中租用戶的連結清單。
 
@@ -128,10 +128,10 @@ Wingtip 應用程式使用  [*Azure 流量管理員*](../../traffic-manager/tra
 
     下表有前述格式各部分的解說。
 
-    | URL 部分        | 說明       |
+    | URL 部分        | 描述       |
     | :-------------- | :---------------- |
-    | wingtip-dpt | Wingtip 應用程式的事件部分。<br /><br /> -dpt** 能將 Wingtip Tickets 的「每一租用戶一個資料庫」** 實作與其他實作進行區分。 例如，「單一」** 每一租用戶一個應用程式 (-sa**)，或「多租用戶資料庫」** (-mt**) 實作。 |
-    | .* &lt; 使用者 &gt; * | 範例中的 af1**。 |
+    | events.wingtip-dpt | Wingtip 應用程式的事件部分。<br /><br /> -dpt** 能將 Wingtip Tickets 的「每一租用戶一個資料庫」** 實作與其他實作進行區分。 例如，「單一」** 每一租用戶一個應用程式 (-sa**)，或「多租用戶資料庫」** (-mt**) 實作。 |
+    | .&lt;user&gt; | 範例中的 af1**。 |
     | .trafficmanager.net/ | 流量管理員，基底 URL。 |
     | fabrikamjazzclub | 識別名為 Fabrikam Jazz Club 的租用戶。 |
     | &nbsp; | &nbsp; |
@@ -142,7 +142,7 @@ Wingtip 應用程式使用  [*Azure 流量管理員*](../../traffic-manager/tra
   - 目錄是使用「分區對應管理」** 進行實作。
 - [事件中樞] 會使用目錄中的延伸中繼資料，建構每個租用戶的事件頁面 URL 清單。
 
-在生產環境中，您通常會建立 CNAME DNS 記錄，以將 [*公司網際網路網域指向*](../../traffic-manager/traffic-manager-point-internet-domain.md)   流量管理員的 dns 名稱。
+在生產環境下，您通常會建立 CNAME DNS 記錄以 [*將公司的網際網路網域指向*](../../traffic-manager/traffic-manager-point-internet-domain.md)流量管理員的 DNS 名稱。 
 
 > [!NOTE]
 > 您可能無法馬上理解流量管理員在本教學課程中的用途。 本系列教學課程的目的，是要示範可以處理複雜生產環境規模的模式。 例如，在該情況下您可能會有散佈於全球的多個 Web 應用程式，並共用許多不同的資料庫，而您將會需要使用流量管理員來在這些執行個體之間進行路由。
@@ -154,7 +154,7 @@ Wingtip 應用程式使用  [*Azure 流量管理員*](../../traffic-manager/tra
 
 Demo-LoadGenerator** PowerShell 指令碼會啟動對所有租用戶資料庫執行的工作負載。 許多 SaaS 應用程式的實際負載是偶發且無法預期的。 為了模擬這種類型的負載，產生器會在每個租用戶上產生出現隨機高峰或活動暴增的負載。 暴增的活動會依照隨機間隔發生。 負載模式需要幾分鐘時間才會出現。 請讓產生器先執行至少三到四分鐘後，再監視負載。
 
-1. 在 PowerShell ISE 中，開啟 ... \\學習模組 \\ 公用程式 \\ *Demo-LoadGenerator.ps1*腳本。
+1. 在 [PowerShell ISE] 中開啟 ...\\Learning Modules\\Utilities\\*Demo-LoadGenerator.ps1* 指令碼。
 2. 按 F5 來執行指令碼及啟動負載產生器。 目前請先保留預設參數值。
 3. 如有需要，請登入 Azure 帳戶，然後選取您要使用的訂用帳戶。
 
@@ -212,7 +212,7 @@ Demo-LoadGenerator.ps1** 會模擬客戶交易的作用中工作負載。 下列
 - 已初始化。
 - 已在目錄中註冊。
 
-成功布建之後，新租使用者的 *事件* 網站會出現在您的瀏覽器中。
+成功佈建之後，瀏覽器中就會顯示新租用戶的「事件」網站。
 
 ![新租用戶](./media/saas-dbpertenant-get-started-deploy/red-maple-racing.png)
 
@@ -225,7 +225,7 @@ Demo-LoadGenerator.ps1** 會模擬客戶交易的作用中工作負載。 下列
 1. 在  [Azure 入口網站](https://portal.azure.com)中，瀏覽到您的 SQL 伺服器清單。 然後開啟 **catalog-dpt-&lt;USER&gt;** 伺服器。
     - 目錄伺服器包含兩個資料庫，**tenantcatalog** 和 **basetenantdb** (basetenantdb 是複製的範本資料庫，用以建立新租用戶)。
 
-   ![螢幕擷取畫面顯示具有兩個資料庫的目錄伺服器總覽頁面。](./media/saas-dbpertenant-get-started-deploy/databases.png)
+   ![螢幕擷取畫面顯示具有兩個資料庫的目錄伺服器概觀頁面。](./media/saas-dbpertenant-get-started-deploy/databases.png)
 
 2. 返回 SQL Server 清單。
 
@@ -249,7 +249,7 @@ Demo-LoadGenerator.ps1** 會模擬客戶交易的作用中工作負載。 下列
 - 第一個圖表 (標示為**資源使用率**) 顯示集區的 eDTU 使用率。
 - 第二個圖表顯示集區中五個最常使用之資料庫的 eDTU 使用率。
 
-這兩個圖表說明彈性集區和 SQL Database 非常適合無法預期的 SaaS 應用程式工作負載。 圖表顯示這 4 個資料庫的使用率均爆增至 40 eDTU，不過所有資料庫都受到一個 50-eDTU 集區的支援，所以不需擔心。 50-eDTU 集區甚至能支援更繁重的工作負載。 如果這些資料庫是以單一資料庫形式佈建，則它們每個都必須是 S2 (50 DTU) 才能支援高載。 4 個單一 S2 資料庫的成本幾乎是集區價格的 3 倍。 在現實情況下，SQL Database 客戶會在 200 eDTU 集區中執行多達 500 個資料庫。 如需詳細資訊，請參閱 [效能監視教學](saas-dbpertenant-performance-monitoring.md)課程。
+這兩個圖表說明彈性集區和 SQL Database 非常適合無法預期的 SaaS 應用程式工作負載。 圖表顯示這 4 個資料庫的使用率均爆增至 40 eDTU，不過所有資料庫都受到一個 50-eDTU 集區的支援，所以不需擔心。 50-eDTU 集區甚至能支援更繁重的工作負載。 如果這些資料庫是以單一資料庫形式佈建，則它們每個都必須是 S2 (50 DTU) 才能支援高載。 4 個單一 S2 資料庫的成本幾乎是集區價格的 3 倍。 在現實情況下，SQL Database 客戶會在 200 eDTU 集區中執行多達 500 個資料庫。 如需詳細資訊，請參閱[效能監視教學課程](saas-dbpertenant-performance-monitoring.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
@@ -265,7 +265,7 @@ Demo-LoadGenerator.ps1** 會模擬客戶交易的作用中工作負載。 下列
 > [!div class="checklist"]
 > - 如何部署 Wingtip Tickets SaaS 應用程式。
 > - 關於組成應用程式的伺服器、集區和資料庫。
-> - 如何使用 *目錄*將租使用者對應至其資料。
+> - 如何使用「目錄」將租用戶對應到其資料。
 > - 如何佈建新的租用戶。
 > - 如何檢視集區使用率以監視租用戶活動。
 > - 如何刪除範例資源以停止相關計費。

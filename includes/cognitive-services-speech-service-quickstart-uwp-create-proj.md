@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/10/2020
 ms.author: erhopf
-ms.openlocfilehash: 2dcc018c65625825436bd1050cdf7f3b9d3131e2
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 134c9996690d629ad8acb348d1928904741b6b2d
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87375059"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91654459"
 ---
 若要建立適用於通用 Windows 平台 (UWP) 開發的 Visual Studio 專案，您必須設定 Visual Studio 開發選項、建立專案、選取目標架構、設定音訊擷取，以及安裝語音 SDK。
 
@@ -19,13 +19,13 @@ ms.locfileid: "87375059"
 
 1. 開啟 Visual Studio 2019 以顯示 [開始]  視窗。
 
-   ![[開始] 視窗 - Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-uwp-start-window.png)
+   ![顯示 [啟動] 視窗的螢幕擷取畫面，其中已醒目提示 [不使用程式碼繼續] 動作。](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-uwp-start-window.png)
 
 1. 選取 [不使用程式碼繼續]  ，以移至 Visual Studio IDE。
 
 1. 從 [Visual Studio] 功能表列中，選取 [工具]   > [取得工具和功能]  以開啟 Visual Studio 安裝程式並檢視 [修改]  對話方塊。
 
-   ![[工作負載] 索引標籤、[修改] 對話方塊、Visual Studio 安裝程式](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-uwp-workload.png)
+   ![顯示 [修改] 對話方塊中 [工作負載] 索引標籤的螢幕擷取畫面，其中已醒目提示 [通用 Windows 平台開發]。](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-uwp-workload.png)
 
 1. 在 [工作負載]  索引標籤的 [Windows]  底下，尋找 [通用 Windows 平台開發]  工作負載。 如果已選取該工作負載旁的核取方塊，請關閉 [修改]  對話方塊，然後移至步驟 6。
 
@@ -39,13 +39,13 @@ ms.locfileid: "87375059"
 
 1. 在 [Visual Studio] 功能表列中，選擇 [檔案]   > [新增]   > [專案]  以顯示 [建立新專案]  視窗。
 
-   ![建立新專案 - Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-uwp-create-new-project.png)
+   ![顯示 [建立新專案] 視窗的螢幕擷取畫面，其中已選取 [空白應用程式 (通用 Windows)]，並醒目提示 [下一步] 按鈕。](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-uwp-create-new-project.png)
 
 1. 尋找並選取 [空白應用程式 (通用 Windows)]  。 請確定您選取的是此專案類型的 C# 版本 (而不是 Visual Basic)。
 
 1. 選取 [下一步]  以顯示 [設定您的新專案]  畫面。
 
-   ![設定您的新專案 - Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-uwp-configure-your-new-project.png)
+   ![顯示 [設定您的新專案] 畫面的螢幕擷取畫面，其中包含 [專案名稱] 和 [位置] 欄位，並已醒目提示 [建立] 按鈕。](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-uwp-configure-your-new-project.png)
 
 1. 在 [專案名稱]  中，輸入 `helloworld`。
 
@@ -53,7 +53,7 @@ ms.locfileid: "87375059"
 
 1. 選取 [建立]  以移至 [新增通用 Windows 平台專案]  視窗。
 
-   ![[新增通用 Windows 平台專案] 對話方塊 - Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-uwp-02-new-uwp-project.png)
+   ![顯示 [新增通用 Windows 平台專案] 對話方塊的螢幕擷取畫面。](../articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-uwp-02-new-uwp-project.png)
 
 1. 在 [最小版本]  (第二個下拉式方塊) 中，選擇 [Windows 10 Fall Creators Update (10.0; 組建 16299)]  ，這是語音 SDK 的最低需求。
 
@@ -90,13 +90,13 @@ ms.locfileid: "87375059"
 
 1. 選取 [瀏覽]。
 
-   ![管理解決方案套件對話方塊的螢幕擷取畫面](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-uwp-nuget-solution-browse.png)
+   ![顯示 [管理解決方案的套件] 對話方塊的螢幕擷取畫面，其中已醒目提示 [瀏覽] 索引標籤、[搜尋] 方塊和 [套件來源]。](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-uwp-nuget-solution-browse.png)
 
 1. 在 [套件來源] 中，選擇 [nuget.org]。
 
 1. 在 [搜尋] 方塊中，輸入 `Microsoft.CognitiveServices.Speech`，然後在搜尋結果中出現該套件後加以選擇。
 
-   ![管理解決方案套件對話方塊的螢幕擷取畫面](../articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-uwp-05-nuget-install-1.0.0.png)
+   ![顯示已選取 [Microsoft.CognitiveServices.Speech] 的螢幕擷取畫面，其中已醒目提示專案和 [安裝] 按鈕。](../articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-uwp-05-nuget-install-1.0.0.png)
 
 1. 在搜尋結果旁的 [套件狀態] 窗格中，選取您的 **helloworld** 專案。
 

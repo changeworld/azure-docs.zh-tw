@@ -12,22 +12,22 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.subservice: compliance
-ms.date: 07/22/2020
+ms.date: 09/30/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9df1226d4b61326f8e5aa6f9b71d36eb5a33e81e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 38edbd9e491d4bea469c6b83ad98df48fbce1d4f
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91306509"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91597494"
 ---
 # <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management"></a>教學課程：在 Azure AD 權利管理中建立您的第一個存取套件
 
 對員工所需的各種資源 (例如群組、應用程式和網站) 進行存取管理，對組織而言是很重要的功能。 您想要為員工授與維持其生產力所需的存取權，並且在不再需要時移除其存取權。
 
-在本教學課程中，您將以 IT 系統管理員身分為 Woodgrove Bank 工作。 公司要求您建立行銷活動的資源套件，供內部使用者透過自助式要求取用。 要求不需經過核准，且使用者的存取權會在 30 天後到期。 在本教學課程中，行銷活動資源只是單一群組中的成員資格，但它可能是群組、應用程式或 SharePoint Online 網站的集合。
+在本教學課程中，您將以 IT 系統管理員身分為 Woodgrove Bank 工作。 公司要求您建立行銷活動的資源套件，供內部使用者用來進行自助式要求。 要求不需經過核准，且使用者的存取權會在 30 天後到期。 在本教學課程中，行銷活動資源只是單一群組中的成員資格，但它可能是群組、應用程式或 SharePoint Online 網站的集合。
 
 ![顯示案例概觀的圖表。](./media/entitlement-management-access-package-first/elm-scenario-overview.png)
 
@@ -117,10 +117,14 @@ ms.locfileid: "91306509"
 11. 在 [角色]  下拉式清單中，選取 [成員]  。
 
     ![新增存取套件 - [資源角色] 索引標籤](./media/entitlement-management-access-package-first/resource-roles.png)
+    >[!IMPORTANT]
+    >新增至存取套件的可指派角色群組，將會使用**可指派給角色**的子類型來表示。 如需可指派給 Azure AD 角色的群組詳細資訊，請參閱 Azure Active Directory 中的[建立可指派角色的群組](../users-groups-roles/roles-groups-create-eligible.md)。 如果您沒有看到想要新增的可指派角色群組，或無法新增，請確定您擁有必要的 Azure AD 角色和權利管理角色，才能執行此作業。 您可能需要要求具有必要角色的人員將資源新增至您的目錄。 如需詳細資訊，請參閱[將資源新增至目錄的必要角色](entitlement-management-delegate.md#required-roles-to-add-resources-to-a-catalog)。
 
     >[!NOTE]
     > 使用[動態群組](../users-groups-roles/groups-create-rule.md)時，您不會看到擁有者以外的其他任何可用角色。 這是原廠設定。
     > ![案例概觀](./media/entitlement-management-access-package-first/dynamic-group-warning.png)
+    
+
 
 12. 按 [下一步]  以開啟 [要求]  索引標籤。
 

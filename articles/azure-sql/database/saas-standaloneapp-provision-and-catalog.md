@@ -1,22 +1,22 @@
 ---
-title: 多租使用者 SaaS 教學課程
+title: 多租用戶 SaaS 教學課程
 description: 使用獨立應用程式模式佈建新租用戶並編目
 services: sql-database
 ms.service: sql-database
 ms.subservice: scenario
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: tutorial
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
-ms.openlocfilehash: b3d886186d26c398a83643c93b98192fca16df6d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: efee261478cdc8b9b5349ef4c69ab5fc250315c0
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84026999"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91619452"
 ---
 # <a name="provision-and-catalog-new-tenants-using-the--application-per-tenant-saas-pattern"></a>使用每一租用戶一個應用程式 SaaS 模式，佈建新租用戶及編目
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -29,7 +29,7 @@ ms.locfileid: "84026999"
 
 ## <a name="standalone-application-per-tenant-pattern"></a>每一租用戶一個獨立應用程式模式
 
-每一租用戶一個獨立應用程式模式，是幾個多租用戶 SaaS 應用程式模式的其中之一。  在這個模式中，每個租用戶都有一個已佈建的應用程式。 應用程式包含應用層級元件和 Azure SQL Database。  每個租用戶應用程式都能部署到廠商的訂用帳戶中。  Azure 另提供[受控應用程式方案](https://docs.microsoft.com/azure/managed-applications/overview)，將應用程式部署於租用戶的訂用帳戶中，再由廠商代為控管。
+每一租用戶一個獨立應用程式模式，是幾個多租用戶 SaaS 應用程式模式的其中之一。  在這個模式中，每個租用戶都有一個已佈建的應用程式。 應用程式包含應用程式層級元件和 Azure SQL Database。  每個租用戶應用程式都能部署到廠商的訂用帳戶中。  Azure 另提供[受控應用程式方案](https://docs.microsoft.com/azure/managed-applications/overview)，將應用程式部署於租用戶的訂用帳戶中，再由廠商代為控管。
 
    ![每一租用戶一個應用程式模式](./media/saas-standaloneapp-provision-and-catalog/standalone-app-pattern.png)
 
@@ -77,12 +77,12 @@ Azure Resource Manager 範本可用來部署及設定應用程式、建立租用
 
 ## <a name="provision-the-catalog"></a>佈建目錄
 
-在這項工作中，您將了解如何佈建用來註冊所有租用戶資料庫的目錄。 您將：
+在這項工作中，您將了解如何佈建用來註冊所有租用戶資料庫的目錄。 您將會：
 
 * 使用 Azure 資源管理範本**佈建目錄資料庫**。 資料庫將會在 bacpac 檔案匯入後初始化。
 * **註冊先前部署的範例租用戶應用程式**。  每個租用戶在註冊時，都會使用從租用戶名稱雜湊建構而成的索引鍵。  租用戶名稱也會儲存在目錄的延伸模組資料表中。
 
-1. 在 PowerShell ISE 中，開啟 *.. ..\Learning Modules\UserConfig.psm* ，並將 **\<user\>** 值更新為您在部署三個範例應用程式時所使用的值。  **儲存**盤案。
+1. 在 PowerShell ISE 中，開啟 *...\Learning Modules\UserConfig.psm*，接著將 **\<user\>** 值更新為部署三個範例應用程式時使用的值。  **儲存檔案**。
 1. 在 PowerShell ISE 中，開啟 *...\Learning Modules\ProvisionTenants\Demo-ProvisionAndCatalog.ps1*，並設定 **$Scenario = 1**。 部署租用戶目錄並註冊預先定義的租用戶。
 
 1. 將游標置於顯示 `& $PSScriptRoot\New-Catalog.ps1` 該行的任意位置，然後按 **F9** 新增中斷點。
@@ -98,8 +98,8 @@ Azure Resource Manager 範本可用來部署及設定應用程式、建立租用
 
 現在，請查看您建立的資源。
 
-1. 開啟 [Azure 入口網站](https://portal.azure.com/)，然後瀏覽至資源群組。  開啟**wingtip-sa-目錄- \<user\> **資源群組，並記下目錄伺服器和資料庫。
-1. 在入口網站中開啟資料庫，再從左側功能表選取 [資料總管]**。  按一下 [登入] 命令，然後輸入 Password = **P \@ ssword1**。
+1. 開啟 [Azure 入口網站](https://portal.azure.com/)，然後瀏覽至資源群組。  開啟**wingtip-sa-catalog-\<user\>** 資源群組，並記下目錄伺服器和資料庫。
+1. 在入口網站中開啟資料庫，再從左側功能表選取 [資料總管]**。  按一下 [登入] 命令，然後輸入密碼 = **P\@ssword1**。
 
 
 1. 探索 *tenantcatalog* 資料庫的結構描述。
@@ -116,7 +116,7 @@ Azure Resource Manager 範本可用來部署及設定應用程式、建立租用
 
 ## <a name="provision-a-new-tenant-application"></a>佈建新租用戶應用程式
 
-在這項工作中，您將了解如何佈建單一租用戶應用程式。 您將：
+在這項工作中，您將了解如何佈建單一租用戶應用程式。 您將會：
 
 * 為租用戶**建立新資源群組**。
 * 使用 Azure 資源管理範本將**應用程式和資料庫**佈建到新資源群組中。  該動作透過匯入 bacpac 檔案，將通用結構描述和參考資料將資料庫初始化。

@@ -1,17 +1,17 @@
 ---
 title: 教學課程：監視和調整 - 適用於 PostgreSQL 的 Azure 資料庫 - 單一伺服器
 description: 此教學課程會逐步引導您執行在「適用於 PostgreSQL 的 Azure 資料庫 - 單一伺服器」中進行監視和微調的方法。
-author: rachel-msft
-ms.author: raagyema
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: tutorial
 ms.date: 5/6/2019
-ms.openlocfilehash: 05435aae727c84a5f3eb886274f9d286627e399e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: f211ce7e52ccaa6793435159d0ce1c64fe8b63ed
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90895085"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91705276"
 ---
 # <a name="tutorial-monitor-and-tune-azure-database-for-postgresql---single-server"></a>教學課程：監視和調整「適用於 PostgreSQL 的 Azure 資料庫 - 單一伺服器」
 
@@ -52,7 +52,7 @@ Azure 入口網站中的[查詢效能深入解析](concepts-query-performance-in
 
 2. [長時間執行的查詢]  索引標籤會每隔 15 分鐘彙總一次，依每次執行的平均持續時間，顯示前 5 個查詢。 
    
-   :::image type="content" source="./media/tutorial-performance-intelligence/query-performance-insight-landing-page.png" alt-text="[查詢效能深入解析] 登陸頁面":::
+   :::image type="content" source="./media/tutorial-performance-intelligence/query-performance-insight-landing-page.png" alt-text="查詢存放區伺服器參數":::
 
    您可以從 [查詢數目]  下拉式清單中選取，以檢視更多查詢。 當您這樣做時，特定查詢識別碼的圖表色彩可能會有所變更。
 
@@ -64,7 +64,7 @@ Azure 入口網站中的[查詢效能深入解析](concepts-query-performance-in
 
 6. 選取 [等候統計資料]  索引標籤，以檢視伺服器中等候的對應視覺效果。
    
-   :::image type="content" source="./media/tutorial-performance-intelligence/query-performance-insight-wait-statistics.png" alt-text="查詢效能深入解析等候統計資料":::
+   :::image type="content" source="./media/tutorial-performance-intelligence/query-performance-insight-wait-statistics.png" alt-text="查詢存放區伺服器參數":::
 
 ### <a name="permissions"></a>權限
 需要**擁有者**或**參與者**權限，才能檢視查詢效能深入解析中的查詢文字。 **讀者**可以檢視圖表與資料表，但無法檢視查詢文字。
@@ -75,7 +75,7 @@ Azure 入口網站中的[查詢效能深入解析](concepts-query-performance-in
 
 1. 在 PostgreSQL 伺服器的 Azure 入口網站頁面上，從功能表列的 [支援與疑難排解]  區段開啟 [效能建議]  。
    
-   :::image type="content" source="./media/tutorial-performance-intelligence/performance-recommendations-landing-page.png" alt-text="[效能建議] 登陸頁面":::
+   :::image type="content" source="./media/tutorial-performance-intelligence/performance-recommendations-landing-page.png" alt-text="查詢存放區伺服器參數":::
 
 2. 選取 [分析]  並選擇資料庫。 隨即開始分析。
 
@@ -85,7 +85,7 @@ Azure 入口網站中的[查詢效能深入解析](concepts-query-performance-in
 
 5. 建議會顯示 [資料庫]  、[資料表]  、[資料行]  與 [索引大小]  等相關資訊。
 
-   :::image type="content" source="./media/tutorial-performance-intelligence/performance-recommendations-result.png" alt-text="效能建議結果":::
+   :::image type="content" source="./media/tutorial-performance-intelligence/performance-recommendations-result.png" alt-text="查詢存放區伺服器參數":::
 
 6. 若要實作建議，請複製查詢文字並從您選擇的用戶端中執行該文字。
 

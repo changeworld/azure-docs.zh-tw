@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 04/22/2020
 ms.author: apimpm
-ms.openlocfilehash: c6ec2be6daee931a4066ff5ce4f64fc949d497ac
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: be8a8f35ece946d1be907b2ca13a640bebbb4ee5
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86243421"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91627018"
 ---
 # <a name="import-an-azure-function-app-as-an-api-in-azure-api-management"></a>在 Azure API 管理中匯入 Azure 函式應用程式作為 API
 
@@ -71,7 +71,7 @@ Azure API 管理支援將 Azure 函式應用程式匯入為新的 API，或將�
     > [!NOTE]
     > 您只能匯入設有 HTTP 觸發程序、且授權層級設定設為 [匿名]  或 [函式]  的函式。
 
-7. 切換至 [完整]  檢視，然後將 [產品]  指派給您的新 API。 如有需要，請在建立期間指定其他欄位，或稍後前往 [設定]  索引標籤來進行設定。這些設定會在[匯入和發佈您的第一個 API](import-and-publish.md#-import-and-publish-a-backend-api) 教學課程中說明。
+7. 切換至 [完整]  檢視，然後將 [產品]  指派給您的新 API。 如有需要，請在建立期間指定其他欄位，或稍後前往 [設定]  索引標籤來進行設定。這些設定會在[匯入和發佈您的第一個 API](import-and-publish.md#import-and-publish-a-backend-api) 教學課程中說明。
 8. 按一下頁面底部的 [新增]  。
 
 ## <a name="append-azure-function-app-to-an-existing-api"></a><a name="append-azure-function-app-to-api"></a>將 Azure 函式應用程式附加至現有的 API

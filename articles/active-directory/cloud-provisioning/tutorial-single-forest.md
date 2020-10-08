@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b91763c275e4fd091b7c1554699e5d6f35a6f55
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 60f82a3197366081c66c4b7a1fe9c4ebe7762c94
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91266321"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91628686"
 ---
 # <a name="tutorial-integrate-a-single-forest-with-a-single-azure-ad-tenant"></a>教學課程：整合單一樹系與單一 Azure AD 租用戶
 
@@ -112,7 +112,7 @@ ms.locfileid: "91266321"
 5.  按一下 [新增設定]
 ![[Azure AD 佈建 (預覽)] 畫面的螢幕擷取畫面，反白顯示了 [新增設定] 連結。](media/tutorial-single-forest/configure1.png)
 7.  在組態畫面上輸入 [通知電子郵件]，將選取器移至 [啟用]，然後按一下 [儲存]。
-![[設定] 畫面的螢幕擷取畫面，其中已填入通知電子郵件並已選取啟用。](media/tutorial-single-forest/configure2.png)
+![[設定] 畫面的螢幕擷取畫面，其中已填入通知電子郵件並已選取啟用。](media/how-to-configure/configure2.png)
 1.  設定狀態此時應顯示為 [狀況良好]。
 ![[Azure AD 佈建 (預覽)] 畫面的螢幕擷取畫面顯示狀況良好狀態。](media/how-to-configure/manage4.png)
 

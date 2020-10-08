@@ -1,25 +1,27 @@
 ---
-title: 快速入門：建置物件偵測器 - 自訂視覺服務
+title: 快速入門：使用自訂視覺網站建置物件偵測器
 titleSuffix: Azure Cognitive Services
-description: 在本快速入門中，您將了解如何使用自訂視覺網站建置影像分類模型。
+description: 在本快速入門中，您將了解如何使用自訂視覺網站建立、定型及測試物件偵測器模型。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 08/05/2020
+ms.date: 09/30/2020
 ms.author: pafarley
-ms.openlocfilehash: 57fb91e9ead98f6c52fd3f659f4aa12692816297
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.custom: cog-serv-seo-aug-2020
+keywords: 影像辨識, 影像辨識應用程式, 自訂視覺
+ms.openlocfilehash: ab747ad5e7b9362e9c587741198a0191c032b124
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549542"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91596895"
 ---
-# <a name="quickstart-how-to-build-an-object-detector-with-custom-vision"></a>快速入門：如何使用自訂視覺建置物件偵測器
+# <a name="quickstart-build-an-object-detector-with-the-custom-vision-website"></a>快速入門：使用自訂視覺網站建置物件偵測器
 
-在本快速入門中，您將了解如何透過自訂視覺網站建置物件偵測器。 建立偵測器模型之後，您就可以使用自訂視覺服務進行物件偵測。
+在本快速入門中，您將了解如何使用自訂視覺網站建立物件偵測器模型。 一旦建置了模型，您就可以使用新的影像進行測試，並最終將其整合到您自己的影像辨識應用程式。
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/cognitive-services/)。
 
@@ -27,7 +29,7 @@ ms.locfileid: "88549542"
 
 - 一組用來定型偵測器模型的影像。 您可以使用 GitHub 上的[範例影像](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/tree/master/samples/vision/images)集合。 或者，您可以使用下列秘訣來選擇自己的影像。
 
-## <a name="create-custom-vision-resources-in-the-azure-portal"></a>在 Azure 入口網站中建立自訂視覺資源
+## <a name="create-custom-vision-resources"></a>建立自訂視覺資源
 
 [!INCLUDE [create-resources](includes/create-resources.md)]
 
@@ -45,7 +47,7 @@ ms.locfileid: "88549542"
 1. 輸入專案的名稱和描述。 然後選取一個 [資源群組]。 如果您登入的帳戶與 Azure 帳戶相關聯，[資源群組] 下拉式清單會顯示所有的 Azure 資源群組，包括自訂視覺服務資源。 
 
    > [!NOTE]
-   > 如果沒有資源群組可用，請確認您已使用您用來登入 [Azure 入口網站](https://portal.azure.com/)的相同帳戶登入 [customvision.ai](https://customvision.ai)。 此外，請確認您所選取的自訂視覺入口網站「目錄」，與 Azure 入口網站中的目錄相同，也就是您自訂視覺資源的位置。 在這兩個網站中，您可以從畫面右上角的下拉式帳戶功能表選取您的目錄。 
+   > 如果沒有資源群組可用，請確認您已使用您用來登入 [Azure 入口網站](https://portal.azure.com/)的相同帳戶登入 [customvision.ai](https://customvision.ai)。 此外，請確認您在自訂視覺網站中選取的「目錄」，與 Azure 入口網站中的目錄相同，也就是您自訂視覺資源的位置。 在這兩個網站中，您可以從畫面右上角的下拉式帳戶功能表選取您的目錄。 
 
 1. 選取 [專案類型]  之下的 [物件偵測]  。
 
@@ -58,7 +60,7 @@ ms.locfileid: "88549542"
     |__貨架上的產品__|已針對在貨架上偵測和分類產品進行最佳化。|
     |__精簡領域__| 已針對行動裝置上的即時物件偵測條件約束進行最佳化。 精簡領域所產生的模型可以匯出到本機執行。|
 
-1. 最後，選取 [建立專案]____。
+1. 最後，選取 [建立專案]  。
 
 ## <a name="choose-training-images"></a>選擇定型影像
 
@@ -88,7 +90,7 @@ ms.locfileid: "88549542"
 
 ![網頁標題工具列右上角的 [定型] 按鈕](./media/getting-started-build-a-classifier/train01.png)
 
-此定型程序應該只需要幾分鐘的時間。 在此期間，[效能]**** 索引標籤會顯示定型程序的相關資訊。
+此定型程序應該只需要幾分鐘的時間。 在此期間，[效能]  索引標籤會顯示定型程序的相關資訊。
 
 ![定型對話方塊出現在主要區段的瀏覽器視窗](./media/get-started-build-detector/training.png)
 
@@ -118,3 +120,4 @@ ms.locfileid: "88549542"
 > [!div class="nextstepaction"]
 > [測試和重新定型模型](test-your-model.md)
 
+* [什麼是自訂視覺服務？](./overview.md)

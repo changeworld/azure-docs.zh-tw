@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/01/2020
 ms.author: allensu
-ms.openlocfilehash: 3509b99d1b222fc4f0bfa48effe42496c209d9ae
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 8eb8be3307cf5e1df987f636be5c01cecaf4ae45
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654475"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91631438"
 ---
 # <a name="azure-load-balancer-skus"></a>Azure Load Balancer SKU
 
@@ -54,7 +54,9 @@ Azure Load Balancer 有兩個 SKU。
 
 - SKU 不可變動。 您無法變更現有資源的 SKU。
 - 獨立虛擬機器資源、可用性設定組資源或虛擬機器擴展集資源都只能參考一個 SKU，絕不會同時參考兩者。
-- Standard Load Balancer 與標準公用 IP 資源不支援[移動訂用帳戶作業](../azure-resource-manager/management/move-resource-group-and-subscription.md)。
+- [移動作業](../azure-resource-manager/management/move-resource-group-and-subscription.md)：
+  - Standard Load Balancer 和標準公用 IP **都支援**資源群組移動作業 (位於相同的訂用帳戶內)。 
+  - Standard Load Balancer 與標準公用 IP 資源**不支援**[訂用帳戶群組移動作業](../azure-resource-manager/management/move-support-resources.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

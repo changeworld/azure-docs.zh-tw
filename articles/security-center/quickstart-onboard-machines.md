@@ -3,22 +3,47 @@ title: 將您的非 Azure 機器連線至 Azure 資訊安全中心
 description: 了解如何將您的非 Azure 機器連線至資訊安全中心
 author: memildin
 ms.author: memildin
-ms.date: 9/22/2020
+ms.date: 10/01/2020
 ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 6f2889c298f525e1babf80f86d4ae140ef2ce96f
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: df780e4e55bb5c119320d4b33502d50a95da1eaf
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91448952"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91612212"
 ---
 #  <a name="connect-your-non-azure-machines-to-security-center"></a>將您的非 Azure 機器連線至資訊安全中心
 
-資訊安全中心可以監視非 Azure 電腦的安全性狀態，但您需要先上架這些資源。 您可以從 [開始使用] 頁面或從 [清查] 新增非 Azure 電腦，如下所述。
+資訊安全中心可以監視非 Azure 電腦的安全性狀態，但您需要先上架這些資源。 
 
-## <a name="add-non-azure-computers"></a>新增非 Azure 電腦 
+您可以透過下列任何方式新增非 Azure 電腦：
+
+- 使用 Azure Arc (**建議使用**)
+- 從資訊安全中心在 Azure 入口網站中的頁面 ([開始使用] 和 [清查])
+
+以下說明上述各方式。
+
+## <a name="add-non-azure-machines-with-azure-arc"></a>使用 Azure Arc 新增非 Azure 機器
+
+將非 Azure 機器新增至 Azure 資訊安全中心時，使用 Azure Arc 是慣用的方式。
+
+已啟用 Azure Arc 的機器會成為 Azure 資源，並連同相關建議 (例如其他 Azure 資源) 出現在資訊安全中心中。 
+
+此外，Azure Arc 也提供增強功能，例如在機器上啟用原則的選項、將 Log Analytics 代理程式部署為延伸模組、簡化其他 Azure 服務的部署等等。 如需其優點的概觀，請參閱[支援的案例](../azure-arc/servers/overview.md#supported-scenarios)。
+
+**若要部署 Azure Arc：**
+
+- 針對單一機器，請依照[快速入門：將混合式機器與已啟用 Azure Arc 的伺服器連線](../azure-arc/servers/learn/quick-enable-hybrid-vm.md)中的指示操作。
+- 若要大規模部署 Azure Arc，請參閱[大規模將混合式機器連線至 Azure](../azure-arc/servers/onboard-service-principal.md)
+
+深入了解 [Azure Arc](../azure-arc/servers/overview.md)。
+
+> [!TIP]
+> 如果您要將 AWS 機器上線，資訊安全中心中適用於 AWS 的連接器會以透明方式為您處理 Azure Arc 部署。 若要深入了解，請參閱[將您的 AWS 帳戶連線到 Azure 資訊安全中心](quickstart-onboard-aws.md)。
+
+## <a name="add-non-azure-machines-from-security-centers-portal-pages"></a>從資訊安全中心的入口網站頁面新增非 Azure 機器
 
 1. 從資訊安全中心的功能表中，開啟 [開始使用] 頁面。
 1. 選取 [開始使用]  索引標籤。
@@ -29,6 +54,8 @@ ms.locfileid: "91448952"
 
     > [!TIP]
     > 您也可以從 [清查] 頁面的 [新增非 Azure 伺服器] 按鈕開啟 [新增機器]。
+    > 
+    > :::image type="content" source="./media/security-center-onboarding/onboard-inventory.png" alt-text="開始使用頁面中的開始使用索引標籤":::
 
     隨即會顯示 Log Analytics 工作區清單。 清單中顯示啟用自動佈建之後，資訊安全中心為您建立的預設工作區 (如果適用)。 選取此工作區或其他您要使用的工作區。
 
@@ -89,12 +116,13 @@ ms.locfileid: "91448952"
 
 
 ## <a name="verifying"></a>驗證中
-恭喜！ 現在，您已可在同一位置檢視您的 Azure 機器和非 Azure 機器。 開啟[資產清查](asset-inventory.md) 頁面，並篩選到相關的資源類型。 這兩個圖示會區分類型：
+恭喜！ 現在，您已可在同一位置檢視您的 Azure 機器和非 Azure 機器。 開啟[資產清查](asset-inventory.md) 頁面，並篩選到相關的資源類型。 這些圖示會區分類型：
 
-  ![icon1](./media/quick-onboard-linux-computer/security-center-monitoring-icon1.png) 非 Azure 機器
+  ![非 Azure 機器的 ASC 圖示](./media/quick-onboard-linux-computer/security-center-monitoring-icon1.png) 非 Azure 機器
 
-  ![icon2](./media/quick-onboard-linux-computer/security-center-monitoring-icon2.png) Azure VM
+  ![Azure 機器的 ASC 圖示](./media/quick-onboard-linux-computer/security-center-monitoring-icon2.png) Azure VM
 
+  ![Azure Arc 機器的 ASC 圖示](./media/quick-onboard-linux-computer/arc-enabled-machine-icon.png) 已啟用 Azure Arc 的機器
 
 ## <a name="next-steps"></a>後續步驟
 

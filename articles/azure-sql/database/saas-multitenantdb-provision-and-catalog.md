@@ -1,24 +1,24 @@
 ---
-title: SaaS 多租使用者中的布建
+title: SaaS 多租用戶中的佈建
 description: 了解如何在 Azure SQL Database 多租用戶 SaaS 應用程式中佈建及編目新租用戶
 services: sql-database
 ms.service: sql-database
 ms.subservice: scenario
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: tutorial
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
-ms.openlocfilehash: 4413a987af7a4802366556fb86c0c55e7b401776
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
-ms.translationtype: MT
+ms.openlocfilehash: 92dcb1e75d43a946b9b6a238aaa360ec3d84dbb8
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91356786"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91619608"
 ---
-# <a name="provision-and-catalog-new-tenants-in-a-saas-application-using-a-sharded-multi-tenant-azure-sql-database"></a>使用分區化多租使用者 Azure SQL Database 在 SaaS 應用程式中布建及編目新租使用者
+# <a name="provision-and-catalog-new-tenants-in-a-saas-application-using-a-sharded-multi-tenant-azure-sql-database"></a>使用分區化多租用 Azure SQL Database 在 SaaS 應用程式中對新的租用戶進行佈建及編目
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 本文涵蓋在「多租用戶分區化資料庫」** 模型或模式中，對新的租用戶進行佈建和編目。
@@ -123,16 +123,16 @@ ms.locfileid: "91356786"
 > * 將一批租用戶佈建到多租用戶和單一租用戶資料庫
 > * 在目錄中註冊資料庫和租用戶對應
 
-#### <a name="prerequisites"></a>Prerequisites
+#### <a name="prerequisites"></a>必要條件
 
 若要完成本教學課程，請確定已完成下列必要條件：
 
 - 已安裝 Azure PowerShell。 如需詳細資料，請參閱[開始使用 Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps)
 
-- 已部署 Wingtip Tickets SaaS 多租用戶資料庫應用程式。 若要在五分鐘內進行部署，請參閱 [部署和探索 Wingtip Ticket SaaS 多租使用者資料庫應用程式](../../sql-database/saas-multitenantdb-get-started-deploy.md)
+- 已部署 Wingtip Tickets SaaS 多租用戶資料庫應用程式。 若要在五分鐘內完成部署，請參閱[部署及探索 Wingtip Tickets SaaS 多租用戶資料庫應用程式](../../sql-database/saas-multitenantdb-get-started-deploy.md)
 
 - 取得 Wingtip 指令碼和原始程式碼：
-    - Wingtip Ticket SaaS 多租使用者資料庫腳本和應用程式原始程式碼可在 [>wingtipticketssaas-dbpertenant-master MultitenantDB](https://github.com/microsoft/WingtipTicketsSaaS-MultiTenantDB) GitHub 存放庫中取得。
+    - 可在 [WingtipTicketsSaaS MultitenantDB](https://github.com/microsoft/WingtipTicketsSaaS-MultiTenantDB) GitHub 存放庫中使用 Wingtip Tickets SaaS 多租用戶資料庫指令碼和應用程式來源程式碼。
     - 如需下載 Wingtip 指令碼以及將該指令碼解除封鎖的步驟，請參閱[一般指導方針](saas-tenancy-wingtip-app-guidance-tips.md)。
 
 ## <a name="provision-a-tenant-into-a-database-shared-with-other-tenants"></a>在與其他租用戶「共用」** 的資料庫中佈建租用戶
@@ -146,7 +146,7 @@ ms.locfileid: "91356786"
 - **計算新的租用戶金鑰**：使用雜湊函式，從租用戶名稱建立租用戶金鑰。
 - **檢查租用戶金鑰是否已經存在**：檢查目錄以確保尚未註冊金鑰。
 - **初始化預設租用戶資料庫中的租用戶**：更新租用戶資料庫，以新增新的租用戶資訊。
-- **在類別目錄中註冊租**使用者：新租使用者金鑰與現有 tenants1 資料庫之間的對應會新增至目錄。
+- **在目錄中註冊租用戶**：將新租用戶金鑰與現有 tenants1 資料庫之間的對應新增至目錄。
 - **將租用戶的名稱新增至目錄延伸模組資料表**：將場地名稱新增至目錄中的租用戶資料表。  這個新增項目說明如何擴充目錄資料庫，以支援其他應用程式特定的資料。
 - **開啟新租用戶的事件頁面**：*Bushwillow Blues* 事件頁面隨即在瀏覽器中開啟。
 
@@ -157,9 +157,9 @@ ms.locfileid: "91356786"
 若要了解 Wingtip 應用程式如何在共用資料庫中實作新的租用戶佈建，請新增中斷點並逐步執行工作流程：
 
 1. 在 *PowerShell ISE* 中，開啟 ...\\Learning Modules\\ProvisionTenants\\*Demo-ProvisionTenants.ps1* 並設定下列參數：
-   - **$TenantName**  = **Bushwillow 藍**，新場地的名稱。
-   - **$VenueType**  = **藍色**，其中一個預先定義的場地類型：藍、classicalmusic、dance、爵士樂、judo、motorracing、多用途、opera、rockmusic、足球 (小寫、不含空格) 。
-   - **$DemoScenario**  = **1**）在與其他租使用者共用的資料庫中布建租使用者。
+   - **$TenantName** = **Bushwillow Blues**，新場地的名稱。
+   - **$VenueType** = **blues**，其中一個預先定義的場地類型：blues、classicalmusic、dance、jazz、judo、motorracing、multipurpose、opera、rockmusic、soccer (小寫、不含空格)。
+   - **$DemoScenario** = **1**，在與其他租用戶共用的資料庫中佈建租用戶。
 
 2. 將游標置於第 38 行 (該行顯示︰*New-Tenant `*) 上的任意位置來新增中斷點，然後按 **F9**。
 
@@ -169,13 +169,13 @@ ms.locfileid: "91356786"
 
 4. 在指令碼於中斷點停止執行之後，請按 **F11** 進入程式碼。
 
-   ![螢幕擷取畫面顯示 [調試] 功能表的 [開啟] 和 [逐步執行] 已選取的 Windows PowerShell ISE。](./media/saas-multitenantdb-provision-and-catalog/debug.png)
+   ![螢幕擷取畫面顯示已開啟偵錯功能表並已選取 [逐步執行] 的 Windows PowerShell ISE。](./media/saas-multitenantdb-provision-and-catalog/debug.png)
 
 5. 使用 [偵錯]**** 功能表選項、**F10** 和 **F11** 追蹤指令碼的執行，可以跳過或進入呼叫的函式。
 
 如需對 PowerShell 指令碼進行偵錯的詳細資訊，請參閱[使用 PowerShell 指令碼及對其進行偵錯的祕訣](https://docs.microsoft.com/powershell/scripting/components/ise/how-to-debug-scripts-in-windows-powershell-ise) \(英文\)。
 
-## <a name="provision-a-tenant-in-its-own-database"></a>在 *自己* 的資料庫中布建租使用者
+## <a name="provision-a-tenant-in-its-own-database"></a>在它「自己」的資料庫中佈建租用戶
 
 #### <a name="major-actions-of-provisioning"></a>佈建的主要動作
 
@@ -186,7 +186,7 @@ ms.locfileid: "91356786"
 - **建立新的租用戶資料庫**：使用 Resource Manager 範本複製 *basetenantdb* 資料庫以建立資料庫。  新的資料庫名稱是以租用戶的名稱作為基礎。
 - **新增要編目的資料庫**：新的租用戶資料庫會在目錄中註冊為分區。
 - **初始化預設租用戶資料庫中的租用戶**：更新租用戶資料庫，以新增新的租用戶資訊。
-- **在類別目錄中註冊租**使用者：新租使用者金鑰與 *sequoiasoccer* 資料庫之間的對應會新增至目錄。
+- **在目錄中註冊租用戶**：將新租用戶金鑰與 sequoiasoccer 資料庫之間的對應新增至目錄。
 - **將租用戶名稱新增至目錄**：將場地名稱新增至目錄中的租用戶延伸模組資料表。
 - **開啟新租用戶的事件頁面**：*Sequoia Soccer* 事件頁面隨即在瀏覽器中開啟。
 
@@ -197,11 +197,11 @@ ms.locfileid: "91356786"
 現在將進行在它自己資料庫中建立租用戶的指令碼程序逐步解說：
 
 1. 仍在 ...\\Learning Modules\\ProvisionTenants\\*Demo-ProvisionTenants.ps1* 中，設定下列參數：
-   - **$TenantName**  = **Sequoia 足球**，新場地的名稱。
-   - **$VenueType**  = **足球**，其中一個預先定義的場地類型：藍、classicalmusic、dance、爵士樂、judo、motorracing、多用途、opera、rockmusic、足球 (小寫、沒有空格) 。
-   - **$DemoScenario**  = **2**，將租使用者布建到它自己的資料庫中。
+   - **$TenantName** = **Sequoia Soccer**，新場地的名稱。
+   - **$VenueType** = **soccer**，其中一個預先定義的場地類型：blues、classicalmusic、dance、jazz、judo、motorracing、multipurpose、opera、rockmusic、soccer (小寫、不含空格)。
+   - **$DemoScenario** = **2**，在它自己的資料庫中佈建租用戶。
 
-2. 將游標放在第57行的任何位置（顯示： * & &nbsp; $PSScriptRoot \new-tenantanddatabase '* 的行，然後按**F9**），以新增中斷點。
+2. 將游標置於以第 57 行 (該行顯示︰&&nbsp;$PSScriptRoot\New-TenantAndDatabase `) 上的任意位置來新增中斷點，然後按 **F9**。
 
    ![中斷點](./media/saas-multitenantdb-provision-and-catalog/breakpoint2.png)
 
@@ -214,13 +214,13 @@ ms.locfileid: "91356786"
 此練習會佈建一批 17 個租用戶。 建議您在開始其他 Wingtip Tickets 教學課程之前佈建這一批租用戶，才會有較多資料庫可以使用。
 
 1. 在 PowerShell ISE** 中，開啟 ...\\Learning Modules\\ProvisionTenants\\*Demo-ProvisionTenants.ps1*，並將 $DemoScenario** 參數變更為 4：
-   - **$DemoScenario**  = **4**，將一批租使用者布建到共用資料庫。
+   - **$DemoScenario** = **4**，在共用資料庫中佈建一批租用戶。
 
 2. 按 **F5** 並執行指令碼。
 
 ### <a name="verify-the-deployed-set-of-tenants"></a>驗證租用戶的已部署集合
 
-在這個階段中，您要將混合的租用戶部署到共用資料庫，並將租用戶部署到其自己的資料庫。 Azure 入口網站可以用來檢查所建立的資料庫。 在[Azure 入口網站](https://portal.azure.com)中，流覽至 SQL server 清單以開啟**tenants1 \<USER\> ** 。  **SQL 資料庫**清單應該包括共用的 **tenants1** 資料庫，以及位於其自己資料庫中的租用戶之資料庫：
+在這個階段中，您要將混合的租用戶部署到共用資料庫，並將租用戶部署到其自己的資料庫。 Azure 入口網站可以用來檢查所建立的資料庫。 在 [Azure 入口網站](https://portal.azure.com)中，瀏覽至 SQL 伺服器的清單以開啟 **tenants1-mt-\<USER\>** 伺服器。  **SQL 資料庫**清單應該包括共用的 **tenants1** 資料庫，以及位於其自己資料庫中的租用戶之資料庫：
 
    ![資料庫清單](./media/saas-multitenantdb-provision-and-catalog/Databases.png)
 
@@ -228,7 +228,7 @@ ms.locfileid: "91356786"
 
 #### <a name="using-wingtip-tickets-events-hub-page"></a>使用 Wingtip Tickets 事件中樞頁面
 
-在瀏覽器中開啟 [事件中樞] 頁面 (HTTP： wingtip- \<USER\> mt .。。trafficmanager.net) 
+在瀏覽器中開啟 [事件中樞] 頁面 (http:events.wingtip-mt.\<USER\>.trafficmanager.net)
 
 #### <a name="using-catalog-database"></a>使用目錄資料庫
 
@@ -237,7 +237,7 @@ ms.locfileid: "91356786"
 - 租用戶名稱會儲存在租用戶資料表中。
 - 資料庫名稱會儲存在分區管理資料表中。
 
-1. 在 SQL Server Management Studio (SSMS) 中，連接到位於 catalog-mt 的租使用者伺服器 ** \<USER\> 。database.windows.net**，使用 Login = **Developer**和 Password = **P \@ ssword1**
+1. 在 SQL Server Management Studio (SSMS) 中，使用登入 = **developer** 和密碼 = **P\@ssword1** 連線到 **catalog-mt.\<USER\>.database.windows.net** 上的租用戶伺服器
 
     ![SSMS 連線對話方塊](./media/saas-multitenantdb-provision-and-catalog/SSMSConnection.png)
 
@@ -265,7 +265,7 @@ ms.locfileid: "91356786"
 
 <!-- - Additional [tutorials that build upon the Wingtip SaaS application](../../sql-database/saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)-->
 - [彈性資料庫用戶端程式庫](elastic-database-client-library.md)
-- [如何在 Windows PowerShell ISE 中調試腳本](https://docs.microsoft.com/powershell/scripting/components/ise/how-to-debug-scripts-in-windows-powershell-ise)
+- [如何在 Windows PowerShell ISE 中針對指令碼進行偵錯](https://docs.microsoft.com/powershell/scripting/components/ise/how-to-debug-scripts-in-windows-powershell-ise)
 
 
 ## <a name="next-steps"></a>後續步驟

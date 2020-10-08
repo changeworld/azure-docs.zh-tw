@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 04/20/2020
 ms.author: apimpm
-ms.openlocfilehash: 6b8b7c0dbdce160a19b5bb5ecb67bf2fb0a204ee
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 39a3b9d7dd9efbda93de0b5d7c5f9938922d0012
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89295256"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631285"
 ---
 # <a name="add-an-api-manually"></a>手動新增 API
 
@@ -39,7 +39,7 @@ ms.locfileid: "89295256"
 2. 從左側功能表中選取 [+ 新增 API]  。
 3. 從清單選取 [空白 API]  。  
     ![空白 API](media/add-api-manually/blank-api.png)  
-4. 輸入 API 的設定。 這些設定會在 [匯入和發佈您的第一個 API](import-and-publish.md#-import-and-publish-a-backend-api) 教學課程中說明。
+4. 輸入 API 的設定。 這些設定會在 [匯入和發佈您的第一個 API](import-and-publish.md#import-and-publish-a-backend-api) 教學課程中說明。
 5. 選取 [建立]  。
 
 此時，APIM 中沒有對應至後端 API 中任何作業的作業。 如果您呼叫透過後端公開的作業，而不是呼叫透過 APIM 公開的作業，您會收到 **404**。
