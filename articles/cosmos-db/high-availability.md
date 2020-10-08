@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 85ffff1a38d42aac00ce122a1e51d79515b0c51b
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 3b9d1c8c6271d689b022a069de8e3392c0662dd6
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91762020"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826879"
 ---
 # <a name="how-does-azure-cosmos-db-provide-high-availability"></a>Azure Cosmos DB 如何提供高可用性？ 
 
@@ -90,8 +90,8 @@ Azure Cosmos DB 會以透明方式將您的資料複寫到與 Azure Cosmos 帳�
 |價格 | 單一區域計費費率 | 單一區域可用性區域計費費率 | 多區域計費費率 |
 |區域失敗–資料遺失 | 資料遺失 | 沒有資料遺失 | 沒有資料遺失 |
 |區域失敗-可用性 | 可用性損失 | 無可用性損失 | 無可用性損失 |
-|讀取延遲 | 跨區域 | 跨區域 | 低 |
-|寫入延遲 | 跨區域 | 跨區域 | 低 |
+|讀取延遲 | 跨區域 | 跨區域 | 低度 |
+|寫入延遲 | 跨區域 | 跨區域 | 低度 |
 |區域中斷-資料遺失 | 資料遺失 |  資料遺失 | 資料遺失 <br/><br/> 搭配多個寫入區域和多個區域使用限定過期一致性時，資料遺失會限制在您帳戶上設定的限定過期 <br /><br />您可以設定多個區域的強式一致性，以避免在區域性中斷期間發生資料遺失。 此選項會產生影響可用性和效能的取捨。 只能在針對單一區域寫入設定的帳戶上設定。 |
 |區域中斷-可用性 | 可用性損失 | 可用性損失 | 無可用性損失 |
 |Throughput | X RU/秒布建的輸送量 | X RU/秒布建的輸送量 * 1.25 | 2X RU/秒布建的輸送量 <br/><br/> 相較于具有可用性區域的單一區域，此設定模式需要兩倍的輸送量（因為有兩個區域）。 |
@@ -136,7 +136,7 @@ az cosmosdb create \
 
 - 在全域散發的資料庫環境中，一致性層級與資料持久性之間存在全區域中斷的關聯性。 當您開發商務持續性計劃時，您必須了解應用程式在干擾性事件之後完全復原所需的最大可接受時間。 完全復原應用程式所需的時間，也稱為復原時間目標 (RTO)。 您也必須了解在干擾性事件之後復原時，應用程式可忍受遺失的最近資料更新最大期間。 您可能經得起遺失的更新時間週期，也稱為復原點目標 (RPO)。 若要查看 Azure Cosmos DB 的 RPO 與 RTO請參閱[一致性層級與資料持久性](consistency-levels-tradeoffs.md#rto)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 接下來，您可以閱讀下列文章：
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b327e388366fe3129695a5c1780600e5903508a
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: ea5d24fd36e668fc52a8b5c9a20472c42ef3c420
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90705532"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825960"
 ---
 # <a name="how-to-manage-stale-devices-in-azure-ad"></a>如何：管理 Azure AD 中的過時裝置
 
@@ -91,7 +91,7 @@ Azure AD 中若有過時裝置，可能會干擾您組織中裝置的一般生�
 
 請勿刪除由系統管理的裝置。 這些通常是裝置，例如 Autopilot。 一旦刪除後，就無法重新布建這些裝置。 新的 `Get-AzureADDevice` Cmdlet 會根據預設排除由系統管理的裝置。 
 
-### <a name="hybrid-azure-ad-joined-devices"></a>混合式 Azure AD 加入裝置
+### <a name="hybrid-azure-ad-joined-devices"></a>混合式 Azure AD 已加入裝置
 
 已加入混合式 Azure AD 的裝置應遵循原則來管理內部部署的過時裝置。 
 
@@ -163,9 +163,9 @@ Get-AzureADDevice | Where {$_.ApproximateLastLogonTimeStamp -le $dt} | select-ob
 ### <a name="why-should-i-worry-about-windows-autopilot-devices"></a>為什麼我應該擔心 Windows Autopilot 裝置？
 
 當您刪除與 Windows Autopilot 物件相關聯的 Azure AD 裝置時，如果未來將會重新規劃裝置，則可能會發生下列三種情況：
-- 使用 Windows Autopilot 使用者導向的部署，而不使用白色手套，將會建立新的 Azure AD 裝置，但不會以 ZTDID 標記。
+- 使用 Windows Autopilot 的使用者導向部署，而不使用預先布建，則會建立新的 Azure AD 裝置，但不會將它標記為 ZTDID。
 - 使用 Windows Autopilot 自我部署模式部署時，將會失敗，因為找不到關聯 Azure AD 裝置。   (這種安全性機制，可確保沒有任何「冒名頂替」的裝置嘗試加入沒有認證的 Azure AD。 ) 失敗將表示 ZTDID 不相符。
-- 在 Windows Autopilot 的白色手套部署中，因為找不到相關聯的 Azure AD 裝置，所以會失敗。  (幕後的白色手套部署會使用相同的自我部署模式進程，因此會強制執行相同的安全性機制。 ) 
+- 在 Windows Autopilot 預先布建的部署中，因為找不到相關聯的 Azure AD 裝置，所以會失敗。 在幕後 (，預先布建的部署會使用相同的自我部署模式進程，因此會強制執行相同的安全性機制。 ) 
 
 ### <a name="how-do-i-know-all-the-type-of-devices-joined"></a>如何得知已加入的所有裝置類型？
 
@@ -179,6 +179,6 @@ Get-AzureADDevice | Where {$_.ApproximateLastLogonTimeStamp -le $dt} | select-ob
 - **加入 Azure AD 的裝置** - 使用者不能使用裝置來登入。 
 - 行動**裝置**-使用者無法存取 Azure AD 資源，例如 Microsoft 365。 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 若要取得在 Azure 入口網站中管理裝置的概觀，請參閱[使用 Azure 入口網站來管理裝置](device-management-azure-portal.md)

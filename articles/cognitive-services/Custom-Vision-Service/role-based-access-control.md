@@ -10,16 +10,16 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: pafarley
-ms.openlocfilehash: fc536b3b0c7af113919f274fc4bdd5fad63cbd06
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 4eea87d7b5ef543551b789ddc6b045358fa98631
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90057168"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826931"
 ---
 # <a name="role-based-access-control"></a>角色型存取控制
 
-自訂視覺支援 Azure RBAC) 的 Azure 角色型訪問 (控制，這是用來管理 Azure 資源個別存取的授權系統。 使用 RBAC，您可以為不同的小組成員指派自訂視覺專案的不同許可權層級。 如需 RBAC 的詳細資訊，請參閱 [AZURE rbac 檔](https://docs.microsoft.com/azure/role-based-access-control/)。
+自訂視覺支援 Azure 角色型存取控制 (Azure RBAC) 授權系統，可用於管理 Azure 資源的個別存取權。 使用 RBAC，您可以為不同的小組成員指派自訂視覺專案的不同許可權層級。 如需 RBAC 的詳細資訊，請參閱 [AZURE rbac 檔](https://docs.microsoft.com/azure/role-based-access-control/)。
 
 ## <a name="add-role-assignment-to-custom-vision-resource"></a>將角色指派新增至自訂視覺資源
 
@@ -43,8 +43,8 @@ ms.locfileid: "90057168"
 
 |角色  |權限  |
 |---------|---------|
-|`Cognitive Service Custom Vision Contributor`     | 專案的完整存取權，包括建立、編輯或刪除專案的能力。        |
-|`Cognitive Service Custom Vision Trainer`     | 完整存取權，但建立或刪除專案的功能除外。 定型人員可以查看和編輯專案，以及定型、發行、取消發行或匯出模型。        |
-|`Cognitive Service Custom Vision Labeler`     | 能夠上傳、編輯或刪除定型影像，以及建立、新增、移除或刪除標記。 標籤者可查看專案，但無法更新定型影像和標記以外的任何專案。         |
-|`Cognitive Service Custom Vision Deployment`     | 發佈、取消發行或匯出模型的能力。 部署人員可查看專案，但無法更新專案、訓練影像或標記。        |
-|`Cognitive Service Custom Vision Reader`     | 查看專案的能力。 讀者無法進行任何變更。        |
+|`Cognitive Services Custom Vision Contributor`     | 專案的完整存取權，包括建立、編輯或刪除專案的能力。        |
+|`Cognitive Services Custom Vision Trainer`     | 完整存取權，但建立或刪除專案的功能除外。 定型人員可以查看和編輯專案，以及定型、發行、取消發行或匯出模型。        |
+|`Cognitive Services Custom Vision Labeler`     | 能夠上傳、編輯或刪除定型影像，以及建立、新增、移除或刪除標記。 標籤者可查看專案，但無法更新定型影像和標記以外的任何專案。         |
+|`Cognitive Services Custom Vision Deployment`     | 發佈、取消發行或匯出模型的能力。 部署人員可查看專案，但無法更新專案、訓練影像或標記。        |
+|`Cognitive Services Custom Vision Reader`     | 查看專案的能力。 讀者無法進行任何變更。        |

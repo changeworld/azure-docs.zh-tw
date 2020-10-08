@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84e692540d376c95a4a981249eba42060ed4ab80
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 27ffc176fc890d90e4201069ec1728eed69d4011
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91287095"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826658"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>使用 Azure Active Directory authentication (Preview 登入 Azure 中的 Windows 虛擬機器) 
 
@@ -236,7 +236,7 @@ AADLoginForWindows 擴充功能必須成功安裝，VM 才能完成 Azure AD 聯
 
    > [!NOTE]
    > 如果延伸模組在初始失敗之後重新開機，則會將具有部署錯誤的記錄檔儲存為 CommandExecution_YYYYMMDDHHMMSSSSS .log。 "
-1. 在 VM 上開啟命令提示字元，並針對在 Azure 主機上執行的 Instance Metadata Service (IMDS) 端點，確認這些查詢會傳回：
+1. 在 VM 上開啟 PowerShell 命令提示字元，並針對在 Azure 主機上執行的 Instance Metadata Service (IMDS) 端點，確認這些查詢會傳回：
 
    | 要執行的命令 | 預期的輸出 |
    | --- | --- |
@@ -365,6 +365,6 @@ AADLoginForWindows 擴充功能必須成功安裝，VM 才能完成 Azure AD 聯
 
 請分享您對此預覽功能的意見反應，或在 [Azure AD 意見反應論壇](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032)上使用它來報告問題。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 如需有關 Azure Active Directory 的詳細資訊，請參閱[什麼是 Azure Active Directory](../fundamentals/active-directory-whatis.md)

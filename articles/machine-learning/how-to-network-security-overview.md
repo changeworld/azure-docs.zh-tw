@@ -11,12 +11,12 @@ author: peterclu
 ms.date: 10/06/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, references_regions, contperfq1
-ms.openlocfilehash: 7bc56f6296bf41933348fad9ea4aeb640b9afbf0
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: d08c1d23539c817792415d359b8e1cbb3979ca40
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91776012"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825505"
 ---
 # <a name="virtual-network-isolation-and-privacy-overview"></a>虛擬網路隔離和隱私權總覽
 
@@ -159,7 +159,13 @@ ms.locfileid: "91776012"
 
 如需防火牆設定的詳細資訊，請參閱在 [防火牆後方使用工作區](how-to-access-azureml-behind-firewall.md)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="custom-dns"></a>自訂 DNS
+
+如果您需要為您的虛擬網路使用自訂 DNS 解決方案，您必須為您的工作區新增主機記錄。
+
+如需有關所需功能變數名稱和 IP 位址的詳細資訊，請參閱 [如何使用工作區與自訂 DNS 伺服器](how-to-custom-dns.md)。
+
+## <a name="next-steps"></a>下一步
 
 本文是四部分虛擬網路系列的第一篇。 請參閱文章的其餘部分，以瞭解如何保護虛擬網路：
 

@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: yolasors
-ms.openlocfilehash: 61c5917c1e4cb9dbf96e90af9a30777ea7c2e66c
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: f8f2e352ae458e3e2825c9701437ea652ba07375
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83594107"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825659"
 ---
 # <a name="review-pull-requests-in-pre-production-environments-in-azure-static-web-apps-preview"></a>在生產前環境中檢閱 App 靜態 Web Apps 預覽版中的提取要求
 
@@ -20,7 +20,7 @@ ms.locfileid: "83594107"
 
 生產前 (預備) 環境是具備完整功能的預備版應用程式，其中包含生產環境中所沒有的變更。
 
-Azure 靜態 Web Apps 會在存放庫中產生 GitHub 動作工作流程。 對工作流程監看的分支建立提取要求時，就會建置生產前環境。 生產前環境會暫存應用程式，讓您能夠在推送至生產環境之前執行檢閱。
+Azure 靜態 Web Apps 會在存放庫中產生 GitHub 動作工作流程。 針對工作流程監看的分支建立提取要求時，會建立預先生產環境。 生產前環境會暫存應用程式，讓您能夠在推送至生產環境之前執行檢閱。
 
 使用 Azure 靜態 Web Apps 時，多個生產前環境可同時並存。 每當您對受到監看的分支建立提取要求時，就會將含有變更的預備版本部署至不同的生產前環境。
 
@@ -51,11 +51,11 @@ Azure 靜態 Web Apps 會在存放庫中產生 GitHub 動作工作流程。 對�
 
 1. 移至您的 _app_ 資料夾，並變更一些文字內容。 例如，您可以變更標題或段落。 找到您要編輯的檔案後，按一下 [編輯] 以進行變更。
 
-    :::image type="content" source="./media/review-publish-pull-requests/edit-file.png" alt-text="GitHub 介面中的編輯檔案按鈕":::
+    :::image type="content" source="./media/review-publish-pull-requests/edit-file.png" alt-text="使用 GitHub 介面建立新的分支":::
 
 1. 進行變更後，請按一下 [認可變更]，將變更認可到分支。
 
-    :::image type="content" source="./media/review-publish-pull-requests/commit-changes.png" alt-text="GitHub 介面中的認可變更按鈕":::
+    :::image type="content" source="./media/review-publish-pull-requests/commit-changes.png" alt-text="使用 GitHub 介面建立新的分支":::
 
 ## <a name="create-a-pull-request"></a>建立提取要求
 
@@ -63,13 +63,13 @@ Azure 靜態 Web Apps 會在存放庫中產生 GitHub 動作工作流程。 對�
 
 1. 在 GitHub 上開啟專案的 [提取要求] 索引標籤：
 
-    :::image type="content" source="./media/review-publish-pull-requests/tab.png" alt-text="GitHub 存放庫中的 [提取要求] 索引標籤":::
+    :::image type="content" source="./media/review-publish-pull-requests/tab.png" alt-text="使用 GitHub 介面建立新的分支":::
 
 1. 按一下分支的 [比較和提取要求] 按鈕。
 
 1. 您可以選擇性地填入一些關於變更的詳細資料，然後按一下 [建立提取要求]。
 
-    :::image type="content" source="./media/review-publish-pull-requests/open.png" alt-text="在 GitHub 中建立提取要求":::
+    :::image type="content" source="./media/review-publish-pull-requests/open.png" alt-text="使用 GitHub 介面建立新的分支":::
 
 如有需要，您可以指派檢閱者，並新增註解以討論您的變更。
 
@@ -82,7 +82,7 @@ Azure 靜態 Web Apps 會在存放庫中產生 GitHub 動作工作流程。 對�
 
 在工作流程完成應用程式的建置和部署後，GitHub Bot 會在您的提取要求中新增註解，其中包含生產前環境的 URL。 您可以按一下此連結，以查看您的暫存變更。
 
-:::image type="content" source="./media/review-publish-pull-requests/bot-comment.png" alt-text="使用生產前 URL 的提取要求註解":::
+:::image type="content" source="./media/review-publish-pull-requests/bot-comment.png" alt-text="使用 GitHub 介面建立新的分支":::
 
 按一下產生的 URL 以查看變更。
 
@@ -96,7 +96,7 @@ Azure 靜態 Web Apps 會在存放庫中產生 GitHub 動作工作流程。 對�
 
 按一下 [合併提取要求]：
 
-:::image type="content" source="./media/review-publish-pull-requests/merge.png" alt-text="GitHub 介面中的合併提取要求按鈕":::
+:::image type="content" source="./media/review-publish-pull-requests/merge.png" alt-text="使用 GitHub 介面建立新的分支":::
 
 合併時會將您所做的變更複製到受追蹤的分支 (「生產」分支)。 然後，受追蹤的分支會啟動部署工作流程，而變更則會在您的應用程式重建之後生效。
 

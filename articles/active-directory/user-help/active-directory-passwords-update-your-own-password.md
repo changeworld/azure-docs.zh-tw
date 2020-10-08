@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 09/10/2020
 ms.author: curtand
-ms.openlocfilehash: c2bf4d5facc96a0876d4321a61ed6f414dfd78da
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: c47d573dab3e72a956f6f0b9d09a1dafadf0225c
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90029540"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91827768"
 ---
 # <a name="reset-your-work-or-school-password-using-security-info"></a>使用安全性資訊重設公司或學校密碼
 
@@ -69,7 +69,7 @@ ms.locfileid: "90029540"
 
     3. 輸入並確認您的新密碼，然後選取 [完成]。
 
-- **使用電話號碼重設密碼。** 將簡訊傳送到您先前在安全性資訊中設定的電話號碼。 如果您的系統管理員已開啟安全性資訊體驗，您就能在[將安全性資訊設定為使用電話 (預覽)](security-info-setup-phone-number.md) 一文中，找到設定電話號碼的詳細資訊。 如果您尚未使用安全性資訊，您可以在[對我的帳戶進行雙步驟驗證設定](multi-factor-authentication-end-user-first-time.md)一文中找到設定電話號碼的詳細資訊。
+- **使用電話號碼重設密碼。** 對您先前在安全性資訊中設定的電話號碼進行自動語音通話。 如果您的系統管理員已開啟安全性資訊體驗，您就能在[將安全性資訊設定為使用電話 (預覽)](security-info-setup-phone-number.md) 一文中，找到設定電話號碼的詳細資訊。 如果您尚未使用安全性資訊，您可以在[對我的帳戶進行雙步驟驗證設定](multi-factor-authentication-end-user-first-time.md)一文中找到設定電話號碼的詳細資訊。
 
     1. 選取 [撥打我的行動電話]、輸入您的電話號碼，然後選取 [撥打電話]。
 

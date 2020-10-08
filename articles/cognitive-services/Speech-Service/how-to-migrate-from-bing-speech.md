@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: nitinme
-ms.openlocfilehash: 43679c52727f8cc84c7292592b68dddae7f1ea68
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 81c4c26f252cdd9eb302a7f8f362c8bf52e48629
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91362073"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825585"
 ---
 # <a name="migrate-from-bing-speech-to-the-speech-service"></a>從 Bing 語音遷移至語音服務
 
@@ -37,13 +37,13 @@ ms.locfileid: "91362073"
 
 語音服務主要類似于 Bing 語音，但有下列差異。
 
-| 功能 | Bing 語音 | 語音服務 | 詳細資料 |
+| 特徵 | Bing 語音 | 語音服務 | 詳細資料 |
 |--|--|--|--|
 | C# SDK | :heavy_check_mark: | :heavy_check_mark: | 語音服務支援 Windows 10、通用 Windows 平臺 (UWP) 和 .NET Standard 2.0。 |
 | C++ SDK | :heavy_minus_sign: | :heavy_check_mark: | 語音服務支援 Windows 和 Linux。 |
 | Java SDK | :heavy_check_mark: | :heavy_check_mark: | 語音服務支援 Android 和語音裝置。 |
-| 持續語音辨識 | 10 分鐘 | 無限制 (搭配 SDK) | Bing 語音和語音服務 Websocket 通訊協定每次呼叫最多可支援10分鐘。 不過，語音 SDK 會在逾時或中斷連線時自動重新連線。 |
-| 部分或過渡結果 | :heavy_check_mark: | :heavy_check_mark: | 搭配 WebSocket 通訊協定或 SDK。 |
+| 持續語音辨識 | 10 分鐘 | 無限制 | 語音 SDK 支援無限制的連續辨識，並在 timeout 或中斷連線時自動重新連接。 |
+| 部分或過渡結果 | :heavy_check_mark: | :heavy_check_mark: | 語音 SDK 支援。 |
 | 自訂語音模型 | :heavy_check_mark: | :heavy_check_mark: | Bing 語音需要個別的自訂語音訂用帳戶。 |
 | 自訂聲音音調 | :heavy_check_mark: | :heavy_check_mark: | Bing 語音需要個別的自訂聲音訂用帳戶。 |
 | 24 kHz 聲音 | :heavy_minus_sign: | :heavy_check_mark: |
@@ -53,7 +53,7 @@ ms.locfileid: "91362073"
 | 辨識模式 | 手動 (透過端點 URI) | 自動 | 語音服務中無法使用辨識模式。 |
 | 端點位置 | 全球 | 地區 | 區域端點能改善延遲。 |
 | REST API | :heavy_check_mark: | :heavy_check_mark: | 語音服務 REST Api 與 Bing 語音 (不同的端點) 相容。 REST API 能支援文字轉換語音和有限的語音轉換文字功能。 |
-| WebSocket 通訊協定 | :heavy_check_mark: | :heavy_check_mark: | 語音服務 Websocket API 與 Bing 語音 (不同的端點) 相容。 可以的話，請移轉至語音 SDK 以簡化您的程式碼。 |
+| WebSocket 通訊協定 | :heavy_check_mark: | :heavy_minus_sign: | 語音 SDK 會針對需要持續連線到服務的功能來抽象化 web 通訊端連線，因此不再支援手動訂閱這些連接。 |
 | 服務對服務 API 呼叫 | :heavy_check_mark: | :heavy_minus_sign: | 透過 C# 服務程式庫在 Bing 語音中提供。 |
 | 開放原始碼 SDK | :heavy_check_mark: | :heavy_minus_sign: |
 
@@ -65,13 +65,9 @@ ms.locfileid: "91362073"
 
 語音服務 [REST api](rest-apis.md) 與 Bing 語音 api 相容。 如果您目前使用 Bing 語音 REST Api，您只需要變更 REST 端點，並切換至語音服務訂用帳戶金鑰。
 
-語音服務 Websocket 通訊協定也與 Bing 語音所使用的通訊協定相容。 我們建議針對新開發使用語音 SDK，而非 WebSocket。 將現有程式碼移轉至該 SDK 也是很好的作法。 不過和 REST API 相同，透過 WebSocket 使用 Bing 語音的現有程式碼只需要變更端點並更新金鑰。
-
 如果您是針對特定程式設計語言使用 Bing 語音用戶端程式庫，基於 API 不同的原因，移轉至[語音 SDK](speech-sdk.md) 會需要對您的應用程式做出變更。 語音 SDK 能簡化您的程式碼，同時讓您存取新的功能。 語音 SDK 有各式各樣的程式設計語言。 所有平台上的 API 都非常類似，進一步簡化多平台開發的工作。
 
 語音服務不提供全域端點。 請判斷自己的應用程式是否能在針對所有流量使用單一區域端點的情況下有效運作。 如果不行，請使用地理位置來判斷最有效的端點。 您在每個使用的區域中都需要個別的語音服務訂用帳戶。
-
-如果您的應用程式會使用長時間執行的連線，且無法可用的 SDK，您可以使用 WebSocket 連線。 請透過在適當時間重新連線來因應 10 分鐘的逾時限制。
 
 開始使用語音 SDK：
 
@@ -85,12 +81,14 @@ Bing 語音客戶應該透過開啟[支援票證](https://ms.portal.azure.com/#b
 
 如需語音服務、SDK 和 API 支援，請造訪語音服務 [支援頁面](support.md)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * [免費試用語音服務](overview.md#try-the-speech-service-for-free)
-* [快速入門：使用語音 SDK 在 UWP 應用程式中辨識語音](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=uwp)
+* [開始使用語音轉換文字](get-started-speech-to-text.md)
+* [開始使用文字轉換語音](get-started-text-to-speech.md)
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
+
 * [語音服務版本資訊](releasenotes.md)
 * [什麼是語音服務](overview.md)
 * [語音服務和語音 SDK 檔](speech-sdk.md#get-the-speech-sdk)

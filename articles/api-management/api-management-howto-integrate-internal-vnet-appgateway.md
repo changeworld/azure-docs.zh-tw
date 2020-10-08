@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: sasolank
-ms.openlocfilehash: 778c65b9ec42c27ea0ae1530c1ba7fa9739fbc3c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 3db1c8bfc3a11151342589af0873d88e3d90c6a1
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91321878"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825631"
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>整合內部 VNET 中的 API 管理與應用程式閘道
 
@@ -35,7 +35,7 @@ API 管理服務可以內部模式設定於虛擬網路中，因此只能從虛�
 
 [!INCLUDE [premium-dev.md](../../includes/api-management-availability-premium-dev.md)]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -293,7 +293,7 @@ $portalListener = New-AzApplicationGatewayHttpListener -Name "listener02" -Proto
 
 ```powershell
 $apimprobe = New-AzApplicationGatewayProbeConfig -Name "apimproxyprobe" -Protocol "Https" -HostName $gatewayHostname -Path "/status-0123456789abcdef" -Interval 30 -Timeout 120 -UnhealthyThreshold 8
-$apimPortalProbe = New-AzApplicationGatewayProbeConfig -Name "apimportalprobe" -Protocol "Https" -HostName $portalHostname -Path "/signin" -Interval 60 -Timeout 300 -UnhealthyThreshold 8
+$apimPortalProbe = New-AzApplicationGatewayProbeConfig -Name "apimportalprobe" -Protocol "Https" -HostName $portalHostname -Path "/internal-status-0123456789abcdef" -Interval 60 -Timeout 300 -UnhealthyThreshold 8
 ```
 
 ### <a name="step-7"></a>步驟 7

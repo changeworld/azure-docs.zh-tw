@@ -8,17 +8,17 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 3/13/2020
 ms.author: raynew
-ms.openlocfilehash: 08796b0a9b232c7b42b3f62fea69ab49b8957c60
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 57435e703395928c4619b7c9c6bf8614269f58a0
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91322082"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825425"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Azure 至 Azure 災害復原架構
 
 
-本文說明您在使用 [Azure Site Recovery](site-recovery-overview.md) 服務部署 Azure 虛擬機器 (VM) 的災害復原時所使用的架構、元件和程序。 設定災害復原後，Azure VM 即可在不同的區域之間持續複寫。 如果發生中斷狀況，您可以將 VM 容錯移轉至次要區域，並從該處加以存取。 當一切都恢復正常運作後，您即可進行容錯回復，並繼續在主要位置工作。
+本文說明您在使用 [Azure Site Recovery](site-recovery-overview.md) 服務部署 Azure 虛擬機器 (VM) 的災害復原時所使用的架構、元件和程序。 設定嚴重損壞修復之後，Azure Vm 會持續複寫至不同的目的地區域。 如果發生中斷狀況，您可以將 VM 容錯移轉至次要區域，並從該處加以存取。 當一切都恢復正常運作後，您即可進行容錯回復，並繼續在主要位置工作。
 
 
 
@@ -26,7 +26,7 @@ ms.locfileid: "91322082"
 
 下表摘要說明 Azure VM 的災害復原所使用的元件。
 
-**元件** | **需求**
+**元件** | **Requirements**
 --- | ---
 **來源區域中的 VM** | [支援的來源區域](azure-to-azure-support-matrix.md#region-support)中的一或多個 Azure VM。<br/><br/> VM 可執行任何[支援的作業系統](azure-to-azure-support-matrix.md#replicated-machine-operating-systems)。
 **來源 VM 儲存體** | Azure VM 可以是受控的，或具有分散於不同儲存體帳戶間的非受控磁碟。<br/><br/>[深入了解](azure-to-azure-support-matrix.md#replicated-machines---storage)支援的 Azure 儲存體。
@@ -96,13 +96,13 @@ Site Recovery 會依照下列方式建立快照集：
 
 ### <a name="crash-consistent"></a>絕對一致
 
-**說明** | **詳細資料** | **建議**
+**描述** | **詳細資料** | **建議**
 --- | --- | ---
 絕對一致的快照集會擷取在快照建立時位於磁碟上的資料。 其中不含記憶體中的任何資料。<br/><br/> 其中所含的資料，相當於設若在建立快照集時發生 VM 當機的狀況，或從伺服器上拔開電源線，所將存在於磁碟上的資料。<br/><br/> 「絕對一致」並不保證資料在作業系統上或 VM 的應用程式間可保有一致性。 | Site Recovery 依預設會每五分鐘建立一次絕對一致復原點。 此設定無法修改。<br/><br/>  | 現在，大部分的應用程式都可以從絕對一致復原點妥善復原。<br/><br/> 對作業系統的複寫，以及 DHCP 伺服器和列印伺服器之類的應用程式而言，使用絕對一致復原點通常就已足夠。
 
 ### <a name="app-consistent"></a>應用程式一致
 
-**說明** | **詳細資料** | **建議**
+**描述** | **詳細資料** | **建議**
 --- | --- | ---
 應用程式一致復原點可從應用程式一致快照集建立。<br/><br/> 應用程式一致的快照集包含絕對一致快照集中的所有資訊，以及記憶體和進行中的交易所包含的所有資料。 | 應用程式一致快照集會使用磁碟區陰影複製服務 (VSS)：<br/><br/>   1) Azure Site Recovery 使用「僅複本備份」 (VSS_BT_COPY) 不會變更 Microsoft SQL 交易記錄備份時間和序號的方法 </br></br> 2) 起始快照集時，VSS 會在磁片區上執行寫入時複製 (牛) 作業。<br/><br/>   3) 執行牛之前，VSS 會通知電腦上的每個應用程式，它需要將其記憶體常駐資料排清到磁片。<br/><br/>   4) VSS 接著會在此情況下允許備份/嚴重損壞修復應用程式 (Site Recovery) 讀取快照集資料並繼續進行。 | 應用程式一致快照集會依據您指定的頻率建立。 此頻率一律應小於您的保留復原點設定。 例如，如果您使用預設設定 24 小時來保留復原點，您所設定的頻率就應該小於 24 小時。<br/><br/>此類快照集比絕對一致快照集更複雜，且需要較長的時間才能完成。<br/><br/> 在 VM 上執行且已啟用複寫的應用程式，效能將會受其影響。 
 
@@ -193,6 +193,6 @@ Site Recovery 會依照下列方式建立快照集：
 
 ![此圖顯示來源和目標環境的容錯移轉程式。](./media/concepts-azure-to-azure-architecture/failover-v2.png)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 將 Azure VM [快速複寫](azure-to-azure-quickstart.md)到次要地區。

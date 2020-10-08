@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.reviewer: sngun
-ms.openlocfilehash: b96902603deca4b7a184659e6274d65f02ac712d
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: 4e2cb2b93010478338cd40236403da4ca0ca99fc
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91613521"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825271"
 ---
 # <a name="latency-availability-and-performance-tradeoffs-with-different-azure-cosmos-db-consistency-levels"></a>不同 Azure Cosmos DB 一致性層級的延遲、可用性和效能權衡取捨
 
@@ -80,10 +80,10 @@ Azure Cosmos DB 會針對資料一致性提供選項頻譜。 這個方法所包
 
 使用多個寫入區域設定的 Cosmos 帳戶無法設定為強式一致性，因為分散式系統無法提供零的 RPO 和 RTO 為零。 此外，對多個寫入區域使用強式一致性沒有任何寫入延遲的優點，因為對任何區域的寫入要求都必須複寫並認可到帳戶內所有設定的區域。 這會產生與單一寫入區域帳戶相同的寫入延遲。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
-深入了解分散式系統中的全域散發和一般一致性權衡取捨。 查看下列文章：
+深入了解分散式系統中的全域散發和一般一致性權衡取捨。 請參閱下列文章：
 
 - [新式分散式資料庫系統設計的一致性取捨](https://www.computer.org/csdl/magazine/co/2012/02/mco2012020037/13rRUxjyX7k)
 - [高可用性](high-availability.md)
-- [Azure Cosmos DB SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/)
+- [Azure Cosmos DB SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_3/)

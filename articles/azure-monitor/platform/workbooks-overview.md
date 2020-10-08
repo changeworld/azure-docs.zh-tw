@@ -8,16 +8,16 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.author: mbullwin
-ms.openlocfilehash: d6ac552640b4a557c51b674624e6a4493241e0ed
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: e8ce4feaec6571adfb15f5928a6eb7c910173353
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90977557"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825780"
 ---
 # <a name="azure-monitor-workbooks"></a>Azure 監視器活頁簿
 
-活頁簿會提供彈性的畫布來分析資料，並在 Azure 入口網站中建立豐富的視覺效果報表。 它們可讓您從 Azure 跨多個資料來源，並將它們結合成整合的互動式體驗。 
+活頁簿提供彈性的畫布，可供您用來分析資料，並在 Azure 入口網站中建立豐富的視覺效果報表。 它們可讓您從 Azure 跨多個資料來源，並將它們結合成整合的互動式體驗。 
 
 以下是建立活頁簿的影片逐步解說。
 
@@ -25,16 +25,16 @@ ms.locfileid: "90977557"
 
 ## <a name="data-sources"></a>資料來源
 
-活頁簿可以查詢 Azure 內多個來源的資料。 活頁簿的作者可以轉換這項資料，以提供基礎元件的可用性、效能、使用方式和整體健全狀況的見解。 例如，分析虛擬機器的效能記錄以識別高 CPU 或記憶體不足的實例，並在互動式報表中將結果顯示為方格。
+活頁簿可以查詢 Azure 內多個來源的資料。 活頁簿的作者可以轉換此資料，以深入了解底層元件的可用性、效能、使用狀況與整體健康情況。 例如，分析虛擬機器的效能記錄以識別高 CPU 或記憶體不足的實例，並在互動式報表中將結果顯示為方格。
   
-但是活頁簿的真正威力是能夠在單一報表內合併不同來源的資料。 這可讓您建立複合資源檢視或跨資源的聯結，以提供更豐富的資料和深入解析，否則可能會造成無法實現。
+但活頁簿的實際威力是能夠在單一報表內結合來自不同來源的資料。 這可讓您建立複合資源檢視或跨資源的聯結，以提供更豐富的資料和深入解析，否則可能會造成無法實現。
 
 活頁簿目前與下列資料來源相容：
 
 * [記錄](workbooks-data-sources.md#logs)
 * [計量](workbooks-data-sources.md#metrics)
 * [Azure Resource Graph](workbooks-data-sources.md#azure-resource-graph)
-* [警示 (預覽)](workbooks-data-sources.md#alerts-preview)
+* [警示 (預覽) ](workbooks-data-sources.md#alerts-preview)
 * [工作負載健全狀況](workbooks-data-sources.md#workload-health)
 * [Azure 資源健康狀態](workbooks-data-sources.md#azure-resource-health)
 * [Azure 資料總管](workbooks-data-sources.md#azure-data-explorer)

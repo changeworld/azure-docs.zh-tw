@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 06/12/2018
 ms.author: jeedes
-ms.openlocfilehash: dd5a200d1c17f0417b2ee88f7f905ee6de3cfe62
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: efcf634c9f34fd2b479140af800bb650f66bd821
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555384"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826752"
 ---
 # <a name="integrate-azure-active-directory-with-e-sales-manager-remix"></a>整合 Azure Active Directory 與 E Sales Manager Remix
 
@@ -30,7 +30,7 @@ ms.locfileid: "88555384"
 
 若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要設定 Azure AD 與 E Sales Manager Remix 整合，您需要下列項目：
 
@@ -56,11 +56,11 @@ ms.locfileid: "88555384"
 ## <a name="add-e-sales-manager-remix-from-the-gallery"></a>從資源庫新增 E Sales Manager Remix
 若要設定 Azure AD 與 E Sales Manager Remix 的整合，請從資源庫將 E Sales Manager Remix 新增到受控 SaaS 應用程式清單中，做法如下：
 
-1. 在 [ [Azure 入口網站](https://portal.azure.com)] 的左窗格中，選取 [ **Azure Active Directory**]。 
+1. 在 [Azure 入口網站](https://portal.azure.com)的左側窗格中，選取 [Azure Active Directory]  。 
 
     ![Azure Active Directory 按鈕][1]
 
-1. 選取**企業應用**程式  >  的**所有應用程式**。
+1. 選取 [企業應用程式]   > [所有應用程式]  。
 
     ![企業應用程式視窗][2]
     
@@ -121,7 +121,7 @@ ms.locfileid: "88555384"
 
 1. 在 [E Sales Manager Remix 設定]**** 下，選取 [設定 E Sales Manager Remix]****。
 
-    ![E Sales Manager Remix 設定](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_configure.png) 
+    ![螢幕擷取畫面，顯示已選取 [設定 E Sales Manager Remix] 的 [E Sales Manager Remix Configuration] 區段。](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_configure.png) 
 
     [設定登入]**** 視窗隨即開啟。
 
@@ -199,7 +199,7 @@ ms.locfileid: "88555384"
 
     c. 選取 [ **顯示密碼** ] 核取方塊，然後記下 [ **密碼** ] 方塊中顯示的值。
 
-    d. 選取 [建立]。
+    d. 選取 [建立]  。
  
 ### <a name="create-an-e-sales-manager-remix-test-user"></a>建立 E Sales Manager Remix 測試使用者
 

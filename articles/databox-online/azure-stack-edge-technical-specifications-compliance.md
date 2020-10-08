@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 03/02/2020
 ms.author: alkohli
-ms.openlocfilehash: 91aa386311452ae08ead2b8eac9005b2c730f3f3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: c177de3a862370f4d1daa19c6560950b66b18352
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90883433"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826836"
 ---
 # <a name="azure-stack-edge-pro-technical-specifications"></a>Azure Stack Edge Pro 技術規格
 
@@ -25,8 +25,8 @@ Azure Stack Edge Pro 裝置具有下列計算和記憶體的規格：
 
 | 規格           | 值                  |
 |-------------------------|----------------------------|
-| CPU    | 2 X 10 核心 CPU                     |
-| 記憶體              | 128 GB RAM                  |
+| CPU    | 2 X 10 核心 CPU Intel 第4級的銀級 4114 2.2 G                    |
+| 記憶體              | 128 GB RAM (8x 16 gb RDIMM)                  |
 
 ## <a name="fpga-specifications"></a>FPGA 規格
 
@@ -63,6 +63,15 @@ The following table lists the typical power consumption data (actual values may 
 | 規格           | 描述                 |
 |-------------------------|----------------------------|
 |  網路介面    | 2 個 1 GbE 介面 - 1 個為管理用途 (使用者無法設定)，用於初始設定。 其他介面則可由使用者設定、可用於傳輸資料，且預設為 DHCP。 <br>2 個 25 GbE 介面 - 這些也能以 10 GbE 介面的形式運作。 這些資料介面可由使用者設定為 DHCP (預設) 或靜態。 <br> 2 個 25 GbE 介面 - 這些資料介面可由使用者設定為 DHCP (預設) 或靜態。                  |
+
+使用的網路介面卡如下： 
+
+| 規格           | 描述                 |
+|-------------------------|----------------------------|
+|網路子卡 (rNDC)  |QLogic FastLinQ 41264 雙埠 25GbE SFP +、雙重埠1GbE、rNDC|
+|PCI 網路介面卡 |QLogic FastLinQ 41262 兩端口 25Gbit/s SFP28 介面卡|
+
+請參閱 Intel QLogic 的硬體相容性清單，以取得相容的 Gigabit 介面轉換器 (GBIC) 。 傳遞 Azure Stack Edge 時，不會包含 Gigabit 介面轉換器 (GBIC) 。 
 
 ## <a name="storage-specifications"></a>儲存體規格
 

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 06/26/2020
 ms.author: cynthn
 ms.reviewer: jagaveer
-ms.openlocfilehash: 8bcf90368e8d43dce2d10fa3744024bcbc7e4b52
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 44d23710db169fa27aaba8928d421918bef93fec
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816536"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825139"
 ---
 # <a name="deploy-spot-vms-using-azure-powershell"></a>使用 Azure PowerShell 部署現成的 Vm
 
@@ -73,8 +73,25 @@ Get-AzVM -ResourceGroupName $resourceGroup | `
    Select-Object Name,@{Name="maxPrice"; Expression={$_.BillingProfile.MaxPrice}}
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="simulate-an-eviction"></a>模擬收回
 
-您也可以使用 [Azure CLI](../linux/spot-cli.md)、 [入口網站](spot-portal.md) 或 [範本](../linux/spot-template.md)來建立點 VM。
+您可以 [模擬](/rest/api/compute/virtualmachines/simulateeviction) 點 VM 的收回，以測試您的應用程式將 repond 到突然收回的程度。 
+
+以您的資訊取代下列內容： 
+
+- `subscriptionId`
+- `resourceGroupName`
+- `vmName`
+
+
+```http
+POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/simulateEviction?api-version=2020-06-01
+```
+
+## <a name="next-steps"></a>下一步
+
+您也可以使用 [Azure CLI](../linux/spot-cli.md)、 [入口網站](../spot-portal.md) 或 [範本](../linux/spot-template.md)來建立點 VM。
+
+使用 [Azure 零售價格 API](/rest/api/cost-management/retail-prices/azure-retail-prices) 查詢目前的定價資訊，以取得有關找出定價的資訊。 `meterName`和 `skuName` 都會包含 `Spot` 。
 
 如果您遇到錯誤，請參閱 [錯誤碼](../error-codes-spot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。

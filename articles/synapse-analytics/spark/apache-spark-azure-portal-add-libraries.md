@@ -9,12 +9,12 @@ ms.date: 07/22/2020
 ms.author: euang
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: ad3231652056244fdfc814251e6caad025db77e5
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: 02f627c9f606ced7e1b0d991e5053dab17050292
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91649893"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826735"
 ---
 # <a name="manage-libraries-for-apache-spark-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中管理 Apache Spark 的程式庫
 
@@ -125,11 +125,11 @@ for i in pip.get_installed_distributions(local_only=True):
 檔案應上傳至儲存體帳戶的預設容器中的下列路徑： 
 
 ```
-abfss://<file_system>@<account_name>.dfs.core.windows.net/synapse/workspaces/<workspace_name>sparkpools/<pool_name>libraries/python/
+abfss://<file_system>@<account_name>.dfs.core.windows.net/synapse/workspaces/<workspace_name>/sparkpools/<pool_name>/libraries/python/
 ```
 
 >[!IMPORTANT]
 >可以在會話之間新增或修改自訂套件。 不過，您必須等候集區和會話重新開機，以查看更新的套件。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 - 查看預設程式庫： [Apache Spark 版本支援](apache-spark-version-support.md)

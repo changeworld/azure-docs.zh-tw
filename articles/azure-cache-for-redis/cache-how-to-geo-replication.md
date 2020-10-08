@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: yegu
-ms.openlocfilehash: e4739c0c550988e1639e89a647815e5dd86b17b7
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.openlocfilehash: 6203c230f7ca27b1d4b48e9f56a7f46cd5a5ce78
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91461337"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825325"
 ---
 # <a name="how-to-set-up-geo-replication-for-azure-cache-for-redis"></a>如何設定 Azure Cache for Redis 的異地複寫
 
@@ -111,6 +111,7 @@ ms.locfileid: "91461337"
 - [當我嘗試刪除連結快取時，作業失敗的原因？](#why-did-the-operation-fail-when-i-tried-to-delete-my-linked-cache)
 - [要將次要連結快取用於哪個區域？](#what-region-should-i-use-for-my-secondary-linked-cache)
 - [容錯移轉至次要連結快取如何運作？](#how-does-failing-over-to-the-secondary-linked-cache-work)
+- [我可以使用異地複寫來設定防火牆嗎？](#can-i-configure-a-firewall-with-geo-replication)
 
 ### <a name="can-i-use-geo-replication-with-a-standard-or-basic-tier-cache"></a>我可以搭配標準或基本層快取使用異地複寫嗎？
 
@@ -185,7 +186,12 @@ ms.locfileid: "91461337"
 
 若要啟動客戶起始的容錯移轉，請先取消連結快取。 然後，將您的 Redis 用戶端變更為使用先前連結) 次要快取 (的連接端點。 當兩個快取都未連結時，次要快取會再次變成一般讀寫快取，並直接接受來自 Redis 用戶端的要求。
 
-## <a name="next-steps"></a>後續步驟
+### <a name="can-i-configure-a-firewall-with-geo-replication"></a>我可以使用異地複寫來設定防火牆嗎？
+
+是，您可以使用異地複寫來設定 [防火牆](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-configure#firewall) 。 若要讓異地複寫與防火牆一起運作，請確定已將次要快取的 IP 位址新增至主要快取的防火牆規則。
+
+## <a name="next-steps"></a>下一步
+
 深入瞭解 Azure Cache for Redis 功能。
 
 * [Azure Cache for Redis 服務層級](cache-overview.md#service-tiers)

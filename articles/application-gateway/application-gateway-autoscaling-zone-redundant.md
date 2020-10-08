@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/06/2020
 ms.author: victorh
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: cbd15819fc03eb80b3647f6ffede93f851e295d4
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 8c989e426faa77025a84515fe0a19424cb6bfa89
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89649747"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826628"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>自動調整規模和區域備援應用程式閘道 v2 
 
@@ -21,7 +21,7 @@ ms.locfileid: "89649747"
 
 新的 v2 SKU 包含下列增強功能：
 
-- **自動調整**：自動調整 SKU 下的「應用程式閘道」或 WAF 部署可以根據變動的流量負載模式來擴大或縮減。 自動調整規模也可讓您在佈建時，無須選擇部署大小或執行個體計數。 此 SKU 可提供真正的靈活彈性。 在 Standard_v2 和 WAF_v2 SKU 中，「應用程式閘道」可在固定容量 (停用自動調整) 模式下運作，也可在啟用自動調整模式下運作。 固定容量模式適用於工作負載一致且可預測的案例。 自動調整模式則有利於在應用程式流量中可看到變異的應用程式。
+- 自動**調整：自動**調整 SKU 下的應用程式閘道或 WAF 部署可以根據變動的流量負載模式來相應放大或縮小。 自動調整規模也可讓您在佈建時，無須選擇部署大小或執行個體計數。 此 SKU 可提供真正的靈活彈性。 在 Standard_v2 和 WAF_v2 SKU 中，「應用程式閘道」可在固定容量 (停用自動調整) 模式下運作，也可在啟用自動調整模式下運作。 固定容量模式適用於工作負載一致且可預測的案例。 自動調整模式則有利於在應用程式流量中可看到變異的應用程式。
 - **區域備援**：「應用程式閘道」或 WAF 部署可跨多個「可用性區域」，因此無須使用流量管理員在每個區域中佈建個別的「應用程式閘道」執行個體。 您可選擇已部署「應用程式閘道」執行個體的單一或多個區域，以便更能在區域失敗後復原。 應用程式的後端集區可以均等分散在可用性區域間。
 
   區域備援僅適用於可使用 Azure 區域的位置。 在其他區域中，則支援所有其他功能。 如需詳細資訊，請參閱 [Azure 中的區域和可用性區域](../availability-zones/az-overview.md)
@@ -68,7 +68,7 @@ Azure 應用程式閘道一律會以高可用性的方式部署。 此服務是�
 
 下表將比較各個 SKU 的可用功能。
 
-| 功能                                           | v1 SKU   | v2 SKU   |
+| 特徵                                           | v1 SKU   | v2 SKU   |
 | ------------------------------------------------- | -------- | -------- |
 | 自動調整                                       |          | &#x2713; |
 | 區域備援                                   |          | &#x2713; |

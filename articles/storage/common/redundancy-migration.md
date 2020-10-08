@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 51f8d1eaa76a30e39647830b54c30cb8f7e8bb8e
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: c305292e915e02a1b53eb140ccd052990efbd315
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91613963"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91827316"
 ---
 # <a name="change-how-a-storage-account-is-replicated"></a>變更儲存體帳戶的複寫方式
 
@@ -123,8 +123,11 @@ ZRS 僅支援一般用途 v2 帳戶，因此請務必先升級您的儲存體帳
 
 您可以透過 [Azure 支援入口網站](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)要求即時移轉。 從入口網站中，選取您想要轉換成 ZRS 的儲存體帳戶。
 
-1. 選取 **新的支援要求**
-2. 根據您的帳戶資訊，完成 [基本]**** 資訊。 在 [服務]**** 區段中，選取 [儲存體帳戶管理]**** 和您想要轉換成 ZRS 的資源。
+1. 選取 [ **新增支援要求**]。
+2. 根據您的帳戶資訊完成 **基本概念** ： 
+    - **問題類型**：選取 [ **技術**]。
+    - **服務**：選取 [ **我的服務** 和 **儲存體帳戶管理**]。
+    - **資源**：選取您想要轉換成 ZRS 的資源。
 3. 選取 [下一步] 。
 4. 在 [問題]**** 區段中，指定下列值︰
     - **嚴重性**：將預設值保持不變。
@@ -134,7 +137,7 @@ ZRS 僅支援一般用途 v2 帳戶，因此請務必先升級您的儲存體帳
     - **詳細資料**：在 [**詳細資料**] 方塊中輸入其他詳細資料，例如，我想要從區域中的 [LRS，GRS] 遷移至 ZRS \_ \_ 。
 5. 選取 [下一步] 。
 6. 確認 [連絡人資訊]**** 刀鋒視窗上的連絡人資訊正確。
-7. 選取 [建立]。
+7. 選取 [建立]  。
 
 支援人員將會與您連絡，並提供您所需的一切協助。
 

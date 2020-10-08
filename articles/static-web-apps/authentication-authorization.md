@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 4c72a80b164e8ca1dd649503dcb968efd92be797
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e95cd313d341844eabf4f5c5feae8a8ca3dc9c2e
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85297064"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826537"
 ---
 # <a name="authentication-and-authorization-for-azure-static-web-apps-preview"></a>Azure 靜態 Web Apps 預覽版的驗證和授權
 
@@ -107,7 +107,7 @@ Azure 靜態 Web Apps 透過下列提供者來管理驗證，從而簡化驗證�
 
 當您以使用者身分對應用程式授與同意時，應用程式可存取您的電子郵件地址或使用者名稱，端視識別提供者而定。 提供這項資訊之後，應用程式的擁有者會決定如何管理個人識別資訊。
 
-使用者必須聯絡個別 Web Apps 的管理員，才能從其系統中撤銷這項資訊。
+終端使用者必須聯絡個別 web 應用程式的系統管理員，才能從他們的系統撤銷此資訊。
 
 若要從 Azure 靜態 Web Apps 平台移除個人識別資訊，並避免平台在未來的要求中提供此資訊，請使用 URL 提交要求：
 
@@ -195,7 +195,7 @@ Azure 靜態 Web Apps 會使用 `/.auth` 系統資料夾來提供授權相關 AP
 
 ## <a name="restrictions"></a>限制
 
-如需一般限制和限制，請參閱[配額一文](quotas.md)。
+如需一般限制和限制，請參閱 [配額文章](quotas.md) 。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -1,7 +1,7 @@
 ---
-title: 瞭解 MSAL |Azure
+title: 深入瞭解 MSAL |蔚藍
 titleSuffix: Microsoft identity platform
-description: Microsoft 驗證程式庫（MSAL）可讓應用程式開發人員取得權杖，以便呼叫受保護的 web Api。 這些 web Api 可以是 Microsoft Graph、其他 Microsoft Api、協力廠商 web Api 或您自己的 Web API。 MSAL 支援多種應用程式架構和平台。
+description: Microsoft 驗證程式庫 (MSAL) 可讓應用程式開發人員取得權杖，以便呼叫受保護的 web Api。 這些 web Api 可以是 Microsoft Graph、其他 Microsoft Api、協力廠商 web Api 或您自己的 web API。 MSAL 支援多種應用程式架構和平台。
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -13,15 +13,15 @@ ms.date: 10/30/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 7aa7dea65df507c0bb35a30bf2a68049a7625137
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0c4da177644a1cdb648c00e8309c18031a905d7f
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82181778"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825955"
 ---
 # <a name="overview-of-microsoft-authentication-library-msal"></a>Microsoft 驗證程式庫 (MSAL) 概觀
-Microsoft 驗證程式庫（MSAL）可讓開發人員從 Microsoft 身分識別平臺端點取得[權杖](developer-glossary.md#security-token)，以便存取受保護的 web api。 這些 web Api 可以是 Microsoft Graph、其他 Microsoft Api、協力廠商 web Api 或您自己的 Web API。 MSAL 適用於 .NET、JavaScript、Android 和 iOS，可支援多種不同的應用程式架構和平台。
+Microsoft 驗證程式庫 (MSAL) 可讓開發人員從 Microsoft 身分識別平臺端點取得 [權杖](developer-glossary.md#security-token) ，以便存取安全的 web api。 這些 web Api 可以是 Microsoft Graph、其他 Microsoft Api、協力廠商 web Api 或您自己的 web API。 MSAL 適用于 .NET、JavaScript、JAVA、Python、Android 和 iOS，其支援許多不同的應用程式架構和平臺。
 
 MSAL 可讓您透過多種平台通用的 API，以不同的方式取得權杖。 使用 MSAL 有下列優點：
 
@@ -37,13 +37,13 @@ MSAL 可讓您透過多種平台通用的 API，以不同的方式取得權杖�
 
 MSAL 可用於許多應用程式案例，包括：
 
-* [單一頁面應用程式（JavaScript）](scenario-spa-overview.md)
+* [ (JavaScript) 的單一頁面應用程式 ](scenario-spa-overview.md)
 * [登入使用者的 Web 應用程式](scenario-web-app-sign-user-overview.md)
 * [登入使用者並代表使用者呼叫 Web API 的 Web 應用程式](scenario-web-app-call-api-overview.md)
 * [保護 Web API，使其僅可供已驗證的使用者存取](scenario-protected-web-api-overview.md)
 * [代表登入的使用者呼叫另一個下游 Web API 的 Web API](scenario-web-api-call-api-overview.md)
-* [代表已登入的使用者呼叫 Web API 的桌面應用程式](scenario-desktop-overview.md)
-* 行動[應用程式代表以互動方式登入的使用者呼叫 Web API](scenario-mobile-overview.md)。
+* [代表已登入使用者呼叫 web API 的桌面應用程式](scenario-desktop-overview.md)
+* [代表以互動方式登入之使用者呼叫 WEB API 的行動應用程式](scenario-mobile-overview.md)。
 * [代表本身呼叫 Web API 的桌面/服務精靈應用程式](scenario-daemon-overview.md)
 
 ## <a name="languages-and-frameworks"></a>語言和架構

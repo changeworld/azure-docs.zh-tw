@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: how-to
 ms.date: 09/21/2020
-ms.openlocfilehash: 706748018c9f32ab2300b290c6929d344b82e0b0
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: 95be6aa576d9d059ce419443f8c7e32af5ff397a
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91653089"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826209"
 ---
 # <a name="stopstart-an-azure-database-for-mysql"></a>停止/啟動適用於 MySQL 的 Azure 資料庫
 
@@ -20,7 +20,7 @@ ms.locfileid: "91653089"
 
 本文提供逐步執行程式，以執行單一伺服器的停止和啟動。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要完成本操作說明指南，您需要：
 
@@ -79,5 +79,5 @@ ms.locfileid: "91653089"
     > [!NOTE]
     > 一旦啟動伺服器，所有的管理作業現在都可供單一伺服器使用。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 瞭解 [如何建立計量警示](howto-alert-on-metric.md)。

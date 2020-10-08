@@ -3,12 +3,12 @@ title: 使用 PowerShell 進行 Azure Service Fabric 部署
 description: 瞭解如何在 Azure Service Fabric 中移除及部署應用程式，以及如何在 Powershell 中執行這些動作。
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: 3a6f5411c30087e15d1164cd02d4e6eb66566388
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: 8bc4557c5d0d59330c7e91a4b3fdce83cfbf334c
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91611447"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91827434"
 ---
 # <a name="deploy-and-remove-applications-using-powershell"></a>使用 PowerShell 部署與移除應用程式
 
@@ -100,7 +100,7 @@ C:\USERS\USER\DOCUMENTS\VISUAL STUDIO 2015\PROJECTS\MYAPPLICATION\MYAPPLICATION\
 ```
 
 如果應用程式封裝是大型且/或有許多檔案，您可以[壓縮](service-fabric-package-apps.md#compress-a-package)。 壓縮會減少檔案大小和數目。
-副作用是註冊和取消註冊應用程式類型會比較快。 目前上傳時間可能會變慢，特別是當您包含壓縮封裝的時間。 
+這樣就能更快地註冊和取消註冊應用程式類型。 目前上傳時間可能會變慢，特別是當您包含壓縮封裝的時間。 
 
 若要壓縮封裝，請使用相同的 [Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) 命令。 壓縮可與上傳分開進行，方法為使用 `SkipCopy` 旗標，或是與上傳作業共同進行。 在壓縮封裝上套用壓縮為無作業。
 若要將已壓縮的封裝解壓縮，請使用相同的 [Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) 命令搭配 `UncompressPackage` 參數。
@@ -223,7 +223,7 @@ Remove-ServiceFabricApplicationPackage -ApplicationPackagePathInImageStore MyApp
 
 ## <a name="create-the-application"></a>建立應用程式
 
-您可以使用 [New-ServiceFabricApplication](/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps) Cmdlet，從任何已成功註冊的應用程式類型版本，將應用程式具現化。 每個應用程式名稱的開頭必須為 "fabric:"** 配置，而且必須是每個應用程式執行個體的唯一名稱。 如果已在目標應用程式類型的應用程式資訊清單中定義預設服務，也會一併建立這些服務。
+您可以使用 [>get-servicefabricapplication](/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps) 指令程式，從任何已成功註冊的應用程式類型版本中具現化應用程式。 每個應用程式的名稱都必須以 *"fabric："* 配置作為開頭，而且每個應用程式實例都必須是唯一的。 如果已在目標應用程式類型的應用程式資訊清單中定義預設服務，也會一併建立這些服務。
 
 ```powershell
 New-ServiceFabricApplication fabric:/MyApp MyApplicationType 1.0.0
@@ -390,7 +390,7 @@ Status                 : Available
 DefaultParameters      : { "Stateless1_InstanceCount" = "-1" }
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 [封裝應用程式](service-fabric-package-apps.md)
 

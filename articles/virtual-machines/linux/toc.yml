@@ -212,7 +212,7 @@
               href: ../dv4-dsv4-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: 計算最佳化
           items:
-            - name: 概觀
+            - name: 總覽
               href: ../sizes-compute.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: Fsv2 系列
               href: ../fsv2-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
@@ -247,7 +247,7 @@
               href: storage-performance.md
         - name: GPU - 加速計算
           items:
-            - name: 概觀
+            - name: 總覽
               href: ../sizes-gpu.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: NC 系列
               href: ../nc-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
@@ -293,7 +293,7 @@
             - name: VM 執行個體大小彈性
               href: ../reserved-vm-instance-size-flexibility.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Spot VM
-          displayName: 'pre-empt, preempt'
+          displayName: 'pre-empt, preempt, spot'
           href: ../spot-vms.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: 沒有暫存磁碟的 Azure VM
           href: ../azure-vms-no-temp-disk.md
@@ -400,7 +400,7 @@
             - name: CLI
               href: spot-cli.md
             - name: 入口網站
-              href: ../windows/spot-portal.md?toc=/azure/virtual-machines/linux/toc.json
+              href: ../spot-portal.md?toc=/azure/virtual-machines/linux/toc.json
             - name: ARM 範本
               displayName: Azure Resource Manager
               href: spot-template.md
@@ -724,7 +724,7 @@
       items:
         - name: 維修通知
           items:
-            - name: 概觀
+            - name: 總覽
               href: ../maintenance-notifications.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: CLI
               href: ../maintenance-notifications-cli.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json

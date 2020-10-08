@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 04/28/2020
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: a7edbbb50777cc2d91332260c9ebe72be042874b
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 7ae7e20c32836d595d6e0fb4162a895407beeb5d
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91396241"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91828035"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL Database 和 Azure Synapse Analytics 的審核
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -106,6 +106,7 @@ Azure SQL Database 和 Azure Synapse Audit 會針對審核記錄中的字元欄�
 #### <a name="remarks"></a>備註
 
 - 在 Azure 訂用帳戶的 Azure Blob 儲存體中，會寫入審核記錄以**附加 blob**
+- Audit 記錄檔是 xel 格式，而且可以使用 [SQL Server Management Studio (SSMS) ](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)來開啟。
 - 若要為伺服器或資料庫層級的 audit 事件設定不可變的記錄存放區，請遵循 [Azure 儲存體所提供的指示](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage#enabling-allow-protected-append-blobs-writes)。 當您設定不可變的 blob 儲存體時，請確定您已選取 [ **允許其他附加** ]。
 - 您可以將 audit 記錄寫入至 VNet 或防火牆後方的 Azure 儲存體帳戶。 如需特定指示，請參閱將 [Audit 寫入至 VNet 和防火牆後方的儲存體帳戶](audit-write-storage-account-behind-vnet-firewall.md)。
 - 設定您的稽核設定之後，您可以開啟新的威脅偵測功能，並設定電子郵件以接收安全性警示。 使用威脅偵測時，您會接收與指示潛在安全性威脅的異常資料庫活動相關的主動式警示。 如需詳細資訊，請參閱[開始使用威脅偵測](threat-detection-overview.md)。

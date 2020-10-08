@@ -1,14 +1,14 @@
 ---
-title: Azure 服務匯流排訊息流覽
+title: Azure 服務匯流排-訊息流覽
 description: 流覽和查看服務匯流排訊息可讓 Azure 服務匯流排用戶端列舉位於佇列或訂用帳戶中的所有訊息。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 0f2d4ed1225aef4c28a5f3d841669c2e3122ba10
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6e50fc737f6c81c07854ff07d8cc64061306749b
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341237"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91827446"
 ---
 # <a name="message-browsing"></a>訊息瀏覽
 
@@ -24,15 +24,15 @@ ms.locfileid: "85341237"
 
 ## <a name="peek-apis"></a>預覽 API
 
-[Peek/PeekAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.peekasync#Microsoft_Azure_ServiceBus_Core_MessageReceiver_PeekAsync)和[PeekBatch/PeekBatchAsync](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatchasync#Microsoft_ServiceBus_Messaging_QueueClient_PeekBatchAsync_System_Int64_System_Int32_)方法存在於所有 .net 和 JAVA 用戶端程式庫中，以及所有接收者物件上： **MessageReceiver**、 **MessageSession**。 預覽適用於所有佇列、訂用帳戶與各自的無效信件佇列。
+[查看/PeekAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.peekasync#Microsoft_Azure_ServiceBus_Core_MessageReceiver_PeekAsync)和[PeekBatch/PeekBatchAsync](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatchasync#Microsoft_ServiceBus_Messaging_QueueClient_PeekBatchAsync_System_Int64_System_Int32_)方法存在於所有 .net 和 JAVA 用戶端程式庫，以及所有的接收者物件上： **MessageReceiver**、 **>messagesession**。 預覽適用於所有佇列、訂用帳戶與各自的無效信件佇列。
 
 當重複叫用時，Peek 方法會列舉出佇列或訂用帳戶記錄中的所有訊息，並依照序號順序從最小序號排列到最大序號。 這是訊息加入佇列時的順序，而不是最終的擷取順序。
 
 [PeekBatch](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatch#Microsoft_ServiceBus_Messaging_QueueClient_PeekBatch_System_Int32_) 能擷取多個訊息並當作列舉傳回。 如果沒有訊息可用，列舉物件會是空的 (而不是 Null)。
 
-您也可以利用起始 [SequenceNumber](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.sequencenumber#Microsoft_Azure_ServiceBus_Message_SystemPropertiesCollection_SequenceNumber) 植入方法的多載，然後再呼叫無參數方法多載來進一步列舉。 **PeekBatch** 的功能相同，不過它會一次擷取一組訊息。
+您也可以使用方法的多載搭配要啟動的 [SequenceNumber](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.sequencenumber#Microsoft_Azure_ServiceBus_Message_SystemPropertiesCollection_SequenceNumber) ，然後再呼叫無參數方法多載來進一步列舉。 **PeekBatch** 的功能相同，不過它會一次擷取一組訊息。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 若要深入了解服務匯流排傳訊，請參閱下列主題：
 

@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 08/21/2020
-ms.openlocfilehash: b541af5351a0dd98e782c584d869de0d98445b74
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.date: 10/07/2020
+ms.openlocfilehash: 570481eab44c64db3ec3f513281badd124a2bbdc
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89462508"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825483"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Azure 認知搜尋中的服務限制
 
@@ -50,7 +50,7 @@ ms.locfileid: "89462508"
 
 <sup>1</sup> 2017 年 12 月之前建立的基本服務，在索引方面具有較低的限制 (5 個，而不是 15 個)。 基本層是唯一具有較低限制 (每個索引 100 個欄位) 的 SKU。
 
-<sup>2</sup> 目前，每個文件在複雜集合中具有大量元素，造成儲存體使用率非常高。 這是已知的問題。 同時，3000 的限制是所有服務階層的安全上限。 此限制只會針對使用最早正式推出 (GA) API 版本的編製索引作業 (該版本支援複雜類型欄位 (`2019-05-06`) 以上) 強制執行。 為了不中斷可能使用舊版預覽 API 版本 (支援複雜類型欄位) 的用戶端，我們將不會對使用這些預覽 API 版本的編製索引作業，強制執行這項限制。 請注意，預覽 API 版本並非用於實際執行案例，我們強烈建議客戶移至最新的 GA API 版本。
+<sup>2</sup> 元素有大量的限制，因為有大量的專案會導致儲存體使用率過高。 複雜集合的元素會定義為該集合的成員。 例如，假設 [旅館檔含有房間複雜的集合](search-howto-complex-data-types.md#indexing-complex-types)，房間集合中的每個房間都會被視為一個元素。 在編制索引期間，索引引擎可以在整個檔中安全地處理最多3000個元素。 [這項限制](search-api-migration.md#upgrade-to-2019-05-06) 是在中引進，而且 `api-version=2019-05-06` 只適用于複雜的集合，而不適用於字串集合或複雜欄位。
 
 <a name="document-limits"></a>
 

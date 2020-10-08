@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/27/2020
-ms.openlocfilehash: d850bcf2ffbd3867ab28d7dee54df3f8b427fd6e
-ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
+ms.openlocfilehash: 22f524ed4f01ad5b3be110008a82cd31c5c476c5
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91404733"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91827848"
 ---
 # <a name="source-transformation-in-mapping-data-flow"></a>對應資料流程中的來源轉換 
 
@@ -41,7 +41,7 @@ ms.locfileid: "91404733"
 
 對應資料流程會遵循 (ELT) 方法的解壓縮、載入、轉換，而且適用于所有 Azure 中的 *暫存* 資料集。 下列資料集目前可用於來源轉換：
 
-| 連接器 | 格式 | 資料集/內嵌 |
+| 連接子 | [格式] | 資料集/內嵌 |
 | --------- | ------ | -------------- |
 | [Azure Blob 儲存體](connector-azure-blob-storage.md#mapping-data-flow-properties) | [Avro](format-avro.md#mapping-data-flow-properties)<br>[分隔符號文字](format-delimited-text.md#mapping-data-flow-properties)<br>[差異 (預覽) ](format-delta.md)<br>[Excel](format-excel.md#mapping-data-flow-properties)<br>[JSON](format-json.md#mapping-data-flow-properties) <br>[ORC](format-orc.md#mapping-data-flow-properties)<br/>[Parquet](format-parquet.md#mapping-data-flow-properties)<br>[XML](format-xml.md#mapping-data-flow-properties) | ✓/-<br>✓/-<br>-/✓<br>✓/✓<br/>✓/-<br>✓/✓<br/>✓/-<br>✓/✓ |
 | [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties) | [Avro](format-avro.md#mapping-data-flow-properties)<br>[分隔符號文字](format-delimited-text.md#mapping-data-flow-properties)<br>[Excel](format-excel.md#mapping-data-flow-properties)<br>[JSON](format-json.md#mapping-data-flow-properties)<br>[ORC](format-orc.md#mapping-data-flow-properties)<br/>[Parquet](format-parquet.md#mapping-data-flow-properties)<br>[XML](format-xml.md#mapping-data-flow-properties) | ✓/-<br>✓/-<br>✓/✓<br/>✓/-<br>✓/✓<br/>✓/-<br>✓/✓ |
@@ -57,7 +57,9 @@ Azure Data Factory 可以存取超過 [90 種原生連接器](connector-overview
 
 ## <a name="source-settings"></a>來源設定
 
-新增來源之後，請透過 [ **來源設定** ] 索引標籤設定。您可以在這裡挑選或建立您的來源所指向的資料集。 您也可以選取資料的架構和取樣選項。
+新增來源之後，請透過 [ **來源設定** ] 索引標籤設定。您可以在這裡挑選或建立您的來源所指向的資料集。 您也可以選取資料的架構和取樣選項。 
+
+您可以在 [偵錯工具設定](concepts-data-flow-debug-mode.md) 中設定資料集參數的開發值 (需要在) 上開啟 Debug 模式。
 
 ![[來源設定] 索引標籤](media/data-flow/source1.png "[來源設定] 索引標籤")
 
@@ -116,6 +118,6 @@ Azure Data Factory 可以存取超過 [90 種原生連接器](connector-overview
 
 如需有關在對應資料流程內優化的詳細資訊，請參閱 [ [優化]](concepts-data-flow-overview.md#optimize)索引標籤。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 使用 [衍生的資料行轉換](data-flow-derived-column.md) 和 [select 轉換](data-flow-select.md)開始建立您的資料流程。

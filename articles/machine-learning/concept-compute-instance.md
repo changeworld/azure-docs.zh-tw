@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 88cb54a7a9e20e643d9a19f57dc83d3f1ea8004d
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: f32783b18b5454164567910aa369739d025b8be0
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91761204"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826900"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>什麼是 Azure Machine Learning 計算執行個體？
 
@@ -32,7 +32,7 @@ Azure Machine Learning 計算實例是適用于資料科學家的受控雲端架
 
 |主要權益|描述|
 |----|----|
-|生產力|您可以使用整合式筆記本以及下列 Azure Machine Learning studio 中的工具來建立和部署模型：<br/>-  Jupyter<br/>-  JupyterLab<br/>-RStudio (preview) <br/>計算實例已與 Azure Machine Learning 工作區和 studio 完全整合。 您可以與工作區中的其他資料科學家共用筆記本和資料。 您也可以使用[SSH](how-to-set-up-vs-code-remote.md)設定 VS Code 遠端開發 |
+|生產力|您可以使用整合式筆記本以及下列 Azure Machine Learning studio 中的工具來建立和部署模型：<br/>-  Jupyter<br/>-  JupyterLab<br/>-RStudio (preview) <br/>計算實例已與 Azure Machine Learning 工作區和 studio 完全整合。 您可以與工作區中的其他資料科學家共用筆記本和資料。<br/> 您也可以搭配使用 [VS Code](https://techcommunity.microsoft.com/t5/azure-ai/power-your-vs-code-notebooks-with-azml-compute-instances/ba-p/1629630) 與計算實例。
 |受控且安全|降低您的安全性磁碟使用量，並提升與企業安全性需求的合規性。 計算執行個體會提供健全的管理原則和安全的網路設定，例如：<br/><br/>-從 Resource Manager 範本或 Azure Machine Learning SDK 自動布建<br/>- [Azure 角色型存取控制 (Azure RBAC) ](/azure/role-based-access-control/overview)<br/>- [虛擬網路支援](how-to-enable-virtual-network.md#compute-instance)<br/>- 用以啟用/停用 SSH 存取的 SSH 原則<br/>已啟用 TLS 1。2 |
 |&nbsp;針對 &nbsp; ML 預先設定|使用已預先設定好的最新 ML 套件、深度學習架構、GPU 驅動程式，節省設定工作的時間。|
 |可完全自訂|廣泛支援各種 Azure VM 類型 (包括 GPU) 和持續性的低層級自訂，例如安裝套件和驅動程式可讓您輕鬆地建置進階案例。 |
@@ -47,9 +47,11 @@ Azure Machine Learning 計算實例是適用于資料科學家的受控雲端架
 
 Azure Machine Learning 計算執行個體可讓您在工作區中以完全整合的筆記本體驗來撰寫、定型和部署模型。
 
+您可以使用計算實例作為不需要 SSH 的遠端伺服器，在 [VS Code](https://techcommunity.microsoft.com/t5/azure-ai/power-your-vs-code-notebooks-with-azml-compute-instances/ba-p/1629630) 中執行 Jupyter 筆記本。 您也可以透過 [遠端 SSH 擴充](https://devblogs.microsoft.com/python/enhance-your-azure-machine-learning-experience-with-the-vs-code-extension/)功能來啟用 VS Code 整合。
+
 您可以 [安裝套件](how-to-create-manage-compute-instance.md#install-packages) ，並 [將核心新增](how-to-create-manage-compute-instance.md#add-new-kernels) 至您的計算實例。  
 
-這些工具和環境已安裝在計算實例上： 
+下列工具和環境已安裝在計算實例上： 
 
 |一般工具和環境|詳細資料|
 |----|:----:|
@@ -143,7 +145,7 @@ Python 套件全都安裝在 **Python 3.6 - AzureML** 環境中。
 ### <a name="create-on-behalf-of-preview"></a>代表 (預覽版建立) 
 
 系統管理員可以代表資料科學家建立計算實例，並使用下列專案將實例指派給它們：
-* [Azure Resource Manager 範本](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/preview/2020-09-01-preview/examples/createComputeInstance.json)。  如需有關如何尋找此範本所需之 TenantID 和 ObjectID 的詳細資訊，請參閱 [尋找驗證設定的識別物件識別碼](../healthcare-apis/find-identity-object-ids.md)。  您也可以在 Azure Active Directory 入口網站中找到這些值。
+* [Azure Resource Manager 範本](https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-compute-create-computeinstance)。  如需有關如何尋找此範本所需之 TenantID 和 ObjectID 的詳細資訊，請參閱 [尋找驗證設定的識別物件識別碼](../healthcare-apis/find-identity-object-ids.md)。  您也可以在 Azure Active Directory 入口網站中找到這些值。
 * REST API
 
 您建立計算實例所需的資料科學家需要下列 RBAC 許可權： 

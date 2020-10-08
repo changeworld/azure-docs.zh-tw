@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.topic: how-to
 ms.subservice: users-groups-roles
 ms.workload: identity
-ms.date: 09/22/2020
+ms.date: 10/07/2020
 ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d22ec2219a86b8445931350b616dd76d0a22ec5
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 133ea21bf7a7c1df0fccaeacce7d7a29199c033d
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91439804"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91827668"
 ---
 # <a name="add-and-manage-groups-in-administrative-units-in-azure-active-directory"></a>在 Azure Active Directory 中的管理單位新增和管理群組
 
@@ -101,6 +101,7 @@ Get-AzureADGroup -ObjectId $member.ObjectId
 }
 }
 ```
+
 ### <a name="microsoft-graph"></a>Microsoft Graph
 
 ```http
@@ -136,13 +137,20 @@ https://graph.microsoft.com/v1.0/groups/<group-id>/memberOf/$/Microsoft.Graph.Ad
 
 有兩種方式可從 Azure 入口網站中的管理單位移除群組。
 
-開啟 **Azure AD** > **群組**，然後開啟您要從管理單位移除之群組的設定檔。 選取左側窗格中的 [管理單位]，以列出群組為所屬成員的所有管理單位。 選取您要移除群組的管理單位，然後選取 [從管理單位移除]。
+- 從群組中移除總覽
 
-![從管理單位移除群組](./media/roles-admin-units-add-manage-groups/group-au-remove.png)
+  1. 開啟**Azure AD**  >  **群組**，然後開啟您想要從管理單位中移除之群組的設定檔。
+  1. 選取左側窗格中的 [管理單位]，以列出群組為所屬成員的所有管理單位。 選取您要移除群組的管理單位，然後選取 [從管理單位移除]。
 
-或者，您可以移至 **Azure AD** > **管理單位** 並選取群組為所屬成員的管理單位。 選取左側面板中的 [群組] 以列出成員群組。 選取要從管理單位移除的群組，然後選取 [移除群組]。
+    ![從管理單位移除群組](./media/roles-admin-units-add-manage-groups/group-au-remove.png)
 
-![列出管理單位中的群組](./media/roles-admin-units-add-manage-groups/list-groups-in-admin-units.png)
+- 從管理單位移除
+
+  1. 開啟**Azure AD**  >  **管理單位**]，然後選取群組所屬的管理單位。
+  1. 選取左側面板中的 [群組] 以列出成員群組。
+  1. 選取要從管理單位移除的群組，然後選取 [移除群組]。
+
+    ![列出管理單位中的群組](./media/roles-admin-units-add-manage-groups/list-groups-in-admin-units.png)
 
 ### <a name="powershell"></a>PowerShell
 

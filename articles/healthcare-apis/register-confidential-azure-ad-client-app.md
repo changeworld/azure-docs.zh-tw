@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: matjazl
-ms.openlocfilehash: e74271119b581b2bb291b1a9ddd74ad0781855e6
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: 8021fb3fa9f11ef895569f48a2ae21b3f7adcd36
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91629115"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826224"
 ---
 # <a name="register-a-confidential-client-application-in-azure-active-directory"></a>在 Azure Active Directory 中註冊機密用戶端應用程式
 
@@ -50,7 +50,7 @@ ms.locfileid: "91629115"
 
 1. 選取 [新增權限]。
 
-    如果您使用 Azure API for FHIR，您會在**我的組織使用的 api**下搜尋**azure 醫療保健 api** ，以新增 azure 醫療保健 api 的許可權。 
+    如果您使用 Azure API for FHIR，您會在**我的組織使用的 api**下搜尋**azure 醫療保健 api** ，以新增 azure 醫療保健 api 的許可權。 如果您已經 [部署 Azure API for FHIR](fhir-paas-powershell-quickstart.md)，就可以找到這個。
 
     如果您參考不同的資源應用程式，請選取您先前在**api**下建立的[FHIR API 資源應用程式註冊](register-resource-azure-ad-client-app.md)。
 
@@ -64,7 +64,7 @@ ms.locfileid: "91629115"
 
 ## <a name="application-secret"></a>應用程式祕密
 
-1. 選取 **憑證 & 秘密**。
+1. 選取 [憑證和秘密]。
 1. 選取 [新增用戶端密碼]。 
 
     ![機密用戶端。 應用程式秘密](media/how-to-aad/portal-aad-register-new-app-registration-CONF-CLIENT-SECRET.png)
@@ -73,11 +73,9 @@ ms.locfileid: "91629115"
 
 3. 一旦產生，就只會在入口網站中顯示一次。 請記下它並安全地儲存。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
-在本文中，您已瞭解如何在 Azure Active Directory 中註冊機密用戶端應用程式。 您現在已準備好部署 [Azure API for FHIR](fhir-paas-powershell-quickstart.md)。
-
-部署 Azure API for FHIR 之後，您就可以查看其他可用的設定。
+在本文中，您已瞭解如何在 Azure Active Directory 中註冊機密用戶端應用程式。 接下來，您可以使用 Postman 存取 FHIR 伺服器
  
 >[!div class="nextstepaction"]
->[部署 Azure API for FHIR](fhir-paas-powershell-quickstart.md)
+>[使用 Postman 存取 Azure API for FHIR](access-fhir-postman-tutorial.md)

@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: fe8cf0da6cb6542646f3107980b49fb6fef9cb45
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: bbce84ad917da71ab363b20f3aef9da79ed3f2b0
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91317628"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91827951"
 ---
 # <a name="expressroute-encryption-ipsec-over-expressroute-for-virtual-wan"></a>ExpressRoute encryption：透過 ExpressRoute 進行虛擬 WAN 的 IPsec
 
@@ -22,7 +22,7 @@ ms.locfileid: "91317628"
 
 下圖顯示透過 ExpressRoute 私用對等互連的 VPN 連線範例：
 
-![透過 ExpressRoute 的 VPN](./media/vpn-over-expressroute/vwan-vpn-over-er.png)
+:::image type="content" source="./media/vpn-over-expressroute/vwan-vpn-over-er.png" alt-text="透過 ExpressRoute 的 VPN":::
 
 此圖顯示透過 ExpressRoute 私用對等互連連線到 Azure hub VPN 閘道的內部部署網路內的網路。 連線建立很簡單：
 
@@ -76,7 +76,7 @@ ms.locfileid: "91317628"
 >
 
 1. 移至瀏覽器中的 Azure 入口網站。 
-1. 選取您所建立的 WAN。 在 [WAN] 頁面的 [連線 **能力**] 底下，選取 [ **VPN 網站**]。
+1. 選取您所建立的中樞。 在 [虛擬 WAN 中樞] 頁面的 [連線 **能力**] 底下，選取 [ **VPN 網站**]。
 1. 在 [ **VPN 網站** ] 頁面上，選取 [ **+ 建立網站**]。
 1. 在 [建立網站]**** 頁面上，填寫下列欄位：
    * **訂**用帳戶：驗證訂用帳戶。
@@ -104,12 +104,17 @@ ms.locfileid: "91317628"
 在您建立 VPN 網站並聯機到中樞之後，請使用下列步驟來設定連線以使用 ExpressRoute 私用對等互連：
 
 1. 返回至虛擬 WAN 資源頁面，然後選取中樞資源。 或從 VPN 網站流覽至連線的中樞。
-1. 在 [連線 **能力**] 底下，選取 [ **VPN (站對站) **。
-1. 選取 VPN 網站上的省略號 (**...**) ，然後選取 [ **編輯此中樞的 vpn**連線]。
-1. 針對 [ **使用 Azure 私人 IP 位址**]，選取 **[是]**。 此設定會將中樞 VPN 閘道設定為在此連線的閘道上的中樞位址範圍內使用私人 IP 位址，而不是使用公用 IP 位址。 這可確保來自內部部署網路的流量會流經 ExpressRoute 私用對等互連路徑，而不是使用公用網際網路來進行此 VPN 連接。 下列螢幕擷取畫面顯示此設定。
 
-   ![針對 VPN 連線使用私人 IP 位址的設定](./media/vpn-over-expressroute/vpn-link-configuration.png)
-   
+   :::image type="content" source="./media/vpn-over-expressroute/hub-selection.png" alt-text="透過 ExpressRoute 的 VPN":::
+1. 在 [連線 **能力**] 底下，選取 [ **VPN (站對站) **。
+
+   :::image type="content" source="./media/vpn-over-expressroute/vpn-select.png" alt-text="透過 ExpressRoute 的 VPN":::
+1. 選取 VPN 網站上的省略號 (**...**) ，然後選取 [ **編輯此中樞的 vpn**連線]。
+
+   :::image type="content" source="./media/vpn-over-expressroute/config-menu.png" alt-text="透過 ExpressRoute 的 VPN":::
+1. 針對 [ **使用 Azure 私人 IP 位址**]，選取 **[是]**。 此設定會將中樞 VPN 閘道設定為在此連線的閘道上的中樞位址範圍內使用私人 IP 位址，而不是使用公用 IP 位址。 這可確保來自內部部署網路的流量會流經 ExpressRoute 私用對等互連路徑，而不是使用公用網際網路來進行此 VPN 連接。 下列螢幕擷取畫面顯示設定：
+
+   :::image type="content" source="./media/vpn-over-expressroute/vpn-link-configuration.png" alt-text="透過 ExpressRoute 的 VPN" border="false":::
 1. 選取 [儲存]。
 
 儲存變更之後，中樞 VPN 閘道將會使用 VPN 閘道上的私人 IP 位址，透過 ExpressRoute 與內部部署 VPN 裝置建立 IPsec/IKE 連線。
@@ -225,11 +230,11 @@ ms.locfileid: "91317628"
 1. 在 [概觀] 頁面中，地圖上的每個點都代表著中樞。
 1. 在 [ **中樞與** 連線] 區段中，您可以看到中樞、網站、區域和 VPN 線上狀態。 您也可以查看傳入和傳出的位元組。
 
-## <a name="7-monitor-a-connection"></a><a name="connectmon"></a>7. 監視連接
+## <a name="6-monitor-a-connection"></a><a name="connectmon"></a>6. 監視連接
 
 建立連線，以監視 Azure 虛擬機器 (VM) 和遠端網站之間的通訊。 如需有關如何設定連線監視的資訊，請參閱[監視網路通訊](~/articles/network-watcher/connection-monitor.md)。 來源欄位是 Azure 中的 VM IP，而目的地 IP 是網站 IP。
 
-## <a name="8-clean-up-resources"></a><a name="cleanup"></a>8. 清除資源
+## <a name="7-clean-up-resources"></a><a name="cleanup"></a>7. 清除資源
 
 當您不再需要這些資源時，可以使用 [>new-azresourcegroup](/powershell/module/az.resources/remove-azresourcegroup) 移除資源群組及其包含的所有資源。 執行下列 PowerShell 命令，並 `myResourceGroup` 以您的資源組名取代：
 
@@ -237,6 +242,6 @@ ms.locfileid: "91317628"
 Remove-AzResourceGroup -Name myResourceGroup -Force
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 本文可協助您使用虛擬 WAN，透過 ExpressRoute 私用對等互連建立 VPN 連線。 若要深入瞭解虛擬 WAN 和相關功能，請參閱 [虛擬 wan 總覽](virtual-wan-about.md)。

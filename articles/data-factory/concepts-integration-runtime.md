@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/14/2020
-ms.openlocfilehash: 03b8deaa700d15a20571a8ec5f389c252c32eed2
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: b899485589f19a5b74d6d22b4e5dae5fbf3ff604
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89485714"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91827536"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Azure Data Factory 中的整合執行階段 
 
@@ -69,7 +69,7 @@ Azure 整合執行階段提供原生計算，能夠以安全、可靠且高效�
 
 活動分派是將活動路由傳送至目標計算服務的輕量作業，因此不需要擴大此案例的計算大小。
 
-如需建立和設定 Azure IR 的詳細資訊，請參閱如何在操作指南中建立和設定 Azure IR。 
+如需建立和設定 Azure IR 的詳細資訊，請參閱 [如何建立和設定 Azure Integration Runtime](create-azure-integration-runtime.md)。 
 
 > [!NOTE] 
 > Azure Integration runtime 具有與資料流程執行時間相關的屬性，可定義用來執行資料流程的基礎計算基礎結構。 
@@ -201,5 +201,5 @@ Azure-SSIS IR 是一個完全受控的 Azure VM 叢集，專門用來執行您�
 查看下列文章：
 
 - [建立 Azure 整合執行時間](create-azure-integration-runtime.md)
-- [建立自我裝載的整合執行階段](create-self-hosted-integration-runtime.md)
+- [建立自我裝載整合執行時間](create-self-hosted-integration-runtime.md)
 - [建立 AZURE SSIS 整合運行](create-azure-ssis-integration-runtime.md)時間。 本文將擴充教學課程，並提供使用 SQL 受控執行個體以及將 IR 加入虛擬網路的指示。 

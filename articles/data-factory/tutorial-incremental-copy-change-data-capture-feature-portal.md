@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: ''
 ms.date: 05/04/2020
-ms.openlocfilehash: 6e41109c65a047990577d1f2c77bdcd5219b6ed3
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 06dd55ce400667939fca4b0f48159f8b7dde66c6
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91537451"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825143"
 ---
 # <a name="incrementally-load-data-from-azure-sql-managed-instance-to-azure-storage-using-change-data-capture-cdc"></a>使用異動資料擷取 (CDC)，以累加方式從 Azure SQL 受控執行個體將資料載入 Azure 儲存體
 
@@ -318,7 +318,7 @@ ms.locfileid: "91537451"
     SET @begin_time = ''',pipeline().parameters.triggerStartTime,''';
     SET @end_time = ''',pipeline().parameters.triggerEndTime,''';
     SET @from_lsn = sys.fn_cdc_map_time_to_lsn(''smallest greater than or equal'', @begin_time);
-    SET @to_lsn = sys.fn_cdc_map_time_to_lsn(''largest less than or equal'', @end_time);
+    SET @to_lsn = sys.fn_cdc_map_time_to_lsn(''largest less than'', @end_time);
     SELECT count(1) changecount FROM cdc.fn_cdc_get_all_changes_dbo_customers(@from_lsn, @to_lsn, ''all'')')
     ```
 
@@ -328,7 +328,7 @@ ms.locfileid: "91537451"
     SET @begin_time = ''',pipeline().parameters.triggerStartTime,''';
     SET @end_time = ''',pipeline().parameters.triggerEndTime,''';
     SET @from_lsn = sys.fn_cdc_map_time_to_lsn(''smallest greater than or equal'', @begin_time);
-    SET @to_lsn = sys.fn_cdc_map_time_to_lsn(''largest less than or equal'', @end_time);
+    SET @to_lsn = sys.fn_cdc_map_time_to_lsn(''largest less than'', @end_time);
     SELECT * FROM cdc.fn_cdc_get_all_changes_dbo_customers(@from_lsn, @to_lsn, ''all'')')
     ```
 4. 按一下**複製**活動的 [接收] 索引標籤，然後按一下 [開啟] 來編輯資料集屬性。 按一下 [參數] 索引標籤，然後新增名為 **triggerStart** 的參數    

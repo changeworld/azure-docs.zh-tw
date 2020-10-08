@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 09/03/2020
+ms.date: 10/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: 1e88afd91c0e0b344cc0eb8d82b637a88d5a1656
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 0b9b8ba555cddd56c49c750709e69ec180291c95
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91447969"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91827198"
 ---
 # <a name="about-point-to-site-vpn-routing"></a>關於點對站 VPN 路由
 
@@ -32,7 +32,7 @@ Azure 目前支援兩種遠端存取通訊協定，即 IKEv2 和 SSTP。 許多�
 
 此範例中的點對站 VPN 閘道連線是用於未與任何其他虛擬網路 (VNet1) 建立連線或對等互連的 VNet。 在此範例中，用戶端可以存取 VNet1。
 
-![隔離的 VNet 路由](./media/vpn-gateway-about-point-to-site-routing/1.jpg "隔離的 VNet 路由")
+:::image type="content" source="./media/vpn-gateway-about-point-to-site-routing/isolated.jpg" alt-text="隔離的 VNet 路由" lightbox="./media/vpn-gateway-about-point-to-site-routing/isolated.jpg":::
 
 ### <a name="address-space"></a>位址空間
 
@@ -56,7 +56,7 @@ Azure 目前支援兩種遠端存取通訊協定，即 IKEv2 和 SSTP。 許多�
 
 使用 Windows 的用戶端可以直接存取已對等互連的 VNet，但如果對 VNet 對等互連或網路拓撲進行了任何變更，就必須重新下載 VPN 用戶端。 非 Windows 用戶端可以存取已對等互連的 VNet。 存取權不可轉移且僅限於已直接對等互連的 VNet。
 
-![多個對等互連 Vnet](./media/vpn-gateway-about-point-to-site-routing/2.jpg "多個對等互連 Vnet")
+:::image type="content" source="./media/vpn-gateway-about-point-to-site-routing/multiple.jpg" alt-text="隔離的 VNet 路由" lightbox="./media/vpn-gateway-about-point-to-site-routing/multiple.jpg":::
 
 ### <a name="address-space"></a>位址空間：
 
@@ -86,7 +86,7 @@ Azure 目前支援兩種遠端存取通訊協定，即 IKEv2 和 SSTP。 許多�
 
 用戶端如果使用 Windows 或另一個支援的 OS，則只能存取 VNet1。 若要存取額外的 VNet，必須使用 BGP。
 
-![多個 Vnet 和 S2S](./media/vpn-gateway-about-point-to-site-routing/3.jpg "多個 Vnet 和 S2S")
+:::image type="content" source="./media/vpn-gateway-about-point-to-site-routing/multiple-s2s.jpg" alt-text="隔離的 VNet 路由" lightbox="./media/vpn-gateway-about-point-to-site-routing/multiple-s2s.jpg":::
 
 ### <a name="address-space"></a>位址空間
 
@@ -114,7 +114,7 @@ Azure 目前支援兩種遠端存取通訊協定，即 IKEv2 和 SSTP。 許多�
 
 用戶端如果使用 Windows 或另一個支援的 OS，將可以存取所有使用站對站 VPN 連線來連線的 VNet，但必須手動將所連線 VNet 的路由新增至 Windows 用戶端。
 
-![多個 Vnet 和 S2S (BGP) ](./media/vpn-gateway-about-point-to-site-routing/4.jpg "多個 Vnet 和 S2S BGP")
+:::image type="content" source="./media/vpn-gateway-about-point-to-site-routing/multiple-bgp.jpg" alt-text="隔離的 VNet 路由" lightbox="./media/vpn-gateway-about-point-to-site-routing/multiple-bgp.jpg":::
 
 ### <a name="address-space"></a>位址空間
 
@@ -142,7 +142,7 @@ Azure 目前支援兩種遠端存取通訊協定，即 IKEv2 和 SSTP。 許多�
 
 Windows 和非 Windows 用戶端只能存取 VNet1。
 
-![使用 VNet 和分公司進行路由](./media/vpn-gateway-about-point-to-site-routing/5.jpg "使用 VNet 和分公司進行路由")
+:::image type="content" source="./media/vpn-gateway-about-point-to-site-routing/branch-office.jpg" alt-text="隔離的 VNet 路由" lightbox="./media/vpn-gateway-about-point-to-site-routing/branch-office.jpg":::
 
 ### <a name="address-space"></a>位址空間
 
@@ -168,7 +168,7 @@ Windows 和非 Windows 用戶端只能存取 VNet1。
 
 Windows 用戶端可以存取 VNet 和分公司 (Site1)，但必須手動將 Site1 的路由新增至用戶端。 非 Windows 用戶端可以存取 VNet，也可以存取內部部署的分公司。
 
-![一個 VNet 和分公司 (BGP) ](./media/vpn-gateway-about-point-to-site-routing/6.jpg "一個 VNet 和一個分公司")
+:::image type="content" source="./media/vpn-gateway-about-point-to-site-routing/branch-bgp.jpg" alt-text="隔離的 VNet 路由" lightbox="./media/vpn-gateway-about-point-to-site-routing/branch-bgp.jpg":::
 
 ### <a name="address-space"></a>位址空間
 
@@ -195,7 +195,7 @@ Windows 用戶端可以存取 VNet 和分公司 (Site1)，但必須手動將 Sit
 
 所有用戶端都只能存取 VNet1。
 
-![顯示多 VNet S2S 和分公司的圖表。](./media/vpn-gateway-about-point-to-site-routing/7.jpg "多 VNet S2S 和分公司")
+:::image type="content" source="./media/vpn-gateway-about-point-to-site-routing/multi-branch.jpg" alt-text="隔離的 VNet 路由" lightbox="./media/vpn-gateway-about-point-to-site-routing/multi-branch.jpg":::
 
 ### <a name="address-space"></a>位址空間
 
@@ -225,7 +225,7 @@ Windows 用戶端可以存取 VNet 和分公司 (Site1)，但必須手動將 Sit
 
 用戶端如果使用 Windows，將可以存取使用站對站 VPN 連線來連線的 VNet，但必須手動將 VNet2、VNet3 及 Site1 的路由新增至用戶端。 非 Windows 用戶端可以存取使用站對站 VPN 連線來連線的 VNet 和站台，無須任何手動介入操作。 此存取權可轉移，且用戶端可以存取所有已連線 VNet 和站台 (內部部署) 中的資源。
 
-![多 VNet S2S 和分公司](./media/vpn-gateway-about-point-to-site-routing/8.jpg "多 VNet S2S 和分公司")
+:::image type="content" source="./media/vpn-gateway-about-point-to-site-routing/multi-branch-bgp.jpg" alt-text="隔離的 VNet 路由" lightbox="./media/vpn-gateway-about-point-to-site-routing/multi-branch-bgp.jpg":::
 
 ### <a name="address-space"></a>位址空間
 
@@ -249,6 +249,6 @@ Windows 用戶端可以存取 VNet 和分公司 (Site1)，但必須手動將 Sit
 
 * 非 Windows 用戶端可以存取 VNet1、VNet2、VNet3 及 Site1。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 請參閱[使用 Azure 入口網站來建立 P2S VPN](vpn-gateway-howto-point-to-site-resource-manager-portal.md) 以開始建立 P2S VPN。

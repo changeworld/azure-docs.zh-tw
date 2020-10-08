@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/07/2020
+ms.date: 10/07/2020
 ms.author: memildin
-ms.openlocfilehash: 66a04ebec6eb9d7219d4d5db3bdd1dfd780a730f
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 92feb159fe4c893a55d37fa90c34acf4c4c93631
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91445988"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826169"
 ---
 # <a name="microsoft-defender-advanced-threat-protection-with-azure-security-center"></a>使用 Azure 資訊安全中心 Microsoft Defender 進階威脅防護
 
@@ -28,11 +28,11 @@ Azure 資訊安全中心與 [Microsoft Defender 進階威脅防護 (ATP) ](https
 
 |層面|詳細資料|
 |----|:----|
-|釋放狀態：|正式上市 (GA)|
+|版本狀態：|正式上市 (GA)|
 |定價：|需要 [Azure Defender](security-center-pricing.md)|
 |支援的電腦：|![是](./media/icons/yes-icon.png) 執行 Windows 的 Azure 機器<br>![是](./media/icons/yes-icon.png) 執行 Windows 的 Azure Arc 電腦|
-|必要的角色和許可權：|若要啟用/停用整合：**安全性系統管理員**或**擁有**者<br>若要在安全性中心內查看 MDATP 警示： **安全性讀取者**、 **讀者**、 **資源群組參與者**、 **資源群組擁有**者、 **安全性系統管理員**、訂用帳戶 **擁有**者或訂用帳戶 **參與者**|
-|雲端：|![是](./media/icons/yes-icon.png) 商業雲端。<br>![否](./media/icons/no-icon.png) 在公用 Azure 雲端中執行工作負載的 GCC 客戶<br>![是](./media/icons/yes-icon.png) US Gov<br>![否](./media/icons/no-icon.png) 中國 Gov，其他 Gov|
+|必要的角色和權限：|若要啟用/停用整合：**安全性系統管理員**或**擁有**者<br>若要在安全性中心內查看 MDATP 警示： **安全性讀取者**、 **讀者**、 **資源群組參與者**、 **資源群組擁有**者、 **安全性系統管理員**、訂用帳戶 **擁有**者或訂用帳戶 **參與者**|
+|雲端：|![是](./media/icons/yes-icon.png) 商業雲端。<br>![否](./media/icons/no-icon.png) 在公用 Azure 雲端中執行工作負載的 GCC 客戶<br>![是](./media/icons/yes-icon.png) US Gov<br>![否](./media/icons/no-icon.png) 中國 Gov、其他 Gov|
 |||
 
 
@@ -126,7 +126,7 @@ Office 365 GCC 客戶已停用使用此整合的伺服器端點監視。
 
 1. 從 [調查] 視窗中，選取要移至 Microsoft Defender ATP 入口網站的連結。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - [Azure 資訊安全中心所支援的功能和平台](security-center-os-coverage.md)
 - [在 Azure 資訊安全中心設定安全性原則](tutorial-security-policy.md)：了解如何為您的 Azure 訂用帳戶及資源群組設定安全性原則。

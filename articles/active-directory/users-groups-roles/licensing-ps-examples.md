@@ -14,22 +14,60 @@ ms.date: 04/29/2020
 ms.author: curtand
 ms.reviewer: sumitp
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 230ccb3d10c7ba6f3abcac9d83309fd7fa3c5c3f
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 3db95c7ad7998817f4818203632310fe4aacb57a
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88797678"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91827754"
 ---
 # <a name="powershell-and-graph-examples-for-group-based-licensing-in-azure-ad"></a>Azure AD 中以群組為基礎之授權的 PowerShell 和圖形範例
 
-您可以透過 [Azure 入口網站](https://portal.azure.com)取得群組型授權的完整功能，而且目前的 PowerShell 和 Microsoft Graph 支援僅限於唯讀作業。 不過，還是有一些工作可以使用現有的 [MSOnline PowerShell Cmdlet](/powershell/module/msonline) 和 Microsoft Graph 來執行。 本文件會提供可行功能的範例。
+您可以透過 [Azure 入口網站](https://portal.azure.com)取得群組型授權的完整功能，而且目前有一些有用的工作可使用現有的 [MSOnline PowerShell Cmdlet](/powershell/module/msonline) 和 Microsoft Graph 來執行。 本文件會提供可行功能的範例。
 
 > [!NOTE]
 > 開始執行 Cmdlet 之前，請先確定您是透過執行 Cmdlet，先連接到您的組織 `Connect-MsolService`   。
 
 > [!WARNING]
 > 此程式碼是基於示範目的而提供的範例。 如果您想要在您的環境中使用它，請考慮在小規模或個別的測試組織中先測試它。 您可能需要調整程式碼以符合您環境的特定需求。
+
+## <a name="assign-licenses-to-a-group"></a>將授權指派給群組
+
+使用下列範例，利用 Microsoft Graph 將授權指派給群組：
+
+```
+POST https://graph.microsoft.com/v1.0/groups/1ad75eeb-7e5a-4367-a493-9214d90d54d0/assignLicense
+Content-type: application/json
+{
+  "addLicenses": [
+    {
+      "disabledPlans": [ "11b0131d-43c8-4bbb-b2c8-e80f9a50834a" ],
+      "skuId": "c7df2760-2c81-4ef7-b578-5b5392b571df"
+    },
+    {
+      "disabledPlans": [ "a571ebcc-fqe0-4ca2-8c8c-7a284fd6c235" ],
+      "skuId": "sb05e124f-c7cc-45a0-a6aa-8cf78c946968"
+    }
+  ],
+  "removeLicenses": []
+}
+
+```
+輸出：
+```
+HTTP/1.1 202 Accepted
+Content-type: application/json
+location: https://graph.microsoft.com/v2/d056d009-17b3-4106-8173-cd3978ada898/directoryObjects/1ad75eeb-7e5a-4367-a493-9214d90d54d0/Microsoft.DirectoryServices.Group
+
+{
+  "id": "1ad75eeb-7e5a-4367-a493-9214d90d54d0",
+  "deletedDateTime": null,
+  "classification": null,
+  "createdDateTime": "2018-04-18T22:05:03Z",
+  "securityEnabled": true,
+
+}
+```
 
 ## <a name="view-product-licenses-assigned-to-a-group"></a>檢視指派給群組的產品授權
 
@@ -619,7 +657,7 @@ aadbe4da-c4b5-4d84-800a-9400f31d7371 User has no direct license to remove. Skipp
 > [!NOTE]
 > 執行上述腳本之前，請先根據您的測試環境，更新變數的值並將其設為 `$skuId` `$groupId`   目標，以移除直接授權。 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 若要深入了解透過群組管理授權的功能集，請參閱下列文章：
 

@@ -5,15 +5,15 @@ author: cynthn
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: how-to
-ms.date: 07/20/2020
+ms.date: 10/05/2020
 ms.author: cynthn
 ms.reviewer: jagaveer
-ms.openlocfilehash: c0b8f395dde1d94c4c1efa32a2f78707d1456d88
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 66d62cde9ea17e73f561dfbce94eb3d3e7175b6d
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88817540"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91827820"
 ---
 # <a name="use-spot-vms-in-azure"></a>在 Azure 中使用點 Vm
 
@@ -67,8 +67,22 @@ ms.locfileid: "88817540"
 
 現成 Vm 的定價是根據區域和 SKU 的變數。 如需詳細資訊，請參閱 [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) 和 [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)的 VM 定價。 
 
+您也可以使用 [Azure 零售價格 API](/rest/api/cost-management/retail-prices/azure-retail-prices) 查詢定價資訊，以查詢有關找出定價的資訊。 `meterName`和 `skuName` 都會包含 `Spot` 。
 
 有了變數定價，您可以選擇使用最多5個小數位數，以美元為單位來設定最大價格（以美元為單位） (USD) 。 例如，值的 `0.98765` 最大價格為每小時 $0.98765 美元。 如果您將最大價格設定為 `-1` ，將不會根據價格來收回 VM。 如果有可用的容量和配額，則 VM 的價格將是標準 VM 的目前價格或價格的價格。
+
+## <a name="pricing-and-eviction-history"></a>定價和收回歷程記錄
+
+您可以在入口網站的區域中查看每個大小的歷程記錄定價和收回費率。 選取 [ **View 定價歷程記錄] 並比較鄰近地區的價格** ，以查看特定大小的資料表或定價圖表。  下列影像中的定價和收回率僅為範例。 
+
+**圖表**：
+
+:::image type="content" source="./media/spot-chart.png" alt-text="區域選項的螢幕擷取畫面，其中定價和收回率的差異是圖表。":::
+
+**資料表**：
+
+:::image type="content" source="./media/spot-table.png" alt-text="區域選項的螢幕擷取畫面，其中定價和收回率的差異是圖表。":::
+
 
 
 ##  <a name="frequently-asked-questions"></a>常見問題集
@@ -97,8 +111,8 @@ ms.locfileid: "88817540"
 
 **答：** 您可以 `azure-spot` 在 [Q&A](https://docs.microsoft.com/answers/topics/azure-spot.html)張貼並標記問題。 
 
-## <a name="next-steps"></a>後續步驟
-使用 [CLI](./linux/spot-cli.md)、 [入口網站](./windows/spot-portal.md)、 [ARM 範本](./linux/spot-template.md)或 [PowerShell](./windows/spot-powershell.md) 來部署現成的 vm。
+## <a name="next-steps"></a>下一步
+使用 [CLI](./linux/spot-cli.md)、 [入口網站](spot-portal.md)、 [ARM 範本](./linux/spot-template.md)或 [PowerShell](./windows/spot-powershell.md) 來部署現成的 vm。
 
 您也可以 [使用點 VM 實例來部署擴展集](../virtual-machine-scale-sets/use-spot.md)。
 
