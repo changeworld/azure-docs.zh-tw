@@ -1,6 +1,6 @@
 ---
 title: 使用使用者定義的架構
-description: 在 Synapse SQL 集區中使用 T-sql 使用者定義架構來開發解決方案的秘訣。
+description: 使用 T-sql 使用者定義架構在 Synapse SQL 集區中開發解決方案的秘訣。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -12,22 +12,22 @@ ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: fc5e035215e7cabd02861c6ee2498cadd1ef0534
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85213358"
 ---
 # <a name="user-defined-schemas-in-synapse-sql-pool"></a>Synapse SQL 集區中的使用者定義架構
-本文著重于提供幾個秘訣，讓您在 Synapse SQL 集區中使用 T-sql 使用者定義的架構來開發解決方案。
+本文著重于提供使用 T-sql 使用者定義架構在 Synapse SQL 集區中開發解決方案的數個秘訣。
 
 ## <a name="schemas-for-application-boundaries"></a>應用程式界限的結構描述
 
 傳統資料倉儲通常使用不同的資料庫，根據工作負載、網域或安全性來建立應用程式界限。 
 
-例如，傳統 SQL Server 資料倉儲可能包含臨時資料庫、資料倉儲資料庫和某些資料超市資料庫。 在此拓撲中，每個資料庫都是以工作負載和架構中的安全性界限來運作。
+例如，傳統的 SQL Server 資料倉儲可能包含臨時資料庫、資料倉儲資料庫和某些資料超市資料庫。 在此拓撲中，每個資料庫在架構中會以工作負載和安全性界限的形式運作。
 
-相反地，SQL 集區會在一個資料庫中執行整個資料倉儲工作負載。 不允許跨資料庫聯結。 SQL 集區預期倉儲所使用的所有資料表都會儲存在一個資料庫中。
+相反地，SQL 集區會在一個資料庫內執行整個資料倉儲工作負載。 不允許跨資料庫聯結。 SQL 集區預期倉儲所使用的所有資料表都會儲存在一個資料庫中。
 
 > [!NOTE]
 > SQL 集區不支援任何種類的跨資料庫查詢。 因此，需要修改運用此模式的資料倉儲實作。
@@ -38,15 +38,15 @@ ms.locfileid: "85213358"
 以下是使用使用者定義的架構來合併工作負載、安全性、網域和功能界限的建議：
 
 - 使用一個 SQL 集區資料庫來執行整個資料倉儲工作負載。
-- 合併現有的資料倉儲環境，以使用一個 SQL 集區資料庫。
+- 將您現有的資料倉儲環境合併，以使用一個 SQL 集區資料庫。
 - 運用 **使用者定義的結構描述** 來提供先前使用資料庫實作的界限。
 
-如果先前尚未使用使用者定義的架構，則您會有乾淨的平板電腦。 使用舊的資料庫名稱作為 SQL 集區資料庫中使用者定義架構的基礎。
+如果之前未使用過使用者定義的架構，您就會有一個全新的平板。 使用舊的資料庫名稱做為 SQL 集區資料庫中的使用者定義架構的基礎。
 
-如果已使用架構，則您有幾個選項：
+如果已經使用架構，則您有幾個選項：
 
-- 移除舊版架構名稱並重新開始。
-- 將舊版架構名稱預先暫止至資料表名稱，以保留舊版架構名稱。
+- 移除舊版架構名稱，然後重新開始。
+- 將舊版架構名稱預先擱置為數據表名稱，以保留舊版架構名稱。
 - 在額外結構描述中的資料表上實作檢視來重建舊的結構描述結構，以保留舊版結構描述名稱。
 
 > [!NOTE]
@@ -73,7 +73,7 @@ CREATE TABLE [edw].[customer] -- create data warehouse tables in the edw schema
 );
 ```
 
-保留舊版架構名稱，方法是將它們預先暫止于資料表名稱。 使用工作負載界限的架構：
+將舊版架構名稱預先暫止至資料表名稱，以保留舊版架構名稱。 使用工作負載界限的架構：
 
 ```sql
 CREATE SCHEMA [stg]; -- stg defines the staging boundary

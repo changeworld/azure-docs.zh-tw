@@ -1,25 +1,25 @@
 ---
-title: 區塊鏈應用程式版本設定-Azure Blockchain Workbench
-description: 如何使用 Azure Blockchain Workbench Preview 中的應用程式版本。
+title: 區塊鏈應用程式版本控制-Azure Blockchain Workbench
+description: 如何在 Azure Blockchain Workbench 預覽版中使用應用程式版本。
 ms.date: 11/20/2019
 ms.topic: how-to
 ms.reviewer: brendal
 ms.openlocfilehash: 2a70112fd0ab6e2f664ca48265c121936b01e58b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85209866"
 ---
-# <a name="azure-blockchain-workbench-preview-application-versioning"></a>Azure Blockchain Workbench 預覽應用程式版本設定
+# <a name="azure-blockchain-workbench-preview-application-versioning"></a>Azure Blockchain Workbench 預覽版應用程式版本控制
 
-您可以建立和使用多個版本的 Azure Blockchain Workbench Preview 應用程式。 如果上傳相同應用程式的多個版本，就可以取得版本歷程記錄，而且使用者可以選擇他們想要使用哪一個版本。
+您可以建立並使用多個版本的 Azure Blockchain Workbench 預覽版應用程式。 如果上傳相同應用程式的多個版本，就可以取得版本歷程記錄，而且使用者可以選擇他們想要使用哪一個版本。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-* Blockchain Workbench 部署。 如需詳細資訊，請參閱[Azure Blockchain Workbench 部署](deploy.md)，以取得部署的詳細資料
+* Blockchain Workbench 部署。 如需詳細資訊，請參閱 [Azure Blockchain Workbench 部署](deploy.md) 以取得部署的詳細資料
 * 已在 Blockchain Workbench 中部署的區塊鏈應用程式。 請參閱[在 Azure Blockchain Workbench 中建立區塊鏈應用程式](create-app.md)
 
 ## <a name="add-an-app-version"></a>新增應用程式版本
@@ -27,7 +27,7 @@ ms.locfileid: "85209866"
 若要加入新版本，請將新設定和智慧型合約檔案上傳到 Blockchain Workbench。
 
 1. 在網頁瀏覽器中瀏覽至 Blockchain Workbench 的網址。 例如，`https://{workbench URL}.azurewebsites.net/` 如需如何尋找 Blockchain Workbench 網址的資訊，請參閱 [Blockchain Workbench Web URL](deploy.md#blockchain-workbench-web-url)
-2. 以[Blockchain Workbench 系統管理員](manage-users.md#manage-blockchain-workbench-administrators)身分登入。
+2. 以 [Blockchain Workbench 系統管理員](manage-users.md#manage-blockchain-workbench-administrators)的身分登入。
 3. 選取您想要用另一個版本來更新的區塊鏈應用程式。
 4. 選取 [新增版本]****。 [新增版本]**** 窗格隨即顯示。
 5. 選擇要上傳的新版合約設定和合約程式碼檔案。 系統會自動驗證組態檔。 先修正任何驗證錯誤再部署應用程式。

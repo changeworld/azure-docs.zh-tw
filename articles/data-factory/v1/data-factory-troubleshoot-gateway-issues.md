@@ -12,10 +12,10 @@ ms.date: 10/01/2017
 ms.author: abnarain
 robots: noindex
 ms.openlocfilehash: 5d83f05c16004edc3ad4842b7e4e9d4b9babe577
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85319062"
 ---
 # <a name="troubleshoot-issues-with-using-data-management-gateway"></a>使用資料管理閘道針對問題進行疑難排解
@@ -24,7 +24,7 @@ ms.locfileid: "85319062"
 > [!NOTE]
 > 本文適用於 Azure Data Factory 第 1 版。 如果您使用目前版本的 Data Factory 服務，請參閱 [Data Factory 中的自我裝載整合執行階段](../create-self-hosted-integration-runtime.md)。
 
-如需閘道的詳細資訊，請參閱[資料管理閘道](data-factory-data-management-gateway.md)文章。 如需使用閘道將資料從 SQL Server 資料庫移至 Microsoft Azure Blob 儲存體的逐步解說，請參閱[在內部部署和雲端之間移動資料](data-factory-move-data-between-onprem-and-cloud.md)一文。
+如需閘道的詳細資訊，請參閱[資料管理閘道](data-factory-data-management-gateway.md)文章。 如需使用閘道將資料從 SQL Server 資料庫移至 Microsoft Azure Blob 儲存體的逐步解說，請參閱 [在內部部署和雲端之間移動資料](data-factory-move-data-between-onprem-and-cloud.md) 一文。
 
 ## <a name="failed-to-install-or-register-gateway"></a>無法安裝或註冊閘道
 ### <a name="1-problem"></a>1. 問題
@@ -49,7 +49,7 @@ ms.locfileid: "85319062"
 已在電腦上安裝閘道。
 
 #### <a name="resolution"></a>解決方案
-卸載電腦上的現有閘道，然後再次按一下 [**直接在這部電腦上安裝**] 連結。
+卸載電腦上的現有閘道，然後再次按一下 [ **直接在這部電腦上安裝** ] 連結。
 
 ### <a name="3-problem"></a>3. 問題
 註冊新的閘道時，您可能會看到此錯誤。
@@ -205,7 +205,7 @@ ms.locfileid: "85319062"
 
 1. 啟動「資料管理閘道組態管理員」。
 2. 切換到 [設定]  索引標籤。  
-3. 按一下 [**變更**] 按鈕以變更 TLS/SSL 憑證。
+3. 按一下 [ **變更** ] 按鈕以變更 TLS/SSL 憑證。
 
    ![變更憑證按鈕](media/data-factory-troubleshoot-gateway-issues/change-button-ssl-certificate.png)
 4. 選取新的憑證作為 TLS/SSL 憑證。 您可以使用任何由您或任何組織所產生的 TLS/SSL 憑證。
@@ -224,7 +224,7 @@ ms.locfileid: "85319062"
 #### <a name="resolution"></a>解決方案
 在連接到 SQL database 之前，允許透過資料管理閘道用戶端上的埠 TCP/1433 進行輸出 TCP 連線。
 
-如果目標資料庫在 Azure SQL Database 中，請同時檢查 Azure 的 SQL Server 防火牆設定。
+如果目標資料庫位於 Azure SQL Database 中，也請檢查 Azure 的 SQL Server 防火牆設定。
 
 請參閱下一節，以測試連往內部部署資料存放區的連線。
 
@@ -248,7 +248,7 @@ ms.locfileid: "85319062"
 2. 按一下 [傳送記錄]**** 可看到以下對話方塊。
 
     ![資料管理閘道傳送記錄](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-send-logs-dialog.png)
-3. 選擇性按一下 [**查看記錄**] 以查看事件檢視器中的記錄。
+3.  (選擇性) 按一下 [ **視圖記錄** ]，以查看事件檢視器中的記錄。
 4. (選擇性) 按一下 [隱私權]**** 以檢閱 Microsoft Web 服務隱私權聲明。
 5. 當您滿意即將上傳的內容時，請按一下 [傳送記錄]****，將過去 7 天的記錄傳送給 Microsoft 進行疑難排解。 您應該會看到「傳送記錄檔」作業的狀態，如下列螢幕擷取畫面所示。
 
@@ -279,7 +279,7 @@ ms.locfileid: "85319062"
 您可以在 Windows 事件記錄中找到詳細的閘道記錄資訊。
 
 1. 啟動 Windows **事件檢視器**。
-2. 在 [**應用程式和服務記錄**檔]  >  **資料管理閘道**] 資料夾中找出記錄。
+2. 在 [**應用程式和服務記錄**檔] 中找出  >  **資料管理 Gateway**資料夾的記錄。
 
    針對閘道相關問題進行疑難排解時，請在事件檢視器中尋找錯誤層級的事件。
 

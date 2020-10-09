@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
 ms.openlocfilehash: 840049265d3b6e4d2fddd794646bfd5691aab9a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74083998"
 ---
 # <a name="overview-of-multi-tenant-support-for-vmware-disaster-recovery-to-azure-with-csp"></a>概述多租用戶如何支援使用 CSP 將 VMware 災害復原至 Azure
 
-[Azure Site Recovery](site-recovery-overview.md)支援租使用者訂用帳戶的多租使用者環境。 對於透過 Microsoft Cloud 解決方案提供者 (CSP) 方案建立及管理的租用戶訂用帳戶，它也支援多租用戶。
+[Azure Site Recovery](site-recovery-overview.md) 支援租使用者訂用帳戶的多租使用者環境。 對於透過 Microsoft Cloud 解決方案提供者 (CSP) 方案建立及管理的租用戶訂用帳戶，它也支援多租用戶。
 
 本文提供實作及管理多租用戶 VMware 到 Azure 複寫的概觀。
 
@@ -72,7 +72,7 @@ ms.locfileid: "74083998"
 
 ### <a name="create-a-vcenter-account"></a>建立 vCenter 帳戶
 
-1. 藉由複製預先定義的*唯讀*角色來建立新的角色，然後為它提供一個方便的名稱（例如 Azure_Site_Recovery，如本範例所示）。
+1. 藉由複製預先定義的 *唯讀* 角色來建立新的角色，然後為其提供方便的名稱 (例如 Azure_Site_Recovery，如下列範例所示) 。
 2. 將下列權限指派給這個角色：
 
    * **資料存放區**：配置空間、瀏覽資料存放區、底層檔案作業、移除檔案、更新虛擬機器檔案
@@ -120,7 +120,7 @@ ms.locfileid: "74083998"
 
 1. 在 Azure 入口網站您稍早建立的保存庫中，使用您建立的 vCenter 帳戶，向組態伺服器註冊 vCenter 伺服器。
 2. 針對每個一般程序的 Site Recovery 完成「準備基礎結構」程序。
-3. 現在可以開始複寫 VM。 確認只有租使用者的 vm 會**顯示在 [** 複寫] [  >  **選取虛擬機器**] 中。
+3. 現在可以開始複寫 VM。 確認只會在 [複寫**Replicate**  >  **選取虛擬機器**] 中顯示租使用者的 vm。
 
 ## <a name="dedicated-hosting-solution"></a>專用主機解決方案
 

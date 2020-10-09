@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 06/08/2018
 ms.author: kumud
 ms.openlocfilehash: 6eab1803bf5adab42be87b5f8567682c6d75947e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74483532"
 ---
 # <a name="disaster-recovery-using-azure-dns-and-traffic-manager"></a>使用 Azure DNS 和流量管理員進行災害復原
@@ -58,7 +58,7 @@ ms.locfileid: "74483532"
 DNS 是轉移網路流量最有效率的機制之一，因為 DNS 通常是全球性的，且位於資料中心外部，不會受到任何區域性故障或可用性區域 (AZ) 層級的故障所影響。 除了能使用 DNS 架構的容錯移轉機制外，在 Azure 中還有另外兩個 DNS 服務能在某些形式上達到相同成效 - Azure DNS (權威式 DNS) 和 Azure 流量管理員 (DNS 架構的智慧流量路由)。 
 
 請務必了解 DNS 的一些概念，我們會廣泛地使用這些概念來討論本文中提供的解決方案：
-- **DNS a 記錄**– a 記錄是將網域指向 IPv4 位址的指標。 
+- **DNS A 記錄** -A 記錄是指將網域指向 IPv4 位址的指標。 
 - **CNAME 或 Canonical 名稱** - 此記錄類型用來指向其他 DNS 記錄。 CNAME 不會以 IP 位址作為回應，而是以指標，其指向包含 IP 位址的記錄。 
 - **加權路由** – 您可以選擇為服務端點賦予特定的權重，然後再根據指派的權重分配流量。
  此路由方法是流量管理員中四個可用流量路由機制的其中一個。 如需詳細資訊，請參閱 [加權路由方法](../traffic-manager/traffic-manager-routing-methods.md#weighted)。
@@ -73,7 +73,7 @@ DNS 是轉移網路流量最有效率的機制之一，因為 DNS 通常是全�
 
 解決方案所做的假設是：
 - 主要和次要端點都有不常變更的靜態 IP。 假設主要站台的 IP 是 100.168.124.44，而次要站台的 IP 是 100.168.124.43。
-- 主要和次要站台都有 Azure DNS 區域。 假設主要站台的端點是 prod.contoso.com，而備份站台的端點是 dr.contoso.com。 主要應用程式的 DNS 記錄（也稱為 www \. contoso.com）也存在。   
+- 主要和次要站台都有 Azure DNS 區域。 假設主要站台的端點是 prod.contoso.com，而備份站台的端點是 dr.contoso.com。 主要應用程式（也稱為 www contoso.com）的 DNS 記錄 \. 也存在。   
 - TTL 會等於或低於組織中設定的 RTO SLA。 例如，如果企業將應用程式災害回應的 RTO 設定為 60 分鐘，則 TTL 應不超過 60 分鐘，而且愈低愈好。 
   您可以設定 Azure DNS 的手動容錯移轉，如下所示：
 - 建立 DNS 區域
@@ -81,7 +81,7 @@ DNS 是轉移網路流量最有效率的機制之一，因為 DNS 通常是全�
 - 更新 CNAME 記錄
 
 ### <a name="step-1-create-a-dns"></a>步驟 1 - 建立 DNS
-建立 DNS 區域（例如，www \. contoso.com），如下所示：
+建立 DNS 區域 (例如，www \. contoso.com) ，如下所示：
 
 ![在 Azure 中建立 DNS 區域](./media/disaster-recovery-dns-traffic-manager/create-dns-zone.png)
 
@@ -89,13 +89,13 @@ DNS 是轉移網路流量最有效率的機制之一，因為 DNS 通常是全�
 
 ### <a name="step-2-create-dns-zone-records"></a>步驟 2：建立 DNS 區域記錄
 
-在此區域中，會建立三個記錄（例如 \. ，www contoso.com、prod.contoso.com 和 dr.consoto.com），如下所示。
+在此區域內建立三個記錄 (例如-www \. contoso.com、prod.contoso.com 和 dr.consoto.com) ，如下所示。
 
 ![建立 DNS 區域記錄](./media/disaster-recovery-dns-traffic-manager/create-dns-zone-records.png)
 
 圖 - 在 Azure 中建立 DNS 區域記錄**
 
-在此案例中，site，www \. contoso.com 的 TTL 為30分鐘，低於指定的 RTO，而且指向生產網站 prod.contoso.com。 這是正常營運時的組態。 prod.contoso.com 和 dr.contoso.com 的 TTL 已設定為 300 秒或 5 分鐘。 您可以使用 Azure 監視器或 Azure App Insights 這類 Azure 監視服務，或 Dynatrace 等任何合作夥伴監視解決方案，甚至可以使用自有的解決方案，來監視或偵測應用程式或虛擬基礎結構層級的失敗。
+在此案例中，www \. contoso.com 有30分鐘的 TTL，其低於所述的 RTO，並指向生產網站 prod.contoso.com。 這是正常營運時的組態。 prod.contoso.com 和 dr.contoso.com 的 TTL 已設定為 300 秒或 5 分鐘。 您可以使用 Azure 監視器或 Azure App Insights 這類 Azure 監視服務，或 Dynatrace 等任何合作夥伴監視解決方案，甚至可以使用自有的解決方案，來監視或偵測應用程式或虛擬基礎結構層級的失敗。
 
 ### <a name="step-3-update-the-cname-record"></a>步驟 3：更新 CNAME 記錄
 
@@ -105,7 +105,7 @@ DNS 是轉移網路流量最有效率的機制之一，因為 DNS 通常是全�
 
 圖 - 更新 Azure 中的 CNAME 記錄**
 
-在30分鐘內，大部分的解析程式都會重新整理快取的區域檔案，而 www contoso.com 的任何查詢 \. 都會重新導向至 dr.contoso.com。
+在30分鐘內，大部分的解析程式都會重新整理快取的區域檔案，對 www contoso.com 的任何查詢 \. 都會重新導向至 dr.contoso.com。
 您也可以執行下列 Azure CLI 命令來變更 CNAME 值：
  ```azurecli
    az network dns record-set cname set-record \
@@ -166,11 +166,11 @@ DNS 是轉移網路流量最有效率的機制之一，因為 DNS 通常是全�
 
 ### <a name="how-automatic-failover-works-using-traffic-manager"></a>使用流量管理員進行自動容錯移轉的運作方式
 
-發生損毀時，系統會探查主要端點，而狀態會變更為**降級**，然後災害復原站台會保持**連線**。 根據預設，流量管理員會將所有流量傳送至主要 (最高優先順序) 端點。 如果主要端點出現降級，流量管理員會將流量路由至第二個端點，前提是第二個端點的狀況良好。 您可以選擇在流量管理員中設定多個端點，讓這些端點可作為額外的容錯移轉端點，或是作為可分擔各端點負載的負載平衡器。
+發生損毀時，系統會探查主要端點，而狀態會變更為**降級**，然後災害復原站台會保持**連線**。 根據預設，流量管理員會將所有流量傳送至主要 (優先順序最高) 端點。 如果主要端點出現降級，流量管理員會將流量路由至第二個端點，前提是第二個端點的狀況良好。 您可以選擇在流量管理員中設定多個端點，讓這些端點可作為額外的容錯移轉端點，或是作為可分擔各端點負載的負載平衡器。
 
 ## <a name="next-steps"></a>後續步驟
 - 深入了解 [Azure 流量管理員](../traffic-manager/traffic-manager-overview.md)。
-- 深入瞭解[Azure DNS](../dns/dns-overview.md)。
+- 深入瞭解 [Azure DNS](../dns/dns-overview.md)。
 
 
 

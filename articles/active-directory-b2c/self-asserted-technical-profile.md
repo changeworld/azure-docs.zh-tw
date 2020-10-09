@@ -12,17 +12,17 @@ ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 84e92cbac064106ca95277288eb773e311798930
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85203447"
 ---
 # <a name="define-a-self-asserted-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自訂原則中定義自我判斷技術設定檔
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-使用者預期會提供輸入的 Azure Active Directory B2C （Azure AD B2C）中的所有互動都是自我判斷技術設定檔。 例如，註冊頁面、登入頁面或密碼重設頁面。
+Azure Active Directory B2C (Azure AD B2C) 中的所有互動都必須提供自動判斷的技術設定檔，才能讓使用者提供輸入。 例如，註冊頁面、登入頁面或密碼重設頁面。
 
 ## <a name="protocol"></a>通訊協定
 
@@ -38,7 +38,7 @@ ms.locfileid: "85203447"
 
 ## <a name="input-claims"></a>輸入宣告
 
-在自我判斷技術設定檔中，您可以使用**InputClaims**和**InputClaimsTransformations**元素，預先填入出現在自我判斷頁（顯示宣告）上的宣告值。 例如，在編輯設定檔原則中，使用者旅程圖會先從 Azure AD B2C 目錄服務中讀取使用者設定檔，接著，自我判斷技術設定檔會使用儲存於使用者設定檔的使用者資料來設定輸入宣告。 這些宣告均收集自使用者設定檔，然後呈現給使用者，讓使用者接著可以編輯現有的資料。
+在自我判斷技術設定檔中，您可以使用 **InputClaims** 和 **InputClaimsTransformations** 元素，預先填入出現在自我判斷提示頁面上的宣告值， (顯示宣告) 。 例如，在編輯設定檔原則中，使用者旅程圖會先從 Azure AD B2C 目錄服務中讀取使用者設定檔，接著，自我判斷技術設定檔會使用儲存於使用者設定檔的使用者資料來設定輸入宣告。 這些宣告均收集自使用者設定檔，然後呈現給使用者，讓使用者接著可以編輯現有的資料。
 
 ```xml
 <TechnicalProfile Id="SelfAsserted-ProfileUpdate">
@@ -53,23 +53,23 @@ ms.locfileid: "85203447"
 
 ## <a name="display-claims"></a>顯示宣告
 
-顯示宣告功能目前為**預覽**狀態。
+顯示宣告功能目前為 **預覽**狀態。
 
-**DisplayClaims**元素包含要在螢幕上呈現以向使用者收集資料的宣告清單。 若要預先填入顯示宣告的值，請使用先前所述的輸入宣告。 元素可能也包含預設值。
+**DisplayClaims**元素包含要在螢幕上呈現以收集使用者資料的宣告清單。 若要預先填入顯示宣告的值，請使用先前所述的輸入宣告。 元素可能也包含預設值。
 
-**DisplayClaims**中的宣告順序會指定 Azure AD B2C 在螢幕上呈現宣告的順序。 若要強制使用者提供特定宣告的值，請將**DisplayClaim**元素的**Required**屬性設定為 `true` 。
+**DisplayClaims**中的宣告順序會指定 Azure AD B2C 在螢幕上呈現宣告的順序。 若要強制使用者提供特定宣告的值，請將**DisplayClaim**元素的**必要**屬性設定為 `true` 。
 
-**DisplayClaims**集合中的**ClaimType**元素必須將**UserInputType**元素設定為 Azure AD B2C 支援的任何使用者輸入類型。 例如，`TextBox` 或 `DropdownSingleSelect`。
+**DisplayClaims**集合中的**ClaimType**元素必須將 **>userinputtype**元素設定為 Azure AD B2C 所支援的任何使用者輸入類型。 例如，`TextBox` 或 `DropdownSingleSelect`。
 
-### <a name="add-a-reference-to-a-displaycontrol"></a>新增對控制項的參考
+### <a name="add-a-reference-to-a-displaycontrol"></a>新增控制項的參考
 
-在 [顯示宣告] 集合中，您可以包含已建立之[顯示類型的](display-controls.md)參考。 顯示控制項是具有特殊功能並與 Azure AD B2C 後端服務互動的使用者介面元素。 它允許使用者在頁面上執行動作，以在後端叫用驗證技術設定檔。 例如，驗證電子郵件地址、電話號碼或客戶忠誠度號碼。
+在 [顯示宣告] 集合中，您可以包含已建立之 [控制項](display-controls.md) 的參考。 顯示控制項是具有特殊功能並與 Azure AD B2C 後端服務互動的使用者介面元素。 它可讓使用者在頁面上執行動作，該頁面會在後端叫用驗證技術設定檔。 例如，確認電子郵件地址、電話號碼或客戶忠誠度號碼。
 
-下列範例 `TechnicalProfile` 說明如何將顯示宣告與顯示控制項搭配使用。
+下列範例 `TechnicalProfile` 說明如何搭配顯示控制項使用顯示宣告。
 
 * 第一個顯示宣告會參考 `emailVerificationControl` 顯示控制項，以收集並驗證電子郵件地址。
 * 第五個顯示宣告會參考 `phoneVerificationControl` 顯示控制項，以收集並驗證電話號碼。
-* 其他顯示宣告則是 Claimtype 要從使用者收集。
+* 系統會 Claimtype 其他顯示宣告，以便從使用者收集。
 
 ```xml
 <TechnicalProfile Id="Id">
@@ -85,13 +85,13 @@ ms.locfileid: "85203447"
 </TechnicalProfile>
 ```
 
-如前所述，具有顯示控制項參考的顯示宣告可能會執行自己的驗證，例如驗證電子郵件地址。 此外，自我判斷頁支援使用驗證技術設定檔來驗證整個頁面，包括任何使用者輸入（宣告類型或顯示控制項），然後再繼續進行下一個協調流程步驟。
+如前所述，具有顯示控制項參考的顯示宣告可能會執行自己的驗證，例如驗證電子郵件地址。 此外，自我判斷頁面支援使用驗證技術設定檔來驗證整個頁面，包括任何使用者輸入 (宣告類型或顯示控制項) ，然後再繼續進行下一個協調流程步驟。
 
-### <a name="combine-usage-of-display-claims-and-output-claims-carefully"></a>謹慎結合顯示宣告和輸出宣告的使用方式
+### <a name="combine-usage-of-display-claims-and-output-claims-carefully"></a>仔細合併顯示宣告和輸出宣告的使用方式
 
-如果您在自我判斷技術設定檔中指定一個或多個**DisplayClaim**元素，您必須針對要在螢幕上顯示並從使用者收集的*每個*宣告使用 DisplayClaim。 包含至少一個顯示宣告的自我判斷技術設定檔不會顯示任何輸出宣告。
+如果您在自我判斷技術設定檔中指定一或多個 **DisplayClaim** 專案，您必須針對想要在螢幕上顯示並從使用者收集的 *每個* 宣告使用 DisplayClaim。 自動判斷提示的技術設定檔（至少包含一個顯示宣告）不會顯示任何輸出宣告。
 
-請考慮下列範例，其中的宣告 `age` 會定義為基底原則中的**輸出**宣告。 將任何顯示宣告新增至自我判斷技術設定檔之前， `age` 會在畫面上顯示宣告，以從使用者收集資料：
+請考慮下列範例，其中的宣告 `age` 會在基底原則中定義為 **輸出** 宣告。 將任何顯示宣告新增到自我判斷技術設定檔之前，宣告 `age` 會顯示在螢幕上，以便從使用者收集資料：
 
 ```xml
 <TechnicalProfile Id="id">
@@ -101,7 +101,7 @@ ms.locfileid: "85203447"
 </TechnicalProfile>
 ```
 
-如果繼承該基底的分葉原則之後，會將指定 `officeNumber` 為**顯示**宣告：
+如果繼承該基底的分葉原則接著將指定 `officeNumber` 為 **顯示** 宣告：
 
 ```xml
 <TechnicalProfile Id="id">
@@ -114,31 +114,31 @@ ms.locfileid: "85203447"
 </TechnicalProfile>
 ```
 
-`age`基底原則中的宣告不會再顯示給使用者，而是有效地「隱藏」。 若要顯示宣告 `age` 並收集使用者的年齡值，您必須加入 `age` **DisplayClaim**。
+`age`基底原則中的宣告不會再顯示在使用者的畫面上，它實際上是「隱藏」。 若要顯示宣告 `age` 並從使用者收集存留期值，您必須新增 `age` **DisplayClaim**。
 
 ## <a name="output-claims"></a>輸出宣告
 
-**OutputClaims**元素包含要傳回至下一個協調流程步驟的宣告清單。 只有從未設定過宣告時， **DefaultValue**屬性才會生效。 如果是在上一個協調流程步驟中設定，則即使使用者將值保留空白，預設值也不會生效。 若要強制使用預設值，請將 **AlwaysUseDefaultValue** 屬性設定為 `true`。
+**OutputClaims**元素包含要傳回至下一個協調流程步驟的宣告清單。 只有從未設定過宣告時， **DefaultValue** 屬性才會生效。 如果設定在先前的協調流程步驟中，即使使用者將值保留空白，預設值也不會生效。 若要強制使用預設值，請將 **AlwaysUseDefaultValue** 屬性設定為 `true`。
 
-基於安全性理由，密碼宣告值（ `UserInputType` 設定為 `Password` ）僅適用于自我判斷技術設定檔的驗證技術設定檔。 您無法在下一個協調流程步驟中使用密碼宣告。 
+基於安全性理由， (設定為) 的密碼宣告值 `UserInputType` `Password` 僅適用于自我判斷技術設定檔的驗證技術設定檔。 您無法在下一個協調流程步驟中使用密碼宣告。 
 
 > [!NOTE]
-> 在舊版的 Identity Experience Framework （IEF）中，輸出宣告是用來收集使用者的資料。 若要從使用者收集資料，請改用**DisplayClaims**集合。
+> 在舊版 Identity Experience Framework (IEF) 中，會使用輸出宣告來收集使用者的資料。 若要從使用者收集資料，請改用 **DisplayClaims** 集合。
 
 **OutputClaimsTransformations** 元素可能含有 **OutputClaimsTransformation** 的集合，用於修改輸出宣告或產生新的輸出宣告。
 
-### <a name="when-you-should-use-output-claims"></a>應該使用輸出宣告的時機
+### <a name="when-you-should-use-output-claims"></a>當您應使用輸出宣告時
 
 在自我判斷技術設定檔中，輸出宣告集合會將宣告傳回到下一個協調流程步驟。
 
 使用輸出宣告的時機：
 
 - **宣告是由輸出宣告轉換輸出**。
-- **在輸出宣告中設定預設值**，而不需從使用者收集資料，或從驗證技術設定檔傳回資料。 `LocalAccountSignUpWithLogonEmail` 自我判斷提示技術設定檔會將 **executed-SelfAsserted-Input** 宣告設定為 `true`。
+- **在輸出宣告中設定預設值** ，而不需要從使用者收集資料，或從驗證技術設定檔傳回資料。 `LocalAccountSignUpWithLogonEmail` 自我判斷提示技術設定檔會將 **executed-SelfAsserted-Input** 宣告設定為 `true`。
 - **驗證技術設定檔會傳回輸出宣告**：您的技術設定檔可能會呼叫驗證技術設定檔來傳回某些宣告。 您可能想要提升宣告，並將其傳回到使用者旅程圖中的下一個協調流程步驟。 例如，使用本機帳戶登入時，名為 `SelfAsserted-LocalAccountSignin-Email` 的自我判斷技術設定檔會呼叫名為 `login-NonInteractive` 的驗證技術設定檔。 此技術設定檔會驗證使用者認證，也會傳回使用者設定檔。 例如，'userPrincipalName'、'displayName'、'givenName' 與 'surName'。
-- **顯示控制項會傳回輸出宣告**-您的技術設定檔可能會有[顯示控制項](display-controls.md)的參考。 顯示控制項會傳回一些宣告，例如已驗證的電子郵件地址。 您可能想要提升宣告，並將其傳回到使用者旅程圖中的下一個協調流程步驟。 顯示控制項功能目前為**預覽**狀態。
+- **顯示控制項會傳回輸出宣告** ，您的技術設定檔可能會有 [顯示控制項](display-controls.md)的參考。 顯示控制項會傳回一些宣告，例如已驗證的電子郵件地址。 您可能想要提升宣告，並將其傳回到使用者旅程圖中的下一個協調流程步驟。 顯示控制項功能目前為 **預覽**狀態。
 
-下列範例示範如何使用自我判斷技術設定檔，以使用顯示宣告和輸出宣告。
+下列範例示範如何使用可同時使用顯示宣告和輸出宣告的自我判斷技術設定檔。
 
 ```xml
 <TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">
@@ -177,7 +177,7 @@ ms.locfileid: "85203447"
 
 ## <a name="persist-claims"></a>保存宣告
 
-不會使用 PersistedClaims 元素。 自我判斷技術設定檔不會保存資料來 Azure AD B2C。 而是改為呼叫負責保存資料的驗證技術設定檔。 例如，註冊原則會使用 `LocalAccountSignUpWithLogonEmail` 自我判斷技術設定檔來收集新的使用者設定檔。 `LocalAccountSignUpWithLogonEmail` 技術設定檔會呼叫驗證技術設定檔來建立 Azure AD B2C 中的帳戶。
+未使用 PersistedClaims 元素。 自我判斷技術設定檔不會保存要 Azure AD B2C 的資料。 而是改為呼叫負責保存資料的驗證技術設定檔。 例如，註冊原則會使用 `LocalAccountSignUpWithLogonEmail` 自我判斷技術設定檔來收集新的使用者設定檔。 `LocalAccountSignUpWithLogonEmail` 技術設定檔會呼叫驗證技術設定檔來建立 Azure AD B2C 中的帳戶。
 
 ## <a name="validation-technical-profiles"></a>驗證技術設定檔
 
@@ -189,24 +189,24 @@ ms.locfileid: "85203447"
 
 ## <a name="metadata"></a>中繼資料
 
-| 屬性 | 必要 | 說明 |
+| 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
-| 設定. operatingMode <sup>1</sup>| No | 對於登入頁面，此屬性會控制使用者名稱欄位的行為，例如輸入驗證和錯誤訊息。 預期的值：`Username` 或 `Email`。  |
-| AllowGenerationOfClaimsWithNullValues| No| [允許] 產生具有 null 值的宣告。 例如，在案例中，使用者不會選取核取方塊。|
-| ContentDefinitionReferenceId | Yes | 與此技術設定檔相關聯的[內容定義](contentdefinitions.md)識別碼。 |
-| EnforceEmailVerification | No | 針對註冊或設定檔編輯，強制執行電子郵件驗證。 可能的值：`true` (預設) 或 `false`。 |
-| setting.retryLimit | No | 控制使用者可以嘗試提供針對驗證技術設定檔所檢查之資料的次數。 例如，使用者嘗試使用已經存在的帳戶進行註冊，並持續嘗試，直到達到限制為止。
-| SignUpTarget <sup>1</sup>| No | 註冊目標交換識別碼。 當使用者按一下註冊按鈕時，Azure AD B2C 就會執行指定的交換識別碼。 |
-| setting.showCancelButton | No | 顯示取消按鈕。 可能的值：`true` (預設) 或 `false` |
-| setting.showContinueButton | No | 顯示繼續按鈕。 可能的值：`true` (預設) 或 `false` |
-| 設定. showSignupLink <sup>2</sup>| No | 顯示註冊按鈕。 可能的值：`true` (預設) 或 `false` |
-| 設定. forgotPasswordLinkLocation <sup>2</sup>| No| 顯示 [忘記密碼] 連結。 可能的值： `AfterInput` （預設）連結會顯示在頁面底部，或 `None` 移除 [忘記密碼] 連結。|
-| 設定. enableRememberMe <sup>2</sup>| No| 顯示 [[讓我保持登入](custom-policy-keep-me-signed-in.md)] 核取方塊。 可能的值： `true` 、或 `false` （預設）。 |
-| IncludeClaimResolvingInClaimsHandling  | No | 針對輸入和輸出宣告，指定技術設定檔中是否包含[宣告解析](claim-resolver-overview.md)。 可能的值： `true` 、或 `false`   （預設）。 如果您想要在技術設定檔中使用宣告解析程式，請將此設定為 `true` 。 |
+| 設定. operatingMode <sup>1</sup>| 否 | 對於登入頁面，此屬性會控制使用者名稱欄位的行為，例如輸入驗證和錯誤訊息。 預期的值：`Username` 或 `Email`。  |
+| AllowGenerationOfClaimsWithNullValues| 否| 允許產生具有 null 值的宣告。 例如，在案例中，使用者不會選取核取方塊。|
+| ContentDefinitionReferenceId | 是 | 與此技術設定檔相關聯的[內容定義](contentdefinitions.md)識別碼。 |
+| EnforceEmailVerification | 否 | 針對註冊或設定檔編輯，強制執行電子郵件驗證。 可能的值：`true` (預設) 或 `false`。 |
+| setting.retryLimit | 否 | 控制使用者可以嘗試提供針對驗證技術設定檔所檢查之資料的次數。 例如，使用者嘗試使用已經存在的帳戶進行註冊，並持續嘗試，直到達到限制為止。
+| SignUpTarget <sup>1</sup>| 否 | 註冊目標交換識別碼。 當使用者按一下註冊按鈕時，Azure AD B2C 就會執行指定的交換識別碼。 |
+| setting.showCancelButton | 否 | 顯示取消按鈕。 可能的值：`true` (預設) 或 `false` |
+| setting.showContinueButton | 否 | 顯示繼續按鈕。 可能的值：`true` (預設) 或 `false` |
+| 設定. showSignupLink <sup>2</sup>| 否 | 顯示註冊按鈕。 可能的值：`true` (預設) 或 `false` |
+| 設定. forgotPasswordLinkLocation <sup>2</sup>| 否| 顯示忘記的密碼連結。 可能的值： `AfterInput` (預設值) 連結會顯示在頁面底部，或 `None` 移除 [忘記密碼] 連結。|
+| 設定. enableRememberMe <sup>2</sup>| 否| 顯示 [ [讓我保持登入](custom-policy-keep-me-signed-in.md) ] 核取方塊。 可能的值： `true` 或 `false` (預設) 。 |
+| IncludeClaimResolvingInClaimsHandling  | 否 | 針對輸入和輸出宣告，指定技術設定檔中是否包含 [宣告解析](claim-resolver-overview.md) 。 可能的值： `true` 或 `false`   (預設) 。 如果您想要在技術設定檔中使用宣告解析程式，請將此設定為 `true` 。 |
 
 注意：
-1. 適用于內容定義[DataUri](contentdefinitions.md#datauri)類型為 `unifiedssp` 、或 `unifiedssd` 。
-1. 適用于內容定義[DataUri](contentdefinitions.md#datauri)類型為 `unifiedssp` 、或 `unifiedssd` 。 1.1.0 和更新[版本的頁面配置](page-layout.md)。
+1. 適用于內容定義 [DataUri](contentdefinitions.md#datauri) 類型的 `unifiedssp` 或 `unifiedssd` 。
+1. 適用于內容定義 [DataUri](contentdefinitions.md#datauri) 類型的 `unifiedssp` 或 `unifiedssd` 。 1.1.0 和更新[版本的頁面配置](page-layout.md)。
 
 ## <a name="cryptographic-keys"></a>密碼編譯金鑰
 

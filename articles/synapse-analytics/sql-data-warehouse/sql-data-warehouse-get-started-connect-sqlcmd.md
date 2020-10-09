@@ -1,6 +1,6 @@
 ---
 title: 使用 sqlcmd 連接
-description: 使用 sqlcmd 命令列公用程式來連接及查詢 Synapse SQL 集區。
+description: 使用 sqlcmd 命令列公用程式來連接和查詢 Synapse SQL 集區。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -12,10 +12,10 @@ ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 2e76f48466d084d448cceea0490e44041e7d062e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85212134"
 ---
 # <a name="connect-to-synapse-sql-pool-with-sqlcmd"></a>使用 sqlcmd 連接到 Synapse SQL 集區
@@ -28,20 +28,20 @@ ms.locfileid: "85212134"
 > * [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md)
 > * [SSMS](sql-data-warehouse-query-ssms.md)
 
-使用 [sqlcmd] [sqlcmd] 命令列公用程式來連接及查詢 SQL 集區。  
+使用 [sqlcmd] [sqlcmd] 命令列公用程式來連接和查詢 SQL 集區。  
 
 ## <a name="1-connect"></a>1.連線
 
-若要開始使用 [sqlcmd] [sqlcmd]，請開啟命令提示字元，然後輸入**sqlcmd** ，後面接著您的 SQL 集區資料庫的連接字串。 連接字串需要下列參數：
+若要開始使用 [sqlcmd] [sqlcmd]，請開啟命令提示字元，然後輸入 **sqlcmd** ，後面接著您的 SQL 集區資料庫的連接字串。 連接字串需要下列參數：
 
 * **伺服器 (-S)：** 採用 `<`Server Name`>`.database.windows.net 格式的伺服器
-* **資料庫（-d）：** 資料庫名稱。
-* **啟用引號識別碼（-I）：** 必須啟用引號識別碼，才能連接到 SQL 集區實例。
+* **資料庫 (-d) ：** 資料庫名稱。
+* **啟用引號識別碼 (-I) ：** 必須啟用引號識別碼，才能連接到 SQL 集區實例。
 
 若要使用 SQL Server 驗證，您需要新增使用者名稱/密碼參數︰
 
 * **使用者 (-U)：** `<`使用者`>`表單中的伺服器使用者
-* **密碼（-P）：** 與使用者相關聯的密碼。
+* **密碼 (-P) ：** 與使用者相關聯的密碼。
 
 例如，您的連接字串看起來可能如下所示︰
 
@@ -85,4 +85,4 @@ sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@sswor
 
 ## <a name="next-steps"></a>後續步驟
 
-如需 sqlcmd 中可用選項的詳細資訊，請參閱[sqlcmd 檔](/sql/tools/sqlcmd-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。
+如需 sqlcmd 中可用選項的詳細資訊，請參閱 [sqlcmd 檔](/sql/tools/sqlcmd-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。

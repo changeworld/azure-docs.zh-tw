@@ -11,10 +11,10 @@ ms.date: 09/10/2018
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 37d9bd78a80ac52d2a790537bf47e33807720349
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85202954"
 ---
 # <a name="claimstransformations"></a>ClaimsTransformations
@@ -33,12 +33,12 @@ ms.locfileid: "85202954"
 </ClaimsTransformations>
 ```
 
-**ClaimsTransformation**元素包含下列屬性：
+**用 claimstransformation**元素包含下列屬性：
 
-| 屬性 |必要 | 說明 |
+| 屬性 |必要 | 描述 |
 | --------- |-------- | ----------- |
-| Id |Yes | 用來唯一識別宣告轉換的識別碼。 此識別碼會從原則中的其他 XML 元素參考。 |
-| TransformationMethod | Yes | 要在宣告轉換中使用的轉換方法。 每個宣告轉換都有自己的值。 如需可用值的完整清單，請參閱[宣告轉換參考](#claims-transformations-reference)。 |
+| Id |是 | 用來唯一識別宣告轉換的識別碼。 此識別碼會從原則中的其他 XML 元素參考。 |
+| TransformationMethod | 是 | 要在宣告轉換中使用的轉換方法。 每個宣告轉換都有自己的值。 如需可用值的完整清單，請參閱[宣告轉換參考](#claims-transformations-reference)。 |
 
 ## <a name="claimstransformation"></a>ClaimsTransformation
 
@@ -59,7 +59,7 @@ ms.locfileid: "85202954"
 ```
 
 
-| 元素 | 發生次數 | Description |
+| 元素 | 發生次數 | 描述 |
 | ------- | -------- | ----------- |
 | InputClaims | 0:1 | **InputClaim** 元素的清單，會指定要取得以作為宣告轉換輸入的宣告類型。 這些元素中的每一個都會參考已經定義於原則 ClaimsSchema 區段中的 ClaimType。 |
 | InputParameters | 0:1 | **InputParameter** 元素的清單，可提供來作為宣告轉換的輸入。
@@ -69,7 +69,7 @@ ms.locfileid: "85202954"
 
 **InputClaims** 元素包含下列元素：
 
-| 元素 | 發生次數 | Description |
+| 元素 | 發生次數 | 描述 |
 | ------- | ----------- | ----------- |
 | InputClaim | 1:n | 預期的輸入宣告類型。 |
 
@@ -77,32 +77,32 @@ ms.locfileid: "85202954"
 
 **InputClaim** 元素包含下列屬性：
 
-| 屬性 |必要 | 說明 |
+| 屬性 |必要 | 描述 |
 | --------- | ----------- | ----------- |
-| ClaimTypeReferenceId |Yes | 對已經定義於原則 ClaimsSchema 區段中之 ClaimType 的參考。 |
-| TransformationClaimType |Yes | 要參考轉換宣告類型的識別碼。 每個宣告轉換都有自己的值。 如需可用值的完整清單，請參閱[宣告轉換參考](#claims-transformations-reference)。 |
+| ClaimTypeReferenceId |是 | 對已經定義於原則 ClaimsSchema 區段中之 ClaimType 的參考。 |
+| TransformationClaimType |是 | 要參考轉換宣告類型的識別碼。 每個宣告轉換都有自己的值。 如需可用值的完整清單，請參閱[宣告轉換參考](#claims-transformations-reference)。 |
 
 ### <a name="inputparameters"></a>InputParameters
 
 **InputParameters** 元素包含下列元素：
 
-| 元素 | 發生次數 | Description |
+| 元素 | 發生次數 | 描述 |
 | ------- | ----------- | ----------- |
 | InputParameter | 1:n | 預期的輸入參數。 |
 
 #### <a name="inputparameter"></a>InputParameter
 
-| 屬性 | 必要 |說明 |
+| 屬性 | 必要 |描述 |
 | --------- | ----------- |----------- |
-| Id | Yes | 識別碼，其為對宣告轉換方法之參數的參考。 每個宣告轉換方法都有自己的值。 如需可用值的完整清單，請參閱宣告轉換表。 |
-| DataType | Yes | 參數的資料類型，例如字串、布林值、整數或日期時間，其會以自訂原則 XML 結構描述中的每個 DataType 列舉為依據。 此類型可用來正確地執行算術運算。 每個宣告轉換都有自己的值。 如需可用值的完整清單，請參閱[宣告轉換參考](#claims-transformations-reference)。 |
-| 值 | Yes | 要逐字傳遞到轉換的值。 某些值是任意的，它們其中有一些是您從宣告轉換方法中選取的。 |
+| Id | 是 | 識別碼，其為對宣告轉換方法之參數的參考。 每個宣告轉換方法都有自己的值。 如需可用值的完整清單，請參閱宣告轉換表。 |
+| DataType | 是 | 參數的資料類型，例如字串、布林值、整數或日期時間，其會以自訂原則 XML 結構描述中的每個 DataType 列舉為依據。 此類型可用來正確地執行算術運算。 每個宣告轉換都有自己的值。 如需可用值的完整清單，請參閱[宣告轉換參考](#claims-transformations-reference)。 |
+| 值 | 是 | 要逐字傳遞到轉換的值。 某些值是任意的，它們其中有一些是您從宣告轉換方法中選取的。 |
 
 ### <a name="outputclaims"></a>OutputClaims
 
 **OutputClaims** 元素包含下列元素：
 
-| 元素 | 發生次數 | Description |
+| 元素 | 發生次數 | 描述 |
 | ------- | ----------- | ----------- |
 | OutputClaim | 0:n | 預期的輸出宣告類型。 |
 
@@ -110,10 +110,10 @@ ms.locfileid: "85202954"
 
 **OutputClaim** 元素包含下列屬性：
 
-| 屬性 |必要 | 說明 |
+| 屬性 |必要 | 描述 |
 | --------- | ----------- |----------- |
-| ClaimTypeReferenceId | Yes | 對已經定義於原則 ClaimsSchema 區段中之 ClaimType 的參考。
-| TransformationClaimType | Yes | 要參考轉換宣告類型的識別碼。 每個宣告轉換都有自己的值。 如需可用值的完整清單，請參閱[宣告轉換參考](#claims-transformations-reference)。 |
+| ClaimTypeReferenceId | 是 | 對已經定義於原則 ClaimsSchema 區段中之 ClaimType 的參考。
+| TransformationClaimType | 是 | 要參考轉換宣告類型的識別碼。 每個宣告轉換都有自己的值。 如需可用值的完整清單，請參閱[宣告轉換參考](#claims-transformations-reference)。 |
 
 如果輸入宣告和輸出宣告的類型一樣 (字串或布林值)，則您可以使用相同的輸入宣告作為輸出宣告。 在此情況下，宣告轉換會使用輸出值來變更輸入宣告。
 
@@ -159,7 +159,7 @@ ms.locfileid: "85202954"
 
 如需宣告轉換的範例，請參閱下列參考頁面：
 
-- [True](boolean-transformations.md)
+- [布林值](boolean-transformations.md)
 - [日期](date-transformations.md)
 - [整數](integer-transformations.md)
 - [JSON](json-transformations.md)
