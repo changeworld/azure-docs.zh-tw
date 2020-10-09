@@ -1,20 +1,20 @@
 ---
-title: 適用于 Azure Service Fabric 網格的術語
-description: 本文詳細說明 Azure Service Fabric 網格所使用的術語，以協助您進一步瞭解檔中使用的詞彙。
-author: dkkapur
-ms.author: dekapur
+title: 適用于 Azure Service Fabric 網狀的術語
+description: 本文將詳細說明 Azure Service Fabric 網格所使用的術語，以協助您進一步瞭解檔中使用的詞彙。
+author: georgewallace
+ms.author: gwallace
 ms.date: 11/28/2018
 ms.topic: conceptual
-ms.openlocfilehash: fcd17c64ac41056420a22e328d13862e52bd99bd
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: d82df6ee598664c2b85cfa82395ac66f3865cf7f
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86246719"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91843001"
 ---
 # <a name="service-fabric-mesh-terminology"></a>Service Fabric Mesh 術語
 
-Azure Service Fabric Mesh 是一個受到完整管理的服務，讓開發人員能夠部署微服務應用程式，而不需管理虛擬機器、儲存體或網路功能。 本文詳細說明 Azure Service Fabric 網格所使用的術語，以協助您進一步瞭解檔中使用的詞彙。
+Azure Service Fabric Mesh 是一個受到完整管理的服務，讓開發人員能夠部署微服務應用程式，而不需管理虛擬機器、儲存體或網路功能。 本文將詳細說明 Azure Service Fabric 網格所使用的術語，以協助您進一步瞭解檔中使用的詞彙。
 
 ## <a name="service-fabric"></a>Service Fabric
 
@@ -75,7 +75,7 @@ Service Fabric 是一項開放原始碼平台技術，有數個不同的服務�
 
 | 應用程式類型 | 描述依據 | Visual Studio | Eclipse | SFCTL | AZ CLI | Powershell|
 |---|---|---|---|---|---|---|
-| Service Fabric Mesh 應用程式 | 資源模型 (YAML & JSON) | VS 2017 |不受支援 |不受支援 | 支援 - 僅限 Mesh 環境 | 不支援|
+| Service Fabric Mesh 應用程式 | 資源模型 (YAML & JSON) | VS 2017 |不支援 |不支援 | 支援 - 僅限 Mesh 環境 | 不支援|
 |Service Fabric 原生應用程式 | 原生應用程式模型 (XML) | VS 2017 和 VS 2015| 支援|支援|支援|支援|
 
 ## <a name="next-steps"></a>後續步驟

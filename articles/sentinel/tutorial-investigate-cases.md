@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: yelevin
-ms.openlocfilehash: 4ef08ac8d386bd8a28dce38cb53aed31d79b37a2
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.openlocfilehash: 648d456534e86075a243a84ac0485d95a7f28479
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88566330"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91843102"
 ---
 # <a name="tutorial-investigate-incidents-with-azure-sentinel"></a>教學課程：使用 Azure Sentinel 調查事件
 
@@ -119,11 +119,11 @@ ms.locfileid: "88566330"
 - 錯誤正面-不正確的資料
 - 待定
 
-:::image type="content" source="media/tutorial-investigate-cases/closing-reasons-dropdown.png" alt-text="{alt-text}":::
+:::image type="content" source="media/tutorial-investigate-cases/closing-reasons-dropdown.png" alt-text="醒目顯示 [選取分類] 清單中可用分類的螢幕擷取畫面。":::
 
 選擇適當的分類之後，請在 [ **批註** ] 欄位中加入一些描述性文字。 當您需要回頭參考此事件時，這會很有用。 當 **您** 完成時，請按一下 [套用]，事件將會關閉。
 
-:::image type="content" source="media/tutorial-investigate-cases/closing-reasons-comment-apply.png" alt-text="{alt-text}":::
+:::image type="content" source="media/tutorial-investigate-cases/closing-reasons-comment-apply.png" alt-text="醒目顯示 [選取分類] 清單中可用分類的螢幕擷取畫面。":::
 
 ## <a name="next-steps"></a>後續步驟
 在本教學課程中，您已瞭解如何使用 Azure Sentinel 開始調查事件。 繼續進行教學課程，以瞭解 [如何使用自動化的操作手冊來回應威脅](tutorial-respond-threats-playbook.md)。

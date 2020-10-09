@@ -1,18 +1,18 @@
 ---
 title: Azure IoT 中樞裝置布建服務-裝置概念
-description: 說明 Azure IoT 中樞裝置布建服務（DPS）的裝置重新布建概念
+description: '描述 (DPS Azure IoT 中樞裝置布建服務的裝置重新布建概念) '
 author: wesmc7777
 ms.author: wesmc
 ms.date: 04/04/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 2bf369b784cddf307abc59d2b8766fc8a87e0985
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9653a584382584d982c55008a6e8547de28691b7
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74975341"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91842847"
 ---
 # <a name="iot-hub-device-reprovisioning-concepts"></a>IoT 中樞裝置重新佈建概念
 
@@ -30,9 +30,9 @@ ms.locfileid: "74975341"
 
 ## <a name="device-state-data"></a>裝置狀態資料
 
-裝置狀態資料是由[裝置](../iot-hub/iot-hub-devguide-device-twins.md)對應項和裝置功能所組成。 此資料儲存在裝置佈建服務執行個體與裝置指派後所屬的 IoT 中樞中。
+裝置狀態資料是由 [裝置](../iot-hub/iot-hub-devguide-device-twins.md) 對應項和裝置功能所組成。 此資料儲存在裝置佈建服務執行個體與裝置指派後所屬的 IoT 中樞中。
 
-![使用裝置佈建服務佈建](./media/concepts-device-reprovisioning/dps-provisioning.png)
+![此圖顯示布建如何搭配裝置布建服務運作。](./media/concepts-device-reprovisioning/dps-provisioning.png)
 
 最初使用裝置佈建服務執行個體佈建裝置時，會執行下列步驟：
 
@@ -50,15 +50,15 @@ ms.locfileid: "74975341"
 
 根據情況，裝置通常會在重新開機時，將要求傳送至佈建服務執行個體。 它也支援依需求手動觸發佈建的方法。 註冊項目上的重新佈建原則會決定裝置佈建服務執行個體如何處理這些佈建要求。 此原則也會決定是否應該在重新佈建期間移轉裝置狀態資料。 相同原則可供個別註冊與註冊群組使用：
 
-* **重新佈建和移轉資料**：此原則為新註冊項目的預設值。 此原則會在與註冊項目關聯的裝置提交新的要求 (1) 時採取動作。 視註冊項目設定而定，裝置可能會重新指派給其他 IoT 中樞。 如果裝置所屬的 IoT 中樞有所變更，將會移除初始 IoT 中樞中的裝置註冊。 該初始 IoT 中樞中已更新的裝置狀態資訊將會移轉至新的 IoT 中樞 (2)。 在遷移期間，裝置的狀態將會回報為 [**指派**]。
+* **重新佈建和移轉資料**：此原則為新註冊項目的預設值。 此原則會在與註冊項目關聯的裝置提交新的要求 (1) 時採取動作。 視註冊項目設定而定，裝置可能會重新指派給其他 IoT 中樞。 如果裝置所屬的 IoT 中樞有所變更，將會移除初始 IoT 中樞中的裝置註冊。 該初始 IoT 中樞中已更新的裝置狀態資訊將會移轉至新的 IoT 中樞 (2)。 在遷移期間，裝置的狀態將會回報為 [ **指派**]。
 
-    ![使用裝置佈建服務佈建](./media/concepts-device-reprovisioning/dps-reprovisioning-migrate.png)
+    ![此圖顯示當與註冊專案關聯的裝置提交新的要求時，原則會採取動作。](./media/concepts-device-reprovisioning/dps-reprovisioning-migrate.png)
 
-* **重新佈建並重設為初始設定**：此原則會在與註冊項目關聯的裝置提交新的佈建要求 (1) 時採取動作。 視註冊項目設定而定，裝置可能會重新指派給其他 IoT 中樞。 如果裝置所屬的 IoT 中樞有所變更，將會移除初始 IoT 中樞中的裝置註冊。 系統會將佈建服務執行個體在佈建裝置時收到的初始設定資料提供給新的 IoT 中樞 (2)。 在遷移期間，裝置的狀態將會回報為 [**指派**]。
+* **重新佈建並重設為初始設定**：此原則會在與註冊項目關聯的裝置提交新的佈建要求 (1) 時採取動作。 視註冊項目設定而定，裝置可能會重新指派給其他 IoT 中樞。 如果裝置所屬的 IoT 中樞有所變更，將會移除初始 IoT 中樞中的裝置註冊。 系統會將佈建服務執行個體在佈建裝置時收到的初始設定資料提供給新的 IoT 中樞 (2)。 在遷移期間，裝置的狀態將會回報為 [ **指派**]。
 
     此原則通常會用於在不變更 IoT 中樞的情況下，恢復出廠預設值。
 
-    ![使用裝置佈建服務佈建](./media/concepts-device-reprovisioning/dps-reprovisioning-reset.png)
+    ![此圖顯示當與註冊專案關聯的裝置提交新的布建要求時，原則如何採取動作。](./media/concepts-device-reprovisioning/dps-reprovisioning-reset.png)
 
 * **永不重新佈建**：裝置永遠不會重新指派給其他中樞。 提供此原則的目的是為了管理回溯相容性。
 

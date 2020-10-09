@@ -1,16 +1,14 @@
 ---
-title: 設定 Azure Service Fabric 獨立叢集
+title: 設定您的 Azure Service Fabric 獨立叢集
 description: 了解如何設定獨立或內部部署 Service Fabric 叢集。
-author: dkkapur
 ms.topic: conceptual
 ms.date: 11/12/2018
-ms.author: dekapur
-ms.openlocfilehash: e8a1fdfb23b6e0aee9b9bdd04f70c554824f4c35
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: fd93263b38340ce080cca1aecb98f3a599ff1861
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86246566"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91843153"
 ---
 # <a name="configuration-settings-for-a-standalone-windows-cluster"></a>獨立 Windows 叢集的組態設定
 本文說明如何在 ClusterConfig.json** 檔案中設定獨立 Azure Service Fabric 叢集的組態設定。 您將會使用此檔案來指定叢集節點、安全性設定，以及容錯和升級網域方面之網路拓撲的相關資訊。  變更或新增組態設定之後，您可以[建立獨立叢集](service-fabric-cluster-creation-for-windows-server.md)或[升級獨立叢集的組態](service-fabric-cluster-config-upgrade-windows-server.md)。
@@ -19,9 +17,9 @@ ms.locfileid: "86246566"
 
 * ClusterConfig.Unsecure.DevCluster.json 和 ClusterConfig.Unsecure.MultiMachine.json 分別示範如何建立不安全的測試或生產叢集。
 
-* ClusterConfig.Windows.DevCluster.js開啟和 ClusterConfig.Windows.MultiMachine.js，說明如何使用[Windows 安全性](service-fabric-windows-cluster-windows-security.md)來建立受保護的測試或生產叢集。
+* ClusterConfig.Windows.DevCluster.json 和 ClusterConfig.Windows.MultiMachine.js說明如何建立使用 [Windows 安全性](service-fabric-windows-cluster-windows-security.md)保護的測試或生產叢集。
 
-* ClusterConfig.X509.DevCluster.js開啟和 ClusterConfig.X509.MultiMachine.js，說明如何使用[X509 憑證安全性](service-fabric-windows-cluster-x509-security.md)來建立受保護的測試或生產叢集。
+* ClusterConfig.X509.DevCluster.json 和 ClusterConfig.X509.MultiMachine.js說明如何建立使用 [X509 憑證安全性](service-fabric-windows-cluster-x509-security.md)保護的測試或生產叢集。
 
 現在，讓我們檢視 ClusterConfig.json 檔案的各個區段。
 
@@ -113,7 +111,7 @@ security 區段對於安全獨立的 Service Fabric 叢集是必要的項目。 
 }
 ```
 
-metadata 是安全叢集的說明，而且可根據您的設定來進行設定。 ClusterCredentialType 和 ServerCredentialType 決定叢集和節點會實作的安全性類型。 針對以憑證為基礎的安全性或*Windows* ，可以將它們設定為*X509* ，以 Active Directory 為基礎的安全性。 其餘的 security 區段則是根據安全性類型。 如需如何填滿其餘 security 區段的相關資訊，請參閱[獨立叢集中的憑證式安全性](service-fabric-windows-cluster-x509-security.md)或[獨立叢集中的 Windows 安全性](service-fabric-windows-cluster-windows-security.md)。
+metadata 是安全叢集的說明，而且可根據您的設定來進行設定。 ClusterCredentialType 和 ServerCredentialType 決定叢集和節點會實作的安全性類型。 您可以針對以憑證為基礎的安全性或*Windows* ，將它們設定為*X509* ，以 Active Directory 為基礎的安全性。 其餘的 security 區段則是根據安全性類型。 如需如何填滿其餘 security 區段的相關資訊，請參閱[獨立叢集中的憑證式安全性](service-fabric-windows-cluster-x509-security.md)或[獨立叢集中的 Windows 安全性](service-fabric-windows-cluster-windows-security.md)。
 
 ### <a name="node-types"></a>節點類型
 nodeTypes 區段說明叢集所擁有的節點類型。 至少必須針對叢集指定一個節點類型，如下列程式碼片段所示： 
@@ -193,13 +191,13 @@ name 是此特定節點類型的易記名稱。 若要建立此節點類型的�
     ]
 }
 ```
-所有可用的附加元件功能都可以在[Service Fabric REST API 參考](/rest/api/servicefabric/sfrp-model-addonfeatures)中看到。
+您可以在 [Service Fabric REST API 參考](/rest/api/servicefabric/sfrp-model-addonfeatures)中看到所有可用的附加元件功能。
 
 ### <a name="container-support"></a>容器支援
 若要啟用獨立叢集的 Windows Server 容器和 Hyper-V 容器的容器支援，必須啟用 DnsService 附加功能。
 
 ## <a name="next-steps"></a>後續步驟
-當您已根據獨立叢集安裝程式設定完整*的檔案ClusterConfig.js*之後，就可以部署叢集。 請遵循[建立獨立 Service Fabric 叢集](service-fabric-cluster-creation-for-windows-server.md)中的步驟來進行。 
+當您有根據獨立叢集安裝程式設定的完整 *ClusterConfig.js* 檔案之後，您就可以部署叢集。 請遵循[建立獨立 Service Fabric 叢集](service-fabric-cluster-creation-for-windows-server.md)中的步驟來進行。 
 
 如果您已部署獨立叢集，您也可以[升級獨立叢集的組態](service-fabric-cluster-config-upgrade-windows-server.md)。 
 

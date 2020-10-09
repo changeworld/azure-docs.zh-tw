@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: sudbalas
-ms.openlocfilehash: d110630ad3291473aee395259d1aaa623a935f5f
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 9060c00e1523db0671d9698465c8e8fcb6340785
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91825476"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91842830"
 ---
 # <a name="secure-access-to-a-key-vault"></a>針對金鑰保存庫的存取進行保護
 
@@ -42,7 +42,7 @@ Azure Key Vault 是用來保護加密金鑰和祕密 (例如憑證、連接字�
 
 ## <a name="key-vault-authentication-options"></a>Key Vault 驗證選項
 
-當您在 Azure 訂用帳戶中建立金鑰保存庫時，它會自動與該訂用帳戶的 Azure AD 租用戶建立關聯。 這兩個平面中的所有呼叫者都必須在此租用戶中註冊，並經過驗證才能存取金鑰保存庫。 在這兩種情況中，應用程式均可透過兩種方式存取 Key Vault︰
+當您在 Azure 訂用帳戶中建立金鑰保存庫時，它會自動與該訂用帳戶的 Azure AD 租用戶建立關聯。 這兩個平面中的所有呼叫者都必須在此租用戶中註冊，並經過驗證才能存取金鑰保存庫。 在這兩種情況下，應用程式都可以透過三種方式存取 Key Vault：
 
 - **僅限應用程式**：應用程式代表服務主體或受控識別。 對於定期需要從金鑰保存庫存取憑證、金鑰或密碼的應用程式，此身分識別是最常見的案例。 若要讓此案例正常運作， `objectId` 必須在存取原則中指定應用程式的，且 `applicationId` 不得_not_指定或必須是 `null` 。
 - **僅限使用者**：使用者從租使用者中註冊的任何應用程式存取金鑰保存庫。 舉例來說，這類存取包括 Azure PowerShell 和 Azure 入口網站。 若要讓此案例正常運作， `objectId` 必須在存取原則中指定使用者的，且 `applicationId` 不得指定_not_或必須是 `null` 。
@@ -71,7 +71,7 @@ Azure Key Vault 是用來保護加密金鑰和祕密 (例如憑證、連接字�
 
 在管理平面中，您會使用 [azure 角色型存取控制 (AZURE RBAC) ](https://docs.microsoft.com/azure/role-based-access-control/overview) 來授權呼叫者可以執行的作業。 在 Azure RBAC 模型中，每個 Azure 訂用帳戶都有 Azure AD 的實例。 您可以對來自該目錄的使用者、群組和應用程式授與存取權。 授與存取權即可在 Azure 訂用帳戶中管理使用 Azure Resource Manager 部署模型的資源。
 
-您可以使用 Azure AD 在資源群組中建立金鑰保存庫和管理存取權。 您可以對使用者或群組授與在資源群組中管理金鑰保存庫的能力。 您可以藉由指派適當的 Azure 角色，授與特定範圍層級的存取權。 若要對使用者授與管理金鑰保存庫的權限，您可以在特定範圍對使用者指派預先定義的 `key vault Contributor` 角色。 下列範圍層級可以指派給 Azure 角色：
+您可以使用 Azure AD 在資源群組中建立金鑰保存庫和管理存取權。 您可以對使用者或群組授與在資源群組中管理金鑰保存庫的能力。 您可以藉由指派適當的 Azure 角色，授與特定範圍層級的存取權。 若要授與使用者存取權以管理金鑰保存庫，您可以將預先定義的 [Key Vault 參與者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#key-vault-contributor) 角色指派給特定範圍的使用者。 下列範圍層級可以指派給 Azure 角色：
 
 - **訂**用帳戶：在訂用帳戶層級指派的 Azure 角色會套用到該訂用帳戶內的所有資源群組和資源。
 - **資源群組**：在資源群組層級指派的 Azure 角色會套用至該資源群組中的所有資源。
@@ -184,11 +184,11 @@ Azure 角色型存取控制是一個替代的許可權模型，用來控制可�
 
 | 角色 | 管理平面權限 | 資料平面許可權-保存庫存取原則 | 資料平面許可權-Azure RBAC (預覽版)   |
 | --- | --- | --- | --- |
-| 安全性小組 | Key Vault 參與者 | 憑證：所有作業 <br> 金鑰：所有作業 <br> 祕密：所有作業 | Key Vault 系統管理員 (預覽)  |
+| 安全性小組 | [Key Vault 參與者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#key-vault-contributor) | 憑證：所有作業 <br> 金鑰：所有作業 <br> 祕密：所有作業 | [Key Vault 系統管理員 (預覽) ](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#key-vault-administrator-preview) |
 | 開發人員和&nbsp;操作員 | Key Vault 部署權限<br><br> **注意**：此權限可讓已部署的 VM 從金鑰保存庫擷取祕密。 | None | None |
-| 稽核員 | None | 憑證：清單 <br> 金鑰︰列出<br>密碼︰列出<br><br> **注意**：此權限可讓稽核員檢查未在記錄中顯現的金鑰和密碼所具有的屬性 (標籤、啟用日和到期日)。 | Key Vault 讀者 (預覽)  |
-| Azure 儲存體帳戶 | None | 索引鍵： get、list、wrapKey、unwrapKey <br> | Key Vault 加密服務加密 |
-| Application | None | 秘密： get、list <br> 憑證： get、list | Key Vault 讀者 (預覽) 、Key Vault Secret 使用者 (preview)  |
+| 稽核員 | None | 憑證：清單 <br> 金鑰︰列出<br>密碼︰列出<br><br> **注意**：此權限可讓稽核員檢查未在記錄中顯現的金鑰和密碼所具有的屬性 (標籤、啟用日和到期日)。 | [Key Vault 讀者 (預覽) ]https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#key-vault-reader-preview |
+| Azure 儲存體帳戶 | 無 | 索引鍵： get、list、wrapKey、unwrapKey <br> | [Key Vault 加密服務加密](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#key-vault-crypto-service-encryption-preview) |
+| Application | None | 秘密： get、list <br> 憑證： get、list | [Key Vault 讀者 (預覽) ](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#key-vault-reader-preview)、 [Key Vault Secret 使用者 (preview) ](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#key-vault-secrets-user-preview) |
 
 這三個小組角色需要其他資源的存取權以及 Key Vault 權限。 若要部署 Vm (或 Azure App Service) 的 Web Apps 功能，開發人員和操作員需要部署存取權。 稽核員需要儲存 Key Vault 記錄所在儲存體帳戶的讀取權限。
 
@@ -199,9 +199,13 @@ Azure 角色型存取控制是一個替代的許可權模型，用來控制可�
 
 ## <a name="resources"></a>資源
 
-* [Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md)
+[關於 Azure Key Vault](overview.md) 
+[Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) 
+[Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md) 
+[AZURE RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview) 
+[Private Link](https://docs.microsoft.com/azure/private-link/private-link-overview)
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 [向 Azure Key Vault 進行驗證](authentication.md)
 

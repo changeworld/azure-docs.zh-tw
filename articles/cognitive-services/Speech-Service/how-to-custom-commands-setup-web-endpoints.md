@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 1b7b5e209329bd5dc4c95f81f61fecf48fb74e40
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: e64c5ddfafb8bc8e9041e6d6b3e473a9a20565ed
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91362105"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91843119"
 ---
 # <a name="set-up-web-endpoints"></a>設定 Web 端點
 
@@ -79,7 +79,7 @@ ms.locfileid: "91362105"
     在 [簡單編輯器] 中，輸入 `{SubjectDevice} is {OnOff}`。
    
    > [!div class="mx-imgBorder"]
-   > ![成功時呼叫 Web 端點動作](media/custom-commands/setup-web-endpoint-edit-action-on-success-send-response.png)
+   > ![顯示 [執行中] 動作的螢幕擷取畫面。](media/custom-commands/setup-web-endpoint-edit-action-on-success-send-response.png)
 
    | 設定 | 建議的值 | 描述 |
    | ------- | --------------- | ----------- |
@@ -107,7 +107,7 @@ ms.locfileid: "91362105"
 - 成功時的回應\
 儲存、定型和測試
    > [!div class="mx-imgBorder"]
-   > ![成功時呼叫 Web 端點動作](media/custom-commands/setup-web-endpoint-on-success-response.png)
+   > ![顯示成功回應的螢幕擷取畫面。](media/custom-commands/setup-web-endpoint-on-success-response.png)
 - 失敗時的回應\
 移除其中一個查詢參數、儲存、重新定型和測試
    > [!div class="mx-imgBorder"]

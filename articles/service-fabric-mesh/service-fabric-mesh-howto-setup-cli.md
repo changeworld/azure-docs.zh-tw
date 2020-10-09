@@ -1,19 +1,19 @@
 ---
-title: 設定 Azure Service Fabric 網格 CLI
-description: 必須使用 Service Fabric Mesh 命令列介面 (CLI)，才能在本機和 Azure Service Fabric Mesh 中部署及管理資源。 設定方式如下。
-author: dkkapur
-ms.author: dekapur
+title: 設定 Azure Service Fabric 網狀 CLI
+description: 必須使用 Service Fabric Mesh 命令列介面 (CLI)，才能在本機和 Azure Service Fabric Mesh 中部署及管理資源。 以下是設定它的方式。
+author: georgewallace
+ms.author: gwallace
 ms.date: 11/28/2018
 ms.topic: conceptual
-ms.openlocfilehash: 3ce2dbcefa63cc55a66e712664d1436ca24d3a1d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: fb059fe5dc4e64df104e026983e51f799236f916
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86248487"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91842779"
 ---
 # <a name="set-up-service-fabric-mesh-cli"></a>設定 Service Fabric Mesh CLI
-必須使用 Service Fabric Mesh 命令列介面 (CLI)，才能在本機和 Azure Service Fabric Mesh 中部署及管理資源。 設定方式如下。
+必須使用 Service Fabric Mesh 命令列介面 (CLI)，才能在本機和 Azure Service Fabric Mesh 中部署及管理資源。 以下是設定它的方式。
 
 有三種類型的 CLI 可供使用，其摘要說明請見下表。
 
@@ -21,14 +21,14 @@ ms.locfileid: "86248487"
 |---|---|---|
 | az mesh | Azure Service Fabric Mesh | 可讓您在 Azure Service Fabric Mesh 環境中部署應用程式和管理資源的主要 CLI。 
 | sfctl | 本機叢集 | 可讓您對本機叢集部署及測試 Service Fabric 資源的 Service Fabric CLI。  
-| Maven CLI | 本機叢集和 Azure Service Fabric Mesh | 和的包裝函式，可 `az mesh` `sfctl` 讓 JAVA 開發人員使用熟悉的命令列體驗來進行本機和 Azure 開發體驗。  
+| Maven CLI | 本機叢集和 Azure Service Fabric Mesh | 的包裝函式，可 `az mesh` `sfctl` 讓 JAVA 開發人員針對本機和 Azure 開發體驗使用熟悉的命令列體驗。  
 
 針對預覽版本，Azure Service Fabric Mesh CLI 是以 Azure CLI 擴充功能的形式撰寫。 您可以將其安裝在 Azure Cloud Shell 或 Azure CLI 的本機安裝上。 
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] 
 
 ## <a name="install-the-azure-service-fabric-mesh-cli"></a>安裝 Azure Service Fabric Mesh CLI
-1. 您必須安裝 Azure CLI 版2.0.67 或更新版本。 執行 `az --version` 以尋找版本。 若要安裝或升級至最新版本的 CLI，請參閱[安裝 Azure CLI][azure-cli-install]。
+1. 您必須安裝 Azure CLI 2.0.67 版版或更新版本。 執行 `az --version` 以尋找版本。 若要安裝或升級至最新版本的 CLI，請參閱[安裝 Azure CLI][azure-cli-install]。
 
 2. 使用下列命令安裝 Azure Service Fabric Mesh CLI 擴充功能模組。 
 

@@ -1,17 +1,17 @@
 ---
-title: 在 Service Fabric 網狀應用程式中使用以 Azure 檔案儲存體為基礎的磁片區
+title: 在 Service Fabric 網格應用程式中使用以 Azure 檔案儲存體為基礎的磁片區
 description: 了解如何使用 Azure CLI 在服務內裝載以檔案儲存體為基礎的磁碟區，以在 Azure Service Fabric Mesh 應用程式中儲存狀態。
-author: dkkapur
+author: georgewallace
 ms.topic: conceptual
 ms.date: 11/21/2018
-ms.author: dekapur
+ms.author: gwallace
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 54edc242260479a8f48cc4aae91845041fc2d376
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 01cee3dc3f6b67aba1e6f8455ed7b538a44fc6f7
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260095"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91842782"
 ---
 # <a name="mount-an-azure-files-based-volume-in-a-service-fabric-mesh-application"></a>在 Service Fabric Mesh 應用程式中裝載以檔案儲存體為基礎的磁碟區 
 
@@ -21,13 +21,13 @@ ms.locfileid: "86260095"
 
 ## <a name="prerequisites"></a>必要條件
 > [!NOTE]
-> **WINDOWS RS5 開發電腦上部署的已知問題：** RS5 Windows 機器上的 Powershell Cmdlet SmbGlobalMapping 有 open bug，可防止掛接 Azurefile 磁片區。 以下是在本機開發電腦上裝載以 AzureFile 為基礎的磁片區時，所遇到的範例錯誤。
+> **WINDOWS RS5 開發電腦上的部署已知問題：** Powershell Cmdlet 的 open bug New-SmbGlobalMapping 在防止掛接 Azurefile 磁片區的 RS5 Windows 電腦上。 以下是以 AzureFile 為基礎的磁片區掛接在本機開發機器時所遇到的範例錯誤。
 ```
 Error event: SourceId='System.Hosting', Property='CodePackageActivation:counterService:EntryPoint:131884291000691067'.
 There was an error during CodePackage activation.System.Fabric.FabricException (-2147017731)
 Failed to start Container. ContainerName=sf-2-63fc668f-362d-4220-873d-85abaaacc83e_6d6879cf-dd43-4092-887d-17d23ed9cc78, ApplicationId=SingleInstance_0_App2, ApplicationName=fabric:/counterApp. DockerRequest returned StatusCode=InternalServerError with ResponseBody={"message":"error while mounting volume '': mount failed"}
 ```
-問題的因應措施為 1) 以 Powershell 系統管理員身分執行下列命令，而 2) 重新開機電腦。
+此問題的因應措施是 1) 以 Powershell 系統管理員身分執行下列命令，以及 2) 重新開機電腦。
 ```powershell
 PS C:\WINDOWS\system32> Mofcomp c:\windows\system32\wbem\smbwmiv2.mof
 ```

@@ -6,12 +6,12 @@ ms.author: esarroyo
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/23/2020
-ms.openlocfilehash: 68d1656e96264107be60d114b392d759ccfe367c
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.openlocfilehash: c86121bfd78452f613109c59cbc7a8b763755124
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91671304"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91842983"
 ---
 # <a name="migrate-your-application-to-use-the-azure-cosmos-db-net-sdk-v3"></a>遷移您的應用程式以使用 Azure Cosmos DB .NET SDK v3
 
@@ -68,7 +68,7 @@ V3 SDK 包含許多可用性和效能改進，包括：
 
 以下是一些主要的類別名稱變更：
 
-| .NET v3 SDK | .NET v2 SDK |
+| .NET v2 SDK | .NET v3 SDK |
 |-------------|-------------|
 |`Microsoft.Azure.Documents.Client.DocumentClient`|`Microsoft.Azure.CosmosClient`|
 |`Microsoft.Azure.Documents.Client.ConnectionPolicy`|`Microsoft.Azure.Cosmos.CosmosClientOptions`|

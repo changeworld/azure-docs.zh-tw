@@ -7,14 +7,14 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 09/09/2020
 ms.author: manayar
-ms.openlocfilehash: 47ac9fa91f391442691661a3ba03dd1f0d918601
-ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
+ms.openlocfilehash: 0a777b9008864368a6d1731cae0374e55a4c585f
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89669055"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91842864"
 ---
-# <a name="preview-automatic-vm-guest-patching-for-windows-vms-in-azure"></a>預覽： Azure 中的 Windows Vm 自動 VM 來賓修補
+# <a name="preview-automatic-vm-guest-patching-for-windows-vms-in-azure"></a>預覽：Azure 中 Windows VM 的自動 VM 客體修補
 
 為您的 Windows Vm 啟用自動 VM 來賓修補有助於簡化更新管理，方法是安全地自動修補虛擬機器以維護安全性合規性。
 
@@ -162,7 +162,7 @@ az feature show --namespace Microsoft.Compute --name InGuestAutoPatchVMPreview
 ```azurecli-interactive
 az provider register --namespace Microsoft.Compute
 ```
-## <a name="enable-automatic-vm-guest-patching"></a>啟用自動 VM 來賓修補
+## <a name="enable-automatic-vm-guest-patching"></a>啟動自動 VM 客體修補
 若要啟用自動 VM 來賓修補，請確定 VM 範本定義中的屬性 *osProfile. windowsConfiguration. enableAutomaticUpdates* 設定為 *true* 。 只有在建立 VM 時，才能設定此屬性。
 
 ### <a name="rest-api"></a>REST API
@@ -251,8 +251,10 @@ az vm get-instance-view --resource-group myResourceGroup --name myVM
 ## <a name="on-demand-patch-assessment"></a>隨選修補程式評估
 如果您的 VM 已啟用自動 VM 來賓修補，則會在 VM 的離峰時段于 VM 上執行定期修補程式評估。 此程式會自動執行，而最新評量的結果可以透過 VM 的實例視圖來檢查，如本檔稍早所述。 您也可以隨時針對您的 VM 觸發隨選修補程式評定。 修補程式評估可能需要幾分鐘的時間才能完成，而且最新評量的狀態會在 VM 的實例視圖上更新。
 
+啟用預覽功能時，必須針對每個訂用帳戶 *InGuestPatchVMPreview* 的功能進行一次性選擇。 您可以遵循先前針對自動 VM 來賓修補所述的 [預覽啟用](automatic-vm-guest-patching.md#requirements-for-enabling-automatic-vm-guest-patching) 程式，啟用隨選修補程式評估的功能預覽。
+
 > [!NOTE]
->隨選修補程式評估不會自動觸發已安裝的修補程式。 在 VM 的離峰時段內，評估及適用的 VM 修補程式將只會安裝在 VM 的離峰時段，遵循本檔稍早所述的可用性優先修補程式。
+>隨選修補程式評估不會自動觸發修補程式安裝。 在 VM 的離峰時段內，評估及適用的 VM 修補程式將只會安裝在 VM 的離峰時段，遵循本檔稍早所述的可用性優先修補程式。
 
 ### <a name="rest-api"></a>REST API
 ```
@@ -273,6 +275,6 @@ Invoke-AzVmPatchAssessment -ResourceGroupName "myResourceGroup" -VMName "myVM"
 az vm assess-patches --resource-group myResourceGroup --name myVM
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 > [!div class="nextstepaction"]
 > [深入瞭解如何建立和管理 Windows 虛擬機器](tutorial-manage-vm.md)

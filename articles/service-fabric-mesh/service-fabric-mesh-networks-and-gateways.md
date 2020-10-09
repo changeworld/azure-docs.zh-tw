@@ -1,17 +1,17 @@
 ---
-title: Azure Service Fabric 網路功能簡介
+title: Azure Service Fabric 網路簡介
 description: 深入了解 Service Fabric Mesh 中的網路、閘道及智慧型流量路由。
-author: dkkapur
+author: georgewallace
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.author: dekapur
+ms.author: gwallace
 ms.custom: mvc, devcenter
-ms.openlocfilehash: dc793e2991783cc9b7b46d92fcc8e0267feb529b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 372e8a46bfe588aa22b0f3be0ef8ae442fa342e2
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75459129"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91842694"
 ---
 # <a name="introduction-to-networking-in-service-fabric-mesh-applications"></a>Service Fabric Mesh 應用程式中的網路功能簡介
 本文會說明不同類型的負載平衡器、閘道如何將具有您應用程式的網路連線至其他網路，以及流量如何在您應用程式的服務之間路由。

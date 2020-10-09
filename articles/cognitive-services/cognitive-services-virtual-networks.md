@@ -3,18 +3,18 @@ title: 虛擬網路
 titleSuffix: Azure Cognitive Services
 description: 為您的認知服務資源設定多層式網路安全性。
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 05/26/2020
-ms.author: dapine
-ms.openlocfilehash: 808d42c821272882bbf0e01a36e49f7f10b30efa
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.date: 10/07/2020
+ms.author: aahi
+ms.openlocfilehash: d320fcd0b7f9666da39dd1208efd9cdec04ad6b5
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88505022"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91843136"
 ---
 # <a name="configure-azure-cognitive-services-virtual-networks"></a>設定 Azure 認知服務虛擬網路
 
@@ -40,40 +40,29 @@ Azure 認知服務提供多層式安全性模型。 此模型可讓您將認知�
 
 ## <a name="supported-regions-and-service-offerings"></a>支援的區域和服務供應專案
 
-[可使用認知服務的區域](https://azure.microsoft.com/global-infrastructure/services/)支援虛擬網路 (vnet) 。 如果未列出認知服務，則目前不支援虛擬網路。
+[可使用認知服務的區域](https://azure.microsoft.com/global-infrastructure/services/)支援虛擬網路 (vnet) 。 認知服務支援網路規則設定的服務標記。 以下列出的服務包含在 **CognitiveServicesManagement** 服務標記中。
 
 > [!div class="checklist"]
-> * [異常偵測器](./anomaly-detector/index.yml)
-> * [電腦視覺](./computer-vision/index.yml)
-> * [內容仲裁](./content-moderator/index.yml)
-> * [自訂視覺](./custom-vision-service/index.yml)
-> * [臉部](./face/index.yml)
-> * [表單辨識器](./form-recognizer/index.yml)
-> * [Language Understanding](./luis/index.yml)
-> * [個人化工具](./personalizer/index.yml)
-> * [文字分析](./text-analytics/index.yml)
-> * [QnA Maker](./qnamaker/index.yml)
-> * [翻譯工具文字](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#virtual-network-support)
-> * [沈浸式閱讀程式](./immersive-reader/index.yml)
+> * 異常偵測器
+> * 電腦視覺
+> * 內容仲裁
+> * 自訂視覺
+> * 臉部
+> * 表單辨識器
+> * 語言理解 (LUIS)
+> * 個人化工具
+> * 文字分析
+> * QnA Maker
+> * 翻譯工具文字
+> * 沈浸式閱讀程式
 
-## <a name="service-tags"></a>服務標籤
+> [!NOTE]
+> 如果您使用的是 LUIS， **CognitiveServicesManagement** 標記只會讓您使用 SDK 或 REST API 來使用服務。 若要從虛擬網路存取和使用 LUIS 入口網站，您將需要使用下列標記：  
+> * **AzureResourceManager** 
+> * **CognitiveServicesManagement**
+> * **AzureActiveDirectory**
+> * **AzureFrontDoor.Frontend**
 
-認知服務支援網路規則設定的服務標記。 以下列出的服務包含在 **CognitiveServicesManagement** 服務標記中。
-
-> [!div class="checklist"]
-> * [異常偵測器](./anomaly-detector/index.yml)
-> * [電腦視覺](./computer-vision/index.yml)
-> * [內容仲裁](./content-moderator/index.yml)
-> * [自訂視覺](./custom-vision-service/index.yml)
-> * [臉部](./face/index.yml)
-> * [表單辨識器](./form-recognizer/index.yml)
-> * [語言理解 (LUIS)](./luis/index.yml)
-> * [個人化工具](./personalizer/index.yml)
-> * [文字分析](./text-analytics/index.yml)
-> * [QnA Maker](./qnamaker/index.yml)
-> * [翻譯工具](./translator/index.yml)
-> * [語音服務](./speech-service/index.yml)
-> * [沈浸式閱讀程式](./immersive-reader/index.yml)
 
 ## <a name="change-the-default-network-access-rule"></a>變更預設的網路存取規則
 

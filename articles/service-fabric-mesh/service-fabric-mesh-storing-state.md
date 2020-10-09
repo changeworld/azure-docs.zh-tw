@@ -1,16 +1,16 @@
 ---
 title: Azure Service Fabric 網格上的狀態儲存體選項
 description: 深入了解如何在 Azure Service Fabric Mesh 上執行的 Service Fabric Mesh 應用程式中可靠地儲存狀態。
-author: dkkapur
-ms.author: dekapur
+author: georgewallace
+ms.author: gwallace
 ms.date: 11/27/2018
 ms.topic: conceptual
-ms.openlocfilehash: 01c54c8baa411e7d57698c626b098dc19e66be4e
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: b8440a168d6d268cd27e1208ff54616a3b1e193a
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90984129"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91843204"
 ---
 # <a name="state-management-with-service-fabric"></a>使用 Service Fabric 的狀態管理
 
@@ -32,7 +32,7 @@ Service Fabric 可靠磁碟區是用來將本機磁碟區掛接至容器的 Dock
 
 檔案儲存體磁碟區是用來將檔案儲存體共用掛接至容器的 Docker 磁碟區驅動程式。 Azure 檔案儲存體會使用網路儲存體，因此讀取和寫入會透過網路進行。 相較於 Service Fabric 可靠磁碟區，Azure 檔案儲存體的效能較差，但會提供較便宜且完全可靠的資料選項。 如需範例，請參閱[如何使用檔案儲存體磁碟區來部署應用程式](service-fabric-mesh-howto-deploy-app-azurefiles-volume.md)。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 如需應用程式模型的資訊，請參閱 [Service Fabric 資源](service-fabric-mesh-service-fabric-resources.md)
 

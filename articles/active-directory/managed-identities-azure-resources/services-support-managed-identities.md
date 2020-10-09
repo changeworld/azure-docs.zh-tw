@@ -4,19 +4,19 @@ description: 支援 Azure 資源和 Azure AD 驗證受控識別的服務清單
 services: active-directory
 author: barclayn
 ms.author: barclayn
-ms.date: 07/09/2020
+ms.date: 10/07/2020
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: msi
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: references_regions
-ms.openlocfilehash: 207b4a926e77ff55faad388b6eeaeb221ec252a8
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: e875eda2a59841d3238a13389768c6fa37cef774
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90006775"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91843170"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>支援適用於 Azure 資源的受控識別服務
 
@@ -252,6 +252,12 @@ Azure Arc 啟用的 Kubernetes 目前 [支援系統指派](../../azure-arc/kuber
 
 如需詳細資訊，請參閱 [如何為 Azure 春季 Cloud 應用程式啟用系統指派的受控識別](~/articles/spring-cloud/spring-cloud-howto-enable-system-assigned-managed-identity.md)。
 
+### <a name="azure-stack-edge"></a>Azure Stack Edge
+
+受控識別類型 | 全部正式推出<br>全域 Azure 區域 | Azure Government | Azure Germany | Azure China 21Vianet |
+| --- | --- | --- | --- | --- |
+| 系統指派 | 可在 Azure Stack Edge 服務可用的區域中使用 | 無法使用 | 無法使用 | 無法使用 |
+| 使用者指派 | 無法使用 | 無法使用 | 無法使用 | 無法使用 |
 
 ### <a name="azure-virtual-machine-scale-sets"></a>Azure 虛擬機器擴展集
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/04/2020
 ms.author: yelevin
-ms.openlocfilehash: 3f59fea9f6d96f6e259a47c75bcfb0fd0be76d34
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 63a9a6dc9f052c01a7440f616f0baeaab083ad73
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91826563"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91843068"
 ---
 # <a name="tutorial-visualize-and-monitor-your-data"></a>教學課程：將資料視覺化並加以監視
 
@@ -62,7 +62,7 @@ ms.locfileid: "91826563"
 ## <a name="create-new-workbook"></a>建立新的活頁簿
 
 1. 移至 [活頁簿]，然後選取 [新增活頁簿]，以從頭開始建立新的活頁簿。
-  ![移至活頁簿](./media/tutorial-monitor-data/create-workbook.png)
+  ![顯示 [新增活頁簿] 畫面的螢幕擷取畫面。](./media/tutorial-monitor-data/create-workbook.png)
 
 1. 若要編輯活頁簿，請選取 [編輯]，然後視需要新增文字、查詢和參數。 如需如何自訂活頁簿的詳細資訊，請參閱如何[使用 Azure 監視器活頁簿建立互動式報表](../azure-monitor/platform/workbooks-overview.md)。 
 
@@ -72,7 +72,7 @@ ms.locfileid: "91826563"
 
 1. 如果您想要讓組織中的其他人使用活頁簿，請在 [儲存至] 底下，選取 [共用報表]。 如果您想要讓此活頁簿僅供您使用，請選取 [我的報表]。
 
-1. 若要在工作區中的活頁簿之間切換，您可以在任何活頁簿的上方窗格中，選取 [開啟] ![切換活頁簿](./media/tutorial-monitor-data/switch.png)。 在右側開啟的視窗中，於活頁簿之間切換。
+1. 若要在工作區的活頁簿之間切換，您可以選取 **開啟**活頁 ![ 簿的開啟圖示。 ](./media/tutorial-monitor-data/switch.png)在任何活頁簿的上方窗格中。 在右側開啟的視窗中，於活頁簿之間切換。
 
    ![切換活頁簿](./media/tutorial-monitor-data/switch-workbooks.png)
 
