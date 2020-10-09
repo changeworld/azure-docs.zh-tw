@@ -1,21 +1,21 @@
 ---
 title: Azure Cosmos DB SQL 查詢中的純量運算式
-description: 瞭解 Azure Cosmos DB 的純量運算式 SQL 語法。 本文也描述如何使用運算子，將純量運算式合併成複雜的運算式。
+description: 瞭解 Azure Cosmos DB 的純量運算式 SQL 語法。 本文也說明如何使用運算子，將純量運算式合併成複雜運算式。
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/17/2019
 ms.author: mjbrown
 ms.openlocfilehash: f8c98915ad3b682af00492acc7bc51672ec874a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74870729"
 ---
 # <a name="scalar-expressions-in-azure-cosmos-db-sql-queries"></a>Azure Cosmos DB SQL 查詢中的純量運算式
 
-[SELECT 子句](sql-query-select.md)支援純量運算式。 純量運算式結合了符號及運算子，可以加以評估以取得單一值。 純量運算式的範例包括：常數、屬性參考、陣列元素參考、別名參考或函式呼叫。 純量運算式可以使用運算子結合成複雜運算式。
+[SELECT 子句](sql-query-select.md)支援純量運算式。 純量運算式結合了符號及運算子，可以加以評估以取得單一值。 純量運算式的範例包括：常數、屬性參考、陣列元素參考、別名參考或函式呼叫。 您可以使用運算子將純量運算式合併為複雜運算式。
 
 ## <a name="syntax"></a>語法
   
@@ -59,11 +59,11 @@ ms.locfileid: "74870729"
   
 - `<scalar_expression>.property_name`  
   
-   代表物件屬性值。 如果屬性不存在，或在不是物件的值上參考屬性，則運算式會評估為**未定義**的值。  
+   代表物件屬性值。 如果屬性不存在，或在不是物件的值上參考屬性，則運算式會評估為 **未定義** 的值。  
   
 - `<scalar_expression>'['"property_name"|array_index']'`  
   
-   以具有 `property_name` 陣列索引的 name 或 array 元素表示屬性的值 `array_index` 。 若屬性不存在或屬性/陣列索引已在非物件/陣列的值中參考，則運算式會評估為未定義的值。  
+   代表具有 `property_name` 陣列索引之名稱或陣列元素的屬性值 `array_index` 。 若屬性不存在或屬性/陣列索引已在非物件/陣列的值中參考，則運算式會評估為未定義的值。  
   
 - `unary_operator <scalar_expression>`  
   
@@ -111,7 +111,7 @@ ms.locfileid: "74870729"
     SELECT ((2 + 11 % 7)-2)/3
 ```
 
-結果如下：
+結果為：
 
 ```json
     [{

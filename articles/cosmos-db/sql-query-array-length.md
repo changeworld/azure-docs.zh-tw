@@ -1,6 +1,6 @@
 ---
 title: Azure Cosmos DB 查詢語言中的 ARRAY_LENGTH
-description: 瞭解 Azure Cosmos DB 中的陣列長度 SQL 系統函數如何傳回指定陣列運算式的元素數目
+description: 瞭解 Azure Cosmos DB 中的陣列長度 SQL 系統函數如何傳回指定陣列運算式的元素數目。
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,13 +8,13 @@ ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 3596ce4bc702d5e54225d8c90db2f9563feab670
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "78303982"
 ---
-# <a name="array_length-azure-cosmos-db"></a>ARRAY_LENGTH （Azure Cosmos DB）
+# <a name="array_length-azure-cosmos-db"></a>ARRAY_LENGTH (Azure Cosmos DB) 
  傳回指定陣列運算式的元素數目。  
   
 ## <a name="syntax"></a>語法
@@ -34,7 +34,7 @@ ARRAY_LENGTH(<arr_expr>)
   
 ## <a name="examples"></a>範例
   
-  下列範例說明如何使用取得陣列的長度 `ARRAY_LENGTH` 。  
+  下列範例示範如何使用來取得陣列的長度 `ARRAY_LENGTH` 。  
   
 ```sql
 SELECT ARRAY_LENGTH(["apples", "strawberries", "bananas"]) AS len  
@@ -48,7 +48,7 @@ SELECT ARRAY_LENGTH(["apples", "strawberries", "bananas"]) AS len
   
 ## <a name="remarks"></a>備註
 
-這個系統函數不會使用索引。
+這個系統函數將不會使用索引。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -1,6 +1,6 @@
 ---
 title: Azure Cosmos DB 查詢語言中的 EXP
-description: 瞭解 Azure Cosmos DB 中的指數（EXP） SQL 系統函數，以傳回指定數值運算式的指數值
+description: 瞭解 Azure Cosmos DB 傳回指定之數值運算式的指數值 (EXP) SQL 系統函數的指數
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,13 +8,13 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 76d614264124e1ce4138663b702ff6d899b3aa4e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74873313"
 ---
-# <a name="exp-azure-cosmos-db"></a>EXP （Azure Cosmos DB）
+# <a name="exp-azure-cosmos-db"></a>EXP (Azure Cosmos DB) 
  傳回指定之數值運算式的指數值。  
   
 ## <a name="syntax"></a>語法

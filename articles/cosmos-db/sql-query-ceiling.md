@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB 查詢語言上限
+title: Azure Cosmos DB 查詢語言的上限
 description: 瞭解 Azure Cosmos DB 中的上限 SQL 系統函數如何傳回大於或等於指定之數值運算式的最小整數值。
 author: ginamr
 ms.service: cosmos-db
@@ -8,13 +8,13 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 81f113aa51a7f739b506ec7e3eb5bf2cb9f49a03
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "78302639"
 ---
-# <a name="ceiling-azure-cosmos-db"></a>上限（Azure Cosmos DB）
+# <a name="ceiling-azure-cosmos-db"></a> (Azure Cosmos DB) 上限
  傳回大於或等於指定之數值運算式的最小整數值。  
   
 ## <a name="syntax"></a>語法
@@ -34,7 +34,7 @@ CEILING (<numeric_expr>)
   
 ## <a name="examples"></a>範例
   
-  下列範例會使用函數來顯示正數、負數和零值 `CEILING` 。  
+  下列範例會使用函數顯示正數值、負值和零值 `CEILING` 。  
   
 ```sql
 SELECT CEILING(123.45) AS c1, CEILING(-123.45) AS c2, CEILING(0.0) AS c3  

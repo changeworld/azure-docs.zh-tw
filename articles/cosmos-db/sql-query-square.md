@@ -1,6 +1,6 @@
 ---
 title: Azure Cosmos DB 查詢語言中的正方形
-description: 瞭解 Azure Cosmos DB 中的 SQL 系統函數正方形。
+description: 瞭解 Azure Cosmos DB 中的 SQL 系統函數平方。
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,13 +8,13 @@ ms.date: 03/04/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: a22c4daaf9df889f2256bc78f2175c966d4841f7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "78303438"
 ---
-# <a name="square-azure-cosmos-db"></a>正方形（Azure Cosmos DB）
+# <a name="square-azure-cosmos-db"></a>平方 (Azure Cosmos DB) 
  傳回指定之數值的平方。  
   
 ## <a name="syntax"></a>語法
@@ -48,7 +48,7 @@ SELECT SQUARE(1) AS s1, SQUARE(2.0) AS s2, SQUARE(3) AS s3
 
 ## <a name="remarks"></a>備註
 
-這個系統函數不會使用索引。
+這個系統函數將不會使用索引。
 
 ## <a name="next-steps"></a>後續步驟
 

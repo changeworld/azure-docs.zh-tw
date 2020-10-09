@@ -1,7 +1,7 @@
 ---
 title: 檢視及編輯影片索引器深入解析
 titlesuffix: Azure Media Services
-description: 本文示範如何觀看和編輯 Azure 媒體服務影片索引子深入解析。
+description: 本文示範如何查看和編輯 Azure 媒體服務影片索引子深入解析。
 services: media-services
 author: Juliako
 manager: femila
@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 05/15/2019
 ms.author: juliako
 ms.openlocfilehash: e9bb516d498d989b97f1069af9a9f4cb673ea96d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74892663"
 ---
 # <a name="view-and-edit-video-indexer-insights"></a>檢視及編輯影片索引器深入解析
@@ -37,7 +37,7 @@ ms.locfileid: "74892663"
 
 ## <a name="next-steps"></a>後續步驟
 
-[使用您的影片深度深入解析](use-editor-create-project.md)
+[使用您的影片深度見解](use-editor-create-project.md)
 
 ## <a name="see-also"></a>另請參閱
 

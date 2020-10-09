@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/13/2020
 ms.author: jingwang
 ms.openlocfilehash: 22ab4433d84db926733fd0b18035875e63322dda
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81451681"
 ---
 # <a name="store-credential-in-azure-key-vault"></a>在 Azure Key Vault 中儲存認證
@@ -25,31 +25,31 @@ ms.locfileid: "81451681"
 
 目前，自訂活動以外的所有活動類型都支援這項功能。 特別針對連接器設定，查看[每個連接器主題](copy-activity-overview.md#supported-data-stores-and-formats)中的＜連結服務屬性＞一節以取得詳細資訊。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-此功能依賴 data factory 受控識別。 瞭解其如何從[data factory 的受控識別](data-factory-service-identity.md)運作，並確定您的 data factory 具有相關聯的資料處理站。
+這項功能依賴 data factory 受控識別。 瞭解它如何從 [data factory 的受控識別](data-factory-service-identity.md) 運作，並確保您的 data factory 有相關聯的資料處理站。
 
 ## <a name="steps"></a>步驟
 
 若要參考儲存在 Azure Key Vault 中的認證，您需要：
 
-1. 藉由複製與您的處理站一起產生的「受控識別物件識別碼」值，來**取得 data factory 受控識別**。 如果您使用 ADF 撰寫 UI，受控識別物件識別碼會顯示在 [Azure Key Vault 連結的服務建立] 視窗上;您也可以從 Azure 入口網站取出它，請參閱[取得 data factory 受控識別](data-factory-service-identity.md#retrieve-managed-identity)。
-2. **將存取權授與 Azure Key Vault 的受控識別。** 在您的金鑰保存庫中 > 存取原則-> 新增存取原則]，搜尋此受控識別以授與 [秘密許可權] 下拉式清單中的 [**取得**] 許可權。 這樣可以讓這個指定的處理站存取金鑰保存庫中的密碼。
+1. 藉由複製與您的處理站一起產生的「受控識別物件識別碼」值，來**取出 data factory 受控識別**。 如果您使用 ADF 撰寫 UI，受控識別物件識別碼將會顯示在 Azure Key Vault 連結服務建立視窗;您也可以從 Azure 入口網站取得，請參閱 [取得 data factory 受控識別](data-factory-service-identity.md#retrieve-managed-identity)。
+2. **將受控識別存取權授與您的 Azure Key Vault。** 在您的金鑰保存庫-> 存取原則-> 新增存取原則] 中，搜尋此受控識別，以授與 [秘密許可權] 下拉式清單中的 **Get** 許可權。 這樣可以讓這個指定的處理站存取金鑰保存庫中的密碼。
 3. **建立指向您 Azure Key Vault 的連結服務。** 請參閱 [Azure Key Vault 已連結服務](#azure-key-vault-linked-service)。
-4. **建立資料存放區連結服務，在其中參考儲存在金鑰保存庫中的對應密碼。** 請參閱[參考儲存在金鑰保存庫中的祕密](#reference-secret-stored-in-key-vault)。
+4. **建立資料存放區連結服務，在其中參考儲存在金鑰保存庫中的對應秘密。** 請參閱[參考儲存在金鑰保存庫中的祕密](#reference-secret-stored-in-key-vault)。
 
 ## <a name="azure-key-vault-linked-service"></a>Azure Key Vault 已連結服務
 
 以下是針對 Azure Key Vault 已連結服務支援的屬性：
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
 | type | type 屬性必須設為：**AzureKeyVault**。 | 是 |
 | baseUrl | 指定 Azure Key Vault URL。 | 是 |
 
 **使用編寫 UI：**
 
-選取 [**連接**] [  ->  **連結服務**] [  ->  **新增**]。 在 [新增連結服務] 中，搜尋並選取 [Azure Key Vault]：
+選取 [**連接**  ->  **連結服務**  ->  **新增**]。 在 [新增連結服務] 中，搜尋並選取 [Azure Key Vault]：
 
 ![搜尋 Azure Key Vault](media/store-credentials-in-key-vault/search-akv.png)
 
@@ -75,7 +75,7 @@ ms.locfileid: "81451681"
 
 當您在參考金鑰保存庫密碼的已連結服務中設定欄位時，支援下列屬性：
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
 | type | 欄位的 type 屬性必須設定為：**AzureKeyVaultSecret**。 | 是 |
 | secretName | Azure Key Vault 中的密碼名稱。 | 是 |
@@ -87,7 +87,7 @@ ms.locfileid: "81451681"
 在建立資料存放區/計算的連線時，請針對祕密欄位選取 [Azure Key Vault]****。 選取已佈建的 Azure Key Vault 連結服務，並提供 [祕密名稱]****。 您也可以選擇性地提供祕密版本。 
 
 >[!TIP]
->針對使用連結服務（例如 SQL Server、Blob 儲存體等）中連接字串的連接器，您可以選擇只在 AKV 中儲存秘密欄位（例如密碼），或將整個連接字串儲存在 AKV 中。 您可以在 UI 上找到這兩個選項。
+>針對在連結服務中使用連接字串（例如 SQL Server、Blob 儲存體等）的連接器，您可以選擇只儲存秘密欄位（例如 AKV 中的密碼），或將整個連接字串儲存在 AKV 中。 您可以在 UI 上找到這兩個選項。
 
 ![設定 Azure Key Vault 秘密](media/store-credentials-in-key-vault/configure-akv-secret.png)
 

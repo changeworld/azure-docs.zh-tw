@@ -13,10 +13,10 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/05/2018
 ms.openlocfilehash: cffa5677c5531f3887639c049998523d7d07586a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "79455557"
 ---
 # <a name="check-resource-usage-against-limits"></a>根據限制檢查資源使用量
@@ -25,9 +25,9 @@ ms.locfileid: "79455557"
 
 ## <a name="azure-portal"></a>Azure 入口網站
 
-1. 登入 Azure[入口網站](https://portal.azure.com)。
+1. 登入 Azure [入口網站](https://portal.azure.com)。
 2. 在 Azure 入口網站的左上角，選取 [所有服務]****。
-3. 在 [篩選條件]**** 方塊中輸入「訂用帳戶」**。 當**訂用帳戶**出現在搜尋結果中時，選取它。
+3. 在 [篩選條件]**** 方塊中輸入「訂用帳戶」**。 當**訂用帳戶**出現在搜尋結果中時，請加以選取。
 4. 選取您想要查看其使用量資訊的訂用帳戶名稱。
 5. 在 [設定]**** 下方，選取 [使用量 + 配額]****。
 6. 您可以選取下列選項：
@@ -46,9 +46,9 @@ ms.locfileid: "79455557"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-您可以執行 [Azure Cloud Shell](https://shell.azure.com/powershell) 中採用的命令，或從您的電腦執行 PowerShell。 Azure Cloud Shell 是免費的互動式殼層。 它具有預先安裝和設定的共用 Azure 工具，可與您的帳戶搭配使用。 如果您從電腦執行 PowerShell，您需要 Azure PowerShell 模組1.0.0 版或更新版本。 請在您的電腦上執行 `Get-Module -ListAvailable Az`，以尋找已安裝的版本。 如果您需要升級，請參閱[安裝 Azure PowerShell 模組](/powershell/azure/install-az-ps)。 如果您在本機執行 PowerShell，也需要執行 `Login-AzAccount` 來登入 Azure。
+您可以執行 [Azure Cloud Shell](https://shell.azure.com/powershell) 中採用的命令，或從您的電腦執行 PowerShell。 Azure Cloud Shell 是免費的互動式殼層。 它具有預先安裝和設定的共用 Azure 工具，可與您的帳戶搭配使用。 如果您從電腦執行 PowerShell，則需要 Azure PowerShell 模組1.0.0 版或更新版本。 請在您的電腦上執行 `Get-Module -ListAvailable Az`，以尋找已安裝的版本。 如果您需要升級，請參閱[安裝 Azure PowerShell 模組](/powershell/azure/install-az-ps)。 如果您在本機執行 PowerShell，也需要執行 `Login-AzAccount` 來登入 Azure。
 
-使用[AzNetworkUsage](https://docs.microsoft.com/powershell/module/az.network/get-aznetworkusage)來查看限制的使用量。 下列範例所取得的資源使用量中，至少有一個資源是部署在美國東部地區：
+使用 [AzNetworkUsage](https://docs.microsoft.com/powershell/module/az.network/get-aznetworkusage)來查看使用量限制。 下列範例所取得的資源使用量中，至少有一個資源是部署在美國東部地區：
 
 ```azurepowershell-interactive
 Get-AzNetworkUsage `

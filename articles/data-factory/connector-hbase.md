@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
 ms.openlocfilehash: f2d10a6150a6e6957b303ca391c97e166342111c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81417244"
 ---
 # <a name="copy-data-from-hbase-using-azure-data-factory"></a>使用 Azure Data Factory 從 HBase 複製資料 
@@ -34,7 +34,7 @@ ms.locfileid: "81417244"
 
 Azure Data Factory 提供的內建驅動程式可啟用連線，因此使用此連接器您不需要手動安裝任何驅動程式。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
@@ -51,15 +51,15 @@ Azure Data Factory 提供的內建驅動程式可啟用連線，因此使用此�
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | 類型屬性必須設為：**HBase** | 是 |
-| 主機 | HBase 伺服器的 IP 位址或主機名稱。 亦即. `[clustername].azurehdinsight.net`， `192.168.222.160` ）  | 是 |
+| 主機 | HBase 伺服器的 IP 位址或主機名稱。  (亦即  `[clustername].azurehdinsight.net`、 `192.168.222.160`)   | 是 |
 | 連接埠 | HBase 執行個體用來接聽用戶端連線的 TCP 連接埠。 預設值為 9090。 如果您連線到 Azure HDInsights，請將連接埠指定為 443。 | 否 |
 | httpPath | 部分 URL 對應至 HBase 伺服器，例如使用 HDInsights 叢集時的 `/hbaserest0`。 | 否 |
 | authenticationType | 用來連線到 HBase 伺服器的驗證機制。 <br/>允許的值為：**Anonymous**、**Basic** | 是 |
 | username | 用來連線到 HBase 執行個體的使用者名稱。  | 否 |
 | 密碼 | 對應到使用者名稱的密碼。 將此欄位標記為 SecureString，將它安全地儲存在 Data Factory 中，或[參考 Azure Key Vault 中儲存的祕密](store-credentials-in-key-vault.md)。 | 否 |
-| enableSsl | 指定是否使用 TLS 來加密與伺服器的連接。 預設值為 false。  | 否 |
-| trustedCertPath | 包含信任的 CA 憑證的 pem 檔案完整路徑，可在透過 TLS 連線時驗證服務器。 只有在自我裝載 IR 上使用 TLS 時，才可以設定這個屬性。 預設值為隨 IR 安裝的 cacerts.pem 檔案。  | 否 |
-| allowHostNameCNMismatch | 指定在透過 TLS 連線時，是否要求 CA 發行的 TLS/SSL 憑證名稱符合伺服器的主機名稱。 預設值為 false。  | 否 |
+| enableSsl | 指定是否使用 TLS 加密與伺服器的連接。 預設值為 false。  | 否 |
+| trustedCertPath | Pem 檔案的完整路徑，包含信任的 CA 憑證，以便在透過 TLS 連接時驗證服務器。 只有在自我裝載 IR 上使用 TLS 時，才能設定此屬性。 預設值為隨 IR 安裝的 cacerts.pem 檔案。  | 否 |
+| allowHostNameCNMismatch | 指定在透過 TLS 連線時，是否要求 CA 發出的 TLS/SSL 憑證名稱符合伺服器的主機名稱。 預設值為 false。  | 否 |
 | allowSelfSignedServerCert | 指定是否允許來自伺服器的自我簽署憑證。 預設值為 false。  | 否 |
 | connectVia | 用來連線到資料存放區的 [Integration Runtime](concepts-integration-runtime.md)。 深入了解[必要條件](#prerequisites)一節。 如果未指定，就會使用預設的 Azure Integration Runtime。 |否 |
 

@@ -2,7 +2,7 @@
   href: index.yml
 - name: 在 IoT Edge 文件上切換至事件方格
   href: edge/pub-sub-events-webhook-local.md
-- name: 概觀
+- name: 總覽
   items:
     - name: 什麼是事件中樞？
       href: overview.md

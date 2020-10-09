@@ -12,10 +12,10 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: ac681bb13ccea49c7a2f566a6fcdb6adb8cec5bb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81683736"
 ---
 # <a name="understand-the-device-model-schema"></a>了解裝置機型結構描述
@@ -71,7 +71,7 @@ ms.locfileid: "81683736"
 
 下表描述最上層結構描述項目：
 
-| 結構描述項目 | Description |
+| 結構描述項目 | 說明 |
 | -- | --- |
 | `SchemaVersion` | 結構描述版本一律為 `1.0.0` 且為此檔案格式專屬。 |
 | `Id` | 此裝置機型的唯一 ID。 |
@@ -236,7 +236,7 @@ ms.locfileid: "81683736"
 
 您可以在 GitHub 上的 [scripts 資料夾](https://github.com/Azure/device-simulation-dotnet/tree/master/Services/data/devicemodels/scripts)中查看預設模擬裝置的 JavaScript 檔案。 依照慣例，這些 JavaScript 檔案具有尾碼 **-method**，以便與實作狀態行為的檔案有所區別。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 本文說明如何建立您自己的自訂模擬裝置機型。 本文示範如何：
 

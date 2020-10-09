@@ -8,19 +8,19 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/23/2020
 ms.openlocfilehash: f7861ae4980f13fbd87780ab2d26fa3376f33532
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76776192"
 ---
 # <a name="scenario-unable-to-read-apache-yarn-log-in-azure-hdinsight"></a>案例：無法讀取 Azure HDInsight 中的 Apache Yarn 記錄檔
 
-本文說明與 Azure HDInsight 叢集互動時，問題的疑難排解步驟和可能的解決方法。
+本文說明與 Azure HDInsight 叢集互動時，問題的疑難排解步驟和可能的解決方式。
 
 ## <a name="issue"></a>問題
 
-從儲存體帳戶找到的 Apache Yarn 記錄不是人們可讀取的。 檔案剖析器無法使用，並且會產生下列錯誤訊息：
+從儲存體帳戶找到的 Apache Yarn 記錄不是人類可讀取的。 檔案剖析器無法運作，而且會產生下列錯誤訊息：
 
 ```
 java.io.IOException: Not a valid BCFile.
@@ -28,17 +28,17 @@ java.io.IOException: Not a valid BCFile.
 
 ## <a name="cause"></a>原因
 
-Apache Yarn 記錄檔會匯總成 `IndexFile` 格式，但檔案剖析器並不支援。
+Apache Yarn 記錄會匯總成格式，檔案剖析器不支援此記錄檔 `IndexFile` 。
 
 ## <a name="resolution"></a>解決方案
 
 1. 從網頁瀏覽器瀏覽至 `https://CLUSTERNAME.azurehdinsight.net`，其中 `CLUSTERNAME` 是叢集的名稱。
 
-1. 從 Ambari UI 中，流覽至**YARN**的 [高級] [  >  **Configs**  >  **advanced**  >  **advanced] YARN-site**。
+1. 從 Ambari UI 中，流覽至**YARN**  >  **Configs**  >  **advanced advanced**advanced  >  **YARN-site**。
 
-1. 針對 WASB 儲存體：的預設值 `yarn.log-aggregation.file-formats` 為 `IndexedFormat,TFile` 。 將值變更為 `TFile` 。
+1. 若為 WASB 儲存體：的預設值 `yarn.log-aggregation.file-formats` 為 `IndexedFormat,TFile` 。 將值變更為 `TFile` 。
 
-1. 針對 ADLS 儲存體：的預設值 `yarn.nodemanager.log-aggregation.compression-type` 為 `gz` 。 將值變更為 `none` 。
+1. 若為 ADLS 儲存體：的預設值 `yarn.nodemanager.log-aggregation.compression-type` 為 `gz` 。 將值變更為 `none` 。
 
 1. 儲存變更並重新啟動所有受影響的服務。
 

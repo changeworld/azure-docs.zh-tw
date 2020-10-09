@@ -4,10 +4,10 @@ description: 本文章會逐步解說使用 Visual Studio 部署 Service Fabric 
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: acde2f4e51bee29d2eefb0d5fbb54fbe421a41f1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82195862"
 ---
 # <a name="service-fabric-application-upgrade-tutorial-using-visual-studio"></a>使用 Visual Studio 進行 Service Fabric 應用程式升級的教學課程
@@ -62,8 +62,8 @@ Azure Service Fabric 藉由確保只升級已變更的服務，並且在整個�
 
 您可能會想要嘗試變更版本，從版本 2.0.0 移到版本 3.0.0 來做為練習，或甚至是從版本 2.0.0 變回版本 1.0.0。 練習逾時和健康狀態原則，讓自己更熟練。 在部署至 Azure 叢集而不是本機叢集時，所使用的參數可能不同。 我們建議您保守地設定逾時。
 
-## <a name="next-steps"></a>後續步驟
-[使用 Powershell 升級您的應用程式](service-fabric-application-upgrade-tutorial-powershell.md)會逐步引導您使用 powershell 進行應用程式升級。
+## <a name="next-steps"></a>接下來的步驟
+[使用 Powershell 升級您的應用程式](service-fabric-application-upgrade-tutorial-powershell.md) 會逐步引導您使用 powershell 來升級應用程式。
 
 使用 [升級參數](service-fabric-application-upgrade-parameters.md)來控制您應用程式的升級方式。
 

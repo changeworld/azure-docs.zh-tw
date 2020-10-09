@@ -4,10 +4,10 @@ description: 本指南可協助使用 Azure 實驗室服務建立及管理實驗
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: ad3bc110d93efb5b735f77fb8a0b2af9e4f9a7cd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85444143"
 ---
 # <a name="azure-lab-services---administrator-guide"></a>Azure 實驗室服務 - 管理員指南
@@ -117,7 +117,7 @@ ms.locfileid: "85444143"
 | 資源群組 | 包含一或多個實驗室帳戶，以及一或多個共用映像庫 | \<organization short name\>-\<environment\>-rg<ul><li>**組織簡短名稱** 指出資源群組支援的組織名稱</li><li>**環境** 指出資源的環境，例如試驗或生產</li><li>**rg** 代表資源類型：資源群組。</li></ul> | contosouniversitylabs-rg<br/>contosouniversitylabs-pilot-rg<br/>contosouniversitylabs-prod-rg |
 | 實驗室帳戶 | 包含一或多個實驗室 | \<organization short name\>-\<environment\>-la<ul><li>**組織簡短名稱** 指出資源群組支援的組織名稱</li><li>**環境** 指出資源的環境，例如試驗或生產</li><li>**la** 代表資源類型：實驗室帳戶。</li></ul> | contosouniversitylabs-la<br/>mathdeptlabs-la<br/>sciencedeptlabs-pilot-la<br/>sciencedeptlabs-prod-la |
 | 教室實驗室 | 包含一或多個 VM |\<class name\>-\<timeframe\>-\<educator identifier\><ul><li>**類別名稱** 指出實驗室支援的課程名稱。</li><li>**時間範圍** 指出提供課程的時間範圍。</li>**教師識別碼** 指出擁有實驗室的教師。</li></ul> | CS1234-fall2019-johndoe<br/>CS1234-spring2019-johndoe |
-| 共用映像庫 | 包含一或多個 VM 映像版本 | \<organization short name\>gallery | contosouniversitylabsgallery |
+| 共用映像庫 | 包含一或多個 VM 映像版本 | \<organization short name\>庫 | contosouniversitylabsgallery |
 
 如需有關命名其他 Azure 資源的詳細資訊，請參閱[適用於 Azure 資源的 命名慣例](/azure/architecture/best-practices/naming-conventions)。
 

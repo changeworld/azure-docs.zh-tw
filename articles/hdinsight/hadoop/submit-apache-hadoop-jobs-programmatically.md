@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/16/2019
 ms.openlocfilehash: 1cdee99378feb381d75edef0d150089132d1bbc2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75435702"
 ---
 # <a name="submit-apache-hadoop-jobs-in-hdinsight"></a>在 HDInsight 中提交 Apache Hadoop 作業
@@ -34,12 +34,12 @@ ms.locfileid: "75435702"
   - [使用 curl 在 HDInsight 中以 Apache Hadoop 執行 Apache Sqoop 作業](apache-hadoop-use-sqoop-curl.md)
   - [使用 curl 在 HDInsight 中以 Apache Hadoop 執行 MapReduce 作業](apache-hadoop-use-mapreduce-curl.md)
 
-- **PowerShell**：
+- **PowerShell**:
 
   - [使用 PowerShell 執行 Apache Hive 查詢](apache-hadoop-use-hive-powershell.md)
   - [在 HDInsight 中將 Apache Sqoop 與 Apache Hadoop 搭配使用](apache-hadoop-use-sqoop-powershell.md)
   - [使用 PowerShell 在 HDInsight 中以 Apache Hadoop 執行 MapReduce 作業](apache-hadoop-use-mapreduce-powershell.md)
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 
-- [Azure HDInsight 檔](https://docs.microsoft.com/azure/hdinsight/)
+- [Azure HDInsight 文件](https://docs.microsoft.com/azure/hdinsight/)

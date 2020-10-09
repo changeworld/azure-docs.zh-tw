@@ -1,6 +1,6 @@
 ---
-title: Apache Hive 記錄填滿磁碟空間-Azure HDInsight
-description: Apache Hive 記錄檔會填滿 Azure HDInsight 中前端節點的磁碟空間。
+title: 填滿磁碟空間的 Apache Hive 記錄-Azure HDInsight
+description: Apache Hive 記錄檔會將 Azure HDInsight 中前端節點的磁碟空間填滿。
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: nisgoel
@@ -8,24 +8,24 @@ ms.author: nisgoel
 ms.reviewer: jasonh
 ms.date: 03/05/2020
 ms.openlocfilehash: d843b942702d335065a5f3798572e34c71b4cd0e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "78943959"
 ---
-# <a name="scenario-apache-hive-logs-are-filling-up-the-disk-space-on-the-head-nodes-in-azure-hdinsight"></a>案例： Apache Hive 記錄檔會填滿前端節點上的磁碟空間 Azure HDInsight
+# <a name="scenario-apache-hive-logs-are-filling-up-the-disk-space-on-the-head-nodes-in-azure-hdinsight"></a>案例： Apache Hive 記錄檔將會填滿前端節點上的磁碟空間 Azure HDInsight
 
-本文針對 Azure HDInsight 叢集前端節點上沒有足夠磁碟空間的相關問題，說明其疑難排解步驟和可能的解決方式。
+本文說明 Azure HDInsight 叢集中前端節點的磁碟空間不足的疑難排解步驟和可能的解決方式。
 
 ## <a name="issue"></a>問題
 
-在 Apache Hive/LLAP 叢集上，不需要的記錄會佔用前端節點上的整個磁碟空間。 因此，可能會出現下列問題。
+在 Apache Hive/LLAP 叢集上，不需要的記錄會佔用前端節點上的整個磁碟空間。 基於此原因，可能會出現下列問題。
 
-1. 因為前端節點上沒有空間，所以 SSH 存取失敗。
-2. Ambari 提供*HTTP 錯誤：503服務無法使用*。
+1. SSH 存取失敗，因為前端節點上沒有空格。
+2. Ambari 提供 *HTTP 錯誤：503服務無法使用*。
 
-`ambari-agent`當問題發生時，記錄會顯示下列各項。
+`ambari-agent`當問題發生時，記錄檔會顯示下列各項。
 ```
 ambari_agent - Controller.py - [54697] - Controller - ERROR - Error:[Errno 28] No space left on device
 ```
@@ -35,17 +35,17 @@ ambari_agent - HostCheckReportFileHandler.py - [54697] - ambari_agent.HostCheckR
 
 ## <a name="cause"></a>原因
 
-在 advanced Hive-log4j 設定中，會省略參數*log4j. 附加器. RFA. MaxBackupIndex* 。 它會造成無止盡的記錄檔產生。
+在 advanced Hive log4j 設定中，會省略參數 *log4j. 附加器. RFA. MaxBackupIndex* 。 它會造成記錄檔的產生不盡。
 
 ## <a name="resolution"></a>解決方案
 
-1. 流覽至 Ambari 入口網站上的 [Hive 元件摘要]，然後按一下 [索引標籤 `Configs` ]。
+1. 流覽至 Ambari 入口網站上的 Hive 元件摘要，然後按一下 [] 索引標籤 `Configs` 。
 
-2. 移至 [ `Advanced hive-log4j` 高級設定] 中的區段。
+2. 移至 [ `Advanced hive-log4j` Advanced settings] 中的區段。
 
 3. 將 `log4j.appender.RFA` 參數設定為 RollingFileAppender。 
 
-4. 設定 `log4j.appender.RFA.MaxFileSize` ，如下 `log4j.appender.RFA.MaxBackupIndex` 所示。
+4. 設定 `log4j.appender.RFA.MaxFileSize` ， `log4j.appender.RFA.MaxBackupIndex` 如下所示。
 
 ```
 log4jhive.log.maxfilesize=1024MB
@@ -58,7 +58,7 @@ log4j.appender.RFA.MaxBackupIndex=${log4jhive.log.maxbackupindex}
 log4j.appender.RFA.layout=org.apache.log4j.PatternLayout
 log4j.appender.RFA.layout.ConversionPattern=%d{ISO8601} %-5p [%t] %c{2}: %m%n
 ```
-5. 將設定 `hive.root.logger` 為， `INFO,RFA` 如下所示。 預設設定為 DEBUG，這會使記錄檔變得非常大。
+5. 將設定 `hive.root.logger` 為， `INFO,RFA` 如下所示。 預設設定為 DEBUG，讓記錄變得非常大。
 
 ```
 # Define some default values that can be overridden by system properties
@@ -68,7 +68,7 @@ hive.log.dir=${java.io.tmpdir}/${user.name}
 hive.log.file=hive.log
 ```
 
-6. 儲存並重新啟動必要的元件。
+6. 儲存這些參數，並重新啟動必要的元件。
 
 ## <a name="next-steps"></a>後續步驟
 

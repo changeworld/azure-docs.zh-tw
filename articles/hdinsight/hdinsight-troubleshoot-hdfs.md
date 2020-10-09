@@ -9,15 +9,15 @@ ms.topic: troubleshooting
 ms.date: 04/27/2020
 ms.custom: seodec18
 ms.openlocfilehash: 6de9e31c3e79f6d704ef8b4749d41329dcc0bddb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82190670"
 ---
 # <a name="troubleshoot-apache-hadoop-hdfs-by-using-azure-hdinsight"></a>使用 Azure HDInsight 針對 Apache Hadoop HDFS 問題進行疑難排解
 
-瞭解使用 Hadoop 分散式檔案系統（HDFS）時的最佳問題和解決方法。 如需完整的命令清單，請參閱[HDFS 命令指南](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HDFSCommands.html)和[檔案系統 Shell 指南](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html)。
+瞭解使用 Hadoop 分散式檔案系統 (HDFS) 時的最大問題和解決方式。 如需命令的完整清單，請參閱 [HDFS 命令指南](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HDFSCommands.html) 和 [檔案系統 Shell 指南](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html)。
 
 ## <a name="how-do-i-access-the-local-hdfs-from-inside-a-cluster"></a><a name="how-do-i-access-local-hdfs-from-inside-a-cluster"></a>如何從叢集內部存取本機 HDFS？
 
@@ -76,7 +76,7 @@ ms.locfileid: "82190670"
 
 ### <a name="issue"></a>問題
 
-當您使用 `hadoop` 或 `hdfs dfs` 命令在 HBase 叢集上寫入 ~ 12 GB 或更大的檔案時，可能會遇到下列錯誤：
+使用 `hadoop` 或命令在 `hdfs dfs` HBase 叢集上寫入 ~ 12 GB 或更大的檔案時，您可能會遇到下列錯誤：
 
 ```error
 ERROR azure.NativeAzureFileSystem: Encountered Storage Exception for write on Blob : example/test_large_file.bin._COPYING_ Exception details: null Error Code : RequestBodyTooLarge
@@ -106,7 +106,7 @@ Caused by: com.microsoft.azure.storage.StorageException: The request body is too
 
 ### <a name="resolution"></a>解決方案
 
-使用 `fs.azure.write.request.size` 來指定較大的區塊大小。 您可以使用參數，根據每次使用來執行這項修改 `-D` 。 以下命令是搭配使用此參數與 `hadoop` 命令的範例︰
+使用 `fs.azure.write.request.size` 來指定較大的區塊大小。 您可以使用參數根據每次使用來進行修改 `-D` 。 以下命令是搭配使用此參數與 `hadoop` 命令的範例︰
 
 ```bash
 hadoop -fs -D fs.azure.write.request.size=4194304 -copyFromLocal test_large_file.bin /example/data
@@ -125,9 +125,9 @@ hadoop -fs -D fs.azure.write.request.size=4194304 -copyFromLocal test_large_file
 
 ## <a name="du"></a>du
 
-[`-du`](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html#du)命令會顯示指定目錄中包含的檔案和目錄大小，或檔案的長度（如果檔案只是檔案）。
+此 [`-du`](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html#du) 命令會顯示指定目錄中所含的檔案和目錄大小，或是檔案的長度（如果它只是一個檔案）。
 
-`-s`選項會產生所顯示檔案長度的匯總摘要。  
+`-s`選項會產生所顯示之檔案長度的匯總摘要。  
 `-h`選項會格式化檔案大小。
 
 範例：

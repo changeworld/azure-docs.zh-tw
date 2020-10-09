@@ -1,5 +1,5 @@
 ---
-title: Azure Service Fabric 安全性的最佳做法
+title: Azure Service Fabric 安全性的最佳作法
 description: 本文提供一組 Azure Service Fabric 安全性的最佳做法。
 author: unifycloud
 ms.author: tomsh
@@ -8,10 +8,10 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 01/16/2019
 ms.openlocfilehash: 4548bf77c01194802c2e6203bcbf9fbd240370a2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81461645"
 ---
 # <a name="azure-service-fabric-security-best-practices"></a>Azure Service Fabric 安全性最佳做法
@@ -32,7 +32,7 @@ Azure Service Fabric 是分散式系統平台，可讓您輕鬆封裝、部署�
 -   使用 X.509 憑證。
 -   設定安全性原則。
 -   實作 Reliable Actors 安全性設定。
--   設定適用于 Azure Service Fabric 的 TLS。
+-   設定 Azure Service Fabric 的 TLS。
 -   使用網路隔離和安全性搭配 Azure Service Fabric。
 -   設定 Azure Key Vault 以保持安全性。
 -   將使用者指派給角色。
@@ -118,13 +118,13 @@ Service Fabric Reliable Actors 是動作項目設計模式的實作。 如同任
 [複寫器安全性設定](../../service-fabric/service-fabric-reliable-actors-kvsactorstateprovider-configuration.md)用來保護在複寫期間使用的通訊通道。 此設定會使服務無法看到彼此的複寫流量，並可確保高可用性資料的安全。 依預設，空白的安全性組態區段會妨礙複寫安全性。
 複寫器組態會設定負責讓動作項目狀態提供者狀態高度可靠的複寫器。
 
-## <a name="configure-tls-for-azure-service-fabric"></a>設定適用于 Azure Service Fabric 的 TLS
-伺服器驗證程序會[驗證](../../service-fabric/service-fabric-cluster-creation-via-arm.md)管理用戶端的叢集管理端點。 接著，管理用戶端會辨識其是與實際的叢集在交談。 此憑證也會為 HTTPS 管理 API 及透過 HTTPS 的 Service Fabric Explorer 提供[TLS](../../service-fabric/service-fabric-cluster-creation-via-arm.md) 。
+## <a name="configure-tls-for-azure-service-fabric"></a>設定 Azure Service Fabric 的 TLS
+伺服器驗證程序會[驗證](../../service-fabric/service-fabric-cluster-creation-via-arm.md)管理用戶端的叢集管理端點。 接著，管理用戶端會辨識其是與實際的叢集在交談。 此憑證也會為 HTTPS 管理 API 及透過 HTTPS 的 Service Fabric Explorer 提供 [TLS](../../service-fabric/service-fabric-cluster-creation-via-arm.md) 。
 您必須為您的叢集取得自訂網域名稱。 當您向憑證授權單位要求憑證時，憑證的主體名稱必須與用於您叢集的自訂網域名稱相符。
 
-若要設定應用程式的 TLS，您必須先取得已由 CA 簽署的 SSL/TLS 憑證。 CA 是受信任的協力廠商，會針對 TLS 安全性目的頒發證書。 如果您還沒有 SSL/TLS 憑證，則必須向銷售 SSL/TLS 憑證的公司取得一個。
+若要設定應用程式的 TLS，您必須先取得已由 CA 簽署的 SSL/TLS 憑證。 CA 是受信任的協力廠商，會針對 TLS 安全性目的發出憑證。 如果您還沒有 SSL/TLS 憑證，則必須向銷售 SSL/TLS 憑證的公司取得一個憑證。
 
-憑證必須符合 Azure 中的 SSL/TLS 憑證的下列需求：
+憑證必須符合下列 Azure 中的 SSL/TLS 憑證需求：
 -   憑證必須包含私密金鑰。
 
 -   憑證必須是為了進行金鑰交換而建立，且可匯出成個人資訊交換檔 (.pfx)。
@@ -135,13 +135,13 @@ Service Fabric Reliable Actors 是動作項目設計模式的實作。 如同任
     - 向 CA 要求包含主體名稱的憑證，可符合您服務的自訂網域名稱。 例如，如果您的自訂網域名稱為 __contoso__**.com**，您 CA 的憑證就要有 **.contoso.com** 或 __www__**.contoso.com** 主體名稱。
 
     >[!NOTE]
-    >您無法從 CA 取得__cloudapp__**.NET**網域的 SSL/TLS 憑證。
+    >您無法從 CA 取得 __internal.cloudapp.net__**.NET** 網域的 SSL/TLS 憑證。
 
 -   憑證至少必須以 2,048 位元加密。
 
 HTTP 通訊協定並不安全，且會受到竊聽攻擊。 透過 HTTP 傳輸的資料是以純文字形式從網頁瀏覽器傳送到 web 伺服器，或是在其他端點之間傳送。 攻擊者可以攔截並檢視透過 HTTP 傳送的敏感性資料，例如信用卡詳細資料和帳戶登入。 當資料是透過 HTTPS 經由瀏覽器傳送或張貼時，SSL 可確保敏感性資訊經過加密及保護以避免遭到攔截。
 
-若要深入瞭解如何使用 SSL/TLS 憑證，請參閱[在 Azure 中設定應用程式的 TLS](../../cloud-services/cloud-services-configure-ssl-certificate-portal.md)。
+若要深入瞭解如何使用 SSL/TLS 憑證，請參閱 [在 Azure 中設定應用程式的 TLS](../../cloud-services/cloud-services-configure-ssl-certificate-portal.md)。
 
 ## <a name="use-network-isolation-and-security-with-azure-service-fabric"></a>使用網路隔離和安全性搭配 Azure Service Fabric
 使用 [Azure Resource Manager 範本](../../azure-resource-manager/templates/template-syntax.md)作為範例來設定 3 節點類型安全叢集。 使用範本和網路安全性群組來控制傳入和傳出網路流量。
@@ -169,14 +169,14 @@ Service Fabric 會使用 X.509 憑證來保護叢集，並提供應用程式的�
 若要深入了解如何設定金鑰保存庫，請參閱[什麼是 Azure Key Vault？](../../key-vault/general/overview.md)。
 
 ## <a name="assign-users-to-roles"></a>將使用者指派給角色
-建立應用程式來代表您的叢集之後，請將使用者指派給 Service Fabric 所支援的角色：唯讀和系統管理員。您可以使用 Azure 入口網站來指派這些角色。
+建立應用程式來代表您的叢集之後，請將您的使用者指派給 Service Fabric 所支援的角色：唯讀和系統管理員。您可以使用 Azure 入口網站指派這些角色。
 
 >[!NOTE]
 > 如需在 Service Fabric 中使用角色的詳細資訊，請參閱[角色型存取控制 (適用於 Service Fabric 用戶端)](../../service-fabric/service-fabric-cluster-security-roles.md)。
 
 Azure Service Fabric 針對連線到 [Service Fabric 叢集](../../service-fabric/service-fabric-cluster-creation-via-arm.md)的用戶端，支援兩種存取控制類型：系統管理員和使用者。 叢集系統管理員可以使用存取控制來限制存取不同使用者群組的特定叢集作業。 存取控制可讓叢集更安全。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - [Service Fabric 安全性檢查清單](service-fabric-checklist.md)
 - 設定 Service Fabric [開發環境](../../service-fabric/service-fabric-get-started.md)。

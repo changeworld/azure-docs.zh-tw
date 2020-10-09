@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure IoT Tools VSCode 的 Azure IoT 裝置管理
+title: 使用 VSCode 的 Azure IoT 裝置管理 Azure IoT Tools
 description: 使用適用於 Visual Studio Code 的 Azure IoT Tools 來管理 Azure IoT 中樞裝置，並採用直接方法和對應項所需的屬性管理選項。
 author: formulahendry
 ms.service: iot-hub
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: junhan
 ms.openlocfilehash: d85e0e967dd802a77ccbc11b884d7a9f2891524d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81688087"
 ---
 # <a name="use-azure-iot-tools-for-visual-studio-code-for-azure-iot-hub-device-management"></a>使用適用於 Visual Studio Code 的 Azure IoT Tools 來管理 Azure IoT 中樞裝置
@@ -43,12 +43,12 @@ ms.locfileid: "81688087"
 
 搭配各種管理選項執行適用於 Visual Studio Code 的 Azure IoT Tools。
 
-## <a name="what-you-need"></a>您需要什麼
+## <a name="what-you-need"></a>必要條件
 
 * 有效的 Azure 訂用帳戶。
 * 位於您訂用帳戶中的 Azure IoT 中樞。
-* [Visual Studio Code](https://code.visualstudio.com/)
-* [Azure IoT Tools VS Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)或複製此 URL，並將它貼到瀏覽器視窗中： `vscode:extension/vsciot-vscode.azure-iot-tools` 。
+* [Visual Studio Code](https://code.visualstudio.com/) \(英文\)
+* [Azure IoT Tools VS Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) 或複製此 URL，並將它貼入瀏覽器視窗： `vscode:extension/vsciot-vscode.azure-iot-tools` 。
 
 ## <a name="sign-in-to-access-your-iot-hub"></a>登入以存取 IoT 中樞
 
@@ -63,7 +63,7 @@ ms.locfileid: "81688087"
 5. 在幾秒鐘的時間內，裝置清單會顯示在 [Azure IoT Hub Devices]**** \(Azure IoT 中樞裝置\) 索引標籤中。
 
    > [!Note]
-   > 您也可以選擇 [設定 IoT 中樞連接字串]**** 來完成設定。 在快顯視窗中，輸入 IoT 裝置所連接之 IoT 中樞的**iothubowner**原則連接字串。
+   > 您也可以選擇 [設定 IoT 中樞連接字串]**** 來完成設定。 在快顯視窗中，為您的 IoT 裝置所連接的 IoT 中樞輸入 **iothubowner** 原則連接字串。
 
 ## <a name="direct-methods"></a>直接方法
 
@@ -71,7 +71,7 @@ ms.locfileid: "81688087"
 
 2. 在輸入方塊中輸入方法名稱和承載。
 
-3. 結果會顯示在 [**輸出**  >  **Azure IoT 中樞**] 視圖中。
+3. 結果會顯示在**輸出**  >  **Azure IoT 中樞**view 中。
 
 ## <a name="read-device-twin"></a>讀取裝置對應項
 
@@ -95,9 +95,9 @@ ms.locfileid: "81688087"
 
 2. 在輸入方塊中輸入訊息。
 
-3. 結果會顯示在 [**輸出**  >  **Azure IoT 中樞**] 視圖中。
+3. 結果會顯示在**輸出**  >  **Azure IoT 中樞**view 中。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 您已了解如何使用適用於 Visual Studio Code 的 Azure IoT Tools 搭配各種管理選項。
 

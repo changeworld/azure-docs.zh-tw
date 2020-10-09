@@ -8,13 +8,13 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: f3c3878956b90ffb45556ed819046af9eb7618f1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "78303132"
 ---
-# <a name="st_intersects-azure-cosmos-db"></a>ST_INTERSECTS （Azure Cosmos DB）
+# <a name="st_intersects-azure-cosmos-db"></a>ST_INTERSECTS (Azure Cosmos DB) 
  傳回布林運算式，指出第一個引數交集中指定的 GeoJSON 物件 (Point、Polygon 或 LineString) 是否位在第二個引數中的 GeoJSON (Point、Polygon 或 LineString) 內。  
   
 ## <a name="syntax"></a>語法
@@ -26,7 +26,7 @@ ST_INTERSECTS (<spatial_expr>, <spatial_expr>)
 ## <a name="arguments"></a>引數
   
 *spatial_expr*  
-   這是一個 GeoJSON 點、多邊形或 LineString 物件運算式。  
+   這是 GeoJSON 點、多邊形或 LineString 物件運算式。  
   
 ## <a name="return-types"></a>傳回類型
   
@@ -53,7 +53,7 @@ WHERE ST_INTERSECTS(a.location, {
 
 ## <a name="remarks"></a>備註
 
-此系統函數可受益于[地理空間索引](index-policy.md#spatial-indexes)。
+這個系統函數將受益于 [地理空間索引](index-policy.md#spatial-indexes)。
 
 ## <a name="next-steps"></a>後續步驟
 

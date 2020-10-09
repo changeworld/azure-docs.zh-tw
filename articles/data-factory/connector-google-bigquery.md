@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/04/2019
 ms.openlocfilehash: 6751f64706444176f0df8f8fc0c6132e76b39b2d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81417311"
 ---
 # <a name="copy-data-from-google-bigquery-by-using-azure-data-factory"></a>使用 Azure Data Factory 從 Google BigQuery 複製資料
@@ -100,7 +100,7 @@ Data Factory 會提供內建的驅動程式來啟用連線。 因此，您不需
 |:--- |:--- |:--- |
 | 電子郵件 | 用於 ServiceAuthentication 的服務帳戶電子郵件識別碼。 它只能在自我裝載 Integration Runtime 上使用。  | 否 |
 | keyFilePath | .p12 金鑰檔的完整路徑，用來驗證服務帳戶電子郵件地址。 | 否 |
-| trustedCertPath | 包含信任的 CA 憑證的 pem 檔案完整路徑，當您透過 TLS 連線時，會使用此檔案來驗證服務器。 只有當您在自我裝載的 Integration Runtime 上使用 TLS 時，才可以設定這個屬性。 預設值為隨整合執行階段安裝的 cacerts.pem 檔案。  | 否 |
+| trustedCertPath | Pem 檔案的完整路徑，其中包含當您透過 TLS 連接時，用來驗證服務器的受信任 CA 憑證。 只有當您在自我裝載的 Integration Runtime 上使用 TLS 時，才可以設定這個屬性。 預設值為隨整合執行階段安裝的 cacerts.pem 檔案。  | 否 |
 | useSystemTrustStore | 指定是否使用來自系統信任存放區或來自指定 .pem 檔案的 CA 憑證。 預設值為 **false**。  | 否 |
 
 **範例︰**

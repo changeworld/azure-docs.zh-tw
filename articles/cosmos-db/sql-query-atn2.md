@@ -1,6 +1,6 @@
 ---
 title: Azure Cosmos DB 查詢語言中的 ATN2
-description: 瞭解 Azure Cosmos DB 中的 ATN2 SQL 系統函數如何傳回 y/x 之反正切函數的主體值（以弧度表示）
+description: 瞭解 Azure Cosmos DB 中的 ATN2 SQL 系統函數如何傳回 y/x 之反正切值的主體值（以弧度為單位）
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,13 +8,13 @@ ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 696e14e75998ead04c99fab2b84fc4c742d5f54a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "78302656"
 ---
-# <a name="atn2-azure-cosmos-db"></a>ATN2 （Azure Cosmos DB）
+# <a name="atn2-azure-cosmos-db"></a>ATN2 (Azure Cosmos DB) 
  傳回 y/x 有向徑正切函數的主體值，以弧度表示。  
   
 ## <a name="syntax"></a>語法
@@ -48,7 +48,7 @@ SELECT ATN2(35.175643, 129.44) AS atn2
 
 ## <a name="remarks"></a>備註
 
-這個系統函數不會使用索引。
+這個系統函數將不會使用索引。
 
 ## <a name="next-steps"></a>後續步驟
 

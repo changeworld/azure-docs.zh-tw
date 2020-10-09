@@ -2,26 +2,27 @@
 title: 包含檔案
 description: 包含檔案
 services: redis-cache
-author: wesmc7777
+author: curib
 ms.service: cache
 ms.topic: include
-ms.date: 11/05/2019
-ms.author: wesmc
+ms.date: 10/06/2020
+ms.author: cauribeg
 ms.custom: include file
-ms.openlocfilehash: e0557f8eb2fd120baeebee96acb4ef539344e3e7
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ae9526a47a77118503274fc824538980ebcd50de
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87528817"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91828756"
 ---
-1. 若要建立快取，請登入 [Azure 入口網站](https://portal.azure.com)，然後選取 [建立資源]  。 
-   
-   ![選取 [建立資源]](media/redis-cache-create/create-a-resource.png)
+1. 若要建立快取，請登入 [Azure 入口網站](https://portal.azure.com)，然後選取 [建立資源]  。
+
+    :::image type="content" source="media/redis-cache-create/create-resource.png" alt-text="選取 Azure Cache for Redis。":::
+
    
 1. 在 [新增]  頁面上選取 [資料庫]  ，然後選取 [Azure Cache for Redis]  。
-   
-   ![選取 Azure Cache for Redis](media/redis-cache-create/redis-cache-new-cache-menu.png)
+
+    :::image type="content" source="media/redis-cache-create/select-cache.png" alt-text="選取 Azure Cache for Redis。":::
    
 1. 在 [新的 Redis 快取]  頁面上，設定新快取的設定。
    
@@ -32,15 +33,23 @@ ms.locfileid: "87528817"
    | **資源群組** | 下拉並選取資源群組，或選取 [新建]  並輸入新的資源群組名稱。 | 用來建立快取和其他資源的資源群組名稱。 將所有的應用程式資源放在一個資源群組中，您將可輕鬆地一併管理或刪除這些資源。 | 
    | **位置** | 下拉並選取位置。 | 選取其他將使用快取的服務附近的[區域](https://azure.microsoft.com/regions/)。 |
    | **定價層** | 下拉並選取 [定價層](https://azure.microsoft.com/pricing/details/cache/)。 |  快取的可用大小、效能和功能取決於定價層。 如需詳細資訊，請參閱 [Azure Cache for Redis 概觀](../articles/azure-cache-for-redis/cache-overview.md)。 |
-   
-1. 選取 [建立]  。 
-   
-   ![建立 Azure Cache for Redis](media/redis-cache-create/redis-cache-cache-create.png) 
-   
-   > [!NOTE]
-   > 預計佈建快取的時間大約為 15 到 20 分鐘。   
-   
-   您可以在 Azure Cache for Redis 的 [概觀]  頁面上監視進度。 當 [狀態]  顯示為 [執行中]  時，表示快取已可供使用。
-   
-   ![Azure Cache for Redis 已建立](media/redis-cache-create/redis-cache-cache-created.png)
 
+1. 選取 [網路] 索引標籤，或按一下頁面底部的 [網路] 按鈕。
+
+1. 在 [網路功能] 索引標籤中，選取您的連線方法。
+
+1. 選取頁面底部的 [下一步:進階] 索引標籤，或按一下頁面底部的 [下一步:進階] 按鈕。
+
+1. 在基本或標準快取執行個體的 [進階] 索引標籤中，如果您想要啟用非 TLS 連接埠，請選取啟用切換。
+
+1. 在高階快取執行個體的 [進階] 索引標籤中，設定非 TLS 連接埠、叢集和資料持續性的設定。
+
+1. 選取頁面底部的 [下一步:標記] 索引標籤，或按一下頁面底部的 [下一步:標記] 按鈕。
+
+1. 在 [標記] 索引標籤中，如果您想要分類資源，可以選擇性地輸入名稱和值。 
+
+1. 選取 [檢閱 + 建立] ****。 您會移至 [檢閱 + 建立] 索引標籤，其中 Azure 會驗證您的組態。
+
+1. 出現綠色的「通過驗證」訊息之後，請選取 [建立]。
+
+建立快取需要一些時間。 您可以在 Azure Cache for Redis 的 [概觀] ****   頁面上監視進度。 當 [狀態] **** 顯示為 [執行中]  **** 時，表示快取已可供使用。 

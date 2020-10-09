@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure IoT 中樞（CLI）大規模的自動裝置管理 |Microsoft Docs
+title: 使用 Azure IoT 中樞 (CLI) 大規模進行自動裝置管理 |Microsoft Docs
 description: 使用 Azure IoT 中樞自動設定來管理多個 IoT 裝置或模組
 author: robinsh
 ms.service: iot-hub
@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: robinsh
 ms.openlocfilehash: 60d0ef30a1c7d948a9e837a8bc37c76ace415545
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82024960"
 ---
-# <a name="automatic-iot-device-and-module-management-using-the-azure-cli"></a>使用 Azure CLI 自動進行 IoT 裝置和模組管理
+# <a name="automatic-iot-device-and-module-management-using-the-azure-cli"></a>使用 Azure CLI 自動進行 IoT 裝置和模組管理 (英文)
 
 [!INCLUDE [iot-edge-how-to-deploy-monitor-selector](../../includes/iot-hub-auto-device-config-selector.md)]
 
@@ -63,7 +63,7 @@ Azure IoT 中樞的自動裝置管理可自動為大量裝置管理許多重複�
 
 ## <a name="define-the-target-content-and-metrics"></a>定義目標內容和計量
 
-目標內容和計量查詢會指定為 JSON 檔，以描述要設定的裝置對應項或模組對應項所需屬性，以及要測量的屬性。  若要使用 Azure CLI 建立自動設定，請在本機將目標內容和計量儲存為 .txt 檔案。 當您執行命令以將設定套用至裝置時，您會在稍後的章節中使用檔案路徑。
+目標內容和計量查詢會指定為 JSON 檔，以描述要設定的裝置對應項或模組對應項所需屬性，以及要測量的報告屬性。  若要使用 Azure CLI 建立自動設定，請在本機將目標內容和計量儲存為 .txt 檔案。 當您執行命令以將設定套用至您的裝置時，您會在後面的區段中使用檔案路徑。
 
 以下是自動裝置設定的基本目標內容範例：
 
@@ -79,7 +79,7 @@ Azure IoT 中樞的自動裝置管理可自動為大量裝置管理許多重複�
 }
 ```
 
-自動模組設定的行為非常類似，但您 `moduleContent` 的目標不是 `deviceContent` 。
+自動模組設定的運作方式非常類似，但您的目標則 `moduleContent` 不是 `deviceContent` 。
 
 ```json
 {
@@ -105,7 +105,7 @@ Azure IoT 中樞的自動裝置管理可自動為大量裝置管理許多重複�
 }
 ```
 
-模組的計量查詢也類似于裝置的查詢，但您選取 [ `moduleId` 從] `devices.modules` 。 例如： 
+模組的計量查詢也類似于裝置的查詢，但您也可以 `moduleId` 從選取 `devices.modules` 。 例如： 
 
 ```json
 {
@@ -130,15 +130,15 @@ Azure IoT 中樞的自動裝置管理可自動為大量裝置管理許多重複�
 
 * --**config-id** - 將會在 IoT 中樞建立的組態名稱。 為設定指定唯一的名稱，最長為 128 個小寫字母。 避免空格和下列無效字元：`& ^ [ ] { } \ | " < > /`。
 
-* --**labels** - 新增標籤以協助追蹤您的組態。 標籤是成對的「名稱, 值」組合，可描述您的部署。 例如，`HostPlatform, Linux` 或 `Version, 3.0.1`。
+* --**labels** - 新增標籤以協助追蹤您的組態。 標籤是成對的「名稱, 值」組合，可描述您的部署。 例如，`HostPlatform, Linux` 或 `Version, 3.0.1`
 
 * --**content** - 要設為對應項所需屬性的目標內容內嵌 JSON 或檔案路徑。 
 
 * --**hub-name** - 要在其中建立組態的 IoT 中樞名稱。 中樞必須在目前訂用帳戶中。 使用 `az account set -s [subscription name]` 命令切換到所需的訂用帳戶
 
-* --**目標-條件**-輸入目標條件，以決定將以這種設定為目標的裝置或模組。針對自動裝置設定，條件是以裝置對應項標籤或裝置對應項所需屬性為基礎，且應符合運算式格式。例如，`tags.environment='test'` 或 `properties.desired.devicemodel='4000x'`。針對自動模組設定，條件是以模組對應項標記或模組對應項所需屬性為基礎。 例如，`from devices.modules where tags.environment='test'` 或 `from devices.modules where properties.reported.chillerProperties.model='4000x'`。
+* --**目標-條件** -輸入目標條件，以決定將以此設定為目標的裝置或模組。針對自動裝置設定，條件是以裝置對應項標籤或裝置對應項所需屬性為基礎，且應符合運算式格式。例如，`tags.environment='test'` 或 `properties.desired.devicemodel='4000x'`。針對自動模組設定，條件是以模組對應項標記或模組對應項所需屬性為基礎。 例如，`from devices.modules where tags.environment='test'` 或 `from devices.modules where properties.reported.chillerProperties.model='4000x'`。
 
-* --**優先順序**-正整數。 如果有兩個或多個設定的目標為相同的裝置或模組，則會套用具有最高優先順序數值的設定。
+* --**priority** -正整數。 如果有兩個或多個設定是以相同的裝置或模組為目標，則會套用具有最高優先順序數值的設定。
 
 * --**metrics** - 計量查詢的檔案路徑。 計量會提供在套用設定內容後，裝置或模組所回報各種狀態的摘要計數。 例如，您可以建立擱置設定變更的計量、錯誤的計量，以及成功設定變更的計量。 
 
@@ -157,13 +157,13 @@ az iot hub configuration show --config-id [configuration id] \
 
 在命令視窗中檢查組態。 **metrics** 屬性會列出每個中樞所評估每個計量的計數：
 
-* **targetedCount** -系統計量，指定 IoT 中樞中符合目標條件的裝置 twins 或模組 twins 數目。
+* **targetedCount** -指定 IoT 中樞內符合目標條件之裝置 twins 或模組 twins 數目的系統度量。
 
-* **appliedCount** -系統度量指定已套用目標內容的裝置或模組數目。
+* **appliedCount** -系統計量會指定已套用目標內容的裝置或模組數目。
 
-* **您的自訂度量**-您定義的任何計量都是使用者計量。
+* **您的自訂度量** -任何您已定義的度量都是使用者度量。
 
-您可以使用下列命令，顯示每個計量的裝置識別碼、模組識別碼或物件清單：
+您可以使用下列命令，顯示每個度量的裝置識別碼、模組識別碼或物件清單：
 
 ```azurecli
 az iot hub configuration show-metric --config-id [configuration id] \
@@ -172,9 +172,9 @@ az iot hub configuration show-metric --config-id [configuration id] \
 
 * --**config-id** - 存在於 IoT 中樞的部署名稱。
 
-* --計量 **-識別碼**-您想要查看裝置識別碼或模組識別碼清單的度量名稱，例如 `appliedCount` 。
+* --計量**識別碼**-您想要查看其裝置識別碼或模組識別碼清單的計量名稱，例如 `appliedCount` 。
 
-* --**中樞名稱**-部署所在的 IoT 中樞名稱。 中樞必須在目前訂用帳戶中。 使用 `az account set -s [subscription name]` 命令切換到所需的訂用帳戶。
+* --**中樞-名稱** -部署所在的 IoT 中樞名稱。 中樞必須在目前訂用帳戶中。 使用 `az account set -s [subscription name]` 命令切換到所需的訂用帳戶。
 
 * --**metric-type** - 計量類型可以是 `system` 或 `user`。  系統計量是 `targetedCount` 和 `appliedCount`。 其他所有計量是使用者計量。
 
@@ -211,7 +211,7 @@ az iot hub configuration update --config-id [configuration id] \
 
 ## <a name="delete-a-configuration"></a>刪除設定
 
-當您刪除設定時，任何裝置 twins 或模組 twins 都會採用其下一個最高優先順序的設定。 如果 twins 不符合任何其他設定的目標條件，則不會套用其他設定。 
+當您刪除設定時，任何裝置 twins 或模組 twins 都會採用其下一個最高優先順序的設定。 如果 twins 不符合任何其他設定的目標條件，則不會套用任何其他設定。 
 
 使用以下命令刪除組態：
 
