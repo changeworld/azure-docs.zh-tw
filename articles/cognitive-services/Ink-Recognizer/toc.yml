@@ -1,6 +1,6 @@
 - name: 筆跡辨識器文件
   href: index.yml
-- name: 概觀
+- name: 總覽
   expanded: true
   items:
     - name: 什麼是筆跡辨識器 API？
@@ -10,7 +10,7 @@
   items:
     - name: REST API
       items:
-        - name: 'C#'
+        - name: C#
           href: quickstarts/csharp.md
         - name: Java
           href: quickstarts/java.md
@@ -22,9 +22,9 @@
       href: concepts/send-ink-data.md
 - name: 範例
   items:
-    - name: 'C# 和通用 Windows 平台 (UWP)'
+    - name: C# 和通用 Windows 平台 (UWP)
       href: 'https://go.microsoft.com/fwlink/?linkid=2089803'
-    - name: 'C# 和 Windows Presentation Foundation (WPF)'
+    - name: C# 和 Windows Presentation Foundation (WPF)
       href: 'https://go.microsoft.com/fwlink/?linkid=2089804'
     - name: Javascript 網頁瀏覽器應用程式
       href: 'https://go.microsoft.com/fwlink/?linkid=2089908'
@@ -32,7 +32,7 @@
       href: 'https://go.microsoft.com/fwlink/?linkid=2089906'
     - name: Swift 和 iOS 行動裝置應用程式
       href: 'https://go.microsoft.com/fwlink/?linkid=2089805'
-- name: 參考
+- name: 參考資料
   items:
     - name: REST API 參考資料
       href: 'https://go.microsoft.com/fwlink/?linkid=2089907'

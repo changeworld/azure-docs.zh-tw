@@ -38,7 +38,7 @@
       href: 'https://api-portal.videoindexer.ai/'
 - name: 資源
   items:
-    - name: 價格
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/video-indexer/'
     - name: UserVoice
       href: 'https://cognitive.uservoice.com/forums/598144-video-indexer'

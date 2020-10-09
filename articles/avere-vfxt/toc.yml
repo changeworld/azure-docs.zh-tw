@@ -1,6 +1,6 @@
 - name: Avere vFXT 文件
   href: index.yml
-- name: 概觀
+- name: 總覽
   items:
     - name: 什麼是 Avere vFXT for Azure？
       href: avere-vfxt-overview.md

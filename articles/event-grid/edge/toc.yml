@@ -2,7 +2,7 @@
   href: index.yml
 - name: 切換至 Azure 事件方格文件
   href: ../overview.md
-- name: 概觀
+- name: 總覽
   items:
     - name: 什麼是 IoT Edge 上的事件方格？
       href: overview.md

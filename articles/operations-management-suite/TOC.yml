@@ -1,4 +1,4 @@
-- name: 概觀
+- name: 總覽
   items:
     - name: 代理程式監視
       href: ../monitoring/index.md
@@ -8,7 +8,7 @@
       href: ../log-analytics/log-analytics-get-started.md
     - name: 自動化
       href: /azure/automation/
-    - name: Backup
+    - name: 備份
       href: ../backup/backup-introduction-to-azure-backup.md
     - name: Site Recovery
       href: ../site-recovery/site-recovery-overview.md

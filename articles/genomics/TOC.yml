@@ -1,6 +1,6 @@
 - name: Microsoft Genomics 文件
   href: index.yml
-- name: 概觀
+- name: 總覽
   items:
     - name: 什麼是 Microsoft Genomics？
       href: overview-what-is-genomics.md
@@ -29,13 +29,13 @@
       href: troubleshooting-guide-genomics.md
     - name: 提出支援要求
       href: file-support-ticket-genomics.md
-    - name: 版本發行歷程記錄
+    - name: 版本發行記錄
       href: version-release-history-genomics.md
     - name: 業務持續性
       href: business-continuity-genomics.md
     - name: Azure 藍圖
       href: 'https://azure.microsoft.com/roadmap/?category=cognitive-services'
-    - name: 價格
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/genomics/'
     - name: 區域可用性
       href: 'https://azure.microsoft.com/regions/services/'
