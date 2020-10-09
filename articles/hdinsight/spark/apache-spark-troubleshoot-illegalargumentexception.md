@@ -1,6 +1,6 @@
 ---
-title: Apache Spark Azure HDInsight 的 Illegalargumentexception 若錯誤
-description: 適用于 Azure HDInsight 中 Apache Spark 活動的 Illegalargumentexception 若 Azure Data Factory
+title: Apache Spark Azure HDInsight 的 IllegalArgumentException 錯誤
+description: 適用于 Azure Data Factory 的 Azure HDInsight 中 Apache Spark 活動的 IllegalArgumentException
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
@@ -8,19 +8,19 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 07/29/2019
 ms.openlocfilehash: df62dbd8db7d41eb11207c7741aed76cec0ac7a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75894387"
 ---
-# <a name="scenario-illegalargumentexception-for-apache-spark-activity-in-azure-hdinsight"></a>案例： Azure HDInsight 中 Apache Spark 活動的 Illegalargumentexception 若
+# <a name="scenario-illegalargumentexception-for-apache-spark-activity-in-azure-hdinsight"></a>案例： IllegalArgumentException Azure HDInsight 中的 Apache Spark 活動
 
 本文說明在 Azure HDInsight 叢集中使用 Apache Spark 元件時，疑難排解步驟和可能的解決方案。
 
 ## <a name="issue"></a>問題
 
-嘗試在 Azure Data Factory 管線中執行 Spark 活動時，您會收到下列例外狀況：
+當您嘗試在 Azure Data Factory 管線中執行 Spark 活動時，會收到下列例外狀況：
 
 ```error
 Exception in thread "main" java.lang.IllegalArgumentException:
@@ -31,9 +31,9 @@ Wrong FS: wasbs://additional@xxx.blob.core.windows.net/spark-examples_2.11-2.1.0
 
 如果應用程式 jar 檔案不位於 Spark 叢集的預設/主要儲存體中，Spark 作業將會失敗。
 
-這是此錯誤中所追蹤 Spark 開放原始碼架構的已知問題：[如果 fs.defaultfs 和應用程式 jar 是不同的 url，spark 作業會失敗](https://issues.apache.org/jira/browse/SPARK-22587)。
+這是在此 bug 中追蹤的 Spark 開放原始碼架構的已知問題： [如果 fs.defaultfs 和應用程式 jar 不同的 url，spark 作業會失敗](https://issues.apache.org/jira/browse/SPARK-22587)。
 
-Spark 2.3.0 已解決此問題。
+此問題已在 Spark 2.3.0 中解決。
 
 ## <a name="resolution"></a>解決方案
 

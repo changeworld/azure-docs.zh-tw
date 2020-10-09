@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/25/2019
 ms.openlocfilehash: 79e277cb3d512ee17da866a61e9d6d66a50cd902
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81415031"
 ---
 # <a name="copy-data-from-google-adwords-using-azure-data-factory"></a>使用 Azure Data Factory 從 Google AdWords 複製資料
@@ -54,11 +54,11 @@ Azure Data Factory 提供的內建驅動程式可啟用連線，因此使用此�
 | developerToken | 與用來授與 AdWords API 存取權的管理員帳戶相關聯的開發人員權杖。  您可以選擇將這個欄位標記為 SecureString 以將它安全地儲存在 ADF，或將密碼儲存在 Azure Key Vault，然後在執行複製資料時，讓 ADF 複製活動從該處提取 - 請參閱[將認證儲存在 Key Vault](store-credentials-in-key-vault.md) 以進一步了解。 | 是 |
 | authenticationType | 用於驗證的 OAuth 2.0 驗證機制。 ServiceAuthentication 只能在自我裝載 IR 上使用。 <br/>允許的值為：**ServiceAuthentication**、**UserAuthentication** | 是 |
 | refreshToken | 從 Google 取得的重新整理權杖，用於針對 UserAuthentication 授權存取 AdWords。 您可以選擇將這個欄位標記為 SecureString 以將它安全地儲存在 ADF，或將密碼儲存在 Azure Key Vault，然後在執行複製資料時，讓 ADF 複製活動從該處提取 - 請參閱[將認證儲存在 Key Vault](store-credentials-in-key-vault.md) 以進一步了解。 | 否 |
-| clientId | 用來取得重新整理權杖的 Google 應用程式的用戶端識別碼。 您可以選擇將這個欄位標記為 SecureString 以將它安全地儲存在 ADF，或將密碼儲存在 Azure Key Vault，然後在執行複製資料時，讓 ADF 複製活動從該處提取 - 請參閱[將認證儲存在 Key Vault](store-credentials-in-key-vault.md) 以進一步了解。 | 否 |
+| clientId | 用來取得重新整理權杖的 Google 應用程式用戶端識別碼。 您可以選擇將這個欄位標記為 SecureString 以將它安全地儲存在 ADF，或將密碼儲存在 Azure Key Vault，然後在執行複製資料時，讓 ADF 複製活動從該處提取 - 請參閱[將認證儲存在 Key Vault](store-credentials-in-key-vault.md) 以進一步了解。 | 否 |
 | clientSecret | 用來取得重新整理權杖的 Google 應用程式用戶端密碼。 您可以選擇將這個欄位標記為 SecureString 以將它安全地儲存在 ADF，或將密碼儲存在 Azure Key Vault，然後在執行複製資料時，讓 ADF 複製活動從該處提取 - 請參閱[將認證儲存在 Key Vault](store-credentials-in-key-vault.md) 以進一步了解。 | 否 |
 | 電子郵件 | 服務帳戶電子郵件識別碼，用於 ServiceAuthentication 且只能在自我裝載 IR 上使用。  | 否 |
 | keyFilePath | .p12 金鑰檔的完整路徑，用來驗證服務帳戶電子郵件地址且只能在自我裝載 IR上使用。  | 否 |
-| trustedCertPath | 包含信任的 CA 憑證的 pem 檔案完整路徑，可在透過 TLS 連線時驗證服務器。 只有在自我裝載 IR 上使用 TLS 時，才可以設定這個屬性。 預設值為隨 IR 安裝的 cacerts.pem 檔案。  | 否 |
+| trustedCertPath | Pem 檔案的完整路徑，包含信任的 CA 憑證，以便在透過 TLS 連接時驗證服務器。 只有在自我裝載 IR 上使用 TLS 時，才能設定此屬性。 預設值為隨 IR 安裝的 cacerts.pem 檔案。  | 否 |
 | useSystemTrustStore | 指定是否使用來自系統信任存放區或來自指定 PEM 檔案的 CA 憑證。 預設值為 false。  | 否 |
 
 **範例︰**

@@ -8,19 +8,19 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 07/30/2019
 ms.openlocfilehash: 6e000d31ffbacd7cb716bd59dde4f935638b0810
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75895201"
 ---
-# <a name="scenario-apache-hive-fails-to-establish-a-connection-to-apache-zookeeper-in-azure-hdinsight"></a>案例： Apache Hive 無法在中建立與 Apache Zookeeper 的連線 Azure HDInsight
+# <a name="scenario-apache-hive-fails-to-establish-a-connection-to-apache-zookeeper-in-azure-hdinsight"></a>案例： Apache Hive 無法在 Azure HDInsight 中建立與 Apache Zookeeper 的連線
 
-本文說明在 Azure HDInsight 叢集中使用互動式查詢元件時，針對問題的疑難排解步驟和可能的解決方法。
+本文說明使用 Azure HDInsight 叢集中的 Interactive Query 元件時，所發生之問題的疑難排解步驟和可能的解決方法。
 
 ## <a name="issue"></a>問題
 
-Hive 視圖無法存取，且中的登入 `/var/log/hive` 顯示類似下列的錯誤：
+Hive 視圖無法存取，且中的記錄 `/var/log/hive` 顯示類似下列的錯誤：
 
 ```
 ERROR [Curator-Framework-0]: curator.ConnectionState (ConnectionState.java:checkTimeouts(200)) - Connection timed out for connection string (zk0-cluster.cloud.wbmi.com:2181,zk1-cluster.cloud.wbmi.com:2181,zk2-cluster.cloud.wbmi.com:2181) and timeout (15000) / elapsed (21852)
@@ -28,13 +28,13 @@ ERROR [Curator-Framework-0]: curator.ConnectionState (ConnectionState.java:check
 
 ## <a name="cause"></a>原因
 
-Hive 可能無法建立與 Zookeeper 的連接，這可防止 Hive 視圖啟動。
+Hive 可能無法建立與 Zookeeper 的連線，這會讓 Hive 視圖無法啟動。
 
 ## <a name="resolution"></a>解決方案
 
 1. 檢查 Zookeeper 服務是否狀況良好。
 
-1. 檢查 Zookeeper 服務是否有 Hive Server2 的 ZNode 專案。 此值將會遺失或不正確。
+1. 檢查 Zookeeper 服務是否有 Hive Server2 的 ZNode 專案。 值將會遺失或不正確。
 
     ```
     /usr/hdp/2.6.2.25-1/zookeeper/bin/zkCli.sh -server zk1-wbwdhs

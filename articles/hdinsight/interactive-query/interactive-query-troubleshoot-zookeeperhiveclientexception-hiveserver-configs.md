@@ -1,6 +1,6 @@
 ---
 title: Apache Hive Zeppelin 解譯器錯誤-Azure HDInsight
-description: Apache Zeppelin Hive JDBC 解譯器在中指向錯誤的 URL Azure HDInsight
+description: Apache Zeppelin Hive JDBC 解譯器指向 Azure HDInsight 中的錯誤 URL
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
@@ -8,15 +8,15 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 07/30/2019
 ms.openlocfilehash: 20309babb9ece0ae20e7442543b0d378f9a51060
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75895067"
 ---
-# <a name="scenario-apache-hive-zeppelin-interpreter-gives-a-zookeeper-error-in-azure-hdinsight"></a>案例： Apache Hive Zeppelin 解譯器在 Azure HDInsight 中提供了 Zookeeper 錯誤
+# <a name="scenario-apache-hive-zeppelin-interpreter-gives-a-zookeeper-error-in-azure-hdinsight"></a>案例： Apache Hive Zeppelin 解譯器在 Azure HDInsight 中提供 Zookeeper 錯誤
 
-本文說明在 Azure HDInsight 叢集中使用互動式查詢元件時，針對問題的疑難排解步驟和可能的解決方法。
+本文說明使用 Azure HDInsight 叢集中的 Interactive Query 元件時，所發生之問題的疑難排解步驟和可能的解決方法。
 
 ## <a name="issue"></a>問題
 
@@ -38,7 +38,7 @@ Zeppelin Hive JDBC 解譯器指向錯誤的 URL。
 
 1. 編輯 JDBC 設定：將 hive. url 值更新為在步驟1中複製的 Hive JDBC URL
 
-1. 儲存，然後再次嘗試查詢
+1. 儲存，然後重試查詢
 
 ## <a name="next-steps"></a>後續步驟
 

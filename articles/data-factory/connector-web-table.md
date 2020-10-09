@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
 ms.openlocfilehash: 0eb4d37342685c13027a69bb6cb85f618fa63f20
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81410206"
 ---
 # <a name="copy-data-from-web-table-by-using-azure-data-factory"></a>使用 Azure Data Factory 從 Web 資料表複製資料
@@ -29,7 +29,7 @@ ms.locfileid: "81410206"
 此 Web 資料表連接器、[REST 連接器](connector-rest.md)和 [HTTP 連接器](connector-http.md)之間的差異如下：
 
 - **Web 資料表連接器**會從 HTML 網頁擷取資料表內容。
-- **REST 連接器**專門支援從 RESTful api 複製資料。
+- **REST 連接器** 專門支援從 RESTful api 複製資料。
 - **HTTP 連接器**一般用來從任何 HTTP 端點擷取資料，例如下載檔案。 
 
 ## <a name="supported-capabilities"></a>支援的功能
@@ -43,9 +43,9 @@ ms.locfileid: "81410206"
 
 具體而言，這個 Web 資料表連接器支援**從 HTML 頁面擷取資料表內容**。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-若要使用此 Web 資料表連接器，您需要設定「自我裝載 Integration Runtime」。 如需詳細資訊，請參閱[自我裝載 Integration Runtime](create-self-hosted-integration-runtime.md)一文。
+若要使用此 Web 資料表連接器，您需要設定「自我裝載 Integration Runtime」。 如需詳細資訊，請參閱自我裝載的 [Integration Runtime](create-self-hosted-integration-runtime.md) 文章。
 
 ## <a name="getting-started"></a>開始使用
 
@@ -92,8 +92,8 @@ ms.locfileid: "81410206"
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | 資料集的類型屬性必須設定為：**WebTable** | 是 |
-| path |包含資料表之資源的相對 URL。 |不會。 當路徑未指定時，則只會使用在連結服務定義中指定的 URL。 |
-| 索引 |資源中資料表的索引。 如需取得 HTML 網頁中資料表索引的步驟，請參閱[取得 html 網頁中資料表的索引](#get-index-of-a-table-in-an-html-page)一節。 |是 |
+| path |包含資料表之資源的相對 URL。 |否。 當路徑未指定時，則只會使用在連結服務定義中指定的 URL。 |
+| 索引 |資源中資料表的索引。 如需取得 HTML 網頁中資料表索引的步驟，請參閱 [取得 html 網頁中資料表的索引](#get-index-of-a-table-in-an-html-page) 一節。 |是 |
 
 **範例︰**
 

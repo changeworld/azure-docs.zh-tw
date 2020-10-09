@@ -110,18 +110,26 @@
   items:
     - name: 指派使用者和管理應用程式存取
       items:
-        - name: 設定使用者同意
-          href: configure-user-consent.md
-        - name: 管理和評估同意要求
-          href: manage-consent-requests.md
-        - name: 授與全租用戶管理員同意
-          href: grant-admin-consent.md
-        - name: 設定管理員同意工作流程 (預覽)
-          href: configure-admin-consent-workflow.md
+        - name: 同意和權限
+          items:
+            - name: 設定使用者同意
+              href: configure-user-consent.md
+            - name: 設定群組擁有者同意
+              href: configure-user-consent-groups.md
+            - name: 設定權限分類
+              href: configure-permission-classifications.md
+            - name: 管理應用程式同意原則
+              href: manage-app-consent-policies.md
+            - name: 設定管理員同意工作流程 (預覽)
+              href: configure-admin-consent-workflow.md
+            - name: 管理和評估同意要求
+              href: manage-consent-requests.md
+            - name: 授與全租用戶管理員同意
+              href: grant-admin-consent.md
+            - name: 檢閱授與給應用程式的權限
+              href: manage-application-permissions.md
         - name: 為應用程式管理使用者指派
           href: assign-user-or-group-access-portal.md
-        - name: 檢閱授與給應用程式的權限
-          href: manage-application-permissions.md
         - name: 在我的應用程式上建立集合
           href: access-panel-collections.md
         - name: 使用服務應用程式存取
@@ -262,7 +270,7 @@
               href: application-sign-in-problem-on-premises-application-proxy.md
             - name: 應用程式 Proxy 中的 CORS 問題
               href: application-proxy-understand-cors-issues.md
-- name: 參考
+- name: 參考資料
   items:
     - name: 應用程式 Proxy 常見問題集
       href: application-proxy-faq.md

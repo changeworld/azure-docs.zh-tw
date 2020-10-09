@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: 63a219078927e9001a8eb4085c722e7ec8d2fac9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75980636"
 ---
 # <a name="deployment-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure 雲端服務之部署問題：常見問題集 (FAQ)
@@ -32,29 +32,29 @@ ms.locfileid: "75980636"
 
 當您雲端服務所在的叢集中沒有足夠的實體計算資源可滿足您的部署要求時，就會發生配置失敗。
 
-如需減輕這類配置失敗的協助，請參閱[雲端服務配置失敗：解決方案](cloud-services-allocation-failures.md#solutions)。
+如需減輕這類配置失敗的協助，請參閱 [雲端服務配置失敗：解決方案](cloud-services-allocation-failures.md#solutions)。
 
 ## <a name="why-does-scaling-up-or-scaling-out-a-cloud-service-deployment-sometimes-result-in-allocation-failure"></a>為什麼將雲端服務部署向上擴充或相應放大有時會造成配置失敗？
 部署雲端服務時，通常會釘選到特定的叢集。 這表示向上擴充/相應放大現有的雲端服務必須將新的執行個體配置在相同叢集中。 如果叢集已接近其容量，或無法使用所需的 VM 大小/類型，要求可能就會失敗。
 
-如需減輕這類配置失敗的協助，請參閱[雲端服務配置失敗：解決方案](cloud-services-allocation-failures.md#solutions)。
+如需減輕這類配置失敗的協助，請參閱 [雲端服務配置失敗：解決方案](cloud-services-allocation-failures.md#solutions)。
 
 ## <a name="why-does-deploying-a-cloud-service-into-an-affinity-group-sometimes-result-in-allocation-failure"></a>為什麼將雲端服務部署至同質群組時，有時會造成配置失敗？
 部署到空白雲端服務的新部署可經由該區域中任一叢集的網狀架構配置，除非雲端服務已釘選到某個同質群組。 將在相同的叢集中嘗試部署到相同的同質群組。 如果叢集逼近容量上限，則要求可能會失敗。
 
-如需減輕這類配置失敗的協助，請參閱[雲端服務配置失敗：解決方案](cloud-services-allocation-failures.md#solutions)。
+如需減輕這類配置失敗的協助，請參閱 [雲端服務配置失敗：解決方案](cloud-services-allocation-failures.md#solutions)。
 
 ## <a name="why-does-changing-vm-size-or-adding-a-new-vm-to-an-existing-cloud-service-sometimes-result-in-allocation-failure"></a>為什麼變更 VM 大小或將新的 VM 新增至現有雲端服務時，有時會造成配置失敗？
-資料中心內的叢集可能會有不同的機器類型設定（例如，系列、Av2 系列、D 系列、Dv2 系列、G 系列、H 系列等等）。 但並非所有的叢集都一定會有所有種類的 VM。 例如，如果您嘗試新增到雲端服務的 D 系列 VM 已部署在僅限 A 系列的叢集中，就會發生配置失敗。 如果您嘗試變更 VM SKU 大小 (例如，從 A 系列切換至 D 系列)，也會發生這個問題。
+資料中心內的叢集可能會有不同的電腦類型設定 (例如，系列、Av2 系列、D 系列、Dv2 系列、G 系列、H 系列等 ) 。 但並非所有的叢集都一定會有所有種類的 VM。 例如，如果您嘗試新增到雲端服務的 D 系列 VM 已部署在僅限 A 系列的叢集中，就會發生配置失敗。 如果您嘗試變更 VM SKU 大小 (例如，從 A 系列切換至 D 系列)，也會發生這個問題。
 
-如需減輕這類配置失敗的協助，請參閱[雲端服務配置失敗：解決方案](cloud-services-allocation-failures.md#solutions)。
+如需減輕這類配置失敗的協助，請參閱 [雲端服務配置失敗：解決方案](cloud-services-allocation-failures.md#solutions)。
 
 若要檢查您地區中可用的大小，請參閱 [Microsoft Azure：依區域提供的產品](https://azure.microsoft.com/regions/services)。
 
 ## <a name="why-does-deploying-a-cloud-service-sometime-fail-due-to-limitsquotasconstraints-on-my-subscription-or-service"></a>為什麼部署雲端服務有時會因為我訂用帳戶或服務的限制/配額/條件約束而失敗？
 如果配置所需的資源超過預設值，或超過您區域/資料中心層級所允許的最大配額，雲端服務部署就可能會失敗。 如需詳細資訊，請參閱[雲端服務限制](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-cloud-services-limits)。
 
-您也可以在入口網站追蹤訂用帳戶目前的使用量/配額： Azure 入口網站 => 訂閱 => \<appropriate subscription>   => [使用量 + 配額]。
+您也可以在入口網站追蹤訂用帳戶目前的使用量/配額： Azure 入口網站 => 訂閱 => \<appropriate subscription>   => 「使用量 + 配額」。
 
 也可以透過 Azure 計費 API 擷取資源使用量/耗用量的相關資訊。 請參閱 [Azure 資源使用情況 API (預覽)](../cost-management-billing/manage/usage-rate-card-overview.md#azure-resource-usage-api-preview)。
 
@@ -65,7 +65,7 @@ ms.locfileid: "75980636"
 
 ## <a name="why-am-i-not-able-to-deploy-cloud-services-through-service-management-apis-or-powershell-when-using-azure-resource-manager-storage-account"></a>為什麼我在使用 Azure Resource Manager 儲存體帳戶時，無法透過服務管理 API 或 PowerShell 部署雲端服務？ 
 
-由於雲端服務是一種與 Azure Resource Manager 模型不直接相容的傳統資源，因此您無法將其與 Azure Resource Manager 儲存體帳戶產生關聯。 以下提供一些選項： 
+由於雲端服務是與 Azure Resource Manager 模型不直接相容的傳統資源，因此無法將它與 Azure Resource Manager 的儲存體帳戶建立關聯。 以下提供一些選項： 
 
 - 透過 REST API 部署。
 
@@ -73,7 +73,7 @@ ms.locfileid: "75980636"
 
 - 透過 [Azure 入口網站](https://portal.azure.com)部署。
 
-    這會從[Azure 入口網站](https://portal.azure.com)運作，因為呼叫會透過 proxy/填充碼進行，讓 Azure Resource Manager 和傳統資源之間進行通訊。 
+    這會從 [Azure 入口網站](https://portal.azure.com) 運作，因為呼叫會透過 proxy/填充碼進行，以允許 Azure Resource Manager 和傳統資源之間的通訊。 
 
 ## <a name="why-does-azure-portal-require-me-to-provide-a-storage-account-for-deployment"></a>為何 Azure 入口網站要求我提供儲存體帳戶進行部署？
 

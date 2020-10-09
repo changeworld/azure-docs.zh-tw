@@ -8,29 +8,29 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/09/2019
 ms.openlocfilehash: ec5a0d6e8c0a5236ae3929560e81033d983d4dfb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75895120"
 ---
-# <a name="scenario-apache-tez-application-hangs-in-azure-hdinsight"></a>案例： Apache Tez 應用程式在 Azure HDInsight 中停止回應
+# <a name="scenario-apache-tez-application-hangs-in-azure-hdinsight"></a>案例： Azure HDInsight 中的 Apache Tez 應用程式停止回應
 
-本文說明與 Azure HDInsight 叢集互動時，問題的疑難排解步驟和可能的解決方法。
+本文說明與 Azure HDInsight 叢集互動時，問題的疑難排解步驟和可能的解決方式。
 
 ## <a name="issue"></a>問題
 
-提交 Apache Hive 作業之後，來自 Tez view 的作業狀態為「執行中」，但不會顯示任何進度
+提交 Apache Hive 作業之後，Tez view 中的作業狀態為 [執行中]，但似乎沒有任何進度
 
 ## <a name="cause"></a>原因
 
-提交的作業過多;長 Yarn 佇列。
+提交的作業太多;長 Yarn 佇列。
 
 ## <a name="resolution"></a>解決方案
 
-相應增加叢集，或只是等到 Yarn 的佇列清空為止。
+擴大叢集，或只等到 Yarn 佇列耗盡為止。
 
-根據預設 `yarn.scheduler.capacity.maximum-applications` ，會控制正在執行或擱置中的應用程式數目上限，並預設為 `10000` 。
+依預設 `yarn.scheduler.capacity.maximum-applications` ，會控制正在執行或擱置中的應用程式數目上限，而且預設為 `10000` 。
 
 ## <a name="next-steps"></a>後續步驟
 

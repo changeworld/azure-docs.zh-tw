@@ -7,13 +7,13 @@ ms.author: rohogue
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.openlocfilehash: 66df6a2018960d83c4aaa9129dad067732a8b3cf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76152964"
 ---
-# <a name="azure-vfxt-for-azure-whitepapers-and-other-resources"></a>適用于 Azure 的 azure vFXT 白皮書和其他資源
+# <a name="azure-vfxt-for-azure-whitepapers-and-other-resources"></a>適用于 Azure 白皮書與其他資源的 azure vFXT
 
 本文列出案例研究、技術白皮書、資訊圖和其他資源，可協助您瞭解 Avere vFXT for Azure 如何融入您的工作流程中。
 
@@ -25,13 +25,13 @@ ms.locfileid: "76152964"
 
 ## <a name="datasheet-avere-vfxt-for-azure"></a>資料工作表： Avere vFXT for Azure
 
-**連結：** [Avere vFXT for Azure 資料表](https://azure.microsoft.com/resources/avere-vfxt-for-azure-data-sheet/)
+**連結：** [Avere vFXT for Azure](https://azure.microsoft.com/resources/avere-vfxt-for-azure-data-sheet/)資料工作表
 
 這份兩頁簡介具有能說明如何在數種使用案例下使用 Avere vFXT for Azure 的基礎資訊和圖表。
 
 ## <a name="hybrid-cloud-for-file-based-workloads"></a>適用於檔案型工作負載的混合式雲端
 
-**連結：** [資訊圖：為以檔案為基礎的工作負載建立混合式雲端](https://azure.microsoft.com/resources/building-a-hybrid-cloud-for-file-based-hpc-workloads/)
+**連結：** [資訊圖：建立以檔案為基礎之工作負載的混合式雲端](https://azure.microsoft.com/resources/building-a-hybrid-cloud-for-file-based-hpc-workloads/)
 
 此圖說明使用 Avere vFXT for Azure 將雲端基礎結構新增到現有系統的元件和配置。 使用 Avere vFXT for Azure 來加強現有內部部署基礎結構的運算容量，或是暫時性或永久性地將資料和運算移至雲端。
 

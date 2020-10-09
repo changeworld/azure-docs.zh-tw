@@ -1,5 +1,5 @@
 ---
-title: Apache Hive View 中未顯示錯誤訊息-Azure HDInsight
+title: Apache Hive View 中未顯示的錯誤訊息-Azure HDInsight
 description: Apache Hive View 中的查詢失敗，Azure HDInsight 叢集沒有任何詳細資料。
 ms.service: hdinsight
 ms.topic: troubleshooting
@@ -8,19 +8,19 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 07/30/2019
 ms.openlocfilehash: 5aa03ac3537783daef87c9e7cb7d4ec58988ea9e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75895208"
 ---
-# <a name="scenario-query-error-message-not-displayed-in-apache-hive-view-in-azure-hdinsight"></a>案例：查詢錯誤訊息不會顯示在 Azure HDInsight 的 Apache Hive 視圖中
+# <a name="scenario-query-error-message-not-displayed-in-apache-hive-view-in-azure-hdinsight"></a>案例： Azure HDInsight 的 Apache Hive 視圖中未顯示查詢錯誤訊息
 
-本文說明在 Azure HDInsight 叢集中使用互動式查詢元件時，針對問題的疑難排解步驟和可能的解決方法。
+本文說明使用 Azure HDInsight 叢集中的 Interactive Query 元件時，所發生之問題的疑難排解步驟和可能的解決方法。
 
 ## <a name="issue"></a>問題
 
-Apache Hive View 查詢錯誤訊息看起來會像這樣，而沒有進一步資訊：
+Apache Hive View 查詢錯誤訊息看起來像這樣，不需要進一步的資訊：
 
 ```
 "Failed to execute query. <a href="#/messages/1">(details)</a>"
@@ -28,11 +28,11 @@ Apache Hive View 查詢錯誤訊息看起來會像這樣，而沒有進一步資
 
 ## <a name="cause"></a>原因
 
-有時候，查詢失敗的錯誤訊息可能太大，而無法顯示在 Hive 視圖的主頁面上。
+有時查詢失敗的錯誤訊息可能太大，而無法顯示在 Hive View 主頁面上。
 
 ## <a name="resolution"></a>解決方案
 
-勾選 Hive_view 右上角的 [通知] 索引標籤，以查看完整的 Stacktrace 和錯誤訊息。
+檢查 Hive_view 右上角的 [通知] 索引標籤，以查看完整的 Stacktrace 和錯誤訊息。
 
 ## <a name="next-steps"></a>後續步驟
 

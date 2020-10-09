@@ -1,6 +1,6 @@
 ---
-title: 來自 Apache Spark 應用程式的 RequestBodyTooLarge 錯誤-Azure HDInsight
-description: NativeAzureFileSystem ...RequestBodyTooLarge 會出現在 Azure HDInsight 的 Apache Spark 串流應用程式的記錄中
+title: 從 Apache Spark 應用程式 Azure HDInsight RequestBodyTooLarge 錯誤
+description: NativeAzureFileSystem ...RequestBodyTooLarge 會在記錄檔中顯示 Apache Spark 串流應用程式 Azure HDInsight
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
@@ -8,13 +8,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 07/29/2019
 ms.openlocfilehash: 777d06670238a7625d190c92f78a55cd4794d226
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75894391"
 ---
-# <a name="nativeazurefilesystemrequestbodytoolarge-appear-in-apache-spark-streaming-app-log-in-hdinsight"></a>"NativeAzureFileSystem...RequestBodyTooLarge "會出現在 HDInsight 的 Apache Spark 串流應用程式記錄中
+# <a name="nativeazurefilesystemrequestbodytoolarge-appear-in-apache-spark-streaming-app-log-in-hdinsight"></a>"NativeAzureFileSystem...RequestBodyTooLarge "會顯示在 HDInsight 的 Apache Spark 串流應用程式記錄檔中
 
 本文說明在 Azure HDInsight 叢集中使用 Apache Spark 元件時，疑難排解步驟和可能的解決方案。
 
@@ -26,17 +26,17 @@ ms.locfileid: "75894391"
 
 您的 Spark 事件記錄檔可能達到 WASB 的檔案長度限制。
 
-在 Spark 2.3 中，每個 Spark 應用程式都會產生一個 Spark 事件記錄檔。 當應用程式正在執行時，Spark 串流應用程式的 Spark 事件記錄檔會繼續成長。 現在，WASB 上的檔案具有50000區塊限制，而預設區塊大小為 4 MB。 因此，在預設設定中，檔案大小上限為 195 GB。 不過，Azure 儲存體已將最大區塊大小增加到 100 MB，這可有效地將單一檔案限制設為 4.75 TB。 如需詳細資訊，請參閱 [Blob 儲存體的延展性和效能目標](../../storage/blobs/scalability-targets.md)。
+在 Spark 2.3 中，每個 Spark 應用程式都會產生一個 Spark 事件記錄檔。 Spark 串流應用程式的 Spark 事件記錄檔會在應用程式執行時持續成長。 現在 WASB 上的檔案具有50000區塊限制，而預設區塊大小為 4 MB。 因此，在預設設定中，檔案大小上限為 195 GB。 不過，Azure 儲存體已將最大區塊大小增加到 100 MB，這可有效地將單一檔案限制為 4.75 TB。 如需詳細資訊，請參閱 [Blob 儲存體的延展性和效能目標](../../storage/blobs/scalability-targets.md)。
 
 ## <a name="resolution"></a>解決方案
 
 此錯誤有三個可用的解決方案：
 
-* 將區塊大小增加至最多 100 MB。 在 Ambari UI 中，修改 HDFS 設定屬性 `fs.azure.write.request.size` （或在區段中建立 `Custom core-site` ）。 將屬性設定為較大的值，例如：33554432。 儲存已更新的設定並重新啟動受影響的元件。
+* 將區塊大小增加到最多 100 MB。 在 Ambari UI 中，修改 HDFS 設定屬性 `fs.azure.write.request.size` (或在) 區段中加以建立 `Custom core-site` 。 將屬性設為較大的值，例如：33554432。 儲存更新的設定，並重新啟動受影響的元件。
 
 * 定期停止並重新提交 spark 串流作業。
 
-* 使用 HDFS 儲存 Spark 事件記錄檔。 使用 HDFS 進行儲存體可能會導致在叢集調整或 Azure 升級期間遺失 Spark 事件資料。
+* 使用 HDFS 來儲存 Spark 事件記錄檔。 使用 HDFS 進行儲存體可能會導致叢集調整或 Azure 升級期間遺失 Spark 事件資料。
 
     1. 透過 `spark.eventlog.dir` `spark.history.fs.logDirectory` Ambari UI 進行變更：
 

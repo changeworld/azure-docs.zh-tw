@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 01/08/2020
 ms.author: jingwang
 ms.openlocfilehash: 2d60a1b03da6fdf4af6b0d0378456c08d927f451
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81415214"
 ---
 # <a name="copy-data-from-hubspot-using-azure-data-factory-preview"></a>使用 Azure Data Factory 從 HubSpot 複製資料 (預覽)
@@ -51,13 +51,13 @@ Azure Data Factory 提供的內建驅動程式可啟用連線，因此使用此�
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | Type 屬性必須設定為：**Hubspot** | 是 |
-| clientId | 與您的 HubSpot 應用程式相關聯的用戶端識別碼。 從[這裡](https://developers.hubspot.com/docs/faq/how-do-i-create-an-app-in-hubspot)瞭解如何在 HubSpot 中建立應用程式。 | 是 |
+| clientId | 與您的 HubSpot 應用程式相關聯的用戶端識別碼。 從 [這裡](https://developers.hubspot.com/docs/faq/how-do-i-create-an-app-in-hubspot)瞭解如何在 HubSpot 中建立應用程式。 | 是 |
 | clientSecret | 與您的 HubSpot 應用程式相關聯的用戶端密碼。 將此欄位標記為 SecureString，將它安全地儲存在 Data Factory 中，或[參考 Azure Key Vault 中儲存的祕密](store-credentials-in-key-vault.md)。 | 是 |
-| accessToken | 一開始驗證您 OAuth 整合時所取得的存取權杖。 從[這裡](https://developers.hubspot.com/docs/methods/oauth2/get-access-and-refresh-tokens)瞭解如何使用您的用戶端識別碼和密碼取得存取權杖。 將此欄位標記為 SecureString，將它安全地儲存在 Data Factory 中，或[參考 Azure Key Vault 中儲存的祕密](store-credentials-in-key-vault.md)。 | 是 |
+| accessToken | 一開始驗證您 OAuth 整合時所取得的存取權杖。 從 [這裡](https://developers.hubspot.com/docs/methods/oauth2/get-access-and-refresh-tokens)瞭解如何使用您的用戶端識別碼和密碼來取得存取權杖。 將此欄位標記為 SecureString，將它安全地儲存在 Data Factory 中，或[參考 Azure Key Vault 中儲存的祕密](store-credentials-in-key-vault.md)。 | 是 |
 | refreshToken | 一開始驗證您 OAuth 整合時所取得的重新整理權杖。 將此欄位標記為 SecureString，將它安全地儲存在 Data Factory 中，或[參考 Azure Key Vault 中儲存的祕密](store-credentials-in-key-vault.md)。 | 是 |
 | useEncryptedEndpoints | 指定是否使用 HTTPS 來加密資料來源端點。 預設值為 true。  | 否 |
 | useHostVerification | 指定在透過 TLS 連線時，是否要求伺服器憑證中的主機名稱符合伺服器的主機名稱。 預設值為 true。  | 否 |
-| usePeerVerification | 指定在透過 TLS 連接時，是否要確認伺服器的身分識別。 預設值為 true。  | 否 |
+| usePeerVerification | 指定是否要在透過 TLS 連接時驗證服務器的身分識別。 預設值為 true。  | 否 |
 
 **範例︰**
 

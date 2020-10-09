@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 12/19/2019
 ms.author: rohogue
 ms.openlocfilehash: 81b53904f85e2ac936195b1e39d7586fd1d47524
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76153780"
 ---
 # <a name="avere-cluster-dns-configuration"></a>Avere 叢集 DNS 組態
@@ -74,7 +74,7 @@ update add 12.0.0.10.in-addr.arpa. 86400 PTR vs1-client-IP-12.example.com
 
 ## <a name="cluster-dns-settings"></a>叢集 DNS 設定
 
-在 **[叢集**  >  **管理網路**設定] 頁面中，指定 vFXT 叢集所使用的 DNS 伺服器。 該頁面上的設定包括：
+**在 [叢集**  >  **管理網路**設定] 頁面中指定 vFXT 叢集所使用的 DNS 伺服器。 該頁面上的設定包括：
 
 * DNS 伺服器位址
 * DNS 網域名稱

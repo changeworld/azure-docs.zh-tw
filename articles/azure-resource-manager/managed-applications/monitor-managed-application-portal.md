@@ -1,15 +1,15 @@
 ---
-title: 使用 Azure 入口網站監視受管理的應用程式
+title: 使用 Azure 入口網站來監視受管理的應用程式
 description: 示範如何使用 Azure 入口網站來監視受控應用程式的可用性和警示。
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 10/04/2018
 ms.author: tomfitz
 ms.openlocfilehash: afe78dd00ecebdc54b6d73c4c8324729e117d95b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75651744"
 ---
 # <a name="monitor-a-deployed-instance-of-a-managed-application"></a>監視受控應用程式的已部署執行個體
@@ -22,7 +22,7 @@ ms.locfileid: "75651744"
 
    ![選取受控應用程式](./media/monitor-managed-application-portal/select-managed-application.png)
 
-1. 選取 [**資源健康狀態**]。
+1. 選取 [資源健康狀態]。
 
    ![選取資源健康狀態](./media/monitor-managed-application-portal/select-resource-health.png)
 

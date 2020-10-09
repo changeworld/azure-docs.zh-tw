@@ -9,31 +9,31 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/02/2019
 ms.openlocfilehash: a1f878361a96c5584f43b31135d79ff799f66efa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75976613"
 ---
 # <a name="create-an-iot-hub-using-azure-resource-manager-template-powershell"></a>使用 Azure Resource Manager 範本建立 IoT 中樞 (PowerShell)
 
 [!INCLUDE [iot-hub-resource-manager-selector](../../includes/iot-hub-resource-manager-selector.md)]
 
-瞭解如何使用 Azure Resource Manager 範本來建立 IoT 中樞和取用者群組。 Resource Manager 範本是 JSON 檔案，該檔案定義您需要為您的解決方案部署的資源。 如需有關開發 Resource Manager 範本的詳細資訊，請參閱[Azure Resource Manager 檔](https://docs.microsoft.com/azure/azure-resource-manager/)。
+瞭解如何使用 Azure Resource Manager 範本來建立 IoT 中樞和取用者群組。 Resource Manager 範本是 JSON 檔案，該檔案定義您需要為您的解決方案部署的資源。 如需開發 Resource Manager 範本的詳細資訊，請參閱 [Azure Resource Manager 檔](https://docs.microsoft.com/azure/azure-resource-manager/)。
 
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
 ## <a name="create-an-iot-hub"></a>建立 IoT 中樞
 
-本快速入門中使用的 Resource Manager 範本是來自[Azure 快速入門範本](https://azure.microsoft.com/resources/templates/101-iothub-with-consumergroup-create/)。 以下是範本的複本：
+本快速入門中使用的 Resource Manager 範本是來自 [Azure 快速入門範本](https://azure.microsoft.com/resources/templates/101-iothub-with-consumergroup-create/)。 以下是範本的複本：
 
 [!code-json[iothub-creation](~/quickstart-templates/101-iothub-with-consumergroup-create/azuredeploy.json)]
 
-此範本會建立具有三個端點（eventhub、雲端到裝置和訊息）的 Azure Iot 中樞，以及一個取用者群組。 如需更多範本範例，請參閱[Azure 快速入門範本](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Devices&pageNumber=1&sort=Popular)。 您可以在[這裡](https://docs.microsoft.com/azure/templates/microsoft.devices/iothub-allversions)找到 Iot 中樞範本架構。
+此範本會建立具有三個端點的 Azure Iot 中樞 (eventhub、雲端到裝置、訊息) 和取用者群組。 如需更多範本範例，請參閱 [Azure 快速入門範本](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Devices&pageNumber=1&sort=Popular)。 您可以在  [這裡](https://docs.microsoft.com/azure/templates/microsoft.devices/iothub-allversions)找到 Iot 中樞範本架構。
 
-部署範本的方法有好幾種。  在本教學課程中，您會使用 Azure PowerShell。
+有幾種方法可以部署範本。  您會在本教學課程中使用 Azure PowerShell。
 
-若要執行 PowerShell 腳本，請選取 [**試試看**] 以開啟 Azure Cloud shell。 若要貼上腳本，請以滑鼠右鍵按一下 shell，然後選取 [貼上]：
+若要執行 PowerShell 腳本，請選取 [ **試試看** ] 以開啟 Azure Cloud shell。 若要貼上腳本，請以滑鼠右鍵按一下 shell，然後選取 [貼上]：
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -47,11 +47,11 @@ New-AzResourceGroupDeployment `
     -iotHubName $iotHubName
 ```
 
-如您在 PowerShell 腳本中所見，使用的範本是來自 Azure 快速入門範本。 若要使用您自己的，您必須先將範本檔案上傳到 Cloud shell，然後使用 `-TemplateFile` 參數指定檔案名。  如需範例，請參閱[部署範本](../azure-resource-manager/templates/quickstart-create-templates-use-visual-studio-code.md?tabs=PowerShell#deploy-the-template)。
+您可以從 PowerShell 腳本中看到，使用的範本是來自 Azure 快速入門範本。 若要使用您自己的，您必須先將範本檔案上傳至 Cloud shell，然後使用 `-TemplateFile` 參數來指定檔案名。  如需範例，請參閱 [部署範本](../azure-resource-manager/templates/quickstart-create-templates-use-visual-studio-code.md?tabs=PowerShell#deploy-the-template)。
 
 ## <a name="next-steps"></a>後續步驟
 
-現在您已使用 Azure Resource Manager 範本部署 IoT 中樞，您可能想要進一步探索：
+現在您已使用 Azure Resource Manager 範本部署 IoT 中樞，您可能會想要進一步探索：
 
 * 閱讀 [IoT 中樞資源提供者 REST API][lnk-rest-api] 功能的相關資訊。
 * 如需 Azure Resource Manager 功能的詳細資訊，請參閱 [Azure Resource Manager 概觀][lnk-azure-rm-overview]。

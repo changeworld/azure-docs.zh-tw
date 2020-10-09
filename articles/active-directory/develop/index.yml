@@ -3,18 +3,18 @@ title: Microsoft 身分識別平台文件
 summary: Microsoft 身分識別平台是驗證服務、開放原始碼程式庫和應用程式管理工具。 了解如何透過我們的快速入門、教學課程和程式碼範例，建立現代化的標準型驗證解決方案。 建置可供使用者和客戶使用其 Microsoft 身分識別或社交帳戶來登入的應用程式，並授權其存取您的 API 或 Microsoft API，例如 Microsoft Graph。
 metadata:
   ms.topic: landing-page
-  ms.date: 09/26/2020
+  ms.date: 10/07/2020
   author: mmacy
   ms.author: marsma
   ms.service: active-directory
   ms.subservice: develop
   ms.workload: identity
-  ms.openlocfilehash: d80d722594e717319bda473e2cb86551acc8d9f0
-  ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
+  ms.openlocfilehash: b6dfd02b11c972ae4877e45e7424d3e35f0d0874
+  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 09/28/2020
-  ms.locfileid: "91403138"
+  ms.lasthandoff: 10/09/2020
+  ms.locfileid: "91801880"
 landingContent:
 - title: 關於 Microsoft 身分識別平台
   linkLists:
@@ -120,6 +120,8 @@ landingContent:
   linkLists:
   - linkListType: whats-new
     links:
+    - text: Microsoft Identity Web 程式庫概觀
+      url: microsoft-identity-web.md
     - text: 教學課程：Blazor Server
       url: tutorial-blazor-server.md
     - text: 快速入門：保護 ASP.NET Core Web API

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 03/08/2019
 ms.author: dobett
 ms.openlocfilehash: 0661503dce7ac2707065f60c3952da866ce9dcf3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "73827421"
 ---
 # <a name="predictive-maintenance-solution-accelerator-overview"></a>預測性維護解決方案加速器概觀
@@ -53,7 +53,7 @@ ms.locfileid: "73827421"
 
 模擬的裝置可以處理從解決方案中 IoT 中樞傳送的下列命令：
 
-| Command | 說明 |
+| Command | 描述 |
 | --- | --- |
 | StartTelemetry |控制模擬的狀態。<br/>傳送遙測以啟動裝置 |
 | StopTelemetry |控制模擬的狀態。<br/>傳送遙測以停止裝置 |
@@ -62,7 +62,7 @@ IoT 中樞會提供裝置命令通知。
 
 ## <a name="azure-stream-analytics-job"></a>Azure 串流分析作業
 
-**作業：遙測**會使用兩個語句來操作傳入裝置遙測串流：
+**作業：遙測** 會使用兩個語句來操作傳入裝置遙測串流：
 
 * 第一個陳述式會從裝置選取所有遙測資料，然後將此資料傳送至 bob 儲存體。 從這裡，它會呈現在 Web 應用程式中。
 * 第二個陳述式會透過兩分鐘的滑動視窗計算感應器平均值，然後透過事件中樞將此資料傳送至**事件處理器**。
@@ -71,13 +71,13 @@ IoT 中樞會提供裝置命令通知。
 **事件處理器主機**會在 Azure Web 作業中執行。 **事件處理器** 需要一個完整的週期來處理平均感應器值。 接著將這些值傳遞至定型的模型，以計算引擎的 RUL。 API 可供存取 Machine Learning 工作區中屬於解決方案一部分的模型。
 
 ## <a name="machine-learning"></a>Machine Learning
-Machine Learning 元件使用的模型衍生自從真實飛機引擎收集而來的資料。 您可以從 [ [azureiotsolutions.com][lnk-azureiotsolutions] ] 頁面上解決方案的磚，流覽至 [Machine Learning] 工作區。 當解決方案處於**就緒**狀態時，就會出現此圖格。
+Machine Learning 元件使用的模型衍生自從真實飛機引擎收集而來的資料。 您可以從 [ [azureiotsolutions.com][lnk-azureiotsolutions] ] 頁面上的方案磚流覽至 [Machine Learning 工作區]。 當解決方案處於**就緒**狀態時，就會出現此圖格。
 
 Azure Machine Learning 模型可以作為範本，示範如何運用透過 IoT 解決方案加速器服務收集而來的遙測資料。 Microsoft 已根據公開可用的資料<sup>1</sup>，以及如何使用模型的逐步指引，建置了一套飛機引擎的[迴歸模型\[\]][lnk_regression_model]。
 
 Azure IoT 預測性維護解決方案加速器會利用從這個範本建立的迴歸模型。 此模型會部署到您的 Azure 訂用帳戶，並透過自動產生的 API 提供。 此解決方案包含 4 部 (全部共 100 部) 引擎測試資料與 4 個 (全部共 21 個) 感應器資料流的子集。 此資料足以從定型的模型提供精確的結果。
 
-*\[1 \] . Saxena 和 K. Goebel （2008）。「Turbofan 引擎降低模擬資料集」，NASA Ames Prognostics 資料存放庫（ https://c3.nasa.gov/dashlink/resources/139/) ，NASA Ames Research 中心，Moffett field 欄位，CA*
+*\[1 \] . Saxena 和 K. Goebel (2008) 。「渦輪風扇引擎降低模擬資料集」、NASA Ames Prognostics 資料存放庫 (https://c3.nasa.gov/dashlink/resources/139/) 、NASA Ames Research 中心、Moffett 欄位、CA*
 
 ## <a name="next-steps"></a>後續步驟
 您現在已看到預測性維護解決方案加速器的主要元件，您可加以自訂。

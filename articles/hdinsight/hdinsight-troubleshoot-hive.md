@@ -9,10 +9,10 @@ ms.reviewer: jasonh
 ms.topic: troubleshooting
 ms.date: 08/15/2019
 ms.openlocfilehash: 02247adb9852a72b386feb2ef0924b0f1b3d6277
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75895223"
 ---
 # <a name="troubleshoot-apache-hive-by-using-azure-hdinsight"></a>使用 Azure HDInsight 對 Apache Hive 進行疑難排解
@@ -41,7 +41,7 @@ ms.locfileid: "75895223"
 
 解決步驟中的程式碼會假設新叢集上的資料路徑與舊叢集上的資料路徑相同。 如果資料路徑不同，您可以手動編輯產生的檔案， `alltables.sql` 以反映任何變更。
 
-### <a name="additional-reading"></a>其他閱讀資料
+### <a name="additional-reading"></a>延伸閱讀
 
 - [使用 SSH 連線到 HDInsight 叢集](hdinsight-hadoop-linux-use-ssh-unix.md)
 
@@ -63,13 +63,13 @@ ms.locfileid: "75895223"
    /var/log/hive/hivemetastore.log
    ```
 
-4. 若要查看 Hive 伺服器記錄，請使用下列命令：
+4. 若要查看 Hive 伺服器記錄檔，請使用下列命令：
 
    ```apache
    /var/log/hive/hiveserver2.log
    ```
 
-### <a name="additional-reading"></a>其他閱讀資料
+### <a name="additional-reading"></a>延伸閱讀
 
 - [使用 SSH 連線到 HDInsight 叢集](hdinsight-hadoop-linux-use-ssh-unix.md)
 
@@ -95,7 +95,7 @@ ms.locfileid: "75895223"
    hive -hiveconf hive.root.logger=ALL,console
    ```
 
-### <a name="additional-reading"></a>其他閱讀資料
+### <a name="additional-reading"></a>延伸閱讀
 
 - [Hive 設定屬性](https://cwiki.apache.org/confluence/display/Hive/Configuration+Properties)
 
@@ -132,7 +132,7 @@ ms.locfileid: "75895223"
     - **TaskConcurrencyAnalyzer**：列印 DAG 中的工作並行詳細資料
     - **VertexLevelCriticalPathAnalyzer**：在 DAG 的頂點層級中尋找關鍵路徑
 
-### <a name="additional-reading"></a>其他閱讀資料
+### <a name="additional-reading"></a>延伸閱讀
 
 - [使用 SSH 連線到 HDInsight 叢集](hdinsight-hadoop-linux-use-ssh-unix.md)
 
@@ -157,7 +157,7 @@ ms.locfileid: "75895223"
   3. 選取您要檢視的 DAG。
   4. 選取 [下載資料]****。
 
-### <a name="additional-reading"></a><a name="additional-reading-end"></a>其他閱讀
+### <a name="additional-reading"></a><a name="additional-reading-end"></a>延伸閱讀
 
 [使用 SSH 連線到 HDInsight 叢集](hdinsight-hadoop-linux-use-ssh-unix.md)
 

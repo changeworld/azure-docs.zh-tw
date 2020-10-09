@@ -1,6 +1,6 @@
 ---
-title: Azure HDInsight 中 Apache Hive LLAP 查詢的效能不佳
-description: Apache Hive LLAP 中的查詢執行速度比預期的 Azure HDInsight 慢。
+title: Azure HDInsight 中的 Apache Hive LLAP 查詢效能不佳
+description: Apache Hive LLAP 中的查詢執行速度比 Azure HDInsight 的預期慢。
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
@@ -8,19 +8,19 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 07/30/2019
 ms.openlocfilehash: 8bd20849b15f8c8d5a14653f702f78c6404d82e5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75895132"
 ---
 # <a name="scenario-poor-performance-in-apache-hive-llap-queries-in-azure-hdinsight"></a>案例： Azure HDInsight 中 Apache Hive LLAP 查詢的效能不佳
 
-本文說明在 Azure HDInsight 叢集中使用互動式查詢元件時，針對問題的疑難排解步驟和可能的解決方法。
+本文說明使用 Azure HDInsight 叢集中的 Interactive Query 元件時，所發生之問題的疑難排解步驟和可能的解決方法。
 
 ## <a name="issue"></a>問題
 
-預設的叢集設定不會針對您的工作負載進行足夠的調整。 Hive LLAP 中的查詢執行速度比預期慢。
+預設叢集設定未充分調整您的工作負載。 Hive LLAP 中的查詢執行速度比預期慢。
 
 ## <a name="cause"></a>原因
 
@@ -28,13 +28,13 @@ ms.locfileid: "75895132"
 
 ## <a name="resolution"></a>解決方案
 
-LLAP 已針對牽涉到聯結和匯總的查詢進行優化。 如下所示的查詢不會在互動式 Hive 叢集中順利執行：
+LLAP 已針對牽涉到聯結和匯總的查詢進行優化。 下列查詢在互動式 Hive 叢集中的執行效果不佳：
 
 ```
 select * from table where column = "columnvalue"
 ```
 
-若要改善 Hive LLAP 中的 point 查詢效能，請設定下列設定：
+若要改善 Hive LLAP 中的點查詢效能，請設定下列設定：
 
 ```
 hive.llap.io.enabled=false; (disable LLAP IO)
@@ -42,7 +42,7 @@ hive.optimize.index.filter=false; (disable ORC row index)
 hive.exec.orc.split.strategy=BI; (to avoid recombining splits)
 ```
 
-您也可以使用 LLAP 快取來增加使用量，以透過下列設定變更來改善效能：
+您也可以使用下列設定變更來增加 LLAP 快取的使用量，以改善效能：
 
 ```
 hive.fetch.task.conversion=none

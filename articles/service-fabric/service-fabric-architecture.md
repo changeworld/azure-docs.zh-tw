@@ -1,14 +1,14 @@
 ---
 title: Azure Service Fabric 的架構
-description: 本文說明 Service Fabric 的架構，這是一種分散式系統平臺，用來為雲端建立可擴充、可靠且易於管理的應用程式。
+description: 本文說明 Service Fabric 的架構，這是一種分散式系統平臺，用來建立可調整、可靠且易於管理的雲端應用程式。
 services: service-fabric
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.openlocfilehash: 972700dded1841994de9252b4aa4bbc8eaefeaf8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76024703"
 ---
 # <a name="service-fabric-architecture"></a>Service Fabric 架構
@@ -40,7 +40,7 @@ Service Fabric 是使用分層的子系統所建置。 這些子系統可讓您�
 
 * 複寫器可確保主要服務複本中的狀態變更會自動複寫至次要複本，以便在服務複本集中維護主要和次要複本之間的一致性。 複寫器負責在複本集中的複本之間進行仲裁管理。 其會與容錯移轉單元互動，以取得要複寫的作業清單，且重新設定代理程式會提供複本集的組態。 該組態指出需要複寫作業的複本。 Service Fabric 會提供稱為網狀架構複寫器的預設複寫器，可由程式撰寫模型 API 用來使服務狀態具有高可用性和可靠性。
 * 容錯移轉管理員可確保當節點加入至叢集或從叢集移除節點時，負載會在可用的節點上自動重新分配。 如果叢集中的節點失敗，叢集會自動重新設定服務複本以維護可用性。
-* Resource Manager 會將服務複本置於叢集中的各個失敗網域，並確保所有的容錯移轉單位都可以運作。 Resource Manager 也會在叢集節點的基礎共用集區上平衡服務資源，以便達到最佳的統一負載分佈。
+* Resource Manager 會將服務複本放在叢集中的各個失敗網域，並確保所有的容錯移轉單位都能正常運作。 Resource Manager 也會在叢集節點的基礎共用集區上平衡服務資源，以便達到最佳的統一負載分佈。
 
 ## <a name="management-subsystem"></a>管理子系統
 

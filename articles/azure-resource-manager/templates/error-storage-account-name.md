@@ -4,10 +4,10 @@ description: 描述當指定儲存體帳戶名稱時，可能會遇到的錯誤�
 ms.topic: troubleshooting
 ms.date: 03/09/2018
 ms.openlocfilehash: 5b2706d8540ea38ef08bf7ca0f804e6811a93085
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76153967"
 ---
 # <a name="resolve-errors-for-storage-account-names"></a>解決儲存體帳戶名稱的錯誤
@@ -37,7 +37,7 @@ Message=The storage account named mystorage is already taken.
 
 儲存體帳戶名稱必須介於 3 到 24 個字元的長度，而且只能使用數字和小寫字母。 名稱必須是唯一的。
 
-## <a name="solution"></a>解決方案
+## <a name="solution"></a>解決方法
 
 請確定儲存體帳戶名稱是唯一的。 您可以將您的命名慣例與 [uniqueString](template-functions-string.md#uniquestring) 函式的結果串連，以建立一個唯一名稱。
 

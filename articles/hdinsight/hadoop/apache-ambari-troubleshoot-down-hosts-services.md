@@ -1,6 +1,6 @@
 ---
-title: Apache Ambari UI 會在 Azure HDInsight 中顯示主機和服務
-description: 在 Azure HDInsight 中顯示的主機和服務時，針對 Apache Ambari UI 問題進行疑難排解
+title: Apache Ambari UI 會顯示 Azure HDInsight 中的主機和服務
+description: 當 Apache Ambari UI 問題顯示 Azure HDInsight 中的主機和服務時進行疑難排解
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
@@ -8,25 +8,25 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/02/2019
 ms.openlocfilehash: 5340b1c7a6510595376789bc5777e6fb6f07dd4a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75895644"
 ---
-# <a name="scenario-apache-ambari-ui-shows-down-hosts-and-services-in-azure-hdinsight"></a>案例： Apache Ambari UI 會在 Azure HDInsight 中顯示主機和服務
+# <a name="scenario-apache-ambari-ui-shows-down-hosts-and-services-in-azure-hdinsight"></a>案例： Apache Ambari UI 會顯示 Azure HDInsight 中的主機和服務
 
-本文說明與 Azure HDInsight 叢集互動時，問題的疑難排解步驟和可能的解決方法。
+本文說明與 Azure HDInsight 叢集互動時，問題的疑難排解步驟和可能的解決方式。
 
 ## <a name="issue"></a>問題
 
-Apache Ambari UI 可供存取，但 UI 會顯示幾乎所有的服務都已關閉，而所有主機則顯示遺失的心跳。
+Apache Ambari UI 可供存取，但 UI 會顯示幾乎所有的服務都已關閉，而所有的主機都會顯示遺失的信號。
 
 ## <a name="cause"></a>原因
 
-在大部分情況下，這是在使用中前端節點上未執行 Ambari 伺服器的問題。 請檢查哪個前端節點是作用中的前端節點，並確定您的 ambari 伺服器會在正確的節點上執行。 不要手動啟動 ambari-伺服器，讓容錯移轉控制器服務負責啟動右側前端節點上的 ambari 伺服器。 重新開機作用中的前端節點，以強制進行容錯移轉。
+在大部分的情況下，這是 Ambari 伺服器未在作用中前端節點上執行的問題。 檢查哪些前端節點是作用中的前端節點，並確定您的 ambari 伺服器在正確的節點上執行。 不要手動啟動 ambari 伺服器，讓容錯移轉控制器服務負責啟動正確前端節點上的 ambari 伺服器。 重新開機作用中的前端節點以強制執行容錯移轉。
 
-網路問題也可能會造成此問題。 從每個叢集節點，查看是否可以 ping `headnodehost` 。 在少數情況下，沒有任何叢集節點可以連接到 `headnodehost` ：
+網路問題也可能造成此問題。 在每個叢集節點中，查看您是否可以進行 ping `headnodehost` 。 在罕見的情況下，沒有任何叢集節點可以連接 `headnodehost` ：
 
 ```
 $>telnet headnodehost 8440
@@ -35,7 +35,7 @@ $>telnet headnodehost 8440
 
 ## <a name="resolution"></a>解決方案
 
-通常重新開機作用中的前端節點將會降低此問題。 如果不是，請聯絡 HDInsight 支援小組。
+通常重新開機作用中的前端節點將可減輕此問題。 如果沒有，請洽詢 HDInsight 支援小組。
 
 ## <a name="next-steps"></a>後續步驟
 

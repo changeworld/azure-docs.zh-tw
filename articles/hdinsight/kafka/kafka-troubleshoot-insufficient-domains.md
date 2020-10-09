@@ -1,5 +1,5 @@
 ---
-title: Azure HDInsight 中區域錯誤的容錯網域不足
+title: Azure HDInsight 中的區域錯誤沒有足夠的容錯網域
 description: 叢集建立失敗，因為 Azure HDInsight 的區域中沒有足夠的容錯網域
 ms.service: hdinsight
 ms.topic: troubleshooting
@@ -8,25 +8,25 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/09/2019
 ms.openlocfilehash: 8be7e05ac85ce0b1b10edf18d3885a07e016b9ae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75895019"
 ---
-# <a name="scenario-cluster-creation-failed-due-to-not-sufficient-fault-domains-in-region-in-azure-hdinsight"></a>案例：叢集建立失敗，因為 `not sufficient fault domains in region` Azure HDInsight
+# <a name="scenario-cluster-creation-failed-due-to-not-sufficient-fault-domains-in-region-in-azure-hdinsight"></a>案例：叢集建立失敗，因為 `not sufficient fault domains in region` Azure HDInsight 中
 
-本文說明與 Azure HDInsight 叢集互動時，問題的疑難排解步驟和可能的解決方法。
+本文說明與 Azure HDInsight 叢集互動時，問題的疑難排解步驟和可能的解決方式。
 
 ## <a name="issue"></a>問題
 
-接收類似于 `not sufficient fault domains in region` 嘗試建立 Apache Kafka 叢集時的錯誤訊息。
+嘗試建立 Apache Kafka 叢集時，會收到類似的錯誤訊息 `not sufficient fault domains in region` 。
 
 ## <a name="cause"></a>原因
 
 容錯網域是 Azure 資料中心內基礎硬體的邏輯群組。 每個容錯網域會共用通用電源和網路交換器。 實作 HDInsight 叢集內節點的虛擬機器和受控磁碟會分散於這些容錯網域。 此架構會限制實體硬體故障的潛在影響。
 
-每個 Azure 區域有特定數目的容錯網域。 如需網域的清單及其包含的容錯網域數目，請參閱[可用性設定組](../../virtual-machines/windows/manage-availability.md)上的檔。
+每個 Azure 區域有特定數目的容錯網域。 如需網域清單以及它們所包含的容錯網域數目，請參閱 [可用性設定組](../../virtual-machines/windows/manage-availability.md)的相關檔。
 
 在 HDInsight 中，Kafka 叢集必須布建在至少有三個容錯網域的區域中。
 
