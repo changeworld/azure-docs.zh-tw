@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/18/2020
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: e084256d9c2043d4382ca180ef3178175b301367
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: b884bc72381c98af77f2f49336f3dd5762c68734
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91745423"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91859282"
 ---
 下列限制適用於 Azure 事件方格**主題** (系統、自訂和合作夥伴主題)。 
 
@@ -21,7 +21,7 @@ ms.locfileid: "91745423"
 | --- | --- |
 | 每個 Azure 訂用帳戶的自訂主題 | 100 |
 | 每個主題的事件訂用帳戶 | 500 |
-| 自訂或合作夥伴主題 (輸入) 的發佈速率 | 5000 個事件/秒或 1 MB/秒 (以先達到者為準)<br/>不適用於系統主題。 |
+| 自訂或合作夥伴主題 (輸入) 的發佈速率 | 5000 個事件/秒或 1 MB/秒 (以先達到者為準) |
 | 事件大小 | 1 MB  |
 | 每個主題的私人端點連線數  | 64 | 
 | 每個主題的 IP 防火牆規則數 | 16 | 

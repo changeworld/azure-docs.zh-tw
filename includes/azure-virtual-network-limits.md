@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/14/2020
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: b963cc459094e823499e962736550dcea2345ba2
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 8d5f9b360e1d81bae62e34a8e20d61636e1d22ea
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88854086"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91859222"
 ---
 ### <a name="networking-limits---azure-resource-manager"></a><a name="azure-resource-manager-virtual-networking-limits"></a>網路限制 - Azure Resource Manager
 下列限制僅適用於透過每個訂用帳戶每一區域的 **Azure Resource Manager** 所管理的網路資源。 深入了解如何[根據您的訂用帳戶限制檢視目前資源使用量](../articles/networking/check-usage-against-limits.md)。
@@ -75,7 +75,6 @@ ms.locfileid: "88854086"
 | 每個 Load Balancer 的後端資源<sup>1<sup> | 150                   |
 | 高可用性連接埠                 | 每個內部前端 1 個       |
 | 每個 Load Balancer 的輸出規則        | 600                           |
-| [TCP 閒置逾時](https://docs.microsoft.com/azure/load-balancer/load-balancer-tcp-idle-timeout#tcp-idle-timeout) | 4 分鐘/30 分鐘          |
 
 <sup>1</sup>限制為最多 150 個資源，是獨立虛擬機器資源、可用性設定組資源以及虛擬機器擴展集放置群組的任意組合。
 
@@ -88,7 +87,7 @@ ms.locfileid: "88854086"
 | 每個 NIC 的規則 (在 NIC 上的所有 IP) | 300                          |
 | 前端 IP 組態              | 200                          |
 | 後端集區大小                       | 300 個 IP 組態，單一可用性設定組 |
-| 每個 Load Balancer 的可用性設定組     | 150                          |
+| 每個 Load Balancer 的可用性設定組     | 1                            |
 
 <a name="virtual-networking-limits-classic"></a>下列限制僅適用於透過每個訂用帳戶的**傳統**部署模型所管理的網路資源。 深入了解如何[根據您的訂用帳戶限制檢視目前資源使用量](../articles/networking/check-usage-against-limits.md)。
 
