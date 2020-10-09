@@ -1,25 +1,23 @@
 ---
 title: 升級獨立叢集的組態
 description: 了解如何升級可執行獨立 Service Fabric 叢集的組態。
-author: dkkapur
 ms.topic: conceptual
 ms.date: 11/09/2018
-ms.author: dekapur
-ms.openlocfilehash: 4817c7b76ccd127d5f310a9d2abcecdb094944dc
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 3cb1d40f5b32415588d3fd5a108967cfb4c0e534
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86246600"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91842609"
 ---
 # <a name="upgrade-the-configuration-of-a-standalone-cluster"></a>升級獨立叢集的組態 
 
 對於現代化系統來說，升級能力攸關產品是否能長期成功。 Azure Service Fabric 叢集是您擁有的資源。 本文說明如何升級獨立 Service Fabric 叢集的組態設定。
 
 ## <a name="customize-cluster-settings-in-the-clusterconfigjson-file"></a>在 ClusterConfig.json 檔案中自訂叢集設定
-獨立叢集是透過*ClusterConfig.js*檔案來設定。 若要深入了解不同的設定，請參閱[獨立 Windows 叢集的組態設定](service-fabric-cluster-manifest.md)。
+獨立叢集是透過檔案 * 上的ClusterConfig.js* 設定。 若要深入了解不同的設定，請參閱[獨立 Windows 叢集的組態設定](service-fabric-cluster-manifest.md)。
 
-您可以 `fabricSettings` 在*ClusterConfig.js*的 [叢集[屬性](./service-fabric-cluster-manifest.md#cluster-properties)] 區段底下的區段中新增、更新或移除設定。 
+您可以 `fabricSettings` 在*ClusterConfig.js*的 [叢集[屬性](./service-fabric-cluster-manifest.md#cluster-properties)] 區段下的區段中，新增、更新或移除設定。 
 
 例如，下列 JSON 會將新設定 *MaxDiskQuotaInMB* 新增至 `fabricSettings` 底下的 [Diagnostics]** 區段：
 
@@ -50,10 +48,10 @@ TestConfiguration.ps1 -ClusterConfigFilePath <Path to the new Configuration File
 TestConfiguration.ps1 -ClusterConfigFilePath <Path to the new Configuration File> -OldClusterConfigFilePath <Path to the old Configuration File> -FabricRuntimePackagePath <Path to the .cab file which you want to test the configuration against>
 ```
 
-某些設定無法升級，例如端點、叢集名稱、節點 IP 等。新的叢集設定 JSON 會針對舊的叢集進行測試，如果發生問題，則會在 PowerShell 視窗中擲回錯誤。
+某些設定無法升級，例如端點、叢集名稱、節點 IP 等。新的叢集設定 JSON 會針對舊版進行測試，如果發生問題，則會在 PowerShell 視窗中擲回錯誤。
 
 ## <a name="upgrade-the-cluster-configuration"></a>升級叢集組態
-若要升級叢集設定升級，請執行 [[開始-start-servicefabricclusterconfigurationupgrade](/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade)]。 組態升級是按升級網域逐一處理。
+若要升級叢集設定升級，請執行 [>start-servicefabricclusterconfigurationupgrade](/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade)。 組態升級是按升級網域逐一處理。
 
 ```powershell
 Start-ServiceFabricClusterConfigurationUpgrade -ClusterConfigPath <Path to Configuration File>
@@ -75,7 +73,7 @@ Start-ServiceFabricClusterConfigurationUpgrade -ClusterConfigPath <Path to Confi
 
 ## <a name="next-steps"></a>後續步驟
 * 了解如何自訂一些 [Service Fabric 叢集設定](service-fabric-cluster-fabric-settings.md)。
-* 瞭解如何[相應放大和縮小您的](service-fabric-cluster-scale-in-out.md)叢集。
+* 瞭解如何 [相應縮小和放大您的](service-fabric-cluster-scale-in-out.md)叢集。
 * 了解[應用程式升級](service-fabric-application-upgrade.md)。
 
 <!--Image references-->

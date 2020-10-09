@@ -4,12 +4,12 @@ description: 針對裝載在內部部署環境或 Azure 的 ASP.NET 網站，設
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.custom: contperfq1
-ms.openlocfilehash: 5f52f1febcc69723dae76e31d17b5a9a7e8c67bb
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.openlocfilehash: 861a9f53c2f149268e06005053206a7411e842f8
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91616749"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91838937"
 ---
 # <a name="configure-application-insights-for-your-aspnet-website"></a>設定 ASP.NET 網站的 Application Insights
 
@@ -349,6 +349,12 @@ ms.locfileid: "91616749"
 ## <a name="troubleshooting"></a>疑難排解
 
 目前的 Visual Studio 2019 版本中有一個已知問題，當您將檢測金鑰儲存在使用者密碼中時，會中斷以 .NET Framework 為基礎的應用程式，而金鑰最後必須硬式編碼到 applicationinsights.config 檔中，才能解決這個錯誤。 本文的設計目的是為了避免此問題，不使用使用者秘密。  
+
+## <a name="open-source-sdk"></a>開放原始碼 SDK
+
+* [讀取和參與程式碼](https://github.com/microsoft/ApplicationInsights-dotnet)。
+
+如需最新的更新和錯誤修正， [請參閱版本](./release-notes.md)資訊。
 
 ## <a name="next-steps"></a>後續步驟
 

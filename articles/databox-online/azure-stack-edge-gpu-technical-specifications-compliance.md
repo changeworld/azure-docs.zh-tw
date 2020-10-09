@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 08/26/2020
+ms.date: 10/07/2020
 ms.author: alkohli
-ms.openlocfilehash: b0eaa9778480a6a767a4b37bd92a395d2b1ee6cb
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 225cb9a31b73f330d8b4ed5790caacc4fa729477
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90899030"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91839940"
 ---
 # <a name="technical-specifications-and-compliance-for-azure-stack-edge-pro-with-gpu"></a>使用 GPU Azure Stack Edge Pro 的技術規格和合規性 
 
@@ -67,7 +67,7 @@ Azure Stack Edge Pro 裝置有兩個 100-240 V 電源供應器單位 (Psu) 具�
 
 | 參數           | 描述                 |
 |-------------------------|----------------------------|
-| 型號    | ConnectX®-4 Lx EN 網路介面卡                      |
+| 模型    | ConnectX®-4 Lx EN 網路介面卡                      |
 | 模型描述               | 25GbE 雙埠 SFP28;PCIe 3.0 x8;ROHS R6                    |
 | 裝置零件編號 (R640)  | MCX4121A-ACAT  |
 | PSID (R640)            | MT_2420110034                         |
@@ -79,20 +79,20 @@ Azure Stack Edge Pro 裝置有兩個 100-240 V 電源供應器單位 (Psu) 具�
 
 ## <a name="storage-specifications"></a>儲存體規格
 
-Azure Stack Edge Pro 裝置有五個 2.5 "NVMe DC P4610 Ssd，每個都有 1.6 TB 的容量。 開機磁片磁碟機是 240 GB SATA SSD。 裝置的可用容量總計約為 8.28 TB。 下表列出裝置的儲存體容量。
+Azure Stack Edge Pro 裝置有五個 2.5 "NVMe DC P4610 Ssd，每個都有 1.6 TB 的容量。 開機磁片磁碟機是 240 GB SATA SSD。 裝置的可用容量總計約為 4.19 TB。 下表列出裝置的儲存體容量。
 
 |     規格                          |     值             |
 |--------------------------------------------|-----------------------|
-|    開機 SATA 固態硬碟 (SSD)       |    1                  |
 |    NVMe Ssd 數目                     |    5                  |
-|    開機 SSD 容量                       |    240 GB             |
 |    單一 NVMe SSD 容量                |    1.6 TB             |
-|    容量總計                          |    8.28 TB            |
-|    可用容量總計*                  |    ~ 7.95 TB          |
+|    開機 SATA 固態硬碟 (SSD)       |    1                  |
+|    開機 SSD 容量                       |    240 GB             |
+|    容量總計                          |    8.0 TB             |
+|    可用容量總計*                  |    ~ 4.19 TB          |
 |    SAS 控制器                          |    HBA330 12 Gbps     |
 
 
-**部分空間保留供內部使用。*
+**在同位恢復和保留空間供內部使用之後。*
 
 <!--Remove based on feedback from Ravi
 ## Other hardware specifications

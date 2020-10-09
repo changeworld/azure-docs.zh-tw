@@ -7,12 +7,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 11/15/2019
 ms.author: matjazl
-ms.openlocfilehash: 652445a96acfa0358211d1d97e0fcf288989d6ba
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: be3cf7d946e7502147942fa8954ade70dd47bedf
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88795774"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91839923"
 ---
 # <a name="configure-database-settings"></a>設定資料庫設定 
 
@@ -38,7 +38,12 @@ Azure API for FHIR 會從 Cosmos DB 中借用 ru 的概念 (在設定基礎資�
 
 ## <a name="next-steps"></a>後續步驟
 
-在本文中，您已瞭解如何更新 Azure API for FHIR 的 ru。 接下來，部署完全受控的 Azure API for FHIR：
+在本文中，您已瞭解如何更新 Azure API for FHIR 的 ru。 若要瞭解如何將客戶管理的金鑰設定為資料庫設定：
+
+>[!div class="nextstepaction"]
+>[設定客戶管理的金鑰](bring-your-own-key.md)
+
+或者，您可以部署完全受控的 Azure API for FHIR：
  
 >[!div class="nextstepaction"]
 >[部署 Azure API for FHIR](fhir-paas-portal-quickstart.md)

@@ -10,12 +10,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.custom: mqtt, devx-track-java
-ms.openlocfilehash: c439f1a5aaa03774652dc815364c45633096f6de
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: b433ab29ab5a2520f503e002e630068126ddb328
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327594"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91838682"
 ---
 # <a name="get-started-with-device-twins-java"></a>開始使用裝置對應項 (Java)
 
@@ -380,7 +380,7 @@ ms.locfileid: "87327594"
     mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
     ```
 
-    ![更新標籤值並執行裝置查詢的 Java IoT 中樞服務應用程式](./media/iot-hub-java-java-twin-getstarted/service-app-1.png)
+    ![顯示命令輸出的螢幕擷取畫面，用來執行「新增標記查詢服務」應用程式。](./media/iot-hub-java-java-twin-getstarted/service-app-1.png)
 
     您可以看到新增至裝置對應項的**工廠**和**區域**標籤。 第一個查詢會傳回您的裝置，但第二個則不然。
 
@@ -390,7 +390,7 @@ ms.locfileid: "87327594"
     mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
     ```
 
-    ![裝置用戶端會新增 **connectivityType** 回報屬性](./media/iot-hub-java-java-twin-getstarted/device-app-1.png)
+    ![裝置用戶端會新增 [連線類型] 報告屬性](./media/iot-hub-java-java-twin-getstarted/device-app-1.png)
 
 3. 在 **add-tags-query** 資料夾的命令提示字元中，執行下列命令以再次執行 **add-tags-query** 服務應用程式：
 

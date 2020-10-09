@@ -11,12 +11,12 @@ author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 09/22/2020
 ms.custom: how-to
-ms.openlocfilehash: 5ddfa2adbc9ec39949d7352903445407ff8e8881
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 116dd65bf04c01f513e196a2f1b37d54aacbf1fe
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91542150"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91841351"
 ---
 # <a name="connect-to-data-with-the-azure-machine-learning-studio"></a>使用 Azure Machine Learning studio 連接到資料
 
@@ -87,6 +87,7 @@ ms.locfileid: "91542150"
 1. 選取**Tabular** [表格式 **] 或 [** 檔案] 做為資料集類型。
 1. 選取 **[下一步]** 以開啟資料存放區 **和檔案選取** 表單。 在此表單上，您可以選取要在建立資料集之後保留資料集的位置，以及選取要用於資料集的資料檔案。
     1. 如果您的資料位於虛擬網路中，請啟用 [略過驗證]。 深入瞭解 [虛擬網路隔離和隱私權](how-to-enable-virtual-network.md#machine-learning-studio)。
+    1. 針對表格式資料集，您可以指定 ' 時間序列 ' 特性，以在資料集上啟用時間相關的作業。 瞭解如何 [將時間序列特性新增至資料集](how-to-monitor-datasets.md#studio-dataset)。
 1. 選取 **[下一步]** 以填入 **設定和預覽** 和 **架構** 表單;系統會根據檔案類型，以智慧方式填入它們，而且您可以在建立這些表單之前進一步設定您的資料集。 
 1. 選取 **[下一步]** 以查看 [ **確認詳細資料** ] 表單。 檢查您的選取專案，並為您的資料集建立選擇性的資料設定檔。 深入了解[資料分析](#profile)。
 1. 選取 [ **建立** ] 以完成建立資料集。

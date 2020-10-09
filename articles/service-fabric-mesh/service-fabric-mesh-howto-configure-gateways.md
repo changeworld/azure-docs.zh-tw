@@ -1,17 +1,17 @@
 ---
 title: 設定閘道以路由傳送要求
 description: 了解如何為 Service Fabric Mesh 上執行的應用程式設定處理傳入流量的閘道。
-author: dkkapur
+author: georgewallace
 ms.topic: conceptual
 ms.date: 11/28/2018
-ms.author: dekapur
+ms.author: gwallace
 ms.custom: mvc, devcenter
-ms.openlocfilehash: ec408403d4baa0f211c6bfe867a15c96513693cb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aa3ac9d8835cd17387346bb29b3e7c30f286cd1f
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75461961"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91839719"
 ---
 # <a name="configure-a-gateway-resource-to-route-requests"></a>設定閘道資源以路由要求
 
@@ -219,7 +219,7 @@ HTTP 路由規則中包含下列屬性：
 ```
 
 此閘道已設定為適用於 Linux 應用程式 "meshAppLinux"，其包含至少兩種服務 "helloWorldService" 和 "counterService"，而服務會接聽連接埠 80。 根據傳入要求的 URL 結構，閘道會將要求路由至這些服務中的其中一個。 
-* " \<IPAddress> ： 80/helloWorld/ \<request\> " 會導致要求被導向 helloWorldService 中的 "helloWorldListener"。 
+* " \<IPAddress> ： 80/helloWorld/ \<request\> " 會導致要求被導向至 helloWorldService 中的 "helloWorldListener"。 
 * " \<IPAddress> ： 80/counter/ \<request\> " 會導致要求被導向至 counterService 中的 "counterListener"。 
 
 ## <a name="next-steps"></a>後續步驟

@@ -1,16 +1,14 @@
 ---
 title: 使用 Windows 安全性保護在 Windows 上執行的叢集
 description: 了解如何使用 Windows 安全性在 Windows 上執行的獨立叢集上設定節點對節點和用戶端對節點安全性。
-author: dkkapur
 ms.topic: conceptual
 ms.date: 08/24/2017
-ms.author: dekapur
-ms.openlocfilehash: 360bba2ffc344175214c44e2c9c1d3c0859ac3e5
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: e97a951f6dc0a97b1cfa8f960ed762084c82d2ed
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86255960"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91839475"
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-windows-security"></a>使用 Windows 安全性保護 Windows 上的獨立叢集
 為避免有人未經授權存取 Service Fabric 叢集，您必須保護叢集。 當叢集執行生產工作負載時，安全性尤其重要。 本文說明如何在 *ClusterConfig.JSON* 檔案中使用 Windows 安全性，設定節點對節點和用戶端對節點的安全性。  此程序會對應[建立在 Windows 上執行的獨立叢集](service-fabric-cluster-creation-for-windows-server.md)的設定安全性步驟。 如需有關 Service Fabric 如何使用 Windows 安全性的詳細資訊，請參閱[叢集安全性案例](service-fabric-cluster-security.md)。
@@ -40,9 +38,9 @@ ms.locfileid: "86255960"
 }
 ```
 
-| **設定** | **描述** |
+| **Configuration 設定** | **描述** |
 | --- | --- |
-| ClusterCredentialType |設定為 [ *windows* ] 可啟用節點節點通訊的 windows 安全性。  | 
+| ClusterCredentialType |設定為 *windows* 可啟用 windows 安全性以進行節點節點通訊。  | 
 | ServerCredentialType |設定為 [Windows]** 可為用戶端對節點通訊啟用 Windows 安全性。 |
 | WindowsIdentities |包含叢集和用戶端身分識別。 |
 | ClustergMSAIdentity |設定節點對節點安全性。 群組受管理的服務帳戶。 |
@@ -52,7 +50,7 @@ ms.locfileid: "86255960"
 | IsAdmin |設定為 true 可指定網域使用者具有系統管理員用戶端存取權，設定為 false 則具有使用者用戶端存取權。 |
 
 > [!NOTE]
-> ClustergMSAIdentity 值的格式必須是 " mysfgmsa@mydomain "。
+> >clustergmsaidentity 值的格式必須為 " mysfgmsa@mydomain "。
 
 需要在 gMSA 下執行 Service Fabric 時，可透過 **ClustergMSAIdentity** 來設定[節點對節點安全性](service-fabric-cluster-security.md#node-to-node-security)。 為了建置節點之間的信任關係，它們必須注意彼此。 有兩種不同的方式可達成此目的︰指定群組受控服務帳戶 (其中包含叢集中的所有節點)，或指定包含叢集中所有節點的網域電腦群組。 強烈建議使用 [群組受控服務帳戶 (gMSA)](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831782(v=ws.11)) 方法，特別適合於較大型的叢集 (超過 10 個節點) 或可能會擴大或縮小的叢集。  
 此方法不需要建立叢集系統管理員已獲得存取權限的網域群組，即可加入和移除成員。 進行自動密碼管理時，這些帳戶也很有用。 如需詳細資訊，請參閱 [開始使用群組受控服務帳戶](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj128431(v=ws.11))。  
@@ -93,9 +91,9 @@ ms.locfileid: "86255960"
 }
 ```
 
-| **設定** | **描述** |
+| **Configuration 設定** | **描述** |
 | --- | --- |
-| ClusterCredentialType |設定為 [ *windows* ] 可啟用節點節點通訊的 windows 安全性。  |
+| ClusterCredentialType |設定為 *windows* 可啟用 windows 安全性以進行節點節點通訊。  |
 | ServerCredentialType |設定為 [Windows]** 可為用戶端對節點通訊啟用 Windows 安全性。 |
 | WindowsIdentities |包含叢集和用戶端身分識別。 |
 | ClusterIdentity |使用電腦群組名稱 (domain\machinegroup) 來設定節點對節點安全性。 |
@@ -103,9 +101,9 @@ ms.locfileid: "86255960"
 | 身分識別 |新增網域使用者 (domain\username) 以做為用戶端身分識別。 |  
 | IsAdmin |設定為 true 可指定網域使用者具有系統管理員用戶端存取權，設定為 false 則具有使用者用戶端存取權。 |  
 
-如果您想要在 Active Directory 網域內使用電腦群組，請使用**ClusterIdentity**設定[節點對節點安全性](service-fabric-cluster-security.md#node-to-node-security)。 如需詳細資訊，請參閱[在 Active Directory 中建立電腦群組 (Create a Machine Group in Active Directory)](/previous-versions/commerce-server/aa545347(v=cs.70))。
+如果您想要使用 Active Directory 網域內的電腦群組，請使用 **>clusteridentity**設定[節點對節點的安全性](service-fabric-cluster-security.md#node-to-node-security)。 如需詳細資訊，請參閱[在 Active Directory 中建立電腦群組 (Create a Machine Group in Active Directory)](/previous-versions/commerce-server/aa545347(v=cs.70))。
 
-[用戶端對節點安全性](service-fabric-cluster-security.md#client-to-node-security)是使用**clientidentities 來設定**來設定。 若要在用戶端與叢集之間建立信任，您必須設定叢集，讓叢集知道它可以信任的用戶端身分識別。 您可以透過兩種不同方式建立信任︰
+[用戶端對節點安全性](service-fabric-cluster-security.md#client-to-node-security) 是使用 **>clientidentities**來設定。 若要在用戶端與叢集之間建立信任，您必須設定叢集，讓叢集知道它可以信任的用戶端身分識別。 您可以透過兩種不同方式建立信任︰
 
 - 指定可以連線的網域群組使用者。
 - 指定可以連線的網域節點使用者。

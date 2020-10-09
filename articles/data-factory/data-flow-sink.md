@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/27/2020
-ms.openlocfilehash: b92b6930193b77d0fb50ad707001a6fca0401970
-ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
+ms.openlocfilehash: 06d70012756694dca1fad8fa90db0293bb106bf9
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91404753"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91828137"
 ---
 # <a name="sink-transformation-in-mapping-data-flow"></a>對應資料流程中的接收轉換
 
@@ -40,7 +40,7 @@ ms.locfileid: "91404753"
 
 對應資料流程會遵循 (ELT) 方法的解壓縮、載入、轉換，而且適用于所有 Azure 中的 *暫存* 資料集。 下列資料集目前可用於來源轉換：
 
-| 連接器 | 格式 | 資料集/內嵌 |
+| 連接子 | [格式] | 資料集/內嵌 |
 | --------- | ------ | -------------- |
 | [Azure Blob 儲存體](connector-azure-blob-storage.md#mapping-data-flow-properties) | [JSON](format-json.md#mapping-data-flow-properties) <br> [Avro](format-avro.md#mapping-data-flow-properties) <br> [分隔符號文字](format-delimited-text.md#mapping-data-flow-properties) <br> [差異 (預覽) ](format-delta.md) <br> [ORC](format-orc.md#mapping-data-flow-properties)<br> [Parquet](format-parquet.md#mapping-data-flow-properties) | ✓/- <br> ✓/- <br> ✓/- <br> -/✓ <br>✓/✓<br> ✓/- |
 | [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties) | [JSON](format-json.md#mapping-data-flow-properties) <br> [Avro](format-avro.md#mapping-data-flow-properties) <br> [分隔符號文字](format-delimited-text.md#mapping-data-flow-properties) <br> [ORC](format-orc.md#mapping-data-flow-properties)<br/> [Parquet](format-parquet.md#mapping-data-flow-properties) | ✓/- <br> ✓/- <br> ✓/- <br>✓/✓<br> ✓/- |
@@ -56,7 +56,9 @@ Azure Data Factory 可以存取超過 [90 種原生連接器](connector-overview
 
 ## <a name="sink-settings"></a>接收設定
 
-新增接收之後，請透過 [ **接收** ] 索引標籤設定。您可以在這裡挑選或建立接收所寫入的資料集。 以下是一段影片，解說文字分隔檔案類型的數個不同接收選項：
+新增接收之後，請透過 [ **接收** ] 索引標籤設定。您可以在這裡挑選或建立接收所寫入的資料集。 您可以在 [偵錯工具設定](concepts-data-flow-debug-mode.md) 中設定資料集參數的開發值 (需要在) 上開啟 Debug 模式。
+
+以下是一段影片，解說文字分隔檔案類型的數個不同接收選項：
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4tf7T]
 
@@ -82,5 +84,5 @@ Azure Data Factory 可以存取超過 [90 種原生連接器](connector-overview
 
 當您在偵錯工具叢集上提取資料預覽時，不會將任何資料寫入至您的接收。 將會傳回資料外觀的快照集，但不會將任何內容寫入目的地。 若要測試將資料寫入至您的接收，請從管線畫布執行管線偵錯工具。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 現在您已建立資料流程，請將 [資料流程活動新增至您的管線](concepts-data-flow-overview.md)。

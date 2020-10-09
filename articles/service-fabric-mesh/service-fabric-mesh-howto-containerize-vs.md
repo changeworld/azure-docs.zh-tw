@@ -1,16 +1,16 @@
 ---
 title: 將 Service Fabric Mesh 的現有 .NET 應用程式容器化
-description: 將 Service Fabric 網格容器協調流程支援新增至使用完整 .NET framework 的 ASP.NET 和主控台專案。
-author: dkkapur
-ms.author: dekapur
+description: 將 Service Fabric 網狀容器協調流程支援新增至使用完整 .NET framework 的 ASP.NET 和主控台專案。
+author: georgewallace
+ms.author: gwallace
 ms.date: 11/08/2018
 ms.topic: conceptual
-ms.openlocfilehash: d67ea5bb7df5910ec87e69adf3c414c303bf0182
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a995f30872216a8b704d3d1714bbece4bb8271f8
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75462045"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91840059"
 ---
 # <a name="containerize-an-existing-net-app-for-service-fabric-mesh"></a>將 Service Fabric Mesh 的現有 .NET 應用程式容器化
 

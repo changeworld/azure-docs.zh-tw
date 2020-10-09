@@ -4,12 +4,12 @@ description: 監視 ASP.NET Core Web 應用程式的可用性、效能和使用�
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 04/30/2020
-ms.openlocfilehash: eae6117f82f3bb138edb6cea23a2c052e19fb0cf
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: cb192aa44e9e2ab8578881494852ddd41ae9094d
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91803586"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91839005"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>ASP.NET Core 應用程式的 Application Insights
 
@@ -31,7 +31,7 @@ ms.locfileid: "91803586"
 > [!NOTE]
 > ASP.NET Core 3.x 需要 [Application Insights 2.8.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.8.0) 或更新版本。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - 正常運作的 ASP.NET Core 應用程式。 如果您需要建立 ASP.NET Core 應用程式，請遵循此 [ASP.NET Core 教學](/aspnet/core/getting-started/)課程。
 - 有效的 Application Insights 檢測金鑰。 需要有此金鑰才能將任何遙測資料傳送至 Application Insights。 如果您需要建立新的 Application Insights 資源以取得檢測金鑰，請參閱 [建立 Application Insights 資源](./create-new-resource.md)。
@@ -134,7 +134,7 @@ ms.locfileid: "91803586"
 
 ### <a name="ilogger-logs"></a>ILogger 記錄
 
-`ILogger` `Warning` 系統會自動捕獲透過嚴重性或更高版本發出的記錄。 遵循 [ILogger](ilogger.md#control-logging-level) 檔來自訂 Application Insights 所要捕捉的記錄層級。
+`ILogger`系統會自動捕獲透過嚴重性和更新版本發出的記錄 `Warning` 。 遵循 [ILogger](ilogger.md#control-logging-level) 檔來自訂 Application Insights 所要捕捉的記錄層級。
 
 ### <a name="dependencies"></a>相依性
 
@@ -397,7 +397,7 @@ using Microsoft.ApplicationInsights.Channel;
 
 ### <a name="how-can-i-track-telemetry-thats-not-automatically-collected"></a>如何追蹤不會自動收集的遙測？
 
-使用函式插入來取得的實例 `TelemetryClient` ，並在其上呼叫所需的 `TrackXXX()` 方法。 我們不建議 `TelemetryClient` 在 ASP.NET Core 應用程式中建立新的實例。 的單一實例 `TelemetryClient` 已在容器中註冊 `DependencyInjection` ，而該容器 `TelemetryConfiguration` 與其他遙測資料共用。 只有在需要與其余遙測不同的設定時，才建議建立新的 `TelemetryClient` 實例。
+使用函式插入來取得的實例 `TelemetryClient` ，並在其上呼叫所需的 `TrackXXX()` 方法。 我們不建議 `TelemetryClient` `TelemetryConfiguration` 在 ASP.NET Core 應用程式中建立新的或實例。 的單一實例 `TelemetryClient` 已在容器中註冊 `DependencyInjection` ，而該容器 `TelemetryConfiguration` 與其他遙測資料共用。 只有在需要與其余遙測不同的設定時，才建議建立新的 `TelemetryClient` 實例。
 
 下列範例顯示如何從控制器追蹤其他遙測。
 
@@ -424,6 +424,40 @@ public class HomeController : Controller
 
 如需有關 Application Insights 中的自訂資料包告的詳細資訊，請參閱 [Application Insights 自訂計量 API 參考](./api-custom-events-metrics.md)。 您可以使用類似的方法，透過 [>GETMETRIC API](./get-metric.md)將自訂計量傳送至 Application Insights。
 
+### <a name="how-do-i-customize-ilogger-logs-collection"></a>如何? 自訂 ILogger 記錄檔收集？
+
+依預設，只會自動捕獲嚴重性和更新版本的記錄 `Warning` 。 若要變更此行為，請明確覆寫提供者的記錄設定， `ApplicationInsights` 如下所示。
+下列設定可讓 ApplicationInsights 捕獲嚴重性和更新版本的所有記錄 `Information` 。
+
+```json
+{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Warning"
+    },
+    "ApplicationInsights": {
+      "LogLevel": {
+        "Default": "Information"
+      }
+    }
+  }
+}
+```
+
+請務必注意，下列情況並不會導致 ApplicationInsights 提供者捕獲 `Information` 記錄。 這是因為 SDK 會新增預設記錄篩選器，指示 `ApplicationInsights` 只捕獲 `Warning` 和更新版本。 因此，ApplicationInsights 需要明確覆寫。
+
+```json
+{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information"
+    }
+  }
+}
+```
+
+閱讀有關 [ILogger](ilogger.md#control-logging-level)設定的詳細資訊。
+
 ### <a name="some-visual-studio-templates-used-the-useapplicationinsights-extension-method-on-iwebhostbuilder-to-enable-application-insights-is-this-usage-still-valid"></a>某些 Visual Studio 範本會在 >iwebhostbuilder 上使用 .Useapplicationinsights ( # A1 擴充方法來啟用 Application Insights。 此使用方式是否仍然有效？
 
 雖然 `UseApplicationInsights()` 仍然支援擴充方法，但它在 APPLICATION INSIGHTS SDK 版本2.8.0 中會標示為過時。 它將在下一個主要版本的 SDK 中移除。 啟用 Application Insights 遙測的建議方法是使用， `AddApplicationInsightsTelemetry()` 因為它提供多載來控制某些設定。 此外，在 ASP.NET Core 3.x 應用程式中，也 `services.AddApplicationInsightsTelemetry()` 是啟用 application insights 的唯一方法。
@@ -444,7 +478,7 @@ public class HomeController : Controller
 
 ### <a name="can-i-enable-application-insights-monitoring-by-using-tools-like-status-monitor"></a>我可以使用狀態監視器之類的工具來啟用 Application Insights 監視嗎？
 
-否。 [狀態監視器](./monitor-performance-live-website-now.md) 和 [狀態監視器 v2](./status-monitor-v2-overview.md) 目前只支援 ASP.NET 4.x。
+不可以。 [狀態監視器](./monitor-performance-live-website-now.md) 和 [狀態監視器 v2](./status-monitor-v2-overview.md) 目前只支援 ASP.NET 4.x。
 
 ### <a name="if-i-run-my-application-in-linux-are-all-features-supported"></a>如果我在 Linux 中執行我的應用程式，是否支援所有功能？
 
@@ -477,7 +511,7 @@ using Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel;
 
 ## <a name="open-source-sdk"></a>開放原始碼 SDK
 
-* [讀取和參與程式碼](https://github.com/microsoft/ApplicationInsights-dotnet#recent-updates)。
+* [讀取和參與程式碼](https://github.com/microsoft/ApplicationInsights-dotnet)。
 
 如需最新的更新和錯誤修正， [請參閱版本](./release-notes.md)資訊。
 

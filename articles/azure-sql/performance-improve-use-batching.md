@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: genemi
 ms.date: 01/25/2019
-ms.openlocfilehash: 94f54e02de1b61cb05b4e41bb4c40118299cf20f
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.openlocfilehash: 487b668d9a3d934220fecf5c0896f7ef492c6775
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91618636"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91840484"
 ---
 # <a name="how-to-use-batching-to-improve-azure-sql-database-and-azure-sql-managed-instance-application-performance"></a>如何使用批次處理來改善 Azure SQL Database 和 Azure SQL 受控執行個體應用程式效能
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -99,7 +99,7 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 
 **內部部署至 Azure**：
 
-| Operations | 沒有交易 (ms)  | 交易 (毫秒) |
+| 作業 | 沒有交易 (ms)  | 交易 (毫秒) |
 | --- | --- | --- |
 | 1 |130 |402 |
 | 10 |1208 |1226 |
@@ -108,7 +108,7 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 
 **Azure 至 Azure (相同資料中心)**：
 
-| Operations | 沒有交易 (ms)  | 交易 (毫秒) |
+| 作業 | 沒有交易 (ms)  | 交易 (毫秒) |
 | --- | --- | --- |
 | 1 |21 |26 |
 | 10 |220 |56 |
@@ -195,7 +195,7 @@ cmd.CommandType = CommandType.StoredProcedure;
 
 下表顯示使用資料表值參數的特定測試結果（以毫秒為單位）。
 
-| Operations | 內部部署至 Azure (ms)  | Azure 相同資料中心 (毫秒) |
+| 作業 | 內部部署至 Azure (ms)  | Azure 相同資料中心 (毫秒) |
 | --- | --- | --- |
 | 1 |124 |32 |
 | 10 |131 |25 |
@@ -233,7 +233,7 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 
 下列臨機操作測試結果顯示使用 **SqlBulkCopy** 的批次處理效能（以毫秒為單位）。
 
-| Operations | 內部部署至 Azure (ms)  | Azure 相同資料中心 (毫秒) |
+| 作業 | 內部部署至 Azure (ms)  | Azure 相同資料中心 (毫秒) |
 | --- | --- | --- |
 | 1 |433 |57 |
 | 10 |441 |32 |
@@ -276,7 +276,7 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 
 下列臨機操作測試結果顯示這種插入語句的效能（以毫秒為單位）。
 
-| Operations | 資料表值參數 (毫秒) | 單一陳述式 INSERT (毫秒) |
+| 作業 | 資料表值參數 (毫秒) | 單一陳述式 INSERT (毫秒) |
 | --- | --- | --- |
 | 1 |32 |20 |
 | 10 |30 |25 |
@@ -293,7 +293,7 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 
 ### <a name="entity-framework"></a>Entity Framework
 
-[Entity Framework 6](https://github.com/dotnet/ef6) 現在支援批次處理。
+[Entity Framework Core](https://docs.microsoft.com/ef/efcore-and-ef6/#saving-data) 支援批次處理。
 
 ### <a name="xml"></a>XML
 

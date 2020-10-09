@@ -15,12 +15,12 @@ ms.date: 03/14/2019
 ms.author: willzhan
 ms.reviewer: kilroyh;yanmf;juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e7e63225df4e337a93912bf1e1c17eb61a6cc9e0
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: b98b66d8f0350c32e89d62d776ee1288d9271712
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89258583"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91841147"
 ---
 # <a name="design-of-a-content-protection-system-with-access-control-using-azure-media-services"></a>使用 Azure 媒體服務設計具有存取控制的內容保護系統
 
@@ -421,11 +421,11 @@ Azure AD 所簽發的 JWT 是用來存取指標資源的存取權杖。
 
 **自訂 Azure AD 租用戶網域帳戶**：自訂 Azure AD 租用戶網域的自訂登入頁面。
 
-![自訂 Azure AD 租用戶網域帳戶](./media/media-services-cenc-with-multidrm-access-control/media-services-ad-tenant-domain1.png)
+![顯示自訂 Azure A D 租使用者網域的自訂登入頁面的螢幕擷取畫面。](./media/media-services-cenc-with-multidrm-access-control/media-services-ad-tenant-domain1.png)
 
 **採用智慧卡的 Microsoft 網域帳戶**：由 Microsoft Corporate IT 自訂且採用雙因素驗證的登入頁面。
 
-![自訂 Azure AD 租用戶網域帳戶](./media/media-services-cenc-with-multidrm-access-control/media-services-ad-tenant-domain2.png)
+![螢幕擷取畫面，顯示由 Microsoft 公司 I T 使用雙因素驗證所自訂的登入頁面。](./media/media-services-cenc-with-multidrm-access-control/media-services-ad-tenant-domain2.png)
 
 **Microsoft 帳戶**：Microsoft 取用者帳戶的登入頁面。
 
@@ -473,7 +473,7 @@ Widevine 不會防止您對受保護的視訊進行螢幕擷取。
 
 在上述兩個案例中，使用者驗證會保持相同。 它會透過 Azure AD 進行。 唯一的差別在於，JWT 是由自訂 STS 發出，而不是 Azure AD。 設定動態 CENC 保護時，授權傳遞服務限制會指定 JWT 的類型 (對稱或非對稱金鑰)。
 
-## <a name="summary"></a>總結
+## <a name="summary"></a>摘要
 
 本文件討論了透過權杖驗證的 CENC 與多重原生 DRM 和存取控制，它的設計，以及使用 Azure、媒體服務和 Azure 媒體播放器進行實作。
 

@@ -6,25 +6,24 @@ ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 4ab754cacc85bc9e7c7b850270df37290ad399b6
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: e2c071ff9cf020f99e990e670cfb29cca3c1ebbc
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91650156"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91838648"
 ---
 # <a name="azure-cache-for-redis-with-azure-private-link-public-preview"></a>Azure Cache for Redis 與 Azure Private Link (公開預覽) 
 在本文中，您將瞭解如何使用 Azure 入口網站來建立虛擬網路和具有私人端點的 Azure Cache for Redis 實例。 您也將瞭解如何將私人端點新增至現有的 Azure Cache for Redis 實例。
 
 Azure 私人端點是一種網路介面，可讓您以私人且安全的方式連接到 Azure Cache for Redis，Azure Private Link。 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 * Azure 訂用帳戶- [免費建立一個](https://azure.microsoft.com/free/)訂用帳戶
 
 > [!NOTE]
-> 這項功能目前處於有限區域的公開預覽狀態。 如果您沒有建立私人端點的選項，請 [洽詢我們](mailto:azurecache@microsoft.com)。 若要使用私人端點，您的 Azure Cache for Redis 實例必須在2020年7月28日之後建立。
+> 若要使用私人端點，您的 Azure Cache for Redis 實例必須在2020年7月28日之後建立。
 >
-> 目前有公開預覽存取權的區域：美國中西部、美國中北部、美國西部、美國西部2、美國東部、美國東部2、美國中部、美國中南部、挪威東部、挪威西部、歐洲北部、歐洲西部、東亞、東南亞、日本東部、印度西部、瑞士北部、韓國中部、瑞士西部、阿拉伯聯合大公國中部、南韓南部、南非北部、法國南部、法國中部、加拿大東部、加拿大中部、德國北部、德國中西部、澳大利亞中部、印度西部、印度南部、澳大利亞東部、巴西東南部、巴西南部和巴西南部。
 >
 
 ## <a name="create-a-private-endpoint-with-a-new-azure-cache-for-redis-instance"></a>使用新的 Azure Cache for Redis 實例來建立私人端點 
@@ -58,7 +57,7 @@ Azure 私人端點是一種網路介面，可讓您以私人且安全的方式�
 
 8. 在 [ **編輯子網** ] 窗格中，指定 **子網名稱** 和 **子網位址範圍**。 子網的位址範圍應為 CIDR 標記法 (例如 192.168.1.0/24) 。 其必須包含在虛擬網路的位址空間中。
 
-9. 選取 [儲存]  。
+9. 選取 [儲存]。
 
 10. 選取 [ **審核 + 建立** ] 索引標籤，或按一下 [ **審核 + 建立** ] 按鈕。
 
@@ -141,7 +140,7 @@ Azure 私人端點是一種網路介面，可讓您以私人且安全的方式�
 
 8. 在 [ **編輯子網** ] 窗格中，指定 **子網名稱** 和 **子網位址範圍**。 子網的位址範圍應為 CIDR 標記法 (例如 192.168.1.0/24) 。 其必須包含在虛擬網路的位址空間中。
 
-9. 選取 [儲存]  。
+9. 選取 [儲存]。
 
 10. 選取 [ **審核 + 建立** ] 索引標籤，或按一下 [ **審核 + 建立** ] 按鈕。
 

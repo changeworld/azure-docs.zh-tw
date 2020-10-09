@@ -1,16 +1,16 @@
 ---
-title: 優化 Azure Service Fabric 網狀 Visual Studio
+title: 優化 Azure Service Fabric 網格的 Visual Studio
 description: 本文說明如何將 Service Fabric Mesh 專案的 Visual Studio 效能最佳化，以大幅加快您執行第一次偵錯 (F5) 的速度。
-author: dkkapur
-ms.author: dekapur
+author: georgewallace
+ms.author: gwallace
 ms.date: 11/29/2018
 ms.topic: conceptual
-ms.openlocfilehash: 40c4e9972a3d83a5dd8247bacac12e9d67a15f66
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aa7a959128d3bcdfcce67d3abeac245975339a9f
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75497973"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91840297"
 ---
 # <a name="optimize-visual-studio-performance-for-service-fabric-mesh-projects"></a>將 Service Fabric Mesh 專案的 Visual Studio 效能最佳化
 
@@ -18,7 +18,7 @@ ms.locfileid: "75497973"
 
 ## <a name="change-visual-studio-settings"></a>變更 Visual Studio 設定
  
-在 Visual Studio 中， **Tools**  >  您可以在 [工具**選項**]   >  **Service Fabric**[一般] [工具]  >  **[一般**] 下調整下列設定：
+在 Visual Studio 的 [**工具**  >  **選項**]   >  **Service Fabric**  >  **[一般**工具] 底下，您可以調整下列設定：
 
 - **在專案開啟時提取所需的 Docker 映像**可藉由在專案載入時啟動映像下載程序，使您執行第一次偵錯 (F5) 的速度更快。  
 - **在專案開啟時部署應用程式**可藉由在專案開啟後啟動部署程序，使您執行第一次偵錯 (F5) 的速度更快。  

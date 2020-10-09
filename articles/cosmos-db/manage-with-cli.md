@@ -1,25 +1,25 @@
 ---
-title: 使用 Azure CLI 管理 Azure Cosmos DB 資源
-description: 使用 Azure CLI 來管理您的 Azure Cosmos DB 帳戶、資料庫和容器。
+title: 使用 Azure CLI 管理 Azure Cosmos DB Core (SQL) API 資源
+description: 使用 Azure CLI 管理 Azure Cosmos DB Core (SQL) API 資源。
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 07/29/2020
+ms.date: 10/07/2020
 ms.author: mjbrown
-ms.openlocfilehash: c8726801e8becd6533ae5fec099d6c535b63261a
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: dce041a46f173216844322b5a8985acbdfb86f26
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91767561"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91840586"
 ---
-# <a name="manage-azure-cosmos-resources-using-azure-cli"></a>使用 Azure CLI 管理 Azure Cosmos 資源
+# <a name="manage-azure-cosmos-core-sql-api-resources-using-azure-cli"></a>使用 Azure CLI 管理 Azure Cosmos Core (SQL) API 資源
 
 下列指南說明使用 Azure CLI 自動管理 Azure Cosmos DB 帳戶、資料庫及容器的常見命令。 您可以在 [Azure CLI 參考](https://docs.microsoft.com/cli/azure/cosmosdb)中取得所有 Azure Cosmos DB CLI 命令的參考頁面。 您也可以在[適用於 Azure Cosmos DB 的 Azure CLI 範例](cli-samples.md)中找到更多範例，包括如何針對 MongoDB、Gremlin、Cassandra 及資料表 API建立和管理 Cosmos DB 帳戶、資料庫和容器。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-若選擇在本機安裝及使用 CLI，此主題需要您執行 Azure CLI 2.9.1 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
+如果您選擇在本機安裝和使用 CLI，本主題會要求您執行 Azure CLI 2.12.1 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
 
 > [!IMPORTANT]
 > 無法重新命名 Azure Cosmos DB 資源，因為這違反了 Azure Resource Manager 搭配資源 Uri 運作的方式。
@@ -214,8 +214,9 @@ az cosmosdb keys regenerate \
 
 * [建立資料庫](#create-a-database)
 * [建立具有共用輸送量的資料庫](#create-a-database-with-shared-throughput)
+* [將資料庫移轉至自動調整輸送量](#migrate-a-database-to-autoscale-throughput)
 * [變更資料庫輸送量](#change-database-throughput)
-* [管理資料庫的鎖定](#manage-lock-on-a-database)
+* [防止刪除資料庫](#prevent-a-database-from-being-deleted)
 
 ### <a name="create-a-database"></a>建立資料庫
 
@@ -249,6 +250,29 @@ az cosmosdb sql database create \
     --throughput $throughput
 ```
 
+### <a name="migrate-a-database-to-autoscale-throughput"></a>將資料庫移轉至自動調整輸送量
+
+```azurecli-interactive
+resourceGroupName='MyResourceGroup'
+accountName='mycosmosaccount'
+databaseName='database1'
+
+# Migrate to autoscale throughput
+az cosmosdb sql database throughput migrate \
+    -a $accountName \
+    -g $resourceGroupName \
+    -n $databaseName \
+    -t 'autoscale'
+
+# Read the new autoscale max throughput
+az cosmosdb sql database throughput show \
+    -g $resourceGroupName \
+    -a $accountName \
+    -n $databaseName \
+    --query resource.autoscaleSettings.maxThroughput \
+    -o tsv
+```
+
 ### <a name="change-database-throughput"></a>變更資料庫輸送量
 
 以 1000 RU/秒為單位增加 Cosmos 資料庫的輸送量。
@@ -275,14 +299,14 @@ az cosmosdb sql database throughput update \
     --throughput $newRU
 ```
 
-### <a name="manage-lock-on-a-database"></a>管理資料庫的鎖定
+### <a name="prevent-a-database-from-being-deleted"></a>防止刪除資料庫
 
-在資料庫上放置刪除鎖定。 若要深入瞭解如何啟用此資訊，請參閱， [防止 sdk 的變更](role-based-access-control.md#prevent-sdk-changes)。
+在資料庫上放置 Azure 資源刪除鎖定，以防止其遭到刪除。 這項功能需要鎖定 Cosmos 帳戶，以防止資料平面 Sdk 變更。 若要深入瞭解，請參閱 [防止 sdk 的變更](role-based-access-control.md#prevent-sdk-changes)。 Azure 資源鎖定也可以藉由指定鎖定類型來防止變更資源 `ReadOnly` 。 針對 Cosmos 資料庫，您可以使用它來防止變更輸送量。
 
 ```azurecli-interactive
 resourceGroupName='myResourceGroup'
-accountName='my-cosmos-account'
-databaseName='myDatabase'
+accountName='mycosmosaccount'
+databaseName='database1'
 
 lockType='CanNotDelete' # CanNotDelete or ReadOnly
 databaseParent="databaseAccounts/$accountName"
@@ -315,7 +339,8 @@ az lock delete --ids $lockid
 * [建立已啟用 TTL 的容器](#create-a-container-with-ttl)
 * [建立含有自訂索引原則的容器](#create-a-container-with-a-custom-index-policy)
 * [變更容器輸送量](#change-container-throughput)
-* [管理容器上的鎖定](#manage-lock-on-a-container)
+* [遷移容器以自動調整輸送量](#migrate-a-container-to-autoscale-throughput)
+* [防止刪除容器](#prevent-a-container-from-being-deleted)
 
 ### <a name="create-a-container"></a>建立容器
 
@@ -454,15 +479,41 @@ az cosmosdb sql container throughput update \
     --throughput $newRU
 ```
 
-### <a name="manage-lock-on-a-container"></a>管理容器上的鎖定
+### <a name="migrate-a-container-to-autoscale-throughput"></a>遷移容器以自動調整輸送量
 
-在容器上放置刪除鎖定。 若要深入瞭解如何啟用此資訊，請參閱， [防止 sdk 的變更](role-based-access-control.md#prevent-sdk-changes)。
+```azurecli-interactive
+resourceGroupName='MyResourceGroup'
+accountName='mycosmosaccount'
+databaseName='database1'
+containerName='container1'
+
+# Migrate to autoscale throughput
+az cosmosdb sql container throughput migrate \
+    -a $accountName \
+    -g $resourceGroupName \
+    -d $databaseName \
+    -n $containerName \
+    -t 'autoscale'
+
+# Read the new autoscale max throughput
+az cosmosdb sql container throughput show \
+    -g $resourceGroupName \
+    -a $accountName \
+    -d $databaseName \
+    -n $containerName \
+    --query resource.autoscaleSettings.maxThroughput \
+    -o tsv
+```
+
+### <a name="prevent-a-container-from-being-deleted"></a>防止刪除容器
+
+在容器上放置 Azure 資源刪除鎖定，以防止其遭到刪除。 這項功能需要鎖定 Cosmos 帳戶，以防止資料平面 Sdk 變更。 若要深入瞭解，請參閱 [防止 sdk 的變更](role-based-access-control.md#prevent-sdk-changes)。 Azure 資源鎖定也可以藉由指定鎖定類型來防止變更資源 `ReadOnly` 。 針對 Cosmos 容器，這可用來防止輸送量或任何其他屬性變更。
 
 ```azurecli-interactive
 resourceGroupName='myResourceGroup'
-accountName='my-cosmos-account'
-databaseName='myDatabase'
-containerName='myContainer'
+accountName='mycosmosaccount'
+databaseName='database1'
+containerName='container1'
 
 lockType='CanNotDelete' # CanNotDelete or ReadOnly
 databaseParent="databaseAccounts/$accountName"
@@ -491,6 +542,6 @@ az lock delete --ids $lockid
 
 如需 Azure CLI 的詳細資訊，請參閱：
 
-- [安裝 Azure CLI](/cli/azure/install-azure-cli)
-- [Azure CLI 參考](https://docs.microsoft.com/cli/azure/cosmosdb)
-- [適用於 Azure Cosmos DB 的其他 Azure CLI 範例](cli-samples.md)
+* [安裝 Azure CLI](/cli/azure/install-azure-cli)
+* [Azure CLI 參考](https://docs.microsoft.com/cli/azure/cosmosdb)
+* [適用於 Azure Cosmos DB 的其他 Azure CLI 範例](cli-samples.md)

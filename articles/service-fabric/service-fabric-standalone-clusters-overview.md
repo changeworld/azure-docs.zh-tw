@@ -1,16 +1,14 @@
 ---
 title: 獨立 Service Fabric 叢集總覽
 description: Service Fabric 叢集會在 Windows Server 或 Linux 上執行，這表示您能夠在任何您可以執行 Windows Server 和 Linux 的環境中部署和裝載 Service Fabric 應用程式。
-author: dkkapur
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.author: dekapur
-ms.openlocfilehash: 6abe6fca77251a16bcb7663a5192f46fef3476b0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c57d1ef6db295400ad986adadb804fb942a723e5
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85080664"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91841062"
 ---
 # <a name="overview-of-service-fabric-standalone-clusters"></a>Service Fabric 叢集獨立叢集的概觀
 
@@ -25,7 +23,7 @@ Service Fabric 叢集是一組由網路連接的虛擬或實體機器，可用�
 Service Fabric 叢集是您所擁有的資源。  保護叢集是您的責任，從而協助避免未經授權的使用者與它們連線。 在叢集上執行生產工作負載時，安全的叢集尤其重要。
 
 > [!NOTE]
-> Windows 驗證是以 Kerberos 為基礎。 不支援 NTLM 作為驗證類型。
+> Windows 驗證是以 Kerberos 為基礎。 NTLM 不支援做為驗證類型。
 >
 > 請盡可能針對 Service Fabric 叢集使用 x.509 憑證驗證。
 

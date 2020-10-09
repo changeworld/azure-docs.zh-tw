@@ -10,12 +10,12 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
 ms.date: 06/02/2020
 ms.custom: seodec18
-ms.openlocfilehash: 4ecb7758ee5f58345fccc2c490cee4d23043a20c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 68a64ad1ddb955ccebdcddca996959f1bb5f932b
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85257409"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91840945"
 ---
 # <a name="read-data-from-azure-cosmos-db-cassandra-api-tables-using-spark"></a>使用 Spark 從 Azure Cosmos DB Cassandra API 資料表中讀取資料
 
@@ -81,31 +81,24 @@ readBooksDF.explain
 readBooksDF.show
 ```
 
-### <a name="apply-filters"></a>套用篩選
+### <a name="apply-filters"></a>套用篩選條件
 
-您可以將述詞向下推送至資料庫，以允許更佳的優化 Spark 查詢。 述詞是傳回 true 或 false 之查詢的條件，通常位於 WHERE 子句中。 述詞下推會篩選資料庫查詢中的資料，減少從資料庫中抓取的專案數，並改善查詢效能。 根據預設，Spark 資料集 API 會將有效的 WHERE 子句自動推送至資料庫。 
+您可以將述詞推送至資料庫，以允許更佳的優化 Spark 查詢。 述詞是傳回 true 或 false 的查詢準則，通常位於 WHERE 子句中。 述詞下推會篩選資料庫查詢中的資料，減少從資料庫取出的專案數目並改善查詢效能。 Spark 資料集 API 預設會自動將有效的 WHERE 子句推入至資料庫。 
 
 ```scala
-val readBooksDF = spark
-  .read
-  .format("org.apache.spark.sql.cassandra")
-  .options(Map( "table" -> "books", "keyspace" -> "books_ks"))
-  .load
-  .select("book_name","book_author", "book_pub_year")
-  .filter("book_pub_year > 1891")
-//.filter("book_name IN ('A sign of four','A study in scarlet')")
-//.filter("book_name='A sign of four' OR book_name='A study in scarlet'")
-//.filter("book_author='Arthur Conan Doyle' AND book_pub_year=1890")
-//.filter("book_pub_year=1903")  
+val df = spark.read.cassandraFormat("books", "books_ks").load
+df.explain
+val dfWithPushdown = df.filter(df("book_pub_year") > 1891)
+dfWithPushdown.explain
 
 readBooksDF.printSchema
 readBooksDF.explain
 readBooksDF.show
 ```
 
-實體計畫的 PushedFilters 區段包含 GreaterThan 向下推篩選。 
+實體方案的 PushedFilters 區段包含 GreaterThan 推入篩選。 
 
-:::image type="content" source="./media/cassandra-spark-read-ops/pushdown-predicates.png" alt-text="資料分割":::
+:::image type="content" source="./media/cassandra-spark-read-ops/pushdown-predicates.png" alt-text="分區":::
 
 ## <a name="rdd-api"></a>RDD API
 

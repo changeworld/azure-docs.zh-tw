@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/18/2020
-ms.openlocfilehash: 2195ac4e5753addaee9e13c368b6e6a1b94354ff
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 09e7a39a2d97626dd01a00fdaef9bc4d711d557b
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91363132"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91828093"
 ---
 # <a name="ai-enrichment-in-azure-cognitive-search"></a>Azure 認知搜尋中的 AI 擴充
 
@@ -51,7 +51,7 @@ Azure 認知搜尋內建的技能是以認知服務 API 中預先定型的機器
 
 + 非結構化或半結構化的文件，其含有具有內在意義的內容或隱藏在較大型文件中的內容。 
 
-  尤其是 Blob 往往會包含封裝到單一「欄位」的大型內容主體。 藉由將影像和自然語言處理技能連結至索引子，您可以建立現存於原始內容但又不會呈現為相異欄位的新資訊。 某些立即可用、對您有所幫助的內建認知技能：關鍵片語擷取、情感分析和實體辨識 (人員、組織和位置)。
+  尤其是 blob 通常包含封裝成單一「欄位」的大型內容主體。 藉由將影像和自然語言處理技能連結至索引子，您可以建立現存於原始內容但又不會呈現為相異欄位的新資訊。 某些立即可用、對您有所幫助的內建認知技能：關鍵片語擷取、情感分析和實體辨識 (人員、組織和位置)。
 
   此外，內建技能也可用來透過文字分割、合併和成形作業來重新建構內容。
 
@@ -115,7 +115,7 @@ Azure 認知搜尋內建的技能是以認知服務 API 中預先定型的機器
 
 1. 在[重設索引子](search-howto-reindex.md)後重建管線。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 + [AI 擴充的文件連結](cognitive-search-resources-documentation.md)
 + [範例：建立 AI 擴充的自訂技能 (c # ) ](cognitive-search-create-custom-skill-example.md)

@@ -11,12 +11,12 @@ ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 454e205904b3623bdb5adc906465f01abd77092a
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 48db8541ebad19e3b22b737f7e92dcc980708ef6
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88795604"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91841589"
 ---
 # <a name="performance-tuning-with-ordered-clustered-columnstore-index"></a>透過已排序的叢集資料行存放區索引進行效能微調  
 
@@ -48,9 +48,6 @@ ORDER BY o.name, pnp.distribution_id, cls.min_data_id
 
 
 ```
-
->[!TIP]
-> 為了改善 Synapse SQL 中的效能，請考慮在永久使用者資料表上使用 **sys. pdw_permanent_table_mappings** 而不是 **sys. pdw_table_mappings** 。 如需詳細資訊，請參閱 **[sys. pdw_permanent_table_mappings &#40;transact-sql&#41;](/sql/relational-databases/system-catalog-views/sys-pdw-permanent-table-mappings-transact-sql?view=azure-sqldw-latest)** 。
 
 > [!NOTE] 
 > 在已排序的 CCI 資料表中，從相同批次或資料載入作業產生的新資料會在該批次中排序，在資料表中的所有資料之間都沒有全域排序。  使用者可以重建已排序的 CCI 來排序資料表中的所有資料。  在 Synapse SQL 中，資料行存放區索引重建是一種離線作業。  如果是資料分割資料表，重建會一次執行一個資料分割。  正在重建的資料分割中的資料是「離線」且無法使用，直到該分割區的重建完成為止。 
@@ -98,7 +95,7 @@ SELECT * FROM T1 WHERE Col_A = 'a' AND Col_C = 'c';
 
 以下是將資料載入具有不同架構之資料表的範例效能比較。
 
-![Performance_comparison_data_loading](./media/performance-tuning-ordered-cci/cci-data-loading-performance.png)
+![顯示將資料載入具有不同架構之資料表的效能比較的橫條圖。](./media/performance-tuning-ordered-cci/cci-data-loading-performance.png)
 
 
 以下是 CCI 和已排序 CCI 之間的查詢效能比較範例。
@@ -139,7 +136,7 @@ OPTION (MAXDOP 1);
 
 ## <a name="examples"></a>範例
 
-**答：若要檢查已排序的資料行和順序序數：**
+**的.若要檢查已排序的資料行和訂單序數：**
 
 ```sql
 SELECT object_name(c.object_id) table_name, c.name column_name, i.column_store_order_ordinal 
@@ -148,7 +145,7 @@ JOIN sys.columns c ON i.object_id = c.object_id AND c.column_id = i.column_id
 WHERE column_store_order_ordinal <>0
 ```
 
-**B. 若要變更資料行序數，請新增或移除 order 清單中的資料行，或從 CCI 變更為排序的 CCI：**
+**B。若要變更資料行序數，請新增或移除 order 清單中的資料行，或從 CCI 變更為已排序的 CCI：**
 
 ```sql
 CREATE CLUSTERED COLUMNSTORE INDEX InternetSales ON  InternetSales

@@ -4,12 +4,12 @@ description: 使用 Azure 監視器 Application Insights 監視 .NET Core/.NET F
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 05/11/2020
-ms.openlocfilehash: 643edf81d6a98c8f423267b657feb9dfb6da1070
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 8156541a5b04a5db5f2ce683fd0e514c81e8b53e
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91816392"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91840399"
 ---
 # <a name="application-insights-for-worker-service-applications-non-http-applications"></a>背景工作服務應用程式的 Application Insights (非 HTTP 應用程式) 
 
@@ -333,19 +333,18 @@ ms.locfileid: "91816392"
 您可以藉由傳遞到來修改一些一般設定 `ApplicationInsightsServiceOptions` `AddApplicationInsightsTelemetryWorkerService` ，如此範例所示：
 
 ```csharp
-    using Microsoft.ApplicationInsights.WorkerService;
+using Microsoft.ApplicationInsights.WorkerService;
 
-    public void ConfigureServices(IServiceCollection services)
-    {
-        Microsoft.ApplicationInsights.WorkerService.ApplicationInsightsServiceOptions aiOptions
-                    = new Microsoft.ApplicationInsights.WorkerService.ApplicationInsightsServiceOptions();
-        // Disables adaptive sampling.
-        aiOptions.EnableAdaptiveSampling = false;
+public void ConfigureServices(IServiceCollection services)
+{
+    var aiOptions = new ApplicationInsightsServiceOptions();
+    // Disables adaptive sampling.
+    aiOptions.EnableAdaptiveSampling = false;
 
-        // Disables QuickPulse (Live Metrics stream).
-        aiOptions.EnableQuickPulseMetricStream = false;
-        services.AddApplicationInsightsTelemetryWorkerService(aiOptions);
-    }
+    // Disables QuickPulse (Live Metrics stream).
+    aiOptions.EnableQuickPulseMetricStream = false;
+    services.AddApplicationInsightsTelemetryWorkerService(aiOptions);
+}
 ```
 
 請注意， `ApplicationInsightsServiceOptions` 在此 sdk 中的命名空間 `Microsoft.ApplicationInsights.WorkerService` 與 ASP.NET Core SDK 中的不同 `Microsoft.ApplicationInsights.AspNetCore.Extensions` 。
@@ -364,7 +363,37 @@ ms.locfileid: "91816392"
 
 ### <a name="sampling"></a>取樣
 
-適用于背景工作服務的 Application Insights SDK 支援固定速率和彈性取樣。 預設會啟用調適型取樣。 設定背景工作服務的取樣與 [ASP.NET Core 應用程式](./sampling.md#configuring-adaptive-sampling-for-aspnet-core-applications)的方式相同。
+適用于背景工作服務的 Application Insights SDK 支援固定速率和彈性取樣。 預設會啟用調適型取樣。 您可以使用 `EnableAdaptiveSampling` [ApplicationInsightsServiceOptions](#using-applicationinsightsserviceoptions)中的選項來停用取樣
+
+若要設定其他取樣設定，可使用下列範例。
+
+```csharp
+using Microsoft.ApplicationInsights.Extensibility;
+using Microsoft.ApplicationInsights.WorkerService;
+
+public void ConfigureServices(IServiceCollection services)
+{
+    // ...
+
+    var aiOptions = new ApplicationInsightsServiceOptions();
+    
+    // Disable adaptive sampling.
+    aiOptions.EnableAdaptiveSampling = false;
+    services.AddApplicationInsightsTelemetryWorkerService(aiOptions);
+
+    // Add Adaptive Sampling with custom settings.
+    // the following adds adaptive sampling with 15 items per sec.
+    services.Configure<TelemetryConfiguration>((telemetryConfig) =>
+        {
+            var builder = telemetryConfig.DefaultTelemetrySink.TelemetryProcessorChainBuilder;
+            builder.UseAdaptiveSampling(maxTelemetryItemsPerSecond: 15);
+            builder.Build();
+        });
+    //...
+}
+```
+
+您可以在 [取樣](#sampling) 檔中找到詳細資訊。
 
 ### <a name="adding-telemetryinitializers"></a>新增 TelemetryInitializers
 
@@ -505,7 +534,7 @@ Visual Studio IDE 上線目前僅支援 ASP.NET/ASP.NET Core 應用程式。 當
 
 ### <a name="can-i-enable-application-insights-monitoring-by-using-tools-like-status-monitor"></a>我可以使用狀態監視器之類的工具來啟用 Application Insights 監視嗎？
 
-否。 [狀態監視器](./monitor-performance-live-website-now.md) 和 [狀態監視器 v2](./status-monitor-v2-overview.md) 目前只支援 ASP.NET 4.x。
+不可以。 [狀態監視器](./monitor-performance-live-website-now.md) 和 [狀態監視器 v2](./status-monitor-v2-overview.md) 目前只支援 ASP.NET 4.x。
 
 ### <a name="if-i-run-my-application-in-linux-are-all-features-supported"></a>如果我在 Linux 中執行我的應用程式，是否支援所有功能？
 
@@ -540,9 +569,11 @@ using Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel;
 
 ## <a name="open-source-sdk"></a>開放原始碼 SDK
 
-[讀取和參與程式碼](https://github.com/Microsoft/ApplicationInsights-aspnetcore#recent-updates)。
+* [讀取和參與程式碼](https://github.com/microsoft/ApplicationInsights-dotnet)。
 
-## <a name="next-steps"></a>下一步
+如需最新的更新和錯誤修正， [請參閱版本](./release-notes.md)資訊。
+
+## <a name="next-steps"></a>後續步驟
 
 * [使用 API](./api-custom-events-metrics.md) 來傳送您自己的事件和計量，以深入瞭解您的應用程式效能和使用量。
 * [追蹤不會自動追蹤的其他](./auto-collect-dependencies.md)相依性。

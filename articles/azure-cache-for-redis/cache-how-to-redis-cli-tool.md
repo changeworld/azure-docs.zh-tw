@@ -1,17 +1,17 @@
 ---
-title: 如何搭配 Azure Cache for Redis 使用 redis-cli
-description: 瞭解如何使用*redis-cli.exe*做為命令列工具，以用戶端的身分與 Azure Cache for Redis 進行互動。
+title: 如何搭配 Azure Cache for Redis 使用 redis cli
+description: 瞭解如何使用 *redis-cli.exe* 作為命令列工具，以便與做為用戶端的 Azure Cache for Redis 互動。
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 03/22/2018
-ms.openlocfilehash: bd2da798cae92a7e47bd879b69dd108618463402
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e8a3183e1fcac3f1a71d07835cacc37c2f57fb06
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81010761"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91839039"
 ---
 # <a name="how-to-use-the-redis-command-line-tool-with-azure-cache-for-redis"></a>如何搭配使用 Redis 命令列工具與 Azure Redis 快取
 
@@ -38,9 +38,9 @@ ms.locfileid: "81010761"
 
 ## <a name="enable-access-for-redis-cliexe"></a>啟用 redis-cli.exe 的存取
 
-使用 Azure Cache for Redis 時，預設只會啟用 TLS 埠（6380）。 `redis-cli.exe`命令列工具不支援 TLS。 您有兩個設定選項可以使用它：
+使用 Azure Cache for Redis，預設只會啟用 TLS 埠 (6380) 。 `redis-cli.exe`命令列工具不支援 TLS。 您有兩個設定選項可以使用它：
 
-1. [啟用非 TLS 埠（6379）](cache-configure.md#access-ports)  - **不建議使用此**設定，因為在此設定中，存取金鑰是透過 TCP 以純文字傳送。 此變更可能會危害您的快取存取。 只有當您只是要存取測試快取時，才會考慮此設定。
+1. [啟用非 TLS 埠 (6379) ](cache-configure.md#access-ports)  - **不建議使用此**設定，因為在此設定中，會以純文字方式透過 TCP 傳送存取金鑰。 此變更可能會危害您的快取存取。 只有當您只是要存取測試快取時，才會考慮此設定。
 
 2. 下載並安裝 [stunnel](https://www.stunnel.org/downloads.html)。
 
@@ -48,7 +48,7 @@ ms.locfileid: "81010761"
 
     以滑鼠右鍵按一下 stunnel 伺服器的工作列圖示，然後按一下 [Show Log Window \(顯示記錄視窗\)]****。
 
-    在 [stunnel 記錄檔] 視窗功能表上 **，按一下 [** 設定] [編輯設定]  >  **Edit Configuration**以開啟目前的設定檔。
+    在 [stunnel 記錄] 視窗功能表上 **，按一下 [** 設定  >  **編輯**設定] 以開啟目前的設定檔。
 
     在 [Service definitions \(服務定義\)]**** 區段下加入 *redis-cli.exe* 的下列項目。 取代 `yourcachename`，插入您實際的快取名稱。 
 
@@ -61,7 +61,7 @@ ms.locfileid: "81010761"
 
     儲存並關閉設定檔。 
   
-    在 [stunnel 記錄檔] 功能表上 **，按一下 [** 設定] [  >  **重載**設定]。
+    在 [stunnel 記錄] 視窗功能表中 **，按一下 [** 設定  >  **重載**設定]。
 
 
 ## <a name="connect-using-the-redis-command-line-tool"></a>使用 Redis 命令列工具連線。
@@ -72,9 +72,9 @@ ms.locfileid: "81010761"
 redis-cli.exe -p 6380 -a YourAccessKey
 ```
 
-![搭配使用 stunnel 與 redis-cli](media/cache-how-to-redis-cli-tool/cache-redis-cli-stunnel.png)
+![顯示您的快取連接成功的螢幕擷取畫面。](media/cache-how-to-redis-cli-tool/cache-redis-cli-stunnel.png)
 
-如果您使用具有不**安全**之非 TLS 埠的測試快取，請執行 `redis-cli.exe` 並傳遞您的*主機名稱*、*埠*和*存取金鑰*（主要或次要）以連線至測試快取。
+如果您使用具有不 **安全** 之非 TLS 埠的測試快取，請執行 `redis-cli.exe` 並傳遞您的 *主機名稱*、 *埠*和 *存取金鑰* (主要或次要) ，以連接到測試快取。
 
 ```
 redis-cli.exe -h yourcachename.redis.cache.windows.net -p 6379 -a YourAccessKey

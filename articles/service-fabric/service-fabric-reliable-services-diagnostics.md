@@ -1,16 +1,14 @@
 ---
 title: Azure Service Fabric 具狀態 Reliable Services 診斷
 description: Azure Service Fabric 具狀態可靠服務診斷功能
-author: dkkapur
 ms.topic: conceptual
 ms.date: 8/24/2018
-ms.author: dekapur
-ms.openlocfilehash: 92fd8dbd1afbd2bdcabbaebbd5dc056d912ae118
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 5a3831dd4f8d5402980fac3daf8c35d9884c852d
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86253111"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91840756"
 ---
 # <a name="diagnostic-functionality-for-stateful-reliable-services"></a>具狀態 Reliable Services 診斷功能
 Azure Service Fabric 具狀態可靠服務 StatefulServiceBase 類別會發出 [EventSource](/dotnet/api/system.diagnostics.tracing.eventsource?view=netcore-3.1) 事件，可用於偵錯服務、提供執行階段運作情形的深入了解，以及協助疑難排解。
@@ -60,9 +58,9 @@ Windows 作業系統中預設可用的 [Windows 效能監視器](/previous-versi
 
 `ServiceFabricPartitionId:ServiceFabricReplicaId`
 
-*ServiceFabricPartitionId* 是與效能計數器執行個體相關聯 Service Fabric 資料分割識別碼的字串表示法。 資料分割識別碼是 GUID，其字串標記法是透過 [`Guid.ToString`](/dotnet/api/system.guid.tostring?view=netcore-3.1#System_Guid_ToString_System_String_) 與格式規範 "D" 所產生。
+*ServiceFabricPartitionId* 是與效能計數器執行個體相關聯 Service Fabric 資料分割識別碼的字串表示法。 資料分割識別碼是 GUID，其字串表示是透過 [`Guid.ToString`](/dotnet/api/system.guid.tostring?view=netcore-3.1#System_Guid_ToString_System_String_) 格式規範 "D" 產生。
 
-*ServiceFabricReplicaId* 是與某一可靠服務特定複本相關聯的識別碼。 複本識別碼包含在效能計數器實例名稱中，以確保其唯一性，並避免與相同分割區所產生的其他效能計數器實例發生衝突。 [這裡](service-fabric-concepts-replica-lifecycle.md)會詳細介紹複本以及它們在可靠服務中的角色。
+*ServiceFabricReplicaId* 是與某一可靠服務特定複本相關聯的識別碼。 複本識別碼包含在效能計數器實例名稱中，以確保其唯一性，並避免與相同資料分割所產生的其他效能計數器實例發生衝突。 [這裡](service-fabric-concepts-replica-lifecycle.md)會詳細介紹複本以及它們在可靠服務中的角色。
 
 下列的計數器執行個體名稱一般用於 `Service Fabric Transactional Replicator` 類別底下的計數器：
 
@@ -75,21 +73,21 @@ Windows 作業系統中預設可用的 [Windows 效能監視器](/previous-versi
 
 `ServiceFabricPartitionId:ServiceFabricReplicaId:StateProviderId_PerformanceCounterInstanceDifferentiator_StateProviderName`
 
-*ServiceFabricPartitionId* 是與效能計數器執行個體相關聯 Service Fabric 資料分割識別碼的字串表示法。 資料分割識別碼是 GUID，其字串標記法是透過 [`Guid.ToString`](/dotnet/api/system.guid.tostring?view=netcore-3.1#System_Guid_ToString_System_String_) 與格式規範 "D" 所產生。
+*ServiceFabricPartitionId* 是與效能計數器執行個體相關聯 Service Fabric 資料分割識別碼的字串表示法。 資料分割識別碼是 GUID，其字串表示是透過 [`Guid.ToString`](/dotnet/api/system.guid.tostring?view=netcore-3.1#System_Guid_ToString_System_String_) 格式規範 "D" 產生。
 
-*ServiceFabricReplicaId* 是與某一可靠服務特定複本相關聯的識別碼。 複本識別碼包含在效能計數器實例名稱中，以確保其唯一性，並避免與相同分割區所產生的其他效能計數器實例發生衝突。 [這裡](service-fabric-concepts-replica-lifecycle.md)會詳細介紹複本以及它們在可靠服務中的角色。
+*ServiceFabricReplicaId* 是與某一可靠服務特定複本相關聯的識別碼。 複本識別碼包含在效能計數器實例名稱中，以確保其唯一性，並避免與相同資料分割所產生的其他效能計數器實例發生衝突。 [這裡](service-fabric-concepts-replica-lifecycle.md)會詳細介紹複本以及它們在可靠服務中的角色。
 
-*StateProviderId*是與可靠服務內的狀態供應器相關聯的識別碼。 狀態提供者識別碼包含在效能計數器實例名稱中，以區別 TStore 與另一個。
+*StateProviderId* 是與可靠服務內的狀態提供者相關聯的識別碼。 狀態提供者識別碼會包含在效能計數器實例名稱中，以區分 TStore 與另一個。
 
 PerformanceCounterInstanceDifferentiator** 是區別識別碼，與狀態供應器內的效能計數器執行個體相關聯。 區分碼會包含在效能計數器執行個體名稱中，以確保其唯一性，並避免與相同狀態供應器所產生的其他效能計數器執行個體名稱發生衝突。
 
-*StateProviderName*是與可靠服務內的狀態供應器相關聯的名稱。 狀態提供者名稱會包含在效能計數器實例名稱中，以供使用者輕鬆地識別它所提供的狀態。
+*StateProviderName* 是與可靠服務內的狀態提供者相關聯的名稱。 狀態提供者名稱包含在效能計數器實例名稱中，讓使用者可以輕鬆地識別它所提供的狀態。
 
 下列的計數器執行個體名稱一般用於 `Service Fabric TStore` 類別底下的計數器：
 
 `00d0126d-3e36-4d68-98da-cc4f7195d85e:131652217797162571:142652217797162571_1337_urn:MyReliableDictionary/dataStore`
 
-在上述範例中，`00d0126d-3e36-4d68-98da-cc4f7195d85e` 是 Service Fabric 磁碟分割識別碼的字串代表、`131652217797162571` 是複本識別碼、`142652217797162571` 是狀態供應器識別碼，而 `1337` 是效能計數器執行個體區分碼。 `urn:MyReliableDictionary/dataStore`這是儲存名為之集合資料的狀態提供者名稱 `urn:MyReliableDictionary` 。
+在上述範例中，`00d0126d-3e36-4d68-98da-cc4f7195d85e` 是 Service Fabric 磁碟分割識別碼的字串代表、`131652217797162571` 是複本識別碼、`142652217797162571` 是狀態供應器識別碼，而 `1337` 是效能計數器執行個體區分碼。 `urn:MyReliableDictionary/dataStore` 這是儲存名為之集合資料的狀態提供者名稱 `urn:MyReliableDictionary` 。
 
 ### <a name="transactional-replicator-performance-counters"></a>異動複寫器效能計數器
 
@@ -99,9 +97,9 @@ Reliable Services 執行階段會發出 `Service Fabric Transactional Replicator
 | --- | --- |
 | Begin Txn Operations/sec | 每秒建立的新寫入異動數目。|
 | Txn Operations/sec | 每秒在可靠集合上所執行的新增/更新/刪除作業數目。|
-| 記錄檔排清位元組/秒 | 異動複寫器每秒排清到磁碟的位元組數 |
+| Log Flush Bytes/sec | 異動複寫器每秒排清到磁碟的位元組數 |
 | Throttled Operations/sec | 異動複寫器每秒因為節流而拒絕的作業數目。 |
-| 平均交易毫秒/認可 | 每一次異動的平均認可延遲 (毫秒) |
+| Avg. Transaction ms/Commit | 每一次異動的平均認可延遲 (毫秒) |
 | Avg. Flush 延遲 (ms)  | 異動複寫器起始的磁碟排清作業平均持續時間 (毫秒) |
 
 ### <a name="tstore-performance-counters"></a>TStore 效能計數器

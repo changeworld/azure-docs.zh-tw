@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: yegu
-ms.openlocfilehash: 6203c230f7ca27b1d4b48e9f56a7f46cd5a5ce78
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: f6ac02f0bcd9becf5dd1ffcd600f78b848b47cda
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91825325"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91839685"
 ---
 # <a name="how-to-set-up-geo-replication-for-azure-cache-for-redis"></a>如何設定 Azure Cache for Redis 的異地複寫
 
@@ -73,7 +73,7 @@ ms.locfileid: "91825325"
 
     您也可以在 [概觀]**** 刀鋒視窗上檢視主要和次要快取的連結狀態。
 
-    ![快取狀態](./media/cache-how-to-geo-replication/cache-geo-location-link-status.png)
+    ![醒目顯示如何查看主要和次要快取之連結狀態的螢幕擷取畫面。](./media/cache-how-to-geo-replication/cache-geo-location-link-status.png)
 
     一旦複寫程序完成之後，[連結狀態]**** 會變為 [成功]****。
 
@@ -190,7 +190,7 @@ ms.locfileid: "91825325"
 
 是，您可以使用異地複寫來設定 [防火牆](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-configure#firewall) 。 若要讓異地複寫與防火牆一起運作，請確定已將次要快取的 IP 位址新增至主要快取的防火牆規則。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 深入瞭解 Azure Cache for Redis 功能。
 

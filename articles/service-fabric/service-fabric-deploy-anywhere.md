@@ -1,17 +1,15 @@
 ---
 title: Azure 和獨立 Service Fabric 叢集的總覽
 description: 您可以在執行 Windows Server 或 Linux 的任何 VM 或電腦上建立 Service Fabric 叢集。 這表示在任何環境中，只要有一組互連式 Windows Server 或 Linux 電腦，不論是在內部部署、Microsoft Azure 或透過任何雲端提供者，您都能夠部署和執行 Service Fabric 應用程式。
-author: dkkapur
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.author: dekapur
 ms.custom: sfrev
-ms.openlocfilehash: a3627effe10039ded5007f9dd060bf1865929040
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8313d75bb6398bbe614c6f56b494079548c99954
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75751153"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91842592"
 ---
 # <a name="comparing-azure-and-standalone-service-fabric-clusters-on-windows-server-and-linux"></a>比較 Windows Server 和 Linux 上的 Azure 和獨立 Service Fabric 叢集
 
@@ -28,7 +26,7 @@ Service Fabric 可讓您在執行 Windows Server 或 Linux 的任何 VM 或電�
 * **Service Fabric 叢集做為 Azure 資源** Service Fabric 叢集是 Azure 資源，因此可以像 Azure 中的其他資源進行模型化。
 * **與 Azure 基礎結構整合** Service Fabric 會協調作業系統的 Azure 基礎結構、網路和其他升級，以改善應用程式的可用性和可靠性。  
 * **診斷：** 在 Azure 上，我們提供與 Azure 診斷和 Azure 監視器記錄的整合。
-* **自動調整：** 對於 Azure 上的叢集，我們會提供虛擬機器調整集產生的內建自動調整功能。 在內部部署與其他雲端環境中，您必須建置您自己的自動調整規模功能，或使用 Service Fabric 針對調整叢集規模顯示的 API 來手動調整規模。
+* 自動調整 **：** 針對 Azure 上的叢集，我們會透過虛擬機器擴展集提供內建的自動調整功能。 在內部部署和其他雲端環境中，您必須建立自己的自動調整功能，或使用 Service Fabric 針對調整叢集所公開的 Api 來手動調整規模。
 
 ## <a name="benefits-of-standalone-clusters"></a>獨立叢集具備的優點
 
@@ -43,4 +41,4 @@ Service Fabric 可讓您在執行 Windows Server 或 Linux 的任何 VM 或電�
 
 * 請參閱 [Azure 上的 Service Fabric 叢集](service-fabric-azure-clusters-overview.md)概觀
 * 請參閱 [Service Fabric 獨立叢集](service-fabric-standalone-clusters-overview.md)概觀
-* 瞭解[Service Fabric 支援選項](service-fabric-support.md)
+* 瞭解 [Service Fabric 支援選項](service-fabric-support.md)

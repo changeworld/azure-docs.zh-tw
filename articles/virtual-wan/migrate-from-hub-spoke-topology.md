@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: cherylmc
-ms.openlocfilehash: e6078ffcaaf98702bf809dfeb435cdaa0f9b5701
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: e602905b461e370189cefed706ddc3a47e0199fe
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91777185"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91839634"
 ---
 # <a name="migrate-to-azure-virtual-wan"></a>移轉移至 Azure 虛擬 WAN
 
@@ -42,7 +42,7 @@ Contoso 是一家遍及歐洲和亞洲辦公室的全球財務組織。 他們�
 
 * 其中有些網站也會直接在 Azure 中使用 VPN 通道，以連線到裝載在雲端內的應用程式。
 
-## <a name="requirements"></a>規格需求
+## <a name="requirements"></a>需求
 
 分派給網路小組的任務是提供可支援 Contoso 移轉至雲端的全球網路模型，而且必須在成本、規模和效能方面進行最佳化。 總而言之，必須符合下列需求：
 
@@ -109,10 +109,6 @@ Azure 虛擬 WAN 也會提供遠端網站的網際網路連線能力。 透過�
 ### <a name="step-3-connect-remote-sites-expressroute-and-vpn-to-virtual-wan"></a>步驟3：將遠端網站 (ExpressRoute 和 VPN) 連線到虛擬 WAN
 
 將虛擬 WAN 中樞連線到現有的 ExpressRoute 線路，並透過網際網路將站對站 Vpn 設定為任何遠端分支。
-
-> [!NOTE]
-> ExpressRoute 線路必須升級為進階 SKU 類型，才能連線到虛擬 WAN 中樞。
->
 
 :::image type="content" source="./media/migrate-from-hub-spoke-topology/figure3.png" alt-text="中樞和輪輻":::
 **圖3：客戶管理的中樞和輪輻至虛擬 WAN 遷移**
@@ -190,7 +186,7 @@ Azure 虛擬 WAN 也會提供遠端網站的網際網路連線能力。 透過�
 
 流量的路由如下所示：
 
-* 歐洲 HQ 會透過 premium ExpressRoute 線路連線到西歐虛擬 WAN 中樞。
+* 歐洲 HQ 會透過 ExpressRoute 線路連線到西歐虛擬 WAN 中樞。
 
 * 虛擬 WAN 中樞對中樞全球連線能力，可讓您將流量傳輸到遠端區域中連線的 VNet。
 

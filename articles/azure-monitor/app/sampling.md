@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
-ms.openlocfilehash: bb6793bc1e3d5bb55426c1f344520ae19a22a9f9
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 151bc87bd5674a61b8652adfa70634318c405240
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549560"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91839600"
 ---
 # <a name="sampling-in-application-insights"></a>Application Insights 中的取樣
 
@@ -34,7 +34,7 @@ ms.locfileid: "88549560"
 |-|-|-|-|
 | ASP.NET | [是 (預設為開啟) ](#configuring-adaptive-sampling-for-aspnet-applications) | [是](#configuring-fixed-rate-sampling-for-aspnet-applications) | 只有在沒有其他取樣生效時 |
 | ASP.NET Core | [是 (預設為開啟) ](#configuring-adaptive-sampling-for-aspnet-core-applications) | [是](#configuring-fixed-rate-sampling-for-aspnet-core-applications) | 只有在沒有其他取樣生效時 |
-| Azure Functions | [是 (預設為開啟) ](#configuring-adaptive-sampling-for-azure-functions) | No | 只有在沒有其他取樣生效時 |
+| Azure Functions | [是 (預設為開啟) ](#configuring-adaptive-sampling-for-azure-functions) | 否 | 只有在沒有其他取樣生效時 |
 | Java | 否 | [是](#configuring-fixed-rate-sampling-for-java-applications) | 只有在沒有其他取樣生效時 |
 | Node.JS | 否 | [是](./nodejs.md#sampling) | 只有在沒有其他取樣生效時
 | Python | 否 | [是](#configuring-fixed-rate-sampling-for-opencensus-python-applications) | 只有在沒有其他取樣生效時 |
@@ -295,9 +295,9 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, Telemetr
 
         var builder = configuration.DefaultTelemetrySink.TelemetryProcessorChainBuilder;
         // For older versions of the Application Insights SDK, use the following line instead:
-        // var builder = TelemetryConfiguration.Active.TelemetryProcessorChainBuilder;
+        // var builder = configuration.TelemetryProcessorChainBuilder;
 
-        // Using fixed rate sampling   
+        // Using fixed rate sampling
         double fixedSamplingPercentage = 10;
         builder.UseSampling(fixedSamplingPercentage);
 
@@ -482,7 +482,7 @@ handler = AzureLogHandler(
 
 如果欲使用其他形式取樣但條件不適用，建議使用適應型取樣。 在 ASP.NET/ASP.NET Core SDK 中，預設會啟用此設定。 它不會減少流量，直到達到特定的最小速率為止，因此可能完全不會取樣低用途的網站。
 
-## <a name="knowing-whether-sampling-is-in-operation"></a>瞭解取樣是否正在運作
+## <a name="knowing-whether-sampling-is-in-operation"></a>了解是否正常取樣
 
 若要找出實際的取樣率 (不論是否已套用)，請使用如下所示的 [分析查詢](../log-query/log-query-overview.md) ︰
 
@@ -531,7 +531,7 @@ union requests,dependencies,pageViews,browserTimings,exceptions,traces
 
 *遙測是否可以進行一次以上的取樣？*
 
-* 否。 如果已取樣專案，SamplingTelemetryProcessors 會忽略取樣考慮的專案。 內嵌取樣也是如此，這也不會將取樣套用至已在 SDK 本身取樣的專案。
+* 不可以。 如果已取樣專案，SamplingTelemetryProcessors 會忽略取樣考慮的專案。 內嵌取樣也是如此，這也不會將取樣套用至已在 SDK 本身取樣的專案。
 
 *為什麼不取樣簡單的「收集每個遙測類型百分之 X」？*
 
@@ -586,7 +586,7 @@ union requests,dependencies,pageViews,browserTimings,exceptions,traces
 
 在2.5.0 之前的 ASP.NET SDK Beta2，以及 ASP.NET Core SDK 的 v 2.2.0-Beta3 之前，取樣決策是根據定義 "user" (的應用程式使用者識別碼的雜湊，也就是最常見的 web 應用程式) 。 針對未定義使用者 (例如 web 服務的應用程式類型) 取樣決策是根據要求的作業識別碼。 ASP.NET 和 ASP.NET Core Sdk 的最新版本會使用運算識別碼進行取樣決策。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [篩選](./api-filtering-sampling.md) 可以對您的 SDK 所傳送的內容，提供更嚴格的控制。
 * 閱讀開發人員網路文章， [利用 Application Insights 將遙測優化](/archive/msdn-magazine/2017/may/devops-optimize-telemetry-with-application-insights)。

@@ -5,24 +5,24 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 03/12/2020
+ms.date: 10/07/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 4ea97e2dbee87f7ab129c4295276c9024c0212c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e40f421c0fa45d772cd333dac51fe2bdf2779f48
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80117073"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91829068"
 ---
-Windows 10 VPN 用戶端 Always On 的新功能，就是維護 VPN 連線的能力。 使用 Always On 時，作用中的 VPN 設定檔可以根據觸發程式自動連線並保持連接狀態，例如使用者登入、網路狀態變更或裝置螢幕作用中。
+Always On Windows 10 VPN 用戶端的新功能，就是維護 VPN 連線的能力。 使用 Always On，使用中的 VPN 設定檔可以自動連線，並根據觸發程式（例如使用者登入、網路狀態變更或裝置螢幕使用中）保持線上狀態。
 
-您可以使用具有 Windows 10 Always On 的閘道，為 Azure 建立持續的使用者通道和裝置通道。 本文可協助您設定 Always On VPN 使用者通道。
+您可以使用閘道搭配 Windows 10 Always On，為 Azure 建立持續性的使用者通道和裝置通道。
 
-Always On VPN 連線包含兩種通道類型之一：
+Always On VPN 連線包含兩種通道類型的其中一種：
 
-* **裝置**通道：在使用者登入裝置之前，會連線到指定的 VPN 伺服器。 登入前的連線案例和裝置管理使用裝置通道。
+* **裝置**通道：在使用者登入裝置之前，連接到指定的 VPN 伺服器。 預先登入連線案例和裝置管理會使用裝置通道。
 
-* **使用者**通道：只有在使用者登入裝置之後，才會連線。 藉由使用使用者通道，您可以透過 VPN 伺服器存取組織資源。
+* **使用者**通道：只有在使用者登入裝置之後才會連線。 藉由使用使用者通道，您可以透過 VPN 伺服器存取組織資源。
 
-裝置通道和使用者通道的運作與它們的 VPN 設定檔無關。 它們可以同時連接，而且可以適當地使用不同的驗證方法和其他 VPN 設定。
+裝置通道和使用者通道的運作與它們的 VPN 設定檔無關。 它們可以同時連線，而且可以適當地使用不同的驗證方法和其他 VPN 設定。

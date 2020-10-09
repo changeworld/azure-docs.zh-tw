@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: how-to
-ms.date: 06/05/2020
+ms.date: 10/07/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 291afbdd902c7563e47595132d56b354dab28a3a
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 71c786aaecd3ab2f18f242cea2f5c45838f9ecf3
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88950386"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91839342"
 ---
 # <a name="azure-active-directory-identity-protection-notifications"></a>Azure Active Directory Identity Protection 通知
 
@@ -44,8 +44,8 @@ Azure AD Identity Protection 傳送兩種類型的自動通知電子郵件，協
 如果您是系統管理員，您可以設定：
 
 - **觸發這封電子郵件產生的使用者風險層** 級-依預設，風險層級會設定為「高」風險。
-- **此電子郵件的收件者** - 收件者預設包含所有「全域管理員」。 「全域管理員」也可以新增其他「全域管理員」、「安全性管理員」、「安全性讀取者」作為收件者。
-   - （選擇性）您可以 **新增其他電子郵件來接收警示通知** 這項功能是預覽版，而定義的使用者必須具有適當的許可權，才能在 Azure 入口網站中查看連結的報表。
+- **此電子郵件** 的收件者（全域管理員、安全性系統管理員或安全性讀取者角色中的使用者）會自動新增到此清單中。 我們嘗試將電子郵件傳送給每個角色的前20名成員。 如果使用者在 PIM 中註冊為依需求提升為這些角色的其中之一，則 **只有在電子郵件傳送時提高許可權時，才會收到電子**郵件。
+   - （選擇性）您可以在 **這裡新增自訂電子郵件** ，使用者必須具備適當的許可權，才能在 Azure 入口網站中查看連結的報表。
 
 在 [安全性身分**Azure portal** **Azure Active Directory**  >  **Security**  >  **識別保護**  >  **使用者有風險**偵測的警示] Azure Active Directory 下的 Azure 入口網站中，設定具有風險的使用者電子郵件。
 
@@ -60,7 +60,7 @@ Azure AD Identity Protection 傳送兩種類型的自動通知電子郵件，協
 
 ![每週精選文章電子郵件](./media/howto-identity-protection-configure-notifications/weekly-digest-email.png)
 
-依預設，收件者會包含所有全域管理員。 「全域管理員」也可以新增其他「全域管理員」、「安全性管理員」、「安全性讀取者」作為收件者。
+全域管理員、安全性系統管理員或安全性讀取者角色中的使用者會自動新增到此清單中。 我們嘗試將電子郵件傳送給每個角色的前20名成員。 如果使用者在 PIM 中註冊為依需求提升為這些角色的其中之一，則 **只有在電子郵件傳送時提高許可權時，才會收到電子郵件**
 
 ### <a name="configure-weekly-digest-email"></a>設定每週摘要電子郵件
 
@@ -68,6 +68,6 @@ Azure AD Identity Protection 傳送兩種類型的自動通知電子郵件，協
 
 在 [ **Azure 入口網站** **Azure Active Directory**  >  **安全性**身分  >  **識別保護**的  >  **每週摘要**] 下，設定中的每週摘要電子郵件。
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 
 - [Azure Active Directory Identity Protection](./overview-identity-protection.md)

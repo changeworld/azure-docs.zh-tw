@@ -3,19 +3,19 @@ title: 常見問題-Apache Kafka 的 Azure 事件中樞
 description: 本文將針對未涵蓋于其他地方的 Apache Kafka 用戶端支援，回答有關 Azure 事件中樞的常見問題。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 1ca54bf314d795b88b727ddb648f3e1e74133fd3
-ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
+ms.openlocfilehash: dc6a12b2098a1fdf33adda92b4347f91ab4e5489
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90061456"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91828113"
 ---
 # <a name="frequently-asked-questions---event-hubs-for-apache-kafka"></a>常見問題-Apache Kafka 的事件中樞 
 本文提供有關遷移至適用于 Apache Kafka 的事件中樞常見問題的解答。
 
 ## <a name="does-azure-event-hubs-run-on-apache-kafka"></a>Azure 事件中樞在 Apache Kafka 上執行嗎？
 
-不會。 Azure 事件中樞是雲端原生的多層式代理程式，其支援由 Microsoft 開發及維護的多個通訊協定，且不會使用任何 Apache Kafka 程式碼。 其中一個支援的通訊協定是 Kafka 用戶端消費者和生產者 Api 的 Kafka RPC 通訊協定。 事件中樞適用于許多現有的 Kafka 應用程式。 如需詳細資訊，請參閱 [適用于 Apache Kafka 的事件中樞](event-hubs-for-kafka-ecosystem-overview.md)。 由於 Apache Kafka 和 Azure 事件中樞的概念非常類似 (但) 不同，因此我們可以為具有現有 Apache Kafka 投資的客戶提供無可匹敵的 Azure 事件中樞可靠性。 
+否。 Azure 事件中樞是雲端原生的多層式代理程式，其支援由 Microsoft 開發及維護的多個通訊協定，且不會使用任何 Apache Kafka 程式碼。 其中一個支援的通訊協定是 Kafka 用戶端消費者和生產者 Api 的 Kafka RPC 通訊協定。 事件中樞適用于許多現有的 Kafka 應用程式。 如需詳細資訊，請參閱 [適用于 Apache Kafka 的事件中樞](event-hubs-for-kafka-ecosystem-overview.md)。 由於 Apache Kafka 和 Azure 事件中樞的概念非常類似 (但) 不同，因此我們可以為具有現有 Apache Kafka 投資的客戶提供無可匹敵的 Azure 事件中樞可靠性。 
 
 ## <a name="event-hubs-consumer-group-vs-kafka-consumer-group"></a>事件中樞取用者群組與 Kafka 取用者群組
 事件中樞取用者群組和事件中樞上的 Kafka 取用者群組之間有何差異？ 事件中樞上的 Kafka 取用者群組與標準事件中樞取用者群組完全不同。
@@ -35,7 +35,7 @@ ms.locfileid: "90061456"
 - 它們與事件中樞取用者群組完全不同。 您 **不** 需要使用 ' $Default '，也不需要擔心 KAFKA 干擾 AMQP 工作負載的用戶端。
 - 它們無法在 Azure 入口網站中看到。 取用者群組資訊可透過 Kafka Api 來存取。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 若要深入了解事件中樞和適用於 Kafka 的事件中樞，請參閱下列文章：  
 
 - [適用于事件中樞的 Apache Kafka 開發人員指南](apache-kafka-developer-guide.md)

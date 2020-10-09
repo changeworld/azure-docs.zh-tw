@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 6e8e6feb064a5d26eb6cb72b521d3f9df0380086
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: fc62c87fd12457c60d3eb26cba6814aa1df76f87
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91360101"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91839209"
 ---
 # <a name="send-custom-commands-activity-to-client-application"></a>將自訂命令活動傳送至用戶端應用程式
 
@@ -26,7 +26,7 @@ ms.locfileid: "91360101"
 - 從自訂命令應用程式定義和傳送自訂 JSON 承載
 - 從 c # UWP 語音 SDK 用戶端應用程式接收和視覺化自訂 JSON 承載內容
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 > [!div class = "checklist"]
 > * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) 或更高版本。 本指南使用 Visual Studio 2019
 > * 適用於語音服務的 Azure 訂用帳戶金鑰：[免費取得一個金鑰](overview.md#try-the-speech-service-for-free)或 [Azure 入口網站](https://portal.azure.com)上建立金要
@@ -154,7 +154,7 @@ connector.ActivityReceived += async (sender, activityReceivedEventArgs) =>
 1. 說出 `turn on the tv`
 1. 電視的視覺狀態應變更為「開啟」
    > [!div class="mx-imgBorder"]
-   > ![傳送活動裝載](media/custom-commands/send-activity-to-client-turn-on-tv.png)
+   > ![顯示 T V 的視覺狀態現在是開啟的螢幕擷取畫面。](media/custom-commands/send-activity-to-client-turn-on-tv.png)
 
 ## <a name="next-steps"></a>後續步驟
 

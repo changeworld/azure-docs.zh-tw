@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
-ms.openlocfilehash: 1fb05b52bbe3e8f544b17537ef9070e5b2b0b77b
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.openlocfilehash: 81a65c088fd83ce179f67edd1ecdb96149dd1614
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91460164"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91840246"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>如何設定 Azure Redis 快取
 本主題說明您「Azure Redis 快取」執行個體可用的設定。 本主題也涵蓋適用於「Azure Redis 快取」執行個體的預設 Redis 伺服器設定。
@@ -37,7 +37,7 @@ ms.locfileid: "91460164"
 * [診斷和解決問題](#diagnose-and-solve-problems)
 * [設定](#settings)
     * [便捷鍵](#access-keys)
-    * [進階設定](#advanced-settings)
+    * [Advanced 設定](#advanced-settings)
     * [Azure Redis 快取建議程式](#azure-cache-for-redis-advisor)
     * [調整](#scale)
     * [叢集大小](#cluster-size)
@@ -49,7 +49,7 @@ ms.locfileid: "91460164"
     * [屬性](#properties)
     * [鎖定](#locks)
     * [自動化指令碼](#automation-script)
-* 系統管理
+* 管理
     * [匯入資料](#importexport)
     * [匯出資料](#importexport)
     * [重新啟動](#reboot)
@@ -89,7 +89,7 @@ ms.locfileid: "91460164"
 [設定]**** 區段中的設定可讓您存取和設定下列快取設定。
 
 * [便捷鍵](#access-keys)
-* [進階設定](#advanced-settings)
+* [Advanced 設定](#advanced-settings)
 * [Azure Redis 快取建議程式](#azure-cache-for-redis-advisor)
 * [調整](#scale)
 * [叢集大小](#cluster-size)
@@ -169,11 +169,11 @@ Redis Keyspace 通知是在 [進階設定] **** 刀鋒視窗上進行設定。 K
 ## <a name="azure-cache-for-redis-advisor"></a>Azure Redis 快取建議程式
 [Azure Redis 快取建議程式]**** 刀鋒視窗會顯示適用於快取的建議。 在一般作業期間，不會顯示任何建議。
 
-![建議](./media/cache-configure/redis-cache-no-recommendations.png)
+![顯示建議顯示位置的螢幕擷取畫面。](./media/cache-configure/redis-cache-no-recommendations.png)
 
 如果在快取作業期間發生任何狀況 (例如高記憶體使用量、網路頻寬或伺服器負載)，[Azure Redis 快取] **** 刀鋒視窗上就會顯示警示。
 
-![建議](./media/cache-configure/redis-cache-recommendations-alert.png)
+![顯示 Azure Cache for Redis 區段中顯示警示的螢幕擷取畫面。](./media/cache-configure/redis-cache-recommendations-alert.png)
 
 您可以在 [建議] **** 刀鋒視窗中找到進一步資訊。
 
@@ -288,7 +288,7 @@ Redis Keyspace 通知是在 [進階設定] **** 刀鋒視窗上進行設定。 K
 ## <a name="administration-settings"></a>管理設定
 [管理]**** 區段中的設定可讓您針對快取執行下列管理工作。
 
-![系統管理](./media/cache-configure/redis-cache-administration.png)
+![管理](./media/cache-configure/redis-cache-administration.png)
 
 * [匯入資料](#importexport)
 * [匯出資料](#importexport)
@@ -307,14 +307,14 @@ Redis Keyspace 通知是在 [進階設定] **** 刀鋒視窗上進行設定。 K
 >
 >
 
-### <a name="reboot"></a>重新開機
+### <a name="reboot"></a>重新啟動
 [重新啟動]**** 刀鋒視窗可讓您重新啟動快取的節點。 這個重新啟動的能力可讓您測試應用程式在快取節點失敗時的恢復功能。
 
-![重新開機](./media/cache-configure/redis-cache-reboot.png)
+![重新啟動](./media/cache-configure/redis-cache-reboot.png)
 
 如果您的進階快取已啟用叢集，您可以選取要重新啟動的快取分區。
 
-![重新開機](./media/cache-configure/redis-cache-reboot-cluster.png)
+![顯示要在哪裡選取要重新開機之快取分區的螢幕擷取畫面。](./media/cache-configure/redis-cache-reboot-cluster.png)
 
 若要重新啟動快取的一或多個節點，選取所需的節點，然後按一下 [重新啟動] ****。 如果您的進階快取已啟用叢集，選取要重新啟動的分區，然後按一下 [重新啟動] ****。 稍候幾分鐘之後，選取的節點會重新啟動，並在幾分鐘之後重新上線。
 
@@ -474,11 +474,11 @@ Redis Keyspace 通知是在 [進階設定] **** 刀鋒視窗上進行設定。 K
 
 若要存取 [Redis 主控台]，請從 [Azure Redis 快取]**** 刀鋒視窗按一下 [主控台]****。
 
-![Redis 主控台](./media/cache-configure/redis-console-menu.png)
+![醒目顯示主控台按鈕的螢幕擷取畫面。](./media/cache-configure/redis-console-menu.png)
 
 若要對快取執行個體發出命令，請在主控台中輸入想要的命令。
 
-![Redis 主控台](./media/cache-configure/redis-console.png)
+![螢幕擷取畫面 thas 顯示具有輸入命令和結果的 Redis 主控台。](./media/cache-configure/redis-console.png)
 
 
 ### <a name="using-the-redis-console-with-a-premium-clustered-cache"></a>使用 Redis 主控台搭配進階叢集快取
