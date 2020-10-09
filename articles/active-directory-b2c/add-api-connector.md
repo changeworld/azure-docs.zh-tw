@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.custom: it-pro
-ms.openlocfilehash: 824b8f386e6bf822444450305e603e6068a34c5e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 092246da4c01aa826fd4425e5a778d567b75d9d6
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91854353"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91828354"
 ---
 # <a name="add-an-api-connector-to-a-sign-up-user-flow"></a>將 API 連接器新增至註冊使用者流程
 
@@ -70,7 +70,7 @@ Content-type: application/json
 }
 ```
 
-只有**Azure AD B2C**使用者屬性體驗中列出的使用者屬性和自訂屬性才  >  **User attributes**可在要求中傳送。
+只有**Azure Active Directory**  >  **外部**身分識別  >  **自訂使用者屬性**體驗中列出的使用者屬性和自訂屬性，才可在要求中傳送。
 
 自訂屬性存在於目錄中 **extension_ \<extensions-app-id> _CustomAttribute**  格式。 您的 API 預期會以相同的序列化格式接收宣告。 如需自訂屬性的詳細資訊，請參閱 [在 Azure Active Directory B2C 中定義自訂屬性](user-flow-custom-attributes.md)。
 
@@ -294,7 +294,7 @@ Content-type: application/json
 ## <a name="best-practices-and-how-to-troubleshoot"></a>最佳做法及如何進行疑難排解
 
 ### <a name="using-serverless-cloud-functions"></a>使用無伺服器雲端函數
-無伺服器函式（例如 Azure Functions 中的 HTTP 觸發程式）提供簡單的方式來建立 API 端點，以搭配 API 連接器使用。 [例如](code-samples.md#api-connectors)，您可以使用無伺服器雲端函式來執行驗證邏輯，並限制特定電子郵件網域的註冊。 無伺服器雲端函式也可以針對更複雜的案例，呼叫並叫用其他 web Api、使用者存放區及其他雲端服務。
+無伺服器函式（例如 Azure Functions 中的 HTTP 觸發程式）提供簡單的方式來建立 API 端點，以搭配 API 連接器使用。 例如，您可以使用無伺服器雲端函式來執行驗證邏輯，並限制特定網域的註冊。 無伺服器雲端函式也可以針對更複雜的案例，呼叫並叫用其他 web Api、使用者存放區及其他雲端服務。
 
 ### <a name="best-practices"></a>最佳作法
 請確定：
@@ -314,4 +314,4 @@ Content-type: application/json
 
 ## <a name="next-steps"></a>後續步驟
 <!-- - Learn how to [add a custom approval workflow to sign-up](add-approvals.md) -->
-- 開始使用我們的 [Azure 函數快速入門範例](code-samples.md#api-connectors)。
+<!-- - Get started with our [Azure Function quickstart samples](code-samples-self-service-sign-up.md#api-connector-azure-function-quickstarts). -->
