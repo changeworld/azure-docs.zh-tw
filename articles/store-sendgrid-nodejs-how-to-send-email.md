@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 01/05/2016
 ms.author: erikre
 ms.openlocfilehash: f2d653441598a47986913d525057672eed24b435
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "60931699"
 ---
 # <a name="how-to-send-email-using-sendgrid-from-nodejs"></a>如何使用 SendGrid 透過 Node.js 傳送電子郵件
 
-本指南示範如何在 Azure 上透過 SendGrid 電子郵件服務執行常見程式設計工作。 這些範例使用 Node.js API 撰寫。 涵蓋的案例包括**建構電子郵件**、**傳送電子郵件**、**新增附件**、**使用篩選器**及**更新屬性**。 如需有關 SendGrid 及傳送電子郵件的詳細資訊，請參閱[後續步驟](#next-steps)一節。
+本指南示範如何在 Azure 上透過 SendGrid 電子郵件服務執行常見程式設計工作。 這些範例使用 Node.js API 撰寫。 涵蓋的案例包括**建構電子郵件**、**傳送電子郵件**、**新增附件**、**使用篩選器**及**更新屬性**。 如需有關 SendGrid 及傳送電子郵件的詳細資訊，請參閱 [後續步驟](#next-steps) 一節。
 
 ## <a name="what-is-the-sendgrid-email-service"></a>什麼是 SendGrid 電子郵件服務？
 
@@ -80,7 +80,7 @@ html: This is a sample <b>HTML<b> email message.
 
 同時設定 text 和 html 屬性可以為無法支援 HTML 訊息的用戶端提供正常的文字內容遞補。
 
-如需電子郵件功能所支援之所有屬性的詳細資訊，請參閱[sendgrid-nodejs][sendgrid-nodejs]。
+如需有關電子郵件功能所支援之所有屬性的詳細資訊，請參閱 [sendgrid-nodejs][sendgrid-nodejs]。
 
 ## <a name="how-to-send-an-email"></a>如何：傳送電子郵件
 
@@ -188,7 +188,7 @@ sendgrid.send(email);
 
 ## <a name="how-to-update-email-properties"></a>如何：更新電子郵件屬性
 
-某些電子郵件屬性可以使用**setProperty**來覆寫，或使用**addProperty**來附加。 例如，您可以使用下列方式新增其他收件者：
+某些電子郵件屬性可使用 **setProperty** 覆寫，或使用 **addProperty**來附加。 例如，您可以使用下列方式新增其他收件者：
 
 ```javascript
 email.addTo('jeff@contoso.com');
@@ -213,7 +213,7 @@ SendGrid 提供的網頁式 API 可供從 Azure 應用程式運用其他 SendGri
 
 * SendGrid Node.js 模組存放機制：[sendgrid-nodejs][sendgrid-nodejs]
 * SendGrid API 文件：<https://sendgrid.com/docs>
-* 適用于 Azure 客戶的 SendGrid 特別供應專案：[http://sendgrid.com/azure.html](https://sendgrid.com/windowsazure.html)
+* 適用于 Azure 客戶的 SendGrid 特別供應專案： [http://sendgrid.com/azure.html](https://sendgrid.com/windowsazure.html)
 
 [special offer]: https://sendgrid.com/windowsazure.html
 [sendgrid-nodejs]: https://github.com/sendgrid/sendgrid-nodejs

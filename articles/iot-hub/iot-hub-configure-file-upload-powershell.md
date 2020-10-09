@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: robinsh
 ms.openlocfilehash: c8fc0393e0961b46fbb8031d735f27e9ad785031
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "60318436"
 ---
 # <a name="configure-iot-hub-file-uploads-using-powershell"></a>使用 PowerShell 設定 IoT 中樞檔案上傳
@@ -29,7 +29,7 @@ ms.locfileid: "60318436"
 
 * [Azure PowerShell Cmdlet](https://docs.microsoft.com/powershell/azure/install-Az-ps)。
 
-* Azure IoT 中樞。 如果您沒有 IoT 中樞，您可以使用[AzIoTHub Cmdlet](https://docs.microsoft.com/powershell/module/az.iothub/new-aziothub)來建立一個，或使用入口網站來[建立 iot 中樞](iot-hub-create-through-portal.md)。
+* Azure IoT 中樞。 如果您沒有 IoT 中樞，您可以使用 [AzIoTHub Cmdlet](https://docs.microsoft.com/powershell/module/az.iothub/new-aziothub) 建立一個，或使用入口網站來 [建立 iot 中樞](iot-hub-create-through-portal.md)。
 
 * 一個 Azure 儲存體帳戶。 如果您沒有 Azure 儲存體帳戶，您可以使用 [Azure 儲存體 PowerShell Cmdlet](https://docs.microsoft.com/powershell/module/az.storage/) 來建立一個，或使用入口網站來[建立儲存體帳戶](../storage/common/storage-create-storage-account.md)。
 
@@ -37,7 +37,7 @@ ms.locfileid: "60318436"
 
 登入您的 Azure 帳戶並選取您的訂用帳戶。
 
-1. 在 PowerShell 命令提示字元中，執行**disconnect-azaccount** Cmdlet：
+1. 在 PowerShell 提示字元中，執行 **disconnect-azaccount** Cmdlet：
 
     ```powershell
     Connect-AzAccount

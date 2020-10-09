@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 08/06/2018
 ms.topic: conceptual
 ms.openlocfilehash: 9d5d572c3e32e3645e65ba8d6fc28b567b3c1e9a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "65827251"
 ---
 # <a name="configure-access-controls-for-the-time-series-insights-telemetry-explorer"></a>設定時間序列深入解析遙測總管的存取控制
@@ -39,8 +39,8 @@ ms.locfileid: "65827251"
     ![管理 Time Series Insights 來源 - 新增](media/iot-accelerators-remote-monitoring-rbac-tsi/getstarted-grant-data-access2.png)
 
 6. 選取 [選取角色]****。 為使用者選擇適當的存取角色：
-   - 如果您想要允許使用者變更參考資料，並與其他環境使用者共用已儲存的查詢和觀點，請選取 [**參與者**]。 
-   - 否則，請選取 [**讀取器**] 以允許環境中的使用者查詢資料，並在環境中儲存個人（非共用）查詢。
+   - 如果您想要允許使用者變更參考資料，並與其他環境使用者共用已儲存的查詢和觀點，請選取 [ **參與者** ]。 
+   - 否則，請選取 [ **讀取** 者]，以允許使用者在環境中查詢資料，並將個人 (不會在環境中共用) 查詢。
 
      選取 **[確定]** 以確認角色選擇。
 

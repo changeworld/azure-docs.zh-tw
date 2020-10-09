@@ -131,7 +131,7 @@
       href: management.md
     - name: 作業安全性
       items:
-        - name: 概觀
+        - name: 總覽
           href: operational-overview.md
         - name: 最佳作法
           href: operational-best-practices.md

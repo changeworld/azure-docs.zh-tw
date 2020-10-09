@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 056d0caf2bfc6e99d5d659a2561bc41844feb79a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "64918782"
 ---
 # <a name="plan-for-enhancing-data-security-through-a-strong-identity-solution"></a>透過強式識別解決方案規劃更高的資料安全性
@@ -72,7 +72,7 @@ ms.locfileid: "64918782"
   * 如果是，混合式身分識別解決方案是否能夠與 SSL/TLS 之類的安全控制項整合？
 * 雲端身分識別管理是否可確保進入和存在於目錄的流量 (在資料中心之中和之間) 進行簽署？
 
-## <a name="compliance"></a>合規性
+## <a name="compliance"></a>法規遵循
 規定、法律及法規遵循需求會隨著貴公司所屬的產業而有所不同。 受到嚴格規範的公司，必須處理與法規遵循有關的身分識別管理問題。 諸如沙賓法案 (SOX)、健康保險流通與責任法案 (HIPAA)、美國金融服務法案 (GLBA) 和支付卡產業資料安全標準 (PCI DSS) 等法規，在身分識別和存取方面都有嚴格的規定。 您的公司所將採用的混合式身分識別解決方案，必須具有核心功能可因應這些法規的一或多項需求。 針對這個層面，請確實回答下列問題：
 
 * 混合式身分識別解決方案是否符合貴公司的法規需求？
@@ -80,7 +80,7 @@ ms.locfileid: "64918782"
 * 功能，可讓貴公司符合法規遵循需求？ 
 
 > [!NOTE]
-> 請確定會記下每個答案，並了解答案背後的原理。 [定義資料保護策略](plan-hybrid-identity-design-considerations-data-protection-strategy.md)將會超越可用的選項，以及每個選項的優缺點。  回答這些問題之後，您就能選取最適合業務需求的選項。
+> 請確定會記下每個答案，並了解答案背後的原理。 [定義資料保護策略](plan-hybrid-identity-design-considerations-data-protection-strategy.md) 將會超越可用選項以及每個選項的優點/缺點。  回答這些問題之後，您就能選取最適合業務需求的選項。
 > 
 > 
 

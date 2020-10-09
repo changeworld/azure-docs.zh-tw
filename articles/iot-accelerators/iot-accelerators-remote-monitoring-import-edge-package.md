@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 10/10/2018
 ms.topic: conceptual
 ms.openlocfilehash: 34222f396ed3c43932371aa9f64a459bb2a5dd0e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "61442856"
 ---
 # <a name="import-an-iot-edge-package-into-your-remote-monitoring-solution-accelerator"></a>在遠端監視解決方案加速器中匯入 IoT Edge 套件
@@ -33,7 +33,7 @@ ms.locfileid: "61442856"
 
 1. 按一下具有您想使用之部署組態的部署。 [部署詳細資料]**** 頁面會顯示：![IoT Edge 部署詳細資料](media/iot-accelerators-remote-monitoring-import-edge-package/deploymentdetails.png)
 
-1. 按一下 [**下載 IoT Edge 資訊清單**： ![ 下載部署資訊清單](media/iot-accelerators-remote-monitoring-import-edge-package/download.png)
+1. 按一下 [ **下載] IoT Edge 資訊清單**：  ![ 下載部署資訊清單](media/iot-accelerators-remote-monitoring-import-edge-package/download.png)
 
 1. 將 JSON 檔案儲存為稱為 **deploymentmanifest.json** 的本機檔案。
 

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: dobett
 ms.openlocfilehash: 87f6b9cef50e4b8c388be835b2aa7bed8177ac4b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "61447421"
 ---
 # <a name="use-the-azureiotsolutionscom-site-to-deploy-your-solution-accelerator"></a>使用 AzureIoTSolutions.com 網站部署解決方案加速器
@@ -26,9 +26,9 @@ ms.locfileid: "61447421"
 
 您可以在下列設定中部署解決方案加速器：
 
-* **標準**：用於開發生產環境的擴充基礎結構部署。 Azure Container Service 會將微服務部署到多個 Azure 虛擬機器。 Kubernetes 會協調裝載個別微服務的 Docker 容器。
-* **基本**：用於示範或測試部署的縮減成本版本。 所有微服務都將部署到單一 Azure 虛擬機器。
-* **本機**：用於測試和開發的本機電腦部署。 這種方法會將微服務部署到本機 Docker 容器，並連線到 IoT 中樞、Azure Cosmos DB，以及雲端中的 Azure 儲存體服務。
+* **標準**：用於開發生產環境的擴展基礎結構部署。 Azure Container Service 會將微服務部署到多個 Azure 虛擬機器。 Kubernetes 會協調裝載個別微服務的 Docker 容器。
+* **基本**：適用于示範或測試部署的成本較低版本。 所有微服務都將部署到單一 Azure 虛擬機器。
+* **Local**：用於測試和開發的本機電腦部署。 這種方法會將微服務部署到本機 Docker 容器，並連線到 IoT 中樞、Azure Cosmos DB，以及雲端中的 Azure 儲存體服務。
 
 每個解決方案加速器都會使用不同的 Azure 服務 (例如 IoT 中樞、Azure 串流分析及 Cosmos DB) 組合。 如需詳細資訊，請瀏覽 [AzureIoTSolutions.com](https://www.azureiotsolutions.com/Accelerators) 並選取解決方案加速器。
 
@@ -38,7 +38,7 @@ ms.locfileid: "61447421"
 
 您用以部署解決方案加速器、管理使用者及管理 Azure 服務的權限，取決於您在所選取目錄中的角色。 與解決方案加速器相關聯的常見 Azure AD 角色包括：
 
-* **全域管理員**：每個 Azure AD 租使用者可以有許多[全域管理員](../active-directory/users-groups-roles/directory-assign-admin-roles.md)：
+* **全域管理員**：每個 Azure AD 租使用者可以有許多 [全域管理員](../active-directory/users-groups-roles/directory-assign-admin-roles.md) ：
 
   * 當您建立 Azure AD 租用戶時，您預設會是該租用戶的全域管理員。
   * 全域管理員可以部署基本和標準的解決方案加速器。
@@ -67,6 +67,6 @@ AzureIoTSolutions.com 網站會連結至 [Azure IoT 認證裝置目錄](https://
 若要試用其中一個 IoT 解決方案加速器，請參閱快速入門：
 
 * [試用遠端監視解決方案](quickstart-remote-monitoring-deploy.md)
-* [試用連線的處理站解決方案](quickstart-connected-factory-deploy.md)
+* [試用連線工廠解決方案](quickstart-connected-factory-deploy.md)
 * [試用預測性維護解決方案](quickstart-predictive-maintenance-deploy.md)
 * [試用裝置模擬解決方案](quickstart-device-simulation-deploy.md)

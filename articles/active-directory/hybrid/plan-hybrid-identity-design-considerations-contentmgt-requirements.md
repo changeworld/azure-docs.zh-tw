@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0d970fd133f8c43319e7f1fdb6b3a50c3c05f687
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "64918449"
 ---
 # <a name="determine-content-management-requirements-for-your-hybrid-identity-solution"></a>判斷混合式身分識別解決方案的內容管理需求
@@ -60,7 +60,7 @@ ms.locfileid: "64918449"
 * 貴公司需要強制執行有關特定電子郵件類型的公司原則 (不要全部回覆、不要轉寄) 嗎？
 
 > [!NOTE]
-> 請確定會記下每個答案，並了解答案背後的原理。 [定義資料保護策略](plan-hybrid-identity-design-considerations-data-protection-strategy.md)將會超越可用的選項，以及每個選項的優缺點。  回答這些問題之後，您就能選取最適合業務需求的選項。
+> 請確定會記下每個答案，並了解答案背後的原理。 [定義資料保護策略](plan-hybrid-identity-design-considerations-data-protection-strategy.md) 將會超越可用選項以及每個選項的優點/缺點。  回答這些問題之後，您就能選取最適合業務需求的選項。
 > 
 > 
 
