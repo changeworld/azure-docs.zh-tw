@@ -7,10 +7,10 @@ metadata:
   description: 了解如何使用 Azure 容器服務來管理和開發以雲端為基礎的容器應用程式。
   ms.topic: hub-page
   ms.openlocfilehash: a7b1480061a1482e5a7980fd89d9d28d89561d31
-  ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 08/11/2020
+  ms.lasthandoff: 10/09/2020
   ms.locfileid: "88080842"
 highlightedContent:
   items:
