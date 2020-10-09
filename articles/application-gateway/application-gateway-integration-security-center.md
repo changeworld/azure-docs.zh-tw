@@ -10,17 +10,17 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 06/07/2017
 ms.openlocfilehash: f5ecd2334ca80f5561c0611239b5bb00d222112a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76277196"
 ---
 # <a name="overview-of-integration-between-application-gateway-and-azure-security-center"></a>應用程式閘道與 Azure 資訊安全中心整合概觀
 
 了解如何使用應用程式閘道和資訊安全中心如何保護您的 Web 應用程式資源。 應用程式閘道 Web 應用程式防火牆 (WAF) 與[資訊安全中心](../security-center/security-center-intro.md)整合可提供無落差的檢視，以防止、偵測及回應環境中針對未受保護 Web 應用程式的威脅。
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 建議在資訊安全中心使用應用程式閘道 WAF，以保護 Web 應用程式議抵禦入侵和弱點。 已啟用 Web 的資源若沒有受到 WAF 的保護，資訊安全中心會建議它是高嚴重性。 使用 Web 應用程式防火牆的建議會出現在 [概觀]**** 頁面的 [應用程式]**** 底下。
 
@@ -30,7 +30,7 @@ ms.locfileid: "76277196"
 
 ## <a name="add-a-web-application-firewall-to-an-existing-resource"></a>將 Web 應用程式防火牆新增至現有資源
 
-流覽至 [**所有服務**] [  >  **安全性 + 身分識別]**  >  **資訊安全中心**，然後在資訊安全中心] **-[****應用程式**] 上按一下。 在 [資訊安全中心 - 應用程式]**** 中，資料表包含資訊安全中心在您的訂用帳戶中偵測到的應用程式清單。
+流覽至 [**所有服務**  >  **安全性 + 身分識別資訊**  >  **安全中心**] 和 **[資訊安全中心-總覽**]，按一下 [**應用程式**]。 在 [資訊安全中心 - 應用程式]**** 中，資料表包含資訊安全中心在您的訂用帳戶中偵測到的應用程式清單。
 
 ![Web 應用程式][3]
 
@@ -50,7 +50,7 @@ ms.locfileid: "76277196"
 
 ## <a name="add-a-resource-to-an-existing-web-application-firewall"></a>將資源新增至現有 Web 應用程式防火牆
 
-流覽至 [**所有服務**] [  >  **安全性 + 身分識別**]  >  **資訊安全中心**，然後在**資訊安全中心-總覽**上，按一下 [**合作夥伴解決方案**]。 在 [合作夥伴解決方案]**** 頁面中會顯示現有的資訊安全中心感知應用程式閘道。
+流覽至 [**所有服務**  >  **安全性 + 身分識別資訊**  >  **安全中心**]，然後在 **[資訊安全中心**] 上，按一下 [**合作夥伴解決方案**]。 在 [合作夥伴解決方案]**** 頁面中會顯示現有的資訊安全中心感知應用程式閘道。
 
 ![合作夥伴解決方案][7]
 
@@ -66,7 +66,7 @@ ms.locfileid: "76277196"
 
 ## <a name="security-alerts"></a>安全性警示
 
-在資訊安全中心中，流覽至 [**偵測**] [  >  **安全性警示**]。  在這裡可以找到您的應用程式閘道的 WAF 警示。 警示是依 WAF 規則細分。
+在 [安全性中心] 中，流覽至 [**偵測**  >  **安全性警示**]。  在這裡可以找到您的應用程式閘道的 WAF 警示。 警示是依 WAF 規則細分。
 
 ![安全性警示][8]
 

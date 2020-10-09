@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 2ab3b089ce65c9f27457fd1cfb360d6776ed6244
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67174168"
 ---
 #### <a name="to-add-or-modify-a-storsimple-backup-schedule"></a>若要加入或修改 StorSimple 備份排程
@@ -19,7 +19,7 @@ ms.locfileid: "67174168"
 
     ![管理排程](./media/storsimple-8000-add-modify-backup-schedule-u2/addschedule1.png)
 
-3. 在 [新增排程]**** 刀鋒視窗中，修改快照集類型、備份頻率、保留期，以及開始日期和時間。 按一下 **[新增]** 。
+3. 在 [新增排程]**** 刀鋒視窗中，修改快照集類型、備份頻率、保留期，以及開始日期和時間。 按一下 [新增] 。
 
     ![管理排程](./media/storsimple-8000-add-modify-backup-schedule-u2/addschedule5.png)
 

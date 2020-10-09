@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 10/29/2018
 ms.author: terrylan
 ms.openlocfilehash: 496ee1bc97f6b72e09a62ae3491af7ccc7328583
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80811095"
 ---
 # <a name="azure-network-security-overview"></a>Azure 網路安全性概觀
@@ -46,7 +46,7 @@ Azure 需要虛擬機器連線至 Azure 虛擬網路。 虛擬網路是建置於
 
 深入了解：
 
-* [虛擬網路總覽](../../virtual-network/virtual-networks-overview.md)
+* [虛擬網路概觀](../../virtual-network/virtual-networks-overview.md)
 
 ## <a name="network-access-control"></a>網路存取控制
 
@@ -128,11 +128,11 @@ Azure 網路支援在虛擬網路上自訂網路流量路由行為的能力。 �
 * 應用程式存取控制
 * 額外的 DDoS 保護 (高於由 Azure 網狀架構本身所提供的 DDoS 保護)
 
-您可以使用 Azure 合作夥伴方案，來存取這些增強的網路安全性功能。 您可以造訪[Azure Marketplace](https://azure.microsoft.com/marketplace/)，並搜尋「安全性」和「網路安全性」，來尋找最新的 Azure 合作夥伴網路安全性解決方案。
+您可以使用 Azure 合作夥伴方案，來存取這些增強的網路安全性功能。 您可以造訪 [Azure Marketplace](https://azure.microsoft.com/marketplace/)，並搜尋「安全性」和「網路安全性」，來尋找最新的 Azure 合作夥伴網路安全性解決方案。
 
 ## <a name="azure-firewall"></a>Azure 防火牆
 
-Azure 防火牆是受控、雲端式網路安全性服務，可以保護您的 Azure 虛擬網路資源。 它是完全具狀態防火牆即服務，具有內建的高可用性和不受限制的雲端延展性。 部分功能包括：
+Azure 防火牆是受控、雲端式網路安全性服務，可以保護您的 Azure 虛擬網路資源。 它是完全具狀態的防火牆即服務，具有內建的高可用性和不受限制的雲端延展性。 部分功能包括：
 
 * 高可用性
 * 雲端延展性
@@ -158,9 +158,9 @@ Azure 網路支援下列安全遠端存取案例︰
 
 您可能想要讓個別的開發人員或操作人員在 Azure 中管理虛擬機器和服務。 例如，假設您需要存取虛擬網路上的虛擬機器。 但您的安全性原則不允許以 RDP 或 SSH 方式遠端存取個別虛擬機器。 在此情況下，您可以使用[點對站 VPN](../../vpn-gateway/point-to-site-about.md) 連線。
 
-點對站 VPN 連線可讓您在使用者與虛擬網路之間設定私人的安全連線。 建立 VPN 連線時，使用者可以透過 VPN 連結以 RDP 或 SSH 方式連線到虛擬網路上的任何虛擬機器 （這會假設使用者可以驗證並獲得授權）。點對站 VPN 支援：
+點對站 VPN 連線可讓您在使用者與虛擬網路之間設定私人的安全連線。 建立 VPN 連線時，使用者可以透過 VPN 連結以 RDP 或 SSH 方式連線到虛擬網路上的任何虛擬機器  (這會假設使用者可以驗證並獲得授權。 ) 點對站 VPN 支援：
 
-* 安全通訊端通道通訊協定 (SSTP)，這是以 SSL 為基礎的專屬 VPN 通訊協定。 SSL VPN 解決方案可以滲透防火牆，因為大部分的防火牆都會開啟 TLS/SSL 所使用的 TCP 埠443。 SSTP 僅在 Microsoft 裝置上提供支援。 Azure 支援所有具有 SSTP (Windows 7 及更新版本) 的 Windows 版本。
+* 安全通訊端通道通訊協定 (SSTP)，這是以 SSL 為基礎的專屬 VPN 通訊協定。 SSL VPN 解決方案可以滲透防火牆，因為大部分的防火牆都會開啟 TCP 通訊埠443（TLS/SSL 會使用此埠）。 SSTP 僅在 Microsoft 裝置上提供支援。 Azure 支援所有具有 SSTP (Windows 7 及更新版本) 的 Windows 版本。
 
 * IKEv2 VPN，標準型 IPsec VPN 解決方案。 IKEv2 VPN 可用於從 Mac 裝置連線 (OSX 版本 10.11 和更新版本)。
 
@@ -202,7 +202,7 @@ Azure 網路支援下列安全遠端存取案例︰
 
 有一個選項是透過網際網路「繞回」，以將某個虛擬網路上的服務連線到另一個虛擬網路上的服務。 連線會從某個虛擬網路開始、經過網際網路，然後回到目的地虛擬網路。 這個選項會讓連線暴露在任何網際網路型通訊的固有安全性問題之中。
 
-建立在兩個虛擬網路之間連線的站對站 VPN 可能是更好的選項。 這個方法會使用與上面所述的跨單位站對站 VPN 連線相同的[IPSec 通道模式](https://technet.microsoft.com/library/cc786385.aspx)通訊協定。
+建立在兩個虛擬網路之間連線的站對站 VPN 可能是更好的選項。 這個方法會使用與上述的跨單位站對站 VPN 連線相同的 [IPSec 通道模式](https://technet.microsoft.com/library/cc786385.aspx) 通訊協定。
 
 這個方法的優點在於 VPN 連線是透過 Azure 網路網狀架構所建立的，而不是透過網際網路連線。 相較於透過網際網路連線的站對站 VPN，這會提供多一層的安全性。
 
@@ -232,7 +232,7 @@ Azure 網路支援下列安全遠端存取案例︰
 Azure 應用程式閘道會針對您的 Web 架構服務提供以 HTTP 為基礎的負載平衡。 應用程式閘道支援：
 
 * 以 Cookie 為基礎的工作階段同質性。 這個功能可確定建立到負載平衡器後方其中一部伺服器的連線，在用戶端與伺服器之間會保持不變。 這樣可確保交易的穩定性。
-* TLS 卸載。 當用戶端與負載平衡器連線時，會使用 HTTPS （TLS）通訊協定來加密該會話。 不過，為了提高效能，您可以使用 HTTP (未加密) 通訊協定，在負載平衡器與負載平衡器後方的 Web 伺服器之間進行連線。 這稱為「TLS 卸載」，因為負載平衡器後方的 web 伺服器不會遇到與加密相關的處理器負荷。 因此，Web 伺服器應該可以更快速地為要求提供服務。
+* TLS 卸載。 當用戶端與負載平衡器連線時，該會話會使用 HTTPS (TLS) 通訊協定進行加密。 不過，為了提高效能，您可以使用 HTTP (未加密) 通訊協定，在負載平衡器與負載平衡器後方的 Web 伺服器之間進行連線。 這稱為「TLS 卸載」，因為負載平衡器後方的 web 伺服器不會遇到與加密相關的處理器負荷。 因此，Web 伺服器應該可以更快速地為要求提供服務。
 * 以 URL 為基礎的內容路由。 這個功能讓負載平衡器可以根據目標 URL 來決定要在何處轉送連線。 這所提供的彈性大於根據 IP 位址進行負載平衡決策的方案。
 
 深入了解：
@@ -283,7 +283,7 @@ Azure 應用程式閘道會針對您的 Web 架構服務提供以 HTTP 為基礎
 
 深入了解：
 
-* [虛擬網路總覽](../../virtual-network/virtual-networks-overview.md)
+* [虛擬網路概觀](../../virtual-network/virtual-networks-overview.md)
 * [管理虛擬網路所使用的 DNS 伺服器](../../virtual-network/manage-virtual-network.md#change-dns-servers)
 
 針對外部名稱解析，您有兩個選項：
@@ -322,10 +322,10 @@ Microsoft 提供在 Azure 平台中名為**基本**的 DDoS 保護。 此功能�
 * **永遠可用流量監視：** 您的應用程式流量模式受到全年無休的全天候監視，以尋找 DDoS 攻擊的指標。 超出保護原則時，就會執行安全防護功能。
 * **攻擊風險降低報**攻擊風險降低報告會使用彙總的網路流量資料，提供有關以您資源為目標的攻擊詳細資訊。
 * **攻擊風險降低流程記錄**攻擊風險降低流程記錄可讓您在作用中 DDoS 攻擊期間，近乎即時地查看丟棄的流量、轉送的流量及其他相關攻擊資料。
-* **調適型微調：** 智慧型流量分析會在一段時間內學習您的應用程式流量，並選取及更新最適合您服務的設定檔。 設定檔會隨著時間調整流量變更。 第 3 層至第 7 層保護：搭配 Web 應用程式防火牆使用時，可提供完整的堆疊 DDoS 保護。
+* **適應性調整：** 智慧型流量分析可在一段時間內學習您的應用程式流量，並選取及更新最適合您服務的設定檔。 設定檔會隨著時間調整流量變更。 第 3 層至第 7 層保護：搭配 Web 應用程式防火牆使用時，可提供完整的堆疊 DDoS 保護。
 * **廣泛的安全防護範圍：** 可利用全域功能降低超過 60 種不同攻擊類型的風險，以抵禦最大的已知 DDoS 攻擊。
 * **攻擊計量：** 透過 Azure 監視器可以存取每個攻擊的摘要計量。
-* **攻擊警示：** 警示可以在開始和停止攻擊時設定，並在攻擊的持續時間內使用內建攻擊計量。 警示會整合到您的作業軟體，例如 Microsoft Azure 監視器記錄、Splunk、Azure 儲存體、電子郵件和 Azure 入口網站。
+* **攻擊警示：** 您可以使用內建攻擊計量，在開始和停止攻擊時設定警示，並在攻擊的持續時間內設定警示。 警示會整合到您的操作軟體，例如 Microsoft Azure 監視器記錄、Splunk、Azure 儲存體、電子郵件和 Azure 入口網站。
 * **成本保證：** 資料傳輸和應用程式相應放大服務會針對記載的 DDoS 攻擊計算點數。
 * **DDoS 快速回應**標準 DDoS 保護的客戶現在可以在攻擊進行期間，連絡 Rapid Response 小組。 DRR 可協助您在攻擊發生期間調查攻擊和自訂移轉，以及進行攻擊後的分析。
 
@@ -336,7 +336,7 @@ Microsoft 提供在 Azure 平台中名為**基本**的 DDoS 保護。 此功能�
 
 ## <a name="azure-front-door"></a>Azure Front Door
 
-Azure Front Door 服務可讓您定義、管理及監視您 Web 流量的全域路由。 這可最佳化您的流量路由，以達到最佳效能和高可用性。 Azure Front Door 可讓您撰寫自訂 Web 應用程式防火牆 (WAF) 規則進行存取控制，以保護您的 HTTP/HTTPS 工作負載，免於遭受以用戶端 IP 位址、國家/地區代碼及 http 參數為基礎的攻擊。 此外，Front 門也可以讓您建立速率限制規則，以將惡意的 bot 流量放在一起，包括 TLS 卸載和每個 HTTP/HTTPS 要求、應用層處理。
+Azure Front Door 服務可讓您定義、管理及監視您 Web 流量的全域路由。 這可最佳化您的流量路由，以達到最佳效能和高可用性。 Azure Front Door 可讓您撰寫自訂 Web 應用程式防火牆 (WAF) 規則進行存取控制，以保護您的 HTTP/HTTPS 工作負載，免於遭受以用戶端 IP 位址、國家/地區代碼及 http 參數為基礎的攻擊。 此外，Front Door 也可讓您建立速率限制規則來讓惡意聊天機器人流量更有説明，包括 TLS 卸載和每個 HTTP/HTTPS 要求、應用層處理。
 
 Front Door 平台本身受到基本 Azure DDoS 保護所保護。 如需進一步保護，可在您的 VNET 啟用標準 Azure DDoS 保護，以透過自動調整和風險降低，保護資源免於遭受網路層 (TCP/UDP) 攻擊。 Front Door 是第 7 層反向 Proxy，只允許 Web 流量傳遞到後端伺服器，且預設會封鎖其他類型的流量。
 
@@ -367,7 +367,7 @@ Azure 網路監看員可協助您進行疑難排解，並提供一組全新的�
 如需網路監看員以及如何開始在實驗室中測試部分功能的詳細資訊，請參閱 [Azure 網路監看員監視概觀](../../network-watcher/network-watcher-monitoring-overview.md)。
 
 > [!NOTE]
-> 如需有關此服務可用性和狀態的最新通知，請查看[Azure 更新頁面](https://azure.microsoft.com/updates/?product=network-watcher)。
+> 如需此服務可用性和狀態的最新通知，請查看 [ [Azure 更新] 頁面](https://azure.microsoft.com/updates/?product=network-watcher)。
 
 ### <a name="azure-security-center"></a>Azure 資訊安全中心
 
@@ -402,4 +402,4 @@ Azure 虛擬網路 TAP (終端機存取點) 可讓您持續將虛擬機器網路
 您也可以使用 [Microsoft Power BI](https://powerbi.microsoft.com/what-is-power-bi/) (功能強大的資料視覺化工具) 來檢視和分析這些記錄。
 深入了解：
 
-* [網路安全性群組（Nsg）的 Azure 監視器記錄](../../virtual-network/virtual-network-nsg-manage-log.md)
+* [Azure 監視器 (Nsg 的網路安全性群組記錄) ](../../virtual-network/virtual-network-nsg-manage-log.md)

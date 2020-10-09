@@ -12,19 +12,19 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 7224a7bb26ef491915df9fcb9b6b84ff171a9fc0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76720515"
 ---
 # <a name="customer-acceptance-stage-of-the-team-data-science-process-lifecycle"></a>Team Data Science Process 生命週期的客戶接受度階段
 
 本文將概要說明與 Team Data Science Process (TDSP) 客戶接受度階段相關聯的目標、工作和交付項目。 此流程會提供建議的生命週期，供您建構資料科學專案。 生命週期可描繪出專案一般執行時 (通常會反覆進行) 的主要階段：
 
-   1. **了解商務**
-   2. **資料取得與認知**
-   3. **模型**
+   1. **商務理解**
+   2. **資料取得和瞭解**
+   3. **模型化**
    4. **部署**
    5. **客戶接受度**
 
@@ -34,7 +34,7 @@ ms.locfileid: "76720515"
 
 
 ## <a name="goal"></a>目標
-**完成專案交付專案**：確認在生產環境中的管線、模型及其部署滿足客戶的目標。
+**完成專案交付專案**：確認管線、模型及其在生產環境中的部署都符合客戶的目標。
 
 ## <a name="how-to-do-it"></a>如何執行此動作
 此階段會解決兩項主要工作︰
@@ -53,11 +53,11 @@ ms.locfileid: "76720515"
 以下是 TDSP 生命週期中每個步驟的連結：
 
    1. [了解商務](lifecycle-business-understanding.md)
-   2. [資料取得與認知](lifecycle-data.md)
-   3. [模型](lifecycle-modeling.md)
+   2. [資料取得和瞭解](lifecycle-data.md)
+   3. [模型化](lifecycle-modeling.md)
    4. [部署](lifecycle-deployment.md)
    5. [客戶接受度](lifecycle-acceptance.md)
 
-我們會提供完整的逐步解說，以示範特定案例之程式中的所有步驟。 [範例逐步解說](walkthroughs.md)一文提供有連結和縮圖描述的案例清單。 這些逐步解說示範如何將雲端、內部部署工具與服務組合成工作流程或管線，以建立智慧型應用程式。 
+我們會提供完整的逐步解說，示範適用于特定案例的程式中的所有步驟。 [範例逐步解說](walkthroughs.md)一文提供有連結和縮圖描述的案例清單。 這些逐步解說示範如何將雲端、內部部署工具與服務組合成工作流程或管線，以建立智慧型應用程式。 
 
 如需如何在使用 Azure Machine Learning Studio 的 TDSP 中執行步驟的範例，請參閱[配合使用 Team Data Science Process 與 Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)。

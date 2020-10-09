@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: a3ccf76b2722c04a9353fcc7020ff1387bc454c6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67174182"
 ---
 #### <a name="to-install-an-update-from-the-azure-portal"></a>從 Azure 入口網站安裝更新
@@ -17,7 +17,7 @@ ms.locfileid: "67174182"
 
     ![選取裝置](./media/storsimple-8000-install-update4-via-portal/update1.png)
 
-2. 流覽至 [**裝置設定**] [  >  **裝置更新**]。
+2. 流覽至**裝置設定**  >  **裝置更新**。
 
     ![按一下 [裝置更新]](./media/storsimple-8000-install-update4-via-portal/update2.png)
 

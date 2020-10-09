@@ -1,7 +1,7 @@
 ---
 title: 常見問題-常見問題
 titleSuffix: Microsoft Genomics
-description: 取得與使用 Microsoft Genomics 服務相關常見問題的解答，包括技術資訊、SLA 和計費。
+description: 取得使用 Microsoft Genomics 服務的相關常見問題的解答，包括技術資訊、SLA 和帳單。
 services: genomics
 author: grhuynh
 manager: cgronlun
@@ -10,22 +10,22 @@ ms.service: genomics
 ms.topic: troubleshooting
 ms.date: 12/07/2017
 ms.openlocfilehash: e8806bc4f761214e6740a22093b7e18030fdf881
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76986031"
 ---
 # <a name="microsoft-genomics-common-questions"></a>Microsoft Genomics：常見問題
 
-本文會列出關於 Microsoft Genomics 的最常見疑問。 如需 Microsoft Genomics 服務的詳細資訊，請參閱[什麼是 Microsoft Genomics？](overview-what-is-genomics.md)。 如需有關疑難排解的詳細資訊，請參閱[疑難排解指南](troubleshooting-guide-genomics.md)。 
+本文會列出關於 Microsoft Genomics 的最常見疑問。 如需有關 Microsoft Genomics 服務的詳細資訊，請參閱 [什麼是 Microsoft Genomics？](overview-what-is-genomics.md)。 如需有關疑難排解的詳細資訊，請參閱[疑難排解指南](troubleshooting-guide-genomics.md)。 
 
 
 ## <a name="how-do-i-run-gatk4-workflows-on-microsoft-genomics"></a>如何? 在 Microsoft Genomics 上執行 GATK4 工作流程？
-在 Microsoft Genomics 服務的 config.txt 檔案中，指定的 process_name `gatk4` 。 請注意，您將以一般計費費率計費。
+在 Microsoft Genomics 服務的 config.txt 檔案中，指定 process_name `gatk4` 。 請注意，您將以一般計費費率計費。
 
 ## <a name="how-do-i-enable-output-compression"></a>如何? 啟用輸出壓縮？
-您可以使用選擇性引數來壓縮輸出的工作或 gvcf，以進行輸出壓縮。 這相當於在 `-bgzip` `-tabix` [.vcf] 或 [gvcf] 輸出上執行之後的，以產生 `.gz` （bgzip 輸出）和 `.tbi` （tabix 輸出）檔案。 `bgzip`壓縮 .vcf 或 gvcf 檔案，並 `tabix` 建立壓縮檔案的索引。 引數是布林值，預設會針對 .vcf 輸出設定為，預設為 `false` `true` gcvf 輸出。 若要在命令列上使用，請將 `-bz` 或指定 `--bgzip-output` 為 `true` （執行 bgzip 和 tabix）或 `false` 。 若要在 config.txt 檔案中使用此引數，請將 `bgzip_output: true` 或新增 `bgzip_output: false` 至檔案。
+您可以使用輸出壓縮的選擇性引數，壓縮輸出的 .vcf 或 gvcf。 這相當於 `-bgzip` `-tabix` 在 .vcf 或 gvcf 輸出上執行，然後再執行，以產生 `.gz` (bgzip 輸出) 和 `.tbi` (tabix 輸出) 檔。 `bgzip` 壓縮 .vcf 或 gvcf 檔，並 `tabix` 建立壓縮檔案的索引。 引數是布林值，預設會針對 .vcf 輸出設定為，預設為 `false` `true` gcvf 輸出。 若要在命令列上使用，請將 `-bz` 或 `--bgzip-output` 指定為 `true` (執行 bgzip 和 tabix) 或 `false`。 若要在 config.txt 檔案中使用這個引數，請將 `bgzip_output: true` 或新增 `bgzip_output: false` 至檔案。
 
 ## <a name="what-is-the-sla-for-microsoft-genomics"></a>什麼是適用於 Microsoft Genomics 的 SLA？
 我們保證 99.9% 的時間 Microsoft Genomics 服務都可用於接收工作流程 API 要求。 如需詳細資訊，請參閱 [SLA](https://azure.microsoft.com/support/legal/sla/genomics/v1_0/)。
@@ -44,8 +44,8 @@ Microsoft Genomics 是根據每個工作流程所處理的 Gb 數來計費。 �
  |:--------------------|:-------------         |
  |`list`               |傳回您已提交的工作清單。 如需引數，請參閱 `msgen help list`。  |
  |`submit`             |將工作流程要求提交至服務。 如需引數，請參閱 `msgen help submit`。|
- |`status`             |傳回 `--workflow-id` 所指定的工作流程狀態。 另請參閱 `msgen help status`。 |
- |`cancel`             |傳送要求以取消 `--workflow-id` 所指定的工作流程處理。 另請參閱 `msgen help cancel`。 |
+ |`status`             |傳回 `--workflow-id` 所指定的工作流程狀態。 請參閱 `msgen help status`。 |
+ |`cancel`             |傳送要求以取消 `--workflow-id` 所指定的工作流程處理。 請參閱 `msgen help cancel`。 |
 
 ## <a name="where-do-i-get-the-value-for---api-url-base"></a>哪裡可取得 `--api-url-base` 的值？
 移至 Azure 入口網站，然後開啟您的 Genomics 帳戶頁面。 在 [管理]**** 標題之下，選擇 [存取金鑰]****。 您可以看到 API URL 以及存取金鑰。
@@ -88,5 +88,5 @@ msgen 了解以下列格式的組態檔：
 
 使用下列資源來開始使用 Microsoft Genomics：
 - 透過 Microsoft Genomics 服務開始執行您的第一個工作流程。 [透過 Microsoft Genomics 服務執行工作流程](quickstart-run-genomics-workflow-portal.md)
-- 提交您自己的資料以供 Microsoft Genomics 服務處理：[配對的 FASTQ](quickstart-input-pair-FASTQ.md)  |  [BAM](quickstart-input-BAM.md)  |  [多個 FASTQ 或 bam](quickstart-input-multiple.md) 
+- 提交您自己的資料以供 Microsoft Genomics service：[成對的 FASTQ](quickstart-input-pair-FASTQ.md)  |  [BAM](quickstart-input-BAM.md)  |  [多重 FASTQ 或 bam](quickstart-input-multiple.md)進行處理 
 

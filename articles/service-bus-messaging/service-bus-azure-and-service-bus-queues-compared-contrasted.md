@@ -4,10 +4,10 @@ description: 分析 Azure 所提供之兩種佇列類型之間的差異和相似
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: a64000741de68518dd459b105a093ccf4cb6ab7b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85337643"
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>儲存體佇列和服務匯流排佇列 - 異同比較
@@ -59,10 +59,10 @@ Azure 支援兩種佇列機制：**儲存體佇列**和**服務匯流排佇列**
 | 比較準則 | 儲存體佇列 | 服務匯流排佇列 |
 | --- | --- | --- |
 | 排序保證 |**否** <br/><br>如需詳細資訊，請參閱＜其他資訊＞一節的第一個注意事項。</br> |**是 - 先進先出 (FIFO)**<br/><br>(透過使用訊息工作階段) |
-| 傳遞保證 |**至少一次** |至少**一次**（使用 PeekLock 接收模式-這是預設值） <br/><br/>**最多一次**（使用 ReceiveAndDelete 接收模式） <br/> <br/> 深入瞭解各種[接收模式](service-bus-queues-topics-subscriptions.md#receive-modes)  |
+| 傳遞保證 |**至少一次** |使用 PeekLock 接收模式至少**一次** (-這是預設值)  <br/><br/>使用 >receiveanddelete 接收模式的**最多一次** ()  <br/> <br/> 深入瞭解各種 [接收模式](service-bus-queues-topics-subscriptions.md#receive-modes)  |
 | 不可部分完成作業支援 |**否** |**是**<br/><br/> |
 | 接收行為 |**非封鎖**<br/><br/>(如果找不到新的訊息，便立即完成) |**含/不含逾時的封鎖**<br/><br/>(提供長期輪詢，或稱為 [Comet 技術](https://go.microsoft.com/fwlink/?LinkId=613759))<br/><br/>**非封鎖**<br/><br/>(僅限透過使用 .NET 受控 API) |
-| 推送型 API |**否** |**是**<br/><br/>[QueueClient. OnMessage](/dotnet/api/microsoft.servicebus.messaging.queueclient.onmessage#Microsoft_ServiceBus_Messaging_QueueClient_OnMessage_System_Action_Microsoft_ServiceBus_Messaging_BrokeredMessage__)和[MessageSessionHandler ONMESSAGE](/dotnet/api/microsoft.servicebus.messaging.messagesessionhandler.onmessage#Microsoft_ServiceBus_Messaging_MessageSessionHandler_OnMessage_Microsoft_ServiceBus_Messaging_MessageSession_Microsoft_ServiceBus_Messaging_BrokeredMessage__)會話 .net API。 |
+| 推送型 API |**否** |**是**<br/><br/>[QueueClient. >onmessage](/dotnet/api/microsoft.servicebus.messaging.queueclient.onmessage#Microsoft_ServiceBus_Messaging_QueueClient_OnMessage_System_Action_Microsoft_ServiceBus_Messaging_BrokeredMessage__) and [MessageSessionHandler. >ONMESSAGE](/dotnet/api/microsoft.servicebus.messaging.messagesessionhandler.onmessage#Microsoft_ServiceBus_Messaging_MessageSessionHandler_OnMessage_Microsoft_ServiceBus_Messaging_MessageSession_Microsoft_ServiceBus_Messaging_BrokeredMessage__) 話 .net API。 |
 | 接收模式 |**查看與租用** |**查看與鎖定**<br/><br/>**接收與刪除** |
 | 獨佔存取模式 |**以租用為基礎** |**以鎖定為基礎** |
 | 租用/鎖定持續時間 |**30 秒 (預設值)**<br/><br/>**7 天 (上限)** (您可以使用 [UpdateMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.updatemessage) API 更新或釋放訊息租用。) |**60 秒 (預設值)**<br/><br/>您可以使用 [RenewLock](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.renewlock#Microsoft_ServiceBus_Messaging_BrokeredMessage_RenewLock) API 更新訊息鎖定。 |
@@ -74,7 +74,7 @@ Azure 支援兩種佇列機制：**儲存體佇列**和**服務匯流排佇列**
 * 儲存體佇列中的訊息通常是先進先出，但有時也不按順序；舉例來說，訊息的可視性逾時期限到期時 (例如，由於處理期間用戶端應用程式損毀所致)。 當可視性逾時到期時，訊息會再次出現在佇列上，以便其他工作者清除佇列中的訊息。 此時，佇列中可能放入新出現的訊息 (等待再次從佇列中清除)，而且是最初在它之後才加入佇列的訊息後面。
 * 服務匯流排佇列中的保證 FIFO 模式需要使用訊息工作階段。 如果應用程式在處理以「查看與鎖定」**** 模式所接收的訊息時損毀，下一次佇列接收者接受訊息工作階段時，將會在存留時間 (TTL) 期限到期之後，從失敗的訊息開始處理。
 * 儲存體佇列是設計來支援標準佇列案例，例如使應用程式元件脫鉤以增加延展性及容錯能力、進行負載調節，以及建置處理工作流程。
-* 使用會話狀態來儲存應用程式狀態的相對於處理會話訊息順序的進度，以及使用交易來處理已接收的訊息和更新會話狀態，可避免不一致的服務匯流排會話內容中的訊息處理。 這種一致性功能有時會在其他廠商的產品中標示為*一次處理*，但交易失敗顯然會導致訊息重新傳遞，因此該詞彙不會完全符合。
+* 使用會話狀態來儲存應用程式的狀態（相對於處理會話的訊息序列的進度），以及使用有關已取得的已接收訊息和更新會話狀態的交易，可避免與服務匯流排會話內容中的訊息處理有關的不一致。 這種一致性功能有時在其他廠商的產品中只會標示為 *一次* ，但交易失敗顯然會導致訊息重新傳遞，因此該詞彙並不完全足夠。
 * 儲存體佇列提供跨佇列、資料表和 BLOB 之統一且一致的程式設計模型，適合開發人員和營運團隊使用。
 * 服務匯流排佇列支援在單一佇列內容中進行本機交易。
 * 服務匯流排所支援的「接收與刪除」**** 模式可讓您降低訊息作業計數 (以及關聯的成本)，但是也會降低傳遞保證。
@@ -114,18 +114,18 @@ Azure 支援兩種佇列機制：**儲存體佇列**和**服務匯流排佇列**
 * 為了在儲存體佇列中找出「有害」訊息，應用程式會在清除佇列中的訊息時，檢查訊息的 [DequeueCount](/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage.dequeuecount) 屬性。 如果 **DequeueCount** 大於給定的臨界值，應用程式就會將訊息移至應用程式定義的「無效信件」佇列。
 * 儲存體佇列可讓您取得針對佇列執行之所有交易的詳細記錄，以及彙總的計量資料。 這兩個選項有助於偵錯和了解應用程式的儲存體佇列使用狀況。 也有助於對您的應用程式進行效能微調，以及降低使用佇列的成本。
 * 服務匯流排所支援之「訊息工作階段」的概念可讓屬於特定邏輯群組的訊息與給定的接收者產生關聯，進而在訊息與其個別的接收者之間建立類似工作階段的密切關係。 您可以設定訊息上的 [SessionID](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sessionid#Microsoft_ServiceBus_Messaging_BrokeredMessage_SessionId) 屬性，以在服務匯流排中啟用這項進階功能。 然後，接收者就可以接聽特定的工作階段 ID，並且接收共用指定之工作階段識別項的訊息。
-* 服務匯流排佇列所支援的重複偵測功能，會根據[MessageId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.messageid#Microsoft_ServiceBus_Messaging_BrokeredMessage_MessageId)屬性的值，自動移除傳送至佇列或主題的重複訊息。
+* 服務匯流排佇列所支援的重複偵測功能會根據 [MessageId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.messageid#Microsoft_ServiceBus_Messaging_BrokeredMessage_MessageId) 屬性的值，自動移除傳送至佇列或主題的重複訊息。
 
 ## <a name="capacity-and-quotas"></a>容量和配額
 本節將從可能適用之[容量和配額](service-bus-quotas.md)的觀點來比較儲存體佇列和服務匯流排佇列。
 
 | 比較準則 | 儲存體佇列 | 服務匯流排佇列 |
 | --- | --- | --- |
-| 佇列大小上限 |**500 TB**<br/><br/>（限制為[單一儲存體帳戶容量](../storage/common/storage-introduction.md#queue-storage)） |**1 GB 到 80 GB**<br/><br/>(在建立佇列和[啟用分割](service-bus-partitioning.md)時定義 - 請參閱＜其他資訊＞一節) |
+| 佇列大小上限 |**500 TB**<br/><br/> (限制為 [單一儲存體帳戶容量](../storage/common/storage-introduction.md#queue-storage))  |**1 GB 到 80 GB**<br/><br/>(在建立佇列和[啟用分割](service-bus-partitioning.md)時定義 - 請參閱＜其他資訊＞一節) |
 | 訊息大小上限 |**64 KB**<br/><br/>(使用 **Base64** 編碼時則為 48 KB)<br/><br/>Azure 可以結合佇列和 Blob 來支援大型訊息，因此您最多可以將 200 GB 的單一項目加入佇列。 |**256 KB** 或 **1 MB**<br/><br/>(包括標頭和主體，標頭大小上限：64 KB)。<br/><br/>取決於[服務層級](service-bus-premium-messaging.md)。 |
 | 訊息 TTL 上限 |**無限** (自 api-version 2017-07-27 起) |**TimeSpan.Max** |
-| 佇列數目上限 |**無窮大** |**10,000**<br/><br/>(每一服務命名空間) |
-| 並行用戶端數目上限 |**無窮大** |**無窮大**<br/><br/>(100 個並行連接限制只適用於以 TCP 通訊協定為基礎的通訊) |
+| 佇列數目上限 |**無限制** |**10,000**<br/><br/>(每一服務命名空間) |
+| 並行用戶端數目上限 |**無限制** |**無限制**<br/><br/>(100 個並行連接限制只適用於以 TCP 通訊協定為基礎的通訊) |
 
 ### <a name="additional-information"></a>其他資訊
 * 服務匯流排會強制執行佇列大小限制。 佇列大小上限是在建立佇列時指定的，而且可以具有 1 到 80 GB 之間的值。 如果達到在建立佇列時所設定的佇列大小值，其他內送訊息將會遭到拒絕，而且呼叫端程式碼將會收到例外狀況。 如需服務匯流排中配額的詳細資訊，請參閱[服務匯流排配額](service-bus-quotas.md)。

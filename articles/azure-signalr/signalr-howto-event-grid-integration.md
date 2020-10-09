@@ -1,6 +1,6 @@
 ---
 title: 如何將 Azure SignalR Service 事件傳送至事件方格
-description: 本指南說明如何為您的 SignalR Service 啟用事件方格事件，然後將用戶端連接的已連線/中斷連接事件傳送至範例應用程式。
+description: 本指南說明如何為您的 SignalR Service 啟用事件方格事件，然後將用戶端連線的連接/中斷線上活動傳送至範例應用程式。
 services: signalr
 author: chenyl
 ms.service: signalr
@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: chenyl
 ms.openlocfilehash: a76c9aaabf984723e2b60a7cd42425c9b29c916a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76710825"
 ---
 # <a name="how-to-send-events-from-azure-signalr-service-to-event-grid"></a>如何將事件從 Azure SignalR Service 傳送至事件方格
 
-Azure 事件方格是完全受控的事件路由服務，可使用 pub-sub 模型來提供統一的事件耗用量。 在本指南中，您會使用 Azure CLI 來建立 Azure SignalR Service、訂閱連接事件，然後部署範例 web 應用程式來接收事件。 最後，您可以連接並中斷連線，並查看範例應用程式中的事件裝載。
+Azure 事件方格是完全受控的事件路由服務，可使用 pub-sub 模型提供統一的事件耗用量。 在本指南中，您會使用 Azure CLI 建立 Azure SignalR Service、訂閱連接事件，然後部署範例 web 應用程式以接收事件。 最後，您可以連線和中斷連接，並在範例應用程式中查看事件承載。
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶][azure-account]。
 
@@ -43,7 +43,7 @@ SIGNALR_NAME=SignalRTestSvc
 az signalr create --resource-group $RESOURCE_GROUP_NAME --name $SIGNALR_NAME --sku Free_F1
 ```
 
-一旦建立 SignalR Service 之後，Azure CLI 會傳回如下所示的輸出：
+一旦建立 SignalR Service，Azure CLI 會傳回類似下列的輸出：
 
 ```json
 {
@@ -86,7 +86,7 @@ az group deployment create \
     --parameters siteName=$SITE_NAME hostingPlanName=$SITE_NAME-plan
 ```
 
-一旦部署成功（可能需要幾分鐘的時間），請開啟瀏覽器並流覽至您的 web 應用程式，以確定它正在執行：
+部署成功後 (可能需要幾分鐘的時間) 、開啟瀏覽器並流覽至您的 web 應用程式，以確定它正在執行：
 
 `http://<your-site-name>.azurewebsites.net`
 
@@ -94,7 +94,7 @@ az group deployment create \
 
 ## <a name="subscribe-to-registry-events"></a>訂閱登錄事件
 
-在事件方格中，您可以訂閱「主題」**，以告知它您想要追蹤的事件，以及要將它們傳送至何處。 下列[az eventgrid event-訂][az-eventgrid-event-subscription-create]用帳戶 create 命令會訂閱您所建立的 Azure SignalR Service，並將 web 應用程式的 URL 指定為它應該傳送事件的目標端點。 您在先前小節中所填入的環境變數會在此處重複使用，因此不需進行任何編輯。
+在事件方格中，您可以訂閱「主題」**，以告知它您想要追蹤的事件，以及要將它們傳送至何處。 下列 [az eventgrid event-訂][az-eventgrid-event-subscription-create] 用帳戶 create 命令會訂閱您所建立的 Azure SignalR Service，並將您的 web 應用程式 URL 指定為它應該傳送事件的目標端點。 您在先前小節中所填入的環境變數會在此處重複使用，因此不需進行任何編輯。
 
 ```azurecli-interactive
 SIGNALR_SERVICE_ID=$(az signalr show --resource-group $RESOURCE_GROUP_NAME --name $SIGNALR_NAME --query id --output tsv)
@@ -141,7 +141,7 @@ az eventgrid event-subscription create \
 
 ## <a name="trigger-registry-events"></a>觸發登錄事件
 
-切換至服務模式， `Serverless Mode` 並設定 SignalR Service 的用戶端連接。 您可以使用[無伺服器範例](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/Serverless)做為參考。
+切換至服務模式 `Serverless Mode` ，並設定 SignalR Service 的用戶端連接。 您可以採用 [無伺服器範例](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/Serverless) 作為參考。
 
 ```bash
 git clone git@github.com:aspnet/AzureSignalR-samples.git
@@ -162,7 +162,7 @@ dotnet run
 
 ## <a name="view-registry-events"></a>檢視登錄事件
 
-您現在已將用戶端連接到 SignalR Service。 流覽至您的事件方格檢視器 web 應用程式，您應該會看到 `ClientConnectionConnected` 事件。 如果您終止用戶端，您也會看到 `ClientConnectionDisconnected` 事件。
+您現在已將用戶端連線至 SignalR Service。 流覽至您的事件方格檢視器 web 應用程式，您應該會看到 `ClientConnectionConnected` 事件。 如果您終止用戶端，您也會看到 `ClientConnectionDisconnected` 事件。
 
 <!-- LINKS - External -->
 [azure-account]: https://azure.microsoft.com/free/?WT.mc_id=A261C142F

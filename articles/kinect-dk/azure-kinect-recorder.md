@@ -6,17 +6,17 @@ ms.author: tesych
 ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
-keywords: kinect，錄製，播放，讀取器，matroska，.mkv，串流，深度，rgb，相機，色彩，imu，音訊
+keywords: kinect、錄製、播放、讀取器、matroska、.mkv、串流、深度、rgb、相機、色彩、imu、音訊
 ms.openlocfilehash: 5fb6895d4102956a991c67ffab836a26b7a3abb0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85276490"
 ---
 # <a name="azure-kinect-dk-recorder"></a>Azure Kinect DK 錄製器
 
-本文涵蓋如何使用 `k4arecorder` 命令列公用程式，將來自感應器 SDK 的資料流程記錄到檔案。
+本文涵蓋如何使用 `k4arecorder` 命令列公用程式，將來自感應器 SDK 的資料流程記錄至檔案。
 
 >[!NOTE]
 >Azure Kinect 錄製器不會錄製音訊。
@@ -25,7 +25,7 @@ ms.locfileid: "85276490"
 
 `k4arecorder`具有各種命令列引數，可指定輸出檔和錄製模式。
 
-錄製會以[Matroska. .mkv 格式](record-file-format.md)儲存。 錄製會使用多個影片軌來取得色彩和深度，以及其他資訊，例如相機校正和中繼資料。
+記錄會以 [Matroska. .mkv 格式](record-file-format.md)儲存。 錄製會使用多個影片軌來取得色彩和深度，也會使用其他資訊，例如相機校正和中繼資料。
 
 ```console
 k4arecorder [options] output.mkv
@@ -54,33 +54,33 @@ k4arecorder [options] output.mkv
 
 ## <a name="record-files"></a>記錄檔
 
-範例 1. Record Depth NFOV 包含尚未拋棄（640x576）模式，RGB 1080p 為 30 fps with IMU。
-按**ctrl-c**鍵停止錄製。
+範例 1. 記錄深度 NFOV 包含尚未拋棄 (640x576) 模式，RGB 1080p，每 30 fps 和 IMU。
+按 **CTRL + C** 鍵以停止錄製。
 
 ```
 k4arecorder.exe output.mkv
 ```
 
-範例 2. 記錄 WFOV 非分類收納（1MP），RGB 3072p 為 15 fps，不含 IMU，10秒。
+範例 2. 記錄 WFOV 非分類收納 (1MP) ，RGB 3072p 為 15 fps （沒有 IMU），時間為10秒。
 
 ```
 k4arecorder.exe -d WFOV_UNBINNED -c 3072p -r 15 -l 10 --imu OFF output.mkv
 ```
 
-範例 3. 記錄 WFOV 2x2 分類收納 30 fps 5 秒，並儲存至輸出 .mkv。
+範例 3. 記錄 WFOV 2x2 分類收納 30 fps 5 秒，並儲存到 .mkv。
 
 ```
 k4arecorder.exe -d WFOV_2X2BINNED -c OFF --imu OFF -l 5 output.mkv
 ```
 
 >[!TIP]
->您可以使用[Azure Kinect Viewer](azure-kinect-viewer.md) ，在錄製之前設定 RGB 相機控制項（例如，設定手動白色餘額）。
+>您可以使用 [Azure Kinect 檢視器](azure-kinect-viewer.md) 在錄製 (（例如，設定手動白平衡) ）之前設定 RGB 相機控制項。
 
 ## <a name="verify-recording"></a>確認錄製
 
-您可以使用[Azure Kinect Viewer](azure-kinect-viewer.md)開啟 .mkv 檔案。
+您可以使用 [Azure Kinect 檢視器](azure-kinect-viewer.md)開啟 .mkv 檔案。
 
-若要解壓縮追蹤或查看檔案資訊，如 MKVToolNix 工具組中所提供的工具，例如 `mkvinfo` 。 [MKVToolNix](https://mkvtoolnix.download/)
+若要解壓縮曲目或查看檔案資訊，您可以在 MKVToolNix 工具組中取得如的工具 `mkvinfo` 。 [MKVToolNix](https://mkvtoolnix.download/)
 
 ## <a name="next-steps"></a>後續步驟
 

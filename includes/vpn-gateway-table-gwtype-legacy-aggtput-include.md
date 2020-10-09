@@ -9,21 +9,21 @@ ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 9734859c0bf22201c146e5d8a220f3146f6051c4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67173869"
 ---
 下表依照閘道 SKU 顯示閘道類型和預估的彙總輸送量。 此表適用於 Resource Manager 與傳統部署模型。 
 
-閘道 SKU 之間的價格並不相同。 如需詳細資訊，請參閱[VPN 閘道定價](https://azure.microsoft.com/pricing/details/vpn-gateway)。
+閘道 SKU 之間的價格並不相同。 如需詳細資訊，請參閱 [VPN 閘道定價](https://azure.microsoft.com/pricing/details/vpn-gateway)。
 
 請注意下表未顯示 UltraPerformance 閘道 SKU。 如需 UltraPerformance SKU 的相關資訊，請參閱 [ExpressRoute](../articles/expressroute/expressroute-about-virtual-network-gateways.md) 文件。
 
 |  | **VPN 閘道輸送量 (1)** | **VPN 閘道最大 IPsec 通道 (2)** | **ExpressRoute 閘道輸送量** | **VPN 閘道與 ExpressRoute 共存** |
 | --- | --- | --- | --- | --- |
-| **基本 SKU (3)(5)(6)** |100 Mbps |10 |500 Mbps (6) |No |
+| **基本 SKU (3)(5)(6)** |100 Mbps |10 |500 Mbps (6) |否 |
 | **標準 SKU (4)(5)** |100 Mbps |10 |1000 Mbps |是 |
 | **高效能 SKU (4)** |200 Mbps |30 |2000 Mbps |是 |
 

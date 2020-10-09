@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 560c9c177bfa693580979101e5b9343fcff7fe40
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67174175"
 ---
 ### <a name="install-maintenance-mode-updates-via-windows-powershell-for-storsimple"></a>透過適用於 StorSimple 的 Windows PowerShell 安裝維護模式更新
@@ -16,10 +16,10 @@ ms.locfileid: "67174175"
 當您將維護模式更新將套用至 StorSimple 裝置時，所有 I/O 要求都會暫停。 靜態隨機存取記憶體 (NVRAM) 之類的服務或叢集服務都會停止。 這兩個控制站會在您進入或結束此模式時重新啟動。 當您結束此模式時，所有的服務都會繼續執行，而且健康情況良好。 (這可能需要數分鐘的時間)。
 
 > [!IMPORTANT]
-> * 進入維護模式之前，請在 Azure 入口網站中確認這兩個裝置控制器的健康情況良好。 如果控制器狀況不良，[請聯絡 Microsoft 支援服務](../articles/storsimple/storsimple-8000-contact-microsoft-support.md)以進行後續步驟。
+> * 進入維護模式之前，請在 Azure 入口網站中確認這兩個裝置控制器的健康情況良好。 如果控制器狀況不良，請 [聯絡 Microsoft 支援服務](../articles/storsimple/storsimple-8000-contact-microsoft-support.md) ，以進行後續步驟。
 > * 當您處於維護模式時，需要先更新某一個控制站，然後再更新另一個控制站。
 
-1. 使用 PuTTY 連接到序列主控台。 請依照[使用 PuTTy 連接到序列主控台](../articles/storsimple/storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console)中的詳細指示執行作業。 在命令提示字元中，按 **Enter**鍵。 選取選項 1 [**使用完整存取權登入**]。
+1. 使用 PuTTY 連接到序列主控台。 請依照[使用 PuTTy 連接到序列主控台](../articles/storsimple/storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console)中的詳細指示執行作業。 在命令提示字元中，按 **Enter**鍵。 選取選項 1 [ **以完整存取權限登入**]。
 
 2. 若要使控制器處於維護模式，請輸入：
     

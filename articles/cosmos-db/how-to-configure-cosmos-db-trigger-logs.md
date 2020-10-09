@@ -7,15 +7,15 @@ ms.topic: how-to
 ms.date: 07/17/2019
 ms.author: maquaran
 ms.openlocfilehash: 31c9f9d94acab7322cf11d084e4010f2defd6f3c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85261693"
 ---
 # <a name="how-to-configure-and-read-the-logs-when-using-azure-functions-trigger-for-cosmos-db"></a>在使用 Azure Functions 的 Cosmos DB 觸發程序時如何設定和讀取記錄
 
-本文說明如何設定您的 Azure Functions 環境，以將 Cosmos DB 記錄的 Azure Functions 觸發程式傳送至已設定的[監視解決方案](../azure-functions/functions-monitoring.md)。
+本文說明如何設定 Azure Functions 環境，以將 Cosmos DB 記錄的 Azure Functions 觸發程式傳送至設定的 [監視解決方案](../azure-functions/functions-monitoring.md)。
 
 ## <a name="included-logs"></a>包含的記錄檔
 

@@ -1,5 +1,5 @@
 ---
-title: 對應 Azure Data Factory 中的資料集資料行
+title: 在 Azure Data Factory 中對應資料集資料行
 description: 了解如何將來源資料行對應至目的地資料行。
 services: data-factory
 documentationcenter: ''
@@ -12,10 +12,10 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: af7a1e40f21b6c9af490abe6f58edcaf798818b4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85318870"
 ---
 # <a name="map-source-dataset-columns-to-destination-dataset-columns"></a>將來源資料集資料行對應至目的地資料集資料行
@@ -39,7 +39,7 @@ ms.locfileid: "85318870"
 > 下列範例是針對 Azure SQL 和 Azure Blob，但是也適用於任何支援矩形資料集的資料存放區。 請調整範例中的資料集和已連結服務定義，以指向相關資料來源中的資料。
 
 ## <a name="sample-1--column-mapping-from-azure-sql-to-azure-blob"></a>範例 1 – 從 Azure SQL 到 Azure Blob 的資料行對應
-在此範例中，輸入資料表具有結構，且指向 Azure SQL Database 中的 SQL 資料表。
+在此範例中，輸入資料表有一個結構，且指向 Azure SQL Database 中的 SQL 資料表。
 
 ```json
 {
