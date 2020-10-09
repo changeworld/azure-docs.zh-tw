@@ -15,15 +15,15 @@ ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
 ms.openlocfilehash: 061194422a8c1bc449dbef0c4f04bb8e1db10dea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "68965279"
 ---
 # <a name="technical-specifications-and-compliance-for-the-storsimple-device"></a>適用於 StorSimple 裝置的技術規格和相容性
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 [!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
 
@@ -46,7 +46,7 @@ EBOD 機箱使用 580 W PCM，而主要機箱會使用 764 W PCM。 下表列出
 | 輸出 |5V 待機電壓 \@ 2.0 A |5V 待機電壓 \@ 2.7 A |
 | +5V \@ 42 A |+5V \@ 40 A | |
 | +12V \@ 38 A |+12V \@ 38 A | |
-| 隨插即用 |是 |Yes |
+| 隨插即用 |是 |是 |
 | 開關和 LED |AC ON/OFF 開關和四個狀態指示器 LED |AC ON/OFF 開關和六個狀態指示器 LED |
 | 機箱冷卻 |具有變動風扇速度控制的軸流散熱風扇 |具有變動風扇速度控制的軸流散熱風扇 |
 
@@ -83,7 +83,7 @@ StorSimple 裝置混合搭載 8100 及 8600 的硬碟與固態磁碟機。 8100 
 | 可用容量總計* |~ 15 TB |~ 38 TB |
 | 解決方案的最大容量 (含雲端) |200 TB |500 TB |
 
-<sup>* </sup>- *可用的容量總計包括可供資料、中繼資料和緩衝區使用的容量。您可以在8100裝置上布建固定在本機的磁片區，最高可達 8.5 TB，或在較大的8600裝置上布建到 22.5 TB如需詳細資訊，請移至[StorSimple 本機固定磁片](storsimple-8000-local-volume-faq.md)區。*
+<sup>* </sup>- *可用的容量總計包括可供資料、中繼資料及緩衝區使用的容量。您可以在8100裝置上布建高達 8.5 TB 的本機固定磁片區，或在較大的8600裝置上布建高達 22.5 TB。如需詳細資訊，請移至 [StorSimple 本機固定磁片](storsimple-8000-local-volume-faq.md)區。*
 
 ## <a name="enclosure-dimensions-and-weight-specifications"></a>機箱尺寸和重量規格
 

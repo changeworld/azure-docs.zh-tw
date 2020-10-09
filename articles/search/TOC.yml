@@ -472,7 +472,7 @@
       items:
         - name: 內建技能
           items:
-            - name: 概觀
+            - name: 總覽
               href: cognitive-search-predefined-skills.md
             - name: 條件式
               href: cognitive-search-skill-conditional.md

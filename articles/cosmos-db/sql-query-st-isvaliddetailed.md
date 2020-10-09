@@ -8,13 +8,13 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 9e640c223c2fef844b9b53e1f4afa3a5d398c8c0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "71349348"
 ---
-# <a name="st_isvaliddetailed-azure-cosmos-db"></a>ST_ISVALIDDETAILED （Azure Cosmos DB）
+# <a name="st_isvaliddetailed-azure-cosmos-db"></a>ST_ISVALIDDETAILED (Azure Cosmos DB) 
  如果指定的 GeoJSON Point、Polygon 或 LineString 運算式有效，就傳回包含布林值的 JSON 值；但如果是無效的，就會額外加上做為字串值的原因。  
   
 ## <a name="syntax"></a>語法
@@ -26,7 +26,7 @@ ST_ISVALIDDETAILED(<spatial_expr>)
 ## <a name="arguments"></a>引數
   
 *spatial_expr*  
-   這是一個 GeoJSON 點或多邊形運算式。  
+   這是 GeoJSON 點或多邊形運算式。  
   
 ## <a name="return-types"></a>傳回類型
   
@@ -34,7 +34,7 @@ ST_ISVALIDDETAILED(<spatial_expr>)
   
 ## <a name="examples"></a>範例
   
-  下列範例說明如何使用檢查有效性（含詳細資料） `ST_ISVALIDDETAILED` 。  
+  下列範例說明如何使用) 的詳細資料來檢查有效性 (`ST_ISVALIDDETAILED` 。  
   
 ```sql
 SELECT ST_ISVALIDDETAILED({   

@@ -15,17 +15,17 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 02/14/2019
 ms.openlocfilehash: 8a4b05c0ee76aca07fd740a16a76a634727504e9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "71213019"
 ---
 # <a name="azure-notification-hubs-sdks"></a>Azure 通知中樞 SDK
 
-Microsoft 和協力廠商發行適用於 Azure 通知中樞的 SDK。 適用于 Android、iOS 和 .NET 的 Microsoft 存放庫也包含適用于每個目標平臺的範例應用程式。
+Microsoft 和協力廠商發行適用於 Azure 通知中樞的 SDK。 適用于 Android、iOS 和 .NET 的 Microsoft 存放庫也包含每個目標平臺的範例應用程式。
 
-| SDK            | Publisher      |
+| SDK            | 發行者      |
 | -------------- | -------------- |
 | [.NET 伺服器](https://github.com/Azure/azure-notificationhubs-dotnet) \(英文\) | Microsoft |
 | [Android](https://github.com/Azure/azure-notificationhubs-android)  |Microsoft |
@@ -33,7 +33,7 @@ Microsoft 和協力廠商發行適用於 Azure 通知中樞的 SDK。 適用于 
 | [iOS](https://github.com/Azure/azure-notificationhubs-ios) |Microsoft |
 | [Java 伺服器](https://github.com/Azure/azure-notificationhubs-java-backend) \(英文\) |Microsoft |
 | [Nodejs](https://github.com/Azure/azure-sdk-for-node) | Microsoft |
-| [React Native](https://github.com/CatalystCode/react-native-azurenotificationhub) | 協力廠商 |
+| [React Native](https://github.com/CatalystCode/react-native-azurenotificationhub) \(英文\) | 協力廠商 |
 
 > [!Note]
 > Microsoft 並不會對任何協力廠商解決方案的品質、實用性或支援能力負責。

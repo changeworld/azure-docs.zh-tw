@@ -12,15 +12,15 @@ ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: aahi
 ms.openlocfilehash: d833b017004365e9dad7241e360f42ff41a55883
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67542747"
 ---
 # <a name="customize-and-suggest-image-search-queries"></a>自訂和建議影像搜尋查詢
 
-您可以使用本文來瞭解如何自訂查詢，並建議要傳送至 Bing 影像搜尋 API 的搜尋字詞。
+您可以使用本文來瞭解如何自訂查詢，以及建議要傳送至 Bing 影像搜尋 API 的搜尋字詞。
 
 ## <a name="suggest-search-terms"></a>建議搜尋字詞
 

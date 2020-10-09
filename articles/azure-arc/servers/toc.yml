@@ -49,7 +49,7 @@
           href: troubleshoot-agent-onboard.md
         - name: VM 擴充功能問題
           href: troubleshoot-vm-extensions.md
-- name: 參考
+- name: 參考資料
   items:
     - name: 資料存留處
       href: data-residency.md

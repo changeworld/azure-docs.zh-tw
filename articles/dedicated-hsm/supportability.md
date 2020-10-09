@@ -13,10 +13,10 @@ ms.custom: seodec18
 ms.date: 03/27/2019
 ms.author: mbaldwin
 ms.openlocfilehash: d83d688707baf6098d63dfde9b4181eb04fb9729
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "70881013"
 ---
 # <a name="azure-dedicated-hsm-supportability"></a>Azure 專用 HSM 支援能力
@@ -26,12 +26,12 @@ Azure 專用 HSM 服務提供實體裝置以供單獨客戶使用，其具有完
 
 ## <a name="getting-support"></a>取得支援
 
-客戶對專用 HSM 的支援是 Microsoft 與 Gemalto 之間的共同工作。 所有硬體問題或網路路徑問題都會由 Microsoft 解決，而與實際 HSM （例如設定、軟體、固件和應用程式開發）進行的任何作業，都會由 Gemalto 處理。 這種支援模型可確保最快速的路由傳送至最有效率的支援。 如果不確定有特定問題，請向 Microsoft 提出支援要求，我們將確保您有適當的指示。 Microsoft 將持續參與所有支援案例，並致力於為客戶提供最佳的支援體驗。
+專用 HSM 的客戶支援是 Microsoft 與 Gemalto 之間的共同工作。 任何硬體問題或網路路徑問題都會由 Microsoft 解決，而任何與實際 HSM 相關的事項（例如設定、軟體、固件和應用程式開發）都會透過 Gemalto 來解決。 這種支援模型可確保最快速的支援路由。 如果不確定有特定問題，請向 Microsoft 提出支援要求，我們會確保您有適當的指示。 Microsoft 將持續參與所有支援案例，並為客戶提供最佳支援體驗。
 
 ## <a name="gemalto-support"></a>Gemalto 支援
 
-使用專用 HSM 服務的客戶根據其 Plus 支援方案，符合 Gemalto 支援的資格。 這只需要使用 Gemalto 支援入口網站的註冊程式。 客戶識別碼和指示將會在與 Microsoft 的初始參與期間提供，以取得專用 HSM 服務的存取權。 此機制可透過[客戶支援入口網站](https://supportportal.gemalto.com/csm/)，從 Gemalto 獲得支援。
-重點是，Gemalto 會透過客戶支援入口網站上的下載，提供使用 HSM 所需的所有軟體和檔（例如，用戶端存取軟體和 Sdk）。
+使用專用 HSM 服務的客戶符合其 Plus 支援方案的 Gemalto 支援。 這只需要使用 Gemalto 支援入口網站的註冊流程。 客戶識別碼和指示將會在與 Microsoft 的初始參與專案中提供，以取得專用 HSM 服務的存取權。 此機制可透過[客戶支援入口網站](https://supportportal.gemalto.com/csm/)，從 Gemalto 獲得支援。
+重點是，Gemalto 會提供使用 HSM (所需的所有軟體和檔，例如用戶端存取軟體和 Sdk) 透過客戶支援入口網站下載。
 
 ### <a name="software-components"></a>軟體元件
 
@@ -55,7 +55,7 @@ Gemalto 透過[客戶支援入口網站](https://supportportal.gemalto.com/csm/)
 
 ## <a name="microsoft-support"></a>Microsoft 支援服務
 
-Microsoft 會確保實體 HSM 裝置可透過網路存取，並在運作狀態中，以供單一客戶獨佔使用。 客戶須負責設定、管理和管理裝置。 Microsoft 職責包括：
+Microsoft 會確保實體 HSM 裝置可供網路存取，且在運作狀態中可供單一客戶獨佔使用。 客戶須負責設定、管理及管理裝置。 Microsoft 職責包括：
 
 * 確定裝置有電源和散熱功能
 * 維護 HSM 的運作狀態 (例如，中斷/修復方案)
@@ -76,7 +76,7 @@ Microsoft 透過監控角色 (即非管理角色) 對裝置進行實體序列連
 
 ### <a name="hardware-issues"></a>硬體問題
 
-HSM 裝置具有備援和可更換的電源供應器和風扇裝置。  不過，風扇單元移除仍會造成篡改事件。 發生元件故障時，Microsoft 會使用最適合的程序來解決元件層級問題，將中斷的情況和客戶服務可用性的風險降至最低。
+HSM 裝置具有備援和可更換的電源供應器和風扇裝置。  不過，風扇單元移除仍會導致篡改事件。 發生元件故障時，Microsoft 會使用最適合的程序來解決元件層級問題，將中斷的情況和客戶服務可用性的風險降至最低。
 任何更嚴重的裝置故障，會導致該裝置更換為可用集區的新裝置。 客戶只需將新裝置包含在現有 HA 配對中，即可使其同步，並傳回完整的運作狀態。 故障的裝置必須移除其資料承載裝置，並在資料中心現場進行銷毀。 只有底座會傳回 Gemalto 以供回收。
 
 

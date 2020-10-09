@@ -1,22 +1,22 @@
 ---
-title: Azure Functions 錯誤處理指引
-description: 瞭解如何在 Azure Functions 中處理錯誤，並連結至特定的系結錯誤。
+title: Azure Functions 錯誤處理指導方針
+description: 瞭解如何處理 Azure Functions 中的錯誤，並提供特定系結錯誤的連結。
 author: craigshoemaker
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.author: cshoe
 ms.openlocfilehash: befdb4a8cceaef18961c1e9297e23ed5d405ff50
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77586184"
 ---
 # <a name="azure-functions-error-handling"></a>Azure 函式錯誤處理
 
-在 Azure Functions 中處理錯誤，是為了避免資料遺失、遺漏事件，以及監視應用程式的健全狀況。
+處理 Azure Functions 中的錯誤對於避免遺失資料、遺失事件，以及監視應用程式的健全狀況而言很重要。
 
-本文說明錯誤處理的一般策略，以及系結特定錯誤的連結。
+本文描述錯誤處理的一般策略以及系結特定錯誤的連結。
 
 ## <a name="handling-errors"></a>處理錯誤
 
@@ -24,7 +24,7 @@ ms.locfileid: "77586184"
 
 ## <a name="binding-error-codes"></a>繫結錯誤碼
 
-與 Azure 服務整合時，錯誤可能來自基礎服務的 Api。 有關系結特定錯誤的資訊可在下列文章的**例外狀況和傳回碼**一節中取得：
+與 Azure 服務整合時，錯誤可能源自于基礎服務的 Api。 與系結特定錯誤相關的資訊可在下列文章的 **例外狀況和傳回碼** 一節中取得：
 
 + [Azure Cosmos DB](functions-bindings-cosmosdb.md#exceptions-and-return-codes)
 
@@ -40,4 +40,4 @@ ms.locfileid: "77586184"
 
 + [服務匯流排](functions-bindings-service-bus-output.md#exceptions-and-return-codes)
 
-+ [資料表儲存體](functions-bindings-storage-table.md#exceptions-and-return-codes)
++ [表格儲存體](functions-bindings-storage-table.md#exceptions-and-return-codes)

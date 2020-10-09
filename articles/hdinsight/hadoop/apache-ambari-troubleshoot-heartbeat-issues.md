@@ -1,6 +1,6 @@
 ---
 title: Azure HDInsight 中的 Apache Ambari 活動訊號問題
-description: 查看 Azure HDInsight 中 Apache Ambari 的各種不同原因問題
+description: 在 Azure HDInsight 中檢查 Apache Ambari 信號問題的各種原因
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,29 +8,29 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 02/06/2020
 ms.openlocfilehash: ab88f65d535be2aef5f0b26fa1171c03276466e8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77057068"
 ---
 # <a name="apache-ambari-heartbeat-issues-in-azure-hdinsight"></a>Azure HDInsight 中的 Apache Ambari 活動訊號問題
 
-本文說明與 Azure HDInsight 叢集互動時，問題的疑難排解步驟和可能的解決方法。
+本文說明與 Azure HDInsight 叢集互動時，問題的疑難排解步驟和可能的解決方式。
 
 ## <a name="scenario-high-cpu-utilization"></a>案例：高 CPU 使用率
 
 ### <a name="issue"></a>問題
 
-Ambari 代理程式的 CPU 使用率很高，會導致 Ambari UI 的警示，而某些節點的 Ambari 代理程式信號會遺失。 [心跳遺失] 警示通常是暫時性的。
+Ambari 代理程式具有高 CPU 使用率，這會導致 Ambari UI 的警示，而某些節點會遺失 Ambari 代理程式的信號。 警示遺失警示通常是暫時性的。
 
 ### <a name="cause"></a>原因
 
-由於各種 ambari 代理程式錯誤，在罕見的情況下，您的 ambari 代理程式可能會有高（接近100）百分比的 CPU 使用率。
+由於各種 ambari 代理程式的錯誤，在罕見的情況下，您的 ambari 代理程式可以有高 (接近100的 CPU 使用率) 百分比。
 
 ### <a name="resolution"></a>解決方案
 
-1. 識別 ambari 的處理序識別碼（pid）-代理程式：
+1. 識別 ambari 代理程式的處理序識別碼 (pid) ：
 
     ```bash
     ps -ef | grep ambari_agent
@@ -42,7 +42,7 @@ Ambari 代理程式的 CPU 使用率很高，會導致 Ambari UI 的警示，而
     top -p <ambari-agent-pid>
     ```
 
-1. 重新開機 ambari-代理程式以減輕問題：
+1. 重新開機 ambari 代理程式以減輕問題：
 
     ```bash
     service ambari-agent restart
@@ -61,7 +61,7 @@ Ambari 代理程式的 CPU 使用率很高，會導致 Ambari UI 的警示，而
 
 ### <a name="issue"></a>問題
 
-Ambari 代理程式尚未啟動，這會導致 Ambari UI 的警示，而這些節點的 Ambari 代理程式檢測結果會遺失。
+Ambari 代理程式未啟動，這會導致 Ambari UI 的警示，而導致某些節點的 Ambari 代理程式心跳遺失。
 
 ### <a name="cause"></a>原因
 
@@ -69,7 +69,7 @@ Ambari 代理程式尚未啟動，這會導致 Ambari UI 的警示，而這些�
 
 ### <a name="resolution"></a>解決方案
 
-1. 確認 ambari 的狀態-代理程式：
+1. 確認 ambari 代理程式的狀態：
 
     ```bash
     service ambari-agent status
@@ -81,21 +81,21 @@ Ambari 代理程式尚未啟動，這會導致 Ambari UI 的警示，而這些�
     ps -ef | grep failover
     ```
 
-    如果容錯移轉控制器服務未執行，可能是因為發生問題而導致 hdinsight 代理程式無法啟動容錯移轉控制器。 檢查 hdinsight-代理程式記錄檔 `/var/log/hdinsight-agent/hdinsight-agent.out` 。
+    如果容錯移轉控制器服務未執行，可能是因為發生問題，導致 hdinsight 代理程式無法啟動容錯移轉控制器。 檢查 hdinsight 代理程式記錄檔中的記錄檔 `/var/log/hdinsight-agent/hdinsight-agent.out` 。
 
-## <a name="scenario-heartbeat-lost-for-ambari"></a>案例： Ambari 遺失的心跳
+## <a name="scenario-heartbeat-lost-for-ambari"></a>案例： Ambari 的心跳已遺失
 
 ### <a name="issue"></a>問題
 
-Ambari 的心跳代理程式已遺失。
+Ambari 的心跳代理程式已中斷。
 
 ### <a name="cause"></a>原因
 
-OMS 記錄會導致高 CPU 使用率。
+OMS 記錄會造成高 CPU 使用率。
 
 ### <a name="resolution"></a>解決方案
 
-* 使用[AzHDInsightMonitoring](https://docs.microsoft.com/powershell/module/az.hdinsight/disable-azhdinsightmonitoring) PowerShell Cmdlet 停用 Azure 監視器記錄。
+* 使用 [AzHDInsightMonitoring](https://docs.microsoft.com/powershell/module/az.hdinsight/disable-azhdinsightmonitoring) PowerShell Cmdlet 停用 Azure 監視器記錄。
 * 刪除 `mdsd.warn` 記錄檔
 
 ---
