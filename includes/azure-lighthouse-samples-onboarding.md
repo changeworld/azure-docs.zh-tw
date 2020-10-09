@@ -9,10 +9,10 @@ ms.date: 07/07/2020
 ms.author: jenhayes
 ms.custom: include file
 ms.openlocfilehash: d80786bbdfc4f53254dc98d79ac3badcf5dd3b24
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86111642"
 ---
 我們提供不同的範本來解決特定的上線案例。 選擇最適合的選項，並務必修改參數檔案以反映您的環境。 如需如何在部署中使用這些檔案的詳細資訊，請參閱[讓客戶在 Azure Lighthouse 上線](../articles/lighthouse/how-to/onboard-customer.md)。
