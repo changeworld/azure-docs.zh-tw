@@ -1,6 +1,6 @@
 ---
-title: PowerShell 腳本：建立新的 Azure 資料共用帳戶 |Microsoft Docs
-description: 此 PowerShell 腳本會建立新的資料共用帳戶。
+title: PowerShell 腳本：建立新的 Azure Data Share 帳戶 |Microsoft Docs
+description: 此 PowerShell 腳本會建立新的 Data Share 帳戶。
 services: data-share
 author: joannapea
 ms.service: data-share
@@ -10,15 +10,15 @@ ms.topic: article
 ms.date: 07/07/2019
 ms.author: joanpo
 ms.openlocfilehash: c3852dd5f1d3d3df8a982716ce5dab9426782869
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "70307277"
 ---
 # <a name="use-powershell-to-create-a-data-share-account-in-azure"></a>使用 PowerShell 在 Azure 中建立資料共用帳戶
 
-此 PowerShell 腳本會建立新的資料共用帳戶。 
+此 PowerShell 腳本會建立新的 Data Share 帳戶。 
 
 ## <a name="sample-script"></a>範例指令碼
 
@@ -38,11 +38,11 @@ New-AzDataShareAccount -ResourceGroupName $resourceGroupName -Name $dataShareAcc
 
 | Command | 注意 |
 |---|---|
-| [新增-AzDataShareAccount](/powershell/module/az.datashare/new-azdatashareaccount?view=azps-2.6.0) | 建立資料共用帳戶。 |
+| [新 AzDataShareAccount](/powershell/module/az.datashare/new-azdatashareaccount?view=azps-2.6.0) | 建立資料共用帳戶。 |
 |||
 
 ## <a name="next-steps"></a>後續步驟
 
 如需有關 Azure PowerShell 的詳細資訊，請參閱 [Azure PowerShell 文件](https://docs.microsoft.com/powershell/)。
 
-您可以在[Azure 資料共用 powershell 範例](../../samples-powershell.md)中找到其他 Azure 資料共用 powershell 腳本範例。
+您可以在 [azure Data Share powershell 範例](../../samples-powershell.md)中找到其他 Azure Data Share powershell 腳本範例。

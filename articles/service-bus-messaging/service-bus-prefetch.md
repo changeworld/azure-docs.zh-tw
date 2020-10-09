@@ -1,13 +1,13 @@
 ---
 title: Azure 服務匯流排預先擷取訊息 | Microsoft Docs
-description: 藉由預先擷取 Azure 服務匯流排訊息來提升效能。 訊息會在應用程式要求之前，立即提供本機抓取。
+description: 藉由預先擷取 Azure 服務匯流排訊息來提升效能。 在應用程式要求之前，訊息會立即提供給本機抓取。
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 05e23b0590f0c04171efda8fb561b4c2664ed096
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85341045"
 ---
 # <a name="prefetch-azure-service-bus-messages"></a>預先擷取 Azure 服務匯流排訊息
@@ -22,7 +22,7 @@ ms.locfileid: "85341045"
 
 您可以輕鬆地將此設定新增至 [QueuesGettingStarted](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/QueuesGettingStarted) \(英文\) 或 [ReceiveLoop](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/ReceiveLoop) \(英文\) 範例設定的接收端，即可在那些內容中看見效果。
 
-當預先提取緩衝區中有可用的訊息時，任何後續的**接收** / **ReceiveAsync**呼叫都會立即從緩衝區完成，而緩衝區會在空間可供使用時，在背景中進行補充。 如果沒有任何訊息可供傳遞，接收作業就會如預期般清空緩衝區，然後加以等候或封鎖。
+當預先提取緩衝區中有可用的訊息時，任何後續的**接收** / **ReceiveAsync**呼叫都會立即從緩衝區完成，並在空間變成可用時，在背景中補充緩衝區。 如果沒有任何訊息可供傳遞，接收作業就會如預期般清空緩衝區，然後加以等候或封鎖。
 
 預先擷取也會以 [OnMessage](/dotnet/api/microsoft.servicebus.messaging.queueclient.onmessage) 和 [OnMessageAsync](/dotnet/api/microsoft.servicebus.messaging.queueclient.onmessageasync) API 中的相同方式來運作。
 

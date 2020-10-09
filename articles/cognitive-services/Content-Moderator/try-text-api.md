@@ -11,15 +11,15 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 05/29/2019
 ms.openlocfilehash: ad365c2d4c171105d8dec89d818ef481361d1ff8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81272588"
 ---
 # <a name="moderate-text-from-the-api-console"></a>從 API 主控台仲裁文字
 
-使用 Azure 內容仲裁中的[文字仲裁 API](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66f)來掃描您的文字內容是否不雅，並與自訂和共用清單進行比較。
+使用 Azure 內容仲裁中的 [文字審核 API](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66f) 來掃描您的文字內容是否有不雅內容，並將其與自訂和共用清單進行比較。
 
 ## <a name="get-your-api-key"></a>取得 API 金鑰
 
@@ -69,7 +69,7 @@ Is this a grabage or crap email abcdef@abcd.com, phone: 4255550111, IP:
 
 ## <a name="analyze-the-response"></a>分析回應
 
-以下回應顯示來自 API 的各種深入解析。 它包含潛在的不雅內容、個人資料、分類（預覽），以及自動校正的版本。
+以下回應顯示來自 API 的各種深入解析。 它包含可能的不雅內容、個人資料、分類 (預覽) 和自動校正的版本。
 
 > [!NOTE]
 > 電腦輔助「分類」功能目前為預覽版且僅支援英文。
@@ -133,8 +133,8 @@ Is this a grabage or crap email abcdef@abcd.com, phone: 4255550111, IP:
 }
 ```
 
-如需 JSON 回應中所有區段的詳細說明，請參閱[文字審核](text-moderation-api.md)概念指南。
+如需 JSON 回應中所有區段的詳細說明，請參閱 [文字審核](text-moderation-api.md) 概念指南。
 
 ## <a name="next-steps"></a>後續步驟
 
-在您的程式碼中使用 REST API，或遵循[.NET SDK 快速入門](dotnet-sdk-quickstart.md)，與您的應用程式進行整合。
+在您的程式碼中使用 REST API，或遵循 [.NET SDK 快速入門](dotnet-sdk-quickstart.md) ，與您的應用程式整合。

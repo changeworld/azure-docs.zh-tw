@@ -1,5 +1,5 @@
 ---
-title: 快速入門：使用 Azure DevOps Starter 建立 Go 程式設計語言的 CI/CD 管線
+title: 快速入門：使用 Azure DevOps Starter 建立適用於 Go 程式設計語言的 CI/CD 管線
 description: DevOps 入門版可供輕鬆地開始使用 Azure。 它可協助您透過幾個簡單的步驟，在 Azure 服務上啟動 Go 程式設計語言 Web 應用程式。
 ms.prod: devops
 ms.technology: devops-cicd
@@ -14,15 +14,15 @@ ms.date: 07/09/2018
 ms.author: mlearned
 ms.custom: mvc
 ms.openlocfilehash: 02304758ef89ff7c94d1c3d8f98f6931ab7fd8dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "82233120"
 ---
-# <a name="create-a-cicd-pipeline-for-go-using-azure-devops-starter"></a>使用 Azure DevOps Starter 建立適用于 Go 的 CI/CD 管線
+# <a name="create-a-cicd-pipeline-for-go-using-azure-devops-starter"></a>使用 Azure DevOps Starter 建立適用於 Go 的 CI/CD 管線
 
-使用 Azure DevOps Starter，為您的 Go 應用程式設定持續整合（CI）和持續傳遞（CD）。 DevOps Starter 可簡化 Azure DevOps 組建和發行管線的初始設定。
+使用 Azure DevOps Starter 為您的 Go 應用程式設定持續整合 (CI) 與持續傳遞 (CD)。 DevOps Starter 可簡化 Azure DevOps 建置與發行管線的初始設定。
 
 如果您沒有 Azure 訂用帳戶，可以透過 [Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/) 取得一個免費的訂用帳戶。
 
@@ -50,7 +50,7 @@ DevOps 入門版會在 Azure Pipelines 中建立 CI/CD 管線。 您可以建立
 
 1. 為您的 Azure DevOps 專案輸入名稱。 
 
-1. 選取 Azure 訂用帳戶和位置、輸入應用程式名稱，然後選取 [完成]  。 幾分鐘後，[DevOps 入門儀表板] 就會顯示在 Azure 入口網站中。 系統會在您 Azure DevOps 組織中的存放庫中設定範例應用程式、執行建置，然後將您的應用程式部署到 Azure。 
+1. 選取 Azure 訂用帳戶和位置、輸入應用程式名稱，然後選取 [完成]  。 在幾分鐘後，Azure 入口網站中便會顯示 DevOps Starter 儀表板。 系統會在您 Azure DevOps 組織中的存放庫中設定範例應用程式、執行建置，然後將您的應用程式部署到 Azure。 
 
     儀表板可顯示您的程式碼存放庫、您的 CI/CD 管線，和您在 Azure 中的應用程式。 從右側選取 [瀏覽]  以檢視執行中應用程式。
 
@@ -60,7 +60,7 @@ DevOps 入門版會在 Azure Pipelines 中建立 CI/CD 管線。 您可以建立
 
 DevOps Starter 會在 Azure Repos 或 GitHub 中建立 Git 存放庫。 若要檢視存放庫並變更您應用程式的程式碼，請執行下列作業：
 
-1. 在 [DevOps] Starter 左側，選取您主要分支的連結。 此連結會開啟新建立 Git 存放庫的檢視。
+1. 在 DevOps Starter 的左側，選取您主要分支的連結。 此連結會開啟新建立 Git 存放庫的檢視。
 
 1. 若要檢視存放庫的複製 URL，請選取右上方的 [複製]  。 您可以在最愛的 IDE 中複製 Git 存放庫。 在接下來的幾個步驟中，您可以使用網頁瀏覽器，直接進行和認可主要分支的程式碼變更。
 
@@ -76,7 +76,7 @@ DevOps Starter 會在 Azure Repos 或 GitHub 中建立 Git 存放庫。 若要�
 
 DevOps 入門版會在 Azure Repos 中自動設定完整的 CI/CD 管線。 瀏覽管線，並視需要進行自訂。 若要讓您自己熟悉 Azure DevOps 建置和發行管線，請執行下列作業：
 
-1. 移至 DevOps 入門版儀表板。
+1. 前往 DevOps 入門版儀表板。
 
 1. 從頂端選取 [建置管線]  。 瀏覽器索引標籤會顯示新專案的建置管線。
 
@@ -88,7 +88,7 @@ DevOps 入門版會在 Azure Repos 中自動設定完整的 CI/CD 管線。 瀏�
 
 1. 在建置管線的頂端，選取建置管線名稱。
 
-1. 將建置管線的名稱變更成較具描述性的名稱，並選取 [儲存並排入佇列]，然後選取 [儲存]。
+1. 將建置管線的名稱變更成較具描述性的名稱，並選取 [儲存並排入佇列]  ，然後選取 [儲存]  。
 
 1. 在建置管線名稱下，選取 [記錄]。 此窗格會顯示近期建置變更的稽核線索。 Azure DevOps 會追蹤對建置管線進行的任何變更，且可讓您比較版本。
 
@@ -96,7 +96,7 @@ DevOps 入門版會在 Azure Repos 中自動設定完整的 CI/CD 管線。 瀏�
 
 1. 選取 [保留期]。 根據案例，您可以指定原則來保留或移除特定數目的組建。
 
-1. 選取 [建置及發行]，然後選取 [版本]。  DevOps 入門版會建立發行管線來管理對 Azure 的部署。
+1. 選取 [建置及發行]  ，然後選取 [版本]  。  DevOps 入門版會建立發行管線來管理對 Azure 的部署。
 
 1. 選取發行管線旁邊的省略符號 (...)，然後選取 [編輯]。 發行管線中包含 [管線]，它會定義發行程序。
 
@@ -112,7 +112,7 @@ DevOps 入門版會在 Azure Repos 中自動設定完整的 CI/CD 管線。 瀏�
 
 1. 選取 [認可]。 此檢視會顯示與此部署相關聯的程式碼認可。 
 
-1. 選取 [記錄]。 記錄包含關於部署程序的實用資訊。 您可以在部署期間和部署之後加以檢視。
+1. 選取 [記錄]  。 記錄包含關於部署程序的實用資訊。 您可以在部署期間和部署之後加以檢視。
 
 ## <a name="clean-up-resources"></a>清除資源
 

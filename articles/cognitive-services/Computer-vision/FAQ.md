@@ -12,10 +12,10 @@ ms.date: 04/17/2019
 ms.author: kefre
 ms.custom: seodec18
 ms.openlocfilehash: e8ab205a43e5cb1e8e2b96dbd9600e1fceb29403
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "68564591"
 ---
 # <a name="computer-vision-api-frequently-asked-questions"></a>電腦視覺 API 常見問題集
@@ -25,7 +25,7 @@ ms.locfileid: "68564591"
 
 ---
 
-**問題**：*我可以將電腦視覺 API 定型以使用自訂標籤嗎？ 例如，我想要在貓 breeds 的圖片中饋送到「訓練」 AI，然後在 AI 要求上獲得知名價值。*
+**問題**： *我可以訓練電腦視覺 API 來使用自訂標記嗎？ 例如，我想要在貓品種的圖片中饋送以「訓練」 AI，然後在 AI 要求上獲得相關價值。*
 
 **解答**：這項功能目前無法使用。 不過，我們的工程師正努力將這項功能放入電腦視覺中。
 

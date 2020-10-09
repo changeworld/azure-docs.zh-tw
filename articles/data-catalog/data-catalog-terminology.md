@@ -7,10 +7,10 @@ ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: d6c813dec3922334f7462b1226ea22371fd5f43b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "68736282"
 ---
 # <a name="azure-data-catalog-terminology"></a>Azure 資料目錄術語
@@ -23,7 +23,7 @@ Azure 資料目錄是以雲端為基礎的中繼資料儲存機制，其中可�
 
 ## <a name="data-source"></a>資料來源
 
-資料來源是管理資料資產的系統或容器。 範例包括 SQL Server 資料庫、Oracle 資料庫、SQL Server Analysis Services 資料庫（表格式或多維度），以及 SQL Server Reporting Services 伺服器。
+資料來源是管理資料資產的系統或容器。 範例包括 SQL Server 資料庫、Oracle 資料庫、SQL Server Analysis Services 資料庫 (表格式或多維度) ，以及 SQL Server Reporting Services 伺服器。
 
 ## <a name="data-asset"></a>資料資產
 
@@ -65,9 +65,9 @@ Azure 資料目錄中的資料設定檔是資料表層級的快照集和及資�
 
 ## <a name="user-perspective"></a>使用者觀點
 
-在 Azure 資料目錄中，任何使用者都可以為已註冊的資料資產提供描述性中繼資料。 每位使用者都有不同的資料和使用觀點。 例如，負責伺服器的系統管理員可能提供其服務等級協定 (SLA) 或備份時段的詳細資料。資料負責人可能針對資料所支援的商務程序提供文件連結。分析師可能以最適合的詞彙提供描述給其他分析師，而且對於需要探索及了解資料的使用者來說，可能非常有價值。
+在 Azure 資料目錄中，任何使用者都可以為已註冊的資料資產提供描述性中繼資料。 每位使用者對資料及其使用都有不同的觀點。 例如，負責伺服器的系統管理員可能提供其服務等級協定 (SLA) 或備份時段的詳細資料。資料負責人可能針對資料所支援的商務程序提供文件連結。分析師可能以最適合的詞彙提供描述給其他分析師，而且對於需要探索及了解資料的使用者來說，可能非常有價值。
 
-這其中每個觀點本身都很有價值，而且 Azure 資料目錄每個使用者都可以提供對他們有意義的資訊，而所有使用者都可以使用該資訊來瞭解資料及其用途。
+上述每一種觀點本身都很有價值，Azure 資料目錄而且每個使用者都可以提供對其有意義的資訊，而所有使用者都可以使用該資訊來瞭解資料及其用途。
 
 ## <a name="expert"></a>專家
 
@@ -75,7 +75,7 @@ Azure 資料目錄中的資料設定檔是資料表層級的快照集和及資�
 
 ## <a name="owner"></a>擁有者
 
-擁有者是具有額外權限來管理 Azure 資料目錄中的資料資產的使用者。 使用者可以取得已註冊的資料資產的擁有權，而擁有者可以加入其他使用者成為共同擁有者。 如需詳細資訊，請參閱[如何管理資料資產](data-catalog-how-to-manage.md)  
+擁有者是具有額外權限來管理 Azure 資料目錄中的資料資產的使用者。 使用者可以取得已註冊的資料資產的擁有權，而擁有者可以加入其他使用者成為共同擁有者。 如需詳細資訊，請參閱 [如何管理資料資產](data-catalog-how-to-manage.md)  
 
 > [!NOTE]
 > 只有標準版 Azure 資料目錄中支援擁有權和管理。

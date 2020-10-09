@@ -1,5 +1,5 @@
 ---
-title: AzureLogCollector VM 擴充功能
+title: AzureLogCollector VM 延伸模組
 description: 說明 AzureLogCollector VM 延伸模組；此延伸模組會收集所有的記錄檔，並將其整合至 Azure 儲存體的一個位置中。
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -15,10 +15,10 @@ ms.workload: infrastructure
 ms.date: 08/23/2016
 ms.author: mimckitt
 ms.openlocfilehash: 51e4fc4640d6fe1512c96fd6d0c400279056f777
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81273268"
 ---
 # <a name="azurelogcollector-extension"></a>AzureLogCollector 擴充功能

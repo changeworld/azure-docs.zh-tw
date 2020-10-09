@@ -12,10 +12,10 @@ ms.date: 02/08/2019
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: 8d6dc91ae7bb0f6d7a24064749d9295558a7d39c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "68946331"
 ---
 # <a name="detect-domain-specific-content"></a>偵測特定領域內容
@@ -26,11 +26,11 @@ ms.locfileid: "68946331"
 
 ### <a name="scoped-analysis"></a>已設定範圍的分析
 
-您可以只使用所選的特定領域模型呼叫 [Models/\<model\>/Analyze](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e200) API 來分析影像。
+您可以藉由呼叫 [模型/ \<model\> /analyze](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e200) API，只使用所選的特定領域模型來分析影像。
 
 以下是針對指定的影像由 **models/celebrities/analyze** API 傳回的 JSON 回應範例：
 
-![Satya Nadella 的梯，微笑](./images/satya.jpeg)
+![Satya Nadella 站在微笑](./images/satya.jpeg)
 
 ```json
 {
@@ -100,7 +100,7 @@ ms.locfileid: "68946331"
 
 目前，電腦視覺支援下列特定領域模型：
 
-| Name | 描述 |
+| 名稱 | 描述 |
 |------|-------------|
 | 名人 | 支援 `people_` 類別中分類影像的名人辨識 |
 | 地標 | 支援 `outdoor_` 或 `building_` 類別中分類影像的地標辨識 |

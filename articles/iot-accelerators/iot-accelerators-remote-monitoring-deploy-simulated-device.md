@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 08/15/2018
 ms.topic: conceptual
 ms.openlocfilehash: 7cbab38db859935c9f4490d79a131d6c9a7e302b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "66427576"
 ---
 # <a name="deploy-a-new-simulated-device"></a>部署新的模擬裝置
@@ -140,7 +140,7 @@ ms.locfileid: "66427576"
 
 如果您打算進一步探索，請讓遠端監視解決方案加速器維持部署。
 
-如果您不再需要解決方案加速器，請在 [已布[建的解決方案](https://www.azureiotsolutions.com/Accelerators#dashboard)] 頁面中選取它，然後按一下 [**刪除解決方案**]，將它刪除。
+如果您不再需要解決方案加速器，請在 [已布 [建的解決方案](https://www.azureiotsolutions.com/Accelerators#dashboard) ] 頁面中加以選取，然後按一下 [ **刪除解決方案**]，以將其刪除。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -298,5 +298,5 @@
       href: 'https://azure.microsoft.com/pricing/details/application-gateway/'
     - name: 區域可用性
       href: 'https://azure.microsoft.com/regions/services/'
-    - name: Stack Overflow
+    - name: 堆疊溢位
       href: 'https://stackoverflow.com/questions/tagged/azure-application-gateway'

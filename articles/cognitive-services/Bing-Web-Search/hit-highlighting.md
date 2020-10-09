@@ -12,44 +12,44 @@ ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: scottwhi
 ms.openlocfilehash: a6d394fec6e7cf0a230f61ad05c236a1f84dad9d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "68854036"
 ---
 # <a name="using-decoration-markers-to-highlight-text"></a>使用裝飾標記醒目提示文字
 
-Bing 支援搜尋結果醒目提示，這會在某些答案的顯示字串中標示查詢詞彙（或 Bing 找到的其他詞彙）。 例如，網頁結果的`name`、 `displayUrl`和`snippet`欄位可能包含已標記的查詢字詞。 
+Bing 支援搜尋結果醒目提示，這會將查詢詞彙標示 (或 Bing 在某些答案的顯示字串中找到相關) 的其他詞彙。 例如，網頁結果的 `name` 、 `displayUrl` 和 `snippet` 欄位可能包含標示的查詢詞彙。 
 
-根據預設，Bing 不會在顯示字串中包含醒目提示標記。 若要啟用標記，請在`textDecorations`您的要求中包含查詢參數，並`true`將它設定為。
+根據預設，Bing 不會在顯示字串中包含醒目提示標記。 若要啟用標記，請 `textDecorations` 在您的要求中包含查詢參數，並將其設定為 `true` 。
 
-## <a name="hit-highlighting-example"></a>搜尋反白顯示範例
+## <a name="hit-highlighting-example"></a>點擊醒目提示範例
 
-下列範例顯示的 web 結果`Sailing Dinghy`。 Bing 會使用 E000 和 E001 Unicode 字元來標示查詢詞彙的開頭和結尾。
+下列範例顯示的 web 結果 `Sailing Dinghy` 。 Bing 使用 E000 和 E001 的 Unicode 字元，標示查詢詞彙的開頭和結尾。
   
 ![搜尋結果醒目提示](./media/cognitive-services-bing-web-api/bing-hit-highlighting.png) 
 
-在使用者介面中顯示結果之前，請使用適合您的顯示格式的 Unicode 字元來取代它們。
+在使用者介面中顯示結果之前，請將 Unicode 字元取代為適合您顯示格式的字元。
 
 ## <a name="marker-formatting"></a>標記格式化
 
-Bing 提供了使用 Unicode 字元或 HTML 標籤做為標記的選項。 若要指定要使用的標記，請包含[textFormat](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#textformat)查詢參數： 
+Bing 提供使用 Unicode 字元或 HTML 標籤做為標記的選項。 若要指定要使用的標記，請包含 [textFormat](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#textformat) 查詢參數： 
 
-| 值             | 標記                       |
+| 值             | Marker                       |
 |-------------------|------------------------------|
-| `textFormat=Raw`  | Unicode 字元（預設值） |
+| `textFormat=Raw`  |  (預設) 的 Unicode 字元 |
 | `textFormat=HTML` | HTML 字元              |
 
 ## <a name="additional-text-decorations"></a>其他文字裝飾
 
-Bing 可以傳回數種不同的文字裝飾。 例如， `Computation`答案可以包含`log(2)` `expression`欄位中查詢字詞的注標標記。
+Bing 可以傳回數種不同的文字裝飾。 例如， `Computation` 答案可以 `log(2)` 在欄位中包含查詢詞彙的注標標記 `expression` 。
 
 ![computation 標記](./media/cognitive-services-bing-web-api/bing-markers-computation.png) 
 
-如果要求未指定裝飾，此`expression`欄位會包含。 `log10(2)` 
+如果要求未指定裝飾，則 `expression` 欄位會包含 `log10(2)` 。 
 
-如果`textDecorations`為`true`，Bing 可能會在答案的顯示字串中包含下列標記。 如果沒有對等的 HTML 標籤，則資料表資料格會是空的。
+如果 `textDecorations` 為 `true` ，Bing 可能會在回應的顯示字串中包含下列標記。 如果沒有對等的 HTML 標籤，資料表單元格會是空的。
 
 |Unicode|HTML|描述
 |-|-|-
