@@ -180,6 +180,12 @@
           href: basic-age-gating.md
         - name: 定義自訂屬性
           href: user-flow-custom-attributes.md
+        - name: API 連接器
+          items:
+            - name: 總覽
+              href: api-connectors-overview.md
+            - name: 新增 API 連接器
+              href: add-api-connector.md
         - name: 傳遞外部 IdP 權杖
           href: idp-pass-through-user-flow.md
     - name: 身分識別保護和條件式存取
@@ -256,12 +262,6 @@
               href: configure-tokens-custom-policy.md
             - name: 設定工作階段行為
               href: session-behavior-custom-policy.md
-        - name: API 連接器
-          items:
-            - name: 總覽
-              href: api-connectors-overview.md
-            - name: 新增 API 連接器
-              href: add-api-connector.md
         - name: 傳遞外部 IdP 權杖
           href: idp-pass-through-custom.md
         - name: 調適型體驗

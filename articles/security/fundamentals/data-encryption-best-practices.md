@@ -16,16 +16,16 @@ ms.workload: na
 ms.date: 03/09/2020
 ms.author: terrylan
 ms.openlocfilehash: 1b6fcf38f9f69976e6ed8d64040cfbcf44f090e1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85124046"
 ---
 # <a name="azure-data-security-and-encryption-best-practices"></a>Azure 資料安全性和加密最佳做法
-本文說明資料安全性與加密的最佳作法。
+本文說明資料安全性和加密的最佳做法。
 
-最佳作法是根據共識的意見，並使用目前的 Azure 平台功能及功能集。 意見和技術會隨著時間而改變，而本文會定期更新以反映這些變更。
+最佳作法是根據共識的意見，並使用目前的 Azure 平台功能及功能集。 意見和技術會隨著時間而改變，而這篇文章會定期更新以反映這些變更。
 
 ## <a name="protect-data"></a>保護資料
 若要協助保護雲端上的資料，您必須考慮您的資料可能會發生的狀態，以及哪些控制項適用於該狀態。 Azure 資料安全性和加密的最佳做法與下列資料狀態相關：
@@ -37,21 +37,21 @@ ms.locfileid: "85124046"
 
 保護您的金鑰對於保護雲端中的資料至關重要。
 
-[Azure Key Vault](/azure/key-vault/key-vault-overview)有助於保護雲端應用程式和服務所使用的密碼編譯金鑰和秘密。 金鑰保存庫簡化了金鑰管理程序，並可讓您控管存取和加密資料的金鑰。 開發人員可以在幾分鐘內建立開發和測試的金鑰，然後將它們移轉至生產金鑰。 安全性系統管理員可以視需要授與 (和撤銷) 存取金鑰的權限。
+[Azure Key Vault](/azure/key-vault/key-vault-overview) 可協助保護雲端應用程式和服務所使用的密碼編譯金鑰和祕密。 金鑰保存庫簡化了金鑰管理程序，並可讓您控管存取和加密資料的金鑰。 開發人員可以在幾分鐘內建立用於開發和測試的金鑰，然後將它們移轉至生產金鑰。 安全性系統管理員可以視需要授與 (和撤銷) 存取金鑰的權限。
 
-您可以使用 Key Vault 建立多個安全的容器，稱之為保存庫。 這些保存庫由 HSM 支援。 保存庫藉由集中儲存應用程式祕密，協助減少意外遺失安全性資訊的機會。 Key Vault 也會控制和記錄其中所儲存項目的存取權。 Azure Key Vault 可以處理要求及更新傳輸層安全性 (TLS) 憑證。 它為憑證生命週期管理提供了健全的解決方案功能。
+您可以使用 Key Vault 建立多個安全的容器，稱之為保存庫。 這些保存庫由 HSM 支援。 保存庫藉由集中儲存應用程式祕密，協助減少意外遺失安全性資訊的機會。 金鑰保存庫也會控制和記錄對其中所儲存項目的存取。 Azure Key Vault 可以處理要求及更新傳輸層安全性 (TLS) 憑證。 它為憑證生命週期管理提供了健全的解決方案功能。
 
 Azure Key Vault 設計用來支援應用程式金鑰和祕密。 Key Vault 的用意並非作為使用者密碼的存放區。
 
 以下是使用金鑰保存庫的安全性最佳做法。
 
 **最佳做法**：在特定範圍對使用者、群組和應用程式授與存取權。   
-**詳細資料**：使用 RBAC 的預先定義的角色。 例如，若要對使用者授與管理金鑰保存庫的權限，您會在特定範圍對此使用者指派預先定義的角色 [Key Vault 參與者](/azure/role-based-access-control/built-in-roles)。 在此案例中，範圍會是訂用帳戶、資源群組或只是特定金鑰保存庫。 如果預先定義的角色不符合您的需求，您可以[定義您自己的角色](/azure/role-based-access-control/custom-roles)。
+**詳細資料**：使用 RBAC 的預先定義的角色。 例如，若要授與使用者存取權以管理金鑰保存庫，您可以將預先定義的角色 [Key Vault 參與者](/azure/role-based-access-control/built-in-roles) 指派給特定範圍的使用者。 在此案例中，範圍會是訂用帳戶、資源群組或只是特定金鑰保存庫。 如果預先定義的角色不符合您的需求，您可以 [定義自己的角色](/azure/role-based-access-control/custom-roles)。
 
 **最佳做法**：控制哪些使用者具有存取權。   
 **詳細資料**：金鑰保存庫的存取權可透過兩個不同介面來控制︰管理平面和資料平面。 管理平面和資料平面的存取控制在運作上互不相關。
 
-使用 RBAC 控制使用者可以存取的內容。 例如，如果您想要對應用程式授與金鑰保存庫中金鑰的使用權限，您只需要使用金鑰保存庫存取原則對資料平面授與存取權限，此應用程式完全不需要管理平面的存取權。 相反地，如果您想要讓使用者能夠讀取保存庫屬性和標籤，但不讓他擁有金鑰、密碼或憑證的任何存取權，您可以使用 RBAC 對這位使用者授與「讀取」權限，但不需要授與資料平面的存取權。
+使用 RBAC 控制使用者可以存取的內容。 例如，如果您想要對應用程式授與金鑰保存庫中金鑰的使用權限，您只需要使用金鑰保存庫存取原則對資料平面授與存取權限，此應用程式完全不需要管理平面的存取權。 相反地，如果您想要讓使用者能夠讀取保存庫屬性和標籤，但不讓他擁有金鑰、密碼或憑證的任何存取權，您可以使用 RBAC 對此使用者授與「讀取」權限，但不需要授與資料平面的存取權。
 
 **最佳做法**：將憑證儲存在金鑰保存庫。 您的憑證價值很高。 若陷入有心人的控制中，就可能危害您的應用程式安全性或資料的安全性。   
 **詳細資料**：Azure Resource Manager 可以在部署 VM 時，將儲存在 Azure Key Vault 中的憑證安全地部署到 Azure VM。 透過為金鑰保存庫設定適當的存取原則，您也控制誰可以存取您的憑證。 另一個優點是您可以在 Azure Key Vault 中的單一位置管理所有憑證。 如需其他資訊，請參閱[將憑證從客戶管理的金鑰保存庫部署到 VM](https://blogs.technet.microsoft.com/kv/2016/09/14/updated-deploy-certificates-to-vms-from-customer-managed-key-vault/) \(英文\)。
@@ -60,7 +60,7 @@ Azure Key Vault 設計用來支援應用程式金鑰和祕密。 Key Vault 的�
 **詳細資料**：刪除金鑰保存庫或金鑰保存庫物件可能是不小心或惡意的。 啟用金鑰保存庫的虛刪除和清除保護功能，尤其是針對用來加密待用資料的金鑰。 刪除這些金鑰就相當於資料遺失，因此如有需要，您可以復原已刪除的保存庫和保存庫物件。 定期練習金鑰保存庫復原作業。
 
 > [!NOTE]
-> 如果使用者具有金鑰保存庫管理平面的參與者權限 (RBAC)，他們可以透過設定金鑰保存庫存取原則，對自己授與資料平面的存取權。 建議您嚴格控制擁有金鑰保存庫「參與者」權限的人員，以確保只有獲得授權的人員可以存取和管理您的金鑰保存庫、金鑰、密碼和憑證。
+> 如果使用者具有金鑰保存庫管理平面的參與者權限 (RBAC)，他們可以透過設定金鑰保存庫存取原則，為自己授與資料平面的存取權。 建議您嚴格控制擁有金鑰保存庫「參與者」權限的人員，以確保只有獲得授權的人員可以存取和管理您的金鑰保存庫、金鑰、密碼和憑證。
 >
 >
 
@@ -81,12 +81,12 @@ Azure Key Vault 設計用來支援應用程式金鑰和祕密。 Key Vault 的�
 
 ## <a name="protect-data-at-rest"></a>保護靜態資料的安全
 
-[待用資料加密 (英文)](https://cloudblogs.microsoft.com/microsoftsecure/2015/09/10/cloud-security-controls-series-encrypting-data-at-rest/) 是達到資料隱私性、合規性及資料主權的必要步驟。
+待用[資料加密](https://cloudblogs.microsoft.com/microsoftsecure/2015/09/10/cloud-security-controls-series-encrypting-data-at-rest/)是資料隱私權、合規性及資料主權的必要步驟。
 
 **最佳做法**：套用磁碟加密來協助保護您的資料。   
 **詳細資料**：使用 [Azure 磁碟加密](/azure/security/azure-security-disk-encryption-overview)。 它可讓 IT 系統管理員加密 Windows 和 Linux IaaS VM 磁碟。 磁碟加密結合業界標準的 Windows BitLocker 功能和 Linux dm-crypt 功能，為 OS 和資料磁碟提供磁碟區加密。
 
-Azure 儲存體和 Azure SQL Database 預設會加密待用資料，且許多服務會提供加密選項。 您可以使用 Azure Key Vault 控管存取和加密資料的金鑰。 若要深入了解，請參閱 [Azure 資源提供者加密模型支援](encryption-atrest.md#azure-resource-providers-encryption-model-support)。
+Azure 儲存體和 Azure SQL Database 預設會加密待用資料，且許多服務會提供加密選項。 您可以使用 Azure Key Vault 控管存取和加密資料的金鑰。 [若要深入瞭解，請參閱 Azure 資源提供者加密模型支援](encryption-atrest.md#azure-resource-providers-encryption-model-support)。
 
 **最佳做法**：使用加密，協助降低與未經授權存取資料相關的風險。   
 **詳細資料**：將機密資料寫入它們之前，先加密您的磁碟機。
@@ -95,9 +95,9 @@ Azure 儲存體和 Azure SQL Database 預設會加密待用資料，且許多服
 
 ## <a name="protect-data-in-transit"></a>保護傳輸中的資料
 
-保護傳輸中的資料應該是您的資料保護策略中不可或缺的部分。 因為資料會從許多位置來回移動，一般會建議您一律使用 SSL/TLS 通訊協定來交換不同位置的資料。 在某些情況下，您可能希望使用 VPN，隔離您的內部部署與雲端基礎結構之間的整個通訊通道。
+保護傳輸中的資料應該是您的資料保護策略中不可或缺的部分。 由於資料會從許多位置來回移動，因此我們通常會建議一律使用 SSL/TLS 通訊協定來交換不同位置的資料。 在某些情況下，建議使用 VPN 來隔離您內部部署和雲端基礎結構之間的整個通訊通道。
 
-對於在內部部署基礎結構與 Azure 之間移動的資料，請考慮適當的防護措施，例如 HTTPS 或 VPN。 當在 Azure 虛擬網路和內部部署位置之間傳送加密流量時，請使用 [Azure VPN 閘道](../../vpn-gateway/index.yml)。
+對於在內部部署基礎結構與 Azure 之間移動的資料，請考慮適當的防護措施，例如 HTTPS 或 VPN。 透過公用網際網路在 Azure 虛擬網路和內部部署位置之間傳送加密流量時，請使用 [AZURE VPN 閘道](../../vpn-gateway/index.yml)。
 
 以下是特定於使用 Azure VPN 閘道、SSL/TLS，以及 HTTPS 的最佳做法。
 
@@ -111,9 +111,9 @@ Azure 儲存體和 Azure SQL Database 預設會加密待用資料，且許多服
 **詳細資料**：使用 [ExpressRoute](/azure/expressroute/expressroute-introduction)。 如果您選擇使用 ExpressRoute，您也可以透過使用 SSL/TLS 或其他通訊協定，在應用程式層級加密資料，以提供額外的保護。
 
 **最佳做法**：透過 Azure 入口網站與 Azure 儲存體互動。   
-**詳細資料**：透過 HTTPS 發生的所有交易。 您也可以使用透過 HTTPS 的[儲存體 REST API](https://msdn.microsoft.com/library/azure/dd179355.aspx)來與[Azure 儲存體](https://azure.microsoft.com/services/storage/)互動。
+**詳細資料**：透過 HTTPS 發生的所有交易。 您也可以使用 [儲存體 REST API](https://msdn.microsoft.com/library/azure/dd179355.aspx) over HTTPS 來與 [Azure 儲存體](https://azure.microsoft.com/services/storage/)互動。
 
-無法保護傳輸中資料的組織比較容易遭受[攔截攻擊](https://technet.microsoft.com/library/gg195821.aspx)、[竊聽](https://technet.microsoft.com/library/gg195641.aspx)及工作階段攔截。 這些攻擊可能是取得機密資料存取權的第一步。
+無法保護傳輸中資料的組織比較容易遭受 [中間人攻擊](https://technet.microsoft.com/library/gg195821.aspx)、 [竊聽](https://technet.microsoft.com/library/gg195641.aspx)及會話劫持攻擊。 這些攻擊可能是取得機密資料存取權的第一步。
 
 ## <a name="secure-email-documents-and-sensitive-data"></a>保護電子郵件、 文件和敏感性資料
 

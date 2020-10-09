@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 10/05/2019
 ms.author: rohink
 ms.openlocfilehash: ab850adb2e9a25778d5f44ba711eb0762fe562c8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76939330"
 ---
 # <a name="azure-dns-private-zones-scenarios"></a>Azure DNS 私人區域案例
@@ -52,7 +52,7 @@ Azure DNS 私人區域能在虛擬網路內及虛擬網路之間提供名稱解�
 
 了解如何在 Azure DNS 中[建立私人 DNS 區域](./private-dns-getstarted-powershell.md)。
 
-如需瞭解 DNS 區域和記錄，請造訪： [dns 區域和記錄總覽](dns-zones-records.md)。
+深入瞭解 DNS 區域和記錄，請造訪： [dns 區域和記錄總覽](dns-zones-records.md)。
 
 了解 Azure 的一些其他重要[網路功能](../networking/networking-overview.md)。
 

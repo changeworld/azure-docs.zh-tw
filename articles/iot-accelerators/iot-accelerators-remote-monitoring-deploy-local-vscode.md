@@ -1,5 +1,5 @@
 ---
-title: 在本機部署遠端監視解決方案-Visual Studio Code-Azure |Microsoft Docs
+title: 本機部署遠端監視解決方案-Visual Studio Code-Azure |Microsoft Docs
 description: 此操作指南會示範如何使用 Visual Studio Code，將遠端監視解決方案加速器部署到本機電腦，以進行測試和開發。
 author: avneet723
 manager: hegate
@@ -9,17 +9,17 @@ services: iot-accelerators
 ms.date: 01/17/2019
 ms.topic: conceptual
 ms.openlocfilehash: 8f1d20e9a6a78d99a23fe4b98aeb4f3eb8359da7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "73890948"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---visual-studio-code"></a>本機部署遠端監視解決方案加速器 - Visual Studio Code
 
 [!INCLUDE [iot-accelerators-selector-local](../../includes/iot-accelerators-selector-local.md)]
 
-本文會示範如何將遠端監視解決方案加速器部署到本機電腦，以進行測試和開發。 您可了解如何在 Visual Studio Code 中執行微服務。 本機微服務部署會使用下列雲端服務： IoT 中樞、Cosmos DB、Azure 串流分析，以及 Azure 時間序列深入解析。
+本文會示範如何將遠端監視解決方案加速器部署到本機電腦，以進行測試和開發。 您可了解如何在 Visual Studio Code 中執行微服務。 本機微服務部署會使用下列雲端服務： IoT 中樞、Cosmos DB、Azure 串流分析和 Azure 時間序列深入解析。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -35,7 +35,7 @@ ms.locfileid: "73890948"
 * [.NET Core](https://dotnet.microsoft.com/download)
 * [Docker](https://www.docker.com)
 * [Nginx](https://nginx.org/en/download.html)
-* [Visual Studio Code](https://code.visualstudio.com/)
+* [Visual Studio Code](https://code.visualstudio.com/) \(英文\)
 * [VS Code 的 C# 擴充功能](https://code.visualstudio.com/docs/languages/csharp)
 * [Node.js v8](https://nodejs.org/) - 此軟體是指令碼用來建立 Azure 資源之 PCS CLI 的先決條件。 不要使用 Node.js v10
 
@@ -59,15 +59,15 @@ dotnet build -c Release
 
 ### <a name="deploy-all-other-microservices-on-local-machine"></a>在本機電腦上部署所有其他微服務
 
-下列步驟示範如何在 Visual Studio Code 中執行遠端監視微服務：
+下列步驟說明如何在 Visual Studio Code 中執行遠端監視微服務：
 
 1. 啟動 Visual Studio Code。
-1. 在 VS Code 中，開啟 [ **azure-iot-電腦-遠端監視-dotnet** ] 資料夾。
-1. 在 [ **azure-iot-電腦-遠端監視-dotnet** ] 資料夾中，建立名為**vscode**的新資料夾。
-1. 將 services\scripts\local\launch\idesettings\vscode 上的檔案和**tasks.js**的**launch.js**複製到您剛才建立的**vscode**資料夾。
-1. 在 VS Code 中開啟 [**調試] 面板**，並執行 [**執行所有微服務**] 設定。 此組態會在 Docker 中執行裝置模擬微服務，並且在偵錯工具中執行其他微服務。
+1. 在 VS Code 中，開啟 **azure-iot-dotnet** 資料夾。
+1. 在 azure 中建立名為 **vscode** 的新資料夾- **dotnet** 資料夾。
+1. 將 **launch.js上** 的檔案，並 **tasks.js** 從 services\scripts\local\launch\idesettings\vscode 複製到您剛才建立的 **vscode** 資料夾。
+1. 在 VS Code 中開啟 [ **Debug] 面板** ，然後執行 [ **執行所有微服務** 設定]。 此組態會在 Docker 中執行裝置模擬微服務，並且在偵錯工具中執行其他微服務。
 
-在偵錯主控台中**執行 [執行所有 microsoervices** ] 的輸出看起來如下所示：
+在偵錯主控台中 **執行執行所有 microsoervices** 的輸出看起來如下所示：
 
 [![部署-本機-微服務](./media/deploy-locally-vscode/auth-debug-results-inline.png)](./media/deploy-locally-vscode/auth-debug-results-expanded.png#lightbox)
 
@@ -80,7 +80,7 @@ npm install
 npm start
 ```
 
-當開始完成時，您的瀏覽器會顯示**HTTP： \/ /localhost： 3000/儀表板**頁面。 此頁面上的錯誤一如預期。 若要檢視沒有錯誤的應用程式，請完成下列步驟。
+當啟動完成時，您的瀏覽器會顯示頁面 **HTTP： \/ /localhost： 3000/儀表板**。 此頁面上的錯誤一如預期。 若要檢視沒有錯誤的應用程式，請完成下列步驟。
 
 ### <a name="configure-and-run-nginx"></a>設定和執行 NGINX
 

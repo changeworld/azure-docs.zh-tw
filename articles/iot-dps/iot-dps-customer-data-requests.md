@@ -1,6 +1,6 @@
 ---
 title: Azure DPS 裝置的客戶資料要求功能
-description: 對於在個人的 Azure 裝置布建服務（DPS）中管理的裝置，本文會說明如何匯出或刪除個人資料。
+description: 針對在 Azure 裝置布建服務中管理的裝置 () 個人的 DPS，本文將說明如何匯出或刪除個人資料。
 author: dominicbetts
 ms.author: dobett
 ms.date: 05/16/2018
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.openlocfilehash: 1dcf1b9f62f94b8f75ef2fe77f3e237a387c53eb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "73890643"
 ---
 # <a name="summary-of-customer-data-request-features"></a>客戶資料要求功能的摘要

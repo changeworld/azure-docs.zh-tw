@@ -8,10 +8,10 @@ ms.date: 2/19/2019
 ms.author: rohink
 ms.topic: conceptual
 ms.openlocfilehash: 9304556edb5e6207296d8ee4e8392e345869cb92
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76939042"
 ---
 # <a name="delegation-of-dns-zones-with-azure-dns"></a>使用 Azure DNS 的 DNS 區域委派
@@ -35,7 +35,7 @@ Azure DNS 可讓您裝載 DNS 區域，並在 Azure 中管理網域的 DNS 記�
 有兩種類型的 DNS 伺服器：
 
 * *授權*dns 伺服器裝載 DNS 區域。 它只會回答這些區域中的 DNS 記錄查詢。
-* *遞迴*dns 伺服器不裝載 DNS 區域。 它會呼叫授權 DNS 伺服器來收集所需的資料，以回答所有 DNS 查詢。
+* *遞迴*dns 伺服器不會裝載 DNS 區域。 它會呼叫授權 DNS 伺服器來收集所需的資料，以回答所有 DNS 查詢。
 
 Azure DNS 提供具權威性的 DNS 服務。  它不提供遞迴 DNS 服務。 Azure 中的雲端服務和 VM 會自動設定為使用在 Azure 的基礎結構中個別提供的遞迴 DNS 服務。 如需如何變更這些 DNS 設定的詳細資訊，請參閱 [Azure 中的名稱解析](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)。
 
@@ -67,5 +67,5 @@ Azure DNS 提供具權威性的 DNS 服務。  它不提供遞迴 DNS 服務。 
 
 ## <a name="next-steps"></a>後續步驟
 
-瞭解如何將[您的網域委派給 Azure DNS](dns-delegate-domain-azure-dns.md)
+瞭解如何將 [您的網域委派給 Azure DNS](dns-delegate-domain-azure-dns.md)
 

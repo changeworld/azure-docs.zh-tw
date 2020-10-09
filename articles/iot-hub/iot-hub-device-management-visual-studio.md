@@ -1,5 +1,5 @@
 ---
-title: 以/Visual Studio Cloud Explorer 的 Azure IoT 裝置管理
+title: Visual Studio Cloud Explorer 的 Azure IoT 裝置管理
 description: 使用適用於 Visual Studio 的 Cloud Explorer 來管理 Azure IoT 中樞裝置，並採用直接方法和對應項所需的屬性管理選項。
 author: shizn
 ms.service: iot-hub
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: xshi
 ms.openlocfilehash: 6fe5a45dda6632c56b3c6714827950e25e7d26af
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "73953188"
 ---
 # <a name="use-cloud-explorer-for-visual-studio-for-azure-iot-hub-device-management"></a>使用適用於 Visual Studio 的 Cloud Explorer 來管理 Azure IoT 中樞裝置
@@ -41,7 +41,7 @@ ms.locfileid: "73953188"
 
 在本文中，請使用各種管理選項來執行 Visual Studio 的 Cloud Explorer。
 
-## <a name="what-you-need"></a>您需要什麼
+## <a name="what-you-need"></a>必要條件
 
 您必須符合下列必要條件：
 
@@ -49,27 +49,27 @@ ms.locfileid: "73953188"
 
 - 位於您訂用帳戶中的 Azure IoT 中樞。
 
-- Microsoft Visual Studio 2017 Update 9 或更新版本。 本文使用[Visual Studio 2017 或 Visual Studio 2019](https://www.visualstudio.com/vs/)。
+- Microsoft Visual Studio 2017 Update 9 或更新版本。 本文使用 [Visual Studio 2017 或 Visual Studio 2019](https://www.visualstudio.com/vs/)。
 
-- 從 Visual Studio 安裝程式 Cloud Explorer 元件，預設會使用 Azure 工作負載加以選取。
+- 從預設選取的 Azure 工作負載 Visual Studio 安裝程式 Cloud Explorer 元件。
 
 ## <a name="update-cloud-explorer-to-latest-version"></a>將 Cloud Explorer 更新至最新版本
 
-來自 Visual Studio 2017 Visual Studio 安裝程式的 Cloud Explorer 元件僅支援監視裝置到雲端和雲端到裝置的訊息。 若要使用 Visual Studio 2017，請下載並安裝最新的[Cloud Explorer](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.CloudExplorerForVS)。
+Visual Studio 2017 的 Visual Studio 安裝程式 Cloud Explorer 元件僅支援監視裝置到雲端和雲端到裝置的訊息。 若要使用 Visual Studio 2017，請下載並安裝最新的 [Cloud Explorer](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.CloudExplorerForVS)。
 
 ## <a name="sign-in-to-access-your-hub"></a>登入以存取您的中樞
 
-1. 在 Visual Studio 中，選取 [ **View**  >  **Cloud Explorer** ] 以開啟 Cloud Explorer。
+1. 在 Visual Studio 中，選取 [ **View**]  >  **Cloud Explorer**開啟 Cloud Explorer。
 
-1. 選取 [帳戶管理] 圖示，以顯示您的訂閱。
+1. 選取 [帳戶管理] 圖示，以顯示您的訂用帳戶。
 
     ![帳戶管理圖示](media/iot-hub-visual-studio-cloud-device-messaging/account-management-icon.png)
 
-1. 如果您已登入 Azure，就會顯示您的帳戶。 若要第一次登入 Azure，請選擇 [**新增帳戶**]。
+1. 如果您已登入 Azure，則會顯示您的帳戶。 若要第一次登入 Azure，請選擇 [ **新增帳戶**]。
 
-1. 選取您想要使用的 Azure 訂用帳戶，然後選擇 [套用 **]。**
+1. 選取您要使用的 Azure 訂用帳戶，然後選擇 [套用 **]。**
 
-1. 依序展開您的訂用帳戶和 [ **IoT 中樞**]。  在每個中樞底下，您可以看到該中樞的裝置。 以滑鼠右鍵按一下某個裝置，以存取管理選項。
+1. 展開您的訂用帳戶，然後展開 [ **IoT 中樞**]。  在每個中樞下，您可以看到該中樞的裝置。 以滑鼠右鍵按一下某個裝置，以存取管理選項。
 
     ![管理選項](media/iot-hub-device-management-visual-studio/management-options-vs2019.png)
 
@@ -79,9 +79,9 @@ ms.locfileid: "73953188"
 
 1. 以滑鼠右鍵按一下您的裝置，然後選取 [叫用裝置直接方法]****。
 
-1. 在 [叫用**直接方法**] 中輸入方法名稱和承載，然後選取 **[確定]**。
+1. 在 [叫用 **直接方法**] 中輸入方法名稱和承載，然後選取 **[確定]**。
 
-    結果會顯示在**輸出**中。
+    結果會顯示在 **輸出**中。
 
 ## <a name="update-device-twin"></a>更新裝置對應項
 
@@ -89,13 +89,13 @@ ms.locfileid: "73953188"
 
 1. 以滑鼠右鍵按一下您的裝置，然後選取 [編輯裝置對應項]****。
 
-   檔案**上的azure-iot-device-twin.js**隨即開啟，其中包含裝置對應項的內容。
+   檔案 ** 上的azure-iot-device-twin.js** 隨即開啟，其中包含裝置對應項的內容。
 
-1. 對**標記**或屬性進行一些編輯 **。所需**的欄位會**在檔案上azure-iot-device-twin.js** 。
+1. 對標籤或屬性進行一些編輯 **。需要** **azure-iot-device-twin.js** **檔案的欄位**。
 
 1. 按 **Ctrl+S** 來更新裝置對應項。
 
-   結果會顯示在**輸出**中。
+   結果會顯示在 **輸出**中。
 
 ## <a name="send-cloud-to-device-messages"></a>傳送雲端到裝置訊息
 
@@ -103,9 +103,9 @@ ms.locfileid: "73953188"
 
 1. 以滑鼠右鍵按一下您的裝置，然後選取 [Send C2D Message]**** \(傳送 C2D 訊息\)。
 
-1. 在**傳送 C2D 訊息**中輸入訊息，然後選取 **[確定]**。
+1. 在 [ **傳送 C2D] 訊息** 中輸入訊息，然後選取 **[確定]**。
 
-   結果會顯示在**輸出**中。
+   結果會顯示在 **輸出**中。
 
 ## <a name="next-steps"></a>後續步驟
 

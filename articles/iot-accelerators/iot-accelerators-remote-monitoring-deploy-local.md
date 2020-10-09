@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 01/17/2019
 ms.topic: conceptual
 ms.openlocfilehash: a1eba1fceb959bd475d205176c2c53f6409fdc77
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "73890896"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---visual-studio"></a>本機部署遠端監視解決方案加速器 - Visual Studio
@@ -60,7 +60,7 @@ ms.locfileid: "73890896"
 
 ### <a name="deploy-all-other-microservices-on-local-machine"></a>在本機電腦上部署所有其他微服務
 
-下列步驟示範如何在 Visual Studio 中執行遠端監視微服務：
+下列步驟說明如何在 Visual Studio 中執行遠端監視微服務：
 
 1. 啟動 Visual Studio。
 1. 開啟 **remote-monitoring.sln** 解決方案 (位於存放庫本機複本的 **services** 資料夾中)。
@@ -96,7 +96,7 @@ npm install
 npm start
 ```
 
-當開始完成時，您的瀏覽器會顯示**HTTP： \/ /localhost： 3000/儀表板**頁面。 此頁面上的錯誤一如預期。 若要檢視沒有錯誤的應用程式，請完成下列步驟。
+當啟動完成時，您的瀏覽器會顯示頁面 **HTTP： \/ /localhost： 3000/儀表板**。 此頁面上的錯誤一如預期。 若要檢視沒有錯誤的應用程式，請完成下列步驟。
 
 ### <a name="configure-and-run-nginx"></a>設定和執行 NGINX
 

@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: sngun
 ms.openlocfilehash: fb080858ff6be98846c542844810cf976eb3f264
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85117976"
 ---
 # <a name="azure-cosmos-db-query-cheat-sheets"></a>Azure Cosmos DB 查詢速查表
@@ -28,7 +28,7 @@ ms.locfileid: "85117976"
 ## <a name="oversized-cheat-sheets"></a>超大型速查表
 如果您要使用繪圖機或大型印表機在 A3 大小的紙張 (11.7" x 16.5") 上列印，請下載 [Azure Cosmos DB A3 大小的查詢速查表](https://go.microsoft.com/fwlink/?linkid=870413)。
 
-:::image type="content" source="./media/query-cheat-sheet/azure-cosmos-db-cheat-sheet-a3.png" alt-text="Azure Cosmos DB 查詢速查表 - A3 大小，包含 SQL API、JavaScript、MongoDB、Gremlin 及資料表 API 查詢和函式" border="false":::
+:::image type="content" source="./media/query-cheat-sheet/azure-cosmos-db-cheat-sheet-a3.png" alt-text="Azure Cosmos DB 查詢速查表 - Letter 大小，包含 SQL API、JavaScript、MongoDB、Gremlin 及資料表 API 查詢和函式" border="false":::
 
 ## <a name="next-steps"></a>後續步驟
 如需有關撰寫查詢的更多說明，請參閱下列文章：

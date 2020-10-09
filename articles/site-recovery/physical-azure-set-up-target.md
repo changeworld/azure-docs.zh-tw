@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: ramamill
 ms.openlocfilehash: 685f04b27cd315b04ef5c45e155e825eebe2747b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "73953892"
 ---
 # <a name="prepare-target-vmware-to-azure"></a>準備目標 (VMware 至 Azure)
@@ -21,7 +21,7 @@ ms.locfileid: "73953892"
 ## <a name="prerequisites"></a>必要條件
 
 本文假設：
-- 您已建立復原服務保存庫，用以保護實體伺服器。 您可以從[Azure 入口網站](https://portal.azure.com "Azure 入口網站")建立復原服務保存庫。
+- 您已建立復原服務保存庫，用以保護實體伺服器。 您可以從 [Azure 入口網站](https://portal.azure.com "Azure 入口網站")建立復原服務保存庫。
 - 您已[設定內部部署環境](physical-azure-disaster-recovery.md)以將實體伺服器複寫至 Azure。
 
 ## <a name="prepare-target"></a>準備目標

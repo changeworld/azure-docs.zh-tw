@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: tagore
 ms.openlocfilehash: 32603f4ab33e020245861e5dc66d2ade545fa627
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79247484"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91872131"
 ---
 # <a name="what-is-the-cloud-service-model-and-how-do-i-package-it"></a>什麼是雲端服務模型？如何封裝？
 雲端服務是從三個元件建立的，也就是服務定義 (.csdef)**、服務組態 (.cscfg)** 和服務封裝 (.cspkg)**。 **ServiceDefinition.csdef** 和 **ServiceConfig.cscfg** 這兩個檔案是以 XML 為基礎，描述雲端服務的結構及其設定方式，統稱為模型。 **ServicePackage.cspkg** 是從 **ServiceDefinition.csdef** 產生的 zip 檔案，此外，包含所有必要的二進位型相依性。 Azure 會從 **ServicePackage.cspkg** 和 **ServiceConfig.cscfg** 建立雲端服務。
@@ -83,7 +83,7 @@ ms.locfileid: "79247484"
 </ServiceDefinition>
 ```
 
-您可以參考[服務定義架構](/previous-versions/azure/reference/ee758711(v=azure.100))，以進一步瞭解此處所使用的 XML 架構，不過，以下是一些元素的簡短說明：
+您可以參考 [服務定義架構](/previous-versions/azure/reference/ee758711(v=azure.100)) ，進一步瞭解此處所使用的 XML 架構，但以下是一些元素的快速說明：
 
 **網站**  
  包含 IIS7 中所裝載的網站或 Web 應用程式的定義。
@@ -103,7 +103,7 @@ ms.locfileid: "79247484"
 **LocalResources**  
  包含本機儲存資源的定義。 本機儲存資源是執行中角色執行個體所在之虛擬機器的檔案系統上的保留目錄。
 
-**匯入**  
+**進口**  
  包含匯入的模組的定義。 上述程式碼範例顯示遠端桌面連線與 Azure Connect 的模組。
 
 **啟動**  
@@ -136,7 +136,7 @@ ms.locfileid: "79247484"
 
 您可以參考 [服務組態結構描述](/previous-versions/azure/reference/ee758710(v=azure.100)) ，進一步了解此處所使用的 XML 結構描述，不過，以下是元素的簡短說明：
 
-**數**  
+**執行個體**  
  設定執行中角色執行個體的數目。 為防止您的雲端服務在升級期間可能變成無法使用，建議您部署多個 Web 對向角色執行個體。 部署多個執行個體的做法符合 [Azure 計算服務等級協定 (SLA)](https://azure.microsoft.com/support/legal/sla/)中的指導方針，當您為服務部署兩個或更多個角色執行個體時，此等級協定可保證網際網路對向角色有 99.95% 的外部連線能力。
 
 **ConfigurationSettings**  

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.openlocfilehash: 0a684151e01b298c60ff17ef1470e0648a425850
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "73889241"
 ---
 # <a name="integrate-the-remote-monitoring-solution-with-azure-data-lake-store"></a>整合遠端監視解決方案與 Azure Data Lake Store
@@ -89,7 +89,7 @@ az iot hub consumer-group create --hub-name contoso-rm30263 --name streamanalyti
 
     ![選取輸入](./media/iot-accelerators-integrate-data-lake/stream-analytics-new-input.png)
 
-1. 按一下 [檔案] 。
+1. 按一下 [儲存]。
 
 1. 在 [概觀] 頁面上，按一下 [輸出]****。
 
@@ -118,7 +118,7 @@ az iot hub consumer-group create --hub-name contoso-rm30263 --name streamanalyti
     > [!NOTE]
     > 如果您在快顯視窗中看見錯誤，請以無痕模式開啟新的瀏覽器視窗，然後再試一次。
 
-1. 按一下 [檔案] 。
+1. 按一下 [儲存]。
 
 ## <a name="edit-the-stream-analytics-query"></a>編輯串流分析查詢
 
@@ -141,7 +141,7 @@ Azure 串流分析會使用類似 SQL 的查詢語言，來指定要串流資料
 
     ![串流分析查詢](./media/iot-accelerators-integrate-data-lake/stream-analytics-query.png)
 
-1. 按一下 [檔案] 。
+1. 按一下 [儲存]。
 1. 按一下 [是]**** 以接受變更。
 
 ## <a name="start-the-stream-analytics-job"></a>啟動串流分析工作
@@ -154,7 +154,7 @@ Azure 串流分析會使用類似 SQL 的查詢語言，來指定要串流資料
 
 1. 將自訂時間往前設定數個小時，以收集從裝置開始進行串流之後的資料。
 
-1. 按一下 [啟動] 。
+1. 按一下 [啟動]。
 
     ![挑選自訂日期](./media/iot-accelerators-integrate-data-lake/stream-analytics-start-custom.png)
 

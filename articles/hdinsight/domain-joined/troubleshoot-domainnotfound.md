@@ -1,5 +1,5 @@
 ---
-title: 叢集建立失敗，發生 DomainNotFound 錯誤，Azure HDInsight
+title: 叢集建立失敗，但 Azure HDInsight 發生 DomainNotFound 錯誤
 description: 針對與 Azure HDInsight 叢集互動時的問題進行疑難排解的步驟和可能的解決方式
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,19 +8,19 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/23/2020
 ms.openlocfilehash: adcdafbc07fa0a8cc6970ab227b52aee798b084f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76776231"
 ---
-# <a name="scenario-cluster-creation-fails-with-domainnotfound-error-in-azure-hdinsight"></a>案例：叢集建立失敗，併發生 DomainNotFound 錯誤 Azure HDInsight
+# <a name="scenario-cluster-creation-fails-with-domainnotfound-error-in-azure-hdinsight"></a>案例：叢集建立失敗，但 Azure HDInsight 發生 DomainNotFound 錯誤
 
-本文說明與 Azure HDInsight 叢集互動時，問題的疑難排解步驟和可能的解決方法。
+本文說明與 Azure HDInsight 叢集互動時，問題的疑難排解步驟和可能的解決方式。
 
 ## <a name="issue"></a>問題
 
-HDI Secure （企業安全性套件）叢集建立失敗，並出現 `DomainNotFound` 錯誤訊息。
+HDI 安全 (企業安全性套件) 叢集建立失敗，並出現 `DomainNotFound` 錯誤訊息。
 
 ## <a name="cause"></a>原因
 
@@ -28,23 +28,23 @@ DNS 設定不正確。
 
 ## <a name="resolution"></a>解決方案
 
-部署加入網域的叢集時，HDI 會在 AAD DS （針對每個叢集）中建立內部使用者名稱和密碼，並將所有叢集節點聯結至此網域。 加入網域的作業是使用 Samba 工具來完成。 請確保已符合下列必要條件︰
+部署已加入網域的叢集時，HDI 會在 AAD DS (中建立每個叢集) 的內部使用者名稱和密碼，並將所有叢集節點加入此網域。 使用 Samba 工具即可完成網域加入。 請確保已符合下列必要條件︰
 
 * 功能變數名稱應透過 DNS 解析。
-* 網域控制站的 IP 位址應設定于部署叢集之虛擬網路的 DNS 設定中。
-* 如果虛擬網路與 AAD DS 的虛擬網路對等互連，則必須手動進行。
-* 如果您使用 DNS 轉寄站，則功能變數名稱必須在虛擬網路內正確解析。
-* 安全性原則（Nsg）不應封鎖加入網域。
+* 您應該在部署叢集的虛擬網路的 DNS 設定中設定網域控制站的 IP 位址。
+* 如果虛擬網路是使用 AAD DS 的虛擬網路所對等互連，則必須手動完成。
+* 如果您使用的是 DNS 轉寄站，則必須在虛擬網路內正確解析功能變數名稱。
+*  (Nsg 的安全性原則) 不應封鎖加入網域。
 
-### <a name="additional-debugging-steps"></a>其他調試步驟
+### <a name="additional-debugging-steps"></a>其他的調試步驟
 
-* 將 windows VM 部署在相同的子網中，使用使用者名稱和密碼將電腦加入網域（這可以透過 [控制台] UI 來完成），或
+* 將 windows VM 部署在相同的子網中，使用使用者名稱和密碼將電腦加入網域 (這可透過 [控制台] UI) 來完成，或
 
 * 在相同的子網中部署 ubuntu VM，並將電腦加入網域
   * 透過 SSH 連線到電腦
   * sudo su
   * 以使用者名稱和密碼執行腳本
-  * 腳本會進行 ping，建立必要的設定檔，然後再建立網域。 如果成功，您的 DNS 設定就很好。
+  * 腳本會偵測到，然後建立必要的設定檔，再建立網域。 如果成功，則您的 DNS 設定是良好的。
 
 ## <a name="next-steps"></a>後續步驟
 

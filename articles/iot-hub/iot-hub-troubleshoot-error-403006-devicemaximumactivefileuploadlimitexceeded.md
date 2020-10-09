@@ -9,30 +9,30 @@ ms.topic: troubleshooting
 ms.date: 01/30/2020
 ms.author: jlian
 ms.openlocfilehash: 1e3c05e4cc3ccf34573b55d3729aded16e26d66e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76960837"
 ---
 # <a name="403006-devicemaximumactivefileuploadlimitexceeded"></a>403006 DeviceMaximumActiveFileUploadLimitExceeded
 
-本文說明**403006 DeviceMaximumActiveFileUploadLimitExceeded**錯誤的原因和解決方案。
+本文說明 **403006 DeviceMaximumActiveFileUploadLimitExceeded** 錯誤的原因和解決方案。
 
-## <a name="symptoms"></a>徵狀
+## <a name="symptoms"></a>徵兆
 
-您的檔案上傳要求失敗，錯誤碼為**403006** ，訊息為「活動檔案上傳要求數不能超過10個」。
+您的檔案上傳要求失敗，錯誤碼為 **403006** 和訊息「作用中檔案上傳要求的數目不可超過10」。
 
 ## <a name="cause"></a>原因
 
-每個裝置用戶端限制為[10 個並行](./iot-hub-devguide-quotas-throttling.md#other-limits)檔案上傳。 
+每個裝置用戶端限制為 [10 個並行](./iot-hub-devguide-quotas-throttling.md#other-limits)檔案上傳。 
 
-如果您的裝置未在檔案上傳完成時通知 IoT 中樞，您可以輕鬆地超過限制。 此問題通常是因為不可靠的裝置端網路所造成。
+當檔案上傳完成時，如果您的裝置未通知 IoT 中樞，您可以輕鬆地超過限制。 此問題通常是由於不可靠的裝置端網路所造成。
 
-## <a name="solution"></a>解決方案
+## <a name="solution"></a>解決方法
 
-請確定裝置可以立即[通知 IoT 中樞檔案上傳完成](./iot-hub-devguide-file-upload.md#notify-iot-hub-of-a-completed-file-upload)。 然後，請嘗試[減少 SAS 權杖 TTL 以進行檔案上傳](iot-hub-configure-file-upload.md)設定。
+請確定裝置可以立即 [通知 IoT 中樞檔案上傳完成](./iot-hub-devguide-file-upload.md#notify-iot-hub-of-a-completed-file-upload)。 然後，嘗試 [減少檔案上傳設定的 SAS 權杖 TTL](iot-hub-configure-file-upload.md)。
 
 ## <a name="next-steps"></a>後續步驟
 
-若要深入瞭解檔案上傳，請參閱[上傳 IoT 中樞的](./iot-hub-devguide-file-upload.md)檔案和[使用 Azure 入口網站來設定 IoT 中樞](./iot-hub-configure-file-upload.md)檔案上傳。
+若要深入瞭解檔案上傳，請參閱使用 [IoT 中樞上傳](./iot-hub-devguide-file-upload.md) 檔案，並 [使用 Azure 入口網站設定 Iot 中樞](./iot-hub-configure-file-upload.md)檔案上傳。

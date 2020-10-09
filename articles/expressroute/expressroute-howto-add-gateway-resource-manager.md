@@ -8,14 +8,14 @@ ms.topic: tutorial
 ms.date: 10/05/2020
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 7554993025d8f64a80c1b223586f856eedf9e964
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: 9f01961ec7c7f8e0a4e2d72e28e6def50e93ad5d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91766600"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91854302"
 ---
-# <a name="configure-a-virtual-network-gateway-for-expressroute-using-powershell"></a>使用 PowerShell 為 ExpressRoute 設定虛擬網路閘道
+# <a name="tutorial-configure-a-virtual-network-gateway-for-expressroute-using-powershell"></a>教學課程：使用 PowerShell 為 ExpressRoute 設定虛擬網路閘道
 > [!div class="op_single_selector"]
 > * [Resource Manager - Azure 入口網站](expressroute-howto-add-gateway-portal-resource-manager.md)
 > * [Resource Manager - PowerShell](expressroute-howto-add-gateway-resource-manager.md)
@@ -29,8 +29,6 @@ ms.locfileid: "91766600"
 > [!div class="checklist"]
 > - 建立閘道子網路。
 > - 建立虛擬網路閘道。
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -48,7 +46,7 @@ ms.locfileid: "91766600"
 | Subnet1 名稱 | *FrontEnd* |
 | 閘道子網路名稱 | *GatewaySubnet* |    
 | 閘道子網路位址空間 | *192.168.200.0/26* |
-| 區域 | 美國東部** |
+| 區域 | 美國東部 |
 | 閘道名稱 | *GW* |   
 | 閘道 IP 名稱 | *GWIP* |
 | 閘道 IP 設定名稱 | *gwipconf* |
@@ -94,7 +92,7 @@ ms.locfileid: "91766600"
    ```azurepowershell-interactive
    $pip = New-AzPublicIpAddress -Name $GWIPName  -ResourceGroupName $RG -Location $Location -AllocationMethod Dynamic
    ```
-1. 建立適用於閘道的組態。 閘道器組態定義要使用的子網路和公用 IP 位址。 在此步驟中，您要指定在建立閘道將使用的組態。 這個步驟不會實際建立閘道物件。 使用下列範例來建立閘道組態。
+1. 建立適用於閘道的組態。 閘道器組態定義要使用的子網路和公用 IP 位址。 在此步驟中，您要指定在建立閘道將使用的組態。 使用下列範例來建立閘道組態。
 
    ```azurepowershell-interactive
    $ipconf = New-AzVirtualNetworkGatewayIpConfig -Name $GWIPconfName -Subnet $subnet -PublicIpAddress $pip
