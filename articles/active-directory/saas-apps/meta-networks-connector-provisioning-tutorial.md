@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: Zhchia
-ms.openlocfilehash: bcddaec1660082c2d3fed42e0c10cbdde987693c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c43624b57f5a46473e8640200a7284a9fa737790
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91273512"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91849209"
 ---
 # <a name="tutorial-configure-meta-networks-connector-for-automatic-user-provisioning"></a>教學課程：設定自動使用者布建的 Meta Networks Connector
 
@@ -27,7 +27,7 @@ ms.locfileid: "91273512"
 >
 > 此連接器目前為公開預覽版。 如需有關預覽功能的一般 Microsoft Azure 使用規定詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用規定](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 本教學課程中概述的案例假設您已經具有下列必要條件：
 
@@ -60,7 +60,7 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
 3.  設定 **Api 金鑰名稱** 和 **api 金鑰描述**。
 
-    ![Meta Networks Connector Create Token](media/meta-networks-connector-provisioning-tutorial/keyname.png)
+    :::image type="content" source="media/meta-networks-connector-provisioning-tutorial/keyname.png" alt-text="Meta Networks Connector 管理主控台的螢幕擷取畫面，其中反白顯示 P I 金鑰名稱，以及 Azure A D 和 P I 金鑰的 P I 重要描述值。" border="false":::
 
 4.  開啟**群組**和**使用者**的**寫入**許可權。
 
@@ -68,7 +68,7 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
 5.  按一下 [ **新增**]。 複製並儲存 **秘密** ，因為這會是您唯一可以看到的時間。 在 Azure 入口網站的 Meta Networks Connector 應用程式的 [布建] 索引標籤中，將會在 [秘密權杖] 欄位中輸入此值。
 
-    ![Meta Networks Connector Create Token](media/meta-networks-connector-provisioning-tutorial/token.png)
+    :::image type="content" source="media/meta-networks-connector-provisioning-tutorial/token.png" alt-text="Meta Networks Connector 管理主控台的螢幕擷取畫面，其中反白顯示 P I 金鑰名稱，以及 Azure A D 和 P I 金鑰的 P I 重要描述值。" border="false":::
 
 6.  藉由流覽至 [ **管理] > 設定 > IdP > 建立新**的來新增 IdP。
 
@@ -143,7 +143,7 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
     ![通知電子郵件](common/provisioning-notification-email.png)
 
-7. 按一下 [檔案]  。
+7. 按一下 [儲存]。
 
 8. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 使用者至 Meta Networks] 連接器**。
 

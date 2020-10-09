@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 04/30/2020
 ms.author: Zhchia
-ms.openlocfilehash: fae6c9f76f5c502d3a31c76330bd5b348d523e37
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 71dc05e3949c2675be6255723530693304e1aa3e
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91360577"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850076"
 ---
 # <a name="tutorial-configure-mediusflow-for-automatic-user-provisioning"></a>教學課程：設定 MediusFlow 來自動佈建使用者
 
@@ -62,7 +62,7 @@ https://success.mediusflow.com/documentation/administration_guide/user_login_and
 
 1.  藉由提供租用戶識別碼，登入 [MediusFlow 管理主控台](https://office365.cloudapp.mediusflow.com/)。
 
-    ![Authenticate](./media/mediusflow-provisioning-tutorial/1-auth.png)
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/1-auth.png" alt-text="MediusFlow 管理主控台的螢幕擷取畫面。[MediusFlow 租使用者名稱] 方塊和 [驗證] 按鈕會在第一個整合步驟中反白顯示。" border="false":::
 
 2. 驗證與 MediusFlow 的連線。
 
@@ -76,35 +76,35 @@ https://success.mediusflow.com/documentation/administration_guide/user_login_and
 
 4. 儲存組態。
 
-    ![Authenticate](./media/mediusflow-provisioning-tutorial/4-save-config.png)
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/4-save-config.png" alt-text="MediusFlow 管理主控台的螢幕擷取畫面。[MediusFlow 租使用者名稱] 方塊和 [驗證] 按鈕會在第一個整合步驟中反白顯示。" border="false":::
 
 5. 選取 [使用者佈建]，然後按一下 [確定]。
 
-    ![Authenticate](./media/mediusflow-provisioning-tutorial/5-select-user-provisioning.png)
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/5-select-user-provisioning.png" alt-text="MediusFlow 管理主控台的螢幕擷取畫面。[MediusFlow 租使用者名稱] 方塊和 [驗證] 按鈕會在第一個整合步驟中反白顯示。" border="false":::
 
 6. 按一下 [產生祕密金鑰]。 複製並儲存此值。此值會輸入到 Azure 入口網站 MediusFLow 應用程式 [佈建] 索引標籤中的 [祕密權杖] 欄位。
 
-    ![Authenticate](./media/mediusflow-provisioning-tutorial/6-create-secret-1.png)
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/6-create-secret-1.png" alt-text="MediusFlow 管理主控台的螢幕擷取畫面。[MediusFlow 租使用者名稱] 方塊和 [驗證] 按鈕會在第一個整合步驟中反白顯示。" border="false":::
 
 7. 按一下 [確定]。
 
-    ![Authenticate](./media/mediusflow-provisioning-tutorial/7-confirm-secret.png)
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/7-confirm-secret.png" alt-text="MediusFlow 管理主控台的螢幕擷取畫面。[MediusFlow 租使用者名稱] 方塊和 [驗證] 按鈕會在第一個整合步驟中反白顯示。" border="false":::
 
 8. 若要使用 MediusFlow 中預先定義的一組角色、公司和其他一般設定來匯入使用者，您必須先進行設定。 首先，按一下 [新增設定] 來新增設定。
 
-    ![設定使用者](./media/mediusflow-provisioning-tutorial/8-configure-user-configuration-1.png)
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/8-configure-user-configuration-1.png" alt-text="MediusFlow 管理主控台的螢幕擷取畫面。[MediusFlow 租使用者名稱] 方塊和 [驗證] 按鈕會在第一個整合步驟中反白顯示。" border="false":::
 
 9. 提供使用者的預設設定。 在此檢視中，您可以設定預設屬性。 如果標準設定為正確，則只提供有效的公司名稱就足夠。 由於這些組態設定是從 Mediusflow 擷取，因此必須先進行設定。 如需詳細資訊，請參閱本文的＜必要條件＞一節。
 
-    ![設定使用者](./media/mediusflow-provisioning-tutorial/9-configure-user-config-detail-1.png)
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/9-configure-user-config-detail-1.png" alt-text="MediusFlow 管理主控台的螢幕擷取畫面。[MediusFlow 租使用者名稱] 方塊和 [驗證] 按鈕會在第一個整合步驟中反白顯示。" border="false":::
 
 10. 按一下 [儲存] 以儲存使用者設定。
 
-    ![設定使用者](./media/mediusflow-provisioning-tutorial/10-done-1.png)
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/10-done-1.png" alt-text="MediusFlow 管理主控台的螢幕擷取畫面。[MediusFlow 租使用者名稱] 方塊和 [驗證] 按鈕會在第一個整合步驟中反白顯示。" border="false":::
 
 11. 若要取得使用者佈建連結，請按一下 [複製 SCIM 連結]。 複製並儲存此值。 此值會在 Azure 入口網站中 MediusFLow 應用程式的 [佈建] 索引標籤中，[租用戶 URL] 欄位中輸入。
  
-    ![設定使用者](./media/mediusflow-provisioning-tutorial/11-get-scim-link.png)
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/11-get-scim-link.png" alt-text="MediusFlow 管理主控台的螢幕擷取畫面。[MediusFlow 租使用者名稱] 方塊和 [驗證] 按鈕會在第一個整合步驟中反白顯示。" border="false":::
 
 ## <a name="step-3-add-mediusflow-from-the-azure-ad-application-gallery"></a>步驟 3： 從 Azure AD 應用程式庫新增 MediusFlow
 

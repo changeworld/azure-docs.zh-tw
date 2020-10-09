@@ -13,44 +13,46 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/11/2020
 ms.author: memildin
-ms.openlocfilehash: 4b47646e2f051a8fbfefbc36aa879bb80e9eca68
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: e6bb3389fe035b1ccfbefaca788a40530581ac7a
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91439029"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91851036"
 ---
 # <a name="adaptive-network-hardening-in-azure-security-center"></a>Azure 資訊安全中心中的適應性網路強化
-瞭解如何在 Azure 資訊安全中心中設定適應性網路強化。
+瞭解如何在安全中心設定自動調整網路強化功能。
 
 ## <a name="availability"></a>可用性
 |層面|詳細資料|
 |----|:----|
-|釋放狀態：|正式上市 (GA)|
-|定價：|需要 [適用于伺服器的 Azure Defender](defender-for-servers-introduction.md)|
-|必要的角色和許可權：|電腦 Nsg 上的寫入權限|
-|雲端：|![是](./media/icons/yes-icon.png) 商業雲端<br>![否](./media/icons/no-icon.png) 全國/主權 (US Gov、中國 Gov、其他 Gov) |
+|版本狀態：|正式上市 (GA)|
+|定價：|需要[適用於伺服器的 Azure Defender](defender-for-servers-introduction.md)|
+|必要的角色和權限：|機器 NSG 的寫入權限|
+|雲端：|![是](./media/icons/yes-icon.png) 商業雲端<br>![否](./media/icons/no-icon.png) 國家/地區/主權 (US Gov、中國 Gov、其他 Gov)|
 |||
 
 ## <a name="what-is-adaptive-network-hardening"></a>什麼是適應性網路強化？
-將 [網路安全性群組套用 (NSG) ](https://docs.microsoft.com/azure/virtual-network/security-overview) ，以篩選進出資源的流量，進而改善您的網路安全性狀況。 不過，在某些情況下，實際流經 NSG 的流量是所定義 NSG 規則的子集。 在這些情況下，您可以根據實際的流量模式強化 NSG 規則，以進一步改善安全性狀態。
+將 [網路安全性群組套用 (NSG) ](https://docs.microsoft.com/azure/virtual-network/security-overview) ，以篩選進出資源的流量，進而改善您的網路安全性狀況。 但在某些情況下，透過 NSG 傳輸的實際流量仍有可能包含在已定義的 NSG 規則中。 在這些情況下，您可以根據實際的流量模式強化 NSG 規則，以進一步改善安全性態勢。
 
-彈性網路強化可提供建議，以進一步強化 NSG 規則。 它會使用機器學習演算法，以實際的流量、已知的受信任設定、威脅情報和其他入侵指標作為因素，然後提供建議，只允許來自特定 IP/埠元組的流量。
+彈性網路強化可提供建議，以進一步強化 NSG 規則。 此功能會使用將實際流量、已知的信任設定、威脅情報和其他危害指標等因素納入考量的機器學習演算法，然後提供建議，而僅允許來自特定 IP/連接埠元組的流量。
 
-例如，假設現有的 NSG 規則是允許埠22上的 140.20.30.10/24 流量。 根據分析，調適型網路強化的建議是縮小範圍，並允許來自 140.23.30.10/29 的流量（這是較窄的 IP 範圍），並拒絕該埠的所有其他流量。
+例如，假設現有的 NSG 規則是允許埠22上的 140.20.30.10/24 流量。 根據流量分析，彈性網路強化可能會建議將範圍縮小以允許來自 140.23.30.10/29 的流量，並拒絕該埠的所有其他流量。
 
->[!TIP]
+>[!Note]
 > 只有下列 (適用于 UDP 和 TCP) 的特定埠支援彈性網路強化建議：13、17、19、22、23、53、69、81、111、119、123、135、137、138、139、161、162、389、445、514、593、636、873、1433、1434、1900、2049、2301、2323、2381、3268、3306、3389、4333、5353、5432、5555、5800、5900、5900、5985、5986、6379、6379、7000、7001、7199、8081、8089、8545、9042、9160、9300、11211、16379、26379、27017、37215、
 
 
-![網路強化視圖](./media/security-center-adaptive-network-hardening/traffic-hardening.png)
+## <a name="view-and-manage-hardening-alerts-and-rules"></a>查看及管理強化警示和規則
 
+1. 從資訊安全中心的功能表，開啟 **Azure Defender** 儀表板，然後選取 [彈性網路強化] 磚 (1) ，或是與 [彈性網路強化] (2) 相關的 [見解] 面板專案。 
 
+    :::image type="content" source="./media/security-center-adaptive-network-hardening/traffic-hardening.png" alt-text="存取適應性網路強化工具" lightbox="./media/security-center-adaptive-network-hardening/traffic-hardening.png":::
 
+    > [!TIP]
+    > [深入解析] 面板會顯示您的 Vm 目前使用彈性網路強化所防禦的百分比。 
 
-## <a name="view-adaptive-network-hardening-alerts-and-rules"></a>查看自我調整網路強化警示和規則
-
-1. 在 [安全性中心] 中，選取 [**網路**彈性  ->  **網路強化**]。 網路 Vm 會列在三個不同的索引標籤底下：
+1. 彈性網路強化建議的詳細資料頁面 **應該套用在網際網路對應的虛擬機器建議上** ，並將您的網路 vm 分組為三個索引標籤：
    * **狀況不良的資源**：目前有執行彈性網路強化演算法所觸發的建議和警示的 vm。 
    * **狀況良好的資源**：沒有警示和建議的 vm。
    * 未**掃描的資源**：因為下列其中一個原因，所以無法執行調適型網路強化演算法的 vm：
@@ -58,33 +60,28 @@ ms.locfileid: "91439029"
       * **沒有足夠的資料可供使用**：為了產生精確的流量強化建議，「安全性中心」至少需要30天的流量資料。
       * **VM 未受 Azure defender 保護**：只有使用 [適用于伺服器的 Azure Defender](defender-for-servers-introduction.md) 保護的 vm 符合這項功能的資格。
 
-     ![狀況不良的資源](./media/security-center-adaptive-network-hardening/unhealthy-resources.png)
+    :::image type="content" source="./media/security-center-adaptive-network-hardening/recommendation-details-page.png" alt-text="存取適應性網路強化工具":::
 
-2. 從 [ **狀況不良的資源** ] 索引標籤中，選取要查看其警示的 VM，以及適用的建議強化規則。
+1. 從 [ **狀況不良的資源** ] 索引標籤中，選取要查看其警示的 VM，以及適用的建議強化規則。
 
-    ![強化警示](./media/security-center-adaptive-network-hardening/anh-recommendation-rules.png)
+    - [ **規則** ] 索引標籤會列出自我調整網路強化建議您新增的規則
+    - [ **警示** ] 索引標籤會列出因為流量而產生的警示，而這些警示不在建議規則中允許的 IP 範圍內。
 
+1. （選擇性）編輯規則：
 
-## <a name="review-and-apply-adaptive-network-hardening-recommended-rules"></a>檢查並套用適應性網路強化建議的規則
-
-1. 從 [ **狀況不良的資源** ] 索引標籤中選取 VM。 系統會列出警示和建議的強化規則。
-
-     ![強化規則](./media/security-center-adaptive-network-hardening/hardening-alerts.png)
-
-   > [!NOTE]
-   > [ **規則** ] 索引標籤會列出自我調整網路強化建議您新增的規則。 [ **警示** ] 索引標籤會列出因為流量而產生的警示，而這些警示不在建議規則中允許的 IP 範圍內。
-
-2. 如果您想要變更規則的某些參數，您可以修改它，如 [修改規則](#modify-rule)中所述。
-   > [!NOTE]
-   > 您也可以 [刪除](#delete-rule) 或 [加入](#add-rule) 規則。
+    - [修改規則](#modify-rule)
+    - [刪除規則](#delete-rule) 
+    - [新增規則](#add-rule)
 
 3. 選取您要在 NSG 上套用的規則，然後按一下 [ **強制**]。
 
+    > [!TIP]
+    > 如果允許的來源 IP 範圍顯示為 [無]，表示建議的規則是 *拒絕* 規則，否則為 *允許* 規則。
+
+    :::image type="content" source="./media/security-center-adaptive-network-hardening/hardening-alerts.png" alt-text="存取適應性網路強化工具":::
+
       > [!NOTE]
       > 強制執行的規則會新增至 NSG (s) 保護 VM。  (VM 可以受到與其 NIC 相關聯的 NSG，或 VM 所在的子網，或兩者) 
-
-    ![強制執行規則](./media/security-center-adaptive-network-hardening/enforce-hard-rule2.png)
-
 
 ### <a name="modify-a-rule"></a>修改規則<a name ="modify-rule"> </a>
 

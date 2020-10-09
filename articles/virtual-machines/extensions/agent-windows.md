@@ -2,23 +2,17 @@
 title: Azure 虛擬機器代理程式概觀
 description: Azure 虛擬機器代理程式概觀
 services: virtual-machines-windows
-documentationcenter: virtual-machines
 author: mimckitt
-manager: gwallace
-tags: azure-resource-manager
-ms.assetid: 0a1f212e-053e-4a39-9910-8d622959f594
 ms.service: virtual-machines-windows
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
-ms.workload: infrastructure-services
 ms.date: 07/20/2019
-ms.author: akjosh
-ms.openlocfilehash: d9939b706eb63e5681ddef438cde92f32786f889
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.author: mimckitt
+ms.openlocfilehash: 2db83b643ec3000c5b86388f4b603bba32f2a9a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89612827"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91855770"
 ---
 # <a name="azure-virtual-machine-agent-overview"></a>Azure 虛擬機器代理程式概觀
 Microsoft Azure 虛擬機器代理程式 (VM 代理程式) 是一個安全的輕量型處理程序，可管理虛擬機器 (VM) 與 Azure 網狀架構控制器的互動。 VM 代理程式已啟用主要角色並執行 Azure 虛擬機器擴充功能。 VM 擴充功能可啟用 VM 的部署後組態，例如安裝和設定軟體。 VM 擴充功能也會啟用復原功能，例如重設 VM 的系統管理密碼。 若沒有 Azure VM 代理程式，便無法執行 VM 擴充功能。
@@ -70,9 +64,9 @@ $vm | Update-AzVM
 
 ### <a name="prerequisites"></a>必要條件
 
-- Windows VM 代理程式至少需要 Windows Server 2008 SP2 (64 位) ，才能使用 .Net Framework 4.0 來執行。 查看 [Azure 中虛擬機器代理程式的最低版本支援](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)
+- Windows VM 代理程式至少需要 Windows Server 2008 SP2 (64 位) ，才能執行 .NET Framework 4.0。 請參閱 [Azure 中虛擬機器代理程式的最低版本支援](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)。
 
-- 確定您的 VM 可存取 IP 位址168.63.129.16。 如需詳細資訊 [，請參閱什麼是 IP 位址 168.63.129.16](../../virtual-network/what-is-ip-address-168-63-129-16.md)。
+- 確定您的 VM 可存取 IP 位址168.63.129.16。 如需詳細資訊，請參閱 [什麼是 IP 位址 168.63.129.16](../../virtual-network/what-is-ip-address-168-63-129-16.md)。
 
 - 確定已在來賓 VM 內啟用 DHCP。 若要從 DHCP 取得主機或網狀架構位址，讓 IaaS VM 代理程式和擴充功能運作，必須這樣做。 如果您需要靜態私人 IP，您應該透過 Azure 入口網站或 PowerShell 進行設定，並確定已啟用 VM 內的 DHCP 選項。 [深入瞭解](https://docs.microsoft.com/azure/virtual-network/virtual-networks-static-private-ip-arm-ps#change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface) 如何使用 PowerShell 設定靜態 IP 位址。
 
@@ -87,7 +81,7 @@ Azure Resource Manager PowerShell 模組可以用來擷取 Azure VM 的相關資
 Get-AzVM
 ```
 
-下列緊縮的範例輸出顯示 *ProvisionVMAgent* 屬性會以巢狀方式置於 *OSProfile* 內。 請注意，這個屬性可用來判斷 VM 代理程式是否已部署至 VM：
+下列壓縮的範例輸出顯示內有嵌套的 *ProvisionVMAgent* 屬性 `OSProfile` 。 請注意，這個屬性可用來判斷 VM 代理程式是否已部署至 VM：
 
 ```powershell
 OSProfile                  :
@@ -115,10 +109,19 @@ foreach ($vm in $vms) {
 
 
 ## <a name="upgrade-the-vm-agent"></a>升級 VM 代理程式
-適用于 Windows 的 Azure VM 代理程式會在從 Azure marketplace 部署的映射上自動升級。 當新的 VM 部署至 Azure 時，這些 VM 在 VM 佈建時，會收到最新的 VM 代理程式。 如果您已手動安裝代理程式或正在部署自訂 VM 映射，您必須在建立映射時手動更新以包含新的 VM 代理程式。
+適用于 Windows 的 Azure VM 代理程式會在從 Azure Marketplace 部署的映射上自動升級。 當新的 VM 部署至 Azure 時，這些 VM 在 VM 佈建時，會收到最新的 VM 代理程式。 如果您已手動安裝代理程式或正在部署自訂 VM 映射，您必須在建立映射時手動更新以包含新的 VM 代理程式。
 
 ## <a name="windows-guest-agent-automatic-logs-collection"></a>Windows 來賓代理程式自動記錄收集
 Windows 來賓代理程式有一項功能，可自動收集一些記錄。 這項功能是由 CollectGuestLogs.exe 進程的控制器。 PaaS 雲端服務和 IaaS 虛擬機器都存在，其目標是快速 & 自動從 VM 收集一些診斷記錄，讓它們可用於離線分析。 收集到的記錄包括事件記錄檔、OS 記錄檔、Azure 記錄檔和一些登錄機碼。 它會產生轉送至 VM 主機的 ZIP 檔案。 然後，工程小組和支援專業人員可以查看此 ZIP 檔案，以調查擁有 VM 之客戶的要求問題。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="guest-agent-and-osprofile-certificates"></a>來賓代理程式和 OSProfile 憑證
+Azure VM 代理程式負責安裝 `OSProfile` VM 或虛擬機器擴展集內所參考的憑證。 如果您從來賓 VM 內的憑證 MMC 主控台手動移除這些憑證，來賓代理程式應該會將它們新增回來。
+若要永久移除憑證，您必須將它從移除，然後 `OSProfile` 從客體作業系統中移除它。
+
+若為虛擬機器，請使用 [AzVMSecret]() 移除中的憑證 `OSProfile` 。
+
+如需虛擬機器擴展集憑證的詳細資訊，請參閱 [虛擬機器擴展集-如何? 移除已淘汰的憑證？](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-faq#how-do-i-remove-deprecated-certificates)
+
+
+## <a name="next-steps"></a>後續步驟
 如需關於虛擬機器擴充功能的詳細資訊，請參閱 [Azure 虛擬機器擴充功能和功能概觀](overview.md)。

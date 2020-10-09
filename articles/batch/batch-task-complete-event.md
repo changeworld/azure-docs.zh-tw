@@ -2,13 +2,13 @@
 title: Azure Batch 工作完成事件
 description: Batch 工作完成事件的參考。 工作完成時就會發出此事件，無論結束代碼為何。
 ms.topic: reference
-ms.date: 04/20/2017
-ms.openlocfilehash: 42860836e294780649616b0843db6ba19718dd64
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.date: 10/08/2020
+ms.openlocfilehash: 11f727b07723f32cd08130b4af17e57ede3d264f
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965173"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850886"
 ---
 # <a name="task-complete-event"></a>工作完成事件
 
@@ -23,6 +23,7 @@ ms.locfileid: "85965173"
     "id": "myTask",
     "taskType": "User",
     "systemTaskVersion": 0,
+    "requiredSlots": 1,
     "nodeInfo": {
         "poolId": "pool-001",
         "nodeId": "tvm-257509324_1-20160908t162728z"
@@ -49,6 +50,7 @@ ms.locfileid: "85965173"
 |`id`|String|工作識別碼。|
 |`taskType`|String|工作類型。 可以是 'JobManager'，表示這是作業管理員工作，或是 'User'，表示不是作業管理員工作。 對於作業準備工作、作業發行工作或開始工作。不會發出此事件。|
 |`systemTaskVersion`|Int32|這是作業上的內部重試計數器。 Batch 服務可在內部重試工作，以處理暫時性問題。 這些問題包含內部排程錯誤，或嘗試從不正常狀態的計算節點復原。|
+|`requiredSlots`|Int32|執行工作所需的位置。|
 |[`nodeInfo`](#nodeInfo)|複雜類型|包含工作執行所在計算節點的相關資訊。|
 |[`multiInstanceSettings`](#multiInstanceSettings)|複雜類型|指定工作為需要多個計算節點的多重執行個體工作。  如需詳細資訊，請參閱 [`multiInstanceSettings`](/rest/api/batchservice/get-information-about-a-task)。|
 |[`constraints`](#constraints)|複雜類型|套用至此工作的執行限制。|

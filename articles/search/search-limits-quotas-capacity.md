@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/07/2020
-ms.openlocfilehash: 570481eab44c64db3ec3f513281badd124a2bbdc
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 7e3a5fcdcead402d59e680fcba270e80b4eda8bb
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91825483"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91843425"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Azure 認知搜尋中的服務限制
 
@@ -50,7 +50,7 @@ ms.locfileid: "91825483"
 
 <sup>1</sup> 2017 年 12 月之前建立的基本服務，在索引方面具有較低的限制 (5 個，而不是 15 個)。 基本層是唯一具有較低限制 (每個索引 100 個欄位) 的 SKU。
 
-<sup>2</sup> 元素有大量的限制，因為有大量的專案會導致儲存體使用率過高。 複雜集合的元素會定義為該集合的成員。 例如，假設 [旅館檔含有房間複雜的集合](search-howto-complex-data-types.md#indexing-complex-types)，房間集合中的每個房間都會被視為一個元素。 在編制索引期間，索引引擎可以在整個檔中安全地處理最多3000個元素。 [這項限制](search-api-migration.md#upgrade-to-2019-05-06) 是在中引進，而且 `api-version=2019-05-06` 只適用于複雜的集合，而不適用於字串集合或複雜欄位。
+<sup>2</sup> 元素有很大的限制，因為有大量的專案會大幅增加索引所需的儲存體。 複雜集合的元素會定義為該集合的成員。 例如，假設 [旅館檔含有房間複雜的集合](search-howto-complex-data-types.md#indexing-complex-types)，房間集合中的每個房間都會被視為一個元素。 在編制索引期間，索引引擎可以在整個檔中安全地處理最多3000個元素。 [這項限制](search-api-migration.md#upgrade-to-2019-05-06) 是在中引進，而且 `api-version=2019-05-06` 只適用于複雜的集合，而不適用於字串集合或複雜欄位。
 
 <a name="document-limits"></a>
 

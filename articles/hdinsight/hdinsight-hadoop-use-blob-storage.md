@@ -8,20 +8,23 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: 7941748f7f917847e551b0cf5cd0a7bf926d31a9
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: a97147395d4f877b666f4aa54254c8631400c735
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086971"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91855662"
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>搭配 Azure HDInsight 叢集使用 Azure 儲存體
 
-您可以將資料儲存在 [Azure 儲存體](../storage/common/storage-introduction.md)、[Azure Data Lake Storage Gen 1](../data-lake-store/data-lake-store-overview.md) 或 [Azure Data Lake Storage Gen 2](../storage/blobs/data-lake-storage-introduction.md) 中。 或是這些選項的組合。 這些儲存體選項都可讓您安全地刪除用於計算的 HDInsight 叢集，而不會遺失使用者資料。
+您可以將資料儲存在 [Azure Blob 儲存體](../storage/common/storage-introduction.md)、 [Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-overview.md)或 [Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md)中。 或是這些選項的組合。 這些儲存體選項都可讓您安全地刪除用於計算的 HDInsight 叢集，而不會遺失使用者資料。
 
-Apache Hadoop 支援預設檔案系統的概念。 預設檔案系統意指預設配置和授權。 也可用來解析相對路徑。 進行 HDInsight 叢集建立程序期間，您可以指定 Azure 儲存體中的 Blob 容器作為預設檔案系統。 或者，您也可以使用 HDInsight 3.6，選取 Azure 儲存體或 Azure Data Lake Storage Gen 1/ Azure Data Lake Storage Gen 2 作為預設的檔案系統，但有一些例外狀況。 如需了解使用 Data Lake Storage Gen 1 作為預設及連結儲存體的支援能力，請參閱 [HDInsight 叢集的可用性](./hdinsight-hadoop-use-data-lake-store.md#availability-for-hdinsight-clusters)。
+Apache Hadoop 支援預設檔案系統的概念。 預設檔案系統意指預設配置和授權。 也可用來解析相對路徑。 進行 HDInsight 叢集建立程序期間，您可以指定 Azure 儲存體中的 Blob 容器作為預設檔案系統。 或使用 HDInsight 3.6，您可以選取 Azure Blob 儲存體或 Azure Data Lake Storage Gen1/Azure Data Lake Storage Gen2 作為預設的檔案系統，但有一些例外狀況。 如需使用 Data Lake Storage Gen1 作為預設和連結儲存體的可支援性，請參閱 HDInsight 叢集的 [可用性](./hdinsight-hadoop-use-data-lake-storage-gen1.md#availability-for-hdinsight-clusters)。
 
-在本文中，您將了解 Azure 儲存體與 HDInsight 叢集搭配運作的方式。 若要深入了解 Data Lake Storage Gen 1 與 HDInsight 叢集搭配運作的方式，請參閱[使用 Azure Data Lake Storage 搭配 Azure HDInsight 叢集](hdinsight-hadoop-use-data-lake-store.md)。 如需建立 HDInsight 叢集的詳細資訊，請參閱[在 HDInsight 中建立 Apache Hadoop 叢集](hdinsight-hadoop-provision-linux-clusters.md)。
+在本文中，您將了解 Azure 儲存體與 HDInsight 叢集搭配運作的方式。 
+* 若要瞭解 Data Lake Storage Gen1 如何與 HDInsight 叢集搭配運作，請參閱搭配 [使用 Azure Data Lake Storage Gen1 與 Azure HDInsight](./hdinsight-hadoop-use-data-lake-storage-gen1.md)叢集。
+* 若要瞭解 Data Lake Storage Gen2 如何與 HDInsight 叢集搭配運作，請參閱搭配 [使用 Azure Data Lake Storage Gen2 與 Azure HDInsight](./hdinsight-hadoop-use-data-lake-storage-gen2.md)叢集。
+* 如需建立 HDInsight 叢集的詳細資訊，請參閱[在 HDInsight 中建立 Apache Hadoop 叢集](./hdinsight-hadoop-provision-linux-clusters.md)。
 
 > [!IMPORTANT]  
 > 儲存體帳戶種類 **BlobStorage** 只能作為 HDInsight 叢集的次要儲存體。
@@ -169,9 +172,9 @@ Microsoft 提供下列工具來使用 Azure 儲存體：
 
 如需詳細資訊，請參閱
 
-* [開始使用 Azure HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md)
-* [開始使用 Azure Data Lake Storage](../data-lake-store/data-lake-store-get-started-portal.md)
-* [將資料上傳至 HDInsight](hdinsight-upload-data.md)
-* [使用 Azure 儲存體共用存取簽章來限制使用 HDInsight 對資料的存取](hdinsight-storage-sharedaccesssignature-permissions.md)
+* [快速入門：建立 Apache Hadoop 叢集](hadoop/apache-hadoop-linux-create-cluster-get-started-portal.md)
+* [教學課程：建立 HDInsight 叢集](hdinsight-hadoop-provision-linux-clusters.md)
 * [搭配 Azure HDInsight 叢集使用 Data Lake Storage Gen2](hdinsight-hadoop-use-data-lake-storage-gen2.md)
+* [將資料上傳至 HDInsight](hdinsight-upload-data.md)
 * [教學課程：使用 Azure HDInsight 上的互動式查詢來擷取、轉換和載入資料](./interactive-query/interactive-query-tutorial-analyze-flight-data.md)
+* [使用 Azure 儲存體共用存取簽章來限制使用 HDInsight 對資料的存取](hdinsight-storage-sharedaccesssignature-permissions.md)

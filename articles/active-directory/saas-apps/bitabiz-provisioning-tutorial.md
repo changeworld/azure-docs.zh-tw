@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 1274679bdd9892e2dc39f3c5e94d8d8d486928b6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: f87a2347890f8d17e3901c6d8fc168c1d96c7661
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91329188"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91849290"
 ---
 # <a name="tutorial-configure-bitabiz-for-automatic-user-provisioning"></a>教學課程：設定 BitaBIZ 來自動布建使用者
 
@@ -27,7 +27,7 @@ ms.locfileid: "91329188"
 >
 > 此連接器目前為公開預覽版。 如需有關預覽功能的一般 Microsoft Azure 使用規定詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用規定](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 本教學課程中概述的案例假設您已經具有下列必要條件：
 
@@ -54,11 +54,11 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
 1. 登入您的 [BitaBIZ 管理主控台](https://www.bitabiz.com/login?lang=en)。 按一下 [安裝管理員]****。
 
-    ![BitaBIZ 管理主控台](media/bitabiz-provisioning-tutorial/setup-admin.png)
+    :::image type="content" source="media/bitabiz-provisioning-tutorial/setup-admin.png" alt-text="BitaBIZ 管理主控台的螢幕擷取畫面，其中已醒目提示安裝程式系統管理員。" border="false":::
 
 2.  流覽至 [ **整合**]。
 
-    ![BitaBIZ 管理主控台](media/bitabiz-provisioning-tutorial/integration.png)
+    :::image type="content" source="media/bitabiz-provisioning-tutorial/integration.png" alt-text="BitaBIZ 管理主控台的螢幕擷取畫面，其中已醒目提示安裝程式系統管理員。" border="false":::
 
 2.  流覽至 **Microsoft Azure AD**布建。  在自動使用者布建中選取 [ **啟用** ]。 複製 SCIM 布建 **端點 URL** 和持有人  **權杖**的值。 這些值將會在 Azure 入口網站中您 BitaBIZ 應用程式的 [布建] 索引標籤中輸入至 [租使用者 URL] 和 [秘密權杖] 欄位中。
 
@@ -120,7 +120,7 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
     ![通知電子郵件](common/provisioning-notification-email.png)
 
-7. 按一下 [檔案]  。
+7. 按一下 [儲存]。
 
 8. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 使用者至 BitaBIZ**]。
 

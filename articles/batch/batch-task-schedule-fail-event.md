@@ -1,45 +1,42 @@
 ---
-title: Azure Batch 工作失敗事件
-description: Batch 工作失敗事件的參考。 除了工作完成事件外，還會發出此事件來偵測工作已失敗。
+title: Azure Batch 工作排程失敗事件
+description: Batch 工作排程失敗事件的參考。 當工作無法排程時，就會發出此事件，稍後再重試。
 ms.topic: reference
-ms.date: 10/08/2020
-ms.openlocfilehash: e13692b45ff5a049d0b724525ad6565d2b894a3d
+ms.date: 09/20/2020
+ms.openlocfilehash: 549281d2b2c371e8f09c584e771cf44f7abc8a00
 ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/08/2020
-ms.locfileid: "91850807"
+ms.locfileid: "91852110"
 ---
-# <a name="task-fail-event"></a>工作失敗事件
+# <a name="task-schedule-fail-event"></a>工作排程失敗事件
 
- 當工作未成功完成時，就會發出此事件。 目前所有非零的結束代碼皆視為失敗。 除了工作完成事件外，還會發出此事件，此事件可用於偵測工作何時失敗。
+ 當工作無法排程且稍後將重試時，就會發出此事件。 這是因為資源限制而導致工作排程時間的暫時性失敗，例如，節點上沒有足夠的可用位置來執行具有指定的工作 `requiredSlots` 。
 
-
- 下列範例顯示工作失敗事件內文。
+ 下列範例顯示工作排程失敗事件的主體。
 
 ```
 {
-    "jobId": "myJob",
-    "id": "myTask",
+    "jobId": "job-01",
+    "id": "task-01",
     "taskType": "User",
-    "systemTaskVersion": 0,
+    "systemTaskVersion": 665378862,
     "requiredSlots": 1,
     "nodeInfo": {
-        "poolId": "pool-001",
-        "nodeId": "tvm-257509324_1-20160908t162728z"
+        "poolId": "pool-01",
+        "nodeId": " "
     },
     "multiInstanceSettings": {
         "numberOfInstances": 1
     },
     "constraints": {
-        "maxTaskRetryCount": 2
+        "maxTaskRetryCount": 0
     },
-    "executionInfo": {
-        "startTime": "2016-09-08T16:32:23.799Z",
-        "endTime": "2016-09-08T16:34:00.666Z",
-        "exitCode": 1,
-        "retryCount": 2,
-        "requeueCount": 0
+    "schedulingError": {
+        "category": "UserError",
+        "code": "JobPreparationTaskFailed",
+        "message": "Task cannot run because the job preparation task failed on node"
     }
 }
 ```
@@ -54,7 +51,7 @@ ms.locfileid: "91850807"
 |[`nodeInfo`](#nodeInfo)|複雜類型|包含工作執行所在計算節點的相關資訊。|
 |[`multiInstanceSettings`](#multiInstanceSettings)|複雜類型|指定工作為需要多個計算節點的多重執行個體工作。  如需詳細資訊，請參閱 [`multiInstanceSettings`](/rest/api/batchservice/get-information-about-a-task)。|
 |[`constraints`](#constraints)|複雜類型|套用至此工作的執行限制。|
-|[`executionInfo`](#executionInfo)|複雜類型|包含執行工作的相關資訊。|
+|[`schedulingError`](#schedulingError)|複雜類型|包含工作排程錯誤的相關資訊。|
 
 ###  <a name="nodeinfo"></a><a name="nodeInfo"></a> nodeInfo
 
@@ -76,12 +73,10 @@ ms.locfileid: "91850807"
 |`maxTaskRetryCount`|Int32|工作重試次數上限。 如果工作的結束代碼不是零，Batch 服務會重試工作。<br /><br /> 請注意，這個值會特別控制重試次數。 Batch 服務會嘗試工作一次，然後可一直重試直到達此限制。 例如，如果重試計數上限為 3，則 Batch 可嘗試工作最多 4 次 (一次首次嘗試，3 次重試)。<br /><br /> 如果重試計數上限為 0，則 Batch 服務不會重試工作。<br /><br /> 如果重試計數上限為 -1，則 Batch 服務會無限制地重試工作。<br /><br /> 預設值為 0 (不重試)。|
 
 
-###  <a name="executioninfo"></a><a name="executionInfo"></a> executionInfo
+###  <a name="schedulingerror"></a><a name="schedulingError"></a> schedulingError
 
 |元素名稱|類型|注意|
 |------------------|----------|-----------|
-|`startTime`|Datetime|工作開始執行的時間。 「執行」與 **running** 狀態對應，因此如果工作會指定資源檔或應用程式套件，則開始時間會反映工作開始下載或部署下載項目的時間。  如果已重新啟動或重試工作，則這是最近一次工作開始執行的時間。|
-|`endTime`|Datetime|工作完成的時間。|
-|`exitCode`|Int32|工作的結束代碼。|
-|`retryCount`|Int32|Batch 服務已重試工作的次數。 如果工作結束時的結束代碼不是零，便會重試工作，直到次數達指定的 MaxTaskRetryCount。|
-|`requeueCount`|Int32|Batch 服務因為使用者要求而將工作重新排入佇列的次數。<br /><br /> 當使用者將節點從集區中移除 (透過調整集區大小或將集區縮小)，或當作業正停用時，使用者可指定將節點上的執行中工作重新排入佇列以執行。 此計數會追蹤因為這些理由而將工作重新排入佇列的次數。|
+|`category`|String|錯誤的類別。|
+|`code`|String|工作排程錯誤的識別碼。 程式碼是不變的，旨在以程式設計的方式取用。|
+|`message`|String|描述工作排程錯誤的訊息，其適用于在使用者介面中顯示。|

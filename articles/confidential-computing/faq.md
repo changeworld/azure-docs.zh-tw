@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.subservice: workloads
 ms.date: 4/17/2020
 ms.author: jencook
-ms.openlocfilehash: 519b5b669cfc8140b837743d694184a5cb859f20
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: cf90ff5b94eb03f76dffc8b64dd4d92a44ac20ee
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90987994"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91848903"
 ---
 # <a name="frequently-asked-questions-for-azure-confidential-computing"></a>Azure 機密運算的常見問題集
 
@@ -56,6 +56,10 @@ DC 系列 VM 是在較舊的 6 核心 Intel 處理器 (具備 Intel SGX) 上執�
 **DCsv2 虛擬機器是否可在全域使用？**
 
 否。 目前這些虛擬機器僅適用於選取的區域。 如需最新的可用區域，請參閱[依區域的產品頁面](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines)。 
+
+**這些電腦上是否有超執行緒？**
+
+所有 Azure 機密計算叢集的超執行緒已停用。
 
 **如何在 DCsv2 虛擬機器上安裝開啟記憶體保護區 SDK？**
    

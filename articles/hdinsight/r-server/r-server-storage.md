@@ -8,27 +8,27 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 01/02/2020
-ms.openlocfilehash: 4d3568e3869415a3223154af30b22d85c8104199
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 1b684fde9123d3c12d5d69c1daec1c53c6519c44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087617"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91855288"
 ---
 # <a name="azure-storage-solutions-for-ml-services-on-azure-hdinsight"></a>Azure HDInsight 上適用于 ML 服務的 Azure 儲存體解決方案
 
-HDInsight 上的 ML 服務可使用不同的儲存體解決方案來保存資料、程式碼或包含分析結果的物件。 這些解決方案包括下列選項：
+HDInsight 上的 ML 服務可以使用不同的儲存體解決方案，來保存資料、程式碼或包含分析結果的物件。 這些解決方案包括下列選項：
 
-- [Azure Blob](https://azure.microsoft.com/services/storage/blobs/)
-- [Azure Data Lake 儲存體](https://azure.microsoft.com/services/storage/data-lake-storage/)
+- [Azure Blob 儲存體](https://azure.microsoft.com/services/storage/blobs/)
+- [Azure Data Lake Storage Gen1](https://azure.microsoft.com/services/storage/data-lake-storage/)
 - [Azure 檔案儲存體](https://azure.microsoft.com/services/storage/files/)
 
-您也可以使用 HDInsight 叢集存取多個 Azure 儲存體帳戶或容器。 Azure 檔案儲存體是在邊緣節點上使用的便利資料儲存選項，可讓您將 Azure 儲存體檔案共用掛接到（例如 Linux 檔案系統）。 但是，只要是擁有受支援作業系統 (例如 Windows 或 Linux) 的系統，就可以掛接和使用「Azure 檔案」共用。
+您也可以使用 HDInsight 叢集存取多個 Azure 儲存體帳戶或容器。 Azure 檔案儲存體是方便的資料儲存選項，可在邊緣節點上使用，以供您將 Azure 儲存體檔案共用掛接至 Linux 檔案系統（例如 Linux 檔案系統）。 但是，只要是擁有受支援作業系統 (例如 Windows 或 Linux) 的系統，就可以掛接和使用「Azure 檔案」共用。
 
-當您在 HDInsight 中建立 Apache Hadoop 叢集時，您可以指定**Azure 儲存體**帳戶或**Data Lake Storage**。 來自該帳戶的特定儲存體容器，會保留您所建立叢集的檔案系統 (例如，Hadoop 分散式檔案系統)。 如需詳細資訊與指導方針，請參閱：
+當您在 HDInsight 中建立 Apache Hadoop 叢集時，您可以指定 **Azure Blob 儲存體** 帳戶或 **Data Lake Storage Gen1**。 來自該帳戶的特定儲存體容器，會保留您所建立叢集的檔案系統 (例如，Hadoop 分散式檔案系統)。 如需詳細資訊與指導方針，請參閱：
 
-- [搭配 HDInsight 使用 Azure 儲存體](../hdinsight-hadoop-use-blob-storage.md)
-- [搭配使用 Data Lake Storage 與 Azure HDInsight 叢集](../hdinsight-hadoop-use-data-lake-store.md)
+- [搭配 HDInsight 使用 Azure Blob 儲存體](../hdinsight-hadoop-use-blob-storage.md)
+- [搭配 Azure HDInsight 叢集使用 Data Lake Storage Gen1](../hdinsight-hadoop-use-data-lake-storage-gen1.md)
 
 ## <a name="use-azure-blob-storage-accounts-with-ml-services-cluster"></a>搭配 ML 服務叢集使用 Azure Blob 儲存體帳戶
 
@@ -100,7 +100,7 @@ inputFile <-file.path(bigDataDirRoot,"mysamplefile1.csv")
 
 現在，所有目錄和檔案的參考會指向儲存體帳戶 `wasbs://container2@storage2.blob.core.windows.net`。 這是您已指定的「名稱節點」****。
 
-`/user/RevoShare/<SSH username>`在**storage2**上設定目錄，如下所示：
+設定 `/user/RevoShare/<SSH username>` **>storage2** 上的目錄，如下所示：
 
 ```bash
 hadoop fs -mkdir wasbs://container2@storage2.blob.core.windows.net/user
@@ -108,27 +108,27 @@ hadoop fs -mkdir wasbs://container2@storage2.blob.core.windows.net/user/RevoShar
 hadoop fs -mkdir wasbs://container2@storage2.blob.core.windows.net/user/RevoShare/<RDP username>
 ```
 
-## <a name="use-azure-data-lake-storage-with-ml-services-cluster"></a>搭配 ML 服務叢集使用 Azure Data Lake Storage
+## <a name="use-azure-data-lake-storage-gen1-with-ml-services-cluster"></a>搭配 ML 服務叢集使用 Azure Data Lake Storage Gen1
 
-若要搭配 HDInsight 叢集帳戶使用 Data Lake Storage，您必須為叢集提供您想要使用之每個 Azure Data Lake Storage 的存取權。 如需有關如何使用 Azure 入口網站並使用 Azure Data Lake Storage 帳戶作為預設儲存體或作為其他儲存體來建立 HDInsight 叢集的指示，請參閱 [使用 Azure 入口網站搭配 Data Lake Storage 建立 HDInsight 叢集](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)。
+若要使用 Data Lake Storage Gen1 搭配您的 HDInsight 叢集，您需要為您的叢集授與您想要使用的每個 Azure Data Lake Storage Gen1 的存取權。 如需如何使用 Azure 入口網站建立 Azure Data Lake Storage Gen1 作為預設儲存體或其他儲存體的 HDInsight 叢集的指示，請參閱 [使用 Azure 入口網站建立具有 Data Lake Storage Gen1 的 hdinsight](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)叢集。
 
 接著，您會以和使用次要 Azure 儲存體帳戶的方式 (如先前程序所述) 很像的方式，在 R 指令碼中使用儲存體。
 
-### <a name="add-cluster-access-to-your-azure-data-lake-storage"></a>為 Azure Data Lake Storage 新增叢集存取權
+### <a name="add-cluster-access-to-your-azure-data-lake-storage-gen1"></a>新增 Azure Data Lake Storage Gen1 的叢集存取
 
-您可以使用與 HDInsight 叢集相關聯的 Azure Active Directory (Azure AD) 服務主體來存取 Data Lake Storage。
+您可以使用與 HDInsight 叢集相關聯的 Azure Active Directory (Azure AD) 服務主體來存取 Data Lake Storage Gen1。
 
-1. 在建立 HDInsight 叢集時，從 [資料來源]**** 索引標籤中選取 [叢集 AAD 身分識別]****。
+1. 當您建立 HDInsight 叢集時，請從 [**資料來源**] 索引標籤中選取 [叢集**Azure AD 識別**]。
 
-2. 在 [叢集 AAD 身分識別]**** 對話方塊的 [選取 AD 服務主體]**** 底下，選取 [新建]****。
+2. 在 [叢集 **Azure AD 識別** ] 對話方塊的 [ **選取 AD 服務主體**] 底下，選取 [ **建立新**的]。
 
 在為服務主體命名並建立密碼後，請按一下 [管理 ADLS 存取]****，以將該服務主體與您的 Data Lake Storage 產生關聯。
 
-您也可以在叢集建立之後，將叢集存取新增至一個或多個 Data Lake 儲存體帳戶。 為 Data Lake Storage 開啟 Azure 入口網站入口，並移至 [資料總管] > [存取] > [新增]****。
+您也可以在叢集建立之後，將叢集存取新增至一或多個 Data Lake 儲存體 Gen1 帳戶。 開啟 Data Lake Storage Gen1 的 Azure 入口網站專案，然後移至 **資料總管 > 存取 > 新增**]。
 
 ### <a name="how-to-access-data-lake-storage-gen1-from-ml-services-on-hdinsight"></a>如何從 HDInsight 上的 ML 服務存取 Data Lake Storage Gen1
 
-一旦您獲得 Data Lake Storage Gen1 的存取權，就可以在 HDInsight 上的 ML 服務叢集中使用儲存體，就像是次要 Azure 儲存體帳戶一樣。 唯一的差別在於前置詞**wasbs://** 會變更為**adl://** ，如下所示：
+當您取得 Data Lake Storage Gen1 的存取權之後，您就可以在 HDInsight 上的 ML 服務叢集中使用儲存體，就像是使用次要 Azure 儲存體帳戶一樣。 唯一的差別是前置詞 **wasbs://** 會變更為 **adl://** ，如下所示：
 
 ```R
 # Point to the ADL Storage (e.g. ADLtest)
@@ -151,7 +151,7 @@ hdfsFS <- RxHdfsFileSystem(hostName=myNameNode, port=myPort)
 inputFile <-file.path(bigDataDirRoot,"mysamplefile.csv")
 ```
 
-下列命令是用來搭配 RevoShare 目錄設定 Data Lake Storage Gen1 帳戶，並新增來自先前範例的範例 .csv 檔案：
+下列命令可用來設定搭配 revoshare 目錄的 Data Lake Storage Gen1，並新增上述範例中的範例 .csv 檔案：
 
 ```bash
 hadoop fs -mkdir adl://rkadl1.azuredatalakestore.net/user
@@ -167,14 +167,14 @@ hadoop fs –ls adl://rkadl1.azuredatalakestore.net/share
 
 ## <a name="use-azure-file-storage-with-ml-services-on-hdinsight"></a>搭配 HDInsight 上的 ML 服務使用 Azure 檔案儲存體
 
-另外還有一個方便的資料儲存選項，可在邊緣節點上使用，稱為[Azure 檔案儲存體](https://azure.microsoft.com/services/storage/files/)。 它可以讓您將 Azure 儲存體的檔案共用掛接至 Linux 檔案系統。 此選項對於儲存資料檔案、R 指令碼與結果物件相當便利，該結果物件在稍後可以於邊緣節點 (而不是 HDFS) 上使用原生檔案系統時需要。
+另外還有一個方便的資料儲存選項，可用於稱為 [Azure 檔案儲存體](https://azure.microsoft.com/services/storage/files/)的邊緣節點。 它可以讓您將 Azure 儲存體的檔案共用掛接至 Linux 檔案系統。 此選項對於儲存資料檔案、R 指令碼與結果物件相當便利，該結果物件在稍後可以於邊緣節點 (而不是 HDFS) 上使用原生檔案系統時需要。
 
-Azure 檔案的主要優點是，只要是擁有受支援作業系統 (例如 Windows 或 Linux) 的系統，就可以掛接和使用檔案共用。 例如，您本人或您的小組成員所擁有的另一個 HDInsight 叢集，或是 Azure VM 甚或內部部署系統均可使用 Azure 檔案。 如需詳細資訊，請參閱：
+Azure 檔案的主要優點是，只要是擁有受支援作業系統 (例如 Windows 或 Linux) 的系統，就可以掛接和使用檔案共用。 例如，您本人或您的小組成員所擁有的另一個 HDInsight 叢集，或是 Azure VM 甚或內部部署系統均可使用 Azure 檔案。 如需詳細資訊，請參閱
 
 - [如何搭配 Linux 使用 Azure 檔案儲存體](../../storage/files/storage-how-to-use-files-linux.md)
 - [如何在 Windows 上使用 Azure 檔案儲存體](../../storage/files/storage-dotnet-how-to-use-files.md)
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [HDInsight 上的 ML 服務叢集概觀](r-server-overview.md)
 - [在 HDInsight 上計算 ML 服務叢集的內容選項](r-server-compute-contexts.md)

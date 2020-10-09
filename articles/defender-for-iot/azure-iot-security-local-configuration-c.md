@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 7cc6886b5341d8bc8a82288ad8a2a699381a953c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 46b3009a7a57f726457a767afe501bfb28a06606
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90933979"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91843357"
 ---
 # <a name="understanding-the-localconfigurationjson-file---c-agent"></a>了解 LocalConfiguration.json 檔案 - C 代理程式
 
@@ -40,9 +40,9 @@ ms.locfileid: "90933979"
 | ConnectionTimeout | ISO8601 字串 | 連線至 IoThub 之前的時間間隔已超時 |
 | 驗證 | >jsonobject | 驗證設定。 此物件包含對 IoTHub 進行驗證所需的所有資訊 |
 | 身分識別 | "DPS"、"SecurityModule"、"Device" | 驗證身分識別-如果透過 DPS 進行驗證，則為 DPS，如果使用裝置認證進行驗證，則 SecurityModule 是否透過安全性模組認證或裝置進行驗證 |
-| AuthenticationMethod | "SasToken"、"New-selfsignedcertificate" | 驗證的使用者密碼-如果 [使用密碼] 是對稱金鑰，請選擇 [SasToken]。如果秘密是自我簽署憑證，請選擇自我簽署憑證  |
+| AuthenticationMethod | "SasToken"、"New-selfsignedcertificate" | 驗證的使用者密碼-如果 [使用密碼] 是對稱金鑰，請選擇 [SasToken]。如果秘密是自我簽署憑證，請選擇 [自我簽署憑證]  |
 | FilePath | 檔案的路徑 (字串)  | 包含驗證秘密之檔案的路徑 |
-| HostName | 字串 | Azure iot 中樞的主機名稱。 通常 <我的中樞>。 azure-devices.net |
+| HostName | 字串 | Azure IoT 中樞的主機名稱。 通常 <我的中樞>。 azure-devices.net |
 | DeviceId | 字串 | 在 Azure IoT 中樞中註冊的裝置 (識別碼)  |
 | DPS | >jsonobject | DPS 相關設定 |
 | IDScope | 字串 | DPS 的識別碼範圍 |
@@ -78,7 +78,7 @@ ms.locfileid: "90933979"
 }
 ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 閱讀適用于 IoT 的 Defender 服務 [總覽](overview.md)
 - 深入瞭解適用于 IoT 的 Defender [架構](architecture.md)

@@ -4,7 +4,7 @@ description: '深入瞭解適用于 IoT 安全性服務的 Defender、適用于 
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
-author: mlottner
+author: elazark
 manager: rkarlin
 editor: ''
 ms.devlang: na
@@ -12,20 +12,20 @@ ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/26/2019
-ms.author: mlottner
-ms.openlocfilehash: 19fa5b2949888993954f3075d1e10c9e8f126e2f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 10/08/2020
+ms.author: v-ekrieg
+ms.openlocfilehash: 13c16407481d4fa6f7d468a73051cc4945e6314e
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90934495"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91851228"
 ---
 # <a name="understanding-the-local-configuration-file-c-agent"></a>瞭解 (c # 代理程式) 的本機設定檔
 
 適用于 IoT 的 Defender 安全性代理程式會使用本機設定檔案中的設定。
 
-當代理程式啟動時，安全性代理程式會讀取設定檔一次。 在本機設定檔中找到的設定包含驗證設定和其他代理程式相關設定。
+當代理程式開始執行時，安全性代理程式會讀取設定檔一次。 在本機設定檔中找到的設定包含驗證設定和其他代理程式相關設定。
 
 C # 安全性代理程式會使用多個設定檔：
 
@@ -57,7 +57,7 @@ C # 安全性代理程式會使用多個設定檔：
 | highPriorityQueueSizePercentage | 0 < 數位 < 1 | 高優先順序訊息專用的總快取部分。 |
 | logLevel | 「Off」、「嚴重」、「錯誤」、「警告」、「資訊」、「Debug」  | 等於或高於此嚴重性的記錄訊息會記錄到 Linux) 中 (Syslog 的 debug 主控台。 |
 | fileLogLevel |  「Off」、「嚴重」、「錯誤」、「警告」、「資訊」、「Debug」| 等於或高於此嚴重性的記錄訊息會記錄到 Linux) 的 (Syslog 檔案中。 |
-| diagnosticVerbosityLevel | "None"、"Some"、"All"、 | 診斷事件的詳細程度層級。 無-不傳送診斷事件，只會傳送具有高重要性的部分診斷事件，所有記錄也會以診斷事件的形式傳送。 |
+| diagnosticVerbosityLevel | "None"、"Some"、"All"、 | 診斷事件的詳細程度層級。 無-不傳送診斷事件。 系統會傳送一些重要性較高的診斷事件。 所有記錄檔也會以診斷事件的形式傳送。 |
 | >logfilepath | 檔案路徑 | 如果 fileLogLevel > Off，記錄檔會寫入至這個檔案。 |
 | defaultEventPriority | 「高」、「低」、「關閉」 | 預設事件優先順序。 |
 
@@ -85,10 +85,11 @@ C # 安全性代理程式會使用多個設定檔：
 | 組態名稱 | 可能值 | 詳細資料 |
 |:-----------|:---------------|:--------|
 | moduleName | 字串 | 安全性模組身分識別的名稱。 此名稱必須對應至裝置中的模組身分識別名稱。 |
-| deviceId | 字串 | 在 Azure IoT 中樞) 中註冊的裝置 (識別碼。 || schedulerInterval | TimeSpan 字串 | 內部排程器間隔。 |
+| deviceId | 字串 | 在 Azure IoT 中樞) 中註冊的裝置 (識別碼。 |
+| schedulerInterval | TimeSpan 字串 | 內部排程器間隔。 |
 | gatewayHostname | 字串 | Azure Iot 中樞的主機名稱。 通常 <我的中樞>。 azure-devices.net |
 | filePath | 字串-檔案的路徑 | 包含驗證秘密之檔案的路徑。|
-| 類型 | "SymmetricKey"、"New-selfsignedcertificate" | 驗證的使用者密碼。 如果使用者密碼是對稱金鑰，請選擇 [ *SymmetricKey* ]，如果秘密是自我簽署的憑證，請選擇 *自我簽署憑證* 。 |
+| type | "SymmetricKey"、"New-selfsignedcertificate" | 驗證的使用者密碼。 如果使用者密碼是對稱金鑰，請選擇 [ *SymmetricKey* ]，如果密碼是自我簽署的憑證，請選擇 *自我簽署憑證* 。 |
 | 身分識別 | 「DPS」、「模組」、「裝置」 | 驗證身分識別-如果透過 DPS 進行驗證，則為 DPS、使用模組認證進行驗證的模組，或使用裝置認證進行驗證時的裝置。
 | certificateLocationKind |  "LocalFile"、"Store" | LocalFile 如果憑證儲存在檔案中，請儲存憑證是否位於憑證存放區中。 |
 | idScope | 字串 | DPS 的識別碼範圍 |
@@ -128,7 +129,7 @@ C # 安全性代理程式會使用多個設定檔：
 </ExternalInterface>
 ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 閱讀適用于 IoT 的 Defender 服務 [總覽](overview.md)
 - 深入瞭解適用于 IoT 的 Defender [架構](architecture.md)

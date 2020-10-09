@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: 0de47cc12c461e47d8703861a99d11e7ee72d581
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 715e99f07d0fcbc77fd1769e5da1cae6b46ac97e
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547062"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850729"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jobscience"></a>教學課程：Azure Active Directory 與 Jobscience 整合
 
@@ -61,19 +61,19 @@ Jobscience 與 Azure AD 整合提供下列優點：
 
 1. 瀏覽至 [企業應用程式]****。 然後移至 [所有應用程式]****。
 
-    ![應用程式][2]
+    ![螢幕擷取畫面顯示在 [管理] 下選取的 Azure 入口網站企業應用程式，並選取所有應用程式。][2]
     
 1. 若要新增新的應用程式，請按一下對話方塊頂端的 [新增應用程式]  按鈕。
 
-    ![應用程式][3]
+    ![螢幕擷取畫面顯示已選取新的應用程式。][3]
 
 1. 在搜尋方塊中，輸入 **Jobscience**。
 
-    ![建立 Azure AD 測試使用者](./media/jobscience-tutorial/tutorial_jobscience_search.png)
+    ![螢幕擷取畫面顯示 [從資源庫新增]，並輸入 jobscience。](./media/jobscience-tutorial/tutorial_jobscience_search.png)
 
 1. 在結果面板中，選取 [Jobscience]****，然後按一下 [新增]**** 按鈕以新增應用程式。
 
-    ![建立 Azure AD 測試使用者](./media/jobscience-tutorial/tutorial_jobscience_addfromgallery.png)
+    ![螢幕擷取畫面顯示包含 Jobscience 的結果。](./media/jobscience-tutorial/tutorial_jobscience_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>設定並測試 Azure AD 單一登入
 在本節中，您會以名為 "Britta Simon" 的測試使用者身分，設定及測試與 Jobscience 搭配運作的 Azure AD 單一登入。
@@ -98,15 +98,15 @@ Jobscience 與 Azure AD 整合提供下列優點：
 
 1. 在 Azure 入口網站的 [Jobscience]**** 應用程式整合頁面上，按一下 [單一登入]****。
 
-    ![設定單一登入][4]
+    ![螢幕擷取畫面顯示在 Azure 入口網站的 [管理] 下選取了單一登入。][4]
 
 1. 在 [單一登入]**** 對話方塊上，於 [模式]**** 選取 [SAML 登入]****，以啟用單一登入。
  
-    ![設定單一登入](./media/jobscience-tutorial/tutorial_jobscience_samlbase.png)
+    ![螢幕擷取畫面顯示已選取 SAML 型登入模式。](./media/jobscience-tutorial/tutorial_jobscience_samlbase.png)
 
 1. 在 [Jobscience 網域及 URL]**** 區段中，執行下列步驟：
 
-    ![設定單一登入](./media/jobscience-tutorial/tutorial_jobscience_url.png)
+    ![螢幕擷取畫面顯示登入 U R L。](./media/jobscience-tutorial/tutorial_jobscience_url.png)
 
     在 [登 **入 url** ] 文字方塊中，使用下列模式輸入 URL：  `http://<company name>.my.salesforce.com`
     
@@ -115,21 +115,21 @@ Jobscience 與 Azure AD 整合提供下列優點：
  
 1. 在 [ **SAML 簽署憑證** ] 區段上，按一下 [ **Certificate (Base64) ** 然後將憑證檔案儲存在您的電腦上。
 
-    ![設定單一登入](./media/jobscience-tutorial/tutorial_jobscience_certificate.png) 
+    ![螢幕擷取畫面顯示 [SAML 簽署憑證] 窗格，您可以在其中下載憑證。](./media/jobscience-tutorial/tutorial_jobscience_certificate.png) 
 
 1. 按一下 [儲存] **** 按鈕。
 
-    ![設定單一登入](./media/jobscience-tutorial/tutorial_general_400.png)
+    ![螢幕擷取畫面：顯示 [儲存] 按鈕。](./media/jobscience-tutorial/tutorial_general_400.png)
 
-1. 在 [Jobscience 組態]**** 區段上，按一下 [設定 Jobscience]**** 以開啟 [設定登入]**** 視窗。 從 [**快速參考] 區段**複製 [**登出 url]、[saml 實體識別碼] 和 [Saml 單一登入服務 URL** ]。
+1. 在 [Jobscience 組態]**** 區段上，按一下 [設定 Jobscience]**** 以開啟 [設定登入]**** 視窗。 從 [**快速參考] 區段**複製 [**登出 url]、[saml 實體識別碼] 和 [Saml 單一 Sign-On 服務 URL** ]。
 
-    ![設定單一登入](./media/jobscience-tutorial/tutorial_jobscience_configure.png) 
+    ![螢幕擷取畫面顯示 [Jobscience 設定] 視窗。](./media/jobscience-tutorial/tutorial_jobscience_configure.png) 
 
 1. 以系統管理員身分登入您的 Jobscience 公司網站。
 
 1. 移至 [設定]****。
    
-   ![安裝程式](./media/jobscience-tutorial/IC784358.png "安裝程式")
+   ![螢幕擷取畫面：顯示公司的安裝專案。](./media/jobscience-tutorial/IC784358.png "安裝程式")
 
 1. 在 [系統管理員]**** 區段的左方導覽窗格中，按一下 [網域管理]**** 展開相關的區段，然後按一下 [我的網域]**** 來開啟 [我的網域]**** 頁面。 
    
@@ -141,7 +141,7 @@ Jobscience 與 Azure AD 整合提供下列優點：
 
 1. 在 Jobscience 公司網站上，依序按一下 [安全性控制]**** 及 [單一登入設定]****。
     
-    ![安全性控制](./media/jobscience-tutorial/ic784364.png "安全性控制")
+    ![螢幕擷取畫面會顯示從安全性控制項選取的單一 Sign-On 設定。](./media/jobscience-tutorial/ic784364.png "安全性控制")
 
 1. 在 [單一登入設定]**** 區段中，執行下列步驟：
     
@@ -179,15 +179,15 @@ Jobscience 與 Azure AD 整合提供下列優點：
 
 1. 在 [我的網域]**** 頁面的 [登入頁面商標]**** 區段中，按一下 [編輯]****。
     
-    ![登入頁面商標](./media/jobscience-tutorial/ic767826.png "登入頁面商標")
+    ![螢幕擷取畫面顯示 [登入頁面商標] 區段和 [編輯] 按鈕。](./media/jobscience-tutorial/ic767826.png "登入頁面商標")
 
 1. [登入頁面商標]**** 頁面的 [驗證服務]**** 區段中，會顯示您的 [SAML SSO 設定]**** 的名稱。 請選取該名稱，然後按一下 [儲存] ****。
     
-    ![登入頁面商標](./media/jobscience-tutorial/ic784366.png "登入頁面商標")
+    ![螢幕擷取畫面顯示 [登入頁面商標] 區段，其中包含 PPE 並選取 [儲存]。](./media/jobscience-tutorial/ic784366.png "登入頁面商標")
 
 1. 若要取得 SP 初始化單一登入 URL，請按一下 [安全性控制項]**** 功能表區段中的 [單一登入設定]****。
 
-    ![安全性控制](./media/jobscience-tutorial/ic784368.png "安全性控制")
+    ![螢幕擷取畫面顯示已選取單一 Sign-On 設定的管理安全性控制項。](./media/jobscience-tutorial/ic784368.png "安全性控制")
     
     按一下您已經在上述步驟中建立的 SSO 設定檔。 此頁面會顯示您公司的單一登入 URL (例如 `https://companyname.my.salesforce.com?so=companyid`)。    
 
@@ -204,19 +204,19 @@ Jobscience 與 Azure AD 整合提供下列優點：
 
 1. 在 **Azure 入口網站**的左方瀏覽窗格中，按一下 [Azure Active Directory]**** 圖示。
 
-    ![建立 Azure AD 測試使用者](./media/jobscience-tutorial/create_aaduser_01.png) 
+    ![螢幕擷取畫面顯示 Azure 入口網站中的 Azure A D 圖示。](./media/jobscience-tutorial/create_aaduser_01.png) 
 
 1. 若要顯示使用者清單，請移至 [ **使用者和群組** ]，然後按一下 [ **所有使用者**]。
     
-    ![建立 Azure AD 測試使用者](./media/jobscience-tutorial/create_aaduser_02.png) 
+    ![螢幕擷取畫面顯示從 [管理] 功能表選取的使用者和群組，並選取所有使用者。](./media/jobscience-tutorial/create_aaduser_02.png) 
 
 1. 若要開啟 [使用者]**** 對話方塊，按一下對話方塊頂端的 [新增]****。
  
-    ![建立 Azure AD 測試使用者](./media/jobscience-tutorial/create_aaduser_03.png) 
+    ![顯示 [新增] 按鈕以開啟 [使用者] 對話方塊的螢幕擷取畫面。](./media/jobscience-tutorial/create_aaduser_03.png) 
 
 1. 在 [使用者] **** 對話頁面上，執行下列步驟：
  
-    ![建立 Azure AD 測試使用者](./media/jobscience-tutorial/create_aaduser_04.png) 
+    ![螢幕擷取畫面顯示 [使用者] 對話方塊，您可以在此輸入此步驟中的值。](./media/jobscience-tutorial/create_aaduser_04.png) 
 
     a. 在 [名稱]**** 文字方塊中，輸入 **BrittaSimon**。
 
@@ -240,7 +240,7 @@ Jobscience 與 Azure AD 整合提供下列優點：
 
 1. 移到 [設定]。
    
-   ![安裝程式](./media/jobscience-tutorial/ic784358.png "安裝程式")
+   ![螢幕擷取畫面：顯示安裝專案。](./media/jobscience-tutorial/ic784358.png "安裝程式")
 1. 移至 [管理使用者 \> 使用者]****。
    
    ![使用者](./media/jobscience-tutorial/ic784369.png "使用者")
@@ -273,25 +273,25 @@ Jobscience 與 Azure AD 整合提供下列優點：
 
 在本節中，您會將 Jobscience 的存取權授與 Britta Simon，讓她能夠使用 Azure 單一登入。
 
-![指派使用者][200] 
+![螢幕擷取畫面：顯示帳戶顯示名稱。][200] 
 
 **若要將 Britta Simon 指派給 Jobscience，請執行下列步驟：**
 
 1. 在 Azure 入口網站中，開啟 [應用程式] 視圖，然後流覽至 [目錄] 視圖並移至 [ **企業應用程式** ]，然後按一下 [ **所有應用程式**]。
 
-    ![指派使用者][201] 
+    ![螢幕擷取畫面顯示 [Azure 入口網站] 功能表中已選取所有應用程式的企業應用程式。][201] 
 
 1. 在應用程式清單中，選取 [Jobscience]****。
 
-    ![設定單一登入](./media/jobscience-tutorial/tutorial_jobscience_app.png) 
+    ![螢幕擷取畫面顯示已選取 Jobscience。](./media/jobscience-tutorial/tutorial_jobscience_app.png) 
 
 1. 在左側功能表中，按一下 [使用者和群組]****。
 
-    ![指派使用者][202] 
+    ![螢幕擷取畫面：顯示從 Azure 入口網站] 功能表選取的使用者和群組。][202] 
 
 1. 按一下 [新增] 按鈕。 然後選取 [新增指派]**** 對話方塊上的 [使用者和群組]****。
 
-    ![指派使用者][203]
+    ![螢幕擷取畫面顯示用來新增指派的 [新增] 按鈕。][203]
 
 1. 在 [使用者和群組]**** 對話方塊上，選取 [使用者] 清單中的 [Britta Simon]****。
 

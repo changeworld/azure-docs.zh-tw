@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
+ms.date: 10/07/2020
 ms.reviewer: ''
-ms.date: 11/26/2019
-ms.openlocfilehash: ba2170923885eac19af4bfe3ce55ea653371c0e8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8ed4edb8739758af057276bd21c4ad62bf9ab974
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91321351"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91848852"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>以 DTU 為基礎的購買模式的服務層
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -40,16 +40,21 @@ ms.locfileid: "91321351"
 |**執行時間 SLA**|99.99%|99.99%|99.99%|
 |**備份保留期上限**|7 天|35 天|35 天|
 |**CPU**|低|低、中、高|中、高|
-|**IO 輸送量 (大約)** |每個 DTU 1-5 IOPS| 每個 DTU 1-5 IOPS | 每個 DTU 25 個 IOPS|
+|**IOPS (大約) **\* |每個 DTU 1-5 IOPS| 每個 DTU 1-5 IOPS | 每個 DTU 25 個 IOPS|
 |**IO 延遲 (大約)**|5 毫秒 (讀取)，10 毫秒 (寫入)|5 毫秒 (讀取)，10 毫秒 (寫入)|2 毫秒 (讀取/寫入)|
 |**資料行存放區索引** |N/A|S3 和更新版本|支援|
 |**記憶體內部 OLTP**|N/A|N/A|支援|
 
+\* 針對資料檔案的所有讀取和寫入 IOPS，包括背景 IO (檢查點和延遲寫入器) 
+
 > [!IMPORTANT]
-> 基本、標準 S0、S1 和 S2 服務層級提供少於一 vCore (CPU) 。  針對需要大量 CPU 的工作負載，建議使用 S3 或更高的服務層。 
+> 基本、S0、S1 和 S2 服務目標提供少於一 vCore (CPU) 。  針對需要大量 CPU 的工作負載，建議使用 S3 或更高的服務目標。 
 >
->關於資料儲存，基本、標準 S0 和 S1 服務層級會置於標準分頁 Blob 上。 標準分頁 Blob 使用硬碟 (HDD) 型存放裝置媒體，最適合用來開發、測試和其他不受效能變異影響的不常存取工作負載。
+> 在基本、S0 和 S1 服務目標中，資料庫檔案會儲存在 Azure 標準儲存體中，它會使用硬碟 (HDD) 型儲存媒體。 這些服務目標最適合用於開發、測試和其他不常存取的工作負載，這些工作負載對效能變化較不敏感。
 >
+
+> [!TIP]
+> 若要查看資料庫或彈性集區的實際 [資源治理](resource-limits-logical-server.md#resource-governance) 限制，請查詢 [sys.dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) 視圖。
 
 > [!NOTE]
 > 您可以在基本服務層級的 Azure SQL Database 中取得免費的資料庫，並搭配 Azure 免費帳戶以探索 Azure。 如需相關資訊，請參閱[使用您的免費 Azure 免費帳戶，建立受管理的雲端資料庫](https://azure.microsoft.com/free/services/sql-database/)。
@@ -109,7 +114,7 @@ ms.locfileid: "91321351"
 
 工作負載包含九種交易類型，如下表所示。 每一筆交易都設計為反白顯示資料庫引擎和系統硬體中特定的一組系統特性，與其他交易呈現高度對比。 此方法可讓您更容易評估不同元件對整體效能的影響。 例如，「頻繁讀取」交易會從磁碟產生大量的讀取作業。
 
-| 交易類型 | 說明 |
+| 交易類型 | 描述 |
 | --- | --- |
 | 輕度讀取 |SELECT；記憶體中；唯讀 |
 | 中度讀取 |SELECT；大部分記憶體中；唯讀 |

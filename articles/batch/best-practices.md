@@ -3,12 +3,12 @@ title: 最佳作法
 description: 了解開發 Azure Batch 解決方案的最佳做法和實用秘訣。
 ms.date: 08/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: ca6e491586fd653f39da7466ea116109000facd6
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 695f213c0683bd158539b97719f2c2d8c0210edf
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146533"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91849484"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch 最佳做法
 
@@ -109,7 +109,7 @@ Batch 已整合支援，可讓 Azure 儲存體透過 [OutputFiles](batch-task-ou
 
 ### <a name="set-max-tasks-per-node-appropriately"></a>適當設定每個節點的工作數目上限
 
-Batch 支援節點上有超載的工作 (執行的工作數目比節點具有的核心還多)。 您可以選擇是否要確保工作數目「符合」集區中的節點數目。 例如，如果您嘗試將八個各耗用 25% CPU 使用量的工作安排到一個節點上 (在具有 `maxTasksPerNode = 8` 的集區中) 時，您可能會感受到降級的體驗。
+Batch 支援節點上有超載的工作 (執行的工作數目比節點具有的核心還多)。 您可以選擇是否要確保工作數目「符合」集區中的節點數目。 例如，如果您嘗試將八個各耗用 25% CPU 使用量的工作安排到一個節點上 (在具有 `taskSlotsPerNode = 8` 的集區中) 時，您可能會感受到降級的體驗。
 
 ### <a name="design-for-retries-and-re-execution"></a>重試和重新執行的設計
 
@@ -217,6 +217,6 @@ Azure Batch 會在 VM 上建立和管理一組使用者和群組，而您不應�
 
 ### <a name="file-cleanup"></a>檔案清理
 
-Batch 會在保留時間到期後，主動嘗試清除工作執行所在的工作目錄。 [您必須清除](#manage-task-lifetime)在此目錄外寫入的任何檔案，以避免填滿磁碟空間。 
+Batch 會在保留時間到期後，主動嘗試清除工作執行所在的工作目錄。 [您必須清除](#manage-task-lifetime)在此目錄外寫入的任何檔案，以避免填滿磁碟空間。
 
 如果您是從 startTask 工作目錄執行 Windows 上的服務，則工作目錄的自動清除功能會遭到封鎖，因為資料夾仍在使用中。 這會導致效能降低。 若要修正此問題，請將該服務的目錄變更為不是由 Batch 管理的個別目錄。

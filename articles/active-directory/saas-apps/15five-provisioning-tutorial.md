@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 40fd048e1ace56af7a9198088d6129925033be93
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c26a581df7ac10777687bf268027eb94862605b1
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91331211"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850127"
 ---
 # <a name="tutorial-configure-15five-for-automatic-user-provisioning"></a>教學課程：設定15Five 來自動布建使用者
 
@@ -34,7 +34,7 @@ ms.locfileid: "91331211"
 > * 在15Five 中布建群組和群組成員資格
 > * 15Five (建議的[單一登入](https://docs.microsoft.com/azure/active-directory/saas-apps/15five-tutorial)) 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 本教學課程中概述的案例假設您已經具有下列必要條件：
 
@@ -54,19 +54,19 @@ ms.locfileid: "91331211"
 
 1. 登入您的 [15Five 管理主控台](https://my.15five.com/)。 流覽至 [ **功能 >** 整合]。
 
-    ![15Five 管理主控台](media/15five-provisioning-tutorial/integration.png)
+    :::image type="content" source="media/15five-provisioning-tutorial/integration.png" alt-text="15Five 管理主控台的螢幕擷取畫面。[整合] 會出現在功能表的 [功能] 下，而且會反白顯示功能和整合。" border="false":::
 
 2.  按一下 [ **SCIM 2.0**]。
 
-    ![15Five 管理主控台](media/15five-provisioning-tutorial/image00.png)
+    :::image type="content" source="media/15five-provisioning-tutorial/image00.png" alt-text="15Five 管理主控台的螢幕擷取畫面。[整合] 會出現在功能表的 [功能] 下，而且會反白顯示功能和整合。" border="false":::
 
 3.  流覽至 **SCIM 整合 > 產生 OAuth 權杖**。
 
-    ![15Five 新增 SCIM](media/15five-provisioning-tutorial/image02.png)
+    :::image type="content" source="media/15five-provisioning-tutorial/image02.png" alt-text="15Five 管理主控台的螢幕擷取畫面。[整合] 會出現在功能表的 [功能] 下，而且會反白顯示功能和整合。" border="false":::
 
 4.  複製 **SCIM 2.0 基底 URL** 和 **存取權杖**的值。 此值將會在 Azure 入口網站中您15Five 應用程式的 [布建] 索引標籤中輸入至 [ **租使用者 URL** ] 和 [ **秘密權杖** ] 欄位中。
     
-    ![15Five 新增 SCIM](media/15five-provisioning-tutorial/image03.png)
+    :::image type="content" source="media/15five-provisioning-tutorial/image03.png" alt-text="15Five 管理主控台的螢幕擷取畫面。[整合] 會出現在功能表的 [功能] 下，而且會反白顯示功能和整合。" border="false":::
 
 ## <a name="step-3-add-15five-from-the-azure-ad-application-gallery"></a>步驟 3： 從 Azure AD 應用程式資源庫新增15Five
 
@@ -110,7 +110,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
     ![通知電子郵件](common/provisioning-notification-email.png)
 
-7. 按一下 [檔案]  。
+7. 按一下 [儲存]。
 
 8. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 使用者至 15Five**]。
 

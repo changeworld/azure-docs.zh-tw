@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 9a11ff33245bf92e225f0f2382f6e873eab1338c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 9ebb0927f9721c5c35ee0d83a108efd72732958b
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91323755"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91851215"
 ---
 # <a name="tutorial-configure-dynamic-signal-for-automatic-user-provisioning"></a>教學課程：設定自動使用者布建的動態信號
 
@@ -27,7 +27,7 @@ ms.locfileid: "91323755"
 >
 > 此連接器目前為公開預覽版。 如需有關預覽功能的一般 Microsoft Azure 使用規定詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用規定](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 本教學課程中概述的案例假設您已經具有下列必要條件：
 
@@ -100,11 +100,11 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
 6. 在 [動態信號管理] 主控台中，流覽至 [ **管理 > Advanced > API**]。
 
-    ![動態信號布建](./media/dynamic-signal-provisioning-tutorial/secret-token-1.png)
+    :::image type="content" source="./media/dynamic-signal-provisioning-tutorial/secret-token-1.png" alt-text="動態信號管理主控台的螢幕擷取畫面。[管理] 功能表中的 [Advanced] 會反白顯示。此外，也會顯示 [Advanced] 功能表，其中已醒目提示 P。" border="false":::
 
     將 **SCIM API url** 複製到 **租使用者 url**。 按一下 [ **產生新權杖** ] 以產生 **持有人權杖** ，並將值複製到 **秘密權杖**。
 
-    ![動態信號布建](./media/dynamic-signal-provisioning-tutorial/secret-token-2.png)
+    :::image type="content" source="./media/dynamic-signal-provisioning-tutorial/secret-token-2.png" alt-text="動態信號管理主控台的螢幕擷取畫面。[管理] 功能表中的 [Advanced] 會反白顯示。此外，也會顯示 [Advanced] 功能表，其中已醒目提示 P。" border="false":::
 
 7. 填入步驟5所示的欄位後，請按一下 [ **測試連接** ] 以確保 Azure AD 可以連線至動態信號。 如果連接失敗，請確定您的動態信號帳戶具有系統管理員許可權，然後再試一次。
 
@@ -114,7 +114,7 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
     ![通知電子郵件](common/provisioning-notification-email.png)
 
-9. 按一下 [檔案]  。
+9. 按一下 [儲存]。
 
 10. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 使用者至動態信號**]。
 

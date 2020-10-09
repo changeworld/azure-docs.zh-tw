@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 10/14/2019
 ms.author: Zhchia
-ms.openlocfilehash: 4b318057254688ba3060c825a7926b1c40de437c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 7c81c6145aed5f45849f6f08fdd1136862c3b7d8
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91304974"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850862"
 ---
 # <a name="tutorial-configure-infor-cloudsuite-for-automatic-user-provisioning"></a>教學課程：設定 Infor CloudSuite 來自動布建使用者
 
@@ -27,7 +27,7 @@ ms.locfileid: "91304974"
 >
 > 此連接器目前為公開預覽版。 如需有關預覽功能的一般 Microsoft Azure 使用規定詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用規定](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 本教學課程中概述的案例假設您已經具有下列必要條件：
 
@@ -68,11 +68,11 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
     
     ![Infor CloudSuite 密碼](media/infor-cloudsuite-provisioning-tutorial/password.png)
 
-    ![Infor CloudSuite 識別碼](media/infor-cloudsuite-provisioning-tutorial/identifier.png)
+    :::image type="content" source="media/infor-cloudsuite-provisioning-tutorial/identifier.png" alt-text="Infor CloudSuite 管理主控台的螢幕擷取畫面，其中顯示反白顯示的資料表資料列。該資料列包含使用者識別碼、密碼和時間戳記。" border="false":::
 
 5. 若要產生持有人權杖，請複製 **使用者識別碼** 和 **SCIM 密碼**。 將它們貼入 notepad + + 以冒號分隔。 藉由流覽至 **外掛程式 > MIME 工具 > Basic64 編碼**來編碼字串值。 
 
-    ![Infor CloudSuite 識別碼](media/infor-cloudsuite-provisioning-tutorial/token.png)
+    :::image type="content" source="media/infor-cloudsuite-provisioning-tutorial/token.png" alt-text="Infor CloudSuite 管理主控台的螢幕擷取畫面，其中顯示反白顯示的資料表資料列。該資料列包含使用者識別碼、密碼和時間戳記。" border="false":::
 
 3.  複製持有人權杖。 此值將會在 Azure 入口網站中 Infor CloudSuite 應用程式的 [布建] 索引標籤的 [秘密權杖] 欄位中輸入。
 
@@ -134,7 +134,7 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
     ![通知電子郵件](common/provisioning-notification-email.png)
 
-7. 按一下 [檔案]  。
+7. 按一下 [儲存]。
 
 8. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 使用者至 Infor CloudSuite**]。
 

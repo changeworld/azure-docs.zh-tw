@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/15/2020
-ms.openlocfilehash: 098c0a85dc6c0fac8b78f344c4c8559b168b9114
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 4d9a5900990ea41788ced5f25690619fbde68d33
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371332"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91854982"
 ---
 # <a name="managed-identities-in-azure-hdinsight"></a>Azure HDInsight 中的受控識別
 
@@ -44,7 +44,7 @@ ms.locfileid: "91371332"
 
 受控識別會在多個案例的 Azure HDInsight 中使用。 請參閱相關檔以取得詳細的安裝和設定指示：
 
-* [Azure Data Lake Storage Gen2](hdinsight-hadoop-use-data-lake-storage-gen2.md#create-a-user-assigned-managed-identity) \(部分機器翻譯\)
+* [Azure Data Lake Storage Gen2](hdinsight-hadoop-use-data-lake-storage-gen2-portal.md#create-a-user-assigned-managed-identity) \(部分機器翻譯\)
 * [企業安全性套件](domain-joined/apache-domain-joined-configure-using-azure-adds.md#create-and-authorize-a-managed-identity)
 * [客戶管理的金鑰磁碟加密](disk-encryption.md)
 

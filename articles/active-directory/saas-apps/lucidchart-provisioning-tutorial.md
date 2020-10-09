@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/13/2020
 ms.author: Zhchia
-ms.openlocfilehash: 632330d7c94e145124e202be9050e4e1beeb12b0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 43d6ac8354e992a87091bc66417f7ca88e784199
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91265454"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850654"
 ---
 # <a name="tutorial-configure-lucidchart-for-automatic-user-provisioning"></a>教學課程：設定 Lucidchart 來自動布建使用者
 
@@ -31,7 +31,7 @@ ms.locfileid: "91265454"
 > * 在 Lucidchart 中布建群組和群組成員資格
 > * Lucidchart (建議的[單一登入](https://docs.microsoft.com/azure/active-directory/saas-apps/lucidchart-tutorial)) 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 本教學課程中概述的案例假設您已經具有下列必要條件：
 
@@ -49,11 +49,11 @@ ms.locfileid: "91265454"
 
 1. 登入 [Lucidchart 管理主控台](https://www.lucidchart.com)。 流覽至 **Team > 應用程式整合**。
 
-      ![Lucidchart scim](./media/lucidchart-provisioning-tutorial/team1.png)
+      :::image type="content" source="./media/lucidchart-provisioning-tutorial/team1.png" alt-text="Lucidchart 管理主控台的螢幕擷取畫面。[小組] 功能表已反白顯示並開啟。在 [系統管理員] 下，會反白顯示應用程式整合。" border="false":::
 
 2. 流覽至 **SCIM**。
 
-      ![Lucidchart scim](./media/lucidchart-provisioning-tutorial/scim.png)
+      :::image type="content" source="./media/lucidchart-provisioning-tutorial/scim.png" alt-text="Lucidchart 管理主控台的螢幕擷取畫面。[小組] 功能表已反白顯示並開啟。在 [系統管理員] 下，會反白顯示應用程式整合。" border="false":::
 
 3. 向下滾動以查看 **持有人權杖** 和 **LUCIDCHART 基底 URL**。 複製並儲存 **持有人權杖**。 在 Azure 入口網站中，您 LucidChart 應用程式的 [布建] 索引標籤中，將會在 [ **秘密權杖** *] 欄位中輸入此值。 
 

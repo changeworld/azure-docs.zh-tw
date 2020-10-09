@@ -3,15 +3,15 @@ title: 建立已啟用磁碟加密的集區
 description: 瞭解如何使用磁片加密設定，以平臺管理的金鑰來加密節點。
 author: pkshultz
 ms.topic: how-to
-ms.date: 08/25/2020
+ms.date: 10/08/2020
 ms.author: peshultz
 ms.custom: references_regions
-ms.openlocfilehash: 9b0f7f9963ee0edd3986f7ec808a8a4060d857f8
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 55a7e117ebd49f268d4b075d58791df4e9223fdf
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267034"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91849257"
 ---
 # <a name="create-a-pool-with-disk-encryption-enabled"></a>建立已啟用磁碟加密的集區
 
@@ -21,7 +21,7 @@ ms.locfileid: "89267034"
 
 ## <a name="why-use-a-pool-with-disk-encryption-configuration"></a>為何要使用具有磁片加密設定的集區？
 
-有了 Batch 集區，您就可以存取和儲存計算節點的作業系統和暫存磁片上的資料。 使用平臺管理的金鑰來加密伺服器端磁片，可保護此資料的額外負荷和便利性。  
+有了 Batch 集區，您就可以存取和儲存計算節點的作業系統和暫存磁片上的資料。 使用平臺管理的金鑰來加密伺服器端磁片，可保護此資料的額外負荷和便利性。
 
 Batch 會根據集區設定和區域支援，在計算節點上套用這些磁片加密技術的其中一種。
 
@@ -35,8 +35,8 @@ Batch 會根據集區設定和區域支援，在計算節點上套用這些磁�
 > 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 您將無法指定要將哪些加密方法套用至集區中的節點。 相反地，您會提供您想要在其節點上加密的目標磁片，而 Batch 可以選擇適當的加密方法，以確保在計算節點上加密指定的磁片。
- 
-## <a name="azure-portal"></a>Azure 入口網站 
+
+## <a name="azure-portal"></a>Azure 入口網站
 
 在 Azure 入口網站中建立 Batch 集區時，請選取 [**磁片加密**設定] 下的 [ **TemporaryDisk** ] 或 [ **OsAndTemporaryDisk** ]。
 
@@ -44,7 +44,7 @@ Batch 會根據集區設定和區域支援，在計算節點上套用這些磁�
 
 建立集區之後，您可以在集區的 [ **屬性** ] 區段中看到磁片加密設定目標。
 
-:::image type="content" source="media/disk-encryption/configuration-target.png" alt-text="顯示 Azure 入口網站中磁片加密設定目標的螢幕擷取畫面。":::
+:::image type="content" source="media/disk-encryption/configuration-target.png" alt-text="Azure 入口網站中 [磁片加密] 設定選項的螢幕擷取畫面。":::
 
 ## <a name="examples"></a>範例
 
@@ -87,7 +87,7 @@ client-request-id: 00000000-0000-0000-0000-000000000000
     "resizeTimeout": "PT15M",
     "targetDedicatedNodes": 5,
     "targetLowPriorityNodes": 0,
-    "maxTasksPerNode": 3,
+    "taskSlotsPerNode": 3,
     "enableAutoScale": false,
     "enableInterNodeCommunication": false
 }

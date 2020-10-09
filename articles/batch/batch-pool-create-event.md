@@ -2,13 +2,13 @@
 title: Azure Batch 集區建立事件
 description: Batch 集區建立事件 (在建立集區之後發出) 的參考。 記錄檔內容將公開集區的一 般資訊。
 ms.topic: reference
-ms.date: 04/20/2017
-ms.openlocfilehash: eee512bbeed223269c43bde77435fbff2b67b533
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.date: 10/08/2020
+ms.openlocfilehash: dea0e04fa506274e645ba7a578039a0d6f021043
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86147323"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850943"
 ---
 # <a name="pool-create-event"></a>集區建立事件
 
@@ -41,7 +41,7 @@ ms.locfileid: "86147323"
     "resizeTimeout": "300000",
     "targetDedicatedNodes": 2,
     "targetLowPriorityNodes": 2,
-    "maxTasksPerNode": 1,
+    "taskSlotsPerNode": 1,
     "vmFillType": "Spread",
     "enableAutoScale": false,
     "enableInterNodeCommunication": false,
@@ -64,7 +64,7 @@ ms.locfileid: "86147323"
 |`enableAutoScale`|Bool|指定集區大小是否隨著時間自動調整。|
 |`enableInterNodeCommunication`|Bool|指定是否針對節點間的直接通訊設定集區。|
 |`isAutoPool`|Bool|指定是否已透過作業的 AutoPool 機制建立集區。|
-|`maxTasksPerNode`|Int32|可在集區內單一計算節點上並行執行的工作數目上限。|
+|`taskSlotsPerNode`|Int32|可在集區內單一計算節點上並行執行的工作數目上限。|
 |`vmFillType`|String|定義 Batch 服務如何在集區中的計算節點間散發工作。 有效值為 Spread 或 Pack。|
 
 ###  <a name="cloudserviceconfiguration"></a><a name="bk_csconf"></a> cloudServiceConfiguration

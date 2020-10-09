@@ -8,18 +8,21 @@ ms.date: 9/11/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: 6726dab6f1037f01eda316968e3c5b503aa9dbfb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: baf89ec75f844ae1a1f7797d26d2fb04a0d5df34
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91326566"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91849838"
 ---
 # <a name="integrate-with-logic-apps-using-a-custom-connector"></a>使用自訂連接器與 Logic Apps 整合
 
 [Azure Logic Apps](../logic-apps/logic-apps-overview.md) 是一項雲端服務，可協助您將應用程式和服務之間的工作流程自動化。 藉由將 Logic Apps 連接到 Azure 數位 Twins Api，您可以建立 Azure 數位 Twins 和其資料這類自動化流程。
 
 Azure 數位 Twins 目前沒有認證 (預先建立的) 連接器可供 Logic Apps。 相反地，目前使用 Logic Apps 搭配 Azure 數位 Twins 的程式是使用已修改為使用 Logic Apps 的[自訂 Azure 數位 Twins Swagger](https://docs.microsoft.com/samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/)來建立[**自訂 Logic Apps 連接器**](../logic-apps/custom-connector-overview.md)。
+
+> [!NOTE]
+> 上面連結的自訂 Swagger 範例中包含多個 Swagger 版本。 最新版本會在最新日期的子資料夾中找到，但仍會支援範例中包含的較舊版本。
 
 在本文中，您將使用 [Azure 入口網站](https://portal.azure.com) 來 **建立自訂連接器** ，以用來將 Logic Apps 連線到 Azure 數位 Twins 實例。 然後，您將建立一個使用此連線的 **邏輯應用程式** 來進行範例案例，其中計時器觸發的事件將會自動更新 Azure 數位 Twins 實例中的對應項。 
 
@@ -37,7 +40,7 @@ Azure 數位 Twins 目前沒有認證 (預先建立的) 連接器可供 Logic Ap
 
 若要將 Azure 數位 Twins 實例連線到本文中的 Logic Apps，您必須已設定 **Azure 數位 Twins 實例** 。 
 
-首先，設定 Azure 數位 Twins 實例和必要的驗證，以便能夠使用它。 若要這樣做，請依照 how [*to：設定實例和驗證*](how-to-set-up-instance-portal.md)中的指示進行。 根據您的偏好體驗，會提供 [Azure 入口網站](how-to-set-up-instance-portal.md)、 [CLI](how-to-set-up-instance-cli.md)或 [自動化 Cloud Shell 部署腳本範例](how-to-set-up-instance-scripted.md)的安裝程式文章。 所有版本的指示也包含驗證您已成功完成每個步驟的步驟，並已準備好繼續使用新的實例。
+首先，設定 Azure Digital Twins 執行個體，及其正常運作所需的驗證。 若要這麼做，請依照指示操作：[*操作說明：設定執行個體和驗證*](how-to-set-up-instance-portal.md)。 您可以根據本身偏好的體驗，選擇參閱針對 [Azure 入口網站](how-to-set-up-instance-portal.md)、[CLI](how-to-set-up-instance-cli.md) 或[自動化 Cloud Shell 部署指令碼範例](how-to-set-up-instance-scripted.md)而提供的設定文章。 各種版本的指示也包含可驗證您已成功完成每個步驟，並已準備好繼續使用新執行個體的步驟。
 
 在本教學課程中，您將需要設定實例時的數個值。 如果您需要再次收集這些值，請使用下列連結以前往設定文章中的對應章節，以在 [Azure 入口網站](https://portal.azure.com)中找到這些值。
 * Azure Digital Twins 執行個體**_主機名稱_** ([在入口網站中尋找](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values))
@@ -90,9 +93,14 @@ Azure 數位 Twins 目前沒有認證 (預先建立的) 連接器可供 Logic Ap
 
 接下來，您將設定您所建立的連接器，以連線到 Azure 數位 Twins。
 
-首先，下載已修改為使用 Logic Apps 的自訂 Azure 數位 Twins Swagger。 藉由按下 [*下載 ZIP* ] 按鈕，從此[連結](https://docs.microsoft.com/samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/)下載**Azure 數位 Twins 自訂 swagger**範例。 流覽至下載的 *Azure_Digital_Twins_Custom_Swaggers.zip* 資料夾並解壓縮。 本教學課程的自訂 Swagger 位於 *Azure_Digital_Twins_Custom_Swaggers\LogicApps\preview\2020-05-31-preview\digitaltwins.js開啟*。
+首先，下載已修改為使用 Logic Apps 的自訂 Azure 數位 Twins Swagger。 藉由按下 [*下載 ZIP* ] 按鈕，從此[**連結**](https://docs.microsoft.com/samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/)下載**Azure 數位 Twins 自訂 swagger**範例。 流覽至下載的 *Azure_Digital_Twins_Custom_Swaggers.zip* 資料夾並解壓縮。 
 
-然後，移至 [ [Azure 入口網站](https://portal.azure.com) 中您連接器的 [總覽] 頁面，然後按 [ *編輯*]。
+本教學課程的自訂 Swagger 位於 _**Azure_Digital_Twins_Custom_Swaggers \logicapps**_ ] 資料夾中。 此資料夾包含名為 [ *穩定* ] 和 [ *預覽*] 的子資料夾，其中包含依日期組織的不同版本的 Swagger。 具有最新日期的資料夾會包含 Swagger 的最新複本。 無論您選取哪一個版本，Swagger 檔案都會命名為 _**digitaltwins.js開啟**_。
+
+> [!NOTE]
+> 除非您使用的是預覽功能，否則通常建議使用最新 *穩定* 版本的 Swagger。 不過，仍支援較早版本和預覽版本的 Swagger。 
+
+接下來，移至 [ [Azure 入口網站](https://portal.azure.com) 中您連接器的 [總覽] 頁面，然後按 [ *編輯*]。
 
 :::image type="content" source="media/how-to-integrate-logic-apps/edit-connector.png" alt-text="Azure AD 應用程式註冊的入口網站觀看。[資源] 功能表中的 [憑證和秘密] 周圍有一個醒目提示，並在 [新用戶端密碼] 周圍的頁面上醒目提示。":::
 

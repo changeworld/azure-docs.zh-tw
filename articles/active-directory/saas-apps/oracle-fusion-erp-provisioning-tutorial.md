@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: Zhchia
-ms.openlocfilehash: 3f835c021e20edba21583e71c6c1a480eca7fd89
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 45a1ae281a8a1acb1cfd12efe500f5a623033ef3
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91255819"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850012"
 ---
 # <a name="tutorial-configure-oracle-fusion-erp-for-automatic-user-provisioning"></a>教學課程：設定 Oracle 融合 ERP 來自動布建使用者
 
@@ -27,7 +27,7 @@ ms.locfileid: "91255819"
 >
 > 此連接器目前為預覽版。 如需預覽功能的一般 Microsoft Azure 使用條款的詳細資訊，請參閱[Microsoft Azure 預覽的補充使用](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)規定
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 本教學課程中概述的案例假設您已經具有下列必要條件：
 
@@ -56,11 +56,11 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
 2. 按一下左上角的導覽器。 在 [ **工具**] 底下，選取 [ **安全性] 主控台**。
 
-    ![Oracle 融合 ERP 新增 SCIM](media/oracle-fusion-erp-provisioning-tutorial/login.png)
+    :::image type="content" source="media/oracle-fusion-erp-provisioning-tutorial/login.png" alt-text="Oracle 融合 E R P 管理主控台中 [導覽器] 頁面的螢幕擷取畫面。[工具] 和 [安全性] 主控台會反白顯示。" border="false":::
 
 3. 流覽至 [ **使用者**]。
     
-    ![Oracle 融合 ERP 新增 SCIM](media/oracle-fusion-erp-provisioning-tutorial/user.png)
+    :::image type="content" source="media/oracle-fusion-erp-provisioning-tutorial/user.png" alt-text="Oracle 融合 E R P 管理主控台中 [導覽器] 頁面的螢幕擷取畫面。[工具] 和 [安全性] 主控台會反白顯示。" border="false":::
 
 4. 針對您將用來登入 Oracle 融合 ERP 管理主控台的管理使用者帳戶，儲存使用者名稱和密碼。 您必須在 Azure 入口網站中 Oracle 融合 ERP 應用程式的 [布建] 索引標籤中輸入 [ **管理員使用者名稱** ] 和 [ **密碼** ] 欄位中的這些值。
 
@@ -116,21 +116,21 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
 5. 在 [ **管理員認證** ] 區段下的 [ `https://ejlv.fa.em2.oraclecloud.com/hcmRestApi/scim/` **租使用者 URL**] 中輸入。 在 [ **管理員** 使用者名稱] 和 [ **密碼** ] 欄位中，輸入先前抓取的系統管理員使用者名稱和密碼。 按一下 [Azure AD 與 Oracle 融合 ERP 之間的 **測試連接** ]。 
 
-    ![Oracle 融合 ERP 新增 SCIM](media/oracle-fusion-erp-provisioning-tutorial/admin.png)
+    :::image type="content" source="media/oracle-fusion-erp-provisioning-tutorial/admin.png" alt-text="Oracle 融合 E R P 管理主控台中 [導覽器] 頁面的螢幕擷取畫面。[工具] 和 [安全性] 主控台會反白顯示。" border="false":::
 
 6. 在 [通知電子郵件]**** 欄位中，輸入應該收到佈建錯誤通知的個人或群組電子郵件地址，然後選取 [發生失敗時傳送電子郵件通知]**** 核取方塊。
 
     ![通知電子郵件](common/provisioning-notification-email.png)
 
-7. 按一下 [檔案]  。
+7. 按一下 [儲存]。
 
 8. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 使用者至 Oracle 融合 ERP**]。
 
-    ![Oracle 融合 ERP 新增 SCIM](media/oracle-fusion-erp-provisioning-tutorial/user-mapping.png)
+    :::image type="content" source="media/oracle-fusion-erp-provisioning-tutorial/user-mapping.png" alt-text="Oracle 融合 E R P 管理主控台中 [導覽器] 頁面的螢幕擷取畫面。[工具] 和 [安全性] 主控台會反白顯示。" border="false":::
 
 9. 在 [ **屬性對應** ] 區段中，檢查從 Azure AD 同步處理到 ORACLE 融合 ERP 的使用者屬性。 選取為 [比對] 屬性 **的屬性會** 用來比對 ORACLE 融合 ERP 中的使用者帳戶，以進行更新作業。 選取 [儲存] 按鈕以認可所有變更。
 
-    ![Oracle 融合 ERP 新增 SCIM](media/oracle-fusion-erp-provisioning-tutorial/user-attribute.png)
+    :::image type="content" source="media/oracle-fusion-erp-provisioning-tutorial/user-attribute.png" alt-text="Oracle 融合 E R P 管理主控台中 [導覽器] 頁面的螢幕擷取畫面。[工具] 和 [安全性] 主控台會反白顯示。" border="false":::
 
 10. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 群組至 Oracle 融合 ERP**]。
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 0af8df35bc2cc323e5165b973c889a0ab10f4cbb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: bf779918dbfb9f7b95096f3a5efcc8e64f09c403
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91304894"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850491"
 ---
 # <a name="tutorial-configure-ipass-smartconnect-for-automatic-user-provisioning"></a>教學課程：設定 iPass SmartConnect 來自動布建使用者
 
@@ -27,7 +27,7 @@ ms.locfileid: "91304894"
 >
 > 此連接器目前為公開預覽版。 如需有關預覽功能的一般 Microsoft Azure 使用規定詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用規定](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 本教學課程中概述的案例假設您已經具有下列必要條件：
 
@@ -110,15 +110,15 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
     ![通知電子郵件](common/provisioning-notification-email.png)
 
-7. 按一下 [檔案]  。
+7. 按一下 [儲存]。
 
 8. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 使用者至 iPass SmartConnect**]。
 
-    ![iPass SmartConnect 使用者對應](media/ipass-smartconnect-provisioning-tutorial/usermapping.png)
+    :::image type="content" source="media/ipass-smartconnect-provisioning-tutorial/usermapping.png" alt-text="[對應] 區段的螢幕擷取畫面。在 [名稱] 底下，會顯示 [同步處理 Azure Active Directory 使用者至 iPass SmartConnect]。" border="false":::
 
 9. 在 [ **屬性對應** ] 區段中，檢查從 Azure AD 同步處理至 iPass SmartConnect 的使用者屬性。 選取為 [比對] 屬性 **的屬性會** 用來比對 iPass SmartConnect 中的使用者帳戶，以進行更新作業。 選取 [儲存] 按鈕以認可所有變更。
 
-    ![iPass SmartConnect 使用者對應](media/ipass-smartconnect-provisioning-tutorial/userattribute.png)
+    :::image type="content" source="media/ipass-smartconnect-provisioning-tutorial/userattribute.png" alt-text="[對應] 區段的螢幕擷取畫面。在 [名稱] 底下，會顯示 [同步處理 Azure Active Directory 使用者至 iPass SmartConnect]。" border="false":::
 
 
 10. 若要設定範圍篩選，請參閱[範圍篩選教學課程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中提供的下列指示。

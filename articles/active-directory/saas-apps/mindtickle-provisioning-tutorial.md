@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/23/2019
 ms.author: Zhchia
-ms.openlocfilehash: e5145aee31b4f82b34f9256257cf6c2951ca24da
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 145793d7e451e7db9598118fb3adbd49d1d9c650
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91256427"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850671"
 ---
 # <a name="tutorial-configure-mindtickle-for-automatic-user-provisioning"></a>教學課程：設定 MindTickle 來自動布建使用者
 
@@ -27,7 +27,7 @@ ms.locfileid: "91256427"
 >
 > 此連接器目前為公開預覽版。 如需有關預覽功能的一般 Microsoft Azure 使用規定詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用規定](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 本教學課程中概述的案例假設您已經具有下列必要條件：
 
@@ -111,15 +111,15 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
     ![通知電子郵件](common/provisioning-notification-email.png)
 
-7. 按一下 [檔案]  。
+7. 按一下 [儲存]。
 
 8. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 使用者至 MindTickle**]。
 
-    ![MindTickle 使用者對應](media/mindtickle-provisioning-tutorial/usermapping.png)
+    :::image type="content" source="media/mindtickle-provisioning-tutorial/usermapping.png" alt-text="[對應] 區段的螢幕擷取畫面。在 [名稱] 底下，會顯示 [同步處理 Azure Active Directory 使用者至 MindTickle]。" border="false":::
 
 9. 在 [ **屬性對應** ] 區段中，檢查從 Azure AD 同步處理到 MindTickle 的使用者屬性。 選取為 [比對 **] 屬性的屬性會** 用來比對 MindTickle 中的使用者帳戶以進行更新作業。 選取 [儲存] 按鈕以認可所有變更。
 
-    ![MindTickle 使用者對應](media/mindtickle-provisioning-tutorial/userattribute.png)
+    :::image type="content" source="media/mindtickle-provisioning-tutorial/userattribute.png" alt-text="[對應] 區段的螢幕擷取畫面。在 [名稱] 底下，會顯示 [同步處理 Azure Active Directory 使用者至 MindTickle]。" border="false":::
 
 12. 若要設定範圍篩選，請參閱[範圍篩選教學課程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中提供的下列指示。
 

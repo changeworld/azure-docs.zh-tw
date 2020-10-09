@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: troubleshooting
 ms.date: 09/02/2020
 ms.author: genli
-ms.openlocfilehash: 642a1937f44a608ebf235c20da060972788046a0
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 3274e45738c079c89560f546fe58163f695e12df
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89321730"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91851096"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>準備 Windows VHD 或 VHDX 以上傳至 Azure
 
@@ -421,18 +421,19 @@ Sysprep 藉由移除所有個人資料和重設數個元件來提供「現成」
 
 1. 登入 Windows VM。
 1. 以系統管理員身分執行 PowerShell 會話。
+1.  (C:\Windows\Panther) 刪除 >\panther\setupact.log 目錄。
 1. 將目錄變更為 `%windir%\system32\sysprep` 。 然後執行 `sysprep.exe`。
 1. 在 [ **系統準備工具** ] 對話方塊中，選取 [ **進入系統全新體驗] (OOBE) **，然後確定已選取 [ **一般化** ] 核取方塊。
 
     ![系統準備工具](media/prepare-for-upload-vhd-image/syspre.png)
 1. 在 [關機選項] 中選取 [關機]。
-1. 選取 [確定]。
+1. 選取 [確定]  。
 1. Sysprep 完成時，關閉 VM。 請勿使用 [ **重新開機** ] 來關閉 VM。
 
 現在已準備好上傳 VHD。 如需如何從一般化磁片建立 VM 的詳細資訊，請參閱 [上傳一般化 VHD 並使用它在 Azure 中建立新的 vm](sa-upload-generalized.md)。
 
 >[!NOTE]
-> 不支援自訂的 *unattend.xml* 檔案。 雖然我們支援 **additionalUnattendContent** 屬性，但僅提供有限的支援，可將 [microsoft windows shell 安裝](/windows-hardware/customize/desktop/unattend/microsoft-windows-shell-setup) 選項新增至 Azure 布建代理程式所使用的 *unattend.xml* 檔案中。 例如，您可以使用 [additionalUnattendContent](/dotnet/api/microsoft.azure.management.compute.models.additionalunattendcontent?view=azure-dotnet) 來新增 FirstLogonCommands 和 LogonCommands。 如需詳細資訊，請參閱 [AdditionalUnattendContent FirstLogonCommands 範例](https://github.com/Azure/azure-quickstart-templates/issues/1407)。
+> 不支援自訂的 *unattend.xml* 檔案。 雖然我們支援 **additionalUnattendContent** 屬性，但僅提供有限的支援，可將 [microsoft windows shell 安裝](/windows-hardware/customize/desktop/unattend/microsoft-windows-shell-setup) 選項新增至 Azure 布建代理程式所使用的 *unattend.xml* 檔案中。 例如，您可以使用 [additionalUnattendContent](/dotnet/api/microsoft.azure.management.compute.models.additionalunattendcontent?view=azure-dotnet&preserve-view=true) 來新增 FirstLogonCommands 和 LogonCommands。 如需詳細資訊，請參閱 [AdditionalUnattendContent FirstLogonCommands 範例](https://github.com/Azure/azure-quickstart-templates/issues/1407)。
 
 ## <a name="convert-the-virtual-disk-to-a-fixed-size-vhd"></a>將虛擬磁片轉換成固定大小的 VHD
 
@@ -516,7 +517,7 @@ Resize-VHD -Path C:\test\MyNewVM.vhd -SizeBytes 105906176
 
   - 建議您停用防毒軟體可能提供的腳本封鎖程式。 當您從映射部署新的 VM 時，它們可能會干擾並封鎖執行的 Windows 布建代理程式腳本。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [將 Windows VM 映像上傳至 Azure 供 Resource Manager 部署使用](upload-generalized-managed.md)
 - [針對 Azure Windows VM 啟用問題進行疑難排解](troubleshoot-activation-problems.md)

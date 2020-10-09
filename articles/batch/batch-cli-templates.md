@@ -2,14 +2,14 @@
 title: 使用範本執行端對端作業
 description: 您只需要使用 CLI 命令，就可以建立集區、上傳輸入資料、建立作業和相關聯工作，以及下載結果輸出資料。
 ms.topic: how-to
-ms.date: 12/07/2018
+ms.date: 10/08/2020
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: e9b4930dee1b28bb4ec71690cbfcef88e0365b9e
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 845a32c2feda5a5a3b8d44d237c62db94cae1779
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87494922"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91848716"
 ---
 # <a name="use-azure-batch-cli-templates-and-file-transfer"></a>使用 Azure Batch CLI 範本和檔案傳輸
 
@@ -65,7 +65,7 @@ Azure Batch 範本在功能和語法方面類似於 Azure Resource Manager 範�
 -   **參數**
 
     -   允許在主體區段中指定屬性值，包含僅於使用此範本時需要提供的參數值。 例如，集區的完整定義可放在主體中，且僅針對集區識別碼定義 `poolId`；因此，只需要提供一個集區識別碼字串即可建立集區。
-        
+
     -   可由了解 Batch 和由 Batch 執行之應用程式的人員撰寫範本主體；僅在使用此範本時，才必須提供作者定義參數的值。 因此，未深入了解 Batch 和/或應用程式知識的使用者可以使用此範本。
 
 -   **變數**
@@ -121,7 +121,7 @@ Azure Batch 範本在功能和語法方面類似於 Azure Resource Manager 範�
             "vmSize": "STANDARD_D3_V2",
             "targetDedicatedNodes": "[parameters('nodeCount')]",
             "enableAutoScale": false,
-            "maxTasksPerNode": 1,
+            "taskSlotsPerNode": 1,
             "packageReferences": [
                 {
                     "type": "aptPackage",
@@ -209,7 +209,7 @@ az batch pool create --template pool-ffmpeg.json --parameters pool-parameters.js
             },
             "taskFactory": {
                 "type": "taskPerFile",
-                "source": { 
+                "source": {
                     "fileGroup": "ffmpeg-input"
                 },
                 "repeatTask": {
@@ -271,7 +271,7 @@ az batch job create --template job-ffmpeg.json
 Batch CLI 擴充功能會提供命令，以供您從用戶端將檔案上傳到指定的檔案群組，以及從指定的檔案群組將檔案下載到用戶端。
 
 ```azurecli
-az batch file upload --local-path c:\source_videos\*.mp4 
+az batch file upload --local-path c:\source_videos\*.mp4
     --file-group ffmpeg-input
 
 az batch file download --file-group ffmpeg-output --local-path

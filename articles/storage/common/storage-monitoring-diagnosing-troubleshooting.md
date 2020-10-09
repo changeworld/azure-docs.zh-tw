@@ -4,17 +4,17 @@ description: 使用儲存體分析、用戶端記錄及其他協力廠商工具�
 author: normesta
 ms.service: storage
 ms.topic: troubleshooting
-ms.date: 10/02/2020
+ms.date: 10/08/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: a63af55161c2e60724fd35987f9dcbf05b12df2e
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.openlocfilehash: 5f43654b4ff7d0e1f73bd2d83df21d7277c570d1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91667906"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91854552"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>監視、診斷與疑難排解 Microsoft Azure 儲存體
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -23,8 +23,6 @@ ms.locfileid: "91667906"
 與傳統環境相比，託管於雲端環境的分散式應用程式一旦發生問題，無論要為其進行診斷或疑難排解，都更加複雜。 應用程式可以部署在 PaaS 或 IaaS 基礎架構、內部部署環境、行動裝置或是這幾種環境的組合上。 一般來說，您的應用程式網路流量可能會跨越公共與私有網路，而您的應用程式有可能使用多項儲存技術，例如 Microsoft Azure 儲存體資料表、Blob、佇列或是檔案服務，以及關聯式資料庫與文件資料庫之類的其他資料存放區。
 
 若要成功管理這類應用程式，您除了需要主動監視它們之外，還需要了解如何為其各層面與相依技術進行診斷與疑難排解。 身為 Azure 儲存體服務的使用者，您應持續監視應用程式所使用的儲存體服務，以預防發生非預期的行為改變 (例如，回應速度明顯比平時慢)，並使用記錄功能來收集更多的詳細資料，同時深入分析問題的成因。 從監視與記錄手段中取得的診斷資訊，將在應用程式遭遇問題時，協助您判斷根本原因。 接著才能為問題進行疑難排解，並決定該採取哪些合宜的步驟來加以矯正。 Azure 儲存體是 Azure 的核心服務之一，更在客戶部署至 Azure 基礎結構的主要解決方案之中扮演著重要的環節。 Azure 儲存體會在您的雲端架構應用程式裡加入各項功能，從而簡化儲存體問題的監視、診斷與疑難排解程序。
-
-如需在 Azure 儲存體應用程式進行端對端疑難排解的實際操作指南，請參閱 [使用 Azure 儲存體度量和記錄、AzCopy 和 Message Analyzer 進行端對端疑難排解](../storage-e2e-troubleshooting.md)。
 
 * [簡介]
   * [本指南架構]
@@ -68,7 +66,6 @@ ms.locfileid: "91667906"
 * [附錄]
   * [附錄 1：使用 Fiddler 擷取 HTTP 與 HTTPS 流量]
   * [附錄 2：使用 Wireshark 擷取網路流量]
-  * [附錄 3：使用 Microsoft Message Analyzer 擷取網路流量]
   * [附錄 4：使用 Excel 檢視度量與記錄資料]
   * [附錄 5：使用 Application Insights for Azure DevOps 監視]
 
@@ -92,7 +89,7 @@ ms.locfileid: "91667906"
 
 「[疑難排解指引]」一節針對您可能會碰到的一些常見的儲存體相關問題，提供疑難排解指引。
 
-「[附錄]」包含使用 Wireshark 與 Netmon 來分析網路封包資料，使用 Fiddler 來分析 HTTP/HTTPS 訊息，以及使用 Microsoft Message Analyzer 來為記錄資料等其他各項工具的相關資訊建立相互關聯。
+「[附錄]」包含使用其他工具（例如 Wireshark 和 Netmon）來分析網路封包資料的資訊，以及用來分析 HTTP/HTTPS 訊息的 Fiddler。
 
 ## <a name="monitoring-your-storage-service"></a><a name="monitoring-your-storage-service"></a>監視您的儲存體服務
 如果您熟悉 Windows 效能監視，可以將儲存體度量當成相當於 Windows 效能監視器計數的 Azure 儲存體。 儲存體度量中包含完整的度量集合 (Windows 效能監視器詞彙裡的計數)，例如服務可用性、服務要求總數，或是服務要求成功的百分比。 如需可用度量的完整清單，請參閱 [儲存體分析度量資料表結構描述](https://msdn.microsoft.com/library/azure/hh343264.aspx)。 您可以指定讓儲存體服務每小時或每分鐘收集並彙總度量一次。 如需如何啟用度量並監視您的儲存體帳戶的詳細資訊，請參閱 [啟用儲存體度量和檢視度量資料](https://go.microsoft.com/fwlink/?LinkId=510865)。
@@ -221,10 +218,9 @@ Storage Client Library for .NET 能讓您針對應用程式所執行的儲存體
 
 * [Fiddler](https://www.telerik.com/fiddler) 是免費的 Web 偵錯 Proxy，可讓您檢視 HTTP 與 HTTPS 要求及回應訊息的標頭與承載資料。 如需詳細資訊，請參閱 [附錄 1：使用 Fiddler 擷取 HTTP 與 HTTPS 流量](#appendix-1)。
 * [Microsoft Network Monitor (Netmon)](https://cnet-downloads.com/network-monitor) 與 [Wireshark](https://www.wireshark.org/) 都是免費的網路通訊協定分析器，可讓您針對廣泛的網路通訊協定檢視詳細封包資訊。 如需 Wireshark 的詳細資訊，請參閱[附錄 2：使用 Wireshark 擷取網路流量](#appendix-2)。
-* 來自 Microsoft 的 Microsoft Message Analyzer 工具功能比 Netmon 更強，除了可擷取網路封包資料之外，還能協助您檢視並分析其他工具所擷取的記錄資料。 如需詳細資訊，請參閱[附錄 3：使用 Microsoft Message Analyzer 擷取網路流量](#appendix-3)。
 * 如果您想要執行基本的連線測試以確認用戶端機器能夠透過網路與 Azure 儲存體服務連線的話，您無法使用用戶端上的標準 **ping** 工具來執行。 不過，您可以使用 [**tcping** 工具](https://www.elifulkerson.com/projects/tcping.php)來檢查連線能力。
 
-在許多案例中，來自儲存體記錄與儲存體用戶端程式庫的記錄資料，用來診斷問題都已綽綽有餘，但是在某些情況中，您可能需要比這些網路記錄工具所能提供的資訊還要詳盡的資料才行。 舉例來說，透過 Fiddler 來檢視 HTTP 與 HTTPS 訊息可以讓您檢視在儲存體服務之間來回傳送的標頭與裝載資料，進一步幫助您確認用戶端應用程式如何重試儲存體操作。 諸如 Wireshark 之類的通訊協定分析器可在封包層級運作，方便您檢視 TCP 資料，從而為遺失的封包與連線問題進行疑難排解。 Message Analyzer 可同時在 HTTP 與 TCP 網路層運作。
+在許多案例中，來自儲存體記錄與儲存體用戶端程式庫的記錄資料，用來診斷問題都已綽綽有餘，但是在某些情況中，您可能需要比這些網路記錄工具所能提供的資訊還要詳盡的資料才行。 舉例來說，透過 Fiddler 來檢視 HTTP 與 HTTPS 訊息可以讓您檢視在儲存體服務之間來回傳送的標頭與裝載資料，進一步幫助您確認用戶端應用程式如何重試儲存體操作。 諸如 Wireshark 之類的通訊協定分析器可在封包層級運作，方便您檢視 TCP 資料，從而為遺失的封包與連線問題進行疑難排解。 
 
 ## <a name="end-to-end-tracing"></a><a name="end-to-end-tracing"></a>端對端追蹤
 使用各種記錄檔案進行的端對端追蹤方式，是調查潛在問題的有效方法。 您可以使用度量資料裡的日期/時間資訊當作參考，來判斷該從記錄檔的哪個區段開始檢視，以獲得問題的詳細資訊，並協助您進行疑難排解。
@@ -385,11 +381,9 @@ queueServicePoint.UseNagleAlgorithm = false;
 您應該檢查用戶端記錄，了解您的用戶端應用程式提交多少要求數量，並查看用戶端內是否出現 .NET 相關的一般效能瓶頸，例如 CPU、.NET 記憶體回收、網路使用率或記憶體等。 若要開始疑難排解 .NET 用戶端應用程式，請參閱 [偵錯、追蹤與分析](https://msdn.microsoft.com/library/7fe0dd2y)。
 
 #### <a name="investigating-network-latency-issues"></a>調查網路延遲問題
-網路所引起的端對端高延遲通常是暫時性狀況。 您可以使用 Wireshark 或 Microsoft Message Analyzer 之類的工具調查暫時性與永久性網路問題，例如遭到捨棄的封包。
+網路所引起的端對端高延遲通常是暫時性狀況。 您可以使用 Wireshark 之類的工具來調查暫時性和持續性的網路問題，例如丟棄的封包。
 
 如需使用 Wireshark 對網路問題進行疑難排解的詳細資訊，請參閱[附錄 2：使用 Wireshark 擷取網路流量]。
-
-如需使用 Microsoft Message Analyzer 對網路問題進行疑難排解的詳細資訊，請參閱[附錄 3：使用 Microsoft Message Analyzer 擷取網路流量]。
 
 ### <a name="metrics-show-low-averagee2elatency-and-low-averageserverlatency-but-the-client-is-experiencing-high-latency"></a><a name="metrics-show-low-AverageE2ELatency-and-low-AverageServerLatency"></a>度量顯示低 AverageE2ELatency 與低 AverageServerLatency，但用戶端正經歷高延遲
 在此案例中，最可能的原因就是通往儲存體服務的儲存體要求發生延遲。 您應該調查來自用戶端的要求為何無法抵達 Blob 服務。
@@ -402,11 +396,9 @@ queueServicePoint.UseNagleAlgorithm = false;
 * 檢查用戶端記錄。 詳細資訊記錄會指出已發生的重試。
 * 對程式碼偵錯，並檢查與要求相關聯之 **OperationContext** 物件的屬性。 如果有重試此作業， **RequestResults** 屬性會包含多個唯一的伺服器要求 ID。 您也可以檢查每個要求的開始和結束時間。 如需詳細資訊，請參閱「 [伺服器要求 ID]」一節裡的程式碼範例。
 
-如果用戶端裡沒有任何問題，請調查封包遺失之類的潛在網路問題。 您可以使用諸如 Wireshark 或 Microsoft Message Analyzer 之類的工具來調查網路問題。
+如果用戶端裡沒有任何問題，請調查封包遺失之類的潛在網路問題。 您可以使用 Wireshark 之類的工具來調查網路問題。
 
 如需使用 Wireshark 對網路問題進行疑難排解的詳細資訊，請參閱[附錄 2：使用 Wireshark 擷取網路流量]。
-
-如需使用 Microsoft Message Analyzer 對網路問題進行疑難排解的詳細資訊，請參閱[附錄 3：使用 Microsoft Message Analyzer 擷取網路流量]。
 
 ### <a name="metrics-show-high-averageserverlatency"></a><a name="metrics-show-high-AverageServerLatency"></a>度量顯示高 AverageServerLatency
 當 Blob 下載要求出現高 **AverageServerLatency** 的時候，請使用儲存體記錄功能來查看同一個 Blob (或是 Blob 集合) 是否重複出現要求。 在 Blob 上傳要求中，您應該調查用戶端所使用的區塊大小 (例如，小於 64 K 的區塊大小，可能導致額外的負荷，除非讀取的區塊流量也小於 64 K)，以及是否有多個用戶端同時間上傳區塊給同一個 Blob。 您也應該查看每分鐘度量，確認是否有要求數量突然增加而導致超出每秒延展性目標的情況：另請參閱[度量顯示 PercentTimeoutError 增加]。
@@ -476,7 +468,7 @@ queueServicePoint.UseNagleAlgorithm = false;
 ### <a name="metrics-show-an-increase-in-percentnetworkerror"></a><a name="metrics-show-an-increase-in-PercentNetworkError"></a>度量顯示 PercentNetworkError 增加
 您的度量顯示其中一個儲存體服務的 **PercentNetworkError** 有增加情況。 **PercentNetworkError** 度量是下列度量的彙總：**NetworkError**、**AnonymousNetworkError** 及 **SASNetworkError**。 當儲存體服務在用戶端進行儲存體要求時偵測到網路錯誤，就會發生這類情況。
 
-此錯誤最常見的原因，就是用戶端在儲存體服務逾時之前就中斷連線。 請調查用戶端裡的程式碼，了解用戶端何時及為何與儲存體服務中斷連線。 您還可以使用 Wireshark、Microsoft Message Analyzer 或是 Tcping 調查來自用戶端的網路連線問題。 這些工具如 [附錄]所述。
+此錯誤最常見的原因，就是用戶端在儲存體服務逾時之前就中斷連線。 請調查用戶端裡的程式碼，了解用戶端何時及為何與儲存體服務中斷連線。 您也可以使用 Wireshark 或 Tcping 來調查用戶端的網路連線問題。 這些工具如 [附錄]所述。
 
 ### <a name="the-client-is-receiving-http-403-forbidden-messages"></a><a name="the-client-is-receiving-403-messages"></a>用戶端收到 HTTP 403 (禁止) 訊息
 如果您的用戶端應用程式擲回 HTTP 403 (禁止) 錯誤，則可能是因為用戶端在傳送儲存體要求時使用過期的共用存取簽章 (SAS) (但也可能是時鐘誤差、無效的金鑰與空白標頭引起)。 如果原因出在 SAS 金鑰過期，那麼您將無法在伺服器端的儲存體記錄資料中看到任何項目。 下列資料表以儲存體用戶端程式庫所產生的用戶端記錄為例，說明此問題的原因：
@@ -719,13 +711,11 @@ sqllocaldb create v11.0
 
 * 檢查您的度量，了解其中是否出現不同於預期的基準行為。 您可以從度量中，判斷該問題是暫時性還是永久性，以及該問題影響了哪些儲存體作業。
 * 您可以使用度量資訊，協助您搜尋伺服器端記錄資料以了解所發生的任何錯誤之詳細資訊。 此項資訊可協助您進行疑難排解並解決問題。
-* 如果伺服器端記錄裡的資訊不足以為問題順利進行疑難排解，您可以使用儲存體用戶端程式庫端的記錄來調查用戶端應用程式行為，並使用像是 Fiddler、Wireshark 與 Microsoft Message Analyzer 之類的工具來調查您的網路。
+* 如果伺服器端記錄中的資訊不足以成功對問題進行疑難排解，您可以使用儲存體用戶端程式庫用戶端記錄來調查用戶端應用程式的行為，以及使用 Fiddler、Wireshark 等工具來調查您的網路。
 
 如需有關使用 Fiddler 的詳細資訊，請參閱[附錄 1：使用 Fiddler 擷取 HTTP 與 HTTPS 流量]。
 
 如需有關使用 Wireshark 的詳細資訊，請參閱[附錄 2：使用 Wireshark 擷取網路流量]。
-
-如需有關使用 Microsoft Message Analyzer 的詳細資訊，請參閱[附錄 3：使用 Microsoft Message Analyzer 擷取網路流量]。
 
 ## <a name="appendices"></a><a name="appendices"></a>附錄
 以下附錄說明當您為 Azure 儲存體 (與其他服務) 的相關問題進行診斷與疑難排解時，可能會有幫助的多項工具。 這些工具並非 Azure 儲存體內建的工具，有些則是協力廠商的產品。 因此，以下附錄所討論的工具，並未包含在您就 Microsoft Azure 或 Azure 儲存體所簽訂的任何支援合約內容裡，因此在您評估期間，請檢視這些工具的供應商所提供的授權與支援選項。
@@ -776,40 +766,6 @@ WireShark 會反白顯示任何存在 **packetlist** 視窗的錯誤。 您也�
 > 如需有關使用 Wireshark 的詳細資訊，請參閱 [Wireshark 使用者指南](https://www.wireshark.org/docs/wsug_html_chunked)。
 >
 >
-
-### <a name="appendix-3-using-microsoft-message-analyzer-to-capture-network-traffic"></a><a name="appendix-3"></a>附錄 3：使用 Microsoft Message Analyzer 擷取網路流量
-您可以使用 Microsoft Message Analyzer，仿照 Fiddler 的方式擷取 HTTP 與 HTTPS 流量，並仿照 Wireshark 的方式擷取網路流量。
-
-#### <a name="configure-a-web-tracing-session-using-microsoft-message-analyzer"></a>使用 Microsoft Message Analyzer 設定 Web 追蹤工作階段
-若要使用 Microsoft Message Analyzer 設定 HTTP 與 HTTPS 流量的 Web 追蹤工作階段，請執行 Microsoft Message Analyzer 應用程式，並在 [檔案] 功能表上按一下 [Capture/Trace]。 在可用的追蹤案例清單中，選取 [Web Proxy]。 接著，在 [追蹤案例組態] 面板的 [HostnameFilter] 文字方塊中，新增您儲存體端點的名稱 (您可以在 [Azure 入口網站](https://portal.azure.com)中查詢這些名稱)。 舉例來說，如果您的 Azure 儲存體帳戶名稱為 **contosodata**，您應該將下列名稱加入 [HostnameFilter] 文字方塊：
-
-```
-contosodata.blob.core.windows.net contosodata.table.core.windows.net contosodata.queue.core.windows.net
-```
-
-> [!NOTE]
-> 空格字元可分隔主機名稱。
->
->
-
-當您準備好收集追蹤資料時，按一下 [Start With]  按鈕。
-
-如需有關 Microsoft Message Analyzer **Web Proxy** 追蹤的詳細資訊，請參閱 [Microsoft-PEF-WebProxy 提供者](https://technet.microsoft.com/library/jj674814.aspx)。
-
-Microsoft Message Analyzer 內建的 **Web Proxy** 追蹤功能是依據 Fiddler 來設計，可以擷取用戶端 HTTPS 流量，並顯示未加密的 HTTPS 訊息。 **Web Proxy** 追蹤功能會針對所有 HTTP 與 HTTPS 流量設定本機 Proxy，以便賦予其未加密訊息的存取權限。
-
-#### <a name="diagnosing-network-issues-using-microsoft-message-analyzer"></a>使用 Microsoft Message Analyzer 診斷網路問題
-除了使用 Microsoft Message Analyzer **Web Proxy** 追蹤功能來擷取用戶端應用程式與儲存體服務之間的 HTTP/HTTPs 流量詳細資料之外，您還可以使用內建的**本機連結層**追蹤功能來擷取網路封包資訊。 這麼做可讓您擷取到類似於使用 Wireshark 所擷取的資料，並診斷捨棄的封包之類的網路問題。
-
-下列螢幕擷取畫面顯示以**本機連結層**追蹤功能所擷取到的一些**知識性**訊息 (在 [DiagnosisTypes] 資料欄中)。 按下 [DiagnosisTypes]  資料欄中的圖示，即可顯示該訊息的詳細資料。 在此範例中，伺服器已重新傳輸訊息 #305，因為它並未收到來自用戶端的確認：
-
-![顯示在 DiagnosisTypes 資料行中有一些參考用訊息的範例本機連結層追蹤的螢幕擷取畫面][9]
-
-當您在 Microsoft Message Analyzer 中建立追蹤工作階段時，可以指定篩選器來減少追蹤所產生的雜訊。 在您定義追蹤功能的 [Capture / Trace] 頁面中，按一下 [Microsoft-Windows-NDIS-PacketCapture] 旁邊的 [設定] 連結。 下列螢幕擷取畫面顯示針對三個儲存體服務的 IP 位址進行 TCP 流量篩選的組態：
-
-![螢幕擷取畫面，顯示針對三個儲存體服務的 IP 位址篩選 TCP 流量的設定。][10]
-
-如需有關「Microsoft Message Analyzer 本機連結層」追蹤的詳細資訊，請參閱 [Microsoft-PEF-NDIS-PacketCapture 提供者](https://technet.microsoft.com/library/jj659264.aspx)。
 
 ### <a name="appendix-4-using-excel-to-view-metrics-and-log-data"></a><a name="appendix-4"></a>附錄 4：使用 Excel 檢視度量與記錄資料
 許多工具都可讓您從 Azure 資料表儲存體中下載使用分隔格式的儲存體度量資料，方便您將資料載入 Excel 以供檢視及分析。 來自 Azure Blob 儲存體的儲存體記錄資料已經使用分隔格式，方便您直接載入 Excel。 不過，您還需要依據[儲存體分析記錄格式](https://msdn.microsoft.com/library/azure/hh343259.aspx)與[儲存體分析度量資料表結構描述](https://msdn.microsoft.com/library/azure/hh343264.aspx)中的資訊，新增適當的資料行標題。
@@ -897,7 +853,6 @@ Microsoft Message Analyzer 內建的 **Web Proxy** 追蹤功能是依據 Fiddler
 [附錄]: #appendices
 [附錄 1：使用 Fiddler 擷取 HTTP 與 HTTPS 流量]: #appendix-1
 [附錄 2：使用 Wireshark 擷取網路流量]: #appendix-2
-[附錄 3：使用 Microsoft Message Analyzer 擷取網路流量]: #appendix-3
 [附錄 4：使用 Excel 檢視度量與記錄資料]: #appendix-4
 [附錄 5：使用 Application Insights for Azure DevOps 監視]: #appendix-5
 

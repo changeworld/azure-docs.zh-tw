@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: b669ef7856628f7e5d698edf674eee0b84845295
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 9163c64370e0718d6b9acf37bb7a9fc28c936948
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91323510"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91851147"
 ---
 # <a name="tutorial-configure-druva-for-automatic-user-provisioning"></a>教學課程：設定 Druva 來自動布建使用者
 
@@ -27,7 +27,7 @@ ms.locfileid: "91323510"
 >
 > 此連接器目前為公開預覽版。 如需有關預覽功能的一般 Microsoft Azure 使用規定詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用規定](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 本教學課程中概述的案例假設您已經具有下列必要條件：
 
@@ -58,15 +58,15 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
 2. 流覽以**管理**  >  **部署**  >  **使用者**。
 
-    ![Druva 新增 SCIM](media/druva-provisioning-tutorial/manage.png)
+    :::image type="content" source="media/druva-provisioning-tutorial/manage.png" alt-text="Druva 管理主控台的螢幕擷取畫面。[管理] 會反白顯示，並顯示 [管理] 功能表。在該功能表中的 [部署] 底下，會反白顯示 [使用者]。" border="false":::
 
 3.  流覽至 [ **設定**]。 按一下 [ **產生權杖**]。
 
-    ![Druva 新增 SCIM](media/druva-provisioning-tutorial/settings.png)
+    :::image type="content" source="media/druva-provisioning-tutorial/settings.png" alt-text="Druva 管理主控台的螢幕擷取畫面。[管理] 會反白顯示，並顯示 [管理] 功能表。在該功能表中的 [部署] 底下，會反白顯示 [使用者]。" border="false":::
 
 4.  複製 **驗證權杖** 值。 在 Azure 入口網站的 Druva 應用程式的 [布建] 索引標籤中，將會在 [ **秘密權杖** ] 欄位中輸入此值。
     
-    ![Druva 新增 SCIM](media/druva-provisioning-tutorial/auth.png)
+    :::image type="content" source="media/druva-provisioning-tutorial/auth.png" alt-text="Druva 管理主控台的螢幕擷取畫面。[管理] 會反白顯示，並顯示 [管理] 功能表。在該功能表中的 [部署] 底下，會反白顯示 [使用者]。" border="false":::
 
 ## <a name="add-druva-from-the-gallery"></a>從資源庫新增 Druva
 
@@ -123,7 +123,7 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
     ![通知電子郵件](common/provisioning-notification-email.png)
 
-7. 按一下 [檔案]  。
+7. 按一下 [儲存]。
 
 8. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 使用者至 Druva**]。
 

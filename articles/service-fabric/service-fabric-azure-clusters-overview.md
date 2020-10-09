@@ -3,16 +3,14 @@ title: 在 Windows Server 和 Linux 上建立叢集
 description: Service Fabric 叢集是在 Windows Server 和 Linux 上執行。 您可以在任何可執行 Windows Server 或 Linux 的位置部署和裝載 Service Fabric 的應用程式。
 services: service-fabric
 documentationcenter: .net
-author: dkkapur
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.author: dekapur
-ms.openlocfilehash: 2c0cc1ddc58347933b498b015c562c3822e8a688
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 7446a221d266230b319c808a88ef4fac05e6fff5
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90978703"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91843306"
 ---
 # <a name="overview-of-service-fabric-clusters-on-azure"></a>Azure 上的 Service Fabric 叢集概觀
 Service Fabric 叢集是一組由網路連接的虛擬或實體機器，可用來將您的微服務部署到其中並進行管理。 隸屬於叢集的機器或 VM 稱為叢集模式。 叢集可擴充至數千個節點。 若您新增節點至叢集，則 Service Fabric 會重新平衡全體增加節點數的服務資料分割複本和執行個體。 整體應用程式效能會有所改善，改善，並減少爭用記憶體的存取權。 若未有效率地使用叢集中的節點，您可減少叢集中的節點數目。 Service Fabric 會再次重新平衡全體減少節點數的資料分割複本和執行個體，以善加使用每個節點上的硬體。
@@ -114,7 +112,7 @@ Azure Service Fabric 叢集是您所擁有，但部分由 Microsoft 管理的資
 >
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 深入了解[保護](service-fabric-cluster-security.md)、[調整](service-fabric-cluster-scaling.md)及[升級](service-fabric-cluster-upgrade.md) Azure 叢集。
 
 了解 [Service Fabric 支援選項](service-fabric-support.md)。

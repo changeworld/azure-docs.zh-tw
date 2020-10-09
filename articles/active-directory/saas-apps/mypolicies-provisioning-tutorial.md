@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: a6db1866c42dbb90d6ea0f288aceed4672424fe0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 56aad5ce9045ca205221ba0c56d1ea75f8f3610a
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91321964"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850484"
 ---
 # <a name="tutorial-configure-mypolicies-for-automatic-user-provisioning"></a>教學課程：設定 myPolicies 來自動布建使用者
 
@@ -27,7 +27,7 @@ ms.locfileid: "91321964"
 >
 > 此連接器目前為公開預覽版。 如需有關預覽功能的一般 Microsoft Azure 使用規定詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用規定](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 本教學課程中概述的案例假設您已經具有下列必要條件：
 
@@ -114,11 +114,11 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
     ![通知電子郵件](common/provisioning-notification-email.png)
 
-8. 按一下 [檔案]  。
+8. 按一下 [儲存]。
 
 9. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 使用者至 myPolicies**]。
 
-    ![myPolicies 使用者對應](media/mypolicies-provisioning-tutorial/usermapping.png)
+    :::image type="content" source="media/mypolicies-provisioning-tutorial/usermapping.png" alt-text="[對應] 區段的螢幕擷取畫面。在 [名稱] 底下，會顯示 [同步處理 Azure Active Directory 使用者至 customappsso]。" border="false":::
 
 10. 在 [ **屬性對應** ] 區段中，檢查從 Azure AD 同步處理到 myPolicies 的使用者屬性。 選取為 [比對 **] 屬性的屬性會** 用來比對 myPolicies 中的使用者帳戶以進行更新作業。 選取 [儲存] 按鈕以認可所有變更。
 

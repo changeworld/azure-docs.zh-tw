@@ -2,26 +2,28 @@
 title: 容器工作負載
 description: 了解如何在 Azure Batch 上透過容器映像執行和縮放應用程式。 建立由支援執行容器工作的計算節點所組成的集區。
 ms.topic: how-to
-ms.date: 09/10/2020
+ms.date: 10/06/2020
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 0efc63258295ec7a7db20ec97e0ac81bd4c382f7
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 9d8776ba8e683cd14c766fead1e7238a6c24d000
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90018504"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91843442"
 ---
 # <a name="run-container-applications-on-azure-batch"></a>在 Azure Batch 上執行容器應用程式
 
 Azure Batch 可讓您在 Azure 上執行及縮放大量批次運算作業。 Batch 工作可以直接在 Batch 集區中的虛擬機器 (節點) 上執行，但您也可以將 Batch 集區設定為在節點上的 Docker 相容容器中執行工作。 本文會示範如何建立可支援執行中容器工作的運算節點集區，以及如何在集區上執行容器工作。
 
-您應該要熟悉容器概念，以及如何建立 Batch 集區與作業。 程式碼範例使用了 Batch .NET 和 Python SDK。 您也可以使用其他 Batch SDK 和工具，包括 Azure 入口網站，來建立啟用容器的 Batch 集區，並執行容器工作。
+此處的程式碼範例會使用 Batch .NET 和 Python Sdk。 您也可以使用其他 Batch SDK 和工具，包括 Azure 入口網站，來建立啟用容器的 Batch 集區，並執行容器工作。
 
 ## <a name="why-use-containers"></a>為何要使用容器？
 
 使用容器可讓您輕鬆地執行 Batch 工作，無須管理環境和相依性，即可執行應用程式。 容器會將應用程式部署為輕量、可攜且自給自足的單位，以便在多種不同的環境中執行。 例如，在本機建置及測試容器，然後將容器映像上傳至 Azure 或其他位置中的登錄。 容器部署模型可確保您應用程式的執行階段環境一律會正確地安裝和設定 (無論您的應用程式裝載在何處)。 Batch 中容器型的工作也可利用非容器工作的功能，包括應用程式套件及資源檔和輸出檔案的管理。
 
 ## <a name="prerequisites"></a>Prerequisites
+
+您應該要熟悉容器概念，以及如何建立 Batch 集區與作業。
 
 - **SDK 版本**：自以下版本起的 Batch SDK 可支援容器映像：
   - Batch REST API 2017-09-01.6.0 版
@@ -282,6 +284,12 @@ CloudPool pool = batchClient.PoolOperations.CreatePool(
 - 使用工作類別的 `ContainerSettings` 屬性來設定容器專屬設定。 這些設定會由 [TaskContainerSettings](/dotnet/api/microsoft.azure.batch.taskcontainersettings) 類別定義。 請注意，`--rm` 容器選項不需要額外的 `--runtime` 選項，因為這是由 Batch 負責。
 
 - 如果您在容器映像上執行工作，[雲端工作](/dotnet/api/microsoft.azure.batch.cloudtask)和[作業管理員工作](/dotnet/api/microsoft.azure.batch.cloudjob.jobmanagertask)會需要容器設定。 但是，[啟動工作](/dotnet/api/microsoft.azure.batch.starttask)、[作業準備工作](/dotnet/api/microsoft.azure.batch.cloudjob.jobpreparationtask)和[作業解除工作](/dotnet/api/microsoft.azure.batch.cloudjob.jobreleasetask)不需要容器設定 (也就是這些工作可以在容器內容中執行或直接在節點上執行)。
+
+- 若為 Windows，必須將 [ElevationLevel](/rest/api/batchservice/task/add#elevationlevel) 設定為來執行工作 `admin` 。 
+
+- 針對 Linux，Batch 會將使用者/群組的許可權對應至容器。 如果容器內任何資料夾的存取權都需要系統管理員許可權，您可能需要以系統管理員提高許可權層級的集區範圍來執行工作。 這可確保 Batch 在容器內容中以 root 的方式執行工作。 否則，非系統管理員的使用者可能無法存取這些資料夾。
+
+- 如果容器集區具有已啟用 GPU 功能的硬體，Batch 將會自動啟用適用于容器工作的 GPU，因此您不應該包含 `–gpus` 引數。
 
 ### <a name="container-task-command-line"></a>容器工作命令列
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/12/2019
 ms.author: zhchia
-ms.openlocfilehash: 336c1e78143c09e07b8f05c3dbd10ca647844242
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 5596dfab98f6826cd61241441a9ddade72e36674
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91319940"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91851266"
 ---
 # <a name="tutorial-configure-federated-directory-for-automatic-user-provisioning"></a>教學課程：設定同盟目錄來自動布建使用者
 
@@ -27,7 +27,7 @@ ms.locfileid: "91319940"
 >
 > 此連接器目前為公開預覽版。 如需有關預覽功能的一般 Microsoft Azure 使用規定詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用規定](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 本教學課程中概述的案例假設您已經具有下列必要條件：
 
@@ -53,24 +53,24 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
 1. 登入您的同盟 [目錄管理主控台](https://federated.directory/of)
 
-    ![同盟目錄教學課程](media/federated-directory-provisioning-tutorial/companyname.png)
+    :::image type="content" source="media/federated-directory-provisioning-tutorial/companyname.png" alt-text="同盟目錄管理主控台的螢幕擷取畫面，其中顯示輸入公司名稱的欄位。也可以看見 [登入] 按鈕。" border="false":::
 
 2. 流覽至 **目錄 > 的使用者目錄** ，然後選取您的租使用者。 
 
-    ![同盟目錄](media/federated-directory-provisioning-tutorial/ad-user-directories.png)
+    :::image type="content" source="media/federated-directory-provisioning-tutorial/ad-user-directories.png" alt-text="同盟目錄管理主控台的螢幕擷取畫面，其中顯示輸入公司名稱的欄位。也可以看見 [登入] 按鈕。" border="false":::
 
 3.  若要產生永久持有人權杖，請流覽至 **目錄金鑰 > 建立新的金鑰。** 
 
-    ![同盟目錄](media/federated-directory-provisioning-tutorial/federated01.png)
+    :::image type="content" source="media/federated-directory-provisioning-tutorial/federated01.png" alt-text="同盟目錄管理主控台的螢幕擷取畫面，其中顯示輸入公司名稱的欄位。也可以看見 [登入] 按鈕。" border="false":::
 
 4. 建立目錄金鑰。 
 
-    ![同盟目錄](media/federated-directory-provisioning-tutorial/federated02.png)
+    :::image type="content" source="media/federated-directory-provisioning-tutorial/federated02.png" alt-text="同盟目錄管理主控台的螢幕擷取畫面，其中顯示輸入公司名稱的欄位。也可以看見 [登入] 按鈕。" border="false":::
     
 
 5. 複製 [存取權杖]  值。 在 Azure 入口網站中，您同盟目錄應用程式的 [布建] 索引標籤中，將會在 [ **秘密權杖** ] 欄位中輸入此值。 
 
-    ![同盟目錄](media/federated-directory-provisioning-tutorial/federated03.png)
+    :::image type="content" source="media/federated-directory-provisioning-tutorial/federated03.png" alt-text="同盟目錄管理主控台的螢幕擷取畫面，其中顯示輸入公司名稱的欄位。也可以看見 [登入] 按鈕。" border="false":::
     
 ## <a name="add-federated-directory-from-the-gallery"></a>從資源庫新增同盟目錄
 
@@ -96,15 +96,15 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
 5. 在不同的瀏覽器中，流覽至下方反白顯示的 **URL** 。 
 
-    ![同盟目錄](media/federated-directory-provisioning-tutorial/loginpage1.png)
+    :::image type="content" source="media/federated-directory-provisioning-tutorial/loginpage1.png" alt-text="同盟目錄管理主控台的螢幕擷取畫面，其中顯示輸入公司名稱的欄位。也可以看見 [登入] 按鈕。" border="false":::
 
 6. 按一下 [ **登入**]。
 
-    ![同盟目錄](media/federated-directory-provisioning-tutorial/federated04.png)
+    :::image type="content" source="media/federated-directory-provisioning-tutorial/federated04.png" alt-text="同盟目錄管理主控台的螢幕擷取畫面，其中顯示輸入公司名稱的欄位。也可以看見 [登入] 按鈕。" border="false":::
 
 7.  由於同盟目錄是 OpenIDConnect 應用程式，請選擇使用您的 Microsoft 公司帳戶登入同盟目錄。
     
-    ![同盟目錄](media/federated-directory-provisioning-tutorial/loginpage3.png)
+    :::image type="content" source="media/federated-directory-provisioning-tutorial/loginpage3.png" alt-text="同盟目錄管理主控台的螢幕擷取畫面，其中顯示輸入公司名稱的欄位。也可以看見 [登入] 按鈕。" border="false":::
  
 8. 驗證成功之後，請接受同意頁面的同意提示。 然後，應用程式會自動新增至您的租使用者，而系統會將您重新導向至您的同盟目錄帳戶。
 
@@ -142,16 +142,16 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
     ![通知電子郵件](common/provisioning-notification-email.png)
 
-9. 按一下 [檔案]  。
+9. 按一下 [儲存]。
 
 10. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 使用者至同盟目錄**]。
 
-    ![同盟目錄教學課程](media/federated-directory-provisioning-tutorial/user-mappings.png)
+    :::image type="content" source="media/federated-directory-provisioning-tutorial/user-mappings.png" alt-text="同盟目錄管理主控台的螢幕擷取畫面，其中顯示輸入公司名稱的欄位。也可以看見 [登入] 按鈕。" border="false":::
     
     
 11. 在 [ **屬性對應** ] 區段中，檢查從 Azure AD 同步至同盟目錄的使用者屬性。 選取為 [比對] 屬性 **的屬性會** 用來比對同盟目錄中的使用者帳戶，以進行更新作業。 選取 [儲存] 按鈕以認可所有變更。
 
-    ![同盟目錄教學課程](media/federated-directory-provisioning-tutorial/user-attributes.png)
+    :::image type="content" source="media/federated-directory-provisioning-tutorial/user-attributes.png" alt-text="同盟目錄管理主控台的螢幕擷取畫面，其中顯示輸入公司名稱的欄位。也可以看見 [登入] 按鈕。" border="false":::
     
 
 12. 若要設定範圍篩選，請參閱[範圍篩選教學課程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中提供的下列指示。

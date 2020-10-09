@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 09/28/2020
+ms.date: 10/08/2020
 ms.author: victorh
-ms.openlocfilehash: 16e128fd61c8b0aeae017e5298ae1d8aed6e97e9
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.openlocfilehash: 7429be4430b2b520fb2a66b6b2c0dd138af8e501
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91408502"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850586"
 ---
 # <a name="azure-firewall-features"></a>Azure 防火牆功能
 
@@ -101,7 +101,11 @@ Azure 防火牆可以隨著您的需求擴大，以容納多變的網路流量�
 
 ## <a name="azure-monitor-logging"></a>Azure 監視器記錄
 
-所有事件都會與 Azure 監視器整合，讓您可以將記錄封存至儲存體帳戶、將事件串流至事件中樞，或者將它們傳送到 Azure 監視器記錄。 如需詳細資訊，請參閱[教學課程：監視 Azure 防火牆記錄和計量](tutorial-diagnostics.md)。
+所有事件都會與 Azure 監視器整合，讓您可以將記錄封存至儲存體帳戶、將事件串流至事件中樞，或者將它們傳送到 Azure 監視器記錄。 如 Azure 監視器記錄範例，請參閱 [Azure 防火牆 Azure 監視器記錄](log-analytics-samples.md)。
+
+如需詳細資訊，請參閱[教學課程：監視 Azure 防火牆記錄和計量](tutorial-diagnostics.md)。 
+
+Azure 防火牆活頁簿為 Azure 防火牆資料分析提供了彈性的畫布。 您可以使用它，在 Azure 入口網站中建立豐富的視覺效果報表。 如需詳細資訊，請參閱 [使用 Azure 防火牆活頁簿監視記錄](firewall-workbook.md)。
 
 ## <a name="forced-tunneling"></a>強制通道
 

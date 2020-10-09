@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 89013e3b6ec9a0a6112e8b7fdcde4870be331d79
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 72658a97f89b14529e8ccb3639cb1b78f1b92316
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91282301"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91848802"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>查詢 Azure 數位 Twins 對應項圖表
 
@@ -178,31 +178,31 @@ AND Room.$dtId IN ['room1', 'room2']
 
 您可以使用組合運算子 **結合** 上述任何類型的查詢，以在單一查詢中包含更多詳細資料。 以下是一些額外的複合查詢範例，可同時查詢多個類型的對應項描述項。
 
-| 說明 | 查詢 |
+| 描述 | 查詢 |
 | --- | --- |
 | 在 *123 空間* 的裝置上，傳回服務角色為操作員的 MxChip 裝置 | `SELECT device`<br>`FROM DigitalTwins space`<br>`JOIN device RELATED space.has`<br>`WHERE space.$dtid = 'Room 123'`<br>`AND device.$metadata.model = 'dtmi:contosocom:DigitalTwins:MxChip:3'`<br>`AND has.role = 'Operator'` |
-| 取得具有名為*Contains*之關聯性的 twins，以及識別碼為*id1*的另一個對應項 | `SELECT Room`<br>`FROM DIGITIALTWINS Room`<br>`JOIN Thermostat ON Room.Contains`<br>`WHERE Thermostat.$dtId = 'id1'` |
+| 取得具有名為*Contains*之關聯性的 twins，以及識別碼為*id1*的另一個對應項 | `SELECT Room`<br>`FROM DIGITALTWINS Room`<br>`JOIN Thermostat RELATED Room.Contains`<br>`WHERE Thermostat.$dtId = 'id1'` |
 | 取得*floor11*所包含之房間模型的所有房間 | `SELECT Room`<br>`FROM DIGITALTWINS Floor`<br>`JOIN Room RELATED Floor.Contains`<br>`WHERE Floor.$dtId = 'floor11'`<br>`AND IS_OF_MODEL(Room, 'dtmi:contosocom:DigitalTwins:Room;1')` |
 
 ## <a name="reference-expressions-and-conditions"></a>參考：運算式和條件
 
 本節包含撰寫 Azure 數位 Twins 查詢時可用之運算子和函式的參考。
 
-### <a name="operators"></a>運算子
+### <a name="operators"></a>操作員
 
 支援下列運算子：
 
-| 系列 | 運算子 |
+| Family | 操作員 |
 | --- | --- |
 | 邏輯 |AND、OR、NOT |
 | 比較 |=、！ =、<、>、<=、>= |
 | 包含 | 在中，>NIN |
 
-### <a name="functions"></a>函數
+### <a name="functions"></a>函式
 
 支援下列類型檢查和轉換函數：
 
-| 函式 | 說明 |
+| 函式 | 描述 |
 | -------- | ----------- |
 | IS_DEFINED | 傳回布林值，表示屬性是否已經指派值。 只有當值為基本型別時，才支援此功能。 基本類型包括字串、布林值、數值或 `null` 。 不支援 DateTime、物件類型和陣列。 |
 | IS_OF_MODEL | 傳回布林值，指出指定的對應項是否符合指定的模型類型 |
@@ -215,7 +215,7 @@ AND Room.$dtId IN ['room1', 'room2']
 
 以下是支援的字串函數：
 
-| 函式 | 說明 |
+| 函式 | 描述 |
 | -------- | ----------- |
 | STARTSWITH (x，y)  | 傳回布林值，表示第一個字串運算式是否以第二個字串運算式開頭。 |
 | ENDSWITH (x，y)  | 傳回布林值，表示第一個字串運算式是否以第二個字串運算式結尾。 |

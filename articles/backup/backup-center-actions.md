@@ -3,12 +3,12 @@ title: 使用備份中心執行動作
 description: 本文說明如何使用備份中心執行動作
 ms.topic: conceptual
 ms.date: 09/07/2020
-ms.openlocfilehash: 81c81f0e9d955e0a5243485baaedff4e6f0fc10d
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 65ac6374b1a9571d0415bc097a6ee957874d3d44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90994810"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91854421"
 ---
 # <a name="perform-actions-using-backup-center"></a>使用備份中心執行動作
 
@@ -70,7 +70,7 @@ ms.locfileid: "90994810"
 ### <a name="if-youre-restoring-an-azure-database-for-postgresql-server"></a>如果您要還原適用於 PostgreSQL 的 Azure 資料庫伺服器
 
 1. 流覽至 [備份中心]，然後選取 [**總覽**] 索引標籤頂端的 [**還原**]。
-2. 在此情況下，請選取您要 (適用於 PostgreSQL 的 Azure 資料庫 Server 備份的資料來源類型) 。
+2. 在此情況下，請選取您想要還原的資料來源類型 (適用於 PostgreSQL 的 Azure 資料庫 Server) 。
 
     ![選取適用於 PostgreSQL 的 Azure 資料庫 Server 還原的 datasource](./media/backup-center-actions/restore-select-datasource-postgresql.png)
 
@@ -134,7 +134,7 @@ ms.locfileid: "90994810"
 
 [深入瞭解如何停止適用於 PostgreSQL 的 Azure 資料庫 Server 的備份](backup-azure-database-postgresql.md#stop-protection)
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [監視和操作備份](backup-center-monitor-operate.md)
 * [管理您的備份資產](backup-center-govern-environment.md)

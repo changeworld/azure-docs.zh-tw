@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: c53f7e712668f32766feaf76d6a08582bda9af22
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a7026757651d1b0510293101203f41a651c7b851
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91449109"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850960"
 ---
 # <a name="introduction-to-azure-defender-for-app-service"></a>適用於 App Service 的 Azure Defender 簡介
 
@@ -27,7 +27,7 @@ Azure App Service 是完全受控的平台，可讓您建置及裝載 Web 應用
 
 |層面|詳細資料|
 |----|:----|
-|版本狀態：|預覽|
+|版本狀態：|正式上市 (GA)|
 |定價：|[適用於 App Service 的 Azure Defender](azure-defender.md) 的計費方式如[定價頁面](security-center-pricing.md)所示|
 |支援的 App Service 方案：|![是](./media/icons/yes-icon.png) 基本、標準、進階、隔離式或 Linux<br>![無](./media/icons/no-icon.png) 免費、共用或使用量<br>[深入了解 App Service 方案](https://azure.microsoft.com/pricing/details/app-service/plans/)|
 |雲端：|![是](./media/icons/yes-icon.png) 商業雲端<br>![否](./media/icons/no-icon.png) 國家/地區/主權 (US Gov、中國 Gov、其他 Gov)|

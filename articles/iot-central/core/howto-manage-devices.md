@@ -1,28 +1,32 @@
 ---
 title: 在 Azure IoT Central 應用程式中管理裝置 | Microsoft Docs
-description: 了解如何以操作員的身分在 Azure IoT Central 應用程式中管理裝置。
-author: sarahhubbard
-ms.author: sahubbar
-ms.date: 12/06/2019
+description: 了解如何以操作員的身分在 Azure IoT Central 應用程式中管理裝置。 瞭解如何管理個別裝置，並在您的應用程式中大量匯入和匯出裝置。
+author: dominicbetts
+ms.author: dobett
+ms.date: 10/08/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: ee9552b251cbc8cca1891de043ee79682e7b2d6c
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.custom: contperfq2
+ms.openlocfilehash: 1782982c75e502ea8df70818a134b5b009188959
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90017093"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850093"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application"></a>在 Azure IoT Central 應用程式中管理裝置
 
 本文說明如何以操作員的身份，在您的 Azure IoT Central 應用程式中管理裝置。 身為操作員，您可以：
 
 - 使用 [ **裝置** ] 頁面來查看、新增及刪除已連線至 Azure IoT Central 應用程式的裝置。
+- 大量匯入和匯出裝置。
 - 維護裝置的最新清查。
 - 藉由從您的視圖變更裝置屬性中儲存的值，讓您的裝置中繼資料保持在最新狀態。
 - 藉由從您的視圖更新特定裝置上的設定，來控制裝置的行為。
+
+若要瞭解如何管理自訂的裝置群組，請參閱 [教學課程：使用裝置群組來分析裝置遙測](tutorial-use-device-groups.md)。
 
 ## <a name="view-your-devices"></a>檢視您的裝置
 
@@ -36,7 +40,6 @@ ms.locfileid: "90017093"
 
     ![[裝置詳細資料] 頁面](./media/howto-manage-devices/devicelist.png)
 
-
 ## <a name="add-a-device"></a>新增裝置
 
 將裝置新增至 Azure IoT Central 應用程式：
@@ -49,7 +52,7 @@ ms.locfileid: "90017093"
 
 1. **開啟或****關閉****模擬**切換。 真實裝置是您連線至 Azure IoT Central 應用程式的實體裝置。 模擬裝置具有由 Azure IoT Central 為您產生的範例資料。
 
-1. 按一下 [建立]  。
+1. 選取 [建立]  。
 
 1. 此裝置現在會出現在此範本的裝置清單中。 選取裝置以查看包含裝置所有視圖的裝置詳細資料頁面。
 
@@ -82,10 +85,9 @@ ms.locfileid: "90017093"
 
     ![匯入成功](./media/howto-manage-devices/bulkimport3a.png)
 
-
 如果裝置匯入作業失敗，您會在裝置操作面板上看到錯誤訊息。 隨即會產生擷取所有錯誤的記錄檔，以供您下載。
 
-**將裝置遷移至範本**
+## <a name="migrate-devices-to-a-template"></a>將裝置遷移至範本
 
 如果您在 [ **所有裝置**] 下啟動匯入來註冊裝置，則不會建立裝置的裝置範本關聯。 裝置必須與範本產生關聯，才能探索有關裝置的資料和其他詳細資料。 請遵循下列步驟讓裝置與範本產生關聯：
 
@@ -95,8 +97,7 @@ ms.locfileid: "90017093"
 
     ![未關聯的裝置](./media/howto-manage-devices/unassociateddevices1a.png)
 
-
-1. 使用方格上的篩選器來判斷 **裝置範本** 資料行中的值是否為任何裝置的「無關聯」。
+1. 使用方格上的篩選器來判斷 **裝置範本** 資料行中的值是否為任何裝置都沒有 **關聯** 。
 
 1. 選取要與範本產生關聯的裝置：
 
@@ -104,11 +105,9 @@ ms.locfileid: "90017093"
 
     ![建立裝置的關聯](./media/howto-manage-devices/unassociateddevices2a.png)
 
-
 1. 從可用範本的清單中選擇範本，然後選取 [ **遷移**]。
 
 1. 選取的裝置會與您選擇的裝置範本產生關聯。
-
 
 ## <a name="export-devices"></a>匯出裝置
 
@@ -124,7 +123,6 @@ ms.locfileid: "90017093"
 
     ![匯出](./media/howto-manage-devices/export1a.png)
 
-
 1. 匯出程序隨即啟動。 您可以使用 [裝置操作] 面板來追蹤狀態。
 
 1. 匯出完成之後，即會顯示一則成功訊息，以及下載所產生檔案的連結。
@@ -132,7 +130,6 @@ ms.locfileid: "90017093"
 1. 選取 [ **下載檔案** ] 連結，將檔案下載到磁片上的本機資料夾。
 
     ![匯出成功](./media/howto-manage-devices/export2a.png)
-
 
 1. 匯出的 CSV 檔案會包含下列資料行：裝置識別碼、裝置名稱、裝置金鑰及 X509 憑證指紋：
 
@@ -159,7 +156,7 @@ ms.locfileid: "90017093"
 
 ## <a name="change-a-property"></a>變更屬性
 
-雲端屬性是與裝置相關聯的裝置中繼資料，例如城市和序號。 可寫入的屬性會控制裝置的行為。 也就是說，它們能讓您為裝置提供輸入。  裝置屬性是由裝置所設定，且在 IoT Central 中是唯讀的。 您可以在裝置的 **裝置詳細資料** 視圖上，查看及更新屬性。
+雲端屬性是與裝置相關聯的裝置中繼資料，例如城市和序號。 雲端屬性只存在於 IoT Central 的應用程式中，且不會同步處理至您的裝置。 可寫入的屬性可控制裝置的行為，並可讓您從遠端設定裝置的狀態，例如設定控溫器裝置的目標溫度。  裝置屬性是由裝置所設定，且在 IoT Central 中是唯讀的。 您可以在裝置的 **裝置詳細資料** 視圖上，查看及更新屬性。
 
 1. 選擇左窗格中的 [ **裝置** ]。
 
@@ -169,14 +166,8 @@ ms.locfileid: "90017093"
 
 1. 將屬性修改為您所需的值。 您可以一次修改多個屬性，並同時更新所有屬性。
 
-1. 選擇 [儲存]  。 如果您儲存了可寫入的屬性，這些值會傳送至您的裝置。 當裝置確認可寫入屬性的變更時，狀態就會回到 [已 **同步**]。 如果您儲存了雲端屬性，就會更新此值。
+1. 選擇 [儲存]。 如果您儲存了可寫入的屬性，這些值會傳送至您的裝置。 當裝置確認可寫入屬性的變更時，狀態就會回到 [已 **同步**]。 如果您儲存了雲端屬性，就會更新此值。
 
+## <a name="next-steps"></a>後續步驟
 
-## <a name="next-steps"></a>接下來的步驟
-
-您現在已了解如何在 Azure IoT Central 應用程式中管理裝置，以下是建議的後續步驟：
-
-> [!div class="nextstepaction"]
-> [如何使用裝置群組](tutorial-use-device-groups.md)
-
-<!-- Next how-tos in the sequence -->
+現在您已瞭解如何在 Azure IoT Central 應用程式中管理裝置，建議的下一個步驟是瞭解如何設定裝置的[規則](howto-configure-rules.md) 。

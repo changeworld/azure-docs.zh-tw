@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 06/28/2019
 ms.author: zhchia
-ms.openlocfilehash: dee9ca2879d456270cfed667b8a02a6e5c4f100b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 7475ebc6dd51bbc1c30ee22623c7cbda1a5237ab
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91328049"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91848954"
 ---
 # <a name="tutorial-configure-dialpad-for-automatic-user-provisioning"></a>教學課程：設定撥號盤來自動布建使用者
 
@@ -27,7 +27,7 @@ ms.locfileid: "91328049"
 
 > 此連接器目前為預覽版。 如需有關預覽功能的一般 Microsoft Azure 使用規定詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用規定](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 本教學課程中概述的案例假設您已經具有下列必要條件：
 
@@ -54,13 +54,13 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
 1. 登入您的 [撥號盤管理主控台](https://dialpadbeta.com/login) ，然後選取 [系統 **管理設定**]。 確定已從下拉式清單中選取 [ **我的公司** ]。 流覽至 **驗證 > API 金鑰**。
 
-    ![撥號盤新增 SCIM](media/dialpad-provisioning-tutorial/dialpad01.png)
+    :::image type="content" source="media/dialpad-provisioning-tutorial/dialpad01.png" alt-text="撥號盤管理主控台的螢幕擷取畫面，其中已反白顯示 [設定] 圖示、[我的公司]、[驗證] 和 [我的公司]，並選取 [我的公司]。" border="false":::
 
 2. 按一下 [ **新增金鑰** ] 並設定秘密權杖的屬性，以產生新的金鑰。
 
-    ![撥號盤新增 SCIM](media/dialpad-provisioning-tutorial/dialpad02.png)
+    :::image type="content" source="media/dialpad-provisioning-tutorial/dialpad02.png" alt-text="撥號盤管理主控台的螢幕擷取畫面，其中已反白顯示 [設定] 圖示、[我的公司]、[驗證] 和 [我的公司]，並選取 [我的公司]。" border="false":::
 
-    ![撥號盤新增 SCIM](media/dialpad-provisioning-tutorial/dialpad03.png)
+    :::image type="content" source="media/dialpad-provisioning-tutorial/dialpad03.png" alt-text="撥號盤管理主控台的螢幕擷取畫面，其中已反白顯示 [設定] 圖示、[我的公司]、[驗證] 和 [我的公司]，並選取 [我的公司]。" border="false":::
 
 3. 按一下您最近建立的 API 金鑰的 [ **按一下以顯示值** ] 按鈕，並複製所顯示的值。 在 Azure 入口網站的撥號盤應用程式的 [布建] 索引標籤中，將會在 [ **秘密權杖** ] 欄位中輸入此值。 
 
@@ -89,19 +89,19 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
 5. 在不同的瀏覽器中，流覽至下方反白顯示的 **URL** 。 
 
-    ![撥號盤新增 SCIM](media/dialpad-provisioning-tutorial/dialpad05.png)
+    :::image type="content" source="media/dialpad-provisioning-tutorial/dialpad05.png" alt-text="撥號盤管理主控台的螢幕擷取畫面，其中已反白顯示 [設定] 圖示、[我的公司]、[驗證] 和 [我的公司]，並選取 [我的公司]。" border="false":::
 
 6. 在右上角，選取 [ **登入 > 使用撥號盤 online**]。
 
-    ![撥號盤新增 SCIM](media/dialpad-provisioning-tutorial/dialpad06.png)
+    :::image type="content" source="media/dialpad-provisioning-tutorial/dialpad06.png" alt-text="撥號盤管理主控台的螢幕擷取畫面，其中已反白顯示 [設定] 圖示、[我的公司]、[驗證] 和 [我的公司]，並選取 [我的公司]。" border="false":::
 
 7. 由於撥號盤是 OpenIDConnect 應用程式，請選擇使用您的 Microsoft 公司帳戶登入撥號盤。
 
-    ![撥號盤新增 SCIM](media/dialpad-provisioning-tutorial/loginpage.png)
+    :::image type="content" source="media/dialpad-provisioning-tutorial/loginpage.png" alt-text="撥號盤管理主控台的螢幕擷取畫面，其中已反白顯示 [設定] 圖示、[我的公司]、[驗證] 和 [我的公司]，並選取 [我的公司]。" border="false":::
 
 8. 驗證成功之後，請接受同意頁面的同意提示。 然後，應用程式會自動新增至您的租使用者，而系統會將您重新導向至您的撥號盤帳戶。
 
-    ![撥號盤新增 SCIM](media/dialpad-provisioning-tutorial/redirect.png)
+    :::image type="content" source="media/dialpad-provisioning-tutorial/redirect.png" alt-text="撥號盤管理主控台的螢幕擷取畫面，其中已反白顯示 [設定] 圖示、[我的公司]、[驗證] 和 [我的公司]，並選取 [我的公司]。" border="false":::
 
  ## <a name="configure-automatic-user-provisioning-to-dialpad"></a>設定自動使用者布建至撥號盤
 
@@ -133,7 +133,7 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
     ![通知電子郵件](common/provisioning-notification-email.png)
 
-7. 按一下 [檔案]  。
+7. 按一下 [儲存]。
 
 8. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 使用者至撥號盤**]。
 

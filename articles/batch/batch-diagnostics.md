@@ -2,22 +2,22 @@
 title: 計量、警示和診斷記錄
 description: 記錄並分析 Azure Batch 帳戶資源 (如集區和工作) 的診斷記錄事件。
 ms.topic: how-to
-ms.date: 05/29/2020
+ms.date: 10/08/2020
 ms.custom: seodec18
-ms.openlocfilehash: abf9ef53d3f2e3ffeffabfe9b7c77dc5c5debec3
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 265149e8d3cd775974ec690ebffbce92a1b82b2e
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86145091"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91848682"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>用於診斷評估和監視的 Batch 計量、警示和記錄
- 
+
 本文說明如何使用 [Azure 監視器](../azure-monitor/overview.md)的功能來監視 Batch 帳戶。 Azure 監視器會收集您 Batch 帳戶中的資源[計量](../azure-monitor/platform/data-platform-metrics.md)和[診斷記錄](../azure-monitor/platform/platform-logs-overview.md)。 透過各種方式收集及使用此資料，以監視您的 Batch 帳戶和診斷問題。 您也可以設定[計量警示](../azure-monitor/platform/alerts-overview.md)，在計量達到指定值時接收通知。
 
 ## <a name="batch-metrics"></a>Batch 計量
 
-計量是 Azure 遙測資料 (也稱為效能計數器) ，會由您的 Azure 資源發出，並由 Azure 監視器服務所使用。 Batch 帳戶中的計量範例包括集區建立事件、低優先順序節點計數和工作完成事件。
+計量是 Azure 遙測資料 (也稱為效能計數器) ，這些是由您的 Azure 資源所發出並由 Azure 監視器服務所使用。 Batch 帳戶中的計量範例包括集區建立事件、Low-Priority 節點計數及工作完成事件。
 
 請參閱[支援的 Batch 計量清單](../azure-monitor/platform/metrics-supported.md#microsoftbatchbatchaccounts)。
 
@@ -29,48 +29,48 @@ ms.locfileid: "86145091"
 
 ## <a name="view-batch-metrics"></a>查看批次計量
 
-在 Azure 入口網站中，帳戶的 [**總覽**] 頁面預設會顯示主要節點、核心和工作計量。
+在 Azure 入口網站中，帳戶的 [總覽] 頁面預設會顯示 [主要節點]、[核心] 和 **[** 工作度量]。
 
-若要在 Azure 入口網站中查看所有 Batch 帳戶計量：
+若要查看 Azure 入口網站中的所有 Batch 帳戶計量：
 
-1. 在 [Azure 入口網站中，選取 [**所有服務**]  >  [**Batch 帳戶**]，然後選取您的 Batch 帳戶名稱。
-2. 在 [**監視**] 底下，選取 [**計量**]。
-3. 選取 [**新增度量**]，然後從下拉式清單中選擇 [度量]。
-4. 選取度量的**匯總**選項。 針對以計數為基礎的計量 (例如「專用核心計數」或「低優先順序節點計數」 ) ，請使用**平均**匯總。 如需以事件為基礎的計量 (像是「集區調整大小完成事件」 ) ，請使用「匯總」**計數**。
+1. 在 [Azure 入口網站中，選取 [**所有服務**  >  **批次帳戶**]，然後選取您的 batch 帳戶名稱。
+2. 在 [監視] 下，選取 [計量]。
+3. 選取 [ **新增度量** ]，然後從下拉式清單中選擇度量。
+4. 選取度量的 **匯總** 選項。 針對以計數為基礎的計量 (例如「專用核心計數」或「低優先順序節點計數」 ) ，請使用 **平均** 匯總。 針對事件型計量 (例如「集區調整大小完成事件」 ) ，請使用 **Count**」匯總。
 
    > [!WARNING]
-   > 請勿使用「總和」匯總，這會加總在圖表期間收到的所有資料點的值。
+   > 請勿使用「總和」匯總，這會增加在圖表期間收到的所有資料點的值。
 
 5. 若要新增其他計量，請重複步驟3和4。
 
-您也可以使用 Azure 監視器 Api 以程式設計方式抓取計量。 如需範例，請參閱[使用 .Net 取得 Azure 監視器計量](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/)。
+您也可以使用 Azure 監視器 Api，以程式設計的方式取得計量。 如需範例，請參閱 [使用 .Net 取出 Azure 監視器計量](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/)。
 
 ### <a name="batch-metric-reliability"></a>Batch 計量可靠性
 
-計量有助於找出趨勢，並可用於資料分析。 請務必注意，計量傳遞並不保證，而且可能會受到順序的傳遞、資料遺失和/或重複。 因此，不建議使用單一事件來警示或觸發函式。 如需如何設定警示閾值的詳細資訊，請參閱下一節。
+計量有助於找出趨勢，並可用於資料分析。 請務必注意，不保證計量傳遞，且可能會受到不符合順序的傳遞、資料遺失及/或重複的影響。 因此，不建議使用單一事件來警示或觸發函數。 如需如何設定警示閾值的詳細資訊，請參閱下一節。
 
-過去3分鐘內發出的計量可能仍在匯總中，因此在此時間範圍內可能會短報度量值。
+在過去3分鐘內發出的計量可能仍在進行匯總，因此計量值可能會在此時間範圍內短報。
 
 ## <a name="batch-metric-alerts"></a>Batch 計量警示
 
-您可以設定近乎即時的計量*警示*，當指定的度量值超出您指派的閾值時觸發。 當警示為「已啟動」時 (超出閾值且符合警示條件時)，以及當警示為「已解決」時 (再次超出閾值且不再符合條件時)，警示會產生通知。
+您可以設定近乎即時計量警示，當指定的計量值超出您指派的閾值時，就會觸發此 *警示* 。 當警示為「已啟動」時 (超出閾值且符合警示條件時)，以及當警示為「已解決」時 (再次超出閾值且不再符合條件時)，警示會產生通知。
 
-不建議在單一資料點上觸發的警示，因為計量會受到不按照順序的傳遞、資料遺失和/或重複。 建立警示時，您可以使用閾值來考慮這些不一致的情況。
+不建議在單一資料點上觸發的警示，因為計量可能會依序傳遞、遺失資料和/或重複。 建立警示時，您可以使用閾值來考慮這些不一致的情況。
 
-例如，您可以在低優先順序核心計數降至特定層級時設定計量警示，以便您調整集區的構成要素。 為獲得最佳結果，請設定10個或更多分鐘的時間，如果平均低優先順序核心計數低於整個期間的臨界值，警示就會觸發。 這可讓您有更多時間來匯總計量，讓您取得更精確的結果。 
+例如，您可以在低優先順序核心計數降至特定層級時設定計量警示，以便您調整集區的構成要素。 為了獲得最佳結果，請設定10分鐘或更長的一段時間，當平均低優先順序核心計數低於整個期間的臨界值時，警示就會觸發。 這可讓計量的匯總時間更多，讓您取得更精確的結果。
 
 若要在 Azure 入口網站中設定計量警示：
 
 1. 選取 [所有服務] > [Batch 帳戶]，然後選取您的 Batch 帳戶名稱。
-2. 在 [**監視**] 底下，選取 [**警示**]，然後選取 [**新增警示規則**]。
-3. 按一下 [**選取條件**]，然後選擇 [度量]。 確認 [**圖表週期**]、[**閾數值型別**]、[**運算子**] 和 [**匯總類型**] 的值，然後輸入**臨界值**。 然後選取 [完成]****。
+2. 在 [ **監視**] 底下，選取 [ **警示**]，然後選取 [ **新增警示規則**]。
+3. 按一下 [ **選取條件**]，然後選擇度量。 確認 [ **圖表期間**]、[ **臨界數值型別**]、[ **運算子**] 和 [ **匯總類型**] 的值，然後輸入 **臨界值**。 然後選取 [完成]****。
 4. 透過選取現有動作群組或建立新的動作群組，將動作群組新增至警示。
-5. 在 [**警示規則詳細資料**] 區段中，輸入**警示規則名稱**和**描述**，然後選取**嚴重性**
+5. 在 [**警示規則詳細資料**] 區段中，輸入**警示規則名稱**和**描述**，然後選取 [**嚴重性**]。
 6. 選取 [建立警示規則]。
 
-如需建立計量警示的詳細資訊，請參閱[瞭解計量警示在 Azure 監視器中](../azure-monitor/platform/alerts-metric-overview.md)的使用方式和[使用 Azure 監視器建立、查看和管理計量警示](../azure-monitor/platform/alerts-metric.md)。
+如需有關建立計量警示的詳細資訊，請參閱 [瞭解計量警示在 Azure 監視器中的運作方式](../azure-monitor/platform/alerts-metric-overview.md) ，以及如何 [使用 Azure 監視器來建立、查看和管理計量警示](../azure-monitor/platform/alerts-metric.md)。
 
-您也可以使用 Azure 監視器[REST API](/rest/api/monitor/)來設定近乎即時的警示。 如需詳細資訊，請參閱[Microsoft Azure 中的警示總覽](../azure-monitor/platform/alerts-overview.md)。 若要在您的警示中包含作業、工作或集區特定資訊，請參閱[使用 Azure 監視器警示回應事件](../azure-monitor/learn/tutorial-response.md)中的搜尋查詢相關資訊。
+您也可以使用 Azure 監視器 [REST API](/rest/api/monitor/)來設定近乎即時的警示。 如需詳細資訊，請參閱 [Microsoft Azure 中的警示總覽](../azure-monitor/platform/alerts-overview.md)。 若要在您的警示中包含作業、工作或集區特定資訊，請參閱 [使用 Azure 監視器警示回應事件](../azure-monitor/learn/tutorial-response.md)的搜尋查詢資訊。
 
 ## <a name="batch-diagnostics"></a>Batch 診斷
 
@@ -87,25 +87,25 @@ ms.locfileid: "86145091"
 
 或者，您可以：
 
-- 將 Batch 診斷記錄事件串流至 [Azure 事件中樞](../event-hubs/event-hubs-about.md)。 事件中樞每秒可輸入數百萬個事件，您可以使用任何即時分析提供者來轉換和儲存。 
+- 將 Batch 診斷記錄事件串流至 [Azure 事件中樞](../event-hubs/event-hubs-about.md)。 事件中樞每秒可輸入數百萬個事件，您可以使用任何即時分析提供者來轉換和儲存。
 - 將診斷記錄傳送至 [Azure 監視器記錄](../azure-monitor/log-query/log-query-overview.md)，您可以在其中分析這些記錄，或將其匯出以便在 Power BI 或 Excel 中進行分析。
 
 > [!NOTE]
-> 使用 Azure 服務儲存或處理診斷記錄資料可能會產生額外費用。 
+> 使用 Azure 服務儲存或處理診斷記錄資料可能會產生額外費用。
 
 ### <a name="enable-collection-of-batch-diagnostic-logs"></a>啟用 Batch 診斷記錄的收集
 
-若要在 Azure 入口網站中建立新的診斷設定，請遵循下列步驟。
+若要在 Azure 入口網站中建立新的診斷設定，請依照下列步驟執行。
 
-1. 在 [Azure 入口網站中，選取 [**所有服務**]  >  [**Batch 帳戶**]，然後選取您的 Batch 帳戶名稱。
+1. 在 [Azure 入口網站中，選取 [**所有服務**  >  **批次帳戶**]，然後選取您的 batch 帳戶名稱。
 2. 在 [監視]**** 下方，選取 [診斷設定]****。
-3. 在 [**診斷設定**] 中，選取 [**新增診斷設定**]。
+3. 在 [ **診斷設定**] 中，選取 [ **新增診斷設定**]。
 4. 輸入設定的名稱。
-5. 選取目的地： [**傳送至 Log Analytics**]、[封存**至儲存體帳戶**] 或 [**串流至事件中樞**]。 如果您選取儲存體帳戶，您可以選擇性地設定保留原則。 如果您未指定保留天數，資料的保留期限會是儲存體帳戶的存留期間。
+5. 選取目的地： **傳送至 Log Analytics**、封存 **至儲存體帳戶**，或 **串流至事件中樞**。 如果您選取儲存體帳戶，您可以選擇性地設定保留原則。 如果您未指定保留天數，資料的保留期限會是儲存體帳戶的存留期間。
 6. 選取 [ **ServiceLog**]、[ **AllMetrics**] 或 [兩者]。
-7. 選取 [**儲存**] 以建立診斷設定。
+7. 選取 [ **儲存** ] 以建立診斷設定。
 
-您也可以[透過 Azure 入口網站中的 Azure 監視器來啟用收集](../azure-monitor/platform/diagnostic-settings.md)，以使用[Resource Manager 範本](../azure-monitor/platform/diagnostic-settings-template.md)，或使用 Azure PowerShell 或 Azure CLI 來設定診斷設定。 如需詳細資訊，請參閱[Azure 平臺記錄的總覽](../azure-monitor/platform/platform-logs-overview.md)。
+您也可以 [透過 Azure 入口網站中的 Azure 監視器啟用集合](../azure-monitor/platform/diagnostic-settings.md) ，以使用 [Resource Manager 範本](../azure-monitor/platform/diagnostic-settings-template.md)或搭配 Azure PowerShell 或 Azure CLI 來設定診斷設定。 如需詳細資訊，請參閱 [Azure 平臺記錄的總覽](../azure-monitor/platform/platform-logs-overview.md)。
 
 ### <a name="access-diagnostics-logs-in-storage"></a>存取儲存體中的診斷記錄
 
@@ -119,7 +119,7 @@ m={two-digit numeric month}/d={two-digit numeric day}/
 h={two-digit 24-hour clock hour}/m=00/PT1H.json
 ```
 
-例如︰
+例如：
 
 ```json
 insights-metrics-pt1m/resourceId=/SUBSCRIPTIONS/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/
@@ -135,11 +135,11 @@ BATCHACCOUNTS/MYBATCHACCOUNT/y=2018/m=03/d=05/h=22/m=00/PT1H.json
 { "Tenant": "65298bc2729a4c93b11c00ad7e660501", "time": "2019-08-22T20:59:13.5698778Z", "resourceId": "/SUBSCRIPTIONS/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/RESOURCEGROUPS/MYRESOURCEGROUP/PROVIDERS/MICROSOFT.BATCH/BATCHACCOUNTS/MYBATCHACCOUNT/", "category": "ServiceLog", "operationName": "PoolResizeCompleteEvent", "operationVersion": "2017-06-01", "properties": {"id":"MYPOOLID","nodeDeallocationOption":"Requeue","currentDedicatedNodes":10,"targetDedicatedNodes":100,"currentLowPriorityNodes":0,"targetLowPriorityNodes":0,"enableAutoScale":false,"isAutoPool":false,"startTime":"2019-08-22 20:50:59.522","endTime":"2019-08-22 20:59:12.489","resultCode":"Success","resultMessage":"The operation succeeded"}}
 ```
 
-如需儲存體帳戶中診斷記錄架構的詳細資訊，請參閱將[Azure 資源記錄封存至儲存體帳戶](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)。 若要以程式設計方式存取您儲存體帳戶中的記錄，請使用儲存體 API。
+如需有關儲存體帳戶中診斷記錄架構的詳細資訊，請參閱將 [Azure 資源記錄封存至儲存體帳戶](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)。 若要以程式設計方式存取您儲存體帳戶中的記錄，請使用儲存體 API。
 
 ### <a name="service-log-events"></a>服務記錄檔事件
 
-Azure Batch 服務記錄檔（如果收集）包含在個別 Batch 資源（例如集區或工作）的存留期間，由 Azure Batch 服務發出的事件。 Batch 發出的每個事件都會以 JSON 格式記錄。 例如，**集區建立事件**範例的主體為：
+Azure Batch 服務記錄檔（若已收集）會包含 Azure Batch 服務在個別批次資源（例如集區或工作）存留期間發出的事件。 Batch 發出的每個事件都會以 JSON 格式記錄。 例如，**集區建立事件**範例的主體為：
 
 ```json
 {
@@ -155,7 +155,7 @@ Azure Batch 服務記錄檔（如果收集）包含在個別 Batch 資源（例�
     },
     "resizeTimeout": "300000",
     "targetDedicatedComputeNodes": 2,
-    "maxTasksPerNode": 1,
+    "taskSlotsPerNode": 1,
     "vmFillType": "Spread",
     "enableAutoscale": false,
     "enableInterNodeCommunication": false,
@@ -163,16 +163,18 @@ Azure Batch 服務記錄檔（如果收集）包含在個別 Batch 資源（例�
 }
 ```
 
-Batch 服務所發出的服務記錄事件包括下列各項：
+Batch 服務所發出的服務記錄檔事件包括下列各項：
 
 - [建立集區](batch-pool-create-event.md)
 - [開始刪除集區](batch-pool-delete-start-event.md)
 - [完成集區刪除](batch-pool-delete-complete-event.md)
 - [開始調整集區大小](batch-pool-resize-start-event.md)
 - [完成集區大小調整](batch-pool-resize-complete-event.md)
+- [集區自動調整](batch-pool-autoscale-event.md)
 - [開始工作](batch-task-start-event.md)
 - [完成工作](batch-task-complete-event.md)
 - [工作失敗](batch-task-fail-event.md)
+- [工作排程失敗](batch-task-schedule-fail-event.md)
 
 ## <a name="next-steps"></a>後續步驟
 

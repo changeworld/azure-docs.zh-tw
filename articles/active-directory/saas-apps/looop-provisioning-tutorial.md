@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 09/19/2019
 ms.author: Zhchia
-ms.openlocfilehash: b81a0fc81478fb50c356a92371ece2e79ff417ab
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 2f3657feb5a68600e4eb2d7bcaa4891a398c2682
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91333557"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850688"
 ---
 # <a name="tutorial-configure-looop-for-automatic-user-provisioning"></a>教學課程：設定 Looop 來自動布建使用者
 
@@ -27,7 +27,7 @@ ms.locfileid: "91333557"
 >
 > 此連接器目前為公開預覽版。 如需有關預覽功能的一般 Microsoft Azure 使用規定詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用規定](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 本教學課程中概述的案例假設您已經具有下列必要條件：
 
@@ -55,11 +55,11 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
 1. 登入您的 [Looop 管理主控台](https://app.looop.co/#/login) ，然後選取 [ **帳戶**]。 在 [ **帳戶設定** ] 下方選取 [ **驗證**]。
 
-    ![Looop 新增 SCIM](media/looop-provisioning-tutorial/admin.png)
+    :::image type="content" source="media/looop-provisioning-tutorial/admin.png" alt-text="Looop 管理主控台的螢幕擷取畫面。[帳戶] 索引標籤已反白顯示並開啟。在 [帳戶設定] 下，會反白顯示 [驗證]。" border="false":::
 
 2. 按一下 [ **SCIM 整合**] 下的 [**重設權杖**]，以產生新的權杖。
 
-    ![Looop 新增 SCIM](media/looop-provisioning-tutorial/resettoken.png)
+    :::image type="content" source="media/looop-provisioning-tutorial/resettoken.png" alt-text="Looop 管理主控台的螢幕擷取畫面。[帳戶] 索引標籤已反白顯示並開啟。在 [帳戶設定] 下，會反白顯示 [驗證]。" border="false":::
 
 3. 複製 **SCIM 端點** 和 **權杖**。 這些值將會在 Azure 入口網站中您 Looop 應用程式的 [布建] 索引標籤中輸入至 [ **租使用者 URL** ] 和 [ **秘密權杖** ] 欄位中。 
 
@@ -127,7 +127,7 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
     ![通知電子郵件](common/provisioning-notification-email.png)
 
-7. 按一下 [檔案]  。
+7. 按一下 [儲存]。
 
 8. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 使用者至 Looop**]。
 

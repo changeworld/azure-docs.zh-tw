@@ -2,13 +2,13 @@
 title: 使用指定的公用 IP 位址建立集區
 description: 瞭解如何建立使用您自己的公用 IP 位址的 Batch 集區。
 ms.topic: how-to
-ms.date: 07/20/2020
-ms.openlocfilehash: 158facaf1fd5052c3626f065a69bfbd134ca4c3e
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.date: 10/08/2020
+ms.openlocfilehash: e822311718847e173763847d503335f71457308b
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146482"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91849323"
 ---
 # <a name="create-an-azure-batch-pool-with-specified-public-ip-addresses"></a>使用指定的公用 IP 位址建立 Azure Batch 集區
 
@@ -24,7 +24,7 @@ ms.locfileid: "89146482"
 
 - **Azure VNet**。 您必須使用您要在其中建立集區和 IP 位址的相同 Azure 訂用帳戶中的 [虛擬網路](batch-virtual-network.md) 。 只能使用以 Azure Resource Manager 為基礎的 Vnet。 請確定 VNet 符合所有 [一般需求](batch-virtual-network.md#vnet-requirements)。
 
-- **至少一個 Azure 公用 IP 位址**。 若要建立一或多個公用 IP 位址，您可以使用 [Azure 入口網站](../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address)、 [Azure 命令列介面 (CLI) ](/cli/azure/network/public-ip#az-network-public-ip-create)或 [Azure PowerShell](/powershell/module/az.network/new-azpublicipaddress)。 請務必遵循以下所列的需求。
+- **至少一個 Azure 公用 IP 位址**。 若要建立一或多個公用 IP 位址，您可以使用 [Azure 入口網站](../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address)、 [Azure Command-Line 介面 (CLI) ](/cli/azure/network/public-ip#az-network-public-ip-create)或 [Azure PowerShell](/powershell/module/az.network/new-azpublicipaddress)。 請務必遵循以下所列的需求。
 
 > [!NOTE]
 > Batch 會在資源群組中自動設定包含公用 IP 位址的其他網路資源。 針對每個100專用節點，Batch 通常會配置一個網路安全性群組 (NSG) 和一個負載平衡器。 這些資源會受到訂用帳戶資源配額的限制。 使用較大的集區時，您可能需要為一或多個這些資源 [要求增加配額](batch-quota-limit.md#increase-a-quota) 。
@@ -82,10 +82,10 @@ client-request-id: 00000000-0000-0000-0000-000000000000
        "resizeTimeout":"PT15M",
       "targetDedicatedNodes":5,
       "targetLowPriorityNodes":0,
-      "maxTasksPerNode":3,
+      "taskSlotsPerNode":3,
       "taskSchedulingPolicy": {
         "nodeFillType":"spread"
-      }, 
+      },
       "enableAutoScale":false,
       "enableInterNodeCommunication":true,
       "metadata": [ {

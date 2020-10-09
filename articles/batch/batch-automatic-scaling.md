@@ -2,14 +2,14 @@
 title: 自動調整 Azure Batch 集區中的計算節點
 description: 在雲端集區上啟用自動調整，以動態調整集區中的計算節點數目。
 ms.topic: how-to
-ms.date: 07/27/2020
+ms.date: 10/08/2020
 ms.custom: H1Hack27Feb2017, fasttrack-edit, devx-track-csharp
-ms.openlocfilehash: e3e7a354e015ffa8a6164de59edcf572ab773319
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 5774acbfc035ab61267dddb31b01b0e82689f690
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88932316"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91849787"
 ---
 # <a name="create-an-automatic-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>建立自動公式以調整 Batch 集區中的計算節點
 
@@ -287,7 +287,7 @@ $CPUPercent.GetSample(TimeInterval_Minute * 5)
 | GetSamplePeriod() |傳回歷史範例資料集中取得範例的期間。 |
 | Count() |傳回度量歷程記錄中的範例總數。 |
 | HistoryBeginTime() |傳回度量的最舊可用資料範例的時間戳記。 |
-| GetSamplePercent() |傳回指定的時間間隔內可用的樣本百分比。 例如 `doubleVec GetSamplePercent( (timestamp or timeinterval) startTime [, (timestamp or timeinterval) endTime] )`。 因為 `GetSample` 方法在傳回樣本的百分比小於指定的 `samplePercent` 時會失敗，因此，您可以先使用 `GetSamplePercent` 方法進行檢查。 然後您可以在樣本不足時執行替代動作，而不暫停自動調整評估。 |
+| GetSamplePercent() |傳回指定的時間間隔內可用的樣本百分比。 例如： `doubleVec GetSamplePercent( (timestamp or timeinterval) startTime [, (timestamp or timeinterval) endTime] )` 。 因為 `GetSample` 方法在傳回樣本的百分比小於指定的 `samplePercent` 時會失敗，因此，您可以先使用 `GetSamplePercent` 方法進行檢查。 然後您可以在樣本不足時執行替代動作，而不暫停自動調整評估。 |
 
 ### <a name="samples"></a>範例
 
@@ -648,6 +648,24 @@ Result:
 Error:
 ```
 
+## <a name="get-autoscale-run-history-using-pool-autoscale-events"></a>使用集區自動調整事件取得自動調整執行歷程記錄
+您也可以藉由查詢 [PoolAutoScaleEvent](batch-pool-autoscale-event.md)來檢查自動調整歷程記錄。 Batch 服務會發出此事件，以記錄每次出現的自動調整公式評估和執行，這有助於疑難排解可能的問題。
+
+PoolAutoScaleEvent 的範例事件：
+```json
+{
+    "id": "poolId",
+    "timestamp": "2020-09-21T23:41:36.750Z",
+    "formula": "...",
+    "results": "$TargetDedicatedNodes=10;$NodeDeallocationOption=requeue;$curTime=2016-10-14T18:36:43.282Z;$isWeekday=1;$isWorkingWeekdayHour=0;$workHours=0",
+    "error": {
+        "code": "",
+        "message": "",
+        "values": []
+    }
+}
+```
+
 ## <a name="example-autoscale-formulas"></a>自動調整公式範例
 
 讓我們看看下面幾個公式，其顯示調整集區中計算資源數量的不同方式。
@@ -691,7 +709,7 @@ $NodeDeallocationOption = taskcompletion;
 
 ### <a name="example-3-accounting-for-parallel-tasks"></a>範例 3：考量平行工作
 
-這個 c # 範例會根據工作數目來調整集區大小。 此公式也會考慮集區已設定的 [MaxTasksPerComputeNode](/dotnet/api/microsoft.azure.batch.cloudpool.maxtaskspercomputenode) 值。 已在集區上啟用[平行工作執行](batch-parallel-node-tasks.md)的情況下，這個方法很有用。
+這個 c # 範例會根據工作數目來調整集區大小。 此公式也會考慮已針對集區設定的 [TaskSlotsPerNode](/dotnet/api/microsoft.azure.batch.cloudpool.taskslotspernode) 值。 已在集區上啟用[平行工作執行](batch-parallel-node-tasks.md)的情況下，這個方法很有用。
 
 ```csharp
 // Determine whether 70 percent of the samples have been recorded in the past
@@ -699,7 +717,7 @@ $NodeDeallocationOption = taskcompletion;
 $samples = $ActiveTasks.GetSamplePercent(TimeInterval_Minute * 15);
 $tasks = $samples < 70 ? max(0,$ActiveTasks.GetSample(1)) : max( $ActiveTasks.GetSample(1),avg($ActiveTasks.GetSample(TimeInterval_Minute * 15)));
 // Set the number of nodes to add to one-fourth the number of active tasks
-// (theMaxTasksPerComputeNode property on this pool is set to 4, adjust
+// (the TaskSlotsPerNode property on this pool is set to 4, adjust
 // this number for your use case)
 $cores = $TargetDedicatedNodes * 4;
 $extraVMs = (($tasks - $cores) + 3) / 4;

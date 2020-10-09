@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 08/30/2019
 ms.author: Zhchia
-ms.openlocfilehash: 1d3ea609cda37c3bb0de28d8eb1a19944809980d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 78ba57d485f9842ad8531ce22a2b932aa1a1d28b
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91331151"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850416"
 ---
 # <a name="tutorial-configure-foodee-for-automatic-user-provisioning"></a>教學課程：設定 Foodee 來自動布建使用者
 
@@ -27,7 +27,7 @@ ms.locfileid: "91331151"
 >
 > 此連接器目前為預覽版。 如需預覽功能的「Azure 使用條款」功能的詳細資訊，請參閱 [Microsoft Azure 預覽的補充使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 本教學課程假設您已符合下列必要條件：
 
@@ -55,7 +55,7 @@ Azure AD 使用稱為「 *指派* 」的概念，來判斷哪些使用者應該�
 
 1. 登入 [Foodee](https://www.food.ee/login/)，然後選取您的租使用者識別碼。
 
-    ![Foodee](media/Foodee-provisioning-tutorial/tenant.png)
+    :::image type="content" source="media/Foodee-provisioning-tutorial/tenant.png" alt-text="Foodee 企業版入口網站主功能表的螢幕擷取畫面。您可以在功能表中看見租使用者識別碼預留位置。" border="false":::
 
 1. 在 [ **企業版入口網站**] 下，選取 [ **單一登入**]。
 
@@ -63,7 +63,7 @@ Azure AD 使用稱為「 *指派* 」的概念，來判斷哪些使用者應該�
 
 1. 複製 [ **API 權杖** ] 方塊中的值以供稍後使用。 您將在 Azure 入口網站中 Foodee 應用程式的 [布**建] 索引**標籤中，于 [**秘密權杖**] 方塊中輸入它。
 
-    ![Foodee](media/Foodee-provisioning-tutorial/token.png)
+    :::image type="content" source="media/Foodee-provisioning-tutorial/token.png" alt-text="Foodee 企業版入口網站主功能表的螢幕擷取畫面。您可以在功能表中看見租使用者識別碼預留位置。" border="false":::
 
 ## <a name="add-foodee-from-the-gallery"></a>從資源庫新增 Foodee
 
@@ -71,7 +71,7 @@ Azure AD 使用稱為「 *指派* 」的概念，來判斷哪些使用者應該�
 
 若要從 Azure AD 應用程式庫新增 Foodee，請執行下列動作：
 
-1. 在 [ [Azure 入口網站](https://portal.azure.com)] 的左窗格中，選取 [ **Azure Active Directory**]。
+1. 在 [Azure 入口網站](https://portal.azure.com)的左側窗格中，選取 [Azure Active Directory]  。
 
     ![Azure Active Directory 命令](common/select-azuread.png)
 
@@ -130,20 +130,20 @@ Azure AD 使用稱為「 *指派* 」的概念，來判斷哪些使用者應該�
 
 1. 在 **[** 對應] 底下，選取 [ **同步處理 Azure Active Directory 使用者至 Foodee**]。
 
-    ![Foodee 使用者對應](media/Foodee-provisioning-tutorial/usermapping.png)
+    :::image type="content" source="media/Foodee-provisioning-tutorial/usermapping.png" alt-text="Foodee 企業版入口網站主功能表的螢幕擷取畫面。您可以在功能表中看見租使用者識別碼預留位置。" border="false":::
 
 1. 在 [ **屬性**對應] 下，檢查從 Azure AD 同步處理到 Foodee 的使用者屬性。 選取為 [比對] **屬性的屬性會** 用來比對 Foodee 中的 *使用者帳戶* ，以進行更新作業。 
 
-    ![Foodee 使用者對應](media/Foodee-provisioning-tutorial/userattribute.png)
+    :::image type="content" source="media/Foodee-provisioning-tutorial/userattribute.png" alt-text="Foodee 企業版入口網站主功能表的螢幕擷取畫面。您可以在功能表中看見租使用者識別碼預留位置。" border="false":::
 
 1. 若要認可您的變更，請選取 [ **儲存**]。
 1. 在 [對應] **底下，選取**[ **同步處理 Azure Active Directory 群組至 Foodee**]。
 
-    ![Foodee 使用者對應](media/Foodee-provisioning-tutorial/groupmapping.png)
+    :::image type="content" source="media/Foodee-provisioning-tutorial/groupmapping.png" alt-text="Foodee 企業版入口網站主功能表的螢幕擷取畫面。您可以在功能表中看見租使用者識別碼預留位置。" border="false":::
 
 1. 在 [ **屬性**對應] 下，檢查從 Azure AD 同步處理到 Foodee 的使用者屬性。 選取為 [比對] **屬性的屬性會** 用來比對 Foodee 中的 *群組帳戶* 以進行更新作業。
 
-    ![Foodee 使用者對應](media/Foodee-provisioning-tutorial/groupattribute.png)
+    :::image type="content" source="media/Foodee-provisioning-tutorial/groupattribute.png" alt-text="Foodee 企業版入口網站主功能表的螢幕擷取畫面。您可以在功能表中看見租使用者識別碼預留位置。" border="false":::
 
 1. 若要認可您的變更，請選取 [ **儲存**]。
 1. 設定範圍篩選器。 若要深入瞭解，請參閱 [範圍篩選器教學](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)課程中的指示。

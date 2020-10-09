@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/12/2019
 ms.author: zhchia
-ms.openlocfilehash: d88b8f2a6cc66e239706677bd1ebfe01bccd49af
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: f5b14ecf061e8f0c53dc1387d1581bc780d190b9
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91322024"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850867"
 ---
 # <a name="tutorial-configure-figma-for-automatic-user-provisioning"></a>教學課程：設定 Figma 來自動布建使用者
 
@@ -27,7 +27,7 @@ ms.locfileid: "91322024"
 >
 > 此連接器目前為公開預覽版。 如需有關預覽功能的一般 Microsoft Azure 使用規定詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用規定](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 本教學課程中概述的案例假設您已經具有下列必要條件：
 
@@ -53,23 +53,23 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
 1. 登入您的 [Figma 管理主控台](https://www.Figma.com/)。 按一下您租使用者旁的齒輪圖示。
 
-    ![FigmaFigma-員工-布建](media/Figma-provisioning-tutorial/image0.png)
+    :::image type="content" source="media/Figma-provisioning-tutorial/image0.png" alt-text="Figma 管理主控台的螢幕擷取畫面。您可以看到名為 A D Scim Test 的租使用者。在租使用者旁，會反白顯示齒輪圖示。" border="false":::
 
 2. 流覽至 **一般 > 更新登入設定**。
 
-    ![FigmaFigma-員工-布建](media/Figma-provisioning-tutorial/figma03.png)
+    :::image type="content" source="media/Figma-provisioning-tutorial/figma03.png" alt-text="Figma 管理主控台的螢幕擷取畫面。您可以看到名為 A D Scim Test 的租使用者。在租使用者旁，會反白顯示齒輪圖示。" border="false":::
 
 3. 複製 **租使用者識別碼**。 此值將用來在 Azure 入口網站中，用來在 Figma 應用程式的 [布建] 索引標籤中，建立要輸入至 [ **租使用者 url** ] 欄位的 SCIM 端點 url。
 
-    ![Figma 建立權杖](media/Figma-provisioning-tutorial/figma-tenantid.png)
+    :::image type="content" source="media/Figma-provisioning-tutorial/figma-tenantid.png" alt-text="Figma 管理主控台的螢幕擷取畫面。您可以看到名為 A D Scim Test 的租使用者。在租使用者旁，會反白顯示齒輪圖示。" border="false":::
 
 4. 向下鍵，然後按一下 [ **產生 API 權杖**]。
 
-    ![Figma 建立權杖](media/Figma-provisioning-tutorial/token.png)
+    :::image type="content" source="media/Figma-provisioning-tutorial/token.png" alt-text="Figma 管理主控台的螢幕擷取畫面。您可以看到名為 A D Scim Test 的租使用者。在租使用者旁，會反白顯示齒輪圖示。" border="false":::
 
 5. 複製  **API 權杖** 值。 在 Azure 入口網站的 Figma 應用程式的 [布建] 索引標籤中，將會在 [ **秘密權杖** ] 欄位中輸入此值。 
 
-    ![Figma 建立權杖](media/Figma-provisioning-tutorial/figma04.png)
+    :::image type="content" source="media/Figma-provisioning-tutorial/figma04.png" alt-text="Figma 管理主控台的螢幕擷取畫面。您可以看到名為 A D Scim Test 的租使用者。在租使用者旁，會反白顯示齒輪圖示。" border="false":::
 
 ## <a name="add-figma-from-the-gallery"></a>從資源庫新增 Figma
 
@@ -124,7 +124,7 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
     ![通知電子郵件](common/provisioning-notification-email.png)
 
-9. 按一下 [檔案]  。
+9. 按一下 [儲存]。
 
 10. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 使用者至 Figma**]。
 
