@@ -1,15 +1,15 @@
 ---
-title: 部署受管理的應用程式時使用 Key Vault
+title: 部署受控應用程式時使用 Key Vault
 description: 說明在部署受控應用程式時如何使用 Azure Key Vault 中的存取祕密
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: tomfitz
 ms.openlocfilehash: 5dc219747b9cc74b6c6aac8ab190ebfbe5ae9b32
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81458278"
 ---
 # <a name="access-key-vault-secret-when-deploying-azure-managed-applications"></a>在部署 Azure 受控應用程式時存取 Key Vault 秘密
@@ -36,7 +36,7 @@ ms.locfileid: "81458278"
 
 ## <a name="add-service-as-contributor"></a>將服務新增為參與者
 
-1. 選取 [存取控制 (IAM)]。
+1. 選取 [存取控制 (IAM)]  。
 
    ![選取存取控制](./media/key-vault-access/access-control.png)
 
@@ -48,11 +48,11 @@ ms.locfileid: "81458278"
 
    ![搜尋提供者](./media/key-vault-access/search-provider.png)
 
-1. 選取 [儲存]。
+1. 選取 [儲存]****。
 
 ## <a name="reference-key-vault-secret"></a>參考 Key Vault 祕密
 
-若要從 Key Vault 將秘密傳遞至 Managed 應用程式中的範本，您必須使用[連結或嵌套的範本](../templates/linked-templates.md)，並在連結或嵌套範本的參數中參考 Key Vault。 請提供 Key Vault 的資源識別碼和秘密的名稱。
+若要從 Key Vault 將秘密傳遞至 Managed 應用程式中的範本，您必須使用 [連結或嵌套的範本](../templates/linked-templates.md) ，並參考連結或嵌套範本之參數中的 Key Vault。 請提供 Key Vault 的資源識別碼和秘密的名稱。
 
 ```json
 {
@@ -162,7 +162,7 @@ ms.locfileid: "81458278"
 }
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 您已將 Key Vault 設定為在受控應用程式部署期間可供存取。
 

@@ -12,17 +12,17 @@ ms.date: 03/10/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 4ab196e894fc53b1243ac363f9863d5c7d4e328f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85388998"
 ---
 # <a name="configure-password-complexity-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自訂原則來設定密碼複雜度
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-在 Azure Active Directory B2C （Azure AD B2C）中，您可以設定使用者建立帳戶時所提供之密碼的複雜性需求。 根據預設，Azure AD B2C 是使用**強式**密碼。 本文說明如何在[自訂原則](custom-policy-overview.md)中設定密碼複雜度。 此外，您也可以在[使用者流程](user-flow-password-complexity.md)中設定密碼複雜度。
+在 Azure Active Directory B2C (Azure AD B2C) ，您可以設定使用者在建立帳戶時所提供的密碼複雜度需求。 根據預設，Azure AD B2C 是使用**強式**密碼。 本文說明如何在[自訂原則](custom-policy-overview.md)中設定密碼複雜度。 此外，您也可以在[使用者流程](user-flow-password-complexity.md)中設定密碼複雜度。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -31,11 +31,11 @@ ms.locfileid: "85388998"
 
 ## <a name="add-the-elements"></a>新增元素
 
-若要設定密碼複雜性，請以述詞驗證的參考覆寫 `newPassword` 和宣告 `reenterPassword` [類型](claimsschema.md)。 [predicate validations](predicates.md#predicatevalidations) PredicateValidations 元素會將一組述詞分組，以構成可套用至宣告類型的使用者輸入驗證。 開啟您原則的擴充檔。 例如，<em>`SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`**</em>。
+若要設定密碼複雜度，請以述詞驗證的參考覆寫 `newPassword` 和宣告 `reenterPassword` [類型](claimsschema.md)。 [predicate validations](predicates.md#predicatevalidations) PredicateValidations 元素會將一組述詞分組，以形成可套用至宣告類型的使用者輸入驗證。 開啟您原則的擴充檔。 例如，<em>`SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`**</em>。
 
 1. 搜尋 [BuildingBlocks](buildingblocks.md) 元素。 如果此元素不存在，請加以新增。
 1. 尋找 [ClaimsSchema](claimsschema.md) (機器翻譯) 元素。 如果此元素不存在，請加以新增。
-1. 將 `newPassword` 和 `reenterPassword` 宣告加入至**ClaimsSchema**元素。
+1. 將 `newPassword` 和 `reenterPassword` 宣告加入至 **ClaimsSchema** 元素。
 
     ```xml
     <ClaimType Id="newPassword">
@@ -46,7 +46,7 @@ ms.locfileid: "85388998"
     </ClaimType>
     ```
 
-1. 述詞[會定義基本](predicates.md)身份驗證來檢查宣告類型的值，並傳回 true 或 false。 驗證是透過使用指定的 method 元素，以及與方法相關的一組參數來完成。 將下列述詞新增至**BuildingBlocks**元素，緊接在元素的結尾之後 `</ClaimsSchema>` ：
+1. 述詞[會定義基本](predicates.md)身份驗證來檢查宣告類型的值，並傳回 true 或 false。 您可以使用指定的方法專案，以及與此方法相關的一組參數來完成驗證。 將下列述詞加入至 **BuildingBlocks** 元素，緊接在元素的結尾之後 `</ClaimsSchema>` ：
 
     ```xml
     <Predicates>
@@ -84,7 +84,7 @@ ms.locfileid: "85388998"
     </Predicates>
     ```
 
-1. 將下列述詞驗證新增至**BuildingBlocks**元素，緊接在元素的結尾之後 `</Predicates>` ：
+1. 將下列述詞驗證新增至 **BuildingBlocks** 元素，緊接在元素的結尾之後 `</Predicates>` ：
 
     ```xml
     <PredicateValidations>
@@ -109,7 +109,7 @@ ms.locfileid: "85388998"
     </PredicateValidations>
     ```
 
-1. 下列技術設定檔是[Active Directory 的技術設定檔](active-directory-technical-profile.md)，可將資料讀取和寫入至 Azure Active Directory。 覆寫延伸模組檔案中的這些技術設定檔。 使用 `PersistedClaims` 來停用強式密碼原則。 尋找 **ClaimsProviders** 元素。  新增下列宣告提供者，如下所示：
+1. 下列技術設定檔是 [Active Directory 的技術設定檔](active-directory-technical-profile.md)，可讀取和寫入 Azure Active Directory 的資料。 覆寫延伸模組檔案中的這些技術設定檔。 使用 `PersistedClaims` 停用增強式密碼原則。 尋找 **ClaimsProviders** 元素。  新增下列宣告提供者，如下所示：
 
     ```xml
     <ClaimsProvider>
@@ -140,7 +140,7 @@ ms.locfileid: "85388998"
 3. 選擇 Azure 入口網站左上角的 [所有服務]，然後搜尋並選取 [Azure AD B2C]。
 4. 選取 [識別體驗架構]。
 5. 在 [自訂原則] 頁面上，按一下 [上傳原則]****。
-6. **如果原則存在**，請選取 [覆寫]，然後搜尋並選取*TrustFrameworkExtensions.xml*檔案。
+6. 選取 [ **覆寫原則（如果有**的話）]，然後搜尋並選取 *TrustFrameworkExtensions.xml* 的檔案。
 7. 按一下 [上傳] 。
 
 ### <a name="run-the-policy"></a>執行原則
@@ -153,4 +153,4 @@ ms.locfileid: "85388998"
 ## <a name="next-steps"></a>後續步驟
 
 - 了解如何[在 Azure Active Directory B2C 中使用自訂原則來設定密碼變更](custom-policy-password-change.md)。
-- 深入瞭解 IEF 參考中的述[詞和](predicates.md) [PredicateValidations](predicates.md#predicatevalidations)元素。
+- 深入瞭解 IEF 參考中的述 [詞和](predicates.md) [PredicateValidations](predicates.md#predicatevalidations) 元素。

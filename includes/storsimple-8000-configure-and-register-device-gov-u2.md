@@ -5,16 +5,16 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 7700f1c92aecab76dbc347814b7b161bc3d822a0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67174035"
 ---
 ### <a name="to-configure-and-register-the-device"></a>設定和註冊裝置
 1. 存取 StorSimple 裝置序列主控台上的 Windows PowerShell 介面。 如需相關指示，請參閱 [使用 PuTTY 來連接至裝置序列主控台](../articles/storsimple/storsimple-8000-deployment-walkthrough-gov-u2.md#use-putty-to-connect-to-the-device-serial-console) 。 **請務必確實依照此程序，否則將無法存取主控台。**
-2. 在開啟的會話中，按**enter**鍵一次以取得命令提示字元。
-3. 系統將提示您選擇想要為裝置設定的語言。 指定語言，然後按**enter**。
+2. 在開啟的會話中，按 **enter** 鍵一次以取得命令提示字元。
+3. 系統將提示您選擇想要為裝置設定的語言。 指定語言，然後按 **enter**。
    
     ![StorSimple 設定和註冊裝置 1](./media/storsimple-configure-and-register-device-gov-u2/HCS_RegisterYourDevice1-gov-include.png)
 4. 在顯示的序列主控台功能表中，選擇選項 1 [以完整存取權登入]****。

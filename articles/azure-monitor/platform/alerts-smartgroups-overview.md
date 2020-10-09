@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 05/15/2018
 ms.openlocfilehash: 05b05f8bc079bb3768ac2f1a03593bc9260b41aa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77665488"
 ---
 # <a name="smart-groups"></a>智慧群組
@@ -27,11 +27,11 @@ ms.locfileid: "77665488"
 
 支援下列智慧群組狀態。
 
-| State | Description |
+| State | 描述 |
 |:---|:---|
 | 新增 | 已經偵測到問題，但尚未檢閱。 |
 | 已認可 | 系統管理員已檢閱智慧群組，並已開始處理。 |
-| 關閉 | 已解決問題。 關閉智慧群組之後，您可以將警示變更為另一個狀態以重新開啟它。 |
+| 封閉式 | 已解決問題。 關閉智慧群組之後，您可以將警示變更為另一個狀態以重新開啟它。 |
 
 [了解如何變更智慧群組的狀態。](https://aka.ms/managing-alert-smart-group-states)
 
@@ -50,7 +50,7 @@ ms.locfileid: "77665488"
 | 區段 | 描述 |
 |:---|:---|
 | 警示 | 列出智慧群組中包含的個別警示。 選取警示以開啟其 [警示詳細資料] 頁面。 |
-| 記錄 | 列出智慧群組採取的每個動作，以及對智慧群組所做的任何變更。 這目前僅限於狀態變更和警示成員資格變更。 |
+| 歷程記錄 | 列出智慧群組採取的每個動作，以及對智慧群組所做的任何變更。 這目前僅限於狀態變更和警示成員資格變更。 |
 
 ## <a name="smart-group-taxonomy"></a>智慧群組分類法
 

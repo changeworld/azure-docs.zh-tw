@@ -11,10 +11,10 @@ ms.date: 11/30/2018
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: ed393f721d4461ebadea41f8dad707d4881865cd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "78183900"
 ---
 # <a name="azure-ad-b2c-authentication-protocols"></a>Azure AD B2C：驗證通訊協定
@@ -27,8 +27,8 @@ Azure Active Directory B2C (Azure AD B2C) 支援 OpenID Connect 與 OAuth 2.0 �
 ## <a name="the-basics"></a>基本概念
 使用 Azure AD B2C 的每個 app 都必須在 [Azure 入口網站](https://portal.azure.com)內您的 B2C 目錄中註冊。 App 註冊處理序會收集與指派一些值給您的 app：
 
-* 可唯一識別您應用程式的**應用程式識別碼**。
-* 可用來將回應傳回給應用程式的重新**導向 URI**或**套件識別碼**。
+* 可唯一識別您應用 **程式的應用程式識別碼** 。
+* 可以用來將回應導向回您應用程式的重新 **導向 URI** 或 **封裝識別碼** 。
 * 其他幾個狀況特定的值。 如需詳細資訊，請了解[如何註冊您的應用程式](tutorial-register-applications.md)。
 
 註冊您的應用程式之後，它會傳送要求給端點，藉此與 Azure Active Directory (Azure AD) 通訊：

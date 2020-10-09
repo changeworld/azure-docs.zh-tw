@@ -1,6 +1,6 @@
 ---
 title: 瞭解 Azure IoT 中樞 AMQP 支援 |Microsoft Docs
-description: 開發人員指南-使用 AMQP 通訊協定連接到 IoT 中樞裝置面向和服務面向端點的裝置支援。 包含 Azure IoT 裝置 Sdk 中內建 AMQP 支援的相關資訊。
+description: 開發人員指南-支援使用 AMQP 通訊協定連線到 IoT 中樞裝置面向和服務面向端點的裝置。 包含 Azure IoT 裝置 Sdk 內建 AMQP 支援的相關資訊。
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
@@ -11,32 +11,32 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 7b3dcfc51df7f0fe4291e9c5babccc1444ad32e9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81730759"
 ---
-# <a name="communicate-with-your-iot-hub-by-using-the-amqp-protocol"></a>使用 AMQP 通訊協定與您的 IoT 中樞通訊
+# <a name="communicate-with-your-iot-hub-by-using-the-amqp-protocol"></a>使用 AMQP 通訊協定與 IoT 中樞通訊
 
-Azure IoT 中樞支援[OASIS Advanced 訊息佇列通訊協定（AMQP）1.0 版](https://docs.oasis-open.org/amqp/core/v1.0/os/amqp-core-complete-v1.0-os.pdf)，透過裝置面向和服務面向端點提供各種功能。 本檔說明如何使用 AMQP 用戶端來連線到 IoT 中樞，以使用 IoT 中樞功能。
+Azure IoT 中樞支援 [OASIS Advanced 訊息佇列通訊協定 (AMQP) 1.0 版](https://docs.oasis-open.org/amqp/core/v1.0/os/amqp-core-complete-v1.0-os.pdf) ，透過面向裝置和麵向服務的端點提供各種功能。 本檔說明如何使用 AMQP 用戶端連線到 IoT 中樞，以使用 IoT 中樞功能。
 
 ## <a name="service-client"></a>服務用戶端
 
-### <a name="connect-and-authenticate-to-an-iot-hub-service-client"></a>將 IoT 中樞連線並進行驗證（服務用戶端）
+### <a name="connect-and-authenticate-to-an-iot-hub-service-client"></a> (服務用戶端連線到 IoT 中樞並進行驗證) 
 
-若要使用 AMQP 連線到 IoT 中樞，用戶端可以使用[宣告式安全性（CBS）](https://www.oasis-open.org/committees/download.php/60412/amqp-cbs-v1.0-wd03.doc)或[簡單驗證及安全性階層（SASL）驗證](https://en.wikipedia.org/wiki/Simple_Authentication_and_Security_Layer)。
+若要使用 AMQP 連線至 IoT 中樞，用戶端可以使用以 [宣告為基礎的安全性 (CBS) ](https://www.oasis-open.org/committees/download.php/60412/amqp-cbs-v1.0-wd03.doc) 或 [簡單驗證及安全性階層 (SASL) 驗證](https://en.wikipedia.org/wiki/Simple_Authentication_and_Security_Layer)。
 
 服務用戶端需要下列資訊：
 
 | 資訊 | 值 |
 |-------------|--------------|
 | IoT 中樞主機名稱 | `<iot-hub-name>.azure-devices.net` |
-| 機碼名稱 | `service` |
+| 索引鍵名稱 | `service` |
 | 存取金鑰 | 與服務相關聯的主要或次要金鑰 |
-| 共用存取簽章 | 短期的共用存取簽章，格式如下： `SharedAccessSignature sig={signature-string}&se={expiry}&skn={policyName}&sr={URL-encoded-resourceURI}` 。 若要取得產生此簽章的程式碼，請參閱[控制 IoT 中樞的存取權](./iot-hub-devguide-security.md#security-token-structure)。
+| 共用存取簽章 | 存留期較短的共用存取簽章格式如下： `SharedAccessSignature sig={signature-string}&se={expiry}&skn={policyName}&sr={URL-encoded-resourceURI}` 。 若要取得產生此簽章的程式碼，請參閱 [控制 IoT 中樞的存取權](./iot-hub-devguide-security.md#security-token-structure)。
 
-下列程式碼片段會使用[Python 中的 uAMQP 程式庫](https://github.com/Azure/azure-uamqp-python)，透過寄件者連結連線到 IoT 中樞。
+下列程式碼片段會使用 [Python 中的 uAMQP 程式庫](https://github.com/Azure/azure-uamqp-python) ，透過傳送者連結連接到 IoT 中樞。
 
 ```python
 import uamqp
@@ -64,16 +64,16 @@ send_client = uamqp.SendClient(uri, debug=True)
 receive_client = uamqp.ReceiveClient(uri, debug=True)
 ```
 
-### <a name="invoke-cloud-to-device-messages-service-client"></a>叫用雲端到裝置訊息（服務用戶端）
+### <a name="invoke-cloud-to-device-messages-service-client"></a> (服務用戶端) 叫用雲端到裝置訊息
 
-若要瞭解服務與 IoT 中樞之間，以及裝置與 IoT 中樞之間的雲端到裝置訊息交換，請參閱[從您的 IoT 中樞傳送雲端到裝置訊息](iot-hub-devguide-messages-c2d.md)。 服務用戶端會使用兩個連結來傳送訊息，並接收來自裝置的先前傳送訊息的意見反應，如下表所述：
+若要瞭解服務與 IoT 中樞之間以及裝置與 IoT 中樞之間的雲端到裝置訊息交換，請參閱 [從您的 IoT 中樞傳送雲端到裝置訊息](iot-hub-devguide-messages-c2d.md)。 服務用戶端會使用兩個連結來傳送訊息，並接收來自裝置的先前傳送訊息的意見反應，如下表所述：
 
-| 建立者為 | 連結類型 | 連結路徑 | Description |
+| 建立者為 | 連結類型 | 連結路徑 | 說明 |
 |------------|-----------|-----------|-------------|
-| 服務 | 寄件者連結 | `/messages/devicebound` | 服務會將以裝置為目標的雲端到裝置訊息傳送到此連結。 透過此連結傳送的訊息會 `To` 將其屬性設定為目標裝置的接收者連結路徑 `/devices/<deviceID>/messages/devicebound` 。 |
-| 服務 | 接收者連結 | `/messages/serviceBound/feedback` | 由服務在此連結上收到的裝置所產生的完成、拒絕和放棄意見反應訊息。 如需意見反應訊息的詳細資訊，請參閱[從 IoT 中樞傳送雲端到裝置訊息](./iot-hub-devguide-messages-c2d.md#message-feedback)。 |
+| 服務 | 寄件者連結 | `/messages/devicebound` | 以裝置為目的地的雲端到裝置訊息會由服務傳送至此連結。 透過此連結傳送的訊息 `To` ，其屬性會設定為目標裝置的接收者連結路徑 `/devices/<deviceID>/messages/devicebound` 。 |
+| 服務 | 接收者連結 | `/messages/serviceBound/feedback` | 由服務在此連結上收到的裝置所收到的完成、拒絕和放棄意見反應訊息。 如需意見反應訊息的詳細資訊，請參閱 [從 IoT 中樞傳送雲端到裝置訊息](./iot-hub-devguide-messages-c2d.md#message-feedback)。 |
 
-下列程式碼片段示範如何使用[Python 中的 uAMQP 程式庫](https://github.com/Azure/azure-uamqp-python)，建立雲端到裝置的訊息，並將它傳送至裝置。
+下列程式碼片段示範如何建立雲端到裝置的訊息，並使用 [Python 中的 uAMQP 程式庫](https://github.com/Azure/azure-uamqp-python)將其傳送至裝置。
 
 ```python
 import uuid
@@ -96,7 +96,7 @@ results = send_client.send_all_messages()
 send_client.close()
 ```
 
-為了接收意見反應，服務用戶端會建立接收者連結。 下列程式碼片段示範如何[在 Python 中使用 uAMQP 程式庫](https://github.com/Azure/azure-uamqp-python)來建立連結：
+為了接收意見反應，服務用戶端會建立接收者連結。 下列程式碼片段示範如何使用 [Python 中的 uAMQP 程式庫](https://github.com/Azure/azure-uamqp-python)來建立連結：
 
 ```python
 import json
@@ -129,29 +129,29 @@ for msg in batch:
         print('unknown message:', msg.properties.content_type)
 ```
 
-如上述程式碼所示，雲端到裝置的意見反應訊息的內容類型為*application/vnd.microsoft.iothub.feedback.json*。 您可以使用訊息的 JSON 主體中的屬性來推斷原始訊息的傳遞狀態：
+如上述程式碼所示，「雲端到裝置」回饋訊息的內容類型為「 *應用程式/vnd.microsoft.iothub.feedback.js*」。 您可以使用訊息的 JSON 主體中的屬性，來推斷原始訊息的傳遞狀態：
 
-* `statusCode`意見主體中的金鑰具有下列其中一個值：*成功*、*過期*、 *DeliveryCountExceeded*、*拒絕*或*清除*。
+* 意見反應主體中的索引鍵 `statusCode` 具有下列其中一個值： *成功*、已 *過期*、 *DeliveryCountExceeded*、已 *拒絕*或已 *清除*。
 
-* `deviceId`意見主體中的金鑰具有目標裝置的識別碼。
+* `deviceId`意見反應主體中的金鑰具有目標裝置的識別碼。
 
-* `originalMessageId`意見主體中的金鑰具有服務所傳送之原始雲端到裝置訊息的識別碼。 您可以使用此傳遞狀態，將意見反應與雲端到裝置訊息相互關聯。
+* `originalMessageId`意見內文中的金鑰具有服務所傳送之原始雲端到裝置訊息的識別碼。 您可以使用此傳遞狀態將意見反應與雲端到裝置的訊息相互關聯。
 
-### <a name="receive-telemetry-messages-service-client"></a>接收遙測訊息（服務用戶端）
+### <a name="receive-telemetry-messages-service-client"></a> (服務用戶端) 接收遙測訊息
 
-根據預設，您的 IoT 中樞會將內嵌裝置遙測訊息儲存在內建的事件中樞內。 您的服務用戶端可以使用 AMQP 通訊協定來接收儲存的事件。
+根據預設，您的 IoT 中樞會將內嵌的裝置遙測訊息儲存在內建事件中樞內。 您的服務用戶端可以使用 AMQP 通訊協定來接收儲存的事件。
 
 基於此目的，服務用戶端必須先連線到 IoT 中樞端點，並接收內建事件中樞的重新導向位址。 服務用戶端接著會使用提供的位址來連線到內建的事件中樞。
 
-在每個步驟中，用戶端都必須呈現下列資訊片段：
+在每個步驟中，用戶端都必須提供下列資訊片段：
 
-* 有效的服務認證（服務共用存取簽章權杖）。
+* 有效的服務認證 (服務共用存取簽章權杖) 。
 
-* 格式正確的路徑，指向要從中抓取訊息的取用者群組分割區。 針對指定的取用者群組和分割區識別碼，路徑的格式如下： `/messages/events/ConsumerGroups/<consumer_group>/Partitions/<partition_id>` （預設的取用者群組是 `$Default` ）。
+* 要從中抓取訊息的取用者群組資料分割格式正確的路徑。 針對指定的取用者群組和資料分割識別碼，路徑的格式如下： `/messages/events/ConsumerGroups/<consumer_group>/Partitions/<partition_id>` (預設取用者群組 `$Default`) 。
 
-* 選擇性的篩選述詞，用來指定資料分割中的起始點。 這個述詞的格式可以是序號、位移或排入佇列的時間戳記。
+* 選擇性篩選述詞，用來指定資料分割中的起始點。 此述詞的格式可以是序號、位移或排入佇列的時間戳記。
 
-下列程式碼片段會使用[Python 中的 uAMQP 程式庫](https://github.com/Azure/azure-uamqp-python)來示範前面的步驟：
+下列程式碼片段會使用 [Python 中的 uAMQP 程式庫](https://github.com/Azure/azure-uamqp-python) 來示範先前的步驟：
 
 ```python
 import json
@@ -215,13 +215,13 @@ for msg in batch:
     print('\t: ' + str(msg.annotations['x-opt-enqueued-time']))
 ```
 
-針對指定的裝置識別碼，IoT 中樞會使用裝置識別碼的雜湊來決定要儲存其訊息的資料分割。 上述程式碼片段示範如何從單一這類分割區接收事件。 不過，請注意，一般應用程式通常需要取出儲存在所有事件中樞分割區中的事件。
+針對指定的裝置識別碼，IoT 中樞會使用裝置識別碼的雜湊來決定要將其訊息儲存在哪一個分割區。 上述程式碼片段會示範如何從單一這類分割區接收事件。 不過，請注意，一般的應用程式通常需要取出儲存在所有事件中樞分割區中的事件。
 
 ## <a name="device-client"></a>裝置用戶端
 
-### <a name="connect-and-authenticate-to-an-iot-hub-device-client"></a>將 IoT 中樞連線並進行驗證（裝置用戶端）
+### <a name="connect-and-authenticate-to-an-iot-hub-device-client"></a> (裝置用戶端連線到 IoT 中樞並進行驗證) 
 
-若要使用 AMQP 連線到 IoT 中樞，裝置可以使用宣告式[安全性（CBS）](https://www.oasis-open.org/committees/download.php/60412/amqp-cbs-v1.0-wd03.doc)或[簡單驗證及安全性階層（SASL）](https://en.wikipedia.org/wiki/Simple_Authentication_and_Security_Layer)驗證。
+若要使用 AMQP 連接到 IoT 中樞，裝置可以使用宣告式 [安全性 (CBS) ](https://www.oasis-open.org/committees/download.php/60412/amqp-cbs-v1.0-wd03.doc) 或 [簡單驗證及安全性階層 (SASL) ](https://en.wikipedia.org/wiki/Simple_Authentication_and_Security_Layer) 驗證。
 
 裝置用戶端需要下列資訊：
 
@@ -229,9 +229,9 @@ for msg in batch:
 |-------------|--------------|
 | IoT 中樞主機名稱 | `<iot-hub-name>.azure-devices.net` |
 | 存取金鑰 | 與裝置相關聯的主要或次要金鑰 |
-| 共用存取簽章 | 短期的共用存取簽章，格式如下： `SharedAccessSignature sig={signature-string}&se={expiry}&skn={policyName}&sr={URL-encoded-resourceURI}` 。 若要取得產生此簽章的程式碼，請參閱[控制 IoT 中樞的存取權](./iot-hub-devguide-security.md#security-token-structure)。
+| 共用存取簽章 | 存留期較短的共用存取簽章格式如下： `SharedAccessSignature sig={signature-string}&se={expiry}&skn={policyName}&sr={URL-encoded-resourceURI}` 。 若要取得產生此簽章的程式碼，請參閱 [控制 IoT 中樞的存取權](./iot-hub-devguide-security.md#security-token-structure)。
 
-下列程式碼片段會使用[Python 中的 uAMQP 程式庫](https://github.com/Azure/azure-uamqp-python)，透過寄件者連結連線到 IoT 中樞。
+下列程式碼片段會使用 [Python 中的 uAMQP 程式庫](https://github.com/Azure/azure-uamqp-python) ，透過傳送者連結連接到 IoT 中樞。
 
 ```python
 import uamqp
@@ -260,19 +260,19 @@ receive_client = uamqp.ReceiveClient(uri, debug=True)
 send_client = uamqp.SendClient(uri, debug=True)
 ```
 
-以下是支援裝置作業的連結路徑：
+以下是支援作為裝置作業的連結路徑：
 
-| 建立者為 | 連結類型 | 連結路徑 | Description |
+| 建立者為 | 連結類型 | 連結路徑 | 說明 |
 |------------|-----------|-----------|-------------|
-| 裝置 | 接收者連結 | `/devices/<deviceID>/messages/devicebound` | 每個目的地裝置都會在此連結上收到以裝置為目標的雲端到裝置訊息。 |
+| 裝置 | 接收者連結 | `/devices/<deviceID>/messages/devicebound` | 以裝置為目的地的雲端到裝置訊息會由每個目的地裝置在此連結上接收。 |
 | 裝置 | 寄件者連結 | `/devices/<deviceID>/messages/events` | 從裝置傳送的裝置到雲端訊息會透過此連結傳送。 |
-| 裝置 | 寄件者連結 | `/messages/serviceBound/feedback` | 裝置透過此連結傳送至服務的雲端到裝置訊息意見反應。 |
+| 裝置 | 寄件者連結 | `/messages/serviceBound/feedback` | 裝置會透過此連結，將雲端到裝置訊息意見反應傳送至服務。 |
 
-### <a name="receive-cloud-to-device-commands-device-client"></a>接收雲端到裝置命令（裝置用戶端）
+### <a name="receive-cloud-to-device-commands-device-client"></a>接收雲端到裝置的命令 (裝置用戶端) 
 
-傳送至裝置的雲端到裝置命令會抵達 `/devices/<deviceID>/messages/devicebound` 連結。 裝置可以批次接收這些訊息，並視需要在訊息中使用訊息資料承載、訊息屬性、批註或應用程式屬性。
+傳送至裝置的雲端到裝置命令抵達 `/devices/<deviceID>/messages/devicebound` 連結。 裝置可以批次方式接收這些訊息，並視需要在訊息中使用訊息資料承載、訊息屬性、注釋或應用程式屬性。
 
-下列程式碼片段會使用[Python 中的 uAMQP 程式庫](https://github.com/Azure/azure-uamqp-python)，透過裝置接收雲端到裝置訊息。
+下列程式碼片段會使用 [Python) 中的 uAMQP 程式庫](https://github.com/Azure/azure-uamqp-python) ，來接收裝置的雲端到裝置訊息。
 
 ```python
 # ...
@@ -318,11 +318,11 @@ while True:
               str(msg.annotations['x-opt-sequence-number']))
 ```
 
-### <a name="send-telemetry-messages-device-client"></a>傳送遙測訊息（裝置用戶端）
+### <a name="send-telemetry-messages-device-client"></a>將遙測訊息傳送 (裝置用戶端) 
 
 您也可以使用 AMQP 從裝置傳送遙測訊息。 裝置可以選擇性地提供應用程式屬性的字典，或各種訊息屬性，例如訊息識別碼。
 
-下列程式碼片段會使用[Python 中的 uAMQP 程式庫](https://github.com/Azure/azure-uamqp-python)，從裝置傳送裝置到雲端訊息。
+下列程式碼片段會使用 [Python 中的 uAMQP 程式庫](https://github.com/Azure/azure-uamqp-python) ，從裝置傳送裝置到雲端訊息。
 
 ```python
 # ...
@@ -365,16 +365,16 @@ for result in results:
 
 ## <a name="additional-notes"></a>其他注意事項
 
-* AMQP 連線可能會因為網路問題或驗證權杖的到期（在程式碼中產生）而中斷。 服務用戶端必須處理這些情況，並視需要重新建立連接和連結。 如果驗證權杖到期，用戶端可以在到期前主動更新權杖，以避免中斷連接。
+* AMQP 連線可能會因為網路問題或驗證權杖到期而中斷， (在程式碼) 中產生。 服務用戶端必須處理這些情況，並視需要重新建立連接和連結。 如果驗證權杖到期，用戶端可以藉由在權杖到期前主動更新權杖，以避免中斷連接。
 
-* 您的用戶端有時必須能夠正確地處理連結重新導向。 若要瞭解這類作業，請參閱您的 AMQP 用戶端檔。
+* 您的用戶端偶爾必須能夠正確地處理連結重新導向。 若要瞭解這類作業，請參閱 AMQP 用戶端檔。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-若要深入瞭解 AMQP 通訊協定，請參閱[AMQP v1.0 規格](https://www.amqp.org/sites/amqp.org/files/amqp.pdf)。
+若要深入瞭解 AMQP 通訊協定，請參閱 [AMQP v1.0 規格](https://www.amqp.org/sites/amqp.org/files/amqp.pdf)。
 
 若要深入瞭解 IoT 中樞訊息，請參閱：
 
 * [雲端到裝置的訊息](./iot-hub-devguide-messages-c2d.md)
 * [支援其他通訊協定](iot-hub-protocol-gateway.md)
-* [訊息佇列遙測傳輸（MQTT）通訊協定的支援](./iot-hub-mqtt-support.md)
+* [支援訊息佇列遙測傳輸 (MQTT) 通訊協定](./iot-hub-mqtt-support.md)

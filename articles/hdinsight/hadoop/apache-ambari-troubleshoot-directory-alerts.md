@@ -1,6 +1,6 @@
 ---
 title: Azure HDInsight 中的 Apache Ambari 目錄警示
-description: 針對 HDInsight 中 Apache Ambari 目錄警示的可能原因和解決方案進行討論和分析。
+description: HDInsight 中 Apache Ambari 目錄警示的可能原因和解決方案的討論與分析。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,15 +8,15 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/22/2020
 ms.openlocfilehash: 7fd287377a82caeaecea264f0165d12ced57f5cd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76722833"
 ---
 # <a name="scenario-apache-ambari-directory-alerts-in-azure-hdinsight"></a>案例： Azure HDInsight 中的 Apache Ambari 目錄警示
 
-本文說明與 Azure HDInsight 叢集互動時，問題的疑難排解步驟和可能的解決方法。
+本文說明與 Azure HDInsight 叢集互動時，問題的疑難排解步驟和可能的解決方式。
 
 ## <a name="issue"></a>問題
 
@@ -29,11 +29,11 @@ ms.locfileid: "76722833"
 
 ## <a name="cause"></a>原因
 
-受影響的背景工作節點上遺漏 Ambari 警示中所述的目錄。
+受影響的背景工作角色節點 () 上缺少提及的 Ambari 警示目錄。
 
 ## <a name="resolution"></a>解決方案
 
-在受影響的背景工作節點上手動建立遺漏的目錄。
+在受影響的背景工作節點上手動建立遺漏的目錄， (s) 。
 
 1. 透過 SSH 連線到相關的背景工作節點。
 

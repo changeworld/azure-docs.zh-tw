@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 01/29/2018
 ms.custom: mqtt
 ms.openlocfilehash: 4e380fdcd72ab21f00272536b9f08145dcb09bc1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81728806"
 ---
 # <a name="azure-iot-hub-developer-guide"></a>Azure IoT 中樞開發人員指南
@@ -40,15 +40,15 @@ Azure IoT 中樞可提供您︰
 
 * [IoT 中樞的裝置到雲端及雲端到裝置傳訊](iot-hub-devguide-messaging.md)說明 IoT 中樞所公開的傳訊功能 (裝置到雲端和雲端到裝置)。
 
-  * 將[裝置到雲端訊息傳送至 IoT 中樞](iot-hub-devguide-messages-d2c.md)。
+  * [將裝置到雲端訊息傳送至 IoT 中樞](iot-hub-devguide-messages-d2c.md)。
 
   * [從內建端點讀取裝置到雲端訊息](iot-hub-devguide-messages-read-builtin.md)。
 
-  * [使用裝置到雲端訊息的自訂端點和路由規則](iot-hub-devguide-messages-read-custom.md)。
+  * [針對裝置到雲端訊息使用自訂端點和路由規則](iot-hub-devguide-messages-read-custom.md)。
 
   * [從 IoT 中樞傳送雲端到裝置訊息](iot-hub-devguide-messages-c2d.md)。
 
-  * [建立和讀取 IoT 中樞訊息](iot-hub-devguide-messages-construct.md)。
+  * [建立及讀取 IoT 中樞訊息](iot-hub-devguide-messages-construct.md)。
 
 * [從裝置上傳檔案](iot-hub-devguide-file-upload.md)說明如何從裝置上傳檔案。 本文也包含上傳程序可傳送之通知等主題的相關資訊。
 
@@ -56,7 +56,7 @@ Azure IoT 中樞可提供您︰
 
 * [控制 IoT 中樞的存取權](iot-hub-devguide-security.md)說明用來將存取權授與適用於裝置和雲端元件之 IoT 中樞功能的安全性模型。 本文包含使用權杖和 X.509 憑證的相關資訊，以及您可授與之權限的詳細資料。
 
-* [使用裝置對應項來同步狀態和設定](iot-hub-devguide-device-twins.md)說明「裝置對應項」** 概念。 本文也描述裝置 twins 公開的功能，例如將裝置與裝置對應項同步處理。 本文包含裝置對應項中儲存之資料的相關資訊。
+* [使用裝置對應項來同步狀態和設定](iot-hub-devguide-device-twins.md)說明「裝置對應項」** 概念。 本文也說明裝置 twins 公開的功能，例如將裝置與其裝置對應項同步處理。 本文包含裝置對應項中儲存之資料的相關資訊。
 
 * [在裝置上叫用直接方法](iot-hub-devguide-direct-methods.md)說明直接方法的生命週期。 本文說明如何從後端應用程式在裝置上叫用方法，以及在裝置上處理直接方法。
 

@@ -5,14 +5,14 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 2abfa29671bd804ee75194ef621fe07f06c015e9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67174032"
 ---
 #### <a name="to-create-a-volume"></a>建立磁碟區
-1. 從 [裝置]**** 刀鋒視窗的表格式裝置清單中，選取您的裝置。 按一下 [+ 新增磁碟區]****。
+1. 從 [裝置]**** 刀鋒視窗的表格式裝置清單中，選取您的裝置。 按一下 [+ 新增磁碟區]  。
 
     ![新增磁碟區](./media/storsimple-8000-create-volume-u2/step5createvol1.png)
 
@@ -43,7 +43,7 @@ ms.locfileid: "67174032"
       1. 在 [已連線的主機]**** 刀鋒視窗中，選擇現有的 ACR，或執行下列步驟來新增 ACR︰
 
          1. 提供 ACR 的 [名稱]****。
-         2. 在 [iSCSI 啟動器名稱]**** 下，提供 Windows 主機的 iSCSI 完整名稱 (IQN)。 如果您沒有 IQN，請移至[取得 Windows Server 主機的 iqn](#get-the-iqn-of-a-windows-server-host)。
+         2. 在 [iSCSI 啟動器名稱]**** 下，提供 Windows 主機的 iSCSI 完整名稱 (IQN)。 如果您沒有 IQN，請移至 [取得 Windows Server 主機的 iqn](#get-the-iqn-of-a-windows-server-host)。
 
       1. 按一下 [建立]。 使用指定的設定來建立磁碟區。
 
