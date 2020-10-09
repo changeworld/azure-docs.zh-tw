@@ -1,6 +1,6 @@
 ---
 title: 遠端監視解決方案加速器概觀 - Azure | Microsoft Docs
-description: 本文概要說明遠端監視解決方案的一些重要元素，讓您瞭解它的運作方式。
+description: 本文概述遠端監視解決方案的一些重要元素，讓您瞭解它的運作方式。
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 03/08/2019
 ms.author: dobett
 ms.openlocfilehash: f501eb55f72811063ddf1d8e02a0ce2137d598f3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80546304"
 ---
 # <a name="remote-monitoring-solution-accelerator-overview"></a>遠端監視解決方案加速器概觀
@@ -32,7 +32,7 @@ GitHub 提供遠端監視解決方案加速器程式碼：
 
 ## <a name="logical-architecture"></a>邏輯架構
 
-下圖概述[IoT 架構](../iot-fundamentals/iot-introduction.md)上重迭的遠端監視解決方案加速器的邏輯元件：
+下圖概述在 [IoT 架構](../iot-fundamentals/iot-introduction.md)上重迭的遠端監視解決方案加速器的邏輯元件：
 
 ![邏輯架構](./media/iot-accelerators-remote-monitoring-sample-walkthrough/remote-monitoring-architecture.png)
 
@@ -47,7 +47,7 @@ GitHub 提供遠端監視解決方案加速器程式碼：
 
 解決方案在邏輯架構的裝置連線部分中包含下列元件：
 
-### <a name="real-devices"></a>真實裝置
+### <a name="real-devices"></a>實際裝置
 
 您可以將真實裝置連線到解決方案。 您可以使用 Azure IoT 裝置 SDK 來實作模擬裝置的行為。
 
@@ -167,4 +167,4 @@ ASA 作業從連線裝置將遙測資料傳送到 Time Series Insights 進行儲
 詳細的方案架構圖表：
 * [遠端監視架構的解決方案加速器](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Architecture) \(英文\)。
 
-如需遠端監視解決方案加速器的詳細概念資訊，請參閱[自訂解決方案加速器](../iot-accelerators/iot-accelerators-remote-monitoring-customize.md)。
+如需有關遠端監視解決方案加速器的詳細概念資訊，請參閱 [自訂解決方案加速器](../iot-accelerators/iot-accelerators-remote-monitoring-customize.md)。

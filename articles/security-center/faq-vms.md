@@ -1,5 +1,5 @@
 ---
-title: Azure 資訊安全中心常見問題-關於虛擬機器的問題
+title: Azure 資訊安全中心常見問題-虛擬機器的相關問題
 description: Azure 資訊安全中心中虛擬機器的常見問題，這項產品可協助您預防、偵測及回應威脅
 services: security-center
 documentationcenter: na
@@ -14,13 +14,13 @@ ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
 ms.openlocfilehash: 0b7817539a26b7ebfa24efd086edf8b0ef82eae3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80436016"
 ---
-# <a name="faq---questions-about-virtual-machines"></a>常見問題-關於虛擬機器的問題
+# <a name="faq---questions-about-virtual-machines"></a>常見問題-虛擬機器的相關問題
 
 
 ## <a name="what-types-of-virtual-machines-are-supported"></a>支援哪些類型的虛擬機器？
@@ -42,7 +42,7 @@ Azure 資訊安全中心能辨識透過 Azure 擴充功能安裝的反惡意程�
 
 ## <a name="how-often-does-security-center-scan-for-operating-system-vulnerabilities-system-updates-and-endpoint-protection-issues"></a>資訊安全中心多久掃描作業系統弱點、系統更新和端點保護問題一次？
 
-以下是資訊安全中心掃描弱點、更新和問題的延遲時間：
+以下是安全性中心掃描弱點、更新和問題的延遲時間：
 
 - 作業系統安全性設定：在 48 小時內更新資料
 - 系統更新：在 24 小時內更新資料

@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: bba459be4408f4a4bc438bb33b0570a91e84f2cd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75563355"
 ---
 # <a name="defragmentation-of-metrics-and-load-in-service-fabric"></a>度量的重組和 Service Fabric 中的負載
@@ -89,7 +89,7 @@ ClusterManifest.xml：
 
 
 ## <a name="next-steps"></a>後續步驟
-- 叢集資源管理員有許多描述叢集的選項。 若要深入瞭解它們，請參閱本文，以瞭解如何[描述 Service Fabric](service-fabric-cluster-resource-manager-cluster-description.md)叢集
-- 度量是 Service Fabric 叢集資源管理員管理叢集中的耗用量和容量的方式。 若要深入瞭解計量和其設定方式，請參閱[這篇文章](service-fabric-cluster-resource-manager-metrics.md)
+- 叢集資源管理員有許多描述叢集的選項。 若要深入瞭解這些相關資訊，請參閱本文，以瞭解如何[描述 Service Fabric](service-fabric-cluster-resource-manager-cluster-description.md)叢集
+- 度量是 Service Fabric 叢集資源管理員管理叢集中的耗用量和容量的方式。 若要深入瞭解計量及其設定方式，請參閱 [這篇文章](service-fabric-cluster-resource-manager-metrics.md)
 
 [Image1]:./media/service-fabric-cluster-resource-manager-defragmentation-metrics/balancing-defrag-compared.png

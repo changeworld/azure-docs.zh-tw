@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 1/29/2019
 ms.author: terrylan
 ms.openlocfilehash: 83548063a796401792bd19e7ec27be36a0efa4e4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80549196"
 ---
 # <a name="security-services-and-technologies-available-on-azure"></a>Azure 可用的安全性服務與技術
@@ -48,7 +48,7 @@ ms.locfileid: "80549196"
 |[Azure 用戶端加密](/azure/storage/common/storage-client-side-encryption)| 用戶端加密解決方案，可在上傳至 Azure 儲存體之前，將用戶端應用程式內的資料加密，也可在下載時將資料解密。 |
 | [Azure 儲存體共用存取簽章](/azure/storage/common/storage-dotnet-shared-access-signature-part-1)|共用存取簽章可提供您儲存體帳戶中資源的委派存取。  |
 |[Azure 儲存體帳戶金鑰](/azure/storage/common/storage-create-storage-account)| Azure 儲存體的存取控制方法，用於在存取儲存體帳戶時進行驗證。 |
-|[具有 SMB 3.0 加密的 Azure 檔案共用](/azure/storage/files/storage-files-introduction)|網路安全性技術，可啟用伺服器訊息區塊 (SMB) 檔案共用通訊協定的網路自動加密功能。 |
+|[使用 SMB 3.0 加密的 Azure 檔案共用](/azure/storage/files/storage-files-introduction)|網路安全性技術，可啟用伺服器訊息區塊 (SMB) 檔案共用通訊協定的網路自動加密功能。 |
 |[Azure 儲存體分析](/rest/api/storageservices/Storage-Analytics)| 記錄和度量產生技術，適用於儲存體帳戶中的資料。 |
 
 <!------>
@@ -61,7 +61,7 @@ ms.locfileid: "80549196"
 | [Azure&nbsp;SQL&nbsp;連線加密](/azure/sql-database/sql-database-control-access)|為了提供安全性，SQL Database 會透過以下機制來控制存取：依 IP 位址限制連線的防火牆規則、要求使用者證明其身分識別的驗證機制，以及將使用者限制在特定動作和資料的授權機制。 |
 | [Azure SQL 一律加密](/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=sql-server-2017)|可保護 Azure SQL Database 或 SQL Server 資料庫中儲存的敏感性資料，像是信用卡號碼或身分證號碼 (例如美國的社會安全號碼)。  |
 | [Azure&nbsp;SQL&nbsp;透明資料加密](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql?view=azuresqldb-current)| 可將整個資料庫的儲存體加密的資料庫安全性功能。 |
-| [Azure SQL Database 稽核](/azure/sql-database/sql-database-auditing)|資料庫稽核功能，可追蹤資料庫事件，並將它們寫入至您 Azure 儲存體帳戶中的稽核記錄。  |
+| [Azure SQL Database 的審核](/azure/sql-database/sql-database-auditing)|資料庫稽核功能，可追蹤資料庫事件，並將它們寫入至您 Azure 儲存體帳戶中的稽核記錄。  |
 
 
 ## <a name="identity-and-access-management"></a>身分識別和存取管理
@@ -79,17 +79,17 @@ ms.locfileid: "80549196"
 | [Azure &nbsp; 備份](/azure/backup/backup-introduction-to-azure-backup)| 以 Azure 為基礎的服務，用來備份和還原 Azure 雲端中的資料。 |
 | [Azure &nbsp; Site &nbsp; Recovery](/azure/site-recovery/site-recovery-overview)|一項線上服務，可將實體和虛擬機器 (VM) 上執行的工作負載從主要網站複寫到次要位置，以便在失敗後復原服務。 |
 
-## <a name="networking"></a>網路
+## <a name="networking"></a>網路功能
 |服務|描述|
 |------|--------|
 | [網路 &nbsp; 安全 &nbsp; 組](/azure/virtual-network/virtual-networks-nsg)| 以網路為基礎的存取控制功能，其使用 5-tuple 來允許或拒絕決策。  |
 | [Azure VPN 閘道](/azure/vpn-gateway/vpn-gateway-about-vpngateways)| 作為 VPN 端點使用的網路裝置，可允許跨單位存取 Azure 虛擬網路。  |
 | [Azure 應用程式閘道](/azure/application-gateway/application-gateway-introduction)|進階 Web 應用程式負載平衡器，可根據 URL 路由傳送並執行 SSL 卸載。 |
-|[Web 應用程式防火牆](/azure/frontdoor/waf-overview)（WAF）|「應用程式閘道」的一項功能，可集中保護您的 Web 應用程式，防止常見惡意探索和弱點危害|
+|[Web 應用程式防火牆](/azure/frontdoor/waf-overview) (WAF) |「應用程式閘道」的一項功能，可集中保護您的 Web 應用程式，防止常見惡意探索和弱點危害|
 | [Azure Load Balancer](/azure/load-balancer/load-balancer-overview)|TCP/UDP 應用程式網路負載平衡器。 |
 | [Azure ExpressRoute](/azure/expressroute/expressroute-introduction)| 內部部署網路與 Azure 虛擬網路之間的專用 WAN 連結。 |
 | [Azure 流量管理員](/azure/traffic-manager/traffic-manager-overview)| 全域 DNS 負載平衡器。|
 | [Azure 應用程式 Proxy](/azure/active-directory/active-directory-application-proxy-get-started)| 驗證前端，用於保護內部裝載 Web 應用程式的遠端存取。 |
 |[Azure 防火牆](/azure/firewall/overview)|一個受控的雲端式網路安全性服務，可保護您的「Azure 虛擬網路」資源。|
-|[Azure DDoS 保護](/azure/virtual-network/ddos-protection-overview)|與應用程式設計最佳做法結合，可抵禦 DDoS 攻擊。|
+|[Azure DDoS 保護](/azure/virtual-network/ddos-protection-overview) \(部分機器翻譯\)|與應用程式設計最佳做法結合，可抵禦 DDoS 攻擊。|
 |[虛擬網路服務端點](/azure/virtual-network/virtual-network-service-endpoints-overview)|可透過直接連線，將您的虛擬網路私人位址空間和您的 VNet 身分識別延伸至 Azure 服務。|

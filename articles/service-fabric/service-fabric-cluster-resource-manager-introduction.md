@@ -1,15 +1,15 @@
 ---
-title: Service Fabric 叢集簡介 Resource Manager
-description: 深入瞭解 Service Fabric 叢集 Resource Manager，這是一種管理應用程式服務協調流程的方式。
+title: Service Fabric 叢集資源管理員簡介
+description: 瞭解 Service Fabric 叢集資源管理員，這是管理應用程式服務協調流程的方式。
 author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: da9205f5d95eaf1b4dc655ee727ab8a4fe90893d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75563321"
 ---
 # <a name="introducing-the-service-fabric-cluster-resource-manager"></a>Service Fabric 叢集資源管理員簡介
@@ -45,7 +45,7 @@ Orchestrator (不是人類) 是當機器失敗或工作負載基於某些意外�
 因為叢集資源管理員負責移動服務，相較於您在網路負載平衡器中發現的功能，它包含一組不同的功能。 這是因為網路負載平衡器將網路流量傳送到服務已在其中的位置，即使該位置對於執行服務本身來說並不理想。 Service Fabric 叢集資源管理員採用完全不同的策略，以確保有效率地利用叢集中的資源。
 
 ## <a name="next-steps"></a>後續步驟
-- 如需叢集 Resource Manager 中架構和資訊流程的相關資訊，請參閱[這篇文章](service-fabric-cluster-resource-manager-architecture.md)
+- 如需叢集資源管理員內的架構和資訊流程的相關資訊，請參閱 [這篇文章](service-fabric-cluster-resource-manager-architecture.md)
 - 叢集資源管理員有許多描述叢集的選項。 若要深入了解計量，請參閱關於[描述 Service Fabric 叢集](service-fabric-cluster-resource-manager-cluster-description.md)一文
 - 如需服務設定的詳細資訊，請[深入了解設定服務](service-fabric-cluster-resource-manager-configure-services.md)
 - 度量是 Service Fabric 叢集資源管理員管理叢集中的耗用量和容量的方式。 若要深入了解計量及其設定方式，請查看[這篇文章](service-fabric-cluster-resource-manager-metrics.md)

@@ -1,15 +1,15 @@
 ---
 title: Resource Manager 架構
-description: 有關 Azure Service Fabric 叢集 Resource Manager 服務的總覽和架構資訊。
+description: Azure Service Fabric 叢集資源管理員服務的總覽和架構資訊。
 author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 94ed906533d108081d620e9b183ecfee249d85ca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75551687"
 ---
 # <a name="cluster-resource-manager-architecture-overview"></a>叢集資源管理員架構概觀
@@ -56,7 +56,7 @@ Service Fabric 叢集資源管理員是在叢集中執行的中央服務。 它�
 </center>
 
 ## <a name="next-steps"></a>後續步驟
-- 叢集資源管理員有許多描述叢集的選項。 若要深入瞭解它們，請參閱本文，以瞭解如何[描述 Service Fabric](./service-fabric-cluster-resource-manager-cluster-description.md)叢集
+- 叢集資源管理員有許多描述叢集的選項。 若要深入瞭解這些相關資訊，請參閱本文，以瞭解如何[描述 Service Fabric](./service-fabric-cluster-resource-manager-cluster-description.md)叢集
 - 叢集資源管理員的主要責任是重新平衡叢集，以及強制執行放置規則。 如需有關設定這些行為的詳細資訊，請參閱[平衡 Service Fabric 叢集](./service-fabric-cluster-resource-manager-balancing.md)
 
 [Image1]:./media/service-fabric-cluster-resource-manager-architecture/Service-Fabric-Resource-Manager-Architecture-Activity-1.png

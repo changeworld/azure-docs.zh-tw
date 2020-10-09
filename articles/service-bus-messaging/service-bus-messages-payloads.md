@@ -4,10 +4,10 @@ description: 本文提供 Azure 服務匯流排訊息、承載、訊息路由和
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: d426489776dff652cbf72d640f3e74b1bc8e30d4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85341674"
 ---
 # <a name="messages-payloads-and-serialization"></a>訊息、承載和序列化
@@ -44,7 +44,7 @@ Microsoft Azure 服務匯流排的功能就是處理訊息。 訊息會以索引
 | [SessionId](/dotnet/api/microsoft.azure.servicebus.message.sessionid) (group-id)                  | 對於工作階段感知的實體，這個應用程式定義的值會指定訊息的工作階段關係。 具有相同工作階段識別碼的訊息會受限於摘要鎖定，並且能夠確實地依序處理和分離信號。 對於不是工作階段感知的實體，會忽略此值。                                                                                                                                     |
 | [大小](/dotnet/api/microsoft.azure.servicebus.message.size)                                  | 將訊息在訊息代理程式記錄中儲存的大小反映為位元組計數，因為它會計入儲存體配額。 這個屬性是唯讀的。                                                                                                                                                                                                                                                                                                       |
 | [State](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.state)                                 | 指示記錄中訊息的狀態。 這個屬性只有在訊息瀏覽 (查看) 期間才有意義。它可判斷訊息是否為「作用中」且在到達佇列頂端時可供擷取、訊息是否延遲，或者正等待納入排程。 這個屬性是唯讀的。                                                                                                                                           |
-| [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive)                            | 這個值是訊息到期之前的相對持續期間，從訊息代理程式接受並儲存訊息的瞬間開始，正如 **EnqueueTimeUtc** 所擷取的時間。 未明確設定時，所使用的值便是對應佇列或主題的 **DefaultTimeToLive**。 訊息層級的 **TimeToLive** 值不能比實體的 **DefaultTimeToLive** 設定還長。 如果較長，則會以無訊息方式加以調整。 |
+| [timeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive)                            | 這個值是訊息到期之前的相對持續期間，從訊息代理程式接受並儲存訊息的瞬間開始，正如 **EnqueueTimeUtc** 所擷取的時間。 未明確設定時，所使用的值便是對應佇列或主題的 **DefaultTimeToLive**。 訊息層級的 **TimeToLive** 值不能比實體的 **DefaultTimeToLive** 設定還長。 如果較長，則會以無訊息方式加以調整。 |
 | [To](/dotnet/api/microsoft.azure.servicebus.message.to) (to)                               | 這個屬性會保留以便日後供路由傳送案例使用，訊息代理程式目前會忽略這個屬性。 應用程式可在規則驅動的自動轉送鏈結案例中使用此值，以指出訊息預期的邏輯目的地。                                                                                                                                                                                   |
 | [ViaPartitionKey](/dotnet/api/microsoft.azure.servicebus.message.viapartitionkey)                       | 如果訊息會透過交易範圍內的傳輸佇列來傳送，這個值就會選取傳輸佇列資料分割。                                                                                                                                                                                                                                                                                                                 |
 

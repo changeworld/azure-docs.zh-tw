@@ -1,6 +1,6 @@
 ---
 title: 適用于 Windows 的 Azure 監視器相依性虛擬機器擴充功能
-description: 使用虛擬機器擴充功能，在 Windows 虛擬機器上部署 Azure 監視器 Dependency agent。
+description: 使用虛擬機器擴充功能在 Windows 虛擬機器上部署 Azure 監視器 Dependency agent。
 services: virtual-machines-windows
 documentationcenter: ''
 author: mgoedtel
@@ -15,23 +15,23 @@ ms.workload: infrastructure-services
 ms.date: 03/29/2019
 ms.author: magoedte
 ms.openlocfilehash: 27d43af2d5860d287d8b5914379747ae528db34b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79250669"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91871859"
 ---
 # <a name="azure-monitor-dependency-virtual-machine-extension-for-windows"></a>適用于 Windows 的 Azure 監視器相依性虛擬機器擴充功能
 
-適用於 VM 的 Azure 監視器對應功能會從 Microsoft Dependency Agent 取得其資料。 適用于 Windows 的 Azure VM 相依性代理程式虛擬機器擴充功能已由 Microsoft 發佈及支援。 此擴充功能會在 Azure 虛擬機器上安裝相依性代理程式。 本檔詳述適用于 Windows 的 Azure VM 相依性代理程式虛擬機器擴充功能所支援的平臺、設定和部署選項。
+適用於 VM 的 Azure 監視器對應功能會從 Microsoft Dependency Agent 取得其資料。 適用于 Windows 的 Azure VM 相依性代理程式虛擬機器擴充功能已發佈並受到 Microsoft 的支援。 此擴充功能會在 Azure 虛擬機器上安裝相依性代理程式。 本檔詳述適用于 Windows 的 Azure VM 相依性代理程式虛擬機器擴充功能所支援的平臺、設定和部署選項。
 
 ## <a name="operating-system"></a>作業系統
 
-適用于 Windows 的 Azure VM 相依性代理程式擴充功能可以針對適用於 VM 的 Azure 監視器部署一文的[支援的作業系統](../../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems)一節中所列的支援作業系統來執行。
+適用于 Windows 的 Azure VM 相依性代理程式擴充功能可以針對適用於 VM 的 Azure 監視器部署文章中 [支援的作業系統](../../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems) 一節所列的支援作業系統來執行。
 
 ## <a name="extension-schema"></a>擴充功能結構描述
 
-下列 JSON 顯示 Azure Windows VM 上的 Azure VM Dependency agent 擴充功能架構。
+下列 JSON 顯示 Azure Windows VM 上 Azure VM 相依性代理程式擴充功能的架構。
 
 ```json
 {
@@ -127,7 +127,7 @@ ms.locfileid: "79250669"
 
 ## <a name="powershell-deployment"></a>PowerShell 部署
 
-您可以使用命令，將相依性 `Set-AzVMExtension` 代理程式虛擬機器擴充功能部署到現有的虛擬機器。 執行命令之前，必須先將公用和私用設定儲存在 PowerShell 雜湊表中。
+您可以使用命令，將相依性 `Set-AzVMExtension` 代理程式虛擬機器擴充功能部署到現有的虛擬機器。 在您執行命令之前，必須先將公用和私用設定儲存在 PowerShell 雜湊表中。
 
 ```powershell
 
@@ -144,7 +144,7 @@ Set-AzVMExtension -ExtensionName "Microsoft.Azure.Monitoring.DependencyAgent" `
 
 ### <a name="troubleshoot"></a>疑難排解
 
-您可以從 Azure 入口網站和使用 Azure PowerShell 模組，抓取有關擴充功能部署狀態的資料。 若要查看指定 VM 的擴充功能部署狀態，請使用 Azure PowerShell 模組執行下列命令：
+您可以從 Azure 入口網站和使用 Azure PowerShell 模組，來抓取延伸模組部署狀態的相關資料。 若要查看指定 VM 的擴充功能部署狀態，請使用 Azure PowerShell 模組來執行下列命令：
 
 ```powershell
 Get-AzVMExtension -ResourceGroupName myResourceGroup -VMName myVM -Name myExtensionName

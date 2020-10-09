@@ -16,10 +16,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 73d4239dd34f2a64aa7b3edbf88bad4348e01291
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85356197"
 ---
 # <a name="troubleshoot-object-synchronization-with-azure-ad-connect-sync"></a>針對使用 Azure AD Connect 同步所執行的物件同步處理進行疑難排解
@@ -75,7 +75,7 @@ ms.locfileid: "85356197"
 
 ### <a name="domain-is-configured-to-sync-but-is-missing-run-profilesrun-steps"></a>網域設定為要同步處理，但遺漏執行設定檔/執行步驟
 物件會因為網域遺漏執行設定檔/執行步驟而超出範圍。 在下列範例中，由於物件所屬的網域遺漏完整匯入執行設定檔的執行步驟，所以物件會超出同步範圍。
-![缺少執行設定檔](media/tshoot-connect-objectsync/objsynch6.png)
+![遺失的執行設定檔](media/tshoot-connect-objectsync/objsynch6.png)
 
 ## <a name="object-is-filtered-due-to-ou-filtering"></a>因為 OU 篩選而篩選物件
 由於 OU 篩選設定所致，此物件會超出同步範圍。 在下列範例中，物件屬於 OU=NoSync,DC=bvtadwbackdc,DC=com。  這個 OU 不會包含在同步範圍內。</br>

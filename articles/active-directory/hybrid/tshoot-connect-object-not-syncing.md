@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 77895fd81bd37e304d422aea64da0298fc1673ff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85356469"
 ---
 # <a name="troubleshoot-an-object-that-is-not-synchronizing-with-azure-active-directory"></a>針對未與 Azure Active Directory 同步的物件進行疑難排解
@@ -36,7 +36,7 @@ ms.locfileid: "85356469"
 
   ![Azure AD Connect 同步處理程序的圖表](./media/tshoot-connect-object-not-syncing/syncingprocess.png)
 
-### <a name="terminology"></a>**術語**
+### <a name="terminology"></a>**詞彙**
 
 * **CS：** 連接器空間，資料庫中的資料表
 * **MV：** 中繼資料，資料庫中的資料表
@@ -44,15 +44,15 @@ ms.locfileid: "85356469"
 ### <a name="synchronization-steps"></a>**同步處理步驟**
 同步處理程序包含下列步驟：
 
-1. **從 AD 匯入：** Active Directory 物件會帶入 Active Directory CS。
+1. **從 AD 匯入：** Active Directory 物件會進入 Active Directory CS。
 
-2. **從 Azure AD 匯入：** Azure AD 物件會帶入 Azure AD CS。
+2. **從 Azure AD 匯入：** Azure AD 物件會進入 Azure AD CS。
 
-3. **同步處理：** 輸入同步處理規則和輸出同步處理規則會依優先順序編號的順序（從低到高）執行。 若要檢視同步處理規則，請從桌面應用程式移至 [同步處理規則編輯器]。 輸入同步處理規則會將資料從 CS 帶入 MV。 輸出同步處理規則會將資料從 MV 帶入 CS。
+3. **同步處理：** 輸入同步處理規則和輸出同步處理規則會依優先順序數位的順序（從低到高）執行。 若要檢視同步處理規則，請從桌面應用程式移至 [同步處理規則編輯器]。 輸入同步處理規則會將資料從 CS 帶入 MV。 輸出同步處理規則會將資料從 MV 帶入 CS。
 
-4. **匯出至 AD：** 同步處理之後，物件會從 Active Directory CS 匯出到 Active Directory。
+4. **匯出至 AD：** 同步處理之後，物件會從 Active Directory CS 匯出至 Active Directory。
 
-5. **匯出至 Azure AD：** 同步處理之後，物件會從 Azure AD CS 匯出到 Azure AD。
+5. **匯出至 Azure AD：** 同步處理之後，物件會從 Azure AD CS 匯出至 Azure AD。
 
 ## <a name="troubleshooting"></a>疑難排解
 
@@ -64,7 +64,7 @@ ms.locfileid: "85356469"
 
 請先啟動 [Synchronization Service Manager](how-to-connect-sync-service-manager-ui.md)，再開始進行這些步驟。
 
-## <a name="operations"></a>Operations
+## <a name="operations"></a>作業
 Synchronization Service Manager 中的 [作業]**** 索引標籤是您應該開始進行疑難排解的地方。 此索引標籤顯示最新作業的結果。 
 
 ![Synchronization Service Manager 的螢幕擷取畫面，其中顯示選取的 [作業] 索引標籤](./media/tshoot-connect-object-not-syncing/operations.png)  
@@ -87,7 +87,7 @@ Synchronization Service Manager 中的 [作業]**** 索引標籤是您應該開�
 當您遇到錯誤時，Synchronization Service Manager 會顯示發生錯誤的物件，而錯誤本身會顯示為可提供更多資訊的連結。
 
 ![Synchronization Service Manager 錯誤的螢幕擷取畫面](./media/tshoot-connect-object-not-syncing/errorsync.png)  
-首先選取錯誤字串。 （在上圖中，錯誤字串為 [**同步-規則-錯誤**-函式-已觸發]）。您會先看到物件的總覽。 若要查看實際錯誤，請選取 [堆疊追蹤]****。 此追蹤會提供錯誤的偵錯層級資訊。
+首先選取錯誤字串。  (在上圖中，錯誤字串是 **同步處理規則-錯誤**函式觸發的。 ) 您會先看到物件的總覽。 若要查看實際錯誤，請選取 [堆疊追蹤]****。 此追蹤會提供錯誤的偵錯層級資訊。
 
 在 [呼叫堆疊資訊]**** 方塊上按一下滑鼠右鍵、按一下 [全選]****，然後選取 [複製]****。 接著複製堆疊，並在您喜好的編輯器 (例如 [記事本]) 中查看此錯誤。
 
@@ -110,7 +110,7 @@ Synchronization Service Manager 中的 [作業]**** 索引標籤是您應該開�
  
 ![連接器空間搜尋的螢幕擷取畫面](./media/tshoot-connect-object-not-syncing/cssearch.png)  
 
-如果您找不到所要尋找的物件，它可能已被[網域型篩選](how-to-connect-sync-configure-filtering.md#domain-based-filtering)或 [OU 型篩選](how-to-connect-sync-configure-filtering.md#organizational-unitbased-filtering)所篩選掉。 若要確認篩選已如預期般設定，請閱讀[Azure AD Connect 同步：設定篩選](how-to-connect-sync-configure-filtering.md)。
+如果您找不到所要尋找的物件，它可能已被[網域型篩選](how-to-connect-sync-configure-filtering.md#domain-based-filtering)或 [OU 型篩選](how-to-connect-sync-configure-filtering.md#organizational-unitbased-filtering)所篩選掉。 若要確認篩選是否已如預期般設定，請參閱 [Azure AD Connect 同步：設定篩選](how-to-connect-sync-configure-filtering.md)。
 
 您可選取 Azure AD 連接器以執行另一個實用的搜尋。 在 [範圍]**** 方塊中，選取 [擱置匯入]****，然後選取 [新增]**** 核取方塊。 此搜尋會提供您 Azure AD 中無法與內部部署物件建立關聯的所有已同步處理物件。  
 
@@ -143,7 +143,7 @@ Synchronization Service Manager 中的 [作業]**** 索引標籤是您應該開�
 從 [歷程]**** 索引標籤，您可以選取 [**Metaverse 物件屬性**](#mv-attributes)以移至 Metaverse。
 
 ### <a name="preview"></a>預覽
-[連接器空間物件屬性]**** 視窗的左下角有 [預覽]**** 按鈕。 選取此按鈕可開啟 [預覽]**** 頁面，您可以在其中同步單一物件。 如果您正在針對某些自訂的同步處理規則進行疑難排解，而想要查看變更對單一物件的影響，此頁面很有用。 您可以選取 [**完整同步**處理] 或 [**差異同步**處理]。您也可以選取 [**產生預覽**]，這只會在記憶體中保留變更。 或選取 [認可預覽]****，這會更新 Mataverse 並暫存對目標連接器空間所做的一切變更。  
+[連接器空間物件屬性]**** 視窗的左下角有 [預覽]**** 按鈕。 選取此按鈕可開啟 [預覽]**** 頁面，您可以在其中同步單一物件。 如果您正在針對某些自訂的同步處理規則進行疑難排解，而想要查看變更對單一物件的影響，此頁面很有用。 您可以選取 **完整同步** 處理或 **差異同步**處理。您也可以選取 [ **產生預覽**]，這只會在記憶體中保留變更。 或選取 [認可預覽]****，這會更新 Mataverse 並暫存對目標連接器空間所做的一切變更。  
 
 ![[預覽] 頁面的螢幕擷取畫面，其中已選取 [開始預覽]](./media/tshoot-connect-object-not-syncing/preview.png)  
 
@@ -151,7 +151,7 @@ Synchronization Service Manager 中的 [作業]**** 索引標籤是您應該開�
 
 ![[預覽] 頁面的螢幕擷取畫面，其中顯示匯入屬性流程](./media/tshoot-connect-object-not-syncing/previewresult.png)
 
-### <a name="log"></a>記錄檔
+### <a name="log"></a>Log
 在 [預覽]**** 按鈕旁邊，選取 [記錄]**** 按鈕來開啟 [記錄]**** 頁面。 您可以在此查看密碼同步狀態和歷程記錄。 如需詳細資訊，請參閱[使用 Azure AD Connect 同步針對密碼雜湊同步處理進行疑難排解](tshoot-connect-password-hash-synchronization.md)。
 
 ## <a name="metaverse-object-properties"></a>Metaverse 物件屬性
@@ -195,7 +195,7 @@ Synchronization Service Manager 中的 [作業]**** 索引標籤是您應該開�
 - **sourceAnchor** 屬性是否存在？ 如果不存在，您是否擁有帳戶資源樹系拓撲？ 如果物件被識別為已連結的信箱 (**msExchRecipientTypeDetails** 屬性的值為 **2**)，則會由具有已啟用 Active Directory 帳戶的樹系提供 **sourceAnchor**。 請確定已正確匯入並同步處理主要帳戶。 主要帳戶必須列在物件的[連接器](#mv-connectors)當中。
 
 ### <a name="mv-connectors"></a>MV 連接器
-[**連接器**] 索引標籤會顯示所有具有物件標記法的連接器空間。 
+[ **連接器** ] 索引標籤會顯示所有具有物件標記法的連接器空間。 
  
 ![[Metaverse 物件屬性] 視窗的螢幕擷取畫面，其中已選取 [連接器] 索引標籤](./media/tshoot-connect-object-not-syncing/mvconnectors.png)  
 

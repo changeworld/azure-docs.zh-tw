@@ -1,5 +1,5 @@
 ---
-title: 文字對齊-翻譯工具
+title: 文字對齊-Translator
 titleSuffix: Azure Cognitive Services
 description: 若要收到對齊方式資訊，請使用 Translate 方法並包含選擇性的 includeAlignment 參數。
 services: cognitive-services
@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: swmachan
 ms.openlocfilehash: 7288087bfe7d2a7bb03ce8a99831ad8b7f5b549f
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83995610"
 ---
 # <a name="how-to-receive-word-alignment-information"></a>如何接收單字對齊方式資訊

@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 04/01/2020
 ms.openlocfilehash: 265179909c8ae4a6fa630b835bc9993f042d6460
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80585703"
 ---
 # <a name="azure-monitor-log-query-language-differences"></a>Azure 監視器記錄查詢語言差異
@@ -24,7 +24,7 @@ ms.locfileid: "80585703"
 
 ### <a name="statements-not-supported-in-azure-monitor"></a>Azure 監視器中不支援的陳述式
 
-* [鋸齒](/azure/kusto/query/aliasstatement)
+* [別名](/azure/kusto/query/aliasstatement)
 * [查詢參數](/azure/kusto/query/queryparametersstatement)
 
 ### <a name="functions-not-supported-in-azure-monitor"></a>Azure 監視器中不支援的函式
@@ -33,7 +33,7 @@ ms.locfileid: "80585703"
 * [cursor_after()](/azure/kusto/query/cursorafterfunction)
 * [cursor_before_or_at()](/azure/kusto/query/cursorbeforeoratfunction)
 * [cursor_current()、current_cursor()](/azure/kusto/query/cursorcurrent)
-* [資料庫（）](/azure/kusto/query/databasefunction)
+* [database()](/azure/kusto/query/databasefunction)
 * [current_principal()](/azure/kusto/query/current-principalfunction)
 * [extent_id()](/azure/kusto/query/extentidfunction)
 * [extent_tags()](/azure/kusto/query/extenttagsfunction)
@@ -51,8 +51,8 @@ ms.locfileid: "80585703"
 ## <a name="additional-operators-in-azure-monitor"></a>Azure 監視器中的其他運算子
 下列運算子支援特定 Azure 監視器功能，且無法在 Azure 監視器以外的地方使用。
 
-* [應用程式（）](app-expression.md)
-* [workspace （）](workspace-expression.md)
+* [應用程式 ( # B1 ](app-expression.md)
+* [工作區 ( # B1 ](workspace-expression.md)
 
 ## <a name="next-steps"></a>後續步驟
 

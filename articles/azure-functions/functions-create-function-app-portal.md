@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 08/29/2019
 ms.custom: mvc
 ms.openlocfilehash: 001b4e4f0ea7fbacd232b2a87abfe353f34919bd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80985009"
 ---
 # <a name="create-a-function-app-from-the-azure-portal"></a>從 Azure 入口網站建立函數應用程式
@@ -23,9 +23,9 @@ ms.locfileid: "80985009"
 
 ## <a name="service-plans"></a>服務方案
 
-Azure Functions 有三種不同的服務方案：取用方案、Premium 方案和專用（App Service）方案。 您必須在函式應用程式建立時選擇您的服務方案，之後就無法再變更。 如需詳細資訊，請參閱[選擇 Azure Functions 主控方案](functions-scale.md)。
+Azure Functions 有三個不同的服務方案：取用方案、高階方案和專用 (App Service) 方案。 建立函數應用程式時，您必須選擇您的服務方案，而且之後無法變更。 如需詳細資訊，請參閱[選擇 Azure Functions 主控方案](functions-scale.md)。
 
-如果您打算在專用（App Service）方案上執行 JavaScript 函式，您應該選擇較少核心的方案。 如需詳細資訊，請參閱 [JavaScript 函式參考資料](functions-reference-node.md#choose-single-vcpu-app-service-plans)。
+如果您打算在專用 (App Service) 方案上執行 JavaScript 函式，您應該選擇較少核心的方案。 如需詳細資訊，請參閱 [JavaScript 函式參考資料](functions-reference-node.md#choose-single-vcpu-app-service-plans)。
 
 <a name="storage-account-requirements"></a>
 

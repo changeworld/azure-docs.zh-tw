@@ -1,13 +1,13 @@
 ---
 title: Azure 服務匯流排中的 SQLRuleAction 語法參考
-description: 本文提供 SQLRuleAction 語法的參考。 這些動作是以以 SQL 語言為基礎的語法所撰寫，會針對代理訊息來執行。
+description: 本文提供 SQLRuleAction 語法的參考。 這些動作是以以 SQL 語言為基礎的語法撰寫，以針對代理訊息執行。
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 61fa6e046b4d4a0ba91bf8608c846755026d07ec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85341585"
 ---
 # <a name="sqlruleaction-syntax-reference-for-azure-service-bus"></a>Azure 服務匯流排的 SQLRuleAction 語法參考

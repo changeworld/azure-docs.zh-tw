@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 04/02/2019
 ms.author: wesmc
 ms.openlocfilehash: 498a7ee28b9404d0733e4615f4df635a8c904b51
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67173788"
 ---
 ### <a name="cacheskuname"></a>cacheSKUName
@@ -30,7 +30,7 @@ ms.locfileid: "67173788"
     },
 ```
 
-此範本會定義此參數允許的值（基本、標準或高階），如果未指定任何值，則會指派預設值（基本）。 「基本」提供單一節點，有多種大小可用，最大為 53 GB。 「標準」提供雙節點「主要/複本」，有多種大小可用，最大為 53 GB，還有高達 99.9% 的 SLA。
+此範本會定義此參數允許的值 (Basic、Standard 或 Premium) ，如果未指定任何值，則會將預設值指派 (基本) 。 「基本」提供單一節點，有多種大小可用，最大為 53 GB。 「標準」提供雙節點「主要/複本」，有多種大小可用，最大為 53 GB，還有高達 99.9% 的 SLA。
 
 ### <a name="cacheskufamily"></a>cacheSKUFamily
 
@@ -75,16 +75,16 @@ Sku 系列。
     }
 ```
 
-Premium 值快取容量的定義相同，不同之處在于允許的值是從1到5，而不是從0到6。
+Premium 值快取容量的定義是相同的，但允許的值是從1到5，而不是從0到6執行。
 
-此範本會定義此參數允許的整數值（基本和標準系列為0到6，Premium 系列為1到5）。 如果未指定任何值，範本會為 Basic 和 Standard 指派0的預設值，1代表 Premium。
+此範本會定義此參數允許的整數值 (0 到6（適用于基本和標準系列）;1到5，適用于 Premium 系列) 。 如果未指定任何值，範本會指派預設值0（適用于基本和標準），1代表 Premium。
 
-這些值會對應至下列快取大小：
+這些值會對應到下列快取大小：
 
 | 值 | 基本和標準<br>快取大小 | Premium<br>快取大小 |
 | :---: | :------------------------------: | :-------------------: |
-| 0     | 250 MB （預設值）                 | n/a                   |
-| 1     | 1 GB                             | 6 GB （預設值）        |
+| 0     | 250 MB (預設)                  | n/a                   |
+| 1     | 1 GB                             | 6 GB (預設)         |
 | 2     | 2.5 GB                           | 13 GB                 |
 | 3     | 6 GB                             | 26 GB                 |
 | 4     | 13 GB                            | 53 GB                 |

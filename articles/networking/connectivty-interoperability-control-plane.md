@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
 ms.openlocfilehash: 5e41bc86533815c394077bf5276d930fe958cd19
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80518279"
 ---
 # <a name="interoperability-in-azure--control-plane-analysis"></a>Azure 中的互通性：控制平面分析
@@ -29,7 +29,7 @@ ms.locfileid: "80518279"
 
 ![1][1]
 
-VNet 的 Azure ExpressRoute 閘道 ASN 與 Microsoft Enterprise Edge Router (MSEE) 的 ASN 不同。 ExpressRoute 閘道使用私人 ASN (值為 **65515**)，MSEE 則使用全球公用 ASN (值為 **12076**)。 當您設定 ExpressRoute 對等互連時，因為 MSEE 是對等體，所以您會使用**12076**作為對等 ASN。 在 Azure 端，MSEE 透過 ExpressRoute 閘道建立 eBGP 對等互連。 MSEE 為個別 ExpressRoute 對等互連建立的雙重 eBGP 對等互連於控制平面層級中為公開透明狀態。 因此，當您查看 ExpressRoute 路由表時，您會看到 vnet 的首碼的 ExpressRoute 閘道 ASN。 
+VNet 的 Azure ExpressRoute 閘道 ASN 與 Microsoft Enterprise Edge Router (MSEE) 的 ASN 不同。 ExpressRoute 閘道使用私人 ASN (值為 **65515**)，MSEE 則使用全球公用 ASN (值為 **12076**)。 當您設定 ExpressRoute 對等互連時，因為 MSEE 是對等，所以您會使用 **12076** 作為對等 ASN。 在 Azure 端，MSEE 透過 ExpressRoute 閘道建立 eBGP 對等互連。 MSEE 為個別 ExpressRoute 對等互連建立的雙重 eBGP 對等互連於控制平面層級中為公開透明狀態。 因此，當您查看 ExpressRoute 路由表時，您會看到 vnet 之首碼的 VNet ExpressRoute 閘道 ASN。 
 
 以下顯示 ExpressRoute 路由表範例： 
 
@@ -45,7 +45,7 @@ VNet 的 Azure ExpressRoute 閘道 ASN 與 Microsoft Enterprise Edge Router (MSE
 
 ## <a name="on-premises-location-1-and-the-branch-vnet-perspective-via-a-site-to-site-vpn"></a>透過站對站 VPN 的內部部署位置 1 和分支 VNet 視角
 
-內部部署位置1和分支 VNet 都會透過站對站 VPN 連線連接到中樞 VNet 的 VPN 閘道。 它們會共用相同的拓撲視角，如下圖所示︰
+內部部署位置1和分支 VNet 都會透過站對站 VPN 連線，連線到中樞 VNet 的 VPN 閘道。 它們會共用相同的拓撲視角，如下圖所示︰
 
 ![3][3]
 
@@ -94,9 +94,9 @@ ExpressRoute 作為備援線路組可確保高可用性。 您可以在不同的
 
 
 <!--Image References-->
-[1]: ./media/backend-interoperability/HubView.png "拓撲的中樞和輪輻 VNet 觀點"
-[2]: ./media/backend-interoperability/Loc1ExRView.png "透過 ExpressRoute 1 的位置1和遠端 VNet 拓撲透視圖"
-[3]: ./media/backend-interoperability/Loc1VPNView.png "透過站對站 VPN 的位置1和分支 VNet 拓撲的觀點"
+[1]: ./media/backend-interoperability/HubView.png "拓撲的中樞和輪輻 VNet 透視圖"
+[2]: ./media/backend-interoperability/Loc1ExRView.png "透過 ExpressRoute 1 之拓撲的位置1和遠端 VNet 透視圖"
+[3]: ./media/backend-interoperability/Loc1VPNView.png "透過站對站 VPN 的位置1和分支 VNet 對拓撲的觀點"
 [4]: ./media/backend-interoperability/Loc2View.png "拓撲的位置2觀點"
 [5]: ./media/backend-interoperability/ExR1-RouteTable.png "ExpressRoute 1 路由表"
 

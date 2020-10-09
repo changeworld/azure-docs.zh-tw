@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/13/2017
 ms.author: terrylan
 ms.openlocfilehash: fc5899fe5aca4bbaa9250cf41b240816e2cbedb0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80548596"
 ---
 # <a name="how-to-log-a-security-event-support-ticket"></a>如何記錄安全性事件支援票證
@@ -28,11 +28,11 @@ ms.locfileid: "80548596"
 
     ![事件類型和定義](./media/event-support-ticket/chart.png)
 
-3. 在您選取問題類型和類別之後，請按一下 [**啟動要求**] 按鈕。 提供下列資訊，以協助我們更了解問題。
+3. 在您選取問題類型和類別之後，請按一下 [**開始要求**] 按鈕。 提供下列資訊，以協助我們更了解問題。
 
     i. 問題和/或弱點是什麼？
 
-    ii. 如有弱點，請提供 CVE （mitre.org）或已填寫的 CVSS3 v3 計算機（ https://www.first.org/cvss/calculator/3.0) 。
+    ii. 如果有弱點，請提供 CVE (mitre.org) 或已填寫的 CVSS3 v3 計算機 (https://www.first.org/cvss/calculator/3.0) 。
 
     iii. 有任何解決方式或緩解功能嗎？ 如果有，則請提供補救步驟。
 
@@ -43,7 +43,7 @@ ms.locfileid: "80548596"
     - 如果您需要與我們溝通您的問題，請在所有通信聯繫中包括該確認號碼。
     - 您可以隨時檢視您的問題進度。
 
-5. 接下來會發生什麼狀況？ 根據問題和嚴重性，可能會採取下列步驟：
+5. 接下來會如何？ 根據問題和嚴重性，可能會採取下列步驟：
 
     - 我們將與您溝通我們的評定結果。 我們可能會根據結果，來移除或要求您修改您的供應項目。 在此情況下，我們將與您一起確保會使受影響客戶的中斷情況最小化。
     - 我們將協助您緩解此事件/弱點對於我們共同客戶的影響。

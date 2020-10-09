@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 12/06/2017
 ms.author: mikhegn
 ms.openlocfilehash: a53626b8fd362397ba89df30b099fa3c9ff7b0a2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75609854"
 ---
 # <a name="how-to-specify-the-port-number-of-a-service-using-parameters-in-service-fabric"></a>如何在 Service Fabric 中使用參數指定服務的連接埠號碼
@@ -24,7 +24,7 @@ ms.locfileid: "75609854"
 1. 選擇無狀態的 ASP.NET Core 範本。
 1. 選擇 Web API。
 1. 開啟 ServiceManifest.xml 檔案。
-1. 請注意針對您的服務所指定的端點名稱。 預設值為 `ServiceEndpoint`。
+1. 請注意針對您的服務所指定的端點名稱。 預設為 `ServiceEndpoint`。
 1. 開啟 ApplicationManifest.xml 檔案
 1. 在 `ServiceManifestImport` 元素中，新增新的 `RessourceOverrides` 元素與您的 ServiceManifest.xml 檔案中端點的參考。
 

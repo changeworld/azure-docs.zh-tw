@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 37d4c295fe8a89a8b32364f42e8fb4c5a4caf777
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67174502"
 ---
 #### <a name="to-install-updates-via-the-azure-portal"></a>透過 Azure 入口網站安裝更新
@@ -33,7 +33,7 @@ ms.locfileid: "67174502"
 
     ![更新裝置](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate6m.png)
 
-5. 在 [新的更新]**** 刀鋒視窗中，於下載完成之後檢閱資訊，您必須確認安裝。 按一下 [確定]。
+5. 在 [新的更新]**** 刀鋒視窗中，於下載完成之後檢閱資訊，您必須確認安裝。 按一下 [確定]  。
 
     ![更新裝置](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate7m.png)
 

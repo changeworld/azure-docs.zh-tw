@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 04/04/2017
 ms.author: memccror
 ms.openlocfilehash: d4f869c8b4ae6e90cfe64a2bf3d13839d72727be
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84015294"
 ---
 # <a name="what-to-do-in-the-event-of-an-azure-service-disruption-that-impacts-azure-cloud-services"></a>發生影響 Azure 雲端服務的 Azure 服務中斷事件時該怎麼辦
@@ -46,14 +46,14 @@ Azure 已經有許多支援高可用性應用程式的內建平台功能。 如�
 
 根據您的應用程式資料來源，您可能需要檢查應用程式資料來源的復原程序。
 
-* 如需 Azure 儲存體資料來源，請參閱[Azure 儲存體冗余](../storage/common/storage-redundancy.md)]，以根據您的應用程式所選的冗余模型來檢查可用的選項。
+* 針對 Azure 儲存體資料來源，請參閱 [Azure 儲存體冗余](../storage/common/storage-redundancy.md) ，以根據您的應用程式所選擇的冗余模型來查看可用的選項。
 * 如需 SQL 資料庫來源，請閱讀 [概觀：雲端商務持續性和 SQL Database 的資料庫災害復原](../azure-sql/database/business-continuity-high-availability-disaster-recover-hadr-overview.md) ，以根據您針對應用程式所選擇的複寫模型來查看可用的選項。
 
 
 ## <a name="option-3-wait-for-recovery"></a>選項 3︰等待復原
 在此情況下，您不需要採取任何動作，但是直到該區域還原，才可使用您的服務。 您可以在 [Azure 服務健康狀態儀表板](https://azure.microsoft.com/status/)上看見目前的服務狀態。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 若要深入了解如何實作災害復原和高可用性策略，請參閱 [Azure 應用程式的災害復原和高可用性](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md)。
 
 若要開發雲端平台功能的詳細技術知識，請參閱 [Azure 復原技術指導](/azure/architecture/checklist/resiliency-per-service)。

@@ -1,5 +1,5 @@
 ---
-title: 正在收集必要參數
+title: 收集必要參數
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -9,13 +9,13 @@ ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: 85c67384c38376dc6f5701cf26e879d6e1b76c7f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80875026"
 ---
-## <a name="gathering-required-parameters"></a>正在收集必要參數
+## <a name="gathering-required-parameters"></a>收集必要參數
 
 所有需要的認知服務容器都有三個主要參數。 使用者授權合約 (EULA) 必須存在，且值為 `accept` 。 此外，也需要端點 URL 和 API 金鑰。
 

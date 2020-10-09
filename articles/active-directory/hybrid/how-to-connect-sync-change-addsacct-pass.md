@@ -18,10 +18,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4077146292db1266d5dbc51cc577f952b2bff191
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85357506"
 ---
 # <a name="changing-the-ad-ds-account-password"></a>變更 AD DS 帳戶密碼
@@ -29,7 +29,7 @@ AD DS 帳戶指的是 Azure AD Connect 用來與內部部署 Active Directory �
 
 * 在同步處理服務管理員中，使用內部部署 AD 進行的匯入或匯出作業會失敗，並出現 **no-start-credentials** 錯誤。
 
-* 在 Windows 事件檢視器底下，應用程式事件記錄檔包含**事件識別碼為 6000**的錯誤和「**管理代理程式 "contoso.com" 無法執行，因為認證無效**」。
+* 在 Windows 事件檢視器下，應用程式事件記錄檔會包含 **事件識別碼為 6000** 的錯誤，且訊息為「 **管理代理程式 "contoso.com" 無法執行，因為認證無效**」。
 
 
 ## <a name="how-to-update-the-synchronization-service-with-new-password-for-ad-ds-account"></a>如何以新的 AD DS 帳戶密碼更新同步處理服務
@@ -42,7 +42,7 @@ AD DS 帳戶指的是 Azure AD Connect 用來與內部部署 Active Directory �
 
 3. 選取密碼已變更之 AD DS 帳戶所對應的 [AD 連接器]****。
 
-4. 在 [**動作**] 底下，選取 [**屬性**]。
+4. 在 [ **動作**] 底下，選取 [ **屬性**]。
 
 5. 在快顯對話方塊中，選取 [連線至 Active Directory 樹系]****：
 

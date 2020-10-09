@@ -11,23 +11,23 @@ ms.author: anvang
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019, azure-synapse
 ms.openlocfilehash: 202bbaf4ea53dd6ba285e79dfa9e6ce782c0903e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80633093"
 ---
 # <a name="database-collation-support-for-azure-synapse-analytics-sql-pool"></a>Azure Synapse Analytics SQL 集區的資料庫定序支援
 
-當您建立新的 Azure Synapse SQL 集區資料庫時，您可以變更 Azure 入口網站的預設資料庫定序。 這項功能可讓您更輕鬆地使用3800支援的其中一個資料庫定序建立新的資料庫。
+當您建立新的 Azure Synapse SQL 集區資料庫時，您可以從 Azure 入口網站變更預設資料庫定序。 這項功能可讓您更輕鬆地使用3800支援的其中一個資料庫定序來建立新的資料庫。
 
-定序提供以字元為基礎之資料類型的地區設定、字碼頁、排序次序和字元敏感度規則。 一旦選擇之後，所有需要定序資訊的資料行和運算式都會從資料庫設定繼承所選的定序。 您可以明確陳述以字元為基礎之資料類型的不同定序，來覆寫預設的繼承。
+定序提供以字元為基礎之資料類型的地區設定、字碼頁、排序次序和字元敏感度規則。 一旦選擇之後，所有需要定序資訊的資料行和運算式都會從資料庫設定繼承所選擇的定序。 您可以明確地針對以字元為基礎的資料類型陳述不同的定序，來覆寫預設的繼承。
 
 ## <a name="changing-collation"></a>變更定序
 
-若要變更預設定序，請更新布建體驗中的定序欄位。
+若要變更預設的定序，請更新布建體驗中的 [定序] 欄位。
 
-例如，如果您想要將預設定序變更為區分大小寫，您只需要將定序從 SQL_Latin1_General_CP1_CI_AS 重新命名為 SQL_Latin1_General_CP1_CS_AS。
+例如，如果您想要將預設定序變更為區分大小寫，您只需將定序從 SQL_Latin1_General_CP1_CI_AS 重新命名為 SQL_Latin1_General_CP1_CS_AS。
 
 ## <a name="list-of-unsupported-collation-types"></a>不支援的定序類型清單
 
@@ -110,4 +110,4 @@ ms.locfileid: "80633093"
 SELECT DATABASEPROPERTYEX(DB_NAME(), 'Collation') AS Collation;
 ```
 
-當傳遞 ' 定序 ' 做為屬性參數時，DatabasePropertyEx 函數會傳回所指定資料庫的目前定序。 如需詳細資訊，請參閱[DatabasePropertyEx](/sql/t-sql/functions/databasepropertyex-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。
+當傳遞 ' 定序 ' 做為 property 參數時，DatabasePropertyEx 函數會傳回指定之資料庫的目前定序。 如需詳細資訊，請參閱 [DatabasePropertyEx](/sql/t-sql/functions/databasepropertyex-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。
