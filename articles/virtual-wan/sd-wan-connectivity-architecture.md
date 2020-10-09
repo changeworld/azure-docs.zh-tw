@@ -1,19 +1,19 @@
 ---
-title: SD-WAN 連線架構
+title: 虛擬 WAN 和 SD-WAN 連線架構
 titleSuffix: Azure Virtual WAN
 description: 瞭解如何使用 Azure 虛擬 WAN 來互連私人 SD-WAN
 services: virtual-wan
 author: skishen525
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 10/07/2020
 ms.author: sukishen
-ms.openlocfilehash: 87e9549419bccc36d743871755e782a71e93e5e0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e3f6f947b86b1cb34fde66c62199336403037827
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91267460"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91828075"
 ---
 # <a name="sd-wan-connectivity-architecture-with-azure-virtual-wan"></a>使用 Azure 虛擬 WAN 的 SD-WAN 連線架構
 
@@ -22,6 +22,7 @@ Azure 虛擬 WAN 是一種網路服務，透過單一操作介面整合許多雲
 雖然 Azure 虛擬 WAN 本身是軟體定義的 WAN (SD-WAN)，但其設計目的也是為了可與內部部署 SD-WAN 技術和服務順暢地進行互連。 這類服務大多數由我們的[虛擬 WAN](virtual-wan-locations-partners.md) 生態系統和 Azure 網路受控服務合作夥伴 [(MSP)](../networking/networking-partners-msp.md) 所提供。 將私人 WAN 轉換至 SD-WAN 的企業在將其私人 SD-WAN 與 Azure 虛擬 WAN 進行互連時，有數種選擇。 企業可從下列選項中選擇：
 
 * 直接互連模型
+* 使用 NVA 的直接互連模型-VWAN-中樞
 * 間接互連模型
 * 使用其最常用的受控服務提供者 [MSP](../networking/networking-partners-msp.md) 的受控混合式 WAN 模型
 
@@ -29,7 +30,7 @@ Azure 虛擬 WAN 是一種網路服務，透過單一操作介面整合許多雲
 
 ## <a name="direct-interconnect-model"></a><a name="direct"></a>直接互連模型
 
-![直接互連模型](./media/sd-wan-connectivity-architecture/direct.png)
+:::image type="content" source="./media/sd-wan-connectivity-architecture/direct.png" alt-text="直接互連模型":::
 
 在此架構模式中，SD-WAN 分支用戶端設備 (CPE) 會透過 IPsec 連線直接連線至虛擬 WAN 中樞。 分支 CPE 也可以透過私人 SD-WAN 連線到其他分支，或利用虛擬 WAN 以進行分支對分支連線。 需要在 Azure 中存取其工作負載的分支將能夠透過終止於虛擬 WAN 中樞內的 IPsec 通道，直接安全地存取 Azure。
 
@@ -39,11 +40,22 @@ SD-WAN CPE 仍然是流量最佳化以及路徑選擇的實作和強制執行的
 
 在此模型中，因為與虛擬 WAN 的連線是透過 IPsec 進行，且 IPsec VPN 是終止於虛擬 WAN VPN 閘道上，所以可能不支援某些廠商以即時流量特性為基礎的專屬流量最佳化。 例如，在分支 CPE 的動態路徑選擇是可行的，因為分支裝置會與另一個 SD WAN 節點交換各種網路封包資訊，因此，可於分支中動態識別最佳連結，以用於各種已排定優先順序的流量。 此功能在最後關鍵最佳化的所在區域中 (分支到最接近的 Microsoft POP) 可能會很有幫助。
 
-透過虛擬 WAN，使用者可以取得 Azure 路徑選擇，這是跨多個 ISP 連結 (從分支 CPE 到虛擬 WAN VPN 閘道) 的原則式路徑選則。 虛擬 WAN 可讓您從相同的 SD-WAN 分支 CPE 設定多個連結 (路徑)；每個連結代表從 SD-WAN CPE 的唯一公用 IP 到兩個不同的 Azure 虛擬 WAN VPN 閘道執行個體的雙通道連線。 SD-WAN 廠商可以根據其原則引擎在 CPE 連結上設定的流量原則，對 Azure 實作最佳路徑。 在 Azure 端，所有傳入的連線都會受到同等對待。
+透過虛擬 WAN，使用者可以取得 Azure 路徑選擇，這是跨多個 ISP 連結 (從分支 CPE 到虛擬 WAN VPN 閘道) 的原則式路徑選則。 虛擬 WAN 可讓您從相同的 SD-WAN 分支 CPE 設定多個連結 (路徑)；每個連結代表從 SD-WAN CPE 的唯一公用 IP 到兩個不同的 Azure 虛擬 WAN VPN 閘道執行個體的雙通道連線。 SD-WAN 廠商可以根據其原則引擎在 CPE 連結上設定的流量原則，對 Azure 實作最佳路徑。 在 Azure 端，所有傳入的連接都會平等處理。
+
+## <a name="direct-interconnect-model-with-nva-in-vwan-hub"></a><a name="direct"></a>使用 NVA 的直接互連模型-VWAN-中樞
+
+:::image type="content" source="./media/sd-wan-connectivity-architecture/direct-nva.png" alt-text="直接互連模型":::
+
+此架構模型支援協力廠商 [網路虛擬裝置的部署 (NVA 直接) 至虛擬中樞](https://docs.microsoft.com/azure/virtual-wan/about-nva-hub)。 這可讓想要將分支 CPE 連線到虛擬中樞內相同品牌 NVA 的客戶，讓他們能夠在連線到 Azure 工作負載時利用專屬的端對端 SD WAN 功能。 
+
+有幾個虛擬 WAN 夥伴可提供在部署過程中自動設定 NVA 的體驗。 將 NVA 布建到虛擬中樞之後，NVA 所需的任何其他設定都必須透過 NVA 合作夥伴入口網站或管理應用程式來完成。 無法直接存取 NVA。 可以直接部署到 Azure 虛擬 WAN 中樞的 Nva，是專門用在虛擬中樞的程式設計。 針對支援 VWAN hub 中 NVA 的合作夥伴以及其部署指南，請參閱 [虛擬 WAN 合作夥伴](virtual-wan-locations-partners.md#partners-with-integrated-virtual-hub-offerings) 文章。
+
+SD-WAN CPE 仍然是流量最佳化以及路徑選擇的實作和強制執行的所在位置。
+在此模型中，支援以即時流量特性為基礎的廠商專屬流量優化，因為虛擬 WAN 的連線是透過中樞內的 SD-WAN NVA。
 
 ## <a name="indirect-interconnect-model"></a><a name="indirect"></a>間接互連模型
 
-![間接互連模型](./media/sd-wan-connectivity-architecture/indirect.png)
+:::image type="content" source="./media/sd-wan-connectivity-architecture/indirect.png" alt-text="直接互連模型":::
 
 在此架構模型中，SD-WAN 分支 CPE 會間接連線到虛擬 WAN 中樞。 如圖所示，SD WAN 虛擬 CPE 部署在企業 VNet 中。 接下來，這個虛擬 CPE 會使用 IPsec 連線到虛擬 WAN 中樞。 使用虛擬 CPE 作為進入 Azure 的 SD WAN 閘道。 需要在 Azure 中存取其工作負載的分支將能夠透過 v-CPE 閘道存取工作負載。
 
@@ -51,7 +63,7 @@ SD-WAN CPE 仍然是流量最佳化以及路徑選擇的實作和強制執行的
   
 ## <a name="managed-hybrid-wan-model"></a><a name="hybrid"></a>受控混合式 WAN 模型
 
-![受控混合式 WAN 模型](./media/sd-wan-connectivity-architecture/hybrid.png)
+:::image type="content" source="./media/sd-wan-connectivity-architecture/hybrid.png" alt-text="直接互連模型":::
 
 在此架構模型中，企業可以利用受控服務提供者 (MSP) 合作夥伴所提供的受控 SD WAN 服務。 此模型與上述的直接或間接模型類似。 不過，在此模型中，SD-WAN 設計、協調流程和作業是由 SD WAN 提供者所傳遞。
 
