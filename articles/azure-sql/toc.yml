@@ -916,7 +916,7 @@
       href: virtual-machines/index.yml
     - name: Windows
       items:
-        - name: 總覽
+        - name: 概觀
           items:
             - name: 什麼是 SQL Server 虛擬機器？
               href: virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md

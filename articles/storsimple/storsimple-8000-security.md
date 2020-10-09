@@ -15,17 +15,17 @@ ms.workload: TBD
 ms.date: 05/18/2018
 ms.author: alkohli
 ms.openlocfilehash: 4598f71f9b611e68f8eb00676138784833c39f32
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75891506"
 ---
 # <a name="storsimple-security-and-data-protection"></a>StorSimple 安全性和資料保護
 
 [!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 安全性是任何人在採用新技術時的主要考量，尤其是當技術用於機密或專屬資料時。 評估不同的技術時，您必須考慮因為資料保護所增加的風險和成本。 Microsoft Azure StorSimple 提供資料保護的安全性和隱私權解決方案，以協助確保：
 
@@ -185,7 +185,7 @@ StorSimple 裝置會根據使用頻率，將資料儲存在本機階層和雲端
 
 ## <a name="protect-data-via-storage-accounts"></a>透過儲存體帳戶保護資料安全
 
-每個 Microsoft Azure 訂閱可以建立一或多個儲存體帳戶。 （儲存體帳戶提供唯一命名空間來處理儲存在 Azure 雲端中的資料）。儲存體帳戶的存取權是由與該儲存體帳戶相關聯的訂用帳戶和存取金鑰所控制。
+每個 Microsoft Azure 訂閱可以建立一或多個儲存體帳戶。  (儲存體帳戶提供唯一的命名空間，以使用儲存在 Azure 雲端中的資料。儲存體帳戶的 ) 存取權是由與該儲存體帳戶相關聯的訂用帳戶和存取金鑰所控制。
 
 建立儲存體帳戶時，Microsoft Azure 會產生兩個 512 位元儲存體存取金鑰，當 StorSimple 裝置存取儲存體帳戶時，可以使用其中一個進行驗證。 請注意，這些金鑰中只有一個會是使用中狀態。 其他金鑰會被保留，讓您可以定期輪替金鑰。 若要輪替金鑰，您必須將次要金鑰的狀態設定為使用中，然後刪除主要金鑰。 然後，您可以建立要在下一個輪替期間使用的新金鑰。 (基於安全性理由，許多資料中心需要金鑰輪替)。
 

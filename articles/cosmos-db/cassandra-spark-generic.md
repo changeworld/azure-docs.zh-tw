@@ -9,10 +9,10 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
 ms.date: 09/01/2019
 ms.openlocfilehash: ffe9167bb155826eea3a1e7994469d378e5925fe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85260486"
 ---
 # <a name="connect-to-azure-cosmos-db-cassandra-api-from-spark"></a>從 Spark 連線至 Azure Cosmos DB Cassandra API
@@ -20,16 +20,16 @@ ms.locfileid: "85260486"
 本文是從 Spark 進行 Azure Cosmos DB Cassandra API 整合的一系列文章之一。 這些文章涵蓋連線能力、資料定義語言 (DDL) 作業、基本的資料操作語言 (DML) 作業，以及從 Spark 進行進階 Azure Cosmos DB Cassandra API 整合。 
 
 ## <a name="prerequisites"></a>必要條件
-* [布建 Azure Cosmos DB Cassandra API 帳戶。](create-cassandra-dotnet.md#create-a-database-account)
+* [提供 Azure Cosmos DB Cassandra API 帳戶。](create-cassandra-dotnet.md#create-a-database-account)
 
-* 布建您的 Spark 環境選擇 [[Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal)  |  [Azure HDInsight-Spark](https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-jupyter-spark-sql) |其他]。
+* 布建您選擇的 spark 環境 [[Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal)  |  [Azure HDInsight-spark](https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-jupyter-spark-sql) |其他專案]。
 
 ## <a name="dependencies-for-connectivity"></a>連線能力的相依項目
 * **適用於 Cassandra 的 Spark 連接器：** Spark 連接器用來連線到 Azure Cosmos DB Cassandra API。  請找出位於 [Maven 中心]( https://mvnrepository.com/artifact/com.datastax.spark/spark-cassandra-connector)且與 Spark 環境的 Spark 和 Scala 版本相容的連接器版本，並加以使用。
 
 * **適用於 Cassandra API 的 Azure Cosmos DB 協助程式程式庫：** 除了 Spark 連接器之外，您還需要 Azure Cosmos DB 中另一個稱為 [azure-cosmos-cassandra-spark-helper]( https://search.maven.org/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper/1.0.0/jar) 的程式庫。 此程式庫包含自訂連線處理站和重試原則類別。
 
-  Azure Cosmos DB 中的重試原則設定為處理 HTTP 狀態碼 429 (「要求速率很大」) 的例外狀況。 Azure Cosmos DB Cassandra API 會將這些例外狀況轉譯成 Cassandra 原生通訊協定上的多載錯誤，您可以使用輪詢進行重試。 由於 Azure Cosmos DB 會使用佈建的輸送量模型，因此輸入/輸出速率增加時，也會發生要求速率限制例外狀況。 重試原則可保護您的 spark 作業，避免資料突然超過配置給容器的輸送量。
+  Azure Cosmos DB 中的重試原則設定為處理 HTTP 狀態碼 429 (「要求速率很大」) 的例外狀況。 Azure Cosmos DB Cassandra API 會將這些例外狀況轉譯成 Cassandra 原生通訊協定上的多載錯誤，您可以使用輪詢進行重試。 由於 Azure Cosmos DB 會使用佈建的輸送量模型，因此輸入/輸出速率增加時，也會發生要求速率限制例外狀況。 重試原則可保護您的 spark 作業免于資料尖峰，而這些資料會暫時超過配置給您的容器的輸送量。
 
   > [!NOTE] 
   > 重試原則只能保護您的 Spark 工作以免遭受暫時暴增的影響。 如果您未設定執行工作負載所需的足夠 RU，則重試原則不適用，而且重試原則類別會重新擲回例外狀況。
@@ -43,11 +43,11 @@ ms.locfileid: "85260486"
 | **屬性名稱** | **預設值** | **說明** |
 |---------|---------|---------|
 | spark.cassandra.output.batch.size.rows |  1 |每個單一批次的資料列數目。 將此參數設定為 1。 此參數用來為繁重的工作負載達到更高的輸送量。 |
-| spark.cassandra.connection.connections_per_executor_max  | None | 每個執行程式的每個節點連線數目上限。 10*n 相當於 n 個節點的 Cassandra 叢集中每個節點有 10 個連線。 因此，如果針對 5 個節點的 Cassandra 叢集，您需要每個執行程式的每個節點有 5 個連線，則您應該將此設定設為 25。 請根據 Spark 工作設定的平行處理原則程度或執行程式數目來修改此值。   |
+| spark.cassandra.connection.connections_per_executor_max  | 無 | 每個執行程式的每個節點連線數目上限。 10*n 相當於 n 個節點的 Cassandra 叢集中每個節點有 10 個連線。 因此，如果針對 5 個節點的 Cassandra 叢集，您需要每個執行程式的每個節點有 5 個連線，則您應該將此設定設為 25。 請根據 Spark 工作設定的平行處理原則程度或執行程式數目來修改此值。   |
 | spark.cassandra.output.concurrent.writes  |  100 | 定義每個執行程式可能發生的平行寫入數目。 因為您將 "batch.size.rows" 設定為 1，所以請務必據以相應增加此值。 請根據您想要針對工作負載達到的平行處理原則程度或輸送量來修改此值。 |
 | spark.cassandra.concurrent.reads |  512 | 定義每個執行程式可能發生的平行讀取數目。 請根據您想要針對工作負載達到的平行處理原則程度或輸送量來修改此值  |
-| spark.cassandra.output.throughput_mb_per_sec  | None | 定義每個執行程式的總寫入輸送量。 此參數可用來作為 spark 作業輸送量的上限，並以 Cosmos 容器的布建輸送量為基礎。   |
-| spark.cassandra.input.reads_per_sec| None   | 定義每個執行程式的總讀取輸送量。 此參數可用來作為 spark 作業輸送量的上限，並以 Cosmos 容器的布建輸送量為基礎。  |
+| spark.cassandra.output.throughput_mb_per_sec  | 無 | 定義每個執行程式的總寫入輸送量。 此參數可作為 spark 作業輸送量的上限，並以 Cosmos 容器的布建輸送量作為基礎。   |
+| spark.cassandra.input.reads_per_sec| 無   | 定義每個執行程式的總讀取輸送量。 此參數可作為 spark 作業輸送量的上限，並以 Cosmos 容器的布建輸送量作為基礎。  |
 | spark.cassandra.output.batch.grouping.buffer.size |  1000  | 定義每個單一 Spark 工作可在傳送至 Cassandra API 之前，先存放在記憶體中的批次數目 |
 | spark.cassandra.connection.keep_alive_ms | 60000 | 定義未使用的連線可供使用的期間。 | 
 
@@ -73,7 +73,7 @@ cqlsh.py YOUR-COSMOSDB-ACCOUNT-NAME.cassandra.cosmosdb.azure.com 10350 -u YOUR-C
 下文說明用於連線至 Azure Cosmos DB Cassandra API 的 HDinsight-Spark 服務、佈建、叢集設定，以及涵蓋 DDL 作業、DML 作業和其他項目的數個範例 Notebook。<BR>
 [從 Azure HDInsight-Spark 使用 Azure Cosmos DB Cassandra API](cassandra-spark-hdinsight.md)
  
-### <a name="3--spark-environment-in-general"></a>3. 一般的 Spark 環境
+### <a name="3--spark-environment-in-general"></a>3. 一般 Spark 環境
 上述各節是專門針對以 Azure Spark 為基礎的 PaaS 服務，而本節則涵蓋所有一般 Spark 環境。  連接器相依項目、匯入和 Spark 工作階段設定詳述如下。 ＜後續步驟＞一節涵蓋適用於 DDL 作業、DML 作業和其他項目的程式碼範例。  
 
 #### <a name="connector-dependencies"></a>連接器相依項目：

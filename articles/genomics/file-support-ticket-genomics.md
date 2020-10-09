@@ -1,7 +1,7 @@
 ---
 title: 如何提出支援要求
 titleSuffix: Microsoft Genomics
-description: 本文說明當您無法使用疑難排解指南或常見問題來解決問題時，如何提出支援要求來與 Microsoft Genomics。
+description: 本文說明如果您無法使用疑難排解指南或常見問題解決問題，如何提出支援要求以聯繫 Microsoft Genomics。
 keywords: 疑難排解, 錯誤, 偵錯, 支援
 services: genomics
 author: grhuynh
@@ -11,20 +11,20 @@ ms.service: genomics
 ms.topic: conceptual
 ms.date: 05/23/2018
 ms.openlocfilehash: ddfe8b6010ddc241364ccf7b2d4f5f648bd3ce0e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "72248601"
 ---
 # <a name="how-to-contact-microsoft-genomics-for-support"></a>如何連絡 Microsoft Genomics 以取得支援
-本概觀說明如何提出支援要求以連絡 Microsoft Genomics。 如果您無法使用[疑難排解指南](troubleshooting-guide-genomics.md)或[常見問題](frequently-asked-questions-genomics.md)對問題進行疑難排解，這會很有説明。 
+本概觀說明如何提出支援要求以連絡 Microsoft Genomics。 如果您無法使用 [疑難排解指南](troubleshooting-guide-genomics.md) 或 [常見問題](frequently-asked-questions-genomics.md)針對您的問題進行疑難排解，這會很有説明。 
 
 
 ## <a name="file-a-support-ticket-through-the-azure-portal"></a>透過 Azure 入口網站提出支援票證
 首先，在 Azure 入口網站中登入您的 Azure 帳戶。 按一下右上角的問號，然後選取 `Help + support`。
 
-![Azure 入口網站上的連絡人支援](./media/file-support-ticket/genomics-contact-support.png "Azure 入口網站上的連絡人支援") 
+![Azure 入口網站上的聯絡支援](./media/file-support-ticket/genomics-contact-support.png "Azure 入口網站上的聯絡支援") 
 
 
 

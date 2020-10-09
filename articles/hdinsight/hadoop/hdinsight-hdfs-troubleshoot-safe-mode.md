@@ -1,6 +1,6 @@
 ---
-title: 本機 HDFS 在 Azure HDInsight 叢集上卡在安全模式
-description: 針對 Azure HDInsight 中 Apache 叢集上的安全模式中的本機 Apache HDFS 進行疑難排解
+title: 本機 HDFS 在 Azure HDInsight 叢集上卡在安全模式中
+description: 針對 Azure HDInsight 中的 Apache 叢集在安全模式中停滯的本機 Apache HDFS 進行疑難排解
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
@@ -8,15 +8,15 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/14/2019
 ms.openlocfilehash: 4d19a05129970b26ca1af20263fbfe93a0053c7d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75894198"
 ---
-# <a name="scenario-local-hdfs-stuck-in-safe-mode-on-azure-hdinsight-cluster"></a>案例：本機 HDFS 在 Azure HDInsight 叢集上卡在安全模式
+# <a name="scenario-local-hdfs-stuck-in-safe-mode-on-azure-hdinsight-cluster"></a>案例：本機 HDFS 在 Azure HDInsight 叢集上卡在安全模式中
 
-本文說明與 Azure HDInsight 叢集互動時，問題的疑難排解步驟和可能的解決方法。
+本文說明與 Azure HDInsight 叢集互動時，問題的疑難排解步驟和可能的解決方式。
 
 ## <a name="issue"></a>問題
 
@@ -34,17 +34,17 @@ mkdir: Cannot create directory /temp. Name node is in safe mode.
 
 ## <a name="cause"></a>原因
 
-HDInsight 叢集已相應減少到下方的極少數節點，或節點數目接近 HDFS 複寫因數。
+HDInsight 叢集已相應減少到以下極少的節點，或節點數目接近 HDFS 複寫因數。
 
 ## <a name="resolution"></a>解決方案
 
-1. 使用下列命令，報告 HDInsight 叢集上的 HDFS 狀態：
+1. 使用下列命令報告 HDInsight 叢集上的 HDFS 狀態：
 
     ```bash
     hdfs dfsadmin -D "fs.default.name=hdfs://mycluster/" -report
     ```
 
-1. 使用下列命令，檢查 HDInsight 叢集上的 HDFS 完整性：
+1. 使用下列命令檢查 HDInsight 叢集上的 HDFS 完整性：
 
     ```bash
     hdiuser@spark2:~$ hdfs fsck -D "fs.default.name=hdfs://mycluster/" /

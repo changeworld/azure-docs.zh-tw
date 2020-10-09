@@ -1,6 +1,6 @@
 ---
-title: Azure HDInsight 中的連接重設後發生儲存例外狀況
-description: Azure HDInsight 中的連接重設後發生儲存例外狀況
+title: Azure HDInsight 中的連線重設之後的儲存體例外狀況
+description: Azure HDInsight 中的連線重設之後的儲存體例外狀況
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
@@ -8,15 +8,15 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/08/2019
 ms.openlocfilehash: a7af6407191577112f936bfb9048985e85c868ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75887218"
 ---
-# <a name="scenario-storage-exception-after-connection-reset-in-azure-hdinsight"></a>案例： Azure HDInsight 中的連接重設之後發生儲存例外狀況
+# <a name="scenario-storage-exception-after-connection-reset-in-azure-hdinsight"></a>案例： Azure HDInsight 中的連線重設之後的儲存體例外狀況
 
-本文說明與 Azure HDInsight 叢集互動時，問題的疑難排解步驟和可能的解決方法。
+本文說明與 Azure HDInsight 叢集互動時，問題的疑難排解步驟和可能的解決方式。
 
 ## <a name="issue"></a>問題
 
@@ -24,15 +24,15 @@ ms.locfileid: "75887218"
 
 ## <a name="cause"></a>原因
 
-在資料表截斷過程中，發生儲存體連接問題。 已在 HBase 中繼資料表中刪除資料表專案。 但只刪除一個 blob 檔案。
+在資料表截斷程式期間，發生儲存體連接問題。 在 HBase 中繼資料表中刪除了資料表專案。 所有的 blob 檔案都已刪除。
 
-雖然存放裝置中沒有名為的資料夾 blob `/hbase/data/default/ThatTable` 。 WASB 驅動程式發現 blob 檔案上方存在，因此不允許建立任何名為的 blob `/hbase/data/default/ThatTable` ，因為它假設父資料夾已存在，因此建立資料表將會失敗。
+雖然儲存體中沒有稱為「 `/hbase/data/default/ThatTable` 坐在」的資料夾 blob。 WASB 驅動程式發現 blob 檔案的上方存在，而且不允許建立任何名為的 blob `/hbase/data/default/ThatTable` ，因為它假設父資料夾已存在，因此建立資料表將會失敗。
 
 ## <a name="resolution"></a>解決方案
 
-1. 從 Apache Ambari UI，重新開機使用中的 HMaster。 這可讓兩個待命 HMaster 的其中一個變成作用中的，而新的作用中 HMaster 將會重載中繼資料資料表資訊。 因此，您不會 `already-deleted` 在 HMASTER UI 中看到該資料表。
+1. 從 Apache Ambari UI 中，重新開機使用中的 HMaster。 這可讓兩個待命 HMaster 中的其中一個變成作用中的，而新的使用中 HMaster 將會重載中繼資料資料表資訊。 因此，您將不會 `already-deleted` 在 HMASTER UI 中看到資料表。
 
-1. 您可以從 UI 工具（例如 Cloud Explorer 或執行類似的命令）找到孤立的 blob 檔案 `hdfs dfs -ls /xxxxxx/yyyyy` 。 執行 `hdfs dfs -rmr /xxxxx/yyyy` 以刪除該 blob。 例如： `hdfs dfs -rmr /hbase/data/default/ThatTable/ThatFile` 。
+1. 您可以從像是 Cloud Explorer 或執行命令之類的 UI 工具找到孤立的 blob 檔案 `hdfs dfs -ls /xxxxxx/yyyyy` 。 執行 `hdfs dfs -rmr /xxxxx/yyyy` 以刪除該 blob。 例如： `hdfs dfs -rmr /hbase/data/default/ThatTable/ThatFile` 。
 
 現在您可以在 HBase 中建立具有相同名稱的新資料表。
 

@@ -1,14 +1,14 @@
 ---
-title: Azure Service Fabric Linux 與 Windows 之間的差異
+title: Linux 與 Windows 之間的 Azure Service Fabric 差異
 description: Linux 上的 Azure Service Fabric 與 Windows 上的 Azure Service Fabric 之間的差異。
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.custom: sfrev
 ms.openlocfilehash: c064291491110b17c172a561afbd1e65d6c08d06
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75748538"
 ---
 # <a name="differences-between-service-fabric-on-linux-and-windows"></a>Linux 與 Windows 上的 Service Fabric 差異
@@ -21,7 +21,7 @@ Windows 上支援的一些功能，在 Linux 上尚未提供支援。 最終，�
 * Linux 上的錯誤分析服務 (FAS)
 * Service Fabric 服務的 DNS 服務 (Linux 上的容器支援 DNS 服務)
 * 特定 Powershell 命令的 CLI 命令對等項目 (在下面的清單中，大多數項目只適用於獨立叢集)
-* [可能影響擴充性的記錄檔執行差異](service-fabric-concepts-scalability.md#choosing-a-platform)
+* [可能會影響擴充性的記錄檔執行差異](service-fabric-concepts-scalability.md#choosing-a-platform)
 
 ## <a name="powershell-cmdlets-that-do-not-work-against-a-linux-service-fabric-cluster"></a>無法針對 Linux Service Fabric 叢集運作的 Powershell Cmdlet
 

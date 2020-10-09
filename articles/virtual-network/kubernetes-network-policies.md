@@ -17,10 +17,10 @@ ms.date: 9/25/2018
 ms.author: aanandr
 ms.custom: ''
 ms.openlocfilehash: 5a6da7e65a9a3e962a2df37b062792fbb990d04d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "73159689"
 ---
 # <a name="azure-kubernetes-network-policies-overview"></a>Azure Kubernetes 網路原則概觀
@@ -32,7 +32,7 @@ ms.locfileid: "73159689"
 Azure 網路原則與 Azure CNI 搭配運作，而 Azure CNI 提供容器的 VNet 整合。 目前只有 Linux 節點上才支援。 實作會根據定義的原則來設定「Linux IP 資料表」規則，以強制執行流量篩選。
 
 ## <a name="planning-security-for-your-kubernetes-cluster"></a>規劃 Kubernetes 叢集的安全性
-在為您的叢集執行安全性時，請使用網路安全性群組（Nsg）來篩選北南部流量，也就是輸入和離開您的叢集子網的流量，並將 Kubernetes 網路原則用於美國西部流量，也就是叢集中的 pod 之間的流量。
+在為您的叢集實行安全性時，請使用網路安全性群組 (Nsg) 來篩選 North-South 流量，也就是進入及離開叢集子網的流量，並針對 East-West 流量使用 Kubernetes 網路原則，也就是叢集中 pod 之間的流量。
 
 ## <a name="using-azure-kubernetes-network-policies"></a>使用 Azure Kubernetes 網路原則
 您可以透過下列方式使用 Azure 網路原則，以提供 Pod 的微型分割。

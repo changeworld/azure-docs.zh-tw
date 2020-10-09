@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: kgremban
 ms.openlocfilehash: ab07da38c01b052a4220274fb059683a22950a3f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75750683"
 ---
 # <a name="migrate-your-iot-hub-from-operations-monitoring-to-diagnostics-settings"></a>將 IoT 中樞從作業監視移轉至診斷設定
@@ -30,9 +30,9 @@ ms.locfileid: "75750683"
 ### <a name="turn-off-operations-monitoring"></a>關閉作業監視
 
 > [!NOTE]
-> 自2019年3月11日起，作業監視功能會從 IoT 中樞的 Azure 入口網站介面中移除。 下列步驟已不再適用。 若要遷移，請確定已在上述 Azure 監視器診斷設定中開啟正確的類別。
+> 自2019年3月11日起，已從 IoT 中樞的 Azure 入口網站介面移除作業監視功能。 下列步驟不再適用。 若要遷移，請確定已在上述 Azure 監視器診斷設定中開啟正確的分類。
 
-在您的工作流程中測試新的診斷設定之後，您可以關閉作業監視功能。 
+在您的工作流程中測試新的診斷設定之後，您就可以關閉作業監視功能。 
 
 1. 在您的「IoT 中樞」功能表上，選取 [作業監視]****。
 
@@ -44,7 +44,7 @@ ms.locfileid: "75750683"
 
 作業監視與診斷設定的結構描述有些微差異。 請務必更新目前使用作業監視的應用程式，以對應診斷設定所使用的結構描述。 
 
-此外，診斷設定也提供五個新類別來進行追蹤。 在您針對現有的結構描述更新應用程式之後，請一併新增新的類別：
+此外，診斷設定還提供五個新的類別來進行追蹤。 在您針對現有的結構描述更新應用程式之後，請一併新增新的類別：
 
 * 雲端到裝置對應項作業
 * 裝置到雲端對應項作業
@@ -56,7 +56,7 @@ ms.locfileid: "75750683"
 
 ## <a name="monitoring-device-connect-and-disconnect-events-with-low-latency"></a>監視低延遲的裝置連線和中斷連接事件
 
-若要監視生產環境中的裝置連線和中斷線上活動，建議您訂閱事件方格上的[**裝置中斷**線上活動](iot-hub-event-grid.md#event-types)來取得警示，並監視裝置線上狀態。 使用此[教學課程](iot-hub-how-to-order-connection-state-events.md)可了解如何將 IoT 中樞的「裝置連線」和「裝置中斷連線」事件整合至 IoT 解決方案中。
+若要在生產環境中監視裝置連線和中斷線上活動，建議您訂閱事件方格上的 [**裝置中斷** 線上活動](iot-hub-event-grid.md#event-types) ，以取得警示並監視裝置線上狀態。 使用此[教學課程](iot-hub-how-to-order-connection-state-events.md)可了解如何將 IoT 中樞的「裝置連線」和「裝置中斷連線」事件整合至 IoT 解決方案中。
 
 ## <a name="next-steps"></a>後續步驟
 

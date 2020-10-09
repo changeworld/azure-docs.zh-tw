@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.openlocfilehash: 0204a2873b288dcb2082dbd5c9c984d29fa6d456
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85254917"
 ---
 # <a name="updating-azure-machine-learning-models-using-update-resource-activity"></a>使用更新資源活動更新 Azure Machine Learning 模型
@@ -38,16 +38,16 @@ ms.locfileid: "85254917"
 
 本文補充主要 Azure Data Factory - Azure Machine Learning 整合文件︰[使用 Azure Machine Learning 和 Azure Data Factory 建立預測管線](data-factory-azure-ml-batch-execution-activity.md)。 如果您尚未檢閱主要文件，請在閱讀這篇文章之前先這麼做。 
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 經過一段時間，必須使用新的輸入資料集重新訓練 Azure ML 評分實驗中的預測模型。 完成重新訓練之後，您想要使用已重新訓練的 ML 模型來更新評分 Web 服務。 透過 Web 服務啟用重新訓練和更新 Azure ML 模型的一般步驟如下：
 
-1. 在[Azure Machine Learning Studio （傳統）](https://studio.azureml.net)中建立實驗。
-2. 當您對模型感到滿意時，請使用 Azure Machine Learning Studio （傳統）來發佈**訓練實驗**和評分/**預測實驗**的 web 服務。
+1. 在 [Azure Machine Learning Studio (傳統) ](https://studio.azureml.net)中建立實驗。
+2. 當您滿意模型時，請使用 Azure Machine Learning Studio (傳統) ，將 web 服務發佈至 **訓練實驗** 和評分/預測性**實驗**。
 
-下表說明本範例中使用的 Web 服務。  如需詳細資訊，請參閱以程式設計方式重新定型[Machine Learning Studio （傳統）模型](../../machine-learning/studio/retrain-machine-learning-model.md)。
+下表說明本範例中使用的 Web 服務。  請參閱以程式設計方式重新定型 [Machine Learning Studio (傳統) 模型](../../machine-learning/studio/retrain-machine-learning-model.md) 以取得詳細資料。
 
 - **訓練 Web 服務** - 接收訓練資料並產生已訓練的模型。 重新訓練的輸出是 Azure Blob 儲存體中的 .ilearner 檔案。 當您將訓練實驗發佈為 Web 服務時，系統會自動為您建立 **預設端點** 。 您可以建立多個端點，但此範例僅使用預設端點。
-- **評分 Web 服務** - 接收未標記的資料範例並進行預測。 預測的輸出可能會有各種形式，例如 .csv 檔案或 Azure SQL Database 中的資料列，視實驗的設定而定。 當您將預測實驗發佈為 Web 服務時，系統會自動為您建立預設端點。 
+- **評分 Web 服務** - 接收未標記的資料範例並進行預測。 預測的輸出可能會有各種不同的表單，例如 Azure SQL Database 中的 .csv 檔案或資料列，視實驗的設定而定。 當您將預測實驗發佈為 Web 服務時，系統會自動為您建立預設端點。 
 
 下圖描述 Azure ML 中訓練與評分端點之間的關聯性。
 
@@ -58,7 +58,7 @@ ms.locfileid: "85254917"
 您可以使用 [Azure ML 更新資源活動]**** 來叫用**評分 Web 服務**，進而以新訓練的模型更新 Web 服務。 下列範例提供連結的服務定義︰ 
 
 ## <a name="scoring-web-service-is-a-classic-web-service"></a>評分 Web 服務是傳統的 Web 服務
-如果評分 web 服務是**傳統 web 服務**，請使用 Azure 入口網站建立第二個**非預設且可更新的端點**。 如需相關步驟，請參閱[建立端點](../../machine-learning/studio/create-endpoint.md)一文。 建立非預設的可更新端點之後，執行下列步驟：
+如果評分 web 服務是傳統的 **web 服務**，請使用 Azure 入口網站建立第二個 **非預設且可更新的端點** 。 如需相關步驟，請參閱[建立端點](../../machine-learning/studio/create-endpoint.md)一文。 建立非預設的可更新端點之後，執行下列步驟：
 
 * 按一下 [批次執行]**** 以取得 **mlEndpoint** JSON 屬性的 URI 值。
 * 按一下 [更新資源]**** 連結以取得 **updateResourceEndpoint** JSON 屬性的 URI 值。 API 金鑰本身位於端點頁面 (位於右下角)。
@@ -88,7 +88,7 @@ ms.locfileid: "85254917"
 https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resource-group-name}/providers/Microsoft.MachineLearning/webServices/{web-service-name}?api-version=2016-05-01-preview. 
 ```
 
-在 [Azure Machine Learning Web 服務入口網站](https://services.azureml.net/)上查詢 Web 服務時，您可以取得 URL 中預留位置的值。 新的更新資源端點類型需要 AAD (Azure Active Directory) 權杖。 在 Azure Machine Learning 連結服務中指定**servicePrincipalId**和**servicePrincipalKey** 。 請參閱[如何建立服務主體及指派權限來管理 Azure 資源](../../active-directory/develop/howto-create-service-principal-portal.md)。 以下是 AzureML 連結服務定義範例︰ 
+在 [Azure Machine Learning Web 服務入口網站](https://services.azureml.net/)上查詢 Web 服務時，您可以取得 URL 中預留位置的值。 新的更新資源端點類型需要 AAD (Azure Active Directory) 權杖。 在 Azure Machine Learning 連結服務中指定 **servicePrincipalId** 和 **servicePrincipalKey** 。 請參閱[如何建立服務主體及指派權限來管理 Azure 資源](../../active-directory/develop/howto-create-service-principal-portal.md)。 以下是 AzureML 連結服務定義範例︰ 
 
 ```json
 {
@@ -138,7 +138,7 @@ Azure 儲存體會保留下列資料：
 ```
 
 ### <a name="training-input-dataset"></a>訓練輸入資料集：
-下列資料集代表 Azure Machine Learning 訓練 web 服務的輸入定型資料。 Azure Machine Learning 批次執行活動會將此資料集當做輸入。
+下列資料集代表 Azure Machine Learning 定型 web 服務的輸入定型資料。 Azure Machine Learning 批次執行活動會將此資料集做為輸入。
 
 ```JSON
 {
@@ -192,7 +192,7 @@ Azure 儲存體會保留下列資料：
 }
 ```
 
-### <a name="linked-service-for-azure-machine-learning-training-endpoint"></a>Azure Machine Learning 訓練端點的連結服務
+### <a name="linked-service-for-azure-machine-learning-training-endpoint"></a>Azure Machine Learning 定型端點的連結服務
 下列 JSON 程式碼片段定義的 Azure 機器學習連結服務可指向訓練 Web 服務的預設端點。
 
 ```JSON
@@ -208,12 +208,12 @@ Azure 儲存體會保留下列資料：
 }
 ```
 
-在 **[Azure Machine Learning Studio （傳統）**] 中，執行下列動作以取得**mlEndpoint**和**apiKey**的值：
+在 **Azure Machine Learning Studio (傳統) **中，請執行下列動作以取得 **>mlendpoint** 和 **apiKey**的值：
 
 1. 按一下左功能表中的 [ **Web 服務** ]。
 2. 按一下 Web 服務清單中的 **訓練 Web 服務** 。
 3. 按一下 [API 金鑰] **** 文字方塊旁的 [複製]。 將剪貼簿中的金鑰貼到 Data Factory JSON 編輯器中。
-4. 在 [ **Azure Machine Learning Studio （傳統）**] 中，按一下 [**批次執行**] 連結。
+4. 在 **Azure Machine Learning Studio (傳統) **中，按一下 [ **批次執行** ] 連結。
 5. 從 [要求]**** 區段複製 [要求 URI]**** 並將它貼到 Data Factory JSON 編輯器中。   
 
 ### <a name="linked-service-for-azure-ml-updatable-scoring-endpoint"></a>Azure ML 可更新評分端點的連結服務：

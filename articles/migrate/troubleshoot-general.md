@@ -8,32 +8,32 @@ ms.topic: conceptual
 ms.date: 11/21/2019
 ms.author: hamusa
 ms.openlocfilehash: 433f3cc29e334a9034fa073d4ace735fc7e7e3ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75725867"
 ---
 # <a name="troubleshoot-azure-migrate"></a>為 Azure Migrate 疑難排解
 
-[Azure Migrate](migrate-services-overview.md)提供評估和遷移工具的中樞，以及協力廠商獨立軟體廠商（ISV）產品。 本文可協助您針對 Azure Migrate、Azure Migrate 伺服器評估和 Azure Migrate 伺服器遷移的問題進行疑難排解。
+[Azure Migrate](migrate-services-overview.md) 提供適用于評定和遷移的工具中樞，以及協力廠商獨立軟體廠商 (ISV) 供應專案。 本文可協助您針對 Azure Migrate、Azure Migrate 伺服器評定和 Azure Migrate 伺服器遷移的問題進行疑難排解。
 
 ## <a name="how-do-i-create-or-find-a-project"></a>如何? 建立或尋找專案？
 
-請參閱[Azure Migrate 專案疑難排解指南](troubleshoot-project.md)。
+請參閱 [Azure Migrate 專案疑難排解指南](troubleshoot-project.md)。
 
 ## <a name="i-cant-get-the-appliance-working"></a>我無法讓設備運作
 
-查看設備部署[常見問題的解答](troubleshoot-appliance-discovery.md)。
+查看設備部署 [常見問題的解答](troubleshoot-appliance-discovery.md) 。
 
-## <a name="machines-arent-discovered"></a>未探索到電腦
+## <a name="machines-arent-discovered"></a>未探索到機器
 
 檢查常見的探索問題。
 
 ## <a name="app-discovery-isnt-working"></a>應用程式探索無法運作
 
-目前只有 VMware Vm 支援探索在內部部署機器上執行的應用程式、角色和功能。 檢查應用程式探索的[常見錯誤](troubleshoot-appliance-discovery.md#common-app-discovery-errors)。
+目前只有 VMware Vm 支援探索在內部部署機器上執行的應用程式、角色和功能。 [檢查](troubleshoot-appliance-discovery.md#common-app-discovery-errors) 應用程式探索常見的錯誤。
 
 ## <a name="assessment-isnt-working"></a>評量無法運作
 
-[檢查](troubleshoot-assessment.md)常見的評估問題和錯誤。
+[檢查](troubleshoot-assessment.md) 常見的評定問題和錯誤。

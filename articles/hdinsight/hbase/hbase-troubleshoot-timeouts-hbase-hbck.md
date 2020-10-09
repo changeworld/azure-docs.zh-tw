@@ -1,6 +1,6 @@
 ---
 title: Azure HDInsight 中的 'hbase hbck' 命令逾時
-description: 修正區域指派時，' hbase hbck ' 命令的問題時間
+description: 修正區域指派時，' hbase hbck ' 命令發生超時問題
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
@@ -8,23 +8,23 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/16/2019
 ms.openlocfilehash: 5604b42e1611830f3aaea9ae180cdb8142ab0942
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75887184"
 ---
 # <a name="scenario-timeouts-with-hbase-hbck-command-in-azure-hdinsight"></a>案例： Azure HDInsight 中的 ' hbase hbck ' 命令逾時
 
-本文說明與 Azure HDInsight 叢集互動時，問題的疑難排解步驟和可能的解決方法。
+本文說明與 Azure HDInsight 叢集互動時，問題的疑難排解步驟和可能的解決方式。
 
 ## <a name="issue"></a>問題
 
-`hbase hbck`修正區域指派時，遇到命令逾時。
+`hbase hbck`修正區域指派時，命令會發生超時。
 
 ## <a name="cause"></a>原因
 
-使用 `hbck` 命令時所發生的逾時問題，可能是由於數個區域長時間處於「轉換中」狀態所造成。 您可以在 HBase Master UI 中看到這些區域處於離線狀態。 因為有大量的區域嘗試進行轉換，HBase Master 可能會超時，而無法讓這些區域恢復上線。
+使用 `hbck` 命令時所發生的逾時問題，可能是由於數個區域長時間處於「轉換中」狀態所造成。 您可以在 HBase Master UI 中看到這些區域處於離線狀態。 由於有大量的區域嘗試轉換，HBase Master 可能會過期，而且無法讓這些區域重新上線。
 
 ## <a name="resolution"></a>解決方案
 
@@ -36,11 +36,11 @@ ms.locfileid: "75887184"
 
 1. `hbase zkcli`使用命令從 shell 結束 `exit` 。
 
-1. 從 Apache Ambari UI，重新開機 Active HBase Master 服務。
+1. 從 Apache Ambari UI 中，重新開機 Active HBase Master 服務。
 
 1. 執行 `hbase hbck -fixAssignments` 命令。
 
-1. 在 [轉換中] 區段中監視 HBase Master UI 「區域」，以確保不會停滯任何區域。
+1. 監視 HBase Master UI 「轉換中的區域」這一節，以確定不會停滯任何區域。
 
 ## <a name="next-steps"></a>後續步驟
 

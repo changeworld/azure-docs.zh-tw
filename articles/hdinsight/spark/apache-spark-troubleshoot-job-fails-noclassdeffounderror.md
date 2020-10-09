@@ -1,6 +1,6 @@
 ---
-title: JAVA.lang.noclassdeffounderror-使用 Azure HDInsight 中的 Apache Kafka 資料進行 Apache Spark
-description: 從 Apache Kafka 叢集讀取資料的 Apache Spark 串流作業失敗，並出現 JAVA.lang.noclassdeffounderror，Azure HDInsight
+title: NoClassDefFoundError-在 Azure HDInsight 中使用 Apache Kafka 資料 Apache Spark
+description: 從 Apache Kafka 叢集讀取資料的 Apache Spark 串流作業失敗，且 Azure HDInsight 中有 NoClassDefFoundError
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
@@ -8,19 +8,19 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 07/29/2019
 ms.openlocfilehash: 4659274110add96613ca88560edfb459b20a99cb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75894355"
 ---
-# <a name="apache-spark-streaming-job-that-reads-apache-kafka-data-fails-with-noclassdeffounderror-in-hdinsight"></a>在 HDInsight 中使用 JAVA.lang.noclassdeffounderror 讀取 Apache Kafka 資料的 Apache Spark 串流作業失敗
+# <a name="apache-spark-streaming-job-that-reads-apache-kafka-data-fails-with-noclassdeffounderror-in-hdinsight"></a>使用 HDInsight 中的 NoClassDefFoundError 讀取 Apache Kafka 資料的 Apache Spark 串流作業失敗
 
 本文說明在 Azure HDInsight 叢集中使用 Apache Spark 元件時，疑難排解步驟和可能的解決方案。
 
 ## <a name="issue"></a>問題
 
-Apache Spark 叢集會執行可從 Apache Kafka 叢集讀取資料的 Spark 串流作業。 如果 Kafka 資料流程壓縮已開啟，Spark 串流作業就會失敗。 在此情況下，Spark 串流 Yarn 應用程式 application_1525986016285_0193 失敗，因為發生錯誤：
+Apache Spark 叢集會執行從 Apache Kafka 叢集讀取資料的 Spark 串流作業。 如果開啟 Kafka 資料流程壓縮，Spark 串流作業就會失敗。 在此情況下，Spark 串流 Yarn 應用程式 application_1525986016285_0193 失敗，因為發生下列錯誤：
 
 ```
 18/05/17 20:01:33 WARN YarnAllocator: Container marked as failed: container_e25_1525986016285_0193_01_000032 on host: wn87-Scaled.2ajnsmlgqdsutaqydyzfzii3le.cx.internal.cloudapp.net. Exit status: 50. Diagnostics: Exception from container-launch.
@@ -32,9 +32,9 @@ Stack trace: ExitCodeException exitCode=50:
 
 ## <a name="cause"></a>原因
 
-此錯誤的原因可能是指定的 jar 檔案版本與您執行的 `spark-streaming-kafka` Kafka 叢集版本不同。
+這個錯誤可能是因為指定的 jar 檔案版本與您正在執行的 `spark-streaming-kafka` Kafka 叢集版本不同。
 
-例如，如果您執行的是 Kafka 叢集版本0.10.1，下列命令將會導致錯誤：
+例如，如果您執行的是 Kafka 叢集版本0.10.1，則下列命令會產生錯誤：
 
 ```
 spark-submit \
@@ -46,7 +46,7 @@ spark-submit \
 
 ## <a name="resolution"></a>解決方案
 
-使用 Spark-submit 命令搭配 `–packages` 選項，並確保 Spark 串流 kafka jar 檔案的版本與您正在執行的 kafka 叢集版本相同。」
+將 Spark 提交命令與選項搭配使用 `–packages` ，並確定 Spark 資料流程 kafka jar 檔案的版本與您正在執行之 kafka 叢集的版本相同。
 
 ## <a name="next-steps"></a>後續步驟
 

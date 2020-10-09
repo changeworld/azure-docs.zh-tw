@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: c003145acd423fd96dd0ac6c054884024c2ce4a0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75864225"
 ---
 # <a name="team-data-science-process-project-planning"></a>Team Data Science Process 專案規劃
@@ -58,7 +58,7 @@ Team Data Science Process (TDSP) 會提供建構資料科學專案開發的生�
 
 ## <a name="next-steps"></a>後續步驟
 
-[資料科學專案的敏捷式開發](agile-development.md)本檔使用 Team 資料科學程式，以系統化、版本控制和共同作業的方式來描述資料科學專案。
+[資料科學專案的敏捷式開發](agile-development.md) 本檔說明如何使用 Team Data 科學程式，以系統化、版本控制和共同作業的方式來處理資料科學專案。
 
 也會提供逐步解說，說明**特定案例**之程序中的所有步驟。 [範例逐步解說](walkthroughs.md)文章中會列出這些逐步解說以及簡短說明的連結。 這些逐步解說說明如何將雲端、內部部署工具及服務組合成工作流程或管線，以建立智慧型應用程式。 
 

@@ -1,24 +1,24 @@
 ---
 title: 範本成品參考
-description: 提供 Azure 受控應用程式部署範本成品的範例。
+description: 提供 Azure 受控應用程式的部署範本成品範例。
 ms.topic: conceptual
 ms.author: lazinnat
 author: lazinnat
 ms.date: 07/11/2019
 ms.openlocfilehash: 2bc0017d71e159ac490041494bcf37db035ef421
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75651458"
 ---
 # <a name="reference-deployment-template-artifact"></a>參考：部署範本成品
 
-本文是 Azure 受控應用程式中成品*mainTemplate.js*的參考。 如需有關撰寫部署範本的詳細資訊，請參閱[Azure Resource Manager 範本](../templates/template-syntax.md)。
+本文是 Azure 受控應用程式之成品的 *mainTemplate.js* 參考。 如需撰寫部署範本的詳細資訊，請參閱 [Azure Resource Manager 範本](../templates/template-syntax.md)。
 
 ## <a name="deployment-template"></a>部署範本
 
-下列 JSON 顯示 Azure 受控應用程式的檔案*mainTemplate.js*範例：
+下列 JSON 顯示 Azure 受控應用程式檔案的 *mainTemplate.js* 範例：
 
 ```json
 {

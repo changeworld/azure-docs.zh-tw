@@ -1,6 +1,6 @@
 ---
-title: HDP 升級 & 在 Azure HDInsight 的 Apache Phoenix 視圖中沒有任何資料
-description: HDP 升級會導致 Azure HDInsight 的 Apache Phoenix views 中沒有任何資料
+title: HDP 升級 & Azure HDInsight 中 Apache Phoenix 視圖中沒有任何資料
+description: HDP 升級會導致 Azure HDInsight 的 Apache Phoenix 視圖中沒有任何資料
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
@@ -8,15 +8,15 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/08/2019
 ms.openlocfilehash: ffec5cb4b1d36a2a2a7ca3ae7bbc40e20e075d4b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75887269"
 ---
-# <a name="scenario-hdp-upgrade-causes-no-data-in-apache-phoenix-views-in-azure-hdinsight"></a>案例： HDP 升級導致 Azure HDInsight 的 Apache Phoenix views 中沒有任何資料
+# <a name="scenario-hdp-upgrade-causes-no-data-in-apache-phoenix-views-in-azure-hdinsight"></a>案例： HDP 升級會導致 Azure HDInsight 的 Apache Phoenix 視圖中沒有任何資料
 
-本文說明與 Azure HDInsight 叢集互動時，問題的疑難排解步驟和可能的解決方法。
+本文說明與 Azure HDInsight 叢集互動時，問題的疑難排解步驟和可能的解決方式。
 
 ## <a name="issue"></a>問題
 
@@ -24,11 +24,11 @@ ms.locfileid: "75887269"
 
 ## <a name="cause"></a>原因
 
-適用于 views 的索引表（view 的所有索引都儲存在單一實體 Apache HBase 資料表中）會在升級期間截斷
+Views (所有索引的索引資料表都會儲存在單一實體 Apache HBase 資料表中，) 在升級期間截斷
 
 ## <a name="resolution"></a>解決方案
 
-升級之後，請卸載並重新建立所有視圖索引。
+升級之後，請卸載並重新建立所有 view 索引。
 
 ## <a name="next-steps"></a>後續步驟
 

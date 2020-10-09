@@ -12,27 +12,27 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 880ee0a4a1eb396312ea9692b7586d724d6fd410
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75864089"
 ---
 # <a name="sql-server-data-science-walkthroughs-using-r-python-and-t-sql"></a>使用 R、Python 和 T-sql SQL Server 資料科學逐步解說
 
 這些逐步解說會使用 SQL Server、SQL Server R Services 和 SQL Server Python Services 來執行預測性分析。 R 和 Python 程式碼會部署在預存程序中。 其遵循 Team Data Science Process 中所述的步驟。 如需 Team Data Science Process 的概觀，請參閱 [Data Science Process](overview.md)。 
 
-執行小組資料科學程式的其他資料科學逐步解說會依其使用的**平臺**分組。 如需這些範例的列述，請參閱[執行 Team Data Science Process 的逐步解說](walkthroughs.md)。
+執行 Team Data 科學程式的其他資料科學逐步解說，會依其使用的 **平臺** 進行分組。 如需這些範例的列述，請參閱[執行 Team Data Science Process 的逐步解說](walkthroughs.md)。
 
 
 ## <a name="predict-taxi-tips-using-python-and-sql-queries-with-sql-server"></a>使用 Python 和 SQL 查詢搭配 SQL Server 來預測計程車小費 
 
-[使用 SQL Server](sql-walkthrough.md)逐步解說顯示如何建立和部署機器學習服務分類和回歸模型。  資料是公開提供的 NYC 計程車旅程和費用資料集。
+[使用 SQL Server](sql-walkthrough.md)逐步解說顯示如何建立和部署機器學習服務分類和回歸模型。  資料是公開可用的 NYC 計程車行程和費用資料集。
 
 
 ## <a name="predict-taxi-tips-using-microsoft-r-with-sql-server"></a>使用 Microsoft R 搭配 SQL Server 來預測計程車小費 
 
-[使用 SQL Server R Services](https://msdn.microsoft.com/library/mt612857.aspx)逐步解說示範如何建立 R 模型，並將其部署至 SQL Server。 此逐步解說是為了向 R 開發人員介紹 R Services (資料庫內) 所設計。
+[使用 SQL Server R Services](https://msdn.microsoft.com/library/mt612857.aspx)逐步解說會示範如何建立 R 模型，並將其部署至 SQL Server。 此逐步解說是為了向 R 開發人員介紹 R Services (資料庫內) 所設計。
 
 
 ## <a name="predict-taxi-tips-using-r-from-t-sql-or-stored-procedures-with-sql-server"></a>使用 T-SQL 或預存程序中的 R 搭配 SQL Server 來預測計程車小費

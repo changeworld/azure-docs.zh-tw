@@ -1,6 +1,6 @@
 ---
-title: hbase hbck 在 Azure HDInsight 中傳回不一致的情況
-description: hbase hbck 在 Azure HDInsight 中傳回不一致的情況
+title: hbase hbck 會在 Azure HDInsight 中傳回不一致的情況
+description: hbase hbck 會在 Azure HDInsight 中傳回不一致的情況
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
@@ -8,19 +8,19 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/08/2019
 ms.openlocfilehash: fa02ac0dfe229f3e82d1c1c62d83ca06a81efca6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75887320"
 ---
-# <a name="scenario-hbase-hbck-command-returns-inconsistencies-in-azure-hdinsight"></a>案例： `hbase hbck` 命令在 Azure HDInsight 中傳回不一致的情況
+# <a name="scenario-hbase-hbck-command-returns-inconsistencies-in-azure-hdinsight"></a>案例： `hbase hbck` 命令會傳回 Azure HDInsight 中的不一致
 
-本文說明與 Azure HDInsight 叢集互動時，問題的疑難排解步驟和可能的解決方法。
+本文說明與 Azure HDInsight 叢集互動時，問題的疑難排解步驟和可能的解決方式。
 
-## <a name="issue-region-is-not-in-hbasemeta"></a>問題：區域不在`hbase:meta`
+## <a name="issue-region-is-not-in-hbasemeta"></a>問題：區域不在 `hbase:meta`
 
-HDFS 上的 Region xxx，但未列于 `hbase:meta` 或部署于任何區域伺服器上。
+HDFS 上的區域 xxx，但未列于 `hbase:meta` 或部署在任何區域伺服器上。
 
 ### <a name="cause"></a>原因
 
@@ -28,22 +28,22 @@ HDFS 上的 Region xxx，但未列于 `hbase:meta` 或部署于任何區域伺�
 
 ### <a name="resolution"></a>解決方案
 
-1. 執行下列程式來修正中繼資料表：
+1. 藉由執行下列各項來修正中繼資料表：
 
     ```
     hbase hbck -ignorePreCheckPermission –fixMeta
     ```
 
-1. 執行下列程式，將區域指派給 RegionServers：
+1. 藉由執行下列動作，將區域指派給 RegionServers：
 
     ```
     hbase hbck -ignorePreCheckPermission –fixAssignment
     ```
 ---
 
-## <a name="issue-region-is-offline"></a>問題：區域已離線
+## <a name="issue-region-is-offline"></a>問題：區域處於離線狀態
 
-未在任何 RegionServer 上部署 Region xxx。 這表示區域在中 `hbase:meta` ，但離線。
+未在任何 RegionServer 上部署 Region xxx。 這表示區域處於 `hbase:meta` （但離線）。
 
 ### <a name="cause"></a>原因
 
@@ -51,7 +51,7 @@ HDFS 上的 Region xxx，但未列于 `hbase:meta` 或部署于任何區域伺�
 
 ### <a name="resolution"></a>解決方案
 
-執行下列程式，讓區域上線：
+執行下列各項使區域上線：
 
 ```
 hbase hbck -ignorePreCheckPermission –fixAssignment
@@ -67,7 +67,7 @@ hbase hbck -ignorePreCheckPermission –fixAssignment
 
 ### <a name="resolution"></a>解決方案
 
-手動合併那些重迭的區域。 移至 [HBase HMaster Web UI 資料表] 區段中，選取具有問題的 [資料表] 連結。 您會看到屬於該資料表的每個區域的「開始」索引鍵/結束金鑰。 然後合併這些重迭的區域。 在 HBase shell 中，執行 `merge_region 'xxxxxxxx','yyyyyyy', true` 。 例如：
+手動合併這些重迭區域。 移至 HBase HMaster Web UI 資料表區段，選取有問題的資料表連結。 您將會看到屬於該資料表之每個區域的啟動金鑰/結束金鑰。 然後合併這些重迭區域。 在 HBase shell 中，請進行 `merge_region 'xxxxxxxx','yyyyyyy', true` 。 例如：
 
 ```
 RegionA, startkey:001, endkey:010,
@@ -77,17 +77,17 @@ RegionB, startkey:001, endkey:080,
 RegionC, startkey:010, endkey:080.
 ```
 
-在此案例中，您需要合併 RegionA 和 RegionC，並取得與 RegionB 相同的索引鍵範圍的 RegionD，然後合併 RegionB 和 RegionD。 xxxxxxx 和 yyyyyy 是每個區功能變數名稱稱結尾的雜湊字串。 請小心不要合併兩個不連續的區域。 在每次合併之後（例如 merge A 和 C），HBase 會在 RegionD 上啟動壓縮。 等待壓縮完成，再使用 RegionD 進行另一個合併。 您可以在 HBase HMaster UI 中的該區域伺服器頁面上找到壓縮狀態。
+在此案例中，您必須合併 RegionA 和 RegionC，並取得具有與 RegionB 相同索引鍵範圍的 RegionD，然後合併 RegionB 和 RegionD。 >xxxxxxx 和 yyyyyy 是每個區功能變數名稱稱結尾的雜湊字串。 請小心，不要合併兩個不連續的區域。 在每個合併（例如 merge A 和 C）之後，HBase 會在 RegionD 上開始壓縮。 先等待壓縮完成，再使用 RegionD 進行另一個合併。 您可以在 HBase HMaster UI 中的 [區域伺服器] 頁面上找到壓縮狀態。
 
 ---
 
-## <a name="issue-cant-load-regioninfo"></a>問題：無法載入`.regioninfo`
+## <a name="issue-cant-load-regioninfo"></a>問題：無法載入 `.regioninfo`
 
-無法 `.regioninfo` 為區域載入 `/hbase/data/default/tablex/regiony` 。
+無法載入 `.regioninfo` 區域 `/hbase/data/default/tablex/regiony` 。
 
 ### <a name="cause"></a>原因
 
-這很可能是因為在 RegionServer 損毀或 VM 重新開機時，區域部分刪除。 目前，Azure 儲存體是一般 blob 檔案系統，有些檔案作業則不是不可部分完成的。
+這很可能是因為在 RegionServer 損毀或 VM 重新開機時，區域部分刪除的緣故。 目前，Azure 儲存體是一般 blob 檔案系統，某些檔案作業不是不可部分完成的。
 
 ### <a name="resolution"></a>解決方案
 
@@ -95,7 +95,7 @@ RegionC, startkey:010, endkey:080.
 
 1. 執行 `hdfs dfs -ls /hbase/data/default/tablex/regiony` 以檢查仍在其下的資料夾/檔案。
 
-1. 執行 `hdfs dfs -rmr /hbase/data/default/tablex/regiony/filez` 以刪除所有的子檔案/資料夾
+1. 執行 `hdfs dfs -rmr /hbase/data/default/tablex/regiony/filez` 以刪除所有子檔案/資料夾
 
 1. 執行 `hdfs dfs -rmr /hbase/data/default/tablex/regiony` 以刪除區域資料夾。
 

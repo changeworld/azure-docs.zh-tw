@@ -1,7 +1,7 @@
 ---
 title: 使用共用存取簽章的工作流程
 titleSuffix: Microsoft Genomics
-description: 本文示範如何使用共用存取簽章（SAS）（而非儲存體帳戶金鑰）將工作流程提交至 Microsoft Genomics 服務。
+description: 本文示範如何使用共用存取簽章 (SAS) （而非儲存體帳戶金鑰）將工作流程提交至 Microsoft Genomics 服務。
 services: genomics
 author: grhuynh
 manager: cgronlun
@@ -10,17 +10,17 @@ ms.service: genomics
 ms.topic: conceptual
 ms.date: 03/02/2018
 ms.openlocfilehash: d6228762b9a1299d8e9229f7a0f73dc7d0bca2b2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "72248593"
 ---
 # <a name="submit-a-workflow-to-microsoft-genomics-using-a-sas-instead-of-a-storage-account-key"></a>使用 SAS (而非儲存體帳戶金鑰) 將工作流程提交到 Microsoft Genomics 
 
-本文示範如何使用包含[共用存取簽章（SAS）](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1)的 config.txt 檔案（而非儲存體帳戶金鑰），將工作流程提交至 Microsoft Genomics 服務。 如果對於在 config.txt 檔案中看得見儲存體帳戶金鑰有安全性疑慮，這項功能很有用。 
+本文示範如何使用包含共用存取簽章的 config.txt 檔案，將工作流程提交至 Microsoft Genomics 服務 [ (SAS) ](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) 而非儲存體帳戶金鑰。 如果對於在 config.txt 檔案中看得見儲存體帳戶金鑰有安全性疑慮，這項功能很有用。 
 
-本文假設您已安裝並執行 `msgen` 用戶端，且熟悉如何使用 Azure 儲存體。 如果您已使用提供的範例資料成功地提交工作流程，則您已準備好繼續進行本文。 
+本文假設您已安裝並執行 `msgen` 用戶端，且熟悉如何使用 Azure 儲存體。 如果您已使用所提供的範例資料順利提交工作流程，則您已準備好繼續進行這篇文章。 
 
 ## <a name="what-is-a-sas"></a>什麼是 SAS？
 [共用存取簽章 (SAS)](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) 可提供您儲存體帳戶中資源的委派存取。 透過 SAS，您可以對用戶端授與儲存體帳戶中資源的存取權，而不必共用帳戶金鑰。 這是在您應用程式中使用共用存取簽章的重點 - SAS 是共用儲存體資源的安全方式，而不會危害您的帳戶金鑰。
@@ -66,7 +66,7 @@ ms.locfileid: "72248593"
 ## <a name="add-the-sas-to-the-configtxt-file"></a>將 SAS 新增至 config.txt 檔案
 若要使用 SAS 查詢字串透過 Microsoft Genomics 服務來執行工作流程，可編輯 config.txt 檔案，以從 config.txt 檔案中移除金鑰。 然後，將 SAS 查詢字串 (開頭為`?`) 附加至輸出容器名稱，如下所示。 
 
-![Genomics SAS config](./media/quickstart-input-sas/genomics-sas-config.png "Genomics SAS config")
+![Genomics SAS 設定](./media/quickstart-input-sas/genomics-sas-config.png "Genomics SAS 設定")
 
 使用 Microsoft Genomics Python 用戶端搭配下列命令來提交工作流程，並將對應的 SAS 查詢字串附加至每個輸入 Blob 名稱：
 

@@ -1,15 +1,15 @@
 ---
-title: 透過入口網站發佈受管理的應用程式
+title: 透過入口網站發佈受控應用程式
 description: 示範如何使用 Azure 入口網站建立 Azure 受控應用程式，以供組織成員使用。
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: tomfitz
 ms.openlocfilehash: 05302d92f2304be35a7b88fac6fabfc17b13c63e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75651718"
 ---
 # <a name="publish-a-service-catalog-application-through-azure-portal"></a>透過 Azure 入口網站發佈服務類別目錄應用程式
@@ -30,7 +30,7 @@ ms.locfileid: "75651718"
 
 1. 搜尋**服務類別目錄**。
 
-1. 在結果中捲動，直到您找到**服務類別目錄受控應用程式定義**。 請加以選取。
+1. 在結果中捲動，直到您找到**服務類別目錄受控應用程式定義**。 加以選取。
 
    ![搜尋受控應用程式定義](./media/publish-portal/select-managed-apps-definition.png)
 
