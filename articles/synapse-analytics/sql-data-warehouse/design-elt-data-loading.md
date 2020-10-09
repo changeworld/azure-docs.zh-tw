@@ -12,10 +12,10 @@ ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
 ms.openlocfilehash: 1b73b82b4367d50cc5fbe9881a67e0afa041db86
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85201153"
 ---
 # <a name="data-loading-strategies-for-synapse-sql-pool"></a>Synapse SQL 集區的資料載入策略
@@ -46,7 +46,7 @@ ms.locfileid: "85201153"
 5. 轉換資料。
 6. 將資料插入生產資料表。
 
-如需載入教學課程，請參閱[從 Azure blob 儲存體載入資料](load-data-from-azure-blob-storage-using-polybase.md)。
+如需載入教學課程，請參閱 [從 Azure blob 儲存體載入資料](load-data-from-azure-blob-storage-using-polybase.md)。
 
 ## <a name="1-extract-the-source-data-into-text-files"></a>1.將來源資料擷取至文字檔
 
@@ -74,7 +74,7 @@ ms.locfileid: "85201153"
 
 ### <a name="define-the-tables"></a>定義資料表
 
-使用 COPY 語句時，您必須先在 SQL 集區中定義要載入的資料表。
+當您使用 COPY 語句時，必須先定義您要在 SQL 集區中載入的資料表 (s) 。
 
 如果您使用 PolyBase，您必須先在 SQL 集區中定義外部資料表，然後再載入。 PolyBase 使用外部資料表以定義及存取 Azure 儲存體中的資料。 外部資料表類似於資料表檢視。 外部資料表包含資料表結構描述，並指向儲存在 SQL 集區外部的資料。
 
@@ -84,7 +84,7 @@ ms.locfileid: "85201153"
 - [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 - [CREATE EXTERNAL TABLE](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
-載入 Parquet 檔時，請使用下列 SQL 資料類型對應：
+載入 Parquet 檔案時，請使用下列 SQL 資料類型對應：
 
 |                         Parquet 類型                         |   Parquet 邏輯類型 (註釋)   |  SQL 資料類型   |
 | :----------------------------------------------------------: | :-----------------------------------: | :--------------: |
@@ -124,7 +124,7 @@ ms.locfileid: "85201153"
 
 
 
-如需建立外部物件的範例，請參閱[建立外部資料表](https://docs.microsoft.com/azure/synapse-analytics/sql/develop-tables-external-tables?tabs=sql-pool)。
+如需建立外部物件的範例，請參閱 [建立外部資料表](https://docs.microsoft.com/azure/synapse-analytics/sql/develop-tables-external-tables?tabs=sql-pool)。
 
 ### <a name="format-text-files"></a>格式化文字檔
 
@@ -137,16 +137,16 @@ ms.locfileid: "85201153"
 
 ## <a name="4-load-the-data-using-polybase-or-the-copy-statement"></a>4.使用 PolyBase 或 COPY 陳述式載入資料
 
-這是將資料載入暫存資料表的最佳做法。 暫存資料表可讓您處理錯誤，而不會干擾生產資料表。 臨時表也讓您有機會在將資料插入生產資料表之前，先使用 SQL 集區平行處理架構進行資料轉換。
+這是將資料載入暫存資料表的最佳做法。 暫存資料表可讓您處理錯誤，而不會干擾生產資料表。 臨時表也可讓您在將資料插入生產資料表之前，先使用 SQL 集區平行處理架構進行資料轉換。
 
-### <a name="options-for-loading"></a>載入選項
+### <a name="options-for-loading"></a>載入的選項
 
 若要載入資料，您可以使用下列任何一種載入選項：
 
 - [COPY 語句](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)是建議的載入公用程式，因為它可讓您順暢且靈活地載入資料。 此語句有許多 PolyBase 未提供的額外載入功能。 
-- [PolyBase 與 t-sql](load-data-from-azure-blob-storage-using-polybase.md)需要您定義外部資料物件。
+- [PolyBase 與 t-sql](load-data-from-azure-blob-storage-using-polybase.md) 需要您定義外部資料物件。
 - [搭配使用 PolyBase 和 COPY 陳述式與 Azure Data Factory (ADF)](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 是另一個協調工具。  它會定義管線並排程作業。
-- 當您的來源資料在 SQL Server 時[，使用 SSIS 的 PolyBase](/sql/integration-services/load-data-to-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)會良好運作。 SSIS 會定義來源至目的地資料表對應，也會協調載入。 如果您已經有 SSIS 套件，您可以將套件修改為搭配新的資料倉儲目的地。
+- 當您的來源資料位於 SQL Server 時[，具有 SSIS 的 PolyBase](/sql/integration-services/load-data-to-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)會正常運作。 SSIS 會定義來源至目的地資料表對應，也會協調載入。 如果您已經有 SSIS 套件，您可以將套件修改為搭配新的資料倉儲目的地。
 - [搭配使用 PolyBase 與 Azure DataBricks](../../azure-databricks/databricks-extract-load-sql-data-warehouse.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)，可以使用 PolyBase 將資料從資料表移轉到 Databricks 資料框架和/或將資料從 Databricks 資料框架寫入至資料表。
 
 ### <a name="other-loading-options"></a>其他載入選項

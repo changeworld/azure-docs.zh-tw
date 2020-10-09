@@ -11,10 +11,10 @@ ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
 ms.openlocfilehash: de45e338b0b863dc2364af399a6991f56658b0e7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85212270"
 ---
 # <a name="request-quota-increases-and-get-support-for-azure-synapse-analytics"></a>要求增加配額及取得 Azure Synapse Analytics 的支援
@@ -53,23 +53,23 @@ ms.locfileid: "85212270"
 
    ![選取配額類型](./media/sql-data-warehouse-get-started-create-support-ticket/select-quota-type.png)
 
-1. 在**詳細資料**視窗中，選取 [**輸入詳細資料**] 以輸入其他資訊。
+1. 在 [ **詳細資料** ] 視窗中，選取 [ **輸入詳細資料** ] 以輸入其他資訊。
 
    ![「提供詳細資料」連結](./media/sql-data-warehouse-get-started-create-support-ticket/provide-details-link.png)
 
 ## <a name="quota-request-types"></a>配額要求類型
 
-選取 [**輸入詳細資料**] 會顯示 [**配額詳細資料**] 視窗，可讓您新增額外的資訊。 下列各節說明適用於 Azure Synapse Analytics 的不同配額要求。
+選取 [ **輸入詳細資料** ] 會顯示 [ **配額詳細資料** ] 視窗，可讓您新增其他資訊。 下列各節說明適用於 Azure Synapse Analytics 的不同配額要求。
 
-### <a name="synapse-sql-pool-data-warehouse-units-dwus-per-server"></a>每個伺服器的 Synapse SQL 集區資料倉儲單位（Dwu）
+### <a name="synapse-sql-pool-data-warehouse-units-dwus-per-server"></a>針對每部伺服器 (Dwu) Synapse SQL 集區資料倉儲單位
 
 使用下列步驟來要求每個伺服器增加 DWU。
 
-1. 選取每個伺服器配額類型的 [ **SYNAPSE SQL 集區 dwu** ]。
+1. 選取每一伺服器配額類型的 **SYNAPSE SQL 集區 dwu** 。
 
-1. 使用下拉式清單，選取您想要套用配額增加的**資源**。
+1. 使用下拉式清單，選取您要套用配額增加的 **資源** 。
 
-1. 在 [**要求配額**] 區段中輸入新的配額。
+1. 在 [ **要求配額** ] 區段中輸入新的配額。
 
 1. 選取 [儲存並繼續]  。
 
@@ -78,13 +78,13 @@ ms.locfileid: "85212270"
 
 ### <a name="servers-per-subscription"></a>每個訂用帳戶的伺服器
 
-若要要求每個訂用帳戶的伺服器數目增加，您必須完成下列步驟：
+若要要求每個訂用帳戶的伺服器數量增加，您必須完成下列步驟：
 
-1. 選取 [**每個訂**用帳戶的 SQL server] 作為配額類型。
+1. 選取 **每個訂** 用帳戶的 SQL server 做為配額類型。
 
 1. 在 [位置] 清單中，選取要使用的 Azure 區域。 配額是各個區域中的每個訂用帳戶。
 
-1. 在 [**要求配額**] 欄位中，輸入您的要求，以取得該區域中的伺服器數目上限。
+1. 在 [ **要求配額** ] 欄位中，輸入您的要求，以取得該區域中的最大伺服器數目。
 
    ![伺服器配額詳細資料](./media/sql-data-warehouse-get-started-create-support-ticket/quota-details-servers.png)
 
@@ -100,13 +100,13 @@ ms.locfileid: "85212270"
 
 若要啟用訂用帳戶的區域存取，您必須完成下列步驟：  
 
-1. 選取 [ **SYNAPSE SQL 集區（資料倉儲）] 區域存取**配額類型。
+1. 選取 ** (資料倉儲) 區域存取配額類型的 SYNAPSE SQL 集區** 。
 
-1. 從下拉式清單中選擇 [**位置**]，以選取 [區域]。
+1. 從下拉式清單中選擇 **位置** ，以選取區域。
 
-1. 在 [**需要 DWU** ] 區段中指出您的 DWU 效能需求。
+1. 在 [ **需要 DWU** ] 區段中指出您的 DWU 效能需求。
 
-1. 輸入您**的商務需求描述**。 
+1. 輸入您 **的商務需求描述**。 
 
 1. 選取 [儲存並繼續]  。
 
@@ -115,27 +115,27 @@ ms.locfileid: "85212270"
 
 ### <a name="for-other-quota-requests"></a>針對其他配額要求
 
-從其他配額要求類型的 [配額類型] 下拉式功能表中，選取 [**其他配額要求**]：
+從其他配額要求類型的 [配額類型] 下拉式功能表中，選取 [ **其他配額要求** ]：
 
 ![其他配額詳細資料](./media/sql-data-warehouse-get-started-create-support-ticket/quota-details-whitelisting.png)
 
 ## <a name="submit-your-request"></a>提交您的要求
 
-最後一個步驟是填入 SQL Database 支援要求的剩餘詳細資料。 然後選取 **[下一步：審查 + 建立>>] **。
+最後一個步驟是填入 SQL Database 支援要求的剩餘詳細資料。 然後選取 **[下一步：檢查 + 建立>>] **。
 
-![審查建立詳細資料](./media/sql-data-warehouse-get-started-create-support-ticket/review-create-details.png)
+![查看建立詳細資料](./media/sql-data-warehouse-get-started-create-support-ticket/review-create-details.png)
 
-查看要求詳細資料之後，請選取 [**建立**] 以提交要求。
+檢查要求詳細資料之後，請選取 [ **建立** ] 以提交要求。
 
 ![建立票證](./media/sql-data-warehouse-get-started-create-support-ticket/create-ticket.png)
 
 ## <a name="monitor-a-support-ticket"></a>監視支援票證
 
-在您提交支援要求之後，Azure 支援小組會與您連絡。 若要檢查您的要求狀態和詳細資料，請選取儀表板上的 [**所有支援要求**]。
+在您提交支援要求之後，Azure 支援小組會與您連絡。 若要檢查您的要求狀態和詳細資料，請在儀表板上選取 [ **所有支援要求** ]。
 
 ![檢查狀態](./media/sql-data-warehouse-get-started-create-support-ticket/monitor-ticket.png)
 
 ## <a name="other-resources"></a>其他資源
 
-您也可以在[Stack Overflow](https://stackoverflow.com/questions/tagged/azure-synapse+or+azure-sql-data-warehouse)上，或透過[azure Synapse Analytics 的 Microsoft Q&問題頁面](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html)，連接到 azure Synapse 分析的論壇。
+您也可以在 [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-synapse+or+azure-sql-data-warehouse) 上或透過 [Microsoft 問&Azure Synapse Analytics 的問題頁面](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html)，與 Azure Synapse Analytics 社區進行連接。
 

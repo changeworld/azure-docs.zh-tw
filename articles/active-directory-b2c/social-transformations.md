@@ -1,7 +1,7 @@
 ---
 title: 自訂原則的社交帳戶宣告轉換範例
 titleSuffix: Azure AD B2C
-description: Azure Active Directory B2C 的 Identity Experience Framework （IEF）架構的社交帳戶宣告轉換範例。
+description: Identity Experience Framework (IEF) Azure Active Directory B2C 架構的社交帳戶宣告轉換範例。
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,17 +12,17 @@ ms.date: 09/10/2018
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: eaa2984c0d7a5d3763f554e39f687fdbd2865e96
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85203379"
 ---
 # <a name="social-accounts-claims-transformations"></a>社交帳戶宣告轉換
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-在 Azure Active Directory B2C （Azure AD B2C）中，社交帳戶身分識別會儲存在 `userIdentities` **alternativeSecurityIdCollection**宣告類型的屬性中。 **alternativeSecurityIdCollection** 中的每個項目會指定簽發者 (識別提供者名稱，例如 facebook.com)，以及 `issuerUserId`，這是簽發者的唯一使用者識別碼。
+在 Azure Active Directory B2C (Azure AD B2C) ，社交帳戶身分識別會儲存在 `userIdentities` **alternativeSecurityIdCollection** 宣告類型的屬性中。 **alternativeSecurityIdCollection** 中的每個項目會指定簽發者 (識別提供者名稱，例如 facebook.com)，以及 `issuerUserId`，這是簽發者的唯一使用者識別碼。
 
 ```json
 "userIdentities": [{
@@ -39,7 +39,7 @@ ms.locfileid: "85203379"
 
 ## <a name="createalternativesecurityid"></a>CreateAlternativeSecurityId
 
-建立使用者 alternativeSecurityId 屬性的 JSON 表示法，該屬性可用於對 Azure Active Directory 進行呼叫。 如需詳細資訊，請參閱[AlternativeSecurityId](https://docs.microsoft.com/graph/api/resources/alternativesecurityid)架構。
+建立使用者 alternativeSecurityId 屬性的 JSON 表示法，該屬性可用於對 Azure Active Directory 進行呼叫。 如需詳細資訊，請參閱 [>alternativesecurityid](https://docs.microsoft.com/graph/api/resources/alternativesecurityid) 架構。
 
 | Item | TransformationClaimType | 資料類型 | 注意 |
 | ---- | ----------------------- | --------- | ----- |
@@ -147,7 +147,7 @@ ms.locfileid: "85203379"
 1. 在 **AAD-UserReadUsingAlternativeSecurityId** 和 **AAD-UserReadUsingObjectId** 技術設定檔中，輸出使用者的 **alternativeSecurityIds** 宣告。
 2. 要求使用者選取要從與該使用者相關聯之識別提供者清單中移除的社交帳戶。
 3. 以識別提供者名稱呼叫宣告轉換技術設定檔，該設定檔會呼叫 **RemoveAlternativeSecurityIdByIdentityProvider** 宣告轉換，而該轉換會移除選取的社交身分識別。
-4. 將**alternativeSecurityIds**宣告保存至使用者帳戶。
+4. 將 **>alternativesecurityids** 宣告保存至使用者帳戶。
 
 ```xml
 <ClaimsTransformation Id="RemoveAlternativeSecurityIdByIdentityProvider" TransformationMethod="RemoveAlternativeSecurityIdByIdentityProvider">

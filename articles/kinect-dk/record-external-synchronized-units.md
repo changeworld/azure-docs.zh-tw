@@ -1,42 +1,42 @@
 ---
 title: 使用 Azure Kinect 錄製器搭配外部同步處理的裝置
-description: 瞭解如何使用 Azure Kinect 錄製器，從設定外部同步處理的裝置記錄資料。
+description: 瞭解如何使用 Azure Kinect 錄製器來記錄已設定進行外部同步處理的裝置資料。
 author: tesych
 ms.author: tesych
 ms.reviewer: jawirth
 ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
-keywords: Kinect、感應器、檢視器、外部同步處理、階段延遲、深度、RGB、相機、音訊纜線、答錄機
+keywords: Kinect、感應器、檢視器、外部同步處理、階段延遲、深度、RGB、攝影機、音訊纜線、錄製器
 ms.openlocfilehash: 052f6f1ac9f90e764de25d1d4d1b25b3d50a848d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85276461"
 ---
 # <a name="use-azure-kinect-recorder-with-external-synchronized-devices"></a>使用 Azure Kinect 錄製器搭配外部同步處理的裝置
 
-本文提供[Azure Kinect 錄製](azure-kinect-recorder.md)器如何記錄外部同步處理已設定裝置的資料的指引。
+本文提供 [Azure Kinect 錄製](azure-kinect-recorder.md) 器如何記錄資料外部同步處理設定裝置的指引。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-- [設定多個 Azure Kinect DK 單位進行外部同步](https://support.microsoft.com/help/4494429)處理。
+- [針對外部同步處理設定多個 Azure Kinect DK 單位](https://support.microsoft.com/help/4494429)。
 
 ## <a name="external-synchronization-constraints"></a>外部同步處理條件約束
 
-- 主要裝置無法在纜線連線時同步。
-- 主要裝置必須串流 RGB 攝影機以啟用同步處理。
-- 所有單位都必須使用相同的相機設定（畫面播放速率和解析度）。
-- 所有單位都必須執行相同的裝置固件（[更新固件](update-device-firmware.md)指示）。
-- 所有從屬裝置都必須在主要裝置之前啟動。
-- 應該在所有裝置上設定相同的風險值。
-- 每個從屬的*延遲關閉主要*設定是相對於主要裝置。
+- 主要裝置無法在連接纜線時進行同步處理。
+- 主要裝置必須串流 RGB 攝影機才能啟用同步處理。
+- 所有單位都必須使用相同的相機設定 (的畫面播放速率和解析度) 。
+- 所有單位都必須執行相同的裝置固件 ([更新固件](update-device-firmware.md) 指示) 。
+- 所有次級裝置都必須在主要裝置之前啟動。
+- 您應該在所有裝置上設定相同的曝光值。
+- 每個從屬的 *延遲主要* 設定都是相對於主要裝置。
 
-## <a name="record-when-each-unit-has-a-host-pc"></a>記錄每個單位是否有主機電腦
+## <a name="record-when-each-unit-has-a-host-pc"></a>記錄每個單位有主機電腦的時間
 
-在下列範例中，每個裝置都有自己的專用主機電腦。
-建議您將裝置連接到專用的電腦，以避免發生 USB 頻寬和 CPU/GPU 使用量的問題。
+在下列範例中，每個裝置都有專屬的專用主機電腦。
+建議您將裝置連線到專用電腦，以防止 USB 頻寬和 CPU/GPU 使用量發生問題。
 
 ### <a name="subordinate-1"></a>次級-1
 
@@ -55,7 +55,7 @@ ms.locfileid: "85276461"
 
 ### <a name="subordinate-2"></a>次級-2
 
-1. 設定第二個單元的錄製器
+1. 設定第二個單位的錄製器
 
     `k4arecorder.exe --external-sync sub -e -8 -r 5 -l 10 sub2.mkv`
 
@@ -70,21 +70,21 @@ ms.locfileid: "85276461"
 
 ### <a name="master"></a>Master
 
-1. 在 master 上開始錄製
+1. 開始在 master 上錄製
 
     `>k4arecorder.exe --external-sync master -e -8 -r 5 -l 10 master.mkv`
 
-2. 等待錄製完成
+2. 等候記錄完成
 
-## <a name="recording-when-multiple-units-connected-to-single-host-pc"></a>當多個單位連線到單一主機電腦時錄製
+## <a name="recording-when-multiple-units-connected-to-single-host-pc"></a>多個單位連接到單一主機電腦時錄製
 
-您可以讓多個 Azure Kinect DKs 連線到單一主機電腦。 不過，這可能非常要求 USB 頻寬和主機計算。 若要降低需求：
+您可以有多個 Azure Kinect DKs 連接到單一主機電腦。 不過，這可能會非常要求 USB 頻寬和主機計算。 若要減少需求：
 
 - 將每部裝置連線到自己的 USB 主機控制器。
 - 具有強大的 GPU，可處理每個裝置的深度引擎。
 - 只記錄所需的感應器，並使用較低的畫面播放速率。
 
-一律會先啟動次級裝置，最後才是主要節點。
+一律先啟動次級裝置，最後再啟動主要裝置。
 
 ## <a name="subordinate-1"></a>次級-1
 
@@ -100,27 +100,27 @@ ms.locfileid: "85276461"
 
     `>k4arecorder.exe --device 0 --external-sync master --imu OFF -e -8 -r 5 -l 5 output-1.mkv`
 
-2. 等待錄製完成
+2. 等候錄製完成
 
 ## <a name="playing-recording"></a>播放錄製
 
-您可以使用[Azure Kinect viewer](azure-kinect-viewer.md)播放錄製。
+您可以使用 [Azure Kinect 檢視器](azure-kinect-viewer.md) 播放錄製。
 
 
 
 ## <a name="tips"></a>提示
 
-- 使用手動曝光來錄製已同步處理的相機。 RGB 相機自動曝光可能會影響時間同步處理。
+- 使用手動曝光來錄製同步攝影機。 RGB 相機自動曝光可能會影響時間同步處理。
 - 重新開機次級裝置會導致同步處理遺失。
-- 某些[相機模式](hardware-specification.md#depth-camera-supported-operating-modes)支援 15 fps max。我們建議您不要在裝置之間混合使用模式/畫面播放速率
-- 將多個單位連接到單一電腦很容易就能將 USB 頻寬飽和，請考慮為每個裝置使用個別的主機電腦。 也請注意 CPU/GPU 計算。
-- 停用麥克風和 IMU （如果不需要的話）來改善可靠性。
+- 某些 [相機模式](hardware-specification.md#depth-camera-supported-operating-modes) 支援 15 fps max。建議您不要在裝置之間混合使用模式/畫面播放速率
+- 將多個單位連接到單一電腦可以輕鬆地將 USB 頻寬飽和，請考慮針對每部裝置使用不同的主機電腦。 也請留意 CPU/GPU 計算。
+- 如果不需要麥克風和 IMU 來改善可靠性，請加以停用。
 
-如有任何問題，請參閱[疑難排解](troubleshooting.md)
+如有任何問題，請參閱 [疑難排解](troubleshooting.md)
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 
 - [設定外部同步處理](https://support.microsoft.com/help/4494429/sync-multiple-devices)
 - 適用于錄製器設定的[Azure Kinect 錄製](azure-kinect-recorder.md)器和其他資訊。
-- 用於播放錄製或設定 RGB 相機屬性的[Azure Kinect Viewer](azure-kinect-viewer.md)無法透過錄製器使用。
+- 適用于播放錄製的[Azure Kinect 檢視器](azure-kinect-viewer.md)，或設定無法透過錄製器使用的 RGB 相機屬性。
 - 用來更新裝置固件的[Azure Kinect 固件工具](azure-kinect-firmware-tool.md)。

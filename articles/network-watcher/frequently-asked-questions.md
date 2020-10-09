@@ -1,6 +1,6 @@
 ---
-title: 關於 Azure 網路監看員的常見問題（FAQ） |Microsoft Docs
-description: 本文會回答有關 Azure 網路監看員服務的常見問題。
+title: 有關 Azure 網路監看員 (常見問題) 的常見問題 |Microsoft Docs
+description: 本文將回答有關 Azure 網路監看員服務的常見問題。
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -14,97 +14,97 @@ ms.workload: infrastructure-services
 ms.date: 10/10/2019
 ms.author: damendo
 ms.openlocfilehash: b48aab918b477f5c689a50ca476b0b1336642f0f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77471851"
 ---
-# <a name="frequently-asked-questions-faq-about-azure-network-watcher"></a>關於 Azure 網路監看員的常見問題（FAQ）
-[Azure 網路監看員](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview)服務提供一套工具，可用來監視、診斷、查看計量，以及啟用或停用 Azure 虛擬網路中的資源記錄。 本文會回答有關此服務的常見問題。
+# <a name="frequently-asked-questions-faq-about-azure-network-watcher"></a>有關 Azure 網路監看員 (常見問題) 的常見問題
+[Azure 網路](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview)監看員服務提供一套工具，可用來監視、診斷、查看計量，以及啟用或停用 Azure 虛擬網路中的資源記錄。 本文將回答有關此服務的常見問題。
 
 ## <a name="general"></a>一般
 
 ### <a name="what-is-network-watcher"></a>什麼是網路監看員？
-網路監看員的設計是用來監視和修復 IaaS （基礎結構即服務）元件的網路健全狀況，其中包括虛擬機器、虛擬網路、應用程式閘道、負載平衡器，以及 Azure 虛擬網路中的其他資源。 它不是用來監視 PaaS （平臺即服務）基礎結構或取得 web/行動分析的解決方案。
+網路監看員是設計用來監視和修復 IaaS (基礎結構即服務) 元件的網路健康情況，其中包括虛擬機器、虛擬網路、應用程式閘道、負載平衡器，以及 Azure 虛擬網路中的其他資源。 它不是監視 PaaS (平臺即服務) 基礎結構或取得 web/行動分析的解決方案。
 
-### <a name="what-tools-does-network-watcher-provide"></a>網路監看員提供哪些工具？
-網路監看員提供三組主要的功能
+### <a name="what-tools-does-network-watcher-provide"></a>網路監看員所提供的工具有哪些？
+網路監看員提供三個主要的功能集
 * 監視
-  * [[拓撲] 視圖](https://docs.microsoft.com/azure/network-watcher/view-network-topology)會顯示虛擬網路中的資源，以及它們之間的關聯性。
-  * [連接監視器](https://docs.microsoft.com/azure/network-watcher/connection-monitor)可讓您監視 VM 與另一個網路資源之間的連線和延遲。
-  * [網路效能監視器](https://docs.microsoft.com/azure/azure-monitor/insights/network-performance-monitor)可讓您監視混合式網路架構、Expressroute 線路和服務/應用程式端點之間的連線能力和延遲。  
+  * [拓撲視圖](https://docs.microsoft.com/azure/network-watcher/view-network-topology) 會顯示您的虛擬網路中的資源，以及它們之間的關聯性。
+  * 連線[監視器](https://docs.microsoft.com/azure/network-watcher/connection-monitor)可讓您監視 VM 與另一個網路資源之間的連線能力和延遲。
+  * [網路效能監視器](https://docs.microsoft.com/azure/azure-monitor/insights/network-performance-monitor) 可讓您監視混合式網路架構、Expressroute 線路和服務/應用程式端點之間的連線能力和延遲。  
 * 診斷
-  * [IP 流量驗證](https://docs.microsoft.com/azure/network-watcher/network-watcher-ip-flow-verify-overview)可讓您偵測 VM 層級的流量篩選問題。
-  * [下一個躍點](https://docs.microsoft.com/azure/network-watcher/network-watcher-next-hop-overview)可協助您驗證流量路由和偵測路由問題。
-  * 連線[疑難排解](https://docs.microsoft.com/azure/network-watcher/network-watcher-connectivity-portal)可讓 VM 與另一個網路資源之間進行一次性的連線和延遲檢查。
-  * 封[包捕獲](https://docs.microsoft.com/azure/network-watcher/network-watcher-packet-capture-overview)可讓您在虛擬網路中的 VM 上，捕捉所有流量。
-  * [Vpn 疑難排解](https://docs.microsoft.com/azure/network-watcher/network-watcher-troubleshoot-overview)會針對您的 VPN 閘道和連線執行多個診斷檢查，以協助進行偵錯工具的問題。
+  * [IP 流量驗證](https://docs.microsoft.com/azure/network-watcher/network-watcher-ip-flow-verify-overview) 可讓您偵測 VM 層級的流量篩選問題。
+  * [下一個躍點](https://docs.microsoft.com/azure/network-watcher/network-watcher-next-hop-overview) 可協助您確認流量路由，以及偵測路由問題。
+  * 連線[疑難排解](https://docs.microsoft.com/azure/network-watcher/network-watcher-connectivity-portal)可在 VM 與另一個網路資源之間啟用一次性連線和延遲檢查。
+  * 封[包捕獲](https://docs.microsoft.com/azure/network-watcher/network-watcher-packet-capture-overview)可讓您在虛擬網路中的 VM 上捕獲所有流量。
+  * [Vpn 疑難排解](https://docs.microsoft.com/azure/network-watcher/network-watcher-troubleshoot-overview) 會針對 VPN 閘道和連線執行多個診斷檢查，以協助偵測問題。
 * 記錄
-  * [NSG 流量記錄](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview)可讓您記錄[網路安全性群組（nsg）](https://docs.microsoft.com/azure/virtual-network/security-overview)中的所有流量
-  * 使用[分析](https://docs.microsoft.com/azure/network-watcher/traffic-analytics)會處理您的 NSG 流量記錄資料，讓您可以視覺化、查詢、分析及瞭解您的網路流量。
+  * [NSG 流量記錄](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview) 可讓您將網路安全性群組中的所有流量記錄 [ (nsg) ](https://docs.microsoft.com/azure/virtual-network/security-overview)
+  * 使用[分析](https://docs.microsoft.com/azure/network-watcher/traffic-analytics)可處理您的 NSG 流量記錄資料，讓您能夠視覺化、查詢、分析及瞭解您的網路流量。
 
 
-如需詳細資訊，請參閱[網路監看員總覽頁面](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview)。
+如需詳細資訊，請參閱網路監看員 [總覽頁面](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview)。
 
 
-### <a name="how-does-network-watcher-pricing-work"></a>網路監看員定價如何運作？
-請流覽[定價頁面](https://azure.microsoft.com/pricing/details/network-watcher/)以取得網路監看員元件和其定價。
+### <a name="how-does-network-watcher-pricing-work"></a>網路監看員價格如何運作？
+流覽網路監看員元件的 [定價頁面](https://azure.microsoft.com/pricing/details/network-watcher/) 及其定價。
 
-### <a name="which-regions-is-network-watcher-supportedavailable-in"></a>網路監看員支援/提供哪些區域？
+### <a name="which-regions-is-network-watcher-supportedavailable-in"></a>哪些區域支援/提供網路監看員？
 您可以在[Azure 服務可用性頁面](https://azure.microsoft.com/global-infrastructure/services/?products=network-watcher)上查看最新的區域可用性
 
 ### <a name="which-permissions-are-needed-to-use-network-watcher"></a>使用網路監看員需要哪些許可權？
-請參閱[使用網路監看員所需的 RBAC 許可權](https://docs.microsoft.com/azure/network-watcher/required-rbac-permissions)清單。 若要部署資源，您需要 NetworkWatcherRG 的「參與者」許可權（請參閱下文）。
+請參閱使用網路監看員 [所需的 RBAC 許可權](https://docs.microsoft.com/azure/network-watcher/required-rbac-permissions)清單。 若要部署資源，您需要 NetworkWatcherRG 的參與者許可權 (請參閱以下) 。
 
 ### <a name="how-do-i-enable-network-watcher"></a>如何啟用網路監看員？
-系統會針對每個訂用帳戶[自動啟用](https://azure.microsoft.com/updates/azure-network-watcher-will-be-enabled-by-default-for-subscriptions-containing-virtual-networks/)網路監看員服務。
+每個訂用帳戶都會 [自動啟用](https://azure.microsoft.com/updates/azure-network-watcher-will-be-enabled-by-default-for-subscriptions-containing-virtual-networks/) 網路監看員服務。
 
 ### <a name="what-is-the-network-watcher-deployment-model"></a>什麼是網路監看員部署模型？
-網路監看員的父資源會在每個區域中使用唯一的實例進行部署。 命名格式： NetworkWatcher_RegionName。 範例： NetworkWatcher_centralus 是「美國中部」區域的網路監看員資源。
+網路監看員父資源會在每個區域中部署唯一的實例。 命名格式： NetworkWatcher_RegionName。 範例： NetworkWatcher_centralus 是「美國中部」區域的網路監看員資源。
 
 ### <a name="what-is-the-networkwatcherrg"></a>什麼是 NetworkWatcherRG？
-網路監看員資源位於隱藏的**NetworkWatcherRG**資源群組中，會自動建立。 例如，NSG 流量記錄資源是網路監看員的子資源，而且會在 NetworkWatcherRG 中啟用。
+網路監看員資源位於已自動建立的隱藏 **NetworkWatcherRG** 資源群組中。 例如，NSG 流量記錄資源是網路監看員的子資源，而且會在 NetworkWatcherRG 中啟用。
 
-### <a name="why-do-i-need-to-install-the-network-watcher-extension"></a>為什麼需要安裝網路監看員延伸模組？ 
-需要產生或攔截 VM 流量的任何功能都需要網路監看員延伸模組。 
+### <a name="why-do-i-need-to-install-the-network-watcher-extension"></a>為什麼我需要安裝網路監看員延伸模組？ 
+需要產生或攔截 VM 流量的任何功能都需要網路監看員擴充功能。 
 
 ### <a name="which-features-require-the-network-watcher-extension"></a>哪些功能需要網路監看員延伸模組？
-「封包捕獲」、「連線疑難排解」和「連線監視器」功能都需要有網路監看員延伸模組。
+封包捕獲、連線疑難排解和連線監視器功能都需要有網路監看員延伸模組。
 
-### <a name="what-are-resource-limits-on-network-watcher"></a>網路監看員上的資源限制為何？
-如需所有限制，請參閱[服務限制](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#network-watcher-limits)頁面。  
+### <a name="what-are-resource-limits-on-network-watcher"></a>網路監看員的資源限制為何？
+查看 [ [服務限制](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#network-watcher-limits) ] 頁面中的所有限制。  
 
 ### <a name="why-is-only-one-instance-of-network-watcher-allowed-per-region"></a>為什麼每個區域只允許一個網路監看員實例？ 
-網路監看員只需要針對訂用帳戶啟用一次，它的功能才能正常執行，這不是服務的限制。
+網路監看員只需要啟用一次，訂用帳戶的功能才能運作，這不是服務限制。
 
 ### <a name="how-can-i-manage-the-network-watcher-resource"></a>如何管理網路監看員資源？ 
-網路監看員資源代表網路監看員的後端服務，而且完全由 Azure 管理。 客戶不需要管理它。 資源不支援移動之類的作業。 不過，您[可以刪除資源](https://docs.microsoft.com/azure/network-watcher/network-watcher-create#delete-a-network-watcher-in-the-portal)。 
+網路監看員資源代表網路監看員的後端服務，完全由 Azure 管理。 客戶不需要管理它。 資源不支援移動等作業。 不過，您 [可以刪除資源](https://docs.microsoft.com/azure/network-watcher/network-watcher-create#delete-a-network-watcher-in-the-portal)。 
 
 ## <a name="nsg-flow-logs"></a>NSG 流量記錄
 
-### <a name="what-does-nsg-flow-logs-do"></a>NSG 流量記錄有哪些功能？
-您可以透過[網路安全性群組（nsg）](https://docs.microsoft.com/azure/virtual-network/security-overview)結合和管理 Azure 網路資源。 NSG 流量記錄可讓您透過 Nsg 記錄所有流量的5個元組流量資訊。 未經處理的流量記錄會寫入 Azure 儲存體帳戶，讓您可以視需要進一步進行處理、分析、查詢或匯出。
+### <a name="what-does-nsg-flow-logs-do"></a>NSG 流量記錄有何用途？
+您可以透過 [網路安全性群組 (nsg) ](https://docs.microsoft.com/azure/virtual-network/security-overview)來結合和管理 Azure 網路資源。 NSG 流量記錄可讓您透過 Nsg 記錄有關所有流量的5元組流量資訊。 原始流量記錄會寫入 Azure 儲存體帳戶，以便在必要時進行進一步的處理、分析、查詢或匯出。
 
 ### <a name="how-do-i-use-nsg-flow-logs-with-a-storage-account-behind-a-firewall"></a>如何? 將 NSG 流量記錄與防火牆後方的儲存體帳戶搭配使用？
 
-若要使用防火牆後方的儲存體帳戶，您必須為受信任的 Microsoft 服務提供例外狀況，才能存取您的儲存體帳戶：
+若要使用位於防火牆後方的儲存體帳戶，您必須針對受信任的 Microsoft 服務提供例外狀況，以存取您的儲存體帳戶：
 
-* 在入口網站上的全域搜尋中，或從 [[儲存體帳戶] 頁面](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Storage%2FStorageAccounts)輸入儲存體帳戶的名稱，以流覽至儲存體帳戶。
+* 流覽至儲存體帳戶，方法是在入口網站的 [全域搜尋] 中輸入儲存體帳戶的名稱，或在 [[儲存體帳戶] 頁面](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Storage%2FStorageAccounts)中輸入儲存體帳戶的名稱。
 * 在 [設定]**** 區段下，選取 [防火牆和虛擬網路]****
-* 在 [允許存取來源] 中，選取 [**選取的網路**]。 然後在 [**例外**狀況] 底下，勾選 [**允許受信任的 Microsoft 服務存取此儲存體帳戶**] 旁的方塊 
+* 在 [允許存取來源] 中，選取 [ **選取的網路**]。 然後，在 [**例外**狀況] 下，勾選 [**允許信任的 Microsoft 服務存取此儲存體帳戶**] 旁邊的方塊。 
 * 如果早已選取，則不需要再變更。  
-* 在 [ [NSG 流量記錄] 總覽頁面](https://ms.portal.azure.com/#blade/Microsoft_Azure_Network/NetworkWatcherMenuBlade/flowLogs)上找出您的目標 NSG，並啟用已選取上述儲存體帳戶的 NSG 流量記錄。
+* 在 [ [NSG 流量記錄] 總覽頁面](https://ms.portal.azure.com/#blade/Microsoft_Azure_Network/NetworkWatcherMenuBlade/flowLogs) 上找出您的目標 NSG，並在選取上述儲存體帳戶的情況啟用 NSG 流量記錄。
 
 您可以在幾分鐘後檢查儲存體記錄，屆時應該就會看到已更新的時間戳記或新建立的 JSON 檔案。
 
-### <a name="how-do-i-use-nsg-flow-logs-with-a-storage-account-behind-a-service-endpoint"></a>如何? 在服務端點後方的儲存體帳戶中使用 NSG 流量記錄嗎？
+### <a name="how-do-i-use-nsg-flow-logs-with-a-storage-account-behind-a-service-endpoint"></a>如何? 將 NSG 流量記錄與服務端點後方的儲存體帳戶搭配使用？
 
-NSG 流量記錄與服務端點相容，而不需要任何額外的設定。 請參閱在虛擬網路中[啟用服務端點的教學](https://docs.microsoft.com/azure/virtual-network/tutorial-restrict-network-access-to-resources#enable-a-service-endpoint)課程。
+NSG 流量記錄與服務端點相容，而不需要進行任何額外的設定。 請參閱教學課程，以瞭解如何在虛擬網路中 [啟用服務端點](https://docs.microsoft.com/azure/virtual-network/tutorial-restrict-network-access-to-resources#enable-a-service-endpoint) 。
 
 
-### <a name="what-is-the-difference-between-flow-logs-versions-1--2"></a>流量記錄版本 1 & 2 之間的差異為何？
-流量記錄第2版引進了*流程狀態*的概念，& 儲存傳輸位元組和封包的相關資訊。 [閱讀更多](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview#log-file)。
+### <a name="what-is-the-difference-between-flow-logs-versions-1--2"></a>Flow 記錄第1版 & 2 之間有何差異？
+流程記錄第2版引進了 *流程狀態* 的概念，& 儲存傳送的位元組和封包的相關資訊。 [閱讀其他資訊](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview#log-file)。
 
 ## <a name="next-steps"></a>後續步驟
- - 請前往我們的[檔集總覽頁面](https://docs.microsoft.com/azure/network-watcher/)，瞭解一些教學課程，讓您開始使用網路監看員。
+ - 請前往我們的 [檔總覽頁面](https://docs.microsoft.com/azure/network-watcher/) ，取得一些可協助您開始使用網路監看員的教學課程。

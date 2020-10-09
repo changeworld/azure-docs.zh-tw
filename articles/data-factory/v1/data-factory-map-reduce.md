@@ -13,10 +13,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 598a16d25ba375b984a966cba190181edbda3d15
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74703142"
 ---
 # <a name="invoke-mapreduce-programs-from-data-factory"></a>從 Data Factory 叫用 MapReduce 程式
@@ -36,7 +36,7 @@ ms.locfileid: "74703142"
 > 本文適用於 Data Factory 第 1 版。 如果您使用目前版本的 Data Factory 服務，請參閱[在 Data Factory 中使用 MapReduce 活動來轉換資料](../transform-data-using-hadoop-map-reduce.md)。
 
 
-Data Factory[管線](data-factory-create-pipelines.md)中的 HDInsight MapReduce 活動會在[您自己](data-factory-compute-linked-services.md#azure-hdinsight-linked-service)或[隨選](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service)的 Windows/Linux 型 HDInsight 叢集上執行 MapReduce 程式。 本文是根據 [資料轉換活動](data-factory-data-transformation-activities.md) 一文，它呈現資料轉換和支援的轉換活動的一般概觀。
+Data Factory [管線](data-factory-create-pipelines.md) 中的 HDInsight MapReduce 活動會在 [您自己](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) 或 [隨選](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) Windows/Linux 為基礎的 HDInsight 叢集上執行 MapReduce 程式。 本文是根據 [資料轉換活動](data-factory-data-transformation-activities.md) 一文，它呈現資料轉換和支援的轉換活動的一般概觀。
 
 > [!NOTE] 
 > 如果您是 Azure Data Factory 的新手，請在閱讀本文章之前閱讀 [Azure Data Factory 簡介](data-factory-introduction.md)，以及研習教學課程：[建置您的第一個資料管線](data-factory-build-your-first-pipeline.md)。  
@@ -135,7 +135,7 @@ Azure Data Factory 中的「管線」會使用連結的計算服務，來處理�
 ```
 
 #### <a name="azure-hdinsight-linked-service"></a>Azure HDInsight 連結服務
-接著，建立連結的服務，將 Azure HDInsight 叢集連結到 Azure Data Factory。 如果您複製/貼上下列程式碼，請將**hdinsight 叢集名稱**取代為您的 hdinsight 叢集名稱，並變更使用者名稱和密碼值。   
+接著，建立連結的服務，將 Azure HDInsight 叢集連結到 Azure Data Factory。 如果您複製/貼上下列程式碼，請使用您的 HDInsight 叢集名稱取代 **hdinsight 叢集名稱** ，然後變更使用者名稱和密碼值。   
 
 ```JSON
 {
@@ -181,9 +181,9 @@ Azure Data Factory 中的「管線」會使用連結的計算服務，來處理�
 ### <a name="pipeline"></a>管線
 此範例中的管線只含有一個類型為 HDInsightMapReduce 的活動。 JSON 中的幾個重要屬性如下： 
 
-| 屬性 | 備註 |
+| 屬性 | 注意 |
 |:--- |:--- |
-| 類型 |類型必須設為 **HDInsightMapReduce**。 |
+| type |類型必須設為 **HDInsightMapReduce**。 |
 | className |類別的名稱是： **wordcount** |
 | jarFilePath |包含類別的 Jar 檔案路徑。 如果您複製/貼上下列程式碼，請記得變更叢集的名稱。 |
 | jarLinkedService |包含 Jar 檔案的 Azure 儲存體連結服務。 這個連結服務會參考與 HDInsight 叢集關聯的儲存體。 |

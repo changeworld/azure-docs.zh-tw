@@ -13,15 +13,15 @@ ms.workload: infrastructure
 ms.date: 11/20/2019
 ms.author: vilibert
 ms.openlocfilehash: 37cb201751f72918838efe5837aa0e357d483f24
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74408738"
 ---
 # <a name="troubleshoot-azure-linux-virtual-machines-boot-errors"></a>針對 Azure Linux 虛擬機器開機錯誤進行疑難排解
 
-本文列出當您在 Microsoft Azure 中啟動 Linux 虛擬機器（VM）時，可能會收到的常見開機錯誤。 如需這些錯誤的詳細資訊，請參閱**開機錯誤和解決方案**一節中的文章。
+本文列出當您在 Microsoft Azure 中啟動 Linux 虛擬機器 (VM) 時，可能會收到的常見開機錯誤。 如需這些錯誤的詳細資訊，請參閱**開機錯誤和解決方案**一節中的文章。
 
 ## <a name="boot-errors-and-solutions"></a>開機錯誤和解決方案
 
@@ -35,7 +35,7 @@ ms.locfileid: "74408738"
 
 - [Azure VM 修復](repair-linux-vm-using-azure-virtual-machine-repair-commands.md)
 
- 磁片交換–這可以使用下列其中一種方式來自動化：
+ 磁片交換–可使用下列其中一種方式自動化：
 - [Power Shell 修復腳本](https://github.com/Azure/azure-support-scripts/tree/master/VMRecovery/ResourceManager)
 - [bash 復原指令碼](https://github.com/sribs/azure-support-scripts)
 
@@ -49,4 +49,4 @@ ms.locfileid: "74408738"
 
 ## <a name="unofficial-solution"></a>非官方解決方案
 
-也可以使用不支援的搶鮮版（BETA）腳本[ALAR](https://github.com/malachma/azure-auto-recover)來嘗試復原 VM
+您也可以嘗試使用不支援的 BETA 腳本來復原 VM [ALAR](https://github.com/malachma/azure-auto-recover)

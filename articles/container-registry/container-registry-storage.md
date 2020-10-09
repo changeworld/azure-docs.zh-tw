@@ -4,10 +4,10 @@ description: 有關您的 Docker 容器映像如何儲存在 Azure Container Reg
 ms.topic: article
 ms.date: 06/18/2020
 ms.openlocfilehash: d51014e9e0769091aba42682cce3a6a01cfa19de
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85214055"
 ---
 # <a name="container-image-storage-in-azure-container-registry"></a>Azure Container Registry 中的容器映像儲存體
@@ -16,7 +16,7 @@ ms.locfileid: "85214055"
 
 ## <a name="encryption-at-rest"></a>待用資料加密
 
-您登錄中的所有容器映像在待用時都已加密。 Azure 會在儲存映像之前自動將它加密，並在您的應用程式或服務提取映像時將它解密。 選擇性地使用[客戶管理的金鑰](container-registry-customer-managed-keys.md)來套用額外的加密層。
+您登錄中的所有容器映像在待用時都已加密。 Azure 會在儲存映像之前自動將它加密，並在您的應用程式或服務提取映像時將它解密。 選擇性地使用 [客戶管理的金鑰](container-registry-customer-managed-keys.md)來套用額外的加密層。
 
 ## <a name="geo-redundant-storage"></a>異地備援儲存體
 
@@ -28,9 +28,9 @@ Azure 使用異地備援儲存體配置來避免您的容器映像遺失。 Azur
 
 ## <a name="scalable-storage"></a>可擴充的存放裝置
 
-Azure Container Registry 可讓您視需要建立所需數量的存放庫、映射、圖層或標籤，最多可達登錄[儲存體限制](container-registry-skus.md#service-tier-features-and-limits)。 
+Azure Container Registry 可讓您依需求建立多個存放庫、映射、圖層或標籤，最多可達登錄 [儲存空間限制](container-registry-skus.md#service-tier-features-and-limits)。 
 
-大量的存放庫和標籤可能會影響您的登錄效能。 定期刪除未使用的存放庫、標籤和映射做為登錄維護常式的一部分，並選擇性地為未標記的資訊清單設定[保留原則](container-registry-retention-policy.md)。 刪除的登錄資源（例如存放庫、映射和標籤）*無法*在刪除後復原。 如需刪除登錄資源的詳細資訊，請參閱[刪除 Azure Container Registry 中的容器映像](container-registry-delete.md)。
+大量的存放庫和標籤可能會影響您的登錄效能。 在登錄維護常式中定期刪除未使用的存放庫、標籤和映射，並選擇性地針對未標記的資訊清單設定 [保留原則](container-registry-retention-policy.md) 。 刪除後， *無法* 復原已刪除的登錄資源，例如存放庫、映射和標記。 如需刪除登錄資源的詳細資訊，請參閱[刪除 Azure Container Registry 中的容器映像](container-registry-delete.md)。
 
 ## <a name="storage-cost"></a>儲存成本
 

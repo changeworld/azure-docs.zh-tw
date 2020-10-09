@@ -12,10 +12,10 @@ ms.date: 12/10/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 0170877995573bdfcb13ebc1c0387bed0893deac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85201220"
 ---
 # <a name="buildingblocks"></a>BuildingBlocks
@@ -72,10 +72,10 @@ ms.locfileid: "85201220"
   - 使用隨機號碼產生器來建立隨機字串。
   - 根據提供的格式字串來將宣告格式化。 此轉換會使用 C# `String.Format` 方法。
 
-- InputValidation-此元素可讓您執行與*和*和*或*類似的布林值匯總。
+- InputValidation-此元素可讓您執行類似于 *和* 和 *或*的布林值匯總。
 
 - [ContentDefinitions](contentdefinitions.md)：包含要在使用者旅程圖中使用之 HTML5 範本的 URL。 在自訂原則中，內容定義會定義要在使用者旅程圖中針對指定步驟使用的 HTML5 頁面 URI。 例如，登入或註冊、密碼重設或錯誤網頁。 可以藉由覆寫該 HTML5 檔案的 LoadUri 來修改外觀與風格。 或者，可以根據您的需求來建立新的內容定義。 這個元素可能會使用當地語系化識別碼來包含當地語系化的資源參考。
 
 - [Localization](localization.md)：可讓您支援多種語言。 原則中的當地語系化支援可讓您在原則中設定支援的語言清單，並挑選預設語言。 同時也支援特定語言的字串和集合。
 
-- [DisplayControls](display-controls.md) -定義要在頁面上顯示的控制項。 顯示控制項具有特殊功能，並與後端驗證技術設定檔互動。 顯示控制項目前為**預覽**狀態。
+- [DisplayControls](display-controls.md) ：定義要在頁面上顯示的控制項。 顯示控制項具有特殊功能，並可與後端驗證技術設定檔互動。 顯示控制項目前為 **預覽**狀態。

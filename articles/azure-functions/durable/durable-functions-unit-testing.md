@@ -4,18 +4,18 @@ description: 深入了解如何針對 Durable Functions 進行單元測試。
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.openlocfilehash: 86733f8b5b80799bad3e52c643ed27465dfc7641
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74231233"
 ---
 # <a name="durable-functions-unit-testing"></a>Durable Functions 單元測試
 
-單元測試是現代軟體開發實務中很重要的一部分。 單元測試會驗證商務邏輯行為，並且防止在未來引進未注意到的中斷性變更。 Durable Functions 很容易變得複雜，所以引進單元測試有助於避免中斷性變更。 下列各節說明如何對三個函數類型進行單元測試：協調流程用戶端、協調器和活動函式。
+單元測試是現代軟體開發實務中很重要的一部分。 單元測試會驗證商務邏輯行為，並且防止在未來引進未注意到的中斷性變更。 Durable Functions 很容易變得複雜，所以引進單元測試有助於避免中斷性變更。 下列各節說明如何對三種函數類型進行單元測試：協調流程用戶端、協調器和活動函式。
 
 > [!NOTE]
-> 本文提供以 Durable Functions 1.x 為目標之 Durable Functions 應用程式單元測試的指導方針。 尚未更新，以將 Durable Functions 2.x 中引進的變更納入考慮。 如需版本之間差異的詳細資訊，請參閱[Durable Functions 版本](durable-functions-versions.md)一文。
+> 本文針對以 Durable Functions 1.x 為目標的 Durable Functions 應用程式，提供單元測試的指引。 尚未更新，以考慮 Durable Functions 2.x 中引入的變更。 如需版本之間差異的詳細資訊，請參閱 [Durable Functions 版本](durable-functions-versions.md) 文章。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -31,7 +31,7 @@ ms.locfileid: "74231233"
 
 ## <a name="base-classes-for-mocking"></a>模擬的基底類別
 
-Durable Functions 1.x 中的三個抽象類別都支援模擬：
+模擬可透過 Durable Functions 1.x 中的三個抽象類別來支援：
 
 * `DurableOrchestrationClientBase`
 
@@ -41,7 +41,7 @@ Durable Functions 1.x 中的三個抽象類別都支援模擬：
 
 這些類別是 `DurableOrchestrationClient` 、和的基類，這些類別會 `DurableOrchestrationContext` `DurableActivityContext` 定義協調流程用戶端、協調器和活動方法。 模擬會設定基底類別方法的預期行為，讓單元測試可以驗證商務邏輯。 有一個雙步驟工作流程可以針對協調流程用戶端和協調器中的商務邏輯進行單元測試：
 
-1. 定義協調流程用戶端和協調器函式簽章時，請使用基類，而不是具體的執行。
+1. 定義協調流程用戶端和協調器函式簽章時，請使用基類而不是具體的實作為。
 2. 在單元測試中模擬基底類別的行為，並且驗證商務邏輯。
 
 在下列段落中尋找測試函式的詳細資料，這些函式使用協調流程用戶端繫結和協調器觸發程序繫結。
@@ -52,9 +52,9 @@ Durable Functions 1.x 中的三個抽象類別都支援模擬：
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HttpStart.cs)]
 
-單元測試工作會驗證回應承載中提供的 `Retry-After` 標頭值。 因此，單元測試會模擬一些 `DurableOrchestrationClientBase` 方法，以確保可預測的行為。
+單元測試工作會驗證回應承載中提供的 `Retry-After` 標頭值。 因此單元測試會模擬一些 `DurableOrchestrationClientBase` 方法來確保可預測的行為。
 
-首先，需要基類的 mock `DurableOrchestrationClientBase` 。 Mock 可以是執行的新類別 `DurableOrchestrationClientBase` 。 不過，使用例如 [moq](https://github.com/moq/moq4) 的模擬架構可以簡化程序：
+首先，需要基底類別的 mock `DurableOrchestrationClientBase` 。 Mock 可以是實作為的新類別 `DurableOrchestrationClientBase` 。 不過，使用例如 [moq](https://github.com/moq/moq4) 的模擬架構可以簡化程序：
 
 ```csharp
     // Mock DurableOrchestrationClientBase

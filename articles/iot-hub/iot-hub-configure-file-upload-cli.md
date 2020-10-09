@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: robinsh
 ms.openlocfilehash: df3c8d2abf59de6c9f685ad8d93e6689738df8e6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "78302520"
 ---
 # <a name="configure-iot-hub-file-uploads-using-azure-cli"></a>使用 Azure CLI 來設定 IoT 中樞檔案上傳
@@ -27,9 +27,9 @@ ms.locfileid: "78302520"
 
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
-* Azure IoT 中樞。 如果您沒有 IoT 中樞，則可以使用[ `az iot hub create` 命令](https://docs.microsoft.com/cli/azure/iot/hub#az-iot-hub-create)來建立一個，或[使用入口網站建立 iot 中樞](iot-hub-create-through-portal.md)。
+* Azure IoT 中樞。 如果您沒有 IoT 中樞，您可以使用此[ `az iot hub create` 命令](https://docs.microsoft.com/cli/azure/iot/hub#az-iot-hub-create)來建立一個，或[使用入口網站建立 iot 中樞](iot-hub-create-through-portal.md)。
 
-* Azure 儲存體帳戶。 如果您沒有 Azure 儲存體帳戶，可以使用 Azure CLI 來建立一個。 如需詳細資訊，請參閱[建立儲存體帳戶](../storage/common/storage-create-storage-account.md)。
+* Azure 儲存體帳戶。 如果您沒有 Azure 儲存體帳戶，您可以使用 Azure CLI 建立一個帳戶。 如需詳細資訊，請參閱[建立儲存體帳戶](../storage/common/storage-create-storage-account.md)。
 
 ## <a name="sign-in-and-set-your-azure-account"></a>登入並設定 Azure 帳戶
 

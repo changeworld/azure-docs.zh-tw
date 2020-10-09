@@ -1,6 +1,6 @@
 ---
 title: Azure Cosmos DB 查詢語言中的 StringToNull
-description: 深入瞭解 Azure Cosmos DB 中的 SQL 系統函數 StringToNull。
+description: 瞭解 Azure Cosmos DB 中的 SQL 系統函數 StringToNull。
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 7e17547f88465103b61eabec04978ea806ffa2c9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "78296434"
 ---
-# <a name="stringtonull-azure-cosmos-db"></a>StringToNull （Azure Cosmos DB）
- 傳回轉譯為 null 的運算式。 如果無法轉譯運算式，則會傳回 undefined。  
+# <a name="stringtonull-azure-cosmos-db"></a>StringToNull (Azure Cosmos DB) 
+ 傳回轉換為 null 的運算式。 如果無法轉譯運算式，則會傳回 undefined。  
   
 ## <a name="syntax"></a>語法
   
@@ -38,7 +38,7 @@ StringToNull(<str_expr>)
 
 以下是具有有效輸入的範例。
 
- 只有在 "null" 之前或之後才允許空白字元。
+ 空白字元只允許在 "null" 之前或之後。
 
 ```sql
 SELECT 
@@ -53,9 +53,9 @@ SELECT
 [{"n1": null, "n2": null, "n3": true}]
 ```  
 
-以下是具有無效輸入的範例。
+以下是無效輸入的範例。
 
-Null 會區分大小寫，而且必須寫成所有小寫字元，亦即 "null"。
+Null 會區分大小寫，且必須以所有小寫字元（亦即 "null"）撰寫。
 
 ```sql
 SELECT    
@@ -69,7 +69,7 @@ SELECT
 [{}]
 ```  
 
-傳遞的運算式會剖析為 null 運算式;這些輸入不會評估為 null 類型，因此會傳回 undefined。
+傳遞的運算式將會剖析為 null 運算式;這些輸入不會評估為類型 null，因此會傳回 undefined。
 
 ```sql
 SELECT    
@@ -87,7 +87,7 @@ SELECT
 
 ## <a name="remarks"></a>備註
 
-這個系統函數不會使用索引。
+這個系統函數將不會使用索引。
 
 ## <a name="next-steps"></a>後續步驟
 

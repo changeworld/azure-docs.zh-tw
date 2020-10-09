@@ -1,14 +1,14 @@
 ---
-title: 為輸出 IP 位址變更做準備
+title: 針對輸出 IP 位址變更進行準備
 description: 如果您的輸出 IP 位址即將變更，請了解該怎麼做，以讓您的應用程式可在變更後繼續運作。
 ms.topic: article
 ms.date: 06/28/2018
 ms.custom: seodec18
 ms.openlocfilehash: 2be4bc92dde278b054bd04f412f937440027ece7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74671672"
 ---
 # <a name="how-to-prepare-for-an-outbound-ip-address-change"></a>如何為輸出 IP 位址變更進行準備

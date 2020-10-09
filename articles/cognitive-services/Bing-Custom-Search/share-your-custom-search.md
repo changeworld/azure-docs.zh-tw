@@ -1,7 +1,7 @@
 ---
 title: 共用自訂搜尋 - Bing 自訂搜尋
 titleSuffix: Azure Cognitive Services
-description: 與小組成員共用，輕鬆地讓您的實例共同編輯和測試。
+description: 您可以與小組成員共用，輕鬆地讓您的實例進行編輯和測試。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
 ms.openlocfilehash: 5a08ee7f5ea3d5e8c393ea4c1a64c353e24777e0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74072704"
 ---
 # <a name="share-your-custom-search-instance"></a>共用您的自訂搜尋執行個體

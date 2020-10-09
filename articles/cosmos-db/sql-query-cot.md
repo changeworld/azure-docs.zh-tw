@@ -1,6 +1,6 @@
 ---
 title: Azure Cosmos DB 查詢語言中的 COT
-description: 瞭解 Azure Cosmos DB 中的餘切（COT） SQL 系統函數如何在指定的數值運算式中傳回指定角度的三角餘切值（以弧度為單位）
+description: 瞭解 Azure Cosmos DB 中的 (COT) SQL 系統函數如何在指定的數值運算式中傳回指定角度的三角餘切值（以弧度為單位）
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,13 +8,13 @@ ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 25c907644f58ee40ea08e5636d68dc0e84564a28
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "78299482"
 ---
-# <a name="cot-azure-cosmos-db"></a>COT （Azure Cosmos DB）
+# <a name="cot-azure-cosmos-db"></a>COT (Azure Cosmos DB) 
  在指定的數值運算式中傳回指定角度的三角餘切函數，以弧度為單位。  
   
 ## <a name="syntax"></a>語法
@@ -48,7 +48,7 @@ SELECT COT(124.1332) AS cot
 
 ## <a name="remarks"></a>備註
 
-這個系統函數不會使用索引。
+這個系統函數將不會使用索引。
 
 ## <a name="next-steps"></a>後續步驟
 

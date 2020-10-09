@@ -11,13 +11,13 @@ ms.workload: iaas-sql-server
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: e1a9d2722987464b1bb3c8b1489a2d1258a41d15
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91273075"
 ---
-# <a name="provision-a-linux-virtual-machine-running-sql-server-in-the-azure-portal"></a>在 Azure 入口網站中布建執行 SQL Server 的 Linux 虛擬機器
+# <a name="provision-a-linux-virtual-machine-running-sql-server-in-the-azure-portal"></a>在 Azure 入口網站中佈建執行 SQL Server 的 Linux 虛擬機器
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 > [!div class="op_single_selector"]
@@ -40,17 +40,17 @@ ms.locfileid: "91273075"
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
 
-1. 在左窗格中選取 [建立資源]。
+1. 在左窗格中選取 [建立資源]****。
 
-1. 在 [建立資源] 窗格中，選取 [計算]。
+1. 在 [建立資源]**** 窗格中，選取 [計算]****。
 
-1. 選取 [精選] 標題旁邊的 [查看全部]。
+1. 選取 [精選]**** 標題旁邊的 [查看全部]****。
 
    ![查看所有 VM 映像](./media/sql-vm-create-portal-quickstart/azure-compute-blade.png)
 
 1. 在搜尋方塊中，輸入 **SQL Server 2019**，然後選取 **Enter** 鍵以開始搜尋。
 
-1. 選取 [作業系統] > [Redhat]來限制搜尋結果。
+1. 選取 [作業系統]**** > [Redhat]**** 來限制搜尋結果。
 
     ![SQL Server 2019 VM 映像的搜尋篩選器](./media/sql-vm-create-portal-quickstart/searchfilter.png)
 
@@ -59,20 +59,20 @@ ms.locfileid: "91273075"
    > [!TIP]
    > Developer Edition 可讓您使用 Enterprise Edition 的功能來進行測試或開發，但無須支付 SQL Server 授權費用。 您只需支付執行 Linux VM 的費用。
 
-1. 選取 [建立]。 
+1. 選取 [建立]****。 
 
 
 ### <a name="set-up-your-linux-vm"></a>設定您的 Linux VM
 
-1. 在 [基本] 索引標籤中，選取您的 [訂用帳戶] 和 [資源群組]。 
+1. 在 [基本]**** 索引標籤中，選取您的 [訂用帳戶]**** 和 [資源群組]****。 
 
     ![基本概念視窗](./media/sql-vm-create-portal-quickstart/basics.png)
 
-1. 在 [虛擬機器名稱] 中，輸入新 Linux VM 的名稱。
+1. 在 [虛擬機器名稱]**** 中，輸入新 Linux VM 的名稱。
 1. 接著，輸入或選取下列值：
    * **區域**：選取適合您的 Azure 區域。
    * **可用性選項**：選擇最適合您應用程式和資料的可用性與備援選項。
-   * **變更大小**：選取此選項可挑選機器大小，完成時，請選擇 [選取]。 如需 VM 機器大小的詳細資訊，請參閱 [vm 大小](../../../virtual-machines/sizes.md)。
+   * **變更大小**：選取此選項可挑選機器大小，完成時，請選擇 [選取]。 如需關於 VM 機器大小的詳細資訊，請參閱 [VM 大小](../../../virtual-machines/sizes.md)。
 
      ![選擇 VM 大小](./media/sql-vm-create-portal-quickstart/vmsizes.png)
 
@@ -97,8 +97,8 @@ ms.locfileid: "91273075"
     * **客體設定**
     * **Tags** (標籤)
 
-1. 選取 [檢閱 + 建立]。
-1. 在 [檢閱 + 建立] 窗格中，選取 [建立]。
+1. 選取 [檢閱 + 建立]****。
+1. 在 [檢閱 + 建立]**** 窗格中，選取 [建立]****。
 
 ## <a name="connect-to-the-linux-vm"></a><a id="connect"></a> 連線至 Linux VM
 
@@ -120,12 +120,12 @@ ssh azureadmin@40.55.55.555
 
 1. 在 [PuTTY 組態] 畫面上，輸入您 VM 的公用 IP 位址。
 
-1. 選取 [開啟]，並在提示時輸入您的使用者名稱和密碼。
+1. 選取 [開啟]****，並在提示時輸入您的使用者名稱和密碼。
 
 如需有關連線至 Linux VM 的詳細資訊，請參閱[使用入口網站在 Azure 上建立 Linux VM](../../../virtual-machines/linux/quick-create-portal.md)。
 
 > [!NOTE]
-> 如果您看到有關未將伺服器主機金鑰快取在登錄中的 PuTTY 安全性警示，請從下列選項中做選擇。 如果您信任此主機，請選取 [是] 以將金鑰新增至 PuTTy 的快取並繼續連線。 如果您只想要繼續連線一次，而不想要將金鑰新增至快取，請選取 [否]。 如果您不信任此主機，請選取 [取消] 以放棄連線。
+> 如果您看到有關未將伺服器主機金鑰快取在登錄中的 PuTTY 安全性警示，請從下列選項中做選擇。 如果您信任此主機，請選取 [是]**** 以將金鑰新增至 PuTTy 的快取並繼續連線。 如果您只想要繼續連線一次，而不想要將金鑰新增至快取，請選取 [否]****。 如果您不信任此主機，請選取 [取消]**** 以放棄連線。
 
 ## <a name="change-the-sa-password"></a><a id="password"></a> 變更 SA 密碼
 
@@ -165,19 +165,19 @@ ssh azureadmin@40.55.55.555
 如果您需要在 Azure VM 上遠端連線到 SQL Server，就必須設定網路安全性群組上的輸入規則。 此規則可允許 SQL Server 所接聽之連接埠 (預設為 1433) 上的流量。 下列步驟說明如何使用此步驟的 Azure 入口網站。
 
 > [!TIP]
-> 如果您在佈建期間於設定中選取了輸入連接埠 [MS SQL (1433)]，則系統會為您執行這些變更。 您可以移至下一節，了解如何設定防火牆。
+> 如果您在佈建期間於設定中選取了輸入連接埠 [MS SQL (1433)]****，則系統會為您執行這些變更。 您可以移至下一節，了解如何設定防火牆。
 
-1. 在入口網站中，選取 [虛擬機器] ，然後選取 SQL Server VM。
-1. 在左側導覽窗格的 [設定] 底下，選取 [網路]。
-1. 在 [網路] 視窗中，選取 [輸入連接埠規則] 底下的 [新增輸入連接埠]。
+1. 在入口網站中，選取 [虛擬機器] ****，然後選取 SQL Server VM。
+1. 在左側導覽窗格的 [設定]**** 底下，選取 [網路]****。
+1. 在 [網路] 視窗中，選取 [輸入連接埠規則]**** 底下的 [新增輸入連接埠]****。
 
    ![輸入連接埠規則](./media/sql-vm-create-portal-quickstart/networking.png)
 
-1. 在 [服務] 清單中，選取 [MS SQL]。
+1. 在 [服務]**** 清單中，選取 [MS SQL]****。
 
     ![MS SQL 安全性群組規則](./media/sql-vm-create-portal-quickstart/sqlnsgrule.png)
 
-1. 按一下 [確定]  以儲存 VM 的規則。
+1. 按一下 [確定] **** 以儲存 VM 的規則。
 
 ### <a name="open-the-firewall-on-rhel"></a>開啟 RHEL 上的防火牆
 

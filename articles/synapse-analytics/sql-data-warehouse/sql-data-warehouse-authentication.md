@@ -13,10 +13,10 @@ ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tag: azure-synapse
 ms.openlocfilehash: 29709dc03ee3a06bdf2aec2587909a08ee13504e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85206725"
 ---
 # <a name="authenticate-to-azure-synapse-analytics"></a>向 Azure Synapse Analytics 進行驗證
@@ -57,7 +57,7 @@ Azure Active Directory 的優點包括：
 * 協助停止跨伺服器使用過多的使用者身分識別。
 * 允許在單一位置的密碼替換
 * 使用外部 (Azure AD) 群組來管理資料庫權限。
-* 藉由啟用 Azure Active Directory 支援的整合式 Windows 驗證和 o sqlserverrp 形式的驗證，來避免儲存密碼。
+* 藉由啟用 Azure Active Directory 所支援的整合式 Windows 驗證和 o 檔案形式的驗證，來消除儲存密碼的程式。
 * 使用自主資料庫使用者，在資料庫層級驗證身分。
 * 針對連線到 SQL 集區的應用程式支援權杖型驗證。
 * 針對包括 [SQL Server Management Studio](../../azure-sql/database/authentication-mfa-ssms-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 和 [SQL Server Data Tools](/sql/ssdt/azure-active-directory?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 的各種工具，透過 Active Directory 通用驗證支援多重要素驗證。

@@ -12,23 +12,23 @@ ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 67acf675c6636c5d1066d4fe25310d875fa7c064
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85201509"
 ---
 # <a name="define-an-azure-active-directory-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>定義 Azure Active Directory B2C 自訂原則中的 Azure Active Directory 技術設定檔
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory B2C （Azure AD B2C）提供 Azure Active Directory 使用者管理的支援。 本文會說明技術設定檔的詳細規格，其可和支援此標準化通訊協定的宣告提供者互動。
+Azure Active Directory B2C (Azure AD B2C) 提供 Azure Active Directory 使用者管理的支援。 本文會說明技術設定檔的詳細規格，其可和支援此標準化通訊協定的宣告提供者互動。
 
 ## <a name="protocol"></a>通訊協定
 
 **Protocol** 元素的 **Name** 屬性必須設定為 `Proprietary`。 **handler** 屬性必須包含通訊協定處理常式組件的完整名稱 `Web.TPEngine.Providers.AzureActiveDirectoryProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`。
 
-遵循[自訂原則入門套件](custom-policy-get-started.md#custom-policy-starter-pack)Azure AD 技術設定檔包含**AAD 通用**技術設定檔。 Azure AD 技術設定檔未指定通訊協定，因為已在**AAD 通用**技術設定檔中設定通訊協定：
+下列 [自訂原則入門套件](custom-policy-get-started.md#custom-policy-starter-pack) Azure AD 技術設定檔，包括 **AAD 通用** 技術設定檔。 Azure AD 技術設定檔未指定通訊協定，因為已在 **AAD 一般** 技術設定檔中設定通訊協定：
  
 - **AAD-UserReadUsingAlternativeSecurityId** 和 **AAD-UserReadUsingAlternativeSecurityId-NoError** - 在目錄中尋找社交帳戶。
 - **AAD-UserWriteUsingAlternativeSecurityId** - 建立新的社交帳戶。
@@ -58,13 +58,13 @@ Azure Active Directory B2C （Azure AD B2C）提供 Azure Active Directory 使�
 
 ## <a name="inputclaims"></a>InputClaims
 
-InputClaims 元素包含一個宣告，用來查閱目錄中的帳戶，或建立一個新的。 在所有 Azure AD 技術設定檔的輸入宣告集合中，必須只有一個 InputClaim 元素。 您可能需要將原則中定義的宣告名稱對應至 Azure Active Directory 中定義的名稱。
+InputClaims 元素包含宣告，可用來查閱目錄中的帳戶，或建立一個新的帳戶。 所有 Azure AD 技術設定檔的輸入宣告集合中必須只有一個 InputClaim 元素。 您可能需要將原則中定義的宣告名稱對應至 Azure Active Directory 中定義的名稱。
 
-若要讀取、更新或刪除現有的使用者帳戶，輸入宣告是在 Azure AD 目錄中唯一識別帳戶的金鑰。 例如， **objectId**、 **userPrincipalName**、 **signInNames. emailAddress**、signInNames、 **userName**或**alternativeSecurityId**。 
+若要讀取、更新或刪除現有的使用者帳戶，輸入宣告是可唯一識別 Azure AD 目錄中帳戶的金鑰。 例如， **objectId**、 **userPrincipalName**、 **>signinnames.emailaddress. emailAddress**、>signinnames.emailaddress、 **userName**或 **>alternativesecurityid**。 
 
-若要建立新的使用者帳戶，輸入宣告是可唯一識別本機或同盟帳戶的金鑰。 例如，本機帳戶： **signInNames. emailAddress**或**signInNames. userName**。 針對同盟帳戶： **alternativeSecurityId**。
+若要建立新的使用者帳戶，輸入宣告是可唯一識別本機或同盟帳戶的金鑰。 例如，本機帳戶： **>signinnames.emailaddress. emailAddress**或 **>signinnames.emailaddress。 userName**。 針對同盟帳戶： **>alternativesecurityid**。
 
-[InputClaimsTransformations](technicalprofiles.md#inputclaimstransformations)元素可能包含輸入宣告轉換元素的集合，這些專案是用來修改輸入宣告或產生新的。
+[InputClaimsTransformations](technicalprofiles.md#inputclaimstransformations)元素可以包含輸入宣告轉換元素的集合，這些專案是用來修改輸入宣告或產生新的宣告。
 
 ## <a name="outputclaims"></a>OutputClaims
 
@@ -92,7 +92,7 @@ InputClaims 元素包含一個宣告，用來查閱目錄中的帳戶，或建�
 
 ## <a name="persistedclaims"></a>PersistedClaims
 
-**PersistedClaims**元素包含的所有值，應由原則中的[ClaimsSchema](claimsschema.md)區段內已定義的宣告類型和 Azure AD 屬性名稱之間的可能對應資訊 Azure AD 來保存。
+**PersistedClaims**元素包含應由 Azure AD 保存的所有值，以及在原則的[ClaimsSchema](claimsschema.md)區段中已定義的宣告類型和 Azure AD 屬性名稱之間可能的對應資訊。
 
 **AAD-UserWriteUsingLogonEmail** 技術設定檔，可建立新的本機帳戶，持續使用下列宣告：
 
@@ -115,7 +115,7 @@ InputClaims 元素包含一個宣告，用來查閱目錄中的帳戶，或建�
 ## <a name="requirements-of-an-operation"></a>作業需求
 
 - 所有 Azure AD 技術設定檔的宣告包中，只能有一個 **InputClaim** 元素。
-- [使用者設定檔屬性一文](user-profile-attributes.md)說明您可以在輸入宣告、輸出宣告和保存宣告中使用的 Azure AD B2C 使用者設定檔屬性。 
+- [使用者設定檔屬性一文](user-profile-attributes.md)說明您可以在輸入宣告、輸出宣告和保存宣告中使用的支援 Azure AD B2C 使用者設定檔屬性。 
 - 如果作業是 `Write` 或 `DeleteClaims`，則該作業也必須出現在 **PersistedClaims** 元素中。
 - **userPrincipalName** 宣告值的格式必須是 `user@tenant.onmicrosoft.com`。
 - **displayName** 宣告是必要的，而且不可為空白字串。
@@ -246,28 +246,28 @@ InputClaims 元素包含一個宣告，用來查閱目錄中的帳戶，或建�
 ```
 ## <a name="metadata"></a>中繼資料
 
-| 屬性 | 必要 | 說明 |
+| 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
-| 操作 | Yes | 要執行的作業。 可能的值：`Read`、`Write`、`DeleteClaims` 或 `DeleteClaimsPrincipal`。 |
-| RaiseErrorIfClaimsPrincipalDoesNotExist | No | 如果使用者物件不存在目錄中，會發生錯誤。 可能的值：`true` 或 `false`。 |
-| RaiseErrorIfClaimsPrincipalAlreadyExists | No | 如果使用者物件已存在，則會引發錯誤。 可能的值：`true` 或 `false`。|
-| ApplicationObjectId | No | 擴充屬性的應用程式物件識別碼。 值：應用程式的 ObjectId。 如需詳細資訊，請參閱[在自訂設定檔編輯原則中使用自訂屬性](custom-policy-custom-attributes.md)。 |
-| ClientId | No | 以協力廠商身分存取租用戶的用戶端識別碼。 如需詳細資訊，請參閱[在自訂設定檔編輯原則中使用自訂屬性](custom-policy-custom-attributes.md) |
-| IncludeClaimResolvingInClaimsHandling  | No | 針對輸入和輸出宣告，指定技術設定檔中是否包含[宣告解析](claim-resolver-overview.md)。 可能的值： `true` 、或 `false`   （預設）。 如果您想要在技術設定檔中使用宣告解析程式，請將此設定為 `true` 。 |
+| 作業 | 是 | 要執行的作業。 可能的值：`Read`、`Write`、`DeleteClaims` 或 `DeleteClaimsPrincipal`。 |
+| RaiseErrorIfClaimsPrincipalDoesNotExist | 否 | 如果使用者物件不存在目錄中，會發生錯誤。 可能的值：`true` 或 `false`。 |
+| RaiseErrorIfClaimsPrincipalAlreadyExists | 否 | 如果使用者物件已存在，則會引發錯誤。 可能的值：`true` 或 `false`。|
+| ApplicationObjectId | 否 | 擴充屬性的應用程式物件識別碼。 值：應用程式的 ObjectId。 如需詳細資訊，請參閱 [在自訂設定檔編輯原則中使用自訂屬性](custom-policy-custom-attributes.md)。 |
+| ClientId | 否 | 以協力廠商身分存取租用戶的用戶端識別碼。 如需詳細資訊，請參閱[在自訂設定檔編輯原則中使用自訂屬性](custom-policy-custom-attributes.md) |
+| IncludeClaimResolvingInClaimsHandling  | 否 | 針對輸入和輸出宣告，指定技術設定檔中是否包含 [宣告解析](claim-resolver-overview.md) 。 可能的值： `true` 或 `false`   (預設) 。 如果您想要在技術設定檔中使用宣告解析程式，請將此設定為 `true` 。 |
 
 ### <a name="ui-elements"></a>UI 元素
  
-下列設定可用於設定失敗時顯示的錯誤訊息。 應該在[自我](self-asserted-technical-profile.md)判斷技術設定檔中設定中繼資料。 錯誤訊息可以[當地語系化](localization.md)。
+您可以使用下列設定來設定失敗時所顯示的錯誤訊息。 中繼資料應該在 [自我](self-asserted-technical-profile.md) 判斷技術設定檔中設定。 錯誤訊息可以[當地語系化](localization.md)。
 
-| 屬性 | 必要 | 說明 |
+| 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
-| UserMessageIfClaimsPrincipalAlreadyExists | No | 如果會引發錯誤 (請參閱 RaiseErrorIfClaimsPrincipalAlreadyExists 屬性說明)，請指定當使用者物件存在時，要向使用者顯示的訊息。 |
-| UserMessageIfClaimsPrincipalDoesNotExist | No | 如果會引發錯誤 (請參閱 RaiseErrorIfClaimsPrincipalDoesNotExist 屬性的說明)，請指定當使用者物件不存在時，要向使用者顯示的訊息。 |
+| UserMessageIfClaimsPrincipalAlreadyExists | 否 | 如果會引發錯誤 (請參閱 RaiseErrorIfClaimsPrincipalAlreadyExists 屬性說明)，請指定當使用者物件存在時，要向使用者顯示的訊息。 |
+| UserMessageIfClaimsPrincipalDoesNotExist | 否 | 如果會引發錯誤 (請參閱 RaiseErrorIfClaimsPrincipalDoesNotExist 屬性的說明)，請指定當使用者物件不存在時，要向使用者顯示的訊息。 |
 
 
 ## <a name="next-steps"></a>後續步驟
 
-如需使用 Azure AD 技術設定檔的範例，請參閱下列文章：
+請參閱下列文章，例如使用 Azure AD 技術設定檔：
 
 - [在 Azure Active Directory B2C 中使用自訂原則來新增宣告並自訂使用者輸入](custom-policy-configure-user-input.md)
 

@@ -1,7 +1,7 @@
 ---
 title: 自訂原則的 StringCollection 宣告轉換範例
 titleSuffix: Azure AD B2C
-description: StringCollection Azure Active Directory B2C 的 Identity Experience Framework （IEF）架構的宣告轉換範例。
+description: StringCollection Identity Experience Framework (IEF) 架構 Azure Active Directory B2C 的宣告轉換範例。
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,17 +12,17 @@ ms.date: 04/21/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 1ad9cc3d6d07c8d744ec667e2fffb035848121b4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85203243"
 ---
 # <a name="stringcollection-claims-transformations"></a>StringCollection 宣告轉換
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-本文提供在 Azure Active Directory B2C （Azure AD B2C）中使用 Identity Experience Framework 架構之字串集合宣告轉換的範例。 如需詳細資訊，請參閱 [ClaimsTransformations](claimstransformations.md)。
+本文提供在 Azure Active Directory B2C (Azure AD B2C) 中使用 Identity Experience Framework 架構之字串集合宣告轉換的範例。 如需詳細資訊，請參閱 [ClaimsTransformations](claimstransformations.md)。
 
 ## <a name="additemtostringcollection"></a>AddItemToStringCollection
 
@@ -53,14 +53,14 @@ ms.locfileid: "85203243"
 ### <a name="example"></a>範例
 
 - 輸入宣告：
-  - **集合**： ["" someone@outlook.com ]
+  - **集合**： [" someone@outlook.com "]
   - **專案**： " admin@contoso.com "
 - 輸出宣告：
-  - **collection**： ["" someone@outlook.com ，" admin@contoso.com "]
+  - **集合**： ["" someone@outlook.com ，" admin@contoso.com "]
 
 ## <a name="addparametertostringcollection"></a>AddParameterToStringCollection
 
-將字串參數新增至新的唯一值 stringCollection 宣告。
+將字串參數加入至新的唯一值 stringCollection 宣告。
 
 | Item | TransformationClaimType | 資料類型 | 注意 |
 | ---- | ----------------------- | --------- | ----- |
@@ -87,11 +87,11 @@ ms.locfileid: "85203243"
 ### <a name="example"></a>範例
 
 - 輸入宣告：
-  - **集合**： ["" someone@outlook.com ]
+  - **集合**： [" someone@outlook.com "]
 - 輸入參數
   - **專案**： " admin@contoso.com "
 - 輸出宣告：
-  - **collection**： ["" someone@outlook.com ，" admin@contoso.com "]
+  - **集合**： ["" someone@outlook.com ，" admin@contoso.com "]
 
 ## <a name="getsingleitemfromstringcollection"></a>GetSingleItemFromStringCollection
 
@@ -118,7 +118,7 @@ ms.locfileid: "85203243"
 ### <a name="example"></a>範例
 
 - 輸入宣告：
-  - **collection**： ["" someone@outlook.com ，" someone@contoso.com "]
+  - **集合**： ["" someone@outlook.com ，" someone@contoso.com "]
 - 輸出宣告：
   - **extractedItem**： " someone@outlook.com "
 
@@ -132,9 +132,9 @@ ms.locfileid: "85203243"
 | InputClaim | inputClaim | stringCollection | 要搜尋的宣告類型。 |
 |InputParameter|item|字串|要搜尋的值。|
 |InputParameter|ignoreCase|字串|指定這個比較是否應忽略要比較之字串的大小寫。|
-| OutputClaim | outputClaim | boolean | 叫用此 ClaimsTransformation 之後所產生的 ClaimType。 如果集合包含這類字串，則為布林值指標 |
+| OutputClaim | outputClaim | boolean | 叫用此 ClaimsTransformation 之後所產生的 ClaimType。 如果集合包含這類字串，則為布林值指標。 |
 
-下列範例會檢查 `roles` stringCollection 宣告類型是否包含**admin**的值。
+下列範例會檢查 `roles` stringCollection 宣告類型是否包含 **admin**的值。
 
 ```xml
 <ClaimsTransformation Id="IsAdmin" TransformationMethod="StringCollectionContains">
@@ -168,7 +168,7 @@ ms.locfileid: "85203243"
 | InputClaim | collection | stringCollection | 要搜尋的宣告類型。 |
 | InputClaim | item|字串| 包含要搜尋之值的宣告類型。|
 |InputParameter|ignoreCase|字串|指定這個比較是否應忽略要比較之字串的大小寫。|
-| OutputClaim | outputClaim | boolean | 叫用此 ClaimsTransformation 之後所產生的 ClaimType。 如果集合包含這類字串，則為布林值指標 |
+| OutputClaim | outputClaim | boolean | 叫用此 ClaimsTransformation 之後所產生的 ClaimType。 如果集合包含這類字串，則為布林值指標。 |
 
 下列範例會檢查 `roles` stringCollection 宣告類型是否包含宣告類型的值 `role` 。
 
@@ -188,7 +188,7 @@ ms.locfileid: "85203243"
 ```
 
 - 輸入宣告：
-    - **集合**： ["reader"，"author"，"admin"]
+    - **collection**： ["reader"，"author"，"admin"]
     - **專案**： "Admin"
 - 輸入參數：
     - **ignoreCase**： "true"

@@ -1,7 +1,7 @@
 ---
 title: 使用隱含流程的單一頁面登入
 titleSuffix: Azure AD B2C
-description: 瞭解如何搭配 Azure Active Directory B2C 使用 OAuth 2.0 隱含流程來新增單一頁面登入。
+description: 瞭解如何使用 OAuth 2.0 隱含流程搭配 Azure Active Directory B2C 來新增單一頁面登入。
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,23 +12,23 @@ ms.date: 07/19/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: fb1750996f40db6d76db30cd1c3bc07186660159
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85201849"
 ---
 # <a name="single-page-sign-in-using-the-oauth-20-implicit-flow-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用 OAuth 2.0 隱含流程的單一頁面登入
 
-許多現代化應用程式都有單一頁面應用程式前端，主要是以 JavaScript 撰寫。 應用程式通常會使用回應、角度或 Vue.js 之類的架構來撰寫。 主要在瀏覽器上執行的單一頁面應用程式和其他 JavaScript 應用程式，在驗證時會面臨一些額外的挑戰：
+許多新式應用程式都有單一頁面應用程式前端，主要是以 JavaScript 撰寫。 應用程式通常會使用像是回應、角度或 Vue.js 等架構來撰寫。 主要在瀏覽器上執行的單一頁面應用程式和其他 JavaScript 應用程式，在驗證時會面臨一些額外的挑戰：
 
-- 這些應用程式的安全性特性與傳統的以伺服器為基礎的 web 應用程式不同。
+- 這些應用程式的安全性特性與傳統的伺服器 web 應用程式不同。
 - 許多授權伺服器與識別提供者不支援跨原始來源資源共用 (CORS) 要求。
 - 從應用程式重新導向的整頁瀏覽器可能會侵入使用者體驗。
 
-為了支援這些應用程式，Azure Active Directory B2C (Azure AD B2C) 使用 OAuth 2.0 隱含流程。 如需 OAuth 2.0 授權隱含授權流程的說明，請參閱 [OAuth 2.0 規格的 4.2 節](https://tools.ietf.org/html/rfc6749) 。 在隱含流程中，應用程式會直接從 Azure Active Directory (Azure AD) 授權端點接收權杖，而不需執行任何伺服器對伺服器交換。 所有驗證邏輯和會話處理都是透過頁面重新導向或快顯方塊，完全在 JavaScript 用戶端中完成。
+為了支援這些應用程式，Azure Active Directory B2C (Azure AD B2C) 使用 OAuth 2.0 隱含流程。 如需 OAuth 2.0 授權隱含授權流程的說明，請參閱 [OAuth 2.0 規格的 4.2 節](https://tools.ietf.org/html/rfc6749) 。 在隱含流程中，應用程式會直接從 Azure Active Directory (Azure AD) 授權端點接收權杖，而不需執行任何伺服器對伺服器交換。 所有驗證邏輯和會話處理都是在 JavaScript 用戶端中，透過頁面重新導向或快顯方塊來完成。
 
-Azure AD B2C 會擴充標準的 OAuth 2.0 隱含流程，功能更強大，而不僅止於簡單的驗證與授權。 Azure AD B2C 導入了[原則參數](user-flow-overview.md)。 利用原則參數，您可以使用 OAuth 2.0 來為應用程式新增原則，例如註冊、登入和設定檔管理使用者流程。 在本文的範例 HTTP 要求中，會使用 **{tenant}. onmicrosoft**作為範例。 將取代為您的 `{tenant}` 租使用者名稱（如果有的話），並同時建立使用者流程。
+Azure AD B2C 會擴充標準的 OAuth 2.0 隱含流程，功能更強大，而不僅止於簡單的驗證與授權。 Azure AD B2C 導入了[原則參數](user-flow-overview.md)。 利用原則參數，您可以使用 OAuth 2.0 來為應用程式新增原則，例如註冊、登入和設定檔管理使用者流程。 在本文的範例 HTTP 要求中，會使用 **{tenant}. onmicrosoft** 作為範例。 `{tenant}`如果您有租使用者的名稱，請將它取代為您的租使用者名稱，並同時建立使用者流程。
 
 隱含登入流程看起來像下圖。 本文稍後將詳細說明每個步驟。
 
@@ -38,7 +38,7 @@ Azure AD B2C 會擴充標準的 OAuth 2.0 隱含流程，功能更強大，而�
 
 當您的 web 應用程式需要驗證使用者並執行使用者流程時，它可以將使用者導向至 `/authorize` 端點。 使用者會根據使用者流程採取動作。
 
-在此要求中，用戶端會指出它需要從使用者取得的許可權， `scope` 以及要執行的使用者流程。 若要瞭解要求的運作方式，請嘗試將要求貼入瀏覽器並加以執行。 將 `{tenant}` 取代為您的 Azure AD B2C 租用戶名稱。 將取代 `90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6` 為您先前在租使用者中註冊之應用程式的應用程式識別碼。 以 `{policy}` 您在租使用者中建立的原則名稱取代，例如 `b2c_1_sign_in` 。
+在這項要求中，用戶端會指出需要在參數中從使用者取得的許可權 `scope` ，以及要執行的使用者流程。 若要瞭解要求的運作方式，請嘗試將要求貼到瀏覽器中並執行。 將 `{tenant}` 取代為您的 Azure AD B2C 租用戶名稱。 將取代 `90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6` 為您先前在租使用者中註冊之應用程式的應用程式識別碼。 將取代 `{policy}` 為您在租使用者中建立的原則名稱，例如 `b2c_1_sign_in` 。
 
 ```http
 GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/authorize?
@@ -51,24 +51,24 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 &nonce=12345
 ```
 
-| 參數 | 必要 | 說明 |
+| 參數 | 必要 | 描述 |
 | --------- | -------- | ----------- |
-|出租| Yes | Azure AD B2C 租使用者的名稱|
-|策略| Yes| 要執行的使用者流程。 指定您在 Azure AD B2C 租使用者中建立的使用者流程名稱。 例如：`b2c_1_sign_in`、`b2c_1_sign_up` 或 `b2c_1_edit_profile`。 |
-| client_id | Yes | [Azure 入口網站](https://portal.azure.com/)指派給應用程式的應用程式識別碼。 |
-| response_type | Yes | 必須包含 OpenID Connect 登入的 `id_token` 。 它也可能包含回應類型 `token`。 如果您使用 `token`，您的應用程式就能立即從授權端點接收存取權杖，而不需向授權端點進行第二次要求。  如果您使用 `token` 回應類型，`scope` 參數就必須包含範圍，以指出要對哪個資源發出權杖。 |
-| redirect_uri | No | 應用程式的重新導向 URI，您的應用程式可在此傳送及接收驗證回應。 它必須與您在入口網站中註冊的其中一個重新導向 URI 完全相符，不過必須是 URL 編碼格式。 |
-| response_mode | No | 指定用來將產生的權杖送回應用程式的方法。  針對隱含流程，請使用 `fragment`。 |
-| scope | Yes | 範圍的空格分隔清單。 向 Azure AD 指出要求兩個權限的單一範圍值。 `openid` 範圍指示使用識別碼權杖形式的權限，以登入使用者及取得使用者相關資料。 對於 Web 應用程式， `offline_access` 範圍是選擇性。 它指出您的應用程式需要重新整理權杖，才能長久存取資源。 |
-| state | No | 包含於也會隨權杖回應傳回之要求中的值。 它可以是您想要使用之任何內容的字串。 通常會使用隨機產生的唯一值來防止跨網站偽造要求攻擊。 驗證要求出現前，也會先使用此狀態來為使用者在應用程式中的狀態相關資訊編碼，例如他們先前所在的網頁。 |
-| nonce | Yes | 要求中所含的值 (由應用程式產生)，它會以宣告形式包含於產生的識別碼權杖中。 然後，應用程式可以驗證此值，以減輕權杖重新執行所造成的攻擊。 此值通常是隨機的唯一字串，可用以識別要求的來源。 |
-| Prompt | No | 需要的使用者互動類型。 目前唯一支援的值為 `login`。 此參數會強制使用者在該要求上輸入其認證。 單一登入不會生效。 |
+|租| 是 | 您 Azure AD B2C 租使用者的名稱|
+|策略| 是| 要執行的使用者流程。 指定您在 Azure AD B2C 租使用者中建立的使用者流程名稱。 例如：`b2c_1_sign_in`、`b2c_1_sign_up` 或 `b2c_1_edit_profile`。 |
+| client_id | 是 | [Azure 入口網站](https://portal.azure.com/)指派給您應用程式的應用程式識別碼。 |
+| response_type | 是 | 必須包含 OpenID Connect 登入的 `id_token` 。 它也可能包含回應類型 `token`。 如果您使用 `token`，您的應用程式就能立即從授權端點接收存取權杖，而不需向授權端點進行第二次要求。  如果您使用 `token` 回應類型，`scope` 參數就必須包含範圍，以指出要對哪個資源發出權杖。 |
+| redirect_uri | 否 | 應用程式的重新導向 URI，您的應用程式可在此傳送及接收驗證回應。 它必須與您在入口網站中註冊的其中一個重新導向 URI 完全相符，不過必須是 URL 編碼格式。 |
+| response_mode | 否 | 指定用來將產生的權杖送回應用程式的方法。  針對隱含流程，請使用 `fragment`。 |
+| scope | 是 | 以空格分隔的範圍清單。 向 Azure AD 指出要求兩個權限的單一範圍值。 `openid` 範圍指示使用識別碼權杖形式的權限，以登入使用者及取得使用者相關資料。 對於 Web 應用程式， `offline_access` 範圍是選擇性。 它指出您的應用程式需要重新整理權杖，才能長久存取資源。 |
+| 狀態 | 否 | 包含於也會隨權杖回應傳回之要求中的值。 它可以是您想要使用之任何內容的字串。 通常會使用隨機產生的唯一值來防止跨網站偽造要求攻擊。 驗證要求出現前，也會先使用此狀態來為使用者在應用程式中的狀態相關資訊編碼，例如他們先前所在的網頁。 |
+| nonce | 是 | 要求中所含的值 (由應用程式產生)，它會以宣告形式包含於產生的識別碼權杖中。 然後，應用程式可以驗證此值，以減輕權杖重新執行所造成的攻擊。 此值通常是隨機的唯一字串，可用以識別要求的來源。 |
+| Prompt | 否 | 需要的使用者互動類型。 目前唯一支援的值為 `login`。 此參數會強制使用者在該要求上輸入其認證。 單一登入不會生效。 |
 
-此時會要求使用者完成原則的工作流程。 使用者可能必須輸入使用者名稱和密碼、以社交身分識別登入、註冊目錄，或是其他任何數目的步驟。 使用者動作取決於使用者流程的定義方式。
+此時會要求使用者完成原則的工作流程。 使用者可能必須輸入其使用者名稱和密碼、使用社交身分識別登入、註冊目錄，或是其他任何數目的步驟。 使用者動作取決於使用者流程的定義方式。
 
 當使用者完成使用者流程之後，Azure AD 會透過您用於 `redirect_uri` 的值，將回應傳回給您的應用程式。 它會使用 `response_mode` 參數中指定的方法。 對於每個使用者動作情節來說，回應完全相同，與已執行的使用者流程無關。
 
-### <a name="successful-response"></a>成功回應
+### <a name="successful-response"></a>成功的回應
 使用 `response_mode=fragment` 和 `response_type=id_token+token` 的成功回應如下所示 (內含換行符號以利閱讀)：
 
 ```http
@@ -81,7 +81,7 @@ access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q..
 &state=arbitrary_data_you_sent_earlier
 ```
 
-| 參數 | 說明 |
+| 參數 | 描述 |
 | --------- | ----------- |
 | access_token | 應用程式要求的存取權杖。 |
 | token_type | 權杖類型值。 Azure AD 唯一支援的類型是 Bearer。 |
@@ -100,9 +100,9 @@ error=access_denied
 &state=arbitrary_data_you_can_receive_in_the_response
 ```
 
-| 參數 | 說明 |
+| 參數 | 描述 |
 | --------- | ----------- |
-| 錯誤 | 用來分類發生的錯誤類型的程式碼。 |
+| error | 用來分類所發生錯誤類型的程式碼。 |
 | error_description | 可協助您識別驗證錯誤根本原因的特定錯誤訊息。 |
 | State | 如果要求中包含 `state` 參數，則回應中應該會出現相同的值。 應用程式應該驗證要求和回應中的 `state` 值完全相同。|
 
@@ -135,7 +135,7 @@ https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/b2c_1_sign_in/disco
 * 驗證 `aud` 宣告，以確保已針對您的應用程式簽發識別碼權杖。 這個值就是您應用程式的應用程式識別碼。
 * 驗證 `iat` 與 `exp` 宣告，以確保識別碼權杖沒有過期。
 
-[OpenID Connect 核心規格](https://openid.net/specs/openid-connect-core-1_0.html)中會詳細說明您應該執行的更多驗證。視您的案例而定，您可能也會想要驗證其他宣告。 一些常見的驗證包括：
+[OpenID Connect Core 規格](https://openid.net/specs/openid-connect-core-1_0.html)中會詳細說明您應該執行的幾項驗證。您也可能想要根據您的案例驗證其他宣告。 一些常見的驗證包括：
 
 * 確保使用者或組織已為應用程式註冊。
 * 確保使用者有適當的授權與權限。
@@ -146,11 +146,11 @@ https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/b2c_1_sign_in/disco
 當您驗證過識別碼權杖之後，便可開始關於該使用者的工作階段。 在應用程式中，使用識別碼權杖中的宣告來取得使用者的相關資訊。 這項資訊可以用於顯示、記錄、授權等等。
 
 ## <a name="get-access-tokens"></a>取得存取權杖
-如果您的 Web 應用程式只需要執行使用者流程，則可以略過接下來的幾節。 下列各節中的資訊僅適用于需要對 Web API 進行已驗證的呼叫，並受到 Azure AD B2C 保護的 web 應用程式。
+如果您的 Web 應用程式只需要執行使用者流程，則可以略過接下來的幾節。 下列各節中的資訊僅適用于需要對 web API 進行已驗證的呼叫，且受 Azure AD B2C 保護的 web 應用程式。
 
-現在您已將使用者登入單一頁面應用程式，您可以取得存取權杖來呼叫受 Azure AD 保護的 web Api。 即使您已經使用 `token` 回應類型收到權杖，仍可使用此方法來取得其他資源的權杖，而不需重新導向使用者進行再次登入。
+現在您已將使用者登入您的單一頁面應用程式，您可以取得存取權杖，以呼叫受 Azure AD 保護的 web Api。 即使您已經使用 `token` 回應類型收到權杖，仍可使用此方法來取得其他資源的權杖，而不需重新導向使用者進行再次登入。
 
-在一般 web 應用程式流程中，您會對端點提出要求 `/token` 。 不過，端點不支援 CORS 要求，因此無法選擇進行 AJAX 呼叫來取得重新整理權杖。 相反地，您可以在隱藏的 HTML iframe 元素中使用隱含流程，為其他 Web API 取得新權杖。 以下是範例 (內含換行符號以利閱讀)：
+在典型的 web 應用程式流程中，您會向端點提出要求 `/token` 。 不過，端點不支援 CORS 要求，因此無法選擇讓 AJAX 呼叫取得重新整理權杖。 相反地，您可以在隱藏的 HTML iframe 元素中使用隱含流程，為其他 Web API 取得新權杖。 以下是範例 (內含換行符號以利閱讀)：
 
 ```http
 https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/authorize?
@@ -164,25 +164,25 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 &prompt=none
 ```
 
-| 參數 | 必要項？ | Description |
+| 參數 | 必要？ | 描述 |
 | --- | --- | --- |
-|出租| 必要 | Azure AD B2C 租使用者的名稱|
+|租| 必要 | 您 Azure AD B2C 租使用者的名稱|
 策略| 必要| 要執行的使用者流程。 指定您在 Azure AD B2C 租使用者中建立的使用者流程名稱。 例如：`b2c_1_sign_in`、`b2c_1_sign_up` 或 `b2c_1_edit_profile`。 |
 | client_id |必要 |在 [Azure 入口網站](https://portal.azure.com)中指派給應用程式的應用程式識別碼。 |
 | response_type |必要 |必須包含 OpenID Connect 登入的 `id_token` 。  它也可能包含回應類型 `token`。 如果您在這裡使用 `token`，應用程式就能立即從授權端點接收存取權杖，而不需向授權端點進行第二次要求。 如果您使用 `token` 回應類型，`scope` 參數就必須包含範圍，以指出要對哪個資源發出權杖。 |
 | redirect_uri |建議 |應用程式的重新導向 URI，您的應用程式可在此傳送及接收驗證回應。 它必須與您在入口網站中註冊的其中一個重新導向 URI 完全相符，不過必須是 URL 編碼格式。 |
 | scope |必要 |範圍的空格分隔清單。  若要取得權杖，請包含您針對所需資源要求的所有範圍。 |
-| response_mode |建議 |指定將產生之權杖送回到應用程式要使用的方法。 針對隱含流程，請使用 `fragment` 。 您可以指定兩個其他模式， `query` 和 `form_post` ，但無法在隱含流程中使用。 |
-| state |建議 |會隨權杖回應傳回之要求中所包含的值。  它可以是您想要使用之任何內容的字串。  通常會使用隨機產生的唯一值來防止跨網站偽造要求攻擊。  在驗證要求出現之前，也會使用此狀態將應用程式中使用者狀態的相關資訊編碼。 例如，使用者所在的網頁或檢視。 |
+| response_mode |建議 |指定將產生之權杖送回到應用程式要使用的方法。 針對隱含流程，請使用 `fragment` 。 您可以指定兩種不同的模式， `query` `form_post` 但無法在隱含流程中使用。 |
+| 狀態 |建議 |會隨權杖回應傳回之要求中所包含的值。  它可以是您想要使用之任何內容的字串。  通常會使用隨機產生的唯一值來防止跨網站偽造要求攻擊。  在驗證要求出現之前，也會使用此狀態將應用程式中使用者狀態的相關資訊編碼。 例如，使用者所在的網頁或檢視。 |
 | nonce |必要 |要求中所含的值 (由應用程式產生)，它會以宣告形式包含於產生的識別碼權杖中。  然後，應用程式可以驗證此值，以減輕權杖重新執行所造成的攻擊。 此值通常是隨機的唯一字串，可用以識別要求的來源。 |
 | Prompt |必要 |若要重新整理並取得隱藏 iframe 中的權杖，請使用 `prompt=none` 以確保 iframe 不會停滯在登入頁面上，並立即返回。 |
-| login_hint |必要 |若要重新整理並取得隱藏 iframe 中的權杖，請在此提示中包含使用者的使用者名稱，以區分使用者在特定時間點可能具有的多個工作階段。 您可以使用宣告從稍早的登入中解壓縮使用者名稱 `preferred_username` （ `profile` 必須要有此範圍才能接收宣告 `preferred_username` ）。 |
-| domain_hint |必要 |可以是 `consumers` 或 `organizations`。  若要重新整理並取得隱藏 iframe 中的權杖，請在要求中包含 `domain_hint` 值。  `tid`從先前登入的識別碼權杖中解壓縮宣告，以判斷要使用的值（ `profile` 必須要有範圍才能接收宣告 `tid` ）。 如果 `tid` 宣告值是 `9188040d-6c67-4c5b-b112-36a304b66dad`，請使用 `domain_hint=consumers`。  否則，使用 `domain_hint=organizations`。 |
+| login_hint |必要 |若要重新整理並取得隱藏 iframe 中的權杖，請在此提示中包含使用者的使用者名稱，以區分使用者在特定時間點可能具有的多個工作階段。 您可以使用宣告將使用者名稱從先前的登入中解壓縮， `preferred_username` (`profile` 必須要有範圍才能接收宣告 `preferred_username`) 。 |
+| domain_hint |必要 |可以是 `consumers` 或 `organizations`。  若要重新整理並取得隱藏 iframe 中的權杖，請 `domain_hint` 在要求中包含值。  `tid`從先前登入的識別碼權杖中解壓縮宣告，以決定要使用哪個值 (`profile` 範圍必須要有此值，才能接收宣告 `tid`) 。 如果 `tid` 宣告值是 `9188040d-6c67-4c5b-b112-36a304b66dad`，請使用 `domain_hint=consumers`。  否則，使用 `domain_hint=organizations`。 |
 
 一旦設定 `prompt=none` 參數，此要求就會立即成功或失敗，並返回您的應用程式。  藉由使用 `response_mode` 參數中指定的方法，以指定的重新導向 URI 將成功的回應傳送至您的應用程式。
 
-### <a name="successful-response"></a>成功回應
-使用的成功回應 `response_mode=fragment` 如下列範例所示：
+### <a name="successful-response"></a>成功的回應
+使用的成功回應 `response_mode=fragment` 看起來像這個範例：
 
 ```http
 GET https://aadb2cplayground.azurewebsites.net/#
@@ -193,7 +193,7 @@ access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q..
 &scope=https%3A%2F%2Fapi.contoso.com%2Ftasks.read
 ```
 
-| 參數 | 說明 |
+| 參數 | 描述 |
 | --- | --- |
 | access_token |應用程式要求的權杖。 |
 | token_type |權杖類型一律為持有人。 |
@@ -202,7 +202,7 @@ access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q..
 | scope |存取權杖有效的範圍。 |
 
 ### <a name="error-response"></a>錯誤回應
-錯誤回應也能傳送到重新導向 URI，以便讓應用程式能夠適當地處理它們。  對於 `prompt=none` ，預期的錯誤看起來像這個範例：
+錯誤回應也能傳送到重新導向 URI，以便讓應用程式能夠適當地處理它們。  針對 `prompt=none` ，預期的錯誤看起來會像這個範例：
 
 ```http
 GET https://aadb2cplayground.azurewebsites.net/#
@@ -210,9 +210,9 @@ error=user_authentication_required
 &error_description=the+request+could+not+be+completed+silently
 ```
 
-| 參數 | Description |
+| 參數 | 描述 |
 | --- | --- |
-| 錯誤 |可用於將發生的錯誤分類的錯誤碼字串。 您也可以使用此字串對錯誤做出反應。 |
+| error |可用於將發生的錯誤分類的錯誤碼字串。 您也可以使用此字串對錯誤做出反應。 |
 | error_description |可協助您識別驗證錯誤根本原因的特定錯誤訊息。 |
 
 如果您在 iframe 要求中收到此錯誤，使用者必須再次以互動方式登入以擷取新的權杖。
@@ -221,7 +221,7 @@ error=user_authentication_required
 識別碼權杖和存取權杖都會在短期內過期。 您的應用程式必須準備好定期重新整理這些權杖。  若要重新整理任一種類型的權杖，可使用 `prompt=none` 參數來控制 Azure AD 步驟，藉以執行我們在上述範例中所使用的相同隱藏 iframe 要求。  若要接收新的 `id_token` 值，請務必使用 `response_type=id_token` 和 `scope=openid`，以及 `nonce` 參數。
 
 ## <a name="send-a-sign-out-request"></a>傳送登出要求
-當您想要將使用者登出應用程式時，請將使用者重新導向至 Azure AD 來登出。如果您不將使用者重新導向，他們可能會重新驗證您的應用程式，而不需要再次輸入其認證，因為他們與 Azure AD 具有有效的單一登入會話。
+當您想要將使用者登出應用程式時，請將使用者重新導向至 Azure AD 登出。如果您未重新導向使用者，他們可能可以重新驗證您的應用程式，而不需要再次輸入其認證，因為它們與 Azure AD 有有效的單一登入會話。
 
 您只要將使用者重新導向至 `end_session_endpoint` (列於[驗證識別碼權杖](#validate-the-id-token)中所述的相同 OpenID Connect 中繼資料文件中) 即可。 例如：
 
@@ -229,25 +229,25 @@ error=user_authentication_required
 GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/logout?post_logout_redirect_uri=https%3A%2F%2Faadb2cplayground.azurewebsites.net%2F
 ```
 
-| 參數 | 必要 | 說明 |
+| 參數 | 必要 | 描述 |
 | --------- | -------- | ----------- |
-| 出租 | Yes | Azure AD B2C 租使用者的名稱 |
-| 策略 | Yes | 您想要用來將使用者登出應用程式的使用者流程。 |
-| post_logout_redirect_uri | No | 使用者在成功登出後應重新導向至的 URL。如果未包含，Azure AD B2C 會向使用者顯示一般訊息。 |
-| state | No | 如果要求中包含 `state` 參數，回應中就應該出現相同的值。 應用程式應確認 `state` 要求和回應中的值是否相同。 |
+| 租 | 是 | 您 Azure AD B2C 租使用者的名稱 |
+| 策略 | 是 | 您想要用來將使用者登出應用程式的使用者流程。 |
+| post_logout_redirect_uri | 否 | 成功登出之後，使用者應該重新導向的 URL。如果未包含，Azure AD B2C 會顯示一般訊息給使用者。 |
+| 狀態 | 否 | 如果要求中包含 `state` 參數，則回應中應該會出現相同的值。 應用程式應該確認 `state` 要求和回應中的值是否相同。 |
 
 
 > [!NOTE]
-> 將使用者導向至 `end_session_endpoint`，會利用 Azure AD B2C 清除使用者的部分單一登入狀態。 不過，它不會將使用者登出使用者的社交身分識別提供者工作階段。 如果使用者在後續登入時選取相同的識別提供者，則會重新驗證使用者，而不需要輸入其認證。 舉例來說，如果使用者想要登出您的 Azure AD B2C 應用程式，不一定代表他們想要完全登出自己的 Facebook 帳戶。 不過，如果使用本機帳戶，使用者的工作階段將會正確地結束。
+> 將使用者導向至 `end_session_endpoint`，會利用 Azure AD B2C 清除使用者的部分單一登入狀態。 不過，它不會將使用者登出使用者的社交身分識別提供者工作階段。 如果使用者在後續登入時選取相同的身分識別提供者，則會重新驗證使用者，而不需要輸入其認證。 舉例來說，如果使用者想要登出您的 Azure AD B2C 應用程式，不一定代表他們想要完全登出自己的 Facebook 帳戶。 不過，如果使用本機帳戶，使用者的工作階段將會正確地結束。
 >
 
 ## <a name="next-steps"></a>後續步驟
 
 ### <a name="code-sample-azure-ad-b2c-with-microsoft-authentication-library-for-javascript"></a>程式碼範例：使用適用于 JavaScript 的 Microsoft 驗證程式庫 Azure AD B2C
 
-[使用 Azure AD B2C 的 msal.js 建立的單一頁面應用程式][github-msal-js-example]（GitHub）
+[使用 msal.js 的單一頁面應用程式，適用于 Azure AD B2C][github-msal-js-example] (GitHub) 
 
-GitHub 上的此範例旨在協助您開始在使用[msal.js][github-msal-js]建立的簡單 web 應用程式中 Azure AD B2C，並使用快顯樣式驗證。
+此 GitHub 上的範例旨在協助您開始在以 [msal.js][github-msal-js] 建立的簡單 web 應用程式中 Azure AD B2C，並使用快顯樣式驗證。
 
 <!-- Links - EXTERNAL -->
 [github-msal-js-example]: https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp
