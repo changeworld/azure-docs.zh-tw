@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 10/07/2020
-ms.openlocfilehash: b6a7b9d4e4b8a7caf79e2dbcc1059adc3c9122d7
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.date: 10/08/2020
+ms.openlocfilehash: af74392b3368a25e5d238f774292c80de5f91c65
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/08/2020
-ms.locfileid: "91843787"
+ms.locfileid: "91857736"
 ---
 # <a name="how-to-use-apache-hive-replication-in-azure-hdinsight-clusters"></a>如何在 Azure HDInsight 叢集中使用 Apache Hive 複寫
 
@@ -224,8 +224,7 @@ repl dump tpcds_orc from 2925;
 
 若要深入瞭解本文中討論的專案，請參閱：
 
-- [Apache Ambari REST 參考](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)
-- [安裝和設定 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)
-- [安裝和設定 Azure PowerShell 模組 Az](/powershell/azure/)
-- [使用 Apache Ambari 來管理 HDInsight](../hdinsight-hadoop-manage-ambari.md)
-- [佈建以 Linux 為基礎的 HDInsight 叢集](../hdinsight-hadoop-provision-linux-clusters.md)
+- [Azure HDInsight 商務持續性](../hdinsight-business-continuity.md)
+- [Azure HDInsight 商務持續性架構](../hdinsight-business-continuity-architecture.md)
+- [Azure HDInsight 高可用性解決方案架構案例研究](../hdinsight-high-availability-case-study.md)
+- [Azure HDInsight 上的 Apache Hive 和 HiveQL 是什麼？](../hadoop/hdinsight-use-hive.md)

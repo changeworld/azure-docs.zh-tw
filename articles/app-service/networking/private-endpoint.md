@@ -9,12 +9,12 @@ ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: c6a55958102c89c78fe2cd797bb59cf72f9ec505
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 855cbe3d2926a04af773aa32ea0ab63bde89491c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91773139"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91857260"
 ---
 # <a name="using-private-endpoints-for-azure-web-app"></a>使用 Azure Web 應用程式的私人端點
 
@@ -114,6 +114,8 @@ ms.locfileid: "91773139"
 當您在彈性進階方案中使用 Azure 函式搭配私人端點時，若要在 Azure Web 入口網站中執行函式，您必須具有直接網路存取權，否則會收到 HTTP 403 錯誤。 換句話說，您的瀏覽器必須能夠連線到私人端點，才能從 Azure 入口網站執行函式。 
 
 您最多可以將100私人端點連線到特定的 Web 應用程式。
+
+啟用 Web 應用程式的私人端點時，無法使用遠端偵錯程式功能。 建議您將程式碼部署到位置，並在該處進行遠端偵錯程式。
 
 私人端點適用于 >premiumv2、PremiumV3、Windows 和 Linux Web 應用程式（容器化），而 Azure Functions Premium 方案 (有時也稱為彈性 Premium 方案) 。 
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,seoapr2020
 ms.topic: conceptual
 ms.date: 04/29/2020
-ms.openlocfilehash: 55ffd563ea0a99d32608bd90bd53d7dc88eb4cf2
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: c8862398d5c79335e4ed59f4ca42df9abd58965e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85961807"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856580"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>在 Linux 上使用 HDInsight 的相關資訊
 
@@ -101,15 +101,15 @@ Hadoop 相關檔案可以在叢集節點的 `/usr/hdp`上找到。 此目錄包�
 
 在大部分的 Hadoop 散發套件中，資料會儲存在 HDFS 中。 叢集中機器上的本機儲存體會支援 HDFS。 針對雲端解決方案使用本機儲存體的成本可能相當高，因為計算資源是以每小時或每分鐘為單位來計費。
 
-使用 HDInsight 時，會使用 Azure Blob 儲存體 (並選擇性地使用 Azure Data Lake Storage) 以適用的彈性方式將資料檔案儲存在雲端中。 這些服務提供下列優點：
+使用 HDInsight 時，資料檔案會以可調整的彈性方式儲存在雲端中，並使用 Azure Blob 儲存體並選擇性地 Azure Data Lake Storage Gen1/Gen2。 這些服務提供下列優點：
 
 * 長期儲存成本低廉。
 * 可從各種外部服務進行存取，例如網站、檔案上傳/下載公用程式、各種語言的 SDK 和網頁瀏覽器。
 * 大型檔案容量和大型適用的儲存體。
 
-如需詳細資訊，請參閱[了解 Blob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) 和[Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)。
+如需詳細資訊，請參閱 [Azure Blob 儲存體](../storage/common/storage-introduction.md)、 [Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-overview.md)或 [Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md)。
 
-使用 Azure 儲存體或 Data Lake Storage 時，您不需要從 HDInsight 進行任何特殊動作就能存取資料。 例如，下列命令會列出 `/example/data` 資料夾中的檔案，不論其是否儲存在 Azure 儲存體或 Data Lake Storage 中：
+使用 Azure Blob 儲存體或 Data Lake Storage Gen1/Gen2 時，您不需要從 HDInsight 進行任何特殊動作就能存取資料。 例如，下列命令會列出 `/example/data` 資料夾中的檔案，不論其是否儲存在 Azure 儲存體或 Data Lake Storage 中：
 
 ```console
 hdfs dfs -ls /example/data
@@ -135,7 +135,7 @@ hdfs dfs -ls /example/data
 
 * `abfs://<container-name>@<account-name>.dfs.core.windows.net/`:與非預設儲存體帳戶進行通訊時使用。 例如，當您有其他儲存體帳戶，或在可公開存取的儲存體帳戶中存取儲存的資料時。
 
-使用 [**Azure Data Lake Storage Gen1**](./hdinsight-hadoop-use-data-lake-store.md) 時，請使用下列其中一種 URI 配置：
+使用 [**Azure Data Lake Storage Gen1**](../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen1.md) 時，請使用下列其中一種 URI 配置：
 
 * `adl:///`:存取叢集的預設 Data Lake Storage。
 
@@ -189,7 +189,7 @@ curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTER
 
 有各種不同的方式可從 HDInsight 叢集之外存取資料。 以下是幾個可用來處理資料之公用程式和 SDK 的連結︰
 
-如果使用 __Azure 儲存體__，請參閱下列連結，以取得可供存取資料的方式︰
+如果使用 __Azure Blob 儲存體__，請參閱下列連結以取得您可以存取資料的方式：
 
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-az-cli2)：適用於 Azure 的命令列介面命令。 安裝好後，請使用 `az storage` 命令以協助使用儲存體，或是針對 Blob 特有命令使用 `az storage blob`。
 * [blobxfer.py](https://github.com/Azure/blobxfer)：python 指令碼，用於 Azure 儲存體中的 Blob。
@@ -203,7 +203,7 @@ curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTER
     * [.NET](https://github.com/Azure/azure-sdk-for-net)
     * [儲存體 REST API](https://msdn.microsoft.com/library/azure/dd135733.aspx)
 
-如果使用 __Azure Data Lake Storage__，請參閱下列連結，以取得可供存取資料的方式︰
+如果使用 __Azure Data Lake Storage Gen1__，請參閱下列連結以取得您可以存取資料的方式：
 
 * [Web 瀏覽器](../data-lake-store/data-lake-store-get-started-portal.md)
 * [PowerShell](../data-lake-store/data-lake-store-get-started-powershell.md)

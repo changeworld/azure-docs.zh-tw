@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 33c54738b1ab3c90118c86bbf78bdcc3348658e0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2a0471055e4648944aa07d10fef67f5e7235a76b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87048720"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856918"
 ---
 # <a name="create-an-hdinsight-cluster-with-azure-data-lake-storage-gen1-using-azure-resource-manager-template"></a>使用 Azure Resource Manager 範本來建立搭配 Azure Data Lake Storage Gen1 的 HDInsight 叢集
 > [!div class="op_single_selector"]
@@ -24,7 +24,7 @@ ms.locfileid: "87048720"
 
 了解如何使用 Azure PowerShell 設定搭配 Azure Data Lake Storage Gen1 **作為額外儲存體**的 HDInsight 叢集。
 
-針對支援的叢集類型，Data Lake Storage Gen1 可以做為預設儲存體或額外的儲存體帳戶使用。 當 Data Lake Storage Gen1 作為額外儲存體使用時，叢集的預設儲存體帳戶仍然會是 Azure 儲存體 Blob (WASB)，且叢集相關的檔案 (例如記錄等) 仍然會寫入預設儲存體，而您想要處理的資料則可儲存在 Data Lake Storage Gen1 帳戶中。 使用 Data Lake Storage Gen1 作為額外儲存體帳戶將不會影響效能或從叢集讀取/寫入至儲存體的能力。
+針對支援的叢集類型，Data Lake Storage Gen1 可以當做預設儲存體或額外的儲存體帳戶使用。 當 Data Lake Storage Gen1 做為額外的儲存體時，叢集的預設儲存體帳戶仍然是 Azure Blob 儲存體 (WASB) 和叢集相關的檔案 (例如記錄等）仍會寫入預設儲存體，而您想要處理的資料則可儲存在 ) 帳戶中。 使用 Data Lake Storage Gen1 作為額外儲存體帳戶將不會影響效能或從叢集讀取/寫入至儲存體的能力。
 
 ## <a name="using-data-lake-storage-gen1-for-hdinsight-cluster-storage"></a>將 Data Lake Storage Gen1 作為 HDInsight 叢集儲存體使用
 
@@ -34,7 +34,7 @@ ms.locfileid: "87048720"
 
 * HDInsight 3.2、3.4、3.5 和 3.6 版能提供建立可存取 Data Lake Storage Gen1 作為額外儲存體之 HDInsight 叢集的選項。
 
-在本文中，我們佈建 Hadoop 叢集與 Data Lake Storage Gen1 做為額外的儲存體。 如需有關如何使用 Data Lake Storage Gen1 做為預設儲存體來建立 Hadoop 叢集的指示，請參閱[使用 Azure 入口網站建立具有 Data Lake Storage Gen1 的 HDInsight](data-lake-store-hdinsight-hadoop-use-portal.md)叢集。
+在本文中，我們佈建 Hadoop 叢集與 Data Lake Storage Gen1 做為額外的儲存體。 如需有關如何使用 Data Lake Storage Gen1 作為預設儲存體建立 Hadoop 叢集的指示，請參閱 [使用 Azure 入口網站建立具有 Data Lake Storage Gen1 的 HDInsight](data-lake-store-hdinsight-hadoop-use-portal.md)叢集。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -44,7 +44,7 @@ ms.locfileid: "87048720"
 
 * **Azure 訂用帳戶**。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
 * **Azure PowerShell 1.0 或更新版本**。 請參閱 [如何安裝和設定 Azure PowerShell](/powershell/azure/)。
-* **Azure Active Directory 服務主體**。 本教學課程中的步驟提供有關如何在 Azure AD 中建立服務主體的指示。 不過，您必須是 Azure AD 系統管理員，才能建立服務主體。 如果您是 Azure AD 系統管理員，您就可以略過這項先決條件並繼續進行本教學課程。
+* **Azure Active Directory 的服務主體**。 本教學課程中的步驟提供有關如何在 Azure AD 中建立服務主體的指示。 不過，您必須是 Azure AD 系統管理員，才能建立服務主體。 如果您是 Azure AD 系統管理員，您就可以略過這項先決條件並繼續進行本教學課程。
 
     **如果您不是 Azure AD 系統管理員**，您將無法執行建立服務主體所需的步驟。 在這類情況下，您的 Azure AD 系統管理員必須先建立服務主體，您才能建立搭配 Data Lake Storage Gen1 的 HDInsight 叢集。 此外，必須使用憑證來建立服務主體，如[使用憑證來建立服務主體](../active-directory/develop/howto-authenticate-service-principal-powershell.md#create-service-principal-with-certificate-from-certificate-authority)所述。
 
@@ -66,21 +66,21 @@ Set-AzContext -SubscriptionId <subscription ID>
 
 此範本會部署下列資源類型：
 
-* [DataLakeStore/accounts](/azure/templates/microsoft.datalakestore/accounts)
+* [DataLakeStore/帳戶](/azure/templates/microsoft.datalakestore/accounts)
 * [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts)
 * [Microsoft HDInsight/叢集](/azure/templates/microsoft.hdinsight/clusters)
 
 ## <a name="upload-sample-data-to-data-lake-storage-gen1"></a>將範例資料上傳到 Data Lake Storage Gen1
-Resource Manager 範本會建立一個新的 Data Lake Storage Gen1 帳戶並將它與 HDInsight 叢集建立關聯。 您現在必須將一些範例資料上傳到 Data Lake Storage Gen1。 稍後在教學課程中，您將需要使用這些資料，以便從會存取 Data Lake Storage Gen1 中資料的 HDInsight 叢集中執行作業。 如需如何上傳資料的指示，請參閱[將檔案上傳至 Data Lake Storage Gen1 帳戶](data-lake-store-get-started-portal.md#uploaddata)。 如果您正在尋找一些可上傳的範例資料，您可以從 **Azure Data Lake Git 存放庫** 取得 [Ambulance Data](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData)資料夾。
+Resource Manager 範本會以 Data Lake Storage Gen1 建立新的儲存體帳戶，並將它與 HDInsight 叢集產生關聯。 您現在必須將一些範例資料上傳到 Data Lake Storage Gen1。 您稍後在本教學課程中將會需要此資料，以使用 Data Lake Storage Gen1，從存取儲存體帳戶中資料的 HDInsight 叢集執行作業。 如需有關如何上傳資料的指示，請參閱將檔案 [上傳至 Data Lake Storage Gen1](data-lake-store-get-started-portal.md#uploaddata)。 如果您正在尋找一些可上傳的範例資料，您可以從 **Azure Data Lake Git 存放庫** 取得 [Ambulance Data](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData)資料夾。
 
 ## <a name="set-relevant-acls-on-the-sample-data"></a>在範例資料上設定相關的 ACL
 為確保可從 HDInsight 叢集存取您上傳的範例資料，您必須確認用來在 HDInsight 叢集與 Data Lake Storage Gen1 之間建立身分識別的 Azure AD 應用程式，有權限存取您嘗試存取的檔案/資料夾。 若要這樣做，請執行下列步驟。
 
-1. 找出與 HDInsight 叢集和 Data Lake Storage Gen1 帳戶相關聯的 Azure AD 應用程式名稱。 其中一個尋找名稱的方法是開啟您使用 Resource Manager 範本來建立的 HDInsight 叢集刀鋒視窗、按一下 [叢集 AAD 識別]**** 索引標籤，然後尋找 [服務主體顯示名稱]**** 的值。
+1. 找出與 HDInsight 叢集相關聯的 Azure AD 應用程式名稱，以及具有 Data Lake Storage Gen1 的儲存體帳戶。 尋找名稱的其中一種方式是開啟您使用 Resource Manager 範本建立的 HDInsight 叢集分頁，按一下 [叢集 Azure AD 身分 **識別** ] 索引標籤，然後尋找 [ **服務主體顯示名稱**] 的值。
 2. 現在，將您想要從 HDInsight 叢集存取之檔案/資料夾的存取權提供給此 Azure AD 應用程式。 若要在 Data Lake Storage Gen1 中的檔案/資料夾上設定正確的 ACL，請參閱[保護 Data Lake Storage Gen1 中的資料](data-lake-store-secure-data.md#filepermissions)。
 
 ## <a name="run-test-jobs-on-the-hdinsight-cluster-to-use-data-lake-storage-gen1"></a>在 HDInsight 叢集上執行測試作業以使用 Data Lake Storage Gen1
-設定 HDInsight 叢集之後，可以在叢集上執行測試作業，以測試 HDInsight 叢集是否可以存取 Data Lake Storage Gen1。 為了完成這個操作，我們將會執行範例 Hive 作業，該作業會使用您稍早上傳至 Data Lake Storage Gen1 帳戶的範例資料來建立資料表。
+設定 HDInsight 叢集之後，可以在叢集上執行測試作業，以測試 HDInsight 叢集是否可以存取 Data Lake Storage Gen1。 若要這樣做，我們將會執行範例 Hive 作業，該作業會使用您稍早上傳至儲存體帳戶 Data Lake Storage Gen1 的範例資料來建立資料表。
 
 在本節中，您會透過 SSH 連線到 HDInsight Linux 叢集並執行範例 Hive 查詢。 如果您使用 Windows 用戶端，建議您使用 **PuTTY** (可從 [https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)下載)。
 
@@ -99,7 +99,7 @@ Resource Manager 範本會建立一個新的 Data Lake Storage Gen1 帳戶並將
    SELECT * FROM vehicles LIMIT 10;
    ```
 
-   您應該會看到類似以下的輸出：
+   您應該會看到如下輸出：
 
    ```
    1,1,2014-09-14 00:00:03,46.81006,-92.08174,51,S,1
@@ -122,10 +122,10 @@ Resource Manager 範本會建立一個新的 Data Lake Storage Gen1 帳戶並將
 
 如需有關使用 PuTTY 的詳細資訊，請參閱 [從 Windows 在 HDInsight 上搭配使用 SSH 與以 Linux 為基礎的 Hadoop](../hdinsight/hdinsight-hadoop-linux-use-ssh-windows.md)。
 
-連線之後，使用下列 HDFS 檔案系統命令列出 Data Lake Storage Gen1 帳戶中的檔案。
+連線之後，使用下列 HDFS 檔案系統命令，以 Data Lake Storage Gen1 列出儲存體帳戶中的檔案。
 
 ```
-hdfs dfs -ls adl://<Data Lake Storage Gen1 account name>.azuredatalakestore.net:443/
+hdfs dfs -ls adl://<storage account with Data Lake Storage Gen1 name>.azuredatalakestore.net:443/
 ```
 
 這麼做應該會列出您稍早上傳至 Data Lake Storage Gen1 的檔案。
@@ -141,4 +141,4 @@ Found 1 items
 
 ## <a name="next-steps"></a>後續步驟
 * [將資料從 Azure 儲存體 Blob 複製到 Lake Storage Gen1](data-lake-store-copy-data-wasb-distcp.md)
-* [搭配 Azure HDInsight 叢集使用 Data Lake Storage Gen1](../hdinsight/hdinsight-hadoop-use-data-lake-store.md)
+* [搭配 Azure HDInsight 叢集使用 Data Lake Storage Gen1](../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen1.md)

@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 69cfe529f3d2b0f956bfbe9d002a5a220b37e19f
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.openlocfilehash: d11d3edc4eec0a006e71ef1787cbbd62a7f5957e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91619998"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856971"
 ---
 # <a name="use-azure-powershell-to-create-an-hdinsight-cluster-with-azure-data-lake-storage-gen1-as-additional-storage"></a>使用 Azure PowerShell 建立搭配 Azure Data Lake Storage Gen1 (作為附加儲存體) 的 HDInsight 叢集
 
@@ -29,7 +29,7 @@ ms.locfileid: "91619998"
 > 如果您要使用 Data Lake Storage Gen1 作為 HDInsight 叢集的額外儲存體，強烈建議您如此文章所述在建立叢集時執行此作業。 將 Data Lake Storage Gen1 作為額外儲存體新增至現有的 HDInsight 叢集是一個很複雜的程序，且很容易出錯。
 >
 
-針對支援的叢集類型，Data Lake Storage Gen1 可作為預設儲存體或額外儲存體帳戶使用。 當 Data Lake Storage Gen1 作為額外儲存體使用時，叢集的預設儲存體帳戶仍然會是 Azure 儲存體 Blob (WASB)，且叢集相關的檔案 (例如記錄等) 仍然會寫入預設儲存體，而您想要處理的資料則可儲存在 Data Lake Storage Gen1 帳戶中。 使用 Data Lake Storage Gen1 作為額外儲存體帳戶將不會影響效能或從叢集讀取/寫入至儲存體的能力。
+針對支援的叢集類型，Data Lake Storage Gen1 可作為預設儲存體或額外儲存體帳戶使用。 當 Data Lake Storage Gen1 做為額外的儲存體時，叢集的預設儲存體帳戶仍然是 Azure Blob 儲存體 (WASB) 而且叢集相關的檔案 (例如記錄等）仍會寫入預設儲存體，而您想要處理的資料則可儲存在 ) 中。 使用 Data Lake Storage Gen1 作為額外儲存體帳戶將不會影響效能或從叢集讀取/寫入至儲存體的能力。
 
 ## <a name="using-data-lake-storage-gen1-for-hdinsight-cluster-storage"></a>將 Data Lake Storage Gen1 作為 HDInsight 叢集儲存體使用
 
@@ -39,7 +39,7 @@ ms.locfileid: "91619998"
 
 使用 PowerShell 來設定 HDInsight 與 Data Lake Storage Gen1 搭配使用，包含下列步驟：
 
-* 建立 Data Lake Storage Gen1 帳戶
+* 建立 Data Lake Storage Gen1 帳戶 
 * 設定對 Data Lake Storage Gen1 進行角色型存取的驗證
 * 建立具有針對 Data Lake Storage Gen1 之驗證的 HDInsight 叢集
 * 在叢集上執行測試工作
@@ -57,7 +57,7 @@ ms.locfileid: "91619998"
 
     **如果您不是 Azure AD 系統管理員**，您將無法執行建立服務主體所需的步驟。 在這類情況下，您的 Azure AD 系統管理員必須先建立服務主體，您才能建立搭配 Data Lake Storage Gen1 的 HDInsight 叢集。 此外，必須使用憑證來建立服務主體，如[使用憑證來建立服務主體](../active-directory/develop/howto-authenticate-service-principal-powershell.md#create-service-principal-with-certificate-from-certificate-authority)所述。
 
-## <a name="create-a-data-lake-storage-gen1-account"></a>建立 Data Lake Storage Gen1 帳戶
+## <a name="create-a-data-lake-storage-gen1-account"></a>建立 Data Lake Storage Gen1 帳戶 
 請遵循以下步驟來建立 Data Lake Storage Gen1 帳戶。
 
 1. 從您的桌面開啟新的 Azure PowerShell 視窗，並輸入下列程式碼片段。 系統提示您登入時，請確定您使用其中一個訂用帳戶管理員/擁有者身分登入：
@@ -80,7 +80,7 @@ ms.locfileid: "91619998"
    > 如果您在 `Register-AzResourceProvider : InvalidResourceNamespace: The resource namespace 'Microsoft.DataLakeStore' is invalid` 註冊 Data Lake Storage Gen1 資源提供者時收到類似的錯誤，可能是您的訂用帳戶未核准 Data Lake Storage Gen1。 請務必遵循這些[指示](data-lake-store-get-started-portal.md)，來為您的 Azure 訂用帳戶啟用使用 Data Lake Storage Gen1 的功能。
    >
    >
-2. Data Lake Storage Gen1 帳戶會與 Azure 資源群組相關聯。 從建立 Azure 資源群組開始。
+2. 具有 Data Lake Storage Gen1 的儲存體帳戶會與 Azure 資源群組相關聯。 從建立 Azure 資源群組開始。
 
     ```azurepowershell
     $resourceGroupName = "<your new resource group name>"
@@ -97,10 +97,10 @@ ms.locfileid: "91619998"
     ResourceId        : /subscriptions/<subscription-id>/resourceGroups/hdiadlgrp
     ```
 
-3. 建立 Data Lake Storage Gen1 帳戶。 您指定的帳戶名稱必須只包含小寫字母和數字。
+3. 使用 Data Lake Storage Gen1 建立儲存體帳戶。 您指定的帳戶名稱必須只包含小寫字母和數字。
 
     ```azurepowershell
-    $dataLakeStorageGen1Name = "<your new Data Lake Storage Gen1 account name>"
+    $dataLakeStorageGen1Name = "<your new storage account with Data Lake Storage Gen1 name>"
     New-AzDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeStorageGen1Name -Location "East US 2"
     ```
 
@@ -132,7 +132,7 @@ ms.locfileid: "91619998"
 
 ## <a name="set-up-authentication-for-role-based-access-to-data-lake-storage-gen1"></a>設定對 Data Lake Storage Gen1 進行角色型存取的驗證
 
-每一個 Azure 訂用帳戶都與 Azure Active Directory 相關聯。 透過 Azure 入口網站或 Azure Resource Manager API 來存取訂用帳戶資源的使用者與服務，都必須先向 Azure Active Directory 進行驗證。 您可以在 Azure 資源上為 Azure 訂用帳戶和服務指派適當的角色，以授與其存取權限。  對於服務，服務主體會識別 Azure Active Directory (AAD) 中的服務。 此節將說明如何將 Azure 資源 (您稍早建立的 Data Lake Storage Gen1 帳戶) 的存取權授與 HDInsight 等應用程式服務，方法是建立應用程式的服務主體，並透過 Azure PowerShell 將角色指派給它。
+每一個 Azure 訂用帳戶都與 Azure Active Directory 相關聯。 透過 Azure 入口網站或 Azure Resource Manager API 來存取訂用帳戶資源的使用者與服務，都必須先向 Azure Active Directory 進行驗證。 您可以在 Azure 資源上為 Azure 訂用帳戶和服務指派適當的角色，以授與其存取權限。  針對服務，服務主體會識別 Azure Active Directory (Azure AD) 中的服務。 本節說明如何將 Azure 資源的存取權授與應用程式服務（例如 HDInsight）， (具有您稍) 早建立之 Data Lake Storage Gen1 的儲存體帳戶，方法是建立應用程式的服務主體，並透過 Azure PowerShell 將角色指派給該應用程式。
 
 若要設定 Data Lake Storage Gen1 的 Active Directory 驗證，您必須執行下列工作。
 
@@ -197,7 +197,7 @@ ms.locfileid: "91619998"
      $objectId = $servicePrincipal.Id
     ```
 
-3. 將您要從 HDInsight 叢集存取之 Data Lake Storage Gen1 資料夾和檔案的存取權授與服務主體。 以下程式碼片段可提供 Data Lake Storage Gen1 帳戶的根目錄 (您將範例資料檔複製到的位置) 和檔案本身的存取權。
+3. 將您要從 HDInsight 叢集存取之 Data Lake Storage Gen1 資料夾和檔案的存取權授與服務主體。 下列程式碼片段可讓您存取儲存體帳戶的根目錄，以及您複製範例資料檔案) 的 Data Lake Storage Gen1 (，以及檔案本身。
 
     ```azurepowershell
     Set-AzDataLakeStoreItemAclEntry -AccountName $dataLakeStorageGen1Name -Path / -AceType User -Id $objectId -Permissions All
@@ -206,7 +206,7 @@ ms.locfileid: "91619998"
 
 ## <a name="create-an-hdinsight-linux-cluster-with-data-lake-storage-gen1-as-additional-storage"></a>建立 HDInsight Linux 叢集搭配 Data Lake Storage Gen1 作為額外儲存體
 
-在此節中，我們會建立一個 HDInsight Hadoop Linux 叢集，搭配 Data Lake Storage Gen1 作為額外儲存體。 針對此版本，HDInsight 叢集和 Data Lake Storage Gen1 帳戶必須位於相同位置。
+在此節中，我們會建立一個 HDInsight Hadoop Linux 叢集，搭配 Data Lake Storage Gen1 作為額外儲存體。 在此版本中，具有 Data Lake Storage Gen1 的 HDInsight 叢集和儲存體帳戶必須位於相同的位置。
 
 1. 開始擷取訂用帳戶租用戶識別碼。 稍後您將會需要此資訊。
 
@@ -214,7 +214,7 @@ ms.locfileid: "91619998"
     $tenantID = (Get-AzContext).Tenant.TenantId
     ```
 
-2. 在此版本中，針對 Hadoop 叢集，Data Lake Storage Gen1 只能作為該叢集的額外儲存體使用。 預設儲存體仍是 Azure 儲存體 Blob (WASB)。 所以，我們要先建立叢集所需的儲存體帳戶和儲存體容器。
+2. 在此版本中，針對 Hadoop 叢集，Data Lake Storage Gen1 只能作為該叢集的額外儲存體使用。 預設儲存體仍會是 (WASB) 的 Azure Blob 儲存體。 所以，我們要先建立叢集所需的儲存體帳戶和儲存體容器。
 
     ```azurepowershell
     # Create an Azure storage account
@@ -245,8 +245,8 @@ ms.locfileid: "91619998"
     Cmdlet 成功完成後，您應該會看到列出叢集詳細資料的輸出。
 
 
-## <a name="run-test-jobs-on-the-hdinsight-cluster-to-use-the-data-lake-storage-gen1-account"></a>在 HDInsight 叢集上執行測試作業以使用 Data Lake Storage Gen1 帳戶
-設定 HDInsight 叢集之後，可以在叢集上執行測試作業，以測試 HDInsight 叢集是否可以存取 Data Lake Storage Gen1。 為了完成這個操作，我們將會執行範例 Hive 作業，該作業會使用您稍早上傳至 Data Lake Storage Gen1 帳戶的範例資料來建立資料表。
+## <a name="run-test-jobs-on-the-hdinsight-cluster-to-use-the-data-lake-storage-gen1"></a>在 HDInsight 叢集上執行測試作業以使用 Data Lake Storage Gen1
+設定 HDInsight 叢集之後，可以在叢集上執行測試作業，以測試 HDInsight 叢集是否可以存取 Data Lake Storage Gen1。 若要這樣做，我們將會執行範例 Hive 作業，該作業會使用您稍早上傳至儲存體帳戶 Data Lake Storage Gen1 的範例資料來建立資料表。
 
 在這一節中，您將透過 SSH 連線到您所建立的 HDInsight Linux 叢集並執行範例 Hive 查詢。
 
@@ -290,10 +290,10 @@ ms.locfileid: "91619998"
 * 如果您使用 Windows 用戶端來透過 SSH 連線到叢集，請參閱[從 Windows 在 HDInsight 上搭配使用 SSH 與以 Linux 為基礎的 Hadoop](../hdinsight/hdinsight-hadoop-linux-use-ssh-windows.md)。
 * 如果您使用 Linux 用戶端來透過 SSH 連線到叢集，請參閱[從 Linux 在 HDInsight 上搭配使用 SSH 與以 Linux 為基礎的 Hadoop](../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md)
 
-連線之後，使用下列 HDFS 檔案系統命令列出 Data Lake Storage Gen1 帳戶中的檔案。
+連線之後，使用下列 HDFS 檔案系統命令，以 Data Lake Storage Gen1 列出儲存體帳戶中的檔案。
 
 ```azurepowershell
-hdfs dfs -ls adl://<Data Lake Storage Gen1 account name>.azuredatalakestore.net:443/
+hdfs dfs -ls adl://<storage account with Data Lake Storage Gen1 name>.azuredatalakestore.net:443/
 ```
 
 這麼做應該會列出您稍早上傳至 Data Lake Storage Gen1 的檔案。
@@ -307,7 +307,7 @@ Found 1 items
 您也可以使用 `hdfs dfs -put` 命令，將一些檔案上傳至 Data Lake Storage Gen1，然後使用 `hdfs dfs -ls` 來確認是否成功上傳檔案。
 
 ## <a name="see-also"></a>另請參閱
-* [搭配 Azure HDInsight 叢集使用 Data Lake Storage Gen1](../hdinsight/hdinsight-hadoop-use-data-lake-store.md)
+* [搭配 Azure HDInsight 叢集使用 Data Lake Storage Gen1](../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen1.md)
 * [入口網站：建立 HDInsight 叢集以使用 Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-portal.md)
 
 [makecert]: https://msdn.microsoft.com/library/windows/desktop/ff548309(v=vs.85).aspx

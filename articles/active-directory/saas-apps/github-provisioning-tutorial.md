@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 03/27/2019
 ms.author: arvinh
-ms.openlocfilehash: b88408480bb0822a061e97336eee5c6b3ccfc8e0
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 847c69a18a73d67b9b994e72686a4073ddd6d27f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91358316"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91857529"
 ---
 # <a name="tutorial-configure-github-for-automatic-user-provisioning"></a>教學課程︰設定 GitHub 來自動佈建使用者
 
@@ -28,6 +28,7 @@ ms.locfileid: "91358316"
 * Azure Active Directory 租用戶
 * 在 [GitHub Enterprise 雲端](https://help.github.com/articles/github-s-products/#github-enterprise)中建立的 GitHub 組織，需使用 [GitHub Enterprise 的計費方案](https://help.github.com/articles/github-s-billing-plans/#billing-plans-for-organizations)
 * GitHub 中具有組織管理員許可權的使用者帳戶
+* [為 GitHub Enterprise 雲端組織設定的 SAML](https://docs.microsoft.com/azure/active-directory/saas-apps/github-tutorial)
 * 請確定已為您的組織提供 OAuth 存取權， [如下所述](https://help.github.com/en/github/setting-up-and-managing-organizations-and-teams/approving-oauth-apps-for-your-organization)
 * 只有在組織層級啟用 SSO 時，才支援 SCIM 布建至單一組織
 
@@ -51,9 +52,6 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 ## <a name="configuring-user-provisioning-to-github"></a>設定將使用者佈建至 GitHub
 
 本節會引導您將 Azure AD 連線至 GitHub 的使用者帳戶佈建 API，以及根據 Azure AD 中的使用者和群組指派設定佈建服務，以在 GitHub 中建立、更新和停用指派的使用者帳戶。
-
-> [!TIP]
-> 您也可以選擇啟用 GitHub 的 SAML 型單一登入，請遵循 [Azure 入口網站](https://portal.azure.com)中提供的指示。 可以獨立設定自動佈建的單一登入，雖然這兩個功能彼此補充。
 
 ### <a name="configure-automatic-user-account-provisioning-to-github-in-azure-ad"></a>在 Azure AD 中設定將使用者帳戶自動佈建至 GitHub
 
@@ -79,7 +77,7 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 8. 在 [通知電子郵件]**** 欄位中，輸入應收到佈建錯誤通知的個人或群組之電子郵件地址，然後勾選 [發生失敗時傳送電子郵件通知] 核取方塊。
 
-9. 按一下 [檔案]  。
+9. 按一下 [儲存]。
 
 10. 在 [對應] 區段下，選取 [同步處理 Azure Active Directory 使用者至 GitHub]****。
 
@@ -87,7 +85,7 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 12. 若要對 GitHub 啟用 Azure AD 佈建服務，請在 [設定]**** 區段中，將 [佈建狀態]**** 變更為 [開啟]****
 
-13. 按一下 [檔案]  。
+13. 按一下 [儲存]。
 
 此作業會對 [使用者和群組] 區段中指派給 GitHub 的任何使用者和/或群組，啟動首次同步處理。 初始同步處理會比後續同步處理花費更多時間執行，只要服務正在執行，這大約每 40 分鐘便會發生一次。 您可以使用 [同步處理詳細資料]**** 區段來監視進度，並依循連結前往佈建活動記錄，此記錄會描述佈建服務所執行的所有動作。
 

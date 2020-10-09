@@ -7,14 +7,14 @@ manager: mtillman
 ms.service: role-based-access-control
 ms.topic: how-to
 ms.workload: identity
-ms.date: 09/30/2020
+ms.date: 10/08/2020
 ms.author: rolyon
-ms.openlocfilehash: 80a05fd389ecaf504f58d12bf8efe87debd4ab86
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.openlocfilehash: ad906e3665c6ffc354cf6292c2559d1184037594
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91604256"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856140"
 ---
 # <a name="understand-scope-for-azure-rbac"></a>瞭解 Azure RBAC 的範圍
 
@@ -25,6 +25,10 @@ ms.locfileid: "91604256"
 在 Azure 中，您可以在四個層級指定範圍： [管理群組](../governance/management-groups/overview.md)、訂用帳戶、 [資源群組](../azure-resource-manager/management/overview.md#resource-groups)和資源。 範圍的結構為父子式關聯性。 每個階層層級可讓範圍更加具體。 您可以在任何範圍層級指派角色。 您選取的層級會決定角色的套用幅度。 較低層級會從較高的層級繼承角色許可權。 
 
 ![角色指派的範圍](./media/scope-overview/rbac-scope-no-label.png)
+
+管理群組是訂用帳戶之上的範圍層級，但管理群組支援更複雜的階層。 下圖顯示您可以定義之管理群組和訂用帳戶的階層範例。 如需管理群組的詳細資訊，請參閱 [什麼是 Azure 管理群組？](../governance/management-groups/overview.md)。
+
+![管理群組和訂用帳戶階層](./media/scope-overview/rbac-scope-management-groups.png)
 
 ## <a name="scope-format"></a>範圍格式
 
@@ -120,4 +124,4 @@ ms.locfileid: "91604256"
 
 - [新增角色指派的步驟](role-assignments-steps.md)
 - [Azure 服務的資源提供者](../azure-resource-manager/management/azure-services-resource-providers.md) \(部分機器翻譯\)
-- [使用 Azure 管理群組來組織資源](../governance/management-groups/overview.md)
+- [什麼是 Azure 管理群組？](../governance/management-groups/overview.md)

@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c65d77d2cf50a59f18f0007e809e9913c3a5ae13
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a6ccc2911312a74825b885f5f492e67774354316
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91304215"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91858122"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 中的系統管理員角色權限
 
@@ -274,7 +274,7 @@ Azure AD 可能已新增一或多個角色，以提供更細微的權限，但�
 
 ### <a name="hybrid-identity-administrator"></a>[混合式身分識別管理員](#hybrid-identity-administrator-permissions)
 
-具備此角色的使用者可以啟用、設定及管理與在 Azure AD 中啟用混合式身分識別相關的服務和設定。 此角色能夠將 Azure AD 設定為三種支援的驗證方法之一 (密碼雜湊同步處理 (PHS)、傳遞驗證 (PTA) 或同盟 (AD FS 或第三方同盟提供者))，以及部署相關的內部部署基礎結構來啟用這些驗證方法。 內部部署基礎結構包含佈建和 PTA 代理程式。 此角色能夠啟用無縫單一登入 (SSO)，以在非 Windows 10 裝置或非 Windows Server 2016 電腦上啟用無縫驗證。 此外，此角色還能夠查看登入記錄，以及存取健康情況和分析，以供監視和疑難排解之用。 
+此角色中的使用者可以建立、管理布建設定，並將其從 AD 部署到使用雲端布建 Azure AD，以及管理同盟設定。 使用者也可以使用此角色針對記錄進行疑難排解和監視。  
 
 ### <a name="insights-administrator"></a>[見解管理員](#insights-administrator-permissions)
 此角色中的使用者可以存取 [M365 Insights 應用程式](https://go.microsoft.com/fwlink/?linkid=2129521)中的完整管理功能集。 此角色具有讀取目錄資訊、監視服務健康狀態、檔案支援票證，以及存取深入解析管理員設定方面的能力。
@@ -1216,9 +1216,6 @@ Windows Defender ATP 和 EDR | 檢視和調查警示。 當您在 Windows Defend
 | microsoft.directory/cloudProvisioning/allProperties/allTasks | 讀取及設定 Azure AD 雲端佈建服務的所有屬性。 |
 | microsoft.directory/federatedAuthentication/allProperties/allTasks | 在 Azure AD 中管理 Active Directory 同盟服務 (ADFS) 或第三方同盟提供者的所有層面。 |
 | microsoft.directory/organization/dirSync/update | 更新 Azure Active Directory 中的 organization.dirSync 屬性。 |
-| microsoft.directory/passwordHashSync/allProperties/allTasks | 在 Azure AD 中管理密碼雜湊同步 (PHS) 的所有層面。 |
-| microsoft.directory/passThroughAuthentication/allProperties/allTasks | 在 Azure AD 中管理傳遞驗證 (PTA) 的所有層面。 |
-| microsoft.directory/seamlessSSO/allProperties/allTasks | 在 Azure AD 中管理無縫單一登入 (SSO) 的所有層面。 |
 | microsoft.directory/servicePrincipals/audience/update | 更新 Azure Active Directory 中的 servicePrincipals.audience 屬性。 |
 | microsoft.directory/servicePrincipals/authentication/update | 更新 Azure Active Directory 中的 servicePrincipals.authentication 屬性。 |
 | microsoft.directory/servicePrincipals/basic/update | 更新 Azure Active Directory 中 servicePrincipals 的基本屬性。 |

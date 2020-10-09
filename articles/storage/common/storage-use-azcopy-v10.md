@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 03f996f1105601dc46c81fa1a874816913e80633
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 2f5b82f07ecff36ba95917a1f1b347c42ae7e074
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91716048"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856770"
 ---
 # <a name="get-started-with-azcopy"></a>開始使用 AzCopy
 
@@ -32,7 +32,7 @@ AzCopy 是命令列公用程式，可讓您在儲存體帳戶之間複製 Blob �
 - [Windows 64](https://aka.ms/downloadazcopy-v10-windows) 位 (zip) 
 - [Windows 32](https://aka.ms/downloadazcopy-v10-windows-32bit) 位 (zip) 
 - [Linux x86-64](https://aka.ms/downloadazcopy-v10-linux) (tar) 
-- [MacOS](https://aka.ms/downloadazcopy-v10-mac) (zip)
+- [macOS](https://aka.ms/downloadazcopy-v10-mac) (zip) 
 
 這些檔案會壓縮成 zip 檔案 (Windows 和 Mac) 或 (Linux) 的 tar 檔案。 若要下載並解壓縮 Linux 上的 tar 檔案，請參閱您 Linux 發行版本的檔。
 
@@ -50,7 +50,9 @@ AzCopy 是命令列公用程式，可讓您在儲存體帳戶之間複製 Blob �
 
 若要瞭解特定命令，請只包含命令的名稱 (例如： `azcopy list -h`) 。
 
-![內嵌說明](media/storage-use-azcopy-v10/azcopy-inline-help.png)
+> [!div class="mx-imgBorder"]
+> ![內嵌說明](media/storage-use-azcopy-v10/azcopy-inline-help.png)
+
 
 若要尋找每個命令和命令參數的詳細參考檔，請參閱 [azcopy](storage-ref-azcopy.md)
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: sbowles
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 231f30f5532d0934ba41e591aa821d56b11d5856
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 500099753ee4fe47f02e7f09d9732b71aa3bae36
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88927998"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856360"
 ---
 # <a name="get-face-detection-data"></a>取得臉部偵測資料
 
@@ -36,71 +36,29 @@ ms.locfileid: "88927998"
 
 ## <a name="get-basic-face-data"></a>取得基本的臉部資料
 
-若要尋找臉部並取得影像中的位置，請呼叫方法，並將 _returnFaceId_ 參數設定為 **true**。 這項設定是預設值。
+若要尋找臉部並取得影像中的位置，請呼叫 [DetectWithUrlAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithurlasync?view=azure-dotnet) 或 [>faceclient.face.detectwithstreamasync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithstreamasync?view=azure-dotnet) 方法，並將 _returnFaceId_ 參數設定為 **true**。 這項設定是預設值。
 
-```csharp
-IList<DetectedFace> faces = await faceClient.Face.DetectWithUrlAsync(imageUrl, true, false, null);
-```
+:::code language="csharp" source="~/cognitive-services-quickstart-code/dotnet/Face/sdk/detect.cs" id="basic1":::
 
 您可以針對其唯一識別碼和提供臉部圖元座標的矩形，查詢傳回的 [>detectedface](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.detectedface?view=azure-dotnet) 物件。
 
-```csharp
-foreach (var face in faces)
-{
-    string id = face.FaceId.ToString();
-    FaceRectangle rect = face.FaceRectangle;
-}
-```
+:::code language="csharp" source="~/cognitive-services-quickstart-code/dotnet/Face/sdk/detect.cs" id="basic2":::
 
 如需如何剖析臉部位置和維度的詳細資訊，請參閱 [FaceRectangle](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.facerectangle?view=azure-dotnet)。 這個矩形通常會包含眼睛、眉毛、鼻子和嘴。 Head、耳和下巴的頂端不一定會包含在內。 若要使用臉部矩形裁剪整個 head 或取得中間的直向（也許是相片識別碼類型影像），您可以展開每個方向的矩形。
 
 ## <a name="get-face-landmarks"></a>取得臉部地標
 
-[臉部地標](../concepts/face-detection.md#face-landmarks) 是臉部的一組容易尋找的點，例如瞳孔或鼻子的秘訣。 若要取得臉部地標資料，請將 _returnFaceLandmarks_ 參數設定為 **true**。
+[臉部地標](../concepts/face-detection.md#face-landmarks) 是臉部的一組容易尋找的點，例如瞳孔或鼻子的秘訣。 若要取得臉部地標資料，請將 _detectionModel_ 參數設定為 **detectionModel. Detection01** ，並將 _returnFaceLandmarks_ 參數設定為 **true**。
 
-```csharp
-IList<DetectedFace> faces = await faceClient.Face.DetectWithUrlAsync(imageUrl, true, true, null);
-```
+:::code language="csharp" source="~/cognitive-services-quickstart-code/dotnet/Face/sdk/detect.cs" id="landmarks1":::
 
 下列程式碼會示範如何取出鼻子和瞳孔的位置：
 
-```csharp
-foreach (var face in faces)
-{
-    var landmarks = face.FaceLandmarks;
-
-    double noseX = landmarks.NoseTip.X;
-    double noseY = landmarks.NoseTip.Y;
-
-    double leftPupilX = landmarks.PupilLeft.X;
-    double leftPupilY = landmarks.PupilLeft.Y;
-
-    double rightPupilX = landmarks.PupilRight.X;
-    double rightPupilY = landmarks.PupilRight.Y;
-}
-```
+:::code language="csharp" source="~/cognitive-services-quickstart-code/dotnet/Face/sdk/detect.cs" id="landmarks2":::
 
 您也可以使用臉部地標資料來精確地計算臉部的方向。 例如，您可以將臉部的旋轉定義為從嘴中央到眼睛中心的向量。 下列程式碼會計算這個向量：
 
-```csharp
-var upperLipBottom = landmarks.UpperLipBottom;
-var underLipTop = landmarks.UnderLipTop;
-
-var centerOfMouth = new Point(
-    (upperLipBottom.X + underLipTop.X) / 2,
-    (upperLipBottom.Y + underLipTop.Y) / 2);
-
-var eyeLeftInner = landmarks.EyeLeftInner;
-var eyeRightInner = landmarks.EyeRightInner;
-
-var centerOfTwoEyes = new Point(
-    (eyeLeftInner.X + eyeRightInner.X) / 2,
-    (eyeLeftInner.Y + eyeRightInner.Y) / 2);
-
-Vector faceDirection = new Vector(
-    centerOfTwoEyes.X - centerOfMouth.X,
-    centerOfTwoEyes.Y - centerOfMouth.Y);
-```
+:::code language="csharp" source="~/cognitive-services-quickstart-code/dotnet/Face/sdk/detect.cs" id="direction":::
 
 當您知道臉部的方向時，可以旋轉矩形臉部框架來更正確地對齊。 若要裁剪影像中的臉部，您可以用程式設計方式旋轉影像，讓臉部一律以直立的方式出現。
 
@@ -108,36 +66,13 @@ Vector faceDirection = new Vector(
 
 除了臉部矩形和地標，臉部偵測 API 還可以分析臉部的數個概念屬性。 如需完整清單，請參閱 [臉部屬性](../concepts/face-detection.md#attributes) 概念一節。
 
-若要分析臉部屬性，請將 _returnFaceAttributes_ 參數設定為 [FaceAttributeType 列舉](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.faceattributetype?view=azure-dotnet) 值的清單。
+若要分析臉部屬性，請將 _detectionModel_ 參數設定為 **detectionModel Detection01** ，並將 _ReturnFaceAttributes_ 參數設定為 [FaceAttributeType 列舉](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.faceattributetype?view=azure-dotnet) 值的清單。
 
-```csharp
-var requiredFaceAttributes = new FaceAttributeType[] {
-    FaceAttributeType.Age,
-    FaceAttributeType.Gender,
-    FaceAttributeType.Smile,
-    FaceAttributeType.FacialHair,
-    FaceAttributeType.HeadPose,
-    FaceAttributeType.Glasses,
-    FaceAttributeType.Emotion
-};
-var faces = await faceClient.DetectWithUrlAsync(imageUrl, true, false, requiredFaceAttributes);
-```
+:::code language="csharp" source="~/cognitive-services-quickstart-code/dotnet/Face/sdk/detect.cs" id="attributes1":::
 
 然後，取得所傳回資料的參考，並根據您的需求進行更多作業。
 
-```csharp
-foreach (var face in faces)
-{
-    var attributes = face.FaceAttributes;
-    var age = attributes.Age;
-    var gender = attributes.Gender;
-    var smile = attributes.Smile;
-    var facialHair = attributes.FacialHair;
-    var headPose = attributes.HeadPose;
-    var glasses = attributes.Glasses;
-    var emotion = attributes.Emotion;
-}
-```
+:::code language="csharp" source="~/cognitive-services-quickstart-code/dotnet/Face/sdk/detect.cs" id="attributes2":::
 
 若要深入瞭解每個屬性，請參閱 [臉部偵測和屬性](../concepts/face-detection.md) 概念指南。
 

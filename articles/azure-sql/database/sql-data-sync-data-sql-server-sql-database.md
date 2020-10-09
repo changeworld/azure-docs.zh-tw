@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/20/2019
-ms.openlocfilehash: f7d2351fdc39ec4600cbca2e436cdcd527157275
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 7bdb2c6ba6717624b19184ca3bcb47ee9b3da367
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91332959"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856104"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>什麼是適用于 Azure 的 SQL 資料同步？
 
@@ -58,7 +58,7 @@ SQL 資料同步是以 Azure SQL Database 為基礎的服務，可讓您同步�
 
 在下列案例中，資料同步不是慣用的解決方案：
 
-| 狀況 | 某些建議的解決方案 |
+| 案例 | 某些建議的解決方案 |
 |----------|----------------------------|
 | 災害復原 | [Azure 異地備援備份](automated-backups-overview.md) |
 | 讀取級別 | [使用唯讀複本對唯讀查詢工作負載進行負載平衡 (預覽)](read-scale-out.md) |
@@ -126,7 +126,7 @@ SQL 資料同步是以 Azure SQL Database 為基礎的服務，可讓您同步�
 > - 雖然同步處理不會回報任何問題，但中樞和成員之間的資料可能會遺失。
 > - 同步處理可能會失敗，因為追蹤資料表具有來源的非現有資料列，因為主要金鑰變更。
 
-- 必須啟用快照集隔離。 如需詳細資訊，請參閱 [SQL Server 中的快照集隔離](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server)。
+- 同步成員和中樞都必須啟用快照集隔離。 如需詳細資訊，請參閱 [SQL Server 中的快照集隔離](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server)。
 
 ### <a name="general-limitations"></a>一般限制
 
@@ -137,7 +137,7 @@ SQL 資料同步是以 Azure SQL Database 為基礎的服務，可讓您同步�
 - [資料庫]、[資料表] 和 [資料行] (的物件名稱) 不能包含可列印的字元期間 (. ) 、左方括弧 ( [) ] 或右方括弧 (] ) 。
 - 不支援 Azure Active Directory 驗證。
 - 名稱相同但架構不同的資料表 (例如 dbo. customers 和 sales。不支援) 客戶。
-- 不支援具有使用者定義資料類型的資料行
+- 不支援具有 User-Defined 資料類型的資料行
 - 不支援在不同的訂用帳戶之間移動伺服器。 
 
 #### <a name="unsupported-data-types"></a>不支援的資料類型
@@ -194,7 +194,7 @@ SQL 資料同步會在以下所有區域內上市。
 
 ### <a name="is-a-sql-database-account-required"></a>是否需要 SQL Database 帳戶？
 
-可以。 您必須擁有可裝載中樞資料庫的 SQL Database 帳戶。
+是。 您必須擁有可裝載中樞資料庫的 SQL Database 帳戶。
 
 ### <a name="can-i-use-data-sync-to-sync-between-sql-server-databases-only"></a>我可以使用資料同步只在 SQL Server 資料庫之間進行同步處理
 
@@ -202,18 +202,18 @@ SQL 資料同步會在以下所有區域內上市。
 
 ### <a name="can-i-use-data-sync-to-sync-between-databases-in-sql-database-that-belong-to-different-subscriptions"></a>我可以使用資料同步，在屬於不同訂用帳戶 SQL Database 的資料庫之間進行同步處理
 
-可以。 您可以在屬於不同訂用帳戶所擁有之資源群組的資料庫之間進行同步處理。
+是。 您可以在屬於不同訂用帳戶所擁有之資源群組的資料庫之間進行同步處理。
 
 - 如果訂用帳戶屬於同一個租用戶，且您擁有所有訂用帳戶的權限，則可以在 Azure 入口網站中設定同步群組。
 - 否則，您必須使用 PowerShell 來新增屬於不同訂用帳戶的同步成員。
 
 ### <a name="can-i-use-data-sync-to-sync-between-databases-in-sql-database-that-belong-to-different-clouds-like-azure-public-cloud-and-azure-china-21vianet"></a>我可以使用資料同步，在屬於不同雲端 (的 SQL Database 資料庫之間進行同步處理，例如 Azure 公用雲端和 Azure 中國世紀) 
 
-可以。 您可以在屬於不同雲端的資料庫之間進行同步處理。 您必須使用 PowerShell 來新增屬於不同訂用帳戶的同步成員。
+是。 您可以在屬於不同雲端的資料庫之間進行同步處理。 您必須使用 PowerShell 來新增屬於不同訂用帳戶的同步成員。
 
 ### <a name="can-i-use-data-sync-to-seed-data-from-my-production-database-to-an-empty-database-and-then-sync-them"></a>能否使用資料同步將生產環境資料庫的資料植入空白資料庫，然後同步處理資料？
 
-可以。 請從原始結構描述編寫結構描述，藉此在新的資料庫中手動建立結構描述。 建立結構描述之後，請將資料表新增到同步群組，以複製資料並讓資料保持同步。
+是。 請從原始結構描述編寫結構描述，藉此在新的資料庫中手動建立結構描述。 建立結構描述之後，請將資料表新增到同步群組，以複製資料並讓資料保持同步。
 
 ### <a name="should-i-use-sql-data-sync-to-back-up-and-restore-my-databases"></a>應該使用 SQL 資料同步來備份及還原資料庫嗎？
 
@@ -228,7 +228,7 @@ SQL 資料同步會在以下所有區域內上市。
 
 ### <a name="is-collation-supported-in-sql-data-sync"></a>SQL 資料同步是否支援定序？
 
-可以。 在下列案例中 SQL 資料同步可支援定序：
+是。 在下列案例中 SQL 資料同步可支援定序：
 
 - 如果選取的同步架構資料表尚未存在於您的中樞或成員資料庫中，則當您部署同步處理群組時，服務會自動建立對應的資料表和資料行，並在空白目的地資料庫中選取定序設定。
 - 如果要同步處理的資料表已存在於您的中樞和成員資料庫中，則 SQL 資料同步會要求主索引鍵資料行在中樞與成員資料庫之間有相同的定序，才能成功部署同步群組。 主索引鍵資料行以外的資料行沒有任何定序限制。

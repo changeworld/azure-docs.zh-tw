@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 keywords: hadoop 高可用性
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 10/07/2020
-ms.openlocfilehash: a77dba165d76cc131f7a2a25a4b2f62e945a3089
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.date: 10/08/2020
+ms.openlocfilehash: 4b98b03c2d7eb4a0403b4595c1376656ed42511b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/08/2020
-ms.locfileid: "91843811"
+ms.locfileid: "91855033"
 ---
 # <a name="azure-hdinsight-highly-available-solution-architecture-case-study"></a>Azure HDInsight 高可用性解決方案架構案例研究
 
@@ -86,8 +86,6 @@ Azure API Apps 和 API 管理層會傳回公開的網頁。 Power BI 會履行�
 
 若要深入瞭解本文中討論的專案，請參閱：
 
-* [Apache Ambari REST 參考](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)
-* [安裝和設定 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)
-* [安裝和設定 Azure PowerShell 模組 Az](/powershell/azure/)
-* [使用 Apache Ambari 來管理 HDInsight](hdinsight-hadoop-manage-ambari.md)
-* [佈建以 Linux 為基礎的 HDInsight 叢集](hdinsight-hadoop-provision-linux-clusters.md)
+* [Azure HDInsight 商務持續性](./hdinsight-business-continuity.md)
+* [Azure HDInsight 商務持續性架構](./hdinsight-business-continuity-architecture.md)
+* [Azure HDInsight 上的 Apache Hive 和 HiveQL 是什麼？](./hadoop/hdinsight-use-hive.md)
