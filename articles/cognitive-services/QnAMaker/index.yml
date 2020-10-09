@@ -12,10 +12,10 @@ metadata:
   title: QnA Maker 文件
   description: QnA Maker 是一項雲端式 API 服務，可對您的資料建立交談式的問答層。 QnA Maker 可讓您加強常見問題集文件或 URL 及產品手冊等半結構化內容中的問題與解答服務。 QnA Maker 服務會將使用者的自然語言問題與知識庫中各個 QnA 可能包含的最佳解答比對，以回答這些問題。
   ms.openlocfilehash: 09c577368ef6ca9b6bc584601ad018c2a63c7347
-  ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 06/09/2020
+  ms.lasthandoff: 10/09/2020
   ms.locfileid: "84628042"
 landingContent:
 - title: 關於 QnA Maker

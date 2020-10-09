@@ -1,6 +1,6 @@
 - name: IoT 解決方案加速器文件
   href: index.yml
-- name: 概觀
+- name: 總覽
   items:
     - name: IoT 解決方案加速器是什麼
       href: about-iot-accelerators.md
@@ -90,7 +90,7 @@
               href: iot-accelerators-remote-monitoring-deploy-local-java.md
             - name: 透過 Docker 進行本機部署
               href: iot-accelerators-remote-monitoring-deploy-local-docker.md
-        - name: 與真實裝置連線
+        - name: 連線實際裝置
           items:
             - name: Windows 上的 C
               href: iot-accelerators-connecting-devices.md
@@ -220,9 +220,9 @@
     - name: Azure IoT SDK
       items:
         - name: IoT 服務 SDK
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
         - name: IoT 裝置 SDK
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
     - name: 遠端監視
       items:
         - name: 開發人員參考指南 (.NET)
@@ -239,7 +239,7 @@
           href: iot-accelerators-faq-rm-v2.md
     - name: 企業 IoT
       items:
-        - name: GitHub 存放庫
+        - name: GitHub 儲存機制
           href: 'https://github.com/Azure/azure-iot-connected-factory'
         - name: 連線的處理站常見問題集
           href: iot-accelerators-faq-cf.md
@@ -247,7 +247,7 @@
       items:
         - name: 開發人員參考指南
           href: 'https://github.com/Azure/device-simulation-dotnet/wiki/Simulation-Service-Developer-Reference-Guide'
-        - name: GitHub 存放庫
+        - name: GitHub 儲存機制
           href: 'https://github.com/Azure/device-simulation-dotnet'
     - name: 預測性維護 GitHub 存放庫
       href: 'https://github.com/Azure/azure-iot-predictive-maintenance'
