@@ -8,11 +8,11 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/15/2019
 ms.openlocfilehash: f0c7b966b9fa7580809d2df0f4d05a7146ca0fd1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79272197"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91871961"
 ---
 # <a name="troubleshoot-apache-hadoop-yarn-by-using-azure-hdinsight"></a>使用 Azure HDInsight 針對 Apache Hadoop YARN 問題進行疑難排解
 
@@ -35,7 +35,7 @@ ms.locfileid: "79272197"
 1. 選取 [Ambari 檢視]**** 圖示，然後選取格線模式。 接著，選取 [YARN 佇列管理員]****。
 
     ![Apache Ambari 儀表板 YARN 佇列管理員](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-1.png)
-2. 選取**預設**佇列。
+2. 選取 **預設** 佇列。
 
     ![Apache Ambari YARN 選取預設佇列](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-2.png)
 3. 對於 [預設]**** 佇列，將 [容量]**** 從 50% 變更為 25%。 對於 [thriftsvr]**** 佇列，將 [容量]**** 變更為 25%。
@@ -58,7 +58,7 @@ ms.locfileid: "79272197"
 
 這些變更都會立即顯示在 YARN 排程器 UI 中。
 
-### <a name="additional-reading"></a>其他閱讀資料
+### <a name="additional-reading"></a>延伸閱讀
 
 - [Apache Hadoop YARN CapacityScheduler](https://hadoop.apache.org/docs/r2.7.2/hadoop-yarn/hadoop-yarn-site/CapacityScheduler.html)
 
@@ -129,7 +129,7 @@ ms.locfileid: "79272197"
 
     此命令會建立名為 containerlogs.txt 的記錄檔。
 
-### <a name="additional-reading"></a><a name="additional-reading-2"></a>其他閱讀
+### <a name="additional-reading"></a><a name="additional-reading-2"></a>延伸閱讀
 
 - [使用 SSH 連線到 HDInsight (Apache Hadoop)](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix)
 - [Apache Hadoop YARN 概念與應用程式](https://hadoop.apache.org/docs/r2.7.4/hadoop-yarn/hadoop-yarn-site/WritingYarnApplications.html#Concepts_and_Flow)

@@ -371,7 +371,7 @@
           href: /azure/templates/microsoft.storsimple/allversions
 - name: StorSimple 資料管理員
   items:
-    - name: 概觀
+    - name: 總覽
       items:
         - name: 解決方案為何？
           href: storsimple-data-manager-overview.md

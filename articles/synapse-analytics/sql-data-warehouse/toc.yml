@@ -74,7 +74,7 @@
   items:
     - name: 安全性
       items:
-        - name: 概觀
+        - name: 總覽
           href: sql-data-warehouse-overview-manage-security.md
         - name: 進階資料安全性
           items:
@@ -98,7 +98,7 @@
               href: /azure/sql-database/sql-database-vnet-service-endpoint-rule-overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json
         - name: 驗證
           items:
-            - name: 概觀
+            - name: 總覽
               href: sql-data-warehouse-authentication.md
             - name: Azure Active Directory
               href: /azure/sql-database/sql-database-aad-authentication?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json
@@ -132,7 +132,7 @@
           href: sql-data-warehouse-memory-optimizations-for-columnstore-compression.md
     - name: 部署
       items:
-        - name: 概觀
+        - name: 總覽
           href: sql-data-warehouse-overview-develop.md
         - name: 最佳作法
           href: sql-data-warehouse-best-practices-development.md
@@ -266,7 +266,7 @@
       href: maintenance-scheduling.md
     - name: 整合
       items:
-        - name: 概觀
+        - name: 總覽
           href: sql-data-warehouse-overview-integrate.md
 - name: 操作指南
   items:
@@ -406,7 +406,7 @@
       href: 'https://feedback.azure.com/forums/307516-sql-data-warehouse/'
     - name: 服務更新
       href: 'https://azure.microsoft.com/updates/?product=sql-data-warehouse'
-    - name: Stack Overflow
+    - name: 堆疊溢位
       href: 'https://stackoverflow.com/questions/tagged/azure-sqldw/'
     - name: 支援
       href: sql-data-warehouse-get-started-create-support-ticket.md

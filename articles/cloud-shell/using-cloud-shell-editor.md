@@ -15,23 +15,23 @@ ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
 ms.openlocfilehash: 7f597bb5cba1a12bdb93325fe2b877ffc644e3e4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "60199186"
 ---
 # <a name="using-the-azure-cloud-shell-editor"></a>使用 Azure Cloud Shell 編輯器
 
-Azure Cloud Shell 包含從開放原始碼 [Monaco Editor](https://github.com/Microsoft/monaco-editor) \(英文\) 建置的整合式檔案編輯器。 Cloud Shell 編輯器支援各種功能，例如語言反白顯示、命令選擇區和檔案總管。
+Azure Cloud Shell 包含從開放原始碼 [Monaco Editor](https://github.com/Microsoft/monaco-editor) \(英文\) 建置的整合式檔案編輯器。 Cloud Shell 編輯器支援語言醒目提示、命令選擇區，以及檔案總管等功能。
 
 ![Cloud Shell 編輯器](media/using-cloud-shell-editor/open-editor.png)
 
 ## <a name="opening-the-editor"></a>開啟編輯器
 
-若要快速建立和編輯檔案，請在 Cloud Shell 終端機中執行 `code .` 以啟動編輯器。 這個動作會開啟編輯器並進入終端機中設定的作用中工作目錄。
+針對簡易的檔案建立和編輯，請在 Cloud Shell 終端機中執行 `code .` 來啟動編輯器。 這項動作會開啟編輯器，並在終端機中設為您目前正在使用的工作目錄。
 
-若要直接開啟檔案以快速編輯，請執行 `code <filename>` 來開啟編輯器，但不開啟檔案總管。
+若要直接開啟檔案以進行快速編輯，請執行 `code <filename>` 來開啟編輯器，而不透過檔案總管。
 
 若要透過 UI 按鈕來開啟編輯器，從工具列按一下 `{}` 編輯器圖示。 這樣會開啟編輯器而且檔案總管預設會進入 `/home/<user>` 目錄。
 
@@ -53,4 +53,4 @@ Cloud Shell 編輯器中的語言反白顯示支援，是透過 [Monaco Editor](
 
 ## <a name="next-steps"></a>後續步驟
 [試用 Cloud Shell](quickstart.md) 
- 中 Bash 的快速入門[觀看整合式 Cloud Shell 工具的完整清單](features.md)
+ 中 Bash 的快速入門[查看整合式 Cloud Shell 工具的完整清單](features.md)

@@ -28,6 +28,8 @@
   items:
     - name: 連線至儲存體帳戶
       href: tutorial-private-endpoint-storage-portal.md
+    - name: 連線至 Cosmos DB 帳戶
+      href: tutorial-private-endpoint-cosmosdb-portal.md
 - name: 概念
   items:
     - name: 私人端點
@@ -42,8 +44,6 @@
           href: security-baseline.md
 - name: 如何
   items:
-    - name: 私下連線至 Cosmos DB 帳戶
-      href: create-private-endpoint-cosmosdb-portal.md
     - name: 私下連線至 Web 應用程式
       href: create-private-endpoint-webapp-portal.md
     - name: 停用私人端點的網路原則

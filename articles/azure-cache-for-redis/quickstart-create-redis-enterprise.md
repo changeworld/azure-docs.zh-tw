@@ -8,10 +8,10 @@ ms.custom: mvc
 ms.topic: quickstart
 ms.date: 05/12/2020
 ms.openlocfilehash: 3df6cb1afe8a6249eadbbd3f61619e66be2d2478
-ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/14/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "83402499"
 ---
 # <a name="quickstart-create-an-enterprise-tier-cache-preview"></a>快速入門：建立企業層快取 (預覽)

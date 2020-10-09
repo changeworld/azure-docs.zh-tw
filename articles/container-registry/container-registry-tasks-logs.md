@@ -1,33 +1,33 @@
 ---
 title: 查看工作執行記錄-工作
-description: 如何查看和管理 ACR 工作產生的執行記錄。
+description: 如何查看和管理 ACR 工作所產生的執行記錄。
 ms.topic: article
 ms.date: 03/09/2020
 ms.openlocfilehash: f7098f470a3f8a0cdac019f4bf8eb8fe14330337
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79246964"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91871927"
 ---
 # <a name="view-and-manage-task-run-logs"></a>查看和管理工作執行記錄
 
-在[Azure Container Registry](container-registry-tasks-overview.md)工作中執行的每項工作都會產生記錄輸出，您可以檢查以判斷工作步驟是否成功執行。 
+[Azure Container Registry](container-registry-tasks-overview.md)工作中執行的每項工作都會產生記錄輸出，您可以檢查這些輸出，判斷工作步驟是否已順利執行。 
 
 本文說明如何查看和管理工作執行記錄。
 
-## <a name="view-streamed-logs"></a>查看資料流程處理的記錄
+## <a name="view-streamed-logs"></a>查看資料流程記錄
 
-當您手動觸發工作時，會將記錄輸出直接串流至主控台。 例如，當您使用[az acr build](/cli/azure/acr#az-acr-build)、 [az acr run](/cli/azure/acr#az-acr-run)或[az acr task run](/cli/azure/acr/task#az-acr-task-run)命令來手動觸發工作時，您會看到串流至主控台的記錄輸出。 
+當您手動觸發工作時，記錄輸出會直接串流至主控台。 例如，當您使用 [az acr build](/cli/azure/acr#az-acr-build)、 [az acr run](/cli/azure/acr#az-acr-run)或 [az acr task run](/cli/azure/acr/task#az-acr-task-run) 命令以手動方式觸發工作時，您會看到記錄輸出已串流至主控台。 
 
-下列範例[az acr run](/cli/azure/acr#az-acr-run)命令會手動觸發執行從相同登錄提取之容器的工作：
+下列範例 [az acr run](/cli/azure/acr#az-acr-run) 命令會手動觸發工作，以執行從相同登錄提取的容器：
 
 ```azurecli
 az acr run --registry mycontainerregistry1220 \
   --cmd '$Registry/samples/hello-world:v1' /dev/null
 ```
 
-資料流程處理的記錄檔：
+資料流程記錄：
 
 ```console
 Queued a run with ID: cf4
@@ -58,21 +58,21 @@ Run ID: cf4 was successful after 5s
 
 ## <a name="view-stored-logs"></a>查看儲存的記錄 
 
-Azure Container Registry 儲存所有工作的執行記錄。 您可以在 Azure 入口網站中查看預存的執行記錄。 或者，使用[az acr task logs](/cli/azure/acr/task#az-acr-task-logs)命令來查看選取的記錄檔。 根據預設，記錄會保留30天。
+Azure Container Registry 會儲存所有工作的執行記錄。 您可以在 Azure 入口網站中查看儲存的執行記錄。 或者，使用 [az acr task logs](/cli/azure/acr/task#az-acr-task-logs) 命令來查看選取的記錄檔。 依預設，記錄會保留30天。
 
-如果工作是自動觸發的（例如由原始程式碼更新），存取儲存的記錄檔就是*唯一*能夠查看執行記錄的方式。 自動工作觸發套裝程式括來來源程式代碼認可或提取要求、基底映射更新，以及計時器觸發程式。
+如果自動觸發工作（例如，由原始程式碼更新），存取儲存的記錄是查看執行記錄的 *唯一* 方法。 自動工作觸發套裝程式括原始碼認可或提取要求、基底映射更新和計時器觸發程式。
 
 若要在入口網站中查看執行記錄：
 
 1. 瀏覽至您的容器登錄。
-1. 在 [**服務**] 中 **，選取 [** 工作] [  >  **執行**]。
-1. 選取**執行識別碼**以查看執行狀態和執行記錄。 記錄檔包含與資料流程處理記錄檔相同的資訊（如果有產生的話）。
+1. 在 [**服務**] 中 **，選取 [** 工作  >  **執行**]。
+1. 選取 **執行識別碼** 以查看執行狀態和執行記錄。 記錄檔包含與資料流程處理的記錄檔相同的資訊（如果有產生的話）。
 
-![View task 執行登入入口網站](./media/container-registry-tasks-logs/portal-task-run-logs.png)
+![View task run login portal](./media/container-registry-tasks-logs/portal-task-run-logs.png)
 
-若要使用 Azure CLI 來查看記錄，請執行[az acr task logs](/cli/azure/acr/task#az-acr-task-logs) ，並指定執行識別碼、工作名稱或由組建工作所建立的特定映射。 如果指定了工作名稱，此命令會顯示上次建立執行的記錄檔。
+若要使用 Azure CLI 來查看記錄，請執行 [az acr task logs](/cli/azure/acr/task#az-acr-task-logs) ，並指定執行識別碼、工作名稱或由組建工作建立的特定映射。 如果指定了工作名稱，命令就會顯示上次建立之執行的記錄檔。
 
-下列範例會針對識別碼為*cf4*的執行輸出記錄檔：
+下列範例會輸出執行識別碼 *cf4*的記錄檔：
 
 ```azurecli
 az acr task logs --registry mycontainerregistry1220 \
@@ -81,9 +81,9 @@ az acr task logs --registry mycontainerregistry1220 \
 
 ## <a name="alternative-log-storage"></a>替代記錄儲存體
 
-您可能想要將工作執行記錄儲存在本機檔案系統上，或使用替代的封存解決方案，例如 Azure 儲存體。
+您可能會想要將工作執行記錄儲存在本機檔案系統上，或使用替代的封存方案（例如 Azure 儲存體）。
 
-例如，建立本機*tasklogs*目錄，並將[az acr task logs](/cli/azure/acr/task#az-acr-task-logs)的輸出重新導向至本機檔案：
+例如，建立本機 *tasklogs* 目錄，並將 [az acr task logs](/cli/azure/acr/task#az-acr-task-logs) 的輸出重新導向至本機檔案：
 
 ```azurecli
 mkdir ~/tasklogs
@@ -92,12 +92,12 @@ az acr task logs --registry mycontainerregistry1220 \
   --run-id cf4 > ~/tasklogs/cf4.log
 ```
 
-您也可以將本機記錄檔儲存到 Azure 儲存體。 例如，使用 [ [Azure CLI](../storage/blobs/storage-quickstart-blobs-cli.md)]、[ [Azure 入口網站](../storage/blobs/storage-quickstart-blobs-portal.md)] 或其他方法，將檔案上傳至儲存體帳戶。
+您也可以將本機記錄檔儲存至 Azure 儲存體。 例如，使用 [Azure CLI](../storage/blobs/storage-quickstart-blobs-cli.md)、 [Azure 入口網站](../storage/blobs/storage-quickstart-blobs-portal.md)或其他方法，將檔案上傳至儲存體帳戶。
 
 
 ## <a name="next-steps"></a>後續步驟
 
-* 深入瞭解[Azure Container Registry 工作](container-registry-tasks-overview.md)
+* 深入瞭解 [Azure Container Registry 工作](container-registry-tasks-overview.md)
 
 <!-- LINKS - External -->
 [base-alpine]: https://hub.docker.com/_/alpine/
