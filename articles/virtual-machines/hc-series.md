@@ -8,22 +8,22 @@ ms.topic: conceptual
 ms.date: 09/09/2020
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: 9475d3f000bbfd84c16efc080cbbb9df63cac608
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: 48345779ae702d854a216fcabe87d718e00f09b9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91653259"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91858450"
 ---
 # <a name="hc-series"></a>HC 系列
 
 HC 系列 Vm 已針對密集計算所驅動的應用程式優化，例如隱含的有限元素分析、分子 dynamics 和計算化學。 HC Vm 功能 44 Intel 最強白金級8168處理器核心，每個 CPU 核心 8 GB RAM，且無超執行緒。 Intel 的頂級白金平臺支援 Intel 豐富的軟體工具生態系統，例如 Intel Math Kernel Library 和先進的向量處理功能，例如 AVX-512。
 
-HC 系列 Vm 功能 100 Gb/秒的 Mellanox EDR EDR。 這些 Vm 會連接到非封鎖的 fat 樹狀結構，以獲得優化且一致的 RDMA 效能。 這些 Vm 支援自動調整路由和動態連線傳輸 (DCT，其他標準 RC 和 UD 傳輸) 。 這些功能增強應用程式效能、擴充性和一致性，強烈建議使用這些功能。
+HC 系列 Vm 功能 100 Gb/秒的 Mellanox EDR EDR。 這些 Vm 會連接到非封鎖的 fat 樹狀結構，以獲得優化且一致的 RDMA 效能。 這些 Vm 支援自動調整路由和動態連線傳輸 (DCT，其他標準 RC 和 UD 傳輸) 。 這些功能可加強應用程式效能、擴充性和一致性，並建議使用這些功能。
 
 [ACU](acu.md)：297-315<br>
-[進階儲存體](premium-storage-performance.md)：不支援<br>
-[進階儲存體](premium-storage-performance.md)快取：不支援<br>
+[進階儲存體](premium-storage-performance.md)：支援<br>
+[進階儲存體](premium-storage-performance.md)快取：支援<br>
 [即時移轉](maintenance-and-updates.md)：不支援<br>
 [記憶體保留更新](maintenance-and-updates.md)：不支援<br>
 [VM 世代支援](generation-2.md)：第1代和第2代<br>
@@ -48,5 +48,5 @@ HC 系列 Vm 功能 100 Gb/秒的 Mellanox EDR EDR。 這些 Vm 會連接到非�
 
 - 深入瞭解如何設定 [您的 vm](./workloads/hpc/configure.md)、 [啟用](./workloads/hpc/enable-infiniband.md)可充分運用、 [設定 MPI](./workloads/hpc/setup-mpi.md)，以及將 Azure 的 Hpc 應用程式優化（ [hpc 工作負載](./workloads/hpc/overview.md)）。
 - 請參閱 [Azure 運算技術社群部落格](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)的最新公告和一些 HPC 範例和結果。
-- 如需執行 HPC 工作負載的高層級架構視圖，請參閱 [Azure 上的高效能運算 (HPC) ](/azure/architecture/topics/high-performance-computing/)。
+- 如需執行 HPC 工作負載的高階架構視圖，請參閱 [Azure 上的高效能運算 (HPC) ](/azure/architecture/topics/high-performance-computing/)。
 - 深入了解 [Azure 計算單位 (ACU)](acu.md) 如何協助您比較各個 Azure SKU 的計算效能。

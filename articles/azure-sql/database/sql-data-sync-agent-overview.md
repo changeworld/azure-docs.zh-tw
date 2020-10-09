@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/20/2018
-ms.openlocfilehash: 74fc317dbb97c14c27e6355e100a6e6b5e767363
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e91fd0d94d6f6d87b5e554e27bf9c2a2ba6ccabd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91333010"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91858467"
 ---
 # <a name="data-sync-agent-for-sql-data-sync"></a>SQL 資料同步的 Data Sync Agent
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -24,11 +24,11 @@ ms.locfileid: "91333010"
 藉由在 Azure 中安裝和設定 SQL 資料同步的 Data Sync Agent，同步處理 SQL Server 資料庫的資料。 如需有關「SQL 資料同步」的詳細資訊，請參閱[使用 SQL 資料同步，跨多個雲端和內部部署資料庫同步資料](sql-data-sync-data-sql-server-sql-database.md)。
 
 > [!IMPORTANT]
-> SQL 資料同步目前 **不** 支援 Azure SQL 受控執行個體。
+> SQL 資料同步目前**不**支援 Azure SQL 受控執行個體。
 
-## <a name="download-and-install"></a>下載並安裝
+## <a name="download-and-install"></a>下載和安裝
 
-若要下載 Data Sync Agent，請移至 [SQL 資料同步代理程式](https://www.microsoft.com/download/details.aspx?id=27693)。
+若要下載 Data Sync Agent，請移至 [SQL 資料同步代理程式](https://www.microsoft.com/download/details.aspx?id=27693)。 若要升級 Data Sync Agent，請將代理程式安裝在與舊代理程式相同的位置，它將會覆寫原始代理程式。
 
 ### <a name="install-silently"></a>無訊息安裝
 
@@ -148,7 +148,7 @@ SQL 資料同步服務會透過用戶端代理程式來與 SQL Server 資料庫�
 - **解決方法**： 將代理程式的密碼更新成目前的伺服器密碼：
 
   1. 找出 SQL 資料同步用戶端代理程式預覽服務。  
-    a. 選取 [開始]。  
+    a. 選取 [開始]  。  
     b. 在搜尋方塊中輸入 **services.msc**。  
     c. 在搜尋結果中，選取 [ **服務**]。  
     d. 在 [服務]**** 視窗中，捲動至 [SQL Data Sync Agent]**** 的項目。  
