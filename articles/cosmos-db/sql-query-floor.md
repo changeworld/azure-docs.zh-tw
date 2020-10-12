@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB 查詢語言中的樓層
+title: Azure Cosmos DB 查詢語言的樓層
 description: 瞭解 Azure Cosmos DB 中的 FLOOR SQL 系統函數，以傳回小於或等於指定之數值運算式的最大整數
 author: ginamr
 ms.service: cosmos-db
@@ -8,13 +8,13 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 04dfa6a028cf7c44bf99c665b396d51d8a0f3cef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "78303183"
 ---
-# <a name="floor-azure-cosmos-db"></a>樓層（Azure Cosmos DB）
+# <a name="floor-azure-cosmos-db"></a>樓層 (Azure Cosmos DB) 
  傳回小於或等於指定數值運算式的最大整數。  
   
 ## <a name="syntax"></a>語法
@@ -34,7 +34,7 @@ FLOOR (<numeric_expr>)
   
 ## <a name="examples"></a>範例
   
-  下列範例會使用函數來顯示正數、負數和零值 `FLOOR` 。  
+  下列範例會使用函數顯示正數值、負值和零值 `FLOOR` 。  
   
 ```sql
 SELECT FLOOR(123.45) AS fl1, FLOOR(-123.45) AS fl2, FLOOR(0.0) AS fl3  

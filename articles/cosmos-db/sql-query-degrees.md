@@ -1,6 +1,6 @@
 ---
-title: Azure Cosmos DB 查詢語言中的度數
-description: 深入瞭解 Azure Cosmos DB 中的 SQL 系統函數，傳回以弧度指定之角度的對應角度（以度為單位）
+title: Azure Cosmos DB 查詢語言的度數
+description: 瞭解 Azure Cosmos DB 中的程度 SQL 系統函數，以弧度為單位傳回相對應的角度（以度為單位）。
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,13 +8,13 @@ ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: d175ba53a71998fc8e7812a1b761f9cd264c38a9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "78299465"
 ---
-# <a name="degrees-azure-cosmos-db"></a>度數（Azure Cosmos DB）
+# <a name="degrees-azure-cosmos-db"></a>度數 (Azure Cosmos DB) 
  針對以弧度指定的角度，傳回對應的角度 (以度為單位)。  
   
 ## <a name="syntax"></a>語法
@@ -48,7 +48,7 @@ SELECT DEGREES(PI()/2) AS degrees
 
 ## <a name="remarks"></a>備註
 
-這個系統函數不會使用索引。
+這個系統函數將不會使用索引。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -11,10 +11,10 @@ ms.date: 09/22/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.openlocfilehash: c7e0c9aee1ce6b4a2524ac756673784b63be3b31
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91289764"
 ---
 # <a name="configure-azure-defender-for-storage"></a>設定適用于儲存體的 Azure Defender
@@ -35,7 +35,7 @@ ms.locfileid: "91289764"
 
 下列清單摘要說明適用于儲存體的 Azure Defender 可用性：
 
-- 釋放狀態：
+- 版本狀態：
   - [Blob 儲存體](https://azure.microsoft.com/services/storage/blobs/) (公開上市) 
   - [Azure 檔案儲存體](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) (正式推出) 
   - Azure Data Lake Storage Gen2 (正式推出) 
@@ -57,7 +57,7 @@ ms.locfileid: "91289764"
 1. 選取您要啟用或停用 Azure Defender 的訂用帳戶。
 1. 選取 [ **Azure defender 開啟** ] 以啟用訂用帳戶的 azure defender。
 1. 在 [**依資源類型選取 Azure Defender 方案**] 底下，找出 [**儲存體**] 資料列，然後在 [**方案**] 資料行中選取 [**啟用**]
-1. 儲存變更。
+1. 儲存您的變更。
 
     :::image type="content" source="media/azure-defender-storage-configure/enable-azure-defender-security-center.png" alt-text="顯示如何在安全中心啟用 Azure Defender 儲存的螢幕擷取畫面":::
 
@@ -69,7 +69,7 @@ ms.locfileid: "91289764"
 1. 瀏覽至儲存體帳戶。 在 [ **設定**] 底下，選取 [ **Advanced security**]。
 1. 選取 [ **啟用適用于儲存體的 Azure Defender**]。
 
-    :::image type="content" source="media/azure-defender-storage-configure/enable-azure-defender-portal.png" alt-text="顯示如何為 Azure 儲存體帳戶啟用 Azure Defender 的螢幕擷取畫面":::
+    :::image type="content" source="media/azure-defender-storage-configure/enable-azure-defender-portal.png" alt-text="顯示如何在安全中心啟用 Azure Defender 儲存的螢幕擷取畫面":::
 
 現在已為此儲存體帳戶啟用 Azure Defender。
 
@@ -84,15 +84,15 @@ ms.locfileid: "91289764"
 1. 啟動 [Azure **原則定義** ] 頁面。
 1. 搜尋在 **儲存體帳戶上部署 Azure Defender** 原則。
 
-    :::image type="content" source="media/azure-defender-storage-configure/storage-atp-policy-definitions.png" alt-text="套用原則以啟用適用于儲存體帳戶的 Azure Defender":::
+    :::image type="content" source="media/azure-defender-storage-configure/storage-atp-policy-definitions.png" alt-text="顯示如何在安全中心啟用 Azure Defender 儲存的螢幕擷取畫面":::
 
 1. 選取 Azure 訂用帳戶或資源群組。
 
-    :::image type="content" source="media/azure-defender-storage-configure/storage-atp-policy2.png" alt-text="選取原則範圍的訂用帳戶或資源群組 ":::
+    :::image type="content" source="media/azure-defender-storage-configure/storage-atp-policy2.png" alt-text="顯示如何在安全中心啟用 Azure Defender 儲存的螢幕擷取畫面":::
 
 1. 指派原則。
 
-    :::image type="content" source="media/azure-defender-storage-configure/storage-atp-policy1.png" alt-text="指派原則以啟用 Azure Defender 的儲存體":::
+    :::image type="content" source="media/azure-defender-storage-configure/storage-atp-policy1.png" alt-text="顯示如何在安全中心啟用 Azure Defender 儲存的螢幕擷取畫面":::
 
 ### <a name="rest-api"></a>[REST API](#tab/rest-api)
 
@@ -125,11 +125,11 @@ ms.locfileid: "91289764"
 
 該電子郵件還會提供關於可能原因和建議動作的詳細資料，以協助您調查並減輕潛在威脅。
 
-:::image type="content" source="media/azure-defender-storage-configure/storage-advanced-threat-protection-alert-email.png" alt-text="適用于儲存體的 Azure Defender 警示電子郵件":::
+:::image type="content" source="media/azure-defender-storage-configure/storage-advanced-threat-protection-alert-email.png" alt-text="顯示如何在安全中心啟用 Azure Defender 儲存的螢幕擷取畫面":::
 
 您可以從 Azure 資訊安全中心的 [ [安全性警示] 磚](../../security-center/security-center-managing-and-responding-alerts.md)，檢查並管理目前的安全性警示。 按一下特定警示，即會提供適合用來調查目前威脅及解決未來威脅的詳細資料與動作。
 
-:::image type="content" source="media/azure-defender-storage-configure/storage-advanced-threat-protection-alert.png" alt-text="適用于儲存體的 Azure Defender 警示":::
+:::image type="content" source="media/azure-defender-storage-configure/storage-advanced-threat-protection-alert.png" alt-text="顯示如何在安全中心啟用 Azure Defender 儲存的螢幕擷取畫面":::
 
 ## <a name="security-alerts"></a>安全性警示
 

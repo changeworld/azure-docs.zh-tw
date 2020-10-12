@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.date: 06/25/2020
 ms.author: mblythe
 ms.openlocfilehash: d8a480481e47995f9f819122a3e8cc0b0a21a254
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85851904"
 ---
 # <a name="create-an-azure-support-request"></a>建立 Azure 支援要求
@@ -41,7 +41,7 @@ Azure 為訂用帳戶管理提供無限制的支援，包括帳單、配額調�
 
 ### <a name="role-based-access-control"></a>角色型存取控制
 
-若要建立支援要求，您必須是[擁有者](../../role-based-access-control/built-in-roles.md#owner)、[參與者](../../role-based-access-control/built-in-roles.md#contributor)，或是獲派訂用帳戶層級的[支援要求參與者](../../role-based-access-control/built-in-roles.md#support-request-contributor)角色。 若要建立不含訂用帳戶的支援要求（例如 Azure Active Directory 案例），您必須是系統[管理員](../../active-directory/users-groups-roles/directory-assign-admin-roles.md)。
+若要建立支援要求，您必須是[擁有者](../../role-based-access-control/built-in-roles.md#owner)、[參與者](../../role-based-access-control/built-in-roles.md#contributor)，或是獲派訂用帳戶層級的[支援要求參與者](../../role-based-access-control/built-in-roles.md#support-request-contributor)角色。 若要建立不含訂用帳戶的支援要求，例如 Azure Active Directory 案例，您必須是系統 [管理員](../../active-directory/users-groups-roles/directory-assign-admin-roles.md)。
 
 ### <a name="go-to-help--support-from-the-global-header"></a>從全域標頭進入 [說明 + 支援]
 
@@ -51,7 +51,7 @@ Azure 為訂用帳戶管理提供無限制的支援，包括帳單、配額調�
 
    ![說明與支援](./media/how-to-create-azure-support-request/helpandsupportnewlower.png)
 
-1. 選取 [新增支援要求]。 依照提示提供問題的相關資訊。 我們會建議一些可能的解決辦法，收集有關問題的詳細資訊，並協助您提交及追蹤支援要求。
+1. 選取 [新增支援要求]。 遵循提示來提供問題的相關資訊。 我們會建議一些可能的解決辦法，收集有關問題的詳細資訊，並協助您提交及追蹤支援要求。
 
    ![新的支援要求](./media/how-to-create-azure-support-request/newsupportrequest2lower.png)
 
@@ -73,7 +73,7 @@ Azure 為訂用帳戶管理提供無限制的支援，包括帳單、配額調�
 
 支援要求程序的第一個步驟會收集您的問題和支援計劃的基本資訊。
 
-在 [新的支援要求] 的 [基本資訊] 中，使用選取器開始描述問題。 首先，您要區別問題類型的一些常規分類，然後選擇相關的訂用帳戶。 選取服務，例如執行**Windows 的虛擬機器**。 選取資源，例如，您的虛擬機器名稱。 以您自己的單字描述問題，然後選取 [**問題類型**] 和 [**問題子類型**]，以取得更具體的資訊。
+在 [新的支援要求] 的 [基本資訊] 中，使用選取器開始描述問題。 首先，您要區別問題類型的一些常規分類，然後選擇相關的訂用帳戶。 選取服務，例如執行 **Windows 的虛擬機器**。 選取資源，例如，您的虛擬機器名稱。 以您自己的單字描述問題，然後選取 [ **問題類型** ] 和 [ **問題子類型** ] 以取得更具體的資訊。
 
 ![基本概念刀鋒視窗](./media/how-to-create-azure-support-request/basics2lower.png)
 
@@ -83,13 +83,13 @@ Azure 為訂用帳戶管理提供無限制的支援，包括帳單、配額調�
 
 ### <a name="details"></a>詳細資料
 
-接下來，我們會收集有關該問題的更多詳細資訊。 在此步驟中提供完整且詳細的資訊，可協助我們將您的支援要求路由至正確的工程師。
+接下來，我們會收集有關該問題的更多詳細資訊。 在這個步驟中提供完整且詳細的資訊，可協助我們將您的支援要求路由至正確的工程師。
 
-1. 如果可能，請告訴我們問題何時開始發生以及能重現問題的任何步驟。 您可以上傳檔案，例如記錄檔、診斷的輸出。 如需檔案上傳的詳細資訊，請參閱檔案[上傳指導方針](how-to-manage-azure-support-request.md#file-upload-guidelines)。
+1. 如果可能，請告訴我們問題何時開始發生以及能重現問題的任何步驟。 您可以上傳檔案，例如記錄檔、診斷的輸出。 如需檔案上傳的詳細資訊，請參閱檔案 [上傳指導方針](how-to-manage-azure-support-request.md#file-upload-guidelines)。
 
-1. 提供有關問題的所有資訊之後，請選擇如何獲得支援。 在 [詳細資料] 的 [支援方法] 區段中，選取影響的嚴重性。 最大嚴重性層級取決於您的[支援方案](https://azure.microsoft.com/support/plans)。
+1. 提供有關問題的所有資訊之後，請選擇如何獲得支援。 在 [詳細資料] 的 [支援方法] 區段中，選取影響的嚴重性。 最大嚴重性層級取決於您的 [支援方案](https://azure.microsoft.com/support/plans)。
 
-    預設會選取 [**共用診斷資訊**] 選項。 這可讓 Azure 支援從您的 Azure 資源收集[診斷資訊](https://azure.microsoft.com/support/legal/support-diagnostic-information-collection/)。 在某些情況下，預設不會選取第二個問題，例如要求存取虛擬機器的記憶體。
+    預設會選取 [ **共用診斷資訊** ] 選項。 這可讓 Azure 支援從您的 Azure 資源收集 [診斷資訊](https://azure.microsoft.com/support/legal/support-diagnostic-information-collection/) 。 在某些情況下，預設不會選取第二個問題，例如要求存取虛擬機器的記憶體。
 
 1. 提供您偏好的聯絡方法、適當的聯絡時間以及您的支援語言。
 
@@ -97,12 +97,12 @@ Azure 為訂用帳戶管理提供無限制的支援，包括帳單、配額調�
 
 ### <a name="review--create"></a>檢閱 + 建立
 
-完成每個索引標籤中的所有必要資訊，然後選取 [檢閱 + 建立]。 請檢查您將傳送給支援的詳細資料。 如有需要，可回到任何索引標籤進行所需的變更。 當您滿意支援要求的填寫內容後，選取 [建立]。
+完成每個索引標籤中的所有必要資訊，然後選取 [檢閱 + 建立]。 請查看您將傳送以支援的詳細資料。 如有需要，可回到任何索引標籤進行所需的變更。 當您滿意支援要求的填寫內容後，選取 [建立]。
 
-支援工程師會使用您所指定的方法與您聯繫。 如需初始回應時間的詳細資訊，請參閱[支援範圍和回應](https://azure.microsoft.com/support/plans/response/)性。
+支援工程師會使用您所指定的方法來與您聯繫。 如需初始回應時間的詳細資訊，請參閱 [支援範圍和回應](https://azure.microsoft.com/support/plans/response/)性。
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 若要深入了解 Azure 中的自助式支援選項，請看這支影片：
 

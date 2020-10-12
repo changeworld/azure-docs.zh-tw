@@ -1,5 +1,5 @@
 ---
-title: 以 Azure Cosmos DB 的查詢語言取代
+title: 以 Azure Cosmos DB 查詢語言取代
 description: 瞭解 Azure Cosmos DB 中的 SQL 系統函數取代。
 author: ginamr
 ms.service: cosmos-db
@@ -8,13 +8,13 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 758ac13530752df481d27e7e253f025f5c8d6430
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "78302197"
 ---
-# <a name="replace-azure-cosmos-db"></a>取代（Azure Cosmos DB）
+# <a name="replace-azure-cosmos-db"></a>取代 (Azure Cosmos DB) 
  將指定字串值的所有相符項目取代成另一個字串值。  
   
 ## <a name="syntax"></a>語法
@@ -32,7 +32,7 @@ REPLACE(<str_expr1>, <str_expr2>, <str_expr3>)
    這是要尋找的字串運算式。  
   
 *str_expr3*  
-   這是用來取代*str_expr1*中*str_expr2*出現的字串運算式。  
+   這是用來取代*str_expr1*中之*str_expr2*出現次數的字串運算式。  
   
 ## <a name="return-types"></a>傳回類型
   
@@ -54,7 +54,7 @@ SELECT REPLACE("This is a Test", "Test", "desk") AS replace
 
 ## <a name="remarks"></a>備註
 
-這個系統函數不會使用索引。
+這個系統函數將不會使用索引。
 
 ## <a name="next-steps"></a>後續步驟
 

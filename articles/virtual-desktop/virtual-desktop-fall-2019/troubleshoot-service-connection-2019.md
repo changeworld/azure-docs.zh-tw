@@ -1,16 +1,16 @@
 ---
-title: 針對服務連線 Windows 虛擬桌面 (傳統) 進行疑難排解-Azure
-description: 如何解決在 Windows 虛擬桌面 (傳統) 租使用者環境中設定用戶端連線時的問題。
+title: 針對服務連接 Windows 虛擬桌面 (傳統) 進行疑難排解-Azure
+description: 當您在 Windows 虛擬桌面 (傳統) 租使用者環境中設定用戶端連線時，如何解決問題。
 author: Heidilohr
 ms.topic: troubleshooting
 ms.date: 05/20/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 8a034cb8371972c2c7908cdba4dd491c17d8cc9f
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88008537"
 ---
 # <a name="windows-virtual-desktop-classic-service-connections"></a>Windows 虛擬桌面 (傳統) 服務連線

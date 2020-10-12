@@ -1,5 +1,5 @@
 ---
-title: Apache Spark & Apache Kafka 搭配 Cosmos DB-Azure HDInsight
+title: Apache Spark & Apache Kafka 與 Cosmos DB Azure HDInsight
 description: 了解如何使用「Apache Spark 結構化串流」從 Apache Kafka 讀取資料，然後儲存至 Azure Cosmos DB。 在此範例中，您使用 Jupyter Notebook 從 HDInsight 上的 Spark 串流資料。
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,17 +9,17 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/18/2019
 ms.openlocfilehash: 0a2e69a220f6752e5f0392c345b02967e2e76beb
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86203465"
 ---
 # <a name="use-apache-spark-structured-streaming-with-apache-kafka-and-azure-cosmos-db"></a>搭配 Apache Kafka 和 Azure Cosmos DB 使用 Apache Spark 結構化串流
 
 了解如何使用 [Apache Spark](https://spark.apache.org/) [結構化串流](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html)從 Azure HDInsight 上的 [Apache Kafka](https://kafka.apache.org/) 讀取資料，然後將資料儲存至 Azure Cosmos DB。
 
-[Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)是全域散發的多模型資料庫。 此範例使用 SQL API 資料庫模型。 如需詳細資訊，請參閱[歡迎使用 Azure Cosmos DB](../cosmos-db/introduction.md) 文件。
+[Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) 是全域散發的多模型資料庫。 此範例使用 SQL API 資料庫模型。 如需詳細資訊，請參閱[歡迎使用 Azure Cosmos DB](../cosmos-db/introduction.md) 文件。
 
 Spark 結構化串流是建置在 Spark SQL 上的串流處理引擎。 它允許您進行與靜態資料批次計算相同的串流計算。 如需有關結構化串流的詳細資訊，請參閱 Apache.org 的[結構化串流程式設計手冊](https://spark.apache.org/docs/2.2.0/structured-streaming-programming-guide.html) \(英文\)。
 
@@ -47,7 +47,7 @@ Apache Kafka on HDInsight 不提供透過公用網際網路存取 Kafka 訊息�
     <img src="./media/apache-kafka-spark-structured-streaming-cosmosdb/resource-manager-deploy.png" alt="Deploy to Azure"/>
     </a>
 
-    Azure Resource Manager 範本位於此專案的 GitHub 存放庫中 ([https://github.com/Azure-Samples/hdinsight-spark-scala-kafka-cosmosdb](https://github.com/Azure-Samples/hdinsight-spark-scala-kafka-cosmosdb)) 。
+    Azure Resource Manager 範本位於此專案的 GitHub 存放庫 ([https://github.com/Azure-Samples/hdinsight-spark-scala-kafka-cosmosdb](https://github.com/Azure-Samples/hdinsight-spark-scala-kafka-cosmosdb)) 。
 
     此範本會建立下列資源：
 
@@ -66,7 +66,7 @@ Apache Kafka on HDInsight 不提供透過公用網際網路存取 Kafka 訊息�
 
     |屬性 |值 |
     |---|---|
-    |訂用帳戶|選取您的 Azure 訂用帳戶。|
+    |訂用帳戶|選取 Azure 訂用帳戶。|
     |資源群組|建立群組或選取現有的群組。 此群組包含 HDInsight 叢集。|
     |Cosmos DB 帳戶名稱|此值是作為 Cosmos DB 帳戶的名稱使用。 名稱只能包含小寫字母、數字及連字號 (-) 字元。 其長度必須介於 3 到 31 個字元之間。|
     |基底叢集名稱|此值會作為 Spark 和 Kafka 叢集的基底名稱。 例如，輸入 **myhdi** 以建立名為 __spark-myhdi__ 的 Spark 叢集，以及名為 **kafka-myhdi** 的 Kafka 叢集。|
@@ -78,7 +78,7 @@ Apache Kafka on HDInsight 不提供透過公用網際網路存取 Kafka 訊息�
 
     ![HDInsight 自訂部署值](./media/apache-kafka-spark-structured-streaming-cosmosdb/hdi-custom-parameters.png)
 
-1. 閱讀**條款及條件**，然後選取 **[我同意上方所述的條款及條件**]。
+1. 讀取**條款及條件**，然後選取 [我同意上方所述的條款及條件]。
 
 1. 最後，選取 [購買]****。 最多需要 45 分鐘才能建立叢集、虛擬網路與 Cosmos DB 帳戶。
 
@@ -128,7 +128,7 @@ az cosmosdb keys list --name $name --resource-group $resourceGroupName --type ke
 
 ## <a name="get-the-notebooks"></a>取得 Notebook
 
-本檔中所述之範例的程式碼可于取得 [https://github.com/Azure-Samples/hdinsight-spark-scala-kafka-cosmosdb](https://github.com/Azure-Samples/hdinsight-spark-scala-kafka-cosmosdb) 。
+本檔所述範例的程式碼可在中取得 [https://github.com/Azure-Samples/hdinsight-spark-scala-kafka-cosmosdb](https://github.com/Azure-Samples/hdinsight-spark-scala-kafka-cosmosdb) 。
 
 ## <a name="upload-the-notebooks"></a>上傳 Notebook
 
@@ -156,9 +156,9 @@ az cosmosdb keys list --name $name --resource-group $resourceGroupName --type ke
 
 從 [Jupyter Notebook](https://jupyter.org/) 首頁，選取 __Stream-data-from-Kafka-to-Cosmos-DB.ipynb__ 項目。 請依照 Notebook 中的步驟，使用「Spark 結構化串流」將資料從 Kafka 串流至 Azure Cosmos DB。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-既然您已瞭解如何使用 Apache Spark 結構化串流，請參閱下列檔，以深入瞭解如何使用 Apache Spark、Apache Kafka 和 Azure Cosmos DB：
+現在您已瞭解如何使用 Apache Spark 結構化串流，請參閱下列檔，以深入瞭解如何使用 Apache Spark、Apache Kafka 和 Azure Cosmos DB：
 
 * [如何搭配 Apache Kafka 使用 Apache Spark 串流 (DStream) ](hdinsight-apache-spark-with-kafka.md)。
 * [開始使用 Jupyter Notebook 與 HDInsight 上的 Apache Spark](spark/apache-spark-jupyter-spark-sql.md)

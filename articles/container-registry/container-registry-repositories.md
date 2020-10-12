@@ -1,13 +1,13 @@
 ---
-title: 在入口網站中查看存放庫
-description: 使用 [Azure 入口網站來觀看 Azure Container Registry 存放庫，以裝載 Docker 容器映射和其他支援的成品。
+title: 在入口網站中查看儲存機制
+description: 使用 Azure 入口網站來查看裝載 Docker 容器映射和其他受支援構件的 Azure Container Registry 存放庫。
 ms.topic: article
 ms.date: 01/05/2018
 ms.openlocfilehash: 1da72706d2554610a685f71199ab14af5e30ce1a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74456287"
 ---
 # <a name="view-container-registry-repositories-in-the-azure-portal"></a>檢視 Azure 入口網站中的容器登錄存放庫

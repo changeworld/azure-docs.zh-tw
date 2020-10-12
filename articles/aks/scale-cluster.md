@@ -5,10 +5,10 @@ services: container-service
 ms.topic: article
 ms.date: 09/16/2020
 ms.openlocfilehash: d5686a74ffe138af51d2319c839a3a5c5887f992
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90902939"
 ---
 # <a name="scale-the-node-count-in-an-azure-kubernetes-service-aks-cluster"></a>在 Azure Kubernetes Service (AKS) 叢集中調整節點計數
@@ -81,7 +81,7 @@ az aks nodepool scale --name <your node pool name> --cluster-name myAKSCluster -
 
 您也可以 `User` 將叢集自動調整程式的參數設定為0，將節點集區自動調整為0個節點 `--min-count` 。 [Cluster Autoscaler](cluster-autoscaler.md)
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 在本文中，您會手動調整 AKS 叢集，以增加或減少節點數目。 您也可以使用叢集 [自動調整程式][cluster-autoscaler] 來自動調整您的叢集。
 

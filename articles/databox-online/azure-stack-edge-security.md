@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 08/21/2019
 ms.author: alkohli
 ms.openlocfilehash: b5c5143c7bc92487aeabc3cdc1afea5061466027
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90903163"
 ---
 # <a name="azure-stack-edge-pro-security-and-data-protection"></a>Azure Stack Edge Pro 安全性和資料保護
@@ -93,6 +93,6 @@ Azure Stack Edge 服務會在下列情況下收集個人資訊：
 
 如需詳細資訊，請參閱 [信任中心](https://www.microsoft.com/trustcenter)上的 Microsoft 隱私權原則。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 [部署 Azure Stack Edge Pro 裝置](azure-stack-edge-deploy-prep.md)

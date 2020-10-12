@@ -7,19 +7,19 @@ ms.topic: conceptual
 ms.date: 05/17/2019
 ms.author: mjbrown
 ms.openlocfilehash: 38e80f1597a08b8db7cbfa852d1bcf38ac768b1f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74871137"
 ---
 # <a name="joins-in-azure-cosmos-db"></a>Azure Cosmos DB 中的聯結
 
-在關係資料庫中，跨資料表的聯結是設計正規化架構的邏輯必然結果。 相反地，SQL API 會使用無架構專案的反正規化資料模型，這是*自我聯結*的邏輯對應項。
+在關係資料庫中，跨資料表的聯結是設計正規化架構的邏輯必然結果。 相反地，SQL API 會使用無架構專案的反正規化資料模型，這是 *自我聯結*的邏輯對等專案。
 
 內部聯結是參與聯結之集的完整交叉乘積。 N 方聯結的結果為一組 N 元素 Tuple，其中 Tuple 中的每個值都與參與聯結的別名集相關聯，而且可以透過參考其他子句中的別名加以存取。
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>語法
 
 語言支援語法 `<from_source1> JOIN <from_source2> JOIN ... JOIN <from_sourceN>` 。 此查詢會傳回一組具有值的元組 `N` 。 每個 Tuple 所擁有的值，都是將所有容器別名在其個別集合上反覆運算所產生的。 
 
@@ -103,7 +103,7 @@ ms.locfileid: "74871137"
   
 ## <a name="examples"></a>範例
 
-下列範例示範 JOIN 子句的運作方式。 執行這些範例之前，請先上傳範例[系列資料](sql-query-getting-started.md#upload-sample-data)。 在下列範例中，結果是空的，因為來源的每個專案與空集合的交叉乘積是空的：
+下列範例示範 JOIN 子句的運作方式。 執行這些範例之前，請先上傳範例 [系列資料](sql-query-getting-started.md#upload-sample-data)。 在下列範例中，結果是空的，因為來自來源的每個專案與空集合的交叉乘積是空的：
 
 ```sql
     SELECT f.id
@@ -118,7 +118,7 @@ ms.locfileid: "74871137"
     }]
 ```
 
-在下列範例中，聯結是兩個 JSON 物件（專案根目錄和子根目錄）之間的交叉乘積 `id` `children` 。 陣列的事實 `children` 不會在聯結中生效，因為它處理的是陣列的單一根 `children` 。 結果只會包含兩個結果，因為陣列中每個專案的交叉乘積只會產生一個專案。
+在下列範例中，聯結是兩個 JSON 物件（專案根目錄和子根目錄）之間的交叉乘積 `id` `children` 。 陣列中的事實不 `children` 會有效，因為它會處理屬於陣列的單一根 `children` 。 結果只會包含兩個結果，因為具有陣列的每個專案的交叉乘積只會產生一個專案。
 
 ```sql
     SELECT f.id
@@ -126,7 +126,7 @@ ms.locfileid: "74871137"
     JOIN f.children
 ```
 
-結果如下：
+結果為：
 
 ```json
     [
@@ -147,7 +147,7 @@ ms.locfileid: "74871137"
     JOIN c IN f.children
 ```
 
-結果如下：
+結果為：
 
 ```json
     [
@@ -166,12 +166,12 @@ ms.locfileid: "74871137"
 JOIN 子句的 FROM 來源是反覆運算器。 因此，上述範例中的流程為：  
 
 1. 展開 `c` 陣列中的每個子項目。
-2. 套用包含 `f` 第一個步驟所簡維之每個子專案的交叉乘積 `c` 。
+2. 套用具有專案根目錄的交叉乘積， `f` 以及第一個步驟簡維的每個子項目 `c` 。
 3. 最後，單獨投影根物件 `f` `id` 屬性。
 
 第一個專案 `AndersenFamily` 只包含一個 `children` 元素，因此結果集只包含單一物件。 第二個專案 `WakefieldFamily` 包含兩個 `children` ，因此交叉乘積會產生兩個物件，每個 `children` 元素各一個。 這兩個項目中的根欄位相同，就像您在交叉乘積中預期地一樣。
 
-聯結子句的真正公用程式，是要從其他不容易投影的圖形形成交叉乘積的元組。 下列範例會篩選元組的組合，讓使用者選擇整體元組所滿足的條件。
+JOIN 子句的實際公用程式是在圖形中形成交叉乘積的元組，而這種方式很難投影。 下列範例會篩選元組的組合，讓使用者選擇整體的元組所滿足的條件。
 
 ```sql
     SELECT 
@@ -184,7 +184,7 @@ JOIN 子句的 FROM 來源是反覆運算器。 因此，上述範例中的流�
     JOIN p IN c.pets
 ```
 
-結果如下：
+結果為：
 
 ```json
     [
@@ -206,7 +206,7 @@ JOIN 子句的 FROM 來源是反覆運算器。 因此，上述範例中的流�
     ]
 ```
 
-上述範例的下列延伸模組會執行雙重聯結。 您可以將交叉乘積視為下列虛擬程式碼：
+上述範例的下列延伸模組會執行雙重聯結。 您可以用下列虛擬程式碼來查看交叉乘積：
 
 ```
     for-each(Family f in Families)
@@ -224,9 +224,9 @@ JOIN 子句的 FROM 來源是反覆運算器。 因此，上述範例中的流�
     }
 ```
 
-`AndersenFamily`有一個具有一個寵物的子系，因此交叉乘積會從此家族產生一個資料列（1 \* 1 \* 1）。 `WakefieldFamily`有兩個子系，只有其中一個具有寵物，但該子系有兩個寵物。 此系列的交叉乘積會產生 1 \* 1 \* 2 = 2 個數據列。
+`AndersenFamily` 有一個具有一個寵物的子系，因此交叉乘積 \* 從這個系列 (1 1 1) 產生一個資料列 \* 。 `WakefieldFamily` 有兩個子系，其中只有一個是寵物，但該子系有兩個寵物。 此系列的交叉乘積會產生 1 \* 1 \* 2 = 2 個數據列。
 
-在下一個範例中，有一個額外的篩選 `pet` ，它會排除寵物名稱不是的所有元組 `Shadow` 。 您可以從陣列建立元組、篩選元組的任何元素，以及投影元素的任何組合。
+在下一個範例中，有一個額外的篩選 `pet` ，它會排除寵物名稱不是所有的元組 `Shadow` 。 您可以從陣列建立元組、篩選元組的任何元素，以及投影元素的任意組合。
 
 ```sql
     SELECT 

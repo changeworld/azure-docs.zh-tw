@@ -1,6 +1,6 @@
 ---
 title: Azure Cosmos DB 查詢語言中的 StringToBoolean
-description: 深入瞭解 Azure Cosmos DB 中的 SQL 系統函數 StringToBoolean。
+description: 瞭解 Azure Cosmos DB 中的 SQL 系統函數 StringToBoolean。
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: ce11db91eff51e669f0917fbf34b1d560d0e9f07
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "78296536"
 ---
-# <a name="stringtoboolean-azure-cosmos-db"></a>StringToBoolean （Azure Cosmos DB）
- 傳回轉譯成布林值的運算式。 如果無法轉譯運算式，則會傳回 undefined。  
+# <a name="stringtoboolean-azure-cosmos-db"></a>StringToBoolean (Azure Cosmos DB) 
+ 傳回轉譯為布林值的運算式。 如果無法轉譯運算式，則會傳回 undefined。  
   
 ## <a name="syntax"></a>語法
   
@@ -38,7 +38,7 @@ StringToBoolean(<str_expr>)
  
  以下是具有有效輸入的範例。
 
-只有在 "true"/"false" 之前或之後才允許空白字元。
+只允許在 "true"/"false" 之前或之後使用空白字元。
 
 ```sql
 SELECT 
@@ -53,9 +53,9 @@ SELECT
 [{"b1": true, "b2": false, "b3": false}]
 ```  
 
-以下是具有無效輸入的範例。
+以下是無效輸入的範例。
 
- 布林值區分大小寫，而且必須寫成所有小寫字元，亦即 "true" 和 "false"。
+ 布林值會區分大小寫，而且必須以所有小寫字元（亦即 "true" 和 "false"）撰寫。
 
 ```sql
 SELECT 
@@ -69,7 +69,7 @@ SELECT
 [{}]
 ``` 
 
-傳遞的運算式會剖析為布林運算式;這些輸入不會評估為布林類型，因此會傳回 undefined。
+傳遞的運算式將會剖析為布林運算式;這些輸入不會評估為類型布林值，因此會傳回 undefined。
 
 ```sql
 SELECT 
@@ -88,7 +88,7 @@ SELECT
 
 ## <a name="remarks"></a>備註
 
-這個系統函數不會使用索引。
+這個系統函數將不會使用索引。
 
 ## <a name="next-steps"></a>後續步驟
 

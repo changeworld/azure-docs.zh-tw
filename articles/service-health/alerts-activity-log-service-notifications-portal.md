@@ -4,10 +4,10 @@ description: 瞭解如何使用 Azure 入口網站設定服務健康情況通知
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.openlocfilehash: 88fbdeeb8bdcc239f1591e053aaf4fb1c36b9b19
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91289781"
 ---
 # <a name="create-activity-log-alerts-on-service-notifications-using-the-azure-portal"></a>使用 Azure 入口網站建立服務通知的活動記錄警示

@@ -8,10 +8,10 @@ ms.date: 05/08/2020
 author: mingshen-ms
 ms.author: mingshen
 ms.openlocfilehash: d232f7ba1304d76a0ba2db62b9f0f9b4229513f1
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89378590"
 ---
 # <a name="metered-billing-for-saas-using-the-commercial-marketplace-metering-service"></a>使用商用 marketplace 計量服務進行 SaaS 的計量計費
@@ -84,7 +84,7 @@ ms.locfileid: "89378590"
 
 定義維度本身的屬性會跨供應專案的所有方案共用。  在您發行供應專案之前，對這些屬性從任何計畫的內容進行的變更，都會影響所有方案的維度定義。  發佈供應專案之後，就無法再編輯這些屬性。  這些屬性包括：
 
-- ID
+- 識別碼
 - 顯示名稱
 - 測量單位
 
@@ -130,7 +130,7 @@ ms.locfileid: "89378590"
 
 使用維度發佈供應專案之後，就無法再變更該維度的供應專案層級詳細資料：
 
-- ID
+- 識別碼
 - 顯示名稱
 - 測量單位
 
@@ -155,6 +155,6 @@ ms.locfileid: "89378590"
 
 若要瞭解發行者支援選項，並向 Microsoft 提出支援票證，請依照 [合作夥伴中心中的「商業 marketplace」方案的支援](./support.md)指示進行。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [Marketplace 計量服務 API](./marketplace-metering-service-apis.md)

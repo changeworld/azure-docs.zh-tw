@@ -1,6 +1,6 @@
 ---
 title: Azure Cosmos DB 查詢語言中的 ACOS
-description: 瞭解 Azure Cosmos DB 中的 ACOS （arccosice） SQL 系統函數如何傳回以弧度為單位的角度，其餘弦值為指定的數值運算式
+description: 瞭解 Azure Cosmos DB 中的 ACOS (arccosice) SQL 系統函數如何傳回其餘弦值為指定之數值運算式的角度（以弧度為單位）
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,13 +8,13 @@ ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 733d6b009f03d61c37170cc506a3b2ec842d7c47
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "78300956"
 ---
-# <a name="acos-azure-cosmos-db"></a>ACOS （Azure Cosmos DB）
+# <a name="acos-azure-cosmos-db"></a>ACOS (Azure Cosmos DB) 
  傳回角度，以弧度為單位，它的餘弦是指定的數值運算式；也稱為反餘弦值。  
   
 ## <a name="syntax"></a>語法
@@ -48,7 +48,7 @@ SELECT ACOS(-1) AS acos
 
 ## <a name="remarks"></a>備註
 
-這個系統函數不會使用索引。
+這個系統函數將不會使用索引。
 
 ## <a name="next-steps"></a>後續步驟
 

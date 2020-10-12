@@ -1,7 +1,7 @@
 ---
 title: Azure CLI 腳本範例-設定 IPv6 前端
 titlesuffix: Azure Virtual Network
-description: 使用 Azure CLI 腳本範例來設定 IPv6 端點，並在 Azure 中部署雙重堆疊（IPv4 + IPv6）應用程式。
+description: 使用 Azure CLI 腳本範例來設定 IPv6 端點，並在 Azure 中部署雙協定 (IPv4 + IPv6) 應用程式。
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -14,29 +14,29 @@ ms.date: 04/23/2019
 ms.author: kumud
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 4036bc50b08c93de768760aa4c0d3aaba398df92
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87492695"
 ---
-# <a name="configure-ipv6-endpoints-in-virtual-network-script-sample-preview"></a>在虛擬網路中設定 IPv6 端點腳本範例（預覽）
+# <a name="configure-ipv6-endpoints-in-virtual-network-script-sample-preview"></a>在虛擬網路腳本範例 (預覽版中設定 IPv6 端點) 
 
-本文說明如何在 Azure 中部署雙重堆疊（IPv4 + IPv6）應用程式，其中包含具有雙重堆疊子網的雙協定堆疊虛擬網路、具有雙重（IPv4 + IPv6）前端設定的負載平衡器、具有雙重 IP 設定的 Vm、雙重網路安全性群組規則，以及雙重公用 Ip。
+本文說明如何在 Azure 中部署雙堆疊 (IPv4 + IPv6) 應用程式，其中包含雙重堆疊子網的雙重堆疊虛擬網路、雙 (IPv4 + IPv6) 前端設定的負載平衡器、具有雙重 IP 設定的 Nic、雙網路安全性群組規則，以及雙公用 Ip 的虛擬機器。
 
 您可以從 Azure [Cloud Shell](https://shell.azure.com/bash) 或從本機的 Azure CLI 安裝來執行指令碼。 如果是在本機使用 CLI，需要執行 2.0.28 版或更新版本，方可使用該指令碼。 若要尋找已安裝的版本，請執行 `az --version`。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。 如果您在本機執行 CLI，則也需要執行 `az login` 以建立與 Azure 的連線。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>必要條件
-若要使用 IPv6 for Azure 虛擬網路功能，您必須只設定訂用帳戶一次，如下所示：
+## <a name="prerequisites"></a>Prerequisites
+若要使用適用于 Azure 虛擬網路的 IPv6 功能，您必須只將訂用帳戶設定為一次，如下所示：
 
 ```azurecli
 az feature register --name AllowIPv6VirtualNetwork --namespace Microsoft.Network
 az feature register --name AllowIPv6CAOnStandardLB --namespace Microsoft.Network
 ```
 
-需要 30 分鐘才能完成功能註冊。 您可以執行下列 Azure CLI 命令來檢查註冊狀態：
+需要 30 分鐘才能完成功能註冊。 您可以執行下列 Azure CLI 命令來檢查您的註冊狀態：
 
 ```azurecli
 az feature show --name AllowIPv6VirtualNetwork --namespace Microsoft.Network

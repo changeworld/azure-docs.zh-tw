@@ -9,15 +9,15 @@ ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
 ms.openlocfilehash: a5764e44db31755110ac99a3e8e8e0984cdf9604
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87490569"
 ---
 # <a name="plan-capacity-for-hyper-v-vm-disaster-recovery"></a>規劃 Hyper-V VM 災害復原的容量 
 
-Hyper-v 到 Azure 部署的 [Azure Site Recovery 部署規劃工具] （site-recovery-hyper-v-deployment-planner.md）提供下列各項：
+Hyper-v 到 Azure 部署的 [Azure Site Recovery 部署規劃工具] (site-recovery-hyper-v-deployment-planner.md) 提供下列各項：
 
 * 以磁碟數目、磁碟大小、IOPS、變換和數個 VM 特性為基礎的 VM 適用性評估
 * 網路頻寬需求與 RPO 評估
@@ -47,7 +47,7 @@ Azure Site Recovery Capacity Planner 可協助您判斷使用 Azure Site Recover
 
 2. 在 [選取規劃類型]**** 清單方塊中，選取 [快速規劃]****。
 
-   ![[選取 planner 類型] 選項的螢幕擷取畫面，其中已選取 [快速規劃]。](./media/site-recovery-capacity-planner/getting-started.png)
+   ![選取 [快速規劃] 的 [選取規劃類型] 選項的螢幕擷取畫面。](./media/site-recovery-capacity-planner/getting-started.png)
 
 3. 在 [Capacity Planner]**** 工作表中，輸入必要資訊。 填妥以下螢幕擷取畫面中以紅色圈出來的所有欄位：
 
@@ -73,9 +73,9 @@ Azure Site Recovery Capacity Planner 可協助您判斷使用 Azure Site Recover
    * **所需的 Blob 磁碟數目**：在 Azure 儲存體上建立的磁碟數目。
    * **所需的進階帳戶數目**：保護 VM 所需的進階儲存體帳戶總數。 具有高 IOPS (超過 20,000) 的來源 VM 需要進階儲存體帳戶。 進階儲存體帳戶可以支援多達 80,000 個 IOPS。
    * **進階儲存體上的 IOPS 總數**：根據進階儲存體帳戶總計上的 256K IOPS 單位大小計算的數目。 針對快速規劃，數目是根據來源 VM 磁碟和每日資料變更率計算。 針對詳細規劃，數目是根據對應到進階 Azure VM (DS 和 GS 系列) 的 VM 數，以及那些 VM 上的資料變更率計算。
-   * **所需的設定伺服器數目**：顯示部署需要多少設定伺服器。
-   * **所需的額外進程伺服器數目**：顯示除了預設在設定伺服器上執行的進程伺服器，是否需要額外的進程伺服器。
-   * **來源上的100% 額外儲存體**：顯示來源位置中是否需要額外的儲存體。
+   * **需要的設定伺服器數目**：顯示部署所需的設定伺服器數量。
+   * **需要的額外進程伺服器數目**：顯示除了預設在設定伺服器上執行的進程伺服器，是否需要額外的進程伺服器。
+   * **來源上的100% 額外儲存體**：顯示來源位置是否需要額外的儲存體。
 
       ![根據提供的輸入顯示之輸出的螢幕擷取畫面。](./media/site-recovery-capacity-planner/output.png)
 
@@ -85,17 +85,17 @@ Azure Site Recovery Capacity Planner 可協助您判斷使用 Azure Site Recover
 
 2. 在 [選取規劃類型]**** 中，從清單方塊中選取 [詳細規劃]****。
 
-   ![[選取 planner 類型] 選項的螢幕擷取畫面，其中已選取詳細的 Planner。](./media/site-recovery-capacity-planner/getting-started-2.png)
+   ![選取了詳細規劃工具的 [選取規劃類型] 選項的螢幕擷取畫面。](./media/site-recovery-capacity-planner/getting-started-2.png)
 
 3. 在 [工作負載限定性條件]**** 工作表中，輸入必要資訊。 您必須填寫所有標示的欄位。
 
-   a. 在 [**處理器核心**] 中，指定來源伺服器上的核心總數。
+   a. 在 [ **處理器核心**] 中，指定來源伺服器上的核心總數。
 
    b. 在 [記憶體配置 (MB)]**** 中，指定來源伺服器的 RAM 大小。
 
    c. 在 [NIC 數]**** 中，指定來源伺服器上的網路介面卡數目。
 
-   d. 在 [**儲存體總計（以 GB 為單位）**] 中，指定 VM 儲存體的總大小。 例如，如果來源伺服器有 3 個磁碟，每一個磁碟有 500 GB，則總儲存體大小為 1,500 GB。
+   d. 在 [ **總儲存體 (（以 GB 為單位 **）]) 中，指定 VM 儲存體的總大小。 例如，如果來源伺服器有 3 個磁碟，每一個磁碟有 500 GB，則總儲存體大小為 1,500 GB。
 
    e. 在 [連接的磁碟數]**** 中，指定來源伺服器的磁碟總數。
 
@@ -117,12 +117,12 @@ Azure Site Recovery Capacity Planner 可協助您判斷使用 Azure Site Recover
 
 資料行 AA 至 AE 為輸出，並提供每部 VM 的資訊。
 
-![螢幕擷取畫面：顯示從 AA 到 AE 的輸出資料行。](./media/site-recovery-capacity-planner/workload-qualification-2.png)
+![顯示輸出資料行 AA 至 AE 的螢幕擷取畫面。](./media/site-recovery-capacity-planner/workload-qualification-2.png)
 
 ### <a name="example"></a>範例
 例如，對於具有資料表中顯示之值的六個 VM，此工具會計算並指派最佳的 Azure VM 相符項目，以及 Azure 儲存體需求。
 
-![顯示工作負載限定指派的螢幕擷取畫面。](./media/site-recovery-capacity-planner/workload-qualification-3.png)
+![顯示工作負載限定性指派的螢幕擷取畫面。](./media/site-recovery-capacity-planner/workload-qualification-3.png)
 
 * 在範例輸出中，請注意下列項目：
 
@@ -134,17 +134,17 @@ Azure Site Recovery Capacity Planner 可協助您判斷使用 Azure Site Recover
   * VM5 和 VM6 需要進階儲存體帳戶，兩者都可以使用單一帳戶。
 
     > [!NOTE]
-    > 在標準及進階儲存體上的 IOPS 是在 VM 層級計算，而不是在磁碟層級。 標準虛擬機器可以處理每個磁碟最多 500 個 IOPS。 如果磁碟的 IOPS 大於 500，則您需要進階儲存體。 如果磁碟的 IOPS 超過 500，但 VM 磁碟總數的 IOPS 在標準 Azure VM 支援的限制中，那麼規劃工具會挑選標準 VM，而不是 DS 或 GS 系列。 （Azure VM 的限制為 VM 大小、磁片數目、介面卡數目、CPU 和記憶體）。您必須以適當的 DS 或 GS 系列 VM 手動更新對應的 Azure 大小儲存格。
+    > 在標準及進階儲存體上的 IOPS 是在 VM 層級計算，而不是在磁碟層級。 標準虛擬機器可以處理每個磁碟最多 500 個 IOPS。 如果磁碟的 IOPS 大於 500，則您需要進階儲存體。 如果磁碟的 IOPS 超過 500，但 VM 磁碟總數的 IOPS 在標準 Azure VM 支援的限制中，那麼規劃工具會挑選標準 VM，而不是 DS 或 GS 系列。  (Azure VM 的限制為 VM 大小、磁片數目、介面卡數目、CPU 和記憶體。 ) 您需要使用適當的 DS 或 GS 系列 VM 手動更新對應的 Azure 大小儲存格。
 
 
 輸入所有資訊之後，請選取 [將資料提交至規劃工具]**** 來開啟 Capacity Planner。 工作負載會醒目提示，以顯示是否可以進行保護。
 
 ### <a name="submit-data-in-capacity-planner"></a>提交 Capacity Planner 中的資料
-1. 當您開啟 [Capacity Planner] **** 工作表時，它會根據您指定的設定填入。 「工作負載」一詞會出現在 [**基礎輸入來源**] 儲存格中，以顯示輸入為**工作負載限定**工作表。
+1. 當您開啟 [Capacity Planner] **** 工作表時，它會根據您指定的設定填入。 「工作負載」一詞會出現在 **基礎輸入來源** 儲存格，以顯示輸入是 **工作負載限定** 工作表。
 
 2. 如果您想要進行變更，您必須修改 [工作負載限定性條件]**** 工作表。 然後再次選取 [將資料提交至規劃工具]****。
 
    ![螢幕擷取畫面，顯示 Capacity Planner 工作表中已修改的輸入和產生的輸出。](./media/site-recovery-capacity-planner/capacity-planner.png)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 [了解如何執行](./hyper-v-deployment-planner-overview.md)容量規劃工具。

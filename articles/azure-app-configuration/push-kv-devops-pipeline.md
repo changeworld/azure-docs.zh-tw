@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 07/27/2020
 ms.author: lcozzens
 ms.openlocfilehash: c1142ef7b37dee916118964778f6c1db2a65d591
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88719650"
 ---
 # <a name="push-settings-to-app-configuration-with-azure-pipelines"></a>使用 Azure Pipelines 將設定推送到應用程式設定
@@ -87,7 +87,7 @@ ms.locfileid: "88719650"
 - **標籤**：新增至每個索引鍵/值的字串，做為應用程式設定存放區中的標籤。
 - **內容類型**：加入至每個索引鍵/值的字串，做為應用程式設定存放區中的內容類型。
 - **標記**：格式為的 JSON 物件 `{"tag1":"val1", "tag2":"val2"}` ，其會定義每個索引鍵/值（推送至您的應用程式設定存放區）所新增的標記。
-- **使用指定的前置詞和標籤來刪除存放區中的所有其他索引鍵/值**：預設 **值為未**核取。
+- 以**指定的前置詞和標籤刪除存放區中的所有其他 Key-Values**：預設**值為未**核取。
   - **Checked**：從設定檔推入新的索引鍵/值之前，會先從應用程式設定存放區中移除所有符合指定前置詞和標籤的索引鍵/值。
   - **未選取**：將設定檔中的所有索引鍵/值推送到應用程式設定存放區，並讓應用程式設定存放區中的所有其他專案保持不變。
 

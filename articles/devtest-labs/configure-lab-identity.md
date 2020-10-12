@@ -4,10 +4,10 @@ description: 瞭解如何在 Azure DevTest 中設定實驗室身分識別。
 ms.topic: article
 ms.date: 08/20/2020
 ms.openlocfilehash: a652eb5751f9b723911a1c1baaaaf9860febc5b6
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88719623"
 ---
 # <a name="configure-a-lab-identity"></a>設定實驗室身分識別
@@ -55,6 +55,6 @@ DevTest Labs 支援虛擬機器和 Azure Resource Manager 架構環境的使用�
 - [新增使用者指派的身分識別，以部署實驗室 Azure Resource Manager 環境](use-managed-identities-environments.md)
 - [新增使用者指派的身分識別來部署實驗室虛擬機器](enable-managed-identities-lab-vms.md)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 檢查 [設定成本管理](devtest-lab-configure-cost-management.md)

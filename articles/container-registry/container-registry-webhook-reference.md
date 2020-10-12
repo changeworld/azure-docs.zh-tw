@@ -1,13 +1,13 @@
 ---
 title: 登錄 webhook 架構參考
-description: Azure container registry 中 webhook 要求的 JSON 承載的參考，在啟用成品推送或刪除事件的 webhook 時，會產生此專案
+description: 在 Azure container registry 中針對 webhook 要求的 JSON 承載的參考，會在 webhook 啟用成品推送或刪除事件時產生
 ms.topic: article
 ms.date: 03/05/2019
 ms.openlocfilehash: 8354ef9db24d5825238155ac567d5d829f9b0d7f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74455969"
 ---
 # <a name="azure-container-registry-webhook-reference"></a>Azure Container Registry Webhook 參考
@@ -44,7 +44,7 @@ ms.locfileid: "74455969"
 |[目標](#target)|複雜類型|觸發 webhook 事件的事件目標。|
 |[要求](#request)|複雜類型|產生 webhook 事件的要求。|
 
-### <a name="target"></a><a name="target"></a>設定
+### <a name="target"></a><a name="target"></a>目標
 
 |元素|類型|描述|
 |------------------|----------|-----------|
@@ -55,7 +55,7 @@ ms.locfileid: "74455969"
 |`repository`|String|存放庫名稱。|
 |`tag`|String|映像標記名稱。|
 
-### <a name="request"></a><a name="request"></a>邀請
+### <a name="request"></a><a name="request"></a>請求
 
 |元素|類型|描述|
 |------------------|----------|-----------|
@@ -64,7 +64,7 @@ ms.locfileid: "74455969"
 |`method`|String|產生事件的要求方法。|
 |`useragent`|String|要求的使用者代理程式標頭。|
 
-### <a name="payload-example-image-push-event"></a>承載範例：影像推送事件
+### <a name="payload-example-image-push-event"></a>承載範例：映射推送事件
 
 ```JSON
 {
@@ -96,9 +96,9 @@ docker push myregistry.azurecr.io/hello-world:v1
 
 ## <a name="chart-push-event"></a>圖表推送事件
 
-當 Helm 圖推送至存放庫時，所觸發的 Webhook。
+將 Helm 圖推送至存放庫時觸發的 Webhook。
 
-### <a name="chart-push-event-payload"></a>圖表推送事件裝載
+### <a name="chart-push-event-payload"></a>圖表推送事件承載
 
 |元素|類型|描述|
 |-------------|----------|-----------|
@@ -107,7 +107,7 @@ docker push myregistry.azurecr.io/hello-world:v1
 |`action`|String|觸發 webhook 事件的動作。|
 |[目標](#helm_target)|複雜類型|觸發 webhook 事件的事件目標。|
 
-### <a name="target"></a><a name="helm_target"></a>設定
+### <a name="target"></a><a name="helm_target"></a>目標
 
 |元素|類型|描述|
 |------------------|----------|-----------|
@@ -146,7 +146,7 @@ az acr helm push wordpress-5.4.0.tgz --name MyRegistry
 
 ## <a name="delete-event"></a>刪除事件
 
-刪除映射存放庫或資訊清單時，所觸發的 Webhook。 刪除標記時不會觸發。
+刪除映射存放庫或資訊清單時，會觸發 Webhook。 刪除標記時不會觸發。
 
 ### <a name="delete-event-payload"></a>刪除事件裝載
 
@@ -158,7 +158,7 @@ az acr helm push wordpress-5.4.0.tgz --name MyRegistry
 |[目標](#delete_target)|複雜類型|觸發 webhook 事件的事件目標。|
 |[要求](#delete_request)|複雜類型|產生 webhook 事件的要求。|
 
-### <a name="target"></a><a name="delete_target"></a>設定
+### <a name="target"></a><a name="delete_target"></a> 目標
 
 |元素|類型|描述|
 |------------------|----------|-----------|
@@ -166,7 +166,7 @@ az acr helm push wordpress-5.4.0.tgz --name MyRegistry
 |`digest`|String|如 Registry V2 HTTP API 規格所定義的內容摘要。|
 |`repository`|String|存放庫名稱。|
 
-### <a name="request"></a><a name="delete_request"></a>邀請
+### <a name="request"></a><a name="delete_request"></a> 請求
 
 |元素|類型|描述|
 |------------------|----------|-----------|
@@ -208,7 +208,7 @@ az acr repository delete --name MyRegistry --image MyRepository:MyTag
 
 ## <a name="chart-delete-event"></a>圖表刪除事件
 
-刪除 Helm 圖表或儲存機制時觸發的 Webhook。 
+當刪除 Helm 圖或存放庫時，會觸發 Webhook。 
 
 ### <a name="chart-delete-event-payload"></a>圖表刪除事件裝載
 
@@ -219,7 +219,7 @@ az acr repository delete --name MyRegistry --image MyRepository:MyTag
 |`action`|String|觸發 webhook 事件的動作。|
 |[目標](#chart_delete_target)|複雜類型|觸發 webhook 事件的事件目標。|
 
-### <a name="target"></a><a name="chart_delete_target"></a>設定
+### <a name="target"></a><a name="chart_delete_target"></a> 目標
 
 |元素|類型|描述|
 |------------------|----------|-----------|

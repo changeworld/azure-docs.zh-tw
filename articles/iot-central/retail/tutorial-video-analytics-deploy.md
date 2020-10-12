@@ -9,10 +9,10 @@ ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
 ms.openlocfilehash: d661df57e4409c1d7fe196c7f136965191421bd4
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88719656"
 ---
 # <a name="how-to-deploy-an-iot-central-application-using-the-video-analytics---object-and-motion-detection-application-template"></a>如何使用影片分析部署 IoT Central 應用程式-物件和動作偵測應用程式範本
@@ -39,6 +39,6 @@ ms.locfileid: "88719656"
     - 查看顯示偵測到之物件的已捕獲影片。
     - 整理。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 現在您已大致瞭解部署和使用影片分析應用程式範本的步驟，請參閱 [在 Azure IoT Central 中建立影片分析應用程式](tutorial-video-analytics-create-app.md) 以開始使用。

@@ -17,10 +17,10 @@ ms.workload: na
 ms.date: 07/18/2019
 ms.author: terrylan
 ms.openlocfilehash: fc273c2e6e27c191b4407ffae86a4ba227ee642b
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87131033"
 ---
 # <a name="best-practices-for-securing-paas-web-and-mobile-applications-using-azure-app-service"></a>使用 Azure App Service 保護 PaaS Web 與行動應用程式的最佳做法
@@ -33,18 +33,18 @@ Azure App Service 是一個平台即服務 (PaaS) 供應項目，可讓您為任
 App Service 可為您的識別提供者提供 OAuth 2.0 服務。 OAuth 2.0 既將焦點放在為用戶端開發人員提供簡易性，同時又為 Web 應用程式、傳統型應用程式及行動電話提供特定授權流程。 Azure AD 使用 OAuth 2.0 來讓您能夠授與對行動與 Web 應用程式的存取權。 若要深入了解，請參閱 [Azure App Service 中的驗證與授權](../../app-service/overview-authentication-authorization.md)。
 
 ## <a name="restrict-access-based-on-role"></a>根據角色限制存取
-對於想要強制執行資料存取安全性原則的組織來說，限制存取是必須做的事。 您可以使用角色型存取控制 (RBAC) 將權限指派給特定範圍的使用者、群組和應用程式，例如，需要知道並擁有最低權限安全性原則。 若要深入瞭解將應用程式的存取權授與使用者，請參閱[什麼是 azure 角色型存取控制（AZURE RBAC）](/azure/role-based-access-control/overview)。
+對於想要強制執行資料存取安全性原則的組織來說，限制存取是必須做的事。 您可以使用角色型存取控制 (RBAC) 將權限指派給特定範圍的使用者、群組和應用程式，例如，需要知道並擁有最低權限安全性原則。 若要深入瞭解如何將應用程式的存取權授與使用者，請參閱 [什麼是 AZURE RBAC)  (azure 角色型存取控制 ](/azure/role-based-access-control/overview)。
 
 ## <a name="protect-your-keys"></a>保護您的金鑰
 如果您遺失訂用帳戶金鑰，則安全性措施做得再好也沒有用。 Azure 金鑰保存庫可協助保護雲端應用程式和服務所使用的密碼編譯金鑰和密碼。 您可以使用金鑰保存庫加密金鑰和密碼 (例如驗證金鑰、儲存體帳戶金鑰、資料加密金鑰、.PFX 檔案和密碼)，方法是使用受硬體安全模組 (HSM) 保護的金鑰。 為了加強保證，您可以在 HSM 中匯入或產生金鑰。 您可以使用 Key Vault 藉由自動更新管理 TLS 憑證。 若要深入了解，請參閱[什麼是 Azure Key Vault](../../key-vault/general/overview.md)。
 
 ## <a name="restrict-incoming-source-ip-addresses"></a>限制連入來源 IP 位址
-[App Service 環境](../../app-service/environment/intro.md)具有虛擬網路整合功能，可協助您透過網路安全性群組 (NSG) 限制連入來源 IP 位址。 如果您不熟悉「Azure 虛擬網路」(VNET)，這是一種功能，可讓您將許多 Azure 資源放在由您控制存取的非網際網路、可路由網路中。 若要深入瞭解，請參閱[整合您的應用程式與 Azure 虛擬網路](../../app-service/web-sites-integrate-with-vnet.md)。
+[App Service 環境](../../app-service/environment/intro.md)具有虛擬網路整合功能，可協助您透過網路安全性群組 (NSG) 限制連入來源 IP 位址。 如果您不熟悉「Azure 虛擬網路」(VNET)，這是一種功能，可讓您將許多 Azure 資源放在由您控制存取的非網際網路、可路由網路中。 若要深入瞭解，請參閱 [將您的應用程式與 Azure 虛擬網路整合](../../app-service/web-sites-integrate-with-vnet.md)。
 
-對於 Windows 上的 App Service，您也可以藉由設定 web.config 來動態限制 IP 位址。如需詳細資訊，請參閱[動態 IP 安全性](/iis/configuration/system.webServer/security/dynamicIpSecurity/)。
+針對 Windows 上的 App Service，您也可以藉由設定 web.config 來動態限制 IP 位址。如需詳細資訊，請參閱 [動態 IP 安全性](/iis/configuration/system.webServer/security/dynamicIpSecurity/)。
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 本文介紹了用來保護 PaaS Web 與行動應用程式的一組 App Service 安全性最佳做法。 若要深入了解如何保護您的 PaaS 部署，請參閱︰
 
 - [保護 PaaS 部署](paas-deployments.md)

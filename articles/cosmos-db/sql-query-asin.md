@@ -1,6 +1,6 @@
 ---
 title: Azure Cosmos DB 查詢語言中的 ASIN
-description: 瞭解 Azure Cosmos DB 中的反正弦（ASIN） SQL 系統函數如何傳回以弧度為單位的角度，其正弦值為指定的數值運算式
+description: 瞭解 Azure Cosmos DB 中的反正弦 (ASIN) SQL 系統函數如何傳回以弧度為單位的角度，其正弦值是指定的數值運算式
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,13 +8,13 @@ ms.date: 03/04/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 8b70738a439b6c64a84a63adf63c83995530e92e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "78302690"
 ---
-# <a name="asin-azure-cosmos-db"></a>ASIN （Azure Cosmos DB）
+# <a name="asin-azure-cosmos-db"></a>ASIN (Azure Cosmos DB) 
  傳回角度，以弧度為單位，其正弦函數是指定的數值運算式。 這也稱為反正弦值。  
   
 ## <a name="syntax"></a>語法
@@ -48,7 +48,7 @@ SELECT ASIN(-1) AS asin
 
 ## <a name="remarks"></a>備註
 
-這個系統函數不會使用索引。
+這個系統函數將不會使用索引。
 
 ## <a name="next-steps"></a>後續步驟
 

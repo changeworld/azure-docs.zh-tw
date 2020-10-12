@@ -1,5 +1,5 @@
 ---
-title: 解決資料扭曲-Azure Data Lake Tools for Visual Studio
+title: 解決資料-扭曲-Azure Data Lake Tools for Visual Studio
 description: 使用 Azure Data Lake Tools for Visual Studio 針對資料扭曲問題的可能解決方案進行疑難排解。
 services: data-lake-analytics
 ms.reviewer: jasonh
@@ -7,10 +7,10 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 12/16/2016
 ms.openlocfilehash: 5e9359582c07a78feb2d04b2ea87f046887238a1
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87129928"
 ---
 # <a name="resolve-data-skew-problems-by-using-azure-data-lake-tools-for-visual-studio"></a>使用 Azure Data Lake Tools for Visual Studio 解決資料扭曲問題
@@ -34,7 +34,7 @@ Azure Data Lake Tools for Visual Studio 可協助偵測出您的作業是否有�
 
 ### <a name="option-2-pick-a-different-partition-or-distribution-key"></a>選項 2：選擇不同的分割區或散發索引鍵
 
-在上述範例中，如果您只想要檢查國家/地區的稅務審計工作負載，您可以藉由選取識別碼作為金鑰來改善資料散發。 有時候，選擇不同的分割區或散發索引鍵可以更平均地散發資料，但您必須確保此舉不會影響商務邏輯。 比方說，為了計算各州的總稅額，您可以指定_州別_做為資料分割索引鍵。 如果您仍然遇到這個問題，請嘗試使用選項 3。
+在上述範例中，如果您只想要檢查整個國家/地區的稅金審核工作負載，您可以選取識別碼作為金鑰來改善資料分佈。 有時候，選擇不同的分割區或散發索引鍵可以更平均地散發資料，但您必須確保此舉不會影響商務邏輯。 比方說，為了計算各州的總稅額，您可以指定_州別_做為資料分割索引鍵。 如果您仍然遇到這個問題，請嘗試使用選項 3。
 
 ### <a name="option-3-add-more-partition-or-distribution-keys"></a>選項 3：新增更多分割區或散發索引鍵
 
@@ -69,7 +69,7 @@ CREATE STATISTICS IF NOT EXISTS stats_SampleTable_date ON SampleDB.dbo.SampleTab
 SKEWFACTOR (columns) = x
 ```
 
-提供提示，指出指定的資料行具有扭曲因數 x 從0（無扭曲）到1（極高扭曲）。
+提供提示，指出指定的資料行的扭曲因數 x 為 0 (沒有誤差) 到 1 (非常繁重的扭曲) 。
 
 程式碼範例：
 
@@ -106,7 +106,7 @@ SKEWFACTOR (columns) = x
 OPTION(ROWCOUNT = n)
 ```
 
-藉由提供估計的整數資料列計數，在聯結前識別一個小型資料列集。
+藉由提供估計的整數資料列計數，在聯結之前識別小型資料列集。
 
 程式碼範例：
 
@@ -173,7 +173,7 @@ public class TopNReducer : IReducer
 
 結合器模式的屬性︰
 
-- SqlUserDefinedCombiner （Mode = Combinermode.inner）：每個輸出資料列可能相依于具有相同索引鍵值的左邊和右邊所有輸入資料列。
+- SqlUserDefinedCombiner (Mode = Combinermode.inner. Full) ：每個輸出資料列可能相依于所有具有相同索引鍵值的左邊和右邊輸入資料列。
 
 - SqlUserDefinedCombiner(Mode=CombinerMode.Left)：每個輸出資料列相依於左邊的單一輸入資料列 (並可能相依於所有具有相同索引鍵值的右邊資料列)。
 

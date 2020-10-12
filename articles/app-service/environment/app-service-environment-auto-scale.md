@@ -8,16 +8,16 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 4f071c0d09fc2fa97eeea45bd82228b7eb8434a2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74687288"
 ---
 # <a name="autoscaling-and-app-service-environment-v1"></a>自動調整和 App Service 環境 v1
 
 > [!NOTE]
-> 這篇文章是關於 App Service 環境 v1。  有較新版本的 App Service 環境，更易於使用，並且可以在功能更強大的基礎結構上執行。 若要深入瞭解新版本，請從[App Service 環境簡介](intro.md)開始。
+> 這篇文章是關於 App Service 環境 v1。  有較新版本的 App Service 環境，更易於使用，並且可以在功能更強大的基礎結構上執行。 若要深入瞭解新版本，請從 [App Service 環境簡介](intro.md)開始著手。
 > 
 
 Azure App Service 環境支援「自動調整」 **。 您可以根據度量或排程自動調整個別的背景工作集區。
@@ -55,7 +55,7 @@ App Service 環境的自動調整可使用逐步解說一個案例來加以說�
 本文說明設定自動調整時所有必要的考量。 本文將引導您進行當您納入 App Service 環境所裝載的自動調整 App Service 環境時派上用場的所有互動。
 
 ### <a name="scenario-introduction"></a>案例簡介
-Frank 是企業的系統管理員，負責將其管理的部分工作負載遷移至 App Service 環境。
+Frank 是企業的系統管理員，負責將管理工作負載的一部分遷移至 App Service 環境。
 
 App Service 環境設為以如下方式手動調整：
 
@@ -68,7 +68,7 @@ App Service 環境設為以如下方式手動調整：
 
 品管和開發人員的 App Service 方案設定為手動調整。 生產 App Service 方案則設為自動調整以處理負載和流量的變化。
 
-Frank 非常熟悉應用程式。 他們知道負載的尖峰時數介於 9:00 AM 和 6:00 PM 之間，因為這是員工在辦公室內使用的企業營運（LOB）應用程式。 之後當使用者下班時，使用量便會下降。 非尖峰時間仍會有一些負載，因為使用者可以使用其行動裝置或家用電腦從遠端存取應用程式。 生產 App Service 方案已利用下列規則設定為根據 CPU 使用量自動調整：
+Frank 非常熟悉應用程式。 他們知道負載的尖峰時間是介於 9:00 AM 到 6:00 PM 之間，因為這是員工在辦公室內使用的企業營運 (LOB) 應用程式。 之後當使用者下班時，使用量便會下降。 非尖峰時間仍會有一些負載，因為使用者可以使用其行動裝置或家用電腦從遠端存取應用程式。 生產 App Service 方案已利用下列規則設定為根據 CPU 使用量自動調整：
 
 ![LOB 應用程式的特定設定。][asp-scale]
 

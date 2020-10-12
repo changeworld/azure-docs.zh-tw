@@ -8,13 +8,13 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 07a339d82f5e4bea1ea0412a5d5b19522611b54a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "78296111"
 ---
-# <a name="st_within-azure-cosmos-db"></a>ST_WITHIN （Azure Cosmos DB）
+# <a name="st_within-azure-cosmos-db"></a>ST_WITHIN (Azure Cosmos DB) 
  傳回布林運算式，指出第一個引數中指定的 GeoJSON 物件 (Point、Polygon 或 LineString) 是否位在第二個引數中的 GeoJSON (Point、Polygon 或 LineString) 內。  
   
 ## <a name="syntax"></a>語法
@@ -26,7 +26,7 @@ ST_WITHIN (<spatial_expr>, <spatial_expr>)
 ## <a name="arguments"></a>引數
   
 *spatial_expr*  
-   這是一個 GeoJSON 點、多邊形或 LineString 物件運算式。  
+   這是 GeoJSON 點、多邊形或 LineString 物件運算式。  
   
 ## <a name="return-types"></a>傳回類型
   
@@ -34,7 +34,7 @@ ST_WITHIN (<spatial_expr>, <spatial_expr>)
   
 ## <a name="examples"></a>範例
   
-  下列範例顯示如何使用，在多邊形中尋找所有家族檔 `ST_WITHIN` 。  
+  下列範例示範如何使用，尋找多邊形內的所有家族檔 `ST_WITHIN` 。  
   
 ```sql
 SELECT f.id
@@ -53,7 +53,7 @@ WHERE ST_WITHIN(f.location, {
 
 ## <a name="remarks"></a>備註
 
-此系統函數可受益于[地理空間索引](index-policy.md#spatial-indexes)。
+這個系統函數將受益于 [地理空間索引](index-policy.md#spatial-indexes)。
 
 ## <a name="next-steps"></a>後續步驟
 

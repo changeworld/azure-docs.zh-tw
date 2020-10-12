@@ -9,10 +9,10 @@ ms.date: 03/30/2020
 ms.author: ajburnle
 ms.custom: include file
 ms.openlocfilehash: 12c9b1226e3ba928a4062049c7839d4e46ef727d
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91025273"
 ---
 ## <a name="for-users-in-your-directory"></a>適用于您目錄中的使用者
@@ -206,7 +206,7 @@ ms.locfileid: "91025273"
 
     ![存取套件-原則-啟用原則設定](./media/active-directory-entitlement-management-request-policy/enable-requests.png)
 
-1. 按 [下一步]  。
+1. 按一下 [下一步]。
 
 ## <a name="add-requestor-information-preview-to-an-access-package"></a>將要求者資訊 (預覽) 新增至存取套件
 

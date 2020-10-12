@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 01/11/2019
 ms.author: terrylan
 ms.openlocfilehash: 7c317a0b4fea0c981b227bace00c1b8924fd582c
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89536377"
 ---
 # <a name="security-recommendations-for-azure-marketplace-images"></a>Azure Marketplace 映像的安全性建議
@@ -39,8 +39,8 @@ ms.locfileid: "89536377"
 | 安全性                                                     | 避免使用 LVM。                                                                                                                                                                                                                                            |
 | 安全性                                                     | 包含最新版本的必要程式庫： </br> - OpenSSL v1.0 或更新版本 </br> - Python 2.5 或更新版本 (強烈建議使用 Python 2.6+) </br> - Python pyasn1 套件 (如果尚未安裝) </br> - d.OpenSSL v 1.0 或更新版本                                                                |
 | 安全性                                                     | 清除 Bash/Shell 歷程記錄專案。                                                                                                                                                                                                                                             |
-| 網路                                                   | 預設包含 SSH 伺服器。 使用下列選項，將 SSH 保持運作至 sshd config： ClientAliveInterval 180。                                                                                                                                                        |
-| 網路                                                   | 從映射中移除任何自訂網路設定。 刪除 resolv.conf.d： `rm /etc/resolv.conf` 。                                                                                                                                                                                |
+| 網路功能                                                   | 預設包含 SSH 伺服器。 使用下列選項，將 SSH 保持運作至 sshd config： ClientAliveInterval 180。                                                                                                                                                        |
+| 網路功能                                                   | 從映射中移除任何自訂網路設定。 刪除 resolv.conf.d： `rm /etc/resolv.conf` 。                                                                                                                                                                                |
 | 部署                                                   | 安裝最新的 Azure Linux 代理程式。</br> -使用 RPM 或 Deb 套件進行安裝。  </br> - 您也可以使用手動安裝程序，但建議使用且慣用安裝程式套件。 </br> - 如果是從 GitHub 存放庫手動安裝代理程式，請先將 `waagent` 檔案複製到 `/usr/sbin` 並 (以 root 身分) 執行： </br>`# chmod 755 /usr/sbin/waagent` </br>`# /usr/sbin/waagent -install` </br>代理程式設定檔將會放在 `/etc/waagent.conf`。 |
 | 部署                                                   | 確定 Azure 支援可以在需要時提供序列主控台輸出給我們的合作夥伴，並為從雲端儲存體掛接的 OS 磁片提供足夠的超時時間。 將下列參數新增至映射核心開機行： `console=ttyS0 earlyprintk=ttyS0 rootdelay=300` 。 |
 | 部署                                                   | OS 磁碟上沒有交換磁碟分割。 交換可透過 Linux 代理程式要求，以便在本機資源磁碟上建立。         |

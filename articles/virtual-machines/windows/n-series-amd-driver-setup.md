@@ -9,10 +9,10 @@ ms.workload: infrastructure-services
 ms.date: 12/4/2019
 ms.author: vikancha
 ms.openlocfilehash: 74827e78017ad3540709fa0e671762a985976cda
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86998998"
 ---
 # <a name="install-amd-gpu-drivers-on-n-series-vms-running-windows"></a>在執行 Windows 的 N 系列 VM 上安裝 AMD GPU 驅動程式
@@ -38,7 +38,7 @@ NVv4 VM 只支援 Microsoft 所發佈的 GPU 驅動程式。 請「不要」從�
 
 1. 由遠端桌面連線至每個 NVv4 系列 VM。
 
-2. 如果您需要卸載先前的驅動程式版本，請在[此](https://download.microsoft.com/download/4/f/1/4f19b714-9304-410f-9c64-826404e07857/AMDCleanupUtilityni.exe)下載 AMD 清理公用程式，請勿使用舊版驅動程式隨附的公用程式。
+2. 如果您需要卸載先前的驅動程式版本，請在 [這裡](https://download.microsoft.com/download/4/f/1/4f19b714-9304-410f-9c64-826404e07857/AMDCleanupUtilityni.exe) 下載 AMD 清理公用程式，請勿使用舊版驅動程式隨附的公用程式。
 
 3. 下載並安裝最新版驅動程式。
 

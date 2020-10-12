@@ -8,10 +8,10 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 05/20/2018
 ms.openlocfilehash: 86d5134e257d2dae642eceb933a78047773b25a9
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87129945"
 ---
 # <a name="troubleshoot-an-abnormal-recurring-job"></a>針對異常的週期性作業進行疑難排解
@@ -31,7 +31,7 @@ Azure Data Lake Tools for Visual Studio 中的**相關作業檢視**可協助您
 
 ### <a name="case-1-you-have-the-url-for-the-recurring-job"></a>案例 1：您有週期性作業的 URL
 
-透過 [**工具**]  >  **Data Lake**[  >  **作業] 視圖**，您可以貼上作業 URL 來開啟 Visual Studio 中的 [工作檢視]。 選取 [檢視相關作業]****，開啟 [相關作業檢視]。
+您可以透過 [**工具**]  >  **Data Lake**  >  **工作視圖**，貼上工作 URL 以開啟 Visual Studio 中的工作視圖。 選取 [檢視相關作業]****，開啟 [相關作業檢視]。
 
 ![Data Lake Analytics 工具中的 [檢視相關作業] 連結](./media/data-lake-analytics-data-lake-tools-debug-recurring-job/view-related-job.png)
  
@@ -64,7 +64,7 @@ Azure Data Lake Tools for Visual Studio 中的**相關作業檢視**可協助您
 
 ![檢查作業之間差異的流程圖](./media/data-lake-analytics-data-lake-tools-debug-recurring-job/recurring-job-diff-debugging-flow.png)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * [解決資料扭曲問題](data-lake-analytics-data-lake-tools-data-skew-solutions.md)
 * [對 U-SQL 失敗作業的使用者定義 C# 程式碼進行偵錯](data-lake-analytics-debug-u-sql-jobs.md)

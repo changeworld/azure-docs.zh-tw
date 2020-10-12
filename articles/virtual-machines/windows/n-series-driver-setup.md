@@ -11,10 +11,10 @@ ms.date: 09/24/2018
 ms.author: vikancha
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 2dccfebed26c8064db697413e7417ae08d69a3ac
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86998966"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-windows"></a>在執行 Windows 的 N 系列 VM 上安裝 NVIDIA GPU 驅動程式 
@@ -37,7 +37,7 @@ ms.locfileid: "86998966"
 
 ## <a name="verify-driver-installation"></a>確認驅動程式安裝
 
-請注意，只有在安裝方格驅動程式時，才能存取 Nvidia 控制台。 如果您已安裝 CUDA 驅動程式，將不會顯示 Nvidia 控制台。
+請注意，Nvidia 控制台只能透過安裝方格驅動程式進行存取。 如果您已安裝 CUDA 驅動程式，則不會顯示 Nvidia 控制台。
 
 您可以在 [裝置管理員] 中確認驅動程式安裝。 下列範例會顯示 Azure NC VM 上成功的 Tesla K80 卡組態。
 

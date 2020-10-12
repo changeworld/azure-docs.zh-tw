@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: maquaran
 ms.openlocfilehash: d4fbadd03f443d28376a122c7ecb06c475c2247d
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85850700"
 ---
 # <a name="going-social-with-azure-cosmos-db"></a>使用 Azure Cosmos DB 跨足社交
@@ -104,7 +104,7 @@ Azure Cosmos DB 可利用自身的自動索引編製作業，確保所有屬性�
 ]
 ```
 
-您可以擁有依建立日期排序的「最新」貼文串流。 您也可以擁有過去 24 小時內獲得較多讚的「最熱門」貼文串流。 您甚至可以依據邏輯 (例如關注者與興趣) 為每位使用者實作自訂串流。 而這仍屬於文章清單。 關鍵在於如何建立這些清單，而且讀取效能不會受到影響。 一旦取得其中一個清單，您就可以使用[IN 關鍵字](sql-query-keywords.md#in)發出單一查詢 Cosmos DB，一次取得貼文的頁面。
+您可以擁有依建立日期排序的「最新」貼文串流。 您也可以擁有過去 24 小時內獲得較多讚的「最熱門」貼文串流。 您甚至可以依據邏輯 (例如關注者與興趣) 為每位使用者實作自訂串流。 而這仍屬於文章清單。 關鍵在於如何建立這些清單，而且讀取效能不會受到影響。 一旦取得其中一個清單之後，您就可以使用 IN 關鍵字來發出單一查詢，以 Cosmos DB 使用 [IN 關鍵字](sql-query-keywords.md#in) 來一次取得貼文的頁面。
 
 您可以使用 [Azure App Service](https://azure.microsoft.com/services/app-service/) 的背景處理序 [Webjobs](../app-service/webjobs-create.md) 來建置摘要串流。 建立貼文之後，即可使用 [Azure 儲存體](https://azure.microsoft.com/services/storage/) [佇列](../storage/queues/storage-dotnet-how-to-use-queues.md)來觸發背景處理，以及使用 [Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki) 來觸發 WebJobs，其中會根據您自己的自訂邏輯，在串流內實作貼文傳播。
 
@@ -171,7 +171,7 @@ Azure Cosmos DB 可利用自身的自動索引編製作業，確保所有屬性�
 
 透過查看此資訊，您可以快速偵測出哪些是重要資訊而哪些不是，藉此建立出一道「階梯」：
 
-:::image type="content" source="./media/social-media-apps/social-media-apps-ladder.png" alt-text="階梯模式的圖表" border="false":::
+:::image type="content" source="./media/social-media-apps/social-media-apps-ladder.png" alt-text="說明相對關聯式模型的圖表" border="false":::
 
 最小的一階稱為「使用者區塊」，其為可識別使用者並為資料重複使用的最基本部分。 透過將重複資料的大小縮減成僅限您將「顯示」的資訊，即可降低需要大量更新的機率。
 
@@ -212,13 +212,13 @@ Azure Cosmos DB 可利用自身的自動索引編製作業，確保所有屬性�
 
 使用者將可幸運地產生許多內容。 而您應該能夠提供功能來搜尋和尋找可能未直接在其內容串流中的內容，這些內容未直接在其內容串流中的原因可能是您未關注建立者，也可能是您只是想要尋找 6 個月前所發的舊貼文。
 
-由於您是使用 Azure Cosmos DB，因此您可以在幾分鐘內使用[Azure 認知搜尋](https://azure.microsoft.com/services/search/)輕鬆地執行搜尋引擎，而不需要輸入任何程式碼，除了搜尋程式和 UI 以外。
+由於您是使用 Azure Cosmos DB，因此您可以在幾分鐘內輕鬆地使用 [Azure 認知搜尋](https://azure.microsoft.com/services/search/) 來執行搜尋引擎，而不需要輸入任何程式碼，而不需要輸入搜尋程式和 UI。
 
 為什麼這個程序這麼簡單？
 
-Azure 認知搜尋會執行其呼叫[索引子](https://msdn.microsoft.com/library/azure/dn946891.aspx)、在資料存放庫中攔截的背景處理常式，並自動新增、更新或移除您在索引中的物件。 它們支援 [Azure SQL Database 索引子](https://blogs.msdn.microsoft.com/kaevans/2015/03/06/indexing-azure-sql-database-with-azure-search/)、[Azure Blob 索引子](../search/search-howto-indexing-azure-blob-storage.md)，甚至也支援 [Azure Cosmos DB 索引子](../search/search-howto-index-documentdb.md)。 從 Cosmos DB 到 Azure 認知搜尋的資訊轉換相當簡單。 因為這兩項計數皆是以 JSON 格式來儲存資訊，您只需要[建立索引](../search/search-create-index-portal.md)，並從要編製索引的文件來對應屬性即可。 這樣就大功告成了！ 視資料大小而定，所有內容將可在短短幾分鐘內透過雲端基礎結構中的最佳搜尋即服務解決方案來搜尋。
+Azure 認知搜尋會執行其呼叫 [索引子](https://msdn.microsoft.com/library/azure/dn946891.aspx)的內容、在您資料存放庫中攔截的背景進程，以及自動新增、更新或移除索引中的物件。 它們支援 [Azure SQL Database 索引子](https://blogs.msdn.microsoft.com/kaevans/2015/03/06/indexing-azure-sql-database-with-azure-search/)、[Azure Blob 索引子](../search/search-howto-indexing-azure-blob-storage.md)，甚至也支援 [Azure Cosmos DB 索引子](../search/search-howto-index-documentdb.md)。 從 Cosmos DB 到 Azure 認知搜尋的資訊轉換很簡單。 因為這兩項計數皆是以 JSON 格式來儲存資訊，您只需要[建立索引](../search/search-create-index-portal.md)，並從要編製索引的文件來對應屬性即可。 這樣就大功告成了！ 視資料大小而定，所有內容將可在短短幾分鐘內透過雲端基礎結構中的最佳搜尋即服務解決方案來搜尋。
 
-如需有關 Azure 認知搜尋的詳細資訊，您可以造訪[漫遊指南以進行搜尋](https://blogs.msdn.microsoft.com/mvpawardprogram/2016/02/02/a-hitchhikers-guide-to-search/)。
+如需有關 Azure 認知搜尋的詳細資訊，您可以造訪 [Hitchhiker 的指南來進行搜尋](https://blogs.msdn.microsoft.com/mvpawardprogram/2016/02/02/a-hitchhikers-guide-to-search/)。
 
 ## <a name="the-underlying-knowledge"></a>基礎知識
 
@@ -230,7 +230,7 @@ Azure 認知搜尋會執行其呼叫[索引子](https://msdn.microsoft.com/libra
 
 現在，大家一定更感興趣了吧？您一定以為要有數學的博士學位，才能從簡單的資料庫和檔案中擷取這些模式和資訊，但您錯了。
 
-[Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/)（屬於[Cortana Intelligence Suite](https://social.technet.microsoft.com/wiki/contents/articles/36688.introduction-to-cortana-intelligence-suite.aspx)的一部分）是完全受控的雲端服務，可讓您使用簡單的拖放介面來建立工作流程、以[R](https://en.wikipedia.org/wiki/R_\(programming_language\))撰寫自己的演算法程式碼，或使用一些已建立且可供使用的 api，例如：[文字分析](https://gallery.cortanaanalytics.com/MachineLearningAPI/Text-Analytics-2)、內容仲裁或[建議](https://gallery.azure.ai/Solution/Recommendations-Solution)。
+[Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/)是一 [Cortana Intelligence Suite](https://social.technet.microsoft.com/wiki/contents/articles/36688.introduction-to-cortana-intelligence-suite.aspx)種完全受控的雲端服務，可讓您在簡單的拖放介面中使用演算法來建立工作流程、在 [R](https://en.wikipedia.org/wiki/R_\(programming_language\))中撰寫您自己的演算法，或使用一些已建立且可供使用的 api，例如： [文字分析](https://gallery.cortanaanalytics.com/MachineLearningAPI/Text-Analytics-2)、內容仲裁或 [建議](https://gallery.azure.ai/Solution/Recommendations-Solution)。
 
 為了達成上述任一「機器學習服務」案例，您可以使用 [Azure Data Lake](https://azure.microsoft.com/services/data-lake-store/) 來內嵌不同來源的資訊。 您也可以使用 [U-SQL](https://azure.microsoft.com/documentation/videos/data-lake-u-sql-query-execution/) 來處理資訊並產生可由 Azure Machine Learning 處理的輸出。
 
@@ -242,13 +242,13 @@ Azure 認知搜尋會執行其呼叫[索引子](https://msdn.microsoft.com/libra
 
 Cosmos DB 預設支援動態分割。 它會根據特定**資料分割索引鍵** (定義為您文件中的其中一項屬性) 自動建立資料分割。 定義正確的分割區索引鍵必須在設計階段完成。 如需詳細資訊，請參閱 [Azure Cosmos DB 中的資料分割](partitioning-overview.md)。
 
-針對社交體驗，您的分割策略必須符合您查詢及寫入的方式。 （例如，需要在相同分割區內進行讀取，並藉由將寫入分散到多個磁碟分割來避免「作用點」）。部分選項包括：根據時態索引鍵（日/月/周）、依內容分類、依地理區域或依使用者劃分的資料分割。 這完全視您查詢資料及將它顯示於社交體驗的方式而定。
+針對社交體驗，您的分割策略必須符合您查詢及寫入的方式。  (例如，您需要在相同分割區內進行讀取，並藉由將寫入分散在多個分割區，以避免「作用點」。 ) 部分選項為：根據時態索引鍵的資料分割 (日/月/周) 、依內容分類、依地理區域或使用者。 這完全視您查詢資料及將它顯示於社交體驗的方式而定。
 
 Cosmos DB 會透明地在所有資料分割上執行您的查詢 (包括[彙總](https://azure.microsoft.com/blog/planet-scale-aggregates-with-azure-documentdb/) (英文))，因此您不需要隨資料增加而新增任何邏輯。
 
 流量最終會隨時間增長，而您的資源消耗 (以 [RU](request-units.md) (要求單位) 為單位) 也會增加。 隨著使用者群的增長，讀取及寫入也會變得更頻繁。 使用者群將會開始建立及讀取更多內容。 因此**調整輸送量**的能力極為重要。 增加 RU 非常容易。 只要在 Azure 入口網站上按幾下，或是[透過 API 發出命令](/rest/api/cosmos-db/replace-an-offer)即可。
 
-:::image type="content" source="./media/social-media-apps/social-media-apps-scaling.png" alt-text="相應增加及定義分割區索引鍵":::
+:::image type="content" source="./media/social-media-apps/social-media-apps-scaling.png" alt-text="說明相對關聯式模型的圖表":::
 
 如果情況持續好轉會怎樣？ 假設有來自其他地區、國家或洲的使用者注意到您的平台，並開始使用它。 這還真是個好消息！
 
@@ -258,16 +258,16 @@ Cosmos DB 可讓您按幾下就能透明地[將資料複寫至全球](../cosmos-
 
 當您將資料複寫至全球時，您必須確保您的用戶端能充分利用它。 如果您使用 Web 前端，或是從行動用戶端存取 API，便可以部署 [Azure 流量管理員](https://azure.microsoft.com/services/traffic-manager/)，然後將您的 Azure App Service 複製到所有需要的區域，其中使用效能設定來支援延伸的全球涵蓋範圍。 當用戶端存取您的前端或 API 時，系統會將它們路由至最接近的 App Service，以便連接到當地的 Cosmos DB 複本。
 
-:::image type="content" source="./media/social-media-apps/social-media-apps-global-replicate.png" alt-text="為您的社交平台加入全球涵蓋範圍" border="false":::
+:::image type="content" source="./media/social-media-apps/social-media-apps-global-replicate.png" alt-text="說明相對關聯式模型的圖表" border="false":::
 
 ## <a name="conclusion"></a>結論
 
 本文會探討如何以低成本的服務在 Azure 上完整建立社交網路的替代方案。 其會藉由鼓勵使用多層次儲存體解決方案和稱為「階梯」的資料分散方式來提供結果。
 
-:::image type="content" source="./media/social-media-apps/social-media-apps-azure-solution.png" alt-text="Azure 服務之間社交網路互動的圖表" border="false":::
+:::image type="content" source="./media/social-media-apps/social-media-apps-azure-solution.png" alt-text="說明相對關聯式模型的圖表" border="false":::
 
-事實上，這類案例並沒有萬靈丹。 這是結合絕佳服務所建立的協力，可讓我們打造絕佳的體驗： Azure Cosmos DB 提供絕佳的社交應用程式、第一類搜尋解決方案（例如 Azure 認知搜尋）背後的情報、Azure App 服務的彈性，甚至不受語言限制的應用程式，還有強大的背景流程，以及可擴充的 Azure 儲存體和 Azure SQL Database 來儲存大量資料和 Azure 機器的分析能力學習建立可提供意見反應給您的流程，並協助我們將正確的內容傳遞給正確使用者的知識和智慧。
+事實上，這類案例並沒有萬靈丹。 它是由絕佳服務組合所建立的協力，可讓我們建立絕佳的體驗： Azure Cosmos DB 的速度和自由，提供絕佳的社交應用程式、頂級搜尋解決方案背後的情報（例如 Azure 認知搜尋）、Azure App 服務的彈性，不僅能裝載不受語言限制的應用程式，還能提供強大的背景程式，以及可展開的 Azure 儲存體與 Azure SQL Database，以儲存大量資料和 Azure Machine 的分析能力學習如何建立可提供意見反應給您流程的知識和智慧，並協助我們將正確的內容傳遞給正確的使用者。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 若要深入了解 Cosmos DB 的使用案例，請參閱[常見 Cosmos DB 使用案例](use-cases.md)。

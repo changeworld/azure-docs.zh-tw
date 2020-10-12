@@ -1,15 +1,15 @@
 ---
-title: 叢集 Resource Manager-管理整合
+title: 叢集資源管理員管理整合
 description: 叢集資源管理員和 Service Fabric 管理之間的整合點概觀。
 author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 50751c7d23797a597dc5e2d209c1e3eecf6f7a40
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85847858"
 ---
 # <a name="cluster-resource-manager-integration-with-service-fabric-cluster-management"></a>叢集資源管理員與 Service Fabric 叢集管理整合
@@ -93,7 +93,7 @@ HealthEvents          :
 ## <a name="blocklisting-nodes"></a>封鎖節點
 封鎖節點時，叢集資源管理員會報告另一個健康情況訊息。 您可以將封鎖視為自動套用的暫時性條件約束。 啟動該服務類型的執行個體時，發生重複失敗的節點會遭封鎖。 節點是依照服務類型來封鎖。 某個服務類型的節點可能會被封鎖，另一個服務類型的節點則未被封鎖。 
 
-通常會在開發期間發生封鎖：一些錯誤導致服務主機在啟動時當機， Service Fabric 多次嘗試建立服務主機，但是持續失敗。 經過多次嘗試後，節點被封鎖，而叢集資源管理員會嘗試在其他位置建立服務。 如果多個節點持續發生同樣的失敗，最終可能導致叢集中的所有有效節點被封鎖。 封鎖也可以移除，讓許多沒有足夠的節點可以成功啟動服務，以符合所需的規模。 您通常會看見叢集資源管理員出現其他錯誤或警告，顯示服務低於所需的複本或執行個體計數，也會看到健康情況訊息顯示出最先導致封鎖的失敗。
+通常會在開發期間發生封鎖：一些錯誤導致服務主機在啟動時當機， Service Fabric 多次嘗試建立服務主機，但是持續失敗。 經過多次嘗試後，節點被封鎖，而叢集資源管理員會嘗試在其他位置建立服務。 如果多個節點持續發生同樣的失敗，最終可能導致叢集中的所有有效節點被封鎖。 封鎖也可以移除許多沒有足夠的節點可以成功啟動服務以符合所需的規模。 您通常會看見叢集資源管理員出現其他錯誤或警告，顯示服務低於所需的複本或執行個體計數，也會看到健康情況訊息顯示出最先導致封鎖的失敗。
 
 封鎖不是永久情況。 經過幾分鐘後，便會從封鎖清單中移除節點，且 Service Fabric 會再次啟動該節點上的服務。 如果服務持續失敗，會再次封鎖該服務類型的節點。 
 
@@ -105,7 +105,7 @@ HealthEvents          :
 
 所有這些條件約束可能會讓您覺得：「嘿，對我的系統來說，預設網域條件約束是最重要的。 為了確保不會違反預設網域條件約束，我願意違反其他條件約束。」
 
-可以使用不同的優先順序等級來設定條件約束。 它們是：
+可以使用不同的優先順序等級來設定條件約束。 這些警告是：
 
    - 「硬性」(0)
    - 「彈性」(1)
@@ -179,7 +179,7 @@ ClusterManifest.xml
 如果已正確設定環境，則會完全遵守所有條件約束，甚至在升級期間也是如此。 關鍵在於叢集資源管理員會監看您的條件約束， 在偵測到違規時會立即回報，並嘗試更正問題。
 
 ## <a name="the-preferred-location-constraint"></a>慣用的位置條件約束
-PreferredLocation 條件約束稍有不同，因為它有兩種不同的用途。 這個條件約束的其中一種用法是在應用程式升級期間。 叢集資源管理員會在升級期間自動管理這個條件約束， 用來確定複本在升級完成時會傳回到初始位置。 PreferredLocation 條件約束的另一個用法是[ `PreferredPrimaryDomain` 放置原則](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md)。 兩者都屬於最佳化，因此 PreferredLocation 條件約束是唯一預設為「最佳化」的條件約束。
+PreferredLocation 條件約束稍有不同，因為它有兩種不同的用途。 這個條件約束的其中一種用法是在應用程式升級期間。 叢集資源管理員會在升級期間自動管理這個條件約束， 用來確定複本在升級完成時會傳回到初始位置。 PreferredLocation 條件約束的另一種用法是[ `PreferredPrimaryDomain` 放置原則](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md)。 兩者都屬於最佳化，因此 PreferredLocation 條件約束是唯一預設為「最佳化」的條件約束。
 
 ## <a name="upgrades"></a>升級
 在應用程式和叢集升級過程中，叢集資源管理員也有所幫助，它在這期間有兩項作業︰
@@ -199,5 +199,5 @@ PreferredLocation 條件約束稍有不同，因為它有兩種不同的用途�
 ### <a name="buffered-capacity--upgrade"></a>緩衝處理的容量和升級
 通常，即使叢集整體受條件約束或接近滿載，您也希望升級完成。 在升級期間，叢集容量的管理比平常更重要。 根據升級網域的數目，叢集內展開升級時，5% 到 20% 的容量必須移轉。 工作必須移至別處。 [緩衝容量](service-fabric-cluster-resource-manager-cluster-description.md#buffered-capacity)的概念在此真正派上用場。 在正常作業期間，系統會採用緩衝處理的容量。 在升級期間，叢集資源管理員可能會視需要而使用到節點的所有容量 (消耗緩衝區)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 * 從頭開始，並 [取得 Service Fabric 叢集資源管理員的簡介](service-fabric-cluster-resource-manager-introduction.md)

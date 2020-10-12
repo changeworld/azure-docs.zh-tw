@@ -5,15 +5,15 @@ ms.topic: article
 ms.date: 01/23/2019
 ms.custom: seodec18, H1Hack27Feb2017
 ms.openlocfilehash: 6751a04c3c1bfe826334161704c20c1ba2e5a6d2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74456367"
 ---
 # <a name="push-your-first-image-to-a-private-docker-container-registry-using-the-docker-cli"></a>使用 Docker CLI 將您的第一個映像推送至私人 Docker 容器登錄
 
-Azure container registry 會儲存及管理私人[docker](https://hub.docker.com)容器映射，類似[docker Hub](https://hub.docker.com/)儲存公用 docker 映射的方式。 您可以使用 [Docker 命令列介面](https://docs.docker.com/engine/reference/commandline/cli/) (Docker CLI) 進行[登入](https://docs.docker.com/engine/reference/commandline/login/)、[推送](https://docs.docker.com/engine/reference/commandline/push/)、[提取](https://docs.docker.com/engine/reference/commandline/pull/)和其他容器登錄庫作業。
+Azure container registry 會儲存和管理私人 [docker](https://hub.docker.com) 容器映射，類似于 [Docker Hub](https://hub.docker.com/) 儲存公用 docker 映射的方式。 您可以使用 [Docker 命令列介面](https://docs.docker.com/engine/reference/commandline/cli/) (Docker CLI) 進行[登入](https://docs.docker.com/engine/reference/commandline/login/)、[推送](https://docs.docker.com/engine/reference/commandline/push/)、[提取](https://docs.docker.com/engine/reference/commandline/pull/)和其他容器登錄庫作業。
 
 在下列步驟中，您會從公用 Docker 中樞登錄庫下載官方提供的 [Nginx 映像](https://store.docker.com/images/nginx)，將其標記為私人 Azure 容器登錄庫，推送到您的登錄庫，然後再從登錄庫將其提取出來。
 
@@ -30,7 +30,7 @@ Azure container registry 會儲存及管理私人[docker](https://hub.docker.com
 az acr login --name myregistry
 ```
 
-您也可以使用 [docker login](https://docs.docker.com/engine/reference/commandline/login/) 來登入。 例如，您可能已將[服務主體指派](container-registry-authentication.md#service-principal)給您的登錄，以進行自動化案例。 當您執行下列命令時，若出現提示，請以互動方式提供服務主體 appID (使用者名稱) 和密碼。 如需管理登入認證的最佳作法，請參閱 [docker login](https://docs.docker.com/engine/reference/commandline/login/) 命令參考：
+您也可以使用 [docker login](https://docs.docker.com/engine/reference/commandline/login/) 來登入。 例如，您可能已將 [服務主體指派](container-registry-authentication.md#service-principal) 給您的登錄，以供自動化案例使用。 當您執行下列命令時，若出現提示，請以互動方式提供服務主體 appID (使用者名稱) 和密碼。 如需管理登入認證的最佳作法，請參閱 [docker login](https://docs.docker.com/engine/reference/commandline/login/) 命令參考：
 
 ```
 docker login myregistry.azurecr.io

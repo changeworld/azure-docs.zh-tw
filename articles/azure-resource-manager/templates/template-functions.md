@@ -4,10 +4,10 @@ description: 描述要在 Azure 資源管理員範本中用來擷取值、搭配
 ms.topic: conceptual
 ms.date: 09/01/2020
 ms.openlocfilehash: c78e9481e6f2ba1f17389992aab2712719fc4c3b
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89378401"
 ---
 # <a name="arm-template-functions"></a>ARM 範本函式
@@ -46,7 +46,7 @@ Resource Manager 提供數個函數來處理陣列。
 * [first](template-functions-array.md#first)
 * [intersection](template-functions-array.md#intersection)
 * [last](template-functions-array.md#last)
-* [length](template-functions-array.md#length)
+* [length](template-functions-array.md#length) (長度)
 * [min](template-functions-array.md#min)
 * [max](template-functions-array.md#max)
 * [range](template-functions-array.md#range)
@@ -144,7 +144,7 @@ Resource Manager 提供數個處理物件的功能。
 * [empty](template-functions-object.md#empty)
 * [intersection](template-functions-object.md#intersection)
 * [json](template-functions-object.md#json)
-* [length](template-functions-object.md#length)
+* [length](template-functions-object.md#length) (長度)
 * [union](template-functions-object.md#union)
 
 <a id="extensionResourceId" aria-hidden="true"></a>
@@ -226,7 +226,7 @@ Resource Manager 提供數個處理物件的功能。
 * [indexOf](template-functions-string.md#indexof)
 * [last](template-functions-string.md#last)
 * [lastIndexOf](template-functions-string.md#lastindexof)
-* [length](template-functions-string.md#length)
+* [length](template-functions-string.md#length) (長度)
 * [newGuid](template-functions-string.md#newguid)
 * [padLeft](template-functions-string.md#padleft)
 * [replace](template-functions-string.md#replace)
@@ -244,7 +244,7 @@ Resource Manager 提供數個處理物件的功能。
 * [uriComponent](template-functions-string.md#uricomponent)
 * [uriComponentToString](template-functions-string.md#uricomponenttostring)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 如需 ARM 範本中各區段的說明，請參閱 [撰寫 arm 範本](template-syntax.md)
 * 若要合併多個範本，請參閱 [使用連結的範本搭配 Azure Resource Manager](linked-templates.md)

@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 06/11/2020
 ms.author: chenyl
 ms.openlocfilehash: c3e317a87ba888fac3c069cc5327bd89c859e9de
-ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89514232"
 ---
 # <a name="upstream-settings"></a>上游設定
@@ -82,7 +82,7 @@ http://host.com/chat/api/messages/broadcast
 3. 在 **上游 URL 模式**下新增 url。 然後， **中樞規則** 之類的設定會顯示預設值。
 4. 若要設定 **中樞規則**、 **事件規則**、 **類別規則**和 **上游驗證**的設定，請選取 [ **中樞規則**] 的值。 可讓您編輯設定的頁面隨即出現：
 
-    :::image type="content" source="media/concept-upstream/upstream-detail-portal.png" alt-text="上游設定詳細資料":::
+    :::image type="content" source="media/concept-upstream/upstream-detail-portal.png" alt-text="上游設定":::
 
 5. 若要設定 **上游驗證**，請先確定您已啟用受控識別。 然後選取 [ **使用受控識別**]。 根據您的需求，您可以選擇 [ **驗證資源識別碼**] 下的任何選項。 如需詳細資訊，請參閱 [Azure SignalR Service 的受控](howto-use-managed-identity.md) 識別。
 
@@ -137,7 +137,7 @@ POST
 
 ### <a name="request-body"></a>Request body
 
-#### <a name="connected"></a>連線
+#### <a name="connected"></a>已連線
 
 Content-Type: application/json
 
@@ -159,14 +159,14 @@ Content-type： `application/json` 或 `application/x-msgpack`
 |目標 |字串 | 與事件相同，而且與 [調用訊息](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocation-message-encoding)中的目標相同。 |
 |引數 |物件的陣列 |陣列，其中包含要套用至中所參考之方法的引數 `Target` 。 |
 
-### <a name="signature"></a>簽名
+### <a name="signature"></a>簽章
 
 服務將會 `X-ASRS-Connection-Id` 使用主要存取金鑰和次要存取金鑰作為金鑰來計算值的 SHA256 碼 `HMAC` 。 `X-ASRS-Signature`當對上游提出 HTTP 要求時，服務會在標頭中設定它：
 ```
 Hex_encoded(HMAC_SHA256(accessKey, connection-id))
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [Azure SignalR Service 的受控識別](howto-use-managed-identity.md)
 - [使用 Azure SignalR Service 來開發與設定 Azure Functions](signalr-concept-serverless-development-config.md)

@@ -1,5 +1,5 @@
 ---
-title: 管理 Windows 虛擬桌面 PowerShell 的應用程式群組-Azure
+title: 管理適用于 Windows 虛擬桌面 PowerShell 的應用程式群組-Azure
 description: 如何使用 PowerShell 管理 Windows 虛擬桌面應用程式群組。
 author: Heidilohr
 ms.topic: how-to
@@ -7,10 +7,10 @@ ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: a6f24dea00a174aa0276a9b30add0854c3694056
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88008639"
 ---
 # <a name="manage-app-groups-using-powershell"></a>使用 PowerShell 管理應用程式群組
@@ -28,11 +28,11 @@ ms.locfileid: "88008639"
 
 ## <a name="prerequisites"></a>必要條件
 
-本文假設您已遵循[設定 powershell 模組](powershell-module.md)中的指示來設定 powershell 模組，並登入您的 Azure 帳戶。
+本文假設您已遵循 [設定 powershell 模組](powershell-module.md) 中的指示，來設定 powershell 模組並登入您的 Azure 帳戶。
 
 ## <a name="create-a-remoteapp-group"></a>建立 RemoteApp 群組
 
-若要使用 PowerShell 建立 RemoteApp 群組：
+使用 PowerShell 建立 RemoteApp 群組：
 
 1. 執行下列 PowerShell Cmdlet 來建立新的空白 RemoteApp 應用程式群組。
 
@@ -52,7 +52,7 @@ ms.locfileid: "88008639"
    Get-AzWvdStartMenuItem -ApplicationGroupName <appgroupname> -ResourceGroupName <resourcegroupname> | Format-List | more
    ```
 
-   輸出應該會顯示所有 [開始] 功能表項目，格式如下：
+   輸出應該會顯示如下格式的所有 [開始] 功能表專案：
 
    ```powershell
    AppAlias            : access
@@ -103,4 +103,4 @@ ms.locfileid: "88008639"
 
 ## <a name="next-steps"></a>後續步驟
 
-如果您從我們的教學課程進入此操作指南，請參閱[建立主機集區以驗證服務更新](create-validation-host-pool.md)。 您可以使用驗證主機集區來監視服務更新，再將其推展到生產環境。
+如果您是本教學課程中的這個操作說明指南，請參閱 [建立主機集區來驗證服務更新](create-validation-host-pool.md)。 您可以使用驗證主機集區來監視服務更新，再將其推展到生產環境。

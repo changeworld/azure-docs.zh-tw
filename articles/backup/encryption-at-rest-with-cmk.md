@@ -4,10 +4,10 @@ description: 瞭解 Azure 備份如何讓您使用客戶管理的金鑰 (CMK) �
 ms.topic: conceptual
 ms.date: 07/08/2020
 ms.openlocfilehash: 5c0bddc6cdb8ec150a031541ced1abf1ebfb6f0f
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89378282"
 ---
 # <a name="encryption-of-backup-data-using-customer-managed-keys"></a>使用客戶管理的金鑰來加密備份資料
@@ -31,7 +31,7 @@ Azure 備份可讓您使用客戶管理的金鑰 (CMK) 來加密備份資料，�
 
 - 這項功能目前 **不支援使用 MARS 代理程式進行備份**，而且您可能無法使用 CMK 加密的保存庫進行相同的工作。 MARS 代理程式會使用以使用者複雜密碼為基礎的加密。 這項功能也不支援傳統 Vm 的備份。
 
-- 這項功能與 [Azure 磁碟加密](../security/fundamentals/azure-disk-encryption-vms-vmss.md)無關，這會使用 Windows) 的 BitLocker (和適用于 LINUX 的 DM Crypt (，使用以來賓為基礎的 VM 磁片加密) 
+- 這項功能與 [Azure 磁碟加密](../security/fundamentals/azure-disk-encryption-vms-vmss.md)無關，後者會使用 Windows) 的 BitLocker (和適用于 Linux 的 DM-Crypt (，來使用虛擬機器磁片的來賓型加密) 
 
 - 復原服務保存庫只能使用儲存在 Azure Key Vault （位於 **相同區域**）中的金鑰進行加密。 此外，金鑰必須只有 **RSA 2048 金鑰** ，且應該處於 **啟用** 狀態。
 
@@ -160,7 +160,7 @@ Azure 備份使用系統指派的受控識別來驗證復原服務保存庫，�
 
         ![從 key vault 選取金鑰](./media/encryption-at-rest-with-cmk/key-vault.png)
 
-1. 選取 [儲存]。
+1. 選取 [儲存]****。
 
 1. **追蹤加密金鑰更新的進度：** 您可以使用復原服務保存庫中的 **活動記錄** 來追蹤金鑰指派的進度。 狀態應該會變更為 [ **成功**]。 您的保存庫現在會將具有指定索引鍵的所有資料加密為 KEK。
 
@@ -258,6 +258,6 @@ Azure 備份使用系統指派的受控識別來驗證復原服務保存庫，�
 
 使用 CMK encryption 進行備份，不會對您產生任何額外的成本。 不過，您可能會繼續產生使用您的 Azure Key Vault 儲存金鑰的費用。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [Azure 備份中的安全性功能概觀](security-overview.md)

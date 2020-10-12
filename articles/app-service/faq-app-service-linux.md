@@ -8,10 +8,10 @@ ms.date: 10/30/2018
 ms.author: msangapu
 ms.custom: seodec18
 ms.openlocfilehash: c35647a46cd252ce045d10e8dfefcf78236ba74b
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88961715"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Linux 上的 Azure App Service 常見問題集
@@ -40,7 +40,7 @@ ms.locfileid: "88961715"
 
 這些命令或腳本會在內建的 Docker 容器啟動之後，但在您的應用程式程式碼啟動之前執行。
 
-## <a name="management"></a>管理
+## <a name="management"></a>管理性
 
 **當我按下 Azure 入口網站中的 [重新啟動] 按鈕時，會發生什麼事？**
 
@@ -201,7 +201,7 @@ Linux 應用程式支援 Web 通訊端。
 
 您可以在 [Web Apps 意見反應論壇](https://aka.ms/webapps-uservoice) (英文) 提交您的想法。 將 "[Linux]" 新增至您想法的標題。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - [何謂 Linux 上的 Azure App Service？](overview.md#app-service-on-linux)
 - [在 Azure App Service 中設定預備環境](deploy-staging-slots.md) \(部分機器翻譯\)
