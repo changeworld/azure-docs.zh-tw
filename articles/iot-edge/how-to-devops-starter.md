@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: f0f0452854ef7456d1bdf7caf0674fab5bd14557
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91297125"
 ---
 # <a name="create-a-cicd-pipeline-for-iot-edge-with-azure-devops-starter"></a>使用 Azure DevOps Starter 建立 IoT Edge 的 CI/CD 管線
@@ -62,7 +62,7 @@ DevOps 入門版會在 Azure DevOps 中建立 CI/CD 管線。 您可以建立新
 
    ![命名和建立專案](media/how-to-devops-starter/create-project.png)
 
-幾分鐘後，DevOps 入門儀表板會顯示在 Azure 入口網站中。 選取您的專案名稱來查看進度。 您可能需要重新整理該頁面。 系統會在您 Azure DevOps 組織的存放庫中設定範例 IoT Edge 應用程式、執行建置，然後將您的應用程式部署到 IoT Edge 裝置。 此儀表板可顯示您的程式碼存放庫、CI/CD 管線，和您在 Azure 中的應用程式。
+在幾分鐘後，Azure 入口網站中便會顯示 DevOps Starter 儀表板。 選取您的專案名稱來查看進度。 您可能需要重新整理該頁面。 系統會在您 Azure DevOps 組織的存放庫中設定範例 IoT Edge 應用程式、執行建置，然後將您的應用程式部署到 IoT Edge 裝置。 此儀表板可顯示您的程式碼存放庫、CI/CD 管線，和您在 Azure 中的應用程式。
 
    ![Azure 入口網站中的 View 專案](./media/how-to-devops-starter/portal.png)
 
@@ -105,7 +105,7 @@ DevOps 入門會在 Azure Repos 中為您的專案建立 Git 存放庫。 在這
 
 6. 在 [組建管線] 功能表中選取 [觸發程序]。 DevOps Starter 已自動建立 CI 觸發程序，且每次對存放庫的認可都會啟動新的組建。  您可以選擇性地選擇要在 CI 程序中包含還是排除分支。
 
-7. 選取 [保留期]  。 遵循連結，將您重新導向至保留原則所在的專案設定。 根據案例，您可以指定原則來保留或移除特定數目的組建。
+7. 選取 [保留期]。 遵循連結，將您重新導向至保留原則所在的專案設定。 根據案例，您可以指定原則來保留或移除特定數目的組建。
 
 8. 選取 [記錄]。 [記錄] 窗格會包含組建近期變更的稽核線索。 Azure Pipelines 會追蹤對建置管線進行的任何變更，且可讓您比較版本。
 

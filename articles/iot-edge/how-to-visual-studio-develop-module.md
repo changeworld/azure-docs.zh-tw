@@ -9,10 +9,10 @@ ms.date: 3/27/2020
 ms.topic: conceptual
 ms.service: iot-edge
 ms.openlocfilehash: 823b16dcaf113136b10fdaa054da20840b99f02d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91297040"
 ---
 # <a name="use-visual-studio-2019-to-develop-and-debug-modules-for-azure-iot-edge"></a>使用 Visual Studio 2019 來開發 Azure IoT Edge 的模組並進行偵錯工具
@@ -28,7 +28,7 @@ Azure IoT Edge Tools for Visual Studio 提供下列優點：
 
 本文說明如何使用 Visual Studio 2019 的 Azure IoT Edge Tools 來開發 IoT Edge 模組。 您也將學習如何將專案部署到 Azure IoT Edge 裝置。 目前，Visual Studio 2019 提供以 C 和 c # 撰寫之模組的支援。 支援的裝置架構為 Windows X64 和 Linux X64 或 ARM32。 如需有關支援的作業系統、語言和架構的詳細資訊，請參閱 [語言和架構支援](module-development.md#language-and-architecture-support)。
   
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 此文章假設您使用執行 Windows 的電腦或虛擬機器作為開發電腦。 在 Windows 電腦上，您可以開發 Windows 或 Linux 模組。 若要開發 Windows 模組，請使用執行 1809/build 17763 版或更新版本的 Windows 電腦。 若要開發 Linux 模組，請使用符合 [Docker Desktop 需求](https://docs.docker.com/docker-for-windows/install/#what-to-know-before-you-install)的 Windows 電腦。
 
@@ -232,7 +232,7 @@ Visual Studio 中的 Azure IoT Edge 專案範本可建立可以在 Azure IoT 中
 
 ## <a name="view-generated-data"></a>檢視產生的資料
 
-1. 若要監視特定 IoT Edge 裝置的 D2C 訊息，請在**Cloud Explorer**的 iot 中樞中選取它，然後按一下 [**動作**] 視窗中的 [**開始監視內建事件端點**]。
+1. 若要監視特定 IoT-Edge 裝置的 D2C 訊息，請在**Cloud Explorer**的 IoT 中樞中加以選取，然後在 [**動作**] 視窗中按一下 [**開始監視內建事件端點**]。
 
 1. 若要停止監視資料，請在 [**動作**] 視窗中選取 [**停止監視內建事件端點**]。
 

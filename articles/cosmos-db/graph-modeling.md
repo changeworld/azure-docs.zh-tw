@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 12/02/2019
 ms.author: jasonh
 ms.openlocfilehash: 6526119a8b20a7c60879fe690aefe96159b062a7
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91409760"
 ---
 # <a name="graph-data-modeling-for-azure-cosmos-db-gremlin-api"></a>Azure Cosmos DB Gremlin API 的圖表資料模型
 
 以下文件旨在提供圖表資料模型建議。 這個步驟非常重要，因為它可以在資料不斷成長及演進時，確保圖形資料庫系統的效能與延展性。 對於大規模的圖形來說，有效率的資料模型特別重要。
 
-## <a name="requirements"></a>規格需求
+## <a name="requirements"></a>需求
 
 本指南中所述的程序是以下列假設為依據：
  * 已識別問題空間中的**實體**。 這些實體是要讓每個要求_以不可分割方式_方式使用。 換句話說，也就是資料庫系統的設計目的，並不是為了使用多個問題要求來擷取單一實體的資料。
@@ -45,14 +45,14 @@ ms.locfileid: "91409760"
 
 以下是圖表物件中各屬性的最佳做法︰
 
-| 物件 | 屬性 | 類型 | 注意 |
+| Object | 屬性 | 類型 | 注意 |
 | --- | --- | --- |  --- |
-| 頂點 | 識別碼 | String | 每個分割區唯一強制執行。 如果沒有在插入時提供值，將會儲存自動產生的 GUID。 |
-| 頂點 | label | String | 這個屬性是用來定義頂點所代表的實體類型。 如果未提供值，將會使用預設值「頂點」。 |
+| 頂點 | 識別碼 | 字串 | 每個分割區唯一強制執行。 如果沒有在插入時提供值，將會儲存自動產生的 GUID。 |
+| 頂點 | label | 字串 | 這個屬性是用來定義頂點所代表的實體類型。 如果未提供值，將會使用預設值「頂點」。 |
 | 頂點 | properties | 字串、布林值、數值 | 個別屬性的清單會以索引鍵/值組的方式儲存在每個頂點中。 |
 | 頂點 | 分割區索引鍵 | 字串、布林值、數值 | 這個屬性會定義頂點和其傳出邊緣的儲存位置。 深入了解[資料分割](graph-partitioning.md)。 |
-| Edge | 識別碼 | String | 每個分割區唯一強制執行。 預設會自動產生。 邊緣通常不需要透過識別碼進行唯一擷取。 |
-| Edge | label | String | 這個屬性是用來定義兩個頂點之間的關聯性類型。 |
+| Edge | 識別碼 | 字串 | 每個分割區唯一強制執行。 預設會自動產生。 邊緣通常不需要透過識別碼進行唯一擷取。 |
+| Edge | label | 字串 | 這個屬性是用來定義兩個頂點之間的關聯性類型。 |
 | Edge | properties | 字串、布林值、數值 | 個別屬性的清單會以索引鍵/值組的方式儲存在每個邊緣中。 |
 
 > [!NOTE]
@@ -105,7 +105,7 @@ ms.locfileid: "91409760"
 * 使用非泛型詞彙來標記關聯性。
 * 利用關聯性名稱建立來源頂點的標籤與目標頂點的標籤之間的關聯。
 
-:::image type="content" source="./media/graph-modeling/graph-modeling-3.png" alt-text="關聯性標籤範例。" border="false":::
+:::image type="content" source="./media/graph-modeling/graph-modeling-3.png" alt-text="使用頂點作為屬性的實體模型。" border="false":::
 
 請盡可能讓周遊以越特定的方式使用標籤來篩選邊緣。 這項決策也會對查詢成本產生重大的影響。 您隨時可以[使用 executionProfile 步驟](graph-execution-profile.md)評估查詢成本。
 

@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 10/27/2016
 ms.author: duau
 ms.openlocfilehash: 431eaff9da95063648d3e80acb54be9cc5c25bc5
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89393053"
 ---
 # <a name="using-load-balancing-services-in-azure"></a>在 Azure 中使用負載平衡服務
@@ -41,7 +41,7 @@ Microsoft Azure 提供多個服務，可管理分配網路流量和負載平衡�
 * **應用程式閘道** 提供應用程式傳遞控制器 (ADC) 即服務，為您的應用程式提供各種第7層負載平衡功能。 它可讓客戶將 CPU 密集的 TLS 終止卸載至應用程式閘道，以優化 web 伺服陣列的生產力。 其他第 7 層路由功能包括循環配置連入流量、以 Cookie 為基礎的工作階段同質、URL 路徑型路由，以及在單一應用程式閘道背後代管多個網站的能力。 應用程式閘道可以設定為連結網際網路的閘道、內部專用閘道或兩者混合。 應用程式閘道完全由 Azure 管理、可調整且可用性極高。 它提供一組豐富的診斷和記錄功能，很好管理。
 * **Load Balancer** 是 Azure SDN 堆疊不可或缺的一部分，可為所有 UDP 和 TCP 通訊協定提供高效能、低延遲的第4層負載平衡服務。 它會管理輸入及輸出連線。 您可以設定公用和內部負載平衡端點，並使用 TCP 和 HTTP 健全狀況探查選項定義規則，將輸入連線對應至後端集區目的地，以管理服務可用性。
 
-## <a name="scenario"></a>案例
+## <a name="scenario"></a>狀況
 
 在此範例案例中，我們使用簡單的網站提供兩種類型的內容︰影像及動態呈現的網頁。 網站必須是地理備援，且應從最接近 (最低延遲) 的位置將服務提供給其使用者。 應用程式開發人員決定任何符合模式/影像/* 的 URL 都是從不同於 Web 伺服陣列之其餘部分的專用 VM 集區提供。
 
@@ -207,7 +207,7 @@ Microsoft Azure 提供多個服務，可管理分配網路流量和負載平衡�
 
 ![負載平衡器「前端 IP 集區」瀏覽窗格](./media/traffic-manager-load-balancing-azure/s5-ilb-frontend-ippool.png)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [流量管理員概觀](traffic-manager-overview.md)
 * [應用程式閘道概觀](../application-gateway/application-gateway-introduction.md)

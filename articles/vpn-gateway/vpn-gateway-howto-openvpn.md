@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: cherylmc
 ms.openlocfilehash: 57bc53c28866b3f16e742c27b6a1600bfe6f44ab
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89418818"
 ---
 # <a name="configure-openvpn-for-azure-point-to-site-vpn-gateway"></a>設定適用于 Azure 點對站 VPN 閘道的 OpenVPN
@@ -36,7 +36,7 @@ $gw = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $name
 Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -VpnClientProtocol OpenVPN
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 若要設定 OpenVPN 的用戶端，請參閱[設定 OpenVPN 用戶端](vpn-gateway-howto-openvpn-clients.md)。
 

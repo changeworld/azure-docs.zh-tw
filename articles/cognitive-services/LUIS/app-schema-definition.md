@@ -6,21 +6,21 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 08/22/2020
 ms.openlocfilehash: db4fd52dad82542f20e58ebb3b8526c5be7f2f88
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91327318"
 ---
 # <a name="app-schema-definition"></a>應用程式架構定義
 
 LUIS 應用程式是以或表示， `.json` `.lu` 而且包含所有意圖、實體、範例語句、功能和設定。
 
-## <a name="format"></a>格式
+## <a name="format"></a>[格式]
 
 當您匯入和匯出應用程式時，請選擇 `.json` 或 `.lu` 。
 
-|格式|資訊|
+|[格式]|資訊|
 |--|--|
 |`.json`| 標準的程式設計格式|
 |`.lu`|受 Bot Framework 的 [Bot Builder 工具](https://github.com/microsoft/botbuilder-tools/blob/master/packages/Ludown/docs/lu-file-format.md)支援。|

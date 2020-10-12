@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 04/19/2019
 ms.author: juliako
 ms.openlocfilehash: 0d896b0ce23116f1b87718f492d407ac094b9e6a
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89261150"
 ---
 # <a name="azure-media-services-overview"></a>Azure 媒體服務概觀
@@ -44,7 +44,7 @@ Microsoft Azure 媒體服務 (AMS) 是一個可延伸的雲端式平台，供開
 
 若要瞭解媒體服務中的合規性、隱私權和安全性，請造訪 Microsoft [信任中心](https://www.microsoft.com/trust-center/?rtc=1)。 如需 Microsoft 的隱私權義務、資料處理和保留實務（包括如何刪除您的資料），請參閱 Microsoft 的 [隱私權聲明](https://privacy.microsoft.com/PrivacyStatement)、 [線上服務條款](https://www.microsoft.com/licensing/product-licensing/products?rtc=1) ( 「OST」 ) 和 [資料處理](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) 增補 ( 「DPA」 ) 。 使用媒體服務即表示您同意受到 OST、DPA 和隱私權聲明的約束。
  
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 若要開始使用 Azure 媒體服務，您應該具備下列項目：
 
@@ -63,7 +63,7 @@ Microsoft Azure 媒體服務 (AMS) 是一個可延伸的雲端式平台，供開
 * 其中一個可用的用戶端 SDK：
     * 適用于 .NET 的 Azure 媒體服務 SDK
     
-        * [NuGet 套件](https://www.nuget.org/packages/windowsazure.mediaservices/)
+        * [Nuget 套件](https://www.nuget.org/packages/windowsazure.mediaservices/)
         * [GitHub 原始程式碼](https://github.com/Azure/azure-sdk-for-media-services)
     * [適用于 JAVA 的 AZURE SDK](https://github.com/Azure/azure-sdk-for-java)、
     * [Azure PHP SDK](https://github.com/Azure/azure-sdk-for-php)、

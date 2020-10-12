@@ -10,10 +10,10 @@ ms.date: 06/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
 ms.openlocfilehash: 51422bd47b5bd2d7d5103c154e90eaa910396024
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89661018"
 ---
 # <a name="analyze-complex-data-types-in-azure-synapse-analytics"></a>分析 Azure Synapse Analytics 中的複雜資料類型
@@ -168,7 +168,7 @@ display(df_flat_explode_flat.limit(10))
 
 首先，視資料的儲存方式而定，使用者應該使用下列分類法。 大寫顯示的所有專案都是您的使用案例專用：
 
-| 大量 | 格式 |
+| 大量 | [格式] |
 | ------ | ------ |
 | 'https://ACCOUNTNAME.dfs.core.windows.net/FILESYSTEM/PATH/FINENAME.parquet' |' Parquet ' (ADLSg2) |
 | N'endpoint = https://ACCOUNTNAME.documents-staging.windows-ppe.net:443/ ; account = ACCOUNTNAME; database = DATABASENAME; collection = COLLECTIONNAME; region = REGIONTOQUERY '，SECRET = ' YOURSECRET ' |' CosmosDB ' (Azure Synapse 連結) |
@@ -218,7 +218,7 @@ with ( ProfileType varchar(50) '$.customerInfo.ProfileType',
 
   如果陣列有5個具有4個嵌套結構的元素，則 SQL 的無伺服器模型會傳回5個數據列和4個數據行。 SQL 的無伺服器模型可以就地查詢、對應2個數據列中的陣列，並將所有的嵌套結構都顯示在資料行中。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [瞭解如何使用 Spark 查詢 Azure Cosmos DB 的 Synapse 連結](./synapse-link/how-to-query-analytical-store-spark.md)
 * [查詢 Parquet 巢狀型別](./sql/query-parquet-nested-types.md) 

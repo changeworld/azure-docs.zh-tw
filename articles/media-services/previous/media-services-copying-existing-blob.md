@@ -15,10 +15,10 @@ ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 4ac981fb3aa17cbc242b5cc51cd579f926bad034
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89257971"
 ---
 # <a name="copying-existing-blobs-into-a-media-services-asset"></a>將現有的 blob 複製到媒體服務資產
@@ -45,7 +45,7 @@ ms.locfileid: "89257971"
 
 ## <a name="copy-blobs-between-two-ams-accounts"></a>在兩個 AMS 帳戶之間複製 Blob  
 
-### <a name="prerequisites"></a>先決條件
+### <a name="prerequisites"></a>必要條件
 
 兩個媒體服務帳戶。 請參閱文章[如何建立媒體服務帳戶](media-services-portal-create-account.md)。
 
@@ -163,7 +163,7 @@ namespace CopyExistingBlobsIntoAsset
 
 ## <a name="copy-blobs-from-a-storage-account-into-an-ams-account"></a>從儲存體帳戶將 Blob 複製到 AMS 帳戶 
 
-### <a name="prerequisites"></a>先決條件
+### <a name="prerequisites"></a>必要條件
 
 - 您從中複製 Blob 的來源儲存體帳戶。
 - 您要將 Blob 複製到其中的 AMS 帳戶。

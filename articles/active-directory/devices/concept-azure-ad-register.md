@@ -12,17 +12,17 @@ manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 72c40b7962090492f8b4b85e555a947130c3628d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91256433"
 ---
 # <a name="azure-ad-registered-devices"></a>Azure AD 註冊裝置
 
 Azure AD 已註冊裝置的目標是要為您的使用者提供自備裝置 (BYOD) 或行動裝置案例的支援。 在這些案例中，使用者可以使用個人裝置來存取您組織 Azure Active Directory 控制的資源。
 
-| Azure AD 已註冊 | 說明 |
+| Azure AD 已註冊 | 描述 |
 | --- | --- |
 | **[定義]** | 註冊至 Azure AD，而不需要組織帳戶來登入裝置 |
 | **主要對象** | 適用于具有下列準則的所有使用者： |

@@ -12,10 +12,10 @@ ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
 ms.openlocfilehash: 0d9d28bacac02326ee781ca56309b7a72e921960
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91289164"
 ---
 # <a name="group-by-options-in-synapse-sql"></a>Synapse SQL 中的 GROUP BY 選項
@@ -57,7 +57,7 @@ GROUP BY ROLLUP (
 藉由使用 ROLLUP，上述範例會要求下列彙總：
 
 * 國家及區域
-* Country
+* 國家/地區
 * 總計
 
 若要取代 ROLLUP，並傳回相同的結果，您可以使用 UNION ALL，並明確指定所需的彙總：

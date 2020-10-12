@@ -4,10 +4,10 @@ description: 使用 Azure 備份，您可以使用 Azure 匯入/匯出服務，�
 ms.topic: conceptual
 ms.date: 06/08/2020
 ms.openlocfilehash: b747fd3c682dc1caf7312ba7279470a1e6b38bd5
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88890088"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server-previous-versions"></a>DPM 的離線備份工作流程和 Azure 備份伺服器 (之前的版本) 
@@ -48,7 +48,7 @@ Azure 備份的離線植入程式與 [Azure 匯入/匯出服務](../storage/comm
 >[!NOTE]
 >Azure CSP 的訂用帳戶不支援搭配離線植入 DPM 2019 RTM 和較早版本，以及 MABS v3 RTM 和更早版本。 仍支援透過網路進行線上備份。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 開始離線備份工作流程之前，請確定符合下列必要條件：
 
@@ -87,7 +87,7 @@ Azure 備份的離線植入程式與 [Azure 匯入/匯出服務](../storage/comm
 * *AzureOfflineBackupCertGen.exe*工具會產生*OfflineApplicationParams.xml*檔案。 使用 MABS 或 DPM 將此檔案複製到伺服器。
 * 在 DPM 實例或 Azure 備份伺服器上安裝 [最新的 MARS 代理程式](https://aka.ms/azurebackup_agent) 。
 * 向 Azure 註冊伺服器。
-* 執行下列命令：
+* 執行以下命令：
 
     ```cmd
     AzureOfflineBackupCertGen.exe AddRegistryEntries SubscriptionId:<subscriptionid> xmlfilepath:<path of the OfflineApplicationParams.xml file>  storageaccountname:<storageaccountname to be used for offline backup>
@@ -100,7 +100,7 @@ Azure 備份的離線植入程式與 [Azure 匯入/匯出服務](../storage/comm
 請遵循下列步驟，手動將離線備份憑證上傳至先前建立的 Azure Active Directory 應用程式，以進行離線備份。
 
 1. 登入 Azure 入口網站。
-1. 移至**Azure Active Directory**  >  **應用程式註冊**。
+1. 前往 [Azure Active Directory] > [應用程式註冊]。
 1. 在 [ **擁有的應用程式** ] 索引標籤上，找出具有顯示名稱格式的應用程式 `AzureOfflineBackup _<Azure User Id` 。
 
     ![在擁有的應用程式索引標籤上尋找應用程式](./media/offline-backup-dpm-mabs-previous-versions/owned-applications.png)
@@ -115,7 +115,7 @@ Azure 備份的離線植入程式與 [Azure 匯入/匯出服務](../storage/comm
     ![上傳憑證](./media/offline-backup-dpm-mabs-previous-versions/upload-certificate.png)
 
 1. 在伺服器上，在 [執行] 視窗中輸入 **regedit** 以開啟登錄。
-1. 移至登錄專案 *電腦 \ HKEY_LOCAL_MACHINE \Software\microsoft\windows Azure Backup\Config\CloudBackupProvider*。
+1. 移至登錄專案 *Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider*。
 1. 以滑鼠右鍵按一下 [ **CloudBackupProvider**]，並以名稱加入新的字串值 `AzureADAppCertThumbprint_<Azure User Id>` 。
 
     >[!NOTE]
@@ -183,7 +183,7 @@ Azure 備份的離線植入程式與 [Azure 匯入/匯出服務](../storage/comm
      > [!IMPORTANT]
      > 如果來源電腦是虛擬機器，則必須使用與複製電腦不同的實體伺服器或用戶端電腦。
 
-1. 使用 *AzureOfflineBackupDiskPrep* 公用程式目錄作為目前的目錄，在複製電腦上開啟提高許可權的命令提示字元。 執行下列命令：
+1. 使用 *AzureOfflineBackupDiskPrep* 公用程式目錄作為目前的目錄，在複製電腦上開啟提高許可權的命令提示字元。 執行以下命令：
 
     `*.\AzureOfflineBackupDiskPrep.exe*   s:<*Staging Location Path*>   [p:<*Path to AzurePublishSettingsFile*>]`
 

@@ -17,10 +17,10 @@ ms.author: willzhan
 ms.reviewer: dwgeo
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 5e003e17490c2e35ef3f8adfdef6de0377cda7d5
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89259705"
 ---
 # <a name="offline-fairplay-streaming-for-ios"></a>適用於 iOS 的離線 FairPlay 串流
@@ -252,7 +252,7 @@ func requestApplicationCertificate() throws -> Data {
 
 * Widevine 是 Google Inc. 所提供的服務，並受到 Google Inc. 的服務條款和隱私權原則所約束。
 
-## <a name="summary"></a>總結
+## <a name="summary"></a>摘要
 本文件包含下列步驟和資訊，以供您實作 FPS 離線模式：
 
 * 透過媒體服務 .NET API 所進行的媒體服務內容保護設定，會在媒體服務中設定動態 FairPlay 加密和 FairPlay 授權傳遞。

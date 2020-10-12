@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 06/16/2020
 ms.author: radeltch
 ms.openlocfilehash: a0dc9f673abcac549fffc7291b8ac376c297da6b
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87836117"
 ---
 # <a name="public-endpoint-connectivity-for-virtual-machines-using-azure-standard-load-balancer-in-sap-high-availability-scenarios"></a>適用於 SAP 高可用性案例中使用 Azure Standard Load Balancer 之虛擬機器的公用端點連線能力
@@ -224,8 +224,8 @@ SAP 系統通常會包含敏感性的商務資料。 此情況通常無法讓裝
 
 如果輸出流量是透過協力廠商防火牆路由傳送：
 
-- 如果使用 Azure 隔離代理程式，請確定防火牆設定允許 Azure 管理 API 的輸出連線能力： `https://management.azure.com` 和`https://login.microsoftonline.com`   
-- 如果使用 SUSE 的 Azure 公用雲端更新基礎結構來套用更新和修補程式，請參閱[Azure 公用雲端更新基礎結構 101](https://suse.com/c/azure-public-cloud-update-infrastructure-101/)
+- 如果使用 Azure 隔離代理程式，請確定防火牆設定允許 Azure 管理 API 的輸出連線能力： `https://management.azure.com` 和 `https://login.microsoftonline.com`   
+- 如果使用 SUSE 的 Azure 公用雲端更新基礎結構來套用更新和修補程式，請參閱 [Azure 公用雲端更新基礎結構 101](https://suse.com/c/azure-public-cloud-update-infrastructure-101/)
 
 ## <a name="next-steps"></a>後續步驟
 

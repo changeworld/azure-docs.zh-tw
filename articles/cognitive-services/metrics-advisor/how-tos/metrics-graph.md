@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: aahi
 ms.openlocfilehash: 09ea16f07973757b169f21c7c3f909a24651daa4
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90936729"
 ---
 # <a name="how-to-build-a-metrics-graph-to-analyze-related-metrics"></a>How to：建立計量圖形來分析相關計量
@@ -35,7 +35,7 @@ ms.locfileid: "90936729"
 
 按一下 [ **新增關聯**]，您將能夠選擇另一個計量，並指定兩個節點之間的關聯類型。 您也可以套用特定的維度篩選。 
 
-:::image type="content" source="../media/graph/metrics-graph-node-action.png" alt-text="新增節點和關聯性":::
+:::image type="content" source="../media/graph/metrics-graph-node-action.png" alt-text="選取計量":::
 
 重複上述步驟之後，您將會有一個度量圖表，描述所有相關計量之間的關聯性。
 **節點色彩的提示**
@@ -50,9 +50,9 @@ ms.locfileid: "90936729"
 
 按一下以進入圖形內的事件，並向下切入到診斷資訊下方的 **交叉計量分析**。
 
-:::image type="content" source="../media/graph/metrics-graph-cross-metrics-analysis.png" alt-text="查看相關的計量和異常":::
+:::image type="content" source="../media/graph/metrics-graph-cross-metrics-analysis.png" alt-text="選取計量":::
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [使用意見反應來調整異常偵測](anomaly-feedback.md)
 - [診斷事件](diagnose-incident.md)。

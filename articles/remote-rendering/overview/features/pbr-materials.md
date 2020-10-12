@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: article
-ms.openlocfilehash: a1fedb637bee9d98fb09d8fc3fa133b2992ce86e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ad7fc7d9d02cd9a9a6fe74534a7c674fe0ac778d
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "89613660"
+ms.locfileid: "91893249"
 ---
 # <a name="pbr-materials"></a>PBR 材質
 
@@ -40,6 +40,8 @@ ms.locfileid: "89613660"
 * **useVertexColor：** 如果網格包含 :::no-loc text="vertex"::: 色彩，且已啟用此選項，網格的 :::no-loc text="vertex"::: 色彩會乘以 *albedoColor* 和 *albedoMap*。 預設會停用 *useVertexColor* 。
 
 * **isDoubleSided：** 如果雙 sidedness 是設定為 true，則即使攝影機正在查看其背面的臉部，也會轉譯具有此材質的三角形。 針對 .PBR 材質，也會針對背面的臉部正確地計算。 預設會停用此選項。 另請參閱[ :::no-loc text="Single-sided"::: 呈現](single-sided-rendering.md)。
+
+* **TransparencyWritesDepth：** 如果在材質上設定 TransparencyWritesDepth 旗標，且材質是透明的，使用此材質的物件也會對最後的深度緩衝區造成影響。 請參閱下一節中的「.PBR 材質」旗標 *透明* 。 如果您的使用案例需要更合理的最高 [階段 reprojection](late-stage-reprojection.md) 完全透明的場景，建議啟用這項功能。 若為混合的不透明/透明場景，此設定可能會導致 implausible reprojection 行為或 reprojection 成品。 基於這個理由，一般使用案例的預設和建議的設定是停用此旗標。 寫入的深度值取自最接近相機之物件的每個圖元深度層級。
 
 ## <a name="pbr-material-properties"></a>.PBR 材質屬性
 

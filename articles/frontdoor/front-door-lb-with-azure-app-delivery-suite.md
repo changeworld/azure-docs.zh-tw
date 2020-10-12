@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: duau
 ms.openlocfilehash: 50e047325ad17710794b1640715ab1938373fe85
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91542167"
 ---
 # <a name="load-balancing-with-azures-application-delivery-suite"></a>使用 Azure 的應用程式傳遞套件進行負載平衡
@@ -25,7 +25,7 @@ Microsoft Azure 提供各種全域和區域服務來管理網路流量的分散�
 
 * 應用程式閘道
 * Front Door 
-* Load Balancer  
+* 負載平衡器  
 * 流量管理員
 
 除了 Azure 的許多區域和區域性架構之外，一起使用這些服務可以讓您建立強大、可擴充且高效能的應用程式。

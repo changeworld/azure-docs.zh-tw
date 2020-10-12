@@ -10,10 +10,10 @@ author: timsander1
 ms.author: tisande
 ms.custom: devx-track-js
 ms.openlocfilehash: abd6d6379fba1efac20255ca97e66e6b2d7e72ee
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91324403"
 ---
 # <a name="manage-indexing-in-azure-cosmos-dbs-api-for-mongodb"></a>管理 Azure Cosmos DB 的 MongoDB API 中的編制索引
@@ -50,7 +50,7 @@ Azure Cosmos DB 的 MongoDB API 支援使用3.6 線路通訊協定版本之帳�
 
 `db.coll.find().sort({name:1,age:1})`
 
-您也可以使用上述的複合索引，在所有欄位上以相反的排序次序來有效率地排序查詢。 以下是範例：
+您也可以使用上述的複合索引，在所有欄位上以相反的排序次序來有效率地排序查詢。 以下為範例：
 
 `db.coll.find().sort({name:-1,age:-1})`
 

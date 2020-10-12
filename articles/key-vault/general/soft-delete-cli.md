@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.date: 08/11/2020
 ms.author: sudbalas
 ms.openlocfilehash: da821da08594180b9dd94728252e1a43c04fbde2
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90531656"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-cli"></a>如何以 CLI 使用金鑰保存庫虛刪除

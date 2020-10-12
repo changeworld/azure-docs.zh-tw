@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 11/27/2018
 ms.author: mayg
 ms.openlocfilehash: 7a4408b54b663b2cd8abc22772ac1b799ea50de0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87083764"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-iis-based-web-application"></a>設定多層式 IIS 型 Web 應用程式的災害復原
@@ -26,7 +26,7 @@ ms.locfileid: "87083764"
 
 本文說明如何使用 [Azure Site Recovery](site-recovery-overview.md) 來保護以 Internet Information Services (IIS) 為基礎的 Web 應用程式。 本文涵蓋將三層式 IIS 型 Web 應用程式複寫至 Azure 的最佳做法、如何進行災害復原演練，以及如何將應用程式容錯移轉至 Azure。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 在開始之前，請確定您了解如何執行下列工作：
 
@@ -69,7 +69,7 @@ Azure|NA|是
 
 若要開始將所有 IIS Web 伺服陣列虛擬機器複寫至 Azure，請遵循[在 Site Recovery 中測試容錯移轉到 Azure](site-recovery-test-failover-to-azure.md)中的指引。
 
-如果您使用靜態 IP 位址，您可以指定您想要虛擬機器使用的 IP 位址。 若要設定 IP 位址，請移至 [**計算和網路設定**] [  >  **目標 IP**]。
+如果您使用靜態 IP 位址，您可以指定您想要虛擬機器使用的 IP 位址。 若要設定 IP 位址，請移至 [**計算和網路設定**  >  **目標 IP**]。
 
 ![顯示如何在 Site Recovery 計算和網路窗格中設定目標 IP 的螢幕擷取畫面](./media/site-recovery-active-directory/dns-target-ip.png)
 
@@ -127,15 +127,15 @@ Azure|NA|是
 #### <a name="update-the-load-balancer-ip-address"></a>更新負載平衡器 IP 位址
 如果您有 ARR 虛擬機器，若要更新 IP 位址，請在群組 4 之後新增 [IIS ARR 容錯移轉指令碼](https://aka.ms/asr-iis-arrtier-failover-script-classic)。
 
-#### <a name="tlsssl-certificate-binding-for-an-https-connection"></a>HTTPS 連線的 TLS/SSL 憑證系結
-網站可能會有相關聯的 TLS/SSL 憑證，以協助確保 web 伺服器與使用者瀏覽器之間的安全通訊。 如果網站具有 HTTPS 連線，而且也有相關聯的 HTTPS 網站系結至具有 TLS/SSL 憑證系結的 IIS 伺服器的 IP 位址，您就必須在容錯移轉後，為該憑證新增一個具有 IIS 虛擬機器 IP 位址的新網站系結。
+#### <a name="tlsssl-certificate-binding-for-an-https-connection"></a>HTTPS 連接的 TLS/SSL 憑證系結
+網站可能會有相關聯的 TLS/SSL 憑證，以協助確保 web 伺服器與使用者瀏覽器之間的安全通訊。 如果網站具有 HTTPS 連線，而且也有相關聯的 HTTPS 網站系結至具有 TLS/SSL 憑證系結的 IIS 伺服器的 IP 位址，您必須在容錯移轉後，為具有 IIS 虛擬機器 IP 位址的憑證新增網站系結。
 
-可以針對下列元件發出 TLS/SSL 憑證：
+您可以針對這些元件發出 TLS/SSL 憑證：
 
 * 網站的完整網域名稱。
 * 伺服器的名稱。
 * 網域名稱的萬用字元憑證。  
-* IP 位址。 如果對 IIS 伺服器的 IP 位址發出 TLS/SSL 憑證，則必須針對 Azure 網站上 IIS 伺服器的 IP 位址發出另一個 TLS/SSL 憑證。 必須建立此憑證的其他 TLS 系結。 因此，我們建議您不要使用對 IP 位址發出的 TLS/SSL 憑證。 此選項較不常用，而且很快就會按照新的憑證授權單位/瀏覽器論壇變更而被取代。
+* IP 位址。 如果針對 IIS 伺服器的 IP 位址發出 TLS/SSL 憑證，則必須針對 Azure 網站上 IIS 伺服器的 IP 位址發行另一個 TLS/SSL 憑證。 必須建立此憑證的其他 TLS 系結。 基於這個原因，我們建議您不要使用針對 IP 位址所發出的 TLS/SSL 憑證。 此選項較不常用，而且很快就會按照新的憑證授權單位/瀏覽器論壇變更而被取代。
 
 #### <a name="update-the-dependency-between-the-web-tier-and-the-application-tier"></a>更新 Web 層與應用程式層之間的相依性
 如果您有以虛擬機器 IP 位址為基礎的應用程式特有相依性，則必須在容錯移轉後更新此相依性。
@@ -160,5 +160,5 @@ Azure|NA|是
 
 如需詳細資訊，請參閱[在 Site Recovery 中容錯移轉](site-recovery-failover.md)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 * 深入了解如何使用 Site Recovery [複寫其他應用程式](site-recovery-workload.md)。

@@ -10,12 +10,12 @@ ms.subservice: keys
 ms.topic: overview
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 29930a835297b0ddd3a91534dab9ccb6d74896e3
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 8ac5b0976e677cc48fb3fe47c50797b07acdbc44
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90967558"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91708861"
 ---
 # <a name="about-keys"></a>關於金鑰
 
@@ -47,7 +47,7 @@ Key Vault 中的密碼編譯金鑰會表示為 JSON Web 金鑰 [JWK] 物件。 J
 - 保存庫會使用 **FIPS 140-2 層級 2** 已驗證 HSM 來保護共用 HSM 後端基礎結構中的 HSM 金鑰。 
 - 受控 HSM 集區會使用 **FIPS 140-2 層級 3** 已驗證 HSM 模組來保護您的金鑰。 每個 HSM 集區都是一個隔離的單一租用戶執行個體，具有自己的[安全性網域](../managed-hsm/security-domain.md)，提供與共用相同硬體基礎結構的其他所有 HSM 集區的完整密碼編譯隔離。
 
-這些金鑰會在單一租用戶 HSM 集區中受到保護。 您可以匯入軟體形式的 RSA、EC 和對稱金鑰，或從支援的 HSM 裝置匯出。 您也可以在 HSM 集區中產生金鑰。 當您使用以 [BYOK (攜帶您自己的金鑰) 規格](../keys/byok-specification.md)中所述方法產生的金鑰來匯入 HSM 金鑰時，會對受控 HSM 集區啟用安全傳輸金鑰材質。 
+這些金鑰會在單一租用戶 HSM 集區中受到保護。 您可以匯入軟體形式的 RSA、EC 和對稱金鑰，或從支援的 HSM 裝置匯出。 您也可以在 HSM 集區中產生金鑰。 當您使用 [BYOK (攜帶您自己的金鑰) 規格](../keys/byok-specification.md)中所述方法匯入 HSM 金鑰時，會對受控 HSM 集區啟用安全傳輸金鑰材質。 
 
 如需地理界限的詳細資訊，請參閱 [Microsoft Azure 信任中心](https://azure.microsoft.com/support/trust-center/privacy/)
 

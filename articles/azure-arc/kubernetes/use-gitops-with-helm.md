@@ -9,10 +9,10 @@ ms.author: mlearned
 description: 針對已啟用 Azure Arc 的叢集設定搭配使用 GitOps 與 Helm (預覽)
 keywords: GitOps, Kubernetes, K8s, Azure, Helm, Arc, AKS, Azure Kubernetes Service, 容器
 ms.openlocfilehash: eea81d458ac6631c4a023134b3198e4cdb04526e
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91541606"
 ---
 # <a name="deploy-helm-charts-using-gitops-on-arc-enabled-kubernetes-cluster-preview"></a>在啟用 Arc 的 Kubernetes 叢集上使用 Gitops) 將部署 Helm 圖 (預覽) 

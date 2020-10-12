@@ -8,10 +8,10 @@ ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.openlocfilehash: 76a1558534728613dcdedc78b64a0366f2bd643d
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88871066"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-request-timeout-exceptions"></a>診斷和疑難排解 Azure Cosmos DB 要求超時例外狀況
@@ -35,6 +35,6 @@ Azure Cosmos DB 會將整體布建的輸送量平均分散到實體分割區。 
 #### <a name="solution"></a>解決方案：
 選擇可平均分配要求磁片區和儲存體的良好分割區索引鍵。 瞭解如何 [變更分割](https://devblogs.microsoft.com/cosmosdb/how-to-change-your-partition-key/)區索引鍵。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 * 當您使用 Azure Cosmos DB .NET SDK 時[，診斷和疑難排解](troubleshoot-dot-net-sdk.md)問題。
 * 瞭解 [.net v3](performance-tips-dotnet-sdk-v3-sql.md) 和 [.net v2](performance-tips.md)的效能指導方針。

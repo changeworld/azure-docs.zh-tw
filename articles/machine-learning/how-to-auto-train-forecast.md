@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.custom: how-to, contperfq1
 ms.date: 08/20/2020
 ms.openlocfilehash: ce8ff8bedc6f6e4f99a940bbdb26bd3fafc930d8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91296768"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>將時間序列預測模型自動定型
@@ -33,7 +33,7 @@ ms.locfileid: "91296768"
 
 不同于傳統的時間序列方法，在自動化 ML 中，過去的時間序列值會「轉換」為回歸輸入變數與其他預測指標的額外維度。 這個方法會在定型期間結合多個內容變數及其相互關聯性。 由於有多個因素可能會影響預測，因此此方法非常吻合真實世界的預測案例。 例如，當預測銷售時，歷程記錄趨勢、匯率和價格的相互作用全都會共同推動銷售結果。 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 針對本文，您需要 
 

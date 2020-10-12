@@ -6,10 +6,10 @@ ms.subservice: personalizer
 ms.topic: troubleshooting
 ms.date: 02/26/2020
 ms.openlocfilehash: b5f7ed1f2ded8f6ec0320d417b59bab016d75028
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91777270"
 ---
 # <a name="personalizer-troubleshooting"></a>個人化工具疑難排解
@@ -18,11 +18,11 @@ ms.locfileid: "91777270"
 
 ## <a name="configuration-issues"></a>設定問題
 
-### <a name="i-changed-a-configuration-setting-and-now-my-loop-isnt-performing-at-the-same-learning-level-what-happened"></a>我變更了設定設定，現在我的迴圈並未在相同的學習層級執行。 發生什麼事？
+### <a name="i-changed-a-configuration-setting-and-now-my-loop-isnt-performing-at-the-same-learning-level-what-happened"></a>我變更了設定設定，現在我的迴圈並未在相同的學習層級執行。 結果如何？
 
 某些設定設定會 [重設您的模型](how-to-settings.md#settings-that-include-resetting-the-model)。 應謹慎規劃設定變更。
 
-### <a name="when-configuring-personalizer-with-the-api-i-received-an-error-what-happened"></a>使用 API 設定個人化工具時，我收到錯誤。 發生什麼事？
+### <a name="when-configuring-personalizer-with-the-api-i-received-an-error-what-happened"></a>使用 API 設定個人化工具時，我收到錯誤。 結果如何？
 
 如果您使用單一 API 要求來設定您的服務並變更學習行為，則會收到錯誤訊息。 您必須建立兩個個別的 API 呼叫：首先，設定您的服務，然後切換學習行為。
 
@@ -70,7 +70,7 @@ ms.locfileid: "91777270"
 
 ## <a name="offline-evaluations"></a>離線評估
 
-### <a name="an-offline-evaluations-feature-importance-returns-a-long-list-with-hundreds-or-thousands-of-items-what-happened"></a>離線評估的功能重要性會傳回包含數百或數千個專案的長清單。 發生什麼事？
+### <a name="an-offline-evaluations-feature-importance-returns-a-long-list-with-hundreds-or-thousands-of-items-what-happened"></a>離線評估的功能重要性會傳回包含數百或數千個專案的長清單。 結果如何？
 
 這通常是因為時間戳記、使用者識別碼或在中傳送的一些更精細的功能。
 

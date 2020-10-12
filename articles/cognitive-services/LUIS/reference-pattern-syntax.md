@@ -6,10 +6,10 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 04/14/2020
 ms.openlocfilehash: 3caccd6766226ce68b371856b081b052c1033f71
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91542184"
 ---
 # <a name="pattern-syntax"></a>模式語法
@@ -23,7 +23,7 @@ ms.locfileid: "91542184"
 
 模式語法支援下列語法：
 
-|函式|Syntax|巢狀層級|範例|
+|函式|語法|巢狀層級|範例|
 |--|--|--|--|
 |實體| {} -大括弧|2|其中的形式為 {entity name}？|
 |選用|[]-方括弧<BR><BR>選擇性和群組任意組合的嵌套層級有3個限制 |2|問號是選擇性的 [？]|
@@ -113,7 +113,7 @@ Pattern.any 實體可讓您將變動長度的實體新增至模式。 只要遵�
 
 在下列語句中，系統會正確及錯誤地擷取 **subject** 和 **person** 實體：
 
-|語句|單位|正確擷取|
+|語句|實體|正確擷取|
 |--|--|:--:|
 |email about dogs from Chris|subject=dogs<br>person=Chris|✔|
 |email about the man from La Mancha|subject=the man<br>person=La Mancha|X|

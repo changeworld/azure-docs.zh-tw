@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ba802cb86d68298cd4dfff94162069590744833c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91256457"
 ---
 # <a name="how-sso-to-on-premises-resources-works-on-azure-ad-joined-devices"></a>內部部署資源的 SSO 如何在加入 Azure AD 的裝置上運作
@@ -24,7 +24,7 @@ ms.locfileid: "91256457"
 
 本文將說明此作業的運作方式。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
  如果 Azure AD 加入的電腦未連線到您組織的網路，則需要 VPN 或其他網路基礎結構。 內部部署 SSO 需要與內部部署 AD DS 網域控制站之間的連線能力。
 

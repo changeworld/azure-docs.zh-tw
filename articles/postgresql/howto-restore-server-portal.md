@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 6/30/2020
 ms.openlocfilehash: debdbf6e08af7b9005336231abd6c998a871c525
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91708079"
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-postgresql---single-server-using-the-azure-portal"></a>如何使用 Azure 入口網站在適用於 PostgreSQL 的 Azure 資料庫-單一伺服器中備份和還原伺服器
@@ -33,7 +33,7 @@ ms.locfileid: "91708079"
 如需在建立期間設定這些值的詳細資訊，請參閱[適用於 PostgreSQL 的 Azure 資料庫伺服器快速入門](quickstart-create-server-database-portal.md)。
 
 透過下列步驟可變更伺服器的備份保留期限：
-1. 登入 [Azure 入口網站](https://portal.azure.com/)。
+1. 登入[Azure 入口網站](https://portal.azure.com/)。
 2. 選取適用於 PostgreSQL 的 Azure 資料庫伺服器。 這個動作會開啟 [概觀] 頁面。
 3. 在 [設定]**** 下方的功能表中選取 [定價層]****。 您可以使用滑桿將 [備份保留期限]**** 變更為想要的天數 (7 到 35 天)。
 下列螢幕擷取畫面中的期限已增加到 34 天。

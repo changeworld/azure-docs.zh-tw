@@ -8,10 +8,10 @@ ms.date: 02/22/2019
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: d81cd0ac57a5a18d90144584e8705cbffcba6f9b
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88871423"
 ---
 # <a name="update-the-storage-type-of-a-managed-disk"></a>更新受控磁碟的儲存體類型
@@ -22,7 +22,7 @@ Azure 受控磁片有四種磁片類型： Azure ultra 磁片、premium SSD、�
 
  
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 * 因為轉換需要重新開機虛擬機器 (VM) ，所以您應該在預先存在的維護期間排程磁片儲存體的遷移。
 * 如果您的磁片未受管理，請先 [將它轉換成受控磁片](convert-unmanaged-to-managed-disks.md) ，讓您可以在存放裝置選項之間切換。

@@ -5,10 +5,10 @@ ms.date: 04/22/2020
 ms.topic: how-to
 ms.reviewer: sunri
 ms.openlocfilehash: 7e0e585ce45616c2402972c725b502f4b704d1cd
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90532370"
 ---
 # <a name="using-azure-blockchain-workbench-data-with-microsoft-power-bi"></a>將 Azure Blockchain Workbench 資料搭配 Microsoft Power BI 使用
@@ -29,7 +29,7 @@ Microsoft Power BI 能讓您使用 Power BI Desktop，輕鬆地從 SQL DB 資料
     ![取得資料](./media/data-powerbi/get-data.png)
 3.  從資料來源類型中選取 [SQL Server]****。
 
-4.  在對話方塊中提供伺服器與資料庫名稱。 指定您要匯入資料，或執行 **DirectQuery**。 選取 [確定]。
+4.  在對話方塊中提供伺服器與資料庫名稱。 指定您要匯入資料，或執行 **DirectQuery**。 選取 [確定]  。
 
     ![選取 SQL Server](./media/data-powerbi/select-sql.png)
 

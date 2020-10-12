@@ -4,10 +4,10 @@ description: 私用 Azure container registry 的驗證選項，包括使用 Azur
 ms.topic: article
 ms.date: 01/30/2020
 ms.openlocfilehash: 7c8176d0cdca5d74ed3201071f83ed1181d94b8d
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89657087"
 ---
 # <a name="authenticate-with-an-azure-container-registry"></a>向 Azure Container Registry 進行驗證 | Microsoft Docs
@@ -115,7 +115,7 @@ az acr update -n <acrName> --admin-enabled true
 
 ![Azure 入口網站中的啟用管理使用者 UI][auth-portal-01]
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [使用 Azure CLI 推送您的第一個映像](container-registry-get-started-azure-cli.md)
 

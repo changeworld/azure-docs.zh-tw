@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a9020e364a5c8d7a59dad5549e88036dc9edaad7
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90089661"
 ---
 # <a name="device-identity-and-desktop-virtualization"></a>裝置身分識別和桌面虛擬化
@@ -56,7 +56,7 @@ ms.locfileid: "90089661"
 |   |   | 舊版 Windows | 非持續性 | 是<sup>6</sup> |
 | 已聯結的 Azure AD | 同盟 | Windows 目前 | 持續性 | 否 |
 |   |   |   | 非持續性 | 否 |
-|   | 受控 | Windows 目前 | 持續性 | 否 |
+|   | 受管理 | Windows 目前 | 持續性 | 否 |
 |   |   |   | 非持續性 | 否 |
 | 已註冊的 Azure AD | 同盟/受管理 | Windows 目前/舊版 windows | 持續/非持續性 | 不適用 |
 

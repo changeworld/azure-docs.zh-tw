@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/20/2020
 ms.author: mimckitt
-ms.openlocfilehash: a0d095c22de28368edc11fe9ab8e658c0d3ae7f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f3ddf0491c31ded6983df9da724e9321775bd1d3
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90053798"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945221"
 ---
 # <a name="general-purpose-virtual-machine-sizes"></a>一般用途的虛擬機器大小
 
@@ -29,9 +29,9 @@ ms.locfileid: "90053798"
 
 - [Dav4 和 Dasv4 系列](dav4-dasv4-series.md)是新的尺寸，採用 AMD 的 2.35Ghz EPYC<sup>TM</sup> 7452 處理器，其中包含多執行緒設定，高達 256 MB 的 L3 快取，每 8 個核心分配 8 MB 的 L3 快取，增加客戶執行其一般用途工作負載的選項。 Dav4 系列和 Dasv4 系列具有與 D 和 Dsv3 系列相同的記憶體和磁碟設定。
 
-- [Dv4 和 Dsv4 系列](dv4-dsv4-series.md) Dv4 和 Dsv4 系列是在 Intel®) ®白金級 8272CL (串聯 Lake 處理器上的超執行緒設定中執行，為大部分的一般用途工作負載提供更好的價值主張。 它有一種持續的核心 Turbo 頻率速度 3.4 GHz。
+- [Dv4 和 Dsv4 系列](dv4-dsv4-series.md) Dv4 和 Dsv4 系列是在 Intel®) ®白金級 8272CL (串聯 Lake 處理器上的超執行緒設定中執行，為大部分的一般用途工作負載提供更好的價值主張。 它具備 3.4 GHz 的所有核心 Turbo 頻率速度。
 
-- [Ddv4 和 Ddsv4 系列](ddv4-ddsv4-series.md) Ddv4 和 Ddsv4 系列是在 Intel 8272CL &reg; &reg; 白金級 (串聯 Lake) 處理器上的超執行緒設定中執行，為大部分的一般用途工作負載提供更好的價值主張。 具備全核心滿載可維持 3.4 GHz 的渦輪時脈速度、[Intel&reg; 渦輪加速技術 2.0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html)、[Intel&reg; 超執行緒技術](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html)與 [Intel&reg; Advanced Vector Extensions 512 (Intel&reg; AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html)。 它們也支援 [Intel &reg; 深度學習提升](https://software.intel.com/content/www/us/en/develop/topics/ai/deep-learning-boost.html)。 相較於 [Dv3/Dsv3](./dv3-dsv3-series.md) 大小搭配使用[第 2 代 VM](./linux/generation-2.md)，這些新 VM 大小的本機儲存體加大 50%，而且讀取和寫入時的本機磁碟 IOPS 更佳。
+- [Ddv4 和 Ddsv4 系列](ddv4-ddsv4-series.md) Ddv4 和 Ddsv4 系列是在 Intel 8272CL &reg; &reg; 白金級 (串聯 Lake) 處理器上的超執行緒設定中執行，為大部分的一般用途工作負載提供更好的價值主張。 它具備 3.4 GHz、 [intel &reg; Turbo 加速技術 2.0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html)、 [Intel &reg; Hyper-Threading 技術](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html) 和 [intel &reg; Advanced Vector Extensions 512 (Intel &reg; AVX-512) ](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html)的核心 Turbo 頻率速度。 它們也支援 [Intel &reg; 深度學習提升](https://software.intel.com/content/www/us/en/develop/topics/ai/deep-learning-boost.html)。 相較於 [Dv3/Dsv3](./dv3-dsv3-series.md) 大小搭配使用[第 2 代 VM](./linux/generation-2.md)，這些新 VM 大小的本機儲存體加大 50%，而且讀取和寫入時的本機磁碟 IOPS 更佳。
 
 - [Dv3 和 Dsv3 系列](dv3-dsv3-series.md) Vm 會在第2代的 Intel®) ®白金級 8272CL (串聯 Lake、Intel®® 8171M 2.1 GHz (Skylake) 、Intel®® E5-2673 v4 2.3 GHz (Broadwell) ，或 Intel®® E5-2673 v3 2.4 GHz (Haswell) 處理器在超執行緒設定中，為大部分的一般用途工作負載提供更佳的價值主張。 除了記憶體已擴充 (從 ~3.5 GiB/vCPU 到 4 GiB/vCPU)，磁碟和網路限制也已就個別核心進行調整，以符合移轉至超執行緒的需求。 Dv3 系列不再擁有 D/Dv2 系列的高記憶體 VM，這些都已移至記憶體最佳化的 [Ev3 和 Esv3 系列](ev3-esv3-series.md)。
 

@@ -11,17 +11,17 @@ ms.custom: subject-moving-resources
 ms.date: 08/12/2020
 ms.author: jgardner
 ms.openlocfilehash: d3b8bfbef544e754f684421daa847f1724435d53
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88875618"
 ---
 # <a name="move-an-azure-workbook-to-another-region"></a>將 Azure 活頁簿移至另一個區域
 
 本文說明如何將 Azure 活頁簿資源移至不同的 Azure 區域。 您可能會因為許多原因而將資源移至另一個區域。 例如，若要利用新的 Azure 區域，只部署特定區域中提供的功能或服務，以符合內部原則和治理需求，或為了回應容量規劃需求。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 * 確定目的地區域中支援活頁簿。
 
@@ -49,7 +49,7 @@ ms.locfileid: "88875618"
 
 使用 Azure 活頁簿流覽 UI 來尋找新的活頁簿。 確定位置是目標位置。
 
-## <a name="clean-up"></a>清理
+## <a name="clean-up"></a>清除
 
 在新區域中建立活頁簿之後，請刪除先前區域中的原始活頁簿。
 1. 在活頁簿檢視器中開啟原始活頁簿。

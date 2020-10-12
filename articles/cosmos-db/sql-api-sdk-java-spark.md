@@ -10,10 +10,10 @@ ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
 ms.openlocfilehash: afee95f6a8776c3506e10c29cfd8e776734a915a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91326672"
 ---
 # <a name="azure-cosmos-db-apache-spark-connector-for-core-sql-api-release-notes-and-resources"></a>適用于 Core (SQL) API 的 Azure Cosmos DB Apache Spark 連接器：版本資訊和資源
@@ -27,7 +27,7 @@ ms.locfileid: "91326672"
 > * [非同步 Java SDK v2](sql-api-sdk-async-java.md)
 > * [同步 Java SDK v2](sql-api-sdk-java.md)
 > * [春季資料 v2](sql-api-sdk-java-spring-v2.md)
-> * [春季資料 v3](sql-api-sdk-java-spring-v3.md)
+> * [Spring Data v3](sql-api-sdk-java-spring-v3.md)
 > * [Spark 連接器](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api/cosmos-db/)
