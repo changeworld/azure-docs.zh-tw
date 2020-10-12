@@ -15,16 +15,16 @@ ms.topic: troubleshooting
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: d6ad0b8b37bd4f04c22ed52d4ac6717202f22889
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88192485"
 ---
 # <a name="troubleshooting-azure-cdn-endpoints-that-return-a-404-status-code"></a>針對傳回 404 狀態碼的 Azure CDN 端點進行疑難排解
 本文可讓您針對傳回 404 HTTP 回應狀態碼的 Azure 內容傳遞網路 (CDN) 端點問題進行疑難排解。
 
-如果在本文章中有任何需要協助的地方，您可以連絡 [MSDN Azure 和 Stack Overflow 論壇](https://azure.microsoft.com/support/forums/)上的 Azure 專家。 或者，您也可以提出 Azure 支援事件。 請移至 [Azure 支援網站](https://azure.microsoft.com/support/options/) ，然後選取 [ **取得支援**]。
+如果在本文章中有任何需要協助的地方，您可以連絡 [MSDN Azure 和 Stack Overflow 論壇](https://azure.microsoft.com/support/forums/)上的 Azure 專家。 或者，您也可以提出 Azure 支援事件。 前往 [Azure 支援網站](https://azure.microsoft.com/support/options/) ，然後選取 [ **取得支援**]。
 
 ## <a name="symptom"></a>徵狀
 您已建立 CDN 設定檔和端點，但您的內容似乎無法在 CDN 上使用。 嘗試透過 CDN URL 存取內容的使用者收到 HTTP 404 狀態碼。 
@@ -73,7 +73,7 @@ ms.locfileid: "88192485"
 #### <a name="http-and-https-ports"></a>HTTP 和 HTTPS 連接埠
 檢查您的 **HTTP** 和 **HTTPS 連接埠**。 在大部分情況下，80 和 443 皆正確，而且您不需要進行任何變更。  不過，如果原始伺服器是透過不同連接埠連接，那麼就必須在這裡表示。 如果您不確定，請檢視來源檔案的 URL。 HTTP 和 HTTPS 規格使用連接埠 80 和 443 作為預設值。 在範例 URL (https:\//cdndocdemo.blob.core.windows.net/publicblob/lorem.txt) 中，未指定連接埠，因此會假設預設值為 443 且設定正確無誤。  
 
-不過，假如您在稍早測試的來源檔案 URL 為 http:\//www.contoso.com:8080/file.txt。 請注意，主機名稱區段結尾的 :8080**。 該數位會指示瀏覽器使用埠8080連線到 www contoso.com 的 web 伺服器 \. ，因此您必須在 [ **HTTP 埠**] 欄位中輸入*8080* 。 請務必注意，這些連接埠設定只會影響端點用來從來源擷取資訊的連接埠。
+不過，假如您在稍早測試的來源檔案 URL 為 http:\//www.contoso.com:8080/file.txt。 請注意，主機名稱區段結尾的 :8080**。 該數位指示瀏覽器使用埠8080連線到位於 www contoso.com 的 web 伺服器 \. ，因此您必須在 [ **HTTP 埠**] 欄位中輸入*8080* 。 請務必注意，這些連接埠設定只會影響端點用來從來源擷取資訊的連接埠。
 
 > [!NOTE]
 > **來自 Akamai 的標準 Azure CDN** 端點不允許來源的完整 TCP 連接埠範圍。  如需不允許的原始連接埠清單，請參閱 [來自 Akamai 的 Azure CDN 允許的原始連接埠](/previous-versions/azure/mt757337(v=azure.100))。  

@@ -9,10 +9,10 @@ ms.date: 09/12/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 1c2525b352c25f470814ce909a8d10ff821d9e32
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "70961606"
 ---
 產生 CA 憑證。
@@ -22,7 +22,7 @@ ms.locfileid: "70961606"
   ipsec pki --self --in caKey.pem --dn "CN=VPN CA" --ca --outform pem > caCert.pem
   ```
 
-列印 base64 格式的 CA 憑證。 這是 Azure 支援的格式。 您會在[P2S 設定步驟](../articles/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md)中，將此憑證上傳至 Azure。
+列印 base64 格式的 CA 憑證。 這是 Azure 支援的格式。 您可以將此憑證上傳至 Azure，作為 [P2S 設定步驟](../articles/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md)的一部分。
 
   ```
   openssl x509 -in caCert.pem -outform der | base64 -w0 ; echo

@@ -12,17 +12,17 @@ ms.date: 03/30/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: b01f1edd4305c09a874b177e4bca373991c9162e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85203804"
 ---
 # <a name="predicates-and-predicatevalidations"></a>Predicates 與 PredicateValidations
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-述詞和**PredicateValidations**元素可讓您執行驗證**程式，以**確保在您的 Azure Active Directory B2C （Azure AD B2C）租使用者中只輸入正確格式的資料。
+述詞和**PredicateValidations**元素可讓您執行驗證**程式，以**確保只會在 Azure Active Directory B2C (Azure AD B2C) 租使用者中輸入正確格式的資料。
 
 下圖顯示元素之間的關聯性：
 
@@ -32,38 +32,38 @@ ms.locfileid: "85203804"
 
 **Predicate** 元素會定義基本驗證來檢查宣告類型的值，並傳回 `true` 或 `false`。 您可以使用指定的 **Method** 元素及與該方法相關聯的一組 **Parameter** 元素來完成驗證。 例如，述詞可以檢查字串宣告值的長度是否介於所指定 Minimum 和 Maximum 參數的範圍內，或者字串宣告值是否包含字元集。 **UserHelpText** 元素會在檢查失敗時，為使用者提供錯誤訊息。 **UserHelpText** 元素的值可以使用[語言自訂](localization.md)進行當地語系化。
 
-述**詞元素必須**緊接在[BuildingBlocks](buildingblocks.md)元素內的**ClaimsSchema**元素後面。
+述**詞元素必須**緊接在[BuildingBlocks](buildingblocks.md)元素內的**ClaimsSchema**元素之後。
 
 **Predicates** 元素包含下列元素：
 
-| 元素 | 發生次數 | Description |
+| 元素 | 發生次數 | 描述 |
 | ------- | ----------- | ----------- |
 | Predicate | 1:n | 述詞清單。 |
 
 **Predicate** 元素包含下列屬性：
 
-| 屬性 | 必要 | 說明 |
+| 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
-| Id | Yes | 要用於述詞的識別碼。 其他元素可以在原則中使用這個識別碼。 |
-| 方法 | Yes | 要用於驗證的方法類型。 可能的值：[IsLengthRange](#islengthrange)、[MatchesRegex](#matchesregex)、[IncludesCharacters](#includescharacters) 或 [IsDateRange](#isdaterange)。  |
-| HelpText | No | 檢查失敗時提供給使用者的錯誤訊息。 此字串可以使用[語言自訂](localization.md)進行當地語系化。 |
+| Id | 是 | 要用於述詞的識別碼。 其他元素可以在原則中使用這個識別碼。 |
+| 方法 | 是 | 要用於驗證的方法類型。 可能的值：[IsLengthRange](#islengthrange)、[MatchesRegex](#matchesregex)、[IncludesCharacters](#includescharacters) 或 [IsDateRange](#isdaterange)。  |
+| HelpText | 否 | 檢查失敗時提供給使用者的錯誤訊息。 此字串可以使用[語言自訂](localization.md)進行當地語系化。 |
 
 **Predicate** 元素包含下列元素：
 
-| 元素 | 發生次數 | Description |
+| 元素 | 發生次數 | 描述 |
 | ------- | ----------- | ----------- |
-| UserHelpText | 0:1 | 不再如果檢查失敗，則為使用者提供錯誤訊息。 |
+| UserHelpText | 0:1 | 如果檢查失敗， (已淘汰) 使用者的錯誤訊息。 |
 | 參數 | 1:1 | 適用於字串驗證方法類型的參數。 |
 
 **Parameters** 元素包含下列元素：
 
-| 元素 | 發生次數 | Description |
+| 元素 | 發生次數 | 描述 |
 | ------- | ----------- | ----------- |
 | 參數 | 1:n | 適用於字串驗證方法類型的參數。 |
 
 **Parameter** 元素包含下列屬性：
 
-| 元素 | 發生次數 | Description |
+| 元素 | 發生次數 | 描述 |
 | ------- | ----------- | ----------- |
 | Id | 1:1 | 參數的識別碼。 |
 
@@ -73,13 +73,13 @@ ms.locfileid: "85203804"
 
 IsLengthRange 方法會檢查字串宣告值的長度是否在指定的最小和最大參數範圍內。 述詞元素支援下列參數：
 
-| 參數 | 必要 | 說明 |
+| 參數 | 必要 | 描述 |
 | ------- | ----------- | ----------- |
-| 最大值 | Yes | 可輸入的最大字元數。 |
-| 最低需求 | Yes | 必須輸入的最小字元數。 |
+| 最大值 | 是 | 可以輸入的最大字元數。 |
+| 最小值 | 是 | 必須輸入的最小字元數。 |
 
 
-下列範例顯示具有參數的 IsLengthRange 方法， `Minimum` 並 `Maximum` 指定字串的長度範圍：
+下列範例顯示具有參數的 IsLengthRange 方法 `Minimum` ，並 `Maximum` 指定字串的長度範圍：
 
 ```xml
 <Predicate Id="IsLengthBetween8And64" Method="IsLengthRange" HelpText="The password must be between 8 and 64 characters.">
@@ -94,9 +94,9 @@ IsLengthRange 方法會檢查字串宣告值的長度是否在指定的最小和
 
 MatchesRegex 方法會檢查字串宣告值是否符合正則運算式。 述詞元素支援下列參數：
 
-| 參數 | 必要 | 說明 |
+| 參數 | 必要 | 描述 |
 | ------- | ----------- | ----------- |
-| RegularExpression | Yes | 要比對的規則運算式模式。 |
+| RegularExpression | 是 | 要比對的規則運算式模式。 |
 
 下列範例顯示 `MatchesRegex` 方法，以及可指定規則運算式的 `RegularExpression` 參數：
 
@@ -108,13 +108,13 @@ MatchesRegex 方法會檢查字串宣告值是否符合正則運算式。 述詞
 </Predicate>
 ```
 
-#### <a name="includescharacters"></a>IncludesCharacters
+#### <a name="includescharacters"></a>>includescharacters
 
-IncludesCharacters 方法會檢查字串宣告值是否包含字元集。 述詞元素支援下列參數：
+>includescharacters 方法會檢查字串宣告值是否包含字元集。 述詞元素支援下列參數：
 
-| 參數 | 必要 | 說明 |
+| 參數 | 必要 | 描述 |
 | ------- | ----------- | ----------- |
-| CharacterSet | Yes | 可以輸入的一組字元。 例如，小寫字元 `a-z` 、大寫字元 `A-Z` 、數位 `0-9` 或符號清單（例如） `@#$%^&amp;*\-_+=[]{}|\\:',?/~"();!` 。 |
+| CharacterSet | 是 | 可輸入的字元組。 例如，小寫字元  `a-z` 、大寫字元 `A-Z` 、數位 `0-9` 或符號清單，例如 `@#$%^&amp;*\-_+=[]{}|\\:',?/~"();!` 。 |
 
 下列範例顯示 `IncludesCharacters` 方法，以及可指定字元集的 `CharacterSet` 參數：
 
@@ -126,14 +126,14 @@ IncludesCharacters 方法會檢查字串宣告值是否包含字元集。 述詞
 </Predicate>
 ```
 
-#### <a name="isdaterange"></a>IsDateRange
+#### <a name="isdaterange"></a>>isdaterange
 
-IsDateRange 方法會檢查日期宣告值是否介於指定的最小和最大參數範圍之間。 述詞元素支援下列參數：
+>isdaterange 方法會檢查日期宣告值是否介於指定的最小和最大參數範圍之間。 述詞元素支援下列參數：
 
-| 參數 | 必要 | 說明 |
+| 參數 | 必要 | 描述 |
 | ------- | ----------- | ----------- |
-| 最大值 | Yes | 可輸入的最大可能日期。 日期的格式會遵循 `yyyy-mm-dd` 慣例，或 `Today` 。 |
-| 最低需求 | Yes | 可輸入的最小可能日期。 日期的格式會遵循 `yyyy-mm-dd` 慣例，或 `Today` 。|
+| 最大值 | 是 | 可以輸入的最大可能日期。 日期的格式遵循 `yyyy-mm-dd` 慣例或 `Today` 。 |
+| 最小值 | 是 | 可以輸入的最小可能日期。 日期的格式遵循 `yyyy-mm-dd` 慣例或 `Today` 。|
 
 下列範例顯示 `IsDateRange` 方法，以及可使用 `yyyy-mm-dd` 和 `Today` 格式來指定日期範圍的 `Minimum` 和 `Maximum` 參數。
 
@@ -150,7 +150,7 @@ IsDateRange 方法會檢查日期宣告值是否介於指定的最小和最大�
 
 當述詞定義驗證以針對宣告類型進行檢查時，**PredicateValidations** 會群組一組述詞，以形成可套用至宣告類型的使用者輸入驗證。 每個 **PredicateValidation** 元素均包含一組 **PredicateGroup** 元素，其中包含一組指向 **Predicate** 的 **PredicateReference** 元素。 若要通過驗證，宣告的值應該在所有的 **PredicateGroup** 下方，使用它們的 **PredicateReference** 元素組來傳遞任何述詞的所有測試。
 
-**PredicateValidations**元素必須緊接在[BuildingBlocks](buildingblocks.md)元素內的述**詞元素後面**。
+**PredicateValidations**元素必須緊接在[BuildingBlocks](buildingblocks.md)元素內的述**詞元素之後**。
 
 ```xml
 <PredicateValidations>
@@ -172,58 +172,58 @@ IsDateRange 方法會檢查日期宣告值是否介於指定的最小和最大�
 
 **PredicateValidations** 元素包含下列元素：
 
-| 元素 | 發生次數 | Description |
+| 元素 | 發生次數 | 描述 |
 | ------- | ----------- | ----------- |
 | PredicateValidation | 1:n | 述詞驗證清單。 |
 
 **PredicateValidation** 元素包含下列屬性：
 
-| 屬性 | 必要 | 說明 |
+| 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
-| Id | Yes | 要用於述詞驗證的識別碼。 **ClaimType** 元素可以在原則中使用這個識別碼。 |
+| Id | 是 | 要用於述詞驗證的識別碼。 **ClaimType** 元素可以在原則中使用這個識別碼。 |
 
 **PredicateValidation** 元素包含下列元素：
 
-| 元素 | 發生次數 | Description |
+| 元素 | 發生次數 | 描述 |
 | ------- | ----------- | ----------- |
 | PredicateGroups | 1:n | 述詞群組清單。 |
 
 **PredicateGroups** 元素包含下列元素：
 
-| 元素 | 發生次數 | Description |
+| 元素 | 發生次數 | 描述 |
 | ------- | ----------- | ----------- |
 | PredicateGroup | 1:n | 述詞清單。 |
 
 **PredicateGroup** 元素包含下列屬性：
 
-| 屬性 | 必要 | 說明 |
+| 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
-| Id | Yes | 要用於述詞群組的識別碼。  |
+| Id | 是 | 要用於述詞群組的識別碼。  |
 
 **PredicateGroup** 元素包含下列元素：
 
-| 元素 | 發生次數 | Description |
+| 元素 | 發生次數 | 描述 |
 | ------- | ----------- | ----------- |
 | UserHelpText | 0:1 |  述詞的說明，有助於使用者了解他們應輸入的值。 |
 | PredicateReferences | 1:n | 述詞參考清單。 |
 
 **PredicateReferences** 元素包含下列屬性：
 
-| 屬性 | 必要 | 說明 |
+| 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
-| MatchAtLeast | No | 指定值至少必須符合許多述詞定義，以用於要接受的輸入。 如果未指定，則值必須符合所有述詞定義。 |
+| MatchAtLeast | 否 | 指定值至少必須符合許多述詞定義，以用於要接受的輸入。 如果未指定，則值必須符合所有述詞定義。 |
 
 **PredicateReferences** 元素包含下列元素：
 
-| 元素 | 發生次數 | Description |
+| 元素 | 發生次數 | 描述 |
 | ------- | ----------- | ----------- |
 | PredicateReference | 1:n | 對述詞的參考。 |
 
 **PredicateReference** 元素包含下列屬性：
 
-| 屬性 | 必要 | 說明 |
+| 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
-| Id | Yes | 要用於述詞驗證的識別碼。  |
+| Id | 是 | 要用於述詞驗證的識別碼。  |
 
 
 ## <a name="configure-password-complexity"></a>設定密碼複雜度
@@ -234,7 +234,7 @@ IsDateRange 方法會檢查日期宣告值是否介於指定的最小和最大�
 - 使用 `IncludesCharacters` 方法的 **Lowercase**，驗證密碼包含小寫字母。
 - 使用 `IncludesCharacters` 方法的 **Uppercase**，驗證密碼包含大寫字母。
 - 使用 `IncludesCharacters` 方法的 **Number**，驗證密碼包含數字。
-- **符號**：使用 `IncludesCharacters` 方法，驗證密碼包含數個符號字元的其中一個。
+- 使用方法的**符號** `IncludesCharacters` ，驗證密碼包含數個符號字元的其中一個。
 - 使用 `MatchesRegex` 方法的 **PIN**，驗證密碼只包含數字。
 - 使用 `MatchesRegex` 方法的 **AllowedAADCharacters**，驗證提供了只對密碼無效的字元。
 - 使用 `MatchesRegex` 方法的 **DisallowedWhitespace**，驗證密碼不是以空白字元開始或結尾。
@@ -428,4 +428,4 @@ IsDateRange 方法會檢查日期宣告值是否介於指定的最小和最大�
 
 ## <a name="next-steps"></a>後續步驟
 
-- 瞭解如何在使用述詞驗證[的 Azure Active Directory B2C 中，使用自訂原則來設定密碼複雜度](custom-policy-password-complexity.md)。
+- 瞭解如何 [在 Azure Active Directory B2C 中使用自訂原則](custom-policy-password-complexity.md) ，使用述詞驗證來設定密碼複雜度。

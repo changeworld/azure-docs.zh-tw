@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/21/2020
 keywords: 提取秘密、aro、openshift、red hat
 ms.openlocfilehash: 769b7589fb6496fc2f4123665ad1f6fe61d0cce2
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89294742"
 ---
 # <a name="add-or-update-your-red-hat-pull-secret-on-an-azure-red-hat-openshift-4-cluster"></a>在 Azure Red Hat OpenShift 4 叢集中新增或更新您的 Red Hat 提取秘密
@@ -230,7 +230,7 @@ openshift-marketplace   redhat-operators      Red Hat Operators     grpc   Red H
 
 為確保您的提取密碼已更新且正常運作，請開啟 OperatorHub，並檢查是否有任何 Red Hat 驗證的操作員。 例如，檢查 OpenShift 容器儲存體操作員是否可用，並查看您是否有安裝的許可權。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 若要深入瞭解 Red Hat 提取秘密，請參閱 [使用映射提取秘密](https://docs.openshift.com/container-platform/4.5/openshift_images/managing_images/using-image-pull-secrets.html)。
 
 若要深入瞭解 Red Hat OpenShift 4，請參閱 [Azure Red Hat OpenShift 4](https://docs.openshift.com/aro/4/welcome/index.html)。

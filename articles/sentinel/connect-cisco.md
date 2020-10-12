@@ -1,6 +1,6 @@
 ---
 title: 將 Cisco 資料連線到 Azure Sentinel |Microsoft Docs
-description: 瞭解如何將 Cisco ASA 應用裝置連接到 Azure Sentinel 以觀看儀表板、建立自訂警示，以及改善調查。
+description: 瞭解如何將 Cisco ASA 設備連接至 Azure Sentinel 以查看儀表板、建立自訂警示，以及改進調查。
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -16,27 +16,27 @@ ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
 ms.openlocfilehash: e8a64dd3e47384ba2bf7579f8052177252634622
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85566042"
 ---
-# <a name="connect-cisco-asa-to-azure-sentinel"></a>將 Cisco ASA 連線至 Azure Sentinel
+# <a name="connect-cisco-asa-to-azure-sentinel"></a>將 Cisco ASA 連接到 Azure Sentinel
 
 
 
-本文說明如何將 Cisco ASA 應用裝置連接到 Azure Sentinel。 Cisco ASA 資料連線器可讓您輕鬆地將 Cisco ASA 記錄與 Azure Sentinel 連線、查看儀表板、建立自訂警示，以及改善調查。 在 Azure Sentinel 上使用 Cisco ASA 可讓您更深入瞭解組織的網際網路使用方式，並將增強其安全性作業功能。 
+本文說明如何將 Cisco ASA 設備連接到 Azure Sentinel。 Cisco ASA data connector 可讓您輕鬆地將 Cisco ASA 記錄與 Azure Sentinel 連接、查看儀表板、建立自訂警示，以及改進調查。 在 Azure Sentinel 上使用 Cisco ASA，可讓您深入瞭解組織的網際網路使用方式，並將增強其安全性作業功能。 
 
 
 
 ## <a name="forward-cisco-asa-logs-to-the-syslog-agent"></a>將 Cisco ASA 記錄轉送到 Syslog 代理程式
 
-Cisco ASA 不支援 CEF，因此記錄會以 Syslog 的形式傳送，而 Azure Sentinel 代理程式知道如何剖析它們，就好像它們是 CEF 記錄一樣。 設定 Cisco ASA，以透過 Syslog 代理程式將 Syslog 訊息轉送至您的 Azure 工作區：
+Cisco ASA 不支援 CEF，所以記錄會以 Syslog 的形式傳送，而 Azure Sentinel 代理程式知道如何剖析它們，就像是 CEF 記錄一樣。 設定 Cisco ASA 透過 Syslog 代理程式將 Syslog 訊息轉送至 Azure 工作區：
 
-1. 請移至將[Syslog 訊息傳送至外部 Syslog 伺服器](https://aka.ms/asi-syslog-cisco-forwarding)，並遵循指示來設定連線。 出現提示時，請使用這些參數：
-    - 將**埠**設定為514或您在代理程式中設定的埠。
-    - 將**syslog_ip**設定為代理程式的 ip 位址。
+1. 移至 [將 [Syslog 訊息傳送至外部 syslog 伺服器](https://aka.ms/asi-syslog-cisco-forwarding)]，並遵循指示來設定連接。 當系統提示時，請使用下列參數：
+    - 將 **埠** 設定為514或您在代理程式中設定的埠。
+    - 將 **syslog_ip** 設定為代理程式的 ip 位址。
 
 1. 若要在 Log Analytics 中針對 Cisco 事件使用相關的架構，請搜尋 `CommonSecurityLog` 。
 

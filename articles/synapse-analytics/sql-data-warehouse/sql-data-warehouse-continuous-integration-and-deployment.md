@@ -1,5 +1,5 @@
 ---
-title: 持續整合及部署
+title: 持續整合與部署
 description: 適用于資料倉儲的企業級資料庫 DevOps 體驗，內建支援使用 Azure Pipelines 進行持續整合和部署。
 services: synapse-analytics
 author: kevinvngo
@@ -12,10 +12,10 @@ ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
 ms.openlocfilehash: 131811ffd268f001a047a7031170f0723770d24c
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89462321"
 ---
 # <a name="continuous-integration-and-deployment-for-data-warehousing"></a>資料倉儲的持續整合和部署
@@ -58,7 +58,7 @@ ms.locfileid: "89462321"
 
    執行及驗證您的管線。 您可以在本機進行變更，並將變更簽入原始檔控制，以產生自動建置和部署。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 探索 [SYNAPSE SQL 集區 MPP 架構](massively-parallel-processing-mpp-architecture.md)
 - 快速[建立 SQL 集區](create-data-warehouse-portal.md)

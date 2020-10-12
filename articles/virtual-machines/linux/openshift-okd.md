@@ -10,17 +10,17 @@ ms.workload: infrastructure
 ms.date: 10/15/2019
 ms.author: haroldw
 ms.openlocfilehash: a7524ea80906f9df5f63af9e7d672bbef500b0d9
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87373329"
 ---
 # <a name="deploy-okd-in-azure"></a>在 Azure 中部署 OKD
 
 您可使用這兩種方式之一在 Azure 中部署 OKD (之前稱為 OpenShift Origin)：
 
-- 您可以手動部署所有必要的 Azure 基礎結構元件，然後遵循[OKD 檔](https://docs.okd.io)。
+- 您可以手動部署所有必要的 Azure 基礎結構元件，然後遵循 [OKD 檔](https://docs.okd.io)。
 - 您也可以使用能夠簡化 OKD 叢集部署的現有 [Resource Manager 範本](https://github.com/Microsoft/openshift-origin)。
 
 ## <a name="deploy-using-the-okd-template"></a>使用 OKD 範本部署
@@ -156,7 +156,7 @@ $ ssh -p 2200 clusteradmin@myopenshiftmaster.cloudapp.azure.com
 az group delete --name openshiftrg
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - [部署後工作](./openshift-container-platform-3x-post-deployment.md)
 - [針對 OpenShift 部署進行疑難排解](./openshift-container-platform-3x-troubleshooting.md)

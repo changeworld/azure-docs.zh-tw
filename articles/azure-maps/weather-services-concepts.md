@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 4430737814ef904e83b2bf3ce25edf3d44e2668d
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90972047"
 ---
 # <a name="weather-services-in-azure-maps"></a>Azure 地圖服務的氣象服務
@@ -86,13 +86,13 @@ ms.locfileid: "90972047"
 | 32           | :::image type="icon" source="./media/weather-services-concepts/windy-i.png"::: | 是 |  是   | 風|
 | 33           | :::image type="icon" source="./media/weather-services-concepts/clear-night.png"::: | 否  |  是   | 清除|
 | 34           | :::image type="icon" source="./media/weather-services-concepts/mostly-clear-night.png"::: | 否  |  是   | 大多明確|
-| 35           | :::image type="icon" source="./media/weather-services-concepts/partly-cloudy-night.png"::: | No  |  是   | 部分的雲|
+| 35           | :::image type="icon" source="./media/weather-services-concepts/partly-cloudy-night.png"::: | 否  |  是   | 部分的雲|
 | 36           | :::image type="icon" source="./media/weather-services-concepts/intermittent-clouds-Night.png"::: | 否  |  是   | 間歇雲|
 | 37           | :::image type="icon" source="./media/weather-services-concepts/hazymoon-light.png"::: | 否  |  是   | 模糊 Moonlight|
 | 38           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-night.png"::: | 否  |  是   | 大多是的雲|
 | 39           | :::image type="icon" source="./media/weather-services-concepts/partly-cloudy-showers-night.png"::: | 否  |  是   | 部分具有大氣的雲|
 | 40           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-showers-night.png"::: | 否  |  是   | 大部分是使用大氣的雲|
-| 41           | :::image type="icon" source="./media/weather-services-concepts/partly-cloudy-tstorms-night.png"::: | No  |  是   | 部分具有 Thunderstorms 的雲|
+| 41           | :::image type="icon" source="./media/weather-services-concepts/partly-cloudy-tstorms-night.png"::: | 否  |  是   | 部分具有 Thunderstorms 的雲|
 | 42           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-tstorms-night.png"::: | 否  |  是   | 大部分是使用 Thunderstorms 的雲|
 | 43           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-flurries-night.png"::: | 否  |  是   | 大部分是使用 Flurries 的雲|
 | 44           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-snow.png"::: | 否  |  是   | 大部分是具有雪的雲|
@@ -109,21 +109,21 @@ ms.locfileid: "90972047"
 | 十六進位色彩代碼 | 色彩範例 | 天氣狀況 |
 |----------------|--------------|-------------------|
 | #93c701        | ![Rain 光的色彩。](./media/weather-services-concepts/color-93c701.png) | Rain-Light |
-| #ffd701        | ![Rain-適中的色彩。](./media/weather-services-concepts/color-ffd701.png) | Rain-適中 |
-| #f05514        | ![Rain-繁重的色彩。](./media/weather-services-concepts/color-f05514.png) | Rain-繁重 |
-| #dc250e        | ![Rain-嚴重的色彩。](./media/weather-services-concepts/color-dc250e.png) | Rain-嚴重 |
-| #9ec8f2        | ![雪光的色彩。](./media/weather-services-concepts/color-9ec8f2.png) | 雪-Light |
-| #2a8fdb        | ![雪-適中的色彩。](./media/weather-services-concepts/color-2a8fdb.png) | 雪-適中 |
-| #144bed        | ![雪繁重的色彩。](./media/weather-services-concepts/color-144bed.png) | 雪-繁重 |
-| #020096        | ![雪嚴重的色彩。](./media/weather-services-concepts/color-020096.png) | 雪-嚴重 |
-| #e6a5c8        | ![霜淇淋的色彩。](./media/weather-services-concepts/color-e6a5c8.png) | 霜淇淋 |
-| #d24fa0        | ![霜淇淋的色彩。](./media/weather-services-concepts/color-d24fa0.png) | 霜淇淋 |
-| #b71691        | ![霜淇淋的色彩。](./media/weather-services-concepts/color-b71691.png) | Ice-嚴重 |
-| #7a1570        | ![Ice 繁重的色彩。](./media/weather-services-concepts/color-7a1570.png) | 冰繁重 |
-| #c196e6        | ![混合光的色彩。](./media/weather-services-concepts/color-c196e6.png) | 混合-淺色 |
-| #ae6ee6        | ![混合-中度的色彩。](./media/weather-services-concepts/color-ae6ee6.png) | 混合-中度 |
-| #8a32d7        | ![混合繁重的色彩。](./media/weather-services-concepts/color-8a32d7.png) | 混合-繁重 |
-| #6500ba        | ![混合嚴重性的色彩。](./media/weather-services-concepts/color-6500ba.png) | 混合-嚴重 |
+| #ffd701        | ![Rain-適中的色彩。](./media/weather-services-concepts/color-ffd701.png) | Rain-Moderate |
+| #f05514        | ![Rain-繁重的色彩。](./media/weather-services-concepts/color-f05514.png) | Rain-Heavy |
+| #dc250e        | ![Rain-嚴重的色彩。](./media/weather-services-concepts/color-dc250e.png) | Rain-Severe |
+| #9ec8f2        | ![雪光的色彩。](./media/weather-services-concepts/color-9ec8f2.png) | Snow-Light |
+| #2a8fdb        | ![雪-適中的色彩。](./media/weather-services-concepts/color-2a8fdb.png) | Snow-Moderate |
+| #144bed        | ![雪繁重的色彩。](./media/weather-services-concepts/color-144bed.png) | Snow-Heavy |
+| #020096        | ![雪嚴重的色彩。](./media/weather-services-concepts/color-020096.png) | Snow-Severe |
+| #e6a5c8        | ![霜淇淋的色彩。](./media/weather-services-concepts/color-e6a5c8.png) | Ice-Light |
+| #d24fa0        | ![霜淇淋的色彩。](./media/weather-services-concepts/color-d24fa0.png) | Ice-Moderate |
+| #b71691        | ![霜淇淋的色彩。](./media/weather-services-concepts/color-b71691.png) | Ice-Severe |
+| #7a1570        | ![Ice 繁重的色彩。](./media/weather-services-concepts/color-7a1570.png) | Ice-Heavy |
+| #c196e6        | ![混合光的色彩。](./media/weather-services-concepts/color-c196e6.png) | Mix-Light |
+| #ae6ee6        | ![混合-中度的色彩。](./media/weather-services-concepts/color-ae6ee6.png) | Mix-Moderate |
+| #8a32d7        | ![混合繁重的色彩。](./media/weather-services-concepts/color-8a32d7.png) | Mix-Heavy |
+| #6500ba        | ![混合嚴重性的色彩。](./media/weather-services-concepts/color-6500ba.png) | Mix-Severe |
 
 具有十六進位色彩代碼和 dBZ 值的雷達圖圖格詳細色彩選擇區如下所示。 dBZ 代表氣象雷達圖中的降雨濃度。 
 
@@ -199,7 +199,7 @@ ms.locfileid: "90972047"
 
 | 十六進位色彩代碼 | 色彩範例 | 雲端溫度 |
 |----------------|--------------|-------------------|
-| #b5b5b5        | ![#B5b5b5 的色彩磚。](./media/weather-services-concepts/color-b5b5b5.png) | 溫度-低 | 
+| #b5b5b5        | ![#B5b5b5 的色彩磚。](./media/weather-services-concepts/color-b5b5b5.png) | Temperature-Low | 
 | #d24fa0        | ![#D24fa0 的色彩磚。](./media/weather-services-concepts/color-d24fa0.png) |  |
 | #8a32d7        | ![#8a32d7 的色彩磚。](./media/weather-services-concepts/color-8a32d7.png) |  |
 | #144bed        | ![#144bed 的色彩磚。](./media/weather-services-concepts/color-144bed.png) |  |
@@ -210,7 +210,7 @@ ms.locfileid: "90972047"
 | #f05514        | ![#F05514 的色彩磚。](./media/weather-services-concepts/color-f05514.png) |  |
 | #dc250e        | ![#Dc250e 的色彩磚。](./media/weather-services-concepts/color-dc250e.png) |  |
 | #ba0808        | ![#Ba0808 的色彩磚。](./media/weather-services-concepts/color-ba0808.png) |  |
-| #1f1f1f        | ![#1f1f1f 的色彩磚。](./media/weather-services-concepts/color-1f1f1f.png) | 溫度-高 |
+| #1f1f1f        | ![#1f1f1f 的色彩磚。](./media/weather-services-concepts/color-1f1f1f.png) | Temperature-High |
 
 
 紅外衛星磚的詳細色彩調色板如下所示。
@@ -479,7 +479,7 @@ ms.locfileid: "90972047"
 
 以下是可用索引識別碼的資料表、其名稱，以及其範圍集合的連結。 下表列出各種索引群組。
 
-  Index Name |  ID  | 值範圍
+  Index Name |  識別碼  | 值範圍
   -------------------------- |---|-----
   Arthritis 難題             |21 | [有利的風險](#beneficial-at-extreme-risk)
   哮喘                     |23|  [有利的風險](#beneficial-at-extreme-risk)
@@ -494,7 +494,7 @@ ms.locfileid: "90972047"
   灰塵 & Dander              |18| [低-極端1](#low-extreme-1)
   現場就緒            |32| [不良-絕佳1](#poor-excellent-1)
   釣魚                    |13| [不良-絕佳1](#poor-excellent-1)
-  航班延遲              |-3|  [非常不可能-很可能是2](#very-unlikely-very-likely-2)
+  航班延遲              |-3|  [很 Unlikely-Very 可能有2](#very-unlikely-very-likely-2)
   流感                        |26|  [有利的風險](#beneficial-at-extreme-risk)
   飛行旅遊索引        |31| [絕佳-不良](#excellent-poor)
   燃料經濟               |37| [不良-絕佳1](#poor-excellent-1)
@@ -523,13 +523,13 @@ ms.locfileid: "90972047"
   Sinus 麻煩             |30|  [有利的風險](#beneficial-at-extreme-risk)
   滑板              | 7| [不良-絕佳1](#poor-excellent-1)
   Ski 氣象                | 15| [不良-絕佳1](#poor-excellent-1)
-  雪天                  | 19| [非常不可能](#very-unlikely-very-likely)
+  雪天                  | 19| [很 Unlikely-Very 可能](#very-unlikely-very-likely)
   土裡濕度              | 34| [不良-絕佳1](#poor-excellent-1)
   Stargazing                 | 12| [不良-絕佳1](#poor-excellent-1)
 
 以下是可用索引群組 (indexGroupId) 的清單：
 
-  ID   | 群組名稱 | 此群組中的索引 |
+  識別碼   | 群組名稱 | 此群組中的索引 |
   -------- | ------------------|------
   1       |全部 | 全部
   2       |Aches 和難題 | Arthritis 難題 (21)  </br> Migraine 的麻煩 (27)  </br> Sinus (30) 的麻煩
@@ -549,7 +549,7 @@ ms.locfileid: "90972047"
 
 [取得每日索引 API](https://aka.ms/AzureMapsWeatherDailyIndices) 會傳回每個索引識別碼的範圍值和其相關聯的類別名稱。 所有索引的範圍集合都不相同。 下表顯示 [索引識別碼和索引群組識別碼](#index-ids-and-index-groups-ids)中所列之支援索引所使用的各種範圍集。 若要找出哪些索引使用哪些範圍集合，請移至本檔的「 [索引識別碼」和「索引群組識別碼](#index-ids-and-index-groups-ids) 」一節。
 
-### <a name="poor-excellent-1"></a>不良-絕佳1
+### <a name="poor-excellent-1"></a>Poor-Excellent 1
 
   | 類別名稱 | 開始範圍 | 結束範圍 |
   ----------------|--------------|------------
@@ -559,7 +559,7 @@ ms.locfileid: "90972047"
   非常好         |  7  |               8.99
   非常好         |  9  |               10
 
-### <a name="poor-excellent-2"></a>不良-絕佳2
+### <a name="poor-excellent-2"></a>Poor-Excellent 2
 
  | 類別名稱 | 開始範圍 | 結束範圍 |
   ----------------|--------------|------------
@@ -569,7 +569,7 @@ ms.locfileid: "90972047"
   非常好      |7.51           |  8.99
   非常好      |9              |  10
 
-### <a name="excellent-poor"></a>絕佳-不良
+### <a name="excellent-poor"></a>Excellent-Poor
 
  | 類別名稱 | 開始範圍 | 結束範圍 |
   ----------------|--------------|------------
@@ -579,27 +579,27 @@ ms.locfileid: "90972047"
   普通             |   5.01          |  7.00
   差             |   7.01          |  10.00
 
-### <a name="low-extreme-1"></a>低-極端1
+### <a name="low-extreme-1"></a>Low-Extreme 1
 
    | 類別名稱 | 開始範圍 | 結束範圍 |
   ----------------|--------------|------------
-  低度                |  0         |        1.99
-  中度           |  2         |        3.99
+  低                |  0         |        1.99
+  中           |  2         |        3.99
   高               |  4         |        5.99
   非常高          |  6         |        7.99
   極限            |  8         |        10
 
-### <a name="low-extreme-2"></a>低-極端2
+### <a name="low-extreme-2"></a>Low-Extreme 2
 
    | 類別名稱 | 開始範圍 | 結束範圍 |
   ----------------|--------------|------------
-  低度                |  0            |      2.99
-  中度           |  3            |      4.99
+  低                |  0            |      2.99
+  中           |  3            |      4.99
   高               |  5            |      6.99
   非常高          |  7            |      8.99
   極限            |  9            |      10
 
-### <a name="very-unlikely-very-likely"></a>非常不可能
+### <a name="very-unlikely-very-likely"></a>很 Unlikely-Very 可能
 
  | 類別名稱 | 開始範圍 | 結束範圍 |
   ----------------|--------------|------------
@@ -609,7 +609,7 @@ ms.locfileid: "90972047"
   可能             | 6     |           7.99
   很可能        | 8     |           10
 
-### <a name="very-unlikely-very-likely-2"></a>非常不可能-很可能是2
+### <a name="very-unlikely-very-likely-2"></a>很 Unlikely-Very 可能有2
 
  | 類別名稱 | 開始範圍 | 結束範圍 |
   ----------------|--------------|------------
@@ -619,7 +619,7 @@ ms.locfileid: "90972047"
   可能             |  5.01     |         7.00
   很可能        |  7.01     |         10.00
 
-### <a name="unlikely-emergency"></a>不太可能-緊急
+### <a name="unlikely-emergency"></a>Unlikely-Emergency
 
 | 類別名稱 | 開始範圍 | 結束範圍 |
   ----------------|--------------|------------
@@ -629,7 +629,7 @@ ms.locfileid: "90972047"
   警告          |  7     |          8.99
   緊急狀況        |  9     |          10
 
-### <a name="beneficial-at-extreme-risk"></a>有利的風險
+### <a name="beneficial-at-extreme-risk"></a>Beneficial-At 極端風險
 
 | 類別名稱 | 開始範圍 | 結束範圍 |
   ----------------|--------------|------------

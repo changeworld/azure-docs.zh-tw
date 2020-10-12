@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure CDN 的媒體串流最佳化
-description: 瞭解在 Azure 內容傳遞網路中優化串流媒體的選項，例如部分快取共用和快取填滿等候時間。
+description: 瞭解將 Azure 內容傳遞網路中的串流處理媒體優化的選項，例如部分快取共用和快取填滿等候時間。
 services: cdn
 documentationcenter: ''
 author: asudbring
@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 05/01/2018
 ms.author: allensu
 ms.openlocfilehash: c3ab722f182e32cf2f3aca6bb2f3d5a9598264af
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88192612"
 ---
 # <a name="media-streaming-optimization-with-azure-cdn"></a>使用 Azure CDN 的媒體串流最佳化 
@@ -77,13 +77,13 @@ ms.locfileid: "88192612"
  
 建立端點後，最佳化就會套用到符合特定準則的所有檔案。 下一節會說明此程序。 
 
-### <a name="caching"></a>Caching
+### <a name="caching"></a>快取
 
-如果 **Azure CDN Standard from Akamai** 偵測到資產是串流資訊清單或片段，它會使用與一般 Web 傳遞不同的快取到期時間。  (查看下表中的完整清單。 ) 一律會接受從來源傳送的快取控制或過期標頭。 如果資產不是媒體資產，就會使用一般 Web 傳遞的逾期時間快取。
+如果 **Azure CDN Standard from Akamai** 偵測到資產是串流資訊清單或片段，它會使用與一般 Web 傳遞不同的快取到期時間。  (請參閱下表中的完整清單。 ) 一律會接受從來源傳送的快取控制或到期標頭。 如果資產不是媒體資產，就會使用一般 Web 傳遞的逾期時間快取。
 
 當許多使用者要求還不存在的片段時，短的負快取時間對來源卸載就很有用。 例如該秒無法從原始伺服器取得封包的即時串流。 較長的快取間隔也有助於卸載原始伺服器的要求，因為通常不會修改影片內容。
 
-| Caching  | 一般 Web 傳遞 | 一般媒體串流處理 | 點播視訊媒體串流處理  
+| 快取  | 一般 Web 傳遞 | 一般媒體串流處理 | 點播視訊媒體串流處理  
 |--- | --- | --- | ---
 | 快取：正向 <br> HTTP 200、203、300、 <br> 301、302 和 410 | 7 天 |365 天 | 365 天   
 | 快取：負向 <br> HTTP 204、305、404 <br> 和 405 | 無 | 1 秒 | 1 秒

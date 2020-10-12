@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure Site Recovery 支援對次要網站進行 VMware/實體嚴重損壞修復
+title: 支援使用 Azure Site Recovery 對次要網站進行 VMware/實體嚴重損壞修復
 description: 摘要說明使用 Azure Site Recovery 將 VMware VM 和實體伺服器災害復原至次要網站的支援。
 author: rayne-wiselman
 manager: carmonm
@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: c6f0f48df32db0beb9c0a57982d9bc87b26538d8
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86135146"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-vmware-vms-and-physical-servers-to-a-secondary-site"></a>從 VMware VM 和實體伺服器至次要網站之災害復原的支援矩陣
@@ -26,7 +26,7 @@ ms.locfileid: "86135146"
 > 內部部署 VMware VM 和實體伺服器的複寫是由 InMage Scout 提供。 InMage Scout 包含在 Azure Site Recovery 服務訂用帳戶中。
 
 ## <a name="end-of-support-announcement"></a>終止支援公告
-在內部部署 VMware 或實體資料中心之間進行複寫的 Site Recovery 案例即將到達支援終止。
+在內部部署 VMware 或實體資料中心之間進行複寫的 Site Recovery 案例即將結束支援。
 
 - 從2018年8月起，無法在復原服務保存庫中設定案例，而且無法從保存庫下載 InMage Scout 軟體。 現有的部署仍受支援。
 - - 自 2020 年 12 月 31 日起，將不再支援此案例。
@@ -66,15 +66,15 @@ Linux | Red Hat Enterprise Linux 6.7、6.8、6.9、7.1、7.2 <br/><br/> Centos 6
 
 ## <a name="network-configuration---hostguest-vm"></a>網路設定 - 主機/客體 VM
 
-**Configuration** | **支援**  
+**設定** | **支援**  
 --- | --- 
 主機 - NIC 小組 | 是 
 主機 - VLAN | 是 
 主機 - IPv4 | 是 
-主機 - IPv6 | No 
-客體 VM - NIC 小組 | No
+主機 - IPv6 | 否 
+客體 VM - NIC 小組 | 否
 客體 VM - IPv4 | 是
-客體 VM - IPv6 | No
+客體 VM - IPv6 | 否
 客體 VM - Windows/Linux - 靜態 IP 位址 | 是
 客體 VM - 多重 NIC | 是
 
@@ -92,20 +92,20 @@ SAN (ISCSI) | 是
 
 ### <a name="guest-or-physical-server-storage"></a>客體或實體伺服器儲存體
 
-**Configuration** | **支援** 
+**設定** | **支援** 
 --- | --- 
 VMDK | 是 
 VHD/VHDX | N/A 
 第 2 代 VM | N/A 
 共用叢集磁碟 | 是 
-已加密磁碟 | No 
+已加密磁碟 | 否 
 UEFI| 是 
-NFS | No 
-SMB 3.0 | No 
+NFS | 否 
+SMB 3.0 | 否 
 RDM | 是 
 磁碟 > 1 TB | 是 
 使用等量磁碟的磁碟區 > 1 TB<br/><br/> LVM | 是 
-儲存空間 | No 
+儲存空間 | 否 
 熱新增/移除磁碟 | 是 
 排除磁碟 | 是 
 多重路徑 (MPIO) | N/A 
@@ -114,8 +114,8 @@ RDM | 是
 
 **動作** | **支援** 
 --- | --- 
-跨資源群組間移動保存庫 (在訂用帳戶之內或跨訂用帳戶) | No 
-跨資源群組間移動儲存體、網路、Azure VM (在訂用帳戶之內或跨訂用帳戶) | No 
+跨資源群組間移動保存庫 (在訂用帳戶之內或跨訂用帳戶) | 否 
+跨資源群組間移動儲存體、網路、Azure VM (在訂用帳戶之內或跨訂用帳戶) | 否 
 
 ## <a name="mobility-service-and-updates"></a>行動服務和更新
 

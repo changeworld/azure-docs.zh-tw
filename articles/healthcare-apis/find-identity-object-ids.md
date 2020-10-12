@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: matjazl
 ms.openlocfilehash: 706d7e081743f2bab1f593e00dc792f218a000ea
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90033620"
 ---
 # <a name="find-identity-object-ids-for-authentication-configuration"></a>尋找驗證設定的識別物件識別碼
@@ -68,7 +68,7 @@ $(Get-AzureADGroup -Filter "DisplayName eq 'mygroup'").ObjectId
 az ad group show --group "mygroup" --query objectId --out tsv
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 在本文中，您已瞭解如何尋找將 Azure API for FHIR 設定為使用外部或次要 Azure Active Directory 租使用者所需的身分識別物件識別碼。 接下來，請閱讀如何使用物件識別碼來設定本機 RBAC 設定：
  

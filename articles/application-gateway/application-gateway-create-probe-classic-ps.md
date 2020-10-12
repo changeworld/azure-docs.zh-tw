@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: victorh
 ms.openlocfilehash: 1445d1418bde6d5d15e365c59ceb56e7661faccb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87088065"
 ---
 # <a name="create-a-custom-probe-for-azure-application-gateway-classic-by-using-powershell"></a>使用 PowerShell 建立 Azure 應用程式閘道 (傳統) 的自訂探查
@@ -57,7 +57,7 @@ Get-AzureApplicationGateway AppGwTest
 > 
 > 
 
-因為尚未啟動閘道，所以*VirtualIPs*和*DnsName*會顯示為空白。 閘道處於執行中狀態之後，就會建立這些值。
+*>virtualips* 和 *DnsName* 會顯示為空白，因為閘道尚未啟動。 閘道處於執行中狀態之後，就會建立這些值。
 
 ### <a name="configure-an-application-gateway-by-using-xml"></a>使用 XML 設定應用程式閘道
 
@@ -136,15 +136,15 @@ Get-AzureApplicationGateway AppGwTest
 > [!IMPORTANT]
 > 通訊協定項目 Http 或 Https 會區分大小寫。
 
-新的設定專案 \<Probe\> 會加入以設定自訂探查。
+新增了新的 \<Probe\> 設定專案來設定自訂探查。
 
 組態參數如下：
 
-|參數|描述|
+|參數|說明|
 |---|---|
 |**名稱** |自訂探查的參考名稱。 |
 | **通訊協定** | 使用的通訊協定 (可能的值是 HTTP 或 HTTPS)。|
-| **Host** 和 **Path** | 應用程式閘道所叫用的完整 URL 路徑，可藉以判斷執行個體健康狀態。 例如，如果您有網站 HTTP： \/ /contoso.com/，則可以為 "HTTP：/contoso.com/path/custompath.htm" 設定自訂探查， \/ 以便讓探查檢查有成功的 HTTP 回應。|
+| **Host** 和 **Path** | 應用程式閘道所叫用的完整 URL 路徑，可藉以判斷執行個體健康狀態。 例如，如果您有網站 HTTP： \/ /contoso.com/，則可以為 "HTTP：/contoso.com/path/custompath.htm" 設定自訂探查，以便 \/ 讓探查檢查有成功的 HTTP 回應。|
 | **間隔** | 以秒為單位設定探查間隔檢查。|
 | **逾時** | 定義 HTTP 回應檢查的探查逾時。|
 | **UnhealthyThreshold** | 要將後端執行個體標記為「狀況不良」** 所需的失敗 HTTP 回應次數。|
@@ -198,9 +198,9 @@ Get-AzureApplicationGateway AppGwTest
 Set-AzureApplicationGatewayConfig -Name "<application gateway name>" -Configfile "<path to file>"
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-如果您想要設定傳輸層安全性（TLS），先前稱為安全通訊端層（SSL）卸載，請參閱[設定 TLS 卸載的應用程式閘道](application-gateway-ssl.md)。
+如果您想要設定傳輸層安全性 (TLS) ，之前稱為安全通訊端層 (SSL) 卸載，請參閱 [設定應用程式閘道以進行 tls](application-gateway-ssl.md)卸載。
 
 如果您想要設定要與內部負載平衡器搭配使用的應用程式閘道，請參閱 [建立具有內部負載平衡器 (ILB) 的應用程式閘道](application-gateway-ilb.md)。
 

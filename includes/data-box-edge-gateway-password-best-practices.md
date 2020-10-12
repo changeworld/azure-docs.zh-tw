@@ -5,14 +5,14 @@ ms.topic: include
 ms.date: 04/16/2019
 ms.author: alkohli
 ms.openlocfilehash: 86b18c2a6fc3fbf342f5b7a4b6b563432c605f73
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "68781433"
 ---
-請牢記下列最佳作法：
+請記住下列最佳作法：
 
-- 我們建議您將所有密碼儲存在安全的地方，如此一來，如果忘記密碼，就不需要重設密碼。 管理服務無法取得現有的密碼。 只能透過 Azure 入口網站重設。 如果您重設密碼，請務必在重設之前通知所有使用者。
-- 您可以透過 HTTP 從遠端存取您裝置的 Windows PowerShell 介面。 基於安全性最佳作法的考慮，您應該只在受信任的網路上使用 HTTP。
-- 確保裝置密碼的功能強且受到妥善保護。 遵循[密碼的最佳作法](https://docs.microsoft.com/azure/security/fundamentals/identity-management-best-practices#enable-password-management)。
+- 建議您將所有密碼儲存在安全的地方，如此一來，如果忘記密碼，就不需要重設密碼。 管理服務無法取出現有的密碼。 它只能透過 Azure 入口網站重設。 如果您重設密碼，請務必在重設之前通知所有使用者。
+- 您可以透過 HTTP 從遠端存取裝置的 Windows PowerShell 介面。 基於安全性最佳作法，您應該只在信任的網路上使用 HTTP。
+- 確定裝置密碼具有強式且受到妥善保護。 遵循 [密碼最佳做法](https://docs.microsoft.com/azure/security/fundamentals/identity-management-best-practices#enable-password-management)。

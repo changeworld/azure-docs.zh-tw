@@ -9,10 +9,10 @@ ms.date: 10/07/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: c1f83303c3f186b37c1c5c06e61c2263420c0cfa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "72028031"
 ---
 1. 瀏覽至 [虛擬 WAN] 頁面。 在入口網站中，按一下 [+建立資源]  。 在搜尋方塊中鍵入**虛擬 WAN** 並選取 [輸入]。
@@ -21,6 +21,6 @@ ms.locfileid: "72028031"
 
    * **名稱** - 鍵入要用來稱呼 WAN 的名稱。
    * **訂用帳戶** - 選取您要使用的訂用帳戶。
-   * **資源群組**-建立新的或使用現有的。
+   * **資源群組** - 建立新的或使用現有的資源群組。
    * **資源位置** - 從下拉式清單中選擇資源位置。 WAN 是全域資源，並不會在特定區域存留。 不過，您必須選取一個區域以方便管理，以及放置所建立的 WAN 資源。
 4. 填寫完欄位之後，按一下 [建立]****。

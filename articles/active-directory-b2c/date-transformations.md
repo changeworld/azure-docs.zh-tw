@@ -1,6 +1,6 @@
 ---
 title: 自訂原則的日期宣告轉換範例
-description: Azure Active Directory B2C 的 Identity Experience Framework （IEF）架構的日期宣告轉換範例。
+description: Azure Active Directory B2C Identity Experience Framework (IEF) 架構的日期宣告轉換範例。
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -11,17 +11,17 @@ ms.date: 02/16/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: eaf58b964517162ee7f7eb925e1e64830eedc087
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85202546"
 ---
 # <a name="date-claims-transformations"></a>日期宣告轉換
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-本文提供在 Azure Active Directory B2C （Azure AD B2C）中使用 Identity Experience Framework 架構的日期宣告轉換的範例。 如需詳細資訊，請參閱 [ClaimsTransformations](claimstransformations.md)。
+本文提供在 Azure Active Directory B2C (Azure AD B2C) 中使用 Identity Experience Framework 架構的日期宣告轉換的範例。 如需詳細資訊，請參閱 [ClaimsTransformations](claimstransformations.md)。
 
 ## <a name="assertdatetimeisgreaterthan"></a>AssertDateTimeIsGreaterThan
 
@@ -116,14 +116,14 @@ ms.locfileid: "85202546"
 
 ## <a name="convertdatetimetodateclaim"></a>ConvertDateTimeToDateClaim
 
-將日期**時間**claimtype 轉換成**日期**ClaimType。 宣告轉換會從日期移除時間格式。
+將日期 **時間** claimtype 轉換成 **日期** claimtype。 宣告轉換會移除日期的時間格式。
 
 | Item | TransformationClaimType | 資料類型 | 注意 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim | dateTime | 要轉換的 ClaimType。 |
 | OutputClaim | outputClaim | date | 叫用此 ClaimsTransformation 之後所產生的 ClaimType。 |
 
-下列範例示範如何將宣告 `systemDateTime` （dateTime 資料類型）轉換為另一個宣告 `systemDate` （date 資料類型）。
+下列範例將示範如何將宣告 `systemDateTime` (dateTime 資料類型) 轉換為其他宣告 `systemDate` (date 資料類型) 。
 
 ```xml
 <ClaimsTransformation Id="ConvertToDate" TransformationMethod="ConvertDateTimeToDateClaim">

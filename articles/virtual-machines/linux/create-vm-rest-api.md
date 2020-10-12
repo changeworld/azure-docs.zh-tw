@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 06/05/2018
 ms.author: cynthn
 ms.openlocfilehash: d6e5195f43991f4d40af57c1ab4b87aaca475b64
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87373397"
 ---
 # <a name="create-a-linux-virtual-machine-that-uses-ssh-authentication-with-the-rest-api"></a>透過 REST API 建立使用 SSH 驗證的 Linux 虛擬機器
@@ -21,7 +21,7 @@ Azure 中的 Linux 虛擬機器 (VM) 包含各種資源，例如磁碟和網路�
 
 本文說明如何使用 REST API 建立 Linux VM，來執行使用受控磁碟和 SSH 驗證的 Ubuntu 18.04-LTS。
 
-## <a name="before-you-start"></a>在您開始使用 Intune 之前
+## <a name="before-you-start"></a>開始之前
 
 在建立及提交要求之前，您需要：
 
@@ -118,7 +118,7 @@ PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/
 }
 ```
 
-如需要求主體中可用定義的完整清單，請參閱[虛擬機器建立或更新要求主體定義](/rest/api/compute/virtualmachines/createorupdate#definitions)。
+如需要求主體中可用定義的完整清單，請參閱 [虛擬機器建立或更新要求主體定義](/rest/api/compute/virtualmachines/createorupdate#definitions)。
 
 ## <a name="sending-the-request"></a>傳送要求
 
@@ -128,9 +128,9 @@ PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/
 
 建立或更新虛擬機器的作業會有兩個成功的回應：
 
-| Name        | 類型                                                                              | 說明 |
+| 名稱        | 類型                                                                              | 說明 |
 |-------------|-----------------------------------------------------------------------------------|-------------|
-| 200 確定      | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | [確定]          |
+| 200 確定      | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | 確定          |
 | 201 Created | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | 建立時間     |
 
 先前建立 VM 的要求本文範例，所傳回的扼要 *201 Created* 回應顯示已指派 *vmId*，且 *provisioningState* 為 *Creating*：
@@ -144,7 +144,7 @@ PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/
 
 如需 REST API 回應的詳細資訊，請參閱[處理回應訊息](/rest/api/azure/#process-the-response-message)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 如需有關 Azure REST API 或諸如 Azure CLI 或 Azure PowerShell 等其他管理工具的詳細資訊，請參閱下列內容：
 

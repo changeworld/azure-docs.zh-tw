@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 135232e3e9894bcef1ef657e41f5ad3a5e307289
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "69014690"
 ---
 ### <a name="media-services-v3-latest"></a>媒體服務 v3 (最新版)
 
-查看最新版本的 Azure 媒體服務！ 
+查看 Azure 媒體服務的最新版本！ 
 
 * [概觀](https://docs.microsoft.com/azure/media-services/latest/media-services-overview)
 * [概念](https://docs.microsoft.com/azure/media-services/latest/concepts-overview)
@@ -25,4 +25,4 @@ ms.locfileid: "69014690"
 * [概觀](https://docs.microsoft.com/azure/media-services/previous/media-services-overview)
 * [建立帳戶](https://docs.microsoft.com/azure/media-services/previous/media-services-portal-create-account)
 * [隨選交付](https://docs.microsoft.com/azure/media-services/previous/media-services-portal-vod-get-started)
-* [即時傳遞](https://docs.microsoft.com/azure/media-services/previous/media-services-portal-live-passthrough-get-started)
+* [即時交貨](https://docs.microsoft.com/azure/media-services/previous/media-services-portal-live-passthrough-get-started)

@@ -1,6 +1,6 @@
 ---
 title: 取得 Azure CDN 的目前 POP IP 清單 |Microsoft Docs
-description: 瞭解如何使用 REST API 來取得 POP 伺服器。 POP 伺服器會向與 Azure 內容傳遞網路端點相關聯的源伺服器提出要求。
+description: 瞭解如何使用 REST API 取得 POP 伺服器。 POP 伺服器會向與 Azure 內容傳遞網路端點相關聯的源伺服器提出要求。
 services: cdn
 documentationcenter: ''
 author: asudbring
@@ -16,30 +16,30 @@ ms.date: 08/22/2019
 ms.author: allensu
 ms.custom: ''
 ms.openlocfilehash: 13d4587a80cbbe66e18eb1bec8f3154221ac62b5
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88192561"
 ---
-# <a name="retrieve-the-current-pop-ip-list-for-azure-cdn"></a>取得 Azure CDN 的目前 POP IP 清單
+# <a name="retrieve-the-current-pop-ip-list-for-azure-cdn"></a>取得 Azure CDN 目前的 POP IP 清單
 
-## <a name="retrieve-the-current-verizon-pop-ip-list-for-azure-cdn"></a>取得 Azure CDN 的目前 Verizon POP IP 清單
+## <a name="retrieve-the-current-verizon-pop-ip-list-for-azure-cdn"></a>取得 Azure CDN 目前的 Verizon POP IP 清單
 
 您可以使用 REST API 來為 Verizon 的存在點 (PoP) 伺服器擷取一組 IP。 這些 POP 伺服器會將要求發給與 Verizon 設定檔 (**來自 Verizon 的 Azure CDN 標準**或**來自 Verizon 的 Azure CDN 進階**) 上的 Azure 內容傳遞網路 (CDN) 端點相關聯的原始伺服器。 請注意，這組 IP 與用戶端在將要求發給 POP 時所會看到的 IP 不同。 
 
 如需用於擷取 POP 清單的 REST API 作業語法，請參閱[邊緣節點 - 清單](https://docs.microsoft.com/rest/api/cdn/edgenodes/list)。
 
-## <a name="retrieve-the-current-microsoft-pop-ip-list-for-azure-cdn"></a>取得 Azure CDN 的目前 Microsoft POP IP 清單
+## <a name="retrieve-the-current-microsoft-pop-ip-list-for-azure-cdn"></a>取得 Azure CDN 目前的 Microsoft POP IP 清單
 
-若要鎖定您的應用程式，只接受來自 Microsoft 的 Azure CDN 的流量，您必須為後端設定 IP Acl。 您也可以針對由 Microsoft Azure CDN 傳送的標頭 ' X-轉送-主機 '，限制已接受的值集合。 這些步驟的詳細說明如下：
+若要鎖定您的應用程式只接受來自 Microsoft 的 Azure CDN 的流量，您必須為您的後端設定 IP Acl。 您也可以針對由 Microsoft 的 Azure CDN 傳送的標頭 ' X 轉送的主機 '，限制已接受的值集。 這些步驟會詳細說明，如下所示：
 
-設定後端的 IP 執行 acl，以接受來自 Microsoft 的後端 IP 位址空間和 Azure 基礎結構服務的來自 Azure CDN 的流量。 
+為您的後端設定 IP 執行 acl，以接受來自 Microsoft 後端 IP 位址空間和 Azure 基礎結構服務的 Azure CDN 流量。 
 
-* 來自 Microsoft 的 IPv4 後端 IP 空間的 Azure CDN： 147.243.0.0/16
+* 來自 Microsoft IPv4 後端 IP 空間的 Azure CDN： 147.243.0.0/16
 * 來自 Microsoft IPv6 後端 IP 空間的 Azure CDN：2a01：111：2050：：/44
 
-若要搭配 Microsoft 的 Azure CDN 使用服務標籤，請使用 Azure Front 門板標記。 您可以在[這裡](https://www.microsoft.com/download/details.aspx?id=56519)找到 Microsoft 服務的 IP 範圍和服務標記
+若要使用服務標記與 Microsoft 的 Azure CDN，請使用 Azure Front Door 標記。 您可以在[這裡](https://www.microsoft.com/download/details.aspx?id=56519)找到 MICROSOFT 服務的 IP 範圍和服務標記
 
 
 ## <a name="typical-use-case"></a>典型的使用案例

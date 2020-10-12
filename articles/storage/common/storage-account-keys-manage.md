@@ -10,10 +10,10 @@ ms.date: 04/24/2020
 ms.author: tamram
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
 ms.openlocfilehash: e5ea94fea00771b64634d6c28a7879fabb195f09
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89069654"
 ---
 # <a name="manage-storage-account-access-keys"></a>管理儲存體帳戶存取金鑰
@@ -32,7 +32,7 @@ Microsoft 建議您使用 Azure Key Vault 管理您的存取金鑰，並定期�
 
 若要從 Azure 入口網站中，查看並複製您的儲存體帳戶存取金鑰或連接字串：
 
-1. 在 [Azure 入口網站](https://portal.azure.com)中瀏覽至您的儲存體帳戶。
+1. 在 [Azure 入口網站](https://portal.azure.com)中，流覽至您的儲存體帳戶。
 1. 在 [設定] 下，選取 [存取金鑰]。 您的帳戶存取金鑰隨即出現，此外也會顯示每個金鑰的完整連接字串。
 1. 找出 [ **key1**] 下的**金鑰**值，然後按一下 [**複製**] 按鈕以複製帳戶金鑰。
 1. 或者，您也可以複製整個連接字串。 尋找 [金鑰1]**** 下方的 [連接字串]**** 值，然後按一下 [複製]**** 按鈕來複製連接字串。
@@ -89,7 +89,7 @@ Microsoft 建議您定期輪替存取金鑰，以協助保護您的儲存體帳�
 若要在 Azure 入口網站中輪替儲存體帳戶存取金鑰：
 
 1. 更新應用程式程式碼中的連接字串，以參考儲存體帳戶的次要存取金鑰。
-1. 在 [Azure 入口網站](https://portal.azure.com)中瀏覽至您的儲存體帳戶。
+1. 在 [Azure 入口網站](https://portal.azure.com)中，流覽至您的儲存體帳戶。
 1. 在 [設定] 下，選取 [存取金鑰]。
 1. 若要重新產生儲存體帳戶的主要存取金鑰，請選取主要存取金鑰旁的 [ **重新** 產生] 按鈕。
 1. 更新程式碼中的連接字串，以參考新的主要存取金鑰。

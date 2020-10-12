@@ -10,10 +10,10 @@ services: azure-maps
 manager: philmea
 ms.custom: mvc
 ms.openlocfilehash: 3ded5f6186d8ccdae0f42ecb9942c70e09f2dd9f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91310878"
 ---
 # <a name="request-public-transit-data-using-the-azure-maps-mobility-service"></a>使用 Azure 地圖服務行動服務要求公開傳輸資料
@@ -38,7 +38,7 @@ ms.locfileid: "91310878"
 
 為了要求有關運輸機關的詳細資訊，以及特定的大都市區域支援的傳輸類型，您需要該 `metroId` 區域的。 「 [取得 Metro 區域 API](https://aka.ms/AzureMapsMobilityMetro) 」可讓您要求 Azure 地圖服務行動服務可用的 metro 區域。 回應包含詳細資料 `metroId` ，例如、 `metroName` 和 GeoJSON 格式的 metro 區域幾何標記法。
 
-讓我們提出要求，以取得西雅圖 Tacoma metro 區域識別碼的 Metro 區域。 若要要求 metro 區域的識別碼，請完成下列步驟：
+讓我們提出要求，以取得 Seattle-Tacoma metro 區域識別碼的 Metro 區域。 若要要求 metro 區域的識別碼，請完成下列步驟：
 
 1. 開啟 Postman 應用程式，讓我們建立集合來儲存要求。 在 Postman 應用程式頂端處，選取 [新增]。 在 [新建] 視窗中，選取 [集合]。  為集合命名，然後選取 [建立] 按鈕。
 

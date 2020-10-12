@@ -12,10 +12,10 @@ ms.topic: reference
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: f81af557242503c6380d0ff7bc1dfaed852cd908
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89070678"
 ---
 # <a name="azure-ad-connect--adsynctools-powershell-reference"></a>Azure AD Connect：ADSyncTools PowerShell 參考
@@ -554,7 +554,7 @@ Get-ADSyncToolsSourceAnchorChanged [-sourcePath] <Object> [-outputPath] <Object>
 #Required Parameters
 ```
 
-$sourcePath = 讀取主機-提示 "請輸入您的記錄檔路徑，檔案名為" # " \<Source_Path\> " $outputPath = 讀取主機提示字元 "輸入您的 out 檔案路徑，檔案名為" # " \<Out_Path\> "
+$sourcePath = Read-Host 提示 "輸入您的記錄檔路徑，檔案名為" # " \<Source_Path\> " $outputPath = Read-Host-prompt "輸入檔案路徑，檔案名為" # " \<Out_Path\> "
  
  Get-ADSyncToolsUsersSourceAnchorChanged -sourcePath $sourcePath -outputPath $outputPath
 

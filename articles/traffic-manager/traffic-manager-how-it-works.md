@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 03/05/2019
 ms.author: duau
 ms.openlocfilehash: 471895f1a615770521584a627e6bca850b87d0ac
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89462627"
 ---
 # <a name="how-traffic-manager-works"></a>流量管理員的運作方式
@@ -93,7 +93,7 @@ Contoso Corp 開發出新的合作夥伴入口網站。 此入口網站的 URL �
 
 * [如何了解傳給我的設定檔的查詢量？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-understand-the-volume-of-queries-coming-to-my-profile)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 深入了解「流量管理員」的 [端點監視和自動容錯移轉](traffic-manager-monitoring.md)。
 

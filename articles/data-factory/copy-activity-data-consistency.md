@@ -12,17 +12,17 @@ ms.topic: conceptual
 ms.date: 3/27/2020
 ms.author: yexu
 ms.openlocfilehash: d52d172fa4cc435235079cd88999766df93bfdf0
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86522902"
 ---
 #  <a name="data-consistency-verification-in-copy-activity-preview"></a>複製活動中的資料一致性驗證 (驗證)
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-當您將資料從來源移至目的地存放區時，Azure Data Factory 複製活動會提供一個選項，讓您執行額外的資料一致性驗證，以確保資料不只會成功從來源複製到目的地存放區，還會在來源與目的地存放區之間驗證為一致。 在資料移動期間發現不一致的檔案之後，您可以藉由啟用容錯設定來略過不一致的檔案，以中止複製活動或繼續複製其餘部分。 您可以在複製活動中啟用會話記錄檔設定，以取得略過的檔案名。 
+當您將資料從來源移至目的地存放區時，Azure Data Factory 複製活動會提供一個選項，讓您執行額外的資料一致性驗證，以確保資料不只會成功從來源複製到目的地存放區，還會在來源與目的地存放區之間驗證為一致。 當資料移動期間發現不一致的檔案時，您可以中止複製活動，或透過啟用容錯設定來繼續複製其餘部分，以略過不一致的檔案。 您可以啟用複製活動中的會話記錄檔設定，以取得略過的檔案名。 
 
 > [!IMPORTANT]
 > 這項功能目前處於預覽狀態，以下為我們正積極處理的限制：
@@ -31,11 +31,11 @@ ms.locfileid: "86522902"
 
 ## <a name="supported-data-stores-and-scenarios"></a>支援的資料存放區和案例
 
--   除了 FTP、sFTP 和 HTTP 以外，所有連接器都支援資料一致性驗證。 
--   臨時複製案例中不支援資料一致性驗證。
--   複製二進位檔案時，只有在複製活動中設定 ' PreserveHierarchy ' 行為時，才可以使用資料一致性驗證。
--   在啟用資料一致性驗證的單一複製活動中複製多個二進位檔案時，您可以選擇是否要中止複製活動，或透過啟用容錯設定來略過不一致的檔案來繼續複製其餘部分。 
--   在啟用資料一致性驗證的單一複製活動中複製資料表時，如果從來源讀取的資料列數與複製到目的地的資料列數目，加上略過的不相容資料列數目不同，複製活動就會失敗。
+-   除了 FTP、sFTP 和 HTTP 以外的所有連接器都支援資料一致性驗證。 
+-   暫存複製案例不支援資料一致性驗證。
+-   複製二進位檔案時，只有在複製活動中設定 ' PreserveHierarchy ' 行為時，才可使用資料一致性驗證。
+-   在啟用資料一致性驗證的單一複製活動中複製多個二進位檔案時，您可以選擇是否要中止複製活動或繼續複製其餘部分，方法是啟用容錯設定以略過不一致的檔案。 
+-   在啟用資料一致性驗證的單一複製活動中複製資料表時，如果從來源讀取的資料列數與複製到目的地的資料列數目，以及略過的不相容資料列數目不同，則複製活動會失敗。
 
 
 ## <a name="configuration"></a>組態
@@ -70,17 +70,17 @@ ms.locfileid: "86522902"
 } 
 ```
 
-屬性 | 說明 | 允許的值 | 必要
+屬性 | 描述 | 允許的值 | 必要
 -------- | ----------- | -------------- | -------- 
-validateDataConsistency | 如果您將此屬性設定為 true，則複製二進位檔案時，複製活動會檢查從來源複製到目的地存放區的每個二進位檔案的檔案大小、lastModifiedDate 和 MD5 總和檢查碼，以確保來源和目的地存放區之間的資料一致性。 複製表格式資料時，複製活動會在作業完成後檢查總計資料列計數，以確保從來源讀取的資料列總數，與複製到目的地的資料列數目加上略過的不相容資料列數目相同。 請注意，啟用此選項會影響複製效能。  | True<br/>FALSE (預設值) | 否
-dataInconsistency | SkipErrorFile 屬性包中的其中一個索引鍵/值組，用來判斷是否要略過不一致的檔案。 <br/> -True：您想要略過不一致的檔案來複製其餘部分。<br/> -False：您想要在發現不一致的檔案時中止複製活動。<br/>請注意，只有當您複製二進位檔案並將 validateDataConsistency 設定為 True 時，這個屬性才有效。  | True<br/>FALSE (預設值) | 否
-logStorageSettings | 可以指定的一組屬性，可讓會話記錄檔記錄略過的檔案。 | | 否
+validateDataConsistency | 如果您針對此屬性設定為 true，則在複製二進位檔案時，複製活動會針對從來源複製到目的地存放區的每個二進位檔案，檢查檔案大小、lastModifiedDate 和 MD5 總和檢查碼，以確保來源和目的地存放區之間的資料一致性。 複製表格式資料時，複製活動會在作業完成後檢查總數據列計數，以確保從來源讀取的資料列總數，與複製到目的地的資料列數目，以及略過的不相容資料列數目相同。 請注意，啟用此選項會影響複製效能。  | True<br/>FALSE (預設值) | 否
+dataInconsistency | SkipErrorFile 屬性包中的其中一個索引鍵/值組，用來判斷是否要略過不一致的檔案。 <br/> -True：您想要藉由略過不一致的檔案來複製其餘部分。<br/> -False：當找到不一致的檔案時，您想要中止複製活動。<br/>請注意，只有當您複製二進位檔案，並將 validateDataConsistency 設為 True 時，這個屬性才有效。  | True<br/>FALSE (預設值) | 否
+logStorageSettings | 可指定的一組屬性，可讓會話記錄檔記錄已略過的檔案。 | | 否
 linkedServiceName | 可儲存工作階段記錄檔的 [Azure Blob 儲存體](connector-azure-blob-storage.md#linked-service-properties)連結服務或 [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties)。 | `AzureBlobStorage` 或 `AzureBlobFS` 類型連結服務的名稱，其代表您要用來儲存記錄檔的執行個體。 | 否
 path | 記錄檔的路徑。 | 指定您想要儲存記錄檔的路徑。 如不提供路徑，服務會為您建立容器。 | 否
 
 >[!NOTE]
->- 將二進位檔案從或複製到 Azure Blob 或 Azure Data Lake Storage Gen2 時，ADF 會利用[Azure BLOB api](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions?view=azure-dotnet-legacy)和[Azure Data Lake Storage Gen2 API](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/update#request-headers)來封鎖層級的 MD5 總和檢查碼驗證。 如果 ContentMD5 檔案存在於 Azure Blob 或 Azure Data Lake Storage Gen2 做為資料來源，ADF 也會在讀取檔案後進行檔案層級的 MD5 總和檢查碼驗證。 將檔案複製到 Azure Blob 或 Azure Data Lake Storage Gen2 做為資料目的地之後，ADF 會將 ContentMD5 寫入 Azure Blob 或 Azure Data Lake Storage Gen2，以便下游應用程式進一步取用以進行資料一致性驗證。
->- ADF 會在任何儲存存放區之間複製二進位檔案時進行檔案大小驗證。
+>- 將二進位檔案從複製或複製到 Azure Blob 或 Azure Data Lake Storage Gen2 時，ADF 會利用 [Azure BLOB API](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions?view=azure-dotnet-legacy) 和 [Azure Data Lake Storage Gen2 API](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/update#request-headers)來封鎖層級的 MD5 總和檢查碼驗證。 如果 ContentMD5 檔案上的檔案存在於 Azure Blob 上，或 Azure Data Lake Storage Gen2 作為資料來源，則 ADF 也會在讀取檔案之後，進行檔案層級的 MD5 總和檢查碼驗證。 將檔案複製到 Azure Blob 或 Azure Data Lake Storage Gen2 為數據目的地之後，ADF 會將 ContentMD5 寫入 Azure Blob 或 Azure Data Lake Storage Gen2，以供下游應用程式進一步取用以進行資料一致性驗證。
+>- ADF 會在任何存放區間複製二進位檔案時進行檔案大小驗證。
 
 ## <a name="monitoring"></a>監視
 
