@@ -14,10 +14,10 @@ ms.topic: how-to
 ms.date: 03/19/2019
 ms.author: allensu
 ms.openlocfilehash: 1f30943eb0cc72f677785d1228b47b65764c1e7d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84887859"
 ---
 # <a name="control-azure-cdn-caching-behavior-with-caching-rules"></a>使用快取規則來控制 Azure CDN 快取行為
@@ -103,7 +103,7 @@ ms.locfileid: "84887859"
    - 快取行為：**缺少時才設定**
    - 快取到期期間：3 天
 
-設定這些規則時， _ &lt; 端點 hostname &gt; _. azureedge.net/home/index.html 的要求會觸發自訂快取規則 #2，這會設定為： [若**遺漏則設定**] 和 [3 天]。 因此，如果 index.html** 檔案具有 `Cache-Control` 或 `Expires` HTTP 標頭，則會優先採用它們，否則，如果未設定這些標頭，就會將檔案快取 3 天。
+設定這些規則時， _ &lt; 端點主機名稱 &gt; _. azureedge.net/home/index.html 的要求會觸發自訂快取規則 #2，其設定為：**如果遺漏**和3天，則設定為。 因此，如果 index.html** 檔案具有 `Cache-Control` 或 `Expires` HTTP 標頭，則會優先採用它們，否則，如果未設定這些標頭，就會將檔案快取 3 天。
 
 > [!NOTE] 
 > 在規則變更之前快取的檔案會維持其原始的快取持續時間設定。 若要重設它們的快取持續時間，您必須[清除檔案](cdn-purge-endpoint.md)。 
@@ -115,5 +115,5 @@ ms.locfileid: "84887859"
 
 ## <a name="see-also"></a>另請參閱
 
-- [快取的運作方式](cdn-how-caching-works.md)
+- [快取如何運作](cdn-how-caching-works.md) \(機器翻譯\)
 - [教學課程：設定 Azure CDN 快取規則](cdn-caching-rules-tutorial.md)

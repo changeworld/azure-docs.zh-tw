@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/08/2020
 tags: connectors
 ms.openlocfilehash: de85a61cbd699ec9ac2669f8abb6217254038de9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91334577"
 ---
 # <a name="create-and-manage-records-in-common-data-service-by-using-azure-logic-apps"></a>使用 Azure Logic Apps 在 Common Data Service 中建立和記錄管理
@@ -20,7 +20,7 @@ ms.locfileid: "91334577"
 
 本文說明如何建立邏輯應用程式，以在每次建立新的潛在客戶記錄時建立工作記錄。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先[註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
 
@@ -49,7 +49,7 @@ ms.locfileid: "91334577"
 
    ![要監視的環境觸發程式資訊](./media/connect-common-data-service/when-record-created-trigger-details.png)
 
-   | 屬性 | 必要 | 說明 |
+   | 屬性 | 必要 | 描述 |
    |----------|----------|-------------|
    | **環境** | 是 | 要監視的環境，例如「Fabrikam 銷售生產」。 如需詳細資訊，請參閱 [Power Platform 環境總覽](/power-platform/admin/environments-overview)。 |
    | **機構名稱** | 是 | 要監視的實體，例如「潛在客戶」 |
@@ -70,7 +70,7 @@ ms.locfileid: "91334577"
 
    ![要在其中建立記錄之環境的動作資訊](./media/connect-common-data-service/create-new-record-action-details.png)
 
-   | 屬性 | 必要 | 說明 |
+   | 屬性 | 必要 | 描述 |
    |----------|----------|-------------|
    | **組織名稱** | 是 | 您要在其中建立記錄的環境，在您的觸發程式中不一定是相同的環境，但在此範例中為「Fabrikam 銷售生產」 |
    | **機構名稱** | 是 | 要在其中建立記錄的實體，例如「Tasks」 |
@@ -87,7 +87,7 @@ ms.locfileid: "91334577"
 
       ![選取要在工作記錄中使用的觸發程式輸出](./media/connect-common-data-service/create-new-record-action-select-trigger-outputs.png)
 
-      | 觸發程式輸出 | 說明 |
+      | 觸發程式輸出 | 描述 |
       |----------------|-------------|
       | **First Name** | 潛在客戶記錄中用來做為工作記錄中主要連絡人的名字 |
       | **姓氏** | 從潛在客戶記錄中，用來做為工作記錄中主要連絡人的姓氏 |
@@ -98,7 +98,7 @@ ms.locfileid: "91334577"
 
    ![完成「建立新的記錄」動作](./media/connect-common-data-service/finished-create-record-action-details.png)
 
-1. 儲存您的邏輯應用程式。 在設計工具的工具列上，選取 [儲存]  。
+1. 儲存您的邏輯應用程式。 在設計工具的工具列上，選取 [儲存]。
 
 1. 若要手動啟動邏輯應用程式，請在設計工具工具列上選取 [ **執行**]。 若要測試您的邏輯應用程式，請建立新的「潛在客戶」記錄。
 

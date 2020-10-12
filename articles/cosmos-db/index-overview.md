@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: tisande
 ms.openlocfilehash: 3d07657fc3345ddd8dfadd163dc3c9f957d77af3
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90068382"
 ---
 # <a name="indexing-in-azure-cosmos-db---overview"></a>在 Azure Cosmos DB 中編製索引 - 概觀
@@ -180,7 +180,7 @@ Azure Cosmos DB 目前支援三種索引。
 
 例如可試想下列查詢：`SELECT location FROM location IN company.locations WHERE location.country = 'France'`。 查詢述詞 (篩選有任何位置的國家/地區為「法國」的項目) 符合下列以紅色反白顯示的路徑：
 
-:::image type="content" source="./media/index-overview/matching-path.png" alt-text="比對樹狀結構內的特定路徑" border="false":::
+:::image type="content" source="./media/index-overview/matching-path.png" alt-text="以樹狀結構表示的上一個項目" border="false":::
 
 > [!NOTE]
 > 依單一屬性排序的 `ORDER BY` 子句一律需要使用範圍索引，而且如果所參考的路徑不具範圍索引，就會失敗。 同理，按照多個屬性排序的 `ORDER BY` 查詢一律需要使用複合式索引。

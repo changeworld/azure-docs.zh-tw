@@ -16,10 +16,10 @@ ms.date: 06/21/2018
 ms.author: allensu
 ms.custom: ''
 ms.openlocfilehash: c1302822715a37ef1b85007130067ac02a8fd17a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84887585"
 ---
 # <a name="migrate-an-azure-cdn-profile-from-standard-verizon-to-premium-verizon"></a>將 Azure CDN 設定檔從標準 Verizon 移轉至進階 Verizon
@@ -49,6 +49,6 @@ ms.locfileid: "84887585"
    - [即時分析](cdn-real-time-alerts.md)
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 若要深入了解規則引擎，請參閱 [Azure CDN 規則引擎參考](cdn-rules-engine-reference.md)。
 

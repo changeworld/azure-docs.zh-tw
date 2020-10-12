@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.service: automation
 ms.custom: has-adal-ref
 ms.openlocfilehash: 1cbb5be8c1a4045b218c0e6bf5ac7ed0b901aa80
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87904797"
 ---
 # <a name="troubleshoot-runbook-issues"></a>針對 Runbook 問題進行疑難排解
@@ -96,7 +96,7 @@ No certificate was found in the certificate store with thumbprint
    Connect-AzAccount –Credential $Cred
    ```
 
-1. 如果您的驗證在本機失敗，表示您尚未正確設定 Azure Active Directory (Azure AD) 認證。 若要正確設定 Azure AD 帳戶，請參閱[使用 Azure Active Directory 向 Azure 進行驗證](../automation-use-azure-ad.md)一文。
+1. 如果您的驗證在本機失敗，表示您尚未正確設定 Azure Active Directory (Azure AD) 認證。 若要正確設定 Azure AD 帳戶，請參閱 [使用 Azure Active Directory 向 Azure 進行驗證](../automation-use-azure-ad.md)的文章。
 
 1. 如果此錯誤似乎是暫時性的，請嘗試將重試邏輯新增至您的驗證常式，讓驗證變得更強固。
 
@@ -271,7 +271,7 @@ Add-AzureAccount: AADSTS50079: Strong authentication enrollment (proof-up) is re
 
 ### <a name="resolution"></a>解決方案
 
-若要使用傳統的執行身分帳戶搭配 Azure 傳統部署模型 Cmdlet，請參閱[建立傳統執行身分帳戶來管理 azure 服務](../automation-create-standalone-account.md#create-a-classic-run-as-account)。 若要搭配 Azure Resource Manager Cmdlet 使用服務主體，請參閱[使用 Azure 入口網站來建立服務主體](../../active-directory/develop/howto-create-service-principal-portal.md)和[使用 Azure Resource Manager 來驗證服務主體](../../active-directory/develop/howto-authenticate-service-principal-powershell.md)。
+若要使用傳統的執行身份帳戶搭配 Azure 傳統部署模型 Cmdlet，請參閱 [建立傳統執行帳戶以管理 azure 服務](../automation-create-standalone-account.md#create-a-classic-run-as-account)。 若要搭配 Azure Resource Manager Cmdlet 使用服務主體，請參閱[使用 Azure 入口網站來建立服務主體](../../active-directory/develop/howto-create-service-principal-portal.md)和[使用 Azure Resource Manager 來驗證服務主體](../../active-directory/develop/howto-authenticate-service-principal-powershell.md)。
 
 ## <a name="scenario-runbook-fails-with-a-task-was-canceled-error-message"></a><a name="task-was-cancelled"></a>案例：Runbook 失敗並出現「工作已取消」錯誤訊息
 
@@ -512,7 +512,7 @@ The quota for the monthly total job run time has been reached for this subscript
 
 ### <a name="issue"></a>問題
 
-您在 Azure 沙箱中執行的 runbook 因下列錯誤而失敗：
+您在 Azure 沙箱中執行的 runbook 會失敗，並出現下列錯誤：
 
 ```error
 The runbook job failed due to a job stream being larger than 1MB, this is the limit supported by an Azure Automation sandbox.
@@ -520,11 +520,11 @@ The runbook job failed due to a job stream being larger than 1MB, this is the li
 
 ### <a name="cause"></a>原因
 
-發生此錯誤的原因是您的 runbook 嘗試將太多例外狀況資料寫入輸出資料流程。
+因為您的 runbook 嘗試將太多例外狀況資料寫入輸出資料流程，所以會發生此錯誤。
 
-### <a name="resolution"></a>解決方法
+### <a name="resolution"></a>解決方案
 
-作業輸出資料流程有 1 MB 的限制。 確定您的 Runbook 會使用 `try` 和 `catch` 區塊，來括住對可執行檔或子處理序的呼叫。 如果作業擲回例外狀況，則讓程式碼將來自例外狀況的訊息寫入到自動化變數中。 此技術可避免將訊息寫入到作業輸出資料流。 針對執行的混合式 Runbook 背景工作角色作業，會顯示截斷為 1 MB 的輸出資料流程，而不會出現錯誤訊息。
+作業輸出資料流程有 1 MB 的限制。 確定您的 Runbook 會使用 `try` 和 `catch` 區塊，來括住對可執行檔或子處理序的呼叫。 如果作業擲回例外狀況，則讓程式碼將來自例外狀況的訊息寫入到自動化變數中。 此技術可避免將訊息寫入到作業輸出資料流。 針對執行中的混合式 Runbook 背景工作角色，會顯示截斷為 1 MB 的輸出資料流程，而不會出現任何錯誤訊息。
 
 ## <a name="scenario-runbook-job-start-attempted-three-times-but-fails-to-start-each-time"></a><a name="job-attempted-3-times"></a>案例：已嘗試啟動 Runbook 作業三次，但無法每次都順利啟動
 

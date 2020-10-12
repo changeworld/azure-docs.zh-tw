@@ -1,20 +1,20 @@
 ---
-title: 使用 Azure Resource Manager 範本在 Azure 事件方格中建立系統主題
+title: 使用 Azure Resource Manager 範本來建立 Azure 事件方格中的系統主題
 description: 本文說明如何使用 Azure Resource Manager 範本，在 Azure 事件方格中建立系統主題。
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: 1c8881a2d9dfca43084cc537b106e84b050a18d5
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86115157"
 ---
 # <a name="create-system-topics-in-azure-event-grid-using-resource-manager-templates"></a>使用 Resource Manager 範本在 Azure 事件方格中建立系統主題
-本文說明如何使用 Resource Manager 範本來建立和管理系統主題。 如需系統主題的總覽，請參閱[系統主題](system-topics.md)。
+本文說明如何使用 Resource Manager 範本來建立和管理系統主題。 如需系統主題的總覽，請參閱 [系統主題](system-topics.md)。
 
 ## <a name="create-system-topic-first-and-then-create-event-subscription"></a>先建立系統主題，然後建立事件訂用帳戶
-若要先在 Azure 來源上建立系統主題，然後建立該主題的事件訂用帳戶，您可以使用如下的範本： 
+若要先在 Azure 來源上建立系統主題，然後建立該主題的事件訂用帳戶，您可以使用類似下列的範本： 
 
 ```json
 {
@@ -110,10 +110,10 @@ ms.locfileid: "86115157"
 }
 ```
 
-如需使用 Resource Manager 範本建立系統主題和訂用帳戶的相關指示，請參閱[使用 Azure Resource Manager 範本將 Blob 儲存體事件路由至 web 端點](blob-event-quickstart-template.md)。 
+請參閱 [使用 Azure Resource Manager 範本將 Blob 儲存體事件路由至 web 端點](blob-event-quickstart-template.md) ，以取得使用 Resource Manager 範本為其建立系統主題和訂用帳戶的指示。 
 
-## <a name="create-system-topic-while-creating-an-event-subscription"></a>建立事件訂用帳戶時建立系統主題 
-若要隱含建立系統主題，同時在 Azure 來源上建立事件訂用帳戶，您可以使用下列範本：
+## <a name="create-system-topic-while-creating-an-event-subscription"></a>建立事件訂閱時建立系統主題 
+若要隱含地建立系統主題，在 Azure 來源上建立事件訂閱時，您可以使用下列範本：
 
 ``` json
 {
@@ -191,5 +191,5 @@ ms.locfileid: "86115157"
 }
 ```
 
-## <a name="next-steps"></a>後續步驟
-若要深入瞭解 Azure 事件方格所支援的系統主題和主題類型，請參閱[Azure 事件方格中的系統主題](system-topics.md)一節。 
+## <a name="next-steps"></a>接下來的步驟
+若要深入瞭解 Azure 事件方格所支援的系統主題和主題類型，請參閱 [Azure 事件方格中的系統主題](system-topics.md) 一節。 

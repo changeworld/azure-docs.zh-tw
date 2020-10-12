@@ -6,10 +6,10 @@ ms.date: 4/11/2019
 ms.topic: conceptual
 ms.custom: mvc
 ms.openlocfilehash: 302e0cc9b77605afd4012e95fc7c0ab8a22fef3e
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86186311"
 ---
 # <a name="enable-change-tracking-and-inventory-from-an-automation-account"></a>自動化帳戶的 [啟用變更追蹤和清查]
@@ -43,7 +43,7 @@ ms.locfileid: "86186311"
 
 2. 按一下 [+ 加入 Azure VM]，然後從清單中選取一或多個 VM。 無法啟用的虛擬機器會呈現灰色且無法選取。 Azure VM 可以存在於任何區域中，而不論您的自動化帳戶位置為何。 
 
-3. 按一下 [啟用]，以將選取的 VM 新增至此功能的電腦群組儲存搜尋。 如需詳細資訊，請參閱[限制變更追蹤和清查部署範圍](automation-scope-configurations-change-tracking.md)。
+3. 按一下 [啟用]，以將選取的 VM 新增至此功能的電腦群組儲存搜尋。 如需詳細資訊，請參閱 [限制變更追蹤和清查部署範圍](automation-scope-configurations-change-tracking.md)。
 
     ![啟用 Azure VM](media/automation-enable-changes-from-auto-acct/enable-azure-vms.png)
 
@@ -69,11 +69,11 @@ ms.locfileid: "86186311"
 
 4. 若要為所有可用的機器與未來的機器啟用此功能，請選取 [在所有可用及未來的機器上啟用]。 此選項會從工作區刪除已儲存的搜尋和範圍設定，並針對向工作區報告的所有 Azure 和非 Azure 機器開啟此功能。 選取時，此動作會永久停用 [管理機器] 按鈕，因為沒留下任何範圍設定。
 
-5. 如有需要，您可以藉由重新新增初始儲存的搜尋，重新新增範圍設定。 如需詳細資訊，請參閱[限制變更追蹤和清查部署範圍](automation-scope-configurations-change-tracking.md)。
+5. 如有需要，您可以藉由重新新增初始儲存的搜尋，重新新增範圍設定。 如需詳細資訊，請參閱 [限制變更追蹤和清查部署範圍](automation-scope-configurations-change-tracking.md)。
 
 6. 若要針對一或多部機器新增此功能，請選取 [在選取的機器上啟用]，然後按一下想針對此功能啟用之每部機器旁邊的 [新增]。 此工作會針對此功能，將所選取機器的名稱加入至電腦群組儲存的搜尋查詢。
 
 ## <a name="next-steps"></a>後續步驟
 
-* 若要使用此功能，請參閱[管理變更追蹤和清查](change-tracking-file-contents.md)。
+* 若要使用此功能，請參閱 [管理變更追蹤和清查](change-tracking-file-contents.md)。
 * 若要對此功能的一般問題進行疑難排解，請參閱[對變更追蹤和清查問題進行疑難排解](troubleshoot/change-tracking.md)。

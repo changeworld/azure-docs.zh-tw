@@ -12,10 +12,10 @@ manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: db68528a810ebc9cd61b205dd5167396d75db7f7
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91613980"
 ---
 # <a name="add-an-api-connector-to-a-user-flow"></a>將 API 連接器新增至使用者流程
@@ -38,7 +38,7 @@ ms.locfileid: "91613980"
    - 目前僅支援基本驗證。 如果您想要在開發用途不使用基本驗證的情況下使用 API，只要輸入您的 API 可以忽略的虛擬使用者 **名稱** 和 **密碼** 即可。 若要搭配使用 Azure 函式與 API 金鑰，您可以在 **端點 URL** 中包含程式碼做為查詢參數 (例如 HTTPs： []() //contoso.azurewebsites.net/api/endpoint<b>？ code = 0123456789</b>) 。
 
    ![設定新的 API 連接器](./media/self-service-sign-up-add-api-connector/api-connector-config.png)
-8. 選取 [儲存]。
+8. 選取 [儲存]****。
 
 > [!IMPORTANT]
 > 先前，您必須設定要傳送至 API ( 「要傳送的宣告」 ) 的使用者屬性，以及要從 API 接受哪些使用者屬性 ( 「要接收的宣告」 ) 。 現在，如果所有使用者屬性都有值，而且 API 可在「接續」回應中傳回任何使用者屬性，則預設會傳送這些屬性。
@@ -102,7 +102,7 @@ Content-type: application/json
 
    ![將 Api 新增至使用者流程](./media/self-service-sign-up-add-api-connector/api-connectors-user-flow-select.png)
 
-6. 選取 [儲存]。
+6. 選取 [儲存]****。
 
 ## <a name="after-signing-in-with-an-identity-provider"></a>使用身分識別提供者登入之後
 

@@ -12,10 +12,10 @@ ms.date: 06/25/2019
 ms.author: aahi
 ms.custom: seodec2018
 ms.openlocfilehash: a5e69fe855f0c1e99dc3672425d9aeea13d4e827
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89297785"
 ---
 # <a name="bing-web-search-api-response-structure-and-answer-types"></a>Bing Web 搜尋 API 回應結構和回應類型  
@@ -295,7 +295,7 @@ Encoded query: 8^2%2B11^2-2*8*11*cos%2837%29
 |+|加法|
 |-|減|
 |/|部門|
-|*|乘|
+|*|乘法|
 |^|電源|
 |!|階乘|
 |.|Decimal|
@@ -476,7 +476,7 @@ cors-proxy-server
 
 ![Bing 拼字建議範例](./media/cognitive-services-bing-web-api/bing-web-spellingsuggestion.GIF)  
 
-## <a name="next-steps"></a>接下來的步驟  
+## <a name="next-steps"></a>後續步驟  
 
 * 檢閱[要求節流](throttling-requests.md)文件。  
 

@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 07/17/2020
 ms.openlocfilehash: 92333857177d33307d6997bfcbdf79787d3ab127
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90895953"
 ---
 # <a name="determining-application-type"></a>判斷應用程式類型
@@ -22,7 +22,7 @@ ms.locfileid: "90895953"
 
 ## <a name="at-a-glance"></a>一覽
 
-| 多租使用者應用程式                                 | 即時應用程式                                |
+| 多租使用者應用程式                                 | Real-Time 應用程式                                |
 |-----------------------------------------------------------|-------------------------------------------------------|
 | 有時在架構中有數十或數百個數據表          | 少數資料表                                |
 | 一次與一個租使用者相關的查詢 (公司/商店)  | 相對簡單的分析查詢與匯總 |
@@ -53,6 +53,6 @@ ms.locfileid: "90895953"
 
 如果您的情況類似上述任一種情況，則下一個步驟是決定如何分區伺服器群組中的資料。 資料庫管理員 \' 選擇的散發資料行必須符合一般查詢的存取模式，以確保效能。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [選擇](concepts-hyperscale-choose-distribution-column.md) 應用程式中資料表的散發資料行，以有效率地散發資料

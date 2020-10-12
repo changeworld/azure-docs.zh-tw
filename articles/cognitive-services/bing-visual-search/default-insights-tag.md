@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: scottwhi
 ms.openlocfilehash: a11bf408f06b5c4e621f0af1f71f23c335dc2069
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86512634"
 ---
 # <a name="default-insights-tag"></a>預設深入解析標記
@@ -100,7 +100,7 @@ ms.locfileid: "86512634"
 
 ## <a name="pagesincluding-insight"></a>PagesIncluding 深入解析
 
-PagesIncluding 深入解析會提供包含此影像的網頁。 它實際上是一份 `Image` 物件清單，而 `hostPageUrl` 欄位包含包含影像的網頁 URL。 如需用法的範例，請參閱[PagesIncluding 深入解析範例](./bing-insights-usage.md#pagesincluding-insight-example)。
+PagesIncluding 深入解析會提供包含此影像的網頁。 它實際上是 `Image` 物件清單，而 `hostPageUrl` 欄位則包含包含影像的網頁 URL。 如需使用範例，請參閱 [PagesIncluding 深入解析範例](./bing-insights-usage.md#pagesincluding-insight-example)。
 
 ```json
       {
@@ -139,7 +139,7 @@ PagesIncluding 深入解析會提供包含此影像的網頁。 它實際上是�
 
 ## <a name="shoppingsources-insight"></a>ShoppingSources 深入解析
 
-ShoppingSources 深入解析會提供網站清單，使用者可以在這些網站購買影像所示的項目。 供應專案清單包含使用者可以在其中購買專案的網頁 URL、專案的價格，以及評等或評論詳細資料。 關於使用範例，請參閱 [ShoppingSources 範例](./bing-insights-usage.md#shoppingsources-insight-example)。
+ShoppingSources 深入解析會提供網站清單，使用者可以在這些網站購買影像所示的項目。 供應專案清單包含使用者可以購買專案的網頁 URL、專案的價格，以及評等或評論詳細資料。 關於使用範例，請參閱 [ShoppingSources 範例](./bing-insights-usage.md#shoppingsources-insight-example)。
 
 ```json
       {
@@ -168,7 +168,7 @@ ShoppingSources 深入解析會提供網站清單，使用者可以在這些網�
 
 ## <a name="moresizes-insight"></a>MoreSizes 深入解析
 
-MoreSizes 深入解析會識別 Bing 在網際網路上找到的影像大小（較大或較小）數目（請參閱 `availableSizesCount` 欄位）：
+MoreSizes 深入解析會識別 Bing 在網際網路上找到之影像的大小 (更大或較小)  (查看 `availableSizesCount` 欄位) ：
 
 ```json
       {
@@ -203,7 +203,7 @@ MoreSizes 深入解析會識別 Bing 在網際網路上找到的影像大小（�
 
 ## <a name="visualsearch-insight"></a>VisualSearch 深入解析
 
-VisualSearch 深入解析會提供影像清單，這些影像呈現在視覺效果上與原始影像類似的影像 (包含與原始影像顯示的內容類似的內容)。 如需用法的範例，請參閱[VisualSearch 深入解析範例](./bing-insights-usage.md#visualsearch-insight-example)。
+VisualSearch 深入解析會提供影像清單，這些影像呈現在視覺效果上與原始影像類似的影像 (包含與原始影像顯示的內容類似的內容)。 如需使用範例，請參閱 [VisualSearch 深入解析範例](./bing-insights-usage.md#visualsearch-insight-example)。
 
 ```json
       {
@@ -243,7 +243,7 @@ VisualSearch 深入解析會提供影像清單，這些影像呈現在視覺效�
 
 ## <a name="recipes-insight"></a>Recipes 深入解析
 
-Recipes 深入解析會提供網頁清單，這些網頁包含對於影像顯示的食物進行調理的食譜。 如需用法的範例，請參閱[配方深入解析範例](./bing-insights-usage.md#recipes-insight-example)。
+Recipes 深入解析會提供網頁清單，這些網頁包含對於影像顯示的食物進行調理的食譜。 如需範例使用方式，請參閱 [食譜深入解析範例](./bing-insights-usage.md#recipes-insight-example)。
 
 ```json
       {
@@ -278,7 +278,7 @@ Recipes 深入解析會提供網頁清單，這些網頁包含對於影像顯示
 
 ## <a name="imagebyid-insight"></a>ImageById 深入解析
 
-ImageById 深入解析會提供 `Image` 您為其要求深入解析之影像的物件：
+ImageById 深入解析會提供 `Image` 您要求見解的映射物件：
 
 ```json
       {
@@ -377,7 +377,7 @@ ProductVisualSearch 深入解析提供產品影像的清單，這些影像呈現
 
 ## <a name="relatedsearches-insight"></a>RelatedSearches 深入解析
 
-RelatedSearches 深入解析會提供其他人進行的相關搜尋清單 (根據其他使用者的搜尋字詞)。 如需用法的範例，請參閱[RelatedSearches 深入解析範例](./bing-insights-usage.md#relatedsearches-insight-example)。
+RelatedSearches 深入解析會提供其他人進行的相關搜尋清單 (根據其他使用者的搜尋字詞)。 如需使用範例，請參閱 [RelatedSearches 深入解析範例](./bing-insights-usage.md#relatedsearches-insight-example)。
 
 ```json
       {
@@ -421,9 +421,9 @@ DocumentLevelSuggestions 深入解析會根據影像的內容，提供建議的�
       }
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-請查看[bing 深入解析使用方式的範例](bing-insights-usage.md)，以查看 bing 可能會如何顯示視覺效果見解。
+查看 [bing 深入解析使用方式的範例](bing-insights-usage.md) ，以瞭解 bing 如何顯示視覺效果見解。
 
 若要快速開始使用您的第一個要求，請參閱快速入門：
 

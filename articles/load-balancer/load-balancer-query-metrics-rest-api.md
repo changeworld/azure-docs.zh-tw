@@ -1,7 +1,7 @@
 ---
 title: 使用 REST API 來擷取計量
 titleSuffix: Azure Load Balancer
-description: 在本文中，您可以開始使用 Azure REST Api 來收集 Azure Load Balancer 的健康情況和使用計量。
+description: 在本文中，開始使用 Azure REST Api 來收集 Azure Load Balancer 的健康情況和使用計量。
 services: sql-database
 author: asudbring
 manager: KumudD
@@ -11,15 +11,15 @@ ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: allensu
 ms.openlocfilehash: 3b5aedb20bc7a8d2aa6f3aa3d8691a71af4cd3a2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84808376"
 ---
 # <a name="get-load-balancer-usage-metrics-using-the-rest-api"></a>使用 REST API 取得 Load Balancer 使用計量
 
-使用[Azure REST API](/rest/api/azure/)收集[Standard Load Balancer](/azure/load-balancer/load-balancer-standard-overview)在一段時間內處理的位元組數。
+使用[Azure REST API](/rest/api/azure/)收集一段時間的[Standard Load Balancer](/azure/load-balancer/load-balancer-standard-overview)所處理的位元組數目。
 
 REST API 的完整參考文件和其他範例可於 [Azure 監視器 REST 參考](/rest/api/monitor)中取得。 
 
@@ -42,9 +42,9 @@ GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 ### <a name="uri-parameters"></a>URI 參數
 
-| Name | 說明 |
+| 名稱 | 描述 |
 | :--- | :---------- |
-| subscriptionId | 可識別 Azure 訂用帳戶的訂用帳戶識別碼。 如果您有多個訂用帳戶，請參閱使用[多個訂閱](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest)。 |
+| subscriptionId | 可識別 Azure 訂用帳戶的訂用帳戶識別碼。 如果您有多個訂閱，請參閱使用 [多個訂閱](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest)。 |
 | resourceGroupName | 包含資源的資源群組名稱。 您可以從 Azure Resource Manager API、CLI 或入口網站取得這個值。 |
 | loadBalancerName | Azure Load Balancer 的名稱。 |
 | 度量名稱 | 以逗號分隔的有效 [Load Balancer 計量](/azure/load-balancer/load-balancer-standard-diagnostics)清單。 |

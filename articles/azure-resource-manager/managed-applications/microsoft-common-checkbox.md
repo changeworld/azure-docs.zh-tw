@@ -1,24 +1,24 @@
 ---
 title: CheckBox UI 元素
-description: 描述 Azure 入口網站的 [一般] 核取方塊 UI 元素。 可讓使用者選取以檢查或取消核取選項。
+description: 描述 Azure 入口網站的 [一般] 核取方塊 UI 元素。 可讓使用者選取檢查或取消核取選項。
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 07/09/2020
 ms.author: tomfitz
 ms.openlocfilehash: 9f40f223cca34df58d2af7373d8f60fd7f383162
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87096341"
 ---
 # <a name="microsoftcommoncheckbox-ui-element"></a>[一般] 核取方塊 UI 元素
 
-CheckBox 控制項可讓使用者檢查或取消核取選項。 當控制項已核取時，控制項會傳回**true** ，如果未核取則傳回**false** 。
+CheckBox 控制項可讓使用者檢查或取消核取選項。 當選取控制項時，控制項會傳回 **true** ，如果未核取，則會傳回 **false** 。
 
 ## <a name="ui-sample"></a>UI 範例
 
-:::image type="content" source="./media/managed-application-elements/microsoft-common-checkbox.png" alt-text="[一般] 核取方塊":::
+:::image type="content" source="./media/managed-application-elements/microsoft-common-checkbox.png" alt-text="Microsoft. 一般. 核取方塊":::
 
 ## <a name="schema"></a>結構描述
 
@@ -42,9 +42,9 @@ true
 
 ## <a name="remarks"></a>備註
 
-當您將 [**必要**] 設定為 [ **true**] 時，使用者必須選取此核取方塊。 如果使用者未選取此核取方塊，則會顯示驗證訊息。
+當您將 [ **必要** ] 設定為 [ **true**] 時，使用者必須選取此核取方塊。 如果使用者未選取該核取方塊，則會顯示驗證訊息。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * 如需建立 UI 定義的簡介，請參閱[開始使用 CreateUiDefinition](create-uidefinition-overview.md)。
 * 如需 UI 元素中通用屬性的說明，請參閱 [CreateUiDefinition 元素](create-uidefinition-elements.md)。

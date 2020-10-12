@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 01/24/2020
 ms.openlocfilehash: 99253aa2e7e2e1f3f58f2ab7d5c40a695c2b9690
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88654849"
 ---
 # <a name="azure-hdinsight-accelerated-writes-for-apache-hbase"></a>適用於 Apache HBase 的 Azure HDInsight 加速寫入
@@ -32,7 +32,7 @@ HBase 會先將資料更新寫入至一種認可記錄類型，稱為「立即�
 
 ## <a name="accelerated-writes-feature-in-azure-hdinsight-for-apache-hbase"></a>Apache HBase Azure HDInsight 中的加速寫入功能
 
-加速寫入功能可透過使用雲端儲存體中的預先寫入記錄，來解決寫入延遲較高的問題。  HDInsight Apache HBase 叢集的加速寫入功能會將高階 SSD 受控磁片附加至每個 RegionServer (背景工作節點) 。 然後，系統會將預先寫入的記錄寫入 Hadoop 檔案系統 (HDFS) 掛接在這些高階受控磁片上，而不是雲端存放裝置上。  高階受控磁片使用固態硬碟 (Ssd) ，並提供具有容錯能力的絕佳 i/o 效能。  不同于非受控磁片，如果某個儲存裝置停止運作，則不會影響相同可用性設定組中的其他儲存體單位。  因此，受控磁片可為您的應用程式提供低寫入延遲和更佳的復原能力。 若要深入瞭解 Azure 受控磁片，請參閱 [azure 受控磁片簡介](../../virtual-machines/managed-disks-overview.md)。
+加速寫入功能可透過使用雲端儲存體中的預先寫入記錄，來解決寫入延遲較高的問題。  HDInsight Apache HBase 叢集的加速寫入功能會將高階 SSD 受控磁片附加至每個 RegionServer (背景工作節點) 。 然後，系統會將預先寫入的記錄寫入 Hadoop 檔案系統 (HDFS) 掛接在這些高階受控磁片上，而不是雲端存放裝置上。  高階受控磁片使用 Solid-State 磁片 (Ssd) 並提供具有容錯能力的絕佳 i/o 效能。  不同于非受控磁片，如果某個儲存裝置停止運作，則不會影響相同可用性設定組中的其他儲存體單位。  因此，受控磁片可為您的應用程式提供低寫入延遲和更佳的復原能力。 若要深入瞭解 Azure 受控磁片，請參閱 [azure 受控磁片簡介](../../virtual-machines/managed-disks-overview.md)。
 
 ## <a name="how-to-enable-accelerated-writes-for-hbase-in-hdinsight"></a>如何在 HDInsight 中為 HBase 啟用加速寫入
 
@@ -60,7 +60,7 @@ disable 'mytable'
 
 如果您的 namenode 在縮小後進入安全模式，請使用 hdfs 命令重新複寫複寫中的區塊，並從安全模式取得 hdfs。 此重新複寫可讓您成功重新開機 HBase。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * [預先寫入記錄功能](https://hbase.apache.org/book.html#wal)的官方 Apache HBase 檔
 * 若要將 HDInsight Apache HBase 叢集升級為使用加速寫入，請參閱將 [Apache hbase 叢集遷移至新的版本](apache-hbase-migrate-new-version.md)。

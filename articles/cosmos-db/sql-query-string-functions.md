@@ -8,13 +8,13 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 192f015b37eadb57b8e4a5c83ce3adf94c8bf038
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85549511"
 ---
-# <a name="string-functions-azure-cosmos-db"></a>字串函數（Azure Cosmos DB）
+# <a name="string-functions-azure-cosmos-db"></a>字串函式 (Azure Cosmos DB) 
 
 字串函數可讓您對 Azure Cosmos DB 中的字串執行作業。
 
@@ -46,7 +46,7 @@ ms.locfileid: "85549511"
 * [TRIM](sql-query-trim.md)
 * [UPPER](sql-query-upper.md)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - [系統函數 Azure Cosmos DB](sql-query-system-functions.md)
 - [Azure Cosmos DB 簡介](introduction.md)

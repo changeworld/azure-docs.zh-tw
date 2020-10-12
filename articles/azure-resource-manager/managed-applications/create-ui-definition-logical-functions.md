@@ -1,24 +1,24 @@
 ---
 title: 建立 UI 定義邏輯函數
-description: 描述執行邏輯作業的函式。
+description: 描述執行邏輯運算的函式。
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: tomfitz
 ms.openlocfilehash: 00d2f0eeb5d353c8ebd7ad30f6866f890d6cb42e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87096234"
 ---
 # <a name="createuidefinition-logical-functions"></a>CreateUiDefinition 邏輯函數
 
-這些函式可以在條件運算式中使用。 有些函式可能不支援所有 JSON 資料類型。
+這些函數可用於條件運算式中。 有些函式可能不支援所有 JSON 資料類型。
 
 ## <a name="and"></a>及
 
-如果所有參數都評估為 `true`，則傳回 `true`。 此函式僅支援兩個或多個類型為布林值的參數。
+如果所有參數都評估為 `true`，則傳回 `true`。 此函數僅支援兩個或多個參數類型為布林值。
 
 下列範例會傳回 `true`：
 
@@ -42,9 +42,9 @@ ms.locfileid: "87096234"
 "[coalesce(steps('demoStep').element1, steps('demoStep').element2, 'Contoso')]"
 ```
 
-此函式在頁面載入後因使用者動作而發生的選擇性調用內容中特別有用。 例如，如果條件約束放在 UI 中的一個欄位上，則取決於另一個**初始非可見**欄位的目前選取值。 在此情況下， `coalesce()` 可以用來在頁面載入時讓函式在語法上有效，同時在使用者與欄位互動時產生所要的效果。
+這個函式在頁面載入後因使用者動作而發生的選擇性調用內容中特別有用。 其中一個範例是，如果條件約束放在 UI 的某個欄位上，則會根據目前選取的另一個 **非可見** 欄位值而定。 在此情況下， `coalesce()` 可以在頁面載入時間用來允許函式在語法上有效，同時在使用者與欄位互動時有所要的效果。
 
-請考慮這一點，這可 `DropDown` 讓使用者從數種不同的資料庫類型中進行選擇：
+請考慮這 `DropDown` 種情況，讓使用者可以從數種不同的資料庫類型進行選擇：
 
 ```
 {
@@ -73,13 +73,13 @@ ms.locfileid: "87096234"
     },
 ```
 
-若要在此欄位的目前選擇值上條件下另一個欄位的動作，請使用 `coalesce()` ，如下所示：
+若要在此欄位的目前選擇值上條件出另一個欄位的動作，請使用 `coalesce()` ，如下所示：
 
 ```
 "regex": "[concat('^jdbc:', coalesce(steps('section_database').databaseConnectionInfo.databaseType, ''), '.*$')]",
 ```
 
-這是必要的，因為 `databaseType` 最初不會顯示，因此不會有值。 這會導致整個運算式無法正確評估。
+這是必要的，因為一 `databaseType` 開始並不會顯示，因此沒有值。 這會導致整個運算式無法正確進行評估。
 
 ## <a name="equals"></a>equals
 
@@ -131,7 +131,7 @@ ms.locfileid: "87096234"
 
 ## <a name="if"></a>if
 
-根據條件是 true 或 false 傳回值。 第一個參數是要測試的條件。 第二個參數是條件為 true 時要傳回的值。 第三個參數是條件為 false 時要傳回的值。
+根據條件是 true 或 false 傳回值。 第一個參數是要測試的條件。 如果條件為 true，則第二個參數是要傳回的值。 第三個參數是條件為 false 時要傳回的值。
 
 下列範例會傳回 `yes` 。
 
@@ -197,6 +197,6 @@ ms.locfileid: "87096234"
 "[or(equals(0, 0), greater(1, 2))]"
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * 如需 Azure Resource Manager 的簡介，請參閱 [Azure Resource Manager 概觀](../management/overview.md)。

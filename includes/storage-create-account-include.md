@@ -9,10 +9,10 @@ ms.date: 11/20/2018
 ms.author: tamram
 ms.custom: include file
 ms.openlocfilehash: 1295160beac83351f3f5243054f91558ad6e0191
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87020965"
 ---
 ## <a name="create-an-azure-storage-account"></a>建立 Azure 儲存體帳戶
@@ -21,4 +21,4 @@ ms.locfileid: "87020965"
 
 您也可以使用 [Azure PowerShell](../articles/storage/common/storage-powershell-guide-full.md)、[Azure CLI](../articles/storage/common/storage-azure-cli.md)，或 [Azure Storage Resource Provider for .NET](https://azure.microsoft.com/resources/samples/storage-dotnet-resource-provider-getting-started/) 來建立 Azure 儲存體帳戶。
 
-如果您不想要在 Azure 中建立儲存體帳戶，您也可以使用 Azurite 儲存體模擬器在本機環境中執行和測試您的程式碼。 如需詳細資訊，請參閱[使用 Azurite 模擬器進行本機 Azure 儲存體開發](../articles/storage/common/storage-use-azurite.md)。
+如果您目前不想要在 Azure 中建立儲存體帳戶，您也可以使用 Azurite 儲存體模擬器在本機環境中執行並測試您的程式碼。 如需詳細資訊，請參閱 [使用 Azurite 模擬器進行本機 Azure 儲存體開發](../articles/storage/common/storage-use-azurite.md)。

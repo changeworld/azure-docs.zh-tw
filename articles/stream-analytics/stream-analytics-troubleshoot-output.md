@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 03/31/2020
 ms.custom: seodec18
 ms.openlocfilehash: 1fa9a8aa24cf6a8c8c2223836ae80b8b47807c81
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87903182"
 ---
 # <a name="troubleshoot-azure-stream-analytics-outputs"></a>對 Azure 串流分析輸出進行疑難排解
@@ -24,7 +24,7 @@ ms.locfileid: "87903182"
 1. 對各個輸出使用 [測試連線] 按鈕，驗證輸出的連線能力。
 1. 請查看 [監視] 索引標籤上的 [[監視計量](stream-analytics-monitoring.md)]。因為是彙總值，計量會延遲幾分鐘顯示。
 
-   * 如果 [輸入事件] 值大於零，作業便可以讀取輸入資料。 如果 [輸入事件] 值不大於零，便代表作業的輸入有問題。 請參閱[針對輸入連線進行疑難排解](stream-analytics-troubleshoot-input.md)以取得詳細資訊。 如果您的作業有參考資料輸入，請在查看**輸入事件**度量時套用依邏輯名稱分割。 如果您的參考資料中沒有任何輸入事件，則可能表示未正確設定此輸入來源來提取正確的參考資料集。
+   * 如果 [輸入事件] 值大於零，作業便可以讀取輸入資料。 如果 [輸入事件] 值不大於零，便代表作業的輸入有問題。 請參閱[針對輸入連線進行疑難排解](stream-analytics-troubleshoot-input.md)以取得詳細資訊。 如果您的作業有參考資料輸入，請在查看 **輸入事件** 度量時，依邏輯名稱套用分割。 如果您的參考資料中沒有輸入事件，則可能表示未正確設定此輸入來源以提取正確的參考資料集。
    * 如果 [資料轉換錯誤] 值大於零且持續上升，請參閱 [Azure 串流分析資料錯誤](data-errors.md)以取得資料轉換錯誤的詳細資訊。
    * 如果 [執行階段錯誤] 值大於零，便代表您作業會接收到資料，但在處理查詢時產生錯誤。 若要找出錯誤，請前往[稽核記錄](../azure-resource-manager/management/view-activity-logs.md)，並篩選 [失敗] 狀態。
    * 如果 [輸入事件] 值大於零，且 [輸出事件] 值等於零，則下列其中一個陳述為 true：

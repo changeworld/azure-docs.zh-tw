@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 7cff009d5d1e187e8d0330fadca530b57b3e3d21
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88935206"
 ---
 # <a name="import-data-wizard-for-azure-cognitive-search"></a>Azure 認知搜尋的匯入資料 wizard
@@ -69,7 +69,7 @@ Azure 入口網站會在 Azure 認知搜尋儀表板上提供 [匯 **入資料**
 | **Azure VM 上的 SQL Server** |指定完整服務名稱、使用者識別碼與密碼以及資料庫作為連接字串。 若要使用此資料來源，您必須先前就已在本機存放區中安裝用來加密連線的憑證。 如需相關指示，請參閱 [Azure 認知搜尋的 SQL VM 連接](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)。 <br/><br/>提供資料列集的資料表或檢視必須在頁面上指定。 連線成功後會出現此選項，並透過下拉式清單供您選取。 |
 | [**Azure Cosmos DB**](search-howto-index-cosmosdb.md)|需求包括帳戶、資料庫和集合。 集合中的所有文件將會包含在索引中。 您可以定義用來壓平合併或篩選資料列集的查詢，或將查詢保留空白。 在此 wizard 中不需要查詢。|
 | [**Azure Blob 儲存體**](search-howto-indexing-azure-blob-storage.md) |需求包括儲存體帳戶和容器。 如果 Blob 名稱為了分組而遵循虛擬命名慣例，您可以指定名稱的虛擬目錄部分做為容器下的資料夾 (選擇性)。 如需詳細資訊，請參閱[為 Blob 儲存體編製索引](search-howto-indexing-azure-blob-storage.md)。 |
-| [**Azure 表格儲存體**](search-howto-indexing-azure-tables.md) |需求包括儲存體帳戶和資料表名稱。 您可以指定要擷取資料表子集的查詢 (選擇性)。 如需詳細資訊，請參閱[為表格儲存體編製索引](search-howto-indexing-azure-tables.md)。 |
+| [**Azure 資料表儲存體**](search-howto-indexing-azure-tables.md) |需求包括儲存體帳戶和資料表名稱。 您可以指定要擷取資料表子集的查詢 (選擇性)。 如需詳細資訊，請參閱[為表格儲存體編製索引](search-howto-indexing-azure-tables.md)。 |
 
 ## <a name="wizard-output"></a>Wizard 輸出
 
@@ -128,7 +128,7 @@ Wizard 會產生不完整的索引，其將會填入從輸入資料來源取得�
 1. 您是否需要自動完成或建議結果形式的自動提示功能？ 選取 [ **建議工具** ] 核取方塊，即可在選取的欄位上啟用 [自動提示查詢建議和自動完成](index-add-suggesters.md) 。 建議工具會新增至索引中的 token 化詞彙數目，因此會耗用更多儲存體。
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 若要瞭解 wizard 的優點和限制，最好的方法就是逐步執行它。 下列快速入門會引導您完成每個步驟。
 

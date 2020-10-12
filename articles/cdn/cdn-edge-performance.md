@@ -15,16 +15,16 @@ ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: dc1599fc0c2f8c55c709ab674c10dd53c8d8dc04
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84887711"
 ---
 # <a name="analyze-edge-node-performance-in-microsoft-azure-cdn"></a>在 Microsoft Azure CDN 中分析邊緣節點效能
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 邊緣效能分析詳細提供 CDN 的資訊流量和頻寬使用量。 這項資訊可用來產生趨勢統計資料，讓您深入了解您的資產如何放入快取中和傳遞到您的用戶端。 這進而可讓您產生策略來設法最佳化內容傳遞，以及決定應該解決什麼問題以充分利用 CDN。 如此一來，不僅能夠改善資料傳遞的效能，還能夠減少 CDN 成本。
 
 > [!NOTE]
@@ -117,7 +117,7 @@ ms.locfileid: "84887711"
 | 欄位 | 說明 |
 | --- | --- |
 | 傳輸速率 |表示內容從 CDN 傳輸至要求者的平均速率。 |
-| Duration |表示將資產傳遞至要求者 (例如網頁瀏覽器) 所花費的平均時間 (毫秒)。 |
+| 持續時間 |表示將資產傳遞至要求者 (例如網頁瀏覽器) 所花費的平均時間 (毫秒)。 |
 | 壓縮的要求速率 |表示以壓縮格式從 CDN (邊緣伺服器) 傳遞至要求者 (例如網頁瀏覽器) 的點擊百分比。 |
 | 4xx 錯誤率 |表示產生 4xx 狀態碼的點擊百分比。 |
 | 5xx 錯誤率 |表示產生 5xx 狀態碼的點擊百分比。 |
@@ -147,7 +147,7 @@ ms.locfileid: "84887711"
    
     邊緣節點分析報告畫面隨即顯示。
 
-| 報表 | 描述 |
+| 報表 | 說明 |
 | --- | --- |
 | 每日摘要 |可讓您檢視一段指定期間內的每日流量趨勢。 此圖形上的每個橫條都代表特定日期。 橫條大小表示那一天發生的點擊總數。 |
 | 每小時摘要 |可讓您檢視一段指定期間內的每小時流量趨勢。 此圖形上的每個橫條都代表特定日期的單一小時。 橫條大小表示那一小時發生的點擊總數。 |

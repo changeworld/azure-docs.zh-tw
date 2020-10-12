@@ -7,10 +7,10 @@ ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 09/04/2020
 ms.openlocfilehash: c8bc9e844687c85255be972011eba03e9c38de48
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89488298"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>在運算式中使用函式的參考指南，適用於 Azure Logic Apps 和 Power Automate
@@ -1149,7 +1149,7 @@ bool(<value>)
 | `bool(0)` | 整數    | `false` |
 | `bool(-1)` | 整數 | `true` |
 | `bool('true')` | String | `true` |
-| `bool('false')` | String | `false` |
+| `bool('false')` | 字串 | `false` |
 
 <a name="coalesce"></a>
 

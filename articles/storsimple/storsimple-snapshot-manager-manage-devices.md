@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 06/05/2017
 ms.author: alkohli
 ms.openlocfilehash: dbb7e835d110bcb6cb81fd5425a2aafbb578e692
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90054844"
 ---
 # <a name="use-storsimple-snapshot-manager-to-connect-and-manage-storsimple-devices"></a>使用 StorSimple Snapshot Manager 來連接和管理 StorSimple 裝置
@@ -34,7 +34,7 @@ ms.locfileid: "90054844"
 | 結果資料行 | 描述 |
 |:--- |:--- |
 | 名稱 |Azure 傳統入口網站中設定的裝置名稱 |
-| 型號 |裝置的型號 |
+| 模型 |裝置的型號 |
 | 版本 |裝置上安裝的軟體版本 |
 | 狀態 |裝置是否可用 |
 | 上次同步處理 |上次同步處理裝置的日期和時間時 |
@@ -208,7 +208,7 @@ ms.locfileid: "90054844"
 6. 以滑鼠右鍵按一下 [範圍]**** 窗格中的最上層節點 (範例中的 StorSimple Snapshot Manager)，然後按一下 [切換匯入顯示]****。 
 7. 當可在 StorSimple Snapshot Manager 中看到匯入的磁碟區群組和備份時，即會出現一則訊息。 按一下 [確定]。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 * 了解如何 [使用 StorSimple Snapshot Manager 來管理您的 StorSimple 解決方案](storsimple-snapshot-manager-admin.md)。
 * 了解如何 [使用 StorSimple Snapshot Manager 來檢視和管理磁碟區](storsimple-snapshot-manager-manage-volumes.md)。
 

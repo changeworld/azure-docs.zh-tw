@@ -14,17 +14,17 @@ ms.topic: troubleshooting
 ms.date: 08/20/2019
 ms.author: delhan
 ms.openlocfilehash: c6bfd5b9ff3626593916533f27c5c2755cebcb13
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87028476"
 ---
 # <a name="how-to-reset-local-linux-password-on-azure-vms"></a>如何在 Azure VM 上重設本機 Linux 密碼
 
 本文介紹數種方法來重設本機 Linux 虛擬機器 (VM) 的密碼。 如果使用者帳戶已過期，或您只要建立新帳戶，您可以使用下列方法來建立新的本機管理帳戶並重新獲得 VM 的存取權。
 
-## <a name="symptoms"></a>徵狀
+## <a name="symptoms"></a>徵兆
 
 您無法登入 VM，並收到一則訊息，指出您所使用的密碼不正確。 此外，您無法使用 VMAgent 來重設您在 Azure 入口網站上的密碼。
 
@@ -33,11 +33,11 @@ ms.locfileid: "87028476"
 > [!NOTE]
 > 下列步驟不適用於具有非受控磁片的 VM。
 
-1. 取得受影響 VM 的 OS 磁片快照集、從快照集建立磁片，然後將磁片連結至疑難排解 VM。 如需詳細資訊，請參閱[使用 Azure 入口網站將 OS 磁碟連結至復原 VM，以針對 Windows VM 進行疑難排解](troubleshoot-recovery-disks-portal-linux.md)。
+1. 針對受影響 VM 的 OS 磁片建立快照集、從快照集建立磁片，然後將磁片連接至疑難排解 VM。 如需詳細資訊，請參閱[使用 Azure 入口網站將 OS 磁碟連結至復原 VM，以針對 Windows VM 進行疑難排解](troubleshoot-recovery-disks-portal-linux.md)。
 
 2. 使用遠端桌面連線到疑難排解 VM。
 
-3.  在疑難排解 VM 上執行下列 SSH 命令，使其成為超級使用者。
+3.  在疑難排解 VM 上執行下列 SSH 命令，以成為超級使用者。
 
     ```bash
     sudo su
@@ -62,7 +62,7 @@ ms.locfileid: "87028476"
     mkdir /tempmount
     ```
 
-6.  在掛接點上掛接 OS 磁碟。 您通常需要掛接*sdc1*或*sdc2*。 這將取決於已中斷電腦磁片之 */etc*目錄中的裝載磁碟分割。
+6.  在掛接點上掛接 OS 磁碟。 您通常需要掛接 *sdc1* 或 *sdc2*。 這將取決於已中斷電腦磁片之 */etc* 目錄中的裝載磁碟分割。
 
     ```bash
     mount /dev/sdc1 /tempmount

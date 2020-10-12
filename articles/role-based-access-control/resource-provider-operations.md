@@ -10,10 +10,10 @@ ms.author: rolyon
 ms.date: 09/22/2020
 ms.custom: generated
 ms.openlocfilehash: ade4a6b791a8aca963a056800bd8c58767aeb766
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91400089"
 ---
 # <a name="azure-resource-provider-operations"></a>Azure 資源提供者作業
@@ -40,7 +40,7 @@ ms.locfileid: "91400089"
 | [Microsoft.Cdn](#microsoftcdn) |
 | [Microsoft.ClassicNetwork](#microsoftclassicnetwork) |
 | [Microsoft.Network](#microsoftnetwork) |
-| **儲存體** |
+| **Storage** |
 | [Microsoft.ClassicStorage](#microsoftclassicstorage) |
 | [Microsoft.DataBox](#microsoftdatabox) |
 | [Microsoft.ImportExport](#microsoftimportexport) |
@@ -48,7 +48,7 @@ ms.locfileid: "91400089"
 | [Microsoft.Storage](#microsoftstorage) |
 | [microsoft.storagesync](#microsoftstoragesync) |
 | [Microsoft.StorSimple](#microsoftstorsimple) |
-| **Web** |
+| **網路** |
 | [Microsoft.CertificateRegistration](#microsoftcertificateregistration) |
 | [Microsoft.DomainRegistration](#microsoftdomainregistration) |
 | [Microsoft.Maps](#microsoftmaps) |
@@ -1421,7 +1421,7 @@ Azure 服務： [Azure 資料箱](../databox/index.yml)
 > | 資料箱/operations/read | 列出或取得作業 |
 > | **DataAction** | **說明** |
 > | Microsoft.DataBox/register/action | 註冊提供者 Microsoft.Databox |
-> | 資料箱/取消註冊/動作 | 取消註冊提供者 Microsoft. 資料箱 |
+> | 資料箱/取消註冊/動作 | Un-Register 提供者資料箱 |
 > | Microsoft.DataBox/jobs/cancel/action | 取消進行中的訂單。 |
 > | Microsoft.DataBox/jobs/bookShipmentPickUp/action | 允許預約退貨商品的取貨。 |
 > | Microsoft.DataBox/jobs/listCredentials/action | 列出與訂單相關的未加密認證。 |
@@ -1854,7 +1854,7 @@ Azure 服務： [StorSimple](../storsimple/index.yml)
 > | Microsoft.StorSimple/managers/storageDomains/operationResults/read | 列出或取得作業結果 |
 > | Microsoft.StorSimple/operations/read | 列出或取得作業 |
 
-## <a name="web"></a>Web
+## <a name="web"></a>網路
 
 ### <a name="microsoftcertificateregistration"></a>Microsoft.CertificateRegistration
 
@@ -5667,7 +5667,7 @@ Azure 服務： [API 管理](../api-management/index.yml)
 > | ApiManagement/service/policyDescriptions/read | 列出所有原則描述。 |
 > | Microsoft.ApiManagement/service/policySnippets/read | 列出所有原則程式碼片段。 |
 > | ApiManagement/service/portalSettings/read | 列出入口網站設定的集合。 或取得入口網站的登入設定，或取得入口網站的註冊設定，或取得入口網站的委派設定。 |
-> | ApiManagement/service/portalSettings/write | 更新登入設定。 或建立或更新登入設定。 或更新註冊設定或更新註冊設定或更新委派設定。 或建立或更新委派設定。 |
+> | ApiManagement/service/portalSettings/write | 更新 Sign-In 設定。 或建立或更新 Sign-In 設定。 或更新註冊設定或更新註冊設定或更新委派設定。 或建立或更新委派設定。 |
 > | ApiManagement/service/portalSettings/listSecrets/action | 取得入口網站委派設定的驗證金鑰。 或取得媒體內容 blob 容器 uri。 |
 > | Microsoft.ApiManagement/service/products/read | 列出指定服務實例中的產品集合。 或取得其識別碼所指定之產品的詳細資料。 |
 > | Microsoft.ApiManagement/service/products/write | 建立或更新產品。 或更新現有的產品詳細資料。 |
@@ -6287,8 +6287,8 @@ Azure 服務： Azure Active Directory
 > | microsoft.aadiam/diagnosticsettings/read | 正在讀取診斷設定 |
 > | microsoft.aadiam/diagnosticsettings/delete | 正在刪除診斷設定 |
 > | microsoft.aadiam/diagnosticsettingscategories/read | 正在讀取診斷設定類別 |
-> | aadiam/metricDefinitions/read | 讀取租使用者層級的度量定義 |
-> | aadiam/計量/讀取 | 讀取租使用者層級計量 |
+> | aadiam/metricDefinitions/read | 讀取 Tenant-Level 度量定義 |
+> | aadiam/計量/讀取 | 讀取 Tenant-Level 計量 |
 > | aadiam/privateLinkForAzureAD/read | 讀取 Private Link 原則定義 |
 > | aadiam/privateLinkForAzureAD/write | 建立和更新 Private Link 原則定義 |
 > | aadiam/privateLinkForAzureAD/delete | 刪除 Private Link 原則定義 |
@@ -8132,7 +8132,7 @@ Azure 服務： [Azure 監視器](../azure-monitor/index.yml)
 > | operationalinsights/workspace/scopedPrivateLinkProxies/read | 取得範圍 Private Link Proxy。 |
 > | operationalinsights/workspace/scopedPrivateLinkProxies/write | 將範圍設定 Private Link Proxy。 |
 > | operationalinsights/workspace/scopedPrivateLinkProxies/delete | 刪除範圍 Private Link Proxy。 |
-> | microsoft.operationalinsights/workspaces/search/read | 取得搜尋結果。 已取代。 |
+> | microsoft.operationalinsights/workspaces/search/read | 取得搜尋結果。 已被取代。 |
 > | Microsoft.OperationalInsights/workspaces/sharedKeys/read | 擷取工作區的共用金鑰。 這些金鑰可用來將 Microsoft Operational Insights 代理程式連線到工作區。 |
 > | Microsoft.OperationalInsights/workspaces/storageinsightconfigs/write | 建立新的儲存體組態。 這些組態可用來提取現有儲存體帳戶中來自某個位置的資料。 |
 > | Microsoft.OperationalInsights/workspaces/storageinsightconfigs/read | 取得儲存體組態。 |

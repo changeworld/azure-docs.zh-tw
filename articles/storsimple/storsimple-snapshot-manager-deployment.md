@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: alkohli
 ms.openlocfilehash: 5f94564c5e769d3cf0e0abbe92a309a1ee2117a1
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90055073"
 ---
 # <a name="deploy-the-storsimple-snapshot-manager-mmc-snap-in"></a>部署 StorSimple Snapshot Manager MMC 嵌入式管理單元
@@ -160,7 +160,7 @@ StorSimple Snapshot Manager 可以安裝在執行 Windows Server 2008 R2 SP1、W
    > 如果有任何 MMC 程序在背景執行，例如 StorSimple Snapshot Manager 或磁碟管理，解除安裝將會失敗，而且在您嘗試解除安裝程式之前，您會收到關閉所有 MMC 執行個體的訊息。 選取 [自動關閉應用程式並在安裝完成後嘗試重新啟動]****，然後按一下 [確定]****。
    > 
    > 
-5. 當解除安裝程序完成時，[安裝成功]**** 訊息即會出現。 按一下 [關閉] 。
+5. 當解除安裝程序完成時，[安裝成功]**** 訊息即會出現。 按一下 [關閉]。
 
 ### <a name="step-2-back-up-the-storsimple-snapshot-manager-database"></a>步驟 2：備份 StorSimple Snapshot Manager 資料庫
 使用下列步驟建立和儲存 StorSimple Snapshot Manager 資料庫的複本。
@@ -211,7 +211,7 @@ StorSimple Snapshot Manager 可以安裝在執行 Windows Server 2008 R2 SP1、W
    2. 在 [服務]**** 頁面上，選取 [Microsoft StorSimple 管理服務]****。
    3. 在右窗格的 [Microsoft StorSimple 管理服務]**** 下方，按一下 [重新啟動服務]****。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 * 若要深入了解 StorSimple Snapshot Manager，請移至 [什麼是 StorSimple Snapshot Manager？](storsimple-what-is-snapshot-manager.md)
 * 若要深入了解 StorSimple Snapshot Manager 使用者介面，請移至 [StorSimple Snapshot Manager 使用者介面](storsimple-use-snapshot-manager.md)
 * 若要深入了解如何使用 StorSimple Snapshot Manager，請移至 [使用 StorSimple Snapshot Manager 來管理您的 StorSimple 解決方案](storsimple-snapshot-manager-admin.md)。

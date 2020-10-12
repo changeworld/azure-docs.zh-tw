@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
 ms.openlocfilehash: 29457f2f5021fed9d8785f5764c4119de4be1fa9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87089544"
 ---
 # <a name="cost-estimation-report-by-azure-site-recovery-deployment-planner"></a>Azure Site Recovery 部署規劃工具的成本估計報告 
@@ -109,15 +109,15 @@ DR 總成本是根據兩個不同的狀態來分類的：複寫和 DR 演練。
 
     a. **Vm 數目**
 
-    b. **IaaS 大小（您的選擇）**
+    b. **您選取的 IaaS 大小 () **
 
     c. **儲存體類型標準/進階**
 
     d. **VM 總儲存體大小 (GB)**
 
-    e. **一年中的 DR 演練次數**
+    e. **一年中的 DR-Drills 數目**
 
-    f. **每次 DR 演練持續時間（天）**
+    f. **每個 DR-Drill 持續時間 (天) **
 
     g. **OS 類型**
 
@@ -178,5 +178,5 @@ Site Recovery 部署規劃工具可以使用下列任何貨幣來產生成本報
 |SAR 里亞爾|沙烏地里亞爾 (SR)|瑞典克朗|瑞典克朗 (kr)|新台幣|新台幣 (NT$)|
 |土耳其里拉|土耳其里拉 (TL)|美元| 美元 ($)|南非幣|南非蘭特 (R)|
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 深入了解如何[使用 Site Recovery 保護移轉至 Azure 的 Hyper-V VM](hyper-v-azure-tutorial.md)。

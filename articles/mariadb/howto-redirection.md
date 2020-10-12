@@ -1,30 +1,30 @@
 ---
-title: 使用重新導向來連接-適用於 MariaDB 的 Azure 資料庫
-description: 本文說明如何設定應用程式，以使用重新導向連接到適用於 MariaDB 的 Azure 資料庫。
+title: 使用重新導向進行連接-適用於 MariaDB 的 Azure 資料庫
+description: 本文說明如何設定您的應用程式，以透過重新導向連接到適用於 MariaDB 的 Azure 資料庫。
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 6/8/2020
 ms.openlocfilehash: 45d93797b72b3b35dd44cddc22124acb73eb3454
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86121090"
 ---
 # <a name="connect-to-azure-database-for-mariadb-with-redirection"></a>使用重新導向連接到適用於 MariaDB 的 Azure 資料庫
 
-本主題說明如何使用重新導向模式將應用程式連線到您的適用於 MariaDB 的 Azure 資料庫伺服器。 重新導向的目標是允許應用程式直接連線到後端伺服器節點，以減少用戶端應用程式與適用于 mariadb 伺服器之間的網路延遲。
+本主題說明如何使用重新導向模式，將應用程式連線到您的適用於 MariaDB 的 Azure 資料庫伺服器。 重新導向的目標是讓應用程式直接連接到後端伺服器節點，以降低用戶端應用程式與適用于 mariadb 伺服器之間的網路延遲。
 
 ## <a name="before-you-begin"></a>開始之前
 登入 [Azure 入口網站](https://portal.azure.com)。 建立具有引擎版本10.2 或10.3 的適用於 MariaDB 的 Azure 資料庫伺服器。 
 
-如需詳細資訊，請參閱如何使用[Azure 入口網站](quickstart-create-mariadb-server-database-using-azure-portal.md)或[Azure CLI](quickstart-create-mariadb-server-database-using-azure-cli.md)建立適用於 MariaDB 的 Azure 資料庫伺服器。
+如需詳細資訊，請參閱如何使用 [Azure 入口網站](quickstart-create-mariadb-server-database-using-azure-portal.md) 或 [Azure CLI](quickstart-create-mariadb-server-database-using-azure-cli.md)建立適用於 MariaDB 的 Azure 資料庫的伺服器。
 
 ## <a name="enable-redirection"></a>啟用重新導向
 
-在您的適用於 MariaDB 的 Azure 資料庫伺服器上，將 `redirect_enabled` 參數設定為， `ON` 以允許具有重新導向模式的連接。 若要更新此伺服器參數，請使用[Azure 入口網站](howto-server-parameters.md)或[Azure CLI](howto-configure-server-parameters-cli.md)。
+在適用於 MariaDB 的 Azure 資料庫伺服器上，將 `redirect_enabled` 參數設定為， `ON` 以允許具有重新導向模式的連接。 若要更新此伺服器參數，請使用 [Azure 入口網站](howto-server-parameters.md) 或 [Azure CLI](howto-configure-server-parameters-cli.md)。
 
 ## <a name="php"></a>PHP
 
@@ -47,7 +47,7 @@ Mysqlnd_azure 延伸模組可透過 PECL 新增至 PHP 應用程式，因此強�
 |**mysqlnd_azure.enableRedirect 值**| **行為**|
 |----------------------------------------|-------------|
 |`off` 或 `0`|將不會使用重新導向。 |
-|`on` 或 `1`|- 如果連線在驅動程式端不使用 SSL，則不會建立連線。 將傳回下列錯誤：[mysqlnd_azure.enableRedirect 是 on，但連接字串中未設定 SSL 選項。只有使用 SSL 才能重新導向。]<br>-如果在驅動程式端使用 SSL，但伺服器不支援重新導向，則會中止第一個連接，並傳回下列錯誤：「連線已*中止，因為適用于 mariadb 伺服器上未啟用重新導向，或網路套件不符合重新導向通訊協定」。*<br>-如果適用于 mariadb 伺服器支援重新導向，但因為任何原因而導致重新導向連接失敗，也請中止第一個 proxy 連接。 傳回重新導向連線的錯誤。|
+|`on` 或 `1`|- 如果連線在驅動程式端不使用 SSL，則不會建立連線。 將傳回下列錯誤：[mysqlnd_azure.enableRedirect 是 on，但連接字串中未設定 SSL 選項。只有使用 SSL 才能重新導向。]<br>-如果在驅動程式端使用 SSL，但是伺服器上不支援重新導向，則第一個連接會中止，並傳回下列錯誤：「*因為適用于 mariadb 伺服器上未啟用重新導向，或網路套件不符合重新導向通訊協定，所以連線已中止。* 」<br>-如果適用于 mariadb 伺服器支援重新導向，但重新導向的連接因任何原因而失敗，也請中止第一個 proxy 連線。 傳回重新導向連線的錯誤。|
 |`preferred` 或 `2`<br> (預設值)|- mysqlnd_azure 會盡可能使用重新導向。<br>- 如果連線在驅動程式端不使用 SSL，則伺服器不支援重新導向，或者當重新導向因任何不嚴重原因而無法連線，但 Proxy 連線仍然有效時，系統會切換回第一個 Proxy 連線。|
 
 文件的後續章節將會概述如何使用 PECL 安裝 `mysqlnd_azure` 延伸模組，並設定此參數的值。

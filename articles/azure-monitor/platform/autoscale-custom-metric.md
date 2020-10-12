@@ -5,22 +5,22 @@ ms.topic: conceptual
 ms.date: 05/07/2017
 ms.subservice: autoscale
 ms.openlocfilehash: 8e744e6a91eb6fbe23a6b45f95c39b1acfdcb61f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86539579"
 ---
 # <a name="get-started-with-auto-scale-by-custom-metric-in-azure"></a>開始在 Azure 中依自訂計量自動調整規模
 本文說明如何在 Azure 入口網站中依自訂計量調整您資源的規模。
 
-Azure 監視器自動調整僅適用于[虛擬機器擴展集](https://azure.microsoft.com/services/virtual-machine-scale-sets/)、[雲端服務](https://azure.microsoft.com/services/cloud-services/)、 [App Service Web Apps](https://azure.microsoft.com/services/app-service/web/)、 [Azure 資料總管 Cluster](https://azure.microsoft.com/services/data-explorer/) 、   
-整合服務環境和[API 管理服務](../../api-management/api-management-key-concepts.md)。
+Azure 監視器自動調整僅適用于 [虛擬機器擴展集](https://azure.microsoft.com/services/virtual-machine-scale-sets/)、 [雲端服務](https://azure.microsoft.com/services/cloud-services/)、 [App Service Web Apps](https://azure.microsoft.com/services/app-service/web/)、 [Azure 資料總管](https://azure.microsoft.com/services/data-explorer/) 叢集、   
+整合服務環境和 [API 管理服務](../../api-management/api-management-key-concepts.md)。
 
 ## <a name="lets-get-started"></a>開始使用
 本文假設您的 Web 應用程式已設定 Application Insights。 如果您還沒有，則可[設定 ASP.NET 網站的 Application Insights][1]
 
-- 開啟[Azure 入口網站][2]
+- 開啟 [Azure 入口網站][2]
 - 按一下左側導覽窗格中的 [Azure 監視器] 圖示。
   ![啟動 Azure 監視器][3]
 - 按一下 [自動調整規模] 設定，以檢視適用於自動調整規模的所有資源及其目前的自動調整規模狀態![探索 Azure 監視器中的自動調整規模][4]
@@ -36,7 +36,7 @@ Azure 監視器自動調整僅適用于[虛擬機器擴展集](https://azure.mic
   > 注意︰萬一在讀取資源計量時發生問題，而且目前的容量低於預設容量，則為了確保資源的可用性，自動調整規模將會相應放大為預設值。 如果目前的容量已超過預設容量，自動調整規模將不會進行相應縮小。
 - 按一下 [儲存]
 
-恭喜您。 您現在已成功建立調整規模設定，可根據自訂計量自動調整 Web 應用程式的規模。
+恭喜！ 您現在已成功建立調整規模設定，可根據自訂計量自動調整 Web 應用程式的規模。
 
 > 注意︰相同的步驟都適用於開始使用 VMSS 或雲端服務角色。
 

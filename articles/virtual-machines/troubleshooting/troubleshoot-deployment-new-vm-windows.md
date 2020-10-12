@@ -16,10 +16,10 @@ ms.date: 06/15/2018
 ms.author: daberry
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 2b2f21cab4740013eb2de1d69f558c95461c493e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87028391"
 ---
 # <a name="troubleshoot-deployment-issues-when-creating-a-new-windows-vm-in-azure"></a>針對在 Azure 中建立新 Windows VM 時的部署問題進行疑難排解
@@ -51,7 +51,7 @@ ms.locfileid: "87028391"
 
 **N<sup>2</sup>：** 如果作業系統是特殊化的 Windows，但是以一般化被上傳，就會發生佈建失敗錯誤，VM 會卡在 OOBE 畫面，因為新 VM 是以原始的電腦名稱、使用者名稱和密碼執行。
 
-**解決方案**
+**解決方法**
 
 若要解決這兩個錯誤，請使用 [Add-AzVhd ](/powershell/module/az.compute/add-azvhd) \(英文\) 搭配與 OS 相同的設定 (一般化/特殊化)，來上傳原始的 VHD (適用於內部部署)。 若要以一般化形式上傳，請務必先執行 sysprep。
 
@@ -61,7 +61,7 @@ ms.locfileid: "87028391"
 
 **N<sup>4</sup>：** 如果作業系統是特殊化的 Windows，但是以一般化被擷取，就會發生佈建失敗錯誤，因為新 VM 是以原始的電腦名稱、使用者名稱和密碼執行。 此外，原始 VM 會因被標示為特殊化而無法供使用。
 
-**解決方案**
+**解決方法**
 
 若要解決這兩個錯誤，請從入口網站中刪除目前的映像，然後使用與作業系統相同的設定 (一般化/特殊化) [從目前的 VHD 重新擷取映像](../windows/create-vm-specialized.md)。
 
@@ -75,9 +75,9 @@ ms.locfileid: "87028391"
 * 以較小的 VM 大小重試要求。
 * 如果無法變更要求的 VM 的大小︰
   * 停止可用性設定組中的所有 VM。
-    按一下 [**資源**群組] 資源  >  *群組*  >  **Resources**  >  *your availability set*  >  **虛擬機器**  >  *虛擬機器*  >  **停止**的可用性設定組資源。
+    按一下**資源群組資源**  >  *群組*  >  **資源**：您的  >  *your availability set*  >  **Virtual Machines**  >  *虛擬機器*  >  **停止**的可用性設定虛擬機器。
   * 所有 VM 都停止後，建立所需大小的新 VM。
-  * 先啟動新的 VM，然後選取每個已停止的 Vm，然後按一下 [**啟動**]。
+  * 先啟動新的 VM，然後選取每個已停止的 Vm，然後按一下 [ **啟動**]。
 
 **原因 2：** 叢集沒有可用的資源。
 
