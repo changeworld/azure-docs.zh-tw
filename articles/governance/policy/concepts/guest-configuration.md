@@ -4,10 +4,10 @@ description: 了解 Azure 原則如何使用「來賓設定」代理程式來稽
 ms.date: 08/07/2020
 ms.topic: conceptual
 ms.openlocfilehash: 951960793ebda50fdb87d266c4dc8561f2fcd70f
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88756685"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>了解 Azure 原則的來賓設定

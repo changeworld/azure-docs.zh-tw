@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 1/10/2020
 ms.openlocfilehash: ef2bd2fa9badc7c299099b647e1f67c50e997024
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91292297"
 ---
 # <a name="configure-an-azure-sql-server-integration-services-ssis-integration-runtime-ir-to-join-a-virtual-network"></a>設定 Azure SQL Server Integration Services (SSIS) 整合執行時間 (IR) 以加入虛擬網路
@@ -29,7 +29,7 @@ ms.locfileid: "91292297"
 - 設定虛擬網路。
 - 從 Azure Data Factory 入口網站將 Azure-SSIS IR 加入虛擬網路。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - **AZURE SSIS 整合運行**時間。 如果您沒有 Azure SSIS 整合執行時間，請在開始之前， [在 Azure Data Factory 中布建 AZURE ssis 整合運行](tutorial-deploy-ssis-packages-azure.md) 時間。
 

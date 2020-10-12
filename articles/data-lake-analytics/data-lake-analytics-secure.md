@@ -7,10 +7,10 @@ ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 05/30/2018
 ms.openlocfilehash: 9006a22c588a7f1456585d40da0b4345145c6d05
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87132478"
 ---
 # <a name="configure-user-access-to-job-information-to-job-information-in-azure-data-lake-analytics"></a>設定使用者對於 Azure Data Lake Analytics 中作業資訊的存取權 
@@ -42,5 +42,5 @@ ms.locfileid: "87132478"
    - /system/jobservice/jobs/Usql/2018/05/25/11/01
    - /system/jobservice/jobs/Usql/2018/05/25/11/01/b074bd7a-1448-d879-9d75-f562b101bd3d
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 [新增使用者](data-lake-analytics-manage-use-portal.md#add-a-new-user)

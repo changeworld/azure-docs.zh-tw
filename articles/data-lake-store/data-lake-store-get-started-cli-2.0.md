@@ -1,16 +1,16 @@
 ---
 title: 管理 Azure Data Lake Storage Gen1 帳戶-Azure CLI
-description: 使用 Azure CLI 建立 Data Lake Storage Gen1 帳戶，並執行基本作業。
+description: 使用 Azure CLI 建立 Data Lake Storage Gen1 帳戶並執行基本作業。
 author: twooley
 ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 06/27/2018
 ms.author: twooley
 ms.openlocfilehash: 92fd681d05b8e5bd7cf07ecd735acd87698935ef
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85985784"
 ---
 # <a name="get-started-with-azure-data-lake-storage-gen1-using-the-azure-cli"></a>使用 Azure CLI 開始使用 Azure Data Lake Storage Gen1
@@ -24,12 +24,12 @@ ms.locfileid: "85985784"
 >
 > 
 
-瞭解如何使用 Azure CLI 建立 Azure Data Lake Storage Gen1 帳戶，並執行基本作業，例如建立資料夾、上傳和下載資料檔案、刪除您的帳戶等等。如需 Data Lake Storage Gen1 的詳細資訊，請參閱[Data Lake Storage Gen1 的總覽](data-lake-store-overview.md)。
+瞭解如何使用 Azure CLI 建立 Azure Data Lake Storage Gen1 帳戶並執行基本作業，例如建立資料夾、上傳和下載資料檔案、刪除您的帳戶等等。如需 Data Lake Storage Gen1 的詳細資訊，請參閱 [Data Lake Storage Gen1 的總覽](data-lake-store-overview.md)。
 
 Azure CLI 是管理 Azure 資源的 Azure 命令列體驗。 它可以用於 macOS、Linux 和 Windows。 如需詳細資訊，請參閱 [Azure CLI 概觀](https://docs.microsoft.com/cli/azure)。 您也可以查看 [Azure Data Lake Storage Gen1 CLI 參考](https://docs.microsoft.com/cli/azure/dls)以取得命令和語法的完整清單。
 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 開始閱讀本文之前，您必須符合下列必要條件：
 
 * **Azure 訂用帳戶**。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
@@ -232,7 +232,7 @@ az dls account delete --account mydatalakestoragegen1
 
 出現提示時，請輸入 **Y** 刪除帳戶。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 * [使用 Azure Data Lake Storage Gen1 處理巨量資料需求](data-lake-store-data-scenarios.md) 
 * [保護 Data Lake Storage Gen1 中的資料](data-lake-store-secure-data.md)
 * [搭配 Data Lake Storage Gen1 使用 Azure Data Lake Analytics](../data-lake-analytics/data-lake-analytics-get-started-portal.md)

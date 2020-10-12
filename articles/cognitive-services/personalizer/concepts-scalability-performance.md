@@ -9,10 +9,10 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 10/24/2019
 ms.openlocfilehash: 52d22fce64a26267e73cb9a1df8614129bb96c3e
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87132682"
 ---
 # <a name="scalability-and-performance"></a>延展性和效能
@@ -22,7 +22,7 @@ ms.locfileid: "87132682"
 * 進行排名 API 呼叫時保持低延遲
 * 確定訓練輸送量能跟上事件輸入的速度
 
-個人化可以快速傳回順位，而且大部分的呼叫持續時間都是透過 REST API 進行通訊。 Azure 會自動調整能力，以快速回應要求。
+個人化可以快速傳回排名，其中大部分的呼叫持續時間是透過 REST API 進行通訊。 Azure 會自動調整能力，以快速回應要求。
 
 ##  <a name="low-latency-scenarios"></a>低延遲案例
 
@@ -47,6 +47,6 @@ ms.locfileid: "87132682"
 
 如果您已達到這些限制，請連絡支援小組以取得架構建議。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-[建立和設定個人化工具](how-to-settings.md)。
+[建立並設定個人化工具](how-to-settings.md)。

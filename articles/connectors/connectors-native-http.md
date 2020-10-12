@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/14/2020
 tags: connectors
 ms.openlocfilehash: f005bdfa5643ea187fb2973cac065563c4cc2ee6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91292450"
 ---
 # <a name="call-service-endpoints-over-http-or-https-from-azure-logic-apps"></a>從 Azure Logic Apps 透過 HTTP 或 HTTPS 呼叫服務端點
@@ -65,7 +65,7 @@ ms.locfileid: "91292450"
 
 1. 請使用當引發觸發程序時執行的動作，繼續建置邏輯應用程式的工作流程。
 
-1. 當您完成時，請記得儲存您的邏輯應用程式。 在設計工具的工具列上，選取 [儲存]  。
+1. 當您完成時，請記得儲存您的邏輯應用程式。 在設計工具的工具列上，選取 [儲存]。
 
 <a name="http-action"></a>
 
@@ -98,13 +98,13 @@ ms.locfileid: "91292450"
 
 1. 若要新增其他可用參數，開啟 [新增參數] 清單，然後選取您所需的參數。
 
-1. 當您完成時，請記得儲存您的邏輯應用程式。 在設計工具的工具列上，選取 [儲存]  。
+1. 當您完成時，請記得儲存您的邏輯應用程式。 在設計工具的工具列上，選取 [儲存]。
 
 ## <a name="trigger-and-action-outputs"></a>觸發程式和動作輸出
 
 以下是 HTTP 觸發程式或動作之輸出的詳細資訊，會傳回下列資訊：
 
-| 屬性 | 類型 | 說明 |
+| 屬性 | 類型 | 描述 |
 |----------|------|-------------|
 | `headers` | JSON 物件 | 要求的標頭 |
 | `body` | JSON 物件 | 具有來自要求之本文內容的物件 |

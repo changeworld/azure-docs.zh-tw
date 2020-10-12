@@ -4,10 +4,10 @@ description: Azure Service Fabric 接受 Docker Compose 格式，可讓您更輕
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: f84dd0ecb7a4002182c8455bfd86354d794a6f7c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84691283"
 ---
 # <a name="docker-compose-deployment-support-in-azure-service-fabric-preview"></a>Azure Service Fabric 中 Docker Compose 的部署支援 (預覽)
@@ -150,7 +150,7 @@ docker-compose.yml 檔案描述一組可部署的容器，包括其屬性與組�
 
 雖然此模型提供彈性，但我們也正在規劃支援更簡單、以執行個體為基礎的部署類型，其中類型在資訊清單檔案中是隱含的。 在此模型中，每個應用程式會取得自己的獨立資訊清單。 我們正在透過新增對 docker-compose.yml (這是以執行個體為基礎的部署格式) 的支援來預覽此成果。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * 參閱 [Service Fabric 應用程式模型](service-fabric-application-model.md)
 * [開始使用 Service Fabric CLI](service-fabric-cli.md)

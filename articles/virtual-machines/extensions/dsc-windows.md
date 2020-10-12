@@ -1,5 +1,5 @@
 ---
-title: Azure Desired State Configuration 擴充功能處理常式
+title: Azure Desired State Configuration 延伸模組處理常式
 description: 在 Azure VM 上使用 DSC 擴充功能上傳並套用 PowerShell DSC 設定
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,19 +14,19 @@ ms.workload: ''
 ms.date: 03/26/2018
 ms.author: robreed
 ms.openlocfilehash: 592c731d1851ac36cf9b57864750df0603b6c3fd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84689481"
 ---
 # <a name="powershell-dsc-extension"></a>PowerShell DSC 延伸模組
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 Microsoft 已發佈並支援適用於 Windows 的 PowerShell DSC 擴充功能。 此擴充功能會在 Azure VM 上，上傳並套用 PowerShell DSC 設定。 DSC 擴充功能會呼叫 PowerShell DSC，以便在 VM 上套用所收到的 DSC 設定。 本文件詳述適用於 Windows 的 DSC 虛擬機器擴充功能所支援的平台、組態和部署選項。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 ### <a name="operating-system"></a>作業系統
 
@@ -36,7 +36,7 @@ Windows Server 2019、Windows Server 2016、Windows Server 2012R2、Windows Serv
 
 ### <a name="internet-connectivity"></a>網際網路連線
 
-適用于 Windows 的 DSC 擴充功能會要求目標虛擬機器能夠與 Azure 通訊，以及設定套件（.zip 檔案）的位置（如果它儲存在 Azure 外部的位置）。 
+適用于 Windows 的 DSC 擴充功能會要求目標虛擬機器能夠與 Azure 進行通訊，並將設定套件的位置 ( .zip 檔案) 如果儲存在 Azure 外部的位置。 
 
 ## <a name="extension-schema"></a>擴充功能結構描述
 
@@ -106,7 +106,7 @@ Windows Server 2019、Windows Server 2016、Windows Server 2012R2、Windows Serv
 
 ### <a name="settings-property-values"></a>設定屬性值
 
-| Name | 資料類型 | 描述
+| 名稱 | 資料類型 | 描述
 | ---- | ---- | ---- |
 | settings.wmfVersion | 字串 | 指定應該安裝於 VM 的 Windows Management Framework 版本。 將此屬性設定為 'latest' 將會安裝最新版的 WMF。 此屬性目前只有下列可能值：‘4.0’、‘5.0’ 及 ‘latest’。 這些可能的值可能會更新。 預設值為 ‘latest’。 |
 | settings.configuration.url | 字串 | 指定要從中下載 DSC 組態 zip 檔的 URL 位置。 如果提供的 URL 需要 SAS 權杖才能存取，您必須將 protectedSettings.configurationUrlSasToken 屬性設定為 SAS 權杖的值。 如果已定義 settings.configuration.script 和/或 settings.configuration.function，則需要這個屬性。
@@ -115,12 +115,12 @@ Windows Server 2019、Windows Server 2016、Windows Server 2012R2、Windows Serv
 | settings.configurationArguments | 集合 | 定義任何您想要傳遞至 DSC 組態的參數。 此屬性將不會經過加密。
 | settings.configurationData.url | 字串 | 指定 URL，從中下載您的組態資料 (.pds1) 檔案以做為 DSC 組態的輸入。 如果提供的 URL 需要 SAS 權杖才能存取，您必須將 protectedSettings.configurationDataUrlSasToken 屬性設定為 SAS 權杖的值。
 | settings.privacy.dataEnabled | 字串 | 啟用或停用遙測收集。 此屬性只有下列可能值：‘Enable’、‘Disable’ 或 $null。 將此屬性保留空白或 null 將會啟用遙測
-| settings.advancedOptions.forcePullAndApply | Bool | 這項設定是設計用來增強使用擴充功能向 Azure 自動化 DSC 註冊節點的經驗。  如果值為 `$true` ，延伸模組會等待第一次執行從服務提取的設定，然後才傳回成功/失敗。  如果將此值設定為 $false，延伸模組傳回的狀態只會參考是否已成功向 Azure 自動化狀態設定註冊節點，而且在註冊期間將不會執行節點設定。
+| settings.advancedOptions.forcePullAndApply | Bool | 這項設定的設計目的是為了增強使用擴充功能向 Azure 自動化 DSC 註冊節點的體驗。  如果值為 `$true` ，則擴充功能將會等候第一次執行從服務提取的設定，再傳回成功/失敗。  如果值設定為 $false，則擴充功能所傳回的狀態只會參考是否已成功向 Azure 自動化狀態設定註冊節點，而且在註冊期間將不會執行節點設定。
 | settings.advancedOptions.downloadMappings | 集合 | 定義下載相依性 (例如 WMF 和 .NET) 的替代位置
 
 ### <a name="protected-settings-property-values"></a>受保護的設定屬性值
 
-| Name | 資料類型 | 描述
+| 名稱 | 資料類型 | 描述
 | ---- | ---- | ---- |
 | protectedSettings.configurationArguments | 字串 | 定義任何您想要傳遞至 DSC 組態的參數。 此屬性將會經過加密。 |
 | protectedSettings.configurationUrlSasToken | 字串 | 指定 SAS 權杖，以存取 configuration.url 所定義的 URL。 此屬性將會經過加密。 |
@@ -131,7 +131,7 @@ Windows Server 2019、Windows Server 2016、Windows Server 2012R2、Windows Serv
 
 也可以使用 Azure Resource Manager 範本部署 Azure VM 擴充功能。
 部署一或多部需要部署後設定的虛擬機器時，很適合使用範本。
-您可以在[Azure 快速入門資源庫](https://github.com/Azure/azure-quickstart-templates/blob/master/101-automation-configuration/nested/provisionServer.json#L91)中，找到包含適用于 WINDOWS 的 DSC 擴充功能的範例 Resource Manager 範本。
+您可以在 [Azure 快速入門資源庫](https://github.com/Azure/azure-quickstart-templates/blob/master/101-automation-configuration/nested/provisionServer.json#L91)中找到包含適用于 WINDOWS 的 DSC 擴充功能的範例 Resource Manager 範本。
 
 ## <a name="troubleshoot-and-support"></a>疑難排解與支援
 
@@ -148,7 +148,7 @@ az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 C:\Packages\Plugins\{Extension_Name}\{Extension_Version}
 ```
 
-延伸模組狀態檔案包含 [子狀態] 和 [狀態成功/錯誤] 代碼，以及每個擴充功能執行的詳細錯誤和描述。
+延伸模組狀態檔案包含子狀態和狀態成功/錯誤碼，以及每個擴充功能執行的詳細錯誤和描述。
 ```
 C:\Packages\Plugins\{Extension_Name}\{Extension_Version}\Status\{0}.Status  -> {0} being the sequence number
 ```

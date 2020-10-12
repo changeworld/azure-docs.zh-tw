@@ -1,6 +1,6 @@
 ---
 title: Microsoft Threat Modeling Tool 總覽-Azure
-description: Microsoft Threat Modeling Tool 的總覽，其中包含開始使用工具的資訊，包括威脅模型化程式。
+description: Microsoft Threat Modeling Tool 的總覽，其中包含開始使用此工具的資訊，包括威脅模型化進程。
 author: jegeib
 ms.author: jegeib
 ms.service: security
@@ -8,10 +8,10 @@ ms.subservice: security-develop
 ms.topic: article
 ms.date: 02/16/2017
 ms.openlocfilehash: dcf782a41dbb09135f7a4cd767a94ff90578b6ba
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87169356"
 ---
 # <a name="microsoft-threat-modeling-tool"></a>Microsoft 威脅模型化工具
@@ -33,9 +33,9 @@ ms.locfileid: "87169356"
 * **專為開發人員所設計並聚焦於軟體上︰** 許多方法都聚焦在資產或攻擊者上。 我們則聚焦在軟體上。 我們以所有軟體開發人員和架構設計人員都熟悉的活動為基礎來建置 -- 例如繪製其軟體架構的圖片
 * **聚焦在設計分析︰**「威脅模型化」一詞指的可能是需求或設計分析技巧。 有時指的是這兩個情況的複雜混合。 Microsoft SDL 威脅模型化方法是聚焦在設計分析技巧
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-下表包含説明您開始使用 Threat Modeling Tool 的重要連結：另請參閱：[系統需求](threat-modeling-tool-releases.md)
+下表包含可讓您開始使用 Threat Modeling Tool 的重要連結：另請參閱： [系統需求](threat-modeling-tool-releases.md)
 
 | 步驟  | 描述                                                                                   |
 | ----- | --------------------------------------------------------------------------------------------- |

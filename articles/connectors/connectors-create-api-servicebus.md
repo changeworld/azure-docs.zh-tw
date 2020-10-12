@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/14/2020
 tags: connectors
 ms.openlocfilehash: 2993fc718462d1ac2a9cfd02be5642fb21f86702
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90526522"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>使用 Azure Logic Apps 和 Azure 服務匯流排在雲端中交換訊息
@@ -153,7 +153,7 @@ ms.locfileid: "90526522"
 
    例如，您可以新增動作來傳送電子郵件，以確認已傳送您的郵件。
 
-1. 儲存您的邏輯應用程式。 在設計工具的工具列上，選取 [儲存]  。
+1. 儲存您的邏輯應用程式。 在設計工具的工具列上，選取 [儲存]。
 
 <a name="sequential-convoy"></a>
 

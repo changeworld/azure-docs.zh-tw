@@ -1,6 +1,6 @@
 ---
 title: 轉譯涵蓋範圍 |Microsoft Azure 對應
-description: 瞭解 Azure 地圖服務是否會以詳細或簡化的資料呈現各種區域。 請參閱其在這些區域中用於點陣磚和向量磚對應的層級。
+description: 瞭解 Azure 地圖服務是否以詳細或簡化的資料呈現不同區域。 查看在這些區域中，適用于點陣圖格和向量圖格地圖的層級。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 03/22/2019
@@ -9,17 +9,17 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.openlocfilehash: 69b122196cbeb7508cddf3a890768f83fdcd4727
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88030923"
 ---
 # <a name="azure-maps-render-coverage"></a>Azure 地圖轉譯涵蓋範圍
 
-Azure 地圖會同時使用點陣圖格和向量圖格來建立地圖。 在最低解析度中，整個世界都適合單一磚。 在最高的解析度上，單一磚代表38正方形計量。 當您放大地圖時，您會看到有關洲、區域、城市和個別街道的更多詳細資料。 如需磚的詳細資訊，請參閱[縮放層級和磚方格](zoom-levels-and-tile-grid.md)。
+Azure 地圖會同時使用點陣圖格和向量圖格來建立地圖。 以最低解析度而言，整個世界都適合單一磚。 以最高的解析度而言，單一圖格代表38正方形計量。 當您放大地圖時，您將會看到有關洲、區域、城市和個別街道的更多詳細資料。 如需磚的詳細資訊，請參閱 [縮放層級和磚方格](zoom-levels-and-tile-grid.md)。
 
-不過，對應的資訊層級與所有區域的精確度並不相同。 下表詳細說明您可以為每個區域呈現的資訊層級。
+不過，地圖沒有相同層級的資訊和精確度適用于所有區域。 下表詳細說明您可以為每個區域呈現的資訊層級。
 
 ## <a name="legend"></a>圖例
 

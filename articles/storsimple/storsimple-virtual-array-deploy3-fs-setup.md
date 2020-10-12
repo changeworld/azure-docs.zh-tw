@@ -16,14 +16,14 @@ ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 4e544d135883d0c936b3f23b3e50e385268c992c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87006291"
 ---
 # <a name="deploy-storsimple-virtual-array---set-up-as-file-server-via-azure-portal"></a>部署 StorSimple Virtual Array - 透過 Azure 入口網站設定為檔案伺服器
-![此圖顯示部署虛擬陣列所需的步驟。 第三個步驟的第一個部分標示為 [設定為檔案伺服器]，並反白顯示。](./media/storsimple-virtual-array-deploy3-fs-setup/fileserver4.png)
+![顯示部署 virtual array 所需步驟的圖表。 第三個步驟的第一個部分會標示為 [設定為檔案伺服器]，並反白顯示。](./media/storsimple-virtual-array-deploy3-fs-setup/fileserver4.png)
 
 ## <a name="introduction"></a>簡介
 
@@ -33,7 +33,7 @@ ms.locfileid: "87006291"
 
 安裝及設定程序可能需要大約 10 分鐘的時間才能完成。 本文中的資訊僅適用於部署 StorSimple Virtual Array。 關於 StorSimple 8000 系列裝置的部署，請參閱︰[部署執行 Update 2 的 StorSimple 8000 系列裝置](storsimple-deployment-walkthrough-u2.md)。
 
-## <a name="setup-prerequisites"></a>安裝的必要條件
+## <a name="setup-prerequisites"></a>安裝必要條件
 在您設定及安裝 StorSimple Virtual Array 之前，請先確定：
 
 * 您已根據[在 Hyper-V 中佈建 StorSimple Virtual Array](storsimple-virtual-array-deploy2-provision-hyperv.md) 或[在 VMware 中佈建 StorSimple Virtual Array](storsimple-virtual-array-deploy2-provision-vmware.md) 中的詳細說明，佈建並連接至虛擬陣列。
@@ -51,16 +51,16 @@ ms.locfileid: "87006291"
    
    請使用您在上一個步驟記下的連線 URL。 您會看到錯誤指出網站的安全性憑證有問題。 請按一下 [繼續瀏覽此網頁] ****。
    
-   ![報告安全性憑證問題之瀏覽器視窗的螢幕擷取畫面。 會顯示兩個連結，一個用於網站，另一個用於使用者的首頁。](./media/storsimple-virtual-array-deploy3-fs-setup/image2.png)
+   ![報告安全性憑證問題之瀏覽器視窗的螢幕擷取畫面。 顯示兩個連結，一個用於網站，一個用於使用者的首頁。](./media/storsimple-virtual-array-deploy3-fs-setup/image2.png)
 2. 以 **StorSimpleAdmin** 身分登入虛擬陣列的 Web UI。 輸入您於[在 Hyper-V 中佈建 StorSimple Virtual Array](storsimple-virtual-array-deploy2-provision-hyperv.md) 或[在 VMware 中佈建 StorSimple Virtual Array](storsimple-virtual-array-deploy2-provision-vmware.md) 的「步驟 3：啟動虛擬陣列」中所變更的裝置系統管理員密碼。
    
-   ![StorSimple 登入頁面的螢幕擷取畫面。 [StorSimpleAdmin] 使用者名稱是可見的，而 [密碼] 方塊會填入不確定的字元。](./media/storsimple-virtual-array-deploy3-fs-setup/image3.png)
+   ![StorSimple 登入頁面的螢幕擷取畫面。 >storsimpleadmin 使用者名稱是可見的，且密碼方塊會填入不定字元。](./media/storsimple-virtual-array-deploy3-fs-setup/image3.png)
 3. 您將會前往 [首頁]**** 頁面。 此頁面說明設定虛擬陣列並向 StorSimple 裝置管理員服務註冊時所需的各種設定。 [網路設定]****、[Web Proxy 設定]**** 及 [時間設定]**** 是可省略的。 只有 [裝置設定]**** 及 [雲端設定]**** 是必要的設定。
    
-   ![首頁的螢幕擷取畫面。 文字指出未設定裝置。 會顯示數個不同類型之設定的連結。](./media/storsimple-virtual-array-deploy3-fs-setup/image4.png)
+   ![首頁的螢幕擷取畫面。 文字指出裝置未設定。 可以看到數種不同類型的設定連結。](./media/storsimple-virtual-array-deploy3-fs-setup/image4.png)
 4. 在 [網路設定]**** 頁面的 [網路介面]**** 下方，系統會自動為您設定 DATA 0。 每個網路介面都預設會自動取得 IP 位址 (DHCP)。 因此，系統會自動指派 IP 位址、子網路和閘道 (IPv4 和 IPv6 皆適用)。
    
-   ![[網路設定] 頁面的螢幕擷取畫面，其中顯示針對各種版本的網際網路通訊協定所設定的 IP 位址。](./media/storsimple-virtual-array-deploy3-fs-setup/image5.png)
+   ![[網路設定] 頁面的螢幕擷取畫面，其中顯示針對不同版本的網際網路通訊協定所設定的 IP 位址。](./media/storsimple-virtual-array-deploy3-fs-setup/image5.png)
    
    如果您在佈建裝置的過程中新增了不只一個網路介面，您可以在此設定這些網路介面。 請注意，您可以將您的網路介面設定為僅 IPv4 或 IPv4 和 IPv6。 不支援僅 IPv6 組態。
 5. DNS 伺服器是必要的，因為在裝置嘗試與雲端儲存體服務提供者通訊時，或是在根據名稱來解析已設定為檔案伺服器的裝置時，就需要使用 DNS 伺服器。 在 [網路設定]**** 頁面的 [DNS 伺服器]**** 下方：
@@ -71,11 +71,11 @@ ms.locfileid: "87006291"
    
    1. 為裝置指派唯一的 [名稱] **** 。 這個名稱可以有 1 至 15 個字元，且可以包含字母、數字和連字號。
    2. 對於您要建立的裝置 [類型]****，按一下 [檔案伺服器]**** 圖示 :::image type="icon" source="./media/storsimple-virtual-array-deploy3-fs-setup/image6.png":::。 檔案伺服器可讓您建立共用資料夾。
-   3. 由於您的裝置是檔案伺服器，您必須讓裝置加入某個網域。 輸入**功能變數名稱**。
+   3. 由於您的裝置是檔案伺服器，您必須讓裝置加入某個網域。 輸入 **功能變數名稱**。
    4. 按一下 [套用]。
 7. 此時會出現一個對話方塊。 請以指定格式輸入網域認證。 按一下核取圖示。 系統會驗證該網域認證。 如果認證不正確，畫面會出現錯誤訊息。
    
-   ![螢幕擷取畫面：顯示已填入使用者名稱和密碼的對話方塊。](./media/storsimple-virtual-array-deploy3-fs-setup/image7.png)
+   ![顯示已填入使用者名稱和密碼之對話方塊的螢幕擷取畫面。](./media/storsimple-virtual-array-deploy3-fs-setup/image7.png)
 8. 按一下 [套用]。 這將會套用並驗證裝置設定。
    
    ![[裝置設定] 頁面的螢幕擷取畫面。 裝置名稱和功能變數名稱會填入。](./media/storsimple-virtual-array-deploy3-fs-setup/image8.png)
@@ -86,7 +86,7 @@ ms.locfileid: "87006291"
    > 
 9. (可省略) 設定 Web Proxy 伺服器。 雖然 Web Proxy 設定是選用的，但請注意，如果您使用 Web Proxy，就只能在此處設定它。
    
-   ![[Web proxy 設定] 頁面的螢幕擷取畫面。 [啟用 Web Proxy] 選項已關閉，而且驗證設定為 [無]。 未設定任何其他值。](./media/storsimple-virtual-array-deploy3-fs-setup/image9.png)
+   ![[Web proxy 設定] 頁面的螢幕擷取畫面。 [啟用 web proxy] 選項已關閉，且驗證設定為 [無]。 未設定任何其他值。](./media/storsimple-virtual-array-deploy3-fs-setup/image9.png)
    
    在 [Web Proxy] **** 頁面中：
    
@@ -100,7 +100,7 @@ ms.locfileid: "87006291"
     
     在 [時間設定] **** 頁面中：
     
-    1. 從下拉式清單中，根據部署裝置的地理位置來選取**時區**。 裝置的預設時區是太平洋標準時間。 裝置將針對所有排程的操作使用這個時區。
+    1. 從下拉式清單中，根據要部署裝置的地理位置來選取 **時區** 。 裝置的預設時區是太平洋標準時間。 裝置將針對所有排程的操作使用這個時區。
     2. 指定裝置的 [主要 NTP 伺服器] **** ，或是接受預設值 time.windows.com。 請確定您的網路允許 NTP 流量從您的資料中心通過網際網路。
     3. (選擇性) 指定裝置的 [次要 NTP 伺服器] **** 。
     4. 按一下 [套用]。 這將會驗證並套用您設定的時間設定。
@@ -109,13 +109,13 @@ ms.locfileid: "87006291"
     1. 輸入您在 **步驟 2：取得服務註冊金鑰** 中取得的 StorSimple Virtual Array [服務註冊金鑰](storsimple-virtual-array-deploy1-portal-prep.md#step-2-get-the-service-registration-key) 。
     2. 如果這是您向此服務註冊的第一個裝置，則會出現**服務資料加密金鑰**。 複製這個金鑰，並將它儲存在安全的位置。 這個金鑰需要與服務註冊金鑰搭配使用，才能向 StorSimple 裝置管理員服務註冊其他裝置。 
        
-       如果這不是您向此服務註冊的第一個裝置，您將必須提供服務資料加密金鑰。 如需詳細資訊，請參閱在您的本機 web UI 上取得[服務資料加密金鑰](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key)。
+       如果這不是您向此服務註冊的第一個裝置，您將必須提供服務資料加密金鑰。 如需詳細資訊，請參閱在您的本機 web UI 上取得 [服務資料加密金鑰](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key) 。
     3. 按一下 [註冊] 。 這將讓裝置重新啟動。 您可能需要等待 2 至 3 分鐘，裝置才會註冊成功。 裝置重新啟動之後，您將會看到登入頁面。
        
-       ![[雲端設定] 頁面的螢幕擷取畫面。 [註冊金鑰] 和 [加密金鑰] 方塊會填入資料，但值為編校。](./media/storsimple-virtual-array-deploy3-fs-setup/image13.png)
+       ![[雲端設定] 頁面的螢幕擷取畫面。 [註冊金鑰] 和 [加密金鑰] 方塊會填入資料，但這些值是修訂。](./media/storsimple-virtual-array-deploy3-fs-setup/image13.png)
 12. 返回 Azure 入口網站。 移至 [所有資源]****，搜尋您的 StorSimple 裝置管理員服務。
     
-    ![Azure 入口網站的 [所有資源] 頁面的螢幕擷取畫面。 Device Manager 服務會反白顯示。](./media/storsimple-virtual-array-deploy3-fs-setup/searchdevicemanagerservice1.png) 
+    ![Azure 入口網站的 [所有資源] 頁面的螢幕擷取畫面。 裝置管理員服務會反白顯示。](./media/storsimple-virtual-array-deploy3-fs-setup/searchdevicemanagerservice1.png) 
 13. 在已篩選的清單中，選取您的 StorSimple 裝置管理員服務，然後瀏覽至 [管理] > [裝置]****。 在 [裝置]**** 刀鋒視窗上，確認裝置已成功連接至服務，且狀態為 [準備好進行設定]****。
     
     ![設定檔案伺服器](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs2m.png)
@@ -124,7 +124,7 @@ ms.locfileid: "87006291"
 在 [Azure 入口網站](https://portal.azure.com/)中執行下列步驟，完成必要的裝置設定。
 
 #### <a name="to-configure-the-device-as-file-server"></a>若要將裝置設定為檔案伺服器
-1. 移至您的 StorSimple Device Manager 服務，然後移至 [**管理] > [裝置**]。 在 [裝置]**** 刀鋒視窗中，選取您剛建立的裝置。 此裝置會顯示為 [準備好進行設定]****。
+1. 移至您的 StorSimple 裝置管理員服務，然後移至 [  **管理 > 裝置**]。 在 [裝置]**** 刀鋒視窗中，選取您剛建立的裝置。 此裝置會顯示為 [準備好進行設定]****。
    
    ![設定檔案伺服器](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs2m.png) 
 2. 按一下裝置，您會看到橫幅訊息，指出裝置已準備好進行設定。
@@ -138,7 +138,7 @@ ms.locfileid: "87006291"
     
    3. 256 位元 AES 金鑰與使用者定義的金鑰搭配用來加密。 指定 32 個字元的金鑰，然後重新輸入金鑰來加以確認。 將金鑰記錄在金鑰管理應用程式中，供日後參考。
     
-   4. 按一下 [進行必要的設定]****，以指定要用於裝置的儲存體帳戶認證。 如果未設定儲存體帳戶認證，請按一下 [新增]****。 **請確定您使用的儲存體帳戶支援區塊 blob。不支援分頁 blob。** 關於 [區塊 Blob 和分頁 Blob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) 的其他資訊。
+   4. 按一下 [進行必要的設定]****，以指定要用於裝置的儲存體帳戶認證。 如果未設定儲存體帳戶認證，請按一下 [新增]****。 **確定您使用的儲存體帳戶支援區塊 blob。不支援分頁 blob。** 關於 [區塊 Blob 和分頁 Blob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) 的其他資訊。
    
       ![設定檔案伺服器](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs6m.png) 
 4. 在 [新增儲存體帳戶認證]**** 刀鋒視窗中，執行下列動作︰ 
@@ -155,7 +155,7 @@ ms.locfileid: "87006291"
    
         ![設定檔案伺服器](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs8m.png)
 
-5. 成功建立儲存體帳戶認證之後，[設定]**** 刀鋒視窗將會更新，以顯示指定的儲存體帳戶認證。 按一下 [設定]****。
+5. 成功建立儲存體帳戶認證之後，[設定]**** 刀鋒視窗將會更新，以顯示指定的儲存體帳戶認證。 按一下 [設定]  。
    
    ![設定檔案伺服器](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs11m.png)
    
@@ -185,7 +185,7 @@ ms.locfileid: "87006291"
    3. 共用的 [類型]****。 類型可以是 [階層式]**** 或 [固定在本機]****，而預設選項是 [階層式]。 對於需要本機保證、低延遲，以及高效能的工作負載，請選取 [固定在本機] **** 共用。 對於所有其他資料，請選取 [階層式] **** 共用。
       固定在本機的共用會密集佈建，且會確保共用中的主要資料會保留在裝置上，不會溢出到雲端。 而另一方面，階層式共用則是以精簡方式佈建。 當您建立階層式共用時，10% 的空間會佈建在本機層上，而 90% 的空間會佈建在雲端中。 舉例來說，如果您佈建 1 TB 的磁碟區，當資料使用階層式共用時，其中 100 GB 會位於本機的空間，900 GB 會位於雲端。 然而這也代表，如果裝置已沒有可用的本機空間，您就無法佈建階層式共用。
    
-   4. 在 [將預設完整權限設為]**** 欄位中，指派權限給存取此共用的使用者或群組。 以*john \@ contoso.com*格式指定使用者或使用者群組的名稱。 我們建議您利用使用者群組 (而非單一使用者)，來授予可存取這些共用的系統管理員權限。 當您在此指派權限之後，就可以使用 [檔案總管] 來修改這些權限。
+   4. 在 [將預設完整權限設為]**** 欄位中，指派權限給存取此共用的使用者或群組。 以 *john \@ contoso.com* 格式指定使用者或使用者群組的名稱。 我們建議您利用使用者群組 (而非單一使用者)，來授予可存取這些共用的系統管理員權限。 當您在此指派權限之後，就可以使用 [檔案總管] 來修改這些權限。
    
    5. 按一下 [新增]**** 以建立共用。 
     
@@ -208,9 +208,9 @@ ms.locfileid: "87006291"
    ![[執行] 對話方塊的螢幕擷取畫面。 [開啟] 方塊會填入指向檔案伺服器的路徑。](./media/storsimple-virtual-array-deploy3-fs-setup/image23.png)
 2. 這會開啟 [檔案總管]。 您應該會看到所建立的共用以資料夾形式呈現。 選取並按兩下某個共用 (資料夾)，就能檢視該共用的內容。
    
-   ![檔案瀏覽器的螢幕擷取畫面。 會顯示數個資料夾，代表新建立的共用。](./media/storsimple-virtual-array-deploy3-fs-setup/image24.png)
+   ![檔案總管的螢幕擷取畫面。 可以看到數個資料夾，代表新建立的共用。](./media/storsimple-virtual-array-deploy3-fs-setup/image24.png)
 3. 現在您可以把檔案新增到這些共用，然後進行備份。
 
 ## <a name="next-steps"></a>接下來的步驟
-瞭解如何使用本機 web UI 來[管理 StorSimple Virtual Array](storsimple-ova-web-ui-admin.md)。
+瞭解如何使用本機 web UI 來 [管理 StorSimple Virtual Array](storsimple-ova-web-ui-admin.md)。
 

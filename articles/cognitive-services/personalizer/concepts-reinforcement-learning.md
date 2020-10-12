@@ -9,10 +9,10 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.openlocfilehash: 8b97221de4921e06ddfab610618f37683b990181
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87132733"
 ---
 # <a name="what-is-reinforcement-learning"></a>增強式學習是什麼？
@@ -62,10 +62,10 @@ John 先前也曾提供數個關於各項主題的教學課程，例如 Joint Pr
 * [在低技術債務下做出內容相關決策](https://arxiv.org/abs/1606.03966)
 * [公平分類的縮減方法](https://arxiv.org/abs/1803.02453)
 * [在非穩定世界中的有效率內容相關吃角子老虎機](https://arxiv.org/abs/1708.01799)
-* [剩餘損失預測：增強式：不含增量意見反應的學習](https://openreview.net/pdf?id=HJNMYceCW)
+* [剩餘遺失預測：增強式：不含累加回饋的學習](https://openreview.net/pdf?id=HJNMYceCW)
 * [使用增強式學習來將指示和視覺化觀察對應至動作](https://arxiv.org/abs/1704.08795)
 * [學習成為比老師更加優秀的搜尋者](https://arxiv.org/abs/1502.02206)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 [離線評估](concepts-offline-evaluation.md) 

@@ -14,17 +14,17 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: apimpm
 ms.openlocfilehash: 786a9e26003a7afb98307e0bd7fae94c42a2f00d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84690297"
 ---
 # <a name="how-to-configure-notifications-and-email-templates-in-azure-api-management"></a>如何在 Azure API 管理中設定通知和電子郵件範本
 
 API 管理可讓您設定特定事件的通知，以及設定用來與 API 管理執行個體的管理員和開發人員通訊的電子郵件範本。 本文說明如何為可用的事件設定通知，並提供設定這些事件所使用之電子郵件範本的概觀。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 如果您沒有 API 管理服務執行個體，請完成下列快速入門：[建立 Azure API 管理執行個體](get-started-create-service-instance.md)。
 
@@ -32,7 +32,7 @@ API 管理可讓您設定特定事件的通知，以及設定用來與 API 管�
 
 ## <a name="configure-notifications"></a><a name="publisher-notifications"> </a>設定通知
 
-1.  選取您的**API 管理**實例。
+1.  選取您的 **API 管理** 實例。
 2.  按一下 [通知]**** 以檢視可用的通知。
 
     ![Publisher notifications][api-management-publisher-notifications]
@@ -48,7 +48,7 @@ API 管理可讓您設定特定事件的通知，以及設定用來與 API 管�
     -   **接近訂用帳戶配額限制** - 當訂用帳戶使用量接近使用量配額時，下列電子郵件收件者和使用者會收到電子郵件通知。
 
         > [!NOTE]
-        > 只有[訂用](api-management-access-restriction-policies.md#SetUsageQuota)帳戶原則會根據配額觸發通知。 [依金鑰原則的配額](api-management-access-restriction-policies.md#SetUsageQuotaByKey)不會產生通知。
+        > 只有 [依訂用](api-management-access-restriction-policies.md#SetUsageQuota) 帳戶原則的配額才會觸發通知。 [依金鑰原則的配額](api-management-access-restriction-policies.md#SetUsageQuotaByKey) 不會產生通知。
 
     針對每一個事件，您可以使用電子郵件地址文字方塊來指定電子郵件地址，或從清單中選取使用者。
 
@@ -56,7 +56,7 @@ API 管理可讓您設定特定事件的通知，以及設定用來與 API 管�
 
     ![Notification recipients][api-management-email-addresses]
 
-4.  按 [**新增**]。
+4.  按下 [ **新增**]。
 
 ## <a name="configure-notification-templates"></a><a name="email-templates"> </a>設定通知範本
 

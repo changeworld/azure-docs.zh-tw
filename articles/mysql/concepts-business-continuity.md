@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 7/7/2020
 ms.openlocfilehash: b21062256896ebfc9c11b031413538b39620d1e7
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89613967"
 ---
 # <a name="understand-business-continuity-in-azure-database-for-mysql"></a>瞭解適用於 MySQL 的 Azure 資料庫中的商務持續性
@@ -56,7 +56,7 @@ ms.locfileid: "89613967"
 ### <a name="where-does-azure-database-for-mysql-store-customer-data"></a>適用於 MySQL 的 Azure 資料庫儲存客戶資料的位置為何？
 根據預設，適用於 MySQL 的 Azure 資料庫不會在其部署所在的區域中移動或儲存客戶資料。 不過，客戶可以選擇性地選擇啟用 [異地複寫備份](concepts-backup.md#backup-redundancy-options) ，或建立 [跨區域讀取複本](concepts-read-replicas.md#cross-region-replication) ，以便將資料儲存在另一個區域中。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 深入了解[適用於 MySQL 的 Azure 資料庫中的自動備份](concepts-backup.md)。
 - 了解如何使用 [Azure 入口網站](howto-restore-server-portal.md)或 [Azure CLI](howto-restore-server-cli.md) 來進行還原。

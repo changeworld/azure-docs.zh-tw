@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 07/10/2017
 ms.author: timlt
 ms.openlocfilehash: 64f91263154f7e65238acdcef9d97e5f2d09aad5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87006011"
 ---
 # <a name="storsimple-8000-series-a-hybrid-cloud-storage-solution"></a>StorSimple 8000 系列：混合式雲端存放解決方案
@@ -95,7 +95,7 @@ StorSimple 裝置包括 SSD 和硬碟 HDD，並支援叢集和自動容錯移轉
 * 您可以在雲端中建立無限量的雲端設備，視需要將其開啟和關閉。
 * 可協助您模擬災害復原、開發和測試案例中的內部部署環境，並可協助從備份進行項目層級的擷取。
 
-StorSimple 雲端設備可在兩種機型中使用：8010 裝置 (先前稱為 1100 機型) 和 8020 裝置。 8010 裝置的最大容量為 30 TB。 利用 Azure 進階儲存體帳戶的 8020 裝置的最大容量為 64 TB。 （在本機層中，Azure premium 儲存體會將資料儲存在 Ssd，而標準儲存體會將資料儲存在 Hdd 上）。請注意，您必須擁有 Azure premium 儲存體帳戶，才能使用 premium 儲存體。
+StorSimple 雲端設備可在兩種機型中使用：8010 裝置 (先前稱為 1100 機型) 和 8020 裝置。 8010 裝置的最大容量為 30 TB。 利用 Azure 進階儲存體帳戶的 8020 裝置的最大容量為 64 TB。  (在本機層中，Azure premium 儲存體會將資料儲存在 Ssd，而標準儲存體會將資料儲存在 Hdd 上 ) 。請注意，您必須擁有 Azure premium 儲存體帳戶才能使用 premium 儲存體。
 
 如需 StorSimple 雲端設備的詳細資訊，請移至[部署和管理 Azure 中的 StorSimple 雲端設備](storsimple-8000-cloud-appliance-u2.md)。
 
@@ -217,8 +217,8 @@ Microsoft Azure StorSimple 會使用重複資料刪除和資料壓縮，來進�
 | 虛擬化 |虛擬機器 |是* |只有使用固定在本機的磁碟區時才支援 |Update 2 和更新版本 |
 | 資料庫 |SQL |是* |只有使用固定在本機的磁碟區時才支援 |Update 2 和更新版本 |
 | 視訊監視 |視訊監視 |是* |當 StorSimple 僅供此工作負載專用時才支援 |Update 2 和更新版本 |
-| 備份 |主要目標備份 |是* |當 StorSimple 僅供此工作負載專用時才支援 |Update 3 和更新版本 |
-| 備份 |次要目標備份 |是* |當 StorSimple 僅供此工作負載專用時才支援 |Update 3 和更新版本 |
+| Backup |主要目標備份 |是* |當 StorSimple 僅供此工作負載專用時才支援 |Update 3 和更新版本 |
+| Backup |次要目標備份 |是* |當 StorSimple 僅供此工作負載專用時才支援 |Update 3 和更新版本 |
 
 是&#42; - 應套用解決方案指導方針和限制。**
 
@@ -258,7 +258,7 @@ StorSimple 8000 系列裝置不支援下列工作負載。 如果部署於 StorS
 在部署 Microsoft Azure StorSimple 解決方案，我們建議您檢閱下列詞彙和定義。
 
 ### <a name="key-terms-and-definitions"></a>重要詞彙和定義
-| 術語 (首字母縮寫或縮寫) | 描述 |
+| 術語 (首字母縮寫或縮寫) | 說明 |
 | --- | --- |
 | 存取控制記錄 (ACR) |與 Microsoft Azure StorSimple 裝置上的磁碟區相關聯的記錄，決定哪些主機可連接到其中。 此決定根據連接到 StorSimple 裝置之主機 (包含在 ACR 中) 的 iSCSI 合格名稱 (IQN)。 |
 | AES 256 |256 位元進階加密標準 (AES) 演算法，用於加密移入和移出雲端的資料。 |

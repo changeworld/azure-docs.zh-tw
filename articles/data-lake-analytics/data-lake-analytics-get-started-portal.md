@@ -7,10 +7,10 @@ ms.assetid: b1584d16-e0d2-4019-ad1f-f04be8c5b430
 ms.topic: conceptual
 ms.date: 03/21/2017
 ms.openlocfilehash: d8f0a5697a128deb75537f3d48a3830dc7ba9df9
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87132529"
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-the-azure-portal"></a>使用 Azure 入口網站開始使用 Azure Data Lake Analytics
@@ -18,16 +18,16 @@ ms.locfileid: "87132529"
 
 本文說明如何使用 Azure 入口網站建立 Azure Data Lake Analytics 帳戶、在 [U-SQL](data-lake-analytics-u-sql-get-started.md) 中定義作業，以及將作業提交至 Data Lake Analytics 服務。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-開始進行本教學課程之前，您必須擁有**Azure 訂**用帳戶。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
+在開始本教學課程之前，您必須擁有 **Azure 訂**用帳戶。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
 
 ## <a name="create-a-data-lake-analytics-account"></a>建立 Data Lake Analytics 帳戶
 
 現在，您會同時建立 Data Lake Analytics 和 Azure Data Lake Storage Gen1 帳戶。  這個步驟很簡單，只需要大約 60 秒即可完成。
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-2. 按一下 [**建立資源**] [  >   **資料 + 分析**] [  >  **Data Lake Analytics**]。
+2. 按一下 [**建立資源**  >   **資料 + 分析**]  >  **Data Lake Analytics**。
 3. 選取下列項目的值︰
    * **名稱**：替 Data Lake Analytics 帳戶命名 (只允許小寫字母和數字)。
    * **訂用帳戶**：選擇用於分析帳戶的 Azure 訂用帳戶。
@@ -61,9 +61,9 @@ OUTPUT @a
 2. 貼上前述 U-SQL 指令碼的文字。 為作業命名。 
 3. 選取 [提交]**** 按鈕以啟動作業。   
 4. 監視作業的 [狀態]****，並等候作業狀態變更為 [成功]****。
-5. 選取 [**資料**] 索引標籤，然後選取 [**輸出**] 索引標籤。選取名為的輸出檔 `data.csv` ，並查看輸出資料。
+5. 選取 [ **資料** ] 索引標籤，然後選取 [ **輸出** ] 索引標籤。選取名為的輸出檔 `data.csv` ，並查看輸出資料。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 * 若要開始開發 U-SQL 應用程式，請參閱 [使用適用於 Visual Studio 的 Data Lake 工具開發 U-SQL 指令碼](data-lake-analytics-data-lake-tools-get-started.md)。
 * 若要了解 U-SQL，請參閱 [開始使用 Azure Data Lake Analytics U-SQL 語言](data-lake-analytics-u-sql-get-started.md)。

@@ -6,10 +6,10 @@ ms.subservice: personalizer
 ms.topic: how-to
 ms.date: 04/29/2020
 ms.openlocfilehash: 9b7347cb98bcbf2e1d92f115d404197083acef4d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91292603"
 ---
 # <a name="configure-personalizer-learning-loop"></a>設定個人化工具學習迴圈

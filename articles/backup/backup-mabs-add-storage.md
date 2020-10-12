@@ -4,10 +4,10 @@ description: 了解 Azure 備份伺服器中的新功能。 本文說明如何�
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.openlocfilehash: b077296e58e1193e454a686a392d802e905500a5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91292892"
 ---
 # <a name="add-storage-to-azure-backup-server"></a>在 Azure 備份伺服器中新儲存體
@@ -56,7 +56,7 @@ Azure 備份伺服器 V2 和更新版本支援 Modern Backup Storage，可節省
 
     ![建立新的磁碟區](./media/backup-mabs-add-storage/mabs-add-storage-5.png)
 
-6. 在 [選取伺服器和磁碟]**** 對話方塊中，選取伺服器和新的磁碟。 然後，選取 [下一步]。
+6. 在 [選取伺服器和磁碟]**** 對話方塊中，選取伺服器和新的磁碟。 然後，選取 [下一步]****。
 
     ![選取伺服器和磁碟](./media/backup-mabs-add-storage/mabs-add-storage-6.png)
 

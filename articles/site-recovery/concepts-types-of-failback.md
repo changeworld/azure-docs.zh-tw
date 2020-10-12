@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: raynew
 ms.openlocfilehash: c0eaf28f9aeb4050fd35a6036a53e3e91d00f3eb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84691079"
 ---
 # <a name="failback-of-vmware-vms-after-disaster-recovery-to-azure"></a>災害復原至 Azure 後的 VMware VM 容錯回復
@@ -48,7 +48,7 @@ ms.locfileid: "84691079"
 > [!NOTE]
 > 將實體機器容錯回復至 Azure 時，只能容錯回復為 VMware 虛擬機器。 這會遵循與替代位置復原相同的工作流程。 請確定您至少探索一部主要目標伺服器以及需要容錯回復到的必要 ESX/ESXi 主機。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 依照步驟執行[容錯回復作業](vmware-azure-failback.md)。
 

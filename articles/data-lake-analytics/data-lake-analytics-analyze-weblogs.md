@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure Data Lake Analytics 來分析網站記錄
-description: 瞭解如何使用 Azure Data Lake Analytics 來分析網站記錄，以執行 U-SQL 函數和查詢。
+description: 瞭解如何使用 Azure Data Lake Analytics 來分析網站記錄，以執行 SQL 函數和查詢。
 services: data-lake-analytics
 ms.reviewer: jasonh
 ms.assetid: 3a196735-d0d9-4deb-ba68-c4b3f3be8403
@@ -8,16 +8,16 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 12/05/2016
 ms.openlocfilehash: 5ad837c51fafd7df2b019c78ae4adaf4967f2df7
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87132631"
 ---
 # <a name="analyze-website-logs-using-azure-data-lake-analytics"></a>使用 Azure Data Lake Analytics 來分析網站記錄
 了解如何使用資料湖分析來分析網站記錄，特別是找出哪些訪客來源在嘗試瀏覽網站時遇到錯誤。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 * **Visual Studio 2015 或 Visual Studio 2013**。
 * **[適用于 Visual Studio 的 Data Lake 工具](https://aka.ms/adltoolsvs)**。
 
@@ -43,7 +43,7 @@ ms.locfileid: "87132631"
 ### <a name="to-browse-your-data-lake-analytics-accounts"></a>瀏覽您的資料湖分析帳戶
 
 1. 從 Visual Studio 中，按 **CTRL+ALT+S**，開啟 [伺服器總管]****。
-2. 在 [伺服器總管]**** 中展開 [Azure]****，然後展開 [Data Lake Analytics]****。 如果有資料湖分析帳戶，您就會看到其清單。 您無法從 Visual Studio 建立資料湖分析帳戶。 若要建立帳戶，請參閱[使用 Azure 入口網站開始使用 Azure Data Lake Analytics](data-lake-analytics-get-started-portal.md)或[使用 Azure PowerShell 開始使用 Azure Data Lake Analytics](data-lake-analytics-get-started-powershell.md)。
+2. 在 [伺服器總管]**** 中展開 [Azure]****，然後展開 [Data Lake Analytics]****。 如果有資料湖分析帳戶，您就會看到其清單。 您無法從 Visual Studio 建立資料湖分析帳戶。 若要建立帳戶，請參閱 [使用 Azure 入口網站的 Azure Data Lake Analytics 開始](data-lake-analytics-get-started-portal.md) ，或使用 [Azure PowerShell 搭配 Azure Data Lake Analytics 的開始](data-lake-analytics-get-started-powershell.md)。
 
 ## <a name="develop-u-sql-application"></a>開發 U-SQL 應用程式
 U-SQL 應用程式基本上是 U-SQL 指令碼。 若要深入了解 U-SQL，請參閱 [開始使用 U-SQL 語言](data-lake-analytics-u-sql-get-started.md)。
@@ -180,7 +180,7 @@ U-SQL 應用程式基本上是 U-SQL 指令碼。 若要深入了解 U-SQL，請
 3. 按兩下 **UnsuccessfulResponses.log**。
 4. 您也可以按兩下工作的圖形檢視內的輸出檔，直接瀏覽至輸出。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 若要使用不同的工具開始使用資料湖分析，請參閱：
 
 * [使用 Azure 入口網站開始使用 Data Lake Analytics](data-lake-analytics-get-started-portal.md)

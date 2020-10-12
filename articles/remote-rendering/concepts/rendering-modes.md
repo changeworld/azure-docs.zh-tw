@@ -7,10 +7,10 @@ ms.date: 02/03/2020
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 0e61ea423cb94dc1192d6b189a95e5a5da3b38ad
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89613912"
 ---
 # <a name="rendering-modes"></a>轉譯模式
@@ -79,7 +79,7 @@ async void ExampleConnect(AzureSession session)
 * [C + + AzureSession：： ConnectToRuntime ( # B1 ](https://docs.microsoft.com/cpp/api/remote-rendering/azuresession#connecttoruntime)
 * [C + + ConnectToRuntimeParams 結構](https://docs.microsoft.com/cpp/api/remote-rendering/connecttoruntimeparams)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [工作階段](../concepts/sessions.md)
 * [階層式狀態覆寫元件](../overview/features/override-hierarchical-state.md)

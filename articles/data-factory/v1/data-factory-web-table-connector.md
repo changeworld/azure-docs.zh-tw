@@ -13,10 +13,10 @@ ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: d2ea038c7d7212529185d77a6ba9e64deacb1c9e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84689753"
 ---
 # <a name="move-data-from-a-web-table-source-using-azure-data-factory"></a>使用 Azure Data Factory 來移動 Web 資料表的資料
@@ -34,7 +34,7 @@ Data factory 目前只支援把 Web 資料表的資料移動到其他資料存�
 > [!IMPORTANT]
 > 此 Web 連接器目前只支援從 HTML 網頁擷取資料表內容。 若要從 HTTP/s 端點擷取資料，請改用 [HTTP 連接器](data-factory-http-connector.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要使用此 Web 資料表連接器，您需要設定自我裝載 Integration Runtime (也稱為 Data Management Gateway)，並在接收連結服務中設定 `gatewayName` 屬性。 例如，若要從 Web 資料表複製至 Azure Blob 儲存體，請設定 Azure 儲存體連結的服務，如下所示：
 
@@ -54,14 +54,14 @@ Data factory 目前只支援把 Web 資料表的資料移動到其他資料存�
 ## <a name="getting-started"></a>開始使用
 您可以藉由使用不同的工具/API，建立內含複製活動的管線，以從內部部署的 Cassandra 資料存放區移動資料。 
 
-- 建立管線的最簡單方式是使用**複製嚮導**。 如需使用複製資料精靈建立管線的快速逐步解說，請參閱 [教學課程︰使用複製精靈建立管線](data-factory-copy-data-wizard-tutorial.md) 。 
-- 您也可以使用下列工具來建立管線： [ **Visual Studio**]、[ **Azure PowerShell**]、[ **Azure Resource Manager 範本**]、[ **.net API**] 和 [ **REST API**]。 如需建立包含複製活動之管線的逐步指示，請參閱[複製活動教學](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)課程。 
+- 若要建立管線，最簡單的方式就是使用「 **複製嚮導**」。 如需使用複製資料精靈建立管線的快速逐步解說，請參閱 [教學課程︰使用複製精靈建立管線](data-factory-copy-data-wizard-tutorial.md) 。 
+- 您也可以使用下列工具來建立管線： **Visual Studio**、 **Azure PowerShell**、 **Azure Resource Manager 範本**、 **.net API**和 **REST API**。 請參閱「 [複製活動」教學](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) 課程，以取得使用複製活動建立管線的逐步指示。 
 
 不論您是使用工具還是 API，都需執行下列步驟來建立將資料從來源資料存放區移到接收資料存放區的管線：
 
 1. 建立**連結服務**，將輸入和輸出資料存放區連結到資料處理站。
-2. 建立**資料集**來代表複製作業的輸入和輸出資料。 
-3. 建立具有複製活動的**管線**，以將資料集作為輸入，並使用資料集做為輸出。 
+2. 建立 **資料集** 以代表複製作業的輸入和輸出資料。 
+3. 建立具有複製活動的 **管線** ，該活動會採用資料集做為輸入，並使用資料集做為輸出。 
 
 使用精靈時，精靈會自動為您建立這些 Data Factory 實體 (已連結的服務、資料集及管線) 的 JSON 定義。 使用工具/API (.NET API 除外) 時，您需使用 JSON 格式來定義這些 Data Factory 實體。  如需相關範例，其中含有用來從 Web 資料表複製資料之 Data Factory 實體的 JSON 定義，請參閱本文的 [JSON 範例：將資料從 Web 資料表複製到 Azure Blob](#json-example-copy-data-from-web-table-to-azure-blob) 一節。 
 
@@ -72,9 +72,9 @@ Data factory 目前只支援把 Web 資料表的資料移動到其他資料存�
 
 | 屬性 | 說明 | 必要 |
 | --- | --- | --- |
-| type |類型屬性必須設為： **Web** |Yes |
-| Url |Web 來源的 URL |Yes |
-| authenticationType |匿名。 |Yes |
+| type |類型屬性必須設為： **Web** |是 |
+| Url |Web 來源的 URL |是 |
+| authenticationType |匿名。 |是 |
 
 ### <a name="using-anonymous-authentication"></a>使用匿名驗證
 
@@ -96,13 +96,13 @@ Data factory 目前只支援把 Web 資料表的資料移動到其他資料存�
 ## <a name="dataset-properties"></a>資料集屬性
 如需定義資料集的區段和屬性完整清單，請參閱[建立資料集](data-factory-create-datasets.md)一文。 資料集 JSON 的結構、可用性和原則等區段類似於所有的資料集類型 (SQL Azure、Azure Blob、Azure 資料表等)。
 
-每個資料集類型的**typeProperties**區段都不同，並提供資料存放區中資料位置的相關資訊。 **WebTable** 類型資料集的 typeProperties 區段有下列屬性
+每個資料集類型的 **>typeproperties** 區段都不同，並提供資料存放區中資料位置的相關資訊。 **WebTable** 類型資料集的 typeProperties 區段有下列屬性
 
 | 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
 | type |資料集的類型。 必須設定為 **WebTable** |是 |
 | path |包含資料表之資源的相對 URL。 |否。 當路徑未指定時，則只會使用在連結服務定義中指定的 URL。 |
-| 索引 |資源中資料表的索引。 如需取得 HTML 網頁中資料表索引的步驟，請參閱[取得 html 網頁中資料表的索引](#get-index-of-a-table-in-an-html-page)一節。 |Yes |
+| 索引 |資源中資料表的索引。 如需取得 HTML 網頁中資料表索引的步驟，請參閱 [取得 html 網頁中資料表的索引](#get-index-of-a-table-in-an-html-page) 一節。 |是 |
 
 **範例︰**
 
@@ -181,7 +181,7 @@ Data factory 目前只支援把 Web 資料表的資料移動到其他資料存�
 **WebTable 輸入資料集** 將 **external** 設定為 **true**，等於是通知 Data Factory 服務：這是 Data Factory 外部的資料集而且不是由 Data Factory 中的活動所產生。
 
 > [!NOTE]
-> 如需取得 HTML 網頁中資料表索引的步驟，請參閱[取得 html 網頁中資料表的索引](#get-index-of-a-table-in-an-html-page)一節。  
+> 如需取得 HTML 網頁中資料表索引的步驟，請參閱 [取得 html 網頁中資料表的索引](#get-index-of-a-table-in-an-html-page) 一節。  
 >
 >
 
