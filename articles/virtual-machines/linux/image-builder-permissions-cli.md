@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure CLI 設定 Azure 映射產生器服務許可權
-description: 使用 Azure CLI 設定 Azure VM 映射產生器服務的需求，包括許可權和許可權
+description: 設定 Azure VM Image Builder 服務的需求，包括使用 Azure CLI 的許可權和許可權
 author: cynthn
 ms.author: danis
 ms.date: 05/06/2020
@@ -8,15 +8,15 @@ ms.topic: article
 ms.service: virtual-machines
 ms.subservice: imaging
 ms.openlocfilehash: 58bbe01c8de0bbe606f4fc428032cd213f05d386
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88068106"
 ---
 # <a name="configure-azure-image-builder-service-permissions-using-azure-cli"></a>使用 Azure CLI 設定 Azure 映射產生器服務許可權
 
-在建立映射之前，Azure 映射產生器服務需要設定許可權和許可權。 下列各節將詳細說明如何使用 Azure CLI 設定可能的案例。
+Azure 映射產生器服務需要先設定許可權和許可權，才能建立映射。 下列各節將詳細說明如何使用 Azure CLI 設定可能的案例。
 
 > [!IMPORTANT]
 > Azure Image Builder 目前處於公開預覽狀態。
@@ -26,7 +26,7 @@ ms.locfileid: "88068106"
 
 ## <a name="register-the-features"></a>註冊各項功能
 
-首先，您必須註冊 Azure 映射產生器服務。 註冊會授與服務許可權，以建立、管理和刪除暫存資源群組。 此服務也具有將映射組建所需的群組加入資源的許可權。
+首先，您必須註冊 Azure 映射建立器服務。 註冊會授與服務許可權，以建立、管理及刪除預備資源群組。 服務也有許可權可新增映射組建所需的群組資源。
 
 ```azurecli-interactive
 az feature register --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview
@@ -34,10 +34,10 @@ az feature register --namespace Microsoft.VirtualMachineImages --name VirtualMac
 
 ## <a name="create-an-azure-user-assigned-managed-identity"></a>建立 Azure 使用者指派的受控識別
 
-Azure 映射產生器會要求您建立[azure 使用者指派的受控識別](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md)。 Azure 映射產生器會使用使用者指派的受控識別來讀取影像、寫入映射，以及存取 Azure 儲存體帳戶。 您會授與身分識別許可權，以便在您的訂用帳戶中執行特定動作。
+Azure Image Builder 需要您建立 [azure 使用者指派的受控識別](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md)。 Azure 映射產生器會使用使用者指派的受控識別來讀取映射、寫入映射，以及存取 Azure 儲存體帳戶。 您會授與身分識別許可權，以在您的訂用帳戶中執行特定動作。
 
 > [!NOTE]
-> 先前，Azure 映射產生器會使用 Azure 映射產生器服務主體名稱 (SPN) ，將許可權授與映射資源群組。 使用 SPN 將會被取代。 請改用使用者指派的受控識別。
+> 先前，Azure 映射產生器使用 Azure 映射產生器服務主體名稱 (SPN) 來授與映射資源群組的許可權。 使用 SPN 將會被取代。 請改用使用者指派的受控識別。
 
 下列範例說明如何建立 Azure 使用者指派的受控識別。 取代預留位置設定以設定您的變數。
 
@@ -54,13 +54,13 @@ az identity create \
     --name $identityName
 ```
 
-如需有關 Azure 使用者指派身分識別的詳細資訊，請參閱[azure 使用者指派的受控識別](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md)檔，以瞭解如何建立身分識別。
+如需有關 Azure 使用者指派之身分識別的詳細資訊，請參閱 [azure 使用者指派的受控識別](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md) 檔，以瞭解如何建立身分識別。
 
 ## <a name="allow-image-builder-to-distribute-images"></a>允許影像產生器發佈影像
 
-若要讓 Azure 映射產生器將映射發佈 (受控映射/共用映射資源庫) ，必須允許 Azure 映射產生器服務將映射插入這些資源群組。 若要授與所需的許可權，您必須建立使用者指派的受控識別，並將該映射建立所在之資源群組的許可權授與它。 Azure 映射產生器沒有許可權，**無法**存取訂用帳戶的其他資源群組中的資源。 您必須採取明確的動作，以允許存取，以避免您的組建失敗。
+若要讓 Azure 映射產生器將映射發佈 (受控映射/共用映射庫) ，必須允許 Azure 映射建立器服務將映射插入這些資源群組。 若要授與所需的許可權，您必須建立使用者指派的受控識別，並授與建立映射之資源群組的許可權。 Azure **Image Builder 沒有存取訂用帳戶** 中其他資源群組中資源的許可權。 您必須採取明確的動作以允許存取，以避免您的組建失敗。
 
-您不需要在資源群組上授與使用者指派的受控識別參與者許可權來散發映射。 不過，使用者指派的受控識別需要 `Actions` 發佈資源群組中的下列 Azure 許可權：
+您不需要在資源群組上授與使用者指派的受控識別參與者許可權來發佈映射。 不過，使用者指派的受控識別需要在 `Actions` 散發資源群組中具有下列 Azure 許可權：
 
 ```Actions
 Microsoft.Compute/images/write
@@ -68,7 +68,7 @@ Microsoft.Compute/images/read
 Microsoft.Compute/images/delete
 ```
 
-如果發佈到共用映射資源庫，您也需要：
+如果要發佈至共用映射庫，您也需要：
 
 ```Actions
 Microsoft.Compute/galleries/read
@@ -79,7 +79,7 @@ Microsoft.Compute/galleries/images/versions/write
 
 ## <a name="permission-to-customize-existing-images"></a>自訂現有映射的許可權
 
-若要讓 Azure 映射產生器從來源自訂映射建立映射 (受控映射/共用映射資源庫) ，必須允許 Azure 映射產生器服務將映射讀入這些資源群組中。 若要授與所需的許可權，您必須建立使用者指派的受控識別，並將該映射所在之資源群組的許可權授與它。
+若要讓 Azure 映射產生器從來源自訂映射建立映射 (受控映射/共用映射庫) ，必須允許 Azure 映射建立器服務將映射讀入這些資源群組。 若要授與所需的許可權，您必須建立使用者指派的受控識別，並授與該映射所在資源群組的許可權。
 
 從現有的自訂映射建立：
 
@@ -95,11 +95,11 @@ Microsoft.Compute/galleries/images/read
 Microsoft.Compute/galleries/images/versions/read
 ```
 
-## <a name="permission-to-customize-images-on-your-vnets"></a>在您的 Vnet 上自訂影像的許可權
+## <a name="permission-to-customize-images-on-your-vnets"></a>在 Vnet 上自訂影像的許可權
 
-Azure 映射產生器具有在您的訂用帳戶中部署和使用現有 VNET 的功能，因此可讓您自訂對已連線資源的存取權。
+Azure 映射產生器能夠在您的訂用帳戶中部署和使用現有的 VNET，進而允許自訂連線資源的存取權。
 
-您不需要在資源群組上授與使用者指派的受控識別參與者許可權，即可將 VM 部署至現有的 VNET。 不過，使用者指派的受控識別需要 `Actions` VNET 資源群組上的下列 Azure 許可權：
+您不需要在資源群組上授與使用者指派的受控識別參與者許可權，即可將 VM 部署至現有的 VNET。 不過，使用者指派的受控識別需要 `Actions` VNET 資源群組的下列 Azure 許可權：
 
 ```Actions
 Microsoft.Network/virtualNetworks/read
@@ -108,15 +108,15 @@ Microsoft.Network/virtualNetworks/subnets/join/action
 
 ## <a name="create-an-azure-role-definition"></a>建立 Azure 角色定義
 
-下列範例會從上一節所述的動作建立 Azure 角色定義。 這些範例適用于資源群組層級。 評估和測試範例是否已足夠細微地滿足您的需求。 針對您的案例，您可能需要將它精簡到特定的共用映射資源庫。
+下列範例會從上一節所述的動作建立 Azure 角色定義。 這些範例會套用至資源群組層級。 評估並測試範例是否夠細微，以滿足您的需求。 針對您的案例，您可能需要將它精簡至特定的共用映射庫。
 
-影像動作允許讀取和寫入。 決定適合您環境的內容。 例如，建立角色以允許 Azure 映射產生器從資源群組中讀取影像*範例-rg-1* ，並將映射寫入資源群組*範例-rg 2*。
+影像動作允許讀取和寫入。 決定適合您環境的功能。 例如，建立角色以允許 Azure 映射產生器讀取資源群組 *範例-rg-1* 中的映射，並將影像寫入資源群組 *範例-rg-2*。
 
 ### <a name="custom-image-azure-role-example"></a>自訂映射 Azure 角色範例
 
-下列範例會建立 Azure 角色以使用和散發來源自訂映射。 接著，您會將自訂角色授與 Azure 映射產生器的使用者指派受控識別。
+下列範例會建立 Azure 角色，以使用並散發來源自訂映射。 然後，您會將自訂角色授與給 Azure 映射產生器的使用者指派受控識別。
 
-若要簡化範例中的值取代，請先設定下列變數。 取代預留位置設定以設定您的變數。
+為了簡化範例中的值取代，請先設定下列變數。 取代預留位置設定以設定您的變數。
 
 | 設定 | 描述 |
 |---------|-------------|
@@ -156,9 +156,9 @@ az role assignment create \
 
 ### <a name="existing-vnet-azure-role-example"></a>現有的 VNET Azure 角色範例
 
-下列範例會建立 Azure 角色以使用和散發現有的 VNET 映射。 接著，您會將自訂角色授與 Azure 映射產生器的使用者指派受控識別。
+下列範例會建立 Azure 角色，以使用並散發現有的 VNET 映射。 然後，您會將自訂角色授與給 Azure 映射產生器的使用者指派受控識別。
 
-若要簡化範例中的值取代，請先設定下列變數。 取代預留位置設定以設定您的變數。
+為了簡化範例中的值取代，請先設定下列變數。 取代預留位置設定以設定您的變數。
 
 | 設定 | 描述 |
 |---------|-------------|
@@ -197,10 +197,10 @@ az role assignment create \
 
 ## <a name="using-managed-identity-for-azure-storage-access"></a>使用受控識別進行 Azure 儲存體存取
 
-如果您想要完美地驗證 Azure 儲存體並使用私人容器，azure 映射產生器 Azure 需要使用者指派的受控識別。 Azure 映射產生器會使用身分識別來驗證 Azure 儲存體。
+如果您想要完美地向 Azure 儲存體驗證並使用私人容器，Azure 映射產生器 Azure 需要使用者指派的受控識別。 Azure 映射產生器會使用身分識別來向 Azure 儲存體進行驗證。
 
 > [!NOTE]
-> Azure 映射產生器只會在映射範本提交時間使用身分識別。 組建 VM 在映射組建期間無法存取身分識別。
+> Azure 映射產生器只會在影像範本提交時間使用身分識別。 組建 VM 無法在映射組建期間存取身分識別。
 
 使用 Azure CLI 建立使用者指派的受控識別。
 
@@ -211,7 +211,7 @@ az role assignment create \
     --scope /subscriptions/<Subscription ID>/resourceGroups/<Resource group>/providers/Microsoft.Storage/storageAccounts/$scriptStorageAcc/blobServices/default/containers/<Storage account container>
 ```
 
-在映射產生器範本中，您必須提供使用者指派的受控識別。
+在 [映射產生器] 範本中，您必須提供使用者指派的受控識別。
 
 ```json
     "type": "Microsoft.VirtualMachineImages/imageTemplates",
@@ -234,8 +234,8 @@ az role assignment create \
 | \<Storage account container\> | 儲存體帳戶容器名稱 |
 | \<Subscription ID\> | Azure 訂用帳戶 |
 
-如需使用使用者指派的受控識別的詳細資訊，請參閱[建立自訂映射，將會使用 Azure 使用者指派的受控識別來完美地 access 檔案 Azure 儲存體](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage#create-a-custom-image-that-will-use-an-azure-user-assigned-managed-identity-to-seemlessly-access-files-azure-storage)。 本快速入門會逐步解說如何建立和設定使用者指派的受控識別，以存取儲存體帳戶。
+如需使用使用者指派的受控識別的詳細資訊，請參閱 [建立將使用 Azure User-Assigned 受控識別來完美地存取檔案 Azure 儲存體的自訂映射](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage#create-a-custom-image-that-will-use-an-azure-user-assigned-managed-identity-to-seemlessly-access-files-azure-storage)。 本快速入門會逐步解說如何建立和設定使用者指派的受控識別，以存取儲存體帳戶。
 
 ## <a name="next-steps"></a>後續步驟
 
-如需詳細資訊，請參閱[Azure 映射](image-builder-overview.md)產生器總覽。
+如需詳細資訊，請參閱 [Azure 映射](image-builder-overview.md)建立器總覽。

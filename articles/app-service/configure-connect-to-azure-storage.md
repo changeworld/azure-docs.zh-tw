@@ -7,10 +7,10 @@ ms.date: 7/01/2019
 ms.author: msangapu
 zone_pivot_groups: app-service-containers-windows-linux
 ms.openlocfilehash: c240399f1368862a969561409371e075a010e8f2
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89435604"
 ---
 # <a name="access-azure-storage-as-a-network-share-from-a-container-in-app-service"></a>從 App Service 中的容器存取 Azure 儲存體為網路共用
@@ -114,7 +114,7 @@ az webapp config storage-account add --resource-group <group-name> --name <app-n
 az webapp config storage-account list --resource-group <resource-group> --name <app-name>
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 ::: zone pivot="container-windows"
 

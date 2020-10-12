@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 6/15/2019
 ms.author: rohink
 ms.openlocfilehash: 76b19cfb3c00a26d81eab81f67d8e156a520f377
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77121729"
 ---
 # <a name="azure-dns-faq"></a>Azure DNS 常見問題集
@@ -68,25 +68,25 @@ Azure DNS 僅支援裝載靜態 DNS 網域，其中所指定 DNS 記錄的每個
 
 ### <a name="does-azure-dns-support-domain-name-registration"></a>Azure DNS 是否支援網域名稱註冊？
 
-否。 Azure DNS 目前不支援購買網域名稱的選項。 若要購買網域，您必須使用第三方網域名稱註冊機構。 註冊機構通常會收取些微年費。 然後，您就可以在 Azure DNS 裝載這些網域來管理 DNS 記錄。 如需詳細資訊，請參閱[將網域委派給 Azure DNS](dns-domain-delegation.md)。
+不可以。 Azure DNS 目前不支援購買網域名稱的選項。 若要購買網域，您必須使用第三方網域名稱註冊機構。 註冊機構通常會收取些微年費。 然後，您就可以在 Azure DNS 裝載這些網域來管理 DNS 記錄。 如需詳細資訊，請參閱[將網域委派給 Azure DNS](dns-domain-delegation.md)。
 
 系統會在 Azure 待辦項目中，追蹤用來購買網域名稱的功能。 請使用意見反應網站來[註冊此功能的支援](https://feedback.azure.com/forums/217313-networking/suggestions/4996615-azure-should-be-its-own-domain-registrar) \(英文\)。
 
 ### <a name="does-azure-dns-support-dnssec"></a>Azure DNS 是否支援 DNSSEC？
 
-否。 Azure DNS 目前不支援網域名稱系統安全性延伸模組 (DNSSEC)。
+不可以。 Azure DNS 目前不支援網域名稱系統安全性延伸模組 (DNSSEC)。
 
 系統會在 Azure DNS 待辦項目中追蹤 DNSSEC 功能。 請使用意見反應網站來[註冊此功能的支援](https://feedback.azure.com/forums/217313-networking/suggestions/13284393-azure-dns-needs-dnssec-support) \(英文\)。
 
 ### <a name="does-azure-dns-support-zone-transfers-axfrixfr"></a>Azure DNS 是否支援區域傳輸 (AXFR/IXFR)？
 
-否。 Azure DNS 目前不支援區域傳輸。 您可以[使用 Azure CLI 將 DNS 區域匯入到 Azure DNS 中](dns-import-export.md)。 透過 [Azure DNS 管理入口網站](dns-operations-recordsets-portal.md)、[REST API](https://docs.microsoft.com/powershell/module/az.dns)、[SDK](dns-sdk.md)、[PowerShell Cmdlet](dns-operations-recordsets.md) 或 [CLI 工具](dns-operations-recordsets-cli.md)，即可管理 DNS 記錄。
+不可以。 Azure DNS 目前不支援區域傳輸。 您可以[使用 Azure CLI 將 DNS 區域匯入到 Azure DNS 中](dns-import-export.md)。 透過 [Azure DNS 管理入口網站](dns-operations-recordsets-portal.md)、[REST API](https://docs.microsoft.com/powershell/module/az.dns)、[SDK](dns-sdk.md)、[PowerShell Cmdlet](dns-operations-recordsets.md) 或 [CLI 工具](dns-operations-recordsets-cli.md)，即可管理 DNS 記錄。
 
 系統會在 Azure DNS 待辦項目中追蹤區域傳輸功能。 請使用意見反應網站來[註冊此功能的支援](https://feedback.azure.com/forums/217313-networking/suggestions/12925503-extend-azure-dns-to-support-zone-transfers-so-it-c) \(英文\)。
 
 ### <a name="does-azure-dns-support-url-redirects"></a>Azure DNS 是否支援 URL 重新導向？
 
-否。 URL 重新導向服務不是 DNS 服務。 它們是在 HTTP 層級運作，而不是在 DNS 層級。 有些 DNS 提供者會將 URL 重新導向服務結合成其整體供應項目的一部分。 但 Azure DNS 目前不支援此服務。
+不可以。 URL 重新導向服務不是 DNS 服務。 它們是在 HTTP 層級運作，而不是在 DNS 層級。 有些 DNS 提供者會將 URL 重新導向服務結合成其整體供應項目的一部分。 但 Azure DNS 目前不支援此服務。
 
 系統會在 Azure DNS 待辦項目中追蹤 URL 重新導向功能。 請使用意見反應網站來[註冊此功能的支援](https://feedback.azure.com/forums/217313-networking/suggestions/10109736-provide-a-301-permanent-redirect-service-for-ape) \(英文\)。
 
@@ -118,7 +118,7 @@ Azure DNS 區域中的下列記錄類型支援別名記錄集：
 
 - **從 DNS A/AAAA 記錄集指向公用 IP 資源**。 您可以建立 A/AAAA 記錄集，並使其成為別名記錄集來指向公用 IP 資源。
 - **從 DNS A/AAAA/CNAME 記錄集指向流量管理員設定檔。** 您可以從 DNS CNAME 記錄集指向流量管理員設定檔的 CNAME。 例如，contoso.trafficmanager.net。 現在，您也可以從 DNS 區域中的 A 或 AAAA 記錄集，指向具有外部端點的流量管理員設定檔。
-- **指向 Azure 內容傳遞網路（CDN）端點**。 當您使用 Azure 儲存體和 Azure CDN 建立靜態網站時，這會很有用。
+- **指向 (CDN) 端點的 Azure 內容傳遞網路**。 當您使用 Azure 儲存體和 Azure CDN 建立靜態網站時，這會很有用。
 - **指向相同區域中的另一個 DNS 記錄集**。 別名記錄可以參考其他相同類型的記錄集。 例如，DNS CNAME 記錄集可以是相同類型的另一個 CNAME 記錄集所用的別名。 如果您想要讓某些記錄集成為別名，某些成為非別名，便可使用這種安排。
 
 ### <a name="can-i-create-and-update-alias-records-from-the-azure-portal"></a>我是否可從 Azure 入口網站建立及更新別名記錄？

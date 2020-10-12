@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.openlocfilehash: 80644ed2d655544fa176a7be92aec3c01aa3bf14
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75966079"
 ---
 # <a name="tutorial-build-your-first-pipeline-to-transform-data-using-hadoop-cluster"></a>教學課程︰使用 Hadoop 叢集建置您的第一個管線來轉換資料
@@ -28,25 +28,25 @@ ms.locfileid: "75966079"
 
 
 > [!NOTE]
-> 本文適用於 Data Factory 第 1 版。 如果您使用目前版本的 Data Factory 服務，請參閱[快速入門：使用 Azure Data Factory 建立資料處理站](../quickstart-create-data-factory-dot-net.md)。
+> 本文適用於 Data Factory 第 1 版。 如果您使用目前版本的 Data Factory 服務，請參閱[快速入門：使用 Azure Data Factory 來建立資料處理站](../quickstart-create-data-factory-dot-net.md)。
 
 在本教學課程中，您會使用資料管線建立您的第一個 Azure Data Factory。 管線藉由在 Azure HDInsight (Hadoop) 叢集上執行 Hive 指令碼，來將輸入資料轉換成輸出資料。  
 
-本文提供教學課程的概觀與必要條件。 完成必要條件之後，您可以使用下列其中一個工具/Sdk 來執行教學課程： Visual Studio、PowerShell、Resource Manager 範本 REST API。 選取文章開頭下拉式清單中的選項，或是選取文章結尾的連結來進行教學課程。    
+本文提供教學課程的概觀與必要條件。 完成必要條件之後，您可以使用下列其中一個工具/Sdk 來進行教學課程： Visual Studio、PowerShell Resource Manager 範本 REST API。 選取文章開頭下拉式清單中的選項，或是選取文章結尾的連結來進行教學課程。    
 
 ## <a name="tutorial-overview"></a>教學課程概觀
 在本教學課程中，您會執行下列步驟：
 
-1. 建立**資料**處理站。 資料處理站可以包含一或多個資料管線，可移動和轉換資料。
+1. 建立 **資料**處理站。 資料處理站可以包含一或多個資料管線，可移動和轉換資料。
 
     在本教學課程中，您會在資料處理站中建立一個管線。
-2. 建立**管線**。 管線可以有一或多個活動 (範例︰複製活動、HDInsight Hive 活動)。 本範例使用在 HDInsight Hadoop 叢集上執行 Hive 指令碼的 HDInsight Hive 活動。 指令碼首先會建立一個參照儲存在 Azure Blob 儲存體中的原始 Web 記錄資料的資料表，再依年份或月份分割未經處理資料。
+2. 建立 **管線**。 管線可以有一或多個活動 (範例︰複製活動、HDInsight Hive 活動)。 本範例使用在 HDInsight Hadoop 叢集上執行 Hive 指令碼的 HDInsight Hive 活動。 指令碼首先會建立一個參照儲存在 Azure Blob 儲存體中的原始 Web 記錄資料的資料表，再依年份或月份分割未經處理資料。
 
     在本教學課程中，管線使用 Hive 活動來轉換資料，方法是在 Azure HDInsight Hadoop 叢集上執行 Hive 查詢。
-3. 建立**連結服務**。 您會建立一個連結的服務，以將資料存放區或計算服務連結到 Data Factory。 像是 Azure 儲存體的資料存放區會保留管線中的活動輸入/輸出資料。 計算服務 (例如 HDInsight Hadoop 叢集) 會處理/轉換資料。
+3. 建立 **連結的服務**。 您會建立一個連結的服務，以將資料存放區或計算服務連結到 Data Factory。 像是 Azure 儲存體的資料存放區會保留管線中的活動輸入/輸出資料。 計算服務 (例如 HDInsight Hadoop 叢集) 會處理/轉換資料。
 
     在本教學課程中，您會建立兩個「連結服務」：**Azure 儲存體** 和 **Azure HDInsight**。 Azure 儲存體已連結的服務會連結提供資料處理站輸入/輸出資料的 Azure 儲存體帳戶。 Azure HDInsight 已連結的服務會連將資料轉換到資料處理站的 Azure HDInsight 叢集。
-3. 建立輸入和輸出**資料集**。 輸入資料集表示管線中的活動輸入，而輸出資料集表示活動的輸出。
+3. 建立輸入和輸出 **資料集**。 輸入資料集表示管線中的活動輸入，而輸出資料集表示活動的輸出。
 
     在本教學課程中，輸入和輸出資料集是指定 Azure Blob 儲存體中輸入和輸出資料的位置。 Azure 儲存體連結服務會指定要使用的 Azure 儲存體帳戶。 輸入資料集會指定輸入資料所在的位置，而輸出資料集則指定放置輸出資料的位置。
 

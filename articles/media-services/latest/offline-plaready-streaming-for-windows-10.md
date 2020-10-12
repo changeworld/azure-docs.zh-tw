@@ -16,10 +16,10 @@ ms.date: 08/31/2020
 ms.author: willzhan
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 19c930915de20d7f3a8938570e074458b32a8efb
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90975674"
 ---
 # <a name="offline-playready-streaming-for-windows-10-with-media-services-v3"></a>使用媒體服務 v3 進行 Windows 10 的離線 PlayReady 串流
@@ -125,6 +125,6 @@ private async void LoadUri_Click(object sender, RoutedEventArgs e)
 * PlayReady 授權傳遞服務可以從 Azure 媒體服務或其他位置提供；
 * 所準備的 Smooth Streaming 內容仍可用來透過 DASH 進行線上串流，或使用 PlayReady 以 DRM 內容的方式進行串流。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 [設計具有存取控制的多重 DRM 內容保護系統](design-multi-drm-system-with-access-control.md)

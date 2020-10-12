@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 06/29/2017
 ms.author: pepogors
 ms.openlocfilehash: 89a7a545dd334f892ee27b97995de40d7b6416dc
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86245920"
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-service-remoting"></a>Reliable Service Remoting 的診斷和效能監視
@@ -36,7 +36,7 @@ Windows 作業系統中預設可用的 [Windows 效能監視器](/previous-versi
 
 `ServiceFabricPartitionID_ServiceReplicaOrInstanceId_ServiceRuntimeInternalID`
 
-*ServiceFabricPartitionID*是與效能計數器實例相關聯之 Service Fabric 分割區識別碼的字串表示。 資料分割識別碼是 GUID，其字串標記法是透過 [`Guid.ToString`](/dotnet/api/system.guid.tostring?view=netcore-3.1#System_Guid_ToString_System_String_) 具有格式規範 "D" 的方法所產生。
+*ServiceFabricPartitionID* 是與效能計數器實例相關聯 Service Fabric 資料分割識別碼的字串表示。 資料分割識別碼是 GUID，其字串表示是透過 [`Guid.ToString`](/dotnet/api/system.guid.tostring?view=netcore-3.1#System_Guid_ToString_System_String_) 具有格式規範 "D" 的方法產生。
 
 *ServiceReplicaOrInstanceId* 是與效能計數器執行個體相關聯之 Service Fabric 複本/執行個體識別碼的字串表示法。
 
@@ -57,7 +57,7 @@ Windows 作業系統中預設可用的 [Windows 效能監視器](/previous-versi
 
 *ServiceRuntimeMethodId* 是 Fabric Service 執行階段所產生 32 位元整數的字串表示法，供內部使用。 這包含在效能計數器執行個體名稱中，以確保其唯一性，並避免與其他效能計數器執行個體名稱衝突。 使用者不應該嘗試解譯效能計數器執行個體名稱的這個部分。
 
-*ServiceFabricPartitionID*是與效能計數器實例相關聯之 Service Fabric 分割區識別碼的字串表示。 資料分割識別碼是 GUID，其字串標記法是透過 [`Guid.ToString`](/dotnet/api/system.guid.tostring?view=netcore-3.1#System_Guid_ToString_System_String_) 具有格式規範 "D" 的方法所產生。
+*ServiceFabricPartitionID* 是與效能計數器實例相關聯 Service Fabric 資料分割識別碼的字串表示。 資料分割識別碼是 GUID，其字串表示是透過 [`Guid.ToString`](/dotnet/api/system.guid.tostring?view=netcore-3.1#System_Guid_ToString_System_String_) 具有格式規範 "D" 的方法產生。
 
 *ServiceReplicaOrInstanceId* 是與效能計數器執行個體相關聯之 Service Fabric 複本/執行個體識別碼的字串表示法。
 

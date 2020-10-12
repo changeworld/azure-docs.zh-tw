@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 89ad3dfffa82f062ef8bc808da19440adfa32f05
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86050424"
 ---
 #### <a name="to-download-hotfixes"></a>下載 Hofix
 
 請執行下列步驟，從 Microsoft Update Catalog 下載軟體更新。
 
-1. 啟動 Internet Explorer 並流覽至 [http://catalog.update.microsoft.com](https://catalog.update.microsoft.com) 。
+1. 啟動 Internet Explorer，然後流覽至 [http://catalog.update.microsoft.com](https://catalog.update.microsoft.com) 。
 2. 如果這是您第一次在此電腦上使用 Microsoft Update Catalog，請在系統提示您安裝 Microsoft Update Catalog 附加元件時，按一下 [安裝] **** 。
 
     ![安裝目錄](./media/storsimple-install-update2-hotfix/HCS_InstallCatalog-include.png)
@@ -123,7 +123,7 @@ ms.locfileid: "86050424"
 
 若要安裝磁碟韌體更新，請依照下面的指示執行。
 
-1. 使裝置處於維護模式。 **請注意，連線至處於維護模式的裝置時，不應使用 Windows PowerShell 遠端功能。透過裝置序列主控台連線時，請改為在裝置控制器上執行此 Cmdlet。** 輸入：
+1. 使裝置處於維護模式。 **請注意，連線至處於維護模式的裝置時，您不應該使用 Windows PowerShell 遠端處理。當透過裝置序列主控台連線時，請改在裝置控制器上執行此 Cmdlet。** 輸入：
    
     `Enter-HcsMaintenanceMode`
    

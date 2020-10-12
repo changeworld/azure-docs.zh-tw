@@ -12,31 +12,31 @@ ms.date: 05/04/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 90b107b2335bd5f08eeb0b9aa66c7a9db9b74eb0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85388556"
 ---
 # <a name="set-up-sign-in-with-an-amazon-account-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自訂原則來設定以 Amazon 帳戶進行登入
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-本文說明如何使用 Azure Active Directory B2C （Azure AD B2C）中的[自訂原則](custom-policy-overview.md)，讓 Amazon 帳戶的使用者登入。
+本文說明如何使用 Azure Active Directory B2C (Azure AD B2C) 中的 [自訂原則](custom-policy-overview.md) ，讓使用者能夠從 Amazon 帳戶登入。
 
 ## <a name="prerequisites"></a>Prerequisites
 
 - 完成[開始使用自訂原則](custom-policy-get-started.md)中的步驟。
-- 如果您還沒有 Amazon 帳戶，請在建立一個 [https://www.amazon.com/](https://www.amazon.com/) 。
+- 如果您還沒有 Amazon 帳戶，請在上建立一個 [https://www.amazon.com/](https://www.amazon.com/) 。
 
 ## <a name="create-an-app-in-the-amazon-developer-console"></a>在 Amazon 開發人員主控台中建立應用程式
 
-若要在 Azure Active Directory B2C （Azure AD B2C）中使用 Amazon 帳戶作為同盟身分識別提供者，您必須在[Amazon 開發人員服務和技術](https://developer.amazon.com)中建立應用程式。 如果您還沒有 Amazon 帳戶，可以在註冊 [https://www.amazon.com/](https://www.amazon.com/) 。
+若要在 Azure Active Directory B2C (Azure AD B2C) 中使用 Amazon 帳戶作為同盟身分識別提供者，您需要在 [Amazon 開發人員服務和技術](https://developer.amazon.com)中建立應用程式。 如果您還沒有 Amazon 帳戶，您可以在中註冊 [https://www.amazon.com/](https://www.amazon.com/) 。
 
 > [!NOTE]  
-> 在下面的**步驟 8**中使用下列 url， `your-tenant-name` 並將取代為您的租使用者名稱。 輸入您的租使用者名稱時，請使用所有小寫字母，即使租使用者在 Azure AD B2C 中是以大寫字母定義。
-> - 針對 [**允許的來源**]，輸入`https://your-tenant-name.b2clogin.com` 
-> - 針對**允許**的傳回 url，輸入`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`
+> 在以下 **步驟 8** 中使用下列 url， `your-tenant-name` 並以您的租使用者名稱取代。 輸入您的租使用者名稱時，即使租使用者是在 Azure AD B2C 中以大寫字母定義，也請使用所有小寫字母。
+> - 針對 [ **允許的來源**]，輸入 `https://your-tenant-name.b2clogin.com` 
+> - 針對 **允許**的傳回 url，輸入 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`
 
 [!INCLUDE [identity-provider-amazon-idp-register.md](../../includes/identity-provider-amazon-idp-register.md)]
 

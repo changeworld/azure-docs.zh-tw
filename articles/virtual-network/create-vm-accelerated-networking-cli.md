@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure CLI 建立具有加速網路的 Azure VM
+title: 使用 Azure CLI 建立具有加速網路功能的 Azure VM
 description: 了解如何建立已啟用加速網路的 Linux 虛擬機器。
 services: virtual-network
 documentationcenter: na
@@ -17,13 +17,13 @@ ms.date: 01/10/2019
 ms.author: gsilva
 ms.custom: ''
 ms.openlocfilehash: 1dc35b596d73f713aea99ea14ddb0ff8cbc8d203
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84688615"
 ---
-# <a name="create-a-linux-virtual-machine-with-accelerated-networking-using-azure-cli"></a>使用 Azure CLI 建立具有加速網路的 Linux 虛擬機器
+# <a name="create-a-linux-virtual-machine-with-accelerated-networking-using-azure-cli"></a>使用 Azure CLI 建立具有加速網路功能的 Linux 虛擬機器
 
 在本教學課程中，您將了解如何使用加速網路建立 Linux 虛擬機器 (VM)。 若要建立使用加速網路的 Windows VM，請參閱[建立使用加速網路的 Windows VM](create-vm-accelerated-networking-powershell.md)。 加速網路可以對 VM 啟用 Single Root I/O Virtualization (SR-IOV)，大幅提升其網路效能。 這個高效能路徑會略過資料路徑的主機，進而減少延遲、抖動和 CPU 使用率，供支援的 VM 類型中最嚴苛的網路工作負載使用。 下圖顯示兩部 VM 之間的通訊，一部具備加速網路而另一步沒有︰
 
@@ -49,8 +49,8 @@ ms.locfileid: "84688615"
 * **CentOS 7.4 或更新版本**
 * **CoreOS Linux**
 * **具有反向移植核心的 Debian "Stretch"**
-* **使用 Red Hat 相容核心（RHCK） Oracle Linux 7.4 和更新版本**
-* **使用 UEK 第5版 Oracle Linux 7.5 和更新版本**
+* **具有 Red Hat 相容核心的 Oracle Linux 7.4 和更新版本 (RHCK) **
+* **UEK 第5版的 Oracle Linux 7.5 和更新版本**
 * **FreeBSD 10.4、11.1 & 12。0**
 
 ## <a name="limitations-and-constraints"></a>限制和條件約束
@@ -63,7 +63,7 @@ ms.locfileid: "84688615"
 如需 VM 執行個體的詳細資訊，請參閱 [Linux VM 大小](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 
 ### <a name="custom-images"></a>自訂映像
-如果您使用自訂映射，而且您的映射支援加速網路，請確定有必要的驅動程式可搭配 Azure 上的 Mellanox ConnectX-3 和 ConnectX-4 Lx Nic 使用。
+如果您使用自訂映射，而且您的映射支援加速網路，請務必具有必要的驅動程式，才能在 Azure 上搭配 Mellanox ConnectX-3 和 ConnectX-4 Lx Nic 使用。
 
 ### <a name="regions"></a>區域
 適用於所有公用 Azure 區域和 Azure 政府雲端。
@@ -78,11 +78,11 @@ removed per issue https://github.com/MicrosoftDocs/azure-docs/issues/9772 -->
 
 ## <a name="create-a-linux-vm-with-azure-accelerated-networking"></a>建立使用 Azure 加速網路的 Linux VM
 ## <a name="portal-creation"></a>建立入口網站
-雖然本文提供使用 Azure CLI 來建立具有加速網路之虛擬機器的步驟，但您也可以[使用 Azure 入口網站來建立具有加速網路的虛擬機器](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 在入口網站中建立虛擬機器時，請在 [**建立虛擬機器**] 分頁中，選擇 [**網路**] 索引標籤。 在此索引標籤中，有**加速網路**的選項。  如果您已選擇[支援的作業系統](#supported-operating-systems)和[VM 大小](#supported-vm-instances)，此選項將會自動填入 [開啟]。  如果不是，它會在加速網路的 [關閉] 選項中填入，並提供使用者無法啟用的原因。   
+雖然本文提供使用 Azure CLI 來建立具有加速網路之虛擬機器的步驟，但您也可以[使用 Azure 入口網站來建立具有加速網路的虛擬機器](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 在入口網站中建立虛擬機器時，在 [ **建立虛擬機器** ] 分頁中，選擇 [ **網路** ] 索引標籤。 在此索引標籤中，有 **加速網路**的選項。  如果您已選擇 [支援的作業系統](#supported-operating-systems) 和 [VM 大小](#supported-vm-instances)，此選項會自動填入「開啟」。  如果沒有，則會填入加速網路的 [關閉] 選項，並讓使用者有原因無法啟用。   
 
-* *注意：* 只有支援的作業系統可以透過入口網站啟用。  如果您使用自訂映射，而且您的映射支援加速網路，請使用 CLI 或 PowerShell 來建立 VM。 
+* *注意：* 只有支援的作業系統可透過入口網站啟用。  如果您使用自訂映射，而且您的映射支援加速網路，請使用 CLI 或 PowerShell 建立您的 VM。 
 
-建立虛擬機器之後，您可以遵循[確認已啟用加速網路](#confirm-that-accelerated-networking-is-enabled)中的指示，確認已啟用加速網路。
+建立虛擬機器之後，您可以遵循 [確認已啟用加速網路](#confirm-that-accelerated-networking-is-enabled)的指示，確認已啟用加速網路。
 
 ## <a name="cli-creation"></a>建立 CLI
 ### <a name="create-a-virtual-network"></a>建立虛擬網路
@@ -229,8 +229,8 @@ vf_tx_dropped: 0
 現在已啟用您 VM 的加速網路。
 
 ## <a name="handle-dynamic-binding-and-revocation-of-virtual-function"></a>處理虛擬函式的動態繫結和撤銷 
-應用程式必須在 VM 中公開的綜合 NIC 上執行。 如果應用程式直接透過 VF NIC 執行，則不會收到**所有**目的地為 VM 的封包，因為某些封包會顯示在綜合介面上。
-如果您透過綜合 NIC 執行應用程式，它會保證應用程式會接收**所有**目的地的封包。 它也可確保應用程式繼續執行，即使在服務主機時已撤銷 VF 也一樣。 針對所有利用**加速網路**的應用程式，系結至綜合 NIC 的應用程式是**強制性**的需求。
+應用程式必須透過在 VM 中公開的綜合 NIC 來執行。 如果應用程式直接透過 VF NIC 執行，則它不會接收目的地為 VM 的 **所有** 封包，因為某些封包會透過綜合介面顯示。
+如果您透過綜合 NIC 來執行應用程式，它會保證應用程式會接收以該應用程式為目的地的 **所有** 封包。 它也可確保應用程式會繼續執行，即使是在服務主機時撤銷 VF 也一樣。 系結至綜合 NIC 的應用程式是利用**加速網路**的所有應用程式的**必要**需求。
 
 ## <a name="enable-accelerated-networking-on-existing-vms"></a>在現有的 VM 上啟用加速網路
 如果您已建立不含加速網路的 VM，那麼在現有 VM 上啟用此功能是可能的。  VM 必須符合前面也說明過的下列必要條件，才能支援加速網路：

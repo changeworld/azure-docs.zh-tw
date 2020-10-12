@@ -1,15 +1,15 @@
 ---
 title: InfoBox UI 元素
-description: 描述 Azure 入口網站的 InfoBox UI 元素。 用來在部署受控應用程式時加入文字或警告。
+description: 描述 Azure 入口網站的 InfoBox UI 元素。 用來在部署受控應用程式時新增文字或警告。
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: tomfitz
 ms.openlocfilehash: 7580ac0650706d6aee49bbf0e8235e8c5dab33f4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87033340"
 ---
 # <a name="microsoftcommoninfobox-ui-element"></a>Microsoft.Common.InfoBox UI 元素
@@ -47,7 +47,7 @@ ms.locfileid: "87033340"
 * 對於 `icon`，請使用 **無**、**資訊**、**警告**或**錯誤**。
 * `uri` 是選用屬性。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * 如需建立 UI 定義的簡介，請參閱[開始使用 CreateUiDefinition](create-uidefinition-overview.md)。
 * 如需 UI 元素中通用屬性的說明，請參閱 [CreateUiDefinition 元素](create-uidefinition-elements.md)。

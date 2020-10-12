@@ -4,10 +4,10 @@ description: 本文說明適用於容器的 Azure 監視器，其會監視 AKS �
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.openlocfilehash: 215427adc38ebd554ca7ac650ec65a05f5a781e8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91317152"
 ---
 # <a name="azure-monitor-for-containers-overview"></a>適用於容器的 Azure 監視器概觀
@@ -25,7 +25,7 @@ ms.locfileid: "91317152"
 
 監視容器很重要，尤其在您使用多個應用程式大規模執行生產環境叢集時。
 
-適用於容器的 Azure 監視器可藉由透過計量 API 從 Kubernetes 中取得的控制器、節點與容器來收集記憶體與處理器計量，為您提供效能可見度。 此外，也會收集容器記錄。  從 Kubernetes 叢集啟用監視之後，系統會透過適用于 Linux 的 Log Analytics 代理程式容器化版本自動收集計量和記錄。 計量會寫入計量存放區，並將記錄資料寫入與 [Log Analytics](../log-query/log-query-overview.md) 工作區相關聯的記錄存放區。
+適用於容器的 Azure 監視器可藉由透過計量 API 從 Kubernetes 中取得的控制器、節點與容器來收集記憶體與處理器計量，為您提供效能可見度。 容器記錄也會一併收集。  從 Kubernetes 叢集啟用監視之後，系統會透過適用于 Linux 的 Log Analytics 代理程式容器化版本自動收集計量和記錄。 計量會寫入計量存放區，並將記錄資料寫入與 [Log Analytics](../log-query/log-query-overview.md) 工作區相關聯的記錄存放區。
 
 ![容器架構的 Azure 監視器](./media/container-insights-overview/azmon-containers-architecture-01.png)
 

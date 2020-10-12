@@ -1,5 +1,5 @@
 ---
-title: MapReduce 和 SSH 與 Apache Hadoop 的連線-Azure HDInsight
+title: 使用 Apache Hadoop 的 MapReduce 和 SSH 連線-Azure HDInsight
 description: 了解如何使用 SSH，以利用 HDInsight 上的 Apache Hadoop 來執行 MapReduce 作業。
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/10/2020
 ms.openlocfilehash: 2736d0cfe514252e36ba6d7e0d71efe09da15aae
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86076295"
 ---
 # <a name="use-mapreduce-with-apache-hadoop-on-hdinsight-with-ssh"></a>搭配使用 MapReduce 與 HDInsight 上的 Apache Hadoop 和 SSH
@@ -26,7 +26,7 @@ ms.locfileid: "86076295"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-HDInsight 上的 Apache Hadoop 叢集。 請參閱[使用 Azure 入口網站建立 Apache Hadoop](../hdinsight-hadoop-create-linux-clusters-portal.md)叢集。
+HDInsight 上的 Apache Hadoop 叢集。 請參閱[使用 Azure 入口網站建立 Apache Hadoop 叢集](../hdinsight-hadoop-create-linux-clusters-portal.md)。
 
 ## <a name="use-hadoop-commands"></a>使用 Hadoop 命令
 
@@ -85,7 +85,7 @@ HDInsight 上的 Apache Hadoop 叢集。 請參閱[使用 Azure 入口網站建�
     wriggling       1
     ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>接下來的步驟
 
 如您所見，Hadoop 命令提供簡單的方法，在 HDInsight 叢集中執行 MapReduce 工作，然後檢視工作輸出。 如需您可以在 HDInsight 上使用 Hadoop 之其他方式的詳細資訊：
 

@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 01/19/2018
 ms.openlocfilehash: bd30a840327eaf338aec89c12ff8eb5d87c60c56
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87322392"
 ---
 # <a name="alert-management-solution-in-azure-log-analytics"></a>Azure Log Analytics 中的警示管理方案
@@ -18,13 +18,13 @@ ms.locfileid: "87322392"
 ![Alert Management icon](media/alert-management-solution/icon.png)
 
 > [!NOTE]
->  Azure 監視器現在支援[大規模管理警示](https://aka.ms/azure-alerts-overview)的增強功能，包括[System Center Operations Manager、Zabbix 或 Nagios 等監視工具](https://aka.ms/managing-alerts-other-monitoring-services)所產生的功能。
+>  Azure 監視器現在支援 [大規模管理警示](https://aka.ms/azure-alerts-overview)的增強功能，包括由 [System Center Operations Manager、Zabbix 或 Nagios 等監視工具](https://aka.ms/managing-alerts-other-monitoring-services)所產生的警示。
 >  
 
 
 警示管理解決方案可協助您分析 Log Analytics 儲存機制中的所有警示。  這些警示可能來自各種來源，包括[由 Log Analytics 所建立](./alerts-overview.md)或[從 Nagios 或 Zabbix 匯入](../learn/quick-collect-linux-computer.md)的來源。 此解決方案也會從所有[連線的 System Center Operations Manager 管理群組](./om-agents.md)匯入警示。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 此解決方案將會使用 Log Analytics 中類型為**警示**的所有記錄，因此您必須執行收集這些記錄所需的所有設定。
 
 - 針對 Log Analytics 警示，[建立警示規則](./alerts-overview.md)，以直接在儲存機制中建立警示記錄。
@@ -67,7 +67,7 @@ ms.locfileid: "87322392"
 |:--- |:--- |
 | 重大警示 |嚴重性為「重大」的所有警示 (依警示名稱分組)。  按一下警示名稱來執行記錄搜尋，以傳回該警示的所有記錄。 |
 | 警告警示 |嚴重性為「警告」的所有警示 (依警示名稱分組)。  按一下警示名稱來執行記錄搜尋，以傳回該警示的所有記錄。 |
-| 作用中 System Center Operations Manager 警示 |來自 Operations Manager 且狀態不為 [已關閉]** 的所有警示，並依產生此警示的來源分組。 |
+| 主動 System Center Operations Manager 警示 |來自 Operations Manager 且狀態不為 [已關閉]** 的所有警示，並依產生此警示的來源分組。 |
 | 所有作用中警示 |具有任何嚴重性的所有警示 (依警示名稱分組)。 只包含 [已關閉]** 以外任何狀態的 Operations Manager 警示。 |
 
 如果您向右捲動，儀表板會列出數個常見的查詢，按一下即可執行警示資料的[記錄搜尋](../log-query/log-query-overview.md)。
@@ -118,6 +118,6 @@ ms.locfileid: "87322392"
 
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 * 如需有關從 Log Analytics 產生的警示的詳細資料，請深入了解 [Log Analytics 中的警示](./alerts-overview.md) 。
 

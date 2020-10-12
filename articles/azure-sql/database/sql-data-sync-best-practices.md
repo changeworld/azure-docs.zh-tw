@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/20/2018
 ms.openlocfilehash: fd9bc17db3eccc64f35d7295d57dc120364481dd
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91332979"
 ---
 # <a name="best-practices-for-azure-sql-data-sync"></a>Azure SQL 資料同步最佳做法 
@@ -202,7 +202,7 @@ SQL 資料同步提供基本資料庫自動佈建。
 3. 從本機代理程式 2 取消註冊內部部署資料庫，會移除內部部署資料庫之同步群組 A 的追蹤和中繼資料表。
 4. 同步群組 A 作業失敗，並發生下列錯誤：「目前的作業無法完成，因為資料庫未佈建以進行同步處理，或是您沒有同步設定資料表的權限。」
 
-#### <a name="solution"></a>解決方案
+#### <a name="solution"></a>解決方法
 
 若要避免這種情況發生，請勿向一個以上的代理程式註冊資料庫。
 
@@ -224,7 +224,7 @@ SQL 資料同步提供基本資料庫自動佈建。
 
 如果您有要同步處理的複雜架構，如果同步中繼資料資料庫有較低的 SKU，您可能會在架構重新整理期間遇到「作業超時」 (範例：基本) 。 
 
-#### <a name="solution"></a>解決方案
+#### <a name="solution"></a>解決方法
 
 若要緩解此問題，請將您的同步中繼資料資料庫擴大為具有較高的 SKU，例如 S3。 
 

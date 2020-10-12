@@ -13,10 +13,10 @@ ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
 ms.openlocfilehash: ca782e9949f990857db408919cac342d7f712d2b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91272611"
 ---
 # <a name="feature-interoperability-with-sql-server-fci--dnn"></a>與 SQL Server FCI & DNN 的功能互通性
@@ -86,7 +86,7 @@ READ_ONLY_ROUTING_URL = 'TCP://dnnlsnr:1444'
 
 使用命名實例的完整實例名稱，如下圖範例所示： 
 
-:::image type="content" source="media/failover-cluster-instance-dnn-interoperability/alias-named-instance-configuration-manager.png" alt-text="設定命名實例的網路別名時，請使用完整實例名稱。" :::
+:::image type="content" source="media/failover-cluster-instance-dnn-interoperability/alias-named-instance-configuration-manager.png" alt-text="使用 SQL Server 組態管理員將 DNN DNS 名稱設定為網路別名。" :::
 
 ## <a name="database-mirroring"></a>資料庫鏡像
 
@@ -168,7 +168,7 @@ GO
 
 - DNN 是否支援多重子網叢集？
 
-   可以。 叢集會將 DNS 中的 DNN 系結至叢集中所有節點的實體 IP 位址，不論子網為何。 無論子網為何，SQL 用戶端都會嘗試 DNS 名稱的所有 IP 位址。 
+   是。 叢集會將 DNS 中的 DNN 系結至叢集中所有節點的實體 IP 位址，不論子網為何。 無論子網為何，SQL 用戶端都會嘗試 DNS 名稱的所有 IP 位址。 
 
 
 
@@ -177,5 +177,5 @@ GO
 如需詳細資訊，請參閱 
 
 - [Windows 叢集技術](/windows-server/failover-clustering/failover-clustering-overview)   
-- [SQL Server 容錯移轉叢集實例](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)
+- [SQL Server 容錯移轉叢集執行個體](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)
 

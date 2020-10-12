@@ -7,10 +7,10 @@ ms.topic: include
 ms.date: 07/31/2020
 ms.author: gopalv
 ms.openlocfilehash: 4975bb2a8ad384b8abc28f1d1835c2c9e98b8c54
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91315419"
 ---
 輸入指令碼會接收提交給已部署 Web 服務的資料，並將其傳遞給模型。 然後，輸入指令碼會採用模型傳回的回應，並將該回應傳回至用戶端。 *腳本是您的模型特有的*。 它必須瞭解模型預期並傳回的資料。

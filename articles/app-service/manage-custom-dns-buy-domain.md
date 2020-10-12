@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 11/24/2017
 ms.custom: seodec18
 ms.openlocfilehash: 0111da00962f267387e66978952e8a7c9f5d7308
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90970050"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>針對 Azure App Service 購買自訂網域名稱
@@ -61,7 +61,7 @@ App Service 網域是直接在 Azure 中管理的最上層網域。 它們可以
 
 按一下 [套用]。
 
-:::image type="content" source="./media/app-service-web-tutorial-custom-domain/choose-pricing-tier.png" alt-text="[生產] 類別目錄中自訂網域定價層的螢幕擷取畫面，其中已醒目提示 [執行] 索引標籤、B1 方案和 [套用] 按鈕。":::
+:::image type="content" source="./media/app-service-web-tutorial-custom-domain/choose-pricing-tier.png" alt-text="選取 [擴大] (App Service 方案) 的 [應用程式] 頁面左側導覽功能表的螢幕擷取畫面。":::
 
 當您看見下列通知時，表示擴充作業已完成。
 

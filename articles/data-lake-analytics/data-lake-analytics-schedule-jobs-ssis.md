@@ -9,17 +9,17 @@ ms.topic: how-to
 ms.workload: big-data
 ms.date: 07/17/2018
 ms.openlocfilehash: a5c7b9fb6a3431534d743f1ebd0b21f1da9fab7b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91318699"
 ---
 # <a name="schedule-u-sql-jobs-using-sql-server-integration-services-ssis"></a>使用 SQL Server Integration Services (SSIS) 對 U-SQL 作業進行排程
 
 在本文件中，您會了解如何使用 SQL Server Integration Services (SSIS) 來協調及建立 U-SQL 作業。 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 [適用於 Integration Services 的 Azure Feature Pack](https://docs.microsoft.com/sql/integration-services/azure-feature-pack-for-integration-services-ssis?view=sql-server-2017#scenario-managing-data-in-the-cloud) 能提供 [Azure Data Lake Analytics 工作](https://docs.microsoft.com/sql/integration-services/control-flow/azure-data-lake-analytics-task?view=sql-server-2017)和 [Azure Data Lake Analytics 連線管理員](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-data-lake-analytics-connection-manager?view=sql-server-2017)，以協助連線至 Azure Data Lake Analytics 服務。 若要使用此工作，請務必安裝：
 

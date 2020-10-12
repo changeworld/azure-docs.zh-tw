@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 08/12/2019
 ms.openlocfilehash: 7cf4be078a7bee0bedbeac4326acb9ca290cde88
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91331976"
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory-legacy"></a>使用 Azure Data Factory (舊版) 從 MongoDB 複製資料
@@ -39,7 +39,7 @@ ms.locfileid: "91331976"
 - MongoDB **2.4、2.6、3.0、3.2、3.4、3.6 版**。
 - 使用 **Basic** (基本) 或 **Anonymous** (匿名) 驗證來複製資料。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
@@ -55,7 +55,7 @@ Integration Runtime 提供內建的 MongoDB 驅動程式，因此從 MongoDB 複
 
 以下是針對 MongoDB 已連結服務支援的屬性：
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type |類型屬性必須設定為：**MongoDb** |是 |
 | 伺服器 |MongoDB 伺服器的 IP 位址或主機名稱。 |是 |
@@ -98,7 +98,7 @@ Integration Runtime 提供內建的 MongoDB 驅動程式，因此從 MongoDB 複
 
 如需定義資料集的區段和屬性完整清單，請參閱[資料集和連結服務](concepts-datasets-linked-services.md)。 以下是針對 MongoDB 資料集支援的屬性：
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | 資料集的類型屬性必須設定為：**MongoDbCollection** | 是 |
 | collectionName |MongoDB 資料庫中集合的名稱。 |是 |
@@ -129,12 +129,12 @@ Integration Runtime 提供內建的 MongoDB 驅動程式，因此從 MongoDB 複
 
 複製活動的 **source** 區段支援下列屬性：
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | 複製活動來源的類型屬性必須設定為：**MongoDbSource** | 是 |
 | 查詢 |使用自訂的 SQL-92 查詢來讀取資料。 例如：select * from MyTable。 |否 (如果已指定資料集中 "collectionName") |
 
-**範例：**
+**範例︰**
 
 ```json
 "activities":[
@@ -180,15 +180,15 @@ Azure Data Factory 服務會使用集合中 **最新的100檔** ，從 MongoDB �
 | MongoDB 資料類型 | Data Factory 過渡期資料類型 |
 |:--- |:--- |
 | Binary |Byte[] |
-| 布林值 |Boolean |
+| 布林值 |布林值 |
 | Date |Datetime |
 | NumberDouble |Double |
 | NumberInt |Int32 |
 | NumberLong |Int64 |
-| ObjectID |String |
-| String |String |
+| ObjectID |字串 |
+| 字串 |字串 |
 | UUID |Guid |
-| 物件 |以 "_" 作為巢狀分隔符號來重新標準化為壓平合併資料行 |
+| Object |以 "_" 作為巢狀分隔符號來重新標準化為壓平合併資料行 |
 
 > [!NOTE]
 > 若要了解對使用虛擬資料表之陣列的支援，請參閱[對使用虛擬資料表之複雜類型的支援](#support-for-complex-types-using-virtual-tables)一節。
@@ -210,14 +210,14 @@ Azure Data Factory 會使用內建的 ODBC 驅動程式來連線到 MongoDB 資�
 
 | _id | 客戶名稱 | 發票 | 服務等級 | 評等 |
 | --- | --- | --- | --- | --- |
-| 1111 |ABC |[{invoice_id:"123", item:"toaster", price:"456", discount:"0.2"}, {invoice_id:"124", item:"oven", price: "1235", discount: "0.2"}] |銀卡 |[5,6] |
+| 1111 |ABC |[{invoice_id:"123", item:"toaster", price:"456", discount:"0.2"}, {invoice_id:"124", item:"oven", price: "1235", discount: "0.2"}] |銀色 |[5,6] |
 | 2222 |XYZ |[{invoice_id:"135", item:"fridge", price: "12543", discount: "0.0"}] |金卡 |[1,2] |
 
 驅動程式會產生多個代表這個單一資料表的虛擬資料表。 第一個虛擬資料表是名為 "ExampleTable" 的基底資料表，如範例所示。 基底資料表包含原始資料表的所有資料，但來自陣列的資料已省略，並且會在虛擬資料表中展開。
 
 | _id | 客戶名稱 | 服務等級 |
 | --- | --- | --- |
-| 1111 |ABC |銀卡 |
+| 1111 |ABC |銀色 |
 | 2222 |XYZ |金卡 |
 
 下表顯示代表範例中原始陣列的虛擬資料表。 這些資料表包含下列項目：

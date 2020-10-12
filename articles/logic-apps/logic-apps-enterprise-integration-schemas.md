@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 02/06/2019
 ms.openlocfilehash: ade29318fdd1510d03ddd208534258a30b256e98
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75979367"
 ---
 # <a name="validate-xml-with-schemas-in-azure-logic-apps-with-enterprise-integration-pack"></a>在採用 Enterprise Integration Pack 的 Azure Logic Apps 中使用結構描述來驗證 XML
@@ -44,7 +44,7 @@ ms.locfileid: "75979367"
 
     * 對於傳統型版本，[下載並安裝 Azure 儲存體總管](https://www.storageexplorer.com/)。 
     接著，依照[開始使用儲存體總管](../vs-azure-tools-storage-manage-with-storage-explorer.md) [儲存體總管] 連線到您的儲存體帳戶。 
-    若要深入瞭解，請參閱[快速入門：使用 Azure 儲存體總管在物件儲存體中建立 blob](../storage/blobs/storage-quickstart-blobs-storage-explorer.md)。
+    若要深入瞭解，請參閱 [快速入門：使用 Azure 儲存體總管在物件儲存體中建立 blob](../storage/blobs/storage-quickstart-blobs-storage-explorer.md)。
 
 建立並新增結構描述時，不需要邏輯應用程式。 不過，若要使用結構描述，您的邏輯應用程式必須連結到您在其中儲存結構描述的整合帳戶。 了解[如何將邏輯應用程式連結到整合帳戶](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md#link-account)。 如果您尚未擁有邏輯應用程式，請了解[如何建立邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
@@ -52,7 +52,7 @@ ms.locfileid: "75979367"
 
 1. 使用您的 Azure 帳戶認證登入 <a href="https://portal.azure.com" target="_blank">Azure 入口網站</a>。
 
-1. 若要尋找並開啟您的整合帳戶，請開啟主 Azure 功能表，然後選取 [所有服務]****。 在搜尋方塊中，輸入「整合帳戶」。 選取 [**整合帳戶**]。
+1. 若要尋找並開啟您的整合帳戶，請開啟主 Azure 功能表，然後選取 [所有服務]****。 在搜尋方塊中，輸入「整合帳戶」。 選取 **整合帳戶**。
 
    ![尋找整合帳戶](./media/logic-apps-enterprise-integration-schemas/find-integration-account.png)
 
@@ -87,7 +87,7 @@ ms.locfileid: "75979367"
 
 ### <a name="add-schemas-more-than-2-mb"></a>新增超過 2 MB 的結構描述
 
-若要新增較大的結構描述，您可以在您的 Azure 儲存體帳戶中將結構描述上傳到 Azure Blob 容器。 您新增架構的步驟會根據您的 blob 容器是否有公用讀取權限而有所不同。 因此，請先依照下列步驟檢查您的 blob 容器是否有公用讀取權限：[設定 blob 容器的公用存取層級](../vs-azure-tools-storage-explorer-blobs.md#set-the-public-access-level-for-a-blob-container)
+若要新增較大的結構描述，您可以在您的 Azure 儲存體帳戶中將結構描述上傳到 Azure Blob 容器。 您新增架構的步驟會根據您的 blob 容器是否具有公用讀取權限而有所不同。 首先，請遵循下列步驟來檢查您的 blob 容器是否具有公用讀取權限： [設定 blob 容器的公用存取層級](../vs-azure-tools-storage-explorer-blobs.md#set-the-public-access-level-for-a-blob-container)
 
 #### <a name="check-container-access-level"></a>檢查容器存取層級
 
@@ -97,11 +97,11 @@ ms.locfileid: "75979367"
 
 1. 從 Blob 容器的快顯功能表，選取 [設定公用存取層級]****。
 
-   * 如果您的 blob 容器至少具有公用存取權，請選擇 [**取消**]，並遵循此頁面稍後的下列步驟：[上傳至具有公用存取權的容器](#public-access)
+   * 如果您的 blob 容器至少具有公用存取權，請選擇 [ **取消**]，然後在此頁面稍後遵循下列步驟：上 [傳至具有公用存取權的容器](#public-access)
 
-     ![公用存取權](media/logic-apps-enterprise-integration-schemas/azure-blob-container-public-access.png)
+     ![公用存取](media/logic-apps-enterprise-integration-schemas/azure-blob-container-public-access.png)
 
-   * 如果您的 blob 容器沒有公用存取權，請選擇 [**取消**]，並遵循此頁面稍後的下列步驟：[上傳至沒有公用存取權的容器](#public-access)
+   * 如果您的 blob 容器沒有公用存取權，請選擇 [**取消**]，然後在此頁面稍後遵循下列步驟：上[傳至沒有公用存取](#public-access)權的容器
 
      ![沒有公用存取權](media/logic-apps-enterprise-integration-schemas/azure-blob-container-no-public-access.png)
 
@@ -154,7 +154,7 @@ ms.locfileid: "75979367"
 
 1. 在主要 Azure 功能表上，選取 [所有服務]****。 
    在搜尋方塊中，輸入「整合帳戶」。 
-   選取 [**整合帳戶**]。
+   選取 **整合帳戶**。
 
 1. 選取要在其中更新結構描述的整合帳戶。
 
@@ -174,7 +174,7 @@ ms.locfileid: "75979367"
 
 1. 在主要 Azure 功能表上，選取 [所有服務]****。 
    在搜尋方塊中，輸入「整合帳戶」。 
-   選取 [**整合帳戶**]。
+   選取 **整合帳戶**。
 
 1. 選取要在其中刪除結構描述的整合帳戶。
 

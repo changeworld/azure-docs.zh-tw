@@ -4,10 +4,10 @@ description: 使用 Azure Resource Manager 和 Azure PowerShell 將資源部署�
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.openlocfilehash: e47de54558962215fe3be78f5b9c45c8d46c54a3
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91372437"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-powershell"></a>使用 ARM 範本與 Azure PowerShell 來部署資源
@@ -52,7 +52,7 @@ ms.locfileid: "91372437"
 
 本文中的範例會使用資源群組部署。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 您需要部署範本。 如果您還沒有，請從 Azure 快速入門範本存放庫下載並儲存 [範例範本](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json) 。 本文所使用的本機檔案名稱是 **c:\MyTemplates\azuredeploy.json**。
 

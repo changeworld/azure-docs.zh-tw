@@ -9,22 +9,22 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 01/27/2017
 ms.openlocfilehash: 918516a5629f8570d54c641ffc29f2367937266f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74792365"
 ---
 # <a name="decode-x12-messages-in-azure-logic-apps-with-enterprise-integration-pack"></a>使用 Enterprise Integration Pack 將 Azure Logic Apps 中的 X12 訊息解碼
 
 使用 Decode X12 訊息連接器，您可以對照交易夥伴協議來驗證信封、驗證 EDI 和夥伴特定的屬性、將交換分割為交易集或保留整個交換，並產生已處理交易的通知。 若要使用此連接器，您必須將連接器新增至邏輯應用程式中的現有觸發程序。
 
-## <a name="before-you-start"></a>在您開始使用 Intune 之前
+## <a name="before-you-start"></a>開始之前
 
 以下是您所需的項目︰
 
 * Azure 帳戶；您可以建立一個 [免費帳戶](https://azure.microsoft.com/free)
-* 已定義且與您的 Azure 訂用帳戶相關聯的[整合帳戶](logic-apps-enterprise-integration-create-integration-account.md)。 您必須有整合帳戶才能使用解碼 X12 訊息連接器。
+* 已定義且與您的 Azure 訂用帳戶相關聯的 [整合帳戶](logic-apps-enterprise-integration-create-integration-account.md) 。 您必須有整合帳戶才能使用解碼 X12 訊息連接器。
 * 至少已經在整合帳戶中定義兩個[夥伴](logic-apps-enterprise-integration-partners.md)
 * 已經在整合帳戶中定義的 [X12 合約](logic-apps-enterprise-integration-x12.md)
 
@@ -103,5 +103,5 @@ X12 解碼連接器會執行下列工作︰
 請參閱 [Swagger 詳細資料](/connectors/x12/)。 
 
 ## <a name="next-steps"></a>後續步驟
-[深入了解企業整合套件](../logic-apps/logic-apps-enterprise-integration-overview.md "瞭解企業整合套件") 
+[深入了解企業整合套件](../logic-apps/logic-apps-enterprise-integration-overview.md "深入瞭解企業整合套件") 
 

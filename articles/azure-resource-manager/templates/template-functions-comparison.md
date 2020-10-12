@@ -1,18 +1,18 @@
 ---
-title: 範本函數-比較
+title: 範本函式-比較
 description: 描述 Azure Resource Manager 範本中用來比較值的函式。
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: 01d66f43cf73dcc9228118db5a9b6149b19ee66d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84677826"
 ---
 # <a name="comparison-functions-for-arm-templates"></a>ARM 範本的比較函式
 
-Resource Manager 提供了數個函式，可在您的 Azure Resource Manager （ARM）範本中進行比較。
+Resource Manager 提供數個函式，可在您的 Azure Resource Manager (ARM) 範本中進行比較。
 
 * [coalesce](#coalesce)
 * [equals](#equals)
@@ -29,10 +29,10 @@ Resource Manager 提供了數個函式，可在您的 Azure Resource Manager （
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | Description |
+| 參數 | 必要 | 類型 | 說明 |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |整數、字串、陣列或物件 |要測試是否為 null 的第一個值。 |
-| 其他引數 |No |整數、字串、陣列或物件 |要測試是否為 null 的其他值。 |
+| arg1 |是 |整數、字串、陣列或物件 |要測試是否為 null 的第一個值。 |
+| 其他引數 |否 |整數、字串、陣列或物件 |要測試是否為 null 的其他值。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -104,10 +104,10 @@ Resource Manager 提供了數個函式，可在您的 Azure Resource Manager （
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | Description |
+| 參數 | 必要 | 類型 | 說明 |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |整數、字串、陣列或物件 |要檢查是否相等的第一個值。 |
-| arg2 |Yes |整數、字串、陣列或物件 |要檢查是否相等的第二個值。 |
+| arg1 |是 |整數、字串、陣列或物件 |要檢查是否相等的第一個值。 |
+| arg2 |是 |整數、字串、陣列或物件 |要檢查是否相等的第二個值。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -237,10 +237,10 @@ equals 函式通常會搭配 `condition` 元素，用來測試是否已部署資
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | Description |
+| 參數 | 必要 | 類型 | 說明 |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |整數或字串 |用於大於比較的第一個值。 |
-| arg2 |Yes |整數或字串 |用於大於比較的第二個值。 |
+| arg1 |是 |整數或字串 |用於大於比較的第一個值。 |
+| arg2 |是 |整數或字串 |用於大於比較的第二個值。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -302,10 +302,10 @@ equals 函式通常會搭配 `condition` 元素，用來測試是否已部署資
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | Description |
+| 參數 | 必要 | 類型 | 說明 |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |整數或字串 |用於大於或等於比較的第一個值。 |
-| arg2 |Yes |整數或字串 |用於大於或等於比較的第二個值。 |
+| arg1 |是 |整數或字串 |用於大於或等於比較的第一個值。 |
+| arg2 |是 |整數或字串 |用於大於或等於比較的第二個值。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -367,10 +367,10 @@ equals 函式通常會搭配 `condition` 元素，用來測試是否已部署資
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | Description |
+| 參數 | 必要 | 類型 | 說明 |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |整數或字串 |用於小於比較的第一個值。 |
-| arg2 |Yes |整數或字串 |用於小於比較的第二個值。 |
+| arg1 |是 |整數或字串 |用於小於比較的第一個值。 |
+| arg2 |是 |整數或字串 |用於小於比較的第二個值。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -432,10 +432,10 @@ equals 函式通常會搭配 `condition` 元素，用來測試是否已部署資
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | Description |
+| 參數 | 必要 | 類型 | 說明 |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |整數或字串 |用於小於或等於比較的第一個值。 |
-| arg2 |Yes |整數或字串 |用於小於或等於比較的第二個值。 |
+| arg1 |是 |整數或字串 |用於小於或等於比較的第一個值。 |
+| arg2 |是 |整數或字串 |用於小於或等於比較的第二個值。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -489,6 +489,6 @@ equals 函式通常會搭配 `condition` 元素，用來測試是否已部署資
 | checkInts | Bool | True |
 | checkStrings | Bool | False |
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-* 如需 Azure Resource Manager 範本中各區段的說明，請參閱[瞭解 ARM 範本的結構和語法](template-syntax.md)。
+* 如需 Azure Resource Manager 範本中各區段的說明，請參閱 [瞭解 ARM 範本的結構和語法](template-syntax.md)。

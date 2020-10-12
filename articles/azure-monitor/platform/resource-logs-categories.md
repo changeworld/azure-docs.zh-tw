@@ -1,32 +1,32 @@
 ---
-title: Azure 監視器資源記錄支援的服務和類別
-description: Azure 監視器的參考瞭解 Azure 資源記錄的支援服務和事件架構。
+title: Azure 監視器資源記錄支援的服務與類別
+description: 參考 Azure 監視器瞭解 Azure 資源記錄的支援服務和事件架構。
 ms.subservice: logs
 ms.topic: reference
 ms.date: 06/03/2020
 ms.openlocfilehash: 81f79b81c03e7996d7f6d45b002d8160740c3c14
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87318295"
 ---
 # <a name="supported-categories-for-azure-resource-logs"></a>支援的 Azure 資源記錄類別
 
 > [!NOTE]
-> 資源記錄先前稱為診斷記錄。 名稱在2019年10月已變更，因為所收集的記錄類型 Azure 監視器轉移，而不只包含 Azure 資源。
+> 資源記錄之前稱為診斷記錄。 此名稱已于2019年10月變更，因為 Azure 監視器改為包含不只包含 Azure 資源的記錄類型。
 
-[Azure 監視器資源記錄](./platform-logs-overview.md)是由 Azure 服務發出的記錄，可描述這些服務或資源的操作。 透過 Azure 監視器所提供的所有資源記錄都會共用通用的最上層架構，而且每個服務都可以彈性地為自己的事件發出唯一的屬性。
+[Azure 監視器資源記錄](./platform-logs-overview.md) 是由 Azure 服務發出的記錄，這些服務會描述這些服務或資源的操作。 所有可透過 Azure 監視器共用的資源記錄都會共用通用的最上層架構，而且每個服務都有彈性地發出其本身事件的唯一屬性。
 
-資源類型 (適用於 `resourceId` 屬性) 與 `category` 的組合可唯一識別結構描述。 針對具有服務特定欄位的所有資源記錄，會有一個通用架構，然後針對不同的記錄類別新增。 如需詳細資訊，請參閱[適用于 Azure 資源記錄的通用和服務特定架構]()
+資源類型 (適用於 `resourceId` 屬性) 與 `category` 的組合可唯一識別結構描述。 針對不同的記錄類別，會針對具有服務特定欄位的所有資源記錄，提供一個通用的架構。 如需詳細資訊，請參閱 [適用于 Azure 資源記錄的通用和服務專屬架構]()
 
 ## <a name="supported-log-categories-per-resource-type"></a>每個資源類型支援的記錄檔類別
 
 以下是每個資源類型可用的記錄類型清單。 
 
-某些類別目錄可能只支援特定類型的資源。 如果您覺得遺漏資源，請參閱資源特定的檔。 例如，所有資料庫類型都無法使用 [Microsoft .Sql/伺服器/資料庫] 類別。 如需詳細資訊，請參閱[SQL Database 診斷記錄](../../azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md)的相關資訊。 
+某些類別可能只支援特定的資源類型。 如果您覺得缺少資源，請參閱資源專屬檔。 例如，並非所有類型的資料庫都可以使用 Microsoft .Sql/servers/資料庫類別。 如需詳細資訊，請參閱 [SQL Database 診斷記錄](../../azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md)的相關資訊。 
 
-如果您仍然遺失某個專案，可以在本文底部開啟 GitHub 留言。
+如果您還沒有東西，可以在本文底部開啟 GitHub 批註。
 
 ## <a name="microsoftaadiamtenants"></a>microsoft.aadiam/tenants
 
@@ -116,7 +116,7 @@ ms.locfileid: "87318295"
 
 |類別|類別顯示名稱|
 |---|---|
-|CoreAnalytics|取得端點的計量，例如頻寬、輸出等。|
+|CoreAnalytics|取得端點的計量，例如頻寬、輸出等等。|
 
 
 ## <a name="microsoftclassicnetworknetworksecuritygroups"></a>Microsoft.ClassicNetwork/networksecuritygroups
@@ -153,7 +153,7 @@ ms.locfileid: "87318295"
 |kube-scheduler|Kubernetes 排程器|
 
 
-## <a name="microsoftcustomprovidersresourceproviders"></a>CustomProviders/resourceproviders
+## <a name="microsoftcustomprovidersresourceproviders"></a>>microsoft.customproviders/resourceproviders
 
 |類別|類別顯示名稱|
 |---|---|
@@ -204,7 +204,7 @@ ms.locfileid: "87318295"
 
 |類別|類別顯示名稱|
 |---|---|
-|MySqlAuditLogs|適用于 mariadb Audit 記錄檔|
+|MySqlAuditLogs|適用于 mariadb 審核記錄|
 |MySqlSlowLogs|適用于 mariadb 伺服器記錄檔|
 
 
@@ -212,7 +212,7 @@ ms.locfileid: "87318295"
 
 |類別|類別顯示名稱|
 |---|---|
-|MySqlAuditLogs|MySQL Audit 記錄|
+|MySqlAuditLogs|MySQL 審核記錄|
 |MySqlSlowLogs|MySQL 伺服器記錄|
 
 
@@ -253,7 +253,7 @@ ms.locfileid: "87318295"
 |類別|類別顯示名稱|
 |---|---|
 |Checkpoint|Checkpoint|
-|Connection|Connection|
+|連線|連線|
 |錯誤|錯誤|
 |HostRegistration|HostRegistration|
 |管理性|管理性|
@@ -279,7 +279,7 @@ ms.locfileid: "87318295"
 |連接|連接|
 |D2C 對應項作業|D2C 對應項作業|
 |DeviceIdentityOperations|裝置身分識別作業|
-|DeviceStreams|裝置串流（預覽）|
+|DeviceStreams|裝置串流 (預覽) |
 |DeviceTelemetry|裝置遙測|
 |DirectMethods|直接方法|
 |DistributedTracing|分散式追蹤 (預覽)|
@@ -347,9 +347,9 @@ ms.locfileid: "87318295"
 |---|---|
 |ArchiveLogs|封存記錄|
 |AutoScaleLogs|自動調整規模記錄|
-|CustomerManagedKeyUserLogs|客戶管理的金鑰記錄|
+|CustomerManagedKeyUserLogs|Customer-Managed 金鑰記錄|
 |EventHubVNetConnectionEvent|VNet/IP 篩選連接記錄|
-|KafkaCoordinatorLogs|Kafka 協調器記錄檔|
+|KafkaCoordinatorLogs|Kafka 協調器記錄|
 |KafkaUserErrorLogs|Kafka 使用者錯誤記錄檔|
 |OperationalLogs|作業記錄|
 
@@ -374,7 +374,7 @@ ms.locfileid: "87318295"
 |類別|類別顯示名稱|
 |---|---|
 |AppAvailabilityResults|可用性結果|
-|AppBrowserTimings|瀏覽器時間|
+|AppBrowserTimings|瀏覽器計時|
 |AppDependencies|相依性|
 |AppEvents|事件|
 |AppExceptions|例外狀況|
@@ -462,7 +462,7 @@ ms.locfileid: "87318295"
 |AzureFirewallNetworkRule|Azure 防火牆網路規則|
 
 
-## <a name="microsoftnetworkbastionhosts"></a>Microsoft 網路/bastionHosts
+## <a name="microsoftnetworkbastionhosts"></a>Microsoft. Network/bastionHosts
 
 |類別|類別顯示名稱|
 |---|---|
@@ -546,11 +546,11 @@ ms.locfileid: "87318295"
 
 |類別|類別顯示名稱|
 |---|---|
-|AddonAzureBackupAlerts|Azure 備份警示資料的增益集|
-|AddonAzureBackupJobs|Azure 備份工作資料的增益集|
-|AddonAzureBackupPolicy|Azure 備份原則資料的附件|
-|AddonAzureBackupProtectedInstance|Azure 備份受保護實例資料的附件|
-|AddonAzureBackupStorage|載入項 Azure 備份儲存體資料|
+|AddonAzureBackupAlerts|增益集 Azure 備份警示資料|
+|AddonAzureBackupJobs|作業資料的附加元件 Azure 備份|
+|AddonAzureBackupPolicy|附加元件 Azure 備份原則資料|
+|AddonAzureBackupProtectedInstance|附加元件 Azure 備份受保護的實例資料|
+|AddonAzureBackupStorage|Azure 備份儲存體資料的增益集|
 |AzureBackupReport|Azure 備份報表資料|
 |AzureSiteRecoveryEvents|Azure Site Recovery 事件|
 |AzureSiteRecoveryJobs|Azure Site Recovery 作業|
@@ -587,7 +587,7 @@ ms.locfileid: "87318295"
 
 |類別|類別顯示名稱|
 |---|---|
-|Alllogs.csv|Azure SignalR Service 記錄檔。|
+|Alllogs.csv|Azure SignalR Service 記錄。|
 
 
 ## <a name="microsoftsqlmanagedinstances"></a>Microsoft.Sql/managedInstances
@@ -603,7 +603,7 @@ ms.locfileid: "87318295"
 
 |類別|類別顯示名稱|
 |---|---|
-|錯誤|錯誤|
+|Errors|Errors|
 |QueryStoreRuntimeStatistics|查詢存放區執行階段統計資料|
 |QueryStoreWaitStatistics|查詢存放區等候統計資料|
 |SQLInsights|SQL Insights|
@@ -619,7 +619,7 @@ ms.locfileid: "87318295"
 |死結|死結|
 |DevOpsOperationsAudit|Devops 作業審核記錄|
 |DmsWorkers|Dms 背景工作|
-|錯誤|錯誤|
+|Errors|Errors|
 |ExecRequests|執行要求|
 |QueryStoreRuntimeStatistics|查詢存放區執行階段統計資料|
 |QueryStoreWaitStatistics|查詢存放區等候統計資料|
@@ -679,7 +679,7 @@ ms.locfileid: "87318295"
 
 |類別|類別顯示名稱|
 |---|---|
-|AppServiceEnvironmentPlatformLogs|App Service 環境平臺記錄檔|
+|AppServiceEnvironmentPlatformLogs|App Service 環境平臺記錄|
 
 
 ## <a name="microsoftwebsites"></a>microsoft.web/sites
@@ -688,11 +688,11 @@ ms.locfileid: "87318295"
 |---|---|
 |AppServiceAppLogs|App Service 應用程式記錄檔|
 |AppServiceAuditLogs|存取 Audit 記錄|
-|AppServiceConsoleLogs|App Service 主控台記錄檔|
+|AppServiceConsoleLogs|App Service 主控台記錄|
 |AppServiceFileAuditLogs|網站內容變更審核記錄|
 |AppServiceHTTPLogs|HTTP 記錄|
-|FunctionAppLogs|函數應用程式記錄|
-|ScanLogs|防毒軟體掃描記錄|
+|FunctionAppLogs|函數應用程式記錄檔|
+|ScanLogs|防毒軟體掃描記錄檔|
 
 
 ## <a name="microsoftwebsitesslots"></a>microsoft.web/sites/slots
@@ -702,17 +702,17 @@ ms.locfileid: "87318295"
 |---|---|
 |AppServiceAppLogs|App Service 應用程式記錄檔|
 |AppServiceAuditLogs|存取 Audit 記錄|
-|AppServiceConsoleLogs|App Service 主控台記錄檔|
+|AppServiceConsoleLogs|App Service 主控台記錄|
 |AppServiceFileAuditLogs|網站內容變更審核記錄|
 |AppServiceHTTPLogs|HTTP 記錄|
-|FunctionAppLogs|函數應用程式記錄|
-|ScanLogs|防毒軟體掃描記錄|
+|FunctionAppLogs|函數應用程式記錄檔|
+|ScanLogs|防毒軟體掃描記錄檔|
 
 
 ## <a name="next-steps"></a>後續步驟
 
 * [深入瞭解資源記錄](./platform-logs-overview.md)
-* [將資源資源記錄串流至**事件中樞**](./resource-logs.md#send-to-azure-event-hubs)
+* [將資源資源記錄串流至 **事件中樞**](./resource-logs.md#send-to-azure-event-hubs)
 * [使用 Azure 監視器 REST API 變更資源記錄診斷設定](/rest/api/monitor/diagnosticsettings)
 * [使用 Log Analytics 分析來自 Azure 儲存體的記錄](./resource-logs.md#send-to-log-analytics-workspace)
 

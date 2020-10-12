@@ -1,14 +1,14 @@
 ---
-title: 要求遙測資料模型-Azure 應用程式深入解析
+title: 要求遙測資料模型-Azure 應用程式見解
 description: 要求遙測的 Application Insights 資料模型
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.reviewer: sergkanz
 ms.openlocfilehash: 7a352f4ce3528d395599a91b53031c74b0873152
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87320556"
 ---
 # <a name="request-telemetry-application-insights-data-model"></a>要求遙測：Application Insights 資料模型
@@ -21,7 +21,7 @@ ms.locfileid: "87320556"
 
 要求的名稱代表處理要求所採用的程式碼路徑。 較低的基數值可使群組要求更妥善。 針對 HTTP 要求，它代表 HTTP 方法和 URL 路徑範本，例如無實際 `id` 值的 `GET /values/{id}`。
 
-Application Insights web SDK 會將要求名稱依「現狀」傳送 (考量字母大小寫)。 UI 上的群組會區分大小寫，因此 `GET /Home/Index` 會與 `GET /home/INDEX` 分開計算，即使它們通常會產生相同的控制器和動作執行。 原因是 URL 通常會[區分大小寫](https://www.w3.org/TR/WD-html40-970708/htmlweb.html)。 您可能要查看 URL 出現的所有 `404` 是否都以大寫輸入。 您可以在[blog 文章](https://apmtips.com/posts/2015-02-23-request-name-and-url/)中，閱讀更多有關 ASP.NET Web SDK 的要求名稱集合。
+Application Insights web SDK 會將要求名稱依「現狀」傳送 (考量字母大小寫)。 UI 上的群組會區分大小寫，因此 `GET /Home/Index` 會與 `GET /home/INDEX` 分開計算，即使它們通常會產生相同的控制器和動作執行。 原因是 URL 通常會[區分大小寫](https://www.w3.org/TR/WD-html40-970708/htmlweb.html)。 您可能要查看 URL 出現的所有 `404` 是否都以大寫輸入。 您可以透過 ASP.NET Web SDK 在 [blog 文章](https://apmtips.com/posts/2015-02-23-request-name-and-url/)中閱讀更多關於要求名稱收集的資訊。
 
 最大長度︰1024 個字元
 
@@ -43,7 +43,7 @@ Application Insights web SDK 會將要求名稱依「現狀」傳送 (考量字�
 
 最大長度︰1024 個字元
 
-## <a name="duration"></a>Duration
+## <a name="duration"></a>持續時間
 
 要求持續時間格式為︰`DD.HH:MM:SS.MMMMMM`。 必須是正數且小於 `1000` 天。 這是必要欄位，因為要求遙測代表開頭與結尾的作業。
 
@@ -53,7 +53,7 @@ Application Insights web SDK 會將要求名稱依「現狀」傳送 (考量字�
 
 最大長度︰1024 個字元
 
-## <a name="success"></a>Success
+## <a name="success"></a>成功
 
 表示成功或失敗的呼叫。 此為必要欄位。 當未明確設定為 `false` 時 - 要求會視為成功。 如果作業是例外狀況而中斷或傳回錯誤結果碼，將此值設定為 `false`。
 
@@ -71,7 +71,7 @@ Application Insights web SDK 會將要求名稱依「現狀」傳送 (考量字�
 
 [!INCLUDE [application-insights-data-model-measurements](../../../includes/application-insights-data-model-measurements.md)]
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - [撰寫自訂要求遙測](./api-custom-events-metrics.md#trackrequest)
 - 如需 Application Insights 類型和資料模型，請參閱[資料模型](data-model.md)。

@@ -11,10 +11,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: 4087d618209ab4db46f89ef4e6db7ac87ca4cf57
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91331007"
 ---
 # <a name="get-connection-endpoints-and-form-connection-strings-for-your-arc-enabled-postgresql-hyperscale-server-group"></a>針對已啟用 Arc 的于 postgresql 超大規模伺服器群組取得連接端點和表單連接字串
@@ -39,7 +39,7 @@ azdata login --endpoint https://<external IP address of host/data controller>:30
 ```
 
 #### <a name="2-show-the-connection-endpoints"></a>2. 顯示連接端點
-執行下列命令：
+執行以下命令：
 ```console
 azdata arc postgres endpoint list -n <server group name>
 ```
@@ -62,7 +62,7 @@ azdata arc postgres endpoint list -n <server group name>
 ```
 使用這些端點：
 - 形成您的連接字串，並與您的用戶端工具或應用程式連接
-- 從您的瀏覽器存取 Grafana 和 Kibana 儀表板
+- 從瀏覽器存取 Grafana 和 Kibana 儀表板
 
 例如，您可以使用名為 _于 postgresql Instance_ 的端點，將 psql 連接到您的伺服器群組。 例如：
 ```console

@@ -10,10 +10,10 @@ ms.date: 10/02/2018
 ms.topic: conceptual
 ms.custom: devx-track-js
 ms.openlocfilehash: e585bc52121943102522f8c44291a4f9453d6214
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91318393"
 ---
 # <a name="add-a-custom-page-to-the-remote-monitoring-solution-accelerator-web-ui"></a>在遠端監視解決方案加速器 Web UI 中新增自訂頁面
@@ -25,7 +25,7 @@ ms.locfileid: "91318393"
 
 其他操作說明指南會擴充此案例，將更多功能新增至您所新增的頁面。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要完成本操作指南中的部署，您必須在本機開發機器上安裝下列軟體：
 

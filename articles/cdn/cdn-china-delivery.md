@@ -16,10 +16,10 @@ ms.date: 05/16/2018
 ms.author: allensu
 ms.custom: mvc
 ms.openlocfilehash: fa144c7ebd68e6f5dd192fca83dc6f306d7b8d63
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81254099"
 ---
 # <a name="china-content-delivery-with-azure-cdn"></a>在中國使用 Azure CDN 所傳遞的內容
@@ -40,7 +40,7 @@ ms.locfileid: "81254099"
 
      - 四個定價層：Microsoft 標準、Verizon 標準、Verizon 進階和 Akamai 標準
 
-     - [文件](https://docs.microsoft.com/azure/cdn/)
+     - [文件集](https://docs.microsoft.com/azure/cdn/)
 
 - 中國的 Azure CDN：
 
@@ -50,7 +50,7 @@ ms.locfileid: "81254099"
 
      - 兩個定價層：標準和進階
 
-     - [文件](https://docs.azure.cn/en-us/cdn/)
+     - [文件集](https://docs.azure.cn/en-us/cdn/)
  
 
 ## <a name="next-steps"></a>後續步驟

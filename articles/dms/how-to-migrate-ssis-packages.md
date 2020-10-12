@@ -13,10 +13,10 @@ ms.custom: seo-lt-2019
 ms.topic: how-to
 ms.date: 02/20/2020
 ms.openlocfilehash: e5f9ba7ea4afd81d62cba7b970693f603b53ef9f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91316081"
 ---
 # <a name="redeploy-ssis-packages-to-azure-sql-database-with-azure-database-migration-service"></a>使用 Azure 資料庫移轉服務將 SSIS 套件重新部署到 Azure SQL Database
@@ -34,7 +34,7 @@ ms.locfileid: "91316081"
 > * 評估來源 SSIS 專案/套件。
 > * 將 SSIS 專案/套件遷移至 Azure。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要完成這些步驟，您需要：
 

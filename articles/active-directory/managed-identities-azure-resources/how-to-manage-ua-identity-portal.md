@@ -16,10 +16,10 @@ ms.date: 08/26/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e5045c81f280d9d7687a466aed2e918d21eec697
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89266382"
 ---
 # <a name="create-list-delete-or-assign-a-role-to-a-user-assigned-managed-identity-using-the-azure-portal"></a>使用 Azure 入口網站對使用者指派的受控識別建立、列出、刪除或指派角色
@@ -46,7 +46,7 @@ ms.locfileid: "89266382"
     - **名稱**：這是使用者指派的受控識別名稱，例如 UAI1。
     ![建立使用者指派的受控識別](./media/how-to-manage-ua-identity-portal/create-user-assigned-managed-identity-portal.png)
 4. 按一下 [ **審核 +** ]，以查看變更。
-5. 按一下 [建立]  。
+5. 按一下 [建立]。
 
 ## <a name="list-user-assigned-managed-identities"></a>列出使用者指派的受控識別
 
@@ -77,7 +77,7 @@ ms.locfileid: "89266382"
 1. 使用與 Azure 訂用帳戶相關聯的帳戶登入 [Azure 入口網站](https://portal.azure.com)，以列出使用者指派的受控識別。
 2. 在 [搜尋] 方塊中，輸入「受控識別」**，然後在 [服務] 下方按一下 [受控識別]****。
 3. 此時會針對訂用帳戶傳回使用者指派的受控識別清單。  選取要指派角色的使用者指派受控識別。
-4. 選取 [ **存取控制] (IAM) **，然後選取 [ **新增角色指派**]。
+4. 選取 [存取控制 (IAM)]  ，然後選取 [新增角色指派]  。
 
    ![使用者指派的受控識別啟動](./media/how-to-manage-ua-identity-portal/assign-role-screenshot1.png)
 

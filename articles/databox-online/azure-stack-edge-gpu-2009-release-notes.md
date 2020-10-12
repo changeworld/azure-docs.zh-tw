@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 09/29/2020
 ms.author: alkohli
 ms.openlocfilehash: c43f7ba52ed0f6018ee32583011bb92786708119
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91460470"
 ---
 # <a name="azure-stack-edge-pro-with-gpu-general-availability-ga-release-notes"></a>Azure Stack Edge Pro 和 GPU 正式運作 (正式推出) 版本資訊
@@ -35,7 +35,7 @@ Azure Stack Edge 2009 版提供下列新功能。
 
 下表提供 Azure Stack Edge Pro 裝置已知問題的摘要。
 
-| 否。 | 特徵 | 問題 | 因應措施/註解 |
+| 否。 | 功能 | 問題 | 因應措施/註解 |
 | --- | --- | --- | --- |
 |**1.**|預覽功能 |針對此 GA 版本，下列功能：本機 Azure Resource Manager、Vm、Kubernetes、Azure Arc 啟用的 Kubernetes、多進程服務 (MP) （適用于 GPU）全都可供您的 Azure Stack Edge Pro 裝置預覽。  |這些功能將在稍後的版本中正式推出。 |
 | **2.** |Azure Stack Edge Pro + Azure SQL | 建立 SQL database 需要系統管理員存取權。   |請執行下列步驟，而不是中的步驟 1-2 [https://docs.microsoft.com/azure/iot-edge/tutorial-store-data-sql-server#create-the-sql-database](https://docs.microsoft.com/azure/iot-edge/tutorial-store-data-sql-server#create-the-sql-database) 。 <ul><li>在裝置的本機 UI 中，啟用計算介面。 選取計算 **> 適用的計算 > 埠 # > 啟用。**</li><li>`sqlcmd`從您的用戶端電腦下載https://docs.microsoft.com/sql/tools/sqlcmd-utility </li><li>連接到您的計算介面 IP 位址 (已啟用) 的埠，並將 "，1401" 新增至位址的結尾。</li><li>最後一個命令看起來會像這樣： sqlcmd-S {Interface IP}，1401-U SA-P "強！Passw0rd」。</li>在此之後，來自目前檔的步驟3-4 應該相同。 </li></ul> |

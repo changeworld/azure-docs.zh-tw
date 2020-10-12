@@ -7,10 +7,10 @@ ms.author: newylie
 ms.date: 06/05/2020
 ms.custom: devx-track-js
 ms.openlocfilehash: 30c7caef4143b1a7cdba959971ff7689f986cb9e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91333251"
 ---
 # <a name="troubleshooting-sdk-load-failure-for-javascript-web-apps"></a>針對 JavaScript web 應用程式的 SDK 載入失敗進行疑難排解
@@ -30,7 +30,7 @@ Editor Note: This link name above "SDK Load Failure" has a direct references by 
 
 堆疊詳細資料包含終端使用者使用的 Url 的基本資訊。
 
-| 名稱                      | 說明                                                                                                  |
+| 名稱                      | 描述                                                                                                  |
 |---------------------------|--------------------------------------------------------------------------------------------------------------|
 | &lt;CDN &nbsp; 端點&gt; | 用來下載 SDK (和失敗) 的 URL。                                                      |
 | &lt;說明 &nbsp; 連結&gt;    | 此頁面)  (連結至疑難排解檔的 URL。                                              |
@@ -64,7 +64,7 @@ Editor Note: This link name above "SDK Load Failure" has a direct references by 
 
 您也可以嘗試使用 [NPM 套件](#use-npm-packages-to-embed-the-application-insight-sdk) 來內嵌 Application Insights SDK。
 
-為了最小化間歇性網路連線失敗，我們已在所有 CDN 檔案上執行了快取控制標頭，如此一來，當使用者的瀏覽器下載目前版本的 SDK 之後，就不需要再次下載，而瀏覽器會重複使用先前取得的複本 (查看快取的 [運作方式](../../cdn/cdn-how-caching-works.md)) 。 如果快取檢查失敗或有新的版本，則使用者的瀏覽器將需要下載更新的版本。 因此，您可能會在檢查失敗案例中看到「 _雜訊_ 」的背景層級，或在發生新的發行時，暫時出現尖峰， (部署至 CDN) 。
+為了將間歇性的網路連線能力故障降至最低，我們已在所有 CDN 檔案上執行 Cache-Control 標頭，如此一來，當使用者的瀏覽器下載目前版本的 SDK 之後，就不需要再次下載，而瀏覽器會重複使用先前取得的複本 (瞭解快取的 [運作方式](../../cdn/cdn-how-caching-works.md)) 。 如果快取檢查失敗或有新的版本，則使用者的瀏覽器將需要下載更新的版本。 因此，您可能會在檢查失敗案例中看到「 _雜訊_ 」的背景層級，或在發生新的發行時，暫時出現尖峰， (部署至 CDN) 。
  
 ## <a name="application-insights-cdn-outage"></a>Application Insights CDN 中斷
 

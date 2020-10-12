@@ -16,10 +16,10 @@ ms.date: 06/26/2018
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 37fad118fe314b1392c31906a3f0a0989e39d876
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90969411"
 ---
 # <a name="create-list-or-delete-a-user-assigned-managed-identity-using-rest-api-calls"></a>使用 REST API 呼叫來建立、列出或刪除使用者指派的受控識別
@@ -34,7 +34,7 @@ ms.locfileid: "90969411"
 
 - 如果您不熟悉 Azure 資源的受控識別，請參閱[概觀一節](overview.md)。 **請務必檢閱[系統指派和使用者指派受控識別之間的差異](overview.md#managed-identity-types)**。
 - 如果您還沒有 Azure 帳戶，請先[註冊免費帳戶](https://azure.microsoft.com/free/)，再繼續進行。
-- 您可以在雲端或在本機執行此文章中的所有命令：
+- 您可以在雲端或本機上執行本文中的所有命令：
     - 若要在雲端中執行，請使用 [Azure Cloud Shell](../../cloud-shell/overview.md)。
     - 若要在本機執行，請安裝 [捲曲](https://curl.haxx.se/download.html) 和 [Azure CLI](/cli/azure/install-azure-cli)。
 
@@ -78,7 +78,7 @@ s/<RESOURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<U
 
 **要求本文**
 
-|Name  |描述  |
+|名稱  |描述  |
 |---------|---------|
 |location     | 必要。 資源位置。        |
 
@@ -119,6 +119,6 @@ DELETE https://management.azure.com/subscriptions/80c696ff-5efa-4909-a64d-f1b616
 |*Content-Type*     | 必要。 設定為 `application/json`。        |
 |*授權*     | 必要。 設定為有效的 `Bearer` 存取權杖。        |
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 如需如何使用 CURL 將使用者指派的受控識別指派給 Azure VM/VMSS 的資訊，請參閱[使用 REST API 呼叫在 Azure VM 上設定 Azure 資源的受控識別](qs-configure-rest-vm.md#user-assigned-managed-identity) (英文) 和[使用 REST API 呼叫在虛擬機器擴展集上設定 Azure 資源的受控識別](qs-configure-rest-vmss.md#user-assigned-managed-identity) \(英文\)。

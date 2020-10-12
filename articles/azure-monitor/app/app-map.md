@@ -6,10 +6,10 @@ ms.date: 03/15/2019
 ms.custom: devx-track-csharp
 ms.reviewer: sdash
 ms.openlocfilehash: 642a382f2ec5da7821c9d709bd27d592ced31c8d
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90974029"
 ---
 # <a name="application-map-triage-distributed-applications"></a>應用程式對應：對分散式應用程式進行分級
@@ -293,7 +293,7 @@ appInsights.addTelemetryInitializer((envelope) => {
 
 ![MapLink-1 影像](./media/app-map/14-updated.png)
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * 若要深入瞭解相互關聯的 Application Insights 運作方式，請參閱 [遙測相互關聯文章](correlation.md)。
 * [端對端交易診斷體驗](transaction-diagnostics.md)會將所有 Application Insights 受監視元件的伺服器端遙測相互關聯到單一視圖中。

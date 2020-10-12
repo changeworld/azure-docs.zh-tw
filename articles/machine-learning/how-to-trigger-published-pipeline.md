@@ -12,10 +12,10 @@ ms.date: 02/07/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4
 ms.openlocfilehash: 2e3544bee5158a855467f8cb142f176df2187ef5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91318291"
 ---
 # <a name="trigger-a-run-of-a-machine-learning-pipeline-from-a-logic-app"></a>從邏輯應用程式觸發 Machine Learning 管線的執行

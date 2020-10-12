@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
 ms.openlocfilehash: 4b7fd2de0762de147ad3ceae0d562a1c78b33dc2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81417478"
 ---
 # <a name="copy-data-from-cassandra-using-azure-data-factory"></a>使用 Azure Data Factory 從 Cassandra 複製資料
@@ -44,7 +44,7 @@ ms.locfileid: "81417478"
 >[!NOTE]
 >針對在自我裝載 Integration Runtime 上執行的活動，從 IR 3.7 版及更新版本開始支援 Cassandra 3.x。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
@@ -65,7 +65,7 @@ ms.locfileid: "81417478"
 | type |類型屬性必須設定為：**Cassandra** |是 |
 | 主機 |一或多個 Cassandra 伺服器 IP 位址或主機名稱。<br/>指定以逗號分隔的 IP 位址或主機名稱清單，以同時連線到所有伺服器。 |是 |
 | 連接埠 |Cassandra 伺服器用來接聽用戶端連線的 TCP 連接埠。 |否 (預設值為 9042) |
-| authenticationType | 用來連接到 Cassandra 資料庫的驗證類型。<br/>允許的值為：**基本**和**匿名**。 |是 |
+| authenticationType | 用來連接到 Cassandra 資料庫的驗證類型。<br/>允許的值為： **基本**和 **匿名**。 |是 |
 | username |指定使用者帳戶的使用者名稱。 |是，如果 authenticationType 設定為 [基本]。 |
 | 密碼 |指定使用者帳戶的密碼。 將此欄位標記為 SecureString，將它安全地儲存在 Data Factory 中，或[參考 Azure Key Vault 中儲存的祕密](store-credentials-in-key-vault.md)。 |是，如果 authenticationType 設定為 [基本]。 |
 | connectVia | 用來連線到資料存放區的 [Integration Runtime](concepts-integration-runtime.md)。 深入了解[必要條件](#prerequisites)一節。 如果未指定，就會使用預設的 Azure Integration Runtime。 |否 |
@@ -219,7 +219,7 @@ Azure Data Factory 會使用內建的 ODBC 驅動程式來連線到 Cassandra �
 
 例如，以下的「ExampleTable」就是 Cassandra 資料庫資料表，其中包含名為「pk_int」的整數主索引鍵資料行、名為「值」的文字資料行、「清單」資料行、「對應」資料行和「集」資料行 (名為「StringSet」)。
 
-| pk_int | 值 | 清單 | 地圖 | StringSet |
+| pk_int | 值 | 清單 | 對應 | StringSet |
 | --- | --- | --- | --- | --- |
 | 1 |"sample value 1" |["1", "2", "3"] |{"S1": "a", "S2": "b"} |{"A", "B", "C"} |
 | 3 |"sample value 3" |["100", "101", "102", "105"] |{"S1": "t"} |{"A", "E"} |

@@ -6,10 +6,10 @@ ms.date: 09/02/2020
 ms.author: tomfitz
 author: tfitzmac
 ms.openlocfilehash: 73f6db8cbd5e4d7a0670c394f6af338aae8e9e79
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89439555"
 ---
 # <a name="use-arm-template-test-toolkit"></a>使用 ARM 範本測試控管組
@@ -280,6 +280,6 @@ param(
 }
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 若要瞭解預設測試，請參閱 [工具組的測試案例](test-cases.md)。

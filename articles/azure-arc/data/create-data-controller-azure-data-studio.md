@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: f6fd8169c587e928da9946d74335ddc758889144
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91273138"
 ---
 # <a name="create-data-controller-in-azure-data-studio"></a>在 Azure Data Studio 中建立資料控制器
@@ -22,7 +22,7 @@ ms.locfileid: "91273138"
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - 您需要存取 Kubernetes 叢集，並將您的 kubeconfig 檔案設定為指向您想要部署的 Kubernetes 叢集。
 - 您必須 [安裝用戶端工具](install-client-tools.md) ，包括 **Azure Data Studio** Azure Data Studio 擴充功能，這些擴充功能稱為 **Azure Arc** 和 **Azure 資料 CLI**。
@@ -35,8 +35,8 @@ ms.locfileid: "91273138"
 1. 在 Azure Data Studio 中，按一下左側導覽上的 [連接] 索引標籤。
 2. 按一下 [連線] 面板頂端的 [ **...** ] 按鈕，然後選擇 [**新增部署 ...** ]。
 3. 在新的部署嚮導中，選擇 [ **Azure Arc 資料控制器**]，勾選 [接受授權] 核取方塊，然後按一下底部的 [ **選取** ] 按鈕。
-4. 使用預設 kubeconfig 檔案，或選取另一個檔案。  按 [下一步]  。
-5. 選擇 Kubernetes 叢集內容。 按 [下一步]  。
+4. 使用預設 kubeconfig 檔案，或選取另一個檔案。  按一下 [下一步]。
+5. 選擇 Kubernetes 叢集內容。 按一下 [下一步]。
 6. 根據您的目標 Kubernetes 叢集，選擇部署設定檔的檔案。 **按 [下一步]**。
 8. 選擇所需的訂用帳戶和資源群組。
 9. 輸入資料控制站的名稱，以及將建立資料控制器的命名空間。  
@@ -57,7 +57,7 @@ ms.locfileid: "91273138"
 > [!NOTE]
 > 密碼長度必須至少為 8 個字元。
 
-1.  按 [下一步]  。
+1.  按一下 [下一步]。
 2.  檢查並按一下 [ **編寫筆記本的腳本**]。
 3.  **檢查產生的筆記本**。  進行任何必要的變更，例如儲存類別名稱或服務類型。
 4.  按一下筆記本頂端的 [ **全部執行** ]。
