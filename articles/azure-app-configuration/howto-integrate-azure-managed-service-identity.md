@@ -9,10 +9,10 @@ ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 2/25/2020
 ms.openlocfilehash: 02d9407766930f02c70d580112136b50b6036e11
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90029858"
 ---
 # <a name="use-managed-identities-to-access-app-configuration"></a>使用受控識別來存取應用程式組態
@@ -69,7 +69,7 @@ Azure 應用程式組態及其 .NET Core、.NET Framework 和 JAVA 春季用戶�
 
 1. 在 [訂用帳戶]**** 底下，選取您的 Azure 訂用帳戶。 選取您應用程式的 App Service 資源。
 
-1. 選取 [儲存]。
+1. 選取 [儲存]****。
 
     ![新增受控識別](./media/add-managed-identity.png)
 

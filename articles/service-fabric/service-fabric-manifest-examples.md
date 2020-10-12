@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 06/11/2018
 ms.author: pepogors
 ms.openlocfilehash: 6f44d2ddaac11545a3a3dc52fd20e02263c6ad67
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75451648"
 ---
 # <a name="service-fabric-application-and-service-manifest-examples"></a>Service Fabric 應用程式和服務資訊清單範例
@@ -17,7 +17,7 @@ ms.locfileid: "75451648"
 
 以下是所示功能的索引，以及其所屬的資訊清單範例。
 
-|功能|資訊清單|
+|功能|file:///|
 |---|---|
 |[資源管理](service-fabric-resource-governance.md)|[Reliable Services 應用程式資訊清單](service-fabric-manifest-example-reliable-services-app.md#application-manifest)、[容器應用程式資訊清單](service-fabric-manifest-example-container-app.md#application-manifest)|
 |[以本機系統管理員帳戶身分執行服務](service-fabric-application-runas-security.md)|[Reliable Services 應用程式資訊清單](service-fabric-manifest-example-reliable-services-app.md#application-manifest)|

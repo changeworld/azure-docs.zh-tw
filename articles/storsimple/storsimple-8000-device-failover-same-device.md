@@ -1,6 +1,6 @@
 ---
-title: 教學課程-將 StorSimple 實體裝置損毀修復至相同的裝置
-description: 瞭解在發生嚴重損壞時，將 StorSimple 8000 系列實體裝置損毀修復至其本身所需的步驟。
+title: 教學課程-將 StorSimple 實體裝置容錯移轉至相同的裝置
+description: 瞭解在發生嚴重損壞時，將 StorSimple 8000 系列實體裝置容錯移轉至本身所需的步驟。
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/23/2017
 ms.author: alkohli
 ms.openlocfilehash: 17c116194aa52a82246bcee9114824e8a918ebbd
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88184324"
 ---
 # <a name="fail-over-your-storsimple-physical-device-to-same-device"></a>將您的 StorSimple 實體裝置容錯移轉至相同的裝置

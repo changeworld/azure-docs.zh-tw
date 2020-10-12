@@ -9,10 +9,10 @@ ms.custom: references_regions
 ms.date: 09/01/2020
 ms.author: azhussai
 ms.openlocfilehash: 1d88379726cfb6c4218c38b9ccc87005609a9aba
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89460740"
 ---
 # <a name="understanding-pricing-for-azure-application-gateway-and-web-application-firewall"></a>瞭解 Azure 應用程式閘道和 Web 應用程式防火牆的定價
@@ -56,9 +56,9 @@ Azure 應用程式閘道是第7層負載平衡解決方案，可在 Azure 上提
 
 |              應用程式閘道類型             |  成本 ($/小時)   |
 | ------------------------------------------------- | ---------------|
-|                     小                         |    $0.025      |
+|                     小型                         |    $0.025      |
 |                     中                        |    $0.07       |
-|                     大                         |    $0.32       |
+|                     大型                         |    $0.32       |
 
 每月價格預估以每月730小時的使用量為基礎。
 
@@ -82,9 +82,9 @@ Azure 應用程式閘道是第7層負載平衡解決方案，可在 Azure 上提
 
 |              應用程式閘道類型             |  成本 ($/小時)   |
 | ------------------------------------------------- | ---------------|
-|                     小                         |       NA       |
+|                     小型                         |       NA       |
 |                     中                        |     $0.126     |
-|                     大                         |     $0.448     |
+|                     大型                         |     $0.448     |
 
 每月價格預估以每月730小時的使用量為基礎。
 
@@ -377,7 +377,7 @@ V2 Sku 會根據耗用量計費，並由兩個部分組成：
 
 計量中觀察到的容量單位 = 49.23
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 請參閱下列文章，以深入瞭解定價在 Azure 應用程式閘道中的運作方式：
 

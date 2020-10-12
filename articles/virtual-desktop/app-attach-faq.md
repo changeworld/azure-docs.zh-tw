@@ -9,10 +9,10 @@ ms.date: 08/17/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: a63d7f067665836910b91b2911db522f0a92bbb1
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88556234"
 ---
 # <a name="msix-app-attach-faq"></a>MSIX 應用程式附加常見問題
@@ -35,6 +35,6 @@ MSIX 應用程式附加不會使用 FSLogix。 不過，應用程式附加和 FS
 
 Windows 10 企業版和 Windows 10 企業版多會話。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如果您想要深入瞭解 MSIX app 附加，請參閱我們的[總覽](what-is-app-attach.md)[詞彙](app-attach-glossary.md)。 否則，請開始 [設定應用程式連接](app-attach.md)。

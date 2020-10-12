@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 03/13/2020
 ms.author: sagupt
 ms.openlocfilehash: a9c86a7ae510d9657f64c71db2aa8c4e3e558f52
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90968595"
 ---
 # <a name="quick-fix-remediation-for-advisor"></a>Advisor 的快速修正補救措施
@@ -26,7 +26,7 @@ ms.locfileid: "90968595"
 
 2. 在 [建議詳細資料] 頁面上，您會看到有此建議的資源清單。 選取您要補救的所有資源以取得建議。
 
-   :::image type="content" source="./media/quick-fix-2.png" alt-text="[受影響的資源] 視窗的螢幕擷取畫面，其中已醒目提示清單專案和 [快速修正] 按鈕。":::
+   :::image type="content" source="./media/quick-fix-2.png" alt-text="{Azure Advisor 的螢幕擷取畫面，其中顯示建議中的快速修正標籤。}":::
    
    *映射中的價格僅供範例之用*
 
@@ -41,7 +41,7 @@ ms.locfileid: "90968595"
 4. 您將會收到補救完成的通知。 如果資源清單視圖中有未補救的資源和所選模式的資源，您將會看到錯誤。  
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 如需 Advisor 建議的詳細資訊，請參閱：
 * [Azure Advisor 簡介](advisor-overview.md) (機器翻譯)

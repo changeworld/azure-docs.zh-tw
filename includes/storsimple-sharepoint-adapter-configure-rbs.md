@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: f84fe995e65d2b67aaaf4ff9acc4a6a44ce607dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67174019"
 ---
 > [!NOTE]
@@ -45,7 +45,7 @@ ms.locfileid: "67174019"
       ![配接器組態訊息](./media/storsimple-sharepoint-adapter-configure-rbs/HCS_SSASP_ConfigRBS3-include.png)
       
       > [!NOTE]
-      > 如果您要為具有大量資料庫（大於200）的 SharePoint 伺服器陣列設定 RBS，SharePoint 管理中心網頁可能會超時。如果發生這種情況，請重新整理頁面。 這不會影響設定程序。
+      > 如果您要為擁有大量資料庫的 SharePoint 伺服器陣列設定 RBS (大於 200) ，SharePoint 管理中心網頁可能會超時。如果發生這種情況，請重新整理頁面。 這不會影響設定程序。
 
 4. 驗證組態：
    

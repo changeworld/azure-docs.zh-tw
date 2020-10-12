@@ -1,16 +1,16 @@
 ---
 title: 使用 Key Vault 參考
-description: 瞭解如何設定 Azure App Service 和 Azure Functions 以使用 Azure Key Vault 參考。 將 Key Vault 秘密提供給您的應用程式程式碼。
+description: 瞭解如何設定 Azure App Service 和 Azure Functions，以使用 Azure Key Vault 參考。 將 Key Vault 秘密提供給您的應用程式程式碼。
 author: mattchenderson
 ms.topic: article
 ms.date: 10/09/2019
 ms.author: mahender
 ms.custom: seodec18
 ms.openlocfilehash: 5b76c940066539995dbefa76d503b5412ce0c359
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85557918"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions"></a>使用 App Service 和 Azure Functions 的 Key Vault 參考
@@ -31,14 +31,14 @@ ms.locfileid: "85557918"
 1. 針對您稍早建立的應用程式識別碼，建立 [Key Vault 中的存取原則](../key-vault/general/secure-your-key-vault.md#key-vault-access-policies)。 在此原則上啟用 "Get" 祕密權限。 請勿設定「授權的應用程式」或 `applicationId` 設定，因為這與受控識別不相容。
 
     > [!NOTE]
-    > Key Vault 參考目前無法使用[網路限制](../key-vault/general/overview-vnet-service-endpoints.md)來解析儲存在金鑰保存庫中的秘密。
+    > Key Vault 參考目前無法解析金鑰保存庫中儲存的秘密，但有 [網路限制](../key-vault/general/overview-vnet-service-endpoints.md)。
 
 ## <a name="reference-syntax"></a>參考語法
 
 Key Vault 參考格式為 `@Microsoft.KeyVault({referenceString})`，其中 `{referenceString}` 會由下列其中一個選項來取代：
 
 > [!div class="mx-tdBreakAll"]
-> | 參考字串                                                            | Description                                                                                                                                                                                 |
+> | 參考字串                                                            | 說明                                                                                                                                                                                 |
 > |-----------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 > | SecretUri=_secretUri_                                                       | **SecretUri** 應該是 Key Vault 中祕密的完整資料平面 URI (包括版本在內)，例如 https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931  |
 > | VaultName=_vaultName_;SecretName=_secretName_;SecretVersion=_secretVersion_ | **VaultName** 應該是您 Key Vault 資源的名稱。 **SecretName** 應該是目標祕密的名稱。 **SecretVersion** 應該是要使用的祕密版本。 |
@@ -61,7 +61,7 @@ Key Vault 參考格式為 `@Microsoft.KeyVault({referenceString})`，其中 `{re
 
 ## <a name="source-application-settings-from-key-vault"></a>來自 Key Vault 的來源應用程式設定
 
-Key Vault 參照可以做為[應用程式設定](configure-common.md#configure-app-settings)的值使用，讓您可以將秘密保存在 Key Vault 中，而不是網站 config。應用程式設定會安全地在待用時加密，但如果您需要密碼管理功能，他們應該會進入 Key Vault。
+Key Vault 參考可做為 [應用程式設定](configure-common.md#configure-app-settings)的值，可讓您將秘密保留在 Key Vault，而不是網站設定中。應用程式設定會在待用時安全地加密，但如果您需要秘密管理功能，則應該進入 Key Vault。
 
 若要使用應用程式設定的 Key Vault 參考，請將參考設為設定的值。 您的應用程式可以正常方式透過它的金鑰來參考祕密。 不需要變更程式碼。
 
@@ -72,7 +72,7 @@ Key Vault 參照可以做為[應用程式設定](configure-common.md#configure-a
 
 透過 Azure Resource Manager 範本將資源部署自動化時，您可能需要以特定順序來排序相依性，才能使此功能運作。 請注意，您必須將應用程式設定定義為它們自己的資源，而不是使用網站定義中的 `siteConfig` 屬性。 這是因為必須先定義網站，才能使用它來建立系統指派的識別，並且可在存取原則中使用。
 
-函數應用程式的範例虛擬範本可能如下所示：
+函數應用程式的範例虛擬範本看起來可能如下所示：
 
 ```json
 {
@@ -178,28 +178,28 @@ Key Vault 參照可以做為[應用程式設定](configure-common.md#configure-a
 > [!NOTE] 
 > 在此範例中，原始檔控制部署取決於應用程式設定。 這通常是不安全的行為，因為應用程式設定更新會以非同步方式運作。 不過，因為我們已包含 `WEBSITE_ENABLE_SYNC_UPDATE_SITE` 應用程式設定，所以更新會同步。 這表示，原始檔控制部署將只會在應用程式設定已完全更新之後開始。
 
-## <a name="troubleshooting-key-vault-references"></a>Key Vault 參考的疑難排解
+## <a name="troubleshooting-key-vault-references"></a>針對 Key Vault 參考進行疑難排解
 
-如果未正確解析參考，則會改用參考值。 這表示針對應用程式設定，會建立其值具有語法的環境變數 `@Microsoft.KeyVault(...)` 。 這可能會導致應用程式擲回錯誤，因為它預期會有特定結構的秘密。
+如果未正確解析參考，則會改用參考值。 這表示在應用程式設定中，系統會建立其值具有語法的環境變數 `@Microsoft.KeyVault(...)` 。 這可能會導致應用程式擲回錯誤，因為它預期會有特定結構的秘密。
 
-最常見的原因是[Key Vault 存取原則](#granting-your-app-access-to-key-vault)的設定不正確。 不過，它也可能是因為秘密已不存在或參考本身的語法錯誤所導致。
+最常見的原因是 [Key Vault 存取原則](#granting-your-app-access-to-key-vault)的設定不正確。 不過，它也可能是因為秘密不再存在，或是參考本身有語法錯誤。
 
-如果語法正確，您可以藉由在入口網站中檢查目前的解決狀態來查看其他錯誤原因。 流覽至 [應用程式設定]，然後選取 [編輯] 以取得問題中的參考。 在設定設定底下，您應該會看到狀態資訊，包括任何錯誤。 缺少這些表示參考語法是不正確。
+如果語法正確，您可以在入口網站中檢查目前的解決狀態，以查看其他錯誤原因。 流覽至 [應用程式設定]，然後選取 [編輯] 以取得有問題的參考。 在設定設定下，您應該會看到狀態資訊，包括任何錯誤。 缺少這些，表示參考語法無效。
 
 您也可以使用其中一個內建偵測器來取得其他資訊。
 
 ### <a name="using-the-detector-for-app-service"></a>使用 App Service 的偵測器
 
 1. 在入口網站中，流覽至您的應用程式。
-2. 選取 [診斷並解決問題]****。
-3. 選擇 [**可用性和效能**]，然後選取 [ **Web 應用程式關閉]。**
-4. 尋找**Key Vault 應用程式設定] 診斷**，然後按一下 [**詳細資訊**]。
+2. 選取 [診斷並解決問題]。
+3. 選擇 **可用性和效能** ，然後選取 [ **Web 應用程式關閉]。**
+4. 尋找 **Key Vault 的應用程式設定診斷** ，然後按一下 [ **詳細資訊**]。
 
 
 ### <a name="using-the-detector-for-azure-functions"></a>使用 Azure Functions 的偵測器
 
 1. 在入口網站中，流覽至您的應用程式。
-2. 流覽至 [**平臺功能]。**
-3. 選取 [診斷並解決問題]****。
-4. 選擇 [**可用性和效能**]，然後選取 [**函數應用程式關閉] 或**[回報錯誤]。
-5. 按一下 [ **Key Vault 應用程式設定**] [診斷]。
+2. 流覽至 [ **平臺功能]。**
+3. 選取 [診斷並解決問題]。
+4. 選擇 **可用性和效能** ，然後選取 [函式 **應用程式關閉或報告錯誤]。**
+5. 按一下 **Key Vault 的應用程式設定診斷。**

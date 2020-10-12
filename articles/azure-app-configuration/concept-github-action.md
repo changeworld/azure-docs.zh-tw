@@ -7,10 +7,10 @@ ms.date: 02/20/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
 ms.openlocfilehash: 66d0e32e7dfdd5ab2abee5108ac8ce54c5222747
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87371816"
 ---
 # <a name="sync-your-github-repository-to-app-configuration"></a>將您的 GitHub 存放庫同步至應用程式組態
@@ -25,7 +25,7 @@ GitHub Actions [工作流程](https://help.github.com/articles/about-github-acti
 GitHub [文件](https://help.github.com/actions/automating-your-workflow-with-github-actions/configuring-a-workflow) \(英文\) 提供 GitHub 工作流程和動作的深入觀點。 
 
 ## <a name="enable-github-actions-in-your-repository"></a>在您的存放庫中啟用 GitHub Actions
-若要開始使用此 GitHub 動作，請移至您的存放庫並選取 [**動作**] 索引標籤。選取 [**新增工作流程**]，然後**自行設定工作流程**。 最後，在 Marketplace 中搜尋「Azure App Configuration Sync」。
+若要開始使用此 GitHub 動作，請移至您的存放庫，然後選取 [ **動作** ] 索引標籤。選取 [ **新增工作流程**]，然後 **自行設定工作流程**。 最後，在 Marketplace 中搜尋「Azure App Configuration Sync」。
 > [!div class="mx-imgBorder"]
 > ![選取 [動作] 索引標籤](media/find-github-action.png)
 
@@ -92,7 +92,7 @@ jobs:
 ```
 ## <a name="sync-multiple-files-in-one-action"></a>在一個動作中同步處理多個檔案 
 
-如果您的設定是在多個檔案中，您可以使用下列模式，以在其中一個檔案遭到修改時觸發同步處理。 此模式會使用 glob 程式庫 https://www.npmjs.com/package/glob 。 請注意，如果您的設定檔名稱包含逗號，您可以使用反斜線來轉義逗號。 
+如果您的設定是在多個檔案中，您可以使用下列模式，以在其中一個檔案遭到修改時觸發同步處理。 此模式會使用 glob 程式庫 https://www.npmjs.com/package/glob 。 請注意，如果您的設定檔名稱包含逗號，則可以使用反斜線來 escape 逗號。 
 
 ```json
 on:
@@ -252,7 +252,7 @@ jobs:
 ## <a name="use-max-depth-to-limit-github-action"></a>使用最大深度來限制 GitHub 動作
 巢狀 JSON 屬性的預設行為是將整個物件壓平合併。  下列 JSON 會定義此機碼/值組：
 
-| 機碼 | 值 |
+| Key | 值 |
 | --- | --- |
 | Object:Inner:InnerKey | InnerValue |
 

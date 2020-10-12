@@ -1,6 +1,6 @@
 ---
 title: 使用設備針對 Azure 進行資料傳輸的選項 | Microsoft Docs
-description: 瞭解如何選擇適用于在 Data Box Edge、Azure 檔案同步和 StorSimple 8000 系列之間將內部部署資料傳輸至 Azure 的應用裝置。
+description: 瞭解如何為 Data Box Edge、Azure 檔案同步和 StorSimple 8000 系列之間的內部部署資料傳輸至 Azure，選擇適合的設備。
 services: storsimple
 author: alkohli
 ms.service: storsimple
@@ -8,17 +8,17 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: alkohli
 ms.openlocfilehash: 903342230b28f8e4fbdcdfd93543e5a0aa54975e
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88183270"
 ---
 # <a name="compare-storsimple-with-azure-file-sync-and-data-box-edge-data-transfer-options"></a>比較 StorSimple、Azure 檔案同步及 Data Box Edge 資料傳輸選項 
 
 [!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
  
-本檔概述將內部部署資料傳輸至 Azure 的選項，並比較： Data Box Edge 與 Azure 檔案同步與 StorSimple 8000 系列。
+本檔概述將內部部署資料傳輸至 Azure 的選項，並比較： Data Box Edge 與 Azure 檔案同步與 StorSimple 8000 系列的比較。
 
 - **[Data Box Edge](/azure/databox-online/data-box-edge-overview)**：Data Box Edge 是內部部署網路設備，可將資料移入和移出 Azure，並具有能在上傳期間預先處理資料的 AI 功能 Edge 計算能力。 「資料箱閘道」是該裝置的虛擬版本，並具備相同的資料傳輸功能。
 - **[Azure 檔案同步](/azure/storage/files/storage-sync-files-deployment-guide)**：您可使用 Azure 檔案同步將組織的檔案共用集中在 Azure 檔案服務中，同時保有內部部署檔案伺服器的靈活度、效能及相容性。 Azure 檔案同步會將 Windows Server 轉換成 Azure 檔案共用的快速快取。 Azure 檔案同步正式推出的消息已於 2018 前半年宣布。

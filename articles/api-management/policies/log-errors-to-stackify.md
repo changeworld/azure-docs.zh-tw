@@ -1,5 +1,5 @@
 ---
-title: API 管理原則範例-將錯誤傳送至 Stackify 以進行記錄
+title: API 管理原則範例-將錯誤傳送至 Stackify 進行記錄
 titleSuffix: Azure API Management
 description: Azure API 管理原則範例 - 示範如何新增錯誤記錄原則，以將錯誤傳送到 Stackify 進行記錄。
 services: api-management
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
 ms.openlocfilehash: 6662761df005211729dffb16282b8e0a8e2a8444
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75442448"
 ---
 # <a name="send-errors-to-stackify-for-logging"></a>將錯誤傳送至 Stackify 進行記錄

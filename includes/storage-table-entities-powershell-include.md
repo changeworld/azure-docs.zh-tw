@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/27/2019
 ms.author: tamram
 ms.openlocfilehash: 9a60c624b181a1efd2f6deebd349daa82214a8a4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67173654"
 ---
 <!--created by Robin Shahan to go in the articles for table storage w/powershell.
@@ -18,7 +18,7 @@ ms.locfileid: "67173654"
 
 現在，您有一個資料表，讓我們看看如何管理資料表中的實體 (或稱資料列)。 
 
-實體最多可以有255屬性，包括三個系統屬性： **PartitionKey**、 **RowKey**和**Timestamp**。 您必須負責插入及更新**PartitionKey**和**RowKey**的值。 伺服器會管理無法修改的**時間戳記**值。 **PartitionKey** 和 **RowKey** 的組合可唯一識別資料表內的每個實體。
+實體最多可以有255個屬性，包括三個系統屬性： **PartitionKey**、 **RowKey**和 **Timestamp**。 您必須負責插入及更新 **PartitionKey** 和 **RowKey**的值。 伺服器會管理無法修改的 **時間戳記**值。 **PartitionKey** 和 **RowKey** 的組合可唯一識別資料表內的每個實體。
 
 * **PartitionKey**：決定儲存實體的資料分割。
 * **RowKey**：在資料分割內唯一地識別實體。
@@ -27,7 +27,7 @@ ms.locfileid: "67173654"
 
 ### <a name="add-table-entities"></a>新增資料表實體
 
-使用**add-AzTableRow**將實體加入至資料表。 這些範例會使用資料分割索引鍵，其值 `partition1` `partition2` 為和，而資料列索引鍵等於州縮寫。 每個實體中的屬性為 `username` 和 `userid` 。 
+使用 **add-AzTableRow**將實體新增至資料表。 這些範例會使用具有值和的資料分割索引鍵 `partition1` `partition2` ，且資料列索引鍵等於州縮寫。 每個實體中的屬性為 `username` 和 `userid` 。 
 
 ```powershell
 $partitionKey1 = "partition1"
@@ -57,10 +57,10 @@ Add-AzTableRow `
 
 ### <a name="query-the-table-entities"></a>查詢資料表實體
 
-您可以使用**AzTableRow**命令來查詢資料表中的實體。
+您可以使用 **AzTableRow** 命令來查詢資料表中的實體。
 
 > [!NOTE]
-> Cmdlet **AzureStorageTableRowAll**、 **AzureStorageTableRowByPartitionKey**、 **AzureStorageTableRowByColumnName**和**AzureStorageTableRowByCustomFilter**已被取代，將在未來的版本更新中移除。
+> Cmdlet **AzureStorageTableRowAll**、 **AzureStorageTableRowByPartitionKey**、 **AzureStorageTableRowByColumnName**和 **AzureStorageTableRowByCustomFilter** 已被取代，並將在未來的版本更新中移除。
 
 #### <a name="retrieve-all-entities"></a>擷取所有實體
 
@@ -127,7 +127,7 @@ Get-AzTableRow `
 
 ### <a name="updating-entities"></a>更新實體 
 
-更新實體有三個步驟。 首先，取出要變更的實體。 第二，進行變更。 第三，使用**Update-AzTableRow**認可變更。
+更新實體有三個步驟。 首先，取出要變更的實體。 第二，進行變更。 第三，使用 **更新 AzTableRow**認可變更。
 
 更新使用者名稱 = 'Jessie' 的實體，讓使用者名稱 = 'Jessie2'。 此範例也顯示了另一種使用 .NET 類型建立自訂篩選條件的方法。
 
@@ -166,7 +166,7 @@ Get-AzTableRow -table $cloudTable `
 
 #### <a name="deleting-one-entity"></a>刪除單一實體
 
-若要刪除單一實體，請取得該實體的參考，並使用管線將它傳送至**AzTableRow**。
+若要刪除單一實體，請取得該實體的參考，並使用管線將它傳送至 **AzTableRow**。
 
 ```powershell
 # Set filter.

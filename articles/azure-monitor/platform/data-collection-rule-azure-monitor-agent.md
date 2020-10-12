@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 08/19/2020
 ms.openlocfilehash: aa3225378f921792d1e8ba0442f2c555d095fb9d
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90968405"
 ---
 # <a name="configure-data-collection-for-the-azure-monitor-agent-preview"></a>設定 Azure 監視器代理程式 (預覽的資料收集) 
@@ -67,7 +67,7 @@ ms.locfileid: "90968405"
 2.使用 [REST API](https://docs.microsoft.com/rest/api/monitor/datacollectionrules/create#examples)建立規則。
 3.使用 [REST API](https://docs.microsoft.com/rest/api/monitor/datacollectionruleassociations/create#examples)為每個虛擬機器建立資料集合規則的關聯。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 深入瞭解 [Azure 監視器代理程式](azure-monitor-agent-overview.md)。
 - 深入瞭解 [資料收集規則](data-collection-rule-overview.md)。

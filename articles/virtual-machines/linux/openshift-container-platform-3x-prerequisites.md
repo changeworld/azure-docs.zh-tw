@@ -10,23 +10,23 @@ ms.workload: infrastructure
 ms.date: 10/23/2019
 ms.author: haroldw
 ms.openlocfilehash: 68bd748e890659e4b79d76e4ccab038f251a937a
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87368178"
 ---
-# <a name="common-prerequisites-for-deploying-openshift-container-platform-311-in-azure"></a>在 Azure 中部署 OpenShift 容器平臺3.11 的常見必要條件
+# <a name="common-prerequisites-for-deploying-openshift-container-platform-311-in-azure"></a>在 Azure 中部署 OpenShift 容器平臺3.11 的一般必要條件
 
 本文說明在 Azure 中部署 OpenShift 容器平台或 OKD 的一般必要條件。
 
 OpenShift 安裝是使用 Ansible 腳本。 Ansible 使用安全殼層 (SSH) 連接到所有叢集主機，以完成安裝步驟。
 
-當 ansible 對遠端主機進行 SSH 連線時，它無法輸入密碼。 因此，私密金鑰不能有相關聯的密碼 (複雜密碼)，否則部署會失敗。
+當 ansible 讓 SSH 連線到遠端主機時，無法輸入密碼。 因此，私密金鑰不能有相關聯的密碼 (複雜密碼)，否則部署會失敗。
 
-由於所有虛擬機器 (VM) 是透過 Azure Resource Manager 範本部署的，因此會使用相同的公開金鑰存取所有 VM。 對應的私密金鑰也必須位於執行所有腳本的 VM 上。 為了安全地執行此動作，會使用 Azure 金鑰保存庫將私密金鑰傳遞至 VM。
+由於所有虛擬機器 (VM) 是透過 Azure Resource Manager 範本部署的，因此會使用相同的公開金鑰存取所有 VM。 相對應的私密金鑰也必須位於執行所有操作手冊的 VM 上。 為了安全地執行此動作，系統會使用 Azure 金鑰保存庫將私密金鑰傳遞至 VM。
 
-如果容器有永續性儲存體的需求，則需要永久性磁碟區。 OpenShift 支援適用于持續性磁片區的 Azure 虛擬硬碟（Vhd），但必須先將 Azure 設定為雲端提供者。
+如果容器有永續性儲存體的需求，則需要永久性磁碟區。 OpenShift 支援針對永久性磁片區 (Vhd) 的 Azure 虛擬硬碟，但必須先將 Azure 設定為雲端提供者。
 
 在此模型中，OpenShift 將會：
 
@@ -57,14 +57,14 @@ az login
 
 使用 [az group create](/cli/azure/group) 命令來建立資源群組。 Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。 您應該使用專用的資源群組來裝載金鑰保存庫。 此群組與 OpenShift 叢集資源部署所在的資源群組分開。
 
-下列範例會在*eastus*位置中建立名為*keyvaultrg*的資源群組：
+下列範例會在*eastus*位置建立名為 *>keyvaultrg*的資源群組：
 
 ```azurecli
 az group create --name keyvaultrg --location eastus
 ```
 
 ## <a name="create-a-key-vault"></a>建立金鑰保存庫
-使用 [az keyvault create](/cli/azure/keyvault) 命令來建立要儲存叢集之 SSH 金鑰的金鑰保存庫。 金鑰保存庫名稱必須是全域唯一的，而且必須啟用範本部署，否則部署將會失敗並出現 "KeyVaultParameterReferenceSecretRetrieveFailed" 錯誤。
+使用 [az keyvault create](/cli/azure/keyvault) 命令來建立要儲存叢集之 SSH 金鑰的金鑰保存庫。 金鑰保存庫名稱必須是全域唯一的，且必須針對範本部署啟用，否則部署將會失敗並出現 "KeyVaultParameterReferenceSecretRetrieveFailed" 錯誤。
 
 下列範例會在 *keyvaultrg* 資源群組中，建立名為 *keyvault* 的金鑰保存庫：
 
@@ -94,13 +94,13 @@ az keyvault secret set --vault-name keyvault --name keysecret --file ~/.ssh/open
 ```
 
 ## <a name="create-a-service-principal"></a>建立服務主體 
-OpenShift 會使用使用者名稱與密碼或服務主體與 Azure 進行通訊。 Azure 服務主體是安全性識別，可供您與應用程式、服務及諸如 OpenShift 等自動化工具搭配使用。 您可以控制和定義關於服務主體可以在 Azure 中執行哪些作業的權限。 最好將服務主體的許可權範圍限定在特定的資源群組，而不是整個訂用帳戶。
+OpenShift 會使用使用者名稱與密碼或服務主體與 Azure 進行通訊。 Azure 服務主體是安全性識別，可供您與應用程式、服務及諸如 OpenShift 等自動化工具搭配使用。 您可以控制和定義關於服務主體可以在 Azure 中執行哪些作業的權限。 最好將服務主體的許可權範圍限定在特定資源群組，而不是整個訂用帳戶。
 
 使用 [az ad sp create-for-rbac](/cli/azure/ad/sp) 建立服務主體，並輸出 OpenShift 所需的認證。
 
-下列範例會建立服務主體，並將其參與者許可權指派給名為*openshiftrg*的資源群組。
+下列範例會建立服務主體，並將其參與者許可權指派給名為 *openshiftrg*的資源群組。
 
-首先，建立名為*openshiftrg*的資源群組：
+首先，建立名為 *openshiftrg*的資源群組：
 
 ```azurecli
 az group create -l eastus -n openshiftrg
@@ -132,21 +132,21 @@ az ad sp create-for-rbac --name openshiftsp \
 ```
 
  > [!WARNING] 
- > 請務必寫下安全密碼，因為它無法再次取得此密碼。
+ > 請務必寫下安全密碼，因為無法再次取得此密碼。
 
 如需有關服務主體的詳細資訊，請參閱[使用 Azure CLI 建立 Azure 服務主體](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest)。
 
 ## <a name="prerequisites-applicable-only-to-resource-manager-template"></a>僅適用于 Resource Manager 範本的必要條件
 
-必須為 SSH 私密金鑰（**sshPrivateKey**）、Azure AD 用戶端密碼（**AadClientSecret**）、OpenShift 系統管理員密碼（**OpenshiftPassword**），以及 Red Hat 訂用帳戶管理員密碼或啟用金鑰（**rhsmPasswordOrActivationKey**）建立秘密。  此外，如果使用自訂的 TLS/SSL 憑證，則必須建立六個額外的密碼- **routingcafile**、 **routingcertfile**、 **routingkeyfile**、 **mastercafile**、 **mastercertfile**和**masterkeyfile**。  這些參數將會更詳細地說明。
+您必須為 SSH 私密金鑰建立密碼 (**sshPrivateKey**) 、Azure AD 用戶端密碼 (**AadClientSecret**) 、OpenShift 系統管理員密碼 (**OpenshiftPassword**) ，以及 Red Hat 訂用帳戶管理員密碼或啟用金鑰 (**rhsmPasswordOrActivationKey**) 。  此外，如果使用自訂的 TLS/SSL 憑證，則必須建立六個額外的秘密- **routingcafile**、 **routingcertfile**、 **routingkeyfile**、 **mastercafile**、 **mastercertfile**和 **masterkeyfile**。  這些參數將會更詳細地說明。
 
-範本會參考特定的秘密名稱，因此您**必須**使用以上所列的粗體名稱（區分大小寫）。
+範本會參考特定的秘密名稱，因此您 **必須** 使用上列粗體名稱 (區分大小寫的) 。
 
 ### <a name="custom-certificates"></a>自訂憑證
 
-根據預設，範本會使用 OpenShift web 主控台和路由網域的自我簽署憑證來部署 OpenShift 叢集。 如果您想要使用自訂的 TLS/SSL 憑證，請將 ' routingCertType ' 設為 ' custom '，並將 ' masterCertType ' 設定為 ' custom '。  您將需要憑證的 CA、Cert 和金鑰檔（如 pem 格式）。  您可以將自訂憑證用於其中一個，而不是另一個。
+根據預設，範本會使用 OpenShift web 主控台和路由網域的自我簽署憑證來部署 OpenShift 叢集。 如果您想要使用自訂的 TLS/SSL 憑證，請將 ' routingCertType ' 設為 ' custom '，並將 ' masterCertType ' 設定為 ' custom '。  您需要憑證的 pem 格式的 CA、憑證和金鑰檔。  您可以使用自訂憑證，而不是另一個。
 
-您必須將這些檔案儲存在 Key Vault 的秘密中。  使用與用於私密金鑰相同的 Key Vault。  範本會以硬式編碼的形式，為每個 TLS/SSL 憑證檔案使用特定的秘密名稱，而不需要額外輸入6個密碼名稱。  使用下表中的資訊來儲存憑證資料。
+您必須將這些檔案儲存在 Key Vault 秘密中。  使用與用於私密金鑰的 Key Vault 相同的。  範本已硬式編碼，以針對每個 TLS/SSL 憑證檔案使用特定的秘密名稱，而不需要額外6個秘密名稱輸入。  使用下表中的資訊儲存憑證資料。
 
 | 秘密名稱      | 憑證檔案   |
 |------------------|--------------------|
@@ -154,8 +154,8 @@ az ad sp create-for-rbac --name openshiftsp \
 | mastercertfile   | 主要憑證檔案   |
 | masterkeyfile    | 主要金鑰檔案    |
 | routingcafile    | 路由 CA 檔案    |
-| routingcertfile  | 路由憑證檔案  |
-| routingkeyfile   | 路由金鑰檔案   |
+| routingcertfile  | 路由證書檔  |
+| routingkeyfile   | 路由金鑰檔   |
 
 使用 Azure CLI 建立秘密。 以下為範例。
 
@@ -163,7 +163,7 @@ az ad sp create-for-rbac --name openshiftsp \
 az keyvault secret set --vault-name KeyVaultName -n mastercafile --file ~/certificates/masterca.pem
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 本文涵蓋下列主題：
 > [!div class="checklist"]
@@ -173,4 +173,4 @@ az keyvault secret set --vault-name KeyVaultName -n mastercafile --file ~/certif
 接下來，部署 OpenShift 叢集：
 
 - [部署 OpenShift 容器平台](./openshift-container-platform-3x.md)
-- [部署 OpenShift 容器平臺自我管理的 Marketplace 供應專案](./openshift-container-platform-3x-marketplace-self-managed.md)
+- [將 OpenShift 容器平臺部署 Self-Managed Marketplace 供應專案](./openshift-container-platform-3x-marketplace-self-managed.md)

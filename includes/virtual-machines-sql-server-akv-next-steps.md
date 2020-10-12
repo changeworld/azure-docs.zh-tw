@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: jroth
 ms.openlocfilehash: e0ff4e91ed55a37e710a5655e7da9ec76b7d1dd5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84014686"
 ---
 ## <a name="next-steps"></a>後續步驟
@@ -25,7 +25,7 @@ ms.locfileid: "84014686"
 
 ### <a name="prerequisites-for-examples"></a>範例的必要條件
 
-每個範例都是以兩個必要條件為基礎：金鑰保存庫中的非對稱金鑰稱為**CONTOSO_KEY** ，以及 AKV 整合功能所建立的認證，稱為**Azure_EKM_cred**。 下列 Transact-SQL 命令會設定這些必要條件，以用於執行範例。
+每個範例都是以兩個必要條件為基礎：金鑰保存庫中稱為 **CONTOSO_KEY** 的非對稱金鑰，以及稱為 **Azure_EKM_cred**的 AKV 整合功能所建立的認證。 下列 Transact-SQL 命令會設定這些必要條件，以用於執行範例。
 
 ``` sql
 USE master;

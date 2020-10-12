@@ -16,10 +16,10 @@ ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli, devx-track-csharp
 ms.openlocfilehash: 8d3835d78ec55f120f6b9439aea9c29434e6bd47
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89289472"
 ---
 # <a name="manage-streaming-endpoints-with--media-services-v3"></a>使用媒體服務 v3 來管理串流端點
@@ -106,7 +106,7 @@ if (streamingEndpoint != null)
 
 ---
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [媒體服務 v3 OpenAPI 規格 (Swagger) ](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01)
 * [串流端點作業](/rest/api/media/streamingendpoints)

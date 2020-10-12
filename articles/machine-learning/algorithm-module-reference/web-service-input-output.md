@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 04/13/2020
 ms.openlocfilehash: a62f8aee0bd0a0d2b7009a48e9d5f00ea3c5155f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90883220"
 ---
 # <a name="web-service-input-and-web-service-output-modules"></a>Web 服務輸入和 Web 服務輸出模組
@@ -47,7 +47,7 @@ Web 服務輸入模組會指出使用者資料進入管線的位置。 Web 服�
 > [!NOTE]
 >  在上述範例中， **手動輸入資料** 可提供 web 服務輸入的資料結構描述，而且是部署即時端點的必要項。 一般而言，您應該一律將模組或資料集連接至 **Web 服務輸入** 所連接的埠，以提供資料架構。
    
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 深入瞭解如何 [部署即時端點](https://docs.microsoft.com/azure/machine-learning/tutorial-designer-automobile-price-deploy#deploy-the-real-time-endpoint)。
 
 請參閱 Azure Machine Learning 的[可用模組集](module-reference.md)。

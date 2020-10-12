@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/04/2020
 ms.openlocfilehash: 8562fd1afaa01e362bd6d95fd4dcf90cf3145c5a
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88928518"
 ---
 # <a name="security-filters-for-trimming-results-in-azure-cognitive-search"></a>Azure 認知搜尋中修剪結果的安全性篩選
@@ -156,7 +156,7 @@ api-key: [admin or query key]
 
 這是您可以根據使用者身分識別和 Azure 認知搜尋功能來篩選結果的方式 `search.in()` 。 您可以使用此函式傳遞要求使用者的主體識別碼，使其符合與每個目的檔案相關聯的主體識別碼。 處理搜尋要求時，`search.in` 函式會篩選出沒有任何使用者主體具備讀取權限的搜尋結果。 主體識別碼可代表安全性群組、角色等等，甚至可代表使用者的專屬身分識別。
  
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 + [使用 Azure 認知搜尋篩選 Active Directory 身分識別型存取控制](search-security-trimming-for-azure-search-with-aad.md)
 + [Azure 認知搜尋中的篩選](search-filters.md)

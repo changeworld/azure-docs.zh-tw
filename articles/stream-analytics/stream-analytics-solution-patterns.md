@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
 ms.openlocfilehash: b82dd4ea8a74c51606b7a388b8d6ede07b1057c4
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89461539"
 ---
 # <a name="azure-stream-analytics-solution-patterns"></a>Azure 串流分析解決方案模式
@@ -180,7 +180,7 @@ Azure 串流分析作業可以執行24/7 來持續即時處理內送事件。 �
 
 關鍵是要以可組合的模式來設計您的系統，因此每個子系統都可以獨立建立、測試、升級及復原。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 您現在已瞭解使用 Azure 串流分析的各種解決方案模式。 接下來，您可以深入了解並建立您的第一個串流分析作業：
 

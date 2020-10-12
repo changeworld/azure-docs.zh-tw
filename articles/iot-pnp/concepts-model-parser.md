@@ -1,6 +1,6 @@
 ---
 title: 瞭解數位 Twins 模型剖析器 |Microsoft Docs
-description: 身為開發人員，瞭解如何使用 DTDL 剖析器來驗證模型
+description: 以開發人員身分學習如何使用 DTDL 剖析器來驗證模型
 author: rido-min
 ms.author: rmpablos
 ms.date: 04/29/2020
@@ -10,19 +10,19 @@ ms.service: iot-pnp
 services: iot-pnp
 manager: peterpr
 ms.openlocfilehash: 20c4452a32c791f33e08c883d8cec89a345ab188
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87352187"
 ---
-# <a name="understand-the-digital-twins-model-parser"></a>瞭解數位 twins 模型剖析器
+# <a name="understand-the-digital-twins-model-parser"></a>了解數位分身模型剖析器
 
-數位 Twins 定義語言（DTDL）會在[DTDL 規格](https://github.com/Azure/opendigitaltwins-dtdl)中說明。 使用者可以使用_數位 Twins 模型_剖析器 NuGet 封裝來驗證及查詢多個檔案中定義的模型。
+數位 Twins 定義語言 (DTDL) 如 [DTDL 規格](https://github.com/Azure/opendigitaltwins-dtdl)中所述。 使用者可以使用 _數位 Twins 模型_ 剖析器 NuGet 套件來驗證和查詢多個檔案中定義的模型。
 
 ## <a name="install-the-dtdl-model-parser"></a>安裝 DTDL 模型剖析器
 
-剖析器可在 NuGet.org 中使用，識別碼為：[選取。](https://www.nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser) 若要安裝剖析器，請使用任何相容的 NuGet 套件管理員，例如 Visual Studio 或 CLI 中的任何一個 `dotnet` 。
+剖析器可在 NuGet.org 中使用，其識別碼為： [DigitalTwins。](https://www.nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser) 若要安裝剖析器，請使用任何相容的 NuGet 套件管理員，例如 Visual Studio 或 CLI 中的套件管理員 `dotnet` 。
 
 ```bash
 dotnet add package Microsoft.Azure.DigitalTwins.Parser
@@ -30,7 +30,7 @@ dotnet add package Microsoft.Azure.DigitalTwins.Parser
 
 ## <a name="use-the-parser-to-validate-a-model"></a>使用剖析器來驗證模型
 
-您想要驗證的模型可能是由 JSON 檔案中所述的一或多個介面所組成。 您可以使用剖析器來載入指定資料夾中的所有檔案，並使用剖析器來驗證整個檔案，包括檔案之間的任何參考：
+您要驗證的模型可能由 JSON 檔案中描述的一或多個介面所組成。 您可以使用剖析器來載入指定資料夾中的所有檔案，並使用剖析器來整個驗證所有檔案，包括檔案之間的任何參考：
 
 1. 建立 `IEnumerable<string>` 包含所有模型內容清單的：
 
@@ -57,7 +57,7 @@ dotnet add package Microsoft.Azure.DigitalTwins.Parser
     IReadOnlyDictionary<Dtmi, DTEntityInfo> parseResult = await modelParser.ParseAsync(modelJson);
     ```
 
-1. 檢查驗證錯誤。 如果剖析器發現任何錯誤，則會擲回， `AggregateException` 其中會列出詳細的錯誤訊息：
+1. 檢查驗證錯誤。 如果剖析器發現任何錯誤，就會擲回， `AggregateException` 其中包含詳細的錯誤訊息清單：
 
     ```csharp
     try
@@ -73,7 +73,7 @@ dotnet add package Microsoft.Azure.DigitalTwins.Parser
     }
     ```
 
-1. 檢查 `Model` 。 如果驗證成功，您可以使用模型剖析器 API 來檢查模型。 下列程式碼片段示範如何反復查看所有剖析的模型，並顯示現有的屬性：
+1. 檢查 `Model` 。 如果驗證成功，您可以使用模型剖析器 API 來檢查模型。 下列程式碼片段顯示如何逐一查看所有剖析的模型，並顯示現有的屬性：
 
     ```csharp
     foreach (var m in parseResult)
@@ -92,6 +92,6 @@ dotnet add package Microsoft.Azure.DigitalTwins.Parser
     }
     ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-本文中所審查的模型剖析器 API 可讓許多案例自動化或驗證相依于 DTDL 模型的工作。 例如，您可以從模型中的資訊動態地建立 UI。
+本文中所討論的模型剖析器 API 可讓許多案例自動化或驗證相依于 DTDL 模型的工作。 例如，您可以從模型中的資訊動態建立 UI。

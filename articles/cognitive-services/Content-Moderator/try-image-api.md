@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: pafarley
 ms.openlocfilehash: 714621fdcc307ee8b29567fc0d95ca41d31aa9e5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75448250"
 ---
 # <a name="moderate-images-from-the-api-console"></a>從 API 主控台審核影像
 
-使用 Azure Content Moderator 中的[影像審核 API](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66c) 來起始影像內容的掃描與檢閱審核工作流程。 審核作業會掃描您的內容是否有不雅內容，並將其與自訂和共用封鎖清單做比較。
+使用 Azure Content Moderator 中的[影像審核 API](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66c) 來起始影像內容的掃描與檢閱審核工作流程。 審核作業會掃描您的內容是否有不雅內容，並將其與自訂和共用的 blocklists 進行比較。
 
 ## <a name="use-the-api-console"></a>使用 API 主控台
 您需要有訂用帳戶金鑰，才能在線上主控台中試用 API。 這位於 [設定]**** 索引標籤的 [Ocp-Apim-Subscription-Key]**** 方塊中。 如需詳細資訊，請參閱[概觀](overview.md)。
@@ -48,7 +48,7 @@ ms.locfileid: "75448250"
 
    ![嘗試 [影像 - 評估] 主控台影像範例](images/sample-image.jpg) 
 
-5. 選取 [**傳送**]。
+5. 選取 [傳送]。
 
 6. API 會傳回每個分類的機率分數。 它也會傳回對於影像是否符合條件的判斷 (**true** 或 **false**)。 
 
@@ -74,7 +74,7 @@ ms.locfileid: "75448250"
 
    ![嘗試 [影像 - 尋找臉部] 要求範例](images/try-image-api-face-request.png)
 
-4. 選取 [**傳送**]。 在此範例中，API 會尋找兩個臉部，並傳回其在影像中的座標。
+4. 選取 [傳送]。 在此範例中，API 會尋找兩個臉部，並傳回其在影像中的座標。
 
    ![嘗試 [影像 - 尋找臉部] 回應內容方塊範例](images/try-image-api-face-response.png)
 
@@ -96,10 +96,10 @@ ms.locfileid: "75448250"
 
 4. 在 [要求本文]**** 方塊中，使用預設的影像範例。 此影像與上一節所使用的影像相同。
 
-5. 選取 [**傳送**]。 所擷取的文字會以 JSON 顯示：
+5. 選取 [傳送]。 所擷取的文字會以 JSON 顯示：
 
    ![[影像 - OCR] 回應內容方塊範例](images/try-image-api-ocr.PNG)
 
 ## <a name="next-steps"></a>後續步驟
 
-在您的程式碼中使用 REST API，或遵循[.NET SDK 快速入門](dotnet-sdk-quickstart.md)，將影像仲裁新增至您的應用程式。
+在您的程式碼中使用 REST API，或遵循 [.NET SDK 快速入門](dotnet-sdk-quickstart.md) ，將影像仲裁新增至您的應用程式。

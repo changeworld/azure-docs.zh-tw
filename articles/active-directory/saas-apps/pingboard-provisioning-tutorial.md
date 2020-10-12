@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: arvinh
 ms.openlocfilehash: 29e28e20bd9b471604a450ddb36ef867f0608e06
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88553757"
 ---
 # <a name="tutorial-configure-pingboard-for-automatic-user-provisioning"></a>教學課程︰設定 Pingboard 來自動佈建使用者
@@ -79,11 +79,11 @@ Azure AD 會使用稱為「指派」的概念，來判斷哪些使用者應收�
 
 1. 在 [通知電子郵件]**** 中，輸入應收到佈建錯誤通知之個人或群組的電子郵件地址。 選取下方的核取方塊。
 
-1. 選取 [儲存]。
+1. 選取 [儲存]****。
 
 1. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 使用者至 Pingboard**]。
 
-1. 在 [屬性對應]**** 區段中，檢閱要從 Azure AD 同步至 Pingboard 的使用者屬性。 選取為 [比對]**** 屬性的屬性會用來比對 Pingboard 中的使用者帳戶，以進行更新作業。 選取 [儲存] 認可任何變更。 如需詳細資訊，請參閱[自訂使用者佈建屬性對應](../app-provisioning/customize-application-attributes.md)。
+1. 在 [屬性對應]**** 區段中，檢閱要從 Azure AD 同步至 Pingboard 的使用者屬性。 選取為 [比對]**** 屬性的屬性會用來比對 Pingboard 中的使用者帳戶，以進行更新作業。 選取 [儲存]  認可任何變更。 如需詳細資訊，請參閱[自訂使用者佈建屬性對應](../app-provisioning/customize-application-attributes.md)。
 
 1. 若要啟用 Pingboard 的 Azure AD 佈建服務，請在 [設定]**** 區段中，將 [佈建狀態]**** 變更為 [開啟]****。
 

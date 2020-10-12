@@ -11,10 +11,10 @@ ms.date: 08/29/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.openlocfilehash: 95f712f196c37650b52220c9e34f6cb6b50bff23
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89460604"
 ---
 # <a name="design-decisions-and-coding-techniques-for-a-synapse-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中 Synapse SQL 集區的設計決策和程式碼撰寫技術 
@@ -24,7 +24,7 @@ ms.locfileid: "89460604"
 下列文章強調說明使用 Azure Synapse 中的 SQL 集區功能來開發分散式資料倉儲的概念和設計決策：
 
 * [連接](../sql/connect-overview.md)
-* [併發](resource-classes-for-workload-management.md)
+* [concurrency](resource-classes-for-workload-management.md)
 * [交易](sql-data-warehouse-develop-transactions.md)
 * [使用者定義架構](sql-data-warehouse-develop-user-defined-schemas.md)
 * [資料表散發](sql-data-warehouse-tables-distribute.md)
@@ -45,5 +45,5 @@ ms.locfileid: "89460604"
 * [分組依據選項](sql-data-warehouse-develop-group-by-options.md)
 * [變數指派](sql-data-warehouse-develop-variable-assignment.md)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 如需詳細的參考資訊，請參閱 [t-sql 語句](sql-data-warehouse-reference-tsql-statements.md)。

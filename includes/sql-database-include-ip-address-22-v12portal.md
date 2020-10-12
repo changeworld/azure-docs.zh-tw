@@ -11,10 +11,10 @@ ms.topic: include
 ms.date: 07/13/2018
 ms.author: ninarn
 ms.openlocfilehash: 8d0f9899dbb7599340b8d15ca010a0157011fb9e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67174058"
 ---
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
@@ -33,13 +33,13 @@ ms.locfileid: "67174058"
 8. 選取 [防火牆]****。
 
     ![選取 [設定] > [防火牆]][b31-SettingsFirewallNavig]
-9. 選取 [新增用戶端 IP]****。 在第一個文字方塊中替新規則輸入名稱。
+9. 選取 [ **新增用戶端 IP**]。 在第一個文字方塊中替新規則輸入名稱。
 
 10. 輸入低和高 IP 位址值作為要啟用的範圍。
 
     * 將低值結尾設為 **.0**、高值結尾設為 **.255** 會比較方便。
 
-11. 選取 [儲存]。
+11. 選取 [儲存]****。
 
 <!-- Image references. -->
 

@@ -11,10 +11,10 @@ ms.date: 01/29/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 1d1928de8c9731b54966e566d4dddf9c01073d41
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85201254"
 ---
 # <a name="claimsproviders"></a>ClaimsProviders
@@ -41,7 +41,7 @@ ms.locfileid: "85201254"
 
 **ClaimsProvider** 元素包含下列元素：
 
-| 元素 | 發生次數 | Description |
+| 元素 | 發生次數 | 描述 |
 | ------- | ----------- | ----------- |
 | ClaimsProvider | 1:n | 在各種不同的使用者旅程圖中可供運用的合格宣告提供者。 |
 
@@ -49,13 +49,13 @@ ms.locfileid: "85201254"
 
 **ClaimsProvider** 元素包含下列子元素：
 
-| 元素 | 發生次數 | Description |
+| 元素 | 發生次數 | 描述 |
 | ------- | ---------- | ----------- |
 | 網域 | 0:1 | 一個字串，其中包含宣告提供者的網域名稱。 例如，如果您的宣告提供者包含 Facebook 技術設定檔，則網域名稱為 Facebook.com。 此網域名稱會用於宣告提供者中定義的所有技術設定檔，除非技術設定檔加以覆寫。 網域名稱也可在 **domain_hint** 中受到參考。 如需詳細資訊，請參閱[使用 Azure Active Directory B2C 設定直接登入](direct-signin.md)的**將登入重新導向至社交提供者**一節。 |
 | DisplayName | 1:1 | 字串，其中包含宣告提供者的名稱。 |
 | [TechnicalProfiles](technicalprofiles.md) | 0:1 | 受到宣告提供者支援的一組技術設定檔 |
 
-**ClaimsProvider**會組織您的技術設定檔與宣告提供者之間的關係。 下列範例顯示具有 Azure Active Directory 技術設定檔的 Azure Active Directory 宣告提供者：
+**ClaimsProvider** 會組織您的技術設定檔與宣告提供者之間的關聯性。 下列範例顯示具有 Azure Active Directory 技術設定檔的 Azure Active Directory 宣告提供者：
 
 ```xml
 <ClaimsProvider>

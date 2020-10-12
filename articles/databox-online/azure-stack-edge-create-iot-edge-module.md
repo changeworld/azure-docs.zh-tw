@@ -10,10 +10,10 @@ ms.date: 08/06/2019
 ms.author: alkohli
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 8acbc7eec7581adcf0d73ffcd4bb2aa7ab2dd572
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90883490"
 ---
 # <a name="develop-a-c-iot-edge-module-to-move-files-on-azure-stack-edge-pro"></a>開發 c # IoT Edge 模組，以將檔案移至 Azure Stack Edge Pro
@@ -60,7 +60,7 @@ ms.locfileid: "90883490"
     - [.NET Core 2.1 SDK](https://www.microsoft.com/net/download)。
     - [DOCKER CE](https://store.docker.com/editions/community/docker-ce-desktop-windows)。 您可能必須建立帳戶，才能下載並安裝軟體。
 
-## <a name="create-a-container-registry"></a>建立容器登錄
+## <a name="create-a-container-registry"></a>建立容器登錄庫
 
 Azure Container Registry 是 Azure 中的私人 Docker 登錄，您可以在其中儲存並管理私人 Docker 容器映像。 雲端中所提供的兩個熱門 Docker 登錄服務為 Azure Container Registry 和 Docker Hub。 本文使用 Container Registry。
 
@@ -77,7 +77,7 @@ Azure Container Registry 是 Azure 中的私人 Docker 登錄，您可以在其�
 
       ![建立容器登錄](./media/azure-stack-edge-create-iot-edge-module/create-container-registry-1.png)
  
-4. 選取 [建立]。
+4. 選取 [建立]****。
 5. 建立容器登錄之後，請加以瀏覽，並選取 [存取金鑰]****。
 
     ![取得存取金鑰](./media/azure-stack-edge-create-iot-edge-module/get-access-keys-1.png)
@@ -276,6 +276,6 @@ Azure Container Registry 是 Azure 中的私人 Docker 登錄，您可以在其�
 
 4. 您可以在 VS Code 整合式終端機中檢視完整容器映像位址。 系統會根據 module.json 檔案中的資訊，使用 `<repository>:<version>-<platform>` 格式來建置映像位址。 在本文中，它應該看起來像 `mycontreg2.azurecr.io/filecopymodule:0.0.1-amd64`。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 若要在 Azure Stack Edge Pro 上部署和執行此模組，請參閱 [新增模組](azure-stack-edge-deploy-configure-compute.md#add-a-module)中的步驟。

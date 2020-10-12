@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 12/04/2018
 ms.custom: devx-track-python
 ms.openlocfilehash: b2254e6d966ca3281cd9c8b0771cb77fb6dede33
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87846610"
 ---
 # <a name="access-cloud-data-in-a-notebook"></a>在 Notebook 中存取雲端資料
@@ -46,7 +46,7 @@ if response.status_code == 200:
 
 您可以使用 pyodbc 或 pymssql 程式庫的協助來存取 SQL Database 或 SQL 受控執行個體中的資料庫。
 
-[使用 Python 查詢 AZURE SQL database](https://docs.microsoft.com/azure/sql-database/sql-database-connect-query-python)提供有關在包含 AdventureWorks 資料的 SQL Database 中建立資料庫的指示，並示範如何查詢該資料。 本文的範例 Notebook 中顯示了相同的程式碼。
+[使用 Python 查詢 AZURE SQL database](https://docs.microsoft.com/azure/sql-database/sql-database-connect-query-python) 可讓您在包含 AdventureWorks 資料的 SQL Database 中建立資料庫的指示，並示範如何查詢該資料。 本文的範例 Notebook 中顯示了相同的程式碼。
 
 ## <a name="azure-storage"></a>Azure 儲存體
 
@@ -64,7 +64,7 @@ Azure Cosmos DB 針對 JSON 文件提供了具完整索引的 NoSQL 存放區。
 - [使用 Python 建置 SQL API 應用程式](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-python)
 - [使用適用於 MongoDB 的 Azure Cosmos DB API 建置 Flask 應用程式](https://docs.microsoft.com/azure/cosmos-db/create-mongodb-flask)
 - [使用 Python 和 Gremlin API 建立圖形資料庫](https://docs.microsoft.com/azure/cosmos-db/create-graph-python)
-- [使用 Python 和 Azure Cosmos DB 建立 Cassandra 應用程式](https://docs.microsoft.com/azure/cosmos-db/create-cassandra-python)
+- [使用 Python 和 Azure Cosmos DB 來建立 Cassandra 應用程式](https://docs.microsoft.com/azure/cosmos-db/create-cassandra-python)
 - [使用 Python 與 Azure Cosmos DB 建置資料表 API 應用程式](https://docs.microsoft.com/azure/cosmos-db/create-table-python)
 
 使用 Cosmos DB 時，您可以使用 [azure-cosmosdb-table](https://pypi.org/project/azure-cosmosdb-table/) 程式庫。
@@ -81,4 +81,4 @@ Azure 提供了許多其他資料庫類型供您使用。 以下文章提供了�
 
 ## <a name="next-steps"></a>後續步驟
 
-- [如何：使用專案資料檔案](work-with-project-data-files.md)
+- [How to：使用專案資料檔案](work-with-project-data-files.md)

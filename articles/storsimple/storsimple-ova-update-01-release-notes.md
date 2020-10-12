@@ -1,5 +1,5 @@
 ---
-title: StorSimple Virtual Array Update 0.2 & 0.1 版本資訊
+title: StorSimple Virtual Array 更新 0.2 & 0.1 版本資訊
 description: 描述執行 Update 0.2 和 0.1 的 StorSimple Virtual Array 的重大未決問題和解決方式。
 services: storsimple
 documentationcenter: ''
@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 06/16/2016
 ms.author: alkohli
 ms.openlocfilehash: 95386f36340aca470769c920e40bbb70e09d34fc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80397872"
 ---
 # <a name="storsimple-virtual-array-update-02-and-01-release-notes"></a>StorSimple Virtual Array Update 0.2 和 0.1 版本資訊
@@ -54,7 +54,7 @@ Update 0.1 包含下列的錯誤修復和改善。
 ## <a name="issues-fixed-in-the-update-01"></a>Update 0.1 中修正的問題
 下表提供本版已修正問題的摘要。
 
-| 不會。 | 功能 | 問題 |
+| 否。 | 功能 | 問題 |
 | --- | --- | --- |
 | 1 |VMDK |過去在某些 VMware 版本中，OS 磁碟視為疏鬆，從而導致警示並會中斷正常作業。 本版已修正這個問題。 |
 | 2 |iSCSI 伺服器 |在上個版本中，使用者需要為 StorSimple 虛擬裝置每個已啟用的網路介面指定閘道器。 本版已變更這種行為，所以使用者必須為所有已啟用的網路介面設定至少一個閘道器。 |
@@ -63,9 +63,9 @@ Update 0.1 包含下列的錯誤修復和改善。
 | 5 |監視圖表 |在上個版本中，接在裝置容錯移轉之後，雲端容量使用率圖表在 Azure 傳統入口網站中顯示的值不正確。 目前的版本已修正這個問題。 |
 
 ## <a name="known-issues-in-the-update-01"></a>Update 0.1 的已知問題
-下表提供 StorSimple Virtual Array 的已知問題摘要，並包含舊版所列的問題。 **此版本中所述的問題版本會以星號標示。這份清單中幾乎所有的問題都已從 GA 版本的 StorSimple Virtual Array 中繼續執行。**
+下表提供 StorSimple Virtual Array 的已知問題摘要，並包含舊版所列的問題。 **此版本中所述的問題版本會以星號標示。這份清單中幾乎所有的問題都已從 StorSimple Virtual Array 的 GA 版本中執行。**
 
-| 不會。 | 功能 | 問題 | 因應措施/註解 |
+| 否。 | 功能 | 問題 | 因應措施/註解 |
 | --- | --- | --- | --- |
 | **1.** |更新 |預覽版中所建立的虛擬裝置無法更新為支援的正式運作版本。 |必須針對正式運作版本使用災害復原 (DR) 工作流程容錯移轉這些虛擬裝置。 |
 | **2.** |佈建的資料磁碟 |佈建特定指定大小的資料磁碟並建立對應的 StorSimple 虛擬裝置之後，不得展開或壓縮資料磁碟。 嘗試執行此作業可能會導致裝置之本機層中的所有資料遺失。 | |
@@ -76,12 +76,12 @@ Update 0.1 包含下列的錯誤修復和改善。
 | **7.** |階層式共用 |使用大型檔案可能會導致緩慢分層輸出。 |使用大型檔案時，建議最大檔案不要超過共用大小的 3%。 |
 | **8.** |共用的已使用容量 |您可能會在共用上沒有任何資料時看到共用耗用。 原因是共用的已使用容量包括中繼資料。 | |
 | **9.** |災害復原 |您只能對與來源裝置網域相同的網域執行檔案伺服器的災害復原。 這個版本不支援另一個網域中目標裝置的災害復原。 |新版本將會實作這個功能。 |
-| **十大.** |Azure PowerShell |在這版本中，無法透過 Azure PowerShell 管理 StorSimple 虛擬裝置。 |所有虛擬裝置的管理應該透過 Azure 傳統入口網站和本機 Web UI 來完成。 |
-| **英寸.** |密碼變更 |虛擬陣列裝置主控台僅接受美式鍵盤格式的輸入。 | |
-| **12.** |CHAP |CHAP 認證一經建立，即無法移除。 此外，若是修改了 CHAP 認證，必須先讓磁碟區離線再上線，變更才會生效。 |這些問題在新版本中都會獲得解決。 |
-| **十三.** |iSCSI 伺服器 |顯示在 iSCSI 磁碟區的 [使用的儲存體] 在 StorSimple Manager 服務與 iSCSI 主機中可能不同。 |ISCSI 主機具有檔案系統檢視。<br></br>裝置會在達到磁碟區大小上限時，看到所配置的區塊。 |
-| **14.** |檔案伺服器* |如果資料夾中的檔案中有與其相關聯的替代資料流 (ADS)，就不會透過災害復原、複製和項目層級復原來備份或還原 ADS。 | |
+| **10.** |Azure PowerShell |在這版本中，無法透過 Azure PowerShell 管理 StorSimple 虛擬裝置。 |所有虛擬裝置的管理應該透過 Azure 傳統入口網站和本機 Web UI 來完成。 |
+| **rj-11.** |密碼變更 |虛擬陣列裝置主控台僅接受美式鍵盤格式的輸入。 | |
+| **全年.** |CHAP |CHAP 認證一經建立，即無法移除。 此外，若是修改了 CHAP 認證，必須先讓磁碟區離線再上線，變更才會生效。 |這些問題在新版本中都會獲得解決。 |
+| **.13.** |iSCSI 伺服器 |顯示在 iSCSI 磁碟區的 [使用的儲存體] 在 StorSimple Manager 服務與 iSCSI 主機中可能不同。 |ISCSI 主機具有檔案系統檢視。<br></br>裝置會在達到磁碟區大小上限時，看到所配置的區塊。 |
+| **日.** |檔案伺服器* |如果資料夾中的檔案中有與其相關聯的替代資料流 (ADS)，就不會透過災害復原、複製和項目層級復原來備份或還原 ADS。 | |
 
-## <a name="next-step"></a>下一步
-在 StorSimple Virtual Array 上[安裝更新](storsimple-ova-install-update-01.md)。
+## <a name="next-step"></a>後續步驟
+在您的 StorSimple Virtual Array 上[安裝更新](storsimple-ova-install-update-01.md)。
 

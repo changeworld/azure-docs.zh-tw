@@ -1,27 +1,27 @@
 ---
 title: 容器群組的 YAML 參考
-description: Azure 容器實例所支援的 YAML 檔案參考，以設定容器群組
+description: Azure 容器實例支援的 YAML 檔案的參考，以設定容器群組
 ms.topic: article
 ms.date: 07/06/2020
 ms.openlocfilehash: d0ec8d13eebba1c60f5a52f8c43bdd8b90eeb913
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87084755"
 ---
 # <a name="yaml-reference-azure-container-instances"></a>YAML 參考： Azure 容器實例
 
-本文涵蓋 Azure 容器實例所支援的 YAML 檔案語法和屬性，以設定[容器群組](container-instances-container-groups.md)。 使用 YAML 檔案，將群組設定輸入至 Azure CLI 中的[az container create][az-container-create]命令。 
+本文涵蓋 Azure 容器實例所支援之 YAML 檔案的語法和屬性，以設定 [容器群組](container-instances-container-groups.md)。 使用 YAML 檔案，將群組設定輸入至 Azure CLI 中的 [az container create][az-container-create] 命令。 
 
-YAML 檔案是將容器群組設定為可重現部署的便利方式。 這是使用[Resource Manager 範本](/azure/templates/Microsoft.ContainerInstance/2019-12-01/containerGroups)或 Azure 容器實例 sdk 來建立或更新容器群組的簡單替代方案。
+YAML 檔案是設定容器群組以進行可重現部署的便利方式。 這是使用 [Resource Manager 範本](/azure/templates/Microsoft.ContainerInstance/2019-12-01/containerGroups) 或 Azure 容器實例 sdk 來建立或更新容器群組的簡單選擇。
 
 > [!NOTE]
 > 此參考適用于 Azure 容器實例 REST API 版本的 YAML 檔案 `2019-12-01` 。
 
 ## <a name="schema"></a>結構描述 
 
-YAML 檔案的架構如下所示，包括醒目提示索引鍵屬性的批註。 如需此架構中屬性的描述，請參閱[屬性值](#property-values)一節。
+YAML 檔案的架構如下所示，包括醒目提示索引鍵屬性的批註。 如需此架構中屬性的描述，請參閱 [屬性值](#property-values) 一節。
 
 ```yml
 name: string  # Name of the container group
@@ -161,8 +161,8 @@ properties: # Properties of container group
 |  NAME | 字串 | 是 | 容器群組的名稱。 |
 |  apiVersion | 列舉 | 是 | 2018-10-01 |
 |  location | 字串 | No | 資源位置。 |
-|  tags | object | 否 | 資源標記。 |
-|  身分識別 | object | 否 | 容器群組的識別（若已設定）。 - [ContainerGroupIdentity 物件](#containergroupidentity-object) |
+|  tags | 物件 (object) | 否 | 資源標記。 |
+|  身分識別 | 物件 (object) | 否 | 容器群組的識別（如果已設定）。 - [ContainerGroupIdentity 物件](#containergroupidentity-object) |
 |  properties | 物件 (object) | 是 | [ContainerGroupProperties 物件](#containergroupproperties-object) |
 
 
@@ -172,8 +172,8 @@ properties: # Properties of container group
 
 |  名稱 | 類型 | 必要 | 值 |
 |  ---- | ---- | ---- | ---- |
-|  類型 | 列舉 | 否 | 用於容器群組的識別類型。 類型 ' SystemAssigned，UserAssigned ' 同時包含隱含建立的身分識別和一組使用者指派的身分識別。 「無」型別會移除容器群組中的任何身分識別。 -SystemAssigned、UserAssigned、SystemAssigned、UserAssigned、None |
-|  userAssignedIdentities | object | 否 | 與容器群組相關聯的使用者身分識別清單。 使用者識別字典索引鍵參考將會以下列格式 Azure Resource Manager 資源識別碼： '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName} '。 |
+|  type | 列舉 | 否 | 用於容器群組的身分識別類型。 類型 ' SystemAssigned，UserAssigned ' 包含隱含建立的身分識別，以及一組使用者指派的身分識別。 類型 ' None ' 將會從容器群組移除任何身分識別。 -SystemAssigned、UserAssigned、SystemAssigned、UserAssigned、None |
+|  userAssignedIdentities | 物件 (object) | 否 | 與容器群組相關聯的使用者身分識別清單。 使用者身分識別字典金鑰參考將會以下列格式 Azure Resource Manager 資源識別碼： '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName} '。 |
 
 
 
@@ -182,17 +182,17 @@ properties: # Properties of container group
 
 |  名稱 | 類型 | 必要 | 值 |
 |  ---- | ---- | ---- | ---- |
-|  containers | array | 是 | 容器群組中的容器。 - [容器物件](#container-object) |
-|  imageRegistryCredentials | array | 否 | 用來建立容器群組的映射登錄認證。 - [ImageRegistryCredential 物件](#imageregistrycredential-object) |
-|  Restartpolicy： | 列舉 | 否 | 重新開機容器群組中所有容器的原則。 - `Always`一律重新開機- `OnFailure` 失敗時重新開機- `Never` 永不重新開機。 -Always，OnFailure，永不 |
-|  ipAddress | object | 否 | 容器群組的 IP 位址類型。 - [IpAddress 物件](#ipaddress-object) |
-|  osType | 列舉 | 是 | 容器群組中的容器所需的作業系統類型。 -Windows 或 Linux |
-|  磁碟區 | array | 否 | 可由這個容器群組中的容器裝載的磁片區清單。 - [磁片區物件](#volume-object) |
-|  診斷 | object | 否 | 容器群組的診斷資訊。 - [ContainerGroupDiagnostics 物件](#containergroupdiagnostics-object) |
-|  networkProfile | object | 否 | 容器群組的網路設定檔資訊。 - [ContainerGroupNetworkProfile 物件](#containergroupnetworkprofile-object) |
-|  dnsConfig | object | 否 | 容器群組的 DNS 設定資訊。 - [DnsConfiguration 物件](#dnsconfiguration-object) |
+|  containers | array | 是 | 容器群組內的容器。 - [容器物件](#container-object) |
+|  imageRegistryCredentials | array | 否 | 建立容器群組所依據的映射登錄認證。 - [ImageRegistryCredential 物件](#imageregistrycredential-object) |
+|  restartPolicy | 列舉 | 否 | 針對容器群組內的所有容器重新開機原則。 - `Always` 一律重新開機- `OnFailure` 失敗時重新開機- `Never` 永不重新開機。 -Always、OnFailure、永不 |
+|  ipAddress | 物件 (object) | 否 | 容器群組的 IP 位址類型。 - [IpAddress 物件](#ipaddress-object) |
+|  osType | 列舉 | 是 | 容器群組中容器所需的作業系統類型。 -Windows 或 Linux |
+|  磁碟區 | array | 否 | 此容器群組中容器可掛接的磁片區清單。 - [磁片區物件](#volume-object) |
+|  診斷 | 物件 (object) | 否 | 容器群組的診斷資訊。 - [ContainerGroupDiagnostics 物件](#containergroupdiagnostics-object) |
+|  networkProfile | 物件 (object) | 否 | 容器群組的網路設定檔資訊。 - [ContainerGroupNetworkProfile 物件](#containergroupnetworkprofile-object) |
+|  dnsConfig | 物件 (object) | 否 | 容器群組的 DNS 設定資訊。 - [DnsConfiguration 物件](#dnsconfiguration-object) |
 | sku | 列舉 | 否 | 容器群組的 SKU-標準或專用 |
-| encryptionProperties | object | 否 | 容器群組的加密屬性。 - [EncryptionProperties 物件](#encryptionproperties-object) | 
+| encryptionProperties | 物件 (object) | 否 | 容器群組的加密屬性。 - [EncryptionProperties 物件](#encryptionproperties-object) | 
 | initContainers | array | 否 | 容器群組的 init 容器。 - [InitContainerDefinition 物件](#initcontainerdefinition-object) |
 
 
@@ -213,7 +213,7 @@ properties: # Properties of container group
 |  名稱 | 類型 | 必要 | 值 |
 |  ---- | ---- | ---- | ---- |
 |  伺服器 | 字串 | 是 | 沒有通訊協定的 Docker 映射登錄伺服器，例如 "HTTP" 和 "HTTPs"。 |
-|  使用者名稱 | 字串 | 是 | 私人登錄的使用者名稱。 |
+|  username | 字串 | 是 | 私人登錄的使用者名稱。 |
 |  密碼 | 字串 | No | 私人登錄的密碼。 |
 
 
@@ -223,9 +223,9 @@ properties: # Properties of container group
 
 |  名稱 | 類型 | 必要 | 值 |
 |  ---- | ---- | ---- | ---- |
-|  連接埠 | array | 是 | 在容器群組上公開的埠清單。 - [埠物件](#port-object) |
-|  類型 | 列舉 | 是 | 指定 IP 是否公開至公用網際網路或私人 VNET。 -公用或私用 |
-|  ip | 字串 | No | 公開至公用網際網路的 IP。 |
+|  連接埠 | array | 是 | 容器群組上公開的埠清單。 - [埠物件](#port-object) |
+|  type | 列舉 | 是 | 指定 IP 是否公開給公用網際網路或私人 VNET。 -Public 或 Private |
+|  ip | 字串 | No | 公開給公用網際網路的 IP。 |
 |  dnsNameLabel | 字串 | No | IP 的 Dns 名稱標籤。 |
 
 
@@ -236,10 +236,10 @@ properties: # Properties of container group
 |  名稱 | 類型 | 必要 | 值 |
 |  ---- | ---- | ---- | ---- |
 |  NAME | 字串 | 是 | 磁碟區的名稱。 |
-|  azureFile | object | 否 | Azure 檔案磁片區。 - [AzureFileVolume 物件](#azurefilevolume-object) |
-|  emptyDir | object | 否 | 空的目錄磁片區。 |
-|  secret | object | 否 | 秘密磁片區。 |
-|  gitRepo | object | 否 | Git 存放庫磁片區。 - [GitRepoVolume 物件](#gitrepovolume-object) |
+|  azureFile | 物件 (object) | 否 | Azure 檔案磁片區。 - [AzureFileVolume 物件](#azurefilevolume-object) |
+|  emptyDir | 物件 (object) | 否 | 空的目錄卷。 |
+|  secret | 物件 (object) | 否 | 秘密磁片區。 |
+|  gitRepo | 物件 (object) | 否 | Git 存放庫磁片區。 - [GitRepoVolume 物件](#gitrepovolume-object) |
 
 
 
@@ -248,7 +248,7 @@ properties: # Properties of container group
 
 |  名稱 | 類型 | 必要 | 值 |
 |  ---- | ---- | ---- | ---- |
-|  logAnalytics | object | 否 | 容器群組記錄分析資訊。 - [LogAnalytics 物件](#loganalytics-object) |
+|  logAnalytics | 物件 (object) | 否 | 容器群組 log analytics 資訊。 - [LogAnalytics 物件](#loganalytics-object) |
 
 
 
@@ -292,13 +292,13 @@ properties: # Properties of container group
 |  名稱 | 類型 | 必要 | 值 |
 |  ---- | ---- | ---- | ---- |
 |  image | 字串 | 是 | 用來建立容器實例的映射名稱。 |
-|  命令 | array | 否 | 要在 exec 格式的容器實例中執行的命令。 -字串 |
-|  連接埠 | array | 否 | 容器實例上已公開的埠。 - [ContainerPort 物件](#containerport-object) |
+|  命令 | array | 否 | 以 exec 形式在容器實例內執行的命令。 -字串 |
+|  連接埠 | array | 否 | 容器實例上的公開端口。 - [ContainerPort 物件](#containerport-object) |
 |  environmentVariables | array | 否 | 要在容器實例中設定的環境變數。 - [EnvironmentVariable 物件](#environmentvariable-object) |
-|  resources | object | 是 | 容器實例的資源需求。 - [ResourceRequirements 物件](#resourcerequirements-object) |
-|  volumeMounts | array | 否 | 可供容器實例使用的磁片區裝載。 - [VolumeMount 物件](#volumemount-object) |
-|  livenessProbe | object | 否 | 活動探查。 - [ContainerProbe 物件](#containerprobe-object) |
-|  readinessProbe | object | 否 | 準備就緒探查。 - [ContainerProbe 物件](#containerprobe-object) |
+|  resources | 物件 (object) | 是 | 容器實例的資源需求。 - [ResourceRequirements 物件](#resourcerequirements-object) |
+|  volumeMounts | array | 否 | 磁片區裝載可供容器實例使用。 - [VolumeMount 物件](#volumemount-object) |
+|  livenessProbe | 物件 (object) | 否 | 活動探查。 - [ContainerProbe 物件](#containerprobe-object) |
+|  readinessProbe | 物件 (object) | 否 | 就緒探查。 - [ContainerProbe 物件](#containerprobe-object) |
 
 
 
@@ -308,7 +308,7 @@ properties: # Properties of container group
 |  名稱 | 類型 | 必要 | 值 |
 |  ---- | ---- | ---- | ---- |
 |  protocol | 列舉 | 否 | 與埠相關聯的通訊協定。 -TCP 或 UDP |
-|  連接埠 | integer | 是 | 連接埠號碼。 |
+|  連接埠 | 整數 | 是 | 連接埠號碼。 |
 
 
 
@@ -317,8 +317,8 @@ properties: # Properties of container group
 
 |  名稱 | 類型 | 必要 | 值 |
 |  ---- | ---- | ---- | ---- |
-|  名 | 字串 | 是 | 要掛接為磁片區的 Azure 檔案共用名稱。 |
-|  readOnly | boolean | 否 | 此旗標指出裝載為磁片區的 Azure 檔案共用是否為唯讀。 |
+|  共用 | 字串 | 是 | 要掛接為磁片區的 Azure 檔案共用名稱。 |
+|  readOnly | boolean | 否 | 旗標，指出裝載為磁片區的 Azure 檔案共用是否為唯讀。 |
 |  storageAccountName | 字串 | 是 | 包含 Azure 檔案共用的儲存體帳戶名稱。 |
 |  storageAccountKey | 字串 | No | 用來存取 Azure 檔案共用的儲存體帳戶存取金鑰。 |
 
@@ -329,9 +329,9 @@ properties: # Properties of container group
 
 |  名稱 | 類型 | 必要 | 值 |
 |  ---- | ---- | ---- | ---- |
-|  directory | 字串 | No | 目標目錄名稱。 不得包含或以 '.. ' 開頭。  如果提供 '. '，磁片區目錄將會是 git 存放庫。  否則，如果有指定，磁片區將會在具有指定名稱的子目錄中包含 git 存放庫。 |
+|  directory | 字串 | No | 目標目錄名稱。 不得包含或開頭為 '.. '。  如果提供了 '. '，磁片區目錄將會是 git 存放庫。  否則，如果有指定，磁片區將會在具有指定名稱的子目錄中包含 git 存放庫。 |
 |  repository | 字串 | 是 | 存放庫 URL |
-|  revision | 字串 | No | 認可指定修訂的雜湊。 |
+|  revision | 字串 | No | 指定修訂的認可雜湊。 |
 
 
 
@@ -339,27 +339,27 @@ properties: # Properties of container group
 
 |  名稱 | 類型 | 必要 | 值 |
 |  ---- | ---- | ---- | ---- |
-|  workspaceId | 字串 | 是 | Log analytics 的工作區識別碼 |
-|  workspaceKey | 字串 | 是 | Log analytics 的工作區金鑰 |
+|  workspaceId | 字串 | 是 | 適用于 log analytics 的工作區識別碼 |
+|  workspaceKey | 字串 | 是 | 適用于 log analytics 的工作區金鑰 |
 |  logType | 列舉 | 否 | 要使用的記錄類型。 -ContainerInsights 或 ContainerInstanceLogs |
-|  中繼資料 | object | 否 | Log analytics 的中繼資料。 |
+|  中繼資料 | 物件 (object) | 否 | 適用于 log analytics 的中繼資料。 |
 
 
 ### <a name="initcontainerpropertiesdefinition-object"></a>InitContainerPropertiesDefinition 物件
 
 | 名稱  | 類型  | 必要  | 值 |
 |  ---- | ---- | ---- | ---- |
-| image | 字串    | No    | Init 容器的影像。 |
-| 命令   | array | 否    | 要在 exec 容器內執行的命令。 -字串 |
+| image | 字串    | No    | Init 容器的映射。 |
+| 命令   | array | 否    | 以 exec 形式在 init 容器內執行的命令。 -字串 |
 | environmentVariables | array  | 否 |要在 init 容器中設定的環境變數。 - [EnvironmentVariable 物件](#environmentvariable-object)
-| volumeMounts |array   | 否    | 可供 init 容器使用的磁片區裝載。 - [VolumeMount 物件](#volumemount-object)
+| volumeMounts |array   | 否    | 磁片區裝載可供 init 容器使用。 - [VolumeMount 物件](#volumemount-object)
 
 ### <a name="containerport-object"></a>ContainerPort 物件
 
 |  名稱 | 類型 | 必要 | 值 |
 |  ---- | ---- | ---- | ---- |
 |  protocol | 列舉 | 否 | 與埠相關聯的通訊協定。 -TCP 或 UDP |
-|  連接埠 | integer | 是 | 在容器群組內公開的埠號碼。 |
+|  連接埠 | 整數 | 是 | 在容器群組內公開的埠號碼。 |
 
 
 
@@ -379,8 +379,8 @@ properties: # Properties of container group
 
 |  名稱 | 類型 | 必要 | 值 |
 |  ---- | ---- | ---- | ---- |
-|  requests | object | 是 | 此容器實例的資源要求。 - [ResourceRequests 物件](#resourcerequests-object) |
-|  限制 | object | 否 | 此容器實例的資源限制。 - [ResourceLimits 物件](#resourcelimits-object) |
+|  requests | 物件 (object) | 是 | 此容器實例的資源要求。 - [ResourceRequests 物件](#resourcerequests-object) |
+|  限制 | 物件 (object) | 否 | 此容器實例的資源限制。 - [ResourceLimits 物件](#resourcelimits-object) |
 
 
 
@@ -390,7 +390,7 @@ properties: # Properties of container group
 |  名稱 | 類型 | 必要 | 值 |
 |  ---- | ---- | ---- | ---- |
 |  NAME | 字串 | 是 | 磁片區掛接的名稱。 |
-|  mountPath | 字串 | 是 | 容器內應裝載磁片區的路徑。 不能包含冒號（:)。 |
+|  mountPath | 字串 | 是 | 容器中應裝載磁片區的路徑。 不得包含冒號 (： ) 。 |
 |  readOnly | boolean | 否 | 指出磁片區掛接是否為唯讀的旗標。 |
 
 
@@ -400,13 +400,13 @@ properties: # Properties of container group
 
 |  名稱 | 類型 | 必要 | 值 |
 |  ---- | ---- | ---- | ---- |
-|  exec | object | 否 | [ContainerExec 物件](#containerexec-object)的執行命令 |
-|  HTTPGet | object | 否 | 探查[ContainerHttpGet 物件](#containerhttpget-object)的 Http Get 設定 |
-|  initialDelaySeconds | integer | 否 | 初始延遲秒數。 |
-|  periodSeconds | integer | 否 | 句點秒數。 |
-|  failureThreshold | integer | 否 | 失敗閾值。 |
-|  successThreshold | integer | 否 | 成功閾值。 |
-|  timeoutSeconds | integer | 否 | 超時秒數。 |
+|  exec | 物件 (object) | 否 | 探查[ContainerExec 物件](#containerexec-object)的執行命令 |
+|  HTTPGet | 物件 (object) | 否 | 探查[ContainerHttpGet 物件](#containerhttpget-object)的 Http Get 設定 |
+|  initialDelaySeconds | 整數 | 否 | 初始延遲秒數。 |
+|  periodSeconds | 整數 | 否 | 期間的秒數。 |
+|  failureThreshold | 整數 | 否 | 失敗閾值。 |
+|  successThreshold | 整數 | 否 | 成功閾值。 |
+|  timeoutSeconds | 整數 | 否 | 超時秒數。 |
 
 
 
@@ -415,9 +415,9 @@ properties: # Properties of container group
 
 |  名稱 | 類型 | 必要 | 值 |
 |  ---- | ---- | ---- | ---- |
-|  memoryInGB | number | 是 | 此容器實例的記憶體要求（以 GB 為單位）。 |
-|  cpu | number | 是 | 此容器實例的 CPU 要求。 |
-|  gpu | object | 否 | 此容器實例的 GPU 要求。 - [GpuResource 物件](#gpuresource-object) |
+|  memoryInGB | 數字 | 是 | 此容器實例的記憶體要求（GB）。 |
+|  cpu | 數字 | 是 | 此容器實例的 CPU 要求。 |
+|  Gpu | 物件 (object) | 否 | 此容器實例的 GPU 要求。 - [GpuResource 物件](#gpuresource-object) |
 
 
 
@@ -426,9 +426,9 @@ properties: # Properties of container group
 
 |  名稱 | 類型 | 必要 | 值 |
 |  ---- | ---- | ---- | ---- |
-|  memoryInGB | number | 否 | 此容器實例的記憶體限制（以 GB 為單位）。 |
-|  cpu | number | 否 | 此容器實例的 CPU 限制。 |
-|  gpu | object | 否 | 此容器實例的 GPU 限制。 - [GpuResource 物件](#gpuresource-object) |
+|  memoryInGB | 數字 | 否 | 此容器實例的記憶體限制（GB）。 |
+|  cpu | 數字 | 否 | 此容器實例的 CPU 限制。 |
+|  Gpu | 物件 (object) | 否 | 此容器實例的 GPU 限制。 - [GpuResource 物件](#gpuresource-object) |
 
 
 
@@ -446,8 +446,8 @@ properties: # Properties of container group
 
 |  名稱 | 類型 | 必要 | 值 |
 |  ---- | ---- | ---- | ---- |
-|  path | 字串 | No | 要探查的路徑。 |
-|  連接埠 | integer | 是 | 要探查的埠號碼。 |
+|  path | 字串 | No | 探查的路徑。 |
+|  連接埠 | 整數 | 是 | 要探查的埠號碼。 |
 |  scheme | 列舉 | 否 | 配置。 -HTTP 或 HTTPs |
 
 
@@ -457,15 +457,15 @@ properties: # Properties of container group
 
 |  名稱 | 類型 | 必要 | 值 |
 |  ---- | ---- | ---- | ---- |
-|  count | integer | 是 | GPU 資源的計數。 |
+|  count | 整數 | 是 | GPU 資源的計數。 |
 |  sku | 列舉 | 是 | GPU 資源的 SKU。 -K80、P100、V100 |
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-請參閱[使用 YAML 檔案部署多容器群組](container-instances-multi-container-yaml.md)教學課程。
+請參閱教學課程 [使用 YAML 檔案部署多容器群組](container-instances-multi-container-yaml.md)。
 
-請參閱使用 YAML 檔案在[虛擬網路](container-instances-vnet.md)中部署容器群組或[裝載外部磁片](container-instances-volume-azure-files.md)區的範例。
+請參閱使用 YAML 檔案在 [虛擬網路](container-instances-vnet.md) 中部署容器群組或 [裝載外部磁片](container-instances-volume-azure-files.md)區的範例。
 
 <!-- LINKS - Internal -->
 [az-container-create]: /cli/azure/container#az-container-create

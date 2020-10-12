@@ -4,10 +4,10 @@ description: 瞭解如何提交支援要求，以啟用您的 Azure VMware 解�
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.openlocfilehash: 72a7aca97067ce4e9ed0e901e4016c82b3549eb1
-ms.sourcegitcommit: 0fd1f3fe7817ad44d878d580ec167e1508051795
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90817891"
 ---
 # <a name="how-to-enable-azure-vmware-solution-resource"></a>如何啟用 Azure VMware 解決方案資源
@@ -20,7 +20,7 @@ ms.locfileid: "90817891"
 
 
 ## <a name="enable-azure-vmware-solution-resource"></a>啟用 Azure VMware 解決方案資源
-在您建立 Azure VMware 解決方案資源之前，您必須提交支援票證以配置您的節點。 當支援小組收到您的要求之後，最多需要五個工作天才能確認您的要求並配置您的節點。 如果您有現有的 Azure VMware 解決方案私人雲端，並想要配置更多節點，您將會經歷相同的程式。
+建立 Azure VMware 解決方案資源之前，您必須提交支援票證，以配置您的節點。 一旦支援小組收到您的要求後，最多需要五個工作天的時間來確認您的要求，並配置您的節點。 如果您有現有的 Azure VMware 解決方案私人雲端，且想要配置更多節點，您將會經歷相同的程序。
 
 
 1. 在您的 Azure 入口網站中的 [說明 **+ 支援**] 下，建立 **[新的支援要求](https://rc.portal.azure.com/#create/Microsoft.Support)** ，並為票證提供下列資訊：

@@ -11,10 +11,10 @@ ms.date: 07/14/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
 ms.openlocfilehash: e4e85de2fad5c08f296d8089f48fa8614f7f1739
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88925176"
 ---
 # <a name="install-and-run-form-recognizer-containers-preview"></a>安裝及執行表單辨識器容器 (預覽) 
@@ -46,7 +46,7 @@ Azure 表單辨識器會套用機器學習技術來識別和解壓縮表單中�
 > [!NOTE]
 > 電腦視覺資源名稱應該是單一單字，不含連字號 `-` 或任何其他特殊字元。 這項限制可確保表單辨識器和辨識文字容器相容性。
 
-## <a name="gathering-required-parameters"></a>正在收集必要參數
+## <a name="gathering-required-parameters"></a>收集必要參數
 
 所有需要的認知服務容器都有三個主要參數。 使用者授權合約 (EULA) 必須存在，且值為 `accept` 。 此外，也需要端點 URL 和 API 金鑰。
 
@@ -63,7 +63,7 @@ Azure 表單辨識器會套用機器學習技術來識別和解壓縮表單中�
 ![取得兩個金鑰的其中一個，以供稍後使用](../containers/media/keys-copy-api-key.png)
 
 > [!IMPORTANT]
-> 這些訂用帳戶金鑰可用來存取您的認知服務 API。 請勿共用您的金鑰。 以安全的方式儲存它們，例如，使用 Azure Key Vault。 我們也建議定期重新產生這些金鑰。 進行 API 呼叫時，只需要一個金鑰。 重新產生第一個金鑰時，您可以使用第二個金鑰繼續存取服務。
+> 這些訂用帳戶金鑰可用來存取您的認知服務 API。 請勿共用您的金鑰。 以安全的方式儲存它們，例如，使用 Azure Key Vault。 我們也建議您定期重新產生這些金鑰。 進行 API 呼叫時，只需要一個金鑰。 重新產生第一個金鑰時，您可以使用第二個金鑰繼續存取服務。
 
 ## <a name="the-host-computer"></a>主機電腦
 
@@ -250,7 +250,7 @@ services:
 
 容器會提供以 websocket 為基礎的查詢端點 Api，您可以透過 [表單辨識器服務 SDK 檔](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/)存取此 api。
 
-根據預設，表單辨識器 SDK 會使用線上服務。 若要使用容器，您必須變更初始化方法。 請參閱以下範例。
+根據預設，表單辨識器 SDK 會使用線上服務。 若要使用容器，您必須變更初始化方法。 請參閱以下的範例。
 
 #### <a name="for-c"></a>針對 C#
 
