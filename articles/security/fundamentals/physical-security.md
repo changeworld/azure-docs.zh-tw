@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 07/10/2020
 ms.author: terrylan
 ms.openlocfilehash: 3eac3c9abda74f0414fc97512f011d235d3991f5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87076332"
 ---
 # <a name="azure-facilities-premises-and-physical-security"></a>Azure 設施、廠房以及實體安全性
@@ -30,7 +30,7 @@ Azure 是由[分散在世界各地的資料中心基礎結構](https://azure.mic
 
 此基礎結構的設計訴求是將應用程式放在最靠近全球不同地區使用者的地點、預留資料落地，並為客戶提供完整的合規性與存放區選項。 Azure 在全球有 58 個區域，並且可在 140 個國家/地區使用。
 
-區域是一組透過大規模且富有彈性的網路互連的資料中心。 根據預設，網路會針對某個區域內的所有 Azure 流量，或在區域之間的工作，包含內容發佈、負載平衡、冗余和[資料連結層加密](encryption-overview.md#encryption-of-data-in-transit)。 因為 Azure 提供的全球區域多於其他任何雲端提供者，可以讓您進行更彈性的規劃，將應用程式部署在需要的位置。
+區域是一組透過大規模且富有彈性的網路互連的資料中心。 根據預設，網路會針對某個區域內的所有 Azure 流量或區域之間的內容，包含內容散發、負載平衡、冗余和 [資料連結層加密](encryption-overview.md#encryption-of-data-in-transit) 。 因為 Azure 提供的全球區域多於其他任何雲端提供者，可以讓您進行更彈性的規劃，將應用程式部署在需要的位置。
 
 Azure 區域會依地理區排列。 Azure 地理可確保符合地理界限內的資料落地、主權、合規性及復原需求。
 

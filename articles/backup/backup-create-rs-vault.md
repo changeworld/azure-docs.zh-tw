@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 05/30/2019
 ms.custom: references_regions
 ms.openlocfilehash: c659efad7f0eaf5793e1fd608eb522964df7befd
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90981514"
 ---
 # <a name="create-and-configure-a-recovery-services-vault"></a>建立和設定復原服務保存庫
@@ -160,7 +160,7 @@ Azure 備份會自動處理保存庫的儲存體。 您必須指定該儲存體�
   - 您將能夠從 GRS 保存庫還原 VM （如有需要）。
   - 在新資源中，VM LRS 保存庫上的第一個備份會是初始複本。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 [深入瞭解](backup-azure-recovery-services-vault-overview.md) 復原服務保存庫。
 [深入瞭解](backup-azure-delete-vault.md) 刪除復原服務保存庫。

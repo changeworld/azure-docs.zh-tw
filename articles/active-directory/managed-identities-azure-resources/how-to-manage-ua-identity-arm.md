@@ -16,10 +16,10 @@ ms.date: 12/10/2019
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bd49c60a23a0ad58f0907d3c1d7c38178ac08c97
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89266352"
 ---
 # <a name="create-list-and-delete-a-user-assigned-managed-identity-using-azure-resource-manager"></a>使用 Azure Resource Manager 來建立、列出及刪除使用者指派的受控識別
@@ -42,7 +42,7 @@ ms.locfileid: "89266352"
 
 如同 Azure 入口網站和指令碼，Azure Resource Manager 範本可讓您部署由 Azure 資源群組所定義之新的或已修改的資源。 範本編輯和部署有幾個選項可用 (在本機和入口網站)，包括：
 
-- 使用 [Azure Marketplace 的自訂範本](../../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template)，可讓您從頭開始建立範本，或是以現有的一般或 [快速入門範本](https://azure.microsoft.com/documentation/templates/)作為基礎。
+- 使用 [Azure Marketplace 所提供的自訂範本](../../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template)，可讓您從頭開始建立範本，或根據現有的常用範本或[快速入門範本](https://azure.microsoft.com/documentation/templates/)來建立範本。
 - 衍生自現有的資源群組，方法是從[原始部署](../../azure-resource-manager/management/manage-resource-groups-portal.md#export-resource-groups-to-templates)，或從[部署的目前狀態](../../azure-resource-manager/management/manage-resource-groups-portal.md#export-resource-groups-to-templates)匯出範本。
 - 使用本機 [JSON 編輯器 (例如 VS Code)](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)，然後使用 PowerShell 或 CLI 上傳和部署。
 - 使用 Visual Studio 的 [Azure 資源群組專案](../../azure-resource-manager/templates/create-visual-studio-deployment-project.md)來建立和部署範本。 

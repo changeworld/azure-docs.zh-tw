@@ -10,10 +10,10 @@ ms.date: 09/23/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: 828b5c34aaccf2a53aa197f921a8ef02d46821ae
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91280465"
 ---
 # <a name="perform-a-point-in-time-restore-on-block-blob-data"></a>在區塊 blob 資料上執行時間點還原
@@ -44,7 +44,7 @@ ms.locfileid: "91280465"
 1. 在 [ **設定**] 底下，選擇 [ **資料保護**]。
 1. 選取 [ **開啟時間點** 還原]。 當您選取此選項時，也會啟用 blob、版本控制和變更摘要的虛刪除。
 1. 設定時間點還原的最大還原點（以天為單位）。 此數位必須至少為一天，小於針對「blob 虛刪除」指定的保留週期。
-1. 儲存變更。
+1. 儲存您的變更。
 
 下圖顯示針對時間點還原設定的儲存體帳戶（還原點為七天前），以及 blob 虛刪除14天的保留期限。
 
@@ -52,7 +52,7 @@ ms.locfileid: "91280465"
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-若要使用 PowerShell 設定時間點還原，請先安裝 [Az. Storage](https://www.powershellgallery.com/packages/Az.Storage) module version 2.6.0 或更新版本。 然後呼叫 AzStorageBlobRestorePolicy 命令，以啟用儲存體帳戶的時間點還原。
+若要使用 PowerShell 設定時間點還原，請先安裝 [Az. Storage](https://www.powershellgallery.com/packages/Az.Storage) module version 2.6.0 或更新版本。 然後呼叫 Enable-AzStorageBlobRestorePolicy 命令，以啟用儲存體帳戶的時間點還原。
 
 下列範例會啟用虛刪除，並設定虛刪除保留期間、啟用變更摘要和版本控制，然後啟用時間點還原。    執行此範例時，請記得以您自己的值取代角括弧中的值：
 
@@ -122,7 +122,7 @@ Get-AzStorageBlobServiceProperty -ResourceGroupName $rgName `
 1. 勾選方塊，確認您想要繼續進行。
 1. 選取 [ **還原** ] 開始還原作業。
 
-    :::image type="content" source="media/point-in-time-restore-manage/restore-all-containers-portal.png" alt-text="顯示如何將所有容器還原至指定還原點的螢幕擷取畫面":::
+    :::image type="content" source="media/point-in-time-restore-manage/restore-all-containers-portal.png" alt-text="顯示如何在 Azure 入口網站中設定時間點還原的螢幕擷取畫面":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -169,14 +169,14 @@ Restore-AzStorageBlobRange -ResourceGroupName $rgName `
 1. 指定要還原的範圍。 使用正斜線 (/) 來描繪 blob 首碼中的容器名稱。
 1. [ **還原選取的容器** ] 窗格預設會指定包含容器中所有 blob 的範圍。 如果您不想要還原整個容器，請刪除此範圍。 預設範圍如下圖所示。
 
-    :::image type="content" source="media/point-in-time-restore-manage/delete-default-blob-range.png" alt-text="顯示在指定自訂範圍之前，要刪除之預設 blob 範圍的螢幕擷取畫面":::
+    :::image type="content" source="media/point-in-time-restore-manage/delete-default-blob-range.png" alt-text="顯示如何在 Azure 入口網站中設定時間點還原的螢幕擷取畫面":::
 
 1. 勾選方塊，確認您想要繼續進行。
 1. 選取 [ **還原** ] 開始還原作業。
 
 下圖顯示一組範圍的還原作業。
 
-:::image type="content" source="media/point-in-time-restore-manage/restore-multiple-container-ranges-portal.png" alt-text="顯示如何在一或多個容器中還原 blob 範圍的螢幕擷取畫面":::
+:::image type="content" source="media/point-in-time-restore-manage/restore-multiple-container-ranges-portal.png" alt-text="顯示如何在 Azure 入口網站中設定時間點還原的螢幕擷取畫面":::
 
 映射中顯示的還原作業會執行下列動作：
 

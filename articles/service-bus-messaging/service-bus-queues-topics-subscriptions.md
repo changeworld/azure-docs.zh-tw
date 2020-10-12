@@ -1,18 +1,18 @@
 ---
-title: Azure 服務匯流排訊息-佇列、主題和訂用帳戶
-description: 本文提供 Azure 服務匯流排訊息實體的總覽， (佇列、主題和訂用帳戶) 。
+title: Azure 服務匯流排訊息-佇列、主題和訂閱
+description: 本文概述) 的 Azure 服務匯流排訊息實體 (佇列、主題和訂閱。
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 3ee03fe5219736a1b1ca66c652fe6ac410cb40cb
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87799611"
 ---
 # <a name="service-bus-queues-topics-and-subscriptions"></a>服務匯流排佇列、主題和訂用帳戶
 
-Microsoft Azure 服務匯流排支援一組以雲端為基礎、訊息導向的中介軟體技術，包括可靠的訊息佇列和持久的發佈/訂閱訊息。 這些「代理」訊息功能可以視為低耦合訊息功能，使用服務匯流排訊息工作負載來支援發佈-訂閱、時態性分離和負載平衡案例。 低耦合通訊有許多優點︰例如，用戶端和伺服器可視需要連接並以非同步方式執行其作業。
+Microsoft Azure 服務匯流排支援一組以雲端為基礎、訊息導向的中介軟體技術，包括可靠的訊息佇列和持久的發佈/訂閱訊息。 這些「代理」訊息功能可以視為低耦合訊息功能，這些功能可使用「服務匯流排」訊息工作負載來支援發佈-訂閱、時態性分離和負載平衡案例。 低耦合通訊有許多優點︰例如，用戶端和伺服器可視需要連接並以非同步方式執行其作業。
 
 構成「服務匯流排」中傳訊功能核心的傳訊實體是佇列、主題與訂用帳戶，以及規則/動作。
 
@@ -34,7 +34,7 @@ Microsoft Azure 服務匯流排支援一組以雲端為基礎、訊息導向的�
 
 ### <a name="receive-modes"></a>接收模式
 
-您可以指定兩種不同的服務匯流排訊息接收模式：*ReceiveAndDelete* 或 *PeekLock*。 在[ReceiveAndDelete](/dotnet/api/microsoft.azure.servicebus.receivemode)模式中，接收作業是一次性的;也就是說，當服務匯流排從取用者收到要求時，它會將訊息標示為已取用，並將它傳回到取用者應用程式。 **ReceiveAndDelete** 模式是最簡單的模型，且最適合可容許在發生失敗時不處理訊息的應用程式案例。 若要了解此案例，請考慮取用者發出接收要求，接著系統在處理此要求之前當機的案例。 因為服務匯流排會將訊息標示為已取用，當應用程式重新啟動並開始重新取用訊息時，它將會遺漏當機前已取用的訊息。
+您可以指定兩種不同的服務匯流排訊息接收模式：*ReceiveAndDelete* 或 *PeekLock*。 在 [>receiveanddelete](/dotnet/api/microsoft.azure.servicebus.receivemode) 模式中，接收作業是一次性的;也就是說，當服務匯流排收到來自取用者的要求時，它會將訊息標示為已取用，並將其傳回給取用者應用程式。 **ReceiveAndDelete** 模式是最簡單的模型，且最適合可容許在發生失敗時不處理訊息的應用程式案例。 若要了解此案例，請考慮取用者發出接收要求，接著系統在處理此要求之前當機的案例。 因為服務匯流排會將訊息標示為已取用，當應用程式重新啟動並開始重新取用訊息時，它將會遺漏當機前已取用的訊息。
 
 在 [PeekLock](/dotnet/api/microsoft.azure.servicebus.receivemode) 模式中，接收作業會變成兩階段作業，因此可以支援無法容許遺漏訊息的應用程式。 當服務匯流排收到要求時，它會尋找要取用的下一個訊息、將其鎖定以防止其他取用者接收此訊息，然後將它傳回應用程式。 在應用程式完成處理訊息 (或可靠地儲存此訊息以供未來處理) 之後，它可透過呼叫已接收訊息上的 [CompleteAsync](/dotnet/api/microsoft.azure.servicebus.queueclient.completeasync) 來完成接收程序的第二個階段。 當服務匯流排看到 **CompleteAsync** 呼叫時，它會將訊息標示為已取用。
 
@@ -52,11 +52,11 @@ Microsoft Azure 服務匯流排支援一組以雲端為基礎、訊息導向的�
 
 按照上一節所述，建立主題類似於建立佇列。 然後使用 [TopicClient](/dotnet/api/microsoft.azure.servicebus.topicclient) 類別來傳送訊息。 若要接收訊息，您可以建立主題的一或多個訂用帳戶。 與佇列類似，從訂用帳戶接收訊息是使用 [SubscriptionClient](/dotnet/api/microsoft.azure.servicebus.subscriptionclient) 物件，而非 [QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient) 物件。 建立訂用帳戶用戶端，並將主題名稱、訂用帳戶名稱及 (選擇性) 接收模式當作參數傳遞。
 
-如需完整的實用範例，請參閱 GitHub 上的[BasicSendReceiveUsingTopicSubscriptionClient 範例](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/Microsoft.Azure.ServiceBus/BasicSendReceiveUsingTopicSubscriptionClient)。
+如需完整的實用範例，請參閱 GitHub 上的 [>basicsendreceiveusingtopicsubscriptionclient 範例](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/Microsoft.Azure.ServiceBus/BasicSendReceiveUsingTopicSubscriptionClient) 。
 
-### <a name="rules-and-actions"></a>執行和動作
+### <a name="rules-and-actions"></a>規則與動作
 
-在許多情況下，必須以不同的方式處理具有特定特性的訊息。 若要啟用這項處理，您可以設定訂用帳戶以尋找具有所需屬性的訊息，然後對這些屬性進行一些修改。 雖然服務匯流排訂用帳戶可看見所有傳送至主題的訊息，但您只可以將部分的訊息複製到虛擬訂用帳戶佇列。 使用訂用帳戶篩選器即可完成這個篩選。 這類修改稱之為「篩選器動作」**。 建立訂用帳戶時，您可以提供可在訊息屬性上運作的篩選運算式，例如，系統屬性 (例如， **Label**) 和自訂應用程式屬性 (例如， **STORENAME**。 ) SQL 篩選運算式在此情況下是選擇性的：如果沒有 SQL 篩選條件運算式，就會在訂用帳戶的所有訊息上執行任何定義于訂閱上的篩選器動作。
+在許多情況下，必須以不同的方式處理具有特定特性的訊息。 若要啟用這項處理，您可以設定訂用帳戶以尋找具有所需屬性的訊息，然後對這些屬性進行一些修改。 雖然服務匯流排訂用帳戶可看見所有傳送至主題的訊息，但您只可以將部分的訊息複製到虛擬訂用帳戶佇列。 使用訂用帳戶篩選器即可完成這個篩選。 這類修改稱之為「篩選器動作」**。 建立訂用帳戶時，您可以提供可在訊息屬性上運作的篩選運算式，例如 (的系統屬性、 **標籤**) 和自訂應用程式屬性 (例如 **StoreName**。在此情況下，) SQL 篩選運算式是選擇性的;如果沒有 SQL 篩選運算式，就會對該訂用帳戶的所有訊息執行在訂用帳戶上定義的任何篩選動作。
 
 如需完整的實用範例，請參閱 GitHub 上的 [TopicSubscriptionWithRuleOperationsSample 範例](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/Microsoft.Azure.ServiceBus/TopicSubscriptionWithRuleOperationsSample)。
 
@@ -68,12 +68,12 @@ Microsoft Azure 服務匯流排支援一組以雲端為基礎、訊息導向的�
 
   * 暫存佇列
   * 暫存主題
-  * 共用的持久訂閱
+  * 共用持久訂閱
   * 未共用的持久訂閱
   * 共用的非持久訂閱
-  * 不共用的非持久性訂閱
+  * 未共用的非持久訂閱
 
-深入瞭解[JMS 2.0 實體](java-message-service-20-entities.md)，以及如何[使用它們](how-to-use-java-message-service-20.md)。
+深入瞭解 [JMS 2.0 實體](java-message-service-20-entities.md) ，以及如何 [使用它們](how-to-use-java-message-service-20.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

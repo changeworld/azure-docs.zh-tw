@@ -6,10 +6,10 @@ ms.topic: conceptual
 description: 描述 power Azure Dev Spaces 的處理常式，以及路由的運作方式
 keywords: Azure Dev Spaces、Dev Spaces、Docker、Kubernetes、Azure、AKS、Azure Kubernetes Service、容器
 ms.openlocfilehash: 6987bbaaebe342b571d5b19fe0e37bebd5b8b6e1
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90981297"
 ---
 # <a name="how-routing-works-with-azure-dev-spaces"></a>路由搭配 Azure Dev Spaces 的運作方式
@@ -62,7 +62,7 @@ Azure Dev Spaces 提供了多種方式，可供迅速逐一查看 Kubernetes 應
 
 使用 *>azureuser*時，對 *services* 的所有要求都會路由至 *>azureuser*中的更新版本。 系統會先嘗試將*serviceB*的要求路由至*serviceB*的 *>azureuser*版本。 因為它不存在，所以會路由傳送至 *預設* 版本的 *serviceB*。 如果移除 *>azureuser* 版本的 *services* ，則所有 *services* 的要求都會改為使用 *預設* 的 *services*版本。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 若要查看 Azure Dev Spaces 如何使用路由來提供快速反復專案和開發的範例，請參閱 [使用 Azure Dev Spaces 遠端偵錯程式碼的運作方式][how-it-works-remote-debugging]。
 

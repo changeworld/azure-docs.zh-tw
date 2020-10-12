@@ -1,6 +1,6 @@
 ---
-title: 透過 CloudSimple 私用雲端來刪除 Azure VMware 解決方案
-description: 瞭解如何刪除 CloudSimple 私用雲端。 當您刪除私人雲端時，將會刪除所有的叢集。
+title: 藉由 CloudSimple 私人雲端來刪除 Azure VMware 解決方案
+description: 瞭解如何刪除 CloudSimple 私人雲端。 當您刪除私人雲端時，將會刪除所有叢集。
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/06/2019
@@ -9,26 +9,26 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 11fda35f5b236a4930b3d90eb7e3a62ea60207cf
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/12/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88142225"
 ---
-# <a name="delete-a-cloudsimple-private-cloud"></a>刪除 CloudSimple 私用雲端
+# <a name="delete-a-cloudsimple-private-cloud"></a>刪除 CloudSimple 私人雲端
 
-CloudSimple 提供刪除私人雲端的彈性。  私人雲端是由一或多個 vSphere 叢集所組成。 每個叢集可以有3到16個節點。 當您刪除私人雲端時，將會刪除所有的叢集。
+CloudSimple 可讓您彈性地刪除私人雲端。  私人雲端包含一或多個 vSphere 叢集。 每個叢集可以有3至16個節點。 當您刪除私人雲端時，將會刪除所有叢集。
 
 ## <a name="before-you-begin"></a>開始之前
 
-刪除私人雲端會刪除整個私人雲端。  將會刪除私人雲端的所有元件。  如果您想要保留任何資料，請確定您已將資料備份至內部部署儲存體或 Azure 儲存體。
+刪除私用雲端會刪除整個私用雲端。  將會刪除私人雲端的所有元件。  如果您想要保留任何資料，請確定您已將資料備份至內部部署儲存體或 Azure 儲存體。
 
 私用雲端的元件包括：
 
 * CloudSimple 節點
 * 虛擬機器
 * VLAN/子網路
-* 所有儲存在私人雲端上的使用者資料
+* 私人雲端上儲存的所有使用者資料
 * VLAN/子網的所有防火牆規則附件
 
 ## <a name="sign-in-to-azure"></a>登入 Azure
@@ -39,22 +39,22 @@ CloudSimple 提供刪除私人雲端的彈性。  私人雲端是由一或多個
 
 1. [存取 CloudSimple 入口網站](access-cloudsimple-portal.md)。
 
-2. 開啟 [**資源**] 頁面。
+2. 開啟 [ **資源** ] 頁面。
 
-3. 按一下您要刪除的私人雲端
+3. 按一下您想要刪除的私人雲端
 
-4. 在 [摘要] 頁面上，按一下 [**刪除**]。
+4. 在 [摘要] 頁面上，按一下 [ **刪除**]。
 
     ![刪除私人雲端](media/delete-private-cloud.png)
 
-5. 在 [確認] 頁面上，輸入私人雲端的名稱，然後按一下 [**刪除**]。 
+5. 在 [確認] 頁面上，輸入私人雲端的名稱，然後按一下 [ **刪除**]。 
 
-    ![刪除私人雲端-確認](media/delete-private-cloud-confirm.png)
+    ![刪除私用雲端-確認](media/delete-private-cloud-confirm.png)
 
-私人雲端已標示為要刪除。  刪除程式會在三個小時後啟動，並刪除私人雲端。
+私人雲端已標示為要刪除。  刪除進程會在三個小時後啟動，並刪除私人雲端。
 
 > [!CAUTION]
-> 刪除私人雲端之後，必須刪除節點。  節點的計量會繼續，直到從您的訂用帳戶刪除節點為止。
+> 刪除私人雲端之後，必須刪除節點。  從您的訂用帳戶中刪除節點之前，節點的計量將會繼續。
 
 ## <a name="next-steps"></a>後續步驟
 

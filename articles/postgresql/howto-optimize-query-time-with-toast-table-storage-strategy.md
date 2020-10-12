@@ -1,16 +1,16 @@
 ---
-title: 使用適用於 PostgreSQL 的 Azure 資料庫-單一伺服器中的快顯資料表儲存體策略來優化查詢時間
-description: 本文說明如何使用適用於 PostgreSQL 的 Azure 資料庫單一伺服器上的快顯表儲存策略來優化查詢時間。
+title: 使用適用於 PostgreSQL 的 Azure 資料庫-單一伺服器中的快顯通知資料表儲存策略優化查詢時間
+description: 本文說明如何使用適用於 PostgreSQL 的 Azure 資料庫單一伺服器上的快顯通知資料表儲存策略優化查詢時間。
 author: dianaputnam
 ms.author: dianas
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 5/6/2019
 ms.openlocfilehash: 3f1fa0affb821b00d4f5529841533e854e634377
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86116177"
 ---
 # <a name="optimize-query-time-with-the-toast-table-storage-strategy"></a>使用快顯通知資料表儲存策略最佳化查詢時間 
@@ -28,7 +28,7 @@ ms.locfileid: "86116177"
 
 如果您有工作負載使用具有寬型資料表和高字元計數的結構描述，請考慮使用 PostgreSQL 快顯通知資料表。 範例客戶資料表有超過 350 個資料行，其中有數個資料行超過 255 個字元。 在轉換為快顯通知資料表「主要」策略後，其基準測試查詢時間從 4203 秒降低為 467 秒， 速度提升 89%。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 檢閱您的工作負載是否有前述特性。 
 
 檢閱下列 PostgreSQL 文件： 

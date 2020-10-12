@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/15/2020
 ms.author: ambapat
 ms.openlocfilehash: 2100572c0bcf5bf65fe5a70ab9e552c2d7f72934
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90983265"
 ---
 # <a name="authentication-requests-and-responses"></a>驗證、要求和回應
@@ -23,8 +23,8 @@ Azure Key Vault 提供兩種類型的容器來儲存及管理雲端應用程式�
 
 |容器類型|支援的物件類型|資料平面端點|
 |--|--|--|
-| **保存庫**|<ul><li>受軟體保護的金鑰</li><li>使用 Premium SKU (的 HSM 保護金鑰) </li><li>憑證</li><li>儲存體帳戶金鑰</li></ul> | HTTPs：//{vault-名稱}。
-|**受控 HSM** |<ul><li>受 HSM 保護的金鑰</li></ul> | HTTPs：//{hsm 名稱}. managedhsm
+| **保存庫**|<ul><li>受軟體保護的金鑰</li><li>使用 Premium SKU (的 HSM 保護金鑰) </li><li>憑證</li><li>儲存體帳戶金鑰</li></ul> | https://{vault-name}.vault.azure.net
+|**受控 HSM** |<ul><li>受 HSM 保護的金鑰</li></ul> | https://{hsm-name}.managedhsm.azure.net
 
 以下是用來存取每個物件類型的 URL 尾碼
 

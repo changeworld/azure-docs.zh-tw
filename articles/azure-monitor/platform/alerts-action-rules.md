@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.subservice: alerts
 ms.openlocfilehash: 723da36093c895a3a4aefbe66c2d8ca2ac0cba32
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90983133"
 ---
 # <a name="action-rules-preview"></a>動作規則 (預覽) 
@@ -103,7 +103,7 @@ ms.locfileid: "90983133"
 ### <a name="action-rule-details"></a>動作規則詳細資料
 
 最後，設定動作規則的下列詳細資料：
-* Name
+* 名稱
 * 儲存的資源群組
 * 描述
 
@@ -319,6 +319,6 @@ az monitor action-rule delete --resource-group MyResourceGroupName --name MyActi
 
 針對 VM1 上的每個警示，動作群組 AG1 會觸發一次。 每當觸發警示規則 "rule1" 時，也會觸發 AG2。 動作規則和警示規則內定義的動作群組會獨立運作，而不會重復資料刪除。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [深入瞭解 Azure 中的警示](./alerts-overview.md)

@@ -7,10 +7,10 @@ ms.date: 04/02/2019
 ms.topic: article
 ms.service: storage
 ms.openlocfilehash: 639764c9cae5e27e90a55da00b246807e49d2a20
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88652843"
 ---
 # <a name="move-mainframe-storage-to-azure"></a>將大型主機儲存體移至 Azure
@@ -102,7 +102,7 @@ Ssd 可在 Azure 上提供最高的儲存體效能。 以下是本檔撰寫)  (�
 
 Blob 儲存體會在 Azure 上提供最大量的儲存體。 除了儲存體大小，Azure 還提供受控和非受控儲存體。 使用受控儲存體時，Azure 會負責管理基礎儲存體帳戶。 使用非受控儲存體時，使用者需負責設定適當大小的 Azure 儲存體帳戶，以符合儲存體需求。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - [大型主機遷移](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/overview)
 - [Azure 虛擬機器上的大型主機重新裝載](../overview.md)

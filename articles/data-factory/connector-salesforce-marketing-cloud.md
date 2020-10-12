@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/17/2020
 ms.openlocfilehash: 1f0fb1ee8580c0c7f6eb30228b65e0a3780ef0a8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87076793"
 ---
 # <a name="copy-data-from-salesforce-marketing-cloud-using-azure-data-factory"></a>使用 Azure Data Factory 從 Salesforce Marketing Cloud 複製資料
@@ -27,21 +27,21 @@ ms.locfileid: "87076793"
 
 ## <a name="supported-capabilities"></a>支援的功能
 
-下列活動支援此 Salesforce 行銷雲端連接器：
+下列活動支援此 Salesforce Marketing 雲端連接器：
 
 - 含[支援來源/接收器矩陣](copy-activity-overview.md)的[複製活動](copy-activity-overview.md)
 - [查閱活動](control-flow-lookup-activity.md)
 
 您可以將資料從 Salesforce Marketing Cloud 複製到任何支援的接收資料存放區。 如需複製活動所支援作為來源/接收器的資料存放區清單，請參閱[支援的資料存放區](copy-activity-overview.md#supported-data-stores-and-formats)表格。
 
-Salesforce Marketing 雲端連接器支援 OAuth 2 驗證，同時支援舊版和增強套件類型。 此連接器建置於[Salesforce Marketing Cloud REST API](https://developer.salesforce.com/docs/atlas.en-us.mc-apis.meta/mc-apis/index-api.htm)上。
+Salesforce Marketing Cloud connector 支援 OAuth 2 驗證，並且支援舊版和增強套件類型。 連接器建置於 [Salesforce Marketing Cloud REST API](https://developer.salesforce.com/docs/atlas.en-us.mc-apis.meta/mc-apis/index-api.htm)之上。
 
 >[!NOTE]
 >此連接器不支援擷取自訂物件或自訂資料延伸模組。
 
 ## <a name="getting-started"></a>開始使用
 
-您可以使用 .NET SDK、Python SDK、Azure PowerShell、REST API 或 Azure Resource Manager 範本來建立具有複製活動的管線。 如需建立包含複製活動之管線的逐步指示，請參閱[複製活動教學](quickstart-create-data-factory-dot-net.md)課程。
+您可以使用 .NET SDK、Python SDK、Azure PowerShell、REST API 或 Azure Resource Manager 範本來建立具有複製活動的管線。 請參閱「 [複製活動」教學](quickstart-create-data-factory-dot-net.md) 課程，以取得使用複製活動建立管線的逐步指示。
 
 下列各節提供屬性的相關詳細資料，這些屬性是用來定義 Salesforce Marketing Cloud 連接器專屬的 Data Factory 實體。
 
@@ -49,20 +49,20 @@ Salesforce Marketing 雲端連接器支援 OAuth 2 驗證，同時支援舊版�
 
 以下是針對 Salesforce Marketing Cloud 已連結服務支援的屬性：
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
 | type | 類型屬性必須設為：**SalesforceMarketingCloud** | 是 |
-| connectionProperties | 定義如何連接到 Salesforce 行銷雲端的一組屬性。 | 是 |
-| ***在 `connectionProperties` 下列底下：*** | | |
-| authenticationType | 指定要使用的驗證方法。 允許的值為 `Enhanced sts OAuth 2.0` 或 `OAuth_2.0` 。<br><br>Salesforce 行銷雲端舊版套件僅支援 `OAuth_2.0` ，同時增強套件需求 `Enhanced sts OAuth 2.0` 。 <br>自2019年8月1日起，Salesforce 行銷雲端已移除建立舊版套件的能力。 所有新的封裝都是增強的封裝。 | 是 |
-| 主機 | 針對增強套件，主機應該是以字母 "mc" 開頭的28個字元字串表示的[子域](https://developer.salesforce.com/docs/atlas.en-us.mc-apis.meta/mc-apis/your-subdomain-tenant-specific-endpoints.htm)，例如 `mc563885gzs27c5t9-63k636ttgm` 。 <br>若是舊版套件，請指定 `www.exacttargetapis.com` 。 | 是 |
+| connectionProperties | 定義如何連線至 Salesforce Marketing Cloud 的屬性群組。 | 是 |
+| ***在 `connectionProperties` 下列情況下：*** | | |
+| authenticationType | 指定要使用的驗證方法。 允許的值為 `Enhanced sts OAuth 2.0` 或 `OAuth_2.0` 。<br><br>Salesforce Marketing Cloud 舊版封裝只支援 `OAuth_2.0` ，同時增強套件需求 `Enhanced sts OAuth 2.0` 。 <br>自2019年8月1日起，Salesforce Marketing Cloud 已移除建立舊版封裝的能力。 所有新的封裝都是增強套件。 | 是 |
+| 主機 | 針對增強套件，主機應該是您的 [子域](https://developer.salesforce.com/docs/atlas.en-us.mc-apis.meta/mc-apis/your-subdomain-tenant-specific-endpoints.htm) ，以字母 "mc" 開頭的28個字元字串表示，例如 `mc563885gzs27c5t9-63k636ttgm` 。 <br>若為舊版封裝，請指定 `www.exacttargetapis.com` 。 | 是 |
 | clientId | 與 Salesforce Marketing Cloud 應用程式相關聯的用戶端識別碼。  | 是 |
-| clientSecret | 與 Salesforce Marketing Cloud 應用程式相關聯的用戶端密碼。 您可以選擇將此欄位標記為 SecureString 以將它安全地儲存在 ADF，或將密碼儲存在 Azure Key Vault 中，然後在執行資料複製時，讓 ADF 複製活動從該處提取; 若要深入瞭解，請前往[Key Vault 中的儲存認證](store-credentials-in-key-vault.md)。 | 是 |
+| clientSecret | 與 Salesforce Marketing Cloud 應用程式相關聯的用戶端密碼。 您可以選擇將此欄位標示為 SecureString，以安全地儲存在 ADF 中，或將秘密儲存在 Azure Key Vault 中，並在執行資料複製時，讓 ADF 複製活動從該處提取-從 [Key Vault 的存放區認證](store-credentials-in-key-vault.md)深入瞭解。 | 是 |
 | useEncryptedEndpoints | 指定是否使用 HTTPS 來加密資料來源端點。 預設值為 true。  | 否 |
 | useHostVerification | 指定在透過 TLS 連線時，是否要求伺服器憑證中的主機名稱符合伺服器的主機名稱。 預設值為 true。  | 否 |
-| usePeerVerification | 指定在透過 TLS 連接時，是否要確認伺服器的身分識別。 預設值為 true。  | 否 |
+| usePeerVerification | 指定是否要在透過 TLS 連接時驗證服務器的身分識別。 預設值為 true。  | 否 |
 
-**範例：針對增強套件使用增強的 STS OAuth 2 驗證** 
+**範例：針對增強套件使用增強式 STS OAuth 2 驗證** 
 
 ```json
 {
@@ -114,7 +114,7 @@ Salesforce Marketing 雲端連接器支援 OAuth 2 驗證，同時支援舊版�
 
 ```
 
-如果您使用具有下列承載的 Salesforce Marketing Cloud 已連結服務，則仍會依其支援，但建議您使用新的，這會新增增強的封裝支援。
+如果您使用具有下列承載的 Salesforce Marketing Cloud 連結服務，則仍會依原樣受到支援，但建議您使用新的服務，以新增增強套件支援。
 
 ```json
 {
@@ -142,7 +142,7 @@ Salesforce Marketing 雲端連接器支援 OAuth 2 驗證，同時支援舊版�
 
 若要從 Salesforce Marketing Cloud 複製資料，請將資料集的類型屬性設定為 **SalesforceMarketingCloudObject**。 以下是支援的屬性：
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
 | type | 資料集的類型屬性必須設定為： **SalesforceMarketingCloudObject** | 是 |
 | tableName | 資料表的名稱。 | 否 (如果已指定活動來源中的「查詢」) |
@@ -172,7 +172,7 @@ Salesforce Marketing 雲端連接器支援 OAuth 2 驗證，同時支援舊版�
 
 若要從 Salesforce Marketing Cloud 複製資料，請將複製活動中的來源類型設定為 **SalesforceMarketingCloudSource**。 複製活動的 **source** 區段支援下列屬性：
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
 | type | 複製活動來源的類型屬性必須設定為：**SalesforceMarketingCloudSource** | 是 |
 | 查詢 | 使用自訂 SQL 查詢來讀取資料。 例如： `"SELECT * FROM MyTable"` 。 | 否 (如果已指定資料集中的 "tableName") |

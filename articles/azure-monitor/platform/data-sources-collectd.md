@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 11/27/2018
 ms.openlocfilehash: 488f273336da05738609333f911fe3a90ba59496
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86111978"
 ---
 # <a name="collect-data-from-collectd-on-linux-agents-in-azure-monitor"></a>在 Azure 監視器中，從 Linux 代理程式上的 CollectD 收集資料
@@ -69,14 +69,14 @@ Log Analytics Linux 代理程式也會在連接埠 26000 接聽 CollectD 計量�
 ```
 
 > [!NOTE]
-> CollectD 預設會設定為以10秒的[間隔](https://collectd.org/wiki/index.php/Interval)讀取值。 因為這會直接影響傳送至 Azure 監視器記錄的資料量，所以您可能需要在 CollectD 設定中微調此間隔，以在監視需求和相關成本與 Azure 監視器記錄的使用量之間取得良好平衡。
+> 依預設，CollectD 會設定為以10秒的 [間隔](https://collectd.org/wiki/index.php/Interval)來讀取值。 因為這會直接影響傳送給 Azure 監視器記錄檔的資料量，所以您可能需要在 CollectD 設定內調整此間隔，以在監視需求和相關聯的成本與 Azure 監視器記錄的使用量之間取得良好的平衡。
 
 ## <a name="versions-supported"></a>支援的版本
 - Azure 監視器目前支援 CollectD 4.8 版和更新版本。
 - 需要有 Log Analytics Linux 代理程式 v1.1.0-217 或以上才能收集 CollectD 計量。
 
 
-## <a name="configuration"></a>設定
+## <a name="configuration"></a>組態
 以下是在 Azure 監視器中設定收集 CollectD 資料的基本步驟。
 
 1. 使用 write_http 外掛程式，設定 CollectD 將資料傳送至 Log Analytics Linux 代理程式。  
@@ -123,14 +123,14 @@ Log Analytics Linux 代理程式也會在連接埠 26000 接聽 CollectD 計量�
 | CollectD 計量欄位 | [Azure 監視器] 欄位 |
 |:--|:--|
 | `host` | 電腦 |
-| `plugin` | None |
+| `plugin` | 無 |
 | `plugin_instance` | 執行個體名稱<br>If **plugin_instance** is *null* then InstanceName="*_Total*" |
 | `type` | ObjectName |
 | `type_instance` | CounterName<br>If **type_instance** is *null* then CounterName=**blank** |
 | `dsnames[]` | CounterName |
-| `dstypes` | None |
+| `dstypes` | 無 |
 | `values[]` | CounterValue |
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 * 了解[記錄查詢](../log-query/log-query-overview.md)，以分析從資料來源和解決方案收集到的資料。 
 * 使用 [自訂欄位](custom-fields.md) ，以將來自 syslog 記錄的資料剖析至個別欄位。

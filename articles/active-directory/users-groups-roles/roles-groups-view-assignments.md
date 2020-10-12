@@ -14,10 +14,10 @@ ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0c0a34b3861c82b3d2ef54a36108f9ea522d716d
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90983109"
 ---
 # <a name="view-roles-assigned-to-a-group-in-azure-active-directory"></a>在 Azure Active Directory 中查看指派給群組的角色
@@ -60,7 +60,7 @@ GET https://graph.microsoft.com/beta/groups?$filter displayName eq ‘Contoso_He
 GET https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments?$filter=principalId eq
 ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [使用雲端群組來管理角色指派](roles-groups-concept.md)
 - [對指派給雲端群組的角色進行疑難排解](roles-groups-faq-troubleshooting.md)

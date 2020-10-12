@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.custom: fasttrack-edit
 ms.date: 06/14/2020
 ms.openlocfilehash: 95456298b3275c83152115d700a4539cab2d2a67
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91318155"
 ---
 # <a name="support-matrix-for-physical-server-migration"></a>實體伺服器遷移的支援矩陣
@@ -73,7 +73,7 @@ ms.locfileid: "91318155"
 
 所有複寫到 Azure 的內部部署 Vm 都必須符合下表中摘要說明的 Azure VM 需求。 當 Site Recovery 執行複寫的必要條件檢查時，如果不符合某些需求，檢查將會失敗。
 
-**元件** | **需求** | **詳細資料**
+**元件** | **Requirements** | **詳細資料**
 --- | --- | ---
 客體作業系統 | 驗證支援的作業系統。<br/> 您可以遷移在支援的作業系統上執行的任何工作負載。 | 若不支援，則檢查會失敗。
 客體作業系統架構 | 64 位元。 | 若不支援，則檢查會失敗。

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 02/24/2020
 ms.author: cherylmc
 ms.openlocfilehash: f9bc06e58fcbd93fba0c92e91b51503239b5a951
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90980772"
 ---
 # <a name="connect-using-ssh-to-a-linux-virtual-machine-using-azure-bastion"></a>使用 Azure 防禦將 SSH 連接到 Linux 虛擬機器
@@ -81,6 +81,6 @@ SSH 私密金鑰必須採用開頭為  `"-----BEGIN RSA PRIVATE KEY-----"` 且�
 1. 流覽檔案，然後按一下 [ **開啟**]。
 1. 按一下 **[連線]** 以連線至 VM。 按一下 [連線] 之後，就會在 Azure 入口網站中直接開啟此虛擬機器的 SSH。 此連線會透過您虛擬機器私人 IP 上的防禦服務上的埠443，透過 HTML5 來進行。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 閱讀防禦 [常見問題](bastion-faq.md)
