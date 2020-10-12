@@ -1,6 +1,6 @@
 ---
-title: 從使用 Azure CLI 的特製化映射版本建立擴展集
-description: 使用 Azure CLI，在共用映射資源庫中使用特製化映射版本來建立擴展集。
+title: 使用 Azure CLI 從特殊化映射版本建立擴展集
+description: 使用 Azure CLI，在共用映射庫中使用特製化映射版本建立擴展集。
 author: cynthn
 ms.service: virtual-machine-scale-sets
 ms.subservice: imaging
@@ -11,21 +11,21 @@ ms.author: cynthn
 ms.reviewer: akjosh
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: e58cef5ae1fc727235539a91e80e424e6ed3be34
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87496367"
 ---
-# <a name="create-a-scale-set-using-a-specialized-image-version-with-the-azure-cli"></a>使用具有 Azure CLI 的特製化映射版本來建立擴展集
+# <a name="create-a-scale-set-using-a-specialized-image-version-with-the-azure-cli"></a>使用具有 Azure CLI 的特製化映射版本建立擴展集
 
-從儲存在共用映射資源庫中的[特製化映射版本](../virtual-machines/linux/shared-image-galleries.md#generalized-and-specialized-images)建立擴展集。 如果您想要使用一般化映射版本來建立擴展集，請參閱[從一般化映射建立擴展集](instance-generalized-image-version-cli.md)。
+從儲存在共用映射庫中的 [特製化映射版本](../virtual-machines/linux/shared-image-galleries.md#generalized-and-specialized-images) 建立擴展集。 如果您想要使用一般化映射版本建立擴展集，請參閱 [從一般化映射建立擴展集](instance-generalized-image-version-cli.md)。
 
 如果您選擇在本機安裝和使用 CLI，本教學課程會要求您執行 Azure CLI 2.4.0 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI]( /cli/azure/install-azure-cli)。
 
 視需要取代此範例中的資源名稱。 
 
-使用[az sig image-definition list](/cli/azure/sig/image-definition#az-sig-image-definition-list)來列出資源庫中的映射定義，以查看定義的名稱和識別碼。
+使用 [az sig 映射定義清單](/cli/azure/sig/image-definition#az-sig-image-definition-list) 來列出資源庫中的映射定義，以查看定義的名稱和識別碼。
 
 ```azurecli-interactive 
 resourceGroup=myGalleryRG
@@ -37,11 +37,11 @@ az sig image-definition list \
    --output tsv
 ```
 
-使用參數來建立擴展集， [`az vmss create`](/cli/azure/vmss#az-vmss-create) `--specialized` 以指出映射是特製化映射。
+使用參數建立擴展集 [`az vmss create`](/cli/azure/vmss#az-vmss-create) `--specialized` ，以指出映射是特製化映射。
 
-使用 `--image` 的映像定義識別碼，從可用的最新擴展集執行個體版本建立 VM。 您也可以藉由提供 `--image` 的映像版本識別碼，從特定版本建立擴展集執行個體。 請注意，使用特定映射版本表示自動化可能會失敗，因為該特定映射版本無法使用，因為它已從區域中刪除或移除。 除非需要特定映射版本，否則建議使用映射定義識別碼來建立新的 VM。
+使用 `--image` 的映像定義識別碼，從可用的最新擴展集執行個體版本建立 VM。 您也可以藉由提供 `--image` 的映像版本識別碼，從特定版本建立擴展集執行個體。 請注意，使用特定映射版本表示如果無法使用特定映射版本，則自動化可能會失敗，因為它已從區域中刪除或移除。 除非需要特定映射版本，否則建議使用映射定義識別碼來建立新的 VM。
 
-在此範例中，我們會從最新版本的*myImageDefinition*映射建立實例。
+在此範例中，我們會從最新版本的 *myImageDefinition* 映射建立實例。
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
@@ -53,8 +53,8 @@ az vmss create \
 ```
 
 
-## <a name="next-steps"></a>後續步驟
-[Azure 映射產生器（預覽）](../virtual-machines/linux/image-builder-overview.md)可協助自動建立映射版本，您甚至可以使用它來更新和[建立現有映射版本的新映射版本](../virtual-machines/linux/image-builder-gallery-update-image-version.md)。 
+## <a name="next-steps"></a>接下來的步驟
+[Azure 映射產生器 (預覽版) ](../virtual-machines/linux/image-builder-overview.md) 可協助自動建立映射版本，您甚至可以使用它來更新和 [建立現有映射版本的新映射版本](../virtual-machines/linux/image-builder-gallery-update-image-version.md)。 
 
 您也可以使用範本建立共用映像庫資源。 有數個 Azure 快速入門範本可以使用： 
 

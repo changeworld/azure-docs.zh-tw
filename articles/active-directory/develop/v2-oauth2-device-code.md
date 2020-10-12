@@ -14,10 +14,10 @@ ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.openlocfilehash: 8c757f3e067aeac5d8145ca47b2eac145daba574
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/17/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88272445"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-device-authorization-grant-flow"></a>Microsoft 身分識別平臺和 OAuth 2.0 裝置授權授與流程
@@ -64,11 +64,11 @@ scope=user.read%20openid%20profile
 | 參數 | [格式] | 描述 |
 | ---              | --- | --- |
 |`device_code`     | String | 用來在用戶端與授權伺服器之間驗證工作階段的長字串。 用戶端會使用此參數來向授權伺服器要求存取權杖。 |
-|`user_code`       | String | 向使用者顯示的短字串，用來識別次要裝置上的工作階段。|
+|`user_code`       | 字串 | 向使用者顯示的短字串，用來識別次要裝置上的工作階段。|
 |`verification_uri`| URI | 為了執行登入程序，使用者應使用 `user_code` 查看的 URI。 |
 |`expires_in`      | int | `device_code` 和 `user_code` 到期之前的秒數。 |
 |`interval`        | int | 在輪詢要求之間用戶端應等待的秒數。 |
-| `message`        | String | 人類看得懂的字串，其中包含使用者的指示。 在 `?mkt=xx-XX` 形式的要求中加入 ** 查詢參數**、填寫適當的語言文化代碼，即可進行當地語系化。 |
+| `message`        | 字串 | 人類看得懂的字串，其中包含使用者的指示。 在 `?mkt=xx-XX` 形式的要求中加入 ** 查詢參數**、填寫適當的語言文化代碼，即可進行當地語系化。 |
 
 > [!NOTE]
 > 目前 `verification_uri_complete` 不包含或支援回應欄位。  我們提過這是因為如果您讀取的是 [標準](https://tools.ietf.org/html/rfc8628) ，您會看到它 `verification_uri_complete` 列為裝置程式碼流程標準的選擇性部分。

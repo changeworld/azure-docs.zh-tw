@@ -13,15 +13,15 @@ ms.topic: article
 ms.date: 05/10/2018
 ms.author: damendo
 ms.openlocfilehash: de345578b2cade18d126a113937f2eede8e8157e
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87497302"
 ---
 # <a name="role-based-access-control-permissions-required-to-use-network-watcher-capabilities"></a>使用網路監看員功能時所需的角色型存取控制權限
 
-Azure 角色型存取控制（Azure RBAC）可讓您只將特定動作指派給組織成員，以完成其獲指派的責任。 若要使用網路監看員的功能，登入 Azure 的帳號必須受指派為[擁有者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#owner)、[參與者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#contributor)、[網路參與者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#network-contributor)等內建角色，或者是受指派以下段落中各項網路監看員功能所屬動作的[自訂角色](../role-based-access-control/custom-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)。 若要深入了解網路監看員的功能，請參閱[網路監看員是什麼？](network-watcher-monitoring-overview.md)。
+Azure 角色型存取控制 (Azure RBAC) 可讓您只將特定動作指派給組織成員，以完成其指派的責任。 若要使用網路監看員的功能，登入 Azure 的帳號必須受指派為[擁有者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#owner)、[參與者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#contributor)、[網路參與者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#network-contributor)等內建角色，或者是受指派以下段落中各項網路監看員功能所屬動作的[自訂角色](../role-based-access-control/custom-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)。 若要深入了解網路監看員的功能，請參閱[網路監看員是什麼？](network-watcher-monitoring-overview.md)。
 
 ## <a name="network-watcher"></a>網路監看員
 
@@ -102,15 +102,15 @@ Azure 角色型存取控制（Azure RBAC）可讓您只將特定動作指派給�
 
 網路監看員功能也需要下列動作：
 
-| 動作（秒）                                                           | 說明                                                    |
+| 動作 (s)                                                            | 說明                                                    |
 | ---------                                                           | -------------                                                  |
 | Microsoft.Authorization/\*/Read                                     | 用來提取 Azure 角色指派和原則定義          |
 | Microsoft.Resources/subscriptions/resourceGroups/Read               | 用來列舉訂用帳戶中的所有資源群組    |
 | Microsoft.Storage/storageAccounts/Read                              | 用來取得指定之儲存體帳戶的屬性   |
-| Microsoft. Storage/storageAccounts/listServiceSas/Action、 </br> Microsoft. Storage/storageAccounts/listAccountSas/Action、 <br> Microsoft.Storage/storageAccounts/listKeys/Action| 用來提取共用存取簽章（SAS），[以安全存取儲存體帳戶](https://docs.microsoft.com/azure/storage/common/storage-sas-overview)並寫入儲存體帳戶 |
-| Microsoft. Compute/virtualMachines/Read、 </br> Microsoft.Compute/virtualMachines/Write| 用來登入 VM、執行封包捕獲，並將它上傳至儲存體帳戶|
-| Microsoft.Compute/virtualMachines/extensions/Read </br> Microsoft.Compute/virtualMachines/extensions/Write| 用來檢查是否有網路監看員延伸模組存在，並視需要安裝 |
-| Microsoft. Compute/virtualMachineScaleSets/Read、 </br> Microsoft.Compute/virtualMachineScaleSets/Write| 用來存取虛擬機器擴展集、執行封包捕獲，並將其上傳至儲存體帳戶|
-| Microsoft 計算/virtualMachineScaleSets/延伸模組/讀取、 </br> Microsoft.Compute/virtualMachineScaleSets/extensions/Write| 用來檢查是否有網路監看員延伸模組存在，並視需要安裝 |
+| Microsoft. Storage/storageAccounts/listServiceSas/Action， </br> Microsoft. Storage/storageAccounts/listAccountSas/Action， <br> Microsoft.Storage/storageAccounts/listKeys/Action| 用來提取共用存取簽章 (SAS) [安全地存取儲存體帳戶](https://docs.microsoft.com/azure/storage/common/storage-sas-overview) 並寫入儲存體帳戶 |
+| Microsoft. Compute/virtualMachines/Read， </br> Microsoft.Compute/virtualMachines/Write| 用來登入 VM、進行封包捕獲，並將其上傳至儲存體帳戶|
+| Microsoft.Compute/virtualMachines/extensions/Read </br> Microsoft.Compute/virtualMachines/extensions/Write| 用來檢查網路監看員延伸模組是否存在，並視需要進行安裝 |
+| Microsoft. Compute/virtualMachineScaleSets/Read， </br> Microsoft.Compute/virtualMachineScaleSets/Write| 用來存取虛擬機器擴展集、進行封包捕獲，並將它們上傳至儲存體帳戶|
+| Microsoft. Compute/virtualMachineScaleSets/extensions/Read、 </br> Microsoft.Compute/virtualMachineScaleSets/extensions/Write| 用來檢查網路監看員延伸模組是否存在，並視需要進行安裝 |
 | Microsoft.Insights/alertRules/*                                     | 用來設定計量警示                                     |
-| Microsoft.Support/*                                                 | 用來從網路監看員建立及更新支援票證 |
+| Microsoft.Support/*                                                 | 用來從網路監看員建立和更新支援票證 |

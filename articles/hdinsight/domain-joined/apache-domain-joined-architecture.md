@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 03/11/2020
 ms.openlocfilehash: 452a3b04637126b40aca907178bebd6f74ec4481
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "79365761"
 ---
 # <a name="use-enterprise-security-package-in-hdinsight"></a>在 HDInsight 中使用企業安全性套件
@@ -37,7 +37,7 @@ HDInsight 中的虛擬機器 (VM) 會加入您提供的網域。 因此，經過
 
 總括而言，您必須設定一個具備下列條件的環境：
 
-- Active Directory 網域 (由 Azure AD DS 管理)。 **功能變數名稱必須是39個字元或更少，才能與 Azure HDInsight 搭配使用。**
+- Active Directory 網域 (由 Azure AD DS 管理)。 **功能變數名稱必須為39個字元或更少，才能搭配 Azure HDInsight 使用。**
 - 在 Azure AD DS 中啟用安全 LDAP (LDAPS)。
 - Azure AD DS 虛擬網路和 HDInsight 虛擬網路兩者之間有適當的網路連線能力 (如果您選擇將兩者的虛擬網路分開)。 HDInsight 虛擬網路內的 VM 應可透過虛擬網路對等互連來看到 Azure AD DS。 如果 HDInsight 和 Azure AD DS 部署在相同的虛擬網路中，則會自動提供連線，而無須採取進一步的動作。
 
@@ -59,19 +59,19 @@ HDInsight 目前僅支援以 Azure AD DS 作為主要網域控制站，讓叢集
 
 因為 Kerberos 依賴密碼雜湊，您必須[對 Azure AD DS 啟用密碼雜湊同步](../../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md)。
 
-如果您要使用與 Active Directory 同盟服務（AD FS）的同盟，您必須啟用密碼雜湊同步處理。（如需建議的設定，請參閱[這段影片](https://youtu.be/qQruArbu2Ew)）。如果您的 AD FS 基礎結構失敗，密碼雜湊同步處理可協助進行嚴重損壞修復，而且也有助於提供流失的認證保護。 如需詳細資訊，請參閱[透過 Azure AD Connect 同步啟用密碼雜湊同步](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md)。
+如果您搭配 Active Directory 同盟服務 (AD FS) 使用同盟，則必須啟用密碼雜湊同步處理。 (建議的設定，請參閱 [這段影片](https://youtu.be/qQruArbu2Ew)。 ) 密碼雜湊同步處理有助於在您的 AD FS 基礎結構失敗時進行嚴重損壞修復，而且也有助於提供洩漏的認證保護。 如需詳細資訊，請參閱[透過 Azure AD Connect 同步啟用密碼雜湊同步](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md)。
 
 針對具有 ESP 的 HDInsight 叢集，不支援單獨使用內部部署 Active Directory 或 IaaS VM 上的 Active Directory 而不搭配使用 Azure AD 和 Azure AD DS 的設定。
 
-如果使用同盟且密碼雜湊已正確同步處理，但您收到驗證失敗，請檢查是否已針對 PowerShell 服務主體啟用雲端密碼驗證。 如果未啟用，您就必須為 Azure AD 租用戶設定[主領域探索 (HRD) 原則](../../active-directory/manage-apps/configure-authentication-for-federated-users-portal.md)。 檢查並設定 HRD 原則：
+如果正在使用同盟且密碼雜湊已正確同步處理，但您收到驗證失敗，請檢查是否已針對 PowerShell 服務主體啟用雲端密碼驗證。 如果未啟用，您就必須為 Azure AD 租用戶設定[主領域探索 (HRD) 原則](../../active-directory/manage-apps/configure-authentication-for-federated-users-portal.md)。 檢查並設定 HRD 原則：
 
-1. 安裝預覽[Azure AD PowerShell 模組](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2)。
+1. 安裝預覽版 [Azure AD PowerShell 模組](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2)。
 
    ```powershell
    Install-Module AzureAD
    ```
 
-2. 使用全域管理員（租使用者系統管理員）認證進行連接。
+2. 使用全域管理員 (租使用者系統管理員) 認證來連接。
 
    ```powershell
    Connect-AzureAD
@@ -83,7 +83,7 @@ HDInsight 目前僅支援以 Azure AD DS 作為主要網域控制站，讓叢集
    Get-AzureADServicePrincipal -SearchString "Microsoft Azure Powershell"
    ```
 
-4. 如果不存在，則建立服務主體。
+4. 如果不存在，請建立服務主體。
 
    ```powershell
    $powershellSPN = New-AzureADServicePrincipal -AppId 1950a258-227b-4e31-a9cf-717495945fc2

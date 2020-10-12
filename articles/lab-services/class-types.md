@@ -4,10 +4,10 @@ description: 提供一些您可以使用 Azure 實驗室服務為其設定實驗
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 21159aacfcd87bb929eaeaf9884b0275c7005e1a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87001618"
 ---
 # <a name="class-types-overview---azure-lab-services"></a>課程類型概觀 - Azure 實驗室服務
@@ -47,19 +47,19 @@ Azure 實驗室服務可讓您在雲端中快速設定教室實驗室環境。 �
 如需如何設定此類實驗室的詳細資訊，請參閱[使用 Python 和 Jupyter Notebook 設定實驗室來教授資料科學](class-type-jupyter-notebook.md)。
 
 ## <a name="big-data-analytics"></a>巨量資料分析
-您可以設定 GPU 實驗室來教授 big data analytics 類別。 透過這種類型的類別，學員將瞭解如何處理大量資料，並套用機器和統計學習演算法來衍生資料見解。 學生的主要目標是瞭解如何使用資料分析工具，例如 Apache Hadoop 的開放原始碼軟體套件，其中提供儲存、管理及處理 big data 的工具。 
+您可以設定 GPU 實驗室，以教授大型資料分析類別。 藉由這種類型的課程，學員將瞭解如何處理大量資料，並套用機器和統計學習演算法來衍生資料見解。 學生的主要目標是瞭解如何使用資料分析工具，例如 Apache Hadoop 的開放原始碼軟體套件，它提供儲存、管理及處理大量資料的工具。 
 
-如需有關如何設定這種類型實驗室的詳細資訊，請參閱[使用 HortonWorks 資料平臺的 Docker 部署設定大型資料分析的實驗室](class-type-big-data-analytics.md)。
+如需有關如何設定此類實驗室的詳細資訊，請參閱 [使用 HortonWorks Data Platform 的 Docker 部署設定適用于大型資料分析的實驗室](class-type-big-data-analytics.md)。
 
 ## <a name="matlab"></a>MATLAB
-[MATLAB](https://www.mathworks.com/products/matlab.html)（代表矩陣實驗室）是來自[MathWorks](https://www.mathworks.com/)的程式設計平臺。  它結合了運算能力和視覺效果，讓它在數學、工程、物理和化學等領域中，成為熱門的工具。
+[MATLAB](https://www.mathworks.com/products/matlab.html)（代表矩陣實驗室）是 [MathWorks](https://www.mathworks.com/)的程式設計平臺。  它結合了運算能力和視覺效果，使其成為數學、工程、物理和化學領域中的熱門工具。
 
-如需如何設定這種實驗室的詳細資訊，請參閱設定[實驗室以教授 MATLAB](class-type-matlab.md)。
+如需有關如何設定此類實驗室的詳細資訊，請參閱設定 [實驗室以教授 MATLAB](class-type-matlab.md)。
 
 ## <a name="solidworks-computer-aided-design-cad"></a>SolidWorks 電腦輔助設計 (CAD)
-您可以設定 GPU 實驗室，讓工程學生能夠存取[SolidWorks](https://www.solidworks.com/)。  SolidWorks 提供用來建立穩固物件模型的 3D CAD 環境。  透過 SolidWorks，工程師可以輕鬆地建立、視覺化、模擬和記錄其設計。
+您可以設定 GPU 實驗室，讓工程學生存取 [SolidWorks](https://www.solidworks.com/)。  SolidWorks 提供 3D CAD 環境來模型化穩固的物件。  透過 SolidWorks，工程師可以輕鬆地建立、視覺化、模擬及記錄其設計。
 
-如需如何設定這種實驗室的詳細資訊，請參閱[使用 SolidWorks 設定工程類別的實驗室。](class-type-solidworks.md)
+如需如何設定此類實驗室的詳細資訊，請參閱 [使用 SolidWorks 設定工程類別的實驗室](class-type-solidworks.md)
 
 ## <a name="next-steps"></a>後續步驟
 

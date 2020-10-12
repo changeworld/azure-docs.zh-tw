@@ -1,5 +1,5 @@
 ---
-title: 開發 U-SQL 使用者定義的運算子-Azure Data Lake Analytics
+title: 開發 U SQL 使用者定義運算子-Azure Data Lake Analytics
 description: 了解如何開發使用者定義的運算子，以用於和重複用於 Azure Data Lake Analytics 作業中。
 services: data-lake-analytics
 ms.service: data-lake-analytics
@@ -8,10 +8,10 @@ ms.assetid: e5189e4e-9438-46d1-8686-ed4836bf3356
 ms.topic: how-to
 ms.date: 12/05/2016
 ms.openlocfilehash: 71cb6e026c81b00e475ae3f4e7fc4958a8de82a3
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87131798"
 ---
 # <a name="develop-u-sql-user-defined-operators-udos"></a>開發 U-SQL 使用者定義的運算子 (UDO)
@@ -115,7 +115,7 @@ ms.locfileid: "87131798"
 7. 從 [方案總管]**** 中，在 [Script.usql]**** 上按一下滑鼠右鍵，然後按一下 [建置指令碼]****。
 8. 從 [方案總管]**** 中，在 [Script.usql]**** 上按一下滑鼠右鍵，然後按一下 [提交指令碼]****。
 9. 如果您尚未連線至 Azure 訂用帳戶，系統會提示您輸入 Azure 帳戶認證。
-10. 按一下 [提交] 。 提交作業完成時，提交結果和工作連結都可以在 [結果] 視窗中取得。
+10. 按一下 [提交]  。 提交作業完成時，提交結果和工作連結都可以在 [結果] 視窗中取得。
 11. 按一下 [重新整理]**** 按鈕，以查看最新的作業狀態並重新整理畫面。
 
 ### <a name="to-see-the-output"></a>查看輸出
@@ -124,7 +124,7 @@ ms.locfileid: "87131798"
 
 2. 展開範例、展開輸出，然後按兩下 [Drivers.csv] ****。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * [使用使用者程式碼延伸 U-SQL 運算式](/u-sql/concepts/extending-u-sql-expressions-with-user-code)
 * [使用適用於 Visual Studio 的 Data Lake 工具來開發 U-SQL 應用程式](data-lake-analytics-data-lake-tools-get-started.md)

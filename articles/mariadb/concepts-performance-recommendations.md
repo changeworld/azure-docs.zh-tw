@@ -1,21 +1,21 @@
 ---
 title: 效能建議-適用於 MariaDB 的 Azure 資料庫
-description: 本文說明中的效能建議功能適用於 MariaDB 的 Azure 資料庫
+description: 本文說明適用於 MariaDB 的 Azure 資料庫中的效能建議功能
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 6/3/2020
 ms.openlocfilehash: 05bc0f1ae50f74cc7c8ab2b236d73bdb4a6fe787
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84484724"
 ---
 # <a name="performance-recommendations-in-azure-database-for-mariadb"></a>適用於 MariaDB 的 Azure 資料庫中的效能建議
 
-**適用物件：** 適用於 MariaDB 的 Azure 資料庫10。2
+**適用于：** 適用於 MariaDB 的 Azure 資料庫10。2
 
 效能建議功能會分析您的資料庫來建立自訂建議，進而改善效能。 為了產生建議，分析會查看各種資料庫特性，包括結構描述。 請在您的伺服器上啟用[查詢存放區](concepts-query-store.md)，以充分利用效能建議功能。 如果效能結構描述為關閉狀態，則開啟查詢存放區時將會啟用 performance_schema 和此功能所需的效能結構描述檢測子集。 實作任何效能建議後，您應測試效能，以評估這些變更的影響。
 
@@ -27,7 +27,7 @@ ms.locfileid: "84484724"
 
 [效能建議](concepts-performance-recommendations.md)功能可分析整部伺服器的工作負載，來找出可能可以改善效能的索引。
 
-在適用于 mariadb 伺服器的 [Azure 入口網站] 頁面上，從功能表列的 [**智慧效能**] 區段開啟 [**效能建議**]。
+在適用于 mariadb 伺服器的 [Azure 入口網站] 頁面上，從功能表列的 [**智慧效能**] 區段開啟**效能建議**。
 
 :::image type="content" source="./media/concepts-performance-recommendations/performance-recommendations-page.png" alt-text="[效能建議] 登陸頁面":::
 
@@ -35,7 +35,7 @@ ms.locfileid: "84484724"
 
 [建議] 視窗將會顯示一份建議清單 (如果有任何發現的話)，以及產生這項建議的相關查詢識別碼。 透過查詢識別碼，您可以使用 [mysql.query_store](concepts-query-store.md#mysqlquery_store) 檢視來深入了解查詢。
 
-:::image type="content" source="./media/concepts-performance-recommendations/performance-recommendations-result.png" alt-text="效能建議新頁面":::
+:::image type="content" source="./media/concepts-performance-recommendations/performance-recommendations-result.png" alt-text="[效能建議] 登陸頁面":::
 
 建議不會自動套用。 若要套用建議，請複製查詢文字並從您選擇的用戶端中執行該文字。 請記得進行測試和監視來評估建議。
 
@@ -47,7 +47,7 @@ ms.locfileid: "84484724"
 
 ### <a name="query-recommendations"></a>查詢建議
 
-查詢建議會針對工作負載中的查詢建議優化和重寫。 藉由識別適用于 mariadb 查詢反模式並在語法上加以修正，可以改善耗時查詢的效能。 此建議類型需要啟用查詢存放區。 查詢存放區會收集查詢資訊，並提供詳細的查詢執行階段和頻率統計資料，讓分析可用來提出建議。
+查詢建議會針對工作負載中的查詢建議優化和重寫。 藉由識別適用于 mariadb 查詢反模式並以語法修正它們，可改善耗時查詢的效能。 此建議類型需要啟用查詢存放區。 查詢存放區會收集查詢資訊，並提供詳細的查詢執行階段和頻率統計資料，讓分析可用來提出建議。
 ## <a name="next-steps"></a>後續步驟
 
-- 深入瞭解適用於 MariaDB 的 Azure 資料庫中的[監視和微調](concepts-monitoring.md)。
+- 深入瞭解適用於 MariaDB 的 Azure 資料庫中的 [監視和微調](concepts-monitoring.md) 。

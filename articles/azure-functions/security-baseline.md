@@ -8,10 +8,10 @@ ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: 21e2b197c31a30ab8a249e2e8e398072a624154c
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89394086"
 ---
 # <a name="azure-security-baseline-for-azure-functions"></a>適用于 Azure Functions 的 Azure 安全性基準
@@ -1031,7 +1031,7 @@ Microsoft 管理 Azure Functions 的基礎結構，並已實行嚴格的控制�
 
 **指導**方針：使用備份和還原功能來排程您應用程式的定期備份。 在 Premium 方案中執行的函式應用程式與 Azure App Service 中的 web 應用程式具有相同的裝載功能，包括「備份與還原」功能。
 
-也可以使用原始檔控制解決方案（例如 Azure Repos 和 Azure DevOps 安全地儲存和管理您的程式碼）。 Azure DevOps Services 會利用許多 Azure 儲存體功能，以確保在發生硬體故障、服務中斷或區域嚴重損壞的情況下，可進行資料的可用性。 此外，Azure DevOps 團隊會遵循程式來防止資料遭到意外或惡意刪除。
+也可以使用原始檔控制解決方案（例如 Azure Repos 和 Azure DevOps 安全地儲存和管理您的程式碼）。 Azure DevOps Services 採用許多 Azure 儲存體功能，為的是在發生硬體失敗、服務中斷或區域災害時確保資料的可用性。 此外，Azure DevOps 小組會遵循程序來防止資料遭到意外或惡意刪除。
 
 - [在 Azure 中備份應用程式](../app-service/manage-backup.md)
 
@@ -1049,7 +1049,7 @@ Microsoft 管理 Azure Functions 的基礎結構，並已實行嚴格的控制�
 
 **指導**方針：使用備份和還原功能來排程您應用程式的定期備份。 在 Premium 方案中執行的函式應用程式與 Azure App Service 中的 web 應用程式具有相同的裝載功能，包括「備份與還原」功能。 Azure Key Vault 內備份客戶管理的金鑰。
 
-也可以使用原始檔控制解決方案（例如 Azure Repos 和 Azure DevOps 安全地儲存和管理您的程式碼）。 Azure DevOps Services 會利用許多 Azure 儲存體功能，以確保在發生硬體故障、服務中斷或區域嚴重損壞的情況下，可進行資料的可用性。 此外，Azure DevOps 團隊會遵循程式來防止資料遭到意外或惡意刪除。
+也可以使用原始檔控制解決方案（例如 Azure Repos 和 Azure DevOps 安全地儲存和管理您的程式碼）。 Azure DevOps Services 採用許多 Azure 儲存體功能，為的是在發生硬體失敗、服務中斷或區域災害時確保資料的可用性。 此外，Azure DevOps 小組會遵循程序來防止資料遭到意外或惡意刪除。
 
 - [在 Azure 中備份應用程式](../app-service/manage-backup.md)
 
@@ -1083,7 +1083,7 @@ Microsoft 管理 Azure Functions 的基礎結構，並已實行嚴格的控制�
 
 **指導**方針：備份和還原功能的備份會使用您訂用帳戶中的 Azure 儲存體帳戶。 Azure 儲存體會加密待用儲存體帳戶中的所有資料。 根據預設，資料是以使用 Microsoft 管理的金鑰加密。 若要進一步控制加密金鑰，您可以提供客戶管理的金鑰來加密儲存體資料。
 
-如果您使用客戶管理的金鑰，請確定已啟用 Key Vault 中的虛刪除功能，以防止金鑰遭到意外或惡意刪除。
+如果您使用客戶管理的金鑰，請確定已啟用 Key Vault 中的 Soft-Delete，以防止金鑰遭到意外或惡意刪除。
 
 - [Azure 儲存體待用加密](../storage/common/storage-service-encryption.md)
 

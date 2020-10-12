@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 08/21/2018
 ms.openlocfilehash: 00fdaf93553c97112c67caa66cb2246756b63c33
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86207480"
 ---
 # <a name="splunk-to-azure-monitor-log-query"></a>從 Splunk 到 Azure 監視器記錄查詢
@@ -26,21 +26,21 @@ ms.locfileid: "86207480"
  | 部署單位  | 叢集 |  叢集 |  Azure 監視器可允許任意跨叢集的查詢。 Splunk 則無法。 |
  | 資料快取 |  貯體  |  快取與保留原則 |  控制資料的期間和快取層級。 此設定會直接影響查詢效能和部署成本。 |
  | 資料的邏輯分割區  |  索引  |  [資料庫]  |  可允許資料的邏輯分隔。 兩種實作皆允許分割區的集合聯集和聯結。 |
- | 結構化的事件中繼資料 | N/A | table |  Splunk 沒有事件中繼資料的搜尋語言概念。 Azure 監視器記錄有資料表的概念，且資料表具有資料行。 每個事件執行個體會對應至一個資料列。 |
- | 資料記錄 | event | 資料列 |  僅限詞彙變更。 |
+ | 結構化的事件中繼資料 | N/A | 資料表 |  Splunk 沒有事件中繼資料的搜尋語言概念。 Azure 監視器記錄有資料表的概念，且資料表具有資料行。 每個事件執行個體會對應至一個資料列。 |
+ | 資料記錄 | event | 列 |  僅限詞彙變更。 |
  | 資料記錄屬性 | field |  直條圖 |  在 Azure 監視器中，這已預先定義為資料表結構的一部分。 在 Splunk 中，每個事件都有自己的欄位集。 |
- | 類型 | datatype |  datatype |  Azure 監視器資料類型在資料行上設定時更明確。 兩者都能夠以動態方式使用資料類型，且擁有大致相當的資料類型集，包括 JSON 支援。 |
+ | 型別 | datatype |  datatype |  Azure 監視器資料類型在資料行上設定時更明確。 兩者都能夠以動態方式使用資料類型，且擁有大致相當的資料類型集，包括 JSON 支援。 |
  | 查詢和搜尋  | 搜尋 | 查詢 |  Azure 監視器與 Splunk 兩者的概念基本上相同。 |
  | 事件擷取時間 | 系統時間 | ingestion_time() |  在 Splunk 中，每個事件都會取得事件編製索引時間的系統時間戳記。 在 Azure 監視器中，您可以定義稱為 ingestion_time 的原則，其會公開可透過 ingestion_time() 函式參考的系統資料行。 |
 
-## <a name="functions"></a>函數
+## <a name="functions"></a>函式
 
 下表指出 Azure 監視器中與 Splunk 函式相等的函式。
 
 |Splunk | Azure 監視器 |註解
 |---|---|---
 |strcat | strcat()| (1) |
-|分割  | split() | (1) |
+|split  | split() | (1) |
 |if     | iff()   | (1) |
 |tonumber | todouble()<br>tolong()<br>toint() | (1) |
 |upper<br>lower |toupper()<br>tolower()|(1) |
@@ -58,7 +58,7 @@ ms.locfileid: "86207480"
 (1) 在 Splunk 中，會使用 `eval` 運算子叫用函式。 在 Azure 監視器中，它會用做 `extend` 或 `project` 的一部分。<br>(2) 在 Splunk 中，會使用 `eval` 運算子叫用函式。 在 Azure 監視器中，它可以搭配 `where` 運算子使用。
 
 
-## <a name="operators"></a>運算子
+## <a name="operators"></a>操作員
 
 下列章節會提供使用 Splunk 與 Azure 監視器之間不同運算子的範例。
 
@@ -74,7 +74,7 @@ ms.locfileid: "86207480"
 | **Azure 監視器** | **find** | <code>find Session.Id=="c8894ffd-e684-43c9-9125-42adc25cd3fc" and ingestion_time()> ago(24h)</code> |
 
 
-### <a name="filter"></a>篩選
+### <a name="filter"></a>Filter
 Azure 監視器記錄查詢會從篩選所在的表格式結果集開始。 Splunk 的篩選則是在目前索引上的預設作業。 您也可以使用 Splunk 中的 `where` 運算子，但我們不建議這樣做。
 
 | | 運算子 | 範例 |
@@ -87,7 +87,7 @@ Azure 監視器記錄也支援以 `take` 作為 `limit` 別名。 在 Splunk 中
 
 | | 運算子 | 範例 |
 |:---|:---|:---|
-| **Splunk** | **前端** | <code>Event.Rule=330009.2<br>&#124; head 100</code> |
+| **Splunk** | **頭** | <code>Event.Rule=330009.2<br>&#124; head 100</code> |
 | **Azure 監視器** | **limit** | <code>Office_Hub_OHubBGTaskError<br>&#124; limit 100</code> |
 
 ### <a name="getting-the-first-n-eventsrows-ordered-by-a-fieldcolumn"></a>取得依欄位/資料行排序的前 n 個事件/資料列
@@ -95,7 +95,7 @@ Azure 監視器記錄也支援以 `take` 作為 `limit` 別名。 在 Splunk 中
 
 | | 運算子 | 範例 |
 |:---|:---|:---|
-| **Splunk** | **前端** |  <code>Event.Rule="330009.2"<br>&#124; sort Event.Sequence<br>&#124; head 20</code> |
+| **Splunk** | **頭** |  <code>Event.Rule="330009.2"<br>&#124; sort Event.Sequence<br>&#124; head 20</code> |
 | **Azure 監視器** | **top** | <code>Office_Hub_OHubBGTaskError<br>&#124; top 20 by Event_Sequence</code> |
 
 ### <a name="extending-the-result-set-with-new-fieldscolumns"></a>以新的欄位/資料行擴充結果集
@@ -103,11 +103,11 @@ Splunk 也有 `eval` 函式，其無法與 `eval` 運算子相比較。 Splunk �
 
 | | 運算子 | 範例 |
 |:---|:---|:---|
-| **Splunk** | **eval** |  <code>Event.Rule=330009.2<br>&#124; eval state= if(Data.Exception = "0", "success", "error")</code> |
+| **Splunk** | **Eval** |  <code>Event.Rule=330009.2<br>&#124; eval state= if(Data.Exception = "0", "success", "error")</code> |
 | **Azure 監視器** | **extend** | <code>Office_Hub_OHubBGTaskError<br>&#124; extend state = iif(Data_Exception == 0,"success" ,"error")</code> |
 
 ### <a name="rename"></a>重新命名 
-Azure 監視器使用 `project-rename` 運算子來重新命名欄位。 `project-rename`允許查詢利用為欄位預先建立的任何索引。 Splunk 有一個 `rename` 運算子可以執行相同的動作。
+Azure 監視器使用 `project-rename` 運算子來重新命名欄位。 `project-rename` 允許查詢利用預建給欄位的任何索引。 Splunk 有 `rename` 運算子可進行相同的動作。
 
 | | 運算子 | 範例 |
 |:---|:---|:---|
@@ -127,7 +127,7 @@ Splunk 似乎沒有類似 `project-away` 的運算子。 您可以使用 UI 篩�
 
 | | 運算子 | 範例 |
 |:---|:---|:---|
-| **Splunk** | **stats** |  <code>search (Rule=120502.*)<br>&#124; stats count by OSEnv, Audience</code> |
+| **Splunk** | **統計** |  <code>search (Rule=120502.*)<br>&#124; stats count by OSEnv, Audience</code> |
 | **Azure 監視器** | **summarize** | <code>Office_Hub_OHubBGTaskError<br>&#124; summarize count() by App_Platform, Release_Audience</code> |
 
 
@@ -161,16 +161,16 @@ Splunk 中的聯結具有重大限制。 子查詢的限制為 10000 筆結果 (
 | | 運算子 | 範例 |
 |:---|:---|:---|
 | **Splunk** | **欄位** |  <code>Event.Rule=330009.2<br>&#124; fields App.Version, App.Platform</code> |
-| **Azure 監視器** | **facet** | <code>Office_Excel_BI_PivotTableCreate<br>&#124; facet by App_Branch, App_Version</code> |
+| **Azure 監視器** | **方面** | <code>Office_Excel_BI_PivotTableCreate<br>&#124; facet by App_Branch, App_Version</code> |
 
 ### <a name="de-duplicate"></a>De-duplicate
 您可以改用 `summarize arg_min()`，反轉已選擇的記錄順序。
 
 | | 運算子 | 範例 |
 |:---|:---|:---|
-| **Splunk** | **重復資料刪除** |  <code>Event.Rule=330009.2<br>&#124; dedup device_id sortby -batterylife</code> |
+| **Splunk** | **資料** |  <code>Event.Rule=330009.2<br>&#124; dedup device_id sortby -batterylife</code> |
 | **Azure 監視器** | **summarize arg_max()** | <code>Office_Excel_BI_PivotTableCreate<br>&#124; summarize arg_max(batterylife, *) by device_id</code> |
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - 進行[在 Azure 監視器中撰寫記錄查詢](get-started-queries.md)課程。

@@ -8,10 +8,10 @@ ms.date: 05/27/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: a26581b61a4b99bd11f48a3d431a1bb85148d66b
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89393423"
 ---
 # <a name="azure-security-baseline-for-container-instances"></a>容器實例的 Azure 安全性基準
@@ -1103,7 +1103,7 @@ ms.locfileid: "89393423"
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4：確保備份和客戶管理的金鑰受到保護
 
-**指導**方針：您可以在 Azure Key Vault 中啟用虛刪除，以防止遭到意外或惡意刪除的金鑰。
+**指導**方針：您可以在 Azure Key Vault 中啟用 Soft-Delete，以防止金鑰遭到意外或惡意刪除。
 
 * [如何金鑰保存庫中啟用虛刪除](../storage/blobs/soft-delete-overview.md?tabs=azure-portal)
 

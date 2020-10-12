@@ -1,7 +1,7 @@
 ---
 title: 在多個 IP 設定上進行負載平衡 - Azure CLI
 titleSuffix: Azure Load Balancer
-description: 在本文中，您將瞭解如何使用 Azure CLI，在主要和次要 IP 設定間進行負載平衡。
+description: 在本文中，您將瞭解如何使用 Azure CLI，在主要和次要 IP 設定之間進行負載平衡。
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
 ms.openlocfilehash: e8fedad40c18818932bf37dfe93c1b236357c30b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87001599"
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-using-powershell"></a>使用 PowerShell 在多個 IP 組態上進行負載平衡
@@ -143,4 +143,4 @@ ms.locfileid: "87001599"
 
 ## <a name="next-steps"></a>接下來的步驟
 - 若要深入了解如何在 Azure 中合併負載平衡服務，請參閱[在 Azure 中使用負載平衡服務](../traffic-manager/traffic-manager-load-balancing-azure.md)。
-- 瞭解如何在 Azure 中使用不同類型的記錄來管理[Azure 監視器記錄中的](../load-balancer/load-balancer-monitor-log.md)負載平衡器，並針對 Azure Load Balancer 進行疑難排解。
+- 瞭解如何在 Azure 中使用不同類型的記錄來管理 [Azure 監視器記錄中的](../load-balancer/load-balancer-monitor-log.md)負載平衡器，並進行疑難排解以進行 Azure Load Balancer。

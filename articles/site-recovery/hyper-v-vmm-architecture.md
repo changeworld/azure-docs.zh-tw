@@ -1,5 +1,5 @@
 ---
-title: 架構-Hyper-v 嚴重損壞修復至具有 Azure Site Recovery 的次要網站
+title: 架構-使用 Azure Site Recovery 從 Hyper-v 損毀修復至次要網站
 description: 本文提供使用 Azure Site Recovery 將內部部署 Hyper-V VM 災害復原至次要 System Center VMM 網站的架構概觀。
 author: rayne-wiselman
 manager: carmonm
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
 ms.openlocfilehash: 703a6afdc12c8a9863ff0f480ec7a577ec31ef77
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87495993"
 ---
 # <a name="architecture---hyper-v-replication-to-a-secondary-site"></a>架構 - Hyper-V 複寫至次要網站
@@ -32,11 +32,11 @@ a
 
 **內部部署至內部部署架構**
 
-![顯示內部部署對內部部署保護的圖表。](./media/hyper-v-vmm-architecture/arch-onprem-onprem.png)
+![顯示內部部署至內部部署保護的圖表。](./media/hyper-v-vmm-architecture/arch-onprem-onprem.png)
 
 ## <a name="replication-process"></a>複寫程序
 
-1. 觸發初始複寫時，會建立[HYPER-V VM 快照](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd560637(v=ws.10))集快照集。
+1. 觸發初始複寫時，會取得 [HYPER-V VM 快照](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd560637(v=ws.10)) 集快照集。
 2. VM 上的虛擬硬碟會逐一複寫至次要位置。
 3. 如果在初始複寫進行時發生磁碟變更，Hyper-V 複本複寫追蹤器會以 Hyper-V 複寫記錄 (.hrl) 的形式追蹤變更。 這些記錄檔位於與磁碟相同的資料夾中。 每個磁碟都有一個相關聯的 .hrl 檔案會傳送至次要位置。 當初始複寫正在進行時，快照和記錄檔會取用磁碟資源。
 4. 初始複寫完成時，就會刪除 VM 快照集，並開始差異複寫。
@@ -56,7 +56,7 @@ a
 
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 
 遵循[教學課程](hyper-v-vmm-disaster-recovery.md)的指示，啟用 VMM 雲端之間的 Hyper-V 複寫。

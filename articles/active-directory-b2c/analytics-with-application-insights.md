@@ -12,17 +12,17 @@ ms.date: 04/05/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 67ea7324419d86fa5b5c23a2f0aa5f8c057495d1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85385972"
 ---
 # <a name="track-user-behavior-in-azure-active-directory-b2c-using-application-insights"></a>使用 Application Insights 在 Azure Active Directory B2C 中追蹤使用者行為
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-Azure Active Directory B2C （Azure AD B2C）支援使用提供給 Azure AD B2C 的檢測金鑰，將事件資料直接傳送至[Application Insights](../azure-monitor/app/app-insights-overview.md) 。  透過 Application Insights 的技術設定檔，您可以為使用者旅程取得詳細且自訂的事件記錄檔，以：
+Azure Active Directory B2C (Azure AD B2C) 支援使用提供給 Application Insights 的檢測金鑰，將事件資料直接傳送至 [Azure AD B2C](../azure-monitor/app/app-insights-overview.md) 。  使用 Application Insights 技術設定檔，您可以取得使用者旅程的詳細和自訂事件記錄檔，以：
 
 * 深入了解使用者行為。
 * 在開發或實際執行時對您自己的原則進行疑難排解。
@@ -31,7 +31,7 @@ Azure Active Directory B2C （Azure AD B2C）支援使用提供給 Azure AD B2C 
 
 ## <a name="how-it-works"></a>運作方式
 
-[Application Insights](application-insights-technical-profile.md)技術設定檔會定義來自 Azure AD B2C 的事件。 這個設定檔會指定事件的名稱、所記錄的宣告及檢測金鑰。 為了張貼事件，會在[使用者旅程](userjourneys.md)圖中新增技術設定檔作為協調流程步驟。
+[Application Insights](application-insights-technical-profile.md)技術設定檔會定義 Azure AD B2C 的事件。 這個設定檔會指定事件的名稱、所記錄的宣告及檢測金鑰。 為了張貼事件，系統會在 [使用者旅程](userjourneys.md)圖中新增技術設定檔作為協調流程步驟。
 
 Application Insights 可以使用相互關聯識別碼來記錄使用者工作階段，以此方式統一事件。 Application Insights 會在數秒內使事件和工作階段成為可用狀態，並提供許多視覺效果、匯出及分析工具。
 
@@ -41,10 +41,10 @@ Application Insights 可以使用相互關聯識別碼來記錄使用者工作�
 
 ## <a name="create-an-application-insights-resource"></a>建立 Application Insights 資源
 
-當您使用 Application Insights 搭配 Azure AD B2C 時，您只需要建立資源並取得檢測金鑰。 如需相關資訊，請參閱[建立 Application Insights 資源](../azure-monitor/app/create-new-resource.md)
+當您使用 Application Insights 搭配 Azure AD B2C 時，您只需要建立資源並取得檢測金鑰。 如需詳細資訊，請參閱 [建立 Application Insights 資源](../azure-monitor/app/create-new-resource.md)
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
-2. 請選取頂端功能表中的 [**目錄 + 訂**用帳戶] 篩選，然後選擇包含您訂用帳戶的目錄，以確定您使用的是包含 Azure 訂用帳戶的目錄。 此租用戶不是您的 Azure AD B2C 租用戶。
+2. 在頂端功能表中選取 [ **目錄 + 訂** 用帳戶] 篩選，然後選擇包含您訂用帳戶的目錄，以確定您使用的是包含 Azure 訂用帳戶的目錄。 此租用戶不是您的 Azure AD B2C 租用戶。
 3. 選擇 Azure 入口網站左上角的 [建立資源]****，然後搜尋並選取 [Application Insights]****。
 4. 按一下 [建立]。
 5. 輸入資源的 [名稱]****。
@@ -106,10 +106,10 @@ Application Insights 可以使用相互關聯識別碼來記錄使用者工作�
 
 | 技術設定檔 | Task |
 | ----------------- | -----|
-| AppInsights-一般 | 要包含在所有 Azure Insights 技術設定檔中的一組通用參數。 |
+| AppInsights-Common | 要包含在所有 Azure Insights 技術設定檔中的一組通用參數。 |
 | AppInsights-SignInRequest | 收到登 `SignInRequest` 入要求時，會使用一組宣告來記錄事件。 |
-| AppInsights-UserSignUp | `UserSignUp`當使用者觸發註冊/登入旅程圖中的註冊選項時，記錄事件。 |
-| AppInsights-SignInComplete | `SignInComplete`當令牌已傳送至信賴憑證者應用程式時，記錄成功完成驗證的事件。 |
+| AppInsights-UserSignUp | 記錄 `UserSignUp` 使用者在註冊/登入旅程圖中觸發註冊選項時的事件。 |
+| AppInsights-SignInComplete | `SignInComplete`當令牌已傳送至信賴憑證者應用程式時，會記錄成功完成驗證的事件。 |
 
 從入門套件將設定檔新增至 TrustFrameworkExtensions.xml** 檔案。 將這些元素新增至 **ClaimsProviders** 元素：
 
@@ -225,9 +225,9 @@ Application Insights 可以使用相互關聯識別碼來記錄使用者工作�
 
 ![Application Insights 使用量事件刀鋒視窗](./media/analytics-with-application-insights/app-ins-graphic.png)
 
-## <a name="optional-collect-more-data"></a>選擇性收集更多資料
+## <a name="optional-collect-more-data"></a>參數收集更多資料
 
-將宣告類型和事件新增至您的使用者旅程圖，以符合您的需求。 您可以使用宣告[解析](claim-resolver-overview.md)程式或任何字串宣告類型，藉由將**輸入**宣告專案新增至 Application Insights 事件或 AppInsights-通用技術設定檔來新增宣告。
+將宣告類型和事件新增至您的使用者旅程圖，以符合您的需求。 您可以使用宣告 [解析](claim-resolver-overview.md) 程式或任何字串宣告類型、將 **輸入** 宣告元素新增至 Application Insights 事件或 AppInsights-Common 技術設定檔，以新增宣告。
 
 - **ClaimTypeReferenceId** 是宣告類型的參考。
 - **PartnerClaimType** 是出現在 Azure Insights 中的屬性名稱。 使用 `{property:NAME}` 的語法，其中 `NAME` 是新增至事件的屬性。
@@ -241,4 +241,4 @@ Application Insights 可以使用相互關聯識別碼來記錄使用者工作�
 
 ## <a name="next-steps"></a>後續步驟
 
-- 若要深入瞭解[Application Insights](application-insights-technical-profile.md)技術設定檔，請參閱 IEF 參考。 
+- 若要深入瞭解 [Application Insights](application-insights-technical-profile.md) 技術設定檔，請參閱 IEF 參考。 

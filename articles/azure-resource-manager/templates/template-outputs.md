@@ -4,10 +4,10 @@ description: 描述如何在 Azure Resource Manager 範本中定義輸出值。
 ms.topic: conceptual
 ms.date: 02/25/2020
 ms.openlocfilehash: 203bfc66e9515ef14a5fe1315ef5b9ee07075041
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "79460019"
 ---
 # <a name="outputs-in-azure-resource-manager-template"></a>Azure Resource Manager 範本中的輸出
@@ -29,7 +29,7 @@ ms.locfileid: "79460019"
 
 ## <a name="conditional-output"></a>條件式輸出
 
-在 [輸出] 區段中，您可以有條件地傳回值。 一般而言，當您有[條件地部署](conditional-resource-deployment.md)資源時，您會在輸出中使用條件。 下列範例示範如何根據是否已部署新的公用 IP 位址，有條件地傳回其資源識別碼：
+在 [輸出] 區段中，您可以有條件地傳回值。 一般來說，當您有 [條件地部署](conditional-resource-deployment.md) 資源時，會在輸出中使用條件。 下列範例示範如何根據是否部署新的 IP 位址，有條件地傳回公用 IP 位址的資源識別碼：
 
 ```json
 "outputs": {
@@ -41,11 +41,11 @@ ms.locfileid: "79460019"
 }
 ```
 
-如需條件式輸出的簡單範例，請參閱[條件式輸出範本](https://github.com/bmoore-msft/AzureRM-Samples/blob/master/conditional-output/azuredeploy.json)。
+如需條件式輸出的簡單範例，請參閱 [條件式輸出範本](https://github.com/bmoore-msft/AzureRM-Samples/blob/master/conditional-output/azuredeploy.json)。
 
-## <a name="dynamic-number-of-outputs"></a>動態的輸出數目
+## <a name="dynamic-number-of-outputs"></a>動態輸出數目
 
-在某些情況下，您不知道建立範本時需要傳回之值的實例數目。 您可以使用**copy**元素來傳回變數數目的值。
+在某些情況下，您不知道建立範本時需要傳回值的實例數目。 您可以使用 **copy** 元素傳回變數的值數目。
 
 ```json
 "outputs": {
@@ -59,11 +59,11 @@ ms.locfileid: "79460019"
 }
 ```
 
-如需詳細資訊，請參閱[Azure Resource Manager 範本中的輸出反復](copy-outputs.md)專案。
+如需詳細資訊，請參閱 [Azure Resource Manager 範本中的輸出反復](copy-outputs.md)專案。
 
 ## <a name="linked-templates"></a>連結的範本
 
-若要從連結的範本中取出輸出值，請使用父範本中的[reference](template-functions-resource.md#reference)函式。 父範本中的語法為：
+若要從連結的範本中取出輸出值，請使用父範本中的 [參考](template-functions-resource.md#reference) 函式。 父範本中的語法為：
 
 ```json
 "[reference('<deploymentName>').outputs.<propertyName>.value]"
@@ -71,7 +71,7 @@ ms.locfileid: "79460019"
 
 從連結的範本取得輸出屬性時，屬性名稱不能包含連字號。
 
-下列範例示範如何藉由從連結的範本中抓取值來設定負載平衡器上的 IP 位址。
+下列範例顯示如何從連結的範本中取出值，以設定負載平衡器上的 IP 位址。
 
 ```json
 "publicIPAddress": {
@@ -83,7 +83,7 @@ ms.locfileid: "79460019"
 
 ## <a name="get-output-values"></a>取得輸出值
 
-當部署成功時，會在部署結果中自動傳回輸出值。
+當部署成功時，系統會自動在部署的結果中傳回輸出值。
 
 若要從部署歷程記錄取得輸出值，您可以使用腳本。
 
@@ -118,4 +118,4 @@ az deployment group show \
 
 ## <a name="next-steps"></a>後續步驟
 
-* 若要瞭解輸出可用的屬性，請參閱[瞭解 Azure Resource Manager 範本的結構和語法](template-syntax.md)。
+* 若要瞭解輸出的可用屬性，請參閱 [瞭解 Azure Resource Manager 範本的結構和語法](template-syntax.md)。

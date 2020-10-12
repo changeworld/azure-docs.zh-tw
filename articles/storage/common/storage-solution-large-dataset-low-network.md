@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: alkohli
 ms.openlocfilehash: 6514b149b057d690d37551bd0489c63852addb1e
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86207503"
 ---
 # <a name="data-transfer-for-large-datasets-with-low-or-no-network-bandwidth"></a>在低速或無網路頻寬之情況下進行大型資料集的資料轉送
@@ -48,9 +48,9 @@ ms.locfileid: "86207503"
 |                                     |    資料箱磁碟      |    資料箱                                      |    Data Box Heavy              |    匯入/匯出                       |
 |-------------------------------------|---------------------------------|--------------------------------------------------|------------------------------------------|----------------------------------------|
 |    **資料大小**                    |    最多 35 TB                 |    每個裝置最多 80 TB                       |    每個裝置最多 800 TB               |    變數                            |
-|    **Data type**                    |    Azure Blob                  |    Azure Blob<br>Azure 檔案儲存體                    |    Azure Blob<br>Azure 檔案儲存體            |    Azure Blob<br>Azure 檔案儲存體          |
+|    **Data type**                    |    Azure Blob                  |    Azure Blob<br>Azure 檔案                    |    Azure Blob<br>Azure 檔案            |    Azure Blob<br>Azure 檔案          |
 |    **板型規格**                  |    每筆訂單 5 個 SSD             |    每筆訂單 1 X 50 磅 桌上型電腦大小裝置    |    每筆訂單 1 X ~500 磅 大型裝置    |    每筆訂單最多 10 個 HDD/SSD        |
-|    **初始設定時間**           |    低度 <br>(15 分鐘)            |    低至中度 <br> (<30 分鐘)               |    中度<br>(1-2 小時)               |    中度到困難<br>(變動) |
+|    **初始設定時間**           |    低 <br>(15 分鐘)            |    低至中度 <br> (<30 分鐘)               |    中<br>(1-2 小時)               |    中度到困難<br>(變動) |
 |    **將資料傳送到 Azure**           |    是                          |    是                                           |    是                                   |    是                                 |
 |    **從 Azure 匯出資料**       |    否                           |    否                                            |    否                                    |    是                                 |
 |    **加密**                   |    AES 128 位元                  |    AES 256 位元                                   |    AES 256 位元                           |    AES 128 位元                         |
@@ -62,7 +62,7 @@ ms.locfileid: "86207503"
 |    **定價**                      |    [定價](https://azure.microsoft.com/pricing/details/databox/disk/)                    |   [定價](https://azure.microsoft.com/pricing/details/storage/databox/)                                      |  [定價](https://azure.microsoft.com/pricing/details/storage/databox/heavy/)                               |   [定價](https://azure.microsoft.com/pricing/details/storage-import-export/)                            |
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - 了解如何
 

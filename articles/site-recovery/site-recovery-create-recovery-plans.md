@@ -4,32 +4,32 @@ description: 了解如何使用 Azure Site Recovery 服務建立及自訂用於�
 ms.topic: how-to
 ms.date: 01/23/2020
 ms.openlocfilehash: 0dcde98e8dcaef12896c18c25429f0ba7b1b27d4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84485331"
 ---
 # <a name="create-and-customize-recovery-plans"></a>建立並自訂復原方案
 
-本文說明如何在[Azure Site Recovery](site-recovery-overview.md)中建立和自訂容錯移轉的復原計畫。 開始之前，請[深入了解](recovery-plan-overview.md)復原方案。
+本文說明如何在 [Azure Site Recovery](site-recovery-overview.md)中建立和自訂容錯移轉的復原方案。 開始之前，請[深入了解](recovery-plan-overview.md)復原方案。
 
-## <a name="create-a-recovery-plan"></a>建立復原計畫
+## <a name="create-a-recovery-plan"></a>建立復原方案
 
-1. 在復原服務保存庫中，選取 [復原**方案（Site Recovery）**  >  **+ 復原方案**]。
+1. 在復原服務保存庫中，選取 [復原**方案] (Site Recovery) **  >  **+ 復原方案**]。
 2. 在 [建立復原方案]**** 中，指定方案的名稱。
 3. 根據方案中的機器選擇來源和目標，並針對部署模型選取 [資源管理員]****。 來源位置必須有已啟用容錯移轉和復原功能的機器。 
 
-    **容錯移轉** | **來源** | **目標** 
+    **容錯移轉** | **Source** | **Target** 
    --- | --- | ---
    Azure 至 Azure | 選取 Azure 區域 | 選取 Azure 區域
    VMware 至 Azure | 選取設定伺服器 | 選取 Azure
    實體機器至 Azure | 選取設定伺服器 | 選取 Azure   
    Hyper-V 至 Azure | 選取 Hyper-v 網站名稱 | 選取 Azure
-   Hyper-v （受 VMM 管理）至 Azure  | 選取 VMM 伺服器 | 選取 Azure
+   Hyper-v (由 VMM) 管理到 Azure  | 選取 VMM 伺服器 | 選取 Azure
   
     請注意：
-    - 您可以使用復原方案來容錯移轉至 Azure，以及從 Azure 容錯回復。
+    - 您可以使用復原方案，將容錯移轉至 Azure，並從 Azure 容錯回復。
     - 來源位置必須有已啟用容錯移轉和復原功能的機器。
     - 復原方案可以包含具有相同來源和目標的機器。
     - 您可以在相同的方案中包含受 VMM 管理的 VMware Vm 和 Hyper-v Vm。
@@ -56,7 +56,7 @@ ms.locfileid: "84485331"
 - 如果您要複寫至 Azure，可以將 Azure 自動化 Runbook 整合至您的復原方案。 [深入了解](site-recovery-runbook-automation.md)。
 - 如果您要複製 System Center VMM 所管理的 Hyper-V VM，可以在內部部署 VMM 伺服器上建立指令碼，並將它包含在復原方案中。
 - 新增指令碼後，群組中會加入新的動作集。 例如，系統會為群組 1 建立一組前置步驟，並且命名為「群組 1：前置步驟」**。 所有前置步驟都會列在此動作集內。 只有在部署 VMM 伺服器後，您才能在主要網站上新增指令碼。
-- 如果您新增手動動作，當復原方案執行時，它會在您插入手動動作的點停止。 對話方塊會提示您指定手動動作已完成。
+- 如果您加入手動動作，當復原方案執行時，它會在您插入手動動作的時間點停止。 對話方塊會提示您指定手動動作已完成。
 - 若要在 VMM 伺服器上建立指令碼，請依照[本文](hyper-v-vmm-recovery-script.md)中的指示。
 - 在容錯移轉至次要站台期間，以及從次要站台容錯回復到主要站台期間，可以套用指令碼。 支援取決於您的複寫案例：
     
@@ -68,11 +68,11 @@ ms.locfileid: "84485331"
     從 Hyper-V 站台到 Azure | Runbook | NA
     VMM 至次要 VMM | 指令碼 | 指令碼
 
-1. 在 [復原方案] 中，按一下應新增動作的步驟，並指定應該發生動作的時間：
+1. 在復原方案中，按一下要新增動作的步驟，並指定應該發生動作的時間：
     1. 如果您在群組中的機器於容錯移轉後啟動之前就需要動作發生，請選取 [新增前置動作]****。
     1. 如果您在群組中的機器於容錯移轉後啟動之後才需要動作發生，請選取 [新增後置動作]****。 若要移動動作的位置，請選取 [上移]**** 或 [下移]**** 按鈕。
 2. 在 [插入動作]**** 中，選取 [指令碼]**** 或 [手動動作]****。
-3. 如果您想要新增手動動作，請執行下列步驟：
+3. 如果您想要新增手動動作，請執行下列動作：
     1. 輸入動作的名稱，然後輸入動作指示。 執行容錯移轉的使用者會看到這些指示。
     1. 指定您是否要針對所有類型的容錯移轉 (測試、容錯移轉、規劃的容錯移轉 (如果相關)) 新增手動動作。 然後按一下 [確定] 。
 4. 如果您想要新增腳本，請執行下列動作：

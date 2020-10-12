@@ -9,21 +9,21 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: b2609a069872ec55ac9068fadcbb3f312d68a630
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81680827"
 ---
 本節說明如何針對直接對等互連執行下列修改作業：
 
-* 新增直接對等互連連線。
-* 移除直接對等互連連線。
+* 新增直接對等互連連接。
+* 移除直接對等互連連接。
 * 升級或降級作用中連接的頻寬。
-* 在使用中連接上新增 IPv4 或 IPv6 會話。
-* 移除作用中連接上的 IPv4 或 IPv6 會話。
+* 在使用中的連線上新增 IPv4 或 IPv6 會話。
+* 移除作用中連接的 IPv4 或 IPv6 會話。
 
-### <a name="add-direct-peering-connections"></a>新增直接對等互連連線
+### <a name="add-direct-peering-connections"></a>新增直接對等互連連接
 
 此範例說明如何將連接新增至現有的直接對等互連。
 
@@ -44,9 +44,9 @@ $directPeering.Connections.Add($connection)
 $directPeering | Update-AzPeering
 ```
 
-### <a name="remove-direct-peering-connections"></a>移除直接對等互連連線
+### <a name="remove-direct-peering-connections"></a>移除直接對等互連連接
 
-目前 PowerShell 不支援移除連接。 如需詳細資訊，請聯絡[Microsoft 對等互連](mailto:peeringexperience@microsoft.com)。
+PowerShell 目前不支援移除連接。 如需詳細資訊，請洽詢 [Microsoft 對等互連](mailto:peeringexperience@microsoft.com)。
 
 <!--
 ```powershell
@@ -68,7 +68,7 @@ $directPeering | Update-AzPeering
 
 ```
 
-### <a name="add-ipv4-or-ipv6-sessions-on-active-connections"></a>在使用中連接上新增 IPv4 或 IPv6 會話
+### <a name="add-ipv4-or-ipv6-sessions-on-active-connections"></a>在作用中連接上新增 IPv4 或 IPv6 會話
 
 此範例說明如何在只有 IPv4 會話的現有直接連線上新增 IPv6 會話。 
 
@@ -80,6 +80,6 @@ $directPeering | Update-AzPeering
 
 ```
 
-### <a name="remove-ipv4-or-ipv6-sessions-on-active-connections"></a>移除作用中連接的 IPv4 或 IPv6 會話
+### <a name="remove-ipv4-or-ipv6-sessions-on-active-connections"></a>移除作用中連線上的 IPv4 或 IPv6 會話
 
-目前 PowerShell 不支援從現有的連線移除 IPv4 或 IPv6 會話。 如需詳細資訊，請聯絡[Microsoft 對等互連](mailto:peeringexperience@microsoft.com)。
+PowerShell 目前不支援從現有連線移除 IPv4 或 IPv6 會話。 如需詳細資訊，請洽詢 [Microsoft 對等互連](mailto:peeringexperience@microsoft.com)。

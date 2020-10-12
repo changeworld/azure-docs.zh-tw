@@ -8,10 +8,10 @@ ms.date: 06/14/2020
 ms.author: jpalma
 author: palma21
 ms.openlocfilehash: a58b00018f6ac89f024661d8d3f50ea5249e620b
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89182117"
 ---
 # <a name="use-a-public-standard-load-balancer-in-azure-kubernetes-service-aks"></a>使用 Azure Kubernetes Service (AKS 中的公用 Standard Load Balancer) 
@@ -317,7 +317,7 @@ spec:
 
 以下是使用類型 Kubernetes 服務所支援的注釋清單 `LoadBalancer` ，這些批註只適用 **于輸入** 流程：
 
-| Annotation | 值 | 說明
+| Annotation | 值 | 描述
 | ----------------------------------------------------------------- | ------------------------------------- | ------------------------------------------------------------ 
 | `service.beta.kubernetes.io/azure-load-balancer-internal`         | `true` 或 `false`                     | 指定負載平衡器是否應為內部負載平衡器。 如果未設定，則會預設為 public。
 | `service.beta.kubernetes.io/azure-load-balancer-internal-subnet`  | 子網的名稱                    | 指定應系結內部負載平衡器的子網。 如果未設定，則會預設為雲端設定檔中設定的子網。

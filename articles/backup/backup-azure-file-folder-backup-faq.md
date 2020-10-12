@@ -4,10 +4,10 @@ description: 解決使用 Azure 備份備份檔案和資料夾的相關常見問
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.openlocfilehash: e3a5b6d07982c3261b457d4999025c44489c0a8d
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89182508"
 ---
 # <a name="frequently-asked-questions---microsoft-azure-recovery-services-mars-agent"></a>常見問題-Microsoft Azure 復原服務 (MARS) 代理程式
@@ -80,7 +80,7 @@ ms.locfileid: "89182508"
 
 * 您必須向備份保存庫註冊新的電腦名稱稱。
 * 當您向保存庫註冊新名稱時，第一項作業是 *完整* 備份。
-* 如果您需要使用舊的伺服器名稱來復原備份至保存庫的資料，請使用 [復原資料] 嚮導中的選項來還原至替代位置。 [進一步瞭解](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine)。
+* 如果您需要使用舊的伺服器名稱來復原備份至保存庫的資料，請使用 [復原資料] 嚮導中的選項來還原至替代位置。 [深入了解](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine)。
 
 ### <a name="what-is-the-maximum-file-path-length-for-backup"></a>備份的檔案路徑長度上限為何？
 
@@ -112,7 +112,7 @@ MARS 代理程式依賴 NTFS，並允許檔案名/路徑中 [支援的字元](/w
 1. 依預設，暫存檔案夾位於 `\Program Files\Microsoft Azure Recovery Services Agent\Scratch`
 2. 請確定您的暫存檔案夾位置路徑符合下列登錄機碼專案的值：
 
-    | 登錄路徑 | 登錄金鑰 | 值 |
+    | 登錄路徑 | 登錄機碼 | 值 |
     | --- | --- | --- |
     | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config` |ScratchLocation |*「新的快取資料夾位置」* |
     | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider` |ScratchLocation |*「新的快取資料夾位置」* |
@@ -127,7 +127,7 @@ MARS 代理程式依賴 NTFS，並允許檔案名/路徑中 [支援的字元](/w
 4. 將整個 `\Scratch` 資料夾複製到具有足夠空間的其他磁片磁碟機。 確定已複製但未移動內容。
 5. 以新移動的暫存檔案夾路徑更新下列登錄專案。
 
-    | 登錄路徑 | 登錄金鑰 | 值 |
+    | 登錄路徑 | 登錄機碼 | 值 |
     | --- | --- | --- |
     | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config` |ScratchLocation |*新的暫存檔案夾位置* |
     | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider` |ScratchLocation |*新的暫存檔案夾位置* |
@@ -163,7 +163,7 @@ MARS 代理程式依賴 NTFS，並允許檔案名/路徑中 [支援的字元](/w
 
 ### <a name="is-there-a-way-to-adjust-the-amount-of-bandwidth-used-for-backup"></a>是否有方法可以調整用於備份的頻寬量？
 
-是，您可以使用 MARS 代理程式中的 [ **變更屬性** ] 選項來調整頻寬和時間。 [進一步瞭解](backup-windows-with-mars-agent.md#enable-network-throttling)。
+是，您可以使用 MARS 代理程式中的 [ **變更屬性** ] 選項來調整頻寬和時間。 [深入了解](backup-windows-with-mars-agent.md#enable-network-throttling)。
 
 ## <a name="restore"></a>還原
 

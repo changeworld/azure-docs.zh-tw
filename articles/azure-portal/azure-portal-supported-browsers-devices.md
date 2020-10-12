@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 12/20/2019
 ms.author: mblythe
 ms.custom: accessibility
-ms.openlocfilehash: 82a6cfc817cefb78c3239349d9ad7ff839a1ecbd
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 63bfb7c92e77c4059a46a83b76b3818fcb6d63be
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90090205"
 ---
 # <a name="supported-devices"></a>支援的裝置
@@ -33,7 +33,7 @@ ms.locfileid: "90090205"
 建議使用與您的作業系統相容的最新瀏覽器。 支援下列瀏覽器：
 
 * Microsoft Edge (最新版本)
-* 2021年8月17日 Internet Explorer 11 (終止支援-如需詳細資訊，請參閱我們的 [blog 文章](https://techcommunity.microsoft.com/t5/microsoft-365-blog/microsoft-365-apps-say-farewell-to-internet-explorer-11-and/ba-p/1591666)) 
+* Internet Explorer 11
 * Safari (最新版本，僅限 Mac)
 * Chrome (最新版本)
 * Firefox (最新版本)

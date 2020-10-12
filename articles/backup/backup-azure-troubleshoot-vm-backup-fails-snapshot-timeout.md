@@ -5,10 +5,10 @@ ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
 ms.openlocfilehash: e5fc26231cc5d3ad412371c2f8c187b2d0033ee4
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89182032"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>針對 Azure 備份失敗進行疑難排解：與代理程式或延伸模組相關的問題
@@ -57,7 +57,7 @@ Azure 備份使用 VM 快照集延伸模組來進行 Azure 虛擬機器的應用
   - `C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot`
   - `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot`
 
-- **檢查是否需要網路存取**：延伸模組套件是從 Azure 儲存體延伸模組存放庫下載，且延伸模組狀態上傳會張貼到 Azure 儲存體。 [進一步瞭解](../virtual-machines/extensions/features-windows.md#network-access)。
+- **檢查是否需要網路存取**：延伸模組套件是從 Azure 儲存體延伸模組存放庫下載，且延伸模組狀態上傳會張貼到 Azure 儲存體。 [深入了解](../virtual-machines/extensions/features-windows.md#network-access)。
   - 如果您是使用不支援的代理程式版本，您需要允許從 VM 對該區域中的 Azure 儲存體進行輸出存取。
   - 如果您已 `168.63.129.16` 使用來賓防火牆或 proxy 來封鎖存取，擴充功能將會失敗，而不考慮上述各項。 需要端口80、443和32526，請 [深入瞭解](../virtual-machines/extensions/features-windows.md#network-access)。
 
@@ -220,7 +220,7 @@ VM 代理程式可能已損毀，或服務可能已停止。 重新安裝 VM 代
 
 ### <a name="the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms"></a>VM 中安裝的代理程式已過時 (適用於 Linux VM)
 
-#### <a name="solution"></a>解決方案
+#### <a name="solution"></a>解決方法
 
 針對 Linux VM，與代理程式或擴充功能相關的多數失敗是由於會影響過時 VM 代理程式的問題所造成。 若要對此問題進行疑難排解，請遵循下列一般方針：
 
@@ -249,10 +249,10 @@ VM 代理程式可能已損毀，或服務可能已停止。 重新安裝 VM 代
 2. 將 **Logs.Verbose** 值從 *n* 變更為 *y*。
 3. 儲存變更，然後完成本節前面所述的步驟來重新啟動 waagent。
 
-### <a name="vm-agent-configuration-options-are-not-set-for-linux-vms"></a>針對 Linux Vm，VM 代理程式設定選項未設定 () 
+### <a name="vm-agent-configuration-options-are-not-set-for-linux-vms"></a>Linux Vm 的 VM-Agent 設定選項未設定 () 
 
 組態檔 (/etc/waagent.conf) 控制 waagent 的動作。 設定檔選項 **延伸模組。 [啟用** ] 應設為 [ **y** ] 和 [布建] **。代理程式** 應該設定為 [ **自動** ]，備份才能運作。
-如需 VM 代理程式設定檔選項的完整清單，請參閱 <https://github.com/Azure/WALinuxAgent#configuration-file-options>
+如需 VM-Agent 設定檔選項的完整清單，請參閱 <https://github.com/Azure/WALinuxAgent#configuration-file-options>
 
 ### <a name="application-control-solution-is-blocking-iaasbcdrextensionexe"></a>應用程式控制方案正在封鎖 IaaSBcdrExtension.exe
 
@@ -270,7 +270,7 @@ VM 備份仰賴發給底層儲存體帳戶的快照命令。 備份可能會失�
 
 下列狀況可能導致快照集工作失敗：
 
-| 原因 | 解決方案 |
+| 原因 | 解決方法 |
 | --- | --- |
 | 因為遠端桌面通訊協定 (RDP) 中的 VM 關機，而導致報告的 VM 狀態不正確。 | 如果您關閉 RDP 中的 VM，請檢查入口網站，以判斷 VM 狀態是否正確。 如果不正確，請使用 VM 儀表板上的 [ **關機** ] 選項來關閉入口網站中的 VM。 |
 | VM 無法從 DHCP 取得主機或網狀架構位址。 | 必須在來賓內啟用 DHCP，IaaS VM 備份才能運作。 如果 VM 無法從 DHCP 回應 245 取得主機或網狀架構位址，則無法下載或執行任何延伸模組。 如果您需要靜態私人 IP，您應該透過 **Azure 入口網站** 或 **PowerShell** 進行設定，並確定已啟用 VM 內的 DHCP 選項。 [深入瞭解](../virtual-network/virtual-networks-static-private-ip-arm-ps.md#change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface) 如何使用 PowerShell 設定靜態 IP 位址。

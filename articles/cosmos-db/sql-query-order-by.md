@@ -1,16 +1,16 @@
 ---
 title: Azure Cosmos DB 中的 ORDER BY 子句
-description: 瞭解 Azure Cosmos DB 的 SQL ORDER BY 子句。 使用 SQL 做為 Azure Cosmos DB JSON 查詢語言。
+description: 瞭解 Azure Cosmos DB 的 SQL ORDER BY 子句。 使用 SQL 做為 Azure Cosmos DB 的 JSON 查詢語言。
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/06/2020
 ms.author: tisande
 ms.openlocfilehash: c4ae66884602989284a427bdc33de7612bd9a8df
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84484330"
 ---
 # <a name="order-by-clause-in-azure-cosmos-db"></a>Azure Cosmos DB 中的 ORDER BY 子句
@@ -31,13 +31,13 @@ ORDER BY <sort_specification>
   
    指定要排列查詢結果集的屬性或運算式。 排序資料行可以指定為名稱或屬性別名。  
   
-   可以指定多個屬性。 屬性名稱必須是唯一的。 子句中排序屬性的順序會 `ORDER BY` 定義排序結果集的組織。 也就是說，結果集是依第一個屬性排序，而該排序清單會依次要屬性進行排序，以此類推。  
+   您可以指定多個屬性。 屬性名稱必須是唯一的。 子句中的 sort 屬性順序會 `ORDER BY` 定義已排序結果集的組織。 也就是說，結果集是依第一個屬性排序，而該排序清單會依次要屬性進行排序，以此類推。  
   
-   子句中參考的屬性名稱， `ORDER BY` 必須對應至選取清單中的屬性，或與子句中指定之集合中所定義的屬性（ `FROM` 不含任何多義性）。  
+   子句中參考的屬性名稱 `ORDER BY` 必須對應到選取清單中的屬性，或是對應至子句中所指定之集合中所定義的屬性（ `FROM` 不含任何多義性）。  
   
 - `<sort_expression>`  
   
-   指定要對其排序查詢結果集的一或多個屬性或運算式。  
+   指定要排序查詢結果集的一或多個屬性或運算式。  
   
 - `<scalar_expression>`  
   
@@ -45,18 +45,18 @@ ORDER BY <sort_specification>
   
 - `ASC | DESC`  
   
-   指定指定之資料行的值應該以遞增或遞減順序排序。 `ASC`從最低值到最大值進行排序。 `DESC`從最高值到最低值排序。 `ASC`這是預設的排序次序。 Null 值會當做最低的可能值來處理。  
+   指定指定之資料行的值應該以遞增或遞減順序排序。 `ASC` 從最低值到最高值進行排序。 `DESC` 從最高值到最低值進行排序。 `ASC` 這是預設的排序次序。 Null 值會當做最低的可能值來處理。  
   
 ## <a name="remarks"></a>備註  
   
-   `ORDER BY`子句要求索引編制原則必須包含要排序之欄位的索引。 Azure Cosmos DB 查詢執行時間支援針對屬性名稱進行排序，而不是針對計算的屬性。 Azure Cosmos DB 支援多個 `ORDER BY` 屬性。 若要以多個 ORDER BY 屬性執行查詢，您應該在要排序的欄位上定義[複合索引](index-policy.md#composite-indexes)。
+   `ORDER BY`子句要求索引編制原則包含要排序之欄位的索引。 Azure Cosmos DB 的查詢執行時間支援針對屬性名稱進行排序，而不支援針對計算的屬性進行排序。 Azure Cosmos DB 支援多個 `ORDER BY` 屬性。 為了執行具有多個 ORDER BY 屬性的查詢，您應該在要排序的欄位上定義 [複合索引](index-policy.md#composite-indexes) 。
 
 > [!Note]
-> 如果要排序的屬性可能未針對某些檔定義，而您想要在「排序依據」查詢中加以取出，您必須在索引中明確包含此路徑。 預設的索引編制原則不允許抓取未定義 sort 屬性的檔。 [在含有一些遺漏欄位的檔上，檢查範例查詢](#documents-with-missing-fields)。
+> 如果某些檔的排序屬性可能未定義，而您想要在 ORDER BY 查詢中取得這些屬性，您必須在索引中明確包含此路徑。 預設的索引編制原則不允許抓取未定義 sort 屬性的檔。 [在含有某些遺漏欄位的檔上檢查範例查詢](#documents-with-missing-fields)。
 
 ## <a name="examples"></a>範例
 
-例如，以下是以居住城市名稱的遞增順序來抓取家族的查詢：
+例如，以下是以常駐城市名稱的遞增順序來抓取系列的查詢：
 
 ```sql
     SELECT f.id, f.address.city
@@ -64,7 +64,7 @@ ORDER BY <sort_specification>
     ORDER BY f.address.city
 ```
 
-結果如下：
+結果為：
 
 ```json
     [
@@ -79,7 +79,7 @@ ORDER BY <sort_specification>
     ]
 ```
 
-下列查詢會依 `id` 其專案建立日期的順序來抓取家族。 專案 `creationDate` 是代表*epoch 時間*的數位，或1970（以秒為單位）之後經過的時間。
+下列查詢會依 `id` 專案的建立日期順序來抓取系列。 專案 `creationDate` 是代表 *epoch 時間*的數位，或從1970年1月1日起經過的時間（以秒為單位）。
 
 ```sql
     SELECT f.id, f.creationDate
@@ -87,7 +87,7 @@ ORDER BY <sort_specification>
     ORDER BY f.creationDate DESC
 ```
 
-結果如下：
+結果為：
 
 ```json
     [
@@ -102,7 +102,7 @@ ORDER BY <sort_specification>
     ]
 ```
 
-此外，您可以依多個屬性來排序。 依多個屬性排序的查詢需要[複合索引](index-policy.md#composite-indexes)。 請考慮下列查詢：
+此外，您可以依多個屬性排序。 依多個屬性排序的查詢需要 [複合索引](index-policy.md#composite-indexes)。 請考慮下列查詢：
 
 ```sql
     SELECT f.id, f.creationDate
@@ -112,11 +112,11 @@ ORDER BY <sort_specification>
 
 此查詢會依 `id` 城市名稱的遞增順序來抓取系列。 如果多個專案具有相同的城市名稱，則查詢會依 `creationDate` 遞減順序排序。
 
-## <a name="documents-with-missing-fields"></a>含有遺漏欄位的檔
+## <a name="documents-with-missing-fields"></a>遺漏欄位的檔
 
-`ORDER BY`針對具有預設索引編制原則的容器執行的查詢，將不會傳回未定義 sort 屬性的檔。 如果您想要包含未定義 sort 屬性的檔，您應該在索引編制原則中明確包含這個屬性。
+`ORDER BY`針對具有預設索引編制原則之容器執行的查詢，將不會傳回 [排序] 屬性未定義的檔。 如果您想要包含 [排序] 屬性未定義的檔，您應該在編制索引原則中明確包含這個屬性。
 
-例如，以下是具有索引編制原則的容器，但不明確包含任何路徑，除了 `"/*"` ：
+例如，以下是具有索引編制原則的容器，但不會明確包含任何路徑 `"/*"` ：
 
 ```json
 {
@@ -131,9 +131,9 @@ ORDER BY <sort_specification>
 }
 ```
 
-如果您執行包含 `lastName` 在子句中的查詢 `Order By` ，結果只會包含已 `lastName` 定義屬性的檔。 我們尚未定義明確包含的路徑， `lastName` 因此不含的任何檔 `lastName` 都不會出現在查詢結果中。
+如果您執行包含 `lastName` 在子句中的查詢 `Order By` ，結果只會包含已 `lastName` 定義屬性的檔。 我們尚未定義明確包含的路徑， `lastName` 因此沒有的任何檔 `lastName` 都不會出現在查詢結果中。
 
-以下是依 `lastName` 兩個檔排序的查詢，其中一個不具有 `lastName` 已定義的：
+以下是依 `lastName` 兩份檔排序的查詢，其中一個檔沒有 `lastName` 已定義的：
 
 ```sql
     SELECT f.id, f.lastName
@@ -141,7 +141,7 @@ ORDER BY <sort_specification>
     ORDER BY f.lastName
 ```
 
-結果只會包含已定義的檔 `lastName` ：
+結果只包含已定義的檔 `lastName` ：
 
 ```json
     [
@@ -152,9 +152,9 @@ ORDER BY <sort_specification>
     ]
 ```
 
-如果我們更新容器的編制索引原則以明確包含的路徑 `lastName` ，我們將會在查詢結果中包含未定義排序屬性的檔。 您必須明確定義路徑，使其成為此純量值（而不是超過它）。 您應該 `?` 在索引編制原則中使用路徑定義中的字元，以確保明確地為屬性編制索引 `lastName` ，而且不會有任何其他的嵌套路徑。 如果您的 `Order By` 查詢使用[複合索引](index-policy.md#composite-indexes)，則結果一律會在查詢結果中包含未定義排序屬性的檔。
+如果我們更新容器的編制索引原則，以明確地包含的路徑 `lastName` ，我們會在查詢結果中包含具有未定義之排序屬性的檔。 您必須明確地定義路徑以使此純量值 (，而不是在它) 之外。 您應該 `?` 在索引編制原則中使用路徑定義中的字元，以確保您明確地為屬性編制索引 `lastName` ，而不是任何其他的嵌套路徑。 如果您的 `Order By` 查詢使用 [複合索引](index-policy.md#composite-indexes)，則結果一律會在查詢結果中包含具有未定義之排序屬性的檔。
 
-以下是索引編制原則的範例，可讓您讓具有未定義的檔 `lastName` 出現在查詢結果中：
+以下是範例編制索引原則，可讓您讓具有未定義的檔 `lastName` 出現在查詢結果中：
 
 ```json
 {
@@ -172,7 +172,7 @@ ORDER BY <sort_specification>
 }
 ```
 
-如果您再次執行相同的查詢，遺漏 `lastName` 的檔會先出現在查詢結果中：
+如果您再次執行相同的查詢，則遺漏的檔 `lastName` 會先出現在查詢結果中：
 
 ```sql
     SELECT f.id, f.lastName
@@ -180,7 +180,7 @@ ORDER BY <sort_specification>
     ORDER BY f.lastName
 ```
 
-結果如下：
+結果為：
 
 ```json
 [
@@ -194,7 +194,7 @@ ORDER BY <sort_specification>
 ]
 ```
 
-如果您將排序次序修改為 `DESC` ，遺失 `lastName` 的檔最後會出現在查詢結果中：
+如果您將排序次序修改為 `DESC` ，遺漏 `lastName` 的檔會出現在查詢結果中的最後一個：
 
 ```sql
     SELECT f.id, f.lastName
@@ -202,7 +202,7 @@ ORDER BY <sort_specification>
     ORDER BY f.lastName DESC
 ```
 
-結果如下：
+結果為：
 
 ```json
 [
@@ -217,9 +217,9 @@ ORDER BY <sort_specification>
 ```
 
 > [!Note]
-> 只有 .NET SDK 版本3.4.0 或更新版本支援以混合類型排序。 因此，如果您想要依未定義和已定義值的組合進行排序，您應該使用這個版本（或更新版本）。
+> 只有 .NET SDK 版本3.4.0 或更新版本支援搭配混合類型的 ORDER BY。 因此，如果您想要依未定義和已定義值的組合進行排序，則應該使用這個版本 (或更新版本的) 。
 
-您無法控制不同類型出現在結果中的順序。 在上述範例中，我們示範如何在字串值之前排序未定義的值。 例如，如果您想要更充分掌控未定義值的排序次序，您可以將字串值為 "aaaaaaaaa" 或 "zzzzzzzz" 的任何未定義屬性，以確保它們是 first 或 last。
+您無法控制不同類型出現在結果中的順序。 在上述範例中，我們示範了如何在字串值之前排序未定義的值。 比方說，如果您想要更充分掌控未定義值的排序次序，您可以為字串值 "aaaaaaaaa" 或 "zzzzzzzz" 指派任何未定義的屬性，以確保它們是第一個或最後一個。
 
 ## <a name="next-steps"></a>後續步驟
 

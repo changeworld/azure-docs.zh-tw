@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/3/2020
 ms.openlocfilehash: 6f41863f45bdc90cb9fe589ba0a5011dea84a67c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84485227"
 ---
 # <a name="performance-recommendations-in-azure-database-for-mysql"></a>「適用於 MySQL 的 Azure 資料庫」中的效能建議
@@ -35,7 +35,7 @@ ms.locfileid: "84485227"
 
 [建議] 視窗將會顯示一份建議清單 (如果有任何發現的話)，以及產生這項建議的相關查詢識別碼。 透過查詢識別碼，您可以使用 [mysql.query_store](concepts-query-store.md#mysqlquery_store) 檢視來深入了解查詢。
 
-:::image type="content" source="./media/concepts-performance-recommendations/performance-recommendations-result.png" alt-text="效能建議新頁面":::
+:::image type="content" source="./media/concepts-performance-recommendations/performance-recommendations-result.png" alt-text="[效能建議] 登陸頁面":::
 
 建議不會自動套用。 若要套用建議，請複製查詢文字並從您選擇的用戶端中執行該文字。 請記得進行測試和監視來評估建議。
 
@@ -47,7 +47,7 @@ ms.locfileid: "84485227"
 
 ### <a name="query-recommendations"></a>查詢建議
 
-查詢建議會針對工作負載中的查詢建議優化和重寫。 藉由識別 MySQL 查詢反模式並以語法加以修正，可以改善耗時查詢的效能。 此建議類型需要啟用查詢存放區。 查詢存放區會收集查詢資訊，並提供詳細的查詢執行階段和頻率統計資料，讓分析可用來提出建議。
+查詢建議會針對工作負載中的查詢建議優化和重寫。 藉由找出 MySQL 查詢的反模式，並以語法進行修正，可改善耗時查詢的效能。 此建議類型需要啟用查詢存放區。 查詢存放區會收集查詢資訊，並提供詳細的查詢執行階段和頻率統計資料，讓分析可用來提出建議。
 
 ## <a name="next-steps"></a>後續步驟
 - 深入了解如何在適用於 MySQL 的 Azure 資料庫中進行[監視和微調](concepts-monitoring.md)。

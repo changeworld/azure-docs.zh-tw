@@ -1,25 +1,25 @@
 ---
 title: Azure Cosmos DB 中的參數化查詢
-description: 瞭解 SQL 參數化查詢如何提供強大的使用者輸入處理和植入，以及防止透過 SQL 插入的資料意外洩漏。
+description: 瞭解 SQL 參數化查詢如何提供強大的使用者輸入處理和植入，以及防止透過 SQL 資料隱碼意外地公開資料。
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: tisande
 ms.openlocfilehash: f66bc89ef56dd0c2291903d531a4637210abd8df
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87496979"
 ---
 # <a name="parameterized-queries-in-azure-cosmos-db"></a>Azure Cosmos DB 中的參數化查詢
 
-Azure Cosmos DB 支援具有以熟悉 @ notation 表示之參數的查詢。 參數化 SQL 提供強大的使用者輸入處理和植入，並可防止透過 SQL 插入的資料意外洩漏。
+Azure Cosmos DB 支援以熟悉 @ 標記法表示的參數查詢。 參數化 SQL 可提供穩固的使用者輸入處理和植入，並防止透過 SQL 資料隱碼意外地公開資料。
 
 ## <a name="examples"></a>範例
 
-例如，您可以撰寫接受 `lastName` 和 `address.state` 做為參數的查詢，並 `lastName` 根據使用者輸入，對的各種值執行 `address.state` 。
+例如，您可以撰寫採用 `lastName` 和 `address.state` 做為參數的查詢，並 `lastName` 根據使用者輸入來執行和的不同值 `address.state` 。
 
 ```sql
     SELECT *
@@ -27,7 +27,7 @@ Azure Cosmos DB 支援具有以熟悉 @ notation 表示之參數的查詢。 參
     WHERE f.lastName = @lastName AND f.address.state = @addressState
 ```
 
-然後，您可以將此要求以參數化 JSON 查詢的形式傳送給 Azure Cosmos DB，如下所示：
+然後，您可以將此要求傳送給 Azure Cosmos DB，作為參數化的 JSON 查詢，如下所示：
 
 ```sql
     {
@@ -50,7 +50,7 @@ Azure Cosmos DB 支援具有以熟悉 @ notation 表示之參數的查詢。 參
     }
 ```
 
-參數值可以是任何有效的 JSON：字串、數位、布林值、null，甚至是陣列或嵌套 JSON。 因為 Azure Cosmos DB 是無架構，所以不會針對任何類型驗證參數。
+參數值可以是任何有效的 JSON：字串、數位、布林值、null、甚至是陣列或嵌套 JSON。 因為 Azure Cosmos DB 無架構，所以不會對任何類型驗證參數。
 
 以下是每個 Azure Cosmos DB SDK 中參數化查詢的範例：
 

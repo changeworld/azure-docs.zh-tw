@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: iainfou
 ms.openlocfilehash: 462e0ff8ef8baadf40ba81ed2ae137d8904fbf7a
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88722512"
 ---
 # <a name="secure-remote-access-to-virtual-machines-in-azure-active-directory-domain-services"></a>在 Azure Active Directory Domain Services 中安全地遠端存取虛擬機器
@@ -99,7 +99,7 @@ RD 環境部署包含幾個步驟。 您可以使用現有的 RD 部署指南，
 
 使用者現在會在登入時提示您輸入額外的驗證因素，例如 Microsoft Authenticator 應用程式中的文字訊息或提示。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 如需改善部署復原的詳細資訊，請參閱 [遠端桌面服務-高可用性][rds-high-availability]。
 

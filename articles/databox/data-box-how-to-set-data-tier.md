@@ -1,6 +1,6 @@
 ---
 title: 透過 Azure 資料箱/Azure Data Box Heavy 將資料傳送至經常性存取、非經常性存取、封存 blob 層
-description: 描述如何使用 Azure 資料箱或 Azure Data Box Heavy，將資料傳送至適當的區塊 blob 儲存層，例如經常性存取、非經常性存取或封存
+description: 說明如何使用 Azure 資料箱或 Azure Data Box Heavy，將資料傳送至適當的區塊 blob 儲存層，例如經常性存取、非經常性存取或封存
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,17 +9,17 @@ ms.topic: how-to
 ms.date: 05/24/2019
 ms.author: alkohli
 ms.openlocfilehash: a68793d893d8eb8de681eb438de39afc212370c9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84608701"
 ---
-# <a name="use-azure-data-box-or-azure-data-box-heavy-to-send-data-to-appropriate-azure-storage-blob-tier"></a>使用 Azure 資料箱或 Azure Data Box Heavy 將資料傳送到適當的 Azure 儲存體 blob 層
+# <a name="use-azure-data-box-or-azure-data-box-heavy-to-send-data-to-appropriate-azure-storage-blob-tier"></a>使用 Azure 資料箱或 Azure Data Box Heavy 將資料傳送至適當的 Azure 儲存體 blob 層
 
 Azure 資料箱會寄給您適當的存放裝置，以將大量資料移動至 Azure。 您會將資料移到該裝置內並寄回。 來自資料箱的資料會上傳到與儲存體帳戶相關聯的預設層。 然後您可以將資料移動到其他儲存層。
 
-本文描述如何將藉由資料箱上傳的資料，移動到常性存取、非經常性存取或封存 Blob 層。 本文適用于 Azure 資料箱和 Azure Data Box Heavy。
+本文描述如何將藉由資料箱上傳的資料，移動到常性存取、非經常性存取或封存 Blob 層。 本文同時適用于 Azure 資料箱和 Azure Data Box Heavy。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -31,17 +31,17 @@ Azure 儲存體可讓三個不同層以最符合成本效益的方式來儲存�
 
 Azure 封存層已離線並提供最低的儲存成本，但存取成本最高。 此層適合要在封存儲存體中保留最少 180 天的資料。 如需每個這些層的計價模式詳細資訊，請移至[儲存層的比較](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers)。
 
-資料箱或 Data Box Heavy 的資料會上傳到與儲存體帳戶相關聯的儲存層。 當您建立儲存體帳戶時，您可以指定存取層是經常性存取的或非經常性存取的。 視您工作負載的存取模式和成本而定，您可以將這此資料從預設層移至另一個儲存層。
+資料箱或 Data Box Heavy 中的資料會上傳到與儲存體帳戶相關聯的儲存層。 當您建立儲存體帳戶時，您可以指定存取層是經常性存取的或非經常性存取的。 視您工作負載的存取模式和成本而定，您可以將這此資料從預設層移至另一個儲存層。
 
-您只能將您在 Blob 儲存體或一般用途 v2 (GPv2) 帳戶中的物件儲存體資料分層。 一般用途 v1 (GPv1) 帳戶不支援階層處理。 若要為您的資料選擇正確的儲存層，請參閱 Azure Blob 儲存體中詳述的考慮[： Premium、](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers)經常性存取、非經常性存取和封存儲存層。
+您只能將您在 Blob 儲存體或一般用途 v2 (GPv2) 帳戶中的物件儲存體資料分層。 一般用途 v1 (GPv1) 帳戶不支援階層處理。 若要為您的資料選擇正確的儲存層，請參閱 Azure Blob 儲存體中的詳細考慮 [： Premium、](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers)經常性存取、非經常性存取和封存儲存層。
 
 ## <a name="set-a-default-blob-tier"></a>設定預設 Blob 層
 
 在 Azure 入口網站中建立儲存體帳戶時會指定預設 Blob 層。 一旦儲存體類型選取為 GPv2 或 Blob 儲存體，就能指定存取層屬性。 預設會選取「經常性存取層」。
 
-如果您嘗試在排序資料箱或 Data Box Heavy 時建立新的帳戶，則無法指定層級。 建立帳戶之後，您可以在入口網站中修改帳戶，以設定預設存取層。
+如果您在訂購資料箱或 Data Box Heavy 時嘗試建立新的帳戶，則無法指定層級。 建立帳戶之後，您可以在入口網站中修改帳戶，以設定預設存取層。
 
-或者，您使用指定的存取層屬性先建立儲存體帳戶。 建立資料箱或 Data Box Heavy 順序時，請選取現有的儲存體帳戶。 如需如何在儲存體帳戶建立期間設定預設 Blob 層的詳細資訊，請移至[在 Azure 入口網站中建立儲存體帳戶](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=portal)。
+或者，您使用指定的存取層屬性先建立儲存體帳戶。 建立資料箱或 Data Box Heavy 訂單時，請選取現有的儲存體帳戶。 如需如何在儲存體帳戶建立期間設定預設 Blob 層的詳細資訊，請移至[在 Azure 入口網站中建立儲存體帳戶](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=portal)。
 
 ## <a name="move-data-to-a-non-default-tier"></a>將資料移至非預設層
 
@@ -114,7 +114,7 @@ Azure 封存層已離線並提供最低的儲存成本，但存取成本最高�
    > [!TIP]
    > 如果您想要資料在内嵌時封存，請將預設帳戶層設定成經常性存取。 如果預設層是非經常性存取，則立即將資料移動到封存會有提早 30 天刪除的懲罰。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 -  了解如何[使用生命週期規則解決常見的資料階層處理案例](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts#examples)
 

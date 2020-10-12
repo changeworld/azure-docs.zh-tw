@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 05/06/2019
 ms.custom: mqtt
 ms.openlocfilehash: 5c14e8cfcbf8df86b0f71d6b12025594d2e648c4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81730112"
 ---
 # <a name="schedule-jobs-on-multiple-devices"></a>排程多個裝置上的作業
@@ -69,7 +69,7 @@ Content-Type: application/json; charset=utf-8
 
 [IoT 中樞查詢語言](iot-hub-devguide-query-language.md)涵蓋了IoT 中樞查詢語言的其他詳細資料。
 
-下列程式碼片段顯示已排定在 contoso--1 上的所有裝置上呼叫名為 testMethod 之直接方法的作業要求和回應：
+下列程式碼片段顯示在 contoso-hub-1 上的所有裝置上，排程呼叫名為 testMethod 之直接方法的作業要求和回應：
 
 ```
 PUT https://contoso-hub-1.azure-devices.net/jobs/v2/job01?api-version=2018-06-30 HTTP/1.1
@@ -124,7 +124,7 @@ Content-Type: application/json; charset=utf-8
 > [!NOTE]
 > *UpdateTwin*屬性需要有效的 etag 相符;例如， `etag="*"` 。
 
-下列程式碼片段顯示排程在 contoso--1 上更新測試裝置之裝置對應項屬性的作業的要求和回應：
+下列程式碼片段顯示針對 contoso-hub-1 上的測試裝置排程更新裝置對應項屬性之作業的要求和回應：
 
 ```
 PUT https://contoso-hub-1.azure-devices.net/jobs/v2/job02?api-version=2018-06-30 HTTP/1.1
@@ -181,7 +181,7 @@ ContinuationToken 會從回應來提供。
 | 屬性 | 說明 |
 | --- | --- |
 | **jobId** |應用程式所提供的作業識別碼。 |
-| **時間** |應用程式所提供的作業開始時間 (ISO-8601)。 |
+| **startTime** |應用程式所提供的作業開始時間 (ISO-8601)。 |
 | **endTime** |IoT 中樞所提供的作業完成日期 (ISO-8601)。 在作業到達「已完成」狀態後才有效。 |
 | **type** |作業類型： |
 | | **scheduleUpdateTwin**：用來更新一組所需屬性或標記的作業。 |
@@ -194,7 +194,7 @@ ContinuationToken 會從回應來提供。
 | | **failed**：作業失敗。 |
 | | **completed**作業完成。 |
 | **deviceJobStatistics** |作業執行的相關統計資料。 |
-| | **deviceJobStatistics**屬性： |
+| | **deviceJobStatistics** 屬性： |
 | | **deviceJobStatistics.deviceCount**：作業中的裝置數目。 |
 | | **deviceJobStatistics.failedCount**：作業失敗的裝置數目。 |
 | | **deviceJobStatistics.succeededCount**：作業成功的裝置數目。 |
@@ -215,7 +215,7 @@ IoT 中樞開發人員指南中的其他參考主題包括︰
 
 * [IoT 中樞 MQTT 支援](iot-hub-mqtt-support.md)針對 MQTT 通訊協定提供 IoT 中樞支援的詳細資訊。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 若要嘗試本文所述的一些概念，請參閱下列「IoT 中樞」教學課程：
 
