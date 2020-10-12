@@ -4,10 +4,10 @@ description: 描述資源管理員部署模型與傳統 (或服務管理) 部署
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.openlocfilehash: d9c1a27efc1f474e25d0ed164d106e8f64ba3e96
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88511400"
 ---
 # <a name="azure-resource-manager-vs-classic-deployment-understand-deployment-models-and-the-state-of-your-resources"></a>Azure Resource Manager vs. 傳統部署：了解資源的部署模型和狀態
@@ -101,7 +101,7 @@ SRP：儲存體資源提供者，CRP：計算資源提供者，NRP：網路資�
 
 下表描述計算、網路和儲存體資源提供者互動方式的變更：
 
-| Item | 傳統 | Resource Manager |
+| 項目 | 傳統 | Resource Manager |
 | --- | --- | --- |
 | 虛擬機器的雲端服務 |雲端服務是一種容器，專門保管那些要求平台和負載平衡可用性的虛擬機器。 |使用新模型建立虛擬機器時，雲端服務已經不是必要的物件了。 |
 | 虛擬網路 |虛擬網路是虛擬機器的選用項目。 如果包含，則無法使用 Resource Manager 部署虛擬網路。 |虛擬機器需要已使用 Resource Manager 部署的虛擬網路。 |

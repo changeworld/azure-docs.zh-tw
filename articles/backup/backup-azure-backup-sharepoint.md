@@ -4,10 +4,10 @@ description: 這篇文章概述 SharePoint 伺服器陣列至 Azure 的 DPM/Azur
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.openlocfilehash: 7661d64e487c8b8badca240852d17bcf736ba8cf
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91254426"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-dpm"></a>使用 DPM 將 SharePoint 伺服器陣列備份至 Azure
@@ -24,7 +24,7 @@ ms.locfileid: "91254426"
 
 您需要先確定幾件事，再將 SharePoint 伺服器陣列備份至 Azure。
 
-### <a name="prerequisites"></a>Prerequisites
+### <a name="prerequisites"></a>必要條件
 
 繼續之前，請確定 [使用 Microsoft Azure 備份來保護工作負載的所有必要條件](backup-azure-dpm-introduction.md#prerequisites-and-limitations) 已滿足。 一些滿足必要條件的工作包括︰建立備份保存庫、下載保存庫認證、安裝 Azure 備份代理程式，以及向保存庫註冊 DPM/Azure 備份伺服器。
 
@@ -71,7 +71,7 @@ ms.locfileid: "91254426"
 
 ## <a name="switching-the-front-end-web-server"></a>切換前端網頁伺服器
 
-如果您有一部以上的前端網頁伺服器，而且想要切換 DPM 用來保護伺服器陣列的伺服器，請遵循 [切換前端網頁伺服器](/system-center/dpm/back-up-sharepoint#switching-the-front-end-web-server)的指示。
+如果您有一部以上的前端網頁伺服器，而且想要切換 DPM 用來保護伺服器陣列的伺服器，請遵循 [切換 Front-End Web 服務器](/system-center/dpm/back-up-sharepoint#switching-the-front-end-web-server)的指示。
 
 ## <a name="next-steps"></a>後續步驟
 

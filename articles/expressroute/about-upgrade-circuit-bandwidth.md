@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: duau
 ms.openlocfilehash: 7831e7944321e074c312853e1534c47970ebdfdb
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89397945"
 ---
 # <a name="about-upgrading-expressroute-circuit-bandwidth"></a>關於升級 ExpressRoute 線路頻寬
@@ -41,8 +41,8 @@ ExpressRoute 可讓您對 Microsoft 的全球網路進行專用和私人連線�
 
 如果 ExpressRoute Direct 沒有足夠的容量，您可以刪除與不再需要的 ExpressRoute Direct 資源相關聯的線路，或建立新的 ExpressRoute Direct 資源。 如需管理 ExpressRoute Direct 資源的指引，請參閱 [如何設定 Expressroute direct](how-to-expressroute-direct-portal.md)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [建立及修改電路](expressroute-howto-circuit-portal-resource-manager.md)
 * [建立和修改對等互連組態](expressroute-howto-routing-portal-resource-manager.md)
-* [將虛擬網路連結到 ExpressRoute 線路](expressroute-howto-linkvnet-portal-resource-manager.md)
+* [將虛擬網路連結至 ExpressRoute 線路](expressroute-howto-linkvnet-portal-resource-manager.md)

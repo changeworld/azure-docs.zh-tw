@@ -8,15 +8,15 @@ ms.topic: how-to
 ms.date: 03/06/2020
 ms.author: mimckitt
 ms.openlocfilehash: 2924caaac5fb8c512100d9e897f7f153af9a3b3e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87284909"
 ---
 # <a name="custom-data-and-cloud-init-on-azure-virtual-machines"></a>在 Azure 虛擬機器上的自訂資料和 cloud-init
 
-在布建時間，您可能需要將腳本或其他中繼資料插入 Microsoft Azure 的虛擬機器中。  在其他雲端中，此概念通常稱為使用者資料。  在 Microsoft Azure 中，我們有一個類似的功能，稱為「自訂資料」。 
+在布建時，您可能需要將腳本或其他中繼資料插入 Microsoft Azure 的虛擬機器。  在其他雲端中，此概念通常稱為使用者資料。  在 Microsoft Azure 中，我們有一個類似的功能，稱為「自訂資料」。 
 
 VM 只有在第一次開機/初始設定期間才可使用自訂資料，我們稱之為「佈建」。 佈建是指將「VM 建立參數」(例如主機名稱、使用者名稱、密碼、憑證、自訂資料、金鑰等) 提供給 VM 使用，並由佈建代理程式 (例如 [Linux 代理程式](./extensions/agent-linux.md)和 [cloud-init](./linux/using-cloud-init.md#troubleshooting-cloud-init)) 來處理這些參數的流程。 
 

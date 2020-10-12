@@ -7,10 +7,10 @@ ms.date: 08/18/2017
 ms.author: masnider
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 5ec5db2b2fefeba3bffb7e30a77850b30dccf95e
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89005627"
 ---
 # <a name="describe-a-service-fabric-cluster-by-using-cluster-resource-manager"></a>使用叢集資源管理員描述 Service Fabric 叢集
@@ -376,7 +376,7 @@ Service Fabric 定義可自動使用的一些預設節點屬性，因此您不�
 
 * 建立特定語句的條件式檢查：
 
-  | 引數 | 語法 |
+  | 陳述式 | 語法 |
   | --- |:---:|
   | 「等於」 | "==" |
   | 「不等於」 | "!=" |
@@ -387,7 +387,7 @@ Service Fabric 定義可自動使用的一些預設節點屬性，因此您不�
 
 * 分組和邏輯作業的布林值語句：
 
-  | 引數 | 語法 |
+  | 陳述式 | 語法 |
   | --- |:---:|
   | 「和」 | "&&" |
   | 「或」 | "&#124;&#124;" |

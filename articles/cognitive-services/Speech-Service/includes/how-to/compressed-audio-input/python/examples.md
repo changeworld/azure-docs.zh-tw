@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 03/09/2020
 ms.author: amishu
 ms.openlocfilehash: 3000709f19b53eb6e79b4dae0559040ca025c9e4
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87282721"
 ---
-若要以壓縮的音訊格式串流到語音服務，請建立 `PullAudioInputStream` 或 `PushAudioInputStream` 。 然後， `AudioConfig` 從您的資料流程類別的實例建立，並指定資料流程的壓縮格式。
+若要以壓縮的音訊格式串流至語音服務，請建立 `PullAudioInputStream` 或 `PushAudioInputStream` 。 然後， `AudioConfig` 從串流類別的實例中建立，並指定資料流程的壓縮格式。
 
-讓我們假設您的使用案例是針對檔案使用 `PullStream` `MP3` 。 您的程式碼看起來可能像這樣：
+讓我們假設您的使用案例是用於檔案 `PullStream` `MP3` 。 您的程式碼看起來可能像這樣：
 
 ```python
 

@@ -1,6 +1,6 @@
 ---
 title: Azure 服務的反向 DNS-Azure DNS
-description: 透過此學習路徑，開始為 Azure 中裝載的服務設定反向 DNS 查閱。
+description: 透過此學習路徑，開始為 Azure 中託管的服務設定反向 DNS 查閱。
 services: dns
 documentationcenter: na
 author: rohinkoul
@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 05/29/2017
 ms.author: rohink
 ms.openlocfilehash: 15396467e92b3e035add03d0d29888558571aa2f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84711233"
 ---
 # <a name="configure-reverse-dns-for-services-hosted-in-azure"></a>設定 Azure 託管服務的反向 DNS
@@ -249,7 +249,7 @@ FQDN 是以正向順序指定，且必須以點結束 (例如，"app1.contoso.co
 
 從 Azure 部署直接傳送電子郵件的技術功能，須視訂用帳戶的類型而定。 不論訂用帳戶的類型為何，Microsoft 均建議您使用信任的郵件轉送服務來傳送外寄郵件。 如需詳細資訊，請參閱 [Enhanced Azure Security for sending Emails – November 2017 Update (增強 Azure 傳送電子郵件的安全性 – 2017 年 11 月更新)](https://blogs.msdn.microsoft.com/mast/2017/11/15/enhanced-azure-security-for-sending-emails-november-2017-update/)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 如需反向 DNS 的詳細資訊，請參閱維基百科的 [reverse DNS lookup](https://en.wikipedia.org/wiki/Reverse_DNS_lookup) (反向 DNS 對應)。
 <br>

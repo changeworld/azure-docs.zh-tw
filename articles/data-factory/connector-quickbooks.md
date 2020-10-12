@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/03/2020
 ms.openlocfilehash: e9c1651244eecb036ca18ad5dadfe23f48b2bce6
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87529257"
 ---
 # <a name="copy-data-from-quickbooks-online-using-azure-data-factory-preview"></a>使用 Azure Data Factory 從 QuickBooks Online 複製資料 (預覽)
@@ -52,12 +52,12 @@ ms.locfileid: "87529257"
 |:--- |:--- |:--- |
 | type | Type 屬性必須設定為：**QuickBooks** | 是 |
 | connectionProperties | 定義如何連接到 QuickBooks 的一組屬性。 | 是 |
-| ***在 `connectionProperties` 下列底下：*** | | |
+| ***在 `connectionProperties` 下列情況下：*** | | |
 | 端點 | QuickBooks Online 伺服器的端點。 (也就是 quickbooks.api.intuit.com)  | 是 |
-| companyId | 要授權之 QuickBooks 公司的公司識別碼。 如需如何尋找公司識別碼的詳細資訊，請參閱[如何? 尋找我的公司識別碼](https://quickbooks.intuit.com/community/Getting-Started/How-do-I-find-my-Company-ID/m-p/185551)。 | 是 |
+| companyId | 要授權之 QuickBooks 公司的公司識別碼。 如需有關如何尋找公司識別碼的詳細資訊，請參閱 [如何? 尋找我的公司識別碼](https://quickbooks.intuit.com/community/Getting-Started/How-do-I-find-my-Company-ID/m-p/185551)。 | 是 |
 | consumerKey | OAuth 2.0 驗證的取用者金鑰。 | 是 |
-| consumerSecret | OAuth 2.0 驗證的取用者秘密。 將此欄位標記為 SecureString，將它安全地儲存在 Data Factory 中，或[參考 Azure Key Vault 中儲存的祕密](store-credentials-in-key-vault.md)。 | 是 |
-| refreshToken | 與 QuickBooks 應用程式相關聯的 OAuth 2.0 重新整理權杖。 從[這裡](https://developer.intuit.com/app/developer/qbo/docs/develop/authentication-and-authorization/oauth-2.0#obtain-oauth2-credentials-for-your-app)深入瞭解。 請注意，重新整理權杖將于180天后過期。 客戶需要定期更新重新整理權杖。 <br/>將此欄位標記為 SecureString，將它安全地儲存在 Data Factory 中，或[參考 Azure Key Vault 中儲存的祕密](store-credentials-in-key-vault.md)。| 是 |
+| consumerSecret | OAuth 2.0 驗證的取用者密碼。 將此欄位標記為 SecureString，將它安全地儲存在 Data Factory 中，或[參考 Azure Key Vault 中儲存的祕密](store-credentials-in-key-vault.md)。 | 是 |
+| refreshToken | 與 QuickBooks 應用程式相關聯的 OAuth 2.0 重新整理權杖。 從 [這裡](https://developer.intuit.com/app/developer/qbo/docs/develop/authentication-and-authorization/oauth-2.0#obtain-oauth2-credentials-for-your-app)深入瞭解。 注意：重新整理權杖將于180天后到期。 客戶必須定期更新重新整理權杖。 <br/>將此欄位標記為 SecureString，將它安全地儲存在 Data Factory 中，或[參考 Azure Key Vault 中儲存的祕密](store-credentials-in-key-vault.md)。| 是 |
 | useEncryptedEndpoints | 指定是否使用 HTTPS 來加密資料來源端點。 預設值為 true。  | 否 |
 
 **範例︰**
@@ -95,7 +95,7 @@ ms.locfileid: "87529257"
 
 | 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
-| type | 資料集的類型屬性必須設定為： **QuickBooksObject** | 是 |
+| type | 資料集的類型屬性必須設定為： **>quickbooksobject** | 是 |
 | tableName | 資料表的名稱。 | 否 (如果已指定活動來源中的「查詢」) |
 
 **範例**

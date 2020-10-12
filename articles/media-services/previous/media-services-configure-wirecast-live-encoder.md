@@ -16,10 +16,10 @@ ms.date: 03/14/2019
 ms.author: juliako
 ms.reviewer: cenkdin;anilmur
 ms.openlocfilehash: 7b11d7f577f0a2ceb7284d9f78ccf83a64c72fd3
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89258107"
 ---
 # <a name="use-the-wirecast-encoder-to-send-a-single-bitrate-live-stream"></a>使用 Wirecast 編碼器來傳送單一位元速率的即時串流
@@ -37,7 +37,7 @@ ms.locfileid: "89258107"
 > [!NOTE]
 > 使用 RTMPS 通訊協定時，編碼器必須支援 TLS 1.2。 使用 Wirecast 版本13.0.2 或更高版本，因為 TLS 1.2 需求。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 * [建立 Azure 媒體服務帳戶](media-services-portal-create-account.md)
 * 確定有執行中的「串流端點」。 如需詳細資訊，請參閱 [在媒體服務帳戶中管理串流端點](media-services-portal-manage-streaming-endpoints.md)
 * 安裝最新版的 [AMSE](https://github.com/Azure/Azure-Media-Services-Explorer) 工具。
@@ -95,7 +95,7 @@ ms.locfileid: "89258107"
 2. 瀏覽至 [輸出]**** 索引標籤，並選取 [輸出設定...]**** 以設定輸出。
 
     請確定 [輸出目的地]**** 已設為 [RTMP Server]****。
-3. 按一下 [確定]  。
+3. 按一下 [確定]。
 4. 在 [設定] 頁面上，將 [目的地]**** 欄位設為 [Azure 媒體服務]****。
 
     編碼設定檔已預先選取為 [Azure H.264 720p 16:9 (1280x720)] ****。 若要自訂這些設定，請選取下拉式清單右邊的齒輪圖示，然後選擇 [新增預設]****。

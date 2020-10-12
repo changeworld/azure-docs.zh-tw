@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 05/08/2020
 ms.custom: ''
 ms.openlocfilehash: ed848380457862fee506bf5111789e5d44545bdd
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91253406"
 ---
 # <a name="transfer-artifacts-to-another-registry"></a>將構件傳送至另一個登錄
@@ -30,7 +30,7 @@ ms.locfileid: "91253406"
 > [!IMPORTANT]
 > 此功能目前為預覽狀態。 若您同意[補充的使用規定][terms-of-use]即可取得預覽。 在公開上市 (GA) 之前，此功能的某些領域可能會變更。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * **容器** 登錄-您需要具有要傳送之成品的現有來源登錄，以及目標登錄。 ACR 傳輸旨在跨實體中斷連線的雲端進行移動。 進行測試時，來源和目標登錄可以位於相同或不同的 Azure 訂用帳戶、Active Directory 租使用者或雲端。 如果您需要建立登錄，請參閱 [快速入門：使用 Azure CLI 建立私用容器](container-registry-get-started-azure-cli.md)登錄。 
 * **儲存體帳戶** -在訂用帳戶和您選擇的位置中建立來源和目標儲存體帳戶。 基於測試目的，您可以使用與來源和目標登錄相同的訂用帳戶或訂用帳戶。 在跨雲端案例中，您通常會在每個雲端中建立個別的儲存體帳戶。 如有需要，請使用 [Azure CLI](../storage/common/storage-account-create.md?tabs=azure-cli) 或其他工具建立儲存體帳戶。 

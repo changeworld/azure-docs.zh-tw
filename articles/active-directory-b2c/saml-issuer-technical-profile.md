@@ -12,10 +12,10 @@ ms.date: 08/17/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: bb5383ee7930cb3d54593f71a709c033d3850889
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88521207"
 ---
 # <a name="define-a-technical-profile-for-a-saml-token-issuer-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自訂原則中定義 SAML 權杖簽發者的技術設定檔
@@ -57,7 +57,7 @@ Azure Active Directory B2C (Azure AD B2C) 會在處理每個驗證流程時發�
 | 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
 | IssuerUri | 否 | 出現在 SAML 回應中的簽發者名稱。 此值應該與信賴憑證者應用程式中所設定的名稱相同。 |
-| XmlSignatureAlgorithm | No | Azure AD B2C 用來簽署 SAML 判斷提示的方法。 可能的值：`Sha256`、`Sha384`、`Sha512` 或 `Sha1`。 請確定您會使用相同的值來設定這兩端的簽章演算法。 僅使用您憑證支援的演算法。 若要設定 SAML 回應，請參閱信賴憑證者 [SAML 中繼資料](relyingparty.md#metadata)|
+| XmlSignatureAlgorithm | 否 | Azure AD B2C 用來簽署 SAML 判斷提示的方法。 可能的值：`Sha256`、`Sha384`、`Sha512` 或 `Sha1`。 請確定您會使用相同的值來設定這兩端的簽章演算法。 僅使用您憑證支援的演算法。 若要設定 SAML 回應，請參閱信賴憑證者 [SAML 中繼資料](relyingparty.md#metadata)|
 
 ## <a name="cryptographic-keys"></a>密碼編譯金鑰
 

@@ -5,10 +5,10 @@ ms.date: 08/06/2020
 ms.topic: how-to
 ms.reviewer: ravastra
 ms.openlocfilehash: 081c7a10ee091f573e8f999c94588ef85c784f74
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89651563"
 ---
 # <a name="deploy-hyperledger-fabric-consortium-on-azure-kubernetes-service"></a>在 Azure Kubernetes Service 上部署 Hyperledger Fabric 聯盟
@@ -26,7 +26,7 @@ ms.locfileid: "89651563"
 
 在您選擇使用解決方案範本之前，請將您的案例與可用 Azure 區塊鏈選項的常見使用案例進行比較：
 
-選項 | 服務模型 | 一般使用案例
+選項 | 服務模型 | 常見使用案例
 -------|---------------|-----------------
 解決方案範本 | IaaS | 解決方案範本是 Azure Resource Manager 範本，可讓您用來布建完整設定的區塊鏈網路拓撲。 範本會部署並設定區塊鏈網路類型 Microsoft Azure 計算、網路和儲存體服務。 解決方案範本是在沒有服務等級協定的情況下提供。 使用 [Microsoft Q&頁面](/answers/topics/azure-blockchain-workbench.html) 以取得支援。
 [Azure 區塊鏈服務](../service/overview.md) | PaaS | Azure 區塊鏈服務 Preview 簡化了聯盟區塊鏈網路的構成、管理和治理。 針對需要 PaaS、聯盟管理或合約和交易隱私權的解決方案，使用 Azure 區塊鏈服務。
@@ -334,7 +334,7 @@ CHANNEL_NAME=<channelName>
 ```
 此命令會在環境變數中設定之對等組織的所有對等節點上安裝鏈碼 `ORGNAME` 。 如果有兩個或多個對等組織在您的通道中，而您想要在所有電腦上安裝鏈碼，請為每個對等組織分別執行此命令。  
 
-遵循這些步驟：  
+請遵循下列步驟：  
 
 1.  `ORGNAME`根據設定和 `USER_IDENTITY` `peerOrg1` 執行 `./azhlf chaincode install` 命令。  
 2.  `ORGNAME`根據設定和 `USER_IDENTITY` `peerOrg2` 執行 `./azhlf chaincode install` 命令。  

@@ -4,10 +4,10 @@ description: 說明如何使用 Azure Migrate 伺服器評量的相依性分析�
 ms.topic: conceptual
 ms.date: 09/15/2020
 ms.openlocfilehash: a284d549f13595e0ce8a5d06cc017602e559b648
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90530245"
 ---
 # <a name="dependency-analysis"></a>相依性分析

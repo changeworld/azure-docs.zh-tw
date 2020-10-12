@@ -4,10 +4,10 @@ description: 了解如何在 Azure DevTest Labs 中為自訂成品來源新增 G
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 225aae5e0a017b711f29a47829b06f8bb7a6a8ee
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85483137"
 ---
 # <a name="add-a-git-repository-to-store-custom-artifacts-and-resource-manager-templates"></a>新增可以存放自訂構件和 Resource Manager 範本的 Git 存放庫
@@ -19,7 +19,7 @@ ms.locfileid: "85483137"
 建立 VM 時，您可以儲存 Resource Manager 範本，並依您的需求自訂，並在稍後使用範本來建立更多 VM。 您必須建立您自己的私人存放庫，來儲存您自訂的 Resource Manager 範本。  
 
 * 若要了解如何建立 GitHub 儲存機制，請參閱 [GitHub Bootcamp](https://help.github.com/categories/bootcamp/)。
-* 若要瞭解如何建立具有 Git 存放庫的 Azure DevOps Services 專案，請參閱[連接到 Azure DevOps Services](https://www.visualstudio.com/get-started/setup/connect-to-visual-studio-online)。
+* 若要瞭解如何建立具有 Git 存放庫的 Azure DevOps Services 專案，請參閱 [連接到 Azure DevOps Services](https://www.visualstudio.com/get-started/setup/connect-to-visual-studio-online)。
 
 下圖顯示具有構件的存放庫在 GitHub 中的可能外觀範例：  
 
@@ -31,7 +31,7 @@ ms.locfileid: "85483137"
 ### <a name="get-the-github-repository-clone-url-and-personal-access-token"></a>取得 GitHub 儲存機制複製 URL 和個人存取權杖
 
 1. 移至包含構件或 Resource Manager 範本定義的 GitHub 存放庫首頁。
-2. 選取 [複製或下載] ****。
+2. 選取 [複製或下載]  。
 3. 若要將 URL 複製到剪貼簿，請選取 [HTTPS 複製 URL]**** 按鈕。 儲存 URL 以供稍後使用。
 4. 選取 GitHub 右上角的設定檔影像，然後選取 [設定]****。
 5. 在左側的 [個人設定]**** 功能表上，選取 [個人存取權杖]****。
@@ -43,7 +43,7 @@ ms.locfileid: "85483137"
 
 ### <a name="get-the-azure-repos-clone-url-and-personal-access-token"></a>取得 Azure Repos 複製 URL 和個人存取權杖
 
-1. 移至您的小組集合首頁（例如， `https://contoso-web-team.visualstudio.com` ），然後選取您的專案。
+1. 移至您小組集合的首頁 (例如 `https://contoso-web-team.visualstudio.com`) ，然後選取您的專案。
 2. 在專案首頁上，選取 [程式碼] ****。
 3. 若要檢視複製 URL，可在專案 [程式碼]**** 頁面上，選取 [複製]****。
 4. 儲存 URL。 您稍後會用到該 URL。
@@ -54,7 +54,7 @@ ms.locfileid: "85483137"
    1. 輸入權杖的 **描述** 。
    2. 在 [到期日]**** 清單中選取 [180 天]****。
    3. 在 [帳戶]**** 清單中選取 [所有可存取的帳戶]****。
-   4. 選取 [**唯讀**] 選項。
+   4. 選取 [ **唯讀** ] 選項。
    5. 選擇 [建立權杖]****。
 9. 新的權杖會出現在 [個人存取權杖]**** 清單中。 選取 [複製權杖] ****，然後儲存權杖值供稍後使用。
 10. 繼續 [將您的實驗室連接至存放庫](#connect-your-lab-to-the-repository) 一節。
@@ -63,18 +63,18 @@ ms.locfileid: "85483137"
 1. 登入 [Azure 入口網站](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
 2. 選取 [更多服務]****，然後從服務清單中選取 [DevTest Labs]****。
 3. 從實驗室清單中選取您的實驗室。 
-4. 選取 [設定**和原則**] [  >  **存放庫**] [  >  **+ 新增**]。
+4. 選取設定**和原則**  >  **存放庫**  >  **+ 新增**。
 
     ![[新增存放庫] 按鈕](./media/devtest-lab-add-repo/devtestlab-add-repo.png)
 5. 在第二個 [存放庫]**** 頁面上，指定下列資訊︰
-   1. [名稱]。 輸入存放庫的名稱。
+   1. **名稱**。 輸入存放庫的名稱。
    2. **Git Clone URL**。 輸入您先前從 GitHub 或 Azure DevOps Services 複製的 Git HTTPS 複製 URL。
    3. **分支**。 若要取得您的定義，請輸入分支。
    4. **個人存取權杖**。 輸入您先前從 GitHub 或 Azure DevOps Services 取得的個人存取權杖。
    5. **資料夾路徑**。 輸入至少與複製 URL 相關的一個資料夾路徑，其中包含構件或 Resource Manager 範本。 指定子目錄時，請確定您有在資料夾路徑中包含斜線。
 
       ![存放庫區域](./media/devtest-lab-add-repo/devtestlab-repo-blade.png)
-6. 選取 [儲存]。
+6. 選取 [儲存]****。
 
 ### <a name="related-blog-posts"></a>相關部落格文章
 * [在 DevTest Labs 中針對失敗的構件進行疑難排解](devtest-lab-troubleshoot-artifact-failure.md)
@@ -82,7 +82,7 @@ ms.locfileid: "85483137"
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 建立私人 Git 存放庫之後，您可以執行下列一或兩個動作，視您的需求而定︰
 * 儲存[自訂構件](devtest-lab-artifact-author.md)。 您稍候可以使用它們來建立新的 VM。
 * [使用 Resource Manager 範本建立多 VM 環境和 PaaS 資源](devtest-lab-create-environment-from-arm.md)。 然後，您可以將範本儲存在私人存放庫中。

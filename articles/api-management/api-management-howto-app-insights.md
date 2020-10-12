@@ -14,17 +14,17 @@ ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
 ms.openlocfilehash: 8c9df3393a0554d2e65b3918c6760885f89e11ed
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86254737"
 ---
 # <a name="how-to-integrate-azure-api-management-with-azure-application-insights"></a>如何整合 Azure API 管理與 Azure Application Insights
 
 「Azure API 管理」可與 Azure Application Insights 輕鬆整合，Azure Application Insights 是一項延伸服務，可供 Web 開發人員在多個平台上建置和管理應用程式。 本指南會逐步解說此整合的每個步驟，並說明降低「API 管理」服務執行個體效能影響的策略。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要依照本指南進行操作，您必須具備「Azure API 管理」執行個體。 如果您沒有該執行個體，請先完成此[教學課程](get-started-create-service-instance.md)。
 
@@ -64,7 +64,7 @@ ms.locfileid: "86254737"
 6. 選取 [啟用]**** 方塊。
 7. 從 [目的地]**** 下拉式清單中，選取已連結的記錄器。
 8. 輸入 **100** 作為 [取樣 (%)]****，然後勾選 [一律記錄錯誤]**** 核取方塊。
-9. 按一下 [儲存]。
+9. 按一下 **[儲存]** 。
 
 > [!WARNING]
 > 覆寫 [本文的前幾個位元組]**** 欄位中的預設值 **0**，可能會大幅降低您 API 的效能。
@@ -72,15 +72,15 @@ ms.locfileid: "86254737"
 > [!NOTE]
 > 在幕後，名為 'applicationinsights' 的[診斷](/rest/api/apimanagement/2019-12-01/diagnostic/createorupdate)實體會建立於 API 層級。
 
-| 設定名稱                        | 值類型                        | 描述                                                                                                                                                                                                                                                                                                                                      |
+| 設定名稱                        | 值類型                        | 說明                                                                                                                                                                                                                                                                                                                                      |
 |-------------------------------------|-----------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 啟用                              | boolean                           | 指定是否要啟用此 API 的記錄功能。                                                                                                                                                                                                                                                                                                |
-| 目的地                         | Azure Application Insights 記錄器 | 指定要使用的 Azure Application Insights 記錄器                                                                                                                                                                                                                                                                                           |
+| Destination                         | Azure Application Insights 記錄器 | 指定要使用的 Azure Application Insights 記錄器                                                                                                                                                                                                                                                                                           |
 | 取樣 (%)                        | decimal                           | 值為 0 到 100 (百分比)。 <br/> 指定將記錄至 Azure Application Insights 的要求百分比。 取樣為 0% 時，表示不會記錄任何要求，取樣為 100% 時，則表示會記錄所有要求。 <br/> 此設定可用來降低將要求記錄至 Azure Application Insights 所帶來的效能影響 (請參閱下一節)。 |
 | 一律記錄錯誤                   | boolean                           | 如果選取此設定，則不論 [取樣]**** 設定為何，都會將所有失敗都記錄至 Azure Application Insights。                                                                                                                                                                                                                  |
 | 基本選項：標頭              | list                              | 指定針對要求和回應，將記錄至 Azure Application Insights 的標頭。  預設值：不會記錄任何標頭。                                                                                                                                                                                                             |
-| 基本選項：本文的前幾個位元組  | integer                           | 指定針對要求和回應，要記錄至 Azure Application Insights 的本文前幾個位元組數目。  預設值：不記錄本文。                                                                                                                                                                                                    |
-| Advanced 選項：詳細資訊         |                                   | 指定詳細資訊層級。 只會記錄嚴重性層級較高的自訂追蹤。 預設值：資訊。                                                                                                                                                                                                                               |
+| 基本選項：本文的前幾個位元組  | 整數                           | 指定針對要求和回應，要記錄至 Azure Application Insights 的本文前幾個位元組數目。  預設值：不記錄本文。                                                                                                                                                                                                    |
+| Advanced Options：詳細資訊         |                                   | 指定詳細資訊層級。 只會記錄嚴重性層級較高的自訂追蹤。 預設值：資訊。                                                                                                                                                                                                                               |
 | 進階選項：前端要求  |                                   | 指定是否要將「前端要求」** 記錄至 Azure Application Insights 及如何記錄。 「前端要求」** 是傳入至「Azure API 管理」服務的要求。                                                                                                                                                                        |
 | 進階選項：前端回應 |                                   | 指定是否要將「前端回應」** 記錄至 Azure Application Insights 及如何記錄。 「前端回應」** 是從「Azure API 管理」服務傳出的回應。                                                                                                                                                                   |
 | 進階選項：後端要求   |                                   | 指定是否要將「後端要求」** 記錄至 Azure Application Insights 及如何記錄。 「後端要求」** 是從「Azure API 管理」服務傳出的要求。                                                                                                                                                                        |

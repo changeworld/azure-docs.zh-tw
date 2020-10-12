@@ -1,6 +1,6 @@
 ---
 title: 當地語系化支援 |Microsoft Azure 地圖服務
-description: 查看哪些區域 Azure 地圖服務支援地圖、搜尋、路線規劃、天氣和流量事件等服務。 瞭解如何設定 View 參數。
+description: 查看哪些區域 Azure 地圖服務支援服務，例如地圖、搜尋、路線規劃、天氣和交通事件。 瞭解如何設定 View 參數。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 11/20/2019
@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: a6664b5a2c0c6b4de2435ee5c8bb29f63560c342
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88037689"
 ---
 # <a name="localization-support-in-azure-maps"></a>Azure 地圖服務中的當地語系化支援

@@ -11,10 +11,10 @@ ms.author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: ereilebr
 ms.openlocfilehash: affddf7367f58107106ae07a07b8baedac73e251
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89659559"
 ---
 # <a name="query-acceleration-sql-language-reference"></a>查詢加速 SQL 語言參考
@@ -61,7 +61,7 @@ SELECT sys.split(split_size)FROM BlobStorage
 |FLOAT    |64位 ( 「雙精確度」 ) 浮點數。|
 |STRING   |可變長度的 Unicode 字串。            |
 |timestamp|時間點。                           |
-|BOOLEAN  |True 或 False。                             |
+|BOOLEAN  |true 或 false。                             |
 
 從 CSV 格式化的資料讀取值時，所有值都會讀取為字串。  您可以使用 CAST 運算式，將字串值轉換成其他類型。  根據內容，值可能會隱含地轉換成其他類型。 如需詳細資訊，請參閱 [ (transact-sql) 的資料類型優先順序 ](https://docs.microsoft.com/sql/t-sql/data-types/data-type-precedence-transact-sql)。
 
@@ -94,7 +94,7 @@ SELECT sys.split(split_size)FROM BlobStorage
 |[AND](https://docs.microsoft.com/sql/t-sql/language-elements/bitwise-and-transact-sql)    |在兩個整數值之間，執行位元邏輯 AND 運算。|
 |[OR](https://docs.microsoft.com/sql/t-sql/language-elements/bitwise-or-transact-sql)    |在兩個指定整數值之間執行位邏輯 OR 運算，以轉譯成 Transact-sql 語句內的二進位運算式。|
 |[NOT](https://docs.microsoft.com/sql/t-sql/language-elements/not-transact-sql)    |執行布林輸入的否定運算。|
-|[CAST](https://docs.microsoft.com/sql/t-sql/functions/cast-and-convert-transact-sql)    |將一種資料類型的運算式轉換成另一種。|
+|[CAST](https://docs.microsoft.com/sql/t-sql/functions/cast-and-convert-transact-sql)    |將某種資料類型的運算式轉換成另一種。|
 |[BETWEEN](https://docs.microsoft.com/sql/t-sql/language-elements/between-transact-sql)    |指定要測試的範圍。|
 |[IN](https://docs.microsoft.com/sql/t-sql/language-elements/in-transact-sql)    |判斷指定的值是否符合子查詢或清單中的任何值。|
 |[NULLIF](https://docs.microsoft.com/sql/t-sql/language-elements/nullif-transact-sql)    |如果兩個指定的運算式相等，便傳回 Null 值。|

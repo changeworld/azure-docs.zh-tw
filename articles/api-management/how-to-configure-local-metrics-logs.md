@@ -13,22 +13,22 @@ ms.topic: article
 ms.date: 04/30/2020
 ms.author: apimpm
 ms.openlocfilehash: ac147863fe54be3343eda653fc863ebd08dac54d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86254498"
 ---
 # <a name="configure-local-metrics-and-logs-for-azure-api-management-self-hosted-gateway"></a>設定 Azure API 管理自我裝載閘道的本機計量和記錄
 
-本文提供設定[自我裝載閘道](./self-hosted-gateway-overview.md)之本機計量和記錄的詳細資料。 如需設定雲端計量和記錄，請參閱[這篇文章](how-to-configure-cloud-metrics-logs.md)。 
+本文提供設定 [自我裝載閘道](./self-hosted-gateway-overview.md)的本機計量和記錄的詳細資料。 如需設定雲端計量和記錄，請參閱 [這篇文章](how-to-configure-cloud-metrics-logs.md)。 
 
 ## <a name="metrics"></a>計量
-自我裝載閘道支援[StatsD](https://github.com/statsd/statsd)，其已成為計量集合和匯總的統一通訊協定。 本節將逐步引導您將 StatsD 部署至 Kubernetes、設定閘道透過 StatsD 發出計量，以及使用[Prometheus](https://prometheus.io/)來監視計量。 
+自我裝載閘道支援 [StatsD](https://github.com/statsd/statsd)，其已成為計量收集和匯總的統一通訊協定。 本節將逐步解說將 StatsD 部署至 Kubernetes 的步驟、設定閘道以透過 StatsD 發出計量，以及使用 [Prometheus](https://prometheus.io/) 來監視計量。 
 
 ### <a name="deploy-statsd-and-prometheus-to-the-cluster"></a>將 StatsD 和 Prometheus 部署到叢集
 
-以下是將 StatsD 和 Prometheus 部署至部署自我裝載閘道之 Kubernetes 叢集的範例 YAML 設定。 它也會為每個建立[服務](https://kubernetes.io/docs/concepts/services-networking/service/)。 自我裝載閘道會將計量發佈至 StatsD 服務。 我們將透過其服務存取 Prometheus 儀表板。   
+以下是將 StatsD 和 Prometheus 部署到已部署自我裝載閘道之 Kubernetes 叢集的範例 YAML 設定。 它也會為每個建立 [服務](https://kubernetes.io/docs/concepts/services-networking/service/) 。 自我裝載閘道會將計量發佈至 StatsD 服務。 我們會透過其服務來存取 Prometheus 儀表板。   
 
 ```yaml
 apiVersion: v1
@@ -128,7 +128,7 @@ spec:
 kubectl apply -f metrics.yaml
 ```
 
-部署完成後，請執行下列命令以檢查 pod 是否正在執行。 請注意，您的 pod 名稱會不同。 
+部署完成後，請執行下列命令以檢查 pod 是否正在執行。 請注意，您的 pod 名稱將會不同。 
 
 ```console
 kubectl get pods
@@ -136,7 +136,7 @@ NAME                                   READY   STATUS    RESTARTS   AGE
 sputnik-metrics-f6d97548f-4xnb7        2/2     Running   0          1m
 ```
 
-執行下列命令，以檢查服務是否正在執行。 記下 `CLUSTER-IP` StatsD 服務的和 `PORT` ，稍後我們將會用到它。 您可以使用和來流覽 Prometheus 儀錶 `EXTERNAL-IP` 板 `PORT` 。
+執行下列命令來檢查服務是否正在執行。 請記下 `CLUSTER-IP` `PORT` StatsD 服務，稍後我們將會用到。 您可以使用其和來流覽 Prometheus 儀表板 `EXTERNAL-IP` `PORT` 。
 
 ```console
 kubectl get services
@@ -147,14 +147,14 @@ sputnik-metrics-statsd       NodePort       10.0.41.179   <none>          8125:3
 
 ### <a name="configure-the-self-hosted-gateway-to-emit-metrics"></a>設定自我裝載閘道以發出計量
 
-現在已部署 StatsD 和 Prometheus，我們可以更新自我裝載閘道的設定，以開始透過 StatsD 發出計量。 您可以在自我裝載閘道部署的 ConfigMap 中，使用金鑰來啟用或停用此功能 `telemetry.metrics.local` ，並提供其他選項。 以下是可用選項的明細：
+現在已部署 StatsD 和 Prometheus，我們可以更新自我裝載閘道的設定，以開始透過 StatsD 發出計量。 您可以使用自我裝載閘道部署 ConfigMap 中的金鑰來啟用或停用此功能 `telemetry.metrics.local` ，並提供其他選項。 以下是可用選項的細目：
 
 | 欄位  | 預設 | 描述 |
 | ------------- | ------------- | ------------- |
-| 遙測資料。本機  | `none` | 透過 StatsD 啟用記錄。 值可以是 `none` 、 `statsd` 。 |
-| statsd 端點的值  | n/a | 指定 StatsD 端點。 |
-| ，statsd。取樣  | n/a | 指定計量取樣率。 值可以介於0到1之間。 例如`0.5`|
-| statsd。標記-格式  | n/a | StatsD 匯出程式[標記格式](https://github.com/prometheus/statsd_exporter#tagging-extensions)。 值可以是 `none` 、 `librato` 、 `dogStatsD` 、 `influxDB` 。 |
+| 遙測。區域  | `none` | 透過 StatsD 啟用記錄。 值可以是 `none` 、 `statsd` 。 |
+| statsd。端點。  | n/a | 指定 StatsD 端點。 |
+| statsd。取樣的值  | n/a | 指定計量取樣率。 值可以介於0和1之間。 例如 `0.5`|
+| statsd. tag-format  | n/a | StatsD 匯出工具 [標記格式](https://github.com/prometheus/statsd_exporter#tagging-extensions)。 值可以是 `none` 、 `librato` 、 `dogStatsD` 、 `influxDB` 。 |
 
 以下是範例設定：
 
@@ -171,23 +171,23 @@ sputnik-metrics-statsd       NodePort       10.0.41.179   <none>          8125:3
         telemetry.metrics.local.statsd.tag-format: "dogStatsD"
 ```
 
-使用上述設定更新自我裝載閘道部署的 YAML 檔案，並使用下列命令套用變更： 
+使用上述設定更新自我裝載閘道部署的 YAML 檔，並使用下列命令來套用變更： 
 
 ```console
 kubectl apply -f <file-name>.yaml
  ```
 
-若要選取最新的設定變更，請使用下列命令重新開機閘道部署：
+若要挑選最新的設定變更，請使用下列命令重新開機閘道部署：
 
 ```console
 kubectl rollout restart deployment/<deployment-name>
 ```
 
-### <a name="view-the-metrics"></a>查看計量
+### <a name="view-the-metrics"></a>查看度量
 
-現在我們已部署並設定所有專案，自我裝載閘道應該會透過 StatsD 報告計量。 Prometheus 會從 StatsD 中挑選計量。 使用 `EXTERNAL-IP` Prometheus 服務的和，移至 Prometheus 儀表板 `PORT` 。 
+現在我們已部署並設定所有專案，自我裝載的閘道應該透過 StatsD 來報告計量。 Prometheus 會從 StatsD 中挑選計量。 使用 Prometheus 服務的和來移至 Prometheus 儀表板 `EXTERNAL-IP` `PORT` 。 
 
-透過自我裝載閘道進行一些 API 呼叫，如果所有專案都已正確設定，您應該能夠查看下列計量：
+透過自我裝載的閘道進行一些 API 呼叫，如果所有專案都已正確設定，您應該能夠查看以下計量：
 
 | 計量  | 描述 |
 | ------------- | ------------- |
@@ -204,19 +204,19 @@ kubectl rollout restart deployment/<deployment-name>
 kubectl logs <pod-name>
 ```
 
-如果您的自我裝載閘道是部署在 Azure Kubernetes Service 中，您可以讓[容器 Azure 監視器](../azure-monitor/insights/container-insights-overview.md)收集 `stdout` `stderr` 工作負載，並在 Log Analytics 中查看記錄。 
+如果您的自我裝載閘道部署在 Azure Kubernetes Service 中，您可以啟用 [容器的 Azure 監視器](../azure-monitor/insights/container-insights-overview.md) ， `stdout` 以便 `stderr` 從您的工作負載收集和查看您的工作負載，並查看 Log Analytics 中的記錄。 
 
-自我裝載閘道也支援數種通訊協定，包括 `localsyslog` 、 `rfc5424` 和 `journal` 。 下表摘要說明所有支援的選項。 
+自我裝載閘道也支援多個通訊協定，包括 `localsyslog` 、 `rfc5424` 和 `journal` 。 下表摘要說明所有支援的選項。 
 
 | 欄位  | 預設 | 描述 |
 | ------------- | ------------- | ------------- |
-| 遙測. std  | `text` | 啟用記錄至標準資料流程。 值可以是 `none` 、 `text` 、`json` |
-| 遙測. 本機  | `none` | 啟用本機記錄。 值可以是 `none` 、 `auto` 、 `localsyslog` 、 `rfc5424` 、`journal`  |
-| localsyslog. endpoint。  | n/a | 指定 localsyslog 端點。  |
-| localsyslog. 的功能  | n/a | 指定 localsyslog[設施程式碼](https://en.wikipedia.org/wiki/Syslog#Facility)。 例如`7` 
-| rfc5424. endpoint。  | n/a | 指定 rfc5424 端點。  |
-| rfc5424. 的功能  | n/a | 指定每個[rfc5424](https://tools.ietf.org/html/rfc5424)的設施代碼。 例如`7`  |
-| [遙測]。  | n/a | 指定日誌端點。  |
+| 遙測。 std  | `text` | 啟用記錄至標準資料流程。 值可以是 `none` 、 `text` 、 `json` |
+| 遙測。本機  | `none` | 啟用本機記錄。 值可以是 `none` 、 `auto` 、 `localsyslog` 、 `rfc5424` 、 `journal`  |
+| localsyslog。端點。  | n/a | 指定 localsyslog 端點。  |
+| localsyslog 的功能。  | n/a | 指定 localsyslog [設備程式碼](https://en.wikipedia.org/wiki/Syslog#Facility)。 例如 `7` 
+| rfc5424。端點。  | n/a | 指定 rfc5424 端點。  |
+| rfc5424 的功能。  | n/a | 指定每個 [rfc5424](https://tools.ietf.org/html/rfc5424)的設施碼。 例如 `7`  |
+| 遙測。本機. 日誌。端點  | n/a | 指定日誌端點。  |
 
 以下是本機記錄的範例設定：
 
@@ -232,7 +232,7 @@ kubectl logs <pod-name>
         telemetry.logs.local.localsyslog.facility: "7"
 ```
  
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-* 若要深入瞭解自我裝載閘道，請參閱[AZURE API 管理自我裝載閘道總覽](self-hosted-gateway-overview.md)
-* 瞭解如何[在雲端中設定和保存記錄](how-to-configure-local-metrics-logs.md)
+* 若要深入瞭解自我裝載的閘道，請參閱 [AZURE API 管理自我裝載閘道總覽](self-hosted-gateway-overview.md)
+* 瞭解如何 [在雲端設定和保存記錄](how-to-configure-local-metrics-logs.md)

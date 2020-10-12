@@ -4,10 +4,10 @@ description: 瞭解 Azure Migrate Server 評定的實體伺服器評量支援
 ms.topic: conceptual
 ms.date: 06/03/2020
 ms.openlocfilehash: dffa95fe717f8588f56b9dee60ede8bbf44aceb9
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89660343"
 ---
 # <a name="support-matrix-for-physical-server-assessment"></a>實體伺服器評量的支援矩陣 
@@ -34,7 +34,7 @@ ms.locfileid: "89660343"
 | **支援**                | **詳細資料**               
 | :-------------------       | :------------------- |
 | **實體伺服器部署**       | 實體伺服器可以是獨立的，也可以部署在叢集中。 |
-| **權限**           | **Windows：** 對已加入網域的機器使用網域帳戶，並且未加入網域的機器使用本機帳戶。 使用者帳戶應新增至下列群組：遠端管理使用者、效能監視器使用者，以及效能記錄使用者。 <br/><br/> **Linux：** 您在要探索的 Linux 伺服器上必須要有根帳戶。 <br/> 或者，請務必使用下列命令來設定所需的功能。 <br/> setcap CAP_DAC_READ_SEARCH + eip/usr/sbin/fdisk <br/> setcap CAP_DAC_READ_SEARCH + eip/sbin/fdisk (是否有/usr/sbin/fdisk)  <br/> setcap "cap_dac_override，cap_dac_read_search，cap_fowner，cap_fsetid，cap_setuid，cap_setpcap，cap_net_bind_service，cap_net_admin，cap_sys_chroot，cap_sys_admin，cap_sys_resource，cap_audit_control，cap_setfcap = + eip"/sbin/lvm <br/> setcap CAP_DAC_READ_SEARCH + eip/usr/sbin/dmidecode <br/> chmod a + r/sys/class/dmi/id/product_uuid
+| **權限**           | **Windows：** 對已加入網域的機器使用網域帳戶，並且未加入網域的機器使用本機帳戶。 使用者帳戶應新增至下列群組：遠端管理使用者、效能監視器使用者，以及效能記錄使用者。 <br/><br/> **Linux：** 您在要探索的 Linux 伺服器上必須要有根帳戶。 <br/> 或者，請務必使用下列命令來設定所需的功能。 <br/> setcap CAP_DAC_READ_SEARCH+eip /usr/sbin/fdisk <br/> setcap CAP_DAC_READ_SEARCH+eip /sbin/fdisk (如果 /usr/sbin/fdisk 不存在) <br/> setcap "cap_dac_override，cap_dac_read_search，cap_fowner，cap_fsetid，cap_setuid，cap_setpcap，cap_net_bind_service，cap_net_admin，cap_sys_chroot，cap_sys_admin，cap_sys_resource，cap_audit_control，cap_setfcap = + eip"/sbin/lvm <br/> setcap CAP_DAC_READ_SEARCH + eip/usr/sbin/dmidecode <br/> chmod a + r/sys/class/dmi/id/product_uuid
 | **作業系統** | 所有 Windows 和 Linux 作業系統都可進行評估以進行遷移。 |
 
 

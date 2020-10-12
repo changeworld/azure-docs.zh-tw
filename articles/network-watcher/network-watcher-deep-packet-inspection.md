@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: 2a4debda712636e577639b84845dda6b9b4228a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84725050"
 ---
 # <a name="packet-inspection-with-azure-network-watcher"></a>使用 Azure 網路監看員進行封包檢查
@@ -29,7 +29,7 @@ ms.locfileid: "84725050"
 
 本案例假設您已經在虛擬機器上執行封包擷取。 若要了解如何建立封包擷取，請造訪[使用入口網站管理封包擷取](network-watcher-packet-capture-manage-portal.md)，或使用 REST 則請造訪[使用 REST API 管理封包擷取](network-watcher-packet-capture-manage-rest.md)。
 
-## <a name="scenario"></a>狀況
+## <a name="scenario"></a>案例
 
 在此案例中，您將會：
 
@@ -51,7 +51,7 @@ ms.locfileid: "84725050"
 
 ### <a name="step-3"></a>步驟 3
 
-若要在 TCP 對話中檢視初始的來回時間 (RTT)，我們將只會看到參與 TCP 交握的前兩個封包。 我們將在三向交握中使用前兩個封包，也就是 [SYN]、[SYN, ACK] 封包。 它們會針對 TCP 標頭中設定的旗標命名。 在交握期間的最後一個封包 ([ACK] 封包) 不會用於此案例。 [SYN] 封包會由用戶端傳送。 一旦收到，伺服器就會傳送 [ACK] 封包，做為從用戶端接收 SYN 的認可。 利用伺服器的回應需要極少額外負荷的特性，我們將用戶端接收 [SYN, ACK] 封包的時間減去用戶端傳送 [SYN] 封包的時間來計算 RTT。
+若要在 TCP 對話中檢視初始的來回時間 (RTT)，我們將只會看到參與 TCP 交握的前兩個封包。 我們將在三向交握中使用前兩個封包，也就是 [SYN]、[SYN, ACK] 封包。 它們會針對 TCP 標頭中設定的旗標命名。 在交握期間的最後一個封包 ([ACK] 封包) 不會用於此案例。 [SYN] 封包會由用戶端傳送。 一旦接收到伺服器，伺服器就會傳送 [ACK] 封包，作為接收來自用戶端之 SYN 的確認。 利用伺服器的回應需要極少額外負荷的特性，我們將用戶端接收 [SYN, ACK] 封包的時間減去用戶端傳送 [SYN] 封包的時間來計算 RTT。
 
 使用 WireShark，系統會為我們計算此值。
 
@@ -77,7 +77,7 @@ ms.locfileid: "84725050"
 
 ### <a name="step-1"></a>步驟 1
 
-在先前案例中使用相同的 capture，請按一下 [**統計資料]**  >  **通訊協定**階層
+在先前的案例中使用相同的捕獲，請按一下**統計資料**  >  **通訊協定**階層
 
 ![通訊協定階層功能表][2]
 
@@ -93,7 +93,7 @@ ms.locfileid: "84725050"
 
 ### <a name="step-1"></a>步驟 1
 
-在先前的案例中使用相同的 capture，按一下**統計資料**的  >  **IPv4 統計資料**  >  **目的地和埠**
+在先前的案例中使用相同的捕獲，請按一下**統計資料**  >  **IPv4 統計資料**  >  **目的地和埠**
 
 ![封包擷取視窗][4]
 
@@ -121,7 +121,7 @@ tcp.port == 111
 
 從結果中，我們可以看到所有的流量來自相同子網路上的本機虛擬機器。 如果我們還是不懂此流量發生的原因，可以進一步檢查封包來判斷為何它在連接埠 111 上進行這些呼叫。 利用此資訊，我們可以採取適當動作。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 若要深入了解網路監看員的其他診斷功能，請造訪 [Azure 網路監視概觀](network-watcher-monitoring-overview.md)
 

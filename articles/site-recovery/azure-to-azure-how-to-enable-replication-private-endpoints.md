@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 07/14/2020
 ms.custom: references_regions
 ms.openlocfilehash: 37784c4a294ccf296818f2afb1a8a345cb9d813e
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89658262"
 ---
 # <a name="replicate-machines-with-private-endpoints"></a>複寫具有私人端點的電腦
@@ -57,7 +57,7 @@ Azure Site Recovery 可讓您使用 [Azure Private Link](../private-link/private
 
 1. 移至您的復原服務保存庫。 在 [_設定_] 底下選取 [身分**識別**]。
 
-   :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/enable-managed-identity-in-vault.png" alt-text="顯示 Azure 入口網站和 [復原服務] 頁面。":::
+   :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/enable-managed-identity-in-vault.png" alt-text="具有私人端點 Site Recovery 的參考架構。":::
 
 1. 將 **狀態** 變更為 [ _開啟_ ]，然後選取 [ **儲存**]。
 
@@ -73,21 +73,21 @@ Azure Site Recovery 可讓您使用 [Azure Private Link](../private-link/private
 
 1. 在 Azure 入口網站搜尋列中，搜尋並選取 [Private Link]。 此動作會帶您前往 Private Link Center。
 
-   :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/search-private-links.png" alt-text="顯示搜尋 Private Link 中心的 Azure 入口網站。":::
+   :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/search-private-links.png" alt-text="具有私人端點 Site Recovery 的參考架構。":::
 
 1. 在左側導覽列上，選取 [ **私人端點**]。 在 [私人端點] 頁面上，選取 [ ** \+ 新增**] 以開始建立保存庫的私人端點。
 
-   :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/create-private-endpoints.png" alt-text="顯示如何在 Private Link 中心建立私人端點。":::
+   :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/create-private-endpoints.png" alt-text="具有私人端點 Site Recovery 的參考架構。":::
 
 1. 一旦進入「建立私人端點」體驗，您就必須指定建立私人端點連線的詳細資料。
 
    1. **基本概念**：填寫私人端點的基本詳細資料。 此區域應該與來源電腦相同。
 
-      :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/create-private-endpoints-basic-tab.png" alt-text="顯示 [基本] 索引標籤、專案詳細資料、訂用帳戶，以及在 Azure 入口網站中建立私人端點的其他相關欄位。":::
+      :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/create-private-endpoints-basic-tab.png" alt-text="具有私人端點 Site Recovery 的參考架構。":::
 
    1. **資源**：此索引標籤會要求您提及您要建立連線的平臺即服務資源。 針對所選訂用帳戶的**資源類型**，選取 [ _az.recoveryservices]/_ [保存庫]。 然後，選擇 **資源** 的復原服務保存庫名稱，並將 _Azure Site Recovery_ 設定為 **目標子資源**。
 
-      :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/create-private-endpoints-resource-tab.png" alt-text="顯示 [資源] 索引標籤、[資源類型]、[資源] 和 [目標子資源] 欄位，以連結至 Azure 入口網站中的私人端點。":::
+      :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/create-private-endpoints-resource-tab.png" alt-text="具有私人端點 Site Recovery 的參考架構。":::
 
    1. 設定 **：在**[設定] 中，指定您要在其中建立私人端點的虛擬網路和子網。 此虛擬網路是存在虛擬機器的網路。 選取 **[是]**，以啟用與私人 DNS 區域的整合。 選擇已經建立的 DNS 區域，或建立一個新的。 選取 **[是]** 會自動將區域連結至來源虛擬網路，並新增 dns 解析所需的 dns 記錄，以供針對私人端點建立的新 ip 和完整功能變數名稱。
 
@@ -97,7 +97,7 @@ Azure Site Recovery 可讓您使用 [Azure Private Link](../private-link/private
 
       若要手動建立私人 DNS 區域，請遵循 [建立私人 dns 區域中的步驟，並手動新增 DNS 記錄](#create-private-dns-zones-and-add-dns-records-manually)。
 
-      :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/create-private-endpoints-configuration-tab.png" alt-text="顯示 [設定] 索引標籤，其中包含網路和 DNS 整合欄位，可供在 Azure 入口網站中設定私人端點。":::
+      :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/create-private-endpoints-configuration-tab.png" alt-text="具有私人端點 Site Recovery 的參考架構。":::
 
    1. **標記**：您可以選擇性地新增私人端點的標記。
 
@@ -115,7 +115,7 @@ Azure Site Recovery 可讓您使用 [Azure Private Link](../private-link/private
 
 您可以先移至私人端點資源來檢查線上狀態，再繼續進行。
 
-:::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/vault-private-endpoint-connections.png" alt-text="顯示保存庫的 [私人端點連線] 頁面和 Azure 入口網站中的連接清單。":::
+:::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/vault-private-endpoint-connections.png" alt-text="具有私人端點 Site Recovery 的參考架構。":::
 
 ## <a name="optional-create-private-endpoints-for-the-cache-storage-account"></a><a name="create-private-endpoints-for-the-cache-storage-account"></a> (選用) 為快取儲存體帳戶建立私人端點
 
@@ -151,11 +151,11 @@ Azure Site Recovery 可讓您使用 [Azure Private Link](../private-link/private
 
 1. 在 **存取控制 (IAM) **之後，請在 [新增角色指派] 方塊中選取 [ **新增**]。
 
-   :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/storage-role-assignment.png" alt-text="顯示儲存體帳戶的存取控制 (IAM) 頁面，以及 Azure 入口網站中的 [新增角色指派] 按鈕。":::
+   :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/storage-role-assignment.png" alt-text="具有私人端點 Site Recovery 的參考架構。":::
 
 1. 在 [新增角色指派] 頁面的 [ **角色** ] 下拉式清單中，選擇上方清單中的角色。 輸入保存庫的 **名稱** ，然後選取 [ **儲存**]。
 
-   :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/storage-role-assignment-select-role.png" alt-text="顯示儲存體帳戶 (IAM) 頁面的存取控制，以及選取角色的選項，以及要在 Azure 入口網站中授與該角色的主體。":::
+   :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/storage-role-assignment-select-role.png" alt-text="具有私人端點 Site Recovery 的參考架構。":::
 
 除了這些許可權之外，也必須允許 MS 受信任的服務存取。 移至 [防火牆和虛擬網路]，然後選取 [允許信任的 Microsoft 服務存取此儲存體帳戶] 核取方塊（ **例外**狀況）。
 
@@ -173,13 +173,13 @@ Azure Site Recovery 可讓您使用 [Azure Private Link](../private-link/private
 
    1. 在 [ **所有服務** ] 搜尋列中搜尋「私人 dns 區域」，然後從下拉式清單中選取 [私人 dns 區域]。
 
-      :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/search-private-dns-zone.png" alt-text="顯示在 Azure 入口網站的 [新資源] 頁面上搜尋 [私人 dns 區域]。":::
+      :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/search-private-dns-zone.png" alt-text="具有私人端點 Site Recovery 的參考架構。":::
 
    1. 在 [私人 DNS 區域] 頁面上，選取 [ ** \+ 新增**] 按鈕以開始建立新的區域。
 
    1. 在 [建立私人 DNS 區域] 頁面上，填寫必要的詳細資料。 輸入私人 DNS 區域的名稱，如下所示 `privatelink.siterecovery.windowsazure.com` 。 您可以選擇任何資源群組和任何訂用帳戶來建立它。
 
-      :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/create-private-dns-zone.png" alt-text="顯示 [建立私人 DNS 區域] 頁面的 [基本] 索引標籤，以及 Azure 入口網站中的相關專案詳細資料。":::
+      :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/create-private-dns-zone.png" alt-text="具有私人端點 Site Recovery 的參考架構。":::
 
    1. 繼續前往 [ **審核 \+ 建立** ] 索引標籤，以檢查和建立 DNS 區域。
 
@@ -191,7 +191,7 @@ Azure Site Recovery 可讓您使用 [Azure Private Link](../private-link/private
 
    1. 填寫必要的詳細資料。 [ **訂** 用帳戶] 和 [ **虛擬網路** ] 欄位必須填入伺服器所在之虛擬網路的對應詳細資料。 其他欄位必須保持原樣。
 
-      :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/add-virtual-network-link.png" alt-text="顯示頁面，以新增連結名稱、訂用帳戶和 Azure 入口網站中相關虛擬網路的虛擬網路連結。":::
+      :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/add-virtual-network-link.png" alt-text="具有私人端點 Site Recovery 的參考架構。":::
 
 1. 新增 DNS 記錄
 
@@ -208,12 +208,12 @@ Azure Site Recovery 可讓您使用 [Azure Private Link](../private-link/private
 
       這些完整功能變數名稱符合模式： `{Vault-ID}-asr-pod01-{type}-.{target-geo-code}.siterecovery.windowsazure.com`
 
-      :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/add-record-set.png" alt-text="顯示頁面，以針對 Azure 入口網站中的私人端點，將完整功能變數名稱的類型記錄新增至 DNS。":::
+      :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/add-record-set.png" alt-text="具有私人端點 Site Recovery 的參考架構。":::
 
    > [!NOTE]
    > 啟用複寫之後，會在兩個區域的私人端點上建立兩個完整的完整功能變數名稱。 確定您也為這些新建立的完整功能變數名稱新增 DNS 記錄。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 既然您已為虛擬機器複寫啟用私人端點，請參閱下列其他頁面，以取得其他相關資訊：
 

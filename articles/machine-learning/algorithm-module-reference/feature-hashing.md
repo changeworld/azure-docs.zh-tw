@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
 ms.openlocfilehash: 444cb6a7819fa72f5987a21807fc707e0ba8b396
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90907919"
 ---
 # <a name="feature-hashing-module-reference"></a>特徵雜湊模組參考
@@ -129,6 +129,6 @@ ms.locfileid: "90907919"
 
 在任何解決方案中要套用的一組最佳前置處理方法，取決於網域、詞彙和商務需求。 具有資料的管線，以查看哪些文字處理方法最有效。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
             
 查看 [可用的模組集](module-reference.md) Azure Machine Learning 

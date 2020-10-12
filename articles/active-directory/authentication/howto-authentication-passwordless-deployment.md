@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 95f4221b390071ad149699608d3937b9af4e1d5d
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90526998"
 ---
 # <a name="plan-a-passwordless-authentication-deployment-in-azure-active-directory"></a>規劃 Azure Active Directory 中的無密碼 authentication 部署
@@ -118,7 +118,7 @@ Windows Hello 的必要條件高度取決於您要部署的是內部部署、混
 - [在 Microsoft Authenticator 應用程式中註冊](howto-authentication-passwordless-phone.md)
 - [使用您的電話登入](../user-help/user-help-auth-app-sign-in.md)
 
-Microsoft 提供多重要素驗證 [通訊範本](https://aka.ms/mfatemplates)、自助式密碼重設 (SSPR) [通訊範本](https://www.microsoft.com/download/details.aspx?id=56768)，以及可協助您進行通訊的 [使用者檔](../user-help/security-info-setup-signin.md) 。 選取該頁面的**安全性資訊**連結，即可將使用者傳送至 [https://myprofile.microsoft.com](https://myprofile.microsoft.com/) 直接註冊。
+Microsoft 提供多重要素驗證 [通訊範本](https://aka.ms/mfatemplates)、Self-Service 密碼重設 (SSPR) [通訊範本](https://www.microsoft.com/download/details.aspx?id=56768)，以及可協助您進行通訊的 [使用者檔](../user-help/security-info-setup-signin.md) 。 選取該頁面的**安全性資訊**連結，即可將使用者傳送至 [https://myprofile.microsoft.com](https://myprofile.microsoft.com/) 直接註冊。
 
 ### <a name="plan-to-pilot"></a>規劃試驗
 

@@ -8,10 +8,10 @@ ms.date: 8/4/2020
 ms.topic: troubleshooting
 ms.service: digital-twins
 ms.openlocfilehash: 084a823571281c91419a56b6212ddf6c44dd80bb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91322626"
 ---
 # <a name="troubleshooting-azure-digital-twins-metrics"></a>針對 Azure 數位 Twins 進行疑難排解：計量
@@ -53,7 +53,7 @@ Azure 數位 Twins 提供數個計量，可讓您瞭解實例的健康情況和�
 
 需要處理 API 要求的計量：
 
-| 計量 | 度量顯示名稱 | 單位 | 彙總類型| 說明 | 維度 |
+| 計量 | 度量顯示名稱 | Unit | 彙總類型| 描述 | 維度 |
 | --- | --- | --- | --- | --- | --- |
 | ApiRequests | API 要求 (預覽)  | Count | 總計 | 針對數位 Twins 的讀取、寫入、刪除和查詢作業所提出的 API 要求數目。 |  認證 <br>操作 <br>協定 <br>狀態碼， <br>狀態碼類別， <br>狀態文字 |
 | ApiRequestsFailureRate | API 要求失敗率 (預覽)  | 百分比 | Average | 服務針對您的實例所收到的 API 要求百分比，可提供內部錯誤 (500) Twins 讀取、寫入、刪除和查詢作業的回應碼。 | 認證 <br>操作 <br>協定 <br>狀態碼， <br>狀態碼類別， <br>狀態文字
@@ -66,7 +66,7 @@ Azure 數位 Twins 提供數個計量，可讓您瞭解實例的健康情況和�
 >[!NOTE]
 > 在預覽期間， **計費為零成本**。 雖然這些計量仍會顯示在可選取的清單中，但不會在預覽期間套用，而且會維持為零，直到服務移至預覽之外。
 
-| 計量 | 度量顯示名稱 | 單位 | 彙總類型| 說明 | 維度 |
+| 計量 | 度量顯示名稱 | Unit | 彙總類型| 描述 | 維度 |
 | --- | --- | --- | --- | --- | --- |
 | BillingApiOperations |  (預覽) 的計費 API 作業 | Count | 總計 | 針對 Azure 數位 Twins 服務提出之所有 API 要求計數的計費計量。 | 計量識別碼 |
 | BillingMessagesProcessed |  (預覽) 處理的帳單訊息 | Count | 總計 | 從 Azure 數位 Twins 送出至外部端點之訊息數目的計費度量。<br><br>若要將帳單視為單一訊息，承載必須不超過 1 KB。 大於此的承載會以 1 KB 的遞增量計算為額外訊息 (因此1到 2 KB 之間的訊息將會計算為2則訊息，介於2到 3 KB 之間將會是3則訊息，依此類推) 。<br>這項限制也適用于回應，因此在回應本文中傳回 1.5 KB 的呼叫將會以2個作業計費。 | 計量識別碼 |
@@ -76,7 +76,7 @@ Azure 數位 Twins 提供數個計量，可讓您瞭解實例的健康情況和�
 
 與資料輸入有關的計量：
 
-| 計量 | 度量顯示名稱 | 單位 | 彙總類型| 說明 | 維度 |
+| 計量 | 度量顯示名稱 | Unit | 彙總類型| 描述 | 維度 |
 | --- | --- | --- | --- | --- | --- |
 | IngressEvents | 輸入事件 (預覽)  | Count | 總計 | 傳入的遙測事件到 Azure 數位 Twins 的數目。 | 結果 |
 | IngressEventsFailureRate | 輸入事件失敗率 (預覽)  | 百分比 | Average | 服務傳回內部錯誤 (500) 回應碼的傳入遙測事件百分比。 | 結果 |
@@ -86,7 +86,7 @@ Azure 數位 Twins 提供數個計量，可讓您瞭解實例的健康情況和�
 
 使用路由的計量：
 
-| 計量 | 度量顯示名稱 | 單位 | 彙總類型| 說明 | 維度 |
+| 計量 | 度量顯示名稱 | Unit | 彙總類型| 描述 | 維度 |
 | --- | --- | --- | --- | --- | --- |
 | MessagesRouted | 路由 (預覽) 的訊息 | Count | 總計 | 路由至端點 Azure 服務（例如事件中樞、服務匯流排或事件方格）的訊息數目。 | 端點類型， <br>結果 |
 | RoutingFailureRate | 路由失敗率 (預覽)  | 百分比 | Average | 從 Azure 數位 Twins 路由傳送至端點 Azure 服務（例如事件中樞、服務匯流排或事件方格）時，會產生錯誤的事件百分比。 | 端點類型， <br>結果 |

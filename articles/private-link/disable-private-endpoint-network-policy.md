@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 09/16/2019
 ms.author: allensu
 ms.openlocfilehash: a4c04033f3fb5ff523f0d80bb6c978955f4c9ec2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84737507"
 ---
 # <a name="disable-network-policies-for-private-endpoints"></a>停用私人端點的網路原則
 
-私人端點不支援像是網路安全性群組（NSG）的網路原則。 若要在指定的子網上部署私用端點，該子網上需要明確的停用設定。 此設定僅適用于私人端點。 若為子網中的其他資源，則會根據網路安全性群組（NSG）安全性規則定義來控制存取。 
+私人端點不支援類似網路安全性群組 (NSG) 的網路原則。 若要在指定的子網路上部署私人端點，該子網路上需要有明確的停用設定。 這項設定僅適用于私人端點。 如果是子網中的其他資源，則會根據 (NSG) 安全性規則定義的網路安全性群組來控制存取權。 
  
-使用入口網站建立私人端點時，會在建立程式中自動停用此設定。 使用其他用戶端的部署需要額外的步驟來變更此設定。 您可以從 Azure 入口網站使用 cloud shell，或 Azure PowerShell、Azure CLI 的本機安裝，或使用 Azure Resource Manager 範本來停用此設定。  
+使用入口網站建立私人端點時，此設定會在建立過程中自動停用。 使用其他用戶端進行部署時，需要額外的步驟才能變更此設定。 您可以從 Azure 入口網站中使用 cloud shell，或 Azure PowerShell、Azure CLI 的本機安裝，或使用 Azure Resource Manager 範本來停用設定。  
  
 下列範例說明如何 `PrivateEndpointNetworkPolicies` 針對名為*myVirtualNetwork*的虛擬網路停用，並在名為*myResourceGroup*的資源群組中裝載*預設*子網。
 
@@ -69,6 +69,6 @@ az network vnet subnet update \
           } 
 } 
 ```
-## <a name="next-steps"></a>後續步驟
-- 深入瞭解[Azure 私用端點](private-endpoint-overview.md)
+## <a name="next-steps"></a>接下來的步驟
+- 深入瞭解 [Azure 私人端點](private-endpoint-overview.md)
  

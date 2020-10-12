@@ -8,10 +8,10 @@ ms.date: 5/10/2020
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: ca333115b8a0588f781b93e0d8a9279ab9c7928c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91255157"
 ---
 # <a name="use-an-app-service-environment"></a>使用 App Service 環境
@@ -122,9 +122,9 @@ SCM URL 是用來存取 Kudu 主控台，或是使用 Web Deploy 來發佈您的
 
 ### <a name="dns-configuration"></a>DNS 組態 
 
-當您使用外部 ASE 時，您的 ASE 中所建立的應用程式會向 Azure DNS 註冊。 外部 ASE 中沒有任何額外的步驟，可供您的應用程式公開使用。 使用 ILB ASE 時，您必須管理您自己的 DNS。 您可以在自己的 DNS 伺服器或 Azure DNS 私人區域中進行這項作業。
+當您使用外部 ASE 時，在 ASE 中建立的應用程式會向 Azure DNS 註冊。 外部 ASE 中不會有任何額外的步驟，讓您的應用程式可公開使用。 使用 ILB ASE 時，您必須管理您自己的 DNS。 您可以在自己的 DNS 伺服器中或使用 Azure DNS 私人區域執行此動作。
 
-若要在您自己的 DNS 伺服器中使用 ILB ASE 設定 DNS：
+若要使用 ILB ASE 在自己的 DNS 伺服器中設定 DNS：
 
 1. 為 &lt;ASE 名稱&gt;.appserviceenvironment.net 建立一個區域
 1. 在該區域中建立一個指向 ILB IP 位址的 A 記錄
@@ -137,11 +137,11 @@ SCM URL 是用來存取 Kudu 主控台，或是使用 Web Deploy 來發佈您的
 1. 建立名為 ASE 名稱的 Azure DNS 私人區域 &lt; &gt; 。 appserviceenvironment.net
 1. 在該區域中建立一個指向 ILB IP 位址的 A 記錄
 1. 在該區域中建立一個將 @ 指向 ILB IP 位址的 A 記錄
-1. 在該區域中建立 A 記錄，並將 *. scm 指向 ILB 的 IP 位址
+1. 在該區域中建立一個將 *.scm 指向 ILB IP 位址的 A 記錄
 
-ASE 預設網域尾碼的 DNS 設定，不會將您的應用程式限制為只能透過這些名稱存取。 您可以設定自訂功能變數名稱，而不需要在 ILB ASE 中的應用程式進行任何驗證。 如果您想要建立名為 *contoso.net*的區域，您可以這樣做，並指向 ILB IP 位址。 自訂功能變數名稱適用于應用程式要求，但不適用於 scm 網站。 Scm 網站僅適用于* &lt; appname &gt; . scm &lt; 。asename &gt; . appserviceenvironment.net*。 
+ASE 預設網域尾碼的 DNS 設定並不會將您的應用程式限制為僅供那些名稱存取。 在 ILB ASE 中，您可以在應用程式上設定自訂網域名稱，而不會進行任何驗證。 如果您想要建立名為 *contoso.net*的區域，您可以這樣做，並指向 ILB IP 位址。 自訂網域名稱適用於應用程式要求，但不適用於 scm 網站。 Scm 網站僅適用于* &lt; appname &gt; . scm &lt; 。asename &gt; . appserviceenvironment.net*。 
 
-名為的區域 *。 &lt;asename &gt; 。 appserviceenvironment.net* 是全域唯一的。 在2019月之前，客戶可以指定 ILB ASE 的網域尾碼。 如果您想要使用 *contoso.com* 作為網域尾碼，您可以這麼做，其中包括 scm 網站。 該模型有一些挑戰，包括：管理預設 SSL 憑證、缺少與 scm 網站的單一登入，以及使用萬用字元憑證的需求。 ILB ASE 預設憑證升級程式也會造成干擾，並導致應用程式重新開機。 為了解決這些問題，ILB ASE 行為已變更為根據 ASE 名稱和 Microsoft 擁有的尾碼來使用網域尾碼。 ILB ASE 行為的變更只會影響2019月之後所做的 ILB Ase。 預先存在的 ILB Ase 仍然必須管理 ASE 的預設憑證及其 DNS 設定。
+名為的區域 *。 &lt;asename &gt; 。 appserviceenvironment.net* 是全域唯一的。 在 2019 年 5月之前，客戶可以指定 ILB ASE 的網域尾碼。 如果您想要使用 *contoso.com* 作為網域尾碼，您可以這麼做，其中包括 scm 網站。 該模型會有挑戰，包括管理預設 SSL 憑證、缺少與 scm 網站的單一登入，以及使用萬用字元憑證的需求。 ILB ASE 預設憑證升級程序也會造成干擾，並導致應用程式重新啟動。 為了解決這些問題，ILB ASE 行為已變更為根據 ASE 名稱和搭配 Microsoft 擁有的尾碼來使用網域尾碼。 ILB ASE 行為的變更只會影響 2019 年 5 月之後所做的 ILB ASE。 預先存在的 ILB ASE 仍然必須管理 ASE 的預設憑證和其 DNS 組態。
 
 ## <a name="publishing"></a>發佈
 

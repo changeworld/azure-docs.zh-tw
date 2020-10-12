@@ -9,19 +9,19 @@ ms.topic: troubleshooting
 ms.custom: seoapr2020
 ms.date: 04/21/2020
 ms.openlocfilehash: e8585779a263f4ff5dbdd998bbf065c6a4e1acdf
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86079253"
 ---
 # <a name="troubleshoot-script-actions-in-azure-hdinsight"></a>針對 Azure HDInsight 中的腳本動作進行疑難排解
 
-本文說明與 Azure HDInsight 叢集互動時，問題的疑難排解步驟和可能的解決方法。
+本文說明與 Azure HDInsight 叢集互動時，問題的疑難排解步驟和可能的解決方式。
 
 ## <a name="viewing-logs"></a>檢視記錄
 
-您可以使用 Apache Ambari web UI 來查看腳本動作所記錄的資訊。 如果腳本在叢集建立期間失敗，記錄會位於預設叢集儲存體帳戶中。 本節提供有關如何使用這兩個選項來擷取記錄的資訊。
+您可以使用 Apache Ambari web UI 來查看腳本動作所記錄的資訊。 如果在叢集建立期間腳本失敗，記錄會在預設的叢集儲存體帳戶中。 本節提供有關如何使用這兩個選項來擷取記錄的資訊。
 
 ### <a name="apache-ambari-web-ui"></a>Apache Ambari web UI
 
@@ -51,7 +51,7 @@ ms.locfileid: "86079253"
 
     * 背景**工作節點**：`<ACTIVE-WORKERNODE-NAME>.cloudapp.net`
 
-    * **Zookeeper 節點**：`<ACTIVE-ZOOKEEPERNODE-NAME>.cloudapp.net`
+    * **Zookeeper 節點**： `<ACTIVE-ZOOKEEPERNODE-NAME>.cloudapp.net`
 
 * 相對應主機的所有 **stdout** 和 **stderr** 都會上傳到儲存體帳戶。 每個指令碼動作都有一個 **output-\*.txt** 和 **errors-\*.txt**。 **output-*.txt** 檔案包含在主機上執行之指令碼的 URI 相關資訊。 以下文字是此資訊的範例：
 
@@ -71,7 +71,7 @@ ms.locfileid: "86079253"
 
 ## <a name="ambari-watchdog"></a>Ambari 看門狗
 
-請勿變更 Linux 型 HDInsight 叢集上的 Ambari 看門狗 (hdinsightwatchdog) 密碼。 密碼變更會破壞在 HDInsight 叢集上執行新腳本動作的能力。
+請勿變更 Linux 型 HDInsight 叢集上的 Ambari 看門狗 (hdinsightwatchdog) 密碼。 密碼變更會中斷在 HDInsight 叢集上執行新腳本動作的能力。
 
 ## <a name="cant-import-name-blobservice"></a>無法匯入名稱 BlobService
 
@@ -86,7 +86,7 @@ ImportError: cannot import name BlobService
 
 __原因__。 如果您升級 HDInsight 叢集隨附的「Python Azure 儲存體」用戶端，就會發生此錯誤。 HDInsight 需要 Azure 儲存體用戶端 0.20.0。
 
-__解決__方式。 若要解決此錯誤，請使用 `ssh`來手動連線至每個叢集節點。 請執行下列命令來重新安裝正確的儲存體用戶端版本：
+__解決方法__： 若要解決此錯誤，請使用 `ssh`來手動連線至每個叢集節點。 請執行下列命令來重新安裝正確的儲存體用戶端版本：
 
 ```bash
 sudo pip install azure-storage==0.20.0

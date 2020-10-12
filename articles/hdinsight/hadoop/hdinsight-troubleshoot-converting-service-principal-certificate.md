@@ -9,10 +9,10 @@ ms.reviewer: jasonh
 ms.date: 07/31/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 7f4974d9e9a2ff3b63b36e45d406a016078bb290
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89008160"
 ---
 # <a name="converting-service-principal-certificate-contents-to-base-64-encoded-string-format-in-hdinsight"></a>在 HDInsight 中將服務主體憑證內容轉換為 base-64 編碼字串格式
@@ -27,7 +27,7 @@ ms.locfileid: "89008160"
 
 使用 PowerShell 或 Azure 範本部署來建立以主要或其他儲存體 Data Lake 的叢集時，所提供用來存取 Data Lake 儲存體帳戶的服務主體憑證內容是以64為基礎的格式。 不當將 pfx 憑證內容轉換為 base-64 編碼的字串可能會導致此錯誤。
 
-## <a name="resolution"></a>解決方法
+## <a name="resolution"></a>解決方案
 
 當您擁有 pfx 格式的服務主體憑證之後 (請參閱 [這裡](https://github.com/Azure/azure-quickstart-templates/tree/master/201-hdinsight-datalake-store-azure-storage) 以取得) 的範例服務主體建立步驟，請使用下列 PowerShell 命令或 c # 程式碼片段，將憑證內容轉換為64格式。
 

@@ -7,10 +7,10 @@ ms.date: 11/04/2019
 ms.author: v-umha
 ms.custom: has-adal-ref
 ms.openlocfilehash: 271d3c0ca44c500a6fd8ee50ed5f1698e46cd511
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88510261"
 ---
 # <a name="ingest-historical-telemetry-data"></a>內嵌歷程記錄遙測資料
@@ -33,7 +33,7 @@ ms.locfileid: "88510261"
 - 用戶端密碼
 - EventHub 連接字串
 
-遵循下列步驟：
+請遵循下列步驟：
 
 > [!NOTE]
 > 您必須是系統管理員，才能執行下列步驟。
@@ -193,7 +193,7 @@ access_token = token_response.get('access_token')
 以下是您對 FarmBeats Datahub 進行 API 呼叫時，必須指定的最常見要求標頭：
 
 - **Content-type**： application/json
-- **授權**：持有人 <存取權杖>
+- **授權**：持有者 <Access-Token>
 - **Accept**： application/json
 
 ### <a name="input-payload-to-create-metadata"></a>用來建立中繼資料的輸入承載
@@ -274,7 +274,7 @@ SensorModel
 }
 
 ```
-感應器
+Sensor
 
 ```json
 {

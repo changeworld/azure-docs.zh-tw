@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 01/31/2020
 ms.author: cynthn
 ms.openlocfilehash: f774056a8faf40e3796b06718e90cd7da988241c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87284620"
 ---
 # <a name="change-the-availability-set-for-a-vm"></a>變更 VM 的可用性設定組
@@ -20,7 +20,7 @@ ms.locfileid: "87284620"
 
 本文最後一次測試是在 2019 年 2 月 12 日，使用 [Azure Cloud Shell](https://shell.azure.com/powershell) 和 [Az PowerShell 模組](/powershell/azure/install-az-ps) 1.2.0 版進行的。
 
-此範例不會檢查 VM 是否已連接至負載平衡器。 如果您的 VM 已連接至負載平衡器，您將需要更新腳本來處理該案例。 
+此範例不會檢查 VM 是否已連接到負載平衡器。 如果您的 VM 已連結至負載平衡器，您將需要更新腳本來處理該案例。 
 
 
 ## <a name="change-the-availability-set"></a>變更可用性設定組 
@@ -104,6 +104,6 @@ ms.locfileid: "87284620"
        -DisableBginfoExtension
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 透過新增額外 [資料磁碟](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)，將額外的存放裝置新增到您的 VM。

@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 4c8cd4aa3e91c5d69c40e47683818ed8bc9be338
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86249898"
 ---
 # <a name="product-templates-in-azure-api-management"></a>Azure API 管理中的產品範本
@@ -73,13 +73,13 @@ ms.locfileid: "86249898"
 ### <a name="controls"></a>控制項  
  `Product list` 範本可能會使用下列[頁面控制項](api-management-page-controls.md)。  
   
--   [分頁控制](api-management-page-controls.md#paging-control)  
+-   [分頁控制項](api-management-page-controls.md#paging-control)  
   
--   [搜尋-控制項](api-management-page-controls.md#search-control)  
+-   [搜尋控制項](api-management-page-controls.md#search-control)  
   
 ### <a name="data-model"></a>資料模型  
   
-|屬性|類型|描述|  
+|屬性|類型|說明|  
 |--------------|----------|-----------------|  
 |Paging|[分頁](api-management-template-data-model-reference.md#Paging)實體。|產品集合的分頁資訊。|  
 |篩選|[篩選](api-management-template-data-model-reference.md#Filtering)實體。|產品清單頁面的篩選資訊。|  
@@ -123,7 +123,7 @@ ms.locfileid: "86249898"
 }  
 ```  
   
-##  <a name="product"></a><a name="Product"></a>基礎  
+##  <a name="product"></a><a name="Product"></a> 產品  
  **產品**範本可讓您自訂開發人員入口網站的產品頁面主體。  
   
  ![開發人員入口網站產品頁面](./media/api-management-product-templates/APIM_ProductPage.png "APIM_ProductPage")  
@@ -204,11 +204,11 @@ ms.locfileid: "86249898"
   
 ### <a name="data-model"></a>資料模型  
   
-|屬性|類型|描述|  
+|屬性|類型|說明|  
 |--------------|----------|-----------------|  
-|乘積|[產品](api-management-template-data-model-reference.md#Product)|指定的產品。|  
+|產品|[產品](api-management-template-data-model-reference.md#Product)|指定的產品。|  
 |IsDeveloperSubscribed|boolean|目前的使用者是否已訂閱此產品。|  
-|SubscriptionState|number|訂用帳戶的狀態。 可能的狀態為：<br /><br /> -   `0 - suspended` – 訂用帳戶已遭封鎖，而且訂閱者無法呼叫產品的任何 API。<br />-   `1 - active` – 訂用帳戶是作用中狀態。<br />-   `2 - expired` – 訂用帳戶已達到期日，因此已停用。<br />-   `3 - submitted` – 開發人員已提出訂用帳戶要求，但尚未進行核准或拒絕。<br />-   `4 - rejected` – 系統管理員已拒絕訂用帳戶要求。<br />-   `5 - cancelled` – 開發人員或系統管理員已取消訂用帳戶。|  
+|SubscriptionState|數字|訂用帳戶的狀態。 可能的狀態為：<br /><br /> -   `0 - suspended` – 訂用帳戶已遭封鎖，而且訂閱者無法呼叫產品的任何 API。<br />-   `1 - active` – 訂用帳戶是作用中狀態。<br />-   `2 - expired` – 訂用帳戶已達到期日，因此已停用。<br />-   `3 - submitted` – 開發人員已提出訂用帳戶要求，但尚未進行核准或拒絕。<br />-   `4 - rejected` – 系統管理員已拒絕訂用帳戶要求。<br />-   `5 - cancelled` – 開發人員或系統管理員已取消訂用帳戶。|  
 |限制|array|此屬性已過時而不應使用。|  
 |DelegatedSubscriptionEnabled|boolean|此訂用帳戶是否已啟用[委派](./api-management-howto-setup-delegation.md)。|  
 |DelegatedSubscriptionUrl|字串|如果已啟用委派，則是所委派的訂用帳戶 URL。|  
@@ -262,5 +262,5 @@ ms.locfileid: "86249898"
 }  
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 如需有關使用範本的詳細資訊，請參閱[如何使用範本自訂 API 管理開發人員入口網站](api-management-developer-portal-templates.md)。

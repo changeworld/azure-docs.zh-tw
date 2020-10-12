@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 1/22/2020
 ms.author: kumud
 ms.openlocfilehash: 99905e58cbcd9d0a5c5397aee125675a70e799fe
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89657966"
 ---
 # <a name="create-change-or-delete-a-network-interface"></a>建立、變更或刪除網路介面
@@ -113,7 +113,7 @@ DNS 伺服器是由 Azure DHCP 伺服器指派給虛擬機器作業系統內的�
    - **自訂**︰您可以設定自己的 DNS 伺服器，以解析跨多個虛擬網路的名稱。 輸入您要做為 DNS 伺服器之伺服器的 IP 位址。 您指定的 DNS 伺服器位址只會指派給此網路介面，並會覆寫為此網路介面指派的虛擬網路的任何 DNS 設定。
      >[!Note]
      >如果 VM 使用屬於可用性設定組一部分的 NIC，則會繼承所有屬於可用性設定組之 Nic 的 Vm 所指定的所有 DNS 伺服器。
-5. 選取 [儲存]。
+5. 選取 [儲存]****。
 
 **命令**
 
@@ -134,7 +134,7 @@ IP 轉送讓網路介面連接的虛擬機器能夠：
 2. 選取您要啟用或停用 IP 轉送的網路介面。
 3. 選取 [設定]**** 區段中的 [IP 設定]****。
 4. 選取 [已啟用]**** 或 [已停用]**** \(預設設定) 來變更設定。
-5. 選取 [儲存]。
+5. 選取 [儲存]****。
 
 **命令**
 
@@ -152,9 +152,9 @@ IP 轉送讓網路介面連接的虛擬機器能夠：
 3. 選取 [設定]**** 底下的 [IP 設定]****。 如果所列 IP 組態的私人 IP 位址旁邊有 **(靜態)** 字樣，您必須完成下列步驟以將 IP 位址的指派方法變更為動態。 您必須使用動態指派方法來指派所有的私人 IP 位址，以便變更網路介面的子網路指派。 如果您使用動態方法來指派位址，請繼續執行步驟 5。 如果您使用靜態指派方法指派了任何 IPv4 位址，請完成下列步驟來將指派方法變更為動態︰
    - 從 IP 設定清單中，選取您要變更 IPv4 位址指派方法的 IP 設定。
    - 針對私人 IP 位址**指派**方法選取 [動態]****。 您無法使用靜態指派方法指派 IPv6 位址。
-   - 選取 [儲存]。
+   - 選取 [儲存]****。
 4. 從 [子網路]**** 下拉式清單中，選取要將網路介面移至其中的子網路。
-5. 選取 [儲存]。 系統就會從新的子網路位址範圍指派新的動態位址。 在對新的子網路指派網路介面之後，您可以從新的子網路位址範圍指派靜態 IPv4 位址 (如果您做此選擇的話)。 若要深入了解如何為網路介面新增、變更和移除 IP 位址，請參閱[管理 IP 位址](virtual-network-network-interface-addresses.md)。
+5. 選取 [儲存]****。 系統就會從新的子網路位址範圍指派新的動態位址。 在對新的子網路指派網路介面之後，您可以從新的子網路位址範圍指派靜態 IPv4 位址 (如果您做此選擇的話)。 若要深入了解如何為網路介面新增、變更和移除 IP 位址，請參閱[管理 IP 位址](virtual-network-network-interface-addresses.md)。
 
 **命令**
 
@@ -184,7 +184,7 @@ IP 轉送讓網路介面連接的虛擬機器能夠：
 3. 選取 [設定]**** 下的 [網路安全性群組]****。
 4. 選取 [編輯]。
 5. 選取 [網路安全性群組]****，然後選取您要與網路介面建立關聯的網路安全性群組，或是選取 [無]****，以取消與網路安全性群組的關聯。
-6. 選取 [儲存]。
+6. 選取 [儲存]****。
 
 **命令**
 
@@ -267,7 +267,7 @@ Azure 網路監看員的下一個躍點功能，也可協助您判斷路由是�
 | Microsoft.Network/networkInterfaces/serviceAssociations/validate/action    | 驗證服務關聯                              |
 | Microsoft.Network/networkInterfaces/ipconfigurations/read                  | 取得網路介面 IP 設定                    |
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 使用 [Azure CLI](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 或 [PowerShell](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 建立具有多個 NIC 的 VM
 - 使用 [Azure CLI](virtual-network-multiple-ip-addresses-cli.md) 或 [PowerShell](virtual-network-multiple-ip-addresses-powershell.md) 建立具有多個 IPv4 位址的單一 NIC VM

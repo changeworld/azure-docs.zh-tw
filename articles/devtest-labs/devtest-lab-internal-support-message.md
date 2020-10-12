@@ -4,10 +4,10 @@ description: 了解如何將內部支援陳述式張貼到 Azure DevTest Labs �
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 1c9920e6fe7fbfe2a8d0aeacb896150b342981b0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85480468"
 ---
 # <a name="add-an-internal-support-statement-to-a-lab-in-azure-devtest-labs"></a>將內部支援陳述式新增到 Azure DevTest Labs 中的實驗室
@@ -57,6 +57,6 @@ Azure DevTest Labs 可讓您使用為使用者提供實驗室相關支援資訊�
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 * 內部支援陳述式通常用來提供不會經常變更的支援資訊。 您也可以了解如何[將公告張貼到實驗室](devtest-lab-announcements.md)以通知使用者臨時變更或實驗室的更新。
 * [設定原則和排程](devtest-lab-set-lab-policy.md)提供的資訊是關於如何使用自訂的原則，在訂用帳戶內套用其他限制和慣例。

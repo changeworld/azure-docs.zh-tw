@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.openlocfilehash: 76084a9ddd6842194bb4c6b25d62e62c2ed2d4a8
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89660310"
 ---
 # <a name="adjust-the-capacity-of-an-azure-cognitive-search-service"></a>調整 Azure 認知搜尋服務的容量
@@ -36,7 +36,7 @@ ms.locfileid: "89660310"
 
 下圖顯示覆本、磁碟分割、分區和搜尋單位之間的關聯性。 它會顯示一個範例，說明如何在具有兩個複本和兩個數據分割的服務中，跨越四個搜尋單位的單一索引。 這四個搜尋單位的每一個都只會儲存索引的一半分區。 左欄中的搜尋單位會儲存第一半的分區，其中包含第一個資料分割，而右邊資料行中的資料行則是由第二個數據分割組成的分區後半部。 由於有兩個複本，因此每個索引分區都有兩個複本。 頂端資料列中的搜尋單位會儲存一個複本，其中包含第一個複本，而底部資料列中的資料會儲存另一個複本，其中包含第二個複本。
 
-:::image type="content" source="media/search-capacity-planning/shards.png" alt-text="搜尋索引會跨資料分割分區化。":::
+:::image type="content" source="media/search-capacity-planning/shards.png" alt-text="搜尋索引會跨資料分割分區化。&quot;:::
 
 上圖只是一個範例。 有許多分割區和複本的組合可供使用，最多可達36的搜尋單位總數。
 
@@ -44,7 +44,7 @@ ms.locfileid: "89660310"
 
 + 排名異常：先在分區層級計算搜尋分數，然後匯總成單一結果集。 根據分區內容的特性而定，一個分區的相符專案可能會高於另一個的相符專案。 如果您注意到搜尋結果中的圈子排名，最可能的原因是分區化的影響，特別是當索引較小時。 您可以選擇在 [整個索引的全域計算分數](index-similarity-and-scoring.md#scoring-statistics-and-sticky-sessions)，以避免這些排名異常，但是這樣做會導致效能的負面影響。
 
-+ 自動完成異常：自動完成查詢，在部分輸入詞彙的前幾個字元上進行相符專案的情況下，接受模糊參數以 forgives 模糊的微小偏差。 針對自動完成，模糊比對會限制為目前分區內的詞彙。 例如，如果分區包含 "Microsoft" 且輸入了 "micor" 的部分詞彙，則搜尋引擎會比對該分區中的 "Microsoft"，但不會比對剩餘索引部分的其他分區。
++ 自動完成異常：自動完成查詢，在部分輸入詞彙的前幾個字元上進行相符專案的情況下，接受模糊參數以 forgives 模糊的微小偏差。 針對自動完成，模糊比對會限制為目前分區內的詞彙。 例如，如果分區包含 &quot;Microsoft&quot; 且輸入了 &quot;micor" 的部分詞彙，則搜尋引擎會比對該分區中的 "Microsoft"，但不會比對剩餘索引部分的其他分區。
 
 ## <a name="when-to-add-nodes"></a>新增節點的時機
 
@@ -149,7 +149,7 @@ Azure 認知搜尋的服務等級協定 (SLA) 的目標是查詢作業，以及�
 
 索引越大，查詢所需的時間就越長。 這麼一來，您可能會發現每個資料分割中每個累加式的增加在複本中都需要有較小但按比例的增加。 要將查詢執行速度提高到何種程度，需將您的查詢和查詢磁碟區複雜性納入考量。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
 > [選擇 Azure 認知搜尋的定價層](search-sku-tier.md)

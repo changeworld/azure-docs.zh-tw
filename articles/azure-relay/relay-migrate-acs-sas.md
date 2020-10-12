@@ -4,10 +4,10 @@ description: 說明如何使用 Azure Active Directory 存取控制服務，將 
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 3b793173270b0ddf25f0e971dbb2fed97cb10a55
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87532861"
 ---
 # <a name="azure-relay---migrate-from-azure-active-directory-access-control-service-to-shared-access-signature-authorization"></a>Azure 轉送-從 Azure Active Directory 存取控制服務遷移至共用存取簽章授權
@@ -50,7 +50,7 @@ ACS 和轉送會透過*簽署金鑰*的共用知識整合。 ACS 命名空間使
 
 SAS 規則並非要作為帳戶使用，而是與權限相關的具名簽署金鑰。 因此，在應用程式建立許多服務識別，並授與它們對多個實體或整個命名空間之存取權限的情況下，仍然需要權杖發放媒介。 您可以藉由[連絡支援人員](https://azure.microsoft.com/support/options/)取得此類媒介的指引。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 若要深入了解 Azure 轉送驗證，請參閱下列主題：
 

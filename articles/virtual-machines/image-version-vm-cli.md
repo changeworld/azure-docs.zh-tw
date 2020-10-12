@@ -1,6 +1,6 @@
 ---
 title: 從 VM 建立映像
-description: 瞭解如何從 Azure 中的 VM，在共用映射資源庫中建立映射。
+description: 瞭解如何從 Azure 中的 VM 在共用映射庫中建立映射。
 author: cynthn
 ms.service: virtual-machines
 ms.subservice: imaging
@@ -11,24 +11,24 @@ ms.author: cynthn
 ms.reviewer: akjosh
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: fa4a649115f8e89c27f435888b682b7de36e9894
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87533915"
 ---
-# <a name="create-an-image-version-from-a-vm-in-azure-using-the-azure-cli"></a>使用 Azure CLI 在 Azure 中的 VM 建立映射版本
+# <a name="create-an-image-version-from-a-vm-in-azure-using-the-azure-cli"></a>使用 Azure CLI 從 Azure 中的 VM 建立映射版本
 
-如果您有想要用來建立多個相同 Vm 的現有 VM，您可以使用該 VM，在使用 Azure CLI 的共用映射資源庫中建立映射。 您也可以使用[Azure PowerShell](image-version-vm-powershell.md)從 VM 建立映射。
+如果您有想要用來建立多個相同 Vm 的現有 VM，您可以使用該 VM，利用 Azure CLI 在共用映射庫中建立映射。 您也可以使用 [Azure PowerShell](image-version-vm-powershell.md)從 VM 建立映射。
 
-**映射版本**是您在使用共用映射資源庫時用來建立 VM 的內容。 您可以視需要為環境準備多個映像版本。 當您使用映射版本來建立 VM 時，會使用映射版本來建立新 VM 的磁片。 映像版本可以使用多次。
+**映射版本**是您在使用共用映射庫時，用來建立 VM 的版本。 您可以視需要為環境準備多個映像版本。 當您使用映射版本建立 VM 時，映射版本會用來建立新 VM 的磁片。 映像版本可以使用多次。
 
 
 ## <a name="before-you-begin"></a>開始之前
 
-若要完成本文，您必須擁有現有的共用映射資源庫。 
+若要完成這篇文章，您必須有現有的共用映射庫。 
 
-您也必須在 Azure 中有現有的 VM，位於與資源庫相同的區域中。 
+您也必須在 Azure 中有現有的 VM，與您的資源庫位於相同的區域中。 
 
 如果 VM 已連接資料磁片，資料磁片大小不能超過 1 TB。
 
@@ -100,11 +100,11 @@ az sig image-version create \
 > [!NOTE]
 > 您必須等候映像版本完全完成建立和複寫後，才能使用相同的受控映像來建立另一個映像版本。
 >
-> 您也可以藉由新增 `--storage-account-type  premium_lrs` ，或在[Zone Redundant Storage](../storage/common/storage-redundancy.md) `--storage-account-type  standard_zrs` 建立映射版本時新增，以將映射儲存在 Premium 儲存體中。
+> 您也可以在 `--storage-account-type  premium_lrs` 建立映射版本時新增或 [區域多餘的儲存體](../storage/common/storage-redundancy.md) ，藉以將映射儲存在 Premium 儲存體中 `--storage-account-type  standard_zrs` 。
 >
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-使用 Azure CLI，從[一般化映射](vm-generalized-image-version-cli.md)建立 VM。
+使用 Azure CLI 從 [一般化映射](vm-generalized-image-version-cli.md) 建立 VM。
 
-如需有關如何提供採購方案資訊的詳細資訊，請參閱[在建立映射時提供 Azure Marketplace 購買方案資訊](marketplace-images.md)。
+如需有關如何提供採購方案資訊的詳細資訊，請參閱 [在建立映射時提供 Azure Marketplace 採購方案資訊](marketplace-images.md)。

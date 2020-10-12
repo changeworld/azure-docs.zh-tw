@@ -1,7 +1,7 @@
 ---
 title: 針對 Azure 點對站連線問題進行疑難排解
 titleSuffix: Azure VPN Gateway
-description: 瞭解如何疑難排解和解決常見的點對站連線問題，以及其他虛擬私人網路錯誤和問題。
+description: 瞭解如何針對常見的點對站連線問題和其他虛擬私人網路錯誤和問題進行疑難排解並加以解決。
 services: vpn-gateway
 author: chadmath
 ms.service: vpn-gateway
@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 03/26/2020
 ms.author: genli
 ms.openlocfilehash: dbf0d096827ec1af16e6d38d405709e48175ae89
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88035940"
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>疑難排解：Azure 點對站連線問題
@@ -25,7 +25,7 @@ ms.locfileid: "88035940"
 
 當您嘗試使用 VPN 用戶端來連線到 Azure 虛擬網路時，會收到下列錯誤訊息：
 
-**找不到可以搭配此可延伸的驗證通訊協定使用的憑證。 (錯誤 798) **
+**找不到可搭配此可延伸驗證通訊協定使用的憑證。 (錯誤 798) **
 
 ### <a name="cause"></a>原因
 
@@ -44,24 +44,24 @@ ms.locfileid: "88035940"
     | AzureClient.pfx  | 目前的使用者\個人\憑證 |
     | AzureRoot .cer    | 本機電腦\受信任的根憑證授權單位|
 
-3. 移至 C:\Users \<UserName> \AppData\Roaming\Microsoft\Network\Connections\Cm \<GUID> ，以手動方式在使用者和電腦的存放區上安裝憑證 ( * .cer 檔案) 。
+3. 移至 \<UserName> [C:\Users \AppData\Roaming\Microsoft\Network\Connections\Cm]，在 \<GUID> 使用者和電腦的存放區上手動安裝憑證 ( * .cer 檔案) 。
 
 如需如何安裝用戶端憑證的詳細資訊，請參閱[產生並匯出點對站連線的憑證](vpn-gateway-certificates-point-to-site.md)。
 
 > [!NOTE]
 > 匯入用戶端憑證時，請勿選取 [啟用加強私密金鑰保護]**** 選項。
 
-## <a name="the-network-connection-between-your-computer-and-the-vpn-server-could-not-be-established-because-the-remote-server-is-not-responding"></a>因為遠端伺服器沒有回應，所以無法建立電腦與 VPN 伺服器之間的網路連線
+## <a name="the-network-connection-between-your-computer-and-the-vpn-server-could-not-be-established-because-the-remote-server-is-not-responding"></a>因為遠端伺服器沒有回應，所以無法建立您的電腦與 VPN 伺服器之間的網路連線
 
 ### <a name="symptom"></a>徵狀
 
-當您使用 Windows 上的 IKEv2 嘗試並聯機到 Azure 虛擬網路閘道時，您會收到下列錯誤訊息：
+當您嘗試使用 Windows 上的 IKEv2 連接至 Azure 虛擬網路閘道時，您會收到下列錯誤訊息：
 
-**因為遠端伺服器沒有回應，所以無法建立電腦與 VPN 伺服器之間的網路連線**
+**因為遠端伺服器沒有回應，所以無法建立您的電腦與 VPN 伺服器之間的網路連線**
 
 ### <a name="cause"></a>原因
  
- 如果 Windows 版本不支援 IKE 片段，就會發生此問題
+ 如果 Windows 版本沒有 IKE 片段的支援，就會發生此問題
  
 ### <a name="solution"></a>解決方法
 
@@ -78,7 +78,7 @@ Windows 10 和 Server 2016 都支援 IKEv2。 不過，若要使用 IKEv2，您�
    | Windows 10 版本 1709 | 2018 年 3 月 22 日 | [KB4089848](https://www.catalog.update.microsoft.com/search.aspx?q=kb4089848) |
    |  |  |  |  |
 
-2. 設定登錄機碼值。 `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RasMan\ IKEv2\DisableCertReqPayload`在登錄中建立 REG_DWORD 機碼，或將其設為1。
+2. 設定登錄機碼值。 `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RasMan\ IKEv2\DisableCertReqPayload`在登錄中建立 REG_DWORD 機碼，或將它設定為1。
 
 ## <a name="vpn-client-error-the-message-received-was-unexpected-or-badly-formatted"></a>VPN 用戶端錯誤：接收到的訊息超出預期或格式不正確
 
@@ -86,7 +86,7 @@ Windows 10 和 Server 2016 都支援 IKEv2。 不過，若要使用 IKEv2，您�
 
 當您嘗試使用 VPN 用戶端來連線到 Azure 虛擬網路時，會收到下列錯誤訊息：
 
-**收到的訊息不是預期或格式不正確。 (錯誤 0x80090326) **
+**收到的訊息未預期或格式不正確。 (錯誤 0x80090326) **
 
 ### <a name="cause"></a>原因
 
@@ -145,7 +145,7 @@ VPN 閘道類型必須是 **VPN**，且 VPN 類型必須是 **RouteBased**。
 
 當您嘗試使用 VPN 用戶端來連線到 Azure 虛擬網路時，會收到下列錯誤訊息：
 
-** (更新路由表的自訂腳本) 失敗。 (錯誤 8007026f) **
+**自訂腳本 (，以更新您的路由表) 失敗。 (錯誤 8007026f) **
 
 ### <a name="cause"></a>原因
 
@@ -168,8 +168,8 @@ VPN 閘道類型必須是 **VPN**，且 VPN 類型必須是 **RouteBased**。
 1. 開啟 mmc.exe。
 2. 新增 [憑證]**** 嵌入式管理單元。
 3. 選取本機電腦的 [電腦]**** 帳戶。
-4. 以滑鼠右鍵按一下 [受信任的根憑證授權單位]**** 節點。 按一下 [**所有]-**[工作] [匯  >  **入**]，然後流覽至您從 VPN 用戶端設定套件解壓縮的 .cer 檔案。
-5. 重新啟動電腦。 
+4. 以滑鼠右鍵按一下 [受信任的根憑證授權單位]**** 節點。 按一下 [**全部-** 工作匯  >  **入**]，然後流覽至您從 VPN 用戶端設定套件解壓縮的 .cer 檔案。
+5. 將電腦重新開機。 
 6. 嘗試安裝 VPN 用戶端。
 
 ## <a name="azure-portal-error-failed-to-save-the-vpn-gateway-and-the-data-is-invalid"></a>Azure 入口網站錯誤：無法儲存 VPN 閘道且資料無效
@@ -241,7 +241,7 @@ e8Jcej7mzunzyjz4chN0/WVF94MtxbUkLkqP
 
 ### <a name="solution"></a>解決方法
 
-若要解決此問題，請在所有用戶端上重新下載並重新部署點對站套件。
+若要解決此問題，請重新下載並重新部署所有用戶端上的點對站套件。
 
 ## <a name="too-many-vpn-clients-connected-at-once"></a>一次有太多 VPN 用戶端連線
 
@@ -274,7 +274,7 @@ VPN 用戶端已連線到 Azure 虛擬網路。 不過，用戶端無法存取�
 
 ### <a name="solution"></a>解決方法
 
-若要解決此問題，請從**c:\users\username\appdata\roaming\microsoft\network\connections virtualnetworkid> \<VirtualNetworkId> **中刪除舊的 vpn 用戶端設定檔，然後再次執行 vpn 用戶端安裝程式。
+若要解決此問題，請從**C:\Users\UserName\AppData\Roaming\Microsoft\Network\Connections \<VirtualNetworkId> **中刪除舊的 vpn 用戶端設定檔，然後再次執行 vpn 用戶端安裝程式。
 
 ## <a name="point-to-site-vpn-client-cannot-resolve-the-fqdn-of-the-resources-in-the-local-domain"></a>點對站 VPN 用戶端無法解析本機網域中資源的 FQDN
 
@@ -284,7 +284,7 @@ VPN 用戶端已連線到 Azure 虛擬網路。 不過，用戶端無法存取�
 
 ### <a name="cause"></a>原因
 
-點對站 VPN 用戶端通常會使用 Azure 虛擬網路中設定的 Azure DNS 伺服器。 Azure DNS 伺服器的優先順序高於用戶端 (中設定的本機 DNS 伺服器，除非 Ethernet 介面的計量較低) ，因此所有的 DNS 查詢都會傳送到 Azure DNS 伺服器。 如果 Azure DNS 伺服器沒有本機資源的記錄，查詢就會失敗。
+點對站 VPN 用戶端通常會使用在 Azure 虛擬網路中設定 Azure DNS 伺服器。 Azure DNS 伺服器的優先順序高於用戶端 (中設定的本機 DNS 伺服器，除非乙太網路介面的計量較低) ，所以所有的 DNS 查詢都會傳送至 Azure DNS 伺服器。 如果 Azure DNS 伺服器沒有本機資源的記錄，查詢就會失敗。
 
 ### <a name="solution"></a>解決方法
 
@@ -343,16 +343,16 @@ NIC 驅動程式已過時。
 
 ## <a name="vpn-client-error-dialing-vpn-connection-vpn-connection-name-status--vpn-platform-did-not-trigger-connection"></a>VPN 用戶端錯誤：撥號 VPN <VPN Connection Name> 連線，狀態 = VPN 平臺未觸發連接
 
-您也可能會在來自 RasClient 的事件檢視器中看到下列錯誤：「使用者 <User> 撥了名為 <VPN Connection Name> 的連線失敗。 失敗時傳回的錯誤碼為1460。」
+您也可能會在來自 RasClient 的事件檢視器中看到下列錯誤：「使用者 <User> 撥打了名為 <VPN Connection Name> 的連接失敗。 失敗時傳回的錯誤碼為1460。」
 
 ### <a name="cause"></a>原因
 
-在 Windows 的應用程式設定中，Azure VPN 用戶端未啟用「背景應用程式」應用程式許可權。
+Azure VPN Client 不會在 Windows 的應用程式設定中啟用「背景應用程式」應用程式許可權。
 
 ### <a name="solution"></a>解決方法
 
 1. 在 Windows 中，移至 [設定]-> 隱私權-> 背景應用程式
-2. 將「讓應用程式在背景執行」切換為開啟
+2. 將「讓應用程式在背景執行」切換至開啟
 
 ## <a name="error-file-download-error-target-uri-is-not-specified"></a>錯誤：「檔案下載錯誤。未指定目標 URI」
 
@@ -372,7 +372,7 @@ Azure VPN 閘道類型必須是 VPN，且 VPN 類型必須是 **RouteBased**。
 
 ### <a name="solution"></a>解決方法
 
-從**c:\users\username\appdata\roaming\microsoft\network\connections virtualnetworkid> \<VirtualNetworkId> **中刪除舊的 vpn 用戶端設定檔，然後再次執行 vpn 用戶端安裝程式。 
+從**C:\Users\UserName\AppData\Roaming\Microsoft\Network\Connections \<VirtualNetworkId> **中刪除舊的 vpn 用戶端設定檔，然後再次執行 vpn 用戶端安裝程式。 
 
 ## <a name="the-vpn-client-hibernates-or-sleep-after-some-time"></a>VPN 用戶端會在一段時間後休眠或睡眠
 

@@ -1,15 +1,15 @@
 ---
 title: Azure Service Fabric 中的複本和實例
-description: 深入瞭解 Service Fabric 中的複本和實例，包括其生命週期和功能的總覽。
+description: 瞭解 Service Fabric 中的複本和實例，包括其生命週期和功能的總覽。
 author: appi101
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: aprameyr
 ms.openlocfilehash: cf21af43de553a2802289e44eaece12952d077d3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84710740"
 ---
 # <a name="replicas-and-instances"></a>複本和執行個體 
@@ -132,7 +132,7 @@ Service Fabric 會視需要開啟關閉的複本，例如在節點上完成升�
 > 更高階的程式設計模型 (例如 [Reliable Actors](service-fabric-reliable-actors-introduction.md) 和 [Reliable Services](service-fabric-reliable-services-introduction.md)) 會對開發人員隱藏複本角色的概念。 在 Actors 中，角色的概念並非必要。 在 Services 中，大多數的案例均會予以簡化。
 >
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 如需有關 Service Fabric 概念的詳細資訊，請參閱下列文章：
 
 [Reliable Services 生命週期 - C#](service-fabric-reliable-services-lifecycle.md)

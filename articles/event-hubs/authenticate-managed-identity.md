@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 4d606e6cd035d4dae388d8559d100988a46e8203
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89010013"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-event-hubs-resources"></a>使用 Azure Active Directory 來驗證受控識別，以存取事件中樞資源
@@ -39,7 +39,7 @@ Azure 事件中樞支援使用 [適用于 Azure 資源的受控](../active-direc
 
 1. 移至 [ **設定** ]，然後選取 [身分 **識別**]。 
 1. 選取要**開啟**的**狀態**。 
-1. 選取 [儲存]**** 以儲存設定。 
+1. 選取 [儲存]  以儲存設定。 
 
     ![Web 應用程式的受控識別](./media/authenticate-managed-identity/identity-web-app.png)
 
@@ -60,7 +60,7 @@ Azure 事件中樞支援使用 [適用于 Azure 資源的受控](../active-direc
 4.  在 [ **新增角色指派** ] 頁面上，選取您要指派的事件中樞角色。 然後搜尋以找出您已註冊的服務身分識別，以指派角色。
     
     ![[新增角色指派] 頁面](./media/authenticate-managed-identity/add-role-assignment-page.png)
-5.  選取 [儲存]  。 您對其指派角色的身分識別會出現在該角色下方。 例如，下圖顯示服務識別有事件中樞資料擁有者。
+5.  選取 [儲存]****。 您對其指派角色的身分識別會出現在該角色下方。 例如，下圖顯示服務識別有事件中樞資料擁有者。
     
     ![指派給角色的身分識別](./media/authenticate-managed-identity/role-assigned.png)
 

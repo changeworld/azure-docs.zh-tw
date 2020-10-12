@@ -1,6 +1,6 @@
 ---
 title: B2B 案例中常見錯誤和問題的解決方案
-description: 針對 Azure Logic Apps 中的 B2B 案例進行疑難排解時，尋找常見錯誤和問題的解決方案
+description: 在 Azure Logic Apps 中針對 B2B 案例進行疑難排解時，尋找常見錯誤和問題的解決方案
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 06/02/2017
 ms.openlocfilehash: 6400cfe7e524dcc16e08c2bba7dfba4a62d00b2e
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86232554"
 ---
 # <a name="b2b-errors-and-solutions-for-azure-logic-apps"></a>Azure Logic Apps 的 B2B 錯誤與解決方案
@@ -23,15 +23,15 @@ ms.locfileid: "86232554"
 
 ### <a name="no-agreement-found"></a>找不到合約 
 
-**錯誤描述**：找不到合約解析參數的合約。
+**錯誤描述**：找不到具有合約解析參數的合約。
 
-**使用者動作**：合約應新增至具有已同意商務身分識別的整合帳戶。 商務識別應與輸入訊息識別碼相符。
+**使用者動作**：合約應新增至具有同意之商務身分識別的整合帳戶。 商務識別應與輸入訊息識別碼相符。
 
 ### <a name="no-agreement-found-with-identities"></a>找不到具有識別身分的合約
 
-**錯誤描述**：找不到具有身分識別的合約： ' AS2Identity '：： ' Partner1 ' and'AS2Identity '：： ' Partner3 '
+**錯誤描述**：找不到識別碼為 ' AS2Identity '：： ' Partner1 ' and'AS2Identity '：： ' Partner3 ' 的合約
 
-**使用者動作**：對協定設定的 as2 來源或 as2 無效。 以合約組態更正 AS2 訊息 "AS2-From" 或 "AS2-To" 標題或合約，以符合 AS2 訊息標題中的 AS2 識別碼。
+**使用者動作**：為協定設定的 AS2-From 或 AS2-To 無效。 以合約組態更正 AS2 訊息 "AS2-From" 或 "AS2-To" 標題或合約，以符合 AS2 訊息標題中的 AS2 識別碼。
 
 ## <a name="as2"></a>AS2
 
@@ -39,7 +39,7 @@ ms.locfileid: "86232554"
 
 **錯誤描述**：不正確 AS2 標頭。 "AS2-To" 或 "AS2-From" 其中一個標題為空白。
 
-**使用者動作**：收到的 as2 訊息不包含 as2 FROM 或 as2 To 或 both 標頭。 檢查 AS2 訊息 AS2-From 和 AS2-To 標題，並根據合約組態進行更正。
+**使用者動作**：收到的 AS2 訊息不包含 AS2-From 或 AS2-To 或兩個標頭。 檢查 AS2 訊息 AS2-From 和 AS2-To 標題，並根據合約組態進行更正。
 
 ### <a name="missing-as2-message-body-and-headers"></a>遺漏 AS2 訊息本文和標題    
 
@@ -51,7 +51,7 @@ ms.locfileid: "86232554"
 
 **錯誤描述**： [已處理/錯誤：解密-失敗]
 
-**使用者動作**： @base64ToBinary 在傳送至夥伴之前新增至 AS2Message。
+**使用者動作**： @base64ToBinary 在傳送給夥伴之前，加入至新增 as2message。
 
 例如：
 
@@ -69,7 +69,7 @@ ms.locfileid: "86232554"
 
 **錯誤描述**： [已處理/錯誤：解密-失敗]
 
-**使用者動作**： @base64ToBinary 在傳送至夥伴之前新增至 MDN。
+**使用者動作**： @base64ToBinary 在傳送給夥伴之前新增至 MDN。
 
 例如：
 
@@ -86,15 +86,15 @@ ms.locfileid: "86232554"
 
 **錯誤描述**：尚未設定 AS2 合作物件的簽署憑證。 AS2-From：partner1 AS2-To：partner2
 
-**使用者動作**：使用正確的簽章憑證來設定 AS2 合約設定。
+**使用者動作**：使用正確的簽章憑證設定 AS2 合約設定。
 
 ## <a name="x12-and-edifact"></a>X12 和 EDIFACT
 
 ### <a name="leading-or-trailing-space-found"></a>發現前置或尾端空格    
 
-**錯誤描述**：剖析期間發生錯誤。 包含在交換 (中識別碼為 ' 123456 ' 的 EDIFACT 交易集，987654) 但其傳送者識別碼為 ' Partner1 '，接收者識別碼為 ' Partner2 '，因為發生下列錯誤：「找到開頭的尾端分隔符號」
+**錯誤描述**：剖析期間發生錯誤。 交換中包含識別碼為 ' 123456 ' 的 EDIFACT 交易集 (沒有識別碼為 ' 987654 ' 的群組) ，其傳送者識別碼為 ' Partner1 '，接收者識別碼為 ' Partner2 '，因為發生下列錯誤：「找到開頭的尾端分隔符號」
 
-**使用者動作**：要設定為允許前置和尾端空格的合約設定。 編輯合約設定，以允許前置和尾端空格。
+**使用者動作**：要設定以允許前置和尾端空格的合約設定。 編輯合約設定，以允許前置和尾端空格。
 
 ![允許空格](./media/logic-apps-enterprise-integration-b2b-list-errors-solutions/leadingandtrailing.png)
 
@@ -106,13 +106,13 @@ ms.locfileid: "86232554"
 
 ### <a name="missing-schema-in-the-agreement"></a>合約中遺漏結構描述
 
-**錯誤描述**：剖析期間發生錯誤。 包含在識別碼 ' 56422 ' 的功能群組中識別碼為 ' 564220001 ' 的 X12 交易集000056422，其傳送者識別碼為 ' 12345678 '，接收者識別碼為 ' 87654321 '，但發生下列錯誤：「訊息具有未知的檔案類型，且未解析為合約中設定的任何現有架構」
+**錯誤描述**：剖析期間發生錯誤。 識別碼為 ' 564220001 ' 的 X12 交易集包含在識別碼為 ' 56422 ' 的功能群組中，其識別碼為 ' 000056422 '，且傳送者識別碼為 ' 12345678 '，接收者識別碼為 ' '，接收者識別碼為 ' 87654321 '，但發生下列錯誤：「訊息有未知的檔案類型，未解析為合約中設定的任何現有架構」
 
-**使用者動作**：在合約設定中設定架構。
+**使用者動作**：設定合約設定中的架構。
 
 ### <a name="incorrect-schema-in-the-agreement"></a>合約中不正確的結構描述
 
-**錯誤描述**：訊息具有未知的檔案類型，且未解析為合約中設定的任何現有架構。
+**錯誤描述**：訊息有未知的檔案類型，而且未解析為合約中設定的任何現有架構。
 
 **使用者動作**：在合約設定中設定正確的架構。
 

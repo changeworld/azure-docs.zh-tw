@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: damendo
 ms.openlocfilehash: cae3072a3468b232e95d7c1949948b71059695ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84708938"
 ---
 # <a name="introduction-to-connection-troubleshoot-in-azure-network-watcher"></a>Azure 網路監看員中連線疑難排解的簡介
@@ -72,7 +72,7 @@ ms.locfileid: "84708938"
 
 連線疑難排解傳回連線的相關錯誤類型。 下表提供一份目前傳回錯誤類型的清單。
 
-|類型  |Description  |
+|類型  |說明  |
 |---------|---------|
 |CPU     | 高 CPU 使用率。       |
 |Memory     | 高記憶體使用率。       |
@@ -81,6 +81,6 @@ ms.locfileid: "84708938"
 |NetworkSecurityRule    | NSG 規則封鎖流量 (傳回規則)        |
 |UserDefinedRoute|因為使用者定義或系統路由而卸除流量。 |
 
-### <a name="next-steps"></a>後續步驟
+### <a name="next-steps"></a>接下來的步驟
 
 了解如何使用 [Azure 入口網站](network-watcher-connectivity-portal.md)、[PowerShell](network-watcher-connectivity-powershell.md)、[Azure CLI](network-watcher-connectivity-cli.md) 或 [REST API](network-watcher-connectivity-rest.md) 進行連線疑難排解。
