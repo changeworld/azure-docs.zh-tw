@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
 ms.openlocfilehash: 3747033fcaf65e0c6da07e9f1bb625771958bb4f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91319056"
 ---
 # <a name="create-a-custom-voice"></a>建立自訂語音
@@ -117,7 +117,7 @@ ms.locfileid: "91319056"
     > [!NOTE]
     > 您的文字語言必須與聲音音調語言相同。 只有成功定型的模型可以進行測試。 此步驟只支援純文字。
 
-5.  按一下頁面底部的 [新增] 。
+5.  按一下 [建立]。
 
 提交您的測試要求後，您會返回測試頁面。 資料表中現在包含與新的要求對應的項目，以及狀態資料行。 合成語音可能需要幾分鐘的時間。 當 [狀態] 欄顯示 [ **成功**] 時，您可以播放音訊，或下載文字輸入 (.txt 檔案) 和音訊輸出 (.wav 檔) ，並進一步 audition 後者的品質。
 

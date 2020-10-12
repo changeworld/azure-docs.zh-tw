@@ -15,16 +15,16 @@ ms.reviewer: jroth
 manager: jroth
 ms.custom: seo-lt-2019
 ms.openlocfilehash: d632d078db55696dad7bb05e72368b13610b5978
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87091414"
 ---
 # <a name="enable-transparent-data-encryption-tde-for-stretch-database-on-azure"></a>為 Azure 上的 Stretch Database 啟用透明資料加密 (TDE)
 > [!div class="op_single_selector"]
 > * [Azure 入口網站](sql-server-stretch-database-encryption-tde.md)
-> * [T Q](sql-server-stretch-database-tde-tsql.md)
+> * [TSQL](sql-server-stretch-database-tde-tsql.md)
 >
 >
 
@@ -35,16 +35,16 @@ TDE 會使用稱為資料庫加密金鑰的對稱金鑰來加密整個資料庫�
 ## <a name="enabling-encryption"></a>啟用加密
 若要為 Azure 資料庫 (儲存從已啟用 Stretch 之 SQL Server 料庫移轉的資料) 啟用 TDE，請執行下列步驟：
 
-1. 在 [ [Azure 入口網站](https://portal.azure.com)中開啟資料庫
+1. 在[Azure 入口網站](https://portal.azure.com)中開啟資料庫
 2. 在資料庫刀鋒視窗中，按一下 [設定] **** 按鈕
-3. 選取 [Azure 入口網站的 [**透明資料加密**] 選項 ![ 螢幕擷取畫面，並顯示 [設定] 分頁。 在 [一般] 區段中，會反白顯示 [透明資料加密]。][1]
+3. 選取 Azure 入口網站的 **透明資料加密** 選項 ![ 螢幕擷取畫面，並顯示 [設定] 分頁。 在 [一般] 區段中，會反白顯示 [透明資料加密]。][1]
 4. 選取 [**開啟**] 設定，然後選取 [**儲存** 
-    ![ Azure 入口網站的螢幕擷取畫面，並顯示 [透明資料加密] 分頁。 已開啟資料加密，並反白顯示 [儲存] 按鈕。][2]
+    ![ Azure 入口網站的螢幕擷取畫面，並顯示透明資料加密分頁。 資料加密已開啟，且 [儲存] 按鈕已反白顯示。][2]
 
 ## <a name="disabling-encryption"></a>停用加密
 若要為 Azure 資料庫 (儲存從已啟用 Stretch 之 SQL Server 料庫移轉的資料) 停用 TDE，請執行下列步驟：
 
-1. 在 [ [Azure 入口網站](https://portal.azure.com)中開啟資料庫
+1. 在[Azure 入口網站](https://portal.azure.com)中開啟資料庫
 2. 在資料庫刀鋒視窗中，按一下 [設定] **** 按鈕
 3. 選取 [透明資料加密] **** 選項 
 4. 選取 [關閉]**** 設定，然後選取 [儲存]****

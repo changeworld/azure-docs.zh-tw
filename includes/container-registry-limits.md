@@ -9,17 +9,17 @@ ms.date: 06/18/2020
 ms.author: danlep
 ms.custom: include file
 ms.openlocfilehash: 3f68ca0fc577e6cf3f896ede0418f11f59756701
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
-ms.translationtype: MT
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86512603"
 ---
 | 資源 | 基本 | 標準 | Premium |
 |---|---|---|---|
-| 內含儲存體<sup>1</sup> （GiB） | 10 | 100 | 500 |
-| 儲存體限制（TiB） | 20| 20 | 20 |
-| 影像圖層大小上限（GiB） | 200 | 200 | 200 |
+| 包含的儲存體<sup>1</sup> (GiB) | 10 | 100 | 500 |
+| 儲存體限制 (TiB) | 20| 20 | 20 |
+| 映像層大小上限 (GiB) | 200 | 200 | 200 |
 | 每分鐘的 ReadOps<sup>2, 3</sup> | 1,000 | 3,000 | 10,000 |
 | 每分鐘的 WriteOps<sup>2, 4</sup> | 100 | 500 | 2,000 |
 | 下載頻寬 Mbps<sup>2</sup> | 30 | 60 | 100 |
@@ -28,16 +28,16 @@ ms.locfileid: "86512603"
 | 異地複寫 | N/A | N/A | [支援][geo-replication] |
 | 內容信任 | N/A | N/A | [支援][content-trust] |
 | 具有私人端點的私人連結 | N/A | N/A | [支援][plink] |
-| &bull;私人端點 | N/A | N/A | 10 |
+| &bull; 私人端點 | N/A | N/A | 10 |
 | 服務端點 VNet 存取 | N/A | N/A | [預覽][vnet] |
 | 客戶管理的金鑰 | N/A | N/A | [支援][cmk] |
 | 存放庫範圍的權限 | N/A | N/A | [預覽][token]|
 | &bull; 權杖 | N/A | N/A | 20,000 |
-| &bull; 範圍對應 | 不適用 | 不適用 | 20,000 |
+| &bull; 範圍對應 | N/A | N/A | 20,000 |
 | &bull; 每個範圍對應的存放庫 | N/A | N/A | 500 |
 
 
-每一層的每日費率包含<sup>1</sup>個儲存體。 針對其他儲存體，您需支付每個 GiB 的額外每日費率，最高可達儲存體限制。 如需費率資訊，請參閱 [Azure Container Registry 定價][pricing]。
+<sup>1</sup> 每一層的每日費率包含的儲存體。 對於其他儲存體，您需支付每個 GiB 的額外每日費率，最高可達儲存體限制。 如需費率資訊，請參閱 [Azure Container Registry 定價][pricing]。
 
 <sup>2</sup>*ReadOps*、*WriteOps* 和「頻寬」是最小預估值。 Azure Container Registry 致力於改善需要使用時的效能。
 

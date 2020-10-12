@@ -7,10 +7,10 @@ ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 09/24/2020
 ms.openlocfilehash: 5df596560e97ea9dba38dca4d4ca58e38caabd37
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91333948"
 ---
 # <a name="set-up-azure-monitor-logs-and-collect-diagnostics-data-for-azure-logic-apps"></a>設定 Azure 監視器記錄，並收集 Azure Logic Apps 的診斷資料
@@ -21,7 +21,7 @@ ms.locfileid: "91333948"
 
 本文說明如何在新的邏輯應用程式和現有的邏輯應用程式上啟用 Log Analytics、如何安裝及設定 Logic Apps 管理解決方案，以及如何設定和建立 Azure 監視器記錄的查詢。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 開始之前，您需要 [Log Analytics 工作區](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace)。 如果您沒有工作區，請瞭解 [如何建立 Log Analytics 工作區](../azure-monitor/learn/quick-create-workspace.md)。
 

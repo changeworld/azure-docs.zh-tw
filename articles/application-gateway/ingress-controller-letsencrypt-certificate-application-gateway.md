@@ -1,6 +1,6 @@
 ---
 title: 搭配應用程式閘道使用 LetsEncrypt.org 憑證
-description: 本文提供有關如何從 LetsEncrypt.org 取得憑證，並在您的應用程式閘道上用於 AKS 叢集的資訊。
+description: 本文提供有關如何從 LetsEncrypt.org 取得憑證，並在適用于 AKS 叢集的應用程式閘道上使用憑證的資訊。
 services: application-gateway
 author: caya
 ms.service: application-gateway
@@ -8,25 +8,25 @@ ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: df8722e8160538daa1535711092790dbb2405097
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84807024"
 ---
 # <a name="use-certificates-with-letsencryptorg-on-application-gateway-for-aks-clusters"></a>在 AKS 叢集的應用程式閘道上搭配 LetsEncrypt.org 使用憑證
 
-本節會將您的 AKS 設定為利用[LetsEncrypt.org](https://letsencrypt.org/) ，並自動為您的網域取得 TLS/SSL 憑證。 憑證會安裝在應用程式閘道上，這會針對您的 AKS 叢集執行 SSL/TLS 終止。 此處所述的安裝程式使用[cert-manager](https://github.com/jetstack/cert-manager) Kubernetes 附加元件，可將憑證的建立和管理自動化。
+此區段會將您的 AKS 設定為利用 [LetsEncrypt.org](https://letsencrypt.org/) ，並自動取得您網域的 TLS/SSL 憑證。 憑證將會安裝在應用程式閘道上，這會對您的 AKS 叢集執行 SSL/TLS 終止。 此處所述的設定使用 [cert 管理員](https://github.com/jetstack/cert-manager) Kubernetes 附加元件，可自動建立及管理憑證。
 
-請遵循下列步驟，在現有的 AKS 叢集上安裝[cert manager](https://docs.cert-manager.io) 。
+請遵循下列步驟，在您現有的 AKS 叢集上安裝 [cert manager](https://docs.cert-manager.io) 。
 
-1. Helm 圖表
+1. Helm 圖
 
-    執行下列腳本來安裝 `cert-manager` helm 圖表。 這將會：
+    執行下列腳本來安裝 `cert-manager` helm 圖。 這將會：
 
-    - `cert-manager`在您的 AKS 上建立新的命名空間
+    - `cert-manager`在 AKS 上建立新的命名空間
     - 建立下列 CRDs：憑證、挑戰、ClusterIssuer、簽發者、訂單
-    - 安裝 cert-manager 圖表（來自[docs.cert-manager.io）](https://docs.cert-manager.io/en/latest/getting-started/install/kubernetes.html#steps)
+    - 從[docs.cert-manager.io) ](https://docs.cert-manager.io/en/latest/getting-started/install/kubernetes.html#steps)安裝 cert manager 圖表 (
 
     ```bash
     #!/bin/bash
@@ -56,11 +56,11 @@ ms.locfileid: "84807024"
 
 2. ClusterIssuer 資源
 
-    建立 `ClusterIssuer` 資源。 需要此項 `cert-manager` 才能代表 `Lets Encrypt` 將取得已簽署憑證的憑證授權單位單位。
+    建立 `ClusterIssuer` 資源。 這是必要的， `cert-manager` 代表 `Lets Encrypt` 將取得已簽署憑證的憑證授權單位單位。
 
-    藉由使用非命名空間 `ClusterIssuer` 資源，cert manager 會發行可從多個命名空間取用的憑證。 `Let’s Encrypt`會使用 ACME 通訊協定來驗證您是否控制了指定的功能變數名稱，併發出憑證給您。 這裡有更多關於設定屬性的詳細資料 `ClusterIssuer` 。 [here](https://docs.cert-manager.io/en/latest/tasks/issuers/index.html) `ClusterIssuer`會指示 `cert-manager` 使用 `Lets Encrypt` 用於測試的預備環境（不存在於瀏覽器/用戶端信任存放區中的根憑證）來頒發證書。
+    Cert 管理員會使用非命名空間的 `ClusterIssuer` 資源，發出可從多個命名空間取用的憑證。 `Let’s Encrypt` 使用 ACME 通訊協定來驗證您是否控制指定的功能變數名稱，併發出憑證給您。 在這裡設定屬性的詳細資料 `ClusterIssuer` 。 [here](https://docs.cert-manager.io/en/latest/tasks/issuers/index.html) `ClusterIssuer` 會指示 `cert-manager` 使用 `Lets Encrypt` 用於測試的預備環境來發出憑證 () 的瀏覽器/用戶端信任存放區中不會有根憑證。
 
-    下列 YAML 中的預設挑戰類型為 `http01` 。 其他挑戰記載于[letsencrypt.org-挑戰類型](https://letsencrypt.org/docs/challenge-types/)
+    下列 YAML 中的預設挑戰類型為 `http01` 。 其他挑戰記載于 [letsencrypt.org-挑戰類型](https://letsencrypt.org/docs/challenge-types/)
 
     > [!IMPORTANT] 
     > `<YOUR.EMAIL@ADDRESS>`下列 YAML 中的更新
@@ -95,13 +95,13 @@ ms.locfileid: "84807024"
 
 3. 部署應用程式
 
-    建立輸入資源，以 `guestbook` 使用應用程式閘道搭配「讓加密憑證」來公開應用程式。
+    `guestbook`使用「讓加密憑證」的應用程式閘道，建立輸入資源來公開應用程式。
 
-    請確定您應用程式閘道具有具有 DNS 名稱（使用預設 `azure.com` 網域或布建 `Azure DNS Zone` 服務，並指派您自己的自訂網域）的公用前端 IP 設定。
-    請注意批註 `certmanager.k8s.io/cluster-issuer: letsencrypt-staging` ，它會告知 cert 管理員處理標記的輸入資源。
+    確定您的應用程式閘道具有具有 DNS 名稱的公用前端 IP 設定 (使用預設 `azure.com` 網域或布建 `Azure DNS Zone` 服務，並將您自己的自訂網域) 。
+    請注意注釋 `certmanager.k8s.io/cluster-issuer: letsencrypt-staging` ，這會告知 cert 管理員處理已標記的輸入資源。
 
     > [!IMPORTANT] 
-    > `<PLACEHOLDERS.COM>`在下列 YAML 中，使用您自己的網域（或應用程式閘道一個，例如 ' kh-aks-ingress.westeurope.cloudapp.azure.com '）更新
+    > `<PLACEHOLDERS.COM>`使用您自己的網域 (或應用程式閘道（例如 ' kh-aks-ingress.westeurope.cloudapp.azure.com '），在下列 YAML 中進行更新 ) 
 
     ```bash
     kubectl apply -f - <<EOF
@@ -127,15 +127,15 @@ ms.locfileid: "84807024"
     EOF
     ```
 
-    幾秒鐘之後，您就可以 `guestbook` 使用自動發行的**暫存**憑證，透過應用程式閘道 HTTPS url 來存取服務 `Lets Encrypt` 。
-    您的瀏覽器可能會警告您有不正確憑證授權單位單位。 暫存憑證是由所發行 `CN=Fake LE Intermediate X1` 。 這表示系統已如預期般運作，而且您已準備好使用您的生產環境憑證。
+    幾秒鐘之後，您就可以 `guestbook` 使用自動發行的 **臨時**憑證，透過應用程式閘道 HTTPS url 來存取服務 `Lets Encrypt` 。
+    您的瀏覽器可能會警告您不正確憑證授權單位單位。 暫存憑證是由發出 `CN=Fake LE Intermediate X1` 。 這表示系統會如預期般運作，而且您已準備好使用您的生產環境憑證。
 
 4. 生產憑證
 
-    一旦成功設定您的暫存憑證，您就可以切換到生產的 ACME 伺服器：
-    1. 將輸入資源上的預備註釋取代為：`certmanager.k8s.io/cluster-issuer: letsencrypt-prod`
-    1. 刪除 `ClusterIssuer` 您在上一個步驟中建立的現有暫存，並藉由將 CLUSTERISSUER YAML 中的 ACME 伺服器取代為，以建立新的預備環境`https://acme-v02.api.letsencrypt.org/directory`
+    一旦您的預備憑證設定成功，您就可以切換到生產的 ACME 伺服器：
+    1. 以下列內容取代輸入資源上的預備註釋： `certmanager.k8s.io/cluster-issuer: letsencrypt-prod`
+    1. 將 `ClusterIssuer` 您在上一個步驟中建立的現有暫存刪除，並從上述的 CLUSTERISSUER YAML 取代 ACME 伺服器，以建立新的暫存。 `https://acme-v02.api.letsencrypt.org/directory`
 
 5. 憑證到期和更新
 
-    `Lets Encrypt`憑證過期之前， `cert-manager` 會自動更新 Kubernetes 秘密存放區中的憑證。 此時，應用程式閘道輸入控制器會套用用來設定應用程式閘道的輸入資源中所參考的更新密碼。
+    `Lets Encrypt`憑證到期之前， `cert-manager` 會自動更新 Kubernetes 秘密存放區中的憑證。 在該時間點，應用程式閘道輸入控制器會套用其用來設定應用程式閘道之輸入資源中所參考的更新秘密。

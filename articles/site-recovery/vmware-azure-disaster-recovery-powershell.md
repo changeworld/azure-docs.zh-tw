@@ -8,10 +8,10 @@ ms.date: 01/10/2020
 ms.topic: conceptual
 ms.author: sutalasi
 ms.openlocfilehash: de25a3f9df04b09a7337dc889a688a171d98db28
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86129917"
 ---
 # <a name="set-up-disaster-recovery-of-vmware-vms-to-azure-with-powershell"></a>使用 PowerShell 設定 VMware VM 至 Azure 的災害復原
@@ -25,28 +25,28 @@ ms.locfileid: "86129917"
 > - 驗證保存庫中的伺服器註冊。
 > - 設定複寫，包括複寫原則。 新增 vCenter 伺服器並探索 VM。
 > - 新增 vCenter 伺服器並探索
-> - 建立儲存體帳戶以保存複寫記錄或資料，並複寫 Vm。
+> - 建立儲存體帳戶來保存複寫記錄或資料，並複寫 Vm。
 > - 執行容錯移轉。 設定容錯移轉設定，執行複寫虛擬機器的設定。
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 在開始之前：
 
 - 請確定您了解[情節架構和元件](vmware-azure-architecture.md)。
-- 請參閱所有元件的[支援需求](./vmware-physical-azure-support-matrix.md)。
-- 您有 Azure PowerShell `Az` 模組。 如果您需要安裝或升級 Azure PowerShell，請按照此[安裝和設定 Azure PowerShell 指南](/powershell/azure/install-az-ps)的說明。
+- 檢閱所有元件的[支援需求](./vmware-physical-azure-support-matrix.md)。
+- 您有 Azure PowerShell `Az`  模組。 如果您需要安裝或升級 Azure PowerShell，請按照此[安裝和設定 Azure PowerShell 指南](/powershell/azure/install-az-ps)的說明。
 
 ## <a name="log-into-azure"></a>登入 Azure
 
-使用 Disconnect-azaccount Cmdlet 登入您的 Azure 訂用帳戶：
+使用 Connect-AzAccount Cmdlet 登入您的 Azure 訂用帳戶：
 
 ```azurepowershell
 Connect-AzAccount
 ```
-選取作為 VMware 虛擬機器複寫目的地的 Azure 訂用帳戶。 使用 Get-azsubscription Cmdlet 來取得您有權存取的 Azure 訂用帳戶清單。 使用 Get-azsubscription 指令，選取要使用的 Azure 訂用帳戶。
+選取作為 VMware 虛擬機器複寫目的地的 Azure 訂用帳戶。 使用 Get-AzSubscription Cmdlet 來取得您有權存取的 Azure 訂用帳戶清單。 使用 Select-AzSubscription Cmdlet 來選取要使用的 Azure 訂用帳戶。
 
 ```azurepowershell
 Select-AzSubscription -SubscriptionName "ASR Test Subscription"
@@ -105,7 +105,7 @@ Select-AzSubscription -SubscriptionName "ASR Test Subscription"
 使用 Set-ASRVaultContext Cmdlet 設定保存庫內容。 設定後，會在所選保存庫的內容中執行 PowerShell 工作階段中的後續 Azure Site Recovery 作業。
 
 > [!TIP]
-> Azure Site Recovery PowerShell 模組（Az. Azurerm.recoveryservices 模組）為大部分的 Cmdlet 提供容易使用的別名。 模組中的 Cmdlet 採用表單* \<Operation> - **AzRecoveryServicesAsr** \<Object> * ，並具有採用* \<Operation> - **ASR** \<Object> *格式的對等別名。 您可以取代 Cmdlet 別名以方便使用。
+> Azure Site Recovery PowerShell 模組 (Az. Az.recoveryservices 模組) 針對大部分的 Cmdlet 都有容易使用的別名。 模組中的 Cmdlet 採用* \<Operation> - **AzRecoveryServicesAsr** \<Object> *形式，並擁有採用* \<Operation> - **ASR** \<Object> *格式的相等別名。 您可以取代 Cmdlet 別名以方便使用。
 
 在下列範例中，來自 $vault 變數的保存庫詳細資料用於指定 PowerShell 工作階段的保存庫內容。
 
@@ -118,7 +118,7 @@ Select-AzSubscription -SubscriptionName "ASR Test Subscription"
    VMwareDRToAzurePs VMwareDRToAzurePs Microsoft.RecoveryServices vaults
    ```
 
-除了 ASRVaultCoNtext 指令程式以外，您也可以使用 AzRecoveryServicesAsrVaultSettingsFile Cmdlet 來設定保存庫內容。 指定保存庫註冊金鑰檔案所在的路徑，做為 AzRecoveryServicesAsrVaultSettingsFile Cmdlet 的-path 參數。 例如：
+另一種方法是 Set-ASRVaultContext Cmdlet，也可以使用 Import-AzRecoveryServicesAsrVaultSettingsFile Cmdlet 來設定保存庫內容。 指定保存庫註冊金鑰檔案所在的路徑，做為 Import-AzRecoveryServicesAsrVaultSettingsFile Cmdlet 的-path 參數。 例如：
 
    ```azurepowershell
    Get-AzRecoveryServicesVaultSettingsFile -SiteRecovery -Vault $Vault -Path "C:\Work\"
@@ -316,9 +316,9 @@ Errors           : {}
 
 ## <a name="create-storage-accounts-for-replication"></a>建立用於複寫的儲存體帳戶
 
-**若要寫入受控磁片，請使用[Powershell Az. azurerm.recoveryservices module 2.0.0](https://www.powershellgallery.com/packages/Az.RecoveryServices/2.0.0-preview) 。** 它只需要建立記錄儲存體帳戶。 建議使用標準帳戶類型並 LRS 冗余，因為它是用來只儲存臨時記錄。 請確定儲存體帳戶建立在與保存庫相同的 Azure 區域中。
+**若要寫入受控磁片，請使用 [Powershell Az. az.recoveryservices module 2.0.0](https://www.powershellgallery.com/packages/Az.RecoveryServices/2.0.0-preview) 。** 它只需要建立記錄儲存體帳戶。 建議使用標準帳戶類型和 LRS 冗余，因為它只會用來儲存暫存記錄。 確定儲存體帳戶是在與保存庫相同的 Azure 區域中建立。
 
-如果您使用的 Azurerm.recoveryservices 模組版本早于2.0.0，請使用下列步驟來建立儲存體帳戶。 稍後會建立這些儲存體帳戶來複寫虛擬機器。 確定已在保存庫所在的同一個 Azure 區域中建立儲存體帳戶。 如果您計畫使用現有的儲存體帳戶進行複寫，您可以略過此步驟。
+如果您使用的 Az.recoveryservices 模組版本早于2.0.0，請使用下列步驟來建立儲存體帳戶。 稍後會建立這些儲存體帳戶來複寫虛擬機器。 確定已在保存庫所在的同一個 Azure 區域中建立儲存體帳戶。 如果您計畫使用現有的儲存體帳戶進行複寫，您可以略過此步驟。
 
 > [!NOTE]
 > 將內部部署虛擬機器複寫至進階儲存體帳戶時，您需要指定額外的標準儲存體帳戶 (記錄檔儲存體帳戶)。 記錄儲存體帳戶將保留複寫記錄做為中繼存放區，直到可在進階儲存體目標上套用記錄為止。
@@ -340,8 +340,8 @@ $ReplicationStdStorageAccount= New-AzStorageAccount -ResourceGroupName "VMwareDR
 您需要下列詳細資料，才能保護探索到的虛擬機器：
 
 * 將複寫的可保護項目。
-* 要複寫虛擬機器的儲存體帳戶（僅限複寫至儲存體帳戶時）。 
-* 需要記錄儲存體，才能保護虛擬機器對 premium 儲存體帳戶或受控磁片。
+* 只有當您要複寫至儲存體帳戶) 時，才會將虛擬機器複寫到 (的儲存體帳戶。 
+* 需要有記錄儲存體，才能將虛擬機器保護至 premium 儲存體帳戶或受控磁片。
 * 將用於複寫的處理序伺服器。 已擷取可用處理序伺服器的清單，並儲存於 ***$ProcessServers[0]***  *(ScaleOut-ProcessServer)* 和 ***$ProcessServers[1]*** *(ConfigurationServer)* 變數中。
 * 用於將行動服務軟體推入安裝於機器的帳戶。 已擷取可用帳戶清單，並儲存於 ***$AccountHandles*** 變數中。
 * 對於複寫所用的複寫原則使用的保護容器對應。
@@ -496,5 +496,5 @@ Errors           : {}
 
 2. 成功容錯移轉後，您可以認可容錯移轉作業，並設定從 Azure 複寫回內部部署 VMware 網站的反向複寫。
 
-## <a name="next-steps"></a>後續步驟
-瞭解如何使用[Azure Site Recovery PowerShell 參考](/powershell/module/Az.RecoveryServices)，將更多工做自動化。
+## <a name="next-steps"></a>接下來的步驟
+瞭解如何使用 [Azure Site Recovery PowerShell 參考](/powershell/module/Az.RecoveryServices)來自動化更多工具。

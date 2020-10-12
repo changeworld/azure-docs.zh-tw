@@ -1,7 +1,7 @@
 ---
-title: 傳回 N-最佳翻譯-翻譯工具
+title: 傳回 N 個最佳翻譯-Translator
 titleSuffix: Azure Cognitive Services
-description: 使用翻譯工具傳回 N 個最佳的翻譯。
+description: 使用翻譯工具傳回 N 個最佳翻譯。
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -12,18 +12,18 @@ ms.date: 12/14/2017
 ms.author: swmachan
 ROBOTS: NOINDEX
 ms.openlocfilehash: 1fe370070aa97befb418d27def32725bf0a148b3
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83592673"
 ---
 # <a name="how-to-return-n-best-translations"></a>如何傳回前 N 名最佳翻譯
 
 > [!NOTE]
-> 此方法已被取代。 在翻譯工具的 v3.0 中不提供此功能。
+> 此方法已被取代。 這項工具在 v3.0 的3.0 版中無法使用。
 
-翻譯工具的 GetTranslations （）和 GetTranslationsArray （）方法包含選擇性的布林值旗標 "IncludeMultipleMTAlternatives"。
+轉譯器的 GetTranslations ( # A1 和 GetTranslationsArray ( # A3 方法，包含選擇性的布林值旗標 "IncludeMultipleMTAlternatives"。
 方法最多會傳回 maxTranslations 個替代項目，其中會從翻譯工具引擎的前 N 名最佳清單提供差異。
 
 簽章為：
@@ -36,10 +36,10 @@ ms.locfileid: "83592673"
 
 **參數**
 
-| 參數 | 描述 |
+| 參數 | 說明 |
 |:---|:---|
 | appId | **必要** 如果使用 Authorization 標頭，請將 appid 欄位保留空白，否則請指定一個包含 "Bearer" + " " + 存取權杖的字串。|
-| 文字 | **必要** 一個代表所要翻譯文字的字串。 文字大小不得超過 10000 個字元。|
+| text | **必要** 一個代表所要翻譯文字的字串。 文字大小不得超過 10000 個字元。|
 | 從 | **必要** 一個代表所要翻要文字之語言代碼的字串。 |
 | to | **必要** 一個代表文字之目標翻譯語言代碼的字串。 |
 | maxTranslations | **必要** 一個代表要傳回之翻譯數目上限的整數。 |

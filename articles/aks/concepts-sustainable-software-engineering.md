@@ -5,10 +5,10 @@ services: container-service
 ms.topic: conceptual
 ms.date: 08/26/2020
 ms.openlocfilehash: 2457de7bdaa94a6e2269515fafe6689d44960625
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90984975"
 ---
 # <a name="sustainable-software-engineering-principles-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) 中的持續性軟體工程準則
@@ -45,7 +45,7 @@ ms.locfileid: "90984975"
 
 可能的話，請考慮將叢集資源的需求轉移至您可以使用超過容量的時間或區域。 例如，請考慮將批次作業的時間或區域變更為執行或使用 [點][spot-pools]集區。 也請考慮重構應用程式，以使用佇列來順延強制不需要立即處理的工作負載。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 深入瞭解本文中所述的 AKS 功能：
 

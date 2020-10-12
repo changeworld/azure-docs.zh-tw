@@ -11,20 +11,20 @@ ms.topic: how-to
 ms.date: 11/03/2017
 ms.author: ghogen
 ms.openlocfilehash: bdc03e8c136606ab7768705b0c8dbcc97782966f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87088388"
 ---
 # <a name="publish-an-aspnet-web-app-to-an-azure-vm-from-visual-studio"></a>從 Visual Studio 將 ASP.NET Web 應用程式發行到 Azure VM
 
-本檔說明如何使用 Visual Studio 2019 中的**Microsoft Azure 虛擬機器**發佈功能，將 ASP.NET web 應用程式發佈到 Azure 虛擬機器（VM）。  
+本檔說明如何使用 Visual Studio 2019 中的 **Microsoft Azure 虛擬機器** 發行功能，將 ASP.NET web 應用程式發佈至 Azure 虛擬機器 (VM) 。  
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 若要使用 Visual Studio 將 ASP.NET 專案發行到 Azure VM，必須正確設定 VM。
 
-- 電腦必須設定為執行 ASP.NET web 應用程式，並已安裝 WebDeploy。 如需詳細資訊，請參閱[使用 WebDeploy 建立 ASP.NET VM](https://github.com/aspnet/Tooling/blob/AspNetVMs/docs/create-asp-net-vm-with-webdeploy.md)。
+- 電腦必須設定為執行 ASP.NET web 應用程式，並已安裝 WebDeploy。 如需詳細資訊，請參閱 [使用 WebDeploy 建立 ASP.NET VM](https://github.com/aspnet/Tooling/blob/AspNetVMs/docs/create-asp-net-vm-with-webdeploy.md)。
 
 - VM 必須設定 DNS 名稱。 如需詳細資訊，請參閱[在 Azure 入口網站中為 Windows VM 建立完整網域名稱](portal-create-fqdn.md)。
 
@@ -55,7 +55,7 @@ ms.locfileid: "87088388"
 
 7. 按一下 [確定] 以開始發行。
 
-8. 當系統提示您輸入認證時，請在使用發佈許可權設定的目標 VM 上，提供使用者帳戶的使用者名稱和密碼。 這些認證通常是在建立 VM 時所使用的系統管理員使用者名稱和密碼。  
+8. 當系統提示您輸入認證時，請在以發佈許可權設定的目標 VM 上提供使用者帳戶的使用者名稱和密碼。 這些認證通常是建立 VM 時使用的系統管理員使用者名稱和密碼。  
 
    ![WebDeploy 登入]
 
@@ -69,7 +69,7 @@ ms.locfileid: "87088388"
 
 11. 如果已成功發行，便會啟動瀏覽器以開啟新發行網站的 URL。
 
-**Success!**
+**成功！**
 
 您現在已經成功將 Web 應用程式發行到 Azure 虛擬機器。
 
@@ -96,18 +96,18 @@ ms.locfileid: "87088388"
 ![發行設定 - 連線頁面]
 
 #### <a name="save-user-name-and-password"></a>儲存使用者名稱和密碼
-- 請避免在每次發行時提供驗證資訊。 若要這麼做，請填入 [**使用者名稱**] 和 [**密碼**] 欄位，然後選取 [**儲存密碼**] 方塊。
+- 請避免在每次發行時提供驗證資訊。 若要這樣做，請填入 [ **使用者名稱** ] 和 [ **密碼** ] 欄位，然後選取 [ **儲存密碼** ] 方塊。
 - 使用 [驗證連線]**** 按鈕可確認您已輸入正確的資訊。
 
 #### <a name="deploy-to-clean-web-server"></a>部署到乾淨的 Web 伺服器
 
-- 如果您想要確保 web 伺服器在每次上傳之後都有全新的 web 應用程式複本，而且先前的部署不會留下其他檔案，您可以勾選 [**設定**] 索引標籤中的 [**移除目的地的其他**檔案] 核取方塊。
+- 如果您想要確保網頁伺服器在每次上傳之後都有 web 應用程式的全新複本，而且沒有其他檔案從先前的部署中留下，您可以在 [**設定**] 索引標籤中選取 [**在目的地移除其他**檔案] 核取方塊。
 
 - 警告：以這項設定發行會刪除位於 Web 伺服器 (wwwroot 目錄) 上的所有檔案。 請確定您知道啟用這個選項下，發行前的電腦狀態。 
 
 ![發行設定 - 設定頁面]
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 ### <a name="set-up-cicd-for-automated-deployment-to-azure-vm"></a>設定 CI/CD 以自動化部署到 Azure VM
 

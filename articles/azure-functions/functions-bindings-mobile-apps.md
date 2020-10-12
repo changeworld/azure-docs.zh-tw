@@ -7,16 +7,16 @@ ms.custom: devx-track-csharp
 ms.date: 11/21/2017
 ms.author: cshoe
 ms.openlocfilehash: 5ea58cc3d9f3615a74249b36f3f9ffb79caddda1
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88212243"
 ---
 # <a name="mobile-apps-bindings-for-azure-functions"></a>適用於 Azure Functions 的 Mobile Apps 繫結 
 
 > [!NOTE]
-> Azure Mobile Apps 繫結僅適用於 Azure Functions 1.x。 Azure Functions 2.x 和更新版本中不支援它們。
+> Azure Mobile Apps 繫結僅適用於 Azure Functions 1.x。 Azure Functions 2.x 和更新版本不支援這些功能。
 
 本文說明如何在 Azure Functions 中使用 [Azure Mobile Apps](/previous-versions/azure/app-service-mobile/app-service-mobile-value-prop)。 Azure Functions 支援 Mobile Apps 的輸入和輸出繫結。
 
@@ -140,7 +140,7 @@ module.exports = function (context, myQueueItem) {
 | **type**| n/a | 必須設定為 "mobileTable"|
 | **direction**| n/a |必須設定為 "in"|
 | **name**| n/a | 函式簽章中的輸入參數名稱。|
-|**tableName** |**TableName**|行動裝置應用程式資料表的名稱|
+|**名** |**TableName**|行動裝置應用程式資料表的名稱|
 | **id**| **識別碼** | 要擷取之記錄的識別碼。 可以是靜態，或以叫用函式的觸發程序作為基礎。 例如，如果您對函式使用佇列觸發程序，`"id": "{queueTrigger}"` 就會使用佇列訊息的字串值作為要擷取的記錄識別碼。|
 |**connection**|**[連接]**|包含行動裝置應用程式 URL 的應用程式設定名稱。 函式會使用此 URL 針對您的行動裝置應用程式建構所需的 REST 作業。 在包含您的行動裝置應用程式 URL 的函式應用程式中建立應用程式設定，然後在輸入繫結的 `connection` 屬性中，指定應用程式設定的名稱。 URL 看起來像這樣：`http://<appname>.azurewebsites.net`。
 |**apiKey**|**ApiKey**|包含行動裝置應用程式 API 金鑰的應用程式設定名稱。 如果您[在您的 Node.js 行動裝置應用程式中實作 API 金鑰](https://github.com/Azure/azure-mobile-apps-node/tree/master/samples/api-key)，或[在您的 .NET 行動裝置應用程式中實作 API 金鑰](https://github.com/Azure/azure-mobile-apps-net-server/wiki/Implementing-Application-Key)，請提供 API 金鑰。 請提供金鑰，在包含 API 金鑰的函式應用程式中建立應用程式設定，然後在具有應用程式設定名稱的輸入繫結中新增 `apiKey` 屬性。 |
@@ -298,7 +298,7 @@ public static object Run(
 | **type**| n/a | 必須設定為 "mobileTable"|
 | **direction**| n/a |必須設定為 "out"|
 | **name**| n/a | 函式簽章中的輸出參數名稱。|
-|**tableName** |**TableName**|行動裝置應用程式資料表的名稱|
+|**名** |**TableName**|行動裝置應用程式資料表的名稱|
 |**connection**|**MobileAppUriSetting**|包含行動裝置應用程式 URL 的應用程式設定名稱。 函式會使用此 URL 針對您的行動裝置應用程式建構所需的 REST 作業。 在包含您的行動裝置應用程式 URL 的函式應用程式中建立應用程式設定，然後在輸入繫結的 `connection` 屬性中，指定應用程式設定的名稱。 URL 看起來像這樣：`http://<appname>.azurewebsites.net`。
 |**apiKey**|**ApiKeySetting**|包含行動裝置應用程式 API 金鑰的應用程式設定名稱。 如果您[在您的 Node.js 行動裝置應用程式後端中實作 API 金鑰](https://github.com/Azure/azure-mobile-apps-node/tree/master/samples/api-key)，或[在您的 .NET 行動裝置應用程式後端中實作 API 金鑰](https://github.com/Azure/azure-mobile-apps-net-server/wiki/Implementing-Application-Key)，請提供 API 金鑰。 請提供金鑰，在包含 API 金鑰的函式應用程式中建立應用程式設定，然後在具有應用程式設定名稱的輸入繫結中新增 `apiKey` 屬性。 |
 

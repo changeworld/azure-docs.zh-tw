@@ -6,17 +6,17 @@ ms.author: mbullwin
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.openlocfilehash: aab2d1ec5a6c3e046840e736ced0993e560c4661
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91333336"
 ---
 # <a name="migrate-to-workspace-based-application-insights-resources"></a>遷移至以工作區為基礎的 Application Insights 資源
 
 本指南將逐步引導您完成將傳統 Application Insights 資源遷移至以工作區為基礎之資源的程式。 工作區型的資源支援 Application Insights 與 Log Analytics 之間的完整整合。 以工作區為基礎的資源會將 Application Insights 遙測傳送至一般 Log Analytics 工作區，可讓您存取 [Azure 監視器的最新功能](#new-capabilities) ，同時將應用程式、基礎結構和平臺記錄保留在單一合併位置。
 
-以工作區為基礎的資源可在您的資源中 (RBAC) 的一般角色型存取控制，並免除跨應用程式/工作區查詢的需求。
+以工作區為基礎的資源可以在您的資源中 (RBAC) 的一般 Role-Based 存取控制，並免除跨應用程式/工作區查詢的需求。
 
 **以工作區為基礎的資源目前適用于所有商業區域和 Azure 美國政府**
 

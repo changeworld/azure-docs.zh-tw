@@ -7,32 +7,32 @@ ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: rohogue
 ms.openlocfilehash: 4135bfe528c33a2beaeb21438181deb5b19ad12e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85505489"
 ---
 # <a name="manage-the-avere-vfxt-cluster"></a>管理 Avere vFXT 叢集
 
 在 Avere vFXT for Azure 叢集生命週期的某個時間點，您可能需要新增叢集節點，或啟動或重新開機叢集。 當您的專案完成時，您必須知道如何停止叢集，並將它永久移除。
 
-本文說明如何新增或移除叢集節點和其他基本叢集作業。 如果您需要變更叢集設定或監視其工作，請使用 [ [Avere] 控制台](avere-vfxt-cluster-gui.md)。
+本文說明如何新增或移除叢集節點，以及其他基本叢集作業。 如果您需要變更叢集設定或監視其工作，請使用 [Avere 主控台](avere-vfxt-cluster-gui.md)。
 
-視管理工作而定，您可能需要使用三種不同工具的其中一種： [Avere] [控制台]、[vfxt.py 命令列叢集管理] 腳本和 [Azure 入口網站]。
+視管理工作而定，您可能需要使用下列三種不同的工具之一： Avere 主控台、vfxt.py 命令列叢集管理腳本和 Azure 入口網站。
 
 下表提供可用於每個工作之工具的概觀。
 
 | 動作 | Avere 控制台 | vfxt.py  | Azure 入口網站 |
 | --- | --- | --- | --- |
-| 新增叢集節點 | 不可以 | 是 | 不可以 |
-| 移除叢集節點 | 是 | 不可以 | 否 |
-| 停止叢集節點 | 是 (也可以重新啟動服務或重新啟動) | 不可以 | 從入口網站關閉節點 VM 會解譯為節點失敗 |
-| 啟動已停止的節點 | 不可以 | 否 | 是 |
-| 終結單一叢集節點 | 不可以 | 否 | 是 |
+| 新增叢集節點 | 否 | 是 | 否 |
+| 移除叢集節點 | 是 | 否 | 否 |
+| 停止叢集節點 | 是 (也可以重新啟動服務或重新啟動) | 否 | 從入口網站關閉節點 VM 會解譯為節點失敗 |
+| 啟動已停止的節點 | 否 | 否 | 是 |
+| 終結單一叢集節點 | 否 | 否 | 是 |
 | 重新啟動叢集 |  |  |  |
-| 安全地關閉或停止叢集 | 可以 | 是 | 不可以 |
-| 終結叢集  | 不可以 | 是 | 是，但不保證資料完整性 |
+| 安全地關閉或停止叢集 | 是 | 是 | 否 |
+| 終結叢集  | 否 | 是 | 是，但不保證資料完整性 |
 
 各項工具的詳細指示都包含在下方。
 
@@ -40,7 +40,7 @@ ms.locfileid: "85505489"
 
 當您關閉或停止任何 Azure VM 時，它會停止產生計算費用，但您仍必須支付其儲存體的費用。 如果您關閉 vFXT 節點或整個 vFXT 叢集，而且您不想要重新啟動它，您應該使用 Azure 入口網站刪除相關的 VM。
 
-在 Azure 入口網站中，*已停止*的節點（可以重新開機）會顯示在 Azure 入口網站中**停止**的狀態。 [*已刪除*] 節點顯示狀態為 [**已停止（已解除配置）** ]，且不再產生計算或儲存體費用。
+在 Azure 入口網站中， *已停止* 的節點 (可重新開機) 會顯示 Azure 入口網站中 **停止** 的狀態。 *已刪除*的節點會顯示**已停止的狀態 (解除配置) ** ，而且不再產生計算或儲存體費用。
 
 刪除 VM 之前，請確定所有變更的資料已從快取寫回後端儲存體，方法是，使用 Avere 控制台或 vfxt.py 選項停止或關閉叢集。
 
@@ -52,7 +52,7 @@ Avere 控制台可用於下列工作：
 * 從叢集移除節點
 * 停止或重新啟動整個叢集
 
-Avere 控制台會將資料完整性排定優先順序，因此它會嘗試在可能破壞性作業之前，將任何已變更的資料寫入後端儲存體。 這讓它成為比 Azure 入口網站更安全的選項。
+Avere 主控台會排定資料完整性的優先順序，因此它會在可能的破壞性作業之前，嘗試將任何已變更的資料寫入後端儲存體。 這使它成為比 Azure 入口網站更安全的選項。
 
 從網頁瀏覽器存取 Avere 控制台。 如果您需要協助，請依照[存取 vFXT 叢集](avere-vfxt-cluster-gui.md)中的指示進行。
 
@@ -71,7 +71,7 @@ Avere 控制台會將資料完整性排定優先順序，因此它會嘗試在�
 
 [系統維護]**** 設定頁面提供重新啟動叢集服務、重新啟動叢集，或安全地關閉叢集的命令。 如需詳細資訊，請閱讀[管理 > 系統維護](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_system_maintenance.html#gui-system-maintenance>) (在 Avere 叢集設定指南中)。
 
-當叢集開始關閉時，它會將狀態訊息張貼至 [**儀表板**] 索引標籤。幾分鐘後，訊息就會停止，最後 Avere 控制台會話會停止回應，這表示叢集已關閉。
+當叢集開始關閉時，它會將狀態訊息張貼至 [ **儀表板** ] 索引標籤。經過幾分鐘之後，訊息會停止，且最終 Avere 主控台會話將會停止回應，這表示叢集已關閉。
 
 ## <a name="manage-the-cluster-with-vfxtpy"></a>使用 vfxt.py 管理叢集
 
@@ -85,7 +85,7 @@ vfxt.py 指令碼可以用於以下叢集管理工作：
 * 停止或啟動叢集  
 * 終結叢集
 
-如同 Avere 控制台，vfxt.py 作業會嘗試確認已變更的資料永久儲存在後端儲存體，然後再關閉或終結叢集或節點。 這讓它成為比 Azure 入口網站更安全的選項。
+如同 Avere 控制台，vfxt.py 作業會嘗試確認已變更的資料永久儲存在後端儲存體，然後再關閉或終結叢集或節點。 這使它成為比 Azure 入口網站更安全的選項。
 
 完整的 vfxt.py 使用指南可在 GitHub 上取得：[使用 vfxt.py 進行雲端叢集管理](https://github.com/azure/averesdk/blob/master/docs/README.md) \(英文\)
 
@@ -97,10 +97,10 @@ vfxt.py 指令碼可以用於以下叢集管理工作：
 
 提供下列值：
 
-* 叢集的資源組名，也適用于網路和儲存體資源（如果它們不在與叢集相同的資源群組中）
+* 叢集的資源組名，以及網路和儲存體資源（如果它們不在與叢集相同的資源群組中）
 * 叢集位置
 * 叢集網路和子網路
-* 叢集節點存取角色（使用內建角色[Avere 運算子](../role-based-access-control/built-in-roles.md#avere-operator)）
+* 叢集節點存取角色 (使用內建角色 [Avere 操作員](../role-based-access-control/built-in-roles.md#avere-operator)) 
 * 叢集管理 IP 位址和系統管理密碼
 * 要新增的節點數目 (1、2 或 3)
 * 節點執行個體類型和快取大小值
@@ -141,7 +141,7 @@ vfxt.py --cloud-type azure --from-environment --start --resource-group GROUPNAME
 vfxt.py --cloud-type azure --from-environment --destroy --resource-group GROUPNAME --admin-password PASSWORD --management-address ADMIN_IP --location LOCATION --azure-network NETWORK --azure-subnet SUBNET --management-address ADMIN_IP
 ```
 
-``--quick-destroy``如果您不想要從叢集快取儲存已變更的資料，可以使用選項。
+``--quick-destroy``如果您不想要儲存來自叢集快取的變更資料，則可以使用此選項。
 
 如需其他資訊，請閱讀 [vfxt.py 使用指南](<https://github.com/Azure/AvereSDK/blob/master/docs/README.md>)。
 
@@ -189,7 +189,7 @@ Azure 入口網站可以用於以下叢集管理工作：
 
 ### <a name="delete-additional-cluster-resources-from-the-azure-portal"></a>從 Azure 入口網站刪除額外的叢集資源
 
-如果您專為 vFXT 叢集建立額外的資源，您可能想要在卸除叢集時加以移除。 請勿終結包含所需資料的專案，或任何與其他專案共用的專案。
+如果您專為 vFXT 叢集建立額外的資源，您可能想要在卸除叢集時加以移除。 請勿終結包含所需資料的元素，或與其他專案共用的任何專案。
 
 除了刪除叢集節點之外，請考慮移除下列元件：
 
@@ -197,7 +197,7 @@ Azure 入口網站可以用於以下叢集管理工作：
 * 與叢集節點相關聯的資料磁碟
 * 與叢集元件相關聯的網路介面和公用 IP
 * 虛擬網路
-* 儲存體容器和儲存體帳戶（**僅限於**未包含重要資料的情況）
+* 儲存體容器和儲存體帳戶只有在不包含重要資料時 **才** () 
 * 可用性設定組
 
 ![Azure 入口網站「所有資源」清單，其中顯示針對測試叢集建立的資源](media/avere-vfxt-all-resources-list.png)

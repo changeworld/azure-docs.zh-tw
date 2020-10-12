@@ -1,15 +1,15 @@
 ---
 title: 建立 UI 定義集合函數
-description: 描述在使用集合時所要使用的函式，例如陣列和物件。
+description: 描述使用集合（例如陣列和物件）時要使用的函數。
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: tomfitz
 ms.openlocfilehash: 2a075c5c99f457681cd49e75014487bf9cca263c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87096238"
 ---
 # <a name="createuidefinition-collection-functions"></a>CreateUiDefinition 集合函數
@@ -28,7 +28,7 @@ ms.locfileid: "87096238"
 "[contains('webapp', 'web')]"
 ```
 
-### <a name="example-array-contains"></a>範例：陣列包含
+### <a name="example-array-contains"></a>範例：陣列 contains
 
 假設 `element1` 傳回 `[1, 2, 3]`。 下列範例會傳回 `false`：
 
@@ -90,7 +90,7 @@ ms.locfileid: "87096238"
 "[empty(steps('demoStep').element1)]"
 ```
 
-### <a name="example-null-and-undefined"></a>範例： null 和 undefined
+### <a name="example-null-and-undefined"></a>範例： null 和未定義
 
 假設 `element1` 為 `null` 或未定義。 下列範例會傳回 `true`：
 
@@ -98,9 +98,9 @@ ms.locfileid: "87096238"
 "[empty(steps('demoStep').element1)]"
 ```
 
-## <a name="filter"></a>filter
+## <a name="filter"></a>篩選條件
 
-套用當做 lambda 函數提供的篩選邏輯之後，傳回新的陣列。 第一個參數是要用於篩選的陣列。 第二個參數是指定篩選邏輯的 lambda 函數。
+套用作為 lambda 函數提供的篩選邏輯之後，傳回新的陣列。 第一個參數是要用於篩選的陣列。 第二個參數是指定篩選邏輯的 lambda 函數。
 
 下列範例會傳回陣列 `[ { "name": "abc" } ]` 。
 
@@ -112,7 +112,7 @@ ms.locfileid: "87096238"
 
 傳回指定字串的第一個字元、指定陣列的第一個值，或指定物件的第一個索引鍵和值。
 
-### <a name="example-string-first"></a>範例：第一個字串
+### <a name="example-string-first"></a>範例：字串 first
 
 下列範例會傳回 `"c"`：
 
@@ -128,7 +128,7 @@ ms.locfileid: "87096238"
 "[first(steps('demoStep').element1)]"
 ```
 
-#### <a name="example-object-first"></a>範例：物件優先
+#### <a name="example-object-first"></a>範例：物件 first
 
 假設 `element1` 傳回：
 
@@ -149,7 +149,7 @@ ms.locfileid: "87096238"
 
 傳回指定字串的最後一個字元、指定陣列的最後一個值，或指定物件的最後一個索引鍵和值。
 
-### <a name="example-string-last"></a>範例：字串 last
+### <a name="example-string-last"></a>範例： last 字串
 
 下列範例會傳回 `"o"`：
 
@@ -165,7 +165,7 @@ ms.locfileid: "87096238"
 "[last(steps('demoStep').element1)]"
 ```
 
-### <a name="example-object-last"></a>範例：物件最後
+### <a name="example-object-last"></a>範例：物件 last
 
 假設 `element1` 傳回：
 
@@ -221,9 +221,9 @@ ms.locfileid: "87096238"
 
 ## <a name="map"></a>map
 
-在提供的陣列上呼叫 lambda 函數之後，傳回新的陣列。 第一個參數是要用於 lambda 函數的陣列。 第二個參數是 lambda 函式。
+在提供的陣列上呼叫 lambda 函數之後，傳回新的陣列。 第一個參數是用於 lambda 函數的陣列。 第二個參數是 lambda 函數。
 
-下列範例會傳回新的陣列，並將每個值加倍。 結果為 `[2, 4, 6]`。
+下列範例會傳回每個值加倍的新陣列。 結果為 `[2, 4, 6]`。
 
 ```json
 "[map(parse('[1, 2, 3]'), (item) => mul(2, item))]"
@@ -255,7 +255,7 @@ ms.locfileid: "87096238"
 "[skip(steps('demoStep').element1, 2)]"
 ```
 
-### <a name="example-object-skip"></a>範例：物件略過
+### <a name="example-object-skip"></a>範例： object skip
 
 假設 `element1` 傳回：
 
@@ -271,9 +271,9 @@ ms.locfileid: "87096238"
 "[skip(steps('demoStep').element1, 1)]"
 ```
 
-## <a name="split"></a>分割
+## <a name="split"></a>split
 
-傳回字串陣列，其中包含以分隔符號分隔的輸入子字串。
+傳回字串陣列，其中包含以分隔符號分隔之輸入的子字串。
 
 下列範例會傳回陣列 `[ "555", "867", "5309" ]` 。
 
@@ -318,6 +318,6 @@ ms.locfileid: "87096238"
 "[take(steps('demoStep').element1, 1)]"
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * 如需 Azure Resource Manager 的簡介，請參閱 [Azure Resource Manager 概觀](../management/overview.md)。

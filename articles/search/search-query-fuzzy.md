@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/08/2020
 ms.openlocfilehash: faa98f1c52cfe2dd0e19f085f4d33dedb6f01851
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88934883"
 ---
 # <a name="fuzzy-search-to-correct-misspellings-and-typos"></a>模糊搜尋以更正拼寫錯誤和打字錯誤
@@ -132,7 +132,7 @@ search=scal~&highlight=Description
 
 這個展開範例的重點是要說明點擊醒目提示可能會帶來不明確結果的清楚之處。 在所有情況下，都會傳回相同的檔。 您是否依賴檔識別碼來驗證相符的情況，但您可能遺漏了從「特殊」到「SQL」的轉換。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 + [全文檢索搜尋在 Azure 認知搜尋 (查詢剖析架構中的運作方式) ](search-lucene-query-architecture.md)
 + [搜尋總管](search-explorer.md)

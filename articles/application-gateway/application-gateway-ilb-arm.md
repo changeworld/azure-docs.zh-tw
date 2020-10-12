@@ -1,5 +1,5 @@
 ---
-title: 搭配內部 Load Balancer Azure 應用程式閘道使用
+title: 使用內部 Load Balancer Azure 應用程式閘道
 description: 本頁面提供使用 Azure 資源管理員建立、設定、啟動、刪除搭配內部負載平衡器 (ILB) 的 Azure 應用程式閘道的指示。
 services: application-gateway
 author: vhorne
@@ -8,15 +8,15 @@ ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: victorh
 ms.openlocfilehash: 439523fe55f231548ebc80ebc5d3b53c2f0d6e2f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84808133"
 ---
 # <a name="create-an-application-gateway-with-an-internal-load-balancer-ilb"></a>利用內部負載平衡器 (ILB) 建立應用程式閘道
 
-可以使用網際網路對向的 VIP 或不會對網際網路公開的內部端點 (也稱為內部負載平衡器 (ILB) 端點) 來設定 Azure 應用程式閘道。 使用 ILB 設定閘道適合不會對網際網路公開的內部企業營運應用程式。 對於位於不會公開至網際網路的安全性界限中的多層式應用程式內的服務和層級也很有用，但仍然需要迴圈配置資源負載分配、會話未使用或傳輸層安全性（TLS），先前稱為安全通訊端層（SSL），終止。
+可以使用網際網路對向的 VIP 或不會對網際網路公開的內部端點 (也稱為內部負載平衡器 (ILB) 端點) 來設定 Azure 應用程式閘道。 使用 ILB 設定閘道適合不會對網際網路公開的內部企業營運應用程式。 它也適用于多層式應用程式內的服務和層級，此應用程式位於不會公開至網際網路的安全性界限內，但仍需要迴圈配置資源負載散發、會話的輸出或傳輸層安全性 (TLS) ，之前稱為安全通訊端層 (SSL) 終止。
 
 本文會逐步引導您完成使用 ILB 設定應用程式閘道。
 
@@ -24,7 +24,7 @@ ms.locfileid: "84808133"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-1. 遵循[安裝指示](/powershell/azure/install-az-ps)，安裝最新版的 Azure PowerShell 模組。
+1. 遵循 [安裝指示](/powershell/azure/install-az-ps)安裝最新版的 Azure PowerShell 模組。
 2. 您會建立應用程式閘道的虛擬網路和子網路。 請確定沒有虛擬機器或是雲端部署正在使用子網路。 應用程式閘道必須單獨在虛擬網路子網路中。
 3. 您要設定來使用應用程式閘道的伺服器必須存在，或是在虛擬網路中建立其端點，或是已指派公用 IP/VIP。
 
@@ -50,7 +50,7 @@ ms.locfileid: "84808133"
 
 ## <a name="create-a-resource-group-for-resource-manager"></a>建立資源管理員的資源群組
 
-請確定您切換 PowerShell 模式以使用 Azure 資源管理員 Cmdlet。 如需詳細資訊，請[使用 Windows PowerShell 搭配 Resource Manager](../powershell-azure-resource-manager.md)。
+請確定您切換 PowerShell 模式以使用 Azure 資源管理員 Cmdlet。 如需詳細資訊，請參閱 [使用 Windows PowerShell 與 Resource Manager](../powershell-azure-resource-manager.md)。
 
 ### <a name="step-1"></a>步驟 1
 
@@ -256,7 +256,7 @@ VERBOSE: 10:52:46 PM - Begin Operation: Get-AzureApplicationGateway
 Get-AzureApplicationGateway : ResourceNotFound: The gateway does not exist.
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 如果您想要設定 SSL 卸載，請參閱 [設定應用程式閘道以進行 SSL 卸載](application-gateway-ssl.md)。
 

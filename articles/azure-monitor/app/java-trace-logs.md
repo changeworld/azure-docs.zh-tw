@@ -1,27 +1,27 @@
 ---
-title: 探索 Azure 應用程式 Insights 中的 JAVA 追蹤記錄
+title: 在 Azure 應用程式 Insights 中探索 JAVA 追蹤記錄
 description: 在 Application Insights 中搜尋 Log4J 或 Logback 追蹤
 ms.topic: conceptual
 ms.date: 05/18/2019
 ms.custom: devx-track-java
 ms.openlocfilehash: fca5c9b1bde8429d829ab6113804602c8baa2ebe
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87374264"
 ---
 # <a name="explore-java-trace-logs-in-application-insights"></a>在 Application Insights 中探索 Java 追蹤記錄
 如果您使用 Logback 或 Log4J (v1.2 或 v2.0) 進行追蹤，您可以將追蹤記錄自動傳送到 Application Insights，您可以在其中探索及搜尋記錄。
 
 > [!TIP]
-> 您只需要為應用程式設定一次您的 Application Insights 檢測金鑰。 如果您使用的架構（例如 JAVA 春季），您可能已在應用程式設定中的其他位置註冊金鑰。
+> 您只需要為您的應用程式設定 Application Insights 檢測金鑰一次。 如果您使用的是 JAVA 春季等架構，您可能已經在應用程式設定中的其他位置註冊金鑰。
 
 ## <a name="using-the-application-insights-java-agent"></a>使用 Application Insights JAVA 代理程式
 
-根據預設，Application Insights JAVA 代理程式會自動捕捉在層級和更新版本上執行的記錄 `WARN` 。
+依預設，Application Insights JAVA 代理程式會自動捕捉在層級和更新版本上執行的記錄 `WARN` 。
 
-您可以變更使用檔案所捕捉到的記錄閾值 `AI-Agent.xml` ：
+您可以變更使用檔案所捕獲的記錄閾值 `AI-Agent.xml` ：
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -34,7 +34,7 @@ ms.locfileid: "87374264"
 </ApplicationInsightsAgent>
 ```
 
-您可以使用檔案來停用 JAVA 代理程式的記錄捕獲 `AI-Agent.xml` ：
+您可以使用下列檔案來停用 JAVA 代理程式的記錄檔捕獲 `AI-Agent.xml` ：
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -47,7 +47,7 @@ ms.locfileid: "87374264"
 </ApplicationInsightsAgent>
 ```
 
-## <a name="alternatively-as-opposed-to-using-the-java-agent-you-can-follow-the-instructions-below"></a>或者（而不是使用 JAVA 代理程式），您可以依照下列指示進行操作
+## <a name="alternatively-as-opposed-to-using-the-java-agent-you-can-follow-the-instructions-below"></a>或者 (，而不是使用 JAVA 代理程式) ，您可以遵循下列指示
 
 ### <a name="install-the-java-sdk"></a>安裝 Java SDK
 
@@ -189,7 +189,7 @@ Application Insights 附加器可由任何設定的記錄器參考，而不一�
 
 ![在 Application Insights 入口網站中，開啟 [搜尋]](./media/java-trace-logs/01-diagnostics.png)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 [診斷搜尋][diagnostic]
 
 <!--Link references-->

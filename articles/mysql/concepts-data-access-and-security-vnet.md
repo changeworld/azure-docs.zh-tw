@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 7/17/2020
 ms.openlocfilehash: f114dd4d4f0a9a26a8aab1f8aeecd4d29678a8d2
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90896291"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mysql"></a>針對適用於 MySQL 的 Azure 資料庫使用虛擬網路服務端點和規則
@@ -138,7 +138,7 @@ RBAC 替代方案：**
 - [Azure 虛擬網路][vm-virtual-network-overview]
 - [Azure 虛擬網路服務端點][vm-virtual-network-service-endpoints-overview-649d]
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 如需建立 VNet 規則的文章，請參閱：
 - [使用 Azure 入口網站建立及管理適用於 MySQL 的 Azure 資料庫的 VNet 規則](howto-manage-vnet-using-portal.md)
 - [使用 Azure CLI 建立及管理適用於 MySQL 的 Azure 資料庫的 VNet 規則](howto-manage-vnet-using-cli.md)

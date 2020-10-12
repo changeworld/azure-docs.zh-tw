@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.custom: devx-track-csharp, fasttrack-edit
 ms.openlocfilehash: 239d1da028a06d4272ed9b22b624413394aa142f
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88213001"
 ---
 # <a name="monitor-azure-functions"></a>監視 Azure Functions
@@ -264,7 +264,7 @@ Application Insights 具有[取樣](../azure-monitor/app/sampling.md)功能，�
 }
 ```
 
-在2.x 版中，您可以從取樣中排除特定類型的遙測。 在上述範例中， `Request` 會從取樣中排除類型的資料。 這可確保會記錄 *所有* 的函式執行 (要求) ，而其他類型的遙測仍會受到取樣。
+在2.x 版中，您可以從取樣中排除特定類型的遙測。 在上述範例中，類型的資料 `Request` 會從取樣中排除。 這可確保在其他類型的遙測仍受限於取樣時，會記錄 *所有* 的函式執行 (要求) 。
 
 ### <a name="version-1x"></a>1\.x 版 
 
@@ -537,7 +537,7 @@ namespace functionapp0915
 
 ## <a name="log-custom-telemetry-in-javascript-functions"></a>在 JavaScript 函式中記錄自訂遙測
 
-以下是使用 [Application Insights Node.js SDK](https://github.com/microsoft/applicationinsights-node.js)傳送自訂遙測的範例程式碼片段：
+以下範例程式碼片段會使用 [Application Insights Node.js SDK](https://github.com/microsoft/applicationinsights-node.js)來傳送自訂遙測：
 
 ### <a name="version-2x-and-later"></a>2\.x 版和更新版本
 
@@ -598,7 +598,7 @@ Functions v2 會自動收集 HTTP 要求、服務匯流排、事件中樞及 SQL
 ![應用程式對應](./media/functions-monitoring/app-map.png)
 
 > [!NOTE]
-> 相依性會在資訊層級寫入。 如果您篩選警告或以上的版本，就不會看到這項資料。 此外，自動收集相依性會發生在非使用者範圍。 因此，請確定層級至少設定為您 host.js中使用者範圍以外的 **資訊** ， (也就是在函式之外。 <YOUR_FUNCTION_NAME>。如果您想要捕獲這些相依性，) 使用者金鑰。
+> 相依性會在資訊層級寫入。 如果您篩選警告或更高的版本，就不會看到任何資料。 此外，自動收集相依性會在非使用者範圍進行。 因此，請確定在 (（亦即函式之外）的 host.js，將層級設定為至少在使用者範圍之外的 **資訊** 。 <YOUR_FUNCTION_NAME>。如果您想要捕獲這些相依性，) 使用者金鑰。
 
 ## <a name="enable-application-insights-integration"></a>啟用 Application Insights 整合
 
@@ -682,19 +682,19 @@ az webapp log tail --resource-group <RESOURCE_GROUP_NAME> --name <FUNCTION_APP_N
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-您可以使用 [Azure PowerShell](/powershell/azure/) 來啟用資料流記錄。 針對 PowerShell，請使用 [new-azwebapp](/powershell/module/az.websites/set-azwebapp) 命令在函式應用程式上啟用記錄功能，如下列程式碼片段所示： 
+您可以使用 [Azure PowerShell](/powershell/azure/) 來啟用資料流記錄。 針對 PowerShell，請使用 [set-azwebapp](/powershell/module/az.websites/set-azwebapp) 命令來啟用函數應用程式的記錄，如下列程式碼片段所示： 
 
 :::code language="powershell" source="~/powershell_scripts/app-service/monitor-with-logs/monitor-with-logs.ps1" range="19-20":::
 
 如需詳細資訊，請參閱完整的程式 [代碼範例](../app-service/scripts/powershell-monitor.md#sample-script)。 
 
-## <a name="scale-controller-logs-preview"></a>調整控制器記錄 (預覽) 
+## <a name="scale-controller-logs-preview"></a> (預覽版調整控制器記錄) 
 
 這項功能處於預覽狀態。 
 
-[Azure Functions 縮放控制器](./functions-scale.md#runtime-scaling)會監視您的應用程式執行所在 Azure Functions 主機的實例。 此控制器會決定何時要根據目前的效能來新增或移除實例。 您可以讓調整控制器發出記錄至 Application Insights 或 Blob 儲存體，以進一步瞭解調整控制器為您的函數應用程式所做的決策。
+[Azure Functions 調整控制器](./functions-scale.md#runtime-scaling)會監視您的應用程式執行所在 Azure Functions 主機的實例。 此控制器會決定何時要根據目前的效能來新增或移除實例。 您可以讓調整控制器發出記錄至 Application Insights 或 Blob 儲存體，以進一步瞭解調整控制器針對您的函數應用程式所做的決策。
 
-若要啟用這項功能，請新增名為的應用程式設定 `SCALE_CONTROLLER_LOGGING_ENABLED` 。 此設定的值必須是格式 `<DESTINATION>:<VERBOSITY>` ，根據下列各項：
+若要啟用這項功能，請新增名為的新應用程式設定 `SCALE_CONTROLLER_LOGGING_ENABLED` 。 這項設定的值必須是以下格式的格式 `<DESTINATION>:<VERBOSITY>` ：
 
 [!INCLUDE [functions-scale-controller-logging](../../includes/functions-scale-controller-logging.md)]
 
@@ -706,9 +706,9 @@ az functionapp config appsettings set --name <FUNCTION_APP_NAME> \
 --settings SCALE_CONTROLLER_LOGGING_ENABLED=AppInsights:Verbose
 ```
 
-在此範例中，將和分別取代為您的函式 `<FUNCTION_APP_NAME>` `<RESOURCE_GROUP_NAME>` 應用程式名稱和資源組名。 
+在此範例中， `<FUNCTION_APP_NAME>` 請 `<RESOURCE_GROUP_NAME>` 分別以函式應用程式的名稱和資源組名取代。 
 
-下列 Azure CLI 命令會藉由將詳細資訊設定為來停用記錄 `None` ：
+下列 Azure CLI 命令會將詳細資訊設定為，以停用記錄 `None` ：
 
 ```azurecli-interactive
 az functionapp config appsettings set --name <FUNCTION_APP_NAME> \

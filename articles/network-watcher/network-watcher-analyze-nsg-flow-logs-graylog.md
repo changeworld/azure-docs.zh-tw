@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 09/19/2017
 ms.author: damendo
 ms.openlocfilehash: 62f4a06ec729d896dc11a290bc7a5ccc7c321683
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90984061"
 ---
 # <a name="manage-and-analyze-network-security-group-flow-logs-in-azure-using-network-watcher-and-graylog"></a>使用網路監看員和 Graylog 在 Azure 中管理和分析網路安全性群組流量記錄
@@ -244,6 +244,6 @@ sudo ./logstash-plugin install logstash-input-azureblob
 
 藉由整合網路監看員與 Graylog，您現在可以方便且集中地管理網路安全性群組流量記錄並加以視覺化。 Graylog 還有許多功能強大的功能 (例如資料流和警示)，可供您用來進一步管理流量記錄並深入了解您的網路流量。 您已經設定好 Graylog 並將其連線到 Azure，接下來請放心地繼續瀏覽它所提供的其他功能。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 若要了解如何利用 Power BI 將網路安全性群組流量記錄視覺化，請瀏覽 [利用 Power BI 將網路安全性群組流量記錄視覺化](network-watcher-visualize-nsg-flow-logs-power-bi.md)。

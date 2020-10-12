@@ -14,10 +14,10 @@ ms.topic: troubleshooting
 ms.date: 12/20/2018
 ms.author: genli
 ms.openlocfilehash: 1c2050969e95b521554bba100b688add3a987a80
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86526736"
 ---
 # <a name="windows-activation-fails-in-forced-tunneling-scenario"></a>強制通道案例中的 Windows 啟用失敗
@@ -26,13 +26,13 @@ ms.locfileid: "86526736"
 
 ## <a name="symptom"></a>徵狀
 
-您在 Azure 虛擬網路子網路上啟用[強制通道](../../vpn-gateway/vpn-gateway-forced-tunneling-rm.md)，以將所有網際網路繫結流量導向回到您的內部部署網路。 在此案例中，執行 Windows 的 Azure 虛擬機器（Vm）無法啟動 Windows。
+您在 Azure 虛擬網路子網路上啟用[強制通道](../../vpn-gateway/vpn-gateway-forced-tunneling-rm.md)，以將所有網際網路繫結流量導向回到您的內部部署網路。 在此案例中，執行 Windows 的 Azure 虛擬機器 () 的 Vm 無法啟動 Windows。
 
 ## <a name="cause"></a>原因
 
 Azure Windows VM 需要連接到 Azure KMS 伺服器以進行 Windows 啟用。 若要啟用，啟用要求須來自 Azure 的公用 IP 位址。 在強制通道的案例中，啟用會失敗，因為啟用要求來自內部部署網路，而不是 Azure 的公用 IP 位址。
 
-## <a name="solution"></a>解決方案
+## <a name="solution"></a>解決方法
 
 若要解決此問題，請使用 Azure 自訂路由將啟用流量路由到 Azure KMS 伺服器。
 
@@ -53,7 +53,7 @@ Azure Global 雲端其 KMS 伺服器的 IP 位址是 23.102.135.246。 其 DNS �
  
 
 > [!NOTE] 
-> 啟用會使用公用 IP 位址，並會受到標準 SKU Load Balancer 設定的影響。 請仔細查看[Azure 中的輸出](../../load-balancer/load-balancer-outbound-connections.md)連線，以瞭解需求。
+> 啟用會使用公用 IP 位址，而且會受到標準 SKU Load Balancer 設定的影響。 請仔細檢查 [Azure 中的輸出](../../load-balancer/load-balancer-outbound-connections.md) 連線，以瞭解需求。
 
 1. 開啟 Azure PowerShell，然後[登入您的 Azure 訂用帳戶](/powershell/azure/authenticate-azureps)。
 2. 執行下列命令：
@@ -115,7 +115,7 @@ Azure Global 雲端其 KMS 伺服器的 IP 位址是 23.102.135.246。 其 DNS �
 
 4. 嘗試啟動 Windows 並查看問題是否已解決。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - [KMS 用戶端安裝金鑰](/windows-server/get-started/kmsclientkeys)
 - [檢閱並選取啟用方法](/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/jj134256(v=ws.11))

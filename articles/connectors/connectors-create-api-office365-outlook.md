@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 07/27/2020
 tags: connectors
 ms.openlocfilehash: 9b10778e665675e9e033953e2a8b9df16dd636d3
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91400769"
 ---
 # <a name="manage-email-contacts-and-calendars-in-office-365-outlook-by-using-azure-logic-apps"></a>使用 Azure Logic Apps 在 Office 365 Outlook 中管理電子郵件、連絡人和行事曆
@@ -60,7 +60,7 @@ ms.locfileid: "91400769"
 
    ![設定觸發程式的頻率和間隔](./media/connectors-create-api-office365-outlook/calendar-settings.png)
 
-1. 在設計工具的工具列上，選取 [儲存]  。
+1. 在設計工具的工具列上，選取 [儲存]。
 
 現在新增會在觸發程式引發之後執行的動作。 例如，您可以新增 Twilio **傳送訊息** 動作，這會在行事曆事件于15分鐘內開始時傳送文字。
 
@@ -89,7 +89,7 @@ ms.locfileid: "91400769"
 
    若要加入其他可用的動作屬性，請從 [ **加入新的參數** ] 清單中選取這些屬性。
 
-1. 在設計工具的工具列上，選取 [儲存]  。
+1. 在設計工具的工具列上，選取 [儲存]。
 
 ## <a name="connector-reference"></a>連接器參考
 

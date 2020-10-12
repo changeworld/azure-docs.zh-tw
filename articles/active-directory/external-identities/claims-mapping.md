@@ -12,17 +12,17 @@ manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3508865d9f89501cf70e09087c6a609beb6662b2
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87908746"
 ---
 # <a name="b2b-collaboration-user-claims-mapping-in-azure-active-directory"></a>Azure Active Directory 中的 B2B 共同作業使用者宣告對應
 
 Azure Active Directory (Azure AD) 支援針對 B2B 共同作業使用者自訂在 SAML 權杖中發出的宣告。 當使用者對應用程式進行驗證時，Azure AD 會將 SAML 權杖簽發給應用程式，其中包含可唯一識別使用者的使用者相關資訊 (或宣告)。 根據預設值，其中包含使用者的使用者名稱、電子郵件地址、名字和姓氏。
 
-在 [Azure 入口網站](https://portal.azure.com)中，您可以檢視或編輯在 SAML 權杖中傳送給應用程式的宣告。 若要存取設定，請選取 [ **Azure Active Directory**  >  **企業應用**程式] > 設定為 [單一登入] 的應用程式 >**單一登入**]。 請參閱 [使用者屬性]**** 區段中的 SAML 權杖設定。
+在 [Azure 入口網站](https://portal.azure.com)中，您可以檢視或編輯在 SAML 權杖中傳送給應用程式的宣告。 若要存取這些設定，請選取 [ **Azure Active Directory**  >  **企業應用**程式] > >**單一**登錄設定單一登入的應用程式。 請參閱 [使用者屬性]**** 區段中的 SAML 權杖設定。
 
 ![在 UI 中顯示 SAML 權杖屬性](media/claims-mapping/view-claims-in-saml-token.png)
 

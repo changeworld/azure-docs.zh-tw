@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/31/2020
 ms.openlocfilehash: b010a90929a5eb905f21ebe23aa971f05d210941
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91282692"
 ---
 # <a name="copy-data-from-amazon-simple-storage-service-by-using-azure-data-factory"></a>使用 Azure Data Factory 從 Amazon Simple Storage Service 複製資料
@@ -64,7 +64,7 @@ ms.locfileid: "91282692"
 
 以下是針對 Amazon S3 已連結服務支援的屬性：
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | **Type**屬性必須設為**AmazonS3**。 | 是 |
 | accessKeyId | 密碼存取金鑰的識別碼。 |是 |
@@ -77,7 +77,7 @@ ms.locfileid: "91282692"
 >[!TIP]
 >如果您是從與 S3 相容的儲存體（而非官方 Amazon S3 服務）複製資料，請指定自訂 S3 服務 URL。
 
-以下是範例：
+以下為範例：
 
 ```json
 {
@@ -107,7 +107,7 @@ ms.locfileid: "91282692"
 
 以下是以 `location` 格式為基礎的資料集設定中的 Amazon S3 支援的屬性：
 
-| 屬性   | 說明                                                  | 必要 |
+| 屬性   | 描述                                                  | 必要 |
 | ---------- | ------------------------------------------------------------ | -------- |
 | type       | 資料集中的 **類型** 屬性 `location` 必須設定為 **AmazonS3Location**。 | 是      |
 | bucketName | S3 貯體名稱。                                          | 是      |
@@ -152,7 +152,7 @@ ms.locfileid: "91282692"
 
 以下是針對以 `storeSettings` 格式為基礎的複製來源設定下的 Amazon S3 支援的屬性：
 
-| 屬性                 | 說明                                                  | 必要                                                    |
+| 屬性                 | 描述                                                  | 必要                                                    |
 | ------------------------ | ------------------------------------------------------------ | ----------------------------------------------------------- |
 | type                     | 下的 **類型** 屬性 `storeSettings` 必須設為 **AmazonS3ReadSettings**。 | 是                                                         |
 | 尋找要複製的檔案： |  |  |
@@ -255,7 +255,7 @@ ms.locfileid: "91282692"
 
 ### <a name="legacy-dataset-model"></a>舊版資料集模型
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | 資料集的 **type** 屬性必須設為 **>amazons3object**。 |是 |
 | bucketName | S3 貯體名稱。 不支援萬用字元篩選。 |適用于複製或查閱活動，GetMetadata 活動不是 |
@@ -335,7 +335,7 @@ ms.locfileid: "91282692"
 
 ### <a name="legacy-source-model-for-the-copy-activity"></a>複製活動的舊版來源模型
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | 複製活動來源的 **type** 屬性必須設為 **>filesystemsource**。 |是 |
 | 遞迴 | 指出是否從子資料夾、或只有從指定的資料夾，以遞迴方式讀取資料。 請注意，當 **遞迴** 設定為 **true** 且接收是檔案型存放區時，將不會在接收時複製或建立空的資料夾或子資料夾。<br/>允許的值為 **true** (預設值) 和 **false**。 | 否 |

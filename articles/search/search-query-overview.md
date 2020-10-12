@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.openlocfilehash: bae4cb72201bbc1653db5bb549d67531bda71d50
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91537713"
 ---
 # <a name="query-types-and-composition-in-azure-cognitive-search"></a>Azure 認知搜尋中的查詢類型和組合
@@ -88,7 +88,7 @@ ms.locfileid: "91537713"
 
 下表列出使用 API 和工具來提交查詢的方法。
 
-| 方法 | 說明 |
+| 方法 | 描述 |
 |-------------|-------------|
 | [搜尋 explorer (入口網站) ](search-explorer.md) | 提供搜尋列以及選取索引和 API 版本的選項。 結果會以 JSON 文件的形式傳回。 建議進行探索、測試和驗證。 <br/>[深入了解。](search-get-started-portal.md#query-index) | 
 | [Postman 或其他 REST 工具](search-get-started-postman.md) | Web 測試工具是擬定 REST 呼叫的絕佳選擇。 REST API 支援 Azure 認知搜尋中的每個可能的作業。 在本文中，您將瞭解如何設定 HTTP 要求標頭和主體，以將要求傳送至 Azure 認知搜尋。  |
@@ -119,7 +119,7 @@ queryType=full&search=ocean historic^3&searchFields=Description, Tags&$select=Ho
 
 Azure 認知搜尋支援範圍廣泛的查詢類型。 
 
-| 查詢類型 | 使用方式 | 範例和詳細資訊 |
+| 查詢類型 | 使用量 | 範例和詳細資訊 |
 |------------|--------|-------------------------------|
 | 自由格式文字檢索 | 搜尋參數和任一剖析器| 全文檢索搜尋會掃描索引中所有「可搜尋」** 欄位內的一或多個字詞，而且運作方式就如同您對 Google 或 Bing 等搜尋引擎的期待。 簡介中的範例便是全文檢索搜尋。<br/><br/>全文檢索搜尋會使用標準 Lucene 分析器進行詞法分析 (預設) 為小寫的所有詞彙，移除 "a" 這類的停用字詞。 您可以使用 [非英文分析器](index-add-language-analyzers.md#language-analyzer-list) 或 [專門與語言無關的分析器](index-add-custom-analyzers.md#AnalyzerTable) （修改了「詞法分析」）來覆寫預設值。 其中一個範例是[關鍵字](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html)，其會將欄位的整個內容視為單一語彙基元。 這適合用於郵遞區號、識別碼和產品名稱等資料。 | 
 | 經過篩選的搜尋 | [OData 篩選條件運算式](query-odata-filter-orderby-syntax.md)和任一剖析器 | 篩選查詢會對索引中的所有「可篩選」** 欄位評估布林運算式。 不同於搜尋，篩選查詢會比對欄位的確切內容，包括字串欄位的大小寫。 另一個差異是篩選查詢會以 OData 語法來表示。 <br/>[篩選條件運算式範例](search-query-simple-examples.md#example-3-filter-queries) |

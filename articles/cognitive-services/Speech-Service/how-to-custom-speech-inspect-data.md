@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/23/2020
 ms.author: erhopf
 ms.openlocfilehash: c55d69e99715a0c646c4e836df06cf105f9770bf
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91319096"
 ---
 # <a name="inspect-custom-speech-data"></a>檢查自訂語音資料
@@ -35,7 +35,7 @@ ms.locfileid: "91319096"
 3. 按一下 [ **加入測試**]。
 4. 選取 [ **檢查品質 (僅限音訊的資料) **。 提供測試的名稱、描述，然後選取您的音訊資料集。
 5. 選取最多兩個您想要測試的模型。
-6. 按一下頁面底部的 [新增] 。
+6. 按一下 [建立]。
 
 成功建立測試之後，您可以看到模型如何轉譯您所指定的音訊資料集，或將兩個模型的結果與並排比較。
 

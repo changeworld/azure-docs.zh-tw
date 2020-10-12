@@ -11,15 +11,15 @@ ms.workload: Infrastructure-services
 ms.date: 05/18/2020
 ms.author: derekol
 ms.openlocfilehash: 03ece391b6f33b47f34705cec1c5907602ac7b23
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91400174"
 ---
 # <a name="azure-peering-service-overview"></a>Azure 對等互連服務總覽
 
-Azure 對等互連服務是一種網路服務，可加強客戶與 Microsoft 雲端服務的連線能力，例如 Microsoft 365、Dynamics 365、軟體即服務 (SaaS) services、Azure，或任何可透過公用網際網路存取的 Microsoft 服務。 Microsoft 已與網際網路服務提供者合作 (Isp) 、網際網路 exchange 合作夥伴 (IXPs) ，以及軟體定義的雲端互連 (SDCI) 提供者，提供可靠且高效能的公用連線，並提供客戶最佳的路由傳送至 Microsoft 網路。
+Azure 對等互連服務是一項網路服務，可增強客戶對 Microsoft 雲端服務，例如 Microsoft 365、Dynamics 365、軟體即服務 (SaaS) 服務、Azure，或可透過公用網際網路存取的任何 Microsoft 服務的連線能力。 Microsoft 已與網際網路服務提供者合作 (Isp) 、網際網路 exchange 合作夥伴 (IXPs) ，以及軟體定義的雲端互連 (SDCI) 提供者，提供可靠且高效能的公用連線，並提供客戶最佳的路由傳送至 Microsoft 網路。
 
 使用對等互連服務時，客戶可以在指定的區域中選取妥善連線的夥伴服務提供者。 公用連線已針對高可靠性以及從雲端服務到使用者位置的最短延遲進行優化。
 

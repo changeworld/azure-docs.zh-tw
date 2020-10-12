@@ -10,10 +10,10 @@ ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 51480a49aab2c1277eeb846c593fcb2bc858d1f0
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90983716"
 ---
 # <a name="about-virtual-hub-routing"></a>關於虛擬中樞路由
@@ -55,7 +55,7 @@ ms.locfileid: "90983716"
 
 每個虛擬中樞也都有 **無路由表** 可用。 傳播至無路由表表示不需要從連接傳播任何路由。 VPN、ExpressRoute 和使用者 VPN 連接會將路由傳播至同一組路由表。
 
-:::image type="content" source="./media/about-virtual-hub-routing/concepts-propagation.png" alt-text="傳播":::
+:::image type="content" source="./media/about-virtual-hub-routing/concepts-propagation.png" alt-text="協會":::
 
 ### <a name="labels"></a><a name="static"></a>標籤
 標籤提供以邏輯方式分組路由表的機制。 這在從連接到多個路由表的路由傳播期間特別有用。 例如，預設的路由表有一個稱為「預設」的內建標籤。 當使用者將連線路由傳播至「預設」標籤時，它會自動套用至虛擬 WAN 中的每個中樞上的所有預設路由表。 
@@ -89,7 +89,7 @@ ms.locfileid: "90983716"
 * 虛擬中樞不支援 0.0.0.0/0 和下一個躍點虛擬網路連線 (的靜態路由，或 VNet 連線中的設備 IP) 
 * 與 0.0.0.0/0 路由相關的所有資訊都局限于本機中樞的路由表。 此路由不會跨中樞傳播。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 若要設定路由，請參閱 [如何設定虛擬中樞路由](how-to-virtual-hub-routing.md)。
 

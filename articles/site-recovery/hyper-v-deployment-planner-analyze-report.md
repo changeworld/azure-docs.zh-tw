@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 10/21/2019
 ms.author: mayg
 ms.openlocfilehash: b2bb351de292ff2015cdcbd388155063a86a7359
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88653574"
 ---
 # <a name="analyze-the-azure-site-recovery-deployment-planner-report"></a>分析 Azure Site Recovery 部署規劃工具報告
@@ -99,7 +99,7 @@ ms.locfileid: "88653574"
 ### <a name="maximum-copy-frequency"></a>複製頻率上限
 必須為複寫設定建議的複製頻率上限，以達成所需的 RPO。 預設值為五分鐘。 您可以將複製頻率設為 30 秒，以達到更理想的 RPO。
 
-### <a name="what-if-analysis"></a>假設分析
+### <a name="what-if-analysis"></a>模擬分析
 ![假設分析](media/hyper-v-deployment-planner-analyze-report/what-if-analysis-h2a.png) 此分析概述當您設定較低的頻寬，讓所需的 RPO 只符合當時的 90% 時，在剖析期間可發生多少次違規。 任何指定的日期都可能發生一或多個 RPO 違規。 此圖會顯示當天的尖峰 RPO。 根據這項分析，您可以判斷指定的較低頻寬是否可接受所有天數的 RPO 違規次數和每日的尖峰 RPO 目標達成。 如果可接受，您可以為複寫配置較低的頻寬。 如果無法接受，請依照建議配置較高的頻寬，以符合當時所需的 100% RPO。 
 
 ### <a name="recommendation-for-successful-initial-replication"></a>成功初始複寫的建議
@@ -356,5 +356,5 @@ Site Recovery 部署規劃工具所產生的 Excel 報告會在「不相容的 V
 
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 深入了解[成本估計](hyper-v-deployment-planner-cost-estimation.md)。

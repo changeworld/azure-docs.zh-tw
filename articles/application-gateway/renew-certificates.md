@@ -8,15 +8,15 @@ ms.topic: how-to
 ms.date: 8/15/2018
 ms.author: victorh
 ms.openlocfilehash: de57a58f7c891009d2e0cc43b351c2cad42a2766
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84807880"
 ---
 # <a name="renew-application-gateway-certificates"></a>更新應用程式閘道憑證
 
-在某些情況下，如果您將應用程式閘道設定為 TLS/SSL 加密，您就必須更新憑證。
+如果您已將應用程式閘道設定為 TLS/SSL 加密，則在某個時間點，您必須更新憑證。
 
 您可以使用 Azure 入口網站、Azure PowerShell 或 Azure CLI 來更新與接聽程式相關聯的憑證：
 

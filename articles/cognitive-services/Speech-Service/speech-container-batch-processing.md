@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: aahi
 ms.openlocfilehash: 3cd6febfc774b214a8c1ae8553e6c127c4f452fa
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91319073"
 ---
 # <a name="batch-processing-kit-for-speech-containers"></a>適用于語音容器的批次處理套件
@@ -25,7 +25,7 @@ ms.locfileid: "91319073"
 
 Batch 套件容器可在 [GitHub](https://github.com/microsoft/batch-processing-kit) 和   [Docker hub](https://hub.docker.com/r/batchkit/speech-batch-kit/tags)上免費使用。 您只需為您使用的語音容器 [付費](speech-container-howto.md#billing) 。
 
-| 功能  | 說明  |
+| 功能  | 描述  |
 |---------|---------|
 | 批次音訊檔案散發     | 自動將大量的檔案分派給內部部署或雲端式語音容器端點。 檔案可以位於任何符合 POSIX 規範的磁片區上，包括網路檔案系統。       |
 | 語音 SDK 整合 | 將通用旗標傳遞給語音 SDK，包括： n 個最佳的假設、diarization、language、不雅內容遮罩。  |
@@ -118,7 +118,7 @@ docker run --rm -ti -v   c:\my_nfs:/my_nfs docker.io/batchkit/speech-batch
 
 `ONESHOT` 模式轉譯單一批次的音訊檔案 (從輸入目錄和選擇性檔案清單) 到輸出檔案夾。
 
-:::image type="content" source="media/containers/batch-oneshot-mode.png" alt-text="此圖表顯示 oneshot 模式中的批次套件容器處理檔案。":::
+:::image type="content" source="media/containers/batch-oneshot-mode.png" alt-text="顯示範例批次套件容器工作流程的圖表。":::
 
 1. 定義 batch 用戶端將在檔案中使用的語音容器端點 `config.yaml` 。 
 2. 將音訊檔案放入輸入目錄中。  
@@ -133,7 +133,7 @@ docker run --rm -ti -v   c:\my_nfs:/my_nfs docker.io/batchkit/speech-batch
 
 `DAEMON` 模式轉譯指定資料夾中的現有檔案，並在新增音訊檔案時持續轉譯它們。          
 
-:::image type="content" source="media/containers/batch-daemon-mode.png" alt-text="此圖顯示在 daemon 模式中的批次套件容器處理檔案。":::
+:::image type="content" source="media/containers/batch-daemon-mode.png" alt-text="顯示範例批次套件容器工作流程的圖表。":::
 
 1. 定義 batch 用戶端將在檔案中使用的語音容器端點 `config.yaml` 。 
 2. 叫用輸入目錄上的容器。 Batch 用戶端將開始監視傳入檔案的目錄。 
@@ -146,7 +146,7 @@ docker run --rm -ti -v   c:\my_nfs:/my_nfs docker.io/batchkit/speech-batch
 
 `REST` 模式是一種 API 伺服器模式，可提供一組基本的 HTTP 端點，以進行音訊檔案批次提交、狀態檢查和長期輪詢。 也可讓您使用 python 模組擴充功能以程式設計的方式取用，或以子模組的形式匯入。
 
-:::image type="content" source="media/containers/batch-rest-api-mode.png" alt-text="此圖顯示在 daemon 模式中的批次套件容器處理檔案。":::
+:::image type="content" source="media/containers/batch-rest-api-mode.png" alt-text="顯示範例批次套件容器工作流程的圖表。":::
 
 1. 定義 batch 用戶端將在檔案中使用的語音容器端點 `config.yaml` 。 
 2. 將 HTTP 要求要求傳送至其中一個 API 伺服器的端點。 
