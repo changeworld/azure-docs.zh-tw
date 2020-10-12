@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: JenCook
 ms.openlocfilehash: 6bb3b8dbc7887419f7901a52b56c25f60c869abb
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90994854"
 ---
 # <a name="application-development-on-intel-sgx"></a>在 Intel SGX 上開發應用程式 
@@ -58,6 +58,6 @@ OE SDK 會建置為任何 CSP 上任何硬體的單一抽象層。 OE SDK 可在
 此開放原始碼架構可讓您在區塊鏈的整個、更細緻的機密性和聯盟治理方面獲得高效益。 使用 Tee 的每個節點都可以確保安全的共識和交易處理。
 
 
-## <a name="next-steps"></a>下一步 
-- [部署機密計算 DCsv2 系列虛擬機器](quick-create-portal.md)
+## <a name="next-steps"></a>後續步驟 
+- [DCsv2-Series 虛擬機器部署機密運算](quick-create-portal.md)
 - [下載並安裝 OE SDK 並開始開發應用程式](https://github.com/openenclave/openenclave)

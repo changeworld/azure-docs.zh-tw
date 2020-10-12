@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: acomet
 ms.openlocfilehash: 03ea1b0cdfef30935b38078d0811d1408a78c41e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90934012"
 ---
 # <a name="use-power-bi-and-synapse-sql-serverless-to-analyze-azure-cosmos-db-data-with-synapse-link-preview"></a>使用 Power BI 和 Synapse SQL 無伺服器，利用 Synapse 連結 (預覽來分析 Azure Cosmos DB 資料) 
@@ -46,7 +46,7 @@ ms.locfileid: "90934012"
 
 每個工作區都有一個 Synapse 的 SQL 無伺服器端點。 建立 SQL 腳本之後，請從頂端的工具列中，依需求連接至 **SQL**。
 
-:::image type="content" source="./media/synapse-link-power-bi/enable-sql-on-demand-endpoint.png" alt-text="啟用 SQL 腳本以使用工作區中的 Synapse SQL 無伺服器端點":::
+:::image type="content" source="./media/synapse-link-power-bi/enable-sql-on-demand-endpoint.png" alt-text="將 SQL 腳本新增至 Synapse Analytics 工作區":::
 
 建立名為 **RetailCosmosDB**的新資料庫，並在已啟用 Synapse 連結的容器上建立 SQL view。 下列命令顯示如何建立資料庫：
 
@@ -106,7 +106,7 @@ GROUP BY p.[advertising], p.[storeId], p.[weekStarting], q.[largeHH]
 
 選取 [ **執行** ]，以提供下表作為結果：
 
-:::image type="content" source="./media/synapse-link-power-bi/join-views-query-results.png" alt-text="聯結 StoreDemographics 和 RetailSales 視圖之後的查詢結果":::
+:::image type="content" source="./media/synapse-link-power-bi/join-views-query-results.png" alt-text="將 SQL 腳本新增至 Synapse Analytics 工作區":::
 
 ## <a name="model-views-over-containers-with-power-bi"></a>使用 Power BI 的容器模型視圖
 
@@ -141,8 +141,8 @@ GROUP BY p.[advertising], p.[storeId], p.[weekStarting], q.[largeHH]
 1. 從**RetailSales** view 將 [ **productCode** ] 拖放到 [圖例] 中，以選取特定的產品線。
 選擇這些選項之後，您應該會看到類似下列螢幕擷取畫面的圖表：
 
-:::image type="content" source="./media/synapse-link-power-bi/household-size-average-revenue-report.png" alt-text="將家庭大小的相對重要性與每個商店的平均收益進行比較的報表":::
+:::image type="content" source="./media/synapse-link-power-bi/household-size-average-revenue-report.png" alt-text="將 SQL 腳本新增至 Synapse Analytics 工作區":::
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 使用 Synapse SQL 無伺服器來 [分析 Azure 開放資料集，並在 Azure Synapse Studio 中將結果視覺化](../synapse-analytics/sql/tutorial-data-analyst.md)

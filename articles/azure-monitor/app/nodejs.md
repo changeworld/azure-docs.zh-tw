@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 06/01/2020
 ms.custom: devx-track-js
 ms.openlocfilehash: 982adf6c6d7cd825d185802321ce30a04bd2f216
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91323289"
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>使用 Application Insights 監視 Node.js 服務和應用程式
@@ -25,7 +25,7 @@ Node.js SDK 可以自動監視傳入和傳出 HTTP 要求、例外狀況、和�
 
 完成下列工作來設定應用程式或服務的監視。
 
-### <a name="prerequisites"></a>Prerequisites
+### <a name="prerequisites"></a>必要條件
 
 開始之前，請確定您有 Azure 訂用帳戶或[免費取得一個新訂用帳戶][azure-free-offer]。 如果您的組織已經有 Azure 訂用帳戶，系統管理員可以依照 [這些指示][add-aad-user] 將您新增至該訂用帳戶。
 
@@ -397,7 +397,7 @@ client.config.PROPERTYNAME = VALUE;
 
 這些是用戶端專屬的屬性，因此您可以 `appInsights.defaultClient` 與使用建立的用戶端分開設定 `new appInsights.TelemetryClient()` 。
 
-| 屬性                        | 說明                                                                                                |
+| 屬性                        | 描述                                                                                                |
 | ------------------------------- |------------------------------------------------------------------------------------------------------------|
 | instrumentationKey              | Application Insights 資源的識別碼。                                                      |
 | endpointUrl                     | 要傳送遙測承載的內嵌端點。                                                      |

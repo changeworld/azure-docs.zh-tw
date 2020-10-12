@@ -14,10 +14,10 @@ ms.date: 09/22/2020
 ms.author: allensu
 ms.custom: references_regions
 ms.openlocfilehash: d55f52b5e99a7a617e2bec8bea4d6e6ef687730a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91336525"
 ---
 # <a name="cross-region-load-balancer-preview"></a>跨區域負載平衡器 (預覽) 
@@ -55,7 +55,7 @@ Azure Standard Load Balancer 支援跨區域負載平衡，可啟用地理冗余
 
 跨區域負載平衡器的健康情況探查每隔20秒會收集可用性的相關資訊。 如果有一個區域負載平衡器將其可用性降至0，則跨區域負載平衡器會偵測到失敗。 區域負載平衡器接著會離開旋轉。 
 
-:::image type="content" source="./media/cross-region-overview/global-region-view.png" alt-text="全球區域交通視圖的圖表。" border="true":::
+:::image type="content" source="./media/cross-region-overview/global-region-view.png" alt-text="跨區域負載平衡器的圖表。" border="true":::
 
 ### <a name="ultra-low-latency"></a>Ultra-低延遲
 

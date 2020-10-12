@@ -11,10 +11,10 @@ ms.subservice: core
 ms.topic: how-to
 ms.reviewer: larryfr
 ms.openlocfilehash: e7eebb22efe32b290e078348337049c6c3e762db
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90994641"
 ---
 # <a name="audit-and-manage-azure-machine-learning-using-azure-policy"></a>使用 Azure 原則來審核和管理 Azure Machine Learning
@@ -54,7 +54,7 @@ Azure Machine Learning 提供一組原則，可讓您用於 Azure Machine Learni
 
 若要設定此原則，請將效果參數設定為 __audit__。 如果您在不使用 private link 的情況下建立工作區，則會在活動記錄中建立警告事件。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [Azure 原則文件](/azure/governance/policy/overview)
 * [Azure Machine Learning 的內建原則](policy-reference.md)

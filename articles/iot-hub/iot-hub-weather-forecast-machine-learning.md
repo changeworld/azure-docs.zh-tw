@@ -11,10 +11,10 @@ ms.tgt_pltfrm: arduino
 ms.date: 09/16/2020
 ms.author: robinsh
 ms.openlocfilehash: 8ba68e56d2475b1ff2fb3e63f291f76063ca62e7
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91777151"
 ---
 # <a name="weather-forecast-using-the-sensor-data-from-your-iot-hub-in-azure-machine-learning-studio-classic"></a>使用 Azure Machine Learning Studio 中 IoT 中樞的感應器資料進行氣象預報 (傳統) 
@@ -148,7 +148,7 @@ ms.locfileid: "91777151"
 
    ![在 Azure 中建立串流分析作業](media/iot-hub-weather-forecast-machine-learning/create-stream-analytics-job.png)
 
-1. 選取 [建立]。
+1. 選取 [建立]****。
 
 ### <a name="add-an-input-to-the-stream-analytics-job"></a>將輸入新增至串流分析作業
 
@@ -170,7 +170,7 @@ ms.locfileid: "91777151"
 
    ![在 Azure 中將輸入新增至串流分析作業](media/iot-hub-weather-forecast-machine-learning/add-input-stream-analytics-job.png)
 
-1. 選取 [儲存]。
+1. 選取 [儲存]  。
 
 ### <a name="add-an-output-to-the-stream-analytics-job"></a>將輸出新增至串流分析作業
 
@@ -189,7 +189,7 @@ ms.locfileid: "91777151"
 
    ![在 Azure 中將輸出新增至串流分析作業](media/iot-hub-weather-forecast-machine-learning/add-output-stream-analytics-job.png)
 
-1. 選取 [儲存]。
+1. 選取 [儲存]****。
 
 ### <a name="add-a-function-to-the-stream-analytics-job-to-call-the-web-service-you-deployed"></a>將功能新增至串流分析作業，以呼叫您所部署的 Web 服務
 
@@ -204,7 +204,7 @@ ms.locfileid: "91777151"
 
    ![在 Azure 中將功能新增至串流分析作業](media/iot-hub-weather-forecast-machine-learning/add-function-stream-analytics-job.png)
 
-1. 選取 [儲存]。
+1. 選取 [儲存]  。
 
 ### <a name="configure-the-query-of-the-stream-analytics-job"></a>設定串流分析作業的查詢
 

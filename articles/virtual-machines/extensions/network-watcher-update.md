@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 09/23/2020
 ms.author: damendo
 ms.openlocfilehash: c386685d63894472623ffc4392a529541a91391c
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91410314"
 ---
 # <a name="how-to-update-the-network-watcher-extension-to-the-latest-the-version"></a>如何將網路監看員延伸模組更新為最新版本 
@@ -25,7 +25,7 @@ ms.locfileid: "91410314"
 
 [Azure 網路監看員](../../network-watcher/network-watcher-monitoring-overview.md)是網路效能的監視、診斷和分析服務，可讓您監視 Azure 網路。 依需求擷取網路流量及 Azure 虛擬機器上的其他進階功能，都需要網路監看員代理程式虛擬機器擴充功能。 網路監看員延伸模組是由連線監視器、連線監視器 (預覽) 、連線疑難排解和封包捕獲等功能使用。   
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 本檔假設您已在虛擬機器中安裝網路監看員延伸模組，並提供將其更新為最新版本的指示。 
 
 ## <a name="latest-version"></a>最新版本

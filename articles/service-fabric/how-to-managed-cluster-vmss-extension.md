@@ -4,10 +4,10 @@ description: 以下說明如何將虛擬機器擴展集擴充功能新增 Servic
 ms.topic: article
 ms.date: 09/28/2020
 ms.openlocfilehash: 10487bad4fce41c68b4e2cb90c311b986d709eee
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91410296"
 ---
 # <a name="add-a-virtual-machine-scale-set-extension-to-a-service-fabric-managed-cluster-node-type-preview"></a>將虛擬機器擴展集延伸模組新增至 Service Fabric 受控叢集節點類型 (preview) 
@@ -55,7 +55,7 @@ Service Fabric 受控叢集中的每個節點類型都是由虛擬機器擴展�
 
 ## <a name="next-steps"></a>後續步驟
 
-若要深入瞭解 Service Fabric 受控叢集，請參閱：
+若要深入了解 Service Fabric 受控叢集，請參閱：
 
 > [!div class="nextstepaction"]
-> [Service Fabric 受控叢集的常見問題](./faq-managed-cluster.md)
+> [Service Fabric 受控叢集常見問題集](./faq-managed-cluster.md)

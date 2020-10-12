@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/14/2020
 ms.openlocfilehash: f6c73362d554ada6c4845ab8dca2093d3dcbf173
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91707943"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---single-server"></a>適用於 PostgreSQL 的 Azure 資料庫中的 PostgreSQL 延伸模組 - 單一伺服器
@@ -26,7 +26,7 @@ PostgreSQL 提供下列功能：使用擴充功能來擴充您的資料庫功能
 下列擴充功能可在 Postgres 11 版的適用於 PostgreSQL 的 Azure 資料庫伺服器中使用。 
 
 > [!div class="mx-tableFixed"]
-> | **副檔名**| **延伸模組版本** | **描述** |
+> | **分機**| **延伸模組版本** | **說明** |
 > |---|---|---|
 > |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 2.5.1           | 用來將位址剖析為組成項目。 |
 > |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 2.5.1           | Address >standardizer US 資料集範例|
@@ -71,7 +71,7 @@ PostgreSQL 提供下列功能：使用擴充功能來擴充您的資料庫功能
 下列擴充功能可在 Postgres 第10版的適用於 PostgreSQL 的 Azure 資料庫伺服器中使用。
 
 > [!div class="mx-tableFixed"]
-> | **副檔名**| **延伸模組版本** | **描述** |
+> | **分機**| **延伸模組版本** | **說明** |
 > |---|---|---|
 > |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 2.5.1           | 用來將位址剖析為組成項目。 |
 > |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 2.5.1           | Address >standardizer US 資料集範例|
@@ -117,7 +117,7 @@ PostgreSQL 提供下列功能：使用擴充功能來擴充您的資料庫功能
 下列擴充功能可在 Postgres 9.6 版的適用於 PostgreSQL 的 Azure 資料庫伺服器中使用。
 
 > [!div class="mx-tableFixed"]
-> | **副檔名**| **延伸模組版本** | **描述** |
+> | **分機**| **延伸模組版本** | **說明** |
 > |---|---|---|
 > |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 2.3.2           | 用來將位址剖析為組成項目。 |
 > |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 2.3.2           | Address >standardizer US 資料集範例|
@@ -163,7 +163,7 @@ PostgreSQL 提供下列功能：使用擴充功能來擴充您的資料庫功能
 下列擴充功能可在 Postgres 9.5 版的適用於 PostgreSQL 的 Azure 資料庫伺服器中使用。
 
 > [!div class="mx-tableFixed"]
-> | **副檔名**| **延伸模組版本** | **描述** |
+> | **分機**| **延伸模組版本** | **說明** |
 > |---|---|---|
 > |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 2.3.0           | 用來將位址剖析為組成項目。 |
 > |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 2.3.0           | Address >standardizer US 資料集範例|

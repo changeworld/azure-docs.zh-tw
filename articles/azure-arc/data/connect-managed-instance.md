@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: 3277dc4d9c4485b117bfcfd1d6e130e7370cd8c2
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90934354"
 ---
 # <a name="connect-to-azure-arc-enabled-sql-managed-instance"></a>連接到 Azure Arc 啟用的 SQL 受控執行個體
@@ -82,7 +82,7 @@ az network public-ip list -g azurearcvm-rg --query "[].{PublicIP:ipAddress}" -o 
 az network nsg list -g azurearcvm-rg --query "[].{NSGName:name}" -o table
 ```
 
-擁有 NSG 的名稱之後，您就可以使用下列命令來新增防火牆規則。 此處的範例值會建立埠30913的 NSG 規則，並允許來自 **任何** 來源 IP 位址的連接。  這並不是安全性最佳做法！  您可以藉由指定您的用戶端 IP 位址專屬的-來源位址前置詞值，或是涵蓋您小組或組織 IP 位址的 IP 位址範圍，來更妥善地鎖定專案。
+擁有 NSG 的名稱之後，您就可以使用下列命令來新增防火牆規則。 此處的範例值會建立埠30913的 NSG 規則，並允許來自 **任何** 來源 IP 位址的連接。  這並不是安全性最佳做法！  您可以指定專屬於您用戶端 IP 位址或 IP 位址範圍 (涵蓋您小組或組織 IP 位址) 的 -source-address-prefixes 值，以更好的方式來鎖定項目。
 
 將下列參數的值取代 `--destination-port-ranges` 為您從 `azdata sql instance list` 上述 F 命令取得的埠號碼。
 
@@ -90,7 +90,7 @@ az network nsg list -g azurearcvm-rg --query "[].{NSGName:name}" -o table
 az network nsg rule create -n db_port --destination-port-ranges 30913 --source-address-prefixes '*' --nsg-name azurearcvmNSG --priority 500 -g azurearcvm-rg --access Allow --description 'Allow port through for db access' --destination-address-prefixes '*' --direction Inbound --protocol Tcp --source-port-ranges '*'
 ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [查看 SQL 受控實例儀表板](azure-data-studio-dashboards.md#view-the-sql-managed-instance-dashboards)
 - [在 Azure 入口網站中查看 SQL 受控執行個體](view-arc-data-services-inventory-in-azure-portal.md)

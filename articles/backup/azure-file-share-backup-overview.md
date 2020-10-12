@@ -4,10 +4,10 @@ description: 瞭解如何在復原服務保存庫中備份 Azure 檔案共用
 ms.topic: conceptual
 ms.date: 03/05/2020
 ms.openlocfilehash: e955df7662bd18ed1d1d4ec1f0aa6c9474c5386f
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89378078"
 ---
 # <a name="about-azure-file-share-backup"></a>關於 Azure 檔案共用備份

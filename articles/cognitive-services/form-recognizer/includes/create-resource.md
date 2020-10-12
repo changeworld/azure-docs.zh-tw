@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 06/12/2019
 ms.author: pafarley
 ms.openlocfilehash: 49feedaa087a89b2dfc5d90c7230b7abf23ed1ba
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88815732"
 ---
 移至 Azure 入口網站，並<a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer" title="建立新的表單辨識器資源" target="_blank">建立新的表單辨識器資源<span class="docon docon-navigate-external x-hidden-focus"></span></a>。 在 [建立] 窗格中，提供下列資訊：

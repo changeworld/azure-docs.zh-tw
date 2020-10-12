@@ -14,10 +14,10 @@ ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9fbdccfa7ff16bd63dda1f7c21c07e6d20e086e1
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89321084"
 ---
 # <a name="add-or-delete-users-using-azure-active-directory"></a>使用 Azure Active Directory 新增或刪除使用者
@@ -54,7 +54,7 @@ ms.locfileid: "89321084"
 
 1. 複製 [ **密碼** ] 方塊中提供的自動產生密碼。 您必須將此密碼提供給使用者第一次登入。
 
-1. 選取 [建立]。
+1. 選取 [建立]****。
 
 系統會建立使用者並將其新增至您的 Azure AD 組織。
 
@@ -93,7 +93,7 @@ ms.locfileid: "89321084"
 >[!Note]
 >您必須使用 Windows Server Active Directory 來更新授權來源為 Windows Server Active Directory 之使用者的身分識別、連絡人資訊或工作資訊。 完成更新之後，您必須等候下一次同步處理循環完成，才能看到您所做的變更。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 新增您的使用者之後，您可以執行下列基本程式：
 

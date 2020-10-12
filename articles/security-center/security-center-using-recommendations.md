@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
 ms.openlocfilehash: 4c6b8b0bfa78dca5ca32c8c72edcc463ebb9057a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91322133"
 ---
 # <a name="use-azure-security-center-recommendations-to-enhance-security"></a>使用 Azure 資訊安全中心建議增強安全性
@@ -70,7 +70,7 @@ Jeff 繼續瀏覽高優先權和中優先順序的建議，然後進行實作決
 
 ### <a name="enforce-recommendations-to-prevent-security-misconfigurations"></a>強制建議以防止安全性錯誤配置
 
-為了確保使用者不會建立會對 Jeff 分數造成負面影響的資源，他們會在對他們最重要的建議上設定 [強制] 和 [拒絕] 選項。 深入瞭解如何 [使用強制/拒絕建議進行錯誤處理](prevent-misconfigurations.md)。
+為了確保使用者不會建立會對 Jeff 分數造成負面影響的資源，他們會在對他們最重要的建議上設定 [強制] 和 [拒絕] 選項。 請在＜[防止強制/拒絕建議的設定錯誤](prevent-misconfigurations.md)＞中深入了解。
 
 
 ## <a name="conclusion"></a>結論

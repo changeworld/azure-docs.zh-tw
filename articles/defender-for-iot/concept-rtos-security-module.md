@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 09/09/2020
 ms.author: mlottner
 ms.openlocfilehash: 9f816b35fd79d3f158ea12fd2c7e1d811823dc8a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90934478"
 ---
 # <a name="security-module-for-azure-rtos-preview"></a>適用于 Azure RTO (預覽版的安全性模組) 
@@ -63,7 +63,7 @@ Azure RTO 的安全性模組會由 Azure IoT 中介軟體平臺初始化，並�
 
 Azure RTO 的安全性模組是以免費下載的方式提供給您的 IoT 裝置。 每個 Azure 訂用帳戶30天的試用版都有提供適用于 IoT 的 Defender 雲端服務。 [立即下載安全性模組](https://github.com/azure-rtos/azure-iot-preview/releases) ，讓我們開始吧。 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 開始使用適用于 Azure RTO [必要條件和設定](quickstart-azure-rtos-security-module.md)的安全性模組。
 - 深入瞭解 Azure RTO [安全性警示和建議支援](concept-rtos-security-alerts-recommendations.md)的安全性模組。 

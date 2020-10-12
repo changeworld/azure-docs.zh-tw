@@ -4,10 +4,10 @@ description: 備份保存庫的總覽。
 ms.topic: conceptual
 ms.date: 08/17/2020
 ms.openlocfilehash: 773152212ed831c0083cfdf912f45ece578d079f
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90994658"
 ---
 # <a name="backup-vaults-overview"></a>備份保存庫總覽
@@ -118,6 +118,6 @@ ms.locfileid: "90994658"
 
 ![備份作業](./media/backup-vault-overview/backup-jobs.png)
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [在 Azure 于 postgresql 資料庫上設定備份](backup-azure-database-postgresql.md#configure-backup-on-azure-postgresql-databases)

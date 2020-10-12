@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 07/23/2019
 ms.author: Zhchia
 ms.openlocfilehash: f6bb119e5e82ce642722d0f739177fc1e4c06c25
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91255714"
 ---
 # <a name="tutorial-configure-signagelive--for-automatic-user-provisioning"></a>教學課程：設定 Signagelive 來自動布建使用者
@@ -27,7 +27,7 @@ ms.locfileid: "91255714"
 >
 > 此連接器目前為公開預覽版。 如需有關預覽功能的一般 Microsoft Azure 使用規定詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用規定](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 本教學課程中概述的案例假設您已經具有下列必要條件：
 
@@ -108,7 +108,7 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
     ![通知電子郵件](common/provisioning-notification-email.png)
 
-7. 按一下 [檔案]  。
+7. 按一下 **[儲存]** 。
 
 8. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 使用者至 Signagelive**]。
 
@@ -116,7 +116,7 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
 9. 在 [ **屬性對應** ] 區段中，檢查從 Azure AD 同步處理到 Signagelive 的使用者屬性。 選取為 [比對 **] 屬性的屬性會** 用來比對 Signagelive 中的使用者帳戶以進行更新作業。 選取 [儲存] 按鈕以認可所有變更。
 
-    ![顯示有七個對應的 [屬性對應] 區段螢幕擷取畫面。](media/signagelive-provisioning-tutorial/userattribute.png)
+    ![[屬性對應] 區段的螢幕擷取畫面，其中顯示七個對應。](media/signagelive-provisioning-tutorial/userattribute.png)
 
 10. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 群組至 Signagelive**]。
 

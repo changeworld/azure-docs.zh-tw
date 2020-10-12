@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 09/09/2020
 ms.author: mlottner
 ms.openlocfilehash: c4d27dc8499eaaa7b1485c9008d922cf396c08bb
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90934463"
 ---
 # <a name="get-started-with-built-in-iot-hub-integration"></a>開始使用內建 IoT 中樞整合
@@ -34,7 +34,7 @@ ms.locfileid: "90934463"
 
 恭喜！ 您已完成在 IoT 中樞上啟用適用于 IoT 的 Defender 服務。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 設定您的 [解決方案](quickstart-configure-your-solution.md)
 - [建立安全性模組](quickstart-create-security-twin.md)

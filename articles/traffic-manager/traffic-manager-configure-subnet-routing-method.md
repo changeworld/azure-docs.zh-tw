@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: duau
 ms.openlocfilehash: b1901ddce2eb9c8ff5ec9ac90a56379e74c11aa6
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89401362"
 ---
 # <a name="direct-traffic-to-specific-endpoints-based-on-user-subnet-using-traffic-manager"></a>使用流量管理員根據使用者子網路將流量導向特定端點
@@ -91,7 +91,7 @@ ms.locfileid: "89401362"
 1. 選取左側功能表中的 [所有資源]****，然後從資源清單按一下 *myIISVMEastUS*，其位於 *myResourceGroupTM1* 資源群組中。
 2. 在 [概觀]**** 頁面上，按一下 [連線]****，然後在 [連線至虛擬機器]**** 中選取 [下載 RDP 檔案]****。
 3. 開啟所下載的 rdp 檔案。 如果出現提示，請選取 [連接]。 輸入您在建立 VM 時指定的使用者名稱和密碼。 您可能需要選取 [其他選擇]****，然後選取 [使用不同的帳戶]****，以指定您在建立 VM 時輸入的認證。
-4. 選取 [確定]。
+4. 選取 [確定]  。
 5. 您可能會在登入過程中收到憑證警告。 如果您收到警告，請選取 [是]**** 或 [繼續]**** 以繼續進行連線。
 6. 在伺服器桌面上，流覽至 [ **Windows 系統管理工具**] > **伺服器管理員**。
 7. 在 *myIISVMEastUS* 上啟動 Windows PowerShell，並使用下列命令來安裝 IIS 伺服器及更新預設 htm 檔案。
@@ -189,12 +189,12 @@ ms.locfileid: "89401362"
 
 1. 在入口網站的搜尋列中，搜尋您在上一節建立的流量管理員設定檔名稱，然後在顯示的結果中選取設定檔。
 2. 在 [流量管理員設定檔]**** 的 [設定]**** 區段中，按一下 [端點]****，然後按一下 [新增]****。
-3. 輸入或選取下列資訊、接受其餘設定的預設值，然後選取 [確定]****：
+3. 輸入或選取下列資訊、接受其餘設定的預設值，然後選取 [確定]：
 
     | 設定                 | 值                                              |
     | ---                     | ---                                                |
     | 類型                    | Azure 端點                                   |
-    | Name           | myTestWebSiteEndpoint                                        |
+    | 名稱           | myTestWebSiteEndpoint                                        |
     | 目標資源類型           | 公用 IP 位址                          |
     | 目標資源          | **選擇公用 ip 位址** ，以顯示在相同訂用帳戶下具有公用 ip 位址的資源清單。 在 [資源]**** 中，選取名為 *myIISVMEastUS-ip* 的公用 IP 位址。 這是美國東部 IIS 伺服器 VM 的公用 IP 位址。|
     |  子網路路由設定    |   新增 *myVMEastUS* 測試 VM 的 IP 位址。 任何來自此 VM 的使用者查詢都會導向至 *myTestWebSiteEndpoint*。    |
@@ -228,7 +228,7 @@ ms.locfileid: "89401362"
 1. 選取左側功能表中的 [所有資源]****，然後從資源清單按一下 *myVMEastUS*，其位於 *myResourceGroupTM1* 資源群組中。
 2. 在 [概觀]**** 頁面上，按一下 [連線]****，然後在 [連線至虛擬機器]**** 中選取 [下載 RDP 檔案]****。
 3. 開啟所下載的 rdp 檔案。 如果出現提示，請選取 [連接]。 輸入您在建立 VM 時指定的使用者名稱和密碼。 您可能需要選取 [其他選擇]****，然後選取 [使用不同的帳戶]****，以指定您在建立 VM 時輸入的認證。
-4. 選取 [確定]。
+4. 選取 [確定]  。
 5. 您可能會在登入過程中收到憑證警告。 如果您收到警告，請選取 [是]**** 或 [繼續]**** 以繼續進行連線。
 1. 在 VM *myVMEastUS* 的網頁瀏覽器中，輸入流量管理員設定檔的 DNS 名稱，以檢視您的網站。 由於 VM *myVMEastUS* IP 位址與端點 *myIISVMEastUS*相關聯，因此網頁瀏覽器會啟動測試網站伺服器- *myIISVMEastUS*。
 
@@ -239,7 +239,7 @@ ms.locfileid: "89401362"
 ## <a name="delete-the-traffic-manager-profile"></a>刪除流量管理員設定檔
 如果不再需要，請刪除資源群組 (**ResourceGroupTM1** 和 **ResourceGroupTM2**)。 若要這麼做，請選取資源群組 (**ResourceGroupTM1** 或 **ResourceGroupTM2**)，然後選取 [刪除]****。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 深入了解[加權流量路由方法](traffic-manager-configure-weighted-routing-method.md)。
 - 深入了解[優先順序路由方法](traffic-manager-configure-priority-routing-method.md)。

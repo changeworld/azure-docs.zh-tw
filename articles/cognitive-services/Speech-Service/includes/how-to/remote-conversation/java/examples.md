@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 03/09/2020
 ms.author: amishu
 ms.openlocfilehash: 6a73c238cde7fbddfb7aa4c7153b5de5b442e9b5
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87284200"
 ---
 ## <a name="upload-the-audio"></a>上傳音訊
 
-在執行非同步轉譯之前，您必須使用 Microsoft 認知語音用戶端 SDK （1.8.0 或更新版本）將音訊傳送至對話轉譯服務。
+在可以執行非同步轉譯之前，您必須使用 Microsoft 認知語音用戶端 SDK (1.8.0 版或更新版本的) ，將音訊傳送至交談轉譯服務。
 
-此範例程式碼示範如何針對非同步模式建立對話 transcriber。 若要將音訊串流至 transcriber，您必須[使用語音 SDK 來即時](../../../../how-to-use-conversation-transcription.md)新增衍生自轉譯交談的音訊串流程式碼。 請參閱該主題的**限制**一節，以查看支援的平臺和語言 api。
+此範例程式碼示範如何建立僅限非同步模式的對話 transcriber。 為了將音訊串流處理至 transcriber，您必須 [使用語音 SDK 來即時](../../../../how-to-use-conversation-transcription.md)新增衍生自轉譯交談的音訊串流程式碼。 請參閱該主題的 **限制** 一節，以查看支援的平臺和語言 api。
 
 ```java
 // Create the speech config object
@@ -83,7 +83,7 @@ Future<?> future = transcriber.startTranscribingAsync();
 ...
 ```
 
-如果您想要即時_加上_非同步，請將適當的程式程式碼批註並取消批註，如下所示：
+如果您想要即時 _加上_ 非同步，請將適當的程式程式碼加上批註和取消批註，如下所示：
 
 ```java
 // Set the property for asynchronous transcription
@@ -95,13 +95,13 @@ speechConfig.setServiceProperty("transcriptionMode", "RealTimeAndAsync", Service
 
 ## <a name="get-transcription-results"></a>取得轉譯結果
 
-針對此處顯示的程式碼，您需要**遠端對話版本 1.8.0**，僅支援 Windows 和 Linux 上的 JAVA （1.8.0 或以上）。 
+針對此處所示的程式碼，您需要 **遠端對話版本 1.8.0**，僅支援 JAVA (1.8.0 或更高版本的 Windows 和 Linux 上的) 。 
 
 ### <a name="obtaining-the-async-conversation-client-sdk"></a>取得非同步對話用戶端 SDK
 
-您可以藉由編輯 pom.xml 檔案來取得**遠端交談**，如下所示。
+您可以藉由編輯 pom.xml 檔案來取得 **遠端交談** ，如下所示。
 
-1. 在檔案結尾的結束記號之前， `</project>` 建立 `repositories` 元素，其中包含適用于語音 SDK 的 Maven 存放庫參考：
+1. 在檔案結尾的結束記號之前 `</project>` ，建立 `repositories` 具有語音 SDK Maven 儲存機制參考的元素：
 
    ```xml
    <repositories>
@@ -113,7 +113,7 @@ speechConfig.setServiceProperty("transcriptionMode", "RealTimeAndAsync", Service
    </repositories>
    ```
 
-2. 同時新增 `dependencies` 元素，並以 remoteconversation-client-sdk 1.8.0 作為相依性：
+2. 此外，新增 `dependencies` 具有 remoteconversation-用戶端 sdk 1.8.0 作為相依性的元素：
 
    ```xml
    <dependencies>
@@ -129,7 +129,7 @@ speechConfig.setServiceProperty("transcriptionMode", "RealTimeAndAsync", Service
 
 ### <a name="sample-transcription-code"></a>範例轉譯程式碼
 
-在您擁有之後 `conversationId` ，請在用戶端應用程式建立遠端對話轉譯用戶端**RemoteConversationTranscriptionClient** ，以查詢非同步轉譯的狀態。 使用**RemoteConversationTranscriptionClient**中的**getTranscriptionOperation**方法來取得[PollerFlux](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/core/azure-core/src/main/java/com/azure/core/util/polling/PollerFlux.java)物件。 PollerFlux 物件將會有遠端作業狀態**RemoteConversationTranscriptionOperation**和最終結果**RemoteConversationTranscriptionResult**的相關資訊。 作業完成後，請呼叫[SyncPoller](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/core/azure-core/src/main/java/com/azure/core/util/polling/SyncPoller.java)上的**GetFinalResult**來取得**RemoteConversationTranscriptionResult** 。 在此程式碼中，我們只會將結果內容列印到系統輸出。
+當您擁有之後 `conversationId` ，請在用戶端應用程式上建立遠端對話轉譯用戶端 **RemoteConversationTranscriptionClient** ，以查詢非同步轉譯的狀態。 在**RemoteConversationTranscriptionClient**中使用**getTranscriptionOperation**方法來取得[PollerFlux](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/core/azure-core/src/main/java/com/azure/core/util/polling/PollerFlux.java)物件。 PollerFlux 物件將會有遠端操作狀態 **RemoteConversationTranscriptionOperation** 和最終結果 **RemoteConversationTranscriptionResult**的相關資訊。 作業完成後，請在[SyncPoller](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/core/azure-core/src/main/java/com/azure/core/util/polling/SyncPoller.java)上呼叫**GetFinalResult**以取得**RemoteConversationTranscriptionResult** 。 在此程式碼中，我們只會將結果內容列印至系統輸出。
 
 ```java
 // Create the speech config object

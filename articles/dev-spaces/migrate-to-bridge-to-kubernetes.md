@@ -1,18 +1,18 @@
 ---
-title: 遷移至橋接至 Kubernetes
+title: 遷移以橋接至 Kubernetes
 services: azure-dev-spaces
 ms.date: 09/21/2020
 ms.topic: conceptual
 description: 描述 power Azure Dev Spaces 的處理常式
 keywords: Azure Dev Spaces、Dev Spaces、Docker、Kubernetes、Azure、AKS、Azure Kubernetes Service、容器、Bridge 到 Kubernetes
 ms.openlocfilehash: b585ee20efb7b377a041152996ef41d8c59c539e
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90994629"
 ---
-# <a name="migrating-to-bridge-to-kubernetes"></a>遷移至橋接至 Kubernetes
+# <a name="migrating-to-bridge-to-kubernetes"></a>遷移以橋接至 Kubernetes
 
 [橋接器至 Kubernetes] 可提供更輕量的替代方案，讓您可以使用 Azure Dev Spaces 的許多開發案例。 橋接器至 Kubernetes 是一種僅限用戶端的體驗， [Visual Studio][vs]   和 [Visual Studio Code][vsc]使用擴充功能。  
 
@@ -34,7 +34,7 @@ Bridge 與 Kubernetes 可讓開發人員直接在其開發電腦上工作，同�
 
 Azure Dev Spaces 和 Bridge Kubernetes 有類似的功能，它們在許多方面也不同：
 
-| 需求  | Azure Dev Spaces  | 橋接器至 Kubernetes  |
+| 需求  | Azure Dev Spaces  | 橋接至 Kubernetes  |
 |---------------|-------------------|--------------------------------|
 | Azure Kubernetes Service | 在15個 Azure 區域中 | 任何 AKS 服務區域    |
 | **安全性** |
@@ -115,12 +115,12 @@ Kubernetes 和 Azure Dev Spaces 的橋樑都需要有 HTTP 標頭，並在整個
 1. 在已部署的應用程式上設定 Bridge 以進行 Kubernetes。 如需使用 Bridge Kubernetes Visual Studio Code 的詳細資訊，請參閱 [使用 Bridge Kubernetes][use-btk-vsc]。
 1. 使用新建立的 Bridge Kubernetes 啟動設定檔，在 Visual Studio 中開始進行調試。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 深入瞭解 Kubernetes 橋接器的運作方式。
 
 > [!div class="nextstepaction"]
-> [Kubernetes 橋接器的運作方式][how-it-works-bridge-to-kubernetes]
+> [Bridge to Kubernetes 的運作方式][how-it-works-bridge-to-kubernetes]
 
 
 [azds-delete]: how-to/install-dev-spaces.md#remove-azure-dev-spaces-using-the-cli

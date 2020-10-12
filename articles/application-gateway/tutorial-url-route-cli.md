@@ -9,10 +9,10 @@ ms.date: 08/01/2019
 ms.author: victorh
 ms.custom: mvc, devx-track-azurecli
 ms.openlocfilehash: 4aee41bc0188676ac0bd168474f1842199af9620
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89595218"
 ---
 # <a name="route-web-traffic-based-on-the-url-using-the-azure-cli"></a>使用 Azure CLI 根據 URL 路由傳送網路流量
@@ -263,6 +263,6 @@ az network public-ip show \
 az group delete --name myResourceGroupAG
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 [建立包含 URL 路徑型重新導向的應用程式閘道](./tutorial-url-redirect-cli.md)

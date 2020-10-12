@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.openlocfilehash: 29d80d2c6dc4e090e30d7a90460dc970ff4d8ca9
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89320676"
 ---
 # <a name="analyze-video-and-audio-files-with-azure-media-services"></a>使用 Azure 媒體服務分析影片和音訊檔案
@@ -71,10 +71,10 @@ Azure 媒體服務 v3 可讓您使用影片索引子，從影片和音訊檔案�
 
 ### <a name="transcript"></a>文字記錄
 
-|Name|描述|
+|名稱|描述|
 |---|---|
 |id|行識別碼。|
-|文字|文字記錄本身。|
+|text|文字記錄本身。|
 |語言|文字記錄語言。 用於支援文字記錄，其中每一行可以有不同的語言。|
 |執行個體|這一行曾出現的時間範圍清單。 如果執行個體是文字記錄，它只能有 1 個執行個體。|
 
@@ -109,10 +109,10 @@ Azure 媒體服務 v3 可讓您使用影片索引子，從影片和音訊檔案�
 
 ### <a name="ocr"></a>ocr
 
-|Name|描述|
+|名稱|描述|
 |---|---|
 |id|OCR 行識別碼。|
-|文字|OCR 文字。|
+|text|OCR 文字。|
 |信賴度|辨識信賴。|
 |語言|OCR 語言。|
 |執行個體|此 OCR 曾出現的時間範圍清單 (相同的 OCR 可以出現多次)。|
@@ -152,7 +152,7 @@ Azure 媒體服務 v3 可讓您使用影片索引子，從影片和音訊檔案�
 
 ### <a name="faces"></a>臉部
 
-|Name|描述|
+|名稱|描述|
 |---|---|
 |id|臉部識別碼。|
 |NAME|臉部名稱。 它可能是「未知 #0」、已識別的名人或客戶訓練的人員。|
@@ -197,7 +197,7 @@ Azure 媒體服務 v3 可讓您使用影片索引子，從影片和音訊檔案�
 
 ### <a name="shots"></a>擷取畫面
 
-|Name|描述|
+|名稱|描述|
 |---|---|
 |id|擷取畫面識別碼。|
 |keyFrames|擷取畫面的主要畫面清單 (每個主要畫面都有一個識別碼和執行個體的時間範圍清單)。 主要畫面格執行個體中有縮圖識別碼欄位，其中包含主要畫面格的縮圖識別碼。|
@@ -254,7 +254,7 @@ Azure 媒體服務 v3 可讓您使用影片索引子，從影片和音訊檔案�
 
 ### <a name="statistics"></a>統計資料
 
-|Name|描述|
+|名稱|描述|
 |---|---|
 |CorrespondenceCount|影片中的對應數目。|
 |WordCount|每個說話者的字數。|
@@ -267,7 +267,7 @@ Azure 媒體服務 v3 可讓您使用影片索引子，從影片和音訊檔案�
 
 人氣會依據其 sentimentType 欄位 (Positive/Neutral/Negative) 加以彙總。 例如：0-0.1、0.1-0.2。
 
-|Name|描述|
+|名稱|描述|
 |---|---|
 |id|人氣識別碼。|
 |averageScore |所有該人氣類型執行個體的總分平均值 - Positive/Neutral/Negative|
@@ -302,7 +302,7 @@ Azure 媒體服務 v3 可讓您使用影片索引子，從影片和音訊檔案�
 
 ### <a name="labels"></a>標籤
 
-|Name|描述|
+|名稱|描述|
 |---|---|
 |id|標籤識別碼。|
 |NAME|標籤名稱 (例如，電腦、電視)。|
@@ -360,10 +360,10 @@ Azure 媒體服務 v3 可讓您使用影片索引子，從影片和音訊檔案�
 
 ### <a name="keywords"></a>關鍵字
 
-|Name|描述|
+|名稱|描述|
 |---|---|
 |id|關鍵字識別碼。|
-|文字|關鍵字。|
+|text|關鍵字。|
 |信賴度|關鍵字的辨識信賴。|
 |語言|關鍵字語言 (轉譯時)。|
 |執行個體|此關鍵字曾出現的時間範圍清單 (同一個關鍵字可以出現多次)。|
@@ -411,7 +411,7 @@ visualContentModeration 區塊包含影片索引器偵測到可能含有成人�
 
 經發現含有成人或猥褻內容的影片，只能供私人檢視。 使用者可以提交內容的人工審核要求，在這種情況下， `IsAdult` 屬性會包含人工審核的結果。
 
-|Name|描述|
+|名稱|描述|
 |---|---|
 |id|視覺內容仲裁識別碼。|
 |adultScore|成人分數 (由內容仲裁提供)。|
@@ -444,6 +444,6 @@ visualContentModeration 區塊包含影片索引器偵測到可能含有成人�
 }
 ] 
 ```
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 [教學課程：使用 Azure 媒體服務分析影片](analyze-videos-tutorial-with-api.md)

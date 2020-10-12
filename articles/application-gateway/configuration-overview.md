@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/09/2020
 ms.author: surmb
 ms.openlocfilehash: 0012ac99600c77dce5940387e1da54f29c3f6ab7
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89651997"
 ---
 # <a name="application-gateway-configuration-overview"></a>應用程式閘道設定總覽
@@ -67,7 +67,7 @@ Azure 應用程式閘道包含數個元件，您可以在不同的案例中以�
 > [!NOTE]
 > 建立自訂健康情況探查之後，您必須將它與後端 HTTP 設定產生關聯。 除非對應的 HTTP 設定與使用規則的接聽程式明確相關聯，否則自訂探查不會監視後端集區的健康情況。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 現在您已瞭解應用程式閘道元件，您可以：
 

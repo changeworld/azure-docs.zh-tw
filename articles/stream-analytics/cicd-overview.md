@@ -9,10 +9,10 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 9/22/2020
 ms.openlocfilehash: ec8f27d0376f7187fd36b3feba556dbced0946e9
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90933949"
 ---
 # <a name="continuous-integration-and-deployment-cicd-for-azure-stream-analytics"></a>適用于 Azure 串流分析的持續整合和部署 (CI/CD) 
@@ -41,7 +41,7 @@ ms.locfileid: "90933949"
 
 您可以使用命令列和 [Azure 串流分析 CI/CD 工具](cicd-tools.md) 來自動建立、測試及部署。 您也可以在 [Azure Pipelines](set-up-cicd-pipeline.md)中設定 CI/CD 管線。 Azure Pipelines，以啟用更先進的功能，例如管線管理、視覺效果和觸發程式。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [使用 CI/CD 工具將 Azure 串流分析作業的組建、測試和部署自動化](cicd-tools.md)
 * [使用 Azure Pipelines 為串流分析作業設定 CI/CD 管線](set-up-cicd-pipeline.md)

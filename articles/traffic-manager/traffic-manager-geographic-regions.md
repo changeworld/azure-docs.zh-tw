@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 03/22/2017
 ms.author: duau
 ms.openlocfilehash: 83300a5c518a3acf853968164031a80e1c882187
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89401232"
 ---
 # <a name="countryregion-hierarchy-used-by-azure-traffic-manager-for-geographic-traffic-routing-method"></a>Azure 流量管理員用於地理流量路由方法的國家/地區階層
@@ -688,6 +688,6 @@ ms.locfileid: "89401232"
 
         - WS(薩摩亞)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 深入了解 [Azure 流量管理員中的地理流量路由方法](traffic-manager-routing-methods.md#geographic)。

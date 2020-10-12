@@ -4,10 +4,10 @@ description: 了解自訂映像與作為 VM 基礎的公式之間的差異，以
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: df7a8e6209f8033eb5a29c65079e9c2f4cbbe544
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87287541"
 ---
 # <a name="comparing-custom-images-and-formulas-in-devtest-labs"></a>比較研發/測試實驗室中的自訂映像和公式
@@ -43,5 +43,5 @@ ms.locfileid: "87287541"
 ## <a name="related-blog-posts"></a>相關部落格文章
 * [自訂映像或公式？](./devtest-lab-faq.md#blog-post)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 - [DevTest Labs 常見問題集](devtest-lab-faq.md)

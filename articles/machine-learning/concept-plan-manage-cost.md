@@ -11,10 +11,10 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.openlocfilehash: 031ec44cec473d9f2b2f05669aa3fc18084985f2
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91704723"
 ---
 # <a name="plan-and-manage-costs-for-azure-machine-learning"></a>規劃和管理 Azure Machine Learning 的成本
@@ -33,7 +33,7 @@ ms.locfileid: "91704723"
 * 使用低優先順序的虛擬機器 (VM) 
 * 使用 Azure 保留的 VM 實例
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 成本分析支援不同的 Azure 帳戶類型。 若要檢視所支援帳戶類型的完整清單，請參閱[了解成本管理資料](../cost-management-billing/costs/understand-cost-mgt-data.md)。 若要檢視成本資料，您至少需要 Azure 帳戶的讀取存取。 
 
@@ -109,11 +109,11 @@ AmlCompute 隨附 [配額 (或限制) ](how-to-manage-quotas.md#azure-machine-le
 
 ## <a name="use-low-priority-vms"></a><a id="low-pri-vm"></a> 使用低優先順序的 Vm
 
-Azure 可讓您在虛擬機器擴展集、Batch 和 Machine Learning 服務之間，使用具有低優先順序 Vm 的過度未運用容量。 這些配置已預先 emptible，但相較于專用 Vm，價格較低。 一般情況下，我們建議使用低優先順序的 Vm 來進行 Batch 工作負載。 您也應該使用它們來復原中斷時，可以透過重新提交 (針對 Batch 推斷) 或透過重新開機 (進行使用檢查點) 的深度學習訓練。
+Azure 可讓您在虛擬機器擴展集、Batch 和 Machine Learning 服務之間，使用超出未運用的容量來 Low-Priority Vm。 這些配置已預先 emptible，但相較于專用 Vm，價格較低。 一般來說，我們建議您針對 Batch 工作負載使用 Low-Priority Vm。 您也應該使用它們來復原中斷時，可以透過重新提交 (針對 Batch 推斷) 或透過重新開機 (進行使用檢查點) 的深度學習訓練。
 
-低優先順序 Vm 的單一配額與專用配額值（依 VM 系列）不同。 深入瞭解 [AmlCompute 配額](how-to-manage-quotas.md)。
+Low-Priority Vm 的單一配額與專用配額值（依 VM 系列）不同。 深入瞭解 [AmlCompute 配額](how-to-manage-quotas.md)。
 
- 低優先順序的 Vm 不適用於計算實例，因為它們需要支援互動式筆記本體驗。
+ Low-Priority Vm 不適用於計算實例，因為它們需要支援互動式筆記本體驗。
 
 ## <a name="use-reserved-instances"></a>使用保留執行個體
 

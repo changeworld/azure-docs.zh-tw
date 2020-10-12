@@ -8,10 +8,10 @@ ms.date: 7/28/2020
 ms.topic: troubleshooting
 ms.service: digital-twins
 ms.openlocfilehash: ae7e85624f5da06603ddc2675787b84203bc987b
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90087198"
 ---
 # <a name="troubleshooting-azure-digital-twins-alerts"></a>針對 Azure 數位 Twins 進行疑難排解：警示
@@ -44,17 +44,17 @@ Azure 數位 Twins 會收集服務實例的 [計量](troubleshoot-metrics.md) �
 
 以下是來自 *選取條件* 程式的摘要，說明 Azure 數位 Twins 可用的警示信號類型。 在此頁面上，您可以篩選信號的類型，並從清單中選取您想要的信號。
 
-:::image type="content" source="media/troubleshoot-alerts/configure-signal-logic.png" alt-text="顯示第一個 [設定信號邏輯] 頁面的螢幕擷取畫面。[信號類型] 方塊上有一個醒目提示可選取度量或活動記錄，以及可選取的計量清單":::
+:::image type="content" source="media/troubleshoot-alerts/configure-signal-logic.png" alt-text="顯示 [建立警示規則] 頁面的螢幕擷取畫面，其中包含範圍、條件、動作群組和警示規則詳細資料的區段":::
 
 選取信號之後，系統會要求您設定警示的邏輯。 您可以篩選維度、設定警示的臨界值，以及設定條件檢查的頻率。 以下範例說明如何設定當平均路由失敗率度量超過5% 時的警示。
 
-:::image type="content" source="media/troubleshoot-alerts/configure-signal-logic-2.png" alt-text="顯示第二個 [設定信號邏輯] 頁面的螢幕擷取畫面。此頁面會顯示計量歷程記錄、具有可篩選維度（例如事件方格作業）的區域，以及用來定義警示邏輯的區段，例如「平均大於5」。":::
+:::image type="content" source="media/troubleshoot-alerts/configure-signal-logic-2.png" alt-text="顯示 [建立警示規則] 頁面的螢幕擷取畫面，其中包含範圍、條件、動作群組和警示規則詳細資料的區段":::
 
 ### <a name="verify-success"></a>確認是否成功
 
 設定警示之後，他們會在您的實例的 [ *警示* ] 頁面上顯示回來。
  
-:::image type="content" source="media/troubleshoot-alerts/alerts-post.png" alt-text="顯示 [警示] 頁面和要新增之按鈕的螢幕擷取畫面。已設定一個警示" lightbox="media/troubleshoot-alerts/alerts-post.png":::
+:::image type="content" source="media/troubleshoot-alerts/alerts-post.png" alt-text="顯示 [建立警示規則] 頁面的螢幕擷取畫面，其中包含範圍、條件、動作群組和警示規則詳細資料的區段" lightbox="media/troubleshoot-alerts/alerts-post.png":::
 
 ## <a name="next-steps"></a>後續步驟
 

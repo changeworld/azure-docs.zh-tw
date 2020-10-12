@@ -1,5 +1,5 @@
 ---
-title: 使用存取權審查來管理使用者存取-Azure AD
+title: 使用存取權審核來管理使用者存取-Azure AD
 description: 了解如何透過 Azure Active Directory 存取權檢閱，以群組成員資格或指派給應用程式的方式管理使用者存取權
 services: active-directory
 documentationcenter: ''
@@ -17,10 +17,10 @@ ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 001adaff1fed901638276e548ac1d5fdb41bdc53
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87798302"
 ---
 # <a name="manage-user-access-with-azure-ad-access-reviews"></a>使用 Azure AD 存取權檢閱來管理使用者存取權
@@ -30,7 +30,7 @@ ms.locfileid: "87798302"
 > [!NOTE]
 > 如果您只想檢閱來賓使用者的存取權，而不要檢閱各類使用者的存取權，請參閱[透過存取權檢閱管理來賓使用者存取權](manage-guest-access-with-access-reviews.md)。 若您想要檢閱使用者的系統管理角色 (例如全域系統管理員) 成員資格，請參閱[在 Azure AD Privileged Identity Management 中開始存取權檢閱](../privileged-identity-management/pim-how-to-start-security-review.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - Azure AD Premium P2
 
@@ -44,15 +44,15 @@ ms.locfileid: "87798302"
 
 2. 決定是否要讓每個使用者檢閱自己的存取權，或讓一個或多個使用者檢閱每個人的存取權。
 
-3. 身為全域管理員或使用者系統管理員，請移至身分[識別管理頁面](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/)。
+3. 以全域管理員或使用者系統管理員身分，移至 [身分 [識別管理] 頁面](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/)。
 
-4. 建立存取權檢閱。 如需詳細資訊，請參閱[建立群組或應用程式的存取權審查](create-access-review.md)。
+4. 建立存取權檢閱。 如需詳細資訊，請參閱 [建立群組或應用程式的存取權審核](create-access-review.md)。
 
-5. 存取權檢閱開始時，要求檢閱者提供輸入。 根據預設，它們各自會收到 Azure AD 的電子郵件，其中包含存取面板的連結，他們會在其中[審查群組或應用程式的存取權](perform-access-review.md)。
+5. 存取權檢閱開始時，要求檢閱者提供輸入。 根據預設，每個使用者都會收到來自 Azure AD 的電子郵件，其中包含存取面板的連結，可在其中 [查看群組或應用程式的存取權](perform-access-review.md)。
 
 6. 如果檢閱者有沒有指定的輸入，則您可以要求 Azure AD 將提醒傳送給他們。 依預設，Azure AD 會在結束日期過半時自動將提醒傳送給尚未回應的檢閱者。
 
-7. 在檢閱者提供輸入後，停止存取權檢閱並套用變更。 如需詳細資訊，請參閱[完成群組或應用程式的存取權審查](complete-access-review.md)。
+7. 在檢閱者提供輸入後，停止存取權檢閱並套用變更。 如需詳細資訊，請參閱 [完成群組或應用程式的存取權檢查](complete-access-review.md)。
 
 
 ## <a name="next-steps"></a>後續步驟

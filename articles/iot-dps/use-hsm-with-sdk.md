@@ -11,10 +11,10 @@ ms.custom:
 - mvc
 - amqp
 ms.openlocfilehash: 0a32e2f055b2914fa0008e043e80092ac2da0814
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90531503"
 ---
 # <a name="how-to-use-different-attestation-mechanisms-with-device-provisioning-service-client-sdk-for-c"></a>如何使用不同證明機制搭配適用於 C 的裝置佈建服務用戶端 SDK
@@ -149,9 +149,9 @@ cmake -Ddps_auth_type=tpm_simulator ..
       ```
       ./azure-iot-sdk-c/dps_client/tools/x509_device_provision/x509_device_provision.exe
       ```
-2. 登入 Azure 入口網站，按一下左側功能表上的 [所有資源]**** 按鈕，然後開啟您的裝置佈建服務。
-   - **X.509 個別註冊**：在 [布建服務摘要] 分頁上，選取 [ **管理註冊**]。 選取 [ **個別註冊** ] 索引標籤，然後按一下頂端的 [ **新增** ] 按鈕。 選取 [ **x.509** ] 作為身分識別證明 *機制*，視分頁需要上傳分葉憑證。 完成後，按一下 [儲存]**** 按鈕。 
-   - **X.509 群組註冊**：在布建服務摘要分頁上，選取 [ **管理註冊**]。 選取 [群組註冊]**** 索引標籤，然後按一下頂端的 [新增]**** 按鈕。 選取 [ **x.509** ] 作為身分識別證明 *機制*，輸入組名和憑證名稱，並視分頁需要上傳 CA/中繼憑證。 完成後，按一下 [儲存]**** 按鈕。 
+2. 登入 Azure 入口網站，按一下左側功能表上的 [所有資源]  按鈕，然後開啟您的裝置佈建服務。
+   - **X.509 個別註冊**：在 [布建服務摘要] 分頁上，選取 [ **管理註冊**]。 選取 [ **個別註冊** ] 索引標籤，然後按一下頂端的 [ **新增** ] 按鈕。 選取 [ **x.509** ] 作為身分識別證明 *機制*，視分頁需要上傳分葉憑證。 完成後，按一下 [儲存]  按鈕。 
+   - **X.509 群組註冊**：在布建服務摘要分頁上，選取 [ **管理註冊**]。 選取 [群組註冊]**** 索引標籤，然後按一下頂端的 [新增]**** 按鈕。 選取 [ **x.509** ] 作為身分識別證明 *機制*，輸入組名和憑證名稱，並視分頁需要上傳 CA/中繼憑證。 完成後，按一下 [儲存]  按鈕。 
 
 ## <a name="enable-authentication-for-devices-using-a-custom-attestation-mechanism-optional"></a>針對使用自訂證明機制的裝置啟用驗證 (選擇性)
 

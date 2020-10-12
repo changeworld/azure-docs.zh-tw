@@ -7,10 +7,10 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.openlocfilehash: bd0ec4cf085fb19c89c6be48d4f4534383560fd5
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91707773"
 ---
 # <a name="azure-cosmos-db-nosql-migration-and-application-development-partners"></a>Azure Cosmos DB NoSQL 移轉和應用程式開發合作夥伴
@@ -19,13 +19,13 @@ ms.locfileid: "91707773"
 
 ## <a name="systems-integrator-and-tooling-partners"></a>系統整合者和工具合作夥伴
 
-|**合作夥伴**  |**功能和體驗**  |**支援的國家/區域**  |
+|**Partner**  |**功能和體驗**  |**支援的國家/區域**  |
 |---------|---------|---------|
 |[Striim](https://www.striim.com/)    |  持續、即時的資料移動、資料移轉|   USA   |
 | [10thMagnitude](https://www.10thmagnitude.com/) | IoT，零售 (清查) ，作業分析 (Spark) 、無伺服器架構、應用程式開發 | USA |
 |[Altoros 開發 LLC](https://www.altoros.com/)  |  IoT、個人化零售 (清查) 、無伺服器架構 NoSQL 遷移、應用程式開發|   USA |
 |[Avanade](https://www.avanade.com/) | IoT，零售 (清查) ，無伺服器架構，應用程式開發 | 奧地利、德國、瑞士、義大利、挪威、西班牙、英國、加拿大 |
-|[Accenture](https://www.accenture.com/) | IoT，零售 (清查) ，無伺服器架構，應用程式開發 |全球|
+|[Accenture](https://www.accenture.com/) | IoT，零售 (清查) ，無伺服器架構，應用程式開發 |全域|
 |[Capax Global LLC](https://www.capaxglobal.com/) | IoT、個人化、零售 (清查) 、營運分析 (Spark) 、無伺服器架構、應用程式開發|    USA     |  
 | [Capgemini](https://www.capgemini.com/) | 零售 (清查) 、IoT、營運分析 (Spark) 、應用程式開發 | 美國、法國、英國、荷蘭、芬蘭  |
 | [Cognizant](https://www.cognizant.com/) | IoT、個人化、零售 (清查) 、營運分析 (Spark) 、應用程式開發 |美國、加拿大、英國、丹麥、荷蘭、瑞士、澳大利亞、日本 |

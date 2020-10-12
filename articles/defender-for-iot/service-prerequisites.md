@@ -15,17 +15,17 @@ ms.date: 09/09/2020
 ms.author: mlottner
 ms.custom: references_regions
 ms.openlocfilehash: 19263f8db58c8d20288d3ae74c24efd85667bc33
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90933988"
 ---
 # <a name="azure-defender-for-iot-prerequisites"></a>適用于 IoT 的 Azure Defender 必要條件
 
 本文說明 Defender for IoT 服務的不同元件、您需要著手的部分，並說明可協助您瞭解服務的基本概念。
 
-## <a name="minimum-requirements"></a>最低需求
+## <a name="minimum-requirements"></a>最低要求條件
 
 - IoT 中樞標準層
   - Azure 角色 **擁有** 者層級許可權
@@ -83,7 +83,7 @@ Iot 中樞目前支援適用于 IoT 的 Defender 適用于下列 Azure 區域：
 
 適用于 IoT 的 Defender 代理程式支援不斷增長的裝置與平臺清單。 請參閱 [支援的平臺清單](how-to-deploy-agent.md) ，以檢查您現有或已規劃的裝置程式庫。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 閱讀 Azure IoT 安全性 [總覽](overview.md)
 - 瞭解如何 [啟用服務](quickstart-onboard-iot-hub.md)

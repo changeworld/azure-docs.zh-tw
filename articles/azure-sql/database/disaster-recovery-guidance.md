@@ -12,10 +12,10 @@ ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 06/21/2019
 ms.openlocfilehash: e88c1b976ce1de0ce0be4b6a5f85af6790802323
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91321623"
 ---
 # <a name="restore-your-azure-sql-database-or-failover-to-a-secondary"></a>還原 Azure SQL Database 或容錯移轉至次要資料庫
@@ -26,7 +26,7 @@ Azure SQL Database 提供下列功能，以從中斷復原：
 - [作用中異地複寫](active-geo-replication-overview.md)
 - [自動容錯移轉群組](auto-failover-group-overview.md)
 - [異地復原](recovery-using-backups.md#point-in-time-restore)
-- [區域備援資料庫](high-availability-sla.md)
+- [區域冗余資料庫](high-availability-sla.md)
 
 若要了解商務持續性案例，以及支援這些案例的功能，請參閱 [商務持續性](business-continuity-high-availability-disaster-recover-hadr-overview.md)。
 

@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 ms.date: 03/25/2020
 ms.author: cynthn
 ms.openlocfilehash: 3e151145bd3c4d1db87ef5d1b0d553555a580279
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88816740"
 ---
 # <a name="error-messages-for-spot-vms-and-scale-sets"></a>適用于找出 Vm 和擴展集的錯誤訊息
@@ -19,7 +19,7 @@ ms.locfileid: "88816740"
 以下是使用點 Vm 和擴展集時，可能會收到的一些可能的錯誤代碼。
 
 
-| 答案 | 訊息 | 描述 |
+| 機碼 | 訊息 | 描述 |
 |-----|---------|-------------|
 | SkuNotAvailable | 訂用帳戶 ' ' 的 \<resource\> 位置 ' ' 中目前無法使用資源 ' ' 的要求層 \<location\> \<subscriptionID\> 。 請嘗試其他階層或部署至不同的位置。 | 這個位置沒有足夠的 Azure 現成容量可建立您的 VM 或擴展集實例。 |
 | EvictionPolicyCanBeSetOnlyOnAzureSpotVirtualMachines  |  只能在 Azure 位置虛擬機器上設定收回原則。 | 此 VM 不是現成的 VM，因此您無法設定收回原則。 |

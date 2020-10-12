@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 02/27/2020
 ms.author: ccompy
 ms.openlocfilehash: b62e5057d8f144fc56d0e35927d17de27a1c8863
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91255230"
 ---
 這項功能很容易設定，但這並不表示您的體驗不會有任何問題。 如果您在存取所需端點時遇到問題，您可以使用一些公用程式來測試從應用程式主控台的連線能力。 有兩個您可以使用的主控台。 其中一個是 Kudu 主控台，另一個則是 Azure 入口網站中的主控台。 若要從您的應用程式連接到 Kudu 主控台，請移至 [**工具**  >  **Kudu**]。 您也可以在 [sitename]. azurewebsites.net 連接到 Kudo 主控台。 網站載入之後，請移至 [ **Debug 主控台**] 索引標籤。若要從您的應用程式取得 Azure 入口網站裝載的主控台，請移至 [**工具**  >  **主控台**]。

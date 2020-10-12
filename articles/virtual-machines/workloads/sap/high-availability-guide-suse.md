@@ -1,5 +1,5 @@
 ---
-title: SLES 上 SAP NetWeaver 的 Azure Vm 高可用性 |Microsoft Docs
+title: 在 SLES 上適用于 SAP NetWeaver 的 Azure Vm 高可用性 |Microsoft Docs
 description: SAP NetWeaver 在適用於 SAP 應用程式之 SUSE Linux Enterprise Server 上的高可用性指南
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 08/04/2020
 ms.author: radeltch
 ms.openlocfilehash: 01a450c045c996cdcb49b8fbfdf1ce572ee2d1df
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87760595"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications"></a>SAP NetWeaver 在適用於 SAP 應用程式之 SUSE Linux Enterprise Server 上的 Azure VM 高可用性
@@ -134,10 +134,10 @@ SAP NetWeaver 需要傳輸和設定檔目錄的共用儲存體。 請參閱[適�
 
 Azure Marketplace 包含 SUSE Linux Enterprise Server for SAP Applications 12 的映像，讓您可用來部署新的虛擬機器。 Marketplace 映像包含 SAP NetWeaver 的資源代理程式。
 
-您可以使用 GitHub 上的其中一個快速入門範本來部署所有必要資源。 此範本會部署虛擬機器、負載平衡器、可用性設定組等。請遵循下列步驟來部署範本：
+您可以使用 GitHub 上的其中一個快速入門範本來部署所有必要資源。 此範本會部署虛擬機器、負載平衡器、可用性設定組等。遵循下列步驟來部署範本：
 
-1. 在 Azure 入口網站上開啟 [ [ASCS/SCS 多重 SID] 範本][template-multisid-xscs]或 [交集][範本][template-converged]。 
-   ASCS/SCS 範本只會建立 SAP NetWeaver ASCS/SCS 和 ERS (Linux) 實例的負載平衡規則，而交集範本也會建立資料庫 (的負載平衡規則，例如 Microsoft SQL Server 或 SAP Hana) 。 如果您打算安裝 SAP NetWeaver 架構的系統，而且也想要在同一部電腦上安裝資料庫，請使用[交集範本][template-converged]。
+1. 開啟 [ASCS/SCS 多 SID 範本][template-multisid-xscs] 或 Azure 入口網站上的交集 [範本][template-converged] 。 
+   ASCS/SCS 範本只會) 實例建立 SAP NetWeaver ASCS/SCS 和 ERS (Linux 的負載平衡規則，而交集範本也會建立資料庫 (的負載平衡規則，例如 Microsoft SQL Server 或 SAP Hana) 。 如果您打算安裝 SAP NetWeaver 架構的系統，而且也想要在同一部電腦上安裝資料庫，請使用[交集範本][template-converged]。
 1. 輸入下列參數
    1. 資源前置詞 (僅限 ASCS/SCS 多重 SID 範本)  
       輸入您想要使用的前置詞。 該值會作為所部署之資源的前置詞。
@@ -156,7 +156,7 @@ Azure Marketplace 包含 SUSE Linux Enterprise Server for SAP Applications 12 �
    9. 管理員使用者名稱和管理員密碼  
       建立可用來登入電腦的新使用者。
    10. 子網路識別碼  
-   如果您想將 VM 部署至現有的 VNet (其中具有定義 VM 應指派的目的子網路)，請說明該特定子網路的 ID。 此識別碼通常看起來像是/subscriptions/訂用帳戶** &lt; &gt; 識別碼**/ResourceGroups/** &lt; 資源組名 &gt; **/providers/Microsoft.Network/virtualNetworks/** &lt; 虛擬網路名稱 &gt; **/subnets/** &lt; 子網名稱 &gt; **
+   如果您想將 VM 部署至現有的 VNet (其中具有定義 VM 應指派的目的子網路)，請說明該特定子網路的 ID。 識別碼通常看起來像是/subscriptions/** &lt; 訂 &gt; **用帳戶識別碼/ResourceGroups/** &lt; 資源組名 &gt; **/providers/Microsoft.Network/virtualNetworks/** &lt; 虛擬網路名稱 &gt; **/subnets/** &lt; 子網名稱 &gt; **
 
 ### <a name="deploy-linux-manually-via-azure-portal"></a>透過 Azure 入口網站手動部署 Linux
 
@@ -203,13 +203,13 @@ Azure Marketplace 包含 SUSE Linux Enterprise Server for SAP Applications 12 �
    1. 負載平衡規則
       1. ASCS 的負載平衡規則
          1. 開啟負載平衡器，選取 [負載平衡規則]，然後按一下 [新增]
-         1. 輸入新負載平衡器規則 (的名稱，例如**nw1-lb-ascs**) 
-         1. 選取您稍早建立的前端 IP 位址、後端集區及健康情況探查 (例如**nw1-ascs-前端**、 **nw1-後端**和**nw1-ascs-hp**) 
+         1. 輸入新負載平衡器規則的名稱 (例如 **nw1-lb-ascs**) 
+         1. 選取您稍早建立的前端 IP 位址、後端集區和健康情況探查 (例如 **nw1-ascs-前端**、 **nw1-後端** 和 **nw1-ascs-hp**) 
          1. 選取 [HA 連接埠]
          1. 將閒置逾時增加為 30 分鐘
          1. **務必啟用浮動 IP**
          1. Click OK
-         * 重複上述步驟以建立 ERS (的負載平衡規則，例如**nw1-lb-ERS**) 
+         * 重複上述步驟來建立 ERS (的負載平衡規則，例如 **nw1-lb-ERS**) 
 1. 或者，若案例需要基本負載平衡器 (內部)，請遵循這些步驟：  
    1. 建立前端 IP 位址
       1. 針對 ASCS 是 IP 位址 10.0.0.7
@@ -218,7 +218,7 @@ Azure Marketplace 包含 SUSE Linux Enterprise Server for SAP Applications 12 �
          1. 將 [指派] 設定為 [靜態]，然後輸入 IP 位址 (例如 **10.0.0.7**)
          1. 按一下 [確定]
       1. 針對 ASCS ERS 是 IP 位址 10.0.0.8
-         * 重複上述步驟來建立 ERS (的 IP 位址，例如**10.0.0.8**和**nw1-nw1-aers-backend-前端**) 
+         * 重複上述步驟，為 ERS (建立 IP 位址，例如 **10.0.0.8** 和 **nw1->nw1-aers-前端**) 
    1. 建立後端集區
       1. 開啟負載平衡器，選取後端集區，然後按一下 [新增]
       1. 輸入新後端集區的名稱 (例如 **nw1-backend**)
@@ -529,7 +529,7 @@ Azure Marketplace 包含 SUSE Linux Enterprise Server for SAP Applications 12 �
    enque/encni/set_so_keepalive = true
    </code></pre>
 
-   針對 ENSA1 和 ENSA2，請確定 `keepalive` OS 參數設定如 SAP 附注[1410736](https://launchpad.support.sap.com/#/notes/1410736)中所述。    
+   針對 ENSA1 和 ENSA2，請確定 `keepalive` 作業系統參數已設定為 SAP note [1410736](https://launchpad.support.sap.com/#/notes/1410736)中所述。    
 
    * ERS 設定檔
 
@@ -1034,7 +1034,7 @@ Azure Marketplace 包含 SUSE Linux Enterprise Server for SAP Applications 12 �
         rsc_sap_NW1_ERS02  (ocf::heartbeat:SAPInstance):   Started nw1-cl-0
    </code></pre>
 
-   例如，透過編輯交易 su01 中的使用者來建立佇列鎖定。 在執行 ASCS 實例的節點上，以 adm 的形式執行下列命令 \<sapsid> 。 這些命令會停止 ASCS 執行個體，並重新啟動它。 若使用加入佇列伺服器 1 架構，則加入佇列鎖定預期會在此測試中遺失。 若使用加入佇列伺服器 2 架構，則將會保留加入佇列。 
+   例如，透過編輯交易 su01 中的使用者來建立佇列鎖定。 在 \<sapsid> 正在執行 ASCS 實例的節點上，以 adm 的形式執行下列命令。 這些命令會停止 ASCS 執行個體，並重新啟動它。 若使用加入佇列伺服器 1 架構，則加入佇列鎖定預期會在此測試中遺失。 若使用加入佇列伺服器 2 架構，則將會保留加入佇列。 
 
    <pre><code>nw1-cl-1:nw1adm 54> sapcontrol -nr 00 -function StopWait 600 2
    </code></pre>

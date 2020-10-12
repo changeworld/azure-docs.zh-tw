@@ -11,10 +11,10 @@ ms.date: 09/08/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 8019c049d830df0c2f3301a450eed60145c8eab3
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89570429"
 ---
 # <a name="overview-of-policy-keys-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的原則金鑰總覽
@@ -79,7 +79,7 @@ Azure AD B2C 中原則金鑰的最上層資源是索引 **鍵集** 容器。 每
     1. 若要加入新的機碼， **請選取 [新增]**。
     1. 若要移除新的金鑰，請選取金鑰，然後選取 [ **刪除**]。 若要刪除金鑰，請輸入要刪除之金鑰容器的名稱。 Azure AD B2C 將會刪除金鑰，並使用後置 .bak 來建立金鑰的複本。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 瞭解如何使用 Microsoft Graph 來自動化 [金鑰集](microsoft-graph-operations.md#trust-framework-policy-keyset) 和 [原則金鑰](microsoft-graph-operations.md#trust-framework-policy-key) 部署。
 

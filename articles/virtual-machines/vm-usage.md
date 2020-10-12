@@ -11,10 +11,10 @@ ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 07/28/2020
 ms.openlocfilehash: d43f94d3555a660d6b7c8f755eebfec253d31dc2
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89322876"
 ---
 # <a name="understanding-azure-virtual-machine-usage"></a>了解 Azure 虛擬機器使用情況
@@ -59,7 +59,7 @@ ms.locfileid: "89322876"
 - Windows Server Preview 
 
 ## <a name="service-type"></a>服務類型
-[其他資訊] 欄位中的 [服務類型] 欄位會對應至您所部署的確切 VM 大小。 進階儲存體 VM (SSD 型) 和非進階儲存體 VM (HDD 型) 的價格相同。 如果您部署以 SSD 為基礎的大小，例如標準 \_ DS2 \_ v2，您會在 [計量子類別] 資料行中看到非 ssd 大小 (`Standard\_D2\_v2 VM`) ，並在 `Standard\_DS2\_v2` [其他資訊] 欄位中看到 [SSD 大小] () 。
+[其他資訊] 欄位中的 [服務類型] 欄位會對應至您所部署的確切 VM 大小。 進階儲存體 VM (SSD 型) 和非進階儲存體 VM (HDD 型) 的價格相同。 如果您部署以 SSD 為基礎的大小，例如標準 \_ DS2 \_ v2，您會在 [計量 Sub-Category] 資料行中看到非 ssd 大小 (`Standard\_D2\_v2 VM`) ，並在 [其他資訊] 欄位中看到 [ssd 大小] (`Standard\_DS2\_v2`) 。
 
 ## <a name="region-names"></a>區域名稱
 在使用情況詳細資料中，[資源位置] 欄位內填入的區域名稱不同於 Azure Resource Manager 中使用的區域名稱。 以下是區域值之間的對應：
