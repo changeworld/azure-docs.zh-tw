@@ -4,10 +4,10 @@ description: 針對將資源移至新的資源群組或訂用帳戶進行疑難�
 ms.topic: conceptual
 ms.date: 08/27/2019
 ms.openlocfilehash: 41b1e2435caf9874f3582a3394664c7b7f5a8d29
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90054157"
 ---
 # <a name="troubleshoot-moving-azure-resources-to-new-resource-group-or-subscription"></a>針對將 Azure 資源移至新的資源群組或訂用帳戶的作業進行疑難排解

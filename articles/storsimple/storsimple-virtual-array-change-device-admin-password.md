@@ -16,15 +16,15 @@ ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 8bc8846d546faec194617ccb753cdbd105e16bf9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85513621"
 ---
 # <a name="change-the-storsimple-virtual-array-device-administrator-password-via-storsimple-device-manager"></a>透過 StorSimple 裝置管理員變更 StorSimple Virtual Array 裝置系統管理員密碼
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 當您使用 Windows PowerShell 介面來存取 StorSimple Virtual Array 時，您需要輸入裝置系統管理員密碼。 StorSimple 裝置第一次佈建並啟動時，預設的密碼是 *Password1*。 為了資料的安全性，您第一次登入時預設密碼便會過期，且系統會要求您變更密碼。
 
@@ -46,9 +46,9 @@ ms.locfileid: "85513621"
 
 4. 在 [安全性設定]**** 刀鋒視窗中，執行下列動作︰
    
-   1. 向下流覽至 [**裝置系統管理員密碼**] 區段。 提供含有 8 到 15 個字元的系統管理員密碼。
+   1. 向下卷到 [ **裝置系統管理員密碼** ] 區段。 提供含有 8 到 15 個字元的系統管理員密碼。
    2. 確認密碼。
-   3. 按一下分頁頂端的 [**儲存**]。
+   3. 按一下分頁頂端的 [ **儲存** ]。
 
 現在已變更裝置系統管理員密碼。 您可以使用修改的密碼在本機存取該裝置。
 
@@ -60,7 +60,7 @@ ms.locfileid: "85513621"
 
 #### <a name="to-change-the-device-administrator-password-via-the-local-web-ui"></a>透過本機 Web UI 變更裝置系統管理員密碼
 
-1. 在本機 web UI 中，針對您的裝置按一下 [**維護**  >  **密碼變更**]。
+1. 在本機 web UI 中，按一下**Maintenance**  >  您裝置的 [維護**密碼變更**]。
    
     ![變更 password1](./media/storsimple-virtual-array-change-device-admin-password/image40.png)
 2. 輸入 **目前的密碼**。
@@ -77,6 +77,6 @@ ms.locfileid: "85513621"
     成功更新密碼之後會通知您。 您即可使用修改的密碼在本機存取該裝置。
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 了解如何 [管理 StorSimple Virtual Array](storsimple-ova-web-ui-admin.md)。
 

@@ -13,10 +13,10 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 ms.openlocfilehash: 3286b464051b8fea88d2797d4f82b20fe432b4b8
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90019524"
 ---
 # <a name="upload-files-with-iot-hub"></a>透過 IoT 中樞上傳檔案
@@ -152,7 +152,7 @@ IoT 中樞開發人員指南中的其他參考主題包括︰
 
 * [IoT 中樞 MQTT 支援](iot-hub-mqtt-support.md)針對 MQTT 通訊協定提供 IoT 中樞支援的詳細資訊。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 現在您已了解如何使用 IoT 中樞從裝置上傳檔案，接下來您可能對下列 IoT 中樞開發人員指南主題感興趣︰
 

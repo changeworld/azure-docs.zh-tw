@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: how-to
 ms.date: 09/30/2020
 ms.openlocfilehash: 1120a3636b7ce24dde0d33c213f9063f910123c4
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91530624"
 ---
 # <a name="manage-azure-machine-learning-resources-with-the-vs-code-extension-preview"></a>使用 VS Code 擴充功能 (預覽版來管理 Azure Machine Learning 資源) 
@@ -217,7 +217,7 @@ VS Code 擴充功能目前支援下列類型的資料存放區：
 1. 展開包含您工作區的訂用帳戶節點。
 1. 展開工作區中的 **實驗** 節點。
 1. 以滑鼠右鍵按一下您想要查看的實驗，然後選取 [ **查看實驗**]。 
-1. 系統會出現提示，要求您在 Azure Machine Learning studio 中開啟實驗 URL。 選取 [開啟]。
+1. 系統會出現提示，要求您在 Azure Machine Learning studio 中開啟實驗 URL。 選取 [開啟]  。
 
 ### <a name="track-run-progress"></a>追蹤執行進度
 
@@ -227,7 +227,7 @@ VS Code 擴充功能目前支援下列類型的資料存放區：
 1. 展開工作區中的 **實驗** 節點。
 1. 展開您想要追蹤進度的實驗節點。
 1. **在 Azure 入口網站中**，以滑鼠右鍵按一下 [執行]，然後選取 [執行]。
-1. 系統會出現提示，要求您在 Azure Machine Learning studio 中開啟執行 URL。 選取 [開啟]。
+1. 系統會出現提示，要求您在 Azure Machine Learning studio 中開啟執行 URL。 選取 [開啟]  。
 
 ### <a name="download-run-logs--outputs"></a>下載執行記錄 & 輸出
 
@@ -381,7 +381,7 @@ VS Code 擴充功能目前支援下列類型的資料存放區：
 
 VS Code 擴充功能支援下列部署目標：
 
-- Azure 容器執行個體
+- Azure Container Instances
 - Azure Kubernetes Service
 
 如需詳細資訊，請參閱 [web 服務端點](concept-azure-machine-learning-architecture.md#web-service-endpoint)。

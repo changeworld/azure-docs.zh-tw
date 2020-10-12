@@ -9,10 +9,10 @@ ms.date: 01/09/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: c8f4269235c494ff9dd8d1bf8e0ef940562f8927
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85515270"
 ---
 # <a name="turn-on-or-turn-off-your-storsimple-8000-series-device"></a>開啟或關閉 StorSimple 8000 系列裝置
@@ -146,7 +146,7 @@ StorSimple 8600 型同時具有主要機箱和 EBOD 機箱。 這需要使用纜
 > [!IMPORTANT]
 > 請勿使用裝置背面的電源按鈕關閉執行中的裝置。
 > 
-> 關閉裝置之前，請確定所有的裝置元件狀態良好。 在 Azure 入口網站中，流覽至 [**裝置**] [  >  **監視**]  >  [**硬體健康**情況]，並確認所有元件的狀態為綠色。 這只適用於狀態良好的系統。 如果正在關閉系統以更換故障的元件，您會在 [硬體狀態]**** 中看見個別元件出現故障 (紅色) 或降級 (黃色) 狀態。
+> 關閉裝置之前，請確定所有的裝置元件狀態良好。 在 Azure 入口網站中，流覽至 [**裝置**  >  **監視**  >  **硬體健康**情況]，並確認所有元件的狀態都是綠色。 這只適用於狀態良好的系統。 如果正在關閉系統以更換故障的元件，您會在 [硬體狀態]**** 中看見個別元件出現故障 (紅色) 或降級 (黃色) 狀態。
 > 
 > 
 
@@ -154,7 +154,7 @@ StorSimple 8600 型同時具有主要機箱和 EBOD 機箱。 這需要使用纜
 
 ### <a name="device-with-ebod-enclosure"></a>具有 EBOD 機箱的裝置 <a name="8600a"></a>
 > [!IMPORTANT]
-> 關閉主要機箱和 EBOD 機箱之前，請確定所有裝置元件狀態良好。 在 Azure 入口網站中，流覽至 [**裝置**] [  >  **監視**]  >  [**硬體健康**情況]，並確認所有元件的狀況良好。
+> 關閉主要機箱和 EBOD 機箱之前，請確定所有裝置元件狀態良好。 在 Azure 入口網站中，流覽至 [**裝置**  >  **監視**  >  **硬體健康**情況]，並確認所有元件的狀況良好。
 
 
 #### <a name="to-shut-down-a-running-device-with-ebod-enclosure"></a>若要關閉具有 EBOD 機箱的執行中裝置
@@ -165,6 +165,6 @@ StorSimple 8600 型同時具有主要機箱和 EBOD 機箱。 這需要使用纜
 > [!NOTE]
 > SAS 纜線是用來連接 EBOD 機箱與主要機箱，且在系統關閉之前都不應該移除。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 [Contact Microsoft Support](storsimple-8000-contact-microsoft-support.md) 。
 

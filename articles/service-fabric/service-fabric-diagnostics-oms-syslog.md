@@ -1,15 +1,15 @@
 ---
-title: 監視 Azure 中的 Linux 叢集事件 Service Fabric
-description: 瞭解如何藉由將 Service Fabric 平臺事件寫入 Syslog，來監視 Service Fabric Linux 叢集事件。
+title: 監視 Azure Service Fabric 中的 Linux 叢集事件
+description: 瞭解如何藉由將 Service Fabric 的平臺事件寫入 Syslog，來監視 Service Fabric Linux 叢集事件。
 author: srrengar
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: srrengar
 ms.openlocfilehash: fe31c6fdca3651bfe56e798b30d50c9f047c680b
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86258635"
 ---
 # <a name="service-fabric-linux-cluster-events-in-syslog"></a>Syslog 中的 Service Fabric Linux 叢集事件
@@ -26,9 +26,9 @@ Service Fabric 會公開一組平台事件，以通知您叢集中的重要活�
 * Facility
 * 身分識別
 * 訊息
-* 嚴重性
+* Severity
 
-SyslogConsumer 會使用 `Local0` 設施 (Facility) 寫入所有平台事件。 您可以藉由變更設定設定來更新為任何有效的設施。使用的身分識別為 `ServiceFabric` 。 [訊息] 欄位會包含整個以 JSON 序列化的事件，以便各種工具查詢及使用。 
+SyslogConsumer 會使用 `Local0` 設施 (Facility) 寫入所有平台事件。 您可以藉由變更 config 設定來更新為任何有效的設備。使用的身分識別為 `ServiceFabric` 。 [訊息] 欄位會包含整個以 JSON 序列化的事件，以便各種工具查詢及使用。 
 
 ## <a name="enable-syslogconsumer"></a>啟用 SyslogConsumer
 
@@ -95,7 +95,7 @@ SyslogConsumer 會使用 `Local0` 設施 (Facility) 寫入所有平台事件。 
 
 2. 按一下 `Data`
 3. 按一下 `Syslog`
-4. 將 Local0 設定為要追蹤的設施。如果您在 fabricSettings 中進行變更，您可以新增另一項功能
+4. 將 Local0 設定為要追蹤的設備。如果您在 fabricSettings 中加以變更，您可以新增其他設備
 
     ![設定 Syslog](media/service-fabric-diagnostics-oms-syslog/syslog-configure.png)
 5. 按一下工作區資源功能表中的 `Logs`，即可前往 [查詢總管] 來開始查詢
@@ -111,8 +111,8 @@ SyslogConsumer 會使用 `Local0` 設施 (Facility) 寫入所有平台事件。 
 
 上述範例中是 NodeDown 事件。 您可以在[此處](service-fabric-diagnostics-event-generation-operational.md)檢視完整的事件清單。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 * [部署 Log Analytics 代理程式](service-fabric-diagnostics-oms-agent.md)至您的節點，以收集效能計數器，並收集您容器的 Docker 統計資料和記錄
 * 熟悉 Azure 監視器記錄中提供的[記錄搜尋和查詢](../azure-monitor/log-query/log-query-overview.md)功能
 * [使用 View Designer 在 Azure 監視器記錄中建立自訂視圖](../azure-monitor/platform/view-designer.md)
-* 如何[Azure 監視器記錄與 Syslog 整合](../azure-monitor/platform/data-sources-syslog.md)的參考。
+* 如何 [Azure 監視器記錄與 Syslog 整合](../azure-monitor/platform/data-sources-syslog.md)的參考。

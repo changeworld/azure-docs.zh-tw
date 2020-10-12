@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 07/19/2017
 ms.author: alkohli
 ms.openlocfilehash: 5a6cd904d7baa71c8b383022523909ca30000ce8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85515005"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-storsimple-volume-containers"></a>使用 StorSimple 裝置管理員服務管理 StorSimple 磁碟區容器
@@ -56,7 +56,7 @@ Microsoft Azure StorSimple 裝置中的磁碟區容器包含一個或多個可�
 
 [!INCLUDE [storsimple-8000-delete-volume-container](../../includes/storsimple-8000-delete-volume-container.md)]
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 * 深入了解 [管理 StorSimple 磁碟區](storsimple-8000-manage-volumes-u2.md)。 
 * 深入了解[使用 StorSimple 裝置管理員服務管理 StorSimple 裝置](storsimple-8000-manager-service-administration.md)。
 

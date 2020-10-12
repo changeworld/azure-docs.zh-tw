@@ -4,10 +4,10 @@ description: 在 Azure Service Fabric 應用程式中使用 Service Fabric 可�
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.openlocfilehash: 63e6de436bdaceed7f1d2a78e8385dd14bfc0ed6
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86260914"
 ---
 # <a name="guidelines-and-recommendations-for-reliable-collections-in-azure-service-fabric"></a>Azure Service Fabric 中 Reliable Collection 的指導方針與建議
@@ -20,7 +20,7 @@ ms.locfileid: "86260914"
 * 請不要針對逾時使用 `TimeSpan.MaxValue` 。 逾時應該用來偵測死結。
 * 在認可、中止或處置交易之後，請勿使用該交易。
 * 請不要在其所建立的交易範圍之外使用列舉。
-* 請不要在另一個交易的語句內建立交易 `using` ，因為它可能會導致鎖死。
+* 請勿在另一個交易的語句中建立交易 `using` ，因為它可能會造成鎖死。
 * 請勿使用建立可靠的狀態 `IReliableStateManager.GetOrAddAsync` ，並在相同的交易中使用可靠的狀態。 這會導致 InvalidOperationException。
 * 務必確保 `IComparable<TKey>` 實作是正確的。 系統會對 `IComparable<TKey>` 採取相依性以合併檢查點與資料列。
 * 請不要在讀取需更新的項目時使用更新鎖定，以避免發生特定類別的死結。
@@ -40,21 +40,21 @@ ms.locfileid: "86260914"
   這表示從單一次要複本讀取的資料版本進度可能有誤。
   從主要複本讀取一定最穩定︰進度一定不會有誤。
 * 應用程式保存在可靠集合中的資料會有何種安全性/隱私權將由您決定，且會受到儲存體管理的保護；也就是說， 作業系統磁碟加密可用來保護待用資料。
-* `ReliableDictionary`列舉會使用依索引鍵排序的已排序資料結構。 為了讓列舉有效率，認可會加入暫存 hashtable，稍後再移至主要的排序資料結構後置檢查點。 新增/更新/刪除具有 (1) 的最佳案例執行時間，以及最糟的 O (log n) 的執行時間，在驗證檢查是否存在金鑰的情況下。 根據您是從最近的認可還是從較舊的認可讀取，取得可能是 O (1) 或 O (log n) 。
+* `ReliableDictionary` 列舉會使用依索引鍵排序的已排序資料結構。 為了使列舉更有效率，認可會新增至暫存雜湊表，之後再移至主要排序的資料結構 post 檢查點。 新增/更新/刪除具有最大的 O (1) 和最糟的1和最糟的案例執行時間 (記錄 n) ，在驗證檢查是否有索引鍵的情況下也是如此。 根據您是從最近的認可或從較舊的認可讀取，取得 (1) 或 O (記錄 n) 。
 
 ## <a name="volatile-reliable-collections"></a>Volatile 可靠的集合
-決定使用 volatile 可靠的集合時，請考慮下列事項：
+當您決定要使用 volatile 可靠的集合時，請考慮下列事項：
 
-* ```ReliableDictionary```具有 volatile 支援
-* ```ReliableQueue```具有 volatile 支援
-* ```ReliableConcurrentQueue```沒有變動性支援
-* 持續性服務無法設為 volatile。 將旗標變更 ```HasPersistedState``` 為 ```false``` 需要從頭重新建立整個服務
-* Volatile 服務無法進行保存。 將旗標變更 ```HasPersistedState``` 為 ```true``` 需要從頭重新建立整個服務
-* ```HasPersistedState```是服務等級設定。這表示**所有**的集合都是保存或變動。 您不能混用 volatile 和保存的集合
-* 暫時性分割區的仲裁遺失會導致資料遺失
-* 備份與還原不適用於 volatile 服務
+* ```ReliableDictionary``` 有 volatile 支援
+* ```ReliableQueue``` 有 volatile 支援
+* ```ReliableConcurrentQueue``` 沒有 volatile 支援
+* 持續性服務無法設為 volatile。 將旗標變更 ```HasPersistedState``` 為 ```false``` 需要從頭重建整個服務
+* 無法保存暫時性服務。 將旗標變更 ```HasPersistedState``` 為 ```true``` 需要從頭重建整個服務
+* ```HasPersistedState``` 是服務層級設定。這表示 **所有** 的集合都是保存或變動。 您無法混合變動性和保存的集合
+* 暫時性資料分割的仲裁遺失會導致資料遺失
+* 備份和還原不適用於暫時性服務
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 * [使用可靠的集合](service-fabric-work-with-reliable-collections.md)
 * [交易和鎖定](service-fabric-reliable-services-reliable-collections-transactions-locks.md)
 * 管理資料

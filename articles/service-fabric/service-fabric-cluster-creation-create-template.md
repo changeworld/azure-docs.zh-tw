@@ -4,10 +4,10 @@ description: 了解如何為 Service Fabric 叢集建立 Resource Manager 範本
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.openlocfilehash: b028b5c1f32733146c071e50b24202e5bad945c0
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86260489"
 ---
 # <a name="create-a-service-fabric-cluster-resource-manager-template"></a>建立 Service Fabric 叢集 Resource Manager 範本
@@ -30,10 +30,10 @@ ms.locfileid: "86260489"
 > 針對國家雲 (Azure Government、Azure 中國、Azure 德國)，您也應將下列 `fabricSettings` 新增至您的範本：`AADLoginEndpoint`、`AADTokenEndpointFormat` 和 `AADCertEndpointFormat`。
 
 ## <a name="add-certificates"></a>新增憑證
-您可以藉由參考包含憑證金鑰的 Key Vault，將憑證新增到叢集 Resource Manager 範本。 將這些金鑰保存庫參數和值新增至 Resource Manager 範本參數檔案中， (*azuredeploy.parameters.js在) 上*。
+您可以藉由參考包含憑證金鑰的 Key Vault，將憑證新增到叢集 Resource Manager 範本。 將 Resource Manager 範本參數檔案中的金鑰保存庫參數和值新增至) * 上 (azuredeploy.parameters.js* 。
 
 ### <a name="add-all-certificates-to-the-virtual-machine-scale-set-osprofile"></a>將所有憑證都新增到虛擬機器擴展集 osProfile
-安裝在叢集中的每個憑證都必須在擴展集資源 (的 [ **osProfile** ] 區段中設定。 [計算/virtualMachineScaleSets) ]。 此動作會指示資源提供者在 VM 上安裝憑證。 此安裝既包含叢集憑證，也包含任何您打算用於應用程式的應用程式安全性憑證︰
+安裝在叢集中的每個憑證都必須在擴展集資源 (Microsoft. Compute/virtualMachineScaleSets) 的 **osProfile** 區段中設定。 此動作會指示資源提供者在 VM 上安裝憑證。 此安裝既包含叢集憑證，也包含任何您打算用於應用程式的應用程式安全性憑證︰
 
 ```json
 {
@@ -132,10 +132,10 @@ ms.locfileid: "86260489"
 
 ## <a name="add-azure-ad-configuration-to-use-azure-ad-for-client-access"></a>新增 Azure AD 設定以針對用戶端存取使用 Azure AD
 
-您可以藉由參考包含憑證金鑰的金鑰保存庫，將 Azure AD 設定新增到叢集 Resource Manager 範本。 將這些 Azure AD 參數和值加入 Resource Manager 範本參數檔案中， (*azuredeploy.parameters.js在) 上*。 
+您可以藉由參考包含憑證金鑰的金鑰保存庫，將 Azure AD 設定新增到叢集 Resource Manager 範本。 將這些 Azure AD 參數和值加入 Resource Manager 範本參數檔案 (*azuredeploy.parameters.js*) 。 
 
 > [!NOTE]
-> 在 Linux 上，必須在建立叢集之前，先建立 Azure AD 的租使用者和使用者。  如需詳細資訊，請閱讀[設定 Azure AD 以驗證用戶端](service-fabric-cluster-creation-setup-aad.md)。
+> 在 Linux 上，必須先建立 Azure AD 租使用者和使用者，才能建立叢集。  如需詳細資訊，請閱讀[設定 Azure AD 以驗證用戶端](service-fabric-cluster-creation-setup-aad.md)。
 
 ```json
 {
@@ -247,7 +247,7 @@ Test-AzResourceGroupDeployment -ResourceGroupName "myresourcegroup" -TemplateFil
 
 ![Resource Manager 相依性對應][cluster-security-arm-dependency-map]
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 現在您已有叢集範本，請了解如何[將叢集部署到 Azure](service-fabric-cluster-creation-via-arm.md)。  部署生產叢集之前，請先閱讀[生產整備檢查清單](service-fabric-production-readiness-checklist.md)。
 
 若要深入了解本文中所部署資源的 JSON 語法和屬性，請參閱：

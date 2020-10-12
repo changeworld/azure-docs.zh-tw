@@ -1,7 +1,7 @@
 ---
 title: 將叢集遷移至較新的版本
 titleSuffix: Azure HDInsight
-description: 瞭解將您的 Azure HDInsight 叢集遷移至較新版本的指導方針。
+description: 瞭解將 Azure HDInsight 叢集遷移至較新版本的指導方針。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -10,15 +10,15 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/31/2020
 ms.openlocfilehash: f3bfd430023330d3a399a0a760fd353b6ee60941
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86085883"
 ---
 # <a name="migrate-hdinsight-cluster-to-a-newer-version"></a>將 HDInsight 叢集遷移至更新的版本
 
-若要利用最新的 HDInsight 功能，建議您將 HDInsight 叢集定期遷移至最新版本。 HDInsight 不支援就地升級，其中現有的叢集會升級至較新的元件版本。 您必須使用所需的元件和平臺版本來建立新的叢集，然後將您的應用程式遷移以使用新的叢集。 請遵循下列指導方針來遷移 HDInsight 叢集版本。
+若要利用最新的 HDInsight 功能，建議將 HDInsight 叢集定期遷移至最新版本。 HDInsight 不支援就地升級，其中現有的叢集會升級至較新的元件版本。 您必須使用所需的元件和平臺版本來建立新的叢集，然後將應用程式遷移至使用新的叢集。 遵循下列指導方針來遷移您的 HDInsight 叢集版本。
 
 > [!NOTE]  
 > 如需受支援 HDInsight 版本的詳細資訊，請參閱 [HDInsight 元件版本](hdinsight-component-versioning.md#supported-hdinsight-versions)。
@@ -47,13 +47,13 @@ ms.locfileid: "86085883"
 
 * [遷移 HBase](./hbase/apache-hbase-migrate-new-version.md)
 * [遷移 Kafka](./kafka/migrate-versions.md)
-* [遷移 Hive/互動式查詢](./interactive-query/apache-hive-migrate-workloads.md)
+* [遷移 Hive/Interactive Query](./interactive-query/apache-hive-migrate-workloads.md)
 
 ## <a name="backup-and-restore"></a>備份與還原
 
-如需資料庫備份和還原的詳細資訊，請參閱[使用自動資料庫備份來復原 Azure SQL Database 中的資料庫](../azure-sql/database/recovery-using-backups.md)。
+如需有關資料庫備份和還原的詳細資訊，請參閱 [使用自動資料庫備份復原 Azure SQL Database 中的資料庫](../azure-sql/database/recovery-using-backups.md)。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>接下來的步驟
 
 * [了解如何建立 Linux 型 HDInsight 叢集](hdinsight-hadoop-provision-linux-clusters.md)
 * [使用 SSH 連線到 HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md)
