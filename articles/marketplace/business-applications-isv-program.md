@@ -8,10 +8,10 @@ author: parthpandyaMSFT
 ms.author: parthp
 ms.date: 7/14/2020
 ms.openlocfilehash: 4c4455d62f32acb1cfebde8f5e4d97de5bda17c2
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89463459"
 ---
 # <a name="microsoft-business-applications-independent-software-vendor-isv-connect-program-onboarding-guide"></a>Microsoft Business Applications 獨立軟體廠商 (ISV) Connect 計畫上線指南
@@ -72,7 +72,7 @@ ms.locfileid: "89463459"
 > [!IMPORTANT]
 > 您需要每隔6個月重新認證您的應用程式，讓它們存留在 AppSource。 如需詳細資訊，請參閱 marketplace 原則 [商業 Marketplace 認證原則](https://docs.microsoft.com/legal/marketplace/certification-policies)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 請向您的帳戶管理員要求您的帳戶，或洽詢 [Microsoft 合作夥伴支援](https://aka.ms/marketplacepublishersupport) 以取得協助。 如需 Business Applications ISV Connect 計畫的一般資訊，請參閱：
 

@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
 ms.openlocfilehash: f9b743d768aabbd7949094ae4b7366c46eabf4c4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81410075"
 ---
 # <a name="copy-data-from-vertica-using-azure-data-factory"></a>使用 Azure Data Factory 從 Vertica 複製資料 
@@ -40,7 +40,7 @@ Azure Data Factory 提供的內建驅動程式可啟用連線，因此使用此�
 
 ## <a name="getting-started"></a>開始使用
 
-您可以使用 .NET SDK、Python SDK、Azure PowerShell、REST API 或 Azure Resource Manager 範本來建立具有複製活動的管線。 如需建立包含複製活動之管線的逐步指示，請參閱[複製活動教學](quickstart-create-data-factory-dot-net.md)課程。
+您可以使用 .NET SDK、Python SDK、Azure PowerShell、REST API 或 Azure Resource Manager 範本來建立具有複製活動的管線。 請參閱「 [複製活動」教學](quickstart-create-data-factory-dot-net.md) 課程，以取得使用複製活動建立管線的逐步指示。
 
 下列各節提供屬性的相關詳細資料，這些屬性是用來定義 Vertica 連接器專屬的 Data Factory 實體。
 

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: ponatara
 ms.openlocfilehash: 90d54a8ded99dd8ab43aed688036add6aede20ab
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86134841"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-citrix-xenapp-and-xendesktop-deployment"></a>設定多層式 Citrix XenApp 和 XenDesktop 部署的災害復原
@@ -26,7 +26,7 @@ Citrix XenDesktop 是桌面虛擬化解決方案，能夠為任何地方的任�
 對於為 Hyper-V 和 VMware vSphere 平台上的內部部署 Citrix XenApp 部署建置災害復原方案，本文提供逐步指引。 本文同時也會說明如何使用復原計劃、支援的組態和必要條件，執行測試容錯移轉 (災害復原訓練) 和未計劃的 Azure 容錯移轉。
 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 開始之前，請確定您瞭解下列項目︰
 
@@ -190,6 +190,6 @@ AD DNS 伺服器、SQL 資料庫伺服器、Citrix 傳遞控制站、StoreFront 
 
 當您在進行容錯移轉時，請依照[本指引](site-recovery-failover.md)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 您可以在這份白皮書中[深入了解](https://aka.ms/citrix-xenapp-xendesktop-with-asr)複寫 Citrix XenApp 和 XenDesktop 部署。 參閱使用 Site Recovery [複寫其他應用程式](site-recovery-workload.md)的指引。

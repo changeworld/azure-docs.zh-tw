@@ -1,16 +1,16 @@
 ---
 title: 適用于 Eclipse 的 Azure Service Fabric 外掛程式
-description: 瞭解如何在 JAVA 中使用 eclipse 和 Service Fabric 提供的外掛程式開始使用 Azure Service Fabric。
+description: 瞭解如何在 JAVA 中使用 eclipse 和 Service Fabric 提供的外掛程式來開始使用 Azure Service Fabric。
 author: rapatchi
 ms.topic: conceptual
 ms.date: 04/06/2018
 ms.author: rapatchi
 ms.custom: devx-track-java
 ms.openlocfilehash: 004fb022847432a9739e79f7063b80636f8dcf2b
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87374230"
 ---
 # <a name="service-fabric-plug-in-for-eclipse-java-application-development"></a>適用於 Eclipse Java 應用程式開發的 Service Fabric 外掛程式
@@ -20,7 +20,7 @@ Eclipse 是 Java 開發人員最普遍使用的整合式的開發環境 (IDE) �
 > Windows 上目前不支援 Eclipse 外掛程式。 
 
 > [!IMPORTANT]
-> 請確定 JDK 8 已安裝在系統上，並在 Eclipse 中選取。
+> 請確定系統上已安裝 JDK 8，並在 Eclipse 中選取。
 
 ## <a name="install-or-update-the-service-fabric-plug-in-in-eclipse"></a>在 Eclipse 中安裝或更新 Service Fabric 外掛程式
 您可以在 Eclipse 中安裝 Service Fabric 外掛程式。 外掛程式可協助簡化建置和部署 Java 服務的程序。
@@ -31,25 +31,25 @@ Eclipse 是 Java 開發人員最普遍使用的整合式的開發環境 (IDE) �
 > 在 Ubuntu 上，建議您直接從 Eclipse 網站安裝，而不要使用套件安裝程式 (`apt` 或 `apt-get`)。 這麼做可確保您會取得最新版的 Eclipse。 
 
 從 [Eclipse 網站](https://www.eclipse.org)安裝 Eclipse Neon 版或更新版本。  同時安裝 Buildship 2.2.1 版或更新版本 (Service Fabric 外掛程式與舊版 Buildship 不相容)：
--   若要檢查已安裝元件的版本，請在 eclipse 中**移至 [** 說明] [  >  **關於 eclipse**] [  >  **安裝詳細資料**]。
+-   若要檢查已安裝的元件版本，請在 eclipse 中，**移至**  >  **eclipse**  >  **安裝詳細資料**的 [說明]。
 -   若要更新 Buildship，請參閱 [Eclipse Buildship：適用於 Gradle 的 Eclipse 外掛程式][buildship-update]。
--   若要檢查並安裝 Eclipse 的更新，請移**至 [** 說明] [  >  **檢查更新**]。
+-   若要檢查並安裝 Eclipse 的更新，請移**至 [說明] 以**  >  **查看是否有更新**。
 
-安裝 Service Fabric 外掛程式，請在 Eclipse 中**移至 [** 說明] [  >  **安裝新軟體**]。
-1. **在 [使用**] 方塊中，輸入 HTTPs： \/ /dl.microsoft.com/eclipse。
-2. 按一下 [新增]  。
+安裝 Service Fabric 外掛程式，在 Eclipse 中，移至 [說明**Help**  >  **安裝新軟體**]。
+1. 在 [ **工作** ] 方塊中，輸入 HTTPs： \/ /dl.microsoft.com/eclipse。
+2. 按一下 [新增] 。
 
    ![適用於 Eclipse 的 Service Fabric 外掛程式][sf-eclipse-plugin-install]
 3. 選取 Service Fabric 外掛程式，然後按 [下一步]****。
 4. 完成安裝步驟，然後接受 Microsoft 軟體授權條款。
   
 如果您已安裝 Service Fabric 外掛程式，請安裝最新版本。 
-1. 若要檢查可用的更新，請**移至 [** 說明] [  >  **關於 Eclipse**  >  **安裝詳細資料**]。 
+1. 若要檢查可用的更新，請**移至**  >  **Eclipse**  >  **安裝詳細資料**的相關說明。 
 2. 在已安裝外掛程式的清單中，選取 Service Fabric，然後按一下 [更新]****。 將安裝可用的更新。
 3. 更新 Service Fabric 外掛程式後，請同時重新整理 Gradle 專案。  以滑鼠右鍵按一下 [build.gradle]****，然後選取 [重新整理]****。
 
 > [!NOTE]
-> 如果安裝或更新 Service Fabric 外掛程式時很緩慢，可能是因為 Eclipse 設定。 Eclipse 會收集所有變更的中繼資料，以更新使用您 Eclipse 執行個體註冊的網站。 若要加速檢查及安裝 Service Fabric 外掛程式更新的程序，前往 [可用的軟體站台]****。 清除所有網站的核取方塊，但指向 Service Fabric 外掛程式位置（HTTPs： \/ /dl.microsoft.com/eclipse/azure/servicefabric）除外。
+> 如果安裝或更新 Service Fabric 外掛程式時很緩慢，可能是因為 Eclipse 設定。 Eclipse 會收集所有變更的中繼資料，以更新使用您 Eclipse 執行個體註冊的網站。 若要加速檢查及安裝 Service Fabric 外掛程式更新的程序，前往 [可用的軟體站台]****。 清除所有網站的核取方塊，但指向 Service Fabric 外掛程式位置的所有網站除外 (HTTPs： \/ /dl.microsoft.com/eclipse/azure/servicefabric) 。
 
 > [!NOTE]
 >如果 Eclipse 在 Mac 上未如預期一般運作，或需要您以進階使用者身分執行，請移至 **ECLIPSE_INSTALLATION_PATH** 資料夾，並瀏覽至子資料夾 **Eclipse.app/Contents/MacOS**。 執行 `./eclipse` 來啟動 Eclipse。
@@ -57,7 +57,7 @@ Eclipse 是 Java 開發人員最普遍使用的整合式的開發環境 (IDE) �
 
 ## <a name="create-a-service-fabric-application-in-eclipse"></a>在 Eclipse 中建立 Service Fabric 應用程式
 
-1.  在 Eclipse 中，移**至 [** 檔案] [  >  **新增**  >  **其他**]。 選取 **Service Fabric 外掛程式**，然後按 [下一步]****。
+1.  在 Eclipse 中，移**至 [**  >  **新增**  >  **其他**檔案]。 選取 **Service Fabric 外掛程式**，然後按 [下一步]****。
 
     ![Service Fabric 新專案第 1 頁][create-application/p1]
 
@@ -160,13 +160,13 @@ Eclipse 是 Java 開發人員最普遍使用的整合式的開發環境 (IDE) �
 
 在安全的 Linux 叢集上，若您的應用程式包含 Reliable Services 服務，您將必須設定可供您的服務用來呼叫 Service Fabric runtime API 的憑證。 若要深入了解，請參閱[將 Reliable Services 應用程式設定為在 Linux 叢集上執行](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters)。
 
-如需如何將以 JAVA 撰寫的 Service Fabric Reliable Services 應用程式部署到安全 Linux 叢集的快速逐步解說，請參閱[快速入門：部署 java Reliable Services 應用程式](./service-fabric-quickstart-java-reliable-services.md)。
+如需如何將以 JAVA 撰寫 Service Fabric Reliable Services 應用程式部署到安全 Linux 叢集的快速逐步解說，請參閱 [快速入門：部署 java Reliable Services 應用程式](./service-fabric-quickstart-java-reliable-services.md)。
 
 ## <a name="deploy-a-service-fabric-application-by-using-eclipse-run-configurations"></a>使用 Eclipse 回合組態來部署 Service Fabric 應用程式
 
 另一種方式是使用 Eclipse 執行組態來部署 Service Fabric 應用程式。
 
-1. 在 Eclipse 中，移至 [**執行**] [執行設定]  >  ** **。
+1. 在 Eclipse 中，移至 [**執行**  >  **執行**設定]。
 2. 在 [等級專案]**** 下，選取 **ServiceFabricDeployer** 執行組態。
 3. 在右窗格的 [引數]**** 索引標籤上，確定已適當地針對您的部署設定 **ip**、**port**、**clientCert** 與 **clientKey** 參數。 根據預設值，參數是設定為部署到本機叢集，如下列螢幕擷取畫面所示。 若要將您的應用程式發佈到 Azure，您可以修改參數以包含 Azure 叢集的端點詳細資料與安全性認證。 如需詳細資訊，請參閱上一節[使用 Eclipse 將您的 Service Fabric 應用程式發佈到 Azure](#publish-your-service-fabric-application-to-azure-with-eclipse)。
 
@@ -212,7 +212,7 @@ Eclipse 是 Java 開發人員最普遍使用的整合式的開發環境 (IDE) �
 
 若要使用 Eclipse 升級您的應用程式，您可以建立重複的執行組態設定檔。 然後，視需要使用它升級您的應用程式。
 
-1.  移至 [**執行**] [執行設定]  >  ** **。 在左窗格中，按一下 [等級專案]**** 左邊的小箭號。
+1.  移至 [**執行**回合設定]  >  ** **。 在左窗格中，按一下 [等級專案]**** 左邊的小箭號。
 2.  以滑鼠右鍵按一下 **ServiceFabricDeployer**，然後選取 [重複]****。 輸入此設定的新名稱，例如，**ServiceFabricUpgrader**。
 3.  在右窗格的 [引數]**** 索引標籤上，將 **-Pconfig='deploy'** 變更為 **-Pconfig='upgrade'**，然後按一下 [套用]****。
 
@@ -223,9 +223,9 @@ Eclipse 是 Java 開發人員最普遍使用的整合式的開發環境 (IDE) �
 ## <a name="migrating-old-service-fabric-java-applications-to-be-used-with-maven"></a>移轉要搭配 Maven 使用的舊版 Service Fabric Java 應用程式
 我們最近已將 Service Fabric Java 程式庫從 Service Fabric Java SDK 移至 Maven 存放庫。 雖然您使用 Eclipse 產生的新應用程式將產生最新的專案 (能夠搭配 Maven 運作)，但您可以更新現有的 Service Fabric 無狀態或動作項目 Java 應用程式 (先前使用 Service Fabric Java SDK)，以使用 Maven 提供的 Service Fabric Java 相依性。 請遵循[這裡](service-fabric-migrate-old-javaapp-to-use-maven.md)所述的步驟，確保舊版應用程式能搭配 Maven 運作。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-- 如需建立 JAVA 可靠服務應用程式，並將其部署在本機和 Azure 的快速步驟，請參閱[快速入門：部署 java Reliable Services 應用程式](./service-fabric-quickstart-java-reliable-services.md)。
+- 如需建立 JAVA 可靠服務應用程式並將它部署到本機和 Azure 的快速步驟，請參閱 [快速入門：部署 java Reliable Services 應用程式](./service-fabric-quickstart-java-reliable-services.md)。
 - 若要了解如何在您的本機叢集上針對 Java 應用程式進行偵錯，請 參閱[在 Eclipse 中針對 Java 服務進行偵錯](./service-fabric-debugging-your-application-java.md)。
 - 若要了解如何監視 Service Fabric 應用程式及針對此類應用程式進行診斷，請參閱[監視和診斷本機開發設定中的服務](./service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md)。
 

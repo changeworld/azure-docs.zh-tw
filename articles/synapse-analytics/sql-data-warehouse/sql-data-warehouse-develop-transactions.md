@@ -1,5 +1,5 @@
 ---
-title: 在 Synapse SQL 集區中使用交易
+title: 使用 Synapse SQL 集區中的交易
 description: 本文包含在 Synapse SQL 集區中執行交易和開發解決方案的秘訣。
 services: synapse-analytics
 author: XiaoyuMSFT
@@ -11,19 +11,19 @@ ms.date: 03/22/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.openlocfilehash: 40a9e5268b7fccc5c01775c10e55eee47f1aaf3d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85213375"
 ---
-# <a name="use-transactions-in-synapse-sql-pool"></a>在 Synapse SQL 集區中使用交易
+# <a name="use-transactions-in-synapse-sql-pool"></a>使用 Synapse SQL 集區中的交易
 
 本文包含在 SQL 集區中執行交易和開發解決方案的秘訣。
 
 ## <a name="what-to-expect"></a>未來展望
 
-如您所預期，SQL 集區支援交易作為資料倉儲工作負載的一部分。 不過，為了確保 SQL 集區會大規模維護，相較于 SQL Server，某些功能會受到限制。 本文將重點放在不同的部分。
+如您所預期，SQL 集區支援交易作為資料倉儲工作負載的一部分。 不過，為了確保大規模維護 SQL 集區，相較于 SQL Server，某些功能會有所限制。 本文將重點說明差異。
 
 ## <a name="transaction-isolation-levels"></a>交易隔離層級
 
@@ -37,7 +37,7 @@ SQL 集區實作 ACID 交易。 交易式支援的隔離等級預設為 READ UNC
 
 若要大致估計交易中的資料列總數，請將散發容量除以每個資料列的大小總計。 針對可變動的長度資料行，請考慮取得平均資料行長度，而不是使用大小上限。
 
-在下表中，已提出兩個假設：
+在下表中，已進行兩個假設：
 
 * 已發生的資料平均散發
 * 平均資料列長度是 250 個位元組
@@ -95,9 +95,9 @@ SQL 集區會使用 XACT_STATE() 函式 (採用值 -2) 來報告失敗的交易�
 > [!NOTE]
 > XACT_STATE 函式使用 -2 表示失敗的交易，以代表 SQL Server 中不同的行為。 SQL Server 使用值 -1 來代表無法認可的交易。 SQL Server 可以容忍交易內的某些錯誤，而不需將其標示為無法認可。 例如， `SELECT 1/0` 會導致錯誤，但不會強制交易進入無法認可狀態。
 
-SQL Server 也允許讀取無法認可的交易。 不過，SQL 集區不會讓您這麼做。 如果 SQL 集區交易內發生錯誤，它會自動進入-2 狀態，而且您將無法再進行任何 select 語句，直到語句回復為止。
+SQL Server 也允許讀取無法認可的交易。 不過，SQL 集區不會讓您這麼做。 如果 SQL 集區交易中發生錯誤，它會自動進入-2 狀態，而且在語句回復之前，您將無法再進行任何 select 語句。
 
-因此，請務必檢查您的應用程式程式碼，以查看它是否使用 XACT_STATE （），因為您可能需要修改程式碼。
+因此，請務必檢查您的應用程式程式碼，看看它是否使用 XACT_STATE ( # A1，因為您可能需要修改程式碼。
 
 例如，在 SQL Server 中，您可能會看到如下所示的交易：
 
@@ -139,7 +139,7 @@ SELECT @xact_state AS TransactionState;
 
 前述程式碼會產生下列錯誤訊息：
 
-Msg 111233, Level 16, State 1, Line 1 111233; 目前的交易已經中止，並已回復任何暫止的變更。 此問題的原因是在 DDL、DML 或 SELECT 語句之前，處於僅限復原狀態的交易未明確回復。
+Msg 111233, Level 16, State 1, Line 1 111233; 目前的交易已經中止，並已回復任何暫止的變更。 發生此問題的原因是，處於僅限復原狀態的交易未在 DDL、DML 或 SELECT 語句之前明確復原。
 
 您不會收到 ERROR_* 函式的輸出。
 
@@ -213,4 +213,4 @@ SQL 集區有一些與交易相關的其他限制。
 
 ## <a name="next-steps"></a>後續步驟
 
-若要深入了解最佳化交易，請參閱[交易的最佳做法](sql-data-warehouse-develop-best-practices-transactions.md)。 若要瞭解其他 SQL 集區最佳做法，請參閱[sql 集區最佳做法](sql-data-warehouse-best-practices.md)。
+若要深入了解最佳化交易，請參閱[交易的最佳做法](sql-data-warehouse-develop-best-practices-transactions.md)。 若要深入瞭解 SQL 集區的最佳作法，請參閱 [sql 集區最佳作法](sql-data-warehouse-best-practices.md)。

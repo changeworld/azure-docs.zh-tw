@@ -7,10 +7,10 @@ ms.service: data-catalog
 ms.topic: how-to
 ms.date: 08/01/2019
 ms.openlocfilehash: b8c6c6e33577fe3d49d8f0c7a94a941827f5cf68
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86523429"
 ---
 # <a name="register-data-sources-in-azure-data-catalog"></a>在 Azure 資料目錄中註冊資料來源
@@ -77,5 +77,5 @@ Azure 資料目錄是完全受控的雲端服務，可作為企業資料來源�
 ## <a name="summary"></a>摘要
 因為在資料目錄註冊資料來源會將結構化和描述性中繼資料從資料來源複製到目錄服務，所以可讓您更容易地探索及了解資料來源。 在您註冊資料來源之後，即可使用資料目錄入口網站來標註、管理及探索資料來源。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 如需註冊資料來源的詳細資訊，請參閱[開始使用 Azure 資料目錄](data-catalog-get-started.md)教學課程。

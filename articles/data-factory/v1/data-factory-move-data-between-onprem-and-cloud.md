@@ -13,10 +13,10 @@ ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
 ms.openlocfilehash: 7f07f08cd320d94495403b0f5ae65d60d8dc93b5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84195987"
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>利用資料管理閘道在內部部署來源和雲端之間移動資料
@@ -46,8 +46,8 @@ ms.locfileid: "84195987"
 開始進行本逐步解說之前，您必須具備下列必要條件：
 
 * **Azure 訂用帳戶**。  如果您沒有訂用帳戶，則只需要幾分鐘的時間就可以建立免費試用帳戶。 如需詳細資料，請參閱 [免費試用](https://azure.microsoft.com/pricing/free-trial/) 一文。
-* **Azure 儲存體帳戶**。 在本教學課程中，您會使用 Blob 儲存體作為**目的地/接收**資料存放區。 如果您沒有 Azure 儲存體帳戶，請參閱[建立儲存體帳戶](../../storage/common/storage-account-create.md)一文，以瞭解建立的步驟。
-* **SQL Server**。 在本教學課程中，您會使用 SQL Server 資料庫做為**源**資料存放區。
+* **Azure 儲存體帳戶**。 在本教學課程中，您會使用 Blob 儲存體作為**目的地/接收**資料存放區。 如果您沒有 Azure 儲存體帳戶，請參閱 [建立儲存體帳戶](../../storage/common/storage-account-create.md) 一文，以取得建立帳戶的步驟。
+* **SQL Server**。 在本教學課程中，您會使用 SQL Server 資料庫作為 **源** 資料存放區。
 
 ## <a name="create-data-factory"></a>建立資料處理站
 在此步驟中，您將使用 Azure 入口網站來建立名為 **ADFTutorialOnPremDF**的 Azure Data Factory 執行個體。
@@ -63,7 +63,7 @@ ms.locfileid: "84195987"
    > [!IMPORTANT]
    > Azure Data Factory 的名稱在全域必須是唯一的。 如果您收到錯誤： **Data Factory 名稱 “ADFTutorialOnPremDF” 無法使用**，請變更 Data Factory 名稱 (例如 yournameADFTutorialOnPremDF)，然後嘗試重新建立。 執行此教學課程中的其餘步驟時，請使用此名稱來取代 ADFTutorialOnPremDF。
    >
-   > Data factory 的名稱未來可能會註冊為**DNS**名稱，因此會變成公開可見。
+   > Data factory 的名稱未來可能會註冊為 **DNS** 名稱，因此會公開顯示。
    >
    >
 4. 選取您想要建立 Data Factory 的 [Azure 訂用帳戶] **** 。
@@ -96,22 +96,22 @@ ms.locfileid: "84195987"
    > [!NOTE]
    > 使用 Internet Explorer 或 Microsoft ClickOnce 相容的 Web 瀏覽器。
    >
-   > 如果您使用 Chrome，請移至[chrome web store](https://chrome.google.com/webstore/)，使用 "clickonce" 關鍵字進行搜尋，選擇其中一個 ClickOnce 擴充功能並安裝它。
+   > 如果您使用的是 Chrome，請移至 [chrome web 存放區](https://chrome.google.com/webstore/)，使用 "ClickOnce" 關鍵字進行搜尋，選擇其中一個 ClickOnce 延伸模組，然後加以安裝。
    >
-   > 針對 Firefox 進行相同的操作 (安裝附加元件)。 按一下工具列上的 [**開啟功能表**] 按鈕（右上角的**三條水平線**），按一下 [**附加**元件]，使用 "clickonce" 關鍵字進行搜尋，選擇其中一個 ClickOnce 延伸模組並安裝。    
+   > 針對 Firefox 進行相同的操作 (安裝附加元件)。 按一下工具列上的 [ **開啟功能表** ] 按鈕 (右上角的 **三條水平線**) 、按一下 [ **附加**元件]、使用 "ClickOnce" 關鍵字搜尋、選擇其中一個 ClickOnce 延伸模組，然後加以安裝。    
    >
    >
 
     ![閘道 - [設定] 頁面](./media/data-factory-move-data-between-onprem-and-cloud/OnPremGatewayConfigureBlade.png)
 
-    這是最簡單的方式 (一鍵)，透過單一步驟即可下載、安裝、設定和註冊閘道。 您可以看到 **Microsoft 資料管理閘道組態管理員**應用程式已安裝在電腦上。 您也可以在**C:\Program Files\Microsoft 資料管理 Gateway\2.0\Shared**資料夾中找到可執行檔**ConfigManager.exe** 。
+    這是最簡單的方式 (一鍵)，透過單一步驟即可下載、安裝、設定和註冊閘道。 您可以看到 **Microsoft 資料管理閘道組態管理員**應用程式已安裝在電腦上。 您也可以在下列資料夾中找到可執行檔 **ConfigManager.exe** **C:\Program Files\Microsoft 資料管理 Gateway\2.0\Shared**。
 
     您也可以使用此頁面中的連結手動下載與安裝閘道器，並使用 [新金鑰] **** 文字方塊中顯示的金鑰來加以註冊。
 
     如需閘道的所有詳細資料，請參閱 [資料管理閘道](data-factory-data-management-gateway.md) 一文。
 
    > [!NOTE]
-   > 您必須是本機電腦上的系統管理員，才能成功安裝和設定「資料管理閘道」。 您可以將其他使用者新增至**資料管理閘道使用者**本機 Windows 群組。 此群組的成員可以使用「資料管理閘道組態管理員」工具來設定閘道器。
+   > 您必須是本機電腦上的系統管理員，才能成功安裝和設定「資料管理閘道」。 您可以將其他使用者新增至 **資料管理 Gateway users** local Windows 群組。 此群組的成員可以使用「資料管理閘道組態管理員」工具來設定閘道器。
    >
    >
 5. 等候幾分鐘，或等候直到您看見下列通知訊息︰
@@ -129,7 +129,7 @@ ms.locfileid: "84195987"
    * 將更新安裝作業**排程**在一天當中的指定時間。
    * 檢視閘道的 **上次更新**時間。
    * 指定可以安裝閘道更新的時間。
-8. 切換至 [**設定**] 索引標籤。在 **[憑證] 區段中**指定的憑證會用來加密/解密您在入口網站上指定的內部部署資料存放區的認證。 按一下 [變更] **** 以改用您自己的憑證。 根據預設，閘道器會使用由 Data Factory 服務自動產生的憑證。
+8. 切換至 [ **設定** ] 索引標籤。在 **[憑證] 區段中** 指定的憑證會用來加密/解密您在入口網站上指定的內部部署資料存放區的認證。 按一下 [變更] **** 以改用您自己的憑證。 根據預設，閘道器會使用由 Data Factory 服務自動產生的憑證。
 
     ![閘道器憑證組態](./media/data-factory-move-data-between-onprem-and-cloud/gateway-certificate.png)
 
@@ -152,7 +152,7 @@ ms.locfileid: "84195987"
 12. 左側的樹狀檢視中，[資料閘道]**** 下方應該會顯示 **adftutorialgateway**。  如果按一下，應該會看到相關聯的 JSON。
 
 ## <a name="create-linked-services"></a>建立連結的服務
-在此步驟中，您會建立兩個連結服務：**AzureStorageLinkedService** 和 **SqlServerLinkedService**。 **SqlServerLinkedService**會連結 SQL Server 資料庫，而**AzureStorageLinkedService**連結服務則會將 Azure blob 存放區連結至 data factory。 您稍後會在本逐步解說中建立管線，以將資料從 SQL Server 資料庫複製到 Azure blob 存放區。
+在此步驟中，您會建立兩個連結服務：**AzureStorageLinkedService** 和 **SqlServerLinkedService**。 **SqlServerLinkedService**會連結 SQL Server 的資料庫，而 **>azurestoragelinkedservice**連結服務會將 Azure blob 存放區連結至 data factory。 您稍後會在本逐步解說中建立管線，以將資料從 SQL Server 資料庫複製到 Azure blob 存放區。
 
 #### <a name="add-a-linked-service-to-a-sql-server-database"></a>將連結服務新增至 SQL Server 資料庫
 1. 在 [Data Factory 編輯器]**** 中，按一下工具列上的 [新增資料存放區]****，然後選取 [SQL Server]****。
@@ -189,7 +189,7 @@ ms.locfileid: "84195987"
 * 在您加入 Data Factory 作為連結服務的 Azure Blob 儲存體帳戶中，建立名為 **adftutorial** 的 Blob 容器。
 
 ### <a name="prepare-on-premises-sql-server-for-the-tutorial"></a>準備用於教學課程的內部部署 SQL Server
-1. 在您為 SQL Server 連結服務（**SqlServerLinkedService**）指定的資料庫中，使用下列 SQL 腳本在資料庫中建立**emp**資料表。
+1. 在您為 SQL Server 連結服務所指定的資料庫中 (**SqlServerLinkedService**) ，請使用下列 SQL 腳本，在資料庫中建立 **emp** 資料表。
 
     ```SQL   
     CREATE TABLE dbo.emp
@@ -240,7 +240,7 @@ ms.locfileid: "84195987"
    請注意下列幾點：
 
    * **type** 設定為 **SqlServerTable**。
-   * **tableName**設定為**emp**。
+   * **tableName** 設定為 **emp**。
    * **linkedServiceName** 設定為 **OnPremSqlLinkedService** (您稍早已在此逐步解說建立此連結服務)。
    * 針對並非由 Azure Data Factory 中另一個管線所產生的輸入資料集，您必須將 **external** 設定為 **true**。 它代表輸入資料產生於 Azure Data Factory 服務外部。 您可以使用 **Policy** 區段中的 **externalData** 元素，選擇性地指定任何外部資料原則。    
 
@@ -277,9 +277,9 @@ ms.locfileid: "84195987"
    * **type** 設定為 **AzureBlob**。
    * **linkedServiceName** 設定為 **AzureStorageLinkedService** (您已在步驟 2 中建立此連結服務)。
    * **folderPath** 設定為 **adftutorial/outfromonpremdf**，其中 outfromonpremdf 是 adftutorial 容器中的資料夾。 建立 **adftutorial** 容器 (如果尚未存在)。
-   * **Availability**設定為**每小時**（**frequency**設為**hour** ， **interval**設為**1**）。  Data Factory 服務會每隔一小時在 Azure SQL Database 的 **emp** 資料表中產生輸出資料配量。
+   * **可用性**設定為**每小時** (**頻率**設定為 [**小時**]，並將 [**間隔**] 設定為**1**) 。  Data Factory 服務會每隔一小時在 Azure SQL Database 的 **emp** 資料表中產生輸出資料配量。
 
-   如果您未指定**輸出資料表**的**fileName** ， **folderPath**中產生的檔案會以下列格式命名： `Data.<Guid>.txt` （例如：： Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt。）。
+   如果您未指定**輸出資料表**的**檔案名**， **folderPath**中產生的檔案會以下列格式命名： `Data.<Guid>.txt` (例如：： Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt. ) 。
 
    若要根據 **SliceStart** 時間動態設定 **folderPath** 和 **fileName**，請使用 partitionedBy 屬性。 在下列範例中，folderPath 使用 SliceStart (所處理配量的開始時間) 中的年、月和日，fileName 使用 SliceStart 中的小時。 例如，如果配量產生於 2014-10-20T08:00:00，folderName 設定為 wikidatagateway/wikisampledataout/2014/10/20，而 fileName 設定為 08.csv。
 
@@ -302,7 +302,7 @@ ms.locfileid: "84195987"
 ## <a name="create-pipeline"></a>建立管線
 在此步驟中，您會建立一個**管線**，其中包含一個使用 **EmpOnPremSQLTable** 做為輸入和 **OutputBlobTable** 做為輸出的**複製活動**。
 
-1. 在 Data Factory 編輯器中，按一下 [ **...][其他**]，然後按一下 [**新增管線**]。
+1. 在 Data Factory 編輯器中，按一下 **.。。更多**]，然後按一下 [ **新增管線**]。
 2. 使用下列文字取代右窗格中的 JSON：    
 
     ```JSON   
@@ -358,7 +358,7 @@ ms.locfileid: "84195987"
 
    * 在 activities 區段中，只會有 **type** 設定為 **Copy** 的活動。
    * 活動的**輸入**設定為 **EmpOnPremSQLTable**，活動的**輸出**則設定為 **OutputBlobTable**。
-   * 在**typeProperties**區段中，會將**SqlSource**指定為**來源類型**，並將**BlobSink**指定為**接收類型**。
+   * 在 **>typeproperties** 區段中， **>sqlsource** 是指定為 **來源類型** ，而 **BlobSink** 指定為 **接收類型**。
    * **SqlSource** 的 **sqlReaderQuery** 屬性指定為 SQL 查詢 `select * from emp`。
 
    開始和結束日期時間都必須是 [ISO 格式](https://en.wikipedia.org/wiki/ISO_8601)。 例如：2014-10-14T16:32:41Z。 **end** 時間為選擇性項目，但在本教學課程中會用到。
@@ -410,6 +410,6 @@ ms.locfileid: "84195987"
 
    ![Azure 儲存體總管](./media/data-factory-move-data-between-onprem-and-cloud/OnPremAzureStorageExplorer.png)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 * 如需資料管理閘道的所有詳細資料，請參閱 [資料管理閘道](data-factory-data-management-gateway.md) 一文。
 * 若要了解如何使用複製活動將資料從來源資料存放區移動到接收資料存放區，請參閱 [從 Azure Blob 複製資料到 Azure SQL](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) 。

@@ -14,10 +14,10 @@ ms.workload: iaas-sql-server
 ms.date: 06/18/2020
 ms.author: mathoma
 ms.openlocfilehash: 3cc579615a69b659bc1a4736984f0b3dcd6edb6b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91272519"
 ---
 # <a name="create-an-fci-with-storage-spaces-direct-sql-server-on-azure-vms"></a>在 Azure Vm 上建立具有儲存空間直接存取 (SQL Server 的 FCI) 
@@ -50,7 +50,7 @@ ms.locfileid: "91272519"
    > 您可在 Azure 中，從範本開始建立整個解決方案。 您可以在 GitHub [Azure 快速入門範本](https://github.com/MSBrett/azure-quickstart-templates/tree/master/sql-server-2016-fci-existing-vnet-and-ad) 頁面上取得範本的範例。 本範例並非為任何特定工作負載設計或測試。 您可執行範本來建立 SQL Server FCI，並將儲存空間直接存取儲存體連線至網域。 您可評估此範本，並依需要進行修改。
 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 在您完成本文中的指示之前，您應該已經有：
 
@@ -251,4 +251,4 @@ New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $v
 
 如需相關資訊，請參閱： 
 - [Windows 叢集技術](/windows-server/failover-clustering/failover-clustering-overview)   
-- [SQL Server 容錯移轉叢集實例](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)
+- [SQL Server 容錯移轉叢集執行個體](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)

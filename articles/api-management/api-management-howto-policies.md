@@ -1,6 +1,6 @@
 ---
 title: Azure API 管理中的原則 | Microsoft Docs
-description: 了解如何在 API 管理中建立、編輯和設定原則。 請參閱程式碼範例，並查看其他可用的資源。
+description: 了解如何在 API 管理中建立、編輯和設定原則。 請參閱程式碼範例，並檢視其他可用的資源。
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 11/29/2017
 ms.author: apimpm
 ms.openlocfilehash: a0786c1ce5d3a693dabe422b65af7177e16c20b9
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87905511"
 ---
 # <a name="policies-in-azure-api-management"></a>Azure API 管理中的原則
@@ -25,7 +25,7 @@ ms.locfileid: "87905511"
 
 原則是在位於 API 取用者與受控 API 之間的閘道內套用。 閘道會接收所有要求，然後通常原封不動地轉送至基礎 API。 不過，原則可以套用至輸入要求和輸出要求。
 
-如果原則不另行指定，則可以在任何 API 管理原則中，使用原則運算式做為屬性值或文字值。 某些原則是以原則運算式為基礎，例如[控制流程][Control flow]和[設定變數][Set variable]原則。 如需詳細資訊，請參閱[高級原則][Advanced policies]和[原則運算式][Policy expressions]。
+如果原則不另行指定，則可以在任何 API 管理原則中，使用原則運算式做為屬性值或文字值。 某些原則是以原則運算式為基礎，例如[控制流程][Control flow]和[設定變數][Set variable]原則。 如需詳細資訊，請參閱 [Advanced 原則][Advanced policies] 和 [原則運算式][Policy expressions]。
 
 ## <a name="understanding-policy-configuration"></a><a name="sections"> </a>了解原則組態
 

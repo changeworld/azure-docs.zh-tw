@@ -15,10 +15,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4dd0b63e08f44167b89b6e2d491722f3708b4036
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90055430"
 ---
 # <a name="review-access-to-azure-ad-roles-in-privileged-identity-management"></a>在 Privileged Identity Management 中審查 Azure AD 角色的存取權
@@ -49,6 +49,6 @@ Privileged Identity Management (PIM) 簡化了企業如何管理存取 Azure Act
 4. 選擇 [核准]**** 或 [拒絕]****。 您可能需要在 [提供原因] **** 文字方塊中提供您的決定原因。  
 5. 關閉 [檢閱 Azure AD 角色] **** 刀鋒視窗。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [在 PIM 中執行 Azure 資源角色的存取權檢閱](pim-resource-roles-perform-access-review.md)

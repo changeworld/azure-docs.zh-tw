@@ -8,25 +8,25 @@ ms.topic: how-to
 ms.date: 06/30/2020
 ms.author: victorh
 ms.openlocfilehash: a9dadc875e5e6d35a78930b4a02c48e9cbb6f6ba
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85601321"
 ---
 # <a name="migrate-azure-firewall-configurations-to-azure-firewall-policy-using-powershell"></a>使用 Powershell 將 Azure 防火牆設定遷移至 Azure 防火牆原則
 
-您可以使用 Azure PowerShell 腳本，將現有的 Azure 防火牆設定遷移至 Azure 防火牆原則資源。 接著，您可以使用 Azure 防火牆管理員來部署原則。
+您可以使用 Azure PowerShell 腳本，將現有的 Azure 防火牆設定遷移至 Azure 防火牆原則資源。 然後，您可以使用 Azure 防火牆管理員來部署原則。
 
-此 `AZFWMigrationScript.ps1` 腳本會分別為 ApplicationRuleCollections、NetworkRuleCollections 和 NatRuleCollections 建立具有三個 RuleCollectionGroup 物件的 FirewallPolicy。 
+`AZFWMigrationScript.ps1`腳本會分別為 ApplicationRuleCollections、NetworkRuleCollections 和 NatRuleCollections 建立具有三個 RuleCollectionGroup 物件的 FirewallPolicy。 
 
-RuleCollectionGroup 是適用于未來擴充性之規則集合的新最上層群組。 建議使用上述預設值，並自動從入口網站進行。
+RuleCollectionGroup 是適用于未來擴充性的新規則集合最上層群組。 建議使用上述預設值，並從入口網站自動完成。
 
-腳本的開頭會定義來源防火牆名稱和資源群組，以及目標原則名稱和位置。 視您的組織的需要變更這些值。
+腳本的開頭會定義來源防火牆名稱和資源群組，以及目標原則名稱和位置。 為您的組織適當變更這些值。
 
 ## <a name="migration-script"></a>遷移腳本
 
-修改下列腳本以遷移防火牆設定。
+修改下列腳本來遷移您的防火牆設定。
 
 ```azurepowershell
 #Input params to be modified as needed
@@ -157,6 +157,6 @@ If ($azfw.NatRuleCollections.Count -gt 0) {
     Write-Host "Created NatRuleCollectionGroup "  $natRuleGroup.Name
 }
 ```
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 深入瞭解 Azure 防火牆管理員部署： [Azure 防火牆管理員部署總覽](deployment-overview.md)。

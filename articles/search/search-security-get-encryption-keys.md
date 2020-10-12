@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/01/2020
 ms.openlocfilehash: 37ff94608e9756142f70a4f3c64d0a6f7eeea685
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88932894"
 ---
 # <a name="get-customer-managed-key-information-from-indexes-and-synonym-maps"></a>從索引和同義字地圖取得客戶管理的金鑰資訊

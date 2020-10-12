@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
 ms.openlocfilehash: c84133d5728f7b6593e0606dda2eef28b8167e43
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90972878"
 ---
 # <a name="workbook-time-parameters"></a>活頁簿時間參數
@@ -78,7 +78,7 @@ requests
 | make-series Requests = count() default = 0 on timestamp from {TimeRange:start} to {TimeRange:end} step {TimeRange:grain}
 ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [開始深入](workbooks-visualizations.md) 瞭解活頁簿許多豐富的視覺效果選項。
 * [控制](workbooks-access-control.md) 和共用活頁簿資源的存取權。

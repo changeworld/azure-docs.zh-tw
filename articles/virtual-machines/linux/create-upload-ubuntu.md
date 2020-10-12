@@ -7,29 +7,29 @@ ms.topic: how-to
 ms.date: 06/06/2020
 ms.author: danis
 ms.openlocfilehash: 8b34e266214285f6483acca59050780810e62345
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87373346"
 ---
 # <a name="prepare-an-ubuntu-virtual-machine-for-azure"></a>準備適用於 Azure 的 Ubuntu 虛擬機器
 
 
-Ubuntu 現在會在發佈正式的 Azure Vhd 以供下載 [https://cloud-images.ubuntu.com/](https://cloud-images.ubuntu.com/) 。 如果您需要針對 Azure 建置您專用的 Ubuntu 映像，而不使用下面的手動程序，建議您視需要從使用這些已知可運作的 VHD 並加以自訂來開始建置。 最新的映像版本一律可以在下列位置找到︰
+Ubuntu 現在發佈官方的 Azure Vhd 以供下載 [https://cloud-images.ubuntu.com/](https://cloud-images.ubuntu.com/) 。 如果您需要針對 Azure 建置您專用的 Ubuntu 映像，而不使用下面的手動程序，建議您視需要從使用這些已知可運作的 VHD 並加以自訂來開始建置。 最新的映像版本一律可以在下列位置找到︰
 
-* Ubuntu 16.04/Xenial： [ubuntu-16.04-server-cloudimg-amd64-disk1 .vmdk](https://cloud-images.ubuntu.com/releases/xenial/release/ubuntu-16.04-server-cloudimg-amd64-disk1.vmdk)
-* Ubuntu 18.04/Bionic： [Bionic-server-cloudimg-amd64](https://cloud-images.ubuntu.com/bionic/current/bionic-server-cloudimg-amd64.vmdk)
+* Ubuntu 16.04/Xenial： [ubuntu-16.04-伺服器-cloudimg-amd64-disk1 .vmdk](https://cloud-images.ubuntu.com/releases/xenial/release/ubuntu-16.04-server-cloudimg-amd64-disk1.vmdk)
+* Ubuntu 18.04/Bionic： [Bionic-伺服器-cloudimg-amd64](https://cloud-images.ubuntu.com/bionic/current/bionic-server-cloudimg-amd64.vmdk)
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 本文假設您已將 Ubuntu Linux 作業系統安裝到虛擬硬碟。 有多個工具可用來建立 .vhd 檔案，例如，像是 Hyper-V 的虛擬化解決方案。 如需指示，請參閱 [安裝 Hyper-V 角色及設定虛擬機器](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh846766(v=ws.11))。
 
 **Ubuntu 安裝注意事項**
 
 * 如需有關準備 Azure 之 Linux 的更多秘訣，另請參閱 [一般 Linux 安裝注意事項](create-upload-generic.md#general-linux-installation-notes) 。
-* Azure 不支援 VHDX 格式，只支援 **固定 VHD**。  您可以使用 Hyper-v 管理員或 Cmdlet，將磁片轉換成 VHD 格式 `Convert-VHD` 。
+* Azure 不支援 VHDX 格式，只支援 **固定 VHD**。  您可以使用 Hyper-v 管理員或 Cmdlet，將磁片轉換為 VHD 格式 `Convert-VHD` 。
 * 安裝 Linux 系統時，建議您使用標準磁碟分割而不是 LVM (常是許多安裝的預設設定)。 這可避免 LVM 與複製之虛擬機器的名稱衝突，特別是為了疑難排解而需要將作業系統磁碟連接至其他虛擬機器時。 如果願意，您可以在資料磁碟上使用 [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 或 [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
-* 請不要在 OS 磁片上設定交換磁碟分割或 cloud-init。 您可以設定雲端初始化布建代理程式，以在暫存資源磁片上建立交換檔或交換磁碟分割。 您可以在以下步驟中找到與此有關的詳細資訊。
+* 請勿在 OS 磁片上設定交換磁碟分割或 cloud-init。 您可以設定雲端初始布建代理程式，在暫存資源磁片上建立交換檔或交換磁碟分割。 您可以在以下步驟中找到與此有關的詳細資訊。
 * Azure 上的所有 VHD 必須具有與 1 MB 對應的虛擬大小。 從未經處理的磁碟轉換成 VHD 時，您必須確定未經處理的磁碟大小在轉換前是 1 MB 的倍數。 如需詳細資訊，請參閱 [Linux 安裝注意事項](create-upload-generic.md#general-linux-installation-notes)。
 
 ## <a name="manual-steps"></a>手動步驟
@@ -42,7 +42,7 @@ Ubuntu 現在會在發佈正式的 Azure Vhd 以供下載 [https://cloud-images.
 
 2. 按一下 **[連接]** ，以開啟虛擬機器的視窗。
 
-3. 取代映射中的目前儲存機制，以使用 Ubuntu 的 Azure 存放庫。
+3. 取代映射中目前的存放庫，以使用 Ubuntu 的 Azure 存放庫。
 
     建議您在編輯 `/etc/apt/sources.list` 之前先進行備份：
 
@@ -58,7 +58,7 @@ Ubuntu 現在會在發佈正式的 Azure Vhd 以供下載 [https://cloud-images.
     # sudo apt-get update
     ```
 
-4. Ubuntu Azure 映射現在會使用[Azure 量身打造的核心](https://ubuntu.com/blog/microsoft-and-canonical-increase-velocity-with-azure-tailored-kernel)。 執行下列命令，將作業系統更新為最新的 Azure 量身打造的核心，並安裝 Azure Linux 工具（包括 Hyper-v 相依性）：
+4. Ubuntu Azure 映射現在會使用 [Azure 量身打造的核心](https://ubuntu.com/blog/microsoft-and-canonical-increase-velocity-with-azure-tailored-kernel)。 藉由執行下列命令，將作業系統更新為最新的 Azure 量身打造核心並安裝 Azure Linux 工具 (包括 Hyper-v 相依性) ：
 
     Ubuntu 16.04 和 Ubuntu 18.04：
 
@@ -80,7 +80,7 @@ Ubuntu 現在會在發佈正式的 Azure Vhd 以供下載 [https://cloud-images.
 
 6. 確定您已安裝 SSH 伺服器，並已設定為在開機時啟動。  這通常是預設值。
 
-7. 安裝 cloud-init （布建代理程式）和 Azure Linux 代理程式（來賓延伸模組處理常式）。 Cloud-init 會使用 netplan，在布建期間設定系統網路設定，以及每次後續開機。
+7.  (布建代理程式) 和 Azure Linux 代理程式 (來賓擴充處理常式) 安裝雲端初始化。 Cloud init 會使用 netplan，在布建期間以及每次後續開機時設定系統網路設定。
 
     ```console
     # sudo apt update
@@ -90,7 +90,7 @@ Ubuntu 現在會在發佈正式的 Azure Vhd 以供下載 [https://cloud-images.
    > [!Note]
    >  若已安裝 `NetworkManager` 和 `NetworkManager-gnome` 套件，則 `walinuxagent` 套件可能會將它們移除。
 
-8. 移除雲端 init 預設的配置，以及可能與 Azure 上的雲端初始化布建衝突的剩餘 netplan 成品：
+8. 移除雲端初始化的預設配置，以及可能與 Azure 上的雲端初始布建衝突的剩餘 netplan 構件：
 
     ```console
     # rm -f /etc/cloud/cloud.cfg.d/50-curtin-networking.cfg /etc/cloud/cloud.cfg.d/curtin-preserve-sources.cfg
@@ -98,7 +98,7 @@ Ubuntu 現在會在發佈正式的 Azure Vhd 以供下載 [https://cloud-images.
     # rm -f /etc/netplan/*.yaml
     ```
 
-9. 使用 Azure 資料來源設定雲端 init 來布建系統：
+9. 設定 cloud init 以使用 Azure datasource 布建系統：
 
     ```console
     # cat > /etc/cloud/cloud.cfg.d/90_dpkg.cfg << EOF
@@ -131,7 +131,7 @@ Ubuntu 現在會在發佈正式的 Azure Vhd 以供下載 [https://cloud-images.
     EOF
     ```
 
-10. 將 Azure Linux 代理程式設定為依賴雲端 init 來執行布建。 如需這些選項的詳細資訊，請參閱[WALinuxAgent 專案](https://github.com/Azure/WALinuxAgent)。
+10. 將 Azure Linux 代理程式設定為依賴雲端初始化來執行布建。 如需這些選項的詳細資訊，請參閱 [WALinuxAgent 專案](https://github.com/Azure/WALinuxAgent) 。
 
     ```console
     sed -i 's/Provisioning.Enabled=y/Provisioning.Enabled=n/g' /etc/waagent.conf
@@ -149,7 +149,7 @@ Ubuntu 現在會在發佈正式的 Azure Vhd 以供下載 [https://cloud-images.
     EOF
     ```
 
-11. 清理雲端 init 和 Azure Linux 代理程式執行時間成品和記錄：
+11. 清理雲端初始化和 Azure Linux 代理程式執行時間構件和記錄：
 
     ```console
     # sudo cloud-init clean --logs --seed
@@ -162,10 +162,10 @@ Ubuntu 現在會在發佈正式的 Azure Vhd 以供下載 [https://cloud-images.
 12. 執行下列命令，以取消佈建虛擬機器，並準備將它佈建於 Azure 上：
 
     > [!NOTE]
-    > 此 `sudo waagent -force -deprovision+user` 命令將會嘗試清理系統，使其適合重新布建。 `+user`選項會刪除最後布建的使用者帳戶和相關聯的資料。
+    > 此 `sudo waagent -force -deprovision+user` 命令會嘗試清除系統，使其適合重新布建。 `+user`選項會刪除最後布建的使用者帳戶和相關聯的資料。
 
     > [!WARNING]
-    > 使用上述命令取消布建，並不保證會清除所有敏感性資訊的影像，而且適合轉散發。
+    > 使用上述命令取消布建不保證會清除所有機密資訊的影像，而且適合重新發佈。
 
     ```console
     # sudo waagent -force -deprovision+user
@@ -176,8 +176,8 @@ Ubuntu 現在會在發佈正式的 Azure Vhd 以供下載 [https://cloud-images.
 
 13. 在 Hyper-V 管理員中，依序按一下 [動作] -> [關閉]。
 
-14. Azure 只接受固定大小的 Vhd。 如果 VM 的 OS 磁片不是固定大小的 VHD，請使用 `Convert-VHD` PowerShell Cmdlet 並指定 `-VHDType Fixed` 選項。 請參閱這裡的檔 `Convert-VHD` ：[轉換-VHD](/powershell/module/hyper-v/convert-vhd?view=win10-ps)。
+14. Azure 只接受固定大小的 Vhd。 如果 VM 的 OS 磁片不是固定大小的 VHD，請使用 `Convert-VHD` PowerShell Cmdlet 並指定 `-VHDType Fixed` 選項。 請參閱 `Convert-VHD` 以下檔： [轉換-VHD](/powershell/module/hyper-v/convert-vhd?view=win10-ps)。
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 您現在可以開始使用您的 Ubuntu Linux 虛擬硬碟在 Azure 建立新的虛擬機器。 如果您是第一次將 .vhd 檔案上傳至 Azure，請參閱[從自訂磁碟建立 Linux VM](upload-vhd.md#option-1-upload-a-vhd)。

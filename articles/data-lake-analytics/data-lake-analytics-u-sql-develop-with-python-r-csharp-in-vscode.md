@@ -1,5 +1,5 @@
 ---
-title: '在 Python、R 和 c # 中執行 U-SQL 作業-Azure Data Lake Analytics'
+title: '以 Python、R 和 c # 執行 U-SQL 作業-Azure Data Lake Analytics'
 description: 了解如何將程式碼後置與 Python、R 和 C# 搭配使用，以在 Azure Data Lake 中提交作業。
 services: data-lake-analytics
 ms.service: data-lake-analytics
@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/22/2017
 ms.custom: devx-track-python
 ms.openlocfilehash: 673c8db0b7c6d3d8658d2d3b6cfd7e00f3d7d986
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87876201"
 ---
 # <a name="develop-u-sql-with-python-r-and-c-for-azure-data-lake-analytics-in-visual-studio-code"></a>針對 Visual Studio Code 中的 Azure Data Lake Analytics 使用 Python、R 和 C# 開發 U-SQL

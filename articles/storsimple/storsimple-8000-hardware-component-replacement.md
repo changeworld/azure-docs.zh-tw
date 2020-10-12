@@ -16,15 +16,15 @@ ms.date: 06/02/2017
 ms.author: alkohli
 ms.custom: ''
 ms.openlocfilehash: 12ab5a9598cc0222f5a3e64985be2e2ea9e7e2fd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85564296"
 ---
 # <a name="replace-a-hardware-component-on-your-storsimple-8000-series-device"></a>更換 StorSimple 8000 系列裝置上的硬體元件
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 硬體元件更換教學課程將說明 Microsoft Azure StorSimple 8000 系列裝置的硬體元件，以及取下並更換這些元件所需的步驟。 本文說明安全圖示、提供詳細教學課程的重點，並列出可替換的元件。
 
 > [!IMPORTANT]
@@ -37,9 +37,9 @@ ms.locfileid: "85564296"
 | 圖示 | Text | 其他資訊 |
 |:--- |:--- |:--- |
 | ![警告圖示](./media/storsimple-hardware-component-replacement/Warning.png) |**危險！** |指出危險的情況，如果無法避免，將會導致死亡或嚴重傷害。 此訊號文字僅限用於最極端的情況。 |
-| ![警告圖示](./media/storsimple-hardware-component-replacement/Warning.png) |**WARNING!** |指出危險的情況，如果無法避免，可能會導致死亡或嚴重傷害。 |
-| ![注意圖示](./media/storsimple-hardware-component-replacement/Caution.png) |**注意!** |指出危險的情況，如果無法避免，可能會導致次要或中度的傷害。 |
-| ![注意事項圖示](./media/storsimple-hardware-component-replacement/NoticeIcon.png) |**標記** |表示重要資訊，但與危險無關。 |
+| ![警告圖示](./media/storsimple-hardware-component-replacement/Warning.png) |**警告！** |指出危險的情況，如果無法避免，可能會導致死亡或嚴重傷害。 |
+| ![注意圖示](./media/storsimple-hardware-component-replacement/Caution.png) |**謹慎！** |指出危險的情況，如果無法避免，可能會導致次要或中度的傷害。 |
+| ![注意事項圖示](./media/storsimple-hardware-component-replacement/NoticeIcon.png) |**通知：** |表示重要資訊，但與危險無關。 |
 | ![電擊圖示](./media/storsimple-hardware-component-replacement/Electric.png) |**電擊危險** |表示高電壓。 |
 | ![超重圖示](./media/storsimple-hardware-component-replacement/Weight.png) |**超重** | |
 | ![沒有使用者可自行維修的零件圖示](./media/storsimple-hardware-component-replacement/NoUserServiceableParts.png) |**沒有使用者可自行維修的零件** |除非受過適當訓練，否則請勿觸碰。 |
@@ -67,19 +67,19 @@ StoreSimple 8000 系列裝置由主要和/或 EBOD 機箱的數個外掛程式�
 
 下表彙總裝置中的主要硬體元件。 按一下 [更換程序] **** 資料行中的連結，即可移到相關聯的教學課程。
 
-| 單元 | # Present | 外掛程式模組？ | 更換程序 |
+| 元件 | # Present | 外掛程式模組？ | 更換程序 |
 |:--- |:--- |:--- |:--- |
 | 底座 |1 |否 |[更換 StorSimple 裝置上的底座](storsimple-8000-chassis-replacement.md) |
 | 主要控制器 |2 |是 |[更換 StorSimple 裝置上的控制器模組](storsimple-8000-controller-replacement.md) |
 | 764 瓦電源和冷卻模組 (PCM) |2 |是 |[更換 StorSimple 裝置上的電源和冷卻模組](storsimple-8000-power-cooling-module-replacement.md) |
 | 備用電池 |2 |是 |[更換 StorSimple 裝置上的備份電池模組](storsimple-8000-battery-replacement.md) |
-| 磁碟機 |12 |Yes |[更換 StorSimple 裝置上的磁碟機](storsimple-8000-disk-drive-replacement.md) |
+| 磁碟機 |12 |是 |[更換 StorSimple 裝置上的磁碟機](storsimple-8000-disk-drive-replacement.md) |
 
 **表 1** 主要機箱中的硬體元件
 
 主要機箱和 EBOD 機箱在其 I/O 模組中各有不同。 此外，PCM 有具不同的瓦數。 主要機箱中的 PCM 為 764 瓦，而 EBOD 機箱中的 PCM 則為 580 瓦。主要機箱中的 PCM 也包含備用電池模組。
 
-| 單元 | # Present | 外掛程式模組？ | 更換程序 |
+| 元件 | # Present | 外掛程式模組？ | 更換程序 |
 |:--- |:--- |:--- |:--- |
 | 底座 |1 |否 |[更換 StorSimple 裝置上的底座](storsimple-8000-chassis-replacement.md) |
 | EBOD 控制器 |2 |是 |[更換 StorSimple 裝置上的 EBOD 控制器](storsimple-8000-ebod-controller-replacement.md) |
@@ -137,6 +137,6 @@ StoreSimple 8000 系列裝置由主要和/或 EBOD 機箱的數個外掛程式�
 
 請[連絡 Microsoft 支援服務](storsimple-8000-contact-microsoft-support.md)，以訂購其中任何更換裝置。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 請先閱讀所有 [安全資訊](storsimple-8000-safety.md) ，再嘗試更換 StorSimple 硬體元件。

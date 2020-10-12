@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
 ms.openlocfilehash: a4d4e095e065e9f505ba1b9b46f0d31fb1783eb2
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90972863"
 ---
 # <a name="workbook-resource-parameters"></a>活頁簿資源參數
@@ -111,7 +111,7 @@ ms.locfileid: "90972863"
 | `{Applications:subscription}` | 所選資源的訂用帳戶 |  |
 | `{Applications:grid}` | 顯示資源屬性的方格。 在進行調試時于文字區塊中轉譯相當有用  |  |
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [開始深入](workbooks-visualizations.md) 瞭解活頁簿許多豐富的視覺效果選項。
 * [控制](workbooks-access-control.md) 和共用活頁簿資源的存取權。

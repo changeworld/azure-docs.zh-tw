@@ -1,20 +1,20 @@
 ---
-title: Azure Service Fabric 監控最佳做法
+title: Azure Service Fabric 監視的最佳做法
 description: 使用 Azure Service Fabric 監視叢集和應用程式的最佳作法和設計考慮。
 author: peterpogorski
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: pepogors
 ms.openlocfilehash: a7b1c1b3fc3196557b862c488ee01af8b8e1f04f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86529245"
 ---
-# <a name="monitoring-and-diagnostic-best-practices-for-azure-service-fabric"></a>Azure Service Fabric 的監視和診斷最佳做法
+# <a name="monitoring-and-diagnostic-best-practices-for-azure-service-fabric"></a>Azure Service Fabric 的監視和診斷最佳作法
 
-[監視和診斷](./service-fabric-diagnostics-overview.md)對於在任何雲端環境中開發、測試和部署工作負載而言非常重要。 例如，您可以追蹤應用程式被使用的方式、由 Service Fabric 平台所採取的動作、搭配效能計數器的資源使用量，以及叢集的整體健康情況。 您可以使用這些資訊來診斷並修正問題，並防止它們於未來再度發生。
+在任何雲端環境中開發、測試及部署工作負載時，[監視和診斷](./service-fabric-diagnostics-overview.md)非常重要。 例如，您可以追蹤應用程式被使用的方式、由 Service Fabric 平台所採取的動作、搭配效能計數器的資源使用量，以及叢集的整體健康情況。 您可以使用這些資訊來診斷並修正問題，並防止它們於未來再度發生。
 
 ## <a name="application-monitoring"></a>應用程式監視
 
@@ -24,9 +24,9 @@ ms.locfileid: "86529245"
 
 Service Fabric 的其中一個目標是讓應用程式在硬體失敗時能夠復原。 這個目標可以透過 平台的系統服務偵測基礎結構問題，並快速地將工作負載容錯移轉到叢集中的其他節點來達成。 但如果是系統服務本身有問題的話，會發生什麼情況？ 或如果在嘗試部署或移動工作負載時違反了設置服務的規則，會發生麼情況？ Service Fabric 會提供這些問題和其他問題的診斷，以確保能夠讓您了解 Service Fabric 平台如何與您的應用程式、服務、容器和節點互動。
 
-針對 Windows 叢集，建議您使用[診斷代理](./service-fabric-diagnostics-event-aggregation-wad.md)程式和[Azure 監視器記錄](./service-fabric-diagnostics-oms-setup.md)來設定叢集監視。
+若為 Windows 叢集，建議您設定 [診斷代理程式](./service-fabric-diagnostics-event-aggregation-wad.md) 和 [Azure 監視器記錄](./service-fabric-diagnostics-oms-setup.md)的叢集監視。
 
-針對 Linux 叢集，Azure 監視器記錄也是 Azure 平臺和基礎結構監視的建議工具。 Linux 平台診斷需要進行 [Syslog 中的 Service Fabric Linux 叢集事件](./service-fabric-diagnostics-oms-syslog.md)中所述的不同設定。
+針對 Linux 叢集，Azure 監視器記錄也是適用于 Azure 平臺和基礎結構監視的建議工具。 Linux 平台診斷需要進行 [Syslog 中的 Service Fabric Linux 叢集事件](./service-fabric-diagnostics-oms-syslog.md)中所述的不同設定。
 
 ## <a name="infrastructure-monitoring"></a>基礎結構監視
 
@@ -36,12 +36,12 @@ Service Fabric 的其中一個目標是讓應用程式在硬體失敗時能夠�
 
 一般而言，監視程式是一個單獨的服務，可以觀察服務之間的健康情況和負載、偵測端點，並回報叢集中非預期的健康情況事件。 這可以避免在單一服務效能中無法偵測到的錯誤。 監視程式也非常適合裝載能夠執行修復動作的程式碼，而無需使用者互動 (例如在特定時間間隔，清除儲存體中的記錄檔)。 請參閱 [Syslot 中的 Service Fabric Linux 叢集事件](https://github.com/Azure-Samples/service-fabric-watchdog-service) 中的範例監視程式服務實作。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-* 開始檢測您的應用程式：[應用層級事件和記錄產生](service-fabric-diagnostics-event-generation-app.md)。
+* 開始檢測您的應用程式： [應用層級事件和記錄產生](service-fabric-diagnostics-event-generation-app.md)。
 * 透過[監視和診斷 Service Fabric 上的 ASP.NET Core 應用程式](service-fabric-tutorial-monitoring-aspnet.md)中的步驟，來針對您的應用程式設定 Application Insights。
-* 深入瞭解監視平臺，以及 Service Fabric 提供給您的事件：[平台層級事件和記錄產生](service-fabric-diagnostics-event-generation-infra.md)。
-* 設定 Azure 監視器記錄與 Service Fabric 的整合：設定叢集的[Azure 監視器記錄](service-fabric-diagnostics-oms-setup.md)
-* 瞭解如何設定用於監視容器的 Azure 監視器記錄： [Azure Service Fabric 中 Windows 容器的監視和診斷](service-fabric-tutorial-monitoring-wincontainers.md)。
+* 深入瞭解監視平臺，以及 Service Fabric 為您提供的事件： [平台層級事件和記錄產生](service-fabric-diagnostics-event-generation-infra.md)。
+* 設定 Azure 監視器記錄與 Service Fabric 整合： [設定叢集的 Azure 監視器記錄](service-fabric-diagnostics-oms-setup.md)
+* 瞭解如何設定監視容器的 Azure 監視器記錄： [Azure 中的 Windows 容器的監視和診斷 Service Fabric](service-fabric-tutorial-monitoring-wincontainers.md)。
 * 請參閱[診斷常見案例](service-fabric-diagnostics-common-scenarios.md)中的 Service Fabric 診斷問題和解決方案範例
-* 瞭解 Azure 資源的一般監視建議：[最佳做法-監視和診斷](/azure/architecture/best-practices/monitoring)。
+* 深入瞭解 Azure 資源的一般監視建議： [最佳做法-監視和診斷](/azure/architecture/best-practices/monitoring)。

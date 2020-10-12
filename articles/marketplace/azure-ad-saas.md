@@ -9,10 +9,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/04/2020
 ms.openlocfilehash: 5a09105dac89f3dc241140f16f3d4be72cc97493
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89483621"
 ---
 # <a name="azure-ad-and-transactable-saas-offers-in-the-commercial-marketplace"></a>在商業市場 Azure AD 及可交易 SaaS 供應專案
@@ -45,7 +45,7 @@ Azure AD 可無縫地購買、履行及管理商用 marketplace 解決方案。 
 
 下圖顯示購買管理的四個處理步驟。
 
-:::image type="content" source="./media/azure-ad-saas/azure-ad-saas-flow-1-4.png" alt-text="說明購買管理的四個處理步驟。":::
+:::image type="content" source="./media/azure-ad-saas/azure-ad-saas-flow-1-4.png" alt-text="說明購買管理、訂用帳戶管理和選擇性的使用者管理程式步驟。":::
 
 下表提供購買管理處理步驟的詳細資料。
 
@@ -61,7 +61,7 @@ Azure AD 可無縫地購買、履行及管理商用 marketplace 解決方案。 
 
 下圖顯示訂用帳戶管理的兩個處理步驟。
 
-:::image type="content" source="./media/azure-ad-saas/azure-ad-saas-flow-5-6.png" alt-text="說明訂用帳戶管理的兩個處理步驟。":::
+:::image type="content" source="./media/azure-ad-saas/azure-ad-saas-flow-5-6.png" alt-text="說明購買管理、訂用帳戶管理和選擇性的使用者管理程式步驟。":::
 
 下表說明訂用帳戶管理處理步驟的詳細資料。
 
@@ -75,7 +75,7 @@ Azure AD 可無縫地購買、履行及管理商用 marketplace 解決方案。 
 
 下圖顯示使用者管理的三個處理步驟。
 
-:::image type="content" source="./media/azure-ad-saas/azure-ad-saas-flow-7-9.png" alt-text="說明使用者管理的三個選擇性處理步驟。":::
+:::image type="content" source="./media/azure-ad-saas/azure-ad-saas-flow-7-9.png" alt-text="說明購買管理、訂用帳戶管理和選擇性的使用者管理程式步驟。":::
 
 處理步驟7到9是選擇性的使用者管理程式步驟。 它們為支援 Azure AD 單一登入 (SSO) 的發行者提供額外的好處。 下表說明使用者管理程式步驟的詳細資料。
 
@@ -86,7 +86,7 @@ Azure AD 可無縫地購買、履行及管理商用 marketplace 解決方案。 
 | 9. 在許可和布建應用程式之後，買方公司的使用者可以使用 Azure AD SSO 來登入發行者的 SaaS 應用程式。 | [使用 AZURE AD SSO](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on) 可讓使用者使用一個帳戶登入發行者的 SaaS 應用程式。 | 建議 |
 ||||
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [在商業市場中建立可交易 SaaS 供應專案的登陸頁面](azure-ad-transactable-saas-landing-page.md)
 - [在商業市場中建立免費或試用 SaaS 供應專案的登陸頁面](azure-ad-free-or-trial-landing-page.md)

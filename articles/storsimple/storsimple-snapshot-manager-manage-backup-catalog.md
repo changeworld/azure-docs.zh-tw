@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: alkohli
 ms.openlocfilehash: 2efc35e65ca1db2b5241e1d3b2798e068880c87e
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90054988"
 ---
 # <a name="use-storsimple-snapshot-manager-to-manage-the-backup-catalog"></a>使用 StorSimple Snapshot Manager 來管理備份目錄
@@ -93,7 +93,7 @@ StorSimple Snapshot Manager 在建立預防措施備份時，會顯示下列訊�
    1. 在 [名稱]**** 文字方塊中，輸入已複製之磁碟區的名稱。 這個名稱將出現在 [磁碟區]**** 節點中。 
    2. (選擇性) 選取 [ **磁碟機**]，然後從下拉式清單中選取磁碟機代號。
    3.  (選擇性) 選取 **資料夾 (NTFS) **，然後輸入資料夾路徑，或按一下 [流覽] 並選取資料夾的位置。 
-   4. 按一下 [建立]  。
+   4. 按一下 [建立]。
 5. 複製程序完成時，您必須初始化已複製的磁碟區。 啟動伺服器管理員，然後啟動磁碟管理。 如需詳細指示，請參閱 [掛接磁碟區](storsimple-snapshot-manager-manage-volumes.md#mount-volumes)。 在初始化之後，磁碟區將列示在 [領域]**** 窗格的 [磁碟區]**** 節點下方。 如果您看不到列出的磁碟區，請重新整理磁碟區清單 (以滑鼠右鍵按一下**磁碟區**節點，然後再按一下 [重新整理]****)。
 
 ## <a name="delete-a-backup"></a>刪除備份
@@ -126,7 +126,7 @@ StorSimple Snapshot Manager 在建立預防措施備份時，會顯示下列訊�
    1. 在 [名稱]**** 文字方塊中，輸入已複製之磁碟區的名稱。 這個名稱將出現在 [磁碟區]**** 節點中。 
    2.  (選擇性) 選取 **磁片磁碟機**，然後從下拉式清單中選取磁碟機號。 
    3. (選擇性) 選取 [資料夾 (NTFS)]****，然後輸入資料夾路徑或按一下 [瀏覽]**** 並選取資料夾的位置。 
-   4. 按一下 [建立]  。 
+   4. 按一下 [建立]。 
 5. 複製程序完成時，您必須初始化已複製的磁碟區。 啟動伺服器管理員，然後啟動磁碟管理。 如需詳細指示，請參閱 [掛接磁碟區](storsimple-snapshot-manager-manage-volumes.md#mount-volumes)。 在初始化之後，磁碟區將列示在 [領域]**** 窗格的 [磁碟區]**** 節點下方。 
    
     如果您看不到列出的磁碟區，請重新整理磁碟區清單 (以滑鼠右鍵按一下**磁碟區**節點，然後再按一下 [重新整理]****)。
@@ -161,7 +161,7 @@ StorSimple Snapshot Manager 在建立預防措施備份時，會顯示下列訊�
 6. 刪除目錄 XML 檔案，並以您所建立的備份版本取代它。 
 7. 按一下桌面的 StorSimple Snapshot Manager 圖示以啟動 StorSimple Snapshot Manager。 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 * 深入了解如何 [使用 StorSimple Snapshot Manager 來管理您的 StorSimple 解決方案](storsimple-snapshot-manager-admin.md)。
 * 深入了解 [StorSimple Snapshot Manager 工作和工作流程](storsimple-snapshot-manager-admin.md#storsimple-snapshot-manager-tasks-and-workflows)。
 

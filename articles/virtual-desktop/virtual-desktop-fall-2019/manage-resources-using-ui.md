@@ -7,10 +7,10 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 09e0b3bbac0bdc1d268aa7f24741aeb12a7d366d
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89462576"
 ---
 # <a name="deploy-a-windows-virtual-desktop-classic-management-tool-with-an-azure-resource-manager-template"></a>使用 Azure Resource Manager 範本部署 Windows 虛擬桌面 (傳統) 管理工具
@@ -106,10 +106,10 @@ ms.locfileid: "89462576"
   > [!NOTE]
   > 若您有自訂租用戶群組，請手動輸入名稱，不要從下拉式清單選擇。
 
-## <a name="report-issues"></a>報告問題
+## <a name="report-issues"></a>回報問題
 
 如果管理工具或其他 Windows 虛擬桌面工具發生任何問題，請依照[遠端桌面服務的 Azure Resource Manager 範本](https://github.com/Azure/RDS-Templates/blob/master/README.md)中的指示，在 GitHub 上回報問題。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 既然您已學到如何部署並連線到管理工具，您可以學習如何使用 Azure 服務來監視服務問題與健康情況諮詢。 若要深入了解，請參閱我們的[設定服務警示教學課程](set-up-service-alerts-2019.md)。

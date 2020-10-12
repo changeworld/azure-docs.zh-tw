@@ -7,10 +7,10 @@ ms.service: data-catalog
 ms.topic: how-to
 ms.date: 08/01/2019
 ms.openlocfilehash: 2d0baed53441893ec294784f0f8092fe89a347c9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86523701"
 ---
 # <a name="save-searches-and-pin-data-assets-in-azure-data-catalog"></a>在 Azure 資料目錄中儲存搜尋和釘選資料資產
@@ -56,7 +56,7 @@ Azure 資料目錄提供用來探索資料來源的功能。 您可以快速搜�
 ### <a name="organizational-saved-searches"></a>組織已儲存的搜尋
 您組織中的所有使用者都可以儲存搜尋供自己使用。 資料目錄管理員也可以儲存搜尋，以供組織內的所有使用者使用。 當系統管理員儲存搜尋時，他們會看到 [在公司內部共用]**** 選項。 選取此選項可針對組織中的所有使用者共用已儲存的搜尋。
 
- ![資料目錄組織儲存的搜尋](./media/data-catalog-how-to-save-pin/08-organizational-saved-search.png)
+ ![資料目錄-組織儲存的搜尋](./media/data-catalog-how-to-save-pin/08-organizational-saved-search.png)
 
 ## <a name="pinned-data-assets"></a>已釘選的資料資產
 利用已儲存的搜尋，您可以儲存並重複使用搜尋定義。 隨著目錄內容變更，搜尋所傳回的資料資產可能會隨著時間而變化。 釘選資料資產時，您可以明確地識別特定資料資產，以便更輕鬆地存取資料資產而不必使用搜尋。
@@ -67,12 +67,12 @@ Azure 資料目錄提供用來探索資料來源的功能。 您可以快速搜�
 
 取消訂選資料資產相當簡單。 只要按一下**取消釘選**圖示來切換所選取資產的設定即可。
 
-![資料目錄-資料資產取消釘選圖示](./media/data-catalog-how-to-save-pin/06-unpinning.png)
+![資料目錄-資料資產解除釘選圖示](./media/data-catalog-how-to-save-pin/06-unpinning.png)
 
 ## <a name="the-my-assets-section"></a>[我的資產] 區段
 資料目錄入口網站首頁包含 [我的資產]**** 區段，其中顯示目前的使用者感興趣的資產。 此區段同時包含已釘選的資產和已儲存的搜尋。
 
 ![首頁上的 [我的資產] 區段](./media/data-catalog-how-to-save-pin/07-my-assets.png)
 
-## <a name="summary"></a>總結
+## <a name="summary"></a>摘要
 Azure 資料目錄提供各種功能，以便能更容易地探索所需的資料來源，因此您和其他組織成員可以花較少的時間尋找資料，並且有更多時間使用資料。 儲存的搜尋 和釘選的資料資產是以這些核心功能為基礎所建立，因此使用者可以輕鬆地識別所要重複使用的資料來源。

@@ -6,10 +6,10 @@ ms.date: 08/01/2019
 ms.topic: conceptual
 ms.custom: devx-track-java
 ms.openlocfilehash: 6a596eff70bfc20b5a6752ef47398bd14d527c97
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90973333"
 ---
 # <a name="create-and-deploy-arm-templates-by-using-the-intellij-idea"></a>使用 IntelliJ 構想來建立和部署 ARM 範本
@@ -79,7 +79,7 @@ ms.locfileid: "90973333"
 > [!NOTE]
 > 請注意，刪除部署並不會刪除部署所建立的資源。 如果您不再需要對應的資源群組或特定資源，請將其刪除。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 本文的主要焦點是使用 IntelliJ 構想，從 Azure 快速入門範本部署現有範本。 您也已經了解如何在 Azure 上檢視和更新現有部署。 Azure 快速入門範本中的範本可能無法提供您所需的一切。 若要深入了解範本開發，請參閱我們的新初學者教學課程系列：
 

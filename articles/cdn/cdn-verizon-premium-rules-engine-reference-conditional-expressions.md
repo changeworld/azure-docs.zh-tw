@@ -1,6 +1,6 @@
 ---
 title: Azure CDN 的條件運算式-Verizon Premium 規則引擎
-description: 來自 Verizon 的 Azure CDN Premium 規則引擎比對條件和功能的參考檔。
+description: 來自 Verizon Premium 規則引擎比對條件和功能的 Azure CDN 參考檔。
 services: cdn
 author: asudbring
 ms.service: azure-cdn
@@ -8,21 +8,21 @@ ms.topic: article
 ms.date: 05/31/2019
 ms.author: allensu
 ms.openlocfilehash: 25b3c1a011e39adea651a6daa1d4ab9aa3a9d186
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81253504"
 ---
-# <a name="azure-cdn-from-verizon-premium-rules-engine-conditional-expressions"></a>來自 Verizon 的 Azure CDN Premium 規則引擎條件運算式
+# <a name="azure-cdn-from-verizon-premium-rules-engine-conditional-expressions"></a>來自 Verizon Premium 規則引擎條件運算式的 Azure CDN
 
-本文列出 Azure 內容傳遞網路（CDN）[規則引擎](cdn-verizon-premium-rules-engine.md)的條件運算式的詳細描述。
+本文列出 Azure 內容傳遞網路 (CDN) [規則引擎](cdn-verizon-premium-rules-engine.md)的條件運算式的詳細說明。
 
 規則的第一個部分是條件運算式。
 
-條件運算式 | Description
+條件運算式 | 描述
 -----------------------|-------------
-IF | IF 運算式永遠是規則中第一個陳述式的一部分。 像所有其他條件運算式一樣，此 IF 陳述式必須與符合項目相關聯。 如果未定義任何其他條件運算式，這項比對會決定在將一組功能套用至要求之前必須符合的條件。
+IF | IF 運算式永遠是規則中第一個陳述式的一部分。 像所有其他條件運算式一樣，此 IF 陳述式必須與符合項目相關聯。 如果未定義任何其他條件運算式，則此相符項會決定在一組功能套用至要求之前必須符合的準則。
 AND IF | AND IF 運算式只能在下列類型的條件運算式之後新增︰IF、AND IF。 它表示針對初始 IF 陳述式有必須符合的另一個條件。
 ELSE IF| ELSE IF 運算式會指定其他條件，必須在此 ELSE IF 陳述式特定的一組功能發生之前符合。 有 ELSE IF 陳述式表示前一個陳述式的結尾。 可以放在 ELSE IF 陳述式之後的條件運算式是另一個 ELSE IF 陳述式。 這表示 ELSE IF 陳述式只能用來指定必須符合的單一其他條件。
 
