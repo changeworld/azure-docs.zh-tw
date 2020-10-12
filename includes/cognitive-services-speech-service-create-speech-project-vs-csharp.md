@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/30/2019
 ms.author: wolfma
 ms.openlocfilehash: c7332177795a45331749225e0f3dc3856e28a6a2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "71327036"
 ---
 若要建立 Visual Studio 專案以開發 Windows，您必須建立專案、設定 Visual Studio 以開發 .NET 桌面、安裝語音 SDK，並選擇目標架構。
@@ -19,13 +19,13 @@ ms.locfileid: "71327036"
 
 1. 開啟 Visual Studio 2019。
 
-1. 在 [開始] 視窗中，選取 [建立新專案]****。 
+1. 在 [開始] 視窗中，選取 [ **建立新專案**]。 
 
 1. 在 [建立新專案]**** 視窗中，選擇 [主控台應用程式 (.NET Framework)]****，然後選取 [下一步]****。
 
 1. 在 [設定您的新專案]**** 視窗中，在 [專案名稱]**** 中輸入 *helloworld*、在 [位置]**** 中選擇或建立目錄路徑，然後選取 [建立]****。
 
-1. 從 [Visual Studio] 功能表列中，選取 [**工具** > ] [**取得工具和功能**]，這會開啟 Visual Studio 安裝程式並顯示 [**修改**中] 對話方塊。
+1. 從 Visual Studio 的功能表列中，選取 [**工具**  >  **取得工具和功能**]，這會開啟 Visual Studio 安裝程式並顯示 [**修改**中] 對話方塊。
 
 1. 請檢查 [.NET 桌面開發]**** 工作負載是否可用。 如果尚未安裝此工作負載，請選取旁邊的核取方塊，然後選取 [修改]**** 以開始安裝。 下載及安裝可能需要幾分鐘的時間。
 
@@ -61,7 +61,7 @@ ms.locfileid: "71327036"
 
 現在，若要建置及執行主控台應用程式，請建立符合電腦架構的平台組態。
 
-1. 從功能表列中，選取 [**組建** > **Configuration Manager**]。 [組態管理員]**** 對話方塊隨即出現。
+1. 從功能表列中，選取 [**組建**  >  **Configuration Manager**]。 [組態管理員] 對話方塊隨即出現。
 
    ![組態管理員對話方塊](../articles/cognitive-services/speech-service/media/sdk/vs-configuration-manager-dialog-box.png)
 

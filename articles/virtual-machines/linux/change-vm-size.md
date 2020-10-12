@@ -1,5 +1,5 @@
 ---
-title: 如何使用 Azure CLI 調整 Linux VM 的大小
+title: 如何使用 Azure CLI 來調整 Linux VM 的大小
 description: 如何藉由變更 VM 的大小來相應增加或相應減少 Linux 虛擬機器。
 author: DavidCBerry13
 ms.service: virtual-machines-linux
@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 02/10/2017
 ms.author: daberry
 ms.openlocfilehash: a93b1dcfe803fdead0d741553c45894f1675372b
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87372258"
 ---
 # <a name="resize-a-linux-virtual-machine-using-azure-cli"></a>使用 Azure CLI 調整 Linux 虛擬機器大小 
@@ -45,8 +45,8 @@ ms.locfileid: "87372258"
    > [!WARNING]
    > 將 VM 解除配置也會釋出指派給該 VM 的任何動態 IP 位址。 不會影響作業系統和資料磁碟。
 
-## <a name="next-steps"></a>後續步驟
-如需更多的擴充性，請執行多個 VM 實例並向外延展。如需詳細資訊，請參閱[在虛擬機器擴展集中自動調整 Linux 機器][scale-set]。 
+## <a name="next-steps"></a>接下來的步驟
+如需更多的擴充性，請執行多個 VM 實例和相應放大。如需詳細資訊，請參閱 [在虛擬機器擴展集中自動調整 Linux 機器][scale-set]。 
 
 <!-- links -->
 [boot-diagnostics]: https://azure.microsoft.com/blog/boot-diagnostics-for-virtual-machines-v2/

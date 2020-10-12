@@ -1,5 +1,5 @@
 ---
-title: 套用預設網域控制站原則時，VM 沒有回應
+title: 應用預設網域控制站原則時，VM 沒有回應
 titlesuffix: Azure Virtual Machines
 description: 本文提供的步驟可解決預設網域控制站原則防止 Azure VM 開機的問題。
 services: virtual-machines-windows, azure-resource-manager
@@ -16,13 +16,13 @@ ms.topic: troubleshooting
 ms.date: 09/08/2020
 ms.author: v-miegge
 ms.openlocfilehash: 53e1daca47a2917a19cbc30db5348e4fcc06b325
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90039014"
 ---
-# <a name="vm-is-unresponsive-while-applying-default-domain-controllers-policy"></a>套用預設網域控制站原則時，VM 沒有回應
+# <a name="vm-is-unresponsive-while-applying-default-domain-controllers-policy"></a>應用預設網域控制站原則時，VM 沒有回應
 
 本文提供的步驟可解決下列問題：預設網域控制站原則會防止 (VM) 的 Azure 虛擬機器進行開機。
 
@@ -36,7 +36,7 @@ ms.locfileid: "90039014"
 
 此問題可能是因為對預設網域控制站原則所做的最新變更所造成。 否則，將需要執行記憶體傾印檔案分析，以判斷根本原因。
 
-## <a name="solution"></a>解決方案
+## <a name="solution"></a>解決方法
 
 如果您最近對預設網域控制站原則進行了變更，您可能會想要復原這些變更以修正問題。 如果您不確定造成問題的原因，請收集記憶體傾印，然後提交支援票證。
 

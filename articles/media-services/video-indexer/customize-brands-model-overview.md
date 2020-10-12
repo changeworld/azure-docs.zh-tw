@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 05/15/2019
 ms.author: kumud
 ms.openlocfilehash: e0df698cb431e5e26c69047a9f464904f0546487
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89294232"
 ---
 # <a name="customize-a-brands-model-in-video-indexer"></a>在影片索引器中自訂品牌模型
@@ -33,7 +33,7 @@ ms.locfileid: "89294232"
 
 若要產生您自己的品牌，請參閱「後續步驟」。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 [使用 API 自訂品牌模型](customize-brands-model-with-api.md)
 

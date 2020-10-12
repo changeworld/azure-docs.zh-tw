@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: ba2d0acec37d0f59240381cdea04f4d53ded0b1c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91273036"
 ---
 # <a name="create-the-azure-arc-data-controller"></a>建立 Azure Arc 資料控制器
@@ -33,7 +33,7 @@ ms.locfileid: "91273036"
 - OpenShift 容器平臺 (OCP) 
 - AWS Elastic Kubernetes Service (EKS)
 - Google Cloud Kubernetes Engine (GKE) 
-- 開放原始碼，上游 Kubernetes 一般使用 kubeadm 部署
+- 開放原始碼的上游 Kubernetes 通常使用 kubeadm 進行部署
 
 > [!IMPORTANT]
 > * 最小支援的 Kubernetes 版本為 v 1.14。

@@ -4,10 +4,10 @@ description: 在命名空間上啟用自動擴充，以自動相應增加輸送�
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 1be564472011622b71b3066495748dfdbe6cc791
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86537236"
 ---
 # <a name="automatically-scale-up-azure-event-hubs-throughput-units"></a>自動相應增加 Azure 事件中樞輸送量單位
@@ -28,7 +28,7 @@ Azure 事件中樞為可高度擴充的資料串流平台。 因此，事件中�
 
 ## <a name="enable-auto-inflate-on-a-namespace"></a>在命名空間上啟用自動擴充
 
-您可以使用下列其中一種方法，在標準層事件中樞的命名空間上啟用或停用自動擴充：
+您可以使用下列其中一種方法，在標準層事件中樞命名空間上啟用或停用自動擴充：
 
 - [Azure 入口網站](https://portal.azure.com)。
 - 一個 [Azure Resource Manager 範本](https://github.com/Azure/azure-quickstart-templates/tree/master/201-eventhubs-create-namespace-and-enable-inflate)。

@@ -9,10 +9,10 @@ ms.subservice: common
 ms.topic: how-to
 ms.reviewer: dineshm
 ms.openlocfilehash: b9ae42bb29d1273e4f0f9c25803e8cc97b56ad95
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89462406"
 ---
 # <a name="list-azure-storage-resources-in-c"></a>以 C++ 列出 Azure 儲存體資源
@@ -192,7 +192,7 @@ for (auto it = container.list_blobs(); it != end_of_results; ++it)
 * 程式庫中提供的延遲列表是同步案例中的方便包裝函式。
 * 不建議使用窮盡列表，並已從程式庫中移除。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如需 Azure Storage Client Library for C++ 的詳細資訊，請參閱下列資源。
 

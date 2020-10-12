@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 06/19/2019
 ms.openlocfilehash: 5a47de51a90d926b47f6b465d6c10111407da9c6
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90033161"
 ---
 # <a name="overview-of-log-queries-in-azure-monitor"></a>Azure 監視器中的記錄查詢總覽
@@ -96,6 +96,6 @@ Log Analytics 是 Azure 入口網站中的主要工具，可用於撰寫記錄�
 - **Azure 監視器記錄 API。**  [Azure 監視器記錄 API](https://dev.loganalytics.io) 可讓任何 REST API 用戶端從工作區擷取記錄資料。  API 要求包含針對 Azure 監視器執行的查詢，來判斷要擷取的資料。
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 - 逐步解說在 [Azure 入口網站中使用 Log Analytics 的教學](get-started-portal.md)課程。
 - 逐步解說 [撰寫查詢的教學](get-started-queries.md)課程。

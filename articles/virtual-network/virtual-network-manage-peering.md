@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 04/01/2019
 ms.author: altambaw
 ms.openlocfilehash: 41cc2bfa39160d26b5c5f09687ddf1fef9ec5803
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89290169"
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>建立、變更或刪除虛擬網路對等互連
@@ -86,7 +86,7 @@ ms.locfileid: "89290169"
 3. 在 [設定] 底下，選取 [對等互連]。
 4. 選取您想要檢視或變更設定的對等互連。
 5. 變更適當的設定。 請參閱建立對等互連的 [步驟 5](#add-peering) 中每項設定的選項。
-6. 選取 [儲存]。
+6. 選取 [儲存]****。
 
 **命令**
 
@@ -147,7 +147,7 @@ ms.locfileid: "89290169"
 
 如果您的帳戶未指派給上述其中一個角色，則必須指派給[自訂角色](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)，且該角色已獲指派下表中的必要動作：
 
-| 動作                                                          | Name |
+| 動作                                                          | 名稱 |
 |---                                                              |---   |
 | Microsoft.Network/virtualNetworks/virtualNetworkPeerings/write  | 建立從虛擬網路 A 到虛擬網路 B 的對等互連時所需。虛擬網路 A 必須為虛擬網路 (資源管理員)          |
 | Microsoft.Network/virtualNetworks/peer/action                   | 建立從虛擬網路 B (資源管理員) 到虛擬網路 A 的對等互連時所需                                                       |
@@ -155,7 +155,7 @@ ms.locfileid: "89290169"
 | Microsoft.Network/virtualNetworks/virtualNetworkPeerings/read   | 讀取虛擬網路對等互連   |
 | Microsoft.Network/virtualNetworks/virtualNetworkPeerings/delete | 刪除虛擬網路對等互連 |
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 虛擬網路對等互連是建立於虛擬網路之間，而這兩個虛擬網路是透過存在於相同或不同訂用帳戶中的相同或不同部署模型所建立。 完成下列其中一個案例的教學課程：
 

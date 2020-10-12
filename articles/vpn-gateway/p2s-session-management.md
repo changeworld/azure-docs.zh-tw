@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/23/2020
 ms.author: cherylmc
 ms.openlocfilehash: 2f2184507e17e3ecae40bb33be4202c183d32b77
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91274228"
 ---
 # <a name="point-to-site-vpn-session-management"></a>點對站 VPN 會話管理
@@ -44,7 +44,7 @@ Azure 虛擬網路閘道可讓您輕鬆地查看並中斷目前點對站 VPN 會
    ```
 1. 複製您要中斷連接之會話的 **VpnConnectionId** 。
 
-   :::image type="content" source="./media/p2s-session-management/powershell.png" alt-text="PowerShell 範例":::
+   :::image type="content" source="./media/p2s-session-management/powershell.png" alt-text="入口網站範例":::
 1. 若要中斷會話的連線，請執行下列命令：
 
    ```azurepowershell-interactive

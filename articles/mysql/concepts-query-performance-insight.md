@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 5/12/2020
 ms.openlocfilehash: 7aefa6cd048c41feb1535f2ae7fa5c87bf628b2d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90884901"
 ---
 # <a name="query-performance-insight-in-azure-database-for-mysql"></a>「適用於 MySQL 的 Azure 資料庫」中的查詢效能深入解析
@@ -64,7 +64,7 @@ Azure 入口網站中的[查詢效能深入解析](concepts-query-performance-in
 
 [等候統計資料] 檢視中顯示的查詢會根據指定時間間隔內呈現最大等候資料的查詢來分組。
 
-:::image type="content" source="./media/concepts-query-performance-insight/query-performance-insight-wait-statistics.png" alt-text="查詢效能深入解析等候統計資料":::
+:::image type="content" source="./media/concepts-query-performance-insight/query-performance-insight-wait-statistics.png" alt-text="查詢效能深入解析長時間執行的查詢":::
 
 ## <a name="next-steps"></a>後續步驟
 

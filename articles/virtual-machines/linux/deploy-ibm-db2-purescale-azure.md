@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 11/09/2018
 ms.author: edprice
 ms.openlocfilehash: 17ea965758150adb72d8e8f9fee9937bd5387a48
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87371918"
 ---
 # <a name="deploy-ibm-db2-purescale-on-azure"></a>在 Azure 上部署 IBM DB2 pureScale
@@ -34,21 +34,21 @@ deploy.sh 指令碼會建立並設定此架構的 Azure 資源。 該指令碼�
 
 -   針對安裝設定 Azure 上的資源群組、虛擬網路與子網路。
 
--   為環境設定網路安全性群組和 SSH。
+-   設定環境的網路安全性群組和 SSH。
 
 -   在共用存放裝置和 DB2 pureScale 虛擬機器上設定多個 Nic。
 
--   建立共用存放裝置虛擬機器。 如果您使用儲存空間直接存取或另一個儲存體解決方案，請參閱[儲存空間直接存取總覽](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)。
+-   建立共用存放裝置虛擬機器。 如果您使用儲存空間直接存取或其他儲存體解決方案，請參閱 [儲存空間直接存取總覽](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)。
 
 -   建立 jumpbox 虛擬機器。
 
 -   建立 DB2 pureScale 虛擬機器。
 
--   建立 DB2 pureScale ping 的見證虛擬機器。 如果您的 Db2 pureScale 版本不需要見證，請略過部署的這個部分。
+-   建立 DB2 pureScale ping 的見證虛擬機器。 如果您的 Db2 pureScale 版本不需要見證，請略過此部分的部署。
 
--   建立要用於測試的 Windows 虛擬機器，但不會在其上安裝任何專案。
+-   建立要用於測試的 Windows 虛擬機器，但不會在其上安裝任何資訊。
 
-接著，部署指令碼會針對 Azure 上的共用儲存體設定 iSCSI 虛擬存放區域網路 (vSAN)。 在此範例中，iSCSI 會連線到共用存放裝置叢集。 在原始客戶解決方案中，會使用 GlusterFS。 不過，IBM 已不再支援此方法。 若要維護 IBM 的支援，您必須使用支援的 iSCSI 相容檔案系統。 Microsoft 提供儲存空間直接存取（S2D）做為選項。
+接著，部署指令碼會針對 Azure 上的共用儲存體設定 iSCSI 虛擬存放區域網路 (vSAN)。 在此範例中，iSCSI 會連接到共用存放裝置叢集。 在原始客戶解決方案中，使用了 GlusterFS。 不過，IBM 不再支援此方法。 若要維護您對 IBM 的支援，您必須使用支援的 iSCSI 相容檔案系統。 Microsoft 提供儲存空間直接存取 (S2D) 作為選項。
 
 此解決方案也為您提供安裝 iSCSI 目標做為單一 Windows 節點的選項。 iSCSI 透過 TCP/IP 提供共用區塊儲存體介面，它允許 DB2 pureScale 安裝程序使用裝置介面來連線到共用儲存體。
 
@@ -58,9 +58,9 @@ deploy.sh 指令碼會建立並設定此架構的 Azure 資源。 該指令碼�
 
 2.  在目標 Linux 伺服器上設定共用存放裝置叢集的 iSCSI 直接介面。
 
-3.  在 Linux 虛擬機器上設定 iSCSI 啟動器。 啟動器會使用 iSCSI 目標來存取共用存放裝置叢集。 如需設定詳細資料，請參閱 RootUsers 文件中的[如何在 Linux 中設定 iSCSI 目標與啟動器](https://www.rootusers.com/how-to-configure-an-iscsi-target-and-initiator-in-linux/) \(英文\)。
+3.  在 Linux 虛擬機器上設定 iSCSI 啟動器。 啟動器將使用 iSCSI 目標存取共用存放裝置叢集。 如需設定詳細資料，請參閱 RootUsers 文件中的[如何在 Linux 中設定 iSCSI 目標與啟動器](https://www.rootusers.com/how-to-configure-an-iscsi-target-and-initiator-in-linux/) \(英文\)。
 
-4.  安裝 iSCSI 介面的共用儲存層。
+4.  為 iSCSI 介面安裝共用儲存層。
 
 在指令碼建立 iSCSI 裝置之後，最終步驟是安裝 DB2 pureScale。 在 DB2 pureScale 安裝期間，會編譯 [IBM Spectrum Scale](https://www.ibm.com/support/knowledgecenter/SSEPGG_11.1.0/com.ibm.db2.luw.qb.server.doc/doc/t0057167.html) (先前稱為 GPFS) 並安裝在ˋ GlusterFS 叢集上。 這個叢集化檔案系統可讓 DB2 pureScale 在執行 Db2 pureScale 引擎的虛擬機器之間共用資料。 如需詳細資訊，請參閱 IBM 網站上的 [IBM Spectrum Scale](https://www.ibm.com/support/knowledgecenter/en/STXKQY_4.2.0/ibmspectrumscale42_welcome.html) 文件 \(英文\)。
 
@@ -75,7 +75,7 @@ GitHub 存放庫包括 DB2server.rsp 回應檔 (.rsp)，此檔案可讓您產生
 |---------------------------|----------------------------------------------|-------------------------------------------------------------------------------------------------------|
 | 歡迎使用                   |                                              | 新安裝                                                                                           |
 | 選擇產品          |                                              | DB2 版本 11.1.3.3。 具有 DB2 pureScale 的伺服器版本                                              |
-| 設定             | 目錄                                    | /data1/opt/ibm/db2/V11.1                                                                              |
+| 組態             | 目錄                                    | /data1/opt/ibm/db2/V11.1                                                                              |
 |                           | 選取安裝類型                 | 一般                                                                                               |
 |                           | 我同意 IBM 條款                     | 已核取                                                                                               |
 | 執行個體擁有者            | 例如現有使用者、使用者名稱        | DB2sdin1                                                                                              |
@@ -133,7 +133,7 @@ GitHub 存放庫包括由作者維護的知識庫。 它會列出您可能有的
 
 如需有關這些與其他已知問題的詳細資訊，請參閱 [DB2onAzure](https://aka.ms/DB2onAzure) 存放庫中的 kb.md 檔案。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 -   [針對 DB2 pureScale 功能安裝建立必要使用者](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.qb.server.doc/doc/t0055374.html?pos=2)
 

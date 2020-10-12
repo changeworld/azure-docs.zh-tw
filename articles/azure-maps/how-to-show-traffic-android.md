@@ -9,17 +9,17 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 93cabb566db02de7ef991fe9cdd293f8c399c3a3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91272951"
 ---
 # <a name="show-traffic-data-on-the-map-using-azure-maps-android-sdk"></a>使用 Azure 地圖服務 Android SDK 顯示地圖上的交通資料
 
 Flow 資料和事件資料是可在地圖上顯示的兩種類型的流量資料。 本指南說明如何顯示這兩種類型的流量資料。 事件資料包含資料點和以行為基礎的資料，例如結構、路標和事故。 流程資料會顯示有關道路流量的計量。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 您必須先 [建立 Azure 帳戶](quick-demo-map-app.md#create-an-azure-maps-account)並 [取得訂用帳戶金鑰](quick-demo-map-app.md#get-the-primary-key-for-your-account)，才能在地圖上顯示流量。 然後，您必須安裝 [Azure 地圖服務 Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) 並載入對應。
 
@@ -53,7 +53,7 @@ import static com.microsoft.azure.maps.mapcontrol.options.TrafficOptions.flow;
 
 使用下列程式碼片段來設定流量資料。 與上一節中的程式碼類似，我們會將方法的傳回值傳遞 `flow` 給 `setTraffic` 方法。 有四個值可傳遞至 `flow` ，而且每個值都會觸發 `flow` 以傳回個別的值。 然後，的 `flow` 傳回值會以引數的形式傳遞給 `setTraffic` 。 請參閱下表中的下列四個值：
 
-|流程值 | 說明|
+|流程值 | 描述|
 | :-- | :-- |
 | TrafficFlow。無 | 不顯示地圖上的交通資料 |
 | TrafficFlow。相對 | 顯示相對於道路的自由流動速度的流量資料 |

@@ -4,13 +4,13 @@ description: 藉由服務健康情況通知，您可以檢視由 Microsoft Azure
 ms.topic: conceptual
 ms.date: 4/12/2018
 ms.openlocfilehash: 4f2b4a0779d775ed5be5bfa28831cccc68c33caf
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86529007"
 ---
-# <a name="use-the-azure-portal-to-view-service-health-notifications"></a>使用 Azure 入口網站來查看服務健康狀態通知
+# <a name="use-the-azure-portal-to-view-service-health-notifications"></a>使用 Azure 入口網站來查看服務健康情況通知
 
 Azure 會發佈服務健康情況通知，其中包含您訂用帳戶下資源的相關資訊。 這些通知是活動記錄事件的子類別，在活動記錄上也找得到。 根據不同類別，服務健康情況通知可以是告知性質或是可操作的性質。
 
@@ -43,12 +43,12 @@ category | 此屬性一律為 **ServiceHealth**。
 resourceId | 受影響資源的資源識別碼。
 Properties.title | 此通訊的當地語系化標題。 預設語言為英文。
 Properties.communication | 與 HTML 標記通訊的詳細資料 (已當地語系化)。 預設語言為英文。
-Properties.incidentType | 下列其中一個值： **ActionRequired**、**資訊**、**事件**、**維護**或**安全性**。
+Properties.incidentType | 下列其中一個值： **ActionRequired**、 **資訊**、 **事件**、 **維護**或 **安全性**。
 Properties.trackingId | 與此事件 (event) 相關聯的附帶事件 (Incident)。 可用此屬性讓與附帶事件 (Incident) 有關的事件 (event) 相關聯。
 Properties.impactedServices | 逸出的 JSON blob，描述受到附帶事件 (Incident) 影響的服務和區域。 屬性包含服務清單 (每一份都有 **ServiceName**) 和受影響區域清單 (每一份都有 **RegionName**)。
 Properties.defaultLanguageTitle | 英文的通訊。
 Properties.defaultLanguageContent | 英文的通訊，如 html 標記或純文字。
-Properties.stage | **Incident** 和 **Security** 的可能值為 **Active、** **Resolved** 或 **RCA**。 針對 **ActionRequired** 或 **Informational**，唯一的值為 **Active**。 **維護**的**狀態**包括：使用中、已**規劃** **、執行中、****已取消** **、重新排程、****已解決或已****完成**。
+Properties.stage | **Incident** 和 **Security** 的可能值為 **Active、** **Resolved** 或 **RCA**。 針對 **ActionRequired** 或 **Informational**，唯一的值為 **Active**。 針對**維護** **，其為：使用**中、已**規劃** **、進行中、****已取消** **、重新排程、****已解決**或已**完成**。
 Properties.communicationId | 與此事件相關聯的通訊。
 
 ### <a name="details-on-service-health-level-information"></a>服務健康情況層級資訊的詳細資料
@@ -58,14 +58,14 @@ Properties.communicationId | 與此事件相關聯的通訊。
     
 **維護** (properties.incidentType == Maintenance)
 - 警告-緊急維護
-- 資訊-標準規劃的維護
+- 資訊-標準預定維護
 
 **資訊** (properties.incidentType == Information)
 - 資訊-系統管理員可能需要防止對現有服務的影響。
 
 **安全性** (properties.incidentType == Security)
-- 警告-會影響現有服務並可能需要系統管理員動作的安全性諮詢。
-- 資訊安全諮詢，會影響現有的服務。
+- 警告-會影響現有服務且可能需要系統管理員動作的安全性諮詢。
+- 影響現有服務的資訊安全諮詢。
 
 **服務問題** (properties.incidentType == Incident)
 - 錯誤 - 跨多個區域存取多個服務的廣泛問題會影響廣泛的一組客戶。

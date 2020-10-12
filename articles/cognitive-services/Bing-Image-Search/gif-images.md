@@ -12,10 +12,10 @@ ms.date: 04/24/2018
 ms.author: aahi
 ms.custom: seodec2018
 ms.openlocfilehash: 862a7f6c31df7395fe225cf89ad83425e917394e
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84169979"
 ---
 # <a name="search-for-gif-images"></a>搜尋 GIF 影像 
@@ -207,6 +207,6 @@ class SearchResults{
 
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 - [C # 快速入門](quickstarts/csharp.md)
 - [教學課程：影像搜尋單頁應用程式](tutorial-bing-image-search-single-page-app.md)

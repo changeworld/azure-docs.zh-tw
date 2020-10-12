@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/04/2018
 ms.openlocfilehash: 2c8ada22b4492bef0239b6f811d5a7bd58e58510
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81417214"
 ---
 # <a name="filter-activity-in-azure-data-factory"></a>Azure Data Factory 中的篩選活動
@@ -46,7 +46,7 @@ condition (條件) | 要用來篩選輸入的條件。 | 運算式 | 是
 
 ## <a name="example"></a>範例
 
-在此範例中，管線有兩個活動：**篩選**與 **ForEach**。 篩選活動設定為會對值大於 3 之項目的輸入陣列進行篩選。 ForEach 活動接著會逐一查看篩選的值，並將變數**測試**設定為目前的值。
+在此範例中，管線有兩個活動：**篩選**與 **ForEach**。 篩選活動設定為會對值大於 3 之項目的輸入陣列進行篩選。 然後 ForEach 活動會逐一查看篩選的值，並將變數 **測試** 設定為目前的值。
 
 ```json
 {

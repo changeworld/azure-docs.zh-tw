@@ -1,5 +1,5 @@
 ---
-title: 使用雲端 init 在 Azure 上的 Linux VM 中執行 bash 腳本
+title: 使用 cloud init 在 Azure 上的 Linux VM 中執行 bash 腳本
 description: 如何透過 Azure CLI 在建立期間使用 cloud-init 在 Linux 虛擬機器中執行 Bash 指令碼
 author: rickstercdn
 ms.service: virtual-machines-linux
@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 11/29/2017
 ms.author: rclaus
 ms.openlocfilehash: 0370ddeafd1f695292ba122bfebd6197a360f560
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87372802"
 ---
 # <a name="use-cloud-init-to-run-a-bash-script-in-a-linux-vm-in-azure"></a>使用 cloud-init 在 Azure 上的 Linux 虛擬機器中執行 Bash 指令碼
@@ -28,7 +28,7 @@ ms.locfileid: "87372802"
 echo "this has been written via cloud-init" + $(date) >> /tmp/myScript.txt
 ```
 
-部署此映像前，您必須使用 [az group create](/cli/azure/group) 命令建立資源群組。 Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。 下列範例會在 eastus** 位置建立名為 myResourceGroup** 的資源群組。
+部署此映像前，您必須使用 [az group create](/cli/azure/group) 命令建立資源群組。 Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。 下列範例會在 eastus 位置建立名為 myResourceGroup 的資源群組。
 
 ```azurecli-interactive 
 az group create --name myResourceGroup --location eastus

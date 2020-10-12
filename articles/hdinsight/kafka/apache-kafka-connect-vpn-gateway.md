@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-python
 ms.date: 03/04/2020
 ms.openlocfilehash: ca5bff7f8a14efc0916210296048e3731aec5a59
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87873461"
 ---
 # <a name="connect-to-apache-kafka-on-hdinsight-through-an-azure-virtual-network"></a>透過 Azure 虛擬網路連線到 HDInsight 上的 Apache Kafka
@@ -56,7 +56,7 @@ HDInsight 不允許透過公用網際網路直接連線至 Kafka。 Kafka 用戶
      > * 每個用戶端必須使用 VPN 軟體用戶端進行連線。
      > * VPN 用戶端不會將名稱解析要求傳遞至虛擬網路，因此您必須使用 IP 位址來與 Kafka 通訊。 IP 通訊需要 Kafka 叢集上的其他設定。
 
-如需在虛擬網路中使用 HDInsight 的詳細資訊，請參閱[規劃 Azure HDInsight 叢集的虛擬網路](../hdinsight-plan-virtual-network-deployment.md)。
+如需在虛擬網路中使用 HDInsight 的詳細資訊，請參閱 [規劃 Azure HDInsight 叢集的虛擬網路](../hdinsight-plan-virtual-network-deployment.md)。
 
 ## <a name="connect-to-apache-kafka-from-an-on-premises-network"></a><a id="on-premises"></a> 從內部部署網路連線到 Apache Kafka
 
@@ -242,7 +242,7 @@ HDInsight 不允許透過公用網際網路直接連線至 Kafka。 Kafka 用戶
 
 Apache Zookeeper 預設會將 Kafka 代理程式的網域名稱傳回給用戶端。 這個設定不會使用 VPN 軟體用戶端，因為它無法為虛擬網路中的實體使用名稱解析。 針對此設定，使用下列步驟來設定 Kafka 以公告 IP 位址而不是網域名稱：
 
-1. 使用網頁瀏覽器移至 `https://CLUSTERNAME.azurehdinsight.net`。 `CLUSTERNAME`以 Kafka On HDInsight 叢集的名稱取代。
+1. 使用網頁瀏覽器移至 `https://CLUSTERNAME.azurehdinsight.net`。 `CLUSTERNAME`以 HDInsight 叢集上的 Kafka 名稱取代。
 
     出現提示時，請使用叢集的 HTTPS 使用者名稱和密碼。 此時會顯示叢集的 Ambari Web UI。
 
@@ -368,7 +368,7 @@ Apache Zookeeper 預設會將 Kafka 代理程式的網域名稱傳回給用戶�
 
 ## <a name="next-steps"></a>後續步驟
 
-如需搭配虛擬網路使用 HDInsight 的詳細資訊，請參閱[規劃 Azure HDInsight 叢集的虛擬網路部署](../hdinsight-plan-virtual-network-deployment.md)檔。
+如需搭配虛擬網路使用 HDInsight 的詳細資訊，請參閱 [規劃 Azure HDInsight 叢集的虛擬網路部署](../hdinsight-plan-virtual-network-deployment.md) 檔。
 
 如需如何建立具點對站 VPN 閘道之 Azure 虛擬網路的詳細資訊，請參閱下列文件︰
 

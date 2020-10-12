@@ -8,10 +8,10 @@ ms.date: 02/20/2020
 ms.topic: article
 ms.service: azure-app-configuration
 ms.openlocfilehash: ae3417f991c0d810d8946cdaf358218ebbe4f6a5
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88590025"
 ---
 # <a name="reacting-to-azure-app-configuration-events"></a>回應 Azure 應用程式組態事件
@@ -29,7 +29,7 @@ Azure 應用程式組態事件會傳送至 Azure 事件方格，以透過 rich �
 ## <a name="available-azure-app-configuration-events"></a>可用的 Azure 應用程式組態事件
 Event Grid 使用[事件訂閱](../event-grid/concepts.md#event-subscriptions)將事件訊息路由至訂閱者。 Azure 應用程式組態事件訂閱可以包含兩種類型的事件：  
 
-> |活動名稱|描述|
+> |活動名稱|說明|
 > |----------|-----------|
 > |`Microsoft.AppConfiguration.KeyValueModified`|在建立或取代索引鍵/值時引發|
 > |`Microsoft.AppConfiguration.KeyValueDeleted`|在刪除索引鍵/值時引發|
@@ -82,7 +82,7 @@ Azure 應用程式組態事件包含回應資料變更所需的所有資訊。 �
 > * 使用 [主旨] 欄位來存取已修改的索引鍵/值。
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 深入瞭解事件方格，並嘗試 Azure 應用程式組態的事件：
 

@@ -6,10 +6,10 @@ ms.date: 03/09/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 313d2717e6e40280ed37322d695a2129d833dd59
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88934087"
 ---
 若要以壓縮的音訊格式串流至語音服務，請建立 `PullAudioInputStream` 或 `PushAudioInputStream` 。 然後， `AudioConfig` 從串流類別的實例中建立，並指定資料流程的壓縮格式。

@@ -4,10 +4,10 @@ description: 本文說明如何設定容器代理程式的 Azure 監視器，以
 ms.topic: conceptual
 ms.date: 04/22/2020
 ms.openlocfilehash: f5a9b364bc3e51307bd44d8338485f482bda6e1e
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90971360"
 ---
 # <a name="configure-scraping-of-prometheus-metrics-with-azure-monitor-for-containers"></a>使用適用於容器的 Azure 監視器設定 Prometheus 計量抓取
@@ -44,20 +44,20 @@ Prometheus 計量的抓取支援的 Kubernetes 叢集位於：
 
 當指定 URL 時，容器的 Azure 監視器只會搜刮端點。 指定 Kubernetes 服務時，會使用叢集 DNS 伺服器來解析服務名稱，以取得 IP 位址，然後將解析的服務剪輯。
 
-|影響範圍 | 答案 | 資料類型 | 值 | 描述 |
+|影響範圍 | 機碼 | 資料類型 | 值 | 描述 |
 |------|-----|-----------|-------|-------------|
 | 全叢集 | | | | 指定下列三種方法之一來抓取計量的端點。 |
-| | `urls` | String | 逗點分隔陣列 | HTTP 端點 (指定) 的 IP 位址或有效 URL 路徑。 例如： `urls=[$NODE_IP/metrics]` 。  ($NODE _IP 是容器參數的特定 Azure 監視器，而且可以用來取代節點 IP 位址。 必須全部大寫。 )  |
-| | `kubernetes_services` | String | 逗點分隔陣列 | Kubernetes 服務的陣列，用來從 kube 狀態計量抓取計量。 例如，`kubernetes_services = ["https://metrics-server.kube-system.svc.cluster.local/metrics",http://my-service-dns.my-namespace:9100/metrics]`。|
+| | `urls` | 字串 | 逗點分隔陣列 | HTTP 端點 (指定) 的 IP 位址或有效 URL 路徑。 例如： `urls=[$NODE_IP/metrics]` 。  ($NODE _IP 是容器參數的特定 Azure 監視器，而且可以用來取代節點 IP 位址。 必須全部大寫。 )  |
+| | `kubernetes_services` | 字串 | 逗點分隔陣列 | Kubernetes 服務的陣列，用來從 kube 狀態計量抓取計量。 例如，`kubernetes_services = ["https://metrics-server.kube-system.svc.cluster.local/metrics",http://my-service-dns.my-namespace:9100/metrics]`。|
 | | `monitor_kubernetes_pods` | Boolean | true 或 false | 當設定為時 `true` ，在整個叢集設定中，容器代理程式的 Azure 監視器將會在整個叢集中抓取 Kubernetes pod，以進行下列 Prometheus 批註：<br> `prometheus.io/scrape:`<br> `prometheus.io/scheme:`<br> `prometheus.io/path:`<br> `prometheus.io/port:` |
 | | `prometheus.io/scrape` | Boolean | true 或 false | 啟用 pod 的抓取。 `monitor_kubernetes_pods` 必須設為 `true`。 |
-| | `prometheus.io/scheme` | String | http 或 https | 預設為透過 HTTP scrapping。 如有必要，請將設定為 `https` 。 | 
-| | `prometheus.io/path` | String | 逗點分隔陣列 | 要從中提取度量的 HTTP 資源路徑。 如果計量路徑不是 `/metrics` ，請使用這個注釋來定義它。 |
-| | `prometheus.io/port` | String | 9102 | 指定要從中抓取的埠。 如果未設定埠，則會預設為9102。 |
-| | `monitor_kubernetes_pods_namespaces` | String | 逗點分隔陣列 | 允許從 Kubernetes pod 抓取計量的命名空間清單。<br> 例如， `monitor_kubernetes_pods_namespaces = ["default1", "default2", "default3"]` |
-| 整個節點 | `urls` | String | 逗點分隔陣列 | HTTP 端點 (指定) 的 IP 位址或有效 URL 路徑。 例如： `urls=[$NODE_IP/metrics]` 。  ($NODE _IP 是容器參數的特定 Azure 監視器，而且可以用來取代節點 IP 位址。 必須全部大寫。 )  |
-| 全節點或全叢集 | `interval` | String | 60 年 代 | 收集間隔預設為一分鐘 (60 秒) 。 您可以將 *[prometheus_data_collection_settings]* 和/或 *[prometheus_data_collection_settings]* 的集合修改為時間單位，例如 s、m、h。 |
-| 全節點或全叢集 | `fieldpass`<br> `fielddrop`| String | 逗點分隔陣列 | 您可以藉由設定 [允許 (] `fieldpass`) ，並不允許 () 清單，指定要收集的特定計量，而不是從端點收集 `fielddrop` 。 您必須先設定允許清單。 |
+| | `prometheus.io/scheme` | 字串 | http 或 https | 預設為透過 HTTP scrapping。 如有必要，請將設定為 `https` 。 | 
+| | `prometheus.io/path` | 字串 | 逗點分隔陣列 | 要從中提取度量的 HTTP 資源路徑。 如果計量路徑不是 `/metrics` ，請使用這個注釋來定義它。 |
+| | `prometheus.io/port` | 字串 | 9102 | 指定要從中抓取的埠。 如果未設定埠，則會預設為9102。 |
+| | `monitor_kubernetes_pods_namespaces` | 字串 | 逗點分隔陣列 | 允許從 Kubernetes pod 抓取計量的命名空間清單。<br> 例如， `monitor_kubernetes_pods_namespaces = ["default1", "default2", "default3"]` |
+| 整個節點 | `urls` | 字串 | 逗點分隔陣列 | HTTP 端點 (指定) 的 IP 位址或有效 URL 路徑。 例如： `urls=[$NODE_IP/metrics]` 。  ($NODE _IP 是容器參數的特定 Azure 監視器，而且可以用來取代節點 IP 位址。 必須全部大寫。 )  |
+| 全節點或全叢集 | `interval` | 字串 | 60 年 代 | 收集間隔預設為一分鐘 (60 秒) 。 您可以將 *[prometheus_data_collection_settings]* 和/或 *[prometheus_data_collection_settings]* 的集合修改為時間單位，例如 s、m、h。 |
+| 全節點或全叢集 | `fieldpass`<br> `fielddrop`| 字串 | 逗點分隔陣列 | 您可以藉由設定 [允許 (] `fieldpass`) ，並不允許 () 清單，指定要收集的特定計量，而不是從端點收集 `fielddrop` 。 您必須先設定允許清單。 |
 
 ConfigMaps 是全域清單，而且只能有一個 ConfigMap 套用至代理程式。 您不能有其他 ConfigMaps overruling 集合。
 
@@ -366,6 +366,6 @@ InsightsMetrics
 
 有關如何監視資料使用量和分析成本的詳細資訊，可透過 [Azure 監視器記錄來管理使用量和成本](../platform/manage-cost-storage.md)。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 從 [此處](container-insights-agent-config.md)的容器工作負載，深入瞭解如何設定 stdout、stderr 和環境變數的代理程式組件合設定。 

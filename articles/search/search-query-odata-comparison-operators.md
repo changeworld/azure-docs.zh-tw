@@ -20,17 +20,17 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: fc5803f96c30ea1df362676aa8c4104bb0b69db3
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88934866"
 ---
 # <a name="odata-comparison-operators-in-azure-cognitive-search---eq-ne-gt-lt-ge-and-le"></a>Azure 認知搜尋- `eq` 、 `ne` 、 `gt` 、、 `lt` `ge` 和中的 OData 比較運算子 `le`
 
-Azure 認知搜尋中的 [OData 篩選運算式](query-odata-filter-orderby-syntax.md) 中最基本的作業，是比較欄位與指定的值。 可能的比較類型有兩種：相等比較，以及範圍比較。 您可以使用下列運算子，將欄位與常數值進行比較：
+Azure 認知搜尋中的 [OData 篩選運算式](query-odata-filter-orderby-syntax.md) 中最基本的作業，是比較欄位與指定的值。 可能的比較類型有兩種：相等比較，以及範圍比較。 您可以使用下列運算子來比較欄位與常數值：
 
-等號比較運算子：
+相等運算子：
 
 - `eq`：測試欄位是否 **等於** 常數值
 - `ne`：測試欄位是否 **不等於** 常數值
@@ -49,7 +49,7 @@ Azure 認知搜尋中的 [OData 篩選運算式](query-odata-filter-orderby-synt
 
 ## <a name="syntax"></a>語法
 
-下列 EBNF ([外延巴克斯格斯表單](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) 定義使用比較運算子之 OData 運算式的文法。
+下列 EBNF ([擴充 Backus-Naur 表單](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) 定義使用比較運算子之 OData 運算式的文法。
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 

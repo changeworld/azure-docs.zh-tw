@@ -14,10 +14,10 @@ ms.reviewer: beengen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5d90391dd5512b08ee6995a32bcd0b0f111b0f2b
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90053930"
 ---
 # <a name="linkedin-account-connections-data-sharing-and-consent"></a>LinkedIn 帳戶連接資料共用和同意
@@ -80,6 +80,6 @@ ms.locfileid: "90053930"
 
 如需 LinkedIn 使用個人資料的詳細資訊，請參閱 [LinkedIn 隱私權原則](https://www.linkedin.com/legal/privacy-policy) (英文)。 針對 LinkedIn 服務、資料傳輸和儲存，資料可以從歐盟流向美國和上一頁流動，而您的隱私權會受到保護，如 [歐洲聯集資料傳輸](https://www.linkedin.com/help/linkedin/answer/62533)中所述。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [Microsoft 應用程式中與您的公司或學校帳戶關聯的 LinkedIn](https://www.linkedin.com/help/linkedin/answer/84077) (英文)

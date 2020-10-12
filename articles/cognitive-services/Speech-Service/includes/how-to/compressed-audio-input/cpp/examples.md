@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 03/09/2020
 ms.author: trbye
 ms.openlocfilehash: b565bf3bae61cf92133b957bb75fdae9545c030e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81422295"
 ---
-若要以壓縮的音訊格式串流到語音服務，請`PullAudioInputStream`建立`PushAudioInputStream`或。 然後， `AudioConfig`從您的資料流程類別的實例建立，並指定資料流程的壓縮格式。
+若要以壓縮的音訊格式串流至語音服務，請建立 `PullAudioInputStream` 或 `PushAudioInputStream` 。 然後， `AudioConfig` 從串流類別的實例中建立，並指定資料流程的壓縮格式。
 
-假設您有一個名`pushStream`為的輸入資料流程類別，而且使用 OPUS/OGG。 您的程式碼看起來可能像這樣：
+讓我們假設您有一個名為 `pushStream` 且使用 OPUS/OGG 的輸入資料流程類別。 您的程式碼看起來可能像這樣：
 
 ```cpp
 using namespace Microsoft::CognitiveServices::Speech;

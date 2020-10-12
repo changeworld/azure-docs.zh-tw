@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
 ms.openlocfilehash: 635a8fc5409e18da9529763b06e4a531a36d0156
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86169199"
 ---
 # <a name="interoperability-in-azure--data-plane-analysis"></a>Azure 中的互通性：資料平面分析
@@ -333,7 +333,7 @@ Trace complete.
 
 ![4][4]
 
-如稍早所述，測試安裝程式使用對站 VPN 作為內部部署位置 1 和中樞 VNet 之間 ExpressRoute 的備份連線。 為了測試備份資料路徑，讓我們引發內部部署位置1主要 CE 路由器與對應的 MSEE 之間的 ExpressRoute 連結失敗。 為了引發 ExpressRoute 連結失敗，請關閉面對 MSEE 的 CE 介面：
+如稍早所述，測試安裝程式使用對站 VPN 作為內部部署位置 1 和中樞 VNet 之間 ExpressRoute 的備份連線。 若要測試備份資料路徑，讓我們在內部部署位置1主要 CE 路由器和對應的 MSEE 之間引發 ExpressRoute 連結失敗。 為了引發 ExpressRoute 連結失敗，請關閉面對 MSEE 的 CE 介面：
 
 ```console
 C:\Users\rb>tracert 10.10.30.4
@@ -549,7 +549,7 @@ ExpressRoute 作為備援線路組可確保高可用性。 您可以在不同的
 如需詳細資訊，請參閱[什麼是 VPN 閘道？][VPN]和[部署高可用性 NVA][Deploy-NVA]。
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 請參閱 [ExpressRoute 常見問題集][ExR-FAQ]：
 -   了解可以連線到 ExpressRoute 閘道的 ExpressRoute 線路數量。
@@ -558,11 +558,11 @@ ExpressRoute 作為備援線路組可確保高可用性。 您可以在不同的
 
 
 <!--Image References-->
-[1]: ./media/backend-interoperability/HubVM-SpkVM.jpg "從中樞 VNet 到輪輻 VNet 的連線網路監看員觀點"
-[2]: ./media/backend-interoperability/HubVM-BranchVM.jpg "從中樞 VNet 到分支 VNet 的連線網路監看員觀點"
-[3]: ./media/backend-interoperability/HubVM-BranchVM-Grid.jpg "從中樞 VNet 到分支 VNet 的連線網路監看員方格視圖"
-[4]: ./media/backend-interoperability/Loc1-HubVM.jpg "透過 ExpressRoute 1 從位置 1 VM 至中樞 VNet 的連線網路效能監控觀點"
-[5]: ./media/backend-interoperability/Loc1-HubVM-S2S.jpg "透過站對站 VPN 從位置 1 VM 至中樞 VNet 的連線網路效能監控觀點"
+[1]: ./media/backend-interoperability/HubVM-SpkVM.jpg "從中樞 VNet 至輪輻 VNet 連線的網路監看員"
+[2]: ./media/backend-interoperability/HubVM-BranchVM.jpg "從中樞 VNet 至分支 VNet 連線的網路監看員"
+[3]: ./media/backend-interoperability/HubVM-BranchVM-Grid.jpg "從中樞 VNet 至分支 VNet 連線的網路監看員格線查看"
+[4]: ./media/backend-interoperability/Loc1-HubVM.jpg "網路效能監控透過 ExpressRoute 1 從位置 1 VM 至中樞 VNet 的連線能力"
+[5]: ./media/backend-interoperability/Loc1-HubVM-S2S.jpg "從位置 1 VM 到中樞 VNet 的連線網路效能監控查看透過站對站 VPN"
 
 <!--Link References-->
 [Setup]: https://docs.microsoft.com/azure/networking/connectivty-interoperability-preface

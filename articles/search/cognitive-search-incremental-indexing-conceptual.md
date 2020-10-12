@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.openlocfilehash: 9fb76c5c96795b8092c86e22acbab4ea5963b42e
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90971638"
 ---
 # <a name="incremental-enrichment-and-caching-in-azure-cognitive-search"></a>Azure 認知搜尋中的增量擴充和快取
@@ -165,7 +165,7 @@ REST API 版本會 `2020-06-30-Preview` 透過索引子上的其他屬性提供�
 
   請謹慎使用 **ignoreResetRequirement** ，因為它可能會導致您的資料中發生非預期的不一致，而不容易偵測到。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 增量擴充是一項功能強大的功能，可將變更追蹤延伸至技能集和 AI 擴充。 當您反復查看技能集設計時，累加擴充可讓您重複使用現有的已處理內容。
 

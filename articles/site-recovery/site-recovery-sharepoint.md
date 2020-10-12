@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 6/27/2019
 ms.author: sutalasi
 ms.openlocfilehash: 08e971e52f994ec5fa5663708fa9f173daf33d80
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86135396"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sharepoint-application-for-disaster-recovery-using-azure-site-recovery"></a>使用 Azure Site Recovery 設定多層式 SharePoint 應用程式的災害復原，以便進行災害復原
 
-本文詳細說明如何使用[Azure Site Recovery](site-recovery-overview.md)保護 SharePoint 應用程式。
+本文詳細說明如何使用  [Azure Site Recovery](site-recovery-overview.md)保護 SharePoint 應用程式。
 
 
 ## <a name="overview"></a>概觀
@@ -29,12 +29,12 @@ Microsoft SharePoint 是功能強大的應用程式，可協助群組或部門�
 
 本文詳細說明如何使用 [Azure Site Recovery](site-recovery-overview.md) 保護 SharePoint 應用程式。 本文將介紹最佳做法來將三層 SharePoint 應用程式複寫至 Azure、如何進行災害復原訓練，以及如何將應用程式容錯移轉至 Azure。
 
-您可以觀看下列有關將多層式應用程式復原至 Azure 的影片。
+您可以觀看下列影片，瞭解如何將多層式應用程式復原至 Azure。
 
 > [!VIDEO https://channel9.msdn.com/Series/Azure-Site-Recovery/Disaster-Recovery-of-load-balanced-multi-tier-applications-using-Azure-Site-Recovery/player]
 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 開始之前，請確定您瞭解下列項目︰
 
@@ -56,7 +56,7 @@ Microsoft SharePoint 是功能強大的應用程式，可協助群組或部門�
 
 ## <a name="site-recovery-support"></a>Site Recovery 支援
 
-Site Recovery 與應用程式無關，而且應該與在支援的電腦上執行的任何 SharePoint 版本搭配運作。 為了建立這篇文章，使用了 VMware 虛擬機器搭配 Windows Server 2012 R2 Enterprise。 還使用 SharePoint 2013 Enterprise 版本和 SQL Server 2014 Enterprise 版本。
+Site Recovery 是與應用程式無關的，且應該適用于支援的電腦上所執行的任何 SharePoint 版本。 為了建立這篇文章，使用了 VMware 虛擬機器搭配 Windows Server 2012 R2 Enterprise。 還使用 SharePoint 2013 Enterprise 版本和 SQL Server 2014 Enterprise 版本。
 
 ### <a name="source-and-target"></a>來源與目標
 
@@ -102,7 +102,7 @@ Site Recovery 與應用程式無關，而且應該與在支援的電腦上執行
 針對網際網路面向網站，在 Azure 訂用帳戶中[建立「優先順序」類型的流量管理員設定檔](../traffic-manager/quickstart-create-traffic-manager-profile.md)。 然後以下列方式設定您的 DNS 和流量管理員設定檔。
 
 
-| **希望** | **來源** | **目標**|
+| **其中** | **Source** | **Target**|
 | --- | --- | --- |
 | 公用 DNS | SharePoint 網站的 公用 DNS <br/><br/> 例如︰sharepoint.contoso.com | 流量管理員 <br/><br/> contososharepoint.trafficmanager.net |
 | 內部部署 DNS | sharepointonprem.contoso.com | 內部部署伺服器陣列上的公用 IP |
@@ -189,7 +189,7 @@ Site Recovery 與應用程式無關，而且應該與在支援的電腦上執行
 
 如需有關進行 AD 和 DNS 之測試容錯移轉的指引，請參閱 [AD 和 DNS 的測試容錯移轉考量](site-recovery-active-directory.md#test-failover-considerations)文件。
 
-如需針對 SQL Always ON 可用性群組進行測試容錯移轉的指引，請參閱[使用 Azure Site Recovery 執行應用程式 DR 和執行測試容錯移轉](site-recovery-sql.md#disaster-recovery-of-an-application)檔。
+如需針對 SQL Always ON 可用性群組進行測試容錯移轉的指引，請參閱 [使用 Azure Site Recovery 執行應用程式 DR 和執行測試容錯移轉](site-recovery-sql.md#disaster-recovery-of-an-application) 檔。
 
 ## <a name="doing-a-failover"></a>執行容錯移轉
 請依照[本指引](site-recovery-failover.md)來進行容錯移轉。
@@ -199,5 +199,5 @@ Site Recovery 與應用程式無關，而且應該與在支援的電腦上執行
 3.  按一下 [容錯移轉]。
 4.  選取復原點以啟動容錯移轉程序。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 您可以深入了解如何使用 Site Recovery [複寫其他應用程式](site-recovery-workload.md)。

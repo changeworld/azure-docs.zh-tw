@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/12/2019
 ms.author: cephalin
 ms.openlocfilehash: 92e39f128e90ba83a919388e217f0edc86f81770
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75769656"
 ---
 ## <a name="deploy-zip-file-with-rest-apis"></a><a name="rest"></a>使用 REST API 部署 ZIP 檔案 
@@ -33,7 +33,7 @@ curl -u <deployment_user> https://<app_name>.scm.azurewebsites.net/api/deploymen
 
 ### <a name="with-powershell"></a>透過 PowerShell
 
-下列範例會使用[new-azwebapp](/powershell/module/az.websites/publish-azwebapp)上傳 .zip 檔案。 取代預留位置 `<group-name>`、`<app-name>` 和 `<zip-file-path>`。
+下列範例會使用 [set-azwebapp](/powershell/module/az.websites/publish-azwebapp) 上傳 .zip 檔案。 取代預留位置 `<group-name>`、`<app-name>` 和 `<zip-file-path>`。
 
 ```powershell
 Publish-AzWebapp -ResourceGroupName <group-name> -Name <app-name> -ArchivePath <zip-file-path>

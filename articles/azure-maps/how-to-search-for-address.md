@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 2a322de383194f131395629d33456d7561397eb9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91310980"
 ---
 # <a name="search-for-a-location-using-azure-maps-search-services"></a>使用 Azure 地圖服務搜尋服務來搜尋位置
@@ -95,7 +95,7 @@ Azure 地圖服務 [模糊搜尋 API](https://docs.microsoft.com/rest/api/maps/s
 
 4. 預設行為是搜尋整個世界，可能會傳回不必要的結果。 接下來，我們將只搜尋美國的比薩。 將索引 `countrySet` 鍵新增至 **Params** 區段，並將其值設定為 `US` 。 將 `countrySet` 金鑰設定為 `US` 會將結果系結到美國。
 
-    :::image type="content" source="./media/how-to-search-for-address/search-fuzzy-country.png" alt-text="搜尋美國的比薩":::
+    :::image type="content" source="./media/how-to-search-for-address/search-fuzzy-country.png" alt-text="搜尋位址":::
 
     結果現在會依國家/地區程式碼繫結，此查詢會傳回美國境內的披薩餐廳。
 
@@ -103,7 +103,7 @@ Azure 地圖服務 [模糊搜尋 API](https://docs.microsoft.com/rest/api/maps/s
 
     在 [ **參數** ] 區段中，新增下列索引鍵/值組：
 
-     | Key | 值 |
+     | 機碼 | 值 |
     |-----|------------|
     | lat | 47.620525 |
     | lon | -122.349274 |
@@ -136,20 +136,20 @@ Azure 地圖服務 [取得搜尋位址反向 API]( https://docs.microsoft.com/re
   
 4. 現在，我們會將下列索引鍵/值組新增至 **Params** 區段：
 
-    | Key | 值 | 傳回
+    | 機碼 | 值 | 傳回
     |-----|------------|------|
-    | number | 1 |回應可能會包含街道的側邊 (左/右) ，也可以是數位的位移位置。|
+    | 數字 | 1 |回應可能會包含街道的側邊 (左/右) ，也可以是數位的位移位置。|
     | returnSpeedLimit | true | 傳回位址的速度限制。|
     | returnRoadUse | true | 傳回位址的道路使用類型。 如需所有可能的道路使用類型，請參閱 [道路使用類型](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#uri-parameters)。|
     | returnMatchType | true| 傳回相符的型別。 如需所有可能的值，請參閱 [反向位址搜尋結果](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#searchaddressreverseresult)
 
-   :::image type="content" source="./media/how-to-search-for-address/search-reverse.png" alt-text="搜尋反向。":::
+   :::image type="content" source="./media/how-to-search-for-address/search-reverse.png" alt-text="搜尋位址":::
 
 5. 按一下 [ **傳送**]，然後檢查回應主體。
 
 6. 接下來，我們將新增 `entityType` 金鑰，並將其值設定為 `Municipality` 。 `entityType`金鑰會覆寫 `returnMatchType` 上一個步驟中的金鑰。 我們還需要移除 `returnSpeedLimit` ， `returnRoadUse` 因為我們要求的是自治區的相關資訊。  如需所有可能的實體類型，請參閱 [實體類型](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#entitytype)。
 
-    :::image type="content" source="./media/how-to-search-for-address/search-reverse-entity-type.png" alt-text="搜尋反向 entityType。":::
+    :::image type="content" source="./media/how-to-search-for-address/search-reverse-entity-type.png" alt-text="搜尋位址":::
 
 7. 按一下 [ **傳送**]。 比較結果與步驟5中傳回的結果。  由於要求的實體類型現在是 `municipality` ，因此回應不包含街道位址資訊。 此外，傳回的 `geometryId` 可透過 Azure 地圖服務 Get [搜尋多邊形 API](https://docs.microsoft.com/rest/api/maps/search/getsearchpolygon)來要求界限多邊形。
 
@@ -168,7 +168,7 @@ Azure 地圖服務 [取得搜尋位址反向 API]( https://docs.microsoft.com/re
    https://atlas.microsoft.com/search/address/reverse/crossstreet/json?&api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}&language=en-US&query=47.591180,-122.332700
     ```
 
-    :::image type="content" source="./media/how-to-search-for-address/search-address-cross.png" alt-text="搜尋跨街道。":::
+    :::image type="content" source="./media/how-to-search-for-address/search-address-cross.png" alt-text="搜尋位址":::
   
 3. 按一下 [ **傳送**]，然後檢查回應主體。 您會發現回應包含的 `crossStreet` 值 `Occidental Avenue South` 。
 

@@ -4,10 +4,10 @@ description: 描述您可以指派以確保標記相容性的 Azure 原則。
 ms.topic: conceptual
 ms.date: 03/20/2020
 ms.openlocfilehash: c6867bc01306ac3c08a9797ece0567a45e060af2
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89293725"
 ---
 # <a name="assign-policies-for-tag-compliance"></a>指派符合標記規範的原則
@@ -18,7 +18,7 @@ ms.locfileid: "89293725"
 
 [!INCLUDE [Tag policies](../../../includes/policy/reference/bycat/policies-tags.md)]
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 若要了解如何標記資源，請參閱 [使用標記來組織 Azure 資源](tag-resources.md)。
 * 並非所有資源類型都支援標記。 若要判斷您是否可以將標記套用至資源類型，請參閱 [Azure 資源的標記支援](tag-support.md)。

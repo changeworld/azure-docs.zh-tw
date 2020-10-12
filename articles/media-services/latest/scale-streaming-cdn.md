@@ -1,7 +1,7 @@
 ---
 title: 使用 CDN 整合來串流內容
 titleSuffix: Azure Media Services
-description: 瞭解如何使用 CDN 整合來串流內容，以及預先提取和來源輔助 CDN。
+description: 瞭解如何使用 CDN 整合來串流內容，以及預先提取和 Origin-Assist CDN 預先提取。
 services: media-services
 documentationcenter: ''
 author: IngridAtMicrosoft
@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.openlocfilehash: e1ea0a43783fb7abdc17655e3a3431d125d426f8
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89291274"
 ---
 # <a name="stream-content-with-cdn-integration"></a>使用 CDN 整合來串流內容
@@ -32,7 +32,7 @@ CDN 會快取從媒體服務 [串流端點串流處理的內容 (來源) ](strea
 您也需要考量彈性資料流的運作方式。 每個個別的影片片段都會快取為它自己的實體。 例如，想像一下第一次觀看特定影片的時間。 如果檢視器略過只觀賞幾秒鐘的時間，而且只有與監看過的人相關的影片片段會在 CDN 中快取。 因為有彈性資料流，您通常會有 5 到 7 個位元速率不同的視訊。 如果有一位人監看一個位元速率，而另一個人監看不同的位元速率，則它們會分別在 CDN 中快取。 即使兩人監看相同的位元速率，也可以透過不同的通訊協定進行串流處理。 每個通訊協定 (HLS、MPEG DASH、Smooth Streaming) 會分別進行快取。 因此，每一個位元速率和通訊協定都會分別進行快取，而且只會快取已要求的那些視訊片段。
 
 除了測試環境以外，我們建議針對標準和高階串流端點啟用 CDN。 每種類型的串流端點都有不同的支援輸送量限制。
-很難精確地計算串流端點所支援的並行資料流程數目上限，因為有許多因素需要考慮。 它們包括：
+很難精確地計算串流端點所支援的並行資料流程數目上限，因為有許多因素需要考慮。 其中包括：
 
 - 用於串流處理的位元速率上限
 - 播放的前置緩衝區和切換行為。 播放程式會嘗試從原點高載區段，並使用載入速度來計算自動調整位元速率切換。 如果串流端點接近飽和，回應時間可能會不同，而玩家會開始切換為較低的品質。 因為這會減少串流端點播放程式的負載，所以請將建立不需要的切換觸發程式調整回更高的品質。
@@ -67,7 +67,7 @@ CDN 會快取從媒體服務 [串流端點串流處理的內容 (來源) ](strea
 
 您可以判斷是否已在串流端點上進行 DNS 變更， (使用將流量導向至 Azure CDN) <https://www.digwebinterface.com> 。 如果您在結果中看到 azureedge.net 的功能變數名稱，流量現在會指向 CDN。
 
-## <a name="origin-assist-cdn-prefetch"></a>原點輔助 CDN-預先提取
+## <a name="origin-assist-cdn-prefetch"></a>Origin-Assist CDN-Prefetch
 
 CDN 快取是一個回應的程式。 如果 CDN 可以預測下一個物件將被要求的物件，CDN 可以主動要求並快取下一個物件。 透過此程式，您可以針對所有 (或大部分的物件) 達到快取點擊，以改善效能。
 
@@ -125,11 +125,11 @@ CDN 快取是一個回應的程式。 如果 CDN 可以預測下一個物件將�
 
     否，CDN 預先提取只會在用戶端起始的要求/回應之後完成。 CDN 絕對不會由預先提取觸發，以避免預先提取迴圈。
 
-* 是原點輔助的 CDN-預先提取功能永遠開啟嗎？ 如何開啟/關閉？
+* Origin-Assist CDN-Prefetch 功能永遠開啟嗎？ 如何開啟/關閉？
 
     這項功能預設為關閉。 客戶必須透過 Akamai API 將它開啟。
 
-* 針對即時串流，如果下一個區段或片段還無法使用，則會發生什麼事？
+* 針對即時串流，如果下一個區段或片段還無法使用，Origin-Assist 會發生什麼事？
 
     在此情況下，媒體服務來源不會提供 `CDN-Origin-Assist-Prefetch-Path` 標頭，也不會進行 CDN 預先提取。
 
@@ -155,7 +155,7 @@ CDN 快取是一個回應的程式。 如果 CDN 可以預測下一個物件將�
 
 * 這項功能是否適用于 UHD/HEVC 內容？
 
-    可以。
+    是。
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>提出問題、提供意見反應、取得更新
 

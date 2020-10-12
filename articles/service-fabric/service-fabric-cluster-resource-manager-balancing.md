@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: b6df25b525975f2d4fe6a02064e81f359a804c58
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81416259"
 ---
 # <a name="balancing-your-service-fabric-cluster"></a>平衡 Service Fabric 叢集
@@ -202,10 +202,10 @@ ClusterManifest.xml
 </center>
 
 ## <a name="next-steps"></a>後續步驟
-* 度量是 Service Fabric 叢集資源管理員管理叢集中的耗用量和容量的方式。 若要深入瞭解計量和其設定方式，請參閱[這篇文章](service-fabric-cluster-resource-manager-metrics.md)
+* 度量是 Service Fabric 叢集資源管理員管理叢集中的耗用量和容量的方式。 若要深入瞭解計量及其設定方式，請參閱 [這篇文章](service-fabric-cluster-resource-manager-metrics.md)
 * 移動成本是向叢集資源管理員發出訊號，表示移動某些服務會比較貴的其中一種方式。 如需有關移動成本的詳細資訊，請參閱[這篇文章](service-fabric-cluster-resource-manager-movement-cost.md)
 * 叢集資源管理員有數個為減緩叢集的流失而可以設定的節流。 這些節流通常不是必要的，但若有需要，您可以參閱 [這裡](service-fabric-cluster-resource-manager-advanced-throttling.md)
-* 叢集 Resource Manager 可以辨識和處理 subclustering （有時候當您使用放置條件約束和平衡時，會發生這種情況）。 若要瞭解 subclustering 如何影響平衡，以及如何處理它，請參閱[這裡](cluster-resource-manager-subclustering.md)
+* 叢集資源管理員可以辨識並處理子叢集 (當您使用放置條件約束和平衡) 時，有時會發生的情況。 若要瞭解子叢集可能會如何影響平衡以及如何處理它，請參閱 [這裡](cluster-resource-manager-subclustering.md)
 
 [Image1]:./media/service-fabric-cluster-resource-manager-balancing/cluster-resrouce-manager-balancing-thresholds.png
 [Image2]:./media/service-fabric-cluster-resource-manager-balancing/cluster-resource-manager-balancing-threshold-triggered-results.png

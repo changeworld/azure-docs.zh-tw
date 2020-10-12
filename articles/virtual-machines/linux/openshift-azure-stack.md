@@ -10,17 +10,17 @@ ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
 ms.openlocfilehash: 3729dbbc54d15d4641f5e514582f1437e790ef19
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87374029"
 ---
 # <a name="deploy-openshift-container-platform-or-okd-in-azure-stack"></a>在 Azure Stack 中部署 OpenShift 容器平台或 OKD
 
 在 Azure Stack 中可以部署 OpenShift。 Azure 與 Azure Stack 之間有一些主要差異，因此部署會有些許不同，而且功能也有些許不同。
 
-目前，Azure 雲端提供者不適用於 Azure Stack。 基於這個理由，您無法使用磁碟連結在 Azure Stack 中永續儲存。 相反地，您可以設定其他存放裝置選項，例如 NFS、iSCSI、GlusterFS 等等。或者，您可以啟用 CN 並使用 GlusterFS 來進行持續性儲存。 如果已啟用 CN，將會部署額外三個節點，而且有額外的儲存體可供 GlusterFS 使用。
+目前，Azure 雲端提供者不適用於 Azure Stack。 基於這個理由，您無法使用磁碟連結在 Azure Stack 中永續儲存。 相反地，您可以設定其他儲存選項，例如 NFS、iSCSI、GlusterFS 等。或者，您可以啟用 CN 並使用 GlusterFS 來保存永久儲存體。 如果已啟用 CN，將會部署額外三個節點，而且有額外的儲存體可供 GlusterFS 使用。
 
 您可以使用數種方法其中之一，在 Azure Stack 中部署 OpenShift 容器平台或 OKS：
 
@@ -63,7 +63,7 @@ RHEL 映像 (OpenShift 容器平台) 或 CentOS 映像 (OKD) 必須新增至 Azu
 
 如需使用 Azure CLI 進行部署的步驟，請依照 [OpenShift 容器平台](./openshift-container-platform-3x.md)一節或 [OKD](./openshift-okd.md) 一節中的適當小節進行。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - [部署後工作](./openshift-container-platform-3x-post-deployment.md)
 - [針對 Azure 中的 OpenShift 部署進行疑難排解](./openshift-container-platform-3x-troubleshooting.md)

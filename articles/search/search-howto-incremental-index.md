@@ -10,10 +10,10 @@ ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.openlocfilehash: a1b317b651b0e17c07eb17dbdb8a7c6657d39564
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90971622"
 ---
 # <a name="how-to-configure-caching-for-incremental-enrichment-in-azure-cognitive-search"></a>如何在 Azure 認知搜尋中設定累加式擴充的快取
@@ -179,7 +179,7 @@ api-key: [YOUR-ADMIN-KEY]
 
 如需控制快取會發生什麼事的詳細資訊，請參閱快取 [管理](cognitive-search-incremental-indexing-conceptual.md#cache-management)。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 增量擴充適用于包含技能集的索引子。 在下一個步驟中，請造訪技能集檔以瞭解概念和組合。 
 

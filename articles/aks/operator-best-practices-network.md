@@ -6,10 +6,10 @@ services: container-service
 ms.topic: conceptual
 ms.date: 12/10/2018
 ms.openlocfilehash: 9ec6423a853aacbc8a03cc5472bf1a95a5623b1f
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89482720"
 ---
 # <a name="best-practices-for-network-connectivity-and-security-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) 中的網路連線和安全性最佳做法
@@ -160,7 +160,7 @@ AKS 中的大部分作業都可使用 Azure 管理工具或透過 Kubernetes API
 
 防禦主機的管理網路也應該受到保護。 使用 [Azure ExpressRoute][expressroute] 或 [VPN 閘道][vpn-gateway]來連線到內部部署網路，並使用網路安全性群組來控制存取。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 本文著重於網路連線和安全性。 若要深入了解 Kubernetes 中的網路基本概念，請參閱 [Azure Kubernetes Service (AKS) 中應用程式的網路概念][aks-concepts-network]
 

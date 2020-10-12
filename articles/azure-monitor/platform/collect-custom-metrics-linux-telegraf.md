@@ -8,10 +8,10 @@ ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
 ms.openlocfilehash: b80f27e490dd3b1890eab7740fb4650ba4280abb
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88207806"
 ---
 # <a name="collect-custom-metrics-for-a-linux-vm-with-the-influxdata-telegraf-agent"></a>使用 InfluxData Telegraf 代理程式收集 Linux VM 的自訂計量
@@ -52,13 +52,13 @@ ms.locfileid: "88207806"
 
     ![虛擬機器大小 Telegraf 代理程式概觀](./media/collect-custom-metrics-linux-telegraf/vm-size.png)
 
-1. 在 [**網路**網路安全性群組] 的 [**設定**] 頁面上  >  **Network Security Group**  >  **，選取 [公用輸入埠**]，選取 [ **HTTP**和**SSH (22) **。 保留其餘的預設值，然後選取 [確定]****。 
+1. 在 [**網路**網路安全性群組] 的 [**設定**] 頁面上  >  **Network Security Group**  >  **，選取 [公用輸入埠**]，選取 [ **HTTP**和**SSH (22) **。 保留其餘的預設值，然後選取 [確定]  。 
 
 1. 在 [摘要] 頁面上選取 [建立]****，以開始進行 VM 部署。 
 
 1. VM 會釘選到 Azure 入口網站儀表板。 完成部署後，VM 摘要就會自動開啟。 
 
-1. 在 [VM] 窗格中，流覽至 [身分 **識別** ] 索引標籤。請確認您的 VM 將系統指派的身分識別設定為 [ **開啟**]。 
+1. 在 [VM] 窗格中，流覽至 [身分 **識別** ] 索引標籤。確定您的 VM 將系統指派的身分識別設定為 [ **開啟**]。 
  
     ![Telegraf VM 身分識別預覽](./media/collect-custom-metrics-linux-telegraf/connect-to-VM.png)
  

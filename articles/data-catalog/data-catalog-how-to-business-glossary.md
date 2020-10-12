@@ -7,10 +7,10 @@ ms.service: data-catalog
 ms.topic: how-to
 ms.date: 08/01/2019
 ms.openlocfilehash: f91728435b885f3b4d9415bc81e18fdaaea0148f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86537743"
 ---
 # <a name="set-up-the-business-glossary-for-governed-tagging"></a>設定控管標記的商務詞彙
@@ -32,7 +32,7 @@ Azure 資料目錄啟用了資料來源探索功能，讓您能夠輕鬆地探�
 
 ## <a name="glossary-availability-and-privileges"></a>詞彙可用性和權限
 
-商務詞彙只能在標準版 Azure 資料目錄中使用。 免費版的資料目錄不包含詞彙，而且它不會提供用於控管標記的功能。
+商務詞彙只能在標準版 Azure 資料目錄中使用。 免費版的資料目錄不包含詞彙，也不提供控管標記的功能。
 
 您可透過資料目錄入口網站之瀏覽功能表中的 [詞彙]**** 選項存取商務詞彙。  
 
@@ -40,7 +40,7 @@ Azure 資料目錄啟用了資料來源探索功能，讓您能夠輕鬆地探�
 
 資料目錄管理員和詞彙管理員角色的成員可以建立、編輯及刪除商務詞彙中的詞彙。 所有的資料目錄使用者都可以檢視字詞定義，而且可以利用詞彙標記資產。
 
-![資料目錄-新增詞彙詞彙](./media/data-catalog-how-to-business-glossary/02-new-term.png)
+![資料目錄-新增詞彙字詞](./media/data-catalog-how-to-business-glossary/02-new-term.png)
 
 ## <a name="creating-glossary-terms"></a>建立詞彙
 
@@ -80,6 +80,6 @@ Azure 資料目錄啟用了資料來源探索功能，讓您能夠輕鬆地探�
 
 透過使用 Azure 資料目錄中的商務詞彙和它啟用的控管標記，您可以利用一致的方式識別、管理與探索資料資產。 商務詞彙可提升組織成員對商務詞彙的學習。 詞彙也支援擷取有意義的中繼資料，其可簡化資產探索及了解。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * [商務詞彙作業的 REST API 文件](/rest/api/datacatalog/data-catalog-glossary)

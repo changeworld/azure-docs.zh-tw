@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a7e4772ba2b3d8adf163d6f2932461e1e939ed84
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90052438"
 ---
 # <a name="when-to-use-an-azure-multi-factor-authentication-provider"></a>何時使用 Azure Multi-Factor Authentication Provider
@@ -72,6 +72,6 @@ Azure Multi-Factor Auth Provider 可讓**沒有授權**的使用者能夠充分�
 > [!NOTE]
 > 具有舊版 Microsoft Authenticator 應用程式和 Azure MFA 伺服器的使用者可能需要重新註冊其應用程式。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 [進行 Multi-Factor Authentication 設定](howto-mfa-mfasettings.md)

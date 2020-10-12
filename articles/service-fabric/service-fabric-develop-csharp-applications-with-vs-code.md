@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 06/29/2018
 ms.author: pepogors
 ms.openlocfilehash: 1d7478e6b81ef2c53ca6194197336e91d3ff250b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75614518"
 ---
 # <a name="develop-c-service-fabric-applications-with-visual-studio-code"></a>使用 Visual Studio Code 開發 C# Service Fabric 應用程式
@@ -61,22 +61,22 @@ sudo code . --user-data-dir='.'
 
    ![VS Code 中的部署應用程式命令](./media/service-fabric-develop-csharp-applications-with-vs-code/sf-deploy-application.png)
 
-4. 當部署完成時，啟動瀏覽器並開啟 Service Fabric Explorer： HTTP： \/ /localhost： 19080/Explorer。 您應該會看到應用程式正在執行。 這可能需要一些時間，請耐心等候。 
+4. 當部署完成時，請啟動瀏覽器並開啟 Service Fabric Explorer： HTTP： \/ /localhost： 19080/Explorer。 您應該會看到應用程式正在執行。 這可能需要一些時間，請耐心等候。 
 
    ![Service Fabric Explorer 中的計數器服務應用程式](./media/service-fabric-develop-csharp-applications-with-vs-code/sfx-verify-deploy.png)
 
-4. 在您確認應用程式正在執行之後，請啟動瀏覽器並開啟此頁面： HTTP： \/ /localhost：31002。 這是應用程式的 Web 前端。 由於計數器的值會增加，請重新整理頁面以查看目前的值。
+4. 確認應用程式正在執行之後，請啟動瀏覽器並開啟此頁面： HTTP： \/ /localhost：31002。 這是應用程式的 Web 前端。 由於計數器的值會增加，請重新整理頁面以查看目前的值。
 
    ![瀏覽器中的計數器服務應用程式](./media/service-fabric-develop-csharp-applications-with-vs-code/counter-service-running.png)
 
-## <a name="publish-the-application-to-an-azure-service-fabric-cluster"></a>將應用程式發行至 Azure Service Fabric 叢集
-除了將應用程式部署到本機叢集，您也可以將應用程式發佈至遠端 Azure Service Fabric 叢集。 
+## <a name="publish-the-application-to-an-azure-service-fabric-cluster"></a>將應用程式發佈至 Azure Service Fabric 叢集
+除了將應用程式部署至本機叢集，您也可以將應用程式發佈至遠端 Azure Service Fabric 叢集。 
 
-1. 請確定您已使用上述指示來建立應用程式。 以 `Cloud.json` 您想要發佈的遠端叢集詳細資料，更新產生的設定檔。
+1. 確定您已使用上述指示建立您的應用程式。 `Cloud.json`使用您想要發佈的遠端叢集詳細資料來更新產生的設定檔。
 
-2. 從**命令**選擇區中，選取 [ **Service Fabric：發佈應用程式] 命令**。 安裝程序的輸出會傳送到整合式終端機。
+2. 從 **命令**選擇區中，選取 [ **Service Fabric：發佈應用程式] 命令**。 安裝程序的輸出會傳送到整合式終端機。
 
-   ![VS Code 中的發佈應用程式命令](./media/service-fabric-develop-csharp-applications-with-vs-code/sf-publish-application.png)
+   ![VS Code 中的 [發佈應用程式] 命令](./media/service-fabric-develop-csharp-applications-with-vs-code/sf-publish-application.png)
 
 3. 部署完成時，請啟動瀏覽器並開啟 Service Fabric Explorer： `https:<clusterurl>:19080/Explorer` 。 您應該會看到應用程式正在執行。 這可能需要一些時間，請耐心等候。 
 

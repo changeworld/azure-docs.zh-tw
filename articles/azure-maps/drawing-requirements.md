@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philMea
 ms.openlocfilehash: 1f25aadf716b7768b6122a4fb165466aef7f8a16
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90053387"
 ---
 # <a name="drawing-package-requirements"></a>繪圖套件需求
@@ -402,7 +402,7 @@ zip 資料夾必須在目錄的根樓層中包含資訊清單檔，而且該檔�
 }
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 當您的繪圖套件符合需求時，您可以使用 [Azure 地圖服務轉換服務](https://docs.microsoft.com/rest/api/maps/conversion) 將封裝轉換成地圖資料集。 然後，您可以使用「室內地圖」模組，使用資料集來產生室內地圖。
 
