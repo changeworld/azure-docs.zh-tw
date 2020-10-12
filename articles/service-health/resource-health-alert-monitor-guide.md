@@ -4,10 +4,10 @@ description: 使用 Azure 入口網站建立警示，以在您的 Azure 資源�
 ms.topic: conceptual
 ms.date: 6/23/2020
 ms.openlocfilehash: 127aad1691f7bb6b6c64332eefde734a809ab75f
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91540671"
 ---
 # <a name="configure-resource-health-alerts-using-azure-portal"></a>使用 Azure 入口網站設定資源健康情況警示

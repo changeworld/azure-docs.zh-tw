@@ -1,5 +1,5 @@
 ---
-title: 共同銷售國家/地區和地區代碼 |Azure Marketplace
+title: 共同銷售國家/地區和區功能變數代碼 |Azure Marketplace
 description: 在供應專案的共同銷售頁面上提供連絡人資訊時，請使用這兩個字母的國家/地區代碼。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,27 +8,27 @@ author: palanis-MSFT
 ms.author: palanis
 ms.date: 08/27/2019
 ms.openlocfilehash: e8d952c76fa71cb57d2edd7c9aa361c7249e0622
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86105127"
 ---
-# <a name="co-sell-country-and-region-codes"></a>共同銷售國家/地區和地區代碼
+# <a name="co-sell-country-and-region-codes"></a>共同銷售國家及區域代碼
 
-在[供應專案的共同銷售頁面上提供連絡人資訊](commercial-marketplace-co-sell.md)時，請使用這兩個字母的國家/地區代碼。
+在 [供應專案的共同銷售頁面上提供連絡人資訊](commercial-marketplace-co-sell.md)時，請使用這兩個字母的國家/地區代碼。
 
-如果連絡人涵蓋所有國家/地區，請使用三個字母代碼「OOO 序列」。
+如果連絡人涵蓋所有國家/地區，請使用三個字母代碼 "OOO"。
 
-如果連絡人涵蓋一個以上的國家/地區，請輸入以逗號分隔的兩個字母代碼（例如，輸入 "US，CA，FR" 而不加引號）。
+如果連絡人涵蓋一個以上的國家/地區，請輸入以逗號分隔的兩個字母代碼 (例如，輸入 "US，CA，FR"，而不使用引號) 。
 
 ## <a name="countryregion-table"></a>國家/地區資料表
 
 |   國家/地區名稱               |   ISO-2   |
 |-------------------------------------|-----------|
-| 全球連絡人                     | OOO 序列       |
+| 全球連絡人                     | Ooo       |
 | 阿富汗                         | AF        |
-| 奧蘭島                       | 限於        |
+| 奧蘭島                       | 斧頭        |
 | 阿爾巴尼亞                             | AL        |
 | 阿爾及利亞                             | DZ        |
 | 美屬薩摩亞                      | AS        |
@@ -201,7 +201,7 @@ ms.locfileid: "86105127"
 | 巴拉圭                            | PY        |
 | 祕魯                                | PE        |
 | 菲律賓                         | PH        |
-| 皮特康群島                    | PN        |
+| 皮特康群島                    | Pn        |
 | 波蘭                              | PL        |
 | 葡萄牙                            | PT        |
 | 波多黎各                         | PR        |
@@ -213,7 +213,7 @@ ms.locfileid: "86105127"
 | 聖巴瑟米                    | BL        |
 | 聖克里斯多福及尼維斯               | KN        |
 | 聖露西亞                         | LC        |
-| 法屬聖馬丁                        | MF        |
+| 法屬聖馬丁                        | Mf        |
 | 聖匹島           | 下午        |
 | 聖文森及格瑞那丁    | VC        |
 | 薩摩亞                               | WS        |
@@ -225,7 +225,7 @@ ms.locfileid: "86105127"
 | 塞席爾                          | SC        |
 | 獅子山                        | SL        |
 | 新加坡                           | SG        |
-| 荷屬聖馬丁                        | X        |
+| 荷屬聖馬丁                        | Sx        |
 | 斯洛伐克                            | SK        |
 | 斯洛維尼亞                            | SI        |
 | 索羅門群島                     | SB        |
@@ -275,6 +275,6 @@ ms.locfileid: "86105127"
 | 辛巴威                            | ZW        |
 |   |   |   |
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-- 瞭解[合作夥伴中心內的共同銷售選項](./commercial-marketplace-co-sell.md)。
+- 瞭解 [合作夥伴中心中的共同銷售選項](./commercial-marketplace-co-sell.md)。

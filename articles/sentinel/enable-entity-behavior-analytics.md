@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 09/15/2020
 ms.author: yelevin
 ms.openlocfilehash: c55ea0e7753faa6dc21b955d63a57d96e3849f70
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90994610"
 ---
 # <a name="enable-user-and-entity-behavior-analytics-ueba-in-azure-sentinel"></a>在 Azure Sentinel 中啟用使用者和實體行為分析 (UEBA)  
@@ -47,7 +47,7 @@ ms.locfileid: "90994610"
 
 1. 選取 [ **移至實體搜尋**]。 這會將您帶到 [實體搜尋] 窗格，從現在開始，您可以從主要 Azure Sentinel 功能表選擇 **實體行為** 時看到的內容。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 在本檔中，您已瞭解如何在 Azure Sentinel 中啟用和設定使用者和實體行為分析 (UEBA) 。 若要深入了解 Azure Sentinel，請參閱下列文章：
 - 深入了解如何[取得資料的可見度以及潛在威脅](quickstart-get-visibility.md)。
 - 開始[使用 Azure Sentinel 偵測威脅](tutorial-detect-threats-built-in.md)。

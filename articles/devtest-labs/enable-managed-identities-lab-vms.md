@@ -4,10 +4,10 @@ description: 本文會說明實驗室擁有者如何在您的實驗室虛擬機�
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: b4bf2900acebaeecd5cbc4cb65635aee6de87dda
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88717622"
 ---
 # <a name="enable-user-assigned-managed-identities-on-lab-virtual-machines-in-azure-devtest-labs"></a>在 Azure DevTest Labs 中的實驗室虛擬機器上啟用使用者指派的受控識別
@@ -60,7 +60,7 @@ ms.locfileid: "88717622"
     }
     ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 若要深入瞭解受控識別，請參閱 [什麼是適用于 Azure 資源的受控識別？](../active-directory/managed-identities-azure-resources/overview.md)。
 
 

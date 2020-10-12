@@ -10,15 +10,15 @@ ms.assetid: 49416f38-fcc7-476f-a55e-d67f3f9c1d34
 ms.topic: how-to
 ms.date: 03/15/2018
 ms.openlocfilehash: 0025e35f516543c8fe703daa647ca29ed3fb87e6
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87127582"
 ---
 # <a name="adjust-quotas-and-limits-in-azure-data-lake-analytics"></a>調整 Azure Data Lake Analytics 中的配額和限制
 
-了解如何調整並提高 Azure Data Lake Analytics (ADLA) 帳戶中的配額和限制。 瞭解這些限制可協助您瞭解您的「U-SQL」作業行為。 所有配額限制並非強制，因此您可以與 Azure 支援連絡來提高上限。
+了解如何調整並提高 Azure Data Lake Analytics (ADLA) 帳戶中的配額和限制。 瞭解這些限制可協助您瞭解您的 U SQL 作業行為。 所有配額限制並非強制，因此您可以與 Azure 支援連絡來提高上限。
 
 ## <a name="azure-subscriptions-limits"></a>Azure 訂用帳戶限制
 
@@ -32,18 +32,18 @@ ms.locfileid: "87127582"
 
 ## <a name="default-adla-account-limits"></a>預設 ADLA 帳戶限制
 
-**每個帳戶的分析單位（au）數目上限：** 250，預設32
+**每個帳戶 (au) 的分析單位數目上限：** 250，預設為32
 
-這是可以同時在您的帳戶中執行的 AU 的最大數目。 如果您的所有作業加起來的執行中 AU 總數超過此限制，系統會自動將較新的工作排入佇列。 例如:
+這是可以同時在您的帳戶中執行的 AU 的最大數目。 如果您的所有作業加起來的執行中 AU 總數超過此限制，系統會自動將較新的工作排入佇列。 例如：
 
 * 如果您只有一個作業使用 32 個 AU 在執行，當您提交第二個作業時，在第一個作業完成之前，第二個作業會在作業佇列中等待。
 * 如果您已經有四個執行中的作業，而每個都使用 8 AU，當您送出第五個需要 8 AU 的作業時，它會在作業佇列中等到有 8 AU 可使用。
 
     ![Azure Data Lake Analytics 限制和配額頁面](./media/data-lake-analytics-quota-limits/adjust-quota-limits.png)
 
-**每項作業的分析單位（au）數目上限：** 250、預設32
+**每項作業 (au) 的分析單位數目上限：** 250，預設為32
 
-這是可以在您的帳戶中指派每個個別作業的 au 數上限。 除非提交者受可提供每項作業更多 AU 的計算原則 (作業提交限制) 影響，否則系統會拒絕已指派超過此限制的作業。 此值的上限是帳戶的 AU 限制。
+這是可在您的帳戶中指派每個個別工作的 au 數上限。 除非提交者受可提供每項作業更多 AU 的計算原則 (作業提交限制) 影響，否則系統會拒絕已指派超過此限制的作業。 此值的上限是帳戶的 AU 限制。
 
 **每個帳戶的並行 U-SQL 作業最大數目︰** 20
 
@@ -66,7 +66,7 @@ ms.locfileid: "87127582"
 
     ![Azure Data Lake Analytics入口網站頁面](./media/data-lake-analytics-quota-limits/data-lake-analytics-quota-support-request.png)
 2. 選取 [配額]**** 問題類型。
-3. 選取您的**訂**用帳戶（請確定它不是「試用」訂用帳戶）。
+3. 選取您的 **訂** 用帳戶 (確定它不是「試用」訂用帳戶) 。
 4. 選取 [Data Lake Analytics]**** 配額類型。
 
     ![Azure Data Lake Analytics入口網站頁面](./media/data-lake-analytics-quota-limits/data-lake-analytics-quota-support-request-basics.png)
@@ -79,7 +79,7 @@ ms.locfileid: "87127582"
 
 Microsoft 會檢閱您的要求，並嘗試盡速符合您的業務需求。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * [Microsoft Azure Data Lake Analytics 概觀](data-lake-analytics-overview.md)
 * [使用 Azure PowerShell 管理 Azure Data Lake Analytics](data-lake-analytics-manage-use-powershell.md)

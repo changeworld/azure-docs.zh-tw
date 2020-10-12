@@ -5,10 +5,10 @@ ms.reviewer: utraghuv
 ms.topic: conceptual
 ms.date: 06/08/2017
 ms.openlocfilehash: 5a408dc07e83e790a63f8a252d4ed3f84bf66be4
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89181675"
 ---
 # <a name="security-features-to-help-protect-hybrid-backups-that-use-azure-backup"></a>利用安全性功能協助保護使用 Azure 備份的混合式備份
@@ -110,7 +110,7 @@ ms.locfileid: "89181675"
 
 ## <a name="troubleshooting-errors"></a>疑難排解錯誤
 
-| 作業 | 錯誤詳細資料 | 解決方法 |
+| 作業 | 錯誤詳細資料 | 解決方案 |
 | --- | --- | --- |
 | 原則變更 |無法修改備份原則。 錯誤：由於發生內部服務錯誤 [0x29834]，導致目前的操作失敗。 請稍後再重試操作。 如果問題持續發生， 請連絡 Microsoft 支援服務。 |**原因：**<br/>啟用安全性設定時，如果您嘗試將保留範圍縮減至低於上述指定的最小值，而且您是在不支援的版本 (支援的版本會在本文的第一次) 中指定，則會出現此錯誤。 <br/>**建議的動作：**<br/> 在此情況下，您應該將保留期限設定為高於指定的最小保留期限 (若是每日則 7 天、若是每週則 4 週、若是每月則 3 個月，若是每年則 1 年)，以繼續進行與原則有關的更新。 （選擇性）建議的方法是更新備份代理程式、Azure 備份伺服器及/或 DPM UR，以利用所有安全性更新。 |
 | 變更複雜密碼 |輸入的安全性 PIN 碼不正確。 (識別碼：100130) 請提供正確的安全性 PIN 碼以完成此作業。 |**原因：**<br/> 當您在執行重要作業 (例如變更複雜密碼) 時輸入無效或已到期的安全性 PIN 碼時，就會出現此錯誤。 <br/>**建議的動作：**<br/> 若要完成作業，您必須輸入有效的安全性 PIN 碼。 若要取得 PIN，請登入 Azure 入口網站，然後流覽至 [復原服務保存庫] > [設定] > 屬性 > 產生安全性 PIN。 請使用這個 PIN 碼來變更複雜密碼。 |

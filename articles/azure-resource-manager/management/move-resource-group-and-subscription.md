@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 09/15/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: cd05fe045532ee1b1f1fb88e502d786daabf9365
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91319549"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>將資源移到新的資源群組或訂用帳戶 \(部分機器翻譯\)
@@ -178,11 +178,11 @@ Authorization: Bearer <access-token>
 
 若要啟用移動選項，請選取您想要移動的資源。 若要選取所有資源，請選取清單最上方的核取方塊。 或者，個別選取 [資源]。 選取資源之後，就會啟用移動選項。
 
-:::image type="content" source="./media/move-resource-group-and-subscription/select-resources.png" alt-text="選取資源":::
+:::image type="content" source="./media/move-resource-group-and-subscription/select-resources.png" alt-text="移動選項已停用":::
 
 選取 [ **移動** ] 按鈕。
 
-:::image type="content" source="./media/move-resource-group-and-subscription/move-options.png" alt-text="移動選項":::
+:::image type="content" source="./media/move-resource-group-and-subscription/move-options.png" alt-text="移動選項已停用":::
 
 此按鈕提供三個選項：
 
@@ -194,11 +194,11 @@ Authorization: Bearer <access-token>
 
 選取目的地資源群組。 認可您需要更新這些資源的指令碼，然後選取 [確定] ****。 如果您選取移至新的訂用帳戶，您也必須選取目的地訂用帳戶。
 
-:::image type="content" source="./media/move-resource-group-and-subscription/move-destination.png" alt-text="選取目的地":::
+:::image type="content" source="./media/move-resource-group-and-subscription/move-destination.png" alt-text="移動選項已停用":::
 
 驗證資源可以移動之後，您會看到移動作業正在執行的通知。
 
-:::image type="content" source="./media/move-resource-group-and-subscription/move-notification.png" alt-text="通知":::
+:::image type="content" source="./media/move-resource-group-and-subscription/move-notification.png" alt-text="移動選項已停用":::
 
 完成後，您會收到結果的通知。
 

@@ -7,10 +7,10 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/28/2020
 ms.openlocfilehash: 3a11f77384c520bed9824841269be4ad998adba4
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90056195"
 ---
 # <a name="react-plugin-for-application-insights-javascript-sdk"></a>Application Insights JavaScript SDK 的回應外掛程式
@@ -62,7 +62,7 @@ export default withAITracking(reactPlugin,appInsights, MyComponent);
 
 ```
 
-## <a name="configuration"></a>設定
+## <a name="configuration"></a>組態
 
 | 名稱    | 預設 | 描述                                                                                                    |
 |---------|---------|----------------------------------------------------------------------------------------------------------------|
@@ -89,7 +89,7 @@ export default withAITracking(reactPlugin,appInsights, MyComponent);
 
 查看 [Application Insights 反應示範](https://github.com/Azure-Samples/application-insights-react-demo)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 若要深入瞭解 JavaScript SDK，請參閱 [Application Insights JAVASCRIPT sdk 檔](javascript.md)。
 - 若要瞭解 Kusto 查詢語言並查詢 Log Analytics 中的資料，請參閱 [記錄查詢總覽](../../azure-monitor/log-query/log-query-overview.md)。

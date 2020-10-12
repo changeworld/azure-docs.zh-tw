@@ -7,10 +7,10 @@ author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
 ms.openlocfilehash: 650fb7f0877a98ef53ed3868550f9c084ecb5885
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84710196"
 ---
 # <a name="retain-ip-addresses-during-failover"></a>在容錯轉移期間保留 IP 位址
@@ -37,7 +37,7 @@ ms.locfileid: "84710196"
 這是容錯移轉之前的架構。
 
 - 公司 A 在來源和目標 Azure 區域中具有相同的網路和子網路。
-- 為了減少復原時間目標（RTO），公司會使用 SQL Server Always On、網域控制站等的複本節點。這些複本節點位於目的地區域的不同 VNet 中，因此可以在來源和目的地區域之間建立 VPN 站對站連線能力。 如果在來源和目標中使用相同的 IP 位址空間，則無法進行此操作。  
+- 為了降低復原時間目標 (RTO) ，公司會使用 SQL Server Always On、網域控制站等的複本節點。這些複本節點位於目的地區域中不同的 VNet 中，因此可以在來源和目的地區域之間建立 VPN 站對站連線能力。 如果在來源和目標中使用相同的 IP 位址空間，則無法進行此操作。  
 - 在容錯移轉之前，網路架構如下所示：
     - 主要區域是 Azure 東亞
         - 東亞有一個 VNet (**來源 VNet**)，位址空間為 10.1.0.0/16。
@@ -49,7 +49,7 @@ ms.locfileid: "84710196"
         - 東南亞有一個復原 VNet (**復原 VNet**) 與**來源 VNet** 相同。
         - 東南亞有一個額外的 VNet (**Azure VNet**)，位址空間為 10.2.0.0/16。
         - **Azure VNet** 包含子網路 (**子網路 4**)，位址空間為 10.2.4.0/24。
-        - SQL Server Always On、網域控制站等的複本節點位於**子網 4**。
+        - SQL Server Always On、網域控制站等的複本節點位於 **子網 4**。
     - **來源 VNet** 和 **Azure VNet** 是透過 VPN 站對站連線來連線。
     - **Recovery VNet** 並未與任何其他虛擬網路連線。
     - **公司 A** 會針對已複寫的項目指派/驗證目標 IP 位址。 每個 VM 的目標 IP 皆等同於來源 IP。
@@ -92,7 +92,7 @@ ms.locfileid: "84710196"
 - 次要 (目標) 區域是 Azure 東南亞 - 東南亞有與 **來源 VNet 1** 和**來源 VNet 2** 相同的復原 VNet (**復原 VNet 1** 和**復原 VNet 2**)。
         - **復原 VNet 1** 和**復原 VNet 2**都有兩個與**來源 VNet 1** 和**來源 VNet 2** 中的子網路相符的子網路 - 東南亞有一個額外的 VNet (**Azure VNet**)，位址空間為 10.3.0.0/16。
         - **Azure VNet** 包含一個子網路 (**子網路 4**)，位址空間為 10.3.4.0/24。
-        -SQL Server Always On、網域控制站等的複本節點位於**子網 4**。
+        -SQL Server Always On、網域控制站等的複本節點位於 **子網 4**。
 - 有許多站對站 VPN 連線： 
     - **來源 VNet 1** 和 **Azure VNet**
     - **來源 VNet 2** 和 **Azure VNet**
@@ -135,7 +135,7 @@ ms.locfileid: "84710196"
     - **子網 3**： 10.1.3.0/24，利用具有位址空間 10.1.0.0/16 的 Azure 虛擬網路。 此虛擬網路稱為**來源 VNet**
       - 次要 (目標) 區域是 Azure 東南亞：
   - 東南亞有一個復原 VNet (**復原 VNet**) 與**來源 VNet** 相同。
-- 東亞中的 Vm 會使用 Azure ExpressRoute 或站對站 VPN 連線到內部部署資料中心。
+- 東亞中的 Vm 會透過 Azure ExpressRoute 或站對站 VPN 連線到內部部署資料中心。
 - 為了降低 RTO，公司 B 在容錯移轉之前於 Azure 東南亞的復原 VNet 上佈建閘道。
 - 公司 B 會針對已複寫的 VM 指派/驗證目標 IP 位址。 每個 VM 的目標 IP 皆等同於來源 IP 位址。
 
@@ -161,6 +161,6 @@ ms.locfileid: "84710196"
  - 針對應用程式復原，公司 B 需要將每個應用程式放在其自己專用的 Azure VNet 中。
  - 將每個應用程式放在不同的 VNet 中，公司 B 可以對獨立的應用程式進行容錯移轉，並將來源連線路由傳送至目標區域。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 深入了解[復原方案](site-recovery-create-recovery-plans.md)。

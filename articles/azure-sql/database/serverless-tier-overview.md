@@ -12,16 +12,16 @@ ms.author: moslake
 ms.reviewer: sstein
 ms.date: 9/17/2020
 ms.openlocfilehash: 2d317ac2543289aca3a0741b424f71a2e903c74d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91321402"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL Database 無伺服器
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-無伺服器是 Azure SQL Database 中單一資料庫的計算層，可根據工作負載需求和每秒使用的計算量，自動調整計算規模。 無伺服器計算層也會在非使用中的期間自動暫停資料庫，但只有在儲存體計費時，才會在活動傳回時自動繼續資料庫。
+無伺服器是 Azure SQL Database 中單一資料庫的計算層，可根據工作負載需求和每秒使用的計算量，自動調整計算規模。 無伺服器計算層也會在只有儲存體仍在計費的資料庫非使用中期間自動暫停資料庫，並在有活動傳回時自動繼續執行資料庫。
 
 ## <a name="serverless-compute-tier"></a>無伺服器計算層級
 
@@ -130,7 +130,7 @@ SQL 快取會隨著資料以相同方式從磁片提取，且速度與布建的�
 
 |功能|自動繼續觸發程序|
 |---|---|
-|驗證和授權|登入|
+|驗證與授權|登入|
 |威脅偵測|啟用/停用資料庫或伺服器層級的威脅偵測設定。<br>修改資料庫或伺服器層級的威脅偵測設定。|
 |資料探索與分類|新增、修改、刪除或檢視敏感度標籤|
 |稽核|檢視稽核記錄。<br>正在更新或查看稽核原則。|
@@ -275,7 +275,7 @@ MODIFY ( SERVICE_OBJECTIVE = 'GP_S_Gen5_1') ;
 
 下表列出用來監視無伺服器資料庫之應用程式封裝和使用者集區之資源使用量的計量：
 
-|單位|計量|描述|單位|
+|實體|計量|描述|單位|
 |---|---|---|---|
 |應用程式套件|app_cpu_percent|應用程式所使用的虛擬核心百分比，相對於應用程式所允許的最大虛擬核心數。|百分比|
 |應用程式套件|app_cpu_billed|在報告期間內針對應用程式計費的計算數量。 在這段期間所支付的金額為此計量與虛擬核心單價的乘積。 <br><br>彙總一段時間內每秒使用的最大 CPU 與記憶體，即可判斷此計量的值。 如果使用的數量小於依照最小虛擬核心數與最小記憶體所設定的最小佈建數量，就會收取最小佈建數量的費用。為了比較 CPU 與記憶體以供計費用途，記憶體會依每個虛擬核心 3 GB 重新調整記憶體量，藉此規範成虛擬核心單位。|虛擬核心秒數|
@@ -367,5 +367,5 @@ Azure Hybrid Benefit (AHB) 與保留容量折扣並不適用于無伺服器計�
 
 ## <a name="next-steps"></a>後續步驟
 
-- 若要開始使用，請參閱 [快速入門：使用 Azure 入口網站在 Azure SQL Database 中建立單一資料庫](single-database-create-quickstart.md)。
+- 若要開始使用，請參閱[快速入門：使用 Azure 入口網站在 Azure SQL Database 中建立單一資料庫](single-database-create-quickstart.md)。
 - 如需資源限制，請參閱[無伺服器計算層級資源限制](resource-limits-vcore-single-databases.md#general-purpose---serverless-compute---gen5)。

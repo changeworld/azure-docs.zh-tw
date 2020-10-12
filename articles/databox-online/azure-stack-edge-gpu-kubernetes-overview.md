@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: alkohli
 ms.openlocfilehash: 089476980ff3e8b2d3b72cb2d229934cf7850c03
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90899243"
 ---
 # <a name="kubernetes-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU 裝置上的 Kubernetes
@@ -57,7 +57,7 @@ Kubernetes 主要節點負責維護叢集的預期狀態。 主要節點也會�
 
 如需詳細資訊，請參閱 [Azure Stack Edge Pro 裝置的 Kubernetes 儲存體](azure-stack-edge-gpu-kubernetes-storage.md)中適用于應用程式的儲存體布建選項。
 
-## <a name="networking"></a>網路
+## <a name="networking"></a>網路功能
 
 Kubernetes 網路功能可讓您設定 Kubernetes 網路內的通訊，包括容器對容器網路、pod 對 pod 網路、pod 對服務網路，以及網際網路到服務的網路。 如需詳細資訊，請參閱 [Azure Stack Edge Pro 裝置之 Kubernetes 網路](azure-stack-edge-gpu-kubernetes-networking.md)中的網路功能模型。
 
@@ -106,10 +106,10 @@ Kubernetes 也可以與 Azure Stack Edge Pro 裝置上 IoT Edge 工作負載整�
 
 ### <a name="kubernetes-and-azure-arc"></a>Kubernetes 和 Azure Arc
 
-Azure Arc 是一種混合式管理工具，可讓您在 Kubernetes 叢集上部署應用程式。 Azure Arc 也可讓您使用 Azure 監視器容器來查看和監視您的叢集。 如需詳細資訊，請移至 [什麼是已啟用 Azure Arc 的 Kubernetes？](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview)。 如需 Azure Arc 定價的詳細資訊，請移至 [Azure Arc 定價](https://azure.microsoft.com/services/azure-arc/#pricing)。
+Azure Arc 是一種混合式管理工具，可讓您在 Kubernetes 叢集上部署應用程式。 Azure Arc 也可讓您使用 Azure 監視器容器來查看和監視您的叢集。 如需詳細資訊，請移至 [Azure-Arc 啟用什麼 Kubernetes？](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview)。 如需 Azure Arc 定價的詳細資訊，請移至 [Azure Arc 定價](https://azure.microsoft.com/services/azure-arc/#pricing)。
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 深入瞭解 [Azure Stack Edge Pro 裝置](azure-stack-edge-gpu-kubernetes-storage.md)上的 Kubernetes 儲存體。
 - 瞭解 [Azure Stack Edge Pro 裝置](azure-stack-edge-gpu-kubernetes-networking.md)上的 Kubernetes 網路模型。

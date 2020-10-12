@@ -1,7 +1,7 @@
 ---
 title: 文字分割認知技能
 titleSuffix: Azure Cognitive Search
-description: 在 Azure 認知搜尋中，根據 AI 擴充管線中的長度，將文字分割成文字的區塊或分頁。
+description: 根據 Azure 認知搜尋中 AI 擴充管線的長度，將文字分割成文字的區塊或頁面。
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.openlocfilehash: 52aaeb01fef551eee350c6db662c2690ef7b3e78
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84981943"
 ---
 # <a name="text-split-cognitive-skill"></a>文字分割認知技能
@@ -32,8 +32,8 @@ Microsoft.Skills.Text.SplitSkill
 | 參數名稱     | 描述 |
 |--------------------|-------------|
 | `textSplitMode`    | 「頁面」或「句子」 | 
-| `maximumPageLength` | 如果 textSplitMode 設為「頁面」，這是指由 `String.Length` 測量的最大頁面長度。 最小值為300。  如果 textSplitMode 設定為 "pages"，演算法會嘗試將文字分割為大小和 "maximumPageLength" 差不多的區塊。 在這種情況下，演算法會盡量在例句邊界斷句，以讓區塊大小稍微小於 "maximumPageLength"。 | 
-| `defaultLanguageCode` | (選用) 以下其中一個語言代碼：`da, de, en, es, fi, fr, it, ko, pt`。 預設值是英文 (en)。 幾點考量事項：<ul><li>如果您傳遞的是 languagecode-countrycode 格式，則只會使用該格式的 languagecode 部分。</li><li>如果語言不在前面的清單中，分割技能會在字元界限拆分文字。</li><li>提供語言代碼對於避免非空白字元語言（例如中文、日文和韓文）的一半，非常有用。</li><li>如果您不知道語言（也就是您需要將輸入的文字分割成[LanguageDetectionSkill](cognitive-search-skill-language-detection.md)），則預設的英文（en）應該就已足夠。 </li></ul>  |
+| `maximumPageLength` | 如果 textSplitMode 設為「頁面」，這是指由 `String.Length` 測量的最大頁面長度。 最小值是300。  如果 textSplitMode 設定為 "pages"，演算法會嘗試將文字分割為大小和 "maximumPageLength" 差不多的區塊。 在這種情況下，演算法會盡量在例句邊界斷句，以讓區塊大小稍微小於 "maximumPageLength"。 | 
+| `defaultLanguageCode` | (選用) 以下其中一個語言代碼：`da, de, en, es, fi, fr, it, ko, pt`。 預設值是英文 (en)。 幾點考量事項：<ul><li>如果您傳遞的是 languagecode-countrycode 格式，則只會使用該格式的 languagecode 部分。</li><li>如果語言不在前面的清單中，分割技能會在字元界限拆分文字。</li><li>提供語言代碼有助於避免將非空白字元語言（例如中文、日文和韓文）的單字剪下一半。</li><li>如果您不知道語言 (亦即您需要將輸入的文字分割成 [LanguageDetectionSkill](cognitive-search-skill-language-detection.md)) ，則英文 (en) 的預設值應該就已足夠。 </li></ul>  |
 
 
 ## <a name="skill-inputs"></a>技能輸入
@@ -41,7 +41,7 @@ Microsoft.Skills.Text.SplitSkill
 | 參數名稱       | 描述      |
 |----------------------|------------------|
 | `text`    | 要分割成子字串的文字。 |
-| `languageCode`    | (選用) 文件的語言代碼。 如果您不知道語言（也就是您需要將輸入的文字分割成[LanguageDetectionSkill](cognitive-search-skill-language-detection.md)），就可以放心地移除此輸入。  |
+| `languageCode`    | (選用) 文件的語言代碼。 如果您不知道語言 (亦即您需要將輸入的文字分割成 [LanguageDetectionSkill](cognitive-search-skill-language-detection.md)) ，則可以放心地移除此輸入。  |
 
 ## <a name="skill-outputs"></a>技能輸出 
 

@@ -12,10 +12,10 @@ ms.reviewer: sstein, bonova, danil
 ms.date: 06/02/2020
 ms.custom: seoapril2019, sqldbrb=1
 ms.openlocfilehash: 1298a1676d7a7ac0321ae768c3e596f481e80a8a
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91617854"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>SQL Server & Azure SQL 受控執行個體之間的 t-sql 差異
@@ -405,7 +405,7 @@ SQL 受控執行個體中連結的伺服器支援數量有限的目標：
 
 不支援參考 HDFS 或 Azure Blob 儲存體中檔案的外部資料表。 如需 PolyBase 的相關資訊，請參閱 [polybase](/sql/relational-databases/polybase/polybase-guide)。
 
-### <a name="replication"></a>Replication
+### <a name="replication"></a>複寫
 
 - 支援快照式和雙向複寫類型。 不支援合併式複寫、點對點複寫，以及可更新的訂閱。
 - [異動複寫](replication-transactional-overview.md) 適用于 SQL 受控執行個體上的公開預覽，但有一些限制：

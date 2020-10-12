@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 12/15/2017
 ms.author: cynthn
 ms.openlocfilehash: 83799940f8c98952a435f582a9160585e9dbdfd4
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87289788"
 ---
 # <a name="how-to-use-docker-machine-to-create-hosts-in-azure"></a>如何使用 Docker 電腦在 Azure 中建立主機
@@ -37,7 +37,7 @@ docker-machine create -d azure \
     myvm
 ```
 
-輸出大致如下列範例所示：
+輸出看起來類似下列範例：
 
 ```bash
 Creating CA: /Users/user/.docker/machine/certs/ca.pem
@@ -129,5 +129,5 @@ docker-machine ip myvm
 
 ![執行 ngnix 容器](./media/docker-machine/nginx.png)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 如需使用 Docker Compose 的範例，請參閱[在 Azure 中開始使用 Docker 與 Compose](docker-compose-quickstart.md)。

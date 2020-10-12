@@ -9,10 +9,10 @@ ms.reviewer: estfan, daviburg, logicappspm
 ms.topic: article
 ms.date: 07/31/2020
 ms.openlocfilehash: b3919cbbe0ba7a796a21ae566afb8e2d9fa784db
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88716668"
 ---
 # <a name="transform-json-and-xml-using-liquid-templates-as-maps-in-azure-logic-apps"></a>使用液體範本將 JSON 和 XML 轉換為 Azure Logic Apps 中的地圖
@@ -86,7 +86,7 @@ ms.locfileid: "88716668"
 
 1. 在 [ **對應** ] 窗格中，選取 [ **新增** ]，並提供您地圖的下列詳細資料：
 
-   | 屬性 | 值 | 描述 |
+   | 屬性 | 值 | 說明 |
    |----------|-------|-------------|
    | **名稱** | `JsonToJsonTemplate` | 對應的名稱，在此範例中是 "JsonToJsonTemplate" |
    | **對應類型** | **liquid** | 對應的類型。 對於 JSON 到 JSON 的轉換，請選取 [Liquid]****。 |
@@ -240,7 +240,7 @@ ms.locfileid: "88716668"
 
 ![XML 轉換為文字的範例輸出](./media/logic-apps-enterprise-integration-liquid-transform/example-output-xmltotext.png)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * [Shopify 的液體語言和範例](https://shopify.github.io/liquid/basics/introduction/)
 * [DotLiquid](http://dotliquidmarkup.org/)

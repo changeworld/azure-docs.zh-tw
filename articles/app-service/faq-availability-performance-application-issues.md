@@ -10,10 +10,10 @@ ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
 ms.openlocfilehash: dfaeee6a6e2a9728d7e63fb5681c487fbbd6139e
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88958992"
 ---
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Azure Web 應用程式的應用程式效能常見問題集
@@ -103,7 +103,7 @@ ms.locfileid: "88958992"
 1. 在 Azure 入口網站中，移至您的 Web 應用程式。
 3. 選取**所有設定**  >  **診斷記錄**。
 4. 針對 [失敗的要求追蹤]****，選取 [開啟]****。
-5. 選取 [儲存]  。
+5. 選取 [儲存]****。
 6. 在 Web 應用程式刀鋒視窗上，選取 [工具]****。
 7. 選取 [Visual Studio Online]****。
 8. 如果設定不是 [開啟]****，請選取 [開啟]****。

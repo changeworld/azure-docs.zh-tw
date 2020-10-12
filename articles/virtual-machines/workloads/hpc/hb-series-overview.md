@@ -14,10 +14,10 @@ ms.date: 08/19/2020
 ms.author: amverma
 ms.reviewer: cynthn
 ms.openlocfilehash: 7c66af5184c4a943fd4b3185a87623112fe0d954
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88691236"
 ---
 # <a name="hb-series-virtual-machines-overview"></a>HB 系列虛擬機器總覽
@@ -45,10 +45,10 @@ VM 本身並不知道 pNUMA 0 未提供給它。 VM 瞭解 pNUMA 1-15 為 Vnuma 
 | 核心                            | 60 (SMT 已停用)                 |
 | CPU                              | AMD EPYC 7551                    |
 | CPU 頻率 (非 AVX)           | ~ 2.55 GHz (單一 + 所有核心)    |
-| 記憶體                           | 4 GB/核心 (240 GB 總計)          |
+| Memory                           | 4 GB/核心 (240 GB 總計)          |
 | 本機磁碟                       | 700 GB SSD                       |
 | Infiniband                       | 100 Gb EDR Mellanox ConnectX-5 |
-| Network (網路)                          | 50 Gb 乙太網路 (40 Gb 可用) Azure 第二代 SmartNIC |
+| 網路                          | 50 Gb 乙太網路 (40 Gb 可用) Azure 第二代 SmartNIC |
 
 ## <a name="software-specifications"></a>軟體規格
 
@@ -61,7 +61,7 @@ VM 本身並不知道 pNUMA 0 未提供給它。 VM 瞭解 pNUMA 1-15 為 Vnuma 
 | SRIOV RDMA 的 OS 支援   | CentOS/RHEL 7.6 +、SLES 12 SP4 +、WinServer 2016 +  |
 | 協調器支援        | CycleCloud，Batch  |
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - 深入瞭解 [AMD EPYC 架構](https://bit.ly/2Epv3kC) 和 [多晶片架構](https://bit.ly/2GpQIMb)。 如需詳細資訊，請參閱 [適用于 AMD EPYC 處理器的 HPC 微調指南](https://bit.ly/2T3AWZ9)。
 - 請參閱 [Azure 運算技術社群部落格](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)的最新公告和一些 HPC 範例和結果。

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 05/06/2020
 ms.author: arvinh
-ms.openlocfilehash: 6caaba06dcc2fdeaeb672b5381b240cb3f676ca9
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
-ms.translationtype: HT
+ms.openlocfilehash: 9df287e9070b84036be311c778f07d583251fd28
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90563024"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91286347"
 ---
 # <a name="tutorial-configure-slack-for-automatic-user-provisioning"></a>教學課程︰設定 Slack 來自動佈建使用者
 
@@ -73,11 +73,11 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
 3. 選取 [佈建] 索引標籤。
 
-    ![佈建索引標籤](common/provisioning.png)
+    ![已呼叫 [布建] 選項的 [管理選項] 螢幕擷取畫面。](common/provisioning.png)
 
 4. 將 [佈建模式] 設定為 [自動]。
 
-    ![佈建索引標籤](common/provisioning-automatic.png)
+    ![[布建模式] 下拉式清單的螢幕擷取畫面，其中已呼叫 [自動] 選項。](common/provisioning-automatic.png)
 
 5. 在 [系統管理員認證]**** 區段下，按一下 [授權]****。 這會在新的瀏覽器視窗中開啟 Slack 授權對話方塊。
 

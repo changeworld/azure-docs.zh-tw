@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
 ms.openlocfilehash: 161272fe35ee9ea1e0880b991273e5d1a79eafb4
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90987333"
 ---
 # <a name="author-graphical-runbooks-in-azure-automation"></a>在 Azure 自動化中製作圖形化 Runbook
@@ -95,7 +95,7 @@ Azure 自動化中的所有 Runbook 都是 Windows PowerShell 工作流程。 �
 
 重試條件是 PowerShell 運算式，在每次活動執行之後評估。 如果運算式解析為 True，活動就會再次執行。 如果運算式解析為 False，活動不會再次執行，且 Runbook 會移至下一個活動。
 
-:::image type="content" source="media/automation-graphical-authoring-intro/retry-condition.png" alt-text="顯示 [重試] 的螢幕擷取畫面，直到此條件為 true 欄位，以及可在重試條件中使用的 PowerShell 運算式範例。":::
+:::image type="content" source="media/automation-graphical-authoring-intro/retry-condition.png" alt-text="啟用重試功能設定的螢幕擷取畫面。":::
 
 重試條件可以使用名為 `RetryData` 的變數來提供活動重試相關資訊的存取權。 此變數具有下表中的屬性：
 

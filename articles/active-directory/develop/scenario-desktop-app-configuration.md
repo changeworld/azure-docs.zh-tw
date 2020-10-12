@@ -1,6 +1,6 @@
 ---
-title: 設定呼叫 web Api 的傳統型應用程式-Microsoft 身分識別平臺 |Azure
-description: 瞭解如何設定呼叫 web Api 的傳統型應用程式代碼
+title: 設定呼叫 web Api 的桌面應用程式-Microsoft 身分識別平臺 |蔚藍
+description: 瞭解如何設定呼叫 web Api 的傳統型應用程式的程式碼
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -12,15 +12,15 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
 ms.openlocfilehash: 56d2e01d35f25ac469e808a805382463d2b23ceb
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88121097"
 ---
 # <a name="desktop-app-that-calls-web-apis-code-configuration"></a>呼叫 web Api 的桌面應用程式：程式碼設定
 
-既然您已建立應用程式，您將瞭解如何使用應用程式的座標來設定程式碼。
+現在您已建立應用程式，您將瞭解如何使用應用程式的座標來設定程式碼。
 
 ## <a name="microsoft-authentication-libraries"></a>Microsoft 驗證程式庫
 
@@ -35,15 +35,15 @@ ms.locfileid: "88121097"
 
 ## <a name="public-client-application"></a>公用用戶端應用程式
 
-就程式碼的觀點而言，桌面應用程式是公用用戶端應用程式。 根據您是否使用互動式驗證，設定會有點不同。
+從程式碼的觀點來看，桌面應用程式是公用用戶端應用程式。 根據您是否使用互動式驗證，設定會有一點不同。
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
-您將需要建立和操作 MSAL.NET `IPublicClientApplication` 。
+您必須建立和操作 MSAL.NET `IPublicClientApplication` 。
 
 ![IPublicClientApplication](media/scenarios/public-client-application.png)
 
-### <a name="exclusively-by-code"></a>由程式碼獨佔
+### <a name="exclusively-by-code"></a>專用的程式碼
 
 下列程式碼會具現化公用用戶端應用程式，並使用工作或學校帳戶或個人 Microsoft 帳戶登入 Microsoft Azure 公用雲端中的使用者。
 
@@ -63,7 +63,7 @@ app = PublicClientApplicationBuilder.Create(clientId)
 
 ### <a name="use-configuration-files"></a>使用組態檔
 
-下列程式碼會從設定物件具現化公用用戶端應用程式，這可以用程式設計方式填入，或從設定檔讀取。
+下列程式碼會從設定物件具現化公用用戶端應用程式，該物件可能會以程式設計方式填入或從設定檔讀取。
 
 ```csharp
 PublicClientApplicationOptions options = GetOptions(); // your own method
@@ -72,9 +72,9 @@ IPublicClientApplication app = PublicClientApplicationBuilder.CreateWithApplicat
         .Build();
 ```
 
-### <a name="more-elaborated-configuration"></a>更複雜的設定
+### <a name="more-elaborated-configuration"></a>更詳細的設定
 
-您可以藉由加入數個修飾詞來更精細地建立應用程式。 比方說，如果您想要讓應用程式成為國家雲端中的多租使用者應用程式，例如這裡所示的美國政府，您可以撰寫：
+您可以藉由新增一些修飾詞來詳細地建立應用程式。 比方說，如果您想要讓應用程式成為全國雲端中的多租使用者應用程式，例如此處顯示的美國政府，您可以撰寫：
 
 ```csharp
 IPublicClientApplication app;
@@ -107,12 +107,12 @@ app = PublicClientApplicationBuilder.Create(clientId)
 
 若要深入瞭解如何設定 MSAL.NET 桌面應用程式：
 
-- 如需上可用的所有修飾詞清單 `PublicClientApplicationBuilder` ，請參閱參考檔[PublicClientApplicationBuilder](/dotnet/api/microsoft.identity.client.publicclientapplicationbuilder#methods)。
-- 如需中公開之所有選項的說明 `PublicClientApplicationOptions` ，請參閱參考檔中的[PublicClientApplicationOptions](/dotnet/api/microsoft.identity.client.publicclientapplicationoptions) 。
+- 如需所有可用的修飾詞清單 `PublicClientApplicationBuilder` ，請參閱參考檔 [PublicClientApplicationBuilder](/dotnet/api/microsoft.identity.client.publicclientapplicationbuilder#methods)。
+- 如需中所公開之所有選項的說明 `PublicClientApplicationOptions` ，請參閱參考檔中的 [PublicClientApplicationOptions](/dotnet/api/microsoft.identity.client.publicclientapplicationoptions) 。
 
-### <a name="complete-example-with-configuration-options"></a>含設定選項的完整範例
+### <a name="complete-example-with-configuration-options"></a>具有設定選項的完整範例
 
-假設有一個具有下列設定檔的 .NET Core 主控台應用程式 `appsettings.json` ：
+想像一下具有下列設定檔的 .NET Core 主控台應用程式 `appsettings.json` ：
 
 ```json
 {
@@ -128,7 +128,7 @@ app = PublicClientApplicationBuilder.Create(clientId)
 }
 ```
 
-您有很少的程式碼，無法使用來讀取此檔案。NET 提供的設定架構：
+您有少量的程式碼可以使用來讀取此檔案。NET 提供的設定架構：
 
 ```csharp
 public class SampleConfiguration
@@ -184,7 +184,7 @@ var app = PublicClientApplicationBuilder.CreateWithApplicationOptions(config.Pub
 
 # <a name="java"></a>[Java](#tab/java)
 
-以下是 MSAL JAVA 開發範例中用來設定範例的類別： [TestData](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/)。
+以下是在 MSAL JAVA 開發範例中用來設定範例的類別： [>testdata](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/)。
 
 ```Java
 PublicClientApplication pca = PublicClientApplication.builder(CLIENT_ID)
@@ -226,9 +226,9 @@ let config = MSALPublicClientApplicationConfig(clientId: "<your-client-id-here>"
 if let application = try? MSALPublicClientApplication(configuration: config){ /* Use application */}
 ```
 
-### <a name="more-elaborated-configuration"></a>更複雜的設定
+### <a name="more-elaborated-configuration"></a>更詳細的設定
 
-您可以藉由加入數個修飾詞來更精細地建立應用程式。 比方說，如果您想要讓應用程式成為國家雲端中的多租使用者應用程式，例如這裡所示的美國政府，您可以撰寫：
+您可以藉由新增一些修飾詞來詳細地建立應用程式。 比方說，如果您想要讓應用程式成為全國雲端中的多租使用者應用程式，例如此處顯示的美國政府，您可以撰寫：
 
 Objective-C：
 

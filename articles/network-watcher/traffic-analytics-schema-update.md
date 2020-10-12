@@ -1,6 +1,6 @@
 ---
 title: Azure 流量分析架構更新-2020 年3月 |Microsoft Docs
-description: 流量分析架構中新欄位的範例查詢。
+description: 使用流量分析架構中新欄位的查詢範例。
 services: network-watcher
 documentationcenter: na
 author: vinigam
@@ -14,23 +14,23 @@ ms.workload: infrastructure-services
 ms.date: 03/06/2020
 ms.author: vinigam
 ms.openlocfilehash: 31d0de63185c56eafda8c42efbe44d8e7ffcaf1f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87022458"
 ---
-# <a name="sample-queries-with-new-fields-in-the-traffic-analytics-schema-august-2019-schema-update"></a>流量分析架構中新欄位的範例查詢（2019年8月架構更新）
+# <a name="sample-queries-with-new-fields-in-the-traffic-analytics-schema-august-2019-schema-update"></a>流量分析架構中新欄位的查詢範例 (2019 年8月架構更新) 
 
-使用[分析記錄架構](https://docs.microsoft.com/azure/network-watcher/traffic-analytics-schema)包含下列新欄位： **SrcPublicIPs_s**、 **DestPublicIPs_s** **NSGRule_s**。 新欄位提供來源和目的地 Ip 的相關資訊，並可簡化查詢。
+使用 [分析記錄架構](https://docs.microsoft.com/azure/network-watcher/traffic-analytics-schema) 包含下列新欄位： **SrcPublicIPs_s**、 **DestPublicIPs_s** **NSGRule_s**。 新欄位提供來源和目的地 Ip 的相關資訊，並可簡化查詢。
 
-在接下來的幾個月中，下列較舊的欄位將會被取代： **VMIP_s**、 **Subscription_g**、 **Region_s**、 **NSGRules_s**、 **Subnet_s**、 **VM_s**、 **NIC_s**、 **PublicIPs_s**、 **FlowCount_d**。
+在接下來的幾個月中，將會淘汰下列舊版欄位： **VMIP_s**、 **Subscription_g**、 **Region_s**、 **NSGRules_s**、 **Subnet_s**、 **VM_s**、 **NIC_s**、 **PublicIPs_s**、 **FlowCount_d**。
 
-下列三個範例示範如何以新的欄位取代舊的欄位。
+下列三個範例示範如何使用新欄位來取代舊欄位。
 
 ## <a name="example-1-vmip_s-subscription_g-region_s-subnet_s-vm_s-nic_s-and-publicips_s-fields"></a>範例1： VMIP_s、Subscription_g、Region_s、Subnet_s、VM_s、NIC_s 和 PublicIPs_s 欄位
 
-我們不需要從 AzurePublic 和 ExternalPublic 流程的 [ **FlowDirection_s** ] 欄位中推斷來源和目的地案例。 也不適合使用網路虛擬裝置的 [ **FlowDirection_s** ] 欄位。
+我們不需要從 AzurePublic 和 ExternalPublic 流程的 [ **FlowDirection_s** ] 欄位推斷來源和目的地案例。 使用網路虛擬裝置的 [ **FlowDirection_s** ] 欄位也可能不適合。
 
 ```Old Kusto query
 AzureNetworkAnalytics_CL
@@ -74,11 +74,11 @@ DestPublicIPsAggregated = iif(isnotempty(DestPublicIPs_s), DestPublicIPs_s, "N/A
 
 ## <a name="example-2-nsgrules_s-field"></a>範例2： NSGRules_s 欄位
 
-舊欄位使用的格式如下：
+舊的欄位使用的格式如下：
 
 `<Index value 0)>|<NSG_ RuleName>|<Flow Direction>|<Flow Status>|<FlowCount ProcessedByRule>`
 
-我們不會再透過網路安全性群組（NSG）來匯總資料。 在更新的架構中， **NSGList_s**只包含一個 NSG。 此外， **NSGRules**只包含一個規則。 我們已移除這裡和其他欄位中的複雜格式，如範例所示。
+我們不再將資料匯總到網路安全性群組 (NSG) 。 在更新的架構中， **NSGList_s** 只包含一個 NSG。 此外， **NSGRules** 僅包含一個規則。 我們已移除此處和其他欄位中的複雜格式，如範例所示。
 
 ```Old Kusto query
 AzureNetworkAnalytics_CL
@@ -105,22 +105,22 @@ FlowCountProcessedByRule = AllowedInFlows_d + DeniedInFlows_d + AllowedOutFlows_
 
 ## <a name="example-3-flowcount_d-field"></a>範例3： FlowCount_d 欄位
 
-因為我們不會在 NSG 中散佈資料，所以**FlowCount_d**只是：
+由於我們不會在 NSG 中為數據俱樂部， **FlowCount_d** 只是：
 
 **AllowedInFlows_d**  + **DeniedInFlows_d**  + **AllowedOutFlows_d**  + **DeniedOutFlows_d**
 
-只有四個欄位中的其中一個不是零。 其他三個欄位則為零。 欄位會填入，以指出在其中捕捉到流程的 NIC 中的狀態和計數。
+只有四個欄位中的其中一個不是零。 其他三個欄位將會是零。 欄位會填入，以指出已在其中捕獲流程的 NIC 中的狀態和計數。
 
-若要說明這些條件：
+為了說明這些狀況：
 
-- 如果允許流程，將會填入其中一個「允許」的前置欄位。
-- 如果流程遭到拒絕，則會填入其中一個「拒絕」的首碼欄位。
-- 如果流程為輸入，則會填入其中一個「InFlows_d」尾碼欄位。
-- 如果流程是輸出的，將會填入其中一個「OutFlows_d」尾碼欄位。
+- 如果允許流程，就會填入其中一個「允許的」前置欄位。
+- 如果流程被拒，則會填入其中一個「拒絕」的首碼欄位。
+- 如果流程是輸入的，則會填入其中一個「InFlows_d」尾碼欄位。
+- 如果流程是輸出的，則會填入其中一個「OutFlows_d」尾碼欄位。
 
 根據條件而定，我們知道將會填入四個欄位中的哪一個。
 
 ## <a name="next-steps"></a>接下來的步驟
 
-- 若要取得常見問題的解答，請參閱使用[分析常見問題](traffic-analytics-faq.md)。
-- 若要查看功能的詳細資料，請參閱使用[分析檔](traffic-analytics.md)。
+- 若要取得常見問題的解答，請參閱使用 [分析常見問題](traffic-analytics-faq.md)。
+- 若要查看功能的詳細資訊，請參閱使用 [分析檔](traffic-analytics.md)。

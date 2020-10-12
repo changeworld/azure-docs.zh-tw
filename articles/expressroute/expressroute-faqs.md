@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: duau
 ms.openlocfilehash: 6253dd616ca184449f3f144d538c1ed20de54cc2
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89566415"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute 常見問題集
@@ -362,7 +362,7 @@ ExpressRoute Local 可在一或兩個 Azure 區域已關閉的對等互連位置
 
 ### <a name="can-my-existing-expressroute-circuits-support-connectivity-to-microsoft-365-services"></a>我現有的 ExpressRoute 線路是否可支援 Microsoft 365 服務的連線能力？
 
-可以。 您可以設定現有的 ExpressRoute 線路，以支援 Microsoft 365 服務的連線能力。 確定您有足夠的容量可連接到 Microsoft 365 服務，而且您已啟用 premium 附加元件。 [Microsoft 365 的網路規劃和效能調整](/microsoft-365/enterprise/network-planning-and-performance) 可協助您規劃連線需求。 另請參閱 [建立和修改 ExpressRoute 電路](expressroute-howto-circuit-classic.md)。
+是。 您可以設定現有的 ExpressRoute 線路，以支援 Microsoft 365 服務的連線能力。 確定您有足夠的容量可連接到 Microsoft 365 服務，而且您已啟用 premium 附加元件。 [Microsoft 365 的網路規劃和效能調整](/microsoft-365/enterprise/network-planning-and-performance) 可協助您規劃連線需求。 另請參閱 [建立和修改 ExpressRoute 電路](expressroute-howto-circuit-classic.md)。
 
 ### <a name="what-microsoft-365-services-can-be-accessed-over-an-expressroute-connection"></a>您可以透過 ExpressRoute 連線存取哪些 Microsoft 365 服務？
 
@@ -378,7 +378,7 @@ Microsoft 365 服務需要啟用 premium 附加元件。 請參閱[定價詳細�
 
 ### <a name="can-i-access-microsoft-365-over-the-internet-even-if-expressroute-was-configured-for-my-organization"></a>即使已針對我的組織設定 ExpressRoute，還是可以透過網際網路存取 Microsoft 365？
 
-可以。 即使已針對您的網路設定 ExpressRoute，仍可透過網際網路連線 Microsoft 365 服務端點。 如果您所在位置的網路設定為透過 ExpressRoute 連線到 Microsoft 365 服務，請洽詢貴組織的網路團隊。
+是。 即使已針對您的網路設定 ExpressRoute，仍可透過網際網路連線 Microsoft 365 服務端點。 如果您所在位置的網路設定為透過 ExpressRoute 連線到 Microsoft 365 服務，請洽詢貴組織的網路團隊。
 
 ### <a name="how-can-i-plan-for-high-availability-for-microsoft-365-network-traffic-on-azure-expressroute"></a>如何針對 Azure ExpressRoute 上的 Microsoft 365 網路流量規劃高可用性？
 請參閱 [Azure ExpressRoute 的高可用性和容錯移轉](https://aka.ms/erhighavailability)中的建議事項

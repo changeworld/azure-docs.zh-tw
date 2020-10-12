@@ -9,10 +9,10 @@ ms.date: 12/20/2017
 ms.author: duau
 ms.custom: seodec18
 ms.openlocfilehash: 6b9a951787df6775b5159433c7172e767ff955b2
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89566070"
 ---
 # <a name="troubleshooting-network-performance"></a>網路效能疑難排解
@@ -177,7 +177,7 @@ AzureCT PowerShell 模組有兩個構成要素，分別是[可用性測試][Avai
 >
 >
 
-| ExpressRoute<br/>Location|Azure<br/>Region | 預估<br/>距離 (公里) | Latency|1 個工作階段<br/>頻寬 | 最大值<br/>頻寬 |
+| ExpressRoute<br/>Location|Azure<br/>區域 | 預估<br/>距離 (公里) | Latency|1 個工作階段<br/>頻寬 | 最大值<br/>頻寬 |
 | ------------------------------------------ | --------------------------- |  - | - | - | - |
 | 西雅圖 | 美國西部 2        |    191 公里 |   5 毫秒 | 262.0 Mbits/秒 |  3.74 Gbits/秒 |
 | 西雅圖 | 美國西部          |  1,094 公里 |  18 毫秒 |  82.3 Mbits/秒 |  3.70 Gbits/秒 |
@@ -196,7 +196,7 @@ AzureCT PowerShell 模組有兩個構成要素，分別是[可用性測試][Avai
 
 \* 巴西延遲是不錯的範例，其中的直線距離明顯不同於光纖運行距離。 我本來預期延遲大約為 160 毫秒，但是實際上是 189 毫秒。 與我預期不符的這項差異可能表示某個地方存在網路問題，但最有可能的是光纖運行並不是以直線進入巴西，而是距離西雅圖還超過 1,000 公里左右，才能到達巴西。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 1. 從 GitHub 下載 Azure 連線能力工具組，網址為： [https://aka.ms/AzCT][ACT]
 2. 依照指示進行[連結效能測試][Performance Doc]
 

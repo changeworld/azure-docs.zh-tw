@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 10/13/2019
 ms.author: harshacs
 ms.openlocfilehash: 123a68885346062b9e8a53b8d5066204b6b20f5e
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89568773"
 ---
 # <a name="connect-to-azure-vms-after-failover-from-on-premises"></a>從內部部署容錯移轉後連線至 Azure Vm 
@@ -161,9 +161,9 @@ Site Recovery 可讓您在容錯移轉至 Azure 時保留相同的 IP 位址。 
 
     ![編輯 NIC 設定](media/azure-to-azure-customize-networking/nic-drilldown.png)
 
-5. 選取 [確定]。
+5. 選取 [確定]  。
 
 Site Recovery 現在將採用這些設定，並確保容錯移轉上的虛擬機器透過對應的 IP 位址（如果目標 IP 範圍中有提供的話）連接到選取的資源。 在此案例中，不需要容錯移轉整個子網。 需要 DNS 更新才能將已容錯移轉的機器的記錄更新為指向虛擬機器的新 IP 位址。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 [瞭解](site-recovery-active-directory.md) 如何將內部部署 ACTIVE DIRECTORY 和 DNS 複寫至 Azure。

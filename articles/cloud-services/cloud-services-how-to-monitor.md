@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 01/29/2018
 ms.author: tagore
 ms.openlocfilehash: 61c794ba03934ae1828ba310f3f776bfb61b652b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85847252"
 ---
 # <a name="introduction-to-cloud-service-monitoring"></a>雲端服務監視簡介
@@ -34,7 +34,7 @@ ms.locfileid: "85847252"
 
 ## <a name="advanced-monitoring"></a>進階監視
 
-「高級監視」牽涉到在您要監視的角色上使用**Azure 診斷**擴充功能（以及選擇性的 Application Insights SDK）。 診斷延伸模組會使用名為 **diagnostics.wadcfgx** 的設定檔 (每個角色)，來設定所監視的診斷計量。 Azure 診斷延伸模組會收集資料並且儲存在 Azure 儲存體帳戶。 這些設定是在 **.wadcfgx**、[.csdef](cloud-services-model-and-package.md#servicedefinitioncsdef) 和 [.cscfg](cloud-services-model-and-package.md#serviceconfigurationcscfg) 檔案中設定。 這表示會有與進階監視建立關聯的額外成本。
+先進的監視牽涉到使用 **Azure 診斷** 擴充 (，並選擇性地使用您想要監視之角色上的 Application Insights SDK) 。 診斷延伸模組會使用名為 **diagnostics.wadcfgx** 的設定檔 (每個角色)，來設定所監視的診斷計量。 Azure 診斷延伸模組會收集資料並且儲存在 Azure 儲存體帳戶。 這些設定是在 **.wadcfgx**、[.csdef](cloud-services-model-and-package.md#servicedefinitioncsdef) 和 [.cscfg](cloud-services-model-and-package.md#serviceconfigurationcscfg) 檔案中設定。 這表示會有與進階監視建立關聯的額外成本。
 
 建立每個角色時，Visual Studio 會在其中新增 Azure 診斷延伸模組。 此診斷延伸模組可以收集下列類型的資訊：
 
@@ -48,13 +48,13 @@ ms.locfileid: "85847252"
 * 客戶錯誤記錄
 
 > [!IMPORTANT]
-> 雖然此資料會匯總到儲存體帳戶，但入口網站並**不**會提供用來建立資料圖表的原生方式。 強烈建議您將其他像是 Application Insights 的服務整合到您的應用程式。
+> 雖然所有的資料都會匯總到儲存體帳戶，但入口網站並 **不** 提供用來繪製資料的原生方法。 強烈建議您將其他像是 Application Insights 的服務整合到您的應用程式。
 
 ## <a name="setup-diagnostics-extension"></a>設定診斷延伸模組
 
 首先，如果您沒有**傳統**儲存體帳戶，則請[建立傳統儲存體帳戶](../storage/common/storage-account-create.md)。 請確定建立已指定**傳統部署模型**的儲存體帳戶。
 
-接下來，巡覽至 [儲存體帳戶 (傳統)]**** 資源。 選取 [**設定**]  >  [**存取金鑰**]，然後複製 [**主要連接字串**] 值。 雲端服務需要有此值。 
+接下來，巡覽至 [儲存體帳戶 (傳統)]**** 資源。 選取 [**設定**  >  **存取金鑰**]，然後複製**主要連接字串**值。 雲端服務需要有此值。 
 
 您必須變更兩個設定檔才能啟用進階診斷：**ServiceDefinition.csdef** 和 **ServiceConfiguration.cscfg**。
 
@@ -92,9 +92,9 @@ ms.locfileid: "85847252"
 請注意，雖然您可以使用 Application Insights 來顯示透過 Windows Azure 診斷延伸模組所指定的效能計數器 (和其他設定)，但是只有將 Application Insights SDK 整合到背景工作和 Web 角色，才能獲得較豐富的體驗。
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-- [瞭解雲端服務的 Application Insights](../azure-monitor/app/cloudservices.md)
+- [瞭解如何使用雲端服務 Application Insights](../azure-monitor/app/cloudservices.md)
 - [設定效能計數器](diagnostics-performance-counters.md)
 
 

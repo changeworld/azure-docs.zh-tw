@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 33b55afb7796b197f7130ec9288abb01cc115651
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86085645"
 ---
 # <a name="explore-data-in-sql-server-virtual-machine-on-azure"></a>在 Azure 上瀏覽 SQL Server 虛擬機器中的資料
@@ -51,7 +51,7 @@ ms.locfileid: "86085645"
 > 
 
 ## <a name="explore-sql-data-with-python"></a><a name="python"></a>使用 Python 瀏覽 SQL 資料
-當資料位於 SQL Server 時，使用 Python 來流覽資料並產生功能，類似于使用 Python 來處理 Azure blob 中的資料，如在[資料科學環境中處理 Azure blob 資料](data-blob.md)中所述。 將資料從資料庫載入 pandas 資料框架，然後可以進一步處理。 我們將在本節中說明連接到資料庫以及將資料載入資料框架的程序。
+當資料位於 SQL Server 時，使用 Python 來流覽資料並產生功能，類似于使用 Python 在 Azure blob 中處理資料，如在 [資料科學環境中處理 Azure blob 資料](data-blob.md)所述。 將資料庫中的資料載入至 pandas 資料框架，然後再進一步處理。 我們將在本節中說明連接到資料庫以及將資料載入資料框架的程序。
 
 下列連接字串格式可用來使用 pyodbc (使用您的特定值來取代 servername、dbname、username 和 password)，從 Python 連接到 SQL Server 資料庫：
 
@@ -61,7 +61,7 @@ import pyodbc
 conn = pyodbc.connect('DRIVER={SQL Server};SERVER=<servername>;DATABASE=<dbname>;UID=<username>;PWD=<password>')
 ```
 
-Python 中的[Pandas 程式庫](https://pandas.pydata.org/)提供一組豐富的資料結構和資料分析工具，可用於 python 程式設計的資料操作。 下列程式碼會將從 SQL Server 資料庫傳回的結果讀取至 Pandas 資料框架：
+Python 中的 [Pandas 程式庫](https://pandas.pydata.org/) 提供一組豐富的資料結構和資料分析工具，可用於 python 程式設計的資料操作。 下列程式碼會將從 SQL Server 資料庫傳回的結果讀取至 Pandas 資料框架：
 
 ```python
 # Query database and load the returned results in pandas data frame

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 09/08/2020
 ms.author: terrylan
 ms.openlocfilehash: 3b047489f9cfa3623c11e324cf58114b707c10b7
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89567857"
 ---
 # <a name="azure-network-architecture"></a>Azure 網路架構
@@ -61,7 +61,7 @@ Azure 資料中心的網路架構包含下列元件：
 ## <a name="datacenter-network-resiliency"></a>資料中心網路復原
 讓我們來說明使用資料中心網路的復原設計原則。
 
-資料中心網路是 [Clos 網路](https://en.wikipedia.org/wiki/Clos_network)的修改版本，為雲端規模的流量提供高的雙層級頻寬。 使用大量商用裝置來建立網路，以降低個別硬體故障造成的影響。 這些裝置會策略性地位於不同的實體位置，具有個別的電源和冷卻領域，以降低環境事件的影響。  在控制平面上，所有網路裝置都會以 OSI 模型第3層路由模式執行，以消除流量迴圈的歷程記錄問題。 不同層之間的所有路徑都在作用中，以使用相同成本的多重路徑 (ECMP) 路由來提供高冗余和頻寬。
+資料中心網路是 [Clos 網路](https://en.wikipedia.org/wiki/Clos_network)的修改版本，為雲端規模的流量提供高的雙層級頻寬。 使用大量商用裝置來建立網路，以降低個別硬體故障造成的影響。 這些裝置會策略性地位於不同的實體位置，具有個別的電源和冷卻領域，以降低環境事件的影響。  在控制平面上，所有網路裝置都會以 OSI 模型第3層路由模式執行，以消除流量迴圈的歷程記錄問題。 不同層之間的所有路徑都處於作用中狀態，可使用 Equal-Cost 多重路徑 (ECMP) 路由來提供高冗余和頻寬。
 
 下圖說明資料中心網路是由不同層的網路裝置所建立。 圖中的橫條代表網路裝置群組，可提供冗余和高頻寬的連線能力。
 

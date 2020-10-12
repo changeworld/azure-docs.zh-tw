@@ -1,5 +1,5 @@
 ---
-title: 疑難排解 Microsoft Azure Site Recovery 提供者的升級
+title: 針對 Microsoft Azure Site Recovery 提供者的升級進行疑難排解
 description: 解決升級 Microsoft Azure Site Recovery 提供者時所發生的常見問題。
 author: rayne-wiselman
 manager: carmonm
@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 ms.date: 11/10/2019
 ms.author: raynew
 ms.openlocfilehash: 5a6e4b415a9fe8ea80a84e415879df9d2f359478
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84434364"
 ---
 # <a name="troubleshoot-microsoft-azure-site-recovery-provider-upgrade-failures"></a>對 Microsoft Azure Site Recovery Provider 升級失敗進行疑難排解
@@ -42,7 +42,7 @@ ms.locfileid: "84434364"
 
 1. 返回您下載整合安裝的資料夾，然後執行 MicrosoftAzureSiteRecoveryUnifiedSetup.exe 以完成升級。 
 
-## <a name="upgrade-failure-due-to-the-3rd-party-folder-being-renamed"></a>因為重新命名協力廠商資料夾，所以升級失敗
+## <a name="upgrade-failure-due-to-the-3rd-party-folder-being-renamed"></a>升級失敗，因為協力廠商資料夾已重新命名
 
 若要成功升級，協力廠商資料夾不得重新命名。
 
@@ -67,14 +67,14 @@ ms.locfileid: "84434364"
 1. 確認 C:\thirdparty 存在且該資料夾包含 RRD 程式庫。
 1. 返回您下載整合安裝的資料夾，然後執行 MicrosoftAzureSiteRecoveryUnifiedSetup.exe 以完成升級。
 
-## <a name="upgrade-failure-due-to-master-target-installation-failure"></a>因為主要目標安裝失敗，所以升級失敗
+## <a name="upgrade-failure-due-to-master-target-installation-failure"></a>因為主要目標安裝失敗導致升級失敗
 
-升級 Microsoft Azure Site Recovery 提供者（DRA）時，主要目標安裝失敗，並出現錯誤「安裝位置不存在和/或沒有 1 GB 的可用空間和/或不存在於固定磁片磁碟機上。」。
+升級 Microsoft Azure Site Recovery 提供者 (DRA) 時，主要目標安裝失敗，並出現錯誤：「安裝位置不存在和/或沒有 1 GB 的可用空間，以及/或不存在於固定磁片磁碟機。」。
 
-這可能是因為登錄機碼中的參數出現 null 值。 解決問題-
+這可能是因為登錄機碼中的參數有 null 值。 解決問題-
 
-1. 啟動 [登錄編輯程式] （regedit.exe），然後開啟 [HKEY_LOCAL_MACHINE \SOFTWARE\Wow6432Node\InMage Systems\Installed Products\4] 分支。
-1. 檢查 ' InstallDirectory ' 金鑰值。如果它是 null，則新增 [目前的安裝目錄] 值。
-1. 同樣地，在 [登錄編輯程式] 中開啟 [HKEY_LOCAL_MACHINE \SOFTWARE\Wow6432Node\InMage Systems\Installed Products\5] 分支。
-1. 檢查 ' InstallDirectory ' 索引鍵值，並新增目前的安裝目錄值。
+1.  ( # A0) 啟動登錄編輯程式，然後開啟 HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\InMage Systems\Installed Products\4 分支。
+1. 檢查 ' InstallDirectory ' 機碼值。如果是 null，則加入目前的安裝目錄值。
+1. 同樣地，在 [登錄編輯程式] 中開啟 HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\InMage Systems\Installed Products\5 分支。
+1. 檢查 ' InstallDirectory ' 金鑰值，並新增目前的安裝目錄值。
 1. 重新執行整合安裝安裝程式。

@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: dc77b3c8bc357b63047d20afa9493bbaaff77113
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91285310"
 ---
 # <a name="scale-up-and-down-an-azure-database-for-postgresql-hyperscale-server-group-using-cli-azdata-or-kubectl"></a>使用 CLI (azdata 或 kubectl 適用於 PostgreSQL 的 Azure 資料庫的超大規模伺服器群組擴大和縮小) 
@@ -183,7 +183,7 @@ kubectl describe postgresql-12/<server group name>  [-n <namespace name>]
 
 ## <a name="next-steps"></a>後續步驟
 
-- [向外擴充您的適用於 PostgreSQL 的 Azure 資料庫超大規模伺服器群組](scale-out-postgresql-hyperscale-server-group.md)
+- [擴增適用於 PostgreSQL 超大規模資料庫的 Azure 資料庫伺服器群組](scale-out-postgresql-hyperscale-server-group.md)
 - [儲存體設定和 Kubernetes 儲存體概念](storage-configuration.md)
 - [擴充永久性磁片區宣告](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#expanding-persistent-volumes-claims)
 - [Kubernetes 資源模型](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/scheduling/resources.md#resource-quantities)

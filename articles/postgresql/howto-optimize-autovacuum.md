@@ -1,19 +1,19 @@
 ---
 title: 優化自動資料清理-適用於 PostgreSQL 的 Azure 資料庫-單一伺服器
-description: 本文說明如何將適用於 PostgreSQL 的 Azure 資料庫單一伺服器上的自動資料清理優化
+description: 本文說明如何在適用於 PostgreSQL 的 Azure 資料庫單一伺服器上優化自動資料清理
 author: dianaputnam
 ms.author: dianas
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 07/09/2020
 ms.openlocfilehash: a94afc1ab970c2cd3f509c86efba4e455d46fd13
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86274504"
 ---
-# <a name="optimize-autovacuum-on-an-azure-database-for-postgresql---single-server"></a>優化適用於 PostgreSQL 的 Azure 資料庫單一伺服器上的自動資料清理
+# <a name="optimize-autovacuum-on-an-azure-database-for-postgresql---single-server"></a>在適用於 PostgreSQL 的 Azure 資料庫單一伺服器上優化自動資料清理
 
 本文描述如何有效地將適用於 PostgreSQL 的 Azure 資料庫伺服器上的自動資料清理最佳化。
 
@@ -106,7 +106,7 @@ autovacuum_max_workers 參數決定可同時執行的自動資料清理處理序
 
 ## <a name="optimize-autovacuum-per-table"></a>針對每個資料表最佳化自動資料清理
 
-您可以針對每個資料表設定所有上述設定參數。 以下是範例：
+您可以針對每個資料表設定所有上述設定參數。 以下為範例：
 
 ```sql
 ALTER TABLE t SET (autovacuum_vacuum_threshold = 1000);
@@ -117,7 +117,7 @@ ALTER TABLE t SET (autovacuum_vacuum_cost_delay = 10);
 
 自動資料清理是個別資料表同步處理序。 資料表的無效 Tuple 百分比越大，自動資料清理的「成本」就越高。 您可以將更新和刪除比例高的資料表分割成多個資料表。 分割資料表有助於平行化自動資料清理，並減少在一個資料表上完成自動資料清理的「成本」。 您也可以增加平行自動資料清理背景工作角色的數目，以確保背景工作角色充分地排程。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 若要深入了解如何使用和微調自動資料清理，請參閱下列 PostgreSQL 文件：
 

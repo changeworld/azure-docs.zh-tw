@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/05/2019
 ms.author: cshoe
 ms.openlocfilehash: d8c6b79dca97de3dd46eb9c677f2c94191f276b0
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89303995"
 ---
 使用函式觸發程序將回應傳送至事件中樞事件串流。 您必須具有基礎事件中樞的讀取存取權，才能設定觸發程序。 觸發函式時，傳遞至函式的訊息會以字串的形式輸入。

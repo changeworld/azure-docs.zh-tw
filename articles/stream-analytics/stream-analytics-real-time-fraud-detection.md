@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 03/24/2020
 ms.custom: seodec18
 ms.openlocfilehash: 3bfc03dd7a04bea7e69aa1b62cef267a81b650f1
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86037608"
 ---
 # <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>開始使用 Azure 串流分析：即時詐欺偵測
@@ -57,11 +57,11 @@ ms.locfileid: "86037608"
 
 1. 登入 Azure 入口網站，然後按一下畫面左上方的 [建立資源]。
 
-2. 選取左側功能表中的 [所有服務] ，然後選取 [分析] 類別中 [事件中樞] 旁邊的 **星號 (`*`)** 。 確認 [事件中樞] 已新增至左側導覽功能表中的 [我的最愛]。 
+2. 選取左側功能表中的 [所有服務] ，然後選取 [分析] 類別中 [事件中樞] 旁邊的 **星號 (`*`)** 。 確認 [事件中樞]  已新增至左側導覽功能表中的 [我的最愛]  。 
 
    ![搜尋事件中樞](./media/stream-analytics-real-time-fraud-detection/select-event-hubs-menu.png)
 
-3. 選取左側導覽功能表中 [我的最愛] 下方的 [事件中樞]，然後選取工具列上的 [新增]。
+3. 選取左側導覽功能表中 [我的最愛]  下方的 [事件中樞]  ，然後選取工具列上的 [新增]  。
 
    ![[新增] 按鈕](./media/stream-analytics-real-time-fraud-detection/event-hubs-add-toolbar.png)
 
@@ -81,7 +81,7 @@ ms.locfileid: "86037608"
 
     <br/><img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-new-portal.png" alt="Name event hub in Azure portal" width="400px"/>
     
-9. 按一下 [建立]。
+9. 按一下頁面底部的 [新增] 。
 
 ### <a name="grant-access-to-the-event-hub-and-get-a-connection-string"></a>授權存取事件中樞並取得連接字串
 
@@ -98,7 +98,7 @@ ms.locfileid: "86037608"
 
     <br/><img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-shared-access-policy-manage-new-portal.png" alt="Create shared access policy for Stream Analytics" width="300px"/>
  
-4. 按一下 [建立]。
+4. 按一下頁面底部的 [新增] 。
 
 5. 部署原則之後，在共用存取原則清單中按一下此原則。
 

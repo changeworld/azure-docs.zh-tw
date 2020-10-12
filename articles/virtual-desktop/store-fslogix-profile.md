@@ -7,23 +7,23 @@ ms.date: 10/14/2019
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 0b1a5e36232e74caa34037efbbb0da0c39051998
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89568688"
 ---
 # <a name="storage-options-for-fslogix-profile-containers-in-windows-virtual-desktop"></a>在 Windows 虛擬桌面中 FSLogix 設定檔容器的儲存體選項
 
 Azure 提供多個儲存體解決方案，可供您用來儲存 FSLogix 設定檔容器。 本文將比較 Azure 為 Windows 虛擬桌面 FSLogix 使用者設定檔容器提供的儲存體解決方案。 建議您將 FSLogix 設定檔容器儲存在適用于大部分客戶的 Azure 檔案儲存體上。
 
-Windows 虛擬桌面提供 FSLogix 設定檔容器作為建議的使用者設定檔解決方案。 FSLogix 可用來漫遊遠端運算環境中的設定檔，例如 Windows 虛擬桌面。 在登入時，此容器會使用原生支援的虛擬硬碟 (VHD) 和 Hyper-v 虛擬硬碟 (VHDX) ，以動態方式連接到計算環境。 使用者設定檔會立即可用，而且會與原生使用者設定檔一樣出現在系統中。
+Windows 虛擬桌面提供 FSLogix 設定檔容器作為建議的使用者設定檔解決方案。 FSLogix 可用來漫遊遠端運算環境中的設定檔，例如 Windows 虛擬桌面。 在登入時，此容器會使用原生支援的虛擬硬碟 (VHD) 和 Hyper-v 虛擬硬碟 (VHDX) ，以動態方式連接到計算環境。 使用者設定檔能夠立即使用，且會與原生使用者設定檔一樣完全出現在系統中。
 
 下表比較適用于 Windows 虛擬桌面 FSLogix 設定檔容器使用者設定檔的存放裝置解決方案 Azure 儲存體優惠。
 
 ## <a name="azure-platform-details"></a>Azure 平臺詳細資料
 
-|功能|Azure 檔案|Azure NetApp Files|儲存空間 Direct|
+|特性|Azure 檔案|Azure NetApp Files|儲存空間直接存取|
 |--------|-----------|------------------|---------------------|
 |使用案例|一般用途|從 NetApp 內部部署的 Ultra 效能或遷移|跨平台|
 |平臺服務|是，Azure-原生解決方案|是，Azure-原生解決方案|否，自我管理|
@@ -36,16 +36,16 @@ Windows 虛擬桌面提供 FSLogix 設定檔容器作為建議的使用者設定
 
 ## <a name="azure-management-details"></a>Azure 管理詳細資料
 
-|功能|Azure 檔案|Azure NetApp Files|儲存空間 Direct|
+|特性|Azure 檔案|Azure NetApp Files|儲存空間直接存取|
 |--------|-----------|------------------|---------------------|
-|Access|雲端、內部部署和混合式 (Azure 檔案同步) |雲端、內部部署 (via ExpressRoute) |雲端、內部部署|
+|存取|雲端、內部部署和混合式 (Azure 檔案同步) |雲端、內部部署 (via ExpressRoute) |雲端、內部部署|
 |Backup|Azure 備份快照集整合|Azure NetApp Files 快照集|Azure 備份快照集整合|
 |安全性與合規性|[所有 Azure 支援的憑證](https://www.microsoft.com/trustcenter/compliance/complianceofferings)|ISO 已完成|[所有 Azure 支援的憑證](https://www.microsoft.com/trustcenter/compliance/complianceofferings)|
 |Azure Active Directory 整合|[原生 Active Directory 和 Azure Active Directory Domain Services](https://docs.microsoft.com/azure/storage/files/storage-files-active-directory-overview)|[Azure Active Directory Domain Services 和原生 Active Directory](../azure-netapp-files/azure-netapp-files-faqs.md#does-azure-netapp-files-support-azure-active-directory)|原生 Active Directory 或僅 Azure Active Directory Domain Services 支援|
 
 選擇您的儲存方法之後，請參閱 [Windows 虛擬桌面定價](https://azure.microsoft.com/pricing/details/virtual-desktop/) 以取得定價方案的相關資訊。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 若要深入瞭解 FSLogix 設定檔容器、使用者設定檔磁片和其他使用者設定檔技術，請參閱 [FSLogix 設定檔容器和 Azure 檔案](fslogix-containers-azure-files.md)儲存體中的表格。
 

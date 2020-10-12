@@ -1,5 +1,5 @@
 ---
-title: 在 Microsoft Azure 上使用 Cloud Foundry 的消費者入門
+title: Microsoft Azure 上的 Cloud Foundry 消費者入門
 description: 在 Microsoft Azure 上執行 OSS 或 Pivotal Cloud Foundry
 author: seanmck
 ms.service: virtual-machines-linux
@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 01/19/2017
 ms.author: seanmck
 ms.openlocfilehash: 8645afac5734cdbffb8df6f341529e688ca526d7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84754448"
 ---
 # <a name="cloud-foundry-on-azure"></a>Azure 上的 Cloud Foundry
@@ -55,7 +55,7 @@ Cloud Foundry 鼓勵使用 ["twelve-factor app" (英文)](https://12factor.net/)
 
 Cloud Foundry 非常適合敏捷式軟體開發，包括使用持續整合 (CI) 和持續傳遞 (CD)。 如果您使用 Azure DevOps Services 來管理專案，並且想要設定以 Cloud Foundry 為目標的 CI/CD 管線，您可以使用 [Azure DevOps Services Cloud Foundry 組建擴充功能](https://marketplace.visualstudio.com/items?itemName=ms-vsts.cloud-foundry-build-extension)。 此外掛程式讓您能夠簡單地設定和自動化部署至 Cloud Foundry，而不論是在 Azure 或另一個環境中執行。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - [從 Azure Marketplace 部署 Pivotal Cloud Foundry](https://azuremarketplace.microsoft.com/marketplace/apps/pivotal.pivotal-cloud-foundry)
 - [在 Azure 將應用程式部署至 Cloud Foundry](./cloudfoundry-deploy-your-first-app.md)

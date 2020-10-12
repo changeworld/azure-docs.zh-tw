@@ -16,10 +16,10 @@ ms.date: 10/17/2018
 ms.author: kenwith
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6f9626c256755e2fce81b593d95b8680f4bb55ee
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84763154"
 ---
 # <a name="how-to-remove-a-users-access-to-an-application"></a>如何移除使用者的應用程式存取
@@ -38,15 +38,15 @@ ms.locfileid: "84763154"
 
 若要**刪除應用程式**，請遵循下列指示：
 
-1. 開啟[**Azure 入口網站**](https://portal.azure.com/)，並以**全域管理員**或共同管理員身分登入 **。**
+1. 開啟 [**Azure 入口網站**](https://portal.azure.com/) ，然後以 **全域系統管理員** 或共同管理員身分登入 **。**
 
 2. 按一下左側主導覽功能表底部的 [所有服務]，以開啟 [Azure Active Directory 延伸模組]。
 
 3. 在篩選搜尋方塊中輸入 **“Azure Active Directory**”，然後選取 [Azure Active Directory] 項目。
 
-4. 按一下 Azure Active Directory 左側導覽功能表中的 [**企業應用程式**]。
+4. 按一下 Azure Active Directory 左側導覽功能表中的 [ **企業應用程式** ]。
 
-5. 按一下 [**所有應用程式**] 以查看所有應用程式的清單。
+5. 按一下 [ **所有應用程式** ] 以查看您所有應用程式的清單。
 
    * 若在這裡沒看到您要顯示的應用程式，請使用 [所有應用程式清單] 頂端的 [篩選] 控制項，並將 [顯示] 選項設定為 [所有應用程式]。
 
@@ -66,11 +66,11 @@ ms.locfileid: "84763154"
 
 3.  按一下瀏覽功能表中的 [企業應用程式]****。
 
-5.  按一下 [**使用者設定**]。
+5.  按一下 [ **使用者設定**]。
 
 6.  將 [使用者可以允許應用程式代替他們存取資料]**** 切換開關設為 [否]****，並按一下 [儲存] 按鈕。
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 [管理應用程式的存取](what-is-access-management.md)

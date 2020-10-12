@@ -7,10 +7,10 @@ author: vinynigam
 ms.author: vinigam
 ms.date: 02/20/2018
 ms.openlocfilehash: c5a442a3d3711b85c0bad30218cb1ffab92558d9
-ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91403716"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Azure 中的網路效能監控解決方案
@@ -161,7 +161,7 @@ ExpressRoute 監視器的支援區域清單提供於[文件](../../expressroute/
 
 1. 選取或清除您要監視或停止監視的節點。 
 2. 視需要選取 [用於監視]****，或加以清除。 
-3. 選取 [儲存]。 
+3. 選取 [儲存]****。 
 
 
 設定您想要的功能：

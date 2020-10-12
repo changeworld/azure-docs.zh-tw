@@ -6,10 +6,10 @@ ms.subservice: update-management
 ms.date: 05/04/2020
 ms.topic: conceptual
 ms.openlocfilehash: aa4e49d0e79704b6fc9f19eb1b736b2358cf3a14
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87450050"
 ---
 # <a name="configure-windows-update-settings-for-azure-automation-update-management"></a>設定 Windows Update 設定以進行 Azure 自動化更新管理
@@ -62,4 +62,4 @@ $ServiceManager.AddService2($ServiceId,7,"")
 
 ## <a name="next-steps"></a>後續步驟
 
-遵循[管理 vm 的更新和修補程式](update-mgmt-manage-updates-for-vm.md)中的指示，來排程更新部署。
+遵循 [管理 vm 的更新和修補程式](update-mgmt-manage-updates-for-vm.md)中的指示來排程更新部署。

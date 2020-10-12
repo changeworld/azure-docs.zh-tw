@@ -1,28 +1,28 @@
 ---
-title: 驗證事件傳遞至事件處理常式（Azure 事件方格）
+title: " (Azure 事件方格) 驗證事件傳遞至事件處理常式"
 description: 本文說明在 Azure 事件方格中驗證傳遞至事件處理常式的不同方式。
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: abe16c9598c8c10caa832150aafac997dd7f1624
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87460638"
 ---
-# <a name="authenticate-event-delivery-to-event-handlers-azure-event-grid"></a>驗證事件傳遞至事件處理常式（Azure 事件方格）
-本文提供有關驗證事件傳遞至事件處理常式的資訊。 它也會示範如何使用 Azure Active Directory （Azure AD）或共用密碼，來保護用來從事件方格接收事件的 webhook 端點。
+# <a name="authenticate-event-delivery-to-event-handlers-azure-event-grid"></a> (Azure 事件方格) 驗證事件傳遞至事件處理常式
+本文提供驗證事件傳遞至事件處理常式的相關資訊。 它也會示範如何使用 Azure Active Directory (Azure AD) 或共用密碼來保護用來從事件方格接收事件的 webhook 端點。
 
-## <a name="use-system-assigned-identities-for-event-delivery"></a>使用系統指派的身分識別進行事件傳遞
-您可以針對主題或網域啟用系統指派的受控識別，並使用該身分識別將事件轉送到支援的目的地，例如服務匯流排佇列和主題、事件中樞和儲存體帳戶。
+## <a name="use-system-assigned-identities-for-event-delivery"></a>使用系統指派的身分識別來傳遞事件
+您可以針對主題或網域啟用系統指派的受控識別，並使用身分識別將事件轉送至支援的目的地，例如服務匯流排佇列和主題、事件中樞和儲存體帳戶。
 
-以下是步驟： 
+步驟如下： 
 
-1. 使用系統指派的身分識別建立主題或網域，或更新現有的主題或網域以啟用身分識別。 
-1. 將身分識別新增至目的地上的適當角色（例如，服務匯流排資料傳送者）（例如，服務匯流排佇列）。
-1. 當您建立事件訂閱時，請啟用身分識別以將事件傳遞至目的地。 
+1. 使用系統指派的身分識別來建立主題或網域，或更新現有的主題或網域以啟用身分識別。 
+1. 將身分識別新增至適當的角色 (例如，服務匯流排資料傳送者) 在目的地 (例如，服務匯流排佇列) 。
+1. 當您建立事件訂閱時，請啟用此身分識別的使用方式，將事件傳遞至目的地。 
 
-如需詳細的逐步指示，請參閱[使用受控識別傳遞事件](managed-service-identity.md)。
+如需詳細的逐步指示，請參閱 [使用受控識別傳遞事件](managed-service-identity.md)。
 
 
 ## <a name="authenticate-event-delivery-to-webhook-endpoints"></a>驗證對 Webhook 端點的事件傳遞
@@ -44,4 +44,4 @@ Azure 事件方格僅支援 **HTTPS** Webhook 端點。
 
 
 ## <a name="next-steps"></a>後續步驟
-請參閱[驗證發佈用戶端](security-authenticate-publishing-clients.md)，以瞭解如何驗證用戶端將事件發佈至主題或網域。 
+請參閱 [驗證發佈用戶端](security-authenticate-publishing-clients.md) ，以瞭解如何向主題或網域驗證用戶端發佈事件。 

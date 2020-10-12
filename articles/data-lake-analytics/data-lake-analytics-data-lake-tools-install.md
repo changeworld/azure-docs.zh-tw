@@ -8,17 +8,17 @@ ms.assetid: ad8a6992-02c7-47d4-a108-62fc5a0777a3
 ms.topic: how-to
 ms.date: 08/30/2019
 ms.openlocfilehash: df3bf715f8571659d0e622729562055428ab5c97
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87125933"
 ---
 # <a name="install-data-lake-tools-for-visual-studio"></a>安裝 Data Lake Tools for Visual Studio
 
-瞭解如何使用 Visual Studio 建立 Azure Data Lake Analytics 帳戶。 您可以在 [ [U-SQL](data-lake-analytics-u-sql-get-started.md) ] 中定義作業，並將作業提交至 Data Lake Analytics 服務。 如需 Data Lake Analytics 的詳細資訊，請參閱[Azure Data Lake Analytics 總覽](data-lake-analytics-overview.md)。
+瞭解如何使用 Visual Studio 建立 Azure Data Lake Analytics 帳戶。 您可以在 [sql-dmo](data-lake-analytics-u-sql-get-started.md) 中定義作業，並將作業提交至 Data Lake Analytics 服務。 如需 Data Lake Analytics 的詳細資訊，請參閱 [Azure Data Lake Analytics 總覽](data-lake-analytics-overview.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * **Visual Studio**：支援 Express 以外的所有版本。
 
@@ -32,7 +32,7 @@ ms.locfileid: "87125933"
 
 ## <a name="install-azure-data-lake-tools-for-visual-studio-2017-or-visual-studio-2019"></a>安裝 Azure Data Lake Tools for Visual Studio 2017 或 Visual Studio 2019
 
-Visual Studio 2017 15.3 或更新版本中支援 Azure Data Lake Tools for Visual Studio。 此工具是**資料儲存和處理**和**Azure 開發**工作負載的一部分。 安裝 Visual Studio 時，請啟用其中一個工作負載。
+Visual Studio 2017 15.3 或更新版本中支援 Azure Data Lake Tools for Visual Studio。 此工具是 **資料儲存和處理** 和 **Azure 開發** 工作負載的一部分。 安裝 Visual Studio 時，請啟用其中一個工作負載。
 
 啟用**資料儲存和處理**工作負載，如下所示：
 
@@ -44,13 +44,13 @@ Visual Studio 2017 15.3 或更新版本中支援 Azure Data Lake Tools for Visua
 
 ## <a name="install-azure-data-lake-tools-for-visual-studio-2013-and-2015"></a>安裝 Azure Data Lake Tools for Visual Studio 2013 與 2015
 
-下載並安裝[適用于 Visual Studio 的 Microsoft Azure Data Lake 和串流分析工具](https://aka.ms/adltoolsvs)。 安裝之後，Visual Studio 會進行下列變更：
+下載並安裝 [適用于 Visual Studio 的 Microsoft Azure Data Lake 和串流分析工具 ](https://aka.ms/adltoolsvs)。 安裝之後，Visual Studio 會有下列變更：
 
-* **伺服器總管**的  >  **Azure**節點包含**Data Lake Analytics**節點。
+* **伺服器總管**  >  **Azure**節點包含**Data Lake Analytics**節點。
 * [工具]**** 功能表包含 [Data Lake]**** 項目。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-* 若要記錄診斷資訊，請參閱[存取 Azure Data Lake Analytics 的診斷記錄](data-lake-analytics-diagnostic-logs.md)。
+* 若要記錄診斷資訊，請參閱 [存取 Azure Data Lake Analytics 的診斷記錄](data-lake-analytics-diagnostic-logs.md)。
 * 若要了解更複雜的查詢，請參閱 [使用 Azure Data Lake Analytics 來分析網站記錄](data-lake-analytics-analyze-weblogs.md)。
-* 若要使用頂點執行視圖，請參閱[在適用于 Visual Studio 的 Data Lake 工具中使用頂點執行視圖](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md)。
+* 若要使用頂點執行視圖，請參閱 [Data Lake Tools for Visual Studio 中使用頂點執行視圖](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md)。

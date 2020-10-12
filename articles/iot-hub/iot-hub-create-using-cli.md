@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/23/2018
 ms.author: robinsh
 ms.openlocfilehash: 69372e4c212e2ce81bcd4c91d460aa191a1d3476
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90087842"
 ---
 # <a name="create-an-iot-hub-using-the-azure-cli"></a>使用 Azure CLI 建立 IoT 中樞
@@ -22,7 +22,7 @@ ms.locfileid: "90087842"
 
 ## <a name="prerequisites"></a>必要條件
 
-若要完成此操作說明，您需要 Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前先建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+若要完成此操作說明，您需要 Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -72,14 +72,14 @@ ms.locfileid: "90087842"
 
 您可以使用 Azure CLI 來[刪除個別資源](https://docs.microsoft.com/cli/azure/resource) (英文，例如 IoT 中樞)，或刪除資源群組和其所有資源 (包括任何 IoT 中樞)。
 
-若要[刪除 IoT 中樞](https://docs.microsoft.com/cli/azure/iot/hub#az-iot-hub-delete) (英文)，請執行下列命令︰
+若要 [刪除 IoT 中樞](https://docs.microsoft.com/cli/azure/iot/hub#az-iot-hub-delete)，請執行下列命令：
 
 ```azurecli-interactive
 az iot hub delete --name {your iot hub name} -\
   -resource-group {your resource group name}
 ```
 
-若要[刪除資源群組](https://docs.microsoft.com/cli/azure/group#az-group-delete) (英文) 及其所有資源，請執行下列命令︰
+若要 [刪除資源群組](https://docs.microsoft.com/cli/azure/group#az-group-delete) 和其所有資源，請執行下列命令：
 
 ```azurecli-interactive
 az group delete --name {your resource group name}
