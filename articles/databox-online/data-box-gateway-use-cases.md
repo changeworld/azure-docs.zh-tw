@@ -1,6 +1,6 @@
 ---
 title: Microsoft Azure 資料箱閘道使用案例 |Microsoft Docs
-description: 說明 Azure 資料箱閘道的使用案例，這是一種可讓您將資料傳輸至 Azure 的虛擬應用裝置儲存體解決方案
+description: 說明 Azure 資料箱閘道的使用案例，這是可讓您將資料傳輸至 Azure 的虛擬裝置儲存體解決方案
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/02/2019
 ms.author: alkohli
 ms.openlocfilehash: dde84f0973cc7e21e57574bbabe398b38581358f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82562376"
 ---
 # <a name="use-cases-for-azure-data-box-gateway"></a>Azure Data Box Gateway 的使用案例
@@ -44,10 +44,10 @@ Data Box Gateway 的主要優點之一是能夠持續將資料嵌入裝置，然
 
 ### <a name="move-data-to-archive-tier"></a>將資料移至封存層
 
-在開始之前，請確定您有執行中的 Data Box Gateway 裝置。 依照[教學課程：準備部署 Azure 資料箱閘道](data-box-gateway-deploy-prep.md)並繼續進行下一個教學課程中所述的步驟，直到您擁有可運作的裝置為止。
+在開始之前，請確定您有執行中的 Data Box Gateway 裝置。 遵循 [教學課程：準備部署 Azure 資料箱閘道](data-box-gateway-deploy-prep.md) 並繼續進行下一個教學課程中所述的步驟，直到您有操作裝置為止。
 
 - 透過[使用 Data Box Gateway 傳輸資料](data-box-gateway-deploy-add-shares.md)中所述的一般傳輸程序，使用 Data Box Gateway 裝置將資料上傳至 Azure。
-- 將資料上傳之後，您必須將資料移至封存層。 您可以使用兩種方式來設定 blob 層： Azure PowerShell 腳本或 Azure 儲存體生命週期管理原則。  
+- 將資料上傳之後，您必須將資料移至封存層。 您可以用兩種方式設定 blob 層： Azure PowerShell 腳本或 Azure 儲存體生命週期管理原則。  
     - 如果使用 Azure PowerShell，請遵循這些[步驟](/azure/databox/data-box-how-to-set-data-tier#use-azure-powershell-to-set-the-blob-tier)來將資料移至封存層。
     - 如果使用 Azure 生命週期管理，請遵循這些步驟來將資料移至封存層。
         - [註冊](/azure/storage/common/storage-lifecycle-management-concepts) Blob 生命週期管理服務預覽版，以使用封存層。

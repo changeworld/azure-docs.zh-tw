@@ -13,10 +13,10 @@ ms.custom: seo-lt-2019
 ms.topic: reference
 ms.date: 01/08/2020
 ms.openlocfilehash: 5839de1fde8e4a4d5e661d232ae91099a9483bcb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91291566"
 ---
 # <a name="network-topologies-for-azure-sql-managed-instance-migrations-using-azure-database-migration-service"></a>Azure SQL 受控執行個體使用 Azure 資料庫移轉服務進行遷移的網路拓撲
@@ -29,7 +29,7 @@ ms.locfileid: "91291566"
 
 ![混合式工作負載的網路拓撲](media/resource-network-topologies/hybrid-workloads.png)
 
-**需求**
+**Requirements**
 
 - 在此案例中，會在相同的 Microsoft Azure 虛擬網路中建立 SQL 受控執行個體和 Azure 資料庫移轉服務實例，但它們會使用不同的子網。  
 - 此案例中使用的虛擬網路也會使用 [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) 或 [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)連線到內部部署網路。
@@ -44,7 +44,7 @@ ms.locfileid: "91291566"
 
 ![受控執行個體與內部部署網路分開的網路拓撲](media/resource-network-topologies/mi-isolated-workload.png)
 
-**需求**
+**Requirements**
 
 - Azure 資料庫移轉服務用於此案例的虛擬網路，也必須使用 (或 VPN 連線到內部部署網路 https://docs.microsoft.com/azure/expressroute/expressroute-introduction) 。 [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)
 - 設定用於 SQL 受控執行個體和 Azure 資料庫移轉服務的虛擬網路之間的 [VNet 網路對等互連](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) 。
@@ -55,7 +55,7 @@ ms.locfileid: "91291566"
 
 ![使用共用 VNet 進行雲端到雲端遷移的網路拓撲](media/resource-network-topologies/cloud-to-cloud.png)
 
-**需求**
+**Requirements**
 
 - 沒有其他需求。
 
@@ -69,7 +69,7 @@ ms.locfileid: "91291566"
 
 ![使用隔離式 VNet 進行雲端到雲端遷移的網路拓撲](media/resource-network-topologies/cloud-to-cloud-isolated.png)
 
-**需求**
+**Requirements**
 
 - 設定用於 SQL 受控執行個體和 Azure 資料庫移轉服務的虛擬網路之間的 [VNet 網路對等互連](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) 。
 

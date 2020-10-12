@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/22/2020
 ms.openlocfilehash: aa20e048db2b68d8f953b06745570759de5f2e9c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82190566"
 ---
 # <a name="hortonworks-release-notes-associated-with-hdinsight-versions"></a>與 HDInsight 版本相關聯的 Hortonworks 版本資訊
@@ -21,7 +21,7 @@ ms.locfileid: "82190566"
 
 ## <a name="current-versions"></a>目前的版本
 
-* HDInsight 叢集版本4.0 使用以[Hortonworks 資料平臺 3.0](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.0/release-notes/content/relnotes.html)為基礎的 Hadoop 散發套件。
+* HDInsight 叢集版本4.0 使用以 [Hortonworks Data Platform 3.0](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.0/release-notes/content/relnotes.html)為基礎的 Hadoop 散發套件。
 
 * HDInsight 叢集 3.6 版採用以 [Hortonworks Data Platform 2.6](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.0/bk_release-notes/content/ch_relnotes.html) 為基礎的 Hadoop 散發套件。
 
@@ -48,7 +48,7 @@ ms.locfileid: "82190566"
 
 * HDInsight 叢集 1.6 版採用以 [Hortonworks Data Platform 1.1][hdp-1-1-0] 為基礎的 Hadoop 散發套件。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * [HDInsight 上的 Apache Hadoop 元件](./hdinsight-component-versioning.md)
 * [使用 Hadoop、Spark 及 Kafka 等在 HDInsight 中設定叢集](hdinsight-hadoop-provision-linux-clusters.md)

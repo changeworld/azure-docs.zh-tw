@@ -12,10 +12,10 @@ ms.custom: mvc
 ms.topic: reference
 ms.date: 03/03/2020
 ms.openlocfilehash: cdd08742e6aad956325508046a182674ec1bb1ea
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91292008"
 ---
 # <a name="services-and-tools-available-for-data-migration-scenarios"></a>資料移轉案例可用的服務和工具
@@ -47,7 +47,7 @@ ms.locfileid: "91292008"
 | PostgreSQL | 適用于于 postgresql 的 Azure DB-<br/>單一伺服器 | [Azure Migrate](https://azure.microsoft.com/services/azure-migrate/) |  | [TCO 計算機](https://azure.microsoft.com/pricing/tco/calculator/) |
 | RDS PostgreSQL | 適用于于 postgresql 的 Azure DB-<br/>單一伺服器 |  |  | [TCO 計算機](https://azure.microsoft.com/pricing/tco/calculator/) |
 | DB2 | Azure SQL DB、MI、VM | [Azure Migrate](https://azure.microsoft.com/services/azure-migrate/) | [址](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) |  |
-| Access | Azure SQL DB、MI、VM | [Azure Migrate](https://azure.microsoft.com/services/azure-migrate/) | [址](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) |  |
+| 存取 | Azure SQL DB、MI、VM | [Azure Migrate](https://azure.microsoft.com/services/azure-migrate/) | [址](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) |  |
 | Sybase-SAP ASE | Azure SQL DB、MI、VM | [Azure Migrate](https://azure.microsoft.com/services/azure-migrate/) | [址](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) |  |
 | Sybase-SAP IQ | Azure SQL DB、MI、VM |  |  |  |
 | | | | | |
@@ -72,7 +72,7 @@ ms.locfileid: "91292008"
 | PostgreSQL | 適用于于 postgresql 的 Azure DB-<br/>單一伺服器 |  |  |  |
 | RDS PostgreSQL | 適用于于 postgresql 的 Azure DB-<br/>單一伺服器 |  |  |  |
 | DB2 | Azure SQL DB、MI、VM | [DAMT](https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit)  / [SSMA](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) | [址](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) |  |
-| Access | Azure SQL DB、MI、VM |  | [址](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) |  |
+| 存取 | Azure SQL DB、MI、VM |  | [址](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) |  |
 | Sybase-SAP ASE | Azure SQL DB、MI、VM | [DAMT](https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit)  / [SSMA](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) | [址](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) |  |
 | Sybase-SAP IQ | Azure SQL DB、MI、VM |  | |  |
 | | | | | |
@@ -97,7 +97,7 @@ ms.locfileid: "91292008"
 | PostgreSQL | 適用于于 postgresql 的 Azure DB-<br/>單一伺服器 | [PG 傾印*](https://www.postgresql.org/docs/11/static/app-pgdump.html) |  | [DMS](https://azure.microsoft.com/services/database-migration/)<br/>[Attunity](https://www.attunity.com/products/replicate/)<br/>[Striim*](https://www.striim.com/partners/striim-for-microsoft-azure/) |
 | RDS PostgreSQL | 適用于于 postgresql 的 Azure DB-<br/>單一伺服器 | [PG 傾印*](https://www.postgresql.org/docs/11/static/app-pgdump.html) |  | [DMS](https://azure.microsoft.com/services/database-migration/)<br/>[Attunity](https://www.attunity.com/products/replicate/)<br/>[Striim*](https://www.striim.com/partners/striim-for-microsoft-azure/) |
 | DB2 | Azure SQL DB、MI、VM | [址](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017)<br/>[Ispirer](https://www.ispirer.com/solutions) | [址](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017)<br/>[Ispirer](https://www.ispirer.com/solutions) | [Attunity](https://www.attunity.com/products/replicate/)<br/>[Striim*](https://www.striim.com/partners/striim-for-microsoft-azure/) |
-| Access | Azure SQL DB、MI、VM | [址](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) | [址](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) | [址](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) |
+| 存取 | Azure SQL DB、MI、VM | [址](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) | [址](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) | [址](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) |
 | Sybase-SAP ASE | Azure SQL DB、MI、VM | [址](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017)<br/>[Ispirer](https://www.ispirer.com/solutions) | [址](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017)<br/>[Ispirer](https://www.ispirer.com/solutions) | [Attunity](https://www.attunity.com/products/replicate/)<br/>[Striim*](https://www.striim.com/partners/striim-for-microsoft-azure/) |
 | Sybase-SAP IQ | Azure SQL DB、MI、VM | [Ispirer](https://www.ispirer.com/solutions) | [Ispirer](https://www.ispirer.com/solutions) | |
 | | | | | |
@@ -122,7 +122,7 @@ ms.locfileid: "91292008"
 | PostgreSQL | 適用于于 postgresql 的 Azure DB-<br/>單一伺服器 |  |
 | RDS PostgreSQL | 適用于于 postgresql 的 Azure DB-<br/>單一伺服器 |  |
 | DB2 | Azure SQL DB、MI、VM |  |
-| Access | Azure SQL DB、MI、VM |  |
+| 存取 | Azure SQL DB、MI、VM |  |
 | Sybase-SAP ASE | Azure SQL DB、MI、VM |  |
 | Sybase-SAP IQ | Azure SQL DB、MI、VM |  |
 | | | |

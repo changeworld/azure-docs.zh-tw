@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 08/20/2020
 ms.custom: ''
 ms.openlocfilehash: 8da72d3911797e8e3a4551f2af100afb0d7ea0fb
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88755002"
 ---
 # <a name="configure-a-github-action-to-create-a-container-instance"></a>設定 GitHub 動作以建立容器執行個體
@@ -220,7 +220,7 @@ az extension add \
 
 如需尋找、安裝和管理延伸模組的相關資訊，請參閱搭配 [使用擴充功能與 Azure CLI](/cli/azure/azure-cli-extensions-overview)。
 
-### <a name="run-az-container-app-up"></a>`az container app up`執行
+### <a name="run-az-container-app-up"></a>執行 `az container app up`
 
 若要執行 [az container app up][az-container-app-up] 命令，請至少提供：
 
@@ -299,7 +299,7 @@ az group delete \
   --name <resource-group-name>
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 流覽 [GitHub Marketplace](https://github.com/marketplace?type=actions) 以取得自動化開發工作流程的其他動作
 

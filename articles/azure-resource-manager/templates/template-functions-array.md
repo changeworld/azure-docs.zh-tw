@@ -1,18 +1,18 @@
 ---
 title: 範本函式-陣列
-description: 描述要在 Azure Resource Manager 範本中用來處理陣列的函式。
+description: 描述在 Azure Resource Manager 範本中用來處理陣列的函數。
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: 4d4ee96888aee5421d88b5371ac25a69c0af4fd7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84677843"
 ---
-# <a name="array-functions-for-arm-templates"></a>ARM 範本的陣列函式
+# <a name="array-functions-for-arm-templates"></a>ARM 範本的陣列函數
 
-Resource Manager 提供數個函式，可在您的 Azure Resource Manager （ARM）範本中使用陣列。
+Resource Manager 提供數個函式來處理 Azure Resource Manager (ARM) 範本中的陣列。
 
 * [array](#array)
 * [concat](#concat)
@@ -22,7 +22,7 @@ Resource Manager 提供數個函式，可在您的 Azure Resource Manager （ARM
 * [first](#first)
 * [intersection](#intersection)
 * [last](#last)
-* [length](#length)
+* [length](#length) (長度)
 * [max](#max)
 * [min](#min)
 * [range](#range)
@@ -40,9 +40,9 @@ Resource Manager 提供數個函式，可在您的 Azure Resource Manager （ARM
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | Description |
+| 參數 | 必要 | 類型 | 說明 |
 |:--- |:--- |:--- |:--- |
-| convertToArray |Yes |整數、字串、陣列或物件 |要轉換為陣列的值。 |
+| convertToArray |是 |整數、字串、陣列或物件 |要轉換為陣列的值。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -105,12 +105,12 @@ Resource Manager 提供數個函式，可在您的 Azure Resource Manager （ARM
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | Description |
+| 參數 | 必要 | 類型 | 說明 |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |陣列或字串 |串連的第一個陣列或字串。 |
+| arg1 |是 |陣列或字串 |串連的第一個陣列或字串。 |
 | 其他引數 |否 |陣列或字串 |串連的其他陣列或字串 (循序順序)。 |
 
-此函式可以接受任意數目的引數，並且可針對參數接受字串或陣列。 不過，您無法同時為參數提供陣列和字串。 陣列只會與其他陣列串連。
+此函式可以接受任意數目的引數，並且可針對參數接受字串或陣列。 不過，您無法為參數提供陣列和字串。 陣列只會與其他陣列串連。
 
 ### <a name="return-value"></a>傳回值
 
@@ -187,7 +187,7 @@ Resource Manager 提供數個函式，可在您的 Azure Resource Manager （ARM
 | ---- | ---- | ----- |
 | concatOutput | String | prefix-5yj4yjf5mbg72 |
 
-## <a name="contains"></a>包含
+## <a name="contains"></a>contains
 
 `contains(container, itemToFind)`
 
@@ -195,10 +195,10 @@ Resource Manager 提供數個函式，可在您的 Azure Resource Manager （ARM
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | Description |
+| 參數 | 必要 | 類型 | 說明 |
 |:--- |:--- |:--- |:--- |
-| 容器 |Yes |陣列、物件或字串 |其中包含要尋找之值的值。 |
-| itemToFind |Yes |字串或整數 |要尋找的值。 |
+| 容器 |是 |陣列、物件或字串 |其中包含要尋找之值的值。 |
+| itemToFind |是 |字串或整數 |要尋找的值。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -276,9 +276,9 @@ Resource Manager 提供數個函式，可在您的 Azure Resource Manager （ARM
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | Description |
+| 參數 | 必要 | 類型 | 說明 |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |字串、整數、陣列或物件 |陣列中的第一個值。 |
+| arg1 |是 |字串、整數、陣列或物件 |陣列中的第一個值。 |
 | 其他引數 |否 |字串、整數、陣列或物件 |陣列中的其他值。 |
 
 ### <a name="return-value"></a>傳回值
@@ -343,9 +343,9 @@ Resource Manager 提供數個函式，可在您的 Azure Resource Manager （ARM
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | Description |
+| 參數 | 必要 | 類型 | 說明 |
 |:--- |:--- |:--- |:--- |
-| itemToTest |Yes |陣列、物件或字串 |要檢查其是否為空白的值。 |
+| itemToTest |是 |陣列、物件或字串 |要檢查其是否為空白的值。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -408,9 +408,9 @@ Resource Manager 提供數個函式，可在您的 Azure Resource Manager （ARM
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | Description |
+| 參數 | 必要 | 類型 | 說明 |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |陣列或字串 |要擷取其第一個元素或字元的值。 |
+| arg1 |是 |陣列或字串 |要擷取其第一個元素或字元的值。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -460,7 +460,7 @@ Resource Manager 提供數個函式，可在您的 Azure Resource Manager （ARM
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | Description |
+| 參數 | 必要 | 類型 | 說明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |陣列或物件 |要用來尋找共同元素的第一個值。 |
 | arg2 |是 |陣列或物件 |要用來尋找共同元素的第二個值。 |
@@ -526,9 +526,9 @@ Resource Manager 提供數個函式，可在您的 Azure Resource Manager （ARM
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | Description |
+| 參數 | 必要 | 類型 | 說明 |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |陣列或字串 |要擷取其最後一個元素或字元的值。 |
+| arg1 |是 |陣列或字串 |要擷取其最後一個元素或字元的值。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -574,13 +574,13 @@ Resource Manager 提供數個函式，可在您的 Azure Resource Manager （ARM
 
 `length(arg1)`
 
-傳回陣列中的元素數目、字串中的字元，或物件中的根層級屬性。
+傳回陣列中的元素數目、字串中的字元或物件中的根層級屬性。
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | Description |
+| 參數 | 必要 | 類型 | 說明 |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |陣列、字串或物件 |要用來取得元素數目的陣列、用來取得字元數的字串，或用來取得根層級屬性數目的物件。 |
+| arg1 |是 |陣列、字串或物件 |用來取得元素數目的陣列、用來取得字元數的字串，或用來取得根層級屬性數目的物件。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -665,9 +665,9 @@ Resource Manager 提供數個函式，可在您的 Azure Resource Manager （ARM
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | Description |
+| 參數 | 必要 | 類型 | 說明 |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |整數的陣列，或以逗號分隔的整數清單 |要用來取得最大值的集合。 |
+| arg1 |是 |整數的陣列，或以逗號分隔的整數清單 |要用來取得最大值的集合。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -716,9 +716,9 @@ Resource Manager 提供數個函式，可在您的 Azure Resource Manager （ARM
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | Description |
+| 參數 | 必要 | 類型 | 說明 |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |整數的陣列，或以逗號分隔的整數清單 |要用來取得最小值的集合。 |
+| arg1 |是 |整數的陣列，或以逗號分隔的整數清單 |要用來取得最小值的集合。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -767,9 +767,9 @@ Resource Manager 提供數個函式，可在您的 Azure Resource Manager （ARM
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | Description |
+| 參數 | 必要 | 類型 | 說明 |
 |:--- |:--- |:--- |:--- |
-| startIndex |Yes |int |陣列中的第一個整數。 StartIndex 和計數的總和不得大於2147483647。 |
+| startIndex |是 |int |陣列中的第一個整數。 StartIndex 和計數的總和不能大於2147483647。 |
 | count |是 |int |陣列中的整數數目。 必須是最多10000的非負整數。 |
 
 ### <a name="return-value"></a>傳回值
@@ -818,10 +818,10 @@ Resource Manager 提供數個函式，可在您的 Azure Resource Manager （ARM
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | Description |
+| 參數 | 必要 | 類型 | 說明 |
 |:--- |:--- |:--- |:--- |
-| originalValue |Yes |陣列或字串 |要用於略過的陣列或字串。 |
-| numberToSkip |Yes |int |要略過的元素或字元數。 如果此值為 0 或更小的值，則會傳回值內的所有元素或字元。 如果此值大於陣列或字串的長度，則會傳回空白陣列或字串。 |
+| originalValue |是 |陣列或字串 |要用於略過的陣列或字串。 |
+| numberToSkip |是 |int |要略過的元素或字元數。 如果此值為 0 或更小的值，則會傳回值內的所有元素或字元。 如果此值大於陣列或字串的長度，則會傳回空白陣列或字串。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -886,10 +886,10 @@ Resource Manager 提供數個函式，可在您的 Azure Resource Manager （ARM
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | Description |
+| 參數 | 必要 | 類型 | 說明 |
 |:--- |:--- |:--- |:--- |
-| originalValue |Yes |陣列或字串 |要從其中擷取元素的陣列或字串。 |
-| numberToTake |Yes |int |要擷取的元素或字元數。 如果此值為 0 或更小的值，則會傳回空白陣列或字串。 如果此值大於給定陣列或字串的長度，則會傳回陣列或字串中的所有元素。 |
+| originalValue |是 |陣列或字串 |要從其中擷取元素的陣列或字串。 |
+| numberToTake |是 |int |要擷取的元素或字元數。 如果此值為 0 或更小的值，則會傳回空白陣列或字串。 如果此值大於給定陣列或字串的長度，則會傳回陣列或字串中的所有元素。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -954,7 +954,7 @@ Resource Manager 提供數個函式，可在您的 Azure Resource Manager （ARM
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | Description |
+| 參數 | 必要 | 類型 | 說明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |陣列或物件 |用來聯結元素的第一個值。 |
 | arg2 |是 |陣列或物件 |用來聯結元素的第二個值。 |
@@ -1012,6 +1012,6 @@ Resource Manager 提供數個函式，可在您的 Azure Resource Manager （ARM
 | objectOutput | Object | {"one": "a", "two": "b", "three": "c2", "four": "d", "five": "e"} |
 | arrayOutput | Array | ["one", "two", "three", "four"] |
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-* 如需 Azure Resource Manager 範本中各區段的說明，請參閱[瞭解 ARM 範本的結構和語法](template-syntax.md)。
+* 如需 Azure Resource Manager 範本中各區段的說明，請參閱 [瞭解 ARM 範本的結構和語法](template-syntax.md)。

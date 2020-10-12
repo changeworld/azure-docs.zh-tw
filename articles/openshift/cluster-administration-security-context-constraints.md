@@ -8,15 +8,15 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/25/2019
 ms.openlocfilehash: 24163adcec889e9eedc2362ff1f01f00257a98f3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80063183"
 ---
-# <a name="manage-security-context-constraints-in-azure-red-hat-openshift"></a>在 Azure Red Hat OpenShift 中管理安全性內容條件約束 
+# <a name="manage-security-context-constraints-in-azure-red-hat-openshift"></a>管理 Azure Red Hat OpenShift 中的安全性內容條件約束 
 
-安全性內容條件約束（SCCs）可讓叢集系統管理員控制 pod 的許可權。 若要深入瞭解此 API 類型，請參閱[SCCs 的架構檔](https://docs.openshift.com/container-platform/3.11/architecture/additional_concepts/authorization.html)。 您可以使用 CLI，以一般 API 物件的形式管理實例中的 SCCs。
+安全性內容限制 (SCCs) 允許叢集系統管理員控制 pod 的許可權。 若要深入瞭解此 API 類型，請參閱 [SCCs 的架構檔](https://docs.openshift.com/container-platform/3.11/architecture/additional_concepts/authorization.html)。 您可以使用 CLI，將實例中的 SCCs 當作一般 API 物件來管理。
 
 ## <a name="list-security-context-constraints"></a>列出安全性內容條件約束
 
@@ -35,9 +35,9 @@ privileged         true      [*]       RunAsAny    RunAsAny           RunAsAny  
 restricted         false     []        MustRunAs   MustRunAsRange     MustRunAs   RunAsAny    <none>     false            [configMap downwardAPI emptyDir persistentVolumeClaim secret]
 ```
 
-## <a name="examine-an-object-for-security-context-constraints"></a>檢查物件是否有安全性內容條件約束
+## <a name="examine-an-object-for-security-context-constraints"></a>檢查安全性內容條件約束的物件
 
-若要檢查特定的 SCC，請使用 `oc get` 、 `oc describe` 或 `oc edit` 。  例如，若要檢查**受限制**的 SCC，請使用下列命令：
+若要檢查特定的 SCC，請使用 `oc get` 、 `oc describe` 或 `oc edit` 。  例如，若要檢查 **受限** 的 SCC，請使用此命令：
 ```bash
 $ oc describe scc restricted
 Name:                    restricted

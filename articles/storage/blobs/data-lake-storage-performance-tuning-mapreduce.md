@@ -1,6 +1,6 @@
 ---
 title: 微調效能： MapReduce、HDInsight & Azure Data Lake Storage Gen2 |Microsoft Docs
-description: 瞭解微調 Azure Data Lake Storage Gen2 上對應之效能的指導方針。
+description: 瞭解在 Azure Data Lake Storage Gen2 上調整地圖減少工作效能的指導方針。
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
@@ -9,10 +9,10 @@ ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
 ms.openlocfilehash: e9d638a7ed17d08b585c71b1dac4a0177f4a2939
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88030515"
 ---
 # <a name="tune-performance-mapreduce-hdinsight--azure-data-lake-storage-gen2"></a>微調效能： MapReduce、HDInsight & Azure Data Lake Storage Gen2
@@ -22,10 +22,10 @@ ms.locfileid: "88030515"
 ## <a name="prerequisites"></a>必要條件
 
 * **Azure 訂用帳戶**。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
-* **Azure Data Lake Storage Gen2 帳戶**。 如需有關如何建立的指示，請參閱[快速入門：建立 Azure Data Lake Storage Gen2 儲存體帳戶](data-lake-storage-quickstart-create-account.md)。
-* 可存取 Data Lake Storage Gen2 帳戶的 **Azure HDInsight 叢集**。 請參閱[搭配 Azure HDInsight 叢集使用 Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2)
+* **Azure Data Lake Storage Gen2 帳戶**。 如需有關如何建立的指示，請參閱 [快速入門：建立 Azure Data Lake Storage Gen2 儲存體帳戶](data-lake-storage-quickstart-create-account.md)。
+* 可存取 Data Lake Storage Gen2 帳戶的 **Azure HDInsight 叢集**。 請參閱[搭配使用 Azure Data Lake Storage Gen2 與 Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2)叢集
 * **在 HDInsight 上使用 MapReduce**。  如需詳細資訊，請參閱[在 HDInsight 上的 Hadoop 中使用 MapReduce](https://docs.microsoft.com/azure/hdinsight/hdinsight-use-mapreduce)
-* **Data Lake Storage Gen2 的效能微調方針**。  如需一般的效能概念，請參閱[Data Lake Storage Gen2 效能微調指導](data-lake-storage-performance-tuning-guidance.md)方針
+* **Data Lake Storage Gen2 的效能微調方針**。  如需一般效能概念，請參閱[Data Lake Storage Gen2 效能微調指導](data-lake-storage-performance-tuning-guidance.md)方針
 
 ## <a name="parameters"></a>參數
 
@@ -36,16 +36,16 @@ ms.locfileid: "88030515"
 * **Mapreduce.reduce.memory.mb** – 要配置給每個歸納器的記憶體數量
 * **Mapreduce.job.reduces** – 每個作業的縮減工作數目
 
-**Mapreduce.map.memory / Mapreduce.reduce.memory** 這個數字應根據對應和/或縮減工作需要多少記憶體來進行調整。  mapreduce.map.memory 和 mapreduce.reduce.memory 的預設值可以在 Ambari 中透過 Yarn 組態來檢視。  在 Ambari 中，流覽至 YARN，並查看 [[]] 索引標籤。 將會顯示 YARN 記憶體。  
+**Mapreduce.map.memory / Mapreduce.reduce.memory** 這個數字應根據對應和/或縮減工作需要多少記憶體來進行調整。  mapreduce.map.memory 和 mapreduce.reduce.memory 的預設值可以在 Ambari 中透過 Yarn 組態來檢視。  在 Ambari 中，流覽至 YARN 並查看 [選項] 索引標籤。 將會顯示 YARN 的記憶體。  
 
 **Mapreduce.job.maps / Mapreduce.job.reduces** 這會決定要建立的對應器或歸納器數目上限。  分割數會決定要為 MapReduce 作業建立多少對應器。  因此，如果分割數比要求的對應器數目少，您所得到的對應器可能會比您要求的少。       
 
-## <a name="guidance"></a>指導方針
+## <a name="guidance"></a>指引
 
 > [!NOTE]
 > 本文中的指導方針假設您的應用程式是叢集上唯一執行的應用程式。
 
-**步驟1：判斷執行的作業數目**
+**步驟1：判斷正在執行的作業數目**
 
 根據預設，MapReduce 會為您的作業使用整個叢集。  您可以使用比可用容器還少的對應器，來使用較少的叢集。        
 
@@ -55,7 +55,7 @@ ms.locfileid: "88030515"
 
 **步驟 3︰確定 YARN 記憶體總數**
 
-若要調整 mapreduce.job.maps/mapreduce.job.reduces，您應該考慮可供使用的 YARN 記憶體總數。  這項資訊可在 Ambari 中取得。  流覽至 YARN，並查看 [[]] 索引標籤。 YARN 記憶體會顯示在此視窗中。  您應該將 YARN 記憶體乘上叢集中的節點數目，以算出 YARN 記憶體總數。
+若要調整 mapreduce.job.maps/mapreduce.job.reduces，您應該考慮可供使用的 YARN 記憶體總數。  這項資訊可在 Ambari 中取得。  流覽至 YARN，並查看 [選項] 索引標籤。 YARN 記憶體會顯示在此視窗中。  您應該將 YARN 記憶體乘上叢集中的節點數目，以算出 YARN 記憶體總數。
 
 總 YARN 記憶體 = 節點 * 每個節點的 YARN 記憶體
 
@@ -65,7 +65,7 @@ ms.locfileid: "88030515"
 
 YARN 容器會決定作業可用的並行數量。  取得 YARN 記憶體總數，然後除以 mapreduce.map.memory。  
 
-\#YARN 容器 = total YARN memory/mapreduce. map. memory
+\# YARN 容器 = total YARN memory/mapreduce. map. memory
 
 **步驟 5：設定 mapreduce.job.maps/mapreduce.job.reduces**
 
@@ -77,7 +77,7 @@ CPU 排程和 CPU 隔離預設會關閉，因此 YARN 容器的數目會受記�
 
 假設我們有由 8 個 D14 節點所組成的叢集，而且我們想要執行 I/O 密集作業。  以下是您應該進行的計算︰
 
-**步驟1：判斷執行的作業數目**
+**步驟1：判斷正在執行的作業數目**
 
 在此範例中，讓我們假設我們的作業是唯一會執行的作業。  
 
@@ -93,7 +93,7 @@ mapreduce. map. memory = 3GB
 
 **步驟 4︰計算 YARN 容器的數目**
 
-\#YARN 容器 = 768GB 的可用記憶體/3 GB 記憶體 = 256
+\# YARN 容器 = 768GB 的可用記憶體/3 GB 記憶體 = 256
 
 **步驟 5：設定 mapreduce.job.maps/mapreduce.job.reduces**
 

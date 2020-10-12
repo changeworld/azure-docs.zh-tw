@@ -4,21 +4,21 @@ description: 示範如何在部署期間從金鑰保存庫中傳遞密碼做為�
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.openlocfilehash: eb57e680090a38a5be725daa7b3a118039aa35f6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84677860"
 ---
 # <a name="use-azure-key-vault-to-pass-secure-parameter-value-during-deployment"></a>在部署期間使用 Azure Key Vault 以傳遞安全的參數值
 
-除了將安全的值（例如密碼）直接放在您的範本或參數檔案中，您也可以在部署期間從[Azure Key Vault](../../key-vault/general/overview.md)取得值。 您可以藉由參考金鑰保存庫和參數檔案中的密碼來擷取值。 您只參考其金鑰保存庫識別碼，因此該值絕不會公開。 金鑰保存庫可存在於與您要部署的資源群組不同的訂用帳戶中。
+您可以在部署期間從 [Azure Key Vault](../../key-vault/general/overview.md) 中取得值，而不是將安全的值 (像是) 直接放在範本或參數檔案中的密碼。 您可以藉由參考金鑰保存庫和參數檔案中的密碼來擷取值。 您只參考其金鑰保存庫識別碼，因此該值絕不會公開。 Key vault 可以存在於與您要部署的資源群組不同的訂用帳戶中。
 
-本文著重于將中的機密值當做範本參數傳遞的案例。 它不會涵蓋將虛擬機器屬性設定為 Key Vault 中憑證 URL 的案例。 如需該案例的快速入門範本，請參閱[從虛擬機器上的 Azure Key Vault 安裝憑證](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-winrm-keyvault-windows)。
+本文著重于將機密值以範本參數形式傳遞的案例。 它並未涵蓋在 Key Vault 中將虛擬機器屬性設定為憑證 URL 的案例。 如需該案例的快速入門範本，請參閱在 [虛擬機器上安裝 Azure Key Vault 的憑證](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-winrm-keyvault-windows)。
 
 ## <a name="deploy-key-vaults-and-secrets"></a>部署金鑰保存庫和祕密
 
-若要在範本部署期間存取金鑰保存庫，請將 `enabledForTemplateDeployment` 金鑰保存庫上的設定為 `true` 。
+若要在範本部署期間存取金鑰保存庫，請 `enabledForTemplateDeployment` 在金鑰保存庫上將設定為 `true` 。
 
 如果您已經有 Key Vault，請確定它允許範本部署。
 
@@ -65,7 +65,7 @@ $secret = Set-AzKeyVaultSecret -VaultName ExampleVault -Name 'ExamplePassword' -
 
 ---
 
-身為金鑰保存庫的擁有者，您可以自動擁有建立秘密的存取權。 如果使用秘密的使用者不是金鑰保存庫的擁有者，請使用下列方式授與存取權：
+作為金鑰保存庫的擁有者，您會自動擁有建立秘密的存取權。 如果使用秘密的使用者不是金鑰保存庫的擁有者，請將存取權授與：
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -99,7 +99,7 @@ Set-AzKeyVaultAccessPolicy `
 
 ## <a name="grant-access-to-the-secrets"></a>授與祕密的存取權
 
-部署範本的使用者必須具有 `Microsoft.KeyVault/vaults/deploy/action` 資源群組和金鑰保存庫範圍的許可權。 [擁有者](../../role-based-access-control/built-in-roles.md#owner)和[參與者](../../role-based-access-control/built-in-roles.md#contributor)角色皆可授與此權限。 如果您已建立金鑰保存庫，則您是擁有者，因此您擁有該許可權。
+部署範本的使用者必須擁有 `Microsoft.KeyVault/vaults/deploy/action` 資源群組和金鑰保存庫範圍的許可權。 [擁有者](../../role-based-access-control/built-in-roles.md#owner)和[參與者](../../role-based-access-control/built-in-roles.md#contributor)角色皆可授與此權限。 如果您已建立金鑰保存庫，您就是擁有者，因此您擁有許可權。
 
 下列程序說明如何建立具有最低權限的角色，以及如何指派使用者
 
@@ -147,7 +147,7 @@ Set-AzKeyVaultAccessPolicy `
 
     ---
 
-    這些範例會將自訂角色指派給資源群組層級的使用者。
+    這些範例會將自訂角色指派給資源群組層級上的使用者。
 
 將金鑰保存庫與[受控應用程式](../managed-applications/overview.md)的範本搭配使用時，您必須授與**設備資源提供者**服務主體的存取權。 如需詳細資訊，請參閱[在部署 Azure 受控應用程式時存取金鑰保存庫密碼](../managed-applications/key-vault-access.md) (英文)。
 
@@ -157,9 +157,9 @@ Set-AzKeyVaultAccessPolicy `
 
 ![Resource Manager 金鑰保存庫整合靜態識別碼圖表](./media/key-vault-parameter/statickeyvault.png)
 
-[教學課程：將 Azure Key Vault 整合 Resource Manager 範本部署](./template-tutorial-use-key-vault.md)使用此方法。
+[教學課程：整合 Resource Manager 範本部署中的 Azure Key Vault](./template-tutorial-use-key-vault.md) 使用這個方法。
 
-下列範本會部署包含系統管理員密碼的 SQL server。 密碼參數會設定為安全字串。 但範本並不會指定該值來自何處。
+下列範本會部署包含系統管理員密碼的 SQL server。 密碼參數會設定為安全字串。 但是，此範本並不會指定該值的來源。
 
 ```json
 {
@@ -373,7 +373,7 @@ New-AzResourceGroupDeployment `
 }
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - 如需有關金鑰保存庫的一般資訊，請參閱[什麼是 Azure Key Vault？](../../key-vault/general/overview.md)。
 - 如需參考金鑰密碼的完整範例，請參閱 [金鑰保存庫範例](https://github.com/rjmax/ArmExamples/tree/master/keyvaultexamples)。

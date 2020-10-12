@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: robreed
 ms.openlocfilehash: 59b05fcd7fbaf9b0fd9b4083c884edadb4bfef4e
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88505575"
 ---
 # <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>適用于 Linux 的 DSC 擴充功能 (Microsoft.ostcextensions.customscriptforlinux. DSCForLinux) 
@@ -35,7 +35,7 @@ DSCForLinux 延伸模組是由 Microsoft 所發佈並受到支援。 此擴充�
 -  (安裝 ExtensionAction) ，將自訂 DSC 模組安裝至 Linux VM。
 - 從 Linux VM 移除自訂 DSC 模組 (移除 ExtensionAction) 。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 ### <a name="operating-system"></a>作業系統
 

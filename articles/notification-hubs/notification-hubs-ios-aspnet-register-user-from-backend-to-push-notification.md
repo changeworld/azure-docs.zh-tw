@@ -15,10 +15,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: 0819f5196fffca25a840dc16d1df04cdd0a55029
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86223307"
 ---
 # <a name="register-the-current-user-for-push-notifications-by-using-aspnet"></a>使用 ASP.NET 來註冊目前使用者以取得推播通知
@@ -44,11 +44,11 @@ ms.locfileid: "86223307"
 
      此時，您的腳本如下所示：
 
-     ![已新增元件之 MainStoryboard_iPhone 分鏡腳本應用程式的螢幕擷取畫面。][0]
+     ![已新增元件的 MainStoryboard_iPhone 分鏡腳本應用程式螢幕擷取畫面。][0]
 
 2. 在輔助編輯器中，為所有切換的控制項建立出口並加以呼叫、使用檢視控制器 (委派) 連接文字欄位，然後為 [登入]**** 按鈕建立 [動作]****。
 
-    ![MainStoryboard_iPhone 分鏡腳本應用程式中的 [助理編輯器] 螢幕擷取畫面][1]
+    ![MainStoryboard_iPhone 中的 [助理編輯器] 的螢幕擷取畫面][1]
 
     Your BreakingNewsViewController.h file should now contain the following code:
 
@@ -122,7 +122,7 @@ ms.locfileid: "86223307"
     這會設定要求的裝置權杖。
 
    > [!NOTE]
-   > 此時，此方法中不應有任何其他程式碼。 如果您已經呼叫 `registerNativeWithDeviceToken` 當您完成[使用 Azure 將推播通知傳送至 iOS 應用程式](ios-sdk-get-started.md)時所新增的方法通知中樞教學課程，您必須將該呼叫批註掉或移除。
+   > 此時，此方法中不應有任何其他程式碼。 如果您已在 `registerNativeWithDeviceToken` [使用 Azure 通知中樞教學課程完成將推播通知傳送至 iOS 應用程式](ios-sdk-get-started.md) 時新增的方法呼叫，則必須將該呼叫批註或移除。
 
 8. 在 `PushToUserAppDelegate.m` 檔案中，新增下列處理常式方法：
 

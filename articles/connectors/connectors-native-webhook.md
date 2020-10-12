@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/27/2020
 tags: connectors
 ms.openlocfilehash: 7c6f3c4e3e4a2a29fe6a02c03043e3dfb81a2010
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89227894"
 ---
 # <a name="create-and-run-automated-event-based-workflows-by-using-http-webhooks-in-azure-logic-apps"></a>在 Azure Logic Apps 中使用 HTTP webhook 來建立和執行自動化事件型工作流程
@@ -72,7 +72,7 @@ Webhook 動作也是以事件為基礎，並且會藉由向該端點註冊*回�
 
    ![輸入 HTTP Webhook 觸發程式參數](./media/connectors-native-webhook/http-webhook-trigger-parameters.png)
 
-   | 屬性 | 必要 | 說明 |
+   | 屬性 | 必要 | 描述 |
    |----------|----------|-------------|
    | **訂用帳戶方法** | 是 | 訂閱目標端點時要使用的方法 |
    | **訂閱-URI** | 是 | 用來訂閱目標端點的 URL |
@@ -90,7 +90,7 @@ Webhook 動作也是以事件為基礎，並且會藉由向該端點註冊*回�
 
 1. 請使用當引發觸發程序時執行的動作，繼續建置邏輯應用程式的工作流程。
 
-1. 當您完成時，請記得儲存您的邏輯應用程式。 在設計工具的工具列上，選取 [儲存]  。
+1. 當您完成時，請記得儲存您的邏輯應用程式。 在設計工具的工具列上，選取 [儲存]。
 
    儲存邏輯應用程式會在目標服務上呼叫訂閱端點，並註冊回呼 URL。 然後，您的邏輯應用程式會等候目標服務將 `HTTP POST` 要求傳送至回呼 URL。 當此事件發生時，觸發程式會引發，並將要求中的任何資料傳遞至工作流程。 如果此作業成功完成，則觸發程式會從端點取消訂閱，而您的邏輯應用程式會繼續剩餘的工作流程。
 
@@ -118,7 +118,7 @@ Webhook 動作也是以事件為基礎，並且會藉由向該端點註冊*回�
 
    ![輸入 HTTP Webhook 動作參數](./media/connectors-native-webhook/http-webhook-action-parameters.png)
 
-   | 屬性 | 必要 | 說明 |
+   | 屬性 | 必要 | 描述 |
    |----------|----------|-------------|
    | **訂用帳戶方法** | 是 | 訂閱目標端點時要使用的方法 |
    | **訂閱-URI** | 是 | 用來訂閱目標端點的 URL |

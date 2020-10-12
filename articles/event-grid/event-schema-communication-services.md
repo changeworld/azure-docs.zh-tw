@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: mikben
 ms.openlocfilehash: fb37dfe9927c02711f4ab1b01cd89247059b27f6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91342710"
 ---
 # <a name="azure-communication-services-as-an-event-grid-source"></a>作為事件方格來源的 Azure 通訊服務
@@ -31,9 +31,9 @@ Azure 通訊服務會發出下列事件類型：
 | ----------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
 | Microsoft.Communication.SMSReceived                         | 當 SMS 是由與通訊服務相關聯的電話號碼接收時發佈。 |
 | Microsoft.Communication.SMSDeliveryReportReceived           | 在收到通訊服務所傳送 SMS 的傳遞報告時發佈。     |
-| ChatMessageReceived *                | 在其所屬聊天對話中的使用者收到訊息時發佈。        |
-| ChatMessageEdited *                   | 在使用者所屬的聊天對話中編輯訊息時發佈。                |
-| ChatMessageDeleted *                  | 在使用者所屬的聊天對話中刪除訊息時發佈。               |
+| Microsoft.Communication.ChatMessageReceived*                | 在其所屬聊天對話中的使用者收到訊息時發佈。        |
+| Microsoft.Communication.ChatMessageEdited*                   | 在使用者所屬的聊天對話中編輯訊息時發佈。                |
+| Microsoft.Communication.ChatMessageDeleted*                  | 在使用者所屬的聊天對話中刪除訊息時發佈。               |
 | Microsoft.Communication.ChatThreadCreatedWithUser           | 在建立聊天對話期間將使用者新增為成員時發佈。           |
 | Microsoft.Communication.ChatThreadWithUserDeleted           | 當使用者所屬的聊天對話遭到刪除時發佈。                           |
 | Microsoft.Communication.ChatThreadPropertiesUpdatedPerUser  | 當使用者所屬的聊天對話屬性更新時發佈。              |
@@ -41,7 +41,7 @@ Azure 通訊服務會發出下列事件類型：
 | Microsoft.Communication.ChatMemberRemovedFromThreadWithUser | 從聊天對話中移除使用者時發佈。                                         |
 
 
-* 請確定您在「傳送訊息」 API 呼叫中提供「寄件者名稱」，這些事件才會被觸發。
+*請務必在您的「傳送訊息」API 呼叫中提供「寄件者名稱」，這些事件才會被觸發。
 
 ## <a name="event-subjects"></a>事件主旨
 
@@ -339,7 +339,7 @@ Azure 通訊服務會發出下列事件類型：
 
 ## <a name="tutorials"></a>教學課程
 
-| Title | 說明 |
+| Title | 描述 |
 |---------|---------|
 | [快速入門：處理 SMS 事件](../communication-services/quickstarts/telephony-sms/handle-sms-events.md) | 說明如何使用事件方格訂閱 SMS 事件。   |
 

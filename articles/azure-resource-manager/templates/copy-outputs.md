@@ -1,22 +1,22 @@
 ---
 title: 定義輸出值的多個實例
-description: 在 Azure Resource Manager 範本中使用複製作業，以在從部署傳回值時反復執行多次。
+description: 在 Azure Resource Manager 範本中使用複製作業，可在從部署傳回值時反復執行多次。
 ms.topic: conceptual
 ms.date: 04/17/2020
 ms.openlocfilehash: 50c4b4b8f301ad88d3dfde98ace1aed4431693db
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82583420"
 ---
 # <a name="output-iteration-in-arm-templates"></a>ARM 範本中的輸出反復專案
 
-本文說明如何在您的 Azure Resource Manager （ARM）範本中為輸出建立一個以上的值。 藉由將**copy**元素新增至範本的 [輸出] 區段，您可以在部署期間動態傳回數個專案。
+本文說明如何針對 Azure Resource Manager (ARM) 範本中的輸出建立多個值。 藉由將 **copy** 元素新增至範本的輸出區段，您可以在部署期間動態傳回數個專案。
 
-您也可以使用 [複製[資源](copy-resources.md)]、[資源中的屬性](copy-properties.md)和[變數](copy-variables.md)。
+您也可以搭配 [資源](copy-resources.md)、 [資源中的屬性](copy-properties.md)和 [變數](copy-variables.md)來使用複製。
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>語法
 
 Copy 元素具有下列一般格式：
 
@@ -27,26 +27,26 @@ Copy 元素具有下列一般格式：
 }
 ```
 
-**Count**屬性會指定您想要的輸出值反覆運算次數。
+**Count**屬性會指定您想要用於輸出值的反覆運算次數。
 
-**輸入**屬性會指定您想要重複的屬性。 您會建立從**輸入**屬性中的值所構造的元素陣列。 它可以是單一屬性（例如字串）或具有數個屬性的物件。
+**輸入**屬性會指定您想要重複的屬性。 您可以建立從 **輸入** 屬性中的值所建立的元素陣列。 它可以是單一屬性 (例如字串) ，或是具有數個屬性的物件。
 
 ## <a name="copy-limits"></a>複製限制
 
 計數不能超過800。
 
-計數不可為負數。 如果您使用最新版本的 Azure CLI、PowerShell 或 REST API 來部署範本，則可以是零。 具體而言，您必須使用：
+計數不可為負數。 如果您使用最新版本的 Azure CLI、PowerShell 或 REST API 來部署範本，則可以為零。 具體而言，您必須使用：
 
-* Azure PowerShell **2.6**或更新版本
-* Azure CLI **2.0.74**或更新版本
-* REST API **2019-05-10**版或更新版本
-* [連結的部署](linked-templates.md)必須使用 API **2019-05-10**版或更新版本作為部署資源類型
+* Azure PowerShell **2.6** 或更新版本
+* Azure CLI **2.0.74 版** 或更新版本
+* REST API **2019-05-10** 版或更新版本
+* [連結的部署](linked-templates.md) 必須使用 API **2019-05-10** 版或更新版本，才能進行部署資源類型
 
-舊版的 PowerShell、CLI 和 REST API 不支援 count 的零。
+舊版 PowerShell、CLI 和 REST API 不支援 count 的零。
 
 ## <a name="outputs-iteration"></a>輸出反復專案
 
-下列範例會建立變數數目的儲存體帳戶，並傳回每個儲存體帳戶的端點：
+下列範例會建立數量不定的儲存體帳戶，並傳回每個儲存體帳戶的端點：
 
 ```json
 {
@@ -164,13 +164,13 @@ Copy 元素具有下列一般格式：
 ]
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-* 若要進行教學課程，請參閱[教學課程：使用 ARM 範本建立多個資源實例](template-tutorial-create-multiple-instances.md)。
-* 如需 copy 元素的其他用法，請參閱：
+* 若要進行教學課程，請參閱 [教學課程：使用 ARM 範本建立多個資源實例](template-tutorial-create-multiple-instances.md)。
+* 如需複製元素的其他用途，請參閱：
   * [ARM 範本中的資源反復專案](copy-resources.md)
   * [ARM 範本中的屬性反復專案](copy-properties.md)
   * [ARM 範本中的變數反復專案](copy-variables.md)
-* 如果您想要瞭解範本的各區段，請參閱[編寫 ARM 範本](template-syntax.md)。
-* 若要瞭解如何部署您的範本，請參閱[使用 ARM 範本部署應用程式](deploy-powershell.md)。
+* 如果您想要瞭解範本的區段，請參閱 [撰寫 ARM 範本](template-syntax.md)。
+* 若要瞭解如何部署您的範本，請參閱 [使用 ARM 範本部署應用程式](deploy-powershell.md)。
 

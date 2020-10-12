@@ -8,10 +8,10 @@ ms.date: 07/19/2017
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: 28a46ad9e53a90c25c239278ee57ea368af395a5
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88754968"
 ---
 # <a name="backup-and-disaster-recovery-for-azure-iaas-disks"></a>Azure IaaS 磁碟的備份和災害復原
@@ -259,7 +259,7 @@ Azure 備份在排定的時間起始備份工作時，會觸發 VM 中所安裝�
 
 如需詳細資訊，請參閱[如果 Azure 儲存體發生中斷怎麼辦](../storage/common/storage-disaster-recovery-guidance.md)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 請參閱 [使用增量快照備份 Azure 非受控虛擬機器磁片](linux/incremental-snapshots.md)。
 

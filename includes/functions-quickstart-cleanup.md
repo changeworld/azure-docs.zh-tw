@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 09/04/2018
 ms.author: glenga
 ms.openlocfilehash: e5213a20036385ff25373252e6670d8bd86a4b07
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80056658"
 ---
 此集合中的其他快速入門會以本快速入門為基礎。 如果您打算繼續進行後續的快速入門、教學課程或者您在本快速入門中建立的任何服務，請勿清除資源。

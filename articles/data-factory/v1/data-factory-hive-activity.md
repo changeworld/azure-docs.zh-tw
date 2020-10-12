@@ -13,10 +13,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 41f570f93e95e9801b08c06cacc0423b1bf3b8e5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91252778"
 ---
 # <a name="transform-data-using-hive-activity-in-azure-data-factory"></a>使用 Azure Data Factory 中的 Hive 活動轉換資料 
@@ -72,7 +72,7 @@ Data Factory [管線](data-factory-create-pipelines.md)中的 HDInsight Hive 活
 }
 ```
 ## <a name="syntax-details"></a>語法詳細資料
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 | --- | --- | --- |
 | NAME |活動的名稱 |是 |
 | description |說明活動用途的文字 |否 |

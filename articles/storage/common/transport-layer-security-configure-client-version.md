@@ -12,10 +12,10 @@ ms.reviewer: fryu
 ms.subservice: common
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 37b8c79df5b208feea185292fa09c323b64fa27d
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89001802"
 ---
 # <a name="configure-transport-layer-security-tls-for-a-client-application"></a>針對用戶端應用程式設定傳輸層安全性 (TLS) 
@@ -80,7 +80,7 @@ static void EnableTls12()
 
 :::image type="content" source="media/transport-layer-security-configure-client-version/fiddler-trace-tls-version.png" alt-text="顯示 Fiddler 追蹤的螢幕擷取畫面，指出要求所使用的 TLS 版本":::
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - [為儲存體帳戶設定傳輸層安全性 (TLS) 的最小必要版本](transport-layer-security-configure-minimum-version.md)
 - [Blob 儲存體的安全性建議](../blobs/security-recommendations.md)

@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 08/03/2020
 ms.openlocfilehash: d283c2b2cdbbeb3ef4bc4e25f4288dfd95158552
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89003366"
 ---
 # <a name="install-log-analytics-agent-on-windows-computers"></a>在 Windows 電腦上安裝 Log Analytics 代理程式
@@ -202,7 +202,7 @@ Configuration MMAgent
 
 Log Analytics 代理程式中的資料會快取到本機電腦上的 *C:\Program Files\Microsoft Monitoring Agent\Agent\Health Service 狀態* ，然後再傳送至 Azure 監視器。 代理程式每隔20秒會嘗試上傳一次。 如果失敗，則會以指數方式增加持續時間，直到成功為止。 它會在第二次嘗試之前等候30秒，在接下來的60秒之前、120秒，8.5 依此類推，直到再次成功連接為止。 這段等候時間會稍微隨機化，以避免所有代理程式同時嘗試連接。 到達最大緩衝區時，會捨棄最舊的資料。
 
-預設的快取大小為 50 MB，但最少可設定為 5 MB，最大值為 1.5 GB。 它會儲存在登錄機碼中， *HKEY_LOCAL_MACHINE \System\currentcontrolset\services\healthservice\parameters\persistence Cache 的最大值*。 值代表頁面數目，每頁 8 KB。
+預設的快取大小為 50 MB，但最少可設定為 5 MB，最大值為 1.5 GB。 它會儲存在登錄機碼 *HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HealthService\Parameters\Persistence Cache Maximum*中。 值代表頁面數目，每頁 8 KB。
 
 
 ## <a name="next-steps"></a>後續步驟

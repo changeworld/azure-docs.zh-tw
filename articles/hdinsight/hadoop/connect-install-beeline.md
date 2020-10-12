@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: contperfq1
 ms.date: 05/27/2020
 ms.openlocfilehash: 5495e6c6392ba2e824a0a70717bd19747db9b754
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88754951"
 ---
 # <a name="connect-to-apache-beeline-on-hdinsight-or-install-it-locally"></a>連線到 Apache Beeline on HDInsight 或將其安裝在本機
@@ -162,7 +162,7 @@ beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transp
 
 1. 測試您的連接。 使用上述的連接格式，透過 [公用或私人端點](#over-public-or-private-endpoints)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * 如需搭配 Apache Hive 使用 Beeline 用戶端的範例，請參閱搭配 [使用 Apache Beeline 與 Apache Hive](apache-hadoop-use-hive-beeline.md)
 * 如需 HDInsight 中 Hive 的一般資訊，請參閱 [在 hdinsight 上搭配使用 Apache Hive 與 Apache Hadoop](hdinsight-use-hive.md)

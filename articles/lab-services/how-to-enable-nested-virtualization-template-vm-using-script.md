@@ -4,10 +4,10 @@ description: 瞭解如何使用腳本在內部建立具有多個 Vm 的範本 VM
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 5ae50bd11ab9a8adb769920f6d473a2ff2ce9342
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91251490"
 ---
 # <a name="enable-nested-virtualization-on-a-template-virtual-machine-in-azure-lab-services-using-a-script"></a>使用腳本在 Azure 實驗室服務中的範本虛擬機器上啟用嵌套虛擬化
@@ -39,7 +39,7 @@ ms.locfileid: "91251490"
 
 1. 以**系統管理員**模式啟動**PowerShell** 。
 1. 在 PowerShell 視窗中，流覽至已下載腳本的資料夾。 如果您是從存放庫檔案的最上層資料夾流覽，則腳本位於 `azure-devtestlab\samples\ClassroomLabs\Scripts\HyperV\` 。
-1. 您可能必須變更執行原則，才能成功執行腳本。 執行下列命令：
+1. 您可能必須變更執行原則，才能成功執行腳本。 執行以下命令：
 
     ```powershell
     Set-ExecutionPolicy bypass -force
@@ -53,7 +53,7 @@ ms.locfileid: "91251490"
 
     > [!NOTE]
     > 腳本可能需要重新開機電腦。 依照腳本中的指示並重新執行腳本，直到輸出中出現 **腳本完成** 為止。
-1. 別忘了重設執行原則。 執行下列命令：
+1. 別忘了重設執行原則。 執行以下命令：
 
     ```powershell
     Set-ExecutionPolicy default -force

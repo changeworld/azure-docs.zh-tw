@@ -18,10 +18,10 @@ ms.date: 03/30/2018
 ms.author: kumud
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 9af6311165f50023cfca8f9253f77b4c84c25dd5
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87500924"
 ---
 # <a name="filter-network-traffic-with-a-network-security-group-using-the-azure-cli"></a>使用 Azure CLI 透過網路安全性群組篩選網路流量
@@ -230,7 +230,7 @@ sudo apt-get -y install nginx
 curl myVmWeb
 ```
 
-登出 myVmMgmt** VM。 若要確認您可以從 Azure 外部存取 myVmWeb** Web 伺服器，請從您自己的電腦輸入 `curl <publicIpAddress>`。 連線成功，因為允許埠80從網際網路輸入連接至*myVmWeb* VM 的網路介面所在的*myAsgWebServers*應用程式安全性群組。
+登出 myVmMgmt** VM。 若要確認您可以從 Azure 外部存取 myVmWeb** Web 伺服器，請從您自己的電腦輸入 `curl <publicIpAddress>`。 連線成功，因為允許埠80從網際網路輸入至連結至*myVmWeb* VM 的網路介面所屬的*myAsgWebServers*應用程式安全性群組。
 
 ## <a name="clean-up-resources"></a>清除資源
 
@@ -240,7 +240,7 @@ curl myVmWeb
 az group delete --name myResourceGroup --yes
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 在本文中，您已建立網路安全性群組，並將其與虛擬網路子網路產生關聯。 若要深入了解網路安全性群組，請參閱[網路安全性群組概觀](security-overview.md)和[管理網路安全性群組](manage-network-security-group.md)。
 

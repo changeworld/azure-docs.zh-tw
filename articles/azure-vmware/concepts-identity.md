@@ -4,10 +4,10 @@ description: 深入瞭解 Azure VMware 解決方案的身分識別和存取概�
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.openlocfilehash: 9d5b7b4c7c2e0d55cffc99a3f371494f40320a16
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88750582"
 ---
 # <a name="azure-vmware-solution-identity-concepts"></a>Azure VMware 解決方案身分識別概念
@@ -24,7 +24,7 @@ CloudAdmin 和 CloudGlobalAdmin 許可權如下表所示。
 
 |  許可權集合           | CloudAdmin | CloudGlobalAdmin | 註解 |
 | :---                     |    :---:   |       :---:      |   :--:  |
-|  警示                  | CloudAdmin 使用者在計算 ResourcePool 和 Vm 中具有警示的所有警報許可權。     |          --        |  -- |
+|  警示                  | CloudAdmin 使用者對於 Compute-ResourcePool 和 Vm 中的鬧鐘具有所有警示許可權。     |          --        |  -- |
 |  自動部署             |  --  |        --        |  Microsoft 進行主機管理。  |
 |  憑證            |  --  |        --       |  Microsoft 會進行憑證管理。  |
 |  內容庫         | CloudAdmin 使用者具有在內容庫中建立及使用檔案的許可權。    |         啟用 SSO。         |  Microsoft 會將內容庫中的檔案散發至 ESXi 主機。  |
@@ -35,7 +35,7 @@ CloudAdmin 和 CloudGlobalAdmin 許可權如下表所示。
 |  全球                  |  Global. CancelTask、Global. GlobalTag、Global. Health、Global. LogEvent、Global. ManageCustomFields、Global. ServiceManagers、Global. SetCustomField、Global.SystemTag         |                  |    |
 |  主機                    |  Hbr. HbrManagement      |        --          |  Microsoft 會進行所有其他主機操作。  |
 |  InventoryService        |  InventoryService。標記      |        --          |  --  |
-|  Network (網路)                 |  Network.Assign    |                  |  Microsoft 會進行所有其他的網路作業。  |
+|  網路                 |  Network.Assign    |                  |  Microsoft 會進行所有其他的網路作業。  |
 |  權限             |  --  |        --       |  Microsoft 會執行擁有權限作業。  |
 |  設定檔驅動的儲存體  |  --  |        --       |  Microsoft 會進行所有的設定檔作業。  |
 |  資源                |  CloudAdmin 使用者擁有所有資源許可權。        |      --       | --   |
@@ -51,7 +51,7 @@ CloudAdmin 和 CloudGlobalAdmin 許可權如下表所示。
 
 您可以使用「系統管理員」帳戶存取 NSX-T 管理員。 該帳戶具有完整許可權，可讓您建立和管理 T1 路由器、邏輯交換器和所有服務。 在 NSX-T 中的完整許可權也可讓您存取 NSX-T T0 路由器。 對 T0 路由器的變更可能會導致網路效能降低，或無法存取私人雲端。 為了符合支援需求，您必須在 Azure 入口網站中開啟支援要求，以要求對您的 NSX-T T0 路由器進行任何變更。
   
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 下一步是瞭解私用 [雲端升級的概念][concepts-upgrades]。
 

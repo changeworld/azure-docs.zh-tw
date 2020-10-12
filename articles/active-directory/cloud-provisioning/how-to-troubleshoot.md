@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.prod: windows-server-threshold
 ms.technology: identity-adfs
 ms.openlocfilehash: 34796a435536a48100b7434ed5267802cd2d549f
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89226942"
 ---
 # <a name="cloud-provisioning-troubleshooting"></a>雲端布建疑難排解
@@ -22,7 +22,7 @@ ms.locfileid: "89226942"
 
 ## <a name="common-troubleshooting-areas"></a>常見的疑難排解區域
 
-|Name|說明|
+|名稱|描述|
 |-----|-----|
 |[代理程式問題](#agent-problems)|確認代理程式已正確安裝，而且與 Azure Active Directory (Azure AD) 進行通訊。|
 |[物件同步處理問題](#object-synchronization-problems)|使用布建記錄來針對物件同步處理問題進行疑難排解。|

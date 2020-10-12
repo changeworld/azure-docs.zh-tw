@@ -12,10 +12,10 @@ ms.date: 02/11/2020
 ms.author: nacanuma
 ms.custom: aaddev
 ms.openlocfilehash: b42d720a425b92ec9002f7c2b9797a91f70dafe2
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89003018"
 ---
 # <a name="single-page-application-code-configuration"></a>單一頁面應用程式：程式碼設定
@@ -26,7 +26,7 @@ ms.locfileid: "89003018"
 
 Microsoft 身分識別平臺提供下列適用于 JavaScript 的 Microsoft 驗證程式庫 ( # A0) ，藉由使用業界建議的安全性作法，以支援 PKCE 的隱含流程和授權碼流程：
 
-| MSAL 程式庫 | Flow | 描述 |
+| MSAL 程式庫 | 流程 | 描述 |
 |--------------|------|-------------|
 | ![MSAL.js](media/sample-v2-code/logo_js.png) <br/> [MSAL.js (2.x) ](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-browser) | 授權碼流程 (PKCE)  | 單純的 JavaScript 程式庫，可用於透過 JavaScript 或 SPA 架構（例如角、Vue.js 和 React.js）所建立的任何用戶端 web 應用程式。 |
 | ![MSAL.js](media/sample-v2-code/logo_js.png) <br/> [MSAL.js (1.x) ](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-core) | 隱含流程 | 單純的 JavaScript 程式庫，可用於透過 JavaScript 或 SPA 架構（例如角、Vue.js 和 React.js）所建立的任何用戶端 web 應用程式。 |

@@ -1,21 +1,21 @@
 ---
 title: Azure Cache for Redis 規劃常見問題
-description: 瞭解可協助您規劃 Azure Cache for Redis 的常見問題解答
+description: 瞭解可協助您規劃 Azure Cache for Redis 之常見問題的解答
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.openlocfilehash: 13ba529dd3067ae16167f0d9c14c8f72b982f52c
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88010819"
 ---
 # <a name="azure-cache-for-redis-planning-faqs"></a>Azure Cache for Redis 規劃常見問題
 
-本文提供有關如何規劃 Azure Cache for Redis 的常見問題的解答。
+本文提供有關如何規劃 Azure Cache for Redis 的常見問題解答。
 
 ## <a name="common-questions-and-answers"></a>常見問題和解答
 本節涵蓋下列常見問題：
@@ -24,7 +24,7 @@ ms.locfileid: "88010819"
 * [我應該在哪個區域找到快取？](#in-what-region-should-i-locate-my-cache)
 * [我的快取資料位於何處？](#where-do-my-cached-data-reside)
 * [Azure Redis 快取如何收費？](#how-am-i-billed-for-azure-cache-for-redis)
-* [我可以將 Azure Cache for Redis 與 Azure Government 雲端、Azure 中國世紀雲端或 Microsoft Azure 德國搭配使用嗎？](#can-i-use-azure-cache-for-redis-with-azure-government-cloud-azure-china-21vianet-cloud-or-microsoft-azure-germany)
+* [我可以搭配 Azure Government 雲端、Azure 中國的世紀雲端或 Microsoft Azure 德國使用 Azure Cache for Redis 嗎？](#can-i-use-azure-cache-for-redis-with-azure-government-cloud-azure-china-21vianet-cloud-or-microsoft-azure-germany)
 
 ### <a name="azure-cache-for-redis-performance"></a>Azure Redis 快取效能
 下表顯示從 IaaS VM 使用 `redis-benchmark.exe` 對「Azure Redis 快取」端點測試各種大小的「標準」和「進階」快取時，觀察到的最大頻寬值。 針對 TLS 輸送量，Redis 基準可與 stunnel 搭配使用來連線到「 Azure Cache for Redis」端點。
@@ -57,22 +57,22 @@ ms.locfileid: "88010819"
 | P4 |  53 GB |  8 | 6,000 / 750   | 400,000 | 373,000 |
 | P5 | 120 GB | 20 | 6,000 / 750   | 400,000 | 373,000 |
 
-如需設定 stunnel 或下載 Redis 工具（例如）的指示 `redis-benchmark.exe` ，請參閱[如何執行 Redis 命令？](cache-development-faq.md#how-can-i-run-redis-commands)。
+如需設定 stunnel 或下載 Redis 工具（例如）的指示 `redis-benchmark.exe` ，請參閱 [如何執行 Redis 命令？](cache-development-faq.md#how-can-i-run-redis-commands)。
 
 ### <a name="in-what-region-should-i-locate-my-cache"></a>我應該在哪個區域找到快取？
 為獲得最佳效能和最低延遲，請將「Azure Redis 快取」放在與快取用戶端應用程式相同的區域中。
 
 ### <a name="where-do-my-cached-data-reside"></a>我的快取資料位於何處？
-Azure Cache for Redis 會將您的應用程式資料儲存在 VM 或 Vm 的 RAM 中，視裝載您快取的層而定。 您的資料會嚴格地存放在您預設選取的 Azure 區域中。 在兩種情況下，您的資料可能會離開區域：
-* 當您啟用快取的持續性時，Azure Cache for Redis 會將您的資料備份至您擁有的 Azure 儲存體帳戶。 如果您所提供的儲存體帳戶是在另一個區域中，則資料的複本將會在該處結束。
-* 如果您設定了異地複寫，而次要快取位於不同的區域中（通常是如此），則您的資料將會複寫到該區域。
+Azure Cache for Redis 會將您的應用程式資料儲存在 VM 的 RAM 或 vm 中，視裝載快取的層而定。 您的資料會嚴格地存放在您預設選取的 Azure 區域中。 在兩種情況下，您的資料可能會離開區域：
+* 當您啟用快取的持續性時，Azure Cache for Redis 會將您的資料備份到您擁有的 Azure 儲存體帳戶。 如果您提供的儲存體帳戶發生在另一個區域中，您的資料複本將會在該處。
+* 如果您設定了異地複寫，而且次要快取位於不同的區域（這通常是如此，則您的資料會複寫至該區域）。
 
-您必須明確地設定 Azure Cache for Redis，才能使用這些功能。 您也可以完全掌控儲存體帳戶或次要快取所在的區域。
+您必須明確設定 Azure Cache for Redis，才能使用這些功能。 您也可以完全掌控儲存體帳戶或次要快取所在的區域。
 
 ### <a name="how-am-i-billed-for-azure-cache-for-redis"></a>Azure Redis 快取如何收費？
 如需了解「Azure Redis 快取」定價，請參閱[這裡](https://azure.microsoft.com/pricing/details/cache/)。 定價頁面會以每小時和每月費率列出定價。 快取是根據從建立快取到刪除快取的時間，以分鐘為單位來收費。 沒有用於停止或暫停快取收費的選項。
 
-### <a name="can-i-use-azure-cache-for-redis-with-azure-government-cloud-azure-china-21vianet-cloud-or-microsoft-azure-germany"></a>我可以將 Azure Cache for Redis 與 Azure Government 雲端、Azure 中國世紀雲端或 Microsoft Azure 德國搭配使用嗎？
+### <a name="can-i-use-azure-cache-for-redis-with-azure-government-cloud-azure-china-21vianet-cloud-or-microsoft-azure-germany"></a>我可以搭配 Azure Government 雲端、Azure 中國的世紀雲端或 Microsoft Azure 德國使用 Azure Cache for Redis 嗎？
 是，「Azure Government 雲端」、「Azure China 21Vianet 雲端」及「Microsoft Azure 德國」都有提供「Azure Cache for Redis」。 這些雲端中用來存取及管理「Azure Redis 快取」的 URL 與「Azure 公用雲端」不同。
 
 | Cloud   | Redis 的 DNS 尾碼            |
@@ -92,4 +92,4 @@ Azure Cache for Redis 會將您的應用程式資料儲存在 VM 或 Vm 的 RAM 
 
 ## <a name="next-steps"></a>後續步驟
 
-深入瞭解其他[Azure Cache For Redis 常見問題](cache-faq.md)。
+瞭解其他 [Azure Cache for Redis 常見問題](cache-faq.md)。

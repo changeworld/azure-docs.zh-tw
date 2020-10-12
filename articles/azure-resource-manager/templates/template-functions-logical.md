@@ -4,15 +4,15 @@ description: 描述 Azure Resource Manager 範本中用來決定邏輯值的函�
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: 8fe1c00240fc24c3c1454b118f9e0d9a9d54fe4e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84677384"
 ---
-# <a name="logical-functions-for-arm-templates"></a>ARM 範本的邏輯函式
+# <a name="logical-functions-for-arm-templates"></a>ARM 範本的邏輯函數
 
-Resource Manager 提供了數個函式，可在您的 Azure Resource Manager （ARM）範本中進行比較。
+Resource Manager 提供數個函式，可在您的 Azure Resource Manager (ARM) 範本中進行比較。
 
 * [and](#and)
 * [bool](#bool)
@@ -28,10 +28,10 @@ Resource Manager 提供了數個函式，可在您的 Azure Resource Manager （
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | Description |
+| 參數 | 必要 | 類型 | 說明 |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |boolean |要檢查是否為 true 的第一個值。 |
-| arg2 |Yes |boolean |要檢查是否為 true 的第二個值。 |
+| arg1 |是 |boolean |要檢查是否為 true 的第一個值。 |
+| arg2 |是 |boolean |要檢查是否為 true 的第二個值。 |
 | 其他引數 |否 |boolean |要檢查是否為 true 的其他引數。 |
 
 ### <a name="return-value"></a>傳回值
@@ -80,9 +80,9 @@ Resource Manager 提供了數個函式，可在您的 Azure Resource Manager （
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | Description |
+| 參數 | 必要 | 類型 | 說明 |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |字串或整數 |要轉換為布林值的值。 |
+| arg1 |是 |字串或整數 |要轉換為布林值的值。 |
 
 ### <a name="return-value"></a>傳回值
 轉換值的布林值。
@@ -134,11 +134,11 @@ Resource Manager 提供了數個函式，可在您的 Azure Resource Manager （
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | Description |
+| 參數 | 必要 | 類型 | 說明 |
 |:--- |:--- |:--- |:--- |
-| condition (條件) |Yes |boolean |要檢查其是否為 true 或 false 的值。 |
-| trueValue |Yes | 字串、int、物件或陣列 |條件為 true 時，傳回的值。 |
-| falseValue |Yes | 字串、int、物件或陣列 |條件為 false 時，傳回的值。 |
+| condition (條件) |是 |boolean |要檢查其是否為 true 或 false 的值。 |
+| trueValue |是 | 字串、int、物件或陣列 |條件為 true 時，傳回的值。 |
+| falseValue |是 | 字串、int、物件或陣列 |條件為 false 時，傳回的值。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -146,7 +146,7 @@ Resource Manager 提供了數個函式，可在您的 Azure Resource Manager （
 
 ### <a name="remarks"></a>備註
 
-當條件為**true**時，只會評估真正的值。 當條件為**false**時，只會評估 false 值。 使用**if**函式時，您可以包含只有條件式有效的運算式。 例如，您可以參考存在於某個條件下但不在其他條件下的資源。 下一節會顯示有條件地評估運算式的範例。
+當條件為 **true**時，只會評估 true 值。 當條件為 **false**時，只會評估 false 值。 使用 **if** 函式時，您可以包含只有有條件地有效的運算式。 例如，您可以參考存在於某個條件下但未在另一個條件下的資源。 下一節顯示有條件地評估運算式的範例。
 
 ### <a name="examples"></a>範例
 
@@ -180,10 +180,10 @@ Resource Manager 提供了數個函式，可在您的 Azure Resource Manager （
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
 | yesOutput | String | 是 |
-| noOutput | String | 不可以 |
+| noOutput | String | 否 |
 | objectOutput | Object | { "test": "value1" } |
 
-下列[範例範本](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/conditionWithReference.json)顯示如何使用此函式搭配僅有條件地有效的運算式。
+下列 [範例範本](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/conditionWithReference.json) 顯示如何使用此函式搭配僅有條件地有效的運算式。
 
 ```json
 {
@@ -231,7 +231,7 @@ Resource Manager 提供了數個函式，可在您的 Azure Resource Manager （
 }
 ```
 
-## <a name="not"></a>否
+## <a name="not"></a>not
 
 `not(arg1)`
 
@@ -239,9 +239,9 @@ Resource Manager 提供了數個函式，可在您的 Azure Resource Manager （
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | Description |
+| 參數 | 必要 | 類型 | 說明 |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |boolean |要轉換的值。 |
+| arg1 |是 |boolean |要進行轉換的值。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -312,10 +312,10 @@ Resource Manager 提供了數個函式，可在您的 Azure Resource Manager （
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | Description |
+| 參數 | 必要 | 類型 | 說明 |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |boolean |要檢查是否為 true 的第一個值。 |
-| arg2 |Yes |boolean |要檢查是否為 true 的第二個值。 |
+| arg1 |是 |boolean |要檢查是否為 true 的第一個值。 |
+| arg2 |是 |boolean |要檢查是否為 true 的第二個值。 |
 | 其他引數 |否 |boolean |要檢查是否為 true 的其他引數。 |
 
 ### <a name="return-value"></a>傳回值
@@ -356,7 +356,7 @@ Resource Manager 提供了數個函式，可在您的 Azure Resource Manager （
 | orExampleOutput | Bool | True |
 | notExampleOutput | Bool | False |
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-* 如需 Azure Resource Manager 範本中各區段的說明，請參閱[瞭解 ARM 範本的結構和語法](template-syntax.md)。
+* 如需 Azure Resource Manager 範本中各區段的說明，請參閱 [瞭解 ARM 範本的結構和語法](template-syntax.md)。
 

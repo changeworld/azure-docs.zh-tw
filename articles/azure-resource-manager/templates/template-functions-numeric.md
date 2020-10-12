@@ -4,15 +4,15 @@ description: 描述 Azure Resource Manager 範本中用來使用數值的函式�
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: 00b44d971a487a0bbec27f3fc2d0746cedd6f874
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84677911"
 ---
 # <a name="numeric-functions-for-arm-templates"></a>ARM 範本的數值函數
 
-Resource Manager 提供下列函式，以便在您的 Azure Resource Manager （ARM）範本中使用整數：
+Resource Manager 提供下列函式，以在您的 Azure Resource Manager (ARM) 範本中使用整數：
 
 * [add](#add)
 * [copyIndex](#copyindex)
@@ -33,10 +33,10 @@ Resource Manager 提供下列函式，以便在您的 Azure Resource Manager （
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | Description |
+| 參數 | 必要 | 類型 | 說明 |
 |:--- |:--- |:--- |:--- |
-|operand1 |Yes |int |要新增的第一個數字。 |
-|operand2 |Yes |int |要新增的第二個數字。 |
+|operand1 |是 |int |要新增的第一個數字。 |
+|operand2 |是 |int |要新增的第二個數字。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -91,10 +91,10 @@ Resource Manager 提供下列函式，以便在您的 Azure Resource Manager （
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | Description |
+| 參數 | 必要 | 類型 | 說明 |
 |:--- |:--- |:--- |:--- |
 | loopName | 否 | 字串 | 用來取得反覆項目的迴圈名稱。 |
-| Offset |No |int |要加入到以零為起始之反覆項目值的數字。 |
+| Offset |否 |int |要加入到以零為起始之反覆項目值的數字。 |
 
 ### <a name="remarks"></a>備註
 
@@ -102,7 +102,7 @@ Resource Manager 提供下列函式，以便在您的 Azure Resource Manager （
 
 **LoopName** 屬性可讓您指定 copyIndex 要參考資源的反覆項目還是屬性的反覆項目。 如果未提供任何 **loopName** 的值，就會使用目前的資源類型反覆項目。 逐一查看屬性時，請提供 **loopName** 的值。
 
-如需有關使用複製的詳細資訊，請參閱：
+如需使用複製的詳細資訊，請參閱：
 
 * [ARM 範本中的資源反復專案](copy-resources.md)
 * [ARM 範本中的屬性反復專案](copy-properties.md)
@@ -156,10 +156,10 @@ Resource Manager 提供下列函式，以便在您的 Azure Resource Manager （
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | Description |
+| 參數 | 必要 | 類型 | 說明 |
 |:--- |:--- |:--- |:--- |
-| operand1 |Yes |int |被除數。 |
-| operand2 |Yes |int |除數。 不可以是0。 |
+| operand1 |是 |int |被除數。 |
+| operand2 |是 |int |除數。 不可為0。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -214,9 +214,9 @@ Resource Manager 提供下列函式，以便在您的 Azure Resource Manager （
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | Description |
+| 參數 | 必要 | 類型 | 說明 |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |字串或整數 |要轉換為浮點數的值。 |
+| arg1 |是 |字串或整數 |要轉換為浮點數的值。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -248,9 +248,9 @@ Resource Manager 提供下列函式，以便在您的 Azure Resource Manager （
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | Description |
+| 參數 | 必要 | 類型 | 說明 |
 |:--- |:--- |:--- |:--- |
-| valueToConvert |Yes |字串或整數 |要轉換成整數的值。 |
+| valueToConvert |是 |字串或整數 |要轉換成整數的值。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -295,9 +295,9 @@ Resource Manager 提供下列函式，以便在您的 Azure Resource Manager （
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | Description |
+| 參數 | 必要 | 類型 | 說明 |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |整數的陣列，或以逗號分隔的整數清單 |要用來取得最大值的集合。 |
+| arg1 |是 |整數的陣列，或以逗號分隔的整數清單 |要用來取得最大值的集合。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -346,9 +346,9 @@ Resource Manager 提供下列函式，以便在您的 Azure Resource Manager （
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | Description |
+| 參數 | 必要 | 類型 | 說明 |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |整數的陣列，或以逗號分隔的整數清單 |要用來取得最小值的集合。 |
+| arg1 |是 |整數的陣列，或以逗號分隔的整數清單 |要用來取得最小值的集合。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -397,10 +397,10 @@ Resource Manager 提供下列函式，以便在您的 Azure Resource Manager （
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | Description |
+| 參數 | 必要 | 類型 | 說明 |
 |:--- |:--- |:--- |:--- |
-| operand1 |Yes |int |被除數。 |
-| operand2 |Yes |int |用來除的數位不能為0。 |
+| operand1 |是 |int |被除數。 |
+| operand2 |是 |int |用來除的數位不能為0。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -455,10 +455,10 @@ Resource Manager 提供下列函式，以便在您的 Azure Resource Manager （
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | Description |
+| 參數 | 必要 | 類型 | 說明 |
 |:--- |:--- |:--- |:--- |
-| operand1 |Yes |int |要相乘的第一個數字。 |
-| operand2 |Yes |int |要相乘的第二個數字。 |
+| operand1 |是 |int |要相乘的第一個數字。 |
+| operand2 |是 |int |要相乘的第二個數字。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -513,10 +513,10 @@ Resource Manager 提供下列函式，以便在您的 Azure Resource Manager （
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | Description |
+| 參數 | 必要 | 類型 | 說明 |
 |:--- |:--- |:--- |:--- |
-| operand1 |Yes |int |減數。 |
-| operand2 |Yes |int |被減數。 |
+| operand1 |是 |int |減數。 |
+| operand2 |是 |int |被減數。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -563,7 +563,7 @@ Resource Manager 提供下列函式，以便在您的 Azure Resource Manager （
 | ---- | ---- | ----- |
 | subResult | Int | 4 |
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-* 如需 Azure Resource Manager 範本中各區段的說明，請參閱[瞭解 ARM 範本的結構和語法](template-syntax.md)。
+* 如需 Azure Resource Manager 範本中各區段的說明，請參閱 [瞭解 ARM 範本的結構和語法](template-syntax.md)。
 * 若要依指定的次數重複建立資源類型，請參閱 [在 Azure 資源管理員中建立資源的多個執行個體](copy-resources.md)。

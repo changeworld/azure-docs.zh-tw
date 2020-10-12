@@ -1,44 +1,44 @@
 ---
-title: 從 Azure DevTest Labs 的另一個實驗室匯入虛擬機器
-description: 本文說明如何將虛擬機器從另一個實驗室匯入 Azure DevTest Labs 中的目前實驗室。
+title: 從 Azure DevTest Labs 中的另一個實驗室匯入虛擬機器
+description: 本文說明如何在 Azure DevTest Labs 中將虛擬機器從另一個實驗室匯入至目前的實驗室。
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 0f664a0ae399575ee936565adaf7364fd1c5ce5c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85475929"
 ---
-# <a name="import-virtual-machines-from-another-lab-in-azure-devtest-labs"></a>從 Azure DevTest Labs 的另一個實驗室匯入虛擬機器
-本文提供如何將虛擬機器從另一個實驗室匯入實驗室的相關資訊。
+# <a name="import-virtual-machines-from-another-lab-in-azure-devtest-labs"></a>從 Azure DevTest Labs 中的另一個實驗室匯入虛擬機器
+本文提供如何將虛擬機器從另一個實驗室匯入至實驗室的相關資訊。
 
 ## <a name="scenarios"></a>案例
 以下是您需要將 Vm 從一個實驗室匯入至另一個實驗室的一些案例：
 
-- 小組中的個人正在移至企業內的另一個群組，並想要將開發人員桌面帶到新團隊的 DevTest Labs。
-- 群組已達到訂用帳戶[層級配額](../azure-resource-manager/management/azure-subscription-service-limits.md)，而且想要將小組分割成幾個訂閱
-- 公司正轉向 Express Route （或其他一些新的網路拓撲），而小組想要移動虛擬機器以使用這個新的基礎結構
+- 小組的個人正在移至企業內的另一個群組，並想要將開發人員桌面帶到新團隊的 DevTest Labs。
+- 群組已達到訂用帳戶 [層級配額](../azure-resource-manager/management/azure-subscription-service-limits.md) ，而且想要將小組分割成幾個訂用帳戶
+- 公司正移至 Express Route (或其他一些新的網路拓撲) ，而小組想要將虛擬機器移到使用這個新的基礎結構
 
 ## <a name="solution-and-constraints"></a>解決方案和條件約束
-這項功能可讓您將一個實驗室（來源）中的 Vm 匯入至另一個實驗室（目的地）。 您可以選擇性地在進程中為目的地 VM 提供新名稱。 匯入套裝程式含所有相依性，例如磁片、排程、網路設定等等。
+這項功能可讓您將一個實驗室 (來源) 中的 Vm 匯入至另一個實驗室 (目的地) 。 您可以選擇性地為進程中的目的地 VM 提供新的名稱。 匯入程式會包含所有相依性，例如磁片、排程、網路設定等等。
 
 此程式需要一些時間，並受到下列因素的影響：
 
-- 連接至來源電腦的磁片數目/大小（因為它是複製作業，而不是移動作業）
-- 與目的地的距離（例如，美國東部區域到東南亞）。
+- 連接到來源機器 (磁片的數目/大小，因為這是複製作業，而不是移動操作) 
+- 目的地的距離 (例如，美國東部區域到東南亞) 。
 
-程式完成後，來源虛擬機器會保持關閉狀態，而新的虛擬機器會在目的地實驗室中執行。
+程式完成後，來源虛擬機器會維持關機狀態，而新的虛擬機器則會在目的地實驗室中執行。
 
 規劃將 Vm 從一個實驗室匯入至另一個實驗室時，有兩個重要的條件約束需要注意：
 
-- 支援跨訂用帳戶和跨區域的虛擬機器匯入，但訂用帳戶必須與相同的 Azure Active Directory 租使用者相關聯。
-- 虛擬機器在來源實驗室中不得處於可宣告狀態。
-- 您是來源實驗室中的 VM 擁有者，而在目的地實驗室中是實驗室的擁有者。
+- 支援跨訂用帳戶和跨區域的虛擬機器匯入，但訂用帳戶必須與相同的 Azure Active Directory 租使用者建立關聯。
+- 虛擬機器不得在來源實驗室中處於可宣告狀態。
+- 您是來源實驗室中的 VM 擁有者，以及目的地實驗室中實驗室的擁有者。
 - 目前，只有透過 Powershell 和 REST API 才支援這項功能。
 
 ## <a name="use-powershell"></a>使用 PowerShell
-從[GitHub](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Scripts/ImportVirtualMachines)下載 ImportVirtualMachines.ps1 檔案。 您可以使用腳本，將來源實驗室中的單一 VM 或所有 Vm 匯入至目的地實驗室。
+從 [GitHub](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Scripts/ImportVirtualMachines)下載 ImportVirtualMachines.ps1 檔案。 您可以使用腳本，將來源實驗室中的單一 VM 或所有 Vm 匯入至目的地實驗室。
 
 ### <a name="use-powershell-to-import-a-single-vm"></a>使用 PowerShell 匯入單一 VM
 執行此 powershell 腳本需要識別來源 VM 和目的地實驗室，並選擇性地提供要用於目的地電腦的新名稱：

@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 05/08/2019
 ms.author: alkohli
 ms.openlocfilehash: aadaedfd2c9ecf544d142e42a0fbeb410324b7d8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82562435"
 ---
 # <a name="azure-data-box-gateway-system-requirements"></a>Azure 資料箱閘道系統需求
@@ -81,7 +81,7 @@ ms.locfileid: "82562435"
 
 > [!NOTE]
 > - 裝置 (來源) IP 應該一律設定為所有啟用雲端功能的網路介面。
-> - 目的地 IP 應該設為 [Azure 資料中心 IP 範圍](https://www.microsoft.com/download/confirmation.aspx?id=41653)。
+> - 目的地 Ip 應設定為 [Azure 資料中心 IP 範圍](https://www.microsoft.com/download/confirmation.aspx?id=41653)。
 
 [!INCLUDE [URL patterns for firewall](../../includes/data-box-edge-gateway-url-patterns-firewall.md)]
 
@@ -93,7 +93,7 @@ ms.locfileid: "82562435"
 
 [!INCLUDE [Internet bandwidth](../../includes/data-box-edge-gateway-internet-bandwidth.md)]
 
-## <a name="next-step"></a>下一步
+## <a name="next-step"></a>後續步驟
 
 * [部署 Azure 資料箱閘道](data-box-gateway-deploy-prep.md)
 

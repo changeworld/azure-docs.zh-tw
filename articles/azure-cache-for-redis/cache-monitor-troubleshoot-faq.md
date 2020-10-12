@@ -1,20 +1,20 @@
 ---
 title: Azure Cache for Redis 監視和疑難排解常見問題
-description: 瞭解可協助您監視 Azure Cache for Redis 並對其進行疑難排解的常見問題解答
+description: 瞭解可協助您監視和疑難排解 Azure Cache for Redis 常見問題的解答
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.openlocfilehash: 2149d069ce9cb0b636e461d19963f413b162bc9d
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88010827"
 ---
 # <a name="azure-cache-for-redis-monitoring-and-troubleshooting-faqs"></a>Azure Cache for Redis 監視和疑難排解常見問題
-本文提供有關如何監視和疑難排解 Azure Cache for Redis 常見問題的解答。
+本文提供有關如何監視和疑難排解 Azure Cache for Redis 的常見問題解答。
 
 ## <a name="common-questions-and-answers"></a>常見問題和解答
 本節涵蓋下列常見問題：
@@ -49,7 +49,7 @@ ms.locfileid: "88010827"
   * 已達頻寬閾值限制。
   * CPU 繫結作業用了太多時間才完成。
 * 伺服器端原因
-  * 在標準快取供應專案上，Azure Cache for Redis 服務已起始從主要節點到複本節點的故障切換。
+  * 在標準快取供應專案中，Azure Cache for Redis 服務起始從主要節點到複本節點的容錯移轉。
   * Azure 會修補已部署快取的執行個體
     * 這可能適用於 Redis 伺服器更新或一般 VM 維護。
 
@@ -58,4 +58,4 @@ ms.locfileid: "88010827"
 
 如需有關監視「Azure Cache for Redis」執行個體和進行疑難排解的詳細資訊，請參閱[如何監視 Azure Cache for Redis](cache-how-to-monitor.md) 和各種疑難排解指南。
 
-深入瞭解其他[Azure Cache For Redis 常見問題](cache-faq.md)。
+瞭解其他 [Azure Cache for Redis 常見問題](cache-faq.md)。

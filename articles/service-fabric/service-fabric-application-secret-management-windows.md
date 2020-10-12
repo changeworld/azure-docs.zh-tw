@@ -4,16 +4,16 @@ description: 了解如何設定加密憑證，並在 Windows 叢集上將祕密�
 ms.topic: conceptual
 ms.date: 01/04/2019
 ms.openlocfilehash: eb4909d62a2627c368f24dab572b25c6f1df30ec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82583283"
 ---
 # <a name="set-up-an-encryption-certificate-and-encrypt-secrets-on-windows-clusters"></a>設定加密憑證，並在 Windows 叢集上將祕密加密
 本文書名如何設定加密憑證，並在 Windows 叢集上將祕密加密。 對於 Linux 叢集，請參閱[在 Linux 叢集上設定加密憑證並將祕密加密。][secret-management-linux-specific-link]
 
-[Azure Key Vault][key-vault-get-started] 在此是當做憑證的安全儲存位置，以及讓憑證安裝在 Azure 中的 Service Fabric 叢集上的方法。 如果您沒有要部署至 Azure，您不需要使用金鑰保存庫管理 Service Fabric 應用程式中的密碼。 不過，在應用程式中*使用*秘密與雲端平臺無關，可讓應用程式部署到裝載于任何位置的叢集。 
+[Azure Key Vault][key-vault-get-started] 在此是當做憑證的安全儲存位置，以及讓憑證安裝在 Azure 中的 Service Fabric 叢集上的方法。 如果您沒有要部署至 Azure，您不需要使用金鑰保存庫管理 Service Fabric 應用程式中的密碼。 不過，在應用程式中 *使用* 秘密與雲端平臺無關，可讓應用程式部署到裝載于任何位置的叢集。 
 
 ## <a name="obtain-a-data-encipherment-certificate"></a>取得資料加密憑證
 資料編密憑證只會用於服務的 Settings.xml 中[參數][parameters-link]，以及服務的 ServiceManifest.xml 中[環境變數][environment-variables-link]的加密與解密。 它不是用來驗證或簽署密碼文字。 憑證必須符合下列要求：
@@ -40,7 +40,7 @@ Invoke-ServiceFabricEncryptText -CertStore -CertThumbprint "<thumbprint>" -Text 
 
 產生的 Base-64 編碼字串同時包含密碼的加密文字，以及用來對其加密的憑證相關資訊。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 了解如何[指定應用程式中已加密的祕密][secret-management-specify-encrypted-secrets-link]。
 
 <!-- Links -->

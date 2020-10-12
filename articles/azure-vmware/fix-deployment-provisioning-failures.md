@@ -4,10 +4,10 @@ description: 如何取得您的 Azure VMware 解決方案私人雲端所需的�
 ms.topic: how-to
 ms.date: 06/09/2020
 ms.openlocfilehash: 63d5440a9e2b15463e465e1d32762889508feca1
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88752229"
 ---
 # <a name="get-help-with-azure-vmware-solution-deployment-or-provisioning-failures"></a>取得 Azure VMware 解決方案部署或布建失敗的協助
@@ -37,7 +37,7 @@ ms.locfileid: "88752229"
 
 任何錯誤的詳細資料也有助於解決您的問題。 從上一個畫面中，選取 [ **按一下此處以取得詳細資料** (醒目提示) ，並開啟 [錯誤摘要]，如下列螢幕擷取畫面所示。
  
- :::image type="content" source="media/fix-deployment-provisioning-failures/summary-of-errors.png" alt-text="錯誤摘要。":::
+ :::image type="content" source="media/fix-deployment-provisioning-failures/summary-of-errors.png" alt-text="具有相互關聯識別碼的私用雲端部署失敗。":::
 
 同樣地，複製並儲存此摘要以包含在 SR 中。
  
@@ -45,15 +45,15 @@ ms.locfileid: "88752229"
 
 您可以藉由選取 [通知] 圖示來搜尋所存取的部署活動記錄，以抓取過去的部署，包括失敗的部署。
 
-:::image type="content" source="media/fix-deployment-provisioning-failures/open-notifications.png" alt-text="開啟 [通知]。":::
+:::image type="content" source="media/fix-deployment-provisioning-failures/open-notifications.png" alt-text="具有相互關聯識別碼的私用雲端部署失敗。":::
 
 在 [通知] 中，選取 **活動記錄中的多個事件**。
 
-:::image type="content" source="media/fix-deployment-provisioning-failures/more-events-in-activity-log.png" alt-text="連結：活動記錄中的多個事件。":::
+:::image type="content" source="media/fix-deployment-provisioning-failures/more-events-in-activity-log.png" alt-text="具有相互關聯識別碼的私用雲端部署失敗。":::
 
 然後搜尋資源的名稱，或在您用來建立資源的另一項唯一資訊上搜尋，以找出失敗的部署和其相互關聯識別碼。 下列範例顯示私人雲端資源 (pc03) 的搜尋結果。
  
-:::image type="content" source="media/fix-deployment-provisioning-failures/find-past-deployments.png" alt-text="尋找過去失敗的 Azure VMware 解決方案部署。":::
+:::image type="content" source="media/fix-deployment-provisioning-failures/find-past-deployments.png" alt-text="具有相互關聯識別碼的私用雲端部署失敗。":::
  
 選取失敗部署的作業名稱，會開啟具有詳細資料的視窗。 選取 [JSON] 索引標籤，並尋找 correlationId。 在 SR 中複製並納入。 
  
@@ -63,7 +63,7 @@ ms.locfileid: "88752229"
 
 在入口網站中查看私人雲端時，請選取 **> ExpressRoute** 的連線能力，並將 **expressroute 識別碼** 複製到剪貼簿。
  
-:::image type="content" source="media/fix-deployment-provisioning-failures/expressroute-id.png" alt-text="將 ExpressRoute 識別碼複製到剪貼簿。"::: 
+:::image type="content" source="media/fix-deployment-provisioning-failures/expressroute-id.png" alt-text="具有相互關聯識別碼的私用雲端部署失敗。"::: 
  
 在新的支援要求中，將 ExpressRoute 識別碼貼到適當的欄位。 如需詳細資訊，請參閱下一節， [建立您的支援要求](#create-your-support-request)。
  
@@ -78,7 +78,7 @@ ms.locfileid: "88752229"
 
 1. 選取 [ **說明] 圖示，然後** 選取 [ **+ 新增支援要求**]。
 
-    :::image type="content" source="media/fix-deployment-provisioning-failures/open-sr-on-avs.png" alt-text="收集您的 SR 的 ExpressRoute 識別碼。":::
+    :::image type="content" source="media/fix-deployment-provisioning-failures/open-sr-on-avs.png" alt-text="具有相互關聯識別碼的私用雲端部署失敗。":::
 
 2. 填寫所有必要欄位，然後在 [ **基本** ] 索引標籤上：
 

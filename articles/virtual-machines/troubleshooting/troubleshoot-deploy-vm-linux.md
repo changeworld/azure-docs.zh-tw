@@ -15,10 +15,10 @@ ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
 ms.openlocfilehash: cf8fb383625ec2752264d6e5a70d8625f06689fc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82628294"
 ---
 # <a name="troubleshoot-deploying-linux-virtual-machine-issues-in-azure"></a>針對 Azure 中的 Linux 虛擬機器部署問題進行疑難排解
@@ -64,13 +64,13 @@ productPesIds="1234, 5678"
 
 ## <a name="my-drivers-are-missing-for-my-linux-n-series-vm"></a>我的 Linux N 系列 VM 遺失驅動程式
 
-安裝 Linux 型 Vm 驅動程式的指示位於[這裡](../sizes-gpu.md#supported-operating-systems-and-drivers)。
+您可以在 [這裡](../sizes-gpu.md#supported-operating-systems-and-drivers)找到針對以 Linux 為基礎的 vm 安裝驅動程式的指示。
 
 ## <a name="i-cant-find-a-gpu-instance-within-my-n-series-vm"></a>在我的 N 系列 VM 內找不到 GPU 執行個體
 
-若要利用 Azure N 系列 Vm 的 GPU 功能，您必須在部署之後于每個 VM 上安裝圖形驅動程式。 您可以[在這裡](../sizes-gpu.md#supported-operating-systems-and-drivers)取得驅動程式設定資訊。
+若要利用 Azure N 系列 Vm 的 GPU 功能，您必須在部署之後于每個 VM 上安裝圖形驅動程式。 您可以從 [這裡](../sizes-gpu.md#supported-operating-systems-and-drivers)取得驅動程式設定資訊。
 
-## <a name="are-n-series-vms-available-in-my-region"></a>我的區域中是否有 N 系列 Vm 可用？
+## <a name="are-n-series-vms-available-in-my-region"></a>我的區域中是否有 N 系列 Vm 可供使用？
 
 您可以從[依區域提供的產品表](https://azure.microsoft.com/regions/services)查看是否有提供該產品，以及從[這裡](https://azure.microsoft.com/pricing/details/virtual-machines/series/#n-series)查看定價。
 
@@ -96,7 +96,7 @@ productPesIds="1234, 5678"
 
 [!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 如果您在本文中有任何需要協助的地方，您可以連絡 [MSDN Azure 和 Stack Overflow 論壇](https://azure.microsoft.com/support/forums/)上的 Azure 專家。
 
 或者，您可以提出 Azure 支援事件。 請移至 [Azure 支援網站](https://azure.microsoft.com/support/options/)，然後選取 [取得支援]。

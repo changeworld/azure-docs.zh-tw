@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 3/18/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 9707aaa911fc8ceb8c03b369bd6479646ca3418c
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87500720"
 ---
 # <a name="restart-azure-database-for-mysql-server-using-the-azure-cli"></a>使用 Azure CLI 重新開機適用於 MySQL 的 Azure 資料庫伺服器
@@ -39,6 +39,6 @@ ms.locfileid: "87500720"
 az mysql server restart --name mydemoserver --resource-group myresourcegroup
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-瞭解[如何在適用於 MySQL 的 Azure 資料庫中設定參數](howto-configure-server-parameters-using-cli.md)
+瞭解 [如何在適用於 MySQL 的 Azure 資料庫中設定參數](howto-configure-server-parameters-using-cli.md)

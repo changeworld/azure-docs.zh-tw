@@ -6,10 +6,10 @@ ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: article
 ms.openlocfilehash: a1fedb637bee9d98fb09d8fc3fa133b2992ce86e
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89613660"
 ---
 # <a name="pbr-materials"></a>PBR 材質
@@ -76,7 +76,7 @@ ms.locfileid: "89613660"
 
 ## <a name="technical-details"></a>技術詳細資訊
 
-Azure 遠端轉譯使用 Torrance 微 facet BRDF 搭配 GGX NDF、Schlick Fresnel 和 GGX Smith 關聯可見度詞彙與 Lambert 擴散詞彙。 此模型是目前的產業標準。 如需更深入的詳細資料，請參閱這篇文章： [實際呈現-Torrance](http://www.codinglabs.net/article_physically_based_rendering_cook_torrance.aspx)
+Azure 遠端轉譯使用 Cook-Torrance 的微 facet BRDF 搭配 GGX NDF、Schlick Fresnel，以及 GGX Smith 關聯可見度詞彙與 Lambert 擴散詞彙。 此模型是目前的產業標準。 如需更深入的詳細資料，請參閱這篇文章： [實際呈現-Torrance](http://www.codinglabs.net/article_physically_based_rendering_cook_torrance.aspx)
 
  Azure 遠端轉譯中所使用之 *Metalness 的非等式* .pbr 模型的替代方式，就是 *反光* 的 .pbr 模型。 此模型可以代表更廣泛的材質。 但是，它的成本較高，而且通常不適用於即時案例。
 由於有* (擴散、反光) *值組無法轉換成* (BaseColor、Metalness) *，因此不一定可以從*反光*到*Metalness 的粗糙度*進行轉換。 另一個方向的轉換更簡單且更精確，因為所有 * (BaseColor、Metalness) * 組都對應至妥善定義的 * (擴散、反射) * 配對。
@@ -88,7 +88,7 @@ Azure 遠端轉譯使用 Torrance 微 facet BRDF 搭配 GGX NDF、Schlick Fresne
 * [C + + PbrMaterial 類別](https://docs.microsoft.com/cpp/api/remote-rendering/pbrmaterial)
 * [C + + RemoteManager：： CreateMaterial ( # B1 ](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#creatematerial)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [色彩材質](color-materials.md)
 * [紋理](../../concepts/textures.md)

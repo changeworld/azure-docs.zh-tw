@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 08/21/2020
 ms.custom: contperfq1
 ms.openlocfilehash: f6d8f804fa26383435d191af27289ffd2ecb3e0b
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88755087"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>使用 Apache Beeline 用戶端搭配 Apache Hive
@@ -107,7 +107,7 @@ Beeline 是 Hive 用戶端，隨附於您的 HDInsight 叢集的前端節點。 
 
     這些語句會執行下列動作：
 
-    |引數 |描述 |
+    |陳述式 |描述 |
     |---|---|
     |DROP TABLE|如果資料表存在，則會加以刪除。|
     |CREATE EXTERNAL TABLE|在 Hive 中建立 **外部** 資料表。 外部資料表只會將資料表定義儲存在 Hive 中。 資料會留在原來的位置。|
@@ -172,7 +172,7 @@ Beeline 是 Hive 用戶端，隨附於您的 HDInsight 叢集的前端節點。 
 
     這些語句會執行下列動作：
 
-    |引數 |描述 |
+    |陳述式 |描述 |
     |---|---|
     |CREATE TABLE （如果不存在）|如果資料表尚不存在，則會建立該資料表。 因為未使用 **EXTERNAL** 關鍵字，所以此語句會建立內部資料表。 內部資料表儲存在 Hive 資料倉儲中，並完全由 Hive 管理。|
     |儲存為 ORC|以最佳化資料列單欄式 (Optimized Row Columnar, ORC) 格式儲存資料。 ORC 格式是高度最佳化且有效率的 Hive 資料儲存格式。|
@@ -211,7 +211,7 @@ Beeline 是 Hive 用戶端，隨附於您的 HDInsight 叢集的前端節點。 
     3 rows selected (0.813 seconds)
     ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * 如需 HDInsight 中 Hive 的一般資訊，請參閱 [在 hdinsight 上搭配使用 Apache Hive 與 Apache Hadoop](hdinsight-use-hive.md)
 

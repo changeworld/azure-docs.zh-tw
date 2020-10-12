@@ -8,10 +8,10 @@ ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: 9054fa72ee4204d7a09e6ce8de4fe6d4ed4dac81
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89227707"
 ---
 # <a name="azure-security-baseline-for-service-fabric"></a>適用于 Service Fabric 的 Azure 安全性基準
@@ -1038,7 +1038,7 @@ ms.locfileid: "89227707"
 
 **指導**方針： Service Fabric 備份還原服務的備份會使用您訂用帳戶中的 Azure 儲存體帳戶。 Azure 儲存體會加密待用儲存體帳戶中的所有資料。 根據預設，資料是以使用 Microsoft 管理的金鑰加密。 若要進一步控制加密金鑰，您可以提供客戶管理的金鑰來加密儲存體資料。
 
-如果您使用客戶管理的金鑰，請確定已啟用 Key Vault 中的虛刪除功能，以防止金鑰遭到意外或惡意刪除。
+如果您使用客戶管理的金鑰，請確定已啟用 Key Vault 中的 Soft-Delete，以防止金鑰遭到意外或惡意刪除。
 
 * [Azure 儲存體待用加密](../storage/common/storage-service-encryption.md)
 

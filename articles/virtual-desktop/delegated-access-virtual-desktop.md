@@ -7,20 +7,20 @@ ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: f2aa2c74704cf89c082d2837b39e82902efa0a62
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88010050"
 ---
 # <a name="delegated-access-in-windows-virtual-desktop"></a>Windows 虛擬桌面中委派的存取權
 
 >[!IMPORTANT]
->此內容適用於具有 Azure Resource Manager Windows 虛擬桌面物件的 Windows 虛擬桌面。 如果您使用不含 Azure Resource Manager 物件的 Windows 虛擬桌面 (傳統)，請參閱[此文章](./virtual-desktop-fall-2019/delegated-access-virtual-desktop-2019.md)。
+>此內容適用於具有 Azure Resource Manager Windows 虛擬桌面物件的 Windows 虛擬桌面。 如果您使用不含 Azure Resource Manager 物件的 Windows 虛擬桌面 (傳統版)，請參閱[這篇文章](./virtual-desktop-fall-2019/delegated-access-virtual-desktop-2019.md)。
 
-Windows 虛擬桌面具有委派的存取模型，可讓您藉由指派角色給使用者，來定義允許特定使用者擁有的存取權數量。 角色指派有三個元件：安全性主體、角色定義和範圍。 Windows 虛擬桌面委派的存取模型是以 Azure RBAC 模型為基礎。 若要深入瞭解特定角色指派及其元件，請參閱[Azure 角色型存取控制總覽](../role-based-access-control/built-in-roles.md)。
+Windows 虛擬桌面具有委派的存取模型，可讓您藉由指派角色給使用者，來定義允許特定使用者擁有的存取量。 角色指派有三個元件：安全性主體、角色定義和範圍。 Windows 虛擬桌面委派的存取模型是以 Azure RBAC 模型為基礎。 若要深入瞭解特定角色指派及其元件，請參閱 [Azure 角色型存取控制的總覽](../role-based-access-control/built-in-roles.md)。
 
-Windows 虛擬桌面委派存取針對角色指派的每個元素支援下列值：
+Windows 虛擬桌面委派存取可針對角色指派的每個元素支援下列值：
 
 * 安全性主體
     * 使用者
@@ -34,11 +34,11 @@ Windows 虛擬桌面委派存取針對角色指派的每個元素支援下列值
     * 應用程式群組
     * 工作區
 
-## <a name="powershell-cmdlets-for-role-assignments"></a>用於角色指派的 PowerShell Cmdlet
+## <a name="powershell-cmdlets-for-role-assignments"></a>角色指派的 PowerShell Cmdlet
 
-開始之前，請務必遵循[設定 powershell 模組](powershell-module.md)中的指示來設定 Windows 虛擬桌面 powershell 模組（如果尚未安裝的話）。
+開始之前，請務必依照 [設定 PowerShell 模組](powershell-module.md) 中的指示，設定 Windows 虛擬桌面 powershell 模組（如果尚未安裝）。
 
-Windows 虛擬桌面會在將應用程式群組發佈至使用者或使用者群組時，使用 Azure 角色型存取控制 (Azure RBAC) 。 「桌面虛擬化」使用者角色會指派給使用者或使用者群組，而範圍則是「應用程式群組」。 此角色可讓使用者在應用程式群組上進行特殊資料存取。
+Windows 虛擬桌面在將應用程式群組發佈給使用者或使用者群組時，會使用 Azure 角色型存取控制 (Azure RBAC) 。 桌面虛擬化使用者角色會指派給使用者或使用者群組，而範圍是應用程式群組。 此角色可讓使用者在應用程式群組上具有特殊的資料存取權。
 
 執行下列 Cmdlet，將 Azure Active Directory 使用者新增至應用程式群組：
 
@@ -54,8 +54,8 @@ New-AzRoleAssignment -ObjectId <usergroupobjectid> -RoleDefinitionName "Desktop 
 
 ## <a name="next-steps"></a>後續步驟
 
-如需每個角色可使用之 PowerShell Cmdlet 的更完整清單，請參閱[powershell 參考](/powershell/windows-virtual-desktop/overview)。
+如需每個角色可以使用的 PowerShell Cmdlet 更完整清單，請參閱 [powershell 參考](/powershell/windows-virtual-desktop/overview)。
 
-如需 Azure RBAC 中所支援角色的完整清單，請參閱[azure 內建角色](../role-based-access-control/built-in-roles.md)。
+如需 Azure RBAC 中所支援角色的完整清單，請參閱 [azure 內建角色](../role-based-access-control/built-in-roles.md)。
 
-如需如何設定 Windows 虛擬桌面環境的指導方針，請參閱[Windows 虛擬桌面環境](environment-setup.md)。
+如需如何設定 Windows 虛擬桌面環境的指導方針，請參閱 [Windows 虛擬桌面環境](environment-setup.md)。

@@ -1,5 +1,5 @@
 ---
-title: 使用者驗證-使用 Data Lake Storage Gen1 的 REST-Azure
+title: 終端使用者驗證-REST 與 Data Lake Storage Gen1-Azure
 description: 了解如何使用 REST API，搭配使用 Azure Active Directory 與 Azure Data Lake Storage Gen1 以完成終端使用者驗證
 author: twooley
 ms.service: data-lake-store
@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 84e85e6e817972b8ec0bee0e8b441b3585d2d9dd
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85984846"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-rest-api"></a>使用 REST API 向 Azure Data Lake Storage Gen1 驗證終端使用者
@@ -24,7 +24,7 @@ ms.locfileid: "85984846"
 
 在本文中，您會了解如何使用 REST API 向 Azure Data Lake Storage Gen1 驗證終端使用者。 如需使用 REST API 向 Data Lake Storage Gen1 進行服務對服務驗證，請參閱[使用 REST API 向 Data Lake Storage Gen1 進行服務對服務驗證](data-lake-store-service-to-service-authenticate-rest-api.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * **Azure 訂用帳戶**。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
 
@@ -37,14 +37,14 @@ ms.locfileid: "85984846"
 
 讓終端使用者登入的結果，是系統會提供一個存取權杖和一個重新整理權杖給您的應用程式。 存取權杖會附加到每個對 Data Lake Storage Gen1 或 Data Lake Analytics 提出的要求，預設的有效期是一小時。 重新整理權杖可用來取得新的存取權杖，預設的有效期是二小時，如果定期使用則最多兩週。 您可以使用兩種不同方法讓終端使用者登入。
 
-在此案例中，應用程式會提示使用者登入，且會在使用者的內容中執行所有作業。 執行下列步驟：
+在此案例中，應用程式會提示使用者登入，且會在使用者的內容中執行所有作業。 請執行下列步驟：
 
 1. 透過您的應用程式，將使用者重新導向至下列 URL：
 
     `https://login.microsoftonline.com/<TENANT-ID>/oauth2/authorize?client_id=<APPLICATION-ID>&response_type=code&redirect_uri=<REDIRECT-URI>`
 
    > [!NOTE]
-   > \<REDIRECT-URI>需要編碼才能在 URL 中使用。 所以，針對 https://localhost 使用 `https%3A%2F%2Flocalhost`)
+   > \<REDIRECT-URI> 需要經過編碼才能在 URL 中使用。 所以，針對 https://localhost 使用 `https%3A%2F%2Flocalhost`)
 
     本教學課程的目的是讓您取代以上 URL 中的預留位置值，並將此值貼在網路瀏覽器網址列中。 系統會將您重新導向，以使用 Azure 登入資料來進行驗證。 一旦成功登入，回應會顯示在瀏覽器網址列中。 回應格式如下：
 
@@ -84,7 +84,7 @@ ms.locfileid: "85984846"
 
 如需互動使用者驗證的詳細資料，請參閱 [授權碼授與流程](https://msdn.microsoft.com/library/azure/dn645542.aspx)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 在本文中，您已了解如何使用 REST API，使用服務對服務驗證向 Azure Data Lake Storage Gen1 驗證。 您現在可以查看下列文章，了解如何搭配使用 REST API 與 Azure Data Lake Storage Gen1。
 
 * [使用 REST API 在 Data Lake Storage Gen1 上進行帳戶管理作業](data-lake-store-get-started-rest-api.md)

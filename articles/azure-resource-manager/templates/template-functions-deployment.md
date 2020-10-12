@@ -4,18 +4,18 @@ description: 描述 Azure Resource Manager 範本中用來擷取部署資訊的�
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: e8240c05cba82d5563c4b327ecbc65a9c358720f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84677809"
 ---
 # <a name="deployment-functions-for-arm-templates"></a>ARM 範本的部署功能
 
-Resource Manager 提供下列函數來取得與目前 Azure Resource Manager （ARM）範本部署相關的值：
+Resource Manager 提供下列函式來取得與目前部署 Azure Resource Manager (ARM) 範本相關的值：
 
 * [部署](#deployment)
-* [環境](#environment)
+* [environment (環境)](#environment)
 * [parameters](#parameters)
 * [變數](#variables)
 
@@ -29,10 +29,10 @@ Resource Manager 提供下列函數來取得與目前 Azure Resource Manager （
 
 ### <a name="return-value"></a>傳回值
 
-此函式會傳回部署期間所傳遞的物件。 傳回之物件中的屬性會根據您的是否為而有所不同：
+此函式會傳回部署期間所傳遞的物件。 傳回之物件中的屬性會根據您是否為：
 
-* 部署本機檔案的範本，或部署透過 URI 存取之遠端檔案的範本。
-* 部署至資源群組，或部署至其中一個其他範圍（[Azure 訂](deploy-to-subscription.md)用帳戶、[管理群組](deploy-to-management-group.md)或[租](deploy-to-tenant.md)使用者）。
+* 部署本機檔案的範本，或部署可透過 URI 存取之遠端檔案的範本。
+* 部署至資源群組，或部署至其中一個其他範圍 ([Azure 訂](deploy-to-subscription.md)用帳戶、 [管理群組](deploy-to-management-group.md)或 [租](deploy-to-tenant.md) 使用者) 。
 
 將本機範本部署至資源群組時：此函數會傳回下列格式：
 
@@ -158,7 +158,7 @@ Resource Manager 提供下列函數來取得與目前 Azure Resource Manager （
 }
 ```
 
-## <a name="environment"></a>Environment
+## <a name="environment"></a>環境
 
 `environment()`
 
@@ -166,7 +166,7 @@ Resource Manager 提供下列函數來取得與目前 Azure Resource Manager （
 
 ### <a name="return-value"></a>傳回值
 
-此函式會傳回目前 Azure 環境的屬性。 下列範例顯示全域 Azure 的屬性。 主權雲端可能會傳回稍微不同的屬性。
+此函數會傳回目前 Azure 環境的屬性。 下列範例顯示全域 Azure 的屬性。 主權雲端可能會傳回稍微不同的屬性。
 
 ```json
 {
@@ -220,7 +220,7 @@ Resource Manager 提供下列函數來取得與目前 Azure Resource Manager （
 }
 ```
 
-上述範例會在部署至全域 Azure 時傳回下列物件：
+上述範例會在部署到全域 Azure 時傳回下列物件：
 
 ```json
 {
@@ -359,7 +359,7 @@ Resource Manager 提供下列函數來取得與目前 Azure Resource Manager （
 | arrayOutput | Array | [1, 2, 3] |
 | crossOutput | String | 選項 1 |
 
-如需使用參數的詳細資訊，請參閱[Azure Resource Manager 範本中的參數](template-parameters.md)。
+如需使用參數的詳細資訊，請參閱 [Azure Resource Manager 範本中的參數](template-parameters.md)。
 
 ## <a name="variables"></a>variables
 
@@ -369,9 +369,9 @@ Resource Manager 提供下列函數來取得與目前 Azure Resource Manager （
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | Description |
+| 參數 | 必要 | 類型 | 說明 |
 |:--- |:--- |:--- |:--- |
-| variableName |Yes |String |要傳回的變數名稱。 |
+| variableName |是 |String |要傳回的變數名稱。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -450,8 +450,8 @@ Resource Manager 提供下列函數來取得與目前 Azure Resource Manager （
 | exampleOutput3 | String | myVariable |
 | exampleOutput4 |  Object | {"property1": "value1", "property2": "value2"} |
 
-如需使用變數的詳細資訊，請參閱[Azure Resource Manager 範本中的變數](template-variables.md)。
+如需使用變數的詳細資訊，請參閱 [Azure Resource Manager 範本中的變數](template-variables.md)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-* 如需 Azure Resource Manager 範本中各區段的說明，請參閱[瞭解 ARM 範本的結構和語法](template-syntax.md)。
+* 如需 Azure Resource Manager 範本中各區段的說明，請參閱 [瞭解 ARM 範本的結構和語法](template-syntax.md)。

@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: disks
 ms.openlocfilehash: 9a6a56491a327d5d4eafc2c05dc2b54b137096b8
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88752072"
 ---
-# <a name="reduce-costs-with-azure-disks-reservation"></a>使用 Azure 磁片保留來降低成本
+# <a name="reduce-costs-with-azure-disks-reservation"></a>使用 Azure 磁碟保留來節省成本
 
 使用保留容量來節省您的 Azure 磁碟儲存體使用量。 Azure 磁碟儲存體保留結合 Azure 保留的虛擬機器執行個體可讓您降低虛擬機器的總 (VM) 成本。 保留折扣會自動套用至所選保留範圍內的相符磁片。 因為此自動應用程式的原因，您不需要將保留指派給受控磁片來取得折扣。
 
@@ -104,4 +104,4 @@ ms.locfileid: "88752072"
 ## <a name="next-steps"></a>後續步驟
 
 - [什麼是 Azure 保留項目？](../cost-management-billing/reservations/save-compute-costs-reservations.md)
-- [了解如何將您的保留折扣套用至 Azure 磁碟儲存體](../cost-management-billing/reservations/understand-disk-reservations.md)
+- [瞭解如何將您的保留折扣套用至 Azure 磁碟儲存體](../cost-management-billing/reservations/understand-disk-reservations.md)
