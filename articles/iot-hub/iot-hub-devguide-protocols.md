@@ -14,10 +14,10 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 ms.openlocfilehash: 1792535fab79ed20bdf77f96b4fc39f13b0c7bbb
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90015990"
 ---
 # <a name="reference---choose-a-communication-protocol"></a>參考 - 選擇通訊協定
@@ -61,7 +61,7 @@ ms.locfileid: "90015990"
 
 裝置可以在 Azure 中使用各種通訊協定來與 IoT 中樞通訊。 一般而言，選擇的通訊協定是根據方案的特定需求而定。 下表列出必須要為裝置開啟的輸出連接埠，以使用特定的通訊協定：
 
-| 通訊協定 | Port |
+| 通訊協定 | 連接埠 |
 | --- | --- |
 | MQTT |8883 |
 | 透過 WebSocket 的 MQTT |443 |
@@ -71,6 +71,6 @@ ms.locfileid: "90015990"
 
 當您在 Azure 區域中建立 IoT 中樞後，IoT 中樞將在該 IoT 中樞的存留期間保留相同的 IP 位址。 不過，如果 Microsoft 將 IoT 中樞移至不同的縮放單位以維護服務品質，則它會獲派新的 IP 位址。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 若要深入了解 IoT 中樞如何實作 MQTT 通訊協定，請參閱[使用 MQTT 通訊協定來與 IoT 中樞通訊](iot-hub-mqtt-support.md)。

@@ -12,17 +12,17 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: eb320cb71de43c40522bf93213fd98247a0d5b59
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89436292"
 ---
 # <a name="transform-data-in-azure-data-factory-version-1"></a>Azure Data Factory 第1版轉換資料
 > [!div class="op_single_selector"]
 > * [Hive](data-factory-hive-activity.md)  
 > * [Pig](data-factory-pig-activity.md)  
-> * [Mapreduce](data-factory-map-reduce.md)  
+> * [MapReduce](data-factory-map-reduce.md)  
 > * [Hadoop 串流](data-factory-hadoop-streaming-activity.md)
 > * [Machine Learning](data-factory-azure-ml-batch-execution-activity.md) 
 > * [預存程序](data-factory-stored-proc-activity.md)
@@ -90,7 +90,7 @@ Azure Data Factory 支援下列資料轉換活動和活動計算環境。 可將
 |:--- |:--- |
 | [Hive](data-factory-hive-activity.md) |HDInsight [Hadoop] |
 | [Pig](data-factory-pig-activity.md) |HDInsight [Hadoop] |
-| [Mapreduce](data-factory-map-reduce.md) |HDInsight [Hadoop] |
+| [MapReduce](data-factory-map-reduce.md) |HDInsight [Hadoop] |
 | [Hadoop 串流](data-factory-hadoop-streaming-activity.md) |HDInsight [Hadoop] |
 | [Machine Learning 活動︰批次執行和更新資源](data-factory-azure-ml-batch-execution-activity.md) |Azure VM |
 | [預存程序](data-factory-stored-proc-activity.md) |Azure SQL、Azure Synapse Analytics 或 SQL Server |

@@ -9,10 +9,10 @@ ms.workload: infrastructure-services
 ms.date: 05/09/2016
 ms.author: markscu
 ms.openlocfilehash: c2561a6dc3ad8c0af1c266b3822a80c76f45c174
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88639676"
 ---
 # <a name="create-matlab-distributed-computing-server-clusters-on-azure-vms"></a>在 Azure VM 上建立 MATLAB Distributed Computing Server 叢集
@@ -67,6 +67,6 @@ MATLAB 用戶端節點、MATLAB 作業排程器節點和 MATLAB Distributed Comp
 
 ![Cluster Profile Manager](./media/matlab-mdcs-cluster/cluster_profile_manager.png)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 * 如需在 Azure 中部署和管理 MATLAB Distributed Computing Server 叢集的詳細指示，請參閱包含範本和指令碼的 [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/matlab-cluster) 儲存機制。
 * 如需 MATLAB 和 MATLAB Distributed Computing Server 的詳細文件，請移至 [MathWorks 網站](https://www.mathworks.com/) 。

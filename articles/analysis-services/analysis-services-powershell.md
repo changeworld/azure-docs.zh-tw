@@ -8,10 +8,10 @@ ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 3e64ffe5007d27a44167f08807a9694875fe48c4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87050450"
 ---
 # <a name="manage-azure-analysis-services-with-powershell"></a>使用 PowerShell 管理 Azure Analysis Services
@@ -26,7 +26,7 @@ ms.locfileid: "87050450"
 
 大部分的 PowerShell 工作需要您在您管理的 Analysis Services 伺服器上具備系統管理員權限。 排定的 PowerShell 工作都是自動的作業。 執行排程器的帳戶和服務主體必須具有 Analysis Services 伺服器上的管理員權限。 
 
-針對使用 Azure PowerShell Cmdlet 的伺服器作業，您的帳戶或執行排程器的帳戶也必須屬於[Azure 角色型存取控制（AZURE RBAC）](../role-based-access-control/overview.md)中資源的擁有者角色。 
+針對使用 Azure PowerShell Cmdlet 的伺服器作業，您的帳戶或執行排程器的帳戶也必須屬於 [azure 角色型存取控制 ](../role-based-access-control/overview.md)中資源的擁有者角色， (azure RBAC) 。 
 
 ## <a name="resource-and-server-operations"></a>資源和伺服器作業 
 

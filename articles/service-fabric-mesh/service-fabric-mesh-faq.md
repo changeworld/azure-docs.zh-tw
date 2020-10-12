@@ -1,14 +1,14 @@
 ---
-title: Azure Service Fabric 網格的常見問題
+title: Azure Service Fabric 網狀的常見問題
 description: 了解 Azure Service Fabric Mesh 的常見問題和解答。
 ms.author: pepogors
 ms.date: 4/23/2019
 ms.topic: troubleshooting
 ms.openlocfilehash: 64eeb43d743d71d5acd456409445a4fadfe91aeb
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86260125"
 ---
 # <a name="commonly-asked-service-fabric-mesh-questions"></a>Service Fabric Mesh 的常見問題
@@ -23,16 +23,16 @@ Azure Service Fabric Mesh 是一個受到完整管理的服務，讓開發人員
 
 ### <a name="what-is-the-cost-of-participating-in-the-preview"></a>參與預覽版的成本為何？
 
-將應用程式或容器部署至網格預覽目前沒有任何費用。 請留意中的更新，以啟用計費。 不過，我們建議您刪除所部署的資源，而不是讓它們保持執行狀態，除非您主動進行測試。
+將應用程式或容器部署至網狀預覽版目前不會產生任何費用。 請留意中是否有更新可供計費。 不過，我們建議您刪除您所部署的資源，而不要讓它們執行，除非您主動測試它們。
 
 ### <a name="is-there-a-quota-limit-of-the-number-of-cores-and-ram"></a>核心和 RAM 數目是否有配額限制？
 
 是。 每個訂用帳戶的配額如下：
 
 - 應用程式數目：5
-- 每個應用程式的核心數：12
+- 每個應用程式的核心：12
 - 每個應用程式的 RAM 總計： 48 GB
-- 網路與輸入端點：5
+- 網路和輸入端點：5
 - 您可以附加的 Azure 磁片區：10
 - 服務複本數目：3
 - 您可以部署的最大容器限制為 4 個核心和 16 GB 的 RAM。
@@ -44,7 +44,7 @@ Azure Service Fabric Mesh 是一個受到完整管理的服務，讓開發人員
 
 如果確實發生此情況，可以藉由在 Azure CLI 中執行 `az mesh app show` 命令，以驗證系統是否將它關閉。 請檢查是否傳回 `"status": "Failed", "statusDetails": "Stopped resource due to max lifetime policies for an application during preview. Delete the resource to continue."` 
 
-例如︰ 
+例如： 
 
 ```azurecli
 az mesh app show --resource-group myResourceGroup --name helloWorldApp
@@ -97,7 +97,7 @@ az mesh app show --resource-group myResourceGroup --name helloWorldApp
 
 ### <a name="what-types-of-applications-can-i-deploy"></a>我可以部署哪些類型的應用程式？ 
 
-您可以部署在容器中執行的任何專案，以符合應用程式資源上的限制 (如需配額) 的詳細資訊，請參閱上面的。 如果我們偵測到您使用網格來執行不合法的工作負載，或濫用系統 (也就是「挖掘) 」，則我們會保留終止您的部署，並封鎖清單您的訂用帳戶在服務上執行的權利。 如果您有任何關於執行特定工作負載的問題，請與我們聯繫。 
+您可以部署在容器中執行的任何作業，以符合應用程式資源上的限制 (如需有關配額) 的詳細資訊，請參閱上述。 如果我們偵測到您使用網格來執行不合法的工作負載，或濫用系統 (也就是「) 」，則我們保留終止您的部署的權利，並封鎖清單您的訂用帳戶，使其無法在服務上執行。 如果您有任何關於執行特定工作負載的問題，請與我們聯繫。 
 
 ## <a name="developer-experience-issues"></a>開發人員體驗問題
 
@@ -106,8 +106,8 @@ az mesh app show --resource-group myResourceGroup --name helloWorldApp
 從容器連出到 Service Fabric DNS 服務的 DNS 查詢在某些情況下可能會失敗。 我們正在調查此問題。 減輕問題：
 
 - 使用 Windows Fall Creators Update (1709版) 或更新版本作為基礎容器映像。
-- 如果服務名稱單獨無法使用，請嘗試完整名稱： ServiceName. ApplicationName。
-- 在您服務的 Docker 檔案中新增 `EXPOSE <port>`，其中的 port 是您公開服務的連接埠。 例如︰
+- 如果服務名稱單獨無法運作，請嘗試完整名稱： ServiceName. ApplicationName。
+- 在您服務的 Docker 檔案中新增 `EXPOSE <port>`，其中的 port 是您公開服務的連接埠。 例如：
 
 ```Dockerfile
 EXPOSE 80
@@ -121,7 +121,7 @@ EXPOSE 80
 
 Azure Mesh 目前不支援跨應用程式的 DNS 解析。
 
-如需在 Windows 10 上執行 Service Fabric 開發叢集的其他已知 DNS 問題，請參閱：[偵錯工具 windows 容器](../service-fabric/service-fabric-how-to-debug-windows-containers.md)和[已知的 DNS 問題](../service-fabric/service-fabric-dnsservice.md#known-issues)。
+針對在 Windows 10 上執行 Service Fabric 開發叢集的其他已知 DNS 問題，請參閱： [偵錯工具 Windows 容器](../service-fabric/service-fabric-how-to-debug-windows-containers.md) 和 [已知的 dns 問題](../service-fabric/service-fabric-dnsservice.md#known-issues)。
 
 ### <a name="networking"></a>網路功能
 
@@ -143,7 +143,7 @@ Azure Mesh 目前不支援跨應用程式的 DNS 解析。
 
 ### <a name="vs-tooling-has-limited-support-for-windows-containers"></a>VS 工具對 Windows 容器的支援有限
 
-Visual Studio 工具僅支援使用 Windows Server 1709 和1803的基本 OS 版本來部署 Windows 容器。 
+Visual Studio 工具目前僅支援使用基本作業系統版本的 Windows Server 1709 和1803部署 Windows 容器。 
 
 ## <a name="feature-gaps-and-other-known-issues"></a>功能差距和其他已知問題
 
@@ -167,6 +167,6 @@ Visual Studio 工具僅支援使用 Windows Server 1709 和1803的基本 OS 版�
 
 這是一個錯誤 (bug)，目前正在實作修正程式。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-若要深入瞭解 Service Fabric 網格，請閱讀[總覽](service-fabric-mesh-overview.md)。
+若要深入瞭解 Service Fabric 網格，請參閱 [總覽](service-fabric-mesh-overview.md)。

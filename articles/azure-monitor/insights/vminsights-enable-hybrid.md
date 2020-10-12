@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
 ms.openlocfilehash: d994df4d56f4958784256ff9cd92ce1e6f3b3e50
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88642158"
 ---
 # <a name="enable-azure-monitor-for-vms-for-a-hybrid-virtual-machine"></a>啟用混合式虛擬機器的適用於 VM 的 Azure 監視器
@@ -80,7 +80,7 @@ Invoke-WebRequest "https://aka.ms/dependencyagentwindows" -OutFile InstallDepend
 > 必須有 root 權限，以便安裝或設定代理程式。
 >
 
-| 參數 | 描述 |
+| 參數 | 說明 |
 |:--|:--|
 | -help | 取得命令列選項的清單。 |
 | -S | 執行無訊息安裝，不會出現任何使用者提示。 |
@@ -175,7 +175,7 @@ configuration VMInsights {
 請檢查 C:\Program Files\Microsoft Dependency Agent\logs\wrapper.log file (Windows) 檔案或 /var/opt/microsoft/dependency-agent/log/service.log 檔案 (Linux)。 檔案的最後幾行應該會指出未載入核心的原因。 例如，若您更新過核心，在 Linux 上可能會不受支援。
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 現在已為您的虛擬機器啟用監視，此資訊可透過適用於 VM 的 Azure 監視器進行分析。
 

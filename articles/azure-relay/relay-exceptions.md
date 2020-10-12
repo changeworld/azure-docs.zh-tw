@@ -4,10 +4,10 @@ description: Azure 轉送例外狀況以及您可以採取來協助解決這些�
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: a644dfe80255c64980400866a5e3d197f75375bd
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87532963"
 ---
 # <a name="azure-relay-exceptions"></a>Azure 轉送例外狀況
@@ -24,7 +24,7 @@ ms.locfileid: "87532963"
 *   **設定/組態錯誤**：[System.UnauthorizedAccessException](/dotnet/api/system.unauthorizedaccessexception?view=netcore-3.1)。 
 
     **一般動作**：檢閱您的組態。 視需要變更組態。
-*   **暫時性的例外**狀況： [MessagingException](/dotnet/api/microsoft.servicebus.messaging.messagingexception)， [ServerBusyException](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception)， [MessagingCommunicationException](/dotnet/api/microsoft.servicebus.messaging.messagingcommunicationexception).......。 
+*   **暫時性例外**狀況： [>istransient](/dotnet/api/microsoft.servicebus.messaging.messagingexception)， [ServerBusyException](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception)， [>microsoft.servicebus.messaging.messagingcommunicationexception](/dotnet/api/microsoft.servicebus.messaging.messagingcommunicationexception)........。 
 
     **一般動作**：重試此作業或通知使用者。
 *   **其他例外狀況**：[System.Transactions.TransactionException](/dotnet/api/system.transactions.transactionexception?view=netcore-3.1)、[System.TimeoutException](/dotnet/api/system.timeoutexception?view=netcore-3.1)。 
@@ -35,7 +35,7 @@ ms.locfileid: "87532963"
 
 下表列出傳訊例外狀況類型及其原因。 同時列出您可以採取來解決例外狀況的建議動作。
 
-| **例外狀況類型** | **說明** | **建議動作** | **自動或立即重試附註** |
+| **例外狀況類型** | **描述** | **建議動作** | **自動或立即重試附註** |
 | --- | --- | --- | --- |
 | [逾時](/dotnet/api/system.timeoutexception?view=netcore-3.1) |伺服器未在 [OperationTimeout](/dotnet/api/microsoft.servicebus.messaging.messagingfactorysettings.operationtimeout)控制的指定時間內回應要求的作業。 伺服器可能已完成要求的作業。 這可能是由於網路或其他基礎結構延遲所導致。 |檢查系統狀態的一致性，然後視需要重試。 請參閱 [TimeoutException](#timeoutexception)。 |在某些情況下，重試也許有幫助；將重試邏輯新增至程式碼。 |
 | [作業無效](/dotnet/api/system.invalidoperationexception?view=netcore-3.1) |不允許在伺服器或服務內執行要求的使用者作業。 如需詳細資訊，請參閱例外狀況訊息。 |檢查程式碼和文件。 確定要求的作業有效。 |重試將無助益。 |
@@ -79,7 +79,7 @@ The time allotted to this operation may have been a portion of a longer timeout.
 
     有時候，轉送服務可能會遇到延遲處理要求。 例如，這可能會在高流量期間發生。 如果發生這種情況，您可以在延遲後重試作業，直到作業成功為止。 如果多次嘗試同一作業之後持續失敗，請瀏覽 [Azure 服務狀態網站](https://azure.microsoft.com/status/)，看看是否有任何已知的服務中斷。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 * [Azure 轉送常見問題集](relay-faq.md)
 * [建立轉送命名空間](relay-create-namespace-portal.md)
 * [開始使用 Azure 轉送和 .NET](relay-hybrid-connections-dotnet-get-started.md)

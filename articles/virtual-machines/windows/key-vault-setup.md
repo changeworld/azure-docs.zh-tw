@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.date: 01/24/2017
 ms.author: mimckitt
 ms.openlocfilehash: d5e4bb1d3f62685c90e95eebf5f8f07720a23b82
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86086988"
 ---
 # <a name="set-up-key-vault-for-virtual-machines-in-azure-resource-manager"></a>為 Azure Resource Manager 中的虛擬機器設定金鑰保存庫
@@ -52,7 +52,7 @@ Set-AzKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -EnabledForDeployment
 az keyvault create --name "ContosoKeyVault" --resource-group "ContosoResourceGroup" --location "EastAsia"
 ```
 
-然後，若要啟用 Key Vault 以搭配範本部署使用，請執行下列命令：
+然後，若要啟用與範本部署搭配使用 Key Vault，請執行下列命令：
 
 ```azurecli
 az keyvault update --name "ContosoKeyVault" --resource-group "ContosoResourceGroup" --enabled-for-deployment "true"
@@ -75,4 +75,4 @@ az keyvault update --name "ContosoKeyVault" --resource-group "ContosoResourceGro
 }
 ```
 
-如需使用範本來建立金鑰保存庫時可設定的其他選項，請參閱[建立金鑰保存庫](https://azure.microsoft.com/documentation/templates/101-key-vault-create/)。
+如需使用範本來建立金鑰保存庫時可以設定的其他選項，請參閱 [建立金鑰保存庫](https://azure.microsoft.com/documentation/templates/101-key-vault-create/)。

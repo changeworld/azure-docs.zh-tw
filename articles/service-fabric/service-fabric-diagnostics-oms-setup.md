@@ -1,23 +1,23 @@
 ---
 title: 使用 Azure 監視器記錄來設定監視
-description: 瞭解如何設定 Azure 監視器記錄，以視覺化和分析事件以監視您的 Azure Service Fabric 叢集。
+description: 瞭解如何設定 Azure 監視器記錄來視覺化及分析事件，以監視您的 Azure Service Fabric 叢集。
 author: srrengar
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: srrengar
 ms.openlocfilehash: 691f3b7987c2591b0f6cea3f7b520c03c0ba9a9e
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86258654"
 ---
 # <a name="set-up-azure-monitor-logs-for-a-cluster"></a>設定叢集的 Azure 監視器記錄
 
-建議您使用 Azure 監視器記錄來監視叢集層級事件。 您可以透過 Azure Resource Manager、PowerShell 或 Azure Marketplace 來設定 Log Analytics 工作區。 如果您維護部署的更新 Resource Manager 範本供日後使用，請使用相同的範本來設定您的 Azure 監視器記錄環境。 如果已經在啟用診斷的情況下部署叢集，則透過 Marketplace 部署會更輕鬆。 如果您要用來部署的帳戶中沒有訂用帳戶層級的存取權，請使用 PowerShell 或 Resource Manager 範本進行部署。
+建議您使用 Azure 監視器記錄來監視叢集層級事件。 您可以透過 Azure Resource Manager、PowerShell 或 Azure Marketplace 來設定 Log Analytics 工作區。 如果您維護部署的更新 Resource Manager 範本以供未來使用，請使用相同的範本來設定您的 Azure 監視器記錄環境。 如果已經在啟用診斷的情況下部署叢集，則透過 Marketplace 部署會更輕鬆。 如果您要用來部署的帳戶中沒有訂用帳戶層級的存取權，請使用 PowerShell 或 Resource Manager 範本進行部署。
 
 > [!NOTE]
-> 若要設定 Azure 監視器記錄來監視您的叢集，您必須啟用診斷功能，才能查看叢集層級或平台層級事件。 請參閱[如何在 Windows 叢集中設定診斷功能](service-fabric-diagnostics-event-aggregation-wad.md)和[如何在 Linux 叢集中設定診斷功能](service-fabric-diagnostics-oms-syslog.md)，以取得詳細資訊
+> 若要設定 Azure 監視器記錄來監視您的叢集，您需要啟用診斷，才能查看叢集層級或平台層級的事件。 請參閱[如何在 Windows 叢集中設定診斷功能](service-fabric-diagnostics-event-aggregation-wad.md)和[如何在 Linux 叢集中設定診斷功能](service-fabric-diagnostics-oms-syslog.md)，以取得詳細資訊
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -32,7 +32,7 @@ ms.locfileid: "86258654"
 
 2. 搜尋 **Service Fabric 分析**。 請選取顯示的資源。
 
-3. 選取 [建立]。
+3. 選取 [建立]****。
 
     ![Marketplace 中的 Service Fabric 分析](media/service-fabric-diagnostics-event-analysis-oms/service-fabric-analytics.png)
 
@@ -43,7 +43,7 @@ ms.locfileid: "86258654"
 如果您使用的是 Windows，請繼續進行下列步驟，將 Azure 監視器記錄連線到儲存叢集事件所在的儲存體帳戶。 
 
 >[!NOTE]
->只有 Windows 叢集支援 Service Fabric 分析解決方案。 針對 Linux 叢集，請參閱我們的文章，[以瞭解如何設定 linux 叢集的 Azure 監視器記錄](service-fabric-diagnostics-oms-syslog.md)。  
+>只有 Windows 叢集支援 Service Fabric 分析的解決方案。 針對 Linux 叢集，請參閱我們的文章， [以瞭解如何設定 linux 叢集的 Azure 監視器記錄](service-fabric-diagnostics-oms-syslog.md)。  
 
 ### <a name="connect-the-log-analytics-workspace-to-your-cluster"></a>將 Log Analytics 工作區連線至叢集 
 
@@ -53,7 +53,7 @@ ms.locfileid: "86258654"
 
 3. 在 [儲存體帳戶記錄]**** 分頁上，選取頂端的 [新增]**** 以將您的叢集記錄新增至工作區。
 
-4. 選取 [儲存體帳戶]**** 以新增叢集中建立的適當帳戶。 如果您使用預設名稱，則儲存體帳戶會是**sfdg \<resourceGroupName\> **。 藉由檢查用於 **applicationDiagnosticsStorageAccountName** 的值，也可以透過用來部署叢集的 Azure Resource Manager 範本來確認這點。 如果未顯示此名稱，請向下捲動並選取 [載入更多]****。 選取儲存體帳戶名稱。
+4. 選取 [儲存體帳戶]**** 以新增叢集中建立的適當帳戶。 如果您使用預設名稱，則會**sfdg \<resourceGroupName\> **儲存體帳戶。 藉由檢查用於 **applicationDiagnosticsStorageAccountName** 的值，也可以透過用來部署叢集的 Azure Resource Manager 範本來確認這點。 如果未顯示此名稱，請向下捲動並選取 [載入更多]****。 選取儲存體帳戶名稱。
 
 5. 指定 [資料類型]。 將它設定為 [Service Fabric 事件]****。
 
@@ -81,7 +81,7 @@ ms.locfileid: "86258654"
 * 設定 Log Analytics 工作區以從這些資料表讀取事件
 
 
-您可以使用 Azure PowerShell 模組中的 API，將範本部署為 Resource Manager 升級至您的叢集 `New-AzResourceGroupDeployment` 。 範例命令可能像這樣：
+您可以使用 Azure PowerShell 模組中的 API，將範本部署為 Resource Manager 的叢集升級 `New-AzResourceGroupDeployment` 。 範例命令可能像這樣：
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName "<resourceGroupName>" -TemplateFile "<templatefile>.json" 
@@ -117,11 +117,11 @@ Set-AzOperationalInsightsIntelligencePack -ResourceGroupName $ResourceGroup -Wor
 
 ```
 
-當您完成時，請依照上一節中的步驟，將 Azure 監視器記錄連線至適當的儲存體帳戶。
+當您完成時，請遵循上一節中的步驟，將 Azure 監視器記錄連線至適當的儲存體帳戶。
 
-您也可以新增其他解決方案，或使用 PowerShell 對 Log Analytics 工作區進行其他修改。 若要深入瞭解，請參閱[使用 PowerShell 管理 Azure 監視器記錄](../azure-monitor/platform/powershell-workspace-configuration.md)。
+您也可以新增其他解決方案，或使用 PowerShell 對 Log Analytics 工作區進行其他修改。 若要深入瞭解，請參閱 [使用 PowerShell 管理 Azure 監視器記錄](../azure-monitor/platform/powershell-workspace-configuration.md)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 * [部署 Log Analytics 代理程式](service-fabric-diagnostics-oms-agent.md)至您的節點，以收集效能計數器，並收集您容器的 Docker 統計資料和記錄
 * 熟悉 Azure 監視器記錄中提供的[記錄搜尋和查詢](../azure-monitor/log-query/log-query-overview.md)功能
 * [使用 View Designer 在 Azure 監視器記錄中建立自訂視圖](../azure-monitor/platform/view-designer.md)

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/31/2017
 ms.author: alkohli
 ms.openlocfilehash: 9f92a6277765447cbc1a9b12f06c3ec49548f4d1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85513459"
 ---
 # <a name="use-the-storsimple-manager-service-to-manage-access-control-records"></a>使用 StorSimple Manager 服務管理存取控制記錄
@@ -91,7 +91,7 @@ ms.locfileid: "85513459"
 
     ![編輯存取控制記錄](./media/storsimple-8000-manage-acrs/editacr2.png)
 
-4. 按一下 [檔案] 。 當提示確認時，請按一下 [是]****。 
+4. 按一下 **[儲存]** 。 當提示確認時，請按一下 [是]****。 
 
     ![編輯存取控制記錄](./media/storsimple-8000-manage-acrs/editacr3.png)
 
@@ -127,7 +127,7 @@ ms.locfileid: "85513459"
 
     ![移至存取控制記錄](./media/storsimple-8000-manage-acrs/deleteacr5.png)
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>接下來的步驟
 * 深入了解 [管理 StorSimple 磁碟區](storsimple-8000-manage-volumes-u2.md)。
 * 深入了解 [使用 StorSimple Manager 服務來管理您的 StorSimple 裝置](storsimple-8000-manager-service-administration.md)。
 

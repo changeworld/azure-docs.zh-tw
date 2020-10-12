@@ -7,10 +7,10 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
 ms.openlocfilehash: 0adb346a693beaa905438cfdc1249c1646c28811
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88608741"
 ---
 # <a name="how-to-choose-between-provisioned-throughput-and-serverless"></a>如何在布建的輸送量和無伺服器之間進行選擇
@@ -65,7 +65,7 @@ Azure Cosmos DB 有兩種不同的容量模式：布 [建的輸送量](set-throu
 > [!NOTE]
 > 上述範例所示的成本僅供示範之用。 如需最新定價資訊，請參閱 [定價頁面](https://azure.microsoft.com/pricing/details/cosmos-db/) 。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - 深入瞭解如何[在 Azure Cosmos DB 上](set-throughput.md)布建輸送量
 - 深入瞭解 [Azure Cosmos DB 無伺服器](serverless.md)

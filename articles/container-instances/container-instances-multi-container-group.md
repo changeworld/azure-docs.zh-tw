@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 07/02/2020
 ms.custom: mvc
 ms.openlocfilehash: cb085112c6e6458d897f52f19988e6301d4ae6e8
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86259571"
 ---
 # <a name="tutorial-deploy-a-multi-container-group-using-a-resource-manager-template"></a>教學課程：使用 Resource Manager 範本部署多容器群組
@@ -151,7 +151,7 @@ code azuredeploy.json
 az group create --name myResourceGroup --location eastus
 ```
 
-使用[az deployment group create][az-deployment-group-create]命令來部署範本。
+使用 [az deployment group create][az-deployment-group-create] 命令部署範本。
 
 ```azurecli-interactive
 az deployment group create --resource-group myResourceGroup --template-file azuredeploy.json

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 04/20/2020
 ms.author: cephalin
 ms.openlocfilehash: c3fa57dd162fbbfbf0d46f73bffc78f279ef2968
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83649112"
 ---
 * **使用者層級認證**︰一組用於整個 Azure 帳戶的認證。 它可以用來將任何應用程式部署至 Azure 帳戶有權存取的任何訂用帳戶的 App Service 中。 其為呈現在入口網站 GUI 中的預設集合 (例如應用程式[資源頁面](../articles/azure-resource-manager/management/manage-resources-portal.md#manage-resources)的 [概觀] 和 [屬性])。 透過角色型存取控制 (RBAC) 或共同管理員權限來為使用者授與應用程式存取權時，該使用者可以使用他們自己的使用者層級認證，直到存取權遭到撤銷為止。 請勿與其他 Azure 使用者共用這些認證。

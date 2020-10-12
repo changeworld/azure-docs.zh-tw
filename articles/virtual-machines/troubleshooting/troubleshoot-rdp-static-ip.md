@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 11/08/2018
 ms.author: genli
 ms.openlocfilehash: 49f3f44c7de8c700d0093c5eb6f166a1dffb34a4
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86087243"
 ---
 #  <a name="cannot-remote-desktop-to-azure-virtual-machines-because-of-static-ip"></a>因為靜態 IP 而無法將遠端桌面連線到 Azure 虛擬機器
@@ -24,7 +24,7 @@ ms.locfileid: "86087243"
 本文說明在 VM 中設定靜態 IP 之後，您無法將遠端桌面連線至 Azure Windows 虛擬機器 (VM) 的問題。
 
 
-## <a name="symptoms"></a>徵狀
+## <a name="symptoms"></a>徵兆
 
 當您對 Azure 中的 VM 進行 RDP 連線時，您會收到下列錯誤訊息：
 
@@ -44,7 +44,7 @@ ms.locfileid: "86087243"
 
 VM 具有在 Windows 中的網路介面上定義的靜態 IP 位址。 此 IP 位址不同於 Azure 入口網站中所定義的位址。
 
-## <a name="solution"></a>解決方案
+## <a name="solution"></a>解決方法
 
 在遵循下列步驟之前，請擷取受影響虛擬機器作業系統磁碟的快照集作為備份。 如需詳細資訊，請參閱[擷取磁碟快照集](../windows/snapshot-copy-managed-disk.md)。
 

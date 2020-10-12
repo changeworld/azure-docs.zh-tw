@@ -13,10 +13,10 @@ ms.date: 09/15/2020
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 06900483598e1c03bd56cd8ac8c905f885012f08
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91395884"
 ---
 # <a name="identity-data-storage-for-european-customers-in-azure-active-directory"></a>Azure Active Directory 中歐洲客戶的身分識別資料儲存體
@@ -36,7 +36,7 @@ ms.locfileid: "91395884"
 
 如需 Azure Multi-Factor Authentication Server (MFA Server) 和雲端式 Azure MFA 收集哪些使用者資訊的詳細資訊，請參閱 [azure Multi-Factor Authentication 使用者資料收集](../authentication/howto-mfa-reporting-datacollection.md)。
 
-## <a name="password-based-single-sign-on-for-enterprise-applications"></a>企業應用程式以密碼為基礎的單一登入
+## <a name="password-based-single-sign-on-for-enterprise-applications"></a>企業應用程式以密碼為基礎的單一 Sign-On
  
 如果客戶建立新的企業應用程式 (Azure AD 資源庫或非資源庫) ，並啟用密碼型 SSO，則應用程式登入 URL 和自訂捕獲登入欄位會儲存在美國。 如需這項功能的詳細資訊，請參閱 [設定密碼型單一登入](../manage-apps/configure-password-single-sign-on-non-gallery-applications.md)
 

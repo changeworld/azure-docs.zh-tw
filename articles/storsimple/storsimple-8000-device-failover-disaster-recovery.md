@@ -15,15 +15,15 @@ ms.workload: na
 ms.date: 05/03/2017
 ms.author: alkohli
 ms.openlocfilehash: dffa059b18e159d04b5e3bb8555dabf801ede692
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85511803"
 ---
 # <a name="failover-and-disaster-recovery-for-your-storsimple-8000-series-device"></a>StorSimple 8000 系列裝置的容錯移轉和災害復原
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 本文說明 StorSimple 8000 系列裝置的裝置容錯移轉功能，以及發生災害時，如何使用此功能來復原 StorSimple 裝置。 StorSimple 會使用裝置容錯移轉將資料從資料中心的來源裝置移轉至另一個目標裝置。 本文中的指導方針適用於 StorSimple 8000 系列實體裝置和執行軟體版本 Update 3 和更新版本的雲端設備。
 
@@ -83,7 +83,7 @@ ms.locfileid: "85511803"
 
 萬一發生災害，您可以選擇將 StorSimple 裝置容錯移轉到：
 
-* [實體裝置](storsimple-8000-device-failover-physical-device.md)。
+* [至實體裝置](storsimple-8000-device-failover-physical-device.md)。
 * [本身](storsimple-8000-device-failover-same-device.md)。
 * [雲端設備](storsimple-8000-device-failover-cloud-appliance.md)。
 
@@ -128,7 +128,7 @@ A.  如果刪除作業失敗，您可以手動刪除磁碟區容器。 在 [裝�
 
 如果 StorSimple 裝置在發生災害的前一刻才剛註冊，則此裝置可能需要進行原廠重設。 災害發生後，StorSimple 裝置在 Azure 入口網站中會顯示為離線。 必須將此裝置從入口網站中刪除。 請將裝置重設為原廠預設值，並再次註冊服務。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 如果已準備好執行裝置容錯移轉，請在下列情節中擇一，取得詳細說明：
 

@@ -15,15 +15,15 @@ ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
 ms.openlocfilehash: 0ed8533b093c5af0d8aefdcd5175bed63f37a76c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85507665"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-log-a-support-request-for-the-storsimple-virtual-array"></a>使用 StorSimple 裝置管理員服務來登錄 StorSimple Virtual Array 的支援要求
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 StorSimple 裝置管理員可讓您在服務摘要刀鋒視窗中**登錄新的支援要求**。 本文說明如何從入口網站登錄新的支援要求並管理其生命週期。
 
@@ -65,7 +65,7 @@ StorSimple 裝置管理員可讓您在服務摘要刀鋒視窗中**登錄新的�
 
 ![管理支援要求](./media/storsimple-virtual-array-log-support-ticket/manage-support-tickets.png)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 了解如何[診斷並解決 StorSimple Virtual Array 的相關問題](storsimple-virtual-array-diagnose-problems.md)
 

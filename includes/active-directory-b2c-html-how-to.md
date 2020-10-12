@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 03/19/2020
 ms.author: mimart
 ms.openlocfilehash: 9b660bf20c90a84780175e70573c96a0ce1b0b7d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91377553"
 ---
 ## <a name="use-custom-page-content"></a>使用自訂頁面內容
@@ -46,7 +46,7 @@ Azure AD B2C 在客戶的瀏覽器中使用 [跨原始資源分享 (CORS) ](http
 
 下表列出 Azure AD B2C 所提供的預設頁面內容。 下載這些檔案，並使用它們做為建立您專屬自訂頁面的起點。
 
-| 預設頁面 | 說明 | 內容定義識別碼<br/>僅 (自訂原則)  |
+| 預設頁面 | 描述 | 內容定義識別碼<br/>僅 (自訂原則)  |
 |:-----------------------|:--------|-------------|
 | [exception.html](https://login.microsoftonline.com/static/tenant/default/exception.cshtml) | **錯誤頁面**。 在發生例外狀況或錯誤時，系統會顯示此頁面。 | api.error** |
 | [selfasserted.html](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) |  **自我判斷頁面**。 使用此檔案作為社交帳戶註冊頁面、本機帳戶註冊頁面、本機帳戶登入頁面、密碼重設等的自訂頁面內容。 此表單可以包含各種輸入控制項，例如文字輸入方塊、密碼輸入方塊、選項按鈕、單選下拉式清單方塊和多選核取方塊。 | *localaccountsignin*、api. *localaccountsignup*、 *localaccountpasswordreset*、 *api. selfasserted* |
@@ -140,11 +140,11 @@ Azure AD B2C 在客戶的瀏覽器中使用 [跨原始資源分享 (CORS) ](http
 
 #### <a name="22-upload-your-custom-page-content-files"></a>2.2 上傳您的自訂頁面內容檔案
 
-1. 選取 [上傳]  。
+1. 選取 [上傳] 。
 1. 選取 [ **選取**檔案] 旁的資料夾圖示。
 1. 流覽至並選取您稍早在 [頁面 UI 自訂] 區段中建立的 **customize-ui.html**。
 1. 如果您想要上傳至子資料夾，請展開 [ **Advanced** ]，然後在 **[上傳至資料夾**] 中輸入資料夾名稱。
-1. 選取 [上傳]  。
+1. 選取 [上傳] 。
 1. 選取您上傳的 **customize-ui.html** blob。
 1. 選取 [ **URL** ] 文字方塊右邊的 [ **複製到剪貼** 簿] 圖示，將 URL 複製到剪貼簿。
 1. 在網頁瀏覽器中，流覽至您所複製的 URL，以確認您上傳的 blob 可以存取。 如果無法存取，例如如果您遇到 `ResourceNotFound` 錯誤，請確定容器的存取類型設定為 **blob**。
@@ -159,7 +159,7 @@ Azure AD B2C 在客戶的瀏覽器中使用 [跨原始資源分享 (CORS) ](http
 1. 針對 [允許的標頭]，輸入星號 (*)。
 1. 針對 [公開的標頭]，輸入星號 (*)。
 1. 針對 [最大壽命]，輸入 200。
-1. 選取 [儲存]。
+1. 選取 [儲存]****。
 
 #### <a name="31-test-cors"></a>3.1 測試 CORS
 

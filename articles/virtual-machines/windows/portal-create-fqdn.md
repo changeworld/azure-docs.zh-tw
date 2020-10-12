@@ -10,10 +10,10 @@ ms.date: 08/15/2018
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 7708e2ad7e84c4449d425e8bd6eb7d4d1f6a27eb
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87288254"
 ---
 # <a name="create-a-fully-qualified-domain-name-in-the-azure-portal-for-a-windows-vm"></a>在 Azure 入口網站中建立 Windows VM 的完整網域名稱
@@ -27,7 +27,7 @@ ms.locfileid: "87288254"
 
 您現在可以使用這個 DNS 名稱 (例如用於「遠端桌面通訊協定」(RDP)) 從遠端連接到 VM。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 既然您的 VM 已經有公用 IP 和 DNS 名稱，您便可以部署通用應用程式架構或服務，例如 IIS、SQL 或 SharePoint。
 
 您也可以進一步閱讀[使用 Resource Manager](../../azure-resource-manager/management/overview.md)，以取得建置 Azure 部署的相關秘訣。

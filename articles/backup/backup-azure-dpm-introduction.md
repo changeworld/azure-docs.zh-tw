@@ -4,10 +4,10 @@ description: 在本文中，您將瞭解如何使用 Azure 備份服務來準備
 ms.topic: conceptual
 ms.date: 06/11/2020
 ms.openlocfilehash: 0089c3d86eb36b82287570ecdfd6e8c782e6fb8a
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90975456"
 ---
 # <a name="prepare-to-back-up-workloads-to-azure-with-system-center-dpm"></a>準備使用 System Center DPM 將工作負載備份到 Azure
@@ -34,7 +34,7 @@ ms.locfileid: "90975456"
 - 針對內部部署 DPM，Azure 備份提供了長期部署至磁帶的替代方式。
 - 對於在 Azure VM 上執行的 DPM，Azure 備份可讓您卸載 Azure 磁碟中的儲存體。 在備份保存庫中儲存較舊的資料，可讓您將新資料儲存至磁碟，進而相應增加業務。
 
-## <a name="prerequisites-and-limitations"></a>先決條件和限制
+## <a name="prerequisites-and-limitations"></a>必要條件和限制
 
 **設定** | **需求**
 --- | ---
@@ -42,7 +42,7 @@ Azure VM 上的 DPM | System Center 2012 R2 (含 DPM 2012 R2 更新彙總套件 
 實體伺服器上的 DPM | System Center 2012 SP1 或更新版本；System Center 2012 R2。
 Hyper-V VM 上的 DPM | System Center 2012 SP1 或更新版本；System Center 2012 R2。
 VMware VM 上的 DPM | System Center 2012 R2 (含更新彙總套件 5 或更新版本)。
-單元 | DPM 服務器應安裝 Windows PowerShell 和 .NET Framework 4.5。
+元件 | DPM 服務器應安裝 Windows PowerShell 和 .NET Framework 4.5。
 支援的應用程式 | [了解](/system-center/dpm/dpm-protection-matrix) DPM 可備份的項目。
 支援的檔案類型 | 以下是可使用 Azure 備份來備份的檔案類型：<br> <li>加密 (只) 完整備份<li> 支援的壓縮 (增量備份)  <li> 支援的稀疏 (增量備份) <li> 壓縮和稀疏 (視為稀疏) 
 不支援的檔案類型 | <li>區分大小寫的檔案系統上的伺服器<li> 永久連結 (略過) <li>  (跳過的重新分析點) <li> 已略過加密和壓縮 () <li> 已略過加密和稀疏 () <li> 壓縮資料流<li> 剖析資料流程

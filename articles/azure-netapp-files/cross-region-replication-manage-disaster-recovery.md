@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 09/16/2020
 ms.author: b-juche
 ms.openlocfilehash: ad006279a656758ba856cd3f39c17b0410e525e6
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90708580"
 ---
 # <a name="manage-disaster-recovery-using-cross-region-replication"></a>使用跨區域複寫來管理嚴重損壞修復 
@@ -97,11 +97,11 @@ ms.locfileid: "90708580"
 3. 遵循 [為 Windows 或 Linux 虛擬機器掛接或取消掛接磁片](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)區中的步驟，重新掛接來源磁片區。  
     此步驟可讓用戶端存取來源磁片區。
 
-## <a name="next-steps"></a>下一步  
+## <a name="next-steps"></a>後續步驟  
 
 * [跨區域複寫](cross-region-replication-introduction.md)
 * [使用跨區域複寫的需求和考慮](cross-region-replication-requirements-considerations.md)
-* [顯示覆寫關聯性的健全狀況狀態](cross-region-replication-display-health-status.md)
+* [顯示複寫關聯性的健全狀態](cross-region-replication-display-health-status.md)
 * [磁片區複寫計量](azure-netapp-files-metrics.md#replication)
 * [針對跨區域複寫進行疑難排解](troubleshoot-cross-region-replication.md)
 

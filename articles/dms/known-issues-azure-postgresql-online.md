@@ -15,10 +15,10 @@ ms.custom:
 ms.topic: troubleshooting
 ms.date: 02/20/2020
 ms.openlocfilehash: 2d268c5ced0d427216ce4f6a7e9c97c6b5b8b0f4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91330310"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-from-postgresql-to-azure-db-for-postgresql"></a>從于 postgresql 到 Azure DB for 于 postgresql 的線上遷移的已知問題/遷移限制
@@ -44,7 +44,7 @@ ms.locfileid: "91330310"
 
 - 使用者在裝載源資料庫的伺服器上必須具有複寫角色。
 - 來源與目標資料庫架構必須相符。
-- 目標適用於 PostgreSQL 的 Azure 資料庫中的架構-單一伺服器不能有外鍵。 請使用以下查詢來卸除外部索引鍵：
+- PostgreSQL-Single 伺服器的目標 Azure 資料庫中的架構不能有外鍵。 請使用以下查詢來卸除外部索引鍵：
 
     ```
                                 SELECT Queries.tablename
@@ -75,7 +75,7 @@ ms.locfileid: "91330310"
 
     在查詢結果中執行卸除外部索引鍵 (這是第二個資料行)。
 
-- 目標適用於 PostgreSQL 的 Azure 資料庫中的架構-單一伺服器不能有任何觸發程式。 請使用下列命令來停用目標資料庫中的觸發程序：
+- 適用于 PostgreSQL-Single server 的目標 Azure 資料庫中的架構不能有任何觸發程式。 請使用下列命令來停用目標資料庫中的觸發程序：
 
      ```
     SELECT Concat('DROP TRIGGER ', Trigger_Name, ';') FROM  information_schema.TRIGGERS WHERE TRIGGER_SCHEMA = 'your_schema';

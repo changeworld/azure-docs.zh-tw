@@ -12,23 +12,23 @@ ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
 ms.openlocfilehash: c634b4f7ac3aa1fe83e6ab3f863e998b8d25232c
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87533932"
 ---
 # <a name="load-data-from-azure-data-lake-storage-for-synapse-sql"></a>針對 Synapse SQL 從 Azure Data Lake Storage 載入資料
 
-本指南概述如何使用[COPY 語句](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)從 Azure Data Lake Storage 載入資料。 如需跨所有驗證方法使用 COPY 語句的快速範例，請造訪下列檔：[使用 SYNAPSE SQL 安全地載入資料](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-bulk-load-copy-tsql-examples)。
+本指南概述如何使用 [COPY 語句](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) ，從 Azure Data Lake Storage 載入資料。 如需有關在所有驗證方法上使用 COPY 語句的快速範例，請造訪下列檔： [使用 SYNAPSE SQL 安全地載入資料](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-bulk-load-copy-tsql-examples)。
 
 > [!NOTE]  
-> 若要在 COPY 語句上提供意見反應或報告問題，請將電子郵件傳送至下列通訊群組清單： sqldwcopypreview@service.microsoft.com 。
+> 若要在 COPY 語句上提供意見反應或回報問題，請傳送電子郵件至下列通訊群組清單： sqldwcopypreview@service.microsoft.com 。
 >
 > [!div class="checklist"]
 >
 > * 建立要從 Azure Data Lake Storage 載入資料的目標資料表。
-> * 建立 COPY 語句，將資料載入資料倉儲。
+> * 建立 COPY 語句，以將資料載入資料倉儲。
 
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
@@ -39,11 +39,11 @@ ms.locfileid: "87533932"
 若要執行此教學課程，您需要：
 
 * SQL 集區。 請參閱[建立 SQL 集區及查詢資料](create-data-warehouse-portal.md)。
-* Data Lake Storage 帳戶。 請參閱[開始使用 Azure Data Lake Storage](../../data-lake-store/data-lake-store-get-started-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。 針對此儲存體帳戶，您將需要設定或指定下列其中一個要載入的認證：儲存體帳戶金鑰、共用存取簽章（SAS）金鑰、Azure 目錄應用程式使用者，或具有儲存體帳戶適當 Azure 角色的 AAD 使用者。
+* Data Lake Storage 帳戶。 請參閱[開始使用 Azure Data Lake Storage](../../data-lake-store/data-lake-store-get-started-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。 針對此儲存體帳戶，您必須設定或指定下列其中一項要載入的認證：儲存體帳戶金鑰、共用存取簽章 (SAS) 金鑰、Azure Directory 應用程式使用者，或具有儲存體帳戶適當 Azure 角色的 AAD 使用者。
 
 ## <a name="create-the-target-table"></a>建立目標資料表
 
-連接到您的 SQL 集區，並建立您將載入的目標資料表。 在此範例中，我們將建立產品維度資料表。
+連接到您的 SQL 集區，並建立您將載入的目標資料表。 在此範例中，我們要建立產品維度資料表。
 
 ```sql
 -- A: Create the target table
@@ -65,7 +65,7 @@ WITH
 
 ## <a name="create-the-copy-statement"></a>建立 COPY 語句
 
-連接到您的 SQL 集區，並執行 COPY 語句。 如需範例的完整清單，請造訪下列檔：[使用 SYNAPSE SQL 安全地載入資料](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-bulk-load-copy-tsql-examples)。
+連接到您的 SQL 集區，並執行 COPY 語句。 如需範例的完整清單，請參閱下列檔： [使用 SYNAPSE SQL 安全地載入資料](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-bulk-load-copy-tsql-examples)。
 
 ```sql
 -- B: Create and execute the COPY statement

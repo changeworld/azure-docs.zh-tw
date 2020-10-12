@@ -17,10 +17,10 @@ ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7afcd3bfe16775d5c99100278eda81da739b8d22
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84764480"
 ---
 # <a name="access-your-on-premises-applications-through-microsoft-teams"></a>透過 Microsoft Teams 存取內部部署應用程式
@@ -33,7 +33,7 @@ Azure Active Directory Application Proxy 可讓您從任何地方單一登入內
 
 如果您尚未這麼做，請[設定租用戶的 Application Proxy 並安裝連接器](application-proxy-add-on-premises-application.md)。 然後，[發佈內部部署應用程式](application-proxy-add-on-premises-application.md)以供遠端存取。 當您要發佈應用程式時，請記下外部 URL，因為這會用於將應用程式新增至 Teams。
 
-如果您已經發佈應用程式，但不記得其外部 URL，請在 [Azure 入口網站](https://portal.azure.com)中查閱。 登入，然後流覽至**Azure Active Directory**  >  **企業應用**程式] [  >  **所有應用**程式] > 選取您 >**應用程式 proxy**的應用程式。
+如果您已經發佈應用程式，但不記得其外部 URL，請在 [Azure 入口網站](https://portal.azure.com)中查閱。 登入，然後流覽至**Azure Active Directory**  >  **企業應用**程式的  >  **所有應用**程式 > 選取您的應用程式 >**應用程式 proxy**。
 
 ## <a name="add-your-app-to-teams"></a>將應用程式新增至 Teams
 
@@ -41,7 +41,7 @@ Azure Active Directory Application Proxy 可讓您從任何地方單一登入內
 
 1. 流覽至您要新增此應用程式的 [小組] 頻道，然後選取以新增索引標籤 **+** 。
 
-   ![選取 [+] 以在小組中加入索引標籤](./media/application-proxy-integrate-with-teams/add-tab.png)
+   ![選取 [+] 以新增小組中的索引標籤](./media/application-proxy-integrate-with-teams/add-tab.png)
 
 1. 從索引標籤選項中選取 [網站]****。
 
@@ -49,11 +49,11 @@ Azure Active Directory Application Proxy 可讓您從任何地方單一登入內
 
 1. 指定索引標籤的名稱，並將 URL 設定為 Application Proxy 外部 URL。
 
-   ![為索引標籤命名，並新增外部 URL](./media/application-proxy-integrate-with-teams/tab-name-url.png)
+   ![命名索引標籤並新增外部 URL](./media/application-proxy-integrate-with-teams/tab-name-url.png)
 
 一旦有小組成員新增索引標籤，該索引標籤就會對通道中的每個人顯示。 任何具有此應用程式存取權的使用者均可透過其用於 Microsoft Teams 的認證來取得單一登入存取。 任何不具此應用程式存取權的使用者會在 Teams 中看到此索引標籤，但是在您提供內部部署應用程式和應用程式之 Azure 入口網站發佈版本的權限以前，都會遭到封鎖。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - 了解如何透過 Application Proxy [發佈內部部署 SharePoint 網站](application-proxy-integrate-with-sharepoint-server.md)。
 - 將您的應用程式設定為將[自訂網域](application-proxy-configure-custom-domain.md)用於其外部 URL。

@@ -15,10 +15,10 @@ ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: kegorman
 ms.openlocfilehash: 70de7363634cee2790a40ecf056134cf002c762d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91274702"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>在 Azure 中設計和實作 Oracle 資料庫
@@ -50,10 +50,10 @@ ms.locfileid: "91274702"
 | **安全性群組** |IP/連接埠限制工具 |[ (NSG) 的網路安全性群組 ](https://azure.microsoft.com/blog/network-security-groups) |
 | **恢復功能** |MTBF (平均失敗時間) |MTTR (平均復原時間)|
 | **預定進行的維修** |修補/升級|[可用性設定組](../../windows/infrastructure-example.md) (Azure 所管理的修補/升級) |
-| **資源** |專用  |與其他用戶端共用|
+| **Resource** |專用  |與其他用戶端共用|
 | **區域** |資料中心 |[區域配對](../../regions.md#region-pairs)|
 | **Storage** |SAN/實體磁碟 |[Azure 受控儲存體](https://azure.microsoft.com/pricing/details/managed-disks/?v=17.23h)|
-| **調整** |垂直調整 |水平調整|
+| **縮放比例** |垂直調整 |水平調整|
 
 
 ### <a name="requirements"></a>需求

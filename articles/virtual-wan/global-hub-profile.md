@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: alzam
 ms.openlocfilehash: 6d5c4ba0f1f55119d1ec38296e67ae3e90c52650
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91313717"
 ---
 # <a name="download-a-global-or-hub-based-profile-for-user-vpn-clients"></a>為使用者 VPN 用戶端下載全域或以中樞為基礎的設定檔

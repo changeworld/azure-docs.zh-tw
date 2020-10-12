@@ -12,10 +12,10 @@ ms.date: 03/27/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 742c69709eee19a37abdb3e5330cd7fb8ce315b7
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89436386"
 ---
 # <a name="add-fault-tolerance-in-copy-activity-by-skipping-incompatible-rows"></a>跳過不相容的資料列以在複製活動中新增容錯
@@ -50,7 +50,7 @@ Azure Data Factory [複製活動](data-factory-data-movement-activities.md)可�
 >[!NOTE]
 >當複製活動設定為叫用外部資料載入機制（包括 [Azure Synapse Analytics (先前的 SQL 資料倉儲) PolyBase](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-synapse-analytics) 或 [Amazon Redshift Unload](data-factory-amazon-redshift-connector.md#use-unload-to-copy-data-from-amazon-redshift)）時，此功能就不適用。 若要使用 PolyBase 將資料載入 Azure Synapse Analytics，請在複製活動中指定 "[polyBaseSettings](data-factory-azure-sql-data-warehouse-connector.md#sqldwsink)"，以使用 polybase 的原生容錯支援。
 
-## <a name="configuration"></a>設定
+## <a name="configuration"></a>組態
 下列範例提供的 JSON 定義，可設定在複製活動中跳過不相容資料列：
 
 ```json

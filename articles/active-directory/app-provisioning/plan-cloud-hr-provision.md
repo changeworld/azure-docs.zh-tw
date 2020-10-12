@@ -12,10 +12,10 @@ ms.date: 11/22/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
 ms.openlocfilehash: 3a3f461941bfcd5091ebb14818bac05d6844b3fe
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90706358"
 ---
 # <a name="plan-cloud-hr-application-to-azure-active-directory-user-provisioning"></a>規劃雲端 HR 應用程式以 Azure Active Directory 使用者布建
@@ -52,7 +52,7 @@ Azure AD 的使用者布建服務可讓您自動化下列 HR 式身分識別生�
 - 需要根據在雲端 HR 應用程式中偵測到的變更資訊，來加入、移動及離開使用者，使其同步至一或多個 Active Directory 的樹系、網域和 Ou。
 - 使用電子郵件的 Microsoft 365。
 
-## <a name="learn"></a>Learn
+## <a name="learn"></a>學習
 
 使用者布建可為進行中的身分識別治理建立基礎。 它能增強依賴授權身分識別資料的商務程式品質。
 
@@ -79,7 +79,7 @@ Azure AD 的使用者布建服務可讓您自動化下列 HR 式身分識別生�
 
 針對將源自雲端 HR 應用程式並布建至 Active Directory 或 Azure AD 的每個使用者，您也需要有效的 Azure AD Premium P1 或更高的訂用帳戶授權。 在雲端 HR 應用程式中所擁有的授權數量不正確，可能會在使用者布建期間導致錯誤。
 
-### <a name="prerequisites"></a>先決條件
+### <a name="prerequisites"></a>必要條件
 
 - Azure AD [混合式身分識別管理員](../users-groups-roles/directory-assign-admin-roles.md#hybrid-identity-administrator)  來設定 Azure AD Connect 布建代理程式。
 - Azure AD [應用程式系統管理員](../users-groups-roles/directory-assign-admin-roles.md#application-administrator) 角色，以在 Azure 入口網站中設定布建應用程式
@@ -255,9 +255,9 @@ Azure AD Connect 布建代理程式部署拓撲取決於雲端 HR 應用程式�
 
 根據預設，布建連接器應用程式會將 HR 使用者設定檔狀態對應至 Active Directory 或 Azure AD 中的使用者帳戶狀態，以判斷是否要啟用或停用使用者帳戶。
 
-當您起始權變-權變進程時，請收集下列需求。
+當您起始 Joiners-Leavers 進程時，請收集下列需求。
 
-| 程序 | 需求 |
+| 處理序 | 需求 |
 | - | - |
 | **權變** | 從身分識別生命週期的觀點來看，您要如何處理重新雇用？ 重新雇用要保留舊的員工識別碼嗎？ |
 | | 您是否處理未來的員工，並事先為他們建立 Active Directory 帳戶？ 這些帳戶會建立為啟用或停用狀態嗎？ |
@@ -276,7 +276,7 @@ Azure AD Connect 布建代理程式部署拓撲取決於雲端 HR 應用程式�
 
 當您起始權變-權變進程時，請收集下列需求。
 
-| 程序 | 需求 |
+| 處理序 | 需求 |
 | - | - |
 | **權變** | Active Directory 帳戶建立程式是手動、自動或部分自動化？ |
 | | 您是否計畫將自訂屬性從雲端 HR 應用程式傳播至 Active Directory？ |

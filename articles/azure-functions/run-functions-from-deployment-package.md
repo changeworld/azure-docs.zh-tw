@@ -4,10 +4,10 @@ description: 讓 Azure Functions 執行階段藉由掛接部署套件檔案 (內
 ms.topic: conceptual
 ms.date: 07/15/2019
 ms.openlocfilehash: b2d90cf78263b30b4315199cf1c543186a435f17
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88639880"
 ---
 # <a name="run-your-azure-functions-from-a-package-file"></a>從套件檔案執行 Azure Functions
@@ -32,7 +32,7 @@ ms.locfileid: "88639880"
 
 若要讓函式應用程式能夠從套件執行，您只需要將 `WEBSITE_RUN_FROM_PACKAGE` 設定新增至函式應用程式的設定。 `WEBSITE_RUN_FROM_PACKAGE` 設定可具有下列其中一個值：
 
-| 值  | 描述  |
+| 值  | 說明  |
 |---------|---------|
 | **`1`**  | 建議用於在 Windows 上執行的函數應用程式。 從函式應用程式中 `d:\home\data\SitePackages` 資料夾內的套件檔案執行。 如果未 [使用 zip deploy 部署](#integration-with-zip-deployment)，此選項需要資料夾也必須有名為的檔案 `packagename.txt` 。 此檔案只會包含資料夾內套件檔案的名稱，且不含任何空白字元。 |
 |**`<URL>`**  | 所要執行的特定套件檔案所在的位置。 使用 Blob 儲存體時，請搭配使用私用容器與[共用存取簽章 (SAS)](../vs-azure-tools-storage-manage-with-storage-explorer.md#generate-a-sas-in-storage-explorer) 來讓 Functions 執行階段能夠存取套件。 您可以使用 [Azure 儲存體總管](../vs-azure-tools-storage-manage-with-storage-explorer.md)將套件檔案上傳至 Blob 儲存體帳戶。 當您指定 URL 時，您也必須在發行更新的封裝之後 [同步處理觸發](functions-deployment-technologies.md#trigger-syncing) 程式。 |
@@ -67,7 +67,7 @@ ms.locfileid: "88639880"
 - 若要改善冷啟動效能，請使用本機 Zip 選項 (`WEBSITE_RUN_FROM_PACKAGE` = 1) 。
 - 從套件執行與部署自訂選項 () 不相容 `SCM_DO_BUILD_DURING_DEPLOYMENT=true` ，部署期間將會忽略組建步驟。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 > [!div class="nextstepaction"]
 > [Azure Functions 的持續部署](functions-continuous-deployment.md)

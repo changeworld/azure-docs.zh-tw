@@ -12,10 +12,10 @@ ms.date: 09/17/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
 ms.openlocfilehash: a9b8a2c2454c135c72d39a587e84220e8916e54b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91315420"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>使用 Azure Machine Learning 部署模型
@@ -311,7 +311,7 @@ print(service.state)
 
 下表說明不同的服務狀態：
 
-| Webservice 狀態 | 說明 | 最終狀態？
+| Webservice 狀態 | 描述 | 最終狀態？
 | ----- | ----- | ----- |
 | 過渡 | 服務正在進行部署。 | 否 |
 | Unhealthy | 服務已部署，但目前無法連線。  | 否 |

@@ -15,15 +15,15 @@ ms.workload: TBD
 ms.date: 8/25/2017
 ms.author: alkohli
 ms.openlocfilehash: a5a7a31c174271f963bb005f10b8376a59133d36
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85513124"
 ---
 # <a name="replace-a-disk-drive-on-your-storsimple-8000-series-device"></a>更換 StorSimple 8000 系列裝置上的磁碟機
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 本教學課程說明如何取下和更換 Microsoft Azure StorSimple 裝置上無法運作或故障的硬碟。 若要取下磁碟機，您必須：
 
 * 打開防拆鎖
@@ -103,12 +103,12 @@ ms.locfileid: "85513124"
     **圖 6** 將磁碟機載具滑入底座
 3. 一旦插入磁碟機載具，請關閉磁碟機載具把手，同時繼續將磁碟機載具推入底座，直到磁碟機載具把手卡入鎖定的位置。
 4. 使用 Microsoft 所提供的鎖鑰匙 (防拆 Torx 螺絲起子)，將鎖螺絲順時鐘方向旋轉四分之一來固定住載具把手。
-5. 請確認更換成功，而且該磁碟機可運作。 存取 Azure 入口網站，然後流覽至 [**裝置設定**] [  >  **硬體健康**情況]。 在 [共用元件]**** 或 [EBOD 共用元件]**** 下，磁碟機狀態應該是綠色，表示狀況良好。
+5. 請確認更換成功，而且該磁碟機可運作。 存取 Azure 入口網站並流覽至 [**裝置設定**  >  **硬體健康**情況]。 在 [共用元件]**** 或 [EBOD 共用元件]**** 下，磁碟機狀態應該是綠色，表示狀況良好。
 
    
    > [!NOTE]
    > 在更換之後，可能需要數小時，磁碟狀態才會變成綠色。
   
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 深入了解 [StorSimple 硬體元件更換](storsimple-8000-hardware-component-replacement.md)。
 

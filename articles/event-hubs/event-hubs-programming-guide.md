@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 17bec931f79a6dbb3d98270ab0ff6e2d1d4c6541
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89013906"
 ---
 # <a name="net-programming-guide-for-azure-event-hubs-legacy-microsoftazureeventhubs-package"></a>Azure 事件中樞 (舊版 EventHubs 套件的 .NET 程式設計指南) 
@@ -68,7 +68,7 @@ for (var i = 0; i < numMessagesToSend; i++)
 }
 ```
 
-## <a name="partition-key"></a>分割區索引鍵
+## <a name="partition-key"></a>資料分割索引鍵
 
 > [!NOTE]
 > 如果您不熟悉資料分割，請參閱 [這篇文章](event-hubs-features.md#partitions)。 

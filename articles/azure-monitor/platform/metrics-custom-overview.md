@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 06/01/2020
 ms.subservice: metrics
 ms.openlocfilehash: 73c9b2bf8cf88ca5e8576c451c9d9ac5f0eae8a3
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88639897"
 ---
 # <a name="custom-metrics-in-azure-monitor-preview"></a>Azure 監視器 (Preview 中的自訂計量) 
@@ -177,7 +177,7 @@ Azure 監視器會儲存一分鐘資料粒度間隔內的所有計量。 我們�
 > 您必須是讀取者或參與者角色，才能查看自訂計量。
 
 ### <a name="browse-your-custom-metrics-via-the-azure-portal"></a>透過 Azure 入口網站瀏覽自訂計量
-1.    前往 [Azure 入口網站](https://portal.azure.com)。
+1.    移至 [Azure 入口網站](https://portal.azure.com)。
 2.    選取 [監視]**** 窗格。
 3.    選取 [計量]。
 4.    選取您已對其發出自訂計量的資源。
@@ -230,7 +230,7 @@ Azure 監視器會對自訂計量加諸下列使用量限制：
 
 使用中的時間序列定義為計量、維度索引鍵或維度值 (含有過去 12 小時內所發佈計量值) 的任意獨特組合。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 使用來自不同服務的自訂計量： 
  - [虛擬機器](collect-custom-metrics-guestos-resource-manager-vm.md)
  - [虛擬機器擴展集](collect-custom-metrics-guestos-resource-manager-vmss.md)

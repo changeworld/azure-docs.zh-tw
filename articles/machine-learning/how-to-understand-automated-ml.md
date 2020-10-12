@@ -12,10 +12,10 @@ ms.date: 12/05/2019
 ms.topic: conceptual
 ms.custom: how-to
 ms.openlocfilehash: a38d65e66debd8e718964efdce27fe42772d8e0a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91315536"
 ---
 # <a name="understand-automated-machine-learning-results"></a>瞭解自動化機器學習結果
@@ -28,7 +28,7 @@ ms.locfileid: "91315536"
 + [回歸模型的計量和圖表](#regression)
 + [模型可解譯性和特徵重要性](#explain-model)
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前先建立免費帳戶。 立即試用[免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)。
 

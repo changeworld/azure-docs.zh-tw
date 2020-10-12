@@ -1,6 +1,6 @@
 ---
 title: 在 HDInsight 中搭配使用 Apache Hadoop Hive 與 Curl - Azure
-description: 瞭解如何使用捲曲從遠端提交 Apache Pig 作業到 Azure HDInsight。
+description: 瞭解如何使用捲曲從遠端將 Apache Pig 作業提交至 Azure HDInsight。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/06/2020
 ms.openlocfilehash: 87feba3bc79e39f1379a25fa55fe0186d5605e4a
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86085543"
 ---
 # <a name="run-apache-hive-queries-with-apache-hadoop-in-hdinsight-using-rest"></a>搭配 HDInsight 中的 Apache Hadoop 使用 REST 來執行 Apache Hive 查詢
@@ -25,40 +25,40 @@ ms.locfileid: "86085543"
 
 * HDInsight 上的 Apache Hadoop 叢集。 請參閱[開始在 Linux 上使用 HDInsight](./apache-hadoop-linux-tutorial-get-started.md)。
 
-* REST 用戶端。 本檔使用 Windows PowerShell 上[的 WebRequest](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-webrequest) ，並在[Bash](https://docs.microsoft.com/windows/wsl/install-win10)上[捲曲](https://curl.haxx.se/)。
+* REST 用戶端。 本檔使用 Windows PowerShell 上的[WebRequest](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-webrequest) ，並在[Bash](https://docs.microsoft.com/windows/wsl/install-win10)上[捲曲](https://curl.haxx.se/)。
 
-* 如果您使用 Bash，則也需要 jq 的命令列 JSON 處理器。  請參閱 [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/)。
+* 如果您使用 Bash，您也需要 jq，也就是命令列 JSON 處理器。  請參閱 [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/)。
 
 ## <a name="base-uri-for-rest-api"></a>Rest API 的基底 URI
 
-HDInsight 上 REST API 的基底統一資源識別元（URI）是 `https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME` ，其中 `CLUSTERNAME` 是您的叢集名稱。  Uri 中的叢集名稱會區分**大小寫**。  雖然 URI （）的完整功能變數名稱（FQDN）部分中的叢集名稱 `CLUSTERNAME.azurehdinsight.net` 不區分大小寫，但 uri 中的其他專案會區分大小寫。
+HDInsight 上 REST API 的基底統一資源識別項 (URI) 是 `https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME` ，其中 `CLUSTERNAME` 是您的叢集名稱。  Uri 中的叢集名稱會區分 **大小寫**。  雖然完整功能變數名稱中的叢集名稱 (FQDN) 一部分的 URI (`CLUSTERNAME.azurehdinsight.net`) 不區分大小寫，但 uri 中的其他出現專案會區分大小寫。
 
 ## <a name="authentication"></a>驗證
 
 在使用 cURL 或與 WebHCat 進行任何其他 REST 通訊時，您必須提供 HDInsight 叢集系統管理員的使用者名稱和密碼來驗證要求。 透過 [基本驗證](https://en.wikipedia.org/wiki/Basic_access_authentication)來保護 REST API 的安全。 為確保認證安全地傳送至伺服器，請一律使用安全 HTTP (HTTPS) 提出要求。
 
-### <a name="setup-preserve-credentials"></a>安裝程式（保留認證）
+### <a name="setup-preserve-credentials"></a>設定 (保留認證) 
 
 保留您的認證，以避免在每個範例中重新輸入。  叢集名稱將會在個別的步驟中保留。
 
-**A Bash**  
-`PASSWORD`以您的實際密碼取代，以編輯下面的腳本。  然後輸入命令。
+**答： Bash**  
+以您的實際密碼取代，以編輯以下腳本 `PASSWORD` 。  然後輸入命令。
 
 ```bash
 export password='PASSWORD'
 ```  
 
-**B. PowerShell**執行下列程式碼，並在快顯視窗中輸入您的認證：
+**B. PowerShell** 執行下列程式碼，並在快顯視窗中輸入您的認證：
 
 ```powershell
 $creds = Get-Credential -UserName "admin" -Message "Enter the HDInsight login"
 ```
 
-### <a name="identify-correctly-cased-cluster-name"></a>識別正確大小寫的叢集名稱
+### <a name="identify-correctly-cased-cluster-name"></a>識別正確的大小寫叢集名稱
 
 視叢集的建立方式而定，叢集名稱的實際大小寫可能與您預期的不同。  此處的步驟會顯示實際的大小寫，然後將它儲存在所有後續範例的變數中。
 
-編輯下列腳本，將取代為 `CLUSTERNAME` 您的叢集名稱。 然後輸入命令。 （FQDN 的叢集名稱不區分大小寫）。
+編輯下面的腳本，將取代為 `CLUSTERNAME` 您的叢集名稱。 然後輸入命令。  (FQDN 的叢集名稱不區分大小寫。 ) 
 
 ```bash
 export clusterName=$(curl -u admin:$password -sS -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters" | jq -r '.items[].Clusters.cluster_name')
@@ -146,7 +146,7 @@ $clusterName
 
    這些陳述式會執行下列動作：
 
-   * `DROP TABLE`-如果資料表已存在，則會予以刪除。
+   * `DROP TABLE` -如果資料表已經存在，就會刪除它。
    * `CREATE EXTERNAL TABLE` - 在 Hive 中建立新的「外部」資料表。 外部資料表只會將資料表定義儲存在 Hive 中。 資料會留在原來的位置。
 
      > [!NOTE]  
@@ -155,8 +155,8 @@ $clusterName
      > 捨棄外部資料表並 **不會** 刪除資料，只會刪除資料表定義。
 
    * `ROW FORMAT` - 設定資料格式的方式。 每個記錄中的欄位會以空格分隔。
-   * `STORED AS TEXTFILE LOCATION`-資料的儲存位置（example/data 目錄），而且會儲存為文字。
-   * `SELECT`-選取資料行**t4**包含 **[ERROR]** 值的所有資料列計數。 這個陳述式會傳回值 **3**，因為有三個資料列包含此值。
+   * `STORED AS TEXTFILE LOCATION` -資料儲存 (範例/資料目錄) ，而且會儲存為文字。
+   * `SELECT` -選取資料行 **t4** 包含 **[ERROR]** 值的所有資料列計數。 這個陳述式會傳回值 **3**，因為有三個資料列包含此值。
 
      > [!NOTE]  
      > 請注意，在搭配 Curl 使用時，會以 `+` 字元取代 HiveQL 陳述式之間的空格。 加上引號的值若包含空格，例如分隔符號，則不應以 `+`取代。
@@ -187,7 +187,7 @@ $clusterName
 
     您可以使用 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) 列出並下載這些檔案。 如需搭配 Azure 儲存體使用 Azure CLI 的詳細資訊，請參閱[搭配 Azure 儲存體使用 Azure CLI](https://docs.microsoft.com/azure/storage/storage-azure-cli) 文件。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 如需您可以在 HDInsight 上使用 Hadoop 之其他方式的詳細資訊：
 

@@ -16,13 +16,13 @@ ms.author: kenwith
 ms.reviewer: paulgarn
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 779d1b73f45f9be5b4bd00d546987b7c1e0b6a43
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84763341"
 ---
-# <a name="how-to-configure-azure-ad-saml-token-encryption"></a>如何：設定 SAML 權杖加密 Azure AD
+# <a name="how-to-configure-azure-ad-saml-token-encryption"></a>如何：設定 Azure AD SAML 權杖加密
 
 > [!NOTE]
 > 權杖加密是 Azure Active Directory (Azure AD) 的高級功能。 若要深入了解 Azure AD 版本、功能及定價，請參閱 [Azure AD 定價](https://azure.microsoft.com/pricing/details/active-directory/)。
@@ -66,7 +66,7 @@ Azure AD 會使用 AES-256 加密 SAML 判斷提示的資料。
     > [!NOTE]
     > [權杖加密]**** 選項僅適用於從 Azure 入口網站中的 [企業應用程式]**** 刀鋒視窗設定的 SAML 應用程式，可以是應用程式庫或非資源庫應用程式。 對於其他應用程式，此功能表選項已停用。 對於透過 Azure 入口網站中的 [應用程式註冊]**** 體驗註冊的應用程式，您可以使用應用程式資訊清單、Microsoft Graph 或 PowerShell 為 SAML 權杖設定加密。
 
-1. 在 [**權杖加密**] 頁面上，選取 [匯**入憑證**] 以匯入包含公用 x.509 憑證的 .cer 檔案。
+1. 在 [ **權杖加密** ] 頁面上，選取 [匯 **入憑證** ] 以匯入包含公用 x.509 憑證的 .cer 檔案。
 
     ![匯入包含 X.509 憑證的 .cer 檔案](./media/howto-saml-token-encryption/import-certificate-small.png)
 
@@ -124,7 +124,7 @@ Azure AD 會使用 AES-256 加密 SAML 判斷提示的資料。
 
 1. 使用最新的 Azure AD PowerShell 模組連接到您的租使用者。
 
-1. 使用**[AzureApplication](https://docs.microsoft.com/powershell/module/azuread/set-azureadapplication?view=azureadps-2.0-preview)** 命令設定權杖加密設定。
+1. 使用 **[AzureApplication](https://docs.microsoft.com/powershell/module/azuread/set-azureadapplication?view=azureadps-2.0-preview)** 命令設定權杖加密設定。
 
     ```
     Set-AzureADApplication -ObjectId <ApplicationObjectId> -KeyCredentials "<KeyCredentialsObject>"  -TokenEncryptionKeyId <keyID>
@@ -217,7 +217,7 @@ Azure AD 會使用 AES-256 加密 SAML 判斷提示的資料。
     }  
     ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * 了解 [Azure AD 如何使用 SAML 通訊協定](../develop/active-directory-saml-protocol-reference.md)
 * 了解 [Azure AD 中 SAML 權杖](../develop/reference-saml-tokens.md)的格式、安全性特性和內容
