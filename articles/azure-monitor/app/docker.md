@@ -4,10 +4,10 @@ description: Docker 效能計數器、事件和例外狀況可以與來自容器
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.openlocfilehash: 272b4e8af7b1ed3d01d8af0979b56954585f795d
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90977584"
 ---
 # <a name="monitor-docker-applications-in-application-insights-deprecated"></a>在 Application Insights (中監視 Docker 應用程式已淘汰) 

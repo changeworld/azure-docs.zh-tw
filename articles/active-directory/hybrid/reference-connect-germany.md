@@ -18,10 +18,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 246f8326f7112825de98ee824cf4bab7952a7878
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90014582"
 ---
 # <a name="azure-ad-connect-in-microsoft-cloud-germany---public-preview"></a>Microsoft Cloud Germany 中的 Azure AD Connect - 公開預覽
@@ -54,7 +54,7 @@ Azure AD Connect 可進行內部部署 Active Directory 與 Azure Active Directo
 
 下表描述刀鋒視窗中顯示的功能。
 
-| Title | 描述 |
+| 標題 | 描述 |
 | --- | --- |
 | 同步處理狀態 |讓您知道已啟用或停用同步處理。 |
 | 上次同步處理 |上次成功完成同步處理。 |

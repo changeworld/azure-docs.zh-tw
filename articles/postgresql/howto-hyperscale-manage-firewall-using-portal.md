@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 9/11/2020
 ms.openlocfilehash: dadd04497eae0e91bdf5ea3caad38beda35f7fa3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91275416"
 ---
 # <a name="manage-firewall-rules-for-azure-database-for-postgresql---hyperscale-citus"></a>管理適用於 PostgreSQL Azure 資料庫的防火牆規則 - 超大規模 (Citus)
@@ -30,18 +30,18 @@ ms.locfileid: "91275416"
 
 1. 在 [PostgreSQ 伺服器群組] 頁面的 [安全性] 標題底下，按一下 [網路] 以開啟防火牆規則。
 
-   :::image type="content" source="./media/howto-hyperscale-manage-firewall-using-portal/1-connection-security.png" alt-text="Azure 入口網站 - 按一下 [網路]":::
+   :::image type="content" source="./media/howto-hyperscale-manage-firewall-using-portal/1-connection-security.png" alt-text="Azure 入口網站 - [網路] 索引標籤":::
 
 2. 按一下 [ **新增目前的用戶端 IP 位址** ]，以您的電腦公用 IP 位址建立防火牆規則，如同 Azure 系統所見。
 
-   :::image type="content" source="./media/howto-hyperscale-manage-firewall-using-portal/2-add-my-ip.png" alt-text="Azure 入口網站 - 按一下 [新增用戶端 IP]":::
+   :::image type="content" source="./media/howto-hyperscale-manage-firewall-using-portal/2-add-my-ip.png" alt-text="Azure 入口網站 - [網路] 索引標籤":::
 
 或者，按一下 [+新增 0.0.0.0 - 255.255.255.255] (選項 B 右側)，除了 IP 之外，也會允許整個網際網路存取協調器節點的連接埠 5432。 在此情況下，用戶端仍然必須使用正確的使用者名稱和密碼登入，才能使用叢集。 不過，我們建議只在短時間內且只對非生產資料庫允許全球存取。
 
 3. 儲存設定之前，請確認您的 IP 位址。 在某些情況下，Azure 入口網站觀察到的 IP 位址，不同於用來存取網際網路和 Azure 伺服器的 IP 位址。 因此，您可能需要變更起始 IP 和結束 IP，規則才會正常運作。
    使用搜尋引擎或其他線上工具，檢查您自己的 IP 位址。 例如，搜尋「我的 IP 是什麼」。
 
-   :::image type="content" source="./media/howto-hyperscale-manage-firewall-using-portal/3-what-is-my-ip.png" alt-text="使用 Bing 搜尋「我的 IP 是什麼」":::
+   :::image type="content" source="./media/howto-hyperscale-manage-firewall-using-portal/3-what-is-my-ip.png" alt-text="Azure 入口網站 - [網路] 索引標籤":::
 
 4. 新增其他位址範圍。 在防火牆規則中，您可指定單一 IP 位址或位址範圍。 如果您想要將規則限制到單一 IP 位址，請在 [起始 IP] 和 [結束 IP] 欄位中輸入相同位址。 開啟防火牆可讓系統管理員、使用者和應用程式存取連接埠 5432 上的協調器節點。
 

@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/03/2020
 ms.openlocfilehash: 646ce94587a9aa1bb8fd20a28b84658994b25cf1
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90886533"
 ---
 # <a name="supported-features-of-azure-sql-edge"></a>Azure SQL Edge 支援的功能 
@@ -52,7 +52,7 @@ Azure SQL Edge 僅支援 database engine。 它不包含 Windows 上的 SQL Serv
 除了支援 Linux 上的 SQL Server 的功能子集之外，Azure SQL Edge 還包含下列新功能的支援： 
 
 - SQL 串流（以支援 Azure 串流分析的相同引擎為基礎）可在 Azure SQL Edge 中提供即時資料串流功能。 
-- `Date_Bucket`時間序列資料分析的 t-sql 函式呼叫。
+- Time-Series 資料分析的 T-sql 函式呼叫 `Date_Bucket` 。
 - 透過 ONNX 執行時間（隨附于 SQL 引擎）的機器學習功能。
 
 ## <a name="unsupported-features"></a>不支援的功能
@@ -110,7 +110,7 @@ Azure SQL Edge 僅支援 database engine。 它不包含 Windows 上的 SQL Serv
 | &nbsp; | Distributed Replay。 |
 | **管理能力** | SQL Server 公用程式控制點。 |
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [部署 Azure SQL Edge](deploy-portal.md)
 - [設定 Azure SQL Edge](configure.md)

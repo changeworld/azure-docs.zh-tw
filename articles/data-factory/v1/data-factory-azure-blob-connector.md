@@ -13,10 +13,10 @@ ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: a77a4808390f816bc3a6646520f4b542bee89d4c
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89438512"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-using-azure-data-factory"></a>使用 Azure Data Factory 在 Azure Blob 儲存體來回複製資料
@@ -207,7 +207,7 @@ Data Factory 支援使用下列符合 CLS 規範的 .NET 型類型值，在 “s
     4. 保留 [週期性模式]**** 的設定。 此工作會在您於下一個步驟中指定的開始和結束時間之間每天執行。
     5. 將 [開始日期時間]**** 變更為 [2017 年 4 月 21 日]****。
     6. 將 [結束日期時間]**** 變更為 [2017 年 4 月 25 日]****。 您可以輸入日期，而不瀏覽行事曆。
-    8. 按 [下一步] 。
+    8. 按一下 [下一步]。
         ![複製工具 - 屬性頁面](./media/data-factory-azure-blob-connector/copy-tool-properties-page.png)
 3. 在 [來源資料存放區] 頁面上，按一下 [Azure Blob 儲存體] 圖格。 您可以使用此頁面來指定複製工作的來源資料存放區。 您可以使用現有的資料存放區連結服務或指定新的資料存放區。 若要使用現有的已連結服務，您需選取 [從現有的連結服務]****，然後選取正確的已連結服務。
     ![複製工具 - 來源資料存放區頁面](./media/data-factory-azure-blob-connector/copy-tool-source-data-store-page.png)
@@ -216,7 +216,7 @@ Data Factory 支援使用下列符合 CLS 規範的 .NET 型類型值，在 “s
     2. 確認已針對 [帳戶選取方法] 選取 [從 Azure 訂用帳戶] 選項。
     3. 針對 [Azure 訂用帳戶]****，選取您的 Azure 訂用帳戶或保留 [全選]****。
     4. 從所選訂用帳戶中可用的 Azure 儲存體帳戶清單中，選取 [Azure 儲存體帳戶]。 您也可以選擇手動輸入儲存體帳戶設定，方法是針對 [帳戶選取方法]**** 選取 [手動輸入]**** 選項。
-    5. 按 [下一步] 。  
+    5. 按一下 [下一步]。  
         ![複製工具 - 指定 Azure Blob 儲存體帳戶](./media/data-factory-azure-blob-connector/copy-tool-specify-azure-blob-storage-account.png)
 5. 在 [選擇輸入檔案或資料夾]  頁面︰
     1. 按兩下 [adfblobcontainer]****。
@@ -227,7 +227,7 @@ Data Factory 支援使用下列符合 CLS 規範的 .NET 型類型值，在 “s
     2. 請勿設定 [以遞迴方式複製檔案]****。 選取此選項可以用遞迴方式周遊資料夾來尋找要複製到目的地的檔案。
     3. 請勿設定 [二進位複製]**** 選項。 選取此選項可以執行將來源檔案複製到目的地的二進位複製。 請勿為此逐步解說選取這個選項，以便您可以在後續頁面中看到更多選項。
     4. 確認 [壓縮類型]**** 已設定為 [無]****。 如果您的來源檔案是以其中一種支援的格式壓縮的，則請為此選項選取一個值。
-    5. 按 [下一步] 。
+    5. 按一下 [下一步]。
     ![複製工具-選擇輸入檔案或資料夾2](./media/data-factory-azure-blob-connector/chose-input-file-folder.png)
 7. 在 [檔案格式設定] 頁面上，您會看到分隔符號以及精靈藉由剖析檔案自動偵測到的結構描述。
     1. 確認下列選項：  
@@ -249,7 +249,7 @@ Data Factory 支援使用下列符合 CLS 規範的 .NET 型類型值，在 “s
     2. 確認已針對 [帳戶選取方法] 選取 [從 Azure 訂用帳戶] 選項。
     3. 選取您的 Azure **訂用帳戶**。
     4. 選取您的 Azure 儲存體帳戶。
-    5. 按 [下一步] 。
+    5. 按一下 [下一步]。
 10. 在 [選擇輸出檔案或資料夾]**** 頁面上︰  
     1. 將 [資料夾路徑]**** 指定為 **adfblobconnector/output/{year}/{month}/{day}**。 輸入 **TAB**。
     1. 針對 [年]****，選取 [yyyy]****。
@@ -257,7 +257,7 @@ Data Factory 支援使用下列符合 CLS 規範的 .NET 型類型值，在 “s
     1. 針對 [日]****，確定它已設定為 [dd]****。
     1. 確認 [ **壓縮類型** ] 設定為 [ **無**]。
     1. 確認 [複製行為]**** 已設定為 [合併檔案]****。 如果已經有同名的輸出檔案存在，則新內容會新增到該相同檔案的結尾。
-    1. 按 [下一步] 。
+    1. 按一下 [下一步]。
        ![複製工具 - 選擇輸出檔案或資料夾](media/data-factory-azure-blob-connector/choose-the-output-file-or-folder.png)
 11. 在 [檔案格式設定]**** 頁面上，檢閱設定，然後按 [下一步]****。 這裡的其中一額外選項是為輸出檔案新增標頭。 如果您選取該選項，就會新增標頭資料列，其中會含有來自來源結構描述的資料行名稱。 您可以在檢視來源的結構描述時，重新命名預設的資料行名稱。 例如，您可以將第一個資料行變更為「名字」，而將第二個資料行變更為「姓氏」。 接著，系統就會產生含有以這些名稱作為資料行名稱之標頭的輸出檔案。
     ![複製工具 - 目的地的檔案格式設定](media/data-factory-azure-blob-connector/file-format-destination.png)

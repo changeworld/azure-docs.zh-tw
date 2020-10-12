@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
 ms.openlocfilehash: a748bf977e76357c710518e608c12ad19a8cd0be
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90888428"
 ---
 # <a name="configure-replication-to-azure-sql-edge"></a>設定複寫至 Azure SQL Edge 
@@ -85,7 +85,7 @@ Azure SQL Edge 訂閱不支援下列選項：
 - [建立發行集](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
 - 使用 Azure SQL Edge server 名稱和 IP 做為訂閱者來[建立發送訂閱](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/) (例如， **myEdgeinstance、1433**) ，以及 azure SQL Edge 實例上的資料庫名稱做為目的地資料庫 (例如**AdventureWorks**) 。  
 
-## <a name="next-steps"></a>下一步  
+## <a name="next-steps"></a>後續步驟  
 
 - [建立發行集](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
 - [建立發送訂閱](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/)

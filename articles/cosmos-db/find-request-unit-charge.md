@@ -8,10 +8,10 @@ ms.date: 09/01/2019
 ms.author: thweiss
 ms.custom: devx-track-js
 ms.openlocfilehash: 81660bee32cace458424c9975c74ca7980148e29
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91316183"
 ---
 # <a name="find-the-request-unit-charge-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中尋找要求單位費用
@@ -188,7 +188,7 @@ RU 費用可用名為 `getLastRequestStatistics` 的自訂[資料庫命令](http
 
 1. 選取下 [查詢統計資料]****，以顯示您執行的要求實際的要求費用。
 
-:::image type="content" source="./media/find-request-unit-charge/portal-mongodb-query.png" alt-text="Azure 入口網站之中 MongoDB 查詢要求費用的螢幕擷取畫面":::
+:::image type="content" source="./media/find-request-unit-charge/portal-mongodb-query.png" alt-text="Azure 入口網站之中 SQL 查詢要求費用的螢幕擷取畫面":::
 
 ### <a name="use-the-mongodb-net-driver"></a>使用 MongoDB .NET 驅動程式
 

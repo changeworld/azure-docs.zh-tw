@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/04/2019
 ms.openlocfilehash: baf350e23025342cc74b4d063d9a1604e8ad2ffd
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86087417"
 ---
 # <a name="use-azure-kubernetes-service-with-apache-kafka-on-hdinsight"></a>使用 Azure Kubernetes Service 搭配 HDInsight 上的 Apache Kafka
@@ -94,7 +94,7 @@ HDInsight 和 AKS 均使用 Azure 虛擬網路作為計算資源的容器。 若
     |---|---|
     |從 \<this VN> 到遠端虛擬網路的對等互連名稱|輸入此對等互連設定的唯一名稱。|
     |虛擬網路|選取 **AKS 叢集**的虛擬網路。|
-    |與 \<AKS VN> 之間的對等互連名稱\<this VN>|輸入唯一名稱。|
+    |的對等互連名稱 \<AKS VN>\<this VN>|輸入唯一名稱。|
 
     讓所有其他欄位保留預設值，然後選取 [確定] 來設定對等互連。
 

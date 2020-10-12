@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 23ce2f02ef96a88b6bf4471377ce97a529dbd1a9
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90706331"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-on-premises-resources-with-azure-active-directory-preview"></a>使用 Azure Active Directory (preview 啟用無密碼安全性金鑰登入內部部署資源) 
@@ -58,7 +58,7 @@ Azure AD 的 Kerberos 伺服器物件會建立在您的內部部署 Active Direc
 此案例支援在下列兩種案例中，單一登入 (SSO) ：
 
 - 針對 Microsoft 365 和其他已啟用 SAML 的應用程式等雲端資源。
-- 適用于內部部署資源，以及 Windows 整合式驗證至網站。 這些資源可以包含需要 IIS 驗證的網站和 SharePoint 網站，以及（或）使用 NTLM 驗證的資源。
+- 適用于內部部署資源，並 Windows-Integrated 對網站的驗證。 這些資源可以包含需要 IIS 驗證的網站和 SharePoint 網站，以及（或）使用 NTLM 驗證的資源。
 
 ### <a name="unsupported-scenarios"></a>不支援的案例
 

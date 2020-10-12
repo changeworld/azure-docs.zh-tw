@@ -4,10 +4,10 @@ description: 瞭解如何在 Azure 儲存體中加密您的應用程式資料，
 ms.topic: article
 ms.date: 03/06/2020
 ms.openlocfilehash: 62bb1e51bada155b98fe46740662b86b753d44fa
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90978488"
 ---
 # <a name="encryption-at-rest-using-customer-managed-keys"></a>使用客戶管理的金鑰進行待用加密
@@ -117,7 +117,7 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 - 不支援 TAR 和 GZIP 格式。
 - 這項功能與本機快取不相容。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [App Service 的 Key Vault 參考](app-service-key-vault-references.md)
 - [待用資料的 Azure 儲存體加密](../storage/common/storage-service-encryption.md)

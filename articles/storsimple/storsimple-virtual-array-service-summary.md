@@ -15,14 +15,14 @@ ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
 ms.openlocfilehash: 31220a8f8b012e08d46195b60a26be9cfc261be5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85514521"
 ---
 # <a name="use-the-service-summary-blade-for-storsimple-device-manager-connected-to-storsimple-virtual-array"></a>在連接至 Microsoft Azure StorSimple Virtual Array 的 StorSimple 裝置管理員中使用服務摘要刀鋒視窗
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 針對連接至服務的 StorSimple Virtual Array (也稱為 StorSimple 內部部署虛擬裝置，或簡稱虛擬裝置)，StorSimple 裝置管理員的服務摘要刀鋒視窗提供摘要檢視，並醒目提示需要系統管理員注意的裝置。 本教學課程介紹服務摘要刀鋒視窗、說明內容和功能，並描述您可以從這個刀鋒視窗執行的工作。
 
 ![服務儀表板](./media/storsimple-virtual-array-service-summary/service-blade.png)
@@ -45,6 +45,6 @@ ms.locfileid: "85514521"
 
 ![活動記錄](./media/storsimple-virtual-array-service-summary/activity-log.png)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 了解如何 [使用本機 Web UI 來管理 StorSimple Virtual Array](storsimple-ova-web-ui-admin.md)。
 

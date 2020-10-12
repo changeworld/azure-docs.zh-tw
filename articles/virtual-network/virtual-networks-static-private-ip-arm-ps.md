@@ -18,17 +18,17 @@ ms.date: 02/07/2019
 ms.author: kumud
 ms.custom: ''
 ms.openlocfilehash: ced76b73a8a08e6886cf0cef04c74a82d05c75dd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84708122"
 ---
 # <a name="create-a-virtual-machine-with-a-static-private-ip-address-using-powershell"></a>使用 PowerShell 建立具有靜態私人 IP 位址的虛擬機器
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-您可以建立具有靜態私人 IP 位址的虛擬機器（VM）。 如果您想要選取子網中指派給 VM 的位址，請指派靜態私人 IP 位址，而不是動態位址。 深入瞭解[靜態私人 IP 位址](virtual-network-ip-addresses-overview-arm.md#allocation-method)。 若要將指派給現有 VM 的私人 IP 位址從動態變更為靜態或使用公用 IP 位址，請參閱[新增、變更或移除 IP 位址](virtual-network-network-interface-addresses.md)。
+您可以使用靜態私人 IP 位址建立虛擬機器 (VM) 。 如果您想要選取子網中指派給 VM 的位址，請指派靜態私人 IP 位址，而不是動態位址。 深入瞭解 [靜態私人 IP 位址](virtual-network-ip-addresses-overview-arm.md#allocation-method)。 若要將指派給現有 VM 的私人 IP 位址從動態變更為靜態，或使用公用 IP 位址，請參閱 [新增、變更或移除 IP 位址](virtual-network-network-interface-addresses.md)。
 
 ## <a name="create-a-virtual-machine"></a>建立虛擬機器
 
@@ -43,7 +43,7 @@ ms.locfileid: "84708122"
    New-AzResourceGroup -Name $RgName -Location $Location
    ```
 
-3. 使用 New-azvirtualnetworksubnetconfig 和[new-azvirtualnetwork](/powershell/module/az.network/new-azvirtualnetwork)的[新](/powershell/module/az.network/new-azvirtualnetworksubnetconfig)命令建立子網設定和虛擬網路：
+3. 使用 [>new-azvirtualnetworksubnetconfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) 和 [new-azvirtualnetwork](/powershell/module/az.network/new-azvirtualnetwork) 命令建立子網設定和虛擬網路：
 
    ```azurepowershell-interactive
    # Create a subnet configuration
@@ -63,7 +63,7 @@ ms.locfileid: "84708122"
    $Subnet = Get-AzVirtualNetworkSubnetConfig -Name $SubnetConfig.Name -VirtualNetwork $VNet
    ```
 
-4. 在虛擬網路中建立網路介面，並使用[AzNetworkInterfaceIpConfig](/powershell/module/Az.Network/New-AzNetworkInterfaceIpConfig)和[new-aznetworkinterface](/powershell/module/az.network/new-aznetworkinterface)命令，將子網中的私人 IP 位址指派給網路介面：
+4. 在虛擬網路中建立網路介面，並使用 [AzNetworkInterfaceIpConfig](/powershell/module/Az.Network/New-AzNetworkInterfaceIpConfig) 和 [get-aznetworkinterface](/powershell/module/az.network/new-aznetworkinterface) 命令，將子網中的私人 IP 位址指派給網路介面：
 
    ```azurepowershell-interactive
    $IpConfigName1 = "IPConfig-1"
@@ -80,7 +80,7 @@ ms.locfileid: "84708122"
      -IpConfiguration $IpConfig1
    ```
 
-5. 使用[new-azvmconfig](/powershell/module/Az.Compute/New-AzVMConfig)建立 vm 設定，然後使用[update-azvm](/powershell/module/az.Compute/New-azVM)建立 vm。 出現提示時，請提供使用者名稱和密碼以作為 VM 的登入認證：
+5. 使用 [>new-azvmconfig](/powershell/module/Az.Compute/New-AzVMConfig)建立 vm 設定，然後使用 [新的-new-azvm](/powershell/module/az.Compute/New-azVM)建立 vm。 出現提示時，請提供要作為 VM 登入認證使用的使用者名稱和密碼：
 
    ```azurepowershell-interactive
    $VirtualMachine = New-AzVMConfig -VMName MyVM -VMSize "Standard_DS3"
@@ -91,13 +91,13 @@ ms.locfileid: "84708122"
    ```
 
 > [!WARNING]
-> 雖然您可以將私人 IP 位址設定新增至作業系統，但我們建議您在[將私人 ip 位址新增至作業系統](virtual-network-network-interface-addresses.md#private)之前，不要這麼做。
+> 雖然您可以將私人 IP 位址設定新增至作業系統，但在讀取 [將私人 ip 位址新增至作業系統](virtual-network-network-interface-addresses.md#private)之前，建議您不要這麼做。
 > 
 > 
 > <a name = "change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface"></a>
 > 
 > [!IMPORTANT]
-> 若要從網際網路存取 VM，您必須將公用 IP 位址指派給 VM。 您也可以將動態私人 IP 位址指派變更為靜態指派。 如需詳細資訊，請參閱[新增或變更 IP 位址](virtual-network-network-interface-addresses.md)。 此外，建議您將網路安全性群組與網路介面、您用來建立網路介面的子網或兩者產生關聯，以限制 VM 的網路流量。 如需詳細資訊，請參閱[管理網路安全性群組](manage-network-security-group.md)。
+> 若要從網際網路存取 VM，您必須將公用 IP 位址指派給 VM。 您也可以將動態私人 IP 位址指派變更為靜態指派。 如需詳細資訊，請參閱 [新增或變更 IP 位址](virtual-network-network-interface-addresses.md)。 此外，建議您將網路安全性群組與網路介面、您在中建立網路介面的子網或兩者建立關聯，以限制 VM 的網路流量。 如需詳細資訊，請參閱 [管理網路安全性群組](manage-network-security-group.md)。
 
 ## <a name="clean-up-resources"></a>清除資源
 
@@ -109,5 +109,5 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 
 ## <a name="next-steps"></a>後續步驟
 
-- 深入瞭解[私人 ip 位址](virtual-network-ip-addresses-overview-arm.md#private-ip-addresses)，並將[靜態私人 ip 位址](virtual-network-network-interface-addresses.md#add-ip-addresses)指派給 Azure 虛擬機器。
-- 深入瞭解如何建立[Linux](../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fvirtual-network%2ftoc.json)和[Windows](../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fvirtual-network%2ftoc.json)虛擬機器。
+- 深入瞭解 [私人 ip 位址](virtual-network-ip-addresses-overview-arm.md#private-ip-addresses) ，並將 [靜態私人 ip 位址](virtual-network-network-interface-addresses.md#add-ip-addresses) 指派給 Azure 虛擬機器。
+- 深入瞭解如何建立 [Linux](../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 和 [Windows](../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 虛擬機器。

@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 11/4/2019
 ms.subservice: autoscale
 ms.openlocfilehash: a29b5d11a6ea06af9d5b6a8b5120c6f0caa6601e
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90979048"
 ---
 # <a name="troubleshooting-azure-autoscale"></a>針對 Azure 自動調整進行疑難排解
@@ -205,5 +205,5 @@ AutoscaleScaleActionsLog
 
 如需詳細資訊，請參閱 [自動調整資源記錄](autoscale-resource-log-schema.md)
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 閱讀自動調整 [最佳作法](autoscale-best-practices.md)的資訊。 

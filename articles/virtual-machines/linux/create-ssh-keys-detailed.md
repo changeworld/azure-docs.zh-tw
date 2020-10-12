@@ -7,19 +7,19 @@ ms.topic: how-to
 ms.date: 07/31/2020
 ms.author: cynthn
 ms.openlocfilehash: 34a84ed333172ea0931c529d2dbeee1b774ae8c5
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87513177"
 ---
 # <a name="detailed-steps-create-and-manage-ssh-keys-for-authentication-to-a-linux-vm-in-azure"></a>詳細步驟：在 Azure 中建立和管理對 Linux VM 進行驗證所需的 SSH 金鑰
 
-使用安全 shell （SSH）金鑰組，您可以建立使用 SSH 金鑰進行驗證的 Linux 虛擬機器。 本文說明如何建立及使用 ssh RSA 公開-私密金鑰檔案組，以用於 SSH 用戶端連線。
+使用安全的 shell (SSH) 金鑰組，您可以建立使用 SSH 金鑰進行驗證的 Linux 虛擬機器。 本文說明如何針對 SSH 用戶端連線建立和使用 SSH RSA 公開/私密金鑰檔案組。
 
 如果您需要快速命令，請參閱[如何在 Azure 中建立 Linux VM 的 SSH 公開/私密金鑰組](mac-create-ssh-keys.md)。
 
-若要建立 SSH 金鑰，並使用它們從**windows**電腦連接到，請參閱[如何在 Azure 上搭配 windows 使用 ssh 金鑰](ssh-from-windows.md)。 您也可以使用[Azure 入口網站](../ssh-keys-portal.md)來建立和管理 SSH 金鑰，以在入口網站中建立 vm。
+若要建立 SSH 金鑰，並使用它們從 **windows** 電腦連接到，請參閱 [如何在 Azure 上搭配 windows 使用 ssh 金鑰](ssh-from-windows.md)。 您也可以使用 [Azure 入口網站](../ssh-keys-portal.md) 來建立和管理 SSH 金鑰，以在入口網站中建立 vm。
 
 [!INCLUDE [virtual-machines-common-ssh-overview](../../../includes/virtual-machines-common-ssh-overview.md)]
 
@@ -27,7 +27,7 @@ ms.locfileid: "87513177"
 
 ## <a name="ssh-keys-use-and-benefits"></a>SSH 金鑰的使用和好處
 
-當您指定公開金鑰以建立 Azure VM 時，Azure 會將此公開金鑰 (以 `.pub` 的格式) 複製到 VM 上的 `~/.ssh/authorized_keys` 資料夾。 `~/.ssh/authorized_keys` 中的 SSH 金鑰用於挑戰用戶端，以符合 SSH 連線上的對應私密金鑰。 在使用 SSH 金鑰進行驗證的 Azure Linux VM 中，Azure 會將 SSHD 伺服器設定為不允許密碼登入，而僅允許以 SSH 金鑰登入。 藉由建立具有 SSH 金鑰的 Azure Linux VM，您可以協助保護 VM 部署的安全，並為自己省下在檔案中停用密碼的一般部署後設定步驟 `sshd_config` 。
+當您指定公開金鑰以建立 Azure VM 時，Azure 會將此公開金鑰 (以 `.pub` 的格式) 複製到 VM 上的 `~/.ssh/authorized_keys` 資料夾。 `~/.ssh/authorized_keys` 中的 SSH 金鑰用於挑戰用戶端，以符合 SSH 連線上的對應私密金鑰。 在使用 SSH 金鑰進行驗證的 Azure Linux VM 中，Azure 會將 SSHD 伺服器設定為不允許密碼登入，而僅允許以 SSH 金鑰登入。 藉由建立具有 SSH 金鑰的 Azure Linux VM，您可以協助保護 VM 部署的安全，並讓您自行節省在檔案中停用密碼的一般部署後設定步驟 `sshd_config` 。
 
 如果您不想使用 SSH 金鑰，您可以將 Linux VM 設定為使用密碼驗證。 如果您的 VM 並未公開至網際網路，則使用密碼可能就以足夠。 不過，您仍然需要管理每個 Linux VM 的密碼，以及維護狀況良好的密碼原則和作法，例如最小密碼長度和定期更新。 
 
@@ -39,7 +39,7 @@ ms.locfileid: "87513177"
 
 ### <a name="basic-example"></a>基本範例
 
-下列 `ssh-keygen` 命令預設會在目錄中產生4096位 SSH RSA 公開和私密金鑰檔案 `~/.ssh` 。 如果有 SSH 金鑰組存在於目前的位置，系統將會覆寫這些檔案。
+下列 `ssh-keygen` 命令預設會在目錄中產生4096位的 SSH RSA 公開和私密金鑰檔案 `~/.ssh` 。 如果有 SSH 金鑰組存在於目前的位置，系統將會覆寫這些檔案。
 
 ```bash
 ssh-keygen -m PEM -t rsa -b 4096
@@ -184,7 +184,7 @@ ssh-add ~/.ssh/id_rsa
 
 ## <a name="use-ssh-copy-id-to-copy-the-key-to-an-existing-vm"></a>使用 ssh-copy-id 將金鑰複製到現有 VM
 
-如果您已建立 VM，您可以使用，將新的 SSH 公開金鑰新增至 Linux VM `ssh-copy-id` 。
+如果您已建立 VM，您可以使用將新的 SSH 公開金鑰新增至 Linux VM `ssh-copy-id` 。
 
 ```bash
 ssh-copy-id -i ~/.ssh/id_rsa.pub azureuser@myserver
@@ -208,7 +208,7 @@ touch ~/.ssh/config
 vim ~/.ssh/config
 ```
 
-為您的主機 VM 新增適當的組態設定。 在此範例中，VM 名稱是*myvm* ，而帳戶名稱是*azureuser*。
+為您的主機 VM 新增適當的組態設定。 在此範例中，VM 名稱是 *myvm* ，而帳戶名稱為 *>azureuser*。
 
 ```bash
 # Azure Keys

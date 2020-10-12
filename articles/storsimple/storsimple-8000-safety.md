@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 04/04/2017
 ms.author: alkohli
 ms.openlocfilehash: 556a84acb3461fb39b3eb0390b54878254bafabf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85514542"
 ---
 # <a name="safely-install-and-operate-your-storsimple-device"></a>安全地安裝和操作您的 StorSimple 裝置
@@ -30,7 +30,7 @@ ms.locfileid: "85514542"
 ## <a name="safety-icon-conventions"></a>安全性圖示慣例
 以下是您在檢閱安全性預防措施時會發現的圖示，這些措施可在設定與執行 Microsoft Azure StorSimple 裝置時觀查到。
 
-| 圖示 | Description |
+| 圖示 | 描述 |
 |:--- |:--- |
 | ![危險圖示](./media/storsimple-safety/IC740879.png) **危險！** |指出危險的情況，如果無法避免，將會導致死亡或嚴重傷害。 此訊號文字僅限用於最極端的情況。 |
 | ![警告圖示 ](./media/storsimple-safety/IC740879.png) **警告！** |指出危險的情況，如果無法避免，可能會導致死亡或嚴重傷害。 |
@@ -67,7 +67,7 @@ ms.locfileid: "85514542"
 降低電力連接過熱或火災的可能性：
 
 * 提供適當的電源及電力多載保護，以符合技術規格中詳細列出的需求。
-* 請勿使用分為兩部分電源線（「Y」潛在客戶）。
+* 請勿使用分叉電源線 ( "Y" 潛在客戶) 。
 * 若要符合適用的安全性、放射性與熱需求，您不能移除任何封蓋且所有機架必須填入外掛程式模組或磁碟機空白。
 * 請確定以製造商所指定的方式使用設備。 如果未以製造商所指定的方式使用設備，設備所提供的保護可能會減損。
 
@@ -96,14 +96,14 @@ ms.locfileid: "85514542"
 
 * 機架應該有一個安全的電子散發系統。 它必須提供機箱的過電流保護，而且安裝的機箱總數不能超載。 應該觀察顯示在名牌上的電力消耗評等。
 * 電力發散系統必須提供可靠的地面給機架中的每個機箱。
-* 電力發散系統的設計必須考量所有機箱中所有電源供應器的總漏地電流。 請注意，每個機箱中的每個電源供應器都有最大值 1.0 mA，60 Hz、264 伏特的漏地電流。 機架可能需要加上「高洩漏電流」的標籤。 連接供應之前，地面（地球）連線非常重要。」
+* 電力發散系統的設計必須考量所有機箱中所有電源供應器的總漏地電流。 請注意，每個機箱中的每個電源供應器都有最大值 1.0 mA，60 Hz、264 伏特的漏地電流。 機架可能需要標記「高洩漏目前」。 連接供應程式之前，地面 (地球) 連線是不可或缺的。」
 * 利用機箱設定機架時，機架上必須符合 UL 60950-1 和 IEC 60950-1/EN 60950-1 的安全性需求。
 
 ![注意事項圖示](./media/storsimple-safety/IC740881.png) **注意事項：**
 
 關於機架系統的適當冷卻：
 
-* 請確定機架設計考量到機箱作業周圍溫度最大值為攝氏 35 度 (華氏 95 度)。 將機架系統的空間保持在最酷的位置，並檢查資料中心內是否有來自 AC 通風線的足夠氣流。
+* 請確定機架設計考量到機箱作業周圍溫度最大值為攝氏 35 度 (華氏 95 度)。 保留機架系統很酷的房間，並檢查資料中心內的 AC 通風管是否有足夠的空氣。
 * 系統在低壓、後方排氣安裝的條件下運作 (機架門和障礙建立的背部壓力不能超過 5 Pascal [0.5 mm-1.0 水位表])。
 
 ## <a name="power-cooling-module-pcm-precautions"></a>電源冷卻模組 (PCM) 預防措施
@@ -148,11 +148,11 @@ ms.locfileid: "85514542"
 
 ![注意事項圖示](./media/storsimple-safety/IC740881.png) **注意事項：**
 
-運送或以無線方式運送電池時，請遵循 IATA 鋰電池指引檔，網址為：[https://www.iata.org/whatwedo/cargo/dgr/Pages/lithium-batteries.aspx](https://www.iata.org/whatwedo/cargo/dgr/Pages/lithium-batteries.aspx)
+運送時或以其他方式傳輸電池時，請遵循下列網址提供的 IATA 鋰電池指引檔： [https://www.iata.org/whatwedo/cargo/dgr/Pages/lithium-batteries.aspx](https://www.iata.org/whatwedo/cargo/dgr/Pages/lithium-batteries.aspx)
 
 在您檢閱這些安全性注意事項之後，接下來的步驟是為裝置解除封裝、安裝機架和纜線。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * 針對 8100 裝置，請至 [安裝您的 StorSimple 8100 裝置](storsimple-8100-hardware-installation.md)。
 * 針對 8600 裝置，請至 [安裝您的 StorSimple 8600 裝置](storsimple-8600-hardware-installation.md)。

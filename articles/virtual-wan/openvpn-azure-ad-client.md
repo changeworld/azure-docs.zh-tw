@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.openlocfilehash: e64de987bd82f6b93350cdd706fc1a243d2855b1
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90977831"
 ---
 # <a name="configure-a-vpn-client-for-p2s-openvpn-protocol-connections-azure-ad-authentication"></a>設定 P2S OpenVPN 通訊協定連線的 VPN 用戶端：Azure AD 驗證
@@ -88,33 +88,33 @@ ms.locfileid: "90977831"
 
 1. 選取您要刪除之用戶端設定檔旁的省略號。 然後，選取 [移除]****。
 
-    ![delete](./media/openvpn-azure-ad-client/delete/delete1.jpg)
+    ![[刪除]](./media/openvpn-azure-ad-client/delete/delete1.jpg)
 
 2. 選取 [移除]**** 以刪除。
 
-    ![delete](./media/openvpn-azure-ad-client/delete/delete2.jpg)
+    ![[刪除]](./media/openvpn-azure-ad-client/delete/delete2.jpg)
 
 ## <a name="create-a-connection"></a><a name="connection"></a>建立連接
 
 1. 在頁面上，選取 [] **+** ，然後選取 [ **+ 新增**]。
 
-    ![連接](./media/openvpn-azure-ad-client/create/create1.jpg)
+    ![connection](./media/openvpn-azure-ad-client/create/create1.jpg)
 
 2. 填寫連接資訊。 如果您不確定其值，請洽詢您的系統管理員。 填妥值之後，請選取 [ **儲存**]。
 
-    ![連接](./media/openvpn-azure-ad-client/create/create2.jpg)
+    ![connection](./media/openvpn-azure-ad-client/create/create2.jpg)
 
 3. 選取 [連線]**** 以連線至 VPN。
 
-    ![連接](./media/openvpn-azure-ad-client/create/create3.jpg)
+    ![connection](./media/openvpn-azure-ad-client/create/create3.jpg)
 
 4. 選取適當的認證，然後選取 [ **繼續**]。
 
-    ![連接](./media/openvpn-azure-ad-client/create/create4.jpg)
+    ![connection](./media/openvpn-azure-ad-client/create/create4.jpg)
 
 5. 成功連線後，圖示將會變成綠色，並說出 **已連線**。
 
-    ![連接](./media/openvpn-azure-ad-client/create/create5.jpg)
+    ![connection](./media/openvpn-azure-ad-client/create/create5.jpg)
 
 ### <a name="to-connect-automatically"></a><a name="autoconnect"></a>自動連接
 
@@ -260,6 +260,6 @@ azurevpn -i azurevpnconfig.xml
 若要強制匯入，也請使用 **-f** 參數
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 如需詳細資訊，請參閱 [為使用 Azure AD 驗證的 P2S 開放式 VPN 連線建立 Azure Active Directory 的租](openvpn-azure-ad-tenant.md)使用者。

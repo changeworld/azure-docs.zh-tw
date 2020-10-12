@@ -1,15 +1,15 @@
 ---
-title: Azure Service Fabric 基礎結構即程式碼最佳做法
-description: 將 Azure Service Fabric 當作基礎結構即程式碼來管理的最佳做法和設計考慮。
+title: Azure Service Fabric 基礎結構即程式碼最佳作法
+description: 將 Azure Service Fabric 作為基礎結構即程式碼來管理的最佳作法和設計考慮。
 author: peterpogorski
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: pepogors
 ms.openlocfilehash: c381c6e7d692eda32fea2033779bacddafc267bb
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86253672"
 ---
 # <a name="infrastructure-as-code"></a>基礎結構即程式碼
@@ -91,7 +91,7 @@ microservices_sfpkg.close()
 ```
 
 ## <a name="azure-virtual-machine-operating-system-automatic-upgrade-configuration"></a>Azure 虛擬機器作業系統自動升級設定 
-升級您的虛擬機器是使用者起始的作業，建議您針對 Azure Service Fabric 叢集主機修補程式管理使用[虛擬機器擴展集的自動作業系統升級](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md);修補程式協調流程應用程式是一種替代方案，適用于在 azure 外部託管時，雖然 POA 可以在 azure 中使用，但在 Azure 中裝載 POA 的額外負荷，是偏好將虛擬機器作業系統自動升級至 POA 的常見原因。 以下是計算虛擬機器擴展集 Resource Manager 範本屬性，以啟用自動 OS 升級：
+升級虛擬機器是使用者起始的作業，建議您針對 Azure Service Fabric 叢集主機修補程式管理，使用 [虛擬機器擴展集的自動作業系統升級](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md) 。修補程式協調流程應用程式是一種替代解決方案，適用于在 azure 之外託管時，雖然 POA 可在 azure 中使用，但在 Azure 中裝載 POA 的額外負荷，是偏好虛擬機器作業系統自動透過 POA 升級的常見原因。 以下是計算虛擬機器擴展集 Resource Manager 範本屬性來啟用自動 OS 升級：
 
 ```json
 "upgradePolicy": {
@@ -104,9 +104,9 @@ microservices_sfpkg.close()
 ```
 搭配 Service Fabric 使用自動 OS 升級時，新的 OS 映射會一次推出一個更新網域，以維持 Service Fabric 中執行之服務的高可用性。 若要在 Service Fabric 中利用自動 OS 升級，您的叢集必須設定為使用銀級耐久性層或更高。
 
-請確認下列登錄機碼設定為 false，以防止您的 windows 主機電腦起始未經協調更新： HKEY_LOCAL_MACHINE \SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU。
+請確定下列登錄機碼設定為 false，以防止 windows 主機電腦起始不協調更新： HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU。
 
-以下是計算虛擬機器擴展集 Resource Manager 範本屬性，以將 Windowsupdate.log 登錄機碼設定為 false：
+以下是計算虛擬機器擴展集 Resource Manager 範本屬性，將 Windowsupdate.log 登錄機碼設定為 false：
 ```json
 "osProfile": {
         "computerNamePrefix": "{vmss-name}",
@@ -120,19 +120,19 @@ microservices_sfpkg.close()
 ```
 
 ## <a name="azure-service-fabric-cluster-upgrade-configuration"></a>Azure Service Fabric 叢集升級設定
-以下是 Service Fabric 叢集 Resource Manager 範本] 屬性，以啟用自動升級：
+以下是用來啟用自動升級的 Service Fabric 叢集 Resource Manager 範本屬性：
 ```json
 "upgradeMode": "Automatic",
 ```
-若要手動升級您的叢集，請將 cab/deb 散發套件下載到叢集虛擬機器，然後叫用下列 PowerShell：
+若要手動升級您的叢集，請將 cab/deb 散發套件下載到叢集虛擬機器，然後再叫用下列 PowerShell：
 ```powershell
 Copy-ServiceFabricClusterPackage -Code -CodePackagePath <"local_VM_path_to_msi"> -CodePackagePathInImageStore ServiceFabric.msi -ImageStoreConnectionString "fabric:ImageStore"
 Register-ServiceFabricClusterPackage -Code -CodePackagePath "ServiceFabric.msi"
 Start-ServiceFabricClusterUpgrade -Code -CodePackageVersion <"msi_code_version">
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * 在執行 Windows Server 的 VM 或電腦上建立叢集： [建立適用於 Windows Server 的 Service Fabric 叢集](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
 * 在 VM 或執行 Linux 的電腦上建立叢集：[建立 Linux 叢集](service-fabric-tutorial-create-vnet-and-linux-cluster.md)
-* 瞭解[Service Fabric 支援選項](service-fabric-support.md)
+* 瞭解 [Service Fabric 支援選項](service-fabric-support.md)

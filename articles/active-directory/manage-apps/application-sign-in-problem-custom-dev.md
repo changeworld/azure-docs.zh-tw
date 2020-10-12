@@ -1,6 +1,6 @@
 ---
 title: 登入自訂開發應用程式的問題 | Microsoft Docs
-description: 可能導致您無法登入已開發之應用程式的常見錯誤 Azure AD
+description: 可能導致您無法登入使用 Azure AD 開發之應用程式的常見錯誤
 services: active-directory
 documentationcenter: ''
 author: kenwith
@@ -17,10 +17,10 @@ ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cdfc2a39c6bd3b68df7feb978d2548ad67631235
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84759125"
 ---
 # <a name="problems-signing-in-to-a-custom-developed-application"></a>登入自訂開發應用程式的問題
@@ -35,7 +35,7 @@ ms.locfileid: "84759125"
 
 * 請參閱 [Azure AD StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory) 中任何類似的錯誤或問題。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 [Azure AD 開發人員指南](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)<br>
 

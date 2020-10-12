@@ -5,10 +5,10 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.openlocfilehash: d502e74139c543d4183a75faa6bea1948d9f3e56
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86247977"
 ---
 # <a name="how-data-serialization-affects-an-application-upgrade"></a>資料序列化如何影響應用程式升級
@@ -43,13 +43,13 @@ ms.locfileid: "86247977"
 
 資料合約是建議的解決方案，以確保您的資料相容。 它有新增、移除及變更欄位的定義完善版本控制規則。 它也支援處理未知欄位、連結到序列化和還原序列化程序，以及處理類別繼承。 如需詳細資訊，請參閱 [使用資料合約](/dotnet/framework/wcf/feature-details/using-data-contracts)。
 
-## <a name="next-steps"></a>後續步驟
-[使用 Visual Studio 升級您的應用程式](service-fabric-application-upgrade-tutorial.md)會逐步引導您使用 Visual Studio 進行應用程式升級。
+## <a name="next-steps"></a>接下來的步驟
+[使用 Visual Studio 升級您的應用程式](service-fabric-application-upgrade-tutorial.md) 會逐步引導您使用 Visual Studio 進行應用程式升級。
 
-[使用 Powershell 升級您的應用程式](service-fabric-application-upgrade-tutorial-powershell.md)會逐步引導您使用 powershell 進行應用程式升級。
+[使用 Powershell 升級您的應用程式](service-fabric-application-upgrade-tutorial-powershell.md) 會逐步引導您使用 powershell 來升級應用程式。
 
 使用 [升級參數](service-fabric-application-upgrade-parameters.md)來控制您應用程式的升級方式。
 
-瞭解如何在升級您的應用程式時使用 advanced 功能，方法是參考[Advanced 主題](service-fabric-application-upgrade-advanced.md)。
+瞭解如何在升級您的應用程式時使用先進的功能，方法是參考 [Advanced 主題](service-fabric-application-upgrade-advanced.md)。
 
-參考[疑難排解應用程式升級](service-fabric-application-upgrade-troubleshooting.md)中的步驟，以修正應用程式升級中常見的問題。
+藉由參考針對 [應用程式升級進行疑難排解](service-fabric-application-upgrade-troubleshooting.md)的步驟，修正應用程式升級中常見的問題。

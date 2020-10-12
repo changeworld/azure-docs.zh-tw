@@ -8,10 +8,10 @@ ms.assetid: 63be271e-7c44-4d19-9897-c2913ee9599d
 ms.topic: how-to
 ms.date: 06/30/2017
 ms.openlocfilehash: 1c22aa9fb91b0a86704b95586afc1779023e85b6
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87288936"
 ---
 # <a name="u-sql-programmability-guide"></a>U-SQL 可程式性指南
@@ -125,7 +125,7 @@ REFERENCE ASSEMBLY MyDB.[MyAssembly];
 
 
 ### <a name="use-assembly-versioning"></a>使用組件版本控制
-目前，U-SQL 會使用 .NET Framework 版本4.7.2。 因此，請確定您自己的組件與該執行階段版本相容。
+目前，SQL-DMO 使用 .NET Framework 版本4.7.2。 因此，請確定您自己的組件與該執行階段版本相容。
 
 如前面所述，U-SQL 會執行 64 位元 (x64) 格式的程式碼。 因此，請確定您的程式碼是編譯為可在 x64 上執行。 否則，您會得到如上所示的格式不正確錯誤。
 
@@ -521,9 +521,9 @@ public class MyTypeFormatter : IFormatter<MyType>
 }
 ```
 
-介面會序列化和還原序列化 `IFormatter` 具有根類型的物件圖形 \<typeparamref name="T"> 。
+`IFormatter`介面會以的根類型序列化和還原序列化物件圖形 \<typeparamref name="T"> 。
 
-\<typeparam name="T">要序列化和還原序列化之物件圖形的根類型。
+\<typeparam name="T">要序列化和還原序列化的物件圖形根型別。
 
 * **還原序列化**：對所提供串流上的資料還原序列化，並重組物件的圖形。
 
@@ -906,7 +906,7 @@ var result = new FiscalPeriod(binaryReader.ReadInt16(), binaryReader.ReadInt16()
 
 **SqlUserDefinedAggregate** 表示類型應該註冊為使用者定義彙總。 此類別無法獲得繼承。
 
-UDAGG 定義的 SqlUserDefinedType 屬性是**選擇性**的。
+SqlUserDefinedType 屬性是 UDAGG 定義的 **選擇性** 屬性。
 
 
 基底類別可讓您傳遞三個抽象參數：其中兩個做為輸入參數，一個做為結果參數。 資料類型會變動，但應該會在繼承類別時進行定義。
@@ -1869,9 +1869,9 @@ CombinerMode 列舉可以採用下列值︰
 
 輸入資料列集會傳遞做為介面的「左邊」**** 和「右邊」**** `IRowset` 類型。 這兩個資料列集必須列舉以進行處理。 您僅可以允許每個介面列舉一次，因此我們必須在必要時加以列舉和快取。
 
-基於快取目的，我們可以建立 \<T\> 記憶體結構的清單類型做為 LINQ 查詢執行的結果，特別列出<`IRow`>。 列舉期間也可以使用匿名資料類型。
+基於快取目的，我們可以建立 \<T\> 記憶體結構的清單類型，作為 LINQ 查詢執行的結果，特別是列出<`IRow`>。 列舉期間也可以使用匿名資料類型。
 
-如需 LINQ 查詢的詳細資訊，請參閱[Linq 查詢簡介（c #）](/dotnet/csharp/programming-guide/concepts/linq/introduction-to-linq-queries) ，以及[ienumerable \<T\> 介面](/dotnet/api/system.collections.generic.ienumerable-1)以取得 ienumerable 介面的詳細資訊 \<T\> 。
+如需 LINQ 查詢的詳細資訊，請參閱 [Linq 查詢簡介 (c # ) ](/dotnet/csharp/programming-guide/concepts/linq/introduction-to-linq-queries) ， [以及 ienumerable 介面的詳細 \<T\> ](/dotnet/api/system.collections.generic.ienumerable-1) 資訊，以取得 ienumerable 介面的詳細資訊 \<T\> 。
 
 若要從傳入的 `IRowset` 取得實際資料值，我們可以使用 `IRow` 介面的 Get() 方法。
 

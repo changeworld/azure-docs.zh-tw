@@ -1,6 +1,6 @@
 ---
 title: Azure IoT Central 顯示/隱藏聊天 |Microsoft Docs
-description: 本文說明如何在您的 IoT Central 應用程式中顯示和隱藏聊天。 您可以使用即時聊天來存取技術支援。
+description: 本文說明如何在 IoT Central 應用程式中顯示及隱藏聊天。 您可以使用即時聊天來存取技術支援。
 author: v-krghan
 ms.author: v-krghan
 ms.date: 08/23/2019
@@ -9,22 +9,22 @@ ms.service: iot-central
 services: iot-central
 manager: philmea
 ms.openlocfilehash: a8e93ea12f176a4b28f14f5878cc580873d3c7c4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80157699"
 ---
 # <a name="toggle-live-chat"></a>切換即時聊天
 
-本操作說明文章會示範如何在您的 IoT Central 應用程式中切換即時聊天。 您可以使用即時聊天來存取技術支援。
+本操作說明文章會示範如何在 IoT Central 應用程式中切換即時聊天。 您可以使用即時聊天來存取技術支援。
 
 > [!NOTE]
-> 聊天選項僅適用于使用免費定價方案所建立的應用程式。
+> 聊天選項僅適用于使用免費定價方案建立的應用程式。
 
 ## <a name="chat-with-us"></a>與我們聊天
 
-若要取得技術支援，請開啟您的 IoT Central 應用程式，並選取 [**與我們交談**]。
+若要取得技術支援，請開啟您的 IoT Central 應用程式，並選取 [ **與我們交談**]。
 
 ![與我們聊天](media/howto-show-hide-chat/chat-with-us.png)
 
@@ -46,7 +46,7 @@ ms.locfileid: "80157699"
 
 ## <a name="next-steps"></a>後續步驟
 
-既然您已瞭解如何在 Azure IoT Central 中切換即時聊天，以下是建議的後續步驟：
+現在您已瞭解如何在 Azure IoT Central 中切換即時聊天，以下是建議的後續步驟：
 
 > [!div class="nextstepaction"]
 > [將圖格新增至您的儀表板](howto-add-tiles-to-your-dashboard.md)

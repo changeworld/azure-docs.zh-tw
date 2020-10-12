@@ -15,15 +15,15 @@ ms.workload: na
 ms.date: 07/12/2017
 ms.author: alkohli
 ms.openlocfilehash: c8d8e3b9058b753dc2a6da35878449c94399225e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85508039"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-administer-your-storsimple-device"></a>使用 StorSimple 裝置管理員服務管理 StorSimple 裝置
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 本文描述 StorSimple 裝置管理員服務介面，包括如何與其連接、各種可用選項，以及可以透過此 UI 執行的特定工作流程連結。 本指南適用於以下兩者；StorSimple 實體裝置和雲端設備。
 
@@ -80,7 +80,7 @@ StorSimple 裝置管理員服務在 Microsoft Azure 中執行，並連接至多�
 | 建立支援封裝 |[建立及管理支援封裝](storsimple-8000-contact-microsoft-support.md#start-a-support-session-in-windows-powershell-for-storsimple) |
 | 安裝軟體更新 |[更新裝置](storsimple-update-device.md) |
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 如果您遇到與 StorSimple 裝置的日常作業或其中任何硬體元件的任何問題，請參閱：
 

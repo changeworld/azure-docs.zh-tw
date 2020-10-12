@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 1452f380cec711fb224f532ccb02d11c5bbad697
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86255178"
 ---
 # <a name="application-templates-in-azure-api-management"></a>Azure API 管理中的應用程式範本
@@ -36,7 +36,7 @@ ms.locfileid: "86255178"
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
-##  <a name="application-list"></a><a name="ProductList"></a>應用程式清單  
+##  <a name="application-list"></a><a name="ProductList"></a> 應用程式清單  
  「應用程式清單」**** 範本可讓您自訂開發人員入口網站中應用程式清單頁面的主體。  
   
  ![應用程式清單頁面開發人員入口網站範本](./media/api-management-application-templates/APIM-Application-List-Page-Developer-Portal-Templates.png "APIM 應用程式清單頁面開發人員入口網站範本")  
@@ -76,11 +76,11 @@ ms.locfileid: "86255178"
 ### <a name="controls"></a>控制項  
  `Product list` 範本可能會使用下列[頁面控制項](api-management-page-controls.md)。  
   
--   [分頁控制](api-management-page-controls.md#paging-control)  
+-   [分頁控制項](api-management-page-controls.md#paging-control)  
   
 ### <a name="data-model"></a>資料模型  
   
-|屬性|類型|描述|  
+|屬性|類型|說明|  
 |--------------|----------|-----------------|  
 |`Paging`|[分頁](api-management-template-data-model-reference.md#Paging)實體。|應用程式集合的分頁資訊。|  
 |`Applications`|[應用程式](api-management-template-data-model-reference.md#Application)實體的集合。|目前使用者可看見的應用程式。|  
@@ -137,7 +137,7 @@ ms.locfileid: "86255178"
 }  
 ```  
   
-##  <a name="application"></a><a name="Application"></a>應用程式  
+##  <a name="application"></a><a name="Application"></a> 應用  
  「應用程式」**** 範本可讓您自訂開發人員入口網站中應用程式頁面的主體。  
   
  ![應用程式頁面開發人員入口網站範本](./media/api-management-application-templates/APIM-Application-Page-Developer-Portal-Templates.png "APIM 應用程式頁面開發人員入口網站範本")  
@@ -223,5 +223,5 @@ ms.locfileid: "86255178"
 }  
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 如需有關使用範本的詳細資訊，請參閱[如何使用範本自訂 API 管理開發人員入口網站](api-management-developer-portal-templates.md)。

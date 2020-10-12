@@ -9,10 +9,10 @@ ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
 ms.openlocfilehash: 530ae82720e6b4eb6a3e4d1021c0b37b9f4dbf5c
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90707436"
 ---
 # <a name="how-to-mount-an-nfs-file-share"></a>如何掛接 NFS 檔案共用
@@ -45,7 +45,7 @@ ms.locfileid: "90707436"
 1. 登入 Azure 入口網站，並存取包含您所建立之 NFS 共用的儲存體帳戶。
 1. 選取**組態**。
 1. 選取 [ **已停用** ]，表示 **需要安全傳輸**。
-1. 選取 [儲存]。
+1. 選取 [儲存]****。
 
     :::image type="content" source="media/storage-files-how-to-mount-nfs-shares/storage-account-disable-secure-transfer.png" alt-text="停用安全傳輸的儲存體帳戶設定畫面螢幕擷取畫面。":::
 
@@ -55,7 +55,7 @@ ms.locfileid: "90707436"
 1. 輸入您想要使用的掛接路徑，然後複製腳本。
 1. 連接至您的用戶端，並使用提供的裝載腳本。
 
-    :::image type="content" source="media/storage-files-how-to-create-mount-nfs-shares/mount-nfs-file-share-script.png" alt-text="檔案共用 connect 分頁的螢幕擷取畫面":::
+    :::image type="content" source="media/storage-files-how-to-create-mount-nfs-shares/mount-nfs-file-share-script.png" alt-text="停用安全傳輸的儲存體帳戶設定畫面螢幕擷取畫面。":::
 
 您現在已裝載 NFS 共用。
 

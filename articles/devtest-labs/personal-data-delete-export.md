@@ -1,13 +1,13 @@
 ---
-title: 如何從 Azure DevTest Labs 刪除及匯出個人資料
+title: 如何從 Azure DevTest Labs 中刪除及匯出個人資料
 description: 了解如何從 Azure DevLast Labs 服務刪除及匯出個人資料，以履行您在一般資料保護規定 (GDPR) 下的責任。
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 2c44b2f3aa6f2dfad18ed53804842a5dad8bd94a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85483511"
 ---
 # <a name="export-or-delete-personal-data-from-azure-devtest-labs"></a>從 Azure DevTest Labs 匯出或刪除個人資料
@@ -33,8 +33,8 @@ DevTest Labs 會透過使用者物件識別碼向實驗室管理員顯示逐月�
 **目前行事曆月份的預估成本趨勢：** 
  ![目前行事曆月份的預估成本趨勢](./media/personal-data-delete-export/estimated-cost-trend-per-month.png)
 
-**依資源的預估月迄今成本：** 
- ![依資源的預估月迄今成本](./media/personal-data-delete-export/estimated-month-to-date-cost-by-resource.png)
+**依資源估計的當月成本：** 
+ ![依資源估計的當月成本](./media/personal-data-delete-export/estimated-month-to-date-cost-by-resource.png)
 
 
 ## <a name="why-do-we-need-this-personal-data"></a>我們為何需要這項個人資料？
@@ -46,9 +46,9 @@ DevTest Labs 服務會基於運作目的使用個人資料。 這是服務為了
 例如，如果您刪除了 VM，或移除了電子郵件地址，DevTest Labs 服務將會在資源刪除的 30 天後將這項資料匿名處理。 刪除後保留 30 天的原則，是為了確保我們能為實驗室管理員提供精確的逐月成本預測。
 
 ## <a name="how-can-i-request-an-export-on-my-personal-data"></a>如何要求匯出我的個人資料？
-您可以使用 Azure 入口網站或 PowerShell 來匯出個人和實驗室使用量資料。 資料會匯出為兩個不同的 CSV 檔案：
+您可以使用 Azure 入口網站或 PowerShell 來匯出個人和實驗室使用方式資料。 資料會匯出為兩個不同的 CSV 檔案：
 
-- **disks.csv** -包含不同 vm 所使用之磁片的相關資訊
+- **disks.csv** -包含不同 vm 使用之磁片的相關資訊
 - **virtualmachines.csv** -包含實驗室中 vm 的相關資訊。
 
 ### <a name="azure-portal"></a>Azure 入口網站
@@ -137,71 +137,71 @@ else
 
 上述範例中的主要元件如下：
 
-- AzureRmResourceAction 命令。
+- Invoke-AzureRmResourceAction 命令。
    
     ```
     Invoke-AzureRmResourceAction -Action 'exportLabResourceUsage' -ResourceId $resourceId -Parameters $actionParameters -Force
     ```
 - 兩個動作參數
-    - **blobStorageAbsoluteSasUri** -具有共用存取簽章（SAS）權杖的儲存體帳戶 URI。 在 PowerShell 腳本中，可以傳入此值，而不是儲存體金鑰。
-    - **usageStartDate** -提取資料的開始日期，而結束日期是執行動作的目前日期。 資料細微性是在 day 層級，因此即使您加入時間資訊，它也會被忽略。
+    - **blobStorageAbsoluteSasUri** -具有共用存取簽章 (SAS) 權杖的儲存體帳戶 URI。 在 PowerShell 腳本中，可以傳入此值，而不是儲存體金鑰。
+    - **usageStartDate** -提取資料的開始日期，其中的結束日期是執行動作的目前日期。 資料細微性是在 day 層級，因此即使您加入時間資訊，也會被忽略。
 
-### <a name="exported-data---a-closer-look"></a>匯出的資料-深入探討
-現在讓我們仔細看一下匯出的資料。 如先前所述，一旦成功匯出資料之後，將會有兩個 CSV 檔案。 
+### <a name="exported-data---a-closer-look"></a>匯出的資料-深入瞭解
+現在讓我們仔細看看匯出的資料。 如先前所述，成功匯出資料之後，將會有兩個 CSV 檔案。 
 
 **virtualmachines.csv**包含下列資料行：
 
 | 資料行名稱 | 描述 |
 | ----------- | ----------- | 
-| SubscriptionId | 實驗室所在的訂用帳戶識別碼。 |
+| SubscriptionId | 實驗室存在的訂用帳戶識別碼。 |
 | LabUId | 實驗室的唯一 GUID 識別碼。 |
 | LabName | 實驗室名稱。 |
 | LabResourceId | 完整的實驗室資源識別碼。 |
 | resourceGroupName | 包含 VM 的資源組名 | 
 | ResourceId | VM 的完整資源識別碼。 |
 | ResourceUId | VM 的 GUID |
-| Name | 虛擬機器名稱。 |
+| 名稱 | 虛擬機器名稱。 |
 | CreatedTime | 建立 VM 的日期時間。 |
-| DeletedDate | 刪除 VM 的日期時間。 如果是空的，則刪除作業尚未發生。 |
-| ResourceOwner | VM 的擁有者。 如果值是空的，則為可宣告 VM，或由服務主體所建立。 |
+| DeletedDate | 刪除 VM 的日期時間。 如果是空的，則尚未發生刪除。 |
+| ResourceOwner | VM 的擁有者。 如果值是空的，則會是可宣告 VM，或由服務主體所建立。 |
 | PricingTier | VM 的定價層 |
-| ResourceStatus | VM 的可用性狀態。 如果 VM 已被刪除，則為作用中（如果仍然存在或非作用中）。 |
+| ResourceStatus | VM 的可用性狀態。 作用中（如果仍存在或非使用中），如果 VM 已刪除。 |
 | ComputeResourceId | 完整的虛擬機器計算資源識別碼。 |
 | 可宣告 | 如果 VM 是可宣告 VM，則設定為 true | 
-| EnvironmentId | 在其中建立虛擬機器的環境資源識別碼。 當 VM 不是在環境資源中建立時，它會是空的。 |
-| ExpirationDate | VM 的到期日。 如果尚未設定到期日，它會設為空白。
-| GalleryImageReferenceVersion |  VM 基底映射的版本。 |
-| GalleryImageReferenceOffer | VM 基底映射的供應專案。 |
-| GalleryImageReferencePublisher | VM 基底映射的發行者。 |
-| GalleryImageReferenceSku | VM 基底映射的 Sku |
-| GalleryImageReferenceOsType | VM 基底映射的 OS 類型 |
+| EnvironmentId | 在其中建立虛擬機器的環境資源識別碼。 當 VM 未建立為環境資源的一部分時，它是空的。 |
+| ExpirationDate | VM 的到期日。 如果尚未設定到期日，則會設為空白。
+| GalleryImageReferenceVersion |  VM 基礎映射的版本。 |
+| GalleryImageReferenceOffer | VM 基礎映射的供應專案。 |
+| GalleryImageReferencePublisher | VM 基礎映射的發行者。 |
+| GalleryImageReferenceSku | VM 基礎映射的 Sku |
+| GalleryImageReferenceOsType | VM 基礎映射的 OS 類型 |
 | CustomImageId | VM 基底自訂映射的完整識別碼。 |
 
-**disks.csv**中所包含的資料行如下所示：
+**disks.csv**中包含的資料行如下所示：
 
 | 資料行名稱 | 描述 | 
 | ----------- | ----------- | 
-| SubscriptionId | 包含實驗室之訂用帳戶的識別碼 |
+| SubscriptionId | 包含實驗室的訂用帳戶識別碼 |
 | LabUId | 實驗室的 GUID |
 | LabName | 實驗室的名稱 | 
 | LabResourceId | 實驗室的完整資源識別碼 | 
 | resourceGroupName | 包含實驗室的資源組名 | 
 | ResourceId | VM 的完整資源識別碼。 |
 | ResourceUId | VM 的 GUID |
- |Name | 連接的磁片名稱 |
-| CreatedTime |資料磁片的建立日期和時間。 |
-| DeletedDate | 資料磁片被刪除的日期和時間。 |
-| ResourceStatus | 資源的狀態。 [作用中] （如果資源存在的話）。 非使用中，刪除時。 |
+ |名稱 | 連接的磁片名稱 |
+| CreatedTime |建立資料磁片的日期和時間。 |
+| DeletedDate | 刪除資料磁片的日期和時間。 |
+| ResourceStatus | 資源的狀態。 如果資源存在，則為作用中。 刪除時為非使用中。 |
 | DiskBlobName | 資料磁片的 Blob 名稱。 |
 | DiskSizeGB | 資料磁片的大小。 |
-| DiskType | 資料磁片的類型。 0代表 Standard，1代表 Premium。 |
-| LeasedByVmId | 已連接資料磁片之 VM 的資源識別碼。 |
+| DiskType | 資料磁片的類型。 0代表標準，1代表 Premium。 |
+| LeasedByVmId | 已附加資料磁片之 VM 的資源識別碼。 |
 
 
 > [!NOTE]
-> 如果您要處理多個實驗室並想要取得整體資訊，這兩個索引鍵資料行是**LabUID**和**ResourceUId**，這是跨訂用帳戶的唯一識別碼。
+> 如果您正在處理多個實驗室，而且想要取得整體資訊，則這兩個索引鍵資料行是 **LabUID** 和 **ResourceUId**，這是跨訂用帳戶的唯一識別碼。
 
-匯出的資料可以使用工具（例如 SQL Server、Power BI 等）進行操作和視覺化。當您想要將實驗室的使用方式回報給您的管理小組，而該團隊可能不會使用與您相同的 Azure 訂用帳戶時，這項功能特別有用。
+匯出的資料可以使用工具來操作和視覺化，例如 SQL Server、Power BI 等等。當您想要將實驗室的使用方式回報給您的管理小組，而您的管理小組可能不會使用與您相同的 Azure 訂用帳戶時，這項功能特別有用。
 
 ## <a name="next-steps"></a>後續步驟
 查看下列文章： 

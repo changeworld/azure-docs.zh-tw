@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 06/20/2018
 ms.author: gwallace
 ms.openlocfilehash: 7f3c3e072a3a2e4f7723f84b2c70ba0d0ddb9d03
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86258840"
 ---
 # <a name="common-exceptions-and-errors-when-working-with-the-fabricclient-apis"></a>使用 FabricClient API 時常見的例外狀況和錯誤
@@ -20,7 +20,7 @@ ms.locfileid: "86258840"
 | 例外狀況 | 擲回時機 |
 | --- |:--- |
 | [System.Fabric.FabricObjectClosedException](/dotnet/api/system.fabric.fabricobjectclosedexception) |[FabricClient](/dotnet/api/system.fabric.fabricclient) 物件處於已關閉狀態。 處置正在使用的 [FabricClient](/dotnet/api/system.fabric.fabricclient) 物件，並具現化新的 [FabricClient](/dotnet/api/system.fabric.fabricclient) 物件。 |
-| [System.TimeoutException](/dotnet/core/api/system.timeoutexception) |作業已超時。當作業需要超過 MaxOperationTimeout 才能完成時，會傳回[OperationTimedOut](/dotnet/api/system.fabric.fabricerrorcode) 。 |
+| [System.TimeoutException](/dotnet/core/api/system.timeoutexception) |作業超時。當作業需要 MaxOperationTimeout 超過才能完成時，會傳回 [OperationTimedOut](/dotnet/api/system.fabric.fabricerrorcode) 。 |
 | [System.UnauthorizedAccessException](/dotnet/core/api/system.unauthorizedaccessexception) |作業的存取檢查失敗。 傳回 E_ACCESSDENIED。 |
 | [System.Fabric.FabricException](/dotnet/api/system.fabric.fabricexception) |執行作業時發生執行階段錯誤。 任何 FabricClient 方法都可能擲回 [FabricException](/dotnet/api/system.fabric.fabricexception)，[ErrorCode](/dotnet/api/system.fabric.fabricexception.errorcode) 屬性指出例外狀況的確切原因。 錯誤碼是在 [FabricErrorCode](/dotnet/api/system.fabric.fabricerrorcode) 列舉中定義。 |
 | [System.Fabric.FabricTransientException](/dotnet/api/system.fabric.fabrictransientexception) |作業因某種暫時性錯誤狀況而失敗。 例如，作業可能因暫時無法到達複本的仲裁而失敗。 暫時性例外狀況會對應至可重試的失敗作業。 |

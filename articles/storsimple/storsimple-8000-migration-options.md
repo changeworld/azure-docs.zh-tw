@@ -14,16 +14,16 @@ ms.workload: NA
 ms.date: 04/15/2019
 ms.author: alkohli
 ms.openlocfilehash: 181f5433de6653c8b6a2cda085f04e21c64082b9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85514662"
 ---
 # <a name="options-to-migrate-data-from-storsimple-5000-7000-series"></a>從 StorSimple 5000-7000 系列移轉資料的選項 
 
 > [!IMPORTANT]
-> 在2019年7月9日，StorSimple 5000/7000 系列會到達終止支援（EOS）狀態。 建議 StorSimple 5000/7000 系列的客戶遷移至文件中所述的其中一個替代方案。
+> StorSimple 5000/7000 系列將于2019年7月9日結束支援 (EOS) 狀態。 建議 StorSimple 5000/7000 系列的客戶遷移至文件中所述的其中一個替代方案。
 
 StorSimple 5000-7000 系列即將在 2019 年 7 月[終止支援](https://support.microsoft.com/lifecycle/search?alpha=StorSimple%205000%2F7000%20Series)。 執行 StorSimple 5000-7000 系列的客戶可以選擇升級至其他 Azure 第一方混合式服務。 本文說明可用來移轉資料的 Azure 混合式選項。 
 
@@ -57,19 +57,19 @@ StorSimple 5000-7000 客戶可以選擇移轉至 Panzura Freedom NAS 以將其�
 
 Cohesity 可讓您將資料從目前的 StorSimple 5000-7000 遷移至 Azure 上的 Cohesity 資料平台。 Cohesity 資料平台是一種以軟體定義的網路規模解決方案，可將檔案、備份、物件和 VM 合併到單一的雲端原生解決方案。 在移轉至資料平台後，您可以透過單一窗口，來管理和保護資料與應用程式，並將其從雲端佈建到核心位置。 在使用 Cohesity 時，請先從三個節點開始。 
 
-深入瞭解[如何遷移至 Cohesity 資料平臺](https://info.cohesity.com/migrate-from-storsimple-to-cohesity.html)。
+深入瞭解 [如何遷移至 Cohesity 資料平臺](https://info.cohesity.com/migrate-from-storsimple-to-cohesity.html)。
 
 #### <a name="migrate-to-nasuni"></a>遷移至 Nasuni
 
-Nasuni 可讓 StorSimple 5000-7000 客戶輕鬆地在 Azure 中遷移及保留其資料。  Nasuni 是領先的 Azure 型 NAS 儲存體解決方案，為客戶提供預期的效能和安全性，從內部部署的解決方案，以及雲端的經濟效益和規模。  除了高效能的檔案儲存體之外，Nasuni 和 Azure 也會處理備份和 DR，同時可讓您使用集中式檔案儲存管理，在全球各地共用和共同作業資料。 
+Nasuni 可讓 StorSimple 5000-7000 客戶輕鬆地在 Azure 中遷移及保留其資料。  Nasuni 是領先業界的 Azure 型 NAS 儲存體解決方案，可為客戶提供從內部部署解決方案獲得的效能和安全性，並提供雲端經濟效益和規模。  除了高效能檔案儲存體、Nasuni 和 Azure 處理備份和 DR，還可讓您使用集中式檔案儲存管理，在全球各地共用及共同作業資料。 
 
-Nasuni 的體驗可讓您輕鬆地進行遷移–立即開始使用：https://info.nasuni.com/nasuni-storsimple-migration
+Nasuni 可讓您輕鬆進行遷移–立即開始使用： https://info.nasuni.com/nasuni-storsimple-migration
 
-#### <a name="migrate-to-talon-fast"></a>快速遷移至 Talon
+#### <a name="migrate-to-talon-fast"></a>遷移至 Talon FAST
 
-Talon 可讓 StorSimple 5000-7000 客戶輕鬆地利用其在 StorSimple 平臺（不受限制的雲端資源所支援的小型站使用量）上的優勢，甚至更有價值的功能。  透過 Talon 的快速解決方案，客戶可以在 Azure 中遷移及保存其資料，而現在擁有更小的僅限軟體的現場使用量，並增加了全域檔案鎖定、全域命名空間和多網站共同作業等優點。  Talon 是領先的 Azure 生態系統解決方案，與全球客戶合作，將其內部部署檔案伺服器工作負載遷移到合併的 Azure 架構使用量，而不會影響使用者工作流程或體驗。  
+Talon 可讓 StorSimple 5000-7000 客戶更輕鬆地繼續利用其在 StorSimple 平臺中所提供的優點， (小型的站上使用量，且不受限制的雲端資源) 具有更高的功能。  透過 Talon FAST 解決方案，客戶可以在 Azure 中遷移及保存其資料，而現在擁有較小的僅限軟體的現場使用，並新增一些優點，例如全域檔案鎖定、全域命名空間和多網站共同作業。  Talon 是領先的 Azure 生態系統解決方案，與全球客戶合作，將其內部部署的檔案伺服器工作負載遷移至合併的 Azure 架構，而不會影響使用者工作流程或體驗。  
 
-深入瞭解如何發展到雲端整合的企業，網址為 https://www.talonstorage.com/alliances/microsoft-storsimple 。
+深入瞭解如何發展至雲端合併的企業 https://www.talonstorage.com/alliances/microsoft-storsimple 。
 
 
 ## <a name="migration---frequently-asked-questions"></a>移轉 - 常見問題集
@@ -125,6 +125,6 @@ A. 移轉資料的所需時間，取決於資料量和選取的升級選項。
 A. StorSimple 8000 系列最後支援期限發佈於[此](https://support.microsoft.com/lifecycle/search?alpha=Azure%20StorSimple%208000%20Series)。
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
  - [將資料從 StorSimple 5000-7000 系列移轉至 8000 系列裝置](storsimple-8000-migrate-from-5000-7000.md)。
  - [將資料從 StorSimple 5000-7000 系列移轉至 Azure 檔案同步](storsimple-5000-7000-afs-migration.md)

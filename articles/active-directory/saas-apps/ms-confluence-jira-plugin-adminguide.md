@@ -12,15 +12,15 @@ ms.topic: article
 ms.date: 11/19/2018
 ms.author: jeedes
 ms.openlocfilehash: 07bd9353f08e9440e495dfa92c608b4d6f70f5cf
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88543977"
 ---
 # <a name="atlassian-jira-and-confluence-admin-guide-for-azure-active-directory"></a>適用於 Azure Active Directory 的 Atlassian Jira 和 Confluence 管理員指南
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 Azure Active Directory (Azure AD) 單一登入 (SSO) 外掛程式可讓 Microsoft Azure AD 客戶使用工作或學校帳戶登入 Atlassian Jira 和 Confluence 伺服器架構的產品。 它會實作以 SAML 2.0 為基礎的 SSO。
 

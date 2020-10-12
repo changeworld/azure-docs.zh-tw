@@ -16,10 +16,10 @@ ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e78efd71943332e8a40e5b44b6b78f88e516649a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84759958"
 ---
 # <a name="remove-personal-data-for-azure-active-directory-application-proxy"></a>移除 Azure Active Directory 應用程式 Proxy 的個人資料
@@ -79,6 +79,6 @@ Azure Active Directory 應用程式 Proxy 需要您在裝置上安裝連接器�
 
 ![顯示程式碼片段，其中包含要移除的反白顯示程式碼](./media/application-proxy-remove-personal-data/01.png)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 如需應用程式 Proxy 的概觀，請參閱[如何為內部部署應用程式提供安全的遠端存取](application-proxy.md)。

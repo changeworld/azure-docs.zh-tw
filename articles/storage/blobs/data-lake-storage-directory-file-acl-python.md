@@ -10,10 +10,10 @@ ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
 ms.custom: devx-track-python
 ms.openlocfilehash: fc99bc645b48739d6d6339111780047496c1984d
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90017110"
 ---
 # <a name="use-python-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>使用 Python 來管理 Azure Data Lake Storage Gen2 中的目錄、檔案和 Acl
@@ -96,7 +96,7 @@ def initialize_storage_account_ad(storage_account_name, client_id, client_secret
 
 ## <a name="create-a-container"></a>建立容器
 
-容器可作為檔案的檔案系統。 您可以藉由呼叫 FileSystemDataLakeServiceClient 來建立一個。 **create_file_system** 方法。
+容器可作為檔案的檔案系統。 您可以藉由呼叫 **FileSystemDataLakeServiceClient.create_file_system** 方法來建立一個。
 
 這個範例會建立名為的容器 `my-file-system` 。
 
@@ -114,7 +114,7 @@ def create_file_system():
 
 ## <a name="create-a-directory"></a>建立目錄
 
-藉由呼叫 FileSystemClient 來建立目錄參考。 **create_directory** 方法。
+藉由呼叫 **FileSystemClient.create_directory** 方法來建立目錄參考。
 
 此範例會將名為 `my-directory` 的目錄新增至容器。 
 
@@ -129,7 +129,7 @@ def create_directory():
 
 ## <a name="rename-or-move-a-directory"></a>重新命名或移動目錄
 
-藉由呼叫 DataLakeDirectoryClient 來重新命名或移動目錄 **。 rename_directory** 方法。 傳遞所需目錄的路徑給參數。 
+藉由呼叫 **DataLakeDirectoryClient.rename_directory** 方法來重新命名或移動目錄。 傳遞所需目錄的路徑給參數。 
 
 此範例會將子目錄重新命名為名稱 `my-subdirectory-renamed` 。
 
@@ -149,7 +149,7 @@ def rename_directory():
 
 ## <a name="delete-a-directory"></a>刪除目錄
 
-藉由呼叫 DataLakeDirectoryClient 來刪除目錄 **。 delete_directory** 方法。
+藉由呼叫 **DataLakeDirectoryClient.delete_directory** 方法來刪除目錄。
 
 此範例刪除名為 `my-directory` 的目錄。  
 
@@ -166,7 +166,7 @@ def delete_directory():
 
 ## <a name="manage-directory-permissions"></a>管理目錄許可權
 
-藉由呼叫 **Get_access_control DataLakeDirectoryClient** ，來取得目錄 (acl) 的存取控制清單，並藉由呼叫 **DataLakeDirectoryClient set_access_control** 方法來設定 acl。
+藉由呼叫 **DataLakeDirectoryClient.get_access_control** 方法來取得目錄 (acl) 的存取控制清單，並藉由呼叫 **DataLakeDirectoryClient.set_access_control** 方法來設定 acl。
 
 > [!NOTE]
 > 如果您的應用程式使用 Azure Active Directory (Azure AD) 來授與存取權，請確定您的應用程式用來授與存取權的安全性主體已獲指派 [儲存體 Blob 資料擁有者角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)。 若要深入了解如何套用 ACL 權限以及變更權限的效果，請參閱 [Azure Data Lake Storage Gen2 中的存取控制](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)。
@@ -196,11 +196,11 @@ def manage_directory_permissions():
      print(e) 
 ```
 
-您也可以取得及設定容器根目錄的 ACL。 若要取得根目錄，請呼叫 **_Get_root_directory_client FileSystemClient** 方法。
+您也可以取得及設定容器根目錄的 ACL。 若要取得根目錄，請呼叫 **FileSystemClient._get_root_directory_client** 方法。
 
 ## <a name="upload-a-file-to-a-directory"></a>將檔案上傳至目錄 
 
-首先，藉由建立 **DataLakeFileClient** 類別的實例，在目標目錄中建立檔案參考。 藉由呼叫 DataLakeFileClient 方法來上傳檔案。 **append_data** 方法。 請務必藉由呼叫 DataLakeFileClient 方法來完成上傳。 **flush_data** 方法。
+首先，藉由建立 **DataLakeFileClient** 類別的實例，在目標目錄中建立檔案參考。 藉由呼叫 **DataLakeFileClient.append_data** 方法來上傳檔案。 請務必藉由呼叫 **DataLakeFileClient.flush_data** 方法來完成上傳。
 
 此範例會將文字檔上傳至名為的目錄 `my-directory` 。   
 
@@ -226,11 +226,11 @@ def upload_file_to_directory():
 ```
 
 > [!TIP]
-> 如果您的檔案大小很大，您的程式碼就必須對 DataLakeFileClient 進行多次呼叫 **。 append_data** 方法。 請考慮改為使用 **Upload_data DataLakeFileClient** 方法。 如此一來，您就可以在單一呼叫中上傳整個檔案。 
+> 如果您的檔案大小很大，您的程式碼就必須對 **DataLakeFileClient.append_data** 方法進行多個呼叫。 請考慮改為使用 **DataLakeFileClient.upload_data** 方法。 如此一來，您就可以在單一呼叫中上傳整個檔案。 
 
 ## <a name="upload-a-large-file-to-a-directory"></a>將大型檔案上傳至目錄
 
-使用 **Upload_data DataLakeFileClient** 方法來上傳大型檔案，而不需要對 **append_data DataLakeFileClient** 進行多次呼叫。
+使用 **DataLakeFileClient.upload_data** 方法來上傳大型檔案，而不需要對 **DataLakeFileClient.append_data** 方法進行多個呼叫。
 
 ```python
 def upload_file_to_directory_bulk():
@@ -254,7 +254,7 @@ def upload_file_to_directory_bulk():
 
 ## <a name="manage-file-permissions"></a>管理檔案許可權
 
-藉由呼叫 **Get_access_control DataLakeFileClient** 來取得檔案 (acl) 的存取控制清單，並藉由呼叫 **DataLakeFileClient set_access_control** 方法來設定 acl。
+藉由呼叫 **DataLakeFileClient.get_access_control** 方法，取得檔案 (acl) 的存取控制清單，並藉由呼叫 **DataLakeFileClient.set_access_control** 方法來設定 acl。
 
 > [!NOTE]
 > 如果您的應用程式使用 Azure Active Directory (Azure AD) 來授與存取權，請確定您的應用程式用來授與存取權的安全性主體已獲指派 [儲存體 Blob 資料擁有者角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)。 若要深入了解如何套用 ACL 權限以及變更權限的效果，請參閱 [Azure Data Lake Storage Gen2 中的存取控制](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)。
@@ -288,7 +288,7 @@ def manage_file_permissions():
 
 ## <a name="download-from-a-directory"></a>從目錄下載 
 
-開啟要寫入的本機檔案。 然後，建立代表您要下載之檔案的 **DataLakeFileClient** 實例。 呼叫 **Read_file DataLakeFileClient** ，以從檔案讀取位元組，然後將這些位元組寫入本機檔案。 
+開啟要寫入的本機檔案。 然後，建立代表您要下載之檔案的 **DataLakeFileClient** 實例。 呼叫 **DataLakeFileClient.read_file** 從檔案讀取位元組，然後將這些位元組寫入本機檔案。 
 
 ```python
 def download_file_from_directory():
@@ -314,7 +314,7 @@ def download_file_from_directory():
 ```
 ## <a name="list-directory-contents"></a>列出目錄內容
 
-藉由呼叫 **Get_paths FileSystemClient** 方法來列出目錄內容，然後再列舉結果。
+藉由呼叫 **FileSystemClient.get_paths** 方法來列出目錄內容，然後列舉結果。
 
 此範例會列印每個子目錄和檔案的路徑，該目錄位於名為的目錄中 `my-directory` 。
 

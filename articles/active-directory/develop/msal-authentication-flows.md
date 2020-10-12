@@ -13,17 +13,17 @@ ms.date: 07/08/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.openlocfilehash: 4a902ed53e92cd073d81626e80bdb3c8629ad072
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89437865"
 ---
 # <a name="authentication-flows"></a>驗證流程
 
 Microsoft 驗證程式庫 (MSAL) 支援數個在不同應用程式案例中使用的驗證流程。
 
-| Flow | 描述 | 使用於 |
+| 流程 | 描述 | 使用於 |
 |--|--|--|
 | [授權碼](#authorization-code) | 使用於裝置上所安裝的應用程式中，以存取受保護的資源，例如 Web API。 可讓您將登入及 API 存取新增至行動裝置和桌面應用程式。 | [傳統型應用程式](scenario-desktop-overview.md)、[行動應用程式](scenario-mobile-overview.md)、[Web 應用程式](scenario-web-app-call-api-overview.md) |
 | [用戶端認證](#client-credentials) | 可讓您使用應用程式的身分識別來存取 Web 裝載資源。 通常用於必須在背景中執行 (不需與使用者直接互動) 的伺服器對伺服器互動。 | [精靈應用程式](scenario-daemon-overview.md) |
@@ -136,7 +136,7 @@ Microsoft 驗證程式庫 (MSAL) 支援數個在不同應用程式案例中使�
 
 許多新式 web 應用程式都是以用戶端、單一頁面應用程式 (SPA) 以 JavaScript 或 SPA 架構（例如角度、Vue.js 和 React.js）所撰寫。 這些應用程式會在網頁瀏覽器中執行，且具有與傳統伺服器端 Web 應用程式不同的驗證特性。 Microsoft 身分識別平台可讓單頁應用程式登入使用者，並使用隱含授與流程來取得權杖以存取後端服務或 Web API。 隱含流程可讓應用程式取得識別碼權杖以代表經過驗證的使用者，也可以存取呼叫受保護的 API 所需的權杖。
 
-此驗證流程不包含使用跨平臺 JavaScript 架構（例如 Electron 或回應原生）的應用程式案例，因為它們需要進一步的功能來與原生平臺互動。
+此驗證流程不包含使用跨平臺 JavaScript 架構（例如 Electron 或 React-Native）的應用程式案例，因為它們需要進一步的功能來與原生平臺互動。
 
 透過隱含流程模式發出的權杖會有 **長度限制** ，因為它們會依 URL 傳給瀏覽器， (其中 `response_mode` 之一是 `query` 或 `fragment`) 。 某些瀏覽器會限制瀏覽器列中的 URL 長度，而如果太長，則會失敗。 因此，這些隱含流程權杖不包含 `groups` 或 `wids` 宣告。
 
@@ -227,7 +227,7 @@ IWA 不會略過多重要素驗證。 若已設定多重要素驗證，如果需
 
 如需同意的詳細資訊，請參閱 [v2.0 權限和同意](v2-permissions-and-consent.md)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 既然您已複習 Microsoft 驗證程式庫所支援的驗證流程 (MSAL) ，請瞭解如何取得和快取這些流程中所使用的權杖：
 

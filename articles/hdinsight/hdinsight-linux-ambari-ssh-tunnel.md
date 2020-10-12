@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 04/14/2020
 ms.openlocfilehash: 09fef350a0ff8cc8c2481acd7b8f74cee15d1b9d
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86075547"
 ---
 # <a name="use-ssh-tunneling-to-access-apache-ambari-web-ui-jobhistory-namenode-apache-oozie-and-other-uis"></a>使用 SSH 通道來存取 Apache Ambari web UI、JobHistory、NameNode、Apache Oozie 和其他 Ui
@@ -31,7 +31,7 @@ Ambari 中的數個功能表只有透過 SSH 通道才能運作。 這些功能�
 * Oozie Web UI
 * HBase Master 和記錄 UI
 
-使用公開 web 服務的腳本動作所安裝的服務將需要 SSH 通道。 使用腳本動作安裝的色調需要 SSH 通道才能存取 web UI。
+使用公開 web 服務的腳本動作所安裝的服務，將需要 SSH 通道。 使用腳本動作安裝的色調需要 SSH 通道才能存取 web UI。
 
 > [!IMPORTANT]  
 > 如果您透過虛擬網路直接存取 HDInsight，便不需要使用 SSH 通道。 如需透過虛擬網路直接存取 HDInsight 的範例，請參閱[將 HDInsight 連線至內部部署網](connect-on-premises-network.md)文件。
@@ -56,7 +56,7 @@ Ambari 中的數個功能表只有透過 SSH 通道才能運作。 這些功能�
 
 ## <a name="create-a-tunnel-using-the-ssh-command"></a><a name="usessh"></a>使用 SSH 命令建立通道
 
-使用下列命令，利用 `ssh` 命令建立 SSH 通道。 `sshuser`以您 hdinsight 叢集的 SSH 使用者取代，並 `CLUSTERNAME` 以您 hdinsight 叢集的名稱取代：
+使用下列命令，利用 `ssh` 命令建立 SSH 通道。 `sshuser`以您 hdinsight 叢集的 SSH 使用者取代，並 `CLUSTERNAME` 以您的 hdinsight 叢集名稱取代：
 
 ```cmd
 ssh -C2qTnNf -D 9876 sshuser@CLUSTERNAME-ssh.azurehdinsight.net
@@ -64,36 +64,36 @@ ssh -C2qTnNf -D 9876 sshuser@CLUSTERNAME-ssh.azurehdinsight.net
 
 此命令會建立透過 SSH 將流量由本機連接埠 9876 路由傳送至叢集的連線。 其選項包括：
 
-|選項 |描述 |
+|選項 |說明 |
 |---|---|
 |D 9876|透過通道路由傳送流量的本機埠。|
 |C|壓縮所有資料，因為網路流量大多是文字。|
-|2|強制 SSH 僅嘗試通訊協定第2版。|
+|2|強制 SSH 只嘗試第2版通訊協定。|
 |q|無訊息模式。|
 |T|停用虛擬 tty 配置，因為您只是轉送埠。|
 |n|防止讀取 STDIN，因為您只是轉送埠。|
 |N|請勿執行遠端命令，因為您只是轉送埠。|
-|f|在背景中執行。|
+|f|在背景執行。|
 
 在命令完成後，會將傳送至本機電腦上連接埠 9876 的流量路由傳送至叢集前端節點。
 
 ## <a name="create-a-tunnel-using-putty"></a><a name="useputty"></a>使用 PuTTY 建立通道
 
-[PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty) 是適用於 Windows 的圖形化 SSH 用戶端。 如果您不熟悉 PuTTY，請參閱[PuTTY 檔](https://www.chiark.greenend.org.uk/~sgtatham/putty/docs.html)。 使用下列步驟，利用 PuTTY 建立 SSH 通道：
+[PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty) 是適用於 Windows 的圖形化 SSH 用戶端。 如果您不熟悉 PuTTY，請參閱 [PuTTY 檔](https://www.chiark.greenend.org.uk/~sgtatham/putty/docs.html)。 使用下列步驟，利用 PuTTY 建立 SSH 通道：
 
 ### <a name="create-or-load-a-session"></a>建立或載入工作階段
 
-1. 開啟 PuTTY，並確認已左側功能表上選取**工作階段**。 如果您已經儲存會話，請從 [**已儲存的會話**] 清單中選取會話名稱，然後選取 [**載入**]。
+1. 開啟 PuTTY，並確認已左側功能表上選取**工作階段**。 如果您已經儲存會話，請從 [ **已儲存的會話** ] 清單中選取會話名稱，然後選取 [ **載入**]。
 
 1. 如果您尚未儲存工作階段，請輸入您的連線資訊：
 
     |屬性 |值 |
     |---|---|
     |主機名稱 (或 IP 位址)|HDInsight 叢集的 SSH 位址。 例如， **mycluster-ssh.azurehdinsight.net**。|
-    |Port|22|
+    |連接埠|22|
     |連接類型|SSH|
 
-1. 選取 [儲存]
+1. 選取 [儲存]。
 
     ![HDInsight 建立 putty 會話](./media/hdinsight-linux-ambari-ssh-tunnel/hdinsight-create-putty-session.png)
 
@@ -103,15 +103,15 @@ ssh -C2qTnNf -D 9876 sshuser@CLUSTERNAME-ssh.azurehdinsight.net
 
     |屬性 |值 |
     |---|---|
-    |來源連接埠|您想要轉送之用戶端上的埠。 例如， **9876**。|
+    |來源連接埠|用戶端上您想要轉寄的埠。 例如， **9876**。|
     |Destination|HDInsight 叢集的 SSH 位址。 例如， **mycluster-ssh.azurehdinsight.net**。|
     |動態|啟用動態 SOCKS proxy 路由。|
 
     ![PuTTY 設定通道選項](./media/hdinsight-linux-ambari-ssh-tunnel/hdinsight-putty-tunnel.png)
 
-1. 選取 [**新增**] 以新增設定，然後選取 [**開啟**] 以開啟 SSH 連線。
+1. 選取 [ **新增** ] 以新增設定，然後選取 [ **開啟** ] 以開啟 SSH 連線。
 
-1. 出現提示時，登入伺服器。
+1. 出現提示時，請登入伺服器。
 
 ## <a name="use-the-tunnel-from-your-browser"></a>從瀏覽器使用通道
 
@@ -125,7 +125,7 @@ ssh -C2qTnNf -D 9876 sshuser@CLUSTERNAME-ssh.azurehdinsight.net
    > [!NOTE]  
    > 選取 [遠端 DNS]**** 會使用 HDInsight 叢集解析網域名稱系統 (DNS) 要求。 這項設定會使用叢集的前端節點來解析 DNS。
 
-2. 藉由造訪之類的網站來確認通道是否正常運作 [https://www.whatismyip.com/](https://www.whatismyip.com/) 。 傳回的 IP 應該是 Microsoft Azure 資料中心使用的 IP。
+2. 造訪網站（例如）來確認通道是否正常運作 [https://www.whatismyip.com/](https://www.whatismyip.com/) 。 傳回的 IP 應該是 Microsoft Azure 資料中心使用的 IP。
 
 ## <a name="verify-with-ambari-web-ui"></a>驗證 Ambari Web UI
 
@@ -156,8 +156,8 @@ ssh -C2qTnNf -D 9876 sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     > [!NOTE]  
     > 請注意此頁面的 URL；它應該類似於 `http://hn1-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:8088/cluster`。 此 URI 使用節點的內部完整網域名稱 (FQDN)，而且必須使用 SSH 通道才能存取。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-既然您已瞭解如何建立和使用 SSH 通道，請參閱下列檔，以瞭解其他使用 Ambari 的方式：
+現在您已瞭解如何建立及使用 SSH 通道，請參閱下列檔，以瞭解使用 Ambari 的其他方式：
 
 * [使用 Apache Ambari 管理 HDInsight 叢集](hdinsight-hadoop-manage-ambari.md)

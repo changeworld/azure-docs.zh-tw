@@ -4,10 +4,10 @@ description: 瞭解 Azure Migrate Server 評量中的評量
 ms.topic: conceptual
 ms.date: 05/27/2020
 ms.openlocfilehash: 4020df3ef77e4b8ae0618108f539322092b93079
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91275518"
 ---
 # <a name="server-assessment-overview-migrate-to-azure-vms"></a>伺服器評定總覽 (遷移至 Azure Vm) 
@@ -121,9 +121,9 @@ ms.locfileid: "91275518"
 **調整大小準則** | 用來時 Azure VM。<br/><br/> 使用依大小調整或以效能為基礎的大小調整。
 **效能歷程記錄** | 用於以效能為基礎的大小調整。 效能歷程記錄會指定評估效能資料時所使用的持續時間。
 **百分位數使用率** | 用於以效能為基礎的大小調整。 百分位數使用率會指定用於擔心之效能範例的百分位數值。
-**VM 系列** | 您要考慮擔心的 Azure VM 系列。 例如，如果您在 Azure 中沒有需要 A 系列 Vm 的生產環境，您可以從系列清單中排除 A 系列。
+**VM 系列** | 您要考慮擔心的 Azure VM 系列。 例如，如果您沒有實際執行環境需要 Azure 中的 A 系列 VM，則可以從系列清單中排除 A 系列。
 **緩和因數** | 評量期間使用的緩衝區。 適用于 Vm 的 CPU、RAM、磁片和網路資料。 它會將問題（例如季節性使用量、簡短的效能歷程記錄，以及未來的使用方式增加）視為有問題。<br/><br/> 例如，具有20% 使用率的10核心 VM 通常會產生雙核心 VM。 使用2.0 的緩和因素，結果會改為四核心 VM。
-**供應項目** | 您所註冊的 [Azure 供應](https://azure.microsoft.com/support/legal/offer-details/) 專案。 伺服器評量會評估該供應專案的成本。
+**供應項目** | 您所註冊的 [Azure 供應](https://azure.microsoft.com/support/legal/offer-details/) 專案。 伺服器評量會評估該供應項目的成本。
 **貨幣** | 您帳戶的帳單貨幣。
 **折扣 (%)** | 您在 Azure 供應專案上收到的任何訂用帳戶特定折扣。 預設設定為 0%。
 **VM 運作時間** | 不會連續執行的 Azure Vm，每天每月的天數和每日的小時數。 成本預估是以該持續時間為基礎。<br/><br/> 預設值為每個月31天和每天24小時。
@@ -282,7 +282,7 @@ Azure Migrate 中每個以效能為基礎的 Azure VM 評量都與信賴評等�
     - 軟體保證
     - 保留執行個體
     - VM 運作時間
-    - 位置
+    - Location
     - 貨幣設定
 
     伺服器評量會匯總所有機器的成本，以計算每月總計算成本。

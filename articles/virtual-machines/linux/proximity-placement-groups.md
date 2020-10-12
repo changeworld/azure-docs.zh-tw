@@ -1,5 +1,5 @@
 ---
-title: 使用鄰近放置群組
+title: 使用鄰近位置群組
 description: 瞭解如何在 Azure 中建立和使用虛擬機器的鄰近放置群組。
 author: cynthn
 ms.service: virtual-machines
@@ -8,15 +8,15 @@ ms.workload: infrastructure-services
 ms.date: 10/30/2019
 ms.author: cynthn
 ms.openlocfilehash: ee172203d6aa54b4b539356835f8a6bf2d21bad3
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87288421"
 ---
-# <a name="deploy-vms-to-proximity-placement-groups-using-azure-cli"></a>使用 Azure CLI 將 Vm 部署至鄰近放置群組
+# <a name="deploy-vms-to-proximity-placement-groups-using-azure-cli"></a>使用 Azure CLI 將 VM 部署至鄰近放置群組
 
-若要盡可能接近 Vm，達到最低可能的延遲，您應該將它們部署在[鄰近放置群組](co-location.md#proximity-placement-groups)內。
+若要盡可能關閉 Vm，請達到最低可能的延遲，您應該將它們部署在 [鄰近放置群組](co-location.md#proximity-placement-groups)內。
 
 鄰近放置群組是邏輯群組，可用來確保 Azure 計算資源實際位於彼此接近的位置。 鄰近放置群組很適合用於具備低延遲需求的工作負載。
 
@@ -35,7 +35,7 @@ az ppg create \
 
 ## <a name="list-proximity-placement-groups"></a>列出鄰近放置群組
 
-您可以使用[az ppg list](/cli/azure/ppg#az-ppg-list)來列出所有的鄰近放置群組。
+您可以使用 [az ppg list](/cli/azure/ppg#az-ppg-list)列出所有鄰近放置群組。
 
 ```azurecli-interactive
 az ppg list -o table
@@ -43,7 +43,7 @@ az ppg list -o table
 
 ## <a name="create-a-vm"></a>建立 VM
 
-使用[新的 az VM](/cli/azure/vm#az-vm-create)，在鄰近位置群組中建立 VM。
+使用 [新的 az VM](/cli/azure/vm#az-vm-create)在鄰近放置群組中建立 VM。
 
 ```azurecli-interactive
 az vm create \
@@ -56,19 +56,19 @@ az vm create \
    -l westus
 ```
 
-您可以使用[az ppg show](/cli/azure/ppg#az-ppg-show)在鄰近放置群組中查看 VM。
+您可以使用 [az ppg show](/cli/azure/ppg#az-ppg-show)在鄰近放置群組中看到 VM。
 
 ```azurecli-interactive
 az ppg show --name myppg --resource-group myppggroup --query "virtualMachines"
 ```
 
 ## <a name="availability-sets"></a>可用性設定組 (Availability Sets)
-您也可以在鄰近放置群組中建立可用性設定組。 使用相同的 `--ppg` 參數搭配[az vm availability-set create](/cli/azure/vm/availability-set#az-vm-availability-set-create)來建立可用性設定組，而且可用性設定組中的所有 vm 也會在相同的鄰近放置群組中建立。
+您也可以在鄰近放置群組中建立可用性設定組。 使用相同的 `--ppg` 參數搭配 [az vm availability-set create](/cli/azure/vm/availability-set#az-vm-availability-set-create) 來建立可用性設定組，同時也會在相同的鄰近放置群組中建立可用性設定組中的所有 vm。
 
 ## <a name="scale-sets"></a>擴展集
 
-您也可以在鄰近放置群組中建立擴展集。 使用 `--ppg` 與[az vmss create](/cli/azure/vmss?view=azure-cli-latest#az-vmss-create)相同的參數來建立擴展集，並在相同的鄰近放置群組中建立所有實例。
+您也可以在鄰近放置群組中建立擴展集。 使用 `--ppg` 與 [az vmss create](/cli/azure/vmss?view=azure-cli-latest#az-vmss-create) 相同的參數來建立擴展集，並在相同的鄰近放置群組中建立所有的實例。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-深入瞭解鄰近放置群組的[Azure CLI](/cli/azure/ppg)命令。
+深入瞭解鄰近放置群組的 [Azure CLI](/cli/azure/ppg) 命令。
