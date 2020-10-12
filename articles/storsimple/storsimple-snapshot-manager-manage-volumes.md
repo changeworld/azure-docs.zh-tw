@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 04/18/2016
 ms.author: alkohli
 ms.openlocfilehash: 79a239def70f0455f63c18d86397ec8d927f244c
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90054902"
 ---
 # <a name="use-storsimple-snapshot-manager-to-view-and-manage-volumes"></a>使用 StorSimple Snapshot Manager 來檢視和管理磁碟區
@@ -205,7 +205,7 @@ ms.locfileid: "90054902"
    * 若要排定自動備份，請按一下 [建立備份原則]****。 在 [一般]**** 頁面上，從清單中選取磁碟區群組。 在 [排程]**** 頁面上，輸入排程詳細資料。 完成時，請按一下 [確定]  。 
 7. 您可以在備份作業執行時加以監視。 在 [領域]**** 窗格中，展開 [工作]**** 節點，然後按一下 [執行中]****。工作詳細資料會出現在 [結果]**** 窗格中。 備份作業完成時，詳細資料會傳輸至 [過去 24 小時]**** 作業清單。 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 * 了解如何 [使用 StorSimple Snapshot Manager 來管理您的 StorSimple 解決方案](storsimple-snapshot-manager-admin.md)。
 * 了解如何 [使用 StorSimple Snapshot Manager 來建立和管理磁碟區群組](storsimple-snapshot-manager-manage-volume-groups.md)。
 

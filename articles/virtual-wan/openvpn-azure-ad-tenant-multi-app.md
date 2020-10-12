@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: alzam
 ms.openlocfilehash: 57fd36366eef284e2975633fbb34549f4316cde6
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90988270"
 ---
 # <a name="create-an-azure-active-directory-ad-tenant-for-p2s-openvpn-protocol-connections"></a>為 P2S OpenVPN 通訊協定連線建立 Azure Active Directory (AD) 租使用者
@@ -123,11 +123,11 @@ P2S 設定會定義用於連線遠端用戶端的參數。
 
 1. 選取要刪除的用戶端設定檔旁的省略符號 (...)。 然後，選取 [移除]****。
 
-    ![delete](./media/openvpn-azure-ad-tenant-multi-app/delete/delete1.jpg)
+    ![[刪除]](./media/openvpn-azure-ad-tenant-multi-app/delete/delete1.jpg)
 
 2. 選取 [移除]**** 以刪除。
 
-    ![delete](./media/openvpn-azure-ad-tenant-multi-app/delete/delete2.jpg)
+    ![[刪除]](./media/openvpn-azure-ad-tenant-multi-app/delete/delete2.jpg)
 
 #### <a name="to-diagnose-connection-issues"></a><a name="diagnose"></a>診斷連接問題
 

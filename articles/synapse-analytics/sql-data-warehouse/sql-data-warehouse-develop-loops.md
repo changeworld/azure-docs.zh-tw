@@ -1,6 +1,6 @@
 ---
 title: 使用 T-sql 迴圈
-description: 在 Synapse SQL 集區中使用 T-sql 迴圈和取代資料指標來進行解決方案開發的秘訣。
+description: 使用 T-sql 迴圈進行解決方案開發的秘訣，以及取代 Synapse SQL 集區中的資料指標。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -12,29 +12,29 @@ ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 25dad01a54b6ffe08656379340f58e0fe70ec666
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85213409"
 ---
 # <a name="using-t-sql-loops-in-synapse-sql-pool"></a>在 Synapse SQL 集區中使用 T-sql 迴圈
 
-本文中所包含的秘訣，是使用 T-sql 迴圈和取代資料指標來開發 SQL 集區解決方案。
+本文提供使用 T-sql 迴圈和取代資料指標進行 SQL 集區解決方案開發的秘訣。
 
 ## <a name="purpose-of-while-loops"></a>WHILE 迴圈的用途
 
-Synapse SQL 集區支援重複執行語句區塊的[WHILE](/sql/t-sql/language-elements/while-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)迴圈。 只要指定的條件都成立，或者在程式碼使用 BREAK 關鍵字特別終止迴圈之前，這個 WHILE 迴圈都會繼續下去。
+Synapse SQL 集區支援 [WHILE](/sql/t-sql/language-elements/while-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 迴圈，以重複執行語句區塊。 只要指定的條件都成立，或者在程式碼使用 BREAK 關鍵字特別終止迴圈之前，這個 WHILE 迴圈都會繼續下去。
 
-迴圈適用於取代 SQL 程式碼中定義的資料指標。 幸運的是，幾乎所有以 SQL 程式碼撰寫的資料指標都是向前快轉，並且只讀取多樣性。 因此，WHILE 迴圈是取代資料指標的絕佳替代方式。
+迴圈適用於取代 SQL 程式碼中定義的資料指標。 幸運的是，幾乎所有以 SQL 程式碼撰寫的資料指標都是向前快轉，並且只讀取多樣性。 因此，WHILE 迴圈是取代資料指標的絕佳替代方案。
 
 ## <a name="replacing-cursors-in-synapse-sql-pool"></a>取代 Synapse SQL 集區中的資料指標
 
-不過，在開始之前，您應該先問自己下列問題：「這個資料指標是否可以重寫以使用以集合為基礎的作業？」
+不過，在開始之前，您應該先自問下列問題：「這個資料指標是否可以重寫以使用集合型作業？」
 
-在許多情況下，答案都是「是」，而且通常是最佳的方法。 集合型作業的執行速度通常會比反覆的逐列方法更快。
+在許多情況下，答案是肯定的，且通常是最好的方法。 集合型作業的執行速度通常會比反覆的逐列方法更快。
 
-向前快轉唯讀資料指標可以輕鬆地以迴圈建構取代。 以下是簡單的範例。 程式碼範例會更新資料庫中每個資料表的統計資料。 藉由反覆迴圈中的資料表，每個命令就能依序執行。
+向前快轉唯讀資料指標可以輕鬆地以迴圈建構取代。 下列範例是一個簡單的範例。 程式碼範例會更新資料庫中每個資料表的統計資料。 藉由反覆迴圈中的資料表，每個命令就能依序執行。
 
 首先，建立暫存資料表，其中包含用來識別個別陳述式的唯一資料列數目：
 

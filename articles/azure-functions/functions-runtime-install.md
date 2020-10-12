@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: anwestg
 ms.openlocfilehash: 73b9533fa00c783e1cfb85270198f5c00c66afd5
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86540378"
 ---
 # <a name="install-the-azure-functions-runtime-preview-2"></a>安裝 Azure Functions 執行階段預覽 2
@@ -25,7 +25,7 @@ ms.locfileid: "86540378"
 1. 完成 Azure Functions 執行階段預覽 2 的設定。
 1. 在 Azure Functions 執行階段預覽中建立您的第一個函式
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 安裝 Azure Functions 執行階段預覽之前，您必須備妥下列資源：
 
@@ -46,8 +46,8 @@ Azure Functions 執行階段預覽安裝程式會引導您完成安裝 Azure Fun
 
     ![Azure Functions 執行階段預覽安裝程式][1]
 
-1. 按 [下一步] 。
-1. 閱讀**EULA**的條款**之後，請核取 [接受**條款]，然後按 **[下一步]** 繼續。
+1. 按一下 [下一步]。
+1. 閱讀 **EULA**的條款 **之後，請核取此方塊** 以接受條款，然後按 **[下一步]** 繼續。
 1. 選取您想要在這部電腦上安裝的角色：**Functions 管理角色**和/或 **Functions 背景工作角色**，然後按一下 [下一步]****。
 
     ![Azure Functions 執行階段預覽安裝程式 - 選取角色][3]
@@ -67,7 +67,7 @@ Azure Functions 執行階段預覽安裝程式會引導您完成安裝 Azure Fun
 
 若要完成 Azure Functions 執行階段安裝，您必須完成設定。
 
-1. **Azure Functions 執行階段**設定工具會顯示哪些角色已安裝在您的電腦上。
+1. **Azure Functions 執行階段**設定工具會顯示您的電腦上已安裝的角色。
 
     ![Azure Functions 執行階段預覽設定工具][7]
 
@@ -75,11 +75,11 @@ Azure Functions 執行階段預覽安裝程式會引導您完成安裝 Azure Fun
 
     ![Azure Functions 執行階段預覽資料庫設定][8]
 
-1. 按一下 [**認證**] 索引標籤。 在這裡，您必須建立兩個新的認證，以與檔案共用搭配使用，以裝載您的所有函數應用程式。  在 [檔案共用擁有者]**** 和 [檔案共用使用者]**** 中，指定 [使用者名稱]**** 和 [密碼]**** 組合，然後按一下 [套用]****。
+1. 按一下 [ **認證** ] 索引標籤。 在這裡，您必須建立兩個新的認證，以搭配使用檔案共用來裝載您的所有函數應用程式。  在 [檔案共用擁有者]**** 和 [檔案共用使用者]**** 中，指定 [使用者名稱]**** 和 [密碼]**** 組合，然後按一下 [套用]****。
 
     ![Azure Functions 執行階段預覽認證][9]
 
-1. 按一下 [檔案**共用**] 索引標籤。 您必須在這裡指定檔案共用位置的詳細資料。  您可以建立檔案共用，也可以使用現有的檔案共用，然後按一下 [套用]****。  如果您選取新的檔案共用位置，您必須指定供 Azure Functions 執行階段使用的目錄。
+1. 按一下 [檔案 **共用** ] 索引標籤。 您必須在這裡指定檔案共用位置的詳細資料。  您可以建立檔案共用，也可以使用現有的檔案共用，然後按一下 [套用]****。  如果您選取新的檔案共用位置，您必須指定供 Azure Functions 執行階段使用的目錄。
 
     ![Azure Functions 執行階段預覽檔案共用][10]
 
@@ -87,7 +87,7 @@ Azure Functions 執行階段預覽安裝程式會引導您完成安裝 Azure Fun
 
     ![Azure Functions 執行階段預覽 IIS][11]
 
-1. 按一下 [**服務**] 索引標籤。 此索引標籤會顯示您 Azure Functions 執行階段設定工具中的服務狀態。  如果 **Azure Functions 主機啟用服務**未在初始設定之後執行，請按一下 [啟動服務]****。
+1. 按一下 [ **服務** ] 索引標籤。 此索引標籤會顯示 Azure Functions 執行階段 configuration tool 中的服務狀態。  如果 **Azure Functions 主機啟用服務**未在初始設定之後執行，請按一下 [啟動服務]****。
 
     ![Azure Functions 執行階段預覽設定完成][12]
 
@@ -99,13 +99,13 @@ Azure Functions 執行階段預覽安裝程式會引導您完成安裝 Azure Fun
 
 在 Azure Functions 執行階段預覽中建立您的第一個函式
 
-1. 例如，流覽至**Azure Functions 執行階段入口網站** `https://<machinename>.<domain>` `https://mycomputer.mydomain.com` 。
+1. 例如，流覽至 **Azure Functions 執行階段入口網站** `https://<machinename>.<domain>` `https://mycomputer.mydomain.com` 。
 
 1. 如果是部署在使用您的網域帳戶使用者名稱與密碼的網域，系統就會提示您**登入**，否則請使用您的本機帳戶使用者名稱與密碼來登入入口網站。
 
     ![Azure Functions 執行階段預覽入口網站登入][14]
 
-1. 若要建立函數應用程式，您必須建立訂用帳戶。  在入口網站的左上角，按一下 [訂用帳戶 **+** ] 旁邊的選項。
+1. 若要建立函數應用程式，您必須建立訂用帳戶。  在入口網站的左上角，按一下訂用帳戶旁邊的 **+** 選項。
 
     ![Azure Functions 執行階段預覽入口網站訂用帳戶][15]
 

@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: sashan,moslake,josack
 ms.date: 09/15/2020
 ms.openlocfilehash: 6589211839a5c1667a6b5cef22220fd917f7e4af
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91618954"
 ---
 # <a name="resource-limits-for-azure-sql-database-and-azure-synapse-analytics-servers"></a>Azure SQL Database 與 Azure Synapse Analytics 伺服器的資源限制
@@ -82,7 +82,7 @@ ms.locfileid: "91618954"
 - 減少 [MAXDOP](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-the-max-degree-of-parallelism-server-configuration-option#Guidelines) (平行處理原則的最大程度) 設定。
 - 優化查詢工作負載，減少查詢封鎖的出現次數和持續時間。
 
-### <a name="memory"></a>記憶體
+### <a name="memory"></a>Memory
 
 與其他資源不同 (CPU、背景工作、儲存體) ，達到記憶體限制並不會對查詢效能造成負面影響，也不會造成錯誤和失敗。 如 [記憶體管理架構指南](https://docs.microsoft.com/sql/relational-databases/memory-management-architecture-guide)中的詳細說明，SQL Server 資料庫引擎通常會依設計使用所有可用的記憶體。 記憶體主要用於快取資料，以避免更昂貴的儲存體存取。 因此，較高的記憶體使用量通常可改善查詢效能，因為從記憶體讀取的速度較快，而不是從儲存體進行較慢的讀取。
 

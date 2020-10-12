@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: tomfitz
 ms.openlocfilehash: 327fa1d7eb73d8e65bb4f81c1dff0fe2bec2913b
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89319557"
 ---
 # <a name="createuidefinitionjson-for-azure-managed-applications-create-experience"></a>適用於 Azure 受控應用程式建立體驗的 CreateUiDefinition
@@ -129,7 +129,7 @@ parameters 屬性的結構描述取決於指定的處理常式和版本之組合
 
 **基本**步驟是 Azure 入口網站剖析檔案時所產生的第一個步驟。 根據預設，基本步驟可讓使用者選擇要部署的訂用帳戶、資源群組和位置。
 
-:::image type="content" source="./media/create-uidefinition-overview/basics.png" alt-text="基本概念預設":::
+:::image type="content" source="./media/create-uidefinition-overview/basics.png" alt-text="Tab 鍵 wizard":::
 
 您可以在此區段中新增更多元素。 可能的話，請新增查詢整個部署的參數的專案，例如叢集名稱或系統管理員認證。
 
@@ -195,15 +195,15 @@ Azure 入口網站會使用 `outputs` 屬性，將 `basics` 和 `steps` 的屬�
           ...
 ```  
 
-## <a name="functions"></a>函數
+## <a name="functions"></a>函式
 
 CreateUiDefinition 會提供函 [式來處理元素的輸入](create-uidefinition-functions.md) 和輸出，以及條件等功能。 這些函式在語法和功能上都很類似，可 Azure Resource Manager 範本函數。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 createUiDefinition.json 檔案本身有簡單的結構描述。 它的實際深度來自於所有支援的元素和函式。 這些項目會在以下位置更詳細地描述：
 
-- [項目](create-uidefinition-elements.md)
+- [元素](create-uidefinition-elements.md)
 - [函式](create-uidefinition-functions.md)
 
 下列位置會提供 createUiDefinition 的目前 JSON 結構描述：`https://schema.management.azure.com/schemas/0.1.2-preview/CreateUIDefinition.MultiVm.json`。

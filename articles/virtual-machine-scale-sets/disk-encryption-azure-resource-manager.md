@@ -10,10 +10,10 @@ ms.date: 10/10/2019
 ms.reviewer: mimckitt
 ms.custom: mimckitt
 ms.openlocfilehash: 4284e94f8d8d0effd160c5048f54fcbede417e38
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86129761"
 ---
 # <a name="encrypt-virtual-machine-scale-sets-with-azure-resource-manager"></a>使用 Azure Resource Manager 加密虛擬機器擴展集
@@ -42,10 +42,10 @@ ms.locfileid: "86129761"
 2. 填寫必要欄位，然後同意條款及條件。
 3. 按一下 [購買]**** 以部署範本。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - [適用於虛擬機器擴展集的 Azure 磁碟加密](disk-encryption-overview.md)
 - [使用 Azure CLI 將虛擬機器擴展集加密](disk-encryption-cli.md)
 - [使用 Azure PowerShell 將虛擬機器擴展集加密](disk-encryption-powershell.md)
-- [針對 Azure 磁碟加密建立及設定金鑰保存庫](disk-encryption-key-vault.md)
+- [建立及設定適用於 Azure 磁碟加密的金鑰保存庫](disk-encryption-key-vault.md)
 - [使用搭配虛擬機器擴展集擴充功能排序的 Azure 磁碟加密](disk-encryption-extension-sequencing.md)

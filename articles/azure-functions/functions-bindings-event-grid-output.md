@@ -7,10 +7,10 @@ ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, fasttrack-edit, devx-track-python
 ms.openlocfilehash: 6bd4d5d82af213063b2000693e46d22744604480
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88214117"
 ---
 # <a name="azure-event-grid-output-binding-for-azure-functions"></a>適用於 Azure Functions 的 Azure 事件方格輸出繫結
@@ -187,7 +187,7 @@ module.exports = function(context) {
 }
 ```
 
-以下是透過設定，將事件傳送至自訂主題的 Python 範例 `EventGridOutputEvent` ：
+以下是透過設定下列專案將事件傳送至自訂主題的 Python 範例 `EventGridOutputEvent` ：
 
 ```python
 import logging

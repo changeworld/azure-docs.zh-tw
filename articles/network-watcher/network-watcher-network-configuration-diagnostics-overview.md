@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 09/15/2020
 ms.author: damendo
 ms.openlocfilehash: 4d308b8a1a589308e2481c8bb9e0dc9ec64be25b
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90994518"
 ---
 # <a name="introduction-to-network-configuration-diagnostics-in-azure-network-watcher"></a>Azure 網路監看員中的網路設定診斷簡介
@@ -36,7 +36,7 @@ ms.locfileid: "90994518"
 
 針對給定的流程，NCD 工具會執行流程的模擬，並傳回流程是否允許 (或拒絕) ，以及允許/拒絕流程之規則的詳細資訊。  客戶必須提供流量的詳細資料，例如來源、目的地、通訊協定等。此工具會傳回是否允許或拒絕流量、針對指定流程評估的 NSG 規則，以及每個規則的評估結果。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 透過其他介面使用網路設定診斷
  - [REST API](https://docs.microsoft.com/rest/api/network-watcher/networkwatchers/getnetworkconfigurationdiagnostic)

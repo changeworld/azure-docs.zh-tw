@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: a05f2172b266301919d0a800fb863b8f0dbe5884
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89319496"
 ---
 # <a name="event-processor-host"></a>事件處理器主機
@@ -188,7 +188,7 @@ Epoch 功能可讓使用者在任何時間點，使用下列規則，確保取�
 > 針對使用 epoch 的應用程式以及不使用 epoch 的應用程式，建議使用不同的取用者群組來避免錯誤。 
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 現在您已熟悉事件處理器主機，請參閱下列文章以深入了解事件中樞：
 

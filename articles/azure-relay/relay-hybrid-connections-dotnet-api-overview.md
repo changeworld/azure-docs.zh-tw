@@ -5,10 +5,10 @@ ms.topic: article
 ms.custom: devx-track-csharp
 ms.date: 06/23/2020
 ms.openlocfilehash: 44d5800c08b49118e99a678e31d02e5b7a1f550c
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88935665"
 ---
 # <a name="azure-relay-hybrid-connections-net-standard-api-overview"></a>Azure 轉送混合式連線 .NET Standard API 概觀
@@ -70,7 +70,7 @@ await listener.OpenAsync();
 var hybridConnectionStream = await listener.AcceptConnectionAsync();
 ```
 
-#### <a name="client"></a>Client
+#### <a name="client"></a>用戶端
 
 使用 [HybridConnectionClient][HCClient] 物件，您可以取得如下的 `HybridConnectionStream` 物件︰
 
@@ -125,7 +125,7 @@ var textWriter = new StreamWriter(hybridConnectionStream);
 await textWriter.WriteLineAsync("hello");
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 若要深入了解 Azure 轉送，請造訪下列連結：
 

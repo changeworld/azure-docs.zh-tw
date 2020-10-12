@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 07/03/2017
 ms.author: alkohli
 ms.openlocfilehash: 5806266955eafab8c3c8c99695ff82736de92e9b
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86187059"
 ---
 # <a name="troubleshoot-storsimple-device-deployment-issues"></a>StorSimple 裝置部署問題的疑難排解
@@ -58,7 +58,7 @@ ms.locfileid: "86187059"
      > [!IMPORTANT]
      > 密碼是在註冊之前收集，但只有在您成功註冊裝置之後才會套用。 如果套用密碼失敗，系統將提示您再次提供密碼，直到收集到所需的密碼 (符合複雜性需求) 為止。
      
-4. 註冊裝置：最後一個步驟是使用在 Microsoft Azure 中執行的 StorSimple 裝置管理員服務來註冊裝置。 註冊會要求您從 Azure 入口網站 [取得服務註冊金鑰](storsimple-8000-manage-service.md#get-the-service-registration-key)，並在安裝精靈中提供該金鑰。 **成功註冊裝置之後，系統會提供服務資料加密金鑰給您。請務必將此加密金鑰保留在安全的位置，因為它需要向服務註冊所有後續的裝置。**
+4. 註冊裝置：最後一個步驟是使用在 Microsoft Azure 中執行的 StorSimple 裝置管理員服務來註冊裝置。 註冊會要求您從 Azure 入口網站 [取得服務註冊金鑰](storsimple-8000-manage-service.md#get-the-service-registration-key)，並在安裝精靈中提供該金鑰。 **成功註冊裝置之後，系統會為您提供服務資料加密金鑰。請務必將此加密金鑰保存在安全的位置，因為它需要向服務註冊所有後續的裝置。**
 
 ## <a name="common-errors-during-device-deployment"></a>裝置部署期間的常見錯誤
 下表列出當您進行下列動作時可能遇到的常見錯誤：
@@ -69,7 +69,7 @@ ms.locfileid: "86187059"
 * 註冊裝置。
 
 ## <a name="errors-during-the-required-network-settings"></a>所需的網路設定期間發生錯誤
-| 不正確。 | 錯誤訊息 | 可能的原因 | 建議的動作 |
+| 否。 | 錯誤訊息 | 可能的原因 | 建議的動作 |
 | --- | --- | --- | --- |
 | 1 |Invoke-HcsSetupWizard：這個命令只能在主動控制器上執行。 |設定是在被動控制站上執行。 |從主動控制器執行這個命令。 如需詳細資訊，請參閱 [識別裝置上的主動控制器](storsimple-8000-controller-replacement.md#identify-the-active-controller-on-your-device)。 |
 | 2 |Invoke-HcsSetupWizard：裝置尚未就緒。 |在 DATA 0 上發生網路連線問題。 |檢查 DATA 0 上的實體網路連線。 |
@@ -80,7 +80,7 @@ ms.locfileid: "86187059"
 | 7 |Invoke-HcsSetupWizard：端點對應器中無更多可用的端點。 (例外狀況發生於 HRESULT：0x800706D9) |叢集功能無法運作。 |[連絡 Microsoft 支援服務](storsimple-8000-contact-microsoft-support.md) 以進行後續步驟。 |
 
 ## <a name="errors-during-the-optional-web-proxy-settings"></a>選用的 Web Proxy 設定期間發生錯誤
-| 不正確。 | 錯誤訊息 | 可能的原因 | 建議的動作 |
+| 否。 | 錯誤訊息 | 可能的原因 | 建議的動作 |
 | --- | --- | --- | --- |
 | 1 |Invoke-HcsSetupWizard：無效的參數 (例外狀況發生於 HRESULT：0x80070057) |針對 Proxy 設定提供的其中一個參數無效。 |未使用正確格式提供 URI。 請使用下列格式： HTTP:// *\<IP address or FQDN of the web proxy server>* ：*\<TCP port number>* |
 | 2 |Invoke-HcsSetupWizard：RPC 伺服器無法使用 (例外狀況發生於 HRESULT：0x800706ba) |根本原因是下列其中一項︰<ol><li>叢集未啟動。</li><li>被動控制器無法與主動控制器通訊，而命令是從被動控制器執行。</li></ol> |依據根本原因︰<ol><li>[連絡 Microsoft 支援服務](storsimple-8000-contact-microsoft-support.md) 以確定叢集已啟動。</li><li>從主動控制器執行這個命令。 如果您想要從被動控制器執行命令，就必須確保被動控制器能與主動控制器通訊。 如果此連線中斷，您必須[連絡 Microsoft 支援](storsimple-8000-contact-microsoft-support.md)。</li></ol> |
@@ -103,7 +103,7 @@ ms.locfileid: "86187059"
 
 在設定裝置系統管理員和 StorSimple Snapshot Manager 密碼時，可能會遇到下列一或多個錯誤。
 
-| 不正確。 | 錯誤訊息 | 建議的動作 |
+| 否。 | 錯誤訊息 | 建議的動作 |
 | --- | --- | --- |
 | 1 |密碼超過最大長度。 |您的裝置系統管理員密碼長度必須介於 8 到 15 個字元。 |
 | 2 |密碼不符合所需的長度。 |您的裝置系統管理員密碼長度必須介於 8 到 15 個字元。|
@@ -126,12 +126,12 @@ ms.locfileid: "86187059"
 ## <a name="errors-during-device-registration"></a>裝置註冊期間發生錯誤
 您使用在 Microsoft Azure 中執行的 StorSimple 裝置管理員服務來註冊裝置。 您可能會在裝置註冊期間遇到下列一或多個問題。
 
-| 不正確。 | 錯誤訊息 | 可能的原因 | 建議的動作 |
+| 否。 | 錯誤訊息 | 可能的原因 | 建議的動作 |
 | --- | --- | --- | --- |
 | 1 |錯誤 350027：無法向 StorSimple 裝置管理員註冊裝置。 | |等候幾分鐘的時間，然後再次嘗試操作。 如果問題持續發生，[請連絡 Microsoft 支援](storsimple-8000-contact-microsoft-support.md)。 |
 | 2 |錯誤 350013：註冊裝置時發生錯誤。 這可能是因為服務註冊金鑰不正確而引發。 | |請使用正確的服務註冊金鑰再次註冊裝置。 如需詳細資訊，請參閱 [取得服務註冊金鑰](storsimple-8000-manage-service.md#get-the-service-registration-key) |
 | 3 |錯誤 350063：StorSimple 裝置管理員服務通過驗證，但註冊失敗。 請在一段時間之後重試此操作。 |此錯誤表示已通過 ACS 驗證，但對服務所做的註冊呼叫失敗。 這可能是零星網路問題的結果。 |如果問題持續發生，請[連絡 Microsoft 支援](storsimple-8000-contact-microsoft-support.md)。 |
-| 4 |錯誤 350049：無法在註冊期間連線服務。 |對服務進行呼叫時，收到 Web 例外狀況。 在某些情況下，稍後重試此操作或許可以修正此錯誤。 |請檢查您的 IP 位址和 DNS 名稱，然後重試此操作。 如果問題持續發生，請[聯絡 Microsoft 支援服務。](storsimple-8000-contact-microsoft-support.md) |
+| 4 |錯誤 350049：無法在註冊期間連線服務。 |對服務進行呼叫時，收到 Web 例外狀況。 在某些情況下，稍後重試此操作或許可以修正此錯誤。 |請檢查您的 IP 位址和 DNS 名稱，然後重試此操作。 如果問題持續發生， [請聯絡 Microsoft 支援服務。](storsimple-8000-contact-microsoft-support.md) |
 | 5 |錯誤 350031：裝置已經註冊。 | |不需採取任何動作。 |
 | 6 |錯誤 350016：裝置註冊失敗。 | |請確定註冊金鑰正確。 |
 | 7 |Invoke-HcsSetupWizard：註冊裝置時發生錯誤。這可能是因為 IP 位址或 DNS 名稱不正確所引發。 請檢查您的網路設定，然後再試一次。 如果問題持續發生，請 [contact Microsoft Support](storsimple-8000-contact-microsoft-support.md)。 (錯誤 350050) |確定裝置可以 Ping 外部網路。 如果您沒有外部網路的連線能力，註冊可能會失敗並產生這個錯誤。 這個錯誤可能是下列一或多個項目的組合：<ul><li>不正確的 IP</li><li>不正確的子網路</li><li>不正確的閘道</li><li>不正確的 DNS 設定</li></ul> |請參閱 [逐步疑難排解範例](#step-by-step-storsimple-troubleshooting-example)中的步驟。 |
@@ -189,7 +189,7 @@ StorSimple 隨附數個工具，可用來疑難排解 StorSimple 解決方案。
    * 如果此介面狀況良好但未啟用，**ifIndex** 狀態會顯示為 **NotPresent**。
    * 如果介面不存在，它就不會出現在這份清單中。 StorSimple Manager 裝置管理員服務 UI 仍會顯示此介面處於失敗狀態。
 
-如需有關如何使用此 Cmdlet 的詳細資訊，請移至 Windows PowerShell Cmdlet 參考中的[get-netadapter](https://docs.microsoft.com/powershell/module/netadapter/get-netadapter?view=win10-ps) 。
+如需有關如何使用此 Cmdlet 的詳細資訊，請移至 Windows PowerShell Cmdlet 參考中的 [get-netadapter](https://docs.microsoft.com/powershell/module/netadapter/get-netadapter?view=win10-ps) 。
 
 下列各節示範來自 `Get-NetAdapter` Cmdlet 的輸出範例。
 
@@ -548,7 +548,7 @@ Invoke-HcsSetupWizard: An error has occurred while registering the device. This 
 8. 查看記錄。 請移至 [可用來疑難排解的支援封裝和裝置記錄](#support-packages-and-device-logs-available-for-troubleshooting)。
 9. 如果上述步驟並未解決問題，請 [連絡 Microsoft 支援服務](storsimple-8000-contact-microsoft-support.md) 以尋求協助。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 [了解如何使用診斷工具對 StorSimple 裝置進行疑難排解](storsimple-8000-diagnostics.md)。
 
 <!--Link references-->

@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.openlocfilehash: 52230d6b13c4210e0ff8e85d0a3efe39af55f6e2
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88935053"
 ---
 # <a name="collect-and-analyze-log-data-for-azure-cognitive-search"></a>收集並分析 Azure 認知搜尋的記錄資料
@@ -23,7 +23,7 @@ ms.locfileid: "88935053"
 
 當您設定診斷記錄時，系統會要求您指定儲存機制。 下表列舉用來收集和保存資料的選項。
 
-| 資源 | 用於 |
+| 資源 | 用途 |
 |----------|----------|
 | [傳送至 Log Analytics 工作區](../azure-monitor/learn/tutorial-resource-logs.md) | 事件和計量會傳送至 Log Analytics 工作區，您可以在入口網站中查詢該工作區，以傳回詳細資訊。 如需簡介，請參閱 [開始使用 Azure 監視器記錄](../azure-monitor/log-query/get-started-portal.md) |
 | [使用 Blob 儲存體保存](../storage/blobs/storage-blobs-overview.md) | 事件和計量會封存至 Blob 容器，並儲存在 JSON 檔案中。 記錄可能會有相當細微的 (（小時/分鐘）) ，很適合用來研究特定事件，而不是用於開放式調查。 您可以使用 JSON 編輯器來查看原始記錄檔或 Power BI，以匯總記錄資料並將其視覺化。|

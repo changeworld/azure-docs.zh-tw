@@ -1,15 +1,15 @@
 ---
-title: 建立 UI 定義數學函式
+title: 建立 UI 定義數學函數
 description: 描述執行數學運算時要使用的函數。
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: tomfitz
 ms.openlocfilehash: 022e59d847a4d89b4243223637fc6fd1e73255a9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87096232"
 ---
 # <a name="createuidefinition-math-functions"></a>CreateUiDefinition 數學函數
@@ -68,7 +68,7 @@ ms.locfileid: "87096232"
 
 ## <a name="min"></a>分鐘
 
-傳回兩個數字中較小的一個。
+傳回兩個數字的較小者。
 
 下列範例會傳回 `1`：
 
@@ -132,6 +132,6 @@ ms.locfileid: "87096232"
 "[sub(3, 2)]"
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * 如需 Azure Resource Manager 的簡介，請參閱 [Azure Resource Manager 概觀](../management/overview.md)。

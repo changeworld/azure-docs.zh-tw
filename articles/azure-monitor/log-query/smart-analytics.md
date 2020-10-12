@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 01/15/2019
 ms.openlocfilehash: 82960845e357579b82c493958287cb602d75182e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87067395"
 ---
 # <a name="log-analytics-smart-analytics-examples"></a>Log Analytics 智慧分析範例
@@ -212,7 +212,7 @@ traces
 | project PatternMatch = iff(RSquare2 > minRsquare and Slope>0, "Spike detected", "No Match")
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - 請參閱[資料總管語言參考](/azure/kusto/query)了解語言詳細資訊。
 - 進行[在 Log Analytics 中撰寫查詢課程](get-started-queries.md)。

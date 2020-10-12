@@ -12,10 +12,10 @@ ms.date: 07/14/2020
 ms.topic: conceptual
 ms.custom: how-to
 ms.openlocfilehash: 195fc6100229fca2a05198ffa80108057ad8ad65
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90897586"
 ---
 # <a name="collect-data-from-models-in-production"></a>從生產環境中的模型收集資料
@@ -175,7 +175,7 @@ Blob 中輸出資料的路徑遵循此語法：
 
     [![Power BI 內容](./media/how-to-enable-data-collection/pbiContent.png)](././media/how-to-enable-data-collection/pbiContent.png#lightbox)
 
-1. 選取 [確定]。 預先載入的資料。
+1. 選取 [確定]  。 預先載入的資料。
 
     [![Power BI 合併檔案](./media/how-to-enable-data-collection/pbiCombine.png)](././media/how-to-enable-data-collection/pbiCombine.png#lightbox)
 
@@ -210,6 +210,6 @@ Blob 中輸出資料的路徑遵循此語法：
 
 1. 遵循範本上的步驟來查看和分析您的資料。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 偵測您所收集資料的[資料漂移](how-to-monitor-datasets.md)。

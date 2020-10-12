@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/4/2019
 ms.author: mayg
 ms.openlocfilehash: 901f4a9d4fd53f665c3d078f5e463dcde2af1882
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88654866"
 ---
 # <a name="analyze-the-deployment-planner-report-for-vmware-disaster-recovery-to-azure"></a>分析部署規劃工具報告中的 VMware 災難復原至 Azure
@@ -106,7 +106,7 @@ ms.locfileid: "88654866"
 
 ![Deployment Planner 中所需的內部部署基礎結構](media/site-recovery-vmware-deployment-planner-analyze-report/required-on-premises-components-v2a.png)
 
-### <a name="what-if-analysis"></a>假設分析
+### <a name="what-if-analysis"></a>模擬分析
 此分析概述當您設定較低的頻寬，讓所需的 RPO 只符合當時的 90% 時，在剖析期間可發生多少次違規。 任何指定的日期都可能發生一或多個 RPO 違規。 此圖會顯示當天的尖峰 RPO。
 根據這項分析，您可以判斷指定的較低頻寬是否可接受所有天數的 RPO 違規次數和每日的尖峰 RPO 目標達成。 如果可接受，您可以配置較低的頻寬進行複寫，否則依照建議配置較高的頻寬，以符合當時所需的 100% RPO。
 
@@ -281,5 +281,5 @@ VM 上所有磁碟的尖峰資料變換 | 54 MB/秒
 深入了解[成本估計](site-recovery-vmware-deployment-planner-cost-estimation.md)。
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 深入了解[成本估計](site-recovery-vmware-deployment-planner-cost-estimation.md)。

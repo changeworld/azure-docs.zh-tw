@@ -4,15 +4,15 @@ description: 本文說明使用 Azure 事件方格來訂閱事件的屬性。 �
 ms.topic: reference
 ms.date: 07/07/2020
 ms.openlocfilehash: 21016627e545cc4935b4ac213df675e894c12d95
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86119067"
 ---
 # <a name="event-grid-subscription-schema"></a>事件格線訂用帳戶的結構描述
 
-若要建立事件格線訂用帳戶，請將要求傳送至建立事件訂用帳戶作業。 請使用下列格式：
+若要建立事件格線訂用帳戶，請將要求傳送至建立事件訂用帳戶作業。 使用下列格式：
 
 ```HTTP
 PUT /subscriptions/{subscription-id}/resourceGroups/{group-name}/providers/{resource-provider}/{resource-type}/{resource-name}/Microsoft.EventGrid/eventSubscriptions/{event-type-definitions}?api-version=2018-01-01
@@ -28,21 +28,21 @@ PUT /subscriptions/{subscription-id}/resourceGroups/examplegroup/providers/Micro
  
 ## <a name="event-subscription-properties"></a>事件訂用帳戶屬性
 
-| 屬性 | 類型 | 描述 |
+| 屬性 | 類型 | 說明 |
 | -------- | ---- | ----------- |
 | 目的地 | 物件 (object) | 定義端點的物件。 |
-| filter | 物件 (object) | 篩選事件類型的選擇性欄位。 |
+| 篩選條件 | 物件 (object) | 篩選事件類型的選擇性欄位。 |
 
 ### <a name="destination-object"></a>目的地物件
 
-| 屬性 | 類型 | 描述 |
+| 屬性 | 類型 | 說明 |
 | -------- | ---- | ----------- |
 | endpointType | 字串 | 訂用帳戶的端點類型 (webhook/HTTP、事件中樞或佇列)。 | 
 | endpointUrl | 字串 | 此事件訂用帳戶中事件的目的地 URL。 | 
 
 ### <a name="filter-object"></a>篩選物件
 
-| 屬性 | 類型 | 描述 |
+| 屬性 | 類型 | 說明 |
 | -------- | ---- | ----------- |
 | includedEventTypes | array | 事件訊息中的事件類型完全符合這些事件類型名稱其中之一時，即會符合。 事件名稱不符合事件來源的已註冊事件類型名稱時，會引發錯誤。 預設會符合所有事件類型。 |
 | subjectBeginsWith | 字串 | 事件訊息中對主體欄位的前置詞符合篩選。 預設值或空字串會符合全部。 | 
@@ -71,6 +71,6 @@ PUT /subscriptions/{subscription-id}/resourceGroups/examplegroup/providers/Micro
 }
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * 若要初步了解事件格線，請參閱[什麼是事件格線？](overview.md)

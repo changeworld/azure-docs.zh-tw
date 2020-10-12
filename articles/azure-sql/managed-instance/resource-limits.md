@@ -13,10 +13,10 @@ ms.author: bonova
 ms.reviewer: sstein, jovanpop, sachinp
 ms.date: 09/14/2020
 ms.openlocfilehash: 71392b652f305f085e8eddbfe75e0585a756bc4a
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91618109"
 ---
 # <a name="overview-of-azure-sql-managed-instance-resource-limits"></a>Azure SQL 受控執行個體資源限制總覽
@@ -36,7 +36,7 @@ SQL 受控執行個體具有相依于基礎結構和架構的特性和資源限�
 | **硬體** | Intel® E5-2673 v3 (Haswell) 2.4 GHz 處理器，附加的 SSD vCore = 1 PP (實體核心)  | Intel® E5-2673 v4 (Broadwell) 2.3 GHz、Intel® SP-8160 (Skylake) 和 Intel® 8272CL (Cascade Lake) 2.5 GHz 處理器、快速 NVMe SSD、vCore = 1 LP (超執行緒)  |
 | **虛擬核心數目** | 8 個、16 個、24 個虛擬核心 | 4、8、16、24、32、40、64、80虛擬核心 |
 | **記憶體 (記憶體/核心比率上限) ** | 每個虛擬核心 7GB<br/>新增更多虛擬核心以取得更多記憶體。 | 每個虛擬核心 5.1 GB<br/>新增更多虛擬核心以取得更多記憶體。 |
-| **記憶體內部 OLTP 記憶體上限** | 實例限制：每個 vCore 1-1.5 GB| 實例限制：每個 vCore 0.8-1.65 GB |
+| **最大 In-Memory OLTP 記憶體** | 實例限制：每個 vCore 1-1.5 GB| 實例限制：每個 vCore 0.8-1.65 GB |
 | **實例保留的最大儲存空間** |  一般用途： 8 TB<br/>商務關鍵性： 1 TB | 一般用途： 8 TB<br/> 商務關鍵 1 TB、2 TB 或 4 TB，視核心數目而定 |
 
 > [!IMPORTANT]
@@ -110,7 +110,7 @@ SQL 受控執行個體有兩個服務層級： [一般用途](../database/servic
 
 此外，也有實例層級限制的最大記錄寫入輸送量 (這是 22 MB/s) ，因此您可能無法在整個記錄檔上到達最大檔案，因為您達到實例輸送量限制。
 
-## <a name="supported-regions"></a>支援的區域
+## <a name="supported-regions"></a>支援區域
 
 SQL 受控執行個體只能在 [支援的區域](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all)中建立。 若要在目前不支援的區域中建立 SQL 受控執行個體，您可以透過 [Azure 入口網站傳送支援要求](../database/quota-increase-request.md)。
 

@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 04/12/2018
 ms.author: allensu
 ms.openlocfilehash: 4154c6a1e739f935022271e7a101f39d3ee5c500
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84343015"
 ---
 # <a name="x-ec-debug-http-headers-for-azure-cdn-rules-engine"></a>Azure CDN 規則引擎的 X-EC-Debug HTTP 標頭
 偵錯快取要求標頭 `X-EC-Debug` 會提供與要求的資產所套用的快取原則有關的其他資訊。 這些標頭是**來自 Verizon 的 Azure CDN 進階**產品特有的標頭。
 
-## <a name="usage"></a>使用方式
+## <a name="usage"></a>使用量
 只有在符合下列條件時，從 POP 伺服器傳送給使用者的回應才會包含 `X-EC-Debug` 標頭：
 
 - 已在指定要求的規則引擎上啟用 [偵錯快取回應標頭](https://docs.vdms.com/cdn/Content/HRE/F/Debug-Cache-Response-Headers.htm) 功能。
@@ -41,7 +41,7 @@ X-EC-Debug: x-ec-check-cacheable | [可快取](#cacheable-response-header)
 X-EC-Debug: x-ec-cache-key | [快取索引鍵](#cache-key-response-header)
 X-EC-Debug: x-ec-cache-state | [快取狀態](#cache-state-response-header)
 
-### <a name="syntax"></a>Syntax
+### <a name="syntax"></a>語法
 
 偵錯快取回應標頭可能是藉由在要求中包含下列標頭和指定的指示詞來要求：
 
@@ -54,7 +54,7 @@ X-EC-Debug: x-ec-cache-state | [快取狀態](#cache-state-response-header)
 ## <a name="cache-status-code-information"></a>快取狀態碼資訊
 X-EC-Debug 回應標頭可透過下列指示詞來識別伺服器及其處理回應的方式：
 
-Header | Description
+標頭 | 說明
 -------|------------
 X-EC-Debug: x-ec-cache | 每當透過 CDN 路由內容時，就會報告此標頭。 此標頭可識別已回應要求的 POP 伺服器。
 X-EC-Debug: x-ec-cache-remote | 只有在原始保護盾伺服器或 ADN 閘道伺服器上快取要求的內容時，才會報告此標頭。
@@ -151,7 +151,7 @@ UNKNOWN | 指出伺服器無法評估要求的資產是否可快取。 此狀態
 
 - MATimePeriod：將最大存留期值 (也就是 MASeconds) 轉換為採用較大單位 (例如天) 的近似對等值。 
 
-- UnixTime：表示 Unix 時間（也稱為 POSIX 時間或 Unix epoch）中要求內容的快取時間戳記。 快取時間戳記可指出資產的 TTL 開始進行計算的日期/時間。 
+- UnixTime：指出 Unix 時間內要求內容的快取時間戳記 (也稱為 POSIX 時間或 Unix epoch) 。 快取時間戳記可指出資產的 TTL 開始進行計算的日期/時間。 
 
     如果原始伺服器未使用第三方 HTTP 快取伺服器，或該伺服器未傳回 Age 回應標頭，則在擷取或重新驗證資產時，快取時間戳記將一律為日期/時間。 否則，POP 伺服器將使用 [存留期] 欄位來計算資產的 TTL，如下所示：Retrieval/RevalidateDateTime - Age。
 

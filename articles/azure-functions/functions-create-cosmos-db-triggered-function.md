@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.date: 04/28/2020
 ms.custom: cc996988-fb4f-47
 ms.openlocfilehash: c7dc18d8186d7262154cc0718bb6ad77ebbb5d2e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85829834"
 ---
 # <a name="create-a-function-triggered-by-azure-cosmos-db"></a>建立 Azure Cosmos DB 所觸發的函式
@@ -50,7 +50,7 @@ ms.locfileid: "85829834"
 
 1. 在 [新增函式] 頁面的搜尋欄位中輸入 `cosmos`，然後選擇 [Azure Cosmos DB 觸發程序] 範本。
 
-   :::image type="content" source="./media/functions-create-cosmos-db-triggered-function/function-choose-cosmos.png" alt-text="Azure 入口網站中的函式頁面":::
+   :::image type="content" source="./media/functions-create-cosmos-db-triggered-function/function-choose-cosmos.png" alt-text="Azure Cosmos DB 程式碼":::
 
 
 1. 使用下表中指定的設定來設定新的觸發程序：
@@ -64,7 +64,7 @@ ms.locfileid: "85829834"
     | **租用的集合名稱** | 租用 | 可存放租用的集合名稱。 |
     | **若不存在，則建立租用集合** | 是 | 確定租用集合存在後加以自動建立。 |
 
-    :::image type="content" source="./media/functions-create-cosmos-db-triggered-function/functions-cosmosdb-trigger-settings.png" alt-text="建立 Azure Cosmos DB 觸發的函式":::
+    :::image type="content" source="./media/functions-create-cosmos-db-triggered-function/functions-cosmosdb-trigger-settings.png" alt-text="Azure Cosmos DB 程式碼":::
 
 1. 選取 [建立函式]。 
 
@@ -72,7 +72,7 @@ ms.locfileid: "85829834"
 
 1. 若要顯示以範本為基礎的函式程式碼，請選取 [程式碼 + 測試]。
 
-    :::image type="content" source="./media/functions-create-cosmos-db-triggered-function/function-cosmosdb-template.png" alt-text="C# 中的 Cosmos DB 函式範本":::
+    :::image type="content" source="./media/functions-create-cosmos-db-triggered-function/function-cosmosdb-template.png" alt-text="Azure Cosmos DB 程式碼":::
 
     此函式範本會將文件數和第一個文件識別碼寫入記錄。
 
@@ -111,15 +111,7 @@ ms.locfileid: "85829834"
 
 1. 在資料總管中展開新的**項目**容器，選擇 [項目]，然後選取 [新增項目]。
 
-    :::image type="content" source="./media/functions-create-cosmos-db-triggered-function/create-item-in-container.png" alt-text="在項目容器中建立項目":::
-
-1. 使用以下內容來取代新項目的內容，然後選擇 [儲存]。
-
-    ```yaml
-    {
-        "id": "task1",
-        "category": "general",
-        "description": "some task"
+    :::image type="content" source="./media/functions-create-cosmos-db-triggered-function/create-item-in-container.png" alt-text="Azure Cosmos DB 程式碼"
     }
     ```
 

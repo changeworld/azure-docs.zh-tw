@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/05/2016
 ms.author: alkohli
 ms.openlocfilehash: 16d782c6a25d8d2d8e1323b7cb683f41d8c99649
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90054971"
 ---
 # <a name="use-storsimple-snapshot-manager-to-administer-your-storsimple-solution"></a>使用 StorSimple Snapshot Manager 來管理您的 StorSimple 解決方案
@@ -59,6 +59,6 @@ StorSimple Snapshot Manager 中央管理主控台可讓您建立一致、 時間
 | 檢視和管理排程的備份工作<br>檢視和管理最近的備份作業<br>檢視和管理目前正在執行的備份工作 |[使用 StorSimple Snapshot Manager 檢視和管理備份工作](storsimple-snapshot-manager-manage-backup-jobs.md) |
 | 還原磁碟區<br>複製磁碟區或磁碟區群組<br>刪除備份<br>復原檔案<br>還原 Storsimple Snapshot Manager 資料庫 |[使用 StorSimple Snapshot Manager 管理備份目錄](storsimple-snapshot-manager-manage-backup-catalog.md) |
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 [下載 StorSimple Snapshot Manager](https://www.microsoft.com/download/details.aspx?id=44220)。
 

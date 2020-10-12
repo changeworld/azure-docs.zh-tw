@@ -1,5 +1,5 @@
 ---
-title: 備份與還原-Azure 入口網站-適用於 MariaDB 的 Azure 資料庫
+title: 備份和還原-Azure 入口網站-適用於 MariaDB 的 Azure 資料庫
 description: 此文章說明如何使用 Azure 入口網站，在適用於 MariaDB 的 Azure 資料庫中還原伺服器。
 author: ajlam
 ms.author: andrela
@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: how-to
 ms.date: 6/30/2020
 ms.openlocfilehash: 6d050a8bd351617a6ab567243c5b1ef8d9f93ded
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86115905"
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-mariadb-using-the-azure-portal"></a>如何使用 Azure 入口網站在適用於 MariaDB 的 Azure 資料庫中備份及還原伺服器
@@ -18,7 +18,7 @@ ms.locfileid: "86115905"
 ## <a name="backup-happens-automatically"></a>備份會自動進行
 為了能使用還原功能，適用於 MariaDB 的 Azure 資料庫伺服器會定期備份。 透過此功能，您可以將伺服器和其所有資料庫還原至更早的時間點 (在新的伺服器上)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 若要完成本操作說明指南，您需要：
 - [適用於 MariaDB 的 Azure 資料庫伺服器與資料庫](quickstart-create-mariadb-server-database-using-azure-portal.md)
 
@@ -81,47 +81,47 @@ ms.locfileid: "86115905"
 
 如果您已將伺服器設定為使用異地備援備份，則可以從現有伺服器的備份建立新的伺服器。 您可以在任何可使用「適用於 MariaDB 的 Azure 資料庫」的區域中建立這個新伺服器。  
 
-1. 選取入口網站左上角的 [**建立資源**] 按鈕（+）。 選取 [**資料庫**]  >  **適用於 MariaDB 的 Azure 資料庫**。
+1. 選取入口網站左上角的 [建立資源] 按鈕 (+)。 選取 [資料庫]   > [適用於 MariaDB 的 Azure 資料庫]  。
 
    :::image type="content" source="./media/howto-restore-server-portal/2_navigate-to-mariadb.png" alt-text="流覽至適用於 MariaDB 的 Azure 資料庫。":::
  
-2. 提供新伺服器的 [訂用帳戶]、[資源群組] 和 [名稱]。 
+2. 提供新伺服器的訂用帳戶、資源群組和名稱。 
 
-3. 選取 [**備份**] 做為**資料來源**。 此動作會載入下拉式清單，其中會提供已啟用異地多餘備份的伺服器清單。
+3. 選取 [ **備份** ] 作為 **資料來源**。 此動作會載入下拉式清單，其中提供已啟用地理區域冗余備份的伺服器清單。
    
-   :::image type="content" source="./media/howto-restore-server-portal/3-geo-restore.png" alt-text="選取 [資料來源]。":::
+   :::image type="content" source="./media/howto-restore-server-portal/3-geo-restore.png" alt-text="流覽至適用於 MariaDB 的 Azure 資料庫。":::
     
    > [!NOTE]
    > 第一次建立伺服器時，可能無法立即用來進行異地還原。 必要的中繼資料可能需要幾小時才會填入。
    >
 
-4. 選取 [**備份**] 下拉式清單。
+4. 選取 [ **備份** ] 下拉式清單。
    
-   :::image type="content" source="./media/howto-restore-server-portal/4-geo-restore-backup.png" alt-text="選取 [備份] 下拉式清單。":::
+   :::image type="content" source="./media/howto-restore-server-portal/4-geo-restore-backup.png" alt-text="流覽至適用於 MariaDB 的 Azure 資料庫。":::
 
 5. 選取要從中還原的來源伺服器。
    
-   :::image type="content" source="./media/howto-restore-server-portal/5-select-backup.png" alt-text="選取 [備份]。":::
+   :::image type="content" source="./media/howto-restore-server-portal/5-select-backup.png" alt-text="流覽至適用於 MariaDB 的 Azure 資料庫。":::
 
-6. 伺服器會預設為 [**虛擬核心**數]、[**備份保留期限**]、[**備份冗余選項**]、[**引擎版本**] 和 [系統**管理員認證**] 的值。 選取 [繼續]。 
+6. 伺服器會預設為 **虛擬核心**數目、 **備份保留期限**、 **備份冗余選項**、 **引擎版本**和系統 **管理員認證**的值。 選取 [繼續]。 
    
-   :::image type="content" source="./media/howto-restore-server-portal/6-accept-backup.png" alt-text="繼續進行備份。":::
+   :::image type="content" source="./media/howto-restore-server-portal/6-accept-backup.png" alt-text="流覽至適用於 MariaDB 的 Azure 資料庫。":::
 
 7. 根據您的需要填寫表單的其餘部分。 您可以選取任何**位置**。
 
-    選取位置之後，您可以選取 [**設定伺服器**] 來更新**計算世代**（如果您選擇的區域中有提供）、[**虛擬核心**數目]、[**備份保留期限**] 和 [**備份冗余] 選項**。 還原期間不支援變更**定價層** (基本、一般用途或記憶體最佳化) 或**儲存體**大小。
+    選取位置之後，您可以選取 [ **設定伺服器** ] 來更新 **計算世代** (如果您選擇的區域中有 [) ]、[ **虛擬核心**數目]、[ **備份保留期限**] 和 [ **備份冗余] 選項**。 還原期間不支援變更**定價層** (基本、一般用途或記憶體最佳化) 或**儲存體**大小。
 
-   :::image type="content" source="./media/howto-restore-server-portal/7-create.png" alt-text="填滿表單。"::: 
+   :::image type="content" source="./media/howto-restore-server-portal/7-create.png" alt-text="流覽至適用於 MariaDB 的 Azure 資料庫。"::: 
 
-8. 選取 [檢閱 + 建立]**** 以檢閱您的選項。 
+8. 選取 [檢閱 + 建立]  以檢閱您的選項。 
 
-9. 選取 [建立]**** 以佈建伺服器。 這項作業可能需要幾分鐘的時間。
+9. 選取 [建立] 以佈建伺服器。 這項作業可能需要幾分鐘的時間。
 
 還原啟動時的現有伺服器與異地還原所建立的新伺服器，具有相同且有效的伺服器管理員登入名稱和密碼。 您可以從新伺服器的 [概觀]**** 頁面變更密碼。
 
 在還原期間建立的新伺服器不會有原始伺服器中的 VNet 服務端點。 您必須為新伺服器分別設定這些規則。 系統會還原原始伺服器的防火牆規則。
 
 ## <a name="next-steps"></a>後續步驟
-- 深入瞭解服務的[備份](concepts-backup.md)
-- 瞭解[複本](concepts-read-replicas.md)
-- 深入瞭解[商務持續性](concepts-business-continuity.md)選項
+- 深入瞭解服務的 [備份](concepts-backup.md)
+- 深入瞭解 [複本](concepts-read-replicas.md)
+- 深入瞭解 [商務持續性](concepts-business-continuity.md) 選項

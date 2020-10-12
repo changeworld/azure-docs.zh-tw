@@ -13,10 +13,10 @@ ms.reviewer: annaba
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
 ms.openlocfilehash: 94955e27dcadb3acbea03926d6d1ed73e9c5c9ed
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87051344"
 ---
 # <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>開始在 Azure Active Directory 中使用憑證式驗證
@@ -37,16 +37,16 @@ ms.locfileid: "87051344"
 
 若要設定憑證式驗證，必須符合下列陳述：
 
-- 僅針對瀏覽器應用程式、使用新式驗證（ADAL）的原生用戶端，或 MSAL 程式庫的同盟環境，才支援以憑證為基礎的驗證（CBA）。 唯一的例外狀況是適用於 Exchange Online (EXO) 的 Exchange Active Sync (EAS)，可以用於同盟和受控兩種帳戶。
+- 只有瀏覽器應用程式的同盟環境、使用新式驗證 (ADAL) 或 MSAL 程式庫的原生用戶端，才支援以憑證為基礎的驗證 (CBA) 。 唯一的例外狀況是適用於 Exchange Online (EXO) 的 Exchange Active Sync (EAS)，可以用於同盟和受控兩種帳戶。
 - 務必要在 Azure Active Directory 中設定根憑證授權單位和任何中繼憑證授權單位。
 - 每個憑證授權單位都必須有一份可透過網際網路對應 URL 來參考的憑證撤銷清單 (CRL)。
 - 您至少必須在 Azure Active Directory 中設定一個憑證授權單位。 您可以在[設定憑證授權單位](#step-2-configure-the-certificate-authorities)一節中找到相關步驟。
-- 對於 Exchange ActiveSync 用戶端，用戶端憑證必須在 [主體別名] 欄位的 [主體名稱] 或 [RFC822 名稱] 值中，讓使用者在 Exchange online 中可路由傳送的電子郵件地址。 Azure Active Directory 要將 RFC822 值對應到目錄中的 [Proxy 位址] 屬性。
+- 若是 Exchange ActiveSync 用戶端，用戶端憑證的 [主體名稱] 或 [主體別名] 欄位的 [RFC822 名稱] 值中必須有使用者可路由傳送的電子郵件地址。 Azure Active Directory 要將 RFC822 值對應到目錄中的 [Proxy 位址] 屬性。
 - 您的用戶端裝置必須至少可以存取一個發出用戶端憑證的憑證授權單位。
 - 用於戶端驗證的用戶端憑證必須已經發給您的用戶端。
 
 >[!IMPORTANT]
->Azure Active Directory 成功下載和快取的 CRL 大小上限為20MB，而下載 CRL 所需的時間不能超過10秒。  如果 Azure Active Directory 無法下載 CRL，使用對應 CA 所發行之憑證的憑證型驗證將會失敗。 確保 CRL 檔案在大小限制範圍內的最佳做法，是將憑證存留期保持在合理的限制範圍內，並清除過期的憑證。
+>Azure Active Directory 要成功下載和快取的 CRL 大小上限為20MB，而下載 CRL 所需的時間不能超過10秒。  如果 Azure Active Directory 無法下載 CRL，則使用由對應 CA 發出的憑證型驗證將會失敗。 確保 CRL 檔案大小限制的最佳作法是將憑證存留期保持在合理的限制內，並清除過期的憑證。
 
 ## <a name="step-1-select-your-device-platform"></a>步驟 1︰選取裝置平台
 
@@ -120,7 +120,7 @@ ms.locfileid: "87051344"
     Get-AzureADTrustedCertificateAuthority
 ```
 
-### <a name="add"></a>新增
+### <a name="add"></a>加
 
 若要建立受信任的憑證授權單位，使用 [New-AzureADTrustedCertificateAuthority](/powershell/module/azuread/new-azureadtrustedcertificateauthority?view=azureadps-2.0) Cmdlet 並將 **crlDistributionPoint** 屬性設為正確值：
 
@@ -226,7 +226,7 @@ EAS 設定檔必須包含下列資訊：
 1. 設定應用程式中符合上一節需求的 EAS 設定檔。
 2. 開啟應用程式，然後確認正在同步處理郵件。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 [Android 裝置上憑證式驗證的其他相關資訊](active-directory-certificate-based-authentication-android.md)。
 

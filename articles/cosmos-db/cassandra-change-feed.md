@@ -1,5 +1,5 @@
 ---
-title: 變更 Cassandra 的 Azure Cosmos DB API 中的摘要
+title: Cassandra Azure Cosmos DB API 中的變更摘要
 description: 瞭解如何在適用于 Cassandra 的 Azure Cosmos DB API 中使用變更摘要，以取得對您的資料所做的變更。
 author: TheovanKraay
 ms.service: cosmos-db
@@ -8,19 +8,19 @@ ms.topic: how-to
 ms.date: 11/25/2019
 ms.author: thvankra
 ms.openlocfilehash: 417a1dbc72c3b3c35c501351dcc8bda9dc95a78d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84431600"
 ---
-# <a name="change-feed-in-the-azure-cosmos-db-api-for-cassandra"></a>變更 Cassandra 的 Azure Cosmos DB API 中的摘要
+# <a name="change-feed-in-the-azure-cosmos-db-api-for-cassandra"></a>Cassandra Azure Cosmos DB API 中的變更摘要
 
-您可以透過 Cassandra 查詢語言（CQL）中的查詢述詞，取得 Cassandra 的 Azure Cosmos DB API 中的[變更](change-feed.md)摘要支援。 您可以使用這些述詞條件來查詢變更摘要 API。 應用程式可以使用 CQL 中所需的主鍵（也稱為資料分割索引鍵），來取得對資料表所做的變更。 接著，您可以根據結果採取進一步的動作。 對資料表中的資料列所做的變更會依照其修改時間的順序加以捕獲，而排序次序則是依據分割區索引鍵來保證。
+Azure Cosmos DB API for Cassandra 中的[變更](change-feed.md)摘要支援可透過 Cassandra 查詢語言中的查詢述詞來取得， (CQL) 。 您可以使用這些述詞條件來查詢變更摘要 API。 應用程式可以使用主鍵來取得對資料表所做的變更 (也稱為分割區索引鍵) 在 CQL 中是必要的。 然後，您可以根據結果採取進一步的動作。 變更資料表中的資料列時，會依照修改時間的順序來加以捕獲，而且每個分割區索引鍵都能保證排序次序。
 
-下列範例顯示如何使用 .NET 取得 Cassandra API Keyspace 資料表中所有資料列的變更摘要。 述詞 COSMOS_CHANGEFEED_START_TIME （）直接用於 CQL 內，以從指定的開始時間（在此案例中為目前的日期時間）查詢變更摘要中的專案。 您可以在[這裡](https://docs.microsoft.com/samples/azure-samples/azure-cosmos-db-cassandra-change-feed/cassandra-change-feed/)下載適用于 c # 的完整範例，以及[這裡](https://github.com/Azure-Samples/cosmos-changefeed-cassandra-java)的 JAVA。
+下列範例顯示如何使用 .NET 取得 Cassandra API Keyspace 資料表中所有資料列的變更摘要。 述詞 COSMOS_CHANGEFEED_START_TIME ( # A1 會直接在 CQL 中用來從指定的開始時間查詢變更摘要中的專案 (在此案例中為目前的日期時間) 。 您可以 [在這裡下載 c #](https://docs.microsoft.com/samples/azure-samples/azure-cosmos-db-cassandra-change-feed/cassandra-change-feed/) [和 JAVA 的](https://github.com/Azure-Samples/cosmos-changefeed-cassandra-java)完整範例。
 
-在每個反復專案中，會使用分頁狀態，在最後一次讀取變更時繼續查詢。 我們可以看到 Keyspace 中資料表的新變更的連續串流。 我們會看到所插入或更新之資料列的變更。 目前不支援在 Cassandra API 中使用變更摘要來監看刪除作業。
+在每個反復專案中，會使用分頁狀態，在最後一個點變更時繼續進行查詢。 我們可以在 Keyspace 中看到資料表的新變更的連續資料流程。 我們會看到插入或更新的資料列變更。 目前不支援在 Cassandra API 中使用變更摘要來監看刪除作業。
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -111,7 +111,7 @@ ms.locfileid: "84431600"
 ```
 ---
 
-若要依照主要索引鍵來取得單一資料列的變更，您可以在查詢中加入主要索引鍵。 下列範例顯示如何追蹤資料列的變更，其中 "user_id = 1"
+為了依照主鍵取得單一資料列的變更，您可以在查詢中加入主鍵。 下列範例顯示如何追蹤資料列的變更，其中 "user_id = 1"
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -134,16 +134,16 @@ ms.locfileid: "84431600"
 
 搭配 Cassandra API 使用變更摘要時，適用下列限制：
 
-* 目前支援插入和更新。 尚未支援刪除作業。 因應措施是，您可以在要刪除的資料列上加入軟標記。 例如，在名為「已刪除」的資料列中加入欄位，並將它設定為 "true"。
-* 上次更新會以核心 SQL API 的形式保存，而實體的元更新則無法使用。
+* 目前支援插入和更新。 尚未支援刪除作業。 因應措施是，您可以在要刪除的資料列上新增軟標記。 例如，在名為 "deleted" 的資料列中加入欄位，並將它設定為 "true"。
+* 最後一個更新會保存為，如核心 SQL API 中所述，而且無法使用實體的中繼更新。
 
 
 ## <a name="error-handling"></a>錯誤處理
 
 在 Cassandra API 中使用變更摘要時，支援下列錯誤碼和訊息：
 
-* **HTTP 錯誤碼 429** -當變更摘要的速率受到限制時，它會傳回空白頁面。
+* **HTTP 錯誤碼 429** -變更摘要受到速率限制時，會傳回空白頁面。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * [使用 Azure Resource Manager 範本管理 Azure Cosmos DB Cassandra API 資源](manage-cassandra-with-resource-manager.md)

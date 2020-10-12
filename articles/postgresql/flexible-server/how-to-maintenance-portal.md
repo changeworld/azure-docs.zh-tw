@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.openlocfilehash: be6040b8b84a4b86746d62bd2f1c07f0ffea0a3b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91336287"
 ---
 # <a name="manage-scheduled-maintenance-settings-for-azure-database-for-postgresql--flexible-server"></a>管理適用於 PostgreSQL 的 Azure 資料庫-彈性伺服器的排程維護設定
@@ -20,7 +20,7 @@ ms.locfileid: "91336287"
 > [!IMPORTANT]
 > 適用於 PostgreSQL 的 Azure 資料庫彈性的伺服器處於預覽階段。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 若要完成本操作說明指南，您需要：
 - [適用於 PostgreSQL 的 Azure 資料庫彈性的伺服器](quickstart-create-server-portal.md)
  

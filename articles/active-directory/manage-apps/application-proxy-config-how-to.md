@@ -17,15 +17,15 @@ ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c63137c6943d9adc0ea7c19f7551d1f31587f42a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84764990"
 ---
 # <a name="how-to-configure-an-application-proxy-application"></a>如何設定應用程式 Proxy 應用程式
 
-本文可協助您瞭解如何在 Azure AD 內設定應用程式 Proxy 應用程式，以將您的內部部署應用程式公開至雲端。
+本文可協助您瞭解如何在 Azure AD 中設定應用程式 Proxy 應用程式，以將您的內部部署應用程式公開至雲端。
 
 ## <a name="recommended-documents"></a>建議的文件
 
@@ -45,7 +45,7 @@ ms.locfileid: "84764990"
 - URL 開頭為 http 或 https，且結尾為 “/”
 - URL 應該是網域名稱，而非 IP 位址
 
-當您建立應用程式時，錯誤訊息應該會顯示在右上角。 您也可以選取通知圖示來查看錯誤訊息。
+當您建立應用程式時，應該會在右上角顯示錯誤訊息。 您也可以選取通知圖示來查看錯誤訊息。
 
 ![顯示在 Azure 入口網站中尋找通知提示的位置](./media/application-proxy-config-how-to/error-message.png)
 
@@ -67,6 +67,6 @@ ms.locfileid: "84764990"
 
 當您嘗試上傳憑證時，錯誤訊息會顯示在右上角。 您也可以選取通知圖示來查看錯誤訊息。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 [使用 Azure AD 應用程式 Proxy 發佈應用程式](application-proxy-add-on-premises-application.md)

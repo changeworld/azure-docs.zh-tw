@@ -13,10 +13,10 @@ ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 75081c218536d17798d1ffa788f79130211f72d3
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89318422"
 ---
 # <a name="azure-active-directory-deployment-plans"></a>Azure Active Directory 部署計劃
@@ -88,7 +88,7 @@ ms.locfileid: "89318422"
 
 | 功能 | 描述|
 | -| -|
-| [使用者佈建](../app-provisioning/plan-auto-user-provisioning.md)| Azure AD 可協助您自動化在雲端 (SaaS) 應用程式 (例如 Dropbox、Salesforce、ServiceNow 等等) 中建立、維護和移除使用者身分識別的作業。 |
+| [使用者布建](../app-provisioning/plan-auto-user-provisioning.md)| Azure AD 可協助您自動化在雲端 (SaaS) 應用程式 (例如 Dropbox、Salesforce、ServiceNow 等等) 中建立、維護和移除使用者身分識別的作業。 |
 | [雲端 HR 使用者布建](../app-provisioning/plan-cloud-hr-provision.md)| 雲端 HR 使用者布建至 Active Directory 建立進行中身分識別治理的基礎，並增強依賴授權身分識別資料的商務程式品質。 使用這項功能搭配您的雲端 HR 產品（例如 Workday 或 Successfactors），您可以藉由設定規則來對應「員工」、「終止」、「) 」 (的 (流程（例如建立、啟用、停用) ），以順暢地管理員工和臨時員工的身分識別生命週期。 |
 
 ## <a name="deploy-governance-and-reporting"></a>部署治理和報告

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: shants
 ms.openlocfilehash: 9942ad359bf1e1e7a02f30979ba4a9325d90d484
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91336049"
 ---
 # <a name="handling-planned-maintenance-using-powershell"></a>使用 PowerShell 處理預定的維護
@@ -41,7 +41,7 @@ MaintenanceRedeployStatus               :
 
 下列是 MaintenanceRedeployStatus 下傳回的內容： 
 
-| 值 | 說明   |
+| 值 | 描述   |
 |-------|---------------|
 | IsCustomerInitiatedMaintenanceAllowed | 指出您目前是否可以在 VM 上開始維修 |
 | PreMaintenanceWindowStartTime         | 維修自助期間的開始，此時您可以在 VM 上起始維修 |

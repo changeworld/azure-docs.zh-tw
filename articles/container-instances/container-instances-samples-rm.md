@@ -4,10 +4,10 @@ description: 尋找 Azure Resource Manager 範本範例，以在不同的設定�
 ms.topic: article
 ms.date: 03/07/2019
 ms.openlocfilehash: 6c487087b39244178643fd81364150ceb3ac4a63
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86169641"
 ---
 # <a name="azure-resource-manager-templates-for-azure-container-instances"></a>Azure 容器執行個體的 Azure Resource Manager 範本
@@ -18,7 +18,7 @@ ms.locfileid: "86169641"
 
 ## <a name="sample-templates"></a>範例範本
 
-| 範本 | 描述 |
+| 範本 | 說明 |
 |-|-|
 | **應用程式** ||
 | [WordPress][app-wp] | 在容器群組中建立 WordPress 網站及其 MySQL 資料庫。 WordPress 網站內容和 MySQL 資料庫會保存到 Azure 檔案服務共用中。 也會建立應用程式閘道，以公開對 WordPress 的公用網路存取。 |
@@ -26,11 +26,11 @@ ms.locfileid: "86169641"
 | **磁碟區** ||
 | [emptyDir][vol-emptydir] | 部署共用 emptyDir 磁碟區的兩個 Linux 容器。 |
 | [gitRepo][vol-gitrepo] | 部署會複製 GitHub 存放庫，並將其掛接為磁碟區的 Linux 容器。 |
-| [密碼][vol-secret] | 使用掛接為祕密磁碟區的 PFX 憑證來部署 Linux 容器。 |
-| **網路** ||
+| [秘密][vol-secret] | 使用掛接為祕密磁碟區的 PFX 憑證來部署 Linux 容器。 |
+| **網路功能** ||
 | [UDP 公開容器][net-udp] | 部署會公開 UDP 連接埠的 Windows 或 Linux 容器。 |
 | [具有公用 IP 的 Linux 容器][net-publicip] | 部署可透過公用 IP 存取的單一 Linux 容器。 |
-| [部署具有虛擬網路的容器群組][net-vnet] | 部署新的虛擬網路、子網、網路設定檔和容器群組。 |
+| [使用虛擬網路部署容器群組][net-vnet] | 部署新的虛擬網路、子網、網路設定檔和容器群組。 |
 | **Azure 資源** ||
 | [建立 Azure 儲存體帳戶和檔案共用][az-files] | 在容器執行個體中使用 Azure CLI 以建立儲存體帳戶和 Azure 檔案服務共用。
 

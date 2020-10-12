@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 08/02/2020
 ms.author: guybo
 ms.openlocfilehash: f945c58b256c2a024a62b15a1bca1841483e1849
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91279428"
 ---
 # <a name="endorsed-linux-distributions-on-azure"></a>Azure 上經背書的 Linux 發行版本
@@ -50,14 +50,14 @@ Azure 需要經背書之 Linux 散發套件的發行者定期以每季或更快�
 
 ## <a name="azure-tuned-kernels"></a>Azure 調整的核心
 
-Azure 與各種背書的 Linux 散發套件密切合作，以將其發佈至 Azure Marketplace 的映射優化。 這項共同作業的其中一個層面是開發已針對 Azure 平臺優化的「微調」 Linux 核心，並以 Linux 散發套件的完整支援元件形式提供。 經過 Azure 調整的核心結合了新功能和效能改進，相較于可從散發套件取得的預設或一般核心，通常每季) 步調通常會有更快速的 (。
+Azure 與各種背書的 Linux 散發套件密切合作，以將其發佈至 Azure Marketplace 的映射優化。 這項共同作業的其中一個層面是開發已針對 Azure 平臺優化的「微調」 Linux 核心，並以 Linux 散發套件的完整支援元件形式提供。 Azure-Tuned 核心併入了新功能和效能改進，相較于可從散發套件取得的預設或一般核心，通常會有每季) 步調較快的 (。
 
-在大多數情況下，您會發現這些核心已預先安裝在 Azure Marketplace 的預設映射中，因此客戶會立即獲得這些優化核心的優點。 您可以在下列連結中找到這些 Azure 微調核心的詳細資訊：
+在大多數情況下，您會發現這些核心已預先安裝在 Azure Marketplace 的預設映射中，因此客戶會立即獲得這些優化核心的優點。 您可以在下列連結中找到這些 Azure-Tuned 核心的詳細資訊：
 
-- [CentOS 經 Azure 調整的核心-可透過 CentOS Virtualization SIG 取得](https://wiki.centos.org/SpecialInterestGroup/Virtualization)
+- [CentOS Azure-Tuned 核心-可透過 CentOS Virtualization SIG 取得](https://wiki.centos.org/SpecialInterestGroup/Virtualization)
 - [Debian Cloud Kernel-可在 Azure 上使用 Debian 10 和 Debian 9 "反向移植" 映射](https://wiki.debian.org/Cloud/MicrosoftAzure)
-- [SLES Azure 調整的核心](https://www.suse.com/c/a-different-builtin-kernel-for-azure-on-demand-images/)
-- [Ubuntu Azure 調整的核心](https://blog.ubuntu.com/2017/09/21/microsoft-and-canonical-increase-velocity-with-azure-tailored-kernel)
+- [SLES Azure-Tuned 核心](https://www.suse.com/c/a-different-builtin-kernel-for-azure-on-demand-images/)
+- [Ubuntu Azure-Tuned 核心](https://blog.ubuntu.com/2017/09/21/microsoft-and-canonical-increase-velocity-with-azure-tailored-kernel)
 
 ## <a name="partners"></a>合作夥伴
 

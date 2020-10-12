@@ -4,10 +4,10 @@ description: 查看並篩選 Azure Advisor 的建議，以減少雜訊。
 ms.topic: article
 ms.date: 04/03/2019
 ms.openlocfilehash: 43bdaba7d774bba8857a6eb3ef296d7ab8e1c264
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90986866"
 ---
 # <a name="view-azure-advisor-recommendations-that-matter-to-you"></a>觀看 Azure Advisor 您對您有影響的建議
@@ -47,7 +47,7 @@ Azure Advisor 可讓您在單一資源上關閉或延遲建議。 如果您關�
 1. 從建議清單中選取建議
 1. 針對您想要延期或關閉的建議選取 [延遲] 或 [關閉]
 
-     :::image type="content" source="./media/view-recommendations/postpone-dismiss.png" alt-text="使用受控磁碟視窗的螢幕擷取畫面，其中顯示已醒目提示單一建議的選取資料行和延後和關閉動作。":::
+     :::image type="content" source="./media/view-recommendations/postpone-dismiss.png" alt-text="顯示篩選選項 Azure Advisor 的螢幕擷取畫面。":::
 
 ### <a name="postpone-or-dismiss-a-multiple-recommendations-in-the-azure-portal"></a>延遲或關閉 Azure 入口網站中的多個建議
 
@@ -57,7 +57,7 @@ Azure Advisor 可讓您在單一資源上關閉或延遲建議。 如果您關�
 1. 針對您想要延期或關閉建議的所有資源，選取資料列左側的核取方塊。
 1. 選取資料表左上角的 [ **延遲** ] 或 [ **關閉** ]。
 
-     :::image type="content" source="./media/view-recommendations/postpone-dismiss-multiple.png" alt-text="[使用受控磁碟] 視窗的螢幕擷取畫面，其中顯示反白顯示之資料表左上角的 [選取資料行] 和 [延遲] 和 [關閉] 動作。":::
+     :::image type="content" source="./media/view-recommendations/postpone-dismiss-multiple.png" alt-text="顯示篩選選項 Azure Advisor 的螢幕擷取畫面。":::
 
 > [!NOTE]
 > 您需要參與者或擁有者許可權，才能關閉或延期建議。 深入瞭解 Azure Advisor 中的許可權。
@@ -73,7 +73,7 @@ Azure Advisor 可讓您在單一資源上關閉或延遲建議。 如果您關�
 
 1. 將 [總覽] 面板上的篩選準則變更為 [已 **延**後]。 Advisor 接著會顯示已延遲或已關閉的建議。
 
-    :::image type="content" source="./media/view-recommendations/activate-postponed.png" alt-text="Azure Advisor 視窗的螢幕擷取畫面，其中顯示已選取的延遲下拉式功能表。":::
+    :::image type="content" source="./media/view-recommendations/activate-postponed.png" alt-text="顯示篩選選項 Azure Advisor 的螢幕擷取畫面。":::
 
 1. 選取類別以查看 **延** 後和已 **關閉** 的建議。
 
@@ -81,9 +81,9 @@ Azure Advisor 可讓您在單一資源上關閉或延遲建議。 如果您關�
 
 1. 按一下資料列結尾的 [ **啟用** ]。 按一下之後，該資源的建議會在作用中，因此會從此資料表中移除。 您現在 **可以在 [使用中] 索引** 標籤中看到建議。
  
-     :::image type="content" source="./media/view-recommendations/activate-postponed-2.png" alt-text="[啟用虛刪除] 視窗的螢幕擷取畫面，其中顯示 [啟用] 動作醒目提示的延後 & 已關閉索引標籤。":::
+     :::image type="content" source="./media/view-recommendations/activate-postponed-2.png" alt-text="顯示篩選選項 Azure Advisor 的螢幕擷取畫面。":::
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 本文說明如何在 Azure Advisor 中查看對您有影響的建議。 若要深入了解 Advisor，請參閱︰ 
 

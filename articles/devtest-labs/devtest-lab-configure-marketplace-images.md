@@ -4,23 +4,23 @@ description: 設定在 Azure DevTest Labs 中建立 VM 時可以使用哪些 Azu
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: a5158ed33bf253db1dbe0eb3232bc43d27ce15e7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86512430"
 ---
 # <a name="configure-azure-marketplace-image-settings-in-azure-devtest-labs"></a>在 Azure DevTest Labs 中設定 Azure Marketplace 映像設定
-DevTest Labs 支援根據 Azure Marketplace 映像來建立 VM，而這取決於您設定 Azure Marketplace 映像使用於實驗室的方式。 本文將說明在實驗室中建立 VM 時，如何指定可以使用哪些 Azure Marketplace 映像 (如果有的話)。 它可確保您的小組僅能存取所需的 Marketplace 映射。 
+DevTest Labs 支援根據 Azure Marketplace 映像來建立 VM，而這取決於您設定 Azure Marketplace 映像使用於實驗室的方式。 本文將說明在實驗室中建立 VM 時，如何指定可以使用哪些 Azure Marketplace 映像 (如果有的話)。 它可確保您的小組只能存取所需的 Marketplace 映射。 
 
-## <a name="specify-allowed-images-for-creating-vms"></a>指定建立 Vm 所允許的映射
-遵循這些步驟，以指定在建立 VM 時允許的 Azure Marketplace 映射。 
+## <a name="specify-allowed-images-for-creating-vms"></a>指定允許的映射來建立 Vm
+遵循這些步驟，以指定在建立 VM 時允許使用哪些 Azure Marketplace 映射。 
 
 1. 登入 [Azure 入口網站](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
 2. 選取 [所有服務]****，然後從清單中選取 [DevTest Labs]****。
 3. 從實驗室清單中選取您的實驗室。 
-4. 在 [實驗室] 頁面的首頁上，選取 [設定**和原則**]。
-5. 在實驗室的 [設定**與原則**] 頁面的 [**虛擬機器基底**] 底下，選取 [ **Marketplace 映射**]。
+4. 在 [實驗室] 頁面的首頁上，選取 [設定 **與原則**]。
+5. 在實驗室的 [設定 **與原則** ] 頁面的 [ **虛擬機器基底**] 下，選取 [ **Marketplace 映射**]。
 6. 指定是否要讓所有合格的 Azure Marketplace 映像可用來做為新 VM 的基底。 如果您選取 [是] ****，則實驗室中允許所有符合下列準則的 Azure Marketplace 映像︰
    
    * 映像會建立單一 VM， **而且**
@@ -39,14 +39,14 @@ DevTest Labs 支援根據 Azure Marketplace 映像來建立 VM，而這取決於
 
 
 ## <a name="troubleshoot"></a>疑難排解
-如果您找不到要啟用實驗室的特定映射，請遵循下列步驟： 
+如果您找不到要為實驗室啟用的特定映射，請遵循下列步驟： 
 
-- 查看建立計算 VM 時是否可以查看映射。
-- 映射可能無法在您使用的訂用帳戶類型中使用。 請洽詢訂用帳戶管理員以取得訂閱的類型（例如： MSDN、免費、隨用隨付，依此類推）。 
-- DevTest Labs 中的 Gen 2 映射支援有限。 如果 Gen 1 和 Gen 2 版本均適用於某個映像，在建立 VM 時，DevTest Labs 只會顯示該映像的 Gen 1 版本。 因應措施是在實驗室外部建立自訂 Gen 2 映射，並使用它來建立 VM。 如果只有 Gen 2 版本的映射可用，DevTest Labs 就會支援並顯示在清單中。 
+- 檢查您是否可以在建立計算 VM 時查看映射。
+- 映射可能無法在您使用的訂用帳戶類型中使用。 請向訂用帳戶管理員確認訂用帳戶的類型 (例如： MSDN、免費、隨用隨付等等。 ) 。 
+- DevTest Labs 中的 Gen 2 映射支援受限。 如果 Gen 1 和 Gen 2 版本均適用於某個映像，在建立 VM 時，DevTest Labs 只會顯示該映像的 Gen 1 版本。 因應措施是在實驗室外建立自訂的 Gen 2 映射，並使用它來建立 VM。 如果只有第2版的映射可供使用，DevTest Labs 就會支援並顯示在清單中。 
       
 
 
-## <a name="next-steps"></a>後續步驟
-在您設定建立 VM 時允許 Azure Marketplace 映射的方式之後，下一步就是[將 vm 新增至您的實驗室](devtest-lab-add-vm.md)。
+## <a name="next-steps"></a>接下來的步驟
+當您設定在建立 VM 時如何允許 Azure Marketplace 映射時，下一個步驟是 [將 vm 新增至您的實驗室](devtest-lab-add-vm.md)。
 

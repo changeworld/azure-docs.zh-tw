@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.author: makromer
 ms.date: 04/30/2020
 ms.openlocfilehash: 5593b0d633b133c8a8295634b674218d5e6c6daf
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89485032"
 ---
 # <a name="data-flow-activity-in-azure-data-factory"></a>Azure Data Factory 中的資料流程活動
@@ -61,7 +61,7 @@ integrationRuntime | 執行資料流程的計算環境。 如果未指定，將�
 compute. coreCount | Spark 叢集中使用的核心數目。 只有在使用自動解析 Azure Integration runtime 時才能指定 | 8、16、32、48、80、144、272 | 否
 compute. computeType | Spark 叢集中使用的計算類型。 只有在使用自動解析 Azure Integration runtime 時才能指定 | "General"、"ComputeOptimized"、"MemoryOptimized" | 否
 暫存. linkedService | 如果您使用 Azure Synapse Analytics 來源或接收，則用於 PolyBase 暫存的儲存體帳戶 | LinkedServiceReference | 只有當資料流程讀取或寫入 Azure Synapse Analytics
-暫存. folderPath | 如果您使用 Azure Synapse Analytics 來源或接收器，則為用於 PolyBase 暫存的 blob 儲存體帳戶中的資料夾路徑 | String | 只有當資料流程讀取或寫入 Azure Synapse Analytics
+暫存. folderPath | 如果您使用 Azure Synapse Analytics 來源或接收器，則為用於 PolyBase 暫存的 blob 儲存體帳戶中的資料夾路徑 | 字串 | 只有當資料流程讀取或寫入 Azure Synapse Analytics
 
 ![執行資料流程](media/data-flow/activity-data-flow.png "執行資料流程")
 
@@ -155,7 +155,7 @@ Debug 管線會針對使用中的 debug 叢集執行，而不是針對資料流�
 > [!NOTE]
 > 如果接收的資料列數為零，則不會顯示在計量中。 您可以使用函式來驗證是否存在 `contains` 。 例如， `contains(activity('dataflowActivity').output.runStatus.metrics, 'sink1')` 會檢查是否有任何資料列寫入 sink1。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 請參閱 Data Factory 支援的控制流程活動： 
 
