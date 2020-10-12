@@ -1,5 +1,5 @@
 ---
-title: 設定 Always On VPN 通道
+title: 設定 Always-On VPN 通道
 titleSuffix: Azure VPN Gateway
 description: 瞭解如何使用閘道搭配 Windows 10 Always On 來建立並設定 Azure 的持續性裝置通道。
 services: vpn-gateway
@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/03/2020
 ms.author: cherylmc
 ms.openlocfilehash: 7688e42175b2b4e35b63979f5df25702f3bb869d
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90986591"
 ---
 # <a name="configure-an-always-on-vpn-device-tunnel"></a>設定 Always On VPN 裝置通道
@@ -31,8 +31,8 @@ ms.locfileid: "90986591"
 
 若要移除設定檔，請執行下列命令：
 
-![螢幕擷取畫面顯示執行 VpnConnection-Name MachineCertTest 命令的 PowerShell 視窗。](./media/vpn-gateway-howto-always-on-device-tunnel/cleanup.png)
+![螢幕擷取畫面顯示執行命令 Remove-VpnConnection 名稱 MachineCertTest 的 PowerShell 視窗。](./media/vpn-gateway-howto-always-on-device-tunnel/cleanup.png)
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 如需疑難排解，請參閱 [Azure 點對站連線問題](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)

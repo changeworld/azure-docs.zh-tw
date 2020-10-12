@@ -10,10 +10,10 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 07/08/2020
 ms.openlocfilehash: 8648347eb48081389cf360fa949b31bbd0b8c71e
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88936702"
 ---
 # <a name="upgrading-versions-of-the-azure-search-net-management-sdk"></a>升級 Azure 搜尋服務 .NET 管理 SDK 的版本
@@ -49,10 +49,10 @@ ms.locfileid: "88936702"
 | API | 類別| 詳細資料 |
 |-----|--------|------------------|
 | [NetworkRuleSet](/rest/api/searchmanagement/services/createorupdate#networkruleset) | IP 防火牆 | 將服務端點的存取許可權制為允許的 IP 位址清單。 請參閱 [設定 IP 防火牆](service-configure-firewall.md) 的概念和入口網站指示。 |
-| [共用 Private Link 資源](/rest/api/searchmanagement/sharedprivatelinkresources) | Private Link | 建立搜尋服務所要使用的共用私人連結資源。  |
-| [私人端點連接](/rest/api/searchmanagement/privateendpointconnections) | Private Link | 透過私人端點建立及管理與搜尋服務的連線。 請參閱建立概念和入口網站指示的 [私人端點](service-create-private-endpoint.md) 。|
-| [Private Link 資源](/rest/api/searchmanagement/privatelinkresources/) | Private Link | 若為具有私人端點連線的搜尋服務，請取得在相同虛擬網路中使用的所有服務清單。 如果您的搜尋解決方案包含從 Azure 資料來源提取的索引子 (Azure 儲存體、Cosmos DB、Azure SQL) ，或使用認知服務或 Key Vault，則所有這些資源在虛擬網路中都應該有端點，而且此 API 應該會傳回清單。 |
-| [將 publicnetworkaccess 新增](/rest/api/searchmanagement/services/createorupdate#publicnetworkaccess)| Private Link | 這是建立或更新服務要求的屬性。 停用時，private link 是唯一的存取樣式。 |
+| [共用 Private Link 資源](/rest/api/searchmanagement/sharedprivatelinkresources) | 私人連結 | 建立搜尋服務所要使用的共用私人連結資源。  |
+| [私人端點連接](/rest/api/searchmanagement/privateendpointconnections) | 私人連結 | 透過私人端點建立及管理與搜尋服務的連線。 請參閱建立概念和入口網站指示的 [私人端點](service-create-private-endpoint.md) 。|
+| [Private Link 資源](/rest/api/searchmanagement/privatelinkresources/) | 私人連結 | 若為具有私人端點連線的搜尋服務，請取得在相同虛擬網路中使用的所有服務清單。 如果您的搜尋解決方案包含從 Azure 資料來源提取的索引子 (Azure 儲存體、Cosmos DB、Azure SQL) ，或使用認知服務或 Key Vault，則所有這些資源在虛擬網路中都應該有端點，而且此 API 應該會傳回清單。 |
+| [將 publicnetworkaccess 新增](/rest/api/searchmanagement/services/createorupdate#publicnetworkaccess)| 私人連結 | 這是建立或更新服務要求的屬性。 停用時，private link 是唯一的存取樣式。 |
 
 ### <a name="breaking-changes"></a>重大變更
 
@@ -68,6 +68,6 @@ ms.locfileid: "88936702"
 
 * 新方法 `Services.Update` 和其非同步版本都已新增至 SDK。 這些方法會使用 HTTP PATCH 來支援累加式的服務更新。 例如，您現在可以將僅包含所需 `partitionCount` 和 `replicaCount` 屬性 `SearchService` 的執行個體傳遞給這些方法，來調整服務。 目前仍支援呼叫 `Services.Get`、修改傳回的 `SearchService`，並將其傳遞至 `Services.CreateOrUpdate` 的舊方法，但您不再必須使用此方法。 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 如果您遇到問題，最適合張貼問題的論壇是 [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-cognitive-search?tab=Newest)。 如果您發現錯誤，您可以在 [Azure .NET SDK GitHub 儲存機制](https://github.com/Azure/azure-sdk-for-net/issues)中提出問題。 請務必使用 [搜尋] 來標記問題標題。

@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 04/10/2019
 ms.openlocfilehash: cff2e918c7b67f6d3bccb9b56366cbf034ed1bb5
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89300097"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>管理 Azure 監視器中記錄資料和工作區的存取
@@ -106,7 +106,7 @@ Set-AzResource -ResourceId $_.ResourceId -Properties $_.Properties -Force
 
 下列活動也需要 Azure 權限︰
 
-|動作 |所需的 Azure 權限 |備註 |
+|動作 |所需的 Azure 權限 |注意 |
 |-------|-------------------------|------|
 | 新增和移除監視解決方案 | `Microsoft.Resources/deployments/*` <br> `Microsoft.OperationalInsights/*` <br> `Microsoft.OperationsManagement/*` <br> `Microsoft.Automation/*` <br> `Microsoft.Resources/deployments/*/write` | 必須在資源群組或訂用帳戶層級授與這些權限。 |
 | 變更定價層 | `Microsoft.OperationalInsights/workspaces/*/write` | |
@@ -162,7 +162,7 @@ Log Analytics 讀者角色包含下列 Azure 動作：
 
 Log Analytics 參與者角色包含下列 Azure 動作：
 
-| 權限 | 描述 |
+| 權限 | 說明 |
 | ---------- | ----------- |
 | `*/read`     | 檢視所有資源和資源組態的能力。 包括檢視： <br> 虛擬機器擴充功能 <br> 在資源上設定 Azure 診斷 <br> 所有資源的所有屬性和設定。 <br> 針對工作區，它允許完全不受限制的許可權，以讀取工作區設定並對資料執行查詢。 查看更細微的選項。 |
 | `Microsoft.Automation/automationAccounts/*` | 建立及設定 Azure 自動化帳戶的能力，包括新增和編輯 Runbook |
@@ -189,7 +189,7 @@ Log Analytics 參與者角色包含下列 Azure 動作：
 
 當使用者使用資源內容存取從工作區查詢記錄時，這些資源會在資源上擁有下列許可權：
 
-| 權限 | 描述 |
+| 權限 | 說明 |
 | ---------- | ----------- |
 | `Microsoft.Insights/logs/<tableName>/read`<br><br>範例：<br>`Microsoft.Insights/logs/*/read`<br>`Microsoft.Insights/logs/Heartbeat/read` | 能夠查看資源的所有記錄資料。  |
 | `Microsoft.Insights/diagnosticSettings/write` | 能夠設定診斷設定以允許設定此資源的記錄。 |
@@ -308,7 +308,7 @@ Log Analytics 參與者角色包含下列 Azure 動作：
 * 工作區擁有者會被視為每個資料表存取控制的任何其他使用者。
 * 建議您將角色指派給安全性群組，而不是個別使用者，以減少指派數目。 這也可協助您使用現有的群組管理工具來設定及驗證存取權。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 請參閱 [Log Analytics 代理程式概觀](./log-analytics-agent.md)，從您資料中心或其他雲端環境中的電腦收集資料。
 

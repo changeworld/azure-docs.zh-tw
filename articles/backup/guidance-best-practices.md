@@ -4,10 +4,10 @@ description: 探索將雲端和內部部署工作負載備份至雲端的最佳�
 ms.topic: conceptual
 ms.date: 07/22/2020
 ms.openlocfilehash: f999c568dda6eae60f3060cc4672eccaf06541c1
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90985527"
 ---
 # <a name="backup-cloud-and-on-premises-workloads-to-cloud"></a>將雲端和內部部署工作負載備份到雲端
@@ -256,7 +256,7 @@ Azure 備份服務的功能可讓您彈性地管理成本，並仍能滿足您�
 
 * 您也可以透過內建的復原服務保存庫 **活動記錄**來取得通知。 不過，它支援有限的案例，並不適用于排程備份之類的作業，這會比使用活動記錄更適合資源記錄檔。 若要深入瞭解這些限制，以及您可以如何使用 Log Analytics 工作區來大規模監視和警示，以針對受 Azure 備份保護的所有工作負載，請參閱這 [篇文章](backup-azure-monitoring-use-azuremonitor.md#using-log-analytics-to-monitor-at-scale)。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 建議您閱讀下列文章，以瞭解使用 Azure 備份的起點：
 

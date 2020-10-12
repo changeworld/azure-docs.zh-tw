@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/18/2020
 ms.openlocfilehash: a5589a46a63437fb395db280222f8a9e84775df3
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88935070"
 ---
 # <a name="monitor-query-requests-in-azure-cognitive-search"></a>監視 Azure 認知搜尋中的查詢要求
@@ -36,9 +36,9 @@ ms.locfileid: "88935070"
 
 查詢的執行通常是以毫秒為單位，因此只會在度量中出現測量為秒的查詢。
 
-| 彙總類型 | 描述 |
+| 彙總類型 | 說明 |
 |------------------|-------------|
-| Average | 在一分鐘內發生查詢執行的平均秒數。|
+| 平均 | 在一分鐘內發生查詢執行的平均秒數。|
 | Count | 在一分鐘的間隔內發出至記錄的計量數目。 |
 | 最大值 | 每秒在一分鐘內註冊的搜尋查詢最高數目。 |
 | 最低需求 | 每秒在一分鐘內註冊的搜尋查詢數目下限。  |
@@ -56,7 +56,7 @@ ms.locfileid: "88935070"
 
 | 彙總類型 | Latency | 
 |------------------|---------|
-| Average | 平均查詢持續時間（以毫秒為單位）。 | 
+| 平均 | 平均查詢持續時間（以毫秒為單位）。 | 
 | Count | 在一分鐘的間隔內發出至記錄的計量數目。 |
 | 最大值 | 範例中的最長執行查詢。 | 
 | 最低需求 | 範例中的最短執行查詢。  | 
@@ -84,7 +84,7 @@ ms.locfileid: "88935070"
 
 | 彙總類型 | 節流 |
 |------------------|-----------|
-| Average | 間隔內捨棄的查詢百分比。 |
+| 平均 | 間隔內捨棄的查詢百分比。 |
 | Count | 在一分鐘的間隔內發出至記錄的計量數目。 |
 | 最大值 | 間隔內捨棄的查詢百分比。|
 | 最低需求 | 間隔內捨棄的查詢百分比。 |
@@ -187,7 +187,7 @@ ms.locfileid: "88935070"
 
 Power BI is an analytical reporting tool useful for visualizing data, including log information. If you are collecting data in Blob storage, a Power BI template makes it easy to spot anomalies or trends. Use this link to download the template. -->
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 如果您尚未這麼做，請參閱搜尋服務監視的基本概念，以瞭解全面的監督功能。
 

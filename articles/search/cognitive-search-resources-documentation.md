@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/12/2020
 ms.openlocfilehash: eaafb9536a8667417c0abf4ab570609f2db290bc
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88935342"
 ---
 # <a name="documentation-resources-for-ai-enrichment-in-azure-cognitive-search"></a>Azure 認知搜尋中的 AI 擴充適用的文件資源
@@ -96,8 +96,8 @@ AI 擴充是以索引子為基礎的索引附加元件，可在非文字來源�
   + [建立技能集 (api 版本 = 2020-06-30) ](/rest/api/searchservice/create-skillset)
   + [建立索引子 (api 版本 = 2020-06-30) ](/rest/api/searchservice/create-indexer)
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 + [Aure 認知搜尋 REST API](/rest/api/searchservice/)
 + [Azure 認知搜尋中的索引子](search-indexer-overview.md)
-+ [什麼是 Azue 認知搜尋？](search-what-is-azure-search.md)
++ [什麼是 Azure 認知搜尋？](search-what-is-azure-search.md)

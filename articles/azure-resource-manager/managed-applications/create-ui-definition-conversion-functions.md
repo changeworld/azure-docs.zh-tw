@@ -1,24 +1,24 @@
 ---
 title: 建立 UI 定義轉換函式
-description: 描述在資料類型與編碼之間轉換值時所要使用的函式。
+description: 描述在資料類型與編碼之間轉換值時所要使用的函數。
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: tomfitz
 ms.openlocfilehash: b69cd35b27b343da08727b4c4ee9b4fd025e1df7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87096237"
 ---
-# <a name="createuidefinition-conversion-functions"></a>CreateUiDefinition 轉換函數
+# <a name="createuidefinition-conversion-functions"></a>CreateUiDefinition 轉換函式
 
 這些函式可用來轉換 JSON 資料類型與編碼之間的值。
 
 ## <a name="bool"></a>bool
 
-將參數轉換為布林值。 此函式支援數值、字串和布林值類型的參數。 類似于 JavaScript 中的布林值，或以外的任何值都會傳回 `0` `'false'` `true` 。
+將參數轉換為布林值。 此函式支援數值、字串和布林值類型的參數。 類似于 JavaScript 中的布林值，除了 `0` 或傳回的任何值 `'false'` `true` 。
 
 下列範例會傳回 `true`：
 
@@ -172,6 +172,6 @@ ms.locfileid: "87096237"
 "[string({\"type\":\"webapp\"})]"
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * 如需 Azure Resource Manager 的簡介，請參閱 [Azure Resource Manager 概觀](../management/overview.md)。

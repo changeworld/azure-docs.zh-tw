@@ -14,10 +14,10 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.openlocfilehash: aa10cb207011051c30866a3a3ed693e7113b5882
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89297698"
 ---
 # <a name="configure-postman-for-media-services-v3-rest-api-calls"></a>針對媒體服務 v3 REST API 呼叫設定 Postman
@@ -49,7 +49,7 @@ ms.locfileid: "89297698"
 
 ## <a name="configure-postman"></a>設定 Postman
 
-### <a name="configure-the-environment"></a>設定環境 
+### <a name="configure-the-environment"></a>建立環境 
 
 1. 開啟 **Postman** 應用程式。
 2. 選取畫面右側的 [管理環境]**** 選項。
@@ -104,7 +104,7 @@ ms.locfileid: "89297698"
 - [使用媒體服務建立篩選 - REST](filters-dynamic-manifest-rest-howto.md)
 - [以 Azure Resource Manager 為基礎的 REST API](https://github.com/Azure-Samples/media-services-v3-arm-templates)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [使用 REST 串流檔案](stream-files-tutorial-with-rest.md)。  
 - [教學課程：編碼以 URL 為基礎的遠端檔案及串流處理影片 - REST](stream-files-tutorial-with-rest.md)

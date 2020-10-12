@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 08/02/2017
 ms.author: alkohli
 ms.openlocfilehash: ed6f9d58c5c54c88acf8e3a0e7fda7d2d65b8637
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85514316"
 ---
 # <a name="install-update-4-on-your-storsimple-device"></a>在 StorSimple 裝置上安裝 Update 4
@@ -49,7 +49,7 @@ Update 4 包含裝置軟體、USM 韌體、LSI 驅動程式與韌體、Storport 
 
 * 您會看到有可用的維護模式更新 (此訊息可能會在您安裝更新之後繼續顯示長達 24 小時)。 維護模式更新為干擾性更新，會導致裝置產生停機時間，且只能透過您裝置的 Windows PowerShell 介面加以套用。
 
-* 下載維護模式更新，方法是使用[下載 Hotfix](#to-download-hotfixes) 中列出的步驟來搜尋和下載 KB4011837，它會安裝磁碟韌體更新 (此時應該已經安裝其他更新)。 請遵循[安裝及驗證維護模式的修補程式](#to-install-and-verify-maintenance-mode-hotfixes)中所列的步驟來安裝維護模式更新。
+* 下載維護模式更新，方法是使用[下載 Hotfix](#to-download-hotfixes) 中列出的步驟來搜尋和下載 KB4011837，它會安裝磁碟韌體更新 (此時應該已經安裝其他更新)。 請依照 [安裝和驗證維護模式的修補程式](#to-install-and-verify-maintenance-mode-hotfixes) 中所列的步驟來安裝維護模式更新。
 
 ## <a name="install-update-4-as-a-hotfix"></a>以 Hotfix 方式安裝 Update 4
 建議的方法是透過 Azure 入口網站安裝 Update 4。
@@ -76,10 +76,10 @@ Hotfix 方法涉及下列三個步驟：
 
 | 單 | KB | 描述 | 更新類型 | 安裝時間 |安裝在資料夾|
 | --- | --- | --- | --- | --- | --- |
-| 1. |KB4011839 |軟體更新 |標準 <br></br>非干擾性 |~ 25 分鐘 |FirstOrderUpdate|
-| 2A. |KB4011841 <br> KB4011842 |LSI 驅動程式與韌體更新 <br> USM 韌體更新 (3.38 版) |標準 <br></br>非干擾性 |~ 3 小時 <br> (包括 2A. 2B. + 2C.)|SecondOrderUpdate|
-| 2B. |KB3139398、KB3108381 <br> KB3205400、KB3142030 <br> KB3197873、KB3197873 <br> KB3192392、KB3153704 <br> KB3174644、KB3139914  |OS 安全性更新套件 <br> 下載 Windows Server 2012 R2 |標準 <br></br>非干擾性 |- |SecondOrderUpdate|
-| 2C. |KB3210083、KB3103616 <br> KB3146621、KB3121261 <br> KB3123538 |OS 更新套件 <br> 下載 Windows Server 2012 R2 |標準 <br></br>非干擾性 |- |SecondOrderUpdate|
+| 1. |KB4011839 |軟體更新 |定期 <br></br>非干擾性 |~ 25 分鐘 |FirstOrderUpdate|
+| 2A. |KB4011841 <br> KB4011842 |LSI 驅動程式與韌體更新 <br> USM 韌體更新 (3.38 版) |定期 <br></br>非干擾性 |~ 3 小時 <br> (包括 2A. 2B. + 2C.)|SecondOrderUpdate|
+| 2B. |KB3139398、KB3108381 <br> KB3205400、KB3142030 <br> KB3197873、KB3197873 <br> KB3192392、KB3153704 <br> KB3174644、KB3139914  |OS 安全性更新套件 <br> 下載 Windows Server 2012 R2 |定期 <br></br>非干擾性 |- |SecondOrderUpdate|
+| 2C. |KB3210083、KB3103616 <br> KB3146621、KB3121261 <br> KB3123538 |OS 更新套件 <br> 下載 Windows Server 2012 R2 |定期 <br></br>非干擾性 |- |SecondOrderUpdate|
 
 除了前面表格所示的所有更新之外，您可能還需要安裝磁碟韌體更新。 您可以執行 `Get-HcsFirmwareVersion` Cmdlet 來確認是否需要進行磁碟韌體更新。 如果您執行的是這些韌體版本：`XMGJ`、`XGEG`、`KZ50`、`F6C2`、`VR08`、`N002`、`0106`，您就不需要安裝這些更新。
 
@@ -100,6 +100,6 @@ Hotfix 方法涉及下列三個步驟：
 
 [!INCLUDE [storsimple-install-troubleshooting](../../includes/storsimple-install-troubleshooting.md)]
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 深入了解 [Update 4 版本](storsimple-update4-release-notes.md)。
 

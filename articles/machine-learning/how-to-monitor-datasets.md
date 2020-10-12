@@ -12,10 +12,10 @@ ms.date: 06/25/2020
 ms.topic: conceptual
 ms.custom: how-to
 ms.openlocfilehash: 8f54ece9a932ed4cc0adc29747e1c58ee22646c8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91333863"
 ---
 # <a name="detect-data-drift-preview-on-datasets"></a>偵測資料集的資料漂移 (預覽) 
@@ -38,7 +38,7 @@ ms.locfileid: "91333863"
 
 您可以使用 Python SDK 或 Azure Machine Learning studio 來查看資料漂移度量。  您可以透過與 Azure Machine Learning 工作區相關聯的 [Azure 應用程式 insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) 資源取得其他計量和見解。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要建立及使用資料集監視器，您需要：
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前先建立免費帳戶。 立即試用[免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)。
@@ -85,7 +85,7 @@ Azure Machine Learning 藉由計算單一計量來簡化漂移偵測，以抽象
 
 資料集監視器相依于下列 Azure 服務。
 
-|Azure 服務  |說明  |
+|Azure 服務  |描述  |
 |---------|---------|
 | *資料集* | 漂移會使用 Machine Learning 資料集來取得定型資料，並比較資料以進行模型定型。  產生資料的設定檔是用來產生一些回報的度量，例如 min、max、相異值、相異值計數。 |
 | *Azureml 管線和計算* | 漂移計算工作裝載于 azureml 管線中。  作業會視需要觸發，或依排程在漂移監視器建立時所設定的計算上執行。
@@ -131,7 +131,7 @@ dset = dset.register(ws, 'target')
 
 如需使用 `timeseries` 資料集特性的完整範例，請參閱 [範例筆記本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/timeseries-datasets/tabular-timeseries-dataset-filtering.ipynb) 或 [資料集 SDK 檔](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true#&preserve-view=truewith-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-)。
 
-### <a name="azure-machine-learning-studio"></a><a name="studio-dataset"></a>Azure Machine Learning Studio
+### <a name="azure-machine-learning-studio"></a><a name="studio-dataset"></a>Azure Machine Learning studio
 
 如果您使用 Azure Machine Learning studio 建立資料集，請確定您的資料路徑包含時間戳記資訊、包含包含資料的所有子資料夾，以及設定分割區格式。
 
@@ -145,7 +145,7 @@ dset = dset.register(ws, 'target')
 
 如果您的資料是依日期進行分割，就像這裡的情況一樣，您也可以指定 partition_timestamp。  這可讓您以更有效率的方式處理日期。
 
-:::image type="content" source="media/how-to-monitor-datasets/timeseries-partitiontimestamp.png" alt-text="分割區時間戳記":::
+:::image type="content" source="media/how-to-monitor-datasets/timeseries-partitiontimestamp.png" alt-text="設定時間戳記":::
 
 
 ## <a name="create-dataset-monitors"></a>建立資料集監視
@@ -213,7 +213,7 @@ monitor = monitor.enable_schedule()
 
 1. 按一下 [ **+ 建立監視** ] 按鈕，然後按 **[下一步**] 繼續進行嚮導。  
 
-:::image type="content" source="media/how-to-monitor-datasets/wizard.png" alt-text="建立監視器嚮導":::
+:::image type="content" source="media/how-to-monitor-datasets/wizard.png" alt-text="設定時間戳記":::
 
 * **選取 [目標資料集**]。  目標資料集是具有指定時間戳記資料行的表格式資料集，將會針對資料漂移進行分析。 目標資料集必須具有與基準資料集共通的功能，而且應該是將 `timeseries` 新資料附加至其中的資料集。 您可以分析目標資料集中的歷程記錄資料，也可以監視新的資料。
 
@@ -221,7 +221,7 @@ monitor = monitor.enable_schedule()
 
 * **監視設定**。  這些設定適用于已排程的資料集監視器管線，將會加以建立。 
 
-    | 設定 | 說明 | 提示 | 可變動 | 
+    | 設定 | 描述 | 提示 | 可變動 | 
     | ------- | ----------- | ---- | ------- |
     | 名稱 | 資料集監視的名稱。 | | 否 |
     | 特性 | 將分析一段時間內的資料漂移的功能清單。 | 設定為模型的輸出功能 (s) 來測量概念漂移。 請勿包含在一段時間內自然漂移的功能， (月份、年份、索引等 ) 。 您可以在調整功能的清單之後，回填和現有的資料漂移監視器。 | 是 | 
@@ -240,7 +240,7 @@ monitor = monitor.enable_schedule()
 
 從最上層深入解析到資料漂移的程度，以及要進一步調查的特徵醒目提示。
 
-:::image type="content" source="media/how-to-monitor-datasets/drift-overview.png" alt-text="漂移總覽":::
+:::image type="content" source="media/how-to-monitor-datasets/drift-overview.png" alt-text="設定時間戳記":::
 
 
 | 計量 | 描述 | 
@@ -253,7 +253,7 @@ monitor = monitor.enable_schedule()
 
 查看資料集在指定的時間週期內與目標資料集的差異。  接近100%，這兩個資料集的差異越多。
 
-:::image type="content" source="media/how-to-monitor-datasets/drift-magnitude.png" alt-text="漂移幅度趨勢":::
+:::image type="content" source="media/how-to-monitor-datasets/drift-magnitude.png" alt-text="設定時間戳記":::
 
 ### <a name="drift-magnitude-by-features"></a>依功能變化的漂移
 
@@ -263,7 +263,7 @@ monitor = monitor.enable_schedule()
 
 在 Azure Machine Learning studio 中，按一下圖表中的橫條以查看該日期的功能層級詳細資料。 根據預設，您會看到基準資料集的散發，以及相同功能的最新執行分佈。
 
-:::image type="content" source="media/how-to-monitor-datasets/drift-by-feature.gif" alt-text="依功能變化的漂移":::
+:::image type="content" source="media/how-to-monitor-datasets/drift-by-feature.gif" alt-text="設定時間戳記":::
 
 您也可以透過物件上的方法，在 Python SDK 中取出這些計量 `get_metrics()` `DataDriftDetector` 。
 
@@ -271,7 +271,7 @@ monitor = monitor.enable_schedule()
 
 最後，向下滾動以查看每個個別功能的詳細資料。  使用圖表上方的下拉式清單來選取功能，並另外選取您要查看的度量。
 
-:::image type="content" source="media/how-to-monitor-datasets/numeric-feature.gif" alt-text="數值特徵圖形和比較":::
+:::image type="content" source="media/how-to-monitor-datasets/numeric-feature.gif" alt-text="設定時間戳記":::
 
 圖表中的計量取決於功能的類型。
 
@@ -293,7 +293,7 @@ monitor = monitor.enable_schedule()
 
 在此圖表上，選取單一日期來比較目標與這個日期之間的功能分佈，以顯示的功能。 針對數值功能，這會顯示兩個機率分佈。  如果功能是數值，則會顯示橫條圖。
 
-:::image type="content" source="media/how-to-monitor-datasets/select-date-to-compare.gif" alt-text="選取要與目標比較的日期":::
+:::image type="content" source="media/how-to-monitor-datasets/select-date-to-compare.gif" alt-text="設定時間戳記":::
 
 ## <a name="metrics-alerts-and-events"></a>計量、警示和事件
 

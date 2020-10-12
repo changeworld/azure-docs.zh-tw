@@ -15,10 +15,10 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: be3e99ca57957e1975313fed8609533f4a65b102
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84764718"
 ---
 # <a name="publish-applications-on-separate-networks-and-locations-using-connector-groups"></a>使用連接器群組在個別的網路和位置上發佈應用程式
@@ -32,7 +32,7 @@ ms.locfileid: "84764718"
 > [!TIP]
 > 如果您有大規模的應用程式 Proxy 部署，請勿將任何應用程式指派給預設連接器群組。 如此一來，新的連接器便不會收到任何即時流量，除非您將新連接器指派給作用中的連接器群組。 此設定也可以將連接器移回預設群組的方式，藉此讓連接器進入閒置模式，如此您便可以在不影響使用者的情況下執行維護。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要將連接器組成群組，您必須確定 [已安裝多個連接器](application-proxy-add-on-premises-application.md)。 當您安裝新的連接器時，它會自動加入「預設」 **** 連接器群組。
 
@@ -41,19 +41,19 @@ ms.locfileid: "84764718"
 使用以下步驟建立您所要的連接器群組，數量不拘。
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-1. 選取 [ **Azure Active Directory**  >  **企業應用**程式] [  >  **應用程式 proxy**]。
+1. 選取 [企業應用程式] **Azure Active Directory**[  >  **Enterprise applications**  >  **應用程式 proxy**]。
 1. 選取 [新增連接器群組]****。 [新增連接器群組] 刀鋒視窗隨即出現。
 
-   ![顯示選取新連接器群組的畫面](./media/application-proxy-connector-groups/new-group.png)
+   ![顯示用來選取新連接器群組的畫面](./media/application-proxy-connector-groups/new-group.png)
 
 1. 指定新連接器群組的名稱，然後使用下拉式功能表來選取哪些連接器屬於此群組。
-1. 選取 [儲存]。
+1. 選取 [儲存]****。
 
 ## <a name="assign-applications-to-your-connector-groups"></a>將應用程式指派給您的連接器群組
 
 已透過應用程式 Proxy 發佈的每個應用程式均按照這些步驟處理。 您可以在首次發佈應用程式時，將應用程式指派給連接器群組，也可以隨時使用這些步驟變更指派。
 
-1. 從您目錄的管理儀表板中，選取 [**企業應用程式**]  >  [**所有應用**程式] > 您想要指派給連接器群組的應用程式 >**應用程式 Proxy**。
+1. 從目錄的管理儀表板，選取**Enterprise applications**  >  您要指派給連接器群組 >**應用程式 Proxy**> 的 [企業應用**程式]** 。
 1. 使用 [連接器群組] **** 下拉式功能表來選取應用程式所要使用的群組。
 1. 按一下 [儲存] **** 以套用變更。
 
@@ -108,7 +108,7 @@ ms.locfileid: "84764718"
 
 如果您不使用連接器群組，您的組態會看起來像這樣︰
 
-![Azure AD 沒有連接器群組的範例](./media/application-proxy-connector-groups/application-proxy-sample-config-1.png)
+![範例 Azure AD 沒有連接器群組](./media/application-proxy-connector-groups/application-proxy-sample-config-1.png)
 
 這個組態就對小型部署和測試就已足夠。 如果您的組織具有平面網路拓撲，則它也會正常運作。
 

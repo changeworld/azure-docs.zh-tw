@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 7/13/2020
 ms.openlocfilehash: 1dc7bc8e119de7c8fdcf09713286be2633457486
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90895869"
 ---
 # <a name="logs-in-azure-database-for-postgresql---hyperscale-citus"></a>記錄適用於 PostgreSQL 的 Azure 資料庫-超大規模 (Citus) 
@@ -26,13 +26,13 @@ ms.locfileid: "90895869"
 
 針對選取的節點開啟 [ **診斷設定**]，然後按一下 [ **+ 新增診斷設定**]。
 
-:::image type="content" source="media/howto-hyperscale-logging/diagnostic-settings.png" alt-text="[新增診斷設定] 按鈕":::
+:::image type="content" source="media/howto-hyperscale-logging/diagnostic-settings.png" alt-text="節點清單":::
 
 挑選新診斷設定的名稱，然後選取 [ **PostgreSQLLogs** ] 方塊。  選擇要接收記錄 () 的目的地。
 
-:::image type="content" source="media/howto-hyperscale-logging/diagnostic-create-setting.png" alt-text="選擇于 postgresql 記錄":::
+:::image type="content" source="media/howto-hyperscale-logging/diagnostic-create-setting.png" alt-text="節點清單":::
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [開始使用 log analytics 查詢](/azure/azure-monitor/log-query/get-started-portal)
 - 瞭解 [Azure 事件中樞](/azure/event-hubs/event-hubs-about)

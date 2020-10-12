@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 07/18/2018
 ms.author: alkohli
 ms.openlocfilehash: 6f8ec56cc5747921ee786bd4c069070ff865f9fb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85507920"
 ---
 # <a name="install-update-11-on-your-storsimple-virtual-array"></a>在 StorSimple Virtual Array 上安裝 Update 1.1
@@ -58,7 +58,7 @@ ms.locfileid: "85507920"
 * 安裝更新或 Hotfix
 
 > [!IMPORTANT] 
-> **只有在執行 Update 1 （10.0.10296.0）時，才繼續進行此更新。如果您執行的是更新0.6，請先在裝置上[安裝 update 1](storsimple-virtual-array-install-update-1.md) ，然後再套用更新1.1。**
+> **只有當您執行 Update 1 (10.0.10296.0) 時，才要繼續進行此更新。如果您正在執行更新0.6，請先在裝置上 [安裝 update 1](storsimple-virtual-array-install-update-1.md) ，然後再套用更新1.1。**
 
 ### <a name="download-the-update-or-the-hotfix"></a>下載更新或 Hotfix
 
@@ -66,7 +66,7 @@ ms.locfileid: "85507920"
 
 #### <a name="to-download-the-update-or-the-hotfix"></a>下載更新或 Hotfix
 
-1. 啟動 Internet Explorer 並流覽至 [https://catalog.update.microsoft.com](https://catalog.update.microsoft.com) 。
+1. 啟動 Internet Explorer，然後流覽至 [https://catalog.update.microsoft.com](https://catalog.update.microsoft.com) 。
 
 2. 如果這是您第一次在此電腦上使用 Microsoft Update Catalog，請在系統提示您安裝 Microsoft Update Catalog 附加元件時，按一下 [安裝]****。
 
@@ -99,11 +99,11 @@ ms.locfileid: "85507920"
 
 #### <a name="to-install-the-update-or-the-hotfix"></a>安裝更新或 Hotfix
 
-1. 在本機 web UI 中，移至 [**維護**] [  >  **軟體更新**]。 記下您在執行的軟體版本。 **只有在執行 Update 1 （10.0.10296.0）時，才繼續進行此更新。如果您執行的是更新0.6，請先在裝置上[安裝 update 1](storsimple-virtual-array-install-update-1.md) ，然後再套用更新1.1。**
+1. 在本機 web UI 中，移至 [**維護**  >  **軟體更新**]。 記下您在執行的軟體版本。 **只有當您執行 Update 1 (10.0.10296.0) 時，才要繼續進行此更新。如果您正在執行更新0.6，請先在裝置上 [安裝 update 1](storsimple-virtual-array-install-update-1.md) ，然後再套用更新1.1。**
    
     ![更新裝置](./media/storsimple-virtual-array-install-update-11/update1m.png)
 
-2. 在 [更新檔案路徑] **** 中，輸入更新或 Hotfix 的檔案名稱。 如果更新或 Hotfix 的安裝檔案是放在網路共用上，您也可以瀏覽至該檔案。 按一下 [套用] 。
+2. 在 [更新檔案路徑] **** 中，輸入更新或 Hotfix 的檔案名稱。 如果更新或 Hotfix 的安裝檔案是放在網路共用上，您也可以瀏覽至該檔案。 按一下 [套用]。
    
     ![更新裝置](./media/storsimple-virtual-array-install-update-11/update2m.png)
 
@@ -115,7 +115,7 @@ ms.locfileid: "85507920"
    
     ![更新裝置](./media/storsimple-virtual-array-install-update-11/update5m.png)
 
-5. 重新啟動完成後，您就會進入 [登入]**** 頁面。 若要確認裝置軟體是否已更新，請在本機 web UI 中，移至 [**維護**] [  >  **軟體更新**]。 顯示的軟體版本應該是 **10.0.0.0.0.10307** (適用於 Update 1.1)。
+5. 重新啟動完成後，您就會進入 [登入]**** 頁面。 若要確認裝置軟體是否已更新，請在本機 web UI 中，移至 [**維護**  >  **軟體更新**]。 顯示的軟體版本應該是 **10.0.0.0.0.10307** (適用於 Update 1.1)。
    
    > [!NOTE]
    > 我們在本機 Web UI 和 Azure 入口網站中回報軟體版本的方式略有不同。 例如，本機 Web UI 會回報 **10.0.0.0.0.10307**，而相同版本在 Azure 入口網站則會回報為 **10.0.10307.0**。
@@ -125,6 +125,6 @@ ms.locfileid: "85507920"
 6. 使用檔案 `Windows8.1-KB4284815-x64`，重複步驟 2-4 安裝 Windows 安全性修正。 安裝後會重新啟動虛擬陣列，而您需要登入本機的 Web UI。
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 深入了解 [administering your StorSimple Virtual Array (管理 StorSimple Virtual Array)](storsimple-ova-web-ui-admin.md)。

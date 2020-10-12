@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/19/2019
 ms.openlocfilehash: d752b747a0156bcef587f81ee421c55a6de81e17
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89079467"
 ---
 # <a name="transform-data-securely-by-using-mapping-data-flow"></a>使用對應資料流程安全地轉換資料
@@ -35,7 +35,7 @@ ms.locfileid: "89079467"
 
 ## <a name="prerequisites"></a>必要條件
 * **Azure 訂用帳戶**。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費 Azure 帳戶](https://azure.microsoft.com/free/)。
-* **Azure 儲存體帳戶**。 您可以使用 Data Lake Storage 作為 *來源* 和 *接收* 資料存放區。 如果您沒有儲存體帳戶，請參閱[建立 Azure 儲存體帳戶](https://docs.microsoft.com/azure/storage/common/storage-account-create?tabs=azure-portal)，按照步驟建立此帳戶。 *確定儲存體帳戶只允許從選取的網路進行存取。* 
+* **Azure 儲存體帳戶**。 您可以使用 Data Lake Storage 作為 *來源* 和 *接收* 資料存放區。 如果您沒有儲存體帳戶，請參閱[建立 Azure 儲存體帳戶](https://docs.microsoft.com/azure/storage/common/storage-account-create?tabs=azure-portal)，按照步驟建立此帳戶。 請確定儲存體帳戶只允許從選取的網路存取。 
 
 我們將在本教學課程中轉換的檔案是 moviesDB.csv，可在此 [GitHub 內容網站](https://raw.githubusercontent.com/djpmsft/adf-ready-demo/master/moviesDB.csv)找到。 若要從 GitHub 取出檔案，請將內容複寫到您選擇的文字編輯器，以將它儲存在本機做為 .csv 檔案。 若要將檔案上傳至您的儲存體帳戶，請參閱 [使用 Azure 入口網站上傳 blob](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)。 這些範例會參考名為 **sample**的容器。
 
@@ -43,11 +43,11 @@ ms.locfileid: "89079467"
 
 在此步驟中，您會建立資料處理站，並開啟 Data Factory UI，以在 data factory 中建立管線。
 
-1. 開啟 Microsoft Edge 或 Google Chrome。 目前，只有 Microsoft Edge 和 Google Chrome 網頁瀏覽器支援 Data Factory 的 UI。
+1. 開啟 Microsoft Edge 或 Google Chrome。 目前，只有 Microsoft Edge 和 Google Chrome 網頁瀏覽器支援 Data Factory UI。
 1. 在左側功能表上，選取 [建立資源] > [分析] > [資料處理站]。
 1. 在 [新增資料處理站] 頁面的 [名稱] 下，輸入 **ADFTutorialDataFactory**。
 
-   資料處理站的名稱必須是「全域唯一」** 的名稱。 如果您收到有關名稱值的錯誤訊息，請針對 data factory 輸入不同的名稱 (例如，yournameADFTutorialDataFactory) 。 如需 Data Factory 成品的命名規則，請參閱 [Data Factory 命名規則](naming-rules.md)。
+   資料處理站的名稱必須是「全域唯一」** 的名稱。 如果您收到有關名稱值的錯誤訊息，請輸入不同的資料處理站名稱 (例如 yournameADFTutorialDataFactory)。 如需 Data Factory 成品的命名規則，請參閱 [Data Factory 命名規則](naming-rules.md)。
 
 1. 選取您要在其中建立資料處理站的 Azure **訂用帳戶**。
 1. 針對 [資源群組]，採取下列其中一個步驟︰
@@ -57,10 +57,10 @@ ms.locfileid: "89079467"
          
     若要了解資源群組，請參閱[使用資源群組管理您的 Azure 資源](../azure-resource-manager/management/overview.md)。 
 1. 在 [版本] 下，選取 [V2]。
-1. 在 [位置] 下，選取資料處理站的位置。 下拉式清單中只會顯示支援的位置。 資料存放區 (例如 Azure 儲存體和 Azure SQL Database) 和計算 (例如，資料處理站所使用的 Azure HDInsight) 可位於其他區域。
+1. 在 [位置] 下，選取資料處理站的位置。 只有受到支援的位置會出現在下拉式清單中。 資料存放區 (例如 Azure 儲存體和 Azure SQL Database) 和計算 (例如，資料處理站所使用的 Azure HDInsight) 可位於其他區域。
 
-1. 選取 [建立]。
-1. 建立完成之後，您會在通知中心看到通知。 選取 [ **移至資源** ] 以移至 [ **Data Factory** ] 頁面。
+1. 選取 [建立]  。
+1. 建立完成後，您會在通知中心看到通知。 選取 [移至資源]，以移至 **Data Factory** 頁面。
 1. 選取 [編寫與監視]，以在個別索引標籤中啟動 Data Factory 使用者介面。
 
 ## <a name="create-an-azure-ir-in-data-factory-managed-virtual-network"></a>在 Data Factory 受控虛擬網路中建立 Azure IR
@@ -73,11 +73,11 @@ ms.locfileid: "89079467"
 
    ![顯示新 Azure IR 的螢幕擷取畫面。](./media/tutorial-copy-data-portal-private/azure-ir.png)
 
-1. 在 [ **虛擬網路設定] (預覽]) **上，選取 [ **啟用**]。
+1. 在 [虛擬網路設定 (預覽)] 中，選取 [啟用]。
 
    ![顯示啟用新 Azure IR 的螢幕擷取畫面。](./media/tutorial-copy-data-portal-private/enable-managed-vnet.png)
 
-1. 選取 [建立]。
+1. 選取 [建立]****。
 
 ## <a name="create-a-pipeline-with-a-data-flow-activity"></a>使用資料流程活動建立管線
 
@@ -119,17 +119,17 @@ ms.locfileid: "89079467"
 
 1. 在 [連結服務建立] 畫面中，為您的 Data Lake Storage Gen2 連結服務 **ADLSGen2** 命名，然後指定您的驗證方法。 然後輸入您的連接認證。 在本教學課程中，我們將使用 **帳戶金鑰** 來連線到儲存體帳戶。 
 
-1. 請務必啟用 **互動式撰寫**。 可能需要一分鐘的時間來啟用。
+1. 請務必啟用**互動式製作**。 可能需要一分鐘的時間來啟用。
 
-    ![顯示互動式撰寫的螢幕擷取畫面。](./media/tutorial-data-flow-private/interactive-authoring.png)
+    ![顯示互動式製作的螢幕擷取畫面。](./media/tutorial-data-flow-private/interactive-authoring.png)
 
 1. 選取 [測試連線]。 它應該會失敗，因為儲存體帳戶不會啟用存取權，而不需要建立和核准私人端點。 在錯誤訊息中，您應該會看到一個連結，可讓您建立私人端點，以供您建立受控私人端點。 替代方式是直接移至 [ **管理** ] 索引標籤，並 [遵循本節中](#create-a-managed-private-endpoint) 的指示來建立受控私人端點。
 
-1. 讓對話方塊保持開啟，然後移至您的儲存體帳戶。
+1. 讓對話方塊保持開啟，然後移至儲存體帳戶。
 
 1. 遵循[本節](#approval-of-a-private-link-in-a-storage-account)的指示來核准私人連結。
 
-1. 返回對話方塊。 再次選取 [ **測試連接** ]，然後選取 [ **建立** ] 以部署連結服務。
+1. 返回對話方塊。 選取 [測試連線]，然後選取 [建立] 以部署已連結的服務。
 
 1. 在 [資料集建立] 畫面的 [檔案 **路徑** ] 欄位下，輸入檔案的所在位置。 在本教學課程中，檔案 moviesDB.csv 位於容器 **範例-資料**中。 因為檔案具有標頭，所以請選取 [ **第一個資料列做為標頭** ] 核取方塊。 **從連線/存放區**選取，直接從儲存體中的檔案匯入標頭架構。 當您完成時，請選取 **[確定]** 。
 
@@ -141,36 +141,36 @@ ms.locfileid: "89079467"
 
 #### <a name="create-a-managed-private-endpoint"></a>建立受控私人端點
 
-如果您在測試上述連接時未使用超連結，請遵循路徑。 現在您需要建立受控私人端點，以連接到您所建立的連結服務。
+如果您在測試上述連接時未使用超連結，請遵循路徑。 現在您需要建立受控私人端點，以連線至所建立的已連結服務。
 
-1. 移至 [ **管理** ] 索引標籤。
+1. 移至**管理**索引標籤。
 
    > [!NOTE]
-   > [ **管理** ] 索引標籤可能無法供所有 Data Factory 實例使用。 如果您沒有看到它，您可以選取 [**作者**  >  **連接**  >  **私人端點**] 來存取私人端點。
+   > 並非所有 Data Factory 執行個體圴可使用**管理**索引標籤。 如果您沒有看到該索引標籤，可以選取 [作者] > [連線] > [私人端點] 來存取私人端點。
 
-1. 移至 [ **受控私人端點** ] 區段。
-1. 選取 [**受管理的私人端點**] 底下的 [ **+ 新增**]。
+1. 移至**受控私人端點**區段。
+1. 在**受控私人端點**之下選取 [+新增]。
 
-    ![顯示 [受管理的私人端點] [新增] 按鈕的螢幕擷取畫面。](./media/tutorial-data-flow-private/new-managed-private-endpoint.png) 
+    ![顯示 [受控私人端點新增] 按鈕的螢幕擷取畫面。](./media/tutorial-data-flow-private/new-managed-private-endpoint.png) 
 
 1. 從清單中選取 **Azure Data Lake Storage Gen2** 圖格，然後選取 [ **繼續**]。
 1. 輸入建立之儲存體帳戶的名稱。
 1. 選取 [建立]。
-1. 幾秒鐘後，您應該會看到建立的私人連結需要核准。
-1. 選取您所建立的私人端點。 您可以看到超連結，讓您在儲存體帳戶層級核准私人端點。
+1. 在等候幾秒鐘之後，您應該會看到建立的私人連結需要核准。
+1. 選取之前建立的私人端點。 您會看到超連結，引導您在儲存體帳戶層級核准私人端點。
 
     ![顯示 [管理私人端點] 窗格的螢幕擷取畫面。](./media/tutorial-data-flow-private/manage-private-endpoint.png) 
 
-#### <a name="approval-of-a-private-link-in-a-storage-account"></a>核准儲存體帳戶中的私人連結
+#### <a name="approval-of-a-private-link-in-a-storage-account"></a>在儲存體帳戶中核准私人連結
 
-1. 在儲存體帳戶中，移至 [**設定**] 區段底下的 [**私人端點**連線]。
+1. 在儲存體帳戶中，移至**設定**區段下的**私人端點連線**。
 
 1. 選取您所建立私人端點的核取方塊，然後選取 [ **核准**]。
 
     ![顯示 [私人端點核准] 按鈕的螢幕擷取畫面。](./media/tutorial-data-flow-private/approve-private-endpoint.png)
 
-1. 新增描述，然後選取 **[是]**。
-1. 返回至 Data Factory 中 [**管理**] 索引標籤的 [**受管理的私人端點**] 區段。
+1. 新增描述，然後選取 [是]。
+1. 回到 Data Factory 中**管理**索引標籤的**受控私人端點**區段。
 1. 大約一分鐘之後，您應該會看到私人端點的核准。
 
 ### <a name="add-the-filter-transformation"></a>新增篩選準則轉換
@@ -233,7 +233,7 @@ ms.locfileid: "89079467"
 
 1. 在 [ **選取格式** ] 頁面上，選取 [ **DelimitedText** ]，然後選取 [ **繼續**]。
 
-1. 將接收資料集命名為 **MoviesSink**。 針對 [已連結的服務]，選擇您為來源轉換所建立的相同 **ADLSGen2** 連結服務。 輸入要寫入資料的輸出檔案夾。 在本教學課程中，我們會寫入容器**範例資料**中的資料夾**輸出**。 資料夾不需要事先存在，而且可以動態建立。 選取 [ **第一個資料列做為標頭** ] 核取方塊，然後選取 [ **無** 匯 **入架構**]。 選取 [確定]。
+1. 將接收資料集命名為 **MoviesSink**。 針對 [已連結的服務]，選擇您為來源轉換所建立的相同 **ADLSGen2** 連結服務。 輸入要寫入資料的輸出檔案夾。 在本教學課程中，我們會寫入容器**範例資料**中的資料夾**輸出**。 資料夾不需要事先存在，而且可以動態建立。 選取 [ **第一個資料列做為標頭** ] 核取方塊，然後選取 [ **無** 匯 **入架構**]。 選取 [確定]  。
 
     ![顯示接收路徑的螢幕擷取畫面。](media/tutorial-data-flow-private/sink-file-path.png)
 

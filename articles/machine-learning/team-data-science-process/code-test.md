@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=weig, previous-ms.author=weig
 ms.openlocfilehash: fc837405e03ffac41d216a5ba18384208b07aaf1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87090292"
 ---
 # <a name="data-science-code-testing-on-azure-with-the-team-data-science-process-and-azure-devops-services"></a>使用 Team Data Science Process 和 Azure DevOps Services，在 Azure 上進行資料科學程式碼測試
@@ -124,11 +124,11 @@ ms.locfileid: "87090292"
 
     ![範本清單和 [空的處理序] 按鈕](./media/code-test/start_empty_process_template.PNG)
 
-    d. 為組建命名並選取代理程式。 如果您想要使用 DSVM 來完成組建程式，可以選擇這裡的預設值。 如需有關設定代理程式的詳細資訊，請參閱[建置及發行代理程式](https://docs.microsoft.com/azure/devops/pipelines/agents/agents?view=vsts) \(英文\)。
+    d. 為組建命名並選取代理程式。 如果您想要使用 DSVM 完成組建程式，可以選擇預設值。 如需有關設定代理程式的詳細資訊，請參閱[建置及發行代理程式](https://docs.microsoft.com/azure/devops/pipelines/agents/agents?view=vsts) \(英文\)。
     
     ![建置和代理程式選項](./media/code-test/select_agent.PNG)
 
-    e. **+** 在左窗格中選取，以加入此組建階段的工作。 因為我們將執行 Python 腳本**test1.py**來完成所有檢查，所以這項工作會使用 PowerShell 命令來執行 Python 程式碼。
+    e. **+** 在左窗格中選取，以新增此組建階段的工作。 因為我們要執行 Python 腳本 **test1.py** 來完成所有的檢查，所以這項工作會使用 PowerShell 命令來執行 Python 程式碼。
     
     ![已選取 [PowerShell] 的 [新增工作] 窗格](./media/code-test/add_task_powershell.PNG)
 
@@ -138,7 +138,7 @@ ms.locfileid: "87090292"
     
     ![PowerShell 詳細資料](./media/code-test/powershell_scripts.PNG)
 
-    g. 選取 [**儲存 & 佇列**] 以完成組建管線進程。
+    g. 選取 [ **儲存 & 佇列** ] 以完成組建管線處理。
 
     ![[儲存並排入佇列] 按鈕](./media/code-test/save_and_queue_build_definition.PNG)
 
@@ -150,11 +150,11 @@ ms.locfileid: "87090292"
 
 ![建置成功的 Azure DevOps 通知](./media/code-test/vs_online_build_succeed.PNG)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 * 如需資料科學案例的具體單元測試範例，請參閱 [UCI 收入預測存放庫](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome) \(英文\)。
 * 在您自己的資料科學專案中，依照上述來自 UCI 收入預測案例的概述和範例進行操作。
 
-## <a name="references"></a>參考資料
+## <a name="references"></a>參考
 * [Team Data Science Process](https://aka.ms/tdsp)
 * [Visual Studio 測試工具](https://www.visualstudio.com/vs/features/testing-tools/)
 * [Azure DevOps 測試資源](https://www.visualstudio.com/team-services/)

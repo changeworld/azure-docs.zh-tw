@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 02/05/2018
 ms.author: jejiang
 ms.openlocfilehash: a99196cfad7abad38408c847a8a0b64ffe95fff5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85508787"
 ---
 # <a name="manage-azure-data-lake-storage-gen1-resources-by-using-storage-explorer"></a>使用儲存體總管管理 Azure Data Lake Storage Gen1 資源
@@ -19,7 +19,7 @@ ms.locfileid: "85508787"
 
 另一個優點是，您不需擁有訂用帳戶權限即可管理 Data Lake Storage Gen1 資料。 在儲存體總管中，只要他人授與權限，您即可將 Data Lake Storage Gen1 路徑連結至 [本機與已連結的資源]**** 節點。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成本文中的步驟，您必須符合下列先決條件︰
 
@@ -142,7 +142,7 @@ Data Lake Storage Gen1 帳戶的資源包含資料夾和檔案。
 1. 選取您要下載的資料夾或檔案。
 2. 在主窗格工具列上選取 [下載] ****。
 3. 在 [選取要在其中儲存所下載檔案的資料夾]**** 對話方塊中，指定位置和名稱。
-4. 選取 [儲存]。
+4. 選取 [儲存]****。
 
 ### <a name="open-a-folder-or-file-from-your-local-computer"></a>從本機電腦開啟資料夾或檔案
 
@@ -192,10 +192,10 @@ Data Lake Storage Gen1 帳戶的資源包含資料夾和檔案。
 
 ![檔案總管中的深層連結](./media/data-lake-store-in-storage-explorer/storageexplorer-adls-deep-link.png)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * 檢視 [最新的儲存體 Explorer 版本資訊與影片](https://www.storageexplorer.com)。
-* 瞭解如何[管理 Azure 儲存體總管中的 Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/storage-explorer)。
-* [開始使用儲存體總管](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)。
+* 瞭解如何 [在 Azure 儲存體總管中管理 Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/storage-explorer)。
+* [儲存體總管入門](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)。
 * [開始使用 Azure Data Lake Storage Gen1](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-overview)。
 * 觀看[有關如何在 Azure 儲存體總管中使用 Azure Cosmos DB 的 YouTube 影片](https://www.youtube.com/watch?v=iNIbg1DLgWo&feature=youtu.be)。

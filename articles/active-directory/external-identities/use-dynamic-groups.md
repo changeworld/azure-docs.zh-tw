@@ -12,10 +12,10 @@ manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6adf7e6c5abbba3c018f9a03b5167aec7537c704
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87908146"
 ---
 # <a name="dynamic-groups-and-azure-active-directory-b2b-collaboration"></a>動態群組與 Azure Active Directory B2B 共同作業
@@ -28,12 +28,12 @@ ms.locfileid: "87908146"
 ## <a name="creating-an-all-users-dynamic-group"></a>建立「所有使用者」動態群組
 您建立的群組可以包含使用成員資格規則的租用戶內的所有使用者。 未來在租用戶中新增或移除使用者時，系統會自動調整群組的成員資格。
 
-1. 使用在租使用者中獲指派全域管理員或使用者系統管理員角色的帳戶登入[Azure 入口網站](https://portal.azure.com)。
+1. 使用指派給租使用者中的全域管理員或使用者系統管理員角色的帳戶登入 [Azure 入口網站](https://portal.azure.com) 。
 1. 選取 **Azure Active Directory**。
-2. 在 [**管理**] 底下，選取 [**群組**]，然後選取 [**新增群組**]。
-1. 在 [**新增群組**] 頁面的 [**群組類型**] 底下，選取 [**安全性**]。 為新群組輸入 [群組名稱]  與 [群組描述]  。 
-2. 在 [**成員資格類型**] 底下，選取 [**動態使用者**]，然後選取 [**新增動態查詢**]。 
-4. 在 [**規則語法**] 文字方塊的上方，選取 [**編輯**]。 在 [**編輯規則語法**] 頁面上，于文字方塊中輸入下列運算式：
+2. 在 [ **管理**] 底下，選取 [ **群組**]，然後選取 [ **新增群組**]。
+1. 在 [ **新增群組** ] 頁面的 [ **群組類型**] 底下，選取 [ **安全性**]。 為新群組輸入 [群組名稱]  與 [群組描述]  。 
+2. 在 [ **成員資格類型**] 下，選取 [ **動態使用者**]，然後選取 [ **加入動態查詢**]。 
+4. 在 [ **規則語法** ] 文字方塊上方，選取 [ **編輯**]。 在 [ **編輯規則語法** ] 頁面的文字方塊中，輸入下列運算式：
 
    ```
    user.objectId -ne null
@@ -42,32 +42,32 @@ ms.locfileid: "87908146"
 
    ![所有使用者動態群組的規則語法](media/use-dynamic-groups/all-user-rule-syntax.png)
 
-1.  選取 [儲存]。 新的動態群組現在會包含 B2B 來賓使用者和成員使用者。
+1.  選取 [儲存]****。 新的動態群組現在會包含 B2B 來賓使用者以及成員使用者。
 
 
-1. 選取 [**新增群組**] 頁面上的 [**建立**] 來建立群組。
+1. 選取 [**新增群組**] 頁面上的 [**建立**] 以建立群組。
 
 ## <a name="creating-a-group-of-members-only"></a>僅建立成員群組
 
-如果您想要讓群組排除來賓使用者，而且只包含租使用者的成員，請建立如上面所述的動態群組，但在 [**規則語法**] 方塊中，輸入下列運算式：
+如果您想要讓群組排除來賓使用者，並只包含租使用者的成員，請依照上述方式建立動態群組，但在 [ **規則語法** ] 方塊中，輸入下列運算式：
 
 ```
 (user.objectId -ne null) and (user.userType -eq "Member")
 ```
 
-下圖顯示已修改為僅包含成員和排除來賓之動態群組的規則語法。
+下圖顯示已修改為只包含成員和排除來賓之動態群組的規則語法。
 
-![顯示使用者類型 equals 成員的規則](media/use-dynamic-groups/all-member-user-rule-syntax.png)
+![顯示使用者類型等於成員的規則](media/use-dynamic-groups/all-member-user-rule-syntax.png)
 
 ## <a name="creating-a-group-of-guests-only"></a>僅建立來賓群組
 
-您可能也會發現，建立一個只包含來賓使用者的新動態群組很有用，這樣可讓您對他們套用原則 (例如 Azure AD 條件式存取原則)。 如上面所述建立動態群組，但在 [**規則語法**] 方塊中，輸入下列運算式：
+您可能也會發現，建立一個只包含來賓使用者的新動態群組很有用，這樣可讓您對他們套用原則 (例如 Azure AD 條件式存取原則)。 如上面所述建立動態群組，但在 [ **規則語法** ] 方塊中，輸入下列運算式：
 
 ```
 (user.objectId -ne null) and (user.userType -eq "Guest")
 ```
 
-下圖顯示已修改為僅包含來賓和排除成員使用者之動態群組的規則語法。
+下圖顯示已修改之動態群組的規則語法，只包含來賓並排除成員使用者。
 
 ![顯示使用者類型等於來賓的規則](media/use-dynamic-groups/all-guest-user-rule-syntax.png)
 
@@ -75,5 +75,5 @@ ms.locfileid: "87908146"
 
 - [B2B 共同作業使用者屬性](user-properties.md)
 - [將 B2B 共同作業使用者新增至角色](add-guest-to-role.md)
-- [適用于 B2B 共同作業使用者的條件式存取](conditional-access.md)
+- [B2B 共同作業使用者的條件式存取](conditional-access.md)
 

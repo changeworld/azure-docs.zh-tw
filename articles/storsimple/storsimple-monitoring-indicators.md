@@ -15,16 +15,16 @@ ms.workload: TBD
 ms.date: 11/03/2017
 ms.author: alkohli
 ms.openlocfilehash: 97209dca7d30de037dbd21f5cc145b2941060e70
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85512979"
 ---
 # <a name="use-storsimple-monitoring-indicators-to-manage-your-device"></a>使用 StorSimple 監視指示器來管理您的裝置
 
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 StorSimple 裝置包括發光二極體 (LED) 與警示，您可以用來監控模組和 StorSimple 裝置上的整體狀態。 監控指示器位於裝置主要機箱與 EBOD 機箱的硬體元件上。 監控指示器可以是 LED 或有聲警報器。
 
 有三種 LED 狀態可用來指出模組的狀態：綠色、綠色不停閃爍到變紅琥珀色，或紅琥珀色。  
@@ -61,7 +61,7 @@ StorSimple 裝置包括發光二極體 (LED) 與警示，您可以用來監控�
 | 綠色 |開啟 |N/A |PCM 故障 LED、風扇故障 LED |任何 PCM 故障、 風扇故障、 溫度過高或過低 |
 | 綠色 |開啟 |N/A |I/O 模組 LED |任何控制器模組錯誤 |
 | 綠色 |開啟 |N/A |N/A |機箱邏輯錯誤 |
-| 綠色 |閃爍 |N/A |控制器模組上的模組狀態 LED。 PCM 故障 LED、風扇故障 LED |安裝的控制器模組類型不明、I2C 匯流排故障、控制器模組重要產品資料 (VPD) 組態錯誤 |
+| 綠色 |閃光燈 |N/A |控制器模組上的模組狀態 LED。 PCM 故障 LED、風扇故障 LED |安裝的控制器模組類型不明、I2C 匯流排故障、控制器模組重要產品資料 (VPD) 組態錯誤 |
 
 ## <a name="power-cooling-module-pcm-indicator-leds"></a>電源冷卻模組 (PCM) LED 指示燈
 電源冷卻模組 (PCM) LED 指示燈位於每個 PCM 模組上主要機箱或 EBOD 機箱的背面。 本主題討論如何使用下列 LED 來監控 StorSimple 裝置的狀態。  
@@ -136,7 +136,7 @@ StorSimple 裝置包含主要控制器的 LED 與 EBOD 控制器模組的 LED。
 使用下表來判斷控制器模組是否運作正常。  
 
 ### <a name="controller-indicator-leds"></a>控制器 LED 指示燈
-| LED | Description |
+| LED | 說明 |
 | --- | --- |
 | ID LED (藍色) |指出已找到此模組。 如果主動控制器上閃爍著藍色 LED，即表示該控制器處於作用中，而另一控制器則處於待命中。 如需詳細資訊，請參閱 [識別裝置上的作用中控制器](storsimple-8000-controller-replacement.md#identify-the-active-controller-on-your-device)。 |
 | 錯誤 LED (琥珀色) |指出控制器中發生錯誤。 |
@@ -179,9 +179,9 @@ StorSimple 裝置的磁碟機可以位於主要機箱與 EBOD 機箱。 每個�
 ### <a name="disk-drive-indicator-leds-for-the-ebod-enclosure"></a>EBOD 機箱的磁碟機 LED 指示燈
 | 狀態 | 活動正常 LED (綠色) | 錯誤 LED (紅琥珀色) | 相關聯操作面板 LED |
 | --- | --- | --- | --- |
-| 未安裝磁碟機 |OFF |OFF |None |
-| 磁碟機已安裝且可運作 |有活動時會不停開/關地閃爍 |X |None |
-| SCSI 機箱服務 (SES) 裝置身分識別已設定 |開啟 |每 2 秒閃爍 1 次 |None |
+| 未安裝磁碟機 |OFF |OFF |無 |
+| 磁碟機已安裝且可運作 |有活動時會不停開/關地閃爍 |X |無 |
+| SCSI 機箱服務 (SES) 裝置身分識別已設定 |開啟 |每 2 秒閃爍 1 次 |無 |
 | SES 裝置錯誤位元已設定 |開啟 |開啟 |邏輯錯誤 (紅色) |
 | 電源控制電路故障 |OFF |開啟 |模組錯誤 (紅色) |
 
@@ -204,8 +204,8 @@ StorSimple 裝置包含和主要機箱與 EBOD 機箱相關聯的有聲警報器
 | --- | --- | --- |
 | S0 |標準模式：靜音 |嗶兩聲 |
 | S1 |錯誤模式：每 2 秒嗶 1 聲 |轉換至 S2 或 S3 (請參閱注意事項) |
-| S2 |提醒模式：間歇嗶聲 |None |
-| S3 |靜音模式：靜音 |None |
+| S2 |提醒模式：間歇嗶聲 |無 |
+| S3 |靜音模式：靜音 |無 |
 | S4 |重大錯誤模式：連續警示 |無法使用：未啟用靜音 |
 
 > [!NOTE]
@@ -225,7 +225,7 @@ StorSimple 裝置包含和主要機箱與 EBOD 機箱相關聯的有聲警報器
 | PCM 警示 – 失去單一 PCM 提供的 DC 電源 |錯誤 – 失去備援 |S1 |模組錯誤 |
 | PCM 風扇故障 |錯誤 – 失去備援 |S1 |模組錯誤 |
 | SBB 模組偵測到 PCM 錯誤 |錯誤 |S1 |模組錯誤 |
-| 已卸下 PCM |組態錯誤 |None |模組錯誤 |
+| 已卸下 PCM |設定錯誤 |無 |模組錯誤 |
 | 機箱組態錯誤 |錯誤 – 重大 |S1 |模組錯誤 |
 | 警告低溫警示 |警告 |S1 |模組錯誤 |
 | 警告高溫警示 |警告 |S1 |模組錯誤 |
@@ -235,14 +235,14 @@ StorSimple 裝置包含和主要機箱與 EBOD 機箱相關聯的有聲警報器
 | 控制器錯誤 |錯誤 – 重大 |S1 |模組錯誤 |
 | SBB 介面模組錯誤 |錯誤 – 重大 |S1 |模組錯誤 |
 | SBB 介面模組錯誤 – 沒有運作中的模組 |錯誤 – 重大 |S4 |模組錯誤 |
-| 已卸下 SBB 介面模組 |警告 |None |模組錯誤 |
+| 已卸下 SBB 介面模組 |警告 |無 |模組錯誤 |
 | 磁碟機電源控制故障 |警告 – 未失去磁碟機電源 |S1 |模組錯誤 |
 | 磁碟機電源控制故障 |錯誤 – 重大；失去磁碟機電源 |S1 |模組錯誤 |
-| 已卸下磁碟機 |警告 |None |模組錯誤 |
+| 已卸下磁碟機 |警告 |無 |模組錯誤 |
 | 沒有足夠的可用電源 |警告 |無 |模組錯誤 |
 
-## <a name="next-steps"></a>後續步驟
-深入瞭解[StorSimple 硬體元件和狀態](storsimple-8000-monitor-hardware-status.md)。
+## <a name="next-steps"></a>接下來的步驟
+深入瞭解 [StorSimple 硬體元件和狀態](storsimple-8000-monitor-hardware-status.md)。
 
 [1]: ./media/storsimple-monitoring-indicators/storsimple-monitoring-indicators-IMAGE01.png
 [2]: ./media/storsimple-monitoring-indicators/storsimple-monitoring-indicators-IMAGE02.png

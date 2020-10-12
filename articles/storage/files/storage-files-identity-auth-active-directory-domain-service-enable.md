@@ -9,10 +9,10 @@ ms.author: rogarana
 ms.subservice: files
 ms.custom: contperfq1
 ms.openlocfilehash: f64e3459863cc7b7ffddfae824f9c4012802a457
-ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89500312"
 ---
 # <a name="enable-azure-active-directory-domain-services-authentication-on-azure-files"></a>在 Azure 檔案儲存體上啟用 Azure Active Directory Domain Services authentication
@@ -89,7 +89,7 @@ ms.locfileid: "89500312"
 1. 在 Azure 入口網站中，移至您現有的儲存體帳戶，或 [建立儲存體帳戶](../common/storage-account-create.md)。
 1. 在 [設定]**** 區段中，選取 [組態]****。
 1. 在檔案共用的 [ **以身分識別為基礎的存取** ] 下，將 **Azure Active Directory 網域服務 (AAD DS) ** 切換為 [ **已啟用**]。
-1. 選取 [儲存]。
+1. 選取 [儲存]****。
 
 下圖顯示如何針對您的儲存體帳戶啟用透過 SMB 進行 Azure AD DS 驗證。
 
@@ -144,7 +144,7 @@ az storage account update -n <storage-account-name> -g <resource-group-name> --e
 
 您現在已成功啟用透過 SMB Azure AD DS 驗證，並且指派自訂角色，以使用 Azure AD 身分識別來存取 Azure 檔案共用。 若要授與其他使用者對檔案共用的存取權，請遵循「 [指派存取權限](#assign-access-permissions-to-an-identity) 來使用身分識別和 [設定 NTFS 許可權的 SMB 區段](#configure-ntfs-permissions-over-smb)」中的指示。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如需有關 Azure 檔案儲存體的詳細資訊，以及如何透過 SMB 使用 Azure AD，請參閱下列資源：
 

@@ -1,6 +1,6 @@
 ---
 title: Azure Cache for Redis 開發常見問題
-description: 瞭解可協助您開發 Azure Cache for Redis 的常見問題解答
+description: 瞭解可協助您針對 Azure Cache for Redis 進行開發之常見問題的解答
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 08/06/2020
 ms.openlocfilehash: ef85b6f9e4595e7b4ff367da415fad777de68679
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88211305"
 ---
 # <a name="azure-cache-for-redis-development-faqs"></a>Azure Cache for Redis 開發常見問題
 
-本文提供有關如何針對 Azure Cache for Redis 進行開發之常見問題的解答。
+本文提供有關如何針對 Azure Cache for Redis 開發的常見問題的解答。
 
 ## <a name="common-questions-and-answers"></a>常見問題和解答
 本節涵蓋下列常見問題：
@@ -114,7 +114,7 @@ public static ConnectionMultiplexer Connection
 >
 
 ### <a name="why-doesnt-azure-cache-for-redis-have-an-msdn-class-library-reference"></a>為什麼 Azure Cache for Redis 沒有 MSDN 類別庫參考？
-Microsoft Azure Cache for Redis 是以熱門的開放原始碼記憶體內部資料存放區 Redis 為基礎。 它可由各種不同的 [Redis 用戶端](https://redis.io/clients) 來存取，並適用許多程式設計語言。 每個用戶端都有自己的 API，可使用 [Redis 命令](https://redis.io/commands)對「Azure Redis 快取」執行個體發出呼叫。
+Microsoft Azure Cache for Redis 是以常用的開放原始碼記憶體內部資料存放區 Redis 為基礎。 它可由各種不同的 [Redis 用戶端](https://redis.io/clients) 來存取，並適用許多程式設計語言。 每個用戶端都有自己的 API，可使用 [Redis 命令](https://redis.io/commands)對「Azure Redis 快取」執行個體發出呼叫。
 
 因為每個用戶端都不同，所以 MSDN 上沒有一個集中式類別參考，每個用戶端都會維護其專屬的參考文件。 除了參考文件之外，還有數個教學課程，示範如何使用不同的語言和快取用戶端來開始使用「Azure Redis 快取」。 若要存取這些教學課程，請參閱[如何使用 Azure Cache for Redis](cache-dotnet-how-to-use-azure-redis-cache.md) 以及目錄中的同層級文章。
 
@@ -136,10 +136,10 @@ Microsoft Azure Cache for Redis 是以熱門的開放原始碼記憶體內部資
 Redis 資料庫就是相同 Redis 執行個體內的資料邏輯分隔。 所有資料庫之間會共用快取記憶體，給定資料庫的實際記憶體耗用量取決於該資料庫中儲存的索引鍵/值。 例如，假設 C6 快取有 53 GB 的記憶體，而 P5 有 120 GB。 您可以選擇將 53 GB / 120 GB 全部放入一個資料庫，或分割給多個資料庫。 
 
 > [!NOTE]
-> 使用已啟用叢集功能的「進階 Azure Redis 快取」時，只有資料庫 0 可供使用。 這項限制是固有的 Redis 限制，並非特別針對「Azure Redis 快取」。 如需詳細資訊，請參閱 [我需要對我的用戶端應用程式進行任何變更才能使用叢集嗎？](cache-how-to-premium-clustering.md#do-i-need-to-make-any-changes-to-my-client-application-to-use-clustering)。
+> 使用已啟用叢集功能的「進階 Azure Redis 快取」時，只有資料庫 0 可供使用。 這項限制是固有的 Redis 限制，並非特別針對「Azure Redis 快取」。 如需詳細資訊，請參閱 [我是否需要對我的用戶端應用程式進行任何變更，才能使用群集？](cache-how-to-premium-clustering.md#do-i-need-to-make-any-changes-to-my-client-application-to-use-clustering)。
 > 
 > 
 
 ## <a name="next-steps"></a>後續步驟
 
-深入瞭解其他 [Azure Cache For Redis 常見問題](cache-faq.md)。
+瞭解其他 [Azure Cache for Redis 常見問題](cache-faq.md)。

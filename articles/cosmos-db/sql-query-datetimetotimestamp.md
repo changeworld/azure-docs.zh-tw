@@ -8,10 +8,10 @@ ms.date: 08/18/2020
 ms.author: tisande
 ms.custom: query-reference
 ms.openlocfilehash: 673e6a8cb86986ff24e3ee55589d13e8a9e4fdc5
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88608729"
 ---
 # <a name="datetimetotimestamp-azure-cosmos-db"></a>DateTimeToTimestamp (Azure Cosmos DB) 
@@ -29,7 +29,7 @@ DateTimeToTimestamp (<DateTime>)
 *DateTime*  
    UTC 日期和時間 ISO 8601 字串值，格式為 `YYYY-MM-DDThh:mm:ss.fffffffZ` ：
   
-  |格式|描述|
+  |[格式]|描述|
   |-|-|
   |YYYY|四位數年份|
   |MM|兩位數的月份 (01 = 一月，依此類推 ) |
@@ -67,7 +67,7 @@ SELECT DateTimeToTimestamp("2020-07-09T23:20:13.4575530Z") AS Timestamp
 ]
 ```  
 
-以下是另一個範例︰
+以下是另一個範例：
 
 ```sql
 SELECT DateTimeToTimestamp("2020-07-09") AS Timestamp
@@ -81,7 +81,7 @@ SELECT DateTimeToTimestamp("2020-07-09") AS Timestamp
 ]
 ```  
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - [日期和時間函數 Azure Cosmos DB](sql-query-date-time-functions.md)
 - [系統函數 Azure Cosmos DB](sql-query-system-functions.md)

@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bde937adba8d2469390a6cf404f6cce8c5008e87
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86144707"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-technical-deep-dive"></a>Azure Active Directory 無縫單一登入：技術性深入探討
@@ -39,15 +39,15 @@ ms.locfileid: "86144707"
 
 無縫 SSO 是使用 Azure AD Connect 所啟用，如[這裏](how-to-connect-sso-quick-start.md)所示。 啟用此功能時，會執行下列步驟：
 
--  () 的電腦帳戶，會在您的 `AZUREADSSOACC` 內部部署 Active Directory (ad) 中的每個 ad 樹系中，使用 Azure AD (進行同步處理 Azure AD Connect) 。
-- 此外，在 Azure AD 登入程式期間，會建立一些 (Spn) 的 Kerberos 服務主體名稱。
-- 電腦帳戶的 Kerberos 解密金鑰可安全地與 Azure AD 共用。 如果有多個 AD 樹系，每個電腦帳戶都會有自己唯一的 Kerberos 解密金鑰。
+- 系統會在您的 `AZUREADSSOACC` 內部部署 Active Directory 中建立電腦帳戶 () 在每個 ad 樹系中， (ad) 使用 Azure AD (同步處理至 Azure AD Connect) 。
+- 此外，在 Azure AD 登入程式期間，會建立許多 (Spn) 的 Kerberos 服務主體名稱，以供使用。
+- 電腦帳戶的 Kerberos 解密金鑰可安全地與 Azure AD 共用。 如果有多個 AD 樹系，每個電腦帳戶將會有自己唯一的 Kerberos 解密金鑰。
 
 >[!IMPORTANT]
-> 基於 `AZUREADSSOACC` 安全考慮，電腦帳戶必須受到嚴格的保護。 只有網域系統管理員才能夠管理電腦帳戶。 請確定已停用電腦帳戶上的 Kerberos 委派，而且 Active Directory 中的其他帳戶都具有電腦帳戶的委派許可權 `AZUREADSSOACC` 。 將電腦帳戶儲存在組織單位 (OU) ，以防止意外刪除，而且只有網域系統管理員才有存取權。 電腦帳戶上的 Kerberos 解密金鑰也應該被視為機密。 強烈建議您至少每隔 30 天變換一次 `AZUREADSSOACC` 電腦帳戶的 [Kerberos 解密金鑰](how-to-connect-sso-faq.md)。
+> 基於 `AZUREADSSOACC` 安全性考慮，電腦帳戶需要高度保護。 只有 Domain Admins 才能管理電腦帳戶。 請確定已停用電腦帳戶上的 Kerberos 委派，且 Active Directory 中沒有其他帳戶擁有電腦帳戶的委派許可權 `AZUREADSSOACC` 。 將電腦帳戶儲存在組織單位中， (OU) 安全地避免意外刪除，以及只有網域系統管理員才有存取權。 電腦帳戶上的 Kerberos 解密金鑰也應視為機密。 強烈建議您至少每隔 30 天變換一次 `AZUREADSSOACC` 電腦帳戶的 [Kerberos 解密金鑰](how-to-connect-sso-faq.md)。
 
 >[!IMPORTANT]
-> 無縫 SSO 支援適用于 Kerberos 的 AES256_HMAC_SHA1、AES128_HMAC_SHA1 和 RC4_HMAC_MD5 加密類型。 建議將 AzureADSSOAcc $ 帳戶的加密類型設定為 AES256_HMAC_SHA1，或其中一個 AES 類型與 RC4，以提高安全性。 加密類型會儲存在 Active Directory 中帳戶的 Msds-supportedencryptiontypes 屬性上。  如果 [AzureADSSOAcc $ 帳戶加密類型] 設定為 [RC4_HMAC_MD5]，而您想要將它變更為其中一個 AES 加密類型，請務必先變換 AzureADSSOAcc $ 帳戶的 Kerberos 解密金鑰，如相關問題的[常見問題檔](how-to-connect-sso-faq.md)中所述，否則不會發生無縫 SSO。
+> 無縫 SSO 支援 Kerberos 的 AES256_HMAC_SHA1、AES128_HMAC_SHA1 和 RC4_HMAC_MD5 加密類型。 建議將 AzureADSSOAcc $ 帳戶的加密類型設定為 AES256_HMAC_SHA1，或使用其中一個 AES 類型與 RC4 來增加安全性。 加密類型會儲存在 Active Directory 中帳戶的 >msds-supportedencryptiontypes 屬性上。  如果 [AzureADSSOAcc $ 帳戶加密類型] 設定為 [RC4_HMAC_MD5]，而您想要將其變更為其中一個 AES 加密類型，請務必先變換 AzureADSSOAcc $ 帳戶的 Kerberos 解密金鑰，如相關問題的 [常見問題檔](how-to-connect-sso-faq.md) 所述，否則不會發生無縫 SSO。
 
 設定完成之後，無縫 SSO 登入的運作方式與其他任何使用整合式 Windows 驗證 (IWA) 的登入相同。
 

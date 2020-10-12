@@ -12,10 +12,10 @@ ms.date: 07/27/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
 ms.openlocfilehash: 262c3a7c8a668ef25d092b5d523743e0ece89cc3
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88641138"
 ---
 # <a name="using-azure-ad-for-applications-not-listed-in-the-app-gallery"></a>針對未列在應用程式庫中的應用程式使用 Azure AD
@@ -35,7 +35,7 @@ ms.locfileid: "88641138"
 
 如果您要尋找有關如何整合自訂應用程式與 Azure AD 的開發人員指引，請參閱 [Azure AD 的驗證案例](../develop/authentication-scenarios.md)。 當您開發一個使用新式通訊協定 (例如 [OpenId Connect/OAuth](../develop/active-directory-v2-protocols.md)) 的應用程式來驗證使用者時，可以使用 Azure 入口網站中的[應用程式註冊](../develop/quickstart-register-app.md)體驗，向 Microsoft 身分識別平台進行註冊。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - [應用程式管理的快速入門系列](view-applications-portal.md)
 

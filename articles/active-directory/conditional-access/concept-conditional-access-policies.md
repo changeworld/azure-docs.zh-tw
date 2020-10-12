@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 36ab632010ec2bbbc19ac71cbeccab2ff6b3565f
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88948380"
 ---
 # <a name="building-a-conditional-access-policy"></a>建立條件式存取原則
@@ -26,7 +26,7 @@ ms.locfileid: "88948380"
 
 ![條件式存取 (信號 + 決策 + 強制 = 原則) ](./media/concept-conditional-access-policies/conditional-access-signal-decision-enforcement.png)
 
-## <a name="assignments"></a>指派
+## <a name="assignments"></a>作業
 
 指派部分可控制條件式存取原則的使用者、內容和位置。
 
@@ -115,7 +115,7 @@ Grant 控制項可以觸發一或多個控制項的強制執行。
 條件式存取原則必須至少包含下列各項才能強制執行：
 
 - 原則的**名稱**。
-- **指派**
+- **作業**
    - 要套用原則的**使用者和/或群組**。
    - 要套用原則的**雲端應用程式或動作**。
 - **存取控制**

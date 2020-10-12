@@ -1,20 +1,20 @@
 ---
 title: 部署已啟用 GPU 的容器實例
-description: 瞭解如何部署 Azure 容器實例，以使用 GPU 資源來執行計算密集型容器應用程式。
+description: 瞭解如何部署 Azure 容器實例，以使用 GPU 資源來執行需要大量計算的容器應用程式。
 ms.topic: article
 ms.date: 07/22/2020
 ms.openlocfilehash: 19240560baa0cebdb6777d7b63d8c91832b12e1a
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87387079"
 ---
 # <a name="deploy-container-instances-that-use-gpu-resources"></a>部署使用 GPU 資源的容器執行個體
 
-若要在 Azure 容器實例上執行某些計算密集型工作負載，請部署具有*GPU 資源*的[容器群組](container-instances-container-groups.md)。 群組中的容器執行個體可以存取一或多個 NVIDIA Tesla GPU，同時執行容器工作負載，例如 CUDA 和深度學習應用程式。
+若要在 Azure 容器實例上執行某些需要大量計算的工作負載，請使用*GPU 資源*部署[容器群組](container-instances-container-groups.md)。 群組中的容器執行個體可以存取一或多個 NVIDIA Tesla GPU，同時執行容器工作負載，例如 CUDA 和深度學習應用程式。
 
-本文說明當您使用[YAML](container-instances-multi-container-yaml.md)檔或[Resource Manager 範本](container-instances-multi-container-group.md)部署容器群組時，如何新增 GPU 資源。 當您使用 Azure 入口網站部署容器實例時，也可以指定 GPU 資源。
+本文說明如何在使用 [YAML](container-instances-multi-container-yaml.md) 檔或 [Resource Manager 範本](container-instances-multi-container-group.md)部署容器群組時，新增 GPU 資源。 當您使用 Azure 入口網站部署容器實例時，也可以指定 GPU 資源。
 
 > [!IMPORTANT]
 > 此功能目前在預覽階段，但[有某些限制](#preview-limitations)。 若您同意[補充的使用規定][terms-of-use]即可取得預覽。 在公開上市 (GA) 之前，此功能的某些領域可能會變更。
@@ -29,7 +29,7 @@ ms.locfileid: "87387079"
 
 **支援的 OS 類型**：僅限 Linux
 
-**其他限制**：將容器群組部署至[虛擬網路](container-instances-vnet.md)時，無法使用 GPU 資源。
+**其他限制**：將容器群組部署至 [虛擬網路](container-instances-vnet.md)時，無法使用 GPU 資源。
 
 ## <a name="about-gpu-resources"></a>關於 GPU 資源
 
@@ -37,8 +37,8 @@ ms.locfileid: "87387079"
 
 若要在容器執行個體中使用 GPU，請使用下列資訊來指定「GPU 資源」**：
 
-* **計數**-gpu 數目： **1**、 **2**或**4**。
-* **SKU** -GPU Sku： **K80**、 **P100**或**V100**。 每個 SKU 都對應到下列其中一個啟用 GPU 的 Azure VM 系列的 NVIDIA Tesla GPU：
+* **計數** -gpu 數目： **1**、 **2**或 **4**。
+* **SKU** -GPU SKU： **K80**、 **P100**或 **V100**。 每個 SKU 都對應到下列其中一個啟用 GPU 的 Azure VM 系列的 NVIDIA Tesla GPU：
 
   | SKU | VM 系列 |
   | --- | --- |
@@ -48,10 +48,10 @@ ms.locfileid: "87387079"
 
 [!INCLUDE [container-instances-gpu-limits](../../includes/container-instances-gpu-limits.md)]
 
-部署 GPU 資源時，請設定適用于工作負載的 CPU 和記憶體資源，最多可達上表所示的最大值。 這些值目前大於沒有 GPU 資源的容器群組中可用的 CPU 和記憶體資源。  
+部署 GPU 資源時，請設定適用于工作負載的 CPU 和記憶體資源，最多可達上表所顯示的最大值。 這些值目前大於沒有 GPU 資源的容器群組中可用的 CPU 和記憶體資源。  
 
 > [!IMPORTANT]
-> GPU 資源的預設訂用帳戶[限制](container-instances-quotas.md)（配額）會因 SKU 而有所不同。 P100 和 V100 Sku 的預設 CPU 限制一開始會設定為0。 若要要求增加可用的區域，請提交[Azure 支援要求][azure-support]。
+> 預設 [訂](container-instances-quotas.md) 用帳戶限制 (針對 GPU 資源) 的配額會因 SKU 而有所不同。 P100 和 V100 Sku 的預設 CPU 限制一開始會設定為0。 若要要求增加可用的區域，請提交 [Azure 支援要求][azure-support]。
 
 ### <a name="things-to-know"></a>須知事項
 
@@ -63,7 +63,7 @@ ms.locfileid: "87387079"
 
 * **CUDA 驅動程式** - 含 GPU 資源的容器執行個體已預先佈建 NVIDIA CUDA 驅動程式和容器執行階段，因此您可以使用針對 CUDA 工作負載開發的容器映像。
 
-  我們在此階段僅支援 CUDA 9.0。 例如，您可以將下列基底映射用於 Docker 檔案：
+  我們在這個階段只支援 CUDA 9.0。 例如，您可以使用下列適用于 Docker 檔案的基底映射：
   * [nvidia/cuda： 9.0-base-ubuntu 16.04](https://hub.docker.com/r/nvidia/cuda/)
   * [tensorflow/tensorflow： 1.12.0-gpu-py3](https://hub.docker.com/r/tensorflow/tensorflow)
     
@@ -91,7 +91,7 @@ properties:
   restartPolicy: OnFailure
 ```
 
-使用[az container create][az-container-create]命令來部署容器群組，並指定參數的 YAML 檔案名 `--file` 。 您需要提供資源群組的名稱和容器群組的位置，例如支援 GPU 資源的 *eastus*。  
+使用 [az container create][az-container-create] 命令部署容器群組，並指定參數的 YAML 檔名稱 `--file` 。 您需要提供資源群組的名稱和容器群組的位置，例如支援 GPU 資源的 *eastus*。  
 
 ```azurecli
 az container create --resource-group myResourceGroup --file gpu-deploy-aci.yaml --location eastus
@@ -116,7 +116,7 @@ Done
 
 ## <a name="resource-manager-template-example"></a>Resource Manager 範本範例
 
-部署包含 GPU 資源之容器群組的另一個方式是使用 [Resource Manager 範本](container-instances-multi-container-group.md)。 由建立名為 `gpudeploy.json` 的檔案開始，並將下列 JSON 複製到該檔案中。 這個範例會部署容器實例，其 V100 GPU 會針對 MNIST 資料集執行[TensorFlow](https://www.tensorflow.org/)定型作業。 資源要求足以執行工作負載。
+部署包含 GPU 資源之容器群組的另一個方式是使用 [Resource Manager 範本](container-instances-multi-container-group.md)。 由建立名為 `gpudeploy.json` 的檔案開始，並將下列 JSON 複製到該檔案中。 此範例會使用 V100 GPU 部署容器實例，以針對 MNIST 資料集執行 [TensorFlow](https://www.tensorflow.org/) 訓練作業。 資源要求足以執行工作負載。
 
 ```JSON
 {
@@ -168,7 +168,7 @@ Done
 }
 ```
 
-使用[az deployment group create][az-deployment-group-create]命令來部署範本。 您需要提供資源群組的名稱，且該資源群組需要是建立在支援 GPU 資源的區域 (如 *eastus*)。
+使用 [az deployment group create][az-deployment-group-create] 命令部署範本。 您需要提供資源群組的名稱，且該資源群組需要是建立在支援 GPU 資源的區域 (如 *eastus*)。
 
 ```azurecli-interactive
 az deployment group create --resource-group myResourceGroup --template-file gpudeploy.json
@@ -209,7 +209,7 @@ Adding run metadata for 999
 
 ## <a name="clean-up-resources"></a>清除資源
 
-因為使用 GPU 資源很昂貴，所以請確保您的容器不會非預期地長時間執行。 您可以在 Azure 入口網站中監視您的容器，或使用 [az container show][az-container-show] 命令來檢查容器群組的狀態。 例如︰
+因為使用 GPU 資源很昂貴，所以請確保您的容器不會非預期地長時間執行。 您可以在 Azure 入口網站中監視您的容器，或使用 [az container show][az-container-show] 命令來檢查容器群組的狀態。 例如：
 
 ```azurecli
 az container show --resource-group myResourceGroup --name gpucontainergroup --output table

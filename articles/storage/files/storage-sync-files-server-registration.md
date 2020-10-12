@@ -8,10 +8,10 @@ ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: c457dacd947c7af8a6be94205ed135ce04a49a06
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85509501"
 ---
 # <a name="manage-registered-servers-with-azure-file-sync"></a>使用 Azure 檔案同步管理已註冊的伺服器
@@ -22,7 +22,7 @@ Azure 檔案同步可讓您將組織的檔案共用集中在「Azure 檔案服�
 ## <a name="registerunregister-a-server-with-storage-sync-service"></a>使用儲存體同步服務來註冊/取消註冊伺服器
 使用 Azure 檔案同步來註冊伺服器可在 Windows Server 與 Azure 之間建立信任關係。 此關係可用來在伺服器上建立伺服器端點**，其代表應與 Azure 檔案共用 (也稱為雲端端點**) 同步的特定資料夾。 
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>Prerequisites
 若要使用儲存體同步服務來註冊伺服器，您必須先準備好符合下列必要條件的伺服器：
 
 * 伺服器必須執行支援的 Windows 版本。 如需詳細資訊，請參閱 [Azure 檔案同步系統需求和互通性](storage-sync-files-planning.md#windows-file-server-considerations)。
@@ -143,7 +143,7 @@ Get-AzStorageSyncGroup -ResourceGroupName $resourceGroup -StorageSyncServiceName
 #### <a name="unregister-the-server"></a>取消註冊伺服器
 回收所有資料並從所有同步群組移除伺服器之後，即可將伺服器取消註冊。 
 
-1. 在 [Azure 入口網站中，流覽至儲存體同步服務的 [*已註冊的伺服器*] 區段。
+1. 在 Azure 入口網站中，流覽至儲存體同步服務的 [ *已註冊的伺服器* ] 區段。
 2. 以滑鼠右鍵按一下您要取消註冊的伺服器，然後按一下 [取消註冊伺服器]。
 
     ![將伺服器取消註冊](media/storage-sync-files-server-registration/unregister-server-1.png)

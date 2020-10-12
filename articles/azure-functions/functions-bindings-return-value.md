@@ -1,5 +1,5 @@
 ---
-title: 使用來自 Azure 函式的傳回值
+title: 使用 Azure 函式的傳回值
 description: 瞭解如何管理 Azure Functions 的傳回值
 author: craigshoemaker
 ms.topic: reference
@@ -7,20 +7,20 @@ ms.custom: devx-track-csharp
 ms.date: 01/14/2019
 ms.author: cshoe
 ms.openlocfilehash: 1dd9fabbe235e45290e607f861b67466d33319ce
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88212168"
 ---
 # <a name="using-the-azure-function-return-value"></a>使用 Azure 函數傳回值
 
 本文說明傳回值在函式內的運作方式。
 
-在具有傳回值的語言中，您可以將函式 [輸出](./functions-triggers-bindings.md#binding-direction) 系結系結至傳回值：
+在具有傳回值的語言中，您可以將函數 [輸出](./functions-triggers-bindings.md#binding-direction) 系結系結至傳回值：
 
 * 在 C# 類別庫中，將輸出繫結屬性套用至方法傳回值。
-* 在 JAVA 中，將輸出系結注釋套用至函式方法。
+* 在 JAVA 中，將輸出系結注釋套用至函數方法。
 * 在其他語言中，將 function.json** 中的 `name` 屬性設定為 `$return`。
 
 如果有多個輸出繫結，請只對其中一個使用傳回值。
