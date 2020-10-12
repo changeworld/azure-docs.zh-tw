@@ -1,7 +1,7 @@
 ---
 title: 測試和重塑模型 - 自訂視覺服務
 titleSuffix: Azure Cognitive Services
-description: 本文將說明如何測試影像，然後使用它來重新定型您在自訂視覺服務中的模型。
+description: 本文將示範如何測試映射，然後使用它來重新定型自訂視覺服務中的模型。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: pafarley
 ms.openlocfilehash: 5a3aacd1d07ff068fe50312b2c1d47ac080e5c2c
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85391718"
 ---
 # <a name="test-and-retrain-a-model-with-custom-vision-service"></a>使用自訂視覺服務測試和重塑模型
@@ -35,7 +35,7 @@ ms.locfileid: "85391718"
 
 您現在可以將這個測試影像新增到模型，然後重塑模型。
 
-## <a name="use-the-predicted-image-for-training"></a>使用預測的映射進行定型
+## <a name="use-the-predicted-image-for-training"></a>使用預測的影像進行訓練
 
 若要使用先前送出的影像來定型，請使用下列步驟：
 
@@ -57,6 +57,6 @@ ms.locfileid: "85391718"
 
 3. 使用 [定型]____ 按鈕來重塑分類器。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 [改善您的分類器](getting-started-improving-your-classifier.md)

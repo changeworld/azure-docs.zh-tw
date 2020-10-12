@@ -1,15 +1,15 @@
 ---
 title: Microsoft.common.optionsgroup UI 元素
-description: 描述 Azure 入口網站的 Microsoft.Common.OptionsGroup UI 元素。 可讓使用者在部署受控應用程式時，從可用的選項中選取。
+description: 描述 Azure 入口網站的 Microsoft.Common.OptionsGroup UI 元素。 可讓使用者在部署受控應用程式時，從可用的選項中進行選取。
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 07/09/2020
 ms.author: tomfitz
 ms.openlocfilehash: aa73b4cbded98291a14792a7151df9fdfb885b53
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87004180"
 ---
 # <a name="microsoftcommonoptionsgroup-ui-element"></a>Microsoft.Common.OptionsGroup UI 元素
@@ -17,7 +17,7 @@ ms.locfileid: "87004180"
 Microsoft.common.optionsgroup 控制項可讓使用者從兩個或多個選項中選取一個選項。 使用者只能選取一個選項。
 
 > [!NOTE]
-> 在過去，此控制項會水準呈現選項。 現在，控制項會將選項垂直呈現為選項按鈕。
+> 在過去，此控制項會水準呈現選項。 現在，控制項會以選項按鈕的形式垂直呈現選項。
 
 ## <a name="ui-sample"></a>UI 範例
 

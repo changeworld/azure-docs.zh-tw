@@ -11,21 +11,21 @@ ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 05/08/2018
 ms.openlocfilehash: 1cb0c5094d49eac5a1c8f63406a28d2927d8fa94
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "79477318"
 ---
 # <a name="store-access-credentials-securely-on-an-azure-data-science-virtual-machine"></a>在 Azure 資料科學虛擬機器上安全地儲存存取認證
 
-雲端應用程式中的程式碼通常會包含驗證雲端服務所需的認證。 如何管理和保護這些認證，是建立雲端應用程式的知名挑戰。 在理想情況下，認證應該永遠不會出現在開發人員工作站上，或簽入原始檔控制。
+雲端應用程式中的程式碼通常會包含用來向雲端服務進行驗證的認證。 如何管理和保護這些認證是建立雲端應用程式的知名挑戰。 在理想情況下，認證絕對不應該出現在開發人員工作站上，也不會簽入原始檔控制。
 
-[適用于 azure 資源的受控](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview)識別功能可讓 azure 服務在 Azure Active Directory （Azure AD）中自動受管理，以簡化解決此問題。 您可以使用此身分識別來向任何支援 Azure AD 驗證的服務進行驗證，不需要任何您程式碼中的認證。
+[適用于 azure 資源的受控](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview)識別功能可在 Azure Active Directory (Azure AD) 中為 azure 服務提供自動管理的身分識別，藉此更輕鬆地解決此問題。 您可以使用此身分識別來向任何支援 Azure AD 驗證的服務進行驗證，不需要任何您程式碼中的認證。
 
-保護認證的其中一種方式是使用 Windows Installer （MSI）搭配[Azure Key Vault](https://docs.microsoft.com/azure/key-vault/)，這是受控的 Azure 服務，可安全地儲存秘密和密碼編譯金鑰。 您可以使用受控識別來存取金鑰保存庫，然後從金鑰保存庫中取出已授權的秘密和密碼編譯金鑰。
+保護認證的其中一種方式是使用 Windows Installer (MSI) 搭配 [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/)的受控 Azure 服務，以安全地儲存秘密和密碼編譯金鑰。 您可以使用受控識別來存取金鑰保存庫，然後從金鑰保存庫中取出授權的密碼和密碼編譯金鑰。
 
-有關 Azure 資源的受控識別和 Key Vault 的檔包含完整的資源，可取得這些服務的深入資訊。 本文的其餘部分逐步介紹資料科學虛擬機器 (DSVM) 上 MSI 和 Key Vault 的基本使用，以便存取 Azure 資源。 
+適用于 Azure 資源的受控識別和 Key Vault 的相關檔包含完整的資源，以取得這些服務的深入資訊。 本文的其餘部分逐步介紹資料科學虛擬機器 (DSVM) 上 MSI 和 Key Vault 的基本使用，以便存取 Azure 資源。 
 
 ## <a name="create-a-managed-identity-on-the-dsvm"></a>在 DSVM 上建立受控身分識別
 

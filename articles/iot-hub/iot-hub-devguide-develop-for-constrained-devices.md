@@ -1,5 +1,5 @@
 ---
-title: 使用 IoT 中樞 C SDK Azure IoT 中樞開發受限裝置
+title: 使用 IoT 中樞 C SDK 進行受限裝置的 Azure IoT 中樞開發
 description: 開發人員指南 - 有關如何使用 Azure IoT SDK 開發受限裝置的指引。
 author: robinsh
 ms.service: iot-hub
@@ -11,17 +11,17 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 9010ff582f05e81e17e280e20f180ceccf0e746f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81733193"
 ---
 # <a name="develop-for-constrained-devices-using-azure-iot-c-sdk"></a>使用 Azure IoT C SDK 開發受限裝置
 
 Azure IoT 中樞 C SDK 是以 ANSI C (C99) 撰寫，非常適合於操作具有少量磁碟和記憶體使用量的各種平台。 建議的 RAM 至少為 64 KB，但確切的記憶體使用量取決於所用的通訊協定、開啟的連線數目，以及設為目標的平台。
 > [!NOTE]
-> * Azure IoT C SDK 會定期發佈資源耗用量資訊，以協助進行開發。  請造訪我們的[GitHub 存放庫](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/c_sdk_resource_information.md)，並查看最新的基準測試。
+> * Azure IoT C SDK 會定期發佈資源耗用量資訊，以協助進行開發。  請流覽我們的 [GitHub 存放庫](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/c_sdk_resource_information.md) ，並查看最新的基準測試。
 >
 
 C SDK 是以 apt-get、NuGet 和 MBED 的套件形式提供。 若要以受限裝置為目標，您可以在本機為您的目標平台建置 SDK。 本文件會示範如何使用 [cmake](https://cmake.org/) 來移除特定功能，以縮減 C SDK 的使用量。 此外，本文件會討論適用於受限裝置的最佳做法程式設計模型。
@@ -30,7 +30,7 @@ C SDK 是以 apt-get、NuGet 和 MBED 的套件形式提供。 若要以受限�
 
 為受限裝置建置 C SDK。
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>Prerequisites
 
 遵循此 [C SDK 設定指南](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md)，準備您的開發環境以供建置 C SDK。 在您開始進行使用 cmake 建置的步驟之前，您可以叫用 cmake 旗標來移除未使用的功能。
 
@@ -74,7 +74,7 @@ strip -s <Path_to_executable>
 
 ### <a name="avoid-using-the-serializer"></a>避免使用序列化程式
 
-C SDK 具有選用 [C SDK 序列化程式](https://github.com/Azure/azure-iot-sdk-c/tree/master/serializer)，可讓您使用宣告式對應資料表來定義方法和裝置對應項屬性。 此序列化程式設計用來簡化開發作業，但是會增加額外負荷，所以不是受限裝置的最佳選擇。 在此情況下，請考慮使用基本用戶端 Api，並使用輕量分析程式（例如[parson](https://github.com/kgabis/parson)）來剖析 JSON。
+C SDK 具有選用 [C SDK 序列化程式](https://github.com/Azure/azure-iot-sdk-c/tree/master/serializer)，可讓您使用宣告式對應資料表來定義方法和裝置對應項屬性。 此序列化程式設計用來簡化開發作業，但是會增加額外負荷，所以不是受限裝置的最佳選擇。 在此情況下，請考慮使用基本用戶端 Api，並使用輕量剖析器（例如 [parson](https://github.com/kgabis/parson)）來剖析 JSON。
 
 ### <a name="use-the-lower-layer-_ll_"></a>使用較低層級 (_LL_)
 
@@ -82,7 +82,7 @@ C SDK 支援兩種程式設計模型。 一組具有 _LL_ 中置詞 (代表較�
 
 另一組不具 _LL_ 索引的 API 稱為方便層，背景工作執行緒會在其中自動啟動。 例如，在此 [IoT 裝置用戶端標頭檔](https://github.com/Azure/azure-iot-sdk-c/blob/master/iothub_client/inc/iothub_device_client.h)中可以找到裝置用戶端的方便層 API。 對於每個額外執行緒可能都需使用大量系統資源的受限裝置，請考慮使用 _LL_ API。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 若要深入了解 Azure IoT C SDK 架構：
 -    [Azure IoT C SDK 原始程式碼](https://github.com/Azure/azure-iot-sdk-c/)

@@ -1,7 +1,7 @@
 ---
-title: REST API 宣告交換為驗證
+title: REST API 宣告交換作為驗證
 titleSuffix: Azure AD B2C
-description: 建立與 RESTful 服務互動之 Azure AD B2C 使用者旅程的逐步解說。
+description: 建立與 RESTful 服務互動之 Azure AD B2C 使用者旅程圖的逐步解說。
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,21 +12,21 @@ ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 6381f678979437fdfc10d2ea63a79ed347183e92
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85388913"
 ---
-# <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-to-validate-user-input"></a>逐步解說：在您的 Azure AD B2C 使用者旅程圖中整合 REST API 宣告交換，以驗證使用者輸入
+# <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-to-validate-user-input"></a>逐步解說：將 REST API 宣告交換整合到 Azure AD B2C 使用者旅程圖中，以驗證使用者輸入
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-能支援 Azure Active Directory B2C （Azure AD B2C）的 Identity Experience Framework （IEF）可讓身分識別開發人員在使用者旅程圖中整合與 RESTful API 的互動。  在本逐步解說結束時，您將能夠建立與[RESTful 服務](custom-policy-rest-api-intro.md)互動的 Azure AD B2C 使用者旅程圖，以驗證使用者輸入。
+支撐 Azure Active Directory B2C (Azure AD B2C) 的 Identity Experience Framework (IEF) 讓身分識別開發人員能夠在使用者旅程圖中整合與 RESTful API 的互動。  在本逐步解說結束時，您將能夠建立與 [RESTful 服務](custom-policy-rest-api-intro.md) 互動的 Azure AD B2C 使用者旅程圖，以驗證使用者輸入。
 
-在此案例中，我們會新增使用者在 Azure AD B2C 註冊頁面中輸入忠誠度號碼的功能。 我們會藉由將此資料傳送至 REST API，驗證此電子郵件和忠誠度號碼的組合是否對應至促銷代碼。 如果 REST API 找到此使用者的促銷代碼，則會傳回 Azure AD B2C。 最後，將會在權杖宣告中插入促銷代碼，以供應用程式使用。
+在此案例中，我們將新增使用者在 Azure AD B2C 註冊頁面中輸入忠誠度號碼的能力。 我們會將此資料傳送給 REST API，以驗證電子郵件和忠誠度號碼的組合是否會對應到促銷代碼。 如果 REST API 找到此使用者的促銷代碼，則會傳回 Azure AD B2C。 最後，將會在權杖宣告中插入促銷代碼，讓應用程式使用。
 
-您也可以將互動設計為協調流程步驟。 這適用于當 REST API 不會在螢幕上驗證資料，而且一律會傳回宣告。 如需詳細資訊，請參閱[逐步解說︰將 REST API 宣告交換整合到 Azure AD B2C 使用者旅程圖中以作為協調流程步驟](custom-policy-rest-api-claims-exchange.md)。
+您也可以將互動設計為協調流程步驟。 當 REST API 不會驗證螢幕上的資料，而且一律會傳回宣告時，就適合這種情況。 如需詳細資訊，請參閱[逐步解說︰將 REST API 宣告交換整合到 Azure AD B2C 使用者旅程圖中以作為協調流程步驟](custom-policy-rest-api-claims-exchange.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -35,7 +35,7 @@ ms.locfileid: "85388913"
 
 ## <a name="prepare-a-rest-api-endpoint"></a>準備 REST API 端點
 
-在此逐步解說中，您應該要有一個 REST API，以驗證是否已在後端系統中以忠誠度識別碼註冊電子郵件地址。 若已註冊，REST API 應該會傳回註冊促銷代碼，供客戶用來在您的應用程式中購買商品。 否則，REST API 應該會傳回 HTTP 409 錯誤訊息：「忠誠度 ID ' {忠誠度 ID} ' 未與 ' {email} ' 電子郵件地址相關聯」。
+在這個逐步解說中，您應該有一個 REST API，可驗證是否已在您的後端系統中，以忠誠度識別碼註冊電子郵件地址。 如果已註冊，REST API 應該會傳回註冊促銷代碼，讓客戶可以用來在您的應用程式中購買商品。 否則，REST API 應該會傳回 HTTP 409 錯誤訊息：「忠誠度識別碼 ' {忠誠度 ID} ' 與 ' {email} ' 電子郵件地址沒有關聯」。
 
 下列 JSON 程式碼會說明 Azure AD B2C 將傳送至您 REST API 端點的資料。 
 
@@ -55,7 +55,7 @@ ms.locfileid: "85388913"
 }
 ```
 
-如果驗證失敗，REST API 必須使用 JSON 元素傳回 HTTP 409 （衝突） `userMessage` 。 IEF 預期 REST API 傳回的宣告 `userMessage` 。 如果驗證失敗，此宣告會以字串形式呈現給使用者。
+如果驗證失敗，則 REST API 必須傳回具有 JSON 元素的 HTTP 409 (衝突) `userMessage` 。 IEF 預期 REST API 傳回的宣告 `userMessage` 。 如果驗證失敗，此宣告會以字串的形式呈現給使用者。
 
 ```json
 {
@@ -95,7 +95,7 @@ REST API 端點的設定不在本文討論範圍內。 我們已建立 [Azure Fu
 
 ## <a name="configure-the-restful-api-technical-profile"></a>設定 RESTful API 技術設定檔 
 
-[Restful 技術設定檔](restful-technical-profile.md)提供與您自己的 Restful 服務互動的支援。 Azure AD B2C 會在 `InputClaims` 集合中將資料傳送至 RESTful 服務，並在 `OutputClaims` 集合中接收回資料。 尋找**ClaimsProviders**元素，並加入新的宣告提供者，如下所示：
+[Restful 技術設定檔](restful-technical-profile.md)可支援與您自己的 Restful 服務互動。 Azure AD B2C 會在 `InputClaims` 集合中將資料傳送至 RESTful 服務，並在 `OutputClaims` 集合中接收回資料。 尋找 **claimsprovider** 元素，並加入新的宣告提供者，如下所示：
 
 ```xml
 <ClaimsProvider>
@@ -134,11 +134,11 @@ REST API 端點的設定不在本文討論範圍內。 我們已建立 [Azure Fu
 
 ## <a name="validate-the-user-input"></a>驗證使用者輸入
 
-若要在註冊期間取得使用者的忠誠度號碼，您必須允許使用者在畫面上輸入此資料。 將**loyaltyId**輸出宣告新增至現有的註冊技術設定檔區段的元素，以將其新增至註冊頁面 `OutputClaims` 。 指定輸出宣告的完整清單，以控制宣告呈現在螢幕上的順序。  
+若要在註冊期間取得使用者的忠誠度號碼，您必須允許使用者在畫面上輸入此資料。 將 **loyaltyId** 輸出宣告新增至現有的註冊技術設定檔區段的元素，以將其新增至註冊頁面 `OutputClaims` 。 指定輸出宣告的完整清單，以控制宣告在螢幕上的顯示順序。  
 
-將驗證技術設定檔參考新增至註冊技術設定檔，以呼叫 `REST-ValidateProfile` 。 新的驗證技術設定檔會新增至 `<ValidationTechnicalProfiles>` 基底原則中定義之集合的頂端。 這種行為表示，只有在成功驗證之後，Azure AD B2C 會繼續在目錄中建立帳戶。   
+將驗證技術設定檔參考新增至註冊技術設定檔，其會呼叫 `REST-ValidateProfile` 。 新的驗證技術設定檔會新增至 `<ValidationTechnicalProfiles>` 基底原則中定義的集合頂端。 此行為表示，只有在成功驗證之後，Azure AD B2C 移至在目錄中建立帳戶。   
 
-1. 尋找 **ClaimsProviders** 元素。 加入新的宣告提供者，如下所示：
+1. 尋找 **ClaimsProviders** 元素。 新增宣告提供者，如下所示：
 
     ```xml
     <ClaimsProvider>
@@ -192,7 +192,7 @@ REST API 端點的設定不在本文討論範圍內。 我們已建立 [Azure Fu
 
 ## <a name="include-a-claim-in-the-token"></a>在權杖中包含宣告 
 
-若要將促銷代碼宣告傳回給信賴憑證者應用程式，請將輸出宣告新增至檔案 <em>`SocialAndLocalAccounts/`**`SignUpOrSignIn.xml`**</em> 。 輸出宣告可在使用者成功旅程後，將宣告新增至權杖，並將其傳送至應用程式。 修改 [信賴憑證者] 區段中的 [技術設定檔] 元素，將新增 `promoCode` 為輸出宣告。
+若要將促銷代碼索取傳回給信賴憑證者應用程式，請將輸出宣告新增至檔案 <em>`SocialAndLocalAccounts/`**`SignUpOrSignIn.xml`**</em> 。 輸出宣告可在成功的使用者旅程圖之後，將宣告新增至權杖，並且將會傳送至應用程式。 修改 [信賴憑證者] 區段內的技術設定檔元素，以新增 `promoCode` 作為輸出宣告。
  
 ```xml
 <RelyingParty>
@@ -221,12 +221,12 @@ REST API 端點的設定不在本文討論範圍內。 我們已建立 [Azure Fu
 1. 選取頂端功能表中的 [目錄 + 訂用帳戶] 篩選，然後選擇包含您 Azure AD 租用戶的目錄，以確定您使用的是包含 Azure AD 租用戶的目錄。
 1. 選擇 Azure 入口網站左上角的 [所有服務]，然後搜尋並選取 [應用程式註冊]。
 1. 選取 [識別體驗架構]。
-1. 選取 [**上傳自訂原則**]，然後上傳您變更的原則檔案： *TrustFrameworkExtensions.xml*，然後*SignUpOrSignin.xml*。 
+1. 選取 **[上傳自訂原則**]，然後上傳您變更的原則檔案： *TrustFrameworkExtensions.xml*，然後 *SignUpOrSignin.xml*。 
 1. 選取您上傳的註冊或登入原則，按一下 [立即執行] 按鈕。
 1. 您應該可以使用電子郵件地址註冊。
-1. 按一下 [**立即註冊**] 連結。
-1. 在 [**您的忠誠度識別碼**] 中，輸入1234，然後按一下 [**繼續**]。 此時，您應該會收到驗證錯誤訊息。
-1. 變更為另一個值，然後按一下 [**繼續**]。
+1. 按一下 [ **立即註冊** ] 連結。
+1. 在 **您的忠誠度識別碼**中輸入1234，然後按一下 [ **繼續**]。 此時，您應該會收到驗證錯誤訊息。
+1. 變更為另一個值，然後按一下 [ **繼續**]。
 1. 傳送回您的應用程式的權杖包含 `promoCode` 宣告。
 
 ```json

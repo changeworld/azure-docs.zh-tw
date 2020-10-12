@@ -7,17 +7,17 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: a502638744009fc34a7f0a27f8034b89d2c8fa26
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "79527804"
 ---
 # <a name="monitor-azure-database-for-mariadb-performance-with-query-store"></a>使用查詢存放區監視適用於 MariaDB 的 Azure 資料庫效能
 
-**適用物件：** 適用於 MariaDB 的 Azure 資料庫10。2
+**適用于：** 適用於 MariaDB 的 Azure 資料庫10。2
 
-適用于適用于 mariadb 的 Azure 資料庫中的查詢存放區功能提供一段時間追蹤查詢效能的方式。 查詢存放區可協助您快速找到執行時間最長又最耗資源的查詢，簡化效能疑難排解。 查詢存放區會自動擷取查詢的歷程記錄和執行階段統計資料，並予以保留以供您檢閱。 依時間範圍區分資料，以便查看資料庫使用模式。 所有使用者、資料庫和查詢的資料都會儲存在適用於 MariaDB 的 Azure 資料庫實例的**mysql**架構資料庫中。
+適用于適用于 mariadb 的 Azure 資料庫中的查詢存放區功能提供一種方式，可追蹤一段時間的查詢效能。 查詢存放區可協助您快速找到執行時間最長又最耗資源的查詢，簡化效能疑難排解。 查詢存放區會自動擷取查詢的歷程記錄和執行階段統計資料，並予以保留以供您檢閱。 依時間範圍區分資料，以便查看資料庫使用模式。 所有使用者、資料庫和查詢的資料會儲存在適用於 MariaDB 的 Azure 資料庫實例的 **mysql** 架構資料庫中。
 
 ## <a name="common-scenarios-for-using-query-store"></a>使用查詢存放區的常見案例
 
@@ -33,7 +33,7 @@ ms.locfileid: "79527804"
 
 ### <a name="enable-query-store-using-the-azure-portal"></a>使用 Azure 入口網站啟用查詢存放區
 
-1. 登入 Azure 入口網站並選取您的適用於 MariaDB 的 Azure 資料庫伺服器。
+1. 登入 Azure 入口網站，然後選取您的適用於 MariaDB 的 Azure 資料庫伺服器。
 1. 在功能表的 [設定] 區段中，選取 [伺服器參數]。
 1. 搜尋 query_store_capture_mode 參數。
 1. 將值設為 [ALL]，然後**儲存**。
@@ -104,7 +104,7 @@ SELECT * FROM mysql.query_store_wait_stats;
 > [!NOTE]
 > 目前，**query_store_capture_mode** 會取代此設定，這表示 **query_store_capture_mode** 和 **query_store_wait_sampling_capture_mode** 必須啟用為 ALL，等待統計資料才能正常執行。 如果關閉 **query_store_capture_mode**，則等候統計資料也會關閉，因為等候統計資料會利用啟用的 performance_schema，以及查詢存放區所擷取的 query_text。
 
-使用[Azure 入口網站](howto-server-parameters.md)來取得或設定參數的不同值。
+使用 [Azure 入口網站](howto-server-parameters.md) 來取得或設定參數的不同值。
 
 ## <a name="views-and-functions"></a>檢視和函式
 
@@ -171,10 +171,10 @@ SELECT * FROM mysql.query_store_wait_stats;
 
 ## <a name="limitations-and-known-issues"></a>限制與已知問題
 
-- 如果適用于 mariadb 伺服器上有參數 `default_transaction_read_only` ，查詢存放區就無法捕獲資料。
+- 如果適用于 mariadb 伺服器上有參數 `default_transaction_read_only` ，查詢存放區無法捕捉資料。
 - 如果遇到長時間的 Unicode 查詢 (\> = 6000 個位元組)，查詢存放區功能可能會中斷。
 - 等候統計資料的保留期限為 24 小時。
-- 等候統計資料會使用範例 ti 來捕捉事件的一小部分。 您可以使用參數 `query_store_wait_sampling_frequency` 來修改頻率。
+- 等候統計資料會使用範例 ti 抓取一部分的事件。 您可以使用參數 `query_store_wait_sampling_frequency` 來修改頻率。
 
 ## <a name="next-steps"></a>後續步驟
 

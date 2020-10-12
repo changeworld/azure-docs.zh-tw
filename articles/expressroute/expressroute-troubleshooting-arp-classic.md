@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 ms.date: 01/30/2017
 ms.author: duau
 ms.openlocfilehash: 7c83b6d25936e184c70d4bf0a51636a3986bf4b2
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89394834"
 ---
 # <a name="getting-arp-tables-in-the-classic-deployment-model"></a>在傳統部署模型中取得 ARP 表格
@@ -176,7 +176,7 @@ Age InterfaceProperty IpAddress  MacAddress
 * 如果 Microsoft 端發生問題，您將不會看見針對對等互連顯示的 ARP 表格。
 * 向 [Microsoft Azure 說明 + 支援](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)開啟支援要求。 指出您發生第 2 層連線的問題。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 * 驗證 ExpressRoute 線路的第 3 層組態：
   * 取得路由摘要以判斷 BGP 工作階段的狀態。
   * 取得路由表以判斷哪些首碼是透過 ExpressRoute 來公告。

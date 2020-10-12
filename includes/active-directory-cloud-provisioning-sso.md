@@ -6,24 +6,24 @@ ms.topic: include
 ms.date: 10/16/2019
 ms.author: billmath
 ms.openlocfilehash: 3aa1571b46938b03f556fa124d3f0a2a70f2c5c3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "79504365"
 ---
 ## <a name="steps-to-enable-single-sign-on"></a>啟用單一登入的步驟
-雲端布建與單一登入搭配運作。  目前沒有在安裝代理程式時啟用 SSO 的選項，不過您可以使用下列步驟來啟用 SSO 並加以使用。 
+雲端布建可搭配單一登入使用。  目前沒有在安裝代理程式時啟用 SSO 的選項，不過您可以使用下列步驟來啟用 SSO 並使用它。 
 
 ### <a name="step-1-download-and-extract-azure-ad-connect-files"></a>步驟1：下載並解壓縮 Azure AD Connect 檔案
-1.  首先，下載最新版本的[Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594)
-2.  使用系統管理許可權開啟命令提示字元，並流覽至您剛才下載的 msi。
-3.  執行下列動作：`msiexec /a C:\filepath\AzureADConnect.msi /qb TARGETDIR=C:\filepath\extractfolder`
-4. 變更 filepath 和 extractfolder，以符合您的檔案路徑和解壓縮資料夾的名稱。  內容現在應該位於 [解壓縮] 資料夾中。
+1.  首先，請下載最新版本的 [Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594)
+2.  使用系統管理許可權開啟命令提示字元，然後流覽至您剛剛下載的 msi。
+3.  執行下列動作：  `msiexec /a C:\filepath\AzureADConnect.msi /qb TARGETDIR=C:\filepath\extractfolder`
+4. 變更 filepath 和 extractfolder，以符合您的檔案路徑和您的解壓縮資料夾名稱。  內容現在應該會在 [解壓縮] 資料夾中。
 
 ### <a name="step-2-import-the-seamless-sso-powershell-module"></a>步驟2：匯入無縫 SSO PowerShell 模組
 
-1. 下載並安裝[Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/overview)。
+1. 下載並安裝 [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/overview)。
 2. 瀏覽至 `%programfiles%\Microsoft Azure Active Directory Connect` 資料夾。
 3. 使用此命令匯入無縫 SSO PowerShell 模組：`Import-Module .\AzureADSSO.psd1`。
 

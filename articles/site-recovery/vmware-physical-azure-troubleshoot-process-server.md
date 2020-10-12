@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 ms.date: 09/09/2019
 ms.author: raynew
 ms.openlocfilehash: 4816b597d66aea3bbe7f834004f924b5108de939
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87499750"
 ---
 # <a name="troubleshoot-the-process-server"></a>針對處理序伺服器進行疑難排解
@@ -91,7 +91,7 @@ ms.locfileid: "87499750"
 
  初始和進行中的複寫失敗通常是來源電腦與處理序伺服器之間的連線能力問題所造成，或處理序伺服器與 Azure 之間的連線能力問題所造成。 下圖摘要說明這些步驟，接著是可協助您執行這些步驟的程序。
 
-![流程圖，顯示針對連線能力和複寫進行疑難排解的步驟。](./media/vmware-physical-azure-troubleshoot-process-server/troubleshoot-connectivity-replication.png)
+![流程圖顯示疑難排解連接和複寫的步驟。](./media/vmware-physical-azure-troubleshoot-process-server/troubleshoot-connectivity-replication.png)
 
 
 ## <a name="step-4-verify-time-sync-on-source-machine"></a>步驟 4：確認來源機器上的時間同步
@@ -170,7 +170,7 @@ ms.locfileid: "87499750"
   2. 選取 [效能] 索引標籤 > [開啟資源監視器]。
   3. 在 [資源監視器] 頁面中，選取 [網路] 索引標籤。在 [具有網路活動的處理程序] 底下，檢查 cbengine.exe 是否正主動傳送大量資料。
 
-       ![螢幕擷取畫面，其中顯示 [具有網路活動的進程] 底下的磁片區數目龐大。](./media/vmware-physical-azure-troubleshoot-process-server/cbengine.png)
+       ![螢幕擷取畫面，顯示具有網路活動之 [進程] 下的大量磁片區數目。](./media/vmware-physical-azure-troubleshoot-process-server/cbengine.png)
 
   如果 cbengine.exe 未傳送大量資料，請完成下列各節中的步驟。
 

@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
 ms.openlocfilehash: cc04a891bb32ede6c7bb72a339b728642cf343ed
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86207819"
 ---
 # <a name="use-apache-ambari-hive-view-with-apache-hadoop-in-hdinsight"></a>在 HDInsight 中搭配 Apache Hadoop 使用 Apache Ambari Hive 檢視
@@ -21,15 +21,15 @@ ms.locfileid: "86207819"
 
 了解如何使用 Apache Ambari Hive 檢視執行 Hive 查詢。 Hive 檢視可讓您從網頁瀏覽器編寫、最佳化及執行 Hive 查詢。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 HDInsight 上的 Hadoop 叢集。 請參閱[開始在 Linux 上使用 HDInsight](./apache-hadoop-linux-tutorial-get-started.md)。
 
 ## <a name="run-a-hive-query"></a>執行 HIVE 查詢
 
-1. 從 [Azure 入口網站](https://portal.azure.com/)中，選取您的叢集。  如需相關指示，請參閱[列出和顯示](../hdinsight-administer-use-portal-linux.md#showClusters)叢集。 叢集會在新的入口網站視圖中開啟。
+1. 從 [Azure 入口網站](https://portal.azure.com/)中，選取您的叢集。  如需指示，請參閱 [列出和顯示](../hdinsight-administer-use-portal-linux.md#showClusters) 叢集。 叢集會在新的入口網站視圖中開啟。
 
-1. 從叢集**儀表板**中，選取 [ **Ambari views**]。 出現驗證的提示時，請使用您在建立叢集時提供的叢集登入 (預設為 `admin`) 帳戶名稱和密碼。 您也可以 `https://CLUSTERNAME.azurehdinsight.net/#/main/views` 在瀏覽器中流覽至，其中 `CLUSTERNAME` 是您的叢集名稱。
+1. 從叢集 **儀表板**中，選取 [ **Ambari views**]。 出現驗證的提示時，請使用您在建立叢集時提供的叢集登入 (預設為 `admin`) 帳戶名稱和密碼。 您也可以 `https://CLUSTERNAME.azurehdinsight.net/#/main/views` 在瀏覽器中流覽至您 `CLUSTERNAME` 的叢集名稱。
 
 1. 從檢視清單中，選取 [Hive 檢視]____。
 
@@ -60,7 +60,7 @@ HDInsight 上的 Hadoop 叢集。 請參閱[開始在 Linux 上使用 HDInsight]
 
     這些語句會執行下列動作：
 
-    |引數 | 描述 |
+    |陳述式 | 描述 |
     |---|---|
     |DROP TABLE|刪除資料表和資料檔 (如果資料表已經存在)。|
     |CREATE EXTERNAL TABLE|在 Hive 中建立新的「外部」資料表。 外部資料表只會將資料表定義儲存在 Hive 中。 資料會留在原來的位置。|
@@ -71,7 +71,7 @@ HDInsight 上的 Hadoop 叢集。 請參閱[開始在 Linux 上使用 HDInsight]
    > [!IMPORTANT]  
    > 將 [資料庫]____ 選取項目保留為 [預設]____。 本文件中的範例使用 HDInsight 隨附的預設資料庫。
 
-1. 若要啟動查詢，請選取工作表下方的 [**執行**]。 按鈕會變成橘色，而且文字會變更為 [停止]****。
+1. 若要開始查詢，請選取工作表下方的 [ **執行** ]。 按鈕會變成橘色，而且文字會變更為 [停止]****。
 
 1. 查詢完成之後，[結果]**** 索引標籤會顯示作業的結果。 下列文字是查詢結果：
 
@@ -80,10 +80,10 @@ HDInsight 上的 Hadoop 叢集。 請參閱[開始在 Linux 上使用 HDInsight]
     [ERROR]        3
     ```
 
-    您可以使用 [**記錄**檔] 索引標籤來查看作業所建立的記錄資訊。
+    您可以使用 [ **記錄** 檔] 索引標籤來查看作業所建立的記錄資訊。
 
    > [!TIP]  
-   > 從 [**結果**] 索引標籤下的 [**動作**] 下拉對話方塊下載或儲存結果。
+   > 從 [**結果**] 索引標籤下的 [**動作**] 下拉式清單對話方塊下載或儲存結果。
 
 ### <a name="visual-explain"></a>視覺解說
 
@@ -102,19 +102,19 @@ HDInsight 上的 Hadoop 叢集。 請參閱[開始在 Linux 上使用 HDInsight]
 
 [作業]____ 索引標籤會顯示 Hive 查詢的歷程記錄。
 
-![Apache Hive 查看作業] 索引標籤歷程記錄](./media/apache-hadoop-use-hive-ambari-view/apache-hive-job-history.png)
+![Apache Hive view 作業索引標籤歷程記錄](./media/apache-hadoop-use-hive-ambari-view/apache-hive-job-history.png)
 
 ## <a name="database-tables"></a>資料庫資料表
 
 您可以使用 [資料表]____ 索引標籤，在 Hive 資料庫中使用資料表。
 
-![[Apache Hive 資料表] 索引標籤的影像](./media/apache-hadoop-use-hive-ambari-view/hdinsight-tables-tab.png)
+![Apache Hive 資料表] 索引標籤的影像](./media/apache-hadoop-use-hive-ambari-view/hdinsight-tables-tab.png)
 
 ## <a name="saved-queries"></a>儲存的查詢
 
-在 [**查詢**] 索引標籤中，您可以選擇性地儲存查詢。 儲存查詢之後，您就可以從 [儲存的查詢]____ 索引標籤重複使用它。
+在 [ **查詢** ] 索引標籤中，您可以選擇性地儲存查詢。 儲存查詢之後，您就可以從 [儲存的查詢]____ 索引標籤重複使用它。
 
-![Apache Hive views [已儲存的查詢] 索引標籤](./media/apache-hadoop-use-hive-ambari-view/ambari-saved-queries.png)
+![Apache Hive views 已儲存的查詢] 索引標籤](./media/apache-hadoop-use-hive-ambari-view/ambari-saved-queries.png)
 
 > [!TIP]  
 > 已儲存的查詢會存放在預設叢集儲存體中。 您可以路徑 `/user/<username>/hive/scripts` 下找到儲存的查詢。 這些查詢會儲存為純文字 `.hql` 檔案。
@@ -129,7 +129,7 @@ HDInsight 上的 Hadoop 叢集。 請參閱[開始在 Linux 上使用 HDInsight]
 
 ![Apache Hive view Udf] 索引標籤顯示](./media/apache-hadoop-use-hive-ambari-view/user-defined-functions.png)
 
-[**插入 udf** ] 按鈕會出現在 [**查詢編輯器**] 的底部。 此專案會顯示 Hive 視圖中所定義 Udf 的下拉式清單。 選取 UDF 會將 HiveQL 陳述式新增至查詢以啟用 UDF。
+[ **插入 udf** ] 按鈕會出現在 [ **查詢編輯器**] 的底部。 這個專案會顯示 Hive View 中定義之 Udf 的下拉式清單。 選取 UDF 會將 HiveQL 陳述式新增至查詢以啟用 UDF。
 
 例如，如果您已定義具有下列屬性的 UDF：
 
@@ -148,7 +148,7 @@ add jar /myudfs.jar;
 create temporary function myawesomeudf as 'com.myudfs.Awesome';
 ```
 
-您接著可以在查詢中使用 UDF。 例如，`SELECT myawesomeudf(name) FROM people;`。
+您接著可以在查詢中使用 UDF。 例如： `SELECT myawesomeudf(name) FROM people;` 。
 
 如需在 HDInsight 上搭配 Hive 使用 UDF 的詳細資訊，請參閱下列文章：
 
@@ -159,7 +159,7 @@ create temporary function myawesomeudf as 'com.myudfs.Awesome';
 
 您可以變更各種 Hive 設定，例如將 Hive 的執行引擎從 Tez (預設) 變更為 MapReduce。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 如需 HDInsight 中 Hive 的一般資訊：
 

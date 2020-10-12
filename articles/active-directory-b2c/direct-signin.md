@@ -11,10 +11,10 @@ ms.date: 06/18/2018
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: a9e7c537e85039675f27fa3e276b6b964ce1679b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85388590"
 ---
 # <a name="set-up-direct-sign-in-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 設定直接登入
@@ -25,7 +25,7 @@ ms.locfileid: "85388590"
 
 在登入使用者旅程圖期間，信賴憑證者應用程式可以將特定使用者或網域名稱作為目標。 以使用者作為目標時，應用程式可以在授權要求中指定 `login_hint` 查詢參數與使用者登入名稱。 Azure AD B2C 會自動填入登入名稱，使用者只需要提供密碼。
 
-![在 URL 中反白顯示 login_hint 查詢參數的 [註冊登入] 頁面](./media/direct-signin/login-hint.png)
+![在 URL 中醒目提示 login_hint query 參數的註冊登入頁面](./media/direct-signin/login-hint.png)
 
 使用者可以在登入文字方塊中變更值。
 
@@ -49,7 +49,7 @@ ms.locfileid: "85388590"
 
 如果您已將應用程式的登入旅程圖設定為包含社交帳戶 (例如 Facebook、LinkedIn 或 Google)，您可以指定 `domain_hint` 參數。 此查詢參數會向 Azure AD B2C 提供應該用於登入的社交識別提供者相關提示。 例如，如果應用程式指定 `domain_hint=facebook.com`，則登入時會直接移至 Facebook 登入頁面。
 
-![在 URL 中反白顯示 domain_hint 查詢參數的 [註冊登入] 頁面](./media/direct-signin/domain-hint.png)
+![在 URL 中醒目提示 domain_hint query 參數的註冊登入頁面](./media/direct-signin/domain-hint.png)
 
 如果您要使用自訂原則，則可以使用任何 `<ClaimsProvider>` 的 `<Domain>domain name</Domain>` XML 元素來設定網域名稱。
 

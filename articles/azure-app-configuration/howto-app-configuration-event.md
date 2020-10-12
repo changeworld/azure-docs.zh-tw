@@ -11,15 +11,15 @@ ms.date: 02/25/2020
 ms.author: lcozzens
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: dc816f54a690a4c72c44d70ecbf2cc0156ac84ed
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87498305"
 ---
 # <a name="route-azure-app-configuration-events-to-a-web-endpoint-with-azure-cli"></a>使用 Azure CLI 將 Azure 應用程式組態事件路由傳送至 Web 端點
 
-在本文中，您將瞭解如何設定 Azure 應用程式組態事件訂用帳戶，將索引鍵/值修改事件傳送至 web 端點。 Azure 應用程式組態使用者可以訂閱每次修改索引鍵/值時所發出的事件。 這些事件可以觸發 web 勾點、Azure Functions、Azure 儲存體的佇列，或 Azure 事件方格所支援的任何其他事件處理常式。 通常，您會將事件傳送至可處理事件資料及採取行動的端點。 不過，若要簡化這篇文章，您可將事件傳送至可收集及顯示訊息的 Web 應用程式。
+在本文中，您將瞭解如何設定 Azure 應用程式組態事件訂閱，以將索引鍵/值修改事件傳送至 web 端點。 Azure 應用程式組態使用者可以訂閱索引鍵/值修改時發出的事件。 這些事件可以觸發 web 勾點、Azure Functions、Azure 儲存體佇列，或 Azure 事件方格所支援的任何其他事件處理常式。 通常，您會將事件傳送至可處理事件資料及採取行動的端點。 不過，若要簡化這篇文章，您可將事件傳送至可收集及顯示訊息的 Web 應用程式。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -27,7 +27,7 @@ ms.locfileid: "87498305"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果您選擇在本機安裝和使用 CLI，本文會要求您執行最新版的 Azure CLI （2.0.70 或更新版本）。 若要尋找版本，請執行 `az --version`。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
+如果您選擇在本機安裝和使用 CLI，本文會要求您執行最新版的 Azure CLI (2.0.70 或更新版本的) 。 若要尋找版本，請執行 `az --version`。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
 
 如果您未使用 Cloud Shell，必須先使用 `az login` 登入。
 
@@ -45,7 +45,7 @@ az group create --name <resource_group_name> --location westus
 
 ## <a name="create-an-app-configuration-store"></a>建立應用程式組態存放區
 
-請以您的設定 `<appconfig_name>` 存放區的唯一名稱取代，並 `<resource_group_name>` 以您稍早建立的資源群組取代。 此名稱必須是唯一的，因為它會當作 DNS 項目使用。
+將取代為您的設定 `<appconfig_name>` 存放區的唯一名稱，並取代為 `<resource_group_name>` 您稍早建立的資源群組。 此名稱必須是唯一的，因為它會當作 DNS 項目使用。
 
 ```azurecli-interactive
 az appconfig create \
@@ -76,7 +76,7 @@ az group deployment create \
 
 [!INCLUDE [event-grid-register-provider-cli.md](../../includes/event-grid-register-provider-cli.md)]
 
-## <a name="subscribe-to-your-app-configuration-store"></a>訂閱您的應用程式組態存放區
+## <a name="subscribe-to-your-app-configuration-store"></a>訂閱您的應用程式設定存放區
 
 您可訂閱主題，告知 Event Grid 您想要追蹤的事件，以及要將事件傳送至何處。 下列範例會訂閱您所建立的應用程式組態，從 Web 應用程式傳遞 URL 作為事件通知的端點。 以事件訂用帳戶的名稱來取代 `<event_subscription_name>`。 對於 `<resource_group_name>` 和 `<appconfig_name>`，使用您稍早建立的值。
 
@@ -131,7 +131,7 @@ az appconfig kv set --name <appconfig_name> --key Foo --value Bar --yes
 az group delete --name <resource_group_name>
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 您現在知道如何建立主題和事件訂用帳戶，請深入了解索引鍵/值事件以及 Event Grid 如何協助您：
 

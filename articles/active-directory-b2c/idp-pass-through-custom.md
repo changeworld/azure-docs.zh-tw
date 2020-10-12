@@ -1,7 +1,7 @@
 ---
 title: 透過自訂原則將存取權杖傳遞至您的應用程式
 titleSuffix: Azure AD B2C
-description: 瞭解如何在 Azure Active Directory B2C 中透過自訂原則，將 OAuth 2.0 身分識別提供者的存取權杖作為宣告傳遞給您的應用程式。
+description: 瞭解如何透過自訂原則，將 OAuth 2.0 身分識別提供者的存取權杖作為宣告傳遞至 Azure Active Directory B2C 中的應用程式。
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,15 +12,15 @@ ms.date: 08/17/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: c434ad6a724ba513caf7923916997600097b43f6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85387859"
 ---
 # <a name="pass-an-access-token-through-a-custom-policy-to-your-application-in-azure-active-directory-b2c"></a>透過自訂原則將存取權杖傳遞到 Azure Active Directory B2C 中的應用程式
 
-Azure Active Directory B2C （Azure AD B2C）中的[自訂原則](custom-policy-get-started.md)可讓您的應用程式使用者有機會使用身分識別提供者註冊或登入。 當發生這種情況時，Azure AD B2C 會從識別提供者處收到[存取權杖](tokens-overview.md)。 Azure AD B2C 會使用該權杖來擷取使用者的相關資訊。 您將宣告類型和輸出宣告新增到自訂原則，以將權杖傳遞至您在 Azure AD B2C 中註冊的應用程式。
+Azure Active Directory B2C (Azure AD B2C) 的 [自訂原則](custom-policy-get-started.md) ，可讓您的應用程式使用者有機會註冊或使用身分識別提供者登入。 當發生這種情況時，Azure AD B2C 會從識別提供者處收到[存取權杖](tokens-overview.md)。 Azure AD B2C 會使用該權杖來擷取使用者的相關資訊。 您將宣告類型和輸出宣告新增到自訂原則，以將權杖傳遞至您在 Azure AD B2C 中註冊的應用程式。
 
 Azure AD B2C 支援傳遞 [OAuth 2.0](authorization-code-flow.md) 的存取金鑰和 [OpenID Connect](openid-connect.md) 識別提供者。 對於所有其他識別提供者，宣告會傳回空白。
 
@@ -85,7 +85,7 @@ Azure AD B2C 支援傳遞 [OAuth 2.0](authorization-code-flow.md) 的存取金�
 ### <a name="upload-the-files"></a>上傳檔案
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
-2. 按一下頂端功能表中的 [**目錄 + 訂**用帳戶] 篩選，然後選擇包含您租使用者的目錄，以確定您使用的是包含 Azure AD B2C 租使用者的目錄。
+2. 按一下頂端功能表中的 [ **目錄 + 訂** 用帳戶] 篩選，然後選擇包含您租使用者的目錄，以確定您使用的是包含 Azure AD B2C 租使用者的目錄。
 3. 選擇 Azure 入口網站左上角的 [所有服務]，然後搜尋並選取 [Azure AD B2C]。
 4. 選取 [識別體驗架構]。
 5. 在 [自訂原則] 頁面上，按一下 [上傳原則]****。
@@ -101,8 +101,8 @@ Azure AD B2C 支援傳遞 [OAuth 2.0](authorization-code-flow.md) 的存取金�
 
     您應該會看到類似下列範例的內容：
 
-    ![已反白顯示 idp_access_token 區塊的 jwt.ms 中已解碼的 token](./media/idp-pass-through-custom/idp-pass-through-custom-token.PNG)
+    ![已反白顯示 idp_access_token 區塊的 jwt.ms 中已解碼 token](./media/idp-pass-through-custom/idp-pass-through-custom-token.PNG)
 
 ## <a name="next-steps"></a>後續步驟
 
-深入瞭解[Azure Active Directory B2C token 參考](tokens-overview.md)中的權杖。
+深入瞭解 [Azure Active Directory B2C token 參考](tokens-overview.md)中的權杖。

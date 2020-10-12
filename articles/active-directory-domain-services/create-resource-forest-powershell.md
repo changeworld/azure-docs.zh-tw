@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 07/27/2020
 ms.author: iainfou
 ms.openlocfilehash: 893085179c27ce88c3e310170715e2f83a59ddc7
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88723158"
 ---
 # <a name="create-an-azure-active-directory-domain-services-resource-forest-and-outbound-forest-trust-to-an-on-premises-domain-using-azure-powershell"></a>使用 Azure PowerShell 建立對內部部署網域 Azure Active Directory Domain Services 資源樹系和輸出樹系信任
@@ -112,7 +112,7 @@ New-AzureADServicePrincipal -AppId "2565bd9d-da50-47d4-8b85-4c97f669dc36"
 
     `New-AzureAaddsForest`如果這些資源尚未存在，腳本就可以建立 Azure 虛擬網路和 AZURE AD DS 子網。 當指定時，腳本可以選擇性地建立工作負載子網：
 
-    | 名稱                              | 腳本參數                  | 描述 |
+    | 名稱                              | 腳本參數                  | 說明 |
     |:----------------------------------|:----------------------------------|:------------|
     | 虛擬網路名稱              | *-aaddsVnetName*                  | 受控網域的虛擬網路名稱。|
     | 位址空間                     | *-aaddsVnetCIDRAddressSpace*      | 以 CIDR 標記法表示的虛擬網路位址範圍 (如果建立虛擬網路) 。|
@@ -193,7 +193,7 @@ Install-Script -Name Add-AaddsResourceForestTrust
 
 現在提供下列資訊給腳本：
 
-| 名稱                               | 腳本參數     | 描述 |
+| 名稱                               | 腳本參數     | 說明 |
 |:-----------------------------------|:---------------------|:------------|
 | Azure AD DS 功能變數名稱            | *-ManagedDomainFqdn* | 受控網域的 FQDN，例如 *aaddscontoso.com* |
 | 內部部署 AD DS 功能變數名稱      | *-TrustFqdn*         | 受信任樹系的 FQDN，例如 *onprem.contoso.com* |
@@ -240,7 +240,7 @@ Add-AaddsResourceForestTrust `
 1. 選擇為**僅此網域**建立信任。 在下一個步驟中，您會在 Azure 入口網站中建立受控網域的信任。
 1. 選擇使用**全樹系驗證**，然後輸入並確認信任密碼。 在下一節中，也需要在 Azure 入口網站中輸入相同的密碼。
 1. 使用預設選項逐步執行接下來的幾個視窗，然後選擇 [否，不要確認外寄信任] 的選項。 您無法驗證信任關係，因為受控網域資源樹系的委派系統管理員帳戶沒有必要的許可權。 這是設計的行為。
-1. 選取 [完成]。
+1. 選取 [完成]  。
 
 ## <a name="validate-resource-authentication"></a>驗證資源驗證
 

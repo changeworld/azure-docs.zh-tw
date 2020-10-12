@@ -12,10 +12,10 @@ ms.date: 05/05/2020
 ms.author: sudbalas
 Customer intent: As a key vault administrator, I want to move my vault to another subscription.
 ms.openlocfilehash: e6ab37539d00b6748d0e63a3f559bf70f493cf42
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89394727"
 ---
 # <a name="moving-an-azure-key-vault-to-another-subscription"></a>將 Azure Key Vault 移至另一個訂用帳戶
@@ -47,7 +47,7 @@ ms.locfileid: "89394727"
 
 您的應用程式已連線至金鑰保存庫，可建立兩年有效的憑證。 您嘗試移動金鑰保存庫的訂用帳戶具有原則指派，以封鎖建立有效期限超過一年的憑證。 將您的金鑰保存庫移至新的訂用帳戶之後，Azure 原則指派將會封鎖用來建立兩年有效憑證的作業。
 
-### <a name="solution"></a>解決方案
+### <a name="solution"></a>解決方法
 
 請確定您移至 Azure 入口網站上的 [Azure 原則] 頁面，並查看您目前訂用帳戶的原則指派，以及您要移動的訂用帳戶，並確定沒有任何不符的情況。
 
@@ -72,7 +72,7 @@ ms.locfileid: "89394727"
 
 ### <a name="additional-steps-if-you-moved-key-vault-to-a-subscription-in-a-new-tenant"></a>將 key vault 移至新租使用者中的訂用帳戶時的其他步驟
 
-如果您將金鑰保存庫移至新租使用者中的訂用帳戶，您需要手動更新租使用者識別碼，並移除舊的存取原則。 以下是 PowerShell 和 Azure CLI 中這些步驟的教學課程。 如果您使用 PowerShell，您可能需要執行下列 Set-azcoNtext 命令，以允許您查看目前所選範圍之外的資源。 
+如果您將金鑰保存庫移至新租使用者中的訂用帳戶，您需要手動更新租使用者識別碼，並移除舊的存取原則。 以下是 PowerShell 和 Azure CLI 中這些步驟的教學課程。 如果您使用的是 PowerShell，您可能需要執行以下所述的 Clear-AzContext 命令，讓您查看目前所選範圍之外的資源。 
 
 ```azurepowershell
 Select-AzSubscription -SubscriptionId <your-subscriptionId>                # Select your Azure Subscription

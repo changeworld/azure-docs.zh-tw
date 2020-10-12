@@ -1,6 +1,6 @@
 ---
 title: Azure IoT 中樞的裝置設定最佳做法 | Microsoft Docs
-description: 瞭解使用自動裝置管理的最佳作法，以儘量減少涉及大規模管理 IoT 裝置的重複性和複雜工作。
+description: 深入瞭解使用自動裝置管理的最佳作法，以將大規模管理 IoT 裝置所涉及的重複性和複雜工作降至最低。
 author: robinsh
 ms.author: robinsh
 ms.date: 06/28/2019
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.service: iot-hub
 services: iot-hub
 ms.openlocfilehash: 67f0d9eb1fdac603ee82d568644e8ad8550d1c80
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82024773"
 ---
 # <a name="best-practices-for-device-configuration-within-an-iot-solution"></a>IoT 解決方案內的裝置設定最佳做法
@@ -26,7 +26,7 @@ Azure IoT 中樞內的自動裝置管理，可將管理大量裝置機群的許�
 
 ## <a name="understand-automatic-device-management-for-configuring-iot-devices-at-scale"></a>了解大規模設定 IoT 裝置所適用的自動裝置管理
 
-自動裝置管理具有[裝置對應項](iot-hub-devguide-device-twins.md)和[模組對應項](iot-hub-devguide-module-twins.md)方面的多項優點，可雲端與裝置之間同步處理所需和報告的狀態。 [自動裝置](iot-hub-auto-device-config.md)設定會自動更新大量的 twins，並摘要說明進度和合規性。 下列主要步驟說明如何開發和使用自動裝置管理：
+自動裝置管理具有[裝置對應項](iot-hub-devguide-device-twins.md)和[模組對應項](iot-hub-devguide-module-twins.md)方面的多項優點，可雲端與裝置之間同步處理所需和報告的狀態。 [自動裝置](iot-hub-auto-device-config.md) 設定會自動更新大量的 twins，並摘要說明進度和合規性。 下列主要步驟說明如何開發和使用自動裝置管理：
 
 * **IoT 硬體製造商/整合者**使用[裝置對應項](iot-hub-devguide-device-twins.md)在內嵌的應用程式中實作裝置管理功能。 這些功能可包括韌體更新、軟體安裝與更新，以及設定管理。
 
@@ -66,9 +66,9 @@ Azure IoT 中樞內的自動裝置管理，可將管理大量裝置機群的許�
 
 * **實作[自動裝置設定](iot-hub-auto-device-config.md)：** 自動裝置設定可透過裝置對應項來部署和監視大量 IoT 裝置的組態變更。
 
-   自動裝置設定可透過**目標條件** (這是對裝置對應項標記或報告屬性的查詢) 將多組裝置對應項設為目標。 **目標內容**是將在目標裝置對應項內設定的一組所需屬性。 目標內容應與 IoT 硬體製造商/整合者所定義的裝置對應項結構相一致。 **計量**是針對裝置對應項報告屬性的查詢，也應該與 IoT 硬體製造商/整合者所定義的裝置對應項結構進行比對。
+   自動裝置設定可透過**目標條件** (這是對裝置對應項標記或報告屬性的查詢) 將多組裝置對應項設為目標。 **目標內容**是將在目標裝置對應項內設定的一組所需屬性。 目標內容應與 IoT 硬體製造商/整合者所定義的裝置對應項結構相一致。 **計量**是針對裝置對應項報告屬性的查詢，也應該與 IoT 硬體製造商/整合者所定義的裝置對應項結構一致。
 
-   自動裝置設定會在設定建立後的第一次執行，然後按五分鐘的間隔。 它們也受益于執行裝置對應項作業的 IoT 中樞，其速率絕不會超過裝置對應項讀取和更新的[節流限制](iot-hub-devguide-quotas-throttling.md)。
+   自動裝置設定會在設定建立之後的第一次執行，然後每隔五分鐘執行一次。 它們也受益于 IoT 中樞執行裝置對應項作業的速率，將永遠不會超過裝置對應項讀取和更新的 [節流限制](iot-hub-devguide-quotas-throttling.md) 。
 
 * **使用[裝置佈建服務](../iot-dps/how-to-manage-enrollments.md)：** 解決方案開發人員應使用裝置佈建服務將裝置對應項標記指派給新的裝置，讓以具有該標記的對應項為目標的**自動裝置設定**能夠自動設定這些裝置。 
 
@@ -84,7 +84,7 @@ Azure IoT 中樞內的自動裝置管理，可將管理大量裝置機群的許�
 
 * **在發生錯誤或設定不當時執行復原：** 導致錯誤或不當設定的自動裝置設定，可藉由變更**目標條件**而使裝置不再符合目標條件來復原。 請確定優先順序較低的另一個自動裝置設定仍以這些裝置為目標。 您可以檢視計量以確認復原是否成功：已復原的組態應該不會再顯示非目標裝置的狀態，而第二個組態的計量此時應該會包含仍作為目標的裝置計數。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * 在[了解和使用 Azure IoT 中樞的裝置對應項](iot-hub-devguide-device-twins.md)中了解如何實作裝置對應項。
 

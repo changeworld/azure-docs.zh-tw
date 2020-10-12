@@ -12,19 +12,19 @@ ms.date: 09/20/2018
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 91a55782492c1b2612652b147e0aca37941bf4db
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85388199"
 ---
 # <a name="set-up-sign-in-with-a-google-account-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自訂原則來設定以 Google 帳戶進行登入
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-本文說明如何使用 Azure Active Directory B2C （Azure AD B2C）中的[自訂原則](custom-policy-overview.md)，讓具有 Google 帳戶的使用者能夠登入。
+本文說明如何使用 Azure Active Directory B2C (Azure AD B2C) 中的 [自訂原則](custom-policy-overview.md) ，為具有 Google 帳戶的使用者啟用登入。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 完成[在 Active Directory B2C 中開始使用自訂原則](custom-policy-get-started.md)中的步驟。
 - 如果您還沒有 Google 帳戶，可以在[建立您的 Google 帳戶](https://accounts.google.com/SignUp)中建立一個。
@@ -42,7 +42,7 @@ ms.locfileid: "85388199"
 7. 輸入應用程式的**名稱**。
 8. 在 [授權 JavaScript 來源]**** 中輸入 `https://your-tenant-name.b2clogin.com`，接著在 [授權重新導向 URI]**** 中輸入 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`。 以您的租用戶名稱取代 your-tenant-name。 即使租用戶在 Azure AD B2C 中是使用大寫字母來定義的，您還是需要在輸入租用戶名稱時，全部使用小寫字母。
 8. 按一下 [建立]。
-9. 複製 [**用戶端識別碼**] 和 [**用戶端密碼**] 的值。 您必須使用這兩個值，將 Google 設為租用戶中的身分識別提供者。 用戶端密碼是重要的安全性認證。
+9. 複製 **用戶端識別碼** 和 **用戶端密碼**的值。 您必須使用這兩個值，將 Google 設為租用戶中的身分識別提供者。 用戶端密碼是重要的安全性認證。
 
 ## <a name="create-a-policy-key"></a>建立原則金鑰
 

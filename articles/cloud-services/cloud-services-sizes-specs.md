@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
 ms.openlocfilehash: 2549cb0408c9dad3e92f2cec9625757de45a10dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82086244"
 ---
 # <a name="sizes-for-cloud-services"></a>雲端服務的大小
@@ -79,9 +79,9 @@ ms.locfileid: "82086244"
 | 大小            | CPU 核心 | 記憶體：GiB  | 暫存位置：GiB       | 最大 NIC / 網路頻寬 |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
 | 特小型      | 1         | 0.768        | 20                   | 1 / 低 |
-| 小           | 1         | 1.75         | 225                  | 1 / 中 |
+| 小型           | 1         | 1.75         | 225                  | 1 / 中 |
 | 中          | 2         | 3.5          | 490                  | 1 / 中 |
-| 大           | 4         | 7            | 1000                 | 2 / 高 |
+| 大型           | 4         | 7            | 1000                 | 2 / 高 |
 | 特大型      | 8         | 14           | 2040                 | 4 / 高 |
 | A5              | 2         | 14           | 490                  | 1 / 中 |
 | A6              | 4         | 28           | 1000                 | 2 / 高 |
@@ -215,8 +215,8 @@ Azure H 系列虛擬機器是下一代高效能運算 VM，以高端運算需求
 Get-AzureRoleSize | where SupportedByWebWorkerRoles -eq $true | select InstanceSize, RoleSizeLabel
 ```
 
-## <a name="next-steps"></a>後續步驟
-* 瞭解[azure 訂用帳戶和服務限制、配額和條件約束](../azure-resource-manager/management/azure-subscription-service-limits.md)。
+## <a name="next-steps"></a>接下來的步驟
+* 瞭解 [azure 訂用帳戶和服務限制、配額和條件約束](../azure-resource-manager/management/azure-subscription-service-limits.md)。
 * 進一步了解 HPC 工作負載的[有關高效能計算 VM 大小](../virtual-machines/windows/sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
 

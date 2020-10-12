@@ -9,21 +9,21 @@ ms.date: 03/12/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 17df5dca584b760cc52ddc171e92fb26b418c347
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "79500194"
 ---
-1. 在 Windows 10 用戶端上安裝用戶端憑證，如此[點對站 VPN 用戶端一](../articles/vpn-gateway/point-to-site-how-to-vpn-client-install-azure-cert.md)文所示。 憑證必須位於 [目前使用者] 存放區中。
+1. 在 Windows 10 用戶端上安裝用戶端憑證，如這個 [點對站 VPN 用戶端](../articles/vpn-gateway/point-to-site-how-to-vpn-client-install-azure-cert.md) 文章所示。 憑證必須在目前的使用者存放區中。
 
-1. 遵循[設定 Windows 10 用戶端 ALWAYS ON VPN](https://docs.microsoft.com/windows-server/remote/remote-access/vpn/always-on-vpn/deploy/vpn-deploy-client-vpn-connections)連線中的指示，透過 PowerShell、Configuration Manager 或 Intune 設定 Always On VPN 用戶端。
+1. 遵循 [設定 Windows 10 用戶端 ALWAYS ON VPN 連接](https://docs.microsoft.com/windows-server/remote/remote-access/vpn/always-on-vpn/deploy/vpn-deploy-client-vpn-connections)中的指示，透過 PowerShell、Configuration Manager 或 Intune 設定 Always On VPN 用戶端。
 
-### <a name="example-configuration-for-the-user-tunnel"></a>使用者通道的範例設定
+### <a name="example-configuration-for-the-user-tunnel"></a>使用者通道的設定範例
 
 設定虛擬網路閘道並在 Windows 10 用戶端的本機電腦存放區中安裝用戶端憑證之後，請使用下列範例來設定用戶端裝置通道：
 
-1. 複製下列文字，並將它儲存為*usercert.ps1*：
+1. 複製下列文字，並將它儲存為 *usercert.ps1*：
 
    ```
    Param(
@@ -121,7 +121,7 @@ ms.locfileid: "79500194"
    ```
 1. 以系統管理員身分執行 PowerShell。
 
-1. 在 PowerShell 中，切換至*usercert.ps1*和*VPNProfile.xml*所在的資料夾，然後執行下列命令：
+1. 在 PowerShell 中，切換至 *usercert.ps1* 和 *VPNProfile.xml* 所在的資料夾，然後執行下列命令：
 
    ```powershell
    C:\> .\usercert.ps1 .\VPNProfile.xml UserTest
@@ -130,4 +130,4 @@ ms.locfileid: "79500194"
    ![MachineCertTest](./media/vpn-gateway-vwan-always-on-user/p2s2.jpg)
 1. 在 [ **VPN 設定**] 底下，尋找 [ **UserTest** ] 專案，然後選取 **[連線]**。
 
-1. 如果連線成功，則您已成功設定 Always On 的使用者通道。
+1. 如果連接成功，您已成功設定 Always On 使用者通道。

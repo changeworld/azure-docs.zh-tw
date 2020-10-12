@@ -8,10 +8,10 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 11/27/2017
 ms.openlocfilehash: 05e55d1608323b8e746a1c82ccb915a2db58ce97
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87132087"
 ---
 # <a name="export-a-u-sql-database"></a>匯出 U-SQL 資料庫
@@ -80,7 +80,7 @@ ms.locfileid: "87132087"
 
 目前，如果您在步驟 3 中選取 [結構描述和資料]**** 選項，工具會執行 U-SQL 作業來匯出儲存在資料表中的資料。 因為這個緣故，資料匯出程序可能會變慢，而可能會對您產生費用。 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * [了解 U-SQL 資料庫](/u-sql/data-definition-language-ddl-statements) 
 * [使用本機執行和 Azure Data Lake U-SQL SDK 對 U-SQL 作業進行測試和偵錯](data-lake-analytics-data-lake-tools-local-run.md)

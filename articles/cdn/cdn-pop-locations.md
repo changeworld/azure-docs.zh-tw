@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/19/2020
 ms.author: allensu
 ms.openlocfilehash: 66eafb818b09d6d1cde6c1f3e2dbcdaf55352248
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87002976"
 ---
 # <a name="azure-cdn-coverage-by-metro"></a>依 Metro 的 Azure CDN 涵蓋範圍 
@@ -44,7 +44,7 @@ ms.locfileid: "87002976"
 | 非洲 | 南非開普敦<br />南非約翰尼斯堡<br />拉哥斯，奈及利亞<br />奈洛比，肯亞 | 南非約翰尼斯堡 <br/> 奈洛比，肯亞 | 南非 |
 | 中東 | 杜拜，阿拉伯聯合大公國<br />特拉維夫，以色列<br />土耳其伊斯坦堡 | 馬斯喀特，阿曼<br />富吉拉，阿拉伯聯合大公國 | 卡達<br />阿拉伯聯合大公國 |
 | 印度 | 辰內，印度<br />海得拉巴德，印度<br />孟買，印度<br />新德里，印度 | 班加羅爾 (邦加羅爾)，印度<br />辰內，印度<br />孟買，印度<br />新德里，印度<br /> | 印度 |
-| Asia | 香港<br />大阪，日本<br />Sakai，日本<br />日本東京<br />馬來西亞吉隆坡<br />Cyberjaya，馬來西亞<br />雅加達，印尼<br />菲律賓馬尼拉<br />新加坡<br />釜山，南韓<br />首爾，南韓<br />台灣台北<br />泰國曼谷<br />Ho 卡胡志明市城，越南 | 香港<br />雅加達，印尼<br />大阪，日本<br />東京，日本<br />新加坡<br />首爾，南韓<br />高雄，台灣<br />台灣台北 <br />菲律賓馬尼拉 | 香港<br />印尼<br />以色列<br />日本<br />澳門<br />馬來西亞<br />菲律賓<br />新加坡<br />南韓<br />台灣<br />泰國<br />土耳其<br />越南 |
+| Asia | 香港<br />大阪，日本<br />Sakai，日本<br />東京，日本<br />馬來西亞吉隆坡<br />Cyberjaya，馬來西亞<br />雅加達，印尼<br />菲律賓馬尼拉<br />新加坡<br />釜山，南韓<br />首爾，南韓<br />台灣台北<br />泰國曼谷<br />Ho 卡胡志明市市，越南 | 香港<br />雅加達，印尼<br />大阪，日本<br />東京，日本<br />新加坡<br />首爾，南韓<br />高雄，台灣<br />台灣台北 <br />菲律賓馬尼拉 | 香港<br />印尼<br />以色列<br />日本<br />澳門<br />馬來西亞<br />菲律賓<br />新加坡<br />南韓<br />台灣<br />泰國<br />土耳其<br />越南 |
 | 澳大利亞與紐西蘭 | 布利斯班，澳大利亞<br />墨爾本，澳大利亞<br />伯斯，澳大利亞<br />雪梨，澳大利亞<br />奧克蘭，紐西蘭 | 墨爾本，澳大利亞<br />雪梨，澳大利亞<br />奧克蘭，紐西蘭 | 澳大利亞<br />紐西蘭 |
 
 

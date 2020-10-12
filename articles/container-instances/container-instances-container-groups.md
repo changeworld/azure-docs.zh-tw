@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 11/01/2019
 ms.custom: mvc
 ms.openlocfilehash: 72ebe6186da179bc5a1effddcc14327455eb7557
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89612416"
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Azure Container Instances 中的容器群組
@@ -67,7 +67,7 @@ Azure 容器實例會將資源[要求][resource-requests]新增到群組中，�
 
 * 如需容器群組中的資源 **上限** ，請參閱部署區域中 Azure 容器實例的 [資源可用性][region-availability] 。
 
-## <a name="networking"></a>網路
+## <a name="networking"></a>網路功能
 
 容器群組可以共用對外 IP 位址、該 IP 位址上的一或多個埠，以及具有完整功能變數名稱的 DNS 標籤， (FQDN) 。 若要讓外部用戶端能夠連線到該群組內的容器，您必須從該容器公開該 IP 位址上的連接埠。 刪除容器群組時，會釋放容器群組的 IP 位址和 FQDN。 
 
@@ -96,7 +96,7 @@ Azure 容器實例會將資源[要求][resource-requests]新增到群組中，�
 * 一個應用程式容器和一個監視容器。 監視容器會定期向應用程式發出要求，以確保它會保持執行狀態並正確回應，如果沒有正確回應則引發警示。
 * 前端容器和後端容器。 前端可能會提供 web 應用程式，並執行服務的後端來取出資料。 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 了解如何使用 Azure Resource Manager 範本來部署多個容器的容器群組：
 

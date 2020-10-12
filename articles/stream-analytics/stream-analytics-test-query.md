@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 3/6/2020
 ms.custom: seodec18
 ms.openlocfilehash: deaa52494fce387bde2b105de7d34e8a4f0c5c2f
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89612156"
 ---
 # <a name="test-an-azure-stream-analytics-job-in-the-portal"></a>在入口網站中測試 Azure 串流分析作業
@@ -81,7 +81,7 @@ Azure 串流分析會自動從您的串流輸入提取事件。 您可以對預�
 
    ![Azure 串流分析上傳範例檔案](./media/stream-analytics-test-query/asa-upload-sample-file.png)
 
-5. 上傳您的本機檔案以測試查詢。 您只能上傳具有 JSON、CSV 或 AVRO 格式的檔案。 選取 [確定]。
+5. 上傳您的本機檔案以測試查詢。 您只能上傳具有 JSON、CSV 或 AVRO 格式的檔案。 選取 [確定]  。
 
    ![Azure 串流分析上傳範例檔案](./media/stream-analytics-test-query/asa-upload-sample-json-file.png)
 
@@ -112,7 +112,7 @@ Azure 串流分析會自動從您的串流輸入提取事件。 您可以對預�
 
 5.  不支援機器學習。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 * [使用串流分析來建立 IoT 解決方案](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-build-an-iot-solution-using-stream-analytics)：本教學課程將引導您使用資料產生器來建立端對端解決方案，此解決方案將會模擬收費亭的流量。
 
 * [Azure Stream Analytics 查詢語言參考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)

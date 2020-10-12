@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 08/21/2020
 ms.custom: seodec18
 ms.openlocfilehash: e2c5ba137d5277466cf1b382d2b0b1bc02259f00
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88723447"
 ---
 # <a name="track-asynchronous-azure-operations"></a>追蹤非同步 Azure 作業
@@ -40,7 +40,7 @@ ms.locfileid: "88723447"
 
 如果 `Azure-AsyncOperation` 不是其中一個標頭值，請尋找：
 
-* `Location` - 用於判斷作業何時完成的 URL。 只有在未傳回 Azure AsyncOperation 時，才使用此值。
+* `Location` - 用於判斷作業何時完成的 URL。 只有在未傳回 Azure-AsyncOperation 時，才使用此值。
 * `Retry-After` - 在檢查非同步作業的狀態之前等待的秒數。
 
 ## <a name="azure-asyncoperation-request-and-response"></a>Azure-AsyncOperation 要求和回應
@@ -203,7 +203,7 @@ https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft
 
 如果要求仍在執行中，您會收到狀態碼 202。 如果要求已完成，您會收到狀態碼 200，回應內文會包含已建立之儲存體帳戶的屬性。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * 如需每個 REST 作業的相關文件，請參閱 [REST API 文件](/rest/api/azure/)。
 * 如需透過 Resource Manager REST API 部署範本的相關資訊，請參閱 [使用 Resource Manager 範本部署資源和 Resource Manager REST API](../templates/deploy-rest.md)。

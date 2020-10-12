@@ -12,23 +12,23 @@ ms.date: 02/27/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 20cb5f70a5844cb2d56fc9ff357fcaf640a6c56b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85388573"
 ---
 # <a name="add-adfs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自訂原則將 ADFS 新增為 SAML 識別提供者
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-本文說明如何使用 Azure Active Directory B2C （Azure AD B2C）中的[自訂原則](custom-policy-overview.md)，啟用 ADFS 使用者帳戶的登入。 將 [SAML 識別提供者技術設定檔](saml-identity-provider-technical-profile.md)新增至自訂原則，以啟用登入。
+本文說明如何使用 Azure Active Directory B2C (Azure AD B2C) 中的 [自訂原則](custom-policy-overview.md) ，來啟用 ADFS 使用者帳戶的登入。 將 [SAML 識別提供者技術設定檔](saml-identity-provider-technical-profile.md)新增至自訂原則，以啟用登入。
 
 ## <a name="prerequisites"></a>Prerequisites
 
 - 完成在 [Azure Active Directory B2C 中開始使用自訂原則](custom-policy-get-started.md)中的步驟。
 - 確定您可以存取具有私密金鑰的憑證 .pfx 檔案。 您可以產生自己簽署的憑證，並將它上傳至 Azure AD B2C。 Azure AD B2C 會使用此憑證簽署傳送給您的 SAML 身分識別提供者的 SAML 要求。
-- 為了讓 Azure 接受 .pfx 檔案密碼，密碼必須使用 Windows 憑證存放區匯出公用程式中的 TripleDES-SHA1 選項來加密，而不是 AES256-SHA256。
+- 為了讓 Azure 接受 .pfx 檔案密碼，必須使用 Windows 憑證存放區匯出公用程式中的 TripleDES-SHA1 選項加密密碼，而非 AES256-SHA256。
 
 ## <a name="create-a-policy-key"></a>建立原則金鑰
 
@@ -124,7 +124,7 @@ ms.locfileid: "85388573"
 3. 按一下 [上傳] 。
 
 > [!NOTE]
-> Visual Studio code B2C 延伸模組會使用 "socialIdpUserId"。 ADFS 也需要社交原則。
+> Visual Studio code B2C 擴充功能使用 "socialIdpUserId"。 ADFS 也需要社交原則。
 >
 
 ## <a name="register-the-claims-provider"></a>註冊宣告提供者
@@ -174,11 +174,11 @@ https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/your-poli
 
 取代下列值：
 
-- **您的租使用者**，其中包含您的租使用者名稱，例如 your-tenant.onmicrosoft.com。
+- **您租使用者** 的租使用者名稱，例如 your-tenant.onmicrosoft.com。
 - 將 **your-policy** 取代為您的原則名稱。 例如，B2C_1A_signup_signin_adfs。
-- **您的技術設定檔**，其中包含您的 SAML 身分識別提供者技術設定檔的名稱。 例如，Contoso-SAML2。
+- **您的技術設定檔** ，其名稱為您的 SAML 識別提供者技術設定檔。 例如，Contoso-SAML2。
 
-開啟瀏覽器並瀏覽至此 URL。 請確定您輸入正確的 URL，而且您可以存取 XML 中繼資料檔案。 若要使用 ADFS 管理嵌入式管理單元來新增新的信賴憑證者信任並手動進行設定，請在同盟伺服器上執行下列程序。 若要完成此程式，至少需要本機電腦上系統**管理員**的成員資格或同等許可權。
+開啟瀏覽器並瀏覽至此 URL。 請確定您輸入正確的 URL，而且您可以存取 XML 中繼資料檔案。 若要使用 ADFS 管理嵌入式管理單元來新增新的信賴憑證者信任並手動進行設定，請在同盟伺服器上執行下列程序。 若要完成此程式，至少需要本機電腦上 **Administrators** 或同等的成員資格。
 
 1. 在 [伺服器管理員] 中選取 [工具]****，然後選取 [ADFS 管理]****。
 2. 選取 [新增信賴憑證者信任] ****。
@@ -190,7 +190,7 @@ https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/your-poli
 8. 在 [完成]**** 頁面上按一下 [關閉]****，此動作就會自動顯示 [編輯宣告規則]**** 對話方塊。
 9. 選取 [新增規則]****。
 10. 在 [宣告規則範本]**** 中，選取 [傳送 LDAP 屬性作為宣告]****。
-11. 提供**宣告規則名稱**。 針對 [**屬性存放區**]，選取 [**選取 Active Directory**]，新增下列宣告，然後按一下 **[完成]** 和 **[確定]**。
+11. 提供**宣告規則名稱**。 在 [ **屬性存放區**] 中，選取 [ **選取 Active Directory**、新增下列宣告，然後按一下 **[完成** ] 和 **[確定]**。
 
     | LDAP 屬性 | 傳出宣告類型 |
     | -------------- | ------------------- |
@@ -200,7 +200,7 @@ https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/your-poli
     | 電子郵件地址 | 電子郵件 |
     | 顯示名稱 | NAME |
 
-    請注意，這些名稱不會顯示在 [傳出宣告類型] 下拉式清單中。 您必須在中手動輸入它們。 （下拉式清單實際上是可編輯的）。
+    請注意，這些名稱將不會顯示在 [輸出宣告類型] 下拉式清單中。 您必須以手動方式輸入它們。  (下拉式清單實際上是可編輯的) 。
 
 12.  根據不同憑證類型，您可能需要設定雜湊演算法。 在信賴憑證者信任 (B2C 示範) 屬性視窗上，選取 [進階]**** 索引標籤、將 [安全雜湊演算法]**** 變更為 `SHA-256`，然後按一下 [確定]****。
 13. 在 [伺服器管理員] 中選取 [工具]****，然後選取 [ADFS 管理]****。

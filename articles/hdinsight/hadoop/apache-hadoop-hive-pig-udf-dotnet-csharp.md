@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 12/06/2019
 ms.openlocfilehash: 5e32e269a36196d774bb1163a1c70c5d818ddcbb
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89000612"
 ---
 # <a name="use-c-user-defined-functions-with-apache-hive-and-apache-pig-on-apache-hadoop-in-hdinsight"></a>搭配使用 c # 使用者定義函式與 HDInsight 中 Apache Hadoop 上的 Apache Hive 和 Apache Pig
@@ -24,7 +24,7 @@ ms.locfileid: "89000612"
 
 Hive 和 Pig 都可以將資料傳遞至外部應用程式進行處理。 這個程序稱為_串流處理_。 使用 .NET 應用程式時，資料會在 STDIN 上傳遞至應用程式，而應用程式會在 STDOUT 上傳回結果。 為了在 STDIN 和 STDOUT 讀取和寫入，您可以從主控台應用程式使用 `Console.ReadLine()` 和 `Console.WriteLine()`。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 * 熟悉如何撰寫和建置以 .NET Framework 4.5 為目標的 C# 程式碼。
 
@@ -54,9 +54,9 @@ Hive 和 Pig 都可以將資料傳遞至外部應用程式進行處理。 這個
 
 1. 啟動 Visual Studio。
 
-2. 選取 [建立新專案]。
+2. 選取 [建立新專案]****。
 
-3. 在 [ **建立新專案** ] 視窗中，選擇 [ **主控台應用程式 ( .NET Framework]) ** 範本 (c # 版本) 。 接著，選取 [下一步]  。
+3. 在 [ **建立新專案** ] 視窗中，選擇 [ **主控台應用程式 ( .NET Framework]) ** 範本 (c # 版本) 。 然後選取 [下一步]。
 
 4. 在 [**設定您的新專案**] 視窗中，輸入*hivecsharp.exe*的**專案名稱**，然後流覽至或建立儲存新專案的**位置**。 然後選取 [建立]。
 
@@ -123,7 +123,7 @@ Hive 和 Pig 都可以將資料傳遞至外部應用程式進行處理。 這個
 
 2. 在 [開始] 視窗中，選取 [建立新專案]。
 
-3. 在 [ **建立新專案** ] 視窗中，選擇 [ **主控台應用程式 ( .NET Framework]) ** 範本 (c # 版本) 。 接著，選取 [下一步]  。
+3. 在 [ **建立新專案** ] 視窗中，選擇 [ **主控台應用程式 ( .NET Framework]) ** 範本 (c # 版本) 。 然後選取 [下一步]。
 
 4. 在 [**設定您的新專案**] 視窗中，輸入*為 pigudf.exe*的**專案名稱**，然後移至或建立儲存新專案的**位置**。 然後選取 [建立]。
 

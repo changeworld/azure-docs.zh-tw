@@ -11,10 +11,10 @@ ms.date: 08/04/2017
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: d3d29bd05f67d00047499dc256e5e1a82f98693a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85388794"
 ---
 # <a name="define-trust-frameworks-with-azure-ad-b2c-identity-experience-framework"></a>使用 Azure AD B2C 識別體驗架構定義信任架構
@@ -51,7 +51,7 @@ TF 是 Open Identity Exchange (OIX) 信任架構模型的關鍵，在此模型�
 
 - **參與者所提供/要求之數位身分識別資訊的說明**。
 
-- **用於生產和取用數位身分識別資訊的技術原則，用於測量 LOA 和 LOP。這些撰寫的原則通常包含下列類別的原則：**
+- **用於生產和取用數位身分識別資訊的技術原則，進而測量 LOA 和 LOP。這些寫入的原則通常包含下列原則類別：**
     - 身分識別證明原則，例如︰個人的身分識別資訊受到多嚴格的審查？**
     - 安全性原則，例如︰資訊的完整性和機密性受到多嚴格的保護？**
     - 隱私權原則，例如︰使用者對於個人識別資訊 (PII) 擁有何種控制權**？

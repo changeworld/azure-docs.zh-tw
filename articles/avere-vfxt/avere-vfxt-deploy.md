@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: rohogue
 ms.openlocfilehash: 31d12466186bb7f66197218fbb9675888a35fef3
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/17/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88272768"
 ---
 # <a name="deploy-the-vfxt-cluster"></a>部署 vFXT 叢集
@@ -74,7 +74,7 @@ ms.locfileid: "88272768"
 
 * **位置** - 選取您叢集和資源的 Azure 位置。
 
-完成時按一下 **[確定]** 。
+完成後，按一下 [確定]。
 
 > [!NOTE]
 > 如果您想要讓叢集控制器有公開的 IP 位址，請為叢集建立新的虛擬網路，而不是選取現有的網路。 這項設定位在第二頁。

@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 05/20/2019
 ms.author: alkohli
 ms.openlocfilehash: 00e5f8dc067d91e6ea6fed688d72b357d1d50678
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90904433"
 ---
 # <a name="manage-compute-on-your-azure-stack-edge-pro"></a>管理 Azure Stack Edge Pro 上的計算
@@ -129,6 +129,6 @@ ms.locfileid: "90904433"
 
 3. 在同步完成後結束對話方塊。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 瞭解如何透過 [Azure 入口網站管理 Edge 計算網路](azure-stack-edge-extend-compute-access-modules.md)。

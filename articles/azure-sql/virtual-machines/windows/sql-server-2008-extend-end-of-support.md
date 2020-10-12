@@ -14,10 +14,10 @@ ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 48288ed3765fa939fc56a4469f64070315c4c6aa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84668741"
 ---
 # <a name="extend-support-for-sql-server-2008-and-sql-server-2008-r2-with-azure"></a>使用 Azure 擴充對 Azure SQL Server 2008 和 SQL Server 2008 R2 的支援
@@ -60,7 +60,7 @@ SQL Server 需要應用程式一致的 Azure Site Recovery 快照集以確保復
 
 ### <a name="database-migration-service"></a>Database Migration Service
 
-如果客戶是從內部部署遷移至 Azure VM，並將 SQL Server 升級至2012版或更新版本，則[Azure 資料庫移轉服務](/azure/dms/dms-overview)是一個選項。
+如果 [客戶是從](/azure/dms/dms-overview) 內部部署遷移至 azure VM，請將 SQL Server 升級為2012版或更新版本，以供客戶選擇。
 
 ## <a name="disaster-recovery"></a>災害復原
 

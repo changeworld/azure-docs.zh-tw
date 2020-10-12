@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: tomfitz
 ms.openlocfilehash: c4eb3972be85ac7e291380f64127c20424b0d0f0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87004270"
 ---
 # <a name="microsoftcommonfileupload-ui-element"></a>Microsoft.Common.FileUpload UI 元素
@@ -82,7 +82,7 @@ ms.locfileid: "87004270"
 
 - `constraints.accept` 會指定在瀏覽器的 [檔案] 對話方塊中顯示的檔案類型。 請參閱 [HTML5 規格](https://html.spec.whatwg.org/multipage/input.html#attr-input-accept) 以取得允許的值。 預設值為 **null**。
 - 如果將 `options.multiple` 設為 **true**，使用者就允許在瀏覽器的 [檔案] 對話方塊中選取一個以上的檔案。 預設值為 **false**。
-- 這個元素會根據 `options.uploadMode` 的值，支援兩種檔案上傳模式。 如果是指定 **file**，輸出就會包含檔案內容作為 Blob。 如果是指定 **URL**，檔案就會上傳至暫存位置，而輸出會包含 Blob 的 URL。 24 小時之後，就會清除暫存 blob。 預設值為**file**。
+- 這個元素會根據 `options.uploadMode` 的值，支援兩種檔案上傳模式。 如果是指定 **file**，輸出就會包含檔案內容作為 Blob。 如果是指定 **URL**，檔案就會上傳至暫存位置，而輸出會包含 Blob 的 URL。 24 小時之後，就會清除暫存 blob。 預設值為 **file**。
 - 上傳的檔案已受保護。 輸出 URL 包含 [SAS 權杖](../../storage/common/storage-sas-overview.md?toc=/azure/storage/blobs/toc.json)，可供在部署期間存取檔案。
 - `options.openMode` 的值會決定讀取檔案的方式。 如果預期是純文字檔案，則指定為 **text**；否則，指定為 **binary**。 預設值為 **text**。
 - 如果將 `options.uploadMode` 設為 **file**，且將 `options.openMode` 設為 **binary**，輸出就會是 base64 編碼。

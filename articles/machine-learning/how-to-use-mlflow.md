@@ -12,10 +12,10 @@ ms.date: 09/08/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
 ms.openlocfilehash: 3fb177afa804788632f22d24bbd376d64cbe1c9f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91250686"
 ---
 # <a name="track-experiment-runs-and-deploy-ml-models-with-mlflow-and-azure-machine-learning-preview"></a>使用 MLflow 和 Azure Machine Learning (preview 來追蹤實驗執行及部署 ML 模型) 
@@ -347,7 +347,7 @@ webservice.wait_for_deployment()
 
 如果您不打算在您的工作區中使用記錄的計量和構件，則無法個別刪除它們。 相反地，請刪除包含儲存體帳戶和工作區的資源群組，以免產生任何費用：
 
-1. 在 Azure 入口網站中，選取最左邊的 [資源群組]。
+1. 在 Azure 入口網站中，選取最左邊的 [資源群組]  。
 
    ![在 Azure 入口網站中刪除](./media/how-to-use-mlflow/delete-resources.png)
 

@@ -16,10 +16,10 @@ ms.reviewer: thsomasu
 ms.lastreviewed: 01/04/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 33626b7aee615d07ef88dd9fbca46e6512e2cafc
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90090358"
 ---
 # <a name="azure-notification-hubs-rich-push"></a>Azure 通知中心豐富內容推播
@@ -135,7 +135,7 @@ ms.locfileid: "90090358"
     ```
 
 8. 現在，將此應用程式重新部署至 Azure 網站，使其可從所有裝置存取。 以滑鼠右鍵按一下 **AppBackend** 專案，然後選取 [發佈]****。
-9. 選取 **Azure 網站** 作為發佈目標。 使用您的 Azure 帳戶登入，並選取現有或新的網站，並在 [**連接**] 索引標籤中記下 [**目的地 URL** ] 屬性。我們稍後會在本教學課程中將此 URL 稱為您的*後端端點*。 選取 [發佈]。
+9. 選取 **Azure 網站** 作為發佈目標。 使用您的 Azure 帳戶登入，並選取現有或新的網站，並在 [**連接**] 索引標籤中記下 [**目的地 URL** ] 屬性。我們稍後會在本教學課程中將此 URL 稱為您的*後端端點*。 選取 [發佈]  。
 
 ## <a name="modify-the-ios-project"></a>修改 iOS 專案
 
